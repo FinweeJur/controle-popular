@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 import { normalizeWhatsapp } from "@/lib/betim/zap";
 
 export const CLASSIFICADO_CATEGORIAS = [
@@ -34,27 +34,17 @@ export interface ClassificadoAnuncio {
   expira_em: string | null;
 }
 
-export async function fetchClassificados(params: {
-  categoria?: string;
-  q?: string;
-}): Promise<{ rows: ClassificadoAnuncio[]; configured: boolean }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], configured: false };
-
-  let query = supabase
-    .from("classificados")
-    .select("id, categoria, titulo, descricao, preco, contato_whatsapp, expira_em")
-    .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-    .eq("aprovado", true)
-    .gte("expira_em", new Date().toISOString().slice(0, 10))
-    .order("created_at", { ascending: false });
-
-  if (params.categoria) query = query.eq("categoria", params.categoria);
-  if (params.q) query = query.ilike("titulo", `%${params.q}%`);
-
-  const { data, error } = await query;
-  if (error || !data) return { rows: [], configured: true };
-  return { rows: data as ClassificadoAnuncio[], configured: true };
+export async function fetchClassificados(
+  idMunicipio: string,
+  params: { categoria?: string; q?: string } = {}
+): Promise<{ rows: ClassificadoAnuncio[]; configured: boolean }> {
+  try {
+    const data = await q.classificadosVigentes(idMunicipio, params);
+    if (!data) return { rows: [], configured: false };
+    return { rows: data as ClassificadoAnuncio[], configured: true };
+  } catch {
+    return { rows: [], configured: true };
+  }
 }
 
 export interface ClassificadoSubmission {

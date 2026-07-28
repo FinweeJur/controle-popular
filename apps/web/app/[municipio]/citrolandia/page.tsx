@@ -71,7 +71,7 @@ export default async function CitrolandiaPage({
 }) {
   const cidade = await cidadeDaRota(params);
   const [{ rows, configured }, { rows: postos }] = await Promise.all([
-    fetchZapEstabelecimentos({ bairros: BAIRROS_CONFIRMADOS }),
+    fetchZapEstabelecimentos(cidade.id_municipio, { bairros: BAIRROS_CONFIRMADOS }),
     fetchPostosAnp(cidade.id_municipio, undefined, BAIRROS_CONFIRMADOS),
   ]);
 

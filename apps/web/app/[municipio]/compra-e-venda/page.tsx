@@ -5,6 +5,7 @@ import {
   fetchClassificados,
 } from "@/lib/betim/classificados";
 import { formatCurrencyBRL } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 import ClassificadoForm from "./ClassificadoForm";
 
 export const metadata = {
@@ -14,12 +15,18 @@ export const metadata = {
 };
 
 export default async function CompraEVendaPage({
+  params,
   searchParams,
 }: {
+  params: Promise<{ municipio: string }>;
   searchParams: Promise<{ categoria?: string; q?: string }>;
 }) {
+  const cidade = await cidadeDaRota(params);
   const { categoria, q } = await searchParams;
-  const { rows, configured } = await fetchClassificados({ categoria, q });
+  const { rows, configured } = await fetchClassificados(cidade.id_municipio, {
+    categoria,
+    q,
+  });
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-14 sm:px-8">

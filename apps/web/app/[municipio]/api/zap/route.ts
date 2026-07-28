@@ -1,20 +1,32 @@
 import type { NextRequest } from "next/server";
 import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 import { fetchZapEstabelecimentos, validateZapSubmission } from "@/lib/betim/zap";
 
-export async function GET(request: NextRequest) {
+/** Rota de cidade: `params.municipio` é o slug, e a consulta filtra por id. */
+type Ctx = { params: Promise<{ municipio: string }> };
+
+export async function GET(request: NextRequest, { params }: Ctx) {
+  const { municipio } = await params;
+  const cidade = await obterCidadePorSlug(municipio);
+  if (!cidade) return Response.json({ error: "Cidade não encontrada." }, { status: 404 });
+
   const sp = request.nextUrl.searchParams;
   const categoria = sp.get("categoria") ?? undefined;
   const q = sp.get("q") ?? undefined;
   const bairrosParam = sp.get("bairros") ?? undefined;
   const bairros = bairrosParam ? bairrosParam.split(",") : undefined;
 
-  const { rows, configured } = await fetchZapEstabelecimentos({ categoria, q, bairros });
+  const { rows, configured } = await fetchZapEstabelecimentos(cidade.id_municipio, {
+    categoria,
+    q,
+    bairros,
+  });
 
   if (!configured) {
     return Response.json({
       rows: [],
-      message: "Fonte de dados não configurada (variáveis Supabase ausentes).",
+      message: "Fonte de dados não configurada (DATABASE_URL ausente).",
     });
   }
 

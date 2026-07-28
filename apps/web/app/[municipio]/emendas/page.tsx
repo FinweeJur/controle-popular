@@ -4,6 +4,7 @@ import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import TabelaScroll from "@/app/[municipio]/components/TabelaScroll";
 import { getConveniosFederais, CONVENIO_URL_BASE } from "@/lib/betim/convenios";
 import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Emendas Parlamentares / Repasses Federais — Controle Popular Betim",
@@ -11,9 +12,14 @@ export const metadata = {
     "Convênios e repasses federais recebidos por Betim, com órgão de origem, valor e situação, via Portal da Transparência.",
 };
 
-export default async function EmendasPage() {
+export default async function EmendasPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   const { configured, ok, convenios, valorTotal, valorLiberadoTotal, qtdComPrefeitura, porOrgao } =
-    await getConveniosFederais();
+    await getConveniosFederais(cidade.id_municipio);
 
   const temDados = configured && ok && convenios.length > 0;
 

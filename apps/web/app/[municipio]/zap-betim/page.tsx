@@ -1,5 +1,6 @@
 import Link from "@/lib/betim/link";
 import { fetchZapEstabelecimentos, ZAP_CATEGORIAS, ZAP_CATEGORIA_LABELS } from "@/lib/betim/zap";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 import ZapCard from "./ZapCard";
 import ZapForm from "./ZapForm";
 
@@ -10,12 +11,18 @@ export const metadata = {
 };
 
 export default async function ZapBetimPage({
+  params,
   searchParams,
 }: {
+  params: Promise<{ municipio: string }>;
   searchParams: Promise<{ categoria?: string; q?: string }>;
 }) {
+  const cidade = await cidadeDaRota(params);
   const { categoria, q } = await searchParams;
-  const { rows, configured } = await fetchZapEstabelecimentos({ categoria, q });
+  const { rows, configured } = await fetchZapEstabelecimentos(cidade.id_municipio, {
+    categoria,
+    q,
+  });
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-14 sm:px-8">

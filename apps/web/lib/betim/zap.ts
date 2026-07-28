@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 export const ZAP_CATEGORIAS = [
   "alimentacao",
@@ -45,28 +45,17 @@ export function normalizeWhatsapp(raw: string): string | null {
   return /^55\d{10,11}$/.test(withCountry) ? withCountry : null;
 }
 
-export async function fetchZapEstabelecimentos(params: {
-  categoria?: string;
-  q?: string;
-  bairros?: string[];
-}): Promise<{ rows: ZapEstabelecimento[]; configured: boolean }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], configured: false };
-
-  let query = supabase
-    .from("zap_estabelecimentos")
-    .select("id, nome, whatsapp, categoria, descricao, bairro, cliques")
-    .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-    .eq("aprovado", true)
-    .order("nome", { ascending: true });
-
-  if (params.categoria) query = query.eq("categoria", params.categoria);
-  if (params.q) query = query.ilike("nome", `%${params.q}%`);
-  if (params.bairros?.length) query = query.in("bairro", params.bairros);
-
-  const { data, error } = await query;
-  if (error || !data) return { rows: [], configured: true };
-  return { rows: data as ZapEstabelecimento[], configured: true };
+export async function fetchZapEstabelecimentos(
+  idMunicipio: string,
+  params: { categoria?: string; q?: string; bairros?: string[] } = {}
+): Promise<{ rows: ZapEstabelecimento[]; configured: boolean }> {
+  try {
+    const data = await q.zapEstabelecimentos(idMunicipio, params);
+    if (!data) return { rows: [], configured: false };
+    return { rows: data as ZapEstabelecimento[], configured: true };
+  } catch {
+    return { rows: [], configured: true };
+  }
 }
 
 export interface ZapSubmission {

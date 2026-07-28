@@ -1,5 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT, comColunaOpcional } from "@/lib/betim/supabase";
-import { TEMA_LABELS, type ContagemTema } from "@/lib/betim/temas";
+import * as q from "@/lib/db/queries/betim";
+import { type ContagemTema } from "@/lib/betim/temas";
 
 export interface AtoRow {
   tipo: string | null;
@@ -37,43 +37,29 @@ interface RawRow {
   ano: number | null;
   ementa: string | null;
   data_publicacao: string | null;
-  temas?: string[] | null;
 }
-
-const COLUNAS_BASE = "tipo, numero, ano, ementa, data_publicacao";
 
 /**
  * Legislação municipal (`etl/prefeitura/legislacao.py` — dataset de dados
  * abertos de Betim: leis, decretos, resoluções, instruções normativas).
- * `temas` vem da classificação por palavra-chave da ementa (migration
- * 0025) — degrada pro select sem ela enquanto a 0025 não roda, então a
- * página funciona (sem o ranking por tema) mesmo antes da migration.
  * Dataset pequeno (~660) — busca tudo e filtra no componente.
+ *
+ * `temas` (classificação por palavra-chave da ementa, migration 0025) sai
+ * SEMPRE vazio, e isso não é regressão: a coluna `atos_oficiais.temas` não
+ * existe no banco — a 0025 nunca rodou. O `comColunaOpcional()` que
+ * protegia esse select caía sempre no ramo sem a coluna, então o ranking
+ * por área e o filtro `?tema=` já nasciam vazios em produção. Verificado
+ * dos dois lados: introspecção do Neon e `select=temas` no PostgREST do
+ * Supabase, que responde 42703 (undefined_column). Os campos ficam no
+ * contrato para a página não mudar; ligá-los é rodar a migration + ETL.
  */
-export async function getLegislacao(opts: {
-  categoria?: string;
-  tema?: string;
-  ano?: number;
-}): Promise<LegislacaoData> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return EMPTY;
-
+export async function getLegislacao(
+  idMunicipio: string,
+  opts: { categoria?: string; tema?: string; ano?: number } = {}
+): Promise<LegislacaoData> {
   try {
-    const { data, error } = await comColunaOpcional(
-      () =>
-        supabase
-          .from("atos_oficiais")
-          .select(`${COLUNAS_BASE}, temas`)
-          .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-          .order("data_publicacao", { ascending: false, nullsFirst: false }),
-      () =>
-        supabase
-          .from("atos_oficiais")
-          .select(COLUNAS_BASE)
-          .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-          .order("data_publicacao", { ascending: false, nullsFirst: false })
-    );
-    if (error) return { ...EMPTY, configured: true };
+    const data = await q.atosOficiais(idMunicipio);
+    if (!data) return EMPTY;
 
     const todos = ((data ?? []) as RawRow[]).map((r) => ({
       tipo: r.tipo,
@@ -81,7 +67,7 @@ export async function getLegislacao(opts: {
       ano: r.ano,
       ementa: r.ementa,
       dataPublicacao: r.data_publicacao,
-      temas: r.temas ?? null,
+      temas: null as string[] | null,
     }));
     if (todos.length === 0) return { ...EMPTY, configured: true };
 
@@ -92,15 +78,10 @@ export async function getLegislacao(opts: {
       ...new Set(todos.map((a) => a.ano).filter((a): a is number => a != null)),
     ].sort((a, b) => b - a);
 
-    // Ranking de temas de TODOS os atos (não muda com o filtro — é "sobre o
-    // que a Prefeitura legisla no geral").
-    const contagem = new Map<string, number>();
-    for (const a of todos) {
-      for (const t of a.temas ?? []) contagem.set(t, (contagem.get(t) ?? 0) + 1);
-    }
-    const temas: ContagemTema[] = [...contagem.entries()]
-      .map(([tema, qtd]) => ({ tema, label: TEMA_LABELS[tema] ?? tema, qtd }))
-      .sort((a, b) => b.qtd - a.qtd);
+    // Ranking de áreas: vazio enquanto `atos_oficiais.temas` não existir —
+    // ver o comentário da função. A página já trata `temas.length === 0`
+    // escondendo o gráfico.
+    const temas: ContagemTema[] = [];
 
     let atos = todos;
     if (opts.categoria) atos = atos.filter((a) => a.tipo === opts.categoria);

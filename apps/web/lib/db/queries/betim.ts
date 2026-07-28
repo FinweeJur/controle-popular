@@ -1,11 +1,14 @@
-import { and, asc, desc, eq, gte, inArray, sql } from "drizzle-orm";
+import { and, asc, desc, eq, gte, ilike, inArray, isNull, lte, or, sql } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { num } from "@/lib/db/num";
 import {
+  anuncios,
+  atos_oficiais,
   beneficios_sociais,
   caixa_disponivel,
   classificados,
   comercios_essenciais,
+  convenios_federais,
   escolas,
   indicadores,
   nota_transparencia,
@@ -14,6 +17,7 @@ import {
   seguranca_ocorrencias,
   servidores,
   verbas_indenizatorias,
+  zap_estabelecimentos,
 } from "@/lib/db/schema";
 
 /**
@@ -241,10 +245,20 @@ export async function listarEscolas(idMunicipio: string) {
 }
 
 /** Classificados aprovados e ainda no prazo. */
-export async function classificadosVigentes(idMunicipio: string) {
+export async function classificadosVigentes(
+  idMunicipio: string,
+  opts: { categoria?: string; q?: string } = {}
+) {
   const db = getDb();
   if (!db) return null;
   const hoje = new Date().toISOString().slice(0, 10);
+  const cond = [
+    eq(classificados.id_municipio, idMunicipio),
+    eq(classificados.aprovado, true),
+    gte(classificados.expira_em, hoje),
+  ];
+  if (opts.categoria) cond.push(eq(classificados.categoria, opts.categoria));
+  if (opts.q) cond.push(ilike(classificados.titulo, `%${opts.q}%`));
   return db
     .select({
       id: classificados.id,
@@ -256,12 +270,130 @@ export async function classificadosVigentes(idMunicipio: string) {
       expira_em: classificados.expira_em,
     })
     .from(classificados)
+    .where(and(...cond))
+    // Desempate por id: dois anúncios criados no mesmo instante sairiam em
+    // ordem indefinida, e com SSG isso vira HTML diferente a cada build.
+    .orderBy(desc(classificados.created_at), asc(classificados.id));
+}
+
+/** Negócios do Zap aprovados, com os filtros da página e da rota de API. */
+export async function zapEstabelecimentos(
+  idMunicipio: string,
+  opts: { categoria?: string; q?: string; bairros?: string[] } = {}
+) {
+  const db = getDb();
+  if (!db) return null;
+  const cond = [
+    eq(zap_estabelecimentos.id_municipio, idMunicipio),
+    eq(zap_estabelecimentos.aprovado, true),
+  ];
+  if (opts.categoria) cond.push(eq(zap_estabelecimentos.categoria, opts.categoria));
+  if (opts.q) cond.push(ilike(zap_estabelecimentos.nome, `%${opts.q}%`));
+  if (opts.bairros?.length) cond.push(inArray(zap_estabelecimentos.bairro, opts.bairros));
+  return db
+    .select({
+      id: zap_estabelecimentos.id,
+      nome: zap_estabelecimentos.nome,
+      whatsapp: zap_estabelecimentos.whatsapp,
+      categoria: zap_estabelecimentos.categoria,
+      descricao: zap_estabelecimentos.descricao,
+      bairro: zap_estabelecimentos.bairro,
+      cliques: zap_estabelecimentos.cliques,
+    })
+    .from(zap_estabelecimentos)
+    .where(and(...cond))
+    .orderBy(asc(zap_estabelecimentos.nome), asc(zap_estabelecimentos.id));
+}
+
+/**
+ * Anúncios pagos no ar hoje, premium primeiro.
+ *
+ * `data_fim` nula significa "sem prazo, enquanto o site existir" — é
+ * divulgação única, não mensalidade (ver `ANUNCIO_PRECOS`). Por isso o
+ * `or(isNull, gte)`: um `>=` puro descartaria justamente os sem prazo.
+ *
+ * A ordenação premium-primeiro era um `sort` JS estável sobre uma consulta
+ * SEM `order by` — ou seja, a ordem dentro de cada plano era indefinida.
+ * Agora é SQL, com desempate por id.
+ */
+export async function anunciosAtivos(idMunicipio: string) {
+  const db = getDb();
+  if (!db) return null;
+  const hoje = new Date().toISOString().slice(0, 10);
+  return db
+    .select({
+      id: anuncios.id,
+      nome_comercio: anuncios.nome_comercio,
+      plano: anuncios.plano,
+      banner_url: anuncios.banner_url,
+      link: anuncios.link,
+    })
+    .from(anuncios)
     .where(
       and(
-        eq(classificados.id_municipio, idMunicipio),
-        eq(classificados.aprovado, true),
-        gte(classificados.expira_em, hoje)
+        eq(anuncios.id_municipio, idMunicipio),
+        eq(anuncios.ativo, true),
+        lte(anuncios.data_inicio, hoje),
+        or(isNull(anuncios.data_fim), gte(anuncios.data_fim, hoje))
       )
     )
-    .orderBy(desc(classificados.created_at));
+    // `case` em vez de `(plano = 'premium') desc`: o segundo é NULL para
+    // plano nulo, e DESC no Postgres é NULLS FIRST — os sem plano viriam
+    // na frente dos premium.
+    .orderBy(sql`case when ${anuncios.plano} = 'premium' then 0 else 1 end`, asc(anuncios.id));
+}
+
+/** Convênios e repasses federais, maior valor primeiro. */
+export async function conveniosFederais(idMunicipio: string) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      id: convenios_federais.id,
+      codigo: convenios_federais.codigo,
+      numero_convenio: convenios_federais.numero_convenio,
+      objeto: convenios_federais.objeto,
+      orgao_nome: convenios_federais.orgao_nome,
+      orgao_sigla: convenios_federais.orgao_sigla,
+      convenente_nome: convenios_federais.convenente_nome,
+      situacao: convenios_federais.situacao,
+      tipo_instrumento: convenios_federais.tipo_instrumento,
+      valor: num(convenios_federais.valor),
+      valor_liberado: num(convenios_federais.valor_liberado),
+      valor_contrapartida: num(convenios_federais.valor_contrapartida),
+      data_inicio_vigencia: convenios_federais.data_inicio_vigencia,
+      data_final_vigencia: convenios_federais.data_final_vigencia,
+      data_publicacao: convenios_federais.data_publicacao,
+    })
+    .from(convenios_federais)
+    .where(eq(convenios_federais.id_municipio, idMunicipio))
+    .orderBy(desc(convenios_federais.valor), asc(convenios_federais.id));
+}
+
+/**
+ * Legislação municipal (leis, decretos, resoluções, instruções normativas).
+ *
+ * NÃO seleciona `temas`: a coluna da migration 0025 **não existe no banco**
+ * — verificado por introspecção no Neon e por `select=temas` no PostgREST
+ * do Supabase, que responde 42703. O `comColunaOpcional()` do código antigo
+ * caía sempre no fallback, então o ranking por área e o filtro `?tema=`
+ * desta página já nasciam vazios em produção.
+ */
+export async function atosOficiais(idMunicipio: string) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      tipo: atos_oficiais.tipo,
+      numero: atos_oficiais.numero,
+      ano: atos_oficiais.ano,
+      ementa: atos_oficiais.ementa,
+      data_publicacao: atos_oficiais.data_publicacao,
+    })
+    .from(atos_oficiais)
+    .where(eq(atos_oficiais.id_municipio, idMunicipio))
+    .orderBy(
+      sql`${atos_oficiais.data_publicacao} desc nulls last`,
+      asc(atos_oficiais.id)
+    );
 }

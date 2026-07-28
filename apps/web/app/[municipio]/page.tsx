@@ -4,6 +4,7 @@ import RankingVereadores from "@/app/[municipio]/components/charts/RankingVeread
 import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { fetchAnunciosAtivos } from "@/lib/betim/anuncios";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 import {
   getVereadores,
   getRankingVereadores,
@@ -201,7 +202,12 @@ const BETIM_EM_DADOS: { href: string; nome: string; icon: LucideIcon }[] = [
   { href: "/infraestrutura", nome: "Infraestrutura", icon: Construction },
 ];
 
-export default async function HomePage() {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   const [
     indicadores,
     contratosSummary,
@@ -218,7 +224,7 @@ export default async function HomePage() {
     getContratosAtivosSummary(),
     getContatosUteis(),
     getClima(),
-    fetchAnunciosAtivos(),
+    fetchAnunciosAtivos(cidade.id_municipio),
     getVereadores(),
     getRankingVereadores(),
     getAtividadeRecenteCamara(),

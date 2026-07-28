@@ -4,6 +4,7 @@ import AreasAtuacao from "@/app/[municipio]/components/charts/AreasAtuacao";
 import { getLegislacao } from "@/lib/betim/legislacao";
 import { TEMA_LABELS } from "@/lib/betim/temas";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Legislação — Prefeitura de Betim — Controle Popular Betim",
@@ -12,16 +13,24 @@ export const metadata = {
 };
 
 interface LegislacaoPageProps {
+  params: Promise<{ municipio: string }>;
   searchParams: Promise<{ categoria?: string; tema?: string; ano?: string }>;
 }
 
-export default async function LegislacaoPage({ searchParams }: LegislacaoPageProps) {
+export default async function LegislacaoPage({
+  params: rotaParams,
+  searchParams,
+}: LegislacaoPageProps) {
+  const cidade = await cidadeDaRota(rotaParams);
   const params = await searchParams;
-  const { atos, categoriasDisponiveis, anosDisponiveis, temas, total, ok } = await getLegislacao({
-    categoria: params.categoria,
-    tema: params.tema,
-    ano: params.ano ? Number(params.ano) : undefined,
-  });
+  const { atos, categoriasDisponiveis, anosDisponiveis, temas, total, ok } = await getLegislacao(
+    cidade.id_municipio,
+    {
+      categoria: params.categoria,
+      tema: params.tema,
+      ano: params.ano ? Number(params.ano) : undefined,
+    }
+  );
 
   const temFiltro = Boolean(params.categoria || params.tema || params.ano);
 

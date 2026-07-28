@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT, comColunaOpcional } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 /** Base da URL de detalhe de um convênio no Portal da Transparência. O
  *  segmento final é o `codigo` (dimConvenio.codigo), não o id_externo —
@@ -8,7 +8,7 @@ export const CONVENIO_URL_BASE = "https://portaldatransparencia.gov.br/convenios
 export interface ConvenioFederal {
   id: string;
   /** `dimConvenio.codigo` — monta o link do Portal (migration 0024).
-   *  `null`/`undefined` até a 0024 rodar + o ETL re-sincronizar. */
+   *  `null` nas linhas que o ETL sincronizou antes da 0024. */
   codigo: string | null;
   numeroConvenio: string | null;
   objeto: string | null;
@@ -48,7 +48,7 @@ const VAZIO: ConveniosFederaisResult = {
 
 interface ConvenioRow {
   id: string;
-  codigo?: string | null;
+  codigo: string | null;
   numero_convenio: string | null;
   objeto: string | null;
   orgao_nome: string | null;
@@ -79,32 +79,16 @@ interface ConvenioRow {
  * Ordenado por valor desc — maior repasse primeiro, mesmo padrão de
  * `grupos_economicos`.
  */
-export async function getConveniosFederais(): Promise<ConveniosFederaisResult> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return VAZIO;
-
-  const COLUNAS_BASE =
-    "id, numero_convenio, objeto, orgao_nome, orgao_sigla, convenente_nome, situacao, tipo_instrumento, valor, valor_liberado, valor_contrapartida, data_inicio_vigencia, data_final_vigencia, data_publicacao";
-
+export async function getConveniosFederais(
+  idMunicipio: string
+): Promise<ConveniosFederaisResult> {
   try {
-    // `codigo` (migration 0024) monta o link do Portal; degrada pro select
-    // sem ela enquanto a migration não roda (senão a página inteira quebra).
-    const { data, error } = await comColunaOpcional(
-      () =>
-        supabase
-          .from("convenios_federais")
-          .select(`${COLUNAS_BASE}, codigo`)
-          .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-          .order("valor", { ascending: false }),
-      () =>
-        supabase
-          .from("convenios_federais")
-          .select(COLUNAS_BASE)
-          .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-          .order("valor", { ascending: false })
-    );
-
-    if (error || !data) return { ...VAZIO, configured: true };
+    // `codigo` (migration 0024) era lida com `comColunaOpcional()`, que
+    // degradava pro select sem ela. A coluna EXISTE no banco — conferido na
+    // introspecção e no PostgREST — então o fallback nunca foi usado e o
+    // select agora é direto.
+    const data = await q.conveniosFederais(idMunicipio);
+    if (!data) return VAZIO;
 
     const rows = data as ConvenioRow[];
     const convenios: ConvenioFederal[] = rows.map((r) => ({
@@ -143,6 +127,11 @@ export async function getConveniosFederais(): Promise<ConveniosFederaisResult> {
       convenios,
       valorTotal: convenios.reduce((acc, c) => acc + c.valor, 0),
       valorLiberadoTotal: convenios.reduce((acc, c) => acc + c.valorLiberado, 0),
+      // "BETIM" literal: este é um dos casos em que a string da cidade
+      // FILTRA DADO, não só decora texto — com outra cidade ativa o número
+      // vira zero em silêncio. Fica na lista das 255 ocorrências de "Betim"
+      // a trocar por `municipios.nome` no passe de `lib/cidade`; enquanto
+      // só Betim está ativa, o resultado é o mesmo de hoje.
       qtdComPrefeitura: convenios.filter((c) =>
         (c.convenenteNome ?? "").toUpperCase().includes("MUNICIPIO DE BETIM")
       ).length,
