@@ -3,6 +3,7 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import TabelaScroll from "@/app/[municipio]/components/TabelaScroll";
 import { getServidores, SERVIDORES_PAGE_SIZE } from "@/lib/betim/servidores";
 import { formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Servidores — Prefeitura de Betim — Controle Popular Betim",
@@ -11,13 +12,18 @@ export const metadata = {
 };
 
 interface ServidoresPageProps {
+  params: Promise<{ municipio: string }>;
   searchParams: Promise<{ q?: string; page?: string }>;
 }
 
-export default async function ServidoresPage({ searchParams }: ServidoresPageProps) {
+export default async function ServidoresPage({
+  params: rota,
+  searchParams,
+}: ServidoresPageProps) {
+  const cidade = await cidadeDaRota(rota);
   const params = await searchParams;
   const page = Math.max(1, Number(params.page) || 1);
-  const { rows, total, ok, configured } = await getServidores({ q: params.q, page });
+  const { rows, total, ok, configured } = await getServidores(cidade.id_municipio, { q: params.q, page });
   const totalPages = Math.max(1, Math.ceil(total / SERVIDORES_PAGE_SIZE));
   const hasResults = configured && ok && rows.length > 0;
 

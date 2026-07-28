@@ -1,4 +1,5 @@
 import { getComerciosEssenciais } from "@/lib/betim/comercios";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Supermercados e Farmácias — Betim | Controle Popular Betim",
@@ -11,8 +12,13 @@ const TIPO_LABEL: Record<string, string> = {
   farmacia: "Farmácia",
 };
 
-export default async function SupermercadosFarmaciasPage() {
-  const { configured, ok, rows } = await getComerciosEssenciais();
+export default async function SupermercadosFarmaciasPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
+  const { configured, ok, rows } = await getComerciosEssenciais(cidade.id_municipio);
   const temDados = configured && ok && rows.length > 0;
 
   return (

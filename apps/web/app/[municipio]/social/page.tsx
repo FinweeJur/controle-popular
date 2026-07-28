@@ -3,14 +3,20 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getSocialData } from "@/lib/betim/social";
 import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Assistência Social — Betim em Dados | Controle Popular Betim",
   description: "Benefícios sociais (Bolsa Família, BPC) pagos a moradores de Betim-MG.",
 };
 
-export default async function SocialPage() {
-  const { configured, ok, programas } = await getSocialData();
+export default async function SocialPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
+  const { configured, ok, programas } = await getSocialData(cidade.id_municipio);
   const temDados = configured && ok && programas.length > 0;
 
   if (!temDados) {

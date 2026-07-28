@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 export interface AvaliacaoPntp {
   poder: "Executivo" | "Legislativo";
@@ -61,18 +61,13 @@ function mapRow(r: Row): AvaliacaoPntp {
  * real de Betim entre as prefeituras (ou câmaras) do estado avaliadas no
  * mesmo ciclo, não uma estimativa.
  */
-export async function getNotaTransparenciaData(): Promise<NotaTransparenciaData> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return VAZIO;
-
+export async function getNotaTransparenciaData(
+  idMunicipio: string
+): Promise<NotaTransparenciaData> {
   try {
-    const { data, error } = await supabase
-      .from("nota_transparencia")
-      .select(
-        "poder, ano, indice_transparencia, nivel_transparencia, variacao_indice, variacao_nivel, historico_nivel, posicao_ranking_mg, total_avaliados_mg, link_site"
-      )
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .order("ano", { ascending: false });
+    const data = await q.notaTransparencia(idMunicipio);
+    const error = null;
+    if (!data) return VAZIO;
     if (error || !data || data.length === 0) return { ...VAZIO, configured: true };
 
     const rows = data as Row[];

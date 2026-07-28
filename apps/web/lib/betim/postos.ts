@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 export interface PostoAnp {
   cnpj: string;
@@ -26,6 +26,7 @@ function normalizeBairro(s: string): string {
 }
 
 export async function fetchPostosAnp(
+  idMunicipio: string,
   bandeira?: string,
   /** Nomes de bairro em qualquer capitalização/acentuação -- comparação
    *  normalizada, com substring pra cobrir nomes compostos da ANP que não
@@ -36,19 +37,8 @@ export async function fetchPostosAnp(
   rows: PostoAnp[];
   configured: boolean;
 }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], configured: false };
-
-  let query = supabase
-    .from("postos_anp")
-    .select("cnpj, razao_social, endereco, bairro, bandeira, produtos, nota_anp, interditado, lat, lng")
-    .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-    .order("razao_social", { ascending: true });
-
-  if (bandeira) query = query.eq("bandeira", bandeira);
-
-  const { data, error } = await query;
-  if (error || !data) return { rows: [], configured: true };
+  const data = await q.listarPostos(idMunicipio, bandeira);
+  if (!data) return { rows: [], configured: false };
 
   let rows = data as PostoAnp[];
   if (bairros?.length) {

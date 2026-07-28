@@ -340,7 +340,7 @@ export async function paginaDeProposicoes(filtros: FiltrosProposicoes = {}) {
     .select({
       proposicao: proposicoesInCongresso,
       analise: analisesInCongresso,
-      total: sql<number>`count(*) over ()`,
+      total: sql<number>`(count(*) over ())::int`,
     })
     .from(proposicoesInCongresso)
     .leftJoin(

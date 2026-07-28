@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 export interface ComercioEssencial {
   id: string;
@@ -53,16 +53,12 @@ interface Row {
  * migration 0019). Ordenados por proximidade ao Centro e à Regional
  * Citrolândia primeiro (pedido do usuário) -- o resto por nome.
  */
-export async function getComerciosEssenciais(): Promise<ComerciosData> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return VAZIO;
-
+export async function getComerciosEssenciais(
+  idMunicipio: string
+): Promise<ComerciosData> {
   try {
-    const { data, error } = await supabase
-      .from("comercios_essenciais")
-      .select("id, nome, tipo, bairro, endereco, telefone, lat, lng")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-    if (error || !data) return { ...VAZIO, configured: true };
+    const data = await q.comerciosEssenciais(idMunicipio);
+    if (!data) return VAZIO;
 
     const rows = (data as Row[]).map((r) => ({
       id: r.id,

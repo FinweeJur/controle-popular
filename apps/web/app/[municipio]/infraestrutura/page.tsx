@@ -1,13 +1,19 @@
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { fetchIndicadores } from "@/lib/betim/indicadores";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Infraestrutura — Betim em Dados | Controle Popular Betim",
   description: "Cobertura de água e esgoto em Betim-MG, dados do SNIS.",
 };
 
-export default async function InfraestruturaPage() {
-  const indicadores = await fetchIndicadores(["cobertura_agua", "cobertura_esgoto"]);
+export default async function InfraestruturaPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
+  const indicadores = await fetchIndicadores(cidade.id_municipio, ["cobertura_agua", "cobertura_esgoto"]);
   const agua = indicadores["cobertura_agua"];
   const esgoto = indicadores["cobertura_esgoto"];
 

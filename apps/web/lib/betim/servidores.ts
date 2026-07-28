@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 export const SERVIDORES_PAGE_SIZE = 50;
 
@@ -26,39 +26,27 @@ const EMPTY: ServidoresResult = { rows: [], total: 0, configured: false, ok: fal
  * é exibida — `folha_pagamento` está vazia e nome+valor individualizado é
  * dado sensível; nome+cargo de servidor público é informação pública.
  */
-export async function getServidores(opts: {
-  q?: string;
-  orgao?: string;
-  page?: number;
-}): Promise<ServidoresResult> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return EMPTY;
-
-  const page = Math.max(1, opts.page ?? 1);
-  const from = (page - 1) * SERVIDORES_PAGE_SIZE;
-  const to = from + SERVIDORES_PAGE_SIZE - 1;
-
+export async function getServidores(
+  idMunicipio: string,
+  opts: {
+    q?: string;
+    orgao?: string;
+    page?: number;
+  }
+): Promise<ServidoresResult> {
   try {
-    let query = supabase
-      .from("servidores")
-      .select("nome, cargo, lotacao, vinculo, orgao", { count: "exact" })
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-
-    if (opts.orgao) query = query.eq("orgao", opts.orgao);
-    if (opts.q) {
-      const termo = `%${opts.q}%`;
-      // Busca em nome OU cargo OU lotação.
-      query = query.or(`nome.ilike.${termo},cargo.ilike.${termo},lotacao.ilike.${termo}`);
-    }
-
-    const { data, error, count } = await query
-      .order("nome", { ascending: true })
-      .range(from, to);
-    if (error) return { ...EMPTY, configured: true };
+    const data = await q.listarServidores(idMunicipio, {
+      q: opts.q,
+      orgao: opts.orgao,
+      pagina: opts.page,
+      porPagina: SERVIDORES_PAGE_SIZE,
+    });
+    if (!data) return EMPTY;
 
     return {
-      rows: (data ?? []) as ServidorRow[],
-      total: count ?? 0,
+      rows: data as ServidorRow[],
+      // `count(*) over ()` vem repetido em toda linha; página vazia = 0.
+      total: data[0]?.total ?? 0,
       configured: true,
       ok: true,
     };

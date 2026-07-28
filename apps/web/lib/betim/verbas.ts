@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 export interface VerbasAnalytics {
   total: number;
@@ -22,19 +22,13 @@ const EMPTY: VerbasAnalytics = {
  * this fetches all matching rows and reduces in JS, same pattern as
  * lib/prefeitura.ts's getVisaoGeral.
  */
-export async function getVerbasAnalytics(vereadorId?: string): Promise<VerbasAnalytics> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return EMPTY;
-
+export async function getVerbasAnalytics(
+  idMunicipio: string,
+  vereadorId?: string
+): Promise<VerbasAnalytics> {
   try {
-    let query = supabase
-      .from("verbas_indenizatorias")
-      .select("grupo_verba, fornecedor, valor")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-    if (vereadorId) query = query.eq("vereador_id", vereadorId);
-
-    const { data, error } = await query;
-    if (error) return { ...EMPTY, ok: false };
+    const data = await q.verbasIndenizatorias(idMunicipio, vereadorId);
+    if (!data) return EMPTY;
     const rows = data ?? [];
 
     const porTema = new Map<string, { valor: number; qtd: number }>();

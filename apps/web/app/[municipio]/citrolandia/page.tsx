@@ -2,6 +2,7 @@ import Link from "@/lib/betim/link";
 import { fetchZapEstabelecimentos } from "@/lib/betim/zap";
 import { fetchPostosAnp } from "@/lib/betim/postos";
 import ZapCard from "@/app/[municipio]/zap-betim/ZapCard";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Citrolândia — Betim | Controle Popular Betim",
@@ -63,10 +64,15 @@ const BAIRROS_CONFIRMADOS = [
   "Vila Sol Nascente",
 ];
 
-export default async function CitrolandiaPage() {
+export default async function CitrolandiaPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   const [{ rows, configured }, { rows: postos }] = await Promise.all([
     fetchZapEstabelecimentos({ bairros: BAIRROS_CONFIRMADOS }),
-    fetchPostosAnp(undefined, BAIRROS_CONFIRMADOS),
+    fetchPostosAnp(cidade.id_municipio, undefined, BAIRROS_CONFIRMADOS),
   ]);
 
   return (

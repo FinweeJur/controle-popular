@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 export interface IndicadorRow {
   nome: string;
@@ -9,17 +9,11 @@ export interface IndicadorRow {
 }
 
 export async function fetchIndicadores(
+  idMunicipio: string,
   nomes: string[]
 ): Promise<Record<string, IndicadorRow>> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return {};
-
-  const { data, error } = await supabase
-    .from("indicadores")
-    .select("nome, valor, valor_numerico, ano_referencia, unidade")
-    .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-    .in("nome", nomes)
-    .order("ano_referencia", { ascending: false });
+  const data = await q.listarIndicadores(idMunicipio, nomes);
+  const error = null;
 
   if (error || !data) return {};
 

@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 export interface CaixaDisponivel {
   ano: number;
@@ -14,19 +14,12 @@ export interface CaixaDisponivel {
  * (migration não aplicada) ou não tiver dado — mesmo padrão degradado das
  * outras funções de lib/, nunca lança.
  */
-export async function getCaixaDisponivel(): Promise<CaixaDisponivel | null> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return null;
-
+export async function getCaixaDisponivel(
+  idMunicipio: string
+): Promise<CaixaDisponivel | null> {
   try {
-    const { data, error } = await supabase
-      .from("caixa_disponivel")
-      .select("ano, valor")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .order("ano", { ascending: false })
-      .limit(2);
-
-    if (error || !data || data.length === 0) return null;
+    const data = await q.caixaDisponivel(idMunicipio);
+    if (!data || data.length === 0) return null;
 
     const [atual, anterior] = data as { ano: number; valor: number }[];
     return {

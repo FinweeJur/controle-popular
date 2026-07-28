@@ -2,16 +2,22 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import { getEducacaoData, REDE_LABELS } from "@/lib/betim/educacao";
 import { fetchIndicadores } from "@/lib/betim/indicadores";
 import { formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Educação — Betim em Dados | Controle Popular Betim",
   description: "Escolas, matrículas e IDEB de Betim-MG, direto do Censo Escolar (INEP).",
 };
 
-export default async function EducacaoPage() {
+export default async function EducacaoPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   const [data, indicadores] = await Promise.all([
-    getEducacaoData(),
-    fetchIndicadores(["ideb_anos_iniciais", "ideb_anos_finais"]),
+    getEducacaoData(cidade.id_municipio),
+    fetchIndicadores(cidade.id_municipio, ["ideb_anos_iniciais", "ideb_anos_finais"]),
   ]);
 
   const iniciais = indicadores["ideb_anos_iniciais"];

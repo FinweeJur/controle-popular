@@ -2,14 +2,20 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { fetchIndicadores } from "@/lib/betim/indicadores";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Economia — Betim em Dados | Controle Popular Betim",
   description: "PIB, salário médio e saldo de empregos de Betim-MG.",
 };
 
-export default async function EconomiaPage() {
-  const indicadores = await fetchIndicadores([
+export default async function EconomiaPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
+  const indicadores = await fetchIndicadores(cidade.id_municipio, [
     "pib",
     "pib_per_capita",
     "salario_medio",

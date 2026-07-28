@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 export const REDE_LABELS: Record<string, string> = {
   "1": "Federal",
@@ -30,16 +30,13 @@ const EMPTY: EducacaoData = {
   escolas: [],
 };
 
-export async function getEducacaoData(): Promise<EducacaoData> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return EMPTY;
-
+export async function getEducacaoData(idMunicipio: string): Promise<EducacaoData> {
   try {
-    const { data, count, error } = await supabase
-      .from("escolas")
-      .select("id_inep, nome, rede, matriculas", { count: "exact" })
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .order("nome", { ascending: true });
+    const data = await q.listarEscolas(idMunicipio);
+    if (!data) return EMPTY;
+    // `count(*) over ()` vem repetido em toda linha.
+    const count = data[0]?.total ?? 0;
+    const error = null;
 
     if (error || !data) return { ...EMPTY, configured: true };
 

@@ -1,5 +1,6 @@
-import { and, asc, count, desc, eq, gte, sql } from "drizzle-orm";
+import { and, asc, desc, eq, gte, inArray, sql } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
+import { num } from "@/lib/db/num";
 import {
   beneficios_sociais,
   caixa_disponivel,
@@ -42,26 +43,28 @@ export async function caixaDisponivel(idMunicipio: string) {
   const db = getDb();
   if (!db) return null;
   return db
-    .select({ ano: caixa_disponivel.ano, valor: caixa_disponivel.valor })
+    .select({ ano: caixa_disponivel.ano, valor: num(caixa_disponivel.valor) })
     .from(caixa_disponivel)
     .where(eq(caixa_disponivel.id_municipio, idMunicipio))
     .orderBy(desc(caixa_disponivel.ano))
     .limit(2);
 }
 
-export async function listarIndicadores(idMunicipio: string) {
+export async function listarIndicadores(idMunicipio: string, nomes?: string[]) {
   const db = getDb();
   if (!db) return null;
+  const cond = [eq(indicadores.id_municipio, idMunicipio)];
+  if (nomes?.length) cond.push(inArray(indicadores.nome, nomes));
   return db
     .select({
       nome: indicadores.nome,
       valor: indicadores.valor,
-      valor_numerico: indicadores.valor_numerico,
+      valor_numerico: num(indicadores.valor_numerico),
       ano_referencia: indicadores.ano_referencia,
       unidade: indicadores.unidade,
     })
     .from(indicadores)
-    .where(eq(indicadores.id_municipio, idMunicipio))
+    .where(and(...cond))
     .orderBy(desc(indicadores.ano_referencia));
 }
 
@@ -72,8 +75,8 @@ export async function listarObras(idMunicipio: string) {
     .select({
       nome: obras.nome,
       situacao: obras.situacao,
-      valor: obras.valor,
-      percentual_execucao: obras.percentual_execucao,
+      valor: num(obras.valor),
+      percentual_execucao: num(obras.percentual_execucao),
     })
     .from(obras)
     .where(eq(obras.id_municipio, idMunicipio))
@@ -96,8 +99,8 @@ export async function listarPostos(idMunicipio: string, bandeira?: string) {
       produtos: postos_anp.produtos,
       nota_anp: postos_anp.nota_anp,
       interditado: postos_anp.interditado,
-      lat: postos_anp.lat,
-      lng: postos_anp.lng,
+      lat: num(postos_anp.lat),
+      lng: num(postos_anp.lng),
     })
     .from(postos_anp)
     .where(and(...cond))
@@ -118,15 +121,32 @@ export async function ocorrenciasSeguranca(idMunicipio: string) {
     .where(eq(seguranca_ocorrencias.id_municipio, idMunicipio));
 }
 
-/** Servidores com o total do conjunto filtrado, na mesma consulta. */
+/**
+ * Servidores com busca, paginação e o total do conjunto filtrado.
+ *
+ * O total vem por `count(*) over ()` na mesma query — no Supabase era o
+ * header `count: "exact"`. Uma segunda consulta só para contar gastaria um
+ * subrequest a mais, e o teto no Workers Free é 50.
+ */
 export async function listarServidores(
   idMunicipio: string,
-  opts: { orgao?: string } = {}
+  opts: { q?: string; orgao?: string; pagina?: number; porPagina?: number } = {}
 ) {
   const db = getDb();
   if (!db) return null;
+  const porPagina = opts.porPagina ?? 50;
+  const pagina = Math.max(1, opts.pagina ?? 1);
+
   const cond = [eq(servidores.id_municipio, idMunicipio)];
   if (opts.orgao) cond.push(eq(servidores.orgao, opts.orgao));
+  if (opts.q) {
+    const termo = `%${opts.q}%`;
+    // Busca em nome OU cargo OU lotação, como no `.or()` do PostgREST.
+    cond.push(
+      sql`(${servidores.nome} ilike ${termo} or ${servidores.cargo} ilike ${termo} or ${servidores.lotacao} ilike ${termo})`
+    );
+  }
+
   return db
     .select({
       nome: servidores.nome,
@@ -134,10 +154,15 @@ export async function listarServidores(
       lotacao: servidores.lotacao,
       vinculo: servidores.vinculo,
       orgao: servidores.orgao,
-      total: sql<number>`count(*) over ()`,
+      total: sql<number>`(count(*) over ())::int`,
     })
     .from(servidores)
-    .where(and(...cond));
+    .where(and(...cond))
+    // Desempate por nome + cargo: sem ordem total, a paginação pode
+    // repetir ou pular linhas entre páginas.
+    .orderBy(asc(servidores.nome), asc(servidores.cargo))
+    .limit(porPagina)
+    .offset((pagina - 1) * porPagina);
 }
 
 export async function beneficiosSociais(idMunicipio: string) {
@@ -148,7 +173,7 @@ export async function beneficiosSociais(idMunicipio: string) {
       programa: beneficios_sociais.programa,
       competencia: beneficios_sociais.competencia,
       beneficiarios: beneficios_sociais.beneficiarios,
-      valor_total: beneficios_sociais.valor_total,
+      valor_total: num(beneficios_sociais.valor_total),
     })
     .from(beneficios_sociais)
     .where(eq(beneficios_sociais.id_municipio, idMunicipio))
@@ -164,7 +189,7 @@ export async function verbasIndenizatorias(idMunicipio: string, vereadorId?: str
     .select({
       grupo_verba: verbas_indenizatorias.grupo_verba,
       fornecedor: verbas_indenizatorias.fornecedor,
-      valor: verbas_indenizatorias.valor,
+      valor: num(verbas_indenizatorias.valor),
     })
     .from(verbas_indenizatorias)
     .where(and(...cond));
@@ -191,8 +216,8 @@ export async function comerciosEssenciais(idMunicipio: string) {
       bairro: comercios_essenciais.bairro,
       endereco: comercios_essenciais.endereco,
       telefone: comercios_essenciais.telefone,
-      lat: comercios_essenciais.lat,
-      lng: comercios_essenciais.lng,
+      lat: num(comercios_essenciais.lat),
+      lng: num(comercios_essenciais.lng),
     })
     .from(comercios_essenciais)
     .where(eq(comercios_essenciais.id_municipio, idMunicipio));
@@ -208,7 +233,7 @@ export async function listarEscolas(idMunicipio: string) {
       nome: escolas.nome,
       rede: escolas.rede,
       matriculas: escolas.matriculas,
-      total: sql<number>`count(*) over ()`,
+      total: sql<number>`(count(*) over ())::int`,
     })
     .from(escolas)
     .where(eq(escolas.id_municipio, idMunicipio))
@@ -226,7 +251,7 @@ export async function classificadosVigentes(idMunicipio: string) {
       categoria: classificados.categoria,
       titulo: classificados.titulo,
       descricao: classificados.descricao,
-      preco: classificados.preco,
+      preco: num(classificados.preco),
       contato_whatsapp: classificados.contato_whatsapp,
       expira_em: classificados.expira_em,
     })

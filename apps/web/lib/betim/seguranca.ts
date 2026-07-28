@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 export interface NaturezaAno {
   natureza: string;
@@ -44,16 +44,11 @@ interface Row {
  * QUE EXISTEM NOS DOIS ANOS (ex.: jan-fev de 2026 vs. jan-fev de 2025),
  * não o ano inteiro -- mesmo cuidado que `/saude` já tem com 2025 parcial.
  */
-export async function getSegurancaData(): Promise<SegurancaData> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return VAZIO;
-
+export async function getSegurancaData(idMunicipio: string): Promise<SegurancaData> {
   try {
-    const { data, error } = await supabase
-      .from("seguranca_ocorrencias")
-      .select("ano, mes, natureza, qtd")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-    if (error || !data || data.length === 0) return { ...VAZIO, configured: true };
+    const data = await q.ocorrenciasSeguranca(idMunicipio);
+    if (!data) return VAZIO;
+    if (data.length === 0) return { ...VAZIO, configured: true };
 
     const rows = data as Row[];
     const anos = [...new Set(rows.map((r) => r.ano))].sort((a, b) => b - a);

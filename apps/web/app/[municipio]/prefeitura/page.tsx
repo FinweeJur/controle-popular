@@ -5,6 +5,7 @@ import { getVisaoGeral } from "@/lib/betim/prefeitura";
 import { getCaixaDisponivel } from "@/lib/betim/caixa";
 import { getDiarioOficialInfo } from "@/lib/betim/diarioOficial";
 import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Prefeitura de Betim — Controle Popular Betim",
@@ -24,10 +25,15 @@ const TABS: { label: string; href: string | null }[] = [
   { label: "Legislação", href: "/prefeitura/legislacao" },
 ];
 
-export default async function PrefeituraHubPage() {
+export default async function PrefeituraHubPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   const [visaoGeral, caixa, diario] = await Promise.all([
     getVisaoGeral(),
-    getCaixaDisponivel(),
+    getCaixaDisponivel(cidade.id_municipio),
     getDiarioOficialInfo(),
   ]);
 

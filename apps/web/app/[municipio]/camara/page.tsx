@@ -8,15 +8,21 @@ import { getVereadores, getRankingVereadores } from "@/lib/betim/vereadores";
 import { getTemasCamara } from "@/lib/betim/temas";
 import { getVerbasAnalytics } from "@/lib/betim/verbas";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Câmara Municipal — Controle Popular Betim",
   description: "Vereadores da 20ª Legislatura (2025-2028) de Betim-MG.",
 };
 
-export default async function CamaraPage() {
+export default async function CamaraPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   const { rows, ok } = await getVereadores();
-  const verbas = await getVerbasAnalytics();
+  const verbas = await getVerbasAnalytics(cidade.id_municipio);
   const ranking = await getRankingVereadores();
   const temasCamara = await getTemasCamara();
 

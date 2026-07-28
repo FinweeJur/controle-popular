@@ -1,5 +1,6 @@
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { fetchPostosAnp } from "@/lib/betim/postos";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Postos de Combustível — Betim | Controle Popular Betim",
@@ -8,12 +9,15 @@ export const metadata = {
 };
 
 export default async function PostosCombustivelPage({
+  params,
   searchParams,
 }: {
+  params: Promise<{ municipio: string }>;
   searchParams: Promise<{ bandeira?: string }>;
 }) {
+  const cidade = await cidadeDaRota(params);
   const { bandeira } = await searchParams;
-  const { rows, configured } = await fetchPostosAnp(bandeira);
+  const { rows, configured } = await fetchPostosAnp(cidade.id_municipio, bandeira);
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-14 sm:px-8">

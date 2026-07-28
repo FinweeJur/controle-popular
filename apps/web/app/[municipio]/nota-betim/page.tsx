@@ -2,6 +2,7 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getNotaTransparenciaData, type AvaliacaoPntp } from "@/lib/betim/notaTransparencia";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Nota Betim (PNTP) — Controle Popular Betim",
@@ -50,8 +51,13 @@ function CardAvaliacao({ titulo, avaliacao }: { titulo: string; avaliacao: Avali
   );
 }
 
-export default async function NotaBetimPage() {
-  const { configured, ok, prefeitura, camara } = await getNotaTransparenciaData();
+export default async function NotaBetimPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
+  const { configured, ok, prefeitura, camara } = await getNotaTransparenciaData(cidade.id_municipio);
   const temDados = configured && ok && (prefeitura || camara);
 
   if (!temDados) {

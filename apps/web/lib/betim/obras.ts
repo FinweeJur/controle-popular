@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 export interface ObraRow {
   nome: string;
@@ -37,17 +37,13 @@ interface RawRow {
  * transparência de Betim). ~59 obras — busca tudo e filtra/ordena no
  * componente. `situacao` filtra pela situação real da obra.
  */
-export async function getObras(situacaoFiltro?: string): Promise<ObrasData> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return EMPTY;
-
+export async function getObras(
+  idMunicipio: string,
+  situacaoFiltro?: string
+): Promise<ObrasData> {
   try {
-    const { data, error } = await supabase
-      .from("obras")
-      .select("nome, situacao, valor, percentual_execucao")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .order("valor", { ascending: false, nullsFirst: false });
-    if (error) return { ...EMPTY, configured: true };
+    const data = await q.listarObras(idMunicipio);
+    if (!data) return EMPTY;
 
     const todas = ((data ?? []) as RawRow[]).map((r) => ({
       nome: r.nome,

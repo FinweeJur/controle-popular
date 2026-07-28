@@ -3,14 +3,20 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getSegurancaData } from "@/lib/betim/seguranca";
 import { formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Segurança Pública — Betim em Dados | Controle Popular Betim",
   description: "Estatísticas de criminalidade em Betim-MG.",
 };
 
-export default async function SegurancaPage() {
-  const data = await getSegurancaData();
+export default async function SegurancaPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
+  const data = await getSegurancaData(cidade.id_municipio);
 
   if (!data.configured || !data.ok) {
     return (

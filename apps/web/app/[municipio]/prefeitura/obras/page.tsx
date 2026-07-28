@@ -2,6 +2,7 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { getObras } from "@/lib/betim/obras";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Obras públicas — Prefeitura de Betim — Controle Popular Betim",
@@ -10,12 +11,17 @@ export const metadata = {
 };
 
 interface ObrasPageProps {
+  params: Promise<{ municipio: string }>;
   searchParams: Promise<{ situacao?: string }>;
 }
 
-export default async function ObrasPage({ searchParams }: ObrasPageProps) {
+export default async function ObrasPage({ params, searchParams }: ObrasPageProps) {
+  const cidade = await cidadeDaRota(params);
   const { situacao } = await searchParams;
-  const { obras, situacoesDisponiveis, total, valorTotal, ok } = await getObras(situacao);
+  const { obras, situacoesDisponiveis, total, valorTotal, ok } = await getObras(
+    cidade.id_municipio,
+    situacao
+  );
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-8">

@@ -1,4 +1,4 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 
 export interface BeneficioMes {
   competencia: string; // "YYYY-MM-DD" (dia 1 do mês)
@@ -38,17 +38,10 @@ interface Row {
  * (Bolsa Família → Auxílio Brasil → Novo Bolsa Família) e a API não
  * unifica o histórico. A página precisa dizer isso.
  */
-export async function getSocialData(): Promise<SocialData> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return VAZIO;
-
+export async function getSocialData(idMunicipio: string): Promise<SocialData> {
   try {
-    const { data, error } = await supabase
-      .from("beneficios_sociais")
-      .select("programa, competencia, beneficiarios, valor_total")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .order("competencia", { ascending: true });
-    if (error || !data) return { ...VAZIO, configured: true };
+    const data = await q.beneficiosSociais(idMunicipio);
+    if (!data) return VAZIO;
 
     const rows = data as Row[];
     const porPrograma = new Map<string, BeneficioMes[]>();
