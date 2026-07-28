@@ -1,4 +1,4 @@
-import { getSupabaseClient, fetchAll } from "@/lib/congresso/supabase";
+import * as q from "@/lib/db/queries/congresso";
 import { agregar, type PerfilAgregado } from "@/lib/congresso/agregado";
 import type { Rotulo } from "@/lib/congresso/rubrica";
 
@@ -30,27 +30,13 @@ export interface OrgaoComPerfil extends Orgao {
  * e perderia a informação em vez de guardá-la crua.
  */
 async function rotulosPorSigla(): Promise<Map<string, (Rotulo | null)[]>> {
-  const sb = getSupabaseClient();
   const mapa = new Map<string, (Rotulo | null)[]>();
-  if (!sb) return mapa;
-
   try {
-    const linhas = await fetchAll<{
-      orgao_atual: string | null;
-      analises: { rotulo: Rotulo | null }[] | { rotulo: Rotulo | null } | null;
-    }>(() =>
-      sb
-        .from("proposicoes")
-        .select("orgao_atual, analises(rotulo)")
-        .not("orgao_atual", "is", null)
-    );
-
-    for (const linha of linhas) {
+    for (const linha of await q.rotulosPorOrgao()) {
       const sigla = linha.orgao_atual;
       if (!sigla) continue;
-      const a = Array.isArray(linha.analises) ? linha.analises[0] : linha.analises;
       const lista = mapa.get(sigla) ?? [];
-      lista.push(a?.rotulo ?? null);
+      lista.push((linha.rotulo as Rotulo | null) ?? null);
       mapa.set(sigla, lista);
     }
   } catch {
@@ -61,16 +47,11 @@ async function rotulosPorSigla(): Promise<Map<string, (Rotulo | null)[]>> {
 }
 
 export async function listarOrgaos(): Promise<OrgaoComPerfil[] | null> {
-  const sb = getSupabaseClient();
-  if (!sb) return null;
-
   try {
-    const [orgaos, porSigla] = await Promise.all([
-      fetchAll<Orgao>(() => sb.from("orgaos").select("*").eq("ativo", true).order("sigla")),
-      rotulosPorSigla(),
-    ]);
+    const [orgaos, porSigla] = await Promise.all([q.listarOrgaosAtivos(), rotulosPorSigla()]);
+    if (!orgaos) return null;
 
-    return orgaos
+    return (orgaos as Orgao[])
       .map((o) => ({ ...o, perfil: agregar(porSigla.get(o.sigla ?? "") ?? []) }))
       // Comissão com matéria parada nela vem primeiro: é onde há o que
       // fazer agora. Entre as vazias, ordem alfabética.
@@ -100,31 +81,8 @@ export interface MembroOrgao {
  * usado no resto deste arquivo.
  */
 async function membrosDoOrgao(orgaoId: string): Promise<MembroOrgao[]> {
-  const sb = getSupabaseClient();
-  if (!sb) return [];
-
-  type Linha = {
-    papel: string | null;
-    parlamentares:
-      | { id: string; nome: string | null; partido: string | null; uf: string | null; email: string | null }
-      | { id: string; nome: string | null; partido: string | null; uf: string | null; email: string | null }[]
-      | null;
-  };
-
   try {
-    const linhas = await fetchAll<Linha>(() =>
-      sb
-        .from("orgao_membros")
-        .select("papel, parlamentares(id, nome, partido, uf, email)")
-        .eq("orgao_id", orgaoId)
-    );
-    return linhas
-      .map((l) => {
-        // Recurso embutido N:1 volta como array no PostgREST.
-        const p = Array.isArray(l.parlamentares) ? l.parlamentares[0] : l.parlamentares;
-        return p ? { ...p, papel: l.papel } : null;
-      })
-      .filter((m): m is MembroOrgao => m !== null);
+    return await q.membrosDoOrgao(orgaoId);
   } catch (e) {
     if ((e as { code?: string }).code === "42P01") return [];
     throw e;
@@ -159,40 +117,19 @@ export async function obterOrgao(sigla: string): Promise<{
     score: number | null;
   }[];
 } | null> {
-  const sb = getSupabaseClient();
-  if (!sb) return null;
-
-  const { data: orgao } = await sb
-    .from("orgaos")
-    .select("*")
-    .ilike("sigla", sigla)
-    .limit(1)
-    .maybeSingle();
+  const orgao = await q.obterOrgaoPorSigla(sigla);
   if (!orgao) return null;
 
-  const linhas = await fetchAll<{
-    id: string;
-    identificacao: string | null;
-    ementa: string | null;
-    data_apresentacao: string | null;
-    analises: { rotulo: Rotulo | null; score: number | null }[] | { rotulo: Rotulo | null; score: number | null } | null;
-  }>(() =>
-    sb
-      .from("proposicoes")
-      .select("id, identificacao, ementa, data_apresentacao, analises(rotulo, score)")
-      .eq("orgao_atual", (orgao as Orgao).sigla ?? sigla)
-      .order("data_apresentacao", { ascending: false })
-  );
+  const linhas = await q.proposicoesDoOrgao((orgao as Orgao).sigla ?? sigla);
 
   const proposicoes = linhas.map((l) => {
-    const a = Array.isArray(l.analises) ? l.analises[0] : l.analises;
     return {
       id: l.id,
       identificacao: l.identificacao,
       ementa: l.ementa,
       data_apresentacao: l.data_apresentacao,
-      rotulo: a?.rotulo ?? null,
-      score: a?.score ?? null,
+      rotulo: (l.rotulo as Rotulo | null) ?? null,
+      score: l.score ?? null,
     };
   });
 

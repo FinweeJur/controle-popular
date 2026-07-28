@@ -1,5 +1,5 @@
 import Link from "@/lib/congresso/link";
-import { getSupabaseClient } from "@/lib/congresso/supabase";
+import { totaisHome } from "@/lib/db/queries/congresso";
 
 export const revalidate = 900;
 
@@ -10,19 +10,7 @@ export const revalidate = 900;
  * honesto, nunca erro.
  */
 export default async function Home() {
-  const sb = getSupabaseClient();
-
-  let totalProposicoes: number | null = null;
-  let totalAnalises: number | null = null;
-
-  if (sb) {
-    const [props, analises] = await Promise.all([
-      sb.from("proposicoes").select("id", { count: "exact", head: true }),
-      sb.from("analises").select("id", { count: "exact", head: true }),
-    ]);
-    totalProposicoes = props.count ?? null;
-    totalAnalises = analises.count ?? null;
-  }
+  const { proposicoes: totalProposicoes, analises: totalAnalises } = await totaisHome();
 
   return (
     <div className="mx-auto max-w-5xl space-y-12 px-4 py-12">
@@ -52,12 +40,12 @@ export default async function Home() {
         </div>
       </section>
 
-      {!sb ? (
+      {totalProposicoes === null ? (
         <section className="rounded-lg border border-[var(--cp-border)] p-6">
           <h2 className="font-display text-xl font-semibold">Fonte de dados não configurada</h2>
           <p className="mt-2 opacity-80">
-            O projeto Supabase ainda não foi criado. Veja <code>TODO.md</code> na raiz do
-            repositório para os passos pendentes.
+            O banco ainda não está acessível — falta a variável{" "}
+            <code>DATABASE_URL</code>. Veja <code>README.md</code> na raiz do repositório.
           </p>
         </section>
       ) : (

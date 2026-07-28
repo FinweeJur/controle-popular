@@ -1,4 +1,4 @@
-import { getSupabaseClient, fetchAll } from "@/lib/congresso/supabase";
+import * as q from "@/lib/db/queries/congresso";
 import { casaComTema, type Tema } from "@/lib/congresso/temas";
 import type { Rotulo } from "@/lib/congresso/rubrica";
 
@@ -57,70 +57,13 @@ const GARANTISTAS: Rotulo[] = ["garantista_forte", "garantista"];
  * próprio sistema considera duvidosa seria injusto com o autor.
  */
 async function carregar(rotulos: Rotulo[]): Promise<Destaque[]> {
-  const sb = getSupabaseClient();
-  if (!sb) return [];
-
   try {
-    const analises = await fetchAll<{
-      id: string;
-      proposicao_id: string;
-      score: number | null;
-      rotulo: Rotulo | null;
-      clausula_petrea: boolean;
-      vedacao_retrocesso: boolean;
-      resumo_neutro: string | null;
-      modelo: string | null;
-      criado_em: string | null;
-    }>(() =>
-      sb
-        .from("analises")
-        .select(
-          "id, proposicao_id, score, rotulo, clausula_petrea, vedacao_retrocesso, resumo_neutro, modelo, criado_em"
-        )
-        .eq("status", "ok")
-        .in("rotulo", rotulos)
-    );
-
+    // O join ja traz a proposicao junto: eram TRES idas ao banco
+    // (analises, itens, proposicoes) e agora sao duas.
+    const analises = await q.analisesComProposicao(rotulos);
     if (analises.length === 0) return [];
 
-    const itens = await fetchAll<{
-      analise_id: string;
-      direito: string;
-      dispositivo: string;
-      direcao: string;
-      grau: string;
-      trecho: string | null;
-      peso: number | null;
-    }>(() =>
-      sb
-        .from("analise_itens")
-        .select("analise_id, direito, dispositivo, direcao, grau, trecho, peso")
-        .in(
-          "analise_id",
-          analises.map((a) => a.id)
-        )
-    );
-
-    const props = await fetchAll<{
-      id: string;
-      identificacao: string | null;
-      ementa: string | null;
-      keywords: string | null;
-      temas_oficiais: string[] | null;
-      orgao_atual: string | null;
-      data_apresentacao: string | null;
-    }>(() =>
-      sb
-        .from("proposicoes")
-        .select(
-          "id, identificacao, ementa, keywords, temas_oficiais, orgao_atual, data_apresentacao"
-        )
-        .in(
-          "id",
-          analises.map((a) => a.proposicao_id)
-        )
-    );
-    const porId = new Map(props.map((p) => [p.id, p]));
+    const itens = await q.itensDasAnalises(analises.map((a) => a.id));
 
     const itensPorAnalise = new Map<string, typeof itens>();
     for (const i of itens) {
@@ -131,18 +74,25 @@ async function carregar(rotulos: Rotulo[]): Promise<Destaque[]> {
 
     return analises
       .map((a): Destaque | null => {
-        const p = porId.get(a.proposicao_id);
-        if (!p) return null;
         const meus = (itensPorAnalise.get(a.id) ?? []).slice().sort(
           (x, y) => Math.abs(y.peso ?? 0) - Math.abs(x.peso ?? 0)
         );
         const principal = meus[0];
         return {
-          ...p,
+          id: a.proposicao_id,
+          identificacao: a.identificacao,
+          ementa: a.ementa,
+          keywords: a.keywords,
+          temas_oficiais: a.temas_oficiais,
+          orgao_atual: a.orgao_atual,
+          data_apresentacao: a.data_apresentacao,
           score: a.score,
-          rotulo: a.rotulo,
-          clausula_petrea: a.clausula_petrea,
-          vedacao_retrocesso: a.vedacao_retrocesso,
+          // O banco permite null nestas tres; o PostgREST entregava o
+          // default. A camada de queries continua fiel ao schema e o
+          // ajuste fica aqui, onde vive o contrato de apresentacao.
+          rotulo: a.rotulo as Rotulo | null,
+          clausula_petrea: a.clausula_petrea ?? false,
+          vedacao_retrocesso: a.vedacao_retrocesso ?? false,
           resumo_neutro: a.resumo_neutro,
           modelo: a.modelo,
           analisadaEm: a.criado_em,
@@ -152,7 +102,7 @@ async function carregar(rotulos: Rotulo[]): Promise<Destaque[]> {
                 direito: principal.direito,
                 dispositivo: principal.dispositivo,
                 direcao: principal.direcao,
-                grau: principal.grau,
+                grau: principal.grau ?? "",
                 trecho: principal.trecho,
               }
             : null,
@@ -185,15 +135,5 @@ export async function bonsExemplos(limite?: number, tema?: Tema): Promise<Destaq
 
 /** Quantas proposições já têm análise concluída — o denominador honesto. */
 export async function coberturaAnalise(): Promise<{ analisadas: number; total: number }> {
-  const sb = getSupabaseClient();
-  if (!sb) return { analisadas: 0, total: 0 };
-  try {
-    const [a, t] = await Promise.all([
-      sb.from("analises").select("id", { count: "exact", head: true }).eq("status", "ok"),
-      sb.from("proposicoes").select("id", { count: "exact", head: true }),
-    ]);
-    return { analisadas: a.count ?? 0, total: t.count ?? 0 };
-  } catch {
-    return { analisadas: 0, total: 0 };
-  }
+  return q.coberturaAnalise();
 }
