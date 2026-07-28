@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "liberdade_expressao",
+      "dispositivo": "CF/88, art. 5º, IV",
+      "direcao": "restringe",
+      "mecanismo": "cria_requisito_acesso",
+      "titulares": ["cidadãos que buscam registrar ou acompanhar ocorrências policiais", "jornalistas"],
+      "grau": "moderado",
+      "trecho": "distância mínima a ser mantida de policiais que atendem ocorrências",
+      "confianca": 0.5
+    },
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": ["policiais, delegados e peritos em atuação"],
+      "grau": "marginal",
+      "trecho": "distância mínima a ser mantida de policiais que atendem ocorrências",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Decreto-Lei 3.689/1941 (Código de Processo Penal)"],
+  "resumo_neutro": "A proposição altera o Código de Processo Penal (Decreto-Lei nº 3.689/1941) para estabelecer uma distância mínima a ser mantida em relação a policiais, delegados e peritos durante o atendimento de ocorrências. A ementa não especifica o artigo exato alterado nem o valor da distância. A medida abrange situações de abordagem e ocorrência policial envolvendo profissionais de segurança pública."
+}

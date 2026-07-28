@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_titularidade",
+      "titulares": ["egressos de Alas de Tratamento Psiquiátrico e estruturas congêneres do sistema prisional"],
+      "grau": "moderado",
+      "trecho": "incluir egressos de Alas de Tratamento Psiquiátrico e estruturas congêneres do sistema prisional no Programa De Volta para Casa",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Lei nº 10.708/2003"],
+  "resumo_neutro": "O projeto altera a Lei nº 10.708/2003 para incluir egressos de Alas de Tratamento Psiquiátrico e de estruturas congêneres do sistema prisional entre os beneficiários do Programa De Volta para Casa. A mudança amplia o público elegível ao programa de reabilitação psicossocial vinculado ao SUS. Não há alteração dos demais requisitos ou do valor do benefício na ementa apresentada."
+}

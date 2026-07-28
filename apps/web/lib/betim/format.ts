@@ -1,0 +1,53 @@
+/** Formats a number as Brazilian Real currency (e.g. "R$ 1.234"). */
+export function formatCurrencyBRL(value: number): string {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+/** Formats a number using Brazilian thousands/decimal separators. */
+export function formatNumberBR(value: number): string {
+  return new Intl.NumberFormat("pt-BR").format(value);
+}
+
+/** Formats a bare 14-digit CNPJ as "00.000.000/0000-00". */
+export function formatCNPJ(cnpj: string): string {
+  const d = (cnpj ?? "").replace(/\D/g, "");
+  if (d.length !== 14) return cnpj ?? "—";
+  return `${d.slice(0, 2)}.${d.slice(2, 5)}.${d.slice(5, 8)}/${d.slice(8, 12)}-${d.slice(12)}`;
+}
+
+/**
+ * Formats a Postgres `date` string ("YYYY-MM-DD", no time component) as
+ * dd/mm/yyyy; returns "—" for null/invalid input.
+ *
+ * Deliberately parses the Y-M-D digits directly instead of `new Date(value)`
+ * + Intl.DateTimeFormat: `new Date("2025-01-01")` parses as UTC midnight,
+ * and formatting it in a UTC-3 timezone (Brazil) rolls it back to
+ * 31/12/2024 -- an off-by-one-day bug confirmed live 2026-07-21 on both
+ * contratos' vigência dates and a vereador's mandato_inicio.
+ */
+export function formatDateBR(value: string | null | undefined): string {
+  if (!value) return "—";
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(value);
+  if (!m) return "—";
+  const [, y, mo, d] = m;
+  return `${d}/${mo}/${y}`;
+}
+
+/**
+ * Turns a raw mm number into a plain-language label — the site targets
+ * readers who aren't used to reading rainfall in millimeters, so a bare
+ * "12.4mm" doesn't mean much on its own (pedido do usuário 2026-07-21:
+ * "a chuva acumulada deve mostrar se é pouca chuva ou bastante").
+ * Thresholds are a rough rule of thumb for a 7-day accumulated total in
+ * Minas Gerais's climate, not an official meteorological classification.
+ */
+export function classificarChuva7d(mm: number): string {
+  if (mm <= 0) return "sem chuva";
+  if (mm < 10) return "pouca chuva";
+  if (mm < 40) return "chuva moderada";
+  return "bastante chuva";
+}

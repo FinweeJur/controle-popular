@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "devido_processo_ampla_defesa",
+      "dispositivo": "CF/88, art. 5º, LIV",
+      "direcao": "restringe",
+      "mecanismo": "restringe_garantia_processual",
+      "titulares": ["pessoa investigada em organização ou associação criminosa de elevada complexidade"],
+      "grau": "moderado",
+      "trecho": "disciplinar prazo diferenciado da prisão temporária em investigações de organizações criminosas e associações criminosas de elevada complexidade, que demandem técnicas especiais de obtenção de prova",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Lei 7.960/1989 (Lei da Prisão Temporária)"],
+  "resumo_neutro": "A proposição altera a Lei nº 7.960/1989 (Lei da Prisão Temporária) para criar um prazo diferenciado de prisão temporária, aplicável a investigações de organizações e associações criminosas de elevada complexidade que demandem técnicas especiais de obtenção de prova. A ementa não especifica a duração desse novo prazo nem os critérios objetivos de 'elevada complexidade'."
+}

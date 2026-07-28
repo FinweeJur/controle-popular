@@ -1,0 +1,915 @@
+{
+  "modelo": "claude-sonnet-5 (subagentes)",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0",
+  "resumo": {
+    "acuracia": 0.9667,
+    "acertos": 29,
+    "avaliados": 30,
+    "por_classe": {
+      "garantista": {
+        "total": 10,
+        "acertos": 10
+      },
+      "reducionista": {
+        "total": 10,
+        "acertos": 9
+      },
+      "tecnico": {
+        "total": 10,
+        "acertos": 10
+      }
+    },
+    "taxa_descarte": 0.0,
+    "origem_citacao": {
+      "ancora": 22,
+      "ementa": 7
+    },
+    "ruido_tecnico": 0
+  },
+  "casos": [
+    {
+      "id_camara": "2638852",
+      "identificacao": "PL 3631/2026",
+      "esperado": "reducionista",
+      "justificativa": "Aumenta as penas de dano e dano qualificado. Expansão punitiva pura sobre o titular da liberdade, sem contrapartida de proteção a terceiro identificável.",
+      "obtido": "reducionista",
+      "rotulo_bruto": "reducionista",
+      "score": -1.8,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "devido_processo_ampla_defesa",
+          "dispositivo": "CF/88, art. 5º, LIV",
+          "direcao": "restringe",
+          "mecanismo": "aumenta_pena",
+          "titulares": [
+            "pessoa acusada/condenada por crime de dano ou dano qualificado"
+          ],
+          "grau": "moderado",
+          "trecho": "aumentar as penas de dano e dano qualificado",
+          "confianca": 0.6,
+          "peso": -1.8,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": true,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição altera o Decreto-Lei nº 2.848/1940 (Código Penal) para aumentar as penas dos crimes de dano e de dano qualificado. A ementa não detalha os novos patamares de pena nem especifica o artigo do Código Penal que será alterado."
+    },
+    {
+      "id_camara": "2636094",
+      "identificacao": "PL 3396/2026",
+      "esperado": "reducionista",
+      "justificativa": "Aumenta a pena de associação criminosa e cria novas causas de aumento. Mesmo eixo: mais pena sobre o réu.",
+      "obtido": "reducionista",
+      "rotulo_bruto": "reducionista",
+      "score": -1.8,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "devido_processo_ampla_defesa",
+          "dispositivo": "Decreto-Lei 2.848/1940 (Código Penal), art. 288",
+          "direcao": "restringe",
+          "mecanismo": "aumenta_pena",
+          "titulares": [
+            "pessoa acusada/condenada por associação criminosa"
+          ],
+          "grau": "moderado",
+          "trecho": "aumentar a pena do crime de associação criminosa e estabelecer novas causas de aumento de pena",
+          "confianca": 0.6,
+          "peso": -1.8,
+          "origem_citacao": "ementa"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": true,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição altera o art. 288 do Decreto-Lei nº 2.848/1940 (Código Penal) para aumentar a pena do crime de associação criminosa e estabelecer novas causas de aumento de pena. A ementa não detalha os novos patamares de pena nem as hipóteses concretas das novas causas de aumento."
+    },
+    {
+      "id_camara": "2639518",
+      "identificacao": "PL 3699/2026",
+      "esperado": "reducionista",
+      "justificativa": "Recrudesce o tratamento penal do tráfico de pessoas: equipara a hediondo e VEDA acordo de não persecução penal. A vedação do ANPP é restrição de garantia processual, e é ela que decide o caso — a finalidade protetiva do tipo penal não apaga o efeito sobre o processo.",
+      "obtido": "reducionista",
+      "rotulo_bruto": "reducionista",
+      "score": -3.3,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "devido_processo_ampla_defesa",
+          "dispositivo": "CF/88, art. 5º, LIV",
+          "direcao": "restringe",
+          "mecanismo": "aumenta_pena",
+          "titulares": [
+            "pessoa acusada/condenada por tráfico internacional ou interno de pessoas"
+          ],
+          "grau": "estrutural",
+          "trecho": "recrudescer o tratamento penal ao tráfico internacional e interno de pessoas",
+          "confianca": 0.55,
+          "peso": -3.3,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": true,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição altera o Código Penal, o Código de Processo Penal e a Lei dos Crimes Hediondos (Lei nº 8.072/1990) para recrudescer o tratamento penal dado ao tráfico internacional e interno de pessoas. A ementa não especifica quais dispositivos de cada uma das três normas serão alterados nem os mecanismos concretos desse recrudescimento."
+    },
+    {
+      "id_camara": "2640325",
+      "identificacao": "PL 3778/2026",
+      "esperado": "reducionista",
+      "justificativa": "Amplia o prazo da prisão temporária em investigações complexas. Prisão cautelar mais longa antes de condenação restringe liberdade e devido processo.",
+      "obtido": "reducionista",
+      "rotulo_bruto": "reducionista",
+      "score": -1.65,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "devido_processo_ampla_defesa",
+          "dispositivo": "CF/88, art. 5º, LIV",
+          "direcao": "restringe",
+          "mecanismo": "restringe_garantia_processual",
+          "titulares": [
+            "pessoa investigada em organização ou associação criminosa de elevada complexidade"
+          ],
+          "grau": "moderado",
+          "trecho": "disciplinar prazo diferenciado da prisão temporária em investigações de organizações criminosas e associações criminosas de elevada complexidade, que demandem técnicas especiais de obtenção de prova",
+          "confianca": 0.55,
+          "peso": -1.65,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": true,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição altera a Lei nº 7.960/1989 (Lei da Prisão Temporária) para criar um prazo diferenciado de prisão temporária, aplicável a investigações de organizações e associações criminosas de elevada complexidade que demandem técnicas especiais de obtenção de prova. A ementa não especifica a duração desse novo prazo nem os critérios objetivos de 'elevada complexidade'."
+    },
+    {
+      "id_camara": "2635668",
+      "identificacao": "PL 3349/2026",
+      "esperado": "reducionista",
+      "justificativa": "Declara lícita a prova de aplicativo de mensagens compartilhada por um interlocutor. Amplia o acervo probatório da acusação às custas de privacidade e sigilo de comunicação.",
+      "obtido": "reducionista",
+      "rotulo_bruto": "reducionista",
+      "score": -1.5,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "privacidade_dados",
+          "dispositivo": "CF/88, art. 5º, XII",
+          "direcao": "restringe",
+          "mecanismo": "flexibiliza_limite",
+          "titulares": [
+            "interlocutor cuja comunicação é compartilhada em processo penal sem seu consentimento"
+          ],
+          "grau": "moderado",
+          "trecho": "explicitar a licitude das provas oriundas de aplicativos de mensagens quando compartilhadas voluntariamente por um dos interlocutores",
+          "confianca": 0.5,
+          "peso": -1.5,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": true,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição altera o Código de Processo Penal (Decreto-Lei nº 3.689/1941) para explicitar que são lícitas as provas oriundas de aplicativos de mensagens quando compartilhadas voluntariamente por um dos interlocutores da comunicação. A ementa não especifica o dispositivo exato alterado nem eventuais condições adicionais para essa licitude."
+    },
+    {
+      "id_camara": "2635679",
+      "identificacao": "PL 3358/2026",
+      "esperado": "reducionista",
+      "justificativa": "Obriga advertência prévia antes de multa em infração administrativa ambiental. Enfraquece a sanção ambiental existente — desregulamenta proteção.",
+      "obtido": "reducionista",
+      "rotulo_bruto": "reducionista",
+      "score": -1.95,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "meio_ambiente",
+          "dispositivo": "Lei 9.605/1998 (Lei dos Crimes Ambientais), art. 72",
+          "direcao": "restringe",
+          "mecanismo": "flexibiliza_limite",
+          "titulares": [
+            "coletividade (meio ambiente ecologicamente equilibrado)"
+          ],
+          "grau": "moderado",
+          "trecho": "estabelecer a aplicação prévia de advertência em determinadas infrações administrativas ambientais",
+          "confianca": 0.65,
+          "peso": -1.95,
+          "origem_citacao": "ementa"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição altera o art. 72 da Lei nº 9.605/1998 (Lei dos Crimes Ambientais) para estabelecer a aplicação prévia de advertência em determinadas infrações administrativas ambientais, antes da imposição de outras sanções. A ementa não especifica quais infrações passam a exigir a advertência prévia."
+    },
+    {
+      "id_camara": "2637104",
+      "identificacao": "PL 3457/2026",
+      "esperado": "reducionista",
+      "justificativa": "Descaracteriza abandono intelectual quando há educação domiciliar. Retira proteção penal do direito à educação da criança.",
+      "obtido": "reducionista",
+      "rotulo_bruto": "reducionista",
+      "score": -1.65,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "educacao",
+          "dispositivo": "Decreto-Lei 2.848/1940 (Código Penal), art. 246",
+          "direcao": "restringe",
+          "mecanismo": "flexibiliza_limite",
+          "titulares": [
+            "crianças e adolescentes em idade escolar",
+            "responsáveis legais que praticam educação familiar/domiciliar"
+          ],
+          "grau": "moderado",
+          "trecho": "excluir a caracterização de abandono intelectual nas hipóteses de educação familiar regularmente exercida",
+          "confianca": 0.55,
+          "peso": -1.65,
+          "origem_citacao": "ementa"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": true,
+      "resumo_neutro": "A proposição altera o art. 246 do Código Penal para acrescentar os §§ 1º e 2º. O texto exclui a caracterização do crime de abandono intelectual nas hipóteses em que a educação familiar (domiciliar) é regularmente exercida. Não há alteração de outros dispositivos além do artigo mencionado."
+    },
+    {
+      "id_camara": "2637095",
+      "identificacao": "PL 3455/2026",
+      "esperado": "reducionista",
+      "justificativa": "Veda a imposição de cotas de gênero, raciais e sociais no quadro funcional de empresa privada. Restringe ação afirmativa — igualdade material.",
+      "obtido": "reducionista",
+      "rotulo_bruto": "reducionista",
+      "score": -1.5,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "igualdade_nao_discriminacao",
+          "dispositivo": "Lei 13.874/2019 (Lei da Liberdade Econômica), art. 3º-A",
+          "direcao": "restringe",
+          "mecanismo": "desregulamenta_protecao",
+          "titulares": [
+            "trabalhadores beneficiários de políticas de cotas de gênero, raciais ou sociais",
+            "pessoas jurídicas de direito privado"
+          ],
+          "grau": "moderado",
+          "trecho": "dispor sobre a liberdade de organização do quadro funcional da pessoa jurídica de direito privado e sobre os requisitos de prova para fins sancionatórios",
+          "confianca": 0.5,
+          "peso": -1.5,
+          "origem_citacao": "ementa"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": true,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição acrescenta o art. 3º-A à Lei da Liberdade Econômica (Lei nº 13.874/2019) para estabelecer a liberdade de organização do quadro funcional de pessoas jurídicas de direito privado, fixando também requisitos de prova a serem observados para fins de aplicação de sanções. Conforme as palavras-chave oficiais, a matéria está associada à vedação de imposição, por ato administrativo ou decisão judicial, de sistemas de cotas de gênero, raciais ou sociais às empresas."
+    },
+    {
+      "id_camara": "2638522",
+      "identificacao": "PL 3619/2026",
+      "esperado": "reducionista",
+      "justificativa": "Exige consentimento do proprietário e prazos para ingresso em imóvel particular em procedimento de demarcação de terra indígena. Cria requisito de acesso ao direito indígena à terra.",
+      "obtido": "misto",
+      "rotulo_bruto": "misto",
+      "score": 0.3,
+      "acertou": false,
+      "itens": [
+        {
+          "direito": "propriedade_funcao_social",
+          "dispositivo": "CF/88, art. 5º, XXII",
+          "direcao": "amplia",
+          "mecanismo": "cria_garantia_processual",
+          "titulares": [
+            "proprietários de imóveis particulares"
+          ],
+          "grau": "moderado",
+          "trecho": "fortalecer as garantias do direito de propriedade, da segurança jurídica e do consentimento das pessoas legitimadas nos procedimentos de ingresso em imóvel particular",
+          "confianca": 0.6,
+          "peso": 1.8,
+          "origem_citacao": "ancora"
+        },
+        {
+          "direito": "direitos_indigenas_quilombolas",
+          "dispositivo": "CF/88, art. 231",
+          "direcao": "restringe",
+          "mecanismo": "cria_requisito_acesso",
+          "titulares": [
+            "povos indígenas em processos de demarcação de terras"
+          ],
+          "grau": "moderado",
+          "trecho": "fortalecer as garantias do direito de propriedade, da segurança jurídica e do consentimento das pessoas legitimadas nos procedimentos de ingresso em imóvel particular",
+          "confianca": 0.5,
+          "peso": -1.5,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": true,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição altera a Lei nº 14.701/2023 para fortalecer as garantias do direito de propriedade, da segurança jurídica e da exigência de consentimento das pessoas legitimadas em procedimentos de ingresso em imóvel particular. Segundo as palavras-chave oficiais, o texto trata de prazo de comunicação prévia, demarcação de terras indígenas, responsabilidade objetiva e reparação de danos pela União. A ementa não especifica o artigo exato da Lei nº 14.701/2023 alterado."
+    },
+    {
+      "id_camara": "2636566",
+      "identificacao": "PL 3432/2026",
+      "esperado": "reducionista",
+      "justificativa": "Impõe distância mínima de policiais em ocorrência. Restringe registro e fiscalização social da atividade policial — liberdade de informação e controle social.",
+      "obtido": "reducionista",
+      "rotulo_bruto": "reducionista",
+      "score": -1.1,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "liberdade_expressao",
+          "dispositivo": "CF/88, art. 5º, IV",
+          "direcao": "restringe",
+          "mecanismo": "cria_requisito_acesso",
+          "titulares": [
+            "cidadãos que buscam registrar ou acompanhar ocorrências policiais",
+            "jornalistas"
+          ],
+          "grau": "moderado",
+          "trecho": "distância mínima a ser mantida de policiais que atendem ocorrências",
+          "confianca": 0.5,
+          "peso": -1.5,
+          "origem_citacao": "ancora"
+        },
+        {
+          "direito": "vida_integridade",
+          "dispositivo": "CF/88, art. 5º, caput",
+          "direcao": "amplia",
+          "mecanismo": "cria_garantia_processual",
+          "titulares": [
+            "policiais, delegados e peritos em atuação"
+          ],
+          "grau": "marginal",
+          "trecho": "distância mínima a ser mantida de policiais que atendem ocorrências",
+          "confianca": 0.4,
+          "peso": 0.4,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": true,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição altera o Código de Processo Penal (Decreto-Lei nº 3.689/1941) para estabelecer uma distância mínima a ser mantida em relação a policiais, delegados e peritos durante o atendimento de ocorrências. A ementa não especifica o artigo exato alterado nem o valor da distância. A medida abrange situações de abordagem e ocorrência policial envolvendo profissionais de segurança pública."
+    },
+    {
+      "id_camara": "2640488",
+      "identificacao": "PL 3813/2026",
+      "esperado": "garantista",
+      "justificativa": "Cria tipo penal para submissão de criança a trabalho infantil. Pena que recai sobre quem VIOLA direito de terceiro — ampliativo pela régua do §4.",
+      "obtido": "garantista",
+      "rotulo_bruto": "garantista",
+      "score": 2.55,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "direitos_crianca_adolescente",
+          "dispositivo": "Lei 8.069/1990 (ECA)",
+          "direcao": "amplia",
+          "mecanismo": "criminaliza_violacao",
+          "titulares": [
+            "crianças e adolescentes submetidos a trabalho infantil"
+          ],
+          "grau": "moderado",
+          "trecho": "prever o crime de submissão de criança ou adolescente a trabalho infantil nas condições que especifica, tipificando as condutas que expõem menores a riscos físicos, psíquicos ou morais graves",
+          "confianca": 0.85,
+          "peso": 2.55,
+          "origem_citacao": "ementa"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": true,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição altera o Estatuto da Criança e do Adolescente (Lei nº 8.069/1990) para prever o crime de submissão de criança ou adolescente a trabalho infantil nas condições especificadas no texto, tipificando condutas que expõem menores a riscos físicos, psíquicos ou morais graves. Conforme as palavras-chave oficiais, o tipo penal se relaciona a circunstâncias como trabalho noturno, insalubridade e prejuízo à frequência escolar."
+    },
+    {
+      "id_camara": "2640483",
+      "identificacao": "PL 3808/2026",
+      "esperado": "garantista",
+      "justificativa": "Altera a LBI para prevenir adoecimento mental de trabalhadores neurodivergentes sob metas intensivas. Cria proteção nova a PcD no trabalho.",
+      "obtido": "garantista",
+      "rotulo_bruto": "garantista",
+      "score": 3.75,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "direitos_pcd",
+          "dispositivo": "Lei 13.146/2015 (LBI)",
+          "direcao": "amplia",
+          "mecanismo": "cria_direito",
+          "titulares": [
+            "trabalhadores neurodivergentes"
+          ],
+          "grau": "moderado",
+          "trecho": "prever medidas de prevenção ao adoecimento mental de trabalhadores neurodivergentes submetidos a metas intensivas de produtividade",
+          "confianca": 0.75,
+          "peso": 2.25,
+          "origem_citacao": "ementa"
+        },
+        {
+          "direito": "saude",
+          "dispositivo": "CF/88, art. 196",
+          "direcao": "amplia",
+          "mecanismo": "cria_garantia_processual",
+          "titulares": [
+            "trabalhadores neurodivergentes"
+          ],
+          "grau": "moderado",
+          "trecho": "prever medidas de prevenção ao adoecimento mental de trabalhadores neurodivergentes submetidos a metas intensivas de produtividade",
+          "confianca": 0.5,
+          "peso": 1.5,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição altera a Lei nº 13.146/2015 (Estatuto da Pessoa com Deficiência) para prever medidas de prevenção ao adoecimento mental de trabalhadores neurodivergentes submetidos a metas intensivas de produtividade. A ementa não especifica o artigo exato alterado. Segundo as palavras-chave oficiais, a matéria trata de proteção à saúde mental no ambiente de trabalho para pessoas neuroatípicas."
+    },
+    {
+      "id_camara": "2639317",
+      "identificacao": "PL 3664/2026",
+      "esperado": "garantista",
+      "justificativa": "Regime de proteção de entregadores e motoristas de aplicativo em acidentes, com seguro obrigatório. Cria direito onde não havia.",
+      "obtido": "garantista",
+      "rotulo_bruto": "garantista_forte",
+      "score": 8.7,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "trabalho",
+          "dispositivo": "CF/88, art. 7º",
+          "direcao": "amplia",
+          "mecanismo": "cria_direito",
+          "titulares": [
+            "entregadores de aplicativo",
+            "motoristas de aplicativo"
+          ],
+          "grau": "estrutural",
+          "trecho": "estabelece o Regime Nacional de Proteção dos Entregadores e Motoristas de Aplicativo em Acidentes Relacionados ao Serviço",
+          "confianca": 0.75,
+          "peso": 4.5,
+          "origem_citacao": "ancora"
+        },
+        {
+          "direito": "vida_integridade",
+          "dispositivo": "CF/88, art. 5º, caput",
+          "direcao": "amplia",
+          "mecanismo": "cria_direito",
+          "titulares": [
+            "entregadores de aplicativo",
+            "motoristas de aplicativo"
+          ],
+          "grau": "moderado",
+          "trecho": "dispõe sobre seguro obrigatório, assistência emergencial, comunicação de sinistros, prevenção de riscos",
+          "confianca": 0.75,
+          "peso": 2.25,
+          "origem_citacao": "ancora"
+        },
+        {
+          "direito": "devido_processo_ampla_defesa",
+          "dispositivo": "CF/88, art. 5º, LIV",
+          "direcao": "amplia",
+          "mecanismo": "cria_garantia_processual",
+          "titulares": [
+            "entregadores de aplicativo",
+            "motoristas de aplicativo"
+          ],
+          "grau": "moderado",
+          "trecho": "vedação a bloqueios indevidos",
+          "confianca": 0.65,
+          "peso": 1.95,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": true,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição institui um regime nacional de proteção para entregadores e motoristas de aplicativo em caso de acidentes relacionados ao serviço. Ela prevê seguro obrigatório, assistência emergencial, comunicação de sinistros e prevenção de riscos, além de regras de transparência e vedação a bloqueios indevidos de contas. Também estabelece mecanismos de recolocação e recuperação profissional para os trabalhadores afetados."
+    },
+    {
+      "id_camara": "2639540",
+      "identificacao": "PL 3700/2026",
+      "esperado": "garantista",
+      "justificativa": "Garante livre acesso a praias, rios e cachoeiras e veda cobrança. Amplia acesso a bem de uso comum do povo.",
+      "obtido": "garantista",
+      "rotulo_bruto": "garantista",
+      "score": 2.7,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "meio_ambiente",
+          "dispositivo": "CF/88, art. 225",
+          "direcao": "amplia",
+          "mecanismo": "amplia_acesso",
+          "titulares": [
+            "população em geral",
+            "usuários de bens naturais públicos"
+          ],
+          "grau": "moderado",
+          "trecho": "veda à cobrança de taxa, tarifa, pedágio, ingresso ou qualquer outra contraprestação financeira para seu acesso, circulação ou permanência",
+          "confianca": 0.7,
+          "peso": 2.1,
+          "origem_citacao": "ancora"
+        },
+        {
+          "direito": "cultura_lazer",
+          "dispositivo": "CF/88, art. 6º",
+          "direcao": "amplia",
+          "mecanismo": "amplia_acesso",
+          "titulares": [
+            "população em geral"
+          ],
+          "grau": "marginal",
+          "trecho": "garantia do livre acesso a praias, ilhas, rios, cachoeiras e demais bens naturais públicos de uso comum do povo",
+          "confianca": 0.6,
+          "peso": 0.6,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição garante o livre acesso a praias, ilhas, rios, cachoeiras e outros bens naturais públicos de uso comum do povo. Ela veda a cobrança de taxa, tarifa, pedágio, ingresso ou qualquer outra contraprestação financeira para o acesso, a circulação ou a permanência nesses locais."
+    },
+    {
+      "id_camara": "2640473",
+      "identificacao": "PL 3800/2026",
+      "esperado": "garantista",
+      "justificativa": "Insere no ECA proteção especial de criança e adolescente contra impactos da crise climática e desastres.",
+      "obtido": "garantista",
+      "rotulo_bruto": "garantista",
+      "score": 2.8,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "direitos_crianca_adolescente",
+          "dispositivo": "Lei 8.069/1990 (ECA)",
+          "direcao": "amplia",
+          "mecanismo": "cria_direito",
+          "titulares": [
+            "crianças e adolescentes"
+          ],
+          "grau": "moderado",
+          "trecho": "assegurar o direito à proteção especial contra os impactos da crise climática, da degradação ambiental e de desastres naturais",
+          "confianca": 0.75,
+          "peso": 2.25,
+          "origem_citacao": "ementa"
+        },
+        {
+          "direito": "meio_ambiente",
+          "dispositivo": "CF/88, art. 225",
+          "direcao": "amplia",
+          "mecanismo": "cria_direito",
+          "titulares": [
+            "crianças e adolescentes"
+          ],
+          "grau": "marginal",
+          "trecho": "inserindo a perspectiva de sustentabilidade ecológica no princípio da prioridade absoluta",
+          "confianca": 0.55,
+          "peso": 0.55,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição altera o Estatuto da Criança e do Adolescente para assegurar o direito à proteção especial contra os impactos da crise climática, da degradação ambiental e de desastres naturais. Ela insere a perspectiva de sustentabilidade ecológica no princípio da prioridade absoluta que rege a proteção de crianças e adolescentes."
+    },
+    {
+      "id_camara": "2640227",
+      "identificacao": "PL 3766/2026",
+      "esperado": "garantista",
+      "justificativa": "Dispõe sobre direitos dos professores contratados por tempo determinado — amplia titularidade de direitos trabalhistas a categoria hoje desprotegida.",
+      "obtido": "garantista",
+      "rotulo_bruto": "garantista",
+      "score": 1.95,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "trabalho",
+          "dispositivo": "CF/88, art. 7º",
+          "direcao": "amplia",
+          "mecanismo": "amplia_titularidade",
+          "titulares": [
+            "professores contratados por tempo determinado"
+          ],
+          "grau": "moderado",
+          "trecho": "Dispõe sobre os direitos dos professores contratados por tempo determinado.",
+          "confianca": 0.65,
+          "peso": 1.95,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição dispõe sobre os direitos dos professores contratados por tempo determinado para atuar na educação básica. Segundo as palavras-chave oficiais, a matéria trata de remuneração, décimo terceiro salário e férias remuneradas para essa categoria de professores temporários."
+    },
+    {
+      "id_camara": "2636479",
+      "identificacao": "PL 3422/2026",
+      "esperado": "garantista",
+      "justificativa": "Assegura ingresso e permanência de pessoa com deficiência acompanhada de animal de suporte emocional em transporte e ambientes coletivos.",
+      "obtido": "garantista",
+      "rotulo_bruto": "garantista",
+      "score": 4.05,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "direitos_pcd",
+          "dispositivo": "Lei 13.146/2015 (LBI)",
+          "direcao": "amplia",
+          "mecanismo": "cria_direito",
+          "titulares": [
+            "pessoa com deficiência"
+          ],
+          "grau": "moderado",
+          "trecho": "Dispõe sobre o direito de ingresso e permanência de pessoa com deficiência ou condição de saúde grave, acompanhada de cão e/ou gato de suporte emocional, em meios de transporte e em ambientes de uso coletivo, públicos ou privados",
+          "confianca": 0.75,
+          "peso": 2.25,
+          "origem_citacao": "ancora"
+        },
+        {
+          "direito": "saude",
+          "dispositivo": "CF/88, art. 196",
+          "direcao": "amplia",
+          "mecanismo": "cria_direito",
+          "titulares": [
+            "pessoa com condição de saúde grave"
+          ],
+          "grau": "moderado",
+          "trecho": "pessoa com deficiência ou condição de saúde grave, acompanhada de cão e/ou gato de suporte emocional",
+          "confianca": 0.6,
+          "peso": 1.8,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição assegura o direito de ingresso e permanência de pessoa com deficiência ou com condição de saúde grave, quando acompanhada de cão e/ou gato de suporte emocional, em meios de transporte e em ambientes de uso coletivo, públicos ou privados."
+    },
+    {
+      "id_camara": "2637298",
+      "identificacao": "PL 3487/2026",
+      "esperado": "garantista",
+      "justificativa": "Política Nacional de Promoção da Empregabilidade de Mulheres Vítimas de Violência. Amplia acesso ao trabalho a grupo vulnerável.",
+      "obtido": "garantista",
+      "rotulo_bruto": "garantista",
+      "score": 4.2,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "trabalho",
+          "dispositivo": "CF/88, art. 6º",
+          "direcao": "amplia",
+          "mecanismo": "amplia_acesso",
+          "titulares": [
+            "mulheres vítimas de violência"
+          ],
+          "grau": "moderado",
+          "trecho": "Institui a Política Nacional de Promoção da Empregabilidade de Mulheres Vítimas de Violência.",
+          "confianca": 0.7,
+          "peso": 2.1,
+          "origem_citacao": "ancora"
+        },
+        {
+          "direito": "direitos_mulher",
+          "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+          "direcao": "amplia",
+          "mecanismo": "cria_direito",
+          "titulares": [
+            "mulheres vítimas de violência"
+          ],
+          "grau": "moderado",
+          "trecho": "Institui a Política Nacional de Promoção da Empregabilidade de Mulheres Vítimas de Violência.",
+          "confianca": 0.7,
+          "peso": 2.1,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "A proposição institui a Política Nacional de Promoção da Empregabilidade de Mulheres Vítimas de Violência. Segundo as palavras-chave oficiais, a política busca a inclusão produtiva dessas mulheres no mercado de trabalho por meio de educação e formação profissional, visando sua autonomia e renda."
+    },
+    {
+      "id_camara": "2635106",
+      "identificacao": "PL 3286/2026",
+      "esperado": "garantista",
+      "justificativa": "Inclui egressos de alas psiquiátricas do sistema prisional no Programa De Volta para Casa. Amplia titularidade de benefício de saúde mental.",
+      "obtido": "garantista",
+      "rotulo_bruto": "garantista",
+      "score": 2.1,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "saude",
+          "dispositivo": "CF/88, art. 196",
+          "direcao": "amplia",
+          "mecanismo": "amplia_titularidade",
+          "titulares": [
+            "egressos de Alas de Tratamento Psiquiátrico e estruturas congêneres do sistema prisional"
+          ],
+          "grau": "moderado",
+          "trecho": "incluir egressos de Alas de Tratamento Psiquiátrico e estruturas congêneres do sistema prisional no Programa De Volta para Casa",
+          "confianca": 0.7,
+          "peso": 2.1,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "O projeto altera a Lei nº 10.708/2003 para incluir egressos de Alas de Tratamento Psiquiátrico e de estruturas congêneres do sistema prisional entre os beneficiários do Programa De Volta para Casa. A mudança amplia o público elegível ao programa de reabilitação psicossocial vinculado ao SUS. Não há alteração dos demais requisitos ou do valor do benefício na ementa apresentada."
+    },
+    {
+      "id_camara": "2636989",
+      "identificacao": "PL 3446/2026",
+      "esperado": "garantista",
+      "justificativa": "Reserva percentual mínimo de vagas em contratos públicos para população em situação de rua. Ação afirmativa de acesso ao trabalho.",
+      "obtido": "garantista",
+      "rotulo_bruto": "garantista",
+      "score": 2.25,
+      "acertou": true,
+      "itens": [
+        {
+          "direito": "trabalho",
+          "dispositivo": "CF/88, art. 6º",
+          "direcao": "amplia",
+          "mecanismo": "amplia_acesso",
+          "titulares": [
+            "população em situação de rua"
+          ],
+          "grau": "moderado",
+          "trecho": "Institui a Política Nacional de Inclusão Produtiva da População em Situação de Rua nos contratos de obras e de serviços da administração pública federal, mediante reserva de percentual mínimo de vagas de trabalho",
+          "confianca": 0.75,
+          "peso": 2.25,
+          "origem_citacao": "ancora"
+        }
+      ],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "O projeto institui a Política Nacional de Inclusão Produtiva da População em Situação de Rua, reservando percentual mínimo de vagas de trabalho em contratos de obras e de serviços da administração pública federal. Estabelece incentivos à adesão voluntária de Estados, Distrito Federal e Municípios a essa política. Para tanto, altera a Lei nº 14.133/2021 (Lei de Licitações e Contratos Administrativos)."
+    },
+    {
+      "id_camara": "2640228",
+      "identificacao": "PL 3767/2026",
+      "esperado": "tecnico",
+      "justificativa": "Confere título de Capital Nacional do Astroturismo. Honorífico, não altera direito de ninguém.",
+      "obtido": "tecnico",
+      "rotulo_bruto": "neutro",
+      "score": 0,
+      "acertou": true,
+      "itens": [],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "O projeto confere à cidade de Santa Maria Madalena (RJ) o título de Capital Nacional do Astroturismo e a declara 'Cidade das Estrelas' no âmbito do território nacional. Trata-se de concessão de título honorífico a um município, sem criação de direitos, obrigações ou alteração de política pública."
+    },
+    {
+      "id_camara": "2639878",
+      "identificacao": "PL 3745/2026",
+      "esperado": "tecnico",
+      "justificativa": "Título de Capital Nacional do Doce de Leite. Honorífico.",
+      "obtido": "tecnico",
+      "rotulo_bruto": "neutro",
+      "score": 0,
+      "acertou": true,
+      "itens": [],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "O projeto confere ao Município de Viçosa (MG) o título de Capital Nacional do Doce de Leite. Trata-se de concessão de título honorífico municipal, sem criação de direitos, obrigações ou alteração de política pública."
+    },
+    {
+      "id_camara": "2639661",
+      "identificacao": "PL 3713/2026",
+      "esperado": "tecnico",
+      "justificativa": "Título de Capital Nacional do Tomate. Honorífico.",
+      "obtido": "tecnico",
+      "rotulo_bruto": "neutro",
+      "score": 0,
+      "acertou": true,
+      "itens": [],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "O projeto concede ao Município de Ribeirão Branco (SP) o título de Capital Nacional do Tomate. Trata-se de concessão de título honorífico municipal, sem criação de direitos, obrigações ou alteração de política pública."
+    },
+    {
+      "id_camara": "2639851",
+      "identificacao": "PL 3739/2026",
+      "esperado": "tecnico",
+      "justificativa": "Inscreve Herbert de Souza (Betinho) no Livro dos Heróis e Heroínas da Pátria. Homenagem — armadilha proposital: o nome é associado a direitos humanos, e o modelo pode se deixar levar pelo tema em vez do efeito jurídico.",
+      "obtido": "tecnico",
+      "rotulo_bruto": "neutro",
+      "score": 0,
+      "acertou": true,
+      "itens": [],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "O projeto inscreve o nome de Herbert José de Souza, o Betinho, no Livro dos Heróis e Heroínas da Pátria. Trata-se de homenagem póstuma de caráter simbólico, sem criação de direitos, obrigações ou alteração de política pública."
+    },
+    {
+      "id_camara": "2641453",
+      "identificacao": "PL 4747/2026",
+      "esperado": "tecnico",
+      "justificativa": "Inscreve Henriqueta Lisboa no Livro dos Heróis e Heroínas da Pátria. Homenagem.",
+      "obtido": "tecnico",
+      "rotulo_bruto": "neutro",
+      "score": 0,
+      "acertou": true,
+      "itens": [],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "O projeto de lei inscreve o nome de Henriqueta Lisboa no Livro dos Heróis e Heroínas da Pátria. Trata-se de uma homenagem honorífica, sem criação, ampliação ou restrição de direitos e sem alteração de política pública."
+    },
+    {
+      "id_camara": "2638519",
+      "identificacao": "PL 3617/2026",
+      "esperado": "tecnico",
+      "justificativa": "Título de Capital Nacional dos Botecos a Belo Horizonte. Honorífico.",
+      "obtido": "tecnico",
+      "rotulo_bruto": "neutro",
+      "score": 0,
+      "acertou": true,
+      "itens": [],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "O projeto de lei confere o título de Capital Nacional dos Botecos ao Município de Belo Horizonte, no Estado de Minas Gerais. Trata-se de uma denominação honorífica, sem criação de direitos ou obrigações e sem alteração de política pública."
+    },
+    {
+      "id_camara": "2638296",
+      "identificacao": "PL 3575/2026",
+      "esperado": "tecnico",
+      "justificativa": "Denomina aeroporto e revoga a lei de denominação anterior. Segunda armadilha: a ementa contém 'revoga a Lei nº 7.585' — se o modelo reagir à palavra 'revoga' sem ler o objeto, produz item onde não há direito nenhum em jogo.",
+      "obtido": "tecnico",
+      "rotulo_bruto": "neutro",
+      "score": 0,
+      "acertou": true,
+      "itens": [],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "O projeto de lei denomina 'Aeroporto Internacional de Campinas/Viracopos – Comandante Rolim Amaro' o aeródromo localizado no município de Campinas (SP) e revoga a Lei nº 7.585, de 6 de janeiro de 1987, que continha a denominação anterior. Trata-se de troca de denominação de logradouro público, sem criação ou alteração de direitos."
+    },
+    {
+      "id_camara": "2638225",
+      "identificacao": "PL 3561/2026",
+      "esperado": "tecnico",
+      "justificativa": "Denomina ponte sobre o Rio Xingu. Honorífico.",
+      "obtido": "tecnico",
+      "rotulo_bruto": "neutro",
+      "score": 0,
+      "acertou": true,
+      "itens": [],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "O projeto de lei denomina 'Ponte Avelino Ganzer' a ponte sobre o Rio Xingu, situada na rodovia BR-230 entre os Municípios de Anapu e Vitória do Xingu, no Estado do Pará. Trata-se de homenagem póstuma por meio de denominação de logradouro público, sem criação ou alteração de direitos."
+    },
+    {
+      "id_camara": "2638415",
+      "identificacao": "PL 3596/2026",
+      "esperado": "tecnico",
+      "justificativa": "Institui o Dia Nacional dos Centros de Tradições Gaúchas. Data comemorativa.",
+      "obtido": "tecnico",
+      "rotulo_bruto": "neutro",
+      "score": 0,
+      "acertou": true,
+      "itens": [],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "O projeto de lei institui o Dia Nacional dos Centros de Tradições Gaúchas – CTGs. Trata-se da criação de uma data comemorativa, sem criação de direitos ou alteração de política pública."
+    },
+    {
+      "id_camara": "2638030",
+      "identificacao": "PL 3547/2026",
+      "esperado": "tecnico",
+      "justificativa": "Título de Capital Nacional da Moda e da Confecção. Honorífico.",
+      "obtido": "tecnico",
+      "rotulo_bruto": "neutro",
+      "score": 0,
+      "acertou": true,
+      "itens": [],
+      "descartes": [],
+      "clausula_petrea": false,
+      "vedacao_retrocesso": false,
+      "resumo_neutro": "O projeto de lei confere o título de Capital Nacional da Moda e da Confecção ao Município de Santa Cruz do Capibaribe, no Estado de Pernambuco. Trata-se de uma denominação honorífica, sem criação de direitos ou obrigações e sem alteração de política pública."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "igualdade_nao_discriminacao",
+      "dispositivo": "Lei 13.874/2019 (Lei da Liberdade Econômica), art. 3º-A",
+      "direcao": "restringe",
+      "mecanismo": "desregulamenta_protecao",
+      "titulares": ["trabalhadores beneficiários de políticas de cotas de gênero, raciais ou sociais", "pessoas jurídicas de direito privado"],
+      "grau": "moderado",
+      "trecho": "dispor sobre a liberdade de organização do quadro funcional da pessoa jurídica de direito privado e sobre os requisitos de prova para fins sancionatórios",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Lei 13.874/2019 (Lei da Liberdade Econômica), art. 3º-A (acrescido)"],
+  "resumo_neutro": "A proposição acrescenta o art. 3º-A à Lei da Liberdade Econômica (Lei nº 13.874/2019) para estabelecer a liberdade de organização do quadro funcional de pessoas jurídicas de direito privado, fixando também requisitos de prova a serem observados para fins de aplicação de sanções. Conforme as palavras-chave oficiais, a matéria está associada à vedação de imposição, por ato administrativo ou decisão judicial, de sistemas de cotas de gênero, raciais ou sociais às empresas."
+}

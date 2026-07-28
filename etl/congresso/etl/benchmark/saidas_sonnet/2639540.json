@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["população em geral", "usuários de bens naturais públicos"],
+      "grau": "moderado",
+      "trecho": "veda à cobrança de taxa, tarifa, pedágio, ingresso ou qualquer outra contraprestação financeira para seu acesso, circulação ou permanência",
+      "confianca": 0.7
+    },
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["população em geral"],
+      "grau": "marginal",
+      "trecho": "garantia do livre acesso a praias, ilhas, rios, cachoeiras e demais bens naturais públicos de uso comum do povo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A proposição garante o livre acesso a praias, ilhas, rios, cachoeiras e outros bens naturais públicos de uso comum do povo. Ela veda a cobrança de taxa, tarifa, pedágio, ingresso ou qualquer outra contraprestação financeira para o acesso, a circulação ou a permanência nesses locais."
+}

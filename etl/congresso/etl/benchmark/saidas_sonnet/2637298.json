@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["mulheres vítimas de violência"],
+      "grau": "moderado",
+      "trecho": "Institui a Política Nacional de Promoção da Empregabilidade de Mulheres Vítimas de Violência.",
+      "confianca": 0.7
+    },
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["mulheres vítimas de violência"],
+      "grau": "moderado",
+      "trecho": "Institui a Política Nacional de Promoção da Empregabilidade de Mulheres Vítimas de Violência.",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A proposição institui a Política Nacional de Promoção da Empregabilidade de Mulheres Vítimas de Violência. Segundo as palavras-chave oficiais, a política busca a inclusão produtiva dessas mulheres no mercado de trabalho por meio de educação e formação profissional, visando sua autonomia e renda."
+}

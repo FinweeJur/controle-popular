@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_titularidade",
+      "titulares": ["professores contratados por tempo determinado"],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre os direitos dos professores contratados por tempo determinado.",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A proposição dispõe sobre os direitos dos professores contratados por tempo determinado para atuar na educação básica. Segundo as palavras-chave oficiais, a matéria trata de remuneração, décimo terceiro salário e férias remuneradas para essa categoria de professores temporários."
+}

@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["trabalhadores neurodivergentes"],
+      "grau": "moderado",
+      "trecho": "prever medidas de prevenção ao adoecimento mental de trabalhadores neurodivergentes submetidos a metas intensivas de produtividade",
+      "confianca": 0.75
+    },
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": ["trabalhadores neurodivergentes"],
+      "grau": "moderado",
+      "trecho": "prever medidas de prevenção ao adoecimento mental de trabalhadores neurodivergentes submetidos a metas intensivas de produtividade",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Lei 13.146/2015 (Estatuto da Pessoa com Deficiência - LBI)"],
+  "resumo_neutro": "A proposição altera a Lei nº 13.146/2015 (Estatuto da Pessoa com Deficiência) para prever medidas de prevenção ao adoecimento mental de trabalhadores neurodivergentes submetidos a metas intensivas de produtividade. A ementa não especifica o artigo exato alterado. Segundo as palavras-chave oficiais, a matéria trata de proteção à saúde mental no ambiente de trabalho para pessoas neuroatípicas."
+}

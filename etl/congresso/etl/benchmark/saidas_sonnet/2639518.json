@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "devido_processo_ampla_defesa",
+      "dispositivo": "CF/88, art. 5º, LIV",
+      "direcao": "restringe",
+      "mecanismo": "aumenta_pena",
+      "titulares": ["pessoa acusada/condenada por tráfico internacional ou interno de pessoas"],
+      "grau": "estrutural",
+      "trecho": "recrudescer o tratamento penal ao tráfico internacional e interno de pessoas",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Decreto-Lei 2.848/1940 (Código Penal)", "Decreto-Lei 3.689/1941 (Código de Processo Penal)", "Lei 8.072/1990 (Lei dos Crimes Hediondos)"],
+  "resumo_neutro": "A proposição altera o Código Penal, o Código de Processo Penal e a Lei dos Crimes Hediondos (Lei nº 8.072/1990) para recrudescer o tratamento penal dado ao tráfico internacional e interno de pessoas. A ementa não especifica quais dispositivos de cada uma das três normas serão alterados nem os mecanismos concretos desse recrudescimento."
+}

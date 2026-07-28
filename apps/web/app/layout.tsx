@@ -1,0 +1,63 @@
+import type { Metadata } from "next";
+import Script from "next/script";
+import { ThemeProvider } from "next-themes";
+import { clashDisplay, generalSans, tabular } from "@/app/fonts";
+import "./globals.css";
+
+/**
+ * Layout raiz do monorepo. Só o que é comum aos três eixos vive aqui:
+ * `<html>`/`<body>`, as fontes, o tema e o anti-flash do tamanho de fonte.
+ * Header, nav e footer são de cada zona (`app/<zona>/layout.tsx`), porque
+ * divergem — o Betim tem Header/Footer próprios envolvidos em `ForaDoHub`,
+ * o Congresso e o Judiciário montam a barra inline.
+ *
+ * Antes da unificação, cada um dos três repos tinha o seu próprio
+ * RootLayout com `<html>`; num app só, apenas a raiz pode declará-lo.
+ */
+export const metadata: Metadata = {
+  title: "Controle Popular — Portal independente de transparência",
+  description:
+    "Dados públicos sobre cidades, Congresso Nacional e Judiciário, reunidos e explicados. Portal independente, sem vínculo com nenhum órgão ou partido.",
+};
+
+// O controle A−/A/A+ vive num atributo próprio (`data-fs`) porque o
+// next-themes só gerencia um. Ler o localStorage antes da pintura evita o
+// texto redimensionar na hidratação — mesmo truque do next-themes.
+const FONT_SIZE_NO_FLASH_SCRIPT = `
+(function() {
+  try {
+    var fs = localStorage.getItem('cp_fs');
+    if (['sm','md','lg','xl'].indexOf(fs) === -1) fs = 'md';
+    document.documentElement.setAttribute('data-fs', fs);
+  } catch (e) {}
+})();
+`;
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html
+      lang="pt-BR"
+      className={`h-full ${clashDisplay.variable} ${generalSans.variable} ${tabular.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <Script
+          id="cp-font-size-no-flash"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: FONT_SIZE_NO_FLASH_SCRIPT }}
+        />
+      </head>
+      <body className="flex min-h-full flex-col antialiased">
+        <ThemeProvider
+          attribute="data-theme"
+          defaultTheme="light"
+          themes={["light", "dark", "high-contrast"]}
+        >
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}

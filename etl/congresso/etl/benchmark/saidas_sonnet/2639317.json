@@ -1,0 +1,38 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["entregadores de aplicativo", "motoristas de aplicativo"],
+      "grau": "estrutural",
+      "trecho": "estabelece o Regime Nacional de Proteção dos Entregadores e Motoristas de Aplicativo em Acidentes Relacionados ao Serviço",
+      "confianca": 0.75
+    },
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["entregadores de aplicativo", "motoristas de aplicativo"],
+      "grau": "moderado",
+      "trecho": "dispõe sobre seguro obrigatório, assistência emergencial, comunicação de sinistros, prevenção de riscos",
+      "confianca": 0.75
+    },
+    {
+      "direito": "devido_processo_ampla_defesa",
+      "dispositivo": "CF/88, art. 5º, LIV",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": ["entregadores de aplicativo", "motoristas de aplicativo"],
+      "grau": "moderado",
+      "trecho": "vedação a bloqueios indevidos",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A proposição institui um regime nacional de proteção para entregadores e motoristas de aplicativo em caso de acidentes relacionados ao serviço. Ela prevê seguro obrigatório, assistência emergencial, comunicação de sinistros e prevenção de riscos, além de regras de transparência e vedação a bloqueios indevidos de contas. Também estabelece mecanismos de recolocação e recuperação profissional para os trabalhadores afetados."
+}

@@ -1,0 +1,24 @@
+{
+  "_fonte": "Composição do STF em julho/2026. Datas de nascimento e posse de páginas biográficas oficiais do STF e Wikipédia (verificadas 2026-07-24). O STF opera com 10 ministros e 1 VAGA ABERTA desde a aposentadoria de Barroso (2025); a indicação de Jorge Messias foi rejeitada pelo Senado em abril/2026 — 1ª recusa em 132 anos.",
+  "_curadoria": "F3. Dado público, sem CPF/filiação/endereço. `nomeante` é o Presidente que indicou; `cadeira_numero` é o slot 1–11 (todas cota 'livre' no STF).",
+  "tribunal": "stf",
+  "vaga_aberta": {
+    "cadeira_numero": 11,
+    "motivo": "aposentadoria",
+    "antecessor": "Luís Roberto Barroso",
+    "data_abertura": "2025-10-18",
+    "observacao": "Indicação de Jorge Messias rejeitada pelo Senado em 2026-04 (1ª recusa em 132 anos)."
+  },
+  "ministros": [
+    { "slug": "gilmar-mendes", "nome": "Gilmar Mendes", "nome_completo": "Gilmar Ferreira Mendes", "data_nascimento": "1955-12-30", "data_posse": "2002-06-20", "nomeante": "Fernando Henrique Cardoso", "origem_carreira": "advocacia", "cadeira_numero": 1 },
+    { "slug": "carmen-lucia", "nome": "Cármen Lúcia", "nome_completo": "Cármen Lúcia Antunes Rocha", "data_nascimento": "1954-04-19", "data_posse": "2006-06-21", "nomeante": "Luiz Inácio Lula da Silva", "origem_carreira": "advocacia", "cadeira_numero": 2 },
+    { "slug": "dias-toffoli", "nome": "Dias Toffoli", "nome_completo": "José Antonio Dias Toffoli", "data_nascimento": "1967-11-15", "data_posse": "2009-10-23", "nomeante": "Luiz Inácio Lula da Silva", "origem_carreira": "advocacia", "cadeira_numero": 3 },
+    { "slug": "luiz-fux", "nome": "Luiz Fux", "nome_completo": "Luiz Fux", "data_nascimento": "1953-04-26", "data_posse": "2011-03-03", "nomeante": "Dilma Rousseff", "origem_carreira": "magistratura", "cadeira_numero": 4 },
+    { "slug": "edson-fachin", "nome": "Edson Fachin", "nome_completo": "Luiz Edson Fachin", "data_nascimento": "1958-02-08", "data_posse": "2015-06-16", "nomeante": "Dilma Rousseff", "origem_carreira": "advocacia", "cadeira_numero": 5 },
+    { "slug": "alexandre-de-moraes", "nome": "Alexandre de Moraes", "nome_completo": "Alexandre de Moraes", "data_nascimento": "1968-12-13", "data_posse": "2017-03-22", "nomeante": "Michel Temer", "origem_carreira": "advocacia", "cadeira_numero": 6 },
+    { "slug": "nunes-marques", "nome": "Nunes Marques", "nome_completo": "Kassio Nunes Marques", "data_nascimento": "1972-05-16", "data_posse": "2020-11-05", "nomeante": "Jair Bolsonaro", "origem_carreira": "magistratura", "cadeira_numero": 7 },
+    { "slug": "andre-mendonca", "nome": "André Mendonça", "nome_completo": "André Luiz de Almeida Mendonça", "data_nascimento": "1972-12-27", "data_posse": "2021-12-16", "nomeante": "Jair Bolsonaro", "origem_carreira": "advocacia", "cadeira_numero": 8 },
+    { "slug": "cristiano-zanin", "nome": "Cristiano Zanin", "nome_completo": "Cristiano Zanin Martins", "data_nascimento": "1975-11-15", "data_posse": "2023-08-03", "nomeante": "Luiz Inácio Lula da Silva", "origem_carreira": "advocacia", "cadeira_numero": 9 },
+    { "slug": "flavio-dino", "nome": "Flávio Dino", "nome_completo": "Flávio Dino de Castro e Costa", "data_nascimento": "1968-04-30", "data_posse": "2024-02-22", "nomeante": "Luiz Inácio Lula da Silva", "origem_carreira": "magistratura", "cadeira_numero": 10 }
+  ]
+}

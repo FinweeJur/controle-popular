@@ -1,0 +1,10 @@
+{
+  "name": "controle-popular",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev": "npm run dev -w @cp/web",
+    "build": "npm run build -w @cp/web",
+    "lint": "npm run lint -w @cp/web"
+  }
+}

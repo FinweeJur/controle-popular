@@ -1,0 +1,87 @@
+{
+  "_leia_isto": [
+    "Composição do TSE em 2026-07-25, verificada em tse.jus.br/institucional/ministros.",
+    "SÓ os magistrados que NÃO já existem em magistrados-stf.json (3 efetivos + 3 substitutos",
+    "do TSE são ministros do STF já curados: nunes-marques, andre-mendonca, dias-toffoli,",
+    "gilmar-mendes, cristiano-zanin, flavio-dino — não duplicar).",
+    "",
+    "data_nascimento null para os 4 vindos do STJ (Antonio Carlos Ferreira, Villas Bôas Cueva,",
+    "Sebastião Reis Júnior, Marco Aurélio Bellizze) e para Estela Aranha e Nauê Bernardo Pinheiro",
+    "de Azevedo: não encontrados em busca rápida verificada. NÃO adivinhar — fica pendente da",
+    "curadoria completa do STJ (TODO.md). Floriano de Azevedo Marques Neto tem data confirmada",
+    "(nasceu em São Paulo, 04/06/1968 — Wikipédia + bio oficial da USP/TSE, cruzadas)."
+  ],
+  "magistrados": [
+    {
+      "slug": "floriano-azevedo-marques",
+      "nome": "Floriano de Azevedo Marques",
+      "nome_completo": "Floriano Peixoto de Azevedo Marques Neto",
+      "data_nascimento": "1968-06-04",
+      "origem_carreira": "advocacia"
+    },
+    {
+      "slug": "estela-aranha",
+      "nome": "Estela Aranha",
+      "nome_completo": "Estela Aranha",
+      "data_nascimento": null,
+      "origem_carreira": "advocacia"
+    },
+    {
+      "slug": "naue-pinheiro-azevedo",
+      "nome": "Nauê Bernardo Pinheiro de Azevedo",
+      "nome_completo": "Nauê Bernardo Pinheiro de Azevedo",
+      "data_nascimento": null,
+      "origem_carreira": "advocacia"
+    },
+    {
+      "slug": "antonio-carlos-ferreira",
+      "nome": "Antonio Carlos Ferreira",
+      "nome_completo": "Antonio Carlos Ferreira",
+      "data_nascimento": null,
+      "origem_carreira": "magistratura",
+      "_nota": "STJ, cadeira 13 (terco_oab) — curadoria completa pendente"
+    },
+    {
+      "slug": "villas-boas-cueva",
+      "nome": "Villas Bôas Cueva",
+      "nome_completo": "Ricardo Villas Bôas Cueva",
+      "data_nascimento": null,
+      "origem_carreira": "magistratura",
+      "_nota": "STJ, cadeira 19 (terco_oab) — curadoria completa pendente"
+    },
+    {
+      "slug": "sebastiao-reis-junior",
+      "nome": "Sebastião Reis Júnior",
+      "nome_completo": "Sebastião Alves dos Reis Júnior",
+      "data_nascimento": null,
+      "origem_carreira": "magistratura",
+      "_nota": "STJ, cadeira 1 (terco_oab) — curadoria completa pendente"
+    },
+    {
+      "slug": "marco-aurelio-bellizze",
+      "nome": "Marco Aurélio Bellizze",
+      "nome_completo": "Marco Aurélio Bellizze Oliveira",
+      "data_nascimento": null,
+      "origem_carreira": "magistratura",
+      "_nota": "STJ, cadeira 10 (terco_trf) — nomeado por Dilma Rousseff em 2011 (MSF 101/2011, ver etl/cota.py, fixture de regressão). Curadoria completa pendente."
+    }
+  ],
+  "mandatos_direcao": [
+    { "slug": "nunes-marques",              "cargo": "efetivo_eletiva_stf",   "data_inicio": "2025-05-25", "data_fim": "2027-05-25", "biennio": "2" },
+    { "slug": "nunes-marques",              "cargo": "presidente",           "data_inicio": "2025-05-25", "data_fim": "2027-05-25", "biennio": "2" },
+    { "slug": "andre-mendonca",             "cargo": "efetivo_eletiva_stf",   "data_inicio": "2026-06-25", "data_fim": "2028-06-25", "biennio": "2" },
+    { "slug": "andre-mendonca",             "cargo": "vice_presidente",       "data_inicio": "2026-06-25", "data_fim": "2028-06-25", "biennio": "2" },
+    { "slug": "dias-toffoli",               "cargo": "efetivo_eletiva_stf",   "data_inicio": "2026-06-09", "data_fim": "2028-06-09", "biennio": "1" },
+    { "slug": "antonio-carlos-ferreira",    "cargo": "efetivo_eletiva_stj",   "data_inicio": "2024-09-19", "data_fim": "2026-09-19", "biennio": "1" },
+    { "slug": "antonio-carlos-ferreira",    "cargo": "corregedor_eleitoral",  "data_inicio": "2024-09-19", "data_fim": "2026-09-19", "biennio": "1" },
+    { "slug": "villas-boas-cueva",          "cargo": "efetivo_eletiva_stj",   "data_inicio": "2025-12-16", "data_fim": "2027-12-16", "biennio": "1" },
+    { "slug": "floriano-azevedo-marques",   "cargo": "efetivo_advogado",      "data_inicio": "2025-08-01", "data_fim": "2027-08-01", "biennio": "2" },
+    { "slug": "estela-aranha",              "cargo": "efetivo_advogado",      "data_inicio": "2025-08-01", "data_fim": "2027-08-01", "biennio": "1" },
+    { "slug": "gilmar-mendes",              "cargo": "substituto_eletiva_stf", "data_inicio": null, "data_fim": null, "biennio": "2" },
+    { "slug": "cristiano-zanin",            "cargo": "substituto_eletiva_stf", "data_inicio": null, "data_fim": null, "biennio": "1" },
+    { "slug": "flavio-dino",                "cargo": "substituto_eletiva_stf", "data_inicio": null, "data_fim": null, "biennio": "1" },
+    { "slug": "sebastiao-reis-junior",      "cargo": "substituto_eletiva_stj", "data_inicio": null, "data_fim": null, "biennio": "1" },
+    { "slug": "marco-aurelio-bellizze",     "cargo": "substituto_eletiva_stj", "data_inicio": null, "data_fim": null, "biennio": "1" },
+    { "slug": "naue-pinheiro-azevedo",      "cargo": "substituto_advogado",    "data_inicio": null, "data_fim": null, "biennio": "1" }
+  ]
+}

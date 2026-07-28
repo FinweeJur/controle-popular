@@ -1,0 +1,333 @@
+@import "tailwindcss";
+
+/* Controle Popular design system (imported from Claude Design 2026-07-20).
+   next-themes sets data-theme="light"|"dark"|"high-contrast" and
+   data-fs="sm"|"md"|"lg"|"xl" directly on <html> -- both are read here. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+@custom-variant high-contrast (&:where([data-theme="high-contrast"], [data-theme="high-contrast"] *));
+
+:root {
+  --cp-bg: #f7f8fa;
+  --cp-surface: #ffffff;
+  --cp-surface-2: #f0f2f6;
+  --cp-text: #0e1726;
+  --cp-text-soft: #4a5568;
+  --cp-primary: #12467b;
+  --cp-primary-ink: #ffffff;
+  --cp-accent: #0e8f6e;
+  --cp-accent-ink: #ffffff;
+  --cp-border: #e2e8f0;
+  --cp-alert: #c0392b;
+  --cp-focus: #12467b;
+  --cp-bw: 1px;
+  --cp-tscale: 1;
+
+  /* Ordinal chart ramp (--cp-ord-1 = heaviest tier .. -4 = lightest).
+     The proposition types are ORDINAL, not nominal: a Projeto de Lei
+     outweighs an Indicação 15:1, so the tier order carries meaning and
+     the color has to show it. One monotone-lightness ramp drifting
+     navy -> blue -> teal -> olive, so "darker = worth more points" is
+     readable without consulting the legend.
+     Steps validated with the dataviz palette validator against this
+     theme's surface: CVD separation (protan/deutan, Machado 2009 @1.0)
+     and the normal-vision floor both PASS on every adjacent pair.
+     Light's --cp-ord-4 sits at 2.44:1 on white -- above the 2:1 ordinal
+     light-end floor but under 3:1, which obliges the visible per-segment
+     labels and the table view that RankingVereadores always ships. */
+  --cp-ord-1: #102f5e;
+  --cp-ord-2: #186aa8;
+  --cp-ord-3: #1fa08b;
+  --cp-ord-4: #a8ac30;
+  /* Ink that stays legible ON a filled segment of the matching step. */
+  --cp-ord-1-ink: #ffffff;
+  --cp-ord-2-ink: #ffffff;
+  --cp-ord-3-ink: #ffffff;
+  --cp-ord-4-ink: #14160a;
+  /* Recessive chart chrome: gridlines/tracks sit behind the data. */
+  --cp-chart-track: #eef1f5;
+  --cp-chart-grid: #e2e8f0;
+}
+
+[data-theme="dark"] {
+  --cp-bg: #0b1220;
+  --cp-surface: #141c2b;
+  --cp-surface-2: #1b2536;
+  --cp-text: #e6eaf0;
+  --cp-text-soft: #a0aec0;
+  --cp-primary: #4a90d9;
+  --cp-primary-ink: #08111e;
+  --cp-accent: #2fbf9a;
+  --cp-accent-ink: #06231c;
+  --cp-border: #26303f;
+  --cp-alert: #e5736a;
+  --cp-focus: #4a90d9;
+
+  /* Dark steps are SELECTED, not an automatic flip of the light ramp:
+     re-stepped brighter against #141c2b so every step clears 3:1, while
+     keeping the light ramp's relative order within the teal/olive pair
+     (darkening the olive collapsed it into the teal -- measured, not
+     guessed). All adjacent pairs PASS CVD and the normal-vision floor. */
+  --cp-ord-1: #84b4ec;
+  --cp-ord-2: #2183cc;
+  --cp-ord-3: #0fa085;
+  --cp-ord-4: #c9c74e;
+  --cp-ord-1-ink: #06111f;
+  --cp-ord-2-ink: #ffffff;
+  --cp-ord-3-ink: #04160f;
+  --cp-ord-4-ink: #16150a;
+  --cp-chart-track: #1b2536;
+  --cp-chart-grid: #26303f;
+}
+
+/* eMAG-style high-contrast theme: pure black/white/yellow-focus, no
+   surface/background distinction, thicker borders (--cp-bw: 2px). */
+[data-theme="high-contrast"] {
+  --cp-bg: #ffffff;
+  --cp-surface: #ffffff;
+  --cp-surface-2: #ffffff;
+  --cp-text: #000000;
+  --cp-text-soft: #000000;
+  --cp-primary: #0000cc;
+  --cp-primary-ink: #ffffff;
+  --cp-accent: #006644;
+  --cp-accent-ink: #ffffff;
+  --cp-border: #000000;
+  --cp-alert: #cc0000;
+  --cp-focus: #ffd500;
+  --cp-bw: 2px;
+
+  /* High-contrast keeps the same navy->olive tier order but pushes every
+     step to >=7:1 on white, so the ramp reads as maximum contrast rather
+     than as a gradient. Separation here is carried by the 2px black
+     segment outlines and the direct labels (see .cp-ord-seg below), not
+     by hue alone -- the whole point of this theme. */
+  --cp-ord-1: #001a66;
+  --cp-ord-2: #0000cc;
+  --cp-ord-3: #006644;
+  --cp-ord-4: #4a4a00;
+  --cp-ord-1-ink: #ffffff;
+  --cp-ord-2-ink: #ffffff;
+  --cp-ord-3-ink: #ffffff;
+  --cp-ord-4-ink: #ffffff;
+  --cp-chart-track: #ffffff;
+  --cp-chart-grid: #000000;
+}
+
+[data-fs="sm"] {
+  --cp-tscale: 0.9;
+}
+[data-fs="md"] {
+  --cp-tscale: 1;
+}
+[data-fs="lg"] {
+  --cp-tscale: 1.15;
+}
+[data-fs="xl"] {
+  --cp-tscale: 1.3;
+}
+
+@theme inline {
+  /* --font-clash-display/--font-general-sans/--font-tabular-raw are
+     injected by next/font/local (app/fonts.ts) on <html>'s className --
+     self-hosted, not fetched from Fontshare's CDN at runtime. */
+  --font-display: var(--font-clash-display), var(--font-body), sans-serif;
+  --font-body: var(--font-general-sans), system-ui, sans-serif;
+  --font-tabular: var(--font-tabular-raw), var(--font-body), sans-serif;
+
+  --color-bg: var(--cp-bg);
+  --color-surface: var(--cp-surface);
+  --color-surface-2: var(--cp-surface-2);
+  --color-text: var(--cp-text);
+  --color-text-soft: var(--cp-text-soft);
+  --color-primary: var(--cp-primary);
+  --color-primary-ink: var(--cp-primary-ink);
+  --color-accent: var(--cp-accent);
+  --color-accent-ink: var(--cp-accent-ink);
+  --color-border: var(--cp-border);
+  --color-alert: var(--cp-alert);
+  --color-focus: var(--cp-focus);
+
+  --color-ord-1: var(--cp-ord-1);
+  --color-ord-2: var(--cp-ord-2);
+  --color-ord-3: var(--cp-ord-3);
+  --color-ord-4: var(--cp-ord-4);
+  --color-chart-track: var(--cp-chart-track);
+  --color-chart-grid: var(--cp-chart-grid);
+}
+
+/* ── Chart marks ──────────────────────────────────────────────────────
+   Shared by every stacked/ordinal bar on the site (ranking de atuação,
+   composição da Câmara, proposições por vereador). */
+
+.cp-ord-track {
+  background: var(--color-chart-track);
+  border-radius: 4px;
+}
+
+/* A segment of a stacked bar. The 2px surface-colored ring is the spacer
+   that keeps adjacent fills from bleeding into each other -- it reads as
+   a gap, not a border, because it matches the card surface. */
+.cp-ord-seg {
+  box-shadow: 0 0 0 2px var(--color-surface);
+  position: relative;
+}
+
+[data-theme="high-contrast"] .cp-ord-seg {
+  /* On white-on-white surfaces a surface-colored ring is invisible, so
+     the spacer becomes a real black outline instead. */
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 3px #000000;
+}
+
+/* Texture channel: the lightest tier also carries a 45° hatch so the
+   series is distinguishable in print, forced-colors, and for readers
+   where the olive/teal pair is hardest. Identity is never color-alone. */
+.cp-ord-seg-4 {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0 5px,
+    color-mix(in srgb, var(--cp-ord-4-ink) 22%, transparent) 5px 7px
+  );
+}
+
+@media (forced-colors: active) {
+  .cp-ord-seg {
+    forced-color-adjust: none;
+    box-shadow: 0 0 0 2px Canvas, 0 0 0 3px CanvasText;
+  }
+}
+
+html {
+  /* A-/A/A+ control scales this; every rem-based size in the app follows. */
+  font-size: calc(100% * var(--cp-tscale));
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-primary-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Microanimações ───────────────────────────────────────────────────
+   Pedido do usuário 2026-07-24: hover/glow/pulse pra ajudar o fluxo e a
+   experiência. Regra do site: sutil, nunca decorativo a ponto de
+   distrair de um número ou de um alerta legal -- e sempre desligável
+   via `prefers-reduced-motion` (WCAG 2.3.3), inclusive no tema de alto
+   contraste, que prioriza legibilidade sobre qualquer efeito. */
+
+.cp-card-hover {
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+.cp-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--color-text) 18%, transparent);
+}
+
+.cp-btn-anim {
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.12s ease,
+    border-color 0.12s ease,
+    color 0.12s ease;
+}
+.cp-btn-anim:hover {
+  transform: translateY(-1px);
+}
+.cp-btn-anim:active {
+  transform: translateY(0);
+}
+
+/* Selo pulsante -- só pros alertas de VIOLAÇÃO LEGAL (não os
+   heurísticos), pra chamar atenção do que tem base legal concreta sem
+   soar como "acusação piscando". Um respiro lento (2.4s), não um
+   alarme. */
+@keyframes cp-pulse-alert {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-alert) 35%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-alert) 0%, transparent);
+  }
+}
+.cp-pulse-alert {
+  animation: cp-pulse-alert 2.4s ease-in-out infinite;
+}
+
+/* Glow sutil pro botão/link primário de maior destaque de cada página
+   (ex. "Filtrar", CTA de anúncio) -- reforça affordance de clique sem
+   virar decoração neon. */
+@keyframes cp-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-primary) 0%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 14px 1px color-mix(in srgb, var(--color-primary) 45%, transparent);
+  }
+}
+.cp-glow-primary:hover {
+  animation: cp-glow 1.6s ease-in-out infinite;
+}
+
+/* Sublinhado que "cresce" da esquerda -- usado nos links de navegação
+   do Header em vez de só trocar de cor. */
+.cp-link-underline {
+  position: relative;
+}
+.cp-link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.cp-link-underline:hover::after,
+.cp-link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cp-card-hover,
+  .cp-btn-anim,
+  .cp-link-underline::after {
+    transition: none !important;
+  }
+  .cp-card-hover:hover {
+    transform: none;
+  }
+  .cp-pulse-alert,
+  .cp-glow-primary:hover {
+    animation: none !important;
+  }
+}
+
+/* Alto contraste prioriza legibilidade sobre efeito -- sem pulse/glow
+   coloridos, só o essencial de foco/hover que já existe. */
+[data-theme="high-contrast"] .cp-pulse-alert,
+[data-theme="high-contrast"] .cp-glow-primary:hover {
+  animation: none;
+}

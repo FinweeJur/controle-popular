@@ -1,0 +1,237 @@
+name: ETL betim
+
+# Cron matrix per plan §5.4. All times UTC.
+#   0 8 * * *        daily     — PNCP (contratos, licitações), weather
+#   0 9 * * 1         weekly    — infodengue, servidores, CNPJ enrich, grupos
+#                                 econômicos, Câmara (vereadores/proposições/
+#                                 verbas/diárias/comissões), convênios federais,
+#                                 CEIS/CNEP, benefícios sociais, crimes (Sejusp),
+#                                 ANP, motor de alertas (+ embeddings/newsletter
+#                                 once those modules exist)
+#   0 10 1 * *        monthly   — Base dos Dados Track A, agropecuária (IBGE
+#                                 PAM/PPM), frota de veículos (DENATRAN),
+#                                 caixa disponível/balanço (+ almg once built)
+#   0 11 1 1,4,7,10 * quarterly — IBGE malha/hierarquia geográfica, feriados
+#                                 nacionais (BrasilAPI), IDH/pobreza (PNUD/ADH,
+#                                 só muda em ano de Censo mas sem cadência
+#                                 "por década" própria), datajud (once built)
+#
+# 2026-07-23: 8 módulos que já existiam no repo nunca tinham sido adicionados
+# aqui (Câmara inteira, convênios, CEIS/CNEP, benefícios sociais, crimes,
+# ANP) — o site rodava com dado sincronizado manualmente, não pelo cron.
+# Corrigido nesta revisão; alguns novos passos (comissões, agropecuária)
+# usam `continue-on-error: true` porque dependem de migrations ainda não
+# rodadas pelo usuário (0015/0016) — não devem travar o resto do workflow.
+# Também adicionados nesta revisão: frota de veículos (DENATRAN), IDH e
+# taxa de pobreza (PNUD/Atlas do Desenvolvimento Humano) — destravam os 3
+# cards "em breve" que sobravam na Home.
+#
+# workflow_dispatch runs every step below regardless of schedule, for manual
+# backfills/testing.
+on:
+  schedule:
+    - cron: '0 8 * * *'
+    - cron: '0 9 * * 1'
+    - cron: '0 10 1 * *'
+    - cron: '0 11 1 1,4,7,10 *'
+  push:
+    paths:
+      - 'etl/betim/**'
+      - '.github/workflows/etl-betim.yml'
+  workflow_dispatch:
+
+env:
+  ID_MUNICIPIO: '3106705'
+  # etl/common.py reads NEXT_PUBLIC_SUPABASE_URL (same var name the Next.js app
+  # uses) — map the GitHub secret (named SUPABASE_URL) onto it here.
+  NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+  SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  TRANSPARENCIA_API_KEY: ${{ secrets.TRANSPARENCIA_API_KEY }}
+  AI_API_KEY: ${{ secrets.AI_API_KEY }}
+  GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/gcp-service-account.json
+
+jobs:
+  etl:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: etl/betim
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r etl/requirements.txt
+
+      - name: Install Playwright browser (Câmara scrapers)
+        run: playwright install --with-deps chromium
+
+      - name: Write GCP service account credentials
+        # Only consumed by the Base dos Dados (BigQuery) steps below; harmless
+        # to write on every run. Empty until the GCP_SA_JSON secret is set (F0).
+        run: echo '${{ secrets.GCP_SA_JSON }}' > "$GOOGLE_APPLICATION_CREDENTIALS"
+
+      # ── Daily (0 8 * * *): PNCP + weather ─────────────────────────────
+      - name: 'PNCP contratos (daily)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 8 * * *'
+        run: python -m etl.pncp.contratos --id-municipio $ID_MUNICIPIO
+
+      - name: 'PNCP licitações (daily)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 8 * * *'
+        run: python -m etl.pncp.licitacoes --id-municipio $ID_MUNICIPIO
+
+      - name: 'Open-Meteo weather (daily)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 8 * * *'
+        run: python -m etl.apis.openmeteo --id-municipio $ID_MUNICIPIO
+
+      # ── Weekly (0 9 * * 1): InfoDengue + CNPJ enrichment ──────────────
+      - name: 'InfoDengue (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.apis.infodengue --id-municipio $ID_MUNICIPIO
+
+      - name: 'Prefeitura — servidores (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.prefeitura.b3106705 --id-municipio $ID_MUNICIPIO
+
+      - name: 'Prefeitura — obras públicas (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.prefeitura.obras --id-municipio $ID_MUNICIPIO
+
+      - name: 'Prefeitura — legislação (leis/decretos, weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.prefeitura.legislacao --id-municipio $ID_MUNICIPIO
+
+      - name: 'CNPJ enrichment — fornecedores/sócios (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.bd.cnpj --id-municipio $ID_MUNICIPIO
+
+      - name: 'Grupos econômicos (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.grupos --id-municipio $ID_MUNICIPIO
+
+      - name: 'Câmara — vereadores/proposições/mesa diretora (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.camaras.betim --id-municipio $ID_MUNICIPIO
+
+      - name: 'Câmara — verbas indenizatórias (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.camaras.verbas --id-municipio $ID_MUNICIPIO
+
+      - name: 'Câmara — diárias de viagem (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.camaras.diarias --id-municipio $ID_MUNICIPIO
+
+      - name: 'Câmara — comissões (weekly)'
+        # Depende da migration 0015_comissoes.sql — falha graciosamente (tabela
+        # ausente) até o usuário rodar; não bloqueia os passos seguintes.
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        continue-on-error: true
+        run: python -m etl.camaras.comissoes --id-municipio $ID_MUNICIPIO
+
+      - name: 'Convênios federais / emendas (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.apis.transparencia_gov --id-municipio $ID_MUNICIPIO
+
+      - name: 'Fornecedores sancionados CEIS/CNEP (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.apis.ceis_cnep --id-municipio $ID_MUNICIPIO
+
+      - name: 'Benefícios sociais — Bolsa Família/BPC (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.apis.beneficios_sociais --id-municipio $ID_MUNICIPIO
+
+      - name: 'Crimes violentos (Sejusp-MG) (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.apis.crimes_mg --id-municipio $ID_MUNICIPIO
+
+      - name: 'Postos de combustível (ANP) (weekly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.apis.anp --id-municipio $ID_MUNICIPIO
+
+      - name: 'Motor de alertas (weekly)'
+        # Roda por último no bloco semanal -- depende de fornecedores/CEIS já
+        # atualizados acima pra Regra 5 funcionar com dado fresco.
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
+        run: python -m etl.alertas --id-municipio $ID_MUNICIPIO
+
+      # TODO once embeddings regeneration / newsletter digest scripts exist: weekly steps here
+
+      # ── Monthly (0 10 1 * *): Base dos Dados Track A ──────────────────
+      - name: 'BD SICONFI — despesas/receitas (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        run: python -m etl.bd.siconfi --id-municipio $ID_MUNICIPIO
+
+      - name: 'BD IBGE — população/PIB (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        run: python -m etl.bd.ibge --id-municipio $ID_MUNICIPIO
+
+      - name: 'BD INEP — IDEB/censo escolar (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        run: python -m etl.bd.inep --id-municipio $ID_MUNICIPIO
+
+      - name: 'BD CNES — estabelecimentos de saúde (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        run: python -m etl.bd.cnes --id-municipio $ID_MUNICIPIO
+
+      - name: 'BD SIH/SIM — internações/mortalidade (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        run: python -m etl.bd.sih_sim --id-municipio $ID_MUNICIPIO
+
+      - name: 'BD SNIS — água/esgoto/resíduos (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        run: python -m etl.bd.snis --id-municipio $ID_MUNICIPIO
+
+      - name: 'BD RAIS/CAGED — trabalho (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        run: python -m etl.bd.trabalho --id-municipio $ID_MUNICIPIO
+
+      - name: 'BD IBGE PAM/PPM — produção agropecuária (monthly)'
+        # Depende da migration 0016_producao_agropecuaria.sql — falha
+        # graciosamente até o usuário rodar; não bloqueia os passos seguintes.
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        continue-on-error: true
+        run: python -m etl.bd.agropecuaria --id-municipio $ID_MUNICIPIO
+
+      - name: 'BD SICONFI — caixa disponível / balanço patrimonial (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        run: python -m etl.bd.balanco --id-municipio $ID_MUNICIPIO
+
+      - name: 'BD DENATRAN — frota de veículos (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        run: python -m etl.bd.frota --id-municipio $ID_MUNICIPIO
+
+      # TODO once etl.apis.almg exists (ALMG state amendments): monthly step here
+      # NOTE: etl.bd.tse runs once per electoral term, not on a recurring cron —
+      #       trigger manually via workflow_dispatch + a dedicated invocation when needed.
+
+      # ── Quarterly (0 11 1 1,4,7,10 *): Datajud + IBGE geo ─────────────
+      - name: 'IBGE — malha geográfica/hierarquia (quarterly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 11 1 1,4,7,10 *'
+        run: python -m etl.apis.ibge --id-municipio $ID_MUNICIPIO
+
+      - name: 'BrasilAPI — feriados nacionais (quarterly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 11 1 1,4,7,10 *'
+        run: python -m etl.apis.feriados
+
+      - name: 'BD PNUD/ADH — IDH e taxa de pobreza (quarterly)'
+        # Trimestral por segurança, mas na prática só muda em ano de Censo
+        # (1991/2000/2010 até agora) -- não há um cadenciamento "por
+        # década" no workflow, então roda no bloco de menor frequência
+        # existente sem custo real (query pequena).
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 11 1 1,4,7,10 *'
+        run: python -m etl.bd.idh_pobreza --id-municipio $ID_MUNICIPIO
+
+      - name: 'Nota de Transparência (PNTP/ATRICON) (quarterly)'
+        # Depende da migration 0018_nota_transparencia.sql — falha
+        # graciosamente até o usuário rodar. Trimestral (não mensal) porque a
+        # ATRICON só atualiza o ZIP algumas vezes por ano -- baixar 338MB
+        # todo mês pra um dado que raramente muda seria desperdício.
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 11 1 1,4,7,10 *'
+        continue-on-error: true
+        run: python -m etl.apis.pntp --id-municipio $ID_MUNICIPIO
+
+      # TODO once etl.apis.datajud exists (CNJ process lookups for councilors): quarterly step here

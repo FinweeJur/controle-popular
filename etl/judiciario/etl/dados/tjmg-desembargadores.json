@@ -1,0 +1,747 @@
+{
+  "tribunal": "tjmg",
+  "fonte": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/desembargadores.htm",
+  "total": 148,
+  "desembargadores": [
+    {
+      "nome": "Edilson Olímpio Fernandes",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/edilson-olimpio-fernandes.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Maria Beatriz Madureira Pinheiro Costa Caires",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/maria-beatriz-madureira-pinheiro-costa-caires.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Teresa Cristina da Cunha Peixoto",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/teresa-cristina-da-cunha-peixoto.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Alberto Vilas Boas Vieira de Sousa",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/alberto-vilas-boas-vieira-de-sousa.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Eduardo Brum Vieira Chaves",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/eduardo-brum-vieira-chaves.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Pedro Bernardes de Oliveira",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/pedro-bernardes-de-oliveira.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Fernando Caldeira Brant",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/fernando-caldeira-brant.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Wagner Wilson Ferreira",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/wagner-wilson-ferreira.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Pedro Carlos Bitencourt Marcondes",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/pedro-carlos-bitencourt-marcondes.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Marcelo Guimarães Rodrigues",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/marcelo-guimaraes-rodrigues.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Cláudia Regina Guedes Maia",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/claudia-regina-guedes-maia.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Marcos Lincoln dos Santos",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/marcos-lincoln-dos-santos.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Rogério Medeiros Garcia de Lima",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/rogerio-medeiros-garcia-de-lima.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Carlos Augusto de Barros Levenhagen",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/carlos-augusto-de-barros-levenhagen.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Eduardo César Fortuna Grion",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/eduardo-cesar-fortuna-grion.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Antônio Carlos de Oliveira Bispo",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/antonio-carlos-de-oliveira-bispo.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Luiz Carlos Gomes da Mata",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/luiz-carlos-gomes-da-mata.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Júlio Cezar Guttierrez Vieira Baptista",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/julio-cezar-guttierrez-vieira-baptista.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Doorgal Borges de Andrada",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/doorgal-borges-de-andrada.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "José Marcos Rodrigues Vieira",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/jose-marcos-rodrigues-vieira.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Arnaldo Maciel Pinto",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/arnaldo-maciel-pinto.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Sandra Alves de Santana e Fonseca",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/sandra-alves-de-santana-e-fonseca.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Alberto Deodato Maia Barreto Neto",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/alberto-deodato-maia-barreto-neto.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Eduardo Machado Costa",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/eduardo-machado-costa.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "André Leite Praça",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/andre-leite-praca.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Nelson Missias de Morais",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/nelson-missias-de-morais.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Matheus Chaves Jardim",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/matheus-chaves-jardim.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Júlio César Lorens",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/julio-cesar-lorens.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Marcílio Eustáquio Santos",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/marcilio-eustaquio-santos.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Cássio de Souza Salomé",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/cassio-de-souza-salome.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Evandro Lopes da Costa Teixeira",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/evandro-lopes-da-costa-teixeira.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Wanderley Salgado de Paiva",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/wanderley-salgado-de-paiva.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Agostinho Gomes de Azevedo",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/agostinho-gomes-de-azevedo.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Vítor Inácio Peixoto Parreiras Henriques",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/vitor-inacio-peixoto-parreiras-henriques.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Estevão Lucchesi de Carvalho",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/estevao-lucchesi-de-carvalho.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Saulo Versiani Penna",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/saulo-versiani-penna.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Áurea Maria Brasil Santos Perez",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/aurea-maria-brasil-santos-perez.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Osvaldo Oliveira Araújo Firmo",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/osvaldo-oliveira-araujo-firmo.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "João Cancio de Mello Junior",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/joao-cancio-de-mello-junior.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Jaubert Carneiro Jaques",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/jaubert-carneiro-jaques.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Jayme Silvestre Corrêa Camargo",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/jayme-silvestre-correa-camargo.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Luiz Artur Rocha Hilário",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/luiz-artur-rocha-hilario.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Raimundo Messias Júnior",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/raimundo-messias-junior.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "José de Carvalho Barbosa",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/jose-de-carvalho-barbosa.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Márcio Idalmo Santos Miranda",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/marcio-idalmo-santos-miranda.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Jair José Varão Pinto Júnior",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/jair-jose-varao-pinto-junior.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "André Luiz Amorim Siqueira",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/andre-luiz-amorim-siqueira.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Newton Teixeira Carvalho",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/newton-teixeira-carvalho.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Ana Paula Nannetti Caixeta",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/ana-paula-nannetti-caixeta.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Luiz Carlos de Azevedo Corrêa Junior",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/luiz-carlos-de-azevedo-correa-junior.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Alexandre Quintino Santiago",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/alexandre-quintino-santiago.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Kárin Liliane de Lima Emmerich e Mendonça",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/karin-liliane-de-lima-emmerich-e-mendonca.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Luís Carlos Balbino Gambogi",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/luis-carlos-balbino-gambogi.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Sálvio Chaves",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/salvio-chaves.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Marco Aurelio Ferenzini",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/marco-aurelio-ferenzini.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Edison Feital Leite",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/edison-feital-leite.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Paulo Calmon Nogueira da Gama",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/paulo-calmon-nogueira-da-gama.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Octavio Augusto De Nigris Boccalini",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/octavio-augusto-de-nigris-boccalini.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Maria Aparecida de Oliveira Grossi Andrade",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/maria-aparecida-de-oliveira-grossi-andrade.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Vicente de Oliveira Silva",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/vicente-de-oliveira-silva.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Roberto Soares de Vasconcellos Paes",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/roberto-soares-de-vasconcellos-paes.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Alberto Diniz Junior",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/alberto-diniz-junior.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Manoel dos Reis Morais",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/manoel-dos-reis-morais.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Renato Luís Dresch",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/renato-luis-dresch.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Sérgio André da Fonseca Xavier",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/sergio-andre-da-fonseca-xavier.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "José Arthur de Carvalho Pereira Filho",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/jose-arthur-de-carvalho-pereira-filho.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Pedro Aleixo Neto",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/pedro-aleixo-neto.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Yeda Monteiro Athias",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/yeda-monteiro-athias.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Ângela de Lourdes Rodrigues",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/angela-de-lourdes-rodrigues.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Mônica Libânio Rocha Bretas",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/monica-libanio-rocha-bretas.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Wilson Almeida Benevides",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/wilson-almeida-benevides.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Juliana Campos Horta de Andrade",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/juliana-campos-horta-de-andrade.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Shirley Fenzi Bertão",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/shirley-fenzi-bertao.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Maurício Torres Soares",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/mauricio-torres-soares.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Alice de Souza Birchal",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/alice-de-souza-birchal.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Carlos Roberto de Faria",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/carlos-roberto-de-faria.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Carlos Henrique Perpétuo Braga",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/carlos-henrique-perpetuo-braga.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Gilson Soares Lemes",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/gilson-soares-lemes.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Fernando Vasconcelos Lins",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/fernando-vasconcelos-lins.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "José Américo Martins da Costa",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/jose-americo-martins-da-costa.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Ramom Tácio de Oliveira",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/ramom-tacio-de-oliveira.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Amauri Pinto Ferreira",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/amauri-pinto-ferreira.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Ronaldo Claret de Moraes",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/ronaldo-claret-de-moraes.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Marcos Henrique Caldeira Brant",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/marcos-henrique-caldeira-brant.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Valeria Rodrigues",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/valeria-rodrigues.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Dirceu Walace Baroni",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/dirceu-walace-baroni.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Genil Anacleto Rodrigues Filho",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/genil-anacleto-rodrigues-filho.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Maurício Pinto Ferreira",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/mauricio-pinto-ferreira.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Lílian Maciel Santos",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/lilian-maciel-santos.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Adriano de Mesquita Carneiro",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/adriano-de-mesquita-carneiro.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Bruno Terra Dias",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/bruno-terra-dias.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Octávio de Almeida Neves",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/octavio-de-almeida-neves.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Glauco Eduardo Soares Fernandes",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/glauco-eduardo-soares-fernandes.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Lailson Braga Baeta Neves",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/lailson-braga-baeta-neves.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Jaqueline Calábria Albuquerque",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/jaqueline-calabria-albuquerque.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Paula Cunha e Silva",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/paula-cunha-e-silva.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Maria Inês Rodrigues de Souza",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/maria-ines-rodrigues-de-souza.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Henrique Abi-Ackel Torres",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/henrique-abi-ackel-torres.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "José Eustáquio Lucas Pereira",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/jose-eustaquio-lucas-pereira.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Marcos Flávio Lucas Padula",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/marcos-flavio-lucas-padula.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Franklin Higino Caldeira Filho",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/franklin-higino-caldeira-filho.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Habib Felippe Jabour",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/habib-felippe-jabour.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Guilherme de Azeredo Passos",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/guilherme-de-azeredo-passos.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Ricardo Cavalcante Motta",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/ricardo-cavalcante-motta.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Rinaldo Kennedy Silva",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/rinaldo-kennedy-silva.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Cristiano Álvares Valladares do Lago",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/valladares-do-lago.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Maria Cristina Cunha Carvalhais",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/maria-cristina-cunha-carvalhais.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Danton Soares Martins",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/danton-soares-martins.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Fábio Torres de Sousa",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/fabio-torres-de-sousa.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Luzia Divina de Paula Peixôto",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/luzia-divina-de-paula-peixoto.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Rui de Almeida Magalhães",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/rui-de-almeida-magalhaes.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Âmalin Aziz Sant'Ana",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/amalin-aziz-sant-ana.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Leonardo de Faria Beraldo",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/leonardo-de-faria-beraldo.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "José Luiz de Moura Faleiros",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/jose-luiz-de-moura-faleiros.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Marcelo Pereira da Silva",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/marcelo-pereira-da-silva.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Joemilson Donizetti Lopes",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/joemilson-donizetti-lopes.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Lúcio Eduardo de Brito",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/lucio-eduardo-de-brito.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Delvan Barcelos Júnior",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/delvan-barcelos-junior.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Tiago Gomes De Carvalho Pinto",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/tiago-gomes-de-carvalho-pinto.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Enéias Xavier Gomes",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/eneias-xavier-gomes.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Daniela Villani Bonaccorsi Rodrigues",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/daniela-villani-bonaccorsi-rodrigues.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Marcelo de Oliveira Milagres",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/marcelo-de-oliveira-milagres.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Maria Luiza Santana Assunção",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/maria-luiza-santana-assuncao.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Paulo de Tarso Tamburini Souza",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/paulo-de-tarso-tamburini-souza.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Marco Antônio de Melo",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/marco-antonio-de-melo.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Maria Lúcia Cabral Caruso",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/maria-lucia-cabral-caruso.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Walner Barbosa Milward de Azevedo",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/walner-barbosa-milward-de-azevedo.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Eveline Mendonça Felix Gonçalves",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/eveline-mendonca-felix-goncalves.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Luiz Gonzaga Silveira Soares",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/luiz-gonzaga-silveira-soares.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Leopoldo Mameluque",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/leopoldo-mameluque.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Roberto Apolinário de Castro",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/roberto-apolinario-de-castro.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Nicolau Lupianhes Neto",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/nicolau-lupianhes-neto.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Mônica Aragão Martiniano Ferreira e Costa",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/monica-aragao-martiniano-ferreira-e-costa.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Régia Ferreira de Lima",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/regia-ferreira-de-lima.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Ivone Campos Guilarducci Cerqueira",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/ivone-campos-guilarducci-cerqueira.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Francisco Ricardo Sales Costa",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/francisco-ricardo-sales-costa.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Narciso Alvarenga Monteiro de Castro",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/narciso-alvarenga-monteiro-de-castro-8ACC82F9939E70E001939EF1BC7A22F9-00.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Luziene Medeiros do Nascimento Barbosa",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/luziene-medeiros-do-nascimento-barbosa.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Magid Nauef Láuar",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/magid-nauef-lauar-8ACC82F9939E70E001939EF755EF7D3D-00.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Roberto Ribeiro de Paiva Júnior",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/roberto-ribeiro-de-paiva-junior-8ACC808B970F67840197663006422C9E-00.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Luís Eduardo Alves Pifano",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/luis-eduardo-alves-pifano-8ACC808B9785B9CC0197AE3EAFB75485-00.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Paulo Fernando Naves de Resende",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/paulo-fernando-naves-de-resende-8ACC80D099C130720199DF6AEE384AAB-00.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Fabiana da Cunha Pasqua",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/fabiana-da-cunha-pasqua-8ACC82F9939E70E001939EFAB3111F9C-00.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Élito Batista de Almeida",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/elito-batista-de-almeida-8ACC81599610F408019616BBBB4B7D76-00.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Alexandre Magno Mendes do Valle",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/alexandre-magno-mendes-do-valle-8ACC82F9939E70E001939F3C433D6423-00.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Rosângela Cunha Fernandes",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/rosangela-cunha-fernandes-8ACC82199C4D174D019C51F25F45208B-00.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Raquel de Paula Rocha Soares",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/raquel-de-paula-rocha-soares-8ACC80299EAF5E3B019ECD49E66757EF-00.htm",
+      "categoria": "ativo"
+    },
+    {
+      "nome": "Marco Antonio Borges",
+      "url_curriculo": "https://www.tjmg.jus.br/portal-tjmg/institucional/magistratura/marco-antonio-borges-8ACC80299F3A140C019F3D825DFD2778-00.htm",
+      "categoria": "ativo"
+    }
+  ]
+}

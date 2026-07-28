@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "Lei 8.069/1990 (ECA)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["crianças e adolescentes"],
+      "grau": "moderado",
+      "trecho": "assegurar o direito à proteção especial contra os impactos da crise climática, da degradação ambiental e de desastres naturais",
+      "confianca": 0.75
+    },
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["crianças e adolescentes"],
+      "grau": "marginal",
+      "trecho": "inserindo a perspectiva de sustentabilidade ecológica no princípio da prioridade absoluta",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Lei 8.069/1990 (ECA)"],
+  "resumo_neutro": "A proposição altera o Estatuto da Criança e do Adolescente para assegurar o direito à proteção especial contra os impactos da crise climática, da degradação ambiental e de desastres naturais. Ela insere a perspectiva de sustentabilidade ecológica no princípio da prioridade absoluta que rege a proteção de crianças e adolescentes."
+}

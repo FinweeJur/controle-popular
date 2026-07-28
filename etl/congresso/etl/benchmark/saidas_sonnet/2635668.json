@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "privacidade_dados",
+      "dispositivo": "CF/88, art. 5º, XII",
+      "direcao": "restringe",
+      "mecanismo": "flexibiliza_limite",
+      "titulares": ["interlocutor cuja comunicação é compartilhada em processo penal sem seu consentimento"],
+      "grau": "moderado",
+      "trecho": "explicitar a licitude das provas oriundas de aplicativos de mensagens quando compartilhadas voluntariamente por um dos interlocutores",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Decreto-Lei 3.689/1941 (Código de Processo Penal)"],
+  "resumo_neutro": "A proposição altera o Código de Processo Penal (Decreto-Lei nº 3.689/1941) para explicitar que são lícitas as provas oriundas de aplicativos de mensagens quando compartilhadas voluntariamente por um dos interlocutores da comunicação. A ementa não especifica o dispositivo exato alterado nem eventuais condições adicionais para essa licitude."
+}

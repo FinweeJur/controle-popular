@@ -1,0 +1,18 @@
+requests>=2.32
+tenacity>=9.0
+python-dotenv>=1.0
+supabase>=2.9
+pydantic>=2.9
+pypdf>=5.1
+
+# Só o etl.tj.* (F8, 2ª instância) depende disto — os portais de TJ
+# injetam a lista de desembargadores via JS (confirmado no TJMG: HTML
+# puro devolve 0 nomes, só o menu). requests/curl não bastam aqui, ao
+# contrário do resto do projeto. Depois de instalar, rodar 1x:
+#   python -m playwright install chromium
+playwright>=1.61
+
+# Camada LLM compartilhada (Ollama/Claude/DeepSeek/Maritaca).
+# Só o ETL de texto (perfil, ofício) depende dela; o ETL de dados
+# (senado/*, cota) NÃO importa llm-br e roda sem ela.
+llm-br @ git+https://github.com/FinweeJur/llm-br@v0.1.0

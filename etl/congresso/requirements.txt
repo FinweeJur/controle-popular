@@ -1,0 +1,10 @@
+requests>=2.32
+tenacity>=9.0
+python-dotenv>=1.0
+supabase>=2.9
+pydantic>=2.9
+pypdf>=5.1
+striprtf>=0.0.26
+
+# Camada LLM compartilhada (Ollama/Claude/DeepSeek/Maritaca)
+llm-br @ git+https://github.com/FinweeJur/llm-br@v0.1.0

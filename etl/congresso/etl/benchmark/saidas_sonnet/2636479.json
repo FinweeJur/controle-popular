@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["pessoa com deficiência"],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre o direito de ingresso e permanência de pessoa com deficiência ou condição de saúde grave, acompanhada de cão e/ou gato de suporte emocional, em meios de transporte e em ambientes de uso coletivo, públicos ou privados",
+      "confianca": 0.75
+    },
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["pessoa com condição de saúde grave"],
+      "grau": "moderado",
+      "trecho": "pessoa com deficiência ou condição de saúde grave, acompanhada de cão e/ou gato de suporte emocional",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A proposição assegura o direito de ingresso e permanência de pessoa com deficiência ou com condição de saúde grave, quando acompanhada de cão e/ou gato de suporte emocional, em meios de transporte e em ambientes de uso coletivo, públicos ou privados."
+}

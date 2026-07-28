@@ -1,0 +1,68 @@
+name: ETL congresso
+
+on:
+  schedule:
+    - cron: "0 9 * * *"    # diário  — proposições, tramitações, análise
+    - cron: "0 10 * * 1"   # semanal — parlamentares, órgãos, bancadas
+  push:
+    paths:
+      - 'etl/congresso/**'
+      - '.github/workflows/etl-congresso.yml'
+  workflow_dispatch:
+    inputs:
+      modulo:
+        description: "Módulo específico (ex.: etl.camara.proposicoes). Vazio = rotina diária."
+        required: false
+
+jobs:
+  etl:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: etl/congresso
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      # A análise só roda no CI se houver um provedor remoto configurado —
+      # Ollama é local e não existe aqui. Sem estas variáveis, etl.analise
+      # detecta o provedor indisponível e sai limpo, sem falhar o job.
+      LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
+      LLM_MODEL: ${{ secrets.LLM_MODEL }}
+      LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: etl/congresso/requirements.txt
+      - run: pip install -r requirements.txt
+
+      # Sempre roda: barato e não depende de rede nem de banco. Se o
+      # extrator de normas regredir, é melhor descobrir aqui do que num
+      # grafo de legislação errado em produção.
+      - name: Regressão do extrator de normas
+        run: python -m etl.normas --testar
+
+      - name: Módulo específico
+        if: inputs.modulo != ''
+        run: python -m ${{ inputs.modulo }}
+
+      - name: Rotina semanal
+        if: inputs.modulo == '' && github.event.schedule == '0 10 * * 1'
+        run: |
+          python -m etl.camara.parlamentares
+          python -m etl.camara.orgaos
+          python -m etl.camara.bancadas
+          # Depende de parlamentares/orgaos acima e da migration
+          # 0004_orgao_membros.sql. Sem ele, `sugerirDestinatarios()` só
+          # tem o AUTOR do PL para sugerir — que é justamente o caso inútil
+          # que 0004 existe para resolver.
+          python -m etl.camara.orgaos_membros
+
+      - name: Rotina diária
+        if: inputs.modulo == '' && github.event.schedule != '0 10 * * 1'
+        run: |
+          python -m etl.camara.proposicoes
+          python -m etl.analise

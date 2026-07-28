@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "propriedade_funcao_social",
+      "dispositivo": "CF/88, art. 5º, XXII",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": ["proprietários de imóveis particulares"],
+      "grau": "moderado",
+      "trecho": "fortalecer as garantias do direito de propriedade, da segurança jurídica e do consentimento das pessoas legitimadas nos procedimentos de ingresso em imóvel particular",
+      "confianca": 0.6
+    },
+    {
+      "direito": "direitos_indigenas_quilombolas",
+      "dispositivo": "CF/88, art. 231",
+      "direcao": "restringe",
+      "mecanismo": "cria_requisito_acesso",
+      "titulares": ["povos indígenas em processos de demarcação de terras"],
+      "grau": "moderado",
+      "trecho": "fortalecer as garantias do direito de propriedade, da segurança jurídica e do consentimento das pessoas legitimadas nos procedimentos de ingresso em imóvel particular",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Lei 14.701/2023"],
+  "resumo_neutro": "A proposição altera a Lei nº 14.701/2023 para fortalecer as garantias do direito de propriedade, da segurança jurídica e da exigência de consentimento das pessoas legitimadas em procedimentos de ingresso em imóvel particular. Segundo as palavras-chave oficiais, o texto trata de prazo de comunicação prévia, demarcação de terras indígenas, responsabilidade objetiva e reparação de danos pela União. A ementa não especifica o artigo exato da Lei nº 14.701/2023 alterado."
+}

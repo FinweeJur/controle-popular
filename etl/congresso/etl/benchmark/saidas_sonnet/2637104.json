@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "Decreto-Lei 2.848/1940 (Código Penal), art. 246",
+      "direcao": "restringe",
+      "mecanismo": "flexibiliza_limite",
+      "titulares": ["crianças e adolescentes em idade escolar", "responsáveis legais que praticam educação familiar/domiciliar"],
+      "grau": "moderado",
+      "trecho": "excluir a caracterização de abandono intelectual nas hipóteses de educação familiar regularmente exercida",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": true,
+  "normas_alteradas": ["Decreto-Lei 2.848/1940 (Código Penal), art. 246"],
+  "resumo_neutro": "A proposição altera o art. 246 do Código Penal para acrescentar os §§ 1º e 2º. O texto exclui a caracterização do crime de abandono intelectual nas hipóteses em que a educação familiar (domiciliar) é regularmente exercida. Não há alteração de outros dispositivos além do artigo mencionado."
+}

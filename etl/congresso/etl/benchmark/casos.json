@@ -1,0 +1,194 @@
+{
+  "versao": "1.0.0",
+  "montado_em": "2026-07-22",
+  "_nota": "Conjunto balanceado de 30 proposições REAIS da Câmara para medir a rubrica (F4). Existe para responder a pergunta em aberto registrada em docs/F0-discovery.md §4.2: nas 5 primeiras proposições testadas TODAS saíram 'garantista', e com 5 casos não dá para distinguir viés de amostra de viés do modelo. Se for viés do modelo, o eixo inteiro do produto está quebrado — um classificador que nunca diz 'reducionista' não classifica nada. 10 garantistas + 10 reducionistas + 10 técnicos é o mínimo para a diferença aparecer.",
+
+  "_nota_rotulo_esperado": "O rótulo esperado é JULGAMENTO HUMANO SOBRE A EMENTA, feito na montagem deste conjunto e revisável. Ele NÃO é verdade oficial da Câmara — a Câmara não classifica proposição por eixo de direitos. Discordou de um caso? Corrija aqui, com a justificativa, e rode de novo: é assim que a régua melhora. O que NÃO se deve fazer é ajustar o caso para o modelo acertar.",
+
+  "_nota_reducionista": "A régua é a do §4 do plano e do rubrica.json: agravar pena que recai sobre o titular do direito (ou ampliar poder punitivo estatal sobre a liberdade) conta como RESTRIÇÃO, porque a régua declarada do app é garantista. Punir quem VIOLA direito de terceiro (trabalho infantil, violência contra a mulher) é AMPLIAÇÃO. Quem discorda dessa régua discorda do produto, não do teste — e ela está publicada em /metodologia justamente por isso.",
+
+  "casos": [
+    {
+      "id_camara": "2638852",
+      "identificacao": "PL 3631/2026",
+      "esperado": "reducionista",
+      "justificativa": "Aumenta as penas de dano e dano qualificado. Expansão punitiva pura sobre o titular da liberdade, sem contrapartida de proteção a terceiro identificável."
+    },
+    {
+      "id_camara": "2636094",
+      "identificacao": "PL 3396/2026",
+      "esperado": "reducionista",
+      "justificativa": "Aumenta a pena de associação criminosa e cria novas causas de aumento. Mesmo eixo: mais pena sobre o réu."
+    },
+    {
+      "id_camara": "2639518",
+      "identificacao": "PL 3699/2026",
+      "esperado": "reducionista",
+      "justificativa": "Recrudesce o tratamento penal do tráfico de pessoas: equipara a hediondo e VEDA acordo de não persecução penal. A vedação do ANPP é restrição de garantia processual, e é ela que decide o caso — a finalidade protetiva do tipo penal não apaga o efeito sobre o processo."
+    },
+    {
+      "id_camara": "2640325",
+      "identificacao": "PL 3778/2026",
+      "esperado": "reducionista",
+      "justificativa": "Amplia o prazo da prisão temporária em investigações complexas. Prisão cautelar mais longa antes de condenação restringe liberdade e devido processo."
+    },
+    {
+      "id_camara": "2635668",
+      "identificacao": "PL 3349/2026",
+      "esperado": "reducionista",
+      "justificativa": "Declara lícita a prova de aplicativo de mensagens compartilhada por um interlocutor. Amplia o acervo probatório da acusação às custas de privacidade e sigilo de comunicação."
+    },
+    {
+      "id_camara": "2635679",
+      "identificacao": "PL 3358/2026",
+      "esperado": "reducionista",
+      "justificativa": "Obriga advertência prévia antes de multa em infração administrativa ambiental. Enfraquece a sanção ambiental existente — desregulamenta proteção."
+    },
+    {
+      "id_camara": "2637104",
+      "identificacao": "PL 3457/2026",
+      "esperado": "reducionista",
+      "justificativa": "Descaracteriza abandono intelectual quando há educação domiciliar. Retira proteção penal do direito à educação da criança."
+    },
+    {
+      "id_camara": "2637095",
+      "identificacao": "PL 3455/2026",
+      "esperado": "reducionista",
+      "justificativa": "Veda a imposição de cotas de gênero, raciais e sociais no quadro funcional de empresa privada. Restringe ação afirmativa — igualdade material."
+    },
+    {
+      "id_camara": "2638522",
+      "identificacao": "PL 3619/2026",
+      "esperado": "reducionista",
+      "justificativa": "Exige consentimento do proprietário e prazos para ingresso em imóvel particular em procedimento de demarcação de terra indígena. Cria requisito de acesso ao direito indígena à terra."
+    },
+    {
+      "id_camara": "2636566",
+      "identificacao": "PL 3432/2026",
+      "esperado": "reducionista",
+      "justificativa": "Impõe distância mínima de policiais em ocorrência. Restringe registro e fiscalização social da atividade policial — liberdade de informação e controle social."
+    },
+
+    {
+      "id_camara": "2640488",
+      "identificacao": "PL 3813/2026",
+      "esperado": "garantista",
+      "justificativa": "Cria tipo penal para submissão de criança a trabalho infantil. Pena que recai sobre quem VIOLA direito de terceiro — ampliativo pela régua do §4."
+    },
+    {
+      "id_camara": "2640483",
+      "identificacao": "PL 3808/2026",
+      "esperado": "garantista",
+      "justificativa": "Altera a LBI para prevenir adoecimento mental de trabalhadores neurodivergentes sob metas intensivas. Cria proteção nova a PcD no trabalho."
+    },
+    {
+      "id_camara": "2639317",
+      "identificacao": "PL 3664/2026",
+      "esperado": "garantista",
+      "justificativa": "Regime de proteção de entregadores e motoristas de aplicativo em acidentes, com seguro obrigatório. Cria direito onde não havia."
+    },
+    {
+      "id_camara": "2639540",
+      "identificacao": "PL 3700/2026",
+      "esperado": "garantista",
+      "justificativa": "Garante livre acesso a praias, rios e cachoeiras e veda cobrança. Amplia acesso a bem de uso comum do povo."
+    },
+    {
+      "id_camara": "2640473",
+      "identificacao": "PL 3800/2026",
+      "esperado": "garantista",
+      "justificativa": "Insere no ECA proteção especial de criança e adolescente contra impactos da crise climática e desastres."
+    },
+    {
+      "id_camara": "2640227",
+      "identificacao": "PL 3766/2026",
+      "esperado": "garantista",
+      "justificativa": "Dispõe sobre direitos dos professores contratados por tempo determinado — amplia titularidade de direitos trabalhistas a categoria hoje desprotegida."
+    },
+    {
+      "id_camara": "2636479",
+      "identificacao": "PL 3422/2026",
+      "esperado": "garantista",
+      "justificativa": "Assegura ingresso e permanência de pessoa com deficiência acompanhada de animal de suporte emocional em transporte e ambientes coletivos."
+    },
+    {
+      "id_camara": "2637298",
+      "identificacao": "PL 3487/2026",
+      "esperado": "garantista",
+      "justificativa": "Política Nacional de Promoção da Empregabilidade de Mulheres Vítimas de Violência. Amplia acesso ao trabalho a grupo vulnerável."
+    },
+    {
+      "id_camara": "2635106",
+      "identificacao": "PL 3286/2026",
+      "esperado": "garantista",
+      "justificativa": "Inclui egressos de alas psiquiátricas do sistema prisional no Programa De Volta para Casa. Amplia titularidade de benefício de saúde mental."
+    },
+    {
+      "id_camara": "2636989",
+      "identificacao": "PL 3446/2026",
+      "esperado": "garantista",
+      "justificativa": "Reserva percentual mínimo de vagas em contratos públicos para população em situação de rua. Ação afirmativa de acesso ao trabalho."
+    },
+
+    {
+      "id_camara": "2640228",
+      "identificacao": "PL 3767/2026",
+      "esperado": "tecnico",
+      "justificativa": "Confere título de Capital Nacional do Astroturismo. Honorífico, não altera direito de ninguém."
+    },
+    {
+      "id_camara": "2639878",
+      "identificacao": "PL 3745/2026",
+      "esperado": "tecnico",
+      "justificativa": "Título de Capital Nacional do Doce de Leite. Honorífico."
+    },
+    {
+      "id_camara": "2639661",
+      "identificacao": "PL 3713/2026",
+      "esperado": "tecnico",
+      "justificativa": "Título de Capital Nacional do Tomate. Honorífico."
+    },
+    {
+      "id_camara": "2639851",
+      "identificacao": "PL 3739/2026",
+      "esperado": "tecnico",
+      "justificativa": "Inscreve Herbert de Souza (Betinho) no Livro dos Heróis e Heroínas da Pátria. Homenagem — armadilha proposital: o nome é associado a direitos humanos, e o modelo pode se deixar levar pelo tema em vez do efeito jurídico."
+    },
+    {
+      "id_camara": "2641453",
+      "identificacao": "PL 4747/2026",
+      "esperado": "tecnico",
+      "justificativa": "Inscreve Henriqueta Lisboa no Livro dos Heróis e Heroínas da Pátria. Homenagem."
+    },
+    {
+      "id_camara": "2638519",
+      "identificacao": "PL 3617/2026",
+      "esperado": "tecnico",
+      "justificativa": "Título de Capital Nacional dos Botecos a Belo Horizonte. Honorífico."
+    },
+    {
+      "id_camara": "2638296",
+      "identificacao": "PL 3575/2026",
+      "esperado": "tecnico",
+      "justificativa": "Denomina aeroporto e revoga a lei de denominação anterior. Segunda armadilha: a ementa contém 'revoga a Lei nº 7.585' — se o modelo reagir à palavra 'revoga' sem ler o objeto, produz item onde não há direito nenhum em jogo."
+    },
+    {
+      "id_camara": "2638225",
+      "identificacao": "PL 3561/2026",
+      "esperado": "tecnico",
+      "justificativa": "Denomina ponte sobre o Rio Xingu. Honorífico."
+    },
+    {
+      "id_camara": "2638415",
+      "identificacao": "PL 3596/2026",
+      "esperado": "tecnico",
+      "justificativa": "Institui o Dia Nacional dos Centros de Tradições Gaúchas. Data comemorativa."
+    },
+    {
+      "id_camara": "2638030",
+      "identificacao": "PL 3547/2026",
+      "esperado": "tecnico",
+      "justificativa": "Título de Capital Nacional da Moda e da Confecção. Honorífico."
+    }
+  ]
+}

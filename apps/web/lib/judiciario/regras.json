@@ -1,0 +1,159 @@
+{
+  "versao": "1.1.0",
+  "atualizado_em": "2026-07-24",
+  "_leia_isto": [
+    "Régua canônica do app. Lida por lib/regras.ts (frontend) E por etl/vacancia.py (ETL).",
+    "NUNCA duplicar estes valores em código: duplicar gera deriva silenciosa entre o que",
+    "a tela mostra e o que o ETL calcula — foi exatamente o que a rubrica do /congresso",
+    "evitou ao viver só em rubrica.json.",
+    "Toda projeção gravada carimba `versao_regra`, para que uma futura Emenda permita",
+    "reprojeção em massa em vez de reescrita."
+  ],
+
+  "idades": {
+    "aposentadoria_compulsoria": {
+      "anos": 75,
+      "base_legal": "EC 88/2015 + LC 152/2015",
+      "nota": "Constitucionalidade da LC 152/2015 confirmada pelo STF em 2023. Antes de 2015 eram 70 anos — relevante só para série histórica.",
+      "vigente_desde": "2015-12-03"
+    },
+    "teto_indicacao": {
+      "anos": 70,
+      "base_legal": "EC 122/2022",
+      "nota": "Elevado de 65 para 70. Vale para STF, STJ, TRFs, TST, TRTs, TCU e membros civis do STM.",
+      "vigente_desde": "2022-05-17"
+    },
+    "minima_indicacao": {
+      "anos": 35,
+      "base_legal": "CF art. 101"
+    }
+  },
+
+  "tribunais": {
+    "stf": {
+      "nome": "Supremo Tribunal Federal",
+      "ramo": "constitucional",
+      "cadeiras": 11,
+      "sabatina_senado": true,
+      "quorum_senado": "maioria absoluta",
+      "base_legal": "CF art. 101",
+      "cotas": { "livre": 11 },
+      "nota": "Sem cota de origem — por isso a Mensagem de indicação NÃO cita dispositivo de vaga. Verificado: 19 de 19 indicações ao STF em 2003–2026 não citam artigo."
+    },
+    "stj": {
+      "nome": "Superior Tribunal de Justiça",
+      "ramo": "superior",
+      "cadeiras": 33,
+      "sabatina_senado": true,
+      "quorum_senado": "maioria absoluta",
+      "base_legal": "CF art. 104, parágrafo único",
+      "cotas": { "terco_trf": 11, "terco_tj": 11, "terco_oab": 6, "terco_mp": 5 },
+      "nota": "As 33 cadeiras se dividem em três grupos de origem: um terço vem de juízes federais (TRF), um terço vem de desembargadores estaduais (TJ), e o terço restante alterna entre advogados indicados pela OAB e membros do Ministério Público — hoje 6 vagas de advocacia e 5 do Ministério Público, mas essa divisão pode mudar a cada nova vaga desse grupo."
+    },
+    "tst": {
+      "nome": "Tribunal Superior do Trabalho",
+      "ramo": "trabalho",
+      "cadeiras": 27,
+      "sabatina_senado": true,
+      "quorum_senado": "maioria absoluta",
+      "base_legal": "CF art. 111-A",
+      "cotas": { "quinto_oab_mpt": 5, "carreira_trt": 22 }
+    },
+    "stm": {
+      "nome": "Superior Tribunal Militar",
+      "ramo": "militar",
+      "cadeiras": 15,
+      "sabatina_senado": true,
+      "base_legal": "CF art. 123",
+      "cotas": {
+        "militar_marinha": 3,
+        "militar_exercito": 4,
+        "militar_aeronautica": 3,
+        "civil_stm": 5
+      }
+    },
+    "tse": {
+      "nome": "Tribunal Superior Eleitoral",
+      "ramo": "eleitoral",
+      "cadeiras": 7,
+      "sabatina_senado": false,
+      "base_legal": "CF arts. 119 e 121, §2º",
+      "cotas": { "eletiva_stf": 3, "eletiva_stj": 2, "advogado_lista_stf": 2 },
+      "mandato_anos": 2,
+      "biennios_maximos": 2,
+      "nota": "NÃO passa pelo Senado: 3 ministros do STF e 2 do STJ são eleitos pelos próprios tribunais; os 2 advogados são nomeados pelo Presidente a partir de lista sêxtupla do STF. Cadeiras têm MANDATO, não vitaliciedade."
+    }
+  },
+
+  "segunda_instancia": {
+    "base_legal": "CF art. 94 (quinto) e art. 93, II (carreira)",
+    "quinto": {
+      "fracao": 0.2,
+      "origens": ["advocacia", "ministerio_publico"],
+      "requisito_anos": 10,
+      "rito": ["lista_sextupla_orgao_de_classe", "lista_triplice_tribunal", "nomeacao_executivo"],
+      "prazo_nomeacao_dias": 20,
+      "prazo_base_legal": "CF art. 94, parágrafo único"
+    },
+    "carreira": {
+      "fracao": 0.8,
+      "criterios": ["antiguidade", "merecimento"],
+      "nota": "Alternados (CF art. 93, II)."
+    },
+    "aplica_se_a": ["tj", "trf", "trt"],
+    "nota": "NÃO se aplica a STF nem a STJ. Nomeação de TJ/TRF/TRT não passa pelo Senado."
+  },
+
+  "direcao_tribunal": {
+    "cargos": ["presidente", "vice_presidente", "corregedor"],
+    "mandato_anos": 2,
+    "reeleicao": false,
+    "base_legal": "LOMAN (LC 35/1979), art. 102",
+    "verify": "Variação por regimento interno de cada tribunal e jurisprudência do STF/CNJ — confirmar antes de projetar elegibilidade."
+  },
+
+  "orgao_especial": {
+    "minimo_membros": 11,
+    "maximo_membros": 25,
+    "gatilho_tribunal_acima_de": 25,
+    "metade_por": "antiguidade",
+    "metade_por_eleicao_do": "tribunal_pleno",
+    "base_legal": "CF art. 93, XI"
+  },
+
+  "presidentes": {
+    "_leia_isto": [
+      "Adicionado v1.1.0 (2026-07-24). A API do Senado devolve `autoria: 'Presidência da República'`",
+      "em toda Mensagem — NUNCA o nome do Presidente. As 130 nomeações reais gravadas pela F2",
+      "chegaram com `autoridade_nomeante = null` até este ponto: o poder de indicação só",
+      "funcionava para o STF porque o seed manual (etl/dados/magistrados-stf.json) preenchia à",
+      "mão. Esta tabela deriva a autoridade DETERMINISTICAMENTE pela data da MENSAGEM",
+      "(`data_mensagem` — o ato de nomear, não `data_deliberacao`, que é quando o Senado vota",
+      "e pode cair sob um mandato diferente do de quem nomeou).",
+      "Datas de posse/saída oficiais (fonte: TSE/planalto). `Michel Temer` cobre também o",
+      "período de presidente EM EXERCÍCIO durante o afastamento de Dilma Rousseff",
+      "(2016-05-12 a 2016-08-31): qualquer Mensagem desse intervalo foi de fato submetida por",
+      "ele, não por ela — tratado como um único intervalo contínuo por simplicidade, já que",
+      "nenhuma indicação judicial coube exatamente nessa janela de 111 dias no corpus 2003-2026."
+    ],
+    "mandatos": [
+      { "nome": "Fernando Henrique Cardoso", "inicio": null, "fim": "2003-01-01" },
+      { "nome": "Luiz Inácio Lula da Silva", "inicio": "2003-01-01", "fim": "2011-01-01" },
+      { "nome": "Dilma Rousseff", "inicio": "2011-01-01", "fim": "2016-05-12" },
+      { "nome": "Michel Temer", "inicio": "2016-05-12", "fim": "2019-01-01" },
+      { "nome": "Jair Bolsonaro", "inicio": "2019-01-01", "fim": "2023-01-01" },
+      { "nome": "Luiz Inácio Lula da Silva", "inicio": "2023-01-01", "fim": null }
+    ]
+  },
+
+  "motivos_vacancia": [
+    "compulsoria_75",
+    "voluntaria",
+    "falecimento",
+    "renuncia",
+    "promocao",
+    "fim_mandato",
+    "remocao",
+    "transferencia_reserva"
+  ]
+}

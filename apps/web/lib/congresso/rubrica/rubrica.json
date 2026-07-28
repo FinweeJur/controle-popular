@@ -1,0 +1,142 @@
+{
+  "versao": "1.0.0",
+  "_nota": "Fonte canônica única da rubrica. Lida por lib/rubrica.ts (frontend/score) E por etl/rubrica.py (prompt + validação). Duplicar a taxonomia nos dois lados garantiria deriva silenciosa entre o que o modelo é instruído a produzir e o que o app sabe pontuar — por isso ela vive aqui e em nenhum outro lugar. Mudou a rubrica? Sobe `versao`: `analises.versao_rubrica` guarda a versão que gerou cada linha, então dá para reanalisar só o que ficou para trás.",
+
+  "direitos": {
+    "vida_integridade": {
+      "rotulo": "Vida e integridade física",
+      "ancoras": ["CF/88, art. 5º, caput", "CF/88, art. 5º, III"]
+    },
+    "igualdade_nao_discriminacao": {
+      "rotulo": "Igualdade e não discriminação",
+      "ancoras": ["CF/88, art. 3º, IV", "CF/88, art. 5º, caput", "CF/88, art. 5º, I"]
+    },
+    "liberdade_expressao": {
+      "rotulo": "Liberdade de expressão e informação",
+      "ancoras": ["CF/88, art. 5º, IV", "CF/88, art. 5º, IX", "CF/88, art. 220"]
+    },
+    "liberdade_religiosa": {
+      "rotulo": "Liberdade de consciência e crença",
+      "ancoras": ["CF/88, art. 5º, VI", "CF/88, art. 19, I"]
+    },
+    "devido_processo_ampla_defesa": {
+      "rotulo": "Devido processo legal e ampla defesa",
+      "ancoras": ["CF/88, art. 5º, LIV", "CF/88, art. 5º, LV", "CF/88, art. 5º, LVII"]
+    },
+    "privacidade_dados": {
+      "rotulo": "Privacidade e proteção de dados",
+      "ancoras": ["CF/88, art. 5º, X", "CF/88, art. 5º, XII", "CF/88, art. 5º, LXXIX", "Lei 13.709/2018 (LGPD)"]
+    },
+    "propriedade_funcao_social": {
+      "rotulo": "Propriedade e função social",
+      "ancoras": ["CF/88, art. 5º, XXII", "CF/88, art. 5º, XXIII", "CF/88, art. 170, III", "CF/88, art. 186"]
+    },
+    "saude": {
+      "rotulo": "Saúde",
+      "ancoras": ["CF/88, art. 6º", "CF/88, art. 196", "CF/88, art. 198", "Lei 8.080/1990"]
+    },
+    "educacao": {
+      "rotulo": "Educação",
+      "ancoras": ["CF/88, art. 6º", "CF/88, art. 205", "CF/88, art. 208", "Lei 9.394/1996 (LDB)"]
+    },
+    "trabalho": {
+      "rotulo": "Trabalho e direitos trabalhistas",
+      "ancoras": ["CF/88, art. 6º", "CF/88, art. 7º", "CF/88, art. 8º", "Decreto-Lei 5.452/1943 (CLT)"]
+    },
+    "previdencia_assistencia": {
+      "rotulo": "Previdência e assistência social",
+      "ancoras": ["CF/88, art. 6º", "CF/88, art. 194", "CF/88, art. 201", "CF/88, art. 203", "Lei 8.213/1991", "Lei 8.742/1993 (LOAS)"]
+    },
+    "moradia": {
+      "rotulo": "Moradia",
+      "ancoras": ["CF/88, art. 6º", "CF/88, art. 23, IX", "CF/88, art. 182", "Lei 10.257/2001 (Estatuto da Cidade)"]
+    },
+    "alimentacao": {
+      "rotulo": "Alimentação adequada",
+      "ancoras": ["CF/88, art. 6º", "Lei 11.346/2006 (LOSAN)"]
+    },
+    "meio_ambiente": {
+      "rotulo": "Meio ambiente ecologicamente equilibrado",
+      "ancoras": ["CF/88, art. 225", "Lei 6.938/1981", "Lei 12.651/2012 (Código Florestal)"]
+    },
+    "cultura_lazer": {
+      "rotulo": "Cultura, esporte e lazer",
+      "ancoras": ["CF/88, art. 6º", "CF/88, art. 215", "CF/88, art. 216", "CF/88, art. 217"]
+    },
+    "direitos_crianca_adolescente": {
+      "rotulo": "Direitos da criança e do adolescente",
+      "ancoras": ["CF/88, art. 227", "CF/88, art. 228", "Lei 8.069/1990 (ECA)"]
+    },
+    "direitos_idoso": {
+      "rotulo": "Direitos da pessoa idosa",
+      "ancoras": ["CF/88, art. 230", "Lei 10.741/2003 (Estatuto da Pessoa Idosa)"]
+    },
+    "direitos_pcd": {
+      "rotulo": "Direitos da pessoa com deficiência",
+      "ancoras": ["CF/88, art. 23, II", "CF/88, art. 227, §1º, II", "Lei 13.146/2015 (LBI)", "Decreto 6.949/2009 (Convenção de Nova York)"]
+    },
+    "direitos_mulher": {
+      "rotulo": "Direitos das mulheres",
+      "ancoras": ["CF/88, art. 5º, I", "CF/88, art. 226, §8º", "Lei 11.340/2006 (Maria da Penha)", "Lei 14.611/2023"]
+    },
+    "direitos_lgbtqia": {
+      "rotulo": "Direitos LGBTQIA+",
+      "ancoras": ["CF/88, art. 3º, IV", "CF/88, art. 5º, caput", "STF, ADO 26 / MI 4.733"]
+    },
+    "direitos_indigenas_quilombolas": {
+      "rotulo": "Direitos indígenas e quilombolas",
+      "ancoras": ["CF/88, art. 231", "CF/88, art. 232", "ADCT, art. 68", "Decreto 5.051/2004 (Convenção 169 da OIT)"]
+    },
+    "direitos_consumidor": {
+      "rotulo": "Direitos do consumidor",
+      "ancoras": ["CF/88, art. 5º, XXXII", "CF/88, art. 170, V", "Lei 8.078/1990 (CDC)"]
+    },
+    "acesso_justica": {
+      "rotulo": "Acesso à justiça",
+      "ancoras": ["CF/88, art. 5º, XXXV", "CF/88, art. 5º, LXXIV", "CF/88, art. 134"]
+    },
+    "participacao_democratica": {
+      "rotulo": "Participação democrática e controle social",
+      "ancoras": ["CF/88, art. 1º, parágrafo único", "CF/88, art. 14", "CF/88, art. 5º, XXXIII", "Lei 12.527/2011 (LAI)"]
+    }
+  },
+
+  "mecanismos": {
+    "cria_direito":              { "rotulo": "Cria direito novo", "direcao": "amplia" },
+    "amplia_titularidade":       { "rotulo": "Amplia quem tem o direito", "direcao": "amplia" },
+    "amplia_acesso":             { "rotulo": "Facilita o acesso ao direito", "direcao": "amplia" },
+    "cria_garantia_processual":  { "rotulo": "Cria garantia processual", "direcao": "amplia" },
+    "aumenta_financiamento":     { "rotulo": "Amplia financiamento da política", "direcao": "amplia" },
+    "cria_mecanismo_fiscalizacao": { "rotulo": "Cria fiscalização ou controle", "direcao": "amplia" },
+    "criminaliza_violacao":      { "rotulo": "Pune quem viola o direito", "direcao": "amplia" },
+
+    "revoga_direito":            { "rotulo": "Revoga direito existente", "direcao": "restringe" },
+    "restringe_titularidade":    { "rotulo": "Reduz quem tem o direito", "direcao": "restringe" },
+    "cria_requisito_acesso":     { "rotulo": "Cria exigência para acessar o direito", "direcao": "restringe" },
+    "flexibiliza_limite":        { "rotulo": "Flexibiliza limite protetivo", "direcao": "restringe" },
+    "reduz_financiamento":       { "rotulo": "Reduz financiamento da política", "direcao": "restringe" },
+    "desregulamenta_protecao":   { "rotulo": "Desregulamenta proteção existente", "direcao": "restringe" },
+    "transfere_onus_ao_titular": { "rotulo": "Transfere o ônus ao titular do direito", "direcao": "restringe" },
+    "criminaliza_conduta_do_titular": { "rotulo": "Criminaliza conduta do próprio titular", "direcao": "restringe" },
+    "aumenta_pena":              { "rotulo": "Aumenta pena ou rigor punitivo", "direcao": "restringe" },
+    "restringe_garantia_processual": { "rotulo": "Restringe garantia processual", "direcao": "restringe" }
+  },
+
+  "_nota_mecanismos": "`aumenta_pena` e `criminaliza_violacao` são o par que mais exige cuidado e por isso ficam explicados aqui. Agravar pena é classificado como RESTRITIVO quando recai sobre o titular do direito ou amplia o poder punitivo estatal sobre a liberdade (a régua declarada do app é garantista, e o garantismo penal trata expansão punitiva como restrição de direitos). Já `criminaliza_violacao` é AMPLIATIVO: punir quem viola um direito de terceiro (feminicídio, racismo, crime ambiental) protege o titular. A distinção é quem sofre a pena — não se há pena.",
+
+  "pesos": {
+    "grau":    { "marginal": 1, "moderado": 3, "estrutural": 6 },
+    "direcao": { "amplia": 1, "restringe": -1, "neutro": 0 }
+  },
+
+  "faixas": [
+    { "min": 6,          "rotulo": "garantista_forte",    "label": "Fortemente garantista" },
+    { "min": 1,          "rotulo": "garantista",          "label": "Garantista" },
+    { "min": -0.999,     "rotulo": "neutro",              "label": "Neutro ou técnico" },
+    { "min": -5.999,     "rotulo": "reducionista",        "label": "Reducionista" },
+    { "min": -999999,    "rotulo": "reducionista_forte",  "label": "Fortemente reducionista" }
+  ],
+
+  "confianca_minima": 0.5,
+  "_nota_confianca": "Item com confiança abaixo disso não é descartado, mas joga a análise inteira para `status='requer_revisao'`: com um modelo local pequeno, um chute de baixa confiança que move o rótulo é pior que nenhum rótulo."
+}

@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+.open-next/
+.wrangler/
+.env
+.env.local
+*.tsbuildinfo
+next-env.d.ts
+__pycache__/
+.venv/
+
+# Credenciais que os repos originais ignoravam e o `cp -r` da unificacao
+# arrastou junto. O ETL do Betim recebe esta via secrets.GCP_SA_JSON e a
+# escreve em tempo de execucao — ela nunca deve existir versionada.
+gcp-service-account.json
+*service-account*.json

@@ -1,0 +1,69 @@
+{
+  "_nota": "Fonte canônica única dos temas editoriais. Lida por lib/temas.ts (filtro na UI) E por etl/temas.py (seleção de fila de análise em lote) — mesmo padrão de rubrica.json: duplicar a definição nos dois lados garantiria deriva silenciosa entre o que a UI filtra e o que o ETL prioriza.",
+
+  "_nota_fontes": "TRÊS fontes por tema, checadas nesta ordem: (1) temasOficiais — a taxonomia da própria Câmara, já gravada em proposicoes.temas_oficiais; (2) direitos — slugs de rubrica.json, vindos de analise_itens.direito quando a proposição já foi analisada; (3) padrao — regex sobre ementa+keywords, só para tema que a Câmara não classifica ('Mulheres' e 'Mineração' não são temas oficiais). Todo padrão foi testado contra as 5.543 ementas reais sincronizadas em 2026-07-23 antes de entrar (mulheres: 520 acertos, `\\bg[êe]nero\\b` conferido especificamente contra 'gênero alimentício' — 0 falsos positivos; mineração: 25 acertos, todos genuinamente do setor).",
+
+  "temas": [
+    {
+      "slug": "direitos-humanos",
+      "nome": "Direitos Humanos",
+      "descricao": "Igualdade, não discriminação, direitos de minorias e garantias fundamentais.",
+      "temasOficiais": ["Direitos Humanos e Minorias"],
+      "direitos": [
+        "igualdade_nao_discriminacao",
+        "direitos_lgbtqia",
+        "direitos_indigenas_quilombolas",
+        "direitos_pcd",
+        "direitos_crianca_adolescente",
+        "direitos_idoso",
+        "vida_integridade"
+      ]
+    },
+    {
+      "slug": "mulheres",
+      "nome": "Mulheres",
+      "descricao": "Enfrentamento à violência, igualdade salarial, saúde da mulher e direitos reprodutivos.",
+      "direitos": ["direitos_mulher"],
+      "padrao": "\\bmulher|feminin|\\bg[êe]nero\\b|feminic[íi]dio|maria da penha|gestante|materni"
+    },
+    {
+      "slug": "saude",
+      "nome": "Saúde",
+      "descricao": "SUS, acesso a tratamento, medicamentos e políticas sanitárias.",
+      "temasOficiais": ["Saúde"],
+      "direitos": ["saude"]
+    },
+    {
+      "slug": "meio-ambiente",
+      "nome": "Meio Ambiente",
+      "descricao": "Licenciamento, clima, unidades de conservação, água e proteção da fauna e flora.",
+      "temasOficiais": ["Meio Ambiente e Desenvolvimento Sustentável"],
+      "direitos": ["meio_ambiente"]
+    },
+    {
+      "slug": "mineracao",
+      "nome": "Mineração",
+      "descricao": "Lavra, barragens de rejeito, garimpo e os efeitos sobre territórios e comunidades.",
+      "padrao": "minera[çc][ãa]o|minera[dr]|barragem|rejeito|\\blavra\\b|garimpo"
+    },
+    {
+      "slug": "seguranca",
+      "nome": "Segurança",
+      "descricao": "Segurança pública, política criminal e o alcance do poder punitivo do Estado.",
+      "temasOficiais": ["Defesa e Segurança", "Direito Penal e Processual Penal"],
+      "direitos": ["seguranca_publica", "devido_processo_ampla_defesa"]
+    },
+    {
+      "slug": "economia",
+      "nome": "Economia e Trabalho",
+      "descricao": "Direitos trabalhistas, tributação, orçamento público e regulação econômica.",
+      "temasOficiais": [
+        "Economia",
+        "Trabalho e Emprego",
+        "Finanças Públicas e Orçamento",
+        "Indústria, Comércio e Serviços"
+      ],
+      "direitos": ["trabalho", "previdencia_assistencia", "direitos_consumidor"]
+    }
+  ]
+}

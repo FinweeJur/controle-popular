@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "Lei 8.069/1990 (ECA)",
+      "direcao": "amplia",
+      "mecanismo": "criminaliza_violacao",
+      "titulares": ["crianças e adolescentes submetidos a trabalho infantil"],
+      "grau": "moderado",
+      "trecho": "prever o crime de submissão de criança ou adolescente a trabalho infantil nas condições que especifica, tipificando as condutas que expõem menores a riscos físicos, psíquicos ou morais graves",
+      "confianca": 0.85
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Lei 8.069/1990 (Estatuto da Criança e do Adolescente)"],
+  "resumo_neutro": "A proposição altera o Estatuto da Criança e do Adolescente (Lei nº 8.069/1990) para prever o crime de submissão de criança ou adolescente a trabalho infantil nas condições especificadas no texto, tipificando condutas que expõem menores a riscos físicos, psíquicos ou morais graves. Conforme as palavras-chave oficiais, o tipo penal se relaciona a circunstâncias como trabalho noturno, insalubridade e prejuízo à frequência escolar."
+}
