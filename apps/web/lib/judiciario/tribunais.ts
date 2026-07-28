@@ -1,4 +1,4 @@
-import { getSupabaseClient, fetchAll } from "@/lib/judiciario/supabase";
+import * as q from "@/lib/db/queries/judiciario";
 import { TRIBUNAIS } from "@/lib/judiciario/regras";
 
 export interface Tribunal {
@@ -79,11 +79,8 @@ export interface MandatoDirecao {
  * Devolve `null` só nunca acontece aqui de propósito: a régua é o piso.
  */
 export async function listarTribunais(): Promise<Tribunal[]> {
-  const sb = getSupabaseClient();
-  if (sb) {
-    const { data } = await sb.from("tribunais").select("*").order("ramo");
-    if (data && data.length) return data as Tribunal[];
-  }
+  const doBanco = await q.listarTribunais();
+  if (doBanco && doBanco.length) return doBanco as Tribunal[];
   // Fallback pela régua — composição legal, sem ocupantes.
   return Object.entries(TRIBUNAIS).map(([id, t]) => ({
     id,
@@ -107,27 +104,15 @@ export async function obterTribunal(id: string): Promise<Tribunal | null> {
 
 /** Cadeiras de um tribunal, com o ocupante atual (via vw_vacancia). */
 export async function ocupacoesAtuais(tribunalId: string): Promise<Ocupacao[]> {
-  const sb = getSupabaseClient();
-  if (!sb) return [];
-  const { data } = await sb
-    .from("vw_vacancia")
-    .select("*")
-    .eq("tribunal_id", tribunalId)
-    .eq("atual", true);
-  return (data as Ocupacao[]) ?? [];
+  return (await q.ocupacoesAtuais(tribunalId)) as Ocupacao[];
 }
 
 /** Todas as ocupações atuais com vacância projetada conhecida, ordenadas. */
 export async function proximasVacancias(limite = 50): Promise<Ocupacao[]> {
-  const sb = getSupabaseClient();
-  if (!sb) return [];
-  const linhas = await fetchAll<Ocupacao>(() =>
-    sb.from("vw_vacancia").select("*").eq("atual", true)
-  );
-  return linhas
-    .filter((o) => o.vacancia_projetada)
-    .sort((a, b) => (a.vacancia_projetada! < b.vacancia_projetada! ? -1 : 1))
-    .slice(0, limite);
+  // O filtro por vacância conhecida, a ordenação e o limite passaram para
+  // o SQL — antes era `fetchAll` + filter/sort/slice em memória, porque o
+  // PostgREST truncava em 1000 linhas.
+  return (await q.proximasVacancias(limite)) as Ocupacao[];
 }
 
 /**
@@ -141,64 +126,21 @@ export async function proximasVacancias(limite = 50): Promise<Ocupacao[]> {
  * tecnicamente real mas respondendo à pergunta errada na tela errada.
  */
 export async function mandatosDirecao(tribunalId: string): Promise<MandatoDirecao[]> {
-  const sb = getSupabaseClient();
-  if (!sb) return [];
-  const linhas = await fetchAll<{
-    id: string;
-    cargo: string | null;
-    data_inicio: string | null;
-    data_fim: string | null;
-    biennio: string | null;
-    eleito: boolean | null;
-    magistrados: { nome: string } | { nome: string }[] | null;
-  }>(() =>
-    sb
-      .from("mandatos_direcao")
-      .select("id,cargo,data_inicio,data_fim,biennio,eleito,magistrados(nome)")
-      .eq("tribunal_id", tribunalId)
-  );
-  return linhas.map((l) => ({
-    id: l.id,
-    cargo: l.cargo,
-    magistrado_nome: Array.isArray(l.magistrados) ? l.magistrados[0]?.nome ?? "" : l.magistrados?.nome ?? "",
-    data_inicio: l.data_inicio,
-    data_fim: l.data_fim,
-    biennio: l.biennio,
-    eleito: l.eleito,
-  }));
+  return q.mandatosDirecao(tribunalId);
 }
 
 export async function obterNomeacao(id: string): Promise<Nomeacao | null> {
-  const sb = getSupabaseClient();
-  if (!sb) return null;
-  const { data } = await sb.from("nomeacoes").select("*").eq("id", id).maybeSingle();
-  return (data as Nomeacao | null) ?? null;
+  return (await q.obterNomeacao(id)) as Nomeacao | null;
 }
 
 export async function obterVaga(id: string): Promise<Vaga | null> {
-  const sb = getSupabaseClient();
-  if (!sb) return null;
-  const { data } = await sb.from("vagas").select("*").eq("id", id).maybeSingle();
-  return (data as Vaga | null) ?? null;
+  return (await q.obterVaga(id)) as Vaga | null;
 }
 
 export async function listarVagas(): Promise<Vaga[]> {
-  const sb = getSupabaseClient();
-  if (!sb) return [];
-  const linhas = await fetchAll<Vaga>(() => sb.from("vagas").select("*"));
-  return linhas.sort((a, b) => (a.data_abertura ?? "") < (b.data_abertura ?? "") ? 1 : -1);
+  return (await q.listarVagas()) as Vaga[];
 }
 
 export async function listarNomeacoes(tribunalId?: string): Promise<Nomeacao[] | null> {
-  const sb = getSupabaseClient();
-  if (!sb) return null;
-  const linhas = await fetchAll<Nomeacao>(() => {
-    const q = sb.from("nomeacoes").select("*");
-    return tribunalId ? q.eq("tribunal_id", tribunalId) : q;
-  });
-  return linhas.sort((a, b) =>
-    (b.data_deliberacao ?? b.data_mensagem ?? "") > (a.data_deliberacao ?? a.data_mensagem ?? "")
-      ? 1
-      : -1
-  );
+  return (await q.listarNomeacoes(tribunalId)) as Nomeacao[] | null;
 }
