@@ -1,49 +1,32 @@
 import { isAdminAuthorized } from "@/lib/betim/adminAuth";
-import { getSupabaseServiceClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 
-const MODERATED_TABLES = ["zap_estabelecimentos", "classificados"] as const;
-type ModeratedTable = (typeof MODERATED_TABLES)[number];
+type Ctx = { params: Promise<{ municipio: string }> };
 
-export async function GET(request: Request) {
+export async function GET(request: Request, { params }: Ctx) {
   if (!isAdminAuthorized(request)) {
     return Response.json({ error: "Não autorizado." }, { status: 401 });
   }
 
-  const supabase = getSupabaseServiceClient();
-  if (!supabase) {
-    return Response.json({ error: "Supabase não configurado." }, { status: 503 });
-  }
+  const { municipio } = await params;
+  const cidade = await obterCidadePorSlug(municipio);
+  if (!cidade) return Response.json({ error: "Cidade não encontrada." }, { status: 404 });
 
-  const [zap, classificados] = await Promise.all([
-    supabase
-      .from("zap_estabelecimentos")
-      .select("id, nome, whatsapp, categoria, descricao, bairro, created_at")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .eq("aprovado", false)
-      .order("created_at", { ascending: false }),
-    supabase
-      .from("classificados")
-      .select("id, titulo, descricao, categoria, preco, contato_whatsapp, created_at")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .eq("aprovado", false)
-      .order("created_at", { ascending: false }),
-  ]);
+  const pendentes = await q.pendentesDeModeracao(cidade.id_municipio);
+  if (!pendentes) return Response.json({ error: "Banco não configurado." }, { status: 503 });
 
-  return Response.json({
-    zap_estabelecimentos: zap.data ?? [],
-    classificados: classificados.data ?? [],
-  });
+  return Response.json(pendentes);
 }
 
-export async function POST(request: Request) {
+export async function POST(request: Request, { params }: Ctx) {
   if (!isAdminAuthorized(request)) {
     return Response.json({ error: "Não autorizado." }, { status: 401 });
   }
 
-  const supabase = getSupabaseServiceClient();
-  if (!supabase) {
-    return Response.json({ error: "Supabase não configurado." }, { status: 503 });
-  }
+  const { municipio } = await params;
+  const cidade = await obterCidadePorSlug(municipio);
+  if (!cidade) return Response.json({ error: "Cidade não encontrada." }, { status: 404 });
 
   let body: Record<string, unknown>;
   try {
@@ -52,27 +35,33 @@ export async function POST(request: Request) {
     return Response.json({ error: "JSON inválido." }, { status: 400 });
   }
 
-  const tabela = body.tabela;
-  const id = body.id;
-  const aprovado = body.aprovado;
+  const { tabela, id, aprovado } = body;
 
+  // `TABELAS_MODERADAS` é a lista de permissão E a origem da tabela: o
+  // nome vindo do corpo só serve para indexar o mapa, nunca para virar
+  // identificador SQL.
   if (
     typeof tabela !== "string" ||
-    !MODERATED_TABLES.includes(tabela as ModeratedTable) ||
+    !(tabela in q.TABELAS_MODERADAS) ||
     typeof id !== "string" ||
     typeof aprovado !== "boolean"
   ) {
     return Response.json({ error: "tabela/id/aprovado inválidos." }, { status: 400 });
   }
+  const alvo = tabela as q.TabelaModerada;
 
-  if (aprovado) {
-    const { error } = await supabase.from(tabela).update({ aprovado: true }).eq("id", id);
-    if (error) return Response.json({ error: "Erro ao aprovar." }, { status: 500 });
-  } else {
-    // Reject = delete the pending row (it was never public anyway).
-    const { error } = await supabase.from(tabela).delete().eq("id", id);
-    if (error) return Response.json({ error: "Erro ao rejeitar." }, { status: 500 });
+  try {
+    const row = aprovado
+      ? await q.aprovarPendente(cidade.id_municipio, alvo, id)
+      : await q.rejeitarPendente(cidade.id_municipio, alvo, id);
+    // Nada devolvido: o cadastro não existe, é de outra cidade, ou (no
+    // caso de rejeitar) já estava aprovado.
+    if (!row) return Response.json({ error: "Cadastro não encontrado." }, { status: 404 });
+    return Response.json({ ok: true });
+  } catch {
+    return Response.json(
+      { error: aprovado ? "Erro ao aprovar." : "Erro ao rejeitar." },
+      { status: 500 }
+    );
   }
-
-  return Response.json({ ok: true });
 }

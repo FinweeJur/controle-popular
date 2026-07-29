@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import { neon } from "@neondatabase/serverless";
 import { comoIdMunicipio } from "../lib/db/queries/municipios.js";
+import * as q from "../lib/db/queries/betim.js";
 import { getCaixaDisponivel } from "../lib/betim/caixa.js";
 import { getObras } from "../lib/betim/obras.js";
 import { getSocialData } from "../lib/betim/social.js";
@@ -796,6 +797,18 @@ const limpar = async () => {
     await neonSql.query(`delete from ${t} where id::text like '${FIX}%'`);
   }
 };
+/**
+ * As linhas dos testes de ESCRITA nascem com uuid gerado pelo banco, entao
+ * nao da para reconhece-las pelo prefixo. O que as marca e o titulo/nome:
+ * as tres tabelas estao vazias em producao, e o filtro por "Fixture" nao
+ * alcanca dado real nem se um dia deixarem de estar.
+ */
+const limparEscritas = async () => {
+  await limpar();
+  await neonSql.query("delete from classificados where titulo like 'Fixture %'");
+  await neonSql.query("delete from zap_estabelecimentos where nome like 'Fixture %'");
+  await neonSql.query("delete from anuncios where nome_comercio like 'Fixture %'");
+};
 const dia = (n: number) =>
   new Date(Date.now() + n * 86400000).toISOString().slice(0, 10);
 
@@ -888,5 +901,127 @@ const sobrou = await neonSql.query(
         + (select count(*) from coleta_lixo)::int as n`
 );
 eq(`fixtures removidas (${sobrou[0].n} linhas nas ${TABELAS_FIXTURE.length} tabelas)`, 0, sobrou[0].n);
+
+/**
+ * ESCRITAS — testadas por ida e volta, nao por paridade.
+ *
+ * Nao da para comparar INSERT/UPDATE/DELETE contra o Supabase: escrever
+ * nos dois bancos para conferir seria escrever em producao. Entao aqui o
+ * teste e outro: executa a escrita no Neon, LE de volta pelo caminho
+ * publico do app, e apaga. O que se prova e o que importa —
+ *
+ *   1. a linha nasce com o id_municipio da ROTA, nao com uma constante;
+ *   2. update e delete nao alcancam linha de outra cidade;
+ *   3. o contador de cliques nao perde contagem sob concorrencia.
+ *
+ * `OUTRA_CIDADE` e um codigo IBGE que NAO esta em `municipios`. Ele so
+ * aparece em clausula WHERE, nunca num INSERT, entao nada e criado — e e
+ * exatamente isso que prova que o filtro de cidade esta sendo aplicado.
+ */
+const OUTRA_CIDADE = comoIdMunicipio("3106200"); // Belo Horizonte, nao cadastrada
+
+await limpar();
+try {
+  // --- INSERT carimba a cidade da rota ---
+  const novoCl = await q.inserirClassificado(ID, {
+    titulo: "Fixture escrita",
+    descricao: "descricao de teste",
+    categoria: "outros",
+    preco: 1234.56,
+    contato_whatsapp: "5531999990009",
+    expira_em: dia(30),
+  });
+  const clGravado = (await neonSql.query(
+    "select id_municipio, aprovado, preco::text from classificados where id = $1",
+    [novoCl!.id]
+  ))[0];
+  eq(`escrita classificado: id_municipio da rota, nao constante`,
+     [ID, false, "1234.56"],
+     [clGravado.id_municipio, clGravado.aprovado, clGravado.preco]);
+  eq(`escrita classificado: entra como PENDENTE, fora da listagem publica`,
+     false, (await fetchClassificados(ID)).rows.some((r) => r.id === novoCl!.id));
+  eq(`escrita classificado: aparece na fila de moderacao`,
+     true,
+     (await q.pendentesDeModeracao(ID))!.classificados.some((r) => r.id === novoCl!.id));
+
+  const novoZap = await q.inserirZapEstabelecimento(ID, {
+    nome: "Fixture escrita zap",
+    whatsapp: "5531999990010",
+    categoria: "outros",
+    descricao: null,
+    bairro: "Centro",
+  });
+  eq(`escrita zap: id_municipio da rota`,
+     ID,
+     (await neonSql.query("select id_municipio from zap_estabelecimentos where id = $1", [novoZap!.id]))[0].id_municipio);
+
+  // --- moderacao respeita a cidade ---
+  eq(`moderacao: aprovar de OUTRA cidade nao alcanca a linha`,
+     null, await q.aprovarPendente(OUTRA_CIDADE, "zap_estabelecimentos", novoZap!.id));
+  eq(`moderacao: e a linha continua pendente depois disso`,
+     false,
+     (await neonSql.query("select aprovado from zap_estabelecimentos where id = $1", [novoZap!.id]))[0].aprovado);
+  eq(`moderacao: aprovar da cidade certa funciona`,
+     true, (await q.aprovarPendente(ID, "zap_estabelecimentos", novoZap!.id)) !== null);
+  eq(`moderacao: aprovado passa a aparecer na listagem publica`,
+     true, (await fetchZapEstabelecimentos(ID)).rows.some((r) => r.id === novoZap!.id));
+  // Rejeitar so alcanca pendente: este ja foi aprovado.
+  eq(`moderacao: rejeitar NAO apaga cadastro ja aprovado e publico`,
+     null, await q.rejeitarPendente(ID, "zap_estabelecimentos", novoZap!.id));
+  eq(`moderacao: ele continua la`,
+     1,
+     (await neonSql.query("select count(*)::int n from zap_estabelecimentos where id = $1", [novoZap!.id]))[0].n);
+
+  // --- cliques: atomico ---
+  const CLIQUES = 10;
+  const resultados = await Promise.all(
+    Array.from({ length: CLIQUES }, () => q.incrementarCliquesZap(ID, novoZap!.id))
+  );
+  eq(`cliques: ${CLIQUES} incrementos simultaneos somam ${CLIQUES} (read-then-write perderia)`,
+     CLIQUES,
+     (await neonSql.query("select cliques from zap_estabelecimentos where id = $1", [novoZap!.id]))[0].cliques);
+  eq(`cliques: todas as ${CLIQUES} chamadas confirmaram`, CLIQUES, resultados.filter(Boolean).length);
+  eq(`cliques: de OUTRA cidade nao incrementa`,
+     null, await q.incrementarCliquesZap(OUTRA_CIDADE, novoZap!.id));
+  eq(`cliques: id inexistente nao incrementa`,
+     null, await q.incrementarCliquesZap(ID, "00000000-0000-4000-8000-00000000ffff"));
+
+  // --- anuncios: insert, patch e delete escopados por cidade ---
+  const novoAn = await q.inserirAnuncio(ID, {
+    nome_comercio: "Fixture anuncio",
+    plano: "premium",
+    banner_url: null,
+    link: null,
+    data_inicio: dia(-1),
+    data_fim: null,
+  });
+  eq(`anuncio: nasce inativo e na cidade da rota`,
+     [ID, false], [novoAn!.id_municipio, novoAn!.ativo]);
+  eq(`anuncio: inativo nao aparece na home`,
+     false, (await fetchAnunciosAtivos(ID)).some((r) => r.id === novoAn!.id));
+  eq(`anuncio: patch de OUTRA cidade nao alcanca`,
+     null, await q.atualizarAnuncio(OUTRA_CIDADE, novoAn!.id, { ativo: true }));
+  eq(`anuncio: e continua inativo`,
+     false,
+     (await neonSql.query("select ativo from anuncios where id = $1", [novoAn!.id]))[0].ativo);
+  eq(`anuncio: patch da cidade certa ativa`,
+     true, (await q.atualizarAnuncio(ID, novoAn!.id, { ativo: true }))?.ativo);
+  eq(`anuncio: ativo passa a aparecer na home`,
+     true, (await fetchAnunciosAtivos(ID)).some((r) => r.id === novoAn!.id));
+  eq(`anuncio: delete de OUTRA cidade nao alcanca`,
+     null, await q.removerAnuncio(OUTRA_CIDADE, novoAn!.id));
+  eq(`anuncio: delete da cidade certa remove`,
+     true, (await q.removerAnuncio(ID, novoAn!.id)) !== null);
+  eq(`anuncio: sumiu do banco`,
+     0, (await neonSql.query("select count(*)::int n from anuncios where id = $1", [novoAn!.id]))[0].n);
+} finally {
+  await limparEscritas();
+}
+const sobrouEscrita = await neonSql.query(
+  `select (select count(*) from classificados)::int
+        + (select count(*) from zap_estabelecimentos)::int
+        + (select count(*) from anuncios)::int as n`
+);
+eq(`fixtures de escrita removidas (${sobrouEscrita[0].n} linhas)`, 0, sobrouEscrita[0].n);
 
 process.exit(0);

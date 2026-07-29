@@ -1,39 +1,29 @@
-import { getSupabaseServiceClient } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 
 /**
- * Increments the click counter for a Zap Betim listing. Uses the
- * service-role client (server-side only) because RLS grants anon only
- * SELECT + INSERT on this table, not UPDATE.
+ * Soma um clique num negócio do Zap.
+ *
+ * Eram duas idas ao banco (ler `cliques`, gravar `cliques + 1`) com o
+ * cliente `service_role`, porque a RLS do Supabase só dava SELECT e INSERT
+ * ao papel anônimo nesta tabela. Sem RLS no caminho, virou um UPDATE só,
+ * atômico — o que também fecha a janela em que dois cliques simultâneos
+ * liam o mesmo número e gravavam o mesmo, perdendo uma contagem.
  */
 export async function POST(
   _request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ municipio: string; id: string }> }
 ) {
-  const { id } = await params;
-  const supabase = getSupabaseServiceClient();
-  if (!supabase) {
-    return Response.json({ ok: false }, { status: 503 });
-  }
+  const { municipio, id } = await params;
+  const cidade = await obterCidadePorSlug(municipio);
+  if (!cidade) return Response.json({ ok: false }, { status: 404 });
 
-  const { data, error: selectError } = await supabase
-    .from("zap_estabelecimentos")
-    .select("cliques")
-    .eq("id", id)
-    .eq("aprovado", true)
-    .maybeSingle();
-
-  if (selectError || !data) {
-    return Response.json({ ok: false }, { status: 404 });
-  }
-
-  const { error } = await supabase
-    .from("zap_estabelecimentos")
-    .update({ cliques: (data.cliques ?? 0) + 1 })
-    .eq("id", id);
-
-  if (error) {
+  try {
+    const row = await q.incrementarCliquesZap(cidade.id_municipio, id);
+    // Sem linha: não existe, não é desta cidade, ou não está aprovado.
+    if (!row) return Response.json({ ok: false }, { status: 404 });
+    return Response.json({ ok: true, cliques: row.cliques });
+  } catch {
     return Response.json({ ok: false }, { status: 500 });
   }
-
-  return Response.json({ ok: true });
 }

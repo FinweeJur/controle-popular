@@ -23,6 +23,7 @@ import {
   beneficios_sociais,
   caixa_disponivel,
   classificados,
+  clima_cache,
   coleta_lixo,
   comercios_essenciais,
   comissao_membros,
@@ -1643,5 +1644,283 @@ export async function ultimaProposicao(
       asc(proposicoes.id)
     )
     .limit(1);
+  return linha ?? null;
+}
+
+
+/**
+ * Cache do clima da cidade.
+ *
+ * `clima_cache` tem uma linha por município e `id_municipio` é a chave —
+ * não tem coluna `id`, então o desempate de ordem não se aplica aqui.
+ */
+export async function climaDaCidade(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({
+      atual: clima_cache.atual,
+      diario: clima_cache.diario,
+      chuva_7d: num(clima_cache.chuva_7d),
+      atualizado_em: clima_cache.atualizado_em,
+    })
+    .from(clima_cache)
+    .where(eq(clima_cache.id_municipio, idMunicipio))
+    .limit(1);
+  return linha ?? null;
+}
+
+/* ------------------------------------------------------------------ *
+ * ESCRITAS
+ *
+ * Mesma regra das leituras: `idMunicipio` é o primeiro parâmetro, e aqui
+ * ela vale duas vezes. Num INSERT ele é o valor gravado — errar carimba a
+ * linha na cidade errada de forma permanente. Num UPDATE/DELETE ele entra
+ * no WHERE ao lado do `id`: sem isso, o painel de uma cidade poderia
+ * alterar ou apagar a linha de outra, e o único obstáculo seria a
+ * dificuldade de adivinhar um uuid. O `ADMIN_TOKEN` é UM SÓ para toda a
+ * instalação (`lib/betim/adminAuth.ts`), então ele não distingue cidades —
+ * quem distingue é este filtro.
+ *
+ * As escritas usam o mesmo driver HTTP das leituras: cada uma é um
+ * statement único e atômico. Onde havia read-then-write, virou um UPDATE
+ * só (ver `incrementarCliquesZap`).
+ * ------------------------------------------------------------------ */
+
+export async function inserirClassificado(
+  idMunicipio: IdMunicipio,
+  dados: {
+    titulo: string;
+    descricao: string;
+    categoria: string;
+    preco: number | null;
+    contato_whatsapp: string;
+    expira_em: string;
+  }
+) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .insert(classificados)
+    .values({
+      id_municipio: idMunicipio,
+      titulo: dados.titulo,
+      descricao: dados.descricao,
+      categoria: dados.categoria,
+      // `preco` é `numeric`: na ESCRITA o driver quer string. É a mesma
+      // assimetria do `num()` na leitura, do outro lado.
+      preco: dados.preco === null ? null : String(dados.preco),
+      contato_whatsapp: dados.contato_whatsapp,
+      expira_em: dados.expira_em,
+      aprovado: false,
+    })
+    .returning({ id: classificados.id });
+  return linha ?? null;
+}
+
+export async function inserirZapEstabelecimento(
+  idMunicipio: IdMunicipio,
+  dados: {
+    nome: string;
+    whatsapp: string;
+    categoria: string;
+    descricao: string | null;
+    bairro: string | null;
+  }
+) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .insert(zap_estabelecimentos)
+    .values({ id_municipio: idMunicipio, ...dados, aprovado: false })
+    .returning({ id: zap_estabelecimentos.id });
+  return linha ?? null;
+}
+
+/**
+ * Soma 1 no contador de cliques de um negócio do Zap.
+ *
+ * Era SELECT do valor atual + UPDATE com `valor + 1` — dois passos, e
+ * entre eles cabe outro clique: com dois acessos simultâneos, os dois leem
+ * o mesmo número e gravam o mesmo, perdendo uma contagem. Um
+ * `set cliques = cliques + 1` resolve no banco, num statement, sem essa
+ * janela. De quebra gasta um subrequest em vez de dois.
+ *
+ * `returning` vazio significa "não existe, não é desta cidade, ou não está
+ * aprovado" — é assim que o chamador devolve 404 sem consulta extra.
+ */
+export async function incrementarCliquesZap(idMunicipio: IdMunicipio, id: string) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .update(zap_estabelecimentos)
+    .set({ cliques: sql`coalesce(${zap_estabelecimentos.cliques}, 0) + 1` })
+    .where(
+      and(
+        eq(zap_estabelecimentos.id_municipio, idMunicipio),
+        eq(zap_estabelecimentos.id, id),
+        eq(zap_estabelecimentos.aprovado, true)
+      )
+    )
+    .returning({ id: zap_estabelecimentos.id, cliques: zap_estabelecimentos.cliques });
+  return linha ?? null;
+}
+
+/** Todos os anúncios da cidade, inclusive inativos — visão do painel. */
+export async function listarAnunciosAdmin(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select()
+    .from(anuncios)
+    .where(eq(anuncios.id_municipio, idMunicipio))
+    .orderBy(desc(anuncios.created_at), asc(anuncios.id));
+}
+
+export async function inserirAnuncio(
+  idMunicipio: IdMunicipio,
+  dados: {
+    nome_comercio: string;
+    plano: string;
+    banner_url: string | null;
+    link: string | null;
+    data_inicio: string | null;
+    data_fim: string | null;
+  }
+) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .insert(anuncios)
+    .values({ id_municipio: idMunicipio, ...dados, ativo: false })
+    .returning();
+  return linha ?? null;
+}
+
+export type PatchAnuncio = Partial<{
+  nome_comercio: string;
+  plano: string;
+  banner_url: string | null;
+  link: string | null;
+  ativo: boolean;
+  data_inicio: string | null;
+  data_fim: string | null;
+}>;
+
+export async function atualizarAnuncio(
+  idMunicipio: IdMunicipio,
+  id: string,
+  patch: PatchAnuncio
+) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .update(anuncios)
+    .set(patch)
+    .where(and(eq(anuncios.id_municipio, idMunicipio), eq(anuncios.id, id)))
+    .returning();
+  return linha ?? null;
+}
+
+export async function removerAnuncio(idMunicipio: IdMunicipio, id: string) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .delete(anuncios)
+    .where(and(eq(anuncios.id_municipio, idMunicipio), eq(anuncios.id, id)))
+    .returning({ id: anuncios.id });
+  return linha ?? null;
+}
+
+/**
+ * As duas tabelas que passam por moderação, indexadas pelo nome que a rota
+ * aceita no corpo do pedido.
+ *
+ * O mapa É a lista de permissão, e a tabela sai dele — nunca da string que
+ * o cliente mandou. No PostgREST era `supabase.from(tabela)` com `tabela`
+ * vindo do corpo, seguro apenas enquanto a checagem `includes()` de duas
+ * linhas acima continuasse ali.
+ */
+export const TABELAS_MODERADAS = {
+  zap_estabelecimentos,
+  classificados,
+} as const;
+
+export type TabelaModerada = keyof typeof TABELAS_MODERADAS;
+
+/** Cadastros aguardando moderação nas duas tabelas. */
+export async function pendentesDeModeracao(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  const [zap, pendentesClassificados] = await Promise.all([
+    db
+      .select({
+        id: zap_estabelecimentos.id,
+        nome: zap_estabelecimentos.nome,
+        whatsapp: zap_estabelecimentos.whatsapp,
+        categoria: zap_estabelecimentos.categoria,
+        descricao: zap_estabelecimentos.descricao,
+        bairro: zap_estabelecimentos.bairro,
+        created_at: zap_estabelecimentos.created_at,
+      })
+      .from(zap_estabelecimentos)
+      .where(
+        and(
+          eq(zap_estabelecimentos.id_municipio, idMunicipio),
+          eq(zap_estabelecimentos.aprovado, false)
+        )
+      )
+      .orderBy(desc(zap_estabelecimentos.created_at), asc(zap_estabelecimentos.id)),
+    db
+      .select({
+        id: classificados.id,
+        titulo: classificados.titulo,
+        descricao: classificados.descricao,
+        categoria: classificados.categoria,
+        preco: num(classificados.preco),
+        contato_whatsapp: classificados.contato_whatsapp,
+        created_at: classificados.created_at,
+      })
+      .from(classificados)
+      .where(
+        and(eq(classificados.id_municipio, idMunicipio), eq(classificados.aprovado, false))
+      )
+      .orderBy(desc(classificados.created_at), asc(classificados.id)),
+  ]);
+  return { zap_estabelecimentos: zap, classificados: pendentesClassificados };
+}
+
+export async function aprovarPendente(
+  idMunicipio: IdMunicipio,
+  tabela: TabelaModerada,
+  id: string
+) {
+  const db = getDb();
+  if (!db) return null;
+  const t = TABELAS_MODERADAS[tabela];
+  const [linha] = await db
+    .update(t)
+    .set({ aprovado: true })
+    .where(and(eq(t.id_municipio, idMunicipio), eq(t.id, id)))
+    .returning({ id: t.id });
+  return linha ?? null;
+}
+
+/** Rejeitar apaga a linha pendente — ela nunca chegou a ser pública. */
+export async function rejeitarPendente(
+  idMunicipio: IdMunicipio,
+  tabela: TabelaModerada,
+  id: string
+) {
+  const db = getDb();
+  if (!db) return null;
+  const t = TABELAS_MODERADAS[tabela];
+  const [linha] = await db
+    .delete(t)
+    // `aprovado = false` também no WHERE: rejeitar só alcança o que está
+    // pendente. Sem isso, o id de um cadastro JÁ APROVADO e público seria
+    // apagado por este caminho.
+    .where(and(eq(t.id_municipio, idMunicipio), eq(t.id, id), eq(t.aprovado, false)))
+    .returning({ id: t.id });
   return linha ?? null;
 }

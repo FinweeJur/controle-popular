@@ -1,5 +1,7 @@
 import DataCard from "@/app/[municipio]/components/DataCard";
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 import { classificarChuva7d } from "@/lib/betim/format";
 
 export const metadata = {
@@ -39,18 +41,12 @@ interface ClimaCache {
   atualizado_em: string | null;
 }
 
-async function getClima(): Promise<ClimaCache | null> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return null;
-
-  const { data, error } = await supabase
-    .from("clima_cache")
-    .select("atual, diario, chuva_7d, atualizado_em")
-    .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-    .maybeSingle();
-
-  if (error || !data) return null;
-  return data as ClimaCache;
+async function getClima(idMunicipio: IdMunicipio): Promise<ClimaCache | null> {
+  try {
+    return ((await q.climaDaCidade(idMunicipio)) as ClimaCache) ?? null;
+  } catch {
+    return null;
+  }
 }
 
 function formatDiaCurto(iso: string): string {
@@ -58,8 +54,13 @@ function formatDiaCurto(iso: string): string {
   return `${d}/${m}`;
 }
 
-export default async function ClimaPage() {
-  const clima = await getClima();
+export default async function ClimaPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
+  const clima = await getClima(cidade.id_municipio);
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-14 sm:px-8">

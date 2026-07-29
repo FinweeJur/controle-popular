@@ -1,39 +1,38 @@
 import { isAdminAuthorized } from "@/lib/betim/adminAuth";
-import { getSupabaseServiceClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 import { ANUNCIO_PLANOS } from "@/lib/betim/anuncios";
 
-export async function GET(request: Request) {
+/**
+ * O `ADMIN_TOKEN` é um só para toda a instalação, então ele autoriza mas
+ * NÃO escolhe a cidade — quem escolhe é o segmento da rota, e é ele que
+ * entra no filtro de toda consulta daqui.
+ */
+type Ctx = { params: Promise<{ municipio: string }> };
+
+export async function GET(request: Request, { params }: Ctx) {
   if (!isAdminAuthorized(request)) {
     return Response.json({ error: "Não autorizado." }, { status: 401 });
   }
 
-  const supabase = getSupabaseServiceClient();
-  if (!supabase) {
-    return Response.json({ error: "Supabase não configurado." }, { status: 503 });
-  }
+  const { municipio } = await params;
+  const cidade = await obterCidadePorSlug(municipio);
+  if (!cidade) return Response.json({ error: "Cidade não encontrada." }, { status: 404 });
 
-  const { data, error } = await supabase
-    .from("anuncios")
-    .select("*")
-    .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-    .order("created_at", { ascending: false });
+  const rows = await q.listarAnunciosAdmin(cidade.id_municipio);
+  if (!rows) return Response.json({ error: "Banco não configurado." }, { status: 503 });
 
-  if (error) {
-    return Response.json({ error: "Erro ao listar anúncios." }, { status: 500 });
-  }
-
-  return Response.json({ rows: data });
+  return Response.json({ rows });
 }
 
-export async function POST(request: Request) {
+export async function POST(request: Request, { params }: Ctx) {
   if (!isAdminAuthorized(request)) {
     return Response.json({ error: "Não autorizado." }, { status: 401 });
   }
 
-  const supabase = getSupabaseServiceClient();
-  if (!supabase) {
-    return Response.json({ error: "Supabase não configurado." }, { status: 503 });
-  }
+  const { municipio } = await params;
+  const cidade = await obterCidadePorSlug(municipio);
+  if (!cidade) return Response.json({ error: "Cidade não encontrada." }, { status: 404 });
 
   let body: Record<string, unknown>;
   try {
@@ -53,24 +52,18 @@ export async function POST(request: Request) {
     return Response.json({ error: "nome_comercio/plano inválidos." }, { status: 400 });
   }
 
-  const { data, error } = await supabase
-    .from("anuncios")
-    .insert({
-      id_municipio: ID_MUNICIPIO_DEFAULT,
+  try {
+    const row = await q.inserirAnuncio(cidade.id_municipio, {
       nome_comercio,
       plano,
       banner_url,
       link,
       data_inicio,
       data_fim,
-      ativo: false,
-    })
-    .select()
-    .single();
-
-  if (error) {
+    });
+    if (!row) return Response.json({ error: "Banco não configurado." }, { status: 503 });
+    return Response.json({ row });
+  } catch {
     return Response.json({ error: "Erro ao criar anúncio." }, { status: 500 });
   }
-
-  return Response.json({ row: data });
 }

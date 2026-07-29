@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 import {
   CLASSIFICADO_EXPIRACAO_DIAS,
@@ -34,11 +34,10 @@ export async function GET(request: NextRequest, { params }: Ctx) {
   return Response.json({ rows });
 }
 
-export async function POST(request: NextRequest) {
-  const supabase = getSupabaseClient();
-  if (!supabase) {
-    return Response.json({ error: "Cadastro indisponível no momento." }, { status: 503 });
-  }
+export async function POST(request: NextRequest, { params }: Ctx) {
+  const { municipio } = await params;
+  const cidade = await obterCidadePorSlug(municipio);
+  if (!cidade) return Response.json({ error: "Cidade não encontrada." }, { status: 404 });
 
   let body: Record<string, unknown>;
   try {
@@ -59,20 +58,23 @@ export async function POST(request: NextRequest) {
   const expiraEm = new Date();
   expiraEm.setDate(expiraEm.getDate() + CLASSIFICADO_EXPIRACAO_DIAS);
 
-  const { error } = await supabase.from("classificados").insert({
-    id_municipio: ID_MUNICIPIO_DEFAULT,
-    titulo: validated.value.titulo,
-    descricao: validated.value.descricao,
-    categoria: validated.value.categoria,
-    preco: validated.value.preco,
-    contato_whatsapp: validated.value.contato_whatsapp,
-    expira_em: expiraEm.toISOString().slice(0, 10),
-    aprovado: false,
-  });
-
-  if (error) {
+  try {
+    // A cidade gravada vem do segmento da rota. Era a constante de build,
+    // o que carimbava todo anúncio como de Betim independente de onde o
+    // formulário estivesse.
+    const row = await q.inserirClassificado(cidade.id_municipio, {
+      titulo: validated.value.titulo,
+      descricao: validated.value.descricao,
+      categoria: validated.value.categoria,
+      preco: validated.value.preco,
+      contato_whatsapp: validated.value.contato_whatsapp,
+      expira_em: expiraEm.toISOString().slice(0, 10),
+    });
+    if (!row) {
+      return Response.json({ error: "Cadastro indisponível no momento." }, { status: 503 });
+    }
+    return Response.json({ ok: true });
+  } catch {
     return Response.json({ error: "Não foi possível publicar o anúncio." }, { status: 500 });
   }
-
-  return Response.json({ ok: true });
 }

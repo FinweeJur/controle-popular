@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 import { fetchZapEstabelecimentos, validateZapSubmission } from "@/lib/betim/zap";
 
@@ -33,14 +33,10 @@ export async function GET(request: NextRequest, { params }: Ctx) {
   return Response.json({ rows });
 }
 
-export async function POST(request: NextRequest) {
-  const supabase = getSupabaseClient();
-  if (!supabase) {
-    return Response.json(
-      { error: "Cadastro indisponível no momento." },
-      { status: 503 }
-    );
-  }
+export async function POST(request: NextRequest, { params }: Ctx) {
+  const { municipio } = await params;
+  const cidade = await obterCidadePorSlug(municipio);
+  if (!cidade) return Response.json({ error: "Cidade não encontrada." }, { status: 404 });
 
   let body: Record<string, unknown>;
   try {
@@ -60,19 +56,21 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: validated.error }, { status: 400 });
   }
 
-  const { error } = await supabase.from("zap_estabelecimentos").insert({
-    id_municipio: ID_MUNICIPIO_DEFAULT,
-    nome: validated.value.nome,
-    whatsapp: validated.value.whatsapp,
-    categoria: validated.value.categoria,
-    descricao: validated.value.descricao || null,
-    bairro: validated.value.bairro || null,
-    aprovado: false,
-  });
-
-  if (error) {
+  try {
+    // A cidade gravada vem do segmento da rota, não mais de uma constante
+    // de build que carimbava todo cadastro como de Betim.
+    const row = await q.inserirZapEstabelecimento(cidade.id_municipio, {
+      nome: validated.value.nome,
+      whatsapp: validated.value.whatsapp,
+      categoria: validated.value.categoria,
+      descricao: validated.value.descricao || null,
+      bairro: validated.value.bairro || null,
+    });
+    if (!row) {
+      return Response.json({ error: "Cadastro indisponível no momento." }, { status: 503 });
+    }
+    return Response.json({ ok: true });
+  } catch {
     return Response.json({ error: "Não foi possível cadastrar." }, { status: 500 });
   }
-
-  return Response.json({ ok: true });
 }

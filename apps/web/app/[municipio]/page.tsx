@@ -1,7 +1,8 @@
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import RankingVereadores from "@/app/[municipio]/components/charts/RankingVereadores";
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { fetchAnunciosAtivos } from "@/lib/betim/anuncios";
 import { cidadeDaRota } from "@/lib/betim/cidade";
@@ -89,22 +90,20 @@ interface ClimaAtual {
   diario: { temperature_2m_max: number[]; temperature_2m_min: number[] } | null;
 }
 
-async function getIndicadores(): Promise<Record<string, IndicadorRow>> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return {};
-
+/**
+ * A primeira linha de cada indicador na ordem `ano_referencia desc` é a
+ * mais recente — a consulta traz a série inteira e o `if (!map[nome])`
+ * fica com a primeira de cada nome.
+ */
+async function getIndicadores(
+  idMunicipio: IdMunicipio
+): Promise<Record<string, IndicadorRow>> {
   try {
-    const { data, error } = await supabase
-      .from("indicadores")
-      .select("nome, valor, valor_numerico, ano_referencia, unidade")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .in(
-        "nome",
-        INDICATOR_LABELS.map((i) => i.nome)
-      )
-      .order("ano_referencia", { ascending: false });
-
-    if (error || !data) return {};
+    const data = await q.listarIndicadores(
+      idMunicipio,
+      INDICATOR_LABELS.map((i) => i.nome)
+    );
+    if (!data) return {};
 
     const map: Record<string, IndicadorRow> = {};
     for (const row of data as IndicadorRow[]) {
@@ -116,28 +115,15 @@ async function getIndicadores(): Promise<Record<string, IndicadorRow>> {
   }
 }
 
-async function getContratosAtivosSummary(): Promise<{
-  count: number;
-  sum: number;
-} | null> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return null;
-
+async function getContratosAtivosSummary(
+  idMunicipio: IdMunicipio
+): Promise<{ count: number; sum: number } | null> {
   try {
-    const { data, error, count } = await supabase
-      .from("contratos")
-      .select("valor_global", { count: "exact" })
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .eq("status", "ativo");
-
-    if (error || !data) return null;
-
-    const sum = data.reduce(
-      (acc: number, row: { valor_global: number | null }) =>
-        acc + (Number(row.valor_global) || 0),
-      0
-    );
-    return { count: count ?? data.length, sum };
+    // Era `select valor_global` de todos os contratos ativos com
+    // `count: "exact"`, e a soma no JS; agora COUNT e SUM saem do banco.
+    const r = await q.resumoContratosAtivos(idMunicipio);
+    if (!r) return null;
+    return { count: r.qtd, sum: r.soma };
   } catch {
     return null;
   }
@@ -149,37 +135,18 @@ interface ContatoUtil {
   categoria: string | null;
 }
 
-async function getContatosUteis(): Promise<ContatoUtil[]> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return [];
-
+async function getContatosUteis(idMunicipio: IdMunicipio): Promise<ContatoUtil[]> {
   try {
-    const { data, error } = await supabase
-      .from("contatos_uteis")
-      .select("nome, telefone, categoria")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .order("ordem", { ascending: true });
-
-    if (error || !data) return [];
-    return data as ContatoUtil[];
+    const data = await q.contatosUteis(idMunicipio);
+    return (data ?? []) as ContatoUtil[];
   } catch {
     return [];
   }
 }
 
-async function getClima(): Promise<ClimaAtual | null> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return null;
-
+async function getClima(idMunicipio: IdMunicipio): Promise<ClimaAtual | null> {
   try {
-    const { data, error } = await supabase
-      .from("clima_cache")
-      .select("atual, diario")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .maybeSingle();
-
-    if (error || !data) return null;
-    return data as ClimaAtual;
+    return ((await q.climaDaCidade(idMunicipio)) as ClimaAtual) ?? null;
   } catch {
     return null;
   }
@@ -220,10 +187,10 @@ export default async function HomePage({
     noticias,
     obrasParaopeba,
   ] = await Promise.all([
-    getIndicadores(),
-    getContratosAtivosSummary(),
-    getContatosUteis(),
-    getClima(),
+    getIndicadores(cidade.id_municipio),
+    getContratosAtivosSummary(cidade.id_municipio),
+    getContatosUteis(cidade.id_municipio),
+    getClima(cidade.id_municipio),
     fetchAnunciosAtivos(cidade.id_municipio),
     getVereadores(cidade.id_municipio),
     getRankingVereadores(cidade.id_municipio),
