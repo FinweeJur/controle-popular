@@ -2,13 +2,12 @@ import Link from "@/lib/betim/link";
 import { fetchZapEstabelecimentos } from "@/lib/betim/zap";
 import { fetchPostosAnp } from "@/lib/betim/postos";
 import ZapCard from "@/app/[municipio]/zap-betim/ZapCard";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Citrolândia — Betim | Controle Popular Betim",
-  description:
-    "Bairros da Regional Citrolândia em Betim-MG e negócios locais cadastrados no Zap Betim.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Citrolândia — ${c.nome} | ${nomePortal(c)}`,
+  (c) => `Bairros da Regional Citrolândia em ${c.nome}-${c.uf} e negócios locais cadastrados no Zap ${c.nome}.`
+);
 
 // Lista completa (44/44) confirmada ao vivo na página oficial da
 // Prefeitura (regionais.betim.digital/regional/citrolandia, botão "Ver

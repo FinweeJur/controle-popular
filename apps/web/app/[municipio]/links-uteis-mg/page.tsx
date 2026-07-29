@@ -1,8 +1,9 @@
-export const metadata = {
-  title: "Links Úteis do Estado — Controle Popular Betim",
-  description:
-    "Fontes oficiais de dados públicos de Minas Gerais, organizadas por tema — meio ambiente, contas públicas, segurança e dados abertos.",
-};
+import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+
+export const generateMetadata = metadataDaCidade(
+  (c) => `Links Úteis do Estado — ${nomePortal(c)}`,
+  (c) => `Fontes oficiais de dados públicos de Minas Gerais, organizadas por tema — meio ambiente, contas públicas, segurança e dados abertos.`
+);
 
 interface LinkItem {
   nome: string;

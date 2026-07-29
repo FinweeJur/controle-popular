@@ -2,13 +2,12 @@ import Link from "@/lib/betim/link";
 import { getNoticias, CATEGORIA_LABELS } from "@/lib/betim/noticias";
 import { TEMA_LABELS } from "@/lib/betim/temas";
 import { formatDateBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Notícias — Controle Popular Betim",
-  description:
-    "Achados de investigação, explicadores e notas do Controle Popular Betim — texto próprio, sem redação terceirizada.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Notícias — ${nomePortal(c)}`,
+  (c) => `Achados de investigação, explicadores e notas do ${nomePortal(c)} — texto próprio, sem redação terceirizada.`
+);
 
 export default async function NoticiasPage({
   params,

@@ -1,12 +1,11 @@
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { fetchPostosAnp } from "@/lib/betim/postos";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Postos de Combustível — Betim | Controle Popular Betim",
-  description:
-    "Postos de combustível de Betim-MG cadastrados na ANP, com bandeira, produtos e nota de conformidade (PMQC).",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Postos de Combustível — ${c.nome} | ${nomePortal(c)}`,
+  (c) => `Postos de combustível de ${c.nome}-${c.uf} cadastrados na ANP, com bandeira, produtos e nota de conformidade (PMQC).`
+);
 
 export default async function PostosCombustivelPage({
   params,

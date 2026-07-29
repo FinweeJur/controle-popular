@@ -1,10 +1,10 @@
 import { ANUNCIO_PRECOS } from "@/lib/betim/anuncios";
+import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Anuncie — Controle Popular Betim",
-  description:
-    "Anuncie seu negócio local no Controle Popular Betim — divulgação única a partir de R$ 200, sem mensalidade.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Anuncie — ${nomePortal(c)}`,
+  (c) => `Anuncie seu negócio local no ${nomePortal(c)} — divulgação única a partir de R$ 200, sem mensalidade.`
+);
 
 // TODO(F7.6): placeholder number — swap for the real commercial WhatsApp
 // before launch (see TODO.md "Bloqueado no usuário").

@@ -6,13 +6,12 @@ import AreasAtuacao from "@/app/[municipio]/components/charts/AreasAtuacao";
 import { fetchContratos, CONTRATOS_PAGE_SIZE, MOTIVO_ALERTA_INFO } from "@/lib/betim/contratos";
 import { getTemasPrefeitura, TEMA_LABELS, TEMAS_ORDENADOS } from "@/lib/betim/temas";
 import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Contratos da Prefeitura — Controle Popular Betim",
-  description:
-    "Lista de contratos administrativos da Prefeitura de Betim, dados públicos via PNCP.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Contratos da Prefeitura — ${nomePortal(c)}`,
+  (c) => `Lista de contratos administrativos da Prefeitura de ${c.nome}, dados públicos via PNCP.`
+);
 
 interface ContratosPageProps {
   params: Promise<{ municipio: string }>;

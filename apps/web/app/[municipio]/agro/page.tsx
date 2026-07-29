@@ -3,12 +3,12 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getAgroData } from "@/lib/betim/agro";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Agro — Betim em Dados | Controle Popular Betim",
-  description: "Produção agropecuária de Betim-MG.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Agro — ${c.nome} em Dados | ${nomePortal(c)}`,
+  (c) => `Produção agropecuária de ${c.nome}-${c.uf}.`
+);
 
 export default async function AgroPage({
   params,

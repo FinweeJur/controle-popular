@@ -1,12 +1,12 @@
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { getComissoesAtuais } from "@/lib/betim/comissoes";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Comissões — Câmara Municipal de Betim | Controle Popular Betim",
-  description: "Composição atual das comissões permanentes da Câmara Municipal de Betim.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Comissões — Câmara Municipal de ${c.nome} | ${nomePortal(c)}`,
+  (c) => `Composição atual das comissões permanentes da Câmara Municipal de ${c.nome}.`
+);
 
 export default async function ComissoesPage({
   params,

@@ -3,12 +3,12 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getSegurancaData } from "@/lib/betim/seguranca";
 import { formatNumberBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Segurança Pública — Betim em Dados | Controle Popular Betim",
-  description: "Estatísticas de criminalidade em Betim-MG.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Segurança Pública — ${c.nome} em Dados | ${nomePortal(c)}`,
+  (c) => `Estatísticas de criminalidade em ${c.nome}-${c.uf}.`
+);
 
 export default async function SegurancaPage({
   params,

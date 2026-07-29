@@ -1,11 +1,11 @@
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { fetchIndicadores } from "@/lib/betim/indicadores";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Infraestrutura — Betim em Dados | Controle Popular Betim",
-  description: "Cobertura de água e esgoto em Betim-MG, dados do SNIS.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Infraestrutura — ${c.nome} em Dados | ${nomePortal(c)}`,
+  (c) => `Cobertura de água e esgoto em ${c.nome}-${c.uf}, dados do SNIS.`
+);
 
 export default async function InfraestruturaPage({
   params,

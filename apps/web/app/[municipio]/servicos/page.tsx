@@ -1,4 +1,5 @@
 import Link from "@/lib/betim/link";
+import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import {
   MessageCircle,
   MapPin,
@@ -14,10 +15,10 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-export const metadata = {
-  title: "Serviços ao Cidadão — Betim | Controle Popular Betim",
-  description: "Zap Betim, Compra e Venda, coleta de lixo, farmácias de plantão, postos de combustível e clima.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Serviços ao Cidadão — ${c.nome} | ${nomePortal(c)}`,
+  (c) => `Zap ${c.nome}, Compra e Venda, coleta de lixo, farmácias de plantão, postos de combustível e clima.`
+);
 
 const SERVICOS: { href: string; nome: string; desc: string; icon: LucideIcon }[] = [
   { href: "/zap-betim", nome: "Zap Betim", desc: "Cadastro de negócios locais no WhatsApp", icon: MessageCircle },

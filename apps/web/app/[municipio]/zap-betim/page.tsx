@@ -1,14 +1,13 @@
 import Link from "@/lib/betim/link";
 import { fetchZapEstabelecimentos, ZAP_CATEGORIAS, ZAP_CATEGORIA_LABELS } from "@/lib/betim/zap";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import ZapCard from "./ZapCard";
 import ZapForm from "./ZapForm";
 
-export const metadata = {
-  title: "Zap Betim — Cadastro de negócios no WhatsApp | Controle Popular Betim",
-  description:
-    "Encontre e divulgue negócios locais de Betim-MG direto pelo WhatsApp — cadastro gratuito e independente.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Zap ${c.nome} — Cadastro de negócios no WhatsApp | ${nomePortal(c)}`,
+  (c) => `Encontre e divulgue negócios locais de ${c.nome}-${c.uf} direto pelo WhatsApp — cadastro gratuito e independente.`
+);
 
 export default async function ZapBetimPage({
   params,

@@ -1,5 +1,9 @@
 import * as q from "@/lib/db/queries/betim";
-import type { IdMunicipio } from "@/lib/db/queries/municipios";
+import {
+  obterCidadePorId,
+  normalizarParaComparacao,
+  type IdMunicipio,
+} from "@/lib/db/queries/municipios";
 
 /** Base da URL de detalhe de um convênio no Portal da Transparência. O
  *  segmento final é o `codigo` (dimConvenio.codigo), não o id_externo —
@@ -110,6 +114,27 @@ export async function getConveniosFederais(
       dataPublicacao: r.data_publicacao,
     }));
 
+    /**
+     * Quantos convênios têm a própria Prefeitura como convenente (em vez
+     * de uma entidade local, como a APAE ou uma associação de bairro).
+     *
+     * O literal era `"MUNICIPIO DE BETIM"`. Era das poucas ocorrências de
+     * "Betim" no código que FILTRAVAM DADO em vez de decorar texto: com
+     * outra cidade ativa este número viraria zero em silêncio, e a página
+     * afirmaria que nenhum convênio é da Prefeitura. O nome agora vem de
+     * `municipios`, normalizado dos dois lados — o Portal da Transparência
+     * federal escreve sem acento ("MUNICIPIO DE SAO PAULO").
+     */
+    const cidade = await obterCidadePorId(idMunicipio);
+    const alvoConvenente = cidade
+      ? `MUNICIPIO DE ${normalizarParaComparacao(cidade.nome)}`
+      : null;
+    const qtdComPrefeitura = alvoConvenente
+      ? convenios.filter((c) =>
+          normalizarParaComparacao(c.convenenteNome ?? "").includes(alvoConvenente)
+        ).length
+      : 0;
+
     const porOrgaoMap = new Map<string, { valor: number; qtd: number }>();
     for (const c of convenios) {
       const nome = c.orgaoNome ?? "Sem órgão informado";
@@ -128,14 +153,7 @@ export async function getConveniosFederais(
       convenios,
       valorTotal: convenios.reduce((acc, c) => acc + c.valor, 0),
       valorLiberadoTotal: convenios.reduce((acc, c) => acc + c.valorLiberado, 0),
-      // "BETIM" literal: este é um dos casos em que a string da cidade
-      // FILTRA DADO, não só decora texto — com outra cidade ativa o número
-      // vira zero em silêncio. Fica na lista das 255 ocorrências de "Betim"
-      // a trocar por `municipios.nome` no passe de `lib/cidade`; enquanto
-      // só Betim está ativa, o resultado é o mesmo de hoje.
-      qtdComPrefeitura: convenios.filter((c) =>
-        (c.convenenteNome ?? "").toUpperCase().includes("MUNICIPIO DE BETIM")
-      ).length,
+      qtdComPrefeitura,
       porOrgao,
     };
   } catch {

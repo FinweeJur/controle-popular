@@ -2,13 +2,12 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { getGruposEconomicos } from "@/lib/betim/grupos";
 import { formatCNPJ, formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Grupos econômicos — Controle Popular Betim",
-  description:
-    "Fornecedores da Prefeitura de Betim que compartilham sócios entre si, detectados a partir do quadro societário da Receita Federal.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Grupos econômicos — ${nomePortal(c)}`,
+  (c) => `Fornecedores da Prefeitura de ${c.nome} que compartilham sócios entre si, detectados a partir do quadro societário da Receita Federal.`
+);
 
 export default async function GruposEconomicosPage({
   params,

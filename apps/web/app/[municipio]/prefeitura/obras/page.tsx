@@ -2,13 +2,12 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { getObras } from "@/lib/betim/obras";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Obras públicas — Prefeitura de Betim — Controle Popular Betim",
-  description:
-    "Obras públicas da Prefeitura de Betim: objeto, situação, valor e percentual de execução.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Obras públicas — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
+  (c) => `Obras públicas da Prefeitura de ${c.nome}: objeto, situação, valor e percentual de execução.`
+);
 
 interface ObrasPageProps {
   params: Promise<{ municipio: string }>;

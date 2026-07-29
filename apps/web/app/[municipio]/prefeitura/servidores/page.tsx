@@ -3,13 +3,12 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import TabelaScroll from "@/app/[municipio]/components/TabelaScroll";
 import { getServidores, SERVIDORES_PAGE_SIZE } from "@/lib/betim/servidores";
 import { formatNumberBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Servidores — Prefeitura de Betim — Controle Popular Betim",
-  description:
-    "Servidores da Prefeitura de Betim: nome, cargo, lotação e vínculo. Dado público, com busca.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Servidores — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
+  (c) => `Servidores da Prefeitura de ${c.nome}: nome, cargo, lotação e vínculo. Dado público, com busca.`
+);
 
 interface ServidoresPageProps {
   params: Promise<{ municipio: string }>;

@@ -1,8 +1,9 @@
-export const metadata = {
-  title: "Defesa Civil de Betim — Alertas | Controle Popular Betim",
-  description:
-    "Como receber alertas da Defesa Civil de Betim-MG: aplicativo oficial, canal de WhatsApp e telefone de emergência.",
-};
+import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+
+export const generateMetadata = metadataDaCidade(
+  (c) => `Defesa Civil de ${c.nome} — Alertas | ${nomePortal(c)}`,
+  (c) => `Como receber alertas da Defesa Civil de ${c.nome}-${c.uf}: aplicativo oficial, canal de WhatsApp e telefone de emergência.`
+);
 
 // Nenhuma dessas fontes tem API pública — confirmado em pesquisa 2026-07-21
 // (o app é uma PWA da plataforma Fábrica de Aplicativos, sem endpoint

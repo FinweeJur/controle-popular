@@ -1,10 +1,10 @@
 import Link from "@/lib/betim/link";
+import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Sobre — Controle Popular Betim",
-  description:
-    "O que é o Controle Popular Betim, de onde vêm os dados, quem mantém o projeto e como ele se relaciona (ou não) com o poder público.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Sobre — ${nomePortal(c)}`,
+  (c) => `O que é o ${nomePortal(c)}, de onde vêm os dados, quem mantém o projeto e como ele se relaciona (ou não) com o poder público.`
+);
 
 export default function SobrePage() {
   return (

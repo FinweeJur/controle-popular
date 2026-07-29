@@ -1,10 +1,10 @@
 import { fetchContatosUteis, CONTATO_CATEGORIA_LABELS } from "@/lib/betim/servicos";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Contatos Úteis — Betim | Controle Popular Betim",
-  description: "Telefones úteis de Betim-MG: emergência, Prefeitura, Câmara Municipal e serviços.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Contatos Úteis — ${c.nome} | ${nomePortal(c)}`,
+  (c) => `Telefones úteis de ${c.nome}-${c.uf}: emergência, Prefeitura, Câmara Municipal e serviços.`
+);
 
 export default async function ContatosPage({
   params,

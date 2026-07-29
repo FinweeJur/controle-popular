@@ -1,11 +1,11 @@
 import { fetchFarmaciasPlantao, wazeLink } from "@/lib/betim/servicos";
 import { formatDateBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Farmácias de Plantão — Betim | Controle Popular Betim",
-  description: "Farmácias de plantão da semana em Betim-MG, com telefone e rota no Waze.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Farmácias de Plantão — ${c.nome} | ${nomePortal(c)}`,
+  (c) => `Farmácias de plantão da semana em ${c.nome}-${c.uf}, com telefone e rota no Waze.`
+);
 
 export default async function PlantaoFarmaciasPage({
   params,

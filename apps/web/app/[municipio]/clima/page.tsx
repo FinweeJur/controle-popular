@@ -1,13 +1,13 @@
 import DataCard from "@/app/[municipio]/components/DataCard";
 import * as q from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { classificarChuva7d } from "@/lib/betim/format";
 
-export const metadata = {
-  title: "Clima — Betim | Controle Popular Betim",
-  description: "Previsão do tempo e histórico de chuva dos últimos 7 dias em Betim-MG.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Clima — ${c.nome} | ${nomePortal(c)}`,
+  (c) => `Previsão do tempo e histórico de chuva dos últimos 7 dias em ${c.nome}-${c.uf}.`
+);
 
 const WEATHER_LABELS: Record<number, string> = {
   0: "Céu limpo",

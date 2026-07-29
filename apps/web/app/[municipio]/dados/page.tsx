@@ -1,12 +1,12 @@
 import Link from "@/lib/betim/link";
 import { MapPin } from "lucide-react";
 import { PAGINAS_DADOS } from "@/lib/betim/dadosNav";
+import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Betim em Dados — Controle Popular Betim",
-  description:
-    "Saúde, educação, economia, segurança e mais — Betim-MG em números, com fonte oficial em cada dado.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `${c.nome} em Dados — ${nomePortal(c)}`,
+  (c) => `Saúde, educação, economia, segurança e mais — ${c.nome}-${c.uf} em números, com fonte oficial em cada dado.`
+);
 
 export default function DadosPage() {
   return (

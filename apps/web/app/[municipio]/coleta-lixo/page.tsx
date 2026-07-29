@@ -1,10 +1,10 @@
 import { fetchColetaLixo } from "@/lib/betim/servicos";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Coleta de Lixo — Betim | Controle Popular Betim",
-  description: "Dias e horários de coleta de lixo comum e seletiva por bairro em Betim-MG.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Coleta de Lixo — ${c.nome} | ${nomePortal(c)}`,
+  (c) => `Dias e horários de coleta de lixo comum e seletiva por bairro em ${c.nome}-${c.uf}.`
+);
 
 const TIPO_LABELS: Record<string, string> = {
   comum: "Comum",

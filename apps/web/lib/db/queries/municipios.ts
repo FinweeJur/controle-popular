@@ -112,6 +112,55 @@ export async function slugsDasCidades(): Promise<string[]> {
 }
 
 /**
+ * Cidade pelo código IBGE.
+ *
+ * Existe para as funções de `lib/betim` que precisam do NOME e só recebem
+ * o id — o caso concreto é `getConveniosFederais`, que compara o
+ * convenente com "MUNICIPIO DE <cidade>". A alternativa seria passar a
+ * `Cidade` inteira como primeiro parâmetro, quebrando a convenção de
+ * `idMunicipio` que vale nas outras ~45 funções.
+ *
+ * Não custa uma consulta por chamada: `listarCidades()` é uma leitura de
+ * poucas dezenas de linhas e, dentro de um build, o Next a resolve uma vez
+ * só (ver `npm run prebuild`, que é o que impede essa cache de atravessar
+ * builds).
+ */
+export async function obterCidadePorId(
+  idMunicipio: IdMunicipio
+): Promise<Cidade | null> {
+  return (await listarCidades()).find((c) => c.id_municipio === idMunicipio) ?? null;
+}
+
+/**
+ * Nome do portal para a cidade — "Controle Popular Betim".
+ *
+ * Sai de `municipios.branding.nome_portal` quando existe. A coluna
+ * `branding` era escrita e nunca lida; este é o primeiro consumidor. Sem
+ * ela, monta a partir do nome, que é o formato que todas as páginas já
+ * usavam quando "Betim" era literal.
+ */
+export function nomePortal(cidade: Cidade): string {
+  const branding = cidade.branding as { nome_portal?: unknown } | null;
+  const doBanco = branding?.nome_portal;
+  return typeof doBanco === "string" && doBanco.trim()
+    ? doBanco
+    : `Controle Popular ${cidade.nome}`;
+}
+
+/**
+ * Nome como o Portal da Transparência federal escreve o ente municipal:
+ * maiúsculas e sem acento ("MUNICIPIO DE SAO PAULO"). Normaliza os dois
+ * lados da comparação, porque a fonte federal raramente acentua e o nome
+ * em `municipios` é acentuado.
+ */
+export function normalizarParaComparacao(texto: string): string {
+  return texto
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toUpperCase();
+}
+
+/**
  * Se a cidade tem a fonte que a página precisa.
  *
  * Serve para NÃO gerar rota sem dado, em vez de gerar uma página vazia.

@@ -4,13 +4,12 @@ import AreasAtuacao from "@/app/[municipio]/components/charts/AreasAtuacao";
 import { getLegislacao } from "@/lib/betim/legislacao";
 import { TEMA_LABELS } from "@/lib/betim/temas";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Legislação — Prefeitura de Betim — Controle Popular Betim",
-  description:
-    "Leis, decretos, resoluções e instruções normativas da Prefeitura de Betim, com filtro por categoria, ano e área temática.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Legislação — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
+  (c) => `Leis, decretos, resoluções e instruções normativas da Prefeitura de ${c.nome}, com filtro por categoria, ano e área temática.`
+);
 
 interface LegislacaoPageProps {
   params: Promise<{ municipio: string }>;

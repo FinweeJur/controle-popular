@@ -2,12 +2,12 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getNotaTransparenciaData, type AvaliacaoPntp } from "@/lib/betim/notaTransparencia";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Nota Betim (PNTP) — Controle Popular Betim",
-  description: "Nota de transparência de Betim no ranking estadual (PNTP/ATRICON).",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Nota ${c.nome} (PNTP) — ${nomePortal(c)}`,
+  (c) => `Nota de transparência de ${c.nome} no ranking estadual (PNTP/ATRICON).`
+);
 
 const NIVEL_COR: Record<string, string> = {
   Diamante: "text-accent",

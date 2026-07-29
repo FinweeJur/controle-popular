@@ -5,7 +5,7 @@ import * as q from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { fetchAnunciosAtivos } from "@/lib/betim/anuncios";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import {
   getVereadores,
   getRankingVereadores,
@@ -29,11 +29,10 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-export const metadata = {
-  title: "Controle Popular Betim — Portal independente de transparência de Betim-MG",
-  description:
-    "Dados públicos sobre contratos, finanças, câmara e serviços de Betim-MG, reunidos em um só lugar. Portal independente, sem vínculo com a Prefeitura ou a Câmara.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `${nomePortal(c)} — Portal independente de transparência de ${c.nome}-${c.uf}`,
+  (c) => `Dados públicos sobre contratos, finanças, câmara e serviços de ${c.nome}-${c.uf}, reunidos em um só lugar. Portal independente, sem vínculo com a Prefeitura ou a Câmara.`
+);
 
 // Home indicator cards row (plan §3). Real values come from `indicadores`
 // once the Base dos Dados ETL (F3) runs; until then each renders "em breve".

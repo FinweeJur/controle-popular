@@ -5,13 +5,12 @@ import { fetchProposicoes, getSituacoesDisponiveis, PROPOSICOES_PAGE_SIZE } from
 import { TIPO_PROPOSICAO_LABELS } from "@/lib/betim/vereadores";
 import { TEMA_LABELS, TEMAS_ORDENADOS } from "@/lib/betim/temas";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Proposições da Câmara — Controle Popular Betim",
-  description:
-    "Todos os projetos de lei, requerimentos, indicações e emendas apresentados na Câmara Municipal de Betim, com busca e filtro.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Proposições da Câmara — ${nomePortal(c)}`,
+  (c) => `Todos os projetos de lei, requerimentos, indicações e emendas apresentados na Câmara Municipal de ${c.nome}, com busca e filtro.`
+);
 
 interface ProposicoesPageProps {
   params: Promise<{ municipio: string }>;

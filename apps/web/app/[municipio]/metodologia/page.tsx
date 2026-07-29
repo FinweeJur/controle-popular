@@ -1,11 +1,11 @@
 import Link from "@/lib/betim/link";
 import { MOTIVO_ALERTA_INFO } from "@/lib/betim/contratos";
+import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Metodologia dos alertas de contrato — Controle Popular Betim",
-  description:
-    "Como cada alerta de contrato é calculado, com a base legal ou jurisprudencial verificada — revisão feita contra TCU/TCE em 2026-07-23.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Metodologia dos alertas de contrato — ${nomePortal(c)}`,
+  (c) => `Como cada alerta de contrato é calculado, com a base legal ou jurisprudencial verificada — revisão feita contra TCU/TCE em 2026-07-23.`
+);
 
 const REGRAS_ORDENADAS = [
   "regra_2_dispensa_proxima_limite",

@@ -3,13 +3,12 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getParaopebaData } from "@/lib/betim/paraopeba";
 import { formatCurrencyBRL, formatDateBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Reparação do Rio Paraopeba — Betim | Controle Popular Betim",
-  description:
-    "Projetos de reparação socioeconômica em Betim ligados ao Acordo Geral pelo rompimento da barragem da Vale em Brumadinho, auditados pela FGV.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Reparação do Rio Paraopeba — ${c.nome} | ${nomePortal(c)}`,
+  (c) => `Projetos de reparação socioeconômica em ${c.nome} ligados ao Acordo Geral pelo rompimento da barragem da Vale em Brumadinho, auditados pela FGV.`
+);
 
 function referenciaLabel(referencia: string): string {
   const [ano, mes] = referencia.split("-");

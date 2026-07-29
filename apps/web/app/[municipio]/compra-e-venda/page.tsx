@@ -5,14 +5,13 @@ import {
   fetchClassificados,
 } from "@/lib/betim/classificados";
 import { formatCurrencyBRL } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import ClassificadoForm from "./ClassificadoForm";
 
-export const metadata = {
-  title: "Compra e Venda — Classificados de Betim | Controle Popular Betim",
-  description:
-    "Classificados gratuitos de Betim-MG: imóveis, veículos, eletrônicos, agro e serviços — contato direto por WhatsApp.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Compra e Venda — Classificados de ${c.nome} | ${nomePortal(c)}`,
+  (c) => `Classificados gratuitos de ${c.nome}-${c.uf}: imóveis, veículos, eletrônicos, agro e serviços — contato direto por WhatsApp.`
+);
 
 export default async function CompraEVendaPage({
   params,

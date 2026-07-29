@@ -1,11 +1,10 @@
 import { getComerciosEssenciais } from "@/lib/betim/comercios";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Supermercados e Farmácias — Betim | Controle Popular Betim",
-  description:
-    "Supermercados e farmácias de Betim-MG, com Centro e Citrolândia em destaque — dado público (OpenStreetMap), publicidade gratuita.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Supermercados e Farmácias — ${c.nome} | ${nomePortal(c)}`,
+  (c) => `Supermercados e farmácias de ${c.nome}-${c.uf}, com Centro e Citrolândia em destaque — dado público (OpenStreetMap), publicidade gratuita.`
+);
 
 const TIPO_LABEL: Record<string, string> = {
   supermercado: "Supermercado",

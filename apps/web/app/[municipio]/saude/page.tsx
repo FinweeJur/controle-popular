@@ -1,15 +1,14 @@
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { getSaudeData, getSaudeTendencias, CARATER_LABELS } from "@/lib/betim/saude";
 import { formatNumberBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 const PREVENCAO_DENGUE_URL = "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue";
 
-export const metadata = {
-  title: "Saúde — Betim em Dados | Controle Popular Betim",
-  description:
-    "Internações hospitalares, arboviroses (dengue, zika, chikungunya) e principais causas de óbito em Betim-MG.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Saúde — ${c.nome} em Dados | ${nomePortal(c)}`,
+  (c) => `Internações hospitalares, arboviroses (dengue, zika, chikungunya) e principais causas de óbito em ${c.nome}-${c.uf}.`
+);
 
 const DOENCA_LABELS: Record<string, string> = {
   dengue: "Dengue",

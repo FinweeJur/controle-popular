@@ -1,8 +1,9 @@
-export const metadata = {
-  title: "Política de Privacidade — Controle Popular Betim",
-  description:
-    "Como o Controle Popular Betim trata dados pessoais, em conformidade com a LGPD (Lei 13.709/2018).",
-};
+import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+
+export const generateMetadata = metadataDaCidade(
+  (c) => `Política de Privacidade — ${nomePortal(c)}`,
+  (c) => `Como o ${nomePortal(c)} trata dados pessoais, em conformidade com a LGPD (Lei 13.709/2018).`
+);
 
 export default function PrivacidadePage() {
   return (

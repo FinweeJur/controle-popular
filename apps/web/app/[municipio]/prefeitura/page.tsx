@@ -5,13 +5,12 @@ import { getVisaoGeral } from "@/lib/betim/prefeitura";
 import { getCaixaDisponivel } from "@/lib/betim/caixa";
 import { getDiarioOficialInfo } from "@/lib/betim/diarioOficial";
 import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Prefeitura de Betim — Controle Popular Betim",
-  description:
-    "Contratos, servidores, despesas e demais dados públicos da Prefeitura de Betim.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Prefeitura de ${c.nome} — ${nomePortal(c)}`,
+  (c) => `Contratos, servidores, despesas e demais dados públicos da Prefeitura de ${c.nome}.`
+);
 
 // Tab list per plan §7. Only "Contratos" has a working route this round —
 // the rest render as inert "em breve" pills so the structure is visible.

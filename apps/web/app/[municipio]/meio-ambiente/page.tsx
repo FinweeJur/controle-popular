@@ -1,10 +1,10 @@
 import Link from "@/lib/betim/link";
+import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Meio Ambiente — Betim em Dados | Controle Popular Betim",
-  description:
-    "O que existe de fonte pública sobre meio ambiente na região de Betim-MG: barragens de mineração, compensação ambiental e TACs.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Meio Ambiente — ${c.nome} em Dados | ${nomePortal(c)}`,
+  (c) => `O que existe de fonte pública sobre meio ambiente na região de ${c.nome}-${c.uf}: barragens de mineração, compensação ambiental e TACs.`
+);
 
 // Nenhuma fonte encontrada tem API/dataset aberto por município --
 // pesquisa completa em docs/ambiental-pecma-research.md (2026-07-21).

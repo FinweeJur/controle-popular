@@ -3,13 +3,12 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import BarrasValor, { type BarraItem } from "@/app/[municipio]/components/charts/BarrasValor";
 import { getDespesasPorFuncao } from "@/lib/betim/despesas";
 import { formatCurrencyBRL } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Despesas por função — Prefeitura de Betim — Controle Popular Betim",
-  description:
-    "Quanto a Prefeitura de Betim gastou em cada função de governo (Saúde, Educação, Urbanismo…), com o valor e a fatia do total.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Despesas por função — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
+  (c) => `Quanto a Prefeitura de ${c.nome} gastou em cada função de governo (Saúde, Educação, Urbanismo…), com o valor e a fatia do total.`
+);
 
 interface DespesasPageProps {
   params: Promise<{ municipio: string }>;

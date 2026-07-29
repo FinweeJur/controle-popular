@@ -1,10 +1,10 @@
 import AssistenteChat from "@/app/[municipio]/assistente/AssistenteChat";
+import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Pergunte ao portal — Controle Popular Betim",
-  description:
-    "Assistente do Controle Popular Betim: pergunte em linguagem natural sobre contratos, gastos, vereadores e dados de Betim.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Pergunte ao portal — ${nomePortal(c)}`,
+  (c) => `Assistente do ${nomePortal(c)}: pergunte em linguagem natural sobre contratos, gastos, vereadores e dados de ${c.nome}.`
+);
 
 export default function AssistentePage() {
   return (

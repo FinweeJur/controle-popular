@@ -2,12 +2,12 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { fetchIndicadores } from "@/lib/betim/indicadores";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
-export const metadata = {
-  title: "Economia — Betim em Dados | Controle Popular Betim",
-  description: "PIB, salário médio e saldo de empregos de Betim-MG.",
-};
+export const generateMetadata = metadataDaCidade(
+  (c) => `Economia — ${c.nome} em Dados | ${nomePortal(c)}`,
+  (c) => `PIB, salário médio e saldo de empregos de ${c.nome}-${c.uf}.`
+);
 
 export default async function EconomiaPage({
   params,
