@@ -53,12 +53,20 @@ async function fatosGerais(idMunicipio: IdMunicipio): Promise<string[]> {
         `População de Betim: ${formatNumberBR(Number(popRow.valor_numerico))} habitantes (${popRow.ano_referencia}).`
       );
     }
-    if (contratos) {
+    // ZERO NÃO ENTRA NO CONTEXTO. O `if` era `contratos.count != null` e
+    // `qtdVereadores != null`, então uma cidade sem dado carregado gerava
+    // "Contratos ativos: 0" e "A Câmara tem 0 vereadores" — que o modelo
+    // repetiria como FATO, já que o system prompt manda responder só a
+    // partir do contexto e citar a fonte. "Não temos esse dado" é uma
+    // resposta; "a cidade tem zero vereadores" é uma afirmação falsa.
+    // Com uma cidade só isso nunca aparecia; com duas, aparece no dia em
+    // que a segunda entra antes do ETL.
+    if (contratos && contratos.qtd > 0) {
       linhas.push(
         `Contratos ativos da Prefeitura: ${formatNumberBR(contratos.qtd)}, somando ${formatCurrencyBRL(contratos.soma)}.`
       );
     }
-    if (qtdVereadores != null) {
+    if (qtdVereadores) {
       linhas.push(`A Câmara tem ${qtdVereadores} vereadores na legislatura atual.`);
     }
   } catch {

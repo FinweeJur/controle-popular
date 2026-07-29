@@ -34,6 +34,22 @@ import * as schema from "./schema";
 
 export type DB = ReturnType<typeof criar>;
 
+/**
+ * NÃO passe `fetchOptions: { cache: "no-store" }` aqui.
+ *
+ * É tentador: o driver HTTP faz cada consulta com `fetch`, o Next
+ * intercepta esse `fetch` com a Data Cache dele, e essa cache PERSISTE
+ * ENTRE BUILDS (ver `npm run prebuild`, que é a correção certa). Mas
+ * `no-store` marca a requisição como `revalidate: 0`, e aí o Next se
+ * recusa a prerenderizar qualquer página que a use — medido: o build
+ * morre em `/[municipio]/meio-ambiente/paraopeba` com
+ * `DYNAMIC_SERVER_USAGE`. Isso derrubaria a estaticização, que é a base
+ * do plano de ir para o Workers Free (Fase 5).
+ *
+ * A cache DENTRO de um build é desejável: ela é o que faz `listarCidades()`
+ * custar uma consulta em vez de 110. O problema é só a que sobrevive de um
+ * build para o outro.
+ */
 function criar(url: string) {
   return drizzle(neon(url), { schema });
 }
