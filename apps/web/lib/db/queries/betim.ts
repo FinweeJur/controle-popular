@@ -1,19 +1,42 @@
-import { and, asc, desc, eq, gte, ilike, inArray, isNull, lte, or, sql } from "drizzle-orm";
+import {
+  and,
+  arrayContains,
+  asc,
+  desc,
+  eq,
+  gte,
+  ilike,
+  inArray,
+  isNotNull,
+  isNull,
+  lte,
+  or,
+  sql,
+} from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { num } from "@/lib/db/num";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import {
   anuncios,
   atos_oficiais,
   beneficios_sociais,
   caixa_disponivel,
   classificados,
+  coleta_lixo,
   comercios_essenciais,
+  contatos_uteis,
+  contratos,
   convenios_federais,
+  despesas,
   escolas,
+  farmacias_plantao,
+  fornecedores,
+  grupos_economicos,
   indicadores,
   nota_transparencia,
   obras,
   postos_anp,
+  proposicoes,
   seguranca_ocorrencias,
   servidores,
   verbas_indenizatorias,
@@ -43,7 +66,7 @@ import {
  * fallback em runtime.
  */
 
-export async function caixaDisponivel(idMunicipio: string) {
+export async function caixaDisponivel(idMunicipio: IdMunicipio) {
   const db = getDb();
   if (!db) return null;
   return db
@@ -54,7 +77,7 @@ export async function caixaDisponivel(idMunicipio: string) {
     .limit(2);
 }
 
-export async function listarIndicadores(idMunicipio: string, nomes?: string[]) {
+export async function listarIndicadores(idMunicipio: IdMunicipio, nomes?: string[]) {
   const db = getDb();
   if (!db) return null;
   const cond = [eq(indicadores.id_municipio, idMunicipio)];
@@ -72,7 +95,7 @@ export async function listarIndicadores(idMunicipio: string, nomes?: string[]) {
     .orderBy(desc(indicadores.ano_referencia));
 }
 
-export async function listarObras(idMunicipio: string) {
+export async function listarObras(idMunicipio: IdMunicipio) {
   const db = getDb();
   if (!db) return null;
   return db
@@ -88,7 +111,7 @@ export async function listarObras(idMunicipio: string) {
     .orderBy(sql`${obras.valor} desc nulls last`);
 }
 
-export async function listarPostos(idMunicipio: string, bandeira?: string) {
+export async function listarPostos(idMunicipio: IdMunicipio, bandeira?: string) {
   const db = getDb();
   if (!db) return null;
   const cond = [eq(postos_anp.id_municipio, idMunicipio)];
@@ -111,7 +134,7 @@ export async function listarPostos(idMunicipio: string, bandeira?: string) {
     .orderBy(asc(postos_anp.razao_social));
 }
 
-export async function ocorrenciasSeguranca(idMunicipio: string) {
+export async function ocorrenciasSeguranca(idMunicipio: IdMunicipio) {
   const db = getDb();
   if (!db) return null;
   return db
@@ -133,7 +156,7 @@ export async function ocorrenciasSeguranca(idMunicipio: string) {
  * subrequest a mais, e o teto no Workers Free é 50.
  */
 export async function listarServidores(
-  idMunicipio: string,
+  idMunicipio: IdMunicipio,
   opts: { q?: string; orgao?: string; pagina?: number; porPagina?: number } = {}
 ) {
   const db = getDb();
@@ -169,7 +192,7 @@ export async function listarServidores(
     .offset((pagina - 1) * porPagina);
 }
 
-export async function beneficiosSociais(idMunicipio: string) {
+export async function beneficiosSociais(idMunicipio: IdMunicipio) {
   const db = getDb();
   if (!db) return null;
   return db
@@ -184,7 +207,7 @@ export async function beneficiosSociais(idMunicipio: string) {
     .orderBy(asc(beneficios_sociais.competencia));
 }
 
-export async function verbasIndenizatorias(idMunicipio: string, vereadorId?: string) {
+export async function verbasIndenizatorias(idMunicipio: IdMunicipio, vereadorId?: string) {
   const db = getDb();
   if (!db) return null;
   const cond = [eq(verbas_indenizatorias.id_municipio, idMunicipio)];
@@ -199,7 +222,7 @@ export async function verbasIndenizatorias(idMunicipio: string, vereadorId?: str
     .where(and(...cond));
 }
 
-export async function notaTransparencia(idMunicipio: string) {
+export async function notaTransparencia(idMunicipio: IdMunicipio) {
   const db = getDb();
   if (!db) return null;
   return db
@@ -209,7 +232,7 @@ export async function notaTransparencia(idMunicipio: string) {
     .orderBy(desc(nota_transparencia.ano));
 }
 
-export async function comerciosEssenciais(idMunicipio: string) {
+export async function comerciosEssenciais(idMunicipio: IdMunicipio) {
   const db = getDb();
   if (!db) return null;
   return db
@@ -228,7 +251,7 @@ export async function comerciosEssenciais(idMunicipio: string) {
 }
 
 /** Escolas com o total do conjunto, na mesma consulta. */
-export async function listarEscolas(idMunicipio: string) {
+export async function listarEscolas(idMunicipio: IdMunicipio) {
   const db = getDb();
   if (!db) return null;
   return db
@@ -246,7 +269,7 @@ export async function listarEscolas(idMunicipio: string) {
 
 /** Classificados aprovados e ainda no prazo. */
 export async function classificadosVigentes(
-  idMunicipio: string,
+  idMunicipio: IdMunicipio,
   opts: { categoria?: string; q?: string } = {}
 ) {
   const db = getDb();
@@ -278,7 +301,7 @@ export async function classificadosVigentes(
 
 /** Negócios do Zap aprovados, com os filtros da página e da rota de API. */
 export async function zapEstabelecimentos(
-  idMunicipio: string,
+  idMunicipio: IdMunicipio,
   opts: { categoria?: string; q?: string; bairros?: string[] } = {}
 ) {
   const db = getDb();
@@ -316,7 +339,7 @@ export async function zapEstabelecimentos(
  * SEM `order by` — ou seja, a ordem dentro de cada plano era indefinida.
  * Agora é SQL, com desempate por id.
  */
-export async function anunciosAtivos(idMunicipio: string) {
+export async function anunciosAtivos(idMunicipio: IdMunicipio) {
   const db = getDb();
   if (!db) return null;
   const hoje = new Date().toISOString().slice(0, 10);
@@ -344,7 +367,7 @@ export async function anunciosAtivos(idMunicipio: string) {
 }
 
 /** Convênios e repasses federais, maior valor primeiro. */
-export async function conveniosFederais(idMunicipio: string) {
+export async function conveniosFederais(idMunicipio: IdMunicipio) {
   const db = getDb();
   if (!db) return null;
   return db
@@ -379,7 +402,7 @@ export async function conveniosFederais(idMunicipio: string) {
  * caía sempre no fallback, então o ranking por área e o filtro `?tema=`
  * desta página já nasciam vazios em produção.
  */
-export async function atosOficiais(idMunicipio: string) {
+export async function atosOficiais(idMunicipio: IdMunicipio) {
   const db = getDb();
   if (!db) return null;
   return db
@@ -396,4 +419,304 @@ export async function atosOficiais(idMunicipio: string) {
       sql`${atos_oficiais.data_publicacao} desc nulls last`,
       asc(atos_oficiais.id)
     );
+}
+
+/** Anos com "Despesas Pagas" lançadas, mais recente primeiro. */
+export async function anosDeDespesas(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .selectDistinct({ ano: despesas.ano })
+    .from(despesas)
+    .where(
+      and(
+        eq(despesas.id_municipio, idMunicipio),
+        eq(despesas.estagio, "Despesas Pagas"),
+        isNotNull(despesas.ano)
+      )
+    )
+    .orderBy(desc(despesas.ano));
+}
+
+/**
+ * Despesas pagas somadas por função de governo.
+ *
+ * A soma e o filtro de funções desceram para o SQL. `despesas` mistura
+ * FUNÇÕES e SUBFUNÇÕES na mesma coluna `conta`, então somar tudo contaria
+ * a mesma despesa duas vezes — quem decide o que é função é a lista
+ * `FUNCOES_COFOG` de `lib/betim/despesas.ts`, passada aqui.
+ */
+export async function despesasPorFuncao(
+  idMunicipio: IdMunicipio,
+  ano: number,
+  funcoes: string[]
+) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      funcao: despesas.conta,
+      valor: sql<number>`sum(${despesas.valor})::double precision`,
+    })
+    .from(despesas)
+    .where(
+      and(
+        eq(despesas.id_municipio, idMunicipio),
+        eq(despesas.ano, ano),
+        eq(despesas.estagio, "Despesas Pagas"),
+        inArray(despesas.conta, funcoes)
+      )
+    )
+    .groupBy(despesas.conta)
+    // Desempate por nome: sem ele duas funções de mesmo valor sairiam em
+    // ordem indefinida, e com SSG o gráfico mudaria a cada build.
+    .orderBy(sql`sum(${despesas.valor}) desc`, asc(despesas.conta));
+}
+
+export async function contatosUteis(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      nome: contatos_uteis.nome,
+      telefone: contatos_uteis.telefone,
+      categoria: contatos_uteis.categoria,
+      ordem: contatos_uteis.ordem,
+    })
+    .from(contatos_uteis)
+    .where(eq(contatos_uteis.id_municipio, idMunicipio))
+    .orderBy(asc(contatos_uteis.ordem), asc(contatos_uteis.id));
+}
+
+export async function coletaLixo(idMunicipio: IdMunicipio, bairro?: string) {
+  const db = getDb();
+  if (!db) return null;
+  const cond = [eq(coleta_lixo.id_municipio, idMunicipio)];
+  if (bairro) cond.push(ilike(coleta_lixo.bairro, `%${bairro}%`));
+  return db
+    .select({
+      bairro: coleta_lixo.bairro,
+      tipo: coleta_lixo.tipo,
+      dias_semana: coleta_lixo.dias_semana,
+      horario: coleta_lixo.horario,
+    })
+    .from(coleta_lixo)
+    .where(and(...cond))
+    .orderBy(asc(coleta_lixo.bairro), asc(coleta_lixo.id));
+}
+
+/** Farmácias de plantão hoje: as 24h sempre, mais as que estão na escala. */
+export async function farmaciasPlantao(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  const hoje = new Date().toISOString().slice(0, 10);
+  return db
+    .select({
+      id: farmacias_plantao.id,
+      nome: farmacias_plantao.nome,
+      endereco: farmacias_plantao.endereco,
+      telefone: farmacias_plantao.telefone,
+      plantao_inicio: farmacias_plantao.plantao_inicio,
+      plantao_fim: farmacias_plantao.plantao_fim,
+      h24: farmacias_plantao.h24,
+      lat: num(farmacias_plantao.lat),
+      lng: num(farmacias_plantao.lng),
+    })
+    .from(farmacias_plantao)
+    .where(
+      and(
+        eq(farmacias_plantao.id_municipio, idMunicipio),
+        or(
+          eq(farmacias_plantao.h24, true),
+          and(
+            lte(farmacias_plantao.plantao_inicio, hoje),
+            gte(farmacias_plantao.plantao_fim, hoje)
+          )
+        )
+      )
+    )
+    .orderBy(asc(farmacias_plantao.nome), asc(farmacias_plantao.id));
+}
+
+/**
+ * Proposições da Câmara, paginadas, com o total do conjunto filtrado na
+ * mesma consulta (era o header `count: "exact"` do PostgREST).
+ *
+ * `temas` é selecionada direto: a coluna existe — tem até índice GIN na
+ * introspecção —, então o `comColunaOpcional()` que a protegia nunca
+ * chegou a rodar o fallback. Note o contraste com `atos_oficiais.temas`,
+ * que NÃO existe.
+ */
+export async function proposicoesPaginadas(
+  idMunicipio: IdMunicipio,
+  filtros: {
+    tipo?: string;
+    situacao?: string;
+    ano?: number;
+    tema?: string;
+    q?: string;
+    pagina?: number;
+    porPagina?: number;
+  } = {}
+) {
+  const db = getDb();
+  if (!db) return null;
+  const porPagina = filtros.porPagina ?? 30;
+  const pagina = Math.max(1, filtros.pagina ?? 1);
+
+  const cond = [eq(proposicoes.id_municipio, idMunicipio)];
+  if (filtros.tipo) cond.push(eq(proposicoes.tipo, filtros.tipo));
+  if (filtros.situacao) cond.push(eq(proposicoes.situacao, filtros.situacao));
+  if (filtros.ano) cond.push(eq(proposicoes.ano, filtros.ano));
+  if (filtros.tema) cond.push(arrayContains(proposicoes.temas, [filtros.tema]));
+  if (filtros.q) cond.push(ilike(proposicoes.ementa, `%${filtros.q}%`));
+
+  return db
+    .select({
+      id: proposicoes.id,
+      tipo: proposicoes.tipo,
+      numero: proposicoes.numero,
+      ano: proposicoes.ano,
+      ementa: proposicoes.ementa,
+      situacao: proposicoes.situacao,
+      data_apresentacao: proposicoes.data_apresentacao,
+      autores: proposicoes.autores,
+      link_fonte: proposicoes.link_fonte,
+      temas: proposicoes.temas,
+      total: sql<number>`(count(*) over ())::int`,
+    })
+    .from(proposicoes)
+    .where(and(...cond))
+    // Desempate por id: sem ordem total, a paginação repete ou pula linhas.
+    .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
+    .limit(porPagina)
+    .offset((pagina - 1) * porPagina);
+}
+
+/**
+ * Valores distintos de `situacao` — popula o filtro sem hardcodar a
+ * nomenclatura da Câmara.
+ *
+ * Some junto o `.range(0, 4999)` do original, que era um teto arbitrário
+ * contra o truncamento do PostgREST: com `distinct` no banco não há página
+ * para truncar. A ordenação continua no JS de propósito — ver
+ * `getSituacoesDisponiveis`.
+ */
+export async function situacoesDeProposicoes(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .selectDistinct({ situacao: proposicoes.situacao })
+    .from(proposicoes)
+    .where(
+      and(eq(proposicoes.id_municipio, idMunicipio), isNotNull(proposicoes.situacao))
+    );
+}
+
+/**
+ * Contagem de temas das proposições — da Câmara inteira, ou de um vereador
+ * quando `vereadorId` vem.
+ *
+ * Antes o app trazia TODAS as linhas (2.7k proposições, em páginas de
+ * 1000) só para montar um Map em memória. `unnest` + `group by` faz o
+ * mesmo em uma consulta e devolve dezenas de linhas.
+ *
+ * Uma linha com o mesmo tema repetido no array conta duas vezes, igual ao
+ * laço JS que isto substitui; array nulo não gera linha, igual ao `?? []`.
+ * O desempate por nome é novo: o Map do JS empatava na ordem de aparição
+ * das linhas, que é indefinida sem `order by`.
+ */
+export async function temasDeProposicoes(idMunicipio: IdMunicipio, vereadorId?: string) {
+  const db = getDb();
+  if (!db) return null;
+  const cond = [eq(proposicoes.id_municipio, idMunicipio)];
+  if (vereadorId) cond.push(eq(proposicoes.vereador_id, vereadorId));
+  return db
+    .select({
+      tema: sql<string>`unnest(${proposicoes.temas})`,
+      qtd: sql<number>`count(*)::int`,
+    })
+    .from(proposicoes)
+    .where(and(...cond))
+    .groupBy(sql`1`)
+    .orderBy(sql`2 desc`, sql`1 asc`);
+}
+
+/** Áreas de atuação da Prefeitura — os temas dos contratos. */
+export async function temasDeContratos(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      tema: sql<string>`unnest(${contratos.temas})`,
+      qtd: sql<number>`count(*)::int`,
+    })
+    .from(contratos)
+    .where(eq(contratos.id_municipio, idMunicipio))
+    .groupBy(sql`1`)
+    .orderBy(sql`2 desc`, sql`1 asc`);
+}
+
+/** Grupos econômicos entre fornecedores, maior valor contratado primeiro. */
+export async function gruposEconomicos(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      id: grupos_economicos.id,
+      nome_grupo: grupos_economicos.nome_grupo,
+      cnpjs: grupos_economicos.cnpjs,
+      socios_comuns: grupos_economicos.socios_comuns,
+      valor_total_contratos: num(grupos_economicos.valor_total_contratos),
+      qtd_contratos: grupos_economicos.qtd_contratos,
+      detectado_em: grupos_economicos.detectado_em,
+    })
+    .from(grupos_economicos)
+    .where(eq(grupos_economicos.id_municipio, idMunicipio))
+    .orderBy(desc(grupos_economicos.valor_total_contratos), asc(grupos_economicos.id));
+}
+
+/**
+ * Fornecedores por CNPJ.
+ *
+ * ÚNICA função deste arquivo SEM `idMunicipio`, e é de propósito: a tabela
+ * não tem a coluna — é chaveada por CNPJ e vale para todas as cidades, já
+ * que a mesma empresa fornece para mais de uma. O plano registra
+ * `fornecedores`/`socios` como globais junto com `feriados_nacionais`.
+ * Quem recorta por cidade é a lista de CNPJs que chega aqui.
+ */
+export async function fornecedoresPorCnpj(cnpjs: string[]) {
+  const db = getDb();
+  if (!db || cnpjs.length === 0) return null;
+  return db
+    .select({
+      cnpj: fornecedores.cnpj,
+      razao_social: fornecedores.razao_social,
+      nome_fantasia: fornecedores.nome_fantasia,
+      cnae_descricao: fornecedores.cnae_descricao,
+      municipio_sede: fornecedores.municipio_sede,
+      uf_sede: fornecedores.uf_sede,
+    })
+    .from(fornecedores)
+    .where(inArray(fornecedores.cnpj, cnpjs));
+}
+
+/**
+ * Soma de `valor_global` de todos os contratos do município.
+ *
+ * É o denominador da concentração da página de grupos econômicos. No
+ * PostgREST isso era um laço paginado de 1000 em 1000 justamente porque o
+ * truncamento silencioso devolveria uma soma MENOR — e um percentual de
+ * concentração inflado. Um `sum()` no banco não tem esse modo de falha.
+ */
+export async function somaContratada(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({
+      total: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
+    })
+    .from(contratos)
+    .where(eq(contratos.id_municipio, idMunicipio));
+  return linha?.total ?? 0;
 }

@@ -1,12 +1,18 @@
 import { fetchContatosUteis, CONTATO_CATEGORIA_LABELS } from "@/lib/betim/servicos";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Contatos Úteis — Betim | Controle Popular Betim",
   description: "Telefones úteis de Betim-MG: emergência, Prefeitura, Câmara Municipal e serviços.",
 };
 
-export default async function ContatosPage() {
-  const { rows, configured } = await fetchContatosUteis();
+export default async function ContatosPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
+  const { rows, configured } = await fetchContatosUteis(cidade.id_municipio);
 
   const grupos = new Map<string, typeof rows>();
   for (const row of rows) {

@@ -1,4 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 /**
  * As 28 funções de governo (Portaria MOG 42/1999) + Reserva de
@@ -10,7 +11,7 @@ import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
  * o restante é intraorçamentário), sem dupla contagem. Verificado ao vivo
  * 2026-07-24.
  */
-const FUNCOES_COFOG = new Set<string>([
+export const FUNCOES_COFOG = new Set<string>([
   "Legislativa",
   "Judiciária",
   "Essencial à Justiça",
@@ -72,49 +73,32 @@ const EMPTY: DespesasPorFuncaoData = {
  * (`/prefeitura/despesas`). `ano` opcional; sem ele usa o mais recente
  * disponível. Best-effort: degrada pra `ok:false` em vez de quebrar.
  */
-export async function getDespesasPorFuncao(anoParam?: number): Promise<DespesasPorFuncaoData> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return EMPTY;
-
+export async function getDespesasPorFuncao(
+  idMunicipio: IdMunicipio,
+  anoParam?: number
+): Promise<DespesasPorFuncaoData> {
   try {
-    // Anos disponíveis (pro seletor). `despesas` tem ~2.9k linhas — cabe
-    // no teto de 1000? Não: pegar só a coluna `ano` distinta é inviável
-    // via PostgREST sem RPC, então leio os anos com uma página e derivo o
-    // conjunto. Uso "Despesas Pagas" pra não inflar com outros estágios.
-    const { data: anosData, error: anosError } = await supabase
-      .from("despesas")
-      .select("ano")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .eq("estagio", "Despesas Pagas")
-      .order("ano", { ascending: false });
-    if (anosError || !anosData?.length) return { ...EMPTY, configured: true };
-    const anosDisponiveis = [...new Set(anosData.map((r) => r.ano as number))].sort(
-      (a, b) => b - a
-    );
+    // Antes o seletor de ano custava uma página inteira da tabela (~2.9k
+    // linhas), porque `select distinct` não existe no PostgREST sem RPC.
+    // Agora são duas consultas que devolvem dezenas de linhas: os anos, e
+    // a soma por função já agregada no banco.
+    const anos = await q.anosDeDespesas(idMunicipio);
+    if (!anos) return EMPTY;
+    const anosDisponiveis = anos
+      .map((r) => r.ano)
+      .filter((a): a is number => a != null);
+    if (anosDisponiveis.length === 0) return { ...EMPTY, configured: true };
     const ano = anoParam && anosDisponiveis.includes(anoParam) ? anoParam : anosDisponiveis[0];
 
-    const { data, error } = await supabase
-      .from("despesas")
-      .select("conta, valor")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .eq("ano", ano)
-      .eq("estagio", "Despesas Pagas");
-    if (error) return { ...EMPTY, configured: true };
+    const linhas = await q.despesasPorFuncao(idMunicipio, ano, [...FUNCOES_COFOG]);
+    if (!linhas) return { ...EMPTY, configured: true };
 
-    const porFuncao = new Map<string, number>();
-    for (const row of data ?? []) {
-      const conta = row.conta as string;
-      if (!FUNCOES_COFOG.has(conta)) continue;
-      porFuncao.set(conta, (porFuncao.get(conta) ?? 0) + Number(row.valor ?? 0));
-    }
-    const total = [...porFuncao.values()].reduce((a, b) => a + b, 0);
-    const funcoes = [...porFuncao.entries()]
-      .map(([funcao, valor]) => ({
-        funcao,
-        valor,
-        pct: total > 0 ? (valor / total) * 100 : 0,
-      }))
-      .sort((a, b) => b.valor - a.valor);
+    const total = linhas.reduce((a, r) => a + (r.valor ?? 0), 0);
+    const funcoes = linhas.map((r) => ({
+      funcao: r.funcao as string,
+      valor: r.valor ?? 0,
+      pct: total > 0 ? ((r.valor ?? 0) / total) * 100 : 0,
+    }));
 
     return { ano, anosDisponiveis, funcoes, total, configured: true, ok: funcoes.length > 0 };
   } catch {

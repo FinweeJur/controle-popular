@@ -16,6 +16,31 @@ import { municipios } from "@/lib/db/schema";
  * ativar uma cidade nova seja UMA LINHA NO BANCO, sem código de rota.
  */
 
+/**
+ * Código IBGE do município. É um tipo NOMINAL, não `string` qualquer, e a
+ * razão é uma regressão real: quando `getVerbasAnalytics(vereadorId)`
+ * virou `getVerbasAnalytics(idMunicipio, vereadorId)`, a chamada antiga
+ * continuou compilando — os dois parâmetros eram `string` — e passou a
+ * filtrar `id_municipio = <uuid do vereador>`. A página de todo vereador
+ * mostrou R$ 0 em verbas, sem erro nenhum, que é exatamente o modo de
+ * falha que este threading existe para eliminar.
+ *
+ * Com a marca, só quem veio da tabela `municipios` (ou passou por
+ * `comoIdMunicipio()`, que é deliberado e visível) entra no primeiro
+ * parâmetro. Passar um uuid, um slug ou um nome vira erro de compilação.
+ */
+export type IdMunicipio = string & { readonly __marca: "id_municipio" };
+
+/**
+ * Marca uma string como código de município.
+ *
+ * Só para as bordas onde o valor não vem de `municipios`: scripts de
+ * verificação e testes. Em código de página, use `cidade.id_municipio`.
+ */
+export function comoIdMunicipio(valor: string): IdMunicipio {
+  return valor as IdMunicipio;
+}
+
 /** Slug da URL a partir do nome — "Belo Horizonte" → "belo-horizonte". */
 export function slugDoNome(nome: string): string {
   return nome
@@ -27,7 +52,7 @@ export function slugDoNome(nome: string): string {
 }
 
 export interface Cidade {
-  id_municipio: string;
+  id_municipio: IdMunicipio;
   slug: string;
   nome: string;
   uf: string;
@@ -45,7 +70,8 @@ export interface Cidade {
 
 function paraCidade(l: typeof municipios.$inferSelect): Cidade {
   return {
-    id_municipio: l.id_municipio,
+    // Única origem legítima da marca: a linha da tabela `municipios`.
+    id_municipio: comoIdMunicipio(l.id_municipio),
     slug: slugDoNome(l.nome),
     nome: l.nome,
     uf: l.uf,

@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import { neon } from "@neondatabase/serverless";
+import { comoIdMunicipio } from "../lib/db/queries/municipios.js";
 import { getCaixaDisponivel } from "../lib/betim/caixa.js";
 import { getObras } from "../lib/betim/obras.js";
 import { getSocialData } from "../lib/betim/social.js";
@@ -16,8 +17,20 @@ import { fetchZapEstabelecimentos } from "../lib/betim/zap.js";
 import { fetchAnunciosAtivos } from "../lib/betim/anuncios.js";
 import { getConveniosFederais } from "../lib/betim/convenios.js";
 import { getLegislacao } from "../lib/betim/legislacao.js";
+import { getDespesasPorFuncao } from "../lib/betim/despesas.js";
+import { getTemasCamara, getTemasPrefeitura, getTemasVereador } from "../lib/betim/temas.js";
+import {
+  fetchContatosUteis,
+  fetchColetaLixo,
+  fetchFarmaciasPlantao,
+} from "../lib/betim/servicos.js";
+import { fetchProposicoes, getSituacoesDisponiveis } from "../lib/betim/proposicoes.js";
+import { getGruposEconomicos } from "../lib/betim/grupos.js";
 
-const ID = "3106705"; // Betim
+// `comoIdMunicipio` é a saída deliberada da marca nominal de `IdMunicipio`.
+// Existe exatamente para bordas como esta, onde o valor não vem da tabela
+// `municipios` — ver o comentário do tipo em lib/db/queries/municipios.ts.
+const ID = comoIdMunicipio("3106705"); // Betim
 const t = fs.readFileSync("X:/DevCoder/betim-ai/.env", "utf8");
 const env = (k: string) => t.match(new RegExp("^" + k + "=(.*)$", "m"))?.[1].trim().replace(/^["']|["']$/g, "") ?? "";
 
@@ -209,6 +222,135 @@ const temasResp = await fetch(`${env("NEXT_PUBLIC_SUPABASE_URL")}/rest/v1/atos_o
 eq(`legislacao temas ausentes nos dois lados (HTTP ${temasResp.status})`,
    [temasResp.status === 400, 0], [true, lgN.temas.length]);
 
+// ---- bloco 3: despesas, temas, servicos, proposicoes, grupos ----
+
+// despesas por funcao: a soma agora e SUM() no banco, e o filtro de
+// FUNCOES_COFOG desceu para o SQL. Reproduzo os dois lados no JS a partir
+// do PostgREST cru.
+const FUNCOES = new Set((await import("../lib/betim/despesas.js")).FUNCOES_COFOG);
+const dp = await rest(`despesas?select=ano,conta,valor&id_municipio=eq.${ID}&estagio=eq.Despesas%20Pagas`);
+const dpN = await getDespesasPorFuncao(ID);
+const anosS = [...new Set(dp.map((r) => r.ano))].sort((a, b) => b - a);
+eq(`despesas anos (${anosS.join(",")} vs ${dpN.anosDisponiveis.join(",")})`, anosS, dpN.anosDisponiveis);
+const porFuncaoS = new Map<string, number>();
+for (const r of dp.filter((r) => r.ano === dpN.ano && FUNCOES.has(r.conta))) {
+  porFuncaoS.set(r.conta, (porFuncaoS.get(r.conta) ?? 0) + Number(r.valor ?? 0));
+}
+const totalS = [...porFuncaoS.values()].reduce((a, b) => a + b, 0);
+eq(`despesas total ${dpN.ano} (${totalS.toFixed(2)} vs ${dpN.total.toFixed(2)})`,
+   Math.round(totalS * 100), Math.round(dpN.total * 100));
+eq(`despesas funcoes (${porFuncaoS.size} vs ${dpN.funcoes.length})`, porFuncaoS.size, dpN.funcoes.length);
+eq(`despesas maior funcao`,
+   [...porFuncaoS.entries()].sort((a, b) => b[1] - a[1])[0]?.[0], dpN.funcoes[0]?.funcao);
+eq(`despesas valor por funcao`,
+   [...porFuncaoS.entries()].map(([f, v]) => [f, Math.round(v * 100)]).sort(),
+   dpN.funcoes.map((f) => [f.funcao, Math.round(f.valor * 100)]).sort());
+
+// temas: a contagem virou unnest + group by. Recomputo com o laco antigo.
+const contarS = (linhas: any[]) => {
+  const m = new Map<string, number>();
+  for (const l of linhas) for (const t of l.temas ?? []) m.set(t, (m.get(t) ?? 0) + 1);
+  return [...m.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+};
+const prop = await rest(`proposicoes?select=id,temas,situacao,ano,numero,vereador_id&id_municipio=eq.${ID}`);
+const tcN = await getTemasCamara(ID);
+eq(`temas camara (${contarS(prop).length} temas vs ${tcN.temas.length})`,
+   contarS(prop), tcN.temas.map((t) => [t.tema, t.qtd]));
+const ctr = await rest(`contratos?select=id,temas,valor_global&id_municipio=eq.${ID}`);
+const tpN = await getTemasPrefeitura(ID);
+eq(`temas prefeitura (${contarS(ctr).length} temas vs ${tpN.temas.length})`,
+   contarS(ctr), tpN.temas.map((t) => [t.tema, t.qtd]));
+const verAlvo = prop.find((r) => r.vereador_id)?.vereador_id;
+if (verAlvo) {
+  const tvN = await getTemasVereador(ID, verAlvo);
+  eq(`temas de um vereador (${verAlvo.slice(0, 8)})`,
+     contarS(prop.filter((r) => r.vereador_id === verAlvo)),
+     tvN.temas.map((t) => [t.tema, t.qtd]));
+}
+
+// servicos
+const ct = await rest(`contatos_uteis?select=nome,ordem&id_municipio=eq.${ID}&order=ordem.asc`);
+const ctN = await fetchContatosUteis(ID);
+eq(`contatos uteis (${ct.length} vs ${ctN.rows.length})`, ct.map((r) => r.nome), ctN.rows.map((r) => r.nome));
+
+const cx2 = await rest(`coleta_lixo?select=bairro,tipo&id_municipio=eq.${ID}&order=bairro.asc`);
+const cx2N = await fetchColetaLixo(ID);
+eq(`coleta de lixo (${cx2.length} vs ${cx2N.rows.length})`, cx2.map((r) => r.bairro), cx2N.rows.map((r) => r.bairro));
+const bairroColeta = cx2[0]?.bairro;
+if (bairroColeta) {
+  const cx2f = await rest(
+    `coleta_lixo?select=bairro&id_municipio=eq.${ID}&bairro=ilike.*${encodeURIComponent(bairroColeta)}*`
+  );
+  eq(`coleta filtrada por bairro (${cx2f.length})`,
+     cx2f.length, (await fetchColetaLixo(ID, bairroColeta)).rows.length);
+}
+
+const fm = await rest(
+  `farmacias_plantao?select=id,nome&id_municipio=eq.${ID}&or=(h24.eq.true,and(plantao_inicio.lte.${HOJE},plantao_fim.gte.${HOJE}))&order=nome.asc`
+);
+const fmN = await fetchFarmaciasPlantao(ID);
+eq(`farmacias de plantao (${fm.length} vs ${fmN.rows.length})`, fm.map((r) => r.nome), fmN.rows.map((r) => r.nome));
+
+// proposicoes: total, primeira pagina e os filtros
+const ppN = await fetchProposicoes(ID);
+eq(`proposicoes total (${prop.length} vs ${ppN.total})`, prop.length, ppN.total);
+eq(`proposicoes total e number, nao string`, "number", typeof ppN.total);
+const ordemS = [...prop]
+  .sort((a, b) => (b.ano ?? 0) - (a.ano ?? 0) || (b.numero ?? 0) - (a.numero ?? 0) || a.id.localeCompare(b.id))
+  .slice(0, 30);
+eq(`proposicoes 1a pagina em ordem`, ordemS.map((r) => r.id), ppN.rows.map((r) => r.id));
+const pp2 = await fetchProposicoes(ID, { page: 2 });
+eq(`proposicoes 2a pagina nao repete a 1a`,
+   [], ppN.rows.map((r) => r.id).filter((id) => pp2.rows.some((r) => r.id === id)));
+const sitAlvo = prop.find((r) => r.situacao)?.situacao;
+if (sitAlvo) {
+  eq(`proposicoes filtro situacao="${sitAlvo}"`,
+     prop.filter((r) => r.situacao === sitAlvo).length,
+     (await fetchProposicoes(ID, { situacao: sitAlvo })).total);
+}
+const temaAlvo = tcN.temas[0]?.tema;
+if (temaAlvo) {
+  eq(`proposicoes filtro tema="${temaAlvo}"`,
+     prop.filter((r) => (r.temas ?? []).includes(temaAlvo)).length,
+     (await fetchProposicoes(ID, { tema: temaAlvo })).total);
+}
+eq(`situacoes disponiveis`,
+   [...new Set(prop.map((r) => r.situacao).filter(Boolean))].sort(),
+   await getSituacoesDisponiveis(ID));
+
+// grupos economicos: o denominador da concentracao era um laco paginado
+const gr = await rest(
+  `grupos_economicos?select=id,nome_grupo,cnpjs,valor_total_contratos&id_municipio=eq.${ID}&order=valor_total_contratos.desc`
+);
+const grN = await getGruposEconomicos(ID);
+eq(`grupos (${gr.length} vs ${grN.grupos.length})`, gr.length, grN.grupos.length);
+eq(`grupos valorTotal`,
+   Math.round(gr.reduce((a, r) => a + Number(r.valor_total_contratos ?? 0), 0) * 100),
+   Math.round(grN.valorTotal * 100));
+eq(`grupos empresas distintas`,
+   new Set(gr.flatMap((r) => r.cnpjs ?? [])).size, grN.totalEmpresas);
+// A soma do municipio inteiro: e AQUI que o truncamento do PostgREST
+// mordia. `ctr` acima ja veio paginado pelo rest().
+eq(`grupos denominador = soma de ${ctr.length} contratos (${grN.valorTotalMunicipio.toFixed(2)})`,
+   Math.round(ctr.reduce((a, r) => a + Number(r.valor_global ?? 0), 0) * 100),
+   Math.round(grN.valorTotalMunicipio * 100));
+eq(`grupos razao social veio de fornecedores`,
+   true, grN.grupos.every((g) => g.empresas.every((e) => e.cnpj.length > 0)));
+
+// REGRESSAO: a pagina do vereador chamava getVerbasAnalytics(row.id) com a
+// assinatura nova, passando o uuid do vereador como idMunicipio. Compilava,
+// e devolvia zero. Este teste falha se alguem reintroduzir a troca.
+const verComVerbas = (await rest(`verbas_indenizatorias?select=vereador_id&id_municipio=eq.${ID}&limit=1`))[0]
+  ?.vereador_id;
+if (verComVerbas) {
+  const certo = await getVerbasAnalytics(ID, verComVerbas);
+  const trocado = await getVerbasAnalytics(comoIdMunicipio(verComVerbas), verComVerbas);
+  eq(`verbas do vereador nao sao zero (${certo.total.toFixed(2)} em ${certo.totalRegistros} registros)`,
+     true, certo.total > 0 && certo.totalRegistros > 0);
+  eq(`verbas com os parametros trocados dariam zero — por isso o tipo nominal`,
+     [0, 0], [trocado.total, trocado.totalRegistros]);
+}
+
 /**
  * FIXTURES — porque paridade sobre tabela vazia nao prova nada.
  *
@@ -226,8 +368,15 @@ eq(`legislacao temas ausentes nos dois lados (HTTP ${temasResp.status})`,
  */
 const neonSql = neon(process.env.DATABASE_URL!);
 const FIX = "00000000-0000-4000-8000-0000000000";
+const TABELAS_FIXTURE = [
+  "classificados",
+  "zap_estabelecimentos",
+  "anuncios",
+  "farmacias_plantao",
+  "coleta_lixo",
+];
 const limpar = async () => {
-  for (const t of ["classificados", "zap_estabelecimentos", "anuncios"]) {
+  for (const t of TABELAS_FIXTURE) {
     await neonSql.query(`delete from ${t} where id::text like '${FIX}%'`);
   }
 };
@@ -285,14 +434,43 @@ try {
      a.map((r) => r.nome_comercio).sort());
   eq(`fixture anuncios: premium na primeira posicao (plano nulo nao passa na frente)`,
      "Premium", a[0]?.nome_comercio);
+
+  // `farmacias_plantao` e `coleta_lixo` tambem estao vazias. A regra da
+  // primeira e a traducao do `.or(h24.eq.true, and(...))` do PostgREST —
+  // uma farmacia 24h aparece SEM estar na escala, e uma na escala aparece
+  // sem ser 24h.
+  await neonSql.query(`insert into farmacias_plantao (id, id_municipio, nome, h24, plantao_inicio, plantao_fim, lat, lng) values
+    ('${FIX}31', '${ID}', 'Alfa 24h',        true,  null,        null,        -19.96, -44.20),
+    ('${FIX}32', '${ID}', 'Beta na escala',  false, '${dia(-2)}', '${dia(2)}', -19.97, -44.21),
+    ('${FIX}33', '${ID}', 'Gama fora',       false, '${dia(-9)}', '${dia(-3)}', null,  null),
+    ('${FIX}34', '${ID}', 'Delta sem data',  false, null,        null,        null,   null)`);
+
+  const fx = await fetchFarmaciasPlantao(ID);
+  eq(`fixture farmacias: 24h e escala vigente, em ordem de nome`,
+     ["Alfa 24h", "Beta na escala"], fx.rows.map((r) => r.nome));
+  eq(`fixture farmacias: lat/lng numeric viram number`,
+     [-19.96, "number"], [fx.rows[0]?.lat, typeof fx.rows[0]?.lat]);
+
+  await neonSql.query(`insert into coleta_lixo (id, id_municipio, bairro, tipo, dias_semana, horario) values
+    ('${FIX}41', '${ID}', 'Centro',      'comum',    array['segunda','quarta'], '07:00'),
+    ('${FIX}42', '${ID}', 'Alterosas',   'seletiva', array['terça'],            '08:00')`);
+
+  const cx3 = await fetchColetaLixo(ID);
+  eq(`fixture coleta: em ordem de bairro`, ["Alterosas", "Centro"], cx3.rows.map((r) => r.bairro));
+  eq(`fixture coleta: filtro ilike por bairro`,
+     ["Centro"], (await fetchColetaLixo(ID, "cent")).rows.map((r) => r.bairro));
+  eq(`fixture coleta: dias_semana chega como array`,
+     ["segunda", "quarta"], cx3.rows.find((r) => r.bairro === "Centro")?.dias_semana);
 } finally {
   await limpar();
 }
 const sobrou = await neonSql.query(
   `select (select count(*) from classificados)::int
         + (select count(*) from zap_estabelecimentos)::int
-        + (select count(*) from anuncios)::int as n`
+        + (select count(*) from anuncios)::int
+        + (select count(*) from farmacias_plantao)::int
+        + (select count(*) from coleta_lixo)::int as n`
 );
-eq(`fixtures removidas (${sobrou[0].n} linhas nas 3 tabelas)`, 0, sobrou[0].n);
+eq(`fixtures removidas (${sobrou[0].n} linhas nas ${TABELAS_FIXTURE.length} tabelas)`, 0, sobrou[0].n);
 
 process.exit(0);

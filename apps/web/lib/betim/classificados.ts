@@ -1,5 +1,6 @@
 import * as q from "@/lib/db/queries/betim";
 import { normalizeWhatsapp } from "@/lib/betim/zap";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export const CLASSIFICADO_CATEGORIAS = [
   "imoveis",
@@ -35,7 +36,7 @@ export interface ClassificadoAnuncio {
 }
 
 export async function fetchClassificados(
-  idMunicipio: string,
+  idMunicipio: IdMunicipio,
   params: { categoria?: string; q?: string } = {}
 ): Promise<{ rows: ClassificadoAnuncio[]; configured: boolean }> {
   try {

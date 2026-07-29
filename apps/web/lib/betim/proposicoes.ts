@@ -1,4 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT, comColunaOpcional } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export const PROPOSICOES_PAGE_SIZE = 30;
 
@@ -31,11 +32,16 @@ export interface ProposicoesResult {
   ok: boolean;
 }
 
-const SELECT = "id, tipo, numero, ano, ementa, situacao, data_apresentacao, autores, link_fonte, temas";
-const SELECT_SEM_TEMA = "id, tipo, numero, ano, ementa, situacao, data_apresentacao, autores, link_fonte";
-
-function sanitizeSearchTerm(q: string | undefined): string | undefined {
-  const trimmed = q?.trim();
+/**
+ * O termo de busca continua sendo higienizado, mas por outra razão que a
+ * original. No PostgREST, `%`, `,` e parênteses são SINTAXE da URL do
+ * filtro — deixá-los passar mudava a consulta. Aqui o valor vai como
+ * parâmetro ligado (`$1`), então não há injeção a evitar; o que sobra é o
+ * `%`, que num `ilike` vira curinga e transforma "10%" numa busca por
+ * qualquer coisa. Mantido para a busca dar o mesmo resultado de antes.
+ */
+function sanitizeSearchTerm(termo: string | undefined): string | undefined {
+  const trimmed = termo?.trim();
   if (!trimmed) return undefined;
   return trimmed.replace(/[%,()]/g, "");
 }
@@ -47,51 +53,27 @@ function sanitizeSearchTerm(q: string | undefined): string | undefined {
  * por vereador -- não dava pra buscar/filtrar todas as proposições da
  * Câmara num só lugar (achado do usuário 2026-07-23).
  */
-export async function fetchProposicoes(filters: ProposicoesFilters): Promise<ProposicoesResult> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], total: 0, configured: false, ok: false };
-
-  const page = Math.max(1, filters.page ?? 1);
-  const from = (page - 1) * PROPOSICOES_PAGE_SIZE;
-  const to = from + PROPOSICOES_PAGE_SIZE - 1;
-  const term = sanitizeSearchTerm(filters.q);
-
+export async function fetchProposicoes(
+  idMunicipio: IdMunicipio,
+  filters: ProposicoesFilters = {}
+): Promise<ProposicoesResult> {
   try {
-    const base = () => {
-      let q = supabase
-        .from("proposicoes")
-        .select(SELECT, { count: "exact" })
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-      if (filters.tipo) q = q.eq("tipo", filters.tipo);
-      if (filters.situacao) q = q.eq("situacao", filters.situacao);
-      if (filters.ano) q = q.eq("ano", Number(filters.ano));
-      if (filters.tema) q = q.contains("temas", [filters.tema]);
-      if (term) q = q.ilike("ementa", `%${term}%`);
-      return q
-        .order("ano", { ascending: false })
-        .order("numero", { ascending: false })
-        .range(from, to);
-    };
-    const semTema = () => {
-      let q = supabase
-        .from("proposicoes")
-        .select(SELECT_SEM_TEMA, { count: "exact" })
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-      if (filters.tipo) q = q.eq("tipo", filters.tipo);
-      if (filters.situacao) q = q.eq("situacao", filters.situacao);
-      if (filters.ano) q = q.eq("ano", Number(filters.ano));
-      if (term) q = q.ilike("ementa", `%${term}%`);
-      return q
-        .order("ano", { ascending: false })
-        .order("numero", { ascending: false })
-        .range(from, to);
-    };
-    const { data, count, error } = filters.tema ? await comColunaOpcional(base, semTema) : await base();
-    if (error) return { rows: [], total: 0, configured: true, ok: false };
+    const data = await q.proposicoesPaginadas(idMunicipio, {
+      tipo: filters.tipo,
+      situacao: filters.situacao,
+      ano: filters.ano ? Number(filters.ano) : undefined,
+      tema: filters.tema,
+      q: sanitizeSearchTerm(filters.q),
+      pagina: filters.page,
+      porPagina: PROPOSICOES_PAGE_SIZE,
+    });
+    if (!data) return { rows: [], total: 0, configured: false, ok: false };
 
+    // O total do conjunto filtrado vem por `count(*) over ()` em cada
+    // linha; sem linha nenhuma, o total é zero.
     return {
-      rows: (data ?? []) as ProposicaoListRow[],
-      total: count ?? 0,
+      rows: data as ProposicaoListRow[],
+      total: data[0]?.total ?? 0,
       configured: true,
       ok: true,
     };
@@ -103,22 +85,14 @@ export async function fetchProposicoes(filters: ProposicoesFilters): Promise<Pro
 /** Valores distintos de `situacao` hoje na tabela -- pra popular o
  *  `<select>` de filtro sem hardcoded uma lista que pode ficar
  *  desatualizada se a Câmara mudar a nomenclatura de tramitação. */
-export async function getSituacoesDisponiveis(): Promise<string[]> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return [];
+export async function getSituacoesDisponiveis(idMunicipio: IdMunicipio): Promise<string[]> {
   try {
-    // .range() explícito -- sem isso o PostgREST corta em 1000 linhas por
-    // padrão, e a tabela já passa de 2700 (mesma classe de bug já
-    // corrigida antes nesta sessão em getRankingVereadores/etl.alertas).
-    const { data, error } = await supabase
-      .from("proposicoes")
-      .select("situacao")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .not("situacao", "is", null)
-      .range(0, 4999);
-    if (error || !data) return [];
-    const unicos = Array.from(new Set((data as { situacao: string }[]).map((r) => r.situacao)));
-    return unicos.sort();
+    const data = await q.situacoesDeProposicoes(idMunicipio);
+    if (!data) return [];
+    // Ordenação no JS, não no `order by`: `Array.sort()` sem comparador é
+    // por code unit UTF-16, e a collation do Postgres não reproduz isso —
+    // trocar mudaria a ordem do `<select>` em silêncio.
+    return data.map((r) => r.situacao as string).sort();
   } catch {
     return [];
   }

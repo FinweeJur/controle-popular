@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export const REDE_LABELS: Record<string, string> = {
   "1": "Federal",
@@ -30,7 +31,7 @@ const EMPTY: EducacaoData = {
   escolas: [],
 };
 
-export async function getEducacaoData(idMunicipio: string): Promise<EducacaoData> {
+export async function getEducacaoData(idMunicipio: IdMunicipio): Promise<EducacaoData> {
   try {
     const data = await q.listarEscolas(idMunicipio);
     if (!data) return EMPTY;

@@ -1,13 +1,19 @@
 import { fetchFarmaciasPlantao, wazeLink } from "@/lib/betim/servicos";
 import { formatDateBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Farmácias de Plantão — Betim | Controle Popular Betim",
   description: "Farmácias de plantão da semana em Betim-MG, com telefone e rota no Waze.",
 };
 
-export default async function PlantaoFarmaciasPage() {
-  const { rows, configured } = await fetchFarmaciasPlantao();
+export default async function PlantaoFarmaciasPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
+  const { rows, configured } = await fetchFarmaciasPlantao(cidade.id_municipio);
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-14 sm:px-8">

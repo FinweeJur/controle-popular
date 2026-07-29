@@ -1,4 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface ContatoUtil {
   nome: string;
@@ -15,21 +16,17 @@ export const CONTATO_CATEGORIA_LABELS: Record<string, string> = {
   outros: "Outros",
 };
 
-export async function fetchContatosUteis(): Promise<{
+export async function fetchContatosUteis(idMunicipio: IdMunicipio): Promise<{
   rows: ContatoUtil[];
   configured: boolean;
 }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], configured: false };
-
-  const { data, error } = await supabase
-    .from("contatos_uteis")
-    .select("nome, telefone, categoria, ordem")
-    .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-    .order("ordem", { ascending: true });
-
-  if (error || !data) return { rows: [], configured: true };
-  return { rows: data as ContatoUtil[], configured: true };
+  try {
+    const data = await q.contatosUteis(idMunicipio);
+    if (!data) return { rows: [], configured: false };
+    return { rows: data as ContatoUtil[], configured: true };
+  } catch {
+    return { rows: [], configured: true };
+  }
 }
 
 export interface ColetaLixoRow {
@@ -39,24 +36,20 @@ export interface ColetaLixoRow {
   horario: string | null;
 }
 
-export async function fetchColetaLixo(bairro?: string): Promise<{
+export async function fetchColetaLixo(
+  idMunicipio: IdMunicipio,
+  bairro?: string
+): Promise<{
   rows: ColetaLixoRow[];
   configured: boolean;
 }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], configured: false };
-
-  let query = supabase
-    .from("coleta_lixo")
-    .select("bairro, tipo, dias_semana, horario")
-    .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-    .order("bairro", { ascending: true });
-
-  if (bairro) query = query.ilike("bairro", `%${bairro}%`);
-
-  const { data, error } = await query;
-  if (error || !data) return { rows: [], configured: true };
-  return { rows: data as ColetaLixoRow[], configured: true };
+  try {
+    const data = await q.coletaLixo(idMunicipio, bairro);
+    if (!data) return { rows: [], configured: false };
+    return { rows: data as ColetaLixoRow[], configured: true };
+  } catch {
+    return { rows: [], configured: true };
+  }
 }
 
 const DIA_SEMANA_ICS: Record<string, string> = {
@@ -92,23 +85,17 @@ export interface FarmaciaPlantao {
   lng: number | null;
 }
 
-export async function fetchFarmaciasPlantao(): Promise<{
+export async function fetchFarmaciasPlantao(idMunicipio: IdMunicipio): Promise<{
   rows: FarmaciaPlantao[];
   configured: boolean;
 }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], configured: false };
-
-  const today = new Date().toISOString().slice(0, 10);
-  const { data, error } = await supabase
-    .from("farmacias_plantao")
-    .select("id, nome, endereco, telefone, plantao_inicio, plantao_fim, h24, lat, lng")
-    .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-    .or(`h24.eq.true,and(plantao_inicio.lte.${today},plantao_fim.gte.${today})`)
-    .order("nome", { ascending: true });
-
-  if (error || !data) return { rows: [], configured: true };
-  return { rows: data as FarmaciaPlantao[], configured: true };
+  try {
+    const data = await q.farmaciasPlantao(idMunicipio);
+    if (!data) return { rows: [], configured: false };
+    return { rows: data as FarmaciaPlantao[], configured: true };
+  } catch {
+    return { rows: [], configured: true };
+  }
 }
 
 /** Waze deep link — falls back to a text-search URL when coordinates are missing. */

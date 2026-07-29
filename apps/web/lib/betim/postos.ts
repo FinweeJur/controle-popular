@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface PostoAnp {
   cnpj: string;
@@ -26,7 +27,7 @@ function normalizeBairro(s: string): string {
 }
 
 export async function fetchPostosAnp(
-  idMunicipio: string,
+  idMunicipio: IdMunicipio,
   bandeira?: string,
   /** Nomes de bairro em qualquer capitalização/acentuação -- comparação
    *  normalizada, com substring pra cobrir nomes compostos da ANP que não

@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export const SERVIDORES_PAGE_SIZE = 50;
 
@@ -27,7 +28,7 @@ const EMPTY: ServidoresResult = { rows: [], total: 0, configured: false, ok: fal
  * dado sensível; nome+cargo de servidor público é informação pública.
  */
 export async function getServidores(
-  idMunicipio: string,
+  idMunicipio: IdMunicipio,
   opts: {
     q?: string;
     orgao?: string;

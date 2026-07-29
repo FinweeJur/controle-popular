@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export const ANUNCIO_PLANOS = ["basico", "premium"] as const;
 export type AnuncioPlano = (typeof ANUNCIO_PLANOS)[number];
@@ -29,7 +30,7 @@ export interface Anuncio {
  * enquanto o site existir" — é divulgação única, não mensalidade) agora
  * moram na consulta; ver `anunciosAtivos()`.
  */
-export async function fetchAnunciosAtivos(idMunicipio: string): Promise<Anuncio[]> {
+export async function fetchAnunciosAtivos(idMunicipio: IdMunicipio): Promise<Anuncio[]> {
   try {
     const data = await q.anunciosAtivos(idMunicipio);
     return (data ?? []) as Anuncio[];

@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface IndicadorRow {
   nome: string;
@@ -9,7 +10,7 @@ export interface IndicadorRow {
 }
 
 export async function fetchIndicadores(
-  idMunicipio: string,
+  idMunicipio: IdMunicipio,
   nomes: string[]
 ): Promise<Record<string, IndicadorRow>> {
   const data = await q.listarIndicadores(idMunicipio, nomes);

@@ -5,6 +5,7 @@ import { fetchProposicoes, getSituacoesDisponiveis, PROPOSICOES_PAGE_SIZE } from
 import { TIPO_PROPOSICAO_LABELS } from "@/lib/betim/vereadores";
 import { TEMA_LABELS, TEMAS_ORDENADOS } from "@/lib/betim/temas";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Proposições da Câmara — Controle Popular Betim",
@@ -13,6 +14,7 @@ export const metadata = {
 };
 
 interface ProposicoesPageProps {
+  params: Promise<{ municipio: string }>;
   searchParams: Promise<{
     tipo?: string;
     situacao?: string;
@@ -23,12 +25,16 @@ interface ProposicoesPageProps {
   }>;
 }
 
-export default async function ProposicoesPage({ searchParams }: ProposicoesPageProps) {
+export default async function ProposicoesPage({
+  params: rotaParams,
+  searchParams,
+}: ProposicoesPageProps) {
+  const cidade = await cidadeDaRota(rotaParams);
   const params = await searchParams;
   const page = Math.max(1, Number(params.page) || 1);
 
   const [{ rows, total, configured, ok }, situacoes] = await Promise.all([
-    fetchProposicoes({
+    fetchProposicoes(cidade.id_municipio, {
       tipo: params.tipo,
       situacao: params.situacao,
       ano: params.ano,
@@ -36,7 +42,7 @@ export default async function ProposicoesPage({ searchParams }: ProposicoesPageP
       q: params.q,
       page,
     }),
-    getSituacoesDisponiveis(),
+    getSituacoesDisponiveis(cidade.id_municipio),
   ]);
 
   const totalPages = Math.max(1, Math.ceil(total / PROPOSICOES_PAGE_SIZE));

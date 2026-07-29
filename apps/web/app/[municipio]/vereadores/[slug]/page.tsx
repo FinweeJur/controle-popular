@@ -17,9 +17,13 @@ import { getTemasVereador, TEMA_LABELS } from "@/lib/betim/temas";
 import { getVerbasAnalytics } from "@/lib/betim/verbas";
 import { getParticipacoesByVereador } from "@/lib/betim/comissoes";
 import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 interface VereadorPageProps {
-  params: Promise<{ slug: string }>;
+  /** A rota é `/[municipio]/vereadores/[slug]` — os dois segmentos chegam
+   *  aqui. O tipo declarava só `slug`, o que escondia a cidade de quem
+   *  lesse a assinatura. */
+  params: Promise<{ municipio: string; slug: string }>;
   searchParams: Promise<{ tema?: string }>;
 }
 
@@ -32,6 +36,7 @@ export async function generateMetadata({ params }: VereadorPageProps) {
 }
 
 export default async function VereadorPage({ params, searchParams }: VereadorPageProps) {
+  const cidade = await cidadeDaRota(params);
   const { slug } = await params;
   const { tema } = await searchParams;
   const { row, ok } = await getVereadorBySlug(slug);
@@ -44,12 +49,19 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
         getDiariasByVereador(row.id),
         getDoacoesSummary(row.id),
         getBensCandidato(row.id),
-        getVerbasAnalytics(row.id),
+        // REGRESSÃO CORRIGIDA: com a assinatura antiga isto era
+        // `getVerbasAnalytics(vereadorId)`. Ao virar `(idMunicipio,
+        // vereadorId)` a chamada continuou compilando — os dois parâmetros
+        // são `string` — e passou a filtrar `id_municipio = <uuid do
+        // vereador>`, o que devolve zero linha. A seção de verbas de TODO
+        // vereador mostrava R$ 0 (medido: R$ 4.783,29 em 7 registros no
+        // primeiro vereador com verbas).
+        getVerbasAnalytics(cidade.id_municipio, row.id),
         // O ranking inteiro (não só este vereador) porque a barra de
         // atuação é medida contra o 1º colocado — sem o conjunto não dá
         // pra desenhar uma escala comparável nem dizer a posição.
         getRankingVereadores(),
-        getTemasVereador(row.id),
+        getTemasVereador(cidade.id_municipio, row.id),
         getParticipacoesByVereador(row.id),
       ])
     : [

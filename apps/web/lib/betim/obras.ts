@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface ObraRow {
   nome: string;
@@ -38,7 +39,7 @@ interface RawRow {
  * componente. `situacao` filtra pela situação real da obra.
  */
 export async function getObras(
-  idMunicipio: string,
+  idMunicipio: IdMunicipio,
   situacaoFiltro?: string
 ): Promise<ObrasData> {
   try {

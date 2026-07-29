@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface BeneficioMes {
   competencia: string; // "YYYY-MM-DD" (dia 1 do mês)
@@ -38,7 +39,7 @@ interface Row {
  * (Bolsa Família → Auxílio Brasil → Novo Bolsa Família) e a API não
  * unifica o histórico. A página precisa dizer isso.
  */
-export async function getSocialData(idMunicipio: string): Promise<SocialData> {
+export async function getSocialData(idMunicipio: IdMunicipio): Promise<SocialData> {
   try {
     const data = await q.beneficiosSociais(idMunicipio);
     if (!data) return VAZIO;

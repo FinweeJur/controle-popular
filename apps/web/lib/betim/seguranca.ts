@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface NaturezaAno {
   natureza: string;
@@ -44,7 +45,7 @@ interface Row {
  * QUE EXISTEM NOS DOIS ANOS (ex.: jan-fev de 2026 vs. jan-fev de 2025),
  * não o ano inteiro -- mesmo cuidado que `/saude` já tem com 2025 parcial.
  */
-export async function getSegurancaData(idMunicipio: string): Promise<SegurancaData> {
+export async function getSegurancaData(idMunicipio: IdMunicipio): Promise<SegurancaData> {
   try {
     const data = await q.ocorrenciasSeguranca(idMunicipio);
     if (!data) return VAZIO;

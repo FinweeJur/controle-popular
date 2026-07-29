@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface VerbasAnalytics {
   total: number;
@@ -23,7 +24,7 @@ const EMPTY: VerbasAnalytics = {
  * lib/prefeitura.ts's getVisaoGeral.
  */
 export async function getVerbasAnalytics(
-  idMunicipio: string,
+  idMunicipio: IdMunicipio,
   vereadorId?: string
 ): Promise<VerbasAnalytics> {
   try {

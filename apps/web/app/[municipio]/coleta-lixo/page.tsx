@@ -1,4 +1,5 @@
 import { fetchColetaLixo } from "@/lib/betim/servicos";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Coleta de Lixo — Betim | Controle Popular Betim",
@@ -18,9 +19,10 @@ export default async function ColetaLixoPage({
   searchParams: Promise<{ bairro?: string }>;
 }) {
   // Componente de servidor não usa hook: a cidade vem do `params` da rota.
-  const { municipio } = await params;
+  const cidade = await cidadeDaRota(params);
+  const municipio = cidade.slug;
   const { bairro } = await searchParams;
-  const { rows, configured } = await fetchColetaLixo(bairro);
+  const { rows, configured } = await fetchColetaLixo(cidade.id_municipio, bairro);
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-14 sm:px-8">

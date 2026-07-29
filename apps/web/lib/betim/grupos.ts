@@ -1,4 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface EmpresaDoGrupo {
   cnpj: string;
@@ -82,22 +83,16 @@ interface FornecedorRow {
  * contratado"): sem ele a página mostraria um número absoluto grande sem
  * escala, que não informa nada.
  *
- * Degrada em silêncio, como o resto de `lib/`: sem Supabase configurado ou
+ * Degrada em silêncio, como o resto de `lib/`: sem banco configurado ou
  * sem a tabela, devolve `configured/ok` falsos e a página mostra estado
  * vazio — nunca lança.
  */
-export async function getGruposEconomicos(): Promise<GruposEconomicosResult> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return VAZIO;
-
+export async function getGruposEconomicos(
+  idMunicipio: IdMunicipio
+): Promise<GruposEconomicosResult> {
   try {
-    const { data, error } = await supabase
-      .from("grupos_economicos")
-      .select("id, nome_grupo, cnpjs, socios_comuns, valor_total_contratos, qtd_contratos, detectado_em")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .order("valor_total_contratos", { ascending: false });
-
-    if (error || !data) return { ...VAZIO, configured: true };
+    const data = await q.gruposEconomicos(idMunicipio);
+    if (!data) return VAZIO;
 
     const rows = data as GrupoRow[];
     const cnpjs = [...new Set(rows.flatMap((r) => r.cnpjs ?? []))];
@@ -106,12 +101,8 @@ export async function getGruposEconomicos(): Promise<GruposEconomicosResult> {
     // guarda só os CNPJs). Sem esse join a página mostraria 14 dígitos
     // crus, que ninguém reconhece.
     const porCnpj = new Map<string, FornecedorRow>();
-    if (cnpjs.length > 0) {
-      const { data: forn } = await supabase
-        .from("fornecedores")
-        .select("cnpj, razao_social, nome_fantasia, cnae_descricao, municipio_sede, uf_sede")
-        .in("cnpj", cnpjs);
-      for (const f of (forn ?? []) as FornecedorRow[]) porCnpj.set(f.cnpj, f);
+    for (const f of ((await q.fornecedoresPorCnpj(cnpjs)) ?? []) as FornecedorRow[]) {
+      porCnpj.set(f.cnpj, f);
     }
 
     const grupos: GrupoEconomico[] = rows.map((r) => {
@@ -133,7 +124,7 @@ export async function getGruposEconomicos(): Promise<GruposEconomicosResult> {
             razaoSocial: f?.razao_social ?? null,
             nomeFantasia: f?.nome_fantasia ?? null,
             cnaeDescricao: f?.cnae_descricao ?? null,
-            sedeNoMunicipio: sede ? sede === ID_MUNICIPIO_DEFAULT : null,
+            sedeNoMunicipio: sede ? sede === idMunicipio : null,
             ufSede: f?.uf_sede ?? null,
           };
         }),
@@ -150,39 +141,13 @@ export async function getGruposEconomicos(): Promise<GruposEconomicosResult> {
       ok: true,
       grupos,
       valorTotal: grupos.reduce((acc, g) => acc + g.valorTotalContratos, 0),
-      valorTotalMunicipio: await somaContratada(supabase),
+      // Denominador da concentração. Era um laço paginado de 1000 em 1000
+      // porque o PostgREST truncava sem erro e a soma viria MENOR — o que
+      // inflaria o percentual. Virou `sum()` no banco.
+      valorTotalMunicipio: (await q.somaContratada(idMunicipio)) ?? 0,
       totalEmpresas: cnpjs.length,
     };
   } catch {
     return { ...VAZIO, configured: true };
   }
-}
-
-/**
- * Soma de `valor_global` de todos os contratos do município.
- *
- * Paginado à mão: `contratos` já passou de 1000 linhas e o PostgREST corta
- * nesse número SEM erro — a soma não viria vazia, viria ERRADA (menor), e
- * o percentual de concentração da página apareceria inflado. É a mesma
- * classe de bug que já inverteu o ranking de vereadores aqui.
- */
-async function somaContratada(
-  supabase: NonNullable<ReturnType<typeof getSupabaseClient>>
-): Promise<number> {
-  const PAGE = 1000;
-  let total = 0;
-  for (let offset = 0; ; offset += PAGE) {
-    const { data, error } = await supabase
-      .from("contratos")
-      .select("valor_global")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .range(offset, offset + PAGE - 1);
-
-    if (error || !data) break;
-    for (const row of data as { valor_global: number | string | null }[]) {
-      total += Number(row.valor_global ?? 0);
-    }
-    if (data.length < PAGE) break;
-  }
-  return total;
 }

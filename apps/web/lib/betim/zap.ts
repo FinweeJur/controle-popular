@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export const ZAP_CATEGORIAS = [
   "alimentacao",
@@ -46,7 +47,7 @@ export function normalizeWhatsapp(raw: string): string | null {
 }
 
 export async function fetchZapEstabelecimentos(
-  idMunicipio: string,
+  idMunicipio: IdMunicipio,
   params: { categoria?: string; q?: string; bairros?: string[] } = {}
 ): Promise<{ rows: ZapEstabelecimento[]; configured: boolean }> {
   try {

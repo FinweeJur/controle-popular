@@ -24,7 +24,7 @@ export default async function CamaraPage({
   const { rows, ok } = await getVereadores();
   const verbas = await getVerbasAnalytics(cidade.id_municipio);
   const ranking = await getRankingVereadores();
-  const temasCamara = await getTemasCamara();
+  const temasCamara = await getTemasCamara(cidade.id_municipio);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8">

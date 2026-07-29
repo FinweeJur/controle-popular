@@ -3,6 +3,7 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import BarrasValor, { type BarraItem } from "@/app/[municipio]/components/charts/BarrasValor";
 import { getDespesasPorFuncao } from "@/lib/betim/despesas";
 import { formatCurrencyBRL } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Despesas por função — Prefeitura de Betim — Controle Popular Betim",
@@ -11,12 +12,20 @@ export const metadata = {
 };
 
 interface DespesasPageProps {
+  params: Promise<{ municipio: string }>;
   searchParams: Promise<{ ano?: string }>;
 }
 
-export default async function DespesasPage({ searchParams }: DespesasPageProps) {
+export default async function DespesasPage({
+  params,
+  searchParams,
+}: DespesasPageProps) {
+  const cidade = await cidadeDaRota(params);
   const { ano: anoParam } = await searchParams;
-  const dados = await getDespesasPorFuncao(anoParam ? Number(anoParam) : undefined);
+  const dados = await getDespesasPorFuncao(
+    cidade.id_municipio,
+    anoParam ? Number(anoParam) : undefined
+  );
 
   const itens: BarraItem[] = dados.funcoes.map((f) => ({
     label: f.funcao,

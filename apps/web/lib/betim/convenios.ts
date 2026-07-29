@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 /** Base da URL de detalhe de um convênio no Portal da Transparência. O
  *  segmento final é o `codigo` (dimConvenio.codigo), não o id_externo —
@@ -80,7 +81,7 @@ interface ConvenioRow {
  * `grupos_economicos`.
  */
 export async function getConveniosFederais(
-  idMunicipio: string
+  idMunicipio: IdMunicipio
 ): Promise<ConveniosFederaisResult> {
   try {
     // `codigo` (migration 0024) era lida com `comColunaOpcional()`, que

@@ -6,6 +6,7 @@ import AreasAtuacao from "@/app/[municipio]/components/charts/AreasAtuacao";
 import { fetchContratos, CONTRATOS_PAGE_SIZE, MOTIVO_ALERTA_INFO } from "@/lib/betim/contratos";
 import { getTemasPrefeitura, TEMA_LABELS, TEMAS_ORDENADOS } from "@/lib/betim/temas";
 import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Contratos da Prefeitura — Controle Popular Betim",
@@ -30,7 +31,8 @@ export default async function ContratosPage({
   params: rota,
   searchParams,
 }: ContratosPageProps) {
-  const { municipio } = await rota;
+  const cidade = await cidadeDaRota(rota);
+  const municipio = cidade.slug;
   const params = await searchParams;
   const page = Math.max(1, Number(params.page) || 1);
   // Um motivo específico já filtra por alerta=true implicitamente (ver
@@ -50,7 +52,7 @@ export default async function ContratosPage({
     }),
     // Sempre sem filtro -- é "onde a Prefeitura gasta no geral", não
     // deveria mudar conforme o usuário filtra a tabela abaixo.
-    getTemasPrefeitura(),
+    getTemasPrefeitura(cidade.id_municipio),
   ]);
 
   const totalPages = Math.max(1, Math.ceil(total / CONTRATOS_PAGE_SIZE));

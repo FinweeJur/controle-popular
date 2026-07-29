@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface AvaliacaoPntp {
   poder: "Executivo" | "Legislativo";
@@ -62,7 +63,7 @@ function mapRow(r: Row): AvaliacaoPntp {
  * mesmo ciclo, não uma estimativa.
  */
 export async function getNotaTransparenciaData(
-  idMunicipio: string
+  idMunicipio: IdMunicipio
 ): Promise<NotaTransparenciaData> {
   try {
     const data = await q.notaTransparencia(idMunicipio);

@@ -1,4 +1,5 @@
 import { fetchColetaLixo, diaSemanaParaIcs } from "@/lib/betim/servicos";
+import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 
 function icsEscape(text: string): string {
   return text.replace(/[\\,;]/g, (m) => `\\${m}`).replace(/\n/g, "\\n");
@@ -33,11 +34,14 @@ function formatIcsDate(d: Date, hour: number, minute: number): string {
 
 export async function GET(
   _request: Request,
-  { params }: { params: Promise<{ bairro: string }> }
+  { params }: { params: Promise<{ municipio: string; bairro: string }> }
 ) {
-  const { bairro: bairroParam } = await params;
+  const { municipio, bairro: bairroParam } = await params;
+  const cidade = await obterCidadePorSlug(municipio);
+  if (!cidade) return new Response("Cidade não encontrada.", { status: 404 });
+
   const bairro = decodeURIComponent(bairroParam);
-  const { rows } = await fetchColetaLixo(bairro);
+  const { rows } = await fetchColetaLixo(cidade.id_municipio, bairro);
 
   const events: string[] = [];
   let uidCounter = 0;

@@ -1,4 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 /**
  * Tags temáticas (pedido do usuário 2026-07-22): requerimentos, projetos
@@ -41,93 +42,70 @@ export interface ContagemTema {
   qtd: number;
 }
 
-/**
- * Conta ocorrências de cada tema numa lista de arrays `temas` (uma
- * proposição/contrato pode ter vários temas ao mesmo tempo — a soma das
- * contagens passa do total de linhas, isso é esperado, não um bug).
- * Ordenado por quantidade, maior primeiro; temas sem nenhuma ocorrência
- * ficam de fora (não aparece "Agropecuária: 0" numa lista que é sobre
- * ranquear o que É relevante).
- */
-function contarTemas(listasDeTemas: (string[] | null)[]): ContagemTema[] {
-  const contagem = new Map<string, number>();
-  for (const temas of listasDeTemas) {
-    for (const tema of temas ?? []) {
-      contagem.set(tema, (contagem.get(tema) ?? 0) + 1);
-    }
-  }
-  return [...contagem.entries()]
-    .map(([tema, qtd]) => ({ tema, label: TEMA_LABELS[tema] ?? tema, qtd }))
-    .sort((a, b) => b.qtd - a.qtd);
-}
-
 interface TemasResult {
   temas: ContagemTema[];
-  /** `false` quando a coluna `temas` ainda não existe (migration 0012
-   *  pendente) — degrada pra "sem dado" em vez de quebrar a página. */
+  /** `false` quando o banco não está configurado ou a consulta falhou —
+   *  degrada pra "sem dado" em vez de quebrar a página. */
   ok: boolean;
 }
 
-const SEM_SUPABASE: TemasResult = { temas: [], ok: false };
+const SEM_BANCO: TemasResult = { temas: [], ok: false };
 
-/** Áreas de atuação de UM vereador — conta os temas das proposições dele. */
-export async function getTemasVereador(vereadorId: string): Promise<TemasResult> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return SEM_SUPABASE;
+/**
+ * A contagem em si desceu para o banco (`unnest` + `group by`, ver
+ * `lib/db/queries/betim.ts`). Aqui sobra só pendurar o rótulo em
+ * português. Uma proposição/contrato pode ter vários temas ao mesmo tempo,
+ * então a soma das contagens passa do total de linhas — é esperado, não um
+ * bug. Tema sem nenhuma ocorrência não aparece: a lista é sobre ranquear o
+ * que É relevante, e "Agropecuária: 0" não é.
+ */
+function comRotulo(linhas: { tema: string; qtd: number }[]): ContagemTema[] {
+  return linhas.map((r) => ({
+    tema: r.tema,
+    label: TEMA_LABELS[r.tema] ?? r.tema,
+    qtd: r.qtd,
+  }));
+}
+
+/**
+ * Áreas de atuação de UM vereador.
+ *
+ * ACHADO: a consulta antiga filtrava SÓ por `vereador_id`, sem
+ * `id_municipio`. Como o id é uuid a colisão entre cidades é improvável,
+ * mas a regra vale sem exceção — e defesa em profundidade custa uma
+ * cláusula. Agora filtra pelos dois.
+ */
+export async function getTemasVereador(
+  idMunicipio: IdMunicipio,
+  vereadorId: string
+): Promise<TemasResult> {
   try {
-    const { data, error } = await supabase
-      .from("proposicoes")
-      .select("temas")
-      .eq("vereador_id", vereadorId);
-    if (error) return SEM_SUPABASE;
-    return { temas: contarTemas((data ?? []).map((r) => r.temas)), ok: true };
+    const linhas = await q.temasDeProposicoes(idMunicipio, vereadorId);
+    if (!linhas) return SEM_BANCO;
+    return { temas: comRotulo(linhas), ok: true };
   } catch {
-    return SEM_SUPABASE;
+    return SEM_BANCO;
   }
 }
 
 /** Áreas de atuação da Câmara inteira — conta os temas de toda proposição. */
-export async function getTemasCamara(): Promise<TemasResult> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return SEM_SUPABASE;
+export async function getTemasCamara(idMunicipio: IdMunicipio): Promise<TemasResult> {
   try {
-    const todas: (string[] | null)[] = [];
-    const PAGE = 1000;
-    for (let offset = 0; ; offset += PAGE) {
-      const { data, error } = await supabase
-        .from("proposicoes")
-        .select("temas")
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .range(offset, offset + PAGE - 1);
-      if (error) return SEM_SUPABASE;
-      todas.push(...(data ?? []).map((r) => r.temas));
-      if (!data || data.length < PAGE) break;
-    }
-    return { temas: contarTemas(todas), ok: true };
+    const linhas = await q.temasDeProposicoes(idMunicipio);
+    if (!linhas) return SEM_BANCO;
+    return { temas: comRotulo(linhas), ok: true };
   } catch {
-    return SEM_SUPABASE;
+    return SEM_BANCO;
   }
 }
 
 /** Áreas de atuação da Prefeitura — conta os temas de todo contrato. */
-export async function getTemasPrefeitura(): Promise<TemasResult> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return SEM_SUPABASE;
+export async function getTemasPrefeitura(idMunicipio: IdMunicipio): Promise<TemasResult> {
   try {
-    const todas: (string[] | null)[] = [];
-    const PAGE = 1000;
-    for (let offset = 0; ; offset += PAGE) {
-      const { data, error } = await supabase
-        .from("contratos")
-        .select("temas")
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .range(offset, offset + PAGE - 1);
-      if (error) return SEM_SUPABASE;
-      todas.push(...(data ?? []).map((r) => r.temas));
-      if (!data || data.length < PAGE) break;
-    }
-    return { temas: contarTemas(todas), ok: true };
+    const linhas = await q.temasDeContratos(idMunicipio);
+    if (!linhas) return SEM_BANCO;
+    return { temas: comRotulo(linhas), ok: true };
   } catch {
-    return SEM_SUPABASE;
+    return SEM_BANCO;
   }
 }

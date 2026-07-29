@@ -1,5 +1,6 @@
 import * as q from "@/lib/db/queries/betim";
 import { type ContagemTema } from "@/lib/betim/temas";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface AtoRow {
   tipo: string | null;
@@ -54,7 +55,7 @@ interface RawRow {
  * contrato para a página não mudar; ligá-los é rodar a migration + ETL.
  */
 export async function getLegislacao(
-  idMunicipio: string,
+  idMunicipio: IdMunicipio,
   opts: { categoria?: string; tema?: string; ano?: number } = {}
 ): Promise<LegislacaoData> {
   try {

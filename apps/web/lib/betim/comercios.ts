@@ -1,4 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface ComercioEssencial {
   id: string;
@@ -54,7 +55,7 @@ interface Row {
  * Citrolândia primeiro (pedido do usuário) -- o resto por nome.
  */
 export async function getComerciosEssenciais(
-  idMunicipio: string
+  idMunicipio: IdMunicipio
 ): Promise<ComerciosData> {
   try {
     const data = await q.comerciosEssenciais(idMunicipio);
