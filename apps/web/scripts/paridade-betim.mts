@@ -35,6 +35,13 @@ import {
 } from "../lib/betim/paraopeba.js";
 import { montarContexto } from "../lib/betim/chat.js";
 import { formatCurrencyBRL, formatNumberBR } from "../lib/betim/format.js";
+import { getVisaoGeral } from "../lib/betim/prefeitura.js";
+import {
+  fetchContratos,
+  fetchContratosForExport,
+  CONTRATOS_PAGE_SIZE,
+} from "../lib/betim/contratos.js";
+import { getSaudeData, getSaudeTendencias } from "../lib/betim/saude.js";
 
 // `comoIdMunicipio` é a saída deliberada da marca nominal de `IdMunicipio`.
 // Existe exatamente para bordas como esta, onde o valor não vem da tabela
@@ -506,6 +513,127 @@ eq(`chat: contratos ativos no contexto (${ativos.length}, ${somaAtivos.toFixed(2
 eq(`chat: ${vers.length} vereadores no contexto`, true, ctxt.includes(`${vers.length} vereadores`));
 eq(`chat: mesma pergunta da o mesmo contexto (ordem deterministica)`,
    ctxt, await montarContexto(ID, "contrato de merenda escolar"));
+
+// ---- bloco 5: prefeitura, contratos, saude ----
+
+// prefeitura: visao geral. O ano vem da despesa mais recente EM QUALQUER
+// estagio (nao so "Despesas Pagas") — diferente de getDespesasPorFuncao.
+const dpTodos = await rest(`despesas?select=ano,funcao,valor,estagio&id_municipio=eq.${ID}`);
+const vgN = await getVisaoGeral(ID);
+const anoVg = Math.max(...dpTodos.map((r) => r.ano));
+eq(`prefeitura ano da visao geral (${anoVg})`, anoVg, vgN.ano);
+
+const BLOCOS = new Set([
+  "Despesas Exceto Intraorçamentárias", "Despesas Intraorçamentárias",
+  "Despesas (Exceto Intraorçamentárias)", "Despesas (Intraorçamentárias)",
+]);
+const pagasDoAno = dpTodos.filter((r) => r.ano === anoVg && r.estagio === "Despesas Pagas");
+const porFuncaoVg = new Map<string, number>();
+let totalBlocos = 0;
+for (const r of pagasDoAno) {
+  const f = (r.funcao as string) || "Outros";
+  if (BLOCOS.has(f)) { totalBlocos += Number(r.valor ?? 0); continue; }
+  porFuncaoVg.set(f, (porFuncaoVg.get(f) ?? 0) + Number(r.valor ?? 0));
+}
+eq(`prefeitura despesa total (${totalBlocos.toFixed(2)} vs ${vgN.despesaTotal.toFixed(2)})`,
+   Math.round(totalBlocos * 100), Math.round(vgN.despesaTotal * 100));
+eq(`prefeitura top 8 funcoes`,
+   [...porFuncaoVg.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+     .slice(0, 8).map(([f, v]) => [f, Math.round(v * 100)]),
+   vgN.gastosPorFuncao.map((g) => [g.funcao, Math.round(g.valor * 100)]));
+
+const rc = await rest(
+  `receitas?select=valor&id_municipio=eq.${ID}&ano=eq.${anoVg}&estagio=eq.Receitas%20Brutas%20Realizadas&conta=ilike.TOTAL%20DAS%20RECEITAS*`
+);
+eq(`prefeitura receita total (${rc[0]?.valor})`,
+   Math.round(Number(rc[0]?.valor ?? 0) * 100), Math.round(vgN.receitaTotal * 100));
+
+// maiores fornecedores: o Map do JS virou GROUP BY. A chave e a mesma
+// (CNPJ, ou o nome quando falta CNPJ).
+const ctrForn = await rest(`contratos?select=fornecedor_nome,fornecedor_cnpj,valor_global&id_municipio=eq.${ID}`);
+const porForn = new Map<string, number>();
+for (const r of ctrForn) {
+  const chave = r.fornecedor_cnpj ?? r.fornecedor_nome ?? "Fornecedor não identificado";
+  porForn.set(chave, (porForn.get(chave) ?? 0) + Number(r.valor_global ?? 0));
+}
+eq(`prefeitura top 5 fornecedores (valores)`,
+   [...porForn.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+     .slice(0, 5).map(([, v]) => Math.round(v * 100)),
+   vgN.maioresFornecedores.map((f) => Math.round(f.valor * 100)));
+eq(`prefeitura custo per capita = despesa / populacao`,
+   Math.round((vgN.populacao > 0 ? vgN.despesaTotal / vgN.populacao : 0) * 100),
+   Math.round(vgN.custoPerCapitaAno * 100));
+
+// contratos: total, soma e alertas agora vem de tres `over ()` numa
+// consulta so, em vez de uma segunda consulta que trazia todas as linhas.
+const ctrN = await fetchContratos(ID);
+eq(`contratos total (${ctr.length} vs ${ctrN.total})`, ctr.length, ctrN.total);
+eq(`contratos total e number, nao string`, "number", typeof ctrN.total);
+const somaCtr = ctr.reduce((a, r) => a + Number(r.valor_global ?? 0), 0);
+eq(`contratos soma (${somaCtr.toFixed(2)} vs ${ctrN.sum.toFixed(2)})`,
+   Math.round(somaCtr * 100), Math.round(ctrN.sum * 100));
+const ctrAlerta = await rest(`contratos?select=id&id_municipio=eq.${ID}&alerta=eq.true`);
+eq(`contratos com alerta (${ctrAlerta.length} vs ${ctrN.totalAlertas})`, ctrAlerta.length, ctrN.totalAlertas);
+eq(`contratos 1a pagina tem ${CONTRATOS_PAGE_SIZE} linhas`, CONTRATOS_PAGE_SIZE, ctrN.rows.length);
+const ctrOrdem = await rest(
+  `contratos?select=id,data_assinatura&id_municipio=eq.${ID}&order=data_assinatura.desc.nullslast,id.asc&limit=25`
+);
+eq(`contratos 1a pagina em ordem`, ctrOrdem.map((r) => r.id), ctrN.rows.map((r) => r.id));
+const ct2 = await fetchContratos(ID, { page: 2 });
+eq(`contratos 2a pagina nao repete a 1a`,
+   [], ctrN.rows.map((r) => r.id).filter((id) => ct2.rows.some((r) => r.id === id)));
+// Pagina ALEM da ultima: sem linha, os `over ()` nao vem — e o total tem
+// de continuar sendo o real, senao a paginacao se desenha errada.
+const ctLonge = await fetchContratos(ID, { page: 9999 });
+eq(`contratos pagina 9999: zero linhas mas total real (${ctr.length})`,
+   [0, ctr.length], [ctLonge.rows.length, ctLonge.total]);
+// Filtro que nao casa nada: ai zero e a resposta certa.
+const ctNada = await fetchContratos(ID, { q: "zzzz-nao-existe-zzzz" });
+eq(`contratos filtro sem resultado: tudo zero`, [0, 0, 0],
+   [ctNada.rows.length, ctNada.total, ctNada.sum]);
+const anoCtr = ctr.length ? (await rest(`contratos?select=ano&id_municipio=eq.${ID}&ano=not.is.null&limit=1`))[0]?.ano : null;
+if (anoCtr) {
+  const ctrAno = await rest(`contratos?select=id&id_municipio=eq.${ID}&ano=eq.${anoCtr}`);
+  eq(`contratos filtro ano=${anoCtr} (${ctrAno.length})`,
+     ctrAno.length, (await fetchContratos(ID, { ano: String(anoCtr) })).total);
+}
+const temaCtr = tpN.temas[0]?.tema;
+if (temaCtr) {
+  eq(`contratos filtro tema=${temaCtr}`,
+     ctr.filter((r) => (r.temas ?? []).includes(temaCtr)).length,
+     (await fetchContratos(ID, { tema: temaCtr })).total);
+}
+const expN = await fetchContratosForExport(ID, {});
+eq(`contratos export traz tudo (${ctr.length})`, ctr.length, expN.rows.length);
+
+// saude
+const est = await rest(`saude_estabelecimentos?select=profissionais_count&id_municipio=eq.${ID}`);
+const inte = await rest(`saude_internacoes?select=ano,carater,qtd,obitos&id_municipio=eq.${ID}`);
+const arbo = await rest(`arboviroses?select=doenca,ano,casos,nivel_alerta&id_municipio=eq.${ID}`);
+const mort = await rest(`mortalidade?select=ano,grupo_causa,obitos&id_municipio=eq.${ID}`);
+const sdN = await getSaudeData(ID);
+eq(`saude estabelecimentos (${est.length} vs ${sdN.totalEstabelecimentos})`, est.length, sdN.totalEstabelecimentos);
+eq(`saude profissionais somados`,
+   est.reduce((a, r) => a + (r.profissionais_count ?? 0), 0), sdN.totalProfissionais);
+const anosInt = [...new Set(inte.map((r) => r.ano))].sort((a, b) => b - a).slice(0, 6);
+eq(`saude anos de internacao (${anosInt.join(",")})`, anosInt, sdN.internacoesPorAno.map((i) => i.ano));
+eq(`saude internacoes do ano mais recente`,
+   inte.filter((r) => r.ano === anosInt[0]).reduce((a, r) => a + r.qtd, 0),
+   sdN.internacoesPorAno[0]?.qtdTotal);
+const anoArbo = Math.max(...arbo.map((r) => r.ano));
+eq(`saude arboviroses do ano ${anoArbo}`,
+   new Set(arbo.filter((r) => r.ano === anoArbo).map((r) => r.doenca)).size, sdN.arboviroses.length);
+const anoMort = Math.max(...mort.map((r) => r.ano));
+eq(`saude ano de mortalidade (${anoMort})`, anoMort, sdN.anoMortalidade);
+eq(`saude top 5 causas de obito`,
+   mort.filter((r) => r.ano === anoMort).sort((a, b) => b.obitos - a.obitos).slice(0, 5).map((r) => r.obitos),
+   sdN.topCausasMortalidade.map((c) => c.obitos));
+const stN = await getSaudeTendencias(ID);
+eq(`saude tendencias configurado`, true, stN.configured);
+eq(`saude dengue: no maximo 8 semanas, em ordem crescente`,
+   true,
+   stN.dengueUltimasSemanas.length <= 8 &&
+     stN.dengueUltimasSemanas.every((s, i) => i === 0 || s.semana >= stN.dengueUltimasSemanas[i - 1].semana - 53));
 
 // REGRESSAO: a pagina do vereador chamava getVerbasAnalytics(row.id) com a
 // assinatura nova, passando o uuid do vereador como idMunicipio. Compilava,

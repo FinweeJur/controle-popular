@@ -44,6 +44,11 @@ import {
   postos_anp,
   producao_agropecuaria,
   proposicoes,
+  receitas,
+  saude_estabelecimentos,
+  saude_internacoes,
+  mortalidade,
+  arboviroses,
   seguranca_ocorrencias,
   servidores,
   verbas_indenizatorias,
@@ -1034,4 +1039,387 @@ export async function proposicoesPorTermos(
     )
     .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
     .limit(limite);
+}
+
+/** Ano mais recente com despesa lançada, em qualquer estágio. */
+export async function anoMaisRecenteDeDespesas(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({ ano: despesas.ano })
+    .from(despesas)
+    .where(and(eq(despesas.id_municipio, idMunicipio), isNotNull(despesas.ano)))
+    .orderBy(desc(despesas.ano))
+    .limit(1);
+  return linha?.ano ?? null;
+}
+
+/**
+ * Despesas pagas somadas pela coluna `funcao` — o corte da visão geral da
+ * Prefeitura, diferente de `despesasPorFuncao()`, que soma pela coluna
+ * `conta` e filtra pela lista COFOG.
+ *
+ * Devolve TUDO agrupado, inclusive os dois blocos de escopo orçamentário
+ * ("Despesas Exceto Intra" + "Intra"), que não são função COFOG e juntos
+ * são o total geral — quem os separa é `BLOCOS_TOTAL` em
+ * `lib/betim/prefeitura.ts`, que precisa dos dois.
+ */
+export async function despesasAgrupadasPorFuncao(idMunicipio: IdMunicipio, ano: number) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      funcao: sql<string>`coalesce(nullif(${despesas.funcao}, ''), 'Outros')`,
+      valor: sql<number>`sum(${despesas.valor})::double precision`,
+    })
+    .from(despesas)
+    .where(
+      and(
+        eq(despesas.id_municipio, idMunicipio),
+        eq(despesas.ano, ano),
+        eq(despesas.estagio, "Despesas Pagas")
+      )
+    )
+    .groupBy(sql`1`)
+    .orderBy(sql`2 desc`, sql`1 asc`);
+}
+
+/**
+ * Receita total realizada do ano.
+ *
+ * Lê a LINHA "TOTAL DAS RECEITAS", não a soma das linhas: `receitas` é um
+ * plano de contas hierárquico e o total do pai convive com os filhos na
+ * mesma tabela. Somar tudo contava o mesmo dinheiro em cada nível —
+ * medido ao vivo em 2026-07-21: dava R$ 24,8 bi contra os R$ 3,49 bi
+ * reais.
+ */
+export async function receitaTotalDoAno(idMunicipio: IdMunicipio, ano: number) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({ valor: num(receitas.valor) })
+    .from(receitas)
+    .where(
+      and(
+        eq(receitas.id_municipio, idMunicipio),
+        eq(receitas.ano, ano),
+        eq(receitas.estagio, "Receitas Brutas Realizadas"),
+        ilike(receitas.conta, "TOTAL DAS RECEITAS%")
+      )
+    )
+    .orderBy(asc(receitas.id))
+    .limit(1);
+  return linha?.valor ?? 0;
+}
+
+/**
+ * Maiores fornecedores por valor contratado.
+ *
+ * O agrupamento desceu para o banco — era um `Map` sobre TODAS as linhas
+ * de `contratos` só para tirar o top 5. A chave continua sendo o CNPJ e,
+ * na falta dele, o nome. O rótulo passa a ser `min(fornecedor_nome)` do
+ * grupo, e não "o primeiro que apareceu": a consulta antiga não tinha
+ * `order by`, então "o primeiro" era indefinido — quando o mesmo CNPJ
+ * aparece com grafias diferentes, qual delas ia para a tela mudava sem
+ * motivo.
+ */
+export async function maioresFornecedores(idMunicipio: IdMunicipio, limite = 5) {
+  const db = getDb();
+  if (!db) return null;
+  const chave = sql`coalesce(${contratos.fornecedor_cnpj}, ${contratos.fornecedor_nome}, 'Fornecedor não identificado')`;
+  return db
+    .select({
+      chave: sql<string>`${chave}`,
+      nome: sql<string>`coalesce(min(${contratos.fornecedor_nome}), ${chave})`,
+      cnpj: contratos.fornecedor_cnpj,
+      valor: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
+    })
+    .from(contratos)
+    .where(eq(contratos.id_municipio, idMunicipio))
+    .groupBy(chave, contratos.fornecedor_cnpj)
+    .orderBy(sql`4 desc`, sql`1 asc`)
+    .limit(limite);
+}
+
+/** Filtros compartilhados pela listagem, pela exportação e pelos totais. */
+function condicoesDeContratos(
+  idMunicipio: IdMunicipio,
+  f: {
+    ano?: number;
+    status?: string;
+    alerta?: boolean;
+    motivo?: string;
+    tema?: string;
+    q?: string;
+  }
+) {
+  const cond = [eq(contratos.id_municipio, idMunicipio)];
+  if (f.ano) cond.push(eq(contratos.ano, f.ano));
+  if (f.status) cond.push(eq(contratos.status, f.status));
+  if (f.alerta) cond.push(eq(contratos.alerta, true));
+  // Um motivo específico já implica alerta=true: `motivos_alerta` só tem
+  // item quando o alerta disparou.
+  if (f.motivo) cond.push(arrayContains(contratos.motivos_alerta, [f.motivo]));
+  if (f.tema) cond.push(arrayContains(contratos.temas, [f.tema]));
+  if (f.q) {
+    const termo = `%${f.q}%`;
+    cond.push(
+      sql`(${contratos.objeto} ilike ${termo} or ${contratos.fornecedor_nome} ilike ${termo})`
+    );
+  }
+  return and(...cond);
+}
+
+const COLUNAS_CONTRATO = {
+  id: contratos.id,
+  fornecedor_nome: contratos.fornecedor_nome,
+  fornecedor_cnpj: contratos.fornecedor_cnpj,
+  objeto: contratos.objeto,
+  valor_global: num(contratos.valor_global),
+  status: contratos.status,
+  data_assinatura: contratos.data_assinatura,
+  vigencia_inicio: contratos.vigencia_inicio,
+  vigencia_fim: contratos.vigencia_fim,
+  ano: contratos.ano,
+  alerta: contratos.alerta,
+  motivos_alerta: contratos.motivos_alerta,
+  temas: contratos.temas,
+};
+
+/**
+ * Página de contratos com os três agregados do conjunto filtrado na mesma
+ * consulta: total de linhas, soma de `valor_global` e quantos têm alerta.
+ *
+ * Eram DUAS idas ao banco, e a primeira trazia `valor_global` de todas as
+ * linhas casadas só para somar e contar no JS — o padrão que o PostgREST
+ * trunca em 1000 sem avisar. Três `over ()` resolvem em uma consulta e sem
+ * teto, o que também importa pelo limite de 50 subrequests do Workers.
+ */
+export async function contratosPaginados(
+  idMunicipio: IdMunicipio,
+  filtros: {
+    ano?: number;
+    status?: string;
+    alerta?: boolean;
+    motivo?: string;
+    tema?: string;
+    q?: string;
+    pagina?: number;
+    porPagina?: number;
+  } = {}
+) {
+  const db = getDb();
+  if (!db) return null;
+  const porPagina = filtros.porPagina ?? 25;
+  const pagina = Math.max(1, filtros.pagina ?? 1);
+  return db
+    .select({
+      ...COLUNAS_CONTRATO,
+      total: sql<number>`(count(*) over ())::int`,
+      soma: sql<number>`(coalesce(sum(${contratos.valor_global}) over (), 0))::double precision`,
+      total_alertas: sql<number>`(count(*) filter (where ${contratos.alerta}) over ())::int`,
+    })
+    .from(contratos)
+    .where(condicoesDeContratos(idMunicipio, filtros))
+    // Desempate por id: sem ordem total a paginação repete ou pula linhas,
+    // e muitos contratos compartilham a mesma `data_assinatura`.
+    .orderBy(sql`${contratos.data_assinatura} desc nulls last`, asc(contratos.id))
+    .limit(porPagina)
+    .offset((pagina - 1) * porPagina);
+}
+
+/**
+ * Totais do conjunto filtrado quando a página não tem nenhuma linha.
+ *
+ * Os `over ()` acima vêm pendurados em cada linha; sem linha, não vêm. Com
+ * filtro que não casa nada os três agregados são mesmo zero, mas numa
+ * página ALÉM da última (`?page=999`) o total real não é zero e a
+ * paginação precisa dele para desenhar os controles.
+ */
+export async function totaisDeContratos(
+  idMunicipio: IdMunicipio,
+  filtros: {
+    ano?: number;
+    status?: string;
+    alerta?: boolean;
+    motivo?: string;
+    tema?: string;
+    q?: string;
+  } = {}
+) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({
+      total: sql<number>`count(*)::int`,
+      soma: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
+      total_alertas: sql<number>`(count(*) filter (where ${contratos.alerta}))::int`,
+    })
+    .from(contratos)
+    .where(condicoesDeContratos(idMunicipio, filtros));
+  return linha ?? { total: 0, soma: 0, total_alertas: 0 };
+}
+
+/** Contratos para a exportação em CSV — sem paginação, com teto. */
+export async function contratosParaExport(
+  idMunicipio: IdMunicipio,
+  filtros: {
+    ano?: number;
+    status?: string;
+    alerta?: boolean;
+    motivo?: string;
+    tema?: string;
+    q?: string;
+  },
+  limite: number
+) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select(COLUNAS_CONTRATO)
+    .from(contratos)
+    .where(condicoesDeContratos(idMunicipio, filtros))
+    .orderBy(sql`${contratos.data_assinatura} desc nulls last`, asc(contratos.id))
+    .limit(limite);
+}
+
+/**
+ * Detalhe das sanções CEIS/CNEP dos fornecedores indicados.
+ *
+ * Sem `idMunicipio` pela mesma razão de `fornecedoresPorCnpj`: a tabela é
+ * global, chaveada por CNPJ.
+ */
+export async function sancoesCeisPorCnpj(cnpjs: string[]) {
+  const db = getDb();
+  if (!db || cnpjs.length === 0) return null;
+  return db
+    .select({ cnpj: fornecedores.cnpj, ceis_detalhes: fornecedores.ceis_detalhes })
+    .from(fornecedores)
+    .where(inArray(fornecedores.cnpj, cnpjs));
+}
+
+/** Quantos estabelecimentos de saúde e a soma dos profissionais. */
+export async function resumoEstabelecimentosSaude(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({
+      qtd: sql<number>`count(*)::int`,
+      profissionais: sql<number>`coalesce(sum(${saude_estabelecimentos.profissionais_count}), 0)::int`,
+    })
+    .from(saude_estabelecimentos)
+    .where(eq(saude_estabelecimentos.id_municipio, idMunicipio));
+  return linha ?? { qtd: 0, profissionais: 0 };
+}
+
+export async function internacoesSaude(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      ano: saude_internacoes.ano,
+      carater: saude_internacoes.carater,
+      qtd: saude_internacoes.qtd,
+      obitos: saude_internacoes.obitos,
+      permanencia_media: num(saude_internacoes.permanencia_media),
+    })
+    .from(saude_internacoes)
+    .where(eq(saude_internacoes.id_municipio, idMunicipio))
+    .orderBy(
+      desc(saude_internacoes.ano),
+      asc(saude_internacoes.carater),
+      asc(saude_internacoes.id)
+    );
+}
+
+/** Internações de urgência (caráter "2") a partir de um ano. */
+export async function internacoesUrgenciaDesde(idMunicipio: IdMunicipio, anoMinimo: number) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({ ano: saude_internacoes.ano, qtd: saude_internacoes.qtd })
+    .from(saude_internacoes)
+    .where(
+      and(
+        eq(saude_internacoes.id_municipio, idMunicipio),
+        eq(saude_internacoes.carater, "2"),
+        gte(saude_internacoes.ano, anoMinimo)
+      )
+    );
+}
+
+export async function arbovirosesDoMunicipio(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      doenca: arboviroses.doenca,
+      ano: arboviroses.ano,
+      casos: arboviroses.casos,
+      nivel_alerta: arboviroses.nivel_alerta,
+    })
+    .from(arboviroses)
+    .where(eq(arboviroses.id_municipio, idMunicipio))
+    .orderBy(desc(arboviroses.ano), asc(arboviroses.id));
+}
+
+/** Últimas semanas de dengue — janela curta, é o que o InfoDengue devolve. */
+export async function ultimasSemanasDeDengue(idMunicipio: IdMunicipio, limite: number) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      semana_epidemiologica: arboviroses.semana_epidemiologica,
+      casos: arboviroses.casos,
+      ano: arboviroses.ano,
+    })
+    .from(arboviroses)
+    .where(and(eq(arboviroses.id_municipio, idMunicipio), eq(arboviroses.doenca, "dengue")))
+    .orderBy(
+      desc(arboviroses.ano),
+      desc(arboviroses.semana_epidemiologica),
+      asc(arboviroses.id)
+    )
+    .limit(limite);
+}
+
+export async function anoMaisRecenteDeMortalidade(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({ ano: mortalidade.ano })
+    .from(mortalidade)
+    .where(and(eq(mortalidade.id_municipio, idMunicipio), isNotNull(mortalidade.ano)))
+    .orderBy(desc(mortalidade.ano))
+    .limit(1);
+  return linha?.ano ?? null;
+}
+
+export async function topCausasDeMortalidade(
+  idMunicipio: IdMunicipio,
+  ano: number,
+  limite: number
+) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({ grupo_causa: mortalidade.grupo_causa, obitos: mortalidade.obitos })
+    .from(mortalidade)
+    .where(and(eq(mortalidade.id_municipio, idMunicipio), eq(mortalidade.ano, ano)))
+    .orderBy(desc(mortalidade.obitos), asc(mortalidade.id))
+    .limit(limite);
+}
+
+/** Óbitos por grupo de causa a partir de um ano — base do cálculo de tendência. */
+export async function mortalidadeDesde(idMunicipio: IdMunicipio, anoMinimo: number) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      ano: mortalidade.ano,
+      grupo_causa: mortalidade.grupo_causa,
+      obitos: mortalidade.obitos,
+    })
+    .from(mortalidade)
+    .where(and(eq(mortalidade.id_municipio, idMunicipio), gte(mortalidade.ano, anoMinimo)));
 }

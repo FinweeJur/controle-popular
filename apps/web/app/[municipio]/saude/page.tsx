@@ -1,6 +1,7 @@
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { getSaudeData, getSaudeTendencias, CARATER_LABELS } from "@/lib/betim/saude";
 import { formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 const PREVENCAO_DENGUE_URL = "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue";
 
@@ -23,8 +24,16 @@ const NIVEL_ALERTA_LABELS: Record<number, string> = {
   4: "Vermelho — alta transmissão",
 };
 
-export default async function SaudePage() {
-  const [data, tendencias] = await Promise.all([getSaudeData(), getSaudeTendencias()]);
+export default async function SaudePage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
+  const [data, tendencias] = await Promise.all([
+    getSaudeData(cidade.id_municipio),
+    getSaudeTendencias(cidade.id_municipio),
+  ]);
   const internacaoRecente = data.internacoesPorAno[0];
 
   return (

@@ -5,10 +5,18 @@ import {
   contratosToCsv,
   CONTRATOS_PAGE_SIZE,
 } from "@/lib/betim/contratos";
+import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 
 const EMPTY_CSV_HEADER = "fornecedor,objeto,valor,status,data\n";
 
-export async function GET(request: NextRequest) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ municipio: string }> }
+) {
+  const { municipio } = await params;
+  const cidade = await obterCidadePorSlug(municipio);
+  if (!cidade) return Response.json({ error: "Cidade não encontrada." }, { status: 404 });
+
   const sp = request.nextUrl.searchParams;
   const ano = sp.get("ano") ?? undefined;
   const status = sp.get("status") ?? undefined;
@@ -20,7 +28,7 @@ export async function GET(request: NextRequest) {
   const format = sp.get("format");
 
   if (format === "csv") {
-    const { rows, configured } = await fetchContratosForExport({
+    const { rows, configured } = await fetchContratosForExport(cidade.id_municipio, {
       ano,
       status,
       q,
@@ -38,7 +46,7 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  const { rows, total, sum, configured, ok } = await fetchContratos({
+  const { rows, total, sum, configured, ok } = await fetchContratos(cidade.id_municipio, {
     ano,
     status,
     q,

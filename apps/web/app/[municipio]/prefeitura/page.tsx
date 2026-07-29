@@ -32,7 +32,7 @@ export default async function PrefeituraHubPage({
 }) {
   const cidade = await cidadeDaRota(params);
   const [visaoGeral, caixa, diario] = await Promise.all([
-    getVisaoGeral(),
+    getVisaoGeral(cidade.id_municipio),
     getCaixaDisponivel(cidade.id_municipio),
     getDiarioOficialInfo(),
   ]);

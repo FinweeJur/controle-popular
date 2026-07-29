@@ -1,4 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 /**
  * Código de "caráter da internação" do SUS/SIH (manual técnico DATASUS,
@@ -98,32 +99,23 @@ const EMPTY_TENDENCIAS: SaudeTendencias = {
  * uma anomalia de pandemia como "tendência" — mas mantido pras demais
  * causas, já que ali o efeito foi menor.
  */
-export async function getSaudeTendencias(): Promise<SaudeTendencias> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return EMPTY_TENDENCIAS;
-
+export async function getSaudeTendencias(
+  idMunicipio: IdMunicipio
+): Promise<SaudeTendencias> {
   try {
-    const { data: mortData, error: mortError } = await supabase
-      .from("mortalidade")
-      .select("ano, grupo_causa, obitos")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .gte("ano", new Date().getFullYear() - 6);
-
-    const { data: internData, error: internError } = await supabase
-      .from("saude_internacoes")
-      .select("ano, carater, qtd")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .eq("carater", "2")
-      .gte("ano", new Date().getFullYear() - 6);
-
-    if (mortError || internError) return { ...EMPTY_TENDENCIAS, configured: true };
+    const anoMinimo = new Date().getFullYear() - 6;
+    const [mortData, internData] = await Promise.all([
+      q.mortalidadeDesde(idMunicipio, anoMinimo),
+      q.internacoesUrgenciaDesde(idMunicipio, anoMinimo),
+    ]);
+    if (!mortData || !internData) return EMPTY_TENDENCIAS;
 
     // Causas de óbito: agrupa por causa, pega os 2 anos mais recentes com
     // dado e os 2 anteriores a esses, ignora causas com poucos casos
     // (ruído estatístico) e ignora 2020 pra evitar confundir o pico de
     // COVID com uma tendência real.
     const anosPorCausa = new Map<string, Map<number, number>>();
-    for (const row of (mortData ?? []) as { ano: number; grupo_causa: string; obitos: number }[]) {
+    for (const row of mortData as { ano: number; grupo_causa: string; obitos: number }[]) {
       if (row.ano === 2020) continue;
       if (!anosPorCausa.has(row.grupo_causa)) anosPorCausa.set(row.grupo_causa, new Map());
       anosPorCausa.get(row.grupo_causa)!.set(row.ano, row.obitos);
@@ -147,7 +139,7 @@ export async function getSaudeTendencias(): Promise<SaudeTendencias> {
     // Internações de urgência: mesma lógica dos 2+2 anos, sem excluir 2020
     // (internação por urgência não teve o mesmo efeito de distorção).
     const internPorAno = new Map<number, number>();
-    for (const row of (internData ?? []) as { ano: number; qtd: number }[]) {
+    for (const row of internData as { ano: number; qtd: number }[]) {
       internPorAno.set(row.ano, (internPorAno.get(row.ano) ?? 0) + row.qtd);
     }
     const anosIntern = [...internPorAno.keys()].sort((a, b) => b - a);
@@ -164,14 +156,7 @@ export async function getSaudeTendencias(): Promise<SaudeTendencias> {
     // Dengue: o InfoDengue só retorna uma janela recente de semanas, não
     // histórico completo — não dá pra calcular tendência sazonal real com
     // isso, só mostrar o que temos e avisar da limitação.
-    const { data: dengueData } = await supabase
-      .from("arboviroses")
-      .select("semana_epidemiologica, casos, ano")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .eq("doenca", "dengue")
-      .order("ano", { ascending: false })
-      .order("semana_epidemiologica", { ascending: false })
-      .limit(8);
+    const dengueData = await q.ultimasSemanasDeDengue(idMunicipio, 8);
     const dengueUltimasSemanas = ((dengueData ?? []) as { semana_epidemiologica: number; casos: number }[])
       .map((r) => ({ semana: r.semana_epidemiologica, casos: r.casos }))
       .reverse();
@@ -189,43 +174,23 @@ export async function getSaudeTendencias(): Promise<SaudeTendencias> {
   }
 }
 
-export async function getSaudeData(): Promise<SaudeData> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return EMPTY;
-
+export async function getSaudeData(idMunicipio: IdMunicipio): Promise<SaudeData> {
   try {
-    const [estabRes, internRes, arboRes, mortAnoRes] = await Promise.all([
-      supabase
-        .from("saude_estabelecimentos")
-        .select("profissionais_count", { count: "exact" })
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT),
-      supabase
-        .from("saude_internacoes")
-        .select("ano, carater, qtd, obitos, permanencia_media")
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .order("ano", { ascending: false }),
-      supabase
-        .from("arboviroses")
-        .select("doenca, ano, casos, nivel_alerta")
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .order("ano", { ascending: false }),
-      supabase
-        .from("mortalidade")
-        .select("ano")
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .order("ano", { ascending: false })
-        .limit(1),
+    const [estabRes, internRes, arboRes, anoMortalidade] = await Promise.all([
+      // Contagem e soma no banco: eram todas as linhas de
+      // `saude_estabelecimentos` trazidas só para somar uma coluna.
+      q.resumoEstabelecimentosSaude(idMunicipio),
+      q.internacoesSaude(idMunicipio),
+      q.arbovirosesDoMunicipio(idMunicipio),
+      q.anoMaisRecenteDeMortalidade(idMunicipio),
     ]);
+    if (!estabRes || !internRes || !arboRes) return EMPTY;
 
-    const totalEstabelecimentos = estabRes.count ?? 0;
-    const totalProfissionais = (estabRes.data ?? []).reduce(
-      (acc: number, row: { profissionais_count: number | null }) =>
-        acc + (row.profissionais_count ?? 0),
-      0
-    );
+    const totalEstabelecimentos = estabRes.qtd;
+    const totalProfissionais = estabRes.profissionais;
 
     const internacoesByAno = new Map<number, InternacaoAno>();
-    for (const row of (internRes.data ?? []) as {
+    for (const row of internRes as {
       ano: number;
       carater: string | null;
       qtd: number;
@@ -250,9 +215,9 @@ export async function getSaudeData(): Promise<SaudeData> {
       .sort((a, b) => b.ano - a.ano)
       .slice(0, 6);
 
-    const anoRecenteArbo = arboRes.data?.[0]?.ano as number | undefined;
+    const anoRecenteArbo = arboRes[0]?.ano as number | undefined;
     const arboMap = new Map<string, ArboviroseResumo>();
-    for (const row of (arboRes.data ?? []) as {
+    for (const row of arboRes as {
       doenca: string;
       ano: number;
       casos: number;
@@ -267,17 +232,13 @@ export async function getSaudeData(): Promise<SaudeData> {
       acc.nivelAlertaMax = Math.max(acc.nivelAlertaMax, row.nivel_alerta ?? 0);
     }
 
-    const anoMortalidade = (mortAnoRes.data?.[0]?.ano as number | undefined) ?? null;
     let topCausasMortalidade: MortalidadeCausa[] = [];
     if (anoMortalidade) {
-      const { data: mortData } = await supabase
-        .from("mortalidade")
-        .select("grupo_causa, obitos")
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .eq("ano", anoMortalidade)
-        .order("obitos", { ascending: false })
-        .limit(5);
-      topCausasMortalidade = (mortData ?? []) as MortalidadeCausa[];
+      topCausasMortalidade = ((await q.topCausasDeMortalidade(
+        idMunicipio,
+        anoMortalidade,
+        5
+      )) ?? []) as MortalidadeCausa[];
     }
 
     return {

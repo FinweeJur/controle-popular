@@ -1,12 +1,8 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT, comColunaOpcional } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export const CONTRATOS_PAGE_SIZE = 25;
 const EXPORT_ROW_LIMIT = 5000;
-
-const CONTRATOS_SELECT =
-  "id, fornecedor_nome, fornecedor_cnpj, objeto, valor_global, status, data_assinatura, vigencia_inicio, vigencia_fim, ano, alerta, motivos_alerta, temas";
-const CONTRATOS_SELECT_SEM_TEMAS =
-  "id, fornecedor_nome, fornecedor_cnpj, objeto, valor_global, status, data_assinatura, vigencia_inicio, vigencia_fim, ano, alerta, motivos_alerta";
 
 export interface SancaoCeis {
   fonte: "ceis" | "cnep";
@@ -34,7 +30,9 @@ export interface ContratoRow {
   ano: number | null;
   alerta: boolean | null;
   motivos_alerta: string[] | null;
-  /** `undefined` quando a migration 0012 (tags temáticas) ainda não rodou. */
+  /** Tags temáticas (migration 0012). A coluna existe no banco — tem até
+   *  índice GIN —, então o `comColunaOpcional()` que a protegia nunca
+   *  chegou a usar o fallback. */
   temas?: string[] | null;
   /** Preenchido só quando `motivos_alerta` inclui a Regra 5 — ver `fetchContratos`. */
   sancoesCeis?: SancaoCeis[] | null;
@@ -142,130 +140,94 @@ export interface ContratosResult {
   sum: number;
   /** Count of contracts matching the current filters that also have alerta=true. */
   totalAlertas: number;
-  /** false when Supabase env vars are missing — data source not configured. */
+  /** false when DATABASE_URL is missing — data source not configured. */
   configured: boolean;
   /** false when configured but the query itself failed (e.g. table missing). */
   ok: boolean;
 }
 
-function sanitizeSearchTerm(q: string | undefined): string | undefined {
-  const trimmed = q?.trim();
+/**
+ * O `%` continua sendo removido porque num `ilike` ele é curinga e
+ * transformaria "10%" numa busca por qualquer coisa. Vírgula e parênteses
+ * eram sintaxe do filtro `or=` do PostgREST, que não existe mais aqui —
+ * ficam por simetria com a busca de proposições, e porque tirá-los mudaria
+ * o resultado de buscas já feitas.
+ */
+function sanitizeSearchTerm(termo: string | undefined): string | undefined {
+  const trimmed = termo?.trim();
   if (!trimmed) return undefined;
-  // Strip characters that would break the PostgREST `or=` filter syntax.
   return trimmed.replace(/[%,()]/g, "");
 }
 
+const VAZIO: ContratosResult = {
+  rows: [],
+  total: 0,
+  sum: 0,
+  totalAlertas: 0,
+  configured: false,
+  ok: false,
+};
+
+function filtrosParaQuery(filters: ContratosFilters) {
+  return {
+    ano: filters.ano ? Number(filters.ano) : undefined,
+    status: filters.status,
+    alerta: filters.alerta,
+    motivo: filters.motivo,
+    tema: filters.tema,
+    q: sanitizeSearchTerm(filters.q),
+  };
+}
+
 /**
- * Fetches a page of `contratos` rows for id_municipio=ID_MUNICIPIO_DEFAULT,
- * plus the total matching count and the summed valor_global across ALL
- * matching rows (not just the current page). Degrades gracefully to an
- * empty result set on missing client or query error — never throws.
+ * Uma página de `contratos` da cidade, mais o total de linhas, a soma de
+ * `valor_global` e a contagem de alertas sobre TODO o conjunto filtrado —
+ * não só sobre a página. Degrada para resultado vazio; nunca lança.
  */
 export async function fetchContratos(
-  filters: ContratosFilters
+  idMunicipio: IdMunicipio,
+  filters: ContratosFilters = {}
 ): Promise<ContratosResult> {
-  const supabase = getSupabaseClient();
-  if (!supabase) {
-    return { rows: [], total: 0, sum: 0, totalAlertas: 0, configured: false, ok: false };
-  }
-
-  const page = Math.max(1, filters.page ?? 1);
-  const from = (page - 1) * CONTRATOS_PAGE_SIZE;
-  const to = from + CONTRATOS_PAGE_SIZE - 1;
-  const term = sanitizeSearchTerm(filters.q);
-
   try {
-    // `.contains("temas", ...)` falha com 42703 se a migration 0012
-    // ainda não rodou -- tenta com o filtro, cai pra sem filtro (não
-    // "lista vazia") se a coluna não existir. Sem filtro de tema, nem
-    // tenta tocar a coluna: nenhuma mudança de comportamento pra quem
-    // não está usando o filtro novo.
-    const aggBase = () => {
-      let q = supabase
-        .from("contratos")
-        .select("valor_global, alerta", { count: "exact" })
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-      if (filters.ano) q = q.eq("ano", Number(filters.ano));
-      if (filters.status) q = q.eq("status", filters.status);
-      if (filters.alerta) q = q.eq("alerta", true);
-      // Um motivo específico já implica alerta=true (motivos_alerta só tem
-      // itens quando alerta=true), então .contains() sozinho basta.
-      if (filters.motivo) q = q.contains("motivos_alerta", [filters.motivo]);
-      if (filters.tema) q = q.contains("temas", [filters.tema]);
-      if (term) q = q.or(`objeto.ilike.%${term}%,fornecedor_nome.ilike.%${term}%`);
-      return q;
-    };
-    const aggSemTema = () => {
-      let q = supabase
-        .from("contratos")
-        .select("valor_global, alerta", { count: "exact" })
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-      if (filters.ano) q = q.eq("ano", Number(filters.ano));
-      if (filters.status) q = q.eq("status", filters.status);
-      if (filters.alerta) q = q.eq("alerta", true);
-      if (filters.motivo) q = q.contains("motivos_alerta", [filters.motivo]);
-      if (term) q = q.or(`objeto.ilike.%${term}%,fornecedor_nome.ilike.%${term}%`);
-      return q;
-    };
-    const { data: aggData, count, error: aggError } = filters.tema
-      ? await comColunaOpcional(aggBase, aggSemTema)
-      : await aggBase();
-    if (aggError) {
-      return { rows: [], total: 0, sum: 0, totalAlertas: 0, configured: true, ok: false };
-    }
-    const sum = (aggData ?? []).reduce(
-      (acc: number, row: { valor_global: number | null }) =>
-        acc + (Number(row.valor_global) || 0),
-      0
-    );
-    const totalAlertas = (aggData ?? []).filter(
-      (row: { alerta: boolean | null }) => row.alerta
-    ).length;
+    const filtros = filtrosParaQuery(filters);
+    const linhas = await q.contratosPaginados(idMunicipio, {
+      ...filtros,
+      pagina: filters.page,
+      porPagina: CONTRATOS_PAGE_SIZE,
+    });
+    if (!linhas) return VAZIO;
 
-    const rowsBase = () => {
-      let q = supabase
-        .from("contratos")
-        .select(CONTRATOS_SELECT)
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-      if (filters.ano) q = q.eq("ano", Number(filters.ano));
-      if (filters.status) q = q.eq("status", filters.status);
-      if (filters.alerta) q = q.eq("alerta", true);
-      if (filters.motivo) q = q.contains("motivos_alerta", [filters.motivo]);
-      if (filters.tema) q = q.contains("temas", [filters.tema]);
-      if (term) q = q.or(`objeto.ilike.%${term}%,fornecedor_nome.ilike.%${term}%`);
-      return q.order("data_assinatura", { ascending: false, nullsFirst: false }).range(from, to);
-    };
-    const rowsSemTema = () => {
-      let q = supabase
-        .from("contratos")
-        .select(CONTRATOS_SELECT_SEM_TEMAS)
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-      if (filters.ano) q = q.eq("ano", Number(filters.ano));
-      if (filters.status) q = q.eq("status", filters.status);
-      if (filters.alerta) q = q.eq("alerta", true);
-      if (filters.motivo) q = q.contains("motivos_alerta", [filters.motivo]);
-      if (term) q = q.or(`objeto.ilike.%${term}%,fornecedor_nome.ilike.%${term}%`);
-      return q.order("data_assinatura", { ascending: false, nullsFirst: false }).range(from, to);
-    };
-    const { data: rows, error: rowsError } = await comColunaOpcional(rowsBase, rowsSemTema);
+    const rows = linhas.map(({ total, soma, total_alertas, ...row }) => {
+      void total;
+      void soma;
+      void total_alertas;
+      return row as ContratoRow;
+    });
+    await anexarSancoesCeis(rows);
 
-    if (rowsError) {
-      return { rows: [], total: 0, sum: 0, totalAlertas: 0, configured: true, ok: false };
-    }
-
-    const rowsTyped = (rows ?? []) as ContratoRow[];
-    await anexarSancoesCeis(supabase, rowsTyped);
+    // Os agregados vêm por `over ()` pendurados em cada linha. Sem linha
+    // nenhuma na página eles não vêm — e isso acontece tanto quando o
+    // filtro não casa nada (aí zero é a resposta certa) quanto numa página
+    // além da última, onde o total real NÃO é zero e a paginação precisa
+    // dele. Uma consulta a mais só nesse caso raro.
+    const agregados = linhas[0]
+      ? { total: linhas[0].total, soma: linhas[0].soma, total_alertas: linhas[0].total_alertas }
+      : ((await q.totaisDeContratos(idMunicipio, filtros)) ?? {
+          total: 0,
+          soma: 0,
+          total_alertas: 0,
+        });
 
     return {
-      rows: rowsTyped,
-      total: count ?? 0,
-      sum,
-      totalAlertas,
+      rows,
+      total: agregados.total,
+      sum: agregados.soma,
+      totalAlertas: agregados.total_alertas,
       configured: true,
       ok: true,
     };
   } catch {
-    return { rows: [], total: 0, sum: 0, totalAlertas: 0, configured: true, ok: false };
+    return { ...VAZIO, configured: true };
   }
 }
 
@@ -278,10 +240,7 @@ export async function fetchContratos(
  * Muda `rows` no lugar; nunca lança — falha aqui não pode derrubar a
  * lista de contratos inteira.
  */
-async function anexarSancoesCeis(
-  supabase: NonNullable<ReturnType<typeof getSupabaseClient>>,
-  rows: ContratoRow[]
-): Promise<void> {
+async function anexarSancoesCeis(rows: ContratoRow[]): Promise<void> {
   const cnpjsComAlerta = [
     ...new Set(
       rows
@@ -293,11 +252,8 @@ async function anexarSancoesCeis(
   if (cnpjsComAlerta.length === 0) return;
 
   try {
-    const { data, error } = await supabase
-      .from("fornecedores")
-      .select("cnpj, ceis_detalhes")
-      .in("cnpj", cnpjsComAlerta);
-    if (error || !data) return;
+    const data = await q.sancoesCeisPorCnpj(cnpjsComAlerta);
+    if (!data) return;
 
     const detalhesPorCnpj = new Map<string, SancaoCeis[]>(
       (data as { cnpj: string; ceis_detalhes: SancaoCeis[] | null }[]).map((f) => [
@@ -319,45 +275,17 @@ async function anexarSancoesCeis(
  * Fetches up to EXPORT_ROW_LIMIT matching rows (no pagination) for CSV export.
  */
 export async function fetchContratosForExport(
-  filters: Omit<ContratosFilters, "page">
+  idMunicipio: IdMunicipio,
+  filters: Omit<ContratosFilters, "page"> = {}
 ): Promise<{ rows: ContratoRow[]; configured: boolean; ok: boolean }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], configured: false, ok: false };
-
-  const term = sanitizeSearchTerm(filters.q);
-
   try {
-    // `comTemas` liga select E filtro juntos -- um filtro `.contains`
-    // numa coluna que não existe falha do mesmo jeito que selecioná-la.
-    const buildComTemas = () => {
-      let q = supabase
-        .from("contratos")
-        .select(CONTRATOS_SELECT)
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-      if (filters.ano) q = q.eq("ano", Number(filters.ano));
-      if (filters.status) q = q.eq("status", filters.status);
-      if (filters.alerta) q = q.eq("alerta", true);
-      if (filters.motivo) q = q.contains("motivos_alerta", [filters.motivo]);
-      if (filters.tema) q = q.contains("temas", [filters.tema]);
-      if (term) q = q.or(`objeto.ilike.%${term}%,fornecedor_nome.ilike.%${term}%`);
-      return q.order("data_assinatura", { ascending: false, nullsFirst: false }).limit(EXPORT_ROW_LIMIT);
-    };
-    const buildSemTemas = () => {
-      let q = supabase
-        .from("contratos")
-        .select(CONTRATOS_SELECT_SEM_TEMAS)
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-      if (filters.ano) q = q.eq("ano", Number(filters.ano));
-      if (filters.status) q = q.eq("status", filters.status);
-      if (filters.alerta) q = q.eq("alerta", true);
-      if (filters.motivo) q = q.contains("motivos_alerta", [filters.motivo]);
-      if (term) q = q.or(`objeto.ilike.%${term}%,fornecedor_nome.ilike.%${term}%`);
-      return q.order("data_assinatura", { ascending: false, nullsFirst: false }).limit(EXPORT_ROW_LIMIT);
-    };
-    const { data, error } = await comColunaOpcional(buildComTemas, buildSemTemas);
-
-    if (error) return { rows: [], configured: true, ok: false };
-    return { rows: (data ?? []) as ContratoRow[], configured: true, ok: true };
+    const data = await q.contratosParaExport(
+      idMunicipio,
+      filtrosParaQuery(filters),
+      EXPORT_ROW_LIMIT
+    );
+    if (!data) return { rows: [], configured: false, ok: false };
+    return { rows: data as ContratoRow[], configured: true, ok: true };
   } catch {
     return { rows: [], configured: true, ok: false };
   }

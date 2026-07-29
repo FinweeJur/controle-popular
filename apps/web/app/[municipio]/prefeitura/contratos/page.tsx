@@ -41,7 +41,7 @@ export default async function ContratosPage({
   const alerta = params.alerta === "1" || Boolean(params.motivo);
 
   const [{ rows, total, sum, totalAlertas, configured, ok }, temasPrefeitura] = await Promise.all([
-    fetchContratos({
+    fetchContratos(cidade.id_municipio, {
       ano: params.ano,
       status: params.status,
       q: params.q,

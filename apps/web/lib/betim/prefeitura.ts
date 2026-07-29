@@ -1,4 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface VisaoGeralData {
   ano: number;
@@ -51,19 +52,12 @@ const BLOCOS_TOTAL = new Set([
  * contratos -- degrades to an empty/unconfigured result rather than
  * throwing, same convention as lib/contratos.ts.
  */
-export async function getVisaoGeral(): Promise<VisaoGeralData> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return EMPTY;
-
+export async function getVisaoGeral(
+  idMunicipio: IdMunicipio
+): Promise<VisaoGeralData> {
   try {
-    const { data: anosData, error: anosError } = await supabase
-      .from("despesas")
-      .select("ano")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .order("ano", { ascending: false })
-      .limit(1);
-    if (anosError || !anosData?.length) return { ...EMPTY, configured: true, ok: false };
-    const ano = anosData[0].ano as number;
+    const ano = await q.anoMaisRecenteDeDespesas(idMunicipio);
+    if (ano == null) return { ...EMPTY, configured: true, ok: false };
 
     // `funcao`/`conta` in despesas/receitas are hierarchical SICONFI charts
     // of accounts, not a flat list -- a parent total row and all its child
@@ -81,81 +75,54 @@ export async function getVisaoGeral(): Promise<VisaoGeralData> {
     // solve the deeper função/subfunção hierarchy (a subfunção total nested
     // under a função would still double count if fetched), so treat this
     // as a best-effort top-level ranking, not an audited total.
-    const { data: despesasData } = await supabase
-      .from("despesas")
-      .select("funcao, valor")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .eq("ano", ano)
-      .eq("estagio", "Despesas Pagas");
+    // A soma por função e a dos fornecedores desceram para o banco; aqui
+    // sobra a separação entre os blocos de escopo (que são o total geral) e
+    // as funções COFOG (que são o ranking).
+    const [linhasFuncao, popRows, receitaTotal, fornecedores] = await Promise.all([
+      q.despesasAgrupadasPorFuncao(idMunicipio, ano),
+      q.listarIndicadores(idMunicipio, ["populacao"]),
+      q.receitaTotalDoAno(idMunicipio, ano),
+      q.maioresFornecedores(idMunicipio, 5),
+    ]);
 
-    const porFuncao = new Map<string, number>();
     let despesaTotal = 0;
-    for (const row of despesasData ?? []) {
-      const funcao = (row.funcao as string) || "Outros";
-      if (BLOCOS_TOTAL.has(funcao)) {
+    const gastosPorFuncao: { funcao: string; valor: number }[] = [];
+    for (const row of linhasFuncao ?? []) {
+      if (BLOCOS_TOTAL.has(row.funcao)) {
         // Os dois blocos somados são o total geral — não entram no
         // ranking por função (não são função COFOG).
-        despesaTotal += Number(row.valor ?? 0);
+        despesaTotal += row.valor ?? 0;
         continue;
       }
-      porFuncao.set(funcao, (porFuncao.get(funcao) ?? 0) + Number(row.valor ?? 0));
+      gastosPorFuncao.push({ funcao: row.funcao, valor: row.valor ?? 0 });
     }
-    const gastosPorFuncao = [...porFuncao.entries()]
-      .map(([funcao, valor]) => ({ funcao, valor }))
-      .sort((a, b) => b.valor - a.valor)
-      .slice(0, 8);
 
     // População pro custo per capita — de preferência o mesmo ano da
     // despesa; se a série não cobrir exatamente esse ano, cai pro mais
     // recente disponível (a ordenação desc deixa o mais novo em primeiro).
-    const { data: popRows } = await supabase
-      .from("indicadores")
-      .select("valor_numerico, ano_referencia")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .eq("nome", "populacao")
-      .order("ano_referencia", { ascending: false });
-    const popDoAno = (popRows ?? []).find((r) => r.ano_referencia === ano) ?? (popRows ?? [])[0];
+    const popDoAno =
+      (popRows ?? []).find((r) => r.ano_referencia === ano) ?? (popRows ?? [])[0];
     const populacao = Number(popDoAno?.valor_numerico ?? 0);
     const populacaoAno = Number(popDoAno?.ano_referencia ?? 0);
     const custoPerCapitaAno =
       despesaTotal > 0 && populacao > 0 ? despesaTotal / populacao : 0;
 
-    const { data: receitaTotalRow } = await supabase
-      .from("receitas")
-      .select("valor")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .eq("ano", ano)
-      .eq("estagio", "Receitas Brutas Realizadas")
-      .ilike("conta", "TOTAL DAS RECEITAS%")
-      .limit(1)
-      .maybeSingle();
-    const receitaTotal = Number(receitaTotalRow?.valor ?? 0);
-
-    const { data: contratosData } = await supabase
-      .from("contratos")
-      .select("fornecedor_nome, fornecedor_cnpj, valor_global")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-    const porFornecedor = new Map<string, { nome: string; cnpj: string | null; valor: number }>();
-    for (const row of contratosData ?? []) {
-      const cnpj = row.fornecedor_cnpj as string | null;
-      const nome = (row.fornecedor_nome as string) || cnpj || "Fornecedor não identificado";
-      const key = cnpj ?? nome;
-      const entry = porFornecedor.get(key) ?? { nome, cnpj, valor: 0 };
-      entry.valor += Number(row.valor_global ?? 0);
-      porFornecedor.set(key, entry);
-    }
-    const maioresFornecedores = [...porFornecedor.values()]
-      .sort((a, b) => b.valor - a.valor)
-      .slice(0, 5);
+    const maioresFornecedores = (fornecedores ?? []).map((f) => ({
+      nome: f.nome,
+      cnpj: f.cnpj,
+      valor: f.valor ?? 0,
+    }));
 
     return {
       ano,
-      receitaTotal,
+      receitaTotal: receitaTotal ?? 0,
       despesaTotal,
       custoPerCapitaAno,
       populacao,
       populacaoAno,
-      gastosPorFuncao,
+      // O `order by` do banco já traz maior primeiro; o corte em 8 fica
+      // aqui porque o descarte dos blocos de escopo acontece depois dele.
+      gastosPorFuncao: gastosPorFuncao.slice(0, 8),
       maioresFornecedores,
       configured: true,
       ok: true,
