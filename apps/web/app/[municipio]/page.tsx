@@ -228,8 +228,8 @@ export default async function HomePage({
     getVereadores(),
     getRankingVereadores(),
     getAtividadeRecenteCamara(),
-    getNoticias(),
-    getObrasParaopebaMenosConcluidas(5),
+    getNoticias(cidade.id_municipio),
+    getObrasParaopebaMenosConcluidas(cidade.id_municipio, 5),
   ]);
   const anuncioAtivo = anuncios[0] ?? null;
   const topRanking = ranking.rows.slice(0, 6);

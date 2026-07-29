@@ -1,4 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 
 /**
@@ -9,8 +10,8 @@ import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
  * cita a fonte — ver o system prompt em `app/api/chat/route.ts`.
  *
  * Objetivo do contexto: dar dado REAL e verificável pro modelo, e caber no
- * orçamento de tokens (poucas linhas por entidade). Se o Supabase não
- * estiver configurado, devolve string vazia (o route trata).
+ * orçamento de tokens (poucas linhas por entidade). Se o banco não estiver
+ * configurado, devolve string vazia (o route trata).
  */
 
 const LIMITE_POR_ENTIDADE = 6;
@@ -36,47 +37,29 @@ function termosBusca(pergunta: string): string[] {
 }
 
 /** Números-âncora da cidade — sempre no contexto (perguntas agregadas). */
-async function fatosGerais(
-  supabase: NonNullable<ReturnType<typeof getSupabaseClient>>
-): Promise<string[]> {
+async function fatosGerais(idMunicipio: IdMunicipio): Promise<string[]> {
   const linhas: string[] = [];
   try {
-    const [pop, contratos, vereadores] = await Promise.all([
-      supabase
-        .from("indicadores")
-        .select("valor_numerico, ano_referencia")
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .eq("nome", "populacao")
-        .order("ano_referencia", { ascending: false })
-        .limit(1)
-        .maybeSingle(),
-      supabase
-        .from("contratos")
-        .select("valor_global", { count: "exact" })
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .eq("status", "ativo"),
-      supabase
-        .from("vereadores")
-        .select("id", { count: "exact" })
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .eq("ativo", true),
+    const [pop, contratos, qtdVereadores] = await Promise.all([
+      q.listarIndicadores(idMunicipio, ["populacao"]),
+      // Era `select valor_global` de todos os contratos ativos só para
+      // somar no JS; agora count e sum vêm do banco.
+      q.resumoContratosAtivos(idMunicipio),
+      q.contagemVereadoresAtivos(idMunicipio),
     ]);
-    if (pop.data?.valor_numerico) {
+    const popRow = pop?.[0];
+    if (popRow?.valor_numerico) {
       linhas.push(
-        `População de Betim: ${formatNumberBR(Number(pop.data.valor_numerico))} habitantes (${pop.data.ano_referencia}).`
+        `População de Betim: ${formatNumberBR(Number(popRow.valor_numerico))} habitantes (${popRow.ano_referencia}).`
       );
     }
-    if (contratos.count != null) {
-      const soma = (contratos.data ?? []).reduce(
-        (a, r: { valor_global: number | null }) => a + Number(r.valor_global || 0),
-        0
-      );
+    if (contratos) {
       linhas.push(
-        `Contratos ativos da Prefeitura: ${formatNumberBR(contratos.count)}, somando ${formatCurrencyBRL(soma)}.`
+        `Contratos ativos da Prefeitura: ${formatNumberBR(contratos.qtd)}, somando ${formatCurrencyBRL(contratos.soma)}.`
       );
     }
-    if (vereadores.count != null) {
-      linhas.push(`A Câmara tem ${vereadores.count} vereadores na legislatura atual.`);
+    if (qtdVereadores != null) {
+      linhas.push(`A Câmara tem ${qtdVereadores} vereadores na legislatura atual.`);
     }
   } catch {
     /* degrade: contexto sem os fatos gerais */
@@ -85,38 +68,24 @@ async function fatosGerais(
 }
 
 /** Monta o bloco de contexto (texto) pra pergunta do usuário. */
-export async function montarContexto(pergunta: string): Promise<string> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return "";
-
+export async function montarContexto(
+  idMunicipio: IdMunicipio,
+  pergunta: string
+): Promise<string> {
   const termos = termosBusca(pergunta);
   const secoes: string[] = [];
 
-  const gerais = await fatosGerais(supabase);
+  const gerais = await fatosGerais(idMunicipio);
   if (gerais.length) secoes.push("NÚMEROS DA CIDADE:\n" + gerais.map((l) => `- ${l}`).join("\n"));
 
   if (termos.length) {
-    const orIlike = (campos: string[]) =>
-      termos.flatMap((t) => campos.map((c) => `${c}.ilike.%${t}%`)).join(",");
-
     try {
       const [contratos, proposicoes] = await Promise.all([
-        supabase
-          .from("contratos")
-          .select("objeto, fornecedor_nome, valor_global, ano, status")
-          .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-          .or(orIlike(["objeto", "fornecedor_nome"]))
-          .order("valor_global", { ascending: false, nullsFirst: false })
-          .limit(LIMITE_POR_ENTIDADE),
-        supabase
-          .from("proposicoes")
-          .select("tipo, numero, ano, ementa, situacao")
-          .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-          .or(orIlike(["ementa"]))
-          .limit(LIMITE_POR_ENTIDADE),
+        q.contratosPorTermos(idMunicipio, termos, LIMITE_POR_ENTIDADE),
+        q.proposicoesPorTermos(idMunicipio, termos, LIMITE_POR_ENTIDADE),
       ]);
 
-      const cRows = contratos.data ?? [];
+      const cRows = contratos ?? [];
       if (cRows.length) {
         secoes.push(
           "CONTRATOS RELACIONADOS:\n" +
@@ -128,7 +97,7 @@ export async function montarContexto(pergunta: string): Promise<string> {
               .join("\n")
         );
       }
-      const pRows = proposicoes.data ?? [];
+      const pRows = proposicoes ?? [];
       if (pRows.length) {
         secoes.push(
           "PROPOSIÇÕES RELACIONADAS:\n" +

@@ -15,6 +15,7 @@ import {
 } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { num } from "@/lib/db/num";
+import { ptBr } from "@/lib/db/ordem";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import {
   anuncios,
@@ -24,6 +25,8 @@ import {
   classificados,
   coleta_lixo,
   comercios_essenciais,
+  comissao_membros,
+  comissoes,
   contatos_uteis,
   contratos,
   convenios_federais,
@@ -33,13 +36,18 @@ import {
   fornecedores,
   grupos_economicos,
   indicadores,
+  noticias,
   nota_transparencia,
   obras,
+  paraopeba_iniciativas,
+  paraopeba_saldo_municipio,
   postos_anp,
+  producao_agropecuaria,
   proposicoes,
   seguranca_ocorrencias,
   servidores,
   verbas_indenizatorias,
+  vereadores,
   zap_estabelecimentos,
 } from "@/lib/db/schema";
 
@@ -131,7 +139,7 @@ export async function listarPostos(idMunicipio: IdMunicipio, bandeira?: string) 
     })
     .from(postos_anp)
     .where(and(...cond))
-    .orderBy(asc(postos_anp.razao_social));
+    .orderBy(ptBr(postos_anp.razao_social));
 }
 
 export async function ocorrenciasSeguranca(idMunicipio: IdMunicipio) {
@@ -187,7 +195,7 @@ export async function listarServidores(
     .where(and(...cond))
     // Desempate por nome + cargo: sem ordem total, a paginação pode
     // repetir ou pular linhas entre páginas.
-    .orderBy(asc(servidores.nome), asc(servidores.cargo))
+    .orderBy(ptBr(servidores.nome), ptBr(servidores.cargo))
     .limit(porPagina)
     .offset((pagina - 1) * porPagina);
 }
@@ -264,7 +272,7 @@ export async function listarEscolas(idMunicipio: IdMunicipio) {
     })
     .from(escolas)
     .where(eq(escolas.id_municipio, idMunicipio))
-    .orderBy(asc(escolas.nome));
+    .orderBy(ptBr(escolas.nome));
 }
 
 /** Classificados aprovados e ainda no prazo. */
@@ -325,7 +333,7 @@ export async function zapEstabelecimentos(
     })
     .from(zap_estabelecimentos)
     .where(and(...cond))
-    .orderBy(asc(zap_estabelecimentos.nome), asc(zap_estabelecimentos.id));
+    .orderBy(ptBr(zap_estabelecimentos.nome), asc(zap_estabelecimentos.id));
 }
 
 /**
@@ -470,7 +478,7 @@ export async function despesasPorFuncao(
     .groupBy(despesas.conta)
     // Desempate por nome: sem ele duas funções de mesmo valor sairiam em
     // ordem indefinida, e com SSG o gráfico mudaria a cada build.
-    .orderBy(sql`sum(${despesas.valor}) desc`, asc(despesas.conta));
+    .orderBy(sql`sum(${despesas.valor}) desc`, ptBr(despesas.conta));
 }
 
 export async function contatosUteis(idMunicipio: IdMunicipio) {
@@ -502,7 +510,7 @@ export async function coletaLixo(idMunicipio: IdMunicipio, bairro?: string) {
     })
     .from(coleta_lixo)
     .where(and(...cond))
-    .orderBy(asc(coleta_lixo.bairro), asc(coleta_lixo.id));
+    .orderBy(ptBr(coleta_lixo.bairro), asc(coleta_lixo.id));
 }
 
 /** Farmácias de plantão hoje: as 24h sempre, mais as que estão na escala. */
@@ -535,7 +543,7 @@ export async function farmaciasPlantao(idMunicipio: IdMunicipio) {
         )
       )
     )
-    .orderBy(asc(farmacias_plantao.nome), asc(farmacias_plantao.id));
+    .orderBy(ptBr(farmacias_plantao.nome), asc(farmacias_plantao.id));
 }
 
 /**
@@ -719,4 +727,311 @@ export async function somaContratada(idMunicipio: IdMunicipio) {
     .from(contratos)
     .where(eq(contratos.id_municipio, idMunicipio));
   return linha?.total ?? 0;
+}
+
+/**
+ * Quantidade e soma dos contratos ativos.
+ *
+ * Uma consulta no lugar de "trazer todas as linhas e reduzir no JS" —
+ * era assim na Home e no contexto do chat, e trazia o `valor_global` de
+ * centenas de contratos só para somar. O `count` vem do banco, não do
+ * `data.length`, então não depende de quantas linhas vieram.
+ */
+export async function resumoContratosAtivos(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({
+      qtd: sql<number>`count(*)::int`,
+      soma: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
+    })
+    .from(contratos)
+    .where(and(eq(contratos.id_municipio, idMunicipio), eq(contratos.status, "ativo")));
+  return linha ?? { qtd: 0, soma: 0 };
+}
+
+/** Comissões do catálogo, em ordem de nome. */
+export async function listarComissoes(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({ id: comissoes.id, nome: comissoes.nome, especial: comissoes.especial })
+    .from(comissoes)
+    .where(eq(comissoes.id_municipio, idMunicipio))
+    .orderBy(ptBr(comissoes.nome), asc(comissoes.id));
+}
+
+/**
+ * Membros ativos das comissões, já com o vereador.
+ *
+ * O `vereadores(slug, nome_urna)` do PostgREST era um embed que ele
+ * resolvia pela FK; aqui é um `inner join` explícito. Membro cujo vereador
+ * sumiu deixa de vir — o mesmo efeito do `if (!m.vereadores) continue` que
+ * o app fazia depois.
+ */
+export async function membrosDeComissoes(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      comissao_id: comissao_membros.comissao_id,
+      papel: comissao_membros.papel,
+      slug: vereadores.slug,
+      nome_urna: vereadores.nome_urna,
+    })
+    .from(comissao_membros)
+    .innerJoin(vereadores, eq(vereadores.id, comissao_membros.vereador_id))
+    .where(
+      and(
+        eq(comissao_membros.id_municipio, idMunicipio),
+        eq(comissao_membros.ativo, true),
+        isNotNull(comissao_membros.comissao_id)
+      )
+    )
+    .orderBy(ptBr(vereadores.nome_urna), asc(comissao_membros.id));
+}
+
+/**
+ * Histórico de participações de UM vereador em comissões.
+ *
+ * Usa `nome_comissao_bruto` em vez de juntar com `comissoes`: boa parte do
+ * histórico tem comissão já renomeada ou extinta, e o nome que a própria
+ * Câmara registrou na época é mais correto que o nome de hoje.
+ */
+export async function participacoesEmComissoes(
+  idMunicipio: IdMunicipio,
+  vereadorId: string
+) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      nome_comissao_bruto: comissao_membros.nome_comissao_bruto,
+      papel: comissao_membros.papel,
+      ativo: comissao_membros.ativo,
+      data_inicio: comissao_membros.data_inicio,
+      data_fim: comissao_membros.data_fim,
+    })
+    .from(comissao_membros)
+    .where(
+      and(
+        eq(comissao_membros.id_municipio, idMunicipio),
+        eq(comissao_membros.vereador_id, vereadorId)
+      )
+    )
+    .orderBy(
+      sql`${comissao_membros.data_fim} desc nulls last`,
+      asc(comissao_membros.id)
+    );
+}
+
+/** Produção agropecuária (IBGE PAM/PPM). */
+export async function producaoAgropecuaria(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      categoria: producao_agropecuaria.categoria,
+      produto: producao_agropecuaria.produto,
+      ano: producao_agropecuaria.ano,
+      quantidade: num(producao_agropecuaria.quantidade),
+      unidade: producao_agropecuaria.unidade,
+      area_colhida: num(producao_agropecuaria.area_colhida),
+      valor_producao_mil_reais: num(producao_agropecuaria.valor_producao_mil_reais),
+    })
+    .from(producao_agropecuaria)
+    .where(eq(producao_agropecuaria.id_municipio, idMunicipio))
+    .orderBy(asc(producao_agropecuaria.id));
+}
+
+const COLUNAS_NOTICIA = {
+  slug: noticias.slug,
+  titulo: noticias.titulo,
+  resumo: noticias.resumo,
+  categoria: noticias.categoria,
+  temas: noticias.temas,
+  autor: noticias.autor,
+  publicado_em: noticias.publicado_em,
+  fonte_externa_nome: noticias.fonte_externa_nome,
+  fonte_externa_url: noticias.fonte_externa_url,
+};
+
+/**
+ * Notícias publicadas, mais recente primeiro.
+ *
+ * `fonte_externa_nome`/`_url` (migration 0023) EXISTEM no banco — conferido
+ * na introspecção. O `comColunaOpcional()` que as protegia entrou porque
+ * `/noticias` apareceu vazia em 2026-07-24 com 4 posts no banco, antes da
+ * migration rodar; hoje ela já rodou e o fallback é código morto.
+ */
+export async function listarNoticias(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select(COLUNAS_NOTICIA)
+    .from(noticias)
+    .where(eq(noticias.id_municipio, idMunicipio))
+    .orderBy(desc(noticias.publicado_em), asc(noticias.id));
+}
+
+export async function noticiaPorSlug(idMunicipio: IdMunicipio, slug: string) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({ ...COLUNAS_NOTICIA, conteudo_html: noticias.conteudo_html })
+    .from(noticias)
+    .where(and(eq(noticias.id_municipio, idMunicipio), eq(noticias.slug, slug)))
+    .limit(1);
+  return linha ?? null;
+}
+
+/**
+ * Saldo do Acordo de Reparação do Paraopeba para o município.
+ *
+ * `maybeSingle()` do PostgREST vira `limit(1)`: a tabela tem uma linha por
+ * município, e um `limit` não estoura se algum dia tiver duas.
+ */
+export async function saldoParaopeba(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({
+      referencia: paraopeba_saldo_municipio.referencia,
+      valor_acordo_inicial: num(paraopeba_saldo_municipio.valor_acordo_inicial),
+      valor_acordo_atual: num(paraopeba_saldo_municipio.valor_acordo_atual),
+      empenhos_autorizados: num(paraopeba_saldo_municipio.empenhos_autorizados),
+      saldo_teto: num(paraopeba_saldo_municipio.saldo_teto),
+    })
+    .from(paraopeba_saldo_municipio)
+    .where(eq(paraopeba_saldo_municipio.id_municipio, idMunicipio))
+    .orderBy(asc(paraopeba_saldo_municipio.id))
+    .limit(1);
+  return linha ?? null;
+}
+
+const COLUNAS_INICIATIVA = {
+  id_fdi: paraopeba_iniciativas.id_fdi,
+  titulo: paraopeba_iniciativas.titulo,
+  municipios_envolvidos: paraopeba_iniciativas.municipios_envolvidos,
+  grupo_iniciativas: paraopeba_iniciativas.grupo_iniciativas,
+  tipo_obrigacao: paraopeba_iniciativas.tipo_obrigacao,
+  area_tematica: paraopeba_iniciativas.area_tematica,
+  sub_area_tematica: paraopeba_iniciativas.sub_area_tematica,
+  status: paraopeba_iniciativas.status,
+  investimento: num(paraopeba_iniciativas.investimento),
+  valor_total: num(paraopeba_iniciativas.valor_total),
+  percentual_realizado: num(paraopeba_iniciativas.percentual_realizado),
+};
+
+/**
+ * Iniciativas do Paraopeba, maior valor primeiro.
+ *
+ * NÃO seleciona `percentual_planejado`: a coluna da migration 0026 não
+ * existe no banco — mesmo caso de `atos_oficiais.temas`. O
+ * `comColunaOpcional()` caía sempre no fallback, então o "executado vs
+ * planejado" da página já nascia sem o planejado.
+ */
+export async function iniciativasParaopeba(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select(COLUNAS_INICIATIVA)
+    .from(paraopeba_iniciativas)
+    .where(eq(paraopeba_iniciativas.id_municipio, idMunicipio))
+    .orderBy(desc(paraopeba_iniciativas.valor_total), asc(paraopeba_iniciativas.id));
+}
+
+/** As N iniciativas em execução mais longe de concluir. */
+export async function iniciativasParaopebaMenosConcluidas(
+  idMunicipio: IdMunicipio,
+  limite = 5
+) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select(COLUNAS_INICIATIVA)
+    .from(paraopeba_iniciativas)
+    .where(
+      and(
+        eq(paraopeba_iniciativas.id_municipio, idMunicipio),
+        eq(paraopeba_iniciativas.status, "Em execução"),
+        isNotNull(paraopeba_iniciativas.percentual_realizado)
+      )
+    )
+    .orderBy(asc(paraopeba_iniciativas.percentual_realizado), asc(paraopeba_iniciativas.id))
+    .limit(limite);
+}
+
+/** Quantos vereadores ativos — número-âncora do contexto do chat. */
+export async function contagemVereadoresAtivos(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({ qtd: sql<number>`count(*)::int` })
+    .from(vereadores)
+    .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.ativo, true)));
+  return linha?.qtd ?? 0;
+}
+
+/**
+ * Contratos que casam com algum termo da pergunta do chat, maiores
+ * primeiro. `termos` já vem limpo de stopwords por `lib/betim/chat.ts`.
+ */
+export async function contratosPorTermos(
+  idMunicipio: IdMunicipio,
+  termos: string[],
+  limite: number
+) {
+  const db = getDb();
+  if (!db || termos.length === 0) return null;
+  const alternativas = termos.flatMap((t) => [
+    ilike(contratos.objeto, `%${t}%`),
+    ilike(contratos.fornecedor_nome, `%${t}%`),
+  ]);
+  return db
+    .select({
+      objeto: contratos.objeto,
+      fornecedor_nome: contratos.fornecedor_nome,
+      valor_global: num(contratos.valor_global),
+      ano: contratos.ano,
+      status: contratos.status,
+    })
+    .from(contratos)
+    .where(and(eq(contratos.id_municipio, idMunicipio), or(...alternativas)))
+    .orderBy(sql`${contratos.valor_global} desc nulls last`, asc(contratos.id))
+    .limit(limite);
+}
+
+/**
+ * Proposições que casam com algum termo da pergunta do chat.
+ *
+ * Ganhou `order by`: a consulta original tinha só `limit(6)`, o que deixa
+ * ao Postgres escolher QUAIS seis — a mesma pergunta podia trazer
+ * proposições diferentes a cada vez, e o chat responderia coisas
+ * diferentes sem nada ter mudado no banco.
+ */
+export async function proposicoesPorTermos(
+  idMunicipio: IdMunicipio,
+  termos: string[],
+  limite: number
+) {
+  const db = getDb();
+  if (!db || termos.length === 0) return null;
+  return db
+    .select({
+      tipo: proposicoes.tipo,
+      numero: proposicoes.numero,
+      ano: proposicoes.ano,
+      ementa: proposicoes.ementa,
+      situacao: proposicoes.situacao,
+    })
+    .from(proposicoes)
+    .where(
+      and(
+        eq(proposicoes.id_municipio, idMunicipio),
+        or(...termos.map((t) => ilike(proposicoes.ementa, `%${t}%`)))
+      )
+    )
+    .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
+    .limit(limite);
 }

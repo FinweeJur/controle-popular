@@ -2,6 +2,7 @@ import Link from "@/lib/betim/link";
 import { getNoticias, CATEGORIA_LABELS } from "@/lib/betim/noticias";
 import { TEMA_LABELS } from "@/lib/betim/temas";
 import { formatDateBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Notícias — Controle Popular Betim",
@@ -9,8 +10,13 @@ export const metadata = {
     "Achados de investigação, explicadores e notas do Controle Popular Betim — texto próprio, sem redação terceirizada.",
 };
 
-export default async function NoticiasPage() {
-  const { rows, ok } = await getNoticias();
+export default async function NoticiasPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
+  const { rows, ok } = await getNoticias(cidade.id_municipio);
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-14 sm:px-8">

@@ -1,4 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface MembroComissao {
   slug: string;
@@ -17,7 +18,8 @@ export interface ComissaoAtual {
 interface ComissaoMembroJoin {
   comissao_id: string | null;
   papel: string;
-  vereadores: { slug: string; nome_urna: string | null } | null;
+  slug: string;
+  nome_urna: string | null;
 }
 
 /**
@@ -27,25 +29,15 @@ interface ComissaoMembroJoin {
  * andamento" de cada vereador) — ver docstring do ETL pra por que o
  * catálogo não tenta reconciliar nomes históricos renomeados.
  */
-export async function getComissoesAtuais(): Promise<{ rows: ComissaoAtual[]; ok: boolean }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], ok: false };
-
+export async function getComissoesAtuais(
+  idMunicipio: IdMunicipio
+): Promise<{ rows: ComissaoAtual[]; ok: boolean }> {
   try {
-    const { data: comissoesData, error: erroComissoes } = await supabase
-      .from("comissoes")
-      .select("id, nome, especial")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .order("nome", { ascending: true });
-    if (erroComissoes || !comissoesData) return { rows: [], ok: false };
-
-    const { data: membrosData, error: erroMembros } = await supabase
-      .from("comissao_membros")
-      .select("comissao_id, papel, vereadores(slug, nome_urna)")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .eq("ativo", true)
-      .not("comissao_id", "is", null);
-    if (erroMembros) return { rows: [], ok: false };
+    const [comissoesData, membrosData] = await Promise.all([
+      q.listarComissoes(idMunicipio),
+      q.membrosDeComissoes(idMunicipio),
+    ]);
+    if (!comissoesData || !membrosData) return { rows: [], ok: false };
 
     const porComissao = new Map<string, ComissaoAtual>();
     for (const c of comissoesData as { id: string; nome: string; especial: boolean }[]) {
@@ -59,11 +51,13 @@ export async function getComissoesAtuais(): Promise<{ rows: ComissaoAtual[]; ok:
       });
     }
 
-    for (const m of (membrosData ?? []) as unknown as ComissaoMembroJoin[]) {
-      if (!m.comissao_id || !m.vereadores) continue;
+    // O embed `vereadores(slug, nome_urna)` do PostgREST virou `inner
+    // join`, então o membro já chega achatado e sem vereador órfão.
+    for (const m of membrosData as ComissaoMembroJoin[]) {
+      if (!m.comissao_id) continue;
       const alvo = porComissao.get(m.comissao_id);
       if (!alvo) continue;
-      const pessoa: MembroComissao = { slug: m.vereadores.slug, nomeUrna: m.vereadores.nome_urna };
+      const pessoa: MembroComissao = { slug: m.slug, nomeUrna: m.nome_urna };
       if (m.papel === "Presidente") alvo.presidente = pessoa;
       else if (m.papel === "Relator") alvo.relator = pessoa;
       else alvo.membros.push(pessoa);
@@ -91,19 +85,15 @@ export interface ParticipacaoComissao {
  * com o nome atual.
  */
 export async function getParticipacoesByVereador(
+  idMunicipio: IdMunicipio,
   vereadorId: string
 ): Promise<{ andamento: ParticipacaoComissao[]; finalizadas: ParticipacaoComissao[]; ok: boolean }> {
-  const supabase = getSupabaseClient();
   const VAZIO = { andamento: [], finalizadas: [], ok: false };
-  if (!supabase) return VAZIO;
-
   try {
-    const { data, error } = await supabase
-      .from("comissao_membros")
-      .select("nome_comissao_bruto, papel, ativo, data_inicio, data_fim")
-      .eq("vereador_id", vereadorId)
-      .order("data_fim", { ascending: false, nullsFirst: false });
-    if (error || !data) return VAZIO;
+    // A consulta antiga filtrava só por `vereador_id`, sem a cidade —
+    // mesmo caso de `getTemasVereador`. Agora filtra pelos dois.
+    const data = await q.participacoesEmComissoes(idMunicipio, vereadorId);
+    if (!data) return VAZIO;
 
     const rows = (
       data as {

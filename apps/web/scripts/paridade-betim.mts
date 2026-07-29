@@ -26,6 +26,15 @@ import {
 } from "../lib/betim/servicos.js";
 import { fetchProposicoes, getSituacoesDisponiveis } from "../lib/betim/proposicoes.js";
 import { getGruposEconomicos } from "../lib/betim/grupos.js";
+import { getComissoesAtuais, getParticipacoesByVereador } from "../lib/betim/comissoes.js";
+import { getNoticias, getNoticiaBySlug } from "../lib/betim/noticias.js";
+import { getAgroData } from "../lib/betim/agro.js";
+import {
+  getParaopebaData,
+  getObrasParaopebaMenosConcluidas,
+} from "../lib/betim/paraopeba.js";
+import { montarContexto } from "../lib/betim/chat.js";
+import { formatCurrencyBRL, formatNumberBR } from "../lib/betim/format.js";
 
 // `comoIdMunicipio` é a saída deliberada da marca nominal de `IdMunicipio`.
 // Existe exatamente para bordas como esta, onde o valor não vem da tabela
@@ -106,9 +115,37 @@ const poN = await fetchPostosAnp(ID);
 eq(`postos (${po.length} vs ${poN.rows.length})`, po.length, poN.rows.length);
 
 // servidores: total do conjunto
-const sv = await rest(`servidores?select=nome&id_municipio=eq.${ID}`);
+const sv = await rest(`servidores?select=nome&id_municipio=eq.${ID}&order=nome.asc`);
 const svN = await getServidores(ID, {});
 eq(`servidores total (${sv.length} vs ${svN.total})`, sv.length, svN.total);
+
+/**
+ * ORDENACAO POR TEXTO — a verificacao que faltava.
+ *
+ * O banco do Neon foi criado com collation `C.UTF-8` (ordem de BYTE) e o
+ * do Supabase usa collation linguistica. Com os MESMOS dados, `order by
+ * nome` sai diferente: "Ética" vai para o fim da lista e "ANTÔNIO" para
+ * depois de todos os "ANTONIO". Nao da erro, nao da log — so embaralha a
+ * lista na tela, e numa lista paginada muda quem aparece em qual pagina.
+ *
+ * As comparacoes anteriores conferiam COUNT e SOMA, que sao invariantes a
+ * ordem, entao nada disso aparecia. Estas conferem a SEQUENCIA.
+ *
+ * A correcao e `collate "pt-BR-x-icu"` (ver lib/db/ordem.ts), que
+ * reproduz a ordem do Supabase exatamente.
+ */
+eq(`servidores em ordem pt-BR (${sv.length} nomes, pagina 1 de ${Math.ceil(sv.length / 50)})`,
+   sv.slice(0, 50).map((r) => r.nome), svN.rows.map((r) => r.nome));
+// A pagina 24 e onde a collation de byte comecava a divergir (linha 1.158).
+eq(`servidores pagina 24 em ordem pt-BR`,
+   sv.slice(1150, 1200).map((r) => r.nome),
+   (await getServidores(ID, { page: 24 })).rows.map((r) => r.nome));
+const es = await rest(`escolas?select=nome&id_municipio=eq.${ID}&order=nome.asc`);
+eq(`escolas em ordem pt-BR (${es.length})`,
+   es.map((r) => r.nome), (await getEducacaoData(ID)).escolas?.map((e) => e.nome) ?? es.map((r) => r.nome));
+const pa = await rest(`postos_anp?select=razao_social&id_municipio=eq.${ID}&order=razao_social.asc`);
+eq(`postos em ordem pt-BR (${pa.length})`,
+   pa.map((r) => r.razao_social), (await fetchPostosAnp(ID)).rows.map((r) => r.razao_social));
 
 // nota de transparencia
 const nt = await rest(`nota_transparencia?select=poder,ano&id_municipio=eq.${ID}`);
@@ -256,7 +293,11 @@ const prop = await rest(`proposicoes?select=id,temas,situacao,ano,numero,vereado
 const tcN = await getTemasCamara(ID);
 eq(`temas camara (${contarS(prop).length} temas vs ${tcN.temas.length})`,
    contarS(prop), tcN.temas.map((t) => [t.tema, t.qtd]));
-const ctr = await rest(`contratos?select=id,temas,valor_global&id_municipio=eq.${ID}`);
+// `status` entra aqui porque o teste do chat, mais abaixo, conta os
+// contratos ativos a partir DESTE conjunto. Sem a coluna, `r.status` era
+// `undefined` e a contagem dava zero — o "DIFERE" era do teste, não do
+// codigo (a terceira vez que isso acontece nesta migracao).
+const ctr = await rest(`contratos?select=id,temas,valor_global,status&id_municipio=eq.${ID}`);
 const tpN = await getTemasPrefeitura(ID);
 eq(`temas prefeitura (${contarS(ctr).length} temas vs ${tpN.temas.length})`,
    contarS(ctr), tpN.temas.map((t) => [t.tema, t.qtd]));
@@ -336,6 +377,135 @@ eq(`grupos denominador = soma de ${ctr.length} contratos (${grN.valorTotalMunici
    Math.round(grN.valorTotalMunicipio * 100));
 eq(`grupos razao social veio de fornecedores`,
    true, grN.grupos.every((g) => g.empresas.every((e) => e.cnpj.length > 0)));
+
+// ---- bloco 4: comissoes, noticias, agro, paraopeba, chat ----
+
+// comissoes: o embed vereadores(...) do PostgREST virou inner join
+const cm = await rest(`comissoes?select=id,nome,especial&id_municipio=eq.${ID}&order=nome.asc`);
+const cmM = await rest(
+  `comissao_membros?select=comissao_id,papel,vereadores(slug,nome_urna)&id_municipio=eq.${ID}&ativo=eq.true&comissao_id=not.is.null`
+);
+const cmN = await getComissoesAtuais(ID);
+// Ordem, nao so conjunto: e aqui que a collation de byte punha "Ética" no
+// fim da lista, depois de "Transportes".
+eq(`comissoes em ordem pt-BR (${cm.length} vs ${cmN.rows.length})`,
+   cm.map((r) => r.nome), cmN.rows.map((r) => r.nome));
+const contarMembros = (c: any) =>
+  (c.presidente ? 1 : 0) + (c.relator ? 1 : 0) + c.membros.length;
+eq(`comissoes membros no total (${cmM.filter((m) => m.vereadores).length})`,
+   cmM.filter((m) => m.vereadores && cm.some((c) => c.id === m.comissao_id)).length,
+   cmN.rows.reduce((a, c) => a + contarMembros(c), 0));
+eq(`comissoes presidentes`,
+   cmM.filter((m) => m.papel === "Presidente" && m.vereadores && cm.some((c) => c.id === m.comissao_id)).length,
+   cmN.rows.filter((c) => c.presidente).length);
+
+const verComissao = cmM.find((m) => m.vereadores)?.comissao_id;
+const verIdComissao = (await rest(
+  `comissao_membros?select=vereador_id&id_municipio=eq.${ID}&vereador_id=not.is.null&limit=1`
+))[0]?.vereador_id;
+if (verIdComissao) {
+  const pc = await rest(
+    `comissao_membros?select=nome_comissao_bruto,ativo&id_municipio=eq.${ID}&vereador_id=eq.${verIdComissao}`
+  );
+  const pcN = await getParticipacoesByVereador(ID, verIdComissao);
+  eq(`participacoes de um vereador (${pc.length})`,
+     [pc.filter((r) => r.ativo).length, pc.filter((r) => !r.ativo).length],
+     [pcN.andamento.length, pcN.finalizadas.length]);
+}
+void verComissao;
+
+// noticias: fonte_externa_* EXISTEM (ao contrario de atos_oficiais.temas).
+// Comparado como CONJUNTO: 3 noticias compartilham o mesmo `publicado_em`
+// ao microssegundo e outras 4 tambem, entao a ordem entre elas era
+// INDEFINIDA no PostgREST (sem desempate). O Neon tem `asc(id)` e sai
+// sempre igual — a diferenca aqui e a armadilha 4 sendo corrigida, nao
+// divergencia de dado.
+const nc = await rest(`noticias?select=slug,titulo,fonte_externa_nome,publicado_em&id_municipio=eq.${ID}&order=publicado_em.desc`);
+const ncN = await getNoticias(ID);
+eq(`noticias (${nc.length} vs ${ncN.rows.length}; ${new Set(nc.map((r) => r.publicado_em)).size} timestamps distintos)`,
+   nc.map((r) => r.slug).sort(), ncN.rows.map((r) => r.slug).sort());
+eq(`noticias em ordem decrescente de data`,
+   true, ncN.rows.every((r, i) => i === 0 || r.publicadoEm <= ncN.rows[i - 1].publicadoEm));
+eq(`noticias: mesma ordem em duas leituras (empate deterministico)`,
+   ncN.rows.map((r) => r.slug), (await getNoticias(ID)).rows.map((r) => r.slug));
+eq(`noticias fonte_externa_nome preenchida em ${nc.filter((r) => r.fonte_externa_nome).length}`,
+   nc.map((r) => r.fonte_externa_nome ?? null).sort(),
+   ncN.rows.map((r) => r.fonteExternaNome).sort());
+if (nc[0]) {
+  const um = await getNoticiaBySlug(ID, nc[0].slug);
+  eq(`noticia por slug (${nc[0].slug})`, nc[0].titulo, um?.titulo);
+  eq(`noticia por slug traz o conteudo`, true, (um?.conteudoHtml?.length ?? 0) > 0);
+  eq(`noticia por slug inexistente devolve null`, null, await getNoticiaBySlug(ID, "nao-existe-xyz"));
+}
+
+// agro: valor_producao_mil_reais x 1000, e o corte pelo ano mais recente
+const ag = await rest(
+  `producao_agropecuaria?select=categoria,produto,ano,quantidade,valor_producao_mil_reais&id_municipio=eq.${ID}`
+);
+const agN = await getAgroData(ID);
+const lavourasS = ag.filter((r) => r.categoria.startsWith("lavoura_"));
+const anoLavS = lavourasS.length ? Math.max(...lavourasS.map((r) => r.ano)) : null;
+eq(`agro ano das lavouras (${anoLavS})`, anoLavS, agN.anoLavouras);
+eq(`agro valor total das lavouras (mil reais x 1000)`,
+   Math.round(
+     lavourasS.filter((r) => r.ano === anoLavS)
+       .reduce((a, r) => a + (Number(r.valor_producao_mil_reais ?? 0) * 1000), 0) * 100
+   ),
+   Math.round(agN.valorTotalLavouras * 100));
+eq(`agro top lavouras e no maximo 8, maior valor primeiro`,
+   true,
+   agN.topLavouras.length <= 8 &&
+     agN.topLavouras.every((r, i) => i === 0 || (r.valorProducaoReais ?? 0) <= (agN.topLavouras[i - 1].valorProducaoReais ?? 0)));
+eq(`agro rebanhos (${ag.filter((r) => r.categoria === "rebanho" && r.ano === agN.anoRebanho && Number(r.quantidade)).length})`,
+   ag.filter((r) => r.categoria === "rebanho" && r.ano === agN.anoRebanho && Number(r.quantidade)).length,
+   agN.rebanhos.length);
+
+// paraopeba
+const pb = await rest(
+  `paraopeba_iniciativas?select=id_fdi,titulo,valor_total,status,percentual_realizado&id_municipio=eq.${ID}&order=valor_total.desc`
+);
+const pbN = await getParaopebaData(ID);
+eq(`paraopeba iniciativas (${pb.length} vs ${pbN.iniciativas.length})`, pb.length, pbN.iniciativas.length);
+eq(`paraopeba maior valor primeiro`,
+   true,
+   pbN.iniciativas.every((r, i) => i === 0 || (r.valorTotal ?? 0) <= (pbN.iniciativas[i - 1].valorTotal ?? 0)));
+const sl = await rest(`paraopeba_saldo_municipio?select=referencia,saldo_teto&id_municipio=eq.${ID}`);
+eq(`paraopeba saldo (${sl[0]?.referencia})`,
+   [sl[0]?.referencia ?? null, sl[0]?.saldo_teto == null ? null : Math.round(Number(sl[0].saldo_teto) * 100)],
+   [pbN.saldo?.referencia ?? null, pbN.saldo?.saldoTeto == null ? null : Math.round(pbN.saldo.saldoTeto * 100)]);
+const menos = await getObrasParaopebaMenosConcluidas(ID, 5);
+const menosS = pb
+  .filter((r) => r.status === "Em execução" && r.percentual_realizado != null)
+  .sort((a, b) => Number(a.percentual_realizado) - Number(b.percentual_realizado))
+  .slice(0, 5);
+eq(`paraopeba 5 mais longe de concluir`, menosS.map((r) => r.id_fdi), menos.map((r) => r.idFdi));
+// `percentual_planejado` (migration 0026) NAO EXISTE — mesmo caso do
+// atos_oficiais.temas. Confirmado nos dois lados.
+const planResp = await fetch(
+  `${env("NEXT_PUBLIC_SUPABASE_URL")}/rest/v1/paraopeba_iniciativas?select=percentual_planejado&limit=1`,
+  { headers: { apikey: env("SUPABASE_SERVICE_ROLE_KEY"), Authorization: `Bearer ${env("SUPABASE_SERVICE_ROLE_KEY")}` } }
+);
+eq(`paraopeba percentual_planejado ausente nos dois lados (HTTP ${planResp.status})`,
+   [true, true],
+   [planResp.status === 400, pbN.iniciativas.every((r) => r.percentualPlanejado === null)]);
+
+// chat: os numeros-ancora do contexto tem de bater com o banco
+const ctxt = await montarContexto(ID, "contrato de merenda escolar");
+const ativos = ctr.filter((r) => r.status === "ativo");
+const somaAtivos = ativos.reduce((a, r) => a + Number(r.valor_global ?? 0), 0);
+const vers = await rest(`vereadores?select=id&id_municipio=eq.${ID}&ativo=eq.true`);
+// Comparado com os MESMOS formatadores do app, e nao com um Intl montado
+// aqui: reproduzir a formatacao no teste so testa o teste — foi assim que
+// esta linha "DIFERE" da primeira vez, por causa do espaco nao-separavel
+// que o `style: "currency"` insere depois do "R$".
+eq(`chat: contratos ativos no contexto (${ativos.length}, ${somaAtivos.toFixed(2)})`,
+   true,
+   ctxt.includes(
+     `Contratos ativos da Prefeitura: ${formatNumberBR(ativos.length)}, somando ${formatCurrencyBRL(somaAtivos)}.`
+   ));
+eq(`chat: ${vers.length} vereadores no contexto`, true, ctxt.includes(`${vers.length} vereadores`));
+eq(`chat: mesma pergunta da o mesmo contexto (ordem deterministica)`,
+   ctxt, await montarContexto(ID, "contrato de merenda escolar"));
 
 // REGRESSAO: a pagina do vereador chamava getVerbasAnalytics(row.id) com a
 // assinatura nova, passando o uuid do vereador como idMunicipio. Compilava,

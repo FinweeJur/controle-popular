@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { montarContexto } from "@/lib/betim/chat";
+import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 
 /**
  * "Pergunte ao portal" (F8). RAG simples: recupera contexto do dado real
@@ -40,7 +41,16 @@ function permitido(ip: string): boolean {
   return true;
 }
 
-export async function POST(req: Request) {
+export async function POST(
+  req: Request,
+  { params }: { params: Promise<{ municipio: string }> }
+) {
+  const { municipio } = await params;
+  const cidade = await obterCidadePorSlug(municipio);
+  if (!cidade) {
+    return NextResponse.json({ erro: "Cidade não encontrada." }, { status: 404 });
+  }
+
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "anon";
   if (!permitido(ip)) {
     return NextResponse.json(
@@ -61,7 +71,7 @@ export async function POST(req: Request) {
   }
   if (pergunta.length > 500) pergunta = pergunta.slice(0, 500);
 
-  const contexto = await montarContexto(pergunta);
+  const contexto = await montarContexto(cidade.id_municipio, pergunta);
 
   if (!AI_API_KEY) {
     // Sem chave de LLM: não inventa resposta. Mostra o contexto encontrado

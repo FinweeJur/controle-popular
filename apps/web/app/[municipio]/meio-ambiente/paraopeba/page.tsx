@@ -3,6 +3,7 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getParaopebaData } from "@/lib/betim/paraopeba";
 import { formatCurrencyBRL, formatDateBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Reparação do Rio Paraopeba — Betim | Controle Popular Betim",
@@ -16,12 +17,14 @@ function referenciaLabel(referencia: string): string {
 }
 
 interface ParaopebaPageProps {
+  params: Promise<{ municipio: string }>;
   searchParams: Promise<{ status?: string; ordem?: string }>;
 }
 
-export default async function ParaopebaPage({ searchParams }: ParaopebaPageProps) {
+export default async function ParaopebaPage({ params, searchParams }: ParaopebaPageProps) {
+  const cidade = await cidadeDaRota(params);
   const { status: statusFiltro, ordem } = await searchParams;
-  const { configured, ok, saldo, iniciativas } = await getParaopebaData();
+  const { configured, ok, saldo, iniciativas } = await getParaopebaData(cidade.id_municipio);
   const temDados = configured && ok && iniciativas.length > 0;
 
   if (!temDados) {

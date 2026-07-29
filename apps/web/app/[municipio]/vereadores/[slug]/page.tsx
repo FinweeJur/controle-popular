@@ -62,7 +62,7 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
         // pra desenhar uma escala comparável nem dizer a posição.
         getRankingVereadores(),
         getTemasVereador(cidade.id_municipio, row.id),
-        getParticipacoesByVereador(row.id),
+        getParticipacoesByVereador(cidade.id_municipio, row.id),
       ])
     : [
         { rows: [], total: 0, ok: false },

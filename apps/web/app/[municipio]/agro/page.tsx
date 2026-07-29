@@ -3,14 +3,20 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getAgroData } from "@/lib/betim/agro";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import { cidadeDaRota } from "@/lib/betim/cidade";
 
 export const metadata = {
   title: "Agro — Betim em Dados | Controle Popular Betim",
   description: "Produção agropecuária de Betim-MG.",
 };
 
-export default async function AgroPage() {
-  const data = await getAgroData();
+export default async function AgroPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
+  const data = await getAgroData(cidade.id_municipio);
   const temDados =
     data.configured && data.ok && (data.topLavouras.length > 0 || data.rebanhos.length > 0);
 

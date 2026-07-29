@@ -1,4 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface ProdutoAgro {
   categoria: string;
@@ -60,16 +61,10 @@ interface Row {
  * reais cheios aqui (× 1000), uma vez só, pra `formatCurrencyBRL` não
  * precisar saber dessa particularidade.
  */
-export async function getAgroData(): Promise<AgroData> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return VAZIO;
-
+export async function getAgroData(idMunicipio: IdMunicipio): Promise<AgroData> {
   try {
-    const { data, error } = await supabase
-      .from("producao_agropecuaria")
-      .select("categoria, produto, ano, quantidade, unidade, area_colhida, valor_producao_mil_reais")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT);
-    if (error || !data) return { ...VAZIO, configured: true };
+    const data = await q.producaoAgropecuaria(idMunicipio);
+    if (!data) return VAZIO;
 
     const rows = (data as Row[]).map((r) => ({
       categoria: r.categoria,

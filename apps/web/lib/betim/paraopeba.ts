@@ -1,4 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT, comColunaOpcional } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface SaldoMunicipio {
   referencia: string;
@@ -21,8 +22,16 @@ export interface IniciativaParaopeba {
   valorTotal: number | null;
   /** Avanço físico EXECUTADO (%) — o número que a FGV mostra. */
   percentualRealizado: number | null;
-  /** Avanço físico PLANEJADO (%) — quanto deveria estar pronto (migration
-   *  0026; `null` até rodar). Executado < Planejado ⇒ atrasado. */
+  /**
+   * Avanço físico PLANEJADO (%) — quanto deveria estar pronto.
+   *
+   * SEMPRE `null` hoje, e isso não é regressão da migração: a coluna
+   * `paraopeba_iniciativas.percentual_planejado` (migration 0026) NÃO
+   * EXISTE no banco. O `comColunaOpcional()` que a protegia caía sempre no
+   * ramo sem ela, então a leitura "executado < planejado ⇒ atrasado" nunca
+   * chegou a funcionar em produção. Mesmo caso de `atos_oficiais.temas`;
+   * ligar é rodar a migration + o ETL.
+   */
   percentualPlanejado: number | null;
   produtosPrevistos: number | null;
   produtosEntregues: number | null;
@@ -60,16 +69,12 @@ interface RowIniciativa {
   investimento: number | string | null;
   valor_total: number | string | null;
   percentual_realizado: number | string | null;
-  percentual_planejado?: number | string | null;
   produtos_previstos: number | null;
   produtos_entregues: number | null;
   produtos_em_atraso: number | null;
   link_publico: string | null;
   link_termo_compromisso: string | null;
 }
-
-const COLS_INICIATIVA_BASE =
-  "id_fdi, titulo, municipios_envolvidos, grupo_iniciativas, tipo_obrigacao, area_tematica, sub_area_tematica, status, investimento, valor_total, percentual_realizado, produtos_previstos, produtos_entregues, produtos_em_atraso, link_publico, link_termo_compromisso";
 
 function mapIniciativa(r: RowIniciativa): IniciativaParaopeba {
   return {
@@ -84,7 +89,8 @@ function mapIniciativa(r: RowIniciativa): IniciativaParaopeba {
     investimento: r.investimento != null ? Number(r.investimento) : null,
     valorTotal: r.valor_total != null ? Number(r.valor_total) : null,
     percentualRealizado: r.percentual_realizado != null ? Number(r.percentual_realizado) : null,
-    percentualPlanejado: r.percentual_planejado != null ? Number(r.percentual_planejado) : null,
+    // Coluna inexistente no banco — ver o comentário do campo na interface.
+    percentualPlanejado: null,
     produtosPrevistos: r.produtos_previstos,
     produtosEntregues: r.produtos_entregues,
     produtosEmAtraso: r.produtos_em_atraso,
@@ -99,36 +105,18 @@ function mapIniciativa(r: RowIniciativa): IniciativaParaopeba {
  * Reparação pelo rompimento da barragem da Vale em Brumadinho (2019).
  * `etl/apis/fgv_paraopeba.py`, migration 0022.
  */
-export async function getParaopebaData(): Promise<ParaopebaData> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return VAZIO;
-
+export async function getParaopebaData(
+  idMunicipio: IdMunicipio
+): Promise<ParaopebaData> {
   try {
     const [saldoRes, iniciativasRes] = await Promise.all([
-      supabase
-        .from("paraopeba_saldo_municipio")
-        .select("referencia, valor_acordo_inicial, valor_acordo_atual, empenhos_autorizados, saldo_teto")
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .maybeSingle(),
-      comColunaOpcional(
-        () =>
-          supabase
-            .from("paraopeba_iniciativas")
-            .select(`${COLS_INICIATIVA_BASE}, percentual_planejado`)
-            .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-            .order("valor_total", { ascending: false }),
-        () =>
-          supabase
-            .from("paraopeba_iniciativas")
-            .select(COLS_INICIATIVA_BASE)
-            .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-            .order("valor_total", { ascending: false })
-      ),
+      q.saldoParaopeba(idMunicipio),
+      q.iniciativasParaopeba(idMunicipio),
     ]);
 
-    if (iniciativasRes.error) return { ...VAZIO, configured: true };
+    if (!iniciativasRes) return VAZIO;
 
-    const saldoRow = saldoRes.data as RowSaldo | null;
+    const saldoRow = saldoRes as RowSaldo | null;
     const saldo: SaldoMunicipio | null = saldoRow
       ? {
           referencia: saldoRow.referencia,
@@ -140,7 +128,7 @@ export async function getParaopebaData(): Promise<ParaopebaData> {
         }
       : null;
 
-    const iniciativas = ((iniciativasRes.data ?? []) as RowIniciativa[]).map(mapIniciativa);
+    const iniciativas = (iniciativasRes as RowIniciativa[]).map(mapIniciativa);
 
     return { configured: true, ok: true, saldo, iniciativas };
   } catch {
@@ -156,32 +144,12 @@ export async function getParaopebaData(): Promise<ParaopebaData> {
  * cancelado ou já entregue). Ignora quem não tem % de avanço físico.
  */
 export async function getObrasParaopebaMenosConcluidas(
+  idMunicipio: IdMunicipio,
   limite = 5
 ): Promise<IniciativaParaopeba[]> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return [];
   try {
-    const { data, error } = await comColunaOpcional(
-      () =>
-        supabase
-          .from("paraopeba_iniciativas")
-          .select(`${COLS_INICIATIVA_BASE}, percentual_planejado`)
-          .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-          .eq("status", "Em execução")
-          .not("percentual_realizado", "is", null)
-          .order("percentual_realizado", { ascending: true })
-          .limit(limite),
-      () =>
-        supabase
-          .from("paraopeba_iniciativas")
-          .select(COLS_INICIATIVA_BASE)
-          .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-          .eq("status", "Em execução")
-          .not("percentual_realizado", "is", null)
-          .order("percentual_realizado", { ascending: true })
-          .limit(limite)
-    );
-    if (error || !data) return [];
+    const data = await q.iniciativasParaopebaMenosConcluidas(idMunicipio, limite);
+    if (!data) return [];
     return (data as RowIniciativa[]).map(mapIniciativa);
   } catch {
     return [];
