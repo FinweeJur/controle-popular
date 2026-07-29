@@ -23,7 +23,7 @@ export default async function AgroPage({
   if (!temDados) {
     return (
       <PaginaEmBreve
-        titulo="Agro em Betim"
+        titulo={`Agro em ${cidade.nome}`}
         descricao="Produção agropecuária do município."
         motivo={
           data.configured
@@ -42,16 +42,16 @@ export default async function AgroPage({
         </Link>{" "}
         ·{" "}
         <Link href="/dados" className="hover:text-primary">
-          Betim em Dados
+          {cidade.nome} em Dados
         </Link>{" "}
         · <span className="text-text">Agro</span>
       </nav>
 
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
-        Produção agropecuária em Betim
+        Produção agropecuária em {cidade.nome}
       </h1>
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
-        Betim é majoritariamente urbana e industrial, mas mantém produção
+        {cidade.nome} é majoritariamente urbana e industrial, mas mantém produção
         agrícola e pecuária real — pequena em volume nacional, mas parte da
         economia local.
       </p>

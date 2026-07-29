@@ -26,7 +26,7 @@ export default async function EducacaoPage({
   return (
     <main className="mx-auto max-w-5xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">
-        Educação em Betim
+        Educação em {cidade.nome}
       </h1>
       <p className="mt-2 max-w-[65ch] text-text-soft">
         Escolas, matrículas e nota do IDEB, direto do Censo Escolar do

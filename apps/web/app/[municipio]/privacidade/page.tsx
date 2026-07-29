@@ -1,11 +1,16 @@
-import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Política de Privacidade — ${nomePortal(c)}`,
   (c) => `Como o ${nomePortal(c)} trata dados pessoais, em conformidade com a LGPD (Lei 13.709/2018).`
 );
 
-export default function PrivacidadePage() {
+export default async function PrivacidadePage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-8">
       <h1 className="mb-2 text-2xl font-display font-bold text-text">
@@ -21,7 +26,7 @@ export default function PrivacidadePage() {
           1. Dados públicos governamentais
         </h2>
         <p className="text-sm leading-relaxed text-text-soft">
-          A maior parte do conteúdo do Controle Popular Betim é composta por dados públicos
+          A maior parte do conteúdo do {nomePortal(cidade)} é composta por dados públicos
           já divulgados por órgãos oficiais (contratos, licitações, despesas,
           atividade legislativa, indicadores). Quando esses dados
           mencionam pessoas físicas em função pública (por exemplo,
@@ -50,7 +55,7 @@ export default function PrivacidadePage() {
             mensagem enviada.
           </li>
           <li>
-            <strong>Cadastro de estabelecimentos (Zap Betim) e anúncios
+            <strong>Cadastro de estabelecimentos (Zap {cidade.nome}) e anúncios
             classificados:</strong> nome do negócio, número de WhatsApp e
             descrição — informações que o próprio usuário opta por publicar
             publicamente no diretório.
@@ -81,7 +86,7 @@ export default function PrivacidadePage() {
         <p className="text-sm leading-relaxed text-text-soft">
           Não vendemos nem compartilhamos dados pessoais com terceiros para
           fins de marketing. Dados de contato voluntariamente publicados em
-          diretórios (como o Zap Betim) são exibidos publicamente por opção
+          diretórios (como o Zap {cidade.nome}) são exibidos publicamente por opção
           do próprio usuário no momento do cadastro.
         </p>
       </section>
@@ -92,7 +97,7 @@ export default function PrivacidadePage() {
         </h2>
         <p className="text-sm leading-relaxed text-text-soft">
           Você pode solicitar a qualquer momento a confirmação, correção,
-          anonimização ou exclusão de dados pessoais tratados pelo Controle Popular Betim,
+          anonimização ou exclusão de dados pessoais tratados pelo {nomePortal(cidade)},
           nos termos do art. 18 da LGPD. Para exercer esses direitos ou
           tirar dúvidas sobre esta política, utilize o canal de contato
           divulgado no rodapé do site.

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Header from "@/app/[municipio]/components/Header";
 import Footer from "@/app/[municipio]/components/Footer";
 import { obterCidadePorSlug, slugsDasCidades } from "@/lib/db/queries/municipios";
+import { CidadeProvider } from "@/lib/betim/cidade-cliente";
 
 /**
  * Zona do eixo Cidades, uma cidade por slug: `/betim`, `/bh`, `/sp`.
@@ -51,13 +52,18 @@ export default async function CidadeLayout({
   // Cinto e suspensório junto com `dynamicParams = false`: se a cidade for
   // desativada em `municipios` sem um rebuild, isto degrada para 404 em vez
   // de renderizar uma página sem dado.
-  if (!(await obterCidadePorSlug(municipio))) notFound();
+  const cidade = await obterCidadePorSlug(municipio);
+  if (!cidade) notFound();
 
   return (
-    <>
-      <Header />
+    // O provider existe para os componentes CLIENT (DataCard, PedidoLAI,
+    // AssistenteChat, ZapCard), que não podem consultar o banco nem
+    // receber `params`. Header e Footer são de servidor e recebem a cidade
+    // direto por prop.
+    <CidadeProvider cidade={cidade}>
+      <Header cidade={cidade} />
       <main className="flex-1">{children}</main>
-      <Footer />
-    </>
+      <Footer cidade={cidade} />
+    </CidadeProvider>
   );
 }

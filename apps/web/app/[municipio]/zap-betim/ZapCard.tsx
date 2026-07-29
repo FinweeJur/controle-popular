@@ -2,15 +2,17 @@
 
 import type { ZapEstabelecimento } from "@/lib/betim/zap";
 import { useCaminhoDaCidade } from "@/lib/betim/basePath";
+import { useCidade } from "@/lib/betim/cidade-cliente";
 
 export default function ZapCard({ item }: { item: ZapEstabelecimento }) {
+  const cidade = useCidade();
   const caminho = useCaminhoDaCidade();
   function handleClick() {
     fetch(caminho(`/api/zap/${item.id}/clique`), { method: "POST" }).catch(() => {});
   }
 
   const waUrl = `https://wa.me/${item.whatsapp}?text=${encodeURIComponent(
-    `Olá! Vi seu contato no Zap Betim (controlepopular.br/betim) e quero saber mais.`
+    `Olá! Vi seu contato no Zap ${cidade.nome} e quero saber mais.`
   )}`;
 
   return (

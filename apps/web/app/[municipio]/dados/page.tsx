@@ -1,18 +1,23 @@
 import Link from "@/lib/betim/link";
 import { MapPin } from "lucide-react";
-import { PAGINAS_DADOS } from "@/lib/betim/dadosNav";
-import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { paginasDados } from "@/lib/betim/dadosNav";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `${c.nome} em Dados — ${nomePortal(c)}`,
   (c) => `Saúde, educação, economia, segurança e mais — ${c.nome}-${c.uf} em números, com fonte oficial em cada dado.`
 );
 
-export default function DadosPage() {
+export default async function DadosPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   return (
     <main className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">
-        Betim em Dados
+        {cidade.nome} em Dados
       </h1>
       <p className="mt-2 max-w-[60ch] text-text-soft">
         A cidade por tema — cada página traz o dado real, a fonte oficial e
@@ -20,7 +25,7 @@ export default function DadosPage() {
       </p>
 
       <section className="mt-8 grid gap-4 sm:grid-cols-2">
-        {PAGINAS_DADOS.map((p) => (
+        {paginasDados(cidade).map((p) => (
           <Link
             key={p.href}
             href={p.href}

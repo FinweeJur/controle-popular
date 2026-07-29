@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { montarContexto } from "@/lib/betim/chat";
-import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
+import { obterCidadePorSlug, nomePortal } from "@/lib/db/queries/municipios";
 
 /**
  * "Pergunte ao portal" (F8). RAG simples: recupera contexto do dado real
@@ -17,7 +17,8 @@ const AI_BASE_URL = process.env.AI_BASE_URL || "https://api.deepseek.com";
 const AI_MODEL = process.env.AI_MODEL || "deepseek-chat";
 const AI_API_KEY = process.env.AI_API_KEY || "";
 
-const SYSTEM_PROMPT = `Você é o assistente do Controle Popular Betim, um portal independente de transparência sobre a cidade de Betim-MG.
+const systemPrompt = (cidade: { nome: string; uf: string; branding: unknown }) =>
+  `Você é o assistente do ${nomePortal(cidade as never)}, um portal independente de transparência sobre a cidade de ${cidade.nome}-${cidade.uf}.
 
 Regras:
 - Responda em português do Brasil, claro e curto. Frases diretas.
@@ -97,7 +98,7 @@ export async function POST(
         model: AI_MODEL,
         temperature: 0.2,
         messages: [
-          { role: "system", content: SYSTEM_PROMPT },
+          { role: "system", content: systemPrompt(cidade) },
           {
             role: "user",
             content: `CONTEXTO (dados do portal):\n${contexto || "(nenhum dado específico encontrado)"}\n\nPERGUNTA: ${pergunta}`,

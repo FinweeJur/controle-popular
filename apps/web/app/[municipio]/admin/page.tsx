@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { ANUNCIO_PLANOS, ANUNCIO_PRECOS } from "@/lib/betim/anuncios";
 import { useCaminhoDaCidade } from "@/lib/betim/basePath";
+import { useCidade } from "@/lib/betim/cidade-cliente";
 
 interface PendingZap {
   id: string;
@@ -34,6 +35,7 @@ interface AnuncioRow {
 }
 
 export default function AdminPage() {
+  const cidade = useCidade();
   const caminho = useCaminhoDaCidade();
   const [token, setToken] = useState("");
   const [tokenInput, setTokenInput] = useState("");
@@ -173,7 +175,7 @@ export default function AdminPage() {
 
       <section className="mt-8">
         <h2 className="mb-3 font-display text-lg font-semibold">
-          Moderação — Zap Betim ({zap.length})
+          Moderação — Zap {cidade.nome} ({zap.length})
         </h2>
         <div className="flex flex-col gap-2">
           {zap.map((item) => (

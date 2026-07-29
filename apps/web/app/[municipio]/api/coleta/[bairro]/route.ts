@@ -1,5 +1,5 @@
 import { fetchColetaLixo, diaSemanaParaIcs } from "@/lib/betim/servicos";
-import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
+import { obterCidadePorSlug, nomePortal } from "@/lib/db/queries/municipios";
 
 function icsEscape(text: string): string {
   return text.replace(/[\\,;]/g, (m) => `\\${m}`).replace(/\n/g, "\\n");
@@ -82,7 +82,7 @@ export async function GET(
   const ics = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Controle Popular Betim//Coleta de Lixo//PT-BR",
+    `PRODID:-//${nomePortal(cidade)}//Coleta de Lixo//PT-BR`,
     "CALSCALE:GREGORIAN",
     ...events,
     "END:VCALENDAR",

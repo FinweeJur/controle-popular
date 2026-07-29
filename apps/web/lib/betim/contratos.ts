@@ -82,7 +82,7 @@ export const MOTIVO_ALERTA_INFO: Record<string, MotivoAlertaInfo> = {
     label: "Valor muito acima do usual para contratos parecidos",
     categoria: "heuristica",
     fundamentacao:
-      "O valor está bem acima do que Betim costuma pagar em contratos parecidos. Isso não prova que o preço foi alto — é só um sinal pra conferir. É uma comparação estatística, não uma pesquisa de mercado oficial.",
+      "O valor está bem acima do que o município costuma pagar em contratos parecidos. Isso não prova que o preço foi alto — é só um sinal pra conferir. É uma comparação estatística, não uma pesquisa de mercado oficial.",
   },
   regra_2_dispensa_proxima_limite: {
     label: "Dispensa de licitação próxima do limite legal",

@@ -29,8 +29,8 @@ export default async function ParaopebaPage({ params, searchParams }: ParaopebaP
   if (!temDados) {
     return (
       <PaginaEmBreve
-        titulo="Reparação do Rio Paraopeba em Betim"
-        descricao="Projetos de reparação socioeconômica em Betim, ligados ao Acordo Geral pelo rompimento da barragem da Vale em Brumadinho (2019), auditados pela FGV."
+        titulo={`Reparação do Rio Paraopeba em ${cidade.nome}`}
+        descricao={`Projetos de reparação socioeconômica em ${cidade.nome}, ligados ao Acordo Geral pelo rompimento da barragem da Vale em Brumadinho (2019), auditados pela FGV.`}
         motivo="Fonte confirmada 2026-07-24 (www18.fgv.br/projetorioparaopeba disponibiliza planilhas mensais em Dados Abertos) — migration 0022_paraopeba.sql ainda não rodada neste ambiente."
       />
     );
@@ -50,10 +50,10 @@ export default async function ParaopebaPage({ params, searchParams }: ParaopebaP
       </nav>
 
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
-        Reparação do Rio Paraopeba em Betim
+        Reparação do Rio Paraopeba em {cidade.nome}
       </h1>
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
-        Betim é um dos 26 municípios da Bacia do Paraopeba que assinaram o
+        {cidade.nome} é um dos 26 municípios da Bacia do Paraopeba que assinaram o
         Acordo Geral de Reparação pelo rompimento da barragem da Vale em
         Brumadinho (2019). A execução dos projetos é auditada de forma
         independente pela FGV (Fundação Getulio Vargas) —{" "}
@@ -85,7 +85,7 @@ export default async function ParaopebaPage({ params, searchParams }: ParaopebaP
             </p>
             <p className="text-xs text-text-soft">já reservados 25% de contingência</p>
           </DataCard>
-          <DataCard title="Projetos ligados a Betim">
+          <DataCard title={`Projetos ligados a ${cidade.nome}`}>
             <p className="font-tabular text-xl font-bold text-text">{iniciativas.length}</p>
           </DataCard>
         </div>

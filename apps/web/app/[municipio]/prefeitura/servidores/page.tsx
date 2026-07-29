@@ -56,8 +56,12 @@ export default async function ServidoresPage({
         Servidores da Prefeitura
       </h1>
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
-        Nome, cargo, lotação e tipo de vínculo dos servidores da Prefeitura de
-        Betim. Informação pública — a remuneração individual não é exibida.
+        {/* `{" "}` no fim da linha: o JSX descarta a quebra de linha quando
+            a linha seguinte começa com uma expressão, e "de" colaria em
+            "Betim". Foi o único caso, e quem apontou foi o diff do texto
+            renderizado — a leitura do código não pega. */}
+        Nome, cargo, lotação e tipo de vínculo dos servidores da Prefeitura de{" "}
+        {cidade.nome}. Informação pública — a remuneração individual não é exibida.
       </p>
 
       <form method="GET" className="mt-6 mb-6 flex flex-wrap items-end gap-3">
@@ -89,7 +93,7 @@ export default async function ServidoresPage({
       <div className="mb-6 max-w-xs">
         <DataCard
           title="Servidores encontrados"
-          source={{ label: "Prefeitura de Betim", url: "https://www.betim.mg.gov.br" }}
+          source={{ label: `Prefeitura de ${cidade.nome}`, url: "https://www.betim.mg.gov.br" }}
         >
           <p className="font-tabular text-2xl font-bold text-text">{formatNumberBR(total)}</p>
         </DataCard>

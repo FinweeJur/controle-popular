@@ -20,7 +20,7 @@ export default async function InfraestruturaPage({
   return (
     <main className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">
-        Infraestrutura de Betim
+        Infraestrutura de {cidade.nome}
       </h1>
       <p className="mt-2 max-w-[65ch] text-text-soft">
         Saneamento básico — cobertura de água e coleta de esgoto, dados do

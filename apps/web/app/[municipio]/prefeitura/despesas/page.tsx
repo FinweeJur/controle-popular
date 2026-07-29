@@ -49,7 +49,7 @@ export default async function DespesasPage({
         Despesas por função
       </h1>
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
-        Quanto a Prefeitura de Betim gastou em cada área — saúde, educação,
+        Quanto a Prefeitura de {cidade.nome} gastou em cada área — saúde, educação,
         urbanismo e assim por diante. Mostra pra onde o dinheiro foi.
       </p>
 

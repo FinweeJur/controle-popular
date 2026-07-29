@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useNomePortal } from "@/lib/betim/cidade-cliente";
 
 export interface DataCardSource {
   label: string;
@@ -28,6 +29,7 @@ export default function DataCard({
   children,
   className,
 }: DataCardProps) {
+  const nomePortal = useNomePortal();
   const [copied, setCopied] = useState(false);
 
   function getShareUrl() {
@@ -37,7 +39,7 @@ export default function DataCard({
   async function handleShare() {
     const shareUrl = getShareUrl();
     const shareData = {
-      title: `Controle Popular Betim — ${title}`,
+      title: `${nomePortal} — ${title}`,
       text: title,
       url: shareUrl,
     };

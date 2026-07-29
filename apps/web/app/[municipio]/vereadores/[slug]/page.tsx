@@ -17,7 +17,7 @@ import { getTemasVereador, TEMA_LABELS } from "@/lib/betim/temas";
 import { getVerbasAnalytics } from "@/lib/betim/verbas";
 import { getParticipacoesByVereador } from "@/lib/betim/comissoes";
 import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, nomePortal } from "@/lib/betim/cidade";
 
 interface VereadorPageProps {
   /** A rota é `/[municipio]/vereadores/[slug]` — os dois segmentos chegam
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: VereadorPageProps) {
   const { slug } = await params;
   const { row } = await getVereadorBySlug(cidade.id_municipio, slug);
   return {
-    title: row ? `${row.nome_urna ?? row.nome} — Controle Popular Betim` : "Vereador não encontrado",
+    title: row ? `${row.nome_urna ?? row.nome} — ${nomePortal(cidade)}` : "Vereador não encontrado",
   };
 }
 
@@ -90,10 +90,10 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
       : `${topTemasCobrar.slice(0, -1).join(", ")} e ${topTemasCobrar.at(-1)}`;
   const mailtoCobrar = row?.email
     ? `mailto:${row.email}?subject=${encodeURIComponent(
-        "Sobre sua atuação como vereador(a) de Betim"
+        `Sobre sua atuação como vereador(a) de ${cidade.nome}`
       )}&body=${encodeURIComponent(
         `Olá, ${row.nome_urna ?? row.nome},\n\n` +
-          "Sou morador(a) de Betim e acompanho a atuação da Câmara pelo portal Controle Popular.\n\n" +
+          `Sou morador(a) de ${cidade.nome} e acompanho a atuação da Câmara pelo portal Controle Popular.\n\n` +
           (listaTemasCobrar
             ? `Vi que boa parte das suas proposições trata de ${listaTemasCobrar}. `
             : "") +
@@ -490,7 +490,7 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
                   rel="noopener noreferrer"
                   className="text-accent hover:underline"
                 >
-                  Câmara de Betim ↗
+                  Câmara de {cidade.nome} ↗
                 </a>
                 . Nomes de comissão são exatamente os registrados pela Câmara em
                 cada período — algumas foram renomeadas ao longo das

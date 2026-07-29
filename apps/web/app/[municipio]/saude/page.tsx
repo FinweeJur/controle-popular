@@ -38,11 +38,11 @@ export default async function SaudePage({
   return (
     <main className="mx-auto max-w-5xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">
-        Saúde em Betim
+        Saúde em {cidade.nome}
       </h1>
       <p className="mt-2 max-w-[65ch] text-text-soft">
         Internações hospitalares, arboviroses e principais causas de óbito
-        de moradores de Betim, direto de bases oficiais do SUS.
+        de moradores de {cidade.nome}, direto de bases oficiais do SUS.
       </p>
 
       {!data.configured ? (

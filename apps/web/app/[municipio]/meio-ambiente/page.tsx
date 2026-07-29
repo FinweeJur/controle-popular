@@ -1,5 +1,5 @@
 import Link from "@/lib/betim/link";
-import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Meio Ambiente — ${c.nome} em Dados | ${nomePortal(c)}`,
@@ -32,16 +32,21 @@ const FONTES = [
   },
 ];
 
-export default function MeioAmbientePage() {
+export default async function MeioAmbientePage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   return (
     <main className="mx-auto max-w-3xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">
         Meio Ambiente
       </h1>
       <p className="mt-2 max-w-[60ch] text-text-soft">
-        Betim não tem um indicador ambiental por município com fonte aberta
+        {cidade.nome} não tem um indicador ambiental por município com fonte aberta
         confirmada ainda — o que existe de real e verificável está
-        organizado abaixo, incluindo um risco regional que afeta Betim mesmo
+        organizado abaixo, incluindo um risco regional que afeta {cidade.nome} mesmo
         sem estar dentro do município.
       </p>
 
@@ -50,7 +55,7 @@ export default function MeioAmbientePage() {
         className="cp-card-hover mt-6 flex flex-col gap-2 rounded-2xl border border-primary bg-primary/5 p-5 shadow-sm hover:border-primary"
       >
         <p className="font-display font-semibold text-text">
-          Reparação do Rio Paraopeba em Betim
+          Reparação do Rio Paraopeba em {cidade.nome}
         </p>
         <p className="text-sm text-text-soft">
           Projetos ligados ao Acordo Geral pelo rompimento da barragem da

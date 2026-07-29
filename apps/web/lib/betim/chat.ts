@@ -1,5 +1,5 @@
 import * as q from "@/lib/db/queries/betim";
-import type { IdMunicipio } from "@/lib/db/queries/municipios";
+import { obterCidadePorId, type IdMunicipio } from "@/lib/db/queries/municipios";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 
 /**
@@ -40,7 +40,8 @@ function termosBusca(pergunta: string): string[] {
 async function fatosGerais(idMunicipio: IdMunicipio): Promise<string[]> {
   const linhas: string[] = [];
   try {
-    const [pop, contratos, qtdVereadores] = await Promise.all([
+    const [cidade, pop, contratos, qtdVereadores] = await Promise.all([
+      obterCidadePorId(idMunicipio),
       q.listarIndicadores(idMunicipio, ["populacao"]),
       // Era `select valor_global` de todos os contratos ativos só para
       // somar no JS; agora count e sum vêm do banco.
@@ -49,8 +50,10 @@ async function fatosGerais(idMunicipio: IdMunicipio): Promise<string[]> {
     ]);
     const popRow = pop?.[0];
     if (popRow?.valor_numerico) {
+      // O nome vai PARA O MODELO como fato. Com o literal, o assistente de
+      // outra cidade afirmaria a população dela sob o nome "Betim".
       linhas.push(
-        `População de Betim: ${formatNumberBR(Number(popRow.valor_numerico))} habitantes (${popRow.ano_referencia}).`
+        `População de ${cidade?.nome ?? "município"}: ${formatNumberBR(Number(popRow.valor_numerico))} habitantes (${popRow.ano_referencia}).`
       );
     }
     // ZERO NÃO ENTRA NO CONTEXTO. O `if` era `contratos.count != null` e

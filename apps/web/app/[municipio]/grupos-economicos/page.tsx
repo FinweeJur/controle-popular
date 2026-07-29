@@ -40,7 +40,7 @@ export default async function GruposEconomicosPage({
         </Link>{" "}
         ·{" "}
         <Link href="/dados" className="hover:text-primary">
-          Betim em Dados
+          {cidade.nome} em Dados
         </Link>{" "}
         · <span className="text-text">Grupos econômicos</span>
       </nav>
@@ -109,8 +109,8 @@ export default async function GruposEconomicosPage({
               Como isto é calculado — e o que NÃO significa
             </h2>
             <p className="mt-2">
-              Partimos só das empresas que efetivamente ganharam contrato em
-              Betim. Duas delas são ligadas quando aparece o{" "}
+              Partimos só das empresas que efetivamente ganharam contrato em{" "}
+              {cidade.nome}. Duas delas são ligadas quando aparece o{" "}
               <strong className="font-semibold text-text">mesmo nome de sócio</strong>{" "}
               no quadro societário das duas, segundo os dados públicos de CNPJ
               da Receita Federal. Empresas ligadas em cadeia formam um grupo.
@@ -196,9 +196,9 @@ export default async function GruposEconomicosPage({
                             <p className="font-tabular text-xs text-text-soft">
                               {formatCNPJ(e.cnpj)}
                               {e.sedeNoMunicipio === true
-                                ? " · sede em Betim"
+                                ? ` · sede em ${cidade.nome}`
                                 : e.sedeNoMunicipio === false
-                                  ? ` · sede fora de Betim${e.ufSede ? ` (${e.ufSede})` : ""}`
+                                  ? ` · sede fora de ${cidade.nome}${e.ufSede ? ` (${e.ufSede})` : ""}`
                                   : ""}
                             </p>
                             {e.cnaeDescricao && (

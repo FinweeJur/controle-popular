@@ -1,4 +1,4 @@
-import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Links Úteis do Estado — ${nomePortal(c)}`,
@@ -99,7 +99,12 @@ const TEMAS: Tema[] = [
   },
 ];
 
-export default function LinksUteisMGPage() {
+export default async function LinksUteisMGPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   return (
     <main className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">

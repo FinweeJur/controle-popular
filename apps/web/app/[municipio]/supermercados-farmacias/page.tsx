@@ -86,7 +86,7 @@ export default async function SupermercadosFarmaciasPage({
           <p className="mt-6 text-xs text-text-soft">
             {rows.length} estabelecimentos encontrados. Cobertura depende do
             que já foi mapeado no OpenStreetMap — pode não incluir todo
-            supermercado/farmácia real de Betim ainda.
+            supermercado/farmácia real de {cidade.nome} ainda.
           </p>
         </>
       )}

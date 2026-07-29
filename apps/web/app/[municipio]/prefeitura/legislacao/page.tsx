@@ -50,7 +50,7 @@ export default async function LegislacaoPage({
       </h1>
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
         Leis, decretos, resoluções e instruções normativas publicadas pela
-        Prefeitura de Betim — com a ementa de cada norma, filtro por categoria,
+        Prefeitura de {cidade.nome} — com a ementa de cada norma, filtro por categoria,
         ano e área.
       </p>
 
@@ -64,7 +64,7 @@ export default async function LegislacaoPage({
             <DataCard
               title="Normas publicadas"
               source={{
-                label: "Dados Abertos — Prefeitura de Betim",
+                label: `Dados Abertos — Prefeitura de ${cidade.nome}`,
                 url: "https://www.betim.mg.gov.br/portal/dados-abertos",
               }}
             >
@@ -77,7 +77,7 @@ export default async function LegislacaoPage({
               <DataCard
                 title="Áreas legisladas — sobre o que a Prefeitura normatiza"
                 source={{
-                  label: "Dados Abertos — Prefeitura de Betim",
+                  label: `Dados Abertos — Prefeitura de ${cidade.nome}`,
                   url: "https://www.betim.mg.gov.br/portal/dados-abertos",
                 }}
               >

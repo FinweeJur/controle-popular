@@ -22,8 +22,8 @@ export default async function SocialPage({
   if (!temDados) {
     return (
       <PaginaEmBreve
-        titulo="Assistência Social em Betim"
-        descricao="Bolsa Família, BPC e outros benefícios sociais pagos a moradores de Betim."
+        titulo={`Assistência Social em ${cidade.nome}`}
+        descricao={`Bolsa Família, BPC e outros benefícios sociais pagos a moradores de ${cidade.nome}.`}
         motivo={
           configured
             ? "Nenhum dado de benefício social encontrado no momento."
@@ -41,13 +41,13 @@ export default async function SocialPage({
         </Link>{" "}
         ·{" "}
         <Link href="/dados" className="hover:text-primary">
-          Betim em Dados
+          {cidade.nome} em Dados
         </Link>{" "}
         · <span className="text-text">Assistência Social</span>
       </nav>
 
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
-        Assistência Social em Betim
+        Assistência Social em {cidade.nome}
       </h1>
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
         Quantas famílias recebem os principais benefícios federais e quanto

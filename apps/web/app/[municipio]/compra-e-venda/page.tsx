@@ -33,7 +33,7 @@ export default async function CompraEVendaPage({
         Compra e Venda
       </h1>
       <p className="mt-2 max-w-[60ch] text-text-soft">
-        Classificados gratuitos entre moradores de Betim. Anúncios ficam no
+        Classificados gratuitos entre moradores de {cidade.nome}. Anúncios ficam no
         ar por 60 dias após aprovação da moderação.
       </p>
 

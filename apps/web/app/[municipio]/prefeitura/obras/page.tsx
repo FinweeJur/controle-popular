@@ -38,7 +38,7 @@ export default async function ObrasPage({ params, searchParams }: ObrasPageProps
         Obras públicas
       </h1>
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
-        Obras da Prefeitura de Betim — objeto, situação, valor e quanto já foi
+        Obras da Prefeitura de {cidade.nome} — objeto, situação, valor e quanto já foi
         executado.
       </p>
 
@@ -135,7 +135,7 @@ export default async function ObrasPage({ params, searchParams }: ObrasPageProps
           </ul>
 
           <p className="mt-6 text-xs text-text-soft">
-            Fonte: portal de transparência da Prefeitura de Betim. O valor é o
+            Fonte: portal de transparência da Prefeitura de {cidade.nome}. O valor é o
             valor total previsto da obra; &quot;% executado&quot; é o
             andamento informado pela própria Prefeitura.
           </p>

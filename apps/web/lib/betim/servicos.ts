@@ -98,10 +98,23 @@ export async function fetchFarmaciasPlantao(idMunicipio: IdMunicipio): Promise<{
   }
 }
 
-/** Waze deep link — falls back to a text-search URL when coordinates are missing. */
-export function wazeLink(nome: string, lat: number | null, lng: number | null): string {
+/**
+ * Waze deep link — cai para busca por TEXTO quando faltam coordenadas.
+ *
+ * A cidade e a UF entram na busca porque sem elas o Waze acha uma
+ * "Farmácia São João" em qualquer lugar do país. Eram literais "Betim MG":
+ * numa segunda cidade, o link mandaria o morador para o município errado
+ * — dos poucos casos em que a string de cidade não errava um texto, e sim
+ * um DESTINO de navegação.
+ */
+export function wazeLink(
+  nome: string,
+  lat: number | null,
+  lng: number | null,
+  cidade: { nome: string; uf: string }
+): string {
   if (lat !== null && lng !== null) {
     return `https://waze.com/ul?ll=${lat},${lng}&navigate=yes`;
   }
-  return `https://waze.com/ul?q=${encodeURIComponent(`${nome} Betim MG`)}`;
+  return `https://waze.com/ul?q=${encodeURIComponent(`${nome} ${cidade.nome} ${cidade.uf}`)}`;
 }

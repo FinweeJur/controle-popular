@@ -1,5 +1,5 @@
 import { ANUNCIO_PRECOS } from "@/lib/betim/anuncios";
-import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Anuncie — ${nomePortal(c)}`,
@@ -10,18 +10,23 @@ export const generateMetadata = metadataDaCidade(
 // before launch (see TODO.md "Bloqueado no usuário").
 const WHATSAPP_COMERCIAL = "5531999999999";
 
-export default function AnunciePage() {
+export default async function AnunciePage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   const waUrl = `https://wa.me/${WHATSAPP_COMERCIAL}?text=${encodeURIComponent(
-    "Olá! Quero anunciar meu negócio no Controle Popular Betim."
+    `Olá! Quero anunciar meu negócio no ${nomePortal(cidade)}.`
   )}`;
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">
-        Anuncie no Controle Popular Betim
+        Anuncie no {nomePortal(cidade)}
       </h1>
       <p className="mt-2 max-w-[60ch] text-text-soft">
-        Seu negócio local visto por quem mais se importa com Betim — leitores
+        Seu negócio local visto por quem mais se importa com {cidade.nome} — leitores
         engajados com a cidade, todos os dias.
       </p>
       <p className="mt-2 max-w-[60ch] text-sm font-medium text-primary">

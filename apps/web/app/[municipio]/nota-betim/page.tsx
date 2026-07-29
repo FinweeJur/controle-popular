@@ -63,8 +63,8 @@ export default async function NotaBetimPage({
   if (!temDados) {
     return (
       <PaginaEmBreve
-        titulo="Nota Betim"
-        descricao="Nota de transparência de Betim no Programa Nacional de Transparência Pública (PNTP/ATRICON), com ranking entre os municípios de Minas Gerais."
+        titulo={`Nota ${cidade.nome}`}
+        descricao={`Nota de transparência de ${cidade.nome} no Programa Nacional de Transparência Pública (PNTP/ATRICON), com ranking entre os municípios de Minas Gerais.`}
         motivo="Fonte confirmada 2026-07-23 (radardatransparencia.atricon.org.br disponibiliza ZIPs de dados por ano, sem necessidade de scraping) — migration 0018_nota_transparencia.sql ainda não rodada neste ambiente."
       />
     );
@@ -78,24 +78,24 @@ export default async function NotaBetimPage({
         </Link>{" "}
         ·{" "}
         <Link href="/dados" className="hover:text-primary">
-          Betim em Dados
+          {cidade.nome} em Dados
         </Link>{" "}
-        · <span className="text-text">Nota Betim</span>
+        · <span className="text-text">Nota {cidade.nome}</span>
       </nav>
 
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
-        Nota Betim — Transparência Pública
+        Nota {cidade.nome} — Transparência Pública
       </h1>
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
         Todo ano, o Programa Nacional de Transparência Pública (PNTP) avalia
         se prefeituras e câmaras publicam o que a Lei de Acesso à Informação
-        exige — e quão fácil é achar. Abaixo, a nota de Betim e sua posição
+        exige — e quão fácil é achar. Abaixo, a nota de {cidade.nome} e sua posição
         entre os 853 municípios de Minas Gerais avaliados.
       </p>
 
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {prefeitura && <CardAvaliacao titulo="Prefeitura de Betim" avaliacao={prefeitura} />}
-        {camara && <CardAvaliacao titulo="Câmara Municipal de Betim" avaliacao={camara} />}
+        {prefeitura && <CardAvaliacao titulo={`Prefeitura de ${cidade.nome}`} avaliacao={prefeitura} />}
+        {camara && <CardAvaliacao titulo={`Câmara Municipal de ${cidade.nome}`} avaliacao={camara} />}
       </div>
 
       <section className="mt-8 rounded-2xl border border-border bg-surface-2 px-6 py-5 text-sm text-text-soft">

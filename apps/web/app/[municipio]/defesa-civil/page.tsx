@@ -1,4 +1,4 @@
-import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Defesa Civil de ${c.nome} — Alertas | ${nomePortal(c)}`,
@@ -30,11 +30,16 @@ const CANAIS = [
   },
 ];
 
-export default function DefesaCivilPage() {
+export default async function DefesaCivilPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   return (
     <main className="mx-auto max-w-3xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">
-        Defesa Civil de Betim
+        Defesa Civil de {cidade.nome}
       </h1>
       <p className="mt-2 max-w-[60ch] text-text-soft">
         Em emergência, ligue <strong className="font-tabular text-text">199</strong> ou{" "}

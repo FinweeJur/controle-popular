@@ -65,7 +65,7 @@ export default async function ClimaPage({
   return (
     <main className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">
-        Clima em Betim
+        Clima em {cidade.nome}
       </h1>
       <p className="mt-2 max-w-[60ch] text-text-soft">
         Temperatura atual, previsão dos próximos dias e chuva acumulada nos

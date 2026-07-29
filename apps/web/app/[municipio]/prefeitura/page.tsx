@@ -39,11 +39,11 @@ export default async function PrefeituraHubPage({
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8">
       <h1 className="mb-2 font-display text-2xl font-bold tracking-tight">
-        Prefeitura de Betim
+        Prefeitura de {cidade.nome}
       </h1>
       <p className="mb-6 max-w-2xl text-sm text-text-soft">
         Dados públicos sobre contratos, gastos e estrutura da administração
-        municipal de Betim, agregados de fontes oficiais.
+        municipal de {cidade.nome}, agregados de fontes oficiais.
       </p>
 
       <nav className="mb-8 flex flex-wrap gap-2 border-b border-border pb-3">
@@ -99,7 +99,7 @@ export default async function PrefeituraHubPage({
           </h2>
           <p className="mt-1 max-w-xl text-sm text-text-soft">
             Leis, decretos e atos são publicados diariamente no Órgão Oficial
-            de Betim.{" "}
+            de {cidade.nome}.{" "}
             {diario?.ultimaEdicao ? (
               <>
                 Última edição: <strong className="text-text">nº {diario.ultimaEdicao}</strong>

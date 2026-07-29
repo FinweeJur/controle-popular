@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getNoticiaBySlug, CATEGORIA_LABELS } from "@/lib/betim/noticias";
 import { TEMA_LABELS } from "@/lib/betim/temas";
 import { formatDateBR } from "@/lib/betim/format";
-import { cidadeDaRota } from "@/lib/betim/cidade";
+import { cidadeDaRota, nomePortal } from "@/lib/betim/cidade";
 
 interface NoticiaPageProps {
   /** A rota é `/[municipio]/noticias/[slug]` — os dois segmentos chegam. */
@@ -14,9 +14,9 @@ export async function generateMetadata({ params }: NoticiaPageProps) {
   const cidade = await cidadeDaRota(params);
   const { slug } = await params;
   const noticia = await getNoticiaBySlug(cidade.id_municipio, slug);
-  if (!noticia) return { title: "Notícia não encontrada — Controle Popular Betim" };
+  if (!noticia) return { title: `Notícia não encontrada — ${nomePortal(cidade)}` };
   return {
-    title: `${noticia.titulo} — Controle Popular Betim`,
+    title: `${noticia.titulo} — ${nomePortal(cidade)}`,
     description: noticia.resumo,
   };
 }

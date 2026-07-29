@@ -77,7 +77,7 @@ export default async function ColetaLixoPage({
         ) : (
           <p className="text-sm text-text-soft">
             {configured
-              ? "Nenhum bairro cadastrado ainda — a Prefeitura de Betim ainda não disponibilizou essa agenda de forma estruturada; assim que tivermos a fonte confirmada, ela entra aqui."
+              ? `Nenhum bairro cadastrado ainda — a Prefeitura de ${cidade.nome} ainda não disponibilizou essa agenda de forma estruturada; assim que tivermos a fonte confirmada, ela entra aqui.`
               : "Nenhum dado disponível no momento."}
           </p>
         )}

@@ -1,6 +1,6 @@
 import Link from "@/lib/betim/link";
 import { MOTIVO_ALERTA_INFO } from "@/lib/betim/contratos";
-import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Metodologia dos alertas de contrato — ${nomePortal(c)}`,
@@ -18,7 +18,12 @@ const REGRAS_ORDENADAS = [
   "regra_4_capital_social_baixo",
 ];
 
-export default function MetodologiaPage() {
+export default async function MetodologiaPage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   const violacoes = REGRAS_ORDENADAS.filter(
     (codigo) => MOTIVO_ALERTA_INFO[codigo]?.categoria === "violacao_legal"
   );
@@ -114,8 +119,8 @@ export default function MetodologiaPage() {
           </strong>{" "}
           são calculados corretamente (base de impostos e transferências
           constitucionais, gasto no estágio "Liquidado") — mas não
-          aparecem como alerta público porque não há nada pra alertar:
-          Betim cumpre os dois mínimos com folga em todos os anos com
+          aparecem como alerta público porque não há nada pra alertar:{" "}
+          {cidade.nome} cumpre os dois mínimos com folga em todos os anos com
           dado (2015-2024), entre 38-54% em saúde e 37-60% em educação.
         </p>
       </section>

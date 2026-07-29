@@ -1,4 +1,5 @@
 import Link from "@/lib/betim/link";
+import type { Cidade } from "@/lib/db/queries/municipios";
 
 // "Ação cidadã" column links to features not built yet (LAI request wizard,
 // denúncia form, fiscalização tracks, ad self-service) — intentional 404s
@@ -23,7 +24,7 @@ const FONTES_DADOS = [
   { label: "DataSUS", href: "https://datasus.saude.gov.br" },
 ];
 
-export default function Footer() {
+export default function Footer({ cidade }: { cidade: Cidade }) {
   return (
     <footer className="border-t border-border bg-surface px-4 pt-10 pb-7 sm:px-8 sm:pt-14">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
@@ -32,7 +33,7 @@ export default function Footer() {
             controlepopular<span className="text-primary">.br</span>
           </span>
           <p className="mt-3 max-w-[34ch] text-[.85em] text-text-soft">
-            Transparência pública de Betim, MG. Iniciativa cidadã independente,
+            Transparência pública de {cidade.nome}, {cidade.uf}. Iniciativa cidadã independente,
             sem vínculo com a Prefeitura ou a Câmara Municipal.
           </p>
         </div>

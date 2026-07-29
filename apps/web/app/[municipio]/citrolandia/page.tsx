@@ -80,10 +80,10 @@ export default async function CitrolandiaPage({
         Citrolândia
       </h1>
       <p className="mt-2 max-w-[65ch] text-text-soft">
-        Citrolândia é uma das 10 regionais administrativas de Betim, com 44
+        Citrolândia é uma das 10 regionais administrativas de {cidade.nome}, com 44
         bairros ao todo. Aqui reunimos os negócios locais cadastrados no{" "}
         <Link href="/zap-betim" className="font-medium text-accent hover:underline">
-          Zap Betim
+          Zap {cidade.nome}
         </Link>{" "}
         que informaram um desses bairros.
       </p>
@@ -110,7 +110,7 @@ export default async function CitrolandiaPage({
             rel="noopener noreferrer"
             className="font-medium text-accent hover:underline"
           >
-            Prefeitura de Betim ↗
+            Prefeitura de {cidade.nome} ↗
           </a>
           .
         </p>
@@ -125,7 +125,7 @@ export default async function CitrolandiaPage({
             Registro público da ANP (Agência Nacional do Petróleo) — nota de
             conformidade e infrações, quando houver.{" "}
             <Link href="/postos-combustivel" className="font-medium text-accent hover:underline">
-              Ver todos os postos de Betim →
+              Ver todos os postos de {cidade.nome} →
             </Link>
           </p>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -148,7 +148,7 @@ export default async function CitrolandiaPage({
 
       <section className="mt-10">
         <h2 className="mb-4 font-display text-lg font-semibold text-text">
-          Negócios da região no Zap Betim
+          Negócios da região no Zap {cidade.nome}
         </h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {rows.length > 0 ? (

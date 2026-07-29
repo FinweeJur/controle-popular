@@ -24,7 +24,7 @@ export default async function PostosCombustivelPage({
         Postos de Combustível
       </h1>
       <p className="mt-2 max-w-[65ch] text-text-soft">
-        Cadastro de revendedores de combustíveis automotivos de Betim-MG,
+        Cadastro de revendedores de combustíveis automotivos de {cidade.nome}-{cidade.uf},
         direto da ANP. A nota de 0 a 5 é derivada do histórico de
         inadimplência no Programa de Monitoramento da Qualidade dos
         Combustíveis (PMQC) — quando a ANP ainda não publicou nenhuma

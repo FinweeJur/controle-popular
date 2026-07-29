@@ -26,7 +26,7 @@ export default async function EmendasPage({
     return (
       <PaginaEmBreve
         titulo="Emendas Parlamentares / Repasses Federais"
-        descricao="Convênios e verbas federais de deputados, senadores e ministérios destinados a Betim, com valores e destino."
+        descricao={`Convênios e verbas federais de deputados, senadores e ministérios destinados a ${cidade.nome}, com valores e destino.`}
         motivo={
           configured
             ? "Nenhum convênio encontrado no momento."
@@ -49,7 +49,7 @@ export default async function EmendasPage({
         </Link>{" "}
         ·{" "}
         <Link href="/dados" className="hover:text-primary">
-          Betim em Dados
+          {cidade.nome} em Dados
         </Link>{" "}
         · <span className="text-text">Emendas Parlamentares / Repasses Federais</span>
       </nav>
@@ -58,7 +58,7 @@ export default async function EmendasPage({
         Emendas Parlamentares / Repasses Federais
       </h1>
       <p className="mt-2 max-w-3xl text-[1.02em] text-text-soft">
-        Convênios e repasses do governo federal para Betim — dinheiro que sai
+        Convênios e repasses do governo federal para {cidade.nome} — dinheiro que sai
         de um ministério e chega à Prefeitura ou a uma entidade local para um
         propósito específico.
       </p>
@@ -111,17 +111,17 @@ export default async function EmendasPage({
         </h2>
         <p className="mt-2">
           Vem do <strong className="font-semibold text-text">Portal da Transparência</strong>{" "}
-          do governo federal, na parte de convênios, filtrada por Betim. Cada
+          do governo federal, na parte de convênios, filtrada por {cidade.nome}. Cada
           linha é um acordo entre um órgão federal e quem recebeu o dinheiro —
           quase sempre a Prefeitura, às vezes uma entidade local como a APAE ou
-          o Centro de Defesa dos Direitos Humanos de Betim.
+          o Centro de Defesa dos Direitos Humanos de {cidade.nome}.
         </p>
         <p className="mt-2">
           <strong className="font-semibold text-text">
             Não é a mesma coisa que "emenda de um deputado".
           </strong>{" "}
           A fonte não diz qual parlamentar indicou cada convênio — testamos, e
-          pra Betim esse dado veio praticamente vazio. O que esta página mostra
+          pra {cidade.nome} esse dado veio praticamente vazio. O que esta página mostra
           é o dinheiro que de fato chegou, tenha vindo de emenda ou não.
         </p>
         <p className="mt-2">

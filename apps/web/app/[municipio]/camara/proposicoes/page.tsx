@@ -88,7 +88,7 @@ export default async function ProposicoesPage({
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
         Projetos de lei, requerimentos, indicações e emendas apresentados na
         20ª Legislatura (2025-2028), direto do sistema legislativo (PROLEGIS)
-        da Câmara Municipal de Betim.
+        da Câmara Municipal de {cidade.nome}.
       </p>
 
       <form

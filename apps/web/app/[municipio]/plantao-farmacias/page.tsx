@@ -21,7 +21,7 @@ export default async function PlantaoFarmaciasPage({
         Farmácias de Plantão
       </h1>
       <p className="mt-2 max-w-[60ch] text-text-soft">
-        Farmácias em plantão nesta semana em Betim-MG, com telefone e rota
+        Farmácias em plantão nesta semana em {cidade.nome}-{cidade.uf}, com telefone e rota
         direto no Waze.
       </p>
 
@@ -47,7 +47,7 @@ export default async function PlantaoFarmaciasPage({
                 ) : null}
               </div>
               <a
-                href={wazeLink(f.nome, f.lat, f.lng)}
+                href={wazeLink(f.nome, f.lat, f.lng, cidade)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-lg border border-primary bg-primary px-4 py-2 text-sm font-semibold text-primary-ink"

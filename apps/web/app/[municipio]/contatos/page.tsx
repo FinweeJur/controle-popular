@@ -27,7 +27,7 @@ export default async function ContatosPage({
         Contatos Úteis
       </h1>
       <p className="mt-2 max-w-[60ch] text-text-soft">
-        Telefones de emergência e órgãos públicos de Betim-MG.
+        Telefones de emergência e órgãos públicos de {cidade.nome}-{cidade.uf}.
       </p>
 
       <section className="mt-8 flex flex-col gap-8">

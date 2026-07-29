@@ -29,7 +29,7 @@ export default async function CamaraPage({
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8">
       <h1 className="mb-2 font-display text-2xl font-bold tracking-tight">
-        Câmara Municipal de Betim
+        Câmara Municipal de {cidade.nome}
       </h1>
       <p className="mb-4 max-w-2xl text-sm text-text-soft">
         Os 23 vereadores da 20ª Legislatura (2025-2028), dados públicos do

@@ -2,21 +2,24 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useCaminhoDaCidade } from "@/lib/betim/basePath";
+import { useCidade } from "@/lib/betim/cidade-cliente";
 
 interface Mensagem {
   papel: "usuario" | "assistente";
   texto: string;
 }
 
-const SUGESTOES = [
+const sugestoes = (cidade: { nome: string }) => [
   "Quanto a Prefeitura gasta em saúde?",
   "Quais os maiores contratos da Prefeitura?",
   "O que a Câmara propôs sobre mobilidade?",
-  "Quantos habitantes tem Betim?",
+  `Quantos habitantes tem ${cidade.nome}?`,
 ];
 
 export default function AssistenteChat() {
+  const cidade = useCidade();
   const caminho = useCaminhoDaCidade();
+  const SUGESTOES = sugestoes(cidade);
   const [mensagens, setMensagens] = useState<Mensagem[]>([]);
   const [texto, setTexto] = useState("");
   const [carregando, setCarregando] = useState(false);
@@ -61,7 +64,7 @@ export default function AssistenteChat() {
       {mensagens.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-border bg-surface-2 p-6">
           <p className="text-sm text-text-soft">
-            Faça uma pergunta sobre os dados de Betim. Experimente:
+            Faça uma pergunta sobre os dados de {cidade.nome}. Experimente:
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {SUGESTOES.map((s) => (

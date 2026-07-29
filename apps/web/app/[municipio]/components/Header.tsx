@@ -1,8 +1,9 @@
 import Link from "@/lib/betim/link";
+import type { Cidade } from "@/lib/db/queries/municipios";
 import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
 import FontSizeControl from "@/app/[municipio]/components/FontSizeControl";
 import NavDropdown from "@/app/[municipio]/components/NavDropdown";
-import { PAGINAS_DADOS } from "@/lib/betim/dadosNav";
+import { paginasDados } from "@/lib/betim/dadosNav";
 
 // Ordem do nav: [Prefeitura], [Câmara], Serviços, [Dados], Notícias, Sobre.
 // Prefeitura, Câmara e Dados têm menu suspenso (pedido do usuário
@@ -27,7 +28,7 @@ const NAV_LINKS_DEPOIS_DADOS = [
   { label: "Sobre", href: "/sobre" },
 ];
 
-export default function Header() {
+export default function Header({ cidade }: { cidade: Cidade }) {
   return (
     <header className="sticky top-0 z-50 flex flex-wrap items-center justify-between gap-3 border-b border-border bg-surface px-4 py-3 backdrop-blur sm:px-8">
       <div className="flex flex-wrap items-center gap-2 sm:gap-6">
@@ -40,7 +41,7 @@ export default function Header() {
         >
           controlepopular<span className="text-primary">.br</span>
         </a>
-        {/* "Betim · MG" leva pra home do Betim (pedido do usuário
+        {/* "<Cidade> · UF" leva pra home da cidade (pedido do usuário
             2026-07-24). `<Link href="/">` sob o basePath `/betim` resolve
             pra `/betim` — a home desta cidade —, diferente do wordmark
             acima, que é `<a href="/">` cru pra raiz da MARCA (fora do
@@ -49,7 +50,7 @@ export default function Header() {
           href="/"
           className="border-l border-border pl-3 text-[.85em] text-text-soft transition-colors duration-150 hover:text-primary"
         >
-          Betim · MG
+          {cidade.nome} · {cidade.uf}
         </Link>
         <nav className="flex flex-wrap items-center gap-4 text-[.88em] font-medium">
           <NavDropdown label="Prefeitura" href="/prefeitura" itens={PREFEITURA_SUB} />
@@ -60,7 +61,7 @@ export default function Header() {
           >
             Serviços
           </Link>
-          <NavDropdown label="Dados" href="/dados" itens={PAGINAS_DADOS} largura="w-72" />
+          <NavDropdown label="Dados" href="/dados" itens={paginasDados(cidade)} largura="w-72" />
           {NAV_LINKS_DEPOIS_DADOS.map((link) => (
             <Link
               key={link.href}

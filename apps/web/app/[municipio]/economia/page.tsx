@@ -48,7 +48,7 @@ export default async function EconomiaPage({
   return (
     <main className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">
-        Economia de Betim
+        Economia de {cidade.nome}
       </h1>
       <p className="mt-2 max-w-[65ch] text-text-soft">
         Produção econômica, renda e emprego formal — dados do IBGE e do

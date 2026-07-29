@@ -21,8 +21,8 @@ export default async function SegurancaPage({
   if (!data.configured || !data.ok) {
     return (
       <PaginaEmBreve
-        titulo="Segurança Pública em Betim"
-        descricao="Ocorrências registradas e estatísticas de criminalidade em Betim."
+        titulo={`Segurança Pública em ${cidade.nome}`}
+        descricao={`Ocorrências registradas e estatísticas de criminalidade em ${cidade.nome}.`}
         motivo={
           data.configured
             ? "Nenhum dado de ocorrências encontrado no momento."
@@ -40,13 +40,13 @@ export default async function SegurancaPage({
         </Link>{" "}
         ·{" "}
         <Link href="/dados" className="hover:text-primary">
-          Betim em Dados
+          {cidade.nome} em Dados
         </Link>{" "}
         · <span className="text-text">Segurança Pública</span>
       </nav>
 
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
-        Segurança Pública em Betim
+        Segurança Pública em {cidade.nome}
       </h1>
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
         Ocorrências de crimes violentos registradas pela Polícia Civil,

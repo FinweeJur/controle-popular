@@ -46,7 +46,7 @@ export const generateMetadata = metadataDaCidade(
 // chave, não por falta de dado. "pobreza"/"frota_veiculos"/"idh" continuam
 // sem fonte confirmada -- ver TODO.md.
 const INDICATOR_LABELS: { nome: string; label: string; unidade_curta?: string }[] = [
-  { nome: "populacao", label: "População de Betim", unidade_curta: "habitantes" },
+  { nome: "populacao", label: "População", unidade_curta: "habitantes" },  // rótulo ganha a cidade no uso
   { nome: "pib_per_capita", label: "PIB per capita" },
   { nome: "ideb_anos_finais", label: "IDEB (anos finais)" },
   { nome: "cobertura_esgoto", label: "Cobertura de esgoto" },
@@ -151,10 +151,10 @@ async function getClima(idMunicipio: IdMunicipio): Promise<ClimaAtual | null> {
   }
 }
 
-const EXPLORAR: { href: string; nome: string; desc: string; icon: LucideIcon }[] = [
+const explorar = (cidade: { nome: string }): { href: string; nome: string; desc: string; icon: LucideIcon }[] => [
   { href: "/prefeitura", nome: "Prefeitura", desc: "Contratos, despesas e fornecedores", icon: Landmark },
   { href: "/camara", nome: "Câmara Municipal", desc: "Vereadores e verbas indenizatórias", icon: Users },
-  { href: "/zap-betim", nome: "Zap Betim", desc: "Cadastro de negócios no WhatsApp", icon: MessageCircle },
+  { href: "/zap-betim", nome: `Zap ${cidade.nome}`, desc: "Cadastro de negócios no WhatsApp", icon: MessageCircle },
   { href: "/citrolandia", nome: "Citrolândia", desc: "Bairros da região e negócios locais", icon: MapPin },
   { href: "/postos-combustivel", nome: "Postos de Combustível", desc: "Nota de conformidade ANP", icon: Fuel },
   { href: "/clima", nome: "Clima", desc: "Previsão e chuva acumulada", icon: CloudSun },
@@ -220,10 +220,10 @@ export default async function HomePage({
               iniciativa cidadã independente
             </span>
             <h1 className="mt-4 max-w-[15ch] font-display text-[clamp(2.2em,5.5vw,3.6em)] leading-[1.05] font-bold tracking-tight text-text text-balance">
-              Transparência pública de <span className="text-primary">Betim, MG</span>
+              Transparência pública de <span className="text-primary">{cidade.nome}, {cidade.uf}</span>
             </h1>
             <p className="mt-4 max-w-[52ch] text-[1.1em] text-text-soft text-pretty">
-              Contratos, números e serviços de Betim num lugar só. Cada dado
+              Contratos, números e serviços de {cidade.nome} num lugar só. Cada dado
               vem de fonte oficial, com link pra você conferir.
             </p>
             <form
@@ -299,7 +299,7 @@ export default async function HomePage({
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             <div className="col-span-2 row-span-2 flex min-h-[200px] flex-col justify-between rounded-2xl bg-primary p-6 text-primary-ink">
               <span className="text-[.9em] font-medium opacity-85">
-                {INDICATOR_LABELS[0].label}
+                {INDICATOR_LABELS[0].label} de {cidade.nome}
               </span>
               <div>
                 {populacao ? (
@@ -523,7 +523,7 @@ export default async function HomePage({
         <section>
           <div className="mb-5 flex flex-wrap items-end justify-between gap-2">
             <h2 className="font-display text-[1.7em] font-semibold tracking-tight">
-              Betim em Dados
+              {cidade.nome} em Dados
             </h2>
             <Link href="/dados" className="text-sm font-medium text-accent hover:underline">
               Ver todos os temas →
@@ -560,7 +560,7 @@ export default async function HomePage({
               </Link>
             </div>
             <p className="mb-4 max-w-2xl text-xs text-text-soft">
-              Obras da reparação de Brumadinho em Betim que menos andaram até
+              Obras da reparação de Brumadinho em {cidade.nome} que menos andaram até
               agora. O número mostra quanto de cada obra já ficou pronta,
               segundo a FGV, que fiscaliza de forma independente.
             </p>
@@ -642,7 +642,7 @@ export default async function HomePage({
             Explore o portal
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {EXPLORAR.map((item) => (
+            {explorar(cidade).map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -716,7 +716,7 @@ export default async function HomePage({
                 Espaço publicitário
               </span>
               <p className="mt-1.5 text-[1.05em] font-semibold">
-                Seu negócio de Betim aqui — a partir de{" "}
+                Seu negócio de {cidade.nome} aqui — a partir de{" "}
                 <span className="font-tabular">R$ 200</span>, pagamento único.
               </p>
             </div>
@@ -733,8 +733,8 @@ export default async function HomePage({
         <section className="rounded-2xl border border-border bg-surface-2 p-6">
           <h2 className="mb-2 font-display text-lg font-semibold">Sobre o projeto</h2>
           <p className="mb-3 max-w-2xl text-sm text-text-soft">
-            O Controle Popular Betim é um projeto independente. Ele reúne,
-            num lugar só, dados públicos oficiais sobre Betim. Não temos
+            O {nomePortal(cidade)} é um projeto independente. Ele reúne,
+            num lugar só, dados públicos oficiais sobre {cidade.nome}. Não temos
             vínculo com a Prefeitura nem com a Câmara.
           </p>
           <Link href="/sobre" className="text-sm font-medium text-accent hover:underline">

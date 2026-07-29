@@ -26,7 +26,7 @@ export default async function ZapBetimPage({
   return (
     <main className="mx-auto max-w-5xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">
-        Zap Betim
+        Zap {cidade.nome}
       </h1>
       <p className="mt-2 max-w-[60ch] text-text-soft">
         Lista gratuita de negócios locais — clique e fale direto no

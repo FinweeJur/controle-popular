@@ -1,16 +1,21 @@
 import Link from "@/lib/betim/link";
-import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Sobre — ${nomePortal(c)}`,
   (c) => `O que é o ${nomePortal(c)}, de onde vêm os dados, quem mantém o projeto e como ele se relaciona (ou não) com o poder público.`
 );
 
-export default function SobrePage() {
+export default async function SobrePage({
+  params,
+}: {
+  params: Promise<{ municipio: string }>;
+}) {
+  const cidade = await cidadeDaRota(params);
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-8">
       <h1 className="mb-6 text-2xl font-display font-bold text-text">
-        Sobre o Controle Popular Betim
+        Sobre o {nomePortal(cidade)}
       </h1>
 
       <section className="mb-10">
@@ -18,15 +23,15 @@ export default function SobrePage() {
           O que é
         </h2>
         <p className="mb-3 text-sm leading-relaxed text-text-soft">
-          O Controle Popular Betim é um projeto <strong>independente e não-governamental</strong>{" "}
+          O {nomePortal(cidade)} é um projeto <strong>independente e não-governamental</strong>{" "}
           de transparência pública. Nosso objetivo é reunir, em um só lugar
           e em linguagem simples, dados públicos oficiais sobre a
-          administração municipal de Betim-MG — contratos, finanças, atuação
+          administração municipal de {cidade.nome}-{cidade.uf} — contratos, finanças, atuação
           da Câmara, indicadores sociais e serviços úteis ao cidadão.
         </p>
         <p className="text-sm leading-relaxed text-text-soft">
           Não somos um órgão público, não representamos a Prefeitura nem a
-          Câmara Municipal de Betim, e não recebemos recursos de nenhuma das
+          Câmara Municipal de {cidade.nome}, e não recebemos recursos de nenhuma das
           duas instituições. Todo o conteúdo é produzido a partir de dados
           já publicados por fontes oficiais — nós apenas organizamos,
           cruzamos e explicamos.
@@ -44,7 +49,7 @@ export default function SobrePage() {
         <ul className="list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-text-soft">
           <li>
             <strong>PNCP</strong> (Portal Nacional de Contratações Públicas) —
-            contratos e licitações da Prefeitura de Betim.
+            contratos e licitações da Prefeitura de {cidade.nome}.
           </li>
           <li>
             <strong>Base dos Dados</strong> — repositório público que reúne
@@ -57,7 +62,7 @@ export default function SobrePage() {
             emendas parlamentares e benefícios sociais.
           </li>
           <li>
-            <strong>Site da Câmara Municipal de Betim</strong> — proposições,
+            <strong>Site da Câmara Municipal de {cidade.nome}</strong> — proposições,
             pautas e atas legislativas.
           </li>
           <li>
@@ -96,7 +101,7 @@ export default function SobrePage() {
         <div className="space-y-4">
           <div>
             <p className="text-sm font-medium text-text">
-              O Controle Popular Betim é um site oficial da Prefeitura ou da Câmara?
+              O {nomePortal(cidade)} é um site oficial da Prefeitura ou da Câmara?
             </p>
             <p className="text-sm text-text-soft">
               Não. É um projeto cívico independente, mantido fora da
@@ -119,7 +124,7 @@ export default function SobrePage() {
               Como o projeto se sustenta financeiramente?
             </p>
             <p className="text-sm text-text-soft">
-              Por meio de anúncios locais de empresas de Betim, exibidos de
+              Por meio de anúncios locais de empresas de {cidade.nome}, exibidos de
               forma claramente identificada e sem influenciar o conteúdo
               informativo do site.
             </p>
@@ -141,7 +146,7 @@ export default function SobrePage() {
           Quem mantém
         </h2>
         <p className="text-sm leading-relaxed text-text-soft">
-          O Controle Popular Betim é desenvolvido e mantido de forma independente, sem
+          O {nomePortal(cidade)} é desenvolvido e mantido de forma independente, sem
           fins político-partidários. Veja também nossa{" "}
           <Link
             href="/privacidade"
