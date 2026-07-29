@@ -537,6 +537,7 @@ export const atos_oficiais = pgTable("atos_oficiais", {
 	link_fonte: text(),
 	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
 	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+	temas: text().array(),
 }, (table) => [
 	foreignKey({
 			columns: [table.id_municipio],
@@ -1213,6 +1214,7 @@ export const paraopeba_iniciativas = pgTable("paraopeba_iniciativas", {
 	investimento: numeric({ precision: 16, scale:  2 }),
 	valor_total: numeric({ precision: 16, scale:  2 }),
 	percentual_realizado: numeric({ precision: 6, scale:  2 }),
+	percentual_planejado: numeric(),
 	produtos_previstos: integer(),
 	produtos_entregues: integer(),
 	produtos_em_atraso: integer(),

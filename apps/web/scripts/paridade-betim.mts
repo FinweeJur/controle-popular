@@ -270,13 +270,28 @@ eq(`legislacao anos`,
 eq(`legislacao mais recente (${lg.map((r) => r.data_publicacao).filter(Boolean).sort().at(-1)})`,
    lg.map((r) => r.data_publicacao).filter(Boolean).sort().at(-1) ?? null,
    lgN.atos[0]?.dataPublicacao ?? null);
-// `atos_oficiais.temas` NAO EXISTE (42703 no PostgREST): o ranking por area
-// ja era vazio em producao, e continua.
-const temasResp = await fetch(`${env("NEXT_PUBLIC_SUPABASE_URL")}/rest/v1/atos_oficiais?select=temas&limit=1`, {
-  headers: { apikey: env("SUPABASE_SERVICE_ROLE_KEY"), Authorization: `Bearer ${env("SUPABASE_SERVICE_ROLE_KEY")}` },
-});
-eq(`legislacao temas ausentes nos dois lados (HTTP ${temasResp.status})`,
-   [temasResp.status === 400, 0], [true, lgN.temas.length]);
+/**
+ * `atos_oficiais.temas` (migration 0025) — antes esta comparacao provava
+ * que a coluna NAO EXISTIA nos dois bancos e que o ranking por area era
+ * vazio dos dois lados. A 0025 foi aplicada e as ementas classificadas com
+ * `etl/temas.py`, entao agora prova o contrario: a coluna existe, o
+ * ranking bate com a contagem feita a partir do PostgREST, e o filtro
+ * `?tema=` filtra de verdade.
+ */
+const lgTemas = await rest(`atos_oficiais?select=tipo,temas&id_municipio=eq.${ID}`);
+const contagemTemasS = new Map<string, number>();
+for (const a of lgTemas) for (const t of a.temas ?? []) contagemTemasS.set(t, (contagemTemasS.get(t) ?? 0) + 1);
+eq(`legislacao: ${lgTemas.filter((r) => (r.temas ?? []).length).length} de ${lgTemas.length} atos com tema`,
+   lgTemas.filter((r) => (r.temas ?? []).length).length > 0, lgN.temas.length > 0);
+eq(`legislacao ranking por area (${contagemTemasS.size} areas)`,
+   [...contagemTemasS.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])),
+   lgN.temas.map((t) => [t.tema, t.qtd]));
+const temaLeg = lgN.temas[0]?.tema;
+if (temaLeg) {
+  eq(`legislacao filtro ?tema=${temaLeg}`,
+     lgTemas.filter((r) => (r.temas ?? []).includes(temaLeg)).length,
+     (await getLegislacao(ID, { tema: temaLeg })).atos.length);
+}
 
 // ---- bloco 3: despesas, temas, servicos, proposicoes, grupos ----
 
@@ -498,15 +513,43 @@ const menosS = pb
   .sort((a, b) => Number(a.percentual_realizado) - Number(b.percentual_realizado))
   .slice(0, 5);
 eq(`paraopeba 5 mais longe de concluir`, menosS.map((r) => r.id_fdi), menos.map((r) => r.idFdi));
-// `percentual_planejado` (migration 0026) NAO EXISTE — mesmo caso do
-// atos_oficiais.temas. Confirmado nos dois lados.
-const planResp = await fetch(
-  `${env("NEXT_PUBLIC_SUPABASE_URL")}/rest/v1/paraopeba_iniciativas?select=percentual_planejado&limit=1`,
-  { headers: { apikey: env("SUPABASE_SERVICE_ROLE_KEY"), Authorization: `Bearer ${env("SUPABASE_SERVICE_ROLE_KEY")}` } }
+/**
+ * `percentual_planejado` (migration 0026) — a comparacao antiga provava
+ * que a coluna nao existia. Aplicada e preenchida a partir da aba "Avanco
+ * Fisico" da planilha da FGV, agora prova o "executado x planejado" que
+ * era a razao de ser da 0026.
+ */
+const pbPlan = await rest(
+  `paraopeba_iniciativas?select=id_fdi,percentual_realizado,percentual_planejado,produtos_previstos,produtos_entregues,link_publico,link_termo_compromisso&id_municipio=eq.${ID}`
 );
-eq(`paraopeba percentual_planejado ausente nos dois lados (HTTP ${planResp.status})`,
-   [true, true],
-   [planResp.status === 400, pbN.iniciativas.every((r) => r.percentualPlanejado === null)]);
+eq(`paraopeba: ${pbPlan.filter((r) => r.percentual_planejado != null).length} de ${pbPlan.length} com planejado`,
+   pbPlan.map((r) => [r.id_fdi, r.percentual_planejado == null ? null : Math.round(Number(r.percentual_planejado) * 100)]).sort(),
+   pbN.iniciativas.map((r) => [r.idFdi, r.percentualPlanejado == null ? null : Math.round(r.percentualPlanejado * 100)]).sort());
+const atrasadasS = pbPlan.filter(
+  (r) => r.percentual_realizado != null && r.percentual_planejado != null &&
+         Number(r.percentual_realizado) < Number(r.percentual_planejado)
+).length;
+eq(`paraopeba atrasadas (executado < planejado): ${atrasadasS}`,
+   atrasadasS,
+   pbN.iniciativas.filter((r) => r.percentualRealizado != null && r.percentualPlanejado != null &&
+                                 r.percentualRealizado < r.percentualPlanejado).length);
+/**
+ * REGRESSAO MINHA: ao escrever a consulta do Paraopeba eu deixei de fora
+ * cinco colunas que o select do PostgREST trazia — os contadores de
+ * produtos e os DOIS LINKS (o "acesso direto ao termo de compromisso" pelo
+ * qual esta fonte foi escolhida). `mapIniciativa` as lia e recebia
+ * `undefined`. Nao dava erro: um `as RowIniciativa[]` cobria o buraco, e a
+ * paridade so conferia contagem e ordem. Estas linhas conferem os CAMPOS.
+ */
+eq(`paraopeba produtos previstos/entregues por iniciativa`,
+   pbPlan.map((r) => [r.id_fdi, r.produtos_previstos ?? null, r.produtos_entregues ?? null]).sort(),
+   pbN.iniciativas.map((r) => [r.idFdi, r.produtosPrevistos ?? null, r.produtosEntregues ?? null]).sort());
+eq(`paraopeba links publicos e de termo de compromisso`,
+   pbPlan.map((r) => [r.id_fdi, r.link_publico ?? null, r.link_termo_compromisso ?? null]).sort(),
+   pbN.iniciativas.map((r) => [r.idFdi, r.linkPublico ?? null, r.linkTermoCompromisso ?? null]).sort());
+eq(`paraopeba: os links nao vem undefined (${pbPlan.filter((r) => r.link_publico).length} preenchidos)`,
+   pbPlan.filter((r) => r.link_publico).length,
+   pbN.iniciativas.filter((r) => r.linkPublico).length);
 
 // chat: os numeros-ancora do contexto tem de bater com o banco
 const ctxt = await montarContexto(ID, "contrato de merenda escolar");

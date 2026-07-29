@@ -198,7 +198,24 @@ export default async function ParaopebaPage({ params, searchParams }: ParaopebaP
                   </span>
                 )}
                 {p.percentualRealizado != null && (
-                  <span className="text-text-soft">{p.percentualRealizado.toFixed(0)}% realizado</span>
+                  <span className="text-text-soft">{p.percentualRealizado.toFixed(0)}% executado</span>
+                )}
+                {/* O planejado é o que dá sentido ao executado: 77% pode ser
+                    adiantado ou atrasado dependendo de quanto deveria estar
+                    pronto. É a comparação para a qual a migration 0026 foi
+                    escrita, e que nunca chegou a aparecer porque a coluna
+                    não existia no banco. */}
+                {p.percentualPlanejado != null && p.percentualRealizado != null && (
+                  <span
+                    className={
+                      p.percentualRealizado < p.percentualPlanejado
+                        ? "font-semibold text-alert"
+                        : "text-text-soft"
+                    }
+                  >
+                    {p.percentualRealizado < p.percentualPlanejado ? "atrasado — " : "em dia — "}
+                    {p.percentualPlanejado.toFixed(0)}% planejado
+                  </span>
                 )}
                 {p.produtosPrevistos != null && p.produtosPrevistos > 0 && (
                   <span className="text-text-soft">
@@ -208,13 +225,26 @@ export default async function ParaopebaPage({ params, searchParams }: ParaopebaP
               </div>
               {p.percentualRealizado != null && (
                 <div
-                  className="mt-2 h-2 overflow-hidden rounded-full bg-surface-2"
-                  title={`${p.percentualRealizado.toFixed(0)}% realizado`}
+                  className="relative mt-2 h-2 overflow-hidden rounded-full bg-surface-2"
+                  title={
+                    p.percentualPlanejado != null
+                      ? `${p.percentualRealizado.toFixed(0)}% executado · ${p.percentualPlanejado.toFixed(0)}% planejado`
+                      : `${p.percentualRealizado.toFixed(0)}% executado`
+                  }
                 >
                   <div
                     className="h-full rounded-full bg-primary transition-[width] duration-500"
                     style={{ width: `${Math.min(Math.max(p.percentualRealizado, 0), 100)}%` }}
                   />
+                  {/* Marca do planejado sobre a barra — a mesma leitura do
+                      gráfico da FGV, onde a linha preta é a meta. */}
+                  {p.percentualPlanejado != null && (
+                    <span
+                      aria-hidden
+                      className="absolute inset-y-0 w-0.5 bg-text"
+                      style={{ left: `${Math.min(Math.max(p.percentualPlanejado, 0), 100)}%` }}
+                    />
+                  )}
                 </div>
               )}
               <div className="mt-3 flex flex-wrap gap-2">

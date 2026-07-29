@@ -23,14 +23,14 @@ export interface IniciativaParaopeba {
   /** Avanço físico EXECUTADO (%) — o número que a FGV mostra. */
   percentualRealizado: number | null;
   /**
-   * Avanço físico PLANEJADO (%) — quanto deveria estar pronto.
+   * Avanço físico PLANEJADO (%) — quanto deveria estar pronto até agora.
+   * Executado < Planejado ⇒ atrasado.
    *
-   * SEMPRE `null` hoje, e isso não é regressão da migração: a coluna
-   * `paraopeba_iniciativas.percentual_planejado` (migration 0026) NÃO
-   * EXISTE no banco. O `comColunaOpcional()` que a protegia caía sempre no
-   * ramo sem ela, então a leitura "executado < planejado ⇒ atrasado" nunca
-   * chegou a funcionar em produção. Mesmo caso de `atos_oficiais.temas`;
-   * ligar é rodar a migration + o ETL.
+   * Veio da migration 0026, que nunca tinha rodado: o `comColunaOpcional()`
+   * caía sempre no ramo sem ela, então esta comparação — a razão de ser da
+   * 0026 — nunca funcionou em produção. Aplicada e preenchida a partir da
+   * aba "Avanço Físico" da planilha da FGV: das 19 iniciativas de Betim, 5
+   * estão atrasadas.
    */
   percentualPlanejado: number | null;
   produtosPrevistos: number | null;
@@ -69,6 +69,7 @@ interface RowIniciativa {
   investimento: number | string | null;
   valor_total: number | string | null;
   percentual_realizado: number | string | null;
+  percentual_planejado: number | string | null;
   produtos_previstos: number | null;
   produtos_entregues: number | null;
   produtos_em_atraso: number | null;
@@ -89,8 +90,7 @@ function mapIniciativa(r: RowIniciativa): IniciativaParaopeba {
     investimento: r.investimento != null ? Number(r.investimento) : null,
     valorTotal: r.valor_total != null ? Number(r.valor_total) : null,
     percentualRealizado: r.percentual_realizado != null ? Number(r.percentual_realizado) : null,
-    // Coluna inexistente no banco — ver o comentário do campo na interface.
-    percentualPlanejado: null,
+    percentualPlanejado: r.percentual_planejado != null ? Number(r.percentual_planejado) : null,
     produtosPrevistos: r.produtos_previstos,
     produtosEntregues: r.produtos_entregues,
     produtosEmAtraso: r.produtos_em_atraso,

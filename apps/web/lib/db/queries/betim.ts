@@ -413,11 +413,13 @@ export async function conveniosFederais(idMunicipio: IdMunicipio) {
 /**
  * Legislação municipal (leis, decretos, resoluções, instruções normativas).
  *
- * NÃO seleciona `temas`: a coluna da migration 0025 **não existe no banco**
- * — verificado por introspecção no Neon e por `select=temas` no PostgREST
- * do Supabase, que responde 42703. O `comColunaOpcional()` do código antigo
- * caía sempre no fallback, então o ranking por área e o filtro `?tema=`
- * desta página já nasciam vazios em produção.
+ * `temas` vem da classificação por palavra-chave da ementa (`etl/temas.py`,
+ * a mesma regra das proposições e dos contratos). A coluna é da migration
+ * 0025, que nunca tinha rodado: enquanto isso o `comColunaOpcional()` caía
+ * sempre no ramo sem ela, e o ranking por área e o filtro `?tema=` desta
+ * página nasciam vazios em produção, sem erro nenhum. A 0025 foi aplicada
+ * e as 660 ementas classificadas — 76 pegam tema, o resto são decretos de
+ * crédito sem assunto identificável (esperado, ver a docstring do ETL).
  */
 export async function atosOficiais(idMunicipio: IdMunicipio) {
   const db = getDb();
@@ -429,6 +431,7 @@ export async function atosOficiais(idMunicipio: IdMunicipio) {
       ano: atos_oficiais.ano,
       ementa: atos_oficiais.ementa,
       data_publicacao: atos_oficiais.data_publicacao,
+      temas: atos_oficiais.temas,
     })
     .from(atos_oficiais)
     .where(eq(atos_oficiais.id_municipio, idMunicipio))
@@ -930,15 +933,29 @@ const COLUNAS_INICIATIVA = {
   investimento: num(paraopeba_iniciativas.investimento),
   valor_total: num(paraopeba_iniciativas.valor_total),
   percentual_realizado: num(paraopeba_iniciativas.percentual_realizado),
+  percentual_planejado: num(paraopeba_iniciativas.percentual_planejado),
+  // REGRESSÃO MINHA, corrigida: estas cinco estavam no select do PostgREST
+  // e eu as deixei de fora ao escrever esta consulta. `mapIniciativa` as
+  // lia e recebia `undefined`, então a página perdeu os contadores de
+  // produtos e — pior — os DOIS LINKS, que são o "acesso direto ao termo
+  // de compromisso" pelo qual a fonte foi escolhida. Não deu erro porque
+  // um `as RowIniciativa[]` cobria o buraco; quem apontou foi o compilador,
+  // quando a coluna nova mudou a forma do objeto o bastante para o cast
+  // deixar de colar.
+  produtos_previstos: paraopeba_iniciativas.produtos_previstos,
+  produtos_entregues: paraopeba_iniciativas.produtos_entregues,
+  produtos_em_atraso: paraopeba_iniciativas.produtos_em_atraso,
+  link_publico: paraopeba_iniciativas.link_publico,
+  link_termo_compromisso: paraopeba_iniciativas.link_termo_compromisso,
 };
 
 /**
  * Iniciativas do Paraopeba, maior valor primeiro.
  *
- * NÃO seleciona `percentual_planejado`: a coluna da migration 0026 não
- * existe no banco — mesmo caso de `atos_oficiais.temas`. O
- * `comColunaOpcional()` caía sempre no fallback, então o "executado vs
- * planejado" da página já nascia sem o planejado.
+ * `percentual_planejado` é da migration 0026, que também nunca tinha
+ * rodado — então a leitura "executado < planejado ⇒ atrasado" da página
+ * nunca funcionou. Aplicada e preenchida a partir da aba "Avanço Físico"
+ * da planilha da FGV: das 19 iniciativas de Betim, 5 estão atrasadas.
  */
 export async function iniciativasParaopeba(idMunicipio: IdMunicipio) {
   const db = getDb();
