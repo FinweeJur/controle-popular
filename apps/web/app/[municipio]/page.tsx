@@ -225,9 +225,9 @@ export default async function HomePage({
     getContatosUteis(),
     getClima(),
     fetchAnunciosAtivos(cidade.id_municipio),
-    getVereadores(),
-    getRankingVereadores(),
-    getAtividadeRecenteCamara(),
+    getVereadores(cidade.id_municipio),
+    getRankingVereadores(cidade.id_municipio),
+    getAtividadeRecenteCamara(cidade.id_municipio),
     getNoticias(cidade.id_municipio),
     getObrasParaopebaMenosConcluidas(cidade.id_municipio, 5),
   ]);

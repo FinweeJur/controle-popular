@@ -42,6 +42,17 @@ import {
   CONTRATOS_PAGE_SIZE,
 } from "../lib/betim/contratos.js";
 import { getSaudeData, getSaudeTendencias } from "../lib/betim/saude.js";
+import {
+  getVereadores,
+  getVereadorBySlug,
+  getRankingVereadores,
+  getProposicoesByVereador,
+  getDiariasByVereador,
+  getDoacoesSummary,
+  getBensCandidato,
+  getAtividadeRecenteCamara,
+  PESO_PROPOSICAO,
+} from "../lib/betim/vereadores.js";
 
 // `comoIdMunicipio` é a saída deliberada da marca nominal de `IdMunicipio`.
 // Existe exatamente para bordas como esta, onde o valor não vem da tabela
@@ -634,6 +645,113 @@ eq(`saude dengue: no maximo 8 semanas, em ordem crescente`,
    true,
    stN.dengueUltimasSemanas.length <= 8 &&
      stN.dengueUltimasSemanas.every((s, i) => i === 0 || s.semana >= stN.dengueUltimasSemanas[i - 1].semana - 53));
+
+// ---- bloco 6: vereadores ----
+
+const vr = await rest(
+  `vereadores?select=id,slug,nome,nome_urna,partido,biografia&id_municipio=eq.${ID}&ativo=eq.true&order=nome_urna.asc`
+);
+const vrN = await getVereadores(ID);
+eq(`vereadores em ordem pt-BR (${vr.length} vs ${vrN.rows.length})`,
+   vr.map((r) => r.nome_urna), vrN.rows.map((r) => r.nome_urna));
+// `biografia` (0017) EXISTE: e um dos casos em que o comColunaOpcional
+// nunca chegou a usar o fallback.
+eq(`vereadores biografia preenchida em ${vr.filter((r) => r.biografia).length}`,
+   vr.map((r) => r.biografia ?? null), vrN.rows.map((r) => r.biografia ?? null));
+
+const slugAlvo = vr[0]?.slug as string;
+const umN = await getVereadorBySlug(ID, slugAlvo);
+eq(`vereador por slug (${slugAlvo})`, vr[0]?.nome, umN.row?.nome);
+eq(`vereador por slug inexistente devolve null`,
+   null, (await getVereadorBySlug(ID, "nao-existe-xyz")).row);
+
+/**
+ * RANKING — a comparacao mais importante deste bloco.
+ *
+ * O ranking era montado sobre TODAS as 2.733 proposicoes trazidas em
+ * paginas de 1000; agora vem de um `group by`. O comentario do codigo
+ * antigo registra que, quando a tabela passou de 487 para 2.731 linhas, o
+ * ranking somava so as primeiras mil e mostrava o 1o colocado ERRADO.
+ * Aqui eu refaco a conta do zero, a partir do PostgREST paginado, e
+ * comparo pontuacao por pontuacao.
+ */
+const propRank = await rest(`proposicoes?select=vereador_id,tipo&id_municipio=eq.${ID}`);
+const rkN = await getRankingVereadores(ID);
+const pontosS = new Map<string, number>();
+const totaisS: Record<string, number> = {};
+for (const p of propRank) {
+  if (!p.tipo) continue;
+  totaisS[p.tipo] = (totaisS[p.tipo] ?? 0) + 1;
+  if (!p.vereador_id) continue;
+  pontosS.set(p.vereador_id, (pontosS.get(p.vereador_id) ?? 0) + (PESO_PROPOSICAO[p.tipo] ?? 0));
+}
+eq(`ranking totais por tipo da Camara (${propRank.length} proposicoes)`,
+   Object.entries(totaisS).sort(), Object.entries(rkN.totaisPorTipo).sort());
+eq(`ranking pontuacao de cada vereador`,
+   vr.map((v) => [v.id, pontosS.get(v.id) ?? 0]).sort(),
+   rkN.rows.map((r) => [r.id, r.pontuacao]).sort());
+eq(`ranking em ordem decrescente de pontuacao`,
+   true, rkN.rows.every((r, i) => i === 0 || r.pontuacao <= rkN.rows[i - 1].pontuacao));
+eq(`ranking 1o colocado (${rkN.rows[0]?.nome_urna}, ${rkN.rows[0]?.pontuacao} pontos)`,
+   [...pontosS.entries()].sort((a, b) => b[1] - a[1])[0]?.[1], rkN.rows[0]?.pontuacao);
+eq(`ranking: mesma ordem em duas leituras (empate deterministico)`,
+   rkN.rows.map((r) => r.id), (await getRankingVereadores(ID)).rows.map((r) => r.id));
+
+// dados por vereador: escolho quem tem mais proposicoes, para o teste
+// tocar de fato os `count(*) over ()`.
+const idComMais = [...pontosS.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] as string;
+if (idComMais) {
+  const propV = await rest(`proposicoes?select=id&id_municipio=eq.${ID}&vereador_id=eq.${idComMais}`);
+  const propVN = await getProposicoesByVereador(ID, idComMais);
+  eq(`proposicoes do vereador: total ${propV.length}, ate 10 exibidas`,
+     [propV.length, Math.min(10, propV.length)], [propVN.total, propVN.rows.length]);
+  const di = await rest(`diarias?select=destino,valor&id_municipio=eq.${ID}&vereador_id=eq.${idComMais}`);
+  eq(`diarias do vereador (${di.length})`, di.length, (await getDiariasByVereador(ID, idComMais)).rows.length);
+}
+// doacoes e bens: pego quem tiver linha, senao o teste nao prova nada
+const idComDoacao = (await rest(`doacoes_campanha?select=vereador_id&id_municipio=eq.${ID}&limit=1`))[0]?.vereador_id;
+if (idComDoacao) {
+  const doa = await rest(`doacoes_campanha?select=valor&id_municipio=eq.${ID}&vereador_id=eq.${idComDoacao}`);
+  const doaN = await getDoacoesSummary(ID, idComDoacao);
+  eq(`doacoes do vereador (${doa.length} doadores)`, doa.length, doaN.total);
+  eq(`doacoes soma (${doa.reduce((a, r) => a + Number(r.valor ?? 0), 0).toFixed(2)})`,
+     Math.round(doa.reduce((a, r) => a + Number(r.valor ?? 0), 0) * 100), Math.round(doaN.soma * 100));
+  eq(`doacoes em ordem decrescente de valor`,
+     true, doaN.rows.every((r, i) => i === 0 || (r.valor ?? 0) <= (doaN.rows[i - 1].valor ?? 0)));
+} else {
+  console.log("PULOU  doacoes de campanha (tabela sem linha para Betim)");
+}
+const idComBens = (await rest(`bens_candidato?select=vereador_id&id_municipio=eq.${ID}&limit=1`))[0]?.vereador_id;
+if (idComBens) {
+  const bn = await rest(`bens_candidato?select=valor&id_municipio=eq.${ID}&vereador_id=eq.${idComBens}`);
+  const bnN = await getBensCandidato(ID, idComBens);
+  eq(`bens do vereador (${bn.length} itens)`, bn.length, bnN.total);
+  eq(`bens soma (${bn.reduce((a, r) => a + Number(r.valor ?? 0), 0).toFixed(2)})`,
+     Math.round(bn.reduce((a, r) => a + Number(r.valor ?? 0), 0) * 100), Math.round(bnN.soma * 100));
+} else {
+  console.log("PULOU  bens de candidato (tabela sem linha para Betim)");
+}
+
+/**
+ * Atividade recente. O desempate e por ANO+NUMERO, nao por id: 4
+ * requerimentos dividem a data 2026-07-15, e a Camara numera em sequencia,
+ * entao "o ultimo" e o de maior numero. Por isso a consulta de referencia
+ * aqui tambem ordena por numero — comparar contra um `order` so por data
+ * seria comparar contra uma escolha arbitraria do PostgREST.
+ */
+const atN = await getAtividadeRecenteCamara(ID);
+for (const [rotulo, filtro, campo] of [
+  ["projeto de lei", `tipo=eq.projeto_lei`, "ultimoProjeto"],
+  ["aprovado", `situacao=eq.Aprovado`, "ultimoAprovado"],
+  ["requerimento", `tipo=eq.requerimento`, "ultimoRequerimento"],
+] as const) {
+  const esperado = (await rest(
+    `proposicoes?select=numero,ano,data_apresentacao&id_municipio=eq.${ID}&${filtro}&order=data_apresentacao.desc.nullslast,ano.desc,numero.desc&limit=1`
+  ))[0];
+  const obtido = atN[campo] as { numero: number | null; ano: number | null } | null;
+  eq(`atividade recente: ultimo ${rotulo} (${esperado?.data_apresentacao}, nº ${esperado?.numero})`,
+     [esperado?.numero ?? null, esperado?.ano ?? null], [obtido?.numero ?? null, obtido?.ano ?? null]);
+}
 
 // REGRESSAO: a pagina do vereador chamava getVerbasAnalytics(row.id) com a
 // assinatura nova, passando o uuid do vereador como idMunicipio. Compilava,

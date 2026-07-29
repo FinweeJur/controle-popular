@@ -28,8 +28,9 @@ interface VereadorPageProps {
 }
 
 export async function generateMetadata({ params }: VereadorPageProps) {
+  const cidade = await cidadeDaRota(params);
   const { slug } = await params;
-  const { row } = await getVereadorBySlug(slug);
+  const { row } = await getVereadorBySlug(cidade.id_municipio, slug);
   return {
     title: row ? `${row.nome_urna ?? row.nome} — Controle Popular Betim` : "Vereador não encontrado",
   };
@@ -39,16 +40,16 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
   const cidade = await cidadeDaRota(params);
   const { slug } = await params;
   const { tema } = await searchParams;
-  const { row, ok } = await getVereadorBySlug(slug);
+  const { row, ok } = await getVereadorBySlug(cidade.id_municipio, slug);
 
   if (ok && !row) notFound();
 
   const [proposicoes, diarias, doacoes, bens, verbas, ranking, temasVereador, comissoes] = row
     ? await Promise.all([
-        getProposicoesByVereador(row.id, tema),
-        getDiariasByVereador(row.id),
-        getDoacoesSummary(row.id),
-        getBensCandidato(row.id),
+        getProposicoesByVereador(cidade.id_municipio, row.id, tema),
+        getDiariasByVereador(cidade.id_municipio, row.id),
+        getDoacoesSummary(cidade.id_municipio, row.id),
+        getBensCandidato(cidade.id_municipio, row.id),
         // REGRESSÃO CORRIGIDA: com a assinatura antiga isto era
         // `getVerbasAnalytics(vereadorId)`. Ao virar `(idMunicipio,
         // vereadorId)` a chamada continuou compilando — os dois parâmetros
@@ -60,7 +61,7 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
         // O ranking inteiro (não só este vereador) porque a barra de
         // atuação é medida contra o 1º colocado — sem o conjunto não dá
         // pra desenhar uma escala comparável nem dizer a posição.
-        getRankingVereadores(),
+        getRankingVereadores(cidade.id_municipio),
         getTemasVereador(cidade.id_municipio, row.id),
         getParticipacoesByVereador(cidade.id_municipio, row.id),
       ])

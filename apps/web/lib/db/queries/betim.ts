@@ -49,6 +49,9 @@ import {
   saude_internacoes,
   mortalidade,
   arboviroses,
+  diarias,
+  doacoes_campanha,
+  bens_candidato,
   seguranca_ocorrencias,
   servidores,
   verbas_indenizatorias,
@@ -1422,4 +1425,223 @@ export async function mortalidadeDesde(idMunicipio: IdMunicipio, anoMinimo: numb
     })
     .from(mortalidade)
     .where(and(eq(mortalidade.id_municipio, idMunicipio), gte(mortalidade.ano, anoMinimo)));
+}
+
+const COLUNAS_VEREADOR = {
+  id: vereadores.id,
+  slug: vereadores.slug,
+  nome: vereadores.nome,
+  nome_urna: vereadores.nome_urna,
+  partido: vereadores.partido,
+  email: vereadores.email,
+  cargo_mesa: vereadores.cargo_mesa,
+  foto_url: vereadores.foto_url,
+  mandato_inicio: vereadores.mandato_inicio,
+  mandato_fim: vereadores.mandato_fim,
+  votos_eleicao: vereadores.votos_eleicao,
+  ano_eleicao: vereadores.ano_eleicao,
+  biografia: vereadores.biografia,
+  profissao: vereadores.profissao,
+  aniversario_dia_mes: vereadores.aniversario_dia_mes,
+};
+
+/**
+ * Vereadores ativos.
+ *
+ * `biografia`, `profissao` e `aniversario_dia_mes` (migration 0017) são
+ * selecionadas direto: existem no banco, então o `comColunaOpcional()` que
+ * as protegia nunca chegou a usar o fallback.
+ */
+export async function listarVereadores(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select(COLUNAS_VEREADOR)
+    .from(vereadores)
+    .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.ativo, true)))
+    .orderBy(ptBr(vereadores.nome_urna), asc(vereadores.id));
+}
+
+export async function vereadorPorSlug(idMunicipio: IdMunicipio, slug: string) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select(COLUNAS_VEREADOR)
+    .from(vereadores)
+    .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.slug, slug)))
+    .limit(1);
+  return linha ?? null;
+}
+
+/**
+ * Proposições de um vereador — as 10 mais recentes, com o total do
+ * conjunto (que é maior que 10) por `count(*) over ()`.
+ *
+ * As três consultas por vereador (proposições, diárias, doações, bens)
+ * filtravam SÓ por `vereador_id`. As quatro tabelas têm `id_municipio` e
+ * agora filtram pelos dois — mesmo caso de `getTemasVereador`.
+ */
+export async function proposicoesDeVereador(
+  idMunicipio: IdMunicipio,
+  vereadorId: string,
+  tema?: string,
+  limite = 10
+) {
+  const db = getDb();
+  if (!db) return null;
+  const cond = [
+    eq(proposicoes.id_municipio, idMunicipio),
+    eq(proposicoes.vereador_id, vereadorId),
+  ];
+  if (tema) cond.push(arrayContains(proposicoes.temas, [tema]));
+  return db
+    .select({
+      tipo: proposicoes.tipo,
+      numero: proposicoes.numero,
+      ano: proposicoes.ano,
+      ementa: proposicoes.ementa,
+      situacao: proposicoes.situacao,
+      link_fonte: proposicoes.link_fonte,
+      temas: proposicoes.temas,
+      total: sql<number>`(count(*) over ())::int`,
+    })
+    .from(proposicoes)
+    .where(and(...cond))
+    .orderBy(desc(proposicoes.ano), desc(proposicoes.numero), asc(proposicoes.id))
+    .limit(limite);
+}
+
+export async function diariasDeVereador(idMunicipio: IdMunicipio, vereadorId: string) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      destino: diarias.destino,
+      data_inicio: diarias.data_inicio,
+      data_fim: diarias.data_fim,
+      valor: num(diarias.valor),
+      motivo: diarias.motivo,
+    })
+    .from(diarias)
+    .where(and(eq(diarias.id_municipio, idMunicipio), eq(diarias.vereador_id, vereadorId)))
+    .orderBy(sql`${diarias.data_inicio} desc nulls last`, asc(diarias.id));
+}
+
+/**
+ * Doações de campanha, maior valor primeiro, com o total do conjunto.
+ *
+ * CPF/CNPJ do doador não sai daqui: a Lei das Eleições exige divulgação do
+ * financiamento e o NOME é público, mas o documento não precisa aparecer.
+ */
+export async function doacoesDeVereador(idMunicipio: IdMunicipio, vereadorId: string) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      doador_nome: doacoes_campanha.doador_nome,
+      doador_tipo: doacoes_campanha.doador_tipo,
+      valor: num(doacoes_campanha.valor),
+      data_doacao: doacoes_campanha.data_doacao,
+      total: sql<number>`(count(*) over ())::int`,
+      soma: sql<number>`(coalesce(sum(${doacoes_campanha.valor}) over (), 0))::double precision`,
+    })
+    .from(doacoes_campanha)
+    .where(
+      and(
+        eq(doacoes_campanha.id_municipio, idMunicipio),
+        eq(doacoes_campanha.vereador_id, vereadorId)
+      )
+    )
+    .orderBy(sql`${doacoes_campanha.valor} desc nulls last`, asc(doacoes_campanha.id));
+}
+
+/** Patrimônio declarado na campanha (TSE), maior valor primeiro. */
+export async function bensDeVereador(idMunicipio: IdMunicipio, vereadorId: string) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      tipo_item: bens_candidato.tipo_item,
+      descricao_item: bens_candidato.descricao_item,
+      valor: num(bens_candidato.valor),
+      total: sql<number>`(count(*) over ())::int`,
+      soma: sql<number>`(coalesce(sum(${bens_candidato.valor}) over (), 0))::double precision`,
+    })
+    .from(bens_candidato)
+    .where(
+      and(
+        eq(bens_candidato.id_municipio, idMunicipio),
+        eq(bens_candidato.vereador_id, vereadorId)
+      )
+    )
+    .orderBy(sql`${bens_candidato.valor} desc nulls last`, asc(bens_candidato.id));
+}
+
+/**
+ * Contagem de proposições por (vereador, tipo) — a base do ranking de
+ * atuação.
+ *
+ * Substitui um laço que trazia TODAS as 2.733 linhas de `proposicoes` em
+ * páginas de 1000. Esse laço existia porque o PostgREST corta em 1000 sem
+ * erro, e o comentário do código registra que o ranking chegou a mostrar
+ * "o 1º colocado errado" quando a tabela passou de 487 para 2.731 linhas.
+ * Um `group by` devolve dezenas de linhas e o teto some junto.
+ *
+ * `vereador_id` vem nulo em proposição sem autor casado; essas contam para
+ * o total da Câmara e não para o ranking por pessoa — quem separa é
+ * `lib/betim/vereadores.ts`, que precisa das duas contagens.
+ */
+export async function contagemDeProposicoesPorVereador(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      vereador_id: proposicoes.vereador_id,
+      tipo: proposicoes.tipo,
+      qtd: sql<number>`count(*)::int`,
+    })
+    .from(proposicoes)
+    .where(and(eq(proposicoes.id_municipio, idMunicipio), isNotNull(proposicoes.tipo)))
+    .groupBy(proposicoes.vereador_id, proposicoes.tipo);
+}
+
+/** A proposição mais recente que casa com um filtro — teaser da Home. */
+export async function ultimaProposicao(
+  idMunicipio: IdMunicipio,
+  filtro: { tipo?: string; situacao?: string }
+) {
+  const db = getDb();
+  if (!db) return null;
+  const cond = [eq(proposicoes.id_municipio, idMunicipio)];
+  if (filtro.tipo) cond.push(eq(proposicoes.tipo, filtro.tipo));
+  if (filtro.situacao) cond.push(eq(proposicoes.situacao, filtro.situacao));
+  const [linha] = await db
+    .select({
+      tipo: proposicoes.tipo,
+      numero: proposicoes.numero,
+      ano: proposicoes.ano,
+      ementa: proposicoes.ementa,
+      link_fonte: proposicoes.link_fonte,
+      data_apresentacao: proposicoes.data_apresentacao,
+    })
+    .from(proposicoes)
+    .where(and(...cond))
+    /**
+     * Desempate por NÚMERO, não por id — e a diferença é de significado,
+     * não de estilo.
+     *
+     * Quatro requerimentos dividem `data_apresentacao = 2026-07-15`. Um
+     * desempate por uuid escolheria o nº 821; a Câmara numera as
+     * proposições em sequência, então o nº 822 é que é o último. Com id o
+     * teaser da Home ficaria determinístico e ERRADO. O `id` continua no
+     * fim como garantia de ordem total, para o caso de número repetido.
+     */
+    .orderBy(
+      sql`${proposicoes.data_apresentacao} desc nulls last`,
+      desc(proposicoes.ano),
+      desc(proposicoes.numero),
+      asc(proposicoes.id)
+    )
+    .limit(1);
+  return linha ?? null;
 }

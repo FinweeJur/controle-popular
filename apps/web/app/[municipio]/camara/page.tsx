@@ -21,9 +21,9 @@ export default async function CamaraPage({
   params: Promise<{ municipio: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
-  const { rows, ok } = await getVereadores();
+  const { rows, ok } = await getVereadores(cidade.id_municipio);
   const verbas = await getVerbasAnalytics(cidade.id_municipio);
-  const ranking = await getRankingVereadores();
+  const ranking = await getRankingVereadores(cidade.id_municipio);
   const temasCamara = await getTemasCamara(cidade.id_municipio);
 
   return (

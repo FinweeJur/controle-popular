@@ -1,4 +1,5 @@
-import { getSupabaseClient, ID_MUNICIPIO_DEFAULT, comColunaOpcional } from "@/lib/betim/supabase";
+import * as q from "@/lib/db/queries/betim";
+import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface VereadorRow {
   id: string;
@@ -13,16 +14,12 @@ export interface VereadorRow {
   mandato_fim: string | null;
   votos_eleicao: number | null;
   ano_eleicao: number | null;
-  /** `undefined` quando a migration 0017 (biografia) ainda não rodou. */
+  /** Migration 0017. As três colunas existem no banco — o
+   *  `comColunaOpcional()` que as protegia nunca usou o fallback. */
   biografia?: string | null;
   profissao?: string | null;
   aniversario_dia_mes?: string | null;
 }
-
-const VEREADOR_SELECT =
-  "id, slug, nome, nome_urna, partido, email, cargo_mesa, foto_url, mandato_inicio, mandato_fim, votos_eleicao, ano_eleicao, biografia, profissao, aniversario_dia_mes";
-const VEREADOR_SELECT_SEM_BIOGRAFIA =
-  "id, slug, nome, nome_urna, partido, email, cargo_mesa, foto_url, mandato_inicio, mandato_fim, votos_eleicao, ano_eleicao";
 
 export interface ProposicaoRow {
   tipo: string;
@@ -31,9 +28,7 @@ export interface ProposicaoRow {
   ementa: string | null;
   situacao: string | null;
   link_fonte: string | null;
-  /** `undefined` quando a migration 0012 (tags temáticas) ainda não
-   *  rodou -- `comColunaOpcional()` faz o select degradar pra sem essa
-   *  coluna em vez de derrubar a lista inteira. */
+  /** Migration 0012. A coluna existe no banco, com índice GIN. */
   temas?: string[] | null;
 }
 
@@ -55,52 +50,30 @@ export const TIPO_PROPOSICAO_LABELS: Record<string, string> = {
 };
 
 export async function getProposicoesByVereador(
+  idMunicipio: IdMunicipio,
   vereadorId: string,
   /** Filtra pra proposições que tenham ESSE tema (slug de `lib/temas.ts`). */
   tema?: string
 ): Promise<{ rows: ProposicaoRow[]; total: number; ok: boolean }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], total: 0, ok: false };
   try {
-    const base = () => {
-      let q = supabase
-        .from("proposicoes")
-        .select("tipo, numero, ano, ementa, situacao, link_fonte, temas", { count: "exact" })
-        .eq("vereador_id", vereadorId);
-      if (tema) q = q.contains("temas", [tema]);
-      return q.order("ano", { ascending: false }).order("numero", { ascending: false }).limit(10);
-    };
-    const semTemas = () => {
-      // Sem a coluna `temas`, um filtro por tema não tem como ser
-      // aplicado -- volta a lista completa (não filtrada) em vez de uma
-      // lista vazia enganosa.
-      const q = supabase
-        .from("proposicoes")
-        .select("tipo, numero, ano, ementa, situacao, link_fonte", { count: "exact" })
-        .eq("vereador_id", vereadorId);
-      return q.order("ano", { ascending: false }).order("numero", { ascending: false }).limit(10);
-    };
-    const { data, error, count } = await comColunaOpcional(base, semTemas);
-    if (error) return { rows: [], total: 0, ok: false };
-    return { rows: (data ?? []) as ProposicaoRow[], total: count ?? 0, ok: true };
+    const data = await q.proposicoesDeVereador(idMunicipio, vereadorId, tema);
+    if (!data) return { rows: [], total: 0, ok: false };
+    // O total do conjunto (que passa das 10 exibidas) vem por
+    // `count(*) over ()` na mesma consulta.
+    return { rows: data as ProposicaoRow[], total: data[0]?.total ?? 0, ok: true };
   } catch {
     return { rows: [], total: 0, ok: false };
   }
 }
 
 export async function getDiariasByVereador(
+  idMunicipio: IdMunicipio,
   vereadorId: string
 ): Promise<{ rows: DiariaRow[]; ok: boolean }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], ok: false };
   try {
-    const { data, error } = await supabase
-      .from("diarias")
-      .select("destino, data_inicio, data_fim, valor, motivo")
-      .eq("vereador_id", vereadorId)
-      .order("data_inicio", { ascending: false });
-    if (error) return { rows: [], ok: false };
-    return { rows: (data ?? []) as DiariaRow[], ok: true };
+    const data = await q.diariasDeVereador(idMunicipio, vereadorId);
+    if (!data) return { rows: [], ok: false };
+    return { rows: data as DiariaRow[], ok: true };
   } catch {
     return { rows: [], ok: false };
   }
@@ -125,20 +98,19 @@ export interface DoadorRow {
  * só se expõe nome/tipo/valor/data, não o documento.
  */
 export async function getDoacoesSummary(
+  idMunicipio: IdMunicipio,
   vereadorId: string
 ): Promise<{ total: number; soma: number; rows: DoadorRow[]; ok: boolean }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { total: 0, soma: 0, rows: [], ok: false };
   try {
-    const { data, error, count } = await supabase
-      .from("doacoes_campanha")
-      .select("doador_nome, doador_tipo, valor, data_doacao", { count: "exact" })
-      .eq("vereador_id", vereadorId)
-      .order("valor", { ascending: false });
-    if (error) return { total: 0, soma: 0, rows: [], ok: false };
-    const rows = (data ?? []) as DoadorRow[];
-    const soma = rows.reduce((acc, r) => acc + Number(r.valor || 0), 0);
-    return { total: count ?? 0, soma, rows, ok: true };
+    const data = await q.doacoesDeVereador(idMunicipio, vereadorId);
+    if (!data) return { total: 0, soma: 0, rows: [], ok: false };
+    // Total e soma vêm por `over ()` na mesma consulta.
+    return {
+      total: data[0]?.total ?? 0,
+      soma: data[0]?.soma ?? 0,
+      rows: data as DoadorRow[],
+      ok: true,
+    };
   } catch {
     return { total: 0, soma: 0, rows: [], ok: false };
   }
@@ -159,37 +131,30 @@ export interface BemCandidatoRow {
  * tabela inteira ausente não arrisca quebrar nenhuma OUTRA leitura.
  */
 export async function getBensCandidato(
+  idMunicipio: IdMunicipio,
   vereadorId: string
 ): Promise<{ rows: BemCandidatoRow[]; total: number; soma: number; ok: boolean }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], total: 0, soma: 0, ok: false };
   try {
-    const { data, error, count } = await supabase
-      .from("bens_candidato")
-      .select("tipo_item, descricao_item, valor", { count: "exact" })
-      .eq("vereador_id", vereadorId)
-      .order("valor", { ascending: false });
-    if (error) return { rows: [], total: 0, soma: 0, ok: false };
-    const rows = (data ?? []) as BemCandidatoRow[];
-    const soma = rows.reduce((acc, r) => acc + Number(r.valor || 0), 0);
-    return { rows, total: count ?? 0, soma, ok: true };
+    const data = await q.bensDeVereador(idMunicipio, vereadorId);
+    if (!data) return { rows: [], total: 0, soma: 0, ok: false };
+    return {
+      rows: data as BemCandidatoRow[],
+      total: data[0]?.total ?? 0,
+      soma: data[0]?.soma ?? 0,
+      ok: true,
+    };
   } catch {
     return { rows: [], total: 0, soma: 0, ok: false };
   }
 }
 
-export async function getVereadores(): Promise<{ rows: VereadorRow[]; ok: boolean }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], ok: false };
+export async function getVereadores(
+  idMunicipio: IdMunicipio
+): Promise<{ rows: VereadorRow[]; ok: boolean }> {
   try {
-    const { data, error } = await supabase
-      .from("vereadores")
-      .select(VEREADOR_SELECT)
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .eq("ativo", true)
-      .order("nome_urna", { ascending: true });
-    if (error) return { rows: [], ok: false };
-    return { rows: (data ?? []) as VereadorRow[], ok: true };
+    const data = await q.listarVereadores(idMunicipio);
+    if (!data) return { rows: [], ok: false };
+    return { rows: data as VereadorRow[], ok: true };
   } catch {
     return { rows: [], ok: false };
   }
@@ -318,77 +283,53 @@ export interface RankingVereador {
 }
 
 /**
- * Busca TODAS as linhas de `proposicoes` (vereador_id, tipo) para o
- * município, paginando em blocos de 1000 -- o teto padrão do PostgREST
- * por `.execute()`, que corta silenciosamente sem erro em vez de avisar.
- *
- * Existia só um comentário aqui avisando que a tabela "ficava perto" de
- * 1000 linhas (487 na época); depois de corrigir a paginação do scraper
- * da Câmara (`etl/camaras/betim.py` -- ele também truncava, só que a
- * 20 itens por página em vez de 1000), a tabela real passou de 487 para
- * 2731 linhas, estourando esse teto de verdade. O ranking mostrava um
- * corte de 1000 proposições e o 1º colocado errado até este fetch virar
- * paginado -- o mesmo tipo de bug do scraper, um nível acima.
- */
-async function fetchAllProposicoesTipos(
-  supabase: NonNullable<ReturnType<typeof getSupabaseClient>>
-): Promise<{ vereador_id: string | null; tipo: string | null }[]> {
-  const PAGE_SIZE = 1000;
-  const todas: { vereador_id: string | null; tipo: string | null }[] = [];
-  for (let offset = 0; ; offset += PAGE_SIZE) {
-    const { data, error } = await supabase
-      .from("proposicoes")
-      .select("vereador_id, tipo")
-      .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-      .range(offset, offset + PAGE_SIZE - 1);
-    if (error) throw error;
-    todas.push(...((data ?? []) as { vereador_id: string | null; tipo: string | null }[]));
-    if (!data || data.length < PAGE_SIZE) break;
-  }
-  return todas;
-}
-
-/**
  * Ranking de atuação legislativa — soma ponderada de todas as proposições
  * de cada vereador (PESO_PROPOSICAO), maior primeiro.
+ *
+ * A contagem por (vereador, tipo) agora vem agregada do banco. Antes, o
+ * app trazia as 2.733 linhas de `proposicoes` em páginas de 1000 e contava
+ * em memória — laço que existia porque o PostgREST corta em 1000 SEM ERRO.
+ * O comentário do código anterior registra o estrago: quando a tabela
+ * passou de 487 para 2.731 linhas (depois de consertar a paginação do
+ * scraper da Câmara), o ranking passou a somar só as primeiras mil e
+ * mostrava o 1º colocado errado. Com `group by` não existe página para
+ * truncar.
+ *
+ * A PONDERAÇÃO CONTINUA NO JS de propósito: `PESO_PROPOSICAO` é decisão
+ * editorial documentada (Projeto de Lei vale 15, Indicação vale 1), não
+ * propriedade do dado. Levá-la para o SQL esconderia num `case when` a
+ * régua que a página `/camara` explica ao leitor.
  */
-export async function getRankingVereadores(): Promise<{
+export async function getRankingVereadores(idMunicipio: IdMunicipio): Promise<{
   rows: RankingVereador[];
   /** Contagem por tipo somando a Câmara inteira (alimenta o gráfico de
    *  composição sem precisar de um segundo select de `proposicoes`). */
   totaisPorTipo: Record<string, number>;
   ok: boolean;
 }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { rows: [], totaisPorTipo: {}, ok: false };
-
   try {
-    const [vereadoresRes, todasProposicoes] = await Promise.all([
-      supabase
-        .from("vereadores")
-        .select("id, slug, nome_urna, partido")
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .eq("ativo", true),
-      fetchAllProposicoesTipos(supabase),
+    const [vereadoresRows, contagens] = await Promise.all([
+      q.listarVereadores(idMunicipio),
+      q.contagemDeProposicoesPorVereador(idMunicipio),
     ]);
-
-    if (vereadoresRes.error) return { rows: [], totaisPorTipo: {}, ok: false };
+    if (!vereadoresRows || !contagens) return { rows: [], totaisPorTipo: {}, ok: false };
 
     const porVereador = new Map<string, { pontuacao: number; porTipo: Record<string, number> }>();
     const totaisPorTipo: Record<string, number> = {};
-    for (const p of todasProposicoes) {
-      if (!p.tipo) continue;
+    for (const c of contagens) {
+      const tipo = c.tipo;
+      if (!tipo) continue;
       // O total da Câmara conta toda proposição, inclusive as sem autor
       // casado com um vereador ativo — o ranking por pessoa não pode.
-      totaisPorTipo[p.tipo] = (totaisPorTipo[p.tipo] ?? 0) + 1;
-      if (!p.vereador_id) continue;
-      const acc = porVereador.get(p.vereador_id) ?? { pontuacao: 0, porTipo: {} };
-      acc.pontuacao += PESO_PROPOSICAO[p.tipo] ?? 0;
-      acc.porTipo[p.tipo] = (acc.porTipo[p.tipo] ?? 0) + 1;
-      porVereador.set(p.vereador_id, acc);
+      totaisPorTipo[tipo] = (totaisPorTipo[tipo] ?? 0) + c.qtd;
+      if (!c.vereador_id) continue;
+      const acc = porVereador.get(c.vereador_id) ?? { pontuacao: 0, porTipo: {} };
+      acc.pontuacao += (PESO_PROPOSICAO[tipo] ?? 0) * c.qtd;
+      acc.porTipo[tipo] = (acc.porTipo[tipo] ?? 0) + c.qtd;
+      porVereador.set(c.vereador_id, acc);
     }
 
-    const rows: RankingVereador[] = ((vereadoresRes.data ?? []) as VereadorRow[])
+    const rows: RankingVereador[] = (vereadoresRows as VereadorRow[])
       .map((v) => {
         const acc = porVereador.get(v.id) ?? { pontuacao: 0, porTipo: {} };
         return {
@@ -400,7 +341,13 @@ export async function getRankingVereadores(): Promise<{
           porTipo: acc.porTipo,
         };
       })
-      .sort((a, b) => b.pontuacao - a.pontuacao);
+      // Desempate por nome: vereadores com a mesma pontuação saíam em
+      // ordem indefinida, e com SSG o gráfico mudaria a cada build.
+      .sort(
+        (a, b) =>
+          b.pontuacao - a.pontuacao ||
+          (a.nome_urna ?? "").localeCompare(b.nome_urna ?? "", "pt-BR")
+      );
 
     return { rows, totaisPorTipo, ok: true };
   } catch {
@@ -424,45 +371,21 @@ export interface AtividadeRecente {
 }
 
 /** Última proposição de cada tipo (por data de apresentação), pro teaser da Home. */
-export async function getAtividadeRecenteCamara(): Promise<AtividadeRecente> {
-  const supabase = getSupabaseClient();
+export async function getAtividadeRecenteCamara(
+  idMunicipio: IdMunicipio
+): Promise<AtividadeRecente> {
   const EMPTY = { ultimoProjeto: null, ultimoAprovado: null, ultimoRequerimento: null, ok: false };
-  if (!supabase) return EMPTY;
-
-  const SELECT = "tipo, numero, ano, ementa, link_fonte, data_apresentacao";
-
   try {
     const [projeto, aprovado, requerimento] = await Promise.all([
-      supabase
-        .from("proposicoes")
-        .select(SELECT)
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .eq("tipo", "projeto_lei")
-        .order("data_apresentacao", { ascending: false, nullsFirst: false })
-        .limit(1)
-        .maybeSingle(),
-      supabase
-        .from("proposicoes")
-        .select(SELECT)
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .eq("situacao", "Aprovado")
-        .order("data_apresentacao", { ascending: false, nullsFirst: false })
-        .limit(1)
-        .maybeSingle(),
-      supabase
-        .from("proposicoes")
-        .select(SELECT)
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .eq("tipo", "requerimento")
-        .order("data_apresentacao", { ascending: false, nullsFirst: false })
-        .limit(1)
-        .maybeSingle(),
+      q.ultimaProposicao(idMunicipio, { tipo: "projeto_lei" }),
+      q.ultimaProposicao(idMunicipio, { situacao: "Aprovado" }),
+      q.ultimaProposicao(idMunicipio, { tipo: "requerimento" }),
     ]);
 
     return {
-      ultimoProjeto: (projeto.data as AtividadeRecenteItem) ?? null,
-      ultimoAprovado: (aprovado.data as AtividadeRecenteItem) ?? null,
-      ultimoRequerimento: (requerimento.data as AtividadeRecenteItem) ?? null,
+      ultimoProjeto: (projeto as AtividadeRecenteItem) ?? null,
+      ultimoAprovado: (aprovado as AtividadeRecenteItem) ?? null,
+      ultimoRequerimento: (requerimento as AtividadeRecenteItem) ?? null,
       ok: true,
     };
   } catch {
@@ -471,28 +394,12 @@ export async function getAtividadeRecenteCamara(): Promise<AtividadeRecente> {
 }
 
 export async function getVereadorBySlug(
+  idMunicipio: IdMunicipio,
   slug: string
 ): Promise<{ row: VereadorRow | null; ok: boolean }> {
-  const supabase = getSupabaseClient();
-  if (!supabase) return { row: null, ok: false };
   try {
-    const comBiografia = () =>
-      supabase
-        .from("vereadores")
-        .select(VEREADOR_SELECT)
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .eq("slug", slug)
-        .maybeSingle();
-    const semBiografia = () =>
-      supabase
-        .from("vereadores")
-        .select(VEREADOR_SELECT_SEM_BIOGRAFIA)
-        .eq("id_municipio", ID_MUNICIPIO_DEFAULT)
-        .eq("slug", slug)
-        .maybeSingle();
-    const { data, error } = await comColunaOpcional(comBiografia, semBiografia);
-    if (error) return { row: null, ok: false };
-    return { row: (data as VereadorRow) ?? null, ok: true };
+    const row = await q.vereadorPorSlug(idMunicipio, slug);
+    return { row: (row as VereadorRow) ?? null, ok: true };
   } catch {
     return { row: null, ok: false };
   }
