@@ -1,4 +1,5 @@
 import Link from "@/lib/betim/link";
+import OutrasFrentes from "@/app/components/OutrasFrentes";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import RankingVereadores from "@/app/[municipio]/components/charts/RankingVereadores";
 import * as q from "@/lib/db/queries/betim";
@@ -741,6 +742,8 @@ export default async function HomePage({
             Conheça o projeto →
           </Link>
         </section>
+
+        <OutrasFrentes atual="cidades" />
       </main>
     </div>
   );

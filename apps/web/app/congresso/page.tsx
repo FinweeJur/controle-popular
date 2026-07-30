@@ -1,7 +1,6 @@
 import Link from "@/lib/congresso/link";
+import OutrasFrentes from "@/app/components/OutrasFrentes";
 import { totaisHome } from "@/lib/db/queries/congresso";
-
-export const revalidate = 900;
 
 /**
  * Home. Renderiza normalmente mesmo sem Supabase configurado — é o que
@@ -80,6 +79,8 @@ export default async function Home() {
           Ler a metodologia completa
         </Link>
       </section>
+
+      <OutrasFrentes atual="congresso" />
     </div>
   );
 }

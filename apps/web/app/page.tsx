@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ZONAS } from "@/lib/zonas";
 
 /**
  * Home da marca Controle Popular, na raiz do domínio.
@@ -24,59 +25,10 @@ export const metadata: Metadata = {
     "Transparência do orçamento e dos contratos de Betim-MG, monitoramento do que o Congresso Nacional decide sobre direitos, e quem ocupa cada cadeira do Judiciário. Portal independente.",
 };
 
-interface Secao {
-  href: string;
-  etiqueta: string;
-  titulo: string;
-  descricao: string;
-  itens: string[];
-  cor: string;
-}
-
-const SECOES: Secao[] = [
-  {
-    href: "/betim",
-    etiqueta: "Municipal · Betim-MG",
-    titulo: "Prefeitura e Câmara de Betim",
-    descricao:
-      "Para onde vai o dinheiro da cidade: contratos, fornecedores, orçamento, obras e a atuação de cada vereador — com serviços do dia a dia reunidos no mesmo lugar.",
-    itens: [
-      "Contratos e licitações com alertas de risco",
-      "Ranking de atuação dos 23 vereadores",
-      "Saúde, educação e economia em dados",
-      "Farmácias de plantão, coleta de lixo, postos",
-    ],
-    cor: "var(--cp-primary)",
-  },
-  {
-    href: "/congresso",
-    etiqueta: "Federal · Congresso Nacional",
-    titulo: "O que o Congresso decide sobre seus direitos",
-    descricao:
-      "Projetos de lei federais por tema, comissão e bancada, com uma análise fundamentada de quais direitos cada proposta amplia ou restringe — e o ofício pronto para você se manifestar.",
-    itens: [
-      "5.500+ proposições de 2026 acompanhadas",
-      "Análise garantista × reducionista auditável",
-      "Comissões e frentes parlamentares",
-      "Gera ofício de apoio ou repúdio em PDF",
-    ],
-    cor: "var(--cp-accent)",
-  },
-  {
-    href: "/judiciario",
-    etiqueta: "Judiciário · Tribunais superiores",
-    titulo: "Quem ocupa, quem indicou, quando vaga",
-    descricao:
-      "O único Poder cujos membros ninguém elege. Composição de cada tribunal, quem indicou cada ministro, e a data em que cada um é obrigado a se aposentar — calculada, não estimada.",
-    itens: [
-      "Data de aposentadoria de cada ministro (75 anos, por lei)",
-      "Quantas cadeiras cada Presidente já indicou",
-      "Toda indicação enviada ao Senado, aprovada ou rejeitada",
-      "Origem de cada cadeira: carreira, OAB ou Ministério Público",
-    ],
-    cor: "var(--cp-secondary, #7c3aed)",
-  },
-];
+// A cópia das três frentes mora em `lib/zonas.ts`, porque o bloco de
+// remissão no pé de cada zona (`app/components/OutrasFrentes.tsx`) descreve
+// as mesmas frentes — duplicar aqui garantiria deriva entre as duas telas.
+const SECOES = ZONAS;
 
 export default function Hub() {
   return (

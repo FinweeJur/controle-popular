@@ -43,7 +43,17 @@ export default function CongressoLayout({
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            {/* Pontes para as zonas irmãs (mesmo motivo do <a> acima). */}
+            {/* Pontes para as zonas irmãs (mesmo motivo do <a> acima).
+                Precisa apontar para AS DUAS: o /judiciario faltava aqui,
+                enquanto as outras duas zonas já se linkavam mutuamente —
+                era o único vértice quebrado do triângulo. Mesmo rótulo e
+                estilo que as irmãs usam, convenção do ecossistema. */}
+            <a
+              href="/judiciario"
+              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
+            >
+              Judiciário →
+            </a>
             <a
               href="/betim"
               className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"

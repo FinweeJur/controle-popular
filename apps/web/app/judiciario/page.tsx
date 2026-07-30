@@ -1,8 +1,7 @@
 import Link from "@/lib/judiciario/link";
+import OutrasFrentes from "@/app/components/OutrasFrentes";
 import { listarTribunais, proximasVacancias, listarNomeacoes } from "@/lib/judiciario/tribunais";
 import { rotuloResultado } from "@/lib/judiciario/rotulos";
-
-export const revalidate = 3600;
 
 const fmtData = (d: string | null) =>
   d ? new Date(d + "T00:00:00").toLocaleDateString("pt-BR") : "—";
@@ -115,6 +114,8 @@ export default async function Home() {
           </Link>
         </p>
       </section>
+
+      <OutrasFrentes atual="judiciario" />
     </div>
   );
 }
