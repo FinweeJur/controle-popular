@@ -83,7 +83,12 @@ import unicodedata
 
 from playwright.sync_api import sync_playwright
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client, upsert_com_colunas_opcionais
+from etl.common import (
+    ID_MUNICIPIO_DEFAULT,
+    PgAPIError,
+    get_supabase_client,
+    upsert_com_colunas_opcionais,
+)
 from etl.temas import classificar_texto
 
 BASE_URL = "https://www.camarabetim.mg.gov.br"
@@ -480,8 +485,6 @@ def _upsert_proposicoes(client, rows: list[dict]) -> int:
     fadadas -- ver `upsert_com_colunas_opcionais` em `etl/common.py` pro
     mesmo padrão usado em `etl/pncp/contratos.py`, adaptado aqui pro
     insert/update linha a linha que este módulo já usa)."""
-    from postgrest.exceptions import APIError
-
     total = 0
     temas_disponivel = True
     for row in rows:
@@ -502,7 +505,7 @@ def _upsert_proposicoes(client, rows: list[dict]) -> int:
                 client.table("proposicoes").update(row).eq("id", existing.data[0]["id"]).execute()
             else:
                 client.table("proposicoes").insert(row).execute()
-        except APIError as e:
+        except PgAPIError as e:
             if e.code != "42703" or not temas_disponivel:
                 raise
             print(

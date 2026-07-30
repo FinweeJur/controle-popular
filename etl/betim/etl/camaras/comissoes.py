@@ -40,7 +40,7 @@ from html import unescape
 from playwright.sync_api import sync_playwright
 
 from etl.camaras.betim import BASE_URL, DETAIL_LINK_RE, _scrape_lista, _wait_for_blazor, _slugify
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client, refresh_completo_seguro
 
 TAG_RE = re.compile(r"<[^>]+>")
 PERIODO_RE = re.compile(
@@ -112,7 +112,7 @@ def _scrape_comissoes_vereador(page, vereador_id: str) -> dict | None:
     return {"slug": slug, **_parse_bloco(bloco)}
 
 
-def sync(id_municipio: str) -> None:
+def sync(id_municipio: str, permitir_reducao: bool = False) -> None:
     client = get_supabase_client()
 
     vereadores_db = (
@@ -166,9 +166,6 @@ def sync(id_municipio: str) -> None:
 
         # "em andamento": recompute total pra este vereador (delete+insert),
         # não upsert -- ver docstring do módulo (NULL != NULL no unique).
-        client.table("comissao_membros").delete().eq("id_municipio", id_municipio).eq(
-            "vereador_id", vereador_id
-        ).eq("ativo", True).execute()
         andamento_rows = [
             {
                 "id_municipio": id_municipio,
@@ -182,9 +179,28 @@ def sync(id_municipio: str) -> None:
             }
             for item in r["andamento"]
         ]
+        # O delete+insert acontece dentro de `refresh_completo_seguro`: a aba
+        # é renderizada pelo Blazor e pode voltar vazia/parcial numa rodada
+        # ruim, e aí o recompute apagaria participações ativas reais (mesma
+        # falha que custou 55 linhas de `verbas_indenizatorias` em
+        # 2026-07-29). `ao_reduzir="skip"`: uma página incompleta não pode
+        # derrubar a varredura dos outros 22 vereadores.
         if andamento_rows:
-            client.table("comissao_membros").insert(andamento_rows).execute()
-        total_andamento += len(andamento_rows)
+            gravou = refresh_completo_seguro(
+                client,
+                "comissao_membros",
+                {"id_municipio": id_municipio, "vereador_id": vereador_id, "ativo": True},
+                andamento_rows,
+                permitir_reducao=permitir_reducao,
+                ao_reduzir="skip",
+                rotulo=f"etl.camaras.comissoes/{r['slug']}",
+            )
+            total_andamento += len(andamento_rows) if gravou else 0
+        else:
+            print(
+                f"[etl.camaras.comissoes] {r['slug']}: bloco 'em andamento' vazio -- "
+                "participações ativas atuais preservadas (nada apagado)."
+            )
 
         # "finalizadas": período real já é chave natural estável -- upsert.
         finalizadas_rows = [
@@ -217,9 +233,14 @@ def sync(id_municipio: str) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
+    parser.add_argument(
+        "--permitir-reducao",
+        action="store_true",
+        help="grava mesmo que a raspagem tenha menos participações ativas que o banco",
+    )
     args = parser.parse_args()
     try:
-        sync(args.id_municipio)
+        sync(args.id_municipio, permitir_reducao=args.permitir_reducao)
     except RuntimeError as e:
         print(f"[etl.camaras.comissoes] ABORT: {e}", file=sys.stderr)
         sys.exit(1)

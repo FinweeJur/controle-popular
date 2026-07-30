@@ -21,8 +21,10 @@ jobs:
       run:
         working-directory: etl/judiciario
     env:
-      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      # Desde a Fase 3 da migração Cloudflare/Neon o app lê só do Neon — o
+      # ETL escrevia no Supabase (secrets antigos) e sincronizava dado que
+      # ninguém mais lia. Mesma variável que apps/web/.env.local usa.
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

@@ -41,7 +41,7 @@ import sys
 import unicodedata
 
 from etl.bd.common import bd_query
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, PgAPIError, get_supabase_client
 
 ANO_ELEICAO_DEFAULT = 2024
 
@@ -185,8 +185,6 @@ def _sync_bens(
     landed, matching how the rest of this session's new-column/new-table
     additions degrade rather than take down an entire ETL run over one
     missing piece."""
-    from postgrest.exceptions import APIError
-
     if not id_candidato_to_vereador_id:
         return 0
     sequenciais = ",".join(f"'{s}'" for s in id_candidato_to_vereador_id)
@@ -208,8 +206,12 @@ def _sync_bens(
         # Same "insert, no unique constraint" cadence as doacoes_campanha
         # above -- once-per-term, re-running mid-term would duplicate.
         client.table("bens_candidato").insert(bens_rows).execute()
-    except APIError as e:
-        if e.code != "PGRST205":
+    except PgAPIError as e:
+        # 42P01 = Postgres undefined_table. Antes da troca para psycopg este
+        # teste era por PGRST205 (tabela fora do cache de schema do
+        # PostgREST); falando com o banco direto, "tabela não existe" chega
+        # como o código cru do Postgres.
+        if e.code != "42P01":
             raise
         print(
             "[etl.bd.tse] tabela 'bens_candidato' ainda não existe "

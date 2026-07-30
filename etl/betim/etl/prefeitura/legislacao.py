@@ -27,7 +27,7 @@ import sys
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, PgAPIError, get_supabase_client
 from etl.temas import classificar_texto
 
 BASE = "https://www.betim.mg.gov.br/portal/dados-abertos/legislacao"
@@ -68,15 +68,14 @@ def _map_ato(raw: dict, id_municipio: str) -> dict:
 
 def _inserir_com_temas_opcional(client, rows: list[dict]):
     """Insert tolerando a coluna `temas` ausente (migration 0025 não rodada)."""
-    from postgrest.exceptions import APIError
-
-    # 42703 = Postgres undefined_column; PGRST204 = PostgREST não achou a
-    # coluna no cache de schema (é o que o INSERT via REST devolve quando a
-    # migration 0025 ainda não rodou). Trata os dois como "coluna ausente".
+    # 42703 = Postgres undefined_column, que é o que o INSERT devolve quando
+    # a migration 0025 ainda não rodou. (Antes da troca para psycopg também
+    # se tratava PGRST204, o equivalente do PostgREST; falando com o banco
+    # direto esse caso não existe mais.)
     try:
         client.table("atos_oficiais").insert(rows).execute()
-    except APIError as e:
-        if e.code not in ("42703", "PGRST204"):
+    except PgAPIError as e:
+        if e.code != "42703":
             raise
         print("[etl.prefeitura.legislacao] coluna 'temas' ainda não existe -- gravando sem ela (rode a 0025).")
         client.table("atos_oficiais").insert(

@@ -1,10 +1,24 @@
-"""etl.camara.orgaos — comissões da Câmara.
+"""etl.camara.orgaos — comissões (e Mesa Diretora) da Câmara.
 
 Rodar: `python -m etl.camara.orgaos`
 
-`codTipoOrgao`: 2 = Comissão Permanente, 3 = Comissão Temporária/Especial.
-São as permanentes (CCJC, CAPADR, CSSF...) que importam para o ofício: é
-onde o PL efetivamente tramita e onde estão relator e presidente.
+`codTipoOrgao`: 1 = Mesa Diretora (Comissão Diretora), 2 = Comissão
+Permanente, 3 = Comissão Temporária/Especial. São os três que importam
+para o ofício: onde o PL efetivamente tramita e onde estão relator e
+presidente — ou, no caso da Mesa, o Presidente da Câmara e os
+Vice-Presidentes/Secretários.
+
+ACHADO REAL (2026-07-29, verificado contra o banco de produção): sem o
+tipo 1, **2.369 das 5.168 proposições com órgão atual (46%!) caíam no
+fallback de "só autor"** por estarem paradas em `MESA` — não por falta de
+comissão real, mas porque `MESA` (`codTipoOrgao=1`, "Mesa Diretora da
+Câmara dos Deputados") nunca era sincronizada. É um órgão REAL e
+endereçável (tem Presidente + Vice-Presidentes + Secretários eleitos, a
+API devolve `/orgaos/4/membros` normalmente) — diferente de `PLEN`
+(Plenário, `codTipoOrgao=26`, sem colegiado próprio de titulares) e `CCP`
+("Coordenação de Comissões Permanentes", `codTipoOrgao=12000`, órgão
+administrativo de protocolo/triagem, não decide nada) — esses dois
+continuam corretamente caindo no fallback de autor, não é bug.
 
 LIMITAÇÃO CONHECIDA: `/orgaos/{id}` **não traz e-mail** da comissão —
 verificado ao vivo em 2026-07-22, só `urlWebsite`, `sala` e datas. Para o
@@ -18,7 +32,7 @@ import argparse
 from etl.camara import client
 from etl.common import get_supabase_client, registrar_fonte, upsert_em_lotes
 
-TIPOS_INTERESSE = [2, 3]  # permanente, temporária
+TIPOS_INTERESSE = [1, 2, 3]  # Mesa Diretora, permanente, temporária
 
 
 def coletar(tipos: list[int] | None = None) -> list[dict]:

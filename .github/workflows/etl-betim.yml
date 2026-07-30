@@ -42,10 +42,10 @@ on:
 
 env:
   ID_MUNICIPIO: '3106705'
-  # etl/common.py reads NEXT_PUBLIC_SUPABASE_URL (same var name the Next.js app
-  # uses) — map the GitHub secret (named SUPABASE_URL) onto it here.
-  NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-  SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+  # Desde a Fase 3 da migração Cloudflare/Neon o app lê só do Neon — o ETL
+  # escrevia no Supabase (secrets antigos) e sincronizava dado que ninguém
+  # mais lia. Mesma variável que apps/web/.env.local usa.
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
   GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   TRANSPARENCIA_API_KEY: ${{ secrets.TRANSPARENCIA_API_KEY }}
   AI_API_KEY: ${{ secrets.AI_API_KEY }}

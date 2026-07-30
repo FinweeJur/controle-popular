@@ -35,7 +35,7 @@ import sys
 
 from playwright.sync_api import sync_playwright
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client, refresh_completo_seguro
 
 BASE_URL = "https://www.camarabetim.mg.gov.br"
 DIARIAS_PATH = "/Transparência/Diárias"
@@ -102,7 +102,7 @@ def _scrape(page) -> list[dict]:
     return registros
 
 
-def sync(id_municipio: str) -> None:
+def sync(id_municipio: str, permitir_reducao: bool = False) -> None:
     client = get_supabase_client()
 
     with sync_playwright() as p:
@@ -140,20 +140,35 @@ def sync(id_municipio: str) -> None:
 
     # No natural-key unique constraint on `diarias` either -- same
     # DDL-access limitation as proposicoes (see etl/camaras/betim.py
-    # docstring). Dataset is tiny (2 records as of 2026-07-21), so a
-    # full delete+reinsert per run is simpler and safe here, unlike the
-    # larger tables elsewhere in this ETL.
-    client.table("diarias").delete().eq("id_municipio", id_municipio).eq("orgao", "camara").execute()
-    client.table("diarias").insert(rows).execute()
-    print(f"[etl.camaras.diarias] total={len(rows)}")
+    # docstring). Refresh total, mas via `refresh_completo_seguro`: o parser
+    # aqui para no primeiro `break` (linha em branco, campo faltando, layout
+    # mudado) e devolve o que leu até ali, então um refresh cru poderia
+    # apagar registros por causa de uma linha malformada -- foi assim que
+    # `verbas_indenizatorias` perdeu 55 linhas em 2026-07-29.
+    gravou = refresh_completo_seguro(
+        client,
+        "diarias",
+        {"id_municipio": id_municipio, "orgao": "camara"},
+        rows,
+        permitir_reducao=permitir_reducao,
+        rotulo="etl.camaras.diarias",
+    )
+    if gravou:
+        print(f"[etl.camaras.diarias] total={len(rows)}")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
+    parser.add_argument(
+        "--permitir-reducao",
+        action="store_true",
+        help="grava mesmo que a raspagem tenha menos linhas que o banco (use só "
+        "depois de confirmar na fonte que os registros sumiram de verdade)",
+    )
     args = parser.parse_args()
     try:
-        sync(args.id_municipio)
+        sync(args.id_municipio, permitir_reducao=args.permitir_reducao)
     except RuntimeError as e:
         print(f"[etl.camaras.diarias] ABORT: {e}", file=sys.stderr)
         sys.exit(1)

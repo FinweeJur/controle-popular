@@ -8,41 +8,361 @@ CITY_HALL_CNPJ = "18715391000196"
 CITY_LAT = float(os.environ.get("CITY_LAT", "-19.9681"))
 CITY_LNG = float(os.environ.get("CITY_LNG", "-44.1983"))
 
-SUPABASE_URL = os.environ.get("NEXT_PUBLIC_SUPABASE_URL")
-SUPABASE_SERVICE_ROLE_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
-
-
-def get_supabase_client():
-    from supabase import create_client
-
-    if not SUPABASE_URL or not SUPABASE_SERVICE_ROLE_KEY:
-        raise RuntimeError(
-            "SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY não configurados no .env — "
-            "crie o projeto Supabase (F0.2) antes de rodar upserts."
-        )
-    return create_client(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
-
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 PAGE_SIZE = 1000
 
 
+# Schema Postgres deste app. O banco (Neon) é COMPARTILHADO com o
+# /congresso e o /judiciario, que vivem em schemas próprios; as tabelas
+# deste eixo são as do `public` (61 tabelas), como já eram no Supabase.
+SCHEMA = "public"
+
+
+class PgAPIError(Exception):
+    """Duck-types a fatia da interface de `postgrest.exceptions.APIError`
+    que este ETL usava (`.code`/`.message`).
+
+    Existe só para o código que já degrada por "coluna/tabela ainda não
+    existe" (`upsert_com_colunas_opcionais`, `_inserir_com_temas_opcional`
+    em `etl/prefeitura/legislacao.py`, `_upsert_bens` em `etl/bd/tse.py`,
+    `_gravar_proposicoes` em `etl/camaras/betim.py`) continuar funcionando
+    sem mudar a lógica — agora sobre erro real do Postgres em vez de
+    PostgREST. Códigos equivalentes:
+
+      PGRST204 (coluna fora do cache de schema) -> 42703 undefined_column
+      PGRST205 (tabela fora do cache de schema) -> 42P01 undefined_table
+    """
+
+    def __init__(self, code: str, message: str):
+        self.code = code
+        self.message = message
+        super().__init__(f"[{code}] {message}")
+
+
+class _Response:
+    def __init__(self, data: list[dict], count: int | None = None):
+        self.data = data
+        self.count = count
+
+
+def _adapt(v):
+    """psycopg não sabe adaptar `dict`/`list[dict]` (colunas jsonb, ex.
+    `municipios.malha_geojson`) sozinho — precisa do wrapper `Json`. Arrays
+    de escalar (`temas: list[str]`, `grupos_economicos.cnpjs`) continuam
+    passando direto, viram array do Postgres nativamente."""
+    if isinstance(v, dict) or (isinstance(v, list) and v and isinstance(v[0], dict)):
+        from psycopg.types.json import Json
+
+        return Json(v)
+    return v
+
+
+def _row_out(row: dict) -> dict:
+    """Converte os tipos nativos do psycopg para os MESMOS tipos que o
+    supabase-py entregava.
+
+    O PostgREST devolvia JSON, então toda leitura chegava como primitivo:
+    `date`/`timestamptz` viravam string ISO, `numeric` virava número,
+    `uuid` virava string. O psycopg devolve os objetos Python de verdade
+    (`datetime.date`, `Decimal`, `UUID`) — e aí código que já existia
+    quebra ou, pior, compara errado em silêncio.
+
+    Achado ao vivo migrando o /judiciario: `etl/vacancia.py` faz
+    `vp <= hoje.isoformat()` sobre `vacancia_projetada` e passou a estourar
+    `TypeError: '<=' not supported between 'datetime.date' and 'str'`.
+    Um `Decimal` no lugar de `float` não estouraria nada — só somaria
+    diferente. Converter aqui, num lugar só, é o que mantém a promessa do
+    adapter ("mesma interface") de verdade, em vez de auditar cada uma das
+    dezenas de leituras.
+    """
+    import datetime as _dt
+    from decimal import Decimal as _Decimal
+    from uuid import UUID as _UUID
+
+    out = {}
+    for k, v in row.items():
+        if isinstance(v, (_dt.date, _dt.datetime, _dt.time)):
+            out[k] = v.isoformat()
+        elif isinstance(v, _Decimal):
+            out[k] = float(v)
+        elif isinstance(v, _UUID):
+            out[k] = str(v)
+        else:
+            out[k] = v
+    return out
+
+
+def _rows_out(rows) -> list[dict]:
+    return [_row_out(r) for r in rows]
+
+
+class _QueryBuilder:
+    """Reimplementação mínima, sobre psycopg puro, do subconjunto da API
+    fluente do supabase-py/postgrest-py que este ETL usa: `table()` com
+    `.select()` (inclusive `count="exact"`), `.eq()`/`.in_()`, `.order()`,
+    `.limit()`/`.range()`, `.upsert()`/`.insert()`/`.update()`/`.delete()`
+    e `.execute()` devolvendo `.data`/`.count`.
+
+    Existe porque, desde a Fase 3 da migração Cloudflare/Neon, o app
+    (apps/web) parou de ler o Supabase — mas todo este ETL continuava
+    escrevendo só nele, sincronizando dado para um banco que nada mais lê:
+    falha silenciosa, sem erro nenhum. Trocar a biblioteca (supabase-py →
+    psycopg) mantendo a MESMA forma de chamar evita reescrever os ~30
+    módulos um por um.
+
+    Não implementa `.or_()`, `.contains()`, `.single()` nem `.ilike()`:
+    nenhum módulo deste eixo usa (conferido por varredura), e um stub
+    adivinhado da sintaxe do PostgREST erraria em silêncio. Se algum dia
+    alguém chamar, quebra com AttributeError na cara — não com dado errado.
+    """
+
+    def __init__(self, conn, schema: str, table: str):
+        self._conn = conn
+        self._schema = schema
+        self._table = table
+        self._cols = "*"
+        self._count_mode: str | None = None
+        self._filters: list[tuple[str, str, object]] = []
+        self._order: tuple[str, bool] | None = None
+        self._limit: int | None = None
+        self._range: tuple[int, int] | None = None
+        self._op: str | None = None
+        self._rows: list[dict] | None = None
+        self._on_conflict: str | None = None
+
+    # --- leitura ---
+    def select(self, cols: str, count: str | None = None):
+        self._cols = cols
+        self._count_mode = count
+        self._op = self._op or "select"
+        return self
+
+    def eq(self, col: str, val):
+        self._filters.append((col, "=", val))
+        return self
+
+    def neq(self, col: str, val):
+        self._filters.append((col, "<>", val))
+        return self
+
+    def gt(self, col: str, val):
+        self._filters.append((col, ">", val))
+        return self
+
+    def gte(self, col: str, val):
+        self._filters.append((col, ">=", val))
+        return self
+
+    def lt(self, col: str, val):
+        self._filters.append((col, "<", val))
+        return self
+
+    def lte(self, col: str, val):
+        self._filters.append((col, "<=", val))
+        return self
+
+    def is_(self, col: str, val):
+        """`.is_(col, None)` -> `IS NULL`. Só NULL/booleano, que é o que a
+        versão do PostgREST aceita."""
+        self._filters.append((col, "is", val))
+        return self
+
+    def in_(self, col: str, vals):
+        self._filters.append((col, "in", list(vals)))
+        return self
+
+    def order(self, col: str, desc: bool = False):
+        self._order = (col, desc)
+        return self
+
+    def limit(self, n: int):
+        self._limit = n
+        return self
+
+    def range(self, start: int, end: int):
+        self._range = (start, end)
+        return self
+
+    # --- escrita ---
+    def upsert(self, rows, on_conflict: str | None = None):
+        self._op = "upsert"
+        self._rows = rows if isinstance(rows, list) else [rows]
+        self._on_conflict = on_conflict
+        return self
+
+    def insert(self, rows):
+        self._op = "insert"
+        self._rows = rows if isinstance(rows, list) else [rows]
+        return self
+
+    def update(self, row: dict):
+        self._op = "update"
+        self._rows = [row]
+        return self
+
+    def delete(self):
+        self._op = "delete"
+        return self
+
+    # --- execução ---
+    def _where_sql(self, params: list) -> str:
+        if not self._filters:
+            return ""
+        partes = []
+        for col, op, val in self._filters:
+            if op == "in":
+                partes.append(f'"{col}" = ANY(%s)')
+                params.append(val)
+            elif op == "is":
+                partes.append(f'"{col}" IS NULL' if val is None else f'"{col}" IS %s')
+                if val is not None:
+                    params.append(val)
+            else:
+                partes.append(f'"{col}" {op} %s')
+                params.append(_adapt(val))
+        return " WHERE " + " AND ".join(partes)
+
+    def execute(self) -> _Response:
+        from psycopg.errors import UndefinedColumn, UndefinedTable
+        from psycopg.rows import dict_row
+
+        qualified = f'"{self._schema}"."{self._table}"'
+        try:
+            with self._conn.cursor(row_factory=dict_row) as cur:
+                if self._op in (None, "select"):
+                    params: list = []
+                    sql = f"SELECT {self._cols} FROM {qualified}"
+                    sql += self._where_sql(params)
+                    if self._order:
+                        col, desc = self._order
+                        sql += f' ORDER BY "{col}" {"DESC" if desc else "ASC"}'
+                    if self._range:
+                        start, end = self._range
+                        sql += f" LIMIT {end - start + 1} OFFSET {start}"
+                    elif self._limit is not None:
+                        sql += f" LIMIT {self._limit}"
+                    cur.execute(sql, params)
+                    rows = _rows_out(cur.fetchall())
+                    total = None
+                    if self._count_mode:
+                        # `count="exact"` do PostgREST conta a query SEM
+                        # limit/offset — é assim que `etl/apis/crimes_mg.py`
+                        # confere se o upsert realmente gravou tudo. Uma
+                        # segunda query é o equivalente honesto; devolver
+                        # len(rows) mentiria sempre que houvesse paginação.
+                        cparams: list = []
+                        csql = f"SELECT count(*) AS c FROM {qualified}" + self._where_sql(cparams)
+                        cur.execute(csql, cparams)
+                        total = cur.fetchone()["c"]
+                    return _Response(rows, total)
+
+                if self._op == "delete":
+                    if not self._filters:
+                        raise RuntimeError(
+                            f"DELETE sem filtro em {qualified} — apagaria a tabela inteira. "
+                            "Chame .eq()/.in_() antes de .execute()."
+                        )
+                    params: list = []
+                    sql = f"DELETE FROM {qualified}" + self._where_sql(params)
+                    cur.execute(sql, params)
+                    return _Response([])
+
+                if self._op == "update":
+                    if not self._filters:
+                        raise RuntimeError(
+                            f"UPDATE sem filtro em {qualified} — reescreveria a tabela inteira. "
+                            "Chame .eq()/.in_() antes de .execute()."
+                        )
+                    row = (self._rows or [{}])[0]
+                    if not row:
+                        return _Response([])
+                    cols = sorted(row.keys())
+                    set_sql = ", ".join(f'"{c}" = %s' for c in cols)
+                    params = [_adapt(row[c]) for c in cols]
+                    sql = f"UPDATE {qualified} SET {set_sql}" + self._where_sql(params)
+                    sql += " RETURNING *"
+                    cur.execute(sql, params)
+                    return _Response(_rows_out(cur.fetchall()))
+
+                if self._op in ("insert", "upsert"):
+                    rows = self._rows or []
+                    if not rows:
+                        return _Response([])
+                    cols = sorted({k for r in rows for k in r.keys()})
+                    col_list = ", ".join(f'"{c}"' for c in cols)
+                    placeholder_row = "(" + ", ".join(["%s"] * len(cols)) + ")"
+                    values_sql = ", ".join([placeholder_row] * len(rows))
+                    params = [_adapt(r.get(c)) for r in rows for c in cols]
+                    sql = f"INSERT INTO {qualified} ({col_list}) VALUES {values_sql}"
+                    if self._op == "upsert" and self._on_conflict:
+                        conflito_cols = [c.strip() for c in self._on_conflict.split(",")]
+                        conflito_sql = ", ".join(f'"{c}"' for c in conflito_cols)
+                        update_cols = [c for c in cols if c not in conflito_cols]
+                        if update_cols:
+                            set_sql = ", ".join(f'"{c}" = EXCLUDED."{c}"' for c in update_cols)
+                            sql += f" ON CONFLICT ({conflito_sql}) DO UPDATE SET {set_sql}"
+                        else:
+                            sql += f" ON CONFLICT ({conflito_sql}) DO NOTHING"
+                    sql += " RETURNING *"
+                    cur.execute(sql, params)
+                    return _Response(_rows_out(cur.fetchall()))
+        except UndefinedColumn as e:
+            raise PgAPIError("42703", str(e)) from e
+        except UndefinedTable as e:
+            raise PgAPIError("42P01", str(e)) from e
+
+        raise RuntimeError(f"operação não suportada: {self._op}")
+
+
+class PgClient:
+    """Substitui o client do supabase-py: mesma chamada `.table(x)...`, mas
+    fala Postgres direto na Neon em vez de PostgREST no Supabase."""
+
+    def __init__(self, conn, schema: str):
+        self._conn = conn
+        self._schema = schema
+
+    def table(self, name: str) -> _QueryBuilder:
+        return _QueryBuilder(self._conn, self._schema, name)
+
+
+def get_supabase_client() -> PgClient:
+    """Nome mantido por compatibilidade com todo o ETL existente (~30 call
+    sites, `client = get_supabase_client()`) — desde a Fase 3 da migração
+    Cloudflare/Neon o app já lê exclusivamente do Neon; sem esta troca o ETL
+    continuaria gravando num banco (Supabase) que nada mais lê, apesar de
+    "funcionar" sem erro nenhum. `autocommit=True`: cada chamada
+    `.execute()` já é sua própria transação — não precisa de commit/rollback
+    manual, e um erro num lote não invalida os anteriores."""
+    import psycopg
+
+    if not DATABASE_URL:
+        raise RuntimeError(
+            "DATABASE_URL não configurado no .env — aponte para o banco Neon "
+            "(mesma variável usada por apps/web/.env.local) antes de rodar "
+            "qualquer ETL."
+        )
+
+    conn = psycopg.connect(DATABASE_URL, autocommit=True)
+    conn.execute(f'SET search_path TO "{SCHEMA}", public')
+    return PgClient(conn, SCHEMA)
+
+
 def fetch_all(query_factory, page_size: int = PAGE_SIZE) -> list[dict]:
-    """Runs a supabase-py query across as many `.range()` pages as needed.
+    """Roda um select por quantas páginas `.range()` forem necessárias.
 
-    PostgREST caps `.execute()` at 1000 rows by default — any select on a
-    table that can grow past that silently truncates instead of erroring.
-    Found live 2026-07-21 in `etl/alertas.py`'s `_check_regra_10` (despesas
-    has 4263+ rows; whole years were silently missing) and the same
-    unpaginated pattern was still present in `sync()`'s `contratos` select
-    (576 rows today, under the limit, but not for long).
+    Continua existindo depois da troca para Postgres direto (onde não há
+    mais o corte de 1000 linhas do PostgREST) porque cada query aqui é uma
+    SELECT completa com LIMIT/OFFSET — paginar em fatias evita uma única
+    página gigante numa tabela que cresce. O bug que motivou o helper foi
+    achado ao vivo em 2026-07-21 em `_check_regra_10` de `etl/alertas.py`
+    (despesas tem 4263+ linhas; anos inteiros faltavam em silêncio).
 
-    `query_factory` is a zero-arg callable that returns a **fresh** query
-    builder each time it's called (e.g.
+    `query_factory` é um callable de zero argumentos que devolve um builder
+    NOVO a cada chamada (ex.:
     `lambda: client.table("contratos").select("id, valor").eq("id_municipio", x)`)
-    — NOT a pre-built builder. supabase-py/postgrest-py builders aren't
-    guaranteed safe to `.execute()` more than once, so each page gets its
-    own builder with `.range()` applied fresh rather than reusing one
-    across the loop.
+    — não um builder pronto, para poder rechamar `.range()` a cada página.
     """
     rows: list[dict] = []
     page = 0
@@ -54,6 +374,82 @@ def fetch_all(query_factory, page_size: int = PAGE_SIZE) -> list[dict]:
             break
         page += 1
     return rows
+
+
+def refresh_completo_seguro(
+    client,
+    table: str,
+    filtros: dict,
+    rows: list[dict],
+    *,
+    chunk: int = 200,
+    permitir_reducao: bool = False,
+    ao_reduzir: str = "abort",
+    rotulo: str | None = None,
+) -> bool:
+    """`delete` + `insert` (refresh total) que se RECUSA a encolher a tabela.
+
+    Existe por causa de um dano real: em 2026-07-29 uma rodada de
+    `etl/camaras/verbas.py` levou `verbas_indenizatorias` de 98 para 43
+    linhas sem erro nenhum. O módulo apagava tudo do município e reinseria
+    só o que a raspagem daquela rodada devolveu -- e a raspagem depende de
+    quantas linhas a grid Blazor resolveu renderizar. Fonte rendeu menos,
+    banco perdeu histórico.
+
+    Regra: se a raspagem trouxe MENOS linhas do que já existem no banco sob
+    os mesmos `filtros`, nada é apagado. O delete só acontece quando
+    `len(rows) >= contagem_atual` -- crescimento e reescrita do mesmo
+    tamanho seguem normais (é assim que correções de valor entram).
+
+    `ao_reduzir`:
+    - "abort" (padrão): levanta RuntimeError, a rodada falha alto.
+    - "skip": imprime aviso, devolve False e segue -- para os call sites que
+      varrem N entidades e não devem perder as outras N-1 por causa de uma.
+
+    `permitir_reducao=True` é a válvula de escape para quando a redução é
+    real (registro removido na fonte): confirme na fonte e rode de novo com
+    a flag. Nunca é o default.
+
+    Devolve True se escreveu, False se pulou.
+    """
+    if not rows:
+        raise ValueError(
+            f"refresh_completo_seguro em '{table}': `rows` vazio nunca deve chegar aqui "
+            "-- o caller precisa tratar raspagem vazia antes (senão isso é um delete puro)."
+        )
+    if ao_reduzir not in ("abort", "skip"):
+        raise ValueError(f"ao_reduzir inválido: {ao_reduzir!r} (use 'abort' ou 'skip')")
+
+    tag = rotulo or f"etl.common/{table}"
+
+    q = client.table(table).select("*", count="exact").limit(1)
+    for col, val in filtros.items():
+        q = q.eq(col, val)
+    atuais = q.execute().count or 0
+
+    if len(rows) < atuais and not permitir_reducao:
+        msg = (
+            f"{table}: raspagem trouxe {len(rows)} linha(s) mas o banco já tem {atuais} "
+            f"sob {filtros} — refresh total abortado para não apagar histórico. "
+            "Se a fonte realmente perdeu registros, confirme e rode com "
+            "permitir_reducao=True (--permitir-reducao)."
+        )
+        if ao_reduzir == "abort":
+            raise RuntimeError(msg)
+        print(f"[{tag}] AVISO: {msg}")
+        return False
+
+    q = client.table(table).delete()
+    for col, val in filtros.items():
+        q = q.eq(col, val)
+    q.execute()
+
+    for i in range(0, len(rows), chunk):
+        client.table(table).insert(rows[i : i + chunk]).execute()
+
+    if len(rows) < atuais:
+        print(f"[{tag}] redução aceita explicitamente: {atuais} -> {len(rows)} linha(s).")
+    return True
 
 
 def upsert_com_colunas_opcionais(
@@ -75,16 +471,14 @@ def upsert_com_colunas_opcionais(
     tenta de novo, uma vez, com aviso impresso. Qualquer outro erro
     propaga normalmente -- só esse código específico é tratado como
     "coluna ainda não existe", não como "engolir erro genérico"."""
-    from postgrest.exceptions import APIError
-
     try:
         return client.table(table).upsert(rows, **upsert_kwargs).execute()
-    except APIError as e:
-        # 42703 = Postgres undefined_column (quando o erro vem cru do banco);
-        # PGRST204 = PostgREST não achou a coluna no cache de schema (é o que
-        # o upsert/insert via REST devolve quando a migration ainda não
-        # rodou). Os dois significam "coluna ainda não existe".
-        if e.code not in ("42703", "PGRST204"):
+    except PgAPIError as e:
+        # 42703 = Postgres undefined_column. Antes da troca para psycopg
+        # também se tratava PGRST204 (PostgREST não achou a coluna no cache
+        # de schema); falando com o banco direto, esse caso não existe mais
+        # -- o erro chega cru como 42703.
+        if e.code != "42703":
             raise
         print(
             f"[etl.common] upsert em '{table}': coluna opcional ainda não existe "
