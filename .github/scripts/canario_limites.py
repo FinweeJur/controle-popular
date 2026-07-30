@@ -219,14 +219,25 @@ def main() -> int:
     enviado = avisar(mensagem)
     if not enviado:
         print(
-            "\n[canario] Telegram não configurado — falhando o job de propósito "
-            "para o e-mail de falha do GitHub servir de alerta.",
+            "\n[canario] alerta NÃO entregue (Telegram ausente ou falhou) — "
+            "falhando o job de propósito, para o e-mail de falha do GitHub "
+            "virar o canal de último recurso.",
             file=sys.stderr,
         )
         return 1
-    # Alerta entregue: com Telegram configurado, alerta real ainda falha o
-    # job (fica visível no histórico); canário cego não falha se entregou.
-    return 1 if a.alertas else 0
+
+    # Entregue: o job passa, mesmo com alerta real.
+    #
+    # Deliberado, e a primeira execução no CI mostrou por quê: o egress em 91%
+    # é um alerta legítimo que vai durar dias, e falhar o job por causa dele
+    # deixaria a aba Actions permanentemente vermelha. Vermelho constante vira
+    # papel de parede — a mesma razão pela qual um verificador de alucinação
+    # com falso positivo ensina a ignorar a métrica.
+    #
+    # Assim o vermelho fica reservado para o que ninguém mais avisaria: o
+    # canário parou de conseguir medir. O alerta de negócio vive no Telegram,
+    # que é onde ele é lido.
+    return 0
 
 
 if __name__ == "__main__":
