@@ -1,15 +1,10 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
-import type { Session } from "@supabase/supabase-js";
-import { getSupabaseBrowserClient } from "@/lib/judiciario/supabaseBrowser";
-// O router não passa pelo <Link> da zona, então prefixa na mão — mesmo
-// motivo do wrapper em `lib/link-zona.tsx`: sem basePath, "/painel" cairia
-// na raiz do domínio em vez de /judiciario/painel.
-import { withBasePath } from "@/lib/judiciario/basePath";
+import { useState, type FormEvent } from "react";
+import { authClient } from "@/lib/auth/client";
 import { TRIBUNAIS } from "@/lib/judiciario/regras";
 import { rotuloCota } from "@/lib/judiciario/rotulos";
+import { criarMonitoramentoAction } from "./actions";
 
 // BUG REAL corrigido na revisão de 2026-07-25: esta lista tinha "carreira",
 // "quinto_oab" e "quinto_mp" — valores que NUNCA existiram em
@@ -27,8 +22,7 @@ const COTAS = [
 ];
 
 export default function NovoMonitoramento() {
-  const router = useRouter();
-  const [sessao, setSessao] = useState<Session | null | "carregando">("carregando");
+  const { data: sessao, isPending } = authClient.useSession();
   const [nome, setNome] = useState("");
   const [tribunais, setTribunais] = useState<string[]>([]);
   const [cotas, setCotas] = useState<string[]>([]);
@@ -37,46 +31,38 @@ export default function NovoMonitoramento() {
   const [salvando, setSalvando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
 
-  useEffect(() => {
-    const sb = getSupabaseBrowserClient();
-    if (!sb) {
-      setSessao(null);
-      return;
-    }
-    sb.auth.getSession().then(({ data }) => setSessao(data.session));
-  }, []);
-
   function alternar(lista: string[], setLista: (v: string[]) => void, valor: string) {
     setLista(lista.includes(valor) ? lista.filter((v) => v !== valor) : [...lista, valor]);
   }
 
   async function salvar(e: FormEvent) {
     e.preventDefault();
-    const sb = getSupabaseBrowserClient();
-    if (!sb || sessao === "carregando" || !sessao) return;
     setSalvando(true);
     setErro(null);
-    const { error } = await sb.from("monitoramentos").insert({
-      user_id: sessao.user.id,
-      nome: nome || null,
-      tribunais: tribunais.length ? tribunais : null,
-      cotas: cotas.length ? cotas : null,
-      horizonte_meses: horizonte,
-      frequencia,
-      ativo: true,
-    });
-    setSalvando(false);
-    if (error) {
-      setErro(error.message);
-      return;
+    try {
+      // A Server Action lê o usuário da sessão no servidor
+      // (`requireUser()`) — nada aqui manda `user_id`, ver
+      // `app/judiciario/monitoramentos/novo/actions.ts`.
+      await criarMonitoramentoAction({
+        nome,
+        tribunais,
+        cotas,
+        horizonteMeses: horizonte,
+        frequencia,
+      });
+    } catch (e) {
+      // `redirect()` dentro da Server Action propaga como um throw especial
+      // (`NEXT_REDIRECT`) — deixar passar em vez de tratar como erro.
+      if ((e as { digest?: string })?.digest?.startsWith("NEXT_REDIRECT")) throw e;
+      setSalvando(false);
+      setErro(e instanceof Error ? e.message : "Não foi possível salvar.");
     }
-    router.push(withBasePath("/painel"));
   }
 
-  if (sessao === "carregando") {
+  if (isPending) {
     return <div className="mx-auto max-w-2xl px-4 py-16 opacity-60">Carregando...</div>;
   }
-  if (!sessao) {
+  if (!sessao?.user) {
     return (
       <div className="mx-auto max-w-md space-y-4 px-4 py-16">
         <h1 className="font-display text-2xl font-bold">Você não está logado(a)</h1>

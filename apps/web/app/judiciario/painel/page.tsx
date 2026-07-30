@@ -1,81 +1,22 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "@/lib/judiciario/link";
-import type { Session } from "@supabase/supabase-js";
-import { getSupabaseBrowserClient } from "@/lib/judiciario/supabaseBrowser";
+import SairBotao from "./SairBotao";
+import { sessaoAtual } from "@/lib/auth/guards";
+import { monitoramentosDoUsuario, alertasDoUsuario } from "@/lib/db/queries/judiciario";
 import { rotuloMotivoAlerta } from "@/lib/judiciario/rotulos";
 
-interface Monitoramento {
-  id: string;
-  nome: string | null;
-  tribunais: string[] | null;
-  cotas: string[] | null;
-  horizonte_meses: number | null;
-  frequencia: string | null;
-  ativo: boolean | null;
-}
-
-interface Alerta {
-  id: string;
-  motivo: string | null;
-  lido: boolean | null;
-  criado_em: string | null;
-}
-
 /**
- * Painel do usuário logado. Client component: a sessão vive no
- * localStorage do browser (`lib/supabaseBrowser.ts`), então checar sessão
- * em server component exigiria trocar toda a stack de Auth por cookies
- * (`@supabase/ssr`) — desnecessário para um painel simples que só lista
- * dado do próprio usuário sob RLS.
+ * Painel do usuário logado. Server component (Fase 4): a sessão agora vive
+ * num cookie HttpOnly (Better Auth), lido aqui com `sessaoAtual()` —
+ * diferente do Supabase antigo (localStorage, exigia client component).
  *
- * RLS já faz o trabalho pesado: a query roda com o token do usuário
- * logado, e as policies de `monitoramentos`/`alertas`
- * (`user_id = auth.uid()`) garantem que só vêm linhas dele — não é
- * preciso filtrar `.eq("user_id", ...)` manualmente aqui, embora fazer
- * isso também não seja incorreto.
+ * A query já filtra por `userId` explicitamente (`monitoramentosDoUsuario`/
+ * `alertasDoUsuario` em `lib/db/queries/judiciario.ts`) — não há RLS no
+ * Neon para fazer esse recorte sozinha como o Supabase fazia.
  */
-export default function Painel() {
-  const [sessao, setSessao] = useState<Session | null | "carregando">("carregando");
-  const [monitoramentos, setMonitoramentos] = useState<Monitoramento[]>([]);
-  const [alertas, setAlertas] = useState<Alerta[]>([]);
+export default async function Painel() {
+  const sessao = await sessaoAtual();
 
-  useEffect(() => {
-    const sb = getSupabaseBrowserClient();
-    if (!sb) {
-      setSessao(null);
-      return;
-    }
-    sb.auth.getSession().then(({ data }) => setSessao(data.session));
-    const { data: sub } = sb.auth.onAuthStateChange((_evento, s) => setSessao(s));
-    return () => sub.subscription.unsubscribe();
-  }, []);
-
-  useEffect(() => {
-    if (!sessao || sessao === "carregando") return;
-    const sb = getSupabaseBrowserClient();
-    if (!sb) return;
-    sb.from("monitoramentos")
-      .select("id,nome,tribunais,cotas,horizonte_meses,frequencia,ativo")
-      .then(({ data }) => setMonitoramentos((data as Monitoramento[]) ?? []));
-    sb.from("alertas")
-      .select("id,motivo,lido,criado_em")
-      .order("criado_em", { ascending: false })
-      .limit(20)
-      .then(({ data }) => setAlertas((data as Alerta[]) ?? []));
-  }, [sessao]);
-
-  async function sair() {
-    const sb = getSupabaseBrowserClient();
-    await sb?.auth.signOut();
-  }
-
-  if (sessao === "carregando") {
-    return <div className="mx-auto max-w-3xl px-4 py-16 opacity-60">Carregando...</div>;
-  }
-
-  if (!sessao) {
+  if (!sessao?.user) {
     return (
       <div className="mx-auto max-w-md space-y-4 px-4 py-16">
         <h1 className="font-display text-2xl font-bold">Você não está logado(a)</h1>
@@ -87,6 +28,11 @@ export default function Painel() {
     );
   }
 
+  const [monitoramentos, alertas] = await Promise.all([
+    monitoramentosDoUsuario(sessao.user.id),
+    alertasDoUsuario(sessao.user.id, 20),
+  ]);
+
   const naoLidos = alertas.filter((a) => !a.lido).length;
 
   return (
@@ -96,9 +42,7 @@ export default function Painel() {
           <h1 className="font-display text-3xl font-bold">Painel</h1>
           <p className="opacity-70">{sessao.user.email}</p>
         </div>
-        <button onClick={sair} className="rounded-md border border-[var(--cp-border)] px-3 py-1.5 text-sm">
-          Sair
-        </button>
+        <SairBotao />
       </header>
 
       <section className="space-y-4">

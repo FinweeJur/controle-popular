@@ -1,19 +1,18 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { getSupabaseBrowserClient } from "@/lib/judiciario/supabaseBrowser";
+import { authClient } from "@/lib/auth/client";
 import { withBasePath } from "@/lib/judiciario/basePath";
 
 /**
  * Login por magic link — sem senha, sem cadastro separado.
  *
- * `emailRedirectTo` PRECISA passar por `withBasePath()`: o app inteiro
- * vive sob `/judiciario` (ver next.config.ts), e `window.location.origin`
- * devolve só a raiz do domínio. Sem o basePath aqui, o clique no link do
- * e-mail levaria à raiz do domínio multi-zone (fora deste app) em vez de
- * `/judiciario/painel` — a mesma classe de bug que `lib/basePath.ts`
- * documenta (e que este próprio repo tinha, sem nunca ter disparado,
- * até este arquivo ser o primeiro a chamar `withBasePath`).
+ * Substitui o Supabase Auth (Fase 4 da migração Cloudflare/Neon) pelo
+ * Better Auth — mesmo fluxo do usuário: digita e-mail, recebe link,
+ * clica, entra. `callbackURL` precisa do prefixo `/judiciario` (mesma
+ * razão que `withBasePath` já documentava para o `emailRedirectTo`
+ * antigo): a zona não tem `basePath` de Next próprio neste monorepo, mas
+ * o link do e-mail é absoluto e precisa saber para onde voltar.
  */
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -22,22 +21,14 @@ export default function Login() {
 
   async function enviar(e: FormEvent) {
     e.preventDefault();
-    const sb = getSupabaseBrowserClient();
-    if (!sb) {
-      setEstado("erro");
-      setErro("Supabase não configurado neste ambiente.");
-      return;
-    }
     setEstado("enviando");
-    const { error } = await sb.auth.signInWithOtp({
+    const { error } = await authClient.signIn.magicLink({
       email,
-      options: {
-        emailRedirectTo: `${window.location.origin}${withBasePath("/painel")}`,
-      },
+      callbackURL: withBasePath("/painel"),
     });
     if (error) {
       setEstado("erro");
-      setErro(error.message);
+      setErro(error.message ?? "Não foi possível enviar o link.");
       return;
     }
     setEstado("enviado");

@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "@/lib/judiciario/link";
-import { getSupabaseBrowserClient } from "@/lib/judiciario/supabaseBrowser";
+import { authClient } from "@/lib/auth/client";
 
 /**
  * "Entrar" ou "Painel" no header, dependendo da sessão. Client component
@@ -10,27 +9,16 @@ import { getSupabaseBrowserClient } from "@/lib/judiciario/supabaseBrowser";
  * renderizado no servidor — só este pedaço precisa saber de Auth.
  */
 export default function AuthNav() {
-  const [logado, setLogado] = useState<boolean | null>(null);
+  const { data: sessao, isPending } = authClient.useSession();
 
-  useEffect(() => {
-    const sb = getSupabaseBrowserClient();
-    if (!sb) {
-      setLogado(false);
-      return;
-    }
-    sb.auth.getSession().then(({ data }) => setLogado(!!data.session));
-    const { data: sub } = sb.auth.onAuthStateChange((_e, s) => setLogado(!!s));
-    return () => sub.subscription.unsubscribe();
-  }, []);
-
-  if (logado === null) return null; // evita flash "Entrar" -> "Painel" na primeira pintura
+  if (isPending) return null; // evita flash "Entrar" -> "Painel" na primeira pintura
 
   return (
     <Link
-      href={logado ? "/painel" : "/login"}
+      href={sessao?.user ? "/painel" : "/login"}
       className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
     >
-      {logado ? "Painel" : "Entrar"}
+      {sessao?.user ? "Painel" : "Entrar"}
     </Link>
   );
 }
