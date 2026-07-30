@@ -3,6 +3,7 @@ import Link from "@/lib/judiciario/link";
 import ThemeSwitcher from "@/app/judiciario/components/ThemeSwitcher";
 import FontSizeControl from "@/app/judiciario/components/FontSizeControl";
 import AuthNav from "@/app/judiciario/components/AuthNav";
+import BuscaUniversal from "@/app/components/BuscaUniversal";
 
 /**
  * Zona /judiciario. O `<html>`, as fontes e o ThemeProvider vêm do layout
@@ -71,6 +72,21 @@ export default function JudiciarioLayout({
             <FontSizeControl />
             <ThemeSwitcher />
           </div>
+        </div>
+        {/* Faixa própria para a busca — mesma decisão do /congresso e da zona
+            de cidades: largura inteira, fora do <nav>. */}
+        <div className="mx-auto max-w-5xl px-4 pb-4">
+          <BuscaUniversal
+            endpointSugestoes="/judiciario/api/busca"
+            endpointChat="/judiciario/api/chat"
+            placeholder="Buscar tribunal, ministro, vaga — ou perguntar ao assistente"
+            exemplos={[
+              "Quais vagas abrem no STF até 2030?",
+              "Quantos ministros do STJ cada presidente nomeou?",
+              "O que é o quinto constitucional?",
+            ]}
+            aviso="O assistente responde a partir dos dados já reunidos no portal e pode errar. Confira sempre na página e na fonte oficial."
+          />
         </div>
       </header>
 

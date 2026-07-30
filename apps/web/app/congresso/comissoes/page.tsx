@@ -8,8 +8,6 @@ export const metadata: Metadata = {
     "Comissões da Câmara dos Deputados, com quantas proposições estão paradas em cada uma e o que elas ampliam ou restringem em direitos.",
 };
 
-export const revalidate = 900;
-
 export default async function Comissoes() {
   const orgaos = await listarOrgaos();
 

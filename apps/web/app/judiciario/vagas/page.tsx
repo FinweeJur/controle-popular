@@ -9,8 +9,6 @@ export const metadata: Metadata = {
     "Quando cada ministro completa 75 anos e é obrigado a se aposentar, calculado a partir da data de nascimento — não uma estimativa.",
 };
 
-export const revalidate = 3600;
-
 const fmtData = (d: string | null) =>
   d ? new Date(d + "T00:00:00").toLocaleDateString("pt-BR") : "—";
 

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "controle-popular-web-dev",
+      "runtimeExecutable": "C:\\Users\\teste\\AppData\\Local\\hermes\\node\\npm.cmd",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web"],
+      "port": 3000
+    }
+  ]
+}

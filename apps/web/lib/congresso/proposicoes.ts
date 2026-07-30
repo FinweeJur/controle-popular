@@ -64,6 +64,8 @@ export interface Filtros {
   q?: string;
   tema?: string;
   rotulo?: string;
+  /** Nome do autor — ver `FiltrosProposicoes.autor` na camada de queries. */
+  autor?: string;
   casa?: string;
   ano?: number;
   tramitando?: boolean;
@@ -83,14 +85,29 @@ export const POR_PAGINA_PADRAO = 25;
  */
 export async function listarProposicoes(
   filtros: Filtros = {}
-): Promise<{ itens: (Proposicao & { analise: Analise | null })[]; total: number } | null> {
+): Promise<{
+  itens: (Proposicao & { analise: Analise | null; autoria?: q.AutoriaResumo })[];
+  total: number;
+} | null> {
   const linhas = await q.paginaDeProposicoes(filtros as q.FiltrosProposicoes);
   if (!linhas) return null;
 
   const itens = linhas.map((l) => ({
     ...(l.proposicao as Proposicao),
     analise: (l.analise as Analise | null) ?? null,
-  }));
+  })) as (Proposicao & { analise: Analise | null; autoria?: q.AutoriaResumo })[];
+
+  // Autoria numa segunda query, sobre os ids DESTA página (25). Não dá para
+  // vir no mesmo join: uma proposição tem N autores e o join multiplicaria
+  // as linhas da página, quebrando o `count(*) over ()` que dá o total.
+  try {
+    const autorias = await q.autoriaDeProposicoes(itens.map((i) => i.id));
+    const porId = new Map(autorias.map((a) => [a.proposicao_id, a]));
+    for (const i of itens) i.autoria = porId.get(i.id);
+  } catch (e) {
+    if ((e as { code?: string }).code !== "42P01") throw e;
+  }
+
   // `count(*) over ()` vem repetido em toda linha; a pagina vazia nao tem
   // linha nenhuma, e ai o total e zero mesmo.
   return { itens, total: linhas[0]?.total ?? 0 };
@@ -103,14 +120,20 @@ export async function obterProposicao(
   analise: Analise | null;
   itens: AnaliseItem[];
   autores: Autor[];
+  /** Autoria de leitura: inclui Poder Executivo, comissões e Senado. */
+  autoriaCompleta: Awaited<ReturnType<typeof q.autoriaCompletaDaProposicao>>;
   tramitacoes: { sequencia: number; data_hora: string; sigla_orgao: string; descricao: string; despacho: string }[];
 } | null> {
   const prop = await q.obterProposicaoPorId(id);
   if (!prop) return null;
 
-  const [analise, autores, tramitacoes] = await Promise.all([
+  const [analise, autores, autoriaCompleta, tramitacoes] = await Promise.all([
     q.analiseDaProposicao(id),
     q.autoresDaProposicao(id),
+    q.autoriaCompletaDaProposicao(id).catch((e) => {
+      if ((e as { code?: string }).code === "42P01") return [];
+      throw e;
+    }),
     q.tramitacoesDaProposicao(id),
   ]);
 
@@ -127,6 +150,7 @@ export async function obterProposicao(
     analise: analise as Analise | null,
     itens,
     autores: autores as Autor[],
+    autoriaCompleta,
     tramitacoes: tramitacoes as never,
   };
 }

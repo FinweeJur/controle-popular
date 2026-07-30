@@ -334,6 +334,16 @@ export interface FiltrosProposicoes {
   tema?: string;
   rotulo?: string;
   q?: string;
+  /**
+   * Nome do autor (parlamentar OU institucional).
+   *
+   * Existe porque a busca por texto (`q`) varre ementa, keywords e
+   * identificação — nunca a autoria. Sem este filtro, clicar num deputado na
+   * busca não levaria a lugar nenhum útil: não há página de parlamentar
+   * neste eixo, e "projetos de quem" é a pergunta imediata depois de
+   * "de quem é este projeto".
+   */
+  autor?: string;
   pagina?: number;
   porPagina?: number;
 }
@@ -373,6 +383,15 @@ export async function paginaDeProposicoes(filtros: FiltrosProposicoes = {}) {
     );
   }
   if (filtros.rotulo) cond.push(eq(analisesInCongresso.rotulo, filtros.rotulo));
+  if (filtros.autor) {
+    // `exists` e não join: um join com a autoria multiplicaria as linhas da
+    // página por autor e quebraria o `count(*) over ()` que dá o total.
+    cond.push(
+      sql`exists (select 1 from congresso.proposicao_autoria pa
+                   where pa.proposicao_id = ${proposicoesInCongresso.id}
+                     and pa.nome ilike ${`%${filtros.autor}%`})`
+    );
+  }
 
   return db
     .select({
@@ -453,6 +472,38 @@ export async function autoresDaProposicao(proposicaoId: string) {
     .orderBy(asc(proposicao_autoresInCongresso.ordem));
 }
 
+/**
+ * Autoria COMPLETA de uma proposição, incluindo autor institucional.
+ *
+ * `autoresDaProposicao` (acima) faz `innerJoin` com `parlamentares` porque
+ * o ofício precisa do e-mail do gabinete — e por isso ela devolve VAZIO nas
+ * 1.117 proposições de autoria institucional. Esta é a lista de leitura;
+ * aquela é a de contato. As duas continuam existindo de propósito.
+ */
+export async function autoriaCompletaDaProposicao(proposicaoId: string) {
+  const db = getDb();
+  if (!db) return [];
+  const linhas = await db.execute<{
+    nome: string;
+    tipo: string | null;
+    partido: string | null;
+    uf: string | null;
+    ordem: number | null;
+    proponente: boolean;
+    cod_tipo: number | null;
+    parlamentar_id: string | null;
+  }>(sql`
+    select nome, tipo, partido, uf, ordem, proponente, cod_tipo, parlamentar_id
+      from congresso.proposicao_autoria
+     where proposicao_id = ${proposicaoId}
+     order by proponente desc, ordem asc nulls last, nome asc
+  `);
+  return (linhas.rows ?? []).map((l) => ({
+    ...l,
+    institucional: l.cod_tipo !== 10000,
+  }));
+}
+
 /** Itens de UMA análise, com os numéricos já convertidos. */
 export async function itensDaAnalise(analiseId: string) {
   const db = getDb();
@@ -487,6 +538,431 @@ export async function tramitacoesDaProposicao(proposicaoId: string) {
     .from(tramitacoesInCongresso)
     .where(eq(tramitacoesInCongresso.proposicao_id, proposicaoId))
     .orderBy(desc(tramitacoesInCongresso.sequencia));
+}
+
+export interface AutoriaResumo {
+  proposicao_id: string;
+  /** Até 2 autores, na ordem de assinatura (proponente primeiro). */
+  autores: {
+    nome: string;
+    tipo: string | null;
+    partido: string | null;
+    uf: string | null;
+    parlamentar_id: string | null;
+    institucional: boolean;
+  }[];
+  /** Total de autores da proposição, não o total exibido. */
+  total: number;
+}
+
+/**
+ * Autoria de um LOTE de proposições, para a lista mostrar de quem é o
+ * projeto sem entrar no detalhe.
+ *
+ * TRAZ NO MÁXIMO 2 AUTORES POR PROPOSIÇÃO, e o total à parte. Isso não é
+ * economia decorativa: `PEC 3/2026` tem **224 autores** no banco. Buscar a
+ * autoria inteira de 60 cards renderizaria milhares de linhas para exibir
+ * duas de cada — o mesmo tipo de desperdício que já estourou o limite de
+ * CPU do Worker em `/congresso/comissoes/MESA`.
+ *
+ * O `row_number()` ordena por `proponente desc` primeiro porque autor
+ * principal e primeiro signatário não são sempre a mesma pessoa, e é o
+ * proponente que responde pelo projeto.
+ *
+ * Uma query só, com os ids parametrizados um a um (não interpolados).
+ */
+export async function autoriaDeProposicoes(ids: string[]): Promise<AutoriaResumo[]> {
+  const db = getDb();
+  if (!db || ids.length === 0) return [];
+  const lista = sql.join(
+    ids.map((i) => sql`${i}`),
+    sql`, `
+  );
+  const linhas = await db.execute<{
+    proposicao_id: string;
+    nome: string;
+    tipo: string | null;
+    partido: string | null;
+    uf: string | null;
+    parlamentar_id: string | null;
+    cod_tipo: number | null;
+    total: number;
+  }>(sql`
+    select proposicao_id, nome, tipo, partido, uf, parlamentar_id, cod_tipo, total
+      from (
+        select a.*,
+               (count(*) over (partition by a.proposicao_id))::int as total,
+               row_number() over (
+                 partition by a.proposicao_id
+                 order by a.proponente desc, a.ordem asc nulls last, a.nome asc
+               ) as rn
+          from congresso.proposicao_autoria a
+         where a.proposicao_id in (${lista})
+      ) x
+     where rn <= 2
+     order by proposicao_id, rn
+  `);
+
+  const porProposicao = new Map<string, AutoriaResumo>();
+  for (const l of linhas.rows ?? []) {
+    const atual =
+      porProposicao.get(l.proposicao_id) ??
+      { proposicao_id: l.proposicao_id, autores: [], total: l.total };
+    atual.autores.push({
+      nome: l.nome,
+      tipo: l.tipo,
+      partido: l.partido,
+      uf: l.uf,
+      parlamentar_id: l.parlamentar_id,
+      // `cod_tipo` 10000 é "Deputado(a)". Qualquer outro é Poder Executivo,
+      // comissão, Senado, Judiciário ou sociedade civil — e a UI escreve
+      // esses sem "Dep.".
+      institucional: l.cod_tipo !== 10000,
+    });
+    porProposicao.set(l.proposicao_id, atual);
+  }
+  return [...porProposicao.values()];
+}
+
+export type ProposicaoRelevante = {
+  id: string;
+  identificacao: string | null;
+  ementa: string | null;
+  situacao: string | null;
+  orgao_atual: string | null;
+  rotulo: string | null;
+  score: number | null;
+  rank: number;
+  /** Quantos dos termos da pergunta esta proposição casa. */
+  termos_casados: number;
+};
+
+/**
+ * Proposições por RELEVÂNCIA textual, para o contexto do assistente.
+ *
+ * POR QUE NÃO REUSAR `paginaDeProposicoes`: ela ordena por
+ * `data_apresentacao desc`, que é o certo para uma LISTA navegável e o
+ * errado para responder uma pergunta. Medido: "projetos sobre trabalho
+ * escravo" devolvia, como primeiro resultado, um PL sobre cooperativas
+ * solidárias — as cinco proposições mais RECENTES que contêm "trabalho",
+ * não as mais relacionadas a "trabalho escravo". Com `ts_rank`, os dois
+ * primeiros passam a ser o PL que inclui trabalho escravo na educação
+ * básica e o que reestrutura o tipo penal de redução a condição análoga à
+ * de escravo. É a diferença entre um assistente útil e um que muda de
+ * assunto.
+ *
+ * RECEBE TERMOS JÁ LIMPOS, E OS UNE COM `or`. Passar a pergunta crua para
+ * `websearch_to_tsquery` foi a primeira tentativa e devolveu ZERO para
+ * "projetos sobre trabalho escravo": aquela função faz **AND** de todos os
+ * termos, então exigia a palavra "projetos" dentro da ementa. Com `or`, o
+ * recall volta e a precisão fica por conta do `ts_rank`, que pontua mais alto
+ * justamente o documento que casa com TODOS os termos — medido: o PL sobre
+ * trabalho escravo na educação básica fica em primeiro, à frente dos que só
+ * falam de "trabalho".
+ *
+ * O stemming do dicionário português continua valendo ("reunião" acha
+ * "reunir"), e é ele que faz um termo digitado no plural encontrar a ementa
+ * no singular.
+ *
+ * A expressão do `to_tsvector` é IDÊNTICA à do índice GIN que já existe
+ * (`proposicoes_to_tsvector_idx`, sobre `ementa || ' ' || keywords`).
+ * Qualquer diferença — outra ordem, outro separador — faria o Postgres
+ * ignorar o índice e varrer 5,5 mil linhas sem avisar.
+ */
+export async function proposicoesRelevantes(termos: string[], limite = 6) {
+  const db = getDb();
+  // `or` é sintaxe de `websearch_to_tsquery`; os termos já vêm sem pontuação
+  // do extrator, então não há como um deles injetar operador.
+  const q = termos.filter(Boolean).join(" or ");
+  if (!db || q.length < 3) return [];
+  // `cross join` DEPOIS do `left join`, e não `from p, consulta left join a`:
+  // naquela forma o Postgres liga o LEFT JOIN a `consulta`, e a condição
+  // `a.proposicao_id = p.id` estoura com "invalid reference to FROM-clause
+  // entry for table p". O erro era engolido pela degradação do chamador, e o
+  // sintoma era o bloco de proposições simplesmente NÃO APARECER no contexto
+  // — falha silenciosa, achada só ao ler a resposta inteira do assistente.
+  // `termos_casados` conta quantos termos DISTINTOS o documento casa, e a
+  // ordenação o usa ANTES do rank.
+  //
+  // Isto existe porque o `or` sozinho não distingue sinal de ruído quando os
+  // termos fortes não existem no banco: medido em "mineração em área
+  // indígena" (nenhuma proposição de 2026 fala das duas coisas juntas), o
+  // resultado era radiodifusão do "Instituto Banco de Areia" — casando UM
+  // termo fraco, com rank parecido com o de qualquer outro que também casa
+  // um só. Um piso relativo de rank não resolve esse caso, justamente porque
+  // todos os candidatos empatam por baixo. Contar termos resolve: quem casa 2
+  // de 3 termos vem antes de quem casa 1, e o chamador pode exigir 2 quando a
+  // pergunta tem 2 ou mais termos de conteúdo.
+  const contagem = sql.join(
+    termos.filter(Boolean).map(
+      (t) =>
+        sql`(case when to_tsvector('portuguese', coalesce(p.ementa,'') || ' ' || coalesce(p.keywords,'')) @@ plainto_tsquery('portuguese', ${t}) then 1 else 0 end)`
+    ),
+    sql` + `
+  );
+
+  const linhas = await db.execute<ProposicaoRelevante>(sql`
+    select p.id, p.identificacao, p.ementa, p.situacao, p.orgao_atual,
+           a.rotulo, (a.score)::double precision as score,
+           ts_rank(
+             to_tsvector('portuguese', coalesce(p.ementa,'') || ' ' || coalesce(p.keywords,'')),
+             c.tq
+           ) as rank,
+           (${contagem})::int as termos_casados
+      from congresso.proposicoes p
+      left join congresso.analises a
+             on a.proposicao_id = p.id and a.status = 'ok'
+      cross join (select websearch_to_tsquery('portuguese', ${q}) as tq) c
+     where to_tsvector('portuguese', coalesce(p.ementa,'') || ' ' || coalesce(p.keywords,''))
+           @@ c.tq
+     order by termos_casados desc, rank desc, p.data_apresentacao desc nulls last
+     limit ${limite}
+  `);
+  return linhas.rows ?? [];
+}
+
+/* ─────────────────────── Busca rápida (autocomplete) ─────────────────── */
+
+export type SugestaoBusca = {
+  tipo: string;
+  titulo: string;
+  subtitulo: string | null;
+  href: string;
+  /** Menor = mais relevante. Só para ordenar; não vai para a UI. */
+  peso: number;
+};
+
+/**
+ * Autocomplete do Congresso: proposição, comissão, bancada, autor e agenda.
+ *
+ * UMA consulta, com `union all`. Cinco consultas separadas custariam cinco
+ * subrequests do Worker por TECLA digitada — com o teto de 50 por invocação,
+ * a barra de busca sozinha poderia derrubar a rota. O `union all` também
+ * deixa o Postgres decidir os cinco planos de uma vez.
+ *
+ * `peso` ordena por utilidade, não por relevância textual: identificação
+ * exata ("PL 3611/2026") primeiro, porque quem digita isso sabe o que quer.
+ * Só depois vem sigla de comissão, autor, ementa e agenda.
+ *
+ * O `ilike '%termo%'` não usa índice de prefixo, e é aceitável aqui porque
+ * cada ramo tem `limit` pequeno e os conjuntos são de milhares, não milhões.
+ * Se virar gargalo, o caminho é `pg_trgm` — o índice GIN de trigrama já
+ * existe em `proposicoes`.
+ */
+export async function buscaRapidaCongresso(termo: string, limite = 8) {
+  const db = getDb();
+  const q = termo.trim();
+  if (!db || q.length < 2) return [];
+  const like = `%${q}%`;
+
+  const linhas = await db.execute<SugestaoBusca>(sql`
+    (select 'proposição' as tipo, p.identificacao as titulo,
+            left(p.ementa, 110) as subtitulo,
+            '/congresso/proposicoes/' || p.id as href,
+            case when p.identificacao ilike ${like} then 1 else 4 end as peso
+       from congresso.proposicoes p
+      where p.identificacao ilike ${like} or p.ementa ilike ${like}
+      order by peso, p.data_apresentacao desc nulls last
+      limit ${limite})
+    union all
+    (select 'comissão', o.sigla, o.nome,
+            '/congresso/comissoes/' || o.sigla, 2
+       from congresso.orgaos o
+      where o.ativo and (o.sigla ilike ${like} or o.nome ilike ${like})
+      limit 4)
+    union all
+    (select distinct on (a.nome) 'autor', a.nome,
+            coalesce(a.partido || '-' || a.uf, a.tipo),
+            '/congresso/proposicoes?autor=' || replace(a.nome, ' ', '+'), 3
+       from congresso.proposicao_autoria a
+      where a.nome ilike ${like}
+      limit 5)
+    union all
+    (select 'bancada', b.nome, b.tipo,
+            '/congresso/bancadas/' || b.id, 5
+       from congresso.bancadas b
+      where b.nome ilike ${like}
+      limit 3)
+    union all
+    (select 'agenda',
+            coalesce(e.tipo, 'evento') || ' · ' || to_char(e.inicio, 'DD/MM HH24:MI'),
+            left(e.descricao, 90),
+            '/congresso/agenda', 6
+       from congresso.eventos e
+      where e.descricao ilike ${like}
+      order by e.inicio desc
+      limit 3)
+    order by peso
+    limit ${limite}
+  `);
+  return linhas.rows ?? [];
+}
+
+/* ─────────────────────── Agenda legislativa ─────────────────────── */
+
+/**
+ * Códigos de tipo de evento (de `referencias/tiposEvento` da Câmara).
+ *
+ * Guardados por CÓDIGO e não por texto: o rótulo da fonte muda de grafia
+ * entre anos e um filtro por `like '%udiência%'` quebraria em silêncio.
+ */
+export const COD_AUDIENCIA = [120, 125, 122];
+export const COD_DELIBERATIVO = [110, 112];
+
+/**
+ * `type` e não `interface` de propósito: `db.execute<T>` exige
+ * `T extends Record<string, unknown>`, e o TypeScript só infere index
+ * signature implícita para alias de tipo objeto — uma `interface` é
+ * rejeitada ali com uma mensagem que não diz isso.
+ */
+export type EventoAgenda = {
+  id: string;
+  id_externo: string;
+  cod_tipo: number | null;
+  tipo: string | null;
+  descricao: string | null;
+  situacao: string | null;
+  /**
+   * Data e hora JÁ FORMATADAS no banco, como texto.
+   *
+   * Isto não é preguiça — é a correção de um bug de 3 horas. `eventos.inicio`
+   * é `timestamp` SEM fuso de propósito (migration 0007): a Câmara convoca
+   * "às 15h em Brasília" e é isso que está gravado. Se a coluna viajasse
+   * como Date até o React, o driver a interpretaria no fuso do servidor e a
+   * audiência apareceria em outra hora. Formatar em SQL tira o `Date` do
+   * caminho por completo — a mesma lição que o /judiciario aprendeu no
+   * ofício com data errada.
+   */
+  data_br: string | null;
+  hora_br: string | null;
+  /** ISO local (sem Z), para o atributo `dateTime` do <time>. */
+  inicio_iso: string | null;
+  /** Ordenação e comparação com hoje ficam no banco, pelo mesmo motivo. */
+  futuro: boolean;
+  local_nome: string | null;
+  local_externo: string | null;
+  url_registro: string | null;
+  url_fonte: string | null;
+  orgaos: string[] | null;
+  itens_pauta: number;
+};
+
+const SELECT_EVENTO = sql`
+  select e.id, e.id_externo, e.cod_tipo, e.tipo, e.descricao, e.situacao,
+         to_char(e.inicio, 'DD/MM/YYYY')        as data_br,
+         to_char(e.inicio, 'HH24:MI')           as hora_br,
+         to_char(e.inicio, 'YYYY-MM-DD"T"HH24:MI') as inicio_iso,
+         (e.inicio >= (now() at time zone 'America/Sao_Paulo')) as futuro,
+         e.local_nome, e.local_externo, e.url_registro, e.url_fonte, e.orgaos,
+         (select count(*)::int from congresso.evento_pauta p where p.evento_id = e.id)
+           as itens_pauta
+    from congresso.eventos e`;
+
+export interface FiltrosAgenda {
+  /** Só audiências públicas e tomadas de depoimento. */
+  soAudiencias?: boolean;
+  /** Sigla do órgão promotor. */
+  orgao?: string;
+  limite?: number;
+}
+
+/**
+ * Eventos futuros (agenda) e passados (histórico), em UMA ida ao banco.
+ *
+ * Duas queries separadas custariam dois subrequests do Worker (teto de 50) e
+ * duas consultas ao Neon. O `union all` com uma coluna de partição resolve
+ * com uma, e a UI separa em memória.
+ */
+export async function agenda(filtros: FiltrosAgenda = {}) {
+  const db = getDb();
+  if (!db) return { proximos: [] as EventoAgenda[], recentes: [] as EventoAgenda[] };
+  const limite = filtros.limite ?? 40;
+
+  const cond = [sql`true`];
+  if (filtros.soAudiencias) {
+    cond.push(
+      sql`e.cod_tipo in (${sql.join(
+        COD_AUDIENCIA.map((c) => sql`${c}`),
+        sql`, `
+      )})`
+    );
+  }
+  if (filtros.orgao) cond.push(sql`e.orgaos @> array[${filtros.orgao}]::text[]`);
+  const where = sql.join(cond, sql` and `);
+
+  const linhas = await db.execute<EventoAgenda>(sql`
+    (${SELECT_EVENTO}
+      where ${where} and e.inicio >= (now() at time zone 'America/Sao_Paulo')
+      order by e.inicio asc limit ${limite})
+    union all
+    (${SELECT_EVENTO}
+      where ${where} and e.inicio < (now() at time zone 'America/Sao_Paulo')
+      order by e.inicio desc limit ${limite})
+  `);
+  const todos = linhas.rows ?? [];
+  return {
+    // O `union all` não garante a ordem das partes; reordenar aqui é
+    // barato e torna o resultado independente do plano do Postgres.
+    proximos: todos.filter((e) => e.futuro).sort((a, b) => (a.inicio_iso ?? "").localeCompare(b.inicio_iso ?? "")),
+    recentes: todos.filter((e) => !e.futuro).sort((a, b) => (b.inicio_iso ?? "").localeCompare(a.inicio_iso ?? "")),
+  };
+}
+
+/** `type`, não `interface` — mesmo motivo de `EventoAgenda`. */
+export type ItemPauta = {
+  evento_id: string;
+  ordem: number;
+  titulo: string;
+  topico: string | null;
+  regime: string | null;
+  relator_nome: string | null;
+  relator_partido: string | null;
+  relator_uf: string | null;
+  proposicao_id: string | null;
+  rotulo: string | null;
+  score: number | null;
+  ementa: string | null;
+};
+
+/**
+ * Pauta de um LOTE de eventos, já com o rótulo da análise quando a
+ * proposição existe neste banco.
+ *
+ * É o cruzamento que dá sentido à agenda: "a CCJC vota na terça um projeto
+ * que este portal classificou como fortemente reducionista". Sem o join com
+ * `analises`, a agenda seria só um calendário.
+ */
+export async function pautaDosEventos(eventoIds: string[]): Promise<ItemPauta[]> {
+  const db = getDb();
+  if (!db || eventoIds.length === 0) return [];
+  const lista = sql.join(
+    eventoIds.map((i) => sql`${i}`),
+    sql`, `
+  );
+  const linhas = await db.execute<ItemPauta>(sql`
+    select p.evento_id, p.ordem, p.titulo, p.topico, p.regime,
+           p.relator_nome, p.relator_partido, p.relator_uf,
+           p.proposicao_id, a.rotulo, (a.score)::double precision as score,
+           pr.ementa
+      from congresso.evento_pauta p
+      left join congresso.proposicoes pr on pr.id = p.proposicao_id
+      left join congresso.analises a
+             on a.proposicao_id = p.proposicao_id and a.status = 'ok'
+     where p.evento_id in (${lista})
+     order by p.evento_id, p.ordem
+  `);
+  return linhas.rows ?? [];
+}
+
+/** Siglas de órgão que aparecem na agenda, para popular o filtro. */
+export async function orgaosDaAgenda(): Promise<string[]> {
+  const db = getDb();
+  if (!db) return [];
+  const linhas = await db.execute<{ sigla: string }>(sql`
+    select distinct unnest(orgaos) as sigla from congresso.eventos
+     where orgaos is not null order by 1
+  `);
+  return (linhas.rows ?? []).map((l) => l.sigla).filter(Boolean);
 }
 
 /** Temas oficiais distintos, para popular o filtro. */

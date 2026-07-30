@@ -107,6 +107,20 @@ export async function ocupacoesAtuais(tribunalId: string): Promise<Ocupacao[]> {
   return (await q.ocupacoesAtuais(tribunalId)) as Ocupacao[];
 }
 
+/**
+ * Integrantes sem cadeira atribuída — ver a nota em `queries/judiciario.ts`.
+ * Degrada para lista vazia se a migration 0008 ainda não rodou.
+ */
+export async function integrantesSemCadeira(tribunalId: string) {
+  try {
+    return await q.integrantesSemCadeira(tribunalId);
+  } catch (e) {
+    const codigo = (e as { code?: string }).code;
+    if (codigo === "42703" || codigo === "42P01") return [];
+    throw e;
+  }
+}
+
 /** Todas as ocupações atuais com vacância projetada conhecida, ordenadas. */
 export async function proximasVacancias(limite = 50): Promise<Ocupacao[]> {
   // O filtro por vacância conhecida, a ordenação e o limite passaram para

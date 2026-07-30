@@ -1,5 +1,6 @@
 import Link from "@/lib/congresso/link";
 import RotuloBadge from "@/app/congresso/components/RotuloBadge";
+import Autoria from "@/app/congresso/components/Autoria";
 import { labelDoDireito } from "@/lib/congresso/rubrica";
 import type { Destaque } from "@/lib/congresso/destaques";
 
@@ -32,6 +33,10 @@ export default function CardDestaque({ d }: { d: Destaque }) {
           </span>
         ) : null}
       </div>
+
+      {/* Autoria ANTES da ementa: a pergunta "de quem é isso?" vem antes de
+          "o que diz?" para quem vai cobrar alguém. */}
+      <Autoria autoria={d.autoria} className="mt-2 text-sm" />
 
       <p className="mt-2 text-sm opacity-85">{d.ementa}</p>
 

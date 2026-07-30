@@ -10,8 +10,6 @@ export const metadata: Metadata = {
     "Projetos de lei federais que restringem direitos, com o dispositivo legal e o trecho que fundamentam cada classificação.",
 };
 
-export const revalidate = 900;
-
 type Params = Promise<Record<string, string | undefined>>;
 
 export default async function Alertas({ searchParams }: { searchParams: Params }) {

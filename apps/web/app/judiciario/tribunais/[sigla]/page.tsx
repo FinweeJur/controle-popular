@@ -6,15 +6,30 @@ import {
   ocupacoesAtuais,
   listarNomeacoes,
   mandatosDirecao,
+  integrantesSemCadeira,
+  listarTribunais,
 } from "@/lib/judiciario/tribunais";
 import { agregarPoder } from "@/lib/judiciario/agregado";
 import { TRIBUNAIS } from "@/lib/judiciario/regras";
 import { rotuloCota, rotuloMotivoVacancia, rotuloResultado } from "@/lib/judiciario/rotulos";
 
-export const revalidate = 900;
-
+/**
+ * Parte da RÉGUA (`regras.json`) e completa com o BANCO.
+ *
+ * Antes vinha só de `TRIBUNAIS`, que tem apenas os cinco superiores. TJMG e
+ * TRF6 existem em `tribunais` desde a migration 0008 e ficariam sem página
+ * pré-gerada — o que na Fase 5 (estaticização para o Workers) viraria 404, o
+ * modo de falha que este repo já registrou três vezes com o basePath.
+ */
 export async function generateStaticParams() {
-  return Object.keys(TRIBUNAIS).map((sigla) => ({ sigla }));
+  const daRegua = Object.keys(TRIBUNAIS);
+  let doBanco: string[] = [];
+  try {
+    doBanco = (await listarTribunais()).map((t) => t.id);
+  } catch {
+    /* build sem banco: fica só a régua */
+  }
+  return [...new Set([...daRegua, ...doBanco])].map((sigla) => ({ sigla }));
 }
 
 export async function generateMetadata({
@@ -48,10 +63,18 @@ export default async function TribunalPage({
   // (mandatosDirecao): a vacância de 75 anos ali é da cadeira de ORIGEM
   // do ministro (STF/STJ), não do biênio de 2 anos no TSE.
   const ehEletivo = sigla === "tse";
+  // 2ª instância (TJ, TRF, TRT) é um TERCEIRO caso, não "o que não é TSE".
+  // A nomeação NÃO passa pelo Senado (regras.json, `segunda_instancia.nota`),
+  // então a seção de indicações e a de poder de indicação — que existem para
+  // ler o rastro do Senado — não se aplicam. Sem esta distinção, a página do
+  // TJMG afirmaria que "toda nomeação a este tribunal passa pelo Senado",
+  // que é falso.
+  const ehSegundaInstancia = t.instancia === "segunda";
 
   const ocupacoes = ehEletivo ? [] : await ocupacoesAtuais(sigla);
   const nomeacoes = ehEletivo ? [] : (await listarNomeacoes(sigla)) ?? [];
   const mandatos = ehEletivo ? await mandatosDirecao(sigla) : [];
+  const semCadeira = await integrantesSemCadeira(sigla);
   const ag = agregarPoder(sigla, t.n_cadeiras ?? ocupacoes.length, ocupacoes, nomeacoes);
 
   // Distribuição de cadeiras por cota (composição legal, da régua).
@@ -81,21 +104,35 @@ export default async function TribunalPage({
           <span className="uppercase">{sigla}</span> · {t.nome}
         </h1>
         <p className="opacity-80">
-          {t.n_cadeiras} cadeiras ·{" "}
+          {t.n_cadeiras ? `${t.n_cadeiras} cadeiras · ` : ""}
           {t.exige_sabatina_senado
             ? "nomeação pelo Presidente, aprovada pelo Senado"
-            : "membros eleitos pelos próprios tribunais"}
+            : ehEletivo
+              ? "membros eleitos pelos próprios tribunais"
+              : `nomeação pelo ${t.autoridade_nomeante ?? "chefe do Executivo"}, sem sabatina do Senado`}
         </p>
       </header>
 
       <section className="space-y-3">
         <h2 className="font-display text-xl font-semibold">Como as cadeiras são preenchidas</h2>
-        <p className="text-sm opacity-70">
-          Cada cadeira deste tribunal tem uma origem fixa definida pela Constituição — algumas
-          só podem ser ocupadas por quem já é juiz de carreira, outras são reservadas a
-          advogados ou ao Ministério Público. É essa regra que decide quem pode concorrer a
-          cada vaga.
-        </p>
+        {ehSegundaInstancia ? (
+          <p className="text-sm opacity-70">
+            Em tribunal de segunda instância, quatro de cada cinco cadeiras são de juízes de
+            carreira, promovidos alternadamente por antiguidade e merecimento (CF art. 93, II).
+            A quinta é o <strong>quinto constitucional</strong> (CF art. 94): reservada a
+            advogados e a membros do Ministério Público com mais de dez anos de atividade, por
+            lista sêxtupla da entidade de classe, reduzida a três pelo próprio tribunal, com
+            nomeação pelo Executivo em até 20 dias.{" "}
+            <strong>Nomeação de tribunal de segunda instância não passa pelo Senado.</strong>
+          </p>
+        ) : (
+          <p className="text-sm opacity-70">
+            Cada cadeira deste tribunal tem uma origem fixa definida pela Constituição — algumas
+            só podem ser ocupadas por quem já é juiz de carreira, outras são reservadas a
+            advogados ou ao Ministério Público. É essa regra que decide quem pode concorrer a
+            cada vaga.
+          </p>
+        )}
         <div className="flex flex-wrap gap-2 text-sm">
           {Object.entries(cotas).map(([cota, n]) => (
             <span key={cota} className="rounded border border-[var(--cp-border)] px-2 py-1">
@@ -104,6 +141,57 @@ export default async function TribunalPage({
           ))}
         </div>
       </section>
+
+      {/* Integrantes SEM cadeira atribuída.
+          Fica fora do `if` de TSE/2ª instância porque vale para os três casos:
+          é aqui que aparecem os 26 ministros do TST (cadeira existe, mas a
+          fonte não diz quem entrou pelo quinto), os 18 do TRF6 e os 148 do
+          TJMG. Ver `etl/composicao.py` e a migration 0008. */}
+      {semCadeira.length > 0 ? (
+        <section className="space-y-3">
+          <h2 className="font-display text-xl font-semibold">
+            Quem integra o tribunal{" "}
+            <span className="font-normal opacity-70">({semCadeira.length})</span>
+          </h2>
+          <p className="text-sm opacity-70">
+            {t.n_cadeiras
+              ? `${semCadeira.length} de ${t.n_cadeiras} cadeiras têm integrante identificado por este portal. `
+              : ""}
+            A fonte oficial deste tribunal publica os nomes, mas{" "}
+            <strong>não diz quem ocupa qual cadeira nem por qual cota</strong> entrou. Este
+            portal não preenche essa lacuna por dedução: atribuir cota sem fonte mudaria a
+            contagem de quantas vagas de cada origem abrem nos próximos anos, que é justamente
+            o número que ele existe para acertar. Por isso estes nomes aparecem como
+            integrantes, sem cadeira e sem projeção de vacância.
+          </p>
+          <ul className="grid gap-x-6 gap-y-1 text-sm sm:grid-cols-2">
+            {semCadeira.map((m) => (
+              <li
+                key={m.id}
+                className="flex items-baseline justify-between gap-2 border-b border-[var(--cp-border)] py-1"
+              >
+                <span>
+                  {m.url_curriculo ? (
+                    <a
+                      href={m.url_curriculo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                    >
+                      {m.nome}
+                    </a>
+                  ) : (
+                    m.nome
+                  )}
+                </span>
+                {m.origem_carreira ? (
+                  <span className="shrink-0 text-xs opacity-60">{m.origem_carreira}</span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       {ehEletivo ? (
         <>
@@ -165,7 +253,7 @@ export default async function TribunalPage({
             </p>
           </section>
         </>
-      ) : (
+      ) : ehSegundaInstancia ? null : (
         <>
           <section className="space-y-3">
             <h2 className="font-display text-xl font-semibold">Poder de indicação</h2>

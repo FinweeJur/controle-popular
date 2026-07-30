@@ -28,10 +28,124 @@ import {
  * produção").
  */
 
+/* ─────────────────────── Busca rápida (autocomplete) ─────────────────── */
+
+export type SugestaoBusca = {
+  tipo: string;
+  titulo: string;
+  subtitulo: string | null;
+  href: string;
+  peso: number;
+};
+
+/**
+ * Autocomplete do Judiciário: tribunal, magistrado, vaga e indicação.
+ *
+ * Uma consulta com `union all`, pelo mesmo motivo do eixo Congresso — cada
+ * tecla digitada não pode custar quatro subrequests do Worker.
+ *
+ * Magistrado não tem página própria neste eixo; o destino honesto é a página
+ * do tribunal dele, que é onde a composição aparece. Linkar para uma rota
+ * inexistente seria pior que não sugerir.
+ */
+export async function buscaRapidaJudiciario(termo: string, limite = 8) {
+  const db = getDb();
+  const q = termo.trim();
+  if (!db || q.length < 2) return [];
+  const like = `%${q}%`;
+
+  const linhas = await db.execute<SugestaoBusca>(sql`
+    (select 'tribunal' as tipo, t.sigla as titulo, t.nome as subtitulo,
+            '/judiciario/tribunais/' || lower(t.id) as href,
+            case when t.sigla ilike ${like} then 1 else 2 end as peso
+       from judiciario.tribunais t
+      where t.sigla ilike ${like} or t.nome ilike ${like}
+      limit 6)
+    union all
+    (select 'magistrado', m.nome,
+            coalesce(upper(c.tribunal_id) || ' · cadeira ' || c.numero::text, m.origem_carreira),
+            '/judiciario/tribunais/' || lower(coalesce(c.tribunal_id, 'stf')), 3
+       from judiciario.magistrados m
+       left join judiciario.ocupacoes o on o.magistrado_id = m.id and o.atual
+       left join judiciario.cadeiras c on c.id = o.cadeira_id
+      where m.nome ilike ${like}
+      limit 6)
+    union all
+    (select 'vaga', upper(c.tribunal_id) || ' · cadeira ' || c.numero::text,
+            coalesce(v.motivo, 'vaga') ||
+              coalesce(', aberta em ' || to_char(v.data_abertura, 'DD/MM/YYYY'), ''),
+            '/judiciario/vagas', 4
+       from judiciario.vagas v
+       join judiciario.cadeiras c on c.id = v.cadeira_id
+      where c.tribunal_id ilike ${like} or v.motivo ilike ${like} or v.fase ilike ${like}
+      limit 4)
+    union all
+    -- nomeacoes NAO tem coluna com o nome do indicado: a API do Senado
+    -- devolve o nome dentro da ementa, e o magistrado so e ligado quando ja
+    -- foi curado. Buscar nos dois lugares (join opcional + ementa) e o que
+    -- faz "Messias" encontrar a indicacao rejeitada de 2026.
+    -- (Sem acento nem backtick: este comentario vive DENTRO de um template
+    -- literal de TypeScript, onde backtick fecharia a string.)
+    (select 'indicação', coalesce(mg.nome, n.senado_identificacao),
+            upper(n.tribunal_id) || coalesce(' · ' || n.resultado, ''),
+            '/judiciario/indicacoes', 5
+       from judiciario.nomeacoes n
+       left join judiciario.magistrados mg on mg.id = n.magistrado_id
+      where mg.nome ilike ${like}
+         or n.senado_ementa ilike ${like}
+         or n.senado_identificacao ilike ${like}
+      order by coalesce(n.data_deliberacao, n.data_mensagem) desc nulls last
+      limit 4)
+    order by peso
+    limit ${limite}
+  `);
+  return linhas.rows ?? [];
+}
+
 export async function listarTribunais() {
   const db = getDb();
   if (!db) return null;
   return db.select().from(tribunaisInJudiciario).orderBy(asc(tribunaisInJudiciario.ramo));
+}
+
+/**
+ * Integrantes de um tribunal que NÃO têm cadeira atribuída.
+ *
+ * Existe porque a maior parte dos tribunais brasileiros não publica quem
+ * senta em qual cadeira: o TST tem 27 cadeiras (5 do quinto) e não diz quem
+ * entrou por qual classe; TRF6 e TJMG são 2ª instância e não numeram cadeira
+ * individual. Ver a migration 0008 e `etl/composicao.py`.
+ *
+ * Sem esta consulta, os 26 do TST, os 18 do TRF6 e os 148 do TJMG estariam no
+ * banco e invisíveis no portal — e a alternativa (inventar cadeira e cota)
+ * corromperia a contagem de vagas por cota, que é a métrica central do eixo.
+ *
+ * O `not exists` exclui quem já aparece na composição por cadeira, para o
+ * mesmo nome não sair duas vezes na página.
+ */
+export async function integrantesSemCadeira(tribunalId: string) {
+  const db = getDb();
+  if (!db) return [];
+  const linhas = await db.execute<{
+    id: string;
+    nome: string;
+    nome_completo: string | null;
+    cargo: string | null;
+    origem_carreira: string | null;
+    url_curriculo: string | null;
+    data_nascimento: string | null;
+  }>(sql`
+    select m.id, m.nome, m.nome_completo, m.cargo, m.origem_carreira,
+           m.url_curriculo, m.data_nascimento
+      from judiciario.magistrados m
+     where m.tribunal_atual = ${tribunalId}
+       and not exists (
+             select 1 from judiciario.ocupacoes o
+              where o.magistrado_id = m.id and o.atual
+           )
+     order by m.nome
+  `);
+  return linhas.rows ?? [];
 }
 
 export async function ocupacoesAtuais(tribunalId: string) {
@@ -189,4 +303,36 @@ export async function alertasDoUsuario(userId: string, limite = 50) {
     .where(eq(alertasInJudiciario.user_id, userId))
     .orderBy(desc(alertasInJudiciario.criado_em))
     .limit(limite);
+}
+
+export interface NovoMonitoramento {
+  nome: string | null;
+  tribunais: string[] | null;
+  cotas: string[] | null;
+  horizonteMeses: number;
+  frequencia: string;
+}
+
+/**
+ * Cria um monitoramento PARA o usuário dado. `userId` vem da sessão lida
+ * no servidor (`requireUser()` em `lib/auth/guards.ts`), nunca de um campo
+ * de formulário — é a mesma fronteira de `monitoramentosDoUsuario`, agora
+ * do lado da escrita.
+ */
+export async function criarMonitoramento(userId: string, dados: NovoMonitoramento) {
+  const db = getDb();
+  if (!db) throw new Error("Banco não configurado.");
+  const [linha] = await db
+    .insert(monitoramentosInJudiciario)
+    .values({
+      user_id: userId,
+      nome: dados.nome,
+      tribunais: dados.tribunais,
+      cotas: dados.cotas,
+      horizonte_meses: dados.horizonteMeses,
+      frequencia: dados.frequencia,
+      ativo: true,
+    })
+    .returning();
+  return linha;
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/lib/congresso/link";
 import RotuloBadge from "@/app/congresso/components/RotuloBadge";
+import Autoria from "@/app/congresso/components/Autoria";
 import { listarProposicoes, listarTemas, POR_PAGINA_PADRAO } from "@/lib/congresso/proposicoes";
 import { RUBRICA } from "@/lib/congresso/rubrica";
 
@@ -9,8 +10,6 @@ export const metadata: Metadata = {
   description:
     "Busque projetos de lei federais por tema, palavra-chave e classificação de ampliação ou restrição de direitos.",
 };
-
-export const revalidate = 900;
 
 type Params = Promise<Record<string, string | undefined>>;
 
@@ -23,6 +22,8 @@ export default async function Proposicoes({ searchParams }: { searchParams: Para
       q: sp.q,
       tema: sp.tema,
       rotulo: sp.rotulo,
+      // Vem da barra de busca ao escolher um autor nas sugestões.
+      autor: sp.autor,
       ano: sp.ano ? Number(sp.ano) : undefined,
       tramitando: sp.tramitando === "0" ? undefined : true,
       pagina,
@@ -91,6 +92,11 @@ export default async function Proposicoes({ searchParams }: { searchParams: Para
           </select>
         </label>
 
+        {/* Campo oculto: sem ele, filtrar por tema depois de escolher um
+            autor na barra de busca PERDERIA o autor — um formulário GET só
+            envia o que está dentro dele. */}
+        {sp.autor ? <input type="hidden" name="autor" value={sp.autor} /> : null}
+
         <div className="sm:col-span-4">
           <button
             type="submit"
@@ -98,10 +104,15 @@ export default async function Proposicoes({ searchParams }: { searchParams: Para
           >
             Filtrar
           </button>
-          {sp.q || sp.tema || sp.rotulo ? (
+          {sp.q || sp.tema || sp.rotulo || sp.autor ? (
             <Link href="/proposicoes" className="ml-3 underline">
               limpar
             </Link>
+          ) : null}
+          {sp.autor ? (
+            <span className="ml-3 text-sm opacity-80">
+              autoria de <strong>{sp.autor}</strong>
+            </span>
           ) : null}
         </div>
       </form>
@@ -139,6 +150,7 @@ export default async function Proposicoes({ searchParams }: { searchParams: Para
                     tamanho="sm"
                   />
                 </div>
+                <Autoria autoria={p.autoria} className="mt-1.5 text-sm" />
                 <p className="mt-2 text-sm opacity-85">{p.ementa}</p>
                 <p className="mt-2 text-xs opacity-65">
                   {p.orgao_atual ? `${p.orgao_atual} · ` : ""}

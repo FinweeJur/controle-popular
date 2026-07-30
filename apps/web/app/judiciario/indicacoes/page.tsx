@@ -8,8 +8,6 @@ export const metadata: Metadata = {
     "Toda indicação enviada pelo Presidente ao Senado para STF, STJ, TST e STM, com data, resultado e a cadeira que ela preenche.",
 };
 
-export const revalidate = 3600;
-
 const fmtData = (d: string | null) =>
   d ? new Date(d + "T00:00:00").toLocaleDateString("pt-BR") : "—";
 

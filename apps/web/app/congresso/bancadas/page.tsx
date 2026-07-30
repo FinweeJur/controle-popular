@@ -8,8 +8,6 @@ export const metadata: Metadata = {
     "Frentes parlamentares, blocos, federações e partidos na Câmara dos Deputados, com quantos deputados cada um reúne.",
 };
 
-export const revalidate = 900;
-
 const ORDEM: TipoBancada[] = ["frente", "bloco", "federacao", "partido"];
 
 type Params = Promise<Record<string, string | undefined>>;

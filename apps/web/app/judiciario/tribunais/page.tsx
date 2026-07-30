@@ -8,8 +8,6 @@ export const metadata: Metadata = {
     "Composição legal dos tribunais superiores brasileiros: quantas cadeiras, por qual cota de origem, e quem indica.",
 };
 
-export const revalidate = 900;
-
 const RAMO_NOME: Record<string, string> = {
   constitucional: "Constitucional",
   superior: "Superior",
@@ -43,12 +41,24 @@ export default async function Tribunais() {
               <h2 className="font-display text-lg font-semibold">
                 <span className="uppercase">{t.id}</span>
               </h2>
-              <span className="font-tabular text-sm opacity-60">{t.n_cadeiras} cadeiras</span>
+              {/* `n_cadeiras` é NULO quando o total legal não foi conferido
+                  (TJMG). Sem o `?`, o card imprimia " cadeiras" sem número —
+                  lido como zero, ou como bug. */}
+              <span className="font-tabular text-sm opacity-60">
+                {t.n_cadeiras ? `${t.n_cadeiras} cadeiras` : "total de cadeiras não conferido"}
+              </span>
             </div>
             <p className="text-sm opacity-80">{t.nome}</p>
             <p className="mt-1 text-xs opacity-60">
               {RAMO_NOME[t.ramo] ?? t.ramo}
-              {t.exige_sabatina_senado ? " · sabatina do Senado" : " · membros eleitos"}
+              {/* Três casos, não dois: "não exige sabatina" não é o mesmo que
+                  "membros eleitos". TJ e TRF são nomeados pelo Executivo sem
+                  passar pelo Senado — dizer "membros eleitos" ali é falso. */}
+              {t.exige_sabatina_senado
+                ? " · sabatina do Senado"
+                : t.instancia === "segunda"
+                  ? " · nomeação sem sabatina do Senado"
+                  : " · membros eleitos"}
               {t.base_legal ? ` · ${t.base_legal}` : ""}
             </p>
           </Link>

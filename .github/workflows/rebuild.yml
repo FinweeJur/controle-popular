@@ -1,0 +1,85 @@
+name: Rebuild e deploy do site
+
+# Contrapartida obrigatória da decisão da Fase 5/6: no Cloudflare o
+# incrementalCache é o de Static Assets, READ-ONLY. Não existe revalidação
+# em runtime — o `export const revalidate` de 15 páginas foi removido porque
+# só falhava a cada request depois de expirar ("Failed to revalidate" +
+# "Dummy queue is not implemented"), servindo stale e queimando CPU.
+#
+# Consequência: o HTML publicado é EXATAMENTE o do último build. SSG não se
+# atualiza sozinho. Sem este workflow, o ETL rodaria todo dia gravando no
+# Neon e o site continuaria mostrando o dado do dia do deploy.
+#
+# CADÊNCIA LIMITADA PELO EGRESS DO NEON, não pelo desejo de dado fresco.
+#
+# Este workflow nasceu em 0,6,12,18 UTC (4x/dia). Medição real do dia
+# seguinte (canário, 2026-07-30) mostrou que isso não cabe no plano free:
+# **cada `next build` lê o banco inteiro** para pré-renderizar ~486 páginas,
+# e o egress do Neon chegou a **4,53 GB de 5 GB/mês em 2,4 dias** com os ~15
+# builds da migração — ordem de 0,3-0,45 GB por build. A 4x/dia isso daria
+# ~40 GB/mês contra um teto de 5 GB (8x acima), e o site cairia poucos dias
+# depois de cada renovação de ciclo.
+#
+# 12:00 UTC é o horário certo para o único rebuild: o ETL do congresso roda
+# às 09:00 UTC e os de judiciário/betim em janelas próximas, então é o
+# primeiro momento em que o dado do dia já está no banco.
+#
+# `0 12 * * 1` = segunda-feira. Semanal é a única cadência que cabe com folga
+# (~1,4-1,8 GB/mês). PARA AUMENTAR: medir primeiro o custo real de UM build
+# (ler `data_transfer_bytes` da API do Neon antes e depois) e dividir os 5 GB
+# por ele — não estimar. Diário só cabe se o custo por build cair para
+# ~0,15 GB, o que exigiria reduzir o número de páginas pré-renderizadas.
+on:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+# Dois builds concorrentes publicariam o mesmo Worker em ordem indefinida.
+# Sem `cancel-in-progress`: um deploy pela metade é pior que um enfileirado.
+concurrency:
+  group: rebuild-deploy
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    # O prerender das 486 páginas fala com o Neon com concorrência 3 e
+    # retry 3 (ver next.config.ts) e leva alguns minutos; o default de 6h
+    # do runner é folgado demais para um job que travou na rede.
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: apps/web
+    env:
+      # Mesma variável de apps/web/.env.local. O build LÊ do banco (é o que
+      # transforma dado em HTML), então sem ela o job gera 486 páginas de
+      # estado vazio e publica um site em branco — sem falhar.
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      # Nenhuma delas tem throw no import (ver lib/auth/server.ts), então o
+      # build passa sem elas — vão aqui só para o build do CI se comportar
+      # como o local. O que o Worker usa em RUNTIME são os secrets da conta
+      # Cloudflare, definidos fora deste workflow: o deploy não os reescreve.
+      BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
+      BETTER_AUTH_URL: ${{ secrets.BETTER_AUTH_URL }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      # `npm ci` na raiz: é um monorepo com um package-lock só.
+      - name: Instalar dependências
+        working-directory: .
+        run: npm ci
+
+      # `cf:deploy` = build + `populateCache remote` + deploy. O
+      # populateCache NÃO é opcional: sem ele o dir
+      # `assets/cdn-cgi/_next_cache` não existe e toda rota SSG sob segmento
+      # dinâmico com `dynamicParams=false` (o caso de `app/[municipio]`)
+      # devolve 404/NoFallbackError. Ver open-next.config.ts.
+      - name: Build, popular cache e publicar
+        run: npm run cf:deploy

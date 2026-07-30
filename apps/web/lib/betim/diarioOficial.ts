@@ -28,8 +28,22 @@ export async function getDiarioOficialInfo(): Promise<DiarioOficialInfo | null> 
       {
         signal: controller.signal,
         headers: { "User-Agent": "Mozilla/5.0", Accept: "application/json" },
-        // Revalida de hora em hora (ISR) — não busca a cada request.
-        next: { revalidate: 3600 },
+        // `force-cache` e NÃO `next: { revalidate: 3600 }`, que ficou aqui
+        // até a Fase 6. O revalidate de fetch propaga para o SEGMENTO: era
+        // ele, e não um `export const revalidate`, que deixava
+        // `/betim/prefeitura` como a ÚNICA rota com
+        // `initialRevalidateSeconds != false` no prerender-manifest depois
+        // da limpeza das 15 páginas — logo, a única ainda tentando revalidar
+        // de hora em hora contra um incrementalCache READ-ONLY, falhando e
+        // gastando CPU a cada request passada a hora.
+        //
+        // Simplesmente REMOVER a opção seria pior: sem ela o fetch fica
+        // uncached por default no Next 16 e a página cai de `●` para `ƒ`
+        // (render + esta chamada de rede a cada request). `force-cache`
+        // mantém o dado congelado no build, que é a semântica correta aqui —
+        // a atualização vem do rebuild agendado
+        // (`.github/workflows/rebuild.yml`), de 6 em 6 horas.
+        cache: "force-cache",
       }
     );
     if (!res.ok) return null;

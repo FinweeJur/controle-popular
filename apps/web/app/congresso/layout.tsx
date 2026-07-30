@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/lib/congresso/link";
 import ThemeSwitcher from "@/app/congresso/components/ThemeSwitcher";
 import FontSizeControl from "@/app/congresso/components/FontSizeControl";
+import BuscaUniversal from "@/app/components/BuscaUniversal";
 
 /**
  * Zona /congresso. O `<html>`, as fontes e o ThemeProvider vêm do layout
@@ -17,6 +18,7 @@ const NAV = [
   { href: "/alertas", label: "Alertas" },
   { href: "/bons-exemplos", label: "Bons exemplos" },
   { href: "/proposicoes", label: "Proposições" },
+  { href: "/agenda", label: "Agenda" },
   { href: "/comissoes", label: "Comissões" },
   { href: "/bancadas", label: "Bancadas" },
   { href: "/metodologia", label: "Metodologia" },
@@ -63,6 +65,25 @@ export default function CongressoLayout({
             <FontSizeControl />
             <ThemeSwitcher />
           </div>
+        </div>
+        {/* Barra de busca/assistente em faixa própria, largura inteira: no
+            meio do nav ela ficaria estreita demais para ler a sugestão, e o
+            painel de sugestões precisa de espaço para o subtítulo (ementa,
+            nome da comissão). Fora do <nav> de propósito — não é um link de
+            navegação e não deve entrar na lista que o leitor de tela anuncia
+            como "navegação". */}
+        <div className="mx-auto max-w-5xl px-4 pb-4">
+          <BuscaUniversal
+            endpointSugestoes="/congresso/api/busca"
+            endpointChat="/congresso/api/chat"
+            placeholder="Buscar PL, comissão, autor — ou perguntar ao assistente"
+            exemplos={[
+              "Quais projetos restringem direitos agora?",
+              "O que a CCJC tem na pauta?",
+              "Quais audiências públicas estão marcadas?",
+            ]}
+            aviso="O assistente responde a partir dos dados já reunidos no portal e pode errar. Confira sempre na página e na fonte oficial."
+          />
         </div>
       </header>
 

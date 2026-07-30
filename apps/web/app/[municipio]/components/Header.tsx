@@ -3,6 +3,7 @@ import type { Cidade } from "@/lib/db/queries/municipios";
 import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
 import FontSizeControl from "@/app/[municipio]/components/FontSizeControl";
 import NavDropdown from "@/app/[municipio]/components/NavDropdown";
+import BuscaUniversal from "@/app/components/BuscaUniversal";
 import { paginasDados } from "@/lib/betim/dadosNav";
 
 // Ordem do nav: [Prefeitura], [Câmara], Serviços, [Dados], Notícias, Sobre.
@@ -30,7 +31,12 @@ const NAV_LINKS_DEPOIS_DADOS = [
 
 export default function Header({ cidade }: { cidade: Cidade }) {
   return (
-    <header className="sticky top-0 z-50 flex flex-wrap items-center justify-between gap-3 border-b border-border bg-surface px-4 py-3 backdrop-blur sm:px-8">
+    <header className="sticky top-0 z-50 border-b border-border bg-surface px-4 py-3 backdrop-blur sm:px-8">
+      {/* Deixou de ser um flex-row único: a faixa da busca precisa de largura
+          inteira embaixo, e no meio da linha do nav ela ficaria estreita
+          demais para o painel de sugestões mostrar o subtítulo (objeto do
+          contrato, ementa da proposição). */}
+      <div className="flex flex-wrap items-center justify-between gap-3">
       <div className="flex flex-wrap items-center gap-2 sm:gap-6">
         {/* <a> puro: a raiz está FORA do basePath (`/betim`) deste app, e
             next/link a prefixaria, mandando para a home do Betim em vez da
@@ -89,6 +95,21 @@ export default function Header({ cidade }: { cidade: Cidade }) {
         </a>
         <ThemeSwitcher />
         <FontSizeControl />
+      </div>
+      </div>
+
+      <div className="mt-3">
+        <BuscaUniversal
+          endpointSugestoes={`/${cidade.slug}/api/busca`}
+          endpointChat={`/${cidade.slug}/api/chat`}
+          placeholder={`Buscar contrato, vereador, projeto — ou perguntar sobre ${cidade.nome}`}
+          exemplos={[
+            `Quanto a Prefeitura de ${cidade.nome} gasta em saúde?`,
+            "Quais os maiores contratos da Prefeitura?",
+            "O que a Câmara propôs sobre mobilidade?",
+          ]}
+          aviso="O assistente responde com base nos dados já reunidos no portal e pode errar. Confira sempre na página e na fonte oficial."
+        />
       </div>
     </header>
   );
