@@ -1,8 +1,24 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { withBasePath } from "@/lib/congresso/basePath";
-import type { Bloco, Destinatario, TipoDocumento } from "@/lib/congresso/oficio/compor";
+import type { Bloco, Destinatario, Oficio, TipoDocumento } from "@/lib/congresso/oficio/compor";
+
+/**
+ * `ssr: false` é obrigatório aqui, não preferência: este componente puxa
+ * `docx`+`pdf-lib` (~300 KiB gzip), e sem isto o Next as compila para o
+ * grafo de SSR, estourando o teto de 3 MB gzip do Worker no Cloudflare
+ * Free. Ver a docstring de `BotoesBinarios`.
+ */
+const BotoesBinarios = dynamic(() => import("./BotoesBinarios"), {
+  ssr: false,
+  loading: () => (
+    <span className="rounded-md border border-[var(--cp-border)] px-4 py-2 font-medium opacity-60">
+      preparando downloads…
+    </span>
+  ),
+});
 
 interface Suspeita {
   tipo: string;
@@ -10,7 +26,7 @@ interface Suspeita {
 }
 
 interface Resposta {
-  oficio: { titulo: string; blocos: Bloco[]; assunto: string };
+  oficio: Oficio;
   original?: Bloco[];
   revisao?: {
     aplicada: boolean;
@@ -104,10 +120,16 @@ export default function FormularioOficio({
     }
   }
 
-  async function baixar(formato: "txt" | "docx" | "pdf") {
+  /**
+   * Só TXT passa pelo servidor — é string pura, sem dependência. DOCX e PDF
+   * são montados no browser por `BotoesBinarios` (ver a docstring de lá:
+   * as libs não podem entrar no bundle do Worker).
+   */
+  async function baixar(formato: "txt") {
     const form = document.getElementById("form-oficio") as HTMLFormElement | null;
     if (!form) return;
     setCarregando(true);
+    setErro(null);
     try {
       const resp = await fetch(withBasePath("/api/oficio"), {
         method: "POST",
@@ -123,10 +145,11 @@ export default function FormularioOficio({
       const a = document.createElement("a");
       a.href = url;
       a.download =
-        resp.headers.get("content-disposition")?.match(/filename="(.+?)"/)?.[1] ??
-        `oficio.${formato}`;
+        resp.headers.get("content-disposition")?.match(/filename="(.+?)"/)?.[1] ?? "oficio.txt";
       a.click();
       URL.revokeObjectURL(url);
+    } catch {
+      setErro("não foi possível gerar o arquivo");
     } finally {
       setCarregando(false);
     }
@@ -395,20 +418,11 @@ export default function FormularioOficio({
           </article>
 
           <div className="flex flex-wrap gap-3">
-            <button
-              type="button"
-              onClick={() => baixar("pdf")}
-              className="rounded-md border border-[var(--cp-border)] px-4 py-2 font-medium"
-            >
-              Baixar PDF
-            </button>
-            <button
-              type="button"
-              onClick={() => baixar("docx")}
-              className="rounded-md border border-[var(--cp-border)] px-4 py-2 font-medium"
-            >
-              Baixar DOCX
-            </button>
+            <BotoesBinarios
+              oficio={resultado.oficio}
+              blocos={blocosMostrados ?? resultado.oficio.blocos}
+              onErro={setErro}
+            />
             <button
               type="button"
               onClick={() => baixar("txt")}

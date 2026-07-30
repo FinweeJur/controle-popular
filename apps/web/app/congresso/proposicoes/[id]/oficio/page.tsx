@@ -7,6 +7,21 @@ import { obterProposicao } from "@/lib/congresso/proposicoes";
 import { obterOrgao } from "@/lib/congresso/orgaos";
 import { sugerirDestinatarios } from "@/lib/congresso/oficio/compor";
 
+/**
+ * Mesmo padrão de `proposicoes/[id]` (Fase 5 — estaticização): 5.500+
+ * proposições, pré-render total inviável no build. Vazio + `dynamicParams`
+ * (default `true`) = render sob demanda com cache em vez de `ƒ` a cada
+ * request. O formulário em si (`FormularioOficio`) já é client component
+ * sem estado de sessão — cachear o shell do servidor é seguro.
+ *
+ * Sem `revalidate` desde a Fase 6, pelo mesmo motivo de `proposicoes/[id]`:
+ * cache read-only no Worker torna a revalidação em runtime impossível, e
+ * tentá-la só gerava erro e CPU gasta. Atualização = rebuild agendado.
+ */
+export async function generateStaticParams() {
+  return [];
+}
+
 type Params = Promise<{ id: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {

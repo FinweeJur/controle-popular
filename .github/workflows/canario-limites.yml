@@ -1,0 +1,39 @@
+name: Canario de limites
+
+# Cloudflare e Neon NÃO avisam nada nos planos free — quando o teto chega, o
+# site simplesmente devolve 1027/1102 ou as escritas falham. Este workflow é
+# o alerta que eles não dão, e é requisito explícito da migração: o
+# trade-off aceito foi "o site cai em vez de gerar fatura, DESDE QUE haja
+# notificação".
+#
+# Sem os secrets configurados o job não finge sucesso: ele FALHA, e o
+# GitHub manda e-mail — que já é uma forma de alerta.
+
+on:
+  schedule:
+    - cron: "0 */4 * * *"
+  workflow_dispatch:
+
+jobs:
+  canario:
+    runs-on: ubuntu-latest
+    env:
+      NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+      NEON_PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      # URLs sondadas: uma estática e duas dinâmicas (é nas dinâmicas que
+      # 1102 aparece primeiro). Sobrescrever por variable do repo quando o
+      # domínio próprio entrar no ar.
+      URLS_SONDA: ${{ vars.URLS_SONDA }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+
+      - name: Checar limites e responder
+        run: python .github/scripts/canario_limites.py

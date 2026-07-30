@@ -104,10 +104,15 @@ export function ordenarPorRelevancia(membros: MembroOrgao[]): MembroOrgao[] {
   );
 }
 
+/** Quantas proposições a página de comissão lista. Ver `proposicoesDoOrgao`. */
+export const LIMITE_PROPOSICOES_ORGAO = 60;
+
 export async function obterOrgao(sigla: string): Promise<{
   orgao: Orgao;
   perfil: PerfilAgregado;
   membros: MembroOrgao[];
+  /** Total real no órgão — pode ser MUITO maior que `proposicoes.length`. */
+  totalProposicoes: number;
   proposicoes: {
     id: string;
     identificacao: string | null;
@@ -120,7 +125,17 @@ export async function obterOrgao(sigla: string): Promise<{
   const orgao = await q.obterOrgaoPorSigla(sigla);
   if (!orgao) return null;
 
-  const linhas = await q.proposicoesDoOrgao((orgao as Orgao).sigla ?? sigla);
+  const siglaReal = (orgao as Orgao).sigla ?? sigla;
+
+  // As duas consultas são separadas de propósito: a lista vem limitada (a
+  // `ementa` de milhares de linhas estourava a CPU do Worker — ver
+  // `proposicoesDoOrgao`), mas o perfil agregado precisa de TODAS as linhas
+  // para não mentir. Só o rótulo de cada uma, que é barato.
+  const [linhas, rotulos, membros] = await Promise.all([
+    q.proposicoesDoOrgao(siglaReal, LIMITE_PROPOSICOES_ORGAO),
+    q.rotulosDoOrgao(siglaReal),
+    membrosDoOrgao((orgao as Orgao).id),
+  ]);
 
   const proposicoes = linhas.map((l) => {
     return {
@@ -133,12 +148,11 @@ export async function obterOrgao(sigla: string): Promise<{
     };
   });
 
-  const membros = await membrosDoOrgao((orgao as Orgao).id);
-
   return {
     orgao: orgao as Orgao,
-    perfil: agregar(proposicoes.map((p) => p.rotulo)),
+    perfil: agregar(rotulos.map((r) => (r.rotulo as Rotulo | null) ?? null)),
     membros: ordenarPorRelevancia(membros),
+    totalProposicoes: rotulos.length,
     proposicoes,
   };
 }

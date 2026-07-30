@@ -9,7 +9,7 @@ import {
   type TipoDocumento,
 } from "@/lib/congresso/oficio/compor";
 import { revisarOficio } from "@/lib/congresso/oficio/revisar";
-import { MIME, nomeArquivo, renderDocx, renderPdf, renderTxt } from "@/lib/congresso/oficio/render";
+import { MIME, nomeArquivo, renderTxt } from "@/lib/congresso/oficio/render";
 
 export const runtime = "nodejs";
 
@@ -25,7 +25,18 @@ export const runtime = "nodejs";
  */
 
 const TIPOS_VALIDOS: TipoDocumento[] = ["apoio", "repudio", "vista", "comentario"];
-const FORMATOS = ["json", "txt", "docx", "pdf"] as const;
+
+/**
+ * `docx` e `pdf` saíram daqui na Fase 6 e agora são gerados NO BROWSER
+ * (`lib/congresso/oficio/render-binario.ts`), a partir do mesmo `json` que
+ * esta rota devolve.
+ *
+ * Motivo medido: as duas libs somam ~304 KiB gzip e o bundle do Worker
+ * estourou o teto de 3 MB gzip do Cloudflare Free (3.250 KiB), recusando o
+ * deploy. Como o cliente já recebia os blocos para exibir na tela, montar
+ * o arquivo lá não perde nada — e tira o trabalho do teto de 10 ms de CPU.
+ */
+const FORMATOS = ["json", "txt"] as const;
 type Formato = (typeof FORMATOS)[number];
 
 interface Corpo {
@@ -141,13 +152,7 @@ export async function POST(req: Request) {
     "content-disposition": `attachment; filename="${nome}"`,
   };
 
-  if (formato === "txt") {
-    return new NextResponse(renderTxt(oficio, blocos), { headers: cabecalhos });
-  }
-  if (formato === "docx") {
-    return new NextResponse(new Uint8Array(await renderDocx(oficio, blocos)), { headers: cabecalhos });
-  }
-  return new NextResponse(new Uint8Array(await renderPdf(oficio, blocos)), { headers: cabecalhos });
+  return new NextResponse(renderTxt(oficio, blocos), { headers: cabecalhos });
 }
 
 /**

@@ -18,6 +18,22 @@ import type { NextConfig } from "next";
  * de mover cada app para `app/<zona>/` em vez de achatá-los na raiz.
  */
 const nextConfig: NextConfig = {
+  experimental: {
+    /**
+     * Fase 6: o prerender das 354 páginas de `/congresso/bancadas/[id]` bateu
+     * no endpoint HTTP do Neon com a concorrência padrão (8) e DUAS páginas
+     * morreram com `fetch failed` / "took more than 60 seconds" — o build
+     * seguia e publicava um Worker com páginas faltando, sem falhar.
+     *
+     * Cada bancada faz um join que devolve ~200 membros (os `.cache` saem com
+     * 1,8 MB), então o gargalo é o banco, não a CPU do build. Baixar a
+     * concorrência e permitir retry troca alguns minutos de build por um
+     * build determinístico — que é o que importa quando a saída vai virar
+     * SSG servido de Static Assets.
+     */
+    staticGenerationMaxConcurrency: 3,
+    staticGenerationRetryCount: 3,
+  },
   async redirects() {
     return [
       // A home da marca era servida em `/betim/hub` (e chegava em `/` por

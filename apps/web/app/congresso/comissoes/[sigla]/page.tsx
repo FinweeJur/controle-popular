@@ -3,11 +3,19 @@ import Link from "@/lib/congresso/link";
 import { notFound } from "next/navigation";
 import PerfilAgregadoView from "@/app/congresso/components/PerfilAgregado";
 import RotuloBadge from "@/app/congresso/components/RotuloBadge";
-import { obterOrgao } from "@/lib/congresso/orgaos";
+import { obterOrgao, listarOrgaos } from "@/lib/congresso/orgaos";
 
 type Params = Promise<{ sigla: string }>;
 
-export const revalidate = 900;
+/**
+ * ~54 comissões — conjunto pequeno o bastante pra pré-render total no
+ * build (diferente de `proposicoes/[id]`, com 5000+ ids, onde isso
+ * inflaria o build sem necessidade).
+ */
+export async function generateStaticParams() {
+  const orgaos = await listarOrgaos();
+  return (orgaos ?? []).map((o) => ({ sigla: o.sigla ?? "" })).filter((p) => p.sigla);
+}
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { sigla } = await params;
@@ -23,7 +31,8 @@ export default async function Comissao({ params }: { params: Params }) {
   const dados = await obterOrgao(decodeURIComponent(sigla));
   if (!dados) notFound();
 
-  const { orgao, perfil, proposicoes } = dados;
+  const { orgao, perfil, proposicoes, totalProposicoes } = dados;
+  const truncada = totalProposicoes > proposicoes.length;
 
   return (
     <div className="mx-auto max-w-4xl space-y-8 px-4 py-10">
@@ -61,9 +70,19 @@ export default async function Comissao({ params }: { params: Params }) {
         <h2 className="font-display text-2xl font-semibold">
           Em tramitação aqui{" "}
           <span className="font-tabular text-base font-normal opacity-70">
-            ({proposicoes.length})
+            ({totalProposicoes})
           </span>
         </h2>
+
+        {/* O número do título é o TOTAL real; a lista abaixo pode estar
+            cortada. Dizer isso é obrigatório: um "(60)" silencioso num
+            colegiado com 2.369 matérias seria dado errado na tela. */}
+        {truncada ? (
+          <p className="text-sm opacity-75">
+            Mostrando as {proposicoes.length} mais recentes de {totalProposicoes}. O perfil
+            acima considera todas.
+          </p>
+        ) : null}
 
         {proposicoes.length === 0 ? (
           <p className="opacity-75">

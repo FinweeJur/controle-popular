@@ -4,7 +4,26 @@ import { notFound } from "next/navigation";
 import AnaliseAuditavel from "@/app/congresso/components/AnaliseAuditavel";
 import { obterProposicao } from "@/lib/congresso/proposicoes";
 
-export const revalidate = 900;
+/**
+ * 5.500+ proposições — pré-render total no build seria caro demais (ao
+ * contrário de `comissoes/[sigla]`/`bancadas/[id]`, com dezenas de ids).
+ * Devolver vazio + `dynamicParams` (default `true`) faz o Next tratar
+ * qualquer id não listado aqui como render sob demanda COM cache: a 1ª
+ * visita renderiza e grava, as seguintes servem do cache — sem cair de
+ * volta pro `ƒ` (dinâmico a cada request) que tínhamos antes.
+ *
+ * O `revalidate = 900` que ficava aqui saiu na Fase 6 (junto com os outros
+ * 14 do app), e o cache passa a não expirar. É o certo neste runtime: o
+ * incrementalCache do Worker é o de Static Assets, READ-ONLY, então a
+ * revalidação nunca teve como acontecer — passados 15 min ela falhava a
+ * CADA request, logando "Failed to revalidate" + "Dummy queue is not
+ * implemented" e queimando CPU num Worker que já tem aperto de CPU. A
+ * atualização vem do rebuild agendado (`.github/workflows/rebuild.yml`).
+ * Conferido por diff da tabela de rotas antes/depois: continua `●`.
+ */
+export async function generateStaticParams() {
+  return [];
+}
 
 type Params = Promise<{ id: string }>;
 
@@ -28,7 +47,7 @@ export default async function ProposicaoDetalhe({ params }: { params: Params }) 
   const dados = await obterProposicao(id);
   if (!dados) notFound();
 
-  const { proposicao: p, analise, itens, autores, tramitacoes } = dados;
+  const { proposicao: p, analise, itens, autoriaCompleta, tramitacoes } = dados;
 
   // Destinatários sugeridos vêm da tramitação REAL, não do autor: quem
   // decide a proposição agora é o colegiado onde ela está parada. Mandar
@@ -102,20 +121,27 @@ export default async function ProposicaoDetalhe({ params }: { params: Params }) 
         </div>
       </header>
 
-      {autores.length ? (
+      {/* Lista a autoria COMPLETA (`autoriaCompleta`), não só a parlamentar
+          (`autores`). Esta seção ficava em branco em toda proposição do
+          Poder Executivo ou de comissão — 1.117 delas neste banco. */}
+      {autoriaCompleta.length ? (
         <section>
           <h2 className="font-display text-xl font-semibold">
-            {autores.length === 1 ? "Autoria" : "Autoria"}{" "}
-            <span className="font-normal opacity-70">({autores.length})</span>
+            Autoria{" "}
+            <span className="font-normal opacity-70">({autoriaCompleta.length})</span>
           </h2>
           <ul className="mt-3 flex flex-wrap gap-2 text-sm">
-            {autores.map((a) => (
+            {autoriaCompleta.map((a) => (
               <li
-                key={a.parlamentar_id}
+                key={a.nome}
                 className="rounded-md border border-[var(--cp-border)] px-3 py-1"
+                title={a.tipo ?? undefined}
               >
                 {a.nome}
                 {a.partido ? ` (${a.partido}${a.uf ? `/${a.uf}` : ""})` : ""}
+                {a.institucional ? (
+                  <span className="ml-1 opacity-70">· {a.tipo?.toLowerCase()}</span>
+                ) : null}
                 {a.proponente ? <span className="ml-1 opacity-70">· proponente</span> : null}
               </li>
             ))}

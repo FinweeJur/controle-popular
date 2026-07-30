@@ -265,7 +265,23 @@ export async function membrosDoOrgao(orgaoId: string) {
 }
 
 /** Proposições paradas num órgão, com o rótulo e o score da análise. */
-export async function proposicoesDoOrgao(sigla: string) {
+/**
+ * Proposições paradas num órgão, LIMITADAS.
+ *
+ * O limite não é preferência de UI, é o que mantém o site no ar. Sem ele,
+ * `/congresso/comissoes/MESA` renderizava as **2.369** proposições da Mesa
+ * Diretora com a `ementa` inteira de cada uma: página de 12,4 MB, medida em
+ * **1.897 ms de CPU** no Cloudflare Worker (`wrangler tail`), o que dispara
+ * "Worker exceeded CPU time limit". E o efeito não fica na página culpada —
+ * com o Worker estourando, rotas VIZINHAS e até estáticas passaram a
+ * devolver 503 (12 de 28 no crawl), o risco de arquitetura já registrado no
+ * plano: três eixos num Worker só.
+ *
+ * A Mesa só entrou nesse volume quando `etl.camara.orgaos` passou a
+ * sincronizar `codTipoOrgao=1` para consertar os destinatários do ofício —
+ * ou seja, a correção de uma coisa criou o gargalo da outra.
+ */
+export async function proposicoesDoOrgao(sigla: string, limite = 60) {
   const db = getDb();
   if (!db) return [];
   return db
@@ -286,7 +302,29 @@ export async function proposicoesDoOrgao(sigla: string) {
     .orderBy(
       desc(proposicoesInCongresso.data_apresentacao),
       asc(proposicoesInCongresso.id)
-    );
+    )
+    .limit(limite);
+}
+
+/**
+ * Só os rótulos de TODAS as proposições do órgão — para o perfil agregado
+ * continuar correto mesmo com a lista exibida limitada.
+ *
+ * Separar é o ponto: agregar sobre as 60 exibidas daria um perfil
+ * simplesmente errado, e trazer as 2.369 com `ementa` é o que estourava a
+ * CPU. Um enum por linha é barato; a `ementa` é que é caríssima.
+ */
+export async function rotulosDoOrgao(sigla: string) {
+  const db = getDb();
+  if (!db) return [];
+  return db
+    .select({ rotulo: analisesInCongresso.rotulo })
+    .from(proposicoesInCongresso)
+    .leftJoin(
+      analisesInCongresso,
+      eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id)
+    )
+    .where(eq(proposicoesInCongresso.orgao_atual, sigla));
 }
 
 export interface FiltrosProposicoes {

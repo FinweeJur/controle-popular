@@ -3,11 +3,15 @@ import Link from "@/lib/congresso/link";
 import { notFound } from "next/navigation";
 import PerfilAgregadoView from "@/app/congresso/components/PerfilAgregado";
 import RotuloBadge from "@/app/congresso/components/RotuloBadge";
-import { obterBancada, ROTULO_TIPO } from "@/lib/congresso/bancadas";
+import { obterBancada, ROTULO_TIPO, listarBancadas } from "@/lib/congresso/bancadas";
 
 type Params = Promise<{ id: string }>;
 
-export const revalidate = 900;
+/** ~64 bancadas — pequeno o bastante pra pré-render total no build. */
+export async function generateStaticParams() {
+  const bancadas = await listarBancadas();
+  return (bancadas ?? []).map((b) => ({ id: b.id }));
+}
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { id } = await params;

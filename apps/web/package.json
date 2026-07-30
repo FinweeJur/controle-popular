@@ -7,11 +7,17 @@
     "prebuild": "node scripts/limpar-fetch-cache.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "cf:build": "opennextjs-cloudflare build",
+    "//cf:preview": "populateCache NAO eh opcional: sem ele o dir cdn-cgi/_next_cache nao existe nos assets, e toda rota SSG sob segmento dinamico com dynamicParams=false devolve 404/NoFallbackError. `build` sozinho nao popula.",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare populateCache local && opennextjs-cloudflare preview",
+    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare populateCache remote && opennextjs-cloudflare deploy"
   },
   "dependencies": {
+    "@better-auth/drizzle-adapter": "^1.6.25",
     "@neondatabase/serverless": "^1.0.0",
     "@supabase/supabase-js": "^2.110.7",
+    "better-auth": "^1.6.25",
     "docx": "^9.5.1",
     "drizzle-orm": "^0.44.0",
     "lucide-react": "^1.25.0",
@@ -22,6 +28,7 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.20.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -31,6 +38,7 @@
     "eslint-config-next": "16.2.12",
     "tailwindcss": "^4",
     "tsx": "^4.23.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.115.0"
   }
 }
