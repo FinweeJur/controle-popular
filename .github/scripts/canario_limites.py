@@ -26,6 +26,8 @@ LIMIAR = 0.70  # alerta em 70% de qualquer teto
 # Tetos dos planos free, das fontes primárias (ver tabela do plano).
 NEON_CU_H_MES = 100.0
 NEON_STORAGE_BYTES = 0.5 * 1024**3
+# Confirmado pela própria API (`branch_logical_size_limit_bytes` = 536870912).
+NEON_EGRESS_BYTES_MES = 5 * 10**9
 CF_REQ_DIA = 100_000
 
 TIMEOUT = 30
@@ -82,6 +84,19 @@ def checar_neon(a: Achados) -> None:
         a.medir("Neon compute", float(consumo) / 3600.0, NEON_CU_H_MES, "CU-h")
     else:
         a.sem_dado("Neon compute", "campo compute_time_seconds ausente")
+
+    # EGRESS é, de longe, a métrica mais perto do teto neste projeto, e por
+    # pouco não ficou de fora deste canário: na primeira medição real
+    # (2026-07-30) storage estava em 16% e compute em 2%, mas o egress em
+    # **90,6%** — porque cada `next build` lê o banco inteiro para
+    # pré-renderizar ~486 páginas, e num dia de migração isso roda muitas
+    # vezes. Vigiar só storage/compute daria "tudo verde" no dia em que o
+    # site parasse.
+    egresso = proj.get("data_transfer_bytes")
+    if isinstance(egresso, (int, float)):
+        a.medir("Neon egress", float(egresso), NEON_EGRESS_BYTES_MES, "bytes")
+    else:
+        a.sem_dado("Neon egress", "campo data_transfer_bytes ausente")
 
 
 def checar_cloudflare(a: Achados) -> None:
