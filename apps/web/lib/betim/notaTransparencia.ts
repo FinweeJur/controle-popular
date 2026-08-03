@@ -9,8 +9,8 @@ export interface AvaliacaoPntp {
   variacaoIndice: number | null;
   variacaoNivel: string | null;
   historicoNivel: string | null;
-  posicaoRankingMg: number | null;
-  totalAvaliadosMg: number | null;
+  posicaoRankingUf: number | null;
+  totalAvaliadosUf: number | null;
   linkSite: string | null;
 }
 
@@ -36,8 +36,8 @@ interface Row {
   variacao_indice: number | string | null;
   variacao_nivel: string | null;
   historico_nivel: string | null;
-  posicao_ranking_mg: number | null;
-  total_avaliados_mg: number | null;
+  posicao_ranking_uf: number | null;
+  total_avaliados_uf: number | null;
   link_site: string | null;
 }
 
@@ -50,15 +50,16 @@ function mapRow(r: Row): AvaliacaoPntp {
     variacaoIndice: r.variacao_indice != null ? Number(r.variacao_indice) : null,
     variacaoNivel: r.variacao_nivel,
     historicoNivel: r.historico_nivel,
-    posicaoRankingMg: r.posicao_ranking_mg,
-    totalAvaliadosMg: r.total_avaliados_mg,
+    posicaoRankingUf: r.posicao_ranking_uf,
+    totalAvaliadosUf: r.total_avaliados_uf,
     linkSite: r.link_site,
   };
 }
 
 /**
  * Nota de Transparência (PNTP/ATRICON, `etl/apis/pntp.py`, migration 0018).
- * Fonte cobre 853/853 municípios de MG -- `posicaoRankingMg` é a posição
+ * A planilha do PNTP é NACIONAL (11.697 avaliações); o recorte por
+ * estado sai da UF da cidade. `posicaoRankingUf` é a posição
  * real de Betim entre as prefeituras (ou câmaras) do estado avaliadas no
  * mesmo ciclo, não uma estimativa.
  */

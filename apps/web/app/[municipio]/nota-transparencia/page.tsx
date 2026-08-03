@@ -3,6 +3,18 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getNotaTransparenciaData, type AvaliacaoPntp } from "@/lib/betim/notaTransparencia";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { formatNumberBR } from "@/lib/betim/format";
+
+const UF_POR_EXTENSO: Record<string, string> = {
+  AC: "Acre", AL: "Alagoas", AP: "Amapá", AM: "Amazonas", BA: "Bahia",
+  CE: "Ceará", DF: "Distrito Federal", ES: "Espírito Santo", GO: "Goiás",
+  MA: "Maranhão", MT: "Mato Grosso", MS: "Mato Grosso do Sul",
+  MG: "Minas Gerais", PA: "Pará", PB: "Paraíba", PR: "Paraná",
+  PE: "Pernambuco", PI: "Piauí", RJ: "Rio de Janeiro",
+  RN: "Rio Grande do Norte", RS: "Rio Grande do Sul", RO: "Rondônia",
+  RR: "Roraima", SC: "Santa Catarina", SP: "São Paulo", SE: "Sergipe",
+  TO: "Tocantins",
+};
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Nota ${c.nome} (PNTP) — ${nomePortal(c)}`,
@@ -19,7 +31,21 @@ const NIVEL_COR: Record<string, string> = {
   Inicial: "text-alert",
 };
 
-function CardAvaliacao({ titulo, avaliacao }: { titulo: string; avaliacao: AvaliacaoPntp }) {
+/**
+ * `ufExtenso` chega por prop porque a frase é "X de N avaliados em <estado>",
+ * e o estado era o literal "Minas Gerais" — que a página de São Paulo exibia
+ * sobre um ranking de 645 municípios paulistas. A planilha do PNTP é
+ * nacional; só o recorte é estadual.
+ */
+function CardAvaliacao({
+  titulo,
+  avaliacao,
+  ufExtenso,
+}: {
+  titulo: string;
+  avaliacao: AvaliacaoPntp;
+  ufExtenso: string;
+}) {
   const cor = NIVEL_COR[avaliacao.nivelTransparencia] ?? "text-text";
   return (
     <DataCard
@@ -34,10 +60,10 @@ function CardAvaliacao({ titulo, avaliacao }: { titulo: string; avaliacao: Avali
         </strong>{" "}
         ({avaliacao.ano})
       </p>
-      {avaliacao.posicaoRankingMg && avaliacao.totalAvaliadosMg && (
+      {avaliacao.posicaoRankingUf && avaliacao.totalAvaliadosUf && (
         <p className="mt-1 text-xs">
-          <strong className="font-tabular text-text">{avaliacao.posicaoRankingMg}º</strong> de{" "}
-          {avaliacao.totalAvaliadosMg} avaliados em Minas Gerais
+          <strong className="font-tabular text-text">{avaliacao.posicaoRankingUf}º</strong> de{" "}
+          {avaliacao.totalAvaliadosUf} avaliados em {ufExtenso}
         </p>
       )}
       {avaliacao.historicoNivel && (
@@ -57,14 +83,19 @@ export default async function NotaBetimPage({
   params: Promise<{ municipio: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
+  // Mesmo de-para do ETL (`etl/apis/pntp.py`): a sigla vem de `municipios` e
+  // a frase pede o nome por extenso. Sem entrada, cai na sigla — dizer "em
+  // SP" é feio, dizer "em Minas Gerais" numa página de São Paulo é falso.
+  const ufExtenso = UF_POR_EXTENSO[cidade.uf] ?? cidade.uf;
   const { configured, ok, prefeitura, camara } = await getNotaTransparenciaData(cidade.id_municipio);
+  const totalAvaliados = prefeitura?.totalAvaliadosUf ?? camara?.totalAvaliadosUf ?? null;
   const temDados = configured && ok && (prefeitura || camara);
 
   if (!temDados) {
     return (
       <PaginaEmBreve
         titulo={`Nota ${cidade.nome}`}
-        descricao={`Nota de transparência de ${cidade.nome} no Programa Nacional de Transparência Pública (PNTP/ATRICON), com ranking entre os municípios de Minas Gerais.`}
+        descricao={`Nota de transparência de ${cidade.nome} no Programa Nacional de Transparência Pública (PNTP/ATRICON), com ranking entre os municípios do estado.`}
         motivo="Fonte confirmada 2026-07-23 (radardatransparencia.atricon.org.br disponibiliza ZIPs de dados por ano, sem necessidade de scraping) — migration 0018_nota_transparencia.sql ainda não rodada neste ambiente."
       />
     );
@@ -89,13 +120,31 @@ export default async function NotaBetimPage({
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
         Todo ano, o Programa Nacional de Transparência Pública (PNTP) avalia
         se prefeituras e câmaras publicam o que a Lei de Acesso à Informação
-        exige — e quão fácil é achar. Abaixo, a nota de {cidade.nome} e sua posição
-        entre os 853 municípios de Minas Gerais avaliados.
+        exige — e quão fácil é achar. Abaixo, a nota de {cidade.nome} e sua
+        {/* "os 853 municípios de Minas Gerais" estava escrito à mão e
+            aparecia na página de São Paulo, cujo ranking é entre 645
+            paulistas. O total vem do próprio dado — é o mesmo número que os
+            cards exibem, então não há como os dois discordarem. */}
+        {totalAvaliados
+          ? ` posição entre os ${formatNumberBR(totalAvaliados)} municípios de ${ufExtenso} avaliados.`
+          : ` posição no ranking de ${ufExtenso}.`}
       </p>
 
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {prefeitura && <CardAvaliacao titulo={`Prefeitura de ${cidade.nome}`} avaliacao={prefeitura} />}
-        {camara && <CardAvaliacao titulo={`Câmara Municipal de ${cidade.nome}`} avaliacao={camara} />}
+        {prefeitura && (
+          <CardAvaliacao
+            titulo={`Prefeitura de ${cidade.nome}`}
+            avaliacao={prefeitura}
+            ufExtenso={ufExtenso}
+          />
+        )}
+        {camara && (
+          <CardAvaliacao
+            titulo={`Câmara Municipal de ${cidade.nome}`}
+            avaliacao={camara}
+            ufExtenso={ufExtenso}
+          />
+        )}
       </div>
 
       <section className="mt-8 rounded-2xl border border-border bg-surface-2 px-6 py-5 text-sm text-text-soft">

@@ -12,8 +12,10 @@ avaliado, ~1.6MB) e `respostas/respostas_pntp_{ano}_{UF}.xlsx` (questionário
 bruto por estado, 2-56MB cada) -- só o primeiro é necessário aqui.
 
 Cobertura confirmada ao vivo: 853/853 municípios de MG têm avaliação de
-Executivo E de Legislativo em 2025 -- dá pra calcular a posição de Betim no
-ranking estadual sem precisar de fonte adicional nenhuma.
+Executivo E de Legislativo em 2025 -- dá pra calcular a posição no ranking
+estadual sem precisar de fonte adicional nenhuma. A planilha é NACIONAL: o
+recorte por estado sai da UF da cidade (ver `UF_POR_EXTENSO`), não de um
+literal.
 """
 import argparse
 import io
@@ -23,7 +25,7 @@ import zipfile
 import openpyxl
 import requests
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_supabase_client
 
 ZIP_URL = "https://radardatransparencia.atricon.org.br/dados/dados_pntp_{ano}.zip"
 PLANILHA_AVALIACOES = "pntp_{ano}/avaliacoes_pntp_{ano}.xlsx"
@@ -52,13 +54,37 @@ def _baixar_planilha(ano: int) -> list[dict]:
     return [dict(zip(cabecalho, linha)) for linha in linhas]
 
 
-def _ranking_mg(todas: list[dict], poder: str) -> list[dict]:
-    """Prefeituras (Executivo) ou Câmaras (Legislativo) municipais de MG,
-    ordenadas por índice de transparência decrescente."""
+# A planilha do PNTP escreve a UF por EXTENSO ("Minas Gerais"), e a tabela
+# `municipios` guarda a sigla. Sem o de-para, o filtro não casa nada e o
+# módulo termina com "registros=0" — que é indistinguível de "a cidade não
+# foi avaliada".
+UF_POR_EXTENSO = {
+    "AC": "Acre", "AL": "Alagoas", "AP": "Amapá", "AM": "Amazonas",
+    "BA": "Bahia", "CE": "Ceará", "DF": "Distrito Federal",
+    "ES": "Espírito Santo", "GO": "Goiás", "MA": "Maranhão",
+    "MT": "Mato Grosso", "MS": "Mato Grosso do Sul", "MG": "Minas Gerais",
+    "PA": "Pará", "PB": "Paraíba", "PR": "Paraná", "PE": "Pernambuco",
+    "PI": "Piauí", "RJ": "Rio de Janeiro", "RN": "Rio Grande do Norte",
+    "RS": "Rio Grande do Sul", "RO": "Rondônia", "RR": "Roraima",
+    "SC": "Santa Catarina", "SP": "São Paulo", "SE": "Sergipe",
+    "TO": "Tocantins",
+}
+
+
+def _ranking_estadual(todas: list[dict], poder: str, uf_extenso: str) -> list[dict]:
+    """Prefeituras (Executivo) ou Câmaras (Legislativo) municipais de UM
+    estado, ordenadas por índice de transparência decrescente.
+
+    A UF era o literal "Minas Gerais" DENTRO da função — não um default de
+    argparse, então o guarda `conferir_defaults_de_cidade.py` não pegava.
+    Rodar para São Paulo devolveu `registros=0` sem erro nenhum: o filtro
+    simplesmente não casava, e o log dizia que a cidade não tinha avaliação.
+    A planilha cobre o Brasil inteiro; era só o recorte que estava preso.
+    """
     filtradas = [
         r
         for r in todas
-        if r.get(COL_UF) == "Minas Gerais"
+        if r.get(COL_UF) == uf_extenso
         and r.get(COL_ESFERA) == "Municipal"
         and r.get(COL_PODER) == poder
     ]
@@ -67,12 +93,20 @@ def _ranking_mg(todas: list[dict], poder: str) -> list[dict]:
 
 def sync(id_municipio: str, ano: int) -> None:
     client = get_supabase_client()
+    cidade = carregar_municipio(id_municipio)
+    uf_extenso = UF_POR_EXTENSO.get(cidade["uf"])
+    if not uf_extenso:
+        raise RuntimeError(
+            f"UF {cidade['uf']!r} desconhecida — complete UF_POR_EXTENSO. "
+            "A planilha do PNTP escreve o estado por extenso."
+        )
+
     todas = _baixar_planilha(ano)
-    print(f"[etl.apis.pntp] avaliacoes_lidas={len(todas)}")
+    print(f"[etl.apis.pntp] avaliacoes_lidas={len(todas)} uf={uf_extenso}")
 
     rows = []
     for poder in ("Executivo", "Legislativo"):
-        ranking = _ranking_mg(todas, poder)
+        ranking = _ranking_estadual(todas, poder, uf_extenso)
         total = len(ranking)
         posicao = next(
             (i for i, r in enumerate(ranking, start=1) if r.get(COL_IBGE) == id_municipio),
@@ -92,14 +126,14 @@ def sync(id_municipio: str, ano: int) -> None:
                 "variacao_indice": entrada.get(COL_VAR_INDICE),
                 "variacao_nivel": entrada.get(COL_VAR_NIVEL),
                 "historico_nivel": entrada.get(COL_HISTORICO_NIVEL),
-                "posicao_ranking_mg": posicao,
-                "total_avaliados_mg": total,
+                "posicao_ranking_uf": posicao,
+                "total_avaliados_uf": total,
                 "link_site": entrada.get(COL_LINK),
             }
         )
         print(
             f"[etl.apis.pntp] {poder}: índice={entrada[COL_INDICE]:.4f} "
-            f"nível={entrada[COL_NIVEL]} posição={posicao}/{total} em MG"
+            f"nível={entrada[COL_NIVEL]} posição={posicao}/{total} em {cidade['uf']}"
         )
 
     if rows:
