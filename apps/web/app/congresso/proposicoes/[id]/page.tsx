@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "@/lib/congresso/link";
 import { notFound } from "next/navigation";
 import AnaliseAuditavel from "@/app/congresso/components/AnaliseAuditavel";
-import { obterProposicao } from "@/lib/congresso/proposicoes";
+import { obterProposicao, listarProposicoes } from "@/lib/congresso/proposicoes";
+import { exportandoEstatico, TETO_PAGINAS_ESTATICAS } from "@/lib/alvo-de-build";
 
 /**
  * 5.500+ proposições — pré-render total no build seria caro demais (ao
@@ -22,7 +23,23 @@ import { obterProposicao } from "@/lib/congresso/proposicoes";
  * Conferido por diff da tabela de rotas antes/depois: continua `●`.
  */
 export async function generateStaticParams() {
-  return [];
+  // No Cloudflare, lista vazia + `dynamicParams` (default `true`) é
+  // deliberado: 5.500+ proposições, render sob demanda com cache. Em
+  // `output: 'export'` não existe sob demanda — o que não sair daqui vira
+  // 404 permanente —, então o alvo estático precisa da lista de verdade.
+  if (!exportandoEstatico) return [];
+
+  const pagina = await listarProposicoes({ porPagina: TETO_PAGINAS_ESTATICAS });
+  const itens = pagina?.itens ?? [];
+  if ((pagina?.total ?? 0) > itens.length) {
+    // Truncar em silêncio faria o site parecer completo. Ver
+    // `TETO_PAGINAS_ESTATICAS`.
+    console.warn(
+      `[export] proposições do Congresso truncadas: ${itens.length} de ${pagina?.total} ` +
+        `páginas geradas (teto de ${TETO_PAGINAS_ESTATICAS}).`
+    );
+  }
+  return itens.map((p) => ({ id: String(p.id) }));
 }
 
 type Params = Promise<{ id: string }>;

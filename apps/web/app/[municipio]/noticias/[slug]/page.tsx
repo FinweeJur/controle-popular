@@ -1,6 +1,7 @@
 import Link from "@/lib/betim/link";
 import { notFound } from "next/navigation";
-import { getNoticiaBySlug, CATEGORIA_LABELS } from "@/lib/betim/noticias";
+import { getNoticiaBySlug, getNoticias, CATEGORIA_LABELS } from "@/lib/betim/noticias";
+import { listarCidades } from "@/lib/db/queries/municipios";
 import { TEMA_LABELS } from "@/lib/betim/temas";
 import { formatDateBR } from "@/lib/betim/format";
 import { cidadeDaRota, nomePortal } from "@/lib/betim/cidade";
@@ -8,6 +9,28 @@ import { cidadeDaRota, nomePortal } from "@/lib/betim/cidade";
 interface NoticiaPageProps {
   /** A rota é `/[municipio]/noticias/[slug]` — os dois segmentos chegam. */
   params: Promise<{ municipio: string; slug: string }>;
+}
+
+/**
+ * Enumera (cidade, notícia). Mesma razão de
+ * `vereadores/[slug]`: `output: 'export'` recusa segmento dinâmico sem esta
+ * função.
+ *
+ * Notícia nova só passa a existir como URL depois do próximo build — que é
+ * a limitação real do alvo estático, não deste código: sem servidor não há
+ * como gerar página sob demanda. O `rebuild.yml` semanal é o que fecha essa
+ * janela hoje.
+ */
+export async function generateStaticParams() {
+  const cidades = await listarCidades();
+  const pares: { municipio: string; slug: string }[] = [];
+  for (const cidade of cidades) {
+    const { rows } = await getNoticias(cidade.id_municipio);
+    for (const n of rows) {
+      if (n.slug) pares.push({ municipio: cidade.slug, slug: n.slug });
+    }
+  }
+  return pares;
 }
 
 export async function generateMetadata({ params }: NoticiaPageProps) {

@@ -1,0 +1,94 @@
+# Publica o portal como site estático no GitHub Pages.
+#
+# ALVO ALTERNATIVO, NÃO SUBSTITUTO. O deploy que serve o site hoje é o do
+# Cloudflare Workers (`rebuild.yml` -> `npm run cf:deploy`), e ele existe
+# porque o Worker mantém as rotas de API: busca, assistente, classificados,
+# cadastro do Zap e painel de anúncios. Aqui não há servidor, então esse
+# conjunto sai do ar — ver a lista em `docs/deploy-github-pages.md`.
+#
+# Dois pontos que precisam de decisão humana ANTES de ligar isto como
+# publicação principal, os dois documentados em `docs/deploy-github-pages.md`:
+#   1. Os Termos Adicionais do GitHub restringem usar Pages para site
+#      "primarily directed at facilitating commercial transactions", e a AUP
+#      §10 diz que o foco primário do conteúdo não deve ser publicidade. Este
+#      portal é de transparência pública e os anúncios de comércio local são
+#      acessórios — o que é uma leitura defensável, não uma isenção.
+#   2. GitHub Pages a partir de repositório PRIVADO exige plano pago (Pro ou
+#      Team). No plano Free, só repositório público.
+#
+# Por isso o gatilho é MANUAL (`workflow_dispatch`): ligar em `push` faria o
+# alvo secundário publicar sozinho a cada commit.
+name: Publicar no GitHub Pages (estático)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  # OIDC: `deploy-pages@v4` troca este token pela credencial de publicação.
+  # Sem ele o deploy falha com erro de permissão, não de configuração.
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # O build LÊ o banco — é o que transforma dado em HTML. Sem esta
+      # variável o job gera as ~1.400 páginas em estado vazio e publica um
+      # site em branco, SEM falhar. Mesmo cuidado do rebuild.yml.
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      # Tem de vir ANTES do build: é este passo que calcula `base_path`, e o
+      # Next inlina o basePath nos bundles em tempo de compilação — depois do
+      # build já não há o que corrigir.
+      - name: Configurar Pages
+        id: setup_pages
+        uses: actions/configure-pages@v5
+
+      # Monorepo com um package-lock só, na raiz.
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Build estático
+        working-directory: apps/web
+        run: npx next build
+        env:
+          # A presença desta variável é o que liga `output: 'export'` no
+          # next.config.ts. O valor é `/<repo>` num repositório comum e
+          # STRING VAZIA quando há domínio próprio configurado — os dois são
+          # válidos, e é por isso que o config testa `!== undefined`.
+          PAGES_BASE_PATH: ${{ steps.setup_pages.outputs.base_path }}
+
+      # No fluxo de Actions o artefato não passa por Jekyll, então isto é
+      # redundante hoje. Fica porque custa zero e porque o modo de falha, se
+      # alguém trocar a fonte para "Deploy from a branch", é o Jekyll comer o
+      # diretório `_next/` inteiro — o site sobe sem nenhum CSS ou JS.
+      - name: Desligar o Jekyll
+        run: touch apps/web/out/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/web/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

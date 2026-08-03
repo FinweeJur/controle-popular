@@ -3,7 +3,8 @@ import Link from "@/lib/congresso/link";
 import { notFound } from "next/navigation";
 import FormularioOficio from "./FormularioOficio";
 import RotuloBadge from "@/app/congresso/components/RotuloBadge";
-import { obterProposicao } from "@/lib/congresso/proposicoes";
+import { obterProposicao, listarProposicoes } from "@/lib/congresso/proposicoes";
+import { exportandoEstatico, TETO_PAGINAS_ESTATICAS } from "@/lib/alvo-de-build";
 import { obterOrgao } from "@/lib/congresso/orgaos";
 import { sugerirDestinatarios } from "@/lib/congresso/oficio/compor";
 
@@ -19,7 +20,23 @@ import { sugerirDestinatarios } from "@/lib/congresso/oficio/compor";
  * tentá-la só gerava erro e CPU gasta. Atualização = rebuild agendado.
  */
 export async function generateStaticParams() {
-  return [];
+  // No Cloudflare, lista vazia + `dynamicParams` (default `true`) é
+  // deliberado: 5.500+ proposições, render sob demanda com cache. Em
+  // `output: 'export'` não existe sob demanda — o que não sair daqui vira
+  // 404 permanente —, então o alvo estático precisa da lista de verdade.
+  if (!exportandoEstatico) return [];
+
+  const pagina = await listarProposicoes({ porPagina: TETO_PAGINAS_ESTATICAS });
+  const itens = pagina?.itens ?? [];
+  if ((pagina?.total ?? 0) > itens.length) {
+    // Truncar em silêncio faria o site parecer completo. Ver
+    // `TETO_PAGINAS_ESTATICAS`.
+    console.warn(
+      `[export] proposições do Congresso truncadas: ${itens.length} de ${pagina?.total} ` +
+        `páginas geradas (teto de ${TETO_PAGINAS_ESTATICAS}).`
+    );
+  }
+  return itens.map((p) => ({ id: String(p.id) }));
 }
 
 type Params = Promise<{ id: string }>;
