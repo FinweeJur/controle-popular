@@ -33,7 +33,12 @@ import time
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import (
+    ID_MUNICIPIO_DEFAULT,
+    carregar_municipio,
+    get_supabase_client,
+    nome_para_fonte_externa,
+)
 
 CKAN_BASE = "https://dados.mg.gov.br"
 DATASET_ID = "crimes-violentos"
@@ -133,11 +138,31 @@ def _upsert_verificado(client, id_municipio: str, ano: int, rows: list[dict], ro
     return resp.count
 
 
-def sync(id_municipio: str, nome_municipio: str = "BETIM") -> None:
+def sync(id_municipio: str, nome_municipio: str | None = None) -> None:
+    """O nome do município sai de `municipios`, em maiúsculas sem acento.
+
+    Derivado de `municipios` (ver `carregar_municipio`): este parâmetro tinha
+    default fixo de Betim, então rodar só com `--id-municipio <outra cidade>`
+    coletava o dado de Betim e o gravava com o id da outra — sem erro. Mesmo
+    defeito encontrado e corrigido em `etl.apis.anp` em 2026-08-03.
+
+    A fonte é ESTADUAL (Sejusp-MG): só faz sentido para cidades de MG. Rodar
+    para São Paulo devolveria zero linha — o CSV não tem o município — o que
+    é silencioso demais para um portal, então aborta explicitamente.
+    """
     client = get_supabase_client()
     recursos = _listar_recursos_csv()
     print(f"[etl.apis.crimes_mg] {len(recursos)} CSVs anuais encontrados")
 
+    cidade = carregar_municipio(id_municipio)
+    if cidade["uf"] != "MG":
+        raise RuntimeError(
+            f"crimes_mg é a base da Sejusp de MINAS GERAIS; "
+            f"id_municipio={id_municipio} é de {cidade['uf']}. "
+            "Use a fonte estadual correspondente à UF da cidade."
+        )
+    if nome_municipio is None:
+        nome_municipio = nome_para_fonte_externa(cidade["nome"])
     total = 0
     for recurso in recursos:
         texto = _baixar_csv(recurso["url"])
@@ -168,7 +193,11 @@ def sync(id_municipio: str, nome_municipio: str = "BETIM") -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
-    parser.add_argument("--municipio", default="BETIM", help="Maiúsculo sem acento, convenção da fonte")
+    parser.add_argument(
+        "--municipio",
+        default=None,
+        help="Override em maiúsculas sem acento; o padrão vem de `municipios`.",
+    )
     args = parser.parse_args()
     try:
         sync(args.id_municipio, args.municipio)

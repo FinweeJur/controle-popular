@@ -349,6 +349,60 @@ def get_supabase_client() -> PgClient:
     return PgClient(conn, SCHEMA)
 
 
+def carregar_municipio(id_municipio: str) -> dict:
+    """A linha de `municipios`, com `fontes` já desembrulhado.
+
+    POR QUE ISTO EXISTE (bug real, 2026-08-03): vários módulos aceitavam a
+    cidade por `--id-municipio` mas mantinham os OUTROS parâmetros da mesma
+    cidade como default de argparse — `etl.apis.anp` tinha
+    `--uf MG --municipio BETIM`. Rodar `--id-municipio 3550308` sozinho
+    coletou os 63 postos de Betim e os gravou com o id de São Paulo; como o
+    upsert casa por `cnpj`, os postos de Betim não foram duplicados, foram
+    REETIQUETADOS — a página de Betim ficou vazia e a de São Paulo, errada.
+    Nenhum erro foi levantado: os dois argumentos são `str` e o comando
+    parecia certo.
+
+    A correção estrutural é esta função: o nome, a UF e as configurações da
+    cidade saem do BANCO a partir do id, não da linha de comando. O id vira
+    a única coisa que o operador escolhe, e escolher errado passa a ser
+    impossível de forma silenciosa — ou o id existe e traz tudo consistente,
+    ou não existe e o módulo aborta.
+    """
+    client = get_supabase_client()
+    linhas = (
+        client.table("municipios")
+        .select("id_municipio, nome, uf, cnpj_prefeitura, lat, lng, branding, fontes")
+        .eq("id_municipio", id_municipio)
+        .execute()
+        .data
+    )
+    if not linhas:
+        raise RuntimeError(
+            f"id_municipio={id_municipio} não existe em `municipios`. "
+            "Semeie a cidade antes de rodar o ETL (supabase/betim/migrations/)."
+        )
+    m = dict(linhas[0])
+    m["fontes"] = m.get("fontes") or {}
+    m["branding"] = m.get("branding") or {}
+    return m
+
+
+def nome_para_fonte_externa(nome: str) -> str:
+    """"São Paulo" -> "SAO PAULO".
+
+    Convenção compartilhada por várias fontes federais que casam município
+    por NOME em vez de código: a ANP devolve `data: []` — sem erro — para
+    "São Paulo" ou "Sao Paulo", e só responde a "SAO PAULO". O Portal da
+    Transparência escreve o ente como "MUNICIPIO DE SAO PAULO". Centralizar
+    a normalização evita que cada módulo reinvente (e erre) o `unicodedata`.
+    """
+    import unicodedata
+
+    sem_acento = unicodedata.normalize("NFD", nome)
+    sem_acento = "".join(c for c in sem_acento if unicodedata.category(c) != "Mn")
+    return sem_acento.upper()
+
+
 def fetch_all(query_factory, page_size: int = PAGE_SIZE) -> list[dict]:
     """Roda um select por quantas páginas `.range()` forem necessárias.
 

@@ -12,7 +12,7 @@ import sys
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import CITY_LAT, CITY_LNG, ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import ID_MUNICIPIO_DEFAULT, carregar_municipio, get_supabase_client
 
 FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
 ARCHIVE_URL = "https://archive-api.open-meteo.com/v1/archive"
@@ -58,8 +58,26 @@ def _fetch_chuva_7d(lat: float, lng: float) -> float:
     return round(sum(v for v in valores if v is not None), 2)
 
 
-def sync(id_municipio: str, lat: float = CITY_LAT, lng: float = CITY_LNG):
+def sync(id_municipio: str, lat: float | None = None, lng: float | None = None):
+    """As coordenadas saem de `municipios.lat/lng`.
+
+    Derivado de `municipios` (ver `carregar_municipio`): este parâmetro tinha
+    default fixo de Betim, então rodar só com `--id-municipio <outra cidade>`
+    coletava o dado de Betim e o gravava com o id da outra — sem erro. Mesmo
+    defeito encontrado e corrigido em `etl.apis.anp` em 2026-08-03.
+    """
     client = get_supabase_client()
+    cidade = carregar_municipio(id_municipio)
+    if lat is None:
+        lat = cidade["lat"]
+    if lng is None:
+        lng = cidade["lng"]
+    if lat is None or lng is None:
+        raise RuntimeError(
+            f"municipios.lat/lng vazios para id_municipio={id_municipio}; "
+            "sem coordenada não há previsão para buscar."
+        )
+    lat, lng = float(lat), float(lng)
 
     forecast = _fetch_forecast(lat, lng)
     chuva_7d = _fetch_chuva_7d(lat, lng)
@@ -78,8 +96,8 @@ def sync(id_municipio: str, lat: float = CITY_LAT, lng: float = CITY_LNG):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
-    parser.add_argument("--lat", type=float, default=CITY_LAT)
-    parser.add_argument("--lng", type=float, default=CITY_LNG)
+    parser.add_argument("--lat", type=float, default=None, help="Override; o padrão vem de `municipios`.")
+    parser.add_argument("--lng", type=float, default=None, help="Override; o padrão vem de `municipios`.")
     args = parser.parse_args()
     try:
         sync(args.id_municipio, args.lat, args.lng)

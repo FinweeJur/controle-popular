@@ -58,13 +58,17 @@ def _headers() -> dict:
     return {"chave-api-dados": chave, "Accept": "application/json"}
 
 
-@retry(stop=stop_after_attempt(5), wait=wait_exponential(multiplier=1, min=2, max=30))
+@retry(stop=stop_after_attempt(6), wait=wait_exponential(multiplier=2, min=5, max=90))
 def _get_pagina(endpoint: str, cnpj: str, pagina: int) -> list[dict]:
     resp = requests.get(
         f"{API_BASE}/{endpoint}",
         headers=_headers(),
         params={"codigoSancionado": cnpj, "pagina": pagina},
-        timeout=30,
+        # 30s bastavam para Betim e estouraram com ReadTimeout em Belo
+        # Horizonte e São Paulo: o Portal da Transparência fica mais lento
+        # conforme o volume do município cresce, e a gravação só acontece no
+        # fim — um timeout no meio descarta a coleta inteira.
+        timeout=180,
     )
     resp.raise_for_status()
     dados = resp.json()

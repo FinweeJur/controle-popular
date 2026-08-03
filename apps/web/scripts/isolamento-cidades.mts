@@ -62,8 +62,18 @@ import {
 } from "../lib/betim/vereadores.js";
 
 const BETIM = comoIdMunicipio("3106705");
-/** Belo Horizonte: código IBGE válido, zero linha em qualquer tabela. */
-const VAZIA = comoIdMunicipio("3106200");
+/**
+ * Código com o FORMATO de IBGE (7 dígitos, prefixo de UF inexistente) que
+ * nunca vai ser atendido por este portal.
+ *
+ * Era `3106200` — Belo Horizonte. A escolha fazia sentido enquanto BH era
+ * hipotética e deixou de fazer no dia em que BH virou uma linha de
+ * `municipios` com dado real: a partir daí toda consulta passaria a
+ * responder com o dado LEGÍTIMO de BH e o teste acusaria vazamento em massa.
+ * Um sentinela que depende de uma cidade continuar não existindo tem prazo
+ * de validade — este não tem.
+ */
+const VAZIA = comoIdMunicipio("9999999");
 
 let vazamentos = 0;
 let conferidos = 0;

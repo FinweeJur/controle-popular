@@ -54,13 +54,17 @@ def _headers() -> dict:
     return {"chave-api-dados": chave, "Accept": "application/json"}
 
 
-@retry(stop=stop_after_attempt(5), wait=wait_exponential(multiplier=1, min=2, max=30))
+@retry(stop=stop_after_attempt(6), wait=wait_exponential(multiplier=2, min=5, max=90))
 def _get_mes(endpoint: str, codigo_ibge: str, mes_ano: str) -> dict | None:
     resp = requests.get(
         f"{API_BASE}/{endpoint}",
         headers=_headers(),
         params={"codigoIbge": codigo_ibge, "mesAno": mes_ano},
-        timeout=30,
+        # 30s bastavam para Betim e estouraram com ReadTimeout em Belo
+        # Horizonte e São Paulo: o Portal da Transparência fica mais lento
+        # conforme o volume do município cresce, e a gravação só acontece no
+        # fim — um timeout no meio descarta a coleta inteira.
+        timeout=180,
     )
     resp.raise_for_status()
     dados = resp.json()
@@ -83,7 +87,16 @@ def _meses_desde(ano_ini: int, mes_ini: int) -> list[str]:
     return meses
 
 
-def sync(id_municipio: str, codigo_ibge: str, desde: tuple[int, int] = INICIO_PADRAO) -> None:
+def sync(
+    id_municipio: str,
+    codigo_ibge: str | None = None,
+    desde: tuple[int, int] = INICIO_PADRAO,
+) -> None:
+    """`codigo_ibge` é o MESMO id da cidade; o default de argparse apontava
+    para Betim, então `--id-municipio 3550308` sozinho consultava o Portal da
+    Transparência com o código de Betim e gravava o resultado como sendo de
+    São Paulo. Agora ele simplesmente segue o id."""
+    codigo_ibge = codigo_ibge or id_municipio 
     client = get_supabase_client()
     meses = _meses_desde(*desde)
 
@@ -119,7 +132,11 @@ def sync(id_municipio: str, codigo_ibge: str, desde: tuple[int, int] = INICIO_PA
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
-    parser.add_argument("--codigo-ibge", default=ID_MUNICIPIO_DEFAULT)
+    parser.add_argument(
+        "--codigo-ibge",
+        default=None,
+        help="Override; por padrão é o próprio --id-municipio.",
+    )
     args = parser.parse_args()
     try:
         sync(args.id_municipio, args.codigo_ibge)

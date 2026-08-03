@@ -24,7 +24,12 @@ import sys
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
+from etl.common import (
+    ID_MUNICIPIO_DEFAULT,
+    carregar_municipio,
+    get_supabase_client,
+    nome_para_fonte_externa,
+)
 
 API_BASE = "https://revendedoresapi.anp.gov.br/v1/combustivel"
 
@@ -64,8 +69,19 @@ def _fetch_all(uf: str, municipio: str) -> list[dict]:
     return rows
 
 
-def sync(id_municipio: str, uf: str, municipio: str):
+def sync(id_municipio: str, uf: str | None = None, municipio: str | None = None):
+    """`uf`/`municipio` saem da tabela `municipios` a partir do id.
+
+    Eram argumentos com default `MG`/`BETIM`, o que fazia
+    `--id-municipio 3550308` (sem os outros dois) coletar os postos de Betim
+    e gravá-los como sendo de São Paulo — silenciosamente, porque o upsert
+    casa por `cnpj` e apenas trocava o `id_municipio` da linha existente.
+    Continuam aceitos como override explícito para o caso de a ANP grafar o
+    nome de forma inesperada, mas o padrão agora é derivado do banco."""
     client = get_supabase_client()
+    cidade = carregar_municipio(id_municipio)
+    uf = uf or cidade["uf"]
+    municipio = municipio or nome_para_fonte_externa(cidade["nome"])
     postos = _fetch_all(uf, municipio)
 
     rows = []
@@ -105,8 +121,14 @@ def sync(id_municipio: str, uf: str, municipio: str):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
-    parser.add_argument("--uf", default="MG")
-    parser.add_argument("--municipio", default="BETIM", help="Upper-case, accent-free (ANP convention)")
+    # Sem default: a UF e o nome vêm de `municipios`. Um default de outra
+    # cidade aqui já causou reetiquetagem silenciosa de dado (ver `sync`).
+    parser.add_argument("--uf", default=None, help="Override; o padrão vem de `municipios`.")
+    parser.add_argument(
+        "--municipio",
+        default=None,
+        help="Override em MAIÚSCULAS sem acento (convenção da ANP); o padrão vem de `municipios`.",
+    )
     args = parser.parse_args()
     try:
         sync(args.id_municipio, args.uf, args.municipio)

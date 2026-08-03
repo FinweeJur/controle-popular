@@ -45,7 +45,15 @@ from etl.common import (
 )
 
 API_BASE = "https://api.portaldatransparencia.gov.br/api-de-dados"
-PAGE_LIMIT_SAFETY = 200  # ~3000 registros; nenhum município deste projeto chega perto disso
+# Teto de páginas por município. O comentário original dizia "nenhum
+# município deste projeto chega perto disso" — São Paulo o estourou na
+# primeira rodada (3.000 registros, R$ 11,3 bi, e o aviso de corte disparou).
+# Mantido em 200 de propósito: subir o teto é uma decisão de volume, não um
+# detalhe, porque a coleta é sequencial com sleep e já leva mais de uma hora
+# nesse tamanho. Quem precisar da série completa de SP roda com
+# `--teto-paginas` maior e reserva tempo. O importante é que o corte é
+# ANUNCIADO no log, não silencioso.
+PAGE_LIMIT_SAFETY = 200
 
 
 def _headers() -> dict:
@@ -58,20 +66,34 @@ def _headers() -> dict:
     return {"chave-api-dados": chave, "Accept": "application/json"}
 
 
-@retry(stop=stop_after_attempt(5), wait=wait_exponential(multiplier=1, min=2, max=30))
+@retry(stop=stop_after_attempt(6), wait=wait_exponential(multiplier=2, min=5, max=90))
 def _get_page(codigo_ibge: str, pagina: int) -> list[dict]:
+    """Uma página de `/convenios`.
+
+    Duas particularidades desta API que a configuração anterior não cobria:
+
+    1. **400 é intermitente, não determinístico.** A MESMA URL responde 400
+       numa chamada e 200 na seguinte — observado em Betim, BH e São Paulo,
+       logo não é característica do município. `raise_for_status()` levanta
+       em 4xx igual a 5xx e o `retry` repete qualquer exceção, então o 400 já
+       era reexecutado; o que faltava era paciência.
+    2. **45s era curto para município grande.** Betim resolvia numa página;
+       BH e SP paginam muito mais e a API fica mais lenta conforme o offset
+       cresce. O ETL de BH morreu com `ReadTimeout` no meio da coleta — e,
+       como a gravação só acontece no fim, não gravou nada.
+    """
     resp = requests.get(
         f"{API_BASE}/convenios",
         headers=_headers(),
         params={"codigoIBGE": codigo_ibge, "pagina": pagina},
-        timeout=45,
+        timeout=180,
     )
     resp.raise_for_status()
     data = resp.json()
     return data if isinstance(data, list) else []
 
 
-def _fetch_all(codigo_ibge: str) -> list[dict]:
+def _fetch_all(codigo_ibge: str, teto_paginas: int = PAGE_LIMIT_SAFETY) -> list[dict]:
     rows: list[dict] = []
     pagina = 1
     while True:
@@ -81,9 +103,9 @@ def _fetch_all(codigo_ibge: str) -> list[dict]:
         rows.extend(pagina_dados)
         pagina += 1
         time.sleep(0.4)  # gentil com a API pública, evita rate-limit
-        if pagina > PAGE_LIMIT_SAFETY:
+        if pagina > teto_paginas:
             print(
-                f"[etl.apis.transparencia_gov] AVISO: parou em {PAGE_LIMIT_SAFETY} "
+                f"[etl.apis.transparencia_gov] AVISO: parou em {teto_paginas} "
                 "páginas por segurança — investigar se o município realmente "
                 "tem esse volume antes de subir o teto."
             )
@@ -125,9 +147,18 @@ def _map_row(raw: dict, id_municipio: str) -> dict | None:
     }
 
 
-def sync(id_municipio: str, codigo_ibge: str):
+def sync(id_municipio: str, codigo_ibge: str | None = None, teto_paginas: int = PAGE_LIMIT_SAFETY):
+    """
+    O código consultado na fonte é o PRÓPRIO `id_municipio`. Era um argumento
+    separado com default fixo de Betim, então `--id-municipio <outra cidade>`
+    sozinho consultava a fonte com o código de Betim e gravava o resultado
+    sob o id da outra cidade — sem erro, sem aviso. Mesma classe de defeito
+    corrigida em `etl.apis.anp`, `etl.apis.openmeteo`, `etl.apis.crimes_mg` e
+    `etl.pncp.contratos` em 2026-08-03.
+    """
+    codigo_ibge = codigo_ibge or id_municipio
     client = get_supabase_client()
-    brutos = _fetch_all(codigo_ibge)
+    brutos = _fetch_all(codigo_ibge, teto_paginas)
     rows = [m for r in brutos if (m := _map_row(r, id_municipio)) is not None]
 
     if rows:
@@ -150,11 +181,19 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
     parser.add_argument(
-        "--codigo-ibge", default=ID_MUNICIPIO_DEFAULT, help="Código IBGE de 7 dígitos"
+        "--codigo-ibge",
+        default=None,
+        help="Override; por padrão é o próprio --id-municipio.",
+    )
+    parser.add_argument(
+        "--teto-paginas",
+        type=int,
+        default=PAGE_LIMIT_SAFETY,
+        help="Máximo de páginas. São Paulo passa do padrão de 200 (3.000+ convênios).",
     )
     args = parser.parse_args()
     try:
-        sync(args.id_municipio, args.codigo_ibge)
+        sync(args.id_municipio, args.codigo_ibge, args.teto_paginas)
     except RuntimeError as e:
         print(f"[etl.apis.transparencia_gov] ABORT: {e}", file=sys.stderr)
         sys.exit(1)

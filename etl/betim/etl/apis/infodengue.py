@@ -43,7 +43,15 @@ def _map_row(raw: dict, id_municipio: str, disease: str) -> dict | None:
     }
 
 
-def sync(id_municipio: str, geocode: str):
+def sync(id_municipio: str, geocode: str | None = None):
+    """
+    O `geocode` do InfoDengue é o PRÓPRIO código IBGE de 7 dígitos. Era um
+    argumento separado com default fixo de Betim, então
+    `--id-municipio <outra cidade>` sozinho baixava a série de Betim e a
+    gravava sob o id da outra. Mesma classe de defeito corrigida em
+    `etl.apis.anp` e companhia em 2026-08-03.
+    """
+    geocode = geocode or id_municipio
     client = get_supabase_client()
     total = 0
     for disease in DISEASES:
@@ -62,7 +70,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
     parser.add_argument(
-        "--geocode", default=ID_MUNICIPIO_DEFAULT, help="Código IBGE (7 dígitos) usado pelo InfoDengue"
+        "--geocode",
+        default=None,
+        help="Override; por padrão é o próprio --id-municipio.",
     )
     args = parser.parse_args()
     try:
