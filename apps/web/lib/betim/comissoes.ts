@@ -12,7 +12,17 @@ export interface ComissaoAtual {
   especial: boolean;
   presidente: MembroComissao | null;
   relator: MembroComissao | null;
-  membros: MembroComissao[];
+  /**
+   * Os demais integrantes, com o papel que a fonte informou.
+   *
+   * Era `MembroComissao[]` e a tela imprimia "MEMBRO" para todos. Funcionava
+   * em Betim, cuja Câmara publica só "Membro"; Belo Horizonte distingue
+   * **Membro Efetivo (76) de Membro Suplente (137)**, e mais 9
+   * Vice-Presidentes. Achatar isso não é perda cosmética: suplente só vota
+   * quando o efetivo falta, e a tela dizia que os dois eram a mesma coisa —
+   * com o suplente aparecendo quase duas vezes mais que o efetivo.
+   */
+  membros: (MembroComissao & { papel: string })[];
 }
 
 interface ComissaoMembroJoin {
@@ -60,7 +70,16 @@ export async function getComissoesAtuais(
       const pessoa: MembroComissao = { slug: m.slug, nomeUrna: m.nome_urna };
       if (m.papel === "Presidente") alvo.presidente = pessoa;
       else if (m.papel === "Relator") alvo.relator = pessoa;
-      else alvo.membros.push(pessoa);
+      else alvo.membros.push({ ...pessoa, papel: m.papel || "Membro" });
+    }
+
+    // Efetivo antes de suplente: a ordem em que a fonte devolve é a de
+    // raspagem, e listar suplente primeiro sugeriria precedência que não
+    // existe.
+    const peso = (p: string) =>
+      p.toLowerCase().includes("suplente") ? 2 : p.toLowerCase().includes("vice") ? 0 : 1;
+    for (const c of porComissao.values()) {
+      c.membros.sort((a, b) => peso(a.papel) - peso(b.papel));
     }
 
     return { rows: [...porComissao.values()], ok: true };

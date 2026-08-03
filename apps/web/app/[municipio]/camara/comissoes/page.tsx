@@ -125,8 +125,11 @@ function ComissaoCard({
         )}
         {comissao.membros.map((m) => (
           <li key={m.slug} className="flex items-center justify-between gap-2">
+            {/* O papel vem da fonte. "Membro" fixo apagava a distincao entre
+                efetivo e suplente, que em Belo Horizonte e a maioria das
+                linhas — e suplente so vota quando o efetivo falta. */}
             <span className="text-xs font-semibold tracking-wide text-text-soft uppercase">
-              Membro
+              {m.papel}
             </span>
             <Link href={`/vereadores/${m.slug}`} className="text-text hover:text-primary hover:underline">
               {m.nomeUrna}
