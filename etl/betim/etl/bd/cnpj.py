@@ -37,15 +37,25 @@ first, then matched in BD). Target: `fornecedores` (unique on cnpj), `socios`
 """
 import argparse
 import sys
+import time
 
-import requests
-from tenacity import retry, stop_after_attempt, wait_exponential
-
+from etl.apis.brasilapi import (
+    INTERVALO_CNPJ_PADRAO,
+    consultar_cnpj,
+    linha_fornecedor_brasilapi,
+)
 from etl.bd.common import bd_query
 from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
 
 CHUNK_SIZE = 500
-BRASILAPI_CNPJ_URL = "https://brasilapi.com.br/api/cnpj/v1/{cnpj}"
+
+# Teto do fallback ao vivo. O caminho normal deste módulo é o BigQuery
+# (volume); a BrasilAPI aqui é só tapa-buraco, e o README dela PROÍBE
+# crawling ("volume de consultas deve ter a natureza de uma pessoa real").
+# Sem teto, um dia em que o BD viesse vazio viraria uma varredura de
+# centenas de CNPJs contra uma API que não autoriza isso — e que, medido em
+# 2026-08-03, devolve 429 já no segundo pedido.
+MAX_FALLBACK_BRASILAPI = 50
 
 QUERY_EMPRESAS = """
 SELECT cnpj_basico, razao_social, capital_social, porte
@@ -115,32 +125,18 @@ def _iso(value):
     return value
 
 
-@retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=15))
-def _fetch_brasilapi_cnpj(cnpj: str) -> dict | None:
-    """Live Minha Receita lookup via BrasilAPI. Returns None on 404 (CNPJ
-    doesn't exist there either) instead of raising, so one bad CNPJ doesn't
-    abort the whole fallback pass."""
-    resp = requests.get(BRASILAPI_CNPJ_URL.format(cnpj=cnpj), timeout=20)
-    if resp.status_code == 404:
-        return None
-    resp.raise_for_status()
-    return resp.json()
-
-
-def _brasilapi_to_fornecedor(cnpj: str, data: dict) -> dict:
-    return {
-        "cnpj": cnpj,
-        "razao_social": data.get("razao_social"),
-        "nome_fantasia": data.get("nome_fantasia"),
-        "situacao_cadastral": data.get("descricao_situacao_cadastral"),
-        "cnae_principal": data.get("cnae_fiscal"),
-        "cnae_descricao": data.get("cnae_fiscal_descricao"),
-        "capital_social": data.get("capital_social"),
-        "porte": data.get("porte"),
-        "data_abertura": data.get("data_inicio_atividade"),
-        "municipio_sede": data.get("codigo_municipio_ibge"),
-        "uf_sede": data.get("uf"),
-    }
+# O fetch e o mapeamento da BrasilAPI que moravam aqui foram para
+# `etl/apis/brasilapi.py` (2026-08-03) e este módulo passou a importá-los.
+# Não foi só arrumação: a cópia local tinha três defeitos que o módulo novo
+# já corrige, e mantê-la significaria corrigir cada um duas vezes.
+#   1. Retry cego — repetia em QUALQUER exceção, inclusive 404, e com
+#      espera curta (2-15s). Medido em 2026-08-03, o /cnpj/v1 fica 429 por
+#      ~50-90s; o novo repete só no 429 e espera 15-120s.
+#   2. `porte` gravava o TEXTO da API ("DEMAIS") numa coluna onde as 487
+#      linhas do BigQuery são código ('1','3','5') — dois vocabulários na
+#      mesma coluna, a mesma forma do bug que deu 97,6% de falso positivo
+#      em `situacao_cadastral`.
+#   3. `cnae_principal`/`municipio_sede` iam como int para colunas `text`.
 
 
 def sync(id_municipio: str):
@@ -231,16 +227,30 @@ def sync(id_municipio: str):
     faltantes = [c for c in cnpjs if c not in encontrados]
     total_fallback = 0
     if faltantes:
+        # Teto + espaçamento: a BrasilAPI não autoriza varredura, e o
+        # endpoint 429 já na segunda chamada seguida. `faltantes` pode ter
+        # centenas de CNPJs (171 em Betim hoje); sem o corte, este trecho
+        # viraria exatamente o crawling que o README proíbe.
+        a_consultar = faltantes[:MAX_FALLBACK_BRASILAPI]
+        if len(faltantes) > len(a_consultar):
+            print(
+                f"[etl.bd.cnpj] fallback limitado a {MAX_FALLBACK_BRASILAPI} de {len(faltantes)} "
+                "CNPJs (limite contratual da BrasilAPI) — para completar o resto rode "
+                "`python -m etl.apis.brasilapi --id-municipio <ibge>`"
+            )
         print(f"[etl.bd.cnpj] cnpjs_ausentes_no_bd={len(faltantes)} — tentando fallback ao vivo (BrasilAPI)")
         fallback_rows = []
-        for cnpj in faltantes:
+        for i, cnpj in enumerate(a_consultar, 1):
             try:
-                data = _fetch_brasilapi_cnpj(cnpj)
+                data = consultar_cnpj(cnpj)
             except Exception as e:
                 print(f"[etl.bd.cnpj] fallback falhou para {cnpj}: {type(e).__name__}")
                 continue
+            finally:
+                if i < len(a_consultar):
+                    time.sleep(INTERVALO_CNPJ_PADRAO)
             if data:
-                fallback_rows.append(_brasilapi_to_fornecedor(cnpj, data))
+                fallback_rows.append(linha_fornecedor_brasilapi(cnpj, data))
         if fallback_rows:
             for chunk in _chunked(fallback_rows, CHUNK_SIZE):
                 client.table("fornecedores").upsert(chunk, on_conflict="cnpj").execute()
