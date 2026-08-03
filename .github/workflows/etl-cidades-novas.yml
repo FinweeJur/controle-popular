@@ -1,0 +1,166 @@
+# ETL de Belo Horizonte (3106200) e São Paulo (3550308).
+#
+# POR QUE UM ARQUIVO SEPARADO DE `etl-betim.yml`. As três cidades compartilham
+# a maior parte dos módulos, mas divergem justamente nos mais pesados:
+#
+#   contratos   Betim e SP -> PNCP        BH -> GRP da PBH (etl.pbh.contratos)
+#   câmara      etl.camaras.betim         etl.camaras.bh / etl.camaras.sp
+#   servidores  etl.prefeitura.b3106705   etl.pbh.folha / etl.psp.servidores
+#   crimes      Sejusp-MG                 SP -> API da SSP-SP (etl.psp.crimes)
+#
+# Uma matriz sobre `etl-betim.yml` exigiria um `if:` por cidade em quase todo
+# passo, e o arquivo já tem 13 KB. Dois jobs explícitos aqui são mais longos e
+# muito mais legíveis — e, sobretudo, mexer neles não pode quebrar o cron de
+# Betim, que é o único que hoje serve gente.
+#
+# CADÊNCIA. Mais espaçada que a de Betim de propósito: o volume é 5-6x maior
+# (SP tem 125 mil servidores, BH tem 6.838 contratos) e cada rodada dessas
+# custa egress no plano free do Neon — o mesmo teto de 5 GB/mês que já limita
+# `rebuild.yml` a um build semanal.
+name: ETL cidades novas (BH e SP)
+
+on:
+  schedule:
+    # Terça 09:00 UTC — depois do de Betim (segunda), para não disputar o
+    # PNCP, que devolve 429 com facilidade quando dois jobs varrem juntos.
+    - cron: "0 9 * * 2"
+    # Mensal: os módulos caros (folha de SP, varredura de CNPJs de órgão).
+    - cron: "0 10 2 * *"
+  workflow_dispatch:
+
+env:
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  TRANSPARENCIA_API_KEY: ${{ secrets.TRANSPARENCIA_API_KEY }}
+
+jobs:
+  belo-horizonte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    defaults:
+      run:
+        working-directory: etl/betim
+    env:
+      ID_MUNICIPIO: "3106200"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      # O guarda que impede a volta do defeito de 2026-08-03: default de
+      # argparse amarrado a uma cidade fazia o ETL de uma coletar o dado de
+      # outra e reetiquetá-lo, sem erro. Falha o job antes de gravar nada.
+      - name: Conferir que nenhum módulo carrega cidade por dentro
+        run: python scripts/conferir_defaults_de_cidade.py
+
+      # ── Semanal ──────────────────────────────────────────────────────
+      # O GRP é a fonte canônica de contrato em BH; `etl.pncp.contratos`
+      # ABORTA nesta cidade de propósito (fontes.contratos_fonte=grp_pbh),
+      # porque rodar os dois já produziu 745 duplicatas exatas.
+      - name: "PBH — contratos e licitações (GRP)"
+        run: python -m etl.pbh.contratos --id-municipio $ID_MUNICIPIO
+
+      - name: "Câmara — vereadores, proposições, subsídio, custeio"
+        run: python -m etl.camaras.bh --id-municipio $ID_MUNICIPIO
+
+      - name: "Convênios federais"
+        run: python -m etl.apis.transparencia_gov --id-municipio $ID_MUNICIPIO
+
+      - name: "Fornecedores sancionados (CEIS/CNEP)"
+        run: python -m etl.apis.ceis_cnep --id-municipio $ID_MUNICIPIO
+
+      - name: "Benefícios sociais"
+        run: python -m etl.apis.beneficios_sociais --id-municipio $ID_MUNICIPIO
+
+      - name: "Crimes violentos (Sejusp-MG)"
+        run: python -m etl.apis.crimes_mg --id-municipio $ID_MUNICIPIO
+
+      - name: "Postos de combustível (ANP)"
+        run: python -m etl.apis.anp --id-municipio $ID_MUNICIPIO
+
+      - name: "Clima"
+        run: python -m etl.apis.openmeteo --id-municipio $ID_MUNICIPIO
+
+      - name: "InfoDengue"
+        run: python -m etl.apis.infodengue --id-municipio $ID_MUNICIPIO
+
+      - name: "Temas e alertas"
+        run: |
+          python -m etl.temas_backfill --id-municipio $ID_MUNICIPIO
+          python -m etl.alertas --id-municipio $ID_MUNICIPIO
+
+      # ── Mensal ───────────────────────────────────────────────────────
+      - name: "PBH — folha de pagamento (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.pbh.folha --id-municipio $ID_MUNICIPIO --meses 3
+
+  sao-paulo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    defaults:
+      run:
+        working-directory: etl/betim
+    env:
+      ID_MUNICIPIO: "3550308"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Conferir que nenhum módulo carrega cidade por dentro
+        run: python scripts/conferir_defaults_de_cidade.py
+
+      # ── Semanal ──────────────────────────────────────────────────────
+      # Depende de `municipios.fontes.cnpjs_orgao`, populado pela varredura
+      # mensal abaixo. Sem a lista, o módulo cai no CNPJ da prefeitura e
+      # AVISA — em São Paulo isso são 114 contratos em vez de milhares.
+      - name: "PNCP — contratos e licitações"
+        run: |
+          python -m etl.pncp.contratos --id-municipio $ID_MUNICIPIO --ano-inicio 2024
+          python -m etl.pncp.licitacoes --id-municipio $ID_MUNICIPIO --ano-inicio 2024
+
+      - name: "Câmara — vereadores, proposições, verba de gabinete"
+        run: python -m etl.camaras.sp --id-municipio $ID_MUNICIPIO
+
+      - name: "Criminalidade (SSP-SP)"
+        run: python -m etl.psp.crimes --id-municipio $ID_MUNICIPIO
+
+      - name: "Convênios federais"
+        run: python -m etl.apis.transparencia_gov --id-municipio $ID_MUNICIPIO
+
+      - name: "Fornecedores sancionados (CEIS/CNEP)"
+        run: python -m etl.apis.ceis_cnep --id-municipio $ID_MUNICIPIO
+
+      - name: "Benefícios sociais"
+        run: python -m etl.apis.beneficios_sociais --id-municipio $ID_MUNICIPIO
+
+      - name: "Postos de combustível (ANP)"
+        run: python -m etl.apis.anp --id-municipio $ID_MUNICIPIO
+
+      - name: "Clima"
+        run: python -m etl.apis.openmeteo --id-municipio $ID_MUNICIPIO
+
+      - name: "InfoDengue"
+        run: python -m etl.apis.infodengue --id-municipio $ID_MUNICIPIO
+
+      - name: "Temas e alertas"
+        run: |
+          python -m etl.temas_backfill --id-municipio $ID_MUNICIPIO
+          python -m etl.alertas --id-municipio $ID_MUNICIPIO
+
+      # ── Mensal ───────────────────────────────────────────────────────
+      # Órgão municipal novo é raro e a varredura é cara (o PNCP devolve 429
+      # com facilidade), então mensal — mas ela PRECISA rodar: é o que impede
+      # o portal de mostrar 114 contratos para uma cidade de 12 milhões.
+      - name: "PNCP — redescobrir CNPJs de órgão (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.pncp.orgaos --id-municipio $ID_MUNICIPIO --gravar
+
+      - name: "SEGES — servidores e folha (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.psp.servidores --id-municipio $ID_MUNICIPIO --meses 3
