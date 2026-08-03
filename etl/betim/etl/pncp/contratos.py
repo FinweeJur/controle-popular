@@ -9,7 +9,13 @@ import argparse
 import datetime as dt
 import sys
 
-from etl.common import CITY_HALL_CNPJ, ID_MUNICIPIO_DEFAULT, get_supabase_client, upsert_com_colunas_opcionais
+from etl.common import (
+    CITY_HALL_CNPJ,
+    ID_MUNICIPIO_DEFAULT,
+    carregar_municipio,
+    get_supabase_client,
+    upsert_com_colunas_opcionais,
+)
 from etl.pncp.client import iter_contratos
 from etl.temas import classificar_contrato
 
@@ -74,25 +80,101 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
     }
 
 
-def sync(id_municipio: str, cnpj_orgao: str, ano_inicio: int):
+def sync(
+    id_municipio: str,
+    cnpj_orgao: str | None,
+    ano_inicio: int,
+    permitir_fonte_dupla: bool = False,
+):
+    """`cnpj_orgao` sai de `municipios.cnpj_prefeitura`.
+
+    Derivado de `municipios` (ver `carregar_municipio`): este parâmetro tinha
+    default fixo de Betim, então rodar só com `--id-municipio <outra cidade>`
+    coletava o dado de Betim e o gravava com o id da outra — sem erro. Mesmo
+    defeito encontrado e corrigido em `etl.apis.anp` em 2026-08-03.
+
+    Era o caso mais grave dos quatro: o CNPJ da Prefeitura de Betim como
+    default significa que `--id-municipio 3550308` importaria os contratos de
+    BETIM para dentro do portal de São Paulo, e a chave de upsert
+    (`numero_controle_pncp`) é global — os contratos de Betim seriam
+    reetiquetados, não duplicados, sumindo do portal de origem.
+    """
     client = get_supabase_client()
+    cidade = carregar_municipio(id_municipio)
+
+    # UMA CIDADE, UMA FONTE DE CONTRATO. Belo Horizonte é atendida pelo GRP
+    # da PBH (`etl.pbh.contratos`), que traz os 6.838 contratos de toda a
+    # administração; o PNCP por `cnpjOrgao` traz só a administração direta
+    # central, e rodar os dois gerou 745 pares exatos duplicados no portal
+    # — dois registros do mesmo contrato, com chaves diferentes, sem nada
+    # que os ligue. Não há chave comum para deduplicar depois, então a
+    # escolha tem de ser feita ANTES de gravar.
+    #
+    # O override existe porque comparar as duas fontes é um uso legítimo;
+    # o que não pode é acontecer por descuido numa rodada de rotina.
+    fonte_propria = cidade["fontes"].get("contratos_fonte")
+    if fonte_propria and fonte_propria != "pncp" and not permitir_fonte_dupla:
+        raise RuntimeError(
+            f"{cidade['nome']} declara `fontes.contratos_fonte = {fonte_propria!r}`; "
+            "rodar o PNCP por cima duplicaria os contratos. Use o módulo dessa "
+            "fonte, ou passe --permitir-fonte-dupla se a intenção é comparar."
+        )
+
+    # UM CNPJ NÃO É A CIDADE. `cnpjOrgao=<prefeitura>` alcança só a
+    # administração direta central: em São Paulo isso deu **114 contratos**
+    # de 2024 a 2026, porque secretarias, subprefeituras e empresas
+    # municipais (SP Obras, PRODAM, Fundo Municipal de Saúde...) têm CNPJ
+    # próprio. A lista completa fica em `municipios.fontes.cnpjs_orgao`,
+    # descoberta por `etl.pncp.orgaos` filtrando `esferaId == "M"`.
+    #
+    # Sem a lista, cai no CNPJ da prefeitura — que é o comportamento antigo
+    # e continua correto para uma cidade pequena como Betim, onde a
+    # administração direta é quase tudo.
+    if cnpj_orgao is not None:
+        cnpjs = [cnpj_orgao]
+    else:
+        cnpjs = [str(c) for c in (cidade["fontes"].get("cnpjs_orgao") or []) if c]
+        if not cnpjs:
+            principal = cidade["cnpj_prefeitura"]
+            if not principal:
+                raise RuntimeError(
+                    f"municipios.cnpj_prefeitura vazio para id_municipio={id_municipio}."
+                )
+            cnpjs = [principal]
+            print(
+                "[etl.pncp.contratos] AVISO: usando só o CNPJ da prefeitura. "
+                "Numa capital isso subconta — rode `python -m etl.pncp.orgaos "
+                f"--id-municipio {id_municipio} --gravar` primeiro."
+            )
+    print(f"[etl.pncp.contratos] {len(cnpjs)} CNPJ(s) de órgão")
     ano_atual = dt.date.today().year
     total = 0
     for ano in range(ano_inicio, ano_atual + 1):
         data_inicial = f"{ano}0101"
         data_final = f"{ano}1231"
         rows_by_pncp: dict[str, dict] = {}
-        for raw in iter_contratos(cnpj_orgao, data_inicial, data_final):
-            row = _map_row(raw, id_municipio)
-            # Dedupe by numero_controle_pncp -- see etl.pncp.licitacoes for
-            # why (ON CONFLICT DO UPDATE can't affect the same row twice in
-            # one batch; PNCP can repeat a contrato across page boundaries).
-            rows_by_pncp[row["numero_controle_pncp"]] = row
+        for cnpj in cnpjs:
+            for raw in iter_contratos(cnpj, data_inicial, data_final):
+                row = _map_row(raw, id_municipio)
+                # Dedupe by numero_controle_pncp -- see etl.pncp.licitacoes
+                # for why (ON CONFLICT DO UPDATE can't affect the same row
+                # twice in one batch; PNCP can repeat a contrato across page
+                # boundaries). Com vários CNPJs o dedupe também cobre o
+                # mesmo contrato aparecendo sob dois órgãos.
+                rows_by_pncp[row["numero_controle_pncp"]] = row
         rows = list(rows_by_pncp.values())
         if rows:
-            upsert_com_colunas_opcionais(
-                client, "contratos", rows, ["temas"], on_conflict="numero_controle_pncp"
-            )
+            # Lotes: um INSERT do Postgres aceita 65.535 placeholders e
+            # `contratos` tem ~19 colunas — com vários CNPJs de uma capital,
+            # um ano só passa do teto.
+            for i in range(0, len(rows), 1000):
+                upsert_com_colunas_opcionais(
+                    client,
+                    "contratos",
+                    rows[i : i + 1000],
+                    ["temas"],
+                    on_conflict="numero_controle_pncp",
+                )
         print(f"[etl.pncp.contratos] ano={ano} registros={len(rows)}")
         total += len(rows)
     print(f"[etl.pncp.contratos] total={total}")
@@ -101,11 +183,20 @@ def sync(id_municipio: str, cnpj_orgao: str, ano_inicio: int):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
-    parser.add_argument("--cnpj-orgao", default=CITY_HALL_CNPJ)
+    parser.add_argument(
+        "--cnpj-orgao",
+        default=None,
+        help="Override; o padrão é `municipios.cnpj_prefeitura`.",
+    )
     parser.add_argument("--ano-inicio", type=int, default=2021)
+    parser.add_argument(
+        "--permitir-fonte-dupla",
+        action="store_true",
+        help="Roda mesmo se a cidade declarar outra fonte canônica de contratos.",
+    )
     args = parser.parse_args()
     try:
-        sync(args.id_municipio, args.cnpj_orgao, args.ano_inicio)
+        sync(args.id_municipio, args.cnpj_orgao, args.ano_inicio, args.permitir_fonte_dupla)
     except RuntimeError as e:
         print(f"[etl.pncp.contratos] ABORT: {e}", file=sys.stderr)
         sys.exit(1)
