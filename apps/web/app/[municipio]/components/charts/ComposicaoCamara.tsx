@@ -138,7 +138,7 @@ export default function ComposicaoCamara({ totaisPorTipo }: ComposicaoCamaraProp
       <div className="sr-only" style={{ overflow: "hidden", width: "1px", height: "1px" }}>
         <table>
           <caption>
-            Composição das proposições da 20ª Legislatura, por quantidade e por pontos.
+            Composição das proposições da legislatura em curso, por quantidade e por pontos.
           </caption>
           <thead>
             <tr>

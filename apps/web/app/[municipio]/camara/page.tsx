@@ -9,10 +9,11 @@ import { getTemasCamara } from "@/lib/betim/temas";
 import { getVerbasAnalytics } from "@/lib/betim/verbas";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { rotuloLegislatura } from "@/lib/db/queries/municipios";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Câmara Municipal — ${nomePortal(c)}`,
-  (c) => `Vereadores da 20ª Legislatura (2025-2028) de ${c.nome}-${c.uf}.`
+  (c) => `Vereadores da ${rotuloLegislatura(c)} de ${c.nome}-${c.uf}.`
 );
 
 export default async function CamaraPage({
@@ -25,6 +26,39 @@ export default async function CamaraPage({
   const verbas = await getVerbasAnalytics(cidade.id_municipio);
   const ranking = await getRankingVereadores(cidade.id_municipio);
   const temasCamara = await getTemasCamara(cidade.id_municipio);
+  // `camara_youtube` e `camara_sessoes` são gravados em DOIS formatos: uma
+  // string simples (Betim, BH) ou um objeto com metadados extras (São
+  // Paulo, cujo ETL guarda channel_id e a grade de dias/hora). Ler só o
+  // caso string faria a seção sumir em São Paulo sem nenhum sinal.
+  const fontes = (cidade.fontes ?? {}) as Record<string, unknown>;
+  const texto = (chave: string, dentro?: string): string | null => {
+    const v = fontes[chave];
+    if (typeof v === "string") return v;
+    if (v && typeof v === "object" && dentro) {
+      const interno = (v as Record<string, unknown>)[dentro];
+      return typeof interno === "string" ? interno : null;
+    }
+    return null;
+  };
+  const transmissao = texto("camara_youtube", "url");
+  const camaraHost = texto("camara_host");
+  const sessoesBruto = fontes.camara_sessoes;
+  const sessoes =
+    typeof sessoesBruto === "string"
+      ? sessoesBruto
+      : ((): string | null => {
+          const ord = (sessoesBruto as { ordinarias?: { hora?: string; dias_semana?: string[] } } | undefined)
+            ?.ordinarias;
+          if (!ord?.dias_semana?.length) return null;
+          const nomes: Record<string, string> = {
+            segunda: "segundas", terca: "terças", quarta: "quartas",
+            quinta: "quintas", sexta: "sextas",
+          };
+          const dias = ord.dias_semana.map((d) => nomes[d] ?? d);
+          const lista =
+            dias.length === 1 ? dias[0] : `${dias.slice(0, -1).join(", ")} e ${dias.at(-1)}`;
+          return ord.hora ? `às ${lista}, ${ord.hora.replace(":", "h")}` : `às ${lista}`;
+        })();
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8">
@@ -32,8 +66,11 @@ export default async function CamaraPage({
         Câmara Municipal de {cidade.nome}
       </h1>
       <p className="mb-4 max-w-2xl text-sm text-text-soft">
-        Os 23 vereadores da 20ª Legislatura (2025-2028), dados públicos do
-        site oficial da Câmara.
+        {/* "Os 23 vereadores da 20ª Legislatura" era Betim escrito à mão:
+            BH tem 41 e São Paulo tem 55, na 19ª legislatura. A contagem sai
+            do próprio dado e o rótulo, do banco. */}
+        {rows.length > 0 ? `Os ${rows.length} vereadores` : "Os vereadores"} da{" "}
+        {rotuloLegislatura(cidade)}, dados públicos do site oficial da Câmara.
       </p>
       <p className="mb-8 flex flex-wrap gap-x-6 gap-y-1">
         <Link href="/camara/proposicoes" className="text-sm font-medium text-accent hover:underline">
@@ -44,36 +81,47 @@ export default async function CamaraPage({
         </Link>
       </p>
 
+      {/* O canal e o horário eram literais de Betim
+          (@camaramunicipaldebetim7326, "terças-feiras") e apareciam
+          igualzinho em Belo Horizonte e São Paulo — informação
+          verificavelmente falsa numa seção que manda o leitor assistir. Os
+          três dados vêm de `municipios.fontes`: `camara_youtube`,
+          `camara_sessoes` e `camara_host`. Sem eles a seção não é
+          renderizada, porque um card de transmissão sem link não serve
+          para nada. */}
+      {transmissao && (
       <section className="mb-10 rounded-2xl border border-border bg-surface p-5 shadow-sm">
         <h2 className="mb-1 flex items-center gap-2 font-display text-lg font-bold text-text">
           <span className="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-alert" aria-hidden />
           Transmissão das sessões
         </h2>
         <p className="mb-3 max-w-2xl text-sm text-text-soft">
-          As reuniões ordinárias da Câmara acontecem às terças-feiras durante
-          o período legislativo (com recesso em julho) e são transmitidas ao
-          vivo no canal oficial da Câmara no YouTube. As sessões anteriores
-          ficam gravadas no mesmo canal.
+          {sessoes
+            ? `As reuniões ordinárias da Câmara acontecem ${sessoes} e são transmitidas ao vivo no canal oficial da Câmara no YouTube. As sessões anteriores ficam gravadas no mesmo canal.`
+            : "As reuniões ordinárias da Câmara são transmitidas ao vivo no canal oficial no YouTube, onde as sessões anteriores também ficam gravadas."}
         </p>
         <div className="flex flex-wrap gap-3">
           <a
-            href="https://www.youtube.com/@camaramunicipaldebetim7326"
+            href={transmissao}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-primary-ink hover:bg-primary/90"
           >
             Assistir no YouTube ↗
           </a>
+          {camaraHost && (
           <a
-            href="https://www.camarabetim.mg.gov.br"
+            href={camaraHost}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-surface-2 px-4 py-1.5 text-sm font-medium text-text hover:bg-surface-2/70"
           >
             Agenda oficial da Câmara ↗
           </a>
+          )}
         </div>
       </section>
+      )}
 
       {verbas.ok && verbas.totalRegistros > 0 && (
         <div className="mb-10">

@@ -11,8 +11,10 @@ import {
   getDoacoesSummary,
   getBensCandidato,
   getRankingVereadores,
+  getVereadores,
   TIPO_PROPOSICAO_LABELS,
 } from "@/lib/betim/vereadores";
+import { listarCidades, rotuloLegislatura } from "@/lib/db/queries/municipios";
 import { getTemasVereador, TEMA_LABELS } from "@/lib/betim/temas";
 import { getVerbasAnalytics } from "@/lib/betim/verbas";
 import { getParticipacoesByVereador } from "@/lib/betim/comissoes";
@@ -25,6 +27,31 @@ interface VereadorPageProps {
    *  lesse a assinatura. */
   params: Promise<{ municipio: string; slug: string }>;
   searchParams: Promise<{ tema?: string }>;
+}
+
+/**
+ * Enumera os vereadores de TODAS as cidades — o `[slug]` está sob
+ * `[municipio]`, então é o par (cidade, vereador) que identifica a rota.
+ *
+ * Sem isto o `output: 'export'` recusa a página inteira ("missing
+ * generateStaticParams() so it cannot be used with output: export"). No alvo
+ * Cloudflare a página já era pré-renderizada, então lá o efeito é só
+ * antecipar o trabalho para o build em vez de deixá-lo sob demanda.
+ *
+ * Consulta `listarCidades()` de novo em vez de reaproveitar o
+ * `generateStaticParams` do layout porque os dois rodam independentes; são
+ * poucas dezenas de linhas e o Next resolve uma vez por build.
+ */
+export async function generateStaticParams() {
+  const cidades = await listarCidades();
+  const pares: { municipio: string; slug: string }[] = [];
+  for (const cidade of cidades) {
+    const { rows } = await getVereadores(cidade.id_municipio);
+    for (const v of rows) {
+      if (v.slug) pares.push({ municipio: cidade.slug, slug: v.slug });
+    }
+  }
+  return pares;
 }
 
 export async function generateMetadata({ params }: VereadorPageProps) {
@@ -316,7 +343,7 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
           <div className="mt-8">
             <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
               <h2 className="font-display text-lg font-bold text-text">
-                Proposições apresentadas (20ª Legislatura)
+                Proposições apresentadas ({rotuloLegislatura(cidade)})
               </h2>
               {tema && (
                 <Link

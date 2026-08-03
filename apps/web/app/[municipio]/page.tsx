@@ -3,7 +3,12 @@ import OutrasFrentes from "@/app/components/OutrasFrentes";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import RankingVereadores from "@/app/[municipio]/components/charts/RankingVereadores";
 import * as q from "@/lib/db/queries/betim";
-import type { IdMunicipio } from "@/lib/db/queries/municipios";
+import {
+  rotuloLegislatura,
+  temFonte,
+  type Cidade,
+  type IdMunicipio,
+} from "@/lib/db/queries/municipios";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { fetchAnunciosAtivos } from "@/lib/betim/anuncios";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
@@ -152,17 +157,22 @@ async function getClima(idMunicipio: IdMunicipio): Promise<ClimaAtual | null> {
   }
 }
 
-const explorar = (cidade: { nome: string }): { href: string; nome: string; desc: string; icon: LucideIcon }[] => [
+/** `fonte` filtra o card pelas chaves de `municipios.fontes` — mesma regra
+ * de `/servicos`: item que aponta para uma página que a cidade não tem não
+ * entra no menu. */
+const explorar = (
+  cidade: Cidade
+): { href: string; nome: string; desc: string; icon: LucideIcon; fonte?: string }[] => [
   { href: "/prefeitura", nome: "Prefeitura", desc: "Contratos, despesas e fornecedores", icon: Landmark },
   { href: "/camara", nome: "Câmara Municipal", desc: "Vereadores e verbas indenizatórias", icon: Users },
-  { href: "/zap-betim", nome: `Zap ${cidade.nome}`, desc: "Cadastro de negócios no WhatsApp", icon: MessageCircle },
-  { href: "/citrolandia", nome: "Citrolândia", desc: "Bairros da região e negócios locais", icon: MapPin },
+  { href: "/zap", nome: `Zap ${cidade.nome}`, desc: "Cadastro de negócios no WhatsApp", icon: MessageCircle },
+  { href: "/citrolandia", nome: "Citrolândia", desc: "Bairros da região e negócios locais", icon: MapPin, fonte: "citrolandia" },
   { href: "/postos-combustivel", nome: "Postos de Combustível", desc: "Nota de conformidade ANP", icon: Fuel },
   { href: "/clima", nome: "Clima", desc: "Previsão e chuva acumulada", icon: CloudSun },
   { href: "/defesa-civil", nome: "Defesa Civil", desc: "Alertas de emergência", icon: ShieldAlert },
 ];
 
-const BETIM_EM_DADOS: { href: string; nome: string; icon: LucideIcon }[] = [
+const ATALHOS_EM_DADOS: { href: string; nome: string; icon: LucideIcon }[] = [
   { href: "/saude", nome: "Saúde", icon: HeartPulse },
   { href: "/educacao", nome: "Educação", icon: GraduationCap },
   { href: "/economia", nome: "Economia", icon: TrendingUp },
@@ -252,7 +262,11 @@ export default async function HomePage({
             <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-[.85em] font-semibold tracking-wide text-text-soft">
-                  BETIM · AGORA
+                  {/* Escapou da varredura de strings "Betim" porque estava em
+                      CAIXA ALTA — um grep por "Betim" não encontra "BETIM". O
+                      card mostrava a temperatura correta de Belo Horizonte sob
+                      o rótulo "BETIM · AGORA". */}
+                  {cidade.nome.toLocaleUpperCase("pt-BR")} · AGORA
                 </span>
                 <span className="h-2.5 w-2.5 rounded-full bg-accent" />
               </div>
@@ -420,7 +434,7 @@ export default async function HomePage({
             {vereadores.ok && vereadores.rows.length > 0 ? (
               <p className="mt-3 text-sm text-text-soft">
                 <strong className="font-tabular text-text">{vereadores.rows.length}</strong>{" "}
-                vereadores da 20ª Legislatura (2025-2028), com proposições,
+                vereadores da {rotuloLegislatura(cidade)}, com proposições,
                 votos e verbas indenizatórias.
               </p>
             ) : (
@@ -531,7 +545,7 @@ export default async function HomePage({
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {BETIM_EM_DADOS.map((item) => (
+            {ATALHOS_EM_DADOS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -643,7 +657,9 @@ export default async function HomePage({
             Explore o portal
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {explorar(cidade).map((item) => (
+            {explorar(cidade)
+              .filter((item) => !item.fonte || temFonte(cidade, item.fonte))
+              .map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

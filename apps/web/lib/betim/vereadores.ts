@@ -40,6 +40,16 @@ export interface DiariaRow {
   motivo: string | null;
 }
 
+/**
+ * Rótulo por tipo de proposição.
+ *
+ * Cada câmara tem o seu conjunto: os seis primeiros vieram de Betim, e
+ * `projeto_decreto_legislativo`/`emenda_lei_organica` entraram com São
+ * Paulo (232 e 16 linhas). Tipo ausente daqui renderiza o SLUG CRU na tela
+ * ("projeto_decreto_legislativo") — não quebra, mas vaza nome de banco para
+ * o leitor. Ao ligar uma câmara nova, confira os tipos distintos que o ETL
+ * gravou antes de publicar.
+ */
 export const TIPO_PROPOSICAO_LABELS: Record<string, string> = {
   indicacao: "Indicação",
   projeto_lei: "Projeto de Lei",
@@ -47,6 +57,14 @@ export const TIPO_PROPOSICAO_LABELS: Record<string, string> = {
   requerimento: "Requerimento",
   emenda: "Emenda",
   emenda_loa: "Emenda LOA",
+  projeto_decreto_legislativo: "Projeto de Decreto Legislativo",
+  emenda_lei_organica: "Emenda à Lei Orgânica",
+  // Belo Horizonte
+  mocao: "Moção",
+  proposta_emenda_lei_organica: "Proposta de Emenda à Lei Orgânica",
+  denuncia: "Denúncia",
+  autorizacao: "Autorização",
+  prestacao_contas: "Prestação de Contas",
 };
 
 export async function getProposicoesByVereador(
@@ -169,13 +187,35 @@ export async function getVereadores(
  * com peso 1, mesmo nível de indicação, por serem emendas a proposições já
  * em tramitação (baixo esforço legislativo comparado a um PL do zero).
  */
+/**
+ * Peso de cada tipo no ranking de atuação.
+ *
+ * `emenda_lei_organica` pesa 15 como o Projeto de Lei: altera a Lei
+ * Orgânica do município, que é a norma de hierarquia mais alta que uma
+ * câmara municipal produz — dar-lhe peso menor que um PL inverteria a
+ * ordem que o ranking existe para mostrar.
+ *
+ * `projeto_decreto_legislativo` pesa 6, junto do Projeto de Resolução: os
+ * dois são atos privativos da Câmara com tramitação formal, sem efeito
+ * sobre terceiros.
+ *
+ * Tipo ausente daqui vale `undefined` na soma — não zero. Foi o que
+ * aconteceria com os dois tipos de São Paulo antes desta entrada.
+ */
 export const PESO_PROPOSICAO: Record<string, number> = {
   projeto_lei: 15,
+  emenda_lei_organica: 15,
+  proposta_emenda_lei_organica: 15,
   projeto_resolucao: 6,
+  projeto_decreto_legislativo: 6,
   requerimento: 2,
+  denuncia: 2,
   indicacao: 1,
   emenda: 1,
   emenda_loa: 1,
+  mocao: 1,
+  autorizacao: 1,
+  prestacao_contas: 1,
 };
 
 /**
@@ -206,7 +246,7 @@ export const PROPOSICAO_TIERS: ProposicaoTier[] = [
     label: "Projeto de Lei",
     labelCurto: "proj. de lei",
     peso: 15,
-    tipos: ["projeto_lei"],
+    tipos: ["projeto_lei", "emenda_lei_organica", "proposta_emenda_lei_organica"],
     explicacao: "Pode virar norma que obriga toda a cidade — o maior esforço legislativo.",
   },
   {
@@ -214,7 +254,7 @@ export const PROPOSICAO_TIERS: ProposicaoTier[] = [
     label: "Projeto de Resolução",
     labelCurto: "resolução",
     peso: 6,
-    tipos: ["projeto_resolucao"],
+    tipos: ["projeto_resolucao", "projeto_decreto_legislativo"],
     explicacao: "Norma interna da própria Câmara, com tramitação formal.",
   },
   {
@@ -222,15 +262,22 @@ export const PROPOSICAO_TIERS: ProposicaoTier[] = [
     label: "Requerimento",
     labelCurto: "requerimento",
     peso: 2,
-    tipos: ["requerimento"],
+    tipos: ["requerimento", "denuncia"],
     explicacao: "Pedido formal de informação ou providência, votado em plenário.",
   },
   {
     slot: 4,
-    label: "Indicação e Emenda",
-    labelCurto: "indicação/emenda",
+    label: "Indicação, Moção e Emenda",
+    labelCurto: "indicação/moção",
     peso: 1,
-    tipos: ["indicacao", "emenda", "emenda_loa"],
+    tipos: [
+      "indicacao",
+      "emenda",
+      "emenda_loa",
+      "mocao",
+      "autorizacao",
+      "prestacao_contas",
+    ],
     explicacao: "Sugestão ao Executivo ou ajuste em proposta alheia — sem força de lei.",
   },
 ];

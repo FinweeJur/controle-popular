@@ -6,6 +6,7 @@ import { TIPO_PROPOSICAO_LABELS } from "@/lib/betim/vereadores";
 import { TEMA_LABELS, TEMAS_ORDENADOS } from "@/lib/betim/temas";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { rotuloLegislatura } from "@/lib/db/queries/municipios";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Proposições da Câmara — ${nomePortal(c)}`,
@@ -29,6 +30,8 @@ export default async function ProposicoesPage({
   searchParams,
 }: ProposicoesPageProps) {
   const cidade = await cidadeDaRota(rotaParams);
+  const sistemaCamara =
+    typeof cidade.fontes?.camara_sistema === "string" ? cidade.fontes.camara_sistema : null;
   const params = await searchParams;
   const page = Math.max(1, Number(params.page) || 1);
 
@@ -86,9 +89,14 @@ export default async function ProposicoesPage({
         Proposições da Câmara
       </h1>
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
-        Projetos de lei, requerimentos, indicações e emendas apresentados na
-        20ª Legislatura (2025-2028), direto do sistema legislativo (PROLEGIS)
-        da Câmara Municipal de {cidade.nome}.
+        {/* "PROLEGIS" é o sistema legislativo de BETIM. Belo Horizonte usa o
+            SIL e São Paulo, o SPLegis — citar o nome errado numa página que
+            se propõe a dizer de onde o dado vem é pior que não citar. O nome
+            vem de `municipios.fontes.camara_sistema`. */}
+        Projetos de lei, requerimentos, indicações e emendas apresentados na{" "}
+        {rotuloLegislatura(cidade)}, direto do sistema legislativo
+        {sistemaCamara ? ` (${sistemaCamara})` : ""} da Câmara Municipal de{" "}
+        {cidade.nome}.
       </p>
 
       <form
