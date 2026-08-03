@@ -1,20 +1,36 @@
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
+import TabelaScroll from "@/app/[municipio]/components/TabelaScroll";
 import RankingVereadores from "@/app/[municipio]/components/charts/RankingVereadores";
 import ComoFuncionaPontuacao from "@/app/[municipio]/components/charts/ComoFuncionaPontuacao";
 import ComposicaoCamara from "@/app/[municipio]/components/charts/ComposicaoCamara";
 import AreasAtuacao from "@/app/[municipio]/components/charts/AreasAtuacao";
 import { getVereadores, getRankingVereadores } from "@/lib/betim/vereadores";
 import { getTemasCamara } from "@/lib/betim/temas";
-import { getVerbasAnalytics } from "@/lib/betim/verbas";
+import { getGastoGabineteDaCasa, getVerbasAnalytics } from "@/lib/betim/verbas";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
-import { rotuloLegislatura } from "@/lib/db/queries/municipios";
+import { rotuloLegislatura, type Cidade } from "@/lib/db/queries/municipios";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Câmara Municipal — ${nomePortal(c)}`,
   (c) => `Vereadores da ${rotuloLegislatura(c)} de ${c.nome}-${c.uf}.`
 );
+
+/**
+ * Rótulo e URL da Câmara da cidade, para o `source` dos cards.
+ *
+ * Estava escrito à mão como `{ label: "Câmara de Betim", url:
+ * "https://www.camarabetim.mg.gov.br" }` em 11 lugares — ou seja, a página
+ * de um vereador de Belo Horizonte creditava a Câmara de Betim e linkava
+ * para o site dela. Numa tela cujo propósito é dizer de onde o número veio,
+ * essa é a linha que menos pode estar errada.
+ */
+function fonteDaCamara(cidade: Cidade) {
+  const host =
+    typeof cidade.fontes?.camara_host === "string" ? cidade.fontes.camara_host : undefined;
+  return { label: `Câmara de ${cidade.nome}`, url: host };
+}
 
 export default async function CamaraPage({
   params,
@@ -24,8 +40,10 @@ export default async function CamaraPage({
   const cidade = await cidadeDaRota(params);
   const { rows, ok } = await getVereadores(cidade.id_municipio);
   const verbas = await getVerbasAnalytics(cidade.id_municipio);
+  const gabinetes = await getGastoGabineteDaCasa(cidade.id_municipio);
   const ranking = await getRankingVereadores(cidade.id_municipio);
   const temasCamara = await getTemasCamara(cidade.id_municipio);
+  const fonteCamara = fonteDaCamara(cidade);
   // `camara_youtube` e `camara_sessoes` são gravados em DOIS formatos: uma
   // string simples (Betim, BH) ou um objeto com metadados extras (São
   // Paulo, cujo ETL guarda channel_id e a grade de dias/hora). Ler só o
@@ -123,6 +141,60 @@ export default async function CamaraPage({
       </section>
       )}
 
+      {gabinetes.ok && gabinetes.linhas.length > 0 && (
+        <div className="mb-10" id="gastos-gabinete">
+          <h2 className="mb-1 font-display text-lg font-bold text-text">
+            Quanto o gabinete de cada vereador gastou
+          </h2>
+          <p className="mb-4 max-w-2xl text-sm text-text-soft">
+            {/* O subsídio fica de fora desta tabela de propósito: é igual
+                para todos os vereadores da casa, então incluí-lo somaria a
+                mesma parcela em cada linha e comprimiria justamente a
+                diferença que a tabela existe para mostrar. */}
+            Custeio do gabinete — material de escritório, serviços postais,
+            gráfica e afins. Não inclui o subsídio, que é igual para todos.
+            Ordenado por {gabinetes.anos[0]}.
+          </p>
+          <TabelaScroll>
+            <table className="w-full min-w-[34rem] border-collapse text-sm">
+              <thead>
+                <tr className="border-b border-border text-left">
+                  <th className="py-2 pr-3 font-semibold text-text-soft">Vereador</th>
+                  {gabinetes.anos.map((a) => (
+                    <th key={a} className="py-2 pr-3 text-right font-semibold text-text-soft">
+                      {a}
+                    </th>
+                  ))}
+                  <th className="py-2 text-right font-semibold text-text-soft">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {gabinetes.linhas.map((l) => (
+                  <tr key={l.vereadorId} className="border-b border-border/60">
+                    <td className="py-2 pr-3">
+                      <Link href={`/vereadores/${l.slug}`} className="font-medium text-text hover:text-primary">
+                        {l.nome}
+                      </Link>
+                      {l.partido && (
+                        <span className="ml-1.5 text-[.8em] text-text-soft">{l.partido}</span>
+                      )}
+                    </td>
+                    {gabinetes.anos.map((a) => (
+                      <td key={a} className="py-2 pr-3 text-right font-tabular text-text-soft">
+                        {l.porAno[a] != null ? formatCurrencyBRL(l.porAno[a]) : "—"}
+                      </td>
+                    ))}
+                    <td className="py-2 text-right font-tabular font-semibold text-text">
+                      {formatCurrencyBRL(l.total)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </TabelaScroll>
+        </div>
+      )}
+
       {verbas.ok && verbas.totalRegistros > 0 && (
         <div className="mb-10">
           <h2 className="mb-1 font-display text-lg font-bold text-text">
@@ -135,7 +207,7 @@ export default async function CamaraPage({
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <DataCard
               title="Gastos por tema"
-              source={{ label: "Câmara de Betim", url: "https://www.camarabetim.mg.gov.br" }}
+              source={fonteCamara}
             >
               <ul className="divide-y divide-border/60">
                 {verbas.gastosPorTema.map((item) => (
@@ -153,7 +225,7 @@ export default async function CamaraPage({
             </DataCard>
             <DataCard
               title="Top 5 fornecedores que mais receberam"
-              source={{ label: "Câmara de Betim", url: "https://www.camarabetim.mg.gov.br" }}
+              source={fonteCamara}
             >
               <ul className="divide-y divide-border/60">
                 {verbas.topFornecedores.map((item) => (
@@ -187,13 +259,13 @@ export default async function CamaraPage({
           <div className="mb-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
             <DataCard
               title="Como a pontuação é calculada"
-              source={{ label: "Câmara de Betim", url: "https://www.camarabetim.mg.gov.br" }}
+              source={fonteCamara}
             >
               <ComoFuncionaPontuacao />
             </DataCard>
             <DataCard
               title="O que a Câmara produziu — volume x peso"
-              source={{ label: "Câmara de Betim", url: "https://www.camarabetim.mg.gov.br" }}
+              source={fonteCamara}
             >
               <p className="mb-4 text-sm">
                 As mesmas proposições contadas de dois jeitos — por
@@ -209,7 +281,7 @@ export default async function CamaraPage({
             <div className="mb-6">
               <DataCard
                 title="Áreas de atuação da Câmara — sobre o que os vereadores legislam"
-                source={{ label: "Câmara de Betim", url: "https://www.camarabetim.mg.gov.br" }}
+                source={fonteCamara}
               >
                 <p className="mb-3 text-sm">
                   Em quantas proposições cada área aparece, somando os 23

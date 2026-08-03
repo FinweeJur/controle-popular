@@ -55,6 +55,7 @@ import {
   bens_candidato,
   seguranca_ocorrencias,
   servidores,
+  subsidios,
   verbas_indenizatorias,
   vereadores,
   zap_estabelecimentos,
@@ -237,6 +238,100 @@ export async function verbasIndenizatorias(idMunicipio: IdMunicipio, vereadorId?
     })
     .from(verbas_indenizatorias)
     .where(and(...cond));
+}
+
+/**
+ * Subsídio mais recente de um vereador — o quanto ele recebe por mês.
+ *
+ * `subsidios` é uma série por competência, mas o subsídio de vereador é
+ * fixado por lei e muda uma vez por legislatura, então o que interessa na
+ * tela é a última linha, não o histórico.
+ */
+export async function subsidioAtual(idMunicipio: IdMunicipio, vereadorId: string) {
+  const db = getDb();
+  if (!db) return null;
+  const linhas = await db
+    .select({
+      competencia: subsidios.competencia,
+      valor_bruto: num(subsidios.valor_bruto),
+      verbas_extras: num(subsidios.verbas_extras),
+      fonte: subsidios.fonte,
+    })
+    .from(subsidios)
+    .where(and(eq(subsidios.id_municipio, idMunicipio), eq(subsidios.vereador_id, vereadorId)))
+    .orderBy(desc(subsidios.competencia))
+    .limit(1);
+  return linhas[0] ?? null;
+}
+
+/**
+ * Custeio/verba do gabinete somado POR ANO.
+ *
+ * A agregação é no banco, não em JS: `getVerbasAnalytics` puxa todas as
+ * linhas e reduz no cliente, o que é aceitável para os 43 registros de
+ * Betim e deixa de ser quando a mesma tela roda para Belo Horizonte (834
+ * hoje, crescendo todo mês) ou São Paulo (9.117). Aqui só descem quatro
+ * linhas, uma por ano.
+ *
+ * `date_trunc` em vez de `extract` porque a coluna é `date` e o ano tem de
+ * sair como número para ordenar — a conversão explícita evita depender do
+ * tipo que o driver escolhe.
+ */
+export async function verbasPorAno(idMunicipio: IdMunicipio, vereadorId: string) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      ano: sql<number>`extract(year from ${verbas_indenizatorias.data})::int`,
+      total: sql<number>`coalesce(sum(${verbas_indenizatorias.valor}), 0)::float8`,
+      qtd: sql<number>`count(*)::int`,
+    })
+    .from(verbas_indenizatorias)
+    .where(
+      and(
+        eq(verbas_indenizatorias.id_municipio, idMunicipio),
+        eq(verbas_indenizatorias.vereador_id, vereadorId),
+        isNotNull(verbas_indenizatorias.data)
+      )
+    )
+    .groupBy(sql`extract(year from ${verbas_indenizatorias.data})`)
+    .orderBy(sql`extract(year from ${verbas_indenizatorias.data}) desc`);
+}
+
+/**
+ * Custeio do gabinete por vereador e por ano, para a casa inteira.
+ *
+ * Uma consulta só, agregada no banco. A alternativa seria chamar
+ * `verbasPorAno` 41 vezes (55 em São Paulo) — e a página da Câmara já faz
+ * cinco consultas antes desta.
+ */
+export async function verbasPorVereadorPorAno(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      vereador_id: verbas_indenizatorias.vereador_id,
+      nome: vereadores.nome_urna,
+      slug: vereadores.slug,
+      partido: vereadores.partido,
+      ano: sql<number>`extract(year from ${verbas_indenizatorias.data})::int`,
+      total: sql<number>`coalesce(sum(${verbas_indenizatorias.valor}), 0)::float8`,
+    })
+    .from(verbas_indenizatorias)
+    .innerJoin(vereadores, eq(vereadores.id, verbas_indenizatorias.vereador_id))
+    .where(
+      and(
+        eq(verbas_indenizatorias.id_municipio, idMunicipio),
+        isNotNull(verbas_indenizatorias.data)
+      )
+    )
+    .groupBy(
+      verbas_indenizatorias.vereador_id,
+      vereadores.nome_urna,
+      vereadores.slug,
+      vereadores.partido,
+      sql`extract(year from ${verbas_indenizatorias.data})`
+    );
 }
 
 export async function notaTransparencia(idMunicipio: IdMunicipio) {

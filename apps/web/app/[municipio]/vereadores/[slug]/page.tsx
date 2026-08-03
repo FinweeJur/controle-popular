@@ -14,9 +14,9 @@ import {
   getVereadores,
   TIPO_PROPOSICAO_LABELS,
 } from "@/lib/betim/vereadores";
-import { listarCidades, rotuloLegislatura } from "@/lib/db/queries/municipios";
+import { listarCidades, rotuloLegislatura, type Cidade } from "@/lib/db/queries/municipios";
 import { getTemasVereador, TEMA_LABELS } from "@/lib/betim/temas";
-import { getVerbasAnalytics } from "@/lib/betim/verbas";
+import { getCustoVereador, getVerbasAnalytics } from "@/lib/betim/verbas";
 import { getParticipacoesByVereador } from "@/lib/betim/comissoes";
 import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, nomePortal } from "@/lib/betim/cidade";
@@ -42,6 +42,21 @@ interface VereadorPageProps {
  * `generateStaticParams` do layout porque os dois rodam independentes; são
  * poucas dezenas de linhas e o Next resolve uma vez por build.
  */
+/**
+ * Rótulo e URL da Câmara da cidade, para o `source` dos cards.
+ *
+ * Estava escrito à mão como `{ label: "Câmara de Betim", url:
+ * "https://www.camarabetim.mg.gov.br" }` em 11 lugares — ou seja, a página
+ * de um vereador de Belo Horizonte creditava a Câmara de Betim e linkava
+ * para o site dela. Numa tela cujo propósito é dizer de onde o número veio,
+ * essa é a linha que menos pode estar errada.
+ */
+function fonteDaCamara(cidade: Cidade) {
+  const host =
+    typeof cidade.fontes?.camara_host === "string" ? cidade.fontes.camara_host : undefined;
+  return { label: `Câmara de ${cidade.nome}`, url: host };
+}
+
 export async function generateStaticParams() {
   const cidades = await listarCidades();
   const pares: { municipio: string; slug: string }[] = [];
@@ -71,7 +86,7 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
 
   if (ok && !row) notFound();
 
-  const [proposicoes, diarias, doacoes, bens, verbas, ranking, temasVereador, comissoes] = row
+  const [proposicoes, diarias, doacoes, bens, verbas, ranking, temasVereador, comissoes, custo] = row
     ? await Promise.all([
         getProposicoesByVereador(cidade.id_municipio, row.id, tema),
         getDiariasByVereador(cidade.id_municipio, row.id),
@@ -91,6 +106,7 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
         getRankingVereadores(cidade.id_municipio),
         getTemasVereador(cidade.id_municipio, row.id),
         getParticipacoesByVereador(cidade.id_municipio, row.id),
+        getCustoVereador(cidade.id_municipio, row.id),
       ])
     : [
         { rows: [], total: 0, ok: false },
@@ -101,7 +117,26 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
         { rows: [], totaisPorTipo: {}, ok: false },
         { temas: [], ok: false },
         { andamento: [], finalizadas: [], ok: false },
+        {
+          mensalBruto: null,
+          mensalExtras: null,
+          competencia: null,
+          fonteSubsidio: null,
+          gastoPorAno: [],
+          ok: false,
+        },
       ];
+  const fonteCamara = fonteDaCamara(cidade);
+  // Quantos vereadores a casa tem — para dizer "o mesmo para todos os 41"
+  // sem número escrito à mão (Betim tem 23, BH 41, São Paulo 55).
+  const vereadoresDaCasa = ranking.rows.length || null;
+  // O ano corrente aparece no gráfico com o valor acumulado até agora, o que
+  // faz a última barra parecer uma queda. Dizer isso é mais honesto que
+  // esconder o ano.
+  const anoCorrente = new Date().getFullYear();
+  const anoParcial = custo.gastoPorAno.some((a) => a.ano === anoCorrente)
+    ? anoCorrente
+    : null;
 
   // "Cobrar vereador" — mailto pré-preenchido (Ação cidadã, plan §10.1):
   // reaproveita o e-mail e os temas de atuação já carregados acima, sem
@@ -182,7 +217,7 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
             <DataCard
               title="Mandato atual"
-              source={{ label: "Câmara de Betim", url: "https://www.camarabetim.mg.gov.br" }}
+              source={fonteCamara}
             >
               <p className="text-text">
                 {formatDateBR(row.mandato_inicio)} – {formatDateBR(row.mandato_fim)}
@@ -190,7 +225,7 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
             </DataCard>
             <DataCard
               title="Contato"
-              source={{ label: "Câmara de Betim", url: "https://www.camarabetim.mg.gov.br" }}
+              source={fonteCamara}
             >
               <p className="text-text">{row.email ?? "—"}</p>
               {mailtoCobrar && (
@@ -206,6 +241,88 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
                 cita a área de atuação dele — é só escrever sua pergunta.
               </p>
             </DataCard>
+            {(custo.mensalBruto != null || custo.gastoPorAno.length > 0) && (
+              <DataCard
+                title="Quanto custa este mandato"
+                className="sm:col-span-2"
+                source={
+                  custo.fonteSubsidio
+                    ? { label: `Câmara de ${cidade.nome}`, url: custo.fonteSubsidio }
+                    : fonteCamara
+                }
+              >
+                {/* Duas naturezas, dois blocos. O subsídio é remuneração
+                    pessoal fixada em lei e IGUAL para todos os vereadores da
+                    casa — comparar parlamentares por ele não diz nada. O
+                    custeio é despesa do gabinete e varia muito entre eles: é
+                    ali que a comparação tem sentido. Somar os dois num
+                    "custo total" esconderia justamente a parte que
+                    distingue um vereador do outro. */}
+                <div className="grid gap-5 sm:grid-cols-2">
+                  {custo.mensalBruto != null && (
+                    <div>
+                      <p className="text-xs font-semibold tracking-wide text-text-soft uppercase">
+                        Recebe por mês
+                      </p>
+                      <p className="font-tabular text-2xl font-bold text-text">
+                        {formatCurrencyBRL(custo.mensalBruto)}
+                      </p>
+                      <p className="text-xs text-text-soft">
+                        subsídio bruto, antes dos descontos
+                      </p>
+                      {custo.mensalExtras != null && custo.mensalExtras > 0 && (
+                        <p className="mt-1.5 text-xs text-text-soft">
+                          + {formatCurrencyBRL(custo.mensalExtras)} de verbas
+                          fixas (auxílio-alimentação)
+                        </p>
+                      )}
+                      {custo.competencia && (
+                        <p className="mt-1.5 text-[.75em] text-text-soft">
+                          Valor vigente em {formatDateBR(custo.competencia).slice(3)}. É
+                          o mesmo para todos os {vereadoresDaCasa} vereadores — fixado
+                          por lei, não por desempenho.
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  {custo.gastoPorAno.length > 0 && (
+                    <div>
+                      <p className="text-xs font-semibold tracking-wide text-text-soft uppercase">
+                        Gabinete gastou
+                      </p>
+                      <ul className="mt-1 flex flex-col gap-2">
+                        {custo.gastoPorAno.map((a) => (
+                          <li key={a.ano} className="flex items-baseline justify-between gap-3">
+                            <span className="font-tabular text-sm text-text-soft">{a.ano}</span>
+                            <span className="flex-1 border-b border-dotted border-border" />
+                            <span className="font-tabular text-base font-semibold text-text">
+                              {formatCurrencyBRL(a.total)}
+                            </span>
+                            <span className="text-[.75em] text-text-soft">
+                              {formatNumberBR(a.qtd)} desp.
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="mt-2 text-[.75em] text-text-soft">
+                        Custeio do gabinete: material de escritório, serviços
+                        postais, gráfica e afins.{" "}
+                        {anoParcial != null && (
+                          <>O ano de {anoParcial} ainda está em curso.</>
+                        )}
+                      </p>
+                      <Link
+                        href="/camara#gastos-gabinete"
+                        className="mt-2 inline-block text-xs font-medium text-accent hover:underline"
+                      >
+                        Comparar com os outros vereadores →
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </DataCard>
+            )}
             {row.votos_eleicao != null && (
               <DataCard
                 title={`Votos na eleição de ${row.ano_eleicao ?? ""}`}
@@ -309,7 +426,7 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
             <div className="mt-8">
               <DataCard
                 title="Atuação legislativa — de onde vem a pontuação"
-                source={{ label: "Câmara de Betim", url: "https://www.camarabetim.mg.gov.br" }}
+                source={fonteCamara}
               >
                 <div className="mb-3">
                   <OrdinalLegend />
@@ -323,7 +440,7 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
             <div className="mt-8">
               <DataCard
                 title="Áreas de atuação — sobre o que ele legisla"
-                source={{ label: "Câmara de Betim", url: "https://www.camarabetim.mg.gov.br" }}
+                source={fonteCamara}
               >
                 <p className="mb-3 text-sm">
                   Em quantas proposições cada área aparece (uma proposição
@@ -447,7 +564,7 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
               </p>
               <DataCard
                 title="Gastos por tema"
-                source={{ label: "Câmara de Betim", url: "https://www.camarabetim.mg.gov.br" }}
+                source={fonteCamara}
               >
                 <ul className="divide-y divide-border/60">
                   {verbas.gastosPorTema.map((item) => (

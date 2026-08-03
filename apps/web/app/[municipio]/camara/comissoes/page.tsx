@@ -2,6 +2,15 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { getComissoesAtuais } from "@/lib/betim/comissoes";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import type { Cidade } from "@/lib/db/queries/municipios";
+
+/** Ver `fonteDaCamara` em `camara/page.tsx`: o crédito era "Câmara de Betim"
+ *  fixo, inclusive nas páginas de BH e São Paulo. */
+function fonteDaCamara(cidade: Cidade) {
+  const host =
+    typeof cidade.fontes?.camara_host === "string" ? cidade.fontes.camara_host : undefined;
+  return { label: `Câmara de ${cidade.nome}`, url: host };
+}
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Comissões — Câmara Municipal de ${c.nome} | ${nomePortal(c)}`,
@@ -14,6 +23,7 @@ export default async function ComissoesPage({
   params: Promise<{ municipio: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
+  const fonteCamara = fonteDaCamara(cidade);
   const { rows, ok } = await getComissoesAtuais(cidade.id_municipio);
   const permanentes = rows.filter((c) => !c.especial);
   const especiais = rows.filter((c) => c.especial);
@@ -48,7 +58,7 @@ export default async function ComissoesPage({
         <>
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
             {permanentes.map((c) => (
-              <ComissaoCard key={c.id} comissao={c} />
+              <ComissaoCard fonteCamara={fonteCamara} key={c.id} comissao={c} />
             ))}
           </div>
 
@@ -63,7 +73,7 @@ export default async function ComissoesPage({
               </p>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {especiais.map((c) => (
-                  <ComissaoCard key={c.id} comissao={c} />
+                  <ComissaoCard fonteCamara={fonteCamara} key={c.id} comissao={c} />
                 ))}
               </div>
             </div>
@@ -76,13 +86,15 @@ export default async function ComissoesPage({
 
 function ComissaoCard({
   comissao,
+  fonteCamara,
 }: {
   comissao: Awaited<ReturnType<typeof getComissoesAtuais>>["rows"][number];
+  fonteCamara: ReturnType<typeof fonteDaCamara>;
 }) {
   return (
     <DataCard
       title={comissao.nome}
-      source={{ label: "Câmara de Betim", url: "https://www.camarabetim.mg.gov.br" }}
+      source={fonteCamara}
     >
       <ul className="flex flex-col gap-1.5">
         {comissao.presidente && (
