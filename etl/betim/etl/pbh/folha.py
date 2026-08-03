@@ -65,6 +65,19 @@ def _orgao(r: dict) -> str:
 
     O código numérico entra como sufixo quando a lotação vem vazia (28 de
     300), para que essas linhas não se misturem entre si nem sumam.
+
+    LIMITAÇÃO CONHECIDA, para quem for construir a tela. Lotação é fina
+    demais para ser lida como "órgão": dão 2.251 valores distintos por
+    competência, e as 20 maiores somam só 33% da folha — um "top 20 órgãos"
+    mostraria um terço do gasto e pareceria completo. O nível de ENTIDADE
+    existe em `EntOrgCodigo` e são uns 12-17 valores (2 = administração
+    direta, 15 = aposentados/FUFIN, 6 = limpeza urbana, 13 = Prodabel), mas
+    **o endpoint não devolve o nome de nenhum deles** — só o número. Batizar
+    esses códigos a partir da lotação mais frequente de cada um daria
+    rótulos errados ("Órgão 15" viraria "Pessoal Aposentado").
+    Enquanto não houver uma tabela de-para de fonte oficial, a agregação
+    honesta é esta: por lotação, que é o que a fonte de fato informa. A tela
+    deve agrupar ou paginar, não fingir que 20 linhas cobrem a folha.
     """
     lotacao = (r.get("FolhaServLotacao") or "").strip()
     if lotacao:
