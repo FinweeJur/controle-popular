@@ -12,6 +12,12 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 
 PAGE_SIZE = 1000
 
+# Teto de placeholders de um INSERT do Postgres é 65.535. A margem existe
+# porque o cálculo do lote usa o número de colunas do LOTE, e uma linha com
+# uma coluna extra (o padrão `upsert_com_colunas_opcionais`) mudaria a conta
+# no meio.
+_TETO_PLACEHOLDERS = 60_000
+
 
 # Schema Postgres deste app. O banco (Neon) é COMPARTILHADO com o
 # /congresso e o /judiciario, que vivem em schemas próprios; as tabelas
@@ -336,21 +342,47 @@ class _QueryBuilder:
                     cols = sorted({k for r in rows for k in r.keys()})
                     col_list = ", ".join(f'"{c}"' for c in cols)
                     placeholder_row = "(" + ", ".join(["%s"] * len(cols)) + ")"
-                    values_sql = ", ".join([placeholder_row] * len(rows))
-                    params = [_adapt(r.get(c)) for r in rows for c in cols]
-                    sql = f"INSERT INTO {qualified} ({col_list}) VALUES {values_sql}"
+
+                    sufixo = ""
                     if self._op == "upsert" and self._on_conflict:
                         conflito_cols = [c.strip() for c in self._on_conflict.split(",")]
                         conflito_sql = ", ".join(f'"{c}"' for c in conflito_cols)
                         update_cols = [c for c in cols if c not in conflito_cols]
                         if update_cols:
                             set_sql = ", ".join(f'"{c}" = EXCLUDED."{c}"' for c in update_cols)
-                            sql += f" ON CONFLICT ({conflito_sql}) DO UPDATE SET {set_sql}"
+                            sufixo = f" ON CONFLICT ({conflito_sql}) DO UPDATE SET {set_sql}"
                         else:
-                            sql += f" ON CONFLICT ({conflito_sql}) DO NOTHING"
-                    sql += " RETURNING *"
-                    cur.execute(sql, params)
-                    return _Response(_rows_out(cur.fetchall()))
+                            sufixo = f" ON CONFLICT ({conflito_sql}) DO NOTHING"
+
+                    # FATIAMENTO AUTOMÁTICO. Um INSERT do Postgres aceita no
+                    # máximo 65.535 placeholders, e o adapter montava uma
+                    # instrução só com todas as linhas — o que funcionava
+                    # enquanto as tabelas tinham o tamanho de Betim e passou a
+                    # estourar em São Paulo: `bd.inep` (escolas) e `bd.cnes`
+                    # (estabelecimentos de saúde) morreram com "number of
+                    # parameters must be between 0 and 65535" e não gravaram
+                    # NADA — nem as primeiras 65 mil.
+                    #
+                    # Cada módulo poderia fatiar por conta própria (alguns já
+                    # fazem), mas isso é conhecimento sobre o TRANSPORTE, não
+                    # sobre a fonte de dado: espalhá-lo por ~30 módulos
+                    # garante que o próximo a crescer descubra do mesmo jeito.
+                    # O teto por lote sai do número real de colunas, então
+                    # tabela larga fatia mais fino sozinha.
+                    por_lote = max(1, _TETO_PLACEHOLDERS // max(1, len(cols)))
+                    saida: list[dict] = []
+                    for i in range(0, len(rows), por_lote):
+                        fatia = rows[i : i + por_lote]
+                        values_sql = ", ".join([placeholder_row] * len(fatia))
+                        params = [_adapt(r.get(c)) for r in fatia for c in cols]
+                        sql = (
+                            f"INSERT INTO {qualified} ({col_list}) VALUES {values_sql}"
+                            + sufixo
+                            + " RETURNING *"
+                        )
+                        cur.execute(sql, params)
+                        saida.extend(_rows_out(cur.fetchall()))
+                    return _Response(saida)
         except UndefinedColumn as e:
             raise PgAPIError("42703", str(e)) from e
         except UndefinedTable as e:
