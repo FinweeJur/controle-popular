@@ -19,12 +19,15 @@ import {
  * 2026-07-24: "quero que as supáginas presentes em dados apareçam
  * também... assim que o mouse passar por dados").
  *
- * Virou FUNÇÃO da cidade por causa da "Nota Betim": o rótulo carrega o
- * nome do município. A ROTA continua `/nota-betim` — renomeá-la mudaria
- * uma das 54 URLs já indexadas de Betim, o que é decisão separada (o
- * plano previa o rename; o commit que criou `[municipio]` optou por
- * preservar as URLs). Então, em outra cidade, o rótulo fica certo e a
- * URL fica esquisita.
+ * Virou FUNÇÃO da cidade por causa da "Nota <Cidade>": o rótulo carrega o
+ * nome do município.
+ *
+ * A rota era `/nota-betim` e virou `/nota-transparencia` quando BH e São
+ * Paulo entraram — `/sp/nota-betim` não é URL defensável num portal de São
+ * Paulo, e o mesmo valeu para `/zap-betim` → `/zap`. As duas URLs antigas
+ * estavam indexadas, então sobrevivem como páginas-ponte (`noindex` +
+ * canonical + meta refresh) que só existem para Betim; ver
+ * `app/[municipio]/nota-betim/page.tsx`.
  */
 export const paginasDados = (cidade: {
   nome: string;
@@ -43,6 +46,6 @@ export const paginasDados = (cidade: {
     desc: "Convênios e verbas federais recebidos",
     icon: Landmark,
   },
-  { href: "/nota-betim", nome: `Nota ${cidade.nome}`, desc: "Ranking de transparência (PNTP)", icon: BadgeDollarSign },
+  { href: "/nota-transparencia", nome: `Nota ${cidade.nome}`, desc: "Ranking de transparência (PNTP)", icon: BadgeDollarSign },
   { href: "/grupos-economicos", nome: "Grupos econômicos", desc: "Fornecedores que dividem sócios", icon: Network },
 ];

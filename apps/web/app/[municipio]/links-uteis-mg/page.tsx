@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+import { temFonte } from "@/lib/db/queries/municipios";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 export const generateMetadata = metadataDaCidade(
@@ -105,6 +107,9 @@ export default async function LinksUteisMGPage({
   params: Promise<{ municipio: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
+  // Os links são de órgãos de Minas Gerais. Em São Paulo a página existiria
+  // apontando para a Sejusp e o MPMG errados — pior que não existir.
+  if (!temFonte(cidade, "links_uteis_mg")) notFound();
   return (
     <main className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">

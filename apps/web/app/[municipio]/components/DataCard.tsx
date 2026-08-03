@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useNomePortal } from "@/lib/betim/cidade-cliente";
+import { useCidade, useNomePortal } from "@/lib/betim/cidade-cliente";
 
 export interface DataCardSource {
   label: string;
@@ -30,6 +30,7 @@ export default function DataCard({
   className,
 }: DataCardProps) {
   const nomePortal = useNomePortal();
+  const cidade = useCidade();
   const [copied, setCopied] = useState(false);
 
   function getShareUrl() {
@@ -71,8 +72,11 @@ export default function DataCard({
     // markup never encodes window.location.href — computing it during SSR
     // (where window is undefined) vs. hydration (where it's real) is a
     // classic hydration mismatch, confirmed live in this component.
+    // `controlepopular.br/betim` estava fixo aqui: compartilhar um card de
+    // Belo Horizonte pelo WhatsApp anunciava o endereço de Betim. O domínio
+    // por cidade mora em `municipios.dominio`, que o provider já entrega.
     const url = `https://wa.me/?text=${encodeURIComponent(
-      `${title} — controlepopular.br/betim ${getShareUrl()}`
+      `${title} — ${cidade.dominio ?? "controlepopular.br"} ${getShareUrl()}`
     )}`;
     window.open(url, "_blank", "noopener,noreferrer");
   }

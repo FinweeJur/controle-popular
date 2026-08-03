@@ -1,7 +1,9 @@
+import { notFound } from "next/navigation";
+import { temFonte } from "@/lib/db/queries/municipios";
 import Link from "@/lib/betim/link";
 import { fetchZapEstabelecimentos } from "@/lib/betim/zap";
 import { fetchPostosAnp } from "@/lib/betim/postos";
-import ZapCard from "@/app/[municipio]/zap-betim/ZapCard";
+import ZapCard from "@/app/[municipio]/zap/ZapCard";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 export const generateMetadata = metadataDaCidade(
@@ -69,6 +71,9 @@ export default async function CitrolandiaPage({
   params: Promise<{ municipio: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
+  // Citrolândia é uma regional de Betim. Sem esta porta, BH e São Paulo
+  // ganhariam `/bh/citrolandia` com a lista de bairros de outra cidade.
+  if (!temFonte(cidade, "citrolandia")) notFound();
   const [{ rows, configured }, { rows: postos }] = await Promise.all([
     fetchZapEstabelecimentos(cidade.id_municipio, { bairros: BAIRROS_CONFIRMADOS }),
     fetchPostosAnp(cidade.id_municipio, undefined, BAIRROS_CONFIRMADOS),
@@ -82,7 +87,7 @@ export default async function CitrolandiaPage({
       <p className="mt-2 max-w-[65ch] text-text-soft">
         Citrolândia é uma das 10 regionais administrativas de {cidade.nome}, com 44
         bairros ao todo. Aqui reunimos os negócios locais cadastrados no{" "}
-        <Link href="/zap-betim" className="font-medium text-accent hover:underline">
+        <Link href="/zap" className="font-medium text-accent hover:underline">
           Zap {cidade.nome}
         </Link>{" "}
         que informaram um desses bairros.
@@ -159,7 +164,7 @@ export default async function CitrolandiaPage({
                 ? "Nenhum negócio dessa região cadastrado ainda. Seja o primeiro:"
                 : "Nenhum dado disponível no momento."}{" "}
               {configured ? (
-                <Link href="/zap-betim" className="font-medium text-accent hover:underline">
+                <Link href="/zap" className="font-medium text-accent hover:underline">
                   cadastre seu negócio →
                 </Link>
               ) : null}

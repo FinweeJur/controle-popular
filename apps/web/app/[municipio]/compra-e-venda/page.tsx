@@ -63,7 +63,7 @@ export default async function CompraEVendaPage({
         {rows.length > 0 ? (
           rows.map((item) => {
             const waUrl = `https://wa.me/${item.contato_whatsapp}?text=${encodeURIComponent(
-              `Olá! Vi seu anúncio "${item.titulo}" no Compra e Venda (controlepopular.br/betim).`
+              `Olá! Vi seu anúncio "${item.titulo}" no Compra e Venda (${cidade.dominio ?? "controlepopular.br"}).`
             )}`;
             return (
               <a

@@ -1,5 +1,6 @@
 import Link from "@/lib/betim/link";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { temFonte, type Cidade } from "@/lib/db/queries/municipios";
 import {
   MessageCircle,
   MapPin,
@@ -20,18 +21,32 @@ export const generateMetadata = metadataDaCidade(
   (c) => `Zap ${c.nome}, Compra e Venda, coleta de lixo, farmácias de plantão, postos de combustível e clima.`
 );
 
-const servicos = (cidade: { nome: string }): { href: string; nome: string; desc: string; icon: LucideIcon }[] => [
-  { href: "/zap-betim", nome: `Zap ${cidade.nome}`, desc: "Cadastro de negócios locais no WhatsApp", icon: MessageCircle },
-  { href: "/citrolandia", nome: "Citrolândia", desc: "Bairros da região e negócios locais", icon: MapPin },
+/**
+ * `fonte` é a chave de `municipios.fontes` que decide se o item existe
+ * naquela cidade. Sem ela o card apareceria para todo mundo e levaria a um
+ * 404 — os `notFound()` das páginas em questão já estão lá, e um menu que
+ * aponta para 404 é pior que um menu curto.
+ */
+type ItemServico = {
+  href: string;
+  nome: string;
+  desc: string;
+  icon: LucideIcon;
+  fonte?: string;
+};
+
+const servicos = (cidade: Cidade): ItemServico[] => [
+  { href: "/zap", nome: `Zap ${cidade.nome}`, desc: "Cadastro de negócios locais no WhatsApp", icon: MessageCircle },
+  { href: "/citrolandia", nome: "Citrolândia", desc: "Bairros da região e negócios locais", icon: MapPin, fonte: "citrolandia" },
   { href: "/compra-e-venda", nome: "Compra e Venda", desc: "Classificados gratuitos", icon: ShoppingBag },
   { href: "/coleta-lixo", nome: "Coleta de Lixo", desc: "Dias por bairro + lembrete no calendário", icon: Trash2 },
   { href: "/plantao-farmacias", nome: "Farmácias de Plantão", desc: "Escala da semana + rota no Waze", icon: Pill },
-  { href: "/supermercados-farmacias", nome: "Supermercados e Farmácias", desc: "Lista pública, Centro e Citrolândia em destaque", icon: ShoppingCart },
+  { href: "/supermercados-farmacias", nome: "Supermercados e Farmácias", desc: "Lista pública de comércios essenciais", icon: ShoppingCart },
   { href: "/postos-combustivel", nome: "Postos de Combustível", desc: "Cadastro ANP com nota de conformidade", icon: Fuel },
   { href: "/clima", nome: "Clima", desc: "Previsão e chuva acumulada", icon: CloudSun },
   { href: "/defesa-civil", nome: "Defesa Civil", desc: "Alertas de chuva forte e emergências", icon: ShieldAlert },
   { href: "/contatos", nome: "Contatos Úteis", desc: "Telefones de emergência e órgãos públicos", icon: Phone },
-  { href: "/links-uteis-mg", nome: "Links Úteis do Estado", desc: "Fontes oficiais de Minas Gerais por tema", icon: Landmark },
+  { href: "/links-uteis-mg", nome: "Links Úteis do Estado", desc: `Fontes oficiais de ${cidade.uf} por tema`, icon: Landmark, fonte: "links_uteis_mg" },
 ];
 
 export default async function ServicosPage({
@@ -50,7 +65,9 @@ export default async function ServicosPage({
       </p>
 
       <section className="mt-8 grid gap-4 sm:grid-cols-2">
-        {servicos(cidade).map((s) => (
+        {servicos(cidade)
+          .filter((s) => !s.fonte || temFonte(cidade, s.fonte))
+          .map((s) => (
           <Link
             key={s.href}
             href={s.href}

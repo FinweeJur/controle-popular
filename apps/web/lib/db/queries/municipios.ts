@@ -51,12 +51,41 @@ export function slugDoNome(nome: string): string {
     .replace(/^-|-$/g, "");
 }
 
+/**
+ * Slug da cidade: `branding.slug` quando existe, senão derivado do nome.
+ *
+ * O slug continua NÃO sendo coluna própria — a razão original (uma coluna
+ * redundante que pode divergir do nome) segue valendo para o caso comum. O
+ * override existe para as duas cidades cuja URL foi fixada antes do código:
+ * a rede foi planejada e anunciada em `/bh` e `/sp`, e derivar do nome daria
+ * `/belo-horizonte` e `/sao-paulo`. Prender o nome exibido à URL seria pior:
+ * o cabeçalho, o `<title>` e o texto das páginas ficariam "BH" em vez de
+ * "Belo Horizonte".
+ *
+ * Quem escreve `branding.slug` assume o mesmo contrato do slug derivado:
+ * minúsculas, sem acento, sem barra — é um segmento de caminho.
+ */
+function slugDaCidade(l: typeof municipios.$inferSelect): string {
+  const branding = l.branding as { slug?: unknown } | null;
+  const override = branding?.slug;
+  return typeof override === "string" && override.trim()
+    ? slugDoNome(override)
+    : slugDoNome(l.nome);
+}
+
 export interface Cidade {
   id_municipio: IdMunicipio;
   slug: string;
   nome: string;
   uf: string;
   cnpj_prefeitura: string | null;
+  /**
+   * Endereço público da cidade — "controlepopular.br/bh". A coluna existia
+   * desde a primeira migration e nunca havia sido lida; enquanto só Betim
+   * existia, os textos de compartilhamento traziam `controlepopular.br/betim`
+   * literal, o que passou a estar errado nas outras duas cidades.
+   */
+  dominio: string | null;
   lat: number | null;
   lng: number | null;
   branding: unknown;
@@ -72,10 +101,11 @@ function paraCidade(l: typeof municipios.$inferSelect): Cidade {
   return {
     // Única origem legítima da marca: a linha da tabela `municipios`.
     id_municipio: comoIdMunicipio(l.id_municipio),
-    slug: slugDoNome(l.nome),
+    slug: slugDaCidade(l),
     nome: l.nome,
     uf: l.uf,
     cnpj_prefeitura: l.cnpj_prefeitura,
+    dominio: l.dominio,
     lat: l.lat === null ? null : Number(l.lat),
     lng: l.lng === null ? null : Number(l.lng),
     branding: l.branding,
@@ -145,6 +175,31 @@ export function nomePortal(cidade: Cidade): string {
   return typeof doBanco === "string" && doBanco.trim()
     ? doBanco
     : `Controle Popular ${cidade.nome}`;
+}
+
+/**
+ * Rótulo da legislatura em curso — "20ª Legislatura (2025-2028)".
+ *
+ * Estava escrito à mão em seis lugares, sempre com o número de Betim. Como
+ * a numeração é POR CÂMARA (Betim está na 20ª, Belo Horizonte e São Paulo
+ * na 19ª), a mesma frase ficava factualmente errada em duas das três
+ * cidades — e errada de um jeito que nenhum teste pega, porque é texto.
+ *
+ * Vem de `municipios.fontes.legislatura` (`{ ordinal, inicio, fim }`).
+ * Sem a chave, devolve só o período, que é o que se pode afirmar sem
+ * inventar número.
+ */
+export function rotuloLegislatura(cidade: Cidade): string {
+  const l = cidade.fontes?.legislatura as
+    | { ordinal?: unknown; inicio?: unknown; fim?: unknown }
+    | undefined;
+  const periodo =
+    typeof l?.inicio === "number" && typeof l?.fim === "number"
+      ? ` (${l.inicio}-${l.fim})`
+      : "";
+  return typeof l?.ordinal === "number"
+    ? `${l.ordinal}ª Legislatura${periodo}`
+    : `Legislatura atual${periodo}`;
 }
 
 /**

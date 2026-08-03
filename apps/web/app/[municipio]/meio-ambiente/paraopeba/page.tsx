@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+import { temFonte } from "@/lib/db/queries/municipios";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
@@ -22,6 +24,10 @@ interface ParaopebaPageProps {
 
 export default async function ParaopebaPage({ params, searchParams }: ParaopebaPageProps) {
   const cidade = await cidadeDaRota(params);
+  // Só municípios signatários do Acordo do Rio Paraopeba. A página já
+  // degradava para "em breve" sem dado, mas "em breve" promete uma coisa
+  // que nunca vai chegar para BH e São Paulo.
+  if (!temFonte(cidade, "paraopeba")) notFound();
   const { status: statusFiltro, ordem } = await searchParams;
   const { configured, ok, saldo, iniciativas } = await getParaopebaData(cidade.id_municipio);
   const temDados = configured && ok && iniciativas.length > 0;

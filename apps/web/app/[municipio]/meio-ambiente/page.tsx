@@ -1,11 +1,18 @@
 import Link from "@/lib/betim/link";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { temFonte } from "@/lib/db/queries/municipios";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Meio Ambiente — ${c.nome} em Dados | ${nomePortal(c)}`,
   (c) => `O que existe de fonte pública sobre meio ambiente na região de ${c.nome}-${c.uf}: barragens de mineração, compensação ambiental e TACs.`
 );
 
+// FONTES DE MINAS GERAIS. Todas as três são estaduais (MPMG, SEMAD/MG) e a
+// primeira cita municípios limítrofes de Betim pelo nome. Servi-las a São
+// Paulo seria pior que não ter a seção: são órgãos que não têm competência
+// sobre a cidade. A lista só é exibida quando a cidade declara
+// `fontes.links_uteis_mg`, o mesmo sinal que governa `/links-uteis-mg`.
+//
 // Nenhuma fonte encontrada tem API/dataset aberto por município --
 // pesquisa completa em docs/ambiental-pecma-research.md (2026-07-21).
 // Página informativa, sem ETL, seguindo o mesmo padrão de /defesa-civil:
@@ -38,18 +45,21 @@ export default async function MeioAmbientePage({
   params: Promise<{ municipio: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
+  const fontesDoEstado = temFonte(cidade, "links_uteis_mg") ? FONTES : [];
   return (
     <main className="mx-auto max-w-3xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">
         Meio Ambiente
       </h1>
       <p className="mt-2 max-w-[60ch] text-text-soft">
-        {cidade.nome} não tem um indicador ambiental por município com fonte aberta
-        confirmada ainda — o que existe de real e verificável está
-        organizado abaixo, incluindo um risco regional que afeta {cidade.nome} mesmo
-        sem estar dentro do município.
+        {cidade.nome} não tem um indicador ambiental por município com fonte
+        aberta confirmada ainda.
+        {fontesDoEstado.length > 0
+          ? " O que existe de real e verificável está organizado abaixo, incluindo um risco regional que afeta a cidade mesmo sem estar dentro do município."
+          : " Assim que uma fonte pública por município aparecer para esta cidade, ela entra aqui."}
       </p>
 
+      {temFonte(cidade, "paraopeba") && (
       <Link
         href="/meio-ambiente/paraopeba"
         className="cp-card-hover mt-6 flex flex-col gap-2 rounded-2xl border border-primary bg-primary/5 p-5 shadow-sm hover:border-primary"
@@ -66,9 +76,10 @@ export default async function MeioAmbientePage({
           Ver projetos →
         </span>
       </Link>
+      )}
 
       <section className="mt-8 flex flex-col gap-3">
-        {FONTES.map((f) => (
+        {fontesDoEstado.map((f) => (
           <a
             key={f.href}
             href={f.href}

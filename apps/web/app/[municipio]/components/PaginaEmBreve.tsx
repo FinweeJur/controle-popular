@@ -6,7 +6,7 @@ interface PaginaEmBreveProps {
 
 /**
  * Estado padrão pras páginas temáticas do F9 sem ETL ainda (social,
- * segurança, meio ambiente, agro, emendas, nota-betim) — mesma filosofia
+ * segurança, meio ambiente, agro, emendas, nota-transparencia) — mesma filosofia
  * do resto do site (ver /sobre): mostrar "em breve" com o motivo real em
  * vez de inventar números.
  */
