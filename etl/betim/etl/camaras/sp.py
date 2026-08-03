@@ -1,14 +1,18 @@
-"""etl.camaras.sp — vereadores, produção legislativa e verba de gabinete da
-Câmara Municipal de São Paulo (id_municipio 3550308).
+"""etl.camaras.sp — vereadores, comissões, produção legislativa e verba de
+gabinete da Câmara Municipal de São Paulo (id_municipio 3550308).
 
     python -m etl.camaras.sp --id-municipio 3550308
     python -m etl.camaras.sp --id-municipio 3550308 --partes proposicoes
+    python -m etl.camaras.sp --id-municipio 3550308 --partes comissoes
     python -m etl.camaras.sp --id-municipio 3550308 --desde-ano 2025 --ate-ano 2026
 
 FONTES (todas verificadas ao vivo em 2026-08-03):
 
 1. WordPress REST da CMSP — https://www.saopaulo.sp.leg.br/wp-json/wp/v2/vereador
    Cadastro do vereador. 191 posts (X-WP-Total), 2 páginas de 100.
+1b. WordPress REST da CMSP — .../wp-json/wp/v2/comissao
+   Catálogo E composição das comissões. 62 posts, uma página. Ver o bloco
+   COMISSÕES abaixo.
 2. SPLegis — https://splegisws.saopaulo.sp.leg.br/ws/ws2.asmx/{Operacao}
    Produção legislativa. 50 operações; as `*JSON` respondem a **GET puro**
    com `application/json` — não monte envelope SOAP.
@@ -74,6 +78,80 @@ LEITE, PASTORA SANDRA ALVES, PAULO FRANGE — não estão entre os 55 porque o
 WP os marca com `_cmsp_vereador_licenciado: on` e `ativo` ausente). Esses
 ficam com `vereador_id` nulo, mas o nome do autor é preservado em `autores`.
 
+COMISSÕES — QUAL DAS DUAS FONTES, E POR QUÊ. Há dois caminhos, os dois
+medidos ao vivo em 2026-08-03:
+
+1. **SPLegis `VereadoresCMSPJSON`** (1,6 MB). Cada vereador traz
+   `cargos: [{nome, inicio, fim, ente:{chave, nome}}]`, e o `ente` é a
+   comissão — casável com `ComissoesCMSPJSON` (58 comissões) pela `chave`.
+   É a base histórica desde 1992: 3.555 cargos de comissão.
+2. **WordPress `wp/v2/comissao`** (62 posts, UM GET). O ACF de cada post
+   traz `presidente`, `vice_presidente`, `relator` e `membros[]` — todos
+   **IDs de post do tipo `vereador`** —, e o campo `parent` põe a comissão
+   num dos ramos do menu público (`comissoes-do-processo-legislativo`,
+   `comissoes-extraordinarias`, `comissoes-parlamentares-de-inquerito-cpis`,
+   `comissoes-encerradas`).
+
+ESCOLHIDO O 2, e o 1 fica como CONFERÊNCIA — mesma divisão de papéis que
+`etl/camaras/comissoes_bh.py`. O que decidiu:
+
+(a) **O catálogo do SPLegis está desatualizado.** `ComissoesCMSPJSON` não
+    lista as duas CPIs instaladas em 2026 (CPI do Jockey Club e CPI do
+    Metanol) — 16 participações que só existem no WP. E lista com `fim`
+    nulo (= "em vigor") a CPI dos Fios e a CPI da Poluição Petroquímica,
+    que o WP já move para `comissoes-encerradas`.
+(b) **O `fim` do CARGO no SPLegis não fecha quando a comissão acaba.** Os
+    12 membros do "Comitê Ext. das Chuvas e Enchentes" têm `fim` nulo
+    embora a comissão tenha `fim` 2020-12-31; a "Comissão de Estudos SP
+    Smart City" (encerrada em 2022) tem 11. Filtrar só por cargo aberto
+    listaria gente de 2019 como membro atual — exatamente o dano que se
+    quer evitar.
+(c) **Identidade sem heurística de nome nos dois lados.** No WP a pessoa é
+    um ID de post, e `vereadores.slug` NASCEU desse mesmo post (ver
+    `_linha_vereador`) — o join é o próprio identificador da fonte.
+
+O CRITÉRIO DE "EM VIGOR" é, portanto, ESTRUTURAL: comissão em vigor é a que
+está pendurada num dos três ramos vivos do menu; o resto (34 filhos de
+`comissoes-encerradas` + 2 órfãos de um nó de menu apagado) entra como
+histórico, com `ativo=false` e `comissao_id` nulo, como em BH. Não se usa
+data nenhuma porque a fonte não publica período: os ACF
+`data_de_criacao_da_comissao` e `data_de_encerramento_da_comissao` estão
+nulos nos 62 posts.
+
+A CONFERÊNCIA contra o SPLegis usa o recorte que o SPLegis permite —
+comissão com `fim` nulo/futuro, cargo aberto E iniciado dentro da
+legislatura 19 (o corte por legislatura é o que descarta os resíduos do
+item (b), inclusive dois cargos de 1995 em comissões-fantasma "CPI 1" e
+"COMISSAO ESPECIAL DE ESTUDOS 1"). Casa comissão do WP com comissão do
+SPLegis pelo ACF `cod_prvm_cmi`, que É a `chave` do SPLegis (preenchido em
+8 dos 62 posts) e, na falta dele, por nome normalizado exato. Medido em
+2026-08-03: das 18 comissões em vigor, 14 casaram e 11 bateram
+participação por participação. As 3 divergências são de UMA pessoa cada:
+em Finanças e em Saúde o WP mantém o titular licenciado (SILVINHO LEITE,
+PASTORA SANDRA ALVES) onde o SPLegis já registra quem assumiu; na CPI dos
+Devedores o WP lista ISAC FÉLIX e o SPLegis, DRA. SANDRA TADEU (cargo
+aberto em 2026-05-25, depois da última edição do post). Nos três casos as
+duas fontes discordam de UM nome em 7–9, e nenhuma delas é obviamente a
+errada — por isso a conferência só imprime.
+
+Duas comissões em vigor ficam SEM PAR na conferência e isso não é lacuna
+de dado: "Comissão Extraordinária Inovação" e "EXTRA. RELAÇÕES
+INTERNACIONAIS" são abreviações do SPLegis que não casam com o título do
+WP nem têm `cod_prvm_cmi` — os membros delas estão gravados, só não foram
+conferidos.
+
+LACUNA CONHECIDA DE VERDADE: a "SUBCOMISSÃO DE CALÇADAS E MOBILIDADE A PÉ"
+(3 membros, instalada em 2026-03) existe no SPLegis e NÃO tem post no WP —
+o tipo `comissao` não publica subcomissão. Fica de fora, nomeada aqui e no
+log, em vez de ser costurada por nome (o que exigiria casar "SUBCOMISSÃO DE
+CALÇADAS..." com um título que não existe do outro lado).
+
+ARMADILHA DO ACF: campo não preenchido volta como `False`, não como `None`
+— e `isinstance(False, int)` é True em Python. Um teste ingênuo de inteiro
+aceitaria `False` e criaria participação para o "post 0". Ver `_id_post`.
+Também: `tipo_da_comissao` diz "Permanente" até para as três CPIs em vigor
+(campo copiado, não classificação) — quem classifica é o `parent`.
+
 NÃO COLETÁVEL: o subsídio individual do vereador. `/transparencia/
 salarios-abertos/` exige CPF real num portão de autenticação — `subsidios`
 fica vazia para São Paulo. Também confirmados mortos:
@@ -90,6 +168,7 @@ import re
 import sys
 import time
 import unicodedata
+from collections import defaultdict
 
 import requests
 from lxml import etree
@@ -106,6 +185,7 @@ from etl.common import (
 TAG = "etl.camaras.sp"
 
 WP_VEREADOR = "https://www.saopaulo.sp.leg.br/wp-json/wp/v2/vereador"
+WP_COMISSAO = "https://www.saopaulo.sp.leg.br/wp-json/wp/v2/comissao"
 WS = "https://splegisws.saopaulo.sp.leg.br/ws/ws2.asmx/"
 VERBA_XML = "https://sisgvarmazenamento.blob.core.windows.net/prd/PublicacaoPortal/Arquivos/{ano}01.xml"
 DETALHE = (
@@ -165,7 +245,37 @@ SESSOES = {
     "fonte": "https://www.saopaulo.sp.leg.br/",
 }
 
-PARTES_VALIDAS = ("vereadores", "proposicoes", "verbas", "fontes")
+# Os três nós do menu de comissões do WP cujos FILHOS estão em vigor, e o
+# `comissoes.especial` que cada ramo produz. Identificados por SLUG, não pelo
+# id numérico do post: o slug é o caminho público (/comissao/<slug>/) e
+# sobrevive a um nó recriado. Só a CPI é `especial` — as extraordinárias são
+# permanentes no Regimento, e a tela reserva o bloco "Comissões especiais"
+# para o que é "temporário e com propósito específico".
+RAMOS_EM_VIGOR = {
+    "comissoes-do-processo-legislativo": False,
+    "comissoes-extraordinarias": False,
+    "comissoes-parlamentares-de-inquerito-cpis": True,
+}
+
+# Campo do ACF -> `papel` gravado. A caixa é escolhida aqui porque a coluna
+# vai CRUA para a tela (/[municipio]/camara/comissoes imprime `papel`), e as
+# três cidades precisam escrever o mesmo rótulo.
+# `coodernador` é typo do próprio ACF (não é `coordenador`); nunca veio
+# preenchido nos 62 posts, mas ignorá-lo perderia a linha em silêncio no dia
+# em que a Casa usar o campo.
+PAPEIS_ACF = (
+    ("presidente", "Presidente"),
+    ("vice_presidente", "Vice-Presidente"),
+    ("relator", "Relator"),
+    ("coodernador", "Coordenador"),
+)
+
+# O SPLegis escreve "Vice-presidente"; o resto ("Presidente", "Relator",
+# "Membro") já coincide. Só existe para a conferência não acusar divergência
+# onde só há diferença de caixa.
+PAPEL_SPLEGIS = {"Vice-presidente": "Vice-Presidente"}
+
+PARTES_VALIDAS = ("vereadores", "comissoes", "proposicoes", "verbas", "fontes")
 
 _SESSAO = requests.Session()
 # 403 sem isto (ver docstring). Um UA de navegador basta — o WAF da CMSP não
@@ -226,15 +336,21 @@ def _meta(post: dict, chave: str) -> str | None:
 # ---------------------------------------------------------------- vereadores
 
 
-def _baixar_vereadores() -> list[dict]:
+def _baixar_wp(url: str, campos: str | None = None) -> list[dict]:
+    """Todas as páginas de um custom post type do WP da CMSP.
+
+    `campos` vira `_fields`, que o WP honra inclusive para `meta_all`: o
+    cadastro completo dos 191 vereadores são 2,1 MB, e `id,slug,meta_all`
+    derruba para 0,6 MB — vale para `sync_comissoes`, que só precisa do
+    mapa post→slug.
+    """
     posts: list[dict] = []
     pagina = 1
     while True:
-        resp = _tentar(
-            lambda p=pagina: _SESSAO.get(
-                WP_VEREADOR, params={"per_page": 100, "page": p}, timeout=180
-            )
-        )
+        params = {"per_page": 100, "page": pagina}
+        if campos:
+            params["_fields"] = campos
+        resp = _tentar(lambda p=dict(params): _SESSAO.get(url, params=p, timeout=180))
         resp.encoding = "utf-8"
         lote = resp.json()
         if not lote:
@@ -245,6 +361,10 @@ def _baixar_vereadores() -> list[dict]:
             break
         pagina += 1
     return posts
+
+
+def _baixar_vereadores(campos: str | None = None) -> list[dict]:
+    return _baixar_wp(WP_VEREADOR, campos)
 
 
 def _linha_vereador(id_municipio: str, post: dict) -> dict:
@@ -329,6 +449,376 @@ def _mapa_promovente(client, id_municipio: str) -> dict[int, str]:
         if bruto.isdigit():
             mapa[int(bruto)] = linha["id"]
     return mapa
+
+
+# ---------------------------------------------------------------- comissoes
+
+
+def _id_post(valor) -> int | None:
+    """O ID de post que um campo do ACF aponta, ou None.
+
+    ARMADILHA: campo não preenchido volta como `False` (não `None`, não
+    `''` — os três aparecem, a depender do post), e em Python
+    `isinstance(False, int)` é True. Um teste ingênuo de inteiro aceitaria
+    `False`, que vale 0, e o módulo criaria participação para o "post 0" —
+    sem erro, porque 0 simplesmente não casa com vereador nenhum e a linha
+    sumiria no contador de "sem vereador".
+    """
+    return valor if isinstance(valor, int) and not isinstance(valor, bool) and valor > 0 else None
+
+
+def _titulo_comissao(post: dict) -> str:
+    bruto = html.unescape((post.get("title") or {}).get("rendered") or "")
+    return " ".join(bruto.split())
+
+
+def _composicao_wp(post: dict) -> list[tuple[int, str]]:
+    """[(id do post do vereador, papel)] de um post de comissão.
+
+    Os cargos nomeados vêm antes de `membros[]`: a mesma pessoa pode
+    aparecer nos dois (medido: em "CPI da Condição de Vulnerabilidade das
+    Mulheres" o post 47618 é vice-presidente E relator), e a ordem fixa
+    torna a saída determinística.
+    """
+    acf = post.get("acf") or {}
+    saida: list[tuple[int, str]] = []
+    for campo, papel in PAPEIS_ACF:
+        alvo = _id_post(acf.get(campo))
+        if alvo:
+            saida.append((alvo, papel))
+    membros = acf.get("membros")
+    if isinstance(membros, list):
+        for alvo in membros:
+            if _id_post(alvo):
+                saida.append((alvo, "Membro"))
+    elif membros:
+        # `membros` só deveria ser lista (relationship do ACF) ou vazio.
+        # Qualquer outra coisa é mudança de configuração do campo: avisar
+        # alto, porque ignorar calado apagaria a comissão inteira do card.
+        print(f"[{TAG}] AVISO: `membros` de '{_titulo_comissao(post)}' nao e lista: {membros!r}")
+    return saida
+
+
+def _ramos_e_containers(posts: list[dict]) -> tuple[dict[int, bool], set[int]]:
+    """({id do nó em vigor: especial}, {ids que são nó de menu}).
+
+    Nó de menu é quem tem filho — regra estrutural, não lista fixa. Importa
+    porque esses nós têm ACF sujo: `:: Comissões Extraordinárias` traz um
+    `presidente` de legislatura passada, e gravá-lo criaria uma "comissão"
+    chamada ":: Comissões Extraordinárias" no catálogo.
+    """
+    por_id = {p["id"]: p for p in posts}
+    containers = {p["parent"] for p in posts if p.get("parent") and p["parent"] in por_id}
+    ramos: dict[int, bool] = {}
+    for slug, especial in RAMOS_EM_VIGOR.items():
+        alvo = next((p for p in posts if p.get("slug") == slug), None)
+        if alvo is None:
+            raise RuntimeError(
+                f"o no de menu '{slug}' nao existe mais em {WP_COMISSAO} — o ramo que "
+                "define o que esta EM VIGOR sumiu. Abortando: sem ele o modulo marcaria "
+                "como encerradas todas as comissoes daquele ramo."
+            )
+        if alvo["id"] not in containers:
+            raise RuntimeError(
+                f"o no '{slug}' (post {alvo['id']}) nao tem nenhuma comissao pendurada. "
+                "Ou a Casa esvaziou o ramo, ou o `parent` mudou de significado — confira "
+                "antes de gravar, porque seguir zeraria a composicao dessas comissoes."
+            )
+        ramos[alvo["id"]] = especial
+    return ramos, containers
+
+
+def _participacoes_splegis(hoje: str) -> dict[int, tuple[str, set[tuple[int, str]]]]:
+    """{chave da comissão: (nome, {(chave do vereador, papel)})} — só o que o
+    SPLegis considera em vigor HOJE. Usado apenas para conferir.
+
+    Três filtros, cada um por um motivo medido (ver o bloco COMISSÕES no
+    docstring do módulo):
+    - comissão com `fim` nulo ou futuro (a comissão acabou? acabou tudo);
+    - cargo já iniciado e com `fim` nulo ou futuro;
+    - cargo iniciado DENTRO da legislatura em curso — sem isto entram os
+      cargos que a Casa nunca fechou, inclusive dois de 1995.
+    """
+    comissoes = {c["chave"]: c for c in _ws("ComissoesCMSPJSON") if c.get("chave")}
+    vivas = {k: c for k, c in comissoes.items() if not c.get("fim") or c["fim"][:10] >= hoje}
+    inicio_legislatura = f"{LEGISLATURA['inicio']}-01-01"
+
+    saida: dict[int, tuple[str, set[tuple[int, str]]]] = {}
+    for pessoa in _ws("VereadoresCMSPJSON"):
+        for cargo in pessoa.get("cargos") or []:
+            ente = cargo.get("ente") or {}
+            comissao = vivas.get(ente.get("chave"))
+            if comissao is None:
+                continue  # comissão morta, ou o ente é a Mesa da Câmara
+            inicio = (cargo.get("inicio") or "")[:10]
+            fim = (cargo.get("fim") or "")[:10]
+            if not inicio or inicio > hoje or inicio < inicio_legislatura:
+                continue
+            if fim and fim < hoje:
+                continue
+            papel = PAPEL_SPLEGIS.get(cargo.get("nome") or "", cargo.get("nome") or "")
+            saida.setdefault(ente["chave"], (comissao["nome"], set()))[1].add(
+                (pessoa["chave"], papel)
+            )
+    return saida
+
+
+def _conferir_comissoes(em_vigor_wp: list[tuple[dict, set[tuple[int, str]]]]) -> None:
+    """Compara a composição do WP com a do SPLegis e IMPRIME o resultado.
+
+    Nunca grava nem aborta: as duas fontes divergem por motivo legítimo (o
+    WP mantém o titular licenciado onde o SPLegis já pôs o suplente), e
+    transformar isso em erro pararia a carga toda por causa de uma linha.
+    O que se quer é que a divergência apareça — se um dia crescer, o log
+    mostra qual comissão e qual pessoa.
+    """
+    try:
+        splegis = _participacoes_splegis(dt.date.today().isoformat())
+    except RuntimeError as e:
+        print(f"[{TAG}] AVISO: conferencia com o SPLegis nao rodou ({e})")
+        return
+
+    por_nome = {_sem_acento(nome): chave for chave, (nome, _) in splegis.items()}
+    casadas, iguais, usadas = 0, 0, set()
+    for post, participacoes in em_vigor_wp:
+        acf_codigo = str((post.get("acf") or {}).get("cod_prvm_cmi") or "").strip()
+        # `cod_prvm_cmi` É a `chave` do SPLegis (conferido nos 8 posts em que
+        # a Casa preencheu). O nome normalizado é o plano B, e só bate
+        # EXATO: o SPLegis abrevia ("COM. EXT. DO IDOSO E DE ASSIST.
+        # SOCIAL") e casar por prefixo/semelhança inventaria par.
+        chave = int(acf_codigo) if acf_codigo.isdigit() else por_nome.get(
+            _sem_acento(_titulo_comissao(post))
+        )
+        if chave not in splegis:
+            continue
+        usadas.add(chave)
+        casadas += 1
+        esperado = splegis[chave][1]
+        if esperado == participacoes:
+            iguais += 1
+            continue
+        print(
+            f"[{TAG}] conferencia: '{_titulo_comissao(post)}' difere do SPLegis — "
+            f"so no WP {sorted(participacoes - esperado)}, so no SPLegis "
+            f"{sorted(esperado - participacoes)} (chave do vereador no SPLegis)"
+        )
+    print(
+        f"[{TAG}] conferencia SPLegis: {casadas}/{len(em_vigor_wp)} comissoes casadas, "
+        f"{iguais} identicas participacao a participacao"
+    )
+    orfas = [f"{nome} ({chave})" for chave, (nome, _) in splegis.items() if chave not in usadas]
+    if orfas:
+        # Esperado: o SPLegis publica subcomissão (que o tipo `comissao` do
+        # WP não tem) e nomeia as extraordinárias de forma abreviada demais
+        # para casar por nome. Não é lacuna de dado por si só — é o que
+        # ficou sem par.
+        print(f"[{TAG}] conferencia: {len(orfas)} comissao(oes) do SPLegis sem par no WP: {orfas}")
+
+
+def sync_comissoes(client, id_municipio: str, permitir_reducao: bool = False) -> int:
+    # `meta_all` entra só por causa da conferência: o WP identifica a pessoa
+    # pelo id do post e o SPLegis pela `chave` de promovente, e o meta
+    # `_cmsp_vereador_consulta_splegis_id` é a única coisa que liga as duas
+    # (é o mesmo valor que `sync_vereadores` grava em `vereadores.id_externo`).
+    posts_vereador = _baixar_vereadores(campos="id,slug,meta_all")
+    slug_por_post = {p["id"]: p["slug"] for p in posts_vereador}
+    chave_por_post: dict[int, int] = {}
+    for p in posts_vereador:
+        bruto = _meta(p, "_cmsp_vereador_consulta_splegis_id") or ""
+        if bruto.isdigit():
+            chave_por_post[p["id"]] = int(bruto)
+
+    vereadores = (
+        client.table("vereadores")
+        .select("id, slug")
+        .eq("id_municipio", id_municipio)
+        .execute()
+        .data
+        or []
+    )
+    if not vereadores:
+        raise RuntimeError(
+            "nenhum vereador gravado para este municipio — rode "
+            "`--partes vereadores` antes (a composicao e ligada por post do "
+            "WordPress, e o slug do post e o mesmo `vereadores.slug`)"
+        )
+    uuid_por_slug = {v["slug"]: v["id"] for v in vereadores}
+
+    posts = _baixar_wp(WP_COMISSAO, campos="id,slug,parent,title,acf")
+    ramos, containers = _ramos_e_containers(posts)
+    em_vigor = [p for p in posts if p.get("parent") in ramos and p["id"] not in containers]
+    historico = [p for p in posts if p.get("parent") not in ramos and p["id"] not in containers]
+    print(
+        f"[{TAG}] comissoes no WP: {len(posts)} posts, {len(containers)} nos de menu, "
+        f"{len(em_vigor)} em vigor, {len(historico)} fora dos ramos vivos"
+    )
+    if not em_vigor:
+        raise RuntimeError(
+            "nenhuma comissao pendurada nos ramos em vigor — nao vou reescrever o "
+            "catalogo com nada, isso zeraria /sp/camara/comissoes."
+        )
+
+    # Por vereador, e não por comissão: a gravação é um refresh total por
+    # pessoa (ver mais abaixo o porquê), então o conjunto precisa nascer
+    # agrupado assim. A chave interna (nome, papel) deduplica — sem data, duas
+    # linhas iguais são indistinguíveis e o índice único não pega (NULL nunca
+    # colide com NULL no Postgres).
+    por_vereador: dict[str, dict[tuple[str, str], dict]] = defaultdict(dict)
+    catalogo: dict[str, bool] = {}
+    perdidas_em_vigor: dict[str, list[str]] = defaultdict(list)
+    perdidas_historico = 0
+    conferencia: list[tuple[dict, set[tuple[int, str]]]] = []
+
+    for post, ativo in [(p, True) for p in em_vigor] + [(p, False) for p in historico]:
+        nome = _titulo_comissao(post)
+        composicao = _composicao_wp(post)
+        if ativo:
+            # A conferência fala a língua do SPLegis (chave de promovente).
+            # Post sem essa chave vira `("post", id)` de propósito: aparece
+            # como divergência em vez de sumir do conjunto e fingir acordo.
+            conferencia.append(
+                (post, {(chave_por_post.get(pid, ("post", pid)), papel) for pid, papel in composicao})
+            )
+        for post_vereador, papel in composicao:
+            uuid = uuid_por_slug.get(slug_por_post.get(post_vereador, ""))
+            if not uuid:
+                if ativo:
+                    perdidas_em_vigor[
+                        slug_por_post.get(post_vereador) or f"post {post_vereador}"
+                    ].append(f"{nome} ({papel})")
+                else:
+                    perdidas_historico += 1
+                continue
+            if ativo:
+                # Comissão em vigor só entra no catálogo se tem membro que
+                # sabemos quem é — um card "Nenhum membro registrado" afirma
+                # menos que a ausência (mesma regra de `comissoes_bh.py`).
+                catalogo.setdefault(nome, ramos[post["parent"]])
+            por_vereador[uuid][(nome, papel)] = {
+                "id_municipio": id_municipio,
+                "comissao_id": None,  # preenchido depois do upsert do catálogo
+                "nome_comissao_bruto": nome,
+                "vereador_id": uuid,
+                "papel": papel,
+                # A fonte não publica período nenhum (os dois ACF de data
+                # vêm nulos nos 62 posts). Inventar `data_inicio` a partir
+                # da data do post seria datar a comissão pela hora em que o
+                # site foi atualizado.
+                "data_inicio": None,
+                "data_fim": None,
+                "ativo": ativo,
+            }
+
+    if perdidas_historico:
+        # Esperado e sem remédio: o histórico do WP alcança CPIs de 2016 e a
+        # tabela só conhece os 55 vereadores em exercício. Uma linha só, para
+        # a ordem de grandeza ficar visível sem poluir o log.
+        print(
+            f"[{TAG}] historico: {perdidas_historico} participacao(oes) de vereadores de "
+            "legislaturas passadas ignoradas (nao estao no cadastro desta legislatura)"
+        )
+    if perdidas_em_vigor:
+        # Este é o que dói: são os titulares LICENCIADOS. O WP os mantém na
+        # comissão, mas eles não estão entre os 55 com
+        # `_cmsp_vereador_ativo=on` e `comissao_membros.vereador_id` é NOT
+        # NULL — a participação se perde. Nomear comissão e papel é o que
+        # impede a perda de virar invisível (uma delas é uma vice-presidência).
+        print(
+            f"[{TAG}] AVISO: {sum(len(v) for v in perdidas_em_vigor.values())} participacao(oes) "
+            f"EM VIGOR nao gravadas — titular licenciado, fora do cadastro de ativos:"
+        )
+        for slug, ondes in sorted(perdidas_em_vigor.items()):
+            print(f"[{TAG}]   {slug}: {ondes}")
+
+    if not catalogo:
+        raise RuntimeError(
+            "nenhuma comissao em vigor com membro conhecido — abortando para nao "
+            "esvaziar o catalogo da cidade."
+        )
+    client.table("comissoes").upsert(
+        [
+            {"id_municipio": id_municipio, "nome": nome, "especial": especial}
+            for nome, especial in sorted(catalogo.items())
+        ],
+        on_conflict="id_municipio,nome",
+    ).execute()
+    id_por_nome = {
+        r["nome"]: r["id"]
+        for r in (
+            client.table("comissoes")
+            .select("id, nome")
+            .eq("id_municipio", id_municipio)
+            .execute()
+            .data
+            or []
+        )
+    }
+    print(
+        f"[{TAG}] comissoes no catalogo={len(catalogo)} "
+        f"(permanentes={sum(1 for e in catalogo.values() if not e)}, "
+        f"cpis={sum(1 for e in catalogo.values() if e)})"
+    )
+
+    gravadas = puladas = 0
+    for uuid, linhas_por_chave in por_vereador.items():
+        linhas = list(linhas_por_chave.values())
+        for linha in linhas:
+            if linha["ativo"]:
+                linha["comissao_id"] = id_por_nome.get(linha["nome_comissao_bruto"])
+        # Refresh total POR VEREADOR, não upsert: `data_inicio`/`data_fim`
+        # são nulos em toda linha e o índice único da tabela inclui os dois,
+        # então o `ON CONFLICT` não deduplicaria nada e cada rodada
+        # duplicaria a composição inteira. Um GET traz a composição de todas
+        # as comissões de uma vez, então o conjunto de cada pessoa é
+        # recomputável. `ao_reduzir="skip"` para que uma pessoa que saiu de
+        # tudo não derrube a carga das outras 54.
+        gravou = refresh_completo_seguro(
+            client,
+            "comissao_membros",
+            {"id_municipio": id_municipio, "vereador_id": uuid},
+            linhas,
+            permitir_reducao=permitir_reducao,
+            ao_reduzir="skip",
+            rotulo=f"{TAG}/comissoes",
+        )
+        if gravou:
+            gravadas += len(linhas)
+        else:
+            puladas += 1
+
+    ativas = sum(1 for d in por_vereador.values() for r in d.values() if r["ativo"])
+    print(
+        f"[{TAG}] participacoes={gravadas} (em vigor={ativas}, historico={gravadas - ativas}) "
+        f"vereadores={len(por_vereador)} pulados={puladas}"
+    )
+
+    # Comissão que sai de um ramo vivo deixa a linha do catálogo órfã — um
+    # card permanente e vazio na tela. Some só quem saiu E não é referenciado
+    # por ninguém; se um refresh foi pulado e ainda há referência, a linha
+    # fica (conservador de propósito). Mesma limpeza de `comissoes_bh.py`.
+    removidas = []
+    for nome, comissao_id in id_por_nome.items():
+        if nome in catalogo:
+            continue
+        referencias = (
+            client.table("comissao_membros")
+            .select("id", count="exact")
+            .eq("comissao_id", comissao_id)
+            .limit(1)
+            .execute()
+            .count
+            or 0
+        )
+        if referencias:
+            print(f"[{TAG}] '{nome}' saiu do ramo em vigor mas tem {referencias} membro(s) — mantida.")
+            continue
+        client.table("comissoes").delete().eq("id", comissao_id).execute()
+        removidas.append(nome)
+    if removidas:
+        print(f"[{TAG}] comissoes removidas do catalogo={len(removidas)}: {removidas}")
+
+    _conferir_comissoes(conferencia)
+    return gravadas
 
 
 # --------------------------------------------------------------- proposicoes
@@ -666,6 +1156,9 @@ def sync(
     client = get_supabase_client()
     if "vereadores" in partes:
         sync_vereadores(client, id_municipio)
+    if "comissoes" in partes:
+        total = sync_comissoes(client, id_municipio, permitir_reducao)
+        print(f"[{TAG}] participacoes em comissoes gravadas={total}")
     if "proposicoes" in partes:
         total = sync_proposicoes(client, id_municipio, anos)
         print(f"[{TAG}] proposicoes gravadas={total}")
@@ -695,7 +1188,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--permitir-reducao",
         action="store_true",
-        help="grava a verba mesmo que a fonte tenha menos itens que o banco",
+        help="grava mesmo que a fonte tenha menos itens que o banco (vale para a verba "
+        "e para a composicao das comissoes; use so depois de conferir na fonte)",
     )
     args = parser.parse_args()
     escolhidas = tuple(p.strip() for p in args.partes.split(",") if p.strip())

@@ -1,7 +1,8 @@
 """Fontes próprias de São Paulo (id_municipio 3550308).
 
-Verificado ao vivo em 2026-08-03. São Paulo também publica em dois lugares,
-mas o recorte é diferente do de Belo Horizonte (ver `etl/pbh/__init__.py`):
+Verificado ao vivo em 2026-08-03. O recorte é diferente do de Belo
+Horizonte (ver `etl/pbh/__init__.py`) — em São Paulo são TRÊS fontes, e
+nenhuma delas é o Diário Oficial:
 
 1. **CKAN municipal** (`dados.prefeitura.sp.gov.br`, CKAN 2.7.7, 474
    datasets, 81 organizações, sem token). A joia é a SEGES/SIGPEC, que
@@ -17,6 +18,15 @@ mas o recorte é diferente do de Belo Horizonte (ver `etl/pbh/__init__.py`):
    consome, e é o que fecha a lacuna que São Paulo tinha: o eixo Cidades já
    lia criminalidade em MG (Sejusp, `etl/apis/crimes_mg.py`) e não tinha
    equivalente paulista.
+
+3. **Catálogo de Legislação Municipal** (`legislacao.prefeitura.sp.gov.br`,
+   Casa Civil/PRODAM). Buscador server-rendered — sem API — cuja página de
+   resultado já traz tipo, órgão, número, data, EMENTA e situação de cada
+   ato. É o que `legislacao.py` consome, e é o que fecha a lacuna que São
+   Paulo tinha em `atos_oficiais`. **O diário oficial de SP não serve para
+   isso**: ele roda o e-Publicação do SEI (PHP), não o DOM-web em Vue com
+   API ato a ato que `etl/pbh/legislacao.py` descobre em BH. Detalhes e
+   armadilhas na docstring de `legislacao.py`.
 
 **AQUI NÃO PRECISA DE `curl_cffi`** — ao contrário da PBH, cujos dois hosts
 ficam atrás de um WAF que bloqueia por fingerprint de TLS. Os dois hosts de
