@@ -13,6 +13,8 @@ export interface ObrasData {
   situacoesDisponiveis: string[];
   total: number;
   valorTotal: number;
+  /** Quantas das `total` obras trazem valor. Ver o card em /prefeitura/obras. */
+  comValor: number;
   configured: boolean;
   ok: boolean;
 }
@@ -22,6 +24,7 @@ const EMPTY: ObrasData = {
   situacoesDisponiveis: [],
   total: 0,
   valorTotal: 0,
+  comValor: 0,
   configured: false,
   ok: false,
 };
@@ -67,6 +70,7 @@ export async function getObras(
       situacoesDisponiveis,
       total: todas.length,
       valorTotal: todas.reduce((acc, o) => acc + (o.valor ?? 0), 0),
+      comValor: todas.filter((o) => o.valor != null && o.valor > 0).length,
       configured: true,
       ok: true,
     };

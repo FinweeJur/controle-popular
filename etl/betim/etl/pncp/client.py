@@ -19,7 +19,12 @@ INTER_REQUEST_SLEEP = 0.6
 
 @retry(stop=stop_after_attempt(6), wait=wait_exponential(multiplier=2, min=3, max=60))
 def _get(path: str, params: dict) -> dict:
-    resp = requests.get(f"{BASE_URL}{path}", params=params, timeout=60)
+    # 60s bastava enquanto a consulta era por UM CNPJ (Betim). Com a lista de
+    # órgãos municipais — 57 em São Paulo — a mesma varredura faz dezenas de
+    # vezes mais chamadas e o PNCP fica mais lento sob carga; a coleta de SP
+    # morreu com ReadTimeout no meio, e como a gravação é por ano, o ano
+    # inteiro se perde.
+    resp = requests.get(f"{BASE_URL}{path}", params=params, timeout=180)
     if resp.status_code == 204:
         return {"data": [], "totalPaginas": 0}
     if resp.status_code == 429:
