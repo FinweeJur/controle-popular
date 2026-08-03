@@ -49,6 +49,30 @@ FONTE = "GRP Transparência PBH — PFolhaPagto"
 PRIMEIRO_ANO_COM_DADO = 2020
 
 
+def _orgao(r: dict) -> str:
+    """O órgão de um vínculo.
+
+    **`EntOrgNome` vem SEMPRE VAZIO neste endpoint** — medido em 300
+    registros de 2026-06: 300/300 em branco, com só `EntOrgCodigo` numérico
+    (2, 15, 8, 6...). Agrupar por ele colapsava os 78.612 vínculos do mês
+    num "órgão" só, e o resultado era uma linha de `folha_pagamento` que
+    dizia a folha inteira da cidade — número certo, recorte inútil.
+
+    Quem carrega a unidade de verdade é `FolhaServLotacao`: "SECRETARIA
+    MUNICIPAL DE EDUCACAO", "PESSOAL APOSENTADO - PBH FUFIN", "GERÊNCIA DE
+    GEOINFORMAÇÃO". É mais granular que "órgão" no sentido estrito, e é o
+    que existe.
+
+    O código numérico entra como sufixo quando a lotação vem vazia (28 de
+    300), para que essas linhas não se misturem entre si nem sumam.
+    """
+    lotacao = (r.get("FolhaServLotacao") or "").strip()
+    if lotacao:
+        return lotacao
+    codigo = r.get("EntOrgCodigo")
+    return f"SEM LOTAÇÃO INFORMADA (órgão {codigo})" if codigo else "SEM LOTAÇÃO INFORMADA"
+
+
 def _num(v) -> float:
     if v is None or v == "":
         return 0.0
@@ -64,13 +88,22 @@ def _competencias(quantos_meses: int) -> list[tuple[int, int]]:
     """As N competências mais recentes, da mais nova para a mais antiga.
 
     Começa no mês ANTERIOR ao corrente: a folha do mês em curso só é
-    publicada depois de fechada, e pedir o mês corrente devolve zero — que
-    o `sync` interpretaria como "órgão sem folha" e gravaria como tal.
+    publicada depois de fechada. **Mas o atraso não é de um mês fixo** —
+    medido em 2026-08-03, 2026-07 devolvia zero e 2026-06 devolvia 79.289.
+    A versão anterior pegava mês-1 cegamente, e por isso montou o quadro
+    nominal a partir de uma competência VAZIA: gravou zero servidor sem
+    reclamar de nada.
+
+    Por isso `sync` não usa esta lista para escolher o quadro; ela só
+    enumera candidatos, e quem decide é a primeira competência que
+    realmente devolveu registro. Este recuo extra de dois meses existe para
+    que ainda sobrem N competências cheias quando a mais recente estiver
+    vazia.
     """
     hoje = dt.date.today()
     ano, mes = (hoje.year, hoje.month - 1) if hoje.month > 1 else (hoje.year - 1, 12)
     saida = []
-    for _ in range(quantos_meses):
+    for _ in range(quantos_meses + 2):
         if ano < PRIMEIRO_ANO_COM_DADO:
             break
         saida.append((ano, mes))
@@ -94,7 +127,7 @@ def _sincronizar_competencia(client, id_municipio: str, ano: int, mes: int) -> t
     # --- agregado por órgão ---
     por_orgao: dict[str, dict] = defaultdict(lambda: {"bruto": 0.0, "vinculos": 0})
     for r in registros:
-        orgao = (r.get("EntOrgNome") or "SEM ÓRGÃO INFORMADO").strip()
+        orgao = _orgao(r)
         por_orgao[orgao]["bruto"] += _num(r.get("FolhaServTotalBruto"))
         por_orgao[orgao]["vinculos"] += 1
 
@@ -137,15 +170,33 @@ def _sincronizar_quadro(client, id_municipio: str, ano: int, mes: int) -> int:
         nome = (r.get("FolhaServNome") or "").strip()
         if not nome:
             continue
-        orgao = (r.get("EntOrgNome") or "SEM ÓRGÃO INFORMADO").strip()
-        cargo = (r.get("FolhaServTipoCargoNome") or r.get("FolhaServTipoCargoDesc") or "").strip()
+        # `servidores` é o QUADRO — quem trabalha na prefeitura hoje. A folha
+        # inclui aposentados e pensionistas (128 de 300 na amostra de
+        # 2026-06, boa parte sob a lotação "PESSOAL APOSENTADO - PBH FUFIN"),
+        # e listá-los como servidores diria que a cidade tem quase o dobro do
+        # pessoal que tem. Eles continuam no agregado de `folha_pagamento`,
+        # porque o município realmente paga por eles.
+        if (r.get("FolhaServSituacao") or "").strip().lower() != "ativo":
+            continue
+        orgao = _orgao(r)
+        # `TipoCargoDesc` é o CARGO ("PROFESSOR MUNICIPAL", "GUARDA CIVIL
+        # MUNICIPAL DE CLASSE DISTINTA II") e `TipoCargoNome` é o TIPO DE
+        # VÍNCULO ("EFETIVO", "COMISSIONADO", "SERVIDOR TEMPORARIO"). A
+        # ordem estava trocada: a coluna `cargo` recebia "EFETIVO" para
+        # metade do quadro, o que não identifica função nenhuma.
+        cargo = (r.get("FolhaServTipoCargoDesc") or "").strip()
+        tipo = (r.get("FolhaServTipoCargoNome") or "").strip()
+        situacao = (r.get("FolhaServSituacao") or "").strip()
         por_chave[(orgao, nome, cargo)] = {
             "id_municipio": id_municipio,
             "orgao": orgao,
             "nome": nome,
             "cargo": cargo or None,
             "lotacao": (r.get("FolhaServLotacao") or "").strip() or None,
-            "vinculo": (r.get("FolhaServSituacao") or "").strip() or None,
+            # Duas informações que o leitor precisa juntas: o tipo de vínculo
+            # (concursado x comissionado é a pergunta que se faz a um quadro
+            # municipal) e se está na ativa.
+            "vinculo": " · ".join(x for x in (tipo, situacao) if x) or None,
         }
 
     linhas = list(por_chave.values())
@@ -173,20 +224,38 @@ def sync(id_municipio: str, meses: int = 1) -> None:
         raise RuntimeError("nenhuma competência a sincronizar")
 
     total_orgaos = 0
+    cheias: list[tuple[int, int]] = []
     for ano, mes in competencias:
+        # Para de coletar quando já tiver as N competências pedidas que
+        # realmente TÊM dado. `_competencias` devolve dois candidatos a mais
+        # justamente porque a mais recente costuma vir vazia.
+        if len(cheias) >= meses:
+            break
         orgaos, vinculos = _sincronizar_competencia(client, id_municipio, ano, mes)
-        total_orgaos += orgaos
         if orgaos:
+            cheias.append((ano, mes))
+            total_orgaos += orgaos
             print(
-                f"[etl.pbh.folha] {ano}-{mes:02d}: {orgaos} órgãos, {vinculos} vínculos"
+                f"[etl.pbh.folha] {ano}-{mes:02d}: {orgaos} órgãos, {vinculos} vínculos",
+                flush=True,
             )
 
-    ano, mes = competencias[0]
+    if not cheias:
+        raise RuntimeError(
+            f"nenhuma das competências {competencias} devolveu registro. "
+            "Ou o GRP mudou o filtro, ou a PBH parou de publicar — em nenhum "
+            "dos casos é seguro gravar quadro vazio por cima do que existe."
+        )
+
+    # O quadro nominal sai da competência mais recente COM DADO, não da mais
+    # recente do calendário: a versão anterior usava `competencias[0]` e, com
+    # 2026-07 ainda não publicado, escreveu zero servidor sem reclamar.
+    ano, mes = cheias[0]
     quadro = _sincronizar_quadro(client, id_municipio, ano, mes)
     print(
         f"[etl.pbh.folha] id_municipio={id_municipio} "
         f"folha_pagamento={total_orgaos} linhas, servidores={quadro} "
-        f"(quadro de {ano}-{mes:02d})"
+        f"(quadro de {ano}-{mes:02d}, só ativos)"
     )
 
 
