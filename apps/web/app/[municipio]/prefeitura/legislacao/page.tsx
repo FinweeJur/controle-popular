@@ -5,6 +5,7 @@ import RotuloBadge from "@/app/[municipio]/components/RotuloBadge";
 import { getLegislacao } from "@/lib/betim/legislacao";
 import { TEMA_LABELS } from "@/lib/betim/temas";
 import { labelDoDireito } from "@/lib/congresso/rubrica";
+import { percentualAnalisado } from "@/lib/betim/legislacao-garantista";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { hostDaPrefeitura } from "@/lib/db/queries/municipios";
@@ -35,6 +36,8 @@ export default async function LegislacaoPage({
     anosDisponiveis,
     temas,
     direitosDisponiveis,
+    atosAnalisados,
+    analiseOk,
     total,
     ok,
   } = await getLegislacao(cidade.id_municipio, {
@@ -45,6 +48,22 @@ export default async function LegislacaoPage({
   });
 
   const temFiltro = Boolean(params.categoria || params.tema || params.ano || params.direito);
+
+  /**
+   * Preserva os outros filtros ao limpar um só.
+   *
+   * O "✕ limpar direito" mandava para a rota nua e derrubava categoria, ano
+   * e tema junto, sem avisar. Quem filtrou por três coisas e quis tirar uma
+   * perdia as outras duas.
+   */
+  const urlSem = (chave: "tema" | "direito") => {
+    const resto = new URLSearchParams();
+    for (const [k, v] of Object.entries(params)) {
+      if (k !== chave && v) resto.set(k, String(v));
+    }
+    const qs = resto.toString();
+    return `/prefeitura/legislacao${qs ? `?${qs}` : ""}`;
+  };
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
@@ -84,6 +103,59 @@ export default async function LegislacaoPage({
               <p className="font-tabular text-2xl font-bold text-text">{formatNumberBR(total)}</p>
             </DataCard>
           </div>
+
+          {/* O DENOMINADOR DA ANÁLISE, ANTES DOS FILTROS.
+              O card acima diz 3.577 normas e não acompanha filtro nenhum. O
+              filtro por direito, ao contrário dos de categoria e ano, só
+              alcança as normas que a análise já leu — ~60 em BH. Sem esta
+              faixa, quem filtrasse por "direito à saúde" e visse 4 normas
+              leria "4 das 3.577", e não "4 das 60 lidas": uma conclusão
+              falsa sobre a Prefeitura inteira, construída sobre 2% do
+              acervo. */}
+          {analiseOk && (
+            <section className="mb-6 rounded-2xl border border-border bg-surface-2 p-4 text-sm text-text-soft">
+              {atosAnalisados > 0 ? (
+                <p>
+                  <strong className="text-text">
+                    A análise de direitos leu {formatNumberBR(atosAnalisados)} destas{" "}
+                    {formatNumberBR(total)} normas (
+                    {percentualAnalisado(atosAnalisados, total)}).
+                  </strong>{" "}
+                  É uma amostra, e a fila avança aos poucos. Norma sem selo de
+                  rótulo abaixo é norma <strong className="text-text">ainda não
+                  analisada</strong> — não é veredito de que ela seja neutra. O
+                  filtro “Direito afetado” só enxerga as já lidas.
+                </p>
+              ) : (
+                // Em BH e em SP as 60 análises estão todas em PROPOSIÇÃO, não
+                // em ato: a fila priorizou o que ainda tramita, que é onde dá
+                // para influir. Sem dizer isso, esta página fica sem sinal
+                // nenhum de que a análise existe na cidade.
+                <p>
+                  <strong className="text-text">
+                    A análise de direitos ainda não leu nenhuma destas{" "}
+                    {formatNumberBR(total)} normas.
+                  </strong>{" "}
+                  A fila começou pelos projetos que ainda tramitam na Câmara —
+                  é onde dá para influir antes de virar lei. Nenhuma conclusão
+                  sobre as normas já publicadas pode ser tirada daqui.
+                </p>
+              )}
+              <p className="mt-2">
+                <Link href="/legislacao/alertas" className="text-accent hover:underline">
+                  Ver as que restringem direitos
+                </Link>{" "}
+                ·{" "}
+                <Link href="/legislacao/bons-exemplos" className="text-accent hover:underline">
+                  as que ampliam
+                </Link>{" "}
+                ·{" "}
+                <Link href="/metodologia" className="text-accent hover:underline">
+                  como o rótulo é calculado
+                </Link>
+              </p>
+            </section>
+          )}
 
           {temas.length > 0 && (
             <div className="mb-6">
@@ -148,19 +220,27 @@ export default async function LegislacaoPage({
             </div>
             {direitosDisponiveis.length > 0 && (
               <div className="flex flex-col">
+                {/* O universo vai no RÓTULO do campo, não só na faixa acima:
+                    o select fica lado a lado com Categoria e Ano, que varrem
+                    o acervo inteiro, e a simetria sozinha já sugere que este
+                    também varre. A contagem de cada opção é sobre as
+                    analisadas, e é assim que ela precisa ser lida. */}
                 <label htmlFor="direito" className="mb-1 text-xs font-medium text-text-soft">
-                  Direito afetado
+                  Direito afetado{" "}
+                  <span className="font-normal">
+                    (entre as {formatNumberBR(atosAnalisados)} analisadas)
+                  </span>
                 </label>
                 <select
                   id="direito"
                   name="direito"
                   defaultValue={params.direito ?? ""}
-                  className="w-64 rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
+                  className="w-72 rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
                 >
                   <option value="">Todos</option>
                   {direitosDisponiveis.map((d) => (
                     <option key={d.direito} value={d.direito}>
-                      {d.label} ({d.qtd})
+                      {d.label} ({d.qtd} de {formatNumberBR(atosAnalisados)})
                     </option>
                   ))}
                 </select>
@@ -185,10 +265,7 @@ export default async function LegislacaoPage({
             <p className="mb-4 text-sm text-text-soft">
               Filtrando por área:{" "}
               <strong className="text-text">{TEMA_LABELS[params.tema] ?? params.tema}</strong>{" "}
-              <Link
-                href={`/prefeitura/legislacao${params.ano ? `?ano=${params.ano}` : ""}`}
-                className="text-accent hover:underline"
-              >
+              <Link href={urlSem("tema")} className="text-accent hover:underline">
                 ✕ limpar área
               </Link>
             </p>
@@ -198,8 +275,12 @@ export default async function LegislacaoPage({
             <p className="mb-4 text-sm text-text-soft">
               Filtrando por direito afetado:{" "}
               <strong className="text-text">{labelDoDireito(params.direito)}</strong> — leitura
-              da análise garantista deste portal, não classificação oficial.{" "}
-              <Link href="/prefeitura/legislacao" className="text-accent hover:underline">
+              da análise garantista deste portal, não classificação oficial, e{" "}
+              <strong className="text-text">
+                só entre as {formatNumberBR(atosAnalisados)} normas já analisadas
+              </strong>
+              , não entre as {formatNumberBR(total)} publicadas.{" "}
+              <Link href={urlSem("direito")} className="text-accent hover:underline">
                 ✕ limpar direito
               </Link>
             </p>
@@ -207,7 +288,52 @@ export default async function LegislacaoPage({
 
           {atos.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-border bg-surface-2 p-6 text-sm text-text-soft">
-              Nenhuma norma para esse filtro.
+              {/* "Nenhuma norma para esse filtro" é verdade quando o filtro é
+                  de categoria ou ano, que varrem o acervo. Com `direito`, o
+                  filtro varre só o que foi analisado — dizer a mesma frase
+                  ali afirmaria que a Prefeitura não legislou sobre aquele
+                  direito, quando o que houve é que a fila não chegou lá. E
+                  se a própria análise não respondeu, nem isso se sabe. */}
+              {params.direito && !analiseOk ? (
+                <>
+                  <p className="font-medium text-text">Não foi possível consultar a análise</p>
+                  <p className="mt-2">
+                    O filtro por direito depende da análise garantista, que não
+                    respondeu agora. Isto não é o mesmo que “nenhuma norma
+                    afeta esse direito”.{" "}
+                    <Link href={urlSem("direito")} className="text-accent hover:underline">
+                      Ver a lista sem esse filtro
+                    </Link>
+                  </p>
+                </>
+              ) : params.direito && atosAnalisados === 0 ? (
+                <>
+                  <p className="font-medium text-text">
+                    Nenhuma norma de {cidade.nome} foi analisada ainda
+                  </p>
+                  <p className="mt-2">
+                    O filtro por direito não tem sobre o que operar aqui: a fila
+                    de análise desta cidade começou pelos projetos em tramitação.{" "}
+                    <Link href="/legislacao/alertas" className="text-accent hover:underline">
+                      Ver o que já foi analisado
+                    </Link>
+                  </p>
+                </>
+              ) : params.direito ? (
+                <>
+                  <p className="font-medium text-text">
+                    Nenhuma das {formatNumberBR(atosAnalisados)} normas analisadas afeta
+                    esse direito
+                  </p>
+                  <p className="mt-2">
+                    Restam {formatNumberBR(Math.max(0, total - atosAnalisados))} normas de{" "}
+                    {cidade.nome} que a análise ainda não leu — o silêncio aqui é
+                    sobre a amostra, não sobre a Prefeitura.
+                  </p>
+                </>
+              ) : (
+                "Nenhuma norma para esse filtro."
+              )}
             </div>
           ) : (
             <ul className="flex flex-col gap-3">
@@ -245,8 +371,15 @@ export default async function LegislacaoPage({
                     <details className="group mt-3">
                       <summary className="flex cursor-pointer list-none flex-wrap items-center gap-2 [&::-webkit-details-marker]:hidden">
                         <RotuloBadge rotulo={a.analise.rotulo} score={a.analise.score} tamanho="sm" />
+                        {/* Aberto, o "ver justificativa" sumia e não sobrava
+                            affordance nenhuma: para fechar era preciso
+                            adivinhar que o selo é o botão. Os dois textos se
+                            revezam no mesmo lugar. */}
                         <span className="text-xs text-accent underline decoration-dotted group-open:hidden">
                           ver justificativa
+                        </span>
+                        <span className="hidden text-xs text-accent underline decoration-dotted group-open:inline">
+                          ocultar justificativa
                         </span>
                       </summary>
                       <div className="mt-2 space-y-2 rounded-xl bg-surface-2 p-3 text-sm">

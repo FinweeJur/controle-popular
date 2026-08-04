@@ -123,6 +123,20 @@ export function CoberturaAviso({ cobertura }: { cobertura: CoberturaLegislacao }
         . É uma amostra, não um censo — o que não aparece aqui ainda não foi lido pela análise,
         não é veredito de “neutro” sobre a Câmara ou a Prefeitura.
       </p>
+      {/* A régua é invocada no texto das duas telas ("segundo a régua
+          declarada deste portal"). Sem link, "declarada" é promessa não
+          cumprida: o leitor não tem como conferir o critério. */}
+      <p className="mt-2">
+        O rótulo não é escrito por inteligência artificial — sai de uma soma sobre itens
+        que citam, cada um, o dispositivo legal que fundamenta a leitura.{" "}
+        <Link href="/metodologia" className="text-accent hover:underline">
+          Ver a metodologia
+        </Link>{" "}
+        ·{" "}
+        <Link href="/prefeitura/legislacao" className="text-accent hover:underline">
+          ver todas as normas publicadas
+        </Link>
+      </p>
     </section>
   );
 }

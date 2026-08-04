@@ -21,7 +21,6 @@ import type { DestaqueLegislacao } from "@/lib/betim/legislacao-garantista";
  *    rota interna que não existe.
  */
 export default function CardLegislacao({ d }: { d: DestaqueLegislacao }) {
-  const restritivo = (d.rotulo ?? "").startsWith("reducionista");
   const ehAto = d.tipoObjeto === "ato";
   const autoresVisiveis = d.autores?.slice(0, 2) ?? [];
   const autoresRestantes = (d.autores?.length ?? 0) - autoresVisiveis.length;
@@ -65,8 +64,20 @@ export default function CardLegislacao({ d }: { d: DestaqueLegislacao }) {
       {d.principal ? (
         <div className="mt-3 rounded-xl bg-surface-2 p-3 text-sm">
           <p>
+            {/* O verbo sai da DIREÇÃO DO ITEM, não do rótulo da análise. O
+                item principal é o de maior |peso|, e nada garante que ele
+                puxe para o mesmo lado do rótulo final: uma análise com
+                score positivo (garantista) pode ter como item mais pesado
+                justamente o único que restringe. Ler o verbo do rótulo
+                imprimia "Amplia" embaixo de um trecho que restringe — e o
+                trecho está ali do lado, para o leitor conferir. */}
             <strong className="text-text">
-              {restritivo ? "Restringe" : "Amplia"}: {labelDoDireito(d.principal.direito)}
+              {d.principal.direcao === "restringe"
+                ? "Restringe"
+                : d.principal.direcao === "amplia"
+                  ? "Amplia"
+                  : "Toca"}
+              : {labelDoDireito(d.principal.direito)}
             </strong>{" "}
             <span className="text-text-soft">
               ({d.principal.dispositivo}

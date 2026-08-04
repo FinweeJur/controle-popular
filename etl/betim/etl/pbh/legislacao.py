@@ -201,6 +201,22 @@ _TITULO = re.compile(
 )
 _ANO_POR_EXTENSO = re.compile(r"\bde\s+(?:\d{1,2}[ºo°]?\s+de\s+)?[a-zç]+\s+de\s+(\d{4})", re.I)
 
+# ESPÉCIE ESCONDIDA DENTRO DA CATEGORIA. A API classifica o ato pela categoria
+# do Diário, e "Lei Ordinária" recebe também a Emenda à Lei Orgânica — que não
+# é lei ordinária: altera a Lei Orgânica do Município, exige quórum
+# qualificado e está acima da lei comum na hierarquia municipal. O parser
+# genérico achava a palavra "LEI" no MEIO do título ("EMENDA À LEI ORGÂNICA Nº
+# 43"), consumia só ela e deixava "ORGANICA" ser lida como sigla de colegiado:
+# o ato entrou como `Lei` de número `ORGANICA 43`. Uma linha em 3.577 de BH — e
+# a única em que o portal afirmava a espécie errada de uma norma, que é um
+# defeito de outra ordem que um número feio.
+#
+# Casa por `search`, não `match`, porque o carimbo de reedição vem antes
+# ("RETIFICAÇÃO* - EMENDA À LEI ORGÂNICA...").
+ESPECIES_ESCONDIDAS: tuple[tuple[re.Pattern, str], ...] = (
+    (re.compile(r"EMENDA\s+A\s+LEI\s+ORGANICA\b", re.I), "Emenda à Lei Orgânica"),
+)
+
 
 def _sem_acento(texto: str) -> str:
     t = unicodedata.normalize("NFKD", texto or "")
@@ -336,8 +352,27 @@ def _extrair_ementa(conteudo_html: str, nome_categoria: str) -> str | None:
     return None
 
 
-def _identificar(titulo_bruto: str, nome_categoria: str, ano_edicao: int) -> tuple | None:
-    """`titulo_ato` -> (numero, ano). `None` quando não há número no título.
+def _ano_do_titulo(m: re.Match, linha_sem_acento: str, ano_edicao: int) -> int:
+    """Ano do ato: por extenso no título, senão o `/AA` do número, senão a
+    edição. Ano absurdo cai para a edição — é o melhor que a fonte dá."""
+    m_ext = _ANO_POR_EXTENSO.search(linha_sem_acento)
+    if m_ext:
+        ano = int(m_ext.group(1))
+    elif m.group("ano_barra"):
+        bruto = m.group("ano_barra")
+        ano = int(bruto) if len(bruto) == 4 else 2000 + int(bruto)
+    else:
+        return ano_edicao
+    return ano if ANO_PISO <= ano <= ano_edicao + 1 else ano_edicao
+
+
+def _identificar(
+    titulo_bruto: str, nome_categoria: str, ano_edicao: int
+) -> tuple[str, int, str | None] | None:
+    """`titulo_ato` -> (numero, ano, espécie). `None` quando não há número.
+
+    A `espécie` é o `tipo` a gravar quando o título contradiz a categoria da
+    fonte (ver `ESPECIES_ESCONDIDAS`); `None` quando a categoria vale.
 
     O TÍTULO PODE TER VÁRIAS LINHAS, E O LIXO CAI DOS DOIS LADOS. Há
     "RETIFICAÇÃO*\\n\\nLEI Nº 11.632, DE ..." (carimbo na frente) e
@@ -357,6 +392,17 @@ def _identificar(titulo_bruto: str, nome_categoria: str, ano_edicao: int) -> tup
 
     for linha in re.split(r"[\r\n]+", titulo_bruto or ""):
         sem_acento = _sem_acento(_espremer(linha))
+
+        # Antes de tudo: o título pode nomear uma espécie que CONTÉM a
+        # palavra da categoria sem ser ela.
+        for padrao, especie in ESPECIES_ESCONDIDAS:
+            m_esp = padrao.search(sem_acento)
+            if not m_esp:
+                continue
+            m = _TITULO.match(sem_acento[m_esp.end():].strip())
+            if m:
+                return m.group("numero"), _ano_do_titulo(m, sem_acento, ano_edicao), especie
+
         # "REPUBLICAÇÃO * - DECRETO Nº 19.266, DE ..." — corta o carimbo que
         # vem antes do nome da categoria na MESMA linha.
         pos = sem_acento.upper().find(cabeca)
@@ -379,20 +425,13 @@ def _identificar(titulo_bruto: str, nome_categoria: str, ano_edicao: int) -> tup
 
         numero = m.group("numero")
         qualificador = _espremer(m.group("qualificador") or "")
+        ano = _ano_do_titulo(m, sem_acento, ano_edicao)
 
-        ano = None
-        m_ext = _ANO_POR_EXTENSO.search(sem_acento)
-        if m_ext:
-            ano = int(m_ext.group(1))
-        elif m.group("ano_barra"):
-            bruto = m.group("ano_barra")
-            ano = int(bruto) if len(bruto) == 4 else 2000 + int(bruto)
-        if ano is None or not (ANO_PISO <= ano <= ano_edicao + 1):
-            # Sem ano no título (ou ano absurdo), o ano da EDIÇÃO é o melhor
-            # que a fonte dá. Só vale para o que não tem data no título.
-            ano = ano_edicao
-
-        return (f"{qualificador} {numero}".strip() if qualificador else numero), ano
+        return (
+            (f"{qualificador} {numero}".strip() if qualificador else numero),
+            ano,
+            None,
+        )
 
     return None
 
@@ -452,7 +491,7 @@ def _linhas(cliente: ClienteDOM, indice: dict, id_municipio: str) -> list[dict]:
         if not identificado:
             sem_numero.append(f"{ato_id}:{_espremer(ato.get('titulo_ato') or '')[:60]}")
             continue
-        numero, ano = identificado
+        numero, ano, especie = identificado
 
         try:
             conteudo = cliente.conteudo_do_ato(ato_id)
@@ -472,7 +511,7 @@ def _linhas(cliente: ClienteDOM, indice: dict, id_municipio: str) -> list[dict]:
 
         linha = {
             "id_municipio": id_municipio,
-            "tipo": TIPO_NO_BANCO.get(nome_categoria, nome_categoria.title()),
+            "tipo": especie or TIPO_NO_BANCO.get(nome_categoria, nome_categoria.title()),
             "numero": numero,
             "ano": ano,
             "ementa": ementa,

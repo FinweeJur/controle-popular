@@ -86,12 +86,16 @@ isso é erro de build — não há request no momento da geração.
 | `compra-e-venda` | categoria, q | filtrar no cliente |
 | `prefeitura/obras` | situação | filtrar no cliente |
 | `prefeitura/despesas` | ano | filtrar no cliente |
-| `prefeitura/legislacao` | categoria, tema, ano | filtrar no cliente |
+| `prefeitura/legislacao` | categoria, tema, ano, **direito** | filtrar no cliente |
 | `meio-ambiente/paraopeba` | status, ordem | filtrar no cliente |
 | `prefeitura/contratos` | 6 filtros + paginação | **JSON estático + tabela cliente** |
 | `camara/proposicoes` | 5 filtros + paginação | **JSON estático + tabela cliente** |
 | `prefeitura/servidores` | q + paginação | **JSON estático + tabela cliente** |
 | `vereadores/[slug]` | aba | filtrar no cliente |
+
+`/[municipio]/legislacao/alertas` e `/bons-exemplos`, criadas depois deste
+inventário, **não** entram na lista: lêem só `params`, não `searchParams`, e
+saem no export sem trabalho nenhum.
 
 Os sete primeiros são pequenos: o servidor renderiza o conjunto inteiro e um
 componente cliente com `useSearchParams()` filtra. Os três em negrito têm

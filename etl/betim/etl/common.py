@@ -533,6 +533,74 @@ def fetch_all(query_factory, page_size: int = PAGE_SIZE) -> list[dict]:
     return rows
 
 
+# `analises.ato_id` e `analises.proposicao_id` são `references ... on delete
+# cascade` (migration 0033). Todo refresh total nestas duas tabelas é um
+# delete, e o delete leva a análise junto — sem erro, sem log, sem nada.
+_COLUNA_DE_ANALISE = {"atos_oficiais": "ato_id", "proposicoes": "proposicao_id"}
+
+
+def _abortar_se_cascatear_analise(
+    client, table: str, filtros: dict, tag: str, permitido: bool
+) -> None:
+    """Impede que um refresh total apague análise garantista em silêncio.
+
+    O PERIGO É REAL E CARO. `refresh_completo_seguro` é delete+insert, então
+    toda linha renasce com uuid novo; e como a 0033 pendurou `analises` em
+    `atos_oficiais`/`proposicoes` com `on delete cascade`, refazer a
+    legislação de uma cidade apaga as análises DELA. As 245 análises do
+    banco custaram uma fila inteira de trabalho de modelo, e some tudo sem
+    exceção, sem aviso, sem linha de log — o sintoma seria a tela de alertas
+    ficar vazia dias depois e ninguém saber por quê.
+
+    Não basta o guarda de redução: aqui a tabela pode até CRESCER (foi o que
+    aconteceu com as proposições de BH, 3.667 -> 3.681) e a análise morrer
+    do mesmo jeito.
+
+    O guarda não é esperto: se há análise sob o mesmo recorte, ele para e
+    manda quem chamou decidir. Reanalisar é caro, mas é caro e visível — o
+    contrário do que acontecia aqui.
+    """
+    coluna = _COLUNA_DE_ANALISE.get(table)
+    if not coluna or permitido:
+        return
+    id_municipio = filtros.get("id_municipio")
+    if not id_municipio:
+        return
+    # `analises` só tem as duas colunas de objeto, e exatamente uma delas é
+    # preenchida por linha (a 0033 garante). Então "aponta para atos" é o
+    # mesmo que "proposicao_id IS NULL", e vice-versa — o que evita depender
+    # de um `IS NOT NULL` que este cliente não expõe.
+    outra = "proposicao_id" if coluna == "ato_id" else "ato_id"
+    try:
+        n = (
+            client.table("analises")
+            .select("id", count="exact")
+            .limit(1)
+            .eq("id_municipio", id_municipio)
+            .is_(outra, None)
+            .execute()
+            .count
+            or 0
+        )
+    except PgAPIError as e:
+        # 42P01 = tabela ausente (migration 0033 não rodada neste banco):
+        # não há análise para perder, seguir é correto. Qualquer outro erro
+        # PROPAGA — um guarda que vira aviso quando a checagem falha não é
+        # guarda nenhum, e foi assim que este quase entrou.
+        if getattr(e, "code", None) != "42P01":
+            raise
+        return
+    if n == 0:
+        return
+    raise RuntimeError(
+        f"{table}: há {n} análise(s) garantista(s) de id_municipio={id_municipio} "
+        f"apontando para esta tabela, e `analises.{coluna}` é ON DELETE CASCADE — "
+        "o refresh total apagaria todas elas em silêncio. Exporte/reimporte as "
+        "análises depois, ou rode com permitir_perda_de_analise=True se a perda "
+        "for aceitável e você for reanalisar."
+    )
+
+
 def refresh_completo_seguro(
     client,
     table: str,
@@ -541,6 +609,7 @@ def refresh_completo_seguro(
     *,
     chunk: int = 200,
     permitir_reducao: bool = False,
+    permitir_perda_de_analise: bool = False,
     ao_reduzir: str = "abort",
     rotulo: str | None = None,
 ) -> bool:
@@ -566,6 +635,9 @@ def refresh_completo_seguro(
     `permitir_reducao=True` é a válvula de escape para quando a redução é
     real (registro removido na fonte): confirme na fonte e rode de novo com
     a flag. Nunca é o default.
+
+    `permitir_perda_de_analise=True` libera o outro guarda, o de
+    `_abortar_se_cascatear_analise` — leia a docstring dele antes.
 
     Devolve True se escreveu, False se pulou.
     """
@@ -595,6 +667,8 @@ def refresh_completo_seguro(
             raise RuntimeError(msg)
         print(f"[{tag}] AVISO: {msg}")
         return False
+
+    _abortar_se_cascatear_analise(client, table, filtros, tag, permitir_perda_de_analise)
 
     q = client.table(table).delete()
     for col, val in filtros.items():

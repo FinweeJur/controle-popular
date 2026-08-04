@@ -28,6 +28,17 @@ export interface LegislacaoData {
   temas: ContagemTema[];
   /** Direitos da rubrica tocados por algum ato analisado — popula o filtro. */
   direitosDisponiveis: DireitoContagem[];
+  /** Quantos atos desta cidade têm análise concluída — o denominador do filtro por direito. */
+  atosAnalisados: number;
+  /**
+   * `false` quando a camada de análise não respondeu.
+   *
+   * Existe para separar dois estados que dão a MESMA lista vazia e
+   * significam coisas opostas: "nenhum ato analisado toca este direito" e
+   * "não deu para saber". Sem isso, `?direito=saude` com o banco fora do ar
+   * imprimiria "nenhuma norma para esse filtro", que é afirmação falsa.
+   */
+  analiseOk: boolean;
   total: number;
   configured: boolean;
   ok: boolean;
@@ -39,6 +50,8 @@ const EMPTY: LegislacaoData = {
   anosDisponiveis: [],
   temas: [],
   direitosDisponiveis: [],
+  atosAnalisados: 0,
+  analiseOk: false,
   total: 0,
   configured: false,
   ok: false,
@@ -116,6 +129,7 @@ export async function getLegislacao(
     // direito — degradação parcial em vez de derrubar a página inteira.
     let direitosDisponiveis: DireitoContagem[] = [];
     let analisePorAto = new Map<string, AnaliseAto>();
+    let analiseOk = false;
     try {
       const [porAto, direitos] = await Promise.all([
         analisesDeAtos(idMunicipio, base.map((a) => a.id)),
@@ -123,8 +137,10 @@ export async function getLegislacao(
       ]);
       analisePorAto = porAto;
       direitosDisponiveis = direitos;
+      analiseOk = true;
     } catch {
-      // segue com os mapas vazios
+      // segue com os mapas vazios e `analiseOk` falso — a página precisa
+      // saber a diferença entre "não achou" e "não deu para procurar".
     }
 
     const todos: AtoRow[] = base.map((a) => ({ ...a, analise: analisePorAto.get(a.id) }));
@@ -141,6 +157,8 @@ export async function getLegislacao(
       anosDisponiveis,
       temas,
       direitosDisponiveis,
+      atosAnalisados: analisePorAto.size,
+      analiseOk,
       total: todos.length,
       configured: true,
       ok: true,
