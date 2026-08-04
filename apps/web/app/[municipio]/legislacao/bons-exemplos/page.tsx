@@ -1,6 +1,11 @@
 import Link from "@/lib/betim/link";
 import CardLegislacao from "@/app/[municipio]/components/CardLegislacao";
-import { SemDado, Vazio, CoberturaAviso } from "@/app/[municipio]/legislacao/alertas/page";
+import {
+  SemDado,
+  Vazio,
+  Contagem,
+  CoberturaAviso,
+} from "@/app/[municipio]/legislacao/alertas/page";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { bonsExemplos, coberturaLegislacao } from "@/lib/betim/legislacao-garantista";
 
@@ -49,10 +54,11 @@ export default async function BonsExemplosLegislacao({
         <Vazio cobertura={cobertura} />
       ) : (
         <>
-          <p className="mt-6 mb-4 text-sm text-text-soft">
-            {lista.length} {lista.length === 1 ? "item" : "itens"}, do mais expressivo para o
-            menos.
-          </p>
+          <Contagem
+            lista={lista.length}
+            cobertura={cobertura}
+            ordem="do mais expressivo para o menos"
+          />
           <div className="space-y-4">
             {lista.map((d) => (
               <CardLegislacao key={d.id} d={d} />

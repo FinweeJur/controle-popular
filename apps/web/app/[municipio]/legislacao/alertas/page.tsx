@@ -54,9 +54,7 @@ export default async function AlertasLegislacao({
         <Vazio cobertura={cobertura} />
       ) : (
         <>
-          <p className="mt-6 mb-4 text-sm text-text-soft">
-            {lista.length} {lista.length === 1 ? "item" : "itens"}, do mais grave para o menos.
-          </p>
+          <Contagem lista={lista.length} cobertura={cobertura} ordem="do mais grave para o menos" />
           <div className="space-y-4">
             {lista.map((d) => (
               <CardLegislacao key={d.id} d={d} />
@@ -101,6 +99,37 @@ export function Vazio({ cobertura }: { cobertura: CoberturaLegislacao }) {
         </p>
       )}
     </div>
+  );
+}
+
+/**
+ * A contagem da lista COM o universo, na mesma linha.
+ *
+ * O aviso de cobertura no rodapé é completo, mas fica depois de 44 cards em
+ * São Paulo — quem lê o ranking e para no meio nunca chega nele. A exigência
+ * é que toda tela que rankeia diga sobre quantos itens fala, e o lugar onde
+ * isso é lido é junto do "44 itens", não no fim da página.
+ */
+export function Contagem({
+  lista,
+  cobertura,
+  ordem,
+}: {
+  lista: number;
+  cobertura: CoberturaLegislacao;
+  ordem: string;
+}) {
+  const analisados = cobertura.atosAnalisados + cobertura.proposicoesAnalisadas;
+  const acervo = cobertura.totalAtos + cobertura.totalProposicoes;
+  return (
+    <p className="mt-6 mb-4 text-sm text-text-soft">
+      {lista} {lista === 1 ? "item" : "itens"}, {ordem} —{" "}
+      <strong className="text-text">
+        entre as {formatNumberBR(analisados)} normas e projetos já analisados
+      </strong>{" "}
+      de {formatNumberBR(acervo)} que {cobertura.totalAtos > 0 ? "a cidade tem" : "existem"}{" "}
+      ({percentualAnalisado(analisados, acervo)}).
+    </p>
   );
 }
 
