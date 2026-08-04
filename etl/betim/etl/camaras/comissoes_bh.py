@@ -107,6 +107,8 @@ from etl.common import (
 
 LOG = "[etl.camaras.comissoes_bh]"
 
+HOST_ESPERADO = "cmbh.mg.gov.br"
+
 CAMINHO_INDICE = "/atividade-legislativa/comissoes"
 CAMINHO_COMPOSICAO = "/atividade-legislativa/comissoes/composicao-comissoes-permanentes/"
 
@@ -327,6 +329,17 @@ def sync(id_municipio: str, permitir_reducao: bool = False) -> None:
             f"`municipios.fontes.camara_host` está vazio para {id_municipio} "
             f"({municipio['nome']}-{municipio['uf']}). O host da Câmara sai do banco, "
             "não do código — semeie a fonte antes de rodar."
+        )
+    # Ler o host do banco impede o default de cidade, mas não impede rodar
+    # este parser contra a Câmara ERRADA: os seletores abaixo são do Drupal 7
+    # da CMBH, e num portal de outro fornecedor eles casam zero elemento —
+    # "nenhuma comissão" é indistinguível de "a Câmara não tem comissão".
+    # `obras` e `viagens` já comparavam com HOST_ESPERADO; este não.
+    if HOST_ESPERADO not in host:
+        raise RuntimeError(
+            f"id_municipio={id_municipio} ({municipio['nome']}-{municipio['uf']}) "
+            f"tem camara_host={host!r}, e este módulo lê o HTML do Drupal 7 da "
+            f"{HOST_ESPERADO}. Rodar aqui não daria erro: daria lista vazia."
         )
     base = host.rstrip("/")
     print(f"{LOG} {municipio['nome']}-{municipio['uf']} ({id_municipio}) em {base}")
