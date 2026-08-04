@@ -1495,6 +1495,10 @@ export const vereadores = pgTable("vereadores", {
 	mandato_inicio: date(),
 	mandato_fim: date(),
 	ativo: boolean().default(true),
+	/** Por que nao esta em exercicio (migration 0039): em_exercicio |
+	 *  licenciado | afastado | encerrado. Licenciado continua titular da
+	 *  cadeira e da comissao, mas NAO entra na contagem de ativos. */
+	situacao_mandato: text().default('em_exercicio').notNull(),
 	votos_eleicao: integer(),
 	ano_eleicao: integer(),
 	id_candidato_tse: text(),

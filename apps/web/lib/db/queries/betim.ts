@@ -11,6 +11,7 @@ import {
   isNotNull,
   isNull,
   lte,
+  ne,
   or,
   sql,
 } from "drizzle-orm";
@@ -176,9 +177,41 @@ export async function ocorrenciasSeguranca(idMunicipio: IdMunicipio) {
  * header `count: "exact"`. Uma segunda consulta só para contar gastaria um
  * subrequest a mais, e o teto no Workers Free é 50.
  */
+/**
+ * Recortes de `perfil` — quem manda, e não quem é servidor.
+ *
+ * `comissionados`: sai de `vinculo`, que a fonte já publica pronto
+ * (`EM COMISSAO` + `EM COMISS CUMP JUD` = 5.530 em SP). Cargo em comissão é
+ * de livre nomeação e exoneração; é a parte do quadro que muda com o governo.
+ *
+ * `alto_escalao`: cúpula da administração. A lista é por PADRÃO DE CARGO e
+ * traz uma exclusão que não é detalhe — sem ela o filtro mentiria feio:
+ *
+ *     DIRETOR DE ESCOLA        1.330
+ *     COORDENADOR PEDAGOGICO   2.123
+ *     SECRETARIO DE ESCOLA         2
+ *
+ * São 3.455 profissionais de ESCOLA cujos cargos usam as mesmas palavras da
+ * cúpula. Incluí-los faria "alto escalão" saltar de ~350 para ~3.800 pessoas
+ * e transformaria diretor de escola em secretário municipal aos olhos de quem
+ * lê. Diretor de escola é chefia pedagógica, não cúpula de governo.
+ */
+const PERFIS_SERVIDOR = ["comissionados", "alto_escalao"] as const;
+export type PerfilServidor = (typeof PERFIS_SERVIDOR)[number];
+
+export function ehPerfilServidor(v: string | undefined): v is PerfilServidor {
+  return !!v && (PERFIS_SERVIDOR as readonly string[]).includes(v);
+}
+
 export async function listarServidores(
   idMunicipio: IdMunicipio,
-  opts: { q?: string; orgao?: string; pagina?: number; porPagina?: number } = {}
+  opts: {
+    q?: string;
+    orgao?: string;
+    perfil?: PerfilServidor;
+    pagina?: number;
+    porPagina?: number;
+  } = {}
 ) {
   const db = getDb();
   if (!db) return null;
@@ -187,6 +220,34 @@ export async function listarServidores(
 
   const cond = [eq(servidores.id_municipio, idMunicipio)];
   if (opts.orgao) cond.push(eq(servidores.orgao, opts.orgao));
+
+  if (opts.perfil === "comissionados") {
+    cond.push(sql`${servidores.vinculo} like 'EM COMISS%'`);
+  } else if (opts.perfil === "alto_escalao") {
+    cond.push(sql`(
+      (
+           ${servidores.cargo} like 'SECRETARIO %'
+        or ${servidores.cargo} like 'SECRETARIO-%'
+        or ${servidores.cargo} like 'SUBPREFEITO%'
+        or ${servidores.cargo} like 'CHEFE DE GABINETE%'
+        or ${servidores.cargo} like 'DIRETOR I%'
+        or ${servidores.cargo} like 'DIRETOR DE PROJETOS%'
+        or ${servidores.cargo} like 'DIRETOR DE PROGRAMA%'
+        or ${servidores.cargo} like 'PRESIDENTE%'
+        or ${servidores.cargo} like 'SUPERINTENDENTE%'
+        or ${servidores.cargo} like 'OUVIDOR GERAL%'
+        or ${servidores.cargo} like 'CONTROLADOR GERAL%'
+        or ${servidores.cargo} like 'PROCURADOR GERAL%'
+        or ${servidores.cargo} like 'ASSESSOR ESPECIAL%'
+        or ${servidores.cargo} like 'COORDENADOR I%'
+      )
+      -- A exclusao das funcoes de ESCOLA e o que faz este filtro significar
+      -- "cupula" em vez de "quem tem palavra de chefia no titulo".
+      and ${servidores.cargo} not like '%ESCOLA%'
+      and ${servidores.cargo} not like '%PEDAGOGIC%'
+    )`);
+  }
+
   if (opts.q) {
     const termo = `%${opts.q}%`;
     // Busca em nome OU cargo OU lotação, como no `.or()` do PostgREST.
@@ -1564,6 +1625,7 @@ const COLUNAS_VEREADOR = {
   biografia: vereadores.biografia,
   profissao: vereadores.profissao,
   aniversario_dia_mes: vereadores.aniversario_dia_mes,
+  situacao_mandato: vereadores.situacao_mandato,
 };
 
 /**
@@ -1580,6 +1642,33 @@ export async function listarVereadores(idMunicipio: IdMunicipio) {
     .select(COLUNAS_VEREADOR)
     .from(vereadores)
     .where(and(eq(vereadores.id_municipio, idMunicipio), eq(vereadores.ativo, true)))
+    .orderBy(ptBr(vereadores.nome_urna), asc(vereadores.id));
+}
+
+/**
+ * Os vereadores que NAO estao em exercicio, com o motivo.
+ *
+ * Consulta separada de `listarVereadores` de proposito, e a separacao E o
+ * ponto: `listarVereadores` filtra `ativo = true` e alimenta contagem, media
+ * por vereador e ranking. Juntar os licenciados ali faria Sao Paulo exibir 59
+ * vereadores para 55 cadeiras, e toda estatistica derivada herdaria o erro.
+ *
+ * Eles existem no banco porque continuam sendo os titulares — e porque sem
+ * eles 8 participacoes de comissao em vigor nao eram gravaveis, deixando a
+ * vice-presidencia da CCJ vazia na tela.
+ */
+export async function listarVereadoresForaDeExercicio(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select(COLUNAS_VEREADOR)
+    .from(vereadores)
+    .where(
+      and(
+        eq(vereadores.id_municipio, idMunicipio),
+        ne(vereadores.situacao_mandato, "em_exercicio")
+      )
+    )
     .orderBy(ptBr(vereadores.nome_urna), asc(vereadores.id));
 }
 

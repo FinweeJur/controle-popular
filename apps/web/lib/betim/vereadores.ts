@@ -19,6 +19,8 @@ export interface VereadorRow {
   biografia?: string | null;
   profissao?: string | null;
   aniversario_dia_mes?: string | null;
+  /** Migration 0039. `em_exercicio` para quem ocupa a cadeira hoje. */
+  situacao_mandato?: string | null;
 }
 
 export interface ProposicaoRow {
@@ -171,6 +173,33 @@ export async function getVereadores(
 ): Promise<{ rows: VereadorRow[]; ok: boolean }> {
   try {
     const data = await q.listarVereadores(idMunicipio);
+    if (!data) return { rows: [], ok: false };
+    return { rows: data as VereadorRow[], ok: true };
+  } catch {
+    return { rows: [], ok: false };
+  }
+}
+
+/** Rotulo legivel de cada situacao fora de exercicio. */
+export const SITUACAO_MANDATO_LABELS: Record<string, string> = {
+  licenciado: "Licenciado",
+  afastado: "Afastado",
+  encerrado: "Mandato encerrado",
+};
+
+/**
+ * Quem NAO esta em exercicio hoje, com o motivo.
+ *
+ * Separado de `getVereadores` porque aquele alimenta contagem, media e
+ * ranking, e todos tem de continuar valendo sobre as CADEIRAS EM EXERCICIO —
+ * juntar os licenciados ali faria Sao Paulo dizer 59 vereadores para 55
+ * cadeiras.
+ */
+export async function getVereadoresForaDeExercicio(
+  idMunicipio: IdMunicipio
+): Promise<{ rows: VereadorRow[]; ok: boolean }> {
+  try {
+    const data = await q.listarVereadoresForaDeExercicio(idMunicipio);
     if (!data) return { rows: [], ok: false };
     return { rows: data as VereadorRow[], ok: true };
   } catch {

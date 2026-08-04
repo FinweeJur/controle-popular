@@ -5,7 +5,12 @@ import RankingVereadores from "@/app/[municipio]/components/charts/RankingVeread
 import ComoFuncionaPontuacao from "@/app/[municipio]/components/charts/ComoFuncionaPontuacao";
 import ComposicaoCamara from "@/app/[municipio]/components/charts/ComposicaoCamara";
 import AreasAtuacao from "@/app/[municipio]/components/charts/AreasAtuacao";
-import { getVereadores, getRankingVereadores } from "@/lib/betim/vereadores";
+import {
+  getVereadores,
+  getRankingVereadores,
+  getVereadoresForaDeExercicio,
+  SITUACAO_MANDATO_LABELS,
+} from "@/lib/betim/vereadores";
 import { getTemasCamara } from "@/lib/betim/temas";
 import { getGastoGabineteDaCasa, getVerbasAnalytics } from "@/lib/betim/verbas";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
@@ -42,6 +47,9 @@ export default async function CamaraPage({
   const verbas = await getVerbasAnalytics(cidade.id_municipio);
   const gabinetes = await getGastoGabineteDaCasa(cidade.id_municipio);
   const ranking = await getRankingVereadores(cidade.id_municipio);
+  // Consulta separada de propósito: estes NÃO entram em `rows`, que é o
+  // que conta cadeiras e alimenta o ranking. Ver `listarVereadores`.
+  const foraDeExercicio = await getVereadoresForaDeExercicio(cidade.id_municipio);
   const temasCamara = await getTemasCamara(cidade.id_municipio);
   const fonteCamara = fonteDaCamara(cidade);
   // `camara_youtube` e `camara_sessoes` são gravados em DOIS formatos: uma
@@ -328,6 +336,56 @@ export default async function CamaraPage({
             </Link>
           ))}
         </div>
+      )}
+
+      {/* FORA DA CONTAGEM, E DITO NA TELA.
+          O licenciado continua sendo o titular da cadeira e o site oficial o
+          mantém compondo comissão — some-lo aos ativos faria São Paulo
+          anunciar 59 vereadores para 55 cadeiras, e toda média por vereador
+          herdaria o erro. Omiti-lo por inteiro criaria o problema oposto: a
+          vice-presidência da CCJ aparecia vazia, lendo como "a comissão não
+          tem vice" em vez de "o vice está licenciado". */}
+      {foraDeExercicio.ok && foraDeExercicio.rows.length > 0 && (
+        <section className="mt-10">
+          <h2 className="mb-1 font-display text-lg font-bold text-text">
+            Fora de exercício
+          </h2>
+          <p className="mb-5 max-w-2xl text-sm text-text-soft">
+            {foraDeExercicio.rows.length === 1
+              ? "Este vereador continua sendo o titular da cadeira"
+              : `Estes ${foraDeExercicio.rows.length} vereadores continuam sendo os titulares das cadeiras`}
+            , e podem seguir compondo comissões — mas não estão em exercício
+            hoje. Por isso <strong className="font-medium text-text">não entram
+            na contagem de {rows.length}</strong> acima, nem no ranking de
+            atuação. Quem ocupa a vaga no lugar deles aparece como vereador em
+            exercício, na lista de cima.
+          </p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {foraDeExercicio.rows.map((v) => (
+              <Link
+                key={v.slug}
+                href={`/vereadores/${v.slug}`}
+                className="rounded-2xl border border-dashed border-border bg-surface-2 p-5 transition-colors hover:border-primary"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-display text-base font-semibold text-text-soft">
+                    {v.nome_urna ?? v.nome}
+                  </h3>
+                  <span className="shrink-0 rounded-full border border-border px-2.5 py-0.5 text-xs font-semibold text-text-soft">
+                    {SITUACAO_MANDATO_LABELS[v.situacao_mandato ?? ""] ??
+                      "Fora de exercício"}
+                  </span>
+                </div>
+                <p className="mt-1 text-sm text-text-soft">{v.nome}</p>
+                {v.partido && (
+                  <p className="mt-2 inline-block rounded-full bg-surface px-2.5 py-0.5 text-xs font-semibold text-text-soft">
+                    {v.partido}
+                  </p>
+                )}
+              </Link>
+            ))}
+          </div>
+        </section>
       )}
     </div>
   );

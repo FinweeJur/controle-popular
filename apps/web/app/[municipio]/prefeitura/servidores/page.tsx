@@ -2,6 +2,7 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import TabelaScroll from "@/app/[municipio]/components/TabelaScroll";
 import { getServidores, SERVIDORES_PAGE_SIZE } from "@/lib/betim/servidores";
+import { ehPerfilServidor } from "@/lib/db/queries/betim";
 import { formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { hostDaPrefeitura } from "@/lib/db/queries/municipios";
@@ -13,7 +14,7 @@ export const generateMetadata = metadataDaCidade(
 
 interface ServidoresPageProps {
   params: Promise<{ municipio: string }>;
-  searchParams: Promise<{ q?: string; page?: string }>;
+  searchParams: Promise<{ q?: string; page?: string; perfil?: string }>;
 }
 
 export default async function ServidoresPage({
@@ -27,13 +28,22 @@ export default async function ServidoresPage({
   const hostPrefeitura = hostDaPrefeitura(cidade);
   const params = await searchParams;
   const page = Math.max(1, Number(params.page) || 1);
-  const { rows, total, ok, configured } = await getServidores(cidade.id_municipio, { q: params.q, page });
+  // `ehPerfilServidor` valida contra a lista fechada: `?perfil=qualquer_coisa`
+  // vira `undefined` (sem filtro) em vez de virar SQL que não casa nada e
+  // devolver "nenhum servidor" — que leria como "a Prefeitura não tem".
+  const perfil = ehPerfilServidor(params.perfil) ? params.perfil : undefined;
+  const { rows, total, ok, configured } = await getServidores(cidade.id_municipio, {
+    q: params.q,
+    perfil,
+    page,
+  });
   const totalPages = Math.max(1, Math.ceil(total / SERVIDORES_PAGE_SIZE));
   const hasResults = configured && ok && rows.length > 0;
 
   const buildQuery = (overrides: Record<string, string | number | undefined>) => {
     const merged: Record<string, string | number | undefined> = {
       q: params.q,
+      perfil,
       page: params.page,
       ...overrides,
     };
@@ -82,18 +92,59 @@ export default async function ServidoresPage({
             className="w-72 rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
           />
         </div>
+        <div className="flex flex-col">
+          <label htmlFor="perfil" className="mb-1 text-xs font-medium text-text-soft">
+            Tipo de cargo
+          </label>
+          <select
+            id="perfil"
+            name="perfil"
+            defaultValue={perfil ?? ""}
+            className="rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
+          >
+            <option value="">Todos os servidores</option>
+            <option value="comissionados">Só cargos comissionados</option>
+            <option value="alto_escalao">Só alto escalão</option>
+          </select>
+        </div>
         <button
           type="submit"
           className="cursor-pointer rounded-lg border border-primary bg-primary px-5 py-2 text-sm font-semibold text-primary-ink"
         >
           Buscar
         </button>
-        {params.q && (
+        {(params.q || perfil) && (
           <Link href="/prefeitura/servidores" className="text-sm text-text-soft hover:underline">
             Limpar
           </Link>
         )}
       </form>
+
+      {/* O QUE CADA RECORTE SIGNIFICA, na tela e não só no código: sem isto
+          "alto escalão" seria um número sem régua, e o leitor não teria como
+          saber que diretor de escola ficou de fora — nem por quê. */}
+      {perfil && (
+        <p className="mb-6 max-w-2xl rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-text-soft">
+          {perfil === "comissionados" ? (
+            <>
+              <strong className="font-medium text-text">Cargos comissionados</strong> são
+              os de livre nomeação e exoneração — a parte do quadro que muda com o
+              governo. O recorte sai do vínculo declarado pela própria Prefeitura
+              (&ldquo;em comissão&rdquo;), não de uma leitura nossa do nome do cargo.
+            </>
+          ) : (
+            <>
+              <strong className="font-medium text-text">Alto escalão</strong> é a cúpula
+              da administração: secretários e adjuntos, subprefeitos, chefes de
+              gabinete, diretores, presidentes, superintendentes, procurador e
+              controlador-geral. <strong className="font-medium text-text">Diretor de
+              escola e coordenador pedagógico ficam de fora</strong> — são chefia
+              pedagógica, não cúpula de governo, e somam 3.455 pessoas em São Paulo,
+              o bastante para desfigurar o recorte se entrassem.
+            </>
+          )}
+        </p>
+      )}
 
       <div className="mb-6 max-w-xs">
         <DataCard
@@ -106,8 +157,8 @@ export default async function ServidoresPage({
 
       {!hasResults ? (
         <div className="rounded-2xl border border-dashed border-border bg-surface-2 p-8 text-center text-sm text-text-soft">
-          {configured && ok && params.q
-            ? "Nenhum servidor encontrado para essa busca."
+          {configured && ok && (params.q || perfil)
+            ? "Nenhum servidor encontrado para esse filtro."
             : "Nenhum servidor encontrado no momento."}
         </div>
       ) : (

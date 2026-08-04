@@ -32,6 +32,8 @@ export async function getServidores(
   opts: {
     q?: string;
     orgao?: string;
+    /** `comissionados` | `alto_escalao` — ver `PERFIS_SERVIDOR`. */
+    perfil?: q.PerfilServidor;
     page?: number;
   }
 ): Promise<ServidoresResult> {
@@ -39,6 +41,7 @@ export async function getServidores(
     const data = await q.listarServidores(idMunicipio, {
       q: opts.q,
       orgao: opts.orgao,
+      perfil: opts.perfil,
       pagina: opts.page,
       porPagina: SERVIDORES_PAGE_SIZE,
     });

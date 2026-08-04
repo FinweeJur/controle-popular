@@ -367,7 +367,22 @@ def _baixar_vereadores(campos: str | None = None) -> list[dict]:
     return _baixar_wp(WP_VEREADOR, campos)
 
 
+def _situacao_do_post(post: dict) -> str:
+    """`em_exercicio` | `licenciado`, lido dos metas do WordPress da CMSP.
+
+    O WP marca o licenciado com `_cmsp_vereador_licenciado: on` E OMITE o
+    `_cmsp_vereador_ativo` — os dois sinais concordam, mas o segundo é
+    ausência, e ausência é frágil: um meta que simplesmente pare de ser
+    publicado transformaria a Câmara inteira em licenciados. Por isso a
+    presença do `licenciado` manda, e o `ativo` é só o caso normal.
+    """
+    if _meta(post, "_cmsp_vereador_licenciado") == "on":
+        return "licenciado"
+    return "em_exercicio"
+
+
 def _linha_vereador(id_municipio: str, post: dict) -> dict:
+    situacao = _situacao_do_post(post)
     titulo = html.unescape((post.get("title") or {}).get("rendered") or "").strip()
     biografia = _meta(post, "_cmsp_vereador_biografia") or _meta(post, "_cmsp_vereador_biography")
     if biografia:
@@ -392,7 +407,11 @@ def _linha_vereador(id_municipio: str, post: dict) -> dict:
         # nasceu — mas gravar mesmo assim mantém "volte à fonte" uniforme
         # entre as cidades em vez de virar um caso especial no app.
         "slug_fonte": post["slug"],
-        "ativo": True,
+        # `ativo` e `situacao_mandato` andam juntos e o banco EXIGE isso
+        # (CHECK `vereadores_ativo_coerente_check`, migration 0039): quem está
+        # licenciado não pode entrar na contagem de cadeiras em exercício.
+        "ativo": situacao == "em_exercicio",
+        "situacao_mandato": situacao,
         "mandato_inicio": f"{LEGISLATURA['inicio']}-01-01",
         "mandato_fim": f"{LEGISLATURA['fim']}-12-31",
         "ano_eleicao": LEGISLATURA["ano_eleicao"],
@@ -403,7 +422,27 @@ def _linha_vereador(id_municipio: str, post: dict) -> dict:
 def sync_vereadores(client, id_municipio: str) -> list[dict]:
     posts = _baixar_vereadores()
     ativos = [p for p in posts if _meta(p, "_cmsp_vereador_ativo") == "on"]
-    print(f"[{TAG}] wp_posts={len(posts)} ativos={len(ativos)}")
+    # O LICENCIADO ENTRA NO BANCO, mas não na contagem de cadeiras.
+    #
+    # Ele continua sendo o titular e o WP o mantém compondo comissão — foi por
+    # ele estar FORA de `vereadores` que 8 participações em vigor não eram
+    # graváveis (`comissao_membros.vereador_id` é NOT NULL) e a
+    # vice-presidência da CCJ aparecia vazia no portal, lendo como "a comissão
+    # não tem vice".
+    #
+    # Gravá-lo com `ativo = true` resolveria a comissão e criaria coisa pior:
+    # São Paulo exibiria 58 vereadores para 55 cadeiras, e toda média por
+    # vereador herdaria o erro. `situacao_mandato` (0039) separa os dois.
+    licenciados = [
+        p
+        for p in posts
+        if _meta(p, "_cmsp_vereador_licenciado") == "on"
+        and _meta(p, "_cmsp_vereador_ativo") != "on"
+    ]
+    print(
+        f"[{TAG}] wp_posts={len(posts)} ativos={len(ativos)} "
+        f"licenciados={len(licenciados)}"
+    )
     if not ativos:
         raise RuntimeError(
             "nenhum vereador com _cmsp_vereador_ativo=on — o WP mudou o nome do "
@@ -411,7 +450,7 @@ def sync_vereadores(client, id_municipio: str) -> list[dict]:
             "camara inteira em silencio"
         )
 
-    linhas = [_linha_vereador(id_municipio, p) for p in ativos]
+    linhas = [_linha_vereador(id_municipio, p) for p in ativos + licenciados]
     sem_chave = [x["slug"] for x in linhas if not x["id_externo"]]
     if sem_chave:
         # Sem a chave do SPLegis o vereador existe mas fica órfão de
@@ -426,7 +465,10 @@ def sync_vereadores(client, id_municipio: str) -> list[dict]:
         client,
         "vereadores",
         linhas,
-        ["id_externo", "slug_fonte"],
+        # `situacao_mandato` chegou na 0039 e entra como opcional pelo mesmo
+        # motivo das outras duas: se a migration ainda não rodou, o cadastro
+        # é regravado sem ela em vez de o sync inteiro cair.
+        ["id_externo", "slug_fonte", "situacao_mandato"],
         on_conflict="id_municipio,slug",
     )
     print(f"[{TAG}] vereadores gravados={len(linhas)}")
