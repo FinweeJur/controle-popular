@@ -77,6 +77,7 @@ from etl.common import (
     carregar_municipio,
     get_supabase_client,
 )
+from etl.psp.orgaos_canonicos import canonizar_orgao, truncados_desconhecidos
 
 PACOTE_ATIVOS = "servidores-ativos-da-prefeitura"
 PACOTE_REMUNERACAO = "remuneracao-servidores-prefeitura-de-sao-paulo"
@@ -230,7 +231,11 @@ def _mapa_orgao(linhas_ativos: list[dict]) -> tuple[dict, dict, dict]:
     setor_para_orgaos: dict[str, set[str]] = defaultdict(set)
     nome_para_orgaos: dict[str, set[str]] = defaultdict(set)
     for r in linhas_ativos:
-        orgao = (r.get("SECRET_SUBPREF") or "").strip()
+        # Canoniza AQUI também, e não só em `_sincronizar_quadro`: é deste
+        # mapa que sai o `orgao` de `folha_pagamento`, e as duas tabelas casam
+        # pelo texto. Consertar um lado só quebraria o join em silêncio — a
+        # folha ficaria com "…URBANA E OB" e o quadro com "…URBANA E OBRAS".
+        orgao = canonizar_orgao((r.get("SECRET_SUBPREF") or "").strip())
         if not orgao:
             continue
         nome = _normalizar(r.get("NOME"))
@@ -261,7 +266,10 @@ def _sincronizar_quadro(client, id_municipio: str, linhas: list[dict]) -> int:
         nome = (r.get("NOME") or "").strip()
         if not nome:
             continue
-        orgao = (
+        # `canonizar_orgao` desfaz o corte de 50 caracteres que vem DA FONTE
+        # (ver `etl/psp/orgaos_canonicos.py`). Aplicado na escrita, e não só
+        # num backfill, senão a próxima coleta traria o nome cortado de volta.
+        orgao = canonizar_orgao(
             (r.get("SECRET_SUBPREF") or "").strip()
             or (r.get("ORGAO_EXT") or "").strip()
             or ORGAO_DESCONHECIDO
@@ -282,6 +290,21 @@ def _sincronizar_quadro(client, id_municipio: str, linhas: list[dict]) -> int:
         }
 
     valores = list(por_chave.values())
+
+    # Nome novo cortado pela fonte tem de APARECER. Sem este aviso, a SEGES
+    # criar uma secretaria de nome longo entregaria um truncado que a tabela
+    # canônica não cobre, e ele entraria no portal cortado — indistinguível
+    # de um nome curto legítimo.
+    novos = truncados_desconhecidos(v["orgao"] for v in valores)
+    if novos:
+        print(
+            "[etl.psp.servidores] AVISO: órgão(s) com 50 caracteres exatos fora "
+            "da tabela canônica — provável truncamento novo da fonte. "
+            "Acrescente em etl/psp/orgaos_canonicos.py:"
+        )
+        for n in sorted(novos):
+            print(f"    {n!r}")
+
     # 125 mil linhas × 6 colunas estoura o teto de 65.535 placeholders do
     # Postgres numa instrução só.
     LOTE = 5000
