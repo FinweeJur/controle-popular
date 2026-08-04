@@ -716,6 +716,27 @@ export const diarias = pgTable("diarias", {
 	valor: numeric({ precision: 15, scale:  2 }),
 	motivo: text(),
 	link_fonte: text(),
+	// Colunas da migration 0031 que o snapshot do Drizzle não acompanhou —
+	// existem no banco desde então e eram INVISÍVEIS para o app.
+	//
+	// `natureza` separa 'diaria' de 'passagem_aerea', e a distinção não é
+	// semântica: a PBH não publica diária em dataset nenhum, e somar
+	// passagem sob o rótulo "diárias" afirmaria um gasto que não é esse.
+	//
+	// `origem` é o que impede a leitura errada mais provável desta tabela: a
+	// fonte publica ida e volta como DUAS linhas, então 43 das 381 viagens
+	// de BH têm destino "Belo Horizonte" — que num portal de BH parece erro,
+	// e é só a perna de volta. Sem a origem ao lado, a linha mente.
+	//
+	// `chave_natural` é o que torna idempotente uma tabela que nasceu só com
+	// a pk uuid.
+	natureza: text(),
+	origem: text(),
+	orgao_nome: text(),
+	cargo: text(),
+	tipo_destino: text(),
+	data_solicitacao: date(),
+	chave_natural: text(),
 	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
 	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
 }, (table) => [

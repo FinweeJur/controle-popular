@@ -19,7 +19,7 @@ const TABS: { label: string; href: string | null }[] = [
   { label: "Contratos", href: "/prefeitura/contratos" },
   { label: "Servidores", href: "/prefeitura/servidores" },
   { label: "Despesas", href: "/prefeitura/despesas" },
-  { label: "Diárias", href: null },
+  { label: "Diárias", href: "/prefeitura/diarias" },
   { label: "Obras", href: "/prefeitura/obras" },
   { label: "Legislação", href: "/prefeitura/legislacao" },
 ];

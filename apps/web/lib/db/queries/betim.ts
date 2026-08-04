@@ -1649,6 +1649,46 @@ export async function diariasDeVereador(idMunicipio: IdMunicipio, vereadorId: st
 }
 
 /**
+ * TODA a tabela `diarias` de uma cidade — inclusive o que não é de vereador.
+ *
+ * `diariasDeVereador` era a ÚNICA consumidora desta tabela, e filtra por
+ * `vereador_id`. As 381 viagens oficiais de Belo Horizonte têm esse campo
+ * NULO (são servidores do Executivo, não vereadores), então estavam gravadas
+ * e invisíveis — R$ 897 mil que o portal tinha e não mostrava.
+ *
+ * `natureza` sai explícita porque a tabela guarda duas coisas diferentes:
+ * diária (verba de alimentação e hospedagem por dia de afastamento) e
+ * passagem aérea (o bilhete). A PBH não publica diária em dataset nenhum; se
+ * a tela somasse os dois sob o rótulo "diárias", afirmaria um gasto que não
+ * é esse.
+ */
+export async function viagensDoMunicipio(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      id: diarias.id,
+      natureza: diarias.natureza,
+      orgao: diarias.orgao,
+      orgao_nome: diarias.orgao_nome,
+      beneficiario: diarias.beneficiario,
+      cargo: diarias.cargo,
+      vereador_id: diarias.vereador_id,
+      origem: diarias.origem,
+      destino: diarias.destino,
+      data_inicio: diarias.data_inicio,
+      data_fim: diarias.data_fim,
+      qtd_diarias: num(diarias.qtd_diarias),
+      valor: num(diarias.valor),
+      motivo: diarias.motivo,
+      link_fonte: diarias.link_fonte,
+    })
+    .from(diarias)
+    .where(eq(diarias.id_municipio, idMunicipio))
+    .orderBy(sql`${diarias.data_inicio} desc nulls last`, asc(diarias.id));
+}
+
+/**
  * Doações de campanha, maior valor primeiro, com o total do conjunto.
  *
  * CPF/CNPJ do doador não sai daqui: a Lei das Eleições exige divulgação do
