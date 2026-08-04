@@ -25,21 +25,28 @@ import ZapCard from "./ZapCard";
  * mesmo `?categoria=`: deixá-las no servidor faria "Todos" ficar aceso em
  * qualquer filtro.
  *
- * `useSearchParams()` obriga um `<Suspense>` acima (quem chama põe). Sem ele
- * o Next tira a ROTA INTEIRA do pré-render e manda para o cliente — no alvo
- * estático isso é build quebrado, e no Cloudflare seria a página perdendo o
- * SSG sem ninguém notar.
+ * ═══ POR QUE SÃO DOIS COMPONENTES ═══
+ *
+ * `useSearchParams()` exige um `<Suspense>` acima, e o `fallback` DELE não
+ * pode chamar o mesmo hook — o fallback é justamente o que se renderiza sem
+ * ele. Passar este componente nos dois lados derruba o `next build` com
+ * "should be wrapped in a suspense boundary", e só lá: `next dev` não
+ * pré-renderiza, então a página parece perfeita o desenvolvimento inteiro.
+ *
+ * O componente "Completa" sendo o fallback é também o que mantém a lista
+ * INTEIRA dentro do HTML estático — quem chega sem JavaScript ainda vê tudo.
  */
-export default function ListaZap({
-  estabelecimentos,
-  configured,
-}: {
+interface ZapProps {
   estabelecimentos: ZapEstabelecimento[];
   configured: boolean;
-}) {
-  const searchParams = useSearchParams();
-  const categoria = searchParams.get("categoria");
-  const q = searchParams.get("q");
+}
+
+function ZapConteudo({
+  estabelecimentos,
+  configured,
+  categoria,
+  q,
+}: ZapProps & { categoria: string | null; q: string | null }) {
 
   // Minúsculo dos dois lados porque no SQL o `q` era `ilike`, que ignora
   // caixa: um `includes` cru faria `?q=padaria` deixar de achar "Padaria".
@@ -91,5 +98,21 @@ export default function ListaZap({
         )}
       </section>
     </>
+  );
+}
+
+/** O fallback do `<Suspense>`: a lista inteira, sem ler a query. */
+export function ListaZapCompleta(props: ZapProps) {
+  return <ZapConteudo {...props} categoria={null} q={null} />;
+}
+
+export default function ListaZap(props: ZapProps) {
+  const searchParams = useSearchParams();
+  return (
+    <ZapConteudo
+      {...props}
+      categoria={searchParams.get("categoria")}
+      q={searchParams.get("q")}
+    />
   );
 }

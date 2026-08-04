@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { listarBancadas } from "@/lib/congresso/bancadas";
-import ListaBancadas from "./ListaBancadas";
+import ListaBancadas, { ListaBancadasCompleta } from "./ListaBancadas";
 
 export const metadata: Metadata = {
   title: "Bancadas — Controle Popular · Congresso",
@@ -35,7 +35,7 @@ export default async function Bancadas() {
           exatamente o conteúdo certo para quem chega sem filtro. O
           `<Suspense>` não emite elemento, então o `space-y-8` do pai continua
           separando header, nav e seções como antes. */}
-      <Suspense fallback={<ListaBancadas bancadas={bancadas} />}>
+      <Suspense fallback={<ListaBancadasCompleta bancadas={bancadas} />}>
         <ListaBancadas bancadas={bancadas} />
       </Suspense>
     </div>

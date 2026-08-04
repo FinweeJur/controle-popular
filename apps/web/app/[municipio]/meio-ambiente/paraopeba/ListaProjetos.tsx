@@ -22,17 +22,31 @@ import { useSearchParams } from "next/navigation";
  * estático isso é build quebrado, e no Cloudflare seria a página perdendo o
  * SSG sem ninguém notar.
  */
-export default function ListaProjetos({
-  iniciativas,
-}: {
+/**
+ * ═══ POR QUE SÃO DOIS COMPONENTES ═══
+ *
+ * `useSearchParams()` exige um `<Suspense>` acima, e o `fallback` DELE não
+ * pode chamar o mesmo hook — o fallback é justamente o que se renderiza sem
+ * ele. Passar este componente nos dois lados derruba o `next build` com
+ * "should be wrapped in a suspense boundary", e só lá: `next dev` não
+ * pré-renderiza, então a página parece perfeita o desenvolvimento inteiro e
+ * o `tsc` não tem como ver.
+ *
+ * O componente "Completa" sendo o fallback é também o que mantém o conteúdo
+ * INTEIRO dentro do HTML estático — quem chega sem JavaScript ainda vê tudo.
+ */
+interface ProjetosProps {
   iniciativas: IniciativaParaopeba[];
-}) {
-  const searchParams = useSearchParams();
-  // `?? undefined` para o resto do componente continuar vendo exatamente o
-  // que `await searchParams` entregava: ausente é `undefined`, `?status=`
-  // vazio continua sendo string vazia (e as duas caem no ramo "sem filtro").
-  const statusFiltro = searchParams.get("status") ?? undefined;
-  const ordem = searchParams.get("ordem") ?? undefined;
+}
+
+function ProjetosConteudo({
+  iniciativas,
+  statusFiltro,
+  ordem,
+}: ProjetosProps & { statusFiltro?: string; ordem?: string }) {
+  // `?? undefined` (feito por quem chama) para o componente continuar vendo
+  // exatamente o que `await searchParams` entregava: ausente é `undefined`, e
+  // `?status=` vazio continua string vazia — as duas caem no ramo "sem filtro".
 
   // #7 do review: filtrar por status + ordenar por "falta mais pra
   // concluir". Dado já carregado — filtro/sort no componente. Padrão
@@ -211,5 +225,21 @@ export default function ListaProjetos({
         ))}
       </ul>
     </section>
+  );
+}
+
+/** O fallback do `<Suspense>`: todas as iniciativas, sem ler a query. */
+export function ListaProjetosCompleta(props: ProjetosProps) {
+  return <ProjetosConteudo {...props} statusFiltro={undefined} ordem={undefined} />;
+}
+
+export default function ListaProjetos(props: ProjetosProps) {
+  const searchParams = useSearchParams();
+  return (
+    <ProjetosConteudo
+      {...props}
+      statusFiltro={searchParams.get("status") ?? undefined}
+      ordem={searchParams.get("ordem") ?? undefined}
+    />
   );
 }

@@ -32,13 +32,28 @@ import { useSearchParams } from "next/navigation";
  * estático isso é build quebrado, e no Cloudflare seria a página perdendo o
  * SSG sem ninguém notar.
  */
-export default function PainelDespesas({
-  porAno,
-}: {
+/**
+ * ═══ POR QUE SÃO DOIS COMPONENTES ═══
+ *
+ * `useSearchParams()` exige um `<Suspense>` acima, e o `fallback` DELE não
+ * pode chamar o mesmo hook — o fallback é justamente o que se renderiza sem
+ * ele. Passar este componente nos dois lados derruba o `next build` com
+ * "should be wrapped in a suspense boundary", e só lá: `next dev` não
+ * pré-renderiza, então a página parece perfeita o desenvolvimento inteiro e
+ * o `tsc` não tem como ver.
+ *
+ * O componente "Completa" sendo o fallback é também o que mantém o conteúdo
+ * INTEIRO dentro do HTML estático — quem chega sem JavaScript ainda vê tudo.
+ */
+interface DespesasProps {
   /** Um item por ano disponível, do mais recente para o mais antigo. */
   porAno: DespesasPorFuncaoData[];
-}) {
-  const anoParam = useSearchParams().get("ano");
+}
+
+function DespesasConteudo({
+  porAno,
+  anoParam,
+}: DespesasProps & { anoParam: string | null }) {
 
   // O `Number()` é a mesma conversão que `getDespesasPorFuncao` fazia antes de
   // comparar, e é o que evita a armadilha de trazer para JS um `=` do SQL: a
@@ -120,4 +135,14 @@ export default function PainelDespesas({
       </div>
     </>
   );
+}
+
+/** O fallback do `<Suspense>`: o ano mais recente, sem ler a query. */
+export function PainelDespesasCompleto(props: DespesasProps) {
+  return <DespesasConteudo {...props} anoParam={null} />;
+}
+
+export default function PainelDespesas(props: DespesasProps) {
+  const anoParam = useSearchParams().get("ano");
+  return <DespesasConteudo {...props} anoParam={anoParam} />;
 }

@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { fetchPostosAnp } from "@/lib/betim/postos";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
-import ListaPostos from "./ListaPostos";
+import ListaPostos, { ListaPostosCompleta } from "./ListaPostos";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Postos de Combustível — ${c.nome} | ${nomePortal(c)}`,
@@ -33,10 +33,12 @@ export default async function PostosCombustivelPage({
       </p>
 
       <section className="mt-8 grid gap-4 sm:grid-cols-2">
-        {/* O fallback é a lista COMPLETA, não um esqueleto: é o que o
-            servidor tem para mostrar antes de o navegador ler a query, e é
-            também exatamente o conteúdo certo para quem chega sem filtro. */}
-        <Suspense fallback={<ListaPostos postos={rows} configured={configured} />}>
+        {/* O fallback é a lista COMPLETA e — ponto que quebrou o build da
+            primeira vez — é um componente que NÃO chama `useSearchParams()`.
+            Passar o mesmo componente nos dois lados derruba o `next build`
+            com "should be wrapped in a suspense boundary", e só lá: em `next
+            dev` não há pré-render, então a página parece perfeita. */}
+        <Suspense fallback={<ListaPostosCompleta postos={rows} configured={configured} />}>
           <ListaPostos postos={rows} configured={configured} />
         </Suspense>
       </section>

@@ -24,17 +24,30 @@ import { useSearchParams } from "next/navigation";
  * estático isso é build quebrado, e no Cloudflare seria a página perdendo o
  * SSG sem ninguém notar.
  */
-export default function ListaObras({
-  obras,
-  situacoesDisponiveis,
-}: {
+/**
+ * ═══ POR QUE SÃO DOIS COMPONENTES ═══
+ *
+ * `useSearchParams()` exige um `<Suspense>` acima, e o `fallback` DELE não
+ * pode chamar o mesmo hook — o fallback é justamente o que se renderiza sem
+ * ele. Passar este componente nos dois lados derruba o `next build` com
+ * "should be wrapped in a suspense boundary", e só lá: `next dev` não
+ * pré-renderiza, então a página parece perfeita o desenvolvimento inteiro e
+ * o `tsc` não tem como ver.
+ *
+ * O componente "Completa" sendo o fallback é também o que mantém o conteúdo
+ * INTEIRO dentro do HTML estático — quem chega sem JavaScript ainda vê tudo.
+ */
+interface ObrasProps {
   obras: ObraRow[];
   situacoesDisponiveis: string[];
-}) {
-  // `null` (parâmetro ausente) vira `undefined` para que `situacao ?? ""` e
-  // `situacao && ...` abaixo se comportem exatamente como quando o valor vinha
-  // de `searchParams`.
-  const situacao = useSearchParams().get("situacao") ?? undefined;
+}
+
+function ObrasConteudo({
+  obras,
+  situacoesDisponiveis,
+  situacao,
+}: ObrasProps & { situacao?: string }) {
+
 
   // Igualdade estrita de propósito, e é a MESMA de antes: este filtro já era
   // `===` em JS dentro de `getObras`, nunca um `=` no SQL. As opções do
@@ -119,4 +132,16 @@ export default function ListaObras({
       </ul>
     </>
   );
+}
+
+/** O fallback do `<Suspense>`: todas as obras, sem ler a query. */
+export function ListaObrasCompleta(props: ObrasProps) {
+  return <ObrasConteudo {...props} situacao={undefined} />;
+}
+
+export default function ListaObras(props: ObrasProps) {
+  // `null` (parâmetro ausente) vira `undefined` para o resto do componente
+  // continuar vendo o que `await searchParams` entregava.
+  const situacao = useSearchParams().get("situacao") ?? undefined;
+  return <ObrasConteudo {...props} situacao={situacao} />;
 }

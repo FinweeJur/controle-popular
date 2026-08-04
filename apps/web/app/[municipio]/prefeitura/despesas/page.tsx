@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import Link from "@/lib/betim/link";
 import { getDespesasPorFuncao } from "@/lib/betim/despesas";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
-import PainelDespesas from "./PainelDespesas";
+import PainelDespesas, { PainelDespesasCompleto } from "./PainelDespesas";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Despesas por função — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
@@ -56,7 +56,7 @@ export default async function DespesasPage({ params }: DespesasPageProps) {
           servidor tem para mostrar antes de o navegador ler a query, e é
           também exatamente o conteúdo certo para quem chega sem `?ano=` —
           o ano mais recente, que já era o padrão. */}
-      <Suspense fallback={<PainelDespesas porAno={porAno} />}>
+      <Suspense fallback={<PainelDespesasCompleto porAno={porAno} />}>
         <PainelDespesas porAno={porAno} />
       </Suspense>
     </div>

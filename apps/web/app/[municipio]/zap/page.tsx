@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { fetchZapEstabelecimentos } from "@/lib/betim/zap";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
-import ListaZap from "./ListaZap";
+import ListaZap, { ListaZapCompleta } from "./ListaZap";
 import ZapForm from "./ZapForm";
 
 export const generateMetadata = metadataDaCidade(
@@ -35,7 +35,7 @@ export default async function ZapBetimPage({
       {/* O fallback é a lista COMPLETA, não um esqueleto: é o que o servidor
           tem para mostrar antes de o navegador ler a query, e é também
           exatamente o conteúdo certo para quem chega sem filtro. */}
-      <Suspense fallback={<ListaZap estabelecimentos={rows} configured={configured} />}>
+      <Suspense fallback={<ListaZapCompleta estabelecimentos={rows} configured={configured} />}>
         <ListaZap estabelecimentos={rows} configured={configured} />
       </Suspense>
 

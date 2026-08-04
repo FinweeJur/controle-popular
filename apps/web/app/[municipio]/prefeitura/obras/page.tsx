@@ -4,7 +4,7 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import { getObras } from "@/lib/betim/obras";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
-import ListaObras from "./ListaObras";
+import ListaObras, { ListaObrasCompleta } from "./ListaObras";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Obras públicas — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
@@ -111,7 +111,7 @@ export default async function ObrasPage({ params }: ObrasPageProps) {
               para quem chega sem filtro. */}
           <Suspense
             fallback={
-              <ListaObras obras={obras} situacoesDisponiveis={situacoesDisponiveis} />
+              <ListaObrasCompleta obras={obras} situacoesDisponiveis={situacoesDisponiveis} />
             }
           >
             <ListaObras obras={obras} situacoesDisponiveis={situacoesDisponiveis} />

@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { fetchClassificados } from "@/lib/betim/classificados";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import ClassificadoForm from "./ClassificadoForm";
-import ListaClassificados from "./ListaClassificados";
+import ListaClassificados, { ListaClassificadosCompleta } from "./ListaClassificados";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Compra e Venda — Classificados de ${c.nome} | ${nomePortal(c)}`,
@@ -35,7 +35,11 @@ export default async function CompraEVendaPage({
           exatamente o conteúdo certo para quem chega sem filtro. */}
       <Suspense
         fallback={
-          <ListaClassificados anuncios={rows} configured={configured} dominio={cidade.dominio} />
+          <ListaClassificadosCompleta
+            anuncios={rows}
+            configured={configured}
+            dominio={cidade.dominio}
+          />
         }
       >
         <ListaClassificados anuncios={rows} configured={configured} dominio={cidade.dominio} />

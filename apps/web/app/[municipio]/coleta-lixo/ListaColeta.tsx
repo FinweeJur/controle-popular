@@ -20,23 +20,33 @@ const TIPO_LABELS: Record<string, string> = {
  * embutida no HTML, e o recorte acontece no navegador. Cabe: a tabela tem uma
  * linha por bairro e tipo de coleta, não por evento.
  *
- * `useSearchParams()` obriga um `<Suspense>` acima (quem chama põe). Sem ele
- * o Next tira a ROTA INTEIRA do pré-render e manda para o cliente — no alvo
- * estático isso é build quebrado, e no Cloudflare seria a página perdendo o
- * SSG sem ninguém notar.
+ * ═══ POR QUE SÃO DOIS COMPONENTES ═══
+ *
+ * `useSearchParams()` exige um `<Suspense>` acima, e o `fallback` DELE não
+ * pode chamar o mesmo hook — o fallback existe justamente para ser o que se
+ * renderiza sem ele. Passar este componente nos dois lados derruba o
+ * `next build` com "should be wrapped in a suspense boundary", e só lá:
+ * `next dev` não pré-renderiza, então a página parece perfeita o
+ * desenvolvimento inteiro, e o `tsc` não tem como ver.
+ *
+ * `ListaColetaCompleta` sendo o fallback é também o que mantém a agenda
+ * INTEIRA dentro do HTML estático — quem chega sem JavaScript, ou um
+ * buscador, ainda vê os bairros.
  */
-export default function ListaColeta({
-  rows,
-  configured,
-  municipio,
-  cidadeNome,
-}: {
+interface ColetaProps {
   rows: ColetaLixoRow[];
   configured: boolean;
   municipio: string;
   cidadeNome: string;
-}) {
-  const bairro = useSearchParams().get("bairro");
+}
+
+function ColetaConteudo({
+  rows,
+  configured,
+  municipio,
+  cidadeNome,
+  bairro,
+}: ColetaProps & { bairro: string | null }) {
 
   // Busca por PEDAÇO do nome, não por igualdade: no SQL isso era
   // `ilike('%bairro%')`. Quem digita "centro" espera achar também "Centro
@@ -105,4 +115,14 @@ export default function ListaColeta({
       </section>
     </>
   );
+}
+
+/** O fallback do `<Suspense>`: a agenda inteira, sem ler a query. */
+export function ListaColetaCompleta(props: ColetaProps) {
+  return <ColetaConteudo {...props} bairro={null} />;
+}
+
+export default function ListaColeta(props: ColetaProps) {
+  const bairro = useSearchParams().get("bairro");
+  return <ColetaConteudo {...props} bairro={bairro} />;
 }

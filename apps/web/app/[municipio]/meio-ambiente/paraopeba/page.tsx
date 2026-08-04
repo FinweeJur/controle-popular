@@ -7,7 +7,7 @@ import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getParaopebaData } from "@/lib/betim/paraopeba";
 import { formatCurrencyBRL, formatDateBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
-import ListaProjetos from "./ListaProjetos";
+import ListaProjetos, { ListaProjetosCompleta } from "./ListaProjetos";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Reparação do Rio Paraopeba — ${c.nome} | ${nomePortal(c)}`,
@@ -104,7 +104,7 @@ export default async function ParaopebaPage({ params }: ParaopebaPageProps) {
           esqueleto: é o que o servidor tem para mostrar antes de o
           navegador ler a query, e é também exatamente o conteúdo certo
           para quem chega sem filtro. */}
-      <Suspense fallback={<ListaProjetos iniciativas={iniciativas} />}>
+      <Suspense fallback={<ListaProjetosCompleta iniciativas={iniciativas} />}>
         <ListaProjetos iniciativas={iniciativas} />
       </Suspense>
 

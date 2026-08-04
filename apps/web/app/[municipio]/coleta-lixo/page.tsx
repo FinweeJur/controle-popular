@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { fetchColetaLixo } from "@/lib/betim/servicos";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
-import ListaColeta from "./ListaColeta";
+import ListaColeta, { ListaColetaCompleta } from "./ListaColeta";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Coleta de Lixo — ${c.nome} | ${nomePortal(c)}`,
@@ -35,7 +35,7 @@ export default async function ColetaLixoPage({
           é também exatamente o conteúdo certo para quem chega sem filtro. */}
       <Suspense
         fallback={
-          <ListaColeta
+          <ListaColetaCompleta
             rows={rows}
             configured={configured}
             municipio={cidade.slug}

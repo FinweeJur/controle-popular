@@ -32,18 +32,32 @@ import { useSearchParams } from "next/navigation";
  * estático isso é build quebrado, e no Cloudflare seria a página perdendo o
  * SSG sem ninguém notar.
  */
-export default function ListaClassificados({
-  anuncios,
-  configured,
-  dominio,
-}: {
+/**
+ * ═══ POR QUE SÃO DOIS COMPONENTES ═══
+ *
+ * `useSearchParams()` exige um `<Suspense>` acima, e o `fallback` DELE não
+ * pode chamar o mesmo hook — o fallback é justamente o que se renderiza sem
+ * ele. Passar este componente nos dois lados derruba o `next build` com
+ * "should be wrapped in a suspense boundary", e só lá: `next dev` não
+ * pré-renderiza, então a página parece perfeita o desenvolvimento inteiro e
+ * o `tsc` não tem como ver.
+ *
+ * O componente "Completa" sendo o fallback é também o que mantém o conteúdo
+ * INTEIRO dentro do HTML estático — quem chega sem JavaScript ainda vê tudo.
+ */
+interface ClassificadosProps {
   anuncios: ClassificadoAnuncio[];
   configured: boolean;
   dominio: string | null;
-}) {
-  const searchParams = useSearchParams();
-  const categoria = searchParams.get("categoria");
-  const q = searchParams.get("q");
+}
+
+function ClassificadosConteudo({
+  anuncios,
+  configured,
+  dominio,
+  categoria,
+  q,
+}: ClassificadosProps & { categoria: string | null; q: string | null }) {
 
   const termo = q?.toLocaleLowerCase("pt-BR");
   const rows = anuncios.filter((item) => {
@@ -122,5 +136,21 @@ export default function ListaClassificados({
         )}
       </section>
     </>
+  );
+}
+
+/** O fallback do `<Suspense>`: a lista inteira, sem ler a query. */
+export function ListaClassificadosCompleta(props: ClassificadosProps) {
+  return <ClassificadosConteudo {...props} categoria={null} q={null} />;
+}
+
+export default function ListaClassificados(props: ClassificadosProps) {
+  const searchParams = useSearchParams();
+  return (
+    <ClassificadosConteudo
+      {...props}
+      categoria={searchParams.get("categoria")}
+      q={searchParams.get("q")}
+    />
   );
 }

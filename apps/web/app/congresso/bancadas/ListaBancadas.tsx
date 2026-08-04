@@ -30,13 +30,27 @@ import {
 
 const ORDEM: TipoBancada[] = ["frente", "bloco", "federacao", "partido"];
 
-export default function ListaBancadas({
-  bancadas,
-}: {
+/**
+ * ═══ POR QUE SÃO DOIS COMPONENTES ═══
+ *
+ * `useSearchParams()` exige um `<Suspense>` acima, e o `fallback` DELE não
+ * pode chamar o mesmo hook — o fallback é justamente o que se renderiza sem
+ * ele. Passar este componente nos dois lados derruba o `next build` com
+ * "should be wrapped in a suspense boundary", e só lá: `next dev` não
+ * pré-renderiza, então a página parece perfeita o desenvolvimento inteiro e
+ * o `tsc` não tem como ver.
+ *
+ * O componente "Completa" sendo o fallback é também o que mantém o conteúdo
+ * INTEIRO dentro do HTML estático — quem chega sem JavaScript ainda vê tudo.
+ */
+interface BancadasProps {
   bancadas: BancadaComContagem[] | null;
-}) {
-  const sp = useSearchParams();
-  const tipoNaUrl = sp.get("tipo") ?? "";
+}
+
+function BancadasConteudo({
+  bancadas,
+  tipoNaUrl,
+}: BancadasProps & { tipoNaUrl: string }) {
   const filtro = (ORDEM as string[]).includes(tipoNaUrl)
     ? (tipoNaUrl as TipoBancada)
     : undefined;
@@ -128,4 +142,14 @@ export default function ListaBancadas({
       )}
     </>
   );
+}
+
+/** O fallback do `<Suspense>`: todas as bancadas, sem ler a query. */
+export function ListaBancadasCompleta(props: BancadasProps) {
+  return <BancadasConteudo {...props} tipoNaUrl="" />;
+}
+
+export default function ListaBancadas(props: BancadasProps) {
+  const sp = useSearchParams();
+  return <BancadasConteudo {...props} tipoNaUrl={sp.get("tipo") ?? ""} />;
 }
