@@ -60,7 +60,32 @@ def iter_contratos(cnpj_orgao: str, data_inicial: str, data_final: str, tamanho_
 
 def iter_contratacoes(codigo_municipio_ibge: str, data_inicial: str, data_final: str,
                        codigo_modalidade: int, tamanho_pagina: int = 50):
-    """Yields raw contratação (licitação) dicts from /v1/contratacoes/publicacao."""
+    """Yields raw contratação (licitação) dicts from /v1/contratacoes/publicacao.
+
+    DUAS COISAS QUE ESTE ENDPOINT NÃO FAZ, e que parecem que faz (medido em
+    2026-08-03 contra São Paulo, modalidade 6, ano 2025 — 18.680 registros):
+
+    1. **Ele IGNORA parâmetro que não conhece, sem erro.** Mandar `cnpjOrgao`
+       ou `esferaId` junto devolve HTTP 200 e EXATAMENTE os mesmos 18.680
+       registros — o filtro não acontece e nada avisa. Pior: `cnpjOrgao`
+       sozinho, sem `codigoMunicipioIbge`, devolve 396.656 (o país inteiro),
+       provando que o parâmetro é descartado. Quem "otimizar" a coleta
+       passando o CNPJ do órgão vai ver o mesmo dado voltar, concluir que
+       funcionou, e — se então tirar o filtro de esfera do lado do cliente
+       por achá-lo redundante — publicar licitação do Estado e da União como
+       gasto da Prefeitura. **O recorte por esfera TEM de continuar em
+       Python** (ver `etl.pncp.licitacoes`).
+
+    2. **Ele não aceita página maior que 50.** `tamanhoPagina=200` responde
+       HTTP 400 "Tamanho de página inválido". Diferente de `/contratos`, que
+       aceita valores maiores. Não é lugar de economizar requisição.
+
+    E a razão de tudo aqui ser sequencial: o PNCP limita taxa com agressão e
+    **não manda `Retry-After`**. Uma sondagem com 8 threads levou 291
+    respostas 429 para 80 requisições bem-sucedidas, e depois disso o IP ficou
+    tomando 429 até em requisição única por alguns minutos. Paralelizar esta
+    coleta a torna MAIS lenta, não mais rápida.
+    """
     pagina = 1
     while True:
         payload = _get(
