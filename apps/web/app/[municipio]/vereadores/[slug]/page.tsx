@@ -629,7 +629,7 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
               <p className="mt-2 text-xs text-text-soft">
                 Fonte:{" "}
                 <a
-                  href="https://www.camarabetim.mg.gov.br"
+                  href={fonteCamara.url ?? "#"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent hover:underline"

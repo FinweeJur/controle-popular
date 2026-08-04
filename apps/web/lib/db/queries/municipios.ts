@@ -203,6 +203,28 @@ export function rotuloLegislatura(cidade: Cidade): string {
 }
 
 /**
+ * Site oficial da Prefeitura, para o `source` dos cards.
+ *
+ * Existe porque `https://www.betim.mg.gov.br` estava escrito à mão em quatro
+ * telas — inclusive numa em que o RÓTULO já era dinâmico ("Prefeitura de Belo
+ * Horizonte") e só a URL era fixa. Rótulo certo sobre link errado é pior que
+ * os dois errados: dá credibilidade ao destino.
+ *
+ * Sai de `fontes.prefeitura_host` quando existe; senão do host do portal de
+ * dados abertos ou do Diário Oficial, que toda cidade semeada declara.
+ * Devolve `undefined` em vez de um palpite — card sem link é melhor que card
+ * com link para a cidade errada.
+ */
+export function hostDaPrefeitura(cidade: Cidade): string | undefined {
+  const f = cidade.fontes ?? {};
+  for (const chave of ["prefeitura_host", "diario_oficial", "sic_prefeitura"]) {
+    const v = f[chave];
+    if (typeof v === "string" && v.startsWith("http")) return v;
+  }
+  return undefined;
+}
+
+/**
  * Nome como o Portal da Transparência federal escreve o ente municipal:
  * maiúsculas e sem acento ("MUNICIPIO DE SAO PAULO"). Normaliza os dois
  * lados da comparação, porque a fonte federal raramente acentua e o nome

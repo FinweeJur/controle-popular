@@ -1542,6 +1542,99 @@ export const proposicoes = pgTable("proposicoes", {
 		}),
 ]);
 
+/**
+ * Análise garantista × reducionista do eixo Cidades (migration 0033).
+ *
+ * Espelha `congresso.analises` / `congresso.analise_itens` porque a RÉGUA É
+ * A MESMA — as 24 âncoras da rubrica são da CF/88 e a CF/88 governa lei
+ * municipal igual. A taxonomia continua num arquivo só
+ * (`lib/congresso/rubrica/rubrica.json`); aqui só moram as colunas do
+ * resultado.
+ *
+ * A diferença estrutural em relação ao Congresso: lá existe UM objeto
+ * analisável (proposição federal) e aqui existem DOIS — `ato_id` aponta
+ * para lei/decreto JÁ SANCIONADO e `proposicao_id` para projeto EM
+ * TRAMITAÇÃO. São duas colunas nuláveis com CHECK `num_nonnulls(...) = 1`
+ * em vez de um par polimórfico, para que cada uma tenha FK de verdade
+ * (o raciocínio completo está na migration).
+ *
+ * `id_municipio` também em `analise_itens`, onde seria derivável por join:
+ * é o que permite o corte "quais direitos esta cidade restringe" sem passar
+ * por `analises` — e sem o risco de alguém esquecer o filtro de cidade.
+ */
+export const analises = pgTable("analises", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	ato_id: uuid(),
+	proposicao_id: uuid(),
+	score: numeric({ precision: 6, scale:  2 }),
+	rotulo: text(),
+	clausula_petrea: boolean().default(false),
+	vedacao_retrocesso: boolean().default(false),
+	resumo_neutro: text(),
+	parecer_critico: text(),
+	legislacao_relacionada: jsonb(),
+	modelo: text(),
+	versao_rubrica: text(),
+	versao_prompt: text(),
+	status: text().default('ok'),
+	criado_em: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+}, (table) => [
+	index("analises_municipio_rotulo_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.rotulo.asc().nullsLast().op("text_ops")),
+	index("analises_municipio_status_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.status.asc().nullsLast().op("text_ops")),
+	index("analises_score_idx").using("btree", table.score.asc().nullsLast().op("numeric_ops")),
+	index("analises_versao_rubrica_idx").using("btree", table.versao_rubrica.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "analises_id_municipio_fkey"
+		}).onDelete("cascade"),
+	foreignKey({
+			columns: [table.ato_id],
+			foreignColumns: [atos_oficiais.id],
+			name: "analises_ato_id_fkey"
+		}).onDelete("cascade"),
+	foreignKey({
+			columns: [table.proposicao_id],
+			foreignColumns: [proposicoes.id],
+			name: "analises_proposicao_id_fkey"
+		}).onDelete("cascade"),
+	unique("analises_ato_id_key").on(table.ato_id),
+	unique("analises_proposicao_id_key").on(table.proposicao_id),
+	check("analises_um_objeto_so", sql`num_nonnulls(ato_id, proposicao_id) = 1`),
+	check("analises_status_check", sql`status = ANY (ARRAY['ok'::text, 'requer_revisao'::text, 'falhou'::text])`),
+]);
+
+export const analise_itens = pgTable("analise_itens", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	analise_id: uuid().notNull(),
+	id_municipio: text().notNull(),
+	direito: text().notNull(),
+	dispositivo: text().notNull(),
+	direcao: text().notNull(),
+	mecanismo: text(),
+	titulares: text().array(),
+	grau: text(),
+	trecho: text(),
+	confianca: numeric({ precision: 3, scale:  2 }),
+	peso: numeric({ precision: 6, scale:  2 }),
+}, (table) => [
+	index("analise_itens_analise_idx").using("btree", table.analise_id.asc().nullsLast().op("uuid_ops")),
+	index("analise_itens_municipio_direito_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.direito.asc().nullsLast().op("text_ops"), table.direcao.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.analise_id],
+			foreignColumns: [analises.id],
+			name: "analise_itens_analise_id_fkey"
+		}).onDelete("cascade"),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "analise_itens_id_municipio_fkey"
+		}).onDelete("cascade"),
+	check("analise_itens_direcao_check", sql`direcao = ANY (ARRAY['amplia'::text, 'restringe'::text, 'neutro'::text])`),
+	check("analise_itens_grau_check", sql`grau = ANY (ARRAY['marginal'::text, 'moderado'::text, 'estrutural'::text])`),
+]);
+
 export const verbas_indenizatorias = pgTable("verbas_indenizatorias", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
 	id_municipio: text().notNull(),

@@ -5,6 +5,7 @@ import { getLegislacao } from "@/lib/betim/legislacao";
 import { TEMA_LABELS } from "@/lib/betim/temas";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { hostDaPrefeitura } from "@/lib/db/queries/municipios";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Legislação — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
@@ -21,6 +22,10 @@ export default async function LegislacaoPage({
   searchParams,
 }: LegislacaoPageProps) {
   const cidade = await cidadeDaRota(rotaParams);
+  // Os dois cards creditavam o portal de dados abertos de BETIM. Em Belo
+  // Horizonte e São Paulo os atos vêm do Diário Oficial (API do DOM), que é
+  // outro sistema — o crédito estava errado na cidade E na natureza da fonte.
+  const fonteLegislacao = hostDaPrefeitura(cidade);
   const params = await searchParams;
   const { atos, categoriasDisponiveis, anosDisponiveis, temas, total, ok } = await getLegislacao(
     cidade.id_municipio,
@@ -64,8 +69,8 @@ export default async function LegislacaoPage({
             <DataCard
               title="Normas publicadas"
               source={{
-                label: `Dados Abertos — Prefeitura de ${cidade.nome}`,
-                url: "https://www.betim.mg.gov.br/portal/dados-abertos",
+                label: `Diário Oficial / Dados Abertos — ${cidade.nome}`,
+                url: fonteLegislacao,
               }}
             >
               <p className="font-tabular text-2xl font-bold text-text">{formatNumberBR(total)}</p>
@@ -77,8 +82,8 @@ export default async function LegislacaoPage({
               <DataCard
                 title="Áreas legisladas — sobre o que a Prefeitura normatiza"
                 source={{
-                  label: `Dados Abertos — Prefeitura de ${cidade.nome}`,
-                  url: "https://www.betim.mg.gov.br/portal/dados-abertos",
+                  label: `Diário Oficial / Dados Abertos — ${cidade.nome}`,
+                  url: fonteLegislacao,
                 }}
               >
                 <p className="mb-3 text-sm">

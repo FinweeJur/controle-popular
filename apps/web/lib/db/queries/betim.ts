@@ -2,6 +2,7 @@ import {
   and,
   arrayContains,
   asc,
+  count,
   desc,
   eq,
   gte,
@@ -18,6 +19,8 @@ import { num } from "@/lib/db/num";
 import { ptBr } from "@/lib/db/ordem";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import {
+  analise_itens,
+  analises,
   anuncios,
   atos_oficiais,
   beneficios_sociais,
@@ -521,6 +524,11 @@ export async function atosOficiais(idMunicipio: IdMunicipio) {
   if (!db) return null;
   return db
     .select({
+      // `id` entrou para casar o ato com a análise garantista (0033). Sem
+      // ele a página de legislação não tem como saber se a norma que está
+      // renderizando foi analisada — e "não analisada" precisa aparecer
+      // como ausência de análise, não como neutro.
+      id: atos_oficiais.id,
       tipo: atos_oficiais.tipo,
       numero: atos_oficiais.numero,
       ano: atos_oficiais.ano,
@@ -2035,4 +2043,209 @@ export async function rejeitarPendente(
     .where(and(eq(t.id_municipio, idMunicipio), eq(t.id, id), eq(t.aprovado, false)))
     .returning({ id: t.id });
   return linha ?? null;
+}
+
+/* ────────────────────────────────────────────────────────────────────────
+ * Análise garantista × reducionista (migration 0033)
+ *
+ * Estas funções são o único caminho do app até `public.analises`. Todas
+ * exigem `idMunicipio` primeiro, inclusive as que leem `analise_itens` — a
+ * coluna `id_municipio` foi denormalizada para lá exatamente para que o
+ * filtro de cidade não dependa de lembrar de um join.
+ * ──────────────────────────────────────────────────────────────────────── */
+
+/**
+ * Análises de uma cidade, já com o objeto analisado junto.
+ *
+ * A CONSULTA PARTE DE `analises`, NÃO DOS OBJETOS — mesma razão do
+ * Congresso (`lib/congresso/destaques.ts`): as analisadas são ~60 de
+ * milhares, e partir da tabela grande leria milhares de linhas para
+ * descartar quase todas.
+ *
+ * Os dois `leftJoin` (ato e proposição) são a contrapartida das duas
+ * colunas nuláveis da 0033. `tipo_objeto` vem explícito no retorno em vez
+ * de ser inferido depois por "qual campo não é nulo", porque a distinção
+ * importa na tela: projeto em tramitação ainda pode mudar, lei sancionada
+ * já vale.
+ */
+export async function analisesDoMunicipio(
+  idMunicipio: IdMunicipio,
+  rotulos?: string[]
+) {
+  const db = getDb();
+  if (!db) return null;
+  if (rotulos && rotulos.length === 0) return [];
+
+  const cond = [eq(analises.id_municipio, idMunicipio), eq(analises.status, "ok")];
+  if (rotulos) cond.push(inArray(analises.rotulo, rotulos));
+
+  return db
+    .select({
+      id: analises.id,
+      ato_id: analises.ato_id,
+      proposicao_id: analises.proposicao_id,
+      tipo_objeto: sql<"ato" | "proposicao">`case when ${analises.ato_id} is null then 'proposicao' else 'ato' end`,
+      score: num(analises.score),
+      rotulo: analises.rotulo,
+      clausula_petrea: analises.clausula_petrea,
+      vedacao_retrocesso: analises.vedacao_retrocesso,
+      resumo_neutro: analises.resumo_neutro,
+      modelo: analises.modelo,
+      versao_rubrica: analises.versao_rubrica,
+      criado_em: analises.criado_em,
+      // Identificação e ementa vêm do lado que existir. `tipo` do ato já é
+      // texto ("Lei Ordinária"); o da proposição é código ("projeto_lei") e
+      // ganha rótulo em português na camada de cima.
+      ato_tipo: atos_oficiais.tipo,
+      ato_numero: atos_oficiais.numero,
+      ato_ano: atos_oficiais.ano,
+      ato_ementa: atos_oficiais.ementa,
+      ato_temas: atos_oficiais.temas,
+      ato_data: atos_oficiais.data_publicacao,
+      ato_link: atos_oficiais.link_fonte,
+      prop_tipo: proposicoes.tipo,
+      prop_numero: proposicoes.numero,
+      prop_ano: proposicoes.ano,
+      prop_ementa: proposicoes.ementa,
+      prop_temas: proposicoes.temas,
+      prop_data: proposicoes.data_apresentacao,
+      prop_situacao: proposicoes.situacao,
+      prop_autores: proposicoes.autores,
+      prop_link: proposicoes.link_fonte,
+    })
+    .from(analises)
+    .leftJoin(atos_oficiais, eq(atos_oficiais.id, analises.ato_id))
+    .leftJoin(proposicoes, eq(proposicoes.id, analises.proposicao_id))
+    .where(and(...cond));
+}
+
+/** Itens de um conjunto de análises da MESMA cidade. */
+export async function itensDeAnalises(idMunicipio: IdMunicipio, analiseIds: string[]) {
+  const db = getDb();
+  if (!db || analiseIds.length === 0) return [];
+  return db
+    .select({
+      analise_id: analise_itens.analise_id,
+      direito: analise_itens.direito,
+      dispositivo: analise_itens.dispositivo,
+      direcao: analise_itens.direcao,
+      mecanismo: analise_itens.mecanismo,
+      titulares: analise_itens.titulares,
+      grau: analise_itens.grau,
+      trecho: analise_itens.trecho,
+      confianca: num(analise_itens.confianca),
+      peso: num(analise_itens.peso),
+    })
+    .from(analise_itens)
+    .where(
+      and(
+        eq(analise_itens.id_municipio, idMunicipio),
+        inArray(analise_itens.analise_id, analiseIds)
+      )
+    );
+}
+
+/**
+ * O denominador honesto: quantos objetos de cada tipo já foram analisados e
+ * quantos existem.
+ *
+ * Sem isto nenhuma tela deste eixo pode publicar um ranking. A análise
+ * cobre ~60 objetos por cidade de milhares — um "top 10 mais reducionista"
+ * sem o denominador ao lado parece veredito sobre a Câmara inteira.
+ */
+export async function coberturaAnaliseMunicipio(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  const [analisadas, totalAtos, totalProps] = await Promise.all([
+    db
+      .select({
+        tipo_objeto: sql<"ato" | "proposicao">`case when ${analises.ato_id} is null then 'proposicao' else 'ato' end`,
+        n: count(),
+      })
+      .from(analises)
+      .where(and(eq(analises.id_municipio, idMunicipio), eq(analises.status, "ok")))
+      .groupBy(sql`1`),
+    db
+      .select({ n: count() })
+      .from(atos_oficiais)
+      .where(eq(atos_oficiais.id_municipio, idMunicipio)),
+    db
+      .select({ n: count() })
+      .from(proposicoes)
+      .where(eq(proposicoes.id_municipio, idMunicipio)),
+  ]);
+  return {
+    atosAnalisados: analisadas.find((r) => r.tipo_objeto === "ato")?.n ?? 0,
+    proposicoesAnalisadas:
+      analisadas.find((r) => r.tipo_objeto === "proposicao")?.n ?? 0,
+    totalAtos: totalAtos[0]?.n ?? 0,
+    totalProposicoes: totalProps[0]?.n ?? 0,
+  };
+}
+
+/**
+ * Análises dos objetos que uma página já vai renderizar.
+ *
+ * Retorna também os itens, porque o requisito é rótulo COM justificativa:
+ * "reducionista" sem o trecho que sustenta a leitura é opinião. Objeto
+ * ausente do retorno é objeto SEM ANÁLISE — diferente de análise com
+ * resultado neutro, e a UI tem de distinguir os dois.
+ */
+export async function analisesDeObjetos(
+  idMunicipio: IdMunicipio,
+  ids: { atos?: string[]; proposicoes?: string[] }
+) {
+  const db = getDb();
+  if (!db) return null;
+
+  const porObjeto = [];
+  if (ids.atos?.length) porObjeto.push(inArray(analises.ato_id, ids.atos));
+  if (ids.proposicoes?.length)
+    porObjeto.push(inArray(analises.proposicao_id, ids.proposicoes));
+  if (porObjeto.length === 0) return { linhas: [], itens: [] };
+
+  const linhas = await db
+    .select({
+      id: analises.id,
+      ato_id: analises.ato_id,
+      proposicao_id: analises.proposicao_id,
+      score: num(analises.score),
+      rotulo: analises.rotulo,
+      status: analises.status,
+      clausula_petrea: analises.clausula_petrea,
+      vedacao_retrocesso: analises.vedacao_retrocesso,
+      resumo_neutro: analises.resumo_neutro,
+      modelo: analises.modelo,
+      versao_rubrica: analises.versao_rubrica,
+    })
+    .from(analises)
+    .where(and(eq(analises.id_municipio, idMunicipio), or(...porObjeto)));
+
+  const itens = await itensDeAnalises(
+    idMunicipio,
+    linhas.map((l) => l.id)
+  );
+  return { linhas, itens };
+}
+
+/**
+ * Quantos objetos analisados tocam cada direito da rubrica — alimenta o
+ * filtro por direito da página de legislação.
+ *
+ * Lê `analise_itens` direto: é para isso que a 0033 denormalizou
+ * `id_municipio` para a tabela de itens.
+ */
+export async function direitosDoMunicipio(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      direito: analise_itens.direito,
+      tipo_objeto: sql<"ato" | "proposicao">`case when ${analises.ato_id} is null then 'proposicao' else 'ato' end`,
+      qtd: sql<number>`count(distinct ${analise_itens.analise_id})::int`,
+    })
+    .from(analise_itens)
+    .innerJoin(analises, eq(analises.id, analise_itens.analise_id))
+    .where(and(eq(analise_itens.id_municipio, idMunicipio), eq(analises.status, "ok")))
+    .groupBy(analise_itens.direito, sql`2`);
 }

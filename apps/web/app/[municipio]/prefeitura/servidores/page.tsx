@@ -4,6 +4,7 @@ import TabelaScroll from "@/app/[municipio]/components/TabelaScroll";
 import { getServidores, SERVIDORES_PAGE_SIZE } from "@/lib/betim/servidores";
 import { formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { hostDaPrefeitura } from "@/lib/db/queries/municipios";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Servidores — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
@@ -20,6 +21,10 @@ export default async function ServidoresPage({
   searchParams,
 }: ServidoresPageProps) {
   const cidade = await cidadeDaRota(rota);
+  // O rótulo já era dinâmico e a URL não: o card dizia "Prefeitura de Belo
+  // Horizonte" e levava a betim.mg.gov.br. Rótulo certo sobre link errado é
+  // pior que os dois errados — dá credibilidade ao destino.
+  const hostPrefeitura = hostDaPrefeitura(cidade);
   const params = await searchParams;
   const page = Math.max(1, Number(params.page) || 1);
   const { rows, total, ok, configured } = await getServidores(cidade.id_municipio, { q: params.q, page });
@@ -93,7 +98,7 @@ export default async function ServidoresPage({
       <div className="mb-6 max-w-xs">
         <DataCard
           title="Servidores encontrados"
-          source={{ label: `Prefeitura de ${cidade.nome}`, url: "https://www.betim.mg.gov.br" }}
+          source={{ label: `Prefeitura de ${cidade.nome}`, url: hostPrefeitura }}
         >
           <p className="font-tabular text-2xl font-bold text-text">{formatNumberBR(total)}</p>
         </DataCard>
