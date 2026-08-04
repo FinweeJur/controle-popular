@@ -81,7 +81,7 @@ export default function RankingVereadores({
         <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
           <ul className="divide-y divide-border">
             {rows.map((v, i) => {
-              const segmentos = composicaoPontuacao(v.porTipo);
+              const segmentos = composicaoPontuacao(v.linhas);
               return (
                 <li key={v.id} className="px-4.5 py-3.5">
                   <div className="mb-2 flex items-baseline justify-between gap-3">
@@ -174,7 +174,7 @@ function TabelaRanking({ rows }: { rows: RankingVereador[] }) {
         </thead>
         <tbody className="divide-y divide-border">
           {rows.map((v, i) => {
-            const porSlot = new Map(composicaoPontuacao(v.porTipo).map((s) => [s.tier.slot, s]));
+            const porSlot = new Map(composicaoPontuacao(v.linhas).map((s) => [s.tier.slot, s]));
             return (
               <tr key={v.id}>
                 <td className="font-tabular px-3 py-2.5 text-text-soft">{i + 1}º</td>

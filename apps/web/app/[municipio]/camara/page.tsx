@@ -261,7 +261,7 @@ export default async function CamaraPage({
               title="Como a pontuação é calculada"
               source={fonteCamara}
             >
-              <ComoFuncionaPontuacao />
+              <ComoFuncionaPontuacao totaisLinhas={ranking.totaisLinhas} />
             </DataCard>
             <DataCard
               title="O que a Câmara produziu — volume x peso"
@@ -273,7 +273,7 @@ export default async function CamaraPage({
                 entre &ldquo;quem mais apresenta&rdquo; e &ldquo;quem
                 mais pontua&rdquo;.
               </p>
-              <ComposicaoCamara totaisPorTipo={ranking.totaisPorTipo} />
+              <ComposicaoCamara totaisLinhas={ranking.totaisLinhas} />
             </DataCard>
           </div>
 

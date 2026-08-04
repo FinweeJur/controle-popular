@@ -29,7 +29,7 @@ export default function AtuacaoVereador({ ranking, vereadorId }: AtuacaoVereador
   if (vereador.pontuacao <= 0) return null;
 
   const max = ranking.reduce((m, r) => Math.max(m, r.pontuacao), 0);
-  const segmentos = composicaoPontuacao(vereador.porTipo);
+  const segmentos = composicaoPontuacao(vereador.linhas);
   const lider = ranking[0];
 
   return (

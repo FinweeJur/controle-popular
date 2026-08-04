@@ -1,4 +1,11 @@
-import { PROPOSICAO_TIERS } from "@/lib/betim/vereadores";
+import {
+  CLASSES_BAIXO_TEOR,
+  MULTIPLICADOR_ROTULO,
+  PESO_BAIXO_TEOR,
+  PROPOSICAO_TIERS,
+  type LinhaProposicao,
+} from "@/lib/betim/vereadores";
+import { formatNumberBR } from "@/lib/betim/format";
 
 const COR_POR_SLOT: Record<number, string> = {
   1: "var(--color-ord-1)",
@@ -14,8 +21,35 @@ const PESO_MAX = Math.max(...PROPOSICAO_TIERS.map((t) => t.peso));
  * Lei vale 15, Indicação vale 1" é fácil de ler e difícil de sentir —
  * ver a barra do PL quinze vezes maior que a da indicação explica o
  * ranking inteiro antes de olhar qualquer vereador.
+ *
+ * As duas correções (teor e rótulo) são explicadas aqui, e não só no
+ * código, porque MUDAM O PÓDIO: em Betim, 16 das 23 posições trocaram de
+ * ocupante quando elas entraram. Ranking público que muda sem dizer por quê
+ * lê-se como erro.
+ *
+ * A COBERTURA SAI DO MESMO DADO QUE ALIMENTA O GRÁFICO (`totaisLinhas`), e
+ * não de um número escrito à mão: um percentual fixo no texto envelheceria
+ * em silêncio na primeira vez que a fila de análise avançasse — e este é
+ * justamente o número que sustenta a ressalva de amostra.
  */
-export default function ComoFuncionaPontuacao() {
+export default function ComoFuncionaPontuacao({
+  totaisLinhas,
+}: {
+  totaisLinhas: LinhaProposicao[];
+}) {
+  let total = 0;
+  let baixoTeor = 0;
+  let analisadas = 0;
+  let reducionistas = 0;
+  for (const l of totaisLinhas) {
+    total += l.qtd;
+    if (l.classe_teor && CLASSES_BAIXO_TEOR.has(l.classe_teor)) baixoTeor += l.qtd;
+    if (l.rotulo) analisadas += l.qtd;
+    if (l.rotulo && MULTIPLICADOR_ROTULO[l.rotulo] !== undefined) reducionistas += l.qtd;
+  }
+  const pctBaixoTeor = total ? Math.round((baixoTeor / total) * 100) : 0;
+  const pctAnalisadas = total ? (analisadas / total) * 100 : 0;
+
   return (
     <div>
       <ul className="space-y-2.5">
@@ -41,12 +75,73 @@ export default function ComoFuncionaPontuacao() {
           </li>
         ))}
       </ul>
-      <p className="mt-4 border-t border-border/60 pt-3 text-xs text-text-soft">
-        A pontuação de cada vereador é a soma das proposições que ele
-        apresentou, multiplicadas por esses pesos. É uma medida de{" "}
-        <strong className="font-medium text-text">volume e tipo de atuação</strong>{" "}
-        — não de qualidade, acerto ou alinhamento com o interesse público.
-      </p>
+
+      <div className="mt-4 space-y-3 border-t border-border/60 pt-3 text-xs text-text-soft">
+        <p>
+          Duas correções entram depois do peso por tipo, porque o tipo diz
+          quanto custa apresentar uma peça — não o que ela faz:
+        </p>
+
+        <p>
+          <strong className="font-medium text-text">
+            Homenagem, nome de rua e data comemorativa valem {PESO_BAIXO_TEOR}{" "}
+            {PESO_BAIXO_TEOR === 1 ? "ponto" : "pontos"}
+          </strong>{" "}
+          — não os {PESO_MAX} de um projeto de lei comum. Dar nome a uma rua é
+          um projeto de lei de verdade, com tramitação de verdade, mas não cria
+          nem retira direito de ninguém.{" "}
+          {baixoTeor > 0 ? (
+            <>
+              Nesta Câmara isso alcança{" "}
+              <strong className="font-medium text-text">
+                {formatNumberBR(baixoTeor)}
+              </strong>{" "}
+              das {formatNumberBR(total)} proposições ({pctBaixoTeor}%). A
+              classificação sai da ementa, por padrão de texto auditável — a
+              mesma régua que decide o que não vale gastar análise de direitos.
+            </>
+          ) : (
+            <>Nenhuma proposição desta Câmara caiu nessa classe.</>
+          )}
+        </p>
+
+        <p>
+          <strong className="font-medium text-text">
+            Projeto que restringe direito subtrai em vez de somar
+          </strong>{" "}
+          — o rótulo vem da análise garantista deste portal, e um projeto{" "}
+          <em>reducionista</em> tira os mesmos pontos que daria.{" "}
+          <strong className="font-medium text-text">
+            Esta regra opera sobre amostra, e por isso não é veredito:
+          </strong>{" "}
+          só{" "}
+          <strong className="font-medium text-text">
+            {formatNumberBR(analisadas)}
+          </strong>{" "}
+          das {formatNumberBR(total)} proposições ({pctAnalisadas.toFixed(1)}%)
+          já foram analisadas
+          {reducionistas > 0 ? (
+            <>
+              , e {formatNumberBR(reducionistas)}{" "}
+              {reducionistas === 1 ? "foi classificada" : "foram classificadas"}{" "}
+              como reducionista
+            </>
+          ) : (
+            <>, e nenhuma foi classificada como reducionista até agora</>
+          )}
+          . Quem tem projeto restritivo que a fila ainda não leu não é
+          penalizado — a ausência de desconto não é atestado de nada.
+        </p>
+
+        <p>
+          A pontuação continua sendo uma medida de{" "}
+          <strong className="font-medium text-text">
+            volume, tipo e teor da atuação
+          </strong>{" "}
+          — não de acerto, de mérito, nem de alinhamento com o interesse
+          público.
+        </p>
+      </div>
     </div>
   );
 }

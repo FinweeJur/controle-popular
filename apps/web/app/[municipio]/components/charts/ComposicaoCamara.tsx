@@ -1,4 +1,4 @@
-import { composicaoPontuacao } from "@/lib/betim/vereadores";
+import { composicaoPontuacao, type LinhaProposicao } from "@/lib/betim/vereadores";
 import { formatNumberBR } from "@/lib/betim/format";
 import OrdinalLegend from "./OrdinalLegend";
 
@@ -10,8 +10,10 @@ const COR_POR_SLOT: Record<number, string> = {
 };
 
 export interface ComposicaoCamaraProps {
-  /** Contagem por tipo somando a Câmara inteira. */
-  totaisPorTipo: Record<string, number>;
+  /** As células (tipo, teor, rótulo) da Câmara inteira. Não é mais a
+   *  contagem por tipo: desde que teor e rótulo entraram na pontuação, o
+   *  tipo sozinho não permite calcular pontos. */
+  totaisLinhas: LinhaProposicao[];
 }
 
 /**
@@ -24,8 +26,8 @@ export interface ComposicaoCamaraProps {
  * São dois gráficos separados normalizados a 100%, não um gráfico de dois
  * eixos: as unidades (proposições e pontos) não compartilham escala.
  */
-export default function ComposicaoCamara({ totaisPorTipo }: ComposicaoCamaraProps) {
-  const segmentos = composicaoPontuacao(totaisPorTipo);
+export default function ComposicaoCamara({ totaisLinhas }: ComposicaoCamaraProps) {
+  const segmentos = composicaoPontuacao(totaisLinhas);
   const totalQtd = segmentos.reduce((a, s) => a + s.qtd, 0);
   const totalPontos = segmentos.reduce((a, s) => a + s.pontos, 0);
   if (totalQtd === 0) return null;
@@ -137,15 +139,26 @@ export default function ComposicaoCamara({ totaisPorTipo }: ComposicaoCamaraProp
           pra leitor de tela. */}
       <div className="sr-only" style={{ overflow: "hidden", width: "1px", height: "1px" }}>
         <table>
+          {/* "Peso base", e não "Peso", porque a multiplicação PAROU DE
+              FECHAR: com o desconto de baixo teor e o sinal negativo do
+              rótulo reducionista, os 755 projetos de lei de Betim somam
+              8.400 pontos e não 11.325. Esta tabela é a alternativa em texto
+              para leitor de tela — ela era o único lugar do gráfico onde os
+              três números apareciam juntos, então a conta quebrada só
+              aparecia para quem usa leitor de tela. */}
           <caption>
-            Composição das proposições da legislatura em curso, por quantidade e por pontos.
+            Composição das proposições da legislatura em curso, por quantidade
+            e por pontos. Os pontos já incluem os ajustes de teor (homenagem,
+            nome de rua e data comemorativa valem menos) e de rótulo (projeto
+            que restringe direito subtrai), então não são o produto do peso
+            base pela quantidade.
           </caption>
           <thead>
             <tr>
               <th scope="col">Tipo</th>
-              <th scope="col">Peso</th>
+              <th scope="col">Peso base</th>
               <th scope="col">Quantidade</th>
-              <th scope="col">Pontos</th>
+              <th scope="col">Pontos (já ajustados)</th>
             </tr>
           </thead>
           <tbody>

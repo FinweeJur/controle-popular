@@ -1549,6 +1549,9 @@ export const proposicoes = pgTable("proposicoes", {
 	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
 	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
 	temas: text().array(),
+	/** Slug do padrão de baixo teor normativo da ementa (migration 0038).
+	 *  NULL = teor normativo comum. Pondera o ranking de atuação. */
+	classe_teor: text(),
 }, (table) => [
 	index("proposicoes_temas_idx").using("gin", table.temas.asc().nullsLast().op("array_ops")),
 	foreignKey({

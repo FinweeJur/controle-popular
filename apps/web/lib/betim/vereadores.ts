@@ -219,6 +219,89 @@ export const PESO_PROPOSICAO: Record<string, number> = {
 };
 
 /**
+ * ═══ AS DUAS CORREÇÕES QUE O PESO POR TIPO SOZINHO NÃO FAZ ═══
+ *
+ * O peso por tipo diz quanto CUSTA apresentar uma peça, não o que ela FAZ.
+ * Sem as duas regras abaixo, "Dá o nome de Fulano à Rua 934" e a Política
+ * Municipal de Prevenção à Violência Digital contra Crianças valiam os
+ * mesmos 15 pontos, e um projeto que RETIRA direito valia tanto quanto um
+ * que cria.
+ *
+ * (1) BAIXO TEOR NORMATIVO — vale o mesmo que um requerimento.
+ *
+ * `proposicoes.classe_teor` (migration 0038) marca a peça cuja ementa é
+ * denominação de logradouro, homenagem, data comemorativa, crédito
+ * orçamentário ou ato de pessoal. Não é exceção estatística: 12% dos PLs de
+ * BH, 22% dos de São Paulo e 29% dos de Betim. Um vereador com 40
+ * denominações de rua passava à frente de um com 20 projetos de política
+ * pública.
+ *
+ * O teto é `PESO_BAIXO_TEOR`, aplicado com `Math.min` e não por substituição:
+ * uma INDICAÇÃO de homenagem pesa 1, e trocar o peso pelo teto a
+ * PROMOVERIA para 2 — punição que aumenta a nota é pior que punição nenhuma.
+ *
+ * `sem_ementa` está fora da lista DE PROPÓSITO. É a única classe que não diz
+ * nada sobre a peça: diz que a coleta não trouxe a ementa. Punir por ela
+ * seria cobrar do vereador uma falha do nosso raspador.
+ *
+ * (2) RÓTULO REDUCIONISTA — inverte o sinal, não desconta uma fatia.
+ *
+ * "A pontuação deve cair" só é verdade se o projeto passar a SUBTRAIR: com
+ * um desconto parcial, apresentar projeto que restringe direito continuaria
+ * subindo o vereador no ranking, só que mais devevagar. Por isso o
+ * multiplicador é negativo — um PL reducionista tira os mesmos 15 pontos que
+ * daria, e um `reducionista_forte` tira o dobro.
+ *
+ * ⚠ ESTA REGRA OPERA SOBRE AMOSTRA, e a tela precisa dizer isso. Só ~60
+ * proposições por cidade estão analisadas (de 2.541 a 3.681), então o
+ * vereador cujo projeto a fila alcançou é penalizado e o que tem projeto
+ * igualmente reducionista ainda não lido não é. Hoje há UMA proposição
+ * `reducionista` no banco inteiro: a regra está montada e quase não dispara.
+ * Enquanto a cobertura for essa, ela é um sinal, não um veredito — ver
+ * `avisoDeCoberturaDoRanking()`.
+ */
+/** Anotado como `number`, não inferido como literal `2`: a tela pluraliza
+ *  ("1 ponto" / "2 pontos") em cima desta constante, e o tipo literal faz o
+ *  `tsc` recusar a comparação como impossível — travando a mudança do valor
+ *  em vez de protegê-la. */
+export const PESO_BAIXO_TEOR: number = 2;
+
+export const CLASSES_BAIXO_TEOR: ReadonlySet<string> = new Set([
+  "denominacao",
+  "honraria",
+  "data_comemorativa",
+  "credito_orcamentario",
+  "ato_de_pessoal",
+]);
+
+export const MULTIPLICADOR_ROTULO: Record<string, number> = {
+  reducionista: -1,
+  reducionista_forte: -2,
+};
+
+/** Uma célula da contagem agregada: (tipo, classe_teor, rótulo) e quantas. */
+export interface LinhaProposicao {
+  tipo: string;
+  classe_teor: string | null;
+  rotulo: string | null;
+  qtd: number;
+}
+
+/** Peso unitário já corrigido pelo teor — antes do rótulo. */
+export function pesoAjustado(tipo: string, classeTeor: string | null): number {
+  const base = PESO_PROPOSICAO[tipo] ?? 0;
+  return classeTeor && CLASSES_BAIXO_TEOR.has(classeTeor)
+    ? Math.min(base, PESO_BAIXO_TEOR)
+    : base;
+}
+
+/** Pontos que uma célula contribui, com teor e rótulo já aplicados. */
+export function pontosDaLinha(l: LinhaProposicao): number {
+  const mult = MULTIPLICADOR_ROTULO[l.rotulo ?? ""] ?? 1;
+  return pesoAjustado(l.tipo, l.classe_teor) * mult * l.qtd;
+}
+
+/**
  * Os tipos de proposição são ORDINAIS, não nominais: um Projeto de Lei
  * pesa 15x uma Indicação, então a ordem dos tiers carrega significado e
  * a cor do gráfico tem que mostrar isso (rampa de uma cor só, escura ->
@@ -303,15 +386,19 @@ export interface SegmentoPontuacao {
  * que a lista de texto anterior não explicava.
  * Tiers com zero proposições saem do resultado (não viram segmento vazio).
  */
-export function composicaoPontuacao(porTipo: Record<string, number>): SegmentoPontuacao[] {
+export function composicaoPontuacao(linhas: LinhaProposicao[]): SegmentoPontuacao[] {
   const porTier = new Map<number, SegmentoPontuacao>();
 
-  for (const [tipo, qtd] of Object.entries(porTipo)) {
-    const tier = TIER_POR_TIPO[tipo];
-    if (!tier || !qtd) continue;
+  // `pontos` sai de `pontosDaLinha`, NÃO de `qtd * tier.peso`. Desde que o
+  // teor e o rótulo entraram na conta, o produto simples deixou de bater com
+  // a pontuação total — e um gráfico cujas fatias não somam o número
+  // impresso ao lado é pior que não ter gráfico.
+  for (const l of linhas) {
+    const tier = TIER_POR_TIPO[l.tipo];
+    if (!tier || !l.qtd) continue;
     const acc = porTier.get(tier.slot) ?? { tier, qtd: 0, pontos: 0 };
-    acc.qtd += qtd;
-    acc.pontos += qtd * tier.peso;
+    acc.qtd += l.qtd;
+    acc.pontos += pontosDaLinha(l);
     porTier.set(tier.slot, acc);
   }
 
@@ -327,6 +414,10 @@ export interface RankingVereador {
   partido: string | null;
   pontuacao: number;
   porTipo: Record<string, number>;
+  /** As células (tipo, teor, rótulo) desta pessoa — é daqui que sai a
+   *  pontuação e a composição do gráfico. `porTipo` sobrevive como contagem
+   *  crua, para quem quer "quantas peças" e não "quantos pontos". */
+  linhas: LinhaProposicao[];
 }
 
 /**
@@ -352,6 +443,9 @@ export async function getRankingVereadores(idMunicipio: IdMunicipio): Promise<{
   /** Contagem por tipo somando a Câmara inteira (alimenta o gráfico de
    *  composição sem precisar de um segundo select de `proposicoes`). */
   totaisPorTipo: Record<string, number>;
+  /** As mesmas células, sem agregar por tipo — o gráfico da Câmara precisa
+   *  delas para pontuar com a mesma régua do ranking individual. */
+  totaisLinhas: LinhaProposicao[];
   ok: boolean;
 }> {
   try {
@@ -359,26 +453,37 @@ export async function getRankingVereadores(idMunicipio: IdMunicipio): Promise<{
       q.listarVereadores(idMunicipio),
       q.contagemDeProposicoesPorVereador(idMunicipio),
     ]);
-    if (!vereadoresRows || !contagens) return { rows: [], totaisPorTipo: {}, ok: false };
+    if (!vereadoresRows || !contagens)
+      return { rows: [], totaisPorTipo: {}, totaisLinhas: [], ok: false };
 
-    const porVereador = new Map<string, { pontuacao: number; porTipo: Record<string, number> }>();
+    type Acc = { pontuacao: number; porTipo: Record<string, number>; linhas: LinhaProposicao[] };
+    const porVereador = new Map<string, Acc>();
     const totaisPorTipo: Record<string, number> = {};
+    const totaisLinhas: LinhaProposicao[] = [];
     for (const c of contagens) {
       const tipo = c.tipo;
       if (!tipo) continue;
+      const linha: LinhaProposicao = {
+        tipo,
+        classe_teor: c.classe_teor ?? null,
+        rotulo: c.rotulo ?? null,
+        qtd: c.qtd,
+      };
       // O total da Câmara conta toda proposição, inclusive as sem autor
       // casado com um vereador ativo — o ranking por pessoa não pode.
       totaisPorTipo[tipo] = (totaisPorTipo[tipo] ?? 0) + c.qtd;
+      totaisLinhas.push(linha);
       if (!c.vereador_id) continue;
-      const acc = porVereador.get(c.vereador_id) ?? { pontuacao: 0, porTipo: {} };
-      acc.pontuacao += (PESO_PROPOSICAO[tipo] ?? 0) * c.qtd;
+      const acc = porVereador.get(c.vereador_id) ?? { pontuacao: 0, porTipo: {}, linhas: [] };
+      acc.pontuacao += pontosDaLinha(linha);
       acc.porTipo[tipo] = (acc.porTipo[tipo] ?? 0) + c.qtd;
+      acc.linhas.push(linha);
       porVereador.set(c.vereador_id, acc);
     }
 
     const rows: RankingVereador[] = (vereadoresRows as VereadorRow[])
       .map((v) => {
-        const acc = porVereador.get(v.id) ?? { pontuacao: 0, porTipo: {} };
+        const acc = porVereador.get(v.id) ?? { pontuacao: 0, porTipo: {}, linhas: [] };
         return {
           id: v.id,
           slug: v.slug,
@@ -386,6 +491,7 @@ export async function getRankingVereadores(idMunicipio: IdMunicipio): Promise<{
           partido: v.partido,
           pontuacao: acc.pontuacao,
           porTipo: acc.porTipo,
+          linhas: acc.linhas,
         };
       })
       // Desempate por nome: vereadores com a mesma pontuação saíam em
@@ -396,9 +502,9 @@ export async function getRankingVereadores(idMunicipio: IdMunicipio): Promise<{
           (a.nome_urna ?? "").localeCompare(b.nome_urna ?? "", "pt-BR")
       );
 
-    return { rows, totaisPorTipo, ok: true };
+    return { rows, totaisPorTipo, totaisLinhas, ok: true };
   } catch {
-    return { rows: [], totaisPorTipo: {}, ok: false };
+    return { rows: [], totaisPorTipo: {}, totaisLinhas: [], ok: false };
   }
 }
 

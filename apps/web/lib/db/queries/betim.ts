@@ -1752,6 +1752,22 @@ export async function bensDeVereador(idMunicipio: IdMunicipio, vereadorId: strin
  * o total da Câmara e não para o ranking por pessoa — quem separa é
  * `lib/betim/vereadores.ts`, que precisa das duas contagens.
  */
+/**
+ * A contagem quebra por mais duas dimensões, e as duas mudam PONTO:
+ *
+ * - `classe_teor` (migration 0038) separa o Projeto de Lei que é política
+ *   pública do que dá nome a rua. São 12% dos PLs de BH, 22% dos de São
+ *   Paulo e 29% dos de Betim — grande demais para o ranking ignorar.
+ * - `rotulo` vem da análise garantista, e só das que estão em `status='ok'`
+ *   (a mesma régua de `legislacao-garantista.ts`: análise em
+ *   `requer_revisao` tem baixa confiança e não pode mexer no ranking de
+ *   ninguém).
+ *
+ * O JOIN é LEFT de propósito: a esmagadora maioria das proposições não tem
+ * análise, e um INNER JOIN faria o ranking sumir com quase todo mundo.
+ * `rotulo` nulo significa "não analisada", NUNCA "neutra" — quem consome
+ * trata os dois casos separadamente.
+ */
 export async function contagemDeProposicoesPorVereador(idMunicipio: IdMunicipio) {
   const db = getDb();
   if (!db) return null;
@@ -1759,11 +1775,22 @@ export async function contagemDeProposicoesPorVereador(idMunicipio: IdMunicipio)
     .select({
       vereador_id: proposicoes.vereador_id,
       tipo: proposicoes.tipo,
+      classe_teor: proposicoes.classe_teor,
+      rotulo: analises.rotulo,
       qtd: sql<number>`count(*)::int`,
     })
     .from(proposicoes)
+    .leftJoin(
+      analises,
+      and(eq(analises.proposicao_id, proposicoes.id), eq(analises.status, "ok"))
+    )
     .where(and(eq(proposicoes.id_municipio, idMunicipio), isNotNull(proposicoes.tipo)))
-    .groupBy(proposicoes.vereador_id, proposicoes.tipo);
+    .groupBy(
+      proposicoes.vereador_id,
+      proposicoes.tipo,
+      proposicoes.classe_teor,
+      analises.rotulo
+    );
 }
 
 /** A proposição mais recente que casa com um filtro — teaser da Home. */
