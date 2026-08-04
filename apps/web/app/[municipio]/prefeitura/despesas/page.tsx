@@ -1,9 +1,8 @@
+import { Suspense } from "react";
 import Link from "@/lib/betim/link";
-import DataCard from "@/app/[municipio]/components/DataCard";
-import BarrasValor, { type BarraItem } from "@/app/[municipio]/components/charts/BarrasValor";
 import { getDespesasPorFuncao } from "@/lib/betim/despesas";
-import { formatCurrencyBRL } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import PainelDespesas from "./PainelDespesas";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Despesas por função — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
@@ -12,26 +11,26 @@ export const generateMetadata = metadataDaCidade(
 
 interface DespesasPageProps {
   params: Promise<{ municipio: string }>;
-  searchParams: Promise<{ ano?: string }>;
 }
 
-export default async function DespesasPage({
-  params,
-  searchParams,
-}: DespesasPageProps) {
+export default async function DespesasPage({ params }: DespesasPageProps) {
   const cidade = await cidadeDaRota(params);
-  const { ano: anoParam } = await searchParams;
-  const dados = await getDespesasPorFuncao(
-    cidade.id_municipio,
-    anoParam ? Number(anoParam) : undefined
+  // SEM o filtro de ano: ele agora é do cliente (ver `PainelDespesas`).
+  // Passar `?ano=` para o `getDespesasPorFuncao` exigiria ler `searchParams`
+  // aqui, e é exatamente isso que `output: 'export'` proíbe.
+  const maisRecente = await getDespesasPorFuncao(cidade.id_municipio);
+  // O ano era `where ano = ?` no SQL, então "trazer tudo" é buscar cada ano —
+  // um ano não se deriva do outro. Cabe: a consulta soma no banco e devolve
+  // no máximo as 29 funções COFOG por ano, e o ETL do SICONFI começa em 2015;
+  // são algumas centenas de linhas, e o total não cresce com o tamanho da
+  // cidade. O ano mais recente reaproveita a busca acima; os demais custam
+  // uma consulta cada, mas só no build — sem `searchParams` a rota volta a
+  // ser estática, então isso deixa de acontecer a cada troca de filtro.
+  const porAno = await Promise.all(
+    maisRecente.anosDisponiveis.map((ano) =>
+      ano === maisRecente.ano ? maisRecente : getDespesasPorFuncao(cidade.id_municipio, ano)
+    )
   );
-
-  const itens: BarraItem[] = dados.funcoes.map((f) => ({
-    label: f.funcao,
-    valor: f.valor,
-    sublabel: `· ${f.pct.toFixed(1)}%`,
-    titulo: `${f.funcao}: ${formatCurrencyBRL(f.valor)} (${f.pct.toFixed(1)}% das despesas por função em ${dados.ano})`,
-  }));
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
@@ -53,63 +52,13 @@ export default async function DespesasPage({
         urbanismo e assim por diante. Mostra pra onde o dinheiro foi.
       </p>
 
-      {!dados.ok ? (
-        <div className="mt-8 rounded-2xl border border-dashed border-border bg-surface-2 p-8 text-sm text-text-soft">
-          Dados de despesas ainda não disponíveis.
-        </div>
-      ) : (
-        <>
-          {dados.anosDisponiveis.length > 1 && (
-            <form method="GET" className="mt-6 flex items-end gap-3">
-              <div className="flex flex-col">
-                <label htmlFor="ano" className="mb-1 text-xs font-medium text-text-soft">
-                  Ano
-                </label>
-                <select
-                  id="ano"
-                  name="ano"
-                  defaultValue={String(dados.ano)}
-                  className="rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
-                >
-                  {dados.anosDisponiveis.map((a) => (
-                    <option key={a} value={a}>
-                      {a}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <button
-                type="submit"
-                className="cursor-pointer rounded-lg border border-primary bg-primary px-5 py-2 text-sm font-semibold text-primary-ink"
-              >
-                Ver
-              </button>
-            </form>
-          )}
-
-          <div className="mt-6">
-            <DataCard
-              title={`Despesas pagas por função em ${dados.ano}`}
-              source={{ label: "SICONFI/Tesouro Nacional", url: "https://siconfi.tesouro.gov.br/" }}
-            >
-              <p className="mb-4 text-sm text-text-soft">
-                Total por função:{" "}
-                <strong className="font-tabular text-text">
-                  {formatCurrencyBRL(dados.total)}
-                </strong>{" "}
-                — a barra de cada área é proporcional à maior.
-              </p>
-              <BarrasValor itens={itens} formatValor={formatCurrencyBRL} />
-              <p className="mt-4 text-xs text-text-soft">
-                Mostra o que a Prefeitura de fato <strong>pagou</strong> em
-                cada área ao longo do ano. Não inclui alguns repasses internos
-                entre órgãos, então o total pode ficar um pouco abaixo do gasto
-                do ano inteiro.
-              </p>
-            </DataCard>
-          </div>
-        </>
-      )}
+      {/* O fallback é o painel SEM filtro, não um esqueleto: é o que o
+          servidor tem para mostrar antes de o navegador ler a query, e é
+          também exatamente o conteúdo certo para quem chega sem `?ano=` —
+          o ano mais recente, que já era o padrão. */}
+      <Suspense fallback={<PainelDespesas porAno={porAno} />}>
+        <PainelDespesas porAno={porAno} />
+      </Suspense>
     </div>
   );
 }

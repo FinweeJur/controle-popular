@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Link from "@/lib/congresso/link";
-import { listarBancadas, DESCRICAO_TIPO, ROTULO_TIPO, type TipoBancada } from "@/lib/congresso/bancadas";
+import { Suspense } from "react";
+import { listarBancadas } from "@/lib/congresso/bancadas";
+import ListaBancadas from "./ListaBancadas";
 
 export const metadata: Metadata = {
   title: "Bancadas — Controle Popular · Congresso",
@@ -8,18 +9,14 @@ export const metadata: Metadata = {
     "Frentes parlamentares, blocos, federações e partidos na Câmara dos Deputados, com quantos deputados cada um reúne.",
 };
 
-const ORDEM: TipoBancada[] = ["frente", "bloco", "federacao", "partido"];
-
-type Params = Promise<Record<string, string | undefined>>;
-
-export default async function Bancadas({ searchParams }: { searchParams: Params }) {
-  const sp = await searchParams;
-  const filtro = (ORDEM as string[]).includes(sp.tipo ?? "")
-    ? (sp.tipo as TipoBancada)
-    : undefined;
-
-  const bancadas = await listarBancadas(filtro);
-  const tipos = filtro ? [filtro] : ORDEM;
+export default async function Bancadas() {
+  // SEM o filtro de tipo: ele agora é do cliente (ver `ListaBancadas`).
+  // Passar `?tipo=` para o SQL exigiria ler `searchParams` aqui, e é
+  // exatamente isso que `output: 'export'` proíbe.
+  //
+  // Trocar `listarBancadas(filtro)` por `listarBancadas()` não muda o
+  // universo: a consulta nunca teve LIMIT, o filtro só encurtava a lista.
+  const bancadas = await listarBancadas();
 
   return (
     <div className="mx-auto max-w-5xl space-y-8 px-4 py-10">
@@ -33,76 +30,14 @@ export default async function Bancadas({ searchParams }: { searchParams: Params 
         </p>
       </header>
 
-      <nav className="flex flex-wrap gap-2 text-sm">
-        <Link
-          href="/bancadas"
-          className={`rounded-md border px-3 py-1 ${
-            filtro ? "border-[var(--cp-border)]" : "border-[var(--cp-primary)]"
-          }`}
-        >
-          Todas
-        </Link>
-        {ORDEM.map((t) => (
-          <Link
-            key={t}
-            href={`/bancadas?tipo=${t}`}
-            className={`rounded-md border px-3 py-1 ${
-              filtro === t ? "border-[var(--cp-primary)]" : "border-[var(--cp-border)]"
-            }`}
-          >
-            {ROTULO_TIPO[t]}
-          </Link>
-        ))}
-      </nav>
-
-      {bancadas === null ? (
-        <p className="rounded-lg border border-[var(--cp-border)] p-5 opacity-80">
-          Fonte de dados não configurada.
-        </p>
-      ) : bancadas.length === 0 ? (
-        <p className="rounded-lg border border-[var(--cp-border)] p-5 opacity-80">
-          Nenhuma bancada sincronizada ainda. Rode{" "}
-          <code>python -m etl.camara.bancadas</code>.
-        </p>
-      ) : (
-        tipos.map((tipo) => {
-          const doTipo = bancadas.filter((b) => b.tipo === tipo);
-          if (doTipo.length === 0) return null;
-          return (
-            <section key={tipo} className="space-y-3">
-              <h2 className="font-display text-2xl font-semibold">
-                {ROTULO_TIPO[tipo]}s{" "}
-                <span className="font-tabular text-base font-normal opacity-70">
-                  ({doTipo.length})
-                </span>
-              </h2>
-              <p className="max-w-3xl text-sm opacity-75">{DESCRICAO_TIPO[tipo]}</p>
-              <ul className="grid gap-3 sm:grid-cols-2">
-                {doTipo.map((b) => (
-                  <li key={b.id}>
-                    <Link
-                      href={`/bancadas/${b.id}`}
-                      className="block h-full rounded-lg border border-[var(--cp-border)] p-4 hover:border-[var(--cp-primary)]"
-                    >
-                      <p className="font-semibold">{b.nome}</p>
-                      <p className="mt-1 text-sm opacity-70">
-                        {b.membros > 0 ? (
-                          <>
-                            <span className="font-tabular">{b.membros}</span>{" "}
-                            {b.membros === 1 ? "parlamentar" : "parlamentares"}
-                          </>
-                        ) : (
-                          "composição não sincronizada"
-                        )}
-                      </p>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          );
-        })
-      )}
+      {/* O fallback é a lista COMPLETA, não um esqueleto: é o que o servidor
+          tem para mostrar antes de o navegador ler a query, e é também
+          exatamente o conteúdo certo para quem chega sem filtro. O
+          `<Suspense>` não emite elemento, então o `space-y-8` do pai continua
+          separando header, nav e seções como antes. */}
+      <Suspense fallback={<ListaBancadas bancadas={bancadas} />}>
+        <ListaBancadas bancadas={bancadas} />
+      </Suspense>
     </div>
   );
 }

@@ -1,6 +1,7 @@
-import DataCard from "@/app/[municipio]/components/DataCard";
+import { Suspense } from "react";
 import { fetchPostosAnp } from "@/lib/betim/postos";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import ListaPostos from "./ListaPostos";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Postos de Combustível — ${c.nome} | ${nomePortal(c)}`,
@@ -9,14 +10,14 @@ export const generateMetadata = metadataDaCidade(
 
 export default async function PostosCombustivelPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ municipio: string }>;
-  searchParams: Promise<{ bandeira?: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
-  const { bandeira } = await searchParams;
-  const { rows, configured } = await fetchPostosAnp(cidade.id_municipio, bandeira);
+  // SEM o filtro de bandeira: ele agora é do cliente (ver `ListaPostos`).
+  // Passar `?bandeira=` para o SQL exigiria ler `searchParams` aqui, e é
+  // exatamente isso que `output: 'export'` proíbe.
+  const { rows, configured } = await fetchPostosAnp(cidade.id_municipio);
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-14 sm:px-8">
@@ -32,44 +33,12 @@ export default async function PostosCombustivelPage({
       </p>
 
       <section className="mt-8 grid gap-4 sm:grid-cols-2">
-        {rows.length > 0 ? (
-          rows.map((posto) => (
-            <DataCard
-              key={posto.cnpj}
-              title={posto.razao_social ?? "Posto"}
-              source={{
-                label: "ANP — Revendedores",
-                url: "https://revendedoresapi.anp.gov.br/swagger/index.html",
-              }}
-            >
-              <p>{posto.endereco ?? "—"}</p>
-              <div className="mt-3 flex flex-wrap items-center gap-3">
-                <span className="rounded-full border border-border px-2.5 py-1 text-xs font-medium">
-                  {posto.bandeira ?? "sem bandeira"}
-                </span>
-                <span className="font-tabular text-sm font-semibold text-primary">
-                  Nota ANP: {posto.nota_anp ?? "—"}/5
-                </span>
-                {posto.interditado ? (
-                  <span className="rounded-full bg-red-100 px-2.5 py-1 text-xs font-semibold text-red-700">
-                    Interditado
-                  </span>
-                ) : null}
-              </div>
-              {posto.produtos && posto.produtos.length > 0 ? (
-                <p className="mt-3 text-xs text-text-soft">
-                  {posto.produtos.join(" · ")}
-                </p>
-              ) : null}
-            </DataCard>
-          ))
-        ) : (
-          <p className="col-span-full text-sm text-text-soft">
-            {configured
-              ? "Nenhum posto cadastrado ainda — em breve."
-              : "Nenhum dado disponível no momento."}
-          </p>
-        )}
+        {/* O fallback é a lista COMPLETA, não um esqueleto: é o que o
+            servidor tem para mostrar antes de o navegador ler a query, e é
+            também exatamente o conteúdo certo para quem chega sem filtro. */}
+        <Suspense fallback={<ListaPostos postos={rows} configured={configured} />}>
+          <ListaPostos postos={rows} configured={configured} />
+        </Suspense>
       </section>
     </main>
   );

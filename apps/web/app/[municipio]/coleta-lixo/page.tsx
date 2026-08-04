@@ -1,28 +1,24 @@
+import { Suspense } from "react";
 import { fetchColetaLixo } from "@/lib/betim/servicos";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import ListaColeta from "./ListaColeta";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Coleta de Lixo — ${c.nome} | ${nomePortal(c)}`,
   (c) => `Dias e horários de coleta de lixo comum e seletiva por bairro em ${c.nome}-${c.uf}.`
 );
 
-const TIPO_LABELS: Record<string, string> = {
-  comum: "Comum",
-  seletiva: "Seletiva",
-};
-
 export default async function ColetaLixoPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ municipio: string }>;
-  searchParams: Promise<{ bairro?: string }>;
 }) {
   // Componente de servidor não usa hook: a cidade vem do `params` da rota.
   const cidade = await cidadeDaRota(params);
-  const municipio = cidade.slug;
-  const { bairro } = await searchParams;
-  const { rows, configured } = await fetchColetaLixo(cidade.id_municipio, bairro);
+  // SEM o filtro de bairro: ele agora é do cliente (ver `ListaColeta`).
+  // Passar `?bairro=` para o SQL exigiria ler `searchParams` aqui, e é
+  // exatamente isso que `output: 'export'` proíbe.
+  const { rows, configured } = await fetchColetaLixo(cidade.id_municipio);
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-14 sm:px-8">
@@ -34,54 +30,26 @@ export default async function ColetaLixoPage({
         lembrete recorrente pro seu calendário.
       </p>
 
-      <form method="GET" className="mt-6 flex max-w-md gap-2">
-        <input
-          type="search"
-          name="bairro"
-          defaultValue={bairro ?? ""}
-          placeholder="Buscar bairro…"
-          aria-label="Buscar bairro"
-          className="min-w-0 flex-1 rounded-xl border border-border bg-surface px-4 py-3 text-text"
+      {/* O fallback é a caixa vazia com a agenda COMPLETA, não um esqueleto: é
+          o que o servidor tem para mostrar antes de o navegador ler a query, e
+          é também exatamente o conteúdo certo para quem chega sem filtro. */}
+      <Suspense
+        fallback={
+          <ListaColeta
+            rows={rows}
+            configured={configured}
+            municipio={cidade.slug}
+            cidadeNome={cidade.nome}
+          />
+        }
+      >
+        <ListaColeta
+          rows={rows}
+          configured={configured}
+          municipio={cidade.slug}
+          cidadeNome={cidade.nome}
         />
-        <button
-          type="submit"
-          className="cursor-pointer rounded-xl border border-primary bg-primary px-5 py-3 font-semibold text-primary-ink"
-        >
-          Buscar
-        </button>
-      </form>
-
-      <section className="mt-8 flex flex-col gap-3">
-        {rows.length > 0 ? (
-          rows.map((row, i) => (
-            <div
-              key={`${row.bairro}-${row.tipo}-${i}`}
-              className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-surface p-5 shadow-sm"
-            >
-              <div>
-                <p className="font-display font-semibold text-text">{row.bairro}</p>
-                <p className="text-sm text-text-soft">
-                  {TIPO_LABELS[row.tipo ?? ""] ?? row.tipo ?? "—"} ·{" "}
-                  {(row.dias_semana ?? []).join(", ") || "—"}
-                  {row.horario ? ` · ${row.horario}` : ""}
-                </p>
-              </div>
-              <a
-                href={`/${municipio}/api/coleta/${encodeURIComponent(row.bairro)}`}
-                className="rounded-lg border border-primary bg-primary px-4 py-2 text-sm font-semibold text-primary-ink"
-              >
-                Baixar lembrete (.ics)
-              </a>
-            </div>
-          ))
-        ) : (
-          <p className="text-sm text-text-soft">
-            {configured
-              ? `Nenhum bairro cadastrado ainda — a Prefeitura de ${cidade.nome} ainda não disponibilizou essa agenda de forma estruturada; assim que tivermos a fonte confirmada, ela entra aqui.`
-              : "Nenhum dado disponível no momento."}
-          </p>
-        )}
-      </section>
+      </Suspense>
     </main>
   );
 }

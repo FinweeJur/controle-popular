@@ -1,8 +1,10 @@
+import { Suspense } from "react";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { getObras } from "@/lib/betim/obras";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import ListaObras from "./ListaObras";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Obras públicas — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
@@ -11,15 +13,15 @@ export const generateMetadata = metadataDaCidade(
 
 interface ObrasPageProps {
   params: Promise<{ municipio: string }>;
-  searchParams: Promise<{ situacao?: string }>;
 }
 
-export default async function ObrasPage({ params, searchParams }: ObrasPageProps) {
+export default async function ObrasPage({ params }: ObrasPageProps) {
   const cidade = await cidadeDaRota(params);
-  const { situacao } = await searchParams;
+  // SEM o filtro de situação: ele agora é do cliente (ver `ListaObras`).
+  // Passar `?situacao=` para o `getObras` exigiria ler `searchParams` aqui, e é
+  // exatamente isso que `output: 'export'` proíbe.
   const { obras, situacoesDisponiveis, total, valorTotal, comValor, ok } = await getObras(
-    cidade.id_municipio,
-    situacao
+    cidade.id_municipio
   );
 
   return (
@@ -103,77 +105,17 @@ export default async function ObrasPage({ params, searchParams }: ObrasPageProps
             </DataCard>
           </div>
 
-          <form method="GET" className="mb-6 flex flex-wrap items-end gap-3">
-            <div className="flex flex-col">
-              <label htmlFor="situacao" className="mb-1 text-xs font-medium text-text-soft">
-                Situação
-              </label>
-              <select
-                id="situacao"
-                name="situacao"
-                defaultValue={situacao ?? ""}
-                className="w-64 rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
-              >
-                <option value="">Todas</option>
-                {situacoesDisponiveis.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <button
-              type="submit"
-              className="cursor-pointer rounded-lg border border-primary bg-primary px-5 py-2 text-sm font-semibold text-primary-ink"
-            >
-              Filtrar
-            </button>
-            {situacao && (
-              <Link href="/prefeitura/obras" className="pb-1.5 text-sm text-text-soft hover:underline">
-                Limpar
-              </Link>
-            )}
-          </form>
-
-          <ul className="flex flex-col gap-3">
-            {obras.map((o, i) => (
-              <li key={i} className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
-                <div className="flex flex-wrap items-start justify-between gap-2">
-                  <p className="max-w-2xl font-medium text-text">{o.nome}</p>
-                  {o.situacao && (
-                    <span className="shrink-0 rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-text-soft">
-                      {o.situacao}
-                    </span>
-                  )}
-                </div>
-                <div className="mt-2 flex flex-wrap items-center gap-4 text-sm">
-                  {o.valor != null && o.valor > 0 && (
-                    <span className="font-tabular font-semibold text-text">
-                      {formatCurrencyBRL(o.valor)}
-                    </span>
-                  )}
-                  {o.percentualExecucao != null && (
-                    <span className="text-text-soft">
-                      {o.percentualExecucao.toFixed(0)}% executado
-                    </span>
-                  )}
-                </div>
-                {o.percentualExecucao != null && (
-                  <div
-                    className="mt-2 h-2 overflow-hidden rounded-full bg-surface-2"
-                    title={`${o.percentualExecucao.toFixed(0)}% executado`}
-                  >
-                    <div
-                      className="h-full rounded-full bg-primary transition-[width] duration-500"
-                      style={{
-                        width: `${Math.min(Math.max(o.percentualExecucao, 0), 100)}%`,
-                      }}
-                    />
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
+          {/* O fallback é o formulário sem filtro e a lista COMPLETA, não um
+              esqueleto: é o que o servidor tem para mostrar antes de o
+              navegador ler a query, e é também exatamente o conteúdo certo
+              para quem chega sem filtro. */}
+          <Suspense
+            fallback={
+              <ListaObras obras={obras} situacoesDisponiveis={situacoesDisponiveis} />
+            }
+          >
+            <ListaObras obras={obras} situacoesDisponiveis={situacoesDisponiveis} />
+          </Suspense>
 
           <p className="mt-6 text-xs text-text-soft">
             Fonte: portal de transparência da Prefeitura de {cidade.nome}.

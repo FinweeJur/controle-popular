@@ -1,7 +1,7 @@
-import Link from "@/lib/betim/link";
-import { fetchZapEstabelecimentos, ZAP_CATEGORIAS, ZAP_CATEGORIA_LABELS } from "@/lib/betim/zap";
+import { Suspense } from "react";
+import { fetchZapEstabelecimentos } from "@/lib/betim/zap";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
-import ZapCard from "./ZapCard";
+import ListaZap from "./ListaZap";
 import ZapForm from "./ZapForm";
 
 export const generateMetadata = metadataDaCidade(
@@ -11,17 +11,16 @@ export const generateMetadata = metadataDaCidade(
 
 export default async function ZapBetimPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ municipio: string }>;
-  searchParams: Promise<{ categoria?: string; q?: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
-  const { categoria, q } = await searchParams;
-  const { rows, configured } = await fetchZapEstabelecimentos(cidade.id_municipio, {
-    categoria,
-    q,
-  });
+  // SEM os filtros de categoria e busca: eles agora são do cliente (ver
+  // `ListaZap`). Passar `?categoria=`/`?q=` para o SQL exigiria ler
+  // `searchParams` aqui, e é exatamente isso que `output: 'export'` proíbe.
+  // Trazer tudo é barato nesta tabela: ela é cadastro moderado, um por
+  // negócio da cidade — nada de ETL despejando milhares de linhas.
+  const { rows, configured } = await fetchZapEstabelecimentos(cidade.id_municipio);
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-14 sm:px-8">
@@ -33,39 +32,12 @@ export default async function ZapBetimPage({
         WhatsApp. Cadastro aberto, revisado antes de entrar no ar.
       </p>
 
-      <div className="mt-8 flex flex-wrap gap-2">
-        <Link
-          href="/zap"
-          className={`rounded-full border px-3.5 py-1.5 text-sm font-medium ${
-            !categoria ? "border-primary bg-primary text-primary-ink" : "border-border text-text-soft"
-          }`}
-        >
-          Todos
-        </Link>
-        {ZAP_CATEGORIAS.map((c) => (
-          <Link
-            key={c}
-            href={`/zap?categoria=${c}`}
-            className={`rounded-full border px-3.5 py-1.5 text-sm font-medium ${
-              categoria === c ? "border-primary bg-primary text-primary-ink" : "border-border text-text-soft"
-            }`}
-          >
-            {ZAP_CATEGORIA_LABELS[c]}
-          </Link>
-        ))}
-      </div>
-
-      <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {rows.length > 0 ? (
-          rows.map((item) => <ZapCard key={item.id} item={item} />)
-        ) : (
-          <p className="col-span-full text-sm text-text-soft">
-            {configured
-              ? "Nenhum negócio aprovado ainda nesta categoria."
-              : "Nenhum dado disponível no momento."}
-          </p>
-        )}
-      </section>
+      {/* O fallback é a lista COMPLETA, não um esqueleto: é o que o servidor
+          tem para mostrar antes de o navegador ler a query, e é também
+          exatamente o conteúdo certo para quem chega sem filtro. */}
+      <Suspense fallback={<ListaZap estabelecimentos={rows} configured={configured} />}>
+        <ListaZap estabelecimentos={rows} configured={configured} />
+      </Suspense>
 
       <div className="mt-14">
         <ZapForm />
