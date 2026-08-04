@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "@/lib/judiciario/link";
 import ThemeSwitcher from "@/app/judiciario/components/ThemeSwitcher";
 import FontSizeControl from "@/app/judiciario/components/FontSizeControl";
-import AuthNav from "@/app/judiciario/components/AuthNav";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
 
 /**
@@ -68,7 +67,6 @@ export default function JudiciarioLayout({
             >
               Betim →
             </a>
-            <AuthNav />
             <FontSizeControl />
             <ThemeSwitcher />
           </div>
