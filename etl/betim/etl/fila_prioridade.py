@@ -91,7 +91,21 @@ TIPOS_ATO_SECUNDARIO = {"decreto", "resolucao", "instrucao normativa", "regiment
 
 
 def _ato_primario(tipo_slug: str) -> bool:
-    return tipo_slug.startswith("lei") or tipo_slug in TIPOS_ATO_PRIMARIO_EXTRA
+    # "lei organica" em qualquer posição, e não só como prefixo: a Emenda à
+    # Lei Orgânica é o ato mais primário que um município tem — muda a
+    # constituição da cidade — e o slug dela começa com "emenda", então nem
+    # o prefixo "lei" nem a lista EXTRA a alcançavam. Ficava em
+    # `norma_secundaria`, ABAIXO de decreto de crédito, e o resumo da fila a
+    # denunciava como "tipo não catalogado" (visto ao vivo em BH,
+    # 2026-08-03, logo depois de a coleta passar a separar essa espécie de
+    # `Lei` nº `ORGANICA 43`). O lado das proposições já a tratava como
+    # primária (`emenda_lei_organica` em TIPOS_PROPOSICAO_PRIMARIO): a mesma
+    # norma mudava de peso conforme fosse lida como projeto ou como ato.
+    return (
+        tipo_slug.startswith("lei")
+        or "lei organica" in tipo_slug
+        or tipo_slug in TIPOS_ATO_PRIMARIO_EXTRA
+    )
 
 TIPOS_PROPOSICAO_PRIMARIO = {
     "projeto_lei",
