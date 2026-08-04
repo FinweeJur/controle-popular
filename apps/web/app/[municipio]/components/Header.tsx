@@ -17,6 +17,11 @@ const PREFEITURA_SUB = [
   { href: "/prefeitura/despesas", nome: "Despesas" },
   { href: "/prefeitura/obras", nome: "Obras" },
   { href: "/prefeitura/legislacao", nome: "Legislação" },
+  // Cobrem lei sancionada E projeto em tramitação — por isso não vivem sob
+  // /prefeitura, mas o ponto de entrada mais descoberto continua sendo
+  // aqui, ao lado da lista de normas que os alimenta.
+  { href: "/legislacao/alertas", nome: "Legislação · Alertas" },
+  { href: "/legislacao/bons-exemplos", nome: "Legislação · Bons exemplos" },
 ];
 const CAMARA_SUB = [
   { href: "/camara", nome: "Vereadores" },

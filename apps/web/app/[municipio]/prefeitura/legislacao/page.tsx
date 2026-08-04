@@ -1,8 +1,10 @@
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import AreasAtuacao from "@/app/[municipio]/components/charts/AreasAtuacao";
+import RotuloBadge from "@/app/[municipio]/components/RotuloBadge";
 import { getLegislacao } from "@/lib/betim/legislacao";
 import { TEMA_LABELS } from "@/lib/betim/temas";
+import { labelDoDireito } from "@/lib/congresso/rubrica";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { hostDaPrefeitura } from "@/lib/db/queries/municipios";
@@ -14,7 +16,7 @@ export const generateMetadata = metadataDaCidade(
 
 interface LegislacaoPageProps {
   params: Promise<{ municipio: string }>;
-  searchParams: Promise<{ categoria?: string; tema?: string; ano?: string }>;
+  searchParams: Promise<{ categoria?: string; tema?: string; ano?: string; direito?: string }>;
 }
 
 export default async function LegislacaoPage({
@@ -27,16 +29,22 @@ export default async function LegislacaoPage({
   // outro sistema — o crédito estava errado na cidade E na natureza da fonte.
   const fonteLegislacao = hostDaPrefeitura(cidade);
   const params = await searchParams;
-  const { atos, categoriasDisponiveis, anosDisponiveis, temas, total, ok } = await getLegislacao(
-    cidade.id_municipio,
-    {
-      categoria: params.categoria,
-      tema: params.tema,
-      ano: params.ano ? Number(params.ano) : undefined,
-    }
-  );
+  const {
+    atos,
+    categoriasDisponiveis,
+    anosDisponiveis,
+    temas,
+    direitosDisponiveis,
+    total,
+    ok,
+  } = await getLegislacao(cidade.id_municipio, {
+    categoria: params.categoria,
+    tema: params.tema,
+    ano: params.ano ? Number(params.ano) : undefined,
+    direito: params.direito,
+  });
 
-  const temFiltro = Boolean(params.categoria || params.tema || params.ano);
+  const temFiltro = Boolean(params.categoria || params.tema || params.ano || params.direito);
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
@@ -138,6 +146,26 @@ export default async function LegislacaoPage({
                 ))}
               </select>
             </div>
+            {direitosDisponiveis.length > 0 && (
+              <div className="flex flex-col">
+                <label htmlFor="direito" className="mb-1 text-xs font-medium text-text-soft">
+                  Direito afetado
+                </label>
+                <select
+                  id="direito"
+                  name="direito"
+                  defaultValue={params.direito ?? ""}
+                  className="w-64 rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
+                >
+                  <option value="">Todos</option>
+                  {direitosDisponiveis.map((d) => (
+                    <option key={d.direito} value={d.direito}>
+                      {d.label} ({d.qtd})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
             {/* tema já entra por link no gráfico; mantido no form pra preservar. */}
             {params.tema && <input type="hidden" name="tema" value={params.tema} />}
             <button
@@ -166,14 +194,25 @@ export default async function LegislacaoPage({
             </p>
           )}
 
+          {params.direito && (
+            <p className="mb-4 text-sm text-text-soft">
+              Filtrando por direito afetado:{" "}
+              <strong className="text-text">{labelDoDireito(params.direito)}</strong> — leitura
+              da análise garantista deste portal, não classificação oficial.{" "}
+              <Link href="/prefeitura/legislacao" className="text-accent hover:underline">
+                ✕ limpar direito
+              </Link>
+            </p>
+          )}
+
           {atos.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-border bg-surface-2 p-6 text-sm text-text-soft">
               Nenhuma norma para esse filtro.
             </div>
           ) : (
             <ul className="flex flex-col gap-3">
-              {atos.map((a, i) => (
-                <li key={i} className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
+              {atos.map((a) => (
+                <li key={a.id} className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
                       {a.tipo}
@@ -198,6 +237,42 @@ export default async function LegislacaoPage({
                         </li>
                       ))}
                     </ul>
+                  )}
+                  {/* Ausência aqui é ausência de análise, não rótulo "neutro" —
+                      por isso não há `else`: sem `a.analise`, não mostramos
+                      nada de garantista/reducionista nesta linha. */}
+                  {a.analise && (
+                    <details className="group mt-3">
+                      <summary className="flex cursor-pointer list-none flex-wrap items-center gap-2 [&::-webkit-details-marker]:hidden">
+                        <RotuloBadge rotulo={a.analise.rotulo} score={a.analise.score} tamanho="sm" />
+                        <span className="text-xs text-accent underline decoration-dotted group-open:hidden">
+                          ver justificativa
+                        </span>
+                      </summary>
+                      <div className="mt-2 space-y-2 rounded-xl bg-surface-2 p-3 text-sm">
+                        {a.analise.itens.map((item, idx) => (
+                          <div key={idx}>
+                            <p>
+                              <strong className="text-text">
+                                {item.direcao === "restringe"
+                                  ? "Restringe"
+                                  : item.direcao === "amplia"
+                                    ? "Amplia"
+                                    : "Neutro sobre"}
+                                : {labelDoDireito(item.direito)}
+                              </strong>{" "}
+                              <span className="text-text-soft">
+                                ({item.dispositivo}
+                                {item.grau ? ` · alcance ${item.grau}` : ""})
+                              </span>
+                            </p>
+                            {item.trecho && (
+                              <p className="mt-1 italic text-text-soft">“{item.trecho}”</p>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </details>
                   )}
                 </li>
               ))}

@@ -1,14 +1,23 @@
 import * as q from "@/lib/db/queries/betim";
 import { TEMA_LABELS, type ContagemTema } from "@/lib/betim/temas";
+import {
+  analisesDeAtos,
+  direitosDeAtos,
+  type AnaliseAto,
+  type DireitoContagem,
+} from "@/lib/betim/legislacao-garantista";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface AtoRow {
+  id: string;
   tipo: string | null;
   numero: string | null;
   ano: number | null;
   ementa: string | null;
   dataPublicacao: string | null;
   temas: string[] | null;
+  /** Ausente = ato sem análise garantista — NÃO é o mesmo que rótulo "neutro". */
+  analise?: AnaliseAto;
 }
 
 export interface LegislacaoData {
@@ -17,6 +26,8 @@ export interface LegislacaoData {
   anosDisponiveis: number[];
   /** Ranking de áreas (só dos atos que pegaram tema) — pro gráfico. */
   temas: ContagemTema[];
+  /** Direitos da rubrica tocados por algum ato analisado — popula o filtro. */
+  direitosDisponiveis: DireitoContagem[];
   total: number;
   configured: boolean;
   ok: boolean;
@@ -27,12 +38,14 @@ const EMPTY: LegislacaoData = {
   categoriasDisponiveis: [],
   anosDisponiveis: [],
   temas: [],
+  direitosDisponiveis: [],
   total: 0,
   configured: false,
   ok: false,
 };
 
 interface RawRow {
+  id: string;
   tipo: string | null;
   numero: string | null;
   ano: number | null;
@@ -60,13 +73,14 @@ interface RawRow {
  */
 export async function getLegislacao(
   idMunicipio: IdMunicipio,
-  opts: { categoria?: string; tema?: string; ano?: number } = {}
+  opts: { categoria?: string; tema?: string; ano?: number; direito?: string } = {}
 ): Promise<LegislacaoData> {
   try {
     const data = await q.atosOficiais(idMunicipio);
     if (!data) return EMPTY;
 
-    const todos = ((data ?? []) as RawRow[]).map((r) => ({
+    const base = ((data ?? []) as RawRow[]).map((r) => ({
+      id: r.id,
       tipo: r.tipo,
       numero: r.numero,
       ano: r.ano,
@@ -74,20 +88,20 @@ export async function getLegislacao(
       dataPublicacao: r.data_publicacao,
       temas: r.temas,
     }));
-    if (todos.length === 0) return { ...EMPTY, configured: true };
+    if (base.length === 0) return { ...EMPTY, configured: true };
 
     const categoriasDisponiveis = [
-      ...new Set(todos.map((a) => a.tipo).filter((t): t is string => Boolean(t))),
+      ...new Set(base.map((a) => a.tipo).filter((t): t is string => Boolean(t))),
     ].sort((a, b) => a.localeCompare(b, "pt-BR"));
     const anosDisponiveis = [
-      ...new Set(todos.map((a) => a.ano).filter((a): a is number => a != null)),
+      ...new Set(base.map((a) => a.ano).filter((a): a is number => a != null)),
     ].sort((a, b) => b - a);
 
     // Ranking de áreas sobre TODOS os atos, não sobre o filtro: a leitura
     // é "sobre o que a Prefeitura legisla no geral", e mudaria de sentido
     // se acompanhasse a categoria selecionada na tabela abaixo.
     const contagem = new Map<string, number>();
-    for (const a of todos) {
+    for (const a of base) {
       for (const t of a.temas ?? []) contagem.set(t, (contagem.get(t) ?? 0) + 1);
     }
     const temas: ContagemTema[] = [...contagem.entries()]
@@ -96,16 +110,37 @@ export async function getLegislacao(
       // ordem de aparição das linhas, e com SSG o gráfico muda a cada build.
       .sort((a, b) => b.qtd - a.qtd || a.tema.localeCompare(b.tema));
 
+    // Análise garantista dos atos e o filtro por direito são isolados num
+    // try/catch PRÓPRIO: se falharem, a lista de atos (que já funciona sem
+    // isto) continua de pé, só sem badge de rótulo e sem filtro por
+    // direito — degradação parcial em vez de derrubar a página inteira.
+    let direitosDisponiveis: DireitoContagem[] = [];
+    let analisePorAto = new Map<string, AnaliseAto>();
+    try {
+      const [porAto, direitos] = await Promise.all([
+        analisesDeAtos(idMunicipio, base.map((a) => a.id)),
+        direitosDeAtos(idMunicipio),
+      ]);
+      analisePorAto = porAto;
+      direitosDisponiveis = direitos;
+    } catch {
+      // segue com os mapas vazios
+    }
+
+    const todos: AtoRow[] = base.map((a) => ({ ...a, analise: analisePorAto.get(a.id) }));
+
     let atos = todos;
     if (opts.categoria) atos = atos.filter((a) => a.tipo === opts.categoria);
     if (opts.ano) atos = atos.filter((a) => a.ano === opts.ano);
     if (opts.tema) atos = atos.filter((a) => (a.temas ?? []).includes(opts.tema!));
+    if (opts.direito) atos = atos.filter((a) => a.analise?.direitos.includes(opts.direito!));
 
     return {
       atos,
       categoriasDisponiveis,
       anosDisponiveis,
       temas,
+      direitosDisponiveis,
       total: todos.length,
       configured: true,
       ok: true,
