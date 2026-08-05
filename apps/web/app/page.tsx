@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ZONAS } from "@/lib/zonas";
+import { listarCidades } from "@/lib/db/queries/municipios";
 
 /**
  * Home da marca Controle Popular, na raiz do domínio.
@@ -17,6 +18,13 @@ import { ZONAS } from "@/lib/zonas";
  * Os links para as zonas usam `<a>` cru, não o `<Link>` de zona: daqui
  * eles apontam para `/betim`, `/congresso` e `/judiciario`, que são
  * caminhos absolutos e não devem receber prefixo nenhum.
+ *
+ * A ZONA DE CIDADES LISTA AS CIDADES, e não é enfeite: ela apontava para
+ * `/betim` e só. Belo Horizonte e São Paulo entraram no ar e ficaram
+ * inalcançáveis a partir da raiz — quem chegasse em controlepopular sem
+ * saber a URL de cor só encontrava Betim. A lista vem de `listarCidades()`,
+ * a mesma fonte que gera as rotas, então abrir a próxima cidade a faz
+ * aparecer aqui sozinha, sem ninguém lembrar de editar esta página.
  */
 
 export const metadata: Metadata = {
@@ -30,7 +38,8 @@ export const metadata: Metadata = {
 // as mesmas frentes — duplicar aqui garantiria deriva entre as duas telas.
 const SECOES = ZONAS;
 
-export default function Hub() {
+export default async function Hub() {
+  const cidades = await listarCidades();
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
       <header className="space-y-4">
@@ -48,7 +57,42 @@ export default function Hub() {
       </header>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {SECOES.map((s) => (
+        {SECOES.map((s) =>
+          s.id === "cidades" ? (
+            // O card de cidades não é UM link: é um cartão com N destinos.
+            // Aninhar <a> dentro de <a> é HTML inválido e o navegador
+            // "conserta" fechando o de fora — o que quebraria os links das
+            // cidades em vez de dar erro visível.
+            <div
+              key={s.id}
+              className="flex flex-col rounded-lg border border-border bg-surface p-6"
+            >
+              <span
+                className="text-[.88em] font-semibold uppercase tracking-wide"
+                style={{ color: s.cor }}
+              >
+                {s.etiqueta}
+              </span>
+              <h2 className="mt-2 font-display text-xl font-semibold">{s.titulo}</h2>
+              <p className="mt-2 text-[.95em] text-text-soft">{s.descricao}</p>
+              <ul className="mt-4 flex flex-col gap-2">
+                {cidades.map((c) => (
+                  <li key={c.slug}>
+                    <a
+                      href={`/${c.slug}`}
+                      className="flex items-baseline justify-between gap-2 rounded-md border border-border px-3 py-2 text-[.95em] font-medium transition-colors hover:border-primary hover:text-primary"
+                    >
+                      <span>
+                        {c.nome}
+                        <span className="text-text-soft"> · {c.uf}</span>
+                      </span>
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
           // <a> puro, não next/link: estes caminhos estão FORA do basePath
           // deste app (`/betim`), e o next/link prefixaria, gerando
           // `/betim/congresso`. É a mesma classe de bug que já mordeu aqui.
@@ -79,7 +123,8 @@ export default function Hub() {
             </ul>
             <span className="mt-5 font-medium text-primary">Entrar →</span>
           </a>
-        ))}
+          )
+        )}
       </div>
 
       <section className="mt-12 rounded-lg border border-border p-6">

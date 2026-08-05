@@ -32,18 +32,23 @@ export interface Zona {
 export const ZONAS: Zona[] = [
   {
     id: "cidades",
+    // A zona é MULTI-CIDADE desde que BH e São Paulo entraram no ar. O texto
+    // aqui dizia "Betim-MG", "Câmara de Betim" e "os 23 vereadores" — número
+    // de UMA das três câmaras, apresentado como se fosse o da zona. A home
+    // lista as cidades a partir do banco (`listarCidades`); este `href` fica
+    // como destino de fallback para quem renderiza o card como link único.
     href: "/betim",
-    etiqueta: "Municipal · Betim-MG",
-    titulo: "Prefeitura e Câmara de Betim",
+    etiqueta: "Municipal · Prefeituras e Câmaras",
+    titulo: "Para onde vai o dinheiro da sua cidade",
     descricao:
-      "Para onde vai o dinheiro da cidade: contratos, fornecedores, orçamento, obras e a atuação de cada vereador — com serviços do dia a dia reunidos no mesmo lugar.",
+      "Contratos, fornecedores, orçamento, obras e a atuação de cada vereador — com os serviços do dia a dia reunidos no mesmo lugar.",
     resumo:
       "Para onde vai o dinheiro da cidade: contratos, orçamento, obras e a atuação de cada vereador.",
     itens: [
       "Contratos e licitações com alertas de risco",
-      "Ranking de atuação dos 23 vereadores",
+      "Ranking de atuação de cada vereador",
+      "Leis municipais lidas por direito afetado",
       "Saúde, educação e economia em dados",
-      "Farmácias de plantão, coleta de lixo, postos",
     ],
     cor: "var(--cp-primary)",
   },
