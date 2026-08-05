@@ -60,35 +60,73 @@ def sync(id_municipio: str, ano_inicio: int, incluir_outras_esferas: bool = Fals
     ano_atual = dt.date.today().year
     total = 0
     descartados = 0
+    # (ano, modalidade) que não completaram — o PNCP devolveu erro no meio e o
+    # cliente esgotou as tentativas. Ver o bloco abaixo.
+    incompletos: list[tuple[int, int, str]] = []
+
     for ano in range(ano_inicio, ano_atual + 1):
         data_inicial = f"{ano}0101"
         data_final = f"{ano}1231"
-        rows_by_pncp: dict[str, dict] = {}
         for modalidade in MODALIDADES:
-            for raw in iter_contratacoes(id_municipio, data_inicial, data_final, modalidade):
-                esfera = (raw.get("orgaoEntidade") or {}).get("esferaId")
-                if not incluir_outras_esferas and esfera != "M":
-                    descartados += 1
-                    continue
-                row = _map_row(raw, id_municipio)
-                # Dedupe by numero_controle_pncp -- Postgres' ON CONFLICT DO
-                # UPDATE errors ("cannot affect row a second time") if the
-                # same key appears twice in one upsert batch, and PNCP can
-                # return the same contratação again across modalidade/page
-                # boundaries. Last occurrence wins (same key = same record).
-                rows_by_pncp[row["numero_controle_pncp"]] = row
+            # GRAVA POR MODALIDADE, NÃO POR ANO. A versão anterior acumulava o
+            # ano inteiro em memória e só gravava no fim — um 500 do PNCP na
+            # modalidade 6/2024 (o pregão eletrônico, com centenas de páginas)
+            # apagava as modalidades já coletadas E os anos seguintes, sem
+            # gravar nada. Medido ao vivo em 2026-08-05. Com a escrita por
+            # modalidade, o estrago de uma falha é UMA modalidade de UM ano.
+            #
+            # `rows_by_pncp` também é por modalidade: o dedupe existe para não
+            # repetir chave DENTRO de um mesmo lote de upsert (o Postgres
+            # recusa "cannot affect row a second time"). A mesma contratação
+            # aparecendo em duas modalidades agora cai em upserts SEPARADOS —
+            # inócuo, porque a chave de conflito é a mesma e o último ganha.
+            rows_by_pncp: dict[str, dict] = {}
+            try:
+                for raw in iter_contratacoes(id_municipio, data_inicial, data_final, modalidade):
+                    esfera = (raw.get("orgaoEntidade") or {}).get("esferaId")
+                    if not incluir_outras_esferas and esfera != "M":
+                        descartados += 1
+                        continue
+                    row = _map_row(raw, id_municipio)
+                    rows_by_pncp[row["numero_controle_pncp"]] = row
+            except Exception as e:
+                # UM ERRO DE UMA MODALIDADE NÃO DERRUBA O RESTO. O PNCP
+                # devolve 500 transitório sob carga; o upsert é idempotente
+                # (chave `numero_controle_pncp`), então re-rodar preenche a
+                # lacuna sem duplicar. Grava o parcial já coletado e segue.
+                incompletos.append((ano, modalidade, type(e).__name__))
+                print(
+                    f"[etl.pncp.licitacoes] AVISO: ano={ano} modalidade={modalidade} "
+                    f"interrompida ({type(e).__name__}); grava parcial e segue. "
+                    f"Re-rode para completar.",
+                    flush=True,
+                )
+
+            rows = list(rows_by_pncp.values())
+            # `licitacoes` tem ~18 colunas; um upsert do Postgres aceita 65.535
+            # placeholders, então lotes de 1.000 nunca passam do teto.
+            for i in range(0, len(rows), 1000):
+                client.table("licitacoes").upsert(
+                    rows[i : i + 1000], on_conflict="numero_controle_pncp"
+                ).execute()
+            total += len(rows)
             time.sleep(INTER_REQUEST_SLEEP)
-        rows = list(rows_by_pncp.values())
-        if rows:
-            client.table("licitacoes").upsert(rows, on_conflict="numero_controle_pncp").execute()
-        print(f"[etl.pncp.licitacoes] ano={ano} registros={len(rows)}", flush=True)
-        total += len(rows)
+        print(f"[etl.pncp.licitacoes] ano={ano} acumulado={total}", flush=True)
+
     # O descarte é ANUNCIADO: um número muito maior que o mantido significa
     # que a cidade sedia muito órgão de outra esfera, não que a coleta falhou.
     print(
         f"[etl.pncp.licitacoes] total={total} "
         f"(descartados por esfera != M: {descartados})"
     )
+    if incompletos:
+        # Sai com erro para o cron/operador NOTAR — mas o que foi coletado já
+        # está gravado, e re-rodar completa só o que faltou.
+        detalhe = ", ".join(f"{ano}/mod{mod}" for ano, mod, _ in incompletos)
+        raise RuntimeError(
+            f"{len(incompletos)} modalidade(s)-ano incompletas por erro do PNCP "
+            f"({detalhe}). O dado coletado foi gravado; re-rode para preencher."
+        )
 
 
 if __name__ == "__main__":

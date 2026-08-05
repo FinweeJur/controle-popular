@@ -30,6 +30,13 @@ def _get(path: str, params: dict) -> dict:
     if resp.status_code == 429:
         retry_after = resp.headers.get("Retry-After")
         time.sleep(float(retry_after) if retry_after else 10)
+    # 5xx do PNCP é TRANSITÓRIO sob carga (500 medido ao vivo na modalidade 6
+    # de SP, 2026-08-05). Espera um pouco ANTES de deixar o `raise_for_status`
+    # estourar, para que a próxima tentativa do tenacity pegue o servidor já
+    # recuperado — sem isso, as 6 tentativas se esgotam rápido demais e a
+    # exceção sobe (o chamador em `licitacoes.py` a trata por modalidade).
+    if 500 <= resp.status_code < 600:
+        time.sleep(15)
     resp.raise_for_status()
     return resp.json()
 
