@@ -47,6 +47,10 @@ export interface ContratosFilters {
   motivo?: string;
   /** Slug de tema (`lib/temas.ts`) — filtra contratos que tenham esse tema. */
   tema?: string;
+  /** Faixa de `valor_global`, em reais. Contrato sem valor publicado fica
+   *  FORA das duas pontas — ver `condicoesDeContratos`. */
+  valorMin?: number;
+  valorMax?: number;
   page?: number;
 }
 
@@ -176,6 +180,8 @@ function filtrosParaQuery(filters: ContratosFilters) {
     motivo: filters.motivo,
     tema: filters.tema,
     q: sanitizeSearchTerm(filters.q),
+    valorMin: filters.valorMin,
+    valorMax: filters.valorMax,
   };
 }
 

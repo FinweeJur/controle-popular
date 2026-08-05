@@ -739,6 +739,8 @@ export async function proposicoesPaginadas(
     ano?: number;
     tema?: string;
     q?: string;
+    valorMin?: number;
+    valorMax?: number;
     pagina?: number;
     porPagina?: number;
   } = {}
@@ -1336,6 +1338,8 @@ function condicoesDeContratos(
     motivo?: string;
     tema?: string;
     q?: string;
+    valorMin?: number;
+    valorMax?: number;
   }
 ) {
   const cond = [eq(contratos.id_municipio, idMunicipio)];
@@ -1352,6 +1356,18 @@ function condicoesDeContratos(
       sql`(${contratos.objeto} ilike ${termo} or ${contratos.fornecedor_nome} ilike ${termo})`
     );
   }
+  /**
+   * Faixa de valor sobre `valor_global`.
+   *
+   * `valor_global` É ANULÁVEL, e é isso que decide o comportamento: contrato
+   * sem valor publicado NÃO entra em nenhuma das duas pontas. Um `NULL` não
+   * é "zero" nem "barato" — é "a fonte não disse", e deixá-lo passar no
+   * filtro "até R$ 10 mil" faria o portal afirmar que um contrato de valor
+   * desconhecido é pequeno. A comparação SQL já exclui NULL sozinha; o
+   * comentário existe para que ninguém "conserte" isso com um `coalesce`.
+   */
+  if (f.valorMin !== undefined) cond.push(sql`${contratos.valor_global} >= ${f.valorMin}`);
+  if (f.valorMax !== undefined) cond.push(sql`${contratos.valor_global} <= ${f.valorMax}`);
   return and(...cond);
 }
 
@@ -1430,6 +1446,8 @@ export async function totaisDeContratos(
     motivo?: string;
     tema?: string;
     q?: string;
+    valorMin?: number;
+    valorMax?: number;
   } = {}
 ) {
   const db = getDb();
@@ -1455,6 +1473,8 @@ export async function contratosParaExport(
     motivo?: string;
     tema?: string;
     q?: string;
+    valorMin?: number;
+    valorMax?: number;
   },
   limite: number
 ) {

@@ -22,6 +22,8 @@ interface ContratosPageProps {
     alerta?: string;
     motivo?: string;
     tema?: string;
+    valor_min?: string;
+    valor_max?: string;
     page?: string;
   }>;
 }
@@ -38,6 +40,20 @@ export default async function ContratosPage({
   // lib/contratos.ts) — o checkbox "somente com alerta" fica redundante
   // quando um motivo está selecionado, mas não atrapalha (mesmo filtro).
   const alerta = params.alerta === "1" || Boolean(params.motivo);
+  /**
+   * Faixa de valor. `numeroOuUndefined` recusa o que não é número FINITO —
+   * `Number("")` é 0 e `Number("abc")` é NaN, e os dois virariam filtro:
+   * o primeiro cortaria tudo abaixo de zero (inócuo, mas mente na URL) e o
+   * segundo geraria `valor_global >= NaN`, que no Postgres não casa NADA e
+   * devolveria "nenhum contrato" — indistinguível de "a Prefeitura não tem".
+   */
+  const numeroOuUndefined = (v: string | undefined) => {
+    if (v === undefined || v.trim() === "") return undefined;
+    const n = Number(v.replace(",", "."));
+    return Number.isFinite(n) && n >= 0 ? n : undefined;
+  };
+  const valorMin = numeroOuUndefined(params.valor_min);
+  const valorMax = numeroOuUndefined(params.valor_max);
 
   const [{ rows, total, sum, totalAlertas, configured, ok }, temasPrefeitura] = await Promise.all([
     fetchContratos(cidade.id_municipio, {
@@ -47,6 +63,8 @@ export default async function ContratosPage({
       alerta,
       motivo: params.motivo,
       tema: params.tema,
+      valorMin,
+      valorMax,
       page,
     }),
     // Sempre sem filtro -- é "onde a Prefeitura gasta no geral", não
@@ -65,6 +83,8 @@ export default async function ContratosPage({
       alerta: params.alerta,
       motivo: params.motivo,
       tema: params.tema,
+      valor_min: params.valor_min,
+      valor_max: params.valor_max,
       page: params.page,
       ...overrides,
     };
@@ -150,6 +170,32 @@ export default async function ContratosPage({
             placeholder="2025"
             inputMode="numeric"
             className="w-24 rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="valor_min" className="mb-1 text-xs font-medium text-text-soft">
+            Valor de (R$)
+          </label>
+          <input
+            id="valor_min"
+            name="valor_min"
+            defaultValue={params.valor_min ?? ""}
+            placeholder="0"
+            inputMode="decimal"
+            className="w-32 rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="valor_max" className="mb-1 text-xs font-medium text-text-soft">
+            até (R$)
+          </label>
+          <input
+            id="valor_max"
+            name="valor_max"
+            defaultValue={params.valor_max ?? ""}
+            placeholder="sem teto"
+            inputMode="decimal"
+            className="w-32 rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
           />
         </div>
         <div className="flex flex-col">
