@@ -16,3 +16,7 @@ lxml>=5.0
 # qualquer User-Agent. curl_cffi usa curl-impersonate e reproduz o
 # ClientHello de um Chrome real. Ver etl/pbh/cliente.py.
 curl_cffi>=0.7
+
+# PDF do painel eletronico da Camara de Betim (etl/camaras/votacoes_betim.py):
+# o relatorio tem camada de texto, entao `fitz.get_text()` resolve sem OCR.
+pymupdf>=1.24
