@@ -100,8 +100,11 @@ class _QueryBuilder:
     chamar evita reescrever cada módulo individualmente.
     """
 
-    def __init__(self, conn, schema: str, table: str):
-        self._conn = conn
+    def __init__(self, cliente, schema: str, table: str):
+        # Guarda o CLIENTE, não a conexão: só o dono da conexão pode
+        # trocá-la, e `execute()` precisa disso para reconectar.
+        self._cliente = cliente
+        self._conn = cliente.conexao()
         self._schema = schema
         self._table = table
         self._cols = "*"
@@ -170,6 +173,47 @@ class _QueryBuilder:
         return " WHERE " + " AND ".join(partes)
 
     def execute(self) -> _Response:
+        """Executa; se a conexão tiver morrido, reconecta e repete UMA vez.
+
+        POR QUE ISTO EXISTE (falha real, 2026-08-04): a coleta de votações
+        de 2026 varreu a API da Câmara por vários minutos acumulando votos em
+        memória e só então gravou — e o `upsert` final morreu com
+        `AdminShutdown: terminating connection due to administrator command`.
+        A Neon encerra sessão ociosa, e "ocioso" aqui é o tempo inteiro em
+        que o ETL fala com a fonte externa em vez de com o banco. As 2.754
+        votações já gravadas ficaram, e os votos se perderam por completo —
+        um erro no ÚLTIMO passo apagou o trabalho de todos os anteriores.
+
+        O eixo Cidades já tinha aprendido isto (`etl/betim/etl/common.py`) e
+        a correção nunca foi portada para cá. Mesma lição, dois lugares.
+
+        REPETE SÓ O QUE É IDEMPOTENTE. `insert` puro e `upsert` sem
+        `on_conflict` podem ter chegado ao servidor antes de a conexão cair;
+        repetir duplicaria linha. Nesses dois casos o erro sobe, com o motivo
+        dito — melhor abortar do que duplicar em silêncio.
+        """
+        import psycopg
+
+        idempotente = self._op != "insert" and not (
+            self._op == "upsert" and not self._on_conflict
+        )
+        try:
+            return self._executar()
+        except (psycopg.OperationalError, psycopg.InterfaceError) as e:
+            if not idempotente:
+                raise RuntimeError(
+                    f"conexão caiu durante {self._op} em {self._table} e a operação "
+                    f"não é idempotente — não vou repetir para não duplicar. ({e})"
+                ) from e
+            print(
+                f"[etl.common] conexão caiu ({type(e).__name__}); reconectando e "
+                f"repetindo {self._op} em {self._table}",
+                flush=True,
+            )
+            self._conn = self._cliente.reconectar()
+            return self._executar()
+
+    def _executar(self) -> _Response:
         from psycopg.errors import UndefinedColumn
         from psycopg.rows import dict_row
 
@@ -228,14 +272,45 @@ class _QueryBuilder:
 
 class PgClient:
     """Substitui o client do supabase-py: mesma chamada `.table(x)...`, mas
-    fala Postgres direto na Neon em vez de PostgREST no Supabase."""
+    fala Postgres direto na Neon em vez de PostgREST no Supabase.
 
-    def __init__(self, conn, schema: str):
-        self._conn = conn
+    Dono da conexão, e por isso o único que pode trocá-la: a Neon encerra
+    sessão ociosa e várias coletas deste eixo passam muito tempo entre uma
+    escrita e a seguinte. Ver `_QueryBuilder.execute`."""
+
+    def __init__(self, dsn: str, schema: str):
+        self._dsn = dsn
         self._schema = schema
+        self._conn = None
+        self.conexao()
+
+    def conexao(self):
+        """A conexão viva. Reabre se estiver fechada — o caso comum é o
+        `conn.closed` já verdadeiro depois de o servidor ter derrubado a
+        sessão, sem que nada do lado do cliente tenha percebido."""
+        import psycopg
+
+        if self._conn is None or self._conn.closed:
+            self._conn = psycopg.connect(self._dsn, autocommit=True)
+            self._conn.execute(f'SET search_path TO "{self._schema}", public')
+        return self._conn
+
+    def reconectar(self):
+        """Descarta a conexão atual e abre outra. Chamado por `execute()`
+        quando um erro de transporte já aconteceu — aí `closed` pode ainda
+        estar falso, então forçar é o único caminho."""
+        try:
+            if self._conn is not None:
+                self._conn.close()
+        except Exception:
+            # Fechar conexão que o servidor já matou pode estourar; o ponto
+            # é largar a referência, não fechar com elegância.
+            pass
+        self._conn = None
+        return self.conexao()
 
     def table(self, name: str) -> _QueryBuilder:
-        return _QueryBuilder(self._conn, self._schema, name)
+        return _QueryBuilder(self, self._schema, name)
 
 
 def get_supabase_client() -> PgClient:
@@ -254,9 +329,7 @@ def get_supabase_client() -> PgClient:
             "qualquer ETL."
         )
 
-    conn = psycopg.connect(DATABASE_URL, autocommit=True)
-    conn.execute(f'SET search_path TO "{SCHEMA}", public')
-    return PgClient(conn, SCHEMA)
+    return PgClient(DATABASE_URL, SCHEMA)
 
 
 def fetch_all(query_factory, page_size: int = PAGE_SIZE) -> list[dict]:
