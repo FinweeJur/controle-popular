@@ -109,6 +109,15 @@ jobs:
       - name: "Postos de combustível (ANP)"
         run: python -m etl.apis.anp --id-municipio $ID_MUNICIPIO
 
+      # Royalties da mineração. É o passo que estas três cidades têm e as
+      # capitais não: Araçuaí e Itinga estão na província de lítio do
+      # Jequitinhonha, e a CFEM é o único número público que mede, mês a mês,
+      # quanto minério sai de lá. A série inteira (2004→hoje) é recoletada a
+      # cada rodada — são ~50 postbacks por cidade, ~1 min, e a ANM revisa
+      # meses passados, então recoletar é o certo, não desperdício.
+      - name: "Royalties da mineração (CFEM/ANM)"
+        run: python -m etl.apis.anm_cfem --id-municipio $ID_MUNICIPIO
+
       - name: "Clima e InfoDengue"
         run: |
           python -m etl.apis.openmeteo --id-municipio $ID_MUNICIPIO
