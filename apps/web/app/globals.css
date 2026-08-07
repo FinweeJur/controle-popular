@@ -16,6 +16,17 @@
   --cp-primary-ink: #ffffff;
   --cp-accent: #0e8f6e;
   --cp-accent-ink: #ffffff;
+  /* Cor de zona 3 (Judiciário) e 4 (Ambiental). Antes só existiam como
+     literal de fallback em `lib/zonas.ts` (`var(--cp-secondary, #7c3aed)`),
+     ou seja: a variável NUNCA foi definida e o roxo nunca passou por tema.
+     Medido em 2026-08-07 — o #7c3aed reprovava em dois dos três temas
+     (2,99:1 sobre a surface do escuro; 5,70:1 no alto contraste, que exige
+     7:1). Verde está tomado pelo `--cp-accent` e azul pelo `--cp-primary`,
+     daí o ocre da zona ambiental. */
+  --cp-secondary: #6d28d9; /* 7,10:1 sobre a surface */
+  --cp-secondary-ink: #ffffff;
+  --cp-tertiary: #8a5300; /* 6,33:1 sobre a surface */
+  --cp-tertiary-ink: #ffffff;
   --cp-border: #e2e8f0;
   --cp-alert: #c0392b;
   --cp-focus: #12467b;
@@ -58,6 +69,12 @@
   --cp-primary-ink: #08111e;
   --cp-accent: #2fbf9a;
   --cp-accent-ink: #06231c;
+  /* Escolhidas contra a surface #141c2b, não clareadas do tema claro: o
+     #7c3aed dava 2,99:1 aqui, abaixo de qualquer piso. */
+  --cp-secondary: #a78bfa; /* 6,27:1 */
+  --cp-secondary-ink: #0d0618;
+  --cp-tertiary: #e0a458; /* 7,82:1 */
+  --cp-tertiary-ink: #1a1206;
   --cp-border: #26303f;
   --cp-alert: #e5736a;
   --cp-focus: #4a90d9;
@@ -91,6 +108,11 @@
   --cp-primary-ink: #ffffff;
   --cp-accent: #006644;
   --cp-accent-ink: #ffffff;
+  /* Piso deste tema é 7:1, não 4,5:1 — o #7c3aed dava 5,70:1 e reprovava. */
+  --cp-secondary: #4c1d95; /* 10,95:1 */
+  --cp-secondary-ink: #ffffff;
+  --cp-tertiary: #6b3f00; /* 8,99:1 */
+  --cp-tertiary-ink: #ffffff;
   --cp-border: #000000;
   --cp-alert: #cc0000;
   --cp-focus: #ffd500;

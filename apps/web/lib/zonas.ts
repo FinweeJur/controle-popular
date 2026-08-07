@@ -1,5 +1,5 @@
 /**
- * As três frentes do Controle Popular, em UM lugar só.
+ * As frentes do Controle Popular, em UM lugar só.
  *
  * Existe para que a home da marca (`app/page.tsx`) e o rodapé de remissão
  * cruzada de cada zona (`app/components/OutrasFrentes.tsx`) descrevam as
@@ -12,9 +12,13 @@
  * `<Link>` de zona (`lib/link-zona.tsx`): o wrapper prefixaria a zona atual
  * e geraria `/congresso/judiciario`. É a classe de bug que os comentários
  * do `next.config.ts` registram já ter acontecido três vezes.
+ *
+ * NENHUM texto aqui diz quantas frentes existem. A contagem sai de
+ * `ZONAS_PUBLICADAS.length` nas telas — quando o /ambiental publicar, não
+ * há uma frase "as três frentes" para alguém esquecer de corrigir.
  */
 
-export type ZonaId = "cidades" | "congresso" | "judiciario";
+export type ZonaId = "cidades" | "congresso" | "judiciario" | "ambiental";
 
 export interface Zona {
   id: ZonaId;
@@ -27,6 +31,17 @@ export interface Zona {
   resumo: string;
   itens: string[];
   cor: string;
+  /**
+   * `false` = a zona existe no código e é navegável por URL direta, mas não
+   * aparece na home nem na remissão cruzada.
+   *
+   * Existe porque a zona nova é construída em fases (F1 arma o andaime, F9
+   * publica) e o andaime precisa das mesmas edições cross-zone desde o
+   * começo — a alternativa seria fazê-las no fim, tudo de uma vez, que é
+   * exatamente quando um `basePath` copiado errado passa despercebido.
+   * Um booleano é mais honesto do que manter a entrada comentada.
+   */
+  publicada: boolean;
 }
 
 export const ZONAS: Zona[] = [
@@ -51,6 +66,7 @@ export const ZONAS: Zona[] = [
       "Saúde, educação e economia em dados",
     ],
     cor: "var(--cp-primary)",
+    publicada: true,
   },
   {
     id: "congresso",
@@ -68,6 +84,7 @@ export const ZONAS: Zona[] = [
       "Gera ofício de apoio ou repúdio em PDF",
     ],
     cor: "var(--cp-accent)",
+    publicada: true,
   },
   {
     id: "judiciario",
@@ -84,11 +101,40 @@ export const ZONAS: Zona[] = [
       "Toda indicação enviada ao Senado, aprovada ou rejeitada",
       "Origem de cada cadeira: carreira, OAB ou Ministério Público",
     ],
-    cor: "var(--cp-secondary, #7c3aed)",
+    // O literal de fallback saiu: `--cp-secondary` agora está DEFINIDA nos
+    // três blocos de tema do `globals.css`. Não era detalhe de estilo — o
+    // #7c3aed que a variável nunca definida deixava passar dava 2,99:1 sobre
+    // a surface do tema escuro e 5,70:1 no alto contraste, que exige 7:1.
+    cor: "var(--cp-secondary)",
+    publicada: true,
+  },
+  {
+    id: "ambiental",
+    href: "/ambiental",
+    etiqueta: "Estadual · Meio ambiente em Minas Gerais",
+    titulo: "O que o COPAM vai decidir sobre a sua cidade",
+    descricao:
+      "As reuniões do Conselho Estadual de Política Ambiental com a pauta aberta antes da decisão, o licenciamento ambiental de Minas filtrável por município, empresa e setor, e a situação de cada barragem.",
+    resumo:
+      "O que o COPAM vai julgar, onde e sobre quem — mais licenciamento e barragens em Minas.",
+    itens: [
+      "Pauta das reuniões do COPAM antes de acontecerem",
+      "Licenciamento por município, empresa e setor",
+      "Barragens: condição de estabilidade e nível de emergência",
+      "Legislação ambiental federal e estadual num lugar só",
+    ],
+    cor: "var(--cp-tertiary)",
+    publicada: false,
   },
 ];
 
-/** As outras duas frentes, preservando a ordem de `ZONAS`. */
+/**
+ * O que a home e a remissão cruzada mostram. Toda tela voltada ao público
+ * lê ESTA lista, não a `ZONAS` — que existe para o scaffold e os testes.
+ */
+export const ZONAS_PUBLICADAS: Zona[] = ZONAS.filter((z) => z.publicada);
+
+/** As outras frentes publicadas, preservando a ordem de `ZONAS`. */
 export function outrasZonas(atual: ZonaId): Zona[] {
-  return ZONAS.filter((z) => z.id !== atual);
+  return ZONAS_PUBLICADAS.filter((z) => z.id !== atual);
 }

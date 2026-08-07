@@ -44,8 +44,16 @@ export default function CongressoLayout({
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-2">
-            {/* Pontes para as zonas irmãs (mesmo motivo do <a> acima).
+          <div className="flex flex-wrap items-center gap-2">
+            {/* flex-wrap: esta div é gêmea da do /judiciario, que já carrega
+                a nota de por que ele é obrigatório — 8 itens medem ~560px
+                contra um viewport de celular de 375px, e sem quebrar linha
+                o navegador comprime em vez de estourar, o que se lê como
+                "navbar espremida" e não como bug. Aqui ele faltava: a
+                correção veio junto do scaffold da 4ª zona, que é quando
+                esta barra ganha mais um botão.
+
+                Pontes para as zonas irmãs (mesmo motivo do <a> acima).
                 Precisa apontar para AS DUAS: o /judiciario faltava aqui,
                 enquanto as outras duas zonas já se linkavam mutuamente —
                 era o único vértice quebrado do triângulo. Mesmo rótulo e
