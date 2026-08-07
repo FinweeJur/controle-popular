@@ -64,8 +64,17 @@ jobs:
         with:
           python-version: '3.12'
 
+      # CAMINHO RELATIVO AO `working-directory: etl/betim` acima. Estava
+      # `etl/requirements.txt`, que resolve para `etl/betim/etl/requirements.txt`
+      # e nao existe: o job falhou 16 de 16 vezes entre 01/08 e 07/08/2026,
+      # sempre neste passo. Como morre antes de tocar o banco, nao gastou
+      # egress do Neon — mas o ETL de Betim simplesmente nao rodou durante
+      # uma semana, e o unico sintoma era dado velho no site.
+      #
+      # As irmas ja estavam certas, inclusive a `etl-cidades-novas.yml`, que
+      # usa este MESMO working-directory: todas fazem `-r requirements.txt`.
       - name: Install dependencies
-        run: pip install -r etl/requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Install Playwright browser (Câmara scrapers)
         run: playwright install --with-deps chromium
