@@ -21,7 +21,7 @@ const TABS: { label: string; href: string | null }[] = [
   { label: "Despesas", href: "/prefeitura/despesas" },
   { label: "Diárias", href: "/prefeitura/diarias" },
   { label: "Obras", href: "/prefeitura/obras" },
-  { label: "Legislação", href: "/prefeitura/legislacao" },
+  { label: "Legislação", href: "/camara/legislacao" },
 ];
 
 export default async function PrefeituraHubPage({
@@ -119,7 +119,7 @@ export default async function PrefeituraHubPage({
             Ver edições ↗
           </a>
           <Link
-            href="/prefeitura/legislacao"
+            href="/camara/legislacao"
             className="rounded-full bg-surface-2 px-4 py-1.5 text-sm font-medium text-text hover:bg-surface-2/70"
           >
             Leis e decretos

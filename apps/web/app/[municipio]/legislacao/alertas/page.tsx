@@ -32,7 +32,7 @@ export default async function AlertasLegislacao({
         <Link href="/" className="hover:text-primary">
           Início
         </Link>{" "}
-        · <Link href="/prefeitura/legislacao" className="hover:text-primary">
+        · <Link href="/camara/legislacao" className="hover:text-primary">
           Legislação
         </Link>{" "}
         · <span className="text-text">Alertas</span>
@@ -162,7 +162,7 @@ export function CoberturaAviso({ cobertura }: { cobertura: CoberturaLegislacao }
           Ver a metodologia
         </Link>{" "}
         ·{" "}
-        <Link href="/prefeitura/legislacao" className="text-accent hover:underline">
+        <Link href="/camara/legislacao" className="text-accent hover:underline">
           ver todas as normas publicadas
         </Link>
       </p>
