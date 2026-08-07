@@ -14,25 +14,53 @@ name: Rebuild e deploy do site
 #
 # Este workflow nasceu em 0,6,12,18 UTC (4x/dia). Medição real do dia
 # seguinte (canário, 2026-07-30) mostrou que isso não cabe no plano free:
-# **cada `next build` lê o banco inteiro** para pré-renderizar ~486 páginas,
-# e o egress do Neon chegou a **4,53 GB de 5 GB/mês em 2,4 dias** com os ~15
-# builds da migração — ordem de 0,3-0,45 GB por build. A 4x/dia isso daria
-# ~40 GB/mês contra um teto de 5 GB (8x acima), e o site cairia poucos dias
-# depois de cada renovação de ciclo.
+# **cada `next build` lê o banco inteiro** para pré-renderizar as páginas, e
+# o egress do Neon chegou a **4,53 GB de 5 GB em 2,4 dias** com os ~15 builds
+# da migração — ordem de 0,3-0,45 GB por build.
 #
 # 12:00 UTC é o horário certo para o único rebuild: o ETL do congresso roda
 # às 09:00 UTC e os de judiciário/betim em janelas próximas, então é o
 # primeiro momento em que o dado do dia já está no banco.
 #
-# `0 12 * * 1` = segunda-feira. Semanal é a única cadência que cabe com folga
-# (~1,4-1,8 GB/mês). PARA AUMENTAR: medir primeiro o custo real de UM build
-# (ler `data_transfer_bytes` da API do Neon antes e depois) e dividir os 5 GB
-# por ele — não estimar. Diário só cabe se o custo por build cair para
-# ~0,15 GB, o que exigiria reduzir o número de páginas pré-renderizadas.
+# ─────────────────────────────────────────────────────────────────────────
+# O QUE ACONTECEU EM 2026-08-07, e por que este arquivo mudou
+#
+# O egress estourou mesmo com o cron semanal: **5,73 GB de 5 GB em 7 dias**,
+# compute suspenso, todo query devolvendo HTTP 402. Diagnóstico contra a API
+# de controle do Neon e o histórico do Actions:
+#
+#   - houve **9 rebuilds em 7 dias** — 8 `workflow_dispatch` à mão e 1 cron.
+#     O orçamento comporta ~1 por semana;
+#   - **6 dos 9 FALHARAM**, e falharam tarde: os logs mostram
+#     "Generating static pages (536/715)" antes de morrer. Pagaram o egress
+#     quase inteiro do build e não publicaram nada. Duas dessas falhas eram
+#     só `BETTER_AUTH_SECRET` ausente;
+#   - o site cresceu: o número "~486 páginas" ficou nos comentários, mas com
+#     as três cidades do Jequitinhonha o build gera **715-718**. Egress por
+#     build escalou junto e ninguém reestimou.
+#
+# Daí as duas travas abaixo. Elas não substituem a cadência semanal:
+#   1. PRÉ-VOO — confere credencial e banco em segundos, antes do build.
+#      Falhar aqui custa segundos; falhar no meio do prerender custa o mês.
+#   2. IMPRESSÃO DIGITAL — se o commit e o estado do banco são os mesmos do
+#      último deploy, o HTML seria idêntico e o build é pulado inteiro.
+#
+# Comprimir não é alternativa: a Neon mede no proxy, antes de qualquer
+# compressão do cliente (docs "Reduce network transfer costs"). O único
+# caminho é transferir menos.
+#
+# PARA AUMENTAR A CADÊNCIA: medir primeiro o custo real de UM build (ler
+# `data_transfer_bytes` da API do Neon antes e depois) e dividir os 5 GB por
+# ele — não estimar.
 on:
   schedule:
     - cron: "0 12 * * 1"
   workflow_dispatch:
+    inputs:
+      forcar:
+        description: "Rebuildar mesmo que nada tenha mudado (use com parcimônia: cada build custa ~0,4 GB dos 5 GB/mês)"
+        type: boolean
+        default: false
 
 # Dois builds concorrentes publicariam o mesmo Worker em ordem indefinida.
 # Sem `cancel-in-progress`: um deploy pela metade é pior que um enfileirado.
@@ -43,7 +71,7 @@ concurrency:
 jobs:
   rebuild:
     runs-on: ubuntu-latest
-    # O prerender das 486 páginas fala com o Neon com concorrência 3 e
+    # O prerender das ~715 páginas fala com o Neon com concorrência 3 e
     # retry 3 (ver next.config.ts) e leva alguns minutos; o default de 6h
     # do runner é folgado demais para um job que travou na rede.
     timeout-minutes: 30
@@ -52,8 +80,9 @@ jobs:
         working-directory: apps/web
     env:
       # Mesma variável de apps/web/.env.local. O build LÊ do banco (é o que
-      # transforma dado em HTML), então sem ela o job gera 486 páginas de
-      # estado vazio e publica um site em branco — sem falhar.
+      # transforma dado em HTML), então sem ela o job geraria as páginas em
+      # estado vazio e publicaria um site em branco — sem falhar. É o pior
+      # modo de falha do pipeline, e é o que o pré-voo existe para pegar.
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       # Nenhuma delas tem throw no import (ver lib/auth/server.ts), então o
       # build passa sem elas — vão aqui só para o build do CI se comportar
@@ -64,6 +93,21 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
+      # Guarda instantânea, ANTES até do `npm ci`: secret que falta é erro de
+      # configuração e não merece 40 s de instalação para ser descoberto.
+      - name: Conferir secrets (sem instalar nada)
+        working-directory: .
+        run: |
+          faltando=""
+          for v in DATABASE_URL CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID BETTER_AUTH_SECRET; do
+            if [ -z "${!v}" ]; then faltando="$faltando $v"; fi
+          done
+          if [ -n "$faltando" ]; then
+            echo "::error::secrets ausentes:$faltando — configurar em Settings > Secrets antes de rodar"
+            exit 1
+          fi
+          echo "  OK  os 4 secrets estão presentes"
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -76,10 +120,87 @@ jobs:
         working-directory: .
         run: npm ci
 
+      # Trava 1. Um `select 1` prova de uma vez que a URL é válida, que o
+      # compute está acordado e que a cota não estourou.
+      - name: Pré-voo
+        run: npx tsx scripts/preflight-deploy.mts
+
+      # Regressão da SQL do censo, sem tocar no banco. Roda SEMPRE, e antes
+      # do censo de verdade, pelo mesmo motivo que o Congresso roda
+      # `etl.normas --testar` em toda invocação: é barato e não depende de
+      # rede. Aqui há um motivo extra — o script devolve impressão única
+      # sempre que algo dá errado, e "SQL malformada" cai nesse mesmo
+      # caminho. Sem esta trava, a otimização poderia estar quebrada há
+      # semanas dizendo só "censo falhou", e todo build seria pago.
+      - name: Conferir a SQL do censo
+        run: npx tsx scripts/impressao-de-dados.mts --testar
+
+      # Trava 2. `count(*)` + `max(updated_at)` por tabela, mais o commit.
+      # Poucos KB de egress para decidir se vale gastar ~0,4 GB.
+      - name: Impressão digital dos dados
+        id: impressao
+        run: npx tsx scripts/impressao-de-dados.mts
+
+      - name: Já publicamos exatamente isto?
+        id: ja_publicado
+        uses: actions/cache/restore@v4
+        with:
+          path: apps/web/.deploy-marker
+          key: deploy-v1-${{ steps.impressao.outputs.impressao }}
+          lookup-only: true
+
+      # `forcar` existe para o caso em que a impressão não muda mas o build
+      # precisa sair mesmo assim — mudança de dependência, de configuração do
+      # Worker, ou uma republicação depois de rollback.
+      - name: Decidir
+        id: decisao
+        run: |
+          if [ "${{ github.event.inputs.forcar }}" = "true" ]; then
+            echo "construir=sim" >> "$GITHUB_OUTPUT"
+            echo "### Rebuild FORÇADO pelo operador" >> "$GITHUB_STEP_SUMMARY"
+          elif [ "${{ steps.ja_publicado.outputs.cache-hit }}" = "true" ]; then
+            echo "construir=nao" >> "$GITHUB_OUTPUT"
+            {
+              echo "### Build pulado — nada mudou"
+              echo ""
+              echo "Impressão \`${{ steps.impressao.outputs.impressao }}\` já foi publicada."
+              echo "Mesmo commit e mesmo estado do banco produziriam o mesmo HTML."
+              echo ""
+              echo "Economia: ~0,4 GB dos 5 GB de egress do mês."
+              echo "Para publicar assim mesmo, rode com \`forcar\`."
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "construir=sim" >> "$GITHUB_OUTPUT"
+            {
+              echo "### Rebuild necessário"
+              echo ""
+              echo "Impressão: \`${{ steps.impressao.outputs.impressao }}\` (${{ steps.impressao.outputs.motivo }})"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       # `cf:deploy` = build + `populateCache remote` + deploy. O
       # populateCache NÃO é opcional: sem ele o dir
       # `assets/cdn-cgi/_next_cache` não existe e toda rota SSG sob segmento
       # dinâmico com `dynamicParams=false` (o caso de `app/[municipio]`)
       # devolve 404/NoFallbackError. Ver open-next.config.ts.
       - name: Build, popular cache e publicar
+        if: steps.decisao.outputs.construir == 'sim'
         run: npm run cf:deploy
+
+      # O marcador só é gravado DEPOIS de um deploy que deu certo. Build que
+      # falhou no meio não pode marcar a impressão como publicada — senão o
+      # próximo agendamento pularia, e o site ficaria com o HTML antigo
+      # achando que está em dia.
+      - name: Marcar impressão como publicada
+        if: steps.decisao.outputs.construir == 'sim' && steps.ja_publicado.outputs.cache-hit != 'true'
+        run: |
+          echo "impressao=${{ steps.impressao.outputs.impressao }}" > .deploy-marker
+          echo "publicado_em=$(date -u +%FT%TZ)" >> .deploy-marker
+          echo "run=${{ github.run_id }}" >> .deploy-marker
+
+      - name: Guardar marcador
+        if: steps.decisao.outputs.construir == 'sim' && steps.ja_publicado.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: apps/web/.deploy-marker
+          key: deploy-v1-${{ steps.impressao.outputs.impressao }}
