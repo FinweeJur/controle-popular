@@ -62,6 +62,8 @@ import {
   subsidios,
   verbas_indenizatorias,
   vereadores,
+  votacoes_camara,
+  votos_camara,
   zap_estabelecimentos,
 } from "@/lib/db/schema";
 
@@ -2424,4 +2426,205 @@ export async function direitosDoMunicipio(idMunicipio: IdMunicipio) {
     .innerJoin(analises, eq(analises.id, analise_itens.analise_id))
     .where(and(eq(analise_itens.id_municipio, idMunicipio), eq(analises.status, "ok")))
     .groupBy(analise_itens.direito, sql`2`);
+}
+
+/**
+ * Como cada vereador consta em cada votação — a matéria-prima da PRESENÇA.
+ *
+ * Devolve células cruas `(vereador_id, voto, origem, qtd)`. A CLASSIFICAÇÃO
+ * NÃO ACONTECE AQUI, e isso é deliberado: o que "Não votou", "Ausente" e
+ * "Presidência" significam é decisão editorial, vive em
+ * `lib/presenca/vocabulario.json` e é lida pelo TypeScript E pelo Python.
+ * Um `case when` em SQL esconderia num lugar que ninguém audita a régua que
+ * a página `/metodologia` promete explicar — a mesma razão de
+ * `PESO_PROPOSICAO` nunca ter descido para o banco.
+ *
+ * ═══ O DENOMINADOR É O NÚMERO DE LINHAS DA PESSOA, NÃO O DE VOTAÇÕES ═══
+ *
+ * Medido em 2026-08-06, linhas por votação:
+ *
+ *   Betim           23,0 (min 23, max 25) — 23 vereadores. Lista COMPLETA.
+ *   Belo Horizonte  41,5 (min 41, max 42) — 41 vereadores. Lista COMPLETA.
+ *   São Paulo       16,7 (min  1, max 55) — 55 vereadores. Só quem VOTOU.
+ *
+ * Em Betim e BH a fonte inscreve todo mundo em toda votação e marca quem
+ * faltou; o denominador natural é em quantas votações a pessoa aparece, o
+ * que já trata sozinho quem assumiu no meio do mandato ou se licenciou.
+ *
+ * Em São Paulo esse denominador seria uma armadilha: quem falta não gera
+ * linha, então dividir ausências por linhas daria 0% de falta para quem
+ * nunca apareceu. É por isso que `fonteDeclaraAusencia()` DESLIGA a métrica
+ * em SP em vez de a estimar — ver `lib/presenca/vocabulario.ts`.
+ *
+ * `origem` vem junto porque `voto_contrario` (dissidência anotada em votação
+ * simbólica de SP) não é registro de presença: dizer que alguém "compareceu"
+ * porque a ata anotou o voto contrário dele confundiria as duas coisas.
+ */
+export async function contagemDeVotosPorVereador(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      vereador_id: votos_camara.vereador_id,
+      voto: votos_camara.voto,
+      origem: votos_camara.origem,
+      qtd: sql<number>`count(*)::int`,
+    })
+    .from(votos_camara)
+    .where(
+      and(
+        eq(votos_camara.id_municipio, idMunicipio),
+        isNotNull(votos_camara.vereador_id)
+      )
+    )
+    .groupBy(votos_camara.vereador_id, votos_camara.voto, votos_camara.origem);
+}
+
+/**
+ * O voto de cada vereador CRUZADO com o rótulo de direitos da matéria —
+ * a matéria-prima da COERÊNCIA.
+ *
+ * Só entram votações que a migration 0042 conseguiu ligar a uma proposição
+ * COM análise `status='ok'`. É um recorte pequeno e a tela precisa dizer o
+ * tamanho dele. Medido em 2026-08-06, votações cuja proposição tem rótulo
+ * garantista ou reducionista (as únicas que produzem veredito):
+ *
+ *   Betim           150     ← sinal real
+ *   São Paulo        16     ← fino
+ *   Belo Horizonte    0     ← a coleta de votação ainda tem 2 votações
+ *
+ * `neutro` e `misto` ficam fora do numerador por construção (não há direção a
+ * comparar), mas continuam saindo daqui: é a contagem deles que permite à
+ * tela dizer "de N matérias analisadas que este vereador votou, M tinham
+ * direção de direitos" em vez de fingir que a amostra é maior.
+ *
+ * Como no caso da presença, o veredito "coerente/incoerente" é calculado no
+ * TypeScript e não em SQL — ele é a régua editorial que `/metodologia`
+ * publica.
+ */
+export async function votosPorRotuloDeDireito(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      vereador_id: votos_camara.vereador_id,
+      rotulo: analises.rotulo,
+      voto: votos_camara.voto,
+      /** Autor da matéria — permite a coerência AUTORIA × VOTO sem uma
+       *  segunda consulta. */
+      autor_id: proposicoes.vereador_id,
+      qtd: sql<number>`count(*)::int`,
+    })
+    .from(votos_camara)
+    .innerJoin(votacoes_camara, eq(votacoes_camara.id, votos_camara.votacao_id))
+    .innerJoin(proposicoes, eq(proposicoes.id, votacoes_camara.proposicao_id))
+    .innerJoin(
+      analises,
+      and(eq(analises.proposicao_id, proposicoes.id), eq(analises.status, "ok"))
+    )
+    .where(
+      and(
+        eq(votos_camara.id_municipio, idMunicipio),
+        isNotNull(votos_camara.vereador_id),
+        // Voto NOMINAL apenas. `voto_contrario` de SP é anotação de
+        // dissidência em votação simbólica: registra quem foi CONTRA e não
+        // registra quem foi a favor. Contá-lo produziria uma taxa de
+        // coerência medida só sobre discordantes.
+        eq(votos_camara.origem, "nominal")
+      )
+    )
+    .groupBy(
+      votos_camara.vereador_id,
+      analises.rotulo,
+      votos_camara.voto,
+      proposicoes.vereador_id
+    );
+}
+
+/**
+ * Despesas de verba indenizatória que destoam do próprio grupo — os
+ * ALERTAS DE GASTO.
+ *
+ * ═══ POR QUE PERCENTIL, E NÃO UM VALOR EM REAIS ═══
+ *
+ * "R$ 2 mil num almoço" é o exemplo certo do problema e o limiar errado para
+ * a regra: R$ 2 mil de aluguel de imóvel de gabinete é rotina e R$ 2 mil de
+ * alimentação é escândalo. Um teto absoluto acusaria o primeiro e deixaria
+ * passar um almoço de R$ 900. Por isso a régua é RELATIVA ao mesmo
+ * `grupo_verba` da MESMA cidade — a única comparação em que o número quer
+ * dizer alguma coisa. São Paulo gasta em ordens de grandeza que Betim não
+ * tem; comparar as duas produziria um ranking de tamanho de cidade.
+ *
+ * O corte é p95 do grupo E pelo menos o dobro da mediana. As duas condições
+ * juntas, porque cada uma sozinha erra:
+ *
+ *   - só p95: num grupo homogêneo (combustível, quase tudo entre R$ 600 e
+ *     800) o topo do percentil não é anomalia nenhuma — 5% das linhas seriam
+ *     acusadas por construção, em todo grupo, para sempre.
+ *   - só "dobro da mediana": num grupo de cauda longa isso dispara demais.
+ *
+ * `minLinhas` existe pelo mesmo motivo: percentil sobre 3 linhas não é
+ * estatística. Grupo pequeno fica fora e a tela não o menciona — o silêncio
+ * aqui é honesto, o alerta seria ruído.
+ *
+ * ⚠ ISTO NÃO ENTRA NA PONTUAÇÃO, DE PROPÓSITO. Uma conta de correio acima do
+ * normal pode ser mala direta legítima de mandato; o dado sustenta "olhe para
+ * isto", não "isto é irregular". Rebaixar alguém no ranking por um outlier
+ * estatístico transformaria suspeita em veredito. O ranking desconta falta e
+ * incoerência de voto, que são atos do parlamentar; gasto atípico é
+ * sinalizado e fica para o leitor.
+ */
+export async function gastosAtipicos(
+  idMunicipio: IdMunicipio,
+  { minLinhas = 8, limite = 50 }: { minLinhas?: number; limite?: number } = {}
+) {
+  const db = getDb();
+  if (!db) return [];
+  // `db.execute` devolve `NeonHttpQueryResult`, não um array — desembrulhar
+  // aqui e não no consumidor, senão cada tela repete o `.rows ?? []` e a
+  // primeira que esquecer compila e itera sobre o objeto errado.
+  const linhas = await db.execute<{
+    vereador_id: string | null;
+    beneficiario: string | null;
+    grupo_verba: string | null;
+    fornecedor: string | null;
+    data: string | null;
+    valor: number;
+    mediana_grupo: number;
+    p95_grupo: number;
+    vezes_a_mediana: number;
+    linhas_no_grupo: number;
+  }>(sql`
+    with base as (
+      select vereador_id, beneficiario, grupo_verba, fornecedor, data,
+             valor::float8 as valor
+        from verbas_indenizatorias
+       where id_municipio = ${idMunicipio}
+         and valor is not null
+         and grupo_verba is not null
+    ),
+    estat as (
+      select grupo_verba,
+             count(*)::int as linhas_no_grupo,
+             percentile_cont(0.5)  within group (order by valor) as mediana,
+             percentile_cont(0.95) within group (order by valor) as p95
+        from base
+       group by grupo_verba
+      having count(*) >= ${minLinhas}
+    )
+    select b.vereador_id, b.beneficiario, b.grupo_verba, b.fornecedor,
+           b.data::text as data, b.valor,
+           e.mediana as mediana_grupo,
+           e.p95     as p95_grupo,
+           (b.valor / e.mediana) as vezes_a_mediana,
+           e.linhas_no_grupo
+      from base b
+      join estat e using (grupo_verba)
+     where e.mediana > 0
+       and b.valor >= e.p95
+       and b.valor >= 2 * e.mediana
+     order by (b.valor / e.mediana) desc
+     limit ${limite}
+  `);
+  return linhas.rows ?? [];
 }

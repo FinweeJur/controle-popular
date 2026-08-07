@@ -154,7 +154,13 @@ export default async function ProposicaoDetalhe({ params }: { params: Params }) 
                 className="rounded-md border border-[var(--cp-border)] px-3 py-1"
                 title={a.tipo ?? undefined}
               >
-                {a.nome}
+                {a.parlamentar_id ? (
+                  <Link href={`/parlamentares/${a.parlamentar_id}`} className="underline">
+                    {a.nome}
+                  </Link>
+                ) : (
+                  a.nome
+                )}
                 {a.partido ? ` (${a.partido}${a.uf ? `/${a.uf}` : ""})` : ""}
                 {a.institucional ? (
                   <span className="ml-1 opacity-70">· {a.tipo?.toLowerCase()}</span>

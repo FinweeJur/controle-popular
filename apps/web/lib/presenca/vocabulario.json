@@ -1,0 +1,86 @@
+{
+  "versao": "1.0.0",
+  "_leia_me": [
+    "Fonte canônica ÚNICA do que cada rótulo de presença significa, lida pelo",
+    "TypeScript (apps/web/lib/presenca/vocabulario.ts) E pelo Python",
+    "(etl/congresso/etl/camara/presenca.py, etl/betim/etl/camaras/*).",
+    "",
+    "POR QUE UM ARQUIVO SÓ: a mesma lição de rubrica.json. Se o ETL contasse",
+    "'Decisão da Mesa' como justificada e o app a contasse como falta, a",
+    "diferença não daria erro nenhum — só um número diferente em cada tela,",
+    "e ninguém saberia qual está certo. Aqui a régua é uma, versionada, e",
+    "acrescentar rótulo é uma decisão visível num diff.",
+    "",
+    "CASAMENTO É POR PREFIXO, SOBRE O TEXTO NORMALIZADO (minúsculo, sem",
+    "acento). A Casa acrescenta detalhe ao rótulo sem avisar ('Licença Saúde",
+    "- art. 235'), então igualdade exata quebraria a cada regimento novo.",
+    "",
+    "RÓTULO QUE NÃO CASA COM NADA NÃO VIRA FALTA. Fica 'desconhecido',",
+    "aparece no resumo do ETL e é EXCLUÍDO do denominador. O contrário —",
+    "jogar o desconhecido no balde da falta — transformaria um rótulo novo da",
+    "Câmara numa acusação automática contra quem o recebeu."
+  ],
+
+  "presenca_dia": {
+    "_fonte": "congresso.presencas_plenario.situacao_dia — camara.leg.br/deputados/{id}/presenca-plenario/{ano}",
+    "presente": ["presenca"],
+    "justificada": [
+      "missao autorizada",
+      "licenca",
+      "afastamento",
+      "atividade externa",
+      "decisao da mesa"
+    ],
+    "falta": ["ausencia"],
+    "_nota_justificada": [
+      "'Decisão da Mesa' entrou aqui na v1.0.0 depois de o guarda do coletor",
+      "a flagrar como não catalogada em 13 dias da coleta de 2026: é a Mesa",
+      "da Casa deliberando sobre a ausência, ou seja, a própria instituição",
+      "declarando-a abonada. Continua gravada com o texto original, então o",
+      "leitor vê que foi decisão da Mesa e não uma presença.",
+      "",
+      "Missão autorizada e licença NÃO são falta, e a razão não é só técnica:",
+      "licença-maternidade recai sobre um grupo específico, e uma métrica",
+      "pública que a conte como absenteísmo pune maternidade."
+    ]
+  },
+
+  "voto_municipal": {
+    "_fonte": "votos_camara.voto — painel de Betim/BH (PDF) e XML de São Paulo",
+    "_nota": [
+      "Nas câmaras municipais NÃO existe folha de ponto publicada. A presença",
+      "só existe DERIVADA do voto nominal, e ela tem duas qualidades muito",
+      "diferentes, que este vocabulário mantém separadas de propósito:",
+      "",
+      "  Betim e BH  — a fonte DIZ 'Ausente' / 'Não votou'. Afirmação forte.",
+      "  São Paulo   — a fonte lista só quem votou. A ausência seria inferida",
+      "                por OMISSÃO, que é afirmação mais fraca e que o portal",
+      "                marca como tal (`inferida`) em vez de igualar à outra.",
+      "",
+      "Ver `ausencia_declarada_por_cidade` abaixo."
+    ],
+    "registrou_voto": ["sim", "nao", "abstencao", "branco", "obstrucao"],
+    "presente_sem_votar": ["nao votou"],
+    "ausente": ["ausente"],
+    "_nota_nao_e_voto": [
+      "'Presidência' e 'Artigo 17' não são ausência NEM omissão: quem preside",
+      "não vota por regra regimental. Contá-los como falta puniria o",
+      "parlamentar por ter sido eleito para a Mesa. Ficam fora do numerador",
+      "E do denominador."
+    ],
+    "nao_e_voto": ["presidencia", "artigo 17"]
+  },
+
+  "ausencia_declarada_por_cidade": {
+    "_leia_me": [
+      "true  = a fonte marca a ausência explicitamente; a taxa de falta é",
+      "        medida.",
+      "false = a fonte só lista quem votou; a taxa seria inferida por omissão",
+      "        e o portal NÃO a publica como falta nem a usa na pontuação.",
+      "Chave = municipios.id_municipio (IBGE)."
+    ],
+    "3106705": true,
+    "3106200": true,
+    "3550308": false
+  }
+}

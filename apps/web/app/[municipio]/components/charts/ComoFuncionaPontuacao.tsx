@@ -4,7 +4,9 @@ import {
   PESO_BAIXO_TEOR,
   PROPOSICAO_TIERS,
   type LinhaProposicao,
+  type RankingVereador,
 } from "@/lib/betim/vereadores";
+import { PRESENCA_ALVO, COERENCIA_ALVO } from "@/lib/atuacao-parlamentar";
 import { formatNumberBR } from "@/lib/betim/format";
 
 const COR_POR_SLOT: Record<number, string> = {
@@ -34,8 +36,14 @@ const PESO_MAX = Math.max(...PROPOSICAO_TIERS.map((t) => t.peso));
  */
 export default function ComoFuncionaPontuacao({
   totaisLinhas,
+  rows = [],
 }: {
   totaisLinhas: LinhaProposicao[];
+  /** As linhas do ranking — só para CONTAR em quantos vereadores presença e
+   *  coerência puderam ser medidas. Como a cobertura de baixo teor, este
+   *  número sai do dado, nunca de texto escrito à mão: um percentual fixo
+   *  envelheceria em silêncio assim que a coleta de votação avançasse. */
+  rows?: RankingVereador[];
 }) {
   let total = 0;
   let baixoTeor = 0;
@@ -133,15 +141,130 @@ export default function ComoFuncionaPontuacao({
           penalizado — a ausência de desconto não é atestado de nada.
         </p>
 
+        <DescontoAtuacao rows={rows} />
+
         <p>
           A pontuação continua sendo uma medida de{" "}
           <strong className="font-medium text-text">
-            volume, tipo e teor da atuação
+            volume, tipo, teor e regularidade da atuação
           </strong>{" "}
           — não de acerto, de mérito, nem de alinhamento com o interesse
           público.
         </p>
       </div>
     </div>
+  );
+}
+
+/**
+ * As duas regras que DESCONTAM: faltas e incoerência de voto.
+ *
+ * O texto muda conforme o que esta Câmara sustenta. Uma explicação genérica
+ * de como o desconto funciona, exibida numa cidade onde ele não é aplicado a
+ * ninguém, faria o leitor supor que os vereadores dali têm presença perfeita.
+ * "Não medimos" e "medimos e deu 100%" precisam ler diferente.
+ */
+function DescontoAtuacao({ rows }: { rows: RankingVereador[] }) {
+  if (!rows.length) return null;
+
+  const comPresenca = rows.filter((r) => r.presenca.medido);
+  const comCoerencia = rows.filter((r) => r.coerencia.medido);
+  const descontados = rows.filter((r) => r.pontuacaoProducao - r.pontuacao > 0.5);
+  const motivoPresenca = rows.find((r) => !r.presenca.medido)?.presenca.motivo;
+  const motivoCoerencia = rows.find((r) => !r.coerencia.medido)?.coerencia.motivo;
+
+  return (
+    <>
+      <p>
+        <strong className="font-medium text-text">
+          Faltar e votar contra direitos derrubam a nota — mas só descontam o
+          que a pessoa construiu
+        </strong>
+        . O desconto incide sobre a parte positiva da pontuação e nunca sobre a
+        negativa: se descontasse do total, quem tem saldo negativo por projeto
+        reducionista SUBIRIA ao faltar, porque um número negativo multiplicado
+        fica maior. Falta e incoerência tiram do que a pessoa fez; não aliviam o
+        que ela retirou.
+      </p>
+
+      <p>
+        <strong className="font-medium text-text">Presença</strong> é a
+        proporção de votações nominais em que o vereador consta no painel —
+        não é folha de ponto, e não enxerga trabalho em comissão. Acima de{" "}
+        {Math.round(PRESENCA_ALVO * 100)}% não há desconto nenhum.{" "}
+        {comPresenca.length ? (
+          <>
+            Medida em{" "}
+            <strong className="font-medium text-text">
+              {comPresenca.length} de {rows.length}
+            </strong>{" "}
+            vereadores desta Câmara.
+          </>
+        ) : (
+          <>
+            <strong className="font-medium text-text">
+              Não foi medida em nenhum vereador desta Câmara
+            </strong>
+            {motivoPresenca ? <> — {motivoPresenca.toLowerCase()}</> : null} Por
+            isso ninguém aqui é descontado por falta: a ausência de desconto é
+            limite da fonte, não atestado de assiduidade.
+          </>
+        )}
+      </p>
+
+      <p>
+        <strong className="font-medium text-text">
+          Coerência com direitos fundamentais
+        </strong>{" "}
+        compara o voto com o rótulo que a análise deste portal deu à matéria:
+        votar a favor de projeto garantista e contra projeto reducionista conta
+        como coerente. Acima de {Math.round(COERENCIA_ALVO * 100)}% não há
+        desconto.{" "}
+        {comCoerencia.length ? (
+          <>
+            Medida em{" "}
+            <strong className="font-medium text-text">
+              {comCoerencia.length} de {rows.length}
+            </strong>{" "}
+            vereadores, e só sobre as matérias que já foram analisadas — uma
+            fatia pequena do que a Câmara vota.
+          </>
+        ) : (
+          <>
+            <strong className="font-medium text-text">
+              Não foi medida em nenhum vereador desta Câmara
+            </strong>
+            {motivoCoerencia ? <> — {motivoCoerencia.toLowerCase()}</> : null}
+          </>
+        )}
+      </p>
+
+      <p>
+        <strong className="font-medium text-text">
+          Votar contra o próprio partido NÃO desconta nada
+        </strong>
+        , e isso é decisão deste portal, não falta de dado. Premiar a fidelidade
+        partidária rebaixaria justamente quem rompe com a bancada para defender
+        um direito. Coerência aqui é com direitos fundamentais e com a própria
+        autoria — o que a pessoa protocola contra o que ela vota —, nunca com a
+        legenda.{" "}
+        <strong className="font-medium text-text">
+          Gasto atípico também não desconta
+        </strong>
+        : uma despesa fora da curva sustenta “olhe para isto”, não “isto é
+        irregular”.
+      </p>
+
+      {descontados.length ? (
+        <p>
+          Nesta Câmara,{" "}
+          <strong className="font-medium text-text">
+            {descontados.length}{" "}
+            {descontados.length === 1 ? "vereador teve" : "vereadores tiveram"}
+          </strong>{" "}
+          pontuação reduzida por essas regras.
+        </p>
+      ) : null}
+    </>
   );
 }

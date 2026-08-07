@@ -18,6 +18,20 @@ const COR_POR_SLOT: Record<number, string> = {
   4: "var(--color-ord-4)",
 };
 
+const pctBR = (t: number | null) => (t === null ? null : `${Math.round(t * 100)}%`);
+
+/**
+ * O desconto que presença e coerência aplicaram nesta pessoa.
+ *
+ * `null` quando nada foi descontado — e "nada descontado" tem DUAS causas
+ * que a tela precisa separar: compareceu a tudo, ou não foi medido. Quem
+ * chama distingue pelos campos `medido`.
+ */
+function desconto(v: RankingVereador): number | null {
+  const d = v.pontuacaoProducao - v.pontuacao;
+  return d > 0.5 ? d : null;
+}
+
 export interface RankingVereadoresProps {
   rows: RankingVereador[];
   /** Barra mais alta (usado em /camara e na página do vereador). A lista
@@ -45,7 +59,11 @@ export default function RankingVereadores({
 }: RankingVereadoresProps) {
   const [vista, setVista] = useState<"grafico" | "tabela">("grafico");
 
-  const max = rows.reduce((m, r) => Math.max(m, r.pontuacao), 0);
+  // A escala das barras é a da PRODUÇÃO, não a da nota final: as fatias
+  // desenham a composição por tipo, e elas somam a produção. Escalar pela
+  // nota descontada faria a barra de quem faltou ficar maior que o número
+  // impresso ao lado dela.
+  const max = rows.reduce((m, r) => Math.max(m, r.pontuacaoProducao), 0);
   if (max <= 0) return null;
 
   return (
@@ -106,7 +124,7 @@ export default function RankingVereadores({
                   <div className="sm:pl-9.5">
                     <StackedPointsBar
                       segmentos={segmentos}
-                      total={v.pontuacao}
+                      total={v.pontuacaoProducao}
                       max={max}
                       altura={detalhado ? "md" : "sm"}
                     />
@@ -133,6 +151,8 @@ export default function RankingVereadores({
                         </li>
                       ))}
                     </ul>
+
+                    <LinhaAtuacao v={v} />
                   </div>
                 </li>
               );
@@ -144,14 +164,85 @@ export default function RankingVereadores({
   );
 }
 
-/** Mesmo dado do gráfico, em tabela — a rota acessível e copiável. */
+/**
+ * Presença, coerência e o desconto que elas causaram — a resposta a "por que
+ * este número é menor que a soma das fatias?".
+ *
+ * A linha aparece SEMPRE que alguma das duas foi medida, mesmo sem desconto:
+ * "presença 100%" é informação, e mostrá-la só quando há punição faria a
+ * ausência da linha significar duas coisas opostas (foi perfeito × não
+ * medimos). Quando nenhuma das duas foi medida a linha some, porque aí não há
+ * nada a dizer sobre esta pessoa em particular — o motivo é o mesmo para a
+ * Câmara inteira e está explicado uma vez, em "Como a pontuação é calculada".
+ */
+function LinhaAtuacao({ v }: { v: RankingVereador }) {
+  const d = desconto(v);
+  if (!v.presenca.medido && !v.coerencia.medido) return null;
+
+  return (
+    <p className="mt-1.5 flex flex-wrap items-baseline gap-x-3 gap-y-0.5 text-xs text-text-soft">
+      {v.presenca.medido ? (
+        <span>
+          presença{" "}
+          <span className="font-tabular text-text">{pctBR(v.presenca.taxa)}</span>
+          <span className="text-text-soft/80">
+            {" "}
+            ({formatNumberBR(v.presenca.ausente)}{" "}
+            {v.presenca.ausente === 1 ? "ausência" : "ausências"} em{" "}
+            {formatNumberBR(v.presenca.base)})
+          </span>
+        </span>
+      ) : null}
+      {v.coerencia.medido ? (
+        <span>
+          coerência com direitos{" "}
+          <span className="font-tabular text-text">{pctBR(v.coerencia.taxa)}</span>
+          <span className="text-text-soft/80">
+            {" "}
+            ({formatNumberBR(v.coerencia.base)}{" "}
+            {v.coerencia.base === 1 ? "voto" : "votos"})
+          </span>
+        </span>
+      ) : null}
+      {v.coerencia.contradizPropriaAutoria ? (
+        <span className="text-text">vota contra o que ela mesma propõe</span>
+      ) : null}
+      {d ? (
+        <span className="font-tabular text-text">
+          −{formatNumberBR(d)} pts de {formatNumberBR(v.pontuacaoProducao)}
+        </span>
+      ) : null}
+    </p>
+  );
+}
+
+/**
+ * Mesmo dado do gráfico, em tabela — a rota acessível e copiável.
+ *
+ * ⚠ É AQUI QUE A ARITMÉTICA QUEBRADA SE ESCONDE. Esta tabela é o único lugar
+ * onde quantidade, pontos por tipo e total aparecem JUNTOS, então uma
+ * mudança de fórmula que não passe por ela produz uma soma que não fecha —
+ * visível só para quem usa leitor de tela. Já aconteceu quando o teor e o
+ * rótulo entraram na conta. Por isso "Produção" e "Total" são colunas
+ * SEPARADAS: a soma dos tipos fecha com a produção, e o total é o que sobra
+ * depois do desconto.
+ */
 function TabelaRanking({ rows }: { rows: RankingVereador[] }) {
+  const algumMedido = rows.some((r) => r.presenca.medido || r.coerencia.medido);
   return (
     <div className="overflow-x-auto rounded-2xl border border-border bg-surface shadow-sm">
       <table className="w-full min-w-[36rem] text-sm">
         <caption className="sr-only">
-          Ranking de atuação legislativa por vereador, com a quantidade de
-          proposições de cada tipo e os pontos que cada tipo contribuiu.
+          Ranking de atuação legislativa por vereador. Para cada tipo de
+          proposição, a quantidade e, entre parênteses, os pontos que ela
+          contribuiu. A coluna Produção é a soma desses pontos.
+          {algumMedido
+            ? " O Total é a produção depois do desconto por faltas e por" +
+              " incoerência de voto, que incide apenas sobre a parte positiva" +
+              " da pontuação — projeto que retira direito continua subtraindo" +
+              " integralmente."
+            : " Nesta Câmara o Total é igual à Produção: não há dado de presença" +
+              " nem de coerência de voto que sustente desconto."}
         </caption>
         <thead>
           <tr className="border-b border-border text-left text-xs text-text-soft">
@@ -167,6 +258,19 @@ function TabelaRanking({ rows }: { rows: RankingVereador[] }) {
                 <span className="block font-normal text-text-soft/80">×{t.peso}</span>
               </th>
             ))}
+            <th scope="col" className="px-3 py-2.5 text-right font-medium">
+              Produção
+            </th>
+            {algumMedido ? (
+              <>
+                <th scope="col" className="px-3 py-2.5 text-right font-medium">
+                  Presença
+                </th>
+                <th scope="col" className="px-3 py-2.5 text-right font-medium">
+                  Coerência
+                </th>
+              </>
+            ) : null}
             <th scope="col" className="px-3 py-2.5 text-right font-medium">
               Total
             </th>
@@ -203,6 +307,31 @@ function TabelaRanking({ rows }: { rows: RankingVereador[] }) {
                     </td>
                   );
                 })}
+                <td className="font-tabular px-3 py-2.5 text-right text-text-soft">
+                  {formatNumberBR(v.pontuacaoProducao)}
+                </td>
+                {algumMedido ? (
+                  <>
+                    <td className="font-tabular px-3 py-2.5 text-right">
+                      {v.presenca.medido ? (
+                        pctBR(v.presenca.taxa)
+                      ) : (
+                        <span className="text-text-soft/60" title={v.presenca.motivo ?? ""}>
+                          não medida
+                        </span>
+                      )}
+                    </td>
+                    <td className="font-tabular px-3 py-2.5 text-right">
+                      {v.coerencia.medido ? (
+                        pctBR(v.coerencia.taxa)
+                      ) : (
+                        <span className="text-text-soft/60" title={v.coerencia.motivo ?? ""}>
+                          não medida
+                        </span>
+                      )}
+                    </td>
+                  </>
+                ) : null}
                 <td className="font-tabular px-3 py-2.5 text-right font-semibold text-text">
                   {formatNumberBR(v.pontuacao)}
                 </td>

@@ -4,6 +4,8 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import AtuacaoVereador from "@/app/[municipio]/components/charts/AtuacaoVereador";
 import OrdinalLegend from "@/app/[municipio]/components/charts/OrdinalLegend";
 import AreasAtuacao from "@/app/[municipio]/components/charts/AreasAtuacao";
+import PainelAtuacao from "@/app/[municipio]/components/PainelAtuacao";
+import { gastosAtipicos } from "@/lib/db/queries/betim";
 import {
   getVereadorBySlug,
   getProposicoesByVereador,
@@ -130,6 +132,18 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
   // Quantos vereadores a casa tem — para dizer "o mesmo para todos os 41"
   // sem número escrito à mão (Betim tem 23, BH 41, São Paulo 55).
   const vereadoresDaCasa = ranking.rows.length || null;
+  // A linha do ranking desta pessoa: carrega presença, coerência e a
+  // pontuação antes e depois do desconto.
+  const esteNoRanking = row ? ranking.rows.find((r) => r.id === row.id) : undefined;
+  // Gastos fora da curva DESTA pessoa. A consulta calcula o percentil sobre a
+  // cidade inteira — tem de ser assim, senão a "mediana do grupo" sairia da
+  // meia dúzia de despesas de um gabinete só e qualquer valor viraria
+  // outlier. O recorte por pessoa é feito depois, aqui.
+  const gastosDele = row
+    ? (await gastosAtipicos(cidade.id_municipio, { limite: 200 }).catch(() => []))
+        .filter((g) => g.vereador_id === row.id)
+        .slice(0, 8)
+    : [];
   // O ano corrente aparece no gráfico com o valor acumulado até agora, o que
   // faz a última barra parecer uma queda. Dizer isso é mais honesto que
   // esconder o ano.
@@ -432,6 +446,21 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
                   <OrdinalLegend />
                 </div>
                 <AtuacaoVereador ranking={ranking.rows} vereadorId={row.id} />
+              </DataCard>
+            </div>
+          )}
+
+          {/* Presença, coerência e gasto atípico. Fica LOGO ABAIXO da
+              composição da pontuação de propósito: é ali que o leitor vê o
+              número final e pergunta por que ele é menor que a soma das
+              fatias. A resposta tem de estar na altura da pergunta. */}
+          {esteNoRanking && (
+            <div className="mt-8">
+              <DataCard
+                title="Presença, coerência e uso da verba"
+                source={fonteCamara}
+              >
+                <PainelAtuacao vereador={esteNoRanking} gastos={gastosDele} />
               </DataCard>
             </div>
           )}

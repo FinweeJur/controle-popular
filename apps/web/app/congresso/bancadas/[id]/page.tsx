@@ -92,7 +92,9 @@ export default async function Bancada({ params }: { params: Params }) {
                   />
                 ) : null}
                 <span className="text-sm">
-                  <span className="font-medium">{m.nome}</span>
+                  <Link href={`/parlamentares/${m.id}`} className="font-medium underline">
+                    {m.nome}
+                  </Link>
                   {m.partido ? (
                     <span className="opacity-70">
                       {" "}

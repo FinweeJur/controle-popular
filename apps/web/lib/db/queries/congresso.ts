@@ -8,9 +8,12 @@ import {
   orgao_membrosInCongresso,
   orgaosInCongresso,
   parlamentaresInCongresso,
+  presencas_plenarioInCongresso,
   proposicao_autoresInCongresso,
   proposicoesInCongresso,
   tramitacoesInCongresso,
+  votacoesInCongresso,
+  votosInCongresso,
 } from "@/lib/db/schema";
 
 /**
@@ -988,4 +991,95 @@ export async function totaisHome() {
     db.select({ n: count() }).from(analisesInCongresso),
   ]);
   return { proposicoes: p?.n ?? null, analises: a?.n ?? null };
+}
+
+/**
+ * Um parlamentar, pelo `id` interno (uuid) — a página de perfil parte daqui.
+ */
+export async function obterParlamentarPorId(id: string) {
+  const db = getDb();
+  if (!db) return null;
+  const [row] = await db
+    .select()
+    .from(parlamentaresInCongresso)
+    .where(eq(parlamentaresInCongresso.id, id))
+    .limit(1);
+  return row ?? null;
+}
+
+/**
+ * Todo parlamentar ativo — só para `generateStaticParams` da página de
+ * perfil. ~512 da Câmara hoje, mesma ordem de grandeza das 354 bancadas que
+ * já pré-renderam por inteiro (ver o comentário no topo do arquivo).
+ */
+export async function listarParlamentaresAtivos() {
+  const db = getDb();
+  if (!db) return [];
+  return db
+    .select({ id: parlamentaresInCongresso.id })
+    .from(parlamentaresInCongresso)
+    .where(eq(parlamentaresInCongresso.ativo, true));
+}
+
+/**
+ * A folha de ponto CRUA de um parlamentar — uma linha por dia.
+ *
+ * Devolve só o que `calcularPresencaDias` (`lib/atuacao-parlamentar.ts`)
+ * precisa para classificar. A classificação em si (o que é falta, o que é
+ * justificada) fica naquele arquivo, lido pelos dois eixos — não aqui.
+ */
+export async function presencaDiasDoParlamentar(parlamentarId: string) {
+  const db = getDb();
+  if (!db) return [];
+  return db
+    .select({
+      situacao_dia: presencas_plenarioInCongresso.situacao_dia,
+      sessoes_total: presencas_plenarioInCongresso.sessoes_total,
+      sessoes_presente: presencas_plenarioInCongresso.sessoes_presente,
+    })
+    .from(presencas_plenarioInCongresso)
+    .where(eq(presencas_plenarioInCongresso.parlamentar_id, parlamentarId));
+}
+
+/**
+ * O voto de UM parlamentar, cruzado com o rótulo da matéria — a
+ * matéria-prima da COERÊNCIA com direitos fundamentais.
+ *
+ * Mesma forma de `votosPorRotuloDeDireito` (eixo Cidades, `queries/betim.ts`):
+ * células agregadas `(rotulo, voto, qtd)`, para `calcularCoerencia` aplicar a
+ * régua — que é a mesma função nos dois eixos.
+ *
+ * Só entra votação que `etl.camaras.ligar_votacoes --congresso` já ligou a
+ * uma proposição COM análise `status='ok'`. Medido em 2026-08-06: 182 das
+ * 2.754 votações do Congresso têm esse elo — a maioria são pareceres e
+ * requerimentos de proposições fora da janela que o ETL de análise cobriu, não
+ * falha de casamento. A tela precisa dizer o tamanho da amostra, não escondê-lo.
+ */
+export async function votosPorRotuloDoParlamentar(parlamentarId: string) {
+  const db = getDb();
+  if (!db) return [];
+  return db
+    .select({
+      rotulo: analisesInCongresso.rotulo,
+      voto: votosInCongresso.voto,
+      qtd: sql<number>`count(*)::int`,
+    })
+    .from(votosInCongresso)
+    .innerJoin(
+      votacoesInCongresso,
+      eq(votacoesInCongresso.id, votosInCongresso.votacao_id)
+    )
+    .innerJoin(
+      proposicoesInCongresso,
+      eq(proposicoesInCongresso.id, votacoesInCongresso.proposicao_id)
+    )
+    .innerJoin(
+      analisesInCongresso,
+      and(
+        eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id),
+        eq(analisesInCongresso.status, "ok")
+      )
+    )
+    .where(eq(votosInCongresso.parlamentar_id, parlamentarId))
+    .groupBy(analisesInCongresso.rotulo, votosInCongresso.voto);
 }

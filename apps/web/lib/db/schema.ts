@@ -1571,6 +1571,106 @@ export const proposicoes = pgTable("proposicoes", {
 ]);
 
 /**
+ * Votação nominal das câmaras municipais (migration 0041).
+ *
+ * ⚠ ENTROU NESTE ARQUIVO SÓ AGORA, junto com a 0042. As tabelas existiam no
+ * Neon desde a 0041 e eram INVISÍVEIS para o app — nenhum erro, nenhum
+ * aviso, só ausência no autocomplete. Mesma classe de defeito de `diarias`,
+ * que ficou 5 migrations atrás com 6 colunas fantasmas. Ao ler uma tabela
+ * que outra sessão criou, confira as colunas REAIS antes de confiar aqui.
+ *
+ * `placar_*` e as linhas de `votos_camara` são fontes INDEPENDENTES: em São
+ * Paulo divergem em 24,9% das votações nominais. Nunca derivar uma da outra.
+ *
+ * `proposicao_id` (0042) é o elo com a proposição votada, preenchido por
+ * `etl.camaras.ligar_votacoes` a partir de `materia`. Anulável, e o NULL tem
+ * significado: matéria sem número (eleição de Mesa, veto), voto
+ * procedimental (adiamento, bloco de emendas — ligar inverteria o sentido do
+ * voto) ou proposição fora da janela coletada.
+ */
+export const votacoes_camara = pgTable("votacoes_camara", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	id_externo: text().notNull(),
+	data: date(),
+	sessao: text(),
+	/** 'Nominal' | 'Simbólica' na grafia da fonte. */
+	tipo_votacao: text(),
+	materia: text(),
+	ementa: text(),
+	resultado: text(),
+	/** Placar DECLARADO pela fonte — não é a contagem das linhas de voto. */
+	presentes: integer(),
+	placar_sim: integer(),
+	placar_nao: integer(),
+	placar_abstencao: integer(),
+	placar_branco: integer(),
+	notas: text(),
+	link_fonte: text(),
+	proposicao_id: uuid(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+}, (table) => [
+	index("votacoes_camara_municipio_data_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.data.desc().nullsFirst().op("date_ops")),
+	index("votacoes_camara_proposicao_idx").using("btree", table.proposicao_id.asc().nullsLast().op("uuid_ops")),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "votacoes_camara_id_municipio_fkey"
+		}),
+	foreignKey({
+			columns: [table.proposicao_id],
+			foreignColumns: [proposicoes.id],
+			name: "votacoes_camara_proposicao_id_fkey"
+		}),
+	unique("votacoes_camara_id_municipio_id_externo_key").on(table.id_municipio, table.id_externo),
+]);
+
+/**
+ * O voto de cada vereador (migration 0041).
+ *
+ * `vereador_id` é ANULÁVEL de propósito: o `<VotoContrario>` de São Paulo
+ * registra dissidência em votação simbólica SEM identificador — 808 dos
+ * 5.136 votos de SP. Exigir a FK os descartaria em silêncio.
+ *
+ * `voto` não tem CHECK nem enum: na eleição da Mesa vota-se EM ALGUÉM e o
+ * campo vira nome de candidato. E ele carrega, além do voto, o registro de
+ * PRESENÇA — 'Ausente', 'Não votou', 'Presidência'. O que cada rótulo
+ * significa mora em `lib/presenca/vocabulario.json`, não aqui.
+ */
+export const votos_camara = pgTable("votos_camara", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	votacao_id: uuid().notNull(),
+	vereador_id: uuid(),
+	nome_fonte: text(),
+	partido_fonte: text(),
+	voto: text().notNull(),
+	/** 'nominal' (painel aberto) | 'voto_contrario' (dissidência anotada em
+	 *  votação simbólica, sem identificador). */
+	origem: text().default('nominal').notNull(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+}, (table) => [
+	index("votos_camara_vereador_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.vereador_id.asc().nullsLast().op("uuid_ops")),
+	index("votos_camara_votacao_idx").using("btree", table.votacao_id.asc().nullsLast().op("uuid_ops")),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "votos_camara_id_municipio_fkey"
+		}),
+	foreignKey({
+			columns: [table.votacao_id],
+			foreignColumns: [votacoes_camara.id],
+			name: "votos_camara_votacao_id_fkey"
+		}),
+	foreignKey({
+			columns: [table.vereador_id],
+			foreignColumns: [vereadores.id],
+			name: "votos_camara_vereador_id_fkey"
+		}),
+]);
+
+/**
  * Análise garantista × reducionista do eixo Cidades (migration 0033).
  *
  * Espelha `congresso.analises` / `congresso.analise_itens` porque a RÉGUA É
@@ -1971,6 +2071,58 @@ export const votosInCongresso = congresso.table("votos", {
 			name: "votos_parlamentar_id_fkey"
 		}).onDelete("cascade"),
 	primaryKey({ columns: [table.votacao_id, table.parlamentar_id], name: "votos_pkey"}),
+]);
+
+/**
+ * Folha de ponto do plenário (migration congresso/0008).
+ *
+ * A ÚNICA fonte PRIMÁRIA de presença de todo o Controle Popular. Nas câmaras
+ * municipais não existe equivalente publicado: lá a presença só existe
+ * derivada do voto nominal (`votos_camara.voto`), que é medida mais fraca.
+ *
+ * ⚠ Vem de RASPAGEM DE HTML do portal `www.camara.leg.br`, não da API de
+ * dados abertos — é a única coisa do eixo que vem de lá, e é a única que
+ * quebra num redesenho de página. O coletor aborta sem gravar quando o
+ * cabeçalho some, porque presença zerada não é "sem dado": é uma acusação de
+ * absenteísmo contra 513 pessoas.
+ *
+ * `situacao_dia` guarda o veredito NA GRAFIA DA FONTE ('Presença',
+ * 'Ausência', 'Missão Autorizada', 'Decisão da Mesa'). O que cada um
+ * significa é decisão editorial e mora em `lib/presenca/vocabulario.json` —
+ * ausência justificada NÃO é falta, e tratá-la como falta puniria de forma
+ * enviesada, porque licença-maternidade recai sobre um grupo específico.
+ *
+ * `sessoes_total` e `sessoes_presente` são o segundo nível: num mesmo dia há
+ * ordinária e extraordinárias, e dá para constar numa e não na outra. Os dois
+ * números ficam lado a lado com o veredito do dia, nenhum derivado do outro.
+ */
+export const presencas_plenarioInCongresso = congresso.table("presencas_plenario", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	casa_id: text().notNull(),
+	parlamentar_id: uuid().notNull(),
+	data: date().notNull(),
+	ano: integer().notNull(),
+	situacao_dia: text().notNull(),
+	justificativa: text(),
+	sessoes_total: integer(),
+	sessoes_presente: integer(),
+	link_fonte: text(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+}, (table) => [
+	index("presencas_plenario_parlamentar_ano_idx").using("btree", table.parlamentar_id.asc().nullsLast().op("uuid_ops"), table.ano.asc().nullsLast().op("int4_ops")),
+	index("presencas_plenario_casa_data_idx").using("btree", table.casa_id.asc().nullsLast().op("text_ops"), table.data.desc().nullsFirst().op("date_ops")),
+	foreignKey({
+			columns: [table.casa_id],
+			foreignColumns: [casasInCongresso.id],
+			name: "presencas_plenario_casa_id_fkey"
+		}),
+	foreignKey({
+			columns: [table.parlamentar_id],
+			foreignColumns: [parlamentaresInCongresso.id],
+			name: "presencas_plenario_parlamentar_id_fkey"
+		}).onDelete("cascade"),
+	unique("presencas_plenario_parlamentar_id_data_key").on(table.parlamentar_id, table.data),
 ]);
 
 export const orgao_membrosInCongresso = congresso.table("orgao_membros", {

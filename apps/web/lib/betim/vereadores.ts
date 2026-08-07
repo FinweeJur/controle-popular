@@ -1,5 +1,14 @@
 import * as q from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
+import {
+  aplicarFatores,
+  calcularCoerencia,
+  calcularPresenca,
+  type Coerencia,
+  type LinhaVoto,
+  type LinhaVotoRotulo,
+  type Presenca,
+} from "@/lib/atuacao-parlamentar";
 
 export interface VereadorRow {
   id: string;
@@ -441,12 +450,43 @@ export interface RankingVereador {
   slug: string;
   nome_urna: string | null;
   partido: string | null;
+  /** A pontuação FINAL — produção já descontada por presença e coerência.
+   *  É esta que ordena o ranking e é esta que a tela imprime. */
   pontuacao: number;
+  /** A produção legislativa antes do desconto. Fica exposta porque a tela
+   *  precisa mostrar as duas: sem ela, "por que fulano caiu 6 posições?" não
+   *  tem resposta visível, e um ranking que muda sem explicar é pior que o
+   *  ranking anterior. */
+  pontuacaoProducao: number;
   porTipo: Record<string, number>;
   /** As células (tipo, teor, rótulo) desta pessoa — é daqui que sai a
    *  pontuação e a composição do gráfico. `porTipo` sobrevive como contagem
    *  crua, para quem quer "quantas peças" e não "quantos pontos". */
   linhas: LinhaProposicao[];
+  presenca: Presenca;
+  coerencia: Coerencia;
+}
+
+/**
+ * Separa a pontuação em parte positiva e negativa.
+ *
+ * As duas viajam separadas até `aplicarFatores` porque é essa separação que
+ * impede o desconto de PROMOVER quem tem saldo negativo: um vereador com
+ * −100 pontos e 50% de faltas viraria −50 se o fator multiplicasse o total.
+ * Ver o bloco no topo de `atuacao.ts`.
+ */
+function separarPontos(linhas: LinhaProposicao[]): {
+  positivo: number;
+  negativo: number;
+} {
+  let positivo = 0;
+  let negativo = 0;
+  for (const l of linhas) {
+    const p = pontosDaLinha(l);
+    if (p >= 0) positivo += p;
+    else negativo += p;
+  }
+  return { positivo, negativo };
 }
 
 /**
@@ -478,12 +518,32 @@ export async function getRankingVereadores(idMunicipio: IdMunicipio): Promise<{
   ok: boolean;
 }> {
   try {
-    const [vereadoresRows, contagens] = await Promise.all([
+    const [vereadoresRows, contagens, votos, votosRotulo] = await Promise.all([
       q.listarVereadores(idMunicipio),
       q.contagemDeProposicoesPorVereador(idMunicipio),
+      // Presença e coerência degradam para "não medido" quando a consulta
+      // falha — a tabela pode não existir ainda numa cidade nova, e a
+      // ausência de voto coletado NÃO pode derrubar o ranking inteiro.
+      q.contagemDeVotosPorVereador(idMunicipio).catch(() => null),
+      q.votosPorRotuloDeDireito(idMunicipio).catch(() => null),
     ]);
     if (!vereadoresRows || !contagens)
       return { rows: [], totaisPorTipo: {}, totaisLinhas: [], ok: false };
+
+    const votosPor = new Map<string, LinhaVoto[]>();
+    for (const v of (votos ?? []) as LinhaVoto[]) {
+      if (!v.vereador_id) continue;
+      const arr = votosPor.get(v.vereador_id) ?? [];
+      arr.push(v);
+      votosPor.set(v.vereador_id, arr);
+    }
+    const rotuloPor = new Map<string, LinhaVotoRotulo[]>();
+    for (const v of (votosRotulo ?? []) as LinhaVotoRotulo[]) {
+      if (!v.vereador_id) continue;
+      const arr = rotuloPor.get(v.vereador_id) ?? [];
+      arr.push(v);
+      rotuloPor.set(v.vereador_id, arr);
+    }
 
     type Acc = { pontuacao: number; porTipo: Record<string, number>; linhas: LinhaProposicao[] };
     const porVereador = new Map<string, Acc>();
@@ -513,14 +573,42 @@ export async function getRankingVereadores(idMunicipio: IdMunicipio): Promise<{
     const rows: RankingVereador[] = (vereadoresRows as VereadorRow[])
       .map((v) => {
         const acc = porVereador.get(v.id) ?? { pontuacao: 0, porTipo: {}, linhas: [] };
+
+        // Perfil da AUTORIA: quantas peças com direção de direitos a pessoa
+        // protocolou, e para que lado. Sai das MESMAS células que já
+        // alimentam a pontuação — sem uma segunda consulta, e por isso sem
+        // risco de as duas discordarem.
+        let saldoAutoria = 0;
+        let baseAutoria = 0;
+        for (const l of acc.linhas) {
+          const r = l.rotulo ?? "";
+          if (r === "garantista" || r === "garantista_forte") {
+            saldoAutoria += l.qtd;
+            baseAutoria += l.qtd;
+          } else if (r === "reducionista" || r === "reducionista_forte") {
+            saldoAutoria -= l.qtd;
+            baseAutoria += l.qtd;
+          }
+        }
+
+        const presenca = calcularPresenca(idMunicipio, votosPor.get(v.id) ?? []);
+        const coerencia = calcularCoerencia(v.id, rotuloPor.get(v.id) ?? [], {
+          saldo: saldoAutoria,
+          base: baseAutoria,
+        });
+        const { positivo, negativo } = separarPontos(acc.linhas);
+
         return {
           id: v.id,
           slug: v.slug,
           nome_urna: v.nome_urna,
           partido: v.partido,
-          pontuacao: acc.pontuacao,
+          pontuacao: aplicarFatores(positivo, negativo, presenca, coerencia),
+          pontuacaoProducao: acc.pontuacao,
           porTipo: acc.porTipo,
           linhas: acc.linhas,
+          presenca,
+          coerencia,
         };
       })
       // Desempate por nome: vereadores com a mesma pontuação saíam em
