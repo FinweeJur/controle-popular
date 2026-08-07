@@ -5,8 +5,9 @@ import { fetchProposicoes, getSituacoesDisponiveis, PROPOSICOES_PAGE_SIZE } from
 import { TIPO_PROPOSICAO_LABELS } from "@/lib/betim/vereadores";
 import { TEMA_LABELS, TEMAS_ORDENADOS } from "@/lib/betim/temas";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import { notFound } from "next/navigation";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
-import { rotuloLegislatura } from "@/lib/db/queries/municipios";
+import { rotuloLegislatura, temFonte } from "@/lib/db/queries/municipios";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Proposições da Câmara — ${nomePortal(c)}`,
@@ -30,6 +31,12 @@ export default async function ProposicoesPage({
   searchParams,
 }: ProposicoesPageProps) {
   const cidade = await cidadeDaRota(rotaParams);
+  // Câmara que não publica produção legislativa não ganha uma tela de busca
+  // permanentemente vazia. Medido: o SAPL de Araçuaí devolve 0 em
+  // `materia/materialegislativa` e a Câmara de Itinga não tem o módulo. É a
+  // mesma regra do menu em `servicos/page.tsx` — "um menu que aponta para 404
+  // é pior que um menu curto" —, aplicada à rota inteira.
+  if (!temFonte(cidade, "camara_proposicoes")) notFound();
   const sistemaCamara =
     typeof cidade.fontes?.camara_sistema === "string" ? cidade.fontes.camara_sistema : null;
   const params = await searchParams;

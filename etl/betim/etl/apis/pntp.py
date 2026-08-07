@@ -91,6 +91,33 @@ def _ranking_estadual(todas: list[dict], poder: str, uf_extenso: str) -> list[di
     return sorted(filtradas, key=lambda r: r[COL_INDICE], reverse=True)
 
 
+def _num_ou_nulo(valor):
+    """Número, ou None quando a planilha escreve "não se aplica".
+
+    O ATRICON grava **"-"** (não vazio, não zero) na variação de índice de
+    quem não foi avaliado no ciclo anterior, e a coluna no banco é `numeric`.
+    O resultado era `invalid input syntax for type numeric: "-"`, que derruba
+    o INSERT INTEIRO — as duas linhas da cidade, Executivo e Legislativo.
+
+    Ficou invisível por meses porque Betim, BH e São Paulo têm variação real.
+    Só apareceu na primeira cidade PEQUENA, que estreou no ranking e portanto
+    não tem com o que variar. E apareceu do pior jeito: o módulo já havia
+    impresso índice, nível e posição na tela antes de morrer, então o log
+    parecia um sucesso e a tabela ficava vazia.
+    """
+    if valor is None:
+        return None
+    if isinstance(valor, (int, float)):
+        return valor
+    texto = str(valor).strip().replace("%", "").replace(",", ".")
+    if texto in ("", "-", "--", "N/A", "n/a", "NA"):
+        return None
+    try:
+        return float(texto)
+    except ValueError:
+        return None
+
+
 def sync(id_municipio: str, ano: int) -> None:
     client = get_supabase_client()
     cidade = carregar_municipio(id_municipio)
@@ -123,7 +150,7 @@ def sync(id_municipio: str, ano: int) -> None:
                 "poder": poder,
                 "indice_transparencia": entrada[COL_INDICE],
                 "nivel_transparencia": entrada[COL_NIVEL],
-                "variacao_indice": entrada.get(COL_VAR_INDICE),
+                "variacao_indice": _num_ou_nulo(entrada.get(COL_VAR_INDICE)),
                 "variacao_nivel": entrada.get(COL_VAR_NIVEL),
                 "historico_nivel": entrada.get(COL_HISTORICO_NIVEL),
                 "posicao_ranking_uf": posicao,

@@ -76,6 +76,12 @@ export const TIPO_PROPOSICAO_LABELS: Record<string, string> = {
   denuncia: "Denúncia",
   autorizacao: "Autorização",
   prestacao_contas: "Prestação de Contas",
+  // Diamantina (44, 1 e 1 linhas). `portaria` e `ato_presidencial` são atos
+  // ADMINISTRATIVOS da Mesa, não produção legislativa de vereador — a Câmara
+  // os arquiva junto dos projetos e o ETL os traz junto.
+  projeto_lei_complementar: "Projeto de Lei Complementar",
+  ato_presidencial: "Ato Presidencial",
+  portaria: "Portaria",
 };
 
 export async function getProposicoesByVereador(
@@ -237,11 +243,22 @@ export async function getVereadoresForaDeExercicio(
  * dois são atos privativos da Câmara com tramitação formal, sem efeito
  * sobre terceiros.
  *
+ * `projeto_lei_complementar` pesa 15 como o Projeto de Lei: a lei
+ * complementar municipal exige quórum qualificado e trata das matérias que a
+ * Lei Orgânica reserva a ela — pesar menos que um PL ordinário inverteria a
+ * ordem. Entrou com Diamantina (44 linhas).
+ *
+ * `portaria` e `ato_presidencial` pesam 1: são atos administrativos da Mesa,
+ * não iniciativa legislativa do vereador. Entram porque a Câmara de
+ * Diamantina os arquiva junto dos projetos, e descartá-los esconderia peça
+ * que a fonte publica — mas pontuar como projeto seria pior.
+ *
  * Tipo ausente daqui vale `undefined` na soma — não zero. Foi o que
  * aconteceria com os dois tipos de São Paulo antes desta entrada.
  */
 export const PESO_PROPOSICAO: Record<string, number> = {
   projeto_lei: 15,
+  projeto_lei_complementar: 15,
   emenda_lei_organica: 15,
   proposta_emenda_lei_organica: 15,
   projeto_resolucao: 6,
@@ -254,6 +271,8 @@ export const PESO_PROPOSICAO: Record<string, number> = {
   mocao: 1,
   autorizacao: 1,
   prestacao_contas: 1,
+  portaria: 1,
+  ato_presidencial: 1,
 };
 
 /**
@@ -367,7 +386,12 @@ export const PROPOSICAO_TIERS: ProposicaoTier[] = [
     label: "Projeto de Lei",
     labelCurto: "proj. de lei",
     peso: 15,
-    tipos: ["projeto_lei", "emenda_lei_organica", "proposta_emenda_lei_organica"],
+    tipos: [
+      "projeto_lei",
+      "projeto_lei_complementar",
+      "emenda_lei_organica",
+      "proposta_emenda_lei_organica",
+    ],
     explicacao: "Pode virar norma que obriga toda a cidade — o maior esforço legislativo.",
   },
   {
@@ -398,6 +422,8 @@ export const PROPOSICAO_TIERS: ProposicaoTier[] = [
       "mocao",
       "autorizacao",
       "prestacao_contas",
+      "portaria",
+      "ato_presidencial",
     ],
     explicacao: "Sugestão ao Executivo ou ajuste em proposta alheia — sem força de lei.",
   },

@@ -1,0 +1,158 @@
+# ETL das cidades do interior de MG: Araçuaí (3103405), Itinga (3134004) e
+# Diamantina (3121605).
+#
+# POR QUE MATRIZ AQUI, SE `etl-cidades-novas.yml` DIZ QUE MATRIZ NÃO SERVE.
+# Aquele arquivo explica (linhas 3-14) que BH e São Paulo não viraram matriz
+# porque divergem justamente nos módulos pesados — contratos, câmara,
+# servidores e crimes são módulos DIFERENTES em cada uma. Aqui o argumento se
+# inverte: as três cidades compartilham todos os coletores federais e divergem
+# em UM passo só, o da câmara. Isso é matriz de livro.
+#
+# POR QUE ARQUIVO NOVO, E NÃO UM JOB A MAIS NO `etl-cidades-novas.yml`: o
+# próprio arquivo dá o motivo (linhas 13-14) — mexer nele não pode quebrar o
+# cron que já serve gente. E a cadência aqui é outra: o portal da SysSolution
+# tem WAF de 15 requisições/minuto.
+#
+# `fail-fast: false` É O ITEM MAIS IMPORTANTE DESTE ARQUIVO. `etl.camaras.sapl`
+# trata `GET /api/` 404 como "instalação SAPL 2.x, pular esta casa" e sai com
+# código 0, mas qualquer outra falha sai 1 — e sem essa linha um job vermelho
+# cancelaria os irmãos, derrubando as outras duas cidades por causa de uma.
+name: ETL interior de MG (Araçuaí, Itinga, Diamantina)
+
+on:
+  schedule:
+    # Quarta 09:00 UTC — depois de Betim (segunda) e das cidades novas
+    # (terça), para não disputar o PNCP, que devolve 429 quando dois jobs
+    # varrem juntos.
+    - cron: "0 9 * * 3"
+    # Mensal: a varredura de CNPJs de órgão do PNCP.
+    - cron: "0 10 3 * *"
+  workflow_dispatch:
+
+env:
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  TRANSPARENCIA_API_KEY: ${{ secrets.TRANSPARENCIA_API_KEY }}
+  GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/gcp-service-account.json
+
+jobs:
+  cidades:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - nome: aracuai
+            id: "3103405"
+            # SAPL/Interlegis: 11 vereadores e 651 normas. Sem proposições —
+            # `materia/materialegislativa` devolve 0 nesta casa.
+            camara: "python -m etl.camaras.sapl --id-municipio 3103405"
+          - nome: diamantina
+            id: "3121605"
+            # SysSolution: 13 vereadores, 4 comissões, 3.148 leis e ~3,7 mil
+            # proposições. ~64 requisições no ritmo do WAF (~5 min).
+            camara: "python -m etl.camaras.syssolution --id-municipio 3121605"
+          - nome: itinga
+            id: "3134004"
+            # A Câmara de Itinga roda um CMS sem API e sem módulo de
+            # proposições: não há o que coletar. Os 11 vereadores vieram do
+            # TSE uma vez (`etl.bd.tse --semear`), e semear é por LEGISLATURA,
+            # não semanal — por isso o passo de câmara aqui é vazio.
+            camara: ""
+    defaults:
+      run:
+        working-directory: etl/betim
+    env:
+      ID_MUNICIPIO: ${{ matrix.id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+      - name: Credencial do BigQuery
+        run: echo '${{ secrets.GCP_SA_JSON }}' > "$GOOGLE_APPLICATION_CREDENTIALS"
+
+      # O guarda que impede a volta do defeito de 2026-08-03: default de
+      # argparse amarrado a uma cidade fazia o ETL de uma coletar o dado de
+      # outra e reetiquetá-lo, sem erro. Falha o job antes de gravar nada.
+      - name: Conferir que nenhum módulo carrega cidade por dentro
+        run: python scripts/conferir_defaults_de_cidade.py
+
+      - name: "Câmara (módulo por FORNECEDOR, não por cidade)"
+        if: matrix.camara != ''
+        run: ${{ matrix.camara }}
+
+      - name: "PNCP — contratos e licitações"
+        run: |
+          python -m etl.pncp.contratos --id-municipio $ID_MUNICIPIO --ano-inicio 2024
+          python -m etl.pncp.licitacoes --id-municipio $ID_MUNICIPIO --ano-inicio 2024
+
+      - name: "Convênios federais"
+        run: python -m etl.apis.transparencia_gov --id-municipio $ID_MUNICIPIO
+
+      - name: "Fornecedores sancionados (CEIS/CNEP)"
+        run: python -m etl.apis.ceis_cnep --id-municipio $ID_MUNICIPIO
+
+      # Bolsa Família e BPC pesam MUITO mais no Jequitinhonha que numa
+      # capital — é das páginas mais densas que estas três cidades terão.
+      - name: "Benefícios sociais"
+        run: python -m etl.apis.beneficios_sociais --id-municipio $ID_MUNICIPIO
+
+      # Fonte ESTADUAL (Sejusp-MG): funciona porque as três são de Minas. O
+      # módulo aborta sozinho se a UF não for MG.
+      - name: "Crimes violentos (Sejusp-MG)"
+        run: python -m etl.apis.crimes_mg --id-municipio $ID_MUNICIPIO
+
+      - name: "Postos de combustível (ANP)"
+        run: python -m etl.apis.anp --id-municipio $ID_MUNICIPIO
+
+      - name: "Clima e InfoDengue"
+        run: |
+          python -m etl.apis.openmeteo --id-municipio $ID_MUNICIPIO
+          python -m etl.apis.infodengue --id-municipio $ID_MUNICIPIO
+
+      - name: "Temas, teor e alertas"
+        run: |
+          python -m etl.temas_backfill --id-municipio $ID_MUNICIPIO
+          python -m etl.teor_backfill --id-municipio $ID_MUNICIPIO
+          python -m etl.alertas --id-municipio $ID_MUNICIPIO
+
+      # ── Mensal ───────────────────────────────────────────────────────
+      # Órgão municipal novo é raro e a varredura é cara (o PNCP devolve 429
+      # com facilidade). Em cidade pequena são 2 CNPJs — prefeitura e câmara —,
+      # mas a lista PRECISA existir: sem ela o módulo cai no CNPJ da prefeitura
+      # e perde tudo o que a Câmara publica.
+      - name: "PNCP — redescobrir CNPJs de órgão (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 3 * *'
+        run: python -m etl.pncp.orgaos --id-municipio $ID_MUNICIPIO --gravar
+
+  # Fora da matriz: roda UMA vez, depois das três cidades.
+  #
+  # POR QUE ESTE JOB EXISTE. `tipos-de-proposicao.mts` foi escrito depois do
+  # incidente de 2026-08-03 (446 moções de BH e 232 projetos de decreto de SP
+  # entraram valendo ZERO no ranking, porque `PESO_PROPOSICAO[tipo]` era
+  # `undefined` e ninguém percebeu) — e ficou como script manual, sem rodar em
+  # workflow nenhum. Um guarda que só roda quando alguém lembra não é guarda.
+  # Aqui ele roda no exato momento em que dado novo entrou.
+  guardas:
+    runs-on: ubuntu-latest
+    needs: cidades
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - name: "Todo tipo de proposição tem rótulo, peso e tier"
+        working-directory: apps/web
+        run: npx tsx scripts/tipos-de-proposicao.mts
+
+      # Prova que nenhuma função pública vaza dado de uma cidade para outra —
+      # a garantia que sustenta o multi-cidade inteiro.
+      - name: "Isolamento entre cidades"
+        working-directory: apps/web
+        run: npx tsx scripts/isolamento-cidades.mts

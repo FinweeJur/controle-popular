@@ -225,6 +225,70 @@ export function hostDaPrefeitura(cidade: Cidade): string | undefined {
 }
 
 /**
+ * Site de onde vem o ACERVO NORMATIVO da cidade.
+ *
+ * Nem sempre é a Prefeitura. Em Betim, BH e São Paulo os atos vêm do
+ * Executivo (dados abertos ou Diário Oficial), e `hostDaPrefeitura()` acerta.
+ * Em Araçuaí e Diamantina o acervo é da CÂMARA — 651 normas no SAPL e 3.148
+ * leis no portal da Casa —, e creditar a Prefeitura mandaria o leitor para o
+ * lugar errado numa tela cujo propósito é dizer de onde o número veio.
+ *
+ * Usa a chave que a migration 0034 criou justamente para isto
+ * (`legislacao_municipal_host`, descrita lá como "genérica de propósito"),
+ * caindo em `hostDaPrefeitura()` para quem não a declara. Função nova em vez
+ * de reordenar `hostDaPrefeitura`, que serve outras quatro telas.
+ */
+export function hostDoAcervoNormativo(cidade: Cidade): string | undefined {
+  const v = (cidade.fontes ?? {})["legislacao_municipal_host"];
+  if (typeof v === "string" && v.startsWith("http")) return v;
+  return hostDaPrefeitura(cidade);
+}
+
+/**
+ * Quem PUBLICA o acervo normativo da cidade, e o nome do sistema de origem.
+ *
+ * A tela de legislação afirmava, em texto fixo, que as normas eram
+ * "publicadas pela Prefeitura" e creditava "Diário Oficial / Dados Abertos".
+ * Isso vale para Betim, BH e São Paulo. Em Araçuaí e Diamantina o acervo é da
+ * CÂMARA — 651 normas no SAPL, 3.148 leis no portal da Casa —, e a frase
+ * passou a ser falsa justamente na página cujo propósito é dizer de onde o
+ * dado veio. Mesma doutrina de `fonteDaCamara()`: rótulo errado sobre número
+ * certo dá credibilidade ao lugar errado.
+ *
+ * Deriva de `fontes.legislacao_fonte`, a mesma chave que o ETL usa para saber
+ * quem é o dono do refresh de `atos_oficiais`.
+ */
+export function orgaoDoAcervoNormativo(cidade: Cidade): {
+  orgao: string;
+  sistema: string;
+} {
+  const fonte = (cidade.fontes ?? {})["legislacao_fonte"];
+  if (typeof fonte === "string" && fonte.startsWith("camara_")) {
+    return { orgao: `Câmara Municipal de ${cidade.nome}`, sistema: "Acervo de normas da Câmara" };
+  }
+  return {
+    orgao: `Prefeitura de ${cidade.nome}`,
+    sistema: `Diário Oficial / Dados Abertos — ${cidade.nome}`,
+  };
+}
+
+/**
+ * De onde veio a lista de vereadores, para o crédito na tela.
+ *
+ * A frase "dados públicos do site oficial da Câmara" era literal e passou a
+ * ser FALSA em Itinga, cuja Câmara não publica dado estruturado: lá os
+ * vereadores vêm do resultado das eleições de 2024 no TSE
+ * (`etl.bd.tse --semear`). Ausência da chave significa "site oficial da
+ * Câmara", que é o caso das cidades que já estavam no ar.
+ */
+export function creditoDosVereadores(cidade: Cidade): string {
+  const v = (cidade.fontes ?? {})["vereadores_fonte"];
+  return v === "tse"
+    ? "resultado das eleições de 2024 no TSE"
+    : "dados públicos do site oficial da Câmara";
+}
+
+/**
  * Nome como o Portal da Transparência federal escreve o ente municipal:
  * maiúsculas e sem acento ("MUNICIPIO DE SAO PAULO"). Normaliza os dois
  * lados da comparação, porque a fonte federal raramente acentua e o nome

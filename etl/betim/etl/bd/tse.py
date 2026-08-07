@@ -41,7 +41,13 @@ import sys
 import unicodedata
 
 from etl.bd.common import bd_query
-from etl.common import ID_MUNICIPIO_DEFAULT, PgAPIError, get_supabase_client
+from etl.common import (
+    ID_MUNICIPIO_DEFAULT,
+    PgAPIError,
+    carregar_municipio,
+    get_supabase_client,
+    upsert_com_colunas_opcionais,
+)
 
 ANO_ELEICAO_DEFAULT = 2024
 
@@ -51,6 +57,24 @@ FROM `basedosdados.br_tse_eleicoes.resultados_candidato` rc
 JOIN `basedosdados.br_tse_eleicoes.candidatos` c
   ON rc.sequencial_candidato = c.sequencial AND rc.ano = c.ano
 WHERE rc.ano = {ano} AND rc.cargo = 'vereador' AND rc.id_municipio = '{id_municipio}'
+"""
+
+# Só os ELEITOS, com o que basta para criar a linha em `vereadores`. Usada
+# apenas por `--semear` (ver `semear()`); a sincronização normal continua
+# casando por nome contra quem o raspador da câmara já trouxe.
+QUERY_ELEITOS = """
+SELECT rc.sequencial_candidato AS id_candidato_tse,
+       c.nome_urna  AS nome_urna,
+       c.nome       AS nome,
+       c.sigla_partido AS partido,
+       rc.votos     AS votos,
+       rc.resultado AS resultado
+FROM `basedosdados.br_tse_eleicoes.resultados_candidato` rc
+JOIN `basedosdados.br_tse_eleicoes.candidatos` c
+  ON rc.sequencial_candidato = c.sequencial AND rc.ano = c.ano
+WHERE rc.ano = {ano} AND rc.cargo = 'vereador' AND rc.id_municipio = '{id_municipio}'
+  AND LOWER(rc.resultado) LIKE 'eleito%'
+ORDER BY rc.votos DESC
 """
 
 QUERY_DOACOES = """
@@ -105,6 +129,140 @@ def _infer_doador_tipo(documento: str | None) -> str | None:
     if len(digits) == 14:
         return "PJ"
     return None
+
+
+def _slug(nome: str) -> str:
+    base = _normalize(nome).lower()
+    limpo = "".join(c if c.isalnum() else "-" for c in base)
+    return "-".join(p for p in limpo.split("-") if p)
+
+
+# Conectivos que o português NÃO capitaliza no meio de um nome próprio.
+# Lista fechada de propósito: qualquer heurística mais esperta erraria em
+# sobrenome legítimo (Costa, Dias, Neves).
+_CONECTIVOS = {"da", "de", "do", "das", "dos", "e", "di", "du", "del", "van", "von", "y"}
+
+
+def _nome_proprio(nome: str) -> str:
+    """Corrige a capitalização dos conectivos vinda do TSE.
+
+    A base do TSE grava o nome de urna com TODA palavra capitalizada —
+    "Bau Da Ceramica", "Zé De Balim", "Pim De Ze De Gordo". O site da própria
+    Câmara de Itinga escreve "Bau da Ceramica". Como este texto é o nome de
+    uma pessoa real numa página pública, vale corrigir; como o risco de
+    "esperteza" é alto, a correção é só sobre `_CONECTIVOS`, nunca sobre a
+    primeira palavra, e não mexe em nada que já esteja em caixa correta.
+    """
+    palavras = " ".join((nome or "").split()).split(" ")
+    saida = []
+    for i, p in enumerate(palavras):
+        if i > 0 and _normalize(p).lower() in _CONECTIVOS:
+            saida.append(p.lower())
+        else:
+            saida.append(p)
+    return " ".join(saida)
+
+
+def semear(id_municipio: str, ano_eleicao: int = ANO_ELEICAO_DEFAULT, forcar: bool = False) -> int:
+    """INSERE em `vereadores` os eleitos do TSE. Só para cidade SEM câmara raspável.
+
+    POR QUE ISTO EXISTE, e por que é opt-in. O `sync()` acima é deliberadamente
+    incapaz de inserir: ele casa por `nome_urna` contra quem o raspador da
+    câmara já trouxe e só ENRIQUECE (votos, doações, bens). Essa escolha está
+    certa para Betim, BH e São Paulo, onde a câmara publica a composição e o
+    TSE é a segunda fonte.
+
+    Só que ela torna o módulo um no-op silencioso numa cidade pequena sem
+    fonte de câmara: `vereadores` fica vazia, `sync()` reporta
+    `matched=0/N` e a página `/vereadores` nasce sem ninguém. É o caso de
+    Itinga-MG (3134004), cuja Câmara roda um CMS sem API, sem módulo de
+    proposições e sem dado estruturado nenhum.
+
+    Aqui o TSE deixa de ser fonte secundária e vira a PRIMÁRIA: nome, nome de
+    urna, partido e votação dos eleitos de 2024 são dado público federal, e
+    valem para qualquer um dos 5.570 municípios. É a saída para toda cidade
+    pequena que entrar depois, não um remendo de Itinga.
+
+    Guardas:
+    - Recusa rodar se a cidade JÁ TEM vereadores, a menos que `--forcar`. Sem
+      isso, semear por cima de um raspador de câmara criaria linhas duplicadas
+      com slug diferente (o TSE escreve "Zé da Silva", a câmara "Jose da
+      Silva") e a Casa apareceria com o dobro de cadeiras.
+    - Confere a contagem contra `municipios.fontes.camara_cadeiras`.
+    - `ativo`/`situacao_mandato` vão juntos: a migration 0039 tem CHECK de
+      coerência entre os dois e gravar um sem o outro derruba a rodada.
+
+    Devolve quantos vereadores foram gravados.
+    """
+    cidade = carregar_municipio(id_municipio)
+    client = get_supabase_client()
+
+    existentes = (
+        client.table("vereadores").select("id").eq("id_municipio", id_municipio).execute().data or []
+    )
+    if existentes and not forcar:
+        print(
+            f"[etl.bd.tse] {cidade['nome']} já tem {len(existentes)} vereador(es) — NÃO semeio "
+            "por cima (slugs do TSE e da câmara divergem e a Casa ficaria com o dobro de "
+            "cadeiras). Use --forcar se a intenção é mesmo substituir."
+        )
+        return 0
+
+    eleitos = bd_query(QUERY_ELEITOS.format(id_municipio=id_municipio, ano=ano_eleicao))
+    if not eleitos:
+        raise RuntimeError(
+            f"TSE não devolveu nenhum eleito para vereador em {id_municipio} no ano {ano_eleicao}. "
+            "Confira o código IBGE e o ano antes de concluir que a cidade não tem câmara."
+        )
+
+    legis = (cidade.get("fontes") or {}).get("legislatura") or {}
+    inicio = f"{legis['inicio']}-01-01" if legis.get("inicio") else None
+    fim = f"{legis['fim']}-12-31" if legis.get("fim") else None
+
+    linhas, usados = [], set()
+    for e in eleitos:
+        nome_urna = _nome_proprio(e.get("nome_urna") or "")
+        if not nome_urna:
+            continue
+        slug = _slug(nome_urna)
+        if slug in usados:
+            n = 2
+            while f"{slug}-{n}" in usados:
+                n += 1
+            slug = f"{slug}-{n}"
+        usados.add(slug)
+        linhas.append(
+            {
+                "id_municipio": id_municipio,
+                "slug": slug,
+                "nome": _nome_proprio(e.get("nome") or "") or nome_urna,
+                "nome_urna": nome_urna,
+                "partido": (e.get("partido") or "").strip() or None,
+                "votos_eleicao": e.get("votos"),
+                "ano_eleicao": ano_eleicao,
+                "id_candidato_tse": str(e.get("id_candidato_tse")),
+                "mandato_inicio": inicio,
+                "mandato_fim": fim,
+                "ativo": True,
+                "situacao_mandato": "em_exercicio",
+            }
+        )
+
+    cadeiras = (cidade.get("fontes") or {}).get("camara_cadeiras")
+    if isinstance(cadeiras, int) and len(linhas) != cadeiras:
+        print(
+            f"[etl.bd.tse] AVISO: TSE devolveu {len(linhas)} eleito(s) mas `camara_cadeiras` "
+            f"diz {cadeiras}. Confira antes de confiar na composição da Casa."
+        )
+
+    upsert_com_colunas_opcionais(
+        client, "vereadores", linhas, ["situacao_mandato"], on_conflict="id_municipio,slug"
+    )
+    print(
+        f"[etl.bd.tse] semeados {len(linhas)} vereador(es) de {cidade['nome']} "
+        f"a partir do resultado do TSE de {ano_eleicao}."
+    )
+    return len(linhas)
 
 
 def sync(id_municipio: str, ano_eleicao: int = ANO_ELEICAO_DEFAULT, incluir_doacoes: bool = True):
@@ -231,9 +389,22 @@ if __name__ == "__main__":
         action="store_true",
         help="pula doacoes_campanha (evita duplicar ao resincronizar só pra trazer bens_candidato)",
     )
+    parser.add_argument(
+        "--semear",
+        action="store_true",
+        help="INSERE os eleitos do TSE em `vereadores` — só para cidade sem câmara raspável",
+    )
+    parser.add_argument(
+        "--forcar",
+        action="store_true",
+        help="com --semear, semeia mesmo que a cidade já tenha vereadores",
+    )
     args = parser.parse_args()
     try:
-        sync(args.id_municipio, args.ano_eleicao, incluir_doacoes=not args.sem_doacoes)
+        if args.semear:
+            semear(args.id_municipio, args.ano_eleicao, forcar=args.forcar)
+        else:
+            sync(args.id_municipio, args.ano_eleicao, incluir_doacoes=not args.sem_doacoes)
     except RuntimeError as e:
         print(f"[etl.bd.tse] ABORT: {e}", file=sys.stderr)
         sys.exit(1)
