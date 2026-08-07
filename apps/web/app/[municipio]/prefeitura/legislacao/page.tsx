@@ -8,11 +8,14 @@ import { labelDoDireito } from "@/lib/congresso/rubrica";
 import { percentualAnalisado } from "@/lib/betim/legislacao-garantista";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
-import { hostDaPrefeitura } from "@/lib/db/queries/municipios";
+import { hostDoAcervoNormativo, orgaoDoAcervoNormativo } from "@/lib/db/queries/municipios";
 
+// "Prefeitura de X" era literal e passou a mentir: em Araçuaí e Diamantina o
+// acervo é da Câmara. O órgão sai de `fontes.legislacao_fonte`.
 export const generateMetadata = metadataDaCidade(
-  (c) => `Legislação — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
-  (c) => `Leis, decretos, resoluções e instruções normativas da Prefeitura de ${c.nome}, com filtro por categoria, ano e área temática.`
+  (c) => `Legislação — ${orgaoDoAcervoNormativo(c).orgao} — ${nomePortal(c)}`,
+  (c) =>
+    `Leis, decretos, resoluções e instruções normativas da ${orgaoDoAcervoNormativo(c).orgao}, com filtro por categoria, ano e área temática.`
 );
 
 interface LegislacaoPageProps {
@@ -28,7 +31,10 @@ export default async function LegislacaoPage({
   // Os dois cards creditavam o portal de dados abertos de BETIM. Em Belo
   // Horizonte e São Paulo os atos vêm do Diário Oficial (API do DOM), que é
   // outro sistema — o crédito estava errado na cidade E na natureza da fonte.
-  const fonteLegislacao = hostDaPrefeitura(cidade);
+  // Em Araçuaí e Diamantina o acervo nem sequer é do Executivo: é da CÂMARA
+  // (SAPL e portal da Casa), então nem o `hostDaPrefeitura` serve.
+  const fonteLegislacao = hostDoAcervoNormativo(cidade);
+  const acervo = orgaoDoAcervoNormativo(cidade);
   const params = await searchParams;
   const {
     atos,
@@ -81,8 +87,8 @@ export default async function LegislacaoPage({
         Legislação municipal
       </h1>
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
-        Leis, decretos, resoluções e instruções normativas publicadas pela
-        Prefeitura de {cidade.nome} — com a ementa de cada norma, filtro por categoria,
+        Leis, decretos, resoluções e instruções normativas publicadas pela{" "}
+        {acervo.orgao} — com a ementa de cada norma, filtro por categoria,
         ano e área.
       </p>
 
@@ -96,7 +102,7 @@ export default async function LegislacaoPage({
             <DataCard
               title="Normas publicadas"
               source={{
-                label: `Diário Oficial / Dados Abertos — ${cidade.nome}`,
+                label: acervo.sistema,
                 url: fonteLegislacao,
               }}
             >
@@ -160,9 +166,9 @@ export default async function LegislacaoPage({
           {temas.length > 0 && (
             <div className="mb-6">
               <DataCard
-                title="Áreas legisladas — sobre o que a Prefeitura normatiza"
+                title={`Áreas legisladas — sobre o que a ${acervo.orgao.split(" de ")[0]} normatiza`}
                 source={{
-                  label: `Diário Oficial / Dados Abertos — ${cidade.nome}`,
+                  label: acervo.sistema,
                   url: fonteLegislacao,
                 }}
               >

@@ -15,7 +15,12 @@ import { getTemasCamara } from "@/lib/betim/temas";
 import { getGastoGabineteDaCasa, getVerbasAnalytics } from "@/lib/betim/verbas";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
-import { rotuloLegislatura, type Cidade } from "@/lib/db/queries/municipios";
+import {
+  creditoDosVereadores,
+  rotuloLegislatura,
+  temFonte,
+  type Cidade,
+} from "@/lib/db/queries/municipios";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Câmara Municipal — ${nomePortal(c)}`,
@@ -95,13 +100,22 @@ export default async function CamaraPage({
         {/* "Os 23 vereadores da 20ª Legislatura" era Betim escrito à mão:
             BH tem 41 e São Paulo tem 55, na 19ª legislatura. A contagem sai
             do próprio dado e o rótulo, do banco. */}
+        {/* O crédito da fonte também não pode ser literal: em Itinga a Câmara
+            não publica dado estruturado e os vereadores vêm do resultado do
+            TSE. Afirmar "site oficial da Câmara" ali seria falso justamente na
+            frase que existe para dizer de onde o dado veio. */}
         {rows.length > 0 ? `Os ${rows.length} vereadores` : "Os vereadores"} da{" "}
-        {rotuloLegislatura(cidade)}, dados públicos do site oficial da Câmara.
+        {rotuloLegislatura(cidade)}, {creditoDosVereadores(cidade)}.
       </p>
       <p className="mb-8 flex flex-wrap gap-x-6 gap-y-1">
-        <Link href="/camara/proposicoes" className="text-sm font-medium text-accent hover:underline">
-          Ver todas as proposições →
-        </Link>
+        {/* A rota de proposições dá 404 em câmara que não publica produção
+            legislativa (ver `camara/proposicoes/page.tsx`), então o link
+            desaparece junto — link para 404 é pior que link a menos. */}
+        {temFonte(cidade, "camara_proposicoes") && (
+          <Link href="/camara/proposicoes" className="text-sm font-medium text-accent hover:underline">
+            Ver todas as proposições →
+          </Link>
+        )}
         <Link href="/camara/comissoes" className="text-sm font-medium text-accent hover:underline">
           Ver composição das comissões →
         </Link>
