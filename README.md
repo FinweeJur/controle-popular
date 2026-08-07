@@ -1,5 +1,7 @@
 # Controle Popular — monorepo
 
+> Read this in English: [`README.en.md`](README.en.md).
+
 Portal independente de transparência. Três eixos, um app:
 
 | Zona | URL | O que é |
