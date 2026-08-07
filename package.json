@@ -1,6 +1,8 @@
 {
   "name": "controle-popular",
   "private": true,
+  "license": "AGPL-3.0-or-later",
+  "repository": "https://github.com/FinweeJur/controle-popular",
   "workspaces": ["apps/*"],
   "scripts": {
     "dev": "npm run dev -w @cp/web",
