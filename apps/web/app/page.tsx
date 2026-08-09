@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ZONAS } from "@/lib/zonas";
+import { ZONAS_PUBLICADAS } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
 
 /**
@@ -33,10 +33,13 @@ export const metadata: Metadata = {
     "Transparência do orçamento e dos contratos de Betim-MG, monitoramento do que o Congresso Nacional decide sobre direitos, e quem ocupa cada cadeira do Judiciário. Portal independente.",
 };
 
-// A cópia das três frentes mora em `lib/zonas.ts`, porque o bloco de
-// remissão no pé de cada zona (`app/components/OutrasFrentes.tsx`) descreve
-// as mesmas frentes — duplicar aqui garantiria deriva entre as duas telas.
-const SECOES = ZONAS;
+// A cópia das frentes mora em `lib/zonas.ts`, porque o bloco de remissão no
+// pé de cada zona (`app/components/OutrasFrentes.tsx`) descreve as mesmas
+// frentes — duplicar aqui garantiria deriva entre as duas telas.
+//
+// `ZONAS_PUBLICADAS`, não `ZONAS`: zona em construção existe no código e é
+// alcançável por URL direta, mas não se anuncia na home antes de ter dado.
+const SECOES = ZONAS_PUBLICADAS;
 
 export default async function Hub() {
   const cidades = await listarCidades();

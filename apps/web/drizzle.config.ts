@@ -15,7 +15,7 @@ export default defineConfig({
   dialect: "postgresql",
   out: "./lib/db",
   schema: "./lib/db/schema.ts",
-  schemaFilter: ["public", "congresso", "judiciario"],
+  schemaFilter: ["public", "congresso", "judiciario", "ambiental"],
   introspect: { casing: "preserve" },
   dbCredentials: { url: process.env.DATABASE_URL! },
 });

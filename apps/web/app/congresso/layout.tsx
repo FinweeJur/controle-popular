@@ -46,19 +46,24 @@ export default function CongressoLayout({
               </Link>
             ))}
           </nav>
-          {/* `flex-wrap` acrescentado junto com o botão de Busca: mesma
-              contagem de itens (5) que a zona /judiciario já tinha, cujo
-              comentário registra que essa div estoura o viewport de
-              celular (~560px de conteúdo em 375px de tela) sem quebra de
-              linha. Estava faltando aqui — as três zonas devem se
-              comportar igual. */}
+          {/* flex-wrap: esta div é gêmea da do /judiciario, que já carrega
+              a nota de por que ele é obrigatório — os itens medem ~560px
+              contra um viewport de celular de 375px, e sem quebrar linha
+              o navegador comprime em vez de estourar, o que se lê como
+              "navbar espremida" e não como bug. Aqui ele faltava até o
+              scaffold da 4ª zona (/ambiental) chegar, que é quando esta
+              barra ganhou o botão de Busca.
+
+              Busca unificada e pontes para as zonas irmãs (mesmo motivo
+              do <a> acima). Precisa apontar para AS DUAS: o /judiciario
+              faltava aqui, enquanto as outras duas zonas já se linkavam
+              mutuamente — era o único vértice quebrado do triângulo.
+              Mesmo rótulo e estilo que as irmãs usam, convenção do
+              ecossistema. Ambiental não entra aqui: é `publicada: false`
+              em `lib/zonas.ts`, a mesma flag que tira a 4ª zona de
+              `OutrasFrentes.tsx` e da home até alguém virá-la de
+              propósito — esta barra segue a mesma régua. */}
           <div className="flex flex-wrap items-center gap-2">
-            {/* Busca unificada e pontes para as zonas irmãs (mesmo motivo
-                do <a> acima). Precisa apontar para AS DUAS: o /judiciario
-                faltava aqui, enquanto as outras duas zonas já se
-                linkavam mutuamente — era o único vértice quebrado do
-                triângulo. Mesmo rótulo e estilo que as irmãs usam,
-                convenção do ecossistema. */}
             <a
               href="/busca"
               className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"

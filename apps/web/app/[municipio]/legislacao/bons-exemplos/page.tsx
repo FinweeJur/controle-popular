@@ -32,7 +32,7 @@ export default async function BonsExemplosLegislacao({
         <Link href="/" className="hover:text-primary">
           Início
         </Link>{" "}
-        · <Link href="/prefeitura/legislacao" className="hover:text-primary">
+        · <Link href="/camara/legislacao" className="hover:text-primary">
           Legislação
         </Link>{" "}
         · <span className="text-text">Bons exemplos</span>

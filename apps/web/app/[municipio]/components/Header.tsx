@@ -16,17 +16,22 @@ const PREFEITURA_SUB = [
   { href: "/prefeitura/servidores", nome: "Servidores" },
   { href: "/prefeitura/despesas", nome: "Despesas" },
   { href: "/prefeitura/obras", nome: "Obras" },
-  { href: "/prefeitura/legislacao", nome: "Legislação" },
-  // Cobrem lei sancionada E projeto em tramitação — por isso não vivem sob
-  // /prefeitura, mas o ponto de entrada mais descoberto continua sendo
-  // aqui, ao lado da lista de normas que os alimenta.
-  { href: "/legislacao/alertas", nome: "Legislação · Alertas" },
-  { href: "/legislacao/bons-exemplos", nome: "Legislação · Bons exemplos" },
 ];
 const CAMARA_SUB = [
   { href: "/camara", nome: "Vereadores" },
   { href: "/camara/proposicoes", nome: "Proposições" },
   { href: "/camara/comissoes", nome: "Comissões" },
+  // A Legislação saiu de /prefeitura em 2026-08-07. Em Araçuaí e Diamantina o
+  // acervo de normas é da CÂMARA (SAPL e portal da Casa), e a URL era o único
+  // lugar onde isso não dava para corrigir com texto: o `<h1>` já dizia o
+  // órgão certo desde `orgaoDoAcervoNormativo`, mas o endereço dizia
+  // "prefeitura". Ver a página-ponte em `prefeitura/legislacao/page.tsx`.
+  { href: "/camara/legislacao", nome: "Legislação" },
+  // Cobrem lei sancionada E projeto em tramitação — por isso não vivem sob
+  // /camara, mas o ponto de entrada mais descoberto continua sendo aqui, ao
+  // lado da lista de normas que os alimenta.
+  { href: "/legislacao/alertas", nome: "Legislação · Alertas" },
+  { href: "/legislacao/bons-exemplos", nome: "Legislação · Bons exemplos" },
 ];
 const NAV_LINKS_DEPOIS_DADOS = [
   { label: "Assistente", href: "/assistente" },

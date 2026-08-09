@@ -26,6 +26,14 @@ import { temFonte, type Cidade } from "@/lib/db/queries/municipios";
  * URL antiga para preservar; nas outras cidades a rota simplesmente não
  * existe (404), em vez de virar uma segunda URL viva para o mesmo conteúdo
  * — que é exatamente o conteúdo duplicado que o canonical evita.
+ *
+ * `fonte={null}` desliga esse gate, e existe para o caso oposto: uma rota
+ * que existiu em TODAS as cidades e mudou de lugar para todas de uma vez
+ * (`/prefeitura/legislacao` -> `/camara/legislacao`, 2026-08-07). Ali o gate
+ * daria 404 justamente onde a URL antiga está indexada. É `null` explícito, e
+ * não um default, porque esquecer de passar a chave tem de continuar sendo
+ * erro de compilação em vez de uma ponte aberta em cidade que nunca teve a
+ * URL antiga.
  */
 export default function PaginaPonte({
   cidade,
@@ -37,9 +45,10 @@ export default function PaginaPonte({
   /** Caminho novo, relativo à cidade — ex. `/zap`. */
   destino: string;
   titulo: string;
-  fonte?: string;
+  /** Chave de `municipios.fontes` que libera a ponte; `null` = toda cidade. */
+  fonte?: string | null;
 }) {
-  if (!temFonte(cidade, fonte)) notFound();
+  if (fonte !== null && !temFonte(cidade, fonte)) notFound();
 
   const absoluto = `/${cidade.slug}${destino}`;
 

@@ -194,7 +194,7 @@ export interface DireitoContagem {
 
 /**
  * Quantos ATOS analisados tocam cada direito — alimenta o filtro por
- * direito de `/prefeitura/legislacao`. Só conta `tipo_objeto = 'ato'`
+ * direito de `/camara/legislacao`. Só conta `tipo_objeto = 'ato'`
  * porque aquela página lista só atos oficiais (proposições vivem em
  * `/camara/proposicoes`, sem este filtro).
  */
@@ -233,7 +233,7 @@ export interface AnaliseAto {
 /**
  * Análise (quando existe) de um conjunto de atos, indexada por `ato_id`.
  *
- * Usada em `/prefeitura/legislacao` para casar cada linha da lista com sua
+ * Usada em `/camara/legislacao` para casar cada linha da lista com sua
  * análise: ato ausente do mapa é ato SEM análise — a página não deve
  * escrever "neutro" nesse caso, só não mostrar nada (ver regra de
  * honestidade no handoff do projeto).

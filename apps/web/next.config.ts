@@ -106,6 +106,23 @@ const nextConfig: NextConfig = {
             // é a ÚNICA URL pública que mudou na unificação — as outras 77
             // continuam idênticas.
             { source: "/betim/hub", destination: "/", permanent: true },
+            // A Legislação saiu de `/prefeitura` em 2026-08-07: o acervo é da
+            // CÂMARA em Araçuaí e Diamantina, e a URL era o único lugar onde
+            // isso não dava para corrigir com texto.
+            //
+            // Este redirect é o que **preserva o query string** — a lista é
+            // filtrada por `?categoria=&tema=&ano=&direito=`, e um link
+            // compartilhado com filtro perderia o filtro se o salto fosse só
+            // pela página-ponte.
+            //
+            // A página-ponte em `app/[municipio]/prefeitura/legislacao/` NÃO é
+            // redundante: no alvo `output: 'export'` esta função nem existe, e
+            // lá a ponte é o único redirecionamento possível.
+            {
+              source: "/:municipio/prefeitura/legislacao",
+              destination: "/:municipio/camara/legislacao",
+              permanent: true,
+            },
           ];
         },
       }),
