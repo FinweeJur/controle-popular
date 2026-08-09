@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "vitest run",
     "cf:build": "opennextjs-cloudflare build",
     "//cf:preview": "populateCache NAO eh opcional: sem ele o dir cdn-cgi/_next_cache nao existe nos assets, e toda rota SSG sob segmento dinamico com dynamicParams=false devolve 404/NoFallbackError. `build` sozinho nao popula.",
     "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare populateCache local && opennextjs-cloudflare preview",
@@ -37,6 +38,7 @@
     "tailwindcss": "^4",
     "tsx": "^4.23.1",
     "typescript": "^5",
+    "vitest": "^4.1.10",
     "wrangler": "^4.115.0"
   }
 }
