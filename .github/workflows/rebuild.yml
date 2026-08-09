@@ -39,11 +39,30 @@ name: Rebuild e deploy do site
 #     as três cidades do Jequitinhonha o build gera **715-718**. Egress por
 #     build escalou junto e ninguém reestimou.
 #
-# Daí as duas travas abaixo. Elas não substituem a cadência semanal:
+# Daí as travas abaixo. Elas não substituem a cadência semanal:
 #   1. PRÉ-VOO — confere credencial e banco em segundos, antes do build.
 #      Falhar aqui custa segundos; falhar no meio do prerender custa o mês.
 #   2. IMPRESSÃO DIGITAL — se o commit e o estado do banco são os mesmos do
 #      último deploy, o HTML seria idêntico e o build é pulado inteiro.
+#   3. ORÇAMENTO (2026-08-09) — lê `data_transfer_bytes` do Neon e RECUSA o
+#      build que não cabe no que resta do mês. É a trava que faltava: as duas
+#      primeiras respondem "o banco atende?" e "mudou alguma coisa?", e
+#      nenhuma das duas responde **"ainda cabe?"**. Um dispatch com o egress
+#      em 4,9 GB passa no `select 1` sem hesitar — o banco só devolve 402 no
+#      instante em que a cota estoura. Foi por esse buraco que passaram os 8
+#      dispatches manuais de 2026-08-07.
+#
+# E o mesmo passo MEDE o custo real do build (leitura antes e depois), porque
+# o "~0,4 GB por build" citado acima nunca foi medido: veio de dividir o
+# consumo da semana pelo número de builds, com 6 deles interrompidos no meio.
+# Depois de duas ou três execuções limpas o número vira dado, e aí a cadência
+# pode ser discutida com evidência em vez de estimativa.
+#
+# AINDA NÃO MEDIDO, e é a próxima suspeita: `staticGenerationRetryCount: 3`
+# (next.config.ts) faz cada página que falha ser lida até 3 vezes. Num build
+# que morre em 536/715, isso pode ter multiplicado o egress das páginas com
+# erro. Baixar o retry sem medir trocaria custo por build instável — o passo
+# de medição acima é o que permite decidir isso com número.
 #
 # Comprimir não é alternativa: a Neon mede no proxy, antes de qualquer
 # compressão do cliente (docs "Reduce network transfer costs"). O único
@@ -92,6 +111,11 @@ jobs:
       BETTER_AUTH_URL: ${{ secrets.BETTER_AUTH_URL }}
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      # Só para a trava de orçamento. Mesmos secrets que o canário já usa; se
+      # faltarem, a trava avisa e deixa passar (ver o script) — ela protege
+      # gasto, não é portão de segurança.
+      NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+      NEON_PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
     steps:
       # Guarda instantânea, ANTES até do `npm ci`: secret que falta é erro de
       # configuração e não merece 40 s de instalação para ser descoberto.
@@ -178,6 +202,16 @@ jobs:
             } >> "$GITHUB_STEP_SUMMARY"
           fi
 
+      # Trava 3. O pré-voo responde "o banco atende?"; esta responde "ainda
+      # cabe?". São perguntas diferentes: um dispatch com o egress em 4,9 GB
+      # passa no `select 1` sem hesitar, porque o banco só vira 402 no
+      # instante em que a cota estoura. Roda depois da decisão para não gastar
+      # uma chamada de API em build que seria pulado de qualquer jeito.
+      - name: Orçamento de egress
+        id: orcamento
+        if: steps.decisao.outputs.construir == 'sim'
+        run: npx tsx scripts/orcamento-egress.mts --antes
+
       # `cf:deploy` = build + `populateCache remote` + deploy. O
       # populateCache NÃO é opcional: sem ele o dir
       # `assets/cdn-cgi/_next_cache` não existe e toda rota SSG sob segmento
@@ -185,7 +219,20 @@ jobs:
       # devolve 404/NoFallbackError. Ver open-next.config.ts.
       - name: Build, popular cache e publicar
         if: steps.decisao.outputs.construir == 'sim'
+        # Teto próprio, menor que o do job: o modo de falha caro é o build que
+        # trava no meio do prerender e segue pagando egress até alguém notar.
+        # 22 min deixam folga sobre os poucos minutos que ele leva e ainda
+        # sobram 8 do orçamento do job para o passo de medição rodar.
+        timeout-minutes: 22
         run: npm run cf:deploy
+
+      # Roda mesmo se o build falhou (`always()` + guarda de decisão): build
+      # interrompido no meio do prerender é justamente o caso caro, e saber
+      # quanto ele custou é o dado que faltava em 2026-08-07 — os 6 builds
+      # perdidos daquela semana nunca foram medidos, só inferidos.
+      - name: Quanto este build custou de egress
+        if: always() && steps.decisao.outputs.construir == 'sim'
+        run: npx tsx scripts/orcamento-egress.mts --depois "${{ steps.orcamento.outputs.bytes_antes }}"
 
       # O marcador só é gravado DEPOIS de um deploy que deu certo. Build que
       # falhou no meio não pode marcar a impressão como publicada — senão o
