@@ -88,6 +88,10 @@ export default async function EconomiaPage({
         <Link href="/prefeitura" className="font-medium text-accent hover:underline">
           receitas e despesas
         </Link>
+        . Município com atividade minerária? Veja também os{" "}
+        <Link href="/mineracao" className="font-medium text-accent hover:underline">
+          royalties da mineração (CFEM)
+        </Link>
         .
       </p>
     </main>

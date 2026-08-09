@@ -1170,3 +1170,88 @@ export async function votosPorRotuloDoParlamentar(parlamentarId: string) {
     .where(eq(votosInCongresso.parlamentar_id, parlamentarId))
     .groupBy(analisesInCongresso.rotulo, votosInCongresso.voto);
 }
+
+function condicoesDeVotacoes(f: { ano?: number; q?: string }) {
+  const cond = [];
+  if (f.ano) cond.push(sql`extract(year from ${votacoesInCongresso.data}) = ${f.ano}`);
+  if (f.q) cond.push(sql`${votacoesInCongresso.descricao} ilike ${`%${f.q}%`}`);
+  return cond.length ? and(...cond) : undefined;
+}
+
+/**
+ * Página de votações do Congresso, com o total do conjunto filtrado na
+ * mesma consulta — mesmo padrão de `paginaDeProposicoes`.
+ *
+ * `votacoesInCongresso`/`votosInCongresso` alimentam `votosPorRotuloDoParlamentar`
+ * (coerência do ranking) desde sempre, mas nenhuma tela mostra a votação
+ * INDIVIDUAL — 2.754 votações e ~513 parlamentares, e "quem votou o quê"
+ * nunca apareceu em lugar nenhum do eixo Congresso. Ver `votosDeVotacoes`
+ * para o voto de cada parlamentar.
+ */
+export async function votacoesPaginadas(
+  filtros: { ano?: number; q?: string; pagina?: number; porPagina?: number } = {}
+) {
+  const db = getDb();
+  if (!db) return null;
+  const porPagina = filtros.porPagina ?? 25;
+  const pagina = Math.max(1, filtros.pagina ?? 1);
+  return db
+    .select({
+      id: votacoesInCongresso.id,
+      casa_id: votacoesInCongresso.casa_id,
+      data: votacoesInCongresso.data,
+      sigla_orgao: votacoesInCongresso.sigla_orgao,
+      descricao: votacoesInCongresso.descricao,
+      aprovacao: votacoesInCongresso.aprovacao,
+      total: sql<number>`(count(*) over ())::int`,
+    })
+    .from(votacoesInCongresso)
+    .where(condicoesDeVotacoes(filtros))
+    // Desempate por id: mesmo motivo de `paginaDeProposicoes` — muitas
+    // votações compartilham a mesma data.
+    .orderBy(desc(votacoesInCongresso.data), asc(votacoesInCongresso.id))
+    .limit(porPagina)
+    .offset((pagina - 1) * porPagina);
+}
+
+/** Totais do conjunto filtrado quando a página não tem nenhuma linha — mesmo motivo de `totaisDeContratos` (eixo Cidades). */
+export async function totaisDeVotacoes(filtros: { ano?: number; q?: string } = {}) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({ total: sql<number>`count(*)::int` })
+    .from(votacoesInCongresso)
+    .where(condicoesDeVotacoes(filtros));
+  return linha ?? { total: 0 };
+}
+
+/**
+ * O voto de cada parlamentar nas votações indicadas — SEGUNDA consulta,
+ * batida sobre os ids de UMA página. Mesmo padrão de `autoriaDeProposicoes`:
+ * um join direto em `votacoesPaginadas` multiplicaria cada votação em até
+ * ~513 linhas (uma por parlamentar) e quebraria o `count(*) over ()`.
+ *
+ * `parlamentar_id` é `not null` aqui — diferente do eixo Cidades, o
+ * Congresso não tem o caso do `<VotoContrario>` sem identificador — então o
+ * join é INNER.
+ */
+export async function votosDeVotacoes(votacaoIds: string[]) {
+  const db = getDb();
+  if (!db || votacaoIds.length === 0) return null;
+  return db
+    .select({
+      votacao_id: votosInCongresso.votacao_id,
+      parlamentar_id: votosInCongresso.parlamentar_id,
+      voto: votosInCongresso.voto,
+      nome: parlamentaresInCongresso.nome,
+      nome_eleitoral: parlamentaresInCongresso.nome_eleitoral,
+      partido: parlamentaresInCongresso.partido,
+      uf: parlamentaresInCongresso.uf,
+    })
+    .from(votosInCongresso)
+    .innerJoin(
+      parlamentaresInCongresso,
+      eq(parlamentaresInCongresso.id, votosInCongresso.parlamentar_id)
+    )
+    .where(inArray(votosInCongresso.votacao_id, votacaoIds));
+}

@@ -11,6 +11,7 @@ import {
   BadgeDollarSign,
   Network,
   LandPlot,
+  Pickaxe,
   type LucideIcon,
 } from "lucide-react";
 
@@ -38,6 +39,7 @@ export const paginasDados = (cidade: {
   { href: "/social", nome: "Assistência Social", desc: "Bolsa Família e outros benefícios", icon: Users },
   { href: "/economia", nome: "Economia", desc: "PIB, salário médio e empregos", icon: TrendingUp },
   { href: "/agro", nome: "Agro", desc: "Produção agropecuária", icon: Wheat },
+  { href: "/mineracao", nome: "Mineração", desc: "Royalties da mineração (CFEM/ANM)", icon: Pickaxe },
   { href: "/seguranca", nome: "Segurança", desc: "Ocorrências e criminalidade", icon: ShieldAlert },
   { href: "/infraestrutura", nome: "Infraestrutura", desc: "Água e esgoto", icon: Construction },
   { href: "/meio-ambiente", nome: "Meio Ambiente", desc: "Indicadores ambientais", icon: Trees },

@@ -26,6 +26,28 @@ name: ETL betim
 # taxa de pobreza (PNUD/Atlas do Desenvolvimento Humano) — destravam os 3
 # cards "em breve" que sobravam na Home.
 #
+# 2026-08-09: mais 5 módulos que já existiam no repo e nunca tinham sido
+# adicionados aqui — votação nominal da Câmara (+ o elo com proposições e a
+# classificação de baixo teor, que dependem de proposições já coletadas),
+# comércios essenciais (OSM) e a auditoria do Rio Paraopeba (FGV). Os 5
+# entram SÓ no `workflow_dispatch` por enquanto (sem `|| github.event.schedule
+# == ...`), de propósito: a Neon está em HTTP 402 (cota de egress estourada)
+# até 2026-09-01, e a causa raiz foi carga automática demais, não de menos —
+# não faz sentido destravar cron novo no meio do bloqueio. `votacoes_betim`
+# tem um motivo a mais: RE-VARRE as ~929 matérias da legislatura inteira a
+# cada rodada (sem incremental, ver a docstring do módulo) — rodar isso toda
+# semana sem medir primeiro quanto tempo/tráfego custa seria repetir o erro
+# que causou o bloqueio. Ativar depois de 01/09: mover cada passo pro mesmo
+# `if` dos vizinhos (semanal pros 4 primeiros, mensal pro FGV), depois de
+# rodar uma vez manual e medir.
+#
+# `etl.apis.anm_cfem` (royalties CFEM/ANM) NÃO entra aqui de propósito: Betim
+# não tem mineração relevante (ver a migration 0044) — quem precisa dele é
+# Araçuaí/Itinga/Diamantina, já agendados em `etl-mg-interior.yml`.
+# `etl.apis.brasilapi` também fica de fora: a própria docstring do módulo
+# proíbe uso em varredura/cron (termos da BrasilAPI vetam "crawling
+# automatizado") — é enriquecimento pontual, manual, com teto.
+#
 # workflow_dispatch runs every step below regardless of schedule, for manual
 # backfills/testing.
 on:
@@ -132,6 +154,28 @@ jobs:
         continue-on-error: true
         run: python -m etl.camaras.comissoes --id-municipio $ID_MUNICIPIO
 
+      # ── Passos novos 2026-08-09, só workflow_dispatch (ver o comentário no
+      #    topo do arquivo) ────────────────────────────────────────────────
+      - name: 'Câmara — votação nominal (manual só, ver nota 2026-08-09)'
+        if: github.event_name == 'workflow_dispatch'
+        run: python -m etl.camaras.votacoes_betim --id-municipio $ID_MUNICIPIO
+
+      - name: 'Câmara — ligar votações às proposições (manual só, ver nota 2026-08-09)'
+        # É REPARADOR (só lê `materia` e escreve `proposicao_id`, não fala com
+        # fonte externa) — roda depois de câmara + votação nominal acima.
+        if: github.event_name == 'workflow_dispatch'
+        run: python -m etl.camaras.ligar_votacoes --id-municipio $ID_MUNICIPIO
+
+      - name: 'Proposições — baixo teor normativo (manual só, ver nota 2026-08-09)'
+        # Idempotente (reclassifica a partir da ementa já no banco); depende
+        # de `camaras.betim` já ter rodado no mesmo job, acima.
+        if: github.event_name == 'workflow_dispatch'
+        run: python -m etl.teor_backfill --id-municipio $ID_MUNICIPIO
+
+      - name: 'Comércios essenciais — supermercados e farmácias (OSM) (manual só, ver nota 2026-08-09)'
+        if: github.event_name == 'workflow_dispatch'
+        run: python -m etl.apis.osm_comercios --id-municipio $ID_MUNICIPIO
+
       - name: 'Convênios federais / emendas (weekly)'
         if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 9 * * 1'
         run: python -m etl.apis.transparencia_gov --id-municipio $ID_MUNICIPIO
@@ -203,6 +247,13 @@ jobs:
       - name: 'BD DENATRAN — frota de veículos (monthly)'
         if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
         run: python -m etl.bd.frota --id-municipio $ID_MUNICIPIO
+
+      - name: 'Auditoria Rio Paraopeba — FGV (manual só, ver nota 2026-08-09)'
+        # Planilha mensal (geral-MM-AAAA.xlsx); mensal é a cadência certa da
+        # própria fonte, não um teto arbitrário. Só workflow_dispatch por
+        # enquanto — mesmo motivo dos passos de câmara acima.
+        if: github.event_name == 'workflow_dispatch'
+        run: python -m etl.apis.fgv_paraopeba --id-municipio $ID_MUNICIPIO
 
       # TODO once etl.apis.almg exists (ALMG state amendments): monthly step here
       # NOTE: etl.bd.tse runs once per electoral term, not on a recurring cron —

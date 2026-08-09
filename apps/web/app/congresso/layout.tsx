@@ -18,6 +18,7 @@ const NAV = [
   { href: "/alertas", label: "Alertas" },
   { href: "/bons-exemplos", label: "Bons exemplos" },
   { href: "/proposicoes", label: "Proposições" },
+  { href: "/votacoes", label: "Votações" },
   { href: "/parlamentares", label: "Parlamentares" },
   { href: "/agenda", label: "Agenda" },
   { href: "/comissoes", label: "Comissões" },
