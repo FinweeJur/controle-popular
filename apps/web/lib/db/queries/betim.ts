@@ -41,6 +41,7 @@ import {
   fornecedores,
   grupos_economicos,
   indicadores,
+  licitacoes,
   noticias,
   nota_transparencia,
   obras,
@@ -50,6 +51,8 @@ import {
   producao_agropecuaria,
   proposicoes,
   receitas,
+  royalties_cfem,
+  royalties_cfem_empresas,
   saude_estabelecimentos,
   saude_internacoes,
   mortalidade,
@@ -2627,4 +2630,266 @@ export async function gastosAtipicos(
      limit ${limite}
   `);
   return linhas.rows ?? [];
+}
+
+/**
+ * Royalties CFEM por (ano, mês, substância) — bruto, sem agregação. A
+ * composição (`lib/betim/royaltiesCfem.ts`) decide o ano mais recente e
+ * agrega por ano/substância no JS, no mesmo padrão de `getAgroData` sobre
+ * `producaoAgropecuaria`: a série inteira de uma cidade (poucas centenas de
+ * linhas desde 2004) não justifica uma segunda ida ao banco só para achar o
+ * ano mais recente.
+ *
+ * NUNCA some `valor` entre municípios — ver a migration 0044 e a docstring
+ * de `etl/betim/etl/apis/anm_cfem.py`: a mesma guia da ANM pode aparecer
+ * inteira em duas cidades quando o título minerário atravessa divisa. Somar
+ * dentro de UM município (por ano, por substância) é seguro; entre
+ * municípios não é — por isso esta função não aceita lista de cidades.
+ */
+export async function royaltiesCfemPorSubstancia(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      ano: royalties_cfem.ano,
+      mes: royalties_cfem.mes,
+      substancia: royalties_cfem.substancia,
+      valor: num(royalties_cfem.valor),
+    })
+    .from(royalties_cfem)
+    .where(eq(royalties_cfem.id_municipio, idMunicipio))
+    .orderBy(desc(royalties_cfem.ano), desc(royalties_cfem.mes));
+}
+
+/** Quem pagou CFEM, por ano — bruto; ver `royaltiesCfemPorSubstancia`. */
+export async function royaltiesCfemPorEmpresa(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      ano: royalties_cfem_empresas.ano,
+      empresa: royalties_cfem_empresas.empresa,
+      qtde_titulos: royalties_cfem_empresas.qtde_titulos,
+      valor_operacao: num(royalties_cfem_empresas.valor_operacao),
+      valor_cfem: num(royalties_cfem_empresas.valor_cfem),
+      pct_recolhimento: num(royalties_cfem_empresas.pct_recolhimento),
+    })
+    .from(royalties_cfem_empresas)
+    .where(eq(royalties_cfem_empresas.id_municipio, idMunicipio))
+    .orderBy(desc(royalties_cfem_empresas.ano), desc(royalties_cfem_empresas.valor_cfem));
+}
+
+function condicoesDeLicitacoes(
+  idMunicipio: IdMunicipio,
+  f: { ano?: number; situacao?: string; modalidade?: string; q?: string }
+) {
+  const cond = [eq(licitacoes.id_municipio, idMunicipio)];
+  if (f.ano) cond.push(sql`extract(year from ${licitacoes.data_publicacao_pncp}) = ${f.ano}`);
+  if (f.situacao) cond.push(eq(licitacoes.situacao, f.situacao));
+  if (f.modalidade) cond.push(eq(licitacoes.modalidade_nome, f.modalidade));
+  if (f.q) {
+    const termo = `%${f.q}%`;
+    cond.push(
+      sql`(${licitacoes.objeto} ilike ${termo} or ${licitacoes.orgao_nome} ilike ${termo})`
+    );
+  }
+  return and(...cond);
+}
+
+const COLUNAS_LICITACAO = {
+  id: licitacoes.id,
+  numero_controle_pncp: licitacoes.numero_controle_pncp,
+  orgao_nome: licitacoes.orgao_nome,
+  unidade_nome: licitacoes.unidade_nome,
+  modalidade_nome: licitacoes.modalidade_nome,
+  objeto: licitacoes.objeto,
+  situacao: licitacoes.situacao,
+  valor_estimado: num(licitacoes.valor_estimado),
+  valor_homologado: num(licitacoes.valor_homologado),
+  data_publicacao_pncp: licitacoes.data_publicacao_pncp,
+  data_abertura: licitacoes.data_abertura,
+  data_encerramento: licitacoes.data_encerramento,
+  link_sistema_origem: licitacoes.link_sistema_origem,
+};
+
+/**
+ * Página de licitações (PNCP) com o total do conjunto filtrado na mesma
+ * consulta — mesmo padrão de `contratosPaginados`. `licitacoes` é a fase
+ * ANTERIOR ao contrato (o processo de compra, não o ajuste assinado): as
+ * duas tabelas convivem sem se sobrepor, e por isso ganham página própria
+ * em vez de entrar no filtro de `prefeitura/contratos`.
+ */
+export async function licitacoesPaginadas(
+  idMunicipio: IdMunicipio,
+  filtros: {
+    ano?: number;
+    situacao?: string;
+    modalidade?: string;
+    q?: string;
+    pagina?: number;
+    porPagina?: number;
+  } = {}
+) {
+  const db = getDb();
+  if (!db) return null;
+  const porPagina = filtros.porPagina ?? 25;
+  const pagina = Math.max(1, filtros.pagina ?? 1);
+  return db
+    .select({
+      ...COLUNAS_LICITACAO,
+      total: sql<number>`(count(*) over ())::int`,
+      soma_estimado: sql<number>`(coalesce(sum(${licitacoes.valor_estimado}) over (), 0))::double precision`,
+    })
+    .from(licitacoes)
+    .where(condicoesDeLicitacoes(idMunicipio, filtros))
+    // Desempate por id: mesmo motivo de `contratosPaginados` — muitas
+    // licitações compartilham a mesma `data_publicacao_pncp`.
+    .orderBy(sql`${licitacoes.data_publicacao_pncp} desc nulls last`, asc(licitacoes.id))
+    .limit(porPagina)
+    .offset((pagina - 1) * porPagina);
+}
+
+/** Totais do conjunto filtrado quando a página não tem nenhuma linha — mesmo motivo de `totaisDeContratos`. */
+export async function totaisDeLicitacoes(
+  idMunicipio: IdMunicipio,
+  filtros: { ano?: number; situacao?: string; modalidade?: string; q?: string } = {}
+) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({
+      total: sql<number>`count(*)::int`,
+      soma_estimado: sql<number>`coalesce(sum(${licitacoes.valor_estimado}), 0)::double precision`,
+    })
+    .from(licitacoes)
+    .where(condicoesDeLicitacoes(idMunicipio, filtros));
+  return linha ?? { total: 0, soma_estimado: 0 };
+}
+
+/** Situações distintas de `licitacoes` no banco, pra popular o filtro sem chutar valores. */
+export async function situacoesDeLicitacoesDisponiveis(idMunicipio: IdMunicipio): Promise<string[]> {
+  const db = getDb();
+  if (!db) return [];
+  const linhas = await db
+    .selectDistinct({ situacao: licitacoes.situacao })
+    .from(licitacoes)
+    .where(and(eq(licitacoes.id_municipio, idMunicipio), isNotNull(licitacoes.situacao)));
+  return linhas.map((l) => l.situacao as string).sort((a, b) => a.localeCompare(b, "pt-BR"));
+}
+
+/** Modalidades distintas de `licitacoes` no banco, pra popular o filtro sem chutar valores. */
+export async function modalidadesDeLicitacoesDisponiveis(idMunicipio: IdMunicipio): Promise<string[]> {
+  const db = getDb();
+  if (!db) return [];
+  const linhas = await db
+    .selectDistinct({ modalidade: licitacoes.modalidade_nome })
+    .from(licitacoes)
+    .where(and(eq(licitacoes.id_municipio, idMunicipio), isNotNull(licitacoes.modalidade_nome)));
+  return linhas.map((l) => l.modalidade as string).sort((a, b) => a.localeCompare(b, "pt-BR"));
+}
+
+function condicoesDeVotacoes(idMunicipio: IdMunicipio, f: { ano?: number; q?: string }) {
+  const cond = [eq(votacoes_camara.id_municipio, idMunicipio)];
+  if (f.ano) cond.push(sql`extract(year from ${votacoes_camara.data}) = ${f.ano}`);
+  if (f.q) {
+    const termo = `%${f.q}%`;
+    cond.push(
+      sql`(${votacoes_camara.materia} ilike ${termo} or ${votacoes_camara.ementa} ilike ${termo})`
+    );
+  }
+  return and(...cond);
+}
+
+/**
+ * Página de votações nominais da Câmara, com o total do conjunto filtrado
+ * na mesma consulta — mesmo padrão de `contratosPaginados`. O voto de cada
+ * vereador NÃO vem aqui: viria por join com `votos_camara`, que multiplica
+ * uma linha de votação em até ~55 linhas de voto e quebraria o
+ * `count(*) over ()` do total. Ver `votosDeVotacoes`.
+ */
+export async function votacoesPaginadas(
+  idMunicipio: IdMunicipio,
+  filtros: { ano?: number; q?: string; pagina?: number; porPagina?: number } = {}
+) {
+  const db = getDb();
+  if (!db) return null;
+  const porPagina = filtros.porPagina ?? 25;
+  const pagina = Math.max(1, filtros.pagina ?? 1);
+  return db
+    .select({
+      id: votacoes_camara.id,
+      data: votacoes_camara.data,
+      sessao: votacoes_camara.sessao,
+      tipo_votacao: votacoes_camara.tipo_votacao,
+      materia: votacoes_camara.materia,
+      ementa: votacoes_camara.ementa,
+      resultado: votacoes_camara.resultado,
+      presentes: votacoes_camara.presentes,
+      placar_sim: votacoes_camara.placar_sim,
+      placar_nao: votacoes_camara.placar_nao,
+      placar_abstencao: votacoes_camara.placar_abstencao,
+      placar_branco: votacoes_camara.placar_branco,
+      link_fonte: votacoes_camara.link_fonte,
+      total: sql<number>`(count(*) over ())::int`,
+    })
+    .from(votacoes_camara)
+    .where(condicoesDeVotacoes(idMunicipio, filtros))
+    .orderBy(sql`${votacoes_camara.data} desc nulls last`, asc(votacoes_camara.id))
+    .limit(porPagina)
+    .offset((pagina - 1) * porPagina);
+}
+
+/** Totais do conjunto filtrado quando a página não tem nenhuma linha — mesmo motivo de `totaisDeContratos`. */
+export async function totaisDeVotacoes(
+  idMunicipio: IdMunicipio,
+  filtros: { ano?: number; q?: string } = {}
+) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({ total: sql<number>`count(*)::int` })
+    .from(votacoes_camara)
+    .where(condicoesDeVotacoes(idMunicipio, filtros));
+  return linha ?? { total: 0 };
+}
+
+/**
+ * O voto de cada vereador nas votações indicadas — SEGUNDA consulta, batida
+ * sobre os ids de UMA página (no máx. `porPagina`, hoje 25). Mesmo padrão de
+ * `sancoesCeisPorCnpj`/`autoriaDeProposicoes` (Congresso): um join direto em
+ * `votacoesPaginadas` multiplicaria cada votação em até ~55 linhas (uma por
+ * vereador) e quebraria o `count(*) over ()` que dá o total da página.
+ *
+ * `vereador_id` é ANULÁVEL (ver migration 0041): o `<VotoContrario>` de São
+ * Paulo registra dissidência em votação simbólica sem identificador — por
+ * isso o join com `vereadores` é LEFT e `nome_fonte`/`partido_fonte` vêm
+ * junto, para a tela ainda nomear quem votou mesmo sem a FK.
+ *
+ * Sem ORDER BY por nome de propósito: nomes com acento exigem
+ * `localeCompare(..., "pt-BR")`, que não é a mesma coisa que a collation do
+ * banco — ver o comentário equivalente em `queries/congresso.ts`. A
+ * composição (`lib/betim/votacoesCamara.ts`) ordena em memória.
+ */
+export async function votosDeVotacoes(idMunicipio: IdMunicipio, votacaoIds: string[]) {
+  const db = getDb();
+  if (!db || votacaoIds.length === 0) return null;
+  return db
+    .select({
+      votacao_id: votos_camara.votacao_id,
+      vereador_id: votos_camara.vereador_id,
+      nome_fonte: votos_camara.nome_fonte,
+      partido_fonte: votos_camara.partido_fonte,
+      voto: votos_camara.voto,
+      origem: votos_camara.origem,
+      slug: vereadores.slug,
+      nome_urna: vereadores.nome_urna,
+    })
+    .from(votos_camara)
+    .leftJoin(vereadores, eq(vereadores.id, votos_camara.vereador_id))
+    .where(
+      and(
+        eq(votos_camara.id_municipio, idMunicipio),
+        inArray(votos_camara.votacao_id, votacaoIds)
+      )
+    );
 }

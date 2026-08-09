@@ -1136,6 +1136,58 @@ export const licitacoes = pgTable("licitacoes", {
 	unique("licitacoes_numero_controle_pncp_key").on(table.numero_controle_pncp),
 ]);
 
+/**
+ * Royalties da mineração (CFEM) por (município, ano, mês, substância) — ANM,
+ * via `etl/betim/etl/apis/anm_cfem.py`. NÃO somar `valor` entre municípios:
+ * a mesma guia da ANM aparece inteira em mais de uma cidade quando o título
+ * minerário atravessa divisa (medido 2026-08-07, ver a doc do ETL) — soma
+ * por cidade é o único agregado válido.
+ */
+export const royalties_cfem = pgTable("royalties_cfem", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	ano: integer().notNull(),
+	mes: integer().notNull(),
+	substancia: text().notNull(),
+	valor: numeric({ precision: 16, scale:  2 }).notNull(),
+	atualizado_em: date(),
+}, (table) => [
+	index("royalties_cfem_municipio_periodo_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.ano.desc().nullsFirst().op("int4_ops"), table.mes.desc().nullsFirst().op("int4_ops")),
+	index("royalties_cfem_substancia_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.substancia.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "royalties_cfem_id_municipio_fkey"
+		}).onDelete("cascade"),
+	unique("royalties_cfem_id_municipio_ano_mes_substancia_key").on(table.id_municipio, table.ano, table.mes, table.substancia),
+	check("royalties_cfem_mes_check", sql`(mes >= 1) AND (mes <= 12)`),
+]);
+
+/**
+ * Quem pagou CFEM — razão social, valor da operação (base de cálculo), CFEM
+ * recolhida e a alíquota efetiva que a própria ANM publica, por (município,
+ * ano, empresa). Mesma ressalva de não somar entre municípios.
+ */
+export const royalties_cfem_empresas = pgTable("royalties_cfem_empresas", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	ano: integer().notNull(),
+	empresa: text().notNull(),
+	qtde_titulos: integer(),
+	valor_operacao: numeric({ precision: 18, scale:  2 }),
+	valor_cfem: numeric({ precision: 16, scale:  2 }),
+	pct_recolhimento: numeric({ precision: 6, scale:  2 }),
+	atualizado_em: date(),
+}, (table) => [
+	index("royalties_cfem_empresas_municipio_ano_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.ano.desc().nullsFirst().op("int4_ops")),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "royalties_cfem_empresas_id_municipio_fkey"
+		}).onDelete("cascade"),
+	unique("royalties_cfem_empresas_id_municipio_ano_empresa_key").on(table.id_municipio, table.ano, table.empresa),
+]);
+
 export const mortalidade = pgTable("mortalidade", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
 	id_municipio: text().notNull(),

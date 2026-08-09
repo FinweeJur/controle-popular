@@ -119,6 +119,9 @@ export default async function CamaraPage({
         <Link href="/camara/comissoes" className="text-sm font-medium text-accent hover:underline">
           Ver composição das comissões →
         </Link>
+        <Link href="/camara/votacoes" className="text-sm font-medium text-accent hover:underline">
+          Ver como cada vereador votou →
+        </Link>
       </p>
 
       {/* O canal e o horário eram literais de Betim

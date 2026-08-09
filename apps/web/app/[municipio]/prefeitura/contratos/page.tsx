@@ -129,7 +129,10 @@ export default async function ContratosPage({
           </h1>
           <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
             Dados do Portal Nacional de Contratações Públicas (PNCP). Cada
-            valor e fornecedor com link direto à fonte oficial.
+            valor e fornecedor com link direto à fonte oficial.{" "}
+            <Link href="/prefeitura/licitacoes" className="font-medium text-accent hover:underline">
+              Ver processos de licitação em andamento →
+            </Link>
           </p>
         </div>
         {/* `<a>` cru (não `<Link>`): é download de rota de API, e

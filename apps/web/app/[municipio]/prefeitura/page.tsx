@@ -12,11 +12,12 @@ export const generateMetadata = metadataDaCidade(
   (c) => `Contratos, servidores, despesas e demais dados públicos da Prefeitura de ${c.nome}.`
 );
 
-// Tab list per plan §7. Only "Contratos" has a working route this round —
-// the rest render as inert "em breve" pills so the structure is visible.
+// Tab list per plan §7. `href: null` renders as an inert "em breve" pill —
+// kept in the type for whichever sub-page hasn't shipped yet.
 const TABS: { label: string; href: string | null }[] = [
   { label: "Visão geral", href: "/prefeitura" },
   { label: "Contratos", href: "/prefeitura/contratos" },
+  { label: "Licitações", href: "/prefeitura/licitacoes" },
   { label: "Servidores", href: "/prefeitura/servidores" },
   { label: "Despesas", href: "/prefeitura/despesas" },
   { label: "Diárias", href: "/prefeitura/diarias" },
