@@ -341,9 +341,9 @@ export default async function BuscaPage({ searchParams }: BuscaPageProps) {
             </div>
             <p className="mt-1 text-xs text-text-soft">
               Composição de tribunais, magistrados, vagas e indicações — o Judiciário não
-              produz legislação, então tema e território também não se aplicam aqui. Este eixo
-              ainda não guarda o link do documento oficial por item de busca; os links abaixo
-              levam à página do portal, não à fonte primária.
+              produz legislação, então tema e território também não se aplicam aqui. Vaga não
+              tem documento oficial próprio (é estado calculado, não um ato publicado); os
+              outros tipos mostram o link quando o portal já coletou essa fonte.
             </p>
 
             {!q ? (
@@ -355,19 +355,32 @@ export default async function BuscaPage({ searchParams }: BuscaPageProps) {
                 Nenhum resultado no Judiciário para esse termo.
               </p>
             ) : (
-              <ul className="mt-3 flex flex-col gap-2">
+              <ul className="mt-3 flex flex-col gap-3">
                 {resultadosJudiciario.map((s) => (
-                  <li key={`${s.tipo}:${s.href}:${s.titulo}`}>
-                    <a
-                      href={s.href}
-                      className="flex flex-wrap items-baseline gap-2 rounded-xl border border-border bg-surface px-4 py-3 text-sm no-underline hover:border-primary"
-                    >
+                  <li key={`${s.tipo}:${s.href}:${s.titulo}`} className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
+                    <a href={s.href} className="flex flex-wrap items-baseline gap-2 text-sm no-underline hover:text-primary">
                       <span className="shrink-0 rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-text-soft">
                         {s.tipo}
                       </span>
                       <span className="font-medium text-text">{s.titulo}</span>
                       {s.subtitulo ? <span className="text-text-soft">— {s.subtitulo}</span> : null}
                     </a>
+                    <footer className="mt-3 border-t border-border/60 pt-3 text-xs">
+                      {s.fonte_url ? (
+                        <a
+                          href={s.fonte_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-primary hover:text-accent"
+                        >
+                          Documento oficial ↗
+                        </a>
+                      ) : s.tipo === "vaga" ? (
+                        <span className="text-text-soft">Vaga não é um documento — sem fonte própria</span>
+                      ) : (
+                        <span className="text-text-soft">Documento oficial não informado nesta fonte</span>
+                      )}
+                    </footer>
                   </li>
                 ))}
               </ul>

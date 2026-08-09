@@ -42,19 +42,24 @@ export default function JudiciarioLayout({
           </nav>
           <div className="flex flex-wrap items-center gap-2">
             {/* flex-wrap é OBRIGATÓRIO aqui: achado real em revisão —
-                esta div (Congresso/Betim/Entrar + 3 botões de texto +
-                3 de tema = 8 itens) mede ~560px de largura, mais que
-                o viewport de celular inteiro (375px). Sem quebrar
-                linha, o navegador não estoura o layout visualmente,
-                mas comprime/corta os itens — lido como "navbar
-                espremida". Cada zona irmã tem essa mesma div; se
-                ganhar mais um botão lá, checar de novo.
+                esta div (Busca/Congresso/Betim/Entrar + 3 botões de texto +
+                3 de tema = 9 itens) mede mais que o viewport de celular
+                inteiro (375px). Sem quebrar linha, o navegador não estoura
+                o layout visualmente, mas comprime/corta os itens — lido
+                como "navbar espremida". Cada zona irmã tem essa mesma div;
+                se ganhar mais um botão lá, checar de novo.
 
-                Pontes para as zonas irmãs (mesmo motivo do <a> acima).
-                Mesmo rótulo/estilo que o /congresso já usa pro link
-                de volta a esta zona — convenção do ecossistema, não
-                inventar rótulo novo. "Betim" por enquanto: é a única
+                Busca unificada e pontes para as zonas irmãs (mesmo motivo
+                do <a> acima). Mesmo rótulo/estilo que o /congresso já usa
+                pro link de volta a esta zona — convenção do ecossistema,
+                não inventar rótulo novo. "Betim" por enquanto: é a única
                 cidade publicada (BH/SP vêm na Fase 3, multi-cidade). */}
+            <a
+              href="/busca"
+              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
+            >
+              Busca →
+            </a>
             <a
               href="/congresso"
               className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"

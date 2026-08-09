@@ -44,12 +44,25 @@ export default function CongressoLayout({
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-2">
-            {/* Pontes para as zonas irmãs (mesmo motivo do <a> acima).
-                Precisa apontar para AS DUAS: o /judiciario faltava aqui,
-                enquanto as outras duas zonas já se linkavam mutuamente —
-                era o único vértice quebrado do triângulo. Mesmo rótulo e
-                estilo que as irmãs usam, convenção do ecossistema. */}
+          {/* `flex-wrap` acrescentado junto com o botão de Busca: mesma
+              contagem de itens (5) que a zona /judiciario já tinha, cujo
+              comentário registra que essa div estoura o viewport de
+              celular (~560px de conteúdo em 375px de tela) sem quebra de
+              linha. Estava faltando aqui — as três zonas devem se
+              comportar igual. */}
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Busca unificada e pontes para as zonas irmãs (mesmo motivo
+                do <a> acima). Precisa apontar para AS DUAS: o /judiciario
+                faltava aqui, enquanto as outras duas zonas já se
+                linkavam mutuamente — era o único vértice quebrado do
+                triângulo. Mesmo rótulo e estilo que as irmãs usam,
+                convenção do ecossistema. */}
+            <a
+              href="/busca"
+              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
+            >
+              Busca →
+            </a>
             <a
               href="/judiciario"
               className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"

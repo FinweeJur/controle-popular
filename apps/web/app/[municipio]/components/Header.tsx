@@ -85,7 +85,16 @@ export default function Header({ cidade }: { cidade: Cidade }) {
         </nav>
       </div>
       <div className="flex flex-wrap items-center gap-2">
-        {/* Pontes para as zonas irmãs. Também <a> puro, mesmo motivo. */}
+        {/* Busca unificada (tema/palavra-chave/território nas 3 frentes) e
+            pontes para as zonas irmãs. <a> puro nas três: `/busca` e as
+            zonas irmãs estão FORA do basePath desta cidade, e o <Link> da
+            zona prefixaria (`/betim/busca`), mesmo motivo do wordmark acima. */}
+        <a
+          href="/busca"
+          className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
+        >
+          Busca →
+        </a>
         <a
           href="/congresso"
           className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
