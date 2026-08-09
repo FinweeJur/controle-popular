@@ -34,7 +34,7 @@ interface AnuncioRow {
   data_fim: string | null;
 }
 
-export default function AdminPage() {
+export default function PainelAdmin() {
   const cidade = useCidade();
   const caminho = useCaminhoDaCidade();
   const [token, setToken] = useState("");
