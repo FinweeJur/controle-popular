@@ -40,7 +40,7 @@ export interface DocumentoIndexado {
   t: string;
   /** ementa/subtítulo já truncado — serve para exibir E para conferir frase */
   e: string;
-  /** href relativo */
+  /** href relativo — navegação interna (contexto: cidade/proposição/tribunal) */
   h: string;
   /** zona */
   f: "cidades" | "congresso" | "judiciario";
@@ -50,6 +50,9 @@ export interface DocumentoIndexado {
   d?: string;
   /** slugs de tema (vocabulário municipal) */
   a?: string[];
+  /** URL da fonte oficial (Diário Oficial, PNCP, site do tribunal...), quando
+   *  a fonte foi coletada. Ausente não é erro — nem toda linha tem link. */
+  u?: string;
 }
 
 export interface IndiceBusca {
