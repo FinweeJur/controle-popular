@@ -10,6 +10,7 @@ import {
   Landmark,
   BadgeDollarSign,
   Network,
+  LandPlot,
   type LucideIcon,
 } from "lucide-react";
 
@@ -40,6 +41,7 @@ export const paginasDados = (cidade: {
   { href: "/seguranca", nome: "Segurança", desc: "Ocorrências e criminalidade", icon: ShieldAlert },
   { href: "/infraestrutura", nome: "Infraestrutura", desc: "Água e esgoto", icon: Construction },
   { href: "/meio-ambiente", nome: "Meio Ambiente", desc: "Indicadores ambientais", icon: Trees },
+  { href: "/terras", nome: "Terras", desc: "Vazio cadastral (pesquisa acadêmica)", icon: LandPlot },
   {
     href: "/emendas",
     nome: "Emendas Parlamentares / Repasses Federais",

@@ -3,6 +3,7 @@ import { sql } from "drizzle-orm"
 
 export const congresso = pgSchema("congresso");
 export const judiciario = pgSchema("judiciario");
+export const terras = pgSchema("terras");
 
 
 export const alertasInCongresso = congresso.table("alertas", {
@@ -2188,3 +2189,24 @@ export const seguidores_contagem = pgView("seguidores_contagem", {	id_municipio:
 	// You can use { mode: "bigint" } if numbers are exceeding js number limitations
 	total: bigint({ mode: "number" }),
 }).as(sql`SELECT id_municipio, entidade_tipo, entidade_id, count(*) AS total FROM seguidores GROUP BY id_municipio, entidade_tipo, entidade_id`);
+
+// terras — rollup do pipeline acadêmico terras-devolutas. SEM geometria: o
+// polígono vai como Static Asset do Worker (medido em 160,8 MB de GPKG,
+// não cabe nos ~0,5 GB de storage do projeto), não como coluna de banco.
+// Ver supabase/terras/migrations/0001_schema.sql para a nota completa.
+export const vazio_municipioInTerras = terras.table("vazio_municipio", {
+	id_municipio: text().notNull().references(() => municipios.id_municipio),
+	// 'vazio_cadastral' | 'candidatos_bacia' — denominadores DIFERENTES,
+	// nunca somar entre métodos (ver METODO.md do pipeline, §1.1).
+	metodo: text().notNull(),
+	// 'paraopeba' | 'jequitinhonha' | 'mucuri' | 'vales'
+	recorte: text().notNull(),
+	area_universo_ha: numeric().notNull(),
+	area_candidata_ha: numeric().notNull(),
+	qtd_poligonos: integer().notNull(),
+	proveniencia: text().notNull(),
+	metodo_versao_data: date().notNull(),
+	gerado_em: timestamp({ withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+	primaryKey({ columns: [table.id_municipio, table.metodo, table.recorte], name: "vazio_municipio_pkey"}),
+]);
