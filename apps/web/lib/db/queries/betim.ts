@@ -666,7 +666,7 @@ export async function buscaLegislacaoMunicipal(
   const limite = opts.limite ?? 20;
 
   // `unaccent_immutable` tem que embrulhar o MESMO jeito aqui e no índice
-  // (migration 0045) — expressão diferente da do índice não usa o índice,
+  // (migration 0046) — expressão diferente da do índice não usa o índice,
   // só fica mais lento (a busca continua certa; sem unaccent é que não
   // acharia "saúde" ao digitar "saude").
   const linhas = await db.execute<ResultadoLegislacaoMunicipal>(sql`
