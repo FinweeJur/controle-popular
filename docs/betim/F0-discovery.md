@@ -1,6 +1,8 @@
 # F0 — Discovery & Verification Log
 
 > Atualizado: 2026-07-20. Cada item resolve um `[VERIFY]` do `Betim.ai — Executable Plan.md`.
+>
+> **Arquivo histórico, anterior à unificação em monorepo (2026-07-28).** Caminhos citados aqui (`etl/apis/...`, `supabase/migrations/...`) são do repo antigo `betim-ai` — no monorepo atual viraram `etl/betim/etl/...` e `supabase/betim/migrations/...`. Menções a Supabase são do banco de então; hoje é Neon. O raciocínio e os achados de fonte continuam valendo, só o mapa de arquivo mudou.
 
 ## 1. Portal da Transparência da Prefeitura de Betim — **MUDANÇA DE PLANO**
 

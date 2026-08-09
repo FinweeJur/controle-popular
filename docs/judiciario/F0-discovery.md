@@ -1,6 +1,8 @@
 # F0 — Descoberta de fontes e fundações
 
 > **Estado:** concluída em 2026-07-24. Todo endpoint aqui foi chamado ao vivo; o que não funcionou está marcado como bloqueio confirmado, não suposição. Números reproduzíveis com `python -m etl.senado.indicacoes --descobrir --de 2003 --ate 2026`.
+>
+> **Arquivo histórico, anterior à unificação em monorepo (2026-07-28).** Caminho de repo/banco citado aqui pode ser do `controle-popular-judiciario` separado — no monorepo atual é `etl/judiciario/etl/...`, banco é Neon, não Supabase. O achado de fonte continua valendo, só o mapa de arquivo mudou.
 
 ## DoD da F0 (o que esta fase tinha de entregar)
 
@@ -118,7 +120,7 @@ Não é fonte estrutural deste projeto.
 | Arquivo | O que é |
 |---|---|
 | `etl/cota.py` | Extrator determinístico de tribunal + cota + antecessor. 22 casos de regressão. |
-| `etl/senado/indicacoes.py` | ETL das Mensagens. Modo `--descobrir` (mede, não grava) e `--ano` (grava, exige Supabase). |
+| `etl/senado/indicacoes.py` | ETL das Mensagens. Modo `--descobrir` (mede, não grava) e `--ano` (grava, exige `DATABASE_URL` — Neon no monorepo atual). |
 | `docs/f0-corpus-indicacoes.json` | As 724 indicações analisadas (corpus completo, para inspeção). |
 | `docs/f0-relatorio.json` | Resumo agregado — é o que a home lê; nenhum número da tela é digitado à mão. |
 | `regras/regras.json` | Régua canônica (idades, cotas por tribunal, prazos), versão 1.0.0. Lida por `lib/regras.ts` e pelo ETL. |

@@ -1,6 +1,8 @@
 # F9 — Checklist de lançamento
 
 > Status em 2026-07-25. O que **dá pra preparar sem deploy real** está feito; o que depende de conta/decisão do usuário (Vercel, domínio, Sentry) está listado como ação dele — sem inventar como se já existisse.
+>
+> **SUPERADO pela unificação em monorepo (2026-07-28) — não seguir este checklist hoje.** O Judiciário deixou de ser deploy Vercel standalone com Supabase Auth; hoje é zona `app/judiciario` do monorepo `controle-popular`, publicada em **Cloudflare Workers** (`.github/workflows/rebuild.yml`, `apps/web/wrangler.jsonc`), banco **Neon**. A área logada citada aqui (Auth, monitoramentos) foi **removida** em `2190f55` (2026-08-04) por peso de bundle — ver `apps/web/app/judiciario/privacidade/page.tsx` pro estado atual. Fica como registro histórico de como o F9 foi pensado antes da unificação, não como checklist ativo.
 
 ## ✅ Feito nesta sessão
 

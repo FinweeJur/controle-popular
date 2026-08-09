@@ -6,6 +6,12 @@ está bloqueado. Mesma função do `docs/F0-discovery.md` do app irmão
 investigação já concluída ou volte a bater numa porta comprovadamente
 fechada.
 
+> **Arquivo histórico, anterior à unificação em monorepo (2026-07-28).**
+> Caminho de repo/banco citado aqui pode ser do `controle-popular-congresso`
+> separado — no monorepo atual é `etl/congresso/etl/...`, banco é Neon
+> (`apps/web/lib/db/client.ts`), não Supabase. O achado de fonte continua
+> valendo, só o mapa de arquivo mudou.
+
 ---
 
 ## 1. Câmara dos Deputados — `dadosabertos.camara.leg.br/api/v2` ✅
