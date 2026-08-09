@@ -607,6 +607,114 @@ export async function atosOficiais(idMunicipio: IdMunicipio) {
     );
 }
 
+// `type`, não `interface`: `db.execute<T>()` exige `T extends
+// Record<string, unknown>`, e só um alias de objeto satisfaz essa
+// constraint estruturalmente — uma `interface` não (mesmo padrão de
+// `SugestaoBusca` em `queries/congresso.ts`/`queries/judiciario.ts`).
+export type ResultadoLegislacaoMunicipal = {
+  origem: "ato" | "proposicao";
+  id: string;
+  id_municipio: IdMunicipio;
+  tipo: string | null;
+  numero: string | null;
+  ano: number | null;
+  ementa: string | null;
+  data: string | null;
+  temas: string[] | null;
+  link_fonte: string | null;
+};
+
+/**
+ * Busca legislativa combinada — tema + palavra-chave + território — sobre
+ * `atos_oficiais` (leis/decretos/resoluções) e `proposicoes`
+ * (requerimentos/projetos de lei da Câmara municipal): as duas tabelas que
+ * carregam a MESMA classificação por tema (`etl/temas.py`, ver migration
+ * 0025 e a docstring de `temas.py` no ETL).
+ *
+ * `idMunicipio` AUSENTE busca em TODAS as cidades provisionadas — é a
+ * exceção deliberada à convenção de `idMunicipio` obrigatório e posicional
+ * (ver a docstring de `IdMunicipio` em `queries/municipios.ts`): esta
+ * função existe para alimentar uma busca ENTRE cidades (`/busca`, território
+ * "todas"), então precisa conseguir expressar "todas" sem deixar de exigir
+ * um `IdMunicipio` de verdade quando uma cidade É informada — não uma
+ * string qualquer, que foi exatamente o bug que a marca nominal evita.
+ *
+ * Sem `q`, sem `tema` E sem `idMunicipio`, devolve vazio em vez de "as 660
+ * normas + N mil proposições mais recentes de toda cidade provisionada":
+ * filtro nenhum aqui não é navegação, é ausência de pergunta — a página
+ * mostra estado vazio, não uma lista sem critério.
+ *
+ * O ranking por relevância (`ts_rank`) só entra quando há `q`; sem palavra-
+ * chave, a ordem é por data — não há "relevância" para ordenar.
+ */
+export async function buscaLegislacaoMunicipal(
+  opts: {
+    q?: string;
+    tema?: string;
+    idMunicipio?: IdMunicipio;
+    limite?: number;
+  } = {}
+): Promise<ResultadoLegislacaoMunicipal[]> {
+  const db = getDb();
+  if (!db) return [];
+
+  const q = opts.q?.trim() || null;
+  const tema = opts.tema?.trim() || null;
+  const idMunicipio = opts.idMunicipio ?? null;
+  if (!q && !tema && !idMunicipio) return [];
+
+  const limite = opts.limite ?? 20;
+
+  // `unaccent_immutable` tem que embrulhar o MESMO jeito aqui e no índice
+  // (migration 0045) — expressão diferente da do índice não usa o índice,
+  // só fica mais lento (a busca continua certa; sem unaccent é que não
+  // acharia "saúde" ao digitar "saude").
+  const linhas = await db.execute<ResultadoLegislacaoMunicipal>(sql`
+    (
+      select 'ato'::text as origem, a.id::text as id, a.id_municipio as id_municipio,
+             a.tipo as tipo, a.numero as numero, a.ano as ano, a.ementa as ementa,
+             a.data_publicacao as data, a.temas as temas, a.link_fonte as link_fonte,
+             case when ${q}::text is null then 0::real else ts_rank(
+               to_tsvector('portuguese', public.unaccent_immutable(coalesce(a.ementa, ''))),
+               websearch_to_tsquery('portuguese', public.unaccent_immutable(${q}))
+             ) end as relevancia
+        from atos_oficiais a
+       where (${idMunicipio}::text is null or a.id_municipio = ${idMunicipio})
+         and (${tema}::text is null or a.temas @> array[${tema}]::text[])
+         and (
+           ${q}::text is null or
+           to_tsvector('portuguese', public.unaccent_immutable(coalesce(a.ementa, '')))
+             @@ websearch_to_tsquery('portuguese', public.unaccent_immutable(${q}))
+         )
+       order by relevancia desc, a.data_publicacao desc nulls last
+       limit ${limite}
+    )
+    union all
+    (
+      select 'proposicao'::text, p.id::text, p.id_municipio,
+             p.tipo, p.numero::text, p.ano, p.ementa,
+             p.data_apresentacao, p.temas, p.link_fonte,
+             case when ${q}::text is null then 0::real else ts_rank(
+               to_tsvector('portuguese', public.unaccent_immutable(coalesce(p.ementa, ''))),
+               websearch_to_tsquery('portuguese', public.unaccent_immutable(${q}))
+             ) end as relevancia
+        from proposicoes p
+       where (${idMunicipio}::text is null or p.id_municipio = ${idMunicipio})
+         and (${tema}::text is null or p.temas @> array[${tema}]::text[])
+         and (
+           ${q}::text is null or
+           to_tsvector('portuguese', public.unaccent_immutable(coalesce(p.ementa, '')))
+             @@ websearch_to_tsquery('portuguese', public.unaccent_immutable(${q}))
+         )
+       order by relevancia desc, p.data_apresentacao desc nulls last
+       limit ${limite}
+    )
+    order by relevancia desc, data desc nulls last
+    limit ${limite}
+  `);
+  return linhas.rows ?? [];
+}
+
 /** Anos com "Despesas Pagas" lançadas, mais recente primeiro. */
 export async function anosDeDespesas(idMunicipio: IdMunicipio) {
   const db = getDb();

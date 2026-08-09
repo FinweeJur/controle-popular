@@ -35,6 +35,15 @@ export type SugestaoBusca = {
   titulo: string;
   subtitulo: string | null;
   href: string;
+  /**
+   * Link para a fonte oficial do ITEM, quando a tabela de origem tem uma —
+   * não confundir com `href`, que é navegação DENTRO do portal. `null` para
+   * tribunal/magistrado quando a fonte não foi coletada e SEMPRE para vaga:
+   * `vagas` é estado calculado (abre quando alguém sai da cadeira), não um
+   * ato oficial com URL própria — não tem fonte para linkar, ponto, não é
+   * uma lacuna de coleta.
+   */
+  fonte_url: string | null;
   peso: number;
 };
 
@@ -57,6 +66,7 @@ export async function buscaRapidaJudiciario(termo: string, limite = 8) {
   const linhas = await db.execute<SugestaoBusca>(sql`
     (select 'tribunal' as tipo, t.sigla as titulo, t.nome as subtitulo,
             '/judiciario/tribunais/' || lower(t.id) as href,
+            t.url_composicao as fonte_url,
             case when t.sigla ilike ${like} then 1 else 2 end as peso
        from judiciario.tribunais t
       where t.sigla ilike ${like} or t.nome ilike ${like}
@@ -64,7 +74,9 @@ export async function buscaRapidaJudiciario(termo: string, limite = 8) {
     union all
     (select 'magistrado', m.nome,
             coalesce(upper(c.tribunal_id) || ' · cadeira ' || c.numero::text, m.origem_carreira),
-            '/judiciario/tribunais/' || lower(coalesce(c.tribunal_id, 'stf')), 3
+            '/judiciario/tribunais/' || lower(coalesce(c.tribunal_id, 'stf')),
+            m.url_curriculo,
+            3
        from judiciario.magistrados m
        left join judiciario.ocupacoes o on o.magistrado_id = m.id and o.atual
        left join judiciario.cadeiras c on c.id = o.cadeira_id
@@ -74,7 +86,9 @@ export async function buscaRapidaJudiciario(termo: string, limite = 8) {
     (select 'vaga', upper(c.tribunal_id) || ' · cadeira ' || c.numero::text,
             coalesce(v.motivo, 'vaga') ||
               coalesce(', aberta em ' || to_char(v.data_abertura, 'DD/MM/YYYY'), ''),
-            '/judiciario/vagas', 4
+            '/judiciario/vagas',
+            null::text,
+            4
        from judiciario.vagas v
        join judiciario.cadeiras c on c.id = v.cadeira_id
       where c.tribunal_id ilike ${like} or v.motivo ilike ${like} or v.fase ilike ${like}
@@ -88,7 +102,9 @@ export async function buscaRapidaJudiciario(termo: string, limite = 8) {
     -- literal de TypeScript, onde backtick fecharia a string.)
     (select 'indicação', coalesce(mg.nome, n.senado_identificacao),
             upper(n.tribunal_id) || coalesce(' · ' || n.resultado, ''),
-            '/judiciario/indicacoes', 5
+            '/judiciario/indicacoes',
+            n.url_fonte,
+            5
        from judiciario.nomeacoes n
        left join judiciario.magistrados mg on mg.id = n.magistrado_id
       where mg.nome ilike ${like}

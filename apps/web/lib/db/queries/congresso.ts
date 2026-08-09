@@ -801,6 +801,71 @@ export async function buscaRapidaCongresso(termo: string, limite = 8) {
   return linhas.rows ?? [];
 }
 
+// `type`, não `interface` — mesmo motivo de `SugestaoBusca` logo acima:
+// `db.execute<T>()` exige `T extends Record<string, unknown>`, e uma
+// `interface` não satisfaz essa constraint estruturalmente.
+export type ResultadoBuscaLegislativa = {
+  id: string;
+  identificacao: string | null;
+  ementa: string | null;
+  data_apresentacao: string | null;
+  situacao: string | null;
+  temas_oficiais: string[] | null;
+  url_fonte: string | null;
+  url_inteiro_teor: string | null;
+};
+
+/**
+ * Busca por palavra-chave para a `/busca` unificada (Cidades/Congresso/
+ * Judiciário) — irmã de `buscaLegislacaoMunicipal` (`queries/betim.ts`),
+ * não a mesma função: aqui não existe "território" (o Congresso é federal)
+ * e `temas_oficiais` é a classificação da PRÓPRIA Câmara dos Deputados
+ * (~70 temas oficiais), vocabulário diferente dos 13 slugs de
+ * `etl/temas.py` que `atos_oficiais`/`proposicoes` municipais usam — por
+ * isso esta função não recebe `tema`: um filtro por slug municipal aqui
+ * bateria em silêncio contra o vocabulário errado e devolveria vazio sempre,
+ * o tipo de bug que não aparece em teste nenhum.
+ *
+ * Sem `q`, devolve vazio: diferente da página de Proposições
+ * (`/congresso/proposicoes`), que existe para NAVEGAR o acervo inteiro, esta
+ * função existe só para RESPONDER uma palavra-chave — sem uma, não há
+ * pergunta para responder.
+ */
+export async function buscaLegislacaoCongresso(
+  opts: { q?: string; limite?: number } = {}
+): Promise<ResultadoBuscaLegislativa[]> {
+  const db = getDb();
+  if (!db) return [];
+  const q = opts.q?.trim() || null;
+  if (!q) return [];
+  const limite = opts.limite ?? 20;
+
+  // Mesma ressalva de `buscaLegislacaoMunicipal`: `unaccent_immutable` aqui
+  // precisa bater com a expressão do índice (migration 0009 do Congresso),
+  // senão a consulta ainda acerta o resultado, só sem usar o índice.
+  const linhas = await db.execute<ResultadoBuscaLegislativa>(sql`
+    select p.id::text as id, p.identificacao as identificacao, p.ementa as ementa,
+           p.data_apresentacao as data_apresentacao, p.situacao as situacao,
+           p.temas_oficiais as temas_oficiais, p.url_fonte as url_fonte,
+           p.url_inteiro_teor as url_inteiro_teor
+      from congresso.proposicoes p
+     where to_tsvector(
+             'portuguese',
+             public.unaccent_immutable(coalesce(p.ementa, '') || ' ' || coalesce(p.keywords, ''))
+           ) @@ websearch_to_tsquery('portuguese', public.unaccent_immutable(${q}))
+     order by ts_rank(
+                to_tsvector(
+                  'portuguese',
+                  public.unaccent_immutable(coalesce(p.ementa, '') || ' ' || coalesce(p.keywords, ''))
+                ),
+                websearch_to_tsquery('portuguese', public.unaccent_immutable(${q}))
+              ) desc,
+              p.data_apresentacao desc nulls last
+     limit ${limite}
+  `);
+  return linhas.rows ?? [];
+}
+
 /* ─────────────────────── Agenda legislativa ─────────────────────── */
 
 /**
