@@ -748,6 +748,36 @@ das Águas)  · IGAMSOUT (= SOUT, outorga, §12.2)
 únicos desta lista genuinamente não-investigados (os demais já foram resolvidos, descartados
 ou mapeados em §10-13.2 acima).
 
+### 13.3.1 O que entrou no lugar do SIGIBAR ✅ FEAM, com coletor (2026-08-09)
+
+O SIGIBAR ficou barrado por política (§13.1). O conteúdo que ele teria — **condição de
+estabilidade, nível de emergência, método construtivo** — chega pela **FEAM**, por caminho
+aberto, para as barragens de **mineração e indústria** de MG:
+`etl/betim/etl/apis/feam_barragens.py` + `supabase/betim/migrations/0051_feam_barragens.sql`.
+
+Cobre 249 barragens (mineração 209 + indústria 40) em 58 municípios. Não cobre
+abastecimento, irrigação nem hidrelétrica — para essas, o SNISB (§11). **"Zero barragens
+da FEAM" num município não é "nenhuma barragem no município"**, e as duas tabelas existem
+lado a lado por isso.
+
+**Correção de um fato que este documento afirmava**: a §5 dizia `Id Sigibar` preenchido
+**249/249**. São **247 numéricos + 2 com o literal "Não cadastrado"** (Massa Falida da
+Mundo Mineração, Rio Acima). Como chave, `id_sigibar` colidiria essas duas — a chave
+natural é `(município, nome)`, medida sem colisão nas 249.
+
+**O [VERIFY] de frescor da §5 está RESOLVIDO.** A URL do painel mensal, dada como não
+encontrada, é hyperlink da célula D2 da própria planilha:
+`https://app.powerbi.com/view?r=eyJrIjoiOThhNzgyMTQtNGU5Ny00Mzk0LWIzODItNDg3Nzk2MDlmYmEyIiwidCI6IjkyNGY5ODQ3LTI0MmUtNGE5YS04OTEzLTllNDM2NDliOWVhYSJ9`
+— embed público do Power BI, sem login, e **relatório diferente** do divulgado em
+`semad.mg.gov.br/painel-de-indicadores-do-sisema` (os tokens `r=` divergem). Não vira
+coletor: Power BI só entrega dado por API interna não documentada, enquanto o XLSX é
+estruturado. O preço é o frescor — XLSX anual (base 2024) contra painel mensal.
+
+Cinco armadilhas medidas ao vivo estão na docstring do coletor; a que mais assusta é a
+coordenada: **5 das 249 linhas trazem lat/long como inteiro de 8 dígitos sem separador
+decimal** (`-19645284` para −19,645284), e latitude e longitude podem ter tipos diferentes
+na mesma linha. Gravar cru põe a barragem a milhões de graus dali, sem erro nenhum.
+
 ### 13.4 Veredito dos 4 sistemas do IGAM ⛔ FECHADO — nenhum serve como fonte por município
 
 Verificado ao vivo em 2026-08-09 numa sessão de navegador conduzida pelo usuário, **já

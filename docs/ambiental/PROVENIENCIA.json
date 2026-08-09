@@ -84,9 +84,9 @@
       "licenca": "nao declarada (publicacao oficial); robots.txt permissivo",
       "uso_comercial_vedado": false,
       "n_registros": 249,
-      "verificado_em": "2026-08-07",
+      "verificado_em": "2026-08-09",
       "sha256": null,
-      "observacao": "FONTE PRIMARIA DA DCE. Cabecalho na linha de indice 3, nao na 0. Celula vazia some do XML: alinhar por referencia. 31 barragens sem estabilidade atestada; 18 em nivel de emergencia >= 1."
+      "observacao": "FONTE PRIMARIA DA DCE. Cabecalho na linha de indice 3, nao na 0. Celula vazia some do XML: alinhar por referencia. 31 barragens sem estabilidade atestada; 18 em nivel de emergencia >= 1. | 2026-08-09: COLETOR ESCRITO (etl/betim/etl/apis/feam_barragens.py, migration 0051_feam_barragens.sql, tabela feam_barragens; nao aplicada, Neon em 402). Existe para cobrir o que o SIGIBAR daria e nao da (captcha): condicao de estabilidade, nivel de emergencia e metodo construtivo, para as barragens de mineracao/industria de MG. Armadilhas medidas: cabecalho na linha 4; varrer 'linha nao vazia' devolve 251 e nao 249 (criterio e ter NOME DA BARRAGEM, e ai bate com o Total da celula A1); 5 de 249 coordenadas vem como inteiro de 8 digitos sem separador decimal (-19645284 = -19,645284) e o coletor reconstroi e confere contra a caixa de MG; Id Sigibar NAO e chave -- 2 barragens trazem o literal 'Nao cadastrado' (a doc anterior dizia 249/249 preenchido, sao 247 numericos), chave natural e (municipio, nome); metodo construtivo tem 4 grafias para 4 categorias (Jusante/jusante, Linha de Centro/Linha de centro, 'Etapa unica' com dois bytes diferentes) e e onde mora Montante=34; celula 'vazia' pode ser  ; ALTURA e VOLUME misturam str e int. FRESCOR: o [VERIFY] da secao 5 do F0-discovery estava em aberto (URL do painel mensal nao achada) e ESTA RESOLVIDO -- o link e hyperlink da celula D2 da propria planilha, https://app.powerbi.com/view?r=eyJrIjoiOThhNzgyMTQtNGU5Ny00Mzk0LWIzODItNDg3Nzk2MDlmYmEyIiwidCI6IjkyNGY5ODQ3LTI0MmUtNGE5YS04OTEzLTllNDM2NDliOWVhYSJ9 (embed publico do Power BI, sem login, e um relatorio DIFERENTE do divulgado em semad.mg.gov.br/painel-de-indicadores-do-sisema: os tokens diferem). Painel nao e dataset; nao vira carga."
     },
     {
       "id": "anm_barragens",
