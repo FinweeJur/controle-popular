@@ -54,6 +54,11 @@ export default async function Hub() {
           vida, reunida e explicada. Portal independente, sem vínculo com nenhum governo,
           câmara ou partido.
         </p>
+        <p className="text-[.95em]">
+          <a href="/busca" className="font-medium text-primary hover:underline">
+            Busca por tema, palavra-chave e território →
+          </a>
+        </p>
       </header>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

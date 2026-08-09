@@ -189,7 +189,7 @@ export const proposicoesInCongresso = congresso.table("proposicoes", {
 	index("proposicoes_casa_id_ano_tramitando_idx").using("btree", table.casa_id.asc().nullsLast().op("text_ops"), table.ano.asc().nullsLast().op("text_ops"), table.tramitando.asc().nullsLast().op("text_ops")),
 	index("proposicoes_data_apresentacao_idx").using("btree", table.data_apresentacao.desc().nullsFirst().op("timestamptz_ops")),
 	index("proposicoes_temas_oficiais_idx").using("gin", table.temas_oficiais.asc().nullsLast().op("array_ops")),
-	index("proposicoes_to_tsvector_idx").using("gin", sql`to_tsvector('portuguese'::regconfig, ((COALESCE(ementa, ''::tex`),
+	index("proposicoes_to_tsvector_idx").using("gin", sql`to_tsvector('portuguese'::regconfig, unaccent_immutable(((COALE`),
 	foreignKey({
 			columns: [table.casa_id],
 			foreignColumns: [casasInCongresso.id],
@@ -539,6 +539,7 @@ export const atos_oficiais = pgTable("atos_oficiais", {
 	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
 	temas: text().array(),
 }, (table) => [
+	index("atos_oficiais_to_tsvector_idx").using("gin", sql`to_tsvector('portuguese'::regconfig, unaccent_immutable(COALESC`),
 	foreignKey({
 			columns: [table.id_municipio],
 			foreignColumns: [municipios.id_municipio],
@@ -884,7 +885,7 @@ export const contratos = pgTable("contratos", {
 }, (table) => [
 	index("contratos_id_municipio_ano_idx").using("btree", table.id_municipio.asc().nullsLast().op("int4_ops"), table.ano.asc().nullsLast().op("text_ops")),
 	index("contratos_temas_idx").using("gin", table.temas.asc().nullsLast().op("array_ops")),
-	index("contratos_to_tsvector_idx").using("gin", sql`to_tsvector('portuguese'::regconfig, objeto)`),
+	index("contratos_to_tsvector_idx").using("gin", sql`to_tsvector('portuguese'::regconfig, unaccent_immutable(objeto)`),
 	foreignKey({
 			columns: [table.id_municipio],
 			foreignColumns: [municipios.id_municipio],
@@ -1558,6 +1559,7 @@ export const proposicoes = pgTable("proposicoes", {
 	classe_teor: text(),
 }, (table) => [
 	index("proposicoes_temas_idx").using("gin", table.temas.asc().nullsLast().op("array_ops")),
+	index("proposicoes_to_tsvector_idx").using("gin", sql`to_tsvector('portuguese'::regconfig, unaccent_immutable(COALESC`),
 	foreignKey({
 			columns: [table.vereador_id],
 			foreignColumns: [vereadores.id],
