@@ -1265,6 +1265,109 @@ export const cap_autos_infracao = pgTable("cap_autos_infracao", {
 	unique("cap_autos_infracao_id_municipio_id_cap_key").on(table.id_municipio, table.id_cap),
 ]);
 
+/**
+ * Barragens do cadastro nacional (SNISB/ANA), via
+ * `etl/betim/etl/apis/snisb_barragens.py`, migration 0049.
+ *
+ * Ampla (2.212 em MG, todos os usos: mineração, abastecimento, irrigação,
+ * hidrelétrica) e RASA no que mais importa: `nivel_perigo` — o semáforo
+ * Normal/Atenção/Alerta/Emergência — vem NULL em ~97% das linhas. Não é falha
+ * de coleta, é o estado da fonte. Quem responde "está perigosa agora" é
+ * `feam_barragens`, abaixo, para o subconjunto de mineração/indústria de MG.
+ */
+export const snisb_barragens = pgTable("snisb_barragens", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	codigo_snisb: bigint({ mode: "number" }).notNull(),
+	nome: text(),
+	empreendedor: text(),
+	uso_principal: text(),
+	uso_complementar: text(),
+	orgao_fiscalizador: text(),
+	categoria_risco: text(),
+	dano_potencial: text(),
+	nivel_perigo: text(),
+	regulada_pnsb: text(),
+	possui_pae: text(),
+	possui_plano_seguranca: text(),
+	possui_revisao_periodica: text(),
+	barragem_autuada: text(),
+	completude: text(),
+	curso_dagua: text(),
+	capacidade_reservatorio: numeric({ precision: 18, scale: 4 }),
+	latitude: numeric({ precision: 14, scale: 9 }),
+	longitude: numeric({ precision: 14, scale: 9 }),
+	data_cadastro: date(),
+	municipio_fonte: text(),
+	uf_fonte: text(),
+	atualizado_em: date(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("snisb_barragens_municipio_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops")),
+	index("snisb_barragens_risco_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.categoria_risco.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "snisb_barragens_id_municipio_fkey"
+		}).onDelete("cascade"),
+	unique("snisb_barragens_id_municipio_codigo_snisb_key").on(table.id_municipio, table.codigo_snisb),
+]);
+
+/**
+ * Inventário anual de barragens de MG da FEAM, via
+ * `etl/betim/etl/apis/feam_barragens.py`, migration 0051.
+ *
+ * Estreita (249 em MG, só mineração e indústria) e PROFUNDA: é a fonte da DCE
+ * (`condicao_estabilidade`), do `nivel_emergencia` e do `metodo_construtivo` —
+ * inclusive das 34 a montante, o método de Mariana e Brumadinho.
+ *
+ * ═══ NUNCA SOMAR COM `snisb_barragens` ═══
+ *
+ * As duas se sobrepõem parcialmente e não têm chave comum: a FEAM tem
+ * `id_sigibar` (nem sempre — 2 linhas trazem "Não cadastrado") e o SNISB tem
+ * `codigo_snisb`. `count(feam) + count(snisb)` conta a mesma barragem duas
+ * vezes. A composição em `lib/betim/barragens.ts` casa por NOME normalizado
+ * dentro do município, e a tela diz que esse casamento é falível.
+ */
+export const feam_barragens = pgTable("feam_barragens", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	id_sigibar: text(),
+	nome: text().notNull(),
+	empreendedor: text(),
+	ura: text(),
+	atividade: text(),
+	finalidade: text(),
+	situacao: text(),
+	condicao_estabilidade: text(),
+	metodo_construtivo: text(),
+	metodo_construtivo_fonte: text(),
+	altura_m: numeric({ precision: 10, scale: 2 }),
+	volume_reservatorio_m3: numeric({ precision: 20, scale: 2 }),
+	categoria_risco: text(),
+	dano_potencial: text(),
+	classe: text(),
+	nivel_emergencia: integer(),
+	suspensao: text(),
+	latitude: numeric({ precision: 12, scale: 8 }),
+	longitude: numeric({ precision: 12, scale: 8 }),
+	municipio_fonte: text(),
+	atualizado_em: date(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("feam_barragens_municipio_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops")),
+	index("feam_barragens_emergencia_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.nivel_emergencia.desc().nullsFirst().op("int4_ops")),
+	index("feam_barragens_metodo_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.metodo_construtivo.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "feam_barragens_id_municipio_fkey"
+		}).onDelete("cascade"),
+	unique("feam_barragens_id_municipio_nome_key").on(table.id_municipio, table.nome),
+]);
+
 export const mortalidade = pgTable("mortalidade", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
 	id_municipio: text().notNull(),

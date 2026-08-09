@@ -83,6 +83,23 @@ export default async function MeioAmbientePage({
         </Link>
       )}
 
+      <Link
+        href="/meio-ambiente/barragens"
+        className="cp-card-hover mt-4 flex flex-col gap-2 rounded-2xl border border-primary bg-primary/5 p-5 shadow-sm hover:border-primary"
+      >
+        <p className="font-display font-semibold text-text">
+          Barragens em {cidade.nome}
+        </p>
+        <p className="text-sm text-text-soft">
+          Quantas, de quem, condição de estabilidade, nível de emergência e
+          quais foram erguidas a montante — o método de Mariana e Brumadinho.
+          Cruza o inventário estadual da FEAM com o cadastro nacional do SNISB.
+        </p>
+        <span className="mt-1 inline-block w-fit rounded-lg border border-primary bg-primary px-4 py-2 text-sm font-semibold text-primary-ink">
+          Ver barragens →
+        </span>
+      </Link>
+
       {temFonte(cidade, "paraopeba") && (
       <Link
         href="/meio-ambiente/paraopeba"

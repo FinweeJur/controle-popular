@@ -30,6 +30,8 @@ import {
   clima_cache,
   coleta_lixo,
   comercios_essenciais,
+  feam_barragens,
+  snisb_barragens,
   comissao_membros,
   comissoes,
   contatos_uteis,
@@ -3181,4 +3183,70 @@ export async function capAutosRecentes(
      limit ${limite}
   `);
   return linhas.rows ?? [];
+}
+
+// ───────────────────────── Barragens · FEAM + SNISB ──────────────────────────
+
+/**
+ * As duas fontes de barragem, cruas, para a composição casar em
+ * `lib/betim/barragens.ts`.
+ *
+ * POR QUE DUAS CONSULTAS E NÃO UM JOIN NO BANCO. Não existe chave comum: a
+ * FEAM tem `id_sigibar` (e 2 linhas em MG trazem o literal "Não cadastrado"),
+ * o SNISB tem `codigo_snisb`. O único casamento possível é por NOME
+ * normalizado, que é falível — e uma heurística falível pertence a código
+ * testável e legível, não a um `join ... on lower(unaccent(nome))` escondido
+ * numa consulta.
+ *
+ * O volume permite: o município com mais barragens da FEAM em MG é Nova Lima,
+ * com 21. Isto não é a classe de `cap_autos_infracao` (26.764 linhas em BH),
+ * onde agregar no banco é obrigatório.
+ */
+export async function barragensFeam(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      nome: feam_barragens.nome,
+      id_sigibar: feam_barragens.id_sigibar,
+      empreendedor: feam_barragens.empreendedor,
+      atividade: feam_barragens.atividade,
+      finalidade: feam_barragens.finalidade,
+      situacao: feam_barragens.situacao,
+      condicao_estabilidade: feam_barragens.condicao_estabilidade,
+      metodo_construtivo: feam_barragens.metodo_construtivo,
+      altura_m: num(feam_barragens.altura_m),
+      volume_reservatorio_m3: num(feam_barragens.volume_reservatorio_m3),
+      categoria_risco: feam_barragens.categoria_risco,
+      dano_potencial: feam_barragens.dano_potencial,
+      classe: feam_barragens.classe,
+      nivel_emergencia: feam_barragens.nivel_emergencia,
+      suspensao: feam_barragens.suspensao,
+    })
+    .from(feam_barragens)
+    .where(eq(feam_barragens.id_municipio, idMunicipio))
+    .orderBy(desc(feam_barragens.nivel_emergencia), asc(feam_barragens.nome));
+}
+
+/** Ver `barragensFeam` — mesma razão para não fazer join no banco. */
+export async function barragensSnisb(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      nome: snisb_barragens.nome,
+      codigo_snisb: snisb_barragens.codigo_snisb,
+      empreendedor: snisb_barragens.empreendedor,
+      uso_principal: snisb_barragens.uso_principal,
+      orgao_fiscalizador: snisb_barragens.orgao_fiscalizador,
+      categoria_risco: snisb_barragens.categoria_risco,
+      dano_potencial: snisb_barragens.dano_potencial,
+      nivel_perigo: snisb_barragens.nivel_perigo,
+      possui_pae: snisb_barragens.possui_pae,
+      possui_plano_seguranca: snisb_barragens.possui_plano_seguranca,
+      curso_dagua: snisb_barragens.curso_dagua,
+    })
+    .from(snisb_barragens)
+    .where(eq(snisb_barragens.id_municipio, idMunicipio))
+    .orderBy(asc(snisb_barragens.nome));
 }
