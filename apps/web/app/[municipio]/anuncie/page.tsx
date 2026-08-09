@@ -1,5 +1,12 @@
+import { paramsDasCidades } from "@/lib/betim/staticParams";
 import { ANUNCIO_PRECOS } from "@/lib/betim/anuncios";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+
+// `output: 'export'` exige a função DECLARADA aqui — re-export não é
+// reconhecido pelo Turbopack. Ver `lib/betim/staticParams.ts`.
+export async function generateStaticParams() {
+  return paramsDasCidades();
+}
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Anuncie — ${nomePortal(c)}`,

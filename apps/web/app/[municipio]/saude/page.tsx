@@ -1,7 +1,14 @@
+import { paramsDasCidades } from "@/lib/betim/staticParams";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { getSaudeData, getSaudeTendencias, CARATER_LABELS } from "@/lib/betim/saude";
 import { formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+
+// `output: 'export'` exige a função DECLARADA aqui — re-export não é
+// reconhecido pelo Turbopack. Ver `lib/betim/staticParams.ts`.
+export async function generateStaticParams() {
+  return paramsDasCidades();
+}
 
 const PREVENCAO_DENGUE_URL = "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue";
 

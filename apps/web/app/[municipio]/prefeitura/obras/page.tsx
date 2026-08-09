@@ -1,3 +1,4 @@
+import { paramsDasCidades } from "@/lib/betim/staticParams";
 import { Suspense } from "react";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
@@ -5,6 +6,17 @@ import { getObras } from "@/lib/betim/obras";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import ListaObras, { ListaObrasCompleta } from "./ListaObras";
+
+// `output: 'export'` exige a função DECLARADA aqui — re-export não é
+// reconhecido pelo Turbopack. Ver `lib/betim/staticParams.ts`.
+// Filtro é do cliente (`useSearchParams()` no componente de lista). Sem
+// `force-static`, `output: export` trata a rota como dinâmica e aborta com
+// "missing generateStaticParams()" — mensagem que não descreve a causa.
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  return paramsDasCidades();
+}
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Obras públicas — Prefeitura de ${c.nome} — ${nomePortal(c)}`,

@@ -263,3 +263,64 @@ salve, porque o banco está na sua mesa.
 
 **Recomendação:** C. B só se a área logada for requisito inegociável e a queda
 ocasional for aceitável. A nunca.
+
+---
+
+## 8. O que a primeira tentativa real de export revelou (2026-08-09)
+
+O §3 dizia que o que falta são as páginas com `searchParams`. **Rodar o build
+provou que esse nem é o primeiro obstáculo.** Ordem real dos erros:
+
+### 8.1 As 56 páginas sem `generateStaticParams` — blocker anterior, não documentado
+
+O export morre em *Collecting page data*, antes de chegar perto de
+`searchParams`:
+
+```
+Page "/[municipio]/citrolandia" is missing "generateStaticParams()"
+so it cannot be used with "output: export" config.
+```
+
+`app/[municipio]/layout.tsx` **já declara** `generateStaticParams`, e no alvo
+Cloudflare isso basta. Em `output: export` o Next confere **página por
+página**: são 56 sob `[municipio]`, e só duas tinham a função (as que têm
+segmento dinâmico próprio). Resolvido em 53 arquivos — `admin` é client
+component e as outras duas já se viravam.
+
+**Re-export não funciona, e isso custa uma rodada inteira para descobrir.**
+A forma econômica seria `export { generateStaticParams } from "..."`. O build
+continua abortando com a mesma mensagem: a coleta do Turbopack quer a função
+DECLARADA no módulo da página. A armadilha é que o re-export **passa** no alvo
+Cloudflare, onde a função nem é exigida por página — parece certo em todo lugar
+menos onde importa. O formato que funciona está em `lib/betim/staticParams.ts`.
+
+### 8.2 A conversão "filtrar no cliente" JÁ FOI FEITA em 7 páginas — e não basta
+
+`coleta-lixo`, `compra-e-venda`, `meio-ambiente/paraopeba`,
+`postos-combustivel`, `prefeitura/despesas`, `prefeitura/obras` e `zap` já não
+leem `searchParams` no servidor: têm componente de lista `"use client"` com
+`useSearchParams()` dentro de `<Suspense>`. O §3 conta essas páginas como
+pendentes; elas não são. **Mas o export continua reprovando as duas
+primeiras**, com a mesma mensagem enganosa de "missing generateStaticParams()"
+— que elas têm, declarada localmente.
+
+`export const dynamic = "force-static"` foi testado nas sete e **não resolve**.
+
+### 8.3 [ABERTO] O erro é não-determinístico, e isso é a pista
+
+*Collecting page data* usa 15 workers, e a página citada muda entre rodadas
+(`coleta-lixo` e `compra-e-venda` se alternam em corridas idênticas). Duas
+consequências práticas para quem retomar:
+
+1. **Não confie em "o erro andou" como sinal de conserto.** Foi o que me levou
+   a concluir duas vezes que um ajuste tinha funcionado quando não tinha. Só
+   vale como progresso quando o nome sai da família inteira de páginas.
+2. **O próximo passo é uma reprodução mínima**, não mais tentativa e erro:
+   uma página de teste sob um segmento dinâmico, com `generateStaticParams`
+   local e um filho `"use client"` chamando `useSearchParams()`, e ver se ela
+   sozinha reproduz. Se reproduzir, o problema é o padrão; se não, é algo
+   específico dessas duas páginas — e as duas compartilham exportar do mesmo
+   módulo cliente um segundo componente (`ListaXCompleta`) usado como
+   *fallback* do próprio `<Suspense>`, que é o candidato mais óbvio.
+
+O alvo Cloudflare passa em todas as mudanças acima (tsc + build completos).

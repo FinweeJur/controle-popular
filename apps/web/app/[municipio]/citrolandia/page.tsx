@@ -1,3 +1,4 @@
+import { paramsDasCidades } from "@/lib/betim/staticParams";
 import { notFound } from "next/navigation";
 import { temFonte } from "@/lib/db/queries/municipios";
 import Link from "@/lib/betim/link";
@@ -5,6 +6,12 @@ import { fetchZapEstabelecimentos } from "@/lib/betim/zap";
 import { fetchPostosAnp } from "@/lib/betim/postos";
 import ZapCard from "@/app/[municipio]/zap/ZapCard";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+
+// `output: 'export'` exige a função DECLARADA aqui — re-export não é
+// reconhecido pelo Turbopack. Ver `lib/betim/staticParams.ts`.
+export async function generateStaticParams() {
+  return paramsDasCidades();
+}
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Citrolândia — ${c.nome} | ${nomePortal(c)}`,

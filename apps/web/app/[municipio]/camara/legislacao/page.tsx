@@ -1,3 +1,4 @@
+import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import AreasAtuacao from "@/app/[municipio]/components/charts/AreasAtuacao";
@@ -9,6 +10,12 @@ import { percentualAnalisado } from "@/lib/betim/legislacao-garantista";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { hostDoAcervoNormativo, orgaoDoAcervoNormativo } from "@/lib/db/queries/municipios";
+
+// `output: 'export'` exige a função DECLARADA aqui — re-export não é
+// reconhecido pelo Turbopack. Ver `lib/betim/staticParams.ts`.
+export async function generateStaticParams() {
+  return paramsDasCidades();
+}
 
 // "Prefeitura de X" era literal e passou a mentir: em Araçuaí e Diamantina o
 // acervo é da Câmara. O órgão sai de `fontes.legislacao_fonte`.

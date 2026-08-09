@@ -1,9 +1,16 @@
+import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getNotaTransparenciaData, type AvaliacaoPntp } from "@/lib/betim/notaTransparencia";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { formatNumberBR } from "@/lib/betim/format";
+
+// `output: 'export'` exige a função DECLARADA aqui — re-export não é
+// reconhecido pelo Turbopack. Ver `lib/betim/staticParams.ts`.
+export async function generateStaticParams() {
+  return paramsDasCidades();
+}
 
 const UF_POR_EXTENSO: Record<string, string> = {
   AC: "Acre", AL: "Alagoas", AP: "Amapá", AM: "Amazonas", BA: "Bahia",

@@ -1,8 +1,15 @@
+import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { getComissoesAtuais } from "@/lib/betim/comissoes";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import type { Cidade } from "@/lib/db/queries/municipios";
+
+// `output: 'export'` exige a função DECLARADA aqui — re-export não é
+// reconhecido pelo Turbopack. Ver `lib/betim/staticParams.ts`.
+export async function generateStaticParams() {
+  return paramsDasCidades();
+}
 
 /** Ver `fonteDaCamara` em `camara/page.tsx`: o crédito era "Câmara de Betim"
  *  fixo, inclusive nas páginas de BH e São Paulo. */
