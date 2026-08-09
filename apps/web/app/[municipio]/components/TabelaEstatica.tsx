@@ -53,6 +53,33 @@ export interface TabelaEstaticaProps<T> {
   porPagina?: number;
   /** Aparece quando o índice existe mas está vazio. */
   vazio?: string;
+  /**
+   * Filtro por coluna, aplicado ANTES da busca textual.
+   *
+   * ═══ POR QUE ESTE SLOT EXISTE ═══
+   *
+   * Sem ele o componente só sabia buscar texto e paginar, e as páginas do §3
+   * perderiam o filtro que é a razão de existirem — `prefeitura/contratos` tem
+   * nove parâmetros, e o que importa é o "somente com alerta" + motivo com
+   * fundamentação jurídica. Trocar isso por uma caixa de busca não é converter
+   * a página, é esvaziá-la.
+   *
+   * O estado do filtro mora em QUEM CHAMA (é ele que conhece as colunas); aqui
+   * entra só o predicado. Envolva em `useCallback`, senão o `useMemo` abaixo
+   * recalcula a cada render — o que numa tabela de 9.803 linhas se sente.
+   */
+  filtrar?: (linha: T) => boolean;
+  /**
+   * A UI do filtro, acima da tabela.
+   *
+   * É render prop, e não `ReactNode`, porque quem desenha o filtro precisa de
+   * duas coisas que só este componente sabe: se todas as fatias já chegaram
+   * (`pronto`) e quais linhas existem (para montar as opções a partir do dado
+   * real, em vez de uma lista fixa que envelhece). Filtro habilitado antes da
+   * última fatia esconderia linha que ainda não chegou — o mesmo motivo pelo
+   * qual a busca fica desabilitada.
+   */
+  controles?: (ctx: { pronto: boolean; linhas: T[] }) => React.ReactNode;
 }
 
 type Estado = "carregando" | "pronto" | "erro";
@@ -69,6 +96,8 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
   camposBusca = [],
   porPagina = 50,
   vazio = "Nenhum registro.",
+  filtrar,
+  controles,
 }: TabelaEstaticaProps<T>) {
   const [linhas, setLinhas] = useState<T[]>([]);
   const [manifesto, setManifesto] = useState<ManifestoFatias | null>(null);
@@ -134,10 +163,20 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
   const completo = estado === "pronto";
 
   const filtradas = useMemo(() => {
-    if (!busca.trim() || camposBusca.length === 0) return linhas;
+    // Filtro por coluna primeiro, busca textual depois: a busca varre string e
+    // é a parte cara; reduzir o conjunto antes é o que mantém a digitação fluida
+    // numa tabela de milhares de linhas.
+    const base = filtrar ? linhas.filter(filtrar) : linhas;
+    if (!busca.trim() || camposBusca.length === 0) return base;
     const alvo = normalizar(busca);
-    return linhas.filter((l) => camposBusca.some((c) => normalizar(l[c]).includes(alvo)));
-  }, [linhas, busca, camposBusca]);
+    return base.filter((l) => camposBusca.some((c) => normalizar(l[c]).includes(alvo)));
+  }, [linhas, busca, camposBusca, filtrar]);
+
+  // Filtro novo pode deixar menos páginas que a atual; sem isto o leitor cai
+  // numa página vazia e conclui que o filtro não achou nada.
+  useEffect(() => {
+    setPagina(1);
+  }, [filtrar]);
 
   const totalPaginas = Math.max(1, Math.ceil(filtradas.length / porPagina));
   const paginaAtual = Math.min(pagina, totalPaginas);
@@ -161,6 +200,7 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
 
   return (
     <div className="mt-6">
+      {controles && <div className="mb-4">{controles({ pronto: completo, linhas })}</div>}
       {camposBusca.length > 0 && (
         <div className="flex flex-wrap items-baseline gap-3">
           <input
