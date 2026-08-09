@@ -50,6 +50,60 @@ export type DB = ReturnType<typeof criar>;
  * custar uma consulta em vez de 110. O problema é só a que sobrevive de um
  * build para o outro.
  */
+/**
+ * O host é local? É o que decide o motor abaixo.
+ *
+ * Teste por HOSTNAME, não por `includes("localhost")`: uma URL da Neon pode
+ * conter a palavra em qualquer lugar (nome de branch, senha) e cairia no
+ * driver errado — falhando com "Failed to parse URL", não com algo legível.
+ */
+function ehPostgresLocal(url: string): boolean {
+  try {
+    const host = new URL(url).hostname;
+    return host === "localhost" || host === "127.0.0.1" || host === "::1" || host === "[::1]";
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * MÁQUINA DE BUILD LOCAL (arquitetura C de `docs/deploy-github-pages.md` §7).
+ *
+ * `neon()` fala o protocolo SQL-sobre-HTTP da Neon: ele NÃO abre conexão
+ * Postgres, ele monta uma URL de API a partir do host. Apontar
+ * `DATABASE_URL` para `127.0.0.1` com ele não dá erro de conexão — dá isto,
+ * medido em 2026-08-09:
+ *
+ *     NeonDbError: Error connecting to database:
+ *     TypeError: Failed to parse URL from https://api.0.0.1/sql
+ *
+ * Ou seja: o passo 5 do `docs/build-em-outro-pc.md` ("crie um .env.local com
+ * localhost") não podia funcionar sozinho. Faltava este ponto de troca, que
+ * o mapa da estrutura já apontava como "o ponto de troca para qualquer modo
+ * offline".
+ *
+ * POR QUE `require` ESCONDIDO DO BUNDLER, e não `import` no topo: o alvo
+ * padrão é Cloudflare Workers, com teto de 3 MiB gzip e sem TCP. Um
+ * `import { Pool } from "pg"` no topo deste arquivo entraria no bundle do
+ * Worker em todo deploy, para um caminho que só roda em `next build` na
+ * máquina de build. O `eval` faz o bundler não enxergar a dependência; o
+ * caminho só executa quando o host é local, então no Worker nunca roda.
+ *
+ * Por isso `pg` é devDependency: produção (Workers) nunca a carrega.
+ */
+function criarLocal(url: string): DB {
+  const requireDeNode = (0, eval)("require") as NodeRequire;
+  const { Pool } = requireDeNode("pg");
+  const { drizzle: drizzlePg } = requireDeNode("drizzle-orm/node-postgres");
+  // O cast mantém `DB` com UM tipo só. Os dois drivers expõem a mesma
+  // superfície para tudo que este app usa — e `db.execute()`, que é a
+  // diferença real entre eles, já é desembrulhado com `.rows ?? []` nos 13
+  // chamadores (`NeonHttpQueryResult` e `QueryResult` do pg têm ambos
+  // `.rows`). Sem o cast, o tipo de retorno viraria união e as 149 funções
+  // de consulta passariam a precisar de narrowing.
+  return drizzlePg(new Pool({ connectionString: url }), { schema }) as unknown as DB;
+}
+
 function criar(url: string) {
   return drizzle(neon(url), { schema });
 }
@@ -71,7 +125,7 @@ export function getDb(): DB | null {
   const url = process.env.DATABASE_URL;
   if (!url) return (memo = null);
   try {
-    return (memo = criar(url));
+    return (memo = ehPostgresLocal(url) ? criarLocal(url) : criar(url));
   } catch {
     return (memo = null);
   }
