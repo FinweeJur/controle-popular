@@ -1,4 +1,5 @@
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { temFonte } from "@/lib/db/queries/municipios";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Defesa Civil de ${c.nome} — Alertas | ${nomePortal(c)}`,
@@ -9,7 +10,14 @@ export const generateMetadata = metadataDaCidade(
 // (o app é uma PWA da plataforma Fábrica de Aplicativos, sem endpoint
 // aberto). Por isso esta página só organiza os canais oficiais, sem tentar
 // reproduzir os alertas aqui dentro.
-const CANAIS = [
+//
+// ESPECÍFICO DE BETIM — corrigido em 2026-08-09: até aqui esta lista
+// aparecia em TODA cidade (BH, SP, Araçuaí, Itinga, Diamantina incluídas)
+// linkando pro app e pro WhatsApp da Defesa Civil de Betim, mesmo quando o
+// título da página dizia "Defesa Civil de Belo Horizonte". Gate por
+// `temFonte(cidade, "defesa_civil")` até existir canal pesquisado por
+// cidade.
+const CANAIS_BETIM = [
   {
     nome: "Aplicativo oficial (PWA)",
     desc: "Alertas, áreas de risco no mapa, previsão do tempo e como ser voluntário.",
@@ -36,6 +44,7 @@ export default async function DefesaCivilPage({
   params: Promise<{ municipio: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
+  const temCanais = temFonte(cidade, "defesa_civil");
   return (
     <main className="mx-auto max-w-3xl px-4 py-14 sm:px-8">
       <h1 className="font-display text-[2em] font-bold tracking-tight text-text">
@@ -43,12 +52,21 @@ export default async function DefesaCivilPage({
       </h1>
       <p className="mt-2 max-w-[60ch] text-text-soft">
         Em emergência, ligue <strong className="font-tabular text-text">199</strong> ou{" "}
-        <strong className="font-tabular text-text">153</strong> (Guarda Municipal). Abaixo, os
-        canais oficiais pra receber avisos antes que a emergência aconteça.
+        <strong className="font-tabular text-text">153</strong> (Guarda Municipal).
+        {temCanais
+          ? " Abaixo, os canais oficiais pra receber avisos antes que a emergência aconteça."
+          : ` Ainda não temos os canais oficiais de ${cidade.nome} mapeados nesta tela.`}
       </p>
 
+      {!temCanais && (
+        <p className="mt-8 rounded-lg border border-[var(--cp-border)] p-5 opacity-80">
+          Pesquisa de canal oficial de Defesa Civil (aplicativo, WhatsApp, telefone) ainda não
+          feita para {cidade.nome}. Assim que confirmada, entra aqui.
+        </p>
+      )}
+
       <section className="mt-8 flex flex-col gap-3">
-        {CANAIS.map((c) => (
+        {temCanais && CANAIS_BETIM.map((c) => (
           <a
             key={c.href}
             href={c.href}

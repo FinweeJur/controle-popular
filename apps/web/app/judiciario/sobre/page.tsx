@@ -57,14 +57,14 @@ export default function Sobre() {
         <p className="opacity-80">
           Código aberto:{" "}
           <a
-            href="https://github.com/FinweeJur/controle-popular-judiciario"
+            href="https://github.com/FinweeJur/controle-popular"
             className="underline"
             target="_blank"
             rel="noreferrer noopener"
           >
-            github.com/FinweeJur/controle-popular-judiciario
+            github.com/FinweeJur/controle-popular
           </a>
-          . Dados de contas de usuário tratados conforme a{" "}
+          . Como tratamos dado está na{" "}
           <Link href="/privacidade" className="underline">
             Política de Privacidade
           </Link>

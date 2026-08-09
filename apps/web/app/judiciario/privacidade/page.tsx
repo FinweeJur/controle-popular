@@ -4,7 +4,7 @@ import Link from "@/lib/judiciario/link";
 export const metadata: Metadata = {
   title: "Privacidade · Controle Popular — Judiciário",
   description:
-    "O que este app coleta, por quê, e com que base legal — dado público de agente em função pública e dado de conta de usuário, sem CPF, filiação ou endereço.",
+    "O que este app coleta, por quê, e com que base legal — dado público de agente em função pública, sem CPF, filiação ou endereço.",
 };
 
 export default function Privacidade() {
@@ -42,28 +42,9 @@ export default function Privacidade() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-display text-xl font-semibold">2. Dado da sua conta (se você se cadastra)</h2>
-        <p className="opacity-80">
-          Login é por <strong>link mágico</strong>: você digita seu e-mail, recebe um link,
-          clica e entra — sem senha. Guardamos:
-        </p>
+        <h2 className="font-display text-xl font-semibold">2. O que não fazemos</h2>
         <ul className="list-disc space-y-1 pl-6 text-sm opacity-80">
-          <li>Seu e-mail (autenticação via Supabase Auth — provedor terceiro, mesma base técnica dos apps irmãos do Controle Popular)</li>
-          <li>Os monitoramentos que você cria (tribunais, cotas e horizonte de aviso escolhidos)</li>
-          <li>Os alertas gerados para você e se já foram lidos</li>
-          <li>Rascunhos de ofício/nota que você gerar, se optar por essa função</li>
-        </ul>
-        <p className="opacity-80">
-          Base legal: <strong>execução do serviço solicitado</strong> (LGPD art. 7º, V) — você
-          pede o monitoramento, guardamos o necessário pra ele funcionar. A sessão de login fica
-          no <code>localStorage</code> do seu navegador, não em cookie de rastreamento.
-        </p>
-      </section>
-
-      <section className="space-y-3">
-        <h2 className="font-display text-xl font-semibold">3. O que não fazemos</h2>
-        <ul className="list-disc space-y-1 pl-6 text-sm opacity-80">
-          <li>Não vendemos, alugamos ou compartilhamos e-mail ou dado de conta com terceiros</li>
+          <li>Não pedimos login nem cadastro — não há conta de usuário neste app</li>
           <li>Não usamos publicidade nem rastreamento entre sites</li>
           <li>Não enviamos e-mail de indicado a parlamentar/tribunal em massa sem confirmação explícita sua, por ofício</li>
           <li>Não usamos modelo de linguagem para decidir nenhum número (vacância, cota, poder de indicação) — só para redigir texto sobre fato já verificado, sempre revisável antes de sair</li>
@@ -71,28 +52,26 @@ export default function Privacidade() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-display text-xl font-semibold">4. Seus direitos</h2>
+        <h2 className="font-display text-xl font-semibold">3. Seus direitos</h2>
         <p className="opacity-80">
-          Acesso, correção e exclusão dos seus dados de conta (LGPD art. 18) — escreva para o
-          contato abaixo pedindo a exclusão; apagamos a conta e os monitoramentos associados.
           Dado público de magistrado não é excluído a pedido (é registro histórico de fato
           público), mas correção de erro factual é sempre bem-vinda — use o botão de contestar
-          quando disponível na tela, ou o mesmo contato.
+          quando disponível na tela, ou o contato abaixo.
         </p>
       </section>
 
       <section className="space-y-3">
-        <h2 className="font-display text-xl font-semibold">5. Infraestrutura</h2>
+        <h2 className="font-display text-xl font-semibold">4. Infraestrutura</h2>
         <p className="opacity-80">
-          Banco de dados hospedado no Supabase (Postgres gerenciado). Hospedagem do site no
-          Vercel. Nenhum dado deste app é usado para treinar modelo de linguagem de terceiros.
+          Banco de dados hospedado na Neon (Postgres gerenciado). Site publicado em Cloudflare
+          Workers. Nenhum dado deste app é usado para treinar modelo de linguagem de terceiros.
         </p>
       </section>
 
       <p className="text-sm opacity-60">
         Dúvida ou pedido sobre seus dados: abra uma issue no{" "}
         <a
-          href="https://github.com/FinweeJur/controle-popular-judiciario"
+          href="https://github.com/FinweeJur/controle-popular"
           className="underline"
           target="_blank"
           rel="noreferrer noopener"

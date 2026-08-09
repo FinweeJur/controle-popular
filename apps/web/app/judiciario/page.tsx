@@ -22,6 +22,14 @@ export default async function Home() {
   ]);
   const totalCadeiras = tribunais.reduce((s, t) => s + (t.n_cadeiras ?? 0), 0);
   const ultimaIndicacao = (nomeacoes ?? [])[0];
+  // Gerado da mesma lista que preenche `tribunais.length` acima — nunca
+  // hardcoded ao lado de uma contagem dinâmica, senão os dois divergem
+  // silenciosamente assim que um tribunal novo entrar no banco.
+  const siglas = tribunais.map((t) => t.sigla ?? t.id);
+  const listaSiglas =
+    siglas.length <= 1
+      ? siglas.join("")
+      : `${siglas.slice(0, -1).join(", ")} e ${siglas[siglas.length - 1]}`;
 
   return (
     <div className="mx-auto max-w-5xl space-y-12 px-4 py-12">
@@ -47,7 +55,7 @@ export default async function Home() {
           <p className="font-tabular text-3xl font-semibold">{tribunais.length}</p>
           <p className="mt-1 font-medium">Tribunais acompanhados</p>
           <p className="mt-1 text-sm opacity-70">
-            {totalCadeiras} cadeiras ao todo — STF, STJ, TST, STM e TSE
+            {totalCadeiras} cadeiras ao todo — {listaSiglas}
           </p>
         </div>
         <div className="rounded-lg border border-[var(--cp-border)] p-4">
