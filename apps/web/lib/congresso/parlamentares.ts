@@ -120,3 +120,33 @@ export async function obterParlamentar(id: string): Promise<{
 export async function listarIdsDeParlamentares(): Promise<string[]> {
   return (await q.listarParlamentaresAtivos()).map((p) => p.id);
 }
+
+export interface ParlamentarResumo {
+  id: string;
+  casa_id: string;
+  nome: string;
+  nome_eleitoral: string | null;
+  partido: string | null;
+  uf: string | null;
+  url_foto: string | null;
+}
+
+/** Nome de exibição de cada casa — as 2 semeadas em `casas` (ver `0003_seed_casas.sql`). */
+export const ROTULO_CASA: Record<string, string> = {
+  camara: "Câmara dos Deputados",
+  senado: "Senado Federal",
+};
+
+/**
+ * Todo parlamentar ativo, para a página-índice. Mesma base de
+ * `listarIdsDeParlamentares` — só quem tem perfil pré-renderado —, então
+ * todo card daqui sempre linka para uma página `/parlamentares/[id]` que
+ * existe de fato.
+ */
+export async function listarParlamentares(): Promise<ParlamentarResumo[] | null> {
+  const linhas = await q.listarParlamentaresComResumo();
+  if (!linhas) return null;
+  return (linhas as ParlamentarResumo[]).sort((a, b) =>
+    (a.nome_eleitoral ?? a.nome).localeCompare(b.nome_eleitoral ?? b.nome, "pt-BR")
+  );
+}
