@@ -62,9 +62,30 @@ jobs:
           # tem o AUTOR do PL para sugerir — que é justamente o caso inútil
           # que 0004 existe para resolver.
           python -m etl.camara.orgaos_membros
+          # 2026-08-09: 5 módulos existiam sem nunca rodar no CI. Autoria e
+          # presença entram aqui (semanal) porque o próprio módulo diz que
+          # não mudam dia a dia — autoria.py lê um CSV do ANO inteiro
+          # (~12 MB) e recomenda `--so-faltantes`; presenca.py é folha de
+          # ponto acumulada, não evento pontual. Os outros três
+          # (eventos/tramitacoes/votacoes) entram na rotina diária abaixo,
+          # porque cada um documenta o oposto: precisam de frescor de dia.
+          python -m etl.camara.autoria --so-faltantes
+          python -m etl.camara.presenca
 
       - name: Rotina diária
         if: inputs.modulo == '' && github.event.schedule != '0 10 * * 1'
         run: |
           python -m etl.camara.proposicoes
           python -m etl.analise
+          # Agenda: o valor do módulo é permitir agir ANTES da audiência
+          # pública, então staleness de mais de um dia já perde o ponto.
+          python -m etl.camara.eventos
+          # tramitacoes.py documenta, no próprio arquivo, que rodar tudo
+          # todo dia é caro e desnecessário e recomenda ordenar pelas mais
+          # desatualizadas com um teto — `--limite` é o teto, não um valor
+          # arbitrário meu.
+          python -m etl.camara.tramitacoes --limite 200
+          # votacoes.py pagina por janela de dias (limite de 504 da própria
+          # Câmara em janela larga). 7 dias por rodada diária é redundante
+          # de propósito: se um dia falhar, o próximo cobre de novo.
+          python -m etl.camara.votacoes --dias 7
