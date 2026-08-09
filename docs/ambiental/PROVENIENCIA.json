@@ -213,6 +213,20 @@
       "verificado_em": "2026-08-09",
       "sha256": null,
       "observacao": "2212 barragens em MG, das quais 1871 (IGAM+ANEEL+ANA) fora de FEAM/ANM ja documentados em ide_barragens/anm_barragens. Sem codigo IBGE de municipio na fonte -- filtro por UF no servidor, por nome em codigo. Testado ao vivo: Betim tem 2 barragens (Dique D/ANM e Barragem Vargem das Flores/IGAM, esta ultima nao esta em nenhuma outra fonte). nivel_perigo vazio em ~97% das linhas -- nao substitui a FEAM para DCE de mineracao. Coletor: etl/betim/etl/apis/snisb_barragens.py."
+    },
+    {
+      "id": "cap_autos_infracao_mg",
+      "nome": "Consulta Geral de Autos de Infracao e Arrecadacao (CAP) -- autuacao ambiental estadual de MG",
+      "orgao": "SEMAD",
+      "url": "https://ecosistemas.meioambiente.mg.gov.br/consulta-ai/api/autos/filtro-avancado",
+      "formato": "JSON paginado (POST), 50 por pagina fixo",
+      "autenticacao": "nenhuma",
+      "licenca": "Nenhuma declaracao no proprio sistema. Suporte indireto na politica de privacidade do SISEMA (semad.mg.gov.br/politica-de-privacidade-do-sisema): 'conteudo pode ser reutilizado, desde que a fonte seja identificada'. Sem mencao a vedacao comercial. Mesma base ja aceita para as demais fontes SEMAD deste arquivo.",
+      "uso_comercial_vedado": false,
+      "n_registros": 9621,
+      "verificado_em": "2026-08-09",
+      "sha256": null,
+      "observacao": "n_registros e de Betim (linhas, nao autos). Outros medidos: BH 26764, Diamantina 25292, Gov. Valadares 23372, Aracuai 11368, Itinga 4994. GRAO: uma linha e (auto x dispositivo legal), o mesmo num_ai repete -- contar linha como autuacao infla o numero. Quatro recortes de coluna da MESMA consulta (tipoDado DI/PA/DA/CA, mesmo id e mesmo total), juntados por id pelo coletor; tipoDado invalido cai em DI em silencio. per_page fixo em 50 e ignora sobrescrita: BH custa ~2144 requisicoes, ETL mensal com pausa. Filtro server-side por NOME de municipio (sem codigo IBGE), resolvido contra /api/autos/municipios com normalizacao, aborta se nao casar. PRIVACIDADE: a fonte JA MASCARA CPF de pessoa fisica (***.327.536-**) e publica CNPJ inteiro -- melhor que o IBAMA e que o XLSX de outorga do IGAM. Coletor: etl/betim/etl/apis/cap_autos_infracao.py; migration 0050_cap_autos_infracao.sql (nao aplicada, Neon em 402 ate 2026-09-01)."
     }
   ],
   "em_avaliacao": [
@@ -252,29 +266,14 @@
       "orgao": "FEAM",
       "url": "https://ecosistemas.meioambiente.mg.gov.br/sigibar-ui/#/acessoExterno",
       "formato": "SPA Angular + backend REST (sigibar/acessoExterno/*)",
-      "autenticacao": "nenhuma para metadado; listagem de barragens atras de dialogo com reCAPTCHA",
-      "licenca": "nao verificada -- listagem principal nao acessada",
-      "uso_comercial_vedado": null,
-      "n_registros": null,
-      "verificado_em": "2026-08-09",
-      "sha256": null,
-      "pendencia": "GET sigibar/acessoExterno/listarMunicipiosSigibarMg responde 200 sem login (lista real dos 853 municipios de MG). A listagem de barragens em si esta atras de um dialogo 'Deseja prosseguir?' com reCAPTCHA -- regra de parada do projeto (mesma do SLA, F0-discovery.md secao 2.2): nao contornado.",
-      "observacao": "Poderia reconciliar o [VERIFY] de tres contagens diferentes de barragem de mineracao em MG (FEAM 249 x WFS 259 x SNISB 320) se destravado."
-    },
-    {
-      "id": "cap_autos_infracao_mg",
-      "nome": "Consulta Geral de Autos de Infracao e Arrecadacao (CAP) -- autuacao ambiental estadual de MG",
-      "orgao": "SEMAD",
-      "url": "https://ecosistemas.meioambiente.mg.gov.br/consulta-ai",
-      "formato": "SPA Next.js + backend REST (consulta-ai/api/autos/*)",
-      "autenticacao": "nenhuma",
+      "autenticacao": "nenhuma para metadado; listagem de barragens atras de reCAPTCHA Enterprise (validaRecaptcha score > 0.5 antes de listarBarragemPorFiltro)",
       "licenca": "nao verificada",
       "uso_comercial_vedado": null,
-      "n_registros": null,
+      "n_registros": 572,
       "verificado_em": "2026-08-09",
       "sha256": null,
-      "pendencia": "Endpoints de apoio confirmados publicos (consulta-ai/api/autos/municipios e /relatorio-geral/last-update, ambos 200, dado atualizado no mesmo dia). O contrato da consulta de verdade (POST disparado pelo botao 'Consultar', que exige seleção de 'dados exibidos' + 1 filtro) nao foi reproduzido nesta sessao -- precisa de mapeamento dedicado antes de virar coletor.",
-      "observacao": "Municipio na fonte e so NOME, sem codigo IBGE (mesma lacuna do SNISB). Complementar ao IBAMA (§10 do F0-discovery.md): jurisdicao estadual, provavelmente mais denso por municipio pequeno de MG do que o federal. Exportacao para Excel de ate 100.000 registros disponivel na UI."
+      "pendencia": "BLOQUEIO DE POLITICA, NAO DE MAPEAMENTO. Sessao de navegador conduzida pelo usuario em 2026-08-09 alcancou a listagem como humano: 572 barragens em MG, 3 em Betim. O caminho de maquina (POST sigibar/acessoExterno/listarBarragemPorFiltro) so e chamado pela UI depois de validaRecaptcha aprovar -- chamar direto e contornar a protecao, o que a regra do projeto (F0-discovery.md 2.2) proibe. Contrato do filtro registrado em F0-discovery.md 13.1 para o caso de a decisao mudar ou a SEMAD publicar sem captcha.",
+      "observacao": "Tem o que o SNISB nao tem: Condicao de Estabilidade, Nivel de Emergencia e Data da Ultima Auditoria (o nivel_perigo do SNISB e vazio em ~97% das linhas). Os 572 NAO reconciliam o [VERIFY] de 249x259x320 -- o aviso da propria tela diz que barragem desativada continua listada, entao e um universo maior e de definicao diferente."
     }
   ],
   "descartadas": [
@@ -307,6 +306,11 @@
       "id": "incra_i3geo",
       "url": "https://acervofundiario.incra.gov.br/i3geo/",
       "motivo": "Declara 'vedado o uso comercial'. Incompativel com um eixo que vende publicidade. Nao usar aqui."
+    },
+    {
+      "id": "igam_sistemas_ecosistemas",
+      "url": "https://ecosistemas.meioambiente.mg.gov.br/ (DAURH, MIRA, SGBH, SIGMA)",
+      "motivo": "Os 4 sistemas do IGAM verificados um a um em 2026-08-09, com o usuario JA AUTENTICADO no portal -- nenhum e consulta publica agregada por municipio. DAURH: so formulario de submissao (CADU), sem consulta a declaracoes de terceiros. MIRA: redireciona para /portalseguranca/login (CPF+senha). SGBH: memorial de calculo amarrado a outorga do proprio usuario. SIGMA: card de relatorios redireciona para app.powerbi.com/singleSignOn. Veredito escrito em F0-discovery.md secao 13.4 para ninguem pesquisar de novo."
     }
   ]
 }

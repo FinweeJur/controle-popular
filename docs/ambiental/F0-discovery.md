@@ -12,6 +12,12 @@
 > IBAMA e SNISB têm coletor funcionando (testado ao vivo, ver §10-11); IGAM tem fonte
 > real mas fragmentada, sem coletor ainda (§12). §13 documenta o catálogo de serviços
 > do Portal Ecosistemas, descoberto ao vivo durante a mesma sessão.
+>
+> **Segunda passada, mesmo dia:** o CAP (autuação ambiental estadual de MG) saiu de
+> "achado promissor" para **fonte mapeada com coletor** (§13.2); os 4 sistemas restantes
+> do IGAM foram verificados um a um e **fechados por escrito** — nenhum é consulta
+> pública por município (§13.4); e o SIGIBAR ficou de fora **por política** (reCAPTCHA
+> Enterprise), com o contrato registrado para o caso de a decisão mudar (§13.1).
 
 O eixo `/ambiental` cobre licenciamento ambiental de MG (SEMAD/COPAM), barragens e um
 painel unificado de legislação ambiental nacional e estadual.
@@ -625,7 +631,37 @@ A home (`/eco-ui`) tem 4 módulos de "Transparência" (consulta pública, sem lo
 | **Gestão de Barragens (SIGIBAR)** | `/sigibar-ui/#/acessoExterno` | ⚠️ parcial — abaixo |
 | **Consulta Geral de Autos de Infração (CAP)** | `/consulta-ai` | ✅ novo achado — abaixo |
 
-### 13.1 SIGIBAR — metadado público confirmado, listagem de barragens não acessada
+### 13.1 SIGIBAR — listagem existe e é pública, mas o caminho de máquina é captcha-gated ⛔
+
+> **Atualização 2026-08-09 (segunda passada).** Uma sessão de navegador conduzida pelo
+> usuário **alcançou a listagem** — o badge de reCAPTCHA não impediu a navegação humana:
+> **572 barragens em MG**, 3 em Betim (ex.: ID 530, Barragem de Ibirité, PETROBRAS,
+> Indústria, CRI Baixo, PDA Alto, estabilidade atestada, auditoria em 20/08/2025). As
+> colunas que o SIGIBAR tem e o SNISB **não** tem são justamente as boas: Condição de
+> Estabilidade, Nível de Emergência e Data da Última Auditoria.
+>
+> **Mesmo assim não há coletor, e a razão é de política, não de mapeamento.** Lendo o
+> bundle Angular (`sigibar-ui/main.*.js`) fica explícito que `POST
+> /sigibar/acessoExterno/listarBarragemPorFiltro` só é chamado **depois** de
+> `validaRecaptcha` devolver `score > 0.5` (reCAPTCHA **Enterprise**). Chamar o endpoint
+> direto de um ETL é contornar essa proteção — a regra de parada do §2.2 vale aqui. O
+> contrato do filtro está mapeado e registrado abaixo para quem for retomar **se** a
+> decisão de política mudar (ou se a SEMAD publicar o mesmo dado sem captcha):
+>
+> ```
+> POST /sigibar/acessoExterno/listarBarragemPorFiltro
+>   {idBarragem, nomeBarragem, nomeEmpreendedor, idMunicipio, atividadeBarragem,
+>    categoriaRisco, potencialDanoAmbiental, statusCondicaoEstabilidade,
+>    nivelEmergencia, statusAtualCadastro, statusCadastroDesativacao,
+>    anoUltimaAuditoria, page (0-based no wire), size}
+>   -> {content:[...], totalElements}
+> ```
+>
+> **Os 572 não reconciliam o [VERIFY] de §11.1 (249 × 259 × 320)** — o aviso da própria
+> tela diz que barragem desativada continua listada, então 572 é um universo maior e de
+> definição diferente, não um quarto valor para o mesmo conceito.
+
+**(registro original da primeira passada, mantido)**
 
 Mesmo padrão de backend já visto no SLA (`/environments-api/?variaveis=...`). O endpoint
 `GET /sigibar/acessoExterno/listarMunicipiosSigibarMg` respondeu **200, sem login**, com a
@@ -636,7 +672,40 @@ regra de parada já estabelecida no §2.2 para CAPTCHA: não contornado, não te
 Poderia reconciliar o [VERIFY] de §11.1 (249×259×320 barragens de mineração em MG) se
 alguém destravar isso depois.
 
-### 13.2 CAP — Consulta Geral de Autos de Infração e Arrecadação — achado promissor, não mapeado
+### 13.2 CAP — Consulta Geral de Autos de Infração e Arrecadação ✅ MAPEADO, COM COLETOR
+
+> **Atualização 2026-08-09 (segunda passada).** Contrato reproduzido ao vivo, sem login e
+> sem captcha. Coletor: `etl/betim/etl/apis/cap_autos_infracao.py` + migration
+> `supabase/betim/migrations/0050_cap_autos_infracao.sql` (tabela `cap_autos_infracao`,
+> refresh total por município, **não aplicada** — Neon em 402 até 2026-09-01).
+>
+> ```
+> POST /consulta-ai/api/autos/filtro-avancado
+>   {numero_ai, lavratura_inicio, lavratura_fim, nome_autuado, cpfCnpj,
+>    municipios:[{value:<nome>}], orgaos:[], unidades:[],
+>    page:<1-based>, tipoDado:<DI|PA|DA|CA>, search:""}
+>   -> {data:[...], meta:{current_page,last_page,total,per_page:50}}
+> ```
+>
+> Volume medido por município: **BH 26.764 · Diamantina 25.292 · Gov. Valadares 23.372 ·
+> Araçuaí 11.368 · Betim 9.621 · Itinga 4.994** linhas.
+>
+> Quatro armadilhas que valem para além deste módulo:
+> 1. **Linha não é auto** — o grão é (auto × dispositivo legal). O mesmo `num_ai` aparece
+>    N vezes com `num_lei` diferente. "9.621 autuações em Betim" é falso.
+> 2. **`tipoDado` inválido cai em `DI` em silêncio** (`''`, `'ALL'`, `'*'` → 200 com as
+>    colunas de DI). Um typo não falha, só entrega menos coluna.
+> 3. **Os 4 `tipoDado` são recortes de coluna da MESMA consulta** — mesmo `id`, mesmo
+>    `total`. Coletar tudo custa 4 passadas e junta-se por `id`.
+> 4. **`per_page` é fixo em 50 e ignora sobrescrita** — BH custa ~2.144 requisições por
+>    rodada. É ETL mensal, com pausa entre requisições.
+>
+> **Achado de privacidade, e é o inverso do que se temia:** o CAP **já mascara CPF de
+> pessoa física** (`***.327.536-**`) e publica CNPJ inteiro. É postura melhor que a do
+> IBAMA (§10, CPF em claro) e que a do XLSX de outorga do IGAM (§12.2, CPF completo). Não
+> há decisão de redação a tomar nesta fonte.
+
+**(registro original da primeira passada, mantido)**
 
 `ecosistemas.meioambiente.mg.gov.br/consulta-ai` é o **autos de infração ESTADUAL de MG**
 (sistema CAP), complementar ao IBAMA federal (§10) — jurisdições diferentes. Confirmado ao
@@ -678,3 +747,28 @@ das Águas)  · IGAMSOUT (= SOUT, outorga, §12.2)
 **Próximo passo, se alguém priorizar**: IGAMDAURH, IGAMMIRA, IGAMSGBH e IGAMSIGMA são os
 únicos desta lista genuinamente não-investigados (os demais já foram resolvidos, descartados
 ou mapeados em §10-13.2 acima).
+
+### 13.4 Veredito dos 4 sistemas do IGAM ⛔ FECHADO — nenhum serve como fonte por município
+
+Verificado ao vivo em 2026-08-09 numa sessão de navegador conduzida pelo usuário, **já
+autenticado** no Portal Ecosistemas (o que torna o veredito mais forte, não mais fraco:
+nem com sessão ativa existe consulta pública agregada). **Esta seção existe para que
+ninguém pesquise isto de novo** — é o item 20 do Bloco 4 do plano de execução.
+
+| Sistema | Veredito | Por quê |
+|---|---|---|
+| **IGAMDAURH** (Declaração Anual de Uso de Recursos Hídricos) | ⛔ não serve | Só formulário de **submissão** (exige cadastro CADU). Não existe tela de consulta às declarações de terceiros — não há o que coletar. |
+| **IGAMMIRA** (Monitoramento Telemétrico) | ⛔ parada por login | O link oficial cai em `/portalseguranca/login`, pedindo CPF+senha. Sessão interrompida ali pela política do projeto (nunca autenticar com credencial de terceiro). |
+| **IGAMSGBH** (Gestão de Bacias Hidrográficas) | ⛔ não serve | É o "Memorial de Cálculo" da cobrança, **amarrado à outorga/CADU do próprio usuário** — consulta pessoal, não agregada por município. |
+| **IGAMSIGMA** (Gestão do Monitoramento das Águas) | ⛔ parada por SSO | O card "Hub de Relatórios" redireciona para `app.powerbi.com/singleSignOn` (login Microsoft, outro domínio). |
+
+**Colateral, não seguido:** o SGBH linka uma planilha pública de "CONSULTA DETALHAMENTO
+DOS VALORES" (cobrança 2024/2023) hospedada em **OneDrive**, fora do domínio da SEMAD.
+Não aberta — domínio de terceiro, e planilha de cobrança por outorgado tem o mesmo perfil
+de exposição de CPF já documentado em §12.2. Fica registrado como pista, não como fonte.
+
+**Consequência para o eixo Ambiental:** a única frente do IGAM que sobrevive é a de §12.1
+(IQA via WFS), e ela continua bloqueada pelo mesmo motivo de antes — sem campo de
+município, exige join espacial com a malha do IBGE, cuja licença é o [VERIFY] #3 da §8.
+O que o IGAM regula e é coletável hoje chega por **outros** órgãos: barragens via SNISB
+(§11, 1.523 delas atribuídas ao IGAM) e autuação via CAP (§13.2).
