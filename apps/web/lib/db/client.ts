@@ -92,7 +92,17 @@ function ehPostgresLocal(url: string): boolean {
  * Por isso `pg` é devDependency: produção (Workers) nunca a carrega.
  */
 function criarLocal(url: string): DB {
-  const requireDeNode = (0, eval)("require") as NodeRequire;
+  // `(0, eval)("require")` NAO serve aqui, e o modo de falha e traicoeiro:
+  // em Node solto funciona, mas dentro do chunk do Turbopack (ESM) da
+  // `ReferenceError: require is not defined`, cai no catch de `getDb()` e o
+  // build sai VERDE com zero pagina de cidade. Medido em 2026-08-09.
+  //
+  // `process.getBuiltinModule` (Node 22) devolve `node:module` SEM import
+  // estatico — que e o ponto: o bundler do Worker continua sem enxergar `pg`.
+  const { createRequire } = (
+    process as unknown as { getBuiltinModule(id: string): typeof import("node:module") }
+  ).getBuiltinModule("node:module");
+  const requireDeNode = createRequire(`${process.cwd()}/`);
   const { Pool } = requireDeNode("pg");
   const { drizzle: drizzlePg } = requireDeNode("drizzle-orm/node-postgres");
   // O cast mantém `DB` com UM tipo só. Os dois drivers expõem a mesma
@@ -126,7 +136,12 @@ export function getDb(): DB | null {
   if (!url) return (memo = null);
   try {
     return (memo = ehPostgresLocal(url) ? criarLocal(url) : criar(url));
-  } catch {
+  } catch (e) {
+    // O `catch` mudo era a pior falha do pipeline: `DATABASE_URL` presente e
+    // driver quebrado davam build VERDE com zero pagina de cidade, porque
+    // `generateStaticParams` recebia lista vazia e ninguem via a causa.
+    // Continua devolvendo `null` (chamador trata), mas agora diz por que.
+    console.error("[getDb] falhou ao criar conexao; seguindo sem banco:", e);
     return (memo = null);
   }
 }
