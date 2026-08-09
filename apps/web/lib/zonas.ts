@@ -113,18 +113,28 @@ export const ZONAS: Zona[] = [
     href: "/ambiental",
     etiqueta: "Estadual · Meio ambiente em Minas Gerais",
     titulo: "O que o COPAM vai decidir sobre a sua cidade",
+    // CÓPIA CORTADA PARA O QUE EXISTE, ao publicar a zona em 2026-08-09.
+    //
+    // Os quatro itens antigos descreviam a zona PRONTA (COPAM, licenciamento,
+    // barragens, legislação) e só barragens tem tela e dado — as outras três
+    // nem tabela têm. Um card que promete quatro e entrega uma não é
+    // "antecipação de roadmap": é o portal de transparência mentindo na
+    // vitrine, no único lugar onde ele não pode.
+    //
+    // Os números não-publicados continuam visíveis, mas onde são honestos: na
+    // própria `/ambiental`, que se declara em construção e cita a data da
+    // medição de cada um (`docs/ambiental/F0-discovery.md`).
     descricao:
-      "As reuniões do Conselho Estadual de Política Ambiental com a pauta aberta antes da decisão, o licenciamento ambiental de Minas filtrável por município, empresa e setor, e a situação de cada barragem.",
+      "A situação de cada barragem de Minas — condição de estabilidade, nível de emergência e categoria de risco. As reuniões do COPAM, o licenciamento e a legislação ambiental estão em construção, com as fontes já verificadas.",
     resumo:
-      "O que o COPAM vai julgar, onde e sobre quem — mais licenciamento e barragens em Minas.",
+      "Barragens de Minas: estabilidade, emergência e risco. O resto da frente ambiental está em construção.",
     itens: [
-      "Pauta das reuniões do COPAM antes de acontecerem",
-      "Licenciamento por município, empresa e setor",
       "Barragens: condição de estabilidade e nível de emergência",
-      "Legislação ambiental federal e estadual num lugar só",
+      "Inventário da Feam cruzado com o registro nacional da ANM",
+      "Em construção: COPAM, licenciamento e legislação ambiental",
     ],
     cor: "var(--cp-tertiary)",
-    publicada: false,
+    publicada: true,
   },
 ];
 
