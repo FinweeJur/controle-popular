@@ -1022,6 +1022,28 @@ export async function listarParlamentaresAtivos() {
 }
 
 /**
+ * Todo parlamentar ativo, com os campos que a página-índice usa — mesmo
+ * filtro de `listarParlamentaresAtivos` (só quem tem página `/parlamentares/[id]`
+ * pré-renderada), com nome/partido/uf/foto além do id.
+ */
+export async function listarParlamentaresComResumo() {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      id: parlamentaresInCongresso.id,
+      casa_id: parlamentaresInCongresso.casa_id,
+      nome: parlamentaresInCongresso.nome,
+      nome_eleitoral: parlamentaresInCongresso.nome_eleitoral,
+      partido: parlamentaresInCongresso.partido,
+      uf: parlamentaresInCongresso.uf,
+      url_foto: parlamentaresInCongresso.url_foto,
+    })
+    .from(parlamentaresInCongresso)
+    .where(eq(parlamentaresInCongresso.ativo, true));
+}
+
+/**
  * A folha de ponto CRUA de um parlamentar — uma linha por dia.
  *
  * Devolve só o que `calcularPresencaDias` (`lib/atuacao-parlamentar.ts`)
