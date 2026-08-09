@@ -294,33 +294,50 @@ DECLARADA no módulo da página. A armadilha é que o re-export **passa** no alv
 Cloudflare, onde a função nem é exigida por página — parece certo em todo lugar
 menos onde importa. O formato que funciona está em `lib/betim/staticParams.ts`.
 
-### 8.2 A conversão "filtrar no cliente" JÁ FOI FEITA em 7 páginas — e não basta
+### 8.2 A conversão "filtrar no cliente" já foi feita em 7 páginas
 
-`coleta-lixo`, `compra-e-venda`, `meio-ambiente/paraopeba`,
-`postos-combustivel`, `prefeitura/despesas`, `prefeitura/obras` e `zap` já não
-leem `searchParams` no servidor: têm componente de lista `"use client"` com
-`useSearchParams()` dentro de `<Suspense>`. O §3 conta essas páginas como
-pendentes; elas não são. **Mas o export continua reprovando as duas
-primeiras**, com a mesma mensagem enganosa de "missing generateStaticParams()"
-— que elas têm, declarada localmente.
+`coleta-lixo`, `compra-e-venda`, `meio-ambiente/paraopeba`, `postos-combustivel`,
+`prefeitura/despesas`, `prefeitura/obras` e `zap` já não leem `searchParams` no
+servidor: têm componente de lista `"use client"` com `useSearchParams()` dentro
+de `<Suspense>`. O §3 conta essas páginas como pendentes; **não são**.
 
-`export const dynamic = "force-static"` foi testado nas sete e **não resolve**.
+### 8.3 "missing generateStaticParams()" quer dizer "retornou lista vazia" ✅ RESOLVIDO
 
-### 8.3 [ABERTO] O erro é não-determinístico, e isso é a pista
+Custou três hipóteses erradas, e o diagnóstico final é constrangedoramente
+simples. A mensagem
 
-*Collecting page data* usa 15 workers, e a página citada muda entre rodadas
-(`coleta-lixo` e `compra-e-venda` se alternam em corridas idênticas). Duas
-consequências práticas para quem retomar:
+```
+Page "/[municipio]/qualquer-uma" is missing "generateStaticParams()"
+```
 
-1. **Não confie em "o erro andou" como sinal de conserto.** Foi o que me levou
-   a concluir duas vezes que um ajuste tinha funcionado quando não tinha. Só
-   vale como progresso quando o nome sai da família inteira de páginas.
-2. **O próximo passo é uma reprodução mínima**, não mais tentativa e erro:
-   uma página de teste sob um segmento dinâmico, com `generateStaticParams`
-   local e um filho `"use client"` chamando `useSearchParams()`, e ver se ela
-   sozinha reproduz. Se reproduzir, o problema é o padrão; se não, é algo
-   específico dessas duas páginas — e as duas compartilham exportar do mesmo
-   módulo cliente um segundo componente (`ListaXCompleta`) usado como
-   *fallback* do próprio `<Suspense>`, que é o candidato mais óbvio.
+aparece **também quando a função existe, é reconhecida e devolve `[]`**.
 
-O alvo Cloudflare passa em todas as mudanças acima (tsc + build completos).
+Prova: com `return [{ municipio: "betim" }]` fixo em `dados/page.tsx`, aquela
+página passa e o erro anda para a próxima. Nada mais mudou.
+
+E `paramsDasCidades()` devolve `[]` nesta máquina porque `slugsDasCidades()`
+devolve `[]` quando não há `DATABASE_URL` — comportamento correto e deliberado
+(`lib/db/client.ts` devolve `null` para o repo poder ser clonado sem
+credencial).
+
+**Consequência, e é a boa notícia:** não há bug nas páginas. O export não
+fecha numa máquina sem banco, e **fecha assim que houver banco** — o que é
+exatamente o que a máquina de build vai ter. As correções do §8.1 (as 53
+páginas) continuam necessárias e corretas.
+
+**As três hipóteses que eu queimei antes de testar a óbvia**, registradas para
+ninguém repetir:
+1. *"É o re-export que não é reconhecido"* — plausível, e falso. A declaração
+   local falhou igual. (O re-export **também** não funciona, mas por outro
+   motivo, e isso continua valendo.)
+2. *"É `useSearchParams()` no filho cliente"* — falso: `dados/page.tsx` não tem
+   filtro nenhum e falhava igual.
+3. *"`export const dynamic = 'force-static'` resolve"* — falso; foi aplicado às
+   sete páginas e nada mudou.
+
+**A lição de método, que é o que realmente custou:** o erro parece
+não-determinístico porque a coleta usa ~15 workers e nomeia uma página
+arbitrária entre as que falham. Como TODAS estavam falhando, cada tentativa
+mudava o nome e parecia progresso. **Antes de tentar consertar, isole**: tirar
+duas páginas do caminho e ver que a terceira — sem `searchParams` nenhum —
+falhava igual foi o que derrubou as três hipóteses de uma vez.
