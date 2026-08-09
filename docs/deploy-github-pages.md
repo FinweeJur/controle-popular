@@ -76,8 +76,53 @@ está declarada em um lugar só, no `next.config.ts`.
 
 ## 3. O que ainda falta para o export fechar
 
+> **Inventário refeito em 2026-08-09 por varredura do código, e o número
+> mudou: são 21 páginas, não 11.** A lista de 2026-08-03 estava errada em três
+> pontos, todos verificados agora:
+>
+> - **10 páginas novas** entraram desde então e nunca foram inventariadas:
+>   `/busca`, `camara/votacoes`, `camara/legislacao`, `prefeitura/licitacoes`,
+>   `zap`, e as seis do eixo Congresso (`agenda`, `alertas`, `bancadas`,
+>   `bons-exemplos`, `proposicoes`, `votacoes`). O inventário original só varreu
+>   `[municipio]`, então o Congresso nunca esteve na conta.
+> - **`congresso/bons-exemplos` estava explicitamente EXCLUÍDA** da lista ("lê
+>   só `params`") e lê `searchParams` na linha 15.
+> - **`prefeitura/legislacao` está na lista e não lê mais** `searchParams`; quem
+>   lê hoje é `camara/legislacao`, com os mesmos quatro filtros. A rota mudou de
+>   lugar e o documento ficou.
+>
+> Lição: este inventário precisa ser gerado, não escrito à mão.
+> `grep -rl searchParams app --include=page.tsx` responde em um segundo, e
+> qualquer página nova nasce fora de uma lista mantida manualmente.
+
 As páginas abaixo leem `searchParams` no servidor. Em `output: 'export'`
 isso é erro de build — não há request no momento da geração.
+
+### 3.1 As 10 que faltavam no inventário (2026-08-09)
+
+| Página | Filtros | Caminho |
+|---|---|---|
+| `zap` | filtros de listagem | filtrar no cliente |
+| `camara/legislacao` | categoria, tema, ano, direito | filtrar no cliente |
+| `congresso/agenda` | período | filtrar no cliente |
+| `congresso/alertas` | listagem | filtrar no cliente |
+| `congresso/bancadas` | listagem | filtrar no cliente |
+| `camara/votacoes` | ano, q, **paginação** | **JSON estático + tabela cliente** |
+| `prefeitura/licitacoes` | ano, situação, modalidade, q, **paginação** | **JSON estático + tabela cliente** |
+| `congresso/bons-exemplos` | filtros + **paginação** | **JSON estático + tabela cliente** |
+| `congresso/proposicoes` | filtros + **paginação** | **JSON estático + tabela cliente** |
+| `congresso/votacoes` | filtros + **paginação** | **JSON estático + tabela cliente** |
+
+**`/busca` é a exceção que não cabe em nenhuma das duas colunas.** Criada em
+2026-08-09, é consulta de texto completo em português com `unaccent`, feita
+**pelo Postgres**, sobre a legislação inteira. Não existe "filtrar no cliente":
+o conjunto candidato é o corpus, não uma página de resultados. Em modo estático
+ela exigiria um índice gerado no build mais um buscador no navegador — e o
+resultado **não seria equivalente**, porque `to_tsvector('portuguese')` faz
+radicalização que um índice ingênuo não faz. É a única página desta lista cuja
+versão estática é funcionalmente inferior, e isso é decisão de produto.
+
+### 3.2 O inventário de 2026-08-03 (mantido, com as correções acima)
 
 | Página | Filtros | Caminho |
 |---|---|---|
@@ -93,9 +138,14 @@ isso é erro de build — não há request no momento da geração.
 | `prefeitura/servidores` | q + paginação | **JSON estático + tabela cliente** |
 | `vereadores/[slug]` | aba | filtrar no cliente |
 
-`/[municipio]/legislacao/alertas` e `/bons-exemplos`, criadas depois deste
+~~`/[municipio]/legislacao/alertas` e `/bons-exemplos`, criadas depois deste
 inventário, **não** entram na lista: lêem só `params`, não `searchParams`, e
-saem no export sem trabalho nenhum.
+saem no export sem trabalho nenhum.~~
+
+**Errado, conferido em 2026-08-09**: `congresso/bons-exemplos` lê
+`searchParams` na linha 15 e tem paginação — está na tabela §3.1. A linha de
+`prefeitura/legislacao` na tabela abaixo também não vale mais: hoje quem lê os
+quatro filtros é `camara/legislacao`.
 
 Os sete primeiros são pequenos: o servidor renderiza o conjunto inteiro e um
 componente cliente com `useSearchParams()` filtra. Os três em negrito têm
@@ -159,3 +209,57 @@ variável `NEXT_PUBLIC_*` é inlinada em texto claro no bundle.
 Ou seja: se essas funções são requisito, já existe um Worker no desenho — e
 aí manter o resto no Cloudflare é mais simples do que dividir o site em dois
 provedores.
+
+---
+
+## 7. "E se o servidor for o meu PC?" — as três arquiteturas, 2026-08-09
+
+Pergunta levantada durante o bloqueio da Neon. Ela tem três respostas
+diferentes, e a diferença entre elas decide se o site fica de pé.
+
+**O fato que ordena tudo: o egress da Neon é queimado pelo BUILD, não pelo
+site.** Cada `next build` lê o banco inteiro para pré-renderizar as ~715
+páginas — é daí que saem os ~0,4 GB por rodada. O que o Worker gasta em
+runtime é o tráfego das 15 rotas `.din.ts` e das páginas dinâmicas, ordens de
+grandeza menor. Quem entende isso vê que "tirar a Neon" e "ter servidor
+próprio" não são o mesmo problema.
+
+### A. PC hospeda só o banco, site continua no Cloudflare ❌
+
+O Worker teria de alcançar o Postgres da sua casa. Três problemas somados:
+Worker não fala TCP puro com Postgres (o driver da Neon é HTTP, por isso ela
+foi escolhida); expor Postgres à internet é superfície de ataque de primeira
+grandeza; e a disponibilidade do portal passa a ser a da sua energia elétrica
+e do seu link de subida. Pior dos três mundos — não fazer.
+
+### B. PC hospeda tudo (Next.js + Postgres), Cloudflare Tunnel na frente ⚠️
+
+Mata a Neon, mata o teto de 3 MiB do Worker (a **área logada voltaria**), e
+mantém chat, formulários e todas as rotas dinâmicas funcionando. Tunnel é
+grátis e não exige abrir porta no roteador.
+
+O preço é honesto e é grande: **a disponibilidade do portal de transparência
+vira a disponibilidade do seu PC.** Queda de luz, reinício do Windows,
+atualização, viagem — o site cai junto. Para um portal que existe para ser
+consultado por terceiros, isso é uma troca ruim, e não é reversível de graça
+depois que o endereço estiver divulgado.
+
+### C. PC é a máquina de BUILD; Cloudflare serve HTML estático ✅
+
+O banco fica no seu PC, o `next build` roda contra `localhost` — **egress
+zero, custo zero, sem cota** — e o resultado é HTML publicado no Cloudflare.
+O PC **não precisa ficar ligado** para o site funcionar: só na hora de
+atualizar o dado. A Neon vira opcional (backup, ou nada).
+
+É a combinação que resolve a pergunta e o §3 ao mesmo tempo: C **é** fechar o
+modo estático. O que falta é o que está na tabela do §3 — as 21 páginas com
+`searchParams` — mais o §6 para chat e formulários, que já previa um Worker
+pequeno de qualquer forma.
+
+O que se perde em C, e é preciso dizer: `/busca` fica funcionalmente inferior
+(ver §3.1), o painel de administração e o login precisam do Worker do §6, e o
+dado passa a ter a idade do último build que **você** rodou — não há cron que
+salve, porque o banco está na sua mesa.
+
+**Recomendação:** C. B só se a área logada for requisito inegociável e a queda
+ocasional for aceitável. A nunca.
