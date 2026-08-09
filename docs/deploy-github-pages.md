@@ -341,3 +341,98 @@ arbitrária entre as que falham. Como TODAS estavam falhando, cada tentativa
 mudava o nome e parecia progresso. **Antes de tentar consertar, isole**: tirar
 duas páginas do caminho e ver que a terceira — sem `searchParams` nenhum —
 falhava igual foi o que derrubou as três hipóteses de uma vez.
+
+---
+
+## 9. Com banco vivo: o que o §8.3 previu, e o que ele não viu (2026-08-09)
+
+O §8.3 acertou a causa e a previsão: com banco, o export **passa da coleta de
+dados** pela primeira vez. Confirmado por caminho independente na máquina de
+build, com 1.263 páginas pré-renderizadas contra o Postgres local (21 sem
+banco). Duas coisas, porém, ele não viu.
+
+### 9.1 `[municipio]/admin` reprovava por conta própria
+
+Removidas as causas de banco vazio, sobrou **uma** página — e a causa dela não
+era o banco. A varredura das 53 do §8.1 dispensou `admin` com a justificativa
+"é client component". A justificativa está errada duas vezes:
+
+- em `output: 'export'`, **toda** página sob `[municipio]` precisa ser enumerada
+  para virar arquivo, inclusive as que não têm nada de servidor;
+- e um componente cliente **não pode** exportar `generateStaticParams` — é
+  export de servidor. Então não bastava adicionar a função: a página teve de ser
+  partida em casca de servidor + `PainelAdmin.tsx` (`db57e29`).
+
+Regra que sai daí: *"é client component"* nunca é motivo para pular uma página
+no inventário do export. É motivo para **partir** a página.
+
+### 9.2 O obstáculo seguinte é o §3, e o inventário dele estava inflado
+
+Com `admin` resolvida, o export morre em erro diferente e honesto:
+
+```
+Route /[municipio]/camara/legislacao with `dynamic = "error"` couldn't be
+rendered statically because it used `await searchParams`
+```
+
+Ou seja: chegamos onde o §7 previu. Mas o inventário precisa ser **gerado**, e
+gerado com cuidado — `grep -rl searchParams` devolve **21** páginas e o número
+está inflado: 8 delas só citam o termo em comentário (são as já convertidas do
+§8.2). As que de fato consomem no servidor são **13**:
+
+| Página | Caminho |
+|---|---|
+| `camara/legislacao`, `congresso/agenda`, `congresso/alertas` | filtrar no cliente |
+| `camara/proposicoes`, `camara/votacoes`, `prefeitura/contratos`, `prefeitura/licitacoes`, `prefeitura/servidores`, `congresso/bons-exemplos`, `congresso/proposicoes`, `congresso/votacoes` | JSON estático fatiado + `TabelaEstatica` |
+| `vereadores/[slug]` | ✅ feita em `27980bf` |
+| `/busca` | índice estático (ver §9.4) |
+
+O grep que gera o inventário certo:
+
+```bash
+grep -rl searchParams app --include=page.tsx | while read f; do
+  grep -qE 'await searchParams|searchParams:\s*Promise' "$f" && echo "$f"
+done
+```
+
+### 9.3 Estas 13 não são só o export — são 500 em produção AGORA
+
+Descoberta que reordena a prioridade: ler `searchParams` no servidor marca a
+rota como `ƒ` (dinâmica), e dinâmica **consulta o banco a cada requisição**. No
+Worker publicado isso é 500, porque a Neon está em 402 e o Postgres é o da casa.
+Medido no site no ar: `/betim/vereadores/layon-silva` e
+`/betim/prefeitura/contratos` respondiam **500**.
+
+Das 28 rotas `ƒ` do build, **15 são APIs** (`.din.ts`, que realmente precisam de
+servidor) e **13 são estas páginas**. Converter cada uma conserta o site
+publicado *e* fecha o export — não são duas frentes, é uma.
+
+### 9.4 `/busca` não precisa perder a radicalização
+
+O §3.1 registra `/busca` como decisão de produto porque a versão estática
+perderia `to_tsvector('portuguese')`. **Isso vale para busca por substring, não
+para índice.** A radicalização acontece no lado do DOCUMENTO, e documento é
+processado no build — com o Postgres aberto do lado. Pedir os radicais ao
+próprio Postgres (`ts_lexize`) e embarcá-los não é aproximação: é o mesmo
+radicalizador.
+
+Medido: o acervo inteiro dá **~2,0 MB** de radicais e **10.435 lexemas
+distintos** — cabe folgado no mecanismo de fatias de 2 MiB.
+
+Duas armadilhas do português que o índice tem de tratar, e que só aparecem
+medindo (`ts_lexize` em PostgreSQL 18.4):
+
+```
+iluminacao -> iluminaca      iluminação -> ilumin
+saude      -> saud           saúde      -> saúd
+lei        -> lei            leis       -> leis
+ambiental  -> ambiental      ambientais -> ambient
+```
+
+1. **Acento muda o radical.** Os dois lados têm de tirar acento ANTES de
+   radicalizar — é o que a `0046` já faz no servidor com `unaccent_immutable`.
+2. **Plural nem sempre reduz.** Só o radical faria "leis" não achar "lei" — e
+   essa falha ninguém reporta: a pessoa conclui que o portal não tem o dado.
+   Daí o casamento por vizinho morfológico, além do radical exato.
+
+Núcleo e 21 testes em `lib/busca/` (`3925ffa`). Falta o gerador e a tela.

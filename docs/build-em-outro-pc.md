@@ -68,9 +68,46 @@ Se `vector` reclamar que não existe, instale o **pgvector** para o PostgreSQL
 pg_restore -h 127.0.0.1 -U postgres -d controle_popular --no-owner --no-privileges X:/DevCoder/_migracao-neon/dump/cp.dump
 ```
 
-O dump é de 2026-07-28, 94 tabelas, e está algumas tabelas atrás do schema
-atual. As migrations que faltam estão em `supabase/betim/migrations/` — aplique
-em ordem numérica as que forem posteriores ao dump.
+O dump é de 2026-07-28 e tem 94 tabelas.
+
+> **NÃO confie no número da migration para saber o que falta — MEÇA o estado.**
+>
+> Este documento dizia "aplique as posteriores ao dump" e a sessão de
+> 2026-08-09 tratou isso como "`0045` a `0051`". Estava errado por 18
+> migrations. O estado medido do dump é ~`0033`: faltavam colunas de `0025`,
+> `0035`, `0038` e `0039`, tabelas de `0041` e `0044`, e — o pior — os **seeds
+> das cidades**: `municipios` veio com **uma linha só** (Betim), então BH, São
+> Paulo e os três dos Vales não existiam.
+>
+> A causa é que **a numeração não é cronológica**. A história do repo foi
+> reescrita: `0001`–`0026` têm todas o mesmo timestamp, e a `0027` foi escrita
+> em 08-03, *depois* do dump, apesar do número baixo.
+>
+> O que funciona é perguntar ao banco. Para cada migration, veja se o objeto
+> que ela cria já existe:
+>
+> ```bash
+> psql -h 127.0.0.1 -U postgres -d controle_popular -tAc \
+>   "select count(*) from information_schema.tables where table_name='<tabela>'"
+> ```
+>
+> Aplicadas de fato em 2026-08-09: betim `0003`–`0051`, congresso `0003`–`0009`,
+> judiciário `0003`–`0008` e `terras/0001`. As falhas "já existe" são benignas.
+> As reais, todas de estreia: `0045_defesa_civil_so_betim` (`coluna "slug" não
+> existe` — faz `where slug != 'betim'`, e `municipios` não tem coluna `slug`; o
+> slug é derivado em código) e três seeds do judiciário (`0004`, `0005`, `0007`).
+
+**Sem pgvector?** As duas tabelas `embeddings` (em `public` e `congresso`) são
+as únicas que exigem `vector`. Nada no app as consulta — `lib/betim/chat.ts` diz
+explicitamente que faz busca por palavra-chave. Dá para restaurar sem elas,
+gerando uma lista filtrada, e o build não perde nada:
+
+```bash
+pg_restore -l cp.dump | grep -v -i embeddings > toc.txt
+pg_restore -h 127.0.0.1 -U postgres -d controle_popular --no-owner --no-privileges -L toc.txt cp.dump
+```
+
+Resultado medido assim: 92 das 94 tabelas, 44.446 linhas.
 
 ### 4. Clonar o repositório e instalar
 
@@ -87,6 +124,32 @@ Crie `apps/web/.env.local` com **localhost, nunca a Neon**:
 ```
 DATABASE_URL=postgresql://postgres:SUA_SENHA@127.0.0.1:5432/controle_popular
 ```
+
+> **Isto sozinho NÃO bastava, e o passo estava incompleto até 2026-08-09.**
+>
+> `getDb()` usava `neon()` em modo HTTP, que não abre conexão Postgres — ele
+> monta uma URL de API a partir do host. Apontar para `127.0.0.1` dava:
+>
+> ```
+> NeonDbError: Error connecting to database:
+> TypeError: Failed to parse URL from https://api.0.0.1/sql
+> ```
+>
+> Corrigido em `1a616a0`: `criar(url)` escolhe o motor pelo **hostname** —
+> node-postgres para `localhost`/`127.0.0.1`/`::1`, neon-http para o resto. Se
+> você clonou depois desse commit, o passo 5 basta mesmo. Se não, atualize.
+
+E crie também `etl/betim/.env`, com a mesma regra — é de lá que os coletores
+leem:
+
+```
+DATABASE_URL=postgresql://postgres:SUA_SENHA@127.0.0.1:5432/controle_popular
+```
+
+> **O runner de migration NÃO serve para banco local.** O
+> `apps/web/scripts/aplicar-migration.mts` usa o `Pool` do
+> `@neondatabase/serverless`, que fala WebSocket com a Neon. Para o Postgres
+> daqui, use `psql -f` direto.
 
 ### 6. Entrar na conta Cloudflare (uma vez)
 
