@@ -42,7 +42,11 @@ export const paginasDados = (cidade: {
   { href: "/mineracao", nome: "Mineração", desc: "Royalties da mineração (CFEM/ANM)", icon: Pickaxe },
   { href: "/seguranca", nome: "Segurança", desc: "Ocorrências e criminalidade", icon: ShieldAlert },
   { href: "/infraestrutura", nome: "Infraestrutura", desc: "Água e esgoto", icon: Construction },
-  { href: "/meio-ambiente", nome: "Meio Ambiente", desc: "Indicadores ambientais", icon: Trees },
+  // Sem entrada própria para `/meio-ambiente/autuacoes`: a fonte (CAP) é
+  // estadual de MG e esta lista não recebe a UF da cidade, só o nome — um item
+  // aqui apareceria para São Paulo levando a uma página que diz "não cobre sua
+  // cidade". O acesso é pelo hub de Meio Ambiente, que é gateado por UF.
+  { href: "/meio-ambiente", nome: "Meio Ambiente", desc: "Autuações ambientais e fontes do estado", icon: Trees },
   { href: "/terras", nome: "Terras", desc: "Vazio cadastral (pesquisa acadêmica)", icon: LandPlot },
   {
     href: "/emendas",

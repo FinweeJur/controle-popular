@@ -3001,3 +3001,184 @@ export async function votosDeVotacoes(idMunicipio: IdMunicipio, votacaoIds: stri
       )
     );
 }
+
+// ─────────────────── CAP · autuação ambiental estadual (MG) ───────────────────
+
+/**
+ * POR QUE TODA CONSULTA DESTA TABELA COMEÇA COM UMA CTE DE DEDUPLICAÇÃO.
+ *
+ * `cap_autos_infracao` tem grão (auto × dispositivo legal infringido): o AI
+ * 316253 de Betim são DUAS linhas, mesmo auto, `dispositivo_legal` diferente
+ * — e os valores (`valor_multa`, `valor_remanescente`, ...) vêm IDÊNTICOS nas
+ * duas, porque na fonte eles pertencem ao AUTO, não ao dispositivo.
+ *
+ * Consequência prática: `count(*)` infla o número de autuações e `sum(valor)`
+ * MULTIPLICA o dinheiro pelo número de dispositivos. Betim tem 9.621 linhas
+ * para bem menos autos. Um `sum()` ingênuo aqui não dá erro nenhum — só
+ * publica um valor errado com cara de exato, que é a pior falha possível num
+ * portal de transparência.
+ *
+ * O `max()` dentro da CTE não é escolha estatística: é desempate de valores
+ * que a fonte repete iguais. Onde eles pudessem divergir de verdade
+ * (`status_ai` entre dispositivos do mesmo auto), a página mostra o campo
+ * como "situação do auto", que é o que ele é na fonte.
+ */
+const CAP_AUTOS_DEDUP = (idMunicipio: IdMunicipio) => sql`
+  select numero_ai,
+         min(data_lavratura)                as data_lavratura,
+         max(orgao_autuante)                as orgao,
+         max(status_ai)                     as status_ai,
+         max(status_debito)                 as status_debito,
+         max(valor_multa)::float8           as valor_multa,
+         max(valor_remanescente)::float8    as valor_remanescente
+    from cap_autos_infracao
+   where id_municipio = ${idMunicipio}
+     and numero_ai is not null
+   group by numero_ai
+`;
+
+export type CapFacetaAno = {
+  ano: number;
+  autos: number;
+  multa: number;
+};
+
+export type CapFacetaTexto = {
+  chave: string;
+  autos: number;
+  valor: number;
+};
+
+export type CapResumo = {
+  total_autos: number;
+  total_linhas: number;
+  total_multa: number;
+  total_remanescente: number;
+  primeira_lavratura: string | null;
+  ultima_lavratura: string | null;
+  por_ano: CapFacetaAno[];
+  por_orgao: CapFacetaTexto[];
+  por_debito: CapFacetaTexto[];
+};
+
+/**
+ * Resumo do CAP para um município, em UMA ida ao banco.
+ *
+ * Uma ida só, e nenhuma linha crua atravessando: BH tem 26.764 linhas nesta
+ * tabela e trazê-las para agregar no JS (o padrão de `royaltiesCfemPorSubstancia`,
+ * que serve para séries de poucas centenas de linhas) repetiria exatamente a
+ * falha já medida em produção — uma rota que carregou 2.369 ementas inteiras
+ * pôs 12 de 28 rotas em 503 por estourar CPU do Worker. Aqui o banco devolve
+ * um punhado de agregados e mais nada.
+ *
+ * `null` = banco não configurado (mesmo sinal do resto do arquivo).
+ */
+export async function capResumo(idMunicipio: IdMunicipio): Promise<CapResumo | null> {
+  const db = getDb();
+  if (!db) return null;
+  const linhas = await db.execute<CapResumo>(sql`
+    with autos as (${CAP_AUTOS_DEDUP(idMunicipio)}),
+    por_ano as (
+      select extract(year from data_lavratura)::int as ano,
+             count(*)::int                          as autos,
+             coalesce(sum(valor_multa), 0)::float8  as multa
+        from autos
+       where data_lavratura is not null
+       group by 1
+       order by 1 desc
+       limit 15
+    ),
+    por_orgao as (
+      select coalesce(orgao, 'Não informado')       as chave,
+             count(*)::int                          as autos,
+             coalesce(sum(valor_multa), 0)::float8  as valor
+        from autos
+       group by 1
+       order by 2 desc
+    ),
+    por_debito as (
+      select coalesce(status_debito, 'Não informado')      as chave,
+             count(*)::int                                 as autos,
+             coalesce(sum(valor_remanescente), 0)::float8  as valor
+        from autos
+       group by 1
+       order by 2 desc
+    )
+    select
+      (select count(*)::int from autos)                                       as total_autos,
+      (select count(*)::int from cap_autos_infracao
+        where id_municipio = ${idMunicipio})                                  as total_linhas,
+      (select coalesce(sum(valor_multa), 0)::float8 from autos)               as total_multa,
+      (select coalesce(sum(valor_remanescente), 0)::float8 from autos)        as total_remanescente,
+      (select min(data_lavratura)::text from autos)                           as primeira_lavratura,
+      (select max(data_lavratura)::text from autos)                           as ultima_lavratura,
+      -- json_agg(t) sobre o ALIAS da CTE, e não json_agg(cte.*): a segunda
+      -- forma depende de o planner expor a CTE como composite. Sem crase
+      -- neste comentário: ele vive dentro de um template literal de JS.
+      coalesce((select json_agg(t) from por_ano t),    '[]'::json)            as por_ano,
+      coalesce((select json_agg(t) from por_orgao t),  '[]'::json)            as por_orgao,
+      coalesce((select json_agg(t) from por_debito t), '[]'::json)            as por_debito
+  `);
+  return (linhas.rows ?? [])[0] ?? null;
+}
+
+export type CapAutoRecente = {
+  numero_ai: string;
+  data_lavratura: string | null;
+  nome_autuado: string | null;
+  cpf_cnpj: string | null;
+  orgao_autuante: string | null;
+  unidade_atual: string | null;
+  status_ai: string | null;
+  status_processo: string | null;
+  status_debito: string | null;
+  valor_multa: number | null;
+  valor_remanescente: number | null;
+  qtd_dispositivos: number;
+  dispositivos: string | null;
+  tem_embargo: boolean;
+  tem_apreensao: boolean;
+  tem_demolicao: boolean;
+};
+
+/**
+ * Os autos mais recentes, um por `numero_ai` — com a contagem de dispositivos
+ * que aquele auto tem, para que o leitor VEJA por que a soma de linhas é maior
+ * que a soma de autos em vez de ter que acreditar num rodapé.
+ *
+ * `limite` é teto duro de payload, não paginação: esta página não aceita
+ * `searchParams` (ver `docs/deploy-github-pages.md` — as rotas que aceitam são
+ * justamente as que travam o modo estático).
+ */
+export async function capAutosRecentes(
+  idMunicipio: IdMunicipio,
+  limite = 25
+): Promise<CapAutoRecente[]> {
+  const db = getDb();
+  if (!db) return [];
+  const linhas = await db.execute<CapAutoRecente>(sql`
+    select numero_ai,
+           max(data_lavratura)::text          as data_lavratura,
+           max(nome_autuado)                  as nome_autuado,
+           max(cpf_cnpj)                      as cpf_cnpj,
+           max(orgao_autuante)                as orgao_autuante,
+           max(unidade_atual)                 as unidade_atual,
+           max(status_ai)                     as status_ai,
+           max(status_processo)               as status_processo,
+           max(status_debito)                 as status_debito,
+           max(valor_multa)::float8           as valor_multa,
+           max(valor_remanescente)::float8    as valor_remanescente,
+           count(*)::int                      as qtd_dispositivos,
+           string_agg(distinct dispositivo_legal, ' · ') as dispositivos,
+           bool_or(pen_embargo_obra = 'S' or pen_embargo_atividade = 'S') as tem_embargo,
+           bool_or(pen_apreensao = 'S')       as tem_apreensao,
+           bool_or(pen_demolicao = 'S')       as tem_demolicao
+      from cap_autos_infracao
+     where id_municipio = ${idMunicipio}
+       and numero_ai is not null
+     group by numero_ai
+     order by max(data_lavratura) desc nulls last, numero_ai desc
+     limit ${limite}
+  `);
+  return linhas.rows ?? [];
+}

@@ -1190,6 +1190,81 @@ export const royalties_cfem_empresas = pgTable("royalties_cfem_empresas", {
 	unique("royalties_cfem_empresas_id_municipio_ano_empresa_key").on(table.id_municipio, table.ano, table.empresa),
 ]);
 
+/**
+ * Autos de infração ambiental ESTADUAIS de MG (sistema CAP da SEMAD), via
+ * `etl/betim/etl/apis/cap_autos_infracao.py`, migration 0050.
+ *
+ * ═══ O GRÃO NÃO É O AUTO ═══
+ *
+ * `id_cap` é (auto × dispositivo legal infringido): o mesmo `numero_ai`
+ * aparece N vezes com `dispositivo_legal` diferente. `count(*)` NÃO é o
+ * número de autuações — é `count(distinct numero_ai)`.
+ *
+ * ═══ E OS VALORES SÃO POR AUTO, REPETIDOS EM CADA LINHA ═══
+ *
+ * `valor_multa`, `valor_plano_vigente`, `valor_quitado` e
+ * `valor_remanescente` vêm IDÊNTICOS em todas as linhas do mesmo
+ * `numero_ai` (medido: AI 316253 de Betim, duas linhas, 6296.125 nas duas).
+ * `sum(valor_multa)` sobre linhas MULTIPLICA o dinheiro pelo número de
+ * dispositivos — a soma correta é sobre autos distintos, e é por isso que
+ * as queries deste tabela em `lib/db/queries/betim.ts` passam por uma CTE
+ * de deduplicação, nunca por `sum()` direto.
+ *
+ * Fonte só de MG (SEMAD-MG). Para autuação federal o eixo usa o IBAMA.
+ */
+export const cap_autos_infracao = pgTable("cap_autos_infracao", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	id_cap: bigint({ mode: "number" }).notNull(),
+	numero_ai: text(),
+	data_lavratura: date(),
+	nome_autuado: text(),
+	cpf_cnpj: text(),
+	municipio_fonte: text(),
+	orgao_autuante: text(),
+	unidade_atual: text(),
+	dispositivo_legal: text(),
+	codigo_infracao: text(),
+	pen_advertencia: text(),
+	pen_multa_simples: text(),
+	pen_multa_diaria: text(),
+	pen_apreensao: text(),
+	pen_embargo_obra: text(),
+	pen_embargo_atividade: text(),
+	pen_suspensao_atividade: text(),
+	pen_suspensao_venda: text(),
+	pen_suspensao_fabricacao: text(),
+	pen_demolicao: text(),
+	pen_restritiva_direito: text(),
+	descricao_embargo: text(),
+	descricao_apreensao: text(),
+	valor_multa: numeric({ precision: 18, scale: 4 }),
+	decisao: text(),
+	descricao_julgamento: text(),
+	data_decisao: timestamp({ mode: 'string' }),
+	status_ai: text(),
+	status_processo: text(),
+	valor_plano_vigente: numeric({ precision: 18, scale: 2 }),
+	valor_quitado: numeric({ precision: 18, scale: 2 }),
+	valor_remanescente: numeric({ precision: 18, scale: 2 }),
+	qtde_parcelas: text(),
+	observacao_plano: text(),
+	status_debito: text(),
+	atualizado_em: date(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("cap_autos_infracao_municipio_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops")),
+	index("cap_autos_infracao_auto_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.numero_ai.asc().nullsLast().op("text_ops")),
+	index("cap_autos_infracao_lavratura_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.data_lavratura.desc().nullsFirst().op("date_ops")),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "cap_autos_infracao_id_municipio_fkey"
+		}).onDelete("cascade"),
+	unique("cap_autos_infracao_id_municipio_id_cap_key").on(table.id_municipio, table.id_cap),
+]);
+
 export const mortalidade = pgTable("mortalidade", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
 	id_municipio: text().notNull(),

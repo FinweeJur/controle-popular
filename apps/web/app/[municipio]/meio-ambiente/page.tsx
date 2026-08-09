@@ -1,6 +1,7 @@
 import Link from "@/lib/betim/link";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { temFonte } from "@/lib/db/queries/municipios";
+import { capCobreCidade } from "@/lib/betim/capAutos";
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Meio Ambiente — ${c.nome} em Dados | ${nomePortal(c)}`,
@@ -13,11 +14,15 @@ export const generateMetadata = metadataDaCidade(
 // sobre a cidade. A lista só é exibida quando a cidade declara
 // `fontes.links_uteis_mg`, o mesmo sinal que governa `/links-uteis-mg`.
 //
-// Nenhuma fonte encontrada tem API/dataset aberto por município --
-// pesquisa completa em docs/ambiental-pecma-research.md (2026-07-21).
-// Página informativa, sem ETL, seguindo o mesmo padrão de /defesa-civil:
-// organizar os canais/fontes reais em vez de inventar indicador que essa
-// pesquisa já confirmou não existir aberto.
+// CORRIGIDO EM 2026-08-09 — o comentário anterior dizia "nenhuma fonte
+// encontrada tem API/dataset aberto por município", com base na pesquisa de
+// 2026-07-21 (`docs/betim/ambiental-pecma-research.md`), que só tinha olhado
+// PECMA e MPMG. A afirmação está FALSA desde `docs/ambiental/F0-discovery.md`:
+// IBAMA (§10), SNISB (§11) e CAP (§13.2) são fontes abertas por município, e o
+// CAP tem tela própria em `/meio-ambiente/autuacoes`.
+//
+// Os três links abaixo continuam sendo o que são: canais e portais sem dado
+// aberto por município, organizados para o leitor — não indicador.
 const FONTES = [
   {
     nome: "Barragens a montante na região — MPMG",
@@ -52,12 +57,31 @@ export default async function MeioAmbientePage({
         Meio Ambiente
       </h1>
       <p className="mt-2 max-w-[60ch] text-text-soft">
-        {cidade.nome} não tem um indicador ambiental por município com fonte
-        aberta confirmada ainda.
+        O que existe de fonte ambiental pública por município para{" "}
+        {cidade.nome} — e o que ainda não existe.
         {fontesDoEstado.length > 0
-          ? " O que existe de real e verificável está organizado abaixo, incluindo um risco regional que afeta a cidade mesmo sem estar dentro do município."
+          ? " Abaixo, o que é real e verificável, incluindo um risco regional que afeta a cidade mesmo sem estar dentro do município."
           : " Assim que uma fonte pública por município aparecer para esta cidade, ela entra aqui."}
       </p>
+
+      {capCobreCidade(cidade) && (
+        <Link
+          href="/meio-ambiente/autuacoes"
+          className="cp-card-hover mt-6 flex flex-col gap-2 rounded-2xl border border-primary bg-primary/5 p-5 shadow-sm hover:border-primary"
+        >
+          <p className="font-display font-semibold text-text">
+            Autuações ambientais em {cidade.nome}
+          </p>
+          <p className="text-sm text-text-soft">
+            Autos de infração lavrados pelos órgãos ambientais de Minas Gerais
+            na cidade: quantos, de que órgão, quanto foi multado e quanto
+            continua em aberto — com a situação de cada processo.
+          </p>
+          <span className="mt-1 inline-block w-fit rounded-lg border border-primary bg-primary px-4 py-2 text-sm font-semibold text-primary-ink">
+            Ver autuações →
+          </span>
+        </Link>
+      )}
 
       {temFonte(cidade, "paraopeba") && (
       <Link
