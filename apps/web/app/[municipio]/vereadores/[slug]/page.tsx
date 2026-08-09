@@ -1,4 +1,8 @@
+import { Suspense } from "react";
 import Link from "@/lib/betim/link";
+import ProposicoesDoVereador, {
+  ProposicoesDoVereadorCompletas,
+} from "./ProposicoesDoVereador";
 import { notFound } from "next/navigation";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import AtuacaoVereador from "@/app/[municipio]/components/charts/AtuacaoVereador";
@@ -28,7 +32,6 @@ interface VereadorPageProps {
    *  aqui. O tipo declarava só `slug`, o que escondia a cidade de quem
    *  lesse a assinatura. */
   params: Promise<{ municipio: string; slug: string }>;
-  searchParams: Promise<{ tema?: string }>;
 }
 
 /**
@@ -80,17 +83,19 @@ export async function generateMetadata({ params }: VereadorPageProps) {
   };
 }
 
-export default async function VereadorPage({ params, searchParams }: VereadorPageProps) {
+export default async function VereadorPage({ params }: VereadorPageProps) {
   const cidade = await cidadeDaRota(params);
   const { slug } = await params;
-  const { tema } = await searchParams;
   const { row, ok } = await getVereadorBySlug(cidade.id_municipio, slug);
 
   if (ok && !row) notFound();
 
   const [proposicoes, diarias, doacoes, bens, verbas, ranking, temasVereador, comissoes, custo] = row
     ? await Promise.all([
-        getProposicoesByVereador(cidade.id_municipio, row.id, tema),
+        // Sem filtro de tema e SEM o teto de 10: o filtro virou do cliente, e
+        // filtrar sobre as 10 primeiras mentiria. 500 cobre com folga o maior
+        // vereador do acervo (329, medido).
+        getProposicoesByVereador(cidade.id_municipio, row.id, undefined, 500),
         getDiariasByVereador(cidade.id_municipio, row.id),
         getDoacoesSummary(cidade.id_municipio, row.id),
         getBensCandidato(cidade.id_municipio, row.id),
@@ -485,75 +490,31 @@ export default async function VereadorPage({ params, searchParams }: VereadorPag
               </DataCard>
             </div>
           )}
-
-          <div className="mt-8">
-            <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-              <h2 className="font-display text-lg font-bold text-text">
-                Proposições apresentadas ({rotuloLegislatura(cidade)})
-              </h2>
-              {tema && (
-                <Link
-                  href={`/vereadores/${row.slug}`}
-                  className="text-xs font-medium text-accent hover:underline"
-                >
-                  ✕ tema: {TEMA_LABELS[tema] ?? tema} — limpar
-                </Link>
-              )}
-            </div>
-            {!proposicoes.ok || proposicoes.rows.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-border bg-surface-2 p-6 text-sm text-text-soft">
-                {tema
-                  ? "Nenhuma proposição encontrada para esse tema."
-                  : "Nenhuma proposição encontrada para este vereador."}
-              </div>
-            ) : (
-              <div className="overflow-hidden rounded-2xl border border-border shadow-sm">
-                <ul className="divide-y divide-border bg-surface">
-                  {proposicoes.rows.map((p, i) => (
-                    <li key={i} className="p-4 text-sm">
-                      <div className="mb-1 flex flex-wrap items-center gap-2">
-                        <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
-                          {TIPO_PROPOSICAO_LABELS[p.tipo] ?? p.tipo}
-                        </span>
-                        <span className="font-tabular text-text-soft">
-                          Nº {p.numero}/{p.ano}
-                        </span>
-                        {p.situacao && <span className="text-text-soft">· {p.situacao}</span>}
-                      </div>
-                      <p className="text-text">{p.ementa}</p>
-                      {p.temas && p.temas.length > 0 && (
-                        <ul className="mt-2 flex flex-wrap gap-1">
-                          {p.temas.map((t) => (
-                            <li
-                              key={t}
-                              className="rounded-full bg-surface-2 px-2 py-0.5 text-[.85em] font-medium text-text-soft"
-                            >
-                              {TEMA_LABELS[t] ?? t}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {p.link_fonte && (
-                        <a
-                          href={p.link_fonte}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-1 inline-block text-xs font-medium text-accent hover:underline"
-                        >
-                          Ver fonte oficial ↗
-                        </a>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {proposicoes.total > proposicoes.rows.length && (
-              <p className="mt-2 text-xs text-text-soft">
-                Mostrando {proposicoes.rows.length} de {proposicoes.total} proposições.
-              </p>
-            )}
-          </div>
+          {/* O filtro por tema saiu do servidor. Ler `?tema=` aqui tornava a
+              rota dinâmica (`ƒ`), e dinâmica consulta o banco A CADA visita —
+              o que em produção dava 500, porque o banco é o desta casa e não é
+              alcançável do Cloudflare. Medido em 2026-08-09. */}
+          <Suspense
+            fallback={
+              <ProposicoesDoVereadorCompletas
+                rows={proposicoes.rows}
+                ok={proposicoes.ok}
+                slug={row.slug}
+                legislatura={rotuloLegislatura(cidade)}
+                rotulosTipo={TIPO_PROPOSICAO_LABELS}
+                rotulosTema={TEMA_LABELS}
+              />
+            }
+          >
+            <ProposicoesDoVereador
+              rows={proposicoes.rows}
+              ok={proposicoes.ok}
+              slug={row.slug}
+              legislatura={rotuloLegislatura(cidade)}
+              rotulosTipo={TIPO_PROPOSICAO_LABELS}
+              rotulosTema={TEMA_LABELS}
+            />
+          </Suspense>
 
           {diarias.ok && diarias.rows.length > 0 && (
             <div className="mt-8">

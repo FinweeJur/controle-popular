@@ -88,10 +88,18 @@ export async function getProposicoesByVereador(
   idMunicipio: IdMunicipio,
   vereadorId: string,
   /** Filtra pra proposições que tenham ESSE tema (slug de `lib/temas.ts`). */
-  tema?: string
+  tema?: string,
+  /**
+   * Teto de linhas. O padrão de 10 da consulta serve a quem só exibe as
+   * últimas; a tela do vereador passou a pedir o conjunto INTEIRO, porque o
+   * filtro por tema virou do cliente (ver `ProposicoesDoVereador.tsx`) e
+   * filtrar sobre as 10 primeiras mentiria. Medido em 2026-08-09: máximo de
+   * 329 proposições por vereador, 200 kB de JSON no maior deles.
+   */
+  limite?: number
 ): Promise<{ rows: ProposicaoRow[]; total: number; ok: boolean }> {
   try {
-    const data = await q.proposicoesDeVereador(idMunicipio, vereadorId, tema);
+    const data = await q.proposicoesDeVereador(idMunicipio, vereadorId, tema, limite);
     if (!data) return { rows: [], total: 0, ok: false };
     // O total do conjunto (que passa das 10 exibidas) vem por
     // `count(*) over ()` na mesma consulta.
