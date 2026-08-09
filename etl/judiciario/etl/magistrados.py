@@ -10,6 +10,14 @@ dos superiores é ~93 pessoas, não 18 mil. Curar à mão um JSON auditável é
 mais rápido e confiável que 5 scrapers frágeis, e a data de nascimento —
 o insumo crítico da projeção de vacância — precisa estar certa.
 
+`url_foto` (coluna em `magistrados`, ainda vazia em 2026-08-09): mesma
+conclusão vale. Investigado ao vivo (STF soft-404 reconfirmado, STJ sem
+padrão de foto individual achado, TSE só redireciona) — ver
+`docs/F0-discovery.md` §7 antes de tentar de novo um scraper único. Ao
+contrário do TSE de vereadores (uma API, 23/23 confirmados), aqui não há
+endpoint equivalente conhecido; preencher as 17 linhas é curadoria manual,
+igual ao resto deste arquivo.
+
 O STF é o primeiro (11 cadeiras, 10 ocupadas + 1 vaga aberta), e serve de
 prova ponta a ponta do pipeline cadeiras → ocupacoes → vw_vacancia →
 /vagas → poder de indicação. Os demais superiores entram como novos JSON

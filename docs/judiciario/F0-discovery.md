@@ -115,7 +115,40 @@ Não é fonte estrutural deste projeto.
 
 ---
 
-## 6. Artefatos gerados nesta fase
+## 7. `magistrados.url_foto` — investigado em 2026-08-09, sem endpoint achado
+
+Mesma dificuldade da §2 (STF soft-404, CNJ 503), reconferida especificamente
+para foto — não repetir esta busca sem ler isto primeiro:
+
+| Fonte | URL testada | Resultado real | Leitura |
+|---|---|---|---|
+| STF | `portal.stf.jus.br/ministros/` | **200 servindo página de 404** (HTML carrega o bundle `erro-404-*.js`) | Soft-404, mesma armadilha da §2 — confirma que persiste em 2026. |
+| STJ | `www.stj.jus.br/sites/portalp/Institucional/Ministros` | 200, mas só tem 1 foto de GRUPO (Pleno) | Por ministro só existe um link "Site Individual" cujo destino é montado por JS (`clsMinistrosSiteLink`) — não resolvido; pode ou não levar a uma foto individual, não confirmado. |
+| STJ | `www.stj.jus.br/web/verMinistrosSTJ?parametro=1` | 200, 128 KB de HTML | Sem foto, sem nome dos 4 ministros que interessam aqui (Antonio Carlos Ferreira, Villas Bôas Cueva, Sebastião Reis Júnior, Marco Aurélio Bellizze não aparecem no parâmetro 1 — provável paginação/agrupamento não mapeado). |
+| TSE | `www.tse.jus.br/o-tse/ministros`, `/o-tse/composicao` | **302** (redirect) | Não seguido adiante — fora do orçamento desta investigação. |
+| CNJ | — | 503 (§2, não retestado) | Segue valendo. |
+
+**Contraste com `vereadores.foto_url` (TSE, resolvido no mesmo dia):** lá existe
+UMA API (`divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/buscar/...`)
+que devolve a foto de qualquer um dos candidatos por um único padrão de
+chamada — 23 de 23 vereadores confirmados. Para magistrados **não existe
+equivalente conhecido**: são 3 tribunais (STF/STJ/TSE) com portais
+diferentes, nenhum com API de foto aberta encontrada até agora.
+
+**Caminho que resta:** curadoria manual, mesma disciplina de
+`etl/judiciario/etl/dados/*.json` (que já faz isso pra nome/data de
+nascimento/cadeira) — achar, verificar com `curl`/HEAD que a URL responde
+imagem (`Content-Type: image/*`, HTTP 200) e documentar a fonte por pessoa
+no próprio JSON. São 17 linhas (10 STF + 7 só-TSE, das quais 4 são, na
+origem, ministros do STJ). Opção mais rápida ainda não tentada: fotos da
+Agência Brasil/EBC (empresa pública federal, uso liberado CC-BY, é o que a
+imprensa usa para ministros do STF) — ainda exige verificação pessoa a
+pessoa, mas pode desempacar mais rápido que insistir nos portais dos
+tribunais.
+
+---
+
+## 8. Artefatos gerados nesta fase
 
 | Arquivo | O que é |
 |---|---|

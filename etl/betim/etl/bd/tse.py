@@ -35,10 +35,20 @@ the real join/filter key is `sequencial_candidato` (on
 `receitas_candidato` visible from the schema, so `doador_tipo` is left
 unset here rather than guessed -- it can be inferred downstream from
 document length (11 digits = CPF/PF, 14 = CNPJ/PJ) if needed.
+
+`fotos()` (2026-08-09 addition): preenche `vereadores.foto_url` batendo
+direto no REST da SPA de divulgacandcontas.tse.jus.br (achado por engenharia
+reversa do bundle Angular, não documentado publicamente -- ver docstring da
+função). Não usa BigQuery/`bd_query` como o resto do arquivo -- só Postgres
++ HTTP -- porque o dado que falta (a foto) não está na base dos dados, está
+no site do TSE.
 """
 import argparse
 import sys
 import unicodedata
+
+import requests
+from tenacity import retry, stop_after_attempt, wait_exponential
 
 from etl.bd.common import bd_query
 from etl.common import (
@@ -50,6 +60,16 @@ from etl.common import (
 )
 
 ANO_ELEICAO_DEFAULT = 2024
+
+# REST da SPA de consulta individual de candidaturas (divulgacandcontas.tse.jus.br/divulga/).
+# Achado lendo os chunks Angular lazy-loaded da própria SPA (`main.*.js` ->
+# `636.*.js`), não por documentação: não existe doc pública desta API.
+DIVULGA_BASE = "https://divulgacandcontas.tse.jus.br/divulga/rest"
+DIVULGA_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+    "Accept": "application/json",
+}
 
 QUERY_RESULTADOS = """
 SELECT rc.sequencial_candidato AS id_candidato_tse, c.nome_urna AS nome_urna, rc.votos AS votos
@@ -380,6 +400,119 @@ def _sync_bens(
     return len(bens_rows)
 
 
+@retry(stop=stop_after_attempt(5), wait=wait_exponential(multiplier=1, min=2, max=30))
+def _divulga_get(path: str):
+    resp = requests.get(f"{DIVULGA_BASE}{path}", headers=DIVULGA_HEADERS, timeout=30)
+    resp.raise_for_status()
+    return resp.json()
+
+
+def _descobrir_sg_ue(uf: str, nome_municipio: str) -> str:
+    """`sgUe` é o código de município do PRÓPRIO TSE -- um namespace
+    DIFERENTE do IBGE que o resto deste arquivo usa (`ID_MUNICIPIO_DEFAULT`
+    = '3106705', o código IBGE de Betim). No TSE, Betim é '41335'. Confundir
+    os dois é a armadilha: passar o código IBGE onde a API espera `sgUe`
+    devolve 404 silencioso, não erro claro.
+
+    Não existe mapeamento IBGE->TSE pronto neste projeto, então a descoberta
+    é por NOME: `/eleicao/ufs/{uf}/municipios` devolve, para cada município
+    da UF, `{"sigla": "<sgUe>", "nome": "<NOME SEM ACENTO, MAIUSCULO>"}` --
+    casa por nome normalizado (reusa `_normalize()`, já usado no arquivo
+    pra casar `nome_urna` do TSE contra o do raspador da câmara)."""
+    municipios = _divulga_get(f"/v1/eleicao/ufs/{uf}/municipios")
+    alvo = _normalize(nome_municipio)
+    for m in municipios:
+        if _normalize(m.get("nome") or "") == alvo:
+            return m["sigla"]
+    raise RuntimeError(
+        f"TSE não tem município '{nome_municipio}' em /eleicao/ufs/{uf}/municipios -- "
+        "confira o nome cadastrado em `municipios.nome` contra a grafia do TSE."
+    )
+
+
+def _descobrir_id_eleicao(ano: int) -> int:
+    """Id numérico da eleição municipal ordinária do ano -- usado tanto na
+    consulta de candidatura quanto (embutido na resposta) na URL da foto.
+    Ex.: 2024 -> 2045202024. Sem isto documentado publicamente; descoberto
+    batendo em `/eleicao/ordinaria/{ano}` e lendo o campo `id`."""
+    d = _divulga_get(f"/v1/eleicao/ordinaria/{ano}")
+    id_eleicao = d.get("id")
+    if not id_eleicao:
+        raise RuntimeError(f"TSE não devolveu id de eleição ordinária para {ano}: {d}")
+    return id_eleicao
+
+
+@retry(stop=stop_after_attempt(5), wait=wait_exponential(multiplier=1, min=2, max=30))
+def _buscar_foto_candidato(ano: int, sg_ue: str, id_eleicao: int, sq_candidato: str) -> str | None:
+    """Lê `fotoUrl` da ficha do candidato -- NÃO monta a URL de imagem à
+    mão. `/divulga/rest/arquivo/img/{idEleicao}/{sqCandidato}/{sgUe}` é o
+    padrão observado, mas três tentativas de adivinhar essa URL direto
+    (com `idEleicao` errado) deram 404 antes de eu achar este endpoint; ler
+    o campo da API é o jeito que sobrevive ao TSE mudar o formato do path."""
+    resp = requests.get(
+        f"{DIVULGA_BASE}/v1/candidatura/buscar/{ano}/{sg_ue}/{id_eleicao}/candidato/{sq_candidato}",
+        headers=DIVULGA_HEADERS,
+        timeout=30,
+    )
+    if resp.status_code == 404:
+        return None
+    resp.raise_for_status()
+    dados = resp.json()
+    if not dados.get("fotoUrlPublicavel", True):
+        return None
+    return dados.get("fotoUrl") or None
+
+
+def fotos(id_municipio: str, ano_eleicao: int = ANO_ELEICAO_DEFAULT) -> int:
+    """Preenche `vereadores.foto_url` com a foto oficial de urna do TSE
+    (fonte: ficha de candidatura de cada eleito em
+    divulgacandcontas.tse.jus.br). Só ENRIQUECE quem já está em
+    `vereadores` com `id_candidato_tse` preenchido -- não insere ninguém
+    (mesma disciplina de `sync()`).
+
+    Parametrizada por `id_municipio` (IBGE) + `ano_eleicao`: `sg_ue` e
+    `id_eleicao` são descobertos em runtime a partir disso (ver
+    `_descobrir_sg_ue`/`_descobrir_id_eleicao`), não fixos em "Betim" --
+    quando outra cidade deste projeto tiver vereadores (hoje só Betim tem),
+    basta rodar com `--id-municipio` diferente, sem mudar código.
+
+    Medido em Betim/2024 (2026-08-09): 23 de 23 vereadores com
+    `id_candidato_tse` devolveram `fotoUrlPublicavel: true` e uma `fotoUrl`
+    válida (uma baixada e conferida manualmente: JPEG real, 161x225).
+
+    Devolve quantos `foto_url` foram gravados.
+    """
+    cidade = carregar_municipio(id_municipio)
+    sg_ue = _descobrir_sg_ue(cidade["uf"], cidade["nome"])
+    id_eleicao = _descobrir_id_eleicao(ano_eleicao)
+
+    client = get_supabase_client()
+    vereadores = (
+        client.table("vereadores")
+        .select("id,nome_urna,id_candidato_tse")
+        .eq("id_municipio", id_municipio)
+        .execute()
+        .data
+        or []
+    )
+    alvo = [v for v in vereadores if v.get("id_candidato_tse")]
+
+    gravadas = 0
+    for v in alvo:
+        foto_url = _buscar_foto_candidato(ano_eleicao, sg_ue, id_eleicao, v["id_candidato_tse"])
+        if not foto_url:
+            print(f"[etl.bd.tse] sem foto publicavel: {v.get('nome_urna')} ({v['id_candidato_tse']})")
+            continue
+        client.table("vereadores").update({"foto_url": foto_url}).eq("id", v["id"]).execute()
+        gravadas += 1
+
+    print(
+        f"[etl.bd.tse] fotos: {gravadas}/{len(alvo)} vereador(es) com foto do TSE "
+        f"({cidade['nome']}/{ano_eleicao}, sgUe={sg_ue})."
+    )
+    return gravadas
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
@@ -399,10 +532,17 @@ if __name__ == "__main__":
         action="store_true",
         help="com --semear, semeia mesmo que a cidade já tenha vereadores",
     )
+    parser.add_argument(
+        "--fotos",
+        action="store_true",
+        help="preenche vereadores.foto_url com a foto de urna do TSE (não mexe em resultados/doacoes/bens)",
+    )
     args = parser.parse_args()
     try:
         if args.semear:
             semear(args.id_municipio, args.ano_eleicao, forcar=args.forcar)
+        elif args.fotos:
+            fotos(args.id_municipio, args.ano_eleicao)
         else:
             sync(args.id_municipio, args.ano_eleicao, incluir_doacoes=not args.sem_doacoes)
     except RuntimeError as e:
