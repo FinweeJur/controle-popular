@@ -1,7 +1,7 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
-import Link from "@/lib/congresso/link";
-import CardEvento from "@/app/congresso/components/CardEvento";
-import { agenda, pautaDosEventos, orgaosDaAgenda, type ItemPauta } from "@/lib/db/queries/congresso";
+import { agenda, pautaDosEventos, orgaosDaAgenda, COD_AUDIENCIA, type ItemPauta } from "@/lib/db/queries/congresso";
+import AgendaLista, { AgendaListaCompleta } from "./AgendaLista";
 
 export const metadata: Metadata = {
   title: "Agenda legislativa — audiências públicas e reuniões — Controle Popular · Congresso",
@@ -22,17 +22,19 @@ export const metadata: Metadata = {
  * um item da pauta é uma proposição já classificada por este portal, o
  * rótulo aparece ao lado — "a CCJC vota terça um projeto que restringe
  * direito X".
+ *
+ * Filtro de `audiencias`/`orgao` é do cliente — ver `AgendaLista.tsx` para o
+ * porquê e para a nota sobre o `limite: 300` (o SQL original já cortava em
+ * 40 por lado; o cliente precisa de margem para o filtro não mentir).
  */
+// Sem `searchParams`, mas com `force-static` mesmo assim: sem ele
+// `output: export` trata a rota como dinâmica e aborta com "missing
+// generateStaticParams()" — mensagem que não descreve a causa real.
+export const dynamic = "force-static";
 
-type Params = Promise<Record<string, string | undefined>>;
-
-export default async function Agenda({ searchParams }: { searchParams: Params }) {
-  const sp = await searchParams;
-  const soAudiencias = sp.audiencias === "1";
-  const orgao = sp.orgao || undefined;
-
+export default async function Agenda() {
   const [{ proximos, recentes }, orgaos] = await Promise.all([
-    agenda({ soAudiencias, orgao }),
+    agenda({ limite: 300 }),
     orgaosDaAgenda(),
   ]);
 
@@ -41,14 +43,12 @@ export default async function Agenda({ searchParams }: { searchParams: Params })
   // eventos (audiência, seminário, visita) não tem item nenhum.
   const comPauta = [...proximos, ...recentes].filter((e) => e.itens_pauta > 0);
   const itens = comPauta.length ? await pautaDosEventos(comPauta.map((e) => e.id)) : [];
-  const pautaPorEvento = new Map<string, ItemPauta[]>();
+  // Objeto simples, não `Map`: é o que vai como prop para o componente
+  // cliente, e `Map` não é um valor serializável de servidor pra cliente.
+  const pautaPorEvento: Record<string, ItemPauta[]> = {};
   for (const i of itens) {
-    const lista = pautaPorEvento.get(i.evento_id) ?? [];
-    lista.push(i);
-    pautaPorEvento.set(i.evento_id, lista);
+    (pautaPorEvento[i.evento_id] ??= []).push(i);
   }
-
-  const vazio = proximos.length === 0 && recentes.length === 0;
 
   return (
     <div className="mx-auto max-w-4xl space-y-8 px-4 py-10">
@@ -66,82 +66,30 @@ export default async function Agenda({ searchParams }: { searchParams: Params })
         </p>
       </header>
 
-      <form className="flex flex-wrap items-end gap-3 rounded-lg border border-[var(--cp-border)] p-4">
-        <label className="flex items-center gap-2 text-sm">
-          <input
-            type="checkbox"
-            name="audiencias"
-            value="1"
-            defaultChecked={soAudiencias}
-            className="size-4"
+      {/* Formulário, listas e o estado "vazio" dependiam de `searchParams` e
+          agora moram em `AgendaLista` (cliente). O fallback é o formulário
+          sem filtro + as listas completas — o que o servidor tem antes de o
+          navegador ler a query, e também o conteúdo certo pra quem chega
+          sem filtro. */}
+      <Suspense
+        fallback={
+          <AgendaListaCompleta
+            proximos={proximos}
+            recentes={recentes}
+            pautaPorEvento={pautaPorEvento}
+            orgaos={orgaos}
+            codAudiencia={COD_AUDIENCIA}
           />
-          Só audiências públicas e depoimentos
-        </label>
-        <label className="text-sm">
-          <span className="mr-2 opacity-75">Órgão</span>
-          <select
-            name="orgao"
-            defaultValue={orgao ?? ""}
-            className="rounded-md border border-[var(--cp-border)] bg-[var(--cp-surface)] px-3 py-1.5"
-          >
-            <option value="">Todos</option>
-            {orgaos.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button
-          type="submit"
-          className="rounded-md bg-[var(--cp-primary)] px-4 py-1.5 font-medium text-[var(--cp-primary-ink)]"
-        >
-          Filtrar
-        </button>
-        {soAudiencias || orgao ? (
-          <Link href="/agenda" className="text-sm underline">
-            limpar
-          </Link>
-        ) : null}
-      </form>
-
-      {vazio ? (
-        <div className="rounded-lg border border-[var(--cp-border)] p-6">
-          <h2 className="font-display text-xl font-semibold">Nada na agenda</h2>
-          <p className="mt-2 opacity-80">
-            {soAudiencias || orgao
-              ? "Nenhum evento com estes filtros. Tente limpar o recorte."
-              : "Nenhum evento sincronizado ainda — rode `python -m etl.camara.eventos`. O Congresso também entra em recesso, e em recesso a agenda fica de fato vazia: ausência aqui pode ser o calendário, não falta de dado."}
-          </p>
-        </div>
-      ) : null}
-
-      {proximos.length ? (
-        <section className="space-y-4">
-          <h2 className="font-display text-2xl font-semibold">
-            Próximos <span className="font-normal opacity-60">({proximos.length})</span>
-          </h2>
-          {proximos.map((e) => (
-            <CardEvento key={e.id} e={e} pauta={pautaPorEvento.get(e.id) ?? []} />
-          ))}
-        </section>
-      ) : null}
-
-      {recentes.length ? (
-        <section className="space-y-4">
-          <h2 className="font-display text-2xl font-semibold">
-            Já aconteceram <span className="font-normal opacity-60">({recentes.length})</span>
-          </h2>
-          <p className="text-sm opacity-70">
-            Mantidos à vista porque o registro em vídeo e a pauta apreciada continuam
-            servindo para cobrar depois — e porque uma comissão que marca e desmarca é ela
-            mesma um dado.
-          </p>
-          {recentes.map((e) => (
-            <CardEvento key={e.id} e={e} pauta={pautaPorEvento.get(e.id) ?? []} />
-          ))}
-        </section>
-      ) : null}
+        }
+      >
+        <AgendaLista
+          proximos={proximos}
+          recentes={recentes}
+          pautaPorEvento={pautaPorEvento}
+          orgaos={orgaos}
+          codAudiencia={COD_AUDIENCIA}
+        />
+      </Suspense>
 
       <section className="rounded-lg border border-[var(--cp-border)] p-5 text-sm opacity-80">
         <p>
