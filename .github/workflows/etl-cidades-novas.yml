@@ -91,10 +91,77 @@ jobs:
           python -m etl.temas_backfill --id-municipio $ID_MUNICIPIO
           python -m etl.alertas --id-municipio $ID_MUNICIPIO
 
+      # 2026-08-09: a camada agnóstica de cidade (Base dos Dados + PNTP +
+      # grupos econômicos) nunca tinha entrado aqui, só em etl-betim.yml —
+      # confirmado por grep, zero ocorrência. Cadência espelha a de Betim
+      # (cnpj/grupos são semanais lá, o resto do bd.* é mensal).
+      # `teor_backfill` fica de fora de propósito: no próprio Betim ele
+      # ainda é só workflow_dispatch (passo novo de 2026-08-09), então
+      # replicar aqui seria automatizar mais do que a cidade de origem tem.
+      - name: "CNPJ — fornecedores/sócios (Base dos Dados)"
+        run: python -m etl.bd.cnpj --id-municipio $ID_MUNICIPIO
+
+      - name: "Grupos econômicos"
+        run: python -m etl.grupos --id-municipio $ID_MUNICIPIO
+
       # ── Mensal ───────────────────────────────────────────────────────
       - name: "PBH — folha de pagamento (mensal)"
         if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
         run: python -m etl.pbh.folha --id-municipio $ID_MUNICIPIO --meses 3
+
+      - name: "BD SICONFI — despesas/receitas (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.siconfi --id-municipio $ID_MUNICIPIO
+
+      - name: "BD IBGE — população/PIB (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.ibge --id-municipio $ID_MUNICIPIO
+
+      - name: "BD INEP — IDEB/censo escolar (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.inep --id-municipio $ID_MUNICIPIO
+
+      - name: "BD CNES — estabelecimentos de saúde (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.cnes --id-municipio $ID_MUNICIPIO
+
+      - name: "BD SIH/SIM — internações/mortalidade (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.sih_sim --id-municipio $ID_MUNICIPIO
+
+      - name: "BD SNIS — água/esgoto/resíduos (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.snis --id-municipio $ID_MUNICIPIO
+
+      - name: "BD RAIS/CAGED — trabalho (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.trabalho --id-municipio $ID_MUNICIPIO
+
+      - name: "BD IBGE PAM/PPM — produção agropecuária (mensal)"
+        # Depende da migration 0016_producao_agropecuaria.sql, mesma nota
+        # de etl-betim.yml — falha graciosamente até rodar, não bloqueia.
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        continue-on-error: true
+        run: python -m etl.bd.agropecuaria --id-municipio $ID_MUNICIPIO
+
+      - name: "BD SICONFI — caixa disponível / balanço patrimonial (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.balanco --id-municipio $ID_MUNICIPIO
+
+      - name: "BD DENATRAN — frota de veículos (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.frota --id-municipio $ID_MUNICIPIO
+
+      - name: "BD PNUD/ADH — IDH e taxa de pobreza (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.idh_pobreza --id-municipio $ID_MUNICIPIO
+
+      - name: "Nota de Transparência (PNTP/ATRICON) (mensal)"
+        # Depende da migration 0018_nota_transparencia.sql, mesma nota de
+        # etl-betim.yml — falha graciosamente até rodar, não bloqueia.
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        continue-on-error: true
+        run: python -m etl.apis.pntp --id-municipio $ID_MUNICIPIO
 
   sao-paulo:
     runs-on: ubuntu-latest
@@ -153,6 +220,14 @@ jobs:
           python -m etl.temas_backfill --id-municipio $ID_MUNICIPIO
           python -m etl.alertas --id-municipio $ID_MUNICIPIO
 
+      # 2026-08-09: camada agnóstica de cidade (Base dos Dados + PNTP +
+      # grupos econômicos), mesma nota do job de belo-horizonte acima.
+      - name: "CNPJ — fornecedores/sócios (Base dos Dados)"
+        run: python -m etl.bd.cnpj --id-municipio $ID_MUNICIPIO
+
+      - name: "Grupos econômicos"
+        run: python -m etl.grupos --id-municipio $ID_MUNICIPIO
+
       # ── Mensal ───────────────────────────────────────────────────────
       # Órgão municipal novo é raro e a varredura é cara (o PNCP devolve 429
       # com facilidade), então mensal — mas ela PRECISA rodar: é o que impede
@@ -164,3 +239,53 @@ jobs:
       - name: "SEGES — servidores e folha (mensal)"
         if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
         run: python -m etl.psp.servidores --id-municipio $ID_MUNICIPIO --meses 3
+
+      - name: "BD SICONFI — despesas/receitas (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.siconfi --id-municipio $ID_MUNICIPIO
+
+      - name: "BD IBGE — população/PIB (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.ibge --id-municipio $ID_MUNICIPIO
+
+      - name: "BD INEP — IDEB/censo escolar (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.inep --id-municipio $ID_MUNICIPIO
+
+      - name: "BD CNES — estabelecimentos de saúde (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.cnes --id-municipio $ID_MUNICIPIO
+
+      - name: "BD SIH/SIM — internações/mortalidade (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.sih_sim --id-municipio $ID_MUNICIPIO
+
+      - name: "BD SNIS — água/esgoto/resíduos (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.snis --id-municipio $ID_MUNICIPIO
+
+      - name: "BD RAIS/CAGED — trabalho (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.trabalho --id-municipio $ID_MUNICIPIO
+
+      - name: "BD IBGE PAM/PPM — produção agropecuária (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        continue-on-error: true
+        run: python -m etl.bd.agropecuaria --id-municipio $ID_MUNICIPIO
+
+      - name: "BD SICONFI — caixa disponível / balanço patrimonial (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.balanco --id-municipio $ID_MUNICIPIO
+
+      - name: "BD DENATRAN — frota de veículos (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.frota --id-municipio $ID_MUNICIPIO
+
+      - name: "BD PNUD/ADH — IDH e taxa de pobreza (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        run: python -m etl.bd.idh_pobreza --id-municipio $ID_MUNICIPIO
+
+      - name: "Nota de Transparência (PNTP/ATRICON) (mensal)"
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 2 * *'
+        continue-on-error: true
+        run: python -m etl.apis.pntp --id-municipio $ID_MUNICIPIO
