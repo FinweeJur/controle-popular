@@ -2210,3 +2210,89 @@ export const vazio_municipioInTerras = terras.table("vazio_municipio", {
 }, (table) => [
 	primaryKey({ columns: [table.id_municipio, table.metodo, table.recorte], name: "vazio_municipio_pkey"}),
 ]);
+
+// As 3 tabelas abaixo (eventos, evento_pauta, proposicao_autoria) so eram
+// acessadas por SQL cru em lib/db/queries/congresso.ts, sem entrada aqui --
+// achado em 2026-08-09. Adicionadas so pra tipagem: as consultas existentes
+// continuam usando sql`` como antes, isto nao muda comportamento nenhum.
+export const eventosInCongresso = congresso.table("eventos", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	casa_id: text().notNull(),
+	id_externo: text().notNull(),
+	cod_tipo: integer(),
+	tipo: text(),
+	descricao: text(),
+	situacao: text(),
+	inicio: timestamp({ withTimezone: true, mode: 'string' }),
+	fim: timestamp({ withTimezone: true, mode: 'string' }),
+	local_nome: text(),
+	local_externo: text(),
+	url_registro: text(),
+	url_fonte: text(),
+	orgaos: text().array(),
+	raw: jsonb(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+}, (table) => [
+	index("eventos_inicio_idx").using("btree", table.inicio.desc().nullsFirst()),
+	index("eventos_cod_tipo_idx").using("btree", table.cod_tipo.asc().nullsLast()),
+	index("eventos_orgaos_idx").using("gin", table.orgaos.asc().nullsLast()),
+	foreignKey({
+		columns: [table.casa_id],
+		foreignColumns: [casasInCongresso.id],
+		name: "eventos_casa_id_fkey",
+	}),
+	unique("eventos_casa_id_id_externo_key").on(table.casa_id, table.id_externo),
+]);
+
+export const evento_pautaInCongresso = congresso.table("evento_pauta", {
+	evento_id: uuid().notNull(),
+	ordem: integer().notNull(),
+	titulo: text().notNull(),
+	topico: text(),
+	regime: text(),
+	relator_nome: text(),
+	relator_partido: text(),
+	relator_uf: text(),
+	texto_parecer: text(),
+	proposicao_id: uuid(),
+	proposicao_id_externo: text(),
+}, (table) => [
+	index("evento_pauta_proposicao_idx").using("btree", table.proposicao_id.asc().nullsLast()),
+	foreignKey({
+		columns: [table.evento_id],
+		foreignColumns: [eventosInCongresso.id],
+		name: "evento_pauta_evento_id_fkey",
+	}).onDelete("cascade"),
+	foreignKey({
+		columns: [table.proposicao_id],
+		foreignColumns: [proposicoesInCongresso.id],
+		name: "evento_pauta_proposicao_id_fkey",
+	}).onDelete("set null"),
+	primaryKey({ columns: [table.evento_id, table.ordem, table.titulo], name: "evento_pauta_pkey"}),
+]);
+
+export const proposicao_autoriaInCongresso = congresso.table("proposicao_autoria", {
+	proposicao_id: uuid().notNull(),
+	nome: text().notNull(),
+	tipo: text(),
+	cod_tipo: integer(),
+	partido: text(),
+	uf: text(),
+	ordem: integer(),
+	proponente: boolean().default(false).notNull(),
+	parlamentar_id: uuid(),
+}, (table) => [
+	index("proposicao_autoria_proposicao_idx").using("btree", table.proposicao_id.asc().nullsLast()),
+	index("proposicao_autoria_parlamentar_idx").using("btree", table.parlamentar_id.asc().nullsLast()),
+	foreignKey({
+		columns: [table.proposicao_id],
+		foreignColumns: [proposicoesInCongresso.id],
+		name: "proposicao_autoria_proposicao_id_fkey",
+	}).onDelete("cascade"),
+	foreignKey({
+		columns: [table.parlamentar_id],
+		foreignColumns: [parlamentaresInCongresso.id],
+		name: "proposicao_autoria_parlamentar_id_fkey",
+	}).onDelete("set null"),
+	primaryKey({ columns: [table.proposicao_id, table.nome], name: "proposicao_autoria_pkey"}),
+]);
