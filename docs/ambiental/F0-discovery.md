@@ -456,7 +456,7 @@ share-alike se a base for redistribuída modificada.
 ### 10.2 O que foi implementado
 
 `etl/betim/etl/apis/ibama_fiscalizacao.py` escreve em duas tabelas novas
-(`supabase/betim/migrations/0046_ibama_fiscalizacao.sql`): `ibama_autos_infracao` e
+(`supabase/betim/migrations/0048_ibama_fiscalizacao.sql`): `ibama_autos_infracao` e
 `ibama_embargos`, refresh total por município. **Testado ao vivo contra a fonte real em
 modo `--sondar` (sem banco, sem gravar)** — os números acima são dessa rodada, não
 estimativa. O modo `sync` (grava de verdade) não foi executado — a Neon está em HTTP 402
@@ -527,7 +527,7 @@ fonte já documentada.
 
 ### 11.2 O que foi implementado
 
-`etl/betim/etl/apis/snisb_barragens.py` + `supabase/betim/migrations/0047_snisb_barragens.sql`
+`etl/betim/etl/apis/snisb_barragens.py` + `supabase/betim/migrations/0049_snisb_barragens.sql`
 (tabela `snisb_barragens`, refresh total por município). **Testado ao vivo** — os números
 acima são de uma rodada `--sondar` real, sem gravar (Neon em 402 até 2026-09-01).
 

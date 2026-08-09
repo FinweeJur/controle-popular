@@ -46,7 +46,7 @@ abastece água em Betim.
 
 5. **TRÊS NÚMEROS DIFERENTES PARA "BARRAGENS DE MINERAÇÃO EM MG"**: FEAM 249,
    WFS IDE-Sisema 259, SNISB (linhas atribuídas à ANM) 320. Não reconciliado —
-   ver nota na migration `0047_snisb_barragens.sql`. Este módulo não tenta
+   ver nota na migration `0049_snisb_barragens.sql`. Este módulo não tenta
    resolver isso; grava o que o SNISB diz, com `orgao_fiscalizador` para quem
    quiser comparar depois.
 
