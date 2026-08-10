@@ -38,6 +38,10 @@ export interface Filtros {
   ano?: number;
   q?: string;
   pagina?: number;
+  /** Default `POR_PAGINA_PADRAO`. `/congresso/votacoes` pede um valor bem
+   *  maior pra buscar o conjunto inteiro de uma vez — ver
+   *  `app/congresso/votacoes/dados/[arquivo]/route.ts`. */
+  porPagina?: number;
 }
 
 /**
@@ -61,7 +65,7 @@ export async function listarVotacoes(
     ano: filtros.ano,
     q: filtros.q,
     pagina: filtros.pagina,
-    porPagina: POR_PAGINA_PADRAO,
+    porPagina: filtros.porPagina ?? POR_PAGINA_PADRAO,
   });
   if (!linhas) return null;
   if (linhas.length === 0) {
