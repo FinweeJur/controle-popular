@@ -25,6 +25,10 @@ export interface LicitacoesFilters {
   modalidade?: string;
   q?: string;
   page?: number;
+  /** Default `LICITACOES_PAGE_SIZE`. `prefeitura/licitacoes` pede um valor
+   *  bem maior pra buscar a cidade inteira de uma vez — ver
+   *  `app/[municipio]/prefeitura/licitacoes/dados/[arquivo]/route.ts`. */
+  porPagina?: number;
 }
 
 export interface LicitacoesResult {
@@ -82,7 +86,7 @@ export async function fetchLicitacoes(
     const linhas = await q.licitacoesPaginadas(idMunicipio, {
       ...filtros,
       pagina: filters.page,
-      porPagina: LICITACOES_PAGE_SIZE,
+      porPagina: filters.porPagina ?? LICITACOES_PAGE_SIZE,
     });
     if (!linhas) return VAZIO;
 
