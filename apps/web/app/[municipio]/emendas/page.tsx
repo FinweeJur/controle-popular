@@ -2,9 +2,9 @@ import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
-import TabelaScroll from "@/app/[municipio]/components/TabelaScroll";
-import { getConveniosFederais, CONVENIO_URL_BASE } from "@/lib/betim/convenios";
-import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import ListaEmendas from "./ListaEmendas";
+import { getConveniosFederais } from "@/lib/betim/convenios";
+import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
@@ -24,6 +24,8 @@ export default async function EmendasPage({
   params: Promise<{ municipio: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
+  const prefixoExport = process.env.PAGES_BASE_PATH ?? "";
+  const baseDados = `${prefixoExport}/${cidade.slug}/emendas/dados`;
   const { configured, ok, convenios, valorTotal, valorLiberadoTotal, qtdComPrefeitura, porOrgao } =
     await getConveniosFederais(cidade.id_municipio);
 
@@ -170,65 +172,13 @@ export default async function EmendasPage({
         </div>
       )}
 
-      <TabelaScroll>
-        <table className="min-w-full divide-y divide-border text-sm">
-          <thead className="bg-surface-2">
-            <tr className="text-left text-[.82em] tracking-wide text-text-soft uppercase">
-              <th className="px-4.5 py-3.5">Objeto</th>
-              <th className="px-4.5 py-3.5">Órgão</th>
-              <th className="px-4.5 py-3.5">Recebeu</th>
-              <th className="px-4.5 py-3.5">Valor</th>
-              <th className="px-4.5 py-3.5">Situação</th>
-              <th className="px-4.5 py-3.5">Vigência</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-border bg-surface">
-            {convenios.map((c) => (
-              <tr key={c.id}>
-                <td className="max-w-md px-4.5 py-3.5 align-top text-text-soft">
-                  <p className="truncate" title={c.objeto ?? undefined}>
-                    {c.objeto ?? "—"}
-                  </p>
-                  {c.numeroConvenio && (
-                    <p className="mt-0.5 text-xs">
-                      Nº{" "}
-                      {c.codigo ? (
-                        <a
-                          href={`${CONVENIO_URL_BASE}${c.codigo}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-medium text-accent hover:underline"
-                        >
-                          {c.numeroConvenio} ↗
-                        </a>
-                      ) : (
-                        c.numeroConvenio
-                      )}
-                    </p>
-                  )}
-                </td>
-                <td className="px-4.5 py-3.5 align-top text-text-soft">
-                  {c.orgaoSigla ?? c.orgaoNome ?? "—"}
-                </td>
-                <td className="px-4.5 py-3.5 align-top font-medium text-text">
-                  {c.convenenteNome ?? "—"}
-                </td>
-                <td className="font-tabular px-4.5 py-3.5 align-top font-semibold whitespace-nowrap text-text">
-                  {formatCurrencyBRL(c.valor)}
-                </td>
-                <td className="px-4.5 py-3.5 align-top">
-                  <span className="rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-text-soft">
-                    {c.situacao ?? "—"}
-                  </span>
-                </td>
-                <td className="font-tabular px-4.5 py-3.5 align-top whitespace-nowrap text-text-soft">
-                  {formatDateBR(c.dataInicioVigencia)} – {formatDateBR(c.dataFinalVigencia)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </TabelaScroll>
+      {/* Índice estático fatiado, e não `convenios.map()` inline.
+        *
+        * A tabela inline renderizava todos os convênios no servidor. Com os
+        * 3.000 de Belo Horizonte a entrada de cache desta página chegou a
+        * 24,11 MB, contra o teto de 25 MiB por arquivo do Workers, e o deploy
+        * passou a falhar no upload do asset. Ver `dados/[arquivo]/route.ts`. */}
+      <ListaEmendas base={baseDados} />
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-accent bg-accent/10 px-6 py-5">
         <div>
