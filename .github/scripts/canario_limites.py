@@ -194,7 +194,16 @@ def avisar(mensagem: str) -> bool:
 
 def main() -> int:
     a = Achados()
-    checar_neon(a)
+    # `checar_neon` NÃO é chamada desde 2026-08-10, e a ausência é deliberada:
+    # o banco saiu da Neon e virou o Postgres da máquina de build. A função
+    # fica no arquivo porque a lógica está certa e volta a valer se um banco
+    # gerenciado voltar — mas chamá-la hoje seria pior que inútil.
+    #
+    # Sem projeto na Neon ela cai em `sem_dado`, e `sem_dado` dispara alerta de
+    # "canário cego" (linha 216) — de 4 em 4 horas, para sempre. Seriam seis
+    # avisos por dia sobre um sistema que não existe, e é exatamente assim que
+    # se ensina alguém a ignorar o canário. O que o canário ainda vigia de
+    # verdade — Cloudflare e o site no ar — continua abaixo.
     checar_cloudflare(a)
     sondar_urls(a)
 

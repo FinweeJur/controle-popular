@@ -27,3 +27,9 @@ gcp.json
 # Indice estatico da /busca: gerado do banco no prebuild, nunca commitado.
 # Versionar seria publicar uma copia que envelhece em silencio.
 apps/web/public/busca-indice/
+
+# Log e marcador da rotina local (scripts/rotina-local.mts). Sao registro de
+# execucao DESTA maquina, nao do projeto: versionar encheria o historico de
+# ruido e faria o marcador de contagem de paginas de um PC valer como
+# referencia no outro.
+logs/

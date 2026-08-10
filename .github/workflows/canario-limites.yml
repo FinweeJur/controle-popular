@@ -1,13 +1,25 @@
 name: Canario de limites
 
-# Cloudflare e Neon NÃO avisam nada nos planos free — quando o teto chega, o
-# site simplesmente devolve 1027/1102 ou as escritas falham. Este workflow é
-# o alerta que eles não dão, e é requisito explícito da migração: o
-# trade-off aceito foi "o site cai em vez de gerar fatura, DESDE QUE haja
-# notificação".
+# Cloudflare NÃO avisa nada no plano free — quando o teto chega, o site
+# simplesmente devolve 1027/1102. Este workflow é o alerta que ele não dá, e
+# é requisito explícito da migração: o trade-off aceito foi "o site cai em
+# vez de gerar fatura, DESDE QUE haja notificação".
 #
 # Sem os secrets configurados o job não finge sucesso: ele FALHA, e o
 # GitHub manda e-mail — que já é uma forma de alerta.
+#
+# ─── 2026-08-10: ESTE É O ÚNICO WORKFLOW QUE CONTINUA AGENDADO ───────────
+#
+# Os 6 de ETL e o `rebuild.yml` foram desligados no mesmo dia: o banco virou
+# o Postgres da máquina de build e o runner do GitHub não o alcança. Este
+# fica, e o motivo é a diferença entre eles: os outros PRECISAM do banco;
+# este só precisa da internet. Ele sonda o site de fora, que é justamente a
+# posição de onde se enxerga o site fora do ar — e é a única vigilância que
+# sobrevive à máquina de build estar desligada.
+#
+# A parte da Neon saiu (ver a nota em `.github/scripts/canario_limites.py`):
+# sem projeto lá, ela alertaria "canário cego" seis vezes por dia sobre um
+# sistema que não existe. Os secrets `NEON_*` foram removidos daqui junto.
 
 on:
   schedule:
@@ -18,8 +30,6 @@ jobs:
   canario:
     runs-on: ubuntu-latest
     env:
-      NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
-      NEON_PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}

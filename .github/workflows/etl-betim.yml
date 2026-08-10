@@ -56,10 +56,6 @@ on:
     - cron: '0 9 * * 1'
     - cron: '0 10 1 * *'
     - cron: '0 11 1 1,4,7,10 *'
-  push:
-    paths:
-      - 'etl/betim/**'
-      - '.github/workflows/etl-betim.yml'
   workflow_dispatch:
 
 env:
@@ -76,6 +72,19 @@ env:
 jobs:
   etl:
     runs-on: ubuntu-latest
+    # ─── DESLIGADO POR AGENDAMENTO EM 2026-08-10 ────────────────────────
+    # O banco saiu da Neon e é o Postgres da máquina de build, que o runner
+    # do GitHub não alcança. Agendado, este job acordava todo dia e gravava
+    # em lugar nenhum — o pior tipo de tarefa, a que parece viva.
+    #
+    # O `schedule:` acima FICA, e não é resíduo: `scripts/rotina-local.mts`
+    # lê exatamente estes crons para saber o que entra na rodada de cada
+    # dia. A cadência continua declarada aqui; só a execução mudou de casa.
+    # Apagar os crons quebraria a rotina local em silêncio.
+    #
+    # `workflow_dispatch` segue valendo, para quando o alvo voltar a ser um
+    # banco alcançável pelo CI.
+    if: github.event_name == 'workflow_dispatch'
     defaults:
       run:
         working-directory: etl/betim

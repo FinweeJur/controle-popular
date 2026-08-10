@@ -71,9 +71,29 @@ name: Rebuild e deploy do site
 # PARA AUMENTAR A CADÊNCIA: medir primeiro o custo real de UM build (ler
 # `data_transfer_bytes` da API do Neon antes e depois) e dividir os 5 GB por
 # ele — não estimar.
+#
+# ─── AGENDAMENTO DESLIGADO EM 2026-08-10 ─────────────────────────────────
+#
+# Quase tudo acima descreve um problema que deixou de existir: o egress da
+# Neon. O banco agora é o Postgres da máquina de build, e o `next build` lê
+# dali — sem teto mensal. As três travas (pré-voo, impressão digital,
+# orçamento) foram escritas para racionar 5 GB/mês que não existem mais.
+#
+# O cron sai por um motivo mais grave que o custo: rodando no GitHub, este
+# workflow construiria contra um banco que o runner NÃO ALCANÇA. `getDb()`
+# devolve `null`, as páginas saem vazias e o `next build` termina com
+# **exit 0** — publicando um site em branco por cima de um site correto, sem
+# nada ficar vermelho. Agendado, isso acontece sozinho.
+#
+# Quem publica agora é `scripts/rotina-local.mts`, pela tarefa agendada do
+# Windows nesta máquina, e ele tem a trava que faltava aqui: conta as
+# páginas em `.next/prerender-manifest.json` e **recusa o deploy abaixo de
+# 1.000** (21 = build sem banco, medido; 1.471 = build correto, medido).
+#
+# `workflow_dispatch` fica para o dia em que o alvo voltar a ser um banco
+# alcançável pelo CI. Não apague as travas junto com o cron: elas voltam a
+# valer no minuto em que isso acontecer.
 on:
-  schedule:
-    - cron: "0 12 * * 1"
   workflow_dispatch:
     inputs:
       forcar:

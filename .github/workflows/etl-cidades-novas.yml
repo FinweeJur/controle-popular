@@ -35,6 +35,11 @@ env:
 jobs:
   belo-horizonte:
     runs-on: ubuntu-latest
+    # Desligado por agendamento em 2026-08-10, pela mesma razão detalhada em
+    # `etl-betim.yml`: o banco é o Postgres da máquina de build e o runner do
+    # GitHub não o alcança. O `schedule:` acima FICA porque
+    # `scripts/rotina-local.mts` lê estes crons como cadência da rotina local.
+    if: github.event_name == 'workflow_dispatch'
     timeout-minutes: 180
     defaults:
       run:
@@ -165,6 +170,8 @@ jobs:
 
   sao-paulo:
     runs-on: ubuntu-latest
+    # Ver a nota no job `belo-horizonte` acima.
+    if: github.event_name == 'workflow_dispatch'
     timeout-minutes: 180
     defaults:
       run:

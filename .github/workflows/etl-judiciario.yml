@@ -4,10 +4,6 @@ on:
   schedule:
     - cron: "0 9 * * *"   # diário — indicações do ano corrente + vacância
     - cron: "0 10 * * 1"  # semanal — backfill de anos anteriores (raro mudarem)
-  push:
-    paths:
-      - 'etl/judiciario/**'
-      - '.github/workflows/etl-judiciario.yml'
   workflow_dispatch:
     inputs:
       modulo:
@@ -17,6 +13,11 @@ on:
 jobs:
   etl:
     runs-on: ubuntu-latest
+    # Desligado por agendamento em 2026-08-10, pela mesma razão detalhada em
+    # `etl-betim.yml`: o banco é o Postgres da máquina de build e o runner do
+    # GitHub não o alcança. O `schedule:` acima FICA porque
+    # `scripts/rotina-local.mts` lê estes crons como cadência da rotina local.
+    if: github.event_name == 'workflow_dispatch'
     defaults:
       run:
         working-directory: etl/judiciario
