@@ -202,10 +202,40 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
         </div>
       ) : (
         <>
-          <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
-            {row.nome_urna ?? row.nome}
-          </h1>
-          <p className="mt-1 text-text-soft">{row.nome}</p>
+          {/* A foto estava no banco e em lugar nenhum da tela.
+            *
+            * `foto_url` está preenchida para 87 dos 99 vereadores (Betim
+            * 23/23, BH 41/41, Itinga 11/11, Araçuaí 11/11, Diamantina 1/13) e
+            * era até selecionada pela query — mas nenhum `.tsx` a usava.
+            * Coletar, guardar, consultar e não mostrar é o pior dos mundos:
+            * paga o custo inteiro e não entrega nada.
+            *
+            * `<img>` cru e não `next/image`, seguindo o que a página de
+            * parlamentar do Congresso já faz: as fotos vêm de host externo
+            * (SAPL, portais das câmaras) e no export estático o otimizador de
+            * imagem não existe.
+            *
+            * `alt=""` de propósito: o nome está escrito ao lado, em texto. Um
+            * `alt` com o nome faria o leitor de tela repetir. */}
+          <div className="flex flex-wrap items-center gap-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            {row.foto_url ? (
+              <img
+                src={row.foto_url}
+                alt=""
+                width={84}
+                height={112}
+                loading="lazy"
+                className="h-28 w-[84px] shrink-0 rounded-lg border border-border object-cover"
+              />
+            ) : null}
+            <div>
+              <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
+                {row.nome_urna ?? row.nome}
+              </h1>
+              <p className="mt-1 text-text-soft">{row.nome}</p>
+            </div>
+          </div>
           <div className="mt-3 flex flex-wrap gap-2">
             {row.partido && (
               <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">

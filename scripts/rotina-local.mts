@@ -74,10 +74,40 @@ const PISO_PAGINAS = 1000;
 const QUEDA_MAXIMA = 0.2;
 
 const argv = process.argv.slice(2);
+
+// ─── FLAG DESCONHECIDO ABORTA, NÃO É IGNORADO ────────────────────────────
+//
+// Escrito depois de digitar `--so-etl` (que não existia) e a rotina seguir
+// alegremente para o build e o DEPLOY. Um `Set.has()` que não acha devolve
+// `false`, e `false` aqui significa "pode publicar" — ou seja, o erro de
+// digitação escolhia o comportamento mais perigoso disponível, em silêncio.
+//
+// Vale o mesmo princípio das outras travas deste arquivo: falhar alto é
+// barato, falhar quieto custa um site publicado errado.
+const BANDEIRAS = new Set([
+  "--listar", "--so-build", "--so-etl", "--sem-deploy", "--forcar-deploy",
+  "--dispatch", "--workflow", "--job",
+]);
+const COM_VALOR = new Set(["--workflow", "--job"]);
+for (let i = 0; i < argv.length; i++) {
+  const a = argv[i];
+  if (COM_VALOR.has(argv[i - 1])) continue; // é o valor do anterior
+  if (!BANDEIRAS.has(a)) {
+    console.error(
+      `argumento desconhecido: ${a}\n` +
+        `conhecidos: ${[...BANDEIRAS].join(" ")}\n` +
+        `(abortando de propósito — argumento errado ignorado já quase publicou sem querer)`
+    );
+    process.exit(2);
+  }
+}
+
 const args = new Set(argv);
 const SO_LISTAR = args.has("--listar");
 const SO_BUILD = args.has("--so-build");
-const SEM_DEPLOY = args.has("--sem-deploy");
+/** Coleta e para. Útil para encher uma cidade sem tocar no site. */
+const SO_ETL = args.has("--so-etl");
+const SEM_DEPLOY = args.has("--sem-deploy") || SO_ETL;
 const FORCAR_DEPLOY = args.has("--forcar-deploy");
 
 /**
@@ -99,6 +129,23 @@ const DISPATCH = args.has("--dispatch");
 /** `--workflow etl-cidades-novas.yml` limita a rodada a um arquivo. */
 const SO_WORKFLOW = (() => {
   const i = argv.indexOf("--workflow");
+  return i >= 0 ? argv[i + 1] : null;
+})();
+
+/**
+ * `--job sao-paulo` limita a um job dentro do workflow.
+ *
+ * Existe porque `etl-cidades-novas.yml` tem dois jobs SEM `needs:` entre eles
+ * — no GitHub, BH e São Paulo rodam em PARALELO. A rotina local executa em
+ * sequência, e isso vira problema quando um passo é longo: em 2026-08-10 o
+ * `etl.camaras.bh` sozinho levou mais de duas horas, e São Paulo, que estava
+ * atrás dele na fila, não tinha começado.
+ *
+ * Rodar um job à parte não é desvio do workflow: é reproduzir o paralelismo
+ * que ele já declara.
+ */
+const SO_JOB = (() => {
+  const i = argv.indexOf("--job");
   return i >= 0 ? argv[i + 1] : null;
 })();
 
@@ -349,6 +396,7 @@ function lerWorkflow(arquivo: string, hoje: Date): Passo[] {
   const passos: Passo[] = [];
 
   for (const [nomeJob, job] of Object.entries<any>(doc.jobs ?? {})) {
+    if (SO_JOB && nomeJob !== SO_JOB) continue;
     const matrizes: Record<string, string>[] = job.strategy?.matrix?.include ?? [{}];
     const dirPadrao = job.defaults?.run?.["working-directory"] ?? ".";
 
@@ -541,6 +589,11 @@ async function principal() {
   }
 
   // ── build ────────────────────────────────────────────────────────
+  if (SO_ETL) {
+    registrar("--so-etl: coleta terminada, parando antes do build.");
+    return;
+  }
+
   registrar("build: npm run build (apps/web)");
   if (!npm("build")) {
     registrar("ABORTADO: o build falhou. Nada foi publicado.");

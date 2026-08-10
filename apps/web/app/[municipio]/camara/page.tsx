@@ -346,20 +346,36 @@ export default async function CamaraPage({
             <Link
               key={v.slug}
               href={`/vereadores/${v.slug}`}
-              className="rounded-2xl border border-border bg-surface p-5 shadow-sm transition-colors hover:border-primary"
+              className="flex gap-4 rounded-2xl border border-border bg-surface p-5 shadow-sm transition-colors hover:border-primary"
             >
-              <h3 className="font-display text-base font-semibold text-text">
-                {v.nome_urna ?? v.nome}
-              </h3>
-              <p className="mt-1 text-sm text-text-soft">{v.nome}</p>
-              {v.partido && (
-                <p className="mt-2 inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
-                  {v.partido}
-                </p>
-              )}
-              {v.cargo_mesa && (
-                <p className="mt-2 text-xs font-medium text-accent">{v.cargo_mesa}</p>
-              )}
+              {/* Ver a nota em `vereadores/[slug]/page.tsx`: a foto estava no
+                * banco e não aparecia em tela nenhuma. `<img>` cru porque o
+                * host é externo e o export estático não tem otimizador. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              {v.foto_url ? (
+                <img
+                  src={v.foto_url}
+                  alt=""
+                  width={56}
+                  height={72}
+                  loading="lazy"
+                  className="h-[72px] w-14 shrink-0 rounded-md border border-border object-cover"
+                />
+              ) : null}
+              <div className="min-w-0">
+                <h3 className="font-display text-base font-semibold text-text">
+                  {v.nome_urna ?? v.nome}
+                </h3>
+                <p className="mt-1 text-sm text-text-soft">{v.nome}</p>
+                {v.partido && (
+                  <p className="mt-2 inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                    {v.partido}
+                  </p>
+                )}
+                {v.cargo_mesa && (
+                  <p className="mt-2 text-xs font-medium text-accent">{v.cargo_mesa}</p>
+                )}
+              </div>
             </Link>
           ))}
         </div>

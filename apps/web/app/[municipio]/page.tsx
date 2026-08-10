@@ -22,6 +22,11 @@ import {
 import { getNoticias, CATEGORIA_LABELS } from "@/lib/betim/noticias";
 import { getObrasParaopebaMenosConcluidas } from "@/lib/betim/paraopeba";
 import {
+  FONTE_OFICIAL,
+  EXPLICACAO_INDICADOR,
+  avisoDeDefasagem,
+} from "@/lib/betim/fontesIndicadores";
+import {
   Landmark,
   Users,
   MessageCircle,
@@ -70,6 +75,11 @@ const INDICATOR_LABELS: { nome: string; label: string; unidade_curta?: string }[
   { nome: "idh", label: "IDH" },
 ];
 
+/** Ano do BUILD, não do acesso — a página é estática, então é este o momento
+ *  em que "há quantos anos" pode ser calculado. O site é reconstruído todo
+ *  dia, então o número nunca fica mais de um dia velho. */
+const ANO_ATUAL = new Date().getFullYear();
+
 const WEATHER_LABELS: Record<number, string> = {
   0: "Céu limpo",
   1: "Poucas nuvens",
@@ -95,6 +105,9 @@ interface IndicadorRow {
   valor_numerico: number | null;
   ano_referencia: number | null;
   unidade: string | null;
+  /** Identificador do conjunto na origem (`br_inep_ideb`), traduzido para
+   *  nome e endereço por `lib/betim/fontesIndicadores.ts`. */
+  fonte: string | null;
 }
 
 interface ClimaAtual {
@@ -391,6 +404,39 @@ export default async function HomePage({
                         <span className="mt-1 block text-[.85em] text-text-soft">
                           {row.ano_referencia}
                         </span>
+                      ) : null}
+
+                      {/* O que o número quer dizer, em uma frase.
+                        * "IDEB (anos finais) — 3,8 pontos" não informa quem
+                        * não sabe o que é IDEB nem qual é a escala. */}
+                      {EXPLICACAO_INDICADOR[nome] ? (
+                        <p className="mt-2 text-[.78em] leading-snug text-text-soft">
+                          {EXPLICACAO_INDICADOR[nome]}
+                        </p>
+                      ) : null}
+
+                      {/* Dado velho tem de se anunciar como velho: IDH e
+                        * pobreza são do Censo de 2010 e ficavam lado a lado
+                        * com números de 2025, sem distinção. */}
+                      {avisoDeDefasagem(row.ano_referencia, ANO_ATUAL) ? (
+                        <p className="mt-1 text-[.72em] leading-snug text-text-soft opacity-80">
+                          {avisoDeDefasagem(row.ano_referencia, ANO_ATUAL)}
+                        </p>
+                      ) : null}
+
+                      {/* O link que faltava. A frase no alto desta página
+                        * promete "cada dado vem de fonte oficial, com link
+                        * pra você conferir" — e nenhum destes nove cards
+                        * tinha link nenhum (medido em produção, 2026-08-10). */}
+                      {row.fonte && FONTE_OFICIAL[row.fonte] ? (
+                        <a
+                          href={FONTE_OFICIAL[row.fonte].url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 inline-block text-[.75em] font-medium text-primary underline underline-offset-2"
+                        >
+                          {FONTE_OFICIAL[row.fonte].rotulo} ↗
+                        </a>
                       ) : null}
                     </>
                   ) : (

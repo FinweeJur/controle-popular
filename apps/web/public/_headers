@@ -1,0 +1,31 @@
+# Cabeçalhos dos arquivos estáticos, lidos pelo Workers Static Assets.
+#
+# ═══ POR QUE ISTO EXISTE ═══
+#
+# Medido em 2026-08-10, no site em produção: TODO arquivo estático saía com
+#
+#     Cache-Control: public, max-age=0, must-revalidate
+#
+# inclusive os chunks com hash no nome, tipo `08kwq75yfv67m.js`. Esses arquivos
+# são imutáveis por construção — o hash faz parte do nome, então conteúdo novo
+# significa NOME novo, sempre. Revalidar um deles é perguntar se mudou algo que
+# não pode mudar.
+#
+# O custo não é de banda (o 304 volta sem corpo), é de VIAGEM: cada visita
+# revalida cada chunk antes de desenhar a tela. Numa conexão do Jequitinhonha,
+# que é o público deste portal, ida-e-volta pesa mais que byte.
+#
+# ═══ O QUE NÃO ENTRA AQUI, E POR QUÊ ═══
+#
+# `/busca-indice/*` fica de fora de propósito. Os nomes são fixos
+# (`docs/0.json`) e o conteúdo é regerado a cada build, então cache longo
+# serviria busca velha sobre páginas novas — e busca que responde sobre o
+# acervo de ontem, sem avisar, é o defeito que o próprio gerador de índice
+# existe para evitar (ver `scripts/gerar-indice-busca.mts`).
+#
+# E não precisa: medido no ar, o Brotli do Cloudflare já leva `docs/0.json` de
+# 2.048 KB para 264 KB — 87% a menos. Comprimir mais na mão seria refazer, pior,
+# o que a borda já faz.
+
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable

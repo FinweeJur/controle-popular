@@ -118,6 +118,12 @@ export async function listarIndicadores(idMunicipio: IdMunicipio, nomes?: string
       valor_numerico: num(indicadores.valor_numerico),
       ano_referencia: indicadores.ano_referencia,
       unidade: indicadores.unidade,
+      // Entrou em 2026-08-10: os nove indicadores da home apareciam sem link
+      // de fonte, embaixo de um texto que promete "cada dado vem de fonte
+      // oficial, com link pra você conferir". `fonte` guarda o identificador
+      // do conjunto (`br_inep_ideb`); `lib/betim/fontesIndicadores.ts` traduz
+      // para nome e endereço.
+      fonte: indicadores.fonte,
     })
     .from(indicadores)
     .where(and(...cond))
