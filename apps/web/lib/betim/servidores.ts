@@ -35,6 +35,10 @@ export async function getServidores(
     /** `comissionados` | `alto_escalao` — ver `PERFIS_SERVIDOR`. */
     perfil?: q.PerfilServidor;
     page?: number;
+    /** Default `SERVIDORES_PAGE_SIZE`. `prefeitura/servidores` pede um
+     *  valor bem maior pra buscar a cidade inteira de uma vez — ver
+     *  `app/[municipio]/prefeitura/servidores/dados/[arquivo]/route.ts`. */
+    porPagina?: number;
   }
 ): Promise<ServidoresResult> {
   try {
@@ -43,7 +47,7 @@ export async function getServidores(
       orgao: opts.orgao,
       perfil: opts.perfil,
       pagina: opts.page,
-      porPagina: SERVIDORES_PAGE_SIZE,
+      porPagina: opts.porPagina ?? SERVIDORES_PAGE_SIZE,
     });
     if (!data) return EMPTY;
 
