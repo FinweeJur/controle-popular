@@ -436,3 +436,68 @@ ambiental  -> ambiental      ambientais -> ambient
    Daí o casamento por vizinho morfológico, além do radical exato.
 
 Núcleo e 21 testes em `lib/busca/` (`3925ffa`). Falta o gerador e a tela.
+
+---
+
+## 10. O export fechou. E o número que faltava diz que ele não cabe no Pages
+
+Primeira vez que `output: 'export'` termina com exit 0, em 2026-08-09, depois de
+converter as 12 páginas que liam `searchParams` no servidor. O inventário está
+zerado: `grep` de `await searchParams` em `app/**/page.tsx` não devolve nada.
+
+> Correção ao que o §9.2 registrava: `congresso/bancadas` **não** consome
+> `searchParams` — só cita o termo num comentário explicando por que não o faz.
+> Eram 12 páginas, não 13.
+
+### 10.1 A medição
+
+| | |
+|---|---:|
+| `apps/web/out` — arquivos | **45.190** |
+| `apps/web/out` — tamanho | 522 MB |
+| Arquivos acima de 25 MiB | **0** |
+| Teto do Cloudflare Pages | **20.000 arquivos** |
+
+**Estoura o teto em 2,25×.** E a composição diz onde está o peso:
+
+```
+40.685  .txt      (payload RSC do Next)
+ 4.385  .html     (as páginas de verdade)
+    54  .json
+    53  .js
+```
+
+Ou seja: **90% dos arquivos não são páginas.** São os payloads que o Next emite
+por rota para navegação client-side. O `.html` sozinho caberia com folga —
+4.385 contra 20.000.
+
+### 10.2 Isso NÃO bloqueia o site publicado
+
+O alvo real é Cloudflare **Workers**, não Pages, e lá a conta é outra: o deploy
+sobe `.open-next/assets`, que tem **1.467 arquivos** e 2.763 KiB gzip de Worker
+(teto 3 MiB — a folga encurtou de 2.701 para 2.763 KiB com o índice da busca).
+
+Então o §7 continua valendo: a arquitetura C está de pé, e o export é a *opção*
+GitHub Pages, não o caminho principal. Quem for retomá-la precisa resolver os
+40 mil `.txt` primeiro — provavelmente desligando a emissão de payload RSC no
+alvo estático, não cortando página.
+
+### 10.3 O que a conversão custou, declarado
+
+Duas perdas conscientes, para não parecerem regressão silenciosa depois:
+
+- **Quatro DataCards de soma/contagem** saíram de `licitacoes` e `contratos`. O
+  `TabelaEstatica` não expõe ao slot de controles o conjunto DEPOIS da busca
+  textual, então o número bateria com os filtros estruturados e mentiria assim
+  que alguém digitasse na busca. Número que às vezes mente é pior que número
+  ausente.
+- **O filtro `autor`** de `congresso/proposicoes` saiu, e não foi escondido:
+  nenhum link do site apontava para ele, e replicá-lo exigiria dado que o índice
+  não carrega inteiro (só os dois primeiros autores por proposição).
+
+### 10.4 O ganho, medido no site publicado
+
+Versão `badd8c80`. As 13 rotas que respondiam **500** agora respondem **200**
+com conteúdo real (`prefeitura/contratos` entrega 89 KB de HTML). Páginas
+pré-renderizadas: **1.263 → 4.431**. Rotas dinâmicas restantes: exatamente as
+**15 APIs `.din.ts`** — nenhuma página.
