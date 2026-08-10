@@ -19,6 +19,10 @@ __pycache__/
 # escreve em tempo de execucao — ela nunca deve existir versionada.
 gcp-service-account.json
 *service-account*.json
+# O nome curto tambem: o arquivo baixado do console GCP costuma vir como
+# `gcp.json` na mao de quem configura, e so o padrao acima nao o pegava.
+gcp.json
+*/gcp.json
 
 # Indice estatico da /busca: gerado do banco no prebuild, nunca commitado.
 # Versionar seria publicar uma copia que envelhece em silencio.
