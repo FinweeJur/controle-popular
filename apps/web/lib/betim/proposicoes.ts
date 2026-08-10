@@ -23,6 +23,10 @@ export interface ProposicoesFilters {
   tema?: string;
   q?: string;
   page?: number;
+  /** Default `PROPOSICOES_PAGE_SIZE`. `camara/proposicoes` pede um valor
+   *  bem maior pra buscar a cidade inteira de uma vez — ver
+   *  `app/[municipio]/camara/proposicoes/dados/[arquivo]/route.ts`. */
+  porPagina?: number;
 }
 
 export interface ProposicoesResult {
@@ -65,7 +69,7 @@ export async function fetchProposicoes(
       tema: filters.tema,
       q: sanitizeSearchTerm(filters.q),
       pagina: filters.page,
-      porPagina: PROPOSICOES_PAGE_SIZE,
+      porPagina: filters.porPagina ?? PROPOSICOES_PAGE_SIZE,
     });
     if (!data) return { rows: [], total: 0, configured: false, ok: false };
 
