@@ -73,17 +73,46 @@ const PISO_PAGINAS = 1000;
 // perto de 21.
 const QUEDA_MAXIMA = 0.2;
 
-const args = new Set(process.argv.slice(2));
+const argv = process.argv.slice(2);
+const args = new Set(argv);
 const SO_LISTAR = args.has("--listar");
 const SO_BUILD = args.has("--so-build");
 const SEM_DEPLOY = args.has("--sem-deploy");
 const FORCAR_DEPLOY = args.has("--forcar-deploy");
 
+/**
+ * `--dispatch` roda TODOS os passos do workflow, ignorando a cadência do dia.
+ *
+ * Não é atalho: é o `workflow_dispatch` do próprio GitHub, que o cabeçalho do
+ * `etl-betim.yml` descreve como *"runs every step below regardless of
+ * schedule, for manual backfills/testing"*. A rotina local reproduz a
+ * semântica em vez de inventar uma.
+ *
+ * Existe porque a cadência resolve o dia a dia e não resolve o buraco: BH e
+ * São Paulo estavam com ZERO linha em contratos, licitações, vereadores,
+ * despesas, escolas e tudo o mais (medido em 2026-08-10). O ETL delas roda
+ * terça e mensalmente; esperar a terça para descobrir se funciona é o tipo de
+ * espera que não ensina nada.
+ */
+const DISPATCH = args.has("--dispatch");
+
+/** `--workflow etl-cidades-novas.yml` limita a rodada a um arquivo. */
+const SO_WORKFLOW = (() => {
+  const i = argv.indexOf("--workflow");
+  return i >= 0 ? argv[i + 1] : null;
+})();
+
 // ───────────────────────────── registro em disco ─────────────────────────────
 
 fs.mkdirSync(LOGS, { recursive: true });
+// O PID entra no nome porque o carimbo até o SEGUNDO não é único: rodar
+// `--listar` e a rodada de verdade em sequência produz dois processos no mesmo
+// segundo, os dois abrem o mesmo arquivo em modo append e o log fica
+// entrelaçado — descoberto assim, com a rodada de BH/SP escrevendo por cima do
+// `--listar` que a precedeu. Log embaralhado é pior que log ausente: parece
+// completo.
 const carimbo = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
-const ARQUIVO_LOG = path.join(LOGS, `rotina-${carimbo}.log`);
+const ARQUIVO_LOG = path.join(LOGS, `rotina-${carimbo}-${process.pid}.log`);
 const fluxo = fs.createWriteStream(ARQUIVO_LOG, { flags: "a" });
 
 function registrar(linha: string) {
@@ -92,6 +121,72 @@ function registrar(linha: string) {
   console.log(texto);
   fluxo.write(texto + "\n");
 }
+
+// ───────────────────────────── o bash certo ─────────────────────────────
+
+/**
+ * Caminho absoluto do bash do Git — resolvido, nunca chamado por nome.
+ *
+ * ═══ O BUG QUE ISTO CONSERTA, E ELE ERA GRAVE ═══
+ *
+ * A primeira execução agendada (2026-08-10 06:00) falhou nos **25 de 25**
+ * passos de ETL com `/bin/bash: line 1: python: command not found` — e mesmo
+ * assim publicou, dizendo "publicado. 1471 páginas".
+ *
+ * A causa não é PATH: é que `spawn("bash")` procura o executável no PATH que
+ * recebe, e o PATH do Agendador de Tarefas tem `C:\Windows\system32` e não tem
+ * o Git. Em `system32` mora **`bash.exe` do WSL**. Ou seja: os passos rodavam
+ * dentro do Linux do WSL, que não enxerga `C:\` (lá é `/mnt/c`) e não tem o
+ * venv nem python. O prefixo `/bin/bash:` na mensagem era a pista — o Git Bash
+ * diz `bash:`.
+ *
+ * Interativamente nunca aparecia, porque o PATH do meu shell acha o Git
+ * primeiro. Era um erro que só existia no modo automático — exatamente o modo
+ * que ninguém olha.
+ *
+ * Daí resolver o caminho a partir do `git`, e **recusar** `system32\bash.exe`
+ * explicitamente. E daí a rotina abortar quando não encontra: rodar 25 passos
+ * no interpretador errado é pior que não rodar.
+ */
+function acharBashDoGit(): string {
+  const candidatos: string[] = [];
+
+  // 1. A partir de onde o `git` está. É o caminho confiável: o bash mora em
+  //    `<raiz>/bin/bash.exe`, e `git.exe` fica em `<raiz>/cmd`, `<raiz>/bin`
+  //    ou `<raiz>/mingw64/bin`. Nesta máquina o Git está em
+  //    `AppData\Local\hermes\git`, fora de qualquer lugar previsível — por
+  //    isso adivinhar não serve.
+  const ondeGit = spawnSync("where", ["git"], { encoding: "utf8", shell: true });
+  for (const linha of (ondeGit.stdout ?? "").split(/\r?\n/)) {
+    const exe = linha.trim();
+    if (!exe.toLowerCase().endsWith("git.exe")) continue;
+    let raiz = path.dirname(path.dirname(exe)); // .../cmd/git.exe -> raiz
+    if (path.basename(raiz).toLowerCase() === "mingw64") raiz = path.dirname(raiz);
+    candidatos.push(path.join(raiz, "bin", "bash.exe"));
+  }
+
+  // 2. Instalações padrão, para quando o `git` não estiver no PATH.
+  for (const base of [process.env.ProgramFiles, process.env["ProgramFiles(x86)"],
+                      path.join(process.env.LOCALAPPDATA ?? "", "Programs")]) {
+    if (base) candidatos.push(path.join(base, "Git", "bin", "bash.exe"));
+  }
+
+  for (const c of candidatos) {
+    // `system32\bash.exe` é o WSL. Nunca.
+    if (/system32/i.test(c)) continue;
+    if (fs.existsSync(c)) return c;
+  }
+
+  throw new Error(
+    "não achei o bash do Git. Os blocos `run:` dos workflows são bash de verdade " +
+      "(têm `for`, `$(date +%Y)` e `sleep`), e o `bash.exe` de C:\\Windows\\system32 é o " +
+      "do WSL — ele não enxerga C:\\ nem o venv, e faria os 25 passos falharem em " +
+      "silêncio.\nProcurei em:\n  " + candidatos.join("\n  ") +
+      "\nInstale o Git for Windows ou ponha-o no PATH da tarefa agendada."
+  );
+}
+
+const BASH = acharBashDoGit();
 
 // ───────────────────────────── ambiente ─────────────────────────────
 
@@ -246,7 +341,9 @@ function lerWorkflow(arquivo: string, hoje: Date): Passo[] {
   const gatilhos = doc.on ?? doc[true as unknown as string] ?? {};
   const crons: string[] = (gatilhos.schedule ?? []).map((s: any) => s.cron);
   const disparam = crons.filter((c) => disparaHoje(c, hoje));
-  if (disparam.length === 0) return [];
+  // Em `--dispatch` o cron não decide nada — é o mesmo que apertar "Run
+  // workflow" no GitHub num dia qualquer.
+  if (!DISPATCH && disparam.length === 0) return [];
 
   const envWorkflow: Record<string, string> = doc.env ?? {};
   const passos: Passo[] = [];
@@ -263,7 +360,9 @@ function lerWorkflow(arquivo: string, hoje: Date): Passo[] {
       for (const passo of job.steps ?? []) {
         if (ehPreparoDoCI(passo)) continue;
         const ctx: Contexto = { schedule: null, event_name: "schedule", matrix: matriz as any };
-        const roda = disparam.some((cron) => avaliarSe(passo.if, { ...ctx, schedule: cron }));
+        const roda = DISPATCH
+          ? avaliarSe(passo.if, { ...ctx, event_name: "workflow_dispatch" })
+          : disparam.some((cron) => avaliarSe(passo.if, { ...ctx, schedule: cron }));
         if (!roda) continue;
 
         const comando = substituirMatriz(String(passo.run ?? "").trim(), matriz);
@@ -325,10 +424,10 @@ function rodar(passo: Passo, ambiente: Record<string, string>): boolean {
     if (typeof v === "string" && v.includes("${{")) delete (env as any)[k];
   }
 
-  const r = spawnSync("bash", ["-c", passo.comando], { cwd: dir, env, stdio: "pipe", encoding: "utf8" });
+  const r = spawnSync(BASH, ["-c", passo.comando], { cwd: dir, env, stdio: "pipe", encoding: "utf8" });
   const saida = ((r.stdout ?? "") + (r.stderr ?? "")).trimEnd();
   if (saida) fluxo.write(saida + "\n");
-  if (r.error) registrar(`      spawn falhou: ${r.error.message} (bash do Git está no PATH?)`);
+  if (r.error) registrar(`      spawn falhou: ${r.error.message} (${BASH})`);
   const ok = r.status === 0;
   if (!ok) {
     const ultimas = saida.split("\n").slice(-8).join("\n");
@@ -394,7 +493,12 @@ async function principal() {
   // ── ETL ──────────────────────────────────────────────────────────
   let falhas = 0;
   if (!SO_BUILD) {
-    const passos = ORDEM.flatMap((w) => lerWorkflow(w, hoje));
+    const alvos = SO_WORKFLOW ? ORDEM.filter((w) => w === SO_WORKFLOW) : ORDEM;
+    if (SO_WORKFLOW && alvos.length === 0) {
+      throw new Error(`--workflow ${SO_WORKFLOW} não está em ORDEM. Conhecidos: ${ORDEM.join(", ")}`);
+    }
+    const passos = alvos.flatMap((w) => lerWorkflow(w, hoje));
+    if (DISPATCH) registrar("--dispatch: cadência ignorada, rodando tudo (como workflow_dispatch)");
     registrar(`ETL: ${passos.length} passo(s) na cadência de hoje`);
     if (SO_LISTAR) {
       for (const p of passos) {
@@ -409,6 +513,31 @@ async function principal() {
       if (!ok && !p.tolerante) falhas++;
     }
     registrar(falhas === 0 ? "ETL: todos os passos passaram" : `ETL: ${falhas} passo(s) falharam`);
+
+    // ETL INTEIRO NO CHÃO É PROBLEMA DE AMBIENTE, NÃO DE DADO — E NÃO PUBLICA.
+    //
+    // Um passo que falha é rotina: a fonte caiu, a API mudou, o município não
+    // publicou ainda. O banco segue com o dado de ontem e o build continua
+    // válido, então publicar é o certo.
+    //
+    // TODOS falharem é outra coisa. Foi o que aconteceu na primeira execução
+    // agendada (2026-08-10 06:00): 25 de 25 falharam porque o `bash` resolvido
+    // era o do WSL, e a rotina publicou assim mesmo, escrevendo "publicado.
+    // 1471 páginas". O código de saída 1 apareceu no Agendador, mas o site foi
+    // republicado como se estivesse tudo bem — a rotina cometeu exatamente o
+    // erro que ela existe para impedir.
+    //
+    // Zero de N passando não é o mundo mudando de uma vez: é a máquina errada,
+    // o venv ausente, o interpretador trocado. Nesse caso não se constrói nada.
+    if (passos.length > 0 && falhas === passos.length) {
+      registrar(
+        `ABORTADO: os ${passos.length} passos de ETL falharam, sem exceção. Isso é ambiente ` +
+          `(bash, venv, credencial), não fonte de dado — fonte de dado não cai toda junta. ` +
+          `Nada foi construído nem publicado. O motivo de cada passo está acima neste log.`
+      );
+      process.exitCode = 1;
+      return;
+    }
   }
 
   // ── build ────────────────────────────────────────────────────────

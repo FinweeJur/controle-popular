@@ -42,6 +42,36 @@ a queda relativa pega a erosão (uma tabela que esvaziou derruba centenas de
 páginas sem chegar perto de 21). Para publicar mesmo assim:
 `--forcar-deploy`.
 
+E há uma terceira trava, aprendida na marra: **se TODOS os passos do ETL
+falharem, nada é construído nem publicado.** Um passo que cai é rotina (a fonte
+saiu do ar, a API mudou); todos caírem juntos é ambiente — bash errado, venv
+ausente, credencial fora. Fonte de dado não cai toda no mesmo segundo.
+
+## A armadilha que derrubou a primeira execução automática
+
+Na estreia (2026-08-10, 06:00) os **25 de 25** passos de ETL falharam com
+`/bin/bash: line 1: python: command not found` — e a rotina publicou assim
+mesmo, escrevendo "publicado. 1.471 páginas".
+
+A causa não era PATH. `spawn("bash")` procura o executável no PATH que recebe,
+e o PATH do Agendador de Tarefas tem `C:\Windows\system32` e **não** tem o Git.
+Em `system32` mora o **`bash.exe` do WSL**. Os passos rodavam dentro do Linux
+do WSL, que não enxerga `C:\` (lá é `/mnt/c`) e não tem o venv nem python. O
+prefixo `/bin/bash:` na mensagem era a pista — o Git Bash diz `bash:`.
+
+Interativamente isso nunca aparecia, porque o PATH de um shell normal acha o
+Git primeiro. **Era um erro que só existia no modo automático — o modo que
+ninguém olha.**
+
+Hoje a rotina resolve o caminho do bash a partir de onde o `git` está
+instalado, recusa explicitamente `system32\bash.exe`, e **aborta antes de
+qualquer coisa** se não encontrar um bash válido. Rodar 25 passos no
+interpretador errado é pior que não rodar.
+
+Nesta máquina o Git está em `%LOCALAPPDATA%\hermes\git` — fora de qualquer
+lugar previsível, e é por isso que o caminho é derivado do `git` em vez de
+chutado numa lista.
+
 ## Por que ela LÊ os workflows em vez de repetir os comandos
 
 São mais de cem invocações de módulo espalhadas por 6 arquivos, cada uma com

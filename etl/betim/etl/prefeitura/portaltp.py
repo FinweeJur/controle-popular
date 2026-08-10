@@ -62,10 +62,29 @@ com o endereço mapeado no §21 para quem escrever os outros dois.
        click() em JS no link "2"       -> nao muda nada
        __doPostBack(...) -> ReferenceError: __doPostBack is not defined
 
-   Um `grdDataClient` que existe ao lado de um `__doPostBack` que NÃO existe é
-   a assinatura de inicialização pela metade: o objeto cliente foi construído,
-   a máquina de postback do WebForms não. A suspeita é recurso de script
-   (`WebResource.axd`) que não carrega no headless — não confirmada.
+   **Segunda rodada de investigação, no mesmo dia, e ela muda o diagnóstico:**
+
+       clicar no item ".csv" do menu da grade  -> POST DE VERDADE para
+                                                  servidores.aspx (mas volta
+                                                  HTML, não arquivo)
+       campos ocultos do form                 -> __VIEWSTATE, __VIEWSTATEGENERATOR
+                                                  e __EVENTVALIDATION existem;
+                                                  __EVENTTARGET e __EVENTARGUMENT
+                                                  NÃO são renderizados
+       criar os dois campos e submeter o form -> a resposta volta SEM a grade
+
+   Ou seja: **a página posta**. O que não existe é o registro do grid como
+   origem de postback — por isso `__doPostBack` não é emitido, e por isso
+   forjar `__EVENTTARGET` à mão devolve página sem grade: o
+   `__EVENTVALIDATION` do ASP.NET recusa um alvo que não foi registrado.
+   Não é headless, não é recurso faltando, é validação de evento.
+
+   **O caminho mais promissor, ainda não tentado:** o item `.csv` está no DOM
+   mas com `is_visible == false` — ele vive num menu de contexto
+   (`DXCTMenu0`) que precisa ser ABERTO antes. Abrir o menu pelo controle que
+   o abre, e só então clicar, faz o clique passar pelo handler do próprio
+   framework, que sabe montar o postback válido. Foi assim que o POST
+   aconteceu; faltou ele ser o POST certo.
 
    **Consequência prática, e por isso o módulo se recusa a gravar parcial:**
    hoje ele lê a página 1 (10 linhas, 3 ativos) de 177. Gravar isso encheria
