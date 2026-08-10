@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/TabelaEstatica";
+import ObjetoExpansivel from "@/app/[municipio]/components/ObjetoExpansivel";
 import type { ContratoRow, MotivoAlertaInfo } from "@/lib/betim/contratos";
 import { formatCurrencyBRL, formatDateBR } from "@/lib/betim/format";
 
@@ -184,7 +185,7 @@ export default function ListaContratos({
       rotulo: "Objeto",
       formatar: (c) => (
         <div className="flex flex-col gap-1">
-          <span className="line-clamp-3 text-text-soft">{c.objeto ?? "—"}</span>
+          <ObjetoExpansivel texto={c.objeto} />
           {c.temas && c.temas.length > 0 && (
             <div className="flex flex-wrap gap-1">
               {c.temas.map((t) => (
@@ -193,6 +194,20 @@ export default function ListaContratos({
                 </span>
               ))}
             </div>
+          )}
+          {typeof c.link_fonte === "string" && c.link_fonte && (
+            <a
+              href={c.link_fonte}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-fit text-[.8em] font-medium text-primary underline underline-offset-2"
+            >
+              Conferir no PNCP
+              {typeof c.numero_contrato === "string" && c.numero_contrato
+                ? ` — contrato ${c.numero_contrato}`
+                : ""}{" "}
+              ↗
+            </a>
           )}
         </div>
       ),

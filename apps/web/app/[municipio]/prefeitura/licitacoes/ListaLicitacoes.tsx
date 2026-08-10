@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/TabelaEstatica";
+import ObjetoExpansivel from "@/app/[municipio]/components/ObjetoExpansivel";
 import type { LicitacaoRow } from "@/lib/betim/licitacoes";
 import { formatCurrencyBRL, formatDateBR } from "@/lib/betim/format";
 
@@ -35,7 +36,7 @@ const COLUNAS: ColunaTabela<LinhaLicitacao>[] = [
     rotulo: "Objeto",
     formatar: (l) => (
       <div className="flex flex-col gap-1">
-        <span className="line-clamp-3 text-text-soft">{l.objeto ?? "—"}</span>
+        <ObjetoExpansivel texto={l.objeto} />
         {l.link_sistema_origem && (
           <a
             href={l.link_sistema_origem}

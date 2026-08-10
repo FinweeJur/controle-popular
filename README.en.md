@@ -1,176 +1,228 @@
-# Controle Popular — monorepo
+# Controle Popular
 
-> This is an English translation of [`README.md`](README.md). The canonical
-> version is the Portuguese one — code comments, UI copy, and every other
-> doc in this repo are Portuguese-first, since the primary audience is
-> Brazilian civic-tech groups and local governments. If the two ever
-> disagree, trust the Portuguese one and flag it.
+> Leia em português: [`README.md`](README.md).
 
-Independent transparency portal. Three axes, one app:
+An independent public-transparency portal for Brazil. It gathers official data
+that is already public but scattered across dozens of systems — PNCP, the
+federal Transparency Portal, IBGE, IBAMA, SEMAD-MG, the Chamber of Deputies,
+the Senate, the electoral court — and publishes it in one place, by city and
+by topic.
 
-| Zone | URL | What it is |
+Live at **[controlepopular.finweejur.workers.dev](https://controlepopular.finweejur.workers.dev)**
+
+**Every number on the site has a source, and every estimated figure is shown
+next to its measured error rate.** That rule organises the whole project: when
+there is no source, the screen says so — it does not quietly fill the gap with
+a guess.
+
+---
+
+## What is in it today
+
+| Section | Route | What it answers |
 |---|---|---|
-| Cities | `/betim` | Municipal executive & legislative (Betim-MG; BH and SP coming in Phase 3) |
-| Congress | `/congresso` | Federal bills, caucuses, committees |
-| Judiciary | `/judiciario` | Court composition, vacancies, appointments |
+| **Cities** | `/betim`, `/diamantina`, … | Where the city hall's money goes, and what the council votes on |
+| **Congress** | `/congresso` | Federal bills, party blocs, committees, roll-call votes |
+| **Judiciary** | `/judiciario` | Court composition, vacancies, Senate confirmations |
+| **Environment** | `/ambiental` | COPAM agenda, environmental fines, dams |
+| **Search** | `/busca` | Full-text index over the whole collection |
 
-The root `/` is the brand home, which lists all three.
+Six cities: **Betim, Belo Horizonte, São Paulo, Diamantina, Araçuaí and
+Itinga**. Betim is the most complete; the three Jequitinhonha Valley cities
+came last and still have documented gaps.
 
-## Structure
+Measured on 2026-08-10, against the database that generates the site:
+
+| | |
+|---|---:|
+| Pre-rendered pages | 1,471 |
+| Federal legislators (with photo) | 593 |
+| Federal bills | 5,562 |
+| Municipal contracts | 1,268 |
+| Municipal tenders | 1,133 |
+| City councillors | 58 |
+
+Coverage varies a lot per city — the portal shows the gap rather than hiding
+it.
+
+---
+
+## How it works
+
+**The site is static.** There is no database in production: `next build` reads
+Postgres **at build time** and turns everything into pre-rendered HTML, which
+is served from Cloudflare Workers. A visit to the site touches no database.
 
 ```
-apps/web/            single Next.js app
-  app/
-    layout.tsx       <html>, fonts, theme — only what's shared
-    page.tsx         brand home
-    fonts.ts fonts/  fonts shared by all three zones
-    globals.css      shared CSS
-    betim/ congresso/ judiciario/    one folder per zone, own layout
-  lib/
-    link-zona.tsx    factory for each zone's <Link> (replaces basePath)
-    betim/ congresso/ judiciario/    per-zone libs
-etl/
-  <zone>/etl/        Python package for each axis
-  <zone>/requirements.txt
-supabase/<zone>/migrations/
-.github/workflows/etl-<zone>.yml
+public sources ──ETL (Python)──▶ Postgres ──next build──▶ static HTML ──▶ Cloudflare Workers
 ```
 
-## How this came together
+Three parts:
 
-Merged from three repos that used to be separate Vercel deploys, wired by
-proxy: `betim-ai`, `controle-popular-congresso`, and
-`controle-popular-judiciario`. Betim was the parent zone and rewrote
-`/congresso` and `/judiciario` to the other two's `*.vercel.app` URLs.
+- **`etl/`** — Python collectors, one package per axis (`betim`, `congresso`,
+  `judiciario`). Each module has a single source and knows how to abort when
+  that source changes.
+- **`apps/web/`** — a Next.js 15 app (App Router) with Drizzle ORM over
+  Postgres. This is what becomes HTML.
+- **`supabase/<axis>/migrations/`** — numbered SQL, applied in order. No
+  automatic runner.
 
-**Public URLs didn't change.** Each app moved into `app/<zone>/` instead of
-being flattened at the root, specifically to preserve them — verified by
-diffing the route tables before and after: of 78 production URLs, 77 are
-identical, and the only one that changed is `/betim/hub`, promoted to `/`
-with a permanent redirect.
+### The failure mode you need to know about
 
-### `basePath` and the per-zone `<Link>`
+With no reachable database, `getDb()` returns `null`, pages render **empty**,
+and `next build` **exits 0**. A green build is not a health signal. The signal
+is the page count:
 
-Each original repo had its own `basePath` (`/betim`, `/congresso`,
-`/judiciario`). One app can only have one `basePath`, so it's gone now —
-the prefix is just the route's own directory. But `basePath` also used to
-prefix every `next/link` and `router.push` automatically, and that behavior
-still had to hold.
+```bash
+node -e "console.log(Object.keys(require('./.next/prerender-manifest.json').routes).length)"
+```
 
-Instead of rewriting the ~150 scattered `href`s (many inside multi-line
-JSX, others indirect like `href={item.href}` coming from nav arrays), each
-zone got its own `<Link>` in `lib/<zone>/link.tsx`, and the 53 affected
-files only needed their import line swapped. A blind find-and-replace on
-`href` would have failed silently, and that failure mode is a mute 404 —
-which the original repos' comments record having happened three times
-already.
+**21** means the database was never read. **≥ 1,471** is correct. Every deploy
+script in this repo checks that before publishing.
 
-A raw `<a href>` **doesn't** go through the wrapper, on purpose: `basePath`
-never touched those either. That's why links to the root and to sibling
-zones stay plain `<a>` tags.
+### Automatic updates
 
-### Canonical data sources
+A scheduled task runs `ETL → build → page-count gate → deploy` once a day and
+**refuses to publish** if the count drops. See
+[`docs/rotina-local.md`](docs/rotina-local.md) (Portuguese).
 
-`rubrica/rubrica.json`, `rubrica/temas.json` (Congress) and `regras.json`
-(Judiciary) are read **by both the app and the ETL**. They live inside
-`apps/web/lib/<zone>/` because Next needs to bundle them, and Python reaches
-up to them via `Path(__file__).resolve().parents[3]`. Never duplicate them:
-the code comments insist the source stays single, because a divergent copy
-would make the portal and the analysis silently disagree with each other.
+```bash
+npx tsx scripts/rotina-local.mts --listar
+```
 
-## Running locally
+The workflows under `.github/workflows/` are still versioned and still
+**declare the cadence** (the local routine reads their cron expressions), but
+they no longer run on a schedule — the database is local to the build machine.
 
-Prerequisites: **Node 22**, **Python 3.12**, and a **Postgres** database
-(any Postgres works locally — production runs on serverless
-[Neon](https://neon.com), via the HTTP driver from
-`@neondatabase/serverless`).
+---
+
+## Running it locally
+
+Requirements: **Node 22**, **Python 3.12** and **PostgreSQL** (16+).
 
 ### 1. Clone and install
 
 ```bash
 git clone https://github.com/FinweeJur/controle-popular.git
-cd controle-popular
-npm install
+```
+
+```bash
+cd controle-popular && npm install
 ```
 
 ### 2. Database
 
-Create a Postgres project ([Neon's free tier](https://neon.com/pricing)
-comfortably runs the whole app) and copy the connection string. Then:
+```bash
+createdb controle_popular
+```
 
 ```bash
 cp apps/web/.env.example apps/web/.env.local
-# edit apps/web/.env.local and paste in DATABASE_URL
 ```
 
-Apply each axis's migrations — there's no automatic runner, every `.sql`
-file under `supabase/<zone>/migrations/` is applied in numeric order:
+Edit `apps/web/.env.local` and set `DATABASE_URL`
+(`postgresql://user:password@127.0.0.1:5432/controle_popular`).
+
+Apply the migrations in numerical order with `psql`:
 
 ```bash
-cd apps/web
-for f in ../../supabase/betim/migrations/*.sql; do npx tsx scripts/aplicar-migration.mts "$f"; done
-for f in ../../supabase/congresso/migrations/*.sql; do npx tsx scripts/aplicar-migration.mts "$f"; done
-for f in ../../supabase/judiciario/migrations/*.sql; do npx tsx scripts/aplicar-migration.mts "$f"; done
+for f in supabase/*/migrations/*.sql; do psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"; done
 ```
 
-(On Windows/PowerShell, swap the `for` loop for
-`Get-ChildItem ..\..\supabase\betim\migrations\*.sql | ForEach-Object { npx tsx scripts/aplicar-migration.mts $_.FullName }`.)
+They are idempotent (`if not exists`), so re-running breaks nothing.
 
-Migrations are idempotent (`if not exists`), so re-running them is safe —
-that's what lets you run the command above from a clean slate without
-tracking what's already applied.
+### 3. Get some data in
 
-### 3. Data
-
-An empty database boots the app, but with no real data every screen is
-blank. The fastest way to have something to look at is running one small
-ETL:
+An empty database boots the app, but every screen renders empty. The quickest
+ETL to run is the Congress one — it needs only `DATABASE_URL`, no external
+credentials:
 
 ```bash
-cd etl/congresso
-python -m venv .venv && source .venv/bin/activate   # .venv\Scripts\activate on Windows
-pip install -r requirements.txt
-cp .env.example .env    # same DATABASE_URL as step 2
-python -m etl.camara.parlamentares
-python -m etl.camara.proposicoes --ano 2026
+cd etl/congresso && python -m venv .venv && .venv/bin/pip install -r requirements.txt
 ```
-
-Each zone has its own `.env.example` — `etl/betim/`, `etl/congresso/`,
-`etl/judiciario/`. Betim's has more keys because it cross-references
-external sources (Portal da Transparência, Base dos Dados); the other two
-only need `DATABASE_URL`.
-
-### 4. Run the app
 
 ```bash
-npm run dev     # http://localhost:3000
+cp .env.example .env && .venv/bin/python -m etl.camara.parlamentares
 ```
 
-`npm run build` runs the same build production uses (Next 15, App Router).
-Because the build **reads the entire database** to statically pre-render
-pages (see "Os dois tetos que mandam" in the code comments under
-`apps/web/lib/db/`), an empty database builds fast and a full one can take
-a while — that's the cost of SSG.
+On Windows the path is `.venv\Scripts\`. **Always in a venv** — a global pip
+install has already broken tooling in this project.
 
-### Exploring with an AI assistant
+Each axis has its own `.env.example`. The one under `etl/betim/` needs more
+keys because it crosses sources that require registration:
 
-If you'd rather have a terminal AI assistant help navigate the conventions
-above instead of reading everything cold, see
-[`docs/USAR-COM-IA.md`](docs/USAR-COM-IA.md) (Portuguese) — it covers
-installing [OpenCode](https://opencode.ai) (the open-source equivalent of
-Claude Code) and connecting it to DeepSeek or another LLM API.
+| Variable | What it unlocks | Where to get it |
+|---|---|---|
+| `TRANSPARENCIA_API_KEY` | federal transfers, debarment lists, welfare data | [Portal da Transparência](https://api.portaldatransparencia.gov.br/) — free |
+| `GOOGLE_APPLICATION_CREDENTIALS` | Base dos Dados (BigQuery): health, education, elections | a GCP service account |
 
-## Current state
+The `.env` holds the **path** to the credential file, never its contents.
 
-The app runs entirely on **Neon (Postgres) + Drizzle ORM**, served by
-**Cloudflare Workers** (`@opennextjs/cloudflare`). The migration away from
-three separate Vercel deploys on Supabase — described above in "How this
-came together" — is finished; there's no remaining dependency on
-`@supabase/supabase-js` in the code. Auth for the logged-in areas is
-[Better Auth](https://www.better-auth.com/).
+### 4. Start it
 
-## License
+```bash
+npm run dev
+```
 
-[GNU AGPL-3.0-or-later](LICENSE). Chosen deliberately: anyone running a
-modified fork as a public-facing service is required to publish their
-changes — a copyleft that matters for a civic-transparency tool.
+`http://localhost:3000`. For a production build, `npm run build` — and check
+the page count, not the exit code.
+
+---
+
+## Where each dataset comes from
+
+| Topic | Source |
+|---|---|
+| Contracts and tenders | PNCP (national public procurement portal) |
+| Federal transfers, sanctions, welfare | Portal da Transparência |
+| Population, GDP, agriculture | IBGE |
+| Schools, health facilities, mortality | INEP, CNES, SIH/SIM (via Base dos Dados) |
+| Municipal revenue and spending | SICONFI |
+| Federal environmental fines | IBAMA |
+| State environmental fines (MG) | CAP / SEMAD-MG |
+| Dams | SNISB and FEAM |
+| Mining royalties | CFEM / ANM |
+| Federal bills and votes | Chamber and Senate APIs |
+| Councillors and photos | TSE, SAPL, council portals |
+| Transparency score | PNTP / ATRICON |
+
+Every collector documents, in its own file, its source, the traps measured
+against the live service, and what it deliberately does **not** collect.
+
+---
+
+## Contract alerts
+
+The portal flags contracts showing risk signals, and **separates two kinds** —
+because treating them alike would give a statistical suspicion the same weight
+as breaking a specific article of law:
+
+- **Legal violation** — waiver just under the legal threshold, amendments over
+  the cap, sanctioned supplier, split purchasing. Each cites its statute.
+- **Heuristic** — unusual value for the category, low share capital. These are
+  signals that federal audit bodies actually use to open investigations, **not
+  proof of wrongdoing**, and the screen says so.
+
+Every contract links to its own page on PNCP. Flagging something without
+offering a way to check it would be asking for trust — the opposite of what
+the portal argues for.
+
+---
+
+## Documentation
+
+Most in-repo documentation is in Portuguese.
+
+| | |
+|---|---|
+| [`docs/rotina-local.md`](docs/rotina-local.md) | How the site updates itself |
+| [`docs/worktrees.md`](docs/worktrees.md) | Working parallel branches without collisions |
+| [`docs/build-em-outro-pc.md`](docs/build-em-outro-pc.md) | Setting up a build machine from scratch |
+| [`docs/USAR-COM-IA.md`](docs/USAR-COM-IA.md) | Navigating the repo with a terminal AI assistant |
+
+---
+
+## Licence
+
+[AGPL-3.0-or-later](LICENSE). The data is public; so is the code that
+organises it.

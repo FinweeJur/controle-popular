@@ -2,8 +2,9 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "//": "runtimeExecutable era um caminho absoluto de OUTRO usuario (C:\\Users\\teste\\...), entao esta config nao subia em nenhuma outra maquina. `npm` resolvido pelo PATH funciona nas duas.",
       "name": "controle-popular-web-dev",
-      "runtimeExecutable": "C:\\Users\\teste\\AppData\\Local\\hermes\\node\\npm.cmd",
+      "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web"],
       "port": 3000
     }

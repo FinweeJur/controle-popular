@@ -34,6 +34,11 @@ export interface ContratoRow {
    *  índice GIN —, então o `comColunaOpcional()` que a protegia nunca
    *  chegou a usar o fallback. */
   temas?: string[] | null;
+  /** Página do contrato no PNCP. Derivada do número de controle, não lida da
+   *  API — `urlContrato` e `linkSistemaOrigem` vêm nulos em 100% dos
+   *  contratos municipais (medido em 1.268/1.268, 2026-08-10). */
+  link_fonte?: string | null;
+  numero_contrato?: string | null;
   /** Preenchido só quando `motivos_alerta` inclui a Regra 5 — ver `fetchContratos`. */
   sancoesCeis?: SancaoCeis[] | null;
 }

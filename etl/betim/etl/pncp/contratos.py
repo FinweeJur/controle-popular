@@ -7,6 +7,7 @@ should be run daily going forward (cron in .github/workflows/etl.yml).
 """
 import argparse
 import datetime as dt
+import re
 import sys
 
 from etl.common import (
@@ -30,9 +31,51 @@ def _status_from_vigencia(vigencia_fim: str | None) -> str:
     return "encerrado" if fim < dt.date.today() else "ativo"
 
 
+def link_do_contrato(numero_controle_pncp: str | None) -> str | None:
+    """A página pública do contrato no PNCP, derivada do número de controle.
+
+    ═══ POR QUE DERIVAR EM VEZ DE LER DA API ═══
+
+    A API do PNCP tem `urlContrato` e `linkSistemaOrigem`, e o coletor lia os
+    dois. Medido em 2026-08-10: **os dois vêm nulos em 1.268 de 1.268
+    contratos** — 100%. O resultado é que nenhuma linha da tela de contratos
+    tinha para onde apontar, e o portal pedia confiança em vez de oferecer
+    conferência, que é o oposto do que ele defende.
+
+    Mas o endereço não precisa vir da API: ele é uma função do número de
+    controle, que TODA linha tem. O formato é
+
+        18715391000196-2-000048/2025
+        └── CNPJ ──┘ │ └ seq ┘ └ano┘
+                     └ tipo (2 = contrato)
+
+        -> https://pncp.gov.br/app/contratos/18715391000196/2025/000048
+
+    Conferido no navegador em 2026-08-10, não por código HTTP: o PNCP é uma
+    SPA e devolve **200 para qualquer caminho**, inclusive inventado. A
+    verificação que vale é abrir e ver o conteúdo — esta URL renderiza o
+    contrato ADM0049/2025 de Betim, R$ 22.225.169,94, fornecedor OBJETIVA
+    PROJETOS, batendo com a linha do banco.
+
+    **Os zeros à esquerda do sequencial ficam.** `000048` é o que a rota
+    espera; `48` é outro caminho.
+    """
+    if not numero_controle_pncp:
+        return None
+    m = re.match(r"^(\d{14})-\d+-(\d+)/(\d{4})$", numero_controle_pncp.strip())
+    if not m:
+        # Número fora do formato não vira link torto: vira link nenhum. Um
+        # "ver no PNCP" que abre 404 é pior que a ausência do botão — promete
+        # conferência e entrega beco sem saída.
+        return None
+    cnpj, sequencial, ano = m.groups()
+    return f"https://pncp.gov.br/app/contratos/{cnpj}/{ano}/{sequencial}"
+
+
 def _map_row(raw: dict, id_municipio: str) -> dict:
     orgao = raw.get("orgaoEntidade") or {}
     unidade = raw.get("unidadeOrgao") or {}
+    numero_controle = raw.get("numeroControlePNCP") or raw.get("numeroControlePncpCompra")
     return {
         "id_municipio": id_municipio,
         # numeroControlePNCP identifies the contrato itself (1:1, always
@@ -44,7 +87,7 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
         # rows kept stale/empty fornecedor data because a later contrato
         # sharing the same compra number overwrote them without carrying
         # its own fornecedor info forward correctly across re-runs.
-        "numero_controle_pncp": raw.get("numeroControlePNCP") or raw.get("numeroControlePncpCompra"),
+        "numero_controle_pncp": numero_controle,
         "numero_contrato": raw.get("numeroContrato"),
         "ano": raw.get("anoContrato"),
         "orgao_cnpj": orgao.get("cnpj"),
@@ -71,7 +114,15 @@ def _map_row(raw: dict, id_municipio: str) -> dict:
         "vigencia_fim": raw.get("dataVigenciaFim"),
         "numero_parcelas": raw.get("numeroParcelas"),
         "status": _status_from_vigencia(raw.get("dataVigenciaFim")),
-        "link_fonte": raw.get("urlContrato") or raw.get("linkSistemaOrigem"),
+        # Os dois campos da API vêm nulos em 100% dos contratos municipais
+        # (medido em 1.268/1.268). Ficam na frente mesmo assim: se um dia o
+        # órgão preencher, o link dele é melhor que o derivado, porque aponta
+        # para o sistema de origem. Ver `link_do_contrato`.
+        "link_fonte": (
+            raw.get("urlContrato")
+            or raw.get("linkSistemaOrigem")
+            or link_do_contrato(numero_controle)
+        ),
         "raw": raw,
         # Tema temático (pedido do usuário 2026-07-22, ver etl/temas.py):
         # `unidade_nome` (o órgão que assinou) é o sinal primário,

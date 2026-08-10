@@ -1500,6 +1500,12 @@ const COLUNAS_CONTRATO = {
   alerta: contratos.alerta,
   motivos_alerta: contratos.motivos_alerta,
   temas: contratos.temas,
+  // A página do contrato no PNCP. Entrou em 2026-08-10, e não é enfeite: a
+  // tela acusava ("contrato com alerta") sem oferecer como conferir, o que é
+  // pedir confiança — o contrário do que este portal defende. Ver a migration
+  // `0053_contratos_link_pncp.sql` e `etl/pncp/contratos.py::link_do_contrato`.
+  link_fonte: contratos.link_fonte,
+  numero_contrato: contratos.numero_contrato,
 };
 
 /**
