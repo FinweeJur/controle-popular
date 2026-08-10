@@ -5,7 +5,9 @@
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/limpar-fetch-cache.mjs",
+    "//indice:busca": "Regenera o indice estatico da /busca a partir do banco. Entra no prebuild porque indice que nao acompanha o build vira busca que responde sobre o acervo de ontem — e sem erro nenhum. `--env-file-if-exists` e nao `--env-file`: no CI nao existe .env.local, as variaveis vem do ambiente, e a flag estrita abortaria o build.",
+    "indice:busca": "tsx --env-file-if-exists=.env.local scripts/gerar-indice-busca.mts",
+    "prebuild": "node scripts/limpar-fetch-cache.mjs && npm run indice:busca",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",

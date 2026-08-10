@@ -19,3 +19,7 @@ __pycache__/
 # escreve em tempo de execucao — ela nunca deve existir versionada.
 gcp-service-account.json
 *service-account*.json
+
+# Indice estatico da /busca: gerado do banco no prebuild, nunca commitado.
+# Versionar seria publicar uma copia que envelhece em silencio.
+apps/web/public/busca-indice/
