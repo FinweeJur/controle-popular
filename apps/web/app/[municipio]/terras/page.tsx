@@ -1,6 +1,7 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
+import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { temFonte } from "@/lib/db/queries/municipios";
 import { vazioResumoPorMunicipio } from "@/lib/betim/terras";
@@ -90,6 +91,11 @@ export default async function TerrasPage({
           ))}
         </div>
       )}
+
+      {/* A taxa de erro só aparece quando há número para qualificar. Sem
+        * levantamento publicado não há estimativa, e uma margem de erro
+        * sozinha na tela confundiria mais do que informaria. */}
+      {linhas !== null && linhas.length > 0 ? <TaxaDeErroTerras /> : null}
     </main>
   );
 }

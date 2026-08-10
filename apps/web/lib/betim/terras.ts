@@ -17,6 +17,42 @@ export const RESUMO_METODO: Record<string, string> = {
     "Área certificada como pública (INCRA/SIGEF/SNCI) que é pastagem persistente — mesma classe do MapBiomas em todos os anos de 2020 a 2024. Denominador: só a área pública certificada, não o município inteiro.",
 };
 
+/**
+ * A taxa de erro do método, medida a olho humano — e o critério contra o qual
+ * ela é comparada.
+ *
+ * ═══ POR QUE ISTO É CONSTANTE DE CÓDIGO, E NÃO TEXTO SOLTO NUMA PÁGINA ═══
+ *
+ * A regra do projeto para publicar o Terras é que **a taxa de erro apareça na
+ * mesma tela que o número**. Publicar "16.957 ha de vazio cadastral" sem
+ * dizer que 30% da amostra checada era falso-positivo seria o oposto do que o
+ * portal defende. Sendo constante única, a tela por cidade e o hub da zona
+ * não podem divergir.
+ *
+ * ═══ DE ONDE VEM CADA NÚMERO ═══
+ *
+ * 40 polígonos sorteados ao acaso da bacia (semente fixa) e julgados um a um
+ * por olho humano, sobre imagem de satélite, em 2026-08-09. Doze foram
+ * considerados falso-positivo — todos do mesmo tipo, faixa de estrada
+ * entrando no vazio. O intervalo é Wilson 95%.
+ *
+ * O TETO DE 33% É DECISÃO, NÃO MEDIÇÃO. Era 25%, teto herdado do
+ * PLANO-MESTRE, e passou a 33% por decisão do usuário em 2026-08-10 — a taxa
+ * medida não mudou junto. Está separado aqui porque a tela precisa dizer as
+ * duas coisas sem confundi-las.
+ */
+export const TAXA_ERRO_G0 = {
+  falsoPositivos: 12,
+  julgados: 40,
+  /** 12/40 */
+  taxaPct: 30.0,
+  ic95: [18.1, 45.4] as const,
+  criterioPct: 33,
+  medidoEm: "2026-08-09",
+  /** O erro tem causa única, e isso é informação útil para quem lê. */
+  causaDominante: "faixa de estrada entrando no polígono — 12 dos 12 casos",
+};
+
 export interface VazioMunicipioResumo {
   metodo: string;
   resumoMetodo: string;

@@ -18,7 +18,12 @@
  * há uma frase "as três frentes" para alguém esquecer de corrigir.
  */
 
-export type ZonaId = "cidades" | "congresso" | "judiciario" | "ambiental";
+export type ZonaId =
+  | "cidades"
+  | "congresso"
+  | "judiciario"
+  | "ambiental"
+  | "terras";
 
 export interface Zona {
   id: ZonaId;
@@ -134,6 +139,32 @@ export const ZONAS: Zona[] = [
       "Em construção: COPAM, licenciamento e legislação ambiental",
     ],
     cor: "var(--cp-tertiary)",
+    publicada: true,
+  },
+  {
+    id: "terras",
+    href: "/funcaosocialterra",
+    etiqueta: "Fundiário · Vale do Jequitinhonha",
+    titulo: "De quem é a terra que ninguém declarou",
+    // MESMA DISCIPLINA DO CARD DO /ambiental LOGO ACIMA: descreve o que
+    // existe, que são TRÊS cidades do Vale. Não cita as seis do portal nem
+    // promete cobertura estadual — as camadas cobrem 76 municípios de Minas,
+    // mas só entram os que o portal tem página para mostrar.
+    //
+    // E cita a taxa de erro no próprio card. É o único dado do portal que é
+    // estimativa de método próprio, não leitura de fonte oficial; anunciá-lo
+    // sem a margem, mesmo na vitrine, seria cobrar dos outros o que não se
+    // faz em casa.
+    descricao:
+      "Quanto do território de Araçuaí, Diamantina e Itinga não tem imóvel rural declarado no Cadastro Ambiental Rural. É estimativa com taxa de erro medida — 30% da amostra checada a olho não se confirmou — e vem publicada com ela ao lado.",
+    resumo:
+      "Vazio cadastral em três cidades do Jequitinhonha, com a taxa de erro do método ao lado do número.",
+    itens: [
+      "Área sem imóvel rural declarado no CAR, por cidade",
+      "Denominador explícito: o município inteiro, pela malha do IBGE",
+      "Taxa de erro medida a olho em 40 polígonos sorteados",
+    ],
+    cor: "var(--cp-accent)",
     publicada: true,
   },
 ];
