@@ -63,6 +63,10 @@ export interface VotacoesFilters {
   ano?: string;
   q?: string;
   page?: number;
+  /** Default `VOTACOES_PAGE_SIZE`. `camara/votacoes` pede um valor bem
+   *  maior pra buscar a cidade inteira de uma vez — ver
+   *  `app/[municipio]/camara/votacoes/dados/[arquivo]/route.ts`. */
+  porPagina?: number;
 }
 
 export interface VotacoesResult {
@@ -117,7 +121,7 @@ export async function fetchVotacoes(
     const rows = await q.votacoesPaginadas(idMunicipio, {
       ...filtros,
       pagina: filters.page,
-      porPagina: VOTACOES_PAGE_SIZE,
+      porPagina: filters.porPagina ?? VOTACOES_PAGE_SIZE,
     });
     if (!rows) return VAZIO;
     if (rows.length === 0) {
