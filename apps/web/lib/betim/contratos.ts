@@ -52,6 +52,10 @@ export interface ContratosFilters {
   valorMin?: number;
   valorMax?: number;
   page?: number;
+  /** Default `CONTRATOS_PAGE_SIZE`. `prefeitura/contratos` pede um valor
+   *  bem maior pra buscar a cidade inteira de uma vez — ver
+   *  `app/[municipio]/prefeitura/contratos/dados/[arquivo]/route.ts`. */
+  porPagina?: number;
 }
 
 export type CategoriaAlerta = "violacao_legal" | "heuristica";
@@ -199,7 +203,7 @@ export async function fetchContratos(
     const linhas = await q.contratosPaginados(idMunicipio, {
       ...filtros,
       pagina: filters.page,
-      porPagina: CONTRATOS_PAGE_SIZE,
+      porPagina: filters.porPagina ?? CONTRATOS_PAGE_SIZE,
     });
     if (!linhas) return VAZIO;
 
