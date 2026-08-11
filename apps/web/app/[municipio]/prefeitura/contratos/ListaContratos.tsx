@@ -5,6 +5,7 @@ import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/
 import ObjetoExpansivel from "@/app/[municipio]/components/ObjetoExpansivel";
 import type { ContratoRow, MotivoAlertaInfo } from "@/lib/betim/contratos";
 import { formatCurrencyBRL, formatDateBR } from "@/lib/betim/format";
+import { contratoEstaAtivo } from "@/lib/betim/statusContrato";
 
 /**
  * Tabela de `/[municipio]/prefeitura/contratos` — mesmo mecanismo de
@@ -160,7 +161,12 @@ export default function ListaContratos({
   const filtrar = useCallback(
     (c: LinhaContrato) => {
       if (ano && c.ano !== Number(ano)) return false;
-      if (status && c.status !== status) return false;
+      // Comparação exata (`c.status !== status`) só reconhecia o vocabulário
+      // minúsculo do PNCP ('ativo'/'encerrado'); em Belo Horizonte, cujo
+      // status vem do GRP da Ábaco ('EM EXECUÇÃO', 'RESCINDIDO' etc.), o
+      // filtro "Ativo" não devolvia nenhuma linha. Ver `statusContrato.ts`.
+      if (status === "ativo" && !contratoEstaAtivo(c.status)) return false;
+      if (status === "encerrado" && contratoEstaAtivo(c.status)) return false;
       if (alertaEfetivo && c.alerta !== true) return false;
       if (motivo && !(c.motivos_alerta ?? []).includes(motivo)) return false;
       if (tema && !(c.temas ?? []).includes(tema)) return false;
@@ -224,7 +230,7 @@ export default function ListaContratos({
       formatar: (c) => (
         <span
           className={`rounded-full px-2.5 py-1 text-xs font-medium ${
-            c.status === "ativo" ? "bg-accent/15 text-accent" : "bg-surface-2 text-text-soft"
+            contratoEstaAtivo(c.status) ? "bg-accent/15 text-accent" : "bg-surface-2 text-text-soft"
           }`}
         >
           {c.status ?? "—"}

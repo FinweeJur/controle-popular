@@ -34,17 +34,34 @@ from etl.common import get_supabase_client, registrar_fonte, upsert_em_lotes
 
 TIPOS_INTERESSE = [1, 2, 3]  # Mesa Diretora, permanente, temporária
 
+# A própria API da Câmara devolve, junto com as comissões reais, um órgão de
+# TESTE interno — `sigla=TESTECOM`, `nome` contendo literalmente "FICTÍCIA" —
+# com `ativo: true` no payload como qualquer comissão de verdade. Achado ao
+# vivo em produção pela auditoria de 2026-08-11 (ver migration
+# `congresso/0010_desativar_orgao_ficticio.sql`, que limpa o que já foi
+# sincronizado antes deste filtro existir).
+#
+# O sinal usado é o prefixo "FICT" no nome em maiúsculas (cobre "FICTÍCIA" e
+# "FICTICIA" sem acento, sem depender de qual forma a API devolver) —
+# específico o bastante para não arriscar descartar uma comissão real.
+def _e_orgao_de_teste(nome: str | None) -> bool:
+    return bool(nome) and "FICT" in nome.upper()
+
 
 def coletar(tipos: list[int] | None = None) -> list[dict]:
     linhas: list[dict] = []
     for tipo in tipos or TIPOS_INTERESSE:
         for org in client.paginar("/orgaos", codTipoOrgao=tipo):
+            nome = org.get("nome")
+            if _e_orgao_de_teste(nome):
+                print(f"[camara.orgaos] pulando órgão de teste da própria API: {org.get('sigla')} — {nome}")
+                continue
             linhas.append(
                 {
                     "casa_id": client.CASA_ID,
                     "id_externo": str(org["id"]),
                     "sigla": org.get("sigla"),
-                    "nome": org.get("nome"),
+                    "nome": nome,
                     "tipo": org.get("tipoOrgao"),
                     "url_site": org.get("urlWebsite"),
                     "ativo": True,

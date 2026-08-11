@@ -12,12 +12,14 @@ import {
   isNull,
   lte,
   ne,
+  notInArray,
   or,
   sql,
 } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { num } from "@/lib/db/num";
 import { ptBr } from "@/lib/db/ordem";
+import { STATUS_CONTRATO_ATIVO } from "@/lib/betim/statusContrato";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import {
   analise_itens,
@@ -1045,7 +1047,9 @@ export async function resumoContratosAtivos(idMunicipio: IdMunicipio) {
       soma: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
     })
     .from(contratos)
-    .where(and(eq(contratos.id_municipio, idMunicipio), eq(contratos.status, "ativo")));
+    .where(
+      and(eq(contratos.id_municipio, idMunicipio), inArray(contratos.status, [...STATUS_CONTRATO_ATIVO]))
+    );
   return linha ?? { qtd: 0, soma: 0 };
 }
 
@@ -1465,7 +1469,15 @@ function condicoesDeContratos(
 ) {
   const cond = [eq(contratos.id_municipio, idMunicipio)];
   if (f.ano) cond.push(eq(contratos.ano, f.ano));
-  if (f.status) cond.push(eq(contratos.status, f.status));
+  // Não é `eq(status, f.status)`: o dropdown só manda "ativo" ou "encerrado"
+  // (os dois valores do filtro na tela), mas o BANCO tem um terceiro
+  // vocabulário — BH grava o texto literal do GRP da Ábaco ('EM EXECUÇÃO',
+  // 'RESCINDIDO'...), não o 'ativo'/'encerrado' que o PNCP computa para as
+  // outras cidades. `eq()` aqui zerava toda exportação/paginação de BH
+  // filtrada por status. Ver `lib/betim/statusContrato.ts`.
+  if (f.status === "ativo") cond.push(inArray(contratos.status, [...STATUS_CONTRATO_ATIVO]));
+  else if (f.status === "encerrado") cond.push(notInArray(contratos.status, [...STATUS_CONTRATO_ATIVO]));
+  else if (f.status) cond.push(eq(contratos.status, f.status));
   if (f.alerta) cond.push(eq(contratos.alerta, true));
   // Um motivo específico já implica alerta=true: `motivos_alerta` só tem
   // item quando o alerta disparou.
