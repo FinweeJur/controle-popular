@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "Lei 8.742/1993 (LOAS)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população em situação de vulnerabilidade social em regiões de Betim sem CRAS fixo"
+      ],
+      "grau": "moderado",
+      "trecho": "criar o \"CRAS Itinerante\" no Município de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo a criar o \"CRAS Itinerante\" no município de Betim, levando serviços de assistência social a regiões mais distantes. Amplia o acesso da população vulnerável à rede de proteção social."
+}

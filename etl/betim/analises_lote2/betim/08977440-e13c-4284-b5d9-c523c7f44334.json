@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "restringe",
+      "mecanismo": "cria_requisito_acesso",
+      "titulares": [
+        "professores de artes marciais e esportes de combate em Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "exercício da profissão de professor de artes marciais ou de esportes de combate",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto regulamenta o exercício da profissão de professor de artes marciais ou de esportes de combate no município. A ementa não detalha os requisitos específicos exigidos para o exercício da atividade."
+}

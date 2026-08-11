@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "pessoas idosas credoras de créditos administrativos reconhecidos pelo município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "Assegura preferência no pagamento de \"Créditos Administrativos\" reconhecidos pelo município de Betim às pessoas idosas",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto assegura preferência no pagamento de créditos administrativos reconhecidos pelo município de Betim às pessoas idosas. Cria garantia processual de prioridade em favor desse grupo, sem alterar lei existente."
+}

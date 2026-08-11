@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população que necessita de medicamentos em Diamantina",
+        "usuários do SUS no município"
+      ],
+      "grau": "moderado",
+      "trecho": "INSTITUI O PROGRAMA FARMÁCIA SOLIDÁRIA, VOLTADO Á CONSCIENTIZAÇÃO, DOAÇÃO, REAPROVEITAMENTO E DESTINAÇÃO ADEQUADA DE MEDICAMENTOS",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa Farmácia Solidária em Diamantina, voltado à conscientização, doação, reaproveitamento e destinação adequada de medicamentos. Cria mecanismo que amplia o acesso da população a medicamentos doados."
+}

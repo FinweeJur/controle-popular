@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 1º, parágrafo único",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "comunidades organizadas do município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "criação do Programa Municipal de Parceria Público Comunitária e autoriza o Executivo Municipal a firmar termos de cooperação com comunidades organizadas para a realização de obras ou prestação de serviços de interesse público",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza a criação do Programa Municipal de Parceria Público Comunitária em Betim, permitindo ao Executivo firmar termos de cooperação com comunidades organizadas para obras ou serviços de interesse público. Cria canal formal de participação comunitária na execução de políticas públicas."
+}

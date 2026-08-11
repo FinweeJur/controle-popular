@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "servidor público municipal de Diamantina com deficiência",
+        "servidor com cônjuge, filho, genitor ou dependente com deficiência sob sua dependência"
+      ],
+      "grau": "moderado",
+      "trecho": "CONCESSÃO DE JORNADA ESPECIAL DE TRABALHO, NO ÂMBITO DA ADMINISTRAÇÃO PÚBLICA DIRETA DO MUNICÍPIO DE DIAMANTINA, AO SERVIDOR PÚBLICO MUNCIPAL COM DEFICIÊNCIA",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei concede jornada especial de trabalho, na administração pública direta de Diamantina, ao servidor público municipal com deficiência ou que tenha cônjuge, companheiro(a), filho, genitor ou dependente com deficiência sob sua dependência. Cria um novo direito de acomodação de jornada para esse grupo."
+}

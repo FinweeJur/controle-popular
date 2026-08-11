@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "alunos matriculados nas escolas da rede municipal de educação infantil e de ensino fundamental de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de avaliação oftalmológica para os alunos matriculados nas escolas da rede municipal de educação infantil e de ensino fundamental",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a obrigatoriedade de avaliação oftalmológica para alunos matriculados na educação infantil e no ensino fundamental da rede municipal de Betim. Cria novo serviço de saúde escolar preventiva, sem alterar lei existente."
+}

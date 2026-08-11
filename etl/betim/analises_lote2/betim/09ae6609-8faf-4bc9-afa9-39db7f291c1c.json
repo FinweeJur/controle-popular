@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "crianças e adolescentes de baixa renda com transtorno do espectro autista em Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "adquirir óculos projetados com nylon flexível e lentes polarizadas com 100% de proteção UV para aliviar a hipersensibilidade à luz e reduzir a sobrecarga sensorial de crianças e adolescentes, de baixa renda, portadoras do espectro autista",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo a adquirir óculos especiais para aliviar hipersensibilidade à luz e sobrecarga sensorial de crianças e adolescentes de baixa renda com transtorno do espectro autista, em Betim. Cria política pública de assistência específica a essa população, sem alterar lei existente."
+}
