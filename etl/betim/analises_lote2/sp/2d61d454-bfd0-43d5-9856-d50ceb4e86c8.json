@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 203",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["população usuária da assistência social nos distritos de São Paulo"],
+      "grau": "estrutural",
+      "trecho": "Autoriza a criação do Programa “Um CRAS em Cada Distrito” no Município de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza a criação do Programa “Um CRAS em Cada Distrito” no Município de São Paulo, prevendo a instalação de um Centro de Referência de Assistência Social em cada distrito da cidade."
+}

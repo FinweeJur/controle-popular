@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "liberdade_religiosa",
+      "dispositivo": "CF/88, art. 19, I",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "Reconhece o Cristianismo como manifestação cultural.",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei reconhece o Cristianismo como manifestação cultural no Município de São Paulo. É norma de reconhecimento simbólico, sem criar direito, obrigação ou vedação concreta para os titulares de outras crenças ou para o poder público."
+}

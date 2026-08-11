@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "Lei 8.078/1990 (CDC)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": ["consumidores no Município de São Paulo"],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre o Sistema Municipal de Defesa do Consumidor",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre o Sistema Municipal de Defesa do Consumidor de São Paulo, estruturando o órgão local de proteção e defesa do consumidor."
+}

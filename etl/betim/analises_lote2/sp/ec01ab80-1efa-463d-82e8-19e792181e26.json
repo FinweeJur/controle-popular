@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "Lei 10.257/2001 (Estatuto da Cidade)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["responsáveis por edificações de até 1.500 m² sujeitas a regularização"],
+      "grau": "marginal",
+      "trecho": "emissão declaratória eletrônica de aprovação de projetos de edificações para obra nova ou reforma com ou sem acréscimo de área de regularização de edificações por lei em vigor para edificações até 1.500 m² de área total",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a emissão declaratória eletrônica de aprovação de projetos de edificações para obra nova ou reforma, com ou sem acréscimo de área, e de regularização de edificações já existentes, para imóveis de até 1.500 m² de área total, estabelecendo categorias de intervenções e procedimentos aplicáveis. É simplificação procedimental do licenciamento e da regularização de edificações de menor porte."
+}

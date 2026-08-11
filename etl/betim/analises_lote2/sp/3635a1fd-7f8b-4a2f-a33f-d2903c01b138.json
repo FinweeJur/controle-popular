@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": ["pessoas com deficiência auditiva"],
+      "grau": "estrutural",
+      "trecho": "Assegura todas as informações e direito de atendimento às pessoas com deficiência auditiva por meio da Língua Brasileira de Sinais – LIBRAS em todas as instituições públicas municipais de São Paulo",
+      "confianca": 0.85
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei assegura às pessoas com deficiência auditiva o direito a informações e atendimento em Língua Brasileira de Sinais – LIBRAS em todas as instituições públicas municipais de São Paulo."
+}

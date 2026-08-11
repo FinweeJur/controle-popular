@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "devido_processo_ampla_defesa",
+      "dispositivo": "CF/88, art. 5º, LV",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": ["agentes públicos da Administração Pública Direta e Autárquica municipal"],
+      "grau": "marginal",
+      "trecho": "representação, pela Procuradoria Geral do Município, dos agentes públicos integrantes da Administração Pública Direta e Autárquica, relativa a atos praticados no exercício regular do cargo, emprego ou função",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Lei nº 10.182, de 30 de outubro de 1986"],
+  "resumo_neutro": "A lei dispõe sobre a representação, pela Procuradoria Geral do Município, dos agentes públicos da Administração Direta e Autárquica quanto a atos praticados no exercício regular do cargo, emprego ou função, e altera a lei que cria a Procuradoria Geral do Município – PGM."
+}

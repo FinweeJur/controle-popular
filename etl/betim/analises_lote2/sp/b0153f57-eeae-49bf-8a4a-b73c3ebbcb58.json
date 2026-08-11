@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["pessoas com deficiência visual"],
+      "grau": "moderado",
+      "trecho": "criação dos espaços “Dorina Nowill” para acessibilidade das pessoas com deficiência visual nos órgãos e equipamentos públicos da Administração Pública Municipal",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria os espaços “Dorina Nowill” destinados a promover acessibilidade das pessoas com deficiência visual nos órgãos e equipamentos públicos da Administração Pública Municipal de São Paulo."
+}

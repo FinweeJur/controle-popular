@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["crianças e adolescentes com Transtorno do Espectro Autista"],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Municipal Rede Acolher TEA, destinado ao atendimento de crianças e adolescentes com Transtorno do Espectro Autista (TEA)",
+      "confianca": 0.65
+    },
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["crianças e adolescentes com Transtorno do Espectro Autista"],
+      "grau": "moderado",
+      "trecho": "mediante parcerias entre Centros para Crianças e Adolescentes (CCA), serviços de educação infantil com atendimento em período noturno, públicos ou conveniados, e entidades especializadas",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal Rede Acolher TEA, destinado ao atendimento de crianças e adolescentes com Transtorno do Espectro Autista, mediante parcerias entre Centros para Crianças e Adolescentes, serviços de educação infantil noturna, públicos ou conveniados, e entidades especializadas."
+}
