@@ -1,0 +1,10 @@
+/* Terras Públicas — ponto de entrada único de CSS.
+   Somente @import. Nenhuma regra mora aqui. */
+@import "tokens/fonts.css";
+@import "tokens/colors.css";
+@import "tokens/typography.css";
+@import "tokens/space.css";
+@import "tokens/shape.css";
+@import "tokens/layers.css";
+@import "tokens/motion.css";
+@import "tokens/targets.css";

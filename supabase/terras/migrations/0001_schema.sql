@@ -10,8 +10,11 @@
 -- (0,5 GB/projeto, já em ~78% de uso pelos 3 eixos existentes). As camadas
 -- que o app precisa servir (já geradas e comprimidas pelo pipeline, em
 -- `terras-devolutas/backend/data/camadas/*.geojson.gz`) somam 1,55 MB e vão
--- como Static Asset do Worker — não pesam no teto de 3 MiB gzip, não usam
--- storage nem egress da Neon. Só o ROLLUP numérico por município mora aqui.
+-- como Static Asset do Worker — não pesam no teto de 25 MiB POR ARQUIVO do
+-- Cloudflare (conferido contra a doc oficial deles em 2026-08-09, ver
+-- `apps/web/lib/estatico/fatiar.ts`; o número de 3 MiB gzip que estava aqui
+-- antes estava desatualizado), não usam storage nem egress da Neon. Só o
+-- ROLLUP numérico por município mora aqui.
 --
 -- DOIS MÉTODOS, DENOMINADORES DIFERENTES — nunca somar entre si:
 --   vazio_cadastral   → área municipal total menos CAR menos exclusões.

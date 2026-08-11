@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terras Públicas — mapa de terra sem cadastro em Minas Gerais</title>
+  <meta name="description" content="Mapa de pesquisa: onde há terra rural que nenhum imóvel declarou no cadastro ambiental, em Minas Gerais. Cada área é um lugar para conferir, não uma conclusão oficial.">
+  <link rel="icon" type="image/svg+xml" href="/terras/globo/favicon.svg">
+  <link rel="stylesheet" href="/terras/globo/css/hud.css">
+
+  <!-- Importmap: Three.js vendorizado localmente em ./vendor/ (sem CDN, sem build — ver plano §2 e §8) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "/terras/globo/vendor/three.module.js",
+      "three/addons/controls/OrbitControls.js": "/terras/globo/vendor/OrbitControls.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Canvas WebGL fullscreen: o renderer anexa o <canvas> aqui (atrás de todo o HUD) -->
+  <div id="globe-container" aria-label="Globo 3D interativo da Terra"></div>
+
+  <!-- HUD "sala de controle": painéis fixos nos 4 cantos sobre o canvas -->
+
+  <!-- Topo: nome do app, resumo, data dos dados, relógio, ajuda (ui/statusbar.js) -->
+  <header id="statusbar" class="hud-panel"></header>
+
+  <!-- Foco: botões que levam a câmera a cada região (ui/focusbar.js) -->
+  <nav id="focusbar" class="hud-panel" aria-label="Escolher a região do mapa"></nav>
+
+  <!-- Direita: painel de camadas com chaves de ligar/desligar (ui/layerspanel.js) -->
+  <aside id="layers-panel" class="hud-panel" aria-label="Camadas do mapa"></aside>
+
+  <!-- Base: de onde vêm os dados + desempenho (ui/footerhud.js) -->
+  <footer id="footer-hud" class="hud-panel"></footer>
+
+  <!-- Canto direito inferior: botões de zoom in/out (ui/zoomcontrols.js) -->
+  <div id="zoombar" class="hud-panel" aria-label="Controles de zoom"></div>
+
+  <!-- Esquerda: as mesmas áreas em lista (ui/listapanel.js) -->
+  <aside id="lista" class="hud-panel" aria-label="Lista de áreas encontradas"></aside>
+
+  <!-- Inspetor da área clicada (ui/inspector.js) -->
+  <div id="inspector" class="hud-panel" aria-label="Detalhes da área"></div>
+
+  <!-- Cartão de abertura: o que é o mapa e como usar (ui/intro.js) -->
+  <div id="intro" aria-label="O que é este mapa"></div>
+
+  <!-- satellite.js (UMD, vendor local) — expõe window.satellite p/ satélites SGP4 -->
+  <script src="/terras/globo/vendor/satellite.min.js"></script>
+  <script type="module" src="/terras/globo/js/main.js"></script>
+</body>
+</html>

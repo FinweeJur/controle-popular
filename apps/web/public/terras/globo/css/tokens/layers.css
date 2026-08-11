@@ -1,0 +1,38 @@
+:root {
+  /* A escala que já existe, agora nomeada. Nenhum z-index literal no código.
+
+     ⟲ Divergência do handoff, e é deliberada. O handoff propõe
+     `--z-sheet: 10`, igual a `--z-hud`, porque a Decisão 4 dele transforma
+     painel de camadas e ficha numa FOLHA ÚNICA com duas abas abaixo de
+     768 px — aí não há o que arbitrar, e a sobreposição morre por estrutura.
+     Concordo com o raciocínio: em 375 px os dois painéis somam 520 px, então
+     a sobreposição é aritmética, não bug de empilhamento.
+
+     Mas a folha é mudança de COMPORTAMENTO: muda a árvore do DOM, quebra
+     seletor de teste, e o deep-link `#area=` passa a ter de reabrir a aba
+     certa. Não entrou nesta passagem. Até entrar, `--z-record` continua
+     valendo nos dois tamanhos, que é o que existe hoje e está coberto por
+     teste. `--z-sheet` já fica declarado, no valor que a folha vai querer,
+     para a migração não precisar mexer aqui. */
+  --z-globe: 0;
+  --z-hud: 10;
+  --z-sheet: 10;     /* reservado: folha móvel de aba única (não implementada) */
+  --z-record: 15;    /* ficha, hoje em qualquer largura */
+  --z-fallback: 20;  /* WebGL indisponível */
+  --z-intro: 30;     /* cartão de abertura */
+
+  /* Degrau fora da escala, e com motivo: em `/app/detalhe` o mapa é Leaflet, e
+     os panes dele têm z-index PRÓPRIO e alto — marcador 600, tooltip 650,
+     popup 700, controle 800. Qualquer painel nosso sobre um mapa Leaflet tem
+     de passar de 800, então a escala de 0–30 não serve ali. Fica nomeado para
+     que a regra 7 (nenhum z-index literal) continue valendo mesmo no caso em
+     que o número é grande por imposição de biblioteca. */
+  --z-over-leaflet: 1000;
+
+  /* Degrau LOCAL, e o único negativo: pseudo-elemento decorativo que fica atrás
+     do texto do próprio elemento, dentro de um `isolation: isolate`. Não é
+     superfície do app e não conversa com a escala acima — existe porque a regra
+     7 não admite número solto, e o lint estava certo em pegar o `-1` cravado na
+     hachura do selo FICTÍCIO. */
+  --z-under-content: -1;
+}

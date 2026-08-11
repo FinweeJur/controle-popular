@@ -34,6 +34,16 @@ export default async function TerrasPage({
         <p className="mt-2 max-w-[60ch] text-text-soft">
           {cidade.nome} ainda não tem levantamento de vazio cadastral.
         </p>
+        {/* <a> puro, não o Link de zona: o mapa mora em /funcaosocialterra,
+          * fora da zona [municipio], e o wrapper prefixaria com o slug da
+          * cidade. O globo cobre 76 municípios de Minas por camada, mesmo
+          * sem página própria aqui — vale o link mesmo sem levantamento. */}
+        <a
+          href="/funcaosocialterra/mapa"
+          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+        >
+          Ver esta área no mapa (3D) →
+        </a>
       </main>
     );
   }
@@ -55,6 +65,15 @@ export default async function TerrasPage({
         </Link>
         .
       </p>
+
+      {/* <a> puro, não o Link de zona: ver a nota acima, no branch sem
+        * levantamento. */}
+      <a
+        href="/funcaosocialterra/mapa"
+        className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+      >
+        Ver esta área no mapa (3D) →
+      </a>
 
       {linhas === null || linhas.length === 0 ? (
         <p className="mt-8 rounded-lg border border-[var(--cp-border)] p-5 opacity-80">

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ver de perto | Terras Públicas</title>
+  <link rel="icon" type="image/svg+xml" href="/terras/globo/favicon.svg">
+  <link rel="stylesheet" href="/terras/globo/vendor-leaflet/leaflet.css">
+  <link rel="stylesheet" href="/terras/globo/css/styles.css">
+  <style>
+    /* Vista 2D de inspeção (Fase G4). Migrada para os tokens canônicos em
+       30/07/2026 — antes tinha as cores do globo CRAVADAS À MÃO, copiadas de
+       hud.css, sem token nenhum.
+
+       Esta é a única tela cujo fundo é IMAGEM DE SATÉLITE (Esri World Imagery),
+       e por isso ela ganha os dois tokens que existem só para esse caso:
+         --glass-fill-strong  painel opaco o bastante para o texto sobreviver
+                              a qualquer trecho da imagem (era 0,88 à mão);
+         --scrim-imagery      véu sob texto que fica DIRETO sobre a imagem, sem
+                              painel — aqui, a atribuição do Leaflet.
+       Somado a --shadow-raised, que separa o painel de um fundo fotográfico.
+
+       ⚠️ z-index: os panes do Leaflet são altos por conta própria (controle
+       800), então nossa escala de 0–30 não alcança. Daí --z-over-leaflet, que
+       mantém a regra 7 (nenhum número solto) num caso onde o número é grande
+       por imposição da biblioteca. */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; background: var(--color-void); color: var(--text-1);
+      font-family: var(--font-ui); }
+    #mapa { position: fixed; inset: 0; }
+    .painel {
+      position: fixed; top: var(--space-4); left: var(--space-4);
+      z-index: var(--z-over-leaflet);
+      max-width: 340px; max-height: 80vh; overflow-y: auto;
+      background: var(--glass-fill-strong);
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      backdrop-filter: blur(var(--glass-blur));
+      border: var(--border-glass); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-raised);
+      padding: var(--space-3) var(--space-4);
+    }
+    .painel h1 { font-size: var(--text-meta); letter-spacing: var(--tracking-micro);
+      text-transform: uppercase; color: var(--accent-text); margin-bottom: var(--space-2); }
+    .painel table { width: 100%; border-collapse: collapse;
+      font-family: var(--font-mono); font-size: var(--text-micro);
+      font-variant-numeric: tabular-nums; }
+    .painel td { padding: 3px 6px 3px 0; border-bottom: var(--border-hair);
+      color: var(--text-2); vertical-align: top; }
+    .painel td:first-child { color: var(--text-3); white-space: nowrap; }
+    .acoes { margin-top: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap; }
+    .btn { padding: 7px 12px; border-radius: var(--radius-md); font-size: var(--text-micro);
+      font-weight: var(--weight-semibold);
+      text-decoration: none; border: 1px solid var(--accent-line);
+      background: var(--accent-weak); color: var(--accent-text);
+      transition: background var(--dur-fast) var(--ease-out); }
+    .btn:hover { background: var(--accent-medium); }
+    .btn:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+    .btn.neutro { border-color: var(--glass-stroke); background: var(--color-surface-1);
+      color: var(--text-2); }
+    .aviso { margin-top: var(--space-2); font-size: 10px; color: var(--text-3); line-height: 1.5; }
+    /* Coordenadas + botões de copiar — mesmo bloco do inspetor do globo
+       (globe/js/ui/rotulos.js → blocoDeCoordenadas). */
+    .ficha-coord { margin-top: var(--space-2); padding-top: var(--space-2);
+      border-top: var(--border-hair); font-size: 10px; line-height: 1.5; }
+    .ficha-coord > strong { color: var(--text-1); }
+    .ficha-coord dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 6px 0 0; }
+    .ficha-coord dt { color: var(--text-3); white-space: nowrap; }
+    .ficha-coord dd { margin: 0; color: var(--text-2); user-select: all;
+      font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+    .ficha-coord-botoes { display: flex; gap: 6px; flex-wrap: wrap; margin-top: var(--space-2); }
+    .ficha-coord-botoes button { padding: 5px 9px; border: 1px solid var(--glass-stroke);
+      border-radius: var(--radius-md); background: var(--color-surface-1); color: var(--text-2);
+      font-size: 10px; font-weight: var(--weight-semibold); cursor: pointer;
+      font-family: var(--font-ui);
+      transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
+    .ficha-coord-botoes button:hover { background: var(--accent-weak); color: var(--accent-text); }
+    .ficha-coord-botoes button:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+    .ficha-coord-nota { margin: 7px 0 0; color: var(--text-3); }
+    /* Só aparece se a área de transferência recusar (ver mostrarParaSelecionar). */
+    .ficha-coord-manual { width: 100%; margin-top: var(--space-2); padding: 6px;
+      border: 1px solid var(--glass-stroke);
+      border-radius: var(--radius-sm); background: var(--color-void); color: var(--text-2);
+      font-size: 10px; line-height: 1.45; resize: vertical;
+      font-family: var(--font-mono); }
+    /* Nota de "terra em uso" — mesmo bloco do inspetor do globo
+       (globe/js/ui/rotulos.js → notaDeUso), com as cores desta tela. */
+    .ficha-nota { margin-top: var(--space-2); padding: var(--space-2) var(--space-3);
+      border-left: 2px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: var(--color-surface-1);
+      font-size: 10px; line-height: 1.5; color: var(--text-2); }
+    .ficha-nota strong { color: var(--text-1); }
+    .ficha-nota p { margin: 6px 0 0; }
+    .ficha-nota .ficha-nota-ressalva { color: var(--text-3); }
+    /* "De onde vêm estes dados" — mesmo bloco do inspetor do globo
+       (globe/js/ui/proveniencia.js), com as cores desta tela. */
+    .prov { margin-top: var(--space-3); padding-top: var(--space-2);
+      border-top: var(--border-hair); font-size: 10px; }
+    .prov > summary { cursor: pointer; color: var(--text-2);
+      font-weight: var(--weight-semibold); list-style: none; }
+    .prov > summary::-webkit-details-marker { display: none; }
+    .prov > summary::before { content: "▸ "; color: var(--text-3); }
+    .prov[open] > summary::before { content: "▾ "; }
+    .prov > summary:hover { color: var(--text-1); }
+    .prov-aviso, .prov-lacuna, .prov-vazio { margin-top: var(--space-2); line-height: 1.5; color: var(--text-3); }
+    .prov-lacuna { color: var(--caution); }
+    .prov-lista { margin: var(--space-2) 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .prov-lista li { display: flex; flex-direction: column; gap: 1px; padding-left: var(--space-2);
+      border-left: 2px solid var(--glass-stroke); }
+    .prov-lista strong { color: var(--text-2); font-weight: var(--weight-semibold); }
+    .prov-lista span { color: var(--text-3); word-break: break-word; }
+    .prov-extra { font-family: var(--font-mono); font-size: 9px; font-variant-numeric: tabular-nums; }
+    /* Texto direto sobre a imagem de satélite: recebe o véu, não o vidro. */
+    .leaflet-control-attribution { background: var(--scrim-imagery) !important;
+      color: var(--text-3) !important; font-size: 9px !important; }
+    .leaflet-control-attribution a { color: var(--text-2) !important; }
+    .camada-base { position: fixed; bottom: var(--space-4); right: var(--space-4);
+      z-index: var(--z-over-leaflet); display: flex; gap: 6px; }
+  </style>
+</head>
+<body>
+  <div id="mapa"></div>
+
+  <div class="painel" id="painel">
+    <h1>Esta área vista de perto</h1>
+    <table id="props"><tr><td>carregando…</td></tr></table>
+    <div id="nota-uso"></div>
+    <div class="acoes">
+      <a class="btn" href="/terras/globo/index.html">← Voltar ao mapa</a>
+    </div>
+    <div id="prov"></div>
+    <p class="aviso">
+      O contorno desenhado é um <em>lugar para conferir</em>, não uma conclusão: quem decide
+      se uma terra é pública ou devoluta é o INCRA, a SPU ou a Justiça.
+      Imagem de satélite: Esri World Imagery.
+    </p>
+  </div>
+
+  <div class="camada-base">
+    <a class="btn neutro" href="#" id="btn-satelite">Foto de satélite</a>
+    <a class="btn neutro" href="#" id="btn-rotas">Mapa de ruas</a>
+  </div>
+
+  <script src="/terras/globo/vendor-leaflet/leaflet.js"></script>
+  <script type="module">
+    // A ficha desta tela é a mesma do inspetor do globo — mesma tradução de
+    // chaves, mesmo formato de hectare e percentual. Ver globe/js/ui/rotulos.js.
+    import { blocoDeCoordenadas, ligarCopiar, linhasDaFicha, notaDeUso, ROTULOS }
+      from '/terras/globo/js/ui/rotulos.js';
+    import { LAYER_REGISTRY } from '/terras/globo/js/config.js';
+    import { injetarProveniencia } from '/terras/globo/js/ui/proveniencia.js';
+
+    injetarProveniencia(document.getElementById('prov'));
+
+    // --- Parâmetros da URL: ?camada=<layer_id>&fid=<índice>&lat=<>&lon=<> ---
+    const q = new URLSearchParams(location.search);
+    const lat = parseFloat(q.get('lat')) || -18.75;
+    const lon = parseFloat(q.get('lon')) || -44.43;
+    const camada = q.get('camada');
+    const fid = parseInt(q.get('fid'), 10);
+
+    // --- Bases: Esri World Imagery (alta resolução) + OSM (ruas) ------------
+    const esri = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      { maxZoom: 19, attribution: 'Esri, Maxar, Earthstar Geographics' });
+    const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      { maxZoom: 19, attribution: '© OpenStreetMap' });
+
+    const mapa = L.map('mapa', { layers: [esri], zoomControl: true, attributionControl: true });
+    mapa.setView([lat, lon], 15);
+
+    document.getElementById('btn-satelite').onclick = (e) => { e.preventDefault(); mapa.removeLayer(osm); esri.addTo(mapa); };
+    document.getElementById('btn-rotas').onclick = (e) => { e.preventDefault(); mapa.removeLayer(esri); osm.addTo(mapa); };
+
+    // --- Feição: busca a camada e desenha o polígono ------------------------
+    const CORES = { 'candidatos-curvelo': '#fbbf24', 'devolutas-arrecadadas': '#38bdf8',
+      'spu-imoveis-uniao': '#34d399', 'municipios-mg': '#94a3b8', 'pesquisa-noticias': '#fb7185' };
+
+    async function carregar() {
+      if (!camada || Number.isNaN(fid)) {
+        document.getElementById('props').innerHTML =
+          `<tr><td>${ROTULOS.lat}</td><td>${lat}</td></tr><tr><td>${ROTULOS.lon}</td><td>${lon}</td></tr>`;
+        return;
+      }
+      try {
+        // Arquivo estático do portal — era /api/v1/camadas/{id} no backend
+        // FastAPI original (só um FileResponse do mesmo arquivo, sem lógica).
+        const resp = await fetch(`/terras/globo/dados/camadas/${encodeURIComponent(camada)}.geojson`);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const fc = await resp.json();
+        const f = fc.features[fid];
+        if (!f) throw new Error(`esta área não existe mais na camada`);
+
+        const cor = CORES[camada] ?? '#38bdf8';
+        const poly = L.geoJSON(f, {
+          style: { color: cor, weight: 2, fillColor: cor, fillOpacity: 0.25 },
+        }).addTo(mapa);
+        mapa.fitBounds(poly.getBounds().pad(0.6));
+
+        const props = f.properties ?? {};
+        const nome = props.nome || props.name;
+        document.querySelector('.painel h1').textContent =
+          nome ? nome : (props.municipio ? `Esta área em ${props.municipio}` : 'Esta área vista de perto');
+        // Nome legível da camada, não o id do arquivo ("vazio-cadastral-bacia")
+        const cfg = LAYER_REGISTRY.find((l) => l.id === camada);
+        document.getElementById('props').innerHTML =
+          linhasDaFicha(props) + `<tr><td>${ROTULOS.camada}</td><td>${cfg?.label ?? camada}</td></tr>`;
+        // Coordenadas com botão de copiar, e a mesma nota do inspetor: "terra
+        // em uso" se lê nos dois sentidos, e aqui, com a imagem de satélite ao
+        // lado, é onde ela mais importa.
+        const extras = document.getElementById('nota-uso');
+        const ehPonto = f.geometry?.type === 'Point' || f.geometry?.type === 'MultiPoint';
+        extras.innerHTML = blocoDeCoordenadas(props, ehPonto) + notaDeUso(props);
+        ligarCopiar(extras, props, cfg?.label, ehPonto);
+      } catch (err) {
+        document.getElementById('props').innerHTML =
+          `<tr><td>Não deu para carregar</td><td>${err.message}</td></tr>`;
+      }
+    }
+    carregar();
+  </script>
+</body>
+</html>

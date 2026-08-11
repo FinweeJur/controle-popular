@@ -67,6 +67,13 @@ export default async function FuncaoSocialTerraPage() {
         dela.
       </p>
 
+      <a
+        href="/funcaosocialterra/mapa"
+        className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-ink shadow-sm transition-colors hover:opacity-90"
+      >
+        Ver mapa completo (3D) →
+      </a>
+
       {comDado.length === 0 ? (
         <p className="mt-8 rounded-2xl border border-dashed border-border bg-surface-2 p-6 text-sm text-text-soft">
           Nenhuma cidade tem levantamento publicado no momento.

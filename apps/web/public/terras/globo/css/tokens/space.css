@@ -1,0 +1,28 @@
+:root {
+  /* base 4. --space-hair existe só para separadores de 1–2 px. */
+  --space-hair: 2px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* medidas de layout derivadas — nenhum px solto no HUD */
+  --statusbar-h: 40px;          /* celular: restrição dada, não escolha */
+  --panel-pad: var(--space-3);
+  --panel-gap: var(--space-2);
+  --sheet-max-h: 62vh;          /* a folha móvel nunca cobre o globo inteiro */
+  --panel-w-layers: 200px;
+  --panel-w-record: 320px;
+  --gutter: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --statusbar-h: 56px;
+    --panel-pad: var(--space-4);
+    --gutter: var(--space-4);
+  }
+}

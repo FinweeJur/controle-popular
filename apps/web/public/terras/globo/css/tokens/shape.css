@@ -1,0 +1,14 @@
+:root {
+  --radius-sm: 4px;      /* chip, selo, campo */
+  --radius-md: 8px;      /* botão, item de camada */
+  --radius-lg: 12px;     /* painel de vidro, folha */
+  --radius-pill: 999px;  /* atalho de câmera, contador */
+
+  --border-hair: 1px solid var(--color-hairline);
+  --border-glass: 1px solid var(--glass-stroke);
+
+  --shadow-panel: 0 18px 48px -18px rgba(0, 0, 0, 0.7),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --shadow-raised: 0 24px 64px -20px rgba(0, 0, 0, 0.85);   /* sobre satélite */
+  --shadow-focus: 0 0 0 2px var(--color-base), 0 0 0 4px var(--focus-ring);
+}
