@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "famílias de baixa renda beneficiárias de terrenos populares em Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "transferir terrenos populares, destinados exclusivamente a construção de unidades habitacionais, comerciais e institucionais",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Município de Diamantina a transferir terrenos populares destinados exclusivamente à construção de unidades habitacionais, comerciais e institucionais."
+}

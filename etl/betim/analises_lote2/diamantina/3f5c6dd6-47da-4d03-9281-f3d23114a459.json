@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "trabalhadores e empreendimentos dos setores cultural, turístico e patrimonial de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "Estabelece ações emergenciais destinadas aos setores Cultural, Turístico e Patrimonial a serem adotadas como política pública estratégica de enfrentamento às consequências da pandemia de COVID-19.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estabelece ações emergenciais de apoio aos setores cultural, turístico e patrimonial de Diamantina, como política pública para enfrentar os efeitos econômicos da pandemia de COVID-19 sobre esses setores."
+}

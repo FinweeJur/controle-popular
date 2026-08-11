@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população do Município de Diamantina usuária de serviços de saneamento básico"
+      ],
+      "grau": "moderado",
+      "trecho": "CRIA O FUINDO MUNICIPAL DE SANEAMENTO BÁSICO-FMSB, O CONSELHO MUNICIPAL DE SANEAMENTO BÁSICO",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o Fundo Municipal de Saneamento Básico (FMSB) e o Conselho Municipal de Saneamento Básico em Diamantina."
+}

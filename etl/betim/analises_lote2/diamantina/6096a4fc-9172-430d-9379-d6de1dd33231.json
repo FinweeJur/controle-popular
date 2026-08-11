@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estabelecimentos públicos e privados destinados à prática de atividades físicas em Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "DECLARA COMO SERVIÇOS ESSESNCIAS OS ESTABELECIMENTOS, PÚBLICOS OU PRIVADOS,DESTINADOS À PRÀTRICA DE ATIVIDADES FÍSICAS",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei declara como serviços essenciais os estabelecimentos públicos e privados destinados à prática de atividades físicas no Município de Diamantina, o que os exime de restrições de funcionamento aplicáveis a atividades não essenciais."
+}

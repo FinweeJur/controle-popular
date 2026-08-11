@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças com deficiência do Município de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "DISPONIBILIZAÇÃO DE BRINQUEDOS ADAPTADOS PARA CRIANÇAS COM DEFICIÊNCIA NOS PARQUES E ÁREAS PÚBLICAS DE LAZER INFANTIS DO MUNICIPIO",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo a disponibilizar brinquedos adaptados para crianças com deficiência nos parques e áreas públicas de lazer infantil do Município de Diamantina."
+}

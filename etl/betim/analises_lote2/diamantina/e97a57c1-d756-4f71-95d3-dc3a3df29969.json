@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "mulheres em situação de violência no Município de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "CRIAÇÃO DE DIRETRIZES E PROCEDIMENTOS DA POLÍTICA MUNICIPAL DE ENFRENTAMENTO À VIOLÊNCIA CONTRA A MULHER",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria diretrizes e procedimentos para a política municipal de enfrentamento à violência contra a mulher em Diamantina."
+}

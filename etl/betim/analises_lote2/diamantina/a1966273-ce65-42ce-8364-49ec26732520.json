@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "Lei 8.078/1990 (CDC)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "usuários dos serviços de água e esgoto da COPASA e COPANOR em Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre medidas a serem adotadas pela Companhia de Saneamento (COPASA S/A) e COPANOR S/A quando da execução de obras ou serviços",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre medidas a serem adotadas pela COPASA S/A e pela COPANOR S/A na execução de obras ou serviços no Município de Diamantina."
+}

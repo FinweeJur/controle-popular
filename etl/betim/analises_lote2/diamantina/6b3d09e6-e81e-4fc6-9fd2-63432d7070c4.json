@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 40",
+      "direcao": "restringe",
+      "mecanismo": "flexibiliza_limite",
+      "titulares": [
+        "servidores públicos municipais de Diamantina vinculados ao RPPS com remuneração acima do teto do RGPS"
+      ],
+      "grau": "moderado",
+      "trecho": "FIXA LIMITE MÁXIMO PARA A CONCESSÃO DE APOSENTADORIAS E PENSÕES PELO REGIME DE PREVIDÊNCIA DE QUE TRATA O ART.40 DA CONSTITUIÇÃO FEDERAL",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": true,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o regime de previdência complementar para os servidores públicos de Diamantina, fixa um limite máximo (teto) para a concessão de aposentadorias e pensões pelo regime próprio de previdência (RPPS) de que trata o art. 40 da Constituição Federal, e autoriza a adesão dos servidores a plano de benefícios de previdência complementar."
+}

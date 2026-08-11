@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "agentes de saúde e agentes de combate a endemias do Município de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "Estabelece piso salarial para os agentes de saúde e agentes de combate ás Endemias do Município de Diamantina",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estabelece piso salarial para os agentes de saúde e os agentes de combate a endemias do Município de Diamantina."
+}
