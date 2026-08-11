@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "crianças e adolescentes matriculados na rede de ensino de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre capacitação e treinamento dos profissionais da área de educação para identificar sinais de abuso moral, físico, sexual e exploração sexual infantil no Município de Betim.",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a capacitação e o treinamento de profissionais da área de educação para identificar sinais de abuso moral, físico, sexual e exploração sexual infantil no Município de Betim."
+}

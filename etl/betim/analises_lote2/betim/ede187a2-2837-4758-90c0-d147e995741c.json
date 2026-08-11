@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com deficiência do Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre a criação do Programa de Proteção à Saúde Bucal de Pessoas com Deficiência no município de Betim e dá outras providências.",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a criação do Programa de Proteção à Saúde Bucal de Pessoas com Deficiência no Município de Betim. O texto foi sancionado."
+}

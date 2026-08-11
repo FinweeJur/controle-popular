@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com deficiência do Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o programa calçada cidadã no município de Betim, com o objetivo de promover a acessibilidade e a segurança de pedestres, especialmente idosos e pessoas com deficiência, e dá outras providências.",
+      "confianca": 0.55
+    },
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas idosas do Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o programa calçada cidadã no município de Betim, com o objetivo de promover a acessibilidade e a segurança de pedestres, especialmente idosos e pessoas com deficiência, e dá outras providências.",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o programa Calçada Cidadã no Município de Betim, voltado a promover acessibilidade e segurança de pedestres, com ênfase em idosos e pessoas com deficiência. O projeto foi arquivado; a situação de tramitação não altera o que o texto propunha."
+}

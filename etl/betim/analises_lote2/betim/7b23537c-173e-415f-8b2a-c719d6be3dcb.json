@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "crianças cujos pais ou responsáveis legais apresentem transtornos mentais, no Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal de Proteção, Acompanhamento e Prevenção de Riscos a Crianças e Famílias em que pais ou responsáveis legais apresentem transtornos mentais, no âmbito do Município de Betim, e dá outras providências.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto, chamado Lei Aruna, institui a Política Municipal de Proteção, Acompanhamento e Prevenção de Riscos a Crianças e Famílias em que pais ou responsáveis legais apresentem transtornos mentais, no Município de Betim."
+}

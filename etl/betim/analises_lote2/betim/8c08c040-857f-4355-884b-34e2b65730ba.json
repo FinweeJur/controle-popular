@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "pessoas com Transtorno do Espectro Autista (TEA)"
+      ],
+      "grau": "marginal",
+      "trecho": "para dispor sobre requisitos de visibilidade das placas, penalidades e prazos para adequação.",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 6.683/2020"
+  ],
+  "resumo_neutro": "O projeto altera a Lei nº 6.683/2020, que torna obrigatória a inserção do símbolo mundial do autismo nas placas de atendimento preferencial, para acrescentar requisitos de visibilidade das placas, penalidades e prazos de adequação. O texto foi sancionado."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 5º, XXXIII",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "cidadãos do Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre a implantação de código QR em todas as placas de obras públicas municipais para leitura e fiscalização eletrônica no Município de Betim.",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a implantação de código QR nas placas de obras públicas municipais de Betim, para leitura e fiscalização eletrônica pelo cidadão. O projeto foi vetado; a situação de tramitação não altera o que o texto propunha."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "alunos com Transtorno do Espectro Autista (TEA) das escolas de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre a substituição dos sinais sonoros por sinais musicais adequados nos estabelecimentos de ensino públicos e privados do Município de Betim, visando à proteção sensorial de alunos com Transtorno do Espectro Autista (TEA), e dá outras providências.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a substituição dos sinais sonoros por sinais musicais nos estabelecimentos de ensino públicos e privados de Betim, visando à proteção sensorial de alunos com Transtorno do Espectro Autista (TEA). O projeto foi retirado; a situação de tramitação não altera o que o texto propunha."
+}

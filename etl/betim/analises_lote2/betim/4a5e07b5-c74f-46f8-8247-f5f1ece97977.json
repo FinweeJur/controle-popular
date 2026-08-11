@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 5º, I",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "mulheres empreendedoras de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui diretrizes para política pública municipal de incentivo à mulher empreendedora no Município de Betim.",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui diretrizes de política pública municipal de incentivo à mulher empreendedora em Betim. O texto foi sancionado."
+}
