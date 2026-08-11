@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas com transtorno do espectro autista (TEA) no Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a política municipal de sessões de cinema inclusivas para pessoas com transtorno do espectro autista (TEA) no município de Betim e dá outras providências.",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a política municipal de sessões de cinema inclusivas para pessoas com transtorno do espectro autista (TEA) no Município de Betim."
+}

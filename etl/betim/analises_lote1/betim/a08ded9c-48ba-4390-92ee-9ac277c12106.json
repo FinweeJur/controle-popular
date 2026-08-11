@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pacientes com diabetes mellitus tipo I atendidos pelo SUS no Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre a obrigação de fornecimento do sensor contínuo de glicose, ou monitor contínuo de glicose para o monitoramento da glicemia de pacientes diagnosticados como portadores de diabetes mellitus tipo I do Sistema Único de Saúde – SUS no âmbito do município de Betim e dá outras providências",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a obrigação de fornecimento do sensor ou monitor contínuo de glicose para pacientes com diabetes mellitus tipo I atendidos pelo SUS no Município de Betim."
+}

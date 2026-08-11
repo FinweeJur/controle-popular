@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas idosas residentes em condomínios de Belo Horizonte"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Programa Porteiro Amigo do Idoso nos condomínios de Belo Horizonte.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa Porteiro Amigo do Idoso, voltado a orientar porteiros de condomínios de Belo Horizonte no cuidado e atenção a moradores idosos."
+}

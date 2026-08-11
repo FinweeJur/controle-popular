@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "motoristas com diabetes no Município de Belo Horizonte"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o selo de identificação + Vida: Motorista com Diabetes, no Município.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o selo de identificação '+ Vida: Motorista com Diabetes' no Município de Belo Horizonte."
+}
