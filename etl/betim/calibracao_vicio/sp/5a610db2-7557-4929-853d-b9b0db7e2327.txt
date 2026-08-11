@@ -1,0 +1,30 @@
+PROJETO MUNICIPAL: Projeto de Lei nº 631/2025
+MUNICÍPIO: São Paulo/SP (IBGE 3550308)
+TIPO DE INSTRUMENTO NORMATIVO: Projeto de Lei
+AUTOR/PROPONENTE: RICARDO TEIXEIRA; MARCELO MESSIAS
+SITUAÇÃO: PROJETO EM TRAMITAÇÃO — situação: Em Trâmite (apresentado em 2025-06-03)
+EMENTA: Dispõe sobre alteração da Lei nº 17.913, de 17 de fevereiro de 2023 [Dispõe sobre a criação do Quadro de Fiscalização de Posturas Municipais – QFPM, com plano de carreira, reenquadra os cargos e funções de Agente Vistor, do Quadro de Agentes Vistores – QAV], retirando do Anexo IV da presente Lei a obrigatoriedade de pagamento dos adicionais de insalubridade, periculosidade e penosidade, mantendo apenas a gratificação por risco de vida e saúde, dando ainda outras providências.
+
+CATEGORIAS DE VÍCIO APLICÁVEIS AO EIXO MUNICIPAL (use exatamente estes slugs):
+  - vicio_iniciativa: Vício de iniciativa — Matéria de iniciativa privativa do Chefe do Poder Executivo (criação de cargo, aumento de remuneração de servidor, estrutura/organização administrativa, regime jurídico de servidor) proposta por parlamentar ou vereador — não pela Presidência/Prefeitura.
+    âncoras: CF/88, art. 61, §1º, II (aplicado ao município por simetria constitucional); Lei Orgânica do Município (dispositivo equivalente — varia por cidade; cite se o texto da proposição indicar, senão cite só a CF)
+  - vicio_competencia: Vício de competência — Ente legislando fora da própria esfera constitucional de competência. No eixo municipal é o caso central: Art. 30, I CF só autoriza o município a legislar sobre 'assuntos de interesse local'; Art. 30, II autoriza suplementar legislação federal/estadual 'no que couber'. Município regulando matéria de competência privativa da União (Art. 22 CF — direito civil, penal, processual, trânsito nacional, material bélico etc.) ou invadindo organização de outro ente (ex.: mencionar 'Poder Judiciário' do próprio município, que não existe) tem vício de competência. No eixo federal é mais raro: União extrapolando 'normas gerais' (Art. 24 CF) para dentro da autonomia administrativa de Estado/Município sem gancho constitucional específico.
+    âncoras: CF/88, art. 30, I; CF/88, art. 30, II; CF/88, art. 22 (competência privativa da União, citada por contraste); CF/88, art. 24 (competência concorrente, citada por contraste)
+  - inconstitucionalidade_material: Inconstitucionalidade material (indício) — O CONTEÚDO da norma — não o rito, não quem propôs — contraria a CF (no eixo municipal, também a Constituição Estadual ou a Lei Orgânica do próprio município). Inclui ofensa a direito fundamental do Título II e, POR NÃO HAVER CATEGORIA PRÓPRIA NESTA RÉGUA, também abrange separação de poderes (Art. 2º CF): Legislativo determinando ato de gestão específico do Executivo ou do Judiciário — ex.: câmara municipal exigindo aprovação prévia sua para decisão administrativa rotineira do Executivo.
+    âncoras: CF/88, Título II; CF/88, art. 2º; Constituição do Estado; Lei Orgânica do Município
+  - vicio_formal: Vício formal ou procedimental — Quórum errado para o tipo de norma (lei complementar exige maioria absoluta, ordinária maioria simples, PEC 3/5 em dois turnos), rito não observado, ausência de parecer de comissão obrigatória pelo Regimento Interno. NOTA SOBRE CLÁUSULA PÉTREA (Art. 60, §4º CF): só é relevante para PEC tentando abolir voto direto/secreto/universal/periódico, separação de poderes, forma federativa ou direitos e garantias individuais — e mesmo aí o indício correto é DEBATE DOUTRINÁRIO, nunca fato assentado (o próprio STF trata o alcance do art. 60 §4º IV como controverso caso a caso). Para PL comum (não-PEC) que tenta fazer, por lei ordinária, o que só emenda constitucional poderia, o vício é AQUI — instrumento normativo errado — e não 'inconstitucionalidade material por ofensa a cláusula pétrea'.
+    âncoras: Regimento Interno da Câmara Municipal (quórum/rito/parecer de comissão obrigatório — varia por cidade); Lei Orgânica do Município
+
+Devolva JSON exatamente neste formato:
+{
+  "indicios": [
+    {
+      "categoria": "<slug da lista>",
+      "dispositivo": "<artigo concreto, ex.: 'CF/88, art. 30, I'>",
+      "justificativa": "<1-2 frases, hedged: 'há indício de...' nunca 'é inconstitucional'>",
+      "trecho": "<citação literal da ementa>",
+      "confianca": <0.0 a 1.0>
+    }
+  ],
+  "resumo": "<1-3 frases pro cidadão leigo, sempre deixando claro que é indício de IA, não decisão judicial>"
+}

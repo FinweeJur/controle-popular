@@ -3,9 +3,11 @@
 import { useSearchParams } from "next/navigation";
 import Link from "@/lib/betim/link";
 import RotuloBadge from "@/app/[municipio]/components/RotuloBadge";
+import VicioBadge from "@/app/[municipio]/components/VicioBadge";
 import type { AtoRow } from "@/lib/betim/legislacao";
 import type { DireitoContagem } from "@/lib/betim/legislacao-garantista";
 import { labelDoDireito } from "@/lib/congresso/rubrica";
+import { RESSALVA_INDICIO } from "@/lib/congresso/rubrica_vicio";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 
 /**
@@ -296,6 +298,35 @@ function Conteudo({
                             {item.grau ? ` · alcance ${item.grau}` : ""})
                           </span>
                         </p>
+                        {item.trecho && (
+                          <p className="mt-1 italic text-text-soft">“{item.trecho}”</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              )}
+              {a.vicio && (
+                <details className="group mt-3">
+                  <summary className="flex cursor-pointer list-none flex-wrap items-center gap-2 [&::-webkit-details-marker]:hidden">
+                    <VicioBadge nivel={a.vicio.nivelGravidade} tamanho="sm" />
+                    <span className="text-xs text-accent underline decoration-dotted group-open:hidden">
+                      ver justificativa
+                    </span>
+                    <span className="hidden text-xs text-accent underline decoration-dotted group-open:inline">
+                      ocultar justificativa
+                    </span>
+                  </summary>
+                  <div className="mt-2 space-y-2 rounded-xl bg-surface-2 p-3 text-sm">
+                    <p className="text-xs text-text-soft">{RESSALVA_INDICIO}</p>
+                    {a.vicio.resumo && <p>{a.vicio.resumo}</p>}
+                    {a.vicio.itens.map((item, idx) => (
+                      <div key={idx}>
+                        <p>
+                          <strong className="text-text">{item.categoriaLabel}</strong>{" "}
+                          <span className="text-text-soft">({item.dispositivo})</span>
+                        </p>
+                        {item.justificativa && <p className="mt-1 text-text-soft">{item.justificativa}</p>}
                         {item.trecho && (
                           <p className="mt-1 italic text-text-soft">“{item.trecho}”</p>
                         )}

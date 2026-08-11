@@ -1,0 +1,15 @@
+{
+  "id_municipio": "3134004",
+  "municipio": "Itinga",
+  "eixo": "municipal",
+  "versao_rubrica_vicio": "1.0.0",
+  "versao_prompt_vicio": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "externo",
+  "objetos": [
+    {
+      "id": "468cc64a-77a5-40b7-9148-23c6fb7fc3b6",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Indicação (pedido não vinculante ao Executivo) nº 27/2026"
+    }
+  ]
+}

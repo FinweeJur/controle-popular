@@ -1,0 +1,12 @@
+{
+  "indicios": [
+    {
+      "categoria": "vicio_competencia",
+      "dispositivo": "CF/88, art. 18",
+      "justificativa": "O projeto cria um regime nacional, por lei ordinária federal, para suspensão cautelar de mandato de agentes públicos eleitos de todos os entes — o texto menciona 'atuação das casas legislativas' no plural, sugerindo alcance sobre Estados e Municípios. Isso toca a autonomia federativa para organizar a perda/suspensão de mandato de agentes eleitos próprios. Há leitura em sentido contrário (a matéria pode ser enquadrada como direito eleitoral, competência privativa da União pelo art. 22, I CF), por isso a confiança é moderada, não alta.",
+      "trecho": "Institui o Regime Nacional de Suspensão Funcional Cautelar e de Substituição Temporária de Agentes Públicos Eleitos",
+      "confianca": 0.45
+    }
+  ],
+  "resumo": "Há um indício leve e de confiança baixa de vício de competência: o projeto cria regras nacionais uniformes sobre suspensão de mandato de agentes eleitos de todos os níveis federativos, tema que também pode ser enquadrado como direito eleitoral (competência da União). O tema comporta leitura nos dois sentidos."
+}

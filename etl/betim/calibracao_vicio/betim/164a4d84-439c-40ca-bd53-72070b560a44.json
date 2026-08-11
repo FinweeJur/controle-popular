@@ -1,0 +1,12 @@
+{
+  "indicios": [
+    {
+      "categoria": "inconstitucionalidade_material",
+      "dispositivo": "CF/88, art. 2º",
+      "justificativa": "O projeto condiciona qualquer alteração definitiva no sistema viário — ato de gestão administrativa tipicamente do Executivo — à aprovação prévia da própria Câmara. Tribunais costumam invalidar normas municipais que subordinam atos de gestão específicos do Executivo a controle prévio do Legislativo, por ofensa à separação de poderes.",
+      "trecho": "Dispõe sobre a obrigatoriedade de submeter à apreciação da Câmara Municipal de Betim qualquer alteração definitiva nas vias e no sistema de trânsito do Município",
+      "confianca": 0.75
+    }
+  ],
+  "resumo": "Há indício de violação à separação de poderes: o projeto exige aprovação prévia da Câmara para decisões administrativas de trânsito que normalmente cabem ao Executivo executar. É um padrão que tribunais costumam questionar. Isto é um indício de IA, não uma decisão judicial."
+}

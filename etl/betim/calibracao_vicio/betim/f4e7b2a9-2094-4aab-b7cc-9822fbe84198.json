@@ -1,0 +1,12 @@
+{
+  "indicios": [
+    {
+      "categoria": "inconstitucionalidade_material",
+      "dispositivo": "CF/88, art. 2º",
+      "justificativa": "O projeto fixa, por lei, um prazo operacional específico para uma empresa do Executivo cumprir uma decisão técnica já tomada por ela (retirar ônibus reprovados em vistoria) — pode ser lido como o Legislativo determinando um ato de gestão pontual do Executivo, e não uma norma geral.",
+      "trecho": "Determina prazo para retirada e substituição de ônibus reprovados em vistorias realizadas pela Empresa de Construções, Obras, Serviços, Projetos, Transporte e Trânsito (ECOS)",
+      "confianca": 0.4
+    }
+  ],
+  "resumo": "Há um indício leve, de confiança baixa, de que o projeto interfere num ato de gestão específico do Executivo (prazo operacional de uma empresa municipal) em vez de fixar regra geral. É uma leitura possível, não conclusiva."
+}

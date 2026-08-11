@@ -1,0 +1,12 @@
+{
+  "indicios": [
+    {
+      "categoria": "vicio_competencia",
+      "dispositivo": "CF/88, art. 22, XXI",
+      "justificativa": "Regular o uso de instrumentos de menor potencial ofensivo (armamento não letal) por agentes municipais pode invadir a competência privativa da União para legislar sobre material bélico (art. 22, XXI CF), hoje tratada pelo Estatuto do Desarmamento e por normas federais de controle de produtos controlados.",
+      "trecho": "Dispõe sobre o uso de instrumentos de menor potencial ofensivo pelos agentes de trânsito do município de Betim",
+      "confianca": 0.45
+    }
+  ],
+  "resumo": "Há um indício leve de vício de competência: regular o uso de armamento não letal por agente municipal pode tocar matéria de competência da União (material bélico). É uma leitura possível, não conclusiva — a fiscalização de trânsito local em si é competência do município."
+}

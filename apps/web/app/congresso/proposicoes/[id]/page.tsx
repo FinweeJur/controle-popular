@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/lib/congresso/link";
 import { notFound } from "next/navigation";
 import AnaliseAuditavel from "@/app/congresso/components/AnaliseAuditavel";
+import VicioAuditavel from "@/app/congresso/components/VicioAuditavel";
 import { obterProposicao, listarProposicoes } from "@/lib/congresso/proposicoes";
 import { exportandoEstatico, TETO_PAGINAS_ESTATICAS } from "@/lib/alvo-de-build";
 
@@ -64,7 +65,7 @@ export default async function ProposicaoDetalhe({ params }: { params: Params }) 
   const dados = await obterProposicao(id);
   if (!dados) notFound();
 
-  const { proposicao: p, analise, itens, autoriaCompleta, tramitacoes } = dados;
+  const { proposicao: p, analise, itens, vicio, vicioItens, autoriaCompleta, tramitacoes } = dados;
 
   // Destinatários sugeridos vêm da tramitação REAL, não do autor: quem
   // decide a proposição agora é o colegiado onde ela está parada. Mandar
@@ -173,6 +174,8 @@ export default async function ProposicaoDetalhe({ params }: { params: Params }) 
       ) : null}
 
       <AnaliseAuditavel analise={analise} itens={itens} />
+
+      <VicioAuditavel vicio={vicio} itens={vicioItens} />
 
       <section className="rounded-lg border border-[var(--cp-border)] p-5">
         <h2 className="font-display text-xl font-semibold">Manifestar-se sobre esta proposição</h2>

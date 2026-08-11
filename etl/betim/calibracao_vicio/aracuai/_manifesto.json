@@ -1,0 +1,15 @@
+{
+  "id_municipio": "3103405",
+  "municipio": "Araçuaí",
+  "eixo": "municipal",
+  "versao_rubrica_vicio": "1.0.0",
+  "versao_prompt_vicio": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "externo",
+  "objetos": [
+    {
+      "id": "49cef73b-b851-4e07-a784-2d0c9747538b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 748/2025"
+    }
+  ]
+}

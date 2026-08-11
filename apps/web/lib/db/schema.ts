@@ -2084,6 +2084,78 @@ export const analise_itens = pgTable("analise_itens", {
 	check("analise_itens_grau_check", sql`grau = ANY (ARRAY['marginal'::text, 'moderado'::text, 'estrutural'::text])`),
 ]);
 
+/**
+ * Vício legislativo / indício de inconstitucionalidade do eixo Cidades
+ * (migration 0063) — companheira de `analises`/`analise_itens` acima, não
+ * substituta: mesmo objeto pode ter as duas análises, cada uma numa tabela
+ * própria. Espelha `vicios_legislativosInCongresso`/`vicio_itensInCongresso`
+ * pela mesma razão que `analises` espelha `analisesInCongresso` — a régua
+ * mora só em `lib/congresso/rubrica/vicio_legislativo.json`.
+ */
+export const vicios_legislativos = pgTable("vicios_legislativos", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	ato_id: uuid(),
+	proposicao_id: uuid(),
+	eixo: text().default('municipal').notNull(),
+	nivel_gravidade: text().default('sem_indicio').notNull(),
+	resumo: text(),
+	modelo: text(),
+	versao_rubrica: text(),
+	versao_prompt: text(),
+	status: text().default('ok'),
+	criado_em: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+}, (table) => [
+	index("vicios_legislativos_municipio_nivel_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.nivel_gravidade.asc().nullsLast().op("text_ops")),
+	index("vicios_legislativos_municipio_status_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.status.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "vicios_legislativos_id_municipio_fkey"
+		}).onDelete("cascade"),
+	foreignKey({
+			columns: [table.ato_id],
+			foreignColumns: [atos_oficiais.id],
+			name: "vicios_legislativos_ato_id_fkey"
+		}).onDelete("cascade"),
+	foreignKey({
+			columns: [table.proposicao_id],
+			foreignColumns: [proposicoes.id],
+			name: "vicios_legislativos_proposicao_id_fkey"
+		}).onDelete("cascade"),
+	unique("vicios_legislativos_ato_id_key").on(table.ato_id),
+	unique("vicios_legislativos_proposicao_id_key").on(table.proposicao_id),
+	check("vicios_legislativos_um_objeto_so", sql`num_nonnulls(ato_id, proposicao_id) = 1`),
+	check("vicios_legislativos_eixo_check", sql`eixo = 'municipal'::text`),
+	check("vicios_legislativos_nivel_gravidade_check", sql`nivel_gravidade = ANY (ARRAY['sem_indicio'::text, 'indicio_leve'::text, 'indicio_grave'::text])`),
+	check("vicios_legislativos_status_check", sql`status = ANY (ARRAY['ok'::text, 'requer_revisao'::text, 'falhou'::text])`),
+]);
+
+export const vicio_itens = pgTable("vicio_itens", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	vicio_id: uuid().notNull(),
+	id_municipio: text().notNull(),
+	categoria: text().notNull(),
+	dispositivo: text().notNull(),
+	justificativa: text(),
+	trecho: text(),
+	confianca: numeric({ precision: 3, scale:  2 }),
+}, (table) => [
+	index("vicio_itens_vicio_idx").using("btree", table.vicio_id.asc().nullsLast().op("uuid_ops")),
+	index("vicio_itens_municipio_categoria_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.categoria.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.vicio_id],
+			foreignColumns: [vicios_legislativos.id],
+			name: "vicio_itens_vicio_id_fkey"
+		}).onDelete("cascade"),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "vicio_itens_id_municipio_fkey"
+		}).onDelete("cascade"),
+	check("vicio_itens_categoria_check", sql`categoria = ANY (ARRAY['vicio_iniciativa'::text, 'vicio_competencia'::text, 'inconstitucionalidade_material'::text, 'vicio_formal'::text, 'contrabando_legislativo'::text])`),
+]);
+
 export const verbas_indenizatorias = pgTable("verbas_indenizatorias", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
 	id_municipio: text().notNull(),
@@ -2197,6 +2269,55 @@ export const analise_itensInCongresso = congresso.table("analise_itens", {
 		}).onDelete("cascade"),
 	check("analise_itens_direcao_check", sql`direcao = ANY (ARRAY['amplia'::text, 'restringe'::text, 'neutro'::text])`),
 	check("analise_itens_grau_check", sql`grau = ANY (ARRAY['marginal'::text, 'moderado'::text, 'estrutural'::text])`),
+]);
+
+/**
+ * Vício legislativo / indício de inconstitucionalidade do Congresso
+ * (migration 0011) — companheira de `analisesInCongresso`/`analise_itensInCongresso`
+ * acima, não substituta. Régua em `lib/congresso/rubrica/vicio_legislativo.json`.
+ */
+export const vicios_legislativosInCongresso = congresso.table("vicios_legislativos", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	proposicao_id: uuid().notNull(),
+	eixo: text().default('federal').notNull(),
+	nivel_gravidade: text().default('sem_indicio').notNull(),
+	resumo: text(),
+	modelo: text(),
+	versao_rubrica: text(),
+	versao_prompt: text(),
+	status: text().default('ok'),
+	criado_em: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+}, (table) => [
+	index("vicios_legislativos_nivel_idx").using("btree", table.nivel_gravidade.asc().nullsLast().op("text_ops")),
+	index("vicios_legislativos_status_idx").using("btree", table.status.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.proposicao_id],
+			foreignColumns: [proposicoesInCongresso.id],
+			name: "vicios_legislativos_proposicao_id_fkey"
+		}).onDelete("cascade"),
+	unique("vicios_legislativos_proposicao_id_key").on(table.proposicao_id),
+	check("vicios_legislativos_eixo_check", sql`eixo = 'federal'::text`),
+	check("vicios_legislativos_nivel_gravidade_check", sql`nivel_gravidade = ANY (ARRAY['sem_indicio'::text, 'indicio_leve'::text, 'indicio_grave'::text])`),
+	check("vicios_legislativos_status_check", sql`status = ANY (ARRAY['ok'::text, 'requer_revisao'::text, 'falhou'::text])`),
+]);
+
+export const vicio_itensInCongresso = congresso.table("vicio_itens", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	vicio_id: uuid().notNull(),
+	categoria: text().notNull(),
+	dispositivo: text().notNull(),
+	justificativa: text(),
+	trecho: text(),
+	confianca: numeric({ precision: 3, scale:  2 }),
+}, (table) => [
+	index("vicio_itens_vicio_idx").using("btree", table.vicio_id.asc().nullsLast().op("uuid_ops")),
+	index("vicio_itens_categoria_idx").using("btree", table.categoria.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.vicio_id],
+			foreignColumns: [vicios_legislativosInCongresso.id],
+			name: "vicio_itens_vicio_id_fkey"
+		}).onDelete("cascade"),
+	check("vicio_itens_categoria_check", sql`categoria = ANY (ARRAY['vicio_iniciativa'::text, 'vicio_competencia'::text, 'inconstitucionalidade_material'::text, 'vicio_formal'::text, 'contrabando_legislativo'::text])`),
 ]);
 
 export const parlamentaresInCongresso = congresso.table("parlamentares", {

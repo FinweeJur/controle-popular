@@ -1,0 +1,15 @@
+{
+  "id_municipio": "3106200",
+  "municipio": "Belo Horizonte",
+  "eixo": "municipal",
+  "versao_rubrica_vicio": "1.0.0",
+  "versao_prompt_vicio": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "externo",
+  "objetos": [
+    {
+      "id": "022edaac-4341-4261-b0d3-0a561e5c164c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 756/2026"
+    }
+  ]
+}

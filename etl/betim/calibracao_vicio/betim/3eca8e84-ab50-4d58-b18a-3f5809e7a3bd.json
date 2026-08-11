@@ -1,0 +1,12 @@
+{
+  "indicios": [
+    {
+      "categoria": "vicio_competencia",
+      "dispositivo": "CF/88, art. 18",
+      "justificativa": "A ementa fala em vedar nomeação 'nos três Poderes da cidade de Betim' — mas o município não tem Poder Judiciário próprio (a Justiça é organizada pela União/Estado, arts. 18 e 92 CF); uma lei municipal não tem competência para dispor sobre nomeação a cargo do Poder Judiciário.",
+      "trecho": "vedação da nomeação para cargos públicos, nos três Poderes da cidade de Betim, de pessoas que tenham sido condenadas pela Lei Federal nº 7.716",
+      "confianca": 0.6
+    }
+  ],
+  "resumo": "Há indício de vício de competência: o texto trata do 'Poder Judiciário' do município, que não existe — a Justiça é organizada pelo Estado/União, não pelo Executivo e Legislativo municipais. A vedação em si (impedir nomeação de condenados por racismo) pode ser válida para os cargos que o município de fato controla."
+}

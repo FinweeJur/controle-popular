@@ -3,11 +3,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "@/lib/congresso/link";
 import RotuloBadge from "@/app/congresso/components/RotuloBadge";
+import VicioBadge from "@/app/congresso/components/VicioBadge";
 import Autoria from "@/app/congresso/components/Autoria";
 import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/TabelaEstatica";
 import type { Proposicao, Analise } from "@/lib/congresso/proposicoes";
 import type { AutoriaResumo } from "@/lib/db/queries/congresso";
 import { RUBRICA, labelDoRotulo } from "@/lib/congresso/rubrica";
+import type { NivelGravidade } from "@/lib/congresso/rubrica_vicio";
 
 /**
  * Tabela de `/congresso/proposicoes`, com filtro/busca/paginação movidos do
@@ -67,6 +69,7 @@ import { RUBRICA, labelDoRotulo } from "@/lib/congresso/rubrica";
 // `unknown`.
 export type LinhaProposicao = Proposicao & {
   analise: Analise | null;
+  vicioNivelGravidade: NivelGravidade | null;
   autoria?: AutoriaResumo;
 } & Record<string, unknown>;
 
@@ -87,7 +90,10 @@ const COLUNAS: ColunaTabela<LinhaProposicao>[] = [
         >
           {p.identificacao}
         </Link>
-        <RotuloBadge rotulo={p.analise?.rotulo} score={p.analise?.score} tamanho="sm" />
+        <div className="flex flex-wrap gap-1.5">
+          <RotuloBadge rotulo={p.analise?.rotulo} score={p.analise?.score} tamanho="sm" />
+          <VicioBadge nivel={p.vicioNivelGravidade} tamanho="sm" />
+        </div>
       </div>
     ),
   },

@@ -1,0 +1,35 @@
+{
+  "id_municipio": "3550308",
+  "municipio": "São Paulo",
+  "eixo": "municipal",
+  "versao_rubrica_vicio": "1.0.0",
+  "versao_prompt_vicio": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "externo",
+  "objetos": [
+    {
+      "id": "89eadb3f-611b-4002-80f2-3aa2fe5582d2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 503/2025"
+    },
+    {
+      "id": "68b89703-199f-4e05-8db3-5f74fa81f867",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 152/2025"
+    },
+    {
+      "id": "5a610db2-7557-4929-853d-b9b0db7e2327",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 631/2025"
+    },
+    {
+      "id": "5d69ef4c-cc6b-4b1e-9ef5-8652b3a8dba6",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 177/2025"
+    },
+    {
+      "id": "c3ae388b-535e-4fa0-9e24-bffed01f6099",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 629/2025"
+    }
+  ]
+}
