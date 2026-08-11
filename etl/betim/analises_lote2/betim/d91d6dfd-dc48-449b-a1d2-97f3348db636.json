@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_lgbtqia",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "restringe",
+      "mecanismo": "desregulamenta_protecao",
+      "titulares": [
+        "estudantes e comunidade escolar LGBTQIA+ da rede pública municipal e da rede privada de ensino de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "proibição da Ideologia de Gêneros nas escolas da rede pública municipal e de ensino privado em todo o Município de Betim",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto proíbe a abordagem da chamada 'ideologia de gênero' nas escolas da rede pública municipal e da rede privada de Betim. A lei foi vetada; a ementa não define o conteúdo exato da vedação."
+}

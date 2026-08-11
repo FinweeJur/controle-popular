@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 1º, parágrafo único",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "Câmara Municipal e população do município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de submeter à apreciação da Câmara Municipal qualquer alteração definitiva nas vias e no sistema de trânsito do Município",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto exige que qualquer alteração definitiva nas vias e no sistema de trânsito de Betim seja submetida à apreciação da Câmara Municipal. O projeto foi arquivado (prejudicado)."
+}

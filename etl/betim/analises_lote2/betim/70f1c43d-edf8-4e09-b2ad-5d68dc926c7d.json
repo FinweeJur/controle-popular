@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "acesso_justica",
+      "dispositivo": "CF/88, art. 5º, XXXV",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população em geral, especialmente usuários de escolas, unidades de saúde e transporte público de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "obrigatoriedade de afixação de placas contendo o número do disque-denúncia 181 para crime de tráfico de drogas em locais públicos, com foco especial em instituições de ensino, unidades de saúde e no transporte público",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto torna obrigatória a afixação de placas com o número do disque-denúncia 181 para tráfico de drogas em locais públicos de Betim, com foco em escolas, unidades de saúde e transporte público. A lei foi vetada."
+}

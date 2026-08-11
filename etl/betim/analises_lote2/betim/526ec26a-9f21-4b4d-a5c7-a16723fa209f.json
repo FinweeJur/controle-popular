@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "animais e população do município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a criação da Secretaria Municipal de Proteção Animal e dá outras providências",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a criação da Secretaria Municipal de Proteção Animal em Betim. O projeto foi arquivado (prejudicado) e não detalha as competências do novo órgão."
+}

@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "liberdade_religiosa",
+      "dispositivo": "CF/88, art. 5º, VI",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "instituições religiosas do município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "garantia de liberdade para atribuir o uso dos banheiros em Instituições Religiosas ou em suas dependências de acordo com a definição biológica do sexo, na consciência de crença",
+      "confianca": 0.55
+    },
+    {
+      "direito": "direitos_lgbtqia",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "restringe",
+      "mecanismo": "restringe_titularidade",
+      "titulares": [
+        "pessoas trans e travestis que frequentam instituições religiosas em Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "atribuir o uso dos banheiros em Instituições Religiosas ou em suas dependências de acordo com a definição biológica do sexo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei, já sancionada, garante às instituições religiosas de Betim a liberdade de definir o uso de banheiros conforme a definição biológica do sexo, com fundamento na liberdade de consciência e crença. O texto não prevê exceção para uso de banheiro conforme identidade de gênero autodeclarada."
+}

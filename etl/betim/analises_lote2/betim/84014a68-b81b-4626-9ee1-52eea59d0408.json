@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "usuários das vias públicas do município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "instalação de guard rail em todas as curvas e cruzamentos nas avenidas sanitárias neste município",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto determina a instalação de guard rail em curvas e cruzamentos das avenidas sanitárias do município de Betim. A lei foi vetada."
+}

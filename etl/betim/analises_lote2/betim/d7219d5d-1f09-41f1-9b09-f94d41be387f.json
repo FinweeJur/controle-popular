@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "praticantes de pesca esportiva no município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre a pesca esportiva no Município de Betim, e dá outras providências",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a prática da pesca esportiva no município de Betim. A ementa não detalha regras específicas de exercício da atividade; a lei foi vetada."
+}

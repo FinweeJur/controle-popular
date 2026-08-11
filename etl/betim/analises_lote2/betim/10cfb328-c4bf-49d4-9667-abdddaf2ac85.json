@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "crianças com altas habilidades do município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "implantação de instituições e programas para crianças com altas habilidades",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a implantação de instituições e programas voltados a crianças com altas habilidades no município de Betim. A lei foi vetada."
+}

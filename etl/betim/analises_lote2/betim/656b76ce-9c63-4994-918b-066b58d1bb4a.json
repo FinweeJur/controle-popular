@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "estudantes e comunidade escolar da rede municipal de ensino de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "implantação do sistema de cercamento eletrônico e monitoramento em instituições de ensino da rede municipal, no âmbito do Projeto Escola Protegida",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a implantação de sistema de cercamento eletrônico e monitoramento nas instituições de ensino da rede municipal de Betim, no âmbito do Projeto Escola Protegida. O texto está em tramitação e não detalha o alcance do monitoramento."
+}
