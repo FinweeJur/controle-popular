@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "pessoas idosas do Município de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "cria o Conselho Municipal dos Direitos do Idoso do Município de Diamantina/MG, dispõe sobre a Política de Assistência ao Idoso",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 3499/2009"
+  ],
+  "resumo_neutro": "A lei altera dispositivos da Lei nº 3499/2009 para criar o Conselho Municipal dos Direitos do Idoso de Diamantina e dispor sobre a Política Municipal de Assistência ao Idoso. Amplia o mecanismo institucional de proteção e controle social dos direitos das pessoas idosas."
+}

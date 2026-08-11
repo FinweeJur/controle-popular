@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208, IV",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças em idade de educação infantil do Bairro Grande, em Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "Cria o Centro Municipal de Educação Infantil Professora Belita Tameirão, localizado na Rua do Areião nº 333, Bairro Grande, Município de Diamantina",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o Centro Municipal de Educação Infantil Professora Belita Tameirão, no Bairro Grande de Diamantina. Amplia a oferta pública de vagas em creche e pré-escola no município."
+}

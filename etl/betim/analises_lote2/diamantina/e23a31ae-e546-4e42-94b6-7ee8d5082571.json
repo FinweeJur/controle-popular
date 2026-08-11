@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "comunidade cultural e participantes da Festa de Santo Antônio em Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "auxílio fianceiro á Associação Diamantinense de Empresas Ligadas ao Turismo - ADELTUR- para realização de Festa de Santo Antônio - Patrimônio Imaterial de Fé e de Cultura Popular em Diamantina",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Município de Diamantina a conceder auxílio financeiro à ADELTUR para a realização da Festa de Santo Antônio, reconhecida como patrimônio imaterial local. Amplia o financiamento de manifestação cultural popular."
+}

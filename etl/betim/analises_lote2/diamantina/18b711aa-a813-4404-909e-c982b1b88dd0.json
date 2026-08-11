@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 203",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "assistidos pela Comunidade de Obras da Assembleia de Deus em Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "promover repasse financeiro á Comunidade de obras da Assembleia de Deus, para os fins que especifica",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Município de Diamantina a promover repasse financeiro à Comunidade de Obras da Assembleia de Deus. A ementa não especifica a finalidade concreta do repasse, mas se trata de transferência de recursos a entidade assistencial local."
+}

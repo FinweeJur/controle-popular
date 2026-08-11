@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "participantes do Circuito Cultural dos Blocos e comunidade carnavalesca de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "repasse financeiro como parceiro no Projeto para a realização do Circuito Cultural dos Blocos para o Carnaval 2012 \"Um Festival de Cultura\"",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Município de Diamantina a promover repasse financeiro, como parceiro, para o Circuito Cultural dos Blocos do Carnaval 2012, via convênio com a Associação Beneficente Rato Seco. Amplia o financiamento público de manifestação cultural popular."
+}
