@@ -1,0 +1,105 @@
+{
+  "id_municipio": "3134004",
+  "municipio": "Itinga",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-lote1",
+  "camadas": {
+    "projeto_lei_com_sinal": 2,
+    "projeto_lei_sem_sinal": 8,
+    "norma_secundaria_com_sinal": 3,
+    "norma_secundaria_sem_sinal": 2
+  },
+  "objetos": [
+    {
+      "id": "2c4f9b5e-2f06-4170-af34-6d74fc4d8717",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 8/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ef27ab4c-ccde-486b-8b30-ab710f452758",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 66/2019",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "06fb62e8-ff15-447c-ba09-928eb9c08b28",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 7/2026",
+      "camada": "projeto_lei_sem_sinal"
+    },
+    {
+      "id": "9b209e89-4927-432a-8abd-00884fb69210",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 9/2025",
+      "camada": "projeto_lei_sem_sinal"
+    },
+    {
+      "id": "233f75ae-b78d-4960-8f87-4f4df6113851",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 3/2025",
+      "camada": "projeto_lei_sem_sinal"
+    },
+    {
+      "id": "0034532f-6b5b-4b9c-8379-b15feb4613c6",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 2/2025",
+      "camada": "projeto_lei_sem_sinal"
+    },
+    {
+      "id": "60c82010-4eca-4f29-9df2-ceef03d3bb6b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 6/2022",
+      "camada": "projeto_lei_sem_sinal"
+    },
+    {
+      "id": "de97d6c5-6a2b-41da-9264-de554463afc7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 4/2022",
+      "camada": "projeto_lei_sem_sinal"
+    },
+    {
+      "id": "90a0a229-160d-4691-bae9-e6dab2d21396",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 3/2022",
+      "camada": "projeto_lei_sem_sinal"
+    },
+    {
+      "id": "d6d99559-d766-47f1-8cbf-17c7d0107a01",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 35/2018",
+      "camada": "projeto_lei_sem_sinal"
+    },
+    {
+      "id": "c9fcad03-e03c-489c-9aaf-37d4b875f812",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 18/2020",
+      "camada": "norma_secundaria_com_sinal"
+    },
+    {
+      "id": "e0b36f8a-48ff-434c-b47d-915534da26a1",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 13/2020",
+      "camada": "norma_secundaria_com_sinal"
+    },
+    {
+      "id": "6a695149-9bc7-41f2-b99d-451dbd02501e",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 11/2020",
+      "camada": "norma_secundaria_com_sinal"
+    },
+    {
+      "id": "b8d764a5-0c29-4490-abb9-35032d756231",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 11/2026",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "5de49ae2-8ffb-4cc9-a858-74e420a7e527",
+      "tipo_objeto": "ato",
+      "identificacao": "Decreto Legislativo nº 2/2026",
+      "camada": "norma_secundaria_sem_sinal"
+    }
+  ]
+}
