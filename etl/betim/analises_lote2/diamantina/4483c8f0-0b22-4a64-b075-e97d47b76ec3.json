@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "ALTERA A LEI COMPLEMENTAR N°24, DE 24 DE SETEMBRO DE 1997, QUE INSTITUI O CONSELHO MUNICIPAL DE EDUCAÇÃO",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Complementar nº 24/1997",
+    "Lei Complementar nº 158/2020"
+  ],
+  "resumo_neutro": "A lei altera a Lei Complementar nº 24/1997, que institui o Conselho Municipal de Educação de Diamantina, já alterada pela Lei Complementar nº 158/2020, sem que a ementa especifique o teor da nova alteração."
+}

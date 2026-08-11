@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "ALTERA DISPOSITIVO DA LEI MUNICIPAL N°3.547, DE 28 DE MAIO DE 2010, QUE DISPÔE SOBRE A POLÍTICA MUNICIPAL DOS DIREITOS DA CRIANÇA E DO ADOLESCENTE",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 3.547/2010"
+  ],
+  "resumo_neutro": "A lei altera dispositivo da Lei Municipal nº 3.547/2010, que dispõe sobre a Política Municipal dos Direitos da Criança e do Adolescente de Diamantina, sem que a ementa especifique o teor da alteração."
+}

@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "moderado",
+      "trecho": "DISPÕE SOBRE O CÓDIGO DE OBRAS E EDIFICAÇÕES DO MUNICÍPIO DE DIAMANTINA",
+      "confianca": 0.35
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Código de Obras e Edificações do município de Diamantina, estabelecendo normas técnicas e de segurança para construções, sem indicar ampliação ou restrição de direito específico."
+}

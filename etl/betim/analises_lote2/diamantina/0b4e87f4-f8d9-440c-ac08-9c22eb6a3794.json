@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "agentes de combate às endemias e agentes comunitários de saúde do quadro de pessoal da Prefeitura Municipal de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "DISPÕE SOBRE ADEQUAÇÃO DO PISO SALARIAL DOS AGENTES DE COMBATE ÁS ENDEMIAS E AGENTES COMUNITÁRIOS DE SAÚDE DO QUADRO DE PESSOAL DA PREFEITURA MUNICIPAL DE DIAMANTINA",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei adequa o piso salarial dos agentes de combate às endemias e agentes comunitários de saúde do quadro de pessoal da Prefeitura de Diamantina, aumentando a remuneração mínima dessa categoria."
+}

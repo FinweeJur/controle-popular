@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "usuários da rede municipal de saúde de Diamantina que aguardam exames especializados e cirurgias eletivas"
+      ],
+      "grau": "moderado",
+      "trecho": "TORNA OBRIGATÓRIA A DIVULGAÇÃO DAS LISTAS DE USUARIOS QUE AGUARDAM EXAMES ESPECIALIZADOS E CIRUGIAS ELETIVAS EM ESTABELECIMENTO DA REDE MUNICIPAL DE SAÚDE",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei torna obrigatória a divulgação das listas de usuários que aguardam exames especializados e cirurgias eletivas na rede municipal de saúde de Diamantina, criando mecanismo de transparência e controle social sobre as filas de espera."
+}

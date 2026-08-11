@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "ESTABELECE NORMAS PARA O FUNCIONAMENTO DAS FEIRAS E EVENTOS NO CENTRO CULTURAL DAVID RIBEIRO - MERCADO VELHO",
+      "confianca": 0.3
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estabelece normas de funcionamento para feiras e eventos realizados no Centro Cultural David Ribeiro (Mercado Velho) de Diamantina, sem indicar ampliação ou restrição de direito específico."
+}

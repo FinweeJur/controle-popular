@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "ALTERA DISPOSITIVO DA LEI MUNICIPAL N°1769, DE 02 DE SETEMBRO DE 1990, QUE DISPÕE SOBRE A VINCULAÇÃO, CONSTITUIÇÃO E COMPETÊNCIA DO CONSELHO MUNICIPAL DE DEFESA DO MEIO AMBIENTE- CODEMA",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 1.769/1990"
+  ],
+  "resumo_neutro": "A lei altera dispositivo da Lei Municipal nº 1.769/1990, que dispõe sobre a vinculação, constituição e competência do Conselho Municipal de Defesa do Meio Ambiente (CODEMA) de Diamantina, sem que a ementa especifique o teor da alteração."
+}

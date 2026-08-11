@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 182",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "estrutural",
+      "trecho": "DISPÕE SOBRE A REVISÃO DO PLANO DIRETOR DO MUNICIPIO DE DIAMANTINA",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei promove a revisão do Plano Diretor do município de Diamantina, instrumento básico da política de desenvolvimento urbano, sem que a ementa detalhe o conteúdo específico das mudanças introduzidas."
+}

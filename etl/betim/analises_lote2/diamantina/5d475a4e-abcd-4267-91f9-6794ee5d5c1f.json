@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas com deficiência do município de Diamantina"
+      ],
+      "grau": "estrutural",
+      "trecho": "INSTITUI O CONSELHO MUNICIPAL DOS DIREITOS DA PESSOA COM DEFICIÊNCIA- COMPED DO MUNICIPIO DE DIAMANTINA, ESTABELECE A POLÍTICA MUNICIPAL DA PESSOA COM DEFICIÊNCIA E CRIA O FUNDO MUNICIPAL DA PESSOA COM DEFICIÊNCIA",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Conselho Municipal dos Direitos da Pessoa com Deficiência (COMPED), estabelece a Política Municipal da Pessoa com Deficiência e cria o Fundo Municipal da Pessoa com Deficiência em Diamantina, estruturando controle social e financiamento próprios para essa política."
+}

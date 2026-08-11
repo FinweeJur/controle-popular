@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "microempreendedores individuais (MEI) do município de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "DISPÕE SOBRE O CREDENCIAMENTO DE MICROEMPREENDEDORES INDIVIDUAIS- MEI PARA PRESTAÇÃO DE SERVIÇOS DIVERSOS AO PODER EXECUTIVO DO MUNICIPIO DE DIAMANTINA",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre o credenciamento de microempreendedores individuais (MEI) para prestação de serviços diversos ao Poder Executivo de Diamantina, ampliando o acesso desses trabalhadores a oportunidades de contratação com o poder público municipal."
+}
