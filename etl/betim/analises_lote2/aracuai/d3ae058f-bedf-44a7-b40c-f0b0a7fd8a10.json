@@ -1,0 +1,9 @@
+{
+  "direitos_afetados": [],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 16/1997 (Município de Araçuaí)"
+  ],
+  "resumo_neutro": "A lei dispõe sobre feriados municipais, alterando o artigo 1º da Lei nº 16/97. É norma sobre calendário oficial de datas comemorativas, hipótese em que a regra do prompt manda devolver direitos_afetados vazio."
+}
