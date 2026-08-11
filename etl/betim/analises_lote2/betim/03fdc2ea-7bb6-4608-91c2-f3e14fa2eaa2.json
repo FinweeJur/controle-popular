@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "mulheres com endometriose"
+      ],
+      "grau": "moderado",
+      "trecho": "Estabelece a Política Municipal de Atenção à Mulher com Endometriose",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto estabelece a Política Municipal de Atenção à Mulher com Endometriose, em Betim. Foi arquivado por prejudicialidade."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "famílias do Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Programa \"Espaço da Família\" de incentivo ao lazer, a cultura e ao entretenimento",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa \"Espaço da Família\" de incentivo ao lazer, à cultura e ao entretenimento em Betim. Foi vetado."
+}

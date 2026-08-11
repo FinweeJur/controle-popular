@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "acesso_justica",
+      "dispositivo": "CF/88, art. 5º, LXXIV",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "idosos"
+      ],
+      "grau": "moderado",
+      "trecho": "Programa Municipal de Plantão de Orientação Jurídica Gratuita para Idosos no Município de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui programa municipal de plantão de orientação jurídica gratuita para idosos em Betim. Foi vetado."
+}

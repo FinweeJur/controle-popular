@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com deficiência auditiva"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de disponibilização de tecnologia assistiva nos hospitais públicos e privados para o atendimento a pessoas com deficiência auditiva",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto obriga a disponibilização de tecnologia assistiva nos hospitais públicos e privados de Betim para o atendimento a pessoas com deficiência auditiva. Foi arquivado por prejudicialidade."
+}

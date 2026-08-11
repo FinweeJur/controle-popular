@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças e adolescentes com deficiência"
+      ],
+      "grau": "moderado",
+      "trecho": "Programa de Atendimento Especializado às Crianças e Adolescentes com Deficiência nas Escolas Municipais de Betim",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui programa de atendimento especializado às crianças e adolescentes com deficiência nas escolas municipais de Betim. Foi vetado."
+}

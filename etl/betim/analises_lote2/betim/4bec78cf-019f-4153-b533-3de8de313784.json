@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "usuários das Unidades Básicas de Saúde"
+      ],
+      "grau": "marginal",
+      "trecho": "implantação de Fontes Alternativas de Geração e Fornecimento de Energia Elétrica nas Unidades Básicas de Saúde no Município de Betim",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a implantação de fontes alternativas de energia elétrica nas Unidades Básicas de Saúde do Município de Betim, para reduzir interrupções no atendimento. Foi vetado."
+}

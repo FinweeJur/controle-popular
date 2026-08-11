@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "trabalhadores com 60 anos ou mais"
+      ],
+      "grau": "moderado",
+      "trecho": "Programa Municipal de Incentivo à Contratação de Trabalhadores com 60 anos ou mais — EMPREGA 60+ BETIM",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Incentivo à Contratação de Trabalhadores com 60 anos ou mais (EMPREGA 60+ BETIM). Foi sancionado."
+}

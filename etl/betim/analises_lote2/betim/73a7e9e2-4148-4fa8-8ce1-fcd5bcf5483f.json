@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "liberdade_expressao",
+      "dispositivo": "CF/88, art. 220",
+      "direcao": "restringe",
+      "mecanismo": null,
+      "titulares": [
+        "estudantes da rede pública de ensino"
+      ],
+      "grau": "marginal",
+      "trecho": "proibição da exibição, reprodução e execução de música funk nas escolas da rede pública de ensino do Município de Betim",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto proíbe a exibição, reprodução e execução de música funk nas escolas da rede pública de ensino de Betim. Está em fase de vistas."
+}

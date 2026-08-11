@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com deficiência"
+      ],
+      "grau": "marginal",
+      "trecho": "academia popular ao ar livre com aparelhos adaptados às pessoas com deficiência",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui academia popular ao ar livre com aparelhos adaptados a pessoas com deficiência, em Betim. Foi vetado."
+}

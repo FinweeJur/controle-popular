@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "igualdade_nao_discriminacao",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estudantes da educação básica"
+      ],
+      "grau": "marginal",
+      "trecho": "distribuição da cartilha \"Sou diferente, e daí? Tem lugar aí pra mim?\" na educação básica no âmbito do Município de Betim",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a distribuição da cartilha \"Sou diferente, e daí? Tem lugar aí pra mim?\" na educação básica de Betim. Foi vetado."
+}

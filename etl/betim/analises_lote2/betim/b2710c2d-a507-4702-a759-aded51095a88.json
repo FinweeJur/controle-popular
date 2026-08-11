@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com Transtorno do Espectro Autista"
+      ],
+      "grau": "moderado",
+      "trecho": "política municipal de incentivo à contratação de Pessoas com Espectro Autista (TEA) como empregados ou aprendizes",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui política municipal de incentivo à contratação de pessoas com Transtorno do Espectro Autista como empregados ou aprendizes, em Betim. Foi arquivado por prejudicialidade."
+}

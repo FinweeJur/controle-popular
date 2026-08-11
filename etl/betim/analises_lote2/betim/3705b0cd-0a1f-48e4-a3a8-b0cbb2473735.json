@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "pessoa idosa"
+      ],
+      "grau": "marginal",
+      "trecho": "obrigatoriedade de fixação da frase \"DESRESPEITAR, NEGLIGENCIAR OU PREJUDICAR PESSOA IDOSA É CRIME\" nos ônibus, repartições públicas municipais, postos de saúde, hospitais e agências bancárias do Município de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto obriga a fixação, em ônibus, repartições públicas, postos de saúde, hospitais e agências bancárias de Betim, de aviso informando que desrespeitar, negligenciar ou prejudicar pessoa idosa é crime. Está em tramitação."
+}

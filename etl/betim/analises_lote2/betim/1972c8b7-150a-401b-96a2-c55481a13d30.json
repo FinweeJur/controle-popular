@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças em idade escolar"
+      ],
+      "grau": "moderado",
+      "trecho": "criação do Programa Municipal \"Saúde Visual no Futuro\" para crianças em idade escolar",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria o Programa Municipal \"Saúde Visual no Futuro\" voltado a crianças em idade escolar de Betim. Foi vetado."
+}

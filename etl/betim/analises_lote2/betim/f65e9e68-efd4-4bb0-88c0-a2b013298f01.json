@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "Lei 8.078/1990 (CDC)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "famílias de estudantes da educação básica"
+      ],
+      "grau": "marginal",
+      "trecho": "proíbe práticas abusivas relacionadas ao fornecimento desses materiais",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre o reaproveitamento de materiais didáticos em escolas públicas e privadas de Betim e proíbe práticas abusivas relacionadas ao fornecimento desses materiais. Foi retirado pelo autor."
+}

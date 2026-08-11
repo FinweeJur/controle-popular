@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população do Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "Cria, no âmbito do Município de Betim, o Programa Corredor Esportivo",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria o Programa Corredor Esportivo no Município de Betim. Foi sancionado."
+}

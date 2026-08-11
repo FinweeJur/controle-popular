@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do entorno da Barragem Vázea das Flores"
+      ],
+      "grau": "moderado",
+      "trecho": "medidas de preservação e proteção da Barragem Vázea das Flores",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre medidas de preservação e proteção da Barragem Vázea das Flores, em Betim. Foi arquivado por prejudicialidade."
+}

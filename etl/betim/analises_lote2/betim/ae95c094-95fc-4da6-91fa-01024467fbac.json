@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208, IV",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças de famílias com jornada de trabalho noturna"
+      ],
+      "grau": "moderado",
+      "trecho": "Autoriza o Poder Executivo a implantar no Município de Betim, a creche noturna",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo a implantar creche noturna no Município de Betim. Foi retirado pelo autor."
+}

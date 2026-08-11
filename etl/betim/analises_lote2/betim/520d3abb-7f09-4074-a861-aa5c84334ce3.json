@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "Decreto-Lei 5.452/1943 (CLT)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "maqueiros"
+      ],
+      "grau": "marginal",
+      "trecho": "criação, regulamentação e reconhecimento da função de maqueiro no âmbito do município de Betim",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria, regulamenta e reconhece a função de maqueiro no Município de Betim. Foi arquivado por prejudicialidade."
+}

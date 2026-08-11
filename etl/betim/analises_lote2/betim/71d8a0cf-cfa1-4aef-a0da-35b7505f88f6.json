@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "estudantes com deficiência da rede municipal de ensino"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Índice de Educação Inclusiva (IMEI) no Sistema Municipal de Ensino",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Índice de Educação Inclusiva (IMEI) no Sistema Municipal de Ensino de Betim. Foi vetado."
+}
