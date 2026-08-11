@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoa portadora de neoplasia maligna (câncer)"
+      ],
+      "grau": "marginal",
+      "trecho": "a ampla publicidade dos direitos da pessoa portadora de neoplasia maligna (câncer)",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a ampla publicidade dos direitos da pessoa portadora de neoplasia maligna (câncer). A proposição foi arquivada; a situação de tramitação não altera o que o texto propunha."
+}

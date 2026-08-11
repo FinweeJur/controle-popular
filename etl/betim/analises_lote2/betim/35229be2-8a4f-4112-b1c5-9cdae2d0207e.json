@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "estudantes e profissionais da rede pública municipal de ensino de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "a instalação de sistemas de climatização nas salas de aula das instituições da rede pública municipal de ensino de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo a adotar medidas para a instalação de sistemas de climatização nas salas de aula das instituições da rede pública municipal de ensino de Betim. A proposição está em trâmite."
+}

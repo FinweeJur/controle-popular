@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º, XXII",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "trabalhadores/servidores públicos do Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "diretrizes para a promoção da saúde mental e a prevenção de riscos psicossociais no ambiente de trabalho no âmbito do Município de Betim",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui diretrizes para a promoção da saúde mental e a prevenção de riscos psicossociais no ambiente de trabalho no âmbito do Município de Betim. A proposição foi arquivada; a situação de tramitação não altera o que o texto propunha."
+}

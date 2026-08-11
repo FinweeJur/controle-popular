@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "Lei 9.394/1996 (LDB)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estudantes da rede municipal de ensino de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "a instituição da Política Municipal de Alfabetização em Línguas Estrangeiras no Município de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a instituição da Política Municipal de Alfabetização em Línguas Estrangeiras no Município de Betim. A proposição foi sancionada com veto parcial."
+}

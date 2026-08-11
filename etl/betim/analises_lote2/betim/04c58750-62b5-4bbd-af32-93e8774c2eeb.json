@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "moradores do bairro Jardim Teresópolis e população do Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "a construção de uma arena multiuso para eventos no bairro Jardim Teresópolis, no município de Betim",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a construção de uma arena multiuso para eventos no bairro Jardim Teresópolis, no Município de Betim. A proposição foi arquivada; a situação de tramitação não altera o que o texto propunha."
+}

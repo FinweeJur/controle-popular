@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "estudantes e profissionais de instituições de ensino público municipal de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "a instalação de ar-condicionado de refrigeração e/ou aquecimento nas salas de aula de escolas de instituições de ensino público municipal",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a instalação de ar-condicionado de refrigeração e/ou aquecimento nas salas de aula de instituições de ensino público municipal de Betim. A proposição foi arquivada; a situação de tramitação não altera o que o texto propunha."
+}

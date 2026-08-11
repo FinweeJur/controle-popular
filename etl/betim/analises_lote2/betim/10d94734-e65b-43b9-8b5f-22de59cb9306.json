@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população do Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "orientação e incentivo à prática de atividade física em espaços públicos do município de Betim",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o programa \"Betim Ativa\" para orientação e incentivo à prática de atividade física em espaços públicos do Município de Betim. A proposição está em trâmite."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "Lei 8.742/1993 (LOAS)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "famílias inscritas no CadÚnico do Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "as ações necessárias para que todas as famílias inscritas no CadÚnico do município tenham acesso à tarifa social sobre os serviços públicos de abastecimento de água e esgoto",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre ações para que todas as famílias inscritas no CadÚnico do Município de Betim tenham acesso à tarifa social sobre os serviços de água e esgoto. A proposição está em trâmite."
+}

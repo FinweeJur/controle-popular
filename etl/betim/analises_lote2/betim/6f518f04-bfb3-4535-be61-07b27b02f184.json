@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população do Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Cria o programa Cine Betim, com o objetivo de promover o acesso ao cinema e à produção audiovisual na cidade de Betim.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria o programa Cine Betim, com o objetivo de promover o acesso ao cinema e à produção audiovisual na cidade de Betim. A proposição foi arquivada; a situação de tramitação não altera o que o texto propunha."
+}

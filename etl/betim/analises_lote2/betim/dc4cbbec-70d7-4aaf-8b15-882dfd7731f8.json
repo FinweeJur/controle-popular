@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "crianças e adolescentes atendidos por agentes públicos municipais"
+      ],
+      "grau": "moderado",
+      "trecho": "a realização de exame toxicológico na avaliação de aptidão de agentes públicos municipais que atuem diretamente com crianças e adolescentes",
+      "confianca": 0.6
+    },
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "restringe",
+      "mecanismo": "cria_requisito_acesso",
+      "titulares": [
+        "agentes públicos municipais que atuam diretamente com crianças e adolescentes"
+      ],
+      "grau": "marginal",
+      "trecho": "a realização de exame toxicológico na avaliação de aptidão de agentes públicos municipais que atuem diretamente com crianças e adolescentes",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a realização de exame toxicológico na avaliação de aptidão de agentes públicos municipais que atuem diretamente com crianças e adolescentes. A proposição está em trâmite."
+}

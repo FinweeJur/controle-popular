@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "usuários do transporte público convencional, de baixa capacidade e transporte escolar do Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "obrigatoriedade de instalação de painel com indicador de velocidade em todos os veículos do sistema de transporte público convencional, sistema de transporte público de baixa capacidade e transporte escolar, no Município de Betim",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto obriga a instalação de painel com indicador de velocidade nos veículos dos sistemas de transporte público convencional, de baixa capacidade e escolar do Município de Betim. A proposição foi vetada."
+}

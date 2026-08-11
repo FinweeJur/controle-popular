@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "irmãos matriculados na rede municipal de educação de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "Prioriza a matrícula de irmãos na mesma unidade escolar da rede municipal de educação de Betim.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto prioriza a matrícula de irmãos na mesma unidade escolar da rede municipal de educação de Betim. A proposição foi sancionada."
+}
