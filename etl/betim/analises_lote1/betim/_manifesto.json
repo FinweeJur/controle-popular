@@ -1,0 +1,132 @@
+{
+  "id_municipio": "3106705",
+  "municipio": "Betim",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-lote1",
+  "camadas": {
+    "projeto_lei_com_sinal": 20
+  },
+  "objetos": [
+    {
+      "id": "0c17af0e-0e12-4628-bca4-e466aee2a2bd",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 660/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f6e9cd0d-2bf4-4fb6-adb9-2215536010c8",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 630/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5e193c46-3376-4b14-9300-87bb6ba6e30f",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 621/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "dbc05291-81c0-4b97-b353-1a3d162a5f5a",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 606/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "14646e53-393c-4e2d-9948-2f85b17a6776",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 602/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a38e5c28-8182-47b1-8da0-14d8ac96f023",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 598/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6cb351d6-25bc-42f1-b428-daaf9dbcc16a",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 580/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4b13a99f-cd76-468e-aa09-777339d373ee",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 520/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "50f26352-e232-4244-bbd3-c687ab512f9c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 494/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "266511b4-452f-4aaf-8845-301be5677693",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 479/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "113ca245-03b7-432e-a70d-f3a37af0d5f6",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 473/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "31058b34-6b8f-48bf-b2aa-e9feac62cad6",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 445/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7af4c106-b25c-49aa-be54-8e0391505fe4",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 438/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a08ded9c-48ba-4390-92ee-9ac277c12106",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 422/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "e4d9b4d8-7283-4b59-bb01-f72b3ac71fb7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 417/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "c99bf515-3a92-402a-bed0-753f7a7cb4d2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 396/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "8ccf45f0-ddd3-47c2-9190-ea4734837dd9",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 399/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ab789e14-0a81-46f2-8fc6-258a8acebc5d",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 397/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "015d50e1-236e-4f72-b15d-3b49e5e83f0e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 373/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "793bbbab-2d31-4d81-85bc-0b31af2aac34",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 363/2025",
+      "camada": "projeto_lei_com_sinal"
+    }
+  ]
+}

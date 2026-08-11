@@ -1,0 +1,132 @@
+{
+  "id_municipio": "3103405",
+  "municipio": "Araçuaí",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-lote1",
+  "camadas": {
+    "lei_vigente_com_sinal": 20
+  },
+  "objetos": [
+    {
+      "id": "7947f28a-ea96-46a7-9d45-50414f1a9453",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 789/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "85b38bfc-0e03-44aa-9128-bbdd55760b5c",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 788/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "03d96b3f-a595-44cc-be43-bb8c10c30781",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 783/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "0478b957-5f2b-4c79-a782-d149de99b2ce",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 781/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "3e6878af-4b8f-494e-a6af-c34d112ed9fb",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 780/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "1ef83653-c4df-4bbf-9649-926e2608fd69",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 779/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "88a040b4-b655-4763-b097-1d9fd0e27b5b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 775/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "3604a9a1-f076-4358-96fe-013b5b01182b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 773/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "44eeac1e-eaa6-41d5-a8cb-f457b2e9a0ac",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 771/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "e2d6eab4-30cb-46c0-b1ef-47cd75a0d001",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 769/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "1d029723-dbde-4522-b2d6-378eca5d4970",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 766/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "a719c5ea-bbed-4bfc-905c-74fb5284dfb1",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 762/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "6bc7c659-1e97-4002-93d9-a6d0048cde06",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 761/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "b82aa5b5-d1d9-436a-880b-740cca45e1ec",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 759/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "4713eac5-f537-4ba7-b926-9147b261a96a",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 756/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "557aa31a-f586-418f-883d-b083edba0a51",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 755/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "125c40f2-c1ed-41ae-bb37-a23964689f75",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 752/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "49cef73b-b851-4e07-a784-2d0c9747538b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 748/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "3f482062-c3ac-4f20-a70e-67293fa280e1",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 747/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "3a65d4d9-3e27-4cc4-b7de-bc0b1fe5574b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 743/2025",
+      "camada": "lei_vigente_com_sinal"
+    }
+  ]
+}
