@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estudantes da Rede Municipal de Ensino de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Programa Municipal de Atenção à Saúde no Ambiente Escolar – Saúde na Escola",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Atenção à Saúde no Ambiente Escolar (Saúde na Escola), voltado à Rede Municipal de Ensino de São Paulo. Cria estrutura de atenção à saúde a ser oferecida dentro do ambiente escolar aos estudantes da rede."
+}

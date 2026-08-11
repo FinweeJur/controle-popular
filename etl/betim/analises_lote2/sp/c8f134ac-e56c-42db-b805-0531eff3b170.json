@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "igualdade_nao_discriminacao",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "agentes dos órgãos de segurança pública do Município de São Paulo e população sujeita à sua atuação"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de capacitação continuada em combate à intolerância religiosa, direitos humanos e cultura afro-brasileira para os agentes dos órgãos de segurança pública que atuam no Município de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a obrigatoriedade de capacitação continuada em combate à intolerância religiosa, direitos humanos e cultura afro-brasileira para agentes de segurança pública que atuam no município. Cria exigência formativa institucional voltada a reduzir discriminação na atuação policial."
+}

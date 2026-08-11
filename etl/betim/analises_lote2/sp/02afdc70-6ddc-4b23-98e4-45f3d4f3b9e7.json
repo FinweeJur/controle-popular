@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "frequentadores dos Clubes da Comunidade (CDCs) no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Política Municipal de Atendimento Odontológico Comunitário nos Clubes da Comunidade – CDCs, mediante a implantação de Núcleos Comunitários de Saúde Bucal",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política Municipal de Atendimento Odontológico Comunitário nos Clubes da Comunidade (CDCs), com implantação de Núcleos Comunitários de Saúde Bucal. Cria estrutura municipal de saúde bucal comunitária vinculada a equipamentos já existentes."
+}

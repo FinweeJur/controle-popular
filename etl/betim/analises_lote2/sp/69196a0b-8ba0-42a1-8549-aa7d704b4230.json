@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "Lei 12.651/2012 (Código Florestal)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "normas gerais para os Termos de Compromisso Ambiental – TCA relativos à arborização urbana e viária, estabelecendo critérios de hierarquia de mitigação, equivalência ecológica, ganho ambiental líquido, monitoramento, transparência e responsabilidade continuada",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui normas gerais para os Termos de Compromisso Ambiental (TCA) relativos à arborização urbana e viária, com critérios de hierarquia de mitigação, equivalência ecológica, ganho ambiental líquido, monitoramento, transparência e responsabilidade continuada. Cria regramento técnico e mecanismo de controle sobre compensação ambiental por supressão de árvores."
+}

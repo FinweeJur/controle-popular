@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças com deficiência, Transtorno do Espectro Autista (TEA), transtornos do neurodesenvolvimento e outras condições que demandem recursos de acessibilidade"
+      ],
+      "grau": "moderado",
+      "trecho": "implantação e a adequação progressiva de espaços de brincar inclusivos e sensoriais em parques, praças e demais áreas públicas municipais",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a implantação e adequação progressiva de espaços de brincar inclusivos e sensoriais em parques, praças e áreas públicas municipais, visando acessibilidade e inclusão de crianças com deficiência, TEA e outras condições que demandem recursos de acessibilidade. É medida de infraestrutura urbana voltada à inclusão."
+}

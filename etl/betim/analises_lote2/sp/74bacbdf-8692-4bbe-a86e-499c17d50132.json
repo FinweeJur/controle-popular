@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "liberdade_religiosa",
+      "dispositivo": "CF/88, art. 5º, VI",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "praticantes de religiões de matriz africana no Município de São Paulo"
+      ],
+      "grau": "estrutural",
+      "trecho": "direito ao exercício de práticas religiosas de matrizes africanas em cemitérios públicos e particulares no Município de São Paulo, incluindo os ritos fúnebres, as oferendas à ancestralidade, a implantação e o funcionamento de espaços multiconfessionais",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre o direito ao exercício de práticas religiosas de matrizes africanas em cemitérios públicos e particulares, incluindo ritos fúnebres, oferendas, espaços multiconfessionais, cadastro, conservação e enfrentamento à intolerância e ao racismo religioso. Regulamenta de forma abrangente o exercício desse direito em equipamentos municipais e privados."
+}

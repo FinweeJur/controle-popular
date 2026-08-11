@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas idosas no Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "incentivar a concessão de bolsas de estudo e a inclusão de pessoas idosas em instituições privadas de ensino superior estabelecidas no Município de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal Universidade 60+ SP, destinado a incentivar bolsas de estudo e a inclusão de pessoas idosas em instituições privadas de ensino superior, além de criar o Selo Universidade Amiga da Pessoa Idosa. É medida de incentivo, sem obrigação direta de concessão de vaga ou bolsa."
+}

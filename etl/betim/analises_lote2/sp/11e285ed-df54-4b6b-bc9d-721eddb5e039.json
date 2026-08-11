@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "vegetação arbórea existente e futura no Município de São Paulo"
+      ],
+      "grau": "estrutural",
+      "trecho": "Reconhece a vegetação arbórea existente e que vier a existir no Município de São Paulo como sujeito de direitos, estabelece medidas para sua proteção",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto reconhece a vegetação arbórea do município como sujeito de direitos e estabelece medidas de proteção correspondentes. É mudança de patamar jurídico, ao atribuir personalidade/titularidade de direitos a um elemento da natureza, com efeitos protetivos ainda a serem regulamentados."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população do Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Programa Municipal de Desconcretagem e Requalificação Ambiental dos Canteiros Arbóreos, como instrumento da política municipal de adaptação às mudanças climáticas, proteção da arborização urbana e ampliação da infraestrutura verde",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Desconcretagem e Requalificação Ambiental dos Canteiros Arbóreos, como instrumento de adaptação às mudanças climáticas e ampliação da infraestrutura verde urbana. Cria linha de ação municipal voltada à proteção da arborização em vias públicas."
+}

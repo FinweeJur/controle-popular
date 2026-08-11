@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "Lei 8.069/1990 (ECA)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "jovens egressos dos serviços de acolhimento institucional no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "diretrizes para a Política Municipal de Apoio à Transição para a Vida Adulta de Jovens Egressos dos Serviços de Acolhimento Institucional",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto estabelece diretrizes para a Política Municipal de Apoio à Transição para a Vida Adulta de Jovens Egressos dos Serviços de Acolhimento Institucional, dispondo sobre seus instrumentos de implementação. Cria política municipal voltada a jovens que deixam o acolhimento institucional ao atingir a maioridade."
+}
