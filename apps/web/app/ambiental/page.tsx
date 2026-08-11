@@ -3,6 +3,7 @@ import { ZONAS } from "@/lib/zonas";
 import { formatNumberBR } from "@/lib/betim/format";
 import { contarReunioesCopam } from "@/lib/db/queries/copam";
 import { contarBarragensMg } from "@/lib/db/queries/barragens";
+import { contarLicenciamento } from "@/lib/db/queries/ambiental-licenciamento";
 
 /**
  * Home da zona /ambiental.
@@ -22,19 +23,21 @@ import { contarBarragensMg } from "@/lib/db/queries/barragens";
  * vem do banco, com o verbo no passado ("coletadas"), e o bloco é um link
  * de verdade para `/ambiental/copam` — não mais só uma promessa de fase.
  *
- * ═══ F5 (BARRAGENS) MESMA CORREÇÃO, 2026-08-11 ═══
+ * ═══ F4 (LICENCIAMENTO) E F5 (BARRAGENS), MESMA CORREÇÃO, 2026-08-11 ═══
  *
- * O bloco dizia "A fonte publica 249 barragens em Minas" com `href: null` —
- * desatualizado (a coleta rodou: FEAM 249 + SNISB ~2.212, não só a FEAM) E
- * incompleto (sem link). Corrigido pro mesmo padrão do COPAM acima.
+ * Os dois blocos diziam número fixo com `href: null` — desatualizado
+ * (Licenciamento: "19.162" era o total de 2026-08-07, a coleta rodou e achou
+ * mais; Barragens: "249" era só a FEAM, a coleta rodou FEAM + SNISB) E
+ * incompletos (sem link). Corrigidos pro mesmo padrão do COPAM acima.
  */
 
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
 
 export default async function AmbientalHome() {
-  const [{ reunioes, itens }, barragens] = await Promise.all([
+  const [{ reunioes, itens }, barragens, { total: totalLicencas }] = await Promise.all([
     contarReunioesCopam(),
     contarBarragensMg(),
+    contarLicenciamento(),
   ]);
   const temBarragens = barragens.totalFeam > 0 || barragens.totalSnisb > 0;
 
@@ -54,13 +57,16 @@ export default async function AmbientalHome() {
     },
     {
       titulo: "Licenciamento",
-      linha: "A fonte publica 19.162 licenças emitidas",
+      linha:
+        totalLicencas > 0
+          ? `${formatNumberBR(totalLicencas)} licenças deferidas coletadas`
+          : "A fonte publica 19.713 licenças deferidas — coleta ainda não rodou",
       texto:
-        "Filtro por município, empresa, setor do empreendimento, modalidade, classe, potencial poluidor e período. O setor vem da própria Deliberação Normativa Copam 217/2017, não de uma classificação inventada aqui.",
+        "Filtro por município, setor do empreendimento, modalidade e classe de risco. O setor vem da própria Deliberação Normativa Copam 217/2017, não de uma classificação inventada aqui.",
       fase: "F4",
-      href: null,
-      pronta: false,
-      linkTexto: "",
+      href: "/licenciamento",
+      pronta: totalLicencas > 0,
+      linkTexto: "Ver as licenças →",
     },
     {
       titulo: "Barragens",
@@ -102,9 +108,9 @@ export default async function AmbientalHome() {
           className="max-w-2xl rounded-lg border px-4 py-3 text-[.95em]"
           style={{ borderColor: ZONA.cor }}
         >
-          <strong>Seção em construção, por fase.</strong> A pauta do COPAM (F3) e as barragens de
-          Minas (F5) já têm tela real, abaixo. Licenciamento e legislação seguem com fonte
-          verificada e documentada, tela ainda não.
+          <strong>Seção em construção, por fase.</strong> A pauta do COPAM (F3), o licenciamento
+          ambiental (F4) e as barragens de Minas (F5) já têm tela real, abaixo. Legislação segue
+          com fonte verificada e documentada, tela ainda não.
         </p>
       </header>
 

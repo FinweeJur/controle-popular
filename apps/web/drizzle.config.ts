@@ -15,7 +15,13 @@ export default defineConfig({
   dialect: "postgresql",
   out: "./lib/db",
   schema: "./lib/db/schema.ts",
-  schemaFilter: ["public", "congresso", "judiciario", "ambiental"],
+  // `terras` faltava aqui (medido ao vivo em 2026-08-11 rodando `introspect`
+  // para esta migration: `terras.vazio_municipio` existe no banco, mas sem
+  // o schema na lista o introspect a apagou de `schema.ts` em silêncio,
+  // quebrando `lib/db/queries/terras.ts` no `tsc --noEmit`). Nunca esteve
+  // aqui desde que a tabela foi criada (99c7cc7) — quem gerou o `schema.ts`
+  // committado na época deve ter rodado com um filtro local não commitado.
+  schemaFilter: ["public", "congresso", "judiciario", "ambiental", "terras"],
   introspect: { casing: "preserve" },
   dbCredentials: { url: process.env.DATABASE_URL! },
 });

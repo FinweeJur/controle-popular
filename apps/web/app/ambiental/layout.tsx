@@ -8,14 +8,14 @@ import CvdToggle from "@/app/components/CvdToggle";
  * Zona /ambiental. O `<html>`, as fontes e o ThemeProvider vêm do layout
  * raiz; aqui fica só o cabeçalho, a navegação e o rodapé do eixo.
  *
- * AINDA sem `<nav>` completo nem `BuscaUniversal`: /licencas e /legislacao
- * só existem a partir da F4/F6 — dois links 404 continuam pior que nenhum.
- * A busca universal precisa de `/ambiental/api/busca` e `/api/chat`, que
- * dependem de dado no banco. Os dois entram na fase que os torna
- * verdadeiros.
+ * AINDA sem `<nav>` completo nem `BuscaUniversal`: /legislacao só existe a
+ * partir da F6 — um link 404 continua pior que nenhum. A busca universal
+ * precisa de `/ambiental/api/busca` e `/api/chat`, que dependem de dado no
+ * banco. Os dois entram na fase que os torna verdadeiros.
  *
- * O que MUDOU: a F3 (COPAM) e a F5 (Barragens) têm tela real agora
- * (`/ambiental/copam`, `/ambiental/barragens`), e o `<Link>` da zona
+ * O que MUDOU: a F3 (COPAM), a F4 (licenciamento) e a F5 (Barragens) têm
+ * tela real agora (`/ambiental/copam`, `/ambiental/licenciamento`,
+ * `/ambiental/barragens`), e o `<Link>` da zona
  * (`lib/ambiental/link.tsx`) passou a ser usado pela primeira vez — ele
  * existia desde o scaffold só porque `scripts/zonas-basepath.mts` confere
  * o `BASE_PATH` de toda zona mesmo sem uso ainda.
@@ -52,6 +52,12 @@ export default function AmbientalLayout({
               className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-tertiary)]"
             >
               COPAM →
+            </Link>
+            <Link
+              href="/licenciamento"
+              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-tertiary)]"
+            >
+              Licenciamento →
             </Link>
             <Link
               href="/barragens"

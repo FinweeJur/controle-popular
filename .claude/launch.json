@@ -28,6 +28,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3903"],
       "port": 3903
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-ambiental-licenciamento) -- mesmo motivo da entrada acima: 3000 e 3901 podem estar ocupadas por outros worktrees em paralelo.",
+      "name": "cp-ambiental-licenciamento-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3904"],
+      "port": 3904
     }
   ]
 }

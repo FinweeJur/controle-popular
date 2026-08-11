@@ -1,4 +1,4 @@
-import { pgTable, pgSchema, index, foreignKey, unique, uuid, text, boolean, timestamp, jsonb, check, integer, vector, date, numeric, bigint, primaryKey, pgView, doublePrecision } from "drizzle-orm/pg-core"
+import { pgTable, pgSchema, index, foreignKey, unique, uuid, text, boolean, timestamp, jsonb, check, integer, vector, date, numeric, bigint, primaryKey, pgView, doublePrecision, smallint, char } from "drizzle-orm/pg-core"
 import { sql } from "drizzle-orm"
 
 export const congresso = pgSchema("congresso");
@@ -2754,4 +2754,53 @@ export const proposicao_autoriaInCongresso = congresso.table("proposicao_autoria
 		name: "proposicao_autoria_parlamentar_id_fkey",
 	}).onDelete("set null"),
 	primaryKey({ columns: [table.proposicao_id, table.nome], name: "proposicao_autoria_pkey"}),
+]);
+/**
+ * Licenciamento ambiental de MG (WFS IDE-Sisema, camada
+ * `ide_2101_mg_empreendimentos_licenciados_pto`), via
+ * `etl/betim/etl/apis/ambiental_licenciamento.py`, migration 0064.
+ * `cnpj_raiz` (8 dígitos) e `eh_pessoa_fisica` — nunca CPF em claro nem
+ * coordenada exata de pessoa física, ver a docstring do coletor.
+ */
+export const ambiental_licenciamento = pgTable("ambiental_licenciamento", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_fonte: bigint({ mode: "number" }).notNull(),
+	id_municipio: text().notNull(),
+	municipio_fonte: text().notNull(),
+	setor_letra: text().notNull(),
+	setor_rotulo: text().notNull(),
+	subsetor: text().notNull(),
+	atividade_codigo: text().notNull(),
+	atividade_descricao: text(),
+	modalidade: text().notNull(),
+	classe: smallint(),
+	fase_licenciamento: text().notNull(),
+	fase_licenciamento_fonte: text(),
+	situacao: text().notNull(),
+	tipo_solicitacao: text(),
+	numero_solicitacao: text(),
+	numero_processo: text(),
+	documento_classificacao: text().notNull(),
+	cnpj_raiz: char({ length: 8 }),
+	eh_pessoa_fisica: boolean().default(false).notNull(),
+	nome_empreendimento: text(),
+	latitude: numeric({ precision: 9, scale:  6 }),
+	longitude: numeric({ precision: 9, scale:  6 }),
+	data_emissao: date(),
+	data_validade: date(),
+	link: text(),
+	atualizado_em: date().default(sql`CURRENT_DATE`),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("ambiental_licenciamento_classe_idx").using("btree", table.classe.asc().nullsLast().op("int2_ops")),
+	index("ambiental_licenciamento_modalidade_idx").using("btree", table.modalidade.asc().nullsLast().op("text_ops")),
+	index("ambiental_licenciamento_municipio_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops")),
+	index("ambiental_licenciamento_setor_idx").using("btree", table.setor_letra.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [ref_municipios_mg.id_ibge],
+			name: "ambiental_licenciamento_id_municipio_fkey"
+		}).onDelete("cascade"),
+	unique("ambiental_licenciamento_id_fonte_key").on(table.id_fonte),
 ]);
