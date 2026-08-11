@@ -1,8 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   // O nome do Worker define a URL de teste: controlepopular.finweejur.workers.dev
-  // (o subdomínio `finweejur` é da conta). O domínio próprio só entra na Fase 7,
-  // via Custom Domain — isto aqui não toca em DNS.
+  // (o subdomínio `finweejur` é da conta).
   //
   // NÃO é Pages (`.pages.dev`): o Pages roda só em edge runtime, sem as APIs do
   // Node.js que Drizzle/Neon, Better Auth e a rota de ofício (`runtime =
@@ -10,6 +9,24 @@
   // descontinuado. Decisão já registrada no plano da migração.
   "name": "controlepopular",
   "main": ".open-next/worker.js",
+  // Fase 7 (domínio próprio): NS de controlepopular.com.br já aponta pra
+  // Cloudflare (conferido em 2026-08-11 via 8.8.8.8/1.1.1.1 — jose.ns/maya.ns),
+  // mas a zona não tinha NENHUM registro apontando pra este Worker. Rota com
+  // `custom_domain: true` é o caminho que o próprio Cloudflare recomenda pra
+  // domínio cuja zona já é deles: ele mesmo provisiona o certificado TLS no
+  // próximo deploy, sem precisar criar CNAME/A manualmente no painel.
+  "routes": [
+    { "pattern": "controlepopular.com.br", "custom_domain": true },
+    { "pattern": "www.controlepopular.com.br", "custom_domain": true }
+  ],
+  // `workers_dev: true` EXPLÍCITO: sem isto, adicionar `routes` desliga o
+  // endereço controlepopular.finweejur.workers.dev por padrão (comportamento
+  // do Wrangler 4, medido ao vivo em 2026-08-11 — o deploy anterior devolveu
+  // 404 nesse endereço). A landing page sementeiraprojetos.com.br linka pros
+  // 4 eixos exatamente por esse endereço (betim/congresso/judiciario/
+  // ambiental) — desligar quebraria 4 links públicos até alguém trocar lá.
+  // Mantém os dois endereços vivos até a Sementeira apontar pro domínio novo.
+  "workers_dev": true,
   // `nodejs_compat` é exigido pelo adapter (Drizzle/Neon usam APIs Node);
   // a data mínima documentada pelo OpenNext é 2024-09-23.
   "compatibility_date": "2026-07-29",
