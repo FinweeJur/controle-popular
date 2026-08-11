@@ -119,7 +119,13 @@ def _dispositivo_plausivel(dispositivo: str) -> bool:
     d = (dispositivo or "").strip().lower()
     if len(d) < 6 or not any(ch.isdigit() for ch in d):
         return False
-    marcas = ("art", "cf/88", "lei", "decreto", "adct", "súmula", "convenção", "cdc", "clt")
+    # "stf" cobre a única âncora de jurisprudência que a rubrica lista
+    # (direitos_lgbtqia: "STF, ADO 26 / MI 4.733") — sem essa marca, o
+    # próprio dispositivo que o rubrica.json manda citar era rejeitado
+    # pela checagem que devia aceitá-lo. Achado importando o lote de BH
+    # 2026-08-11: item usava a âncora oficial ao pé da letra e caía em
+    # "dispositivo não citável".
+    marcas = ("art", "cf/88", "lei", "decreto", "adct", "súmula", "convenção", "cdc", "clt", "stf")
     return any(m in d for m in marcas)
 
 
