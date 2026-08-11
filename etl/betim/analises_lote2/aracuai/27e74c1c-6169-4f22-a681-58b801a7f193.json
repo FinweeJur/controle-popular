@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "pacientes atendidos por médicos e dentistas no município de Araçuaí"
+      ],
+      "grau": "marginal",
+      "trecho": "DISPÕE SOBRE A OBRIGATORIEDADE DO RECEITUÁRIO MÉDICO E ODONTOLÓGICO, BEM COMO OS PEDIDOS DE EXAMES SEJAM DIGITADOS OU ESCRITOS DE FORMA LEGÍVEL POR MÉDICOS E DENTISTAS NO MUNICÍPIO DE ARAÇUAÍ",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei torna obrigatório que receituários médicos e odontológicos, bem como pedidos de exames, sejam digitados ou escritos de forma legível por médicos e dentistas no município de Araçuaí, reduzindo o risco de erro na leitura de prescrições."
+}
