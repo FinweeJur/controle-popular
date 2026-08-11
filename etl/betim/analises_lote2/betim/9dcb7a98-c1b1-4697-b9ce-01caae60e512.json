@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "nascituro e gestantes do município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "instituição da Campanha permanente de proteção ao Nascituro e às Gestantes no Município de Betim",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza a instituição de campanha permanente de proteção ao nascituro e às gestantes no município de Betim. A lei foi vetada; a ementa não detalha as ações concretas da campanha."
+}

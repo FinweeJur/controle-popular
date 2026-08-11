@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "professores da rede municipal de ensino de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "implantação do Programa Municipal de Saúde Vocal, objetivando a prevenção de disfonias em Professores da Rede Municipal de Ensino",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui programa municipal de saúde vocal para prevenir disfonias em professores da rede municipal de ensino de Betim. A situação de tramitação (prejudicado/arquivado) não altera o que o texto propunha."
+}

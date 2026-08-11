@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "Lei 9.394/1996 (LDB)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "alunos da rede municipal de ensino de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "empreendedorismo e educação financeira como temas a serem abordados nas escolas municipais",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto inclui empreendedorismo e educação financeira como temas a serem abordados nas escolas municipais de Betim. A lei foi vetada; o texto não especifica carga horária nem forma de implementação."
+}

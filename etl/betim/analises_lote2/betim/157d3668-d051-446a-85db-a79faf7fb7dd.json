@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "alimentacao",
+      "dispositivo": "Lei 11.346/2006 (LOSAN)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "alunos da rede municipal de ensino de Betim em período de férias escolares"
+      ],
+      "grau": "moderado",
+      "trecho": "implantação de fornecimento de cestas básicas aos alunos da rede de ensino municipal no período de férias escolares na cidade de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o fornecimento de cestas básicas aos alunos da rede municipal de ensino de Betim durante o período de férias escolares. A lei foi vetada."
+}

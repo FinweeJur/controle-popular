@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "usuários do transporte coletivo do município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "exigir a instalação de câmeras de monitoramento no transporte coletivo, terminais e pontos de parada do transporte público do Município",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo a exigir a instalação de câmeras de monitoramento no transporte coletivo, terminais e pontos de parada do transporte público de Betim. A lei foi vetada."
+}

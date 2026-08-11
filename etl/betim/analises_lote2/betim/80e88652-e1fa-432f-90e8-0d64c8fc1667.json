@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "jovens, egressos de programas sociais e aprendizes do município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "concessão de incentivos e isenções fiscais no âmbito do Município, condicionada à reserva de vagas de trabalho destinadas a jovens, egressos de programas sociais e aprendizes",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto condiciona a concessão de incentivos e isenções fiscais municipais à reserva de vagas de trabalho para jovens, egressos de programas sociais e aprendizes. O texto está em tramitação."
+}

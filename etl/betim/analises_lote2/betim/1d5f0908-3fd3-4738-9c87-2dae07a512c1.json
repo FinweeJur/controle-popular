@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "motoristas e ciclistas do município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui programas de educação e conscientização no trânsito, com foco na convivência harmoniosa entre motoristas e ciclistas, visando a redução de acidentes envolvendo bicicletas",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui programas de educação e conscientização no trânsito voltados à convivência entre motoristas e ciclistas, visando reduzir acidentes com bicicletas em Betim. A lei foi vetada."
+}

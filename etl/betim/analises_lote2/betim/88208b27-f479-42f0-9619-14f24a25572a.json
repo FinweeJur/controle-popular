@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "moradores dos bairros do município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Cria o programa Arte no Seu Bairro, visando a democratização da cultura e o fomento à arte em todos os bairros de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria o programa 'Arte no Seu Bairro', destinado a democratizar o acesso à cultura e fomentar a arte em todos os bairros de Betim. O projeto foi arquivado (prejudicado)."
+}

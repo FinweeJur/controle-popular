@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "alunos com Transtorno do Espectro Autista (TEA) das escolas públicas municipais de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "implantação de Programa de Inclusão Educacional para alunos com Transtorno do Espectro Autista (TEA) nas escolas públicas municipais de Betim, baseado na metodologia TEACCH e outras práticas pedagógicas inclusivas",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto implanta programa de inclusão educacional para alunos com TEA nas escolas públicas municipais de Betim, baseado na metodologia TEACCH e em outras práticas pedagógicas inclusivas. O projeto foi arquivado (prejudicado)."
+}
