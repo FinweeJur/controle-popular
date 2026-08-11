@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": ["usuários da Rede Municipal de Saúde que aguardam exames e cirurgias"],
+      "grau": "moderado",
+      "trecho": "Torna obrigatória a divulgação das listas de usuários que aguardam exames especializados e cirurgias eletivas em estabelecimentos da Rede Municipal de Saúde",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A proposição torna obrigatória a divulgação das listas de usuários que aguardam exames especializados e cirurgias eletivas em estabelecimentos da Rede Municipal de Saúde."
+}

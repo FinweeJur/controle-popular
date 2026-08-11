@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": ["mulheres em situação de violência no Município"],
+      "grau": "moderado",
+      "trecho": "Cria o Dossiê das Mulheres de Belo Horizonte, na forma que menciona, e dá outras providências",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o Dossiê das Mulheres de Belo Horizonte, instrumento de registro e acompanhamento de dados sobre a situação das mulheres no Município."
+}

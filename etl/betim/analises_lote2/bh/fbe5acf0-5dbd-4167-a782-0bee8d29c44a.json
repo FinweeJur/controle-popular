@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["mulheres vítimas de violência"],
+      "grau": "moderado",
+      "trecho": "Institui o Programa de Apoio às Mulheres Vítimas de Violência e dá outras providências",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui, no Município de Belo Horizonte, o Programa de Apoio às Mulheres Vítimas de Violência."
+}

@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "restringe",
+      "mecanismo": "restringe_titularidade",
+      "titulares": ["estudantes da Educação básica pública e privada do Município"],
+      "grau": "moderado",
+      "trecho": "proíbe a utilização e o ensino da linguagem neutra ou não binária na Educação básica pública e privada do Município",
+      "confianca": 0.7
+    },
+    {
+      "direito": "direitos_lgbtqia",
+      "dispositivo": "STF, ADO 26 / MI 4.733",
+      "direcao": "restringe",
+      "mecanismo": "restringe_titularidade",
+      "titulares": ["estudantes não binários e transgênero"],
+      "grau": "moderado",
+      "trecho": "proíbe a utilização e o ensino da linguagem neutra ou não binária na Educação básica pública e privada do Município",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A proposição garante aos estudantes do Município o direito ao aprendizado da Língua Portuguesa e, na mesma norma, proíbe a utilização e o ensino da linguagem neutra ou não binária na Educação básica pública e privada do Município."
+}

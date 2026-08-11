@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 5º, XXXIII",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": ["Poder Legislativo e usuários do transporte público"],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre a obrigatoriedade de informação ao Legislativo sobre as alterações nas tarifas do serviço de transporte público do Município",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A proposição obriga o Executivo a informar ao Poder Legislativo sobre as alterações nas tarifas do serviço de transporte público do Município."
+}
