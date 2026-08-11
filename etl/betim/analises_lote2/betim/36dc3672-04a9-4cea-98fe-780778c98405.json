@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 203",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas carentes proprietárias de animais doentes em Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "atendimento aos animais doentes de propriedade de pessoas carentes, através de convênio a ser firmado com hospitais veterinários mantidos por estabelecimentos de ensino superior",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre o atendimento veterinário a animais doentes de propriedade de pessoas carentes, por meio de convênio com hospitais veterinários de instituições de ensino superior. Cria mecanismo de assistência a população de baixa renda, sem alterar lei existente."
+}

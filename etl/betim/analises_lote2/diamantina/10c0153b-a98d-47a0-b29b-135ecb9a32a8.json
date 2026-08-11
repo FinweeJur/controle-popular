@@ -1,0 +1,33 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208, VII",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "estudantes da rede pública que dependem de transporte escolar em Diamantina",
+        "usuários do transporte público coletivo urbano de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "AUTORIZA O MUNICÍPIO DE DIAMANTINA A CONCEDER SUBSÍDIO TARIFÁRIO PARA O SISTEMA DE TRANSPORTE PÚBLICO COLETIVO URBANO NO MUNICÍPIO DE DIAMANTINA E SUBSIDIO AO TRANSPORTE ESTUDANTIL (MEIO PASSE)",
+      "confianca": 0.6
+    },
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 1º, parágrafo único",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "usuários do sistema de transporte público coletivo de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "INSTITUI O FUNDO MUNICIPAL DE SUBSÍDIO DO TRANSPORTE PÚBLICO COLETIVO, O CONSELHO MUNICIPAL DO TRANSPORTE PÚBLICO",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o município de Diamantina a conceder subsídio tarifário ao transporte público coletivo urbano e subsídio ao transporte estudantil (meio passe), institui o Fundo Municipal de Subsídio do Transporte Público Coletivo e cria o Conselho Municipal do Transporte Público. Amplia o financiamento do transporte urbano e estudantil e cria instância de participação social sobre o tema."
+}

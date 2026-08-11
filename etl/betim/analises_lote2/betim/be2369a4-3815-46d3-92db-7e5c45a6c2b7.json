@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "proprietários e incorporadores de imóveis residenciais e comerciais novos em Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de pré-instalação de infraestrutura elétrica para carregadores de veículos elétricos (WALLBOX) em imóveis residenciais e comerciais novos, estabelece diretrizes técnicas, critérios de fiscalização, penalidades e incentivos",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a obrigatoriedade de pré-instalação de infraestrutura elétrica para carregadores de veículos elétricos em imóveis residenciais e comerciais novos de Betim, com diretrizes técnicas, fiscalização, penalidades e incentivos. Visa promover mobilidade elétrica e sustentabilidade urbana."
+}

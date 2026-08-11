@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 216",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "estudantes da rede municipal de ensino de Diamantina",
+        "comunidade escolar"
+      ],
+      "grau": "moderado",
+      "trecho": "INSTITUI O PROGRAMA PEDAGÓGICO DE EDUCAÇÃO PATRIMONIAL NO ÃMBITO DO MUNICÍPIO DE DIAMANTINA/MG",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa Pedagógico de Educação Patrimonial no âmbito do município de Diamantina. Cria política pública voltada à valorização do patrimônio histórico e cultural local no ambiente escolar."
+}

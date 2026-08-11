@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "animais domésticos do município",
+        "tutores de animais atendidos pela rede pública"
+      ],
+      "grau": "marginal",
+      "trecho": "implantar Hospital Veterinário Municipal e Postos Municipais de Atendimento Veterinário",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo a implantar um Hospital Veterinário Municipal e Postos Municipais de Atendimento Veterinário em Betim. Cria estrutura pública de atendimento à saúde animal, sem alterar lei existente."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208, VII",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "estudantes da rede municipal de ensino de Diamantina que dependem de transporte escolar"
+      ],
+      "grau": "moderado",
+      "trecho": "INSTITUI O FUNDO DE APOIO AO TRANSPORTE ESTUDANTIL DO MUNICÍPIO DE DIAMANTINA - FATEMDI, CRIA O CONSELHO MUNICIPAL DE ASSISTÊNCIA AO TRANSPORTE ESTUDANTIL - CATE",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Fundo de Apoio ao Transporte Estudantil do Município de Diamantina (FATEMDI) e cria o Conselho Municipal de Assistência ao Transporte Estudantil (CATE). Amplia o financiamento e a fiscalização do transporte escolar municipal."
+}

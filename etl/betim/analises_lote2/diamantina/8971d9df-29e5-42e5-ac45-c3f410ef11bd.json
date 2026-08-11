@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "alunos da rede municipal de ensino de Diamantina",
+        "comunidade escolar"
+      ],
+      "grau": "moderado",
+      "trecho": "INSTITUI, NO ÂMBITO DO MUNICIPIO DE DIAMANTINA (MG), O SISTEMA MUNICIPAL DE ENSINO-SAÚDE",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Sistema Municipal de Ensino-Saúde no âmbito do município de Diamantina. Cria estrutura de integração entre políticas de educação e de saúde voltadas à comunidade escolar."
+}

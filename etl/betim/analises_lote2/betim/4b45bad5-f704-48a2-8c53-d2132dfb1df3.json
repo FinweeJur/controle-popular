@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "professores da rede pública de ensino de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "participação de professores da rede pública de ensino de Betim em cursos de extensão sobre cidadania e democracia na escola",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a possibilidade de participação de professores da rede pública de ensino de Betim em cursos de extensão sobre cidadania e democracia na escola. A norma foi sancionada com veto parcial."
+}

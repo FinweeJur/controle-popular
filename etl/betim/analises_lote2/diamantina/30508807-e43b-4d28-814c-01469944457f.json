@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "Lei 8.742/1993 (LOAS)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população em situação de vulnerabilidade social do município de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "DISPÕE SOBRE O SISTEMA ÚNICO DE ASSISTÊNCIA SOCIAL (SUAS) DO MUNICÍPIO DE DIAMANTINA/MG",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre o Sistema Único de Assistência Social (SUAS) do município de Diamantina, organizando a estrutura local de assistência social. Regulamenta em nível municipal a política nacional prevista na LOAS."
+}

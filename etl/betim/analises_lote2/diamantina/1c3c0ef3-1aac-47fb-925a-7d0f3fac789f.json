@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 182",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "DISPÕE SOBRE O PERÍMETRO URBANO DA SEDE DO MUNICÍPIO DE DIAMANTINA E DOS DISTRITOS DE CONSELHEIRO MATA, DESEMBARGADOR OTONI, EXTRAÇÃO, INHAÍ, MENDANHA, PLANALTO DE MINAS, SÃO JOÃO DA CHAPADA, SENADOR MOURÃO, GUINDA, SOPA, DISTRITO INDUSTRIAL E CAMPUS II DA UNIVERSIDADE DOS VALES DO JEQUITINHONHA E MUCURI - UFVJM",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Complementar Municipal nº 183/2023"
+  ],
+  "resumo_neutro": "A lei complementar altera a Lei Complementar nº 183/2023, que dispõe sobre o perímetro urbano da sede de Diamantina e de seus distritos. A ementa não indica se o perímetro é ampliado ou reduzido."
+}
