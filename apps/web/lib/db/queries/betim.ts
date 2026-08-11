@@ -26,6 +26,7 @@ import {
   analises,
   anuncios,
   atos_oficiais,
+  atos_oficiais_geo,
   beneficios_sociais,
   caixa_disponivel,
   classificados,
@@ -611,8 +612,15 @@ export async function atosOficiais(idMunicipio: IdMunicipio) {
       ementa: atos_oficiais.ementa,
       data_publicacao: atos_oficiais.data_publicacao,
       temas: atos_oficiais.temas,
+      // `feature_index`: só as normas que a extração conseguiu localizar E
+      // geocodificar (migration 0057) trazem valor aqui — o link "Ver no
+      // mapa" da lista só aparece quando não é null. `left join` de
+      // propósito: a maioria das normas não tem geocodificação, e isso não
+      // pode derrubar a linha da lista.
+      mapaIdx: atos_oficiais_geo.feature_index,
     })
     .from(atos_oficiais)
+    .leftJoin(atos_oficiais_geo, eq(atos_oficiais_geo.ato_id, atos_oficiais.id))
     .where(eq(atos_oficiais.id_municipio, idMunicipio))
     .orderBy(
       sql`${atos_oficiais.data_publicacao} desc nulls last`,

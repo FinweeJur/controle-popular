@@ -1,4 +1,4 @@
-import { pgTable, pgSchema, index, foreignKey, unique, uuid, text, boolean, timestamp, jsonb, check, integer, vector, date, numeric, bigint, primaryKey, pgView } from "drizzle-orm/pg-core"
+import { pgTable, pgSchema, index, foreignKey, unique, uuid, text, boolean, timestamp, jsonb, check, integer, vector, date, numeric, bigint, primaryKey, pgView, doublePrecision } from "drizzle-orm/pg-core"
 import { sql } from "drizzle-orm"
 
 export const congresso = pgSchema("congresso");
@@ -546,6 +546,34 @@ export const atos_oficiais = pgTable("atos_oficiais", {
 			foreignColumns: [municipios.id_municipio],
 			name: "atos_oficiais_id_municipio_fkey"
 		}),
+]);
+
+// Local geocodificado de uma norma, quando a ementa cita um logradouro/
+// bairro/distrito reconhecível (migration 0058). Extração e geocodificação
+// em `etl/betim/etl/normas_geo/`; `feature_index` é a posição da norma no
+// GeoJSON estático da camada `normas-geolocalizadas` (gerado por
+// `gerar_geojson.py`) -- é o que permite a página da norma linkar direto
+// para a ficha certa no globo (`/funcaosocialterra/mapa?camada=...&idx=...`).
+export const atos_oficiais_geo = pgTable("atos_oficiais_geo", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	ato_id: uuid().notNull(),
+	tipo_local: text().notNull(),
+	texto_extraido: text().notNull(),
+	confianca: text().notNull(),
+	query_geocodificacao: text().notNull(),
+	lat: doublePrecision(),
+	lng: doublePrecision(),
+	geocodificado_em: timestamp({ withTimezone: true, mode: 'string' }),
+	feature_index: integer(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+}, (table) => [
+	index("atos_oficiais_geo_ato_idx").using("btree", table.ato_id.asc().nullsLast()),
+	foreignKey({
+			columns: [table.ato_id],
+			foreignColumns: [atos_oficiais.id],
+			name: "atos_oficiais_geo_ato_id_fkey"
+		}),
+	unique("atos_oficiais_geo_ato_id_key").on(table.ato_id),
 ]);
 
 export const vagasInJudiciario = judiciario.table("vagas", {

@@ -2,23 +2,27 @@
 
 > Pedido original do dono do projeto: leis/decretos com endereço virarem uma
 > camada no globo 3D (`/funcaosocialterra/mapa`) — clicar no local mostra a
-> norma; clicar na norma mostra "ver no mapa". Ele confirmou "avance", mas com
-> a condição de medir antes de construir. Este documento é a medição. **A
-> camada NÃO foi construída** — os números abaixo explicam por quê, e o que
-> fazer se o usuário decidir insistir mesmo assim.
+> norma; clicar na norma mostra "ver no mapa". Ele confirmou "avance", com a
+> condição de medir antes de construir. Este documento é a medição.
 
-## O número que decide
+> **Correção de 2026-08-11, depois da primeira versão deste documento.** A
+> primeira versão concluía "não construir", usando `<10-15%` de cobertura como
+> corte de parada. O dono do projeto corrigiu esse raciocínio: as outras
+> camadas do globo TAMBÉM são parciais por natureza (`spu-imoveis-uniao` é
+> 553 pontos de um cadastro que não cobre todo imóvel do Brasil;
+> `pesquisa-noticias` é oportunista por design) — cobertura parcial não é
+> defeito nesta arquitetura, é a regra. O corte de 10-15% não deveria ter sido
+> aplicado aqui. **A camada FOI construída**, usando exatamente o subconjunto
+> medido abaixo (ementa, sem PDF/texto completo — que os próprios testes
+> abaixo mostram que não ajuda). Os números de medição continuam corretos e
+> ficam registrados; só a conclusão no fim mudou.
+
+## O número que descreve a cobertura (não decide mais nada sozinho)
 
 **11,2% dos 10.317 atos oficiais têm alguma menção reconhecível de
 logradouro/bairro/distrito na ementa** (1.160 atos, contagem exata sobre a
-população inteira, não amostra). Isso cai dentro da faixa que o próprio pedido
-definiu como "muito baixa" (`<10-15%`) — abaixo do patamar (30-40%) que o
-pedido considerava razoável para justificar construir a camada inteira.
-Testar o texto completo (não só a ementa) não melhora esse número — ver
-abaixo.
-
-**Decisão: não construir a tabela nova, a geocodificação, nem a camada no
-globo.** Fica só este documento.
+população inteira, não amostra). Testar o texto completo (não só a ementa)
+não melhora esse número — ver abaixo.
 
 ## Cobertura por município
 
@@ -84,20 +88,57 @@ igual em todo registro (não linka a norma específica); Betim não grava
 `link_fonte` — o coletor (`etl/betim/etl/prefeitura/legislacao.py`) nunca
 populou esse campo.
 
-## O que faria a taxa valer a pena (se o usuário quiser reconsiderar)
+## O que foi construído (Passo 2, depois da correção)
 
-Se no futuro o usuário quiser uma versão **muito mais estreita** do pedido
-original — não "toda norma relacionada a um lugar", mas especificamente
-**"ruas e praças nomeadas por lei"** — os 6,8% (`denomin*`, 704 atos,
-concentrados em Diamantina e São Paulo) são um recorte genuinamente confiável
-e barato de extrair: a lei inteira é sobre isso, o nome da rua está na
-própria ementa, sem precisar abrir PDF nem geocodificar endereço com número
-(dá pra geocodificar "Rua X, Diamantina/MG" direto no Nominatim). Isso NÃO
-foi construído agora — é só o caminho que ficaria mais barato se a decisão
-for diferente desta.
+A camada usa o subconjunto de ~1.160 atos que batem no regex de ementa
+descrito acima — **sem** tentar PDF ou texto completo (os testes acima mostram
+que isso não aumenta a cobertura real, só adiciona ruído/scan sem texto).
+Para cada ato do subconjunto:
 
-## O que NÃO mudou neste projeto
+1. **Extração** (`etl/betim/etl/normas_geo/extrair.py`): tenta capturar o
+   nome do logradouro/praça/bairro/distrito citado, com a mesma lógica de
+   confiança da revisão manual acima — `alta` quando há rua/avenida/praça/
+   travessa/alameda/estrada/rodovia/largo/viela com um nome próprio depois,
+   `media` quando só há bairro/distrito/vila/loteamento. Sem nome capturável,
+   o ato fica de fora (não inventa).
+2. **Geocodificação** (`etl/betim/etl/normas_geo/geocodificar.py`): Nominatim,
+   1 requisição/segundo, `User-Agent` identificado, cache em disco por texto
+   de busca normalizado (evita geocodificar a mesma rua/bairro duas vezes —
+   muitos atos citam o mesmo lugar).
+3. **Schema**: `supabase/betim/migrations/0058_atos_oficiais_geo.sql` — tabela
+   nova `atos_oficiais_geo`, não mexe em `atos_oficiais`.
+4. **Camada**: `normas-geolocalizadas` em `LAYER_REGISTRY`
+   (`apps/web/public/terras/globo/js/config.js`), GeoJSON gerado em
+   `apps/web/public/terras/globo/dados/camadas/normas-geolocalizadas.geojson`
+   por `etl/betim/etl/normas_geo/gerar_geojson.py`.
+5. **Ficha**: `js/ui/rotulos.js` ganhou os rótulos novos (tipo de norma,
+   ementa, confiança, link para a norma original).
+6. **Norma → mapa**: `/[municipio]/camara/legislacao` ganhou um link "Ver no
+   mapa" nas normas com geocodificação; `/funcaosocialterra/mapa` aceita
+   `?camada=normas-geolocalizadas&idx=N` e abre a ficha certa direto.
 
-Nenhum schema, migration, camada do globo (`LAYER_REGISTRY` em
-`apps/web/public/terras/globo/js/config.js`) ou código de produção foi
-alterado. Este documento é a única mudança.
+## Números da primeira rodada (2026-08-11)
+
+Snapshot da primeira execução do pipeline — muda a cada rerun (mais atos
+publicados, Nominatim achando algo que não achou antes), por isso é
+"primeira rodada", não "estado atual": quem quiser o número de agora roda
+`select count(*) from atos_oficiais_geo where lat is not null` ou olha o log
+de `gerar_geojson.py`.
+
+- **Extração** (`extrair.py`): 1.151/10.147 atos com ementa (11,3%) — bate
+  com a medição de viabilidade (11,2% sobre o total, incluindo os sem
+  ementa). Confiança alta=510, média=641.
+- **Geocodificação** (`geocodificar.py`): dos 1.151 extraídos, 806 consultas
+  distintas ao Nominatim (muitos atos citam o mesmo bairro), **743
+  encontraram um ponto (64,6%)** — os outros 408 atos extraídos ficam em
+  `atos_oficiais_geo` sem `lat`/`lng` (o lugar foi reconhecido no texto, mas
+  o Nominatim não achou correspondência geográfica) e por isso não entram no
+  mapa.
+- **Camada final** (`gerar_geojson.py`): **743 pontos** no GeoJSON —
+  confiança alta=189, média=554. Por cidade: Belo Horizonte 301, Diamantina
+  246, São Paulo 193, Araçuaí 2, Betim 1, Itinga 0.
+- Ou seja: da população inteira de 10.317 atos, **743 (7,2%) viraram ponto
+  no mapa** nesta rodada. É o número real da camada publicada, menor que os
+  11,2% da extração porque geocodificar por nome não acha tudo (bairro
+  antigo, grafia que o OSM não tem, nome que colidiu com outro lugar do
+  Brasil e a busca restrita a `countrycodes=br` não resolveu).

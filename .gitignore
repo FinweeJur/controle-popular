@@ -39,3 +39,9 @@ logs/
 # `analises`/`analise_itens`, e o importador e quem decide o que vale. Versionar
 # as respostas cruas convidaria alguem a edita-las achando que edita o banco.
 etl/betim/analises_pendentes/
+
+# Cache local do geocodificador do normas_geo (Nominatim): texto de busca ->
+# lat/lng. Existe para nao regeocodificar a mesma rua/bairro entre rodadas
+# (politica de uso do Nominatim pede cache) -- e um artefato de maquina, nao
+# fonte; o dado que importa fica gravado em atos_oficiais_geo.
+etl/betim/etl/normas_geo/.cache/

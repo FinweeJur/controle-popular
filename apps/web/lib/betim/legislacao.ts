@@ -18,6 +18,13 @@ export interface AtoRow {
   temas: string[] | null;
   /** Ausente = ato sem análise garantista — NÃO é o mesmo que rótulo "neutro". */
   analise?: AnaliseAto;
+  /**
+   * Posição desta norma no GeoJSON da camada `normas-geolocalizadas`
+   * (migration 0057) — `null` para a maioria (a ementa não citava lugar
+   * reconhecível, ou a geocodificação não achou). Só quando presente a
+   * lista mostra "Ver no mapa".
+   */
+  mapaIdx: number | null;
 }
 
 export interface LegislacaoData {
@@ -65,6 +72,7 @@ interface RawRow {
   ementa: string | null;
   data_publicacao: string | null;
   temas: string[] | null;
+  mapaIdx: number | null;
 }
 
 /**
@@ -100,6 +108,7 @@ export async function getLegislacao(
       ementa: r.ementa,
       dataPublicacao: r.data_publicacao,
       temas: r.temas,
+      mapaIdx: r.mapaIdx,
     }));
     if (base.length === 0) return { ...EMPTY, configured: true };
 

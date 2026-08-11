@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import GloboIframe from "./GloboIframe";
 
 /**
  * `/funcaosocialterra/mapa` — o globo 3D de terras públicas, publicado como
@@ -13,12 +14,21 @@ import type { Metadata } from "next";
  * Sem layout.tsx próprio: `/funcaosocialterra` (o hub) não tem um hoje, e
  * criar um layout de zona só para esta única rota adicionaria cabeçalho ao
  * hub também — mudança de comportamento fora do que foi pedido aqui.
+ *
+ * `?camada=X&idx=N` abre direto na ficha daquela feature (usado pelo link
+ * "Ver no mapa" da página da norma) — ver `GloboIframe.tsx`.
  */
 export const metadata: Metadata = {
   title: "Mapa 3D — Função social da terra | Controle Popular",
   description:
     "Globo 3D interativo com vazio cadastral, terras públicas certificadas, assentamentos e territórios quilombolas em Minas Gerais, camada por camada.",
 };
+
+// `GloboIframe` lê `?camada=&idx=` com `useSearchParams()` (dentro de
+// Suspense) para montar o deep-link do globo — mesma armadilha de
+// `[municipio]/camara/legislacao/page.tsx`: sem `force-static`, `output:
+// export` trata a rota como dinâmica.
+export const dynamic = "force-static";
 
 export default function MapaTerrasPage() {
   return (
@@ -42,11 +52,7 @@ export default function MapaTerrasPage() {
         </div>
       </header>
 
-      <iframe
-        src="/terras/globo/index.html"
-        title="Globo 3D — terras públicas e vazio cadastral em Minas Gerais"
-        className="w-full flex-1 border-0"
-      />
+      <GloboIframe />
     </div>
   );
 }

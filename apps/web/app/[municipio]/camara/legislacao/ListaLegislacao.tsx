@@ -246,6 +246,16 @@ function Conteudo({
                 {a.ano ? `/${a.ano}` : ""}
               </p>
               {a.ementa && <p className="mt-0.5 text-sm text-text-soft">{a.ementa}</p>}
+              {a.mapaIdx != null && (
+                <a
+                  href={`/funcaosocialterra/mapa?camada=normas-geolocalizadas&idx=${a.mapaIdx}`}
+                  className="mt-2 inline-flex items-center gap-1 text-xs text-accent hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Ver no mapa
+                </a>
+              )}
               {a.temas && a.temas.length > 0 && (
                 <ul className="mt-2 flex flex-wrap gap-1">
                   {a.temas.map((t) => (

@@ -231,6 +231,25 @@ export const LAYER_REGISTRY = [
     aviso: 'Cada ponto marca ONDE fica o imóvel, não o contorno dele: a SPU não publica o perímetro. O tamanho vem do cadastro, não do desenho. Endereço não é exibido. Um imóvel pode ter mais de uma utilização, com regimes diferentes: quando tem, todas aparecem no campo "regime".',
     color: 0x45ca96,   /* --layer-spu */ on: false, render: 'point', pointSize: 0.006, listavel: true,
   },
+  // --- Normas geolocalizadas (11/08/2026) ----------------------------------
+  //
+  // Pedido do dono do projeto: leis/decretos com endereço virarem camada no
+  // globo. Medido antes de construir (docs/normas-mapa-viabilidade.md):
+  // 11,2% das ~10.300 normas das 6 cidades citam um logradouro/bairro/
+  // distrito reconhecível NA EMENTA — nunca no PDF/texto completo, que os
+  // testes daquele documento mostram que não ajuda (só ruído ou scan sem
+  // texto). Cobertura parcial por natureza, como toda camada deste globo
+  // (SPU é 553 de um cadastro que não cobre todo imóvel do Brasil): "esta
+  // norma não apareceu" não é "esta norma não tem endereço", é "não
+  // conseguimos localizar com confiança" — regra do projeto é não
+  // adivinhar. Extração e geocodificação (Nominatim) em
+  // `etl/betim/etl/normas_geo/`, GeoJSON gerado por `gerar_geojson.py`.
+  {
+    id: 'normas-geolocalizadas', label: 'Leis e decretos com lugar citado',
+    hint: '743 normas (de 1.151 com lugar extraído da ementa, de 10.317 no total) que o Nominatim conseguiu geocodificar pelo NOME do lugar — não por endereço exato. 189 em confiança "alta" (rua/avenida/praça citada por nome), 554 em "média" (só bairro/distrito).',
+    aviso: 'O ponto marca o LUGAR CITADO, não o endereço exato da norma nem de nenhum imóvel — normas de bairro/distrito (confiança "média") caem no centro aproximado da área. Extraído só da ementa, nunca de PDF ou texto completo: testado e não ajuda (ver docs/normas-mapa-viabilidade.md). A maioria das normas não aparece aqui — não tem endereço reconhecível na ementa, o que é o caso comum, não uma falha da busca.',
+    color: 0x6366f1,   /* --layer-normas: violeta-azulado, sem par no restante do registro */ on: false, render: 'point', pointSize: 0.005, listavel: true,
+  },
   // Camada dinâmica custom (Fase G3): satélites dos sensores do projeto em
   // órbita SGP4 real (TLE CelesTrak). Não vem do endpoint /camadas — a
   // factory fica em layers/satelites.js e é registrada no main.js.
