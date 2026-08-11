@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 203",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["mães, pais e cuidadores atípicos do Município de Araçuaí"],
+      "grau": "moderado",
+      "trecho": "INSTITUI O PROGRAMA \"CUIDANDO DE QUEM CUIDA\", VOLTADO À ATENÇÃO, VALORIZAÇÃO E APOIO PSICOSSOCIAL ÀS MÃES, PAIS E CUIDADORES ATÍPICOS NO MUNICÍPIO DE ARAÇUAÍ-MG",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa 'Cuidando de Quem Cuida', voltado à atenção, valorização e apoio psicossocial às mães, pais e cuidadores atípicos no Município de Araçuaí-MG. Cria política municipal de apoio psicossocial dirigida a esse grupo, sem detalhar na ementa os mecanismos concretos de execução."
+}
