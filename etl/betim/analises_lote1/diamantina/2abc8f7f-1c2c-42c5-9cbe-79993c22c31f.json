@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população do município de Diamantina, por meio do Conselho Diamantinense de Segurança Pública (CONDSEP)"
+      ],
+      "grau": "marginal",
+      "trecho": "CONCEDER AJUDA FINANCEIRA AO CONSELHO DIAMANTINENSE DE SEGURANÇA PÚBLICA – CONDSEP PARA OS FINS QUE ESPECIFICA",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o município de Diamantina a conceder ajuda financeira ao Conselho Diamantinense de Segurança Pública (CONDSEP) para os fins que especifica."
+}

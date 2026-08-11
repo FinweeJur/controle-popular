@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "portadores de fibromialgia no município de Itinga"
+      ],
+      "grau": "marginal",
+      "trecho": "INSTITUI, NO ÂMBITO DO MUNICÍPIO DE ITINGA, ESTADO DE MINAS GERAIS, PRIORIDADE DE ATENDIMENTO AOS PORTADORES DE FIBROMIALGIA",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui, no âmbito do município de Itinga, prioridade de atendimento aos portadores de fibromialgia."
+}

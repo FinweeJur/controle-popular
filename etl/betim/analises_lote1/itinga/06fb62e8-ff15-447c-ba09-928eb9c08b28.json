@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "servidores do Poder Legislativo Municipal de Itinga"
+      ],
+      "grau": "marginal",
+      "trecho": "REVISÃO GERAL ANUAL NO ÂMBITO DO PODER LEGISLATIVO MUNICIPAL, VISANDO À PRESERVAÇÃO DO PODER AQUISITIVO E RECOMPOSIÇÃO INFLACIONÁRIA CORRESPONDENTE À VARIAÇÃO DO IPCA",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a revisão geral anual da remuneração no âmbito do Poder Legislativo municipal de Itinga, visando à preservação do poder aquisitivo por meio de recomposição inflacionária correspondente à variação do IPCA."
+}

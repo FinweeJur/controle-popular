@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "motoristas do transporte escolar da Secretaria Municipal de Educação de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "CONCEDE GRATIFICAÇÃO AOS MOTORISTAS DO TRANSPORTE ESCOLAR EM EXERCÍCIO NA SECRETARIA MUNICIPAL DE EDUCAÇÃO",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei concede gratificação aos motoristas do transporte escolar em exercício na Secretaria Municipal de Educação de Diamantina."
+}

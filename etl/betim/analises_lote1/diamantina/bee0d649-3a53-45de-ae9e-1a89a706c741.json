@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "servidores públicos municipais de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "INSTITUI O PROGRAMA MUNICIPAL DE APOIO Á SAÚDE MENTAL DOS SERVIDORES PÚBLICOS MUNICIPAIS DE DIAMANTINA",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa Municipal de Apoio à Saúde Mental dos Servidores Públicos Municipais de Diamantina, criando política permanente de suporte psicológico para essa categoria."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "mães lactantes e famílias com bebês que frequentam as praças do Encontro e Milton Campos em Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "implantação de cabines para amamentação e troca de fraldas nas praças do encontro e praça milton campos no município de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a implantação de cabines para amamentação e troca de fraldas nas praças do Encontro e Milton Campos, em Betim, criando infraestrutura pública de apoio a mães e bebês nesses espaços."
+}

@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "INSTITUI, NO ÂMBITO DO MUNICÍPIO DE DIAMANTINA, AS EQUIPES MULTIPROFISSIONAIS NA ATENÇÃO PRIMÁRIA Á SAÚDE (eMulti), NOS TERMOS DA PORTARIA GM/MS Nº 635",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui as Equipes Multiprofissionais na Atenção Primária à Saúde (eMulti) no município de Diamantina, nos termos da Portaria GM/MS nº 635/2023 — execução local de política federal já definida, sem criar direito além do parâmetro nacional."
+}

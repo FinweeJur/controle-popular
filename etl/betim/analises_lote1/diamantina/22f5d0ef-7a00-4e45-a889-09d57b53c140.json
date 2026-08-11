@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 1º, parágrafo único",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do município de Diamantina, por meio do Conselho Municipal de Segurança Pública e Defesa Social (COMSEGDS)"
+      ],
+      "grau": "moderado",
+      "trecho": "CRIA CONSELHO MUNICIPAL DE SEGURANÇA PÚBLICA E DEFESA SOCIAL( COMSEGDS) E O FUNDO MUNICIPAL DE SEGURANÇA PÚBLICA E DE COMBATE Á VIOLÊNCIA E Á CRIMINALIDADE",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o Conselho Municipal de Segurança Pública e Defesa Social (COMSEGDS) e o Fundo Municipal de Segurança Pública e de Combate à Violência e à Criminalidade no âmbito do município de Diamantina."
+}

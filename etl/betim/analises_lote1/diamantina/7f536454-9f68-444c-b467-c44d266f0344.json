@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "Lei 11.738/2008",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "profissionais do magistério da rede municipal de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "CONCEDE REAJUSTE NO SALÁRIO BASE DOS PROFISSIONAIS DO MAGISTÉRIO DA REDE MUNICIPAL PARA O FIM ESPECÍFICO DE ADEQUAÇÃO AO PISO SALARIAL PROFISSIONAL NACIONAL",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Complementar nº 94/2011"
+  ],
+  "resumo_neutro": "A lei complementar concede reajuste no salário base dos profissionais do magistério da rede municipal de Diamantina, para fins de adequação ao piso salarial profissional nacional (Lei Federal nº 11.738/2008), alterando a Lei Complementar Municipal nº 94/2011."
+}
