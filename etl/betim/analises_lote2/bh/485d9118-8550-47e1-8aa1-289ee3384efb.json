@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "restringe",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "mulher que realiza aborto legal em hospital público ou privado de Belo Horizonte",
+        "hospitais da rede pública e privada de saúde"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de apresentação de relatório mensal à SMSA quanto à realização de abortos nos hospitais da rede pública e privada de Saúde de Belo Horizonte",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": true,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei obriga hospitais da rede pública e privada de saúde de Belo Horizonte a apresentar relatório mensal à Secretaria Municipal de Saúde (SMSA) sobre a realização de abortos, criando mecanismo de monitoramento sobre esse procedimento médico."
+}

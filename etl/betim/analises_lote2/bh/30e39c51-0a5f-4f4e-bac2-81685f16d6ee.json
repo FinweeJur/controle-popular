@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "Lei 12.527/2011 (LAI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população em geral",
+        "órgãos de controle"
+      ],
+      "grau": "marginal",
+      "trecho": "publicação em meio eletrônico oficial de autorização ou licença ambiental para supressão de árvore ou área verde no Município",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei determina a publicação, em meio eletrônico oficial, de toda autorização ou licença ambiental para supressão de árvore ou área verde no Município, ampliando a transparência sobre essas decisões."
+}

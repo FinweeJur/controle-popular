@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "criança e adolescente"
+      ],
+      "grau": "moderado",
+      "trecho": "Proíbe a utilização de verba pública em evento e serviço que promovam a sexualização de crianças e adolescentes no Município",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei proíbe a utilização de verba pública municipal em evento ou serviço que promova a sexualização de crianças e adolescentes."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "liberdade_expressao",
+      "dispositivo": "CF/88, art. 5º, IV",
+      "direcao": "restringe",
+      "mecanismo": "criminaliza_conduta_do_titular",
+      "titulares": [
+        "pessoa ou grupo que incite, defenda ou faça apologia a ato extremista"
+      ],
+      "grau": "marginal",
+      "trecho": "Proíbe a incitação, a defesa ou a apologia a ato realizado por indivíduos ou grupos extremistas que tenham praticado terrorismo ou crime contra a humanidade",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei proíbe, no âmbito municipal, a incitação, a defesa ou a apologia a ato praticado por indivíduos ou grupos extremistas que tenham cometido terrorismo ou crime contra a humanidade."
+}

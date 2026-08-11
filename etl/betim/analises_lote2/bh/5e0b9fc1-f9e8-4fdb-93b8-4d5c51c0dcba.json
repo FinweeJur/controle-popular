@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoa surda ou com deficiência auditiva candidata a cargo ou emprego público"
+      ],
+      "grau": "moderado",
+      "trecho": "estabelecer medidas que assegurem a acessibilidade da pessoa surda ou com deficiência auditiva a cargo ou emprego provido por concurso público",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 11.416/2022"
+  ],
+  "resumo_neutro": "A lei altera a Lei nº 11.416/2022 para estabelecer medidas de acessibilidade destinadas a assegurar que pessoas surdas ou com deficiência auditiva possam acessar cargo ou emprego público provido por concurso."
+}

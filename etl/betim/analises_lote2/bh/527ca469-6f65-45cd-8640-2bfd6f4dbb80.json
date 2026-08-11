@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "pessoa com autismo",
+        "empresas que adotam medidas de inclusão"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Selo Quebra-Cabeça para identificar sociedades empresárias que adotam medidas de inclusão profissional de pessoa com autismo ou de seus pais, cônjuge ou responsável legal",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Selo Quebra-Cabeça, identificativo concedido a sociedades empresárias que adotam medidas de inclusão profissional de pessoa com autismo ou de familiar responsável por ela."
+}
