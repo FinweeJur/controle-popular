@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população do município que utiliza estabelecimentos de educação física"
+      ],
+      "grau": "marginal",
+      "trecho": "INSTITUI COMO ATIVIDADE ESSENCIAL OS ESTABELECIMENTOS DE PRESTAÇÃO DE SERVIÇOS DE EDUCAÇÃO FÍSICA PÚBLICOS OU PRIVADOS, COMO FORMA DE PREVENIR DOENÇAS FÍSICAS E MENTAIS, A PRÁTICA DA ATIVIDADE FÍSICA E DO EXERCÍCIO FÍSICO COMO ESSENCIAIS PARA A SAÚDE DA POPULAÇÃO",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui como atividade essencial os estabelecimentos de prestação de serviços de educação física, públicos ou privados, no município de Araçuaí, sob o fundamento de prevenção de doenças físicas e mentais."
+}

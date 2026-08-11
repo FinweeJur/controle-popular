@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "servidores efetivos e contratados que exercem função de motorista de caminhão/carreta e operadores de máquinas do Poder Executivo"
+      ],
+      "grau": "marginal",
+      "trecho": "DISPÕE SOBRE A GRATIFICAÇÃO DE DESEMPENHO DE PRODUTIVIDADE (GDP), AOS SERVIDORES EFETIVOS E CONTRATADOS NO EXERCÍCIO DA FUNÇÃO DE MOTORISTA DE CAMINHÃO/CARRETA E OPERADORES DE MÁQUINAS DO PODER EXECUTIVO DO MUNICÍPIO DE ARAÇUAÍ",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Gratificação de Desempenho de Produtividade (GDP) para servidores efetivos e contratados que exercem a função de motorista de caminhão/carreta e operadores de máquinas do Poder Executivo de Araçuaí."
+}

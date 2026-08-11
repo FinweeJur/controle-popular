@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população do município de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "DISPÕE SOBRE A POLÍTICA MUNICIPAL DE ESPORTE E LAZER, INSTITUI O SISTEMA MUNICIPAL DE ESPORTE E LAZER, SUAS DERIVAÇÕES E DÁ OUTRAS PROVIDÊNCIAS",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal de Esporte e Lazer e o Sistema Municipal de Esporte e Lazer de Araçuaí, com suas derivações."
+}

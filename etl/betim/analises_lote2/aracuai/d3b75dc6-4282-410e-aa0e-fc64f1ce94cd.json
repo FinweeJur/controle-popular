@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "Lei 12.527/2011 (LAI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do município"
+      ],
+      "grau": "marginal",
+      "trecho": "DISPÕE SOBRE A OBRIGATORIEDADE DE INSTALAÇÃO DE PLACAS INFOMATIVAS NOS IMÓVEIS LOCADOS PELA ADMINISTRAÇÃO PÚBLICA DO MUNICÍPIO DE ARAÇUAÍ COM OS DADOS QUE MENCIONA",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei obriga a instalação de placas informativas nos imóveis locados pela administração pública do município de Araçuaí, com dados sobre a locação."
+}

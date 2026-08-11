@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas idosas do município de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "DISPÕE SOBRE A POLÍTICA MUNICIPAL DO IDOSO, CRIA O CONSELHO MUNICIPAL DO IDOSO - CMI EM ARAÇUAÍ E DÁ OUTRAS PROVIDÊNCIAS",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal do Idoso e cria o Conselho Municipal do Idoso (CMI) em Araçuaí."
+}

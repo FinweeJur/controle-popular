@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "Lei 8.078/1990 (CDC)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "consumidores do município de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "INSTITUI A COORDENADORIA MUNICIPAL DE PROTEÇÃO E DEFESA DO CONSUMIDOR - PROCON, O CONSELHO MUNICIPAL DE PROTEÇÃO E DEFESA DO CONSUMIDOR - CONDECON, E INSTITUI O FUNDO MUNICIPAL DE PROTEÇÃO E DEFESA DO CONSUMIDOR - FMPDC",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei organiza o Sistema Municipal de Defesa do Consumidor de Araçuaí, instituindo a Coordenadoria Municipal de Proteção e Defesa do Consumidor (PROCON), o Conselho Municipal (CONDECON) e o Fundo Municipal de Proteção e Defesa do Consumidor (FMPDC)."
+}

@@ -1,0 +1,33 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "comunidade escolar das escolas estaduais do município"
+      ],
+      "grau": "moderado",
+      "trecho": "DISPÕE SOBRE A OBRIGATORIEDADE DE CONSULTA PRÉVIA À COMUNIDADE ESCOLAR E AO PODER LEGISLATIVO MUNICIPAL, ALÉM DA REALIZAÇÃO DE AUDIÊNCIA PÚBLICA PARA FIS DE ABSORÇÃO DOS ANOS INICIAIS E FINAIS DO ENSINO FUNDAMENTAL DAS ESCOLAS PÚBLICAS ESTADUAIS DO MUNICÍPIO DE ARAÇUAÍ/MG",
+      "confianca": 0.7
+    },
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 1º, parágrafo único",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "comunidade escolar",
+        "população do município"
+      ],
+      "grau": "moderado",
+      "trecho": "ALÉM DA REALIZAÇÃO DE AUDIÊNCIA PÚBLICA PARA FIS DE ABSORÇÃO DOS ANOS INICIAIS E FINAIS DO ENSINO FUNDAMENTAL DAS ESCOLAS PÚBLICAS ESTADUAIS DO MUNICÍPIO DE ARAÇUAÍ/MG",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei torna obrigatória a consulta prévia à comunidade escolar e ao Poder Legislativo municipal, além de audiência pública, antes de eventual absorção dos anos iniciais e finais do ensino fundamental das escolas públicas estaduais pelo município de Araçuaí."
+}
