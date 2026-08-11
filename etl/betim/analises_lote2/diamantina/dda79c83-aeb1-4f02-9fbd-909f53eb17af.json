@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população, especialmente jovens, usuária das políticas municipais de esporte e lazer de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "CRIAÇÃO DO CONSELHO MUNICIPAL DE ESPORTES, LAZER E JUNVENTUDE E O FUNDO MUNICIPAL DE ESPORTES, LAZER E JUNVENTUDES",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o Conselho Municipal de Esportes, Lazer e Juventude e o Fundo Municipal de Esportes, Lazer e Juventudes de Diamantina, estruturando controle social e financiamento próprio para a política municipal de esporte e lazer."
+}

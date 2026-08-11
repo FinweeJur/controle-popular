@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "Lei 10.257/2001 (Estatuto da Cidade)",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população de baixa renda beneficiária de habitação de interesse social em Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "REESTRUTURA O SISTEMA MUNICIPAL DE HABITAÇÃO DE INTERESSE SOCIAL, O CONSELHO MUNICIPAL DE HABITAÇÃO DE INTERESSE SOCIAL E O FUNDO MUNICIPAL DE HABITAÇÃO DE INTERESSE SOCIAL",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 3.858/2014"
+  ],
+  "resumo_neutro": "A lei reestrutura o Sistema Municipal de Habitação de Interesse Social, o respectivo conselho e o fundo municipal, instituídos pela Lei Municipal nº 3.858/2014, mantendo a estrutura institucional e de financiamento da política habitacional local."
+}

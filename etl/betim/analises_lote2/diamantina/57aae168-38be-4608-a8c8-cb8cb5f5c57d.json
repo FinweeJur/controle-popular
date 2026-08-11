@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "moderado",
+      "trecho": "DISPÕE SOBRE A PARTICIPAÇÃO DO MUNICÍPIO DE DIAMANTINA/MG NO PROGRAMA MINHA CASA, MINHA VIDA, DE QUE TRATA A LEI FEDERALO N°14.620, DE 13 DE JULHO DE 2023",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a participação do município de Diamantina no Programa Minha Casa, Minha Vida, instituído pela Lei Federal nº 14.620/2023. O município apenas executa localmente política habitacional federal, sem criar ou retirar direito próprio."
+}

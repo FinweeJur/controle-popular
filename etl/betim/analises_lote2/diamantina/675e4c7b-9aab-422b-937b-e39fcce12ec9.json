@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "agente de contratação, pregão e equipe de apoio do Fundo Municipal de Previdência de Diamantina (FUMPREV)"
+      ],
+      "grau": "marginal",
+      "trecho": "CONCESSÃO DE GRATIFICAÇÃO AO AGENTE DE CONTRATAÇÃO, PREGOEIRO E EQUIPE DE APOIO NO ÂMBITO DO FUNDO MUNICIPAL DE PREVIDÊNCIA DE DIAMANTINA/MG",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui gratificação pecuniária ao agente de contratação, pregoeiro e equipe de apoio do Fundo Municipal de Previdência de Diamantina, sem alterar regras de benefício previdenciário dos segurados."
+}

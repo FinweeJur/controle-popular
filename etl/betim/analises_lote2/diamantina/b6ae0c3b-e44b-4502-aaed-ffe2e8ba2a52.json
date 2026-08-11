@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 203",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "ALTERA A LEI MUNICIPAL N°3.700, DE 30 DE DEZEMBRO DE 2011, UE REGULAMENTA A DISTRIBUIÇÃO GRATUITA DE BENS, VALORES E SERVIÇOS PELO MUNICIPIO DE DIAMANTINA NO ÂMBITO DAS POLITICAS PÚBLICAS DE ASSISTÊNCIA SOCIAL, EDUCAÇÃO E SAÚDE",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 3.700/2011"
+  ],
+  "resumo_neutro": "A lei altera a Lei Municipal nº 3.700/2011, que regulamenta a distribuição gratuita de bens, valores e serviços pelo município de Diamantina no âmbito das políticas de assistência social, educação e saúde, sem que a ementa especifique o teor da alteração."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 201",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "moderado",
+      "trecho": "REESTRUTURA O REGIME PRÓPRIO DE PREVIDÊNCIA SOCIAL DOS SERVIDORES PÚBLICOS DO MUNICÍPIO DE DIAMANTINA/MG",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Complementar nº 38/2000"
+  ],
+  "resumo_neutro": "A lei altera a Lei Complementar nº 38/2000, que reestrutura o Regime Próprio de Previdência Social dos servidores públicos de Diamantina. A ementa não detalha se a reestruturação amplia ou reduz benefícios."
+}

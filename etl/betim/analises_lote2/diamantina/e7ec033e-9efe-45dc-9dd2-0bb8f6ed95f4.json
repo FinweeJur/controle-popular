@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "usuários do componente especializado da assistência farmacêutica do SUS em Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "INCLUIR O CARGO DE FARMACÊUTICO- PDCAF DESTINADO Á EXECUÇÃO DA POLÍTICA DE DESCENTRALIZAÇÃO DO COMPONENTE ESPECIALIZADO DA ASSISTÊNCIA FARMACÊUTICA NO MUNICIPIO DE DIAMANTINA",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Complementar nº 125/2015"
+  ],
+  "resumo_neutro": "A lei altera os Anexos III, IV e V da Lei Complementar nº 125/2015 para incluir o cargo de farmacêutico (PDCAF), destinado à execução da política de descentralização do componente especializado da assistência farmacêutica em Diamantina, reforçando a estrutura de pessoal do SUS local."
+}

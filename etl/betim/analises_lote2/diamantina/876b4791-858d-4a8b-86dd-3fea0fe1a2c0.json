@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 182",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "ALTERA O ANEXO II DA LEI COMPLEMETAR N°179, DE 19 DE OUTUBRO DE 2023, QUE \"DISPÕE SOBRE A REVISÃO DO PLANO DIRETOR DO MUNICÍPIO DE DIAMANTINA",
+      "confianca": 0.35
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Complementar nº 179/2023"
+  ],
+  "resumo_neutro": "A lei altera o Anexo II da Lei Complementar nº 179/2023 (Plano Diretor de Diamantina). A ementa não especifica o conteúdo da alteração do anexo (provavelmente mapa de zoneamento), de modo que não é possível identificar ampliação ou restrição de direito a partir do texto disponível."
+}

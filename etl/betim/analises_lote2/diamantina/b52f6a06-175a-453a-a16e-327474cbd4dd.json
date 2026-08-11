@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "Lei 10.257/2001 (Estatuto da Cidade)",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "moderado",
+      "trecho": "ESTABELECE NORMAS GERAIS PARA O PARCELAMNTO DO SOLO URBANO NO MUNICÍPIO DE DIAMANTINA",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estabelece normas gerais para o parcelamento do solo urbano no município de Diamantina, disciplinando loteamentos e desmembramentos sem que a ementa indique ampliação ou restrição de direito específico."
+}

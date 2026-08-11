@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "membros do Comitê de Investimentos do Fundo Municipal de Previdência de Diamantina (FUMPREV)"
+      ],
+      "grau": "marginal",
+      "trecho": "CONCESSÃO DE GRATIFICAÇÃO AOS MEMBROS DO COMITÊ DE INVESTIMENTOS NO ÂMBITO DO FUNDO MUNICIPAL DE PREVIDÊNCIA DE DIAMANTINA/MG",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui gratificação pecuniária aos membros do Comitê de Investimentos do Fundo Municipal de Previdência de Diamantina, sem alterar regras de acesso ou benefício previdenciário dos segurados."
+}
