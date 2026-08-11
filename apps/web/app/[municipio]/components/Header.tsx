@@ -1,5 +1,5 @@
 import Link from "@/lib/betim/link";
-import type { Cidade } from "@/lib/db/queries/municipios";
+import { temFonte, type Cidade } from "@/lib/db/queries/municipios";
 import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
 import FontSizeControl from "@/app/[municipio]/components/FontSizeControl";
 import NavDropdown from "@/app/[municipio]/components/NavDropdown";
@@ -17,22 +17,30 @@ const PREFEITURA_SUB = [
   { href: "/prefeitura/despesas", nome: "Despesas" },
   { href: "/prefeitura/obras", nome: "Obras" },
 ];
-const CAMARA_SUB = [
-  { href: "/camara", nome: "Vereadores" },
-  { href: "/camara/proposicoes", nome: "Proposições" },
-  { href: "/camara/comissoes", nome: "Comissões" },
-  // A Legislação saiu de /prefeitura em 2026-08-07. Em Araçuaí e Diamantina o
-  // acervo de normas é da CÂMARA (SAPL e portal da Casa), e a URL era o único
-  // lugar onde isso não dava para corrigir com texto: o `<h1>` já dizia o
-  // órgão certo desde `orgaoDoAcervoNormativo`, mas o endereço dizia
-  // "prefeitura". Ver a página-ponte em `prefeitura/legislacao/page.tsx`.
-  { href: "/camara/legislacao", nome: "Legislação" },
-  // Cobrem lei sancionada E projeto em tramitação — por isso não vivem sob
-  // /camara, mas o ponto de entrada mais descoberto continua sendo aqui, ao
-  // lado da lista de normas que os alimenta.
-  { href: "/legislacao/alertas", nome: "Legislação · Alertas" },
-  { href: "/legislacao/bons-exemplos", nome: "Legislação · Bons exemplos" },
-];
+// `fonte` é a chave de `municipios.fontes` que decide se o item existe
+// naquela cidade — mesmo campo e mesmo motivo do `servicos(cidade)` em
+// `servicos/page.tsx`. Sem ele, "Proposições" aparecia no menu de Araçuaí e
+// Itinga (`camara_proposicoes: false`, ver migração 0043) e levava a um
+// 404: a página já faz `notFound()` porque a Câmara não publica proposição
+// nenhuma, mas o dropdown do Header não sabia disso e listava o link do
+// mesmo jeito em toda cidade.
+const camaraSub = (cidade: Cidade) =>
+  [
+    { href: "/camara", nome: "Vereadores" },
+    { href: "/camara/proposicoes", nome: "Proposições", fonte: "camara_proposicoes" },
+    { href: "/camara/comissoes", nome: "Comissões" },
+    // A Legislação saiu de /prefeitura em 2026-08-07. Em Araçuaí e Diamantina o
+    // acervo de normas é da CÂMARA (SAPL e portal da Casa), e a URL era o único
+    // lugar onde isso não dava para corrigir com texto: o `<h1>` já dizia o
+    // órgão certo desde `orgaoDoAcervoNormativo`, mas o endereço dizia
+    // "prefeitura". Ver a página-ponte em `prefeitura/legislacao/page.tsx`.
+    { href: "/camara/legislacao", nome: "Legislação" },
+    // Cobrem lei sancionada E projeto em tramitação — por isso não vivem sob
+    // /camara, mas o ponto de entrada mais descoberto continua sendo aqui, ao
+    // lado da lista de normas que os alimenta.
+    { href: "/legislacao/alertas", nome: "Legislação · Alertas" },
+    { href: "/legislacao/bons-exemplos", nome: "Legislação · Bons exemplos" },
+  ].filter((item) => !item.fonte || temFonte(cidade, item.fonte));
 const NAV_LINKS_DEPOIS_DADOS = [
   { label: "Assistente", href: "/assistente" },
   { label: "Notícias", href: "/noticias" },
@@ -70,7 +78,7 @@ export default function Header({ cidade }: { cidade: Cidade }) {
         </Link>
         <nav className="flex flex-wrap items-center gap-4 text-[.88em] font-medium">
           <NavDropdown label="Prefeitura" href="/prefeitura" itens={PREFEITURA_SUB} />
-          <NavDropdown label="Câmara" href="/camara" itens={CAMARA_SUB} />
+          <NavDropdown label="Câmara" href="/camara" itens={camaraSub(cidade)} />
           <Link
             href="/servicos"
             className="cp-link-underline text-text-soft transition-colors duration-150 hover:text-primary"
