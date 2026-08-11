@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "Lei 12.527/2011 (LAI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": ["contribuintes do IPTU no Município"],
+      "grau": "marginal",
+      "trecho": "Institui a política de transparência na cobrança do Imposto sobre a Propriedade Predial e Territorial Urbana no Município de Belo Horizonte",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui uma política de transparência para a cobrança do IPTU no Município de Belo Horizonte, ampliando o acesso à informação sobre os critérios e valores cobrados."
+}

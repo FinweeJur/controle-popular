@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["pessoas idosas"],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal para Valorização e Aplicação do Conhecimento e da Experiência dos Idosos para Fins Educacionais, Culturais e Sociais",
+      "confianca": 0.6
+    },
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["crianças matriculadas na Rede Municipal de Ensino"],
+      "grau": "marginal",
+      "trecho": "para a Complementação Educacional de Crianças Matriculadas na Rede Municipal de Ensino",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal para Valorização e Aplicação do Conhecimento e da Experiência dos Idosos para fins educacionais, culturais e sociais, voltada à complementação educacional de crianças matriculadas na Rede Municipal de Ensino."
+}

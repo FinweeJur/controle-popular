@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "alimentacao",
+      "dispositivo": "Lei 11.346/2006 (LOSAN)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["pessoas físicas ou jurídicas destinatárias de doação de alimentos"],
+      "grau": "marginal",
+      "trecho": "a doar o seu excedente a pessoas físicas ou jurídicas, sem necessidade de licença prévia ou autorização do Executivo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza estabelecimentos que produzem, fornecem, comercializam, armazenam ou distribuem gêneros alimentícios a doar o excedente a pessoas físicas ou jurídicas sem necessidade de licença prévia ou autorização do Executivo, facilitando canais de doação de alimentos."
+}

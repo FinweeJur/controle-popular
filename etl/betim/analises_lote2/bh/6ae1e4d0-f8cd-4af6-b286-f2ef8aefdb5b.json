@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "liberdade_religiosa",
+      "dispositivo": "CF/88, art. 5º, VI",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["pacientes de estabelecimentos de saúde do Município"],
+      "grau": "marginal",
+      "trecho": "afixarem, em suas recepções e demais dependências, cartazes ou placas informativas sobre a liberdade de assistência religiosa aos pacientes",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei obriga os estabelecimentos de saúde do Município a afixar cartazes ou placas informando sobre a liberdade de assistência religiosa aos pacientes, em suas recepções e demais dependências."
+}

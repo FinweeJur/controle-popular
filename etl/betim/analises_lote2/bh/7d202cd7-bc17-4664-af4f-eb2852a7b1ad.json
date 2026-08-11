@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["pessoas desaparecidas e seus familiares"],
+      "grau": "marginal",
+      "trecho": "Estabelece a publicação gratuita de fotografias e dados referentes a pessoas desaparecidas no DOM/BH",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estabelece a publicação gratuita de fotografias e dados referentes a pessoas desaparecidas no Diário Oficial do Município, como instrumento de apoio à sua localização."
+}
