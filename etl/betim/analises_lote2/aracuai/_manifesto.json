@@ -1,0 +1,1213 @@
+{
+  "id_municipio": "3103405",
+  "municipio": "Araçuaí",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-lote2",
+  "camadas": {
+    "lei_vigente_com_sinal": 66,
+    "lei_vigente_sem_sinal": 134
+  },
+  "objetos": [
+    {
+      "id": "3edf3336-edda-4ce9-a9f4-37848c88d572",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 742/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "d4f677c6-84bd-4e6b-aa88-8ddaabb4bbe6",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 739/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "2d6f1b67-6979-434c-9435-b8a8ddf1d7db",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 730/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "7f77c656-1d50-424f-b0ca-54a9ef009f69",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 727/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "d8801e74-313c-4e1c-bb1b-61b16b0b7017",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 63/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "fa7c993b-cbe0-4993-8e82-e78614c2ecd2",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 726/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "854ae1aa-2849-477c-a814-ab6755ac8354",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 722/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "c9e8e4b9-342f-45f4-bdca-4f093d228ebf",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 721/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "348426b5-72b1-488a-b4c5-f52f9869bc3f",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 719/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "7092a0b6-75e7-4411-af32-f29a67f8ee50",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 702/2024",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "3580b6b4-c998-4474-b5de-5097f098e428",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 701/2024",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "9277ce6b-9d12-4bfa-9e22-9d3ebdc5d55d",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 700/2024",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "27ce7a85-30be-4d7f-8f4a-111ba7278156",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 690/2024",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "45623e37-a038-40ce-90d6-3f7168556373",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 687/2024",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "86778c38-371f-4f8a-9661-c402e27d97ee",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 61/2024",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "bddfb4b6-44bb-4fba-8588-4165addeeb17",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 674/2024",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "c7a0bd13-9c4d-4269-b9fe-7afc3ef76831",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 668/2024",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "fdd7d5ba-2710-4719-b5ab-29e31f1b7c4b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 57/2024",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "e1fee9f7-c569-42bc-b578-3d3921381e19",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 666/2024",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "989d010a-5414-44ea-87bd-1b923902cefb",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 665/2024",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "7f189e8f-646d-4b3b-a3a1-4805f63e2195",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 663/2024",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "cd10d5c8-afb1-4c84-b51f-4c1b6202a744",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 660/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "f20aa6e3-12ae-42e7-869a-c64045038ee8",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 650/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "af30890e-52b5-4cef-9bad-9b871f71cf9e",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 649/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "00a363ba-b76d-4f8f-b263-2d12f8276e1c",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 645/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "6ff27784-99da-4830-bdff-173aa9220e16",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 641/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "5b81e91e-1065-4c0f-96c5-5695b72dae65",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 54/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "0f34a19a-084c-4289-9e65-a6fc118a9470",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 632/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "700dc346-b3e1-4aed-b0dc-85316815deea",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 630/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "e1c349ef-4210-41ee-8f76-73b57c9c0d49",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 629/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "fac9043d-dff2-43cc-ab80-9ef7c8d4ae87",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 624/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "df7feaf7-dca6-4647-8b1e-c17dd99e6917",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 627/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "048e73c1-6bd7-48a2-a50f-344992f7b820",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 623/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "a0835fab-a028-41b8-a4d7-96a1fc85638b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 615/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "79b39ffa-7e5d-44d1-946e-0df105e21d59",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 613/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "2be0dcfb-f8e6-4cd1-be6e-5b515195ba30",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 612/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "4409f1ac-3fba-45f4-9595-ade78dddcd46",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 611/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "f8e3bc00-d809-4aaf-b5e7-736a17a69669",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 602/2023",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "5ef44a6a-7739-4052-9d2b-226850d6b511",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 600/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "8eae2905-822f-4ba0-bcf5-0fbecde6e0ac",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 597/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "82990341-9ceb-41fc-9ad1-b671d0655ee2",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 592/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "99a73baa-377b-413f-9950-07d9a834139d",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 590/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "d3b75dc6-4282-410e-aa0e-fc64f1ce94cd",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 586/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "e7d19688-e383-4143-b9cb-3f8a2f6f7372",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 585/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "9d6dd1c1-5e27-41b0-9518-f4c5a427471b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 583/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "f9ea0691-10e3-4c13-b244-14ba61b96abe",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 580/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "3ca10e97-bcec-4135-ac48-9d262e53b05c",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 578/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "65f89d07-bdbf-46ae-8626-89071356e29a",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 575/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "536b8f4b-9ce0-4cc2-99de-f5aa12d826d0",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 568/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "7716efdc-8a6f-4917-b0e2-fa862ea8ec81",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 567/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "5bc5e3fa-0b42-4a22-9c61-0a8e36349892",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 566/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "4d85b7ed-31a0-4606-9b5f-d6b6667802e4",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 561/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "edbc690f-de2b-4541-9105-ed0ea41b6722",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 555/2022",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "0360c323-f4ae-43d1-a92c-b312cff2f801",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 548/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "71026e09-c1fa-4d82-8bbf-b28e5479c2fb",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 545/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "e5c0f30d-33bd-4ed0-8f7c-9f741325e7a2",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 544/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "16091b7b-0062-475b-a9ac-a26c38ea6ba5",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 535/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "84826438-83c0-457b-ab03-d6d2b6003af4",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 533/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "5b2d6766-08f9-4a2b-81aa-7d595106919b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 532/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "253176f5-1c82-48d9-9631-3ecdfb88bc11",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 531/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "d8b04259-df90-4462-84ee-76865125863a",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 530/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "a46c5e27-1be0-4ecf-b6c1-b741126b309e",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 529/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "1a48a582-76c5-4633-89f4-09152b528a75",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 527/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "8d069ff2-eec0-4d03-8143-286387c04d7d",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 523/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "8e388979-5d59-4064-af39-1005c7a2bb2f",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 522/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "27e74c1c-6169-4f22-a681-58b801a7f193",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 521/2021",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "5dd74fdd-d8a3-41be-b061-26d764ef789b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 69/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "60c862b8-ab55-4eab-b0dc-54782d54ae65",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 68/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "8bcd067a-e1d6-4685-b8c4-e23eb5a66d8f",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 67/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "554d32dc-e1dd-4e96-9369-77c1fdba2825",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 792/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "1553a346-9577-4d4e-b968-037a27fb23cb",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 790/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "99c9252d-3485-4764-9983-263ecc1e0ced",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 787/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "fe24e3c2-6943-4b0a-a637-9aa5ea9237c9",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 786/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "cd30f12f-90a0-41a0-8148-54cd723d121f",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 785/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "59096891-9cce-4897-a856-e7a3b71feb03",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 782/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "50178491-0876-4820-90b1-c79db447a498",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 778/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "cad55c9e-b24f-45eb-bc19-198556891f75",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 777/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "fb3d9241-8154-4b12-8667-025ff2afb8e9",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 776/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "b0d15f06-6f36-4c1f-9b2b-aeddf975880c",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 66/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "3741b884-cf08-481c-b8c9-6a21e1816c54",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 774/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "3cc2a263-aad2-41ad-b597-1281356aabc8",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 772/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "7ef48dec-7f64-4087-9357-b23d2bd9846d",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 65/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "7723b6c0-0619-4cfe-b755-220380a712f5",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 65/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "01d3951c-5df0-4094-84e3-bcfaeff587ac",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 768/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "7afb202e-35ea-4ba3-9fbb-82c2c159cccc",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 767/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "a41c3ce2-3579-4dbe-b008-388da86f75ac",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 764/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "dc700d3b-c12a-4275-85a3-197971e6dd97",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 763/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "36996433-ef66-4f3d-8b4f-6ea68fdbab5e",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 760/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "fa283477-c7e7-43b5-a4b1-26c29709c9ac",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 758/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "5a8c71bf-6afd-4700-84cf-35577a4ab8a6",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 753/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "2fb91925-ac89-4240-9962-2d3b4556979b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 749/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "c79a7d41-69ed-42c3-87a9-6731ff17e061",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 745/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "2bb98936-5133-4f2f-ac5c-f5025b467818",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 744/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "c63de017-7cba-4230-85d6-d6fc0a9d0759",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 738/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "32c6e393-78d0-415b-9e59-644d2202f960",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 64/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "79ab390c-48ce-4d24-afb4-7d8030b3116a",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 729/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "67d44fd5-2746-4bdc-81bc-b3aa71a40dc4",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 728/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "9d1c1129-7d10-49db-ab96-c010072618bc",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 724/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "68cc8cd5-648a-4501-8dd8-0ac10eadb508",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 723/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "6e1f47f9-f502-4450-a212-768c5c862871",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 720/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "2c42606f-46eb-4668-bf8a-f37355e2c578",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 718/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "b1361104-dc38-4d47-87ae-2d7524ac9eac",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 714/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "a0bf1b3c-90e3-468a-aae5-cef4d6bad779",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 713/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "15721711-3088-4c6d-b30b-15b08ffef01c",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 62/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "2cfaf6e3-ba41-4ec6-89f6-6f4faef083c7",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 710/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "3fe66828-eb5a-4a58-9e43-b7897296d658",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 709/2025",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "7988ac71-8f13-454c-8a51-874559c552a8",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 707/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "5aa40a06-06a3-4d5f-8b3e-0ebafeb4e564",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 706/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "950c6419-b139-4264-9c36-22e318eba51c",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 705/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "3443d8e6-08ef-4e1f-a653-782e9b2cce79",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 704/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "8f8567ec-3249-4dcb-9c63-637e54bb61ff",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 703/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "c119f270-d60e-46e3-bcf5-4e63dcdc9095",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 696/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "dceb9a8e-255a-4045-9310-29327bda3051",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 692/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "d5acd222-a41d-4261-b530-22ebb8dee95c",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 689/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "1387c266-192a-4202-8147-fc8bc83e05f3",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 688/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "2f26e93d-dfca-4577-b8a4-b9cfdaa73542",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 686/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "d9914c58-3705-4367-9879-725dac74b414",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 684/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "4ced8737-b961-4ce5-8d23-05cc5e96ef3a",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 683/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "39fce229-8251-47f1-b32a-aed749fa7af7",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 574/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "5b5486ba-d9e6-46df-9949-e15101fea0eb",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 682/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "c5656010-5b99-419f-bfcd-fb1e10b88dd2",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 680/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "7375aeac-c403-4809-a52e-3ee91f658ec6",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 679/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "d15a090e-1311-4237-a4c0-c1a6389754a8",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 678/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "3b8686bf-02d1-4cb2-96a4-cca0da24b43a",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 677/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "18e278d6-791c-4f07-8946-17b77a3d8b08",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 676/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "8372e2ad-0432-4c53-a910-2c78eabf7fb9",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 675/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "06a8e9e2-b2d1-47f7-85da-62a39193c749",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 673/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "4975fd52-f35c-4aed-8e79-2f7d28862305",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 672/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "6200592f-719d-4f7e-9594-6fbf7e9f4faf",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 671/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "67610465-29df-4191-a84f-271e48537271",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 669/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "628e9ab4-9a26-4e5e-b5cf-8070fa739e9e",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 60/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "4bdf796e-1188-4ecc-865a-dc4a556d186f",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 59/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "666032f0-b743-4272-96be-c6122a2d29c8",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 58/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "ced80bce-d06a-4e6c-a4ee-ea90425bb764",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 667/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "219ed394-b5a2-4194-b8b7-1a46bd29659f",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 664/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "759fddc5-e6e0-4b2f-97c5-573d83183d52",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 56/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "ef9339a0-414e-415b-a848-ce6f99718a4b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 55/2024",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "55587775-ac0a-4fb7-bddb-c1746ae4d24a",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 662/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "6be83668-656d-45a7-aa2a-7e716b95f5f4",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 661/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "1a434472-1a82-49f4-8944-55c8edcb46df",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 659/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "e56bd218-a055-4cbe-b1ce-1a433bff21f9",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 658/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "7140435d-5582-4465-8d51-64b0611a1a50",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 657/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "605f5b03-8cb5-442d-960f-175c07533bfe",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 653/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "74d3eebc-c170-411b-be0c-b0f89ae08df9",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 652/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "46023c60-aaf6-4c16-95d7-977fa77234cf",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 638/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "9f2b3fdf-5e35-4342-a840-9a81a19ac746",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 637/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "93502b8f-c3a4-4ea4-9e78-4140266d6f49",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 633/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "60f0ccf5-d23c-43f3-8ec3-adee1c9d8537",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 631/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "0b5e9429-dda6-4281-8490-993fd8e3cd5b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Orgânica nº 1/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "d3ae058f-bedf-44a7-b40c-f0b0a7fd8a10",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 26/2000",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "f02e8a81-ca24-42a5-a580-14c3d812bb8f",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 628/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "d817185d-edf0-44a4-8449-6a16e9aeeceb",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 626/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "7d4092ee-edd9-4764-a2f6-06c42f40e756",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 625/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "2b8daf36-b04e-46cf-88d2-d406428e2fa8",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 53/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "c1baa05c-c83b-4552-8462-8f690c776d1c",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 620/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "d5434142-8e53-4098-ba24-2e6b447541c1",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 52/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "92c248d7-bac2-4050-b6ee-db2ee52e2673",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 619/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "f9ec9714-7a0e-47fc-84c3-5f1790db0f6c",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 616/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "1fb0e82e-89e9-4740-99c4-6f3d1e748218",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 614/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "4a03bbbd-bad6-4dbc-991c-d334524d2129",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 51/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "58bc6569-807f-4182-b6fb-f2a686157cf2",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 608/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "37c1f157-f82e-47a3-ac11-400baedac5ab",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 607/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "cb1498ec-1634-448e-ba8e-cd8e36a74ea8",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 606/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "6b66eb15-f1d2-439c-a0fc-63bf31d0b534",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 605/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "e5f41d19-bf74-47b1-81dd-230eea595520",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 50/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "021ec939-69da-404d-b729-86c4d938d48f",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 604/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "90077893-8f34-42b7-b6d4-8f887b251e50",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 603/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "691f8ad6-e285-441c-9a4a-ef37494015ea",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 601/2023",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "a4bbb8b0-3d88-4211-8c08-62a2af0094ed",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 598/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "73008f99-8d88-475b-aefa-03a8c37a748b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 596/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "a5f8ba0b-9fa8-44fc-8a08-d673e39085c4",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 595/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "5edd9ba0-a0eb-46df-9e3b-34b2aec46d33",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 593/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "8433be5d-9bf2-4cf2-9b77-4f44bda76233",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 591/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "49e67afc-5e38-4067-9236-f25192372751",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 589/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "03d6b01a-5bf1-42b1-8fc1-e9aa745b09ad",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 588/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "6ba850aa-6d3b-4512-96cb-757ed2577882",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 584/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "f92456b8-4e74-4ccb-987d-b45e6a9938a0",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 581/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "454097ae-32a4-434a-9359-c35095ae6257",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 579/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "6b3e6de7-8715-4629-949c-5dd664565c00",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 577/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "c31c8c77-c6da-46da-a331-4772b9a804d9",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 576/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "e0bca5f5-0b2d-4bc1-8a30-8c7388f9ba32",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 573/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "ce21d736-1839-4c5a-8a47-d39b5fa92361",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 572/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "05e27531-d9e1-451f-a160-ef112c245574",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 570/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "64d05e34-1bdb-4a0d-968d-3e7a6bfe5436",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 569/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "c79a6504-74e4-4e60-ab23-df7501aeb5fe",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 562/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "4ce33d80-f7e2-4d33-ab22-0f76557505ed",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 559/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "8d938344-a705-4d9b-abcd-dc770a05f3cc",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 558/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "79615111-2132-40bf-ad0f-a4a366e1d424",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 557/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "070d9f87-a28b-4a06-96e7-53bbf38de333",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 556/2022",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "3cb9ba5e-8edc-4d40-b839-b61e96511fe8",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 553/2021",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "4164edf6-76cc-4f02-b05b-fe6f4ebf8678",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 552/2021",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "82275699-3739-4352-b1bd-174e0be2193d",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 549/2021",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "de1bbd48-7bf7-4727-a7b2-a3c6c8982233",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 542/2021",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "f0ea710d-9014-425a-b1b2-bf4ebab87502",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 540/2021",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "f78882e5-64c2-42f6-94d9-4707b31b2ec0",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 539/2021",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "b322c9d2-fbb4-424a-9c92-6c431c78c835",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 538/2021",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "645d831d-d91f-40a5-ab5d-9b979480ff82",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 536/2021",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "97518ee9-225b-4519-a8c6-71902841345d",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 526/2021",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "9fed1b56-560c-44d1-9294-c69fe32e74fd",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 525/2021",
+      "camada": "lei_vigente_sem_sinal"
+    },
+    {
+      "id": "63bbc1d5-be19-4b48-83b7-6ed91fac807e",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 524/2021",
+      "camada": "lei_vigente_sem_sinal"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+PROJETO MUNICIPAL: Projeto de Lei nº 256/2025
+MUNICÍPIO: Betim/MG (IBGE 3106705)
+SITUAÇÃO: PROJETO EM TRAMITAÇÃO — situação: Sancionado (apresentado em data não informada)
+EMENTA: Institui a Campanha Municipal de Conscientização sobre a Depressão da Pessoa Idosa no Município de Betim.
+TEMAS PRÉ-CLASSIFICADOS POR PALAVRA-CHAVE (pista, não conclusão): assistencia_social
+
+DIREITOS (use exatamente estes slugs):
+  - vida_integridade: Vida e integridade física (âncoras: CF/88, art. 5º, caput; CF/88, art. 5º, III)
+  - igualdade_nao_discriminacao: Igualdade e não discriminação (âncoras: CF/88, art. 3º, IV; CF/88, art. 5º, caput; CF/88, art. 5º, I)
+  - liberdade_expressao: Liberdade de expressão e informação (âncoras: CF/88, art. 5º, IV; CF/88, art. 5º, IX; CF/88, art. 220)
+  - liberdade_religiosa: Liberdade de consciência e crença (âncoras: CF/88, art. 5º, VI; CF/88, art. 19, I)
+  - devido_processo_ampla_defesa: Devido processo legal e ampla defesa (âncoras: CF/88, art. 5º, LIV; CF/88, art. 5º, LV; CF/88, art. 5º, LVII)
+  - privacidade_dados: Privacidade e proteção de dados (âncoras: CF/88, art. 5º, X; CF/88, art. 5º, XII; CF/88, art. 5º, LXXIX; Lei 13.709/2018 (LGPD))
+  - propriedade_funcao_social: Propriedade e função social (âncoras: CF/88, art. 5º, XXII; CF/88, art. 5º, XXIII; CF/88, art. 170, III; CF/88, art. 186)
+  - saude: Saúde (âncoras: CF/88, art. 6º; CF/88, art. 196; CF/88, art. 198; Lei 8.080/1990)
+  - educacao: Educação (âncoras: CF/88, art. 6º; CF/88, art. 205; CF/88, art. 208; Lei 9.394/1996 (LDB))
+  - trabalho: Trabalho e direitos trabalhistas (âncoras: CF/88, art. 6º; CF/88, art. 7º; CF/88, art. 8º; Decreto-Lei 5.452/1943 (CLT))
+  - previdencia_assistencia: Previdência e assistência social (âncoras: CF/88, art. 6º; CF/88, art. 194; CF/88, art. 201; CF/88, art. 203; Lei 8.213/1991; Lei 8.742/1993 (LOAS))
+  - moradia: Moradia (âncoras: CF/88, art. 6º; CF/88, art. 23, IX; CF/88, art. 182; Lei 10.257/2001 (Estatuto da Cidade))
+  - alimentacao: Alimentação adequada (âncoras: CF/88, art. 6º; Lei 11.346/2006 (LOSAN))
+  - meio_ambiente: Meio ambiente ecologicamente equilibrado (âncoras: CF/88, art. 225; Lei 6.938/1981; Lei 12.651/2012 (Código Florestal))
+  - cultura_lazer: Cultura, esporte e lazer (âncoras: CF/88, art. 6º; CF/88, art. 215; CF/88, art. 216; CF/88, art. 217)
+  - direitos_crianca_adolescente: Direitos da criança e do adolescente (âncoras: CF/88, art. 227; CF/88, art. 228; Lei 8.069/1990 (ECA))
+  - direitos_idoso: Direitos da pessoa idosa (âncoras: CF/88, art. 230; Lei 10.741/2003 (Estatuto da Pessoa Idosa))
+  - direitos_pcd: Direitos da pessoa com deficiência (âncoras: CF/88, art. 23, II; CF/88, art. 227, §1º, II; Lei 13.146/2015 (LBI); Decreto 6.949/2009 (Convenção de Nova York))
+  - direitos_mulher: Direitos das mulheres (âncoras: CF/88, art. 5º, I; CF/88, art. 226, §8º; Lei 11.340/2006 (Maria da Penha); Lei 14.611/2023)
+  - direitos_lgbtqia: Direitos LGBTQIA+ (âncoras: CF/88, art. 3º, IV; CF/88, art. 5º, caput; STF, ADO 26 / MI 4.733)
+  - direitos_indigenas_quilombolas: Direitos indígenas e quilombolas (âncoras: CF/88, art. 231; CF/88, art. 232; ADCT, art. 68; Decreto 5.051/2004 (Convenção 169 da OIT))
+  - direitos_consumidor: Direitos do consumidor (âncoras: CF/88, art. 5º, XXXII; CF/88, art. 170, V; Lei 8.078/1990 (CDC))
+  - acesso_justica: Acesso à justiça (âncoras: CF/88, art. 5º, XXXV; CF/88, art. 5º, LXXIV; CF/88, art. 134)
+  - participacao_democratica: Participação democrática e controle social (âncoras: CF/88, art. 1º, parágrafo único; CF/88, art. 14; CF/88, art. 5º, XXXIII; Lei 12.527/2011 (LAI))
+
+MECANISMOS (use exatamente estes slugs):
+  - cria_direito: Cria direito novo [amplia]
+  - amplia_titularidade: Amplia quem tem o direito [amplia]
+  - amplia_acesso: Facilita o acesso ao direito [amplia]
+  - cria_garantia_processual: Cria garantia processual [amplia]
+  - aumenta_financiamento: Amplia financiamento da política [amplia]
+  - cria_mecanismo_fiscalizacao: Cria fiscalização ou controle [amplia]
+  - criminaliza_violacao: Pune quem viola o direito [amplia]
+  - revoga_direito: Revoga direito existente [restringe]
+  - restringe_titularidade: Reduz quem tem o direito [restringe]
+  - cria_requisito_acesso: Cria exigência para acessar o direito [restringe]
+  - flexibiliza_limite: Flexibiliza limite protetivo [restringe]
+  - reduz_financiamento: Reduz financiamento da política [restringe]
+  - desregulamenta_protecao: Desregulamenta proteção existente [restringe]
+  - transfere_onus_ao_titular: Transfere o ônus ao titular do direito [restringe]
+  - criminaliza_conduta_do_titular: Criminaliza conduta do próprio titular [restringe]
+  - aumenta_pena: Aumenta pena ou rigor punitivo [restringe]
+  - restringe_garantia_processual: Restringe garantia processual [restringe]
+
+GRAU: marginal (ajuste pontual) | moderado (muda a política) | estrutural (muda o patamar do direito)
+
+Devolva JSON exatamente neste formato:
+{
+  "direitos_afetados": [
+    {
+      "direito": "<slug da lista>",
+      "dispositivo": "<artigo concreto, ex.: 'CF/88, art. 7º, XIII'>",
+      "direcao": "amplia" | "restringe" | "neutro",
+      "mecanismo": "<slug da lista>",
+      "titulares": ["<quem é afetado>"],
+      "grau": "marginal" | "moderado" | "estrutural",
+      "trecho": "<citação literal>",
+      "confianca": <0.0 a 1.0>
+    }
+  ],
+  "clausula_petrea": <true se toca direito protegido pelo art. 60, §4º da CF>,
+  "vedacao_retrocesso": <true se reduz patamar de direito social já conquistado>,
+  "normas_alteradas": ["<lei/artigo que a proposição altera>"],
+  "resumo_neutro": "<2 a 4 frases: o que a proposição muda, na letra, sem juízo de valor>"
+}
