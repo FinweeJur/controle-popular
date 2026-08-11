@@ -71,6 +71,17 @@ e FEAM sem deduplicar conta a mesma barragem duas vezes.
 
 **Fonte:** `sistemas.meioambiente.mg.gov.br/reunioes/reuniao-copam/index-externo`
 
+> **Teste de viabilidade feito em 2026-08-11, ver `F0-discovery.md` §14: ✅ VIÁVEL.**
+> 21 reuniões testadas ao vivo, 97,2% dos itens substantivos com município recuperado
+> (100% dos que de fato tratam de um lugar — os "5%" restantes são itens administrativos
+> que corretamente não têm município, não falha de extração). **O método muda a tarefa 3
+> abaixo:** o município sai de um campo estruturado (`<td>Município</td>`) na própria
+> página de detalhe, sem abrir PDF — a leitura de PDF (1 por reunião, a Pauta consolidada,
+> não os anexos individuais) só entra como reforço nas reuniões onde esse campo veio
+> vazio (§14.3 lista as armadilhas: item pode ter mais de um município, chave de junção
+> é por prefixo numérico, classificador de "item administrativo" precisa de várias
+> grafias). Isto é diferente do que a tarefa 3 original supunha ("ler o texto da âncora").
+
 **Tarefas:**
 1. Migration: `copam_reunioes` (data, câmara técnica, situação, link) e
    `copam_pauta_itens` (processo, empreendimento, município, tipo de decisão,

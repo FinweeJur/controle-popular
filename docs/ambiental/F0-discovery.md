@@ -1,6 +1,7 @@
 # Ambiental — F0 · Descoberta de fontes
 
-> Sondado ao vivo em **2026-08-07** (§1-9) e **2026-08-09** (§10-13). Tudo abaixo foi
+> Sondado ao vivo em **2026-08-07** (§1-9), **2026-08-09** (§10-13) e **2026-08-11**
+> (§14, teste de viabilidade da extração de município do COPAM). Tudo abaixo foi
 > verificado contra o serviço real; o que não foi está marcado **[VERIFY]** e nomeia
 > quem tem de resolver. Licenças de uso das fontes: `docs/ambiental/PROVENIENCIA.json`.
 >
@@ -18,6 +19,12 @@
 > do IGAM foram verificados um a um e **fechados por escrito** — nenhum é consulta
 > pública por município (§13.4); e o SIGIBAR ficou de fora **por política** (reCAPTCHA
 > Enterprise), com o contrato registrado para o caso de a decisão mudar (§13.1).
+>
+> **2026-08-11 — teste de viabilidade pedido antes de escrever a tela do F3 (COPAM):**
+> a "dor nº 1" do §4 (dá para saber a que município um item de pauta se refere?) está
+> **respondida: sim, 97,2% dos itens substantivos numa amostra de 21 reuniões (§14)** —
+> e pelo método certo é **melhor** do que o §4 previa: um campo estruturado
+> `<td>Município</td>` na própria página de detalhe, não a leitura de PDF por PDF.
 
 O eixo `/ambiental` cobre licenciamento ambiental de MG (SEMAD/COPAM), barragens e um
 painel unificado de legislação ambiental nacional e estadual.
@@ -802,3 +809,113 @@ de exposição de CPF já documentado em §12.2. Fica registrado como pista, nã
 município, exige join espacial com a malha do IBGE, cuja licença é o [VERIFY] #3 da §8.
 O que o IGAM regula e é coletável hoje chega por **outros** órgãos: barragens via SNISB
 (§11, 1.523 delas atribuídas ao IGAM) e autuação via CAP (§13.2).
+
+---
+
+## 14. COPAM — teste de viabilidade da extração de município ✅ VIÁVEL, método melhor do que o §4 previa
+
+> Verificado ao vivo em 2026-08-11 (`requests` puro, sem curl_cffi — o host não exige
+> impersonar TLS), a pedido do usuário, **antes de escrever a tela `/ambiental/copam`**.
+> Pergunta: dado um item de pauta, dá para saber de forma confiável a que município ele se
+> refere? Resposta medida: **sim, e a fonte melhor não é o PDF da pauta em si — é um campo
+> estruturado na própria página de detalhe que o §4 não tinha visto.**
+
+### 14.1 O achado que muda o desenho do coletor
+
+`GET /reunioes/reuniao-copam/view-externo?id={id}` traz, além de Convocação/Pauta/Decisão/Ata
+(já documentados no §4), um fieldset **"Documento(s) inerente(s) à pauta"** com uma
+`<table>` de 3 colunas: **Nome do Arquivo · Município · Ações**. O `<td>` do meio é o nome
+do município **como valor de campo estruturado**, preenchido pelo servidor — não é texto
+livre para regex, é literalmente `<td>Sete Lagoas</td>`. Não precisa abrir PDF nenhum para
+esta fonte. Exemplo real (reunião id=1991, 61ª RO da URC CM):
+
+```html
+<tr><td>Item 7.1. Parecer Pro-Flora Agroflorestal Ltda.pdf</td><td>Sete Lagoas</td>...
+<tr><td>Item 7.2. Parecer Flávio Grisi - Minérios e Jazidas Minerais.pdf</td><td>Ouro Preto</td>...
+<tr><td>Item 8.1. Parecer Alcântara Participações Ltda.pdf</td><td>Sarzedo</td>...
+```
+
+Isto é **diferente** do achado do §4 ("o rótulo do anexo mora no texto da âncora") — aquele
+resolve Pauta-vs-Ata (qual documento é qual), este resolve **a que município o item se
+refere**. Os dois achados coexistem; nenhum invalida o outro.
+
+### 14.2 Amostra e taxa de sucesso — camada 1 (campo estruturado, sem abrir PDF)
+
+**21 reuniões** testadas ao vivo (acima do pedido de 10-15), cobrindo os dois formatos de
+colegiado (7 URCs regionais: CM, ZM, NOR, JEQ, NM, SM, ASF — e 6 câmaras sede: CMI, CNR,
+CID, CIF, CAP, CPB), reuniões futuras (id=2011, 20/08/2026, já publicada) e reuniões de
+maio-agosto/2026, ordinárias e uma extraordinária.
+
+Excluídos da contagem os itens administrativos (exame de ata, indicação de representante —
+não têm e não deveriam ter município). Nos **176 itens substantivos restantes**:
+
+| Camada | Município recuperado | Taxa |
+|---|---:|---:|
+| 1 — só o campo `<td>Município</td>` | 138 / 176 | **78,4%** |
+
+O sucesso **não é uniforme por reunião**: 17 das 21 reuniões vieram 80-100% preenchidas
+(a maioria 100%), mas 3 vieram baixas — **id=1997 (180ª RO URC NM): 0/20**, **id=1980
+(179ª RO URC NM): 5/13**, **id=1979 (122ª RE da CPB): 0/5**. Confirmado lendo o HTML bruto
+(não é bug de parser): a SEMAD simplesmente não preencheu o campo nessas reuniões. As duas
+piores são da **mesma URC (Norte de Minas)** — pista de que é hábito de quem lança o dado
+naquela regional, não aleatório.
+
+### 14.3 Camada 2 — o PDF da Pauta consolidada como reforço, testado nas 6 reuniões com lacuna
+
+Toda reunião tem **um único PDF de Pauta** (não confundir com os PDFs individuais de
+parecer/recurso da tabela) e ele **tem camada de texto** (`pymupdf`/`fitz` extrai sem OCR,
+2-3 páginas, 2.600-14.400 caracteres por pauta nesta amostra). Testado nas 6 reuniões que
+tinham alguma lacuna na camada 1 (1997, 1980, 1979, 1971, 2008, 1978): todo item substantivo
+traz o padrão **`<Município>/MG`** colado perto do número do processo. Exemplo real (pauta
+da reunião id=1997, onde a camada 1 deu 0%):
+
+```
+6.1 Lenimar Ribas Rabelo - ... - Ibiracatu/MG - PA/CAP/Nº 12000000902/15 - AI/Nº 40779/2011.
+7.1 Agro Industrial de Lassance Ltda./Fazenda Boa Esperança - ... - Lassance/MG - Licença de Operação Corretiva ...
+9.2 Companhia de Saneamento de Minas Gerais - COPASA - ... - Montes Claros/MG - PA/CAP/Nº 818167/26 ...
+```
+
+Das **38 lacunas da camada 1** (176 − 138), a camada 2 resolveu **33** com confiança alta.
+As **5 restantes não são falha — são município genuinamente inaplicável**: item normativo
+sem local (`6.1` da 213ª RO da CNR, "Minuta de Deliberação Normativa Copam", 3 lacunas),
+apresentação de programa (`6` da 144ª RO da URC JEQ, "Diálogos com o Sisema", 1 lacuna) e
+uma ata mal-rotulada ("Item 05 ATA 144ª URC JEQ.pdf", sem o texto literal "Exame da Ata",
+1 lacuna — mostra que o classificador de "item administrativo" por regex de nome de
+arquivo precisa de mais variantes, problema à parte da extração de município).
+
+**Taxa combinada, camada 1 + camada 2, sobre os itens que de fato tratam de um lugar:
+171/171 = 100%** nesta amostra. Contando os 5 administrativos como zero (postura
+conservadora): **171/176 = 97,2%**. Muito acima do corte de 80% do pedido.
+
+### 14.4 Armadilhas medidas para quem escrever o coletor (F3)
+
+- **Chave de junção item↔pauta é o prefixo numérico, não string exata.** A tabela usa
+  granularidade por *documento* (`Item 06.1.1`, `Item 06.1.2`, `Item 06.1.3`... — vários
+  PDFs por item) e a Pauta usa granularidade por *item* (`6.1`). Casar pelo prefixo
+  (`6.1` ⊂ `06.1.1`), não pelo texto inteiro.
+- **Um item pode ter mais de um município.** id=1979, item 5.1 (Vale S.A., plano de
+  compensação) cita três operações em três municípios diferentes num único item
+  (`Itabirito, Nova Lima e Rio Acima/MG` e depois `São Gonçalo do Rio Abaixo/MG`). Campo
+  tem de ser lista, não string única — assumir 1:1 quebra silenciosamente neste caso real.
+- **O rótulo "administrativo" não é um único padrão de texto.** "Exame da Ata da X RO",
+  "ATA X URC JEQ", "Indicação de representante..." são três grafias distintas pro mesmo
+  tipo de item; um classificador com uma regex só vai contar ata como item substantivo sem
+  município (falso "gap").
+- **Normalização de acento.** A resposta HTTP declara `charset=UTF-8` e os bytes batem
+  (`Reuniões` = `\xc3\xb5` correto) — mojibake visto no terminal Windows durante o teste é
+  problema de codepage do console, não do dado; confirmado lendo os bytes crus.
+- **Sem `robots.txt`** em `sistemas.meioambiente.mg.gov.br` (404, mesma situação do SIAM,
+  §6) — sem restrição publicada. Nenhum 403/429/CAPTCHA em ~30 requisições desta sessão
+  (21 páginas de detalhe + 6 PDFs de pauta + 2 páginas de listagem), com `User-Agent`
+  identificável e ≥1s entre pedidos — mesma política do §2.2.
+- **Não testado nesta sessão** (fica para quem escrever o coletor): parser de regex de
+  produção para `<Município>/MG` contra os 853 nomes reais de município (evitar falso
+  positivo em nomes compostos com "de/da/dos"); volume completo (454 reuniões ÷ 20 por
+  página ≈ 23 páginas de listagem, e um PDF de pauta a mais por reunião que caiu na
+  camada 2 — custo desprezível, mas não medido em escala real).
+
+**Veredito para o F3 do plano de execução:** a seção é viável com folga. O método certo é
+**camada 1 primeiro (tabela estruturada, sem PDF), camada 2 como reforço (1 PDF de pauta
+por reunião, só quando a camada 1 vier vazia)** — não o que o §4 sugeria (ler âncora/nome
+de anexo por item). PDF individual de parecer/recurso (um por documento) **não precisa
+ser aberto** para este propósito.
