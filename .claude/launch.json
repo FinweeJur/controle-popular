@@ -14,6 +14,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3901"],
       "port": 3901
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-ambiental-legislacao) -- mesma razao da 3901 acima.",
+      "name": "cp-ambiental-legislacao-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3902"],
+      "port": 3902
     }
   ]
 }

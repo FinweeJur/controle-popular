@@ -2,6 +2,7 @@ import Link from "@/lib/ambiental/link";
 import { ZONAS } from "@/lib/zonas";
 import { formatNumberBR } from "@/lib/betim/format";
 import { contarReunioesCopam } from "@/lib/db/queries/copam";
+import { contarLegislacaoAmbiental } from "@/lib/db/queries/legislacao-ambiental";
 
 /**
  * Home da zona /ambiental.
@@ -20,12 +21,24 @@ import { contarReunioesCopam } from "@/lib/db/queries/copam";
  * ficou real (`etl.apis.copam_reunioes`, migration `0058`): agora o número
  * vem do banco, com o verbo no passado ("coletadas"), e o bloco é um link
  * de verdade para `/ambiental/copam` — não mais só uma promessa de fase.
+ *
+ * ═══ F6 (LEGISLAÇÃO) SEGUE A MESMA REGRA ═══
+ *
+ * O bloco anunciava "Federal e estadual no mesmo lugar" sem coletor nenhum
+ * rodado. Agora os três coletores (`etl.apis.legislacao_almg`/
+ * `legislacao_semad`/`legislacao_siam`, migration `0063`) já escreveram no
+ * banco local, e o bloco mostra o total real, não a soma que as fontes
+ * declaram em separado (que dobra contagem — ver a nota de `chave_dedup`
+ * na migration).
  */
 
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
 
 export default async function AmbientalHome() {
-  const { reunioes, itens } = await contarReunioesCopam();
+  const [{ reunioes, itens }, legislacao] = await Promise.all([
+    contarReunioesCopam(),
+    contarLegislacaoAmbiental(),
+  ]);
 
   const BLOCOS = [
     {
@@ -39,6 +52,7 @@ export default async function AmbientalHome() {
       fase: "F3",
       href: "/copam",
       pronta: reunioes > 0,
+      cta: "Ver a pauta →",
     },
     {
       titulo: "Licenciamento",
@@ -60,12 +74,16 @@ export default async function AmbientalHome() {
     },
     {
       titulo: "Legislação ambiental",
-      linha: "Federal e estadual no mesmo lugar",
+      linha:
+        legislacao.total > 0
+          ? `${formatNumberBR(legislacao.total)} normas coletadas, de três fontes`
+          : "ALMG, Semad e Siam — três fontes que não conversam",
       texto:
-        "Hoje a norma que interessa está partida entre cinco sistemas que não conversam: MMA, Conama, ALMG, Siam e o banco da Semad. Aqui vira uma busca só.",
+        "Leis, decretos, deliberações e portarias ambientais de Minas Gerais, das três fontes que hoje não conversam entre si, numa busca só — com a fonte de cada uma sempre visível.",
       fase: "F6",
-      href: null,
-      pronta: false,
+      href: "/legislacao",
+      pronta: legislacao.total > 0,
+      cta: "Buscar legislação →",
     },
   ];
 
@@ -85,9 +103,9 @@ export default async function AmbientalHome() {
           className="max-w-2xl rounded-lg border px-4 py-3 text-[.95em]"
           style={{ borderColor: ZONA.cor }}
         >
-          <strong>Seção em construção, por fase.</strong> A pauta do COPAM (F3) já tem tela real,
-          abaixo. Licenciamento, barragens estaduais e legislação seguem com fonte verificada e
-          documentada, tela ainda não.
+          <strong>Seção em construção, por fase.</strong> A pauta do COPAM (F3) e a legislação
+          ambiental (F6) já têm tela real, abaixo. Licenciamento e barragens estaduais seguem com
+          fonte verificada e documentada, tela ainda não.
         </p>
       </header>
 
@@ -107,7 +125,7 @@ export default async function AmbientalHome() {
               <p className="mt-2 flex-1 text-[.92em] text-text-soft">{b.texto}</p>
               {b.pronta && b.href ? (
                 <p className="mt-3 text-[.85em] font-semibold" style={{ color: ZONA.cor }}>
-                  Ver a pauta →
+                  {b.cta}
                 </p>
               ) : null}
             </>
