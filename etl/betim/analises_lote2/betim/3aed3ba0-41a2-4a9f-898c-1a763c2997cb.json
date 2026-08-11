@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população do Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o programa municipal de saúde bucal com unidades móveis no município de Betim e dá outras providências.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui programa municipal de saúde bucal com unidades móveis no Município de Betim. O projeto foi arquivado; a situação de tramitação não altera o que o texto propunha."
+}

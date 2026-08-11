@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "mães solo do Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Estabelece o reconhecimento e a proteção à figura da mãe solo no âmbito do Município de Betim.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto estabelece o reconhecimento e a proteção à figura da mãe solo no Município de Betim. O texto foi sancionado."
+}

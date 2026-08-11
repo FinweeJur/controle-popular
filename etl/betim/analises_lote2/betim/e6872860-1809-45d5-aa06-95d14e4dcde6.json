@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pais de crianças atípicas atendidos pelo SUS em Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre a prioridade no atendimento psicológico a pais de crianças atípicas no Sistema Único de Saúde (SUS) no município de Betim e dá outras providências.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a prioridade no atendimento psicológico, no SUS, a pais de crianças atípicas no Município de Betim. O projeto foi vetado; a situação de tramitação não altera o que o texto propunha."
+}

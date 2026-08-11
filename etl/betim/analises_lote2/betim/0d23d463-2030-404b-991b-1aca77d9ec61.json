@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "CF/88, art. 5º, XXXII",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "famílias de alunos de educação infantil em instituições privadas de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre o reaproveitamento de materiais didáticos nas instituições privadas de educação infantil do Município de Betim e dá outras providências.",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre o reaproveitamento de materiais didáticos nas instituições privadas de educação infantil do Município de Betim, reduzindo a necessidade de recompra a cada ano."
+}

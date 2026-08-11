@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população masculina do Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "Acrescenta dispositivo à Lei nº 4.174, de 06 de julho de 2005, que institui a Semana da Saúde do Homem no Município de Betim, para incluir ações voltadas à promoção da saúde mental masculina.",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 4.174/2005"
+  ],
+  "resumo_neutro": "O projeto acrescenta dispositivo à Lei nº 4.174/2005, que institui a Semana da Saúde do Homem em Betim, para incluir ações de promoção da saúde mental masculina. O projeto foi substituído; a situação de tramitação não altera o que o texto propunha."
+}

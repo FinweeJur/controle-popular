@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "alimentacao",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_titularidade",
+      "titulares": [
+        "alunos da rede municipal com diabetes, doença celíaca e intolerância à lactose"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre o direito à alimentação escolar adequada ao aluno com diabetes, doença celíaca e intolerância à lactose.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre o direito à alimentação escolar adequada para alunos com diabetes, doença celíaca e intolerância à lactose. O projeto foi arquivado; a situação de tramitação não altera o que o texto propunha."
+}

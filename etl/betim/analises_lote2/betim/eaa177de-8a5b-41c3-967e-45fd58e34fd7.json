@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com Transtorno do Espectro Autista (TEA) e pessoas com deficiência do Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o programa de vacinação domiciliar para pessoas com transtorno do espectro autista (TEA) e pessoas com deficiência (PCDS) no município de Betim e dá outras providências.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui programa de vacinação domiciliar destinado a pessoas com Transtorno do Espectro Autista (TEA) e pessoas com deficiência no Município de Betim. O projeto foi arquivado; a situação de tramitação não altera o que o texto propunha."
+}

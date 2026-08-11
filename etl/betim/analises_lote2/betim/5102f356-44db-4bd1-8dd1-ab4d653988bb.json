@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "alunos da rede pública municipal de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Saúde na Escola no âmbito do Município de Betim.",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Saúde na Escola no âmbito do Município de Betim, voltado a levar ações de saúde aos alunos da rede pública. O projeto foi vetado; a situação de tramitação não altera o que o texto propunha."
+}
