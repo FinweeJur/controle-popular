@@ -1368,6 +1368,66 @@ export const feam_barragens = pgTable("feam_barragens", {
 	unique("feam_barragens_id_municipio_nome_key").on(table.id_municipio, table.nome),
 ]);
 
+/**
+ * Reuniões do COPAM, via `etl/betim/etl/apis/copam_reunioes.py`, migration
+ * 0058. `situacao` é DERIVADA pelo coletor (presença de Decisão/Ata na
+ * fonte + data), a fonte não publica um campo de status — ver a docstring
+ * da migration.
+ */
+export const copam_reunioes = pgTable("copam_reunioes", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_fonte: integer().notNull(),
+	titulo: text().notNull(),
+	data: date().notNull(),
+	camara_tecnica: text(),
+	regional: text(),
+	situacao: text().notNull(),
+	link_detalhe: text().notNull(),
+	link_pauta_pdf: text(),
+	link_decisao_pdf: text(),
+	link_ata_pdf: text(),
+	qtd_itens_pauta: integer().default(0).notNull(),
+	atualizado_em: date(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("copam_reunioes_data_idx").using("btree", table.data.desc().nullsFirst().op("date_ops")),
+	index("copam_reunioes_situacao_idx").using("btree", table.situacao.asc().nullsLast().op("text_ops")),
+	unique("copam_reunioes_id_fonte_key").on(table.id_fonte),
+]);
+
+/**
+ * Itens de pauta do COPAM. `municipios_ids`/`municipios_nomes` são arrays
+ * PARALELOS (mesma ordem, mesmo tamanho) — um item pode tratar de mais de
+ * um município (ex. plano de compensação com operações em três cidades),
+ * ver a nota da migration `0058`. Array vazio = item sem local (política
+ * geral), não falha de extração.
+ */
+export const copam_pauta_itens = pgTable("copam_pauta_itens", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_reuniao: uuid().notNull(),
+	numero_item: text().notNull(),
+	processo: text(),
+	empreendimento: text(),
+	municipios_ids: text().array().default([]).notNull(),
+	municipios_nomes: text().array().default([]).notNull(),
+	municipio_fonte: text(),
+	decisao: text(),
+	texto_pauta: text().notNull(),
+	link_documento: text(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("copam_pauta_itens_reuniao_idx").using("btree", table.id_reuniao.asc().nullsLast().op("uuid_ops")),
+	index("copam_pauta_itens_municipios_idx").using("gin", table.municipios_ids.asc().nullsLast().op("array_ops")),
+	foreignKey({
+			columns: [table.id_reuniao],
+			foreignColumns: [copam_reunioes.id],
+			name: "copam_pauta_itens_id_reuniao_fkey"
+		}).onDelete("cascade"),
+	unique("copam_pauta_itens_id_reuniao_numero_item_key").on(table.id_reuniao, table.numero_item),
+]);
+
 export const mortalidade = pgTable("mortalidade", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
 	id_municipio: text().notNull(),
