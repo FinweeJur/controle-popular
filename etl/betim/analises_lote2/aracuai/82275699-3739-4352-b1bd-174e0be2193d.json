@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "crianças e adolescentes do município"
+      ],
+      "grau": "moderado",
+      "trecho": "CRIAÇÃO DO PROJETO GUARDA MIRIM MUNICIPAL DE ARAÇUAÍ-MG",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o Projeto Guarda Mirim Municipal de Araçuaí, programa municipal voltado a crianças e adolescentes do município."
+}

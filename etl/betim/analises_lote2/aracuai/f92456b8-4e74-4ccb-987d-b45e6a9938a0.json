@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do município",
+        "bacia hidrográfica local"
+      ],
+      "grau": "moderado",
+      "trecho": "PROÍBE A EXTRAÇÃO DE OURO E MINÉRIOS PRECIOSOS POR MEIO DE PROCESSO MECÂNICO MOTORIZADO NA BACIA HIDROGRÁFICA DO MUNICÍPIO DE ARAÇUAÍ",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei proíbe a extração de ouro e minérios preciosos por processo mecânico motorizado na bacia hidrográfica do município de Araçuaí. É medida de proteção ambiental que restringe atividade minerária mecanizada na área, sem alterar lei específica citada na ementa."
+}

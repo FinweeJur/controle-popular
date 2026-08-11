@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º, VI",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "servidores públicos municipais ativos e inativos",
+        "pensionistas",
+        "agentes políticos do Poder Executivo municipal"
+      ],
+      "grau": "moderado",
+      "trecho": "CONCEDER RECUPERAÇÃO INFLACIONÁRIA SOBRE OS VENCIMENTOS DOS SERVIDORES PÚBLICOS MUNICIPAIS ATIVOS E INATIVOS, AOS PENSIONISTAS E AGENTES POLÍTICOS DO PODER EXECUTIVO MUNICIPAL",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo municipal a conceder recuperação inflacionária sobre os vencimentos dos servidores públicos municipais ativos e inativos, pensionistas e agentes políticos do Poder Executivo. É reajuste remuneratório destinado a recompor perda inflacionária."
+}

@@ -1,0 +1,24 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "Lei Municipal nº 413/2017, art. 4º e art. 6º",
+      "direcao": "neutro",
+      "mecanismo": "",
+      "titulares": [
+        "população do município",
+        "árvores urbanas"
+      ],
+      "grau": "marginal",
+      "trecho": "ALTERA A REDAÇÃO DO ART. 4º E ART. 6º DA LEI MUNICIPAL Nº 413 DE 08 DE DEZEMBRO DE 2017, QUE DISPÕE SOBRE A PODA, CORTE E SUPRESSÃO DE ÁRVORES NO MUNICÍPIO DE ARAÇUAÍ",
+      "confianca": 0.35
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 413/2017, art. 4º",
+    "Lei Municipal nº 413/2017, art. 6º"
+  ],
+  "resumo_neutro": "A lei altera a redação dos artigos 4º e 6º da Lei Municipal nº 413/2017, que dispõe sobre poda, corte e supressão de árvores no município de Araçuaí. A ementa não especifica o teor da alteração, não sendo possível determinar se amplia ou restringe a proteção ambiental vigente."
+}

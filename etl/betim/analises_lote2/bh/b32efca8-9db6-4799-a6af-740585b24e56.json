@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população do município"
+      ],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre o Programa de Combate à Cultura do Crime Organizado no Município",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre o Programa de Combate à Cultura do Crime Organizado no município de Belo Horizonte. A ementa não detalha as ações concretas do programa, mas indica a criação de política municipal de prevenção."
+}
