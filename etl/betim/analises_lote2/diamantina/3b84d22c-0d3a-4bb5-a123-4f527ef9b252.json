@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 198",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "pacientes atendidos pela rede municipal de saúde de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "Cria i cargo de cuidador em saúde",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o cargo de cuidador em saúde no quadro do Município. É ampliação de força de trabalho da rede municipal de saúde."
+}

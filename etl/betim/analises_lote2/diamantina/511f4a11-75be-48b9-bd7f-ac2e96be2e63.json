@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 198",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "usuários do SUS no Município de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "Implanta, no âmbito do Município de Diamantina, o Núcleo de Apoio á Saúde da Família (NASF)",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei implanta o Núcleo de Apoio à Saúde da Família (NASF) no Município de Diamantina e cria as funções necessárias ao seu funcionamento. É ampliação de estrutura de atenção primária à saúde, sem redução de direito."
+}

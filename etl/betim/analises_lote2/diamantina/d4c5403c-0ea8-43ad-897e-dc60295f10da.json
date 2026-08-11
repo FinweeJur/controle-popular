@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "estudantes da rede municipal de ensino de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "Homologa a aquisição de terrenos para a Construção de Escolas",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei homologa a aquisição de terrenos destinados à construção de escolas no Município. É investimento em infraestrutura educacional, sem redução de direito."
+}
