@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "CF/88, art. 5º, XXXII",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "consumidores do município de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre a organização do Sistema Municipal de Defesa do Consumidor - SMDC, institui a Coordenadoria Municipal de Proteção e Defesa do Consumidor - PROCON, o Conselho Municipal de Proteção e Defesa do Consumidor - CONDECON, e institui o Fundo Municipal de Proteção e Defesa do Consumidor - FMDC",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei organiza o Sistema Municipal de Defesa do Consumidor de Diamantina, criando a Coordenadoria Municipal (PROCON), o Conselho Municipal (CONDECON) e o Fundo Municipal de Proteção e Defesa do Consumidor (FMDC). Estrutura institucionalmente a defesa do consumidor no âmbito municipal."
+}

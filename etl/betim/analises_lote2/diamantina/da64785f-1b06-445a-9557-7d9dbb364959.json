@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "igualdade_nao_discriminacao",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população negra e afrodescendente do município de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre a criação do conselho Municipal de promoção da igualdade racial - COMPIR - e do fundo municipal de promoção da igualdade racial - FUMPI",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o Conselho Municipal de Promoção da Igualdade Racial (COMPIR) e o Fundo Municipal de Promoção da Igualdade Racial (FUMPI) em Diamantina. Institui estrutura de controle social e financiamento para políticas de promoção da igualdade racial."
+}
