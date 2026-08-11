@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "amplia_titularidade",
+      "titulares": [
+        "professor de educação básica da rede pública",
+        "professor de educação básica da rede privada"
+      ],
+      "grau": "moderado",
+      "trecho": "Assegura ao professor de educação básica das redes pública e privada a meia-entrada em evento cultural e esportivo, espetáculo artístico-cultural, show, teatro, cinema e museu no Município",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei assegura ao professor de educação básica das redes pública e privada o direito à meia-entrada em eventos culturais e esportivos, espetáculos artístico-culturais, shows, teatros, cinemas e museus no Município. A medida amplia para essa categoria profissional um benefício já concedido a outros grupos."
+}

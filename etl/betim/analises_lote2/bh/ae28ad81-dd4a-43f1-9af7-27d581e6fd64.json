@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população masculina"
+      ],
+      "grau": "moderado",
+      "trecho": "Autoriza o Poder Executivo a instituir a Política Municipal de Atenção Integral à Saúde do Homem",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo a instituir a Política Municipal de Atenção Integral à Saúde do Homem. Por se tratar de autorização, a efetiva instituição e regulamentação da política dependem de ato do Executivo, não detalhado na ementa."
+}

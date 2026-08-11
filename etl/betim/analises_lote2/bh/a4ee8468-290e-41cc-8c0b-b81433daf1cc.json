@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoa autista"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui, no Município, o selo Estabelecimento Amigo do Autista",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o selo Estabelecimento Amigo do Autista, destinado a estabelecimentos que adotem práticas de acolhimento a pessoas autistas. A ementa não descreve os requisitos concretos para obtenção do selo."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoa idosa"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Programa de Apadrinhamento Afetivo de Idosos no Município",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa de Apadrinhamento Afetivo de Idosos no Município, destinado a criar vínculos de convivência entre voluntários e pessoas idosas. A ementa não especifica os critérios de participação nem o órgão gestor do programa."
+}

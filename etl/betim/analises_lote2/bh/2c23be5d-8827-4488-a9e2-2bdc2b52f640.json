@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "Lei 8.078/1990 (CDC)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "consumidor",
+        "cliente sem acesso a smartphone ou dados móveis"
+      ],
+      "grau": "marginal",
+      "trecho": "Obriga os estabelecimentos comerciais que menciona a disponibilizar ao cliente versão impressa de seu cardápio ou o acesso a tablet para consulta ao cardápio",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei obriga os estabelecimentos comerciais que menciona a disponibilizar ao cliente versão impressa do cardápio ou acesso a tablet para consulta, como alternativa ao cardápio exclusivamente digital via QR code. A ementa não especifica quais estabelecimentos estão sujeitos à obrigação nem eventuais sanções."
+}

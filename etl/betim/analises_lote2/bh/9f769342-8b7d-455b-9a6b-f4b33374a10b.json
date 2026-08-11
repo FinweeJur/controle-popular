@@ -1,0 +1,24 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "gestante",
+        "parturiente",
+        "puérpera"
+      ],
+      "grau": "marginal",
+      "trecho": "Altera a Lei nº 11.609/23, que dispõe sobre a promoção da dignidade da gestante, da parturiente e da puérpera e sobre o enfrentamento da violência obstétrica no Município",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 11.609/2023"
+  ],
+  "resumo_neutro": "A lei altera a Lei nº 11.609/2023, que trata da promoção da dignidade da gestante, da parturiente e da puérpera e do enfrentamento da violência obstétrica no Município. A ementa não especifica o artigo alterado nem o teor exato da mudança."
+}

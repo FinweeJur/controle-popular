@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoa com Transtorno do Espectro Autista (TEA)"
+      ],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre a garantia de vacinação domiciliar para pessoas com Transtorno do Espectro Autista no Município de Belo Horizonte e dá outras providências",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei garante a vacinação domiciliar para pessoas com Transtorno do Espectro Autista no Município de Belo Horizonte. A ementa não especifica os critérios de solicitação nem o cronograma de implementação do serviço."
+}

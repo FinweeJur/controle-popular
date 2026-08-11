@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "recém-nascidos",
+        "bebês",
+        "profissionais e usuários da rede pública de saúde"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Programa Municipal de Incentivo à Inclusão de Cursos e Instruções sobre Manobras de Desengasgo em Recém-nascidos e Bebês na rede pública de saúde do Município",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui programa municipal para incentivar a inclusão de cursos e instruções sobre manobras de desengasgo em recém-nascidos e bebês na rede pública de saúde. A ementa não especifica o público-alvo dos cursos nem a forma de implementação."
+}

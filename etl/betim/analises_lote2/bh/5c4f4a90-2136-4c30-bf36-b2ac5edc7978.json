@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "praticantes e setor de jogos e esportes eletrônicos"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui a Política Municipal de Fomento aos Jogos Eletrônicos e aos Esportes Eletrônicos - e-sports",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal de Fomento aos Jogos Eletrônicos e aos Esportes Eletrônicos (e-sports), estabelecendo política pública de incentivo ao setor. A ementa não detalha os instrumentos concretos de fomento previstos."
+}
