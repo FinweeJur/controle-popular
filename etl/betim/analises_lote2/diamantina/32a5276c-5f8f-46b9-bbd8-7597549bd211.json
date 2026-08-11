@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do município de Diamantina, por meio das ações de controle de endemias e vigilância em saúde"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre aplicação de multa aos proprietários possuidores, detentores ou responsáveis, a qualquer título, por imóveis, no Município, que recusarem o recebimetno de visita dos Agentes de Controle de Endemias (ACE), Agentes Comunitários de Saúde (ACS) ou dos demais profissionais que desempenham atividades de promoção, prevenção e vigilância em saúde",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei aplica multa a proprietários, possuidores ou responsáveis por imóveis no município que recusarem a visita de Agentes de Controle de Endemias, Agentes Comunitários de Saúde ou outros profissionais de vigilância em saúde. Reforça o poder de fiscalização sanitária municipal por meio de sanção pecuniária ao não cumprimento."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "adolescentes e jovens de 18 a 24 anos no município de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre obrigatoriedade de contratação de adolescentes e jovens de 18 (dezoito) e 24 ( vinte e quatro) anos pelas Empresas Vencedoras de Licitação Pública no Município",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei torna obrigatória a contratação de adolescentes e jovens de 18 a 24 anos pelas empresas vencedoras de licitação pública no município de Diamantina. Cria condicionante de acesso ao emprego voltada à inserção da juventude no mercado de trabalho via contratos públicos."
+}

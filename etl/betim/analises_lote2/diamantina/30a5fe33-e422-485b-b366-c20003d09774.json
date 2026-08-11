@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população do município de Diamantina, trabalhadores da construção civil e usuários de obras públicas"
+      ],
+      "grau": "moderado",
+      "trecho": "Proíbe o uso de amianto ou asbesto em obras públicas no Município",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei proíbe o uso de amianto ou asbesto em obras públicas no município de Diamantina. Cria vedação de natureza sanitária/ambiental voltada à redução da exposição de trabalhadores e da população ao material cancerígeno."
+}

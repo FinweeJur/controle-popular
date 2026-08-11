@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "crianças e adolescentes em situação de acolhimento no município de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Serviço Municipal de Acolhimento Provisório de Crianças e Adolescentes denominado Serviço Família Acolhedora",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Serviço Municipal de Acolhimento Provisório de Crianças e Adolescentes, denominado Serviço Família Acolhedora, em Diamantina. Cria política pública municipal de acolhimento familiar para crianças e adolescentes afastados do convívio familiar de origem."
+}

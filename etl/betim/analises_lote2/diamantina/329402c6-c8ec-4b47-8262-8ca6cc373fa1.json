@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "usuários do Núcleo de Apoio à Saúde da Família (NASF) de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "Altera e acrescenta dispositivos à Lei 3601, de 30 de dezembro de 2010, que implantou, no âmbito do município de Diamantina, o Núcleo de Apoio à Saúde da Família (NASF) e criou as funções que menciona",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei municipal nº 3.601/2010"
+  ],
+  "resumo_neutro": "A lei altera e acrescenta dispositivos à Lei municipal nº 3.601/2010, que implantou o Núcleo de Apoio à Saúde da Família (NASF) em Diamantina, criando funções adicionais no serviço. A ementa não detalha o alcance exato das novas funções."
+}
