@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 5º, XXXIII",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do município de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "INSTITUI NORMAS DE TRANSPARÊNCIA ATIVA PARA A DIVULGAÇÃO DA ORIGEM, FINALIDADE E EXECUÇÃO DAS EMENDAS PARLAMENTARES ESTADUAIS E FEDERAIS RECEBIDAS PELO MUNICÍPIO DE ARAÇUAÍ",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui normas de transparência ativa para a divulgação da origem, finalidade e execução das emendas parlamentares estaduais e federais recebidas pelo município de Araçuaí, ampliando o acesso público a essas informações."
+}

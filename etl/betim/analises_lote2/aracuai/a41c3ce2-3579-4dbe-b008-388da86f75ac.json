@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "grupos vocais e integrantes de grupos vocais de Araçuaí"
+      ],
+      "grau": "marginal",
+      "trecho": "INSTITUI O PROGRAMA MUNICIPAL DE INCENTIVO E VALORIZAÇÃO DOS GRUPOS VOCAIS DE ARAÇUAÍ",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa Municipal de Incentivo e Valorização dos Grupos Vocais de Araçuaí, criando mecanismo de apoio a essa manifestação cultural no município."
+}

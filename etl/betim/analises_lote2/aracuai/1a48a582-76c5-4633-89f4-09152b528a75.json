@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população do município de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "RATIFICA PROTOCOLO DE INTENÇÕES, FIRMADO ENTRE MUNICÍPIOS BRASILEIROS, COM A FINALIDADE DE ADQUIRIR VACINAS PARA COMBATE À PANDEMIA DO CORONAVÍRUS; MEDICAMENTOS, INSUMOS E EQUIPAMENTOS NA ÁREA DA SAÚDE",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei ratifica protocolo de intenções firmado entre municípios brasileiros para aquisição conjunta de vacinas contra a covid-19, medicamentos, insumos e equipamentos de saúde, ampliando o acesso do município a esses itens durante a pandemia."
+}

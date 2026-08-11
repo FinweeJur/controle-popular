@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "restringe",
+      "mecanismo": "desregulamenta_protecao",
+      "titulares": [
+        "população do município de Araçuaí"
+      ],
+      "grau": "marginal",
+      "trecho": "AUTORIZA O PODER EXECUTIVO MUNICIPAL A DESAFETAR PARTE DE ÁREA VERDE PERTENCENTE AO MUNICÍPIO DE ARAÇUAÍ",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo municipal a desafetar parte de uma área verde pertencente ao Município de Araçuaí, com base no art. 93, §1º da Lei Orgânica Municipal, retirando dessa área o regime de proteção que a qualificava como área verde."
+}
