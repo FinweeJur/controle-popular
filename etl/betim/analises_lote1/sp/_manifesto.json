@@ -1,0 +1,132 @@
+{
+  "id_municipio": "3550308",
+  "municipio": "São Paulo",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-lote1",
+  "camadas": {
+    "lei_vigente_com_sinal": 20
+  },
+  "objetos": [
+    {
+      "id": "636b9e72-c01c-4c64-b82a-9f2221f91ef3",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.513/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "1f1ad705-43ab-4871-a7dd-3b1e47cda10b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.511/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "a6dd7316-69fa-4761-a3a5-c45e5f605873",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.510/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "204c4171-f750-4465-bf3f-73c634f5ac19",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.508/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "8289a874-96f5-489f-a4d7-73638e1feb09",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.507/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "87444811-3cd0-4a63-a7b3-7b360491430c",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.505/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "e0512722-7b7c-4632-8532-d01337463f1d",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.499/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "b849dea6-544e-4107-b440-07b6491d371a",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.479/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "f3c62f3b-6ddb-491b-bb36-1d9dac529dd1",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.471/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "07693c7b-b6b1-4d71-b870-ef5076c326ad",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.467/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "4d524bbe-98c2-4e25-9075-6a4ec2bf3607",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.454/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "e7dcffab-1375-42b2-ba1a-8074fb6b9122",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.438/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "f56ad4f2-b80b-4cb8-97ea-1a3bcf6e2e76",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.393/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "a3e1e5ce-33ca-4d28-9437-4f7907ff23e7",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.387/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "dc31b76e-eb8e-4d3d-ad8e-dfed68f94fcb",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.386/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "2ac0a94b-0c1a-4401-9a97-4728e90ae8a8",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.385/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "a15396ee-19b4-4ccd-a2da-aa8b6ddd8109",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.382/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "4664c44c-6148-4e11-b9af-3bfd4172fc29",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.381/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "e92f9ddc-a803-4acd-9033-2e5d48e8c80d",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.380/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "41aed56d-6b58-47ce-b842-dbdc618d1682",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.379/2026",
+      "camada": "lei_vigente_com_sinal"
+    }
+  ]
+}
