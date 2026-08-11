@@ -5,6 +5,9 @@ import {
   montarTituloMunicipal,
   construirVocabulario,
   construirFormas,
+  ABREV_TIPO_PROPOSICAO_MUNICIPAL,
+  abreviacoesCongresso,
+  numeroCongresso,
 } from "./gerador";
 
 describe("parseTsvectorLexemas", () => {
@@ -73,6 +76,48 @@ describe("montarTituloMunicipal", () => {
     expect(montarTituloMunicipal("Lei", null, null, "ato")).toBe("Lei");
     expect(montarTituloMunicipal("Lei", "10", null, "ato")).toBe("Lei nº 10");
     expect(montarTituloMunicipal("Lei", null, 2020, "ato")).toBe("Lei/2020");
+  });
+});
+
+describe("ABREV_TIPO_PROPOSICAO_MUNICIPAL", () => {
+  it("cobre os tipos de maior volume da base (Bug 1)", () => {
+    expect(ABREV_TIPO_PROPOSICAO_MUNICIPAL.projeto_lei).toBe("pl");
+    expect(ABREV_TIPO_PROPOSICAO_MUNICIPAL.requerimento).toBe("req");
+  });
+
+  // "ela" é stopword do dicionário portuguese_stem (pronome) — teria formas["ela"]
+  // sempre vazio. Documentado no comentário do mapa; este teste é a trava.
+  it("nao mapeia emenda_lei_organica pra abreviacao que vira stopword", () => {
+    expect(ABREV_TIPO_PROPOSICAO_MUNICIPAL.emenda_lei_organica).toBeUndefined();
+  });
+});
+
+describe("abreviacoesCongresso", () => {
+  it("extrai o prefixo do identificacao, em minusculo", () => {
+    expect(abreviacoesCongresso("PL 4793/2026")).toEqual(["pl"]);
+    expect(abreviacoesCongresso("PEC 5/2024")).toEqual(["pec"]);
+  });
+
+  it("MPV ganha o sinonimo 'mp', do jeito que a imprensa chama", () => {
+    expect(abreviacoesCongresso("MPV 1200/2024")).toEqual(["mpv", "mp"]);
+  });
+
+  it("identificacao ausente ou sem prefixo alfabetico nao quebra", () => {
+    expect(abreviacoesCongresso(null)).toEqual([]);
+    expect(abreviacoesCongresso(undefined)).toEqual([]);
+    expect(abreviacoesCongresso("4793")).toEqual([]);
+  });
+});
+
+describe("numeroCongresso", () => {
+  it("extrai o numero do identificacao", () => {
+    expect(numeroCongresso("PL 4793/2026")).toBe("4793");
+    expect(numeroCongresso("MPV 1200/2024")).toBe("1200");
+  });
+
+  it("sem digito, devolve undefined", () => {
+    expect(numeroCongresso("Proposição")).toBeUndefined();
+    expect(numeroCongresso(null)).toBeUndefined();
   });
 });
 

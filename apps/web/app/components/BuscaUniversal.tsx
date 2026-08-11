@@ -299,7 +299,12 @@ export default function BuscaUniversal({
           >
             {sugestoes.map((s, i) => (
               <li
-                key={`s:${s.href}`}
+                // Sugestão de "contrato" não tem página por item — todo card
+                // aponta pro MESMO `href` (`.../prefeitura/contratos`), então
+                // `s.href` sozinho colide. O índice é único mesmo quando o
+                // href se repete. Medido: React avisava "dois filhos com a
+                // mesma key" ao digitar termo que retorna >1 contrato.
+                key={`s:${i}:${s.href}`}
                 id={`${idBase}-op-${i}`}
                 role="option"
                 aria-selected={indice === i}
