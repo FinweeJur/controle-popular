@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_lgbtqia",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população LGBTQIA+ de territórios periféricos, comunidades e favelas do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Municipal Fomento Favela com Orgulho, destinado ao apoio, incentivo e fortalecimento de Paradas, Marchas e Caminhadas LGBTQIA+, bem como de iniciativas de promoção da cidadania e dos direitos da população LGBTQIA+, realizadas em territórios periféricos, comunidades e favelas do Município de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal Fomento Favela com Orgulho, destinado ao apoio, incentivo e fortalecimento de Paradas, Marchas e Caminhadas LGBTQIA+ e de iniciativas de promoção da cidadania e dos direitos dessa população realizadas em territórios periféricos, comunidades e favelas de São Paulo."
+}

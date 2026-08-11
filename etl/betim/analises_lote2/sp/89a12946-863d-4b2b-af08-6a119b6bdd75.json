@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_titularidade",
+      "titulares": [
+        "mulheres em perimenopausa, climatério e pós-climatério, incluindo mulheres com diabetes e pré-diabetes"
+      ],
+      "grau": "moderado",
+      "trecho": "abarcar também a perimenopausa, além de providenciar suporte à atividade física de mulheres para que passem por uma menopausa saudável e providenciar apoio específico à mulheres com diabetes e pré-diabetes no climatério",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 13.536, de 19 de março de 2003"
+  ],
+  "resumo_neutro": "O projeto altera a Lei nº 13.536/2003 para estender o Programa de Atendimento Integral e Humanizado às Mulheres em Estado de Climatério também à perimenopausa, incluindo suporte à atividade física e apoio específico a mulheres com diabetes e pré-diabetes no climatério."
+}

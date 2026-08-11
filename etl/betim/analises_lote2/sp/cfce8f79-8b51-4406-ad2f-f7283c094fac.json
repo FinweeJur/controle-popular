@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população em situação de vulnerabilidade atendida pela Patrulha da Vida e da Saúde no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "criação da Patrulha da Vida e da Saúde no âmbito da Secretaria Municipal de Segurança Urbana, em atuação conjunta com a Secretaria Municipal da Saúde no município de São Paulo",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza a criação da Patrulha da Vida e da Saúde, no âmbito da Secretaria Municipal de Segurança Urbana, em atuação conjunta com a Secretaria Municipal da Saúde de São Paulo."
+}

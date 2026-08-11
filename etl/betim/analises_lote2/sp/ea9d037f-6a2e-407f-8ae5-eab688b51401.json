@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população do Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Programa Municipal de Incentivo à Prática de Compostagem de Resíduos Orgânicos por meio de equipamentos públicos e à Educação Ambiental no Município de São Paulo, e dá outras providências",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Incentivo à Prática de Compostagem de Resíduos Orgânicos por meio de equipamentos públicos e de educação ambiental no Município de São Paulo."
+}

@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "pessoas idosas participantes de iniciativas culturais, esportivas, de lazer, convivência, inclusão digital e geração de renda"
+      ],
+      "grau": "moderado",
+      "trecho": "Autoriza o Poder Executivo a instituir o Programa para Valorização de Iniciativas para a Pessoa Idosa – VAIdosos, destinado ao apoio financeiro a iniciativas culturais, esportivas, de lazer, convivência, inclusão digital e geração de renda voltadas à pessoa idosa",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 15.679, de 21 de dezembro de 2012"
+  ],
+  "resumo_neutro": "O projeto autoriza o Executivo a instituir o Programa VAIdosos, de apoio financeiro a iniciativas culturais, esportivas, de lazer, convivência, inclusão digital e geração de renda voltadas à pessoa idosa, alterando a Lei nº 15.679/2012."
+}

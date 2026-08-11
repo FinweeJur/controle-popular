@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "alunos da Rede Municipal de Educação de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal de Conscientização, Prevenção e Mitigação dos Efeitos do Estresse Térmico e das Ondas de Calor nas salas de aula e nos ambientes de ensino da Rede Municipal de Educação de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política Municipal de Conscientização, Prevenção e Mitigação dos Efeitos do Estresse Térmico e das Ondas de Calor nas salas de aula e ambientes de ensino da Rede Municipal de Educação de São Paulo. Cria diretrizes de proteção dos alunos contra os efeitos do calor extremo no ambiente escolar."
+}

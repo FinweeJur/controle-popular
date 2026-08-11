@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 182",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "moradores de favelas, assentamentos precários e territórios periféricos de elevada vulnerabilidade socioambiental e climática"
+      ],
+      "grau": "moderado",
+      "trecho": "incluir a urbanização de favelas, assentamentos precários e territórios periféricos entre as atividades financiáveis pelo Fundo Nacional sobre Mudança do Clima – FNMC e estabelecer a priorização de projetos destinados a territórios de elevada vulnerabilidade socioambiental e climática",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 12.114, de 9 de dezembro de 2009"
+  ],
+  "resumo_neutro": "O projeto altera a Lei nº 12.114/2009 para incluir a urbanização de favelas, assentamentos precários e territórios periféricos entre as atividades financiáveis pelo Fundo Nacional sobre Mudança do Clima, priorizando projetos em territórios de maior vulnerabilidade socioambiental e climática."
+}

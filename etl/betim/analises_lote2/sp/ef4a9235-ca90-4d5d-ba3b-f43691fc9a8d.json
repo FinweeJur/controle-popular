@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "restringe",
+      "mecanismo": "flexibiliza_limite",
+      "titulares": [
+        "agremiações carnavalescas do Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "prorrogar o início de seus efeitos e excepcionar o uso de materiais integrantes do acervo das agremiações carnavalescas",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 18.468, de 25 de maio de 2026, arts. 1º e 5º"
+  ],
+  "resumo_neutro": "O projeto altera os arts. 1º e 5º da Lei nº 18.468/2026, que proíbe o uso de penas e plumas de origem animal no Município de São Paulo, para prorrogar o início de seus efeitos e criar exceção para materiais já integrantes do acervo das agremiações carnavalescas."
+}

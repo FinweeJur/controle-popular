@@ -1,0 +1,23 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "criminaliza_violacao",
+      "titulares": [
+        "população e meio ambiente do Município de São Paulo protegidos contra o descarte irregular de resíduos sólidos"
+      ],
+      "grau": "moderado",
+      "trecho": "instituir o Programa Municipal de Fiscalização Colaborativa de Resíduos Sólidos no Município de São Paulo, estabelece recompensa pecuniária para denúncias com efetivo recolhimento de multa e majora as penalidades pelas infrações de descarte irregular",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 13.478, de 30 de dezembro de 2002",
+    "Lei nº 14.803, de 26 de junho de 2008"
+  ],
+  "resumo_neutro": "O projeto altera as Leis nº 13.478/2002 e nº 14.803/2008 para instituir o Programa Municipal de Fiscalização Colaborativa de Resíduos Sólidos, com recompensa pecuniária para denúncias que resultem em multa efetivamente recolhida e majoração das penalidades para infrações de descarte irregular."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "alunos com Transtorno do Espectro Autista (TEA) e outras Necessidades Educacionais Especiais na Rede Municipal de Ensino"
+      ],
+      "grau": "moderado",
+      "trecho": "criação do Protocolo 'Escola Viva' para a inclusão e adaptação ambiental para alunos com Transtorno do Espectro Autista (TEA) e outras Necessidades Educacionais Especiais (NEEs)",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria o Protocolo 'Escola Viva' para a inclusão e adaptação ambiental de alunos com Transtorno do Espectro Autista (TEA) e outras Necessidades Educacionais Especiais na rede municipal de ensino de São Paulo."
+}

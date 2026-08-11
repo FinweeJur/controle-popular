@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "instituições que atuam em defesa dos direitos e interesses de pessoas com deficiência no Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "participação, em feiras de eventos do Município, de instituições que atuem em defesa dos direitos e interesses de pessoas com deficiência (PCDs)",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a participação, em feiras de eventos do Município de São Paulo, de instituições que atuam em defesa dos direitos e interesses de pessoas com deficiência."
+}

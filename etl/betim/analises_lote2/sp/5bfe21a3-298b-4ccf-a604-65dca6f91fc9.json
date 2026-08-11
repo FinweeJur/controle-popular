@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "fauna urbana do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "instituir a Guarda Civil Metropolitana Animal (GCMA), grupamento especializado na proteção da fauna, atendimento de ocorrências envolvendo animais e auxílio na apuração de crimes ambientais e conexos",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Orgânica do Município de São Paulo"
+  ],
+  "resumo_neutro": "A emenda altera a Lei Orgânica do Município de São Paulo para instituir a Guarda Civil Metropolitana Animal (GCMA), grupamento especializado na proteção da fauna, atendimento de ocorrências envolvendo animais e apuração de crimes ambientais conexos."
+}

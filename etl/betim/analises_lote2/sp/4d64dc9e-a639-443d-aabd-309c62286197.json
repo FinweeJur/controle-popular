@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "mulheres vítimas de violência vicária no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o acompanhamento psicológico gratuito para mulheres vítimas de violência vicária no Município de São Paulo",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o acompanhamento psicológico gratuito para mulheres vítimas de violência vicária no Município de São Paulo."
+}
