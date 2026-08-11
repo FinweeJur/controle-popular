@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "restringe",
+      "mecanismo": "cria_requisito_acesso",
+      "titulares": [
+        "criança e adolescente estudante da rede municipal de ensino"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de comprovação da situação vacinal da criança e do adolescente para o cadastro e para a renovação de matrícula do estudante em estabelecimento de ensino do SME",
+      "confianca": 0.65
+    },
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "coletividade escolar"
+      ],
+      "grau": "marginal",
+      "trecho": "obrigatoriedade de comprovação da situação vacinal da criança e do adolescente para o cadastro e para a renovação de matrícula do estudante em estabelecimento de ensino do SME",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": true,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei condiciona o cadastro e a renovação de matrícula de criança ou adolescente em estabelecimento de ensino da rede municipal (SME) à comprovação da situação vacinal, criando exigência de acesso à matrícula ao mesmo tempo em que busca reforçar a cobertura vacinal."
+}

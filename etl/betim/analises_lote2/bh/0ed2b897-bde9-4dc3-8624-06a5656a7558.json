@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "pessoa autista",
+        "condutor/acompanhante de pessoa autista"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Selo Autista a Bordo no Município",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Selo Autista a Bordo no Município de Belo Horizonte, um identificativo visual destinado a veículos que transportam pessoa autista."
+}

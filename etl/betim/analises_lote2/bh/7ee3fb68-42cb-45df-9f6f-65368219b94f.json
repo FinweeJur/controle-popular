@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "usuário da rede municipal de saúde"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Programa Arte da Saúde - Ateliê da Cidadania",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa Arte da Saúde - Ateliê da Cidadania, no âmbito da rede municipal de saúde de Belo Horizonte."
+}

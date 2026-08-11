@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "Lei 8.078/1990 (CDC)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "consumidor usuário de estacionamento de estabelecimento comercial"
+      ],
+      "grau": "marginal",
+      "trecho": "Proíbe a afixação de placas que desobriguem estabelecimentos comerciais no Município a se responsabilizar por danos ocorridos aos consumidores em seus estacionamentos",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei proíbe a afixação, por estabelecimentos comerciais do Município, de placas que pretendam desobrigá-los de responsabilidade por danos causados ao consumidor em seus estacionamentos."
+}

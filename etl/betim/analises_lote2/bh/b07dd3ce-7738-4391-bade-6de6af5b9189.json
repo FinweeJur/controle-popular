@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoa com deficiência",
+        "pessoa idosa",
+        "gestante"
+      ],
+      "grau": "marginal",
+      "trecho": "Torna de uso preferencial todos os assentos dos veículos do sistema de transporte público coletivo rodoviário do Município",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei torna de uso preferencial todos os assentos dos veículos do sistema de transporte público coletivo rodoviário do Município, ampliando o espaço reservado a pessoas com prioridade de atendimento."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "mulher usuária de serviço de saúde"
+      ],
+      "grau": "moderado",
+      "trecho": "direito de ser acompanhada por pessoa de sua escolha em consultas e exames, inclusive ginecológicos, nos estabelecimentos públicos e privados de saúde do Município",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei assegura à mulher o direito de ser acompanhada por pessoa de sua escolha em consultas e exames, inclusive ginecológicos, nos estabelecimentos públicos e privados de saúde do Município."
+}
