@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "comunidade estudantil atendida pelo IFET em Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "doar terreno de sua propriedade, ao IFET- Instituto Federal de Tecnologia",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo Municipal a doar um terreno de propriedade do Município ao Instituto Federal de Tecnologia (IFET). A doação de imóvel público viabiliza a instalação ou expansão de estrutura de ensino federal em Diamantina."
+}

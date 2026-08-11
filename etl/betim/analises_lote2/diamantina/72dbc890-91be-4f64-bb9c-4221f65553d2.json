@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 203",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "assistidos pela Comunidade de Obras Sociais de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "conceder ajuda financeira á Comunidade de Obras Sociais de Diamantina para os fins que especifica",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Município de Diamantina a conceder ajuda financeira à Comunidade de Obras Sociais de Diamantina. A ementa não detalha a finalidade específica do repasse. Trata-se de transferência de recursos públicos a entidade assistencial local."
+}

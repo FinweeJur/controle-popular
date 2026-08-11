@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "Lei nº 2309/1995, art. 1º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "beneficiários da assistência social no Município de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "Acrescenta dispositivos ao artigo 1º da Lei nº 2309, de 11 de Dezembro de 1995, que cria o Fundo Municipal de Assistência Social",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 2309/1995, art. 1º"
+  ],
+  "resumo_neutro": "A lei acrescenta dispositivos ao artigo 1º da Lei nº 2309/1995, que criou o Fundo Municipal de Assistência Social de Diamantina. A ementa não detalha o conteúdo específico dos novos dispositivos, mas amplia o arcabouço legal do fundo."
+}

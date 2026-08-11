@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "Banda Sant'ana do Inhaí e comunidade musical do distrito"
+      ],
+      "grau": "marginal",
+      "trecho": "repasse financeiro como parceiro no pagamento de proventos do Professor Músico, atráves da celebração de Convênio com a Banda Sant'ana do Inhaí",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Município de Diamantina a promover repasse financeiro, como parceiro, para o pagamento de proventos do professor músico da Banda Sant'ana do Inhaí, via convênio. Amplia o financiamento público de atividade musical comunitária."
+}

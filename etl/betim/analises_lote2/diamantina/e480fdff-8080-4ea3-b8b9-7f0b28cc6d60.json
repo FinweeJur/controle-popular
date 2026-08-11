@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208, VII",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "estudantes da rede municipal de ensino de Diamantina atendidos por transporte escolar em 2013"
+      ],
+      "grau": "moderado",
+      "trecho": "auxílio financeiro ás Associações Comutárias que especifica, para custeio com Transporte Escolar no ano letivo de 2013",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Município de Diamantina a conceder auxílio financeiro a associações comunitárias para custear o transporte escolar no ano letivo de 2013. Amplia o financiamento de política pública de apoio ao acesso à educação."
+}
