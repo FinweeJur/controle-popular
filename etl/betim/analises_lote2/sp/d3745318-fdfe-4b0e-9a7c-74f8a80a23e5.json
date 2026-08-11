@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "animais em situação de vulnerabilidade no Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Campanha do Agasalho PET, de caráter permanente, no âmbito do Município de São Paulo, voltada à proteção térmica de animais em situação de vulnerabilidade",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Campanha do Agasalho PET, de caráter permanente, no Município de São Paulo, voltada à proteção térmica de animais em situação de vulnerabilidade."
+}

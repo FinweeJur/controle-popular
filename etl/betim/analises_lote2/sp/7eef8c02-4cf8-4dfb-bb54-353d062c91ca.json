@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com obesidade mórbida atendidas nos equipamentos públicos municipais de saúde de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Política Municipal de Atendimento Humanizado às Pessoas com Obesidade Mórbida nos equipamentos públicos municipais de saúde, dispõe sobre a adequação gradual da infraestrutura, mobiliário, equipamentos e protocolos assistenciais",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política Municipal de Atendimento Humanizado às Pessoas com Obesidade Mórbida nos equipamentos públicos municipais de saúde de São Paulo, prevendo a adequação gradual de infraestrutura, mobiliário, equipamentos e protocolos assistenciais."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas idosas em situação de vulnerabilidade familiar no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Serviço Família Acolhedora da Pessoa Idosa no Município de São Paulo.",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Serviço Família Acolhedora da Pessoa Idosa no Município de São Paulo, um programa municipal voltado ao acolhimento de idosos por famílias cadastradas."
+}

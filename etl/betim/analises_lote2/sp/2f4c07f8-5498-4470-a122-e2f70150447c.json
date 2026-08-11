@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "alimentacao",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "estudantes da rede pública municipal de ensino de São Paulo em situação de vulnerabilidade social"
+      ],
+      "grau": "moderado",
+      "trecho": "Programa Municipal de Segurança Alimentar Escolar aos Finais de Semana, Feriados e Recessos Escolares para estudantes da rede pública municipal de ensino em situação de vulnerabilidade social",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Segurança Alimentar Escolar aos Finais de Semana, Feriados e Recessos Escolares para estudantes da rede pública municipal de ensino de São Paulo em situação de vulnerabilidade social."
+}

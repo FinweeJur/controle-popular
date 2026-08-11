@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "propriedade_funcao_social",
+      "dispositivo": "CF/88, art. 5º, XXII",
+      "direcao": "amplia",
+      "mecanismo": "criminaliza_violacao",
+      "titulares": [
+        "proprietários de bens públicos e privados no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "responsabilização administrativa e civil de pessoas físicas e jurídicas que promovam, organizem ou incentivem ocupações irregulares de bens públicos ou privados no Município de São Paulo, quando delas decorrerem danos urbanos, ambientais ou ao patrimônio público municipal",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a responsabilização administrativa e civil de pessoas físicas e jurídicas que promovam, organizem ou incentivem ocupações irregulares de bens públicos ou privados no Município de São Paulo, quando delas decorrerem danos urbanos, ambientais ou ao patrimônio público municipal."
+}

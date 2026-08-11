@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população idosa e jovens voluntários participantes do Programa Conectando Gerações no Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "incentivo de ações voluntárias de jovens em atividades de apoio, convivência e integração social com a população idosa no Município de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal Conectando Gerações, destinado a incentivar ações voluntárias de jovens em atividades de apoio, convivência e integração social com a população idosa no Município de São Paulo."
+}

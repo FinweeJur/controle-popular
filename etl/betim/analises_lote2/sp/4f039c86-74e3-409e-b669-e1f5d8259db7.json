@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "crianças e adolescentes frequentadores de equipamentos esportivos, culturais, de lazer e entretenimento no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "vedação da publicidade de produtos, serviços, plataformas digitais e atividades econômicas destinados exclusivamente ao público adulto cuja divulgação seja incompatível com a proteção integral de crianças e adolescentes em equipamentos esportivos, culturais, de lazer e entretenimento, públicos ou privados, acessíveis ao público, no Município de São Paulo",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto veda a publicidade de produtos, serviços, plataformas digitais e atividades econômicas destinados exclusivamente ao público adulto em equipamentos esportivos, culturais, de lazer e entretenimento acessíveis ao público no Município de São Paulo, quando incompatível com a proteção integral de crianças e adolescentes."
+}

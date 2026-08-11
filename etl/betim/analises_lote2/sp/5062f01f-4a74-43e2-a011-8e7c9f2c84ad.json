@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "comunidade e praticantes da cultura Hip Hop no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal de Valorização, Promoção, Preservação e Difusão da Cultura Hip Hop no Município de São Paulo, reconhece sua relevância histórica, artística, cultural e social",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política Municipal de Valorização, Promoção, Preservação e Difusão da Cultura Hip Hop no Município de São Paulo, reconhecendo sua relevância histórica, artística, cultural e social."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população do Município de São Paulo, especialmente em áreas vulneráveis a enchentes e ilhas de calor"
+      ],
+      "grau": "moderado",
+      "trecho": "Política Municipal de Cidade Esponja e Infraestrutura Verde-Azul no Município de São Paulo, estabelece diretrizes para o manejo sustentável das águas pluviais, prevenção de enchentes, mitigação de ilhas de calor e adaptação climática",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política Municipal de Cidade Esponja e Infraestrutura Verde-Azul no Município de São Paulo, estabelecendo diretrizes para o manejo sustentável das águas pluviais, prevenção de enchentes, mitigação de ilhas de calor e adaptação climática."
+}

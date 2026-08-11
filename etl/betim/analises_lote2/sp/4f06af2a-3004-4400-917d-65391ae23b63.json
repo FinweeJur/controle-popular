@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 1º, parágrafo único",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "jovens participantes do Programa Jovem Guardião do Bairro no Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Programa Jovem Guardião do Bairro, voltado ao incentivo da participação juvenil na conscientização, preservação e manutenção da limpeza urbana no Município de São Paulo",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Jovem Guardião do Bairro, voltado a incentivar a participação juvenil em ações de conscientização, preservação e manutenção da limpeza urbana no Município de São Paulo."
+}

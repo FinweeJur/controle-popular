@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "CF/88, art. 5º, XXXII",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "usuários de transporte coletivo no Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui a Política Municipal de Conscientização e Prevenção ao Transporte Coletivo Clandestino de Passageiros no Município de São Paulo",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política Municipal de Conscientização e Prevenção ao Transporte Coletivo Clandestino de Passageiros no Município de São Paulo."
+}

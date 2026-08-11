@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estudantes da Rede Municipal de Ensino de São Paulo matriculados do 6º ao 9º ano do Ensino Fundamental"
+      ],
+      "grau": "marginal",
+      "trecho": "promover o acesso de estudantes da Rede Municipal de Ensino matriculados do 6o ao 9o ano do Ensino Fundamental aos jogos da Copa do Mundo Feminina de Futebol de 2027 realizados no Município de São Paulo",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal 'Estudantes na Copa 2027', destinado a promover o acesso de estudantes da Rede Municipal de Ensino matriculados do 6º ao 9º ano do Ensino Fundamental aos jogos da Copa do Mundo Feminina de Futebol de 2027 realizados em São Paulo."
+}

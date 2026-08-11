@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "organizações da sociedade civil e entidades sem fins lucrativos cadastradas que atuam em resgate e acolhimento de animais no Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "isenção do Rodízio Municipal de Veículos para até 2 (dois) veículos por entidade cadastrada, nos termos da Lei nº 12.490, de 3 de outubro de 1997",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto reconhece como de relevante interesse público e social as atividades de resgate, acolhimento e proteção animal desenvolvidas por organizações da sociedade civil e entidades sem fins lucrativos, e isenta até 2 veículos por entidade cadastrada do Rodízio Municipal de Veículos."
+}

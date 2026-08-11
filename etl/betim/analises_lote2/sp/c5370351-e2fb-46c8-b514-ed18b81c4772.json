@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "estudantes e usuários do transporte escolar do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa SIGMOT — Sistema Integrado de Gestão e Monitoramento Operacional do Transporte Escolar para segurança dos estudantes e usuários",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa SIGMOT — Sistema Integrado de Gestão e Monitoramento Operacional do Transporte Escolar, voltado à segurança dos estudantes e usuários do transporte escolar no Município de São Paulo."
+}

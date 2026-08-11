@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 5º, I",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "meninas e mulheres do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "promoção e incentivo de igualdades de oportunidades e acesso de meninas e mulheres ao futebol em todas as suas modalidades",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui uma Política de Fomento ao Futebol Feminino no Município de São Paulo, voltada a promover igualdade de oportunidades e ampliar o acesso de meninas e mulheres à prática do futebol em todas as suas modalidades."
+}
