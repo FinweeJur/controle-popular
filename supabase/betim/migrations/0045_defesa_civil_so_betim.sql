@@ -11,4 +11,4 @@
 
 update public.municipios
 set fontes = coalesce(fontes, '{}'::jsonb) || '{"defesa_civil": false}'::jsonb
-where slug != 'betim';
+where id_municipio != '3106705';

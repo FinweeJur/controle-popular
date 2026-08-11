@@ -493,8 +493,12 @@ on conflict (slug) do update set
   nome_completo = excluded.nome_completo, origem_carreira = excluded.origem_carreira;
 
 -- Ocupações: liga cada ministro à sua cadeira.
+-- v.posse sai da VALUES como `text` (o VALUES-como-subconsulta perde o tipo
+-- "unknown" que os literais teriam num INSERT ... VALUES direto) -- por isso
+-- o cast explícito, senão "coluna data_posse é do tipo date mas expressão é
+-- do tipo text".
 insert into ocupacoes (cadeira_id, magistrado_id, data_posse)
-  select c.id, mg.id, v.posse from cadeiras c, magistrados mg,
+  select c.id, mg.id, v.posse::date from cadeiras c, magistrados mg,
     (values
       ('gilmar-mendes', 1, '2002-06-20'),
       ('carmen-lucia', 2, '2006-06-21'),
@@ -512,7 +516,7 @@ on conflict (cadeira_id, magistrado_id, data_posse) do nothing;
 
 -- Nomeações históricas: alimentam o poder de indicação.
 insert into nomeacoes (senado_id_externo, tribunal_id, magistrado_id, autoridade_nomeante, cargo_nomeante, data_deliberacao)
-  select 'seed:stf:'||v.slug, 'stf', mg.id, v.nomeante, 'presidente_republica', v.posse
+  select 'seed:stf:'||v.slug, 'stf', mg.id, v.nomeante, 'presidente_republica', v.posse::date
   from magistrados mg,
     (values
       ('gilmar-mendes', 'Fernando Henrique Cardoso', '2002-06-20'),
@@ -620,8 +624,12 @@ on conflict (slug) do update set
   nome_completo = excluded.nome_completo, origem_carreira = excluded.origem_carreira;
 
 -- Mandatos (composição + direção) — todos por slug, STF ou novo.
+-- v.data_inicio/v.data_fim saem da VALUES como `text` (mesmo motivo do
+-- seed do STF acima: VALUES-como-subconsulta resolve os literais pra texto,
+-- não pro `unknown` que um INSERT ... VALUES direto teria) -- cast explícito
+-- pra não colidir com as colunas `date`.
 insert into mandatos_direcao (tribunal_id, magistrado_id, cargo, data_inicio, data_fim, biennio, eleito)
-  select 'tse', mg.id, v.cargo, v.data_inicio, v.data_fim, v.biennio, true
+  select 'tse', mg.id, v.cargo, v.data_inicio::date, v.data_fim::date, v.biennio, true
   from magistrados mg,
     (values
   ('nunes-marques', 'efetivo_eletiva_stf', '2025-05-25', '2027-05-25', '2'),

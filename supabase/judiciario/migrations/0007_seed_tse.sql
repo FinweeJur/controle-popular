@@ -18,8 +18,12 @@ on conflict (slug) do update set
   nome_completo = excluded.nome_completo, origem_carreira = excluded.origem_carreira;
 
 -- Mandatos (composição + direção) — todos por slug, STF ou novo.
+-- v.data_inicio/v.data_fim saem da VALUES como `text` (mesmo motivo do
+-- 0004_seed_stf.sql: VALUES-como-subconsulta resolve os literais pra texto,
+-- não pro `unknown` que um INSERT ... VALUES direto teria) -- cast explícito
+-- pra não colidir com as colunas `date`.
 insert into mandatos_direcao (tribunal_id, magistrado_id, cargo, data_inicio, data_fim, biennio, eleito)
-  select 'tse', mg.id, v.cargo, v.data_inicio, v.data_fim, v.biennio, true
+  select 'tse', mg.id, v.cargo, v.data_inicio::date, v.data_fim::date, v.biennio, true
   from magistrados mg,
     (values
   ('nunes-marques', 'efetivo_eletiva_stf', '2025-05-25', '2027-05-25', '2'),
