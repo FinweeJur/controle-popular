@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "criminaliza_violacao",
+      "titulares": [
+        "mulheres vítimas de violência doméstica e beneficiários de pensão alimentícia"
+      ],
+      "grau": "moderado",
+      "trecho": "proibição da entrada de torcedores que tenham dívidas referentes a pensão alimentícia e condenados por violência contra a mulher no âmbito municipal",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto proíbe a entrada, em eventos esportivos no âmbito municipal, de torcedores com dívidas de pensão alimentícia ou condenados por violência contra a mulher."
+}

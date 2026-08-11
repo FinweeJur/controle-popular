@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "participantes de atividades esportivas radicais e de aventura no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "instituir o Programa Municipal de Segurança em Atividades de Aventura e Lazer, estabelecer protocolos mínimos de prevenção de acidentes e proteção da integridade física dos participantes nas atividades esportivas radicais",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 14.139, de 24 de março de 2006"
+  ],
+  "resumo_neutro": "O projeto altera a Lei nº 14.139/2006 para instituir o Programa Municipal de Segurança em Atividades de Aventura e Lazer, com protocolos mínimos de prevenção de acidentes e proteção da integridade física dos participantes de atividades esportivas radicais."
+}

@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 1º, parágrafo único",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "população participante de audiências públicas no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "participação obrigatória de representante do Executivo em audiências públicas quando comunicados formalmente",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Orgânica do Município de São Paulo, art. 32"
+  ],
+  "resumo_neutro": "A emenda cria o §5º do art. 32 da Lei Orgânica do Município de São Paulo, tornando obrigatória a participação de representante do Poder Executivo em audiências públicas quando formalmente comunicado."
+}

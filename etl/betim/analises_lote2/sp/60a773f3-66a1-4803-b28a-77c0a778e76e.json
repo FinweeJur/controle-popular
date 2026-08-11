@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "colônias de felinos domésticos de vida livre e seus cuidadores voluntários no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "instituir a Política Municipal de Gestão Humanitária de Colônias de Felinos Domésticos de Vida Livre, regulamentar o protocolo CED (Captura, Esterilização e Devolução), assegurar a proteção jurídica ao Gato Comunitário e aos seus Cuidadores Voluntários no Município de São Paulo",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 13.131, de 18 de maio de 2001"
+  ],
+  "resumo_neutro": "O projeto altera a Lei nº 13.131/2001 para instituir a Política Municipal de Gestão Humanitária de Colônias de Felinos Domésticos de Vida Livre, regulamentando o protocolo de captura, esterilização e devolução (CED) e assegurando proteção jurídica ao gato comunitário e a seus cuidadores voluntários."
+}

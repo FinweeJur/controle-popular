@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "crianças e adolescentes em áreas comuns de condomínios do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de condomínios residenciais, comerciais e mistos situados no Município de São Paulo comunicarem aos Conselhos Tutelares, aos órgãos municipais de proteção à criança e ao adolescente e às autoridades competentes a ocorrência de casos envolvendo uso, porte ou consumo de bebidas alcoólicas, produtos fumígenos, tabaco, cigarros eletrônicos e/ou substâncias entorpecentes por crianças e adolescentes em áreas comuns",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto obriga condomínios residenciais, comerciais e mistos de São Paulo a comunicarem aos Conselhos Tutelares e órgãos municipais de proteção casos de uso, porte ou consumo de álcool, tabaco, cigarros eletrônicos ou entorpecentes por crianças e adolescentes em áreas comuns."
+}

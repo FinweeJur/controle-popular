@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas diagnosticadas com Diabetes Tipo 1 no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Cria o Programa Laços Tipo 1 para garantir o acolhimento e orientação da pessoa diagnosticada com Diabetes Tipo 1 no Município de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria o Programa Laços Tipo 1, destinado a garantir o acolhimento e a orientação de pessoas diagnosticadas com Diabetes Tipo 1 no Município de São Paulo."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "estudantes da Rede Municipal de Ensino que necessitam de administração contínua de medicamentos"
+      ],
+      "grau": "moderado",
+      "trecho": "diretrizes para a implementação de apoio técnico de enfermagem nas unidades da Rede Municipal de Ensino para acompanhamento de estudantes que necessitem de administração contínua de medicamentos, no âmbito do Município de São Paulo",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui diretrizes para a implementação de apoio técnico de enfermagem nas unidades da Rede Municipal de Ensino de São Paulo, voltado ao acompanhamento de estudantes que necessitem de administração contínua de medicamentos."
+}

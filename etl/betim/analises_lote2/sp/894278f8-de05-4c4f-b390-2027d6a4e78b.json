@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "jovens e adultos que buscam Educação de Jovens e Adultos (EJA) no Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "criação de turmas da Educação de Jovens e Adultos – EJA nas dependências da Câmara Municipal de São Paulo",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a criação de turmas de Educação de Jovens e Adultos (EJA) nas dependências da Câmara Municipal de São Paulo, ampliando um novo local de oferta desta modalidade de ensino."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "estudantes da Rede Municipal de Ensino de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de disponibilização de Auxiliar Técnico de Educação – ATE em cada andar das unidades educacionais da Rede Municipal de Ensino do Município de São Paulo, durante todos os períodos de funcionamento",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto torna obrigatória a disponibilização de Auxiliar Técnico de Educação (ATE) em cada andar das unidades educacionais da Rede Municipal de Ensino de São Paulo, durante todos os períodos de funcionamento."
+}

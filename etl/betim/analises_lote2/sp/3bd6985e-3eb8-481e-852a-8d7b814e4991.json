@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "privacidade_dados",
+      "dispositivo": "CF/88, art. 5º, LXXIX",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "cidadãos afetados pelo uso de sistemas de inteligência artificial pela Administração Pública Municipal de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Marco Municipal de Governança, Transparência e Inovação em Inteligência Artificial no Município de São Paulo, estabelece diretrizes para o uso responsável de sistemas de inteligência artificial pela Administração Pública Municipal",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Marco Municipal de Governança, Transparência e Inovação em Inteligência Artificial em São Paulo, estabelecendo diretrizes para o uso responsável de sistemas de IA pela Administração Pública Municipal e incentivando o desenvolvimento tecnológico."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população do Município de São Paulo em situação de vulnerabilidade que necessita de medicamentos"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Farmácia Solidária no Município de São Paulo e dá outras providências",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Farmácia Solidária no Município de São Paulo, voltado ao apoio no acesso a medicamentos."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "pessoas idosas do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "criação da Ouvidoria Especial de Proteção à Pessoa Idosa no Município de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria a Ouvidoria Especial de Proteção à Pessoa Idosa no Município de São Paulo."
+}
