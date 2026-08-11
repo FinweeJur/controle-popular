@@ -6,9 +6,9 @@
       "direcao": "amplia",
       "mecanismo": "amplia_acesso",
       "titulares": [
-        "contribuintes com deficiência visual"
+        "contribuinte com deficiência visual"
       ],
-      "grau": "moderado",
+      "grau": "marginal",
       "trecho": "disponibilização do carnê de IPTU em braille para os contribuintes com deficiência visual",
       "confianca": 0.75
     }
@@ -16,5 +16,5 @@
   "clausula_petrea": false,
   "vedacao_retrocesso": false,
   "normas_alteradas": [],
-  "resumo_neutro": "O projeto determina que o carnê de IPTU seja disponibilizado em braille aos contribuintes com deficiência visual do Município de Betim. O projeto foi vetado."
+  "resumo_neutro": "O projeto determina que o carnê de IPTU seja disponibilizado em braille para contribuintes com deficiência visual. Trata-se de medida de acessibilidade em serviço público municipal já sancionada e depois vetada. Não altera tributo nem cria nova obrigação fiscal."
 }

@@ -6,15 +6,15 @@
       "direcao": "amplia",
       "mecanismo": "amplia_acesso",
       "titulares": [
-        "estudantes da educação básica"
+        "alunos da educação básica"
       ],
       "grau": "marginal",
-      "trecho": "distribuição da cartilha \"Sou diferente, e daí? Tem lugar aí pra mim?\" na educação básica no âmbito do Município de Betim",
-      "confianca": 0.5
+      "trecho": "distribuição da cartilha “Sou diferente, e daí? Tem lugar aí pra mim?” na educação básica no âmbito do Município de Betim",
+      "confianca": 0.55
     }
   ],
   "clausula_petrea": false,
   "vedacao_retrocesso": false,
   "normas_alteradas": [],
-  "resumo_neutro": "O projeto dispõe sobre a distribuição da cartilha \"Sou diferente, e daí? Tem lugar aí pra mim?\" na educação básica de Betim. Foi vetado."
+  "resumo_neutro": "O projeto determina a distribuição de cartilha educativa sobre diversidade e inclusão nas escolas de educação básica do município. Foi vetado. A ementa não detalha o conteúdo integral da cartilha."
 }

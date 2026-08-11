@@ -6,15 +6,15 @@
       "direcao": "amplia",
       "mecanismo": "cria_direito",
       "titulares": [
-        "moradores do Bairro Jardim das Alterosas e região"
+        "moradores do Bairro Jardim das Alterosas e população em geral"
       ],
       "grau": "moderado",
       "trecho": "criação e construção de um restaurante popular no Bairro Jardim das Alterosas, no Município de Betim",
-      "confianca": 0.65
+      "confianca": 0.75
     }
   ],
   "clausula_petrea": false,
   "vedacao_retrocesso": false,
   "normas_alteradas": [],
-  "resumo_neutro": "O projeto autoriza a criação e construção de um restaurante popular no Bairro Jardim das Alterosas, em Betim. Foi vetado."
+  "resumo_neutro": "O projeto cria e autoriza a construção de um restaurante popular no Bairro Jardim das Alterosas. Foi vetado. A medida amplia o acesso à alimentação subsidiada para a população local."
 }

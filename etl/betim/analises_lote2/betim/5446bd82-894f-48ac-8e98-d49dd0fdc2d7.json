@@ -2,19 +2,19 @@
   "direitos_afetados": [
     {
       "direito": "direitos_idoso",
-      "dispositivo": "CF/88, art. 230",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
       "direcao": "amplia",
       "mecanismo": "amplia_acesso",
       "titulares": [
         "pessoa idosa"
       ],
-      "grau": "moderado",
-      "trecho": "Institui a Campanha Permanente de Inclusão Digital Destinada à Pessoa Idosa",
-      "confianca": 0.7
+      "grau": "marginal",
+      "trecho": "Campanha Permanente de Inclusão Digital Destinada à Pessoa Idosa",
+      "confianca": 0.65
     }
   ],
   "clausula_petrea": false,
   "vedacao_retrocesso": false,
   "normas_alteradas": [],
-  "resumo_neutro": "O projeto institui campanha permanente de inclusão digital voltada à pessoa idosa no Município de Betim. Foi vetado."
+  "resumo_neutro": "O projeto institui campanha permanente de inclusão digital voltada à pessoa idosa. Foi vetado. Trata-se de programa de conscientização e capacitação, sem criar serviço obrigatório novo."
 }

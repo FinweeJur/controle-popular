@@ -1,20 +1,20 @@
 {
   "direitos_afetados": [
     {
-      "direito": "direitos_crianca_adolescente",
-      "dispositivo": "CF/88, art. 227",
-      "direcao": "amplia",
-      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "direito": "liberdade_expressao",
+      "dispositivo": "CF/88, art. 220",
+      "direcao": "restringe",
+      "mecanismo": null,
       "titulares": [
-        "estudantes da rede pública e privada de ensino"
+        "alunos e comunidade escolar da rede pública e privada"
       ],
       "grau": "marginal",
-      "trecho": "vedação de execução de musicas e videoclipes com letras e coreografias que façam apologia ao crime, ao uso de drogas, nas unidades escolares da rede de ensino publico e privada do município de Betim",
+      "trecho": "vedação de execução de musicas e videoclipes com letras e coreografias que façam apologia ao crime, ao uso de drogas, nas unidades escolares",
       "confianca": 0.6
     }
   ],
   "clausula_petrea": false,
   "vedacao_retrocesso": false,
   "normas_alteradas": [],
-  "resumo_neutro": "O projeto veda a execução de músicas e videoclipes com letras ou coreografias que façam apologia ao crime ou ao uso de drogas nas unidades escolares públicas e privadas de Betim. Foi sancionado com veto parcial."
+  "resumo_neutro": "O projeto proíbe a execução de músicas e videoclipes com letras ou coreografias que façam apologia ao crime ou ao uso de drogas nas unidades escolares públicas e privadas de Betim. Foi sancionado com veto parcial. A vedação se limita ao ambiente escolar, sem alcançar a circulação do conteúdo fora dele."
 }

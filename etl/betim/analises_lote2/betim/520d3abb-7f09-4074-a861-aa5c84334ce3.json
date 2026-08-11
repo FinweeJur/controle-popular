@@ -2,19 +2,19 @@
   "direitos_afetados": [
     {
       "direito": "trabalho",
-      "dispositivo": "Decreto-Lei 5.452/1943 (CLT)",
+      "dispositivo": "CF/88, art. 7º",
       "direcao": "amplia",
       "mecanismo": "cria_direito",
       "titulares": [
-        "maqueiros"
+        "maqueiros do município"
       ],
       "grau": "marginal",
       "trecho": "criação, regulamentação e reconhecimento da função de maqueiro no âmbito do município de Betim",
-      "confianca": 0.55
+      "confianca": 0.6
     }
   ],
   "clausula_petrea": false,
   "vedacao_retrocesso": false,
   "normas_alteradas": [],
-  "resumo_neutro": "O projeto cria, regulamenta e reconhece a função de maqueiro no Município de Betim. Foi arquivado por prejudicialidade."
+  "resumo_neutro": "O projeto cria, regulamenta e reconhece a função de maqueiro no âmbito municipal. Foi arquivado por prejudicialidade. A proposta formalizava uma categoria profissional ainda não reconhecida."
 }

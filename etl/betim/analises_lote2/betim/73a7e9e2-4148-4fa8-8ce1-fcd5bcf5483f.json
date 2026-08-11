@@ -6,15 +6,15 @@
       "direcao": "restringe",
       "mecanismo": null,
       "titulares": [
-        "estudantes da rede pública de ensino"
+        "alunos e comunidade escolar da rede pública"
       ],
       "grau": "marginal",
       "trecho": "proibição da exibição, reprodução e execução de música funk nas escolas da rede pública de ensino do Município de Betim",
-      "confianca": 0.55
+      "confianca": 0.6
     }
   ],
   "clausula_petrea": false,
   "vedacao_retrocesso": false,
   "normas_alteradas": [],
-  "resumo_neutro": "O projeto proíbe a exibição, reprodução e execução de música funk nas escolas da rede pública de ensino de Betim. Está em fase de vistas."
+  "resumo_neutro": "O projeto proíbe a exibição, reprodução e execução de música funk nas escolas da rede pública municipal. Está com vista para análise. A restrição se limita ao ambiente escolar público."
 }

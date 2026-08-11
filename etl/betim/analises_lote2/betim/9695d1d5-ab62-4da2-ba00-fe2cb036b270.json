@@ -6,15 +6,15 @@
       "direcao": "amplia",
       "mecanismo": "amplia_acesso",
       "titulares": [
-        "população do Município de Betim"
+        "população do município"
       ],
-      "grau": "marginal",
+      "grau": "moderado",
       "trecho": "Institui o Programa Municipal de Educação Ambiental, Sustentabilidade e Incentivo à Reciclagem no Município de Betim",
-      "confianca": 0.55
+      "confianca": 0.75
     }
   ],
   "clausula_petrea": false,
   "vedacao_retrocesso": false,
   "normas_alteradas": [],
-  "resumo_neutro": "O projeto institui o Programa Municipal de Educação Ambiental, Sustentabilidade e Incentivo à Reciclagem em Betim. Está em tramitação."
+  "resumo_neutro": "O projeto institui o Programa Municipal de Educação Ambiental, Sustentabilidade e Incentivo à Reciclagem. Está em trâmite. Cria política municipal permanente voltada à educação ambiental e à reciclagem."
 }
