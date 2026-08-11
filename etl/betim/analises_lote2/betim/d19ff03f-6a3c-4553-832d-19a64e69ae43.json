@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "mulheres vítimas de violência doméstica em situação de vulnerabilidade social e econômica no Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "a concessão de aluguel às mulheres vítimas de violência doméstica, em situação de vulnerabilidade social e econômica no Município de Betim",
+      "confianca": 0.7
+    },
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "mulheres vítimas de violência doméstica em situação de vulnerabilidade social e econômica no Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "a concessão de aluguel às mulheres vítimas de violência doméstica, em situação de vulnerabilidade social e econômica no Município de Betim",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a concessão de auxílio-aluguel a mulheres vítimas de violência doméstica em situação de vulnerabilidade social e econômica no Município de Betim. A proposição foi vetada."
+}

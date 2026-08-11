@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população do Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "a obrigatoriedade da instalação de aparelhos com tecnologia GPS nas viaturas da Guarda Municipal de Betim",
+      "confianca": 0.35
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a obrigatoriedade de instalação de aparelhos com tecnologia GPS nas viaturas da Guarda Municipal de Betim. A proposição foi arquivada; a situação de tramitação não altera o que o texto propunha."
+}

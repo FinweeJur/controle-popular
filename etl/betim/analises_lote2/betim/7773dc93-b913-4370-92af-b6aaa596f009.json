@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população do Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "a criação do programa \"Festival de Inverno de Betim\" no Município de Betim",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a criação do programa \"Festival de Inverno de Betim\" no Município de Betim. A proposição foi arquivada; a situação de tramitação não altera o que o texto propunha."
+}

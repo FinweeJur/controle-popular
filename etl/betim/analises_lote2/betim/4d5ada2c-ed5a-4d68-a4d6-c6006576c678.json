@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208, IV",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças matriculadas nos Centros de Educação Infantil e creches conveniadas da rede municipal de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "manter o funcionamento dos Centros de Educação Infantil e das creches conveniadas da rede Municipal de ensino até às 18 horas",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo Municipal a manter o funcionamento dos Centros de Educação Infantil e das creches conveniadas da rede municipal de ensino até às 18 horas. A proposição foi adiada; a situação de tramitação não altera o que o texto propunha."
+}

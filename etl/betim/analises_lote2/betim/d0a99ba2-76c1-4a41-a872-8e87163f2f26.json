@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "trabalhadores de aplicativos de entrega e de transporte individual de passageiros no Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "a instalação de pontos de apoio para trabalhadores de aplicativos de entrega e de transporte individual de passageiros no município de Betim",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a instalação de pontos de apoio para trabalhadores de aplicativos de entrega e de transporte individual de passageiros no Município de Betim. A proposição foi vetada."
+}

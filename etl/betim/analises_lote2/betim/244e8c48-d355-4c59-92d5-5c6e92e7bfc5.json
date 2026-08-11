@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "pedestres e condutores de veículos no Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "a instalação de semáforo contendo temporizador de contagem regressiva no Município",
+      "confianca": 0.35
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a instalação de semáforo com temporizador de contagem regressiva no Município de Betim. A proposição foi retirada."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população do Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "instituir o programa \"Saúde Itinerante\" no município de Betim, com o objetivo de ampliar o acesso da população aos serviços de atenção básica em saúde",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo a instituir o programa \"Saúde Itinerante\" no Município de Betim, com o objetivo de ampliar o acesso da população aos serviços de atenção básica em saúde. A proposição está em trâmite."
+}
