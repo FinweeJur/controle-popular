@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, III",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "pessoas privadas de liberdade custodiadas no Presídio Doutor Carlos Vitoriano"
+      ],
+      "grau": "marginal",
+      "trecho": "REPASSAR INSUMOS DE MATERIAL DE CONSTRUÇÃO A TÍTULO DE SUBVENÇÃO SOCIAL PARA O PRESÍDIO DOUTOR CARLOS VITORIANO",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo a repassar insumos de material de construção, a título de subvenção social, ao Presídio Doutor Carlos Vitoriano, para uso na unidade prisional."
+}

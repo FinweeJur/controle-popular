@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "pessoas com deficiência atendidas pela APAE de Araçuaí"
+      ],
+      "grau": "marginal",
+      "trecho": "REPASSAR RECURSOS A TÍTULO DE SUBVENÇÃO SOCIAL, PARA A APAE - ASSOCIAÇÃO DE PAIS E AMIGOS DOS EXCEPCIONAIS DE ARAÇUAÍ",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo municipal a repassar recursos financeiros, a título de subvenção social, para a APAE de Araçuaí."
+}
