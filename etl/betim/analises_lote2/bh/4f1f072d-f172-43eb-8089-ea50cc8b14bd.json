@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "crianças com TEA, Altas Habilidades/Superdotação, TDAH ou outras atipicidades"
+      ],
+      "grau": "moderado",
+      "trecho": "Garante direitos à criança com TEA, com Altas Habilidades/Superdotação, com TDAH ou com outras atipicidades.",
+      "confianca": 0.65
+    },
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "crianças com TEA e outras atipicidades associadas a deficiência"
+      ],
+      "grau": "moderado",
+      "trecho": "Garante direitos à criança com TEA, com Altas Habilidades/Superdotação, com TDAH ou com outras atipicidades.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei garante direitos a crianças com Transtorno do Espectro do Autismo (TEA), Altas Habilidades/Superdotação, Transtorno de Déficit de Atenção e Hiperatividade (TDAH) ou outras atipicidades. A ementa não detalha quais direitos específicos são assegurados."
+}

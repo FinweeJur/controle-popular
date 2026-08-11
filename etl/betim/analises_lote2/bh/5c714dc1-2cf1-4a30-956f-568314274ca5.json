@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "comunidade escolar e população beneficiada pelo novo campus federal"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Operação Urbana Simplificada para implantação do Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui uma Operação Urbana Simplificada destinada a viabilizar a implantação do Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais no Município. O instrumento urbanístico cria condições jurídicas específicas para a instalação do novo campus federal."
+}

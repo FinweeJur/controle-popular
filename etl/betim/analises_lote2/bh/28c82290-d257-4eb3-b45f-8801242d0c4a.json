@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "blocos caricatos e foliões do Carnaval de Belo Horizonte"
+      ],
+      "grau": "moderado",
+      "trecho": "Declara o valor histórico e cultural dos blocos caricatos e cria o Programa de Proteção, Incentivo e Valorização dos Blocos Caricatos no Município.",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei declara o valor histórico e cultural dos blocos caricatos e cria o Programa de Proteção, Incentivo e Valorização dos Blocos Caricatos no Município. Diferentemente de uma declaração simbólica isolada, a lei institui um programa concreto de apoio a essas manifestações carnavalescas."
+}

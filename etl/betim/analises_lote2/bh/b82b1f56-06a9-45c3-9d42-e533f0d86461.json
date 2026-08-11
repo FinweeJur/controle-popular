@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "restringe",
+      "mecanismo": "desregulamenta_protecao",
+      "titulares": [
+        "população do Bairro Tupi A e usuários da área verde"
+      ],
+      "grau": "moderado",
+      "trecho": "Autoriza a desafetação das partes não implantadas da área verde que menciona no Bairro Tupi A e sua alienação na forma de venda ou permuta.",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": true,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza a desafetação das partes não implantadas de uma área verde no Bairro Tupi A e sua alienação por venda ou permuta. O efeito é retirar o status de bem público de uso comum dessas partes da área verde, viabilizando sua venda ou troca."
+}

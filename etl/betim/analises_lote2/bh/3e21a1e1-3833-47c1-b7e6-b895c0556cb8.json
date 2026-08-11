@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "usuários da Rede Municipal de Saúde de Belo Horizonte"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Farmácia Viva na Rede Municipal de Saúde de Belo Horizonte.",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa Farmácia Viva na Rede Municipal de Saúde de Belo Horizonte, voltado à produção e distribuição de fitoterápicos e plantas medicinais na rede pública. O programa amplia as opções terapêuticas disponíveis aos usuários do sistema municipal de saúde."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "pessoas idosas do Município"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui os Conselhos Municipais do Cuidado e da Defesa da Pessoa Idosa e dá outras providências.",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui os Conselhos Municipais do Cuidado e da Defesa da Pessoa Idosa. O objetivo declarado é criar instância de controle e defesa de direitos da pessoa idosa no Município."
+}
