@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população do Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Programa Municipal de Educação Ambiental, Sustentabilidade e Incentivo à Reciclagem no Município de Betim",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Educação Ambiental, Sustentabilidade e Incentivo à Reciclagem em Betim. Está em tramitação."
+}

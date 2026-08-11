@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_titularidade",
+      "titulares": [
+        "servidor público municipal convocado como jurado"
+      ],
+      "grau": "marginal",
+      "trecho": "concessão de folga compensatória ao servidor público municipal que atuar como jurado no Tribunal do Júri",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto concede folga compensatória ao servidor público municipal de Betim que atuar como jurado no Tribunal do Júri. Está em tramitação."
+}

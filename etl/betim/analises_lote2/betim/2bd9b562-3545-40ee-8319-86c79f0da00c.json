@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "gestante vítima de violência sexual"
+      ],
+      "grau": "moderado",
+      "trecho": "programa municipal de apoio à gestante vítima de violência sexual que opte por manter a gestação",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui programa municipal de apoio à gestante vítima de violência sexual que opte por manter a gestação, em Betim. Foi arquivado por prejudicialidade."
+}

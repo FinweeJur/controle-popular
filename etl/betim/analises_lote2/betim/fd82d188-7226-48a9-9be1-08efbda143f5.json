@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_titularidade",
+      "titulares": [
+        "professores da educação infantil da rede municipal"
+      ],
+      "grau": "moderado",
+      "trecho": "enquadramento dos professores da educação infantil na carreira do magistério público municipal de Betim",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Federal nº 15.326/2026"
+  ],
+  "resumo_neutro": "O projeto institui o enquadramento dos professores da educação infantil na carreira do magistério público municipal de Betim e adequa a legislação municipal à Lei Federal nº 15.326/2026. Está em tramitação."
+}

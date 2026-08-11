@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, III",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "cidadãos em contato com agentes de trânsito"
+      ],
+      "grau": "moderado",
+      "trecho": "uso de instrumentos de menor potencial ofensivo pelos agentes de trânsito do município de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre o uso de instrumentos de menor potencial ofensivo por agentes de trânsito no Município de Betim. Foi retirado pelo autor."
+}

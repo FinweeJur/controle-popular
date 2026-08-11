@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "contribuintes com deficiência visual"
+      ],
+      "grau": "moderado",
+      "trecho": "disponibilização do carnê de IPTU em braille para os contribuintes com deficiência visual",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto determina que o carnê de IPTU seja disponibilizado em braille aos contribuintes com deficiência visual do Município de Betim. O projeto foi vetado."
+}

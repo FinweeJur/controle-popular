@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoa com doença celíaca internada em hospital"
+      ],
+      "grau": "moderado",
+      "trecho": "Assegura o direito à dieta isenta de glúten à pessoa com doença celíaca internada em hospital localizado no município de Betim",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto assegura o direito a dieta isenta de glúten para pacientes com doença celíaca internados em hospitais do Município de Betim. Foi sancionado."
+}

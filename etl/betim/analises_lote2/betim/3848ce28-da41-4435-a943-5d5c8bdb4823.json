@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "pessoas com doenças raras"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política de Atenção Integral à Saúde das Pessoas com Doenças Raras no Município de Betim",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política de Atenção Integral à Saúde das Pessoas com Doenças Raras no Município de Betim. Foi sancionado."
+}

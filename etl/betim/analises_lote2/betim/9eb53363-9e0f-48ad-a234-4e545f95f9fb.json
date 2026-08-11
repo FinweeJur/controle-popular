@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "crianças e adolescentes usuários de transporte escolar"
+      ],
+      "grau": "marginal",
+      "trecho": "utilização de material publicitário nos veículos de transporte escolar, com intuito de combater o bullying infantil e a pedofilia",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a utilização de material publicitário nos veículos de transporte escolar de Betim, com o objetivo de combater o bullying infantil e a pedofilia. Foi vetado."
+}
