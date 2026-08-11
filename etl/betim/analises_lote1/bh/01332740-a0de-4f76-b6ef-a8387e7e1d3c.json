@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": ["estudantes diagnosticados com Transtorno do Espectro Autista matriculados em escolas públicas, privadas e conveniadas do Município de Belo Horizonte"],
+      "grau": "marginal",
+      "trecho": "preenchimento da ficha de anamnese ampliada para estudante diagnosticado com TEA nas escolas públicas, privadas e conveniadas do Município",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o preenchimento da ficha de anamnese ampliada para estudante diagnosticado com Transtorno do Espectro Autista (TEA) nas escolas públicas, privadas e conveniadas do Município de Belo Horizonte."
+}

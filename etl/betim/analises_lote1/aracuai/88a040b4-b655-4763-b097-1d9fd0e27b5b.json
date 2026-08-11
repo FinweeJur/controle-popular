@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["crianças com deficiência e/ou transtornos matriculadas em instituições de ensino públicas e privadas de Araçuaí"],
+      "grau": "moderado",
+      "trecho": "PROGRAMA MUNICIPAL DE CONSCIENTIZAÇÃO, RESPEITO E ACOLHIMENTO DE CRIANÇAS COM DEFICIÊNCIA E/OU TRANSTORNOS NO ÂMBITO DAS INSTITUIÇÕES DE ENSINO PÚBLICAS E PRIVADAS DO MUNICÍPIO DE ARAÇUAÍ/MG",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa Municipal de Conscientização, Respeito e Acolhimento de Crianças com Deficiência e/ou Transtornos, no âmbito das instituições de ensino públicas e privadas de Araçuaí."
+}

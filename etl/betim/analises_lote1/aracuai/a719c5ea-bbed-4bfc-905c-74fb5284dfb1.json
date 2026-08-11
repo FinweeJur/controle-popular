@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": ["população do Município de Araçuaí, quanto à qualidade do sistema de esgotamento sanitário"],
+      "grau": "marginal",
+      "trecho": "PROIBIÇÃO DO DESCARTE DE EFLUENTES LÍQUIDOS ORIUNDOS DE SISTEMAS DE TRATAMENTO OU RETENÇÃO DE ESGOTO DOMÉSTICO OU INDUSTRIAL NOS POSTOS DE VISITA (PV) DO SISTEMA DE ESGOSTAMENTO SANITÁRIO",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei proíbe o descarte de efluentes líquidos oriundos de sistemas de tratamento ou retenção de esgoto doméstico ou industrial nos postos de visita do sistema de esgotamento sanitário da área urbana de Araçuaí, e estabelece a obrigatoriedade de apresentação de laudos semestrais de vistoria dos tanques transportadores."
+}

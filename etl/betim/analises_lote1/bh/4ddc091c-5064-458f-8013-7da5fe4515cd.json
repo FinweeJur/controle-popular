@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["crianças e adolescentes do Município de Belo Horizonte"],
+      "grau": "moderado",
+      "trecho": "Política Municipal de Prevenção e de Enfrentamento à Violência Digital contra Crianças e Adolescentes",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal de Prevenção e de Enfrentamento à Violência Digital contra Crianças e Adolescentes, no Município de Belo Horizonte."
+}

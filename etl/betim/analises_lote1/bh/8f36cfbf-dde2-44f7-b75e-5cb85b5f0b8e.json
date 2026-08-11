@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["pacientes com neoplasia maligna oncológica no Município de Belo Horizonte"],
+      "grau": "moderado",
+      "trecho": "Programa Municipal de Navegação de Pacientes para Pessoas com Neoplasia Maligna Oncológica",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o Programa Municipal de Navegação de Pacientes para Pessoas com Neoplasia Maligna Oncológica, no Município de Belo Horizonte."
+}

@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["estudantes da rede escolar do Município de Araçuaí"],
+      "grau": "moderado",
+      "trecho": "POLÍTICA MUNICIPAL DE ATENÇÃO À SAÚDE AUDITIVA E OCULAR NO AMBIENTE ESCOLAR",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal de Atenção à Saúde Auditiva e Ocular no Ambiente Escolar, no Município de Araçuaí. A norma já está sancionada e em vigor desde dezembro de 2025."
+}

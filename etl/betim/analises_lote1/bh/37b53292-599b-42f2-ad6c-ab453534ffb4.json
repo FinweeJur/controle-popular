@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 5º, I",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["mulheres empreendedoras do Município de Belo Horizonte"],
+      "grau": "moderado",
+      "trecho": "Programa Mulher Empreendedora",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa Mulher Empreendedora, no Município de Belo Horizonte."
+}
