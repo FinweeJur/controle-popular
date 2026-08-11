@@ -1,0 +1,132 @@
+{
+  "id_municipio": "3121605",
+  "municipio": "Diamantina",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-lote1",
+  "camadas": {
+    "lei_vigente_com_sinal": 20
+  },
+  "objetos": [
+    {
+      "id": "1f3ea54b-526e-4972-addf-e78ff595ec4d",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4408/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "ed92a3ab-a2e9-44b7-9b38-7991b6a7de64",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4405/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "4d63637d-3dc2-449a-a9f4-60ff5a074a0e",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4401/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "2abc8f7f-1c2c-42c5-9cbe-79993c22c31f",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4394/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "bee0d649-3a53-45de-ae9e-1a89a706c741",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4391/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "c44699ad-a6cf-468a-bddd-e32cbaf0f67a",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4390/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "7f536454-9f68-444c-b467-c44d266f0344",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 206/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "024db6e7-c22e-489b-8b7d-85c6f653de8a",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 205/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "a15a0812-24f3-4254-97c6-698f4b43c9da",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 205/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "acc4240b-1a99-4b85-8df0-d5300f9db4ba",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Complementar nº 203/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "5c32d563-7996-4fb7-8fc6-5acf3b6db412",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4370/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "534827f2-e97d-42a0-a3da-6bfc4eeac3c5",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4369/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "2355fa0c-435a-45bd-a939-0e083212161e",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4368/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "b2c430be-f2cd-49ff-9db6-53db00a5d70e",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4344/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "1af95d07-93b2-4193-acf5-29bcd1a4447f",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4342/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "37263672-30e2-4bb2-b4e2-1cb670709bfc",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4337/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "f22a4730-29fe-4b51-ad92-1187152e31c7",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4336/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "22f5d0ef-7a00-4e45-a889-09d57b53c140",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4334/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "e1b03433-a302-4123-8c39-a8f2b563d18a",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4329/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "bf10d628-1243-4ec4-b20c-a4a59a15a0ba",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4326/2025",
+      "camada": "lei_vigente_com_sinal"
+    }
+  ]
+}
