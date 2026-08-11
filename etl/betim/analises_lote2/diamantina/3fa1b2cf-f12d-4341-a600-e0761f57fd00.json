@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "estudantes atendidos por Associações Comunitárias com transporte escolar em Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "autoriza o Município de Diamantina a concecer auxílio financeiro ás Associações Comunitárias que especificam, para custeio com Transporte Escolar",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei altera a redação do artigo 1º, inciso V, de lei anterior que autoriza o Município de Diamantina a conceder auxílio financeiro a associações comunitárias para custeio do transporte escolar, atualizando essa autorização para o ano letivo em questão."
+}

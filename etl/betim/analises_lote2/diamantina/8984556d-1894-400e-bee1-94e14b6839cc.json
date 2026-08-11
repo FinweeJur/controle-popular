@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "devido_processo_ampla_defesa",
+      "dispositivo": "CF/88, art. 5º, LV",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "motoristas autuados por infrações de trânsito em Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "institui a JARI Junta Administrativa de Recursos de Infrações",
+      "confianca": 0.5
+    },
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 1º, parágrafo único",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população de Diamantina no controle social da política de trânsito"
+      ],
+      "grau": "marginal",
+      "trecho": "cria o Conselho Municipal de Trânsito e Transporte",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Sistema Municipal de Trânsito e Transporte de Diamantina, cria o Conselho Municipal de Trânsito e Transporte, o Fundo Municipal de Trânsito e Transportes, o Departamento Municipal de Trânsito e Transportes e a JARI (Junta Administrativa de Recursos de Infrações), órgão de julgamento de recursos contra autuações de trânsito."
+}

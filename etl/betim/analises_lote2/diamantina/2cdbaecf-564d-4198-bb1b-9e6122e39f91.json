@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 203",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "beneficiários das políticas municipais de assistência social, educação e saúde em Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "distribuição gratuita de bens, valores e serviços pelo Município de Diamantina no Âmbito das Políticas Públicas de Assistência Social, Educação e Saúde",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei regulamenta como o Município de Diamantina distribui gratuitamente bens, valores e serviços no âmbito das políticas de assistência social, educação e saúde, disciplinando o acesso da população a esses benefícios."
+}

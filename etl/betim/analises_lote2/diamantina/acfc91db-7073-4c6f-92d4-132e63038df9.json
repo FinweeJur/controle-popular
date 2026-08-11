@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 198",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "Constituição do Consórcio Intermunicipal de saúde da rede de urgência, nos termos da Lei Federal nº 11.107, de 06 de abril de 2005",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei ratifica alteração de cláusula do contrato de consórcio público firmado entre municípios das macrorregiões de saúde Nordeste/Jequitinhonha, para constituição do Consórcio Intermunicipal de Saúde da rede de urgência, nos termos da Lei Federal de Consórcios Públicos (Lei nº 11.107/2005)."
+}

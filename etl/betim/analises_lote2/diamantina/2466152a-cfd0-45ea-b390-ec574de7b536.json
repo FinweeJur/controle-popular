@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "servidores membros da Comissão de Licitação e de Pregão do Município de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre a gratificação aos membros da Comissão de Licitação e de Pregão",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui gratificação para os servidores membros da Comissão de Licitação e de Pregão do Município de Diamantina, criando remuneração adicional para essa categoria."
+}
