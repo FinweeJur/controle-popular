@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população do município de Diamantina, por meio do Conselho Diamantinense de Segurança Pública"
+      ],
+      "grau": "marginal",
+      "trecho": "retificação da Lei nº 3846, de 26 de fevereiro de 2014, que autoriza o Município de Diamantina a conceder ajuda financeira ao Conselho Diamantinense de Segurança Pública, conforme especifica",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 3846/2014"
+  ],
+  "resumo_neutro": "A lei retifica a Lei nº 3846/2014, que autoriza o município de Diamantina a conceder ajuda financeira ao Conselho Diamantinense de Segurança Pública, conforme especifica."
+}

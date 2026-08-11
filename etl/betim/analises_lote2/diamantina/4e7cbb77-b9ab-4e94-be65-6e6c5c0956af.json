@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 182",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população de interesse social do município de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Sistema Municipal de Habitação de Interesse Social - SMHIS, O Conselho Municipal de Habitação de Interesse Social - CMHIS, cria o Fundo Municipal de Habitação de Interesse Social - FMHIS",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Sistema Municipal de Habitação de Interesse Social (SMHIS), o Conselho Municipal de Habitação de Interesse Social (CMHIS) e cria o Fundo Municipal de Habitação de Interesse Social (FMHIS) em Diamantina."
+}

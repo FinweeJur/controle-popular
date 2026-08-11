@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "crianças e adolescentes do município de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "obrigatoriedade dos estabelecimentos comerciais, hotéis, motéis, casas noturnas e similares e anexar aviso em local visível sobre os crimes praticados contra crianças e adolescentes e suas penas",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei obriga estabelecimentos comerciais, hotéis, motéis, casas noturnas e similares a afixar, em local visível, aviso sobre os crimes praticados contra crianças e adolescentes e as respectivas penas."
+}

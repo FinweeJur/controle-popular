@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "comunidade atendida pelo Instituto Pró Educação e Cultura"
+      ],
+      "grau": "marginal",
+      "trecho": "conceder ajuda financeira ao Instituto Pró Educação e Cultura para os fins que especifica",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o município de Diamantina a conceder ajuda financeira ao Instituto Pró Educação e Cultura, para os fins que especifica."
+}

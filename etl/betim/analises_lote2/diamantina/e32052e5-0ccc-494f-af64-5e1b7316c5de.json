@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 182",
+      "direcao": "restringe",
+      "mecanismo": "transfere_onus_ao_titular",
+      "titulares": [
+        "proprietários de loteamentos aprovados no município de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "revogação da Lei nº 3706, de 30 de dezembro de 2011, que \"Dispõe sobre a isenção de IPTU para loteamentos aprovados pelo município de Diamantina",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 3706/2011"
+  ],
+  "resumo_neutro": "A lei revoga a Lei nº 3706/2011, que dispunha sobre a isenção de IPTU para loteamentos aprovados pelo município de Diamantina, restabelecendo a cobrança do imposto sobre esses imóveis."
+}

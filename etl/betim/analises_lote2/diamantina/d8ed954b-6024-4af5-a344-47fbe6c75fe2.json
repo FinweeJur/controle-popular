@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "comunidade atendida pela Associação Cultural Ogunhê Capoeira"
+      ],
+      "grau": "marginal",
+      "trecho": "conceder ajuda financeira á Associação Cultural Ogunhê Capoeira para os fins que especifica",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o município de Diamantina a conceder ajuda financeira à Associação Cultural Ogunhê Capoeira para os fins que especifica."
+}
