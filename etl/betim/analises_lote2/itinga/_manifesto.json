@@ -1,0 +1,138 @@
+{
+  "id_municipio": "3134004",
+  "municipio": "Itinga",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-lote2",
+  "camadas": {
+    "norma_secundaria_sem_sinal": 21
+  },
+  "objetos": [
+    {
+      "id": "75261fef-cc9e-4bef-bd49-85aa119f79ec",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 6/2026",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "470edea0-396e-4de9-a8fc-4acedb9386e3",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 5/2026",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "de642cf3-1098-4bbe-80b6-6edd4862af85",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 17/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "8d93bb20-2538-49c1-8c20-bca7534722b5",
+      "tipo_objeto": "ato",
+      "identificacao": "Decreto Legislativo nº 4/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "024fd9f5-ce5c-4843-91a1-401d2f0363f3",
+      "tipo_objeto": "ato",
+      "identificacao": "Resolução nº 4/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "ed564703-c6b7-49f5-88d5-e9dd74d3d274",
+      "tipo_objeto": "ato",
+      "identificacao": "Decreto Legislativo nº 3/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "f2b58435-5bac-4d01-b6d6-8783be220120",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 10/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "ca16979a-bae3-4ee8-bdc8-198d6a64d8ee",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 8/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "2f1427da-93bc-4bac-8959-8f075bfe4a4c",
+      "tipo_objeto": "ato",
+      "identificacao": "Resolução nº 3/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "9245fff9-448b-461b-894a-bff9b919ee13",
+      "tipo_objeto": "ato",
+      "identificacao": "Resolução nº 2/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "8a213af5-722c-4965-a6ac-63bddb1f07e6",
+      "tipo_objeto": "ato",
+      "identificacao": "Resolução nº 1/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "79b5e891-e689-4c87-acf7-9d3c19446076",
+      "tipo_objeto": "ato",
+      "identificacao": "Resolução nº 1/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "3bcf2fe2-1abd-4a82-b423-b8457934b5e3",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 4/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "626a5bfb-189d-4b93-ab43-f78e7e29bf15",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 4/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "c4abef4d-7079-4297-b839-43cd56647d9c",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 3/2025",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "2b20da18-5a96-4c42-89df-b9b87bb4d2d4",
+      "tipo_objeto": "ato",
+      "identificacao": "Decreto Legislativo nº 9/2024",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "ff7e633b-9f87-4173-83b8-1dffa46f8e76",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 16/2022",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "8305a373-a98e-4aa1-9b94-8786c0d9c35e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto Lei Complementar nº 2/2022",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "cb2a7875-e1c4-4eab-882f-0583d80aa82a",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto Lei Complementar nº 1/2022",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "06be229a-13aa-472a-829f-c1b3614fddf0",
+      "tipo_objeto": "ato",
+      "identificacao": "Resolução nº 5/2021",
+      "camada": "norma_secundaria_sem_sinal"
+    },
+    {
+      "id": "9bdcd41a-7dce-42c3-b5b0-e46dae16284c",
+      "tipo_objeto": "ato",
+      "identificacao": "Portaria nº 20/2021",
+      "camada": "norma_secundaria_sem_sinal"
+    }
+  ]
+}

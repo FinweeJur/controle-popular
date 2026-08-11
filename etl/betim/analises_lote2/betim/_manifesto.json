@@ -1,0 +1,1212 @@
+{
+  "id_municipio": "3106705",
+  "municipio": "Betim",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-lote2",
+  "camadas": {
+    "projeto_lei_com_sinal": 200
+  },
+  "objetos": [
+    {
+      "id": "bcbfcb8c-cf85-41be-a8ff-232f297fc444",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 350/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7ab632fe-9993-4edc-a01c-89f021c3a4ef",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 321/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4eb8ae4e-17a3-476f-afb7-2a2f89e517e9",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 313/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "073caad6-a44e-4d05-acb9-d2ac605f7fe5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 302/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "cc133bb5-e3bf-464e-b91f-4cbcbdde1c59",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 289/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1bcf9601-c6d0-435a-bb94-ba85e21ec655",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 291/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "c072e15e-d37f-4411-9405-e8c3cc3ea672",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 238/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ed9fffd4-060b-4579-8686-180285fb95a9",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 216/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "381fb42a-eb72-470c-9743-01631e6039ae",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 219/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "71d8a0cf-cfa1-4aef-a0da-35b7505f88f6",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 196/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f8f58e7d-4141-4f5f-b0e8-f11f22fbe009",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 195/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "0ba4b023-0728-4a11-984c-aa159fb7fbe2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 189/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1972c8b7-150a-401b-96a2-c55481a13d30",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 181/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "300a4c32-4f46-4ef3-8aaa-ba9bb2fe36f3",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 132/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "48dd99c7-b0e8-47be-82b5-c4851d88bfbe",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 71/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9b636f07-d003-42c9-b567-e4ac7bcec691",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 66/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ee1f176d-eea6-4f08-8dd9-ede884b3a71c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 58/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "3848ce28-da41-4435-a943-5d5c8bdb4823",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 56/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "80c6ca21-223c-4384-9cb3-aaa171706c7c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 49/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6eccb9e2-083e-49d1-bb6e-972aee0dbe34",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 1/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "99b37fbf-118d-47bc-bc73-7d5a32780f82",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 3/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "584b32b3-d91b-48c5-b800-e518dabff20c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 294/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "0a8f07fb-0a2a-4094-8e16-f0e5d2c758c0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 292/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "c468524b-f04d-490d-ab05-b805627ef817",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 187/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "77202df3-d31e-4db5-81d3-4638210ebf93",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 186/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4a07f64f-e222-4c5e-a6b1-bb9b8ada0588",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 184/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d094e744-af7c-4c06-bb6a-cab0f0c9decf",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 59/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d886117a-fdba-4775-acfc-25d023678e81",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 472/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "e925ab2e-2b50-485e-bd57-e42b574aa1fb",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 262/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "03fdc2ea-7bb6-4608-91c2-f3e14fa2eaa2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 89/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5219254b-3592-49fc-8c1a-0b925e44bede",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 40/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "c96a4be3-85a2-480c-956b-3d6cb7178ed5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 38/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "33723a9a-aa25-4849-a948-b68d432c4f64",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 675/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "c59a096c-ad04-45bc-9d0c-4670b00172e8",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 481/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "8e96279b-6ab7-4dd1-8c5e-982a688458d1",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 332/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9eb53363-9e0f-48ad-a234-4e545f95f9fb",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 261/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b2710c2d-a507-4702-a759-aded51095a88",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 75/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5102f356-44db-4bd1-8dd1-ab4d653988bb",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 622/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4a5e07b5-c74f-46f8-8247-f5f1ece97977",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 322/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "61f0c626-2bcd-46ff-98ee-098d0e7163a4",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 257/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5e8fc81f-9ca5-46fb-8ade-0d85a33bbb02",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 63/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d2824994-f2f0-44be-a99e-5cd9938ed75b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 690/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "3aed3ba0-41a2-4a9f-898c-1a763c2997cb",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 623/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "bc9f3675-7ccd-4300-a6f0-606b5b328042",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 562/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "20a79bf8-4af4-42c5-b77f-aef60f639205",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 256/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "85f061a8-037f-4c37-9033-2f19be67920c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 52/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9aaa16d4-232c-4a46-a757-0b601175c639",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 689/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9cd961f8-c3c4-43e8-8e79-c3944c157bb2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 565/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ddf009fb-252d-4763-937e-9a6e3d95161b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 526/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7eba3c97-edf4-4741-8361-66bea2147be5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 480/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5b7aa1c7-fc01-448a-81fc-bb256f065683",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 468/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "59e9540e-bc5a-448e-bb0a-5fdc74513a61",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 462/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "0d23d463-2030-404b-991b-1aca77d9ec61",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 191/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "eaa177de-8a5b-41c3-967e-45fd58e34fd7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 476/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "365a7d0a-a91b-4529-9fdc-bc9b84da1fbd",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 463/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7b23537c-173e-415f-8b2a-c719d6be3dcb",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 7/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4c728d95-cefc-4a76-90fa-08049e0311c2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 4/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6a036968-1d53-4e45-ade8-087afa3ae614",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 82/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "001ba63d-c236-41f7-88df-aa6a501b3bfe",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 95/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "8c08c040-857f-4355-884b-34e2b65730ba",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 523/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "02b67bd6-f060-4e4b-a809-50fcc3f00c59",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 293/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "fa99aa6f-e733-40ad-bf4e-3e27e6a78204",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 12/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4411b391-6da6-40b3-9dbb-9bebc7c2615d",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 448/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "e6872860-1809-45d5-aa06-95d14e4dcde6",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 426/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ede187a2-2837-4758-90c0-d147e995741c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 524/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "38949371-7a57-43f0-a41e-05727d550f21",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 337/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "0094ce26-5da3-424d-8080-34c190c9071a",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 300/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "db168579-d8bf-4480-a9e9-2aac477c0aae",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 204/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ad9c5702-827b-460a-b2de-5f5c4513f78e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 47/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "dfc86271-8e85-418a-986c-17be8e1087f2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 440/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ecb2b4ce-ebb0-4178-bbfd-ad9fe2076a08",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 196/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "25cb748e-191e-41b2-bb3b-62fe65fd8ad9",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 69/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5446bd82-894f-48ac-8e98-d49dd0fdc2d7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 221/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4bec78cf-019f-4153-b533-3de8de313784",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 213/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "c608ae98-01db-4be6-91b3-e5805ec448ab",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 211/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "73a7e9e2-4148-4fa8-8ce1-fcd5bcf5483f",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 297/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1c8ceccd-9957-43e9-b967-1d106dfd0507",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 92/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "520d3abb-7f09-4074-a861-aa5c84334ce3",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 682/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "8002dc73-8ba9-440c-99b8-c598d4d40933",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 161/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "91b2ae46-153c-429a-80d3-4b4038b92858",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 103/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4aa2c825-9038-4318-bda5-9f767b09ae24",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 645/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9815135f-0251-44b4-ad8f-17a16d291d09",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 90/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9695d1d5-ab62-4da2-ba00-fe2cb036b270",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 53/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "3705b0cd-0a1f-48e4-a3a8-b0cbb2473735",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 160/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "907004c6-e3a2-403a-8e89-f233d1579c36",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 459/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9e4d3fd1-7bb9-4be6-b877-45b976c547c7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 33/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "03364a66-cdfb-4b5b-aff0-ca307e54f158",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 67/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f65e9e68-efd4-4bb0-88c0-a2b013298f01",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 11/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ae95c094-95fc-4da6-91fa-01024467fbac",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 429/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9d8d80bd-3533-40b5-90f3-4dc7ff2fe9ce",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 133/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "2bd9b562-3545-40ee-8319-86c79f0da00c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 678/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "fd82d188-7226-48a9-9be1-08efbda143f5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 10/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "25b19ecc-073a-428f-bb2a-26e254689c1c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 9/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b2b3bd22-60fe-406e-b4f9-9790023ff529",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 8/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "fc9d7479-d65c-4206-a3c5-c3709bfafd00",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 692/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "494ddb3f-b204-4da3-a1ce-c4a4442b6e61",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 627/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "61a02905-740f-44d7-830f-b78be9d9be86",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 610/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "187212a0-1a2d-4523-aeb9-71e147a42ef6",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 608/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "59283596-4a2d-4838-86f5-616a6e6d04d9",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 91/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "869e0e54-d23e-4c8a-a0b7-c2cff8e18e24",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 483/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6239ad5e-a884-45f6-942f-c79971393116",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 600/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a81ae0bd-f792-43d4-8662-64162f49fb44",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 536/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "30863adf-1123-46b1-88df-d9d048808e4b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 488/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "357b9b37-3c46-4f3c-a0cc-0794dd3dcd23",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 314/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "30f7b08a-766a-4694-9952-0f970b331aa2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 342/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "fd79837e-82eb-45c0-9c70-8306c2ed4c47",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 333/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "e0cbcc50-282c-4cab-a7ec-bda7e1389884",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 100/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "002544dd-3932-4dab-b489-ec14b4f6021f",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 106/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "149c957a-4b3e-490e-8a72-f17f33fa2142",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 100/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "db4e0e94-57d9-48cd-8c0b-f2c06ef84a35",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 672/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "89633152-7b54-49cc-8cec-efdd00e8b255",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 670/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "092de075-5511-4d59-a016-2a36cbb008f7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 597/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "065b0ead-534a-4aab-9b28-00ac33051990",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 586/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ba6366e9-139e-41b1-b114-150c909ef8db",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 550/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b4d41cef-0295-4442-9a5e-097012260a79",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 371/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a33674dc-7c56-4b08-8275-4aa92d35dbb6",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 140/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "eef9da6e-a6b2-459c-a7f5-3c48f7005521",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 275/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5a24526c-21c3-4704-9ac1-7f1604dfd82a",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 288/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7698ce90-6276-4200-b0cf-d56932a9d34d",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 287/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "3291ae5a-1e38-4ccf-8d79-7755c40980e4",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 281/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "785d3a51-6bb0-441f-b1eb-9469ac78589d",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 201/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b37167d3-c947-4328-953c-488679dcf7c4",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 200/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "fdbd9905-ca48-4423-a7e3-50d381fa7df3",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 295/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7680597f-6fcb-4c69-8c8e-6f0b6f3e1384",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 129/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "8fbca81c-a952-481c-b8bb-87c89794eb01",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 125/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a3199f2a-0395-424e-89e3-7a4cf8e0a6ac",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 12/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9393fec3-f190-494c-9659-7467d3adeb46",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 10/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4d5ada2c-ed5a-4d68-a4d6-c6006576c678",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 9/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "743a9d10-2285-41ad-a8a9-dec4a5c7e5b9",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 8/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b1c095fa-03b2-4324-a4fb-7f6b051f37a5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 6/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "244e8c48-d355-4c59-92d5-5c6e92e7bfc5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 4/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6f518f04-bfb3-4535-be61-07b27b02f184",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 284/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d19ff03f-6a3c-4553-832d-19a64e69ae43",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 21/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "80edfdcf-62b2-42bb-9fc2-6984b6d78f54",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 19/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a3d144a6-0957-4e7f-94db-37903f40f1db",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 23/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "e1b1c7a3-890b-4b03-95c8-0c40cb6d6aa1",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 148/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "dc4cbbec-70d7-4aaf-8b15-882dfd7731f8",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 94/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "776b79cf-9bf4-4f03-9565-3a96c6c48885",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 323/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "e5a00d56-88a7-479d-aedd-de062ccb956a",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 19/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a0b220f7-e2d3-4e71-9b86-470cae9f3962",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 18/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "10d94734-e65b-43b9-8b5f-22de59cb9306",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 17/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "35229be2-8a4f-4112-b1c5-9cdae2d0207e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 16/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b2b99ab4-c5e4-4e5f-8b23-4c1211aca893",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 15/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "8e762088-0dd0-4a35-b2a1-5acad15298d0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 14/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1b59f091-8b14-46f5-ae3f-6de990a62b0e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 13/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "34957424-0d68-40cb-b167-4520eb724e23",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 642/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d3eff98b-3e59-4975-9e3d-e2ce3ed08b3e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 207/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "e5e45fb8-46f0-4773-9660-3494c0d82dc0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 605/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7773dc93-b913-4370-92af-b6aaa596f009",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 604/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b273651d-bd7f-4c45-bab3-71ba60e94fd8",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 553/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5bc1c4a1-185f-40da-9d1d-a8350fccea15",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 543/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "04c58750-62b5-4bbd-af32-93e8774c2eeb",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 541/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "78467ed4-7884-474f-8d73-75ea79809ec1",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 202/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d0a99ba2-76c1-4a41-a872-8e87163f2f26",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 94/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1d20365e-06f2-44f2-8b27-ad7e68203d1c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 71/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "89605c33-2c31-44f5-9537-e4188ed914f5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 139/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "2baf24e3-409a-410c-a7d0-9951f45bde53",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 135/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9dcb7a98-c1b1-4697-b9ce-01caae60e512",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 48/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "973e6b15-30c3-4091-8c7e-68977d1c5cb1",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 18/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "2da2e1c6-e34d-46c3-b2eb-2f7ad8e27e52",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 17/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "02c1773e-7276-46e8-89cb-061a7f5f06ca",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 16/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d91d6dfd-dc48-449b-a1d2-97f3348db636",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 15/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "c607218c-e96a-4a06-9100-e93e912a9e6b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 13/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "656b76ce-9c63-4994-918b-066b58d1bb4a",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 85/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "80e88652-e1fa-432f-90e8-0d64c8fc1667",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 51/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1d5f0908-3fd3-4738-9c87-2dae07a512c1",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 601/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d7219d5d-1f09-41f1-9b09-f94d41be387f",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 39/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "3f71aa2d-09d1-4a8d-ba98-0bb19cfd9aa2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 102/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "638e3c71-9c5b-4baa-bcca-f1e68a6d6828",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 385/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "eeaa668a-a6e5-4e49-a304-303fa62c4d9d",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 416/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "88208b27-f479-42f0-9619-14f24a25572a",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 286/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "45b86c0a-6d18-46a0-ba76-d5f56c6f3f89",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 182/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "235ab46e-d367-4e99-b67d-f5affc75d8dc",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 269/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6edf1827-3b2a-4200-acc7-7a7d6e0d79b1",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 432/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "84014a68-b81b-4626-9ee1-52eea59d0408",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 299/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ed6de0da-bd31-4191-b2b2-d50b46b9e02f",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 264/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "157d3668-d051-446a-85db-a79faf7fb7dd",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 117/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "10cfb328-c4bf-49d4-9667-abdddaf2ac85",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 260/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "526ec26a-9f21-4b4d-a5c7-a16723fa209f",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 259/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "70f1c43d-edf8-4e09-b2ad-5d68dc926c7d",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 258/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "164a4d84-439c-40ca-bd53-72070b560a44",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 625/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "da31a19e-2f89-42fb-8558-9bd146cf47f0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 146/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1d59e241-b803-4925-bd3d-e453cb23f015",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 145/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "8209dd41-fc04-4d12-9fa8-1d923e8a55de",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 140/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "08977440-e13c-4284-b5d9-c523c7f44334",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 138/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "23d4a565-6ba6-4896-9b49-507ca317d2a8",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 136/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1fa75a0b-ba4b-4195-b438-d082cac50cdf",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 24/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "0b07073c-96a7-425b-8566-6a4e1e4ca9fe",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 126/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ba9fe5ea-d2cc-4c65-9459-6932ee7bb7ab",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 124/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "36dc3672-04a9-4cea-98fe-780778c98405",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 123/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "677a05d7-6225-4d0e-8445-5a1cd7f3f2b0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 183/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "be2369a4-3815-46d3-92db-7e5c45a6c2b7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 596/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4b45bad5-f704-48a2-8c53-d2132dfb1df3",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 304/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6524e113-5668-4c26-81b6-bc5dcfd27ea2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 184/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "09ae6609-8faf-4bc9-afa9-39db7f291c1c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 69/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "798f5e10-5237-4f31-9c3f-94b13fec12e5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 192/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9876988c-7e9d-4495-9b3e-9b9f0fc4032b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 695/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "cc86227b-4fbc-4b7e-a975-9a2de3069516",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 620/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "76493277-8bf9-4ca7-8f8d-4f240fc8fad3",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 566/2025",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9ebd3e94-9c17-4bcb-b76f-28f6a01f35e1",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 441/2025",
+      "camada": "projeto_lei_com_sinal"
+    }
+  ]
+}

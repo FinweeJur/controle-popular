@@ -1,0 +1,1213 @@
+{
+  "id_municipio": "3550308",
+  "municipio": "São Paulo",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-lote2",
+  "camadas": {
+    "lei_vigente_com_sinal": 19,
+    "projeto_lei_com_sinal": 181
+  },
+  "objetos": [
+    {
+      "id": "ec01ab80-1efa-463d-82e8-19e792181e26",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.375/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "af789e70-1109-4413-8d40-e4a8a86b6f99",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.367/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "b0153f57-eeae-49bf-8a4a-b73c3ebbcb58",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.347/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "66ccf3a9-b7f4-41bf-83de-6070aa8cd13f",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.345/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "a4a7272d-2593-4d0b-9f9f-a7e5c963191d",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.333/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "a2a18056-25a4-44c2-b19d-f77cf8eab311",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.332/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "f4e575c5-f5e0-443d-928c-e1d279b05246",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.306/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "315099cf-dd29-41b6-ab20-6c1b7beb9027",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.304/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "d594c089-3b7e-4a01-b47a-23f941943420",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.303/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "99d4ee32-e21a-4625-866f-8c0b78c1c83c",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.300/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "1b7ee432-0d14-4049-bc02-cc03acb84dfc",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.299/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "89fdb214-0e9a-4c6f-8d55-accc144a6315",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.298/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "89dd11b8-d236-49b5-a754-b7ec8217c5ee",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.297/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "72342a31-29d8-426e-a88e-0c69de333d72",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.292/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "d228980a-6460-4474-98b5-645c34f7e760",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.282/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "e4ff20f0-dfee-4abc-b6c1-2b0788ac37b4",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.280/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "517538d0-432a-447c-a816-1ca9f58e0282",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.275/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "5bbb2ae9-4b63-4f62-b41a-fcd72832bca1",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.229/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "3635a1fd-7f8b-4a2f-a33f-d2903c01b138",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 18.224/2025",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "2d61d454-bfd0-43d5-9856-d50ceb4e86c8",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 642/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "55819348-e0e6-4d05-a803-91a4a2d6bc94",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 643/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f12e4a38-9457-477f-b42d-9f14ba215948",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 627/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "fbd2b140-e2f2-494e-8d6b-63ae03d0e3e5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 622/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4b58968c-d3ac-4a16-946c-aa0cb9846da9",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 635/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "da63ab60-76c9-4b10-9e0c-25a553b69933",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 630/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "73c43853-e1e5-4c40-9d6a-8a43aee537e7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 625/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f44fc4dc-5ff6-49dd-9609-f0bff4d2cd4c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 634/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7a72242b-d1b4-4f8d-9097-9f3949e96690",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 629/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a9d9fe7e-fd90-4f17-9627-7aed27503991",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 637/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "e1f1802a-3913-41f7-97a9-381e39b9b428",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 632/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "de9c5454-470d-4e53-9206-0b9c316d4eeb",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 641/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d0461988-1358-4d26-8552-65859c94b24e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 631/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9acdd241-88cf-4099-8ad5-0d25eb2636e3",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 626/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "3eb611b8-8965-4d59-8fd5-cd082bdcedd2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 621/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ec046420-ab8a-49b9-9737-7a70f6bafd13",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 638/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b6d7b8b7-90ca-4c97-a65a-7226986eb758",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 633/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "02afdc70-6ddc-4b23-98e4-45f3d4f3b9e7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 623/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "69196a0b-8ba0-42a1-8549-aa7d704b4230",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 619/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "28ad8858-2c6e-4a38-87d2-0c02e7b66ddd",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 618/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "11e285ed-df54-4b6b-bc9d-721eddb5e039",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 617/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1be58387-bc46-43ce-8c38-12d011696fa0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 610/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "98c797e1-0729-497f-8935-411dfdc6735d",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 613/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "bcfe4ad7-97e1-4e69-be51-a3ea9c26ed4c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 602/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b2568724-2a1e-4160-a1c4-c92c1ff43dac",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 597/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "10b54f6e-b8ff-4f82-ab90-e393361bf7d4",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 596/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "00d0e322-4e11-41a6-afc6-b8a5cfbb5af1",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 598/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "cfc83907-27af-4877-bbb9-e2dd6a69d2f5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 591/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "74bacbdf-8692-4bbe-a86e-499c17d50132",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 595/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ed7e9fc6-1d9b-456c-8390-bf2c0da255e8",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 590/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "c8f134ac-e56c-42db-b805-0531eff3b170",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 584/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "166cf3a0-d01f-480e-aca7-bfced106d4ec",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 585/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "af16415d-2cab-45f4-a2de-0ea3437d975f",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 578/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "0158dc1e-0036-4410-882f-63de5f68f275",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 577/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "97e68c4b-a44b-4719-bac5-b86ae9e7c066",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 576/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5126fdbf-c072-4f9a-813c-4c7173ad2551",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 575/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4f039c86-74e3-409e-b669-e1f5d8259db7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 573/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ffc0a179-c685-4853-8178-da05cd9f9581",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 572/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6db72154-3976-42bd-963d-83785b7ee384",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 569/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d93bda6d-75bd-405c-b48f-020813498522",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 568/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1095558f-a8a8-431c-8327-9af16d1adab2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 564/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "c63e3cdb-1e5a-46f6-9de6-d1c4a1182e76",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 563/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6321c0a9-7b8f-4673-92d5-d0fc08a5545b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 559/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "136fde04-862a-4e11-a96b-559efd25fab1",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 556/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4f06af2a-3004-4400-917d-65391ae23b63",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 555/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "fc89139b-f668-48a6-9605-e9ef7a3e0bd7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 551/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5062f01f-4a74-43e2-a011-8e7c9f2c84ad",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 552/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "2fbaea25-0d84-4a24-9d17-9edc98012c4c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 554/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7eef8c02-4cf8-4dfb-bb54-353d062c91ca",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 546/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "344d45c3-393e-408c-a71a-2ba2de79947a",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 549/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "c5370351-e2fb-46c8-b514-ed18b81c4772",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 547/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4323195e-16e7-4708-920a-96265fda27c4",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 548/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "14554868-4f92-43cd-b84c-4529e87d1964",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 550/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d3745318-fdfe-4b0e-9a7c-74f8a80a23e5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 536/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9fed423f-cf12-462b-abe3-986ff274d1f3",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 539/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6b4cd9e1-bd0e-4e5b-8d07-c2915b194025",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 535/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d2b5c072-338a-4e96-a22a-f21dd4dd4799",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 530/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "2f4c07f8-5498-4470-a122-e2f70150447c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 533/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9abe29b9-dde6-43b6-ab25-2e0817473eca",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 532/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d8e641e8-7f2f-492a-9843-e99c7c4706bd",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 524/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "61dbaae6-4dbf-4fea-9255-09dfccc11929",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 526/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "36cab908-6ce7-4044-ac7c-1a3d0dfc22ed",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 520/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4af5ed2f-afd5-4d38-8f32-91346738cc90",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 522/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d4dd0bc7-0925-4792-a426-80d301921ac0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 517/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b296d964-f55b-4b3d-94f3-5b6d0f857b46",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 516/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "3f246878-9036-4e90-b101-ea19dec9d77c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 515/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "e2c55a93-3868-48ba-923a-575eee39a7e6",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 511/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "89a12946-863d-4b2b-af08-6a119b6bdd75",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 513/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "c1652faa-8702-44b2-962b-a98d09efd6e7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 512/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "894278f8-de05-4c4f-b390-2027d6a4e78b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 506/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5bfe21a3-298b-4ccf-a604-65dca6f91fc9",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Emenda à Lei Orgânica nº 5/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "dc42c932-0115-4565-8c8d-e6da4c051ee2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Emenda à Lei Orgânica nº 4/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6bc1d1a8-5a16-452c-bc3c-36377f9ac9bb",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 498/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "60a773f3-66a1-4803-b28a-77c0a778e76e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 492/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d4c26716-308f-45ae-aaf2-c573fa5d3197",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 497/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7daf4443-0c30-43fa-9e5e-bcd7ddfafb96",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 496/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "89f87a77-6638-4b41-bd55-2847a67f52cb",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 502/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "06edbe90-5739-45f3-8b58-3630aecf9e11",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 487/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4d64dc9e-a639-443d-aabd-309c62286197",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 490/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ed408003-7cd0-4a13-9709-4385a015755b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 486/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "cfce8f79-8b51-4406-ad2f-f7283c094fac",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 481/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "3bd6985e-3eb8-481e-852a-8d7b814e4991",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 483/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "778220a8-6676-47df-b034-7a7692dece25",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 482/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ea9d037f-6a2e-407f-8ae5-eab688b51401",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 471/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7a5b0727-33cf-4470-bce2-8378e0fe57a8",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 475/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b4f050af-5b48-4f18-a0a5-a8cb1f423490",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 478/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7800cf76-3ffb-4a9b-9490-4b872267a769",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 477/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f605181e-6a54-46c7-ba31-f5e128e25ea7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 469/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ef4a9235-ca90-4d5d-ba3b-f43691fc9a8d",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 467/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1a776aad-9027-43d7-8a67-a13595e4f6b2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 464/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "0dfe64e1-6c7e-4442-b3fd-4af79a493899",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 463/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "247b1c35-3e6e-460c-9245-a70264b030b0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 460/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6c19f187-420f-41ec-be36-5af7307f3f22",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 462/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4936e25f-00d7-4690-b5db-99f23f5a19dc",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 461/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ff426f5e-9bab-49d5-bc9a-25c4ea36b54b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 459/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ed24e01a-be33-45d0-b421-2a7dd4c0e1da",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 453/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5dad4336-4d78-4125-9a28-730182bfb1ae",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 448/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "c3bdcdf4-89d7-4573-8fcf-ee5ab305b8e4",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 454/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f6245547-28d2-4fef-9463-bf0a29a53d60",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 449/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "61d6220b-0c57-4fb8-b231-1015c2bda30e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 457/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f9e954eb-dbad-4908-a80c-1623f2424e1e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 456/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "2f131df2-14fa-4fe5-a9af-36ed4abe86c0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 451/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a771954b-aef5-4b55-868c-7747a0c718d0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 440/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "3a787eaf-d4ef-4680-b4e8-767c6763a6df",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 445/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "516a7ec2-a9d9-4b13-96a8-78b1a7ffc95c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 441/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b4c3b8f7-7240-423c-82dc-5b27019af7a5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 443/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "0163361e-2ff9-4df7-b057-9ab95c73ce08",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 447/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4ee37241-24fb-4d4f-b73b-08b8a782395c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 442/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4b54a617-73e7-4c3d-9876-8aa109851172",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 435/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9114cc96-ca9c-4268-8f8e-ded3c25e57a0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 439/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "e31c07d3-21af-438a-93dd-70c0c3054ca5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 427/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "789158bd-a017-440f-ac74-be12e3bf9c99",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 428/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7962227a-b28e-4fd5-8ab5-197ac4368b71",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 418/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a063bd40-cfef-4b09-8751-f9d53c971ff1",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 420/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "65ccc401-1e82-4ab7-9244-ce288610342b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 421/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a860e1c0-9a51-41ab-a912-08326483ff1f",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 419/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "e7e9d0fb-97a7-4d44-a256-e0332e8e60db",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 415/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d627ec32-71ae-47ba-ae8d-68ad3e1325df",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 416/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "93d712e3-9fba-46a3-93f0-2aa6919f7ad2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 414/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "467c0f18-127a-4629-a878-164f74d2acf7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 413/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "da5929b4-21e6-4d8a-8c0b-34abf76b83b3",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 404/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a826fe58-c46b-45ff-98b1-96231cbd1cc2",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 410/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4dac479a-9f08-4e85-826e-a78af7f372cb",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 405/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "aafb1c69-f67e-43b4-9fe4-1023ecfa63bd",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 412/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d3395920-adc7-4371-b367-5aa2e9cb21e7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 407/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "9e8479aa-d6de-4bbf-bb56-7453156b277b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 411/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "10e4535f-210b-4dd7-8fe8-cd13d6aab72d",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 406/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "55e37352-96de-4858-bddd-f2c31f5e1b44",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 403/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f259f2ed-774f-4c75-9fbb-daebe9b4d0e1",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 399/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1347afef-d82b-43f8-9909-f474f470f5f6",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 398/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "8c19456b-9a32-4c3e-a6bb-1d60828fc1c0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 397/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d0c7e488-617e-43cc-be59-cf73f0ead29a",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 395/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a0539b0f-7c1e-4487-ac44-7e753354407a",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 389/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "84979518-ca7e-4865-a3be-e18615f7be5e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 393/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "bd315dd4-bc1e-495c-98b0-b121cffe175b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 394/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "097c7a4e-b2f0-45f4-8da3-b11dfecb168e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 391/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "8ee88237-3de7-4414-8094-f4f3533730d4",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 385/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d41996e1-35f7-42e4-ad24-c0bd94b15ddd",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 387/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "de4ea14f-b0bd-48bd-832d-56b0569495b6",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 382/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "53737a29-2089-4d3c-806e-76df4e037d49",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 372/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b864ed0a-b8d0-4742-be6d-efa09da67062",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 375/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "4c9bf877-9c5e-43b7-a3af-fcde0b181abc",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 373/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f14a9fd6-03f1-4ff3-bd2e-76f4b3f61f71",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 371/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "05815733-fb60-47d3-950e-25f601f5b302",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 367/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "62f1ce94-eb6d-4b81-aa86-fe6cffd57734",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 368/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "7b3f1b1d-731a-4192-8a53-c5584794a3ee",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 365/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "64ad5961-6847-458c-9b72-0d0661d8859c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 364/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "dd043007-a132-44de-bd94-e643fcd2e1e8",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 363/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f1167c5e-205e-4efe-a639-f71b7e076edc",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 358/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "74be919b-1c9d-487d-b4a8-0234b9080fdd",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 355/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "935d49b0-f24f-45eb-b4fb-ed1c54dec739",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 356/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "2b2f5874-855d-4587-999b-73d5969b5195",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 352/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f039e744-a401-43aa-9cc9-fe38eec1f44d",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 349/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "0bd8b1d9-8de9-42b0-b615-24a56d2b202b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 351/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "0ac27176-5180-490c-a0fd-c865d6fdd3c3",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 346/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f2105870-e6ff-4b31-ba14-9ba2ee66a66b",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 338/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "fa29e384-077b-47a2-9c64-02d214759235",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 341/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a60fd18c-35b0-447c-84b8-6e1cc5120e0c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 332/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "f1cf537e-a46d-4eff-8750-ff1338cec4fb",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 336/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "788afe3b-3ddb-4056-866d-a2e839646689",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 335/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1657fa71-8804-4fda-adec-b1734a274405",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 328/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a114f429-8808-4fd6-929a-ad994b7d5308",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 330/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "3fa083b0-acc3-428c-a3a8-e8e307d31a03",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 326/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "31117889-0fee-493b-b8b7-70e5910ebabe",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 324/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "e4d4da5d-0bc2-4ede-8e61-aede07d6d991",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 319/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "2be2d1be-c939-4d00-92d1-03dbf3dc9bd7",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 323/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "d8d932f9-667f-4133-9afa-25513168c792",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 317/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "87310d71-3c43-4975-a4f7-651b021f1222",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 313/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6b058906-1243-46ad-9ee4-30c72fb1e540",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 304/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ce9c682d-57bf-4380-aa5e-364766c7e37f",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 306/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "5fb5bc14-f3fe-4004-ac01-43778a35cfee",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 307/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ecc9e220-4d55-45ae-9ad0-9dc323ddb828",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 303/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1187a545-fea4-4bd2-ae07-8a2887d79180",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 298/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "6e36cf98-85a9-4a7c-96b2-ae696636b737",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 297/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "852e8a4b-9746-4fca-aabe-47870b33dd6e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 294/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "2350cd64-37f6-4903-a798-fa58697cf398",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 291/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "ed202468-759c-4183-a200-2d9d90ee0a94",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 285/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "a0b5e69d-3123-407b-8cfd-fd4529a9bf2e",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 281/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "1f924f9f-6083-41af-a7bc-7657dfa175c4",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 282/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "b504fb6e-29ae-4fb0-be71-e8d239b15a20",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 280/2026",
+      "camada": "projeto_lei_com_sinal"
+    },
+    {
+      "id": "8ed765db-d9f0-410a-9342-f49e95295ca3",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 274/2026",
+      "camada": "projeto_lei_com_sinal"
+    }
+  ]
+}
