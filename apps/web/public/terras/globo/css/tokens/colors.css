@@ -1,0 +1,148 @@
+/* Terras Públicas — cor.
+   Origem: handoff do Claude Design, 30/07/2026, RECONCILIADO contra
+   `globe/css/hud.css` e `globe/js/config.js`, que o handoff declara não ter
+   acessado. O que mudou na reconciliação está marcado com ⟲ e medido.
+
+   ⟲ CORREÇÃO DE ÂNCORA. O handoff afirma `--accent: oklch(0.749 0.131 236)`
+   "= #38bdf8". Não é: aquele valor renderiza #4bbaf5. O ciano real do projeto
+   é oklch(0.754 0.139 232.7). Como a identidade a preservar é o ciano de hoje
+   — o próprio readme do handoff diz isso —, a paleta foi reancorada no valor
+   verdadeiro. L .754 / C .139 passam a ser a família óptica, e #38bdf8 sai
+   exato. O princípio do handoff (mesmo L e C, só o matiz varia, para que
+   nenhuma cor grite mais alto) fica intacto; só a âncora está certa. */
+
+:root {
+  /* ---- base ----------------------------------------------------------
+     A colisão de hoje (#0a0e14 é --bg-panel E --fundo ao mesmo tempo) é
+     resolvida aqui: #0a0e14 fica sendo o FUNDO canônico, e o painel passa
+     a ser uma camada translúcida acima dele — que é o que "vidro escuro
+     com blur" já queria dizer. Nenhum painel volta a usar --color-base. */
+  --color-void: #060910;              /* fora do globo, backdrop da intro */
+  --color-base: #0a0e14;              /* fundo da tela (era --bg-panel + --fundo) */
+  --color-surface-1: #111823;         /* superfície opaca de referência */
+  --color-surface-2: #18212e;         /* elevação interna: linha de tabela, campo */
+  --color-hairline: rgba(148, 180, 214, 0.12);
+  --color-hairline-strong: rgba(148, 180, 214, 0.22);
+
+  /* ---- vidro --------------------------------------------------------- */
+  --glass-fill: rgba(14, 20, 29, 0.72);
+  --glass-fill-strong: rgba(8, 12, 18, 0.88);   /* sobre imagem de satélite */
+  --glass-stroke: rgba(148, 180, 214, 0.16);
+  --glass-blur: 14px;
+  --scrim-imagery: rgba(6, 9, 16, 0.62);        /* véu obrigatório sob texto
+                                                   posto sobre Esri World Imagery */
+
+  /* ---- texto --------------------------------------------------------- */
+  --text-1: #e8eef6;                  /* título, valor */
+  --text-2: #a8b6c8;                  /* corpo, hint */
+  --text-3: #6f7f93;                  /* rótulo, meta, mono micro, moldura */
+  --text-on-accent: #04121c;
+
+  /* ---- acento e semântica -------------------------------------------
+     Um único ciano, e ele é o de hoje. L .754 / C .139 são fixos; só o matiz
+     varia, para que acento, ressalva e ficção tenham o mesmo peso óptico. */
+  --accent: oklch(0.754 0.139 232.7);          /* = #38bdf8 EXATO, conferido */
+  --accent-text: oklch(0.83 0.10 232.7);       /* acento legível como texto */
+  --accent-line: oklch(0.754 0.139 232.7 / 0.42);
+  --accent-weak: oklch(0.754 0.139 232.7 / 0.14);
+  /* ⟲ Acrescentado na aplicação: o handoff define o preenchimento de repouso
+     (--accent-weak) e diz que "hover clareia o preenchimento, nunca muda o
+     matiz" — mas não dá o degrau intermediário. Sem ele, hover viraria
+     `filter: brightness()`, que mexe no matiz percebido. Mesma cor, só mais
+     alfa: era 0,12 → 0,25 à mão em detalhe.html. */
+  --accent-medium: oklch(0.754 0.139 232.7 / 0.26);
+  --caution: oklch(0.754 0.139 75);            /* = #e2a138 · ressalva, dado parcial */
+  --caution-weak: oklch(0.754 0.139 75 / 0.16);
+  --fiction: oklch(0.754 0.139 330);           /* = #e08dd9 · SÓ dado fictício */
+  --fiction-weak: oklch(0.754 0.139 330 / 0.16);
+  --fiction-hatch: repeating-linear-gradient(45deg,
+    oklch(0.754 0.139 330 / 0.22) 0 6px, transparent 6px 12px);
+  --focus-ring: oklch(0.86 0.09 232.7);
+  /* ⟲ Acrescentado na aplicação. O handoff tem acento, ressalva e ficção, mas
+     não FALHA — e o HUD distingue as duas coisas em `#layers-panel`: camada que
+     carregou vazia é ressalva (âmbar), camada que **falhou** é erro. Colapsar
+     nas duas perderia informação que o código já dá.
+     Fica a 11,6° de --layer-noticias, e isso é aceito: --danger é texto num
+     painel, --layer-noticias é polígono no globo. Nunca ficam lado a lado. */
+  --danger: oklch(0.754 0.139 25);             /* = #fb8a82 */
+  --danger-weak: oklch(0.754 0.139 25 / 0.10);
+
+  /* ---- as 11 camadas de dado ------------------------------------------
+     ⟲ A rampa de matiz espaçado do handoff foi DESCARTADA. Ela vinha marcada
+     "PROPOSTA — reconciliar", e reordenaria cores que já significam coisas:
+     as duas camadas de vazio são um par deliberado (mesmo método, escopos
+     diferentes), turquesa é terra certificada, laranja é assentamento.
+     Trocar isso por matiz equidistante destruiria significado para ganhar
+     simetria.
+
+     O que se manteve: o MATIZ de cada camada. O que mudou: L e C, agora
+     iguais aos do acento. Auditoria que motivou (medida em oklch, 30/07):
+     L ia de .709 a .849 e C de .101 a .207 — não era uma família. O vazio da
+     bacia, que é o achado central do projeto, era a camada MAIS ESCURA
+     (L .709); quilombolas era a mais clara e mais saturada (L .849 / C .207),
+     gritando mais alto que o resto sem motivo.
+
+     Exceção única e deliberada: as duas camadas de vazio partilham o matiz
+     293.5 e se distinguem por CLARIDADE. Ali a claridade carrega o
+     significado "mesmo método, outro recorte" — normalizá-las tornaria as
+     duas idênticas. */
+  --layer-vazio-bacia: oklch(0.754 0.139 293.5);      /* #b49dff */
+  --layer-vazio-curvelo: oklch(0.845 0.139 293.5);    /* #d0baff · irmã mais clara */
+  --layer-terra-publica: oklch(0.754 0.139 181.9);    /* #00cbb6 turquesa */
+  --layer-spu: oklch(0.754 0.139 163.2);              /* #45ca96 esmeralda */
+  --layer-quilombolas: oklch(0.754 0.139 128.8);      /* #94c05b lima */
+  --layer-assentamentos: oklch(0.754 0.139 55.9);     /* #f19650 laranja */
+  --layer-noticias: oklch(0.754 0.139 13.4);          /* #fa8895 rosa */
+  --layer-devolutas: oklch(0.754 0.139 265);          /* #84acff azul */
+  /* Lotes vagos de BH (cadastro da PBH). Matiz 102 é o meio da maior lacuna que
+     restava entre os matizes já usados — 53,8° entre a ressalva (75) e
+     quilombolas (128,8) —, escolhido por medição e não por gosto. */
+  --layer-lotes-vagos: oklch(0.754 0.139 102);        /* #c1b237 */
+  --layer-moldura: var(--text-3);                     /* divisas: moldura, não dado */
+
+  /* Duas camadas NÃO têm cor própria de propósito — usam a semântica:
+       checagem-g0        → var(--caution)   amostra em conferência É ressalva
+       candidatos-curvelo → var(--fiction)   dado inventado (regra 4)
+     ⟲ Antes era o inverso do certo: a camada fictícia usava âmbar, que é o
+     slot da ressalva, e a amostra em conferência usava rosa a 20° do magenta
+     da ficção — as duas se confundiam justamente onde não podiam. */
+}
+
+/* ---- modo papel -----------------------------------------------------
+   NÃO é uma segunda paleta: é o mesmo conjunto de tokens com os pares
+   claro/escuro invertidos. Permitido em exatamente dois lugares:
+   [data-surface="paper"] na porta de entrada (/) e em @media print
+   (ofício, LAI, anexo de reportagem). Qualquer outro uso é bug.
+   Único desvio autorizado: acentos caem de L .754 para L .55 — em papel
+   o mesmo matiz precisa de mais contraste. */
+[data-surface="paper"] {
+  --color-void: #e7ecf1;
+  --color-base: #f2f5f8;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #e9eef3;
+  --color-hairline: rgba(13, 20, 32, 0.1);
+  --color-hairline-strong: rgba(13, 20, 32, 0.2);
+  --glass-fill: rgba(255, 255, 255, 0.86);
+  --glass-fill-strong: rgba(255, 255, 255, 0.94);
+  --glass-stroke: rgba(13, 20, 32, 0.12);
+  --scrim-imagery: rgba(255, 255, 255, 0.72);
+  --text-1: #0d1420;
+  --text-2: #3d4b5c;
+  /* ⟲ Era #6a7787, que dá 4,17 sobre --color-base — abaixo de AA (4,5). Medido
+     em 30/07 na porta de entrada, onde este token pinta a descrição de cada
+     documento e o rodapé. Escurecido para 5,04. O par escuro não muda: lá o
+     mesmo #6f7f93 dá 4,73 sobre o fundo quase-preto. */
+  --text-3: #606a74;
+  --text-on-accent: #ffffff;
+  /* ⚠️ No papel, --accent é cor de FUNDO, não de texto: como texto dá 4,18
+     sobre --color-base. Texto acentuado usa --accent-text, que dá 5,52. O
+     botão de ação inverte (branco sobre --accent) e passa em 4,57. */
+  --accent: oklch(0.55 0.139 232.7);
+  --accent-text: oklch(0.48 0.139 232.7);
+  --caution: oklch(0.55 0.139 75);
+  --fiction: oklch(0.55 0.139 330);
+}
+
+@media print {
+  :root { color-scheme: light; }
+}

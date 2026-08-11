@@ -1,0 +1,50 @@
+/* Terras Públicas — carregamento de fonte.
+
+   ## Fontshare, não Google Fonts (decidido em 30/07/2026)
+
+   O handoff vinha com IBM Plex pelo CDN do Google. Trocado por **Fontshare**
+   (Indian Type Foundry), que é gratuito para uso pessoal e comercial e não
+   passa pela infraestrutura do Google — o que importa num trabalho cujo produto
+   é anexo de ofício e pedido de acesso à informação: o leitor da página não
+   precisa aparecer num log de terceiro para ler sobre terra pública.
+
+   IBM Plex não existe na Fontshare, então as duas famílias mudaram:
+
+   | Papel | Era | Passou a ser | Por quê |
+   |---|---|---|---|
+   | interface | IBM Plex Sans | **Switzer** | neo-grotesca neutra, legível em 10–13 px, que é o tamanho do HUD |
+   | número e código | IBM Plex Mono | **Tabular** | monoespaçada de verdade: TODO glifo tem 600 unidades em de avanço |
+
+   ## O alarme do `tnum`, e por que ele não procede
+
+   A API da Fontshare **não lista `tnum`** (algarismo tabular) entre as features
+   OpenType de Switzer, e o projeto exige largura tabular em contagem, hectare,
+   coordenada e no relógio UTC — que atualiza a cada segundo e tremularia com
+   algarismo proporcional. Parecia impedimento.
+
+   Medido no canvas antes de concluir: **os dez algarismos de Switzer já têm
+   largura idêntica** (23,04 px a 40 px, nos pesos 400 e 600), então alinham em
+   coluna sem a feature. E os oito lugares deste repo que pedem
+   `font-variant-numeric: tabular-nums` já usam `--font-mono`, onde Tabular dá
+   largura fixa de fábrica: **24 px para `i`, `W`, `1`, `8`, `.` e espaço** —
+   conferido, não presumido.
+
+   Lista de features não é medida. A primeira redação desta nota tratava a
+   ausência de `tnum` como problema e forçava mono na classe `.tp-num`; medir
+   mostrou que não era preciso, e a mudança foi desfeita.
+
+   ## Pesos pedidos
+
+   400 (corpo), 500 (`--weight-medium`), 600 (`--weight-semibold`, 14 usos) e
+   700 (título e o botão "?", 7 usos). Nada mais — cada peso é um arquivo.
+   Tabular só em 400 e 500: mono aqui é dado, nunca título.
+
+   ## Ainda é CDN
+
+   `cdn.fontshare.com`, então segue sendo dependência de rede num app que roda
+   local pelo `.bat`. `display=swap` faz o texto aparecer na hora com a pilha de
+   sistema, então degrada sem quebrar. Para auto-hospedar, baixe os `.woff2`
+   para `assets/fonts/`, troque este `@import` por `@font-face` e nada mais
+   muda: só as duas custom properties de `typography.css` dependem do nome da
+   família. */
+@import url("https://api.fontshare.com/v2/css?f%5B%5D=switzer@400,500,600,700&f%5B%5D=tabular@400,500&display=swap");

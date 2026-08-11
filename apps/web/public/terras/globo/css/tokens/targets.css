@@ -1,0 +1,25 @@
+:root {
+  --target-min: 44px;     /* piso absoluto de área de toque */
+  --target-visual: 36px;  /* o que se vê dentro de uma barra de 40 px */
+  --target-slop: -4px;    /* a diferença, jogada para fora do elemento */
+}
+
+/* Resolve os 28 alvos de 26 px sem redesenhar ícone nenhum: o glifo continua
+   pequeno, a área de toque cresce por fora. Aplique data-target em todo
+   controle clicável cujo tamanho visual seja menor que 44 px. */
+[data-target] { position: relative; }
+[data-target]::after {
+  content: "";
+  position: absolute;
+  inset: var(--target-slop);
+  min-width: var(--target-min);
+  min-height: var(--target-min);
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+}
+
+@media (pointer: fine) {
+  /* No mouse o piso pode ser 32 px; a regra de 44 px é do dedo. */
+  :root { --target-min: 32px; }
+}
