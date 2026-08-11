@@ -97,23 +97,49 @@ consulta direta ao banco antes de qualquer ação, e os três eram reais:
 | Ordem | Item | Observação |
 |---|---|---|
 | ✅ | #1, #3, #4 — home BH, TESTECOM, SP/Sejusp-MG | **Feito hoje** |
-| 1 🟢 | #6 — comando de dev exposto em `/congresso/agenda` | Trivial |
-| 2 🟢 | #7 — `/camara/proposicoes` 404 em 2 cidades | Link do próprio menu quebrado |
-| 3 🟢 | #8 — texto de Betim vazando pra outras cidades | Edição de texto |
-| 4 🟢 | #9 — migrations quebradas (defesa civil, Judiciário) | Causa já diagnosticada |
-| 5 🟢 | #10 — inventário de barragens incompleto | Coletor pronto, bloqueio antigo não existe mais |
-| 6 🟢 | #11 — contatos/notícias (réplica) vs. coleta-lixo/plantão (descoberta nova) | Duas frentes diferentes, as duas baratas |
-| 7 🟢 | #17 — bancadas da Câmara (não a parte do Senado) | Maioria não depende do bloqueio |
-| 8 🟡 | #13 — `/camara/legislacao` vazio nas 3 maiores cidades | |
-| 9 🟡 | #14 — servidores vazios (Araçuaí/Itinga) | Correção já diagnosticada em Araçuaí |
-| 10 🟡 | #16 — comissões vazias/incompletas | |
-| 11 🟡 | #18 — Judiciário, vagas só cobrem STF | Curadoria em andamento |
-| 12 🟡 | #2 — alerta de valor atípico cego pra contrato único | Precisa de desenho, não é 1 linha |
+| 1 🟢✅ | #6 — comando de dev exposto em `/congresso/agenda` | **Feito** — commit `592f207` |
+| 2 🟢✅ | #7 — `/camara/proposicoes` 404 em 2 cidades | **Feito** — bug real era no menu (`Header.tsx`), não na rota — commit `f87eaa3` |
+| 3 🟢✅ | #8 — texto de Betim vazando pra outras cidades | **Feito** — commit `a085f7f` |
+| 4 🟢✅ | #9 — migrations quebradas (defesa civil, Judiciário) | **Feito** — commit `9c36020` |
+| 5 🟢🔶 | #10 — inventário de barragens incompleto | **Coletor confirmado OK, mas cobertura estadual esbarra em decisão de arquitetura** — `municipios` só tem 6 linhas; ver seção nova abaixo |
+| 6 🟢⬜ | #11 — contatos/notícias (réplica) vs. coleta-lixo/plantão (descoberta nova) | Não entrou nesta rodada |
+| 7 🟢✅ | #17 — bancadas da Câmara (não a parte do Senado) | **Feito** — 320/320 frentes com composição (58.785 vínculos). Achado: as 354 são TODAS da Câmara, não é bloqueio de Senado — os 34 sem composição (bloco/federação/partido) não têm endpoint de membros na API, ponto final |
+| 8 🟡🔶 | #13 — `/camara/legislacao` vazio nas 3 maiores cidades | **BH e SP feitos** (3.586 e 2.233 atos — coletores já existiam, nunca tinham rodado; cron semanal de SP também consertado, commit `a0c4e36`). **Itinga parcial**: fonte nova achada e coletor escrito (commit `e2bb9f8`), mas as categorias LEIS/LEIS COMPLEMENTARES estão vazias na própria fonte — zero lei mesmo |
+| 9 🟡🔶 | #14 — servidores vazios (Araçuaí/Itinga) | **Araçuaí feito** — 1.098 servidores, achado o botão certo ("Dados Abertos", não o menu de contexto) — commit `9a0fe6d`. **Itinga não entrou** nesta rodada |
+| 10 🟡🔶 | #16 — comissões vazias/incompletas | **BH feito** (13 comissões / 265 membros — coletor já existia). Diamantina confirmado completo. **Araçuaí e Itinga: fonte genuinamente vazia**, não é bug — não dá pra coletar o que a câmara nunca cadastrou |
+| 11 🟡🔶 | #18 — Judiciário, vagas só cobrem STF | **Avançou**: STJ 32/32, STM 9/15, TST 18/26 + cadeiras do TJMG — commit `c179a8c`. Curadoria manual segue incompleta (STM e TST) |
+| 12 🟡✅ | #2 — alerta de valor atípico cego pra contrato único | **Feito** — Regra 11 nova (compara contra teto do orçamento anual da cidade quando a categoria não tem grupo) — commit `56f14e2` |
 | 13 🔴 | #21 — obras/frota | Parcial: SISOP com certificado incompleto |
 | 14 🔴 | #22 — Terras em 3 de 6 cidades | GPKG fora desta máquina + julgamento humano |
-| 15 🟠 | #23 — análise garantista quase vazia | Maior esforço, é o carro-chefe do produto |
-| 16 🟠 | #24 — zona Ambiental "em construção" | Validar viabilidade antes de construir |
+| 15 🟠🔶 | #23 — análise garantista quase vazia | **Primeira etapa feita**: conjunto de calibração de 25 casos (garantista/reducionista/técnico) rodado e conferido contra a rubrica — commit `5346bee`. Escalar pras outras cidades ainda não começou |
+| 16 🟠✅ | #24 — zona Ambiental "em construção" | **Viabilidade confirmada**: município sai em 97% dos itens de pauta do COPAM sem precisar abrir PDF — commit `2de85af`. Construir a tela em si é o próximo passo, não feito aqui |
 | 17 🔴 | #25 — diário oficial | Decisão de LGPD pendente; engenharia pode adiantar |
+
+**Legenda desta rodada**: ✅ feito e verificado · 🔶 parcial, com o que falta anotado · ⬜ não entrou nesta rodada.
+
+---
+
+## Segunda rodada — workflow de 14 agentes em paralelo (2026-08-11, tarde)
+
+Depois desta auditoria, rodei os 14 itens 🟢/🟡/🟠 acima num workflow com um agente Sonnet por
+item, cada um num git worktree isolado (ou direto no checkout principal quando não havia risco de
+colisão de arquivo). Todos os 14 terminaram sem erro; 10 commits novos foram integrados em `main`
+depois de revisão (diffs conferidos um a um, `tsc --noEmit` + `npm test` limpos após cada merge,
+numeração de migration sem gap nem duplicata). Nada foi enviado para o GitHub (`origin`) — fica
+para quando o usuário decidir publicar.
+
+**Decisão pendente que este workflow não tomou por si** (item #10, barragens): a tabela
+`municipios` — usada por ~37 tabelas via chave estrangeira e pelo gerador de páginas estáticas —
+só tem as 6 cidades do portal. Cobrir as 249 barragens FEAM + 2.212 SNISB do estado inteiro exige
+uma de três rotas: (1) semear as ~853 cidades de MG como referência (`ativo=false`, migration
+versionada), (2) tirar a FK de `feam_barragens`/`snisb_barragens` e gravar por nome+UF (elas já
+guardam isso como texto), ou (3) aceitar cobertura parcial até a fase F5 do roadmap Ambiental já
+prevista no código. Nenhuma foi executada — é modelagem, não conserto.
+
+**Achado que corrige a própria auditoria** (item #17): a suposição de que 34 das 354 bancadas do
+Congresso estariam presas ao bloqueio de anti-bot do Senado era errada — as 354 são todas da
+Câmara; os 34 sem composição (blocos, federações, partidos) simplesmente não têm endpoint de
+membros na API de Dados Abertos. Não é bloqueio, é ausência de dado na fonte.
 
 ---
 
