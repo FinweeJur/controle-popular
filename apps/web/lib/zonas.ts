@@ -121,19 +121,23 @@ export const ZONAS: Zona[] = [
     // CÓPIA CORTADA PARA O QUE EXISTE, ao publicar a zona em 2026-08-09;
     // ATUALIZADA em 2026-08-11 quando a F3 (COPAM) ganhou tela e dado real
     // (`/ambiental/copam`, migration `0058`) — mesma disciplina, cortar
-    // para o que existe, só que agora existe mais uma coisa.
+    // para o que existe, só que agora existe mais uma coisa. ATUALIZADA DE
+    // NOVO no mesmo dia quando a F6 (legislação) ganhou tela e dado real
+    // (`/ambiental/legislacao`, migration `0063`, três coletores: ALMG,
+    // Semad, Siam) — licenciamento e barragens estaduais continuam sem
+    // tela nesta rodada.
     //
     // Os números não-publicados continuam visíveis, mas onde são honestos: na
     // própria `/ambiental`, que se declara em construção e cita a data da
     // medição de cada um (`docs/ambiental/F0-discovery.md`).
     descricao:
-      "A pauta de cada reunião do COPAM, item a item, com o município que cada processo trata. A situação de cada barragem de Minas — estabilidade, emergência e risco. Licenciamento e legislação ambiental estão em construção, com as fontes já verificadas.",
+      "A pauta de cada reunião do COPAM, item a item, com o município que cada processo trata. Leis, decretos, deliberações e portarias ambientais de três fontes que não conversam entre si, numa busca só. Licenciamento e barragens estaduais estão em construção, com as fontes já verificadas.",
     resumo:
-      "A pauta do COPAM por município, e a situação de cada barragem de Minas. Licenciamento e legislação seguem em construção.",
+      "A pauta do COPAM por município, e a legislação ambiental de três fontes numa busca só. Licenciamento e barragens seguem em construção.",
     itens: [
       "COPAM: pauta de cada reunião, item a item, por município",
-      "Barragens: condição de estabilidade e nível de emergência",
-      "Em construção: licenciamento e legislação ambiental",
+      "Legislação ambiental: busca por palavra-chave, fonte, tipo e ano",
+      "Em construção: licenciamento e barragens estaduais",
     ],
     cor: "var(--cp-tertiary)",
     publicada: true,

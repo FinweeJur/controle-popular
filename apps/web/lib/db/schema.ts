@@ -1483,6 +1483,47 @@ export const copam_pauta_itens = pgTable("copam_pauta_itens", {
 	unique("copam_pauta_itens_id_reuniao_numero_item_key").on(table.id_reuniao, table.numero_item),
 ]);
 
+/**
+ * Legislação ambiental unificada — ALMG (leis/decretos estaduais, filtrados
+ * localmente por tema "Meio Ambiente"), Banco da Semad (Deliberação Copam,
+ * Portaria IEF/Igam, Resolução Conjunta) e SIAM (arquivo histórico). As três
+ * fontes SE SOBREPÕEM de propósito — ver a nota de `chave_dedup` na
+ * migration `0063`. Coletores: `etl/betim/etl/apis/legislacao_almg.py`,
+ * `legislacao_semad.py`, `legislacao_siam.py`.
+ */
+export const ambiental_legislacao = pgTable("ambiental_legislacao", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	fonte: text().notNull(),
+	id_fonte: text().notNull(),
+	tipo: text().notNull(),
+	numero: text(),
+	ano: integer(),
+	ementa: text(),
+	data: date(),
+	orgao: text(),
+	link_pdf: text(),
+	id_ibge_municipio: text(),
+	chave_dedup: text(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("ambiental_legislacao_fonte_idx").using("btree", table.fonte.asc().nullsLast().op("text_ops")),
+	index("ambiental_legislacao_tipo_idx").using("btree", table.tipo.asc().nullsLast().op("text_ops")),
+	index("ambiental_legislacao_ano_idx").using("btree", table.ano.desc().nullsFirst().op("int4_ops")),
+	index("ambiental_legislacao_data_idx").using("btree", table.data.desc().nullsFirst().op("date_ops")),
+	index("ambiental_legislacao_dedup_idx").using("btree", table.chave_dedup.asc().nullsLast().op("text_ops")),
+	index("ambiental_legislacao_municipio_idx").using("btree", table.id_ibge_municipio.asc().nullsLast().op("text_ops")),
+	// A FK real para `ref_municipios_mg(id_ibge)` existe no Postgres (migration
+	// 0063) — não declarada aqui porque `ref_municipios_mg` não tem `pgTable`
+	// próprio neste arquivo (mesmo drift já visto em `feam_barragens`/
+	// `snisb_barragens`, que apontam para `municipios` no Drizzle mas para
+	// `ref_municipios_mg` no banco de verdade). Sem consequência prática: esta
+	// coluna é sempre `null` hoje (ver a nota da migration), e a integridade
+	// referencial já é garantida pelo Postgres, não pelo Drizzle.
+	unique("ambiental_legislacao_fonte_id_fonte_key").on(table.fonte, table.id_fonte),
+	check("ambiental_legislacao_fonte_check", sql`fonte = ANY (ARRAY['almg'::text, 'semad'::text, 'siam'::text])`),
+]);
+
 export const mortalidade = pgTable("mortalidade", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
 	id_municipio: text().notNull(),

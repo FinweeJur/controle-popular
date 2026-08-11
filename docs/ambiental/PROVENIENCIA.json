@@ -112,9 +112,9 @@
       "licenca": "Termos de uso da ALMG: o usuario assume responsabilidade integral pelo uso",
       "uso_comercial_vedado": false,
       "n_registros": 2539,
-      "verificado_em": "2026-08-07",
+      "verificado_em": "2026-08-11",
       "sha256": null,
-      "observacao": "LIMITE ESTRITO: max 2 concorrentes, >= 1 s entre pedidos, acesso pode ser bloqueado sem aviso. Pagina com p= (nao numPagina), 20 por pagina fixo. NAO tem busca por texto livre. Nao cobre Deliberacao COPAM nem Portaria IEF/FEAM/IGAM."
+      "observacao": "LIMITE ESTRITO: max 2 concorrentes, >= 1 s entre pedidos, acesso pode ser bloqueado sem aviso. Pagina com p= (nao numPagina), 20 por pagina fixo. NAO tem busca por texto livre. Nao cobre Deliberacao COPAM nem Portaria IEF/FEAM/IGAM. Coletor implementado (etl.apis.legislacao_almg): das 2.539 normas basicas, 69 tem o tema oficial 'Meio Ambiente' em `indexacao` — sao essas 69 que entram em `ambiental_legislacao`, nao as 2.539."
     },
     {
       "id": "semad_legislacao",
@@ -125,10 +125,10 @@
       "autenticacao": "nenhuma",
       "licenca": "nao declarada (publicacao oficial)",
       "uso_comercial_vedado": false,
-      "n_registros": null,
-      "verificado_em": "2026-08-07",
+      "n_registros": 2237,
+      "verificado_em": "2026-08-11",
       "sha256": null,
-      "observacao": "Cobre o que a ALMG nao tem: Deliberacao Copam, Portaria IEF/Igam, Resolucao Conjunta. Atual ate 2026-08-07. Pagina com _..._INSTANCE_vopo_delta e _cur; start/delta simples nao funciona. API headless do Liferay devolve HTTP 500."
+      "observacao": "Cobre o que a ALMG nao tem: Deliberacao Copam, Portaria IEF/Igam, Resolucao Conjunta. Pagina com _..._INSTANCE_vopo_delta e _cur; start/delta simples nao funciona. API headless do Liferay devolve HTTP 500. Coletor implementado (etl.apis.legislacao_semad): 2.237 normas declaradas pela fonte, 2.232 gravadas (a fonte repetiu uma linha idêntica, mesmo fileEntryId — deduplicado no coletor)."
     },
     {
       "id": "siam_legislacao",
@@ -139,10 +139,10 @@
       "autenticacao": "nenhuma",
       "licenca": "nao declarada; robots.txt 404 (sem restricao publicada)",
       "uso_comercial_vedado": false,
-      "n_registros": null,
-      "verificado_em": "2026-08-07",
+      "n_registros": 4098,
+      "verificado_em": "2026-08-11",
       "sha256": null,
-      "observacao": "GET sem parametro devolve a tabela inteira. download.pdf?idNorma= devolve Content-Type text/html apesar do nome — conferir o header, nunca o sufixo."
+      "observacao": "GET sem parametro devolve a tabela inteira. download.pdf?idNorma= devolve Content-Type text/html apesar do nome — conferir o header, nunca o sufixo. Coletor implementado (etl.apis.legislacao_siam): 4.098 linhas na tabela, 4.077 gravadas (21 sem link de download, puladas). Arquivo termina em 2024, nao e atualizado desde entao."
     },
     {
       "id": "mma_legislacao",

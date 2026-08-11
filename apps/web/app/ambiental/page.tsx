@@ -4,6 +4,7 @@ import { formatNumberBR } from "@/lib/betim/format";
 import { contarReunioesCopam } from "@/lib/db/queries/copam";
 import { contarBarragensMg } from "@/lib/db/queries/barragens";
 import { contarLicenciamento } from "@/lib/db/queries/ambiental-licenciamento";
+import { contarLegislacaoAmbiental } from "@/lib/db/queries/legislacao-ambiental";
 
 /**
  * Home da zona /ambiental.
@@ -14,30 +15,23 @@ import { contarLicenciamento } from "@/lib/db/queries/ambiental-licenciamento";
  * construção que inventa número é como gráfico sem cobertura declarada —
  * a regra do projeto vale aqui também.
  *
- * ═══ F3 (COPAM) SAIU DE "EM BREVE" PARA TELA REAL ═══
+ * ═══ AS QUATRO FASES SAÍRAM DE "EM BREVE" PARA TELA REAL, 2026-08-11 ═══
  *
- * Até aqui o bloco de reuniões do COPAM anunciava "454 reuniões" como
- * texto fixo — o número que a FONTE publica, não o que este portal tinha
- * coletado (zero). Isso deixou de ser honesto no instante em que a coleta
- * ficou real (`etl.apis.copam_reunioes`, migration `0058`): agora o número
- * vem do banco, com o verbo no passado ("coletadas"), e o bloco é um link
- * de verdade para `/ambiental/copam` — não mais só uma promessa de fase.
- *
- * ═══ F4 (LICENCIAMENTO) E F5 (BARRAGENS), MESMA CORREÇÃO, 2026-08-11 ═══
- *
- * Os dois blocos diziam número fixo com `href: null` — desatualizado
- * (Licenciamento: "19.162" era o total de 2026-08-07, a coleta rodou e achou
- * mais; Barragens: "249" era só a FEAM, a coleta rodou FEAM + SNISB) E
- * incompletos (sem link). Corrigidos pro mesmo padrão do COPAM acima.
+ * COPAM, Licenciamento, Barragens e Legislação anunciavam número fixo (o
+ * que a FONTE publica) com `href: null` — nenhum coletor tinha rodado de
+ * verdade ainda. Com os quatro rodando, cada bloco mostra o total real do
+ * banco, com o verbo no passado ("coletadas"), e é link de verdade pra
+ * tela própria — não mais promessa de fase.
  */
 
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
 
 export default async function AmbientalHome() {
-  const [{ reunioes, itens }, barragens, { total: totalLicencas }] = await Promise.all([
+  const [{ reunioes, itens }, barragens, { total: totalLicencas }, legislacao] = await Promise.all([
     contarReunioesCopam(),
     contarBarragensMg(),
     contarLicenciamento(),
+    contarLegislacaoAmbiental(),
   ]);
   const temBarragens = barragens.totalFeam > 0 || barragens.totalSnisb > 0;
 
@@ -82,13 +76,16 @@ export default async function AmbientalHome() {
     },
     {
       titulo: "Legislação ambiental",
-      linha: "Federal e estadual no mesmo lugar",
+      linha:
+        legislacao.total > 0
+          ? `${formatNumberBR(legislacao.total)} normas coletadas, de três fontes`
+          : "ALMG, Semad e Siam — três fontes que não conversam",
       texto:
-        "Hoje a norma que interessa está partida entre cinco sistemas que não conversam: MMA, Conama, ALMG, Siam e o banco da Semad. Aqui vira uma busca só.",
+        "Leis, decretos, deliberações e portarias ambientais de Minas Gerais, das três fontes que hoje não conversam entre si, numa busca só — com a fonte de cada uma sempre visível.",
       fase: "F6",
-      href: null,
-      pronta: false,
-      linkTexto: "",
+      href: "/legislacao",
+      pronta: legislacao.total > 0,
+      linkTexto: "Buscar legislação →",
     },
   ];
 
@@ -108,9 +105,8 @@ export default async function AmbientalHome() {
           className="max-w-2xl rounded-lg border px-4 py-3 text-[.95em]"
           style={{ borderColor: ZONA.cor }}
         >
-          <strong>Seção em construção, por fase.</strong> A pauta do COPAM (F3), o licenciamento
-          ambiental (F4) e as barragens de Minas (F5) já têm tela real, abaixo. Legislação segue
-          com fonte verificada e documentada, tela ainda não.
+          <strong>As quatro frentes têm tela real agora.</strong> COPAM (F3), licenciamento
+          (F4), barragens (F5) e legislação ambiental (F6) — todos com dado coletado, abaixo.
         </p>
       </header>
 
