@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "criminaliza_violacao",
+      "titulares": [
+        "crianças e adolescentes vítimas de violência sexual, psicológica ou tortura"
+      ],
+      "grau": "moderado",
+      "trecho": "exclusão de benefícios financeiros ou isenções de taxas ou impostos mantidos no âmbito municipal, as pessoas que tenham sido condenados por crimes de violência sexual, psicológica ou tortura contra crianças e adolescentes",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto exclui benefícios financeiros, isenções de taxas ou impostos municipais concedidos pelo Município de São Paulo a pessoas condenadas por crimes de violência sexual, psicológica ou tortura contra crianças e adolescentes. A medida condiciona a manutenção de vantagens fiscais municipais à ausência de condenação por esses crimes."
+}

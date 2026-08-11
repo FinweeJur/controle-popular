@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Programa Lixo Zero – Recompensa Premiada, destinado a incentivar a população a denunciar práticas de descarte irregular de resíduos sólidos e demais infrações ambientais urbanas, mediante pagamento de recompensa financeira",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Lixo Zero – Recompensa Premiada no Município de São Paulo, destinado a incentivar a população a denunciar práticas de descarte irregular de resíduos sólidos e outras infrações ambientais urbanas, mediante pagamento de recompensa financeira."
+}

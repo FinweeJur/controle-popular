@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "mulheres que tiveram câncer atendidas na rede pública municipal de saúde"
+      ],
+      "grau": "moderado",
+      "trecho": "reabilitação integral de mulheres que tiveram câncer, no âmbito dos equipamentos públicos de saúde",
+      "confianca": 0.7
+    },
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "mulheres que tiveram câncer"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa \"Recomeço Mulher\", destinado à reabilitação integral de mulheres que tiveram câncer",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa \"Recomeço Mulher\", destinado à reabilitação integral de mulheres que tiveram câncer, a ser oferecido nos equipamentos públicos de saúde do Município de São Paulo."
+}

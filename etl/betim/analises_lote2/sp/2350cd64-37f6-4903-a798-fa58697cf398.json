@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "mulheres atuantes no setor cultural do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Cria o Programa Mulheres na Cultura no âmbito do Município de São Paulo",
+      "confianca": 0.6
+    },
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "mulheres atuantes no setor cultural"
+      ],
+      "grau": "moderado",
+      "trecho": "Programa Mulheres na Cultura",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria o Programa Mulheres na Cultura no Município de São Paulo, voltado ao fomento da atuação de mulheres no setor cultural."
+}

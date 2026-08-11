@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "igualdade_nao_discriminacao",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "crianças e adolescentes negros das comunidades escolares do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "enfrentamento aos impactos do racismo na saúde mental de crianças e adolescentes comunidades escolares",
+      "confianca": 0.65
+    },
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "crianças e adolescentes negros da rede municipal de ensino"
+      ],
+      "grau": "moderado",
+      "trecho": "Programa Saúde Mental da Juventude Negra na Escola",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Saúde Mental da Juventude Negra na Escola, estabelecendo diretrizes e ações de enfrentamento aos impactos do racismo na saúde mental de crianças e adolescentes nas comunidades escolares do Município de São Paulo."
+}

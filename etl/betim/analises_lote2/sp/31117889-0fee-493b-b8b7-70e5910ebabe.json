@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças e adolescentes acolhidos em instituições de acolhimento"
+      ],
+      "grau": "marginal",
+      "trecho": "Autoriza a organização de visitas às Instituições de Acolhimento de Crianças e Adolescentes",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza a organização de visitas às Instituições de Acolhimento de Crianças e Adolescentes no Município de São Paulo."
+}

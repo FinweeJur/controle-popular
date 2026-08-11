@@ -1,0 +1,23 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 203",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "famílias de vítimas de morte por intervenção policial no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "dispensa de pagamento de taxas, emolumentos e tarifas devidas ao Serviço Funerário Municipal e sobre a garantia da gratuidade dos serviços de exumação, em caso de morte por intervenção policial",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 11.479, de 13 de janeiro de 1994",
+    "Lei nº 14.268, de 6 de fevereiro de 2007"
+  ],
+  "resumo_neutro": "O projeto altera duas leis municipais para dispensar o pagamento de taxas, emolumentos e tarifas do Serviço Funerário Municipal e garantir a gratuidade dos serviços de exumação em casos de morte decorrente de intervenção policial."
+}

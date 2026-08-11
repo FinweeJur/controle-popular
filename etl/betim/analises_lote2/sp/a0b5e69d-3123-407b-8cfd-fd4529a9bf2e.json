@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "Lei 10.257/2001 (Estatuto da Cidade)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pedestres e moradores do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "promover a municipalização das calçadas no Município de São Paulo, para centralizar progressivamente a responsabilidade pela construção, manutenção e conservação dos passeios públicos",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 15.442, de 9 de setembro de 2011"
+  ],
+  "resumo_neutro": "O projeto, posteriormente retirado pelo autor, autorizava o Poder Executivo a promover a municipalização das calçadas em São Paulo, centralizando progressivamente no Município a responsabilidade pela construção, manutenção e conservação dos passeios públicos, alterando a Lei nº 15.442/2011."
+}

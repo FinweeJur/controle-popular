@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "profissionais da Rede Municipal de Ensino que exerçam atividades além da jornada regular"
+      ],
+      "grau": "marginal",
+      "trecho": "Diária de Educação de Jornada Extraordinária – DEJEX Educação, destinada ao desempenho voluntário de atividades pedagógicas e de regência de classe além da jornada regular",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui, na Rede Municipal de Ensino de São Paulo, a Diária de Educação de Jornada Extraordinária (DEJEX Educação), destinada a remunerar o desempenho voluntário de atividades pedagógicas e de regência de classe além da jornada regular dos profissionais."
+}

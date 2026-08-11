@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas idosas dependentes de cuidados e seus cuidadores no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "criação da Política Municipal de Apoio aos Cuidadores e Cuidadoras de Idosos",
+      "confianca": 0.6
+    },
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 203",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "cuidadores e cuidadoras de idosos"
+      ],
+      "grau": "moderado",
+      "trecho": "Política Municipal de Apoio aos Cuidadores e Cuidadoras de Idosos",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria a Política Municipal de Apoio aos Cuidadores e Cuidadoras de Idosos no Município de São Paulo."
+}

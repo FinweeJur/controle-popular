@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 5º, XXXIII",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "vereadores do Município de São Paulo no exercício da fiscalização do Executivo"
+      ],
+      "grau": "moderado",
+      "trecho": "acesso dos Vereadores a processos administrativos no âmbito da Administração Pública Municipal",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre o acesso dos Vereadores a processos administrativos no âmbito da Administração Pública Municipal de São Paulo, regulamentando um instrumento de fiscalização do Legislativo sobre o Executivo."
+}

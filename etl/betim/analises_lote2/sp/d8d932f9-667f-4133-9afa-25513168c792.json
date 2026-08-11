@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "alunos da rede municipal de ensino de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Cultura de Proteção Animal e Segurança Digital na Rede Municipal de Ensino de São Paulo",
+      "confianca": 0.6
+    },
+    {
+      "direito": "privacidade_dados",
+      "dispositivo": "Lei 13.709/2018 (LGPD)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "alunos da rede municipal de ensino"
+      ],
+      "grau": "marginal",
+      "trecho": "Segurança Digital na Rede Municipal de Ensino de São Paulo",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Cultura de Proteção Animal e Segurança Digital na Rede Municipal de Ensino de São Paulo, voltado a conteúdos educacionais sobre proteção animal e segurança no uso de meios digitais."
+}
