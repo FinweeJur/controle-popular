@@ -118,7 +118,7 @@ function Conteudo({
           <p className="mt-2 opacity-80">
             {temFiltro
               ? "Nenhum evento com estes filtros. Tente limpar o recorte."
-              : "Nenhum evento sincronizado ainda — rode `python -m etl.camara.eventos`. O Congresso também entra em recesso, e em recesso a agenda fica de fato vazia: ausência aqui pode ser o calendário, não falta de dado."}
+              : "Nenhum evento agendado no momento. A Câmara publica a agenda com alguma antecedência — volte a conferir em alguns dias. O Congresso também entra em recesso, e em recesso a agenda fica de fato vazia: ausência aqui pode ser o calendário, não falta de dado."}
           </p>
         </div>
       ) : null}
