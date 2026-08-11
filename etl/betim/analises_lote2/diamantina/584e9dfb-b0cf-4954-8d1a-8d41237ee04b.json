@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população do Município de Diamantina, praticantes de esporte e lazer"
+      ],
+      "grau": "moderado",
+      "trecho": "criação do Fundo Municipal de Esporte e Lazer",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o Fundo Municipal de Esporte e Lazer, destinado a financiar a política municipal de esporte e lazer. É criação de mecanismo de financiamento, sem redução de direito."
+}

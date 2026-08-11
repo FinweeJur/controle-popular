@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estudantes da Escola Municipal Jalira Lucchese de Miranda, Bairro Cidade Nova"
+      ],
+      "grau": "marginal",
+      "trecho": "Faz extenção de série na Escola Municipal \"Jalira Lucchese de Miranda\", do Bairro Cidade Nova, nesta cidade, até a 8ª série do Ensino Fundamental",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estende as séries oferecidas pela Escola Municipal Jalira Lucchese de Miranda até a 8ª série do Ensino Fundamental. É ampliação do acesso à educação fundamental na unidade escolar."
+}

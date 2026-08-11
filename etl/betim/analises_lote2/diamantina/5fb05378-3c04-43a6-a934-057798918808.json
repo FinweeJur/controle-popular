@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "alimentacao",
+      "dispositivo": "Lei 11.346/2006 (LOSAN)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "estudantes da rede pública municipal de ensino de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "criar o Conselho Municipal de Alimentação Escolar - CAE, conforme a Lei Federal nº 11.947, de 16 de junho de 2009",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Federal nº 11.947/2009"
+  ],
+  "resumo_neutro": "A lei autoriza a criação do Conselho Municipal de Alimentação Escolar (CAE), órgão de controle social do programa de alimentação escolar, nos termos da Lei Federal nº 11.947/2009. É criação de mecanismo de fiscalização do direito à alimentação escolar."
+}

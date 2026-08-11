@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_titularidade",
+      "titulares": [
+        "servidores da Secretaria Municipal de Educação de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "estender abono pecuniário aos servidores da Secretaria Municipal de Educação",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Município a estender abono pecuniário aos servidores da Secretaria Municipal de Educação. É extensão de benefício remuneratório a uma categoria de servidores."
+}

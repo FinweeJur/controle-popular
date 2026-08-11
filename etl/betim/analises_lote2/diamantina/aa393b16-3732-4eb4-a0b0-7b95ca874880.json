@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 198",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população do Município de Diamantina que utiliza a rede de urgência do SUS"
+      ],
+      "grau": "moderado",
+      "trecho": "ratificar o protocolo de intenções firmado entre os Municípios das Macro regiões de Saúide Nordeste/Jequitinhonha de Minas Gerais, objetivando a Constituição do Consórcio Intermunicipal de Saúde da rede de urgência",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Federal nº 11.107/2005"
+  ],
+  "resumo_neutro": "A lei autoriza o Município a ratificar protocolo de intenções para constituição de consórcio intermunicipal de saúde da rede de urgência, nos termos da Lei Federal nº 11.107/2005. É ampliação de cooperação institucional para atendimento de urgência em saúde."
+}
