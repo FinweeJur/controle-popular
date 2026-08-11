@@ -9,9 +9,10 @@ batched upsert on `id`, so a contract that no longer matches any rule gets
 its alert *cleared*, not left stale — a contract's status can both trigger
 and resolve over time (aditivo paid down, supplier reinstated, etc.).
 
-Runs rules 1-5, 7, 8, 9 from plan §8 against `contratos`. Rule 10 is a
-standalone, log-only check (see `_check_regra_10`). Rule 6 is intentionally
-not implemented this round:
+Runs rules 1-5, 7, 8, 9 from plan §8, plus a new Rule 11 (added 2026-08-11,
+not part of the original plan §8 — see below), against `contratos`. Rule 10
+is a standalone, log-only check (see `_check_regra_10`). Rule 6 is
+intentionally not implemented this round:
 
   - **Rule 6** (CNAE vs contract-object mismatch) is specified as "LLM
     classification, cached" — there is no AI client wired into this codebase
@@ -49,6 +50,20 @@ each rule):
     periodic inflation adjustment by decree and should be verified/updated
     periodically, not treated as permanently fixed.
 
+Rule 11 (new, not in plan §8) closes a real blind spot found live in
+Rule 1: a contract gets a mean+2*stdev baseline only if its `categoria`/
+`objeto`-prefix group has >= MIN_AMOSTRA_BASELINE members *inside Rule 1's
+own 2-year window* — a contract whose group is that small, or that has
+simply aged out of the window, is silently never evaluated by Rule 1, no
+matter how large its value. Found live: a R$900 million "show artístico"
+contract in Araçuaí (~5x that city's entire annual revenue) had zero
+alerts. Rule 11 flags a contract Rule 1 can't baseline if its value alone
+exceeds half of the municipality's total annual revenue for that year —
+see `PCT_ORCAMENTO_LIMIAR_OUTLIER_ABSOLUTO` above for the full rationale,
+the rejected p99-percentile alternative, and the real-data check against
+all 6 cities' contracts (max non-outlier ratio found: 26.96%, in Belo
+Horizonte).
+
 Cron: **weekly**. Plan §8 itself says "alert engine + nightly recompute",
 but that's inconsistent with the plan's own cron matrix: §5.4's weekly
 Monday post-processing steps explicitly list "recompute grupos_economicos
@@ -75,6 +90,7 @@ REGRA_5 = "regra_5_fornecedor_sancionado_ceis"
 REGRA_7 = "regra_7_situacao_cadastral_irregular"
 REGRA_8 = "regra_8_muitos_contratos_janela_curta"
 REGRA_9 = "regra_9_grupo_economico_contratos_relacionados"
+REGRA_11 = "regra_11_valor_absurdo_para_orcamento_municipal"
 
 # ── Rule 1: statistical outlier baseline ───────────────────────────────────
 JANELA_BASELINE_DIAS = 365 * 2          # "last 2 years" per plan §8 rule 1
@@ -120,6 +136,67 @@ QTD_GRUPO_ECONOMICO_LIMIAR = 2
 MIN_SAUDE_PCT = 0.15
 MIN_EDUCACAO_PCT = 0.25
 
+# ── Rule 11 (NOVA, 2026-08-11): outlier absoluto quando a Regra 1 não tem
+# base estatística pra avaliar ────────────────────────────────────────────
+# ACHADO QUE MOTIVOU ESTA REGRA: contrato de R$900 milhões pra um show do
+# cantor Wesley Safadão em Araçuaí/MG (assinado 2024-07-04), ~5x a receita
+# bruta realizada da cidade INTEIRA em 2024 (R$181,1mi) -- sem alerta algum.
+#
+# A causa raiz medida NÃO é exatamente a hipótese original ("único contrato
+# da categoria 'show artístico'"): `categoria` neste banco é um campo raso
+# (só "Serviços"/"Compras"/"Obras"/"Locação Imóveis"), e "Serviços" tem 39
+# membros em Araçuaí -- grupo grande o bastante pra Regra 1 em tese. O que
+# realmente derruba a Regra 1 é a JANELA MÓVEL de 2 anos
+# (JANELA_BASELINE_DIAS): rodando hoje, um contrato de 2024-07 já caiu fora
+# da janela e nunca entra em grupo nenhum -- nem grande, nem pequeno, porque
+# nunca chega a ser CONSIDERADO. Confirmado ao vivo consultando o banco
+# (ver relatório desta sessão). Isso não invalida o pedido original: um
+# contrato realmente único numa categoria também cai no mesmo buraco (grupo
+# de 1 é sempre < MIN_AMOSTRA_BASELINE), e os dois casos têm a MESMA
+# assinatura observável -- "o grupo deste contrato na janela de 2 anos da
+# Regra 1 tem menos de MIN_AMOSTRA_BASELINE membros" é verdade tanto se o
+# grupo é pequeno quanto se o contrato está fora da janela (grupo vazio, 0
+# membros). A Regra 11 usa exatamente essa condição unificada como gatilho
+# (ver `_regra_11`) -- não filtra por janela pra decidir SE avalia (teto de
+# orçamento não perde validade com o tempo, diferente de "atividade recente
+# incomum"), só usa a janela pra saber se a Regra 1 já cobriu o caso.
+#
+# CRITÉRIO ESCOLHIDO: fração da receita bruta realizada ANUAL do município
+# (`receitas`, mesmo estágio usado na Regra 10) -- não percentil (p99) dos
+# contratos da própria cidade, que era a outra opção cogitada. Dois motivos:
+#   1. Autorreferência: o p99 de uma lista que já contém o próprio outlier
+#      sobe junto com ele. Numa cidade com poucos contratos (Araçuaí tem só
+#      207), um único contrato de R$900mi PUXA o p99 pra cima o bastante
+#      pra quase escapar do teto que deveria pegá-lo.
+#   2. Amostra pequena: cidades menores têm poucas centenas de contratos --
+#      p99 sobre isso é essencialmente "o 2º/3º maior contrato já visto",
+#      não uma estimativa estatisticamente estável.
+# Receita anual vem de fonte externa e objetiva (SICONFI/RREO, já usada na
+# Regra 10) e escala com o porte do município sozinha -- não precisa
+# comparar Araçuaí com São Paulo.
+#
+# LIMIAR (50% da receita anual) checado ao vivo contra os 12.886 contratos
+# com valor+data das 6 cidades já coletadas (Araçuaí, Belo Horizonte,
+# Betim, Diamantina, Itinga, São Paulo): fora do show de Araçuaí (496,9% da
+# receita anual daquele ano), o maior valor real da base inteira é 26,96%
+# (um contrato de execução de obras plurianual em BH -- plausível como
+# valor GLOBAL de um contrato-guarda-chuva de vários anos, não um gasto de
+# um ano só). Nenhum outro contrato de nenhuma cidade passa de 27%. 50%
+# deixa quase 2x de margem ACIMA do maior caso legítimo observado e ainda
+# pega o show de Araçuaí com quase 10x de folga -- não é "gastar metade do
+# orçamento é normal", é "nenhum contrato único deveria consumir mais da
+# metade de tudo que o município arrecada num ano inteiro, em qualquer
+# porte de cidade". Limiar generosamente alto de propósito: esta regra não
+# compete com a Regra 1 em casos limítrofes, só cobre a lacuna que sobra
+# dela.
+PCT_ORCAMENTO_LIMIAR_OUTLIER_ABSOLUTO = 0.50
+# Nomes exatos de `conta` (mudou de rótulo entre RREOs antigos e novos, mas
+# nunca os dois aparecem no mesmo ano -- somar é seguro, não duplica) que
+# carregam o TOTAL bruto de receita do ano, sem filtrar por origem (ao
+# contrário da base constitucional estreita da Regra 10) -- é a leitura
+# mais direta de "tamanho do orçamento anual" que o schema atual oferece.
+_CONTAS_RECEITA_TOTAL = ("Total Receitas", "TOTAL DAS RECEITAS (III) = (I + II)")
+
 
 def _chunked(items: list, size: int):
     for i in range(0, len(items), size):
@@ -162,6 +239,21 @@ def _eh_reforma_edificio_ou_equipamento(texto: str) -> bool:
 # ── Rule implementations: each returns {contrato_id: motivo} ──────────────
 
 
+def _agrupar_por_categoria_ou_prefixo(contratos: list[dict]) -> dict[str, list[dict]]:
+    """Agrupa por `categoria` (ou, se vazia, o prefixo normalizado do
+    `objeto`) -- chave de agrupamento compartilhada pelas Regras 1 e 11, pra
+    garantir que as duas concordem sobre o que conta como "mesmo grupo"."""
+    grupos: dict[str, list[dict]] = {}
+    for c in contratos:
+        chave = (c.get("categoria") or "").strip()
+        if not chave:
+            chave = (c.get("objeto") or "").strip().upper()[:PREFIXO_OBJETO_LEN]
+        if not chave:
+            continue
+        grupos.setdefault(chave, []).append(c)
+    return grupos
+
+
 def _regra_1(contratos: list[dict], cutoff: dt.date) -> dict[str, str]:
     """Value > mean + 2*stdev of same-`categoria` contracts, last 2 years.
 
@@ -171,14 +263,7 @@ def _regra_1(contratos: list[dict], cutoff: dt.date) -> dict[str, str]:
     sample drawn from a larger one.
     """
     janela = [c for c in contratos if (d := _parse_date(c.get("data_assinatura"))) and d >= cutoff]
-    grupos: dict[str, list[dict]] = {}
-    for c in janela:
-        chave = (c.get("categoria") or "").strip()
-        if not chave:
-            chave = (c.get("objeto") or "").strip().upper()[:PREFIXO_OBJETO_LEN]
-        if not chave:
-            continue
-        grupos.setdefault(chave, []).append(c)
+    grupos = _agrupar_por_categoria_ou_prefixo(janela)
 
     flagged: dict[str, str] = {}
     for membros in grupos.values():
@@ -193,6 +278,78 @@ def _regra_1(contratos: list[dict], cutoff: dt.date) -> dict[str, str]:
         for m in membros:
             if float(m.get("valor_global") or 0) > limite:
                 flagged[m["id"]] = REGRA_1
+    return flagged
+
+
+def _receita_mais_proxima(receita_por_ano: dict[int, float], ano: int) -> float | None:
+    """Receita bruta realizada do ano exato do contrato, ou do ano
+    disponível mais próximo.
+
+    O RREO/SICONFI não cobre nem o futuro (contrato assinado no ano
+    corrente, ainda sem RREO fechado) nem o passado remoto (BH tem contrato
+    de 2003; `receitas` só começa em 2015 neste banco). Pro objetivo desta
+    regra -- achar valor absurdamente desproporcional, não conferir centavo
+    a centavo -- a receita do ano disponível mais próximo já é referência
+    boa o bastante pro porte do município naquele período.
+    """
+    if not receita_por_ano:
+        return None
+    if ano in receita_por_ano:
+        return receita_por_ano[ano]
+    return receita_por_ano[min(receita_por_ano, key=lambda a: abs(a - ano))]
+
+
+def _regra_11(
+    contratos: list[dict], cutoff: dt.date, receita_por_ano: dict[int, float]
+) -> dict[str, str]:
+    """Outlier absoluto vs. receita anual do município, só pros contratos
+    que a Regra 1 não consegue avaliar (grupo categoria/prefixo com menos de
+    MIN_AMOSTRA_BASELINE membros NA JANELA de 2 anos -- inclui tanto a
+    categoria genuinamente rara quanto o contrato que já saiu da própria
+    janela, cujo grupo ali é, por definição, vazio). Ver o bloco de
+    constantes `PCT_ORCAMENTO_LIMIAR_OUTLIER_ABSOLUTO` acima pro achado que
+    motivou a regra e a justificativa do critério/limiar.
+
+    Ao contrário da Regra 1, esta regra AVALIA todos os contratos com
+    valor+data (não só os da janela): o teto de orçamento não perde
+    validade com o tempo -- um contrato de 2024 continuar
+    desproporcional-pro-orçamento-de-2024 não depende de "hoje" ainda estar
+    dentro de 2 anos daquela data. A janela aqui só decide se a REGRA 1 já
+    cobriu o caso, não se a Regra 11 deve olhar pra ele.
+    """
+    janela = [c for c in contratos if (d := _parse_date(c.get("data_assinatura"))) and d >= cutoff]
+    grupos_na_janela = _agrupar_por_categoria_ou_prefixo(janela)
+
+    flagged: dict[str, str] = {}
+    for c in contratos:
+        valor = c.get("valor_global")
+        data = _parse_date(c.get("data_assinatura"))
+        if valor is None or float(valor) <= 0 or not data:
+            continue
+
+        # `data >= cutoff` importa AQUI, não só pra montar `grupos_na_janela`:
+        # um contrato FORA da janela nunca é avaliado pela Regra 1, mesmo que
+        # a categoria dele tenha dezenas de membros dentro da janela (foi
+        # exatamente essa distinção que escondeu o show de R$900mi de
+        # Araçuaí — "Serviços" tem membros de sobra na janela, só que este
+        # contrato específico não é um deles). Checar só o tamanho do grupo,
+        # sem confirmar que O CONTRATO em questão está dentro da janela,
+        # deixava a Regra 11 pular exatamente o caso que ela deveria pegar.
+        chave = (c.get("categoria") or "").strip()
+        if not chave:
+            chave = (c.get("objeto") or "").strip().upper()[:PREFIXO_OBJETO_LEN]
+        if (
+            data >= cutoff
+            and chave
+            and len(grupos_na_janela.get(chave, [])) >= MIN_AMOSTRA_BASELINE
+        ):
+            continue  # Regra 1 já tem base estatística suficiente pra este contrato
+
+        receita = _receita_mais_proxima(receita_por_ano, data.year)
+        if not receita:
+            continue
+        if float(valor) > PCT_ORCAMENTO_LIMIAR_OUTLIER_ABSOLUTO * receita:
+            flagged[c["id"]] = REGRA_11
     return flagged
 
 
@@ -504,7 +661,7 @@ def sync(id_municipio: str):
     print(f"[etl.alertas] contratos_avaliados={len(contratos)}")
 
     if not contratos:
-        print("[etl.alertas] nenhum contrato encontrado — nada a avaliar (regras 1-9)")
+        print("[etl.alertas] nenhum contrato encontrado — nada a avaliar (regras 1-9, 11)")
     else:
         licitacoes = fetch_all(
             lambda: client.table("licitacoes")
@@ -534,6 +691,24 @@ def sync(id_municipio: str):
         )
         grupos = grupos_resp.data or []
 
+        # Receita bruta total por ano — usada só pela Regra 11 (teto de
+        # orçamento). Consulta separada da que a Regra 10 faz (essa filtra
+        # pela base CONSTITUCIONAL estreita; aqui é o total sem filtro de
+        # origem — ver `_CONTAS_RECEITA_TOTAL`).
+        receitas_totais = fetch_all(
+            lambda: client.table("receitas")
+            .select("ano, valor")
+            .eq("id_municipio", id_municipio)
+            .eq("estagio", _ESTAGIO_RECEITA_BASE)
+            .in_("conta", list(_CONTAS_RECEITA_TOTAL))
+        )
+        receita_por_ano: dict[int, float] = {}
+        for r in receitas_totais:
+            ano = r.get("ano")
+            if ano is None:
+                continue
+            receita_por_ano[ano] = receita_por_ano.get(ano, 0.0) + float(r.get("valor") or 0)
+
         cutoff_baseline = dt.date.today() - dt.timedelta(days=JANELA_BASELINE_DIAS)
 
         motivos_por_contrato: dict[str, list[str]] = {c["id"]: [] for c in contratos}
@@ -546,6 +721,7 @@ def sync(id_municipio: str):
             (_regra_7, (contratos, fornecedores_by_cnpj)),
             (_regra_8, (contratos,)),
             (_regra_9, (contratos, grupos)),
+            (_regra_11, (contratos, cutoff_baseline, receita_por_ano)),
         )
         for regra_fn, args in regra_calls:
             for contrato_id, motivo in regra_fn(*args).items():
