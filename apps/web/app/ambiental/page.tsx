@@ -1,48 +1,74 @@
+import Link from "@/lib/ambiental/link";
 import { ZONAS } from "@/lib/zonas";
+import { formatNumberBR } from "@/lib/betim/format";
+import { contarReunioesCopam } from "@/lib/db/queries/copam";
 
 /**
- * Home da zona /ambiental — andaime da F1.
+ * Home da zona /ambiental.
  *
- * Os números abaixo NÃO são estimativa nem promessa: saíram do censo das
- * fontes feito na F0 e estão registrados em `docs/ambiental/F0-discovery.md`
- * com a data da medição. Página em construção que inventa número é como
- * gráfico sem cobertura declarada — a regra do projeto vale aqui também.
+ * Os números dos blocos NÃO são estimativa nem promessa: saíram do censo
+ * das fontes feito na F0 e estão registrados em
+ * `docs/ambiental/F0-discovery.md` com a data da medição. Página em
+ * construção que inventa número é como gráfico sem cobertura declarada —
+ * a regra do projeto vale aqui também.
+ *
+ * ═══ F3 (COPAM) SAIU DE "EM BREVE" PARA TELA REAL ═══
+ *
+ * Até aqui o bloco de reuniões do COPAM anunciava "454 reuniões" como
+ * texto fixo — o número que a FONTE publica, não o que este portal tinha
+ * coletado (zero). Isso deixou de ser honesto no instante em que a coleta
+ * ficou real (`etl.apis.copam_reunioes`, migration `0058`): agora o número
+ * vem do banco, com o verbo no passado ("coletadas"), e o bloco é um link
+ * de verdade para `/ambiental/copam` — não mais só uma promessa de fase.
  */
 
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
 
-const BLOCOS = [
-  {
-    titulo: "Reuniões do COPAM",
-    linha: "454 reuniões, com a pauta item a item",
-    texto:
-      "O Conselho Estadual de Política Ambiental publica as reuniões com antecedência, mas não dá para filtrar por município nem saber o que será julgado sem abrir PDF por PDF. É a única parte que age antes da decisão.",
-    fase: "F3",
-  },
-  {
-    titulo: "Licenciamento",
-    linha: "19.162 licenças emitidas",
-    texto:
-      "Filtro por município, empresa, setor do empreendimento, modalidade, classe, potencial poluidor e período. O setor vem da própria Deliberação Normativa Copam 217/2017, não de uma classificação inventada aqui.",
-    fase: "F4",
-  },
-  {
-    titulo: "Barragens",
-    linha: "249 em Minas · 31 sem estabilidade atestada",
-    texto:
-      "Condição de estabilidade, nível de emergência, método construtivo e categoria de risco, do inventário da Feam cruzado com o registro nacional da ANM.",
-    fase: "F5",
-  },
-  {
-    titulo: "Legislação ambiental",
-    linha: "Federal e estadual no mesmo lugar",
-    texto:
-      "Hoje a norma que interessa está partida entre cinco sistemas que não conversam: MMA, Conama, ALMG, Siam e o banco da Semad. Aqui vira uma busca só.",
-    fase: "F6",
-  },
-];
+export default async function AmbientalHome() {
+  const { reunioes, itens } = await contarReunioesCopam();
 
-export default function AmbientalHome() {
+  const BLOCOS = [
+    {
+      titulo: "Reuniões do COPAM",
+      linha:
+        reunioes > 0
+          ? `${formatNumberBR(reunioes)} reuniões coletadas, ${formatNumberBR(itens)} itens de pauta`
+          : "A fonte publica 454 reuniões — coleta ainda não rodou",
+      texto:
+        "O Conselho Estadual de Política Ambiental publica as reuniões com antecedência. Aqui já dá para ver a pauta item a item, com o município que cada processo trata, antes da decisão sair.",
+      fase: "F3",
+      href: "/copam",
+      pronta: reunioes > 0,
+    },
+    {
+      titulo: "Licenciamento",
+      linha: "A fonte publica 19.162 licenças emitidas",
+      texto:
+        "Filtro por município, empresa, setor do empreendimento, modalidade, classe, potencial poluidor e período. O setor vem da própria Deliberação Normativa Copam 217/2017, não de uma classificação inventada aqui.",
+      fase: "F4",
+      href: null,
+      pronta: false,
+    },
+    {
+      titulo: "Barragens",
+      linha: "A fonte publica 249 barragens em Minas",
+      texto:
+        "Condição de estabilidade, nível de emergência, método construtivo e categoria de risco, do inventário da Feam cruzado com o registro nacional da ANM.",
+      fase: "F5",
+      href: null,
+      pronta: false,
+    },
+    {
+      titulo: "Legislação ambiental",
+      linha: "Federal e estadual no mesmo lugar",
+      texto:
+        "Hoje a norma que interessa está partida entre cinco sistemas que não conversam: MMA, Conama, ALMG, Siam e o banco da Semad. Aqui vira uma busca só.",
+      fase: "F6",
+      href: null,
+      pronta: false,
+    },
+  ];
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
       <header className="space-y-4">
@@ -59,30 +85,50 @@ export default function AmbientalHome() {
           className="max-w-2xl rounded-lg border px-4 py-3 text-[.95em]"
           style={{ borderColor: ZONA.cor }}
         >
-          <strong>Seção em construção.</strong> As fontes já foram verificadas e estão
-          documentadas; as telas entram por fase. Enquanto isso, o que está no ar são as
-          outras frentes do Controle Popular, nos botões acima.
+          <strong>Seção em construção, por fase.</strong> A pauta do COPAM (F3) já tem tela real,
+          abaixo. Licenciamento, barragens estaduais e legislação seguem com fonte verificada e
+          documentada, tela ainda não.
         </p>
       </header>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2">
-        {BLOCOS.map((b) => (
-          <section
-            key={b.titulo}
-            className="flex flex-col rounded-lg border border-border bg-surface p-5"
-          >
-            <div className="flex items-baseline justify-between gap-3">
-              <h2 className="font-display text-lg font-semibold">{b.titulo}</h2>
-              <span className="shrink-0 text-[.75em] font-medium text-text-soft">
-                {b.fase}
-              </span>
-            </div>
-            <p className="mt-1 font-medium" style={{ color: ZONA.cor }}>
-              {b.linha}
-            </p>
-            <p className="mt-2 flex-1 text-[.92em] text-text-soft">{b.texto}</p>
-          </section>
-        ))}
+        {BLOCOS.map((b) => {
+          const conteudo = (
+            <>
+              <div className="flex items-baseline justify-between gap-3">
+                <h2 className="font-display text-lg font-semibold">{b.titulo}</h2>
+                <span className="shrink-0 text-[.75em] font-medium text-text-soft">
+                  {b.fase}
+                </span>
+              </div>
+              <p className="mt-1 font-medium" style={{ color: ZONA.cor }}>
+                {b.linha}
+              </p>
+              <p className="mt-2 flex-1 text-[.92em] text-text-soft">{b.texto}</p>
+              {b.pronta && b.href ? (
+                <p className="mt-3 text-[.85em] font-semibold" style={{ color: ZONA.cor }}>
+                  Ver a pauta →
+                </p>
+              ) : null}
+            </>
+          );
+          return b.pronta && b.href ? (
+            <Link
+              key={b.titulo}
+              href={b.href}
+              className="flex flex-col rounded-lg border border-border bg-surface p-5 transition-colors hover:border-current"
+            >
+              {conteudo}
+            </Link>
+          ) : (
+            <section
+              key={b.titulo}
+              className="flex flex-col rounded-lg border border-border bg-surface p-5"
+            >
+              {conteudo}
+            </section>
+          );
+        })}
       </div>
 
       <section className="mt-12 border-t border-border pt-8">

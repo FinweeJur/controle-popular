@@ -7,6 +7,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web"],
       "port": 3000
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-ambiental-copam) -- a 3000 pode ja estar ocupada por outro worktree rodando em paralelo, e anexar nela mostraria o codigo ERRADO sem aviso.",
+      "name": "cp-ambiental-copam-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3901"],
+      "port": 3901
     }
   ]
 }

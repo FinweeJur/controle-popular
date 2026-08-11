@@ -118,25 +118,22 @@ export const ZONAS: Zona[] = [
     href: "/ambiental",
     etiqueta: "Estadual · Meio ambiente em Minas Gerais",
     titulo: "O que o COPAM vai decidir sobre a sua cidade",
-    // CÓPIA CORTADA PARA O QUE EXISTE, ao publicar a zona em 2026-08-09.
-    //
-    // Os quatro itens antigos descreviam a zona PRONTA (COPAM, licenciamento,
-    // barragens, legislação) e só barragens tem tela e dado — as outras três
-    // nem tabela têm. Um card que promete quatro e entrega uma não é
-    // "antecipação de roadmap": é o portal de transparência mentindo na
-    // vitrine, no único lugar onde ele não pode.
+    // CÓPIA CORTADA PARA O QUE EXISTE, ao publicar a zona em 2026-08-09;
+    // ATUALIZADA em 2026-08-11 quando a F3 (COPAM) ganhou tela e dado real
+    // (`/ambiental/copam`, migration `0058`) — mesma disciplina, cortar
+    // para o que existe, só que agora existe mais uma coisa.
     //
     // Os números não-publicados continuam visíveis, mas onde são honestos: na
     // própria `/ambiental`, que se declara em construção e cita a data da
     // medição de cada um (`docs/ambiental/F0-discovery.md`).
     descricao:
-      "A situação de cada barragem de Minas — condição de estabilidade, nível de emergência e categoria de risco. As reuniões do COPAM, o licenciamento e a legislação ambiental estão em construção, com as fontes já verificadas.",
+      "A pauta de cada reunião do COPAM, item a item, com o município que cada processo trata. A situação de cada barragem de Minas — estabilidade, emergência e risco. Licenciamento e legislação ambiental estão em construção, com as fontes já verificadas.",
     resumo:
-      "Barragens de Minas: estabilidade, emergência e risco. O resto da frente ambiental está em construção.",
+      "A pauta do COPAM por município, e a situação de cada barragem de Minas. Licenciamento e legislação seguem em construção.",
     itens: [
+      "COPAM: pauta de cada reunião, item a item, por município",
       "Barragens: condição de estabilidade e nível de emergência",
-      "Inventário da Feam cruzado com o registro nacional da ANM",
-      "Em construção: COPAM, licenciamento e legislação ambiental",
+      "Em construção: licenciamento e legislação ambiental",
     ],
     cor: "var(--cp-tertiary)",
     publicada: true,
