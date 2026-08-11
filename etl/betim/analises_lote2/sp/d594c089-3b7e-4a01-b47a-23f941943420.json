@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": ["pessoas autistas", "empresas certificadas"],
+      "grau": "marginal",
+      "trecho": "Institui o Selo Empresa Amiga dos Autistas.",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Selo Empresa Amiga dos Autistas, um reconhecimento municipal a empresas que adotam práticas de acolhimento a pessoas autistas."
+}

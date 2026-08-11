@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["crianças de 2 a 12 anos com diabetes Mellitus tipo 1 inscritas no CadÚnico"],
+      "grau": "moderado",
+      "trecho": "distribuição, pelo Sistema Único de Saúde, de sensor medidor contínuo de glicose para crianças entre 2 a 12 anos portadoras de diabetes Mellitus tipo 1, cujos pais ou responsáveis estejam inscritos no Cadastro Único para Programas Sociais (CadÚnico)",
+      "confianca": 0.8
+    },
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["crianças de 2 a 12 anos com diabetes Mellitus tipo 1 inscritas no CadÚnico"],
+      "grau": "marginal",
+      "trecho": "distribuição, pelo Sistema Único de Saúde, de sensor medidor contínuo de glicose para crianças entre 2 a 12 anos portadoras de diabetes Mellitus tipo 1",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a distribuição, pelo Sistema Único de Saúde, de sensor medidor contínuo de glicose para crianças entre 2 e 12 anos portadoras de diabetes Mellitus tipo 1, cujos pais ou responsáveis estejam inscritos no Cadastro Único para Programas Sociais (CadÚnico)."
+}

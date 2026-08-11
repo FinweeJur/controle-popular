@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["mulheres a partir de quarenta anos"],
+      "grau": "moderado",
+      "trecho": "Institui a obrigatoriedade da realização anual do exame de mamografia em mulheres a partir dos quarenta anos",
+      "confianca": 0.8
+    },
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["mulheres a partir de quarenta anos"],
+      "grau": "marginal",
+      "trecho": "Institui a obrigatoriedade da realização anual do exame de mamografia em mulheres a partir dos quarenta anos",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a obrigatoriedade da realização anual do exame de mamografia em mulheres a partir dos quarenta anos no Município de São Paulo."
+}

@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["Conselheiros e Conselheiras Tutelares do Município de São Paulo"],
+      "grau": "marginal",
+      "trecho": "Autoriza o Poder Executivo a disponibilizar atendimento psicológico aos Conselheiros e Conselheiras Tutelares do Município de São Paulo",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo a disponibilizar atendimento psicológico aos Conselheiros e Conselheiras Tutelares do Município de São Paulo."
+}

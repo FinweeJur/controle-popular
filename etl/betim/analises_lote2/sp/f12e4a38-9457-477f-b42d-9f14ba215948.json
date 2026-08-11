@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["pessoas com deficiência visual usuárias do transporte coletivo"],
+      "grau": "moderado",
+      "trecho": "instalação e o funcionamento de sistema de informação sonora nos veículos do Sistema de Transporte Coletivo Urbano de Passageiros do Município de São Paulo, com a finalidade de promover acessibilidade, segurança e autonomia aos usuários, especialmente às pessoas com deficiência visual",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a instalação e o funcionamento de sistema de informação sonora nos veículos do Sistema de Transporte Coletivo Urbano de Passageiros de São Paulo, para promover acessibilidade, segurança e autonomia aos usuários, especialmente às pessoas com deficiência visual."
+}
