@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "Lei 12.527/2011 (LAI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do município de Araçuaí"
+      ],
+      "grau": "marginal",
+      "trecho": "OBRIGATORIEDADE DA IDENTIFICAÇÃO DOS VEÍCULOS AUTOMOTORES OFICIAIS, LOCADOS E CEDIDOS",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a obrigatoriedade de identificação dos veículos automotores oficiais, locados e cedidos, no município de Araçuaí. A medida amplia, em grau marginal, o controle social sobre o uso de bens públicos."
+}

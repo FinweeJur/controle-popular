@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "alunos e comunidade escolar das escolas públicas municipais de Araçuaí"
+      ],
+      "grau": "marginal",
+      "trecho": "INSTALAÇÃO DE CÂMERAS DE MONITORAMENTO DE SEGURANÇAS NAS ESCOLAS PÚBLICAS MUNICIPAIS E CERCANIAS",
+      "confianca": 0.6
+    },
+    {
+      "direito": "privacidade_dados",
+      "dispositivo": "CF/88, art. 5º, X",
+      "direcao": "restringe",
+      "mecanismo": null,
+      "titulares": [
+        "alunos, servidores e população que circula nas escolas públicas municipais de Araçuaí"
+      ],
+      "grau": "marginal",
+      "trecho": "CÂMERAS DE MONITORAMENTO DE SEGURANÇAS NAS ESCOLAS PÚBLICAS MUNICIPAIS E CERCANIAS",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a instalação de câmeras de monitoramento de segurança nas escolas públicas municipais e cercanias. A medida amplia a proteção da comunidade escolar contra riscos à segurança e, ao mesmo tempo, instala um mecanismo de captação de imagens que afeta a privacidade de quem circula pelo local."
+}

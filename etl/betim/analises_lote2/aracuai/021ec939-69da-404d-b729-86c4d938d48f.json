@@ -1,0 +1,23 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 182",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "beneficiários de doação e legitimação de terreno urbano em Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "CONVALIDAR O ATO DE DOAÇÃO E/OU LEGITIMAÇÃO DE TERRENO URBANO",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 45/2014 (Araçuaí)",
+    "Lei Municipal nº 22/2000 (Araçuaí)"
+  ],
+  "resumo_neutro": "A lei autoriza o Chefe do Poder Executivo a convalidar o ato de doação e/ou legitimação de terreno urbano conferido pelas Leis Municipais nº 45/2014 e nº 22/2000. A convalidação amplia a segurança jurídica da posse/propriedade dos beneficiários dessas doações e legitimações."
+}

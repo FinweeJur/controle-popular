@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do município de Araçuaí"
+      ],
+      "grau": "marginal",
+      "trecho": "INSTALAÇÃO DE CAÇAMBAS ESTACIONÁRIAS, O RECOLHIMENTO E O TRANSPORTE DE RESÍDUOS DA CONSTRUÇÃO CIVIL E RESÍDUOS VOLUMOSOS",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a instalação de caçambas estacionárias e o recolhimento e transporte de resíduos da construção civil e resíduos volumosos no município de Araçuaí. A regulamentação amplia, em grau marginal, o controle sobre o descarte adequado de resíduos."
+}

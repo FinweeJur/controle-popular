@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estudantes do município de Araçuaí que buscam ensino superior"
+      ],
+      "grau": "moderado",
+      "trecho": "CRIAÇÃO DO POLO UNIVERSITÁRIO DE APOIO PRESENCIAL DA UNIVERSIDADE ABERTA DO BRASIL EM ARAÇUAÍ-MG",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a criação do polo universitário de apoio presencial da Universidade Aberta do Brasil em Araçuaí. A medida amplia o acesso ao ensino superior no município."
+}

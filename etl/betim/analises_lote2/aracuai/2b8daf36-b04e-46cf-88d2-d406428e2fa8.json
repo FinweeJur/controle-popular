@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "servidores públicos da Câmara Municipal de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "INSTITUI O PLANO DE CARGOS, CARREIRA E VENCIMENTOS DOS SERVIDORES PÚBLICOS NA CÂMARA MUNICIPAL DE ARAÇUAÍ-MG",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Plano de Cargos, Carreira e Vencimentos dos servidores públicos da Câmara Municipal de Araçuaí, regulamentando cargos e jornadas. A norma cria uma estrutura de carreira para essa categoria de servidores."
+}

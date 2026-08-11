@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": null,
+      "titulares": [
+        "servidores públicos municipais ativos e inativos, aposentados e agentes políticos do Poder Executivo de Araçuaí"
+      ],
+      "grau": "marginal",
+      "trecho": "CONCEDER RECUPERAÇÃO INFLACIONÁRIA SOBRE OS VENCIMENTOS DOS SERVIDORES PÚBLICOS MUNICIPAIS ATIVOS E INATIVOS",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo municipal a conceder recuperação inflacionária sobre os vencimentos dos servidores públicos municipais ativos e inativos, aposentados e agentes políticos do Poder Executivo. É reajuste salarial que amplia, em grau pontual, a remuneração de servidores municipais."
+}
