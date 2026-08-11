@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": ["pessoas com Transtorno do Espectro Autista no Município de Araçuaí"],
+      "grau": "moderado",
+      "trecho": "CARTEIRA DE IDENTIFICAÇÃO DA PESSOA COM TRANSTORNO DO ESPECTRO AUTISTA (CIPTEA) NO ÂMBITO DO MUNICÍPIO DE ARAÇUAÍ/MG",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Carteira de Identificação da Pessoa com Transtorno do Espectro Autista (CIPTEA) no âmbito do Município de Araçuaí."
+}

@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "liberdade_expressao",
+      "dispositivo": "CF/88, art. 220",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["população usuária de espaços públicos do Município de Araçuaí"],
+      "grau": "marginal",
+      "trecho": "OFERTA DE ACESSO GRATUITO À INTERNET EM LOCAIS PÚBLICOS DO MUNICÍPIO DE ARAÇUAÍ/MG",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o programa 'Wi-Fi Livre Araçuaí', que dispõe sobre a oferta de acesso gratuito à internet em locais públicos do Município de Araçuaí."
+}

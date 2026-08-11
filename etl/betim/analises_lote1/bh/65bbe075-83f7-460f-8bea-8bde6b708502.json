@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["população do Município de Belo Horizonte, quanto à preservação da arborização urbana"],
+      "grau": "marginal",
+      "trecho": "proteção às mudas de árvores durante a execução de serviços de roçada, capina, limpeza urbana e correlatos",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a proteção às mudas de árvores durante a execução de serviços de roçada, capina, limpeza urbana e correlatos, no Município de Belo Horizonte."
+}

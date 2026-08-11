@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "restringe",
+      "mecanismo": "criminaliza_conduta_do_titular",
+      "titulares": ["pessoas flagradas com porte ou consumo de drogas ilícitas em ambiente público no Município de Belo Horizonte"],
+      "grau": "moderado",
+      "trecho": "multa por porte ou consumo de drogas ilícitas em ambiente público no Município de Belo Horizonte",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui multa administrativa para quem for flagrado portando ou consumindo drogas ilícitas em ambiente público no Município de Belo Horizonte."
+}

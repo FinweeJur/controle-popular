@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "Lei 8.069/1990 (ECA)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["crianças e adolescentes acolhidos no abrigo municipal de Araçuaí"],
+      "grau": "moderado",
+      "trecho": "PROGRAMA DE INCENTIVO Á ADOÇÃO DE CRIANÇAS E ADOLESCENTES DO ABRIGO MUNICIPAL NO ÂMBITO DO MUNICÍPIO DE ARAÇUAÍ-MG",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei disciplina diretrizes para a implantação do Programa de Incentivo à Adoção de Crianças e Adolescentes do Abrigo Municipal, no âmbito do Município de Araçuaí."
+}
