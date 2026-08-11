@@ -23,6 +23,7 @@ const REGRAS_ORDENADAS = [
   "regra_9_grupo_economico_contratos_relacionados",
   "regra_1_valor_atipico_para_categoria",
   "regra_4_capital_social_baixo",
+  "regra_11_valor_absurdo_para_orcamento_municipal",
 ];
 
 export default async function MetodologiaPage({

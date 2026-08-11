@@ -84,11 +84,17 @@ export interface MotivoAlertaInfo {
  *
  * `categoria` distingue o que é **risco de violação legal concreta**
  * (regras 2, 3, 5, 7, 8, 9 — todas com dispositivo de lei ou jurisprudência
- * consolidada por trás) do que é **heurística de investigação** (regras 1
- * e 4 — sinal de atenção real, usado de fato por TCU/CGU/MP, mas sem teto
- * fixado em lei ou súmula). Mostrar as duas com o mesmo peso visual daria
- * a entender que uma suspeita estatística tem a mesma força que uma
+ * consolidada por trás) do que é **heurística de investigação** (regras 1,
+ * 4 e 11 — sinal de atenção real, usado de fato por TCU/CGU/MP, mas sem
+ * teto fixado em lei ou súmula). Mostrar as duas com o mesmo peso visual
+ * daria a entender que uma suspeita estatística tem a mesma força que uma
  * violação de artigo de lei — não tem, e o site não pode fingir que tem.
+ *
+ * Regra 11 (adicionada 2026-08-11, ver `etl/alertas.py`) é uma segunda
+ * checagem de outlier estatístico — mesma família da regra 1, mesma
+ * categoria "heurística" — pensada especificamente pros contratos que a
+ * regra 1 não consegue avaliar (categoria com poucos contratos parecidos,
+ * ou nenhum na janela recente).
  */
 export const MOTIVO_ALERTA_INFO: Record<string, MotivoAlertaInfo> = {
   regra_1_valor_atipico_para_categoria: {
@@ -138,6 +144,12 @@ export const MOTIVO_ALERTA_INFO: Record<string, MotivoAlertaInfo> = {
     categoria: "violacao_legal",
     fundamentacao:
       "Vários contratos foram parar em empresas do mesmo grupo (que dividem sócio). Isso pode simular uma disputa que, na prática, não existe. (Entendimento do TCU.)",
+  },
+  regra_11_valor_absurdo_para_orcamento_municipal: {
+    label: "Valor consome fração desproporcional do orçamento anual da cidade",
+    categoria: "heuristica",
+    fundamentacao:
+      "Sozinho, este contrato vale mais da metade de tudo que o município arrecada num ano inteiro. É o mesmo tipo de sinal estatístico da regra \"valor muito acima do usual\" (regra 1) — só que pensado pra pegar contratos que não têm outros parecidos pra comparar (por isso a regra 1 não teria como avaliar). Não é uma comparação de preço de mercado nem aponta ilegalidade — é desproporção clara pro tamanho do orçamento da cidade.",
   },
 };
 
