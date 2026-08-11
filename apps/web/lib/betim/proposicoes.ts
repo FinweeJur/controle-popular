@@ -1,5 +1,6 @@
 import * as q from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
+import { viciosDeProposicoes, type VicioAto } from "@/lib/betim/legislacao-vicio";
 
 export const PROPOSICOES_PAGE_SIZE = 30;
 
@@ -14,6 +15,8 @@ export interface ProposicaoListRow {
   autores: string[] | null;
   link_fonte: string | null;
   temas?: string[] | null;
+  /** Ausente = sem indício de vício legislativo (ou não analisado ainda) — silêncio é o padrão. */
+  vicio?: VicioAto;
 }
 
 export interface ProposicoesFilters {
@@ -73,10 +76,23 @@ export async function fetchProposicoes(
     });
     if (!data) return { rows: [], total: 0, configured: false, ok: false };
 
+    const rows = data as ProposicaoListRow[];
+
+    // Isolado em try/catch próprio, mesma razão de `getLegislacao`: se a
+    // camada de vício falhar (migration não rodada, tabela ausente), a
+    // lista de proposições — que já funciona sem isto — continua de pé, só
+    // sem o badge.
+    try {
+      const vicios = await viciosDeProposicoes(idMunicipio, rows.map((r) => r.id));
+      for (const r of rows) r.vicio = vicios.get(r.id);
+    } catch {
+      // segue sem vício — degradação parcial, não derruba a lista inteira.
+    }
+
     // O total do conjunto filtrado vem por `count(*) over ()` em cada
     // linha; sem linha nenhuma, o total é zero.
     return {
-      rows: data as ProposicaoListRow[],
+      rows,
       total: data[0]?.total ?? 0,
       configured: true,
       ok: true,

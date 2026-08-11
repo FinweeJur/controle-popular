@@ -6,6 +6,7 @@ import {
   type AnaliseAto,
   type DireitoContagem,
 } from "@/lib/betim/legislacao-garantista";
+import { viciosDeAtos, type VicioAto } from "@/lib/betim/legislacao-vicio";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface AtoRow {
@@ -18,6 +19,8 @@ export interface AtoRow {
   temas: string[] | null;
   /** Ausente = ato sem análise garantista — NÃO é o mesmo que rótulo "neutro". */
   analise?: AnaliseAto;
+  /** Ausente = sem indício de vício legislativo (ou não analisado) — silêncio é o padrão. */
+  vicio?: VicioAto;
   /**
    * Posição desta norma no GeoJSON da camada `normas-geolocalizadas`
    * (migration 0057) — `null` para a maioria (a ementa não citava lugar
@@ -152,7 +155,21 @@ export async function getLegislacao(
       // saber a diferença entre "não achou" e "não deu para procurar".
     }
 
-    const todos: AtoRow[] = base.map((a) => ({ ...a, analise: analisePorAto.get(a.id) }));
+    // Isolado do bloco acima: vício legislativo é análise INDEPENDENTE da
+    // garantista (tabela própria), uma falhar não deve derrubar a outra.
+    let vicioPorAto = new Map<string, VicioAto>();
+    try {
+      vicioPorAto = await viciosDeAtos(idMunicipio, base.map((a) => a.id));
+    } catch {
+      // segue com o mapa vazio — nenhum badge de vício aparece, o resto da
+      // página continua de pé.
+    }
+
+    const todos: AtoRow[] = base.map((a) => ({
+      ...a,
+      analise: analisePorAto.get(a.id),
+      vicio: vicioPorAto.get(a.id),
+    }));
 
     let atos = todos;
     if (opts.categoria) atos = atos.filter((a) => a.tipo === opts.categoria);

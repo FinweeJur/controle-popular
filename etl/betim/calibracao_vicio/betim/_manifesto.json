@@ -1,0 +1,35 @@
+{
+  "id_municipio": "3106705",
+  "municipio": "Betim",
+  "eixo": "municipal",
+  "versao_rubrica_vicio": "1.0.0",
+  "versao_prompt_vicio": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "externo",
+  "objetos": [
+    {
+      "id": "1c8ceccd-9957-43e9-b967-1d106dfd0507",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 92/2026"
+    },
+    {
+      "id": "164a4d84-439c-40ca-bd53-72070b560a44",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 625/2025"
+    },
+    {
+      "id": "f4e7b2a9-2094-4aab-b7cc-9822fbe84198",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 400/2025"
+    },
+    {
+      "id": "3eca8e84-ab50-4d58-b18a-3f5809e7a3bd",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 369/2025"
+    },
+    {
+      "id": "1d5f0908-3fd3-4738-9c87-2dae07a512c1",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 601/2025"
+    }
+  ]
+}

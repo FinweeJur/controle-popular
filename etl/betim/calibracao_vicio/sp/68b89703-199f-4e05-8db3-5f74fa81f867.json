@@ -1,0 +1,12 @@
+{
+  "indicios": [
+    {
+      "categoria": "vicio_iniciativa",
+      "dispositivo": "CF/88, art. 61, §1º, II",
+      "justificativa": "Criação de gratificação (vantagem remuneratória) para servidores públicos municipais por iniciativa de vereador — matéria de iniciativa privativa do Prefeito.",
+      "trecho": "Cria a Gratificação de Atendimento ao Público no âmbito do Hospital do Servidor Público Municipal",
+      "confianca": 0.85
+    }
+  ],
+  "resumo": "Há indício de vício de iniciativa: o projeto cria uma nova gratificação para servidores municipais por iniciativa parlamentar, matéria reservada ao Prefeito. Isto é um indício de IA, não decisão judicial."
+}

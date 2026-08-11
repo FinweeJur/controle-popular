@@ -12,6 +12,8 @@ import {
   proposicao_autoresInCongresso,
   proposicoesInCongresso,
   tramitacoesInCongresso,
+  vicio_itensInCongresso,
+  vicios_legislativosInCongresso,
   votacoesInCongresso,
   votosInCongresso,
 } from "@/lib/db/schema";
@@ -400,6 +402,12 @@ export async function paginaDeProposicoes(filtros: FiltrosProposicoes = {}) {
     .select({
       proposicao: proposicoesInCongresso,
       analise: analisesInCongresso,
+      // Só o nível de gravidade, não o objeto inteiro: a lista mostra o
+      // badge (silêncio quando `sem_indicio`), o detalhamento com
+      // dispositivo/trecho/justificativa fica só na página da proposição
+      // (`vicioDaProposicao` + `itensDoVicio`). `1:1` com `proposicoesInCongresso`
+      // (unique em `proposicao_id`), então o leftJoin não multiplica linha.
+      vicio_nivel_gravidade: vicios_legislativosInCongresso.nivel_gravidade,
       total: sql<number>`(count(*) over ())::int`,
     })
     .from(proposicoesInCongresso)
@@ -407,12 +415,55 @@ export async function paginaDeProposicoes(filtros: FiltrosProposicoes = {}) {
       analisesInCongresso,
       eq(analisesInCongresso.proposicao_id, proposicoesInCongresso.id)
     )
+    .leftJoin(
+      vicios_legislativosInCongresso,
+      eq(vicios_legislativosInCongresso.proposicao_id, proposicoesInCongresso.id)
+    )
     .where(cond.length ? and(...cond) : undefined)
     // Desempate por id: sem ele, proposições da mesma data saem em ordem
     // indefinida e a paginação repete ou pula linhas entre páginas.
     .orderBy(desc(proposicoesInCongresso.data_apresentacao), asc(proposicoesInCongresso.id))
     .limit(porPagina)
     .offset((pagina - 1) * porPagina);
+}
+
+/** Vício legislativo (indício de inconstitucionalidade) de UMA proposição. */
+export async function vicioDaProposicao(proposicaoId: string) {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db
+    .select({
+      id: vicios_legislativosInCongresso.id,
+      proposicao_id: vicios_legislativosInCongresso.proposicao_id,
+      nivel_gravidade: vicios_legislativosInCongresso.nivel_gravidade,
+      resumo: vicios_legislativosInCongresso.resumo,
+      modelo: vicios_legislativosInCongresso.modelo,
+      versao_rubrica: vicios_legislativosInCongresso.versao_rubrica,
+      status: vicios_legislativosInCongresso.status,
+      criado_em: vicios_legislativosInCongresso.criado_em,
+    })
+    .from(vicios_legislativosInCongresso)
+    .where(eq(vicios_legislativosInCongresso.proposicao_id, proposicaoId))
+    .limit(1);
+  return linha ?? null;
+}
+
+/** Itens (categorias de indício) de UM vício legislativo. */
+export async function itensDoVicio(vicioId: string) {
+  const db = getDb();
+  if (!db) return [];
+  return db
+    .select({
+      id: vicio_itensInCongresso.id,
+      vicio_id: vicio_itensInCongresso.vicio_id,
+      categoria: vicio_itensInCongresso.categoria,
+      dispositivo: vicio_itensInCongresso.dispositivo,
+      justificativa: vicio_itensInCongresso.justificativa,
+      trecho: vicio_itensInCongresso.trecho,
+      confianca: sql<number>`(${vicio_itensInCongresso.confianca})::double precision`,
+    })
+    .from(vicio_itensInCongresso)
+    .where(eq(vicio_itensInCongresso.vicio_id, vicioId));
 }
 
 export async function obterProposicaoPorId(id: string) {

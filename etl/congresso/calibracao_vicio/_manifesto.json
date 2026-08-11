@@ -1,0 +1,64 @@
+{
+  "eixo": "federal",
+  "versao_rubrica_vicio": "1.0.0",
+  "versao_prompt_vicio": "1.0.0",
+  "modelo_pretendido": "externo",
+  "proposicoes": [
+    {
+      "id": "0fb225cf-363f-431c-ba87-837853cc2c09",
+      "identificacao": "PL 1869/2026"
+    },
+    {
+      "id": "f6487cc2-8aac-415e-8946-cac017cb9c18",
+      "identificacao": "PL 1866/2026"
+    },
+    {
+      "id": "ca3f7553-143e-4729-893e-2eabfd72b926",
+      "identificacao": "PL 1420/2026"
+    },
+    {
+      "id": "3279d854-8a77-4d22-b0db-a0bb4f3f9675",
+      "identificacao": "PEC 8/2026"
+    },
+    {
+      "id": "cbafb87d-ad2e-440c-bfad-5be692ef1e3b",
+      "identificacao": "PEC 9/2026"
+    },
+    {
+      "id": "329ece7b-0964-491f-b28b-3073f649a562",
+      "identificacao": "PL 158/2026"
+    },
+    {
+      "id": "629900ed-5ccb-4e2b-964c-90c0c6ad8dcb",
+      "identificacao": "PDL 104/2026"
+    },
+    {
+      "id": "ee55581f-54c0-41ac-8ebd-2590660c6097",
+      "identificacao": "PL 4706/2026"
+    },
+    {
+      "id": "d4126f5d-6b1b-49d9-94ed-4cd63d006013",
+      "identificacao": "PLV 2/2026"
+    },
+    {
+      "id": "9366e7c6-f9ff-4a27-94fb-d9d6b772d222",
+      "identificacao": "MPV 1360/2026"
+    },
+    {
+      "id": "9295d72a-1ee5-41a5-a2df-76096eb0c0a9",
+      "identificacao": "MPV 1334/2026"
+    },
+    {
+      "id": "274aa1b6-acac-4fe9-b7ff-c83d3a0bd0f6",
+      "identificacao": "PL 4276/2026"
+    },
+    {
+      "id": "a1f211bb-9edb-4438-92d8-62ab2c3ba8ab",
+      "identificacao": "PL 1519/2026"
+    },
+    {
+      "id": "f78ef1f4-a147-4c38-b94e-23435f76a182",
+      "identificacao": "PL 1105/2026"
+    }
+  ]
+}

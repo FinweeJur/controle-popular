@@ -1,0 +1,20 @@
+{
+  "id_municipio": "3121605",
+  "municipio": "Diamantina",
+  "eixo": "municipal",
+  "versao_rubrica_vicio": "1.0.0",
+  "versao_prompt_vicio": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "externo",
+  "objetos": [
+    {
+      "id": "bb5b5673-cf57-4424-b0ea-ab2305f3e44d",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei Complementar nº 20/2025"
+    },
+    {
+      "id": "424d732d-1146-4c9a-8c09-d9b467afb564",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Resolução (organização interna da Câmara) nº 87/2009"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "indicios": [
+    {
+      "categoria": "inconstitucionalidade_material",
+      "dispositivo": "CF/88, art. 60, §4º, IV",
+      "justificativa": "Mesmo debate doutrinário da PEC 8/2026, sobre a mesma norma (art. 228 CF): parte da doutrina trata a inimputabilidade penal de menores de 18 anos como núcleo de garantia individual protegido por cláusula pétrea; outra parte, como política criminal alterável por emenda. Não há posição pacífica do STF.",
+      "trecho": "para reduzir a idade mínima de imputabilidade penal, nas condições que estabelece",
+      "confianca": 0.45
+    }
+  ],
+  "resumo": "Como a PEC 8/2026 (mesmo tema, mesmo artigo), esta proposta usa o instrumento correto (PEC) mas enfrenta um debate doutrinário não resolvido sobre se a redução da maioridade penal esbarra em cláusula pétrea. Indício leve, de confiança baixa — apontamento de IA, não decisão judicial."
+}

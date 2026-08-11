@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/TabelaEstatica";
+import VicioBadge from "@/app/[municipio]/components/VicioBadge";
 import type { ProposicaoListRow } from "@/lib/betim/proposicoes";
 import { formatDateBR } from "@/lib/betim/format";
 
@@ -82,6 +83,7 @@ export default function ListaProposicoes({
           <span className="font-display font-semibold text-text">
             {tipos[p.tipo] ?? p.tipo} nº {p.numero}/{p.ano}
           </span>
+          <VicioBadge nivel={p.vicio?.nivelGravidade} tamanho="sm" />
           {p.link_fonte && (
             <a
               href={p.link_fonte}

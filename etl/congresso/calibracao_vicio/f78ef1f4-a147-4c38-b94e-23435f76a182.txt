@@ -1,0 +1,32 @@
+OBJETO: PL 1105/2026
+ESFERA/EIXO: Congresso Nacional (federal)
+TIPO DE INSTRUMENTO NORMATIVO: Projeto de Lei (lei ordinária)
+AUTOR/PROPONENTE: Enfermeira Rejane (PCdoB)
+EMENTA: Dispõe sobre medidas trabalhistas e administrativas de responsabilização de autores de violência contra a mulher, incluindo demissão por justa causa, suspensão de funções de liderança e vedação ao exercício de cargos públicos, e dá outras providências.
+SITUAÇÃO: Aguardando Encaminhamento
+
+CATEGORIAS DE VÍCIO APLICÁVEIS A ESTE EIXO (use exatamente estes slugs):
+  - vicio_iniciativa: Vício de iniciativa — Matéria de iniciativa privativa do Chefe do Poder Executivo (criação de cargo, aumento de remuneração de servidor, estrutura/organização administrativa, regime jurídico de servidor) proposta por parlamentar ou vereador — não pela Presidência/Prefeitura.
+    âncoras: CF/88, art. 61, §1º, II
+  - vicio_competencia: Vício de competência — Ente legislando fora da própria esfera constitucional de competência. No eixo municipal é o caso central: Art. 30, I CF só autoriza o município a legislar sobre 'assuntos de interesse local'; Art. 30, II autoriza suplementar legislação federal/estadual 'no que couber'. Município regulando matéria de competência privativa da União (Art. 22 CF — direito civil, penal, processual, trânsito nacional, material bélico etc.) ou invadindo organização de outro ente (ex.: mencionar 'Poder Judiciário' do próprio município, que não existe) tem vício de competência. No eixo federal é mais raro: União extrapolando 'normas gerais' (Art. 24 CF) para dentro da autonomia administrativa de Estado/Município sem gancho constitucional específico.
+    âncoras: CF/88, art. 22; CF/88, art. 24; CF/88, art. 18 (autonomia federativa, citada por contraste)
+  - inconstitucionalidade_material: Inconstitucionalidade material (indício) — O CONTEÚDO da norma — não o rito, não quem propôs — contraria a CF (no eixo municipal, também a Constituição Estadual ou a Lei Orgânica do próprio município). Inclui ofensa a direito fundamental do Título II e, POR NÃO HAVER CATEGORIA PRÓPRIA NESTA RÉGUA, também abrange separação de poderes (Art. 2º CF): Legislativo determinando ato de gestão específico do Executivo ou do Judiciário — ex.: câmara municipal exigindo aprovação prévia sua para decisão administrativa rotineira do Executivo.
+    âncoras: CF/88, Título II (arts. 5º a 17); CF/88, art. 2º (separação de poderes)
+  - vicio_formal: Vício formal ou procedimental — Quórum errado para o tipo de norma (lei complementar exige maioria absoluta, ordinária maioria simples, PEC 3/5 em dois turnos), rito não observado, ausência de parecer de comissão obrigatória pelo Regimento Interno. NOTA SOBRE CLÁUSULA PÉTREA (Art. 60, §4º CF): só é relevante para PEC tentando abolir voto direto/secreto/universal/periódico, separação de poderes, forma federativa ou direitos e garantias individuais — e mesmo aí o indício correto é DEBATE DOUTRINÁRIO, nunca fato assentado (o próprio STF trata o alcance do art. 60 §4º IV como controverso caso a caso). Para PL comum (não-PEC) que tenta fazer, por lei ordinária, o que só emenda constitucional poderia, o vício é AQUI — instrumento normativo errado — e não 'inconstitucionalidade material por ofensa a cláusula pétrea'.
+    âncoras: CF/88, art. 47 (quórum de lei ordinária); CF/88, art. 69 (quórum de lei complementar); CF/88, art. 58, §2º (comissões); CF/88, art. 60, §2º e §4º (quórum e limite material de PEC)
+  - contrabando_legislativo: Contrabando legislativo (jabuti) — Emenda parlamentar sem pertinência temática com o projeto original — o STF julgou a prática inconstitucional na ADI 5.127. SÓ APLICÁVEL quando há dado de histórico de emendas da proposição. Medido em 2026-08: `congresso.proposicoes` não traz histórico de emendas (não há tabela `emendas` no schema atual) — a categoria fica documentada para quando esse dado existir, e NÃO deve ser aplicada sem ele (um modelo sem acesso ao texto das emendas não tem como avaliar pertinência temática; forçar a categoria aqui seria o mesmo erro que a rubrica garantista evita ao preferir `direitos_afetados` vazio a uma classificação inventada).
+    âncoras: STF, ADI 5.127; CF/88, art. 65 (processo legislativo bicameral — base do princípio da pertinência temática)
+
+Devolva JSON exatamente neste formato:
+{
+  "indicios": [
+    {
+      "categoria": "<slug da lista>",
+      "dispositivo": "<artigo concreto, ex.: 'CF/88, art. 61, §1º, II'>",
+      "justificativa": "<1-2 frases, hedged: 'há indício de...' nunca 'é inconstitucional'>",
+      "trecho": "<citação literal da ementa>",
+      "confianca": <0.0 a 1.0>
+    }
+  ],
+  "resumo": "<1-3 frases pro cidadão leigo: o que foi encontrado (ou 'nenhum indício identificado'), sempre deixando claro que é indício de IA, não decisão judicial>"
+}

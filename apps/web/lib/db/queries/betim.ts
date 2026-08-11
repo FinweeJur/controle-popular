@@ -28,6 +28,8 @@ import {
   atos_oficiais,
   atos_oficiais_geo,
   beneficios_sociais,
+  vicio_itens,
+  vicios_legislativos,
   caixa_disponivel,
   classificados,
   clima_cache,
@@ -2545,6 +2547,64 @@ export async function analisesDeObjetos(
     .where(and(eq(analises.id_municipio, idMunicipio), or(...porObjeto)));
 
   const itens = await itensDeAnalises(
+    idMunicipio,
+    linhas.map((l) => l.id)
+  );
+  return { linhas, itens };
+}
+
+/** Itens (categorias de indício) de um conjunto de vícios da MESMA cidade. */
+export async function itensDeVicios(idMunicipio: IdMunicipio, vicioIds: string[]) {
+  const db = getDb();
+  if (!db || vicioIds.length === 0) return [];
+  return db
+    .select({
+      vicio_id: vicio_itens.vicio_id,
+      categoria: vicio_itens.categoria,
+      dispositivo: vicio_itens.dispositivo,
+      justificativa: vicio_itens.justificativa,
+      trecho: vicio_itens.trecho,
+      confianca: num(vicio_itens.confianca),
+    })
+    .from(vicio_itens)
+    .where(and(eq(vicio_itens.id_municipio, idMunicipio), inArray(vicio_itens.vicio_id, vicioIds)));
+}
+
+/**
+ * Vícios legislativos (indício de inconstitucionalidade) dos objetos que uma
+ * página já vai renderizar — espelho de `analisesDeObjetos` acima, mesma
+ * razão: objeto ausente do retorno é objeto SEM análise de vício (ou sem
+ * indício — as duas coisas renderizam a mesma coisa: nada, ver
+ * `VicioBadge`/`VicioAuditavel`).
+ */
+export async function viciosDeObjetos(
+  idMunicipio: IdMunicipio,
+  ids: { atos?: string[]; proposicoes?: string[] }
+) {
+  const db = getDb();
+  if (!db) return null;
+
+  const porObjeto = [];
+  if (ids.atos?.length) porObjeto.push(inArray(vicios_legislativos.ato_id, ids.atos));
+  if (ids.proposicoes?.length)
+    porObjeto.push(inArray(vicios_legislativos.proposicao_id, ids.proposicoes));
+  if (porObjeto.length === 0) return { linhas: [], itens: [] };
+
+  const linhas = await db
+    .select({
+      id: vicios_legislativos.id,
+      ato_id: vicios_legislativos.ato_id,
+      proposicao_id: vicios_legislativos.proposicao_id,
+      nivel_gravidade: vicios_legislativos.nivel_gravidade,
+      status: vicios_legislativos.status,
+      resumo: vicios_legislativos.resumo,
+      modelo: vicios_legislativos.modelo,
+      versao_rubrica: vicios_legislativos.versao_rubrica,
+    })
+    .from(vicios_legislativos)
+    .where(and(eq(vicios_legislativos.id_municipio, idMunicipio), or(...porObjeto)));
+
+  const itens = await itensDeVicios(
     idMunicipio,
     linhas.map((l) => l.id)
   );

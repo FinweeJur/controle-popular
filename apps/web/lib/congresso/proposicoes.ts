@@ -1,5 +1,6 @@
 import * as q from "@/lib/db/queries/congresso";
 import type { AnaliseItem, Rotulo } from "@/lib/congresso/rubrica";
+import type { NivelGravidade, VicioItem } from "@/lib/congresso/rubrica_vicio";
 
 export interface Proposicao {
   id: string;
@@ -86,7 +87,12 @@ export const POR_PAGINA_PADRAO = 25;
 export async function listarProposicoes(
   filtros: Filtros = {}
 ): Promise<{
-  itens: (Proposicao & { analise: Analise | null; autoria?: q.AutoriaResumo })[];
+  itens: (Proposicao & {
+    analise: Analise | null;
+    /** Só o nível — o detalhamento (categoria/dispositivo/trecho) mora na página da proposição. */
+    vicioNivelGravidade: NivelGravidade | null;
+    autoria?: q.AutoriaResumo;
+  })[];
   total: number;
 } | null> {
   const linhas = await q.paginaDeProposicoes(filtros as q.FiltrosProposicoes);
@@ -95,7 +101,12 @@ export async function listarProposicoes(
   const itens = linhas.map((l) => ({
     ...(l.proposicao as Proposicao),
     analise: (l.analise as Analise | null) ?? null,
-  })) as (Proposicao & { analise: Analise | null; autoria?: q.AutoriaResumo })[];
+    vicioNivelGravidade: (l.vicio_nivel_gravidade as NivelGravidade | null) ?? null,
+  })) as (Proposicao & {
+    analise: Analise | null;
+    vicioNivelGravidade: NivelGravidade | null;
+    autoria?: q.AutoriaResumo;
+  })[];
 
   // Autoria numa segunda query, sobre os ids DESTA página (25). Não dá para
   // vir no mesmo join: uma proposição tem N autores e o join multiplicaria
@@ -113,12 +124,25 @@ export async function listarProposicoes(
   return { itens, total: linhas[0]?.total ?? 0 };
 }
 
+export interface Vicio {
+  id: string;
+  proposicao_id: string;
+  nivel_gravidade: NivelGravidade | null;
+  resumo: string | null;
+  modelo: string | null;
+  versao_rubrica: string | null;
+  status: "ok" | "requer_revisao" | "falhou" | null;
+  criado_em: string | null;
+}
+
 export async function obterProposicao(
   id: string
 ): Promise<{
   proposicao: Proposicao;
   analise: Analise | null;
   itens: AnaliseItem[];
+  vicio: Vicio | null;
+  vicioItens: VicioItem[];
   autores: Autor[];
   /** Autoria de leitura: inclui Poder Executivo, comissões e Senado. */
   autoriaCompleta: Awaited<ReturnType<typeof q.autoriaCompletaDaProposicao>>;
@@ -127,8 +151,9 @@ export async function obterProposicao(
   const prop = await q.obterProposicaoPorId(id);
   if (!prop) return null;
 
-  const [analise, autores, autoriaCompleta, tramitacoes] = await Promise.all([
+  const [analise, vicio, autores, autoriaCompleta, tramitacoes] = await Promise.all([
     q.analiseDaProposicao(id),
+    q.vicioDaProposicao(id),
     q.autoresDaProposicao(id),
     q.autoriaCompletaDaProposicao(id).catch((e) => {
       if ((e as { code?: string }).code === "42P01") return [];
@@ -145,10 +170,17 @@ export async function obterProposicao(
     itens.sort((a, b) => Math.abs(b.peso ?? 0) - Math.abs(a.peso ?? 0));
   }
 
+  let vicioItens: VicioItem[] = [];
+  if (vicio) {
+    vicioItens = (await q.itensDoVicio(vicio.id)) as VicioItem[];
+  }
+
   return {
     proposicao: prop as Proposicao,
     analise: analise as Analise | null,
     itens,
+    vicio: vicio as Vicio | null,
+    vicioItens,
     autores: autores as Autor[],
     autoriaCompleta,
     tramitacoes: tramitacoes as never,

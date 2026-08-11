@@ -1,0 +1,69 @@
+{
+  "versao": "1.0.0",
+  "_nota": "Régua de VÍCIO LEGISLATIVO / indício de inconstitucionalidade — companheira da rubrica garantista (rubrica.json), não substituta. As duas leem o MESMO PL e produzem resultados INDEPENDENTES: um PL pode ampliar direito (garantista) e ainda assim ter vício de iniciativa (vício legislativo). Fonte canônica única, lida por `lib/congresso/rubrica/vicio_legislativo.ts` E por `etl/congresso/etl/rubrica_vicio.py` — não duplicar a taxonomia nos dois lados pelo mesmo motivo do `_nota` de `rubrica.json`.",
+
+  "_nota_indicio": "REGRA INEGOCIÁVEL: nada aqui pode virar veredito. Controle de constitucionalidade é função do Judiciário (STF/TJs) — este app aponta PISTA (categoria + dispositivo citado), nunca declara 'inconstitucional'. Todo `resumo` gravado carrega a ressalva. `nivel_gravidade` usa a palavra 'indício' em todos os valores não-vazios de propósito: não existe rótulo 'inconstitucional' nem 'constitucional' na taxonomia.",
+
+  "_nota_gravidade": "`nivel_gravidade` NÃO vem do modelo — é calculado deterministicamente (`calcular()`, espelho de `rubrica.calcular()`) a partir de `gravidade_base` de cada categoria que sobreviveu à validação. Zero itens válidos = sem_indicio. Um ou mais itens = o maior `gravidade_base` entre eles. O modelo só extrai (categoria + dispositivo + trecho); o app decide o nível, mesma separação que torna a análise garantista auditável.",
+
+  "categorias": {
+    "vicio_iniciativa": {
+      "rotulo": "Vício de iniciativa",
+      "eixos": ["federal", "municipal"],
+      "gravidade_base": "indicio_grave",
+      "descricao": "Matéria de iniciativa privativa do Chefe do Poder Executivo (criação de cargo, aumento de remuneração de servidor, estrutura/organização administrativa, regime jurídico de servidor) proposta por parlamentar ou vereador — não pela Presidência/Prefeitura.",
+      "ancoras": {
+        "federal": ["CF/88, art. 61, §1º, II"],
+        "municipal": ["CF/88, art. 61, §1º, II (aplicado ao município por simetria constitucional)", "Lei Orgânica do Município (dispositivo equivalente — varia por cidade; cite se o texto da proposição indicar, senão cite só a CF)"]
+      }
+    },
+    "vicio_competencia": {
+      "rotulo": "Vício de competência",
+      "eixos": ["municipal", "federal"],
+      "gravidade_base": "indicio_grave",
+      "descricao": "Ente legislando fora da própria esfera constitucional de competência. No eixo municipal é o caso central: Art. 30, I CF só autoriza o município a legislar sobre 'assuntos de interesse local'; Art. 30, II autoriza suplementar legislação federal/estadual 'no que couber'. Município regulando matéria de competência privativa da União (Art. 22 CF — direito civil, penal, processual, trânsito nacional, material bélico etc.) ou invadindo organização de outro ente (ex.: mencionar 'Poder Judiciário' do próprio município, que não existe) tem vício de competência. No eixo federal é mais raro: União extrapolando 'normas gerais' (Art. 24 CF) para dentro da autonomia administrativa de Estado/Município sem gancho constitucional específico.",
+      "ancoras": {
+        "municipal": ["CF/88, art. 30, I", "CF/88, art. 30, II", "CF/88, art. 22 (competência privativa da União, citada por contraste)", "CF/88, art. 24 (competência concorrente, citada por contraste)"],
+        "federal": ["CF/88, art. 22", "CF/88, art. 24", "CF/88, art. 18 (autonomia federativa, citada por contraste)"]
+      }
+    },
+    "inconstitucionalidade_material": {
+      "rotulo": "Inconstitucionalidade material (indício)",
+      "eixos": ["federal", "municipal"],
+      "gravidade_base": "indicio_grave",
+      "descricao": "O CONTEÚDO da norma — não o rito, não quem propôs — contraria a CF (no eixo municipal, também a Constituição Estadual ou a Lei Orgânica do próprio município). Inclui ofensa a direito fundamental do Título II e, POR NÃO HAVER CATEGORIA PRÓPRIA NESTA RÉGUA, também abrange separação de poderes (Art. 2º CF): Legislativo determinando ato de gestão específico do Executivo ou do Judiciário — ex.: câmara municipal exigindo aprovação prévia sua para decisão administrativa rotineira do Executivo.",
+      "ancoras": {
+        "federal": ["CF/88, Título II (arts. 5º a 17)", "CF/88, art. 2º (separação de poderes)"],
+        "municipal": ["CF/88, Título II", "CF/88, art. 2º", "Constituição do Estado", "Lei Orgânica do Município"]
+      }
+    },
+    "vicio_formal": {
+      "rotulo": "Vício formal ou procedimental",
+      "eixos": ["federal", "municipal"],
+      "gravidade_base": "indicio_leve",
+      "descricao": "Quórum errado para o tipo de norma (lei complementar exige maioria absoluta, ordinária maioria simples, PEC 3/5 em dois turnos), rito não observado, ausência de parecer de comissão obrigatória pelo Regimento Interno. NOTA SOBRE CLÁUSULA PÉTREA (Art. 60, §4º CF): só é relevante para PEC tentando abolir voto direto/secreto/universal/periódico, separação de poderes, forma federativa ou direitos e garantias individuais — e mesmo aí o indício correto é DEBATE DOUTRINÁRIO, nunca fato assentado (o próprio STF trata o alcance do art. 60 §4º IV como controverso caso a caso). Para PL comum (não-PEC) que tenta fazer, por lei ordinária, o que só emenda constitucional poderia, o vício é AQUI — instrumento normativo errado — e não 'inconstitucionalidade material por ofensa a cláusula pétrea'.",
+      "ancoras": {
+        "federal": ["CF/88, art. 47 (quórum de lei ordinária)", "CF/88, art. 69 (quórum de lei complementar)", "CF/88, art. 58, §2º (comissões)", "CF/88, art. 60, §2º e §4º (quórum e limite material de PEC)"],
+        "municipal": ["Regimento Interno da Câmara Municipal (quórum/rito/parecer de comissão obrigatório — varia por cidade)", "Lei Orgânica do Município"]
+      }
+    },
+    "contrabando_legislativo": {
+      "rotulo": "Contrabando legislativo (jabuti)",
+      "eixos": ["federal"],
+      "gravidade_base": "indicio_grave",
+      "descricao": "Emenda parlamentar sem pertinência temática com o projeto original — o STF julgou a prática inconstitucional na ADI 5.127. SÓ APLICÁVEL quando há dado de histórico de emendas da proposição. Medido em 2026-08: `congresso.proposicoes` não traz histórico de emendas (não há tabela `emendas` no schema atual) — a categoria fica documentada para quando esse dado existir, e NÃO deve ser aplicada sem ele (um modelo sem acesso ao texto das emendas não tem como avaliar pertinência temática; forçar a categoria aqui seria o mesmo erro que a rubrica garantista evita ao preferir `direitos_afetados` vazio a uma classificação inventada).",
+      "ancoras": {
+        "federal": ["STF, ADI 5.127", "CF/88, art. 65 (processo legislativo bicameral — base do princípio da pertinência temática)"]
+      }
+    }
+  },
+
+  "niveis_gravidade": [
+    { "rotulo": "sem_indicio", "label": "Sem indício" },
+    { "rotulo": "indicio_leve", "label": "Indício leve" },
+    { "rotulo": "indicio_grave", "label": "Indício grave" }
+  ],
+
+  "confianca_minima": 0.5,
+  "_nota_confianca": "Mesmo piso e mesmo efeito da rubrica garantista: item abaixo disso não é descartado, mas joga a análise inteira para `status='requer_revisao'` — um chute de baixa confiança não deve mover o nível de gravidade sozinho."
+}
