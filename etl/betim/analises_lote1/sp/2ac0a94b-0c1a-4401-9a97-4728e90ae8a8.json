@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "idosos residentes em áreas periféricas do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre o Programa dos Cuidadores Públicos, pessoas residentes nas áreas periféricas da Capital, capacitadas e remuneradas pelo Poder Público, para cuidar de idosos também residentes na periferia da Cidade",
+      "confianca": 0.75
+    },
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "moradores das áreas periféricas de São Paulo capacitados como cuidadores públicos"
+      ],
+      "grau": "moderado",
+      "trecho": "pessoas residentes nas áreas periféricas da Capital, capacitadas e remuneradas pelo Poder Público, para cuidar de idosos",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre o Programa dos Cuidadores Públicos em São Paulo, no qual pessoas residentes em áreas periféricas são capacitadas e remuneradas pelo Poder Público para cuidar de idosos também residentes na periferia da cidade. O programa combina capacitação profissional remunerada com cuidado à população idosa."
+}

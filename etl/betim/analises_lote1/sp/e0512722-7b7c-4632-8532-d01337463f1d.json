@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 216",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "artistas circenses e patrimônio cultural imaterial do Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Declara o circo patrimônio Cultural Imaterial da Cidade de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei declara o circo patrimônio cultural imaterial da Cidade de São Paulo. É ato declaratório de reconhecimento e proteção cultural."
+}

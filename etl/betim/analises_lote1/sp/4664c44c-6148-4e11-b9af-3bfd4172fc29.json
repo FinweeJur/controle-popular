@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas idosas do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Autoriza a implantar o Programa Municipal de Alfabetização de Comunicação Digital da Pessoa Idosa do Município de São Paulo",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza a implantação do Programa Municipal de Alfabetização de Comunicação Digital da Pessoa Idosa em São Paulo, voltado à inclusão digital de idosos."
+}

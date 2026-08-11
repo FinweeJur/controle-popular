@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população e comerciantes das regiões da Lapa, Pompeia e Barra Funda, em São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Autoriza a criação do Programa do Polo Cultural, Gastronômico e Turístico Lapa- Pompeia-Barra Funda",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza a criação do Programa do Polo Cultural, Gastronômico e Turístico Lapa-Pompeia-Barra Funda, em São Paulo. É programa de fomento cultural e turístico regional."
+}

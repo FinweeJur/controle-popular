@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "mulheres com endometriose atendidas pelo SUS no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Estabelece diretrizes para o atendimento integral à mulher no Sistema Único de Saúde (SUS), no Município de São Paulo, com foco na endometriose",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estabelece diretrizes para o atendimento integral à mulher no SUS no Município de São Paulo, com foco na endometriose. Cria orientações específicas de política pública de saúde voltadas ao diagnóstico e tratamento dessa condição na rede municipal."
+}

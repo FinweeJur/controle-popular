@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "estudantes da rede pública municipal de ensino de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Autoriza a criação do Programa Formatura Legal, com o objetivo de custear as festas de formatura dos jovens estudantes da rede pública municipal de ensino",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza a criação do Programa Formatura Legal, destinado a custear as festas de formatura de estudantes da rede pública municipal de ensino de São Paulo. É benefício estudantil de caráter extracurricular financiado pelo poder público."
+}

@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com deficiência acompanhadas de cães de assistência em São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "assegurar e ampliar o direito de ingresso e permanência de pessoas com deficiência acompanhadas de cães de assistência em locais de uso público ou privado no Município de São Paulo",
+      "confianca": 0.85
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 16.518/2016"
+  ],
+  "resumo_neutro": "A lei altera a Lei Municipal nº 16.518/2016 para assegurar e ampliar o direito de ingresso e permanência de pessoas com deficiência acompanhadas de cães de assistência em locais de uso público ou privado no Município de São Paulo."
+}
