@@ -1294,6 +1294,18 @@ export const cap_autos_infracao = pgTable("cap_autos_infracao", {
 ]);
 
 /**
+ * Catálogo de referência: as 853 cidades de MG (+ grandfather de cidade do
+ * portal fora de MG), migration `0057_ref_municipios_mg.sql`. Existe só para
+ * NORMALIZAR o município que `feam_barragens`/`snisb_barragens` gravam
+ * contra um código IBGE estável — não é o cadastro de cidades do portal
+ * (`municipios`, 6 linhas, branding/geojson/fontes de ETL por cidade).
+ */
+export const ref_municipios_mg = pgTable("ref_municipios_mg", {
+	id_ibge: text().primaryKey().notNull(),
+	nome: text().notNull(),
+});
+
+/**
  * Barragens do cadastro nacional (SNISB/ANA), via
  * `etl/betim/etl/apis/snisb_barragens.py`, migration 0049.
  *
@@ -1334,9 +1346,13 @@ export const snisb_barragens = pgTable("snisb_barragens", {
 }, (table) => [
 	index("snisb_barragens_municipio_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops")),
 	index("snisb_barragens_risco_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.categoria_risco.asc().nullsLast().op("text_ops")),
+	// A FK real aponta para `ref_municipios_mg.id_ibge` desde a migration
+	// 0057 (trocada de `municipios`, que travava barragem de fora das 6
+	// cidades do portal — ver a docstring daquela migration). Corrigido
+	// aqui em 2026-08-11 porque este arquivo tinha ficado com o alvo velho.
 	foreignKey({
 			columns: [table.id_municipio],
-			foreignColumns: [municipios.id_municipio],
+			foreignColumns: [ref_municipios_mg.id_ibge],
 			name: "snisb_barragens_id_municipio_fkey"
 		}).onDelete("cascade"),
 	unique("snisb_barragens_id_municipio_codigo_snisb_key").on(table.id_municipio, table.codigo_snisb),
@@ -1388,9 +1404,11 @@ export const feam_barragens = pgTable("feam_barragens", {
 	index("feam_barragens_municipio_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops")),
 	index("feam_barragens_emergencia_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.nivel_emergencia.desc().nullsFirst().op("int4_ops")),
 	index("feam_barragens_metodo_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.metodo_construtivo.asc().nullsLast().op("text_ops")),
+	// Ver a nota equivalente em `snisb_barragens`, acima: FK real é
+	// `ref_municipios_mg.id_ibge` desde a migration 0057.
 	foreignKey({
 			columns: [table.id_municipio],
-			foreignColumns: [municipios.id_municipio],
+			foreignColumns: [ref_municipios_mg.id_ibge],
 			name: "feam_barragens_id_municipio_fkey"
 		}).onDelete("cascade"),
 	unique("feam_barragens_id_municipio_nome_key").on(table.id_municipio, table.nome),
