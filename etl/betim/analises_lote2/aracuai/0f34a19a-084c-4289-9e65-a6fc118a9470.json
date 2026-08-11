@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "alunos e comunidade escolar das instituições de ensino públicas e privadas de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "POLÍTICA MUNICIPAL DE PREVENÇÃO E SEGURANÇA ESCOLAR NAS INSTITUIÇÕES PÚBLICAS E PRIVADAS DE ENSINO DO MUNICÍPIO DE ARAÇUAÍ-MG",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal de Prevenção e Segurança Escolar nas instituições públicas e privadas de ensino de Araçuaí."
+}

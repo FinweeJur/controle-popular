@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "mulheres atendidas em estabelecimentos de saúde públicos e privados de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "DIREITO DE TODA MULHER A TER ACOMPANHANTE, PESSOA DE SUA ESCOLHA, NAS CONSULTAS MÉDICAS, EXAMES E DEMAIS PROCEDIMENTOS CLÍNICOS, INCLUSIVE OS GINECOLÓGICOS",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei assegura a toda mulher o direito de ter acompanhante de sua escolha durante consultas médicas, exames e demais procedimentos clínicos, inclusive ginecológicos, em estabelecimentos públicos e privados de saúde do município. Cria uma garantia específica para o atendimento de saúde de mulheres em Araçuaí."
+}

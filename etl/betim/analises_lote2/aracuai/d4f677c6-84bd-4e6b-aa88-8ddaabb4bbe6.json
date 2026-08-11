@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças atendidas nas unidades de saúde e creches municipais de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "TRIAGEM PRECOCE PARA DIAGNÓSTICO DO TRANSTORNO DO ESPECTRO DO AUTISMO (TEA) NAS UNIDADES DE SAÚDE E CRECHES MUNICIPAIS DE ARAÇUAÍ, ATRAVÉS DA APLICAÇÃO DO QUESTIONÁRIO M-CHAT",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a triagem precoce para diagnóstico do Transtorno do Espectro do Autismo (TEA) nas unidades de saúde e creches municipais de Araçuaí, por meio da aplicação do questionário M-CHAT. Cria mecanismo de rastreamento que amplia o acesso ao diagnóstico precoce."
+}

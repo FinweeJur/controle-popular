@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "servidores públicos municipais de Araçuaí que exercem funções relacionadas à aplicação da Lei Federal nº 14.133/2021"
+      ],
+      "grau": "marginal",
+      "trecho": "CONCEDE GRATIFICAÇÃO PARA O EXERCÍCIO DE FUNÇÕES EM ATENDIMENTO À NOVA LEI DE LICITAÇÃO LEI FEDERAL 14.133/2021",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei concede gratificação aos servidores municipais de Araçuaí pelo exercício de funções relacionadas à aplicação da nova Lei Federal de Licitações nº 14.133/2021."
+}
