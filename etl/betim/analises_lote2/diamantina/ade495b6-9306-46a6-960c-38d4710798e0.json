@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças em idade de educação infantil e estudantes da rede municipal de ensino de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "criação de Escola Municipal e centros de Educação Infantil na rede Municipal de Ensino",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a criação de Escola Municipal e de centros de Educação Infantil na rede municipal de ensino de Diamantina."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "comunidade atendida pelo Centro de Apoio Sócio-Cultural e Artístico Real"
+      ],
+      "grau": "marginal",
+      "trecho": "conceder ajuda fiananceira ao Centro de Apoio Sócio-Cultural e Artístico Real para os fins que especifica",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o município de Diamantina a conceder ajuda financeira ao Centro de Apoio Sócio-Cultural e Artístico Real, para os fins que especifica."
+}
