@@ -3,6 +3,7 @@ import Link from "@/lib/betim/link";
 import { MapPin } from "lucide-react";
 import { paginasDados } from "@/lib/betim/dadosNav";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { temFonte } from "@/lib/db/queries/municipios";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
 // reconhecido pelo Turbopack. Ver `lib/betim/staticParams.ts`.
@@ -49,25 +50,29 @@ export default async function DadosPage({
         ))}
       </section>
 
-      <h2 className="mt-12 font-display text-lg font-semibold text-text">
-        Regiões da cidade
-      </h2>
-      <section className="mt-4 grid gap-4 sm:grid-cols-2">
-        <Link
-          href="/citrolandia"
-          className="cp-card-hover flex items-start gap-4 rounded-2xl border border-border bg-surface p-5 shadow-sm hover:border-primary"
-        >
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <MapPin size={20} strokeWidth={2} aria-hidden="true" />
-          </span>
-          <div>
-            <p className="font-display font-semibold text-text">Citrolândia</p>
-            <p className="mt-1 text-sm text-text-soft">
-              Bairros da regional, negócios locais, farmácias e postos
-            </p>
-          </div>
-        </Link>
-      </section>
+      {temFonte(cidade, "citrolandia") && (
+        <>
+          <h2 className="mt-12 font-display text-lg font-semibold text-text">
+            Regiões da cidade
+          </h2>
+          <section className="mt-4 grid gap-4 sm:grid-cols-2">
+            <Link
+              href="/citrolandia"
+              className="cp-card-hover flex items-start gap-4 rounded-2xl border border-border bg-surface p-5 shadow-sm hover:border-primary"
+            >
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <MapPin size={20} strokeWidth={2} aria-hidden="true" />
+              </span>
+              <div>
+                <p className="font-display font-semibold text-text">Citrolândia</p>
+                <p className="mt-1 text-sm text-text-soft">
+                  Bairros da regional, negócios locais, farmácias e postos
+                </p>
+              </div>
+            </Link>
+          </section>
+        </>
+      )}
     </main>
   );
 }

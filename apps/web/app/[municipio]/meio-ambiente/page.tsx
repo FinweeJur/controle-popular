@@ -15,11 +15,17 @@ export const generateMetadata = metadataDaCidade(
   (c) => `O que existe de fonte pública sobre meio ambiente na região de ${c.nome}-${c.uf}: barragens de mineração, compensação ambiental e TACs.`
 );
 
-// FONTES DE MINAS GERAIS. Todas as três são estaduais (MPMG, SEMAD/MG) e a
-// primeira cita municípios limítrofes de Betim pelo nome. Servi-las a São
-// Paulo seria pior que não ter a seção: são órgãos que não têm competência
-// sobre a cidade. A lista só é exibida quando a cidade declara
-// `fontes.links_uteis_mg`, o mesmo sinal que governa `/links-uteis-mg`.
+// FONTES DE MINAS GERAIS. Todas as três são estaduais (MPMG, SEMAD/MG).
+// Servi-las a São Paulo seria pior que não ter a seção: são órgãos que não
+// têm competência sobre a cidade. A lista só é exibida quando a cidade
+// declara `fontes.links_uteis_mg`, o mesmo sinal que governa
+// `/links-uteis-mg`.
+//
+// CORRIGIDO EM 2026-08-11 — a primeira fonte citava "Igarapé, Itatiaiuçu e
+// Sarzedo" como municípios limítrofes por nome. Isso é verdade só para
+// Betim; a mesma FONTES[] é servida pra qualquer cidade de MG (Araçuaí, BH,
+// Itinga...), então o texto generalizou pra não nomear vizinhos que não
+// existem pra essas cidades. Achado pela auditoria de 2026-08-11.
 //
 // CORRIGIDO EM 2026-08-09 — o comentário anterior dizia "nenhuma fonte
 // encontrada tem API/dataset aberto por município", com base na pesquisa de
@@ -33,7 +39,7 @@ export const generateMetadata = metadataDaCidade(
 const FONTES = [
   {
     nome: "Barragens a montante na região — MPMG",
-    desc: '"Desativando Bombas-Relógio": 54 barragens erguidas pelo método mais arriscado (o mesmo de Mariana e Brumadinho), monitoradas em Minas Gerais. Nenhuma está dentro de Betim, mas 3 municípios que fazem fronteira direta com Betim aparecem na lista: Igarapé, Itatiaiuçu e Sarzedo — risco regional real (bacia hidrográfica compartilhada, rotas de evacuação).',
+    desc: '"Desativando Bombas-Relógio": 54 barragens erguidas pelo método mais arriscado (o mesmo de Mariana e Brumadinho), monitoradas em Minas Gerais. Mesmo sem barragem dentro do município, um vizinho pode aparecer na lista — risco regional real (bacia hidrográfica compartilhada, rotas de evacuação).',
     href: "https://barragens.mpmg.mp.br/",
     cta: "Ver mapa de barragens",
   },

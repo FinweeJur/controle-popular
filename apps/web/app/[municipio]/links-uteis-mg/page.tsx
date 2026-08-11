@@ -37,7 +37,7 @@ const TEMAS: Tema[] = [
     links: [
       {
         nome: "Desativando Bombas-Relógio (MPMG)",
-        desc: "Situação das barragens de mineração em MG. Nenhuma em Betim, mas Igarapé, Itatiaiuçu e Sarzedo (limítrofes) aparecem na lista.",
+        desc: "Situação das barragens de mineração em MG, incluindo as erguidas pelo método mais arriscado (o mesmo de Mariana e Brumadinho). Vale conferir se algum município vizinho ao seu aparece na lista.",
         href: "https://barragens.mpmg.mp.br/",
         status: "Página institucional, sem API — dados em HTML",
       },
