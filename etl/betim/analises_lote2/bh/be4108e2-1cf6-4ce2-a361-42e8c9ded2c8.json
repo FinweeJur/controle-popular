@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoa idosa do Município de Belo Horizonte"
+      ],
+      "grau": "marginal",
+      "trecho": "Determina a disponibilização, nos sites oficiais dos poderes públicos do Município, dos serviços municipais à disposição da pessoa idosa.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A proposição determina que os sites oficiais dos poderes públicos do Município de Belo Horizonte disponibilizem informação sobre os serviços municipais à disposição da pessoa idosa. Não altera nenhum serviço em si, apenas cria obrigação de divulgação."
+}

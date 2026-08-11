@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "parturientes de natimorto atendidas em unidades de saúde credenciadas ao SUS e na rede privada do Município de Belo Horizonte"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre direito da parturiente de natimorto ser internada em área específica, quando disponível, separada das demais parturientes, nas unidades de saúde credenciadas ao SUS e na rede privada de saúde no Município.",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei assegura à parturiente de natimorto o direito de ser internada, quando disponível, em área específica separada das demais parturientes, nas unidades de saúde credenciadas ao SUS e na rede privada de saúde do Município de Belo Horizonte."
+}

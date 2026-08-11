@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "profissionais de enfermagem da rede municipal de saúde de Belo Horizonte"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Parcela Complementar do Piso da Enfermagem e dá outras providências.",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Parcela Complementar do Piso da Enfermagem para os profissionais de enfermagem da rede municipal de saúde de Belo Horizonte."
+}

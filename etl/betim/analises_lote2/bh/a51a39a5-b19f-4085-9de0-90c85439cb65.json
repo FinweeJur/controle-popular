@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "criminaliza_violacao",
+      "titulares": [
+        "população usuária de serviços que exigem comprovação vacinal no Município de Belo Horizonte"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui sanção administrativa de multa para a pessoa que for flagrada confeccionando, portando ou utilizando falso comprovante de vacinação.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui sanção administrativa de multa para quem for flagrado confeccionando, portando ou utilizando falso comprovante de vacinação no Município de Belo Horizonte."
+}
