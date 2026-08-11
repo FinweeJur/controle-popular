@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 1º, parágrafo único",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "conselheiros membros dos conselhos municipais de Araçuaí"
+      ],
+      "grau": "marginal",
+      "trecho": "CONCEDER AJUDA DE CUSTO AOS CONSELHEIROS MEMBROS DOS CONSELHOS MUNICIPAIS DO MUNICÍPIO DE ARAÇUAÍ",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Chefe do Poder Executivo a conceder ajuda de custo aos conselheiros membros dos conselhos municipais de Araçuaí."
+}

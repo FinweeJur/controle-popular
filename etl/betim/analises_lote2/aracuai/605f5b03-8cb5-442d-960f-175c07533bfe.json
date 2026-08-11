@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pacientes em tratamento de quimioterapia, radioterapia, hemodiálise ou usuários de bolsa de colostomia no município de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "DISPÕE SOBRE A DETERMINAÇÃO DE PRIORIDADE DE ATENDIMENTO PARA PACIENTES QUE REALIZAM TRATAMENTO DE QUIMIOTERAPIA, RADIOTERAPIA, HEMODIÁLISE OU UTILIZAM BOLSA DE COLOSTOMIA",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estabelece prioridade de atendimento para pacientes em tratamento de quimioterapia, radioterapia, hemodiálise ou usuários de bolsa de colostomia no município de Araçuaí."
+}

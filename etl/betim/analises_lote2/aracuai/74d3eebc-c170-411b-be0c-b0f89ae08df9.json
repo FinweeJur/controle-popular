@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "igualdade_nao_discriminacao",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "estudantes da rede municipal de ensino de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "DISPÕE SOBRE A IMPLEMENTAÇÃO DO PROGRAMA “ESCOLA SEM NAZISMO“ NO ÂMBITO DAS ESCOLAS DA REDE MUNICIPAL DE ARAÇUAÍ",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o programa 'Escola Sem Nazismo' nas escolas da rede municipal de ensino de Araçuaí, voltado a combater ideologias discriminatórias no ambiente escolar."
+}
