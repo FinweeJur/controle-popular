@@ -1,0 +1,23 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "neutro",
+      "mecanismo": "",
+      "titulares": [
+        "pessoas com deficiência",
+        "pessoas com mobilidade reduzida"
+      ],
+      "grau": "marginal",
+      "trecho": "Altera a Lei nº 11.416/22, que institui a Lei Municipal de Inclusão da Pessoa com Deficiência e da Pessoa com Mobilidade Reduzida",
+      "confianca": 0.3
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 11.416/2022"
+  ],
+  "resumo_neutro": "A lei altera a Lei Municipal nº 11.416/2022, que institui a Lei Municipal de Inclusão da Pessoa com Deficiência e da Pessoa com Mobilidade Reduzida, em Belo Horizonte. A ementa não especifica o teor da alteração, não sendo possível determinar se amplia ou restringe direitos da pessoa com deficiência."
+}

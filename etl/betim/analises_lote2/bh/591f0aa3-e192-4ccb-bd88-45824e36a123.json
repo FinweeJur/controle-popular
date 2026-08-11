@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "neutro",
+      "mecanismo": "",
+      "titulares": [
+        "usuários e dependentes de drogas"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre os procedimentos para o tratamento do usuário ou dependente de drogas em uma rede de atenção à saúde no Município",
+      "confianca": 0.45
+    },
+    {
+      "direito": "devido_processo_ampla_defesa",
+      "dispositivo": "CF/88, art. 5º, LIV",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "dependentes de drogas submetidos a internação"
+      ],
+      "grau": "moderado",
+      "trecho": "internação voluntária e involuntária de dependente de drogas, nos termos da Lei Federal nº 11.343/06",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre os procedimentos para o tratamento do usuário ou dependente de drogas na rede municipal de atenção à saúde de Belo Horizonte, e sobre a internação voluntária e involuntária de dependente de drogas, nos termos da Lei Federal nº 11.343/06. É regulamentação local de política de saúde já disciplinada em lei federal."
+}

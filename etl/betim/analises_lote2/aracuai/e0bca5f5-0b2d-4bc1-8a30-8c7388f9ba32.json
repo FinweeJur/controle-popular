@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "Lei 12.527/2011 (LAI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do município",
+        "órgãos de controle"
+      ],
+      "grau": "marginal",
+      "trecho": "OBRIGATORIEDADE DE AMPLA E IMEDIATA PRESTAÇÃO DE CONTAS DOS RECURSOS FINANCEIROS REPASSADOS NA FORMA DA LEI ESTADUAL Nº 23.830",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a obrigatoriedade de ampla e imediata prestação de contas dos recursos financeiros repassados na forma da Lei Estadual nº 23.830/2021. Cria dever de transparência sobre recursos públicos recebidos pelo município."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "propriedade_funcao_social",
+      "dispositivo": "CF/88, art. 5º, XXIII",
+      "direcao": "restringe",
+      "mecanismo": "transfere_onus_ao_titular",
+      "titulares": [
+        "proprietários de imóveis urbanos"
+      ],
+      "grau": "marginal",
+      "trecho": "MANUTENÇÃO DA LIMPEZA DE IMÓVEIS URBANOS NO MUNICÍPIO DE ARAÇUAÍ",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estabelece normas destinadas à manutenção da limpeza de imóveis urbanos no município de Araçuaí, impondo obrigação de conservação ao proprietário do imóvel. É exercício do poder de polícia municipal sobre o uso da propriedade urbana, sem alterar lei anterior citada na ementa."
+}
