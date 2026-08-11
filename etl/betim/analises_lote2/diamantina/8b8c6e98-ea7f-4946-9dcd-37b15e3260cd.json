@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 5º, XXXIII",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do Município de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "OBRIGATORIEDADE, NO ÂMBITO MUNICIPAL, DA DIVULGAÇÃO DE INFORMAÇÕES SOBRE OBRAS PÚBLICAS PARALISADAS",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei obriga o Poder Executivo municipal a divulgar informações sobre obras públicas paralisadas em Diamantina, ampliando a transparência sobre a execução orçamentária de obras."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "Lei 8.078/1990 (CDC)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "consumidores de combustíveis automotivos no Município de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "Torna obrigatória a expressão com 2 (duas) casas decimais, no painel de preços e nas bombas medidoras, dos preços por litro de todos os combustíveis automotivos comercializados no munícipio.",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei torna obrigatória a exibição do preço por litro dos combustíveis automotivos com duas casas decimais nos painéis de preços e bombas medidoras no Município de Diamantina."
+}

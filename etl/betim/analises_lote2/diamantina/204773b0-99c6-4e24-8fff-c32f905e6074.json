@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "comunidade escolar das escolas estaduais de ensino fundamental de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade consulta prévia á comunidade escolar e de aprovação do poder legislativo para fns de Municipalização do ensino",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei condiciona a municipalização do ensino fundamental das escolas estaduais de Diamantina à realização de consulta prévia à comunidade escolar e à aprovação do Poder Legislativo municipal, criando uma exigência procedimental para essa transferência de competência."
+}

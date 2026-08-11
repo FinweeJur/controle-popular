@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população em geral e usuários de espaços públicos e transporte coletivo do Município de Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "USO GERAL E OBRIGATÓRIO DE MÁSCARA OU COBERTURA FACIAL SOBRE O NARIZ E A BOCA NOS ESPAÇOS PÚBLICOS, EQUIPAMENTOS DE TRANSPORTE COLETIVO E ESTABELECIMENTO COMERCIAIS E DE SERVIÇOS.",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei torna obrigatório o uso de máscara ou cobertura facial sobre nariz e boca em espaços públicos, no transporte coletivo e em estabelecimentos comerciais e de serviços do Município, como medida de enfrentamento à pandemia."
+}

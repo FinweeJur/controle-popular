@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 212-A",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "membros e beneficiários do Conselho Municipal de Acompanhamento e Controle Social do FUNDEB (CACS-FUNDEB) em Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "REESTRUTURAÇÃO DO CONSELHO MUNICIPAL DE ACOMPANHAMENTO E CONTROLE SOCIAL DO FUNDO DE MANUTENÇÃO E DESENVOLVIMENTO DA EDUCAÇÃO BÁSICA E DE VALORIZAÇÃO DOS PROFISSIONAIS DA EDUCAÇÃO - CACS-FUNDEB",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei reestrutura o Conselho Municipal de Acompanhamento e Controle Social do FUNDEB (CACS-FUNDEB) em Diamantina, em conformidade com o art. 212-A da Constituição Federal e a Lei Federal nº 14.113/2020."
+}
