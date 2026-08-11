@@ -20,6 +20,19 @@ export function formatCNPJ(cnpj: string): string {
 }
 
 /**
+ * Formats an 8-digit CNPJ ROOT (`ambiental_licenciamento.cnpj_raiz`) as
+ * "00.000.000/****-**" — the trailing filial+DV are masked, never shown,
+ * because the source itself never published them for most of these rows
+ * (see `etl/betim/etl/apis/ambiental_licenciamento.py`). Formatting the
+ * root like a real CNPJ prefix without inventing the missing digits.
+ */
+export function formatCNPJRaiz(raiz: string): string {
+  const d = (raiz ?? "").replace(/\D/g, "");
+  if (d.length !== 8) return raiz ?? "—";
+  return `${d.slice(0, 2)}.${d.slice(2, 5)}.${d.slice(5, 8)}/****-**`;
+}
+
+/**
  * Formats a Postgres `date` string ("YYYY-MM-DD", no time component) as
  * dd/mm/yyyy; returns "—" for null/invalid input.
  *

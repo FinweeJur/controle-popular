@@ -2,6 +2,7 @@ import Link from "@/lib/ambiental/link";
 import { ZONAS } from "@/lib/zonas";
 import { formatNumberBR } from "@/lib/betim/format";
 import { contarReunioesCopam } from "@/lib/db/queries/copam";
+import { contarLicenciamento } from "@/lib/db/queries/ambiental-licenciamento";
 
 /**
  * Home da zona /ambiental.
@@ -20,12 +21,24 @@ import { contarReunioesCopam } from "@/lib/db/queries/copam";
  * ficou real (`etl.apis.copam_reunioes`, migration `0058`): agora o número
  * vem do banco, com o verbo no passado ("coletadas"), e o bloco é um link
  * de verdade para `/ambiental/copam` — não mais só uma promessa de fase.
+ *
+ * ═══ F4 (LICENCIAMENTO) SAIU DE "EM BREVE" PARA TELA REAL ═══
+ *
+ * Mesma disciplina do bloco do COPAM acima: até aqui o card de
+ * Licenciamento anunciava "19.162 licenças" como texto fixo — o número que
+ * a FONTE publicava em 2026-08-07, não o que este portal tinha coletado
+ * (zero). Com o coletor rodando (`etl.apis.ambiental_licenciamento`,
+ * migration `0063`), o número vem do banco e o bloco vira link de verdade
+ * para `/ambiental/licenciamento`.
  */
 
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
 
 export default async function AmbientalHome() {
-  const { reunioes, itens } = await contarReunioesCopam();
+  const [{ reunioes, itens }, { total: totalLicencas }] = await Promise.all([
+    contarReunioesCopam(),
+    contarLicenciamento(),
+  ]);
 
   const BLOCOS = [
     {
@@ -39,15 +52,20 @@ export default async function AmbientalHome() {
       fase: "F3",
       href: "/copam",
       pronta: reunioes > 0,
+      linkRotulo: "Ver a pauta →",
     },
     {
       titulo: "Licenciamento",
-      linha: "A fonte publica 19.162 licenças emitidas",
+      linha:
+        totalLicencas > 0
+          ? `${formatNumberBR(totalLicencas)} licenças deferidas coletadas`
+          : "A fonte publica 19.713 licenças deferidas — coleta ainda não rodou",
       texto:
-        "Filtro por município, empresa, setor do empreendimento, modalidade, classe, potencial poluidor e período. O setor vem da própria Deliberação Normativa Copam 217/2017, não de uma classificação inventada aqui.",
+        "Filtro por município, setor do empreendimento, modalidade e classe de risco. O setor vem da própria Deliberação Normativa Copam 217/2017, não de uma classificação inventada aqui.",
       fase: "F4",
-      href: null,
-      pronta: false,
+      href: "/licenciamento",
+      pronta: totalLicencas > 0,
+      linkRotulo: "Ver as licenças →",
     },
     {
       titulo: "Barragens",
@@ -57,6 +75,7 @@ export default async function AmbientalHome() {
       fase: "F5",
       href: null,
       pronta: false,
+      linkRotulo: null,
     },
     {
       titulo: "Legislação ambiental",
@@ -66,6 +85,7 @@ export default async function AmbientalHome() {
       fase: "F6",
       href: null,
       pronta: false,
+      linkRotulo: null,
     },
   ];
 
@@ -85,9 +105,9 @@ export default async function AmbientalHome() {
           className="max-w-2xl rounded-lg border px-4 py-3 text-[.95em]"
           style={{ borderColor: ZONA.cor }}
         >
-          <strong>Seção em construção, por fase.</strong> A pauta do COPAM (F3) já tem tela real,
-          abaixo. Licenciamento, barragens estaduais e legislação seguem com fonte verificada e
-          documentada, tela ainda não.
+          <strong>Seção em construção, por fase.</strong> A pauta do COPAM (F3) e o licenciamento
+          ambiental (F4) já têm tela real, abaixo. Barragens estaduais e legislação seguem com
+          fonte verificada e documentada, tela ainda não.
         </p>
       </header>
 
@@ -107,7 +127,7 @@ export default async function AmbientalHome() {
               <p className="mt-2 flex-1 text-[.92em] text-text-soft">{b.texto}</p>
               {b.pronta && b.href ? (
                 <p className="mt-3 text-[.85em] font-semibold" style={{ color: ZONA.cor }}>
-                  Ver a pauta →
+                  {b.linkRotulo}
                 </p>
               ) : null}
             </>
