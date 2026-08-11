@@ -135,6 +135,45 @@
   --cp-chart-grid: #000000;
 }
 
+/* Paleta segura para daltonismo (deuteranopia/protanopia/tritanopia) --
+   ativada por `data-cvd="on"` em <html> (ver `CvdToggle.tsx`), independente
+   de Claro/Escuro/Alto contraste, o mesmo motivo de `data-fs` ser seu
+   próprio atributo em vez de virar uma quarta opção do ThemeSwitcher.
+
+   Só troca --cp-accent/--cp-accent-ink/--cp-alert: é o par verde/vermelho
+   que carrega significado sozinho hoje (alerta de contrato "violação legal"
+   vs. "heurística", selo garantista/reducionista, voto sim/não) -- os
+   outros tokens (--cp-primary, a rampa --cp-ord-1..4 do gráfico ordinal,
+   --cp-secondary/--cp-tertiary de identidade de zona) não formam par
+   binário de status e já passam CVD sem precisar de substituto (ver
+   comentário da rampa --cp-ord acima).
+
+   Valores emprestados do par azul/laranja já validado pela skill dataviz
+   (`references/palette.md`, slots 1-2 do tema categórico) — reafirmados
+   aqui contra a surface REAL de cada tema deste site com
+   `scripts/validate_palette.js "<azul>,<laranja>" --mode <tema> --surface
+   <cor>`: CVD ΔE 27,1 (protan) claro / 26,8 (protan) escuro -- bem acima do
+   alvo 8, e nenhum "WARN" de contraste. O par de alto contraste é próprio
+   (não vem da skill): mais escuro para bater o piso de 7:1 do tema, mesma
+   régua que --cp-secondary/--cp-tertiary já seguem ali. */
+[data-cvd="on"] {
+  --cp-accent: #2a78d6; /* azul -- 4,42:1 sobre a surface clara */
+  --cp-accent-ink: #ffffff;
+  --cp-alert: #c74e00; /* laranja-avermelhado -- 4,65:1 sobre a surface clara */
+}
+
+[data-theme="dark"][data-cvd="on"] {
+  --cp-accent: #3987e5; /* 4,69:1 sobre a surface escura */
+  --cp-accent-ink: #06111f;
+  --cp-alert: #d95926; /* 4,39:1 sobre a surface escura */
+}
+
+[data-theme="high-contrast"][data-cvd="on"] {
+  --cp-accent: #004c77; /* 9,13:1 sobre branco */
+  --cp-accent-ink: #ffffff;
+  --cp-alert: #8f3000; /* 8,11:1 sobre branco */
+}
+
 [data-fs="sm"] {
   --cp-tscale: 0.9;
 }

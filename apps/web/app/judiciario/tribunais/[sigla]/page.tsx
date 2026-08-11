@@ -340,10 +340,14 @@ export default async function TribunalPage({
                       <span className="font-tabular opacity-60">{fmtData(n.data_deliberacao)}</span>
                     </div>
                     {n.resultado && (
+                      // Era `var(--cp-danger, #b91c1c)` -- nunca definida
+                      // em globals.css, caía sempre no fallback: cor fixa
+                      // em todo tema e fora do alcance da paleta segura
+                      // para daltônicos. `text-alert` é o token que existe.
                       <p
                         className={
                           n.resultado === "rejeitado_plenario"
-                            ? "text-xs font-medium text-[var(--cp-danger,#b91c1c)]"
+                            ? "text-xs font-medium text-alert"
                             : "text-xs opacity-60"
                         }
                       >

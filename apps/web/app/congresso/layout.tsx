@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/lib/congresso/link";
 import ThemeSwitcher from "@/app/congresso/components/ThemeSwitcher";
 import FontSizeControl from "@/app/congresso/components/FontSizeControl";
+import CvdToggle from "@/app/components/CvdToggle";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
 
 /**
@@ -84,6 +85,7 @@ export default function CongressoLayout({
             </a>
             <FontSizeControl />
             <ThemeSwitcher />
+            <CvdToggle />
           </div>
         </div>
         {/* Barra de busca/assistente em faixa própria, largura inteira: no

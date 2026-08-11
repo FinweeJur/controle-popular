@@ -52,7 +52,14 @@ export default function MapaTerrasPage() {
         </div>
       </header>
 
-      <GloboIframe />
+      {/* <main> em vez do <iframe> solto: dá um alvo semântico à página
+          (antes não tinha nenhum), embora não haja texto para o botão
+          global de "Ouvir esta página" ler aqui -- o conteúdo é o globo
+          3D dentro do iframe, opaco a extração de texto do documento pai.
+          O botão detecta o <main> vazio e some sozinho nesta página. */}
+      <main className="flex-1">
+        <GloboIframe />
+      </main>
     </div>
   );
 }

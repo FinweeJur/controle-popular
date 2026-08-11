@@ -47,7 +47,12 @@ export default async function BuscaPage() {
   const cidades = await listarCidades();
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+    // Era <div>: /busca não tem layout.tsx próprio (fica fora das quatro
+    // zonas, ver o comentário acima), então era a única página do portal
+    // sem <main> nenhum -- o botão global de "Ouvir esta página"
+    // (`OuvirPagina.tsx`) lê o `<main>`, e sem a tag a página inteira ficava
+    // fora do alcance dele.
+    <main className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
       <nav className="mb-4 text-sm text-text-soft">
         <a href="/" className="hover:text-primary">
           Início
@@ -65,6 +70,6 @@ export default async function BuscaPage() {
       </header>
 
       <BuscaClient cidades={cidades} />
-    </div>
+    </main>
   );
 }
