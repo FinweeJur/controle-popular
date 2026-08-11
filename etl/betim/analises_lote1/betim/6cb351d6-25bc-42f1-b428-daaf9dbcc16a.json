@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "Lei 8.069/1990 (ECA)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "crianças e adolescentes em tratamento oncológico e de enfermidades correlacionadas em Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre a Instituição do Programa Municipal de apoio a oncologia infantil e enfermidades correlacionadas - pro- oncologia infantil municipal e dá outras providências.",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Apoio à Oncologia Infantil e Enfermidades Correlacionadas no Município de Betim."
+}

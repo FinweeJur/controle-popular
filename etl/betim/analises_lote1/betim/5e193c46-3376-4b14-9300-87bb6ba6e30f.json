@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do Município de Betim, com foco na saúde mental"
+      ],
+      "grau": "moderado",
+      "trecho": "Cria o observatório Municipal da saúde Mental no Municipal  de Betim",
+      "confianca": 0.65
+    },
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "Lei 8.069/1990 (ECA)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "crianças e adolescentes do Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "com o foco na proteção da criança e do adolescente, na inclusão das pessoas com transtorno de espectro autista (TEA)",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria o Observatório Municipal da Saúde Mental em Betim, com foco na proteção da criança e do adolescente, na inclusão de pessoas com transtorno do espectro autista (TEA) e no acompanhamento de profissionais da área de educação."
+}

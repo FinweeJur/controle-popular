@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas diagnosticadas com cardiopatia no Município de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre a ampla publicidade dos direitos da pessoa diagnosticada com cardiopatia.",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a ampla publicidade dos direitos da pessoa diagnosticada com cardiopatia no Município de Betim."
+}

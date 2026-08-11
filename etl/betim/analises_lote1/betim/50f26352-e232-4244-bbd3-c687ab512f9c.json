@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "munícipes de Betim que adotam ou castram animais pela Secretaria de Proteção Animal (Sepa Betim)"
+      ],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre a concessão de desconto no imposto predial e territorial urbano (iptu) para munícipes que adotarem ou castrarem animais por meio da secretaria de proteção animal - Sepa Betim, e dá outras providências.",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a concessão de desconto no IPTU para munícipes de Betim que adotarem ou castrarem animais por meio da Secretaria de Proteção Animal (Sepa Betim)."
+}

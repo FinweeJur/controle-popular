@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas idosas usuárias de agências bancárias em Belo Horizonte"
+      ],
+      "grau": "marginal",
+      "trecho": "Exige que todas as agências bancárias situadas no Município disponham de cadeiras acessíveis para uso exclusivo de idoso, de pessoa com deficiência, de gestante e de pessoa com bebê de colo, durante o horário de atendimento ao público.",
+      "confianca": 0.65
+    },
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com deficiência usuárias de agências bancárias em Belo Horizonte"
+      ],
+      "grau": "marginal",
+      "trecho": "Exige que todas as agências bancárias situadas no Município disponham de cadeiras acessíveis para uso exclusivo de idoso, de pessoa com deficiência, de gestante e de pessoa com bebê de colo, durante o horário de atendimento ao público.",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei exige que as agências bancárias do Município de Belo Horizonte disponibilizem cadeiras acessíveis para uso exclusivo de idosos, pessoas com deficiência, gestantes e pessoas com bebê de colo durante o horário de atendimento ao público."
+}

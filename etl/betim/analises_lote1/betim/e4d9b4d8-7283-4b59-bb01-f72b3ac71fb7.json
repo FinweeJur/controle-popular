@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "Lei 8.069/1990 (ECA)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "estudantes das escolas da rede pública municipal de ensino de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre diretrizes para a política de combate à violência nas escolas da rede pública municipal de ensino, e dá outras providências",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto estabelece diretrizes para a política de combate à violência nas escolas da rede pública municipal de ensino de Betim."
+}

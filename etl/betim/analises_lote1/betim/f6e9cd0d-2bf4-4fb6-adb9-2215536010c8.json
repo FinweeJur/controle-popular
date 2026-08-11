@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "privacidade_dados",
+      "dispositivo": "Lei 13.709/2018 (LGPD)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "pessoas registradas por câmeras embarcadas nos veículos oficiais da Guarda Civil Municipal de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "estabelece normas de proteção de dados, cadeia de custódia, transparência, fiscalização e sanções",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a obrigatoriedade de instalação, acionamento e tratamento de imagens e áudios de câmeras embarcadas nos veículos oficiais da Guarda Civil Municipal de Betim, estabelecendo normas de proteção de dados, cadeia de custódia, transparência, fiscalização e sanções."
+}

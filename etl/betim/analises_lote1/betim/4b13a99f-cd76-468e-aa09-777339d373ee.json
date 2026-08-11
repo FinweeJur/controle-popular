@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "liberdade_religiosa",
+      "dispositivo": "CF/88, art. 5º, VI",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "estudantes da rede municipal de ensino de Betim e seus pais ou responsáveis"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre a necessidade de autorização expressa dos pais ou responsáveis para a participação de estudantes da rede municipal de ensino em atividades, materiais ou palestras com conteúdo de natureza religiosa, no âmbito do Município de Betim.",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a necessidade de autorização expressa dos pais ou responsáveis para a participação de estudantes da rede municipal de ensino de Betim em atividades, materiais ou palestras de conteúdo religioso."
+}

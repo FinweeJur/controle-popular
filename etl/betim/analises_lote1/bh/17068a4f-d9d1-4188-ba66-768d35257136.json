@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "estudantes e comunidade escolar da rede municipal de ensino de Belo Horizonte"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal de Climatização Sustentável das Escolas Públicas da Rede Municipal de Ensino.",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal de Climatização Sustentável das Escolas Públicas da Rede Municipal de Ensino de Belo Horizonte."
+}

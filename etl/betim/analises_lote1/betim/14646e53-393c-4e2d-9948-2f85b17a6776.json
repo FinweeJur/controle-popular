@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população do Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Fundo Municipal para Mobilidade Sustentável no Município de Betim.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Fundo Municipal para Mobilidade Sustentável no Município de Betim."
+}

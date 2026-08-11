@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "mães, pais ou responsáveis legais de pessoas com deficiência, quando acompanhados por seus filhos ou dependentes"
+      ],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre a prioridade de atendimento no Município a mães, pais ou responsáveis legais de pessoas com deficiência quando acompanhados por seus filhos ou dependentes.",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estabelece prioridade de atendimento no Município de Belo Horizonte a mães, pais ou responsáveis legais de pessoas com deficiência quando estiverem acompanhados por seus filhos ou dependentes."
+}

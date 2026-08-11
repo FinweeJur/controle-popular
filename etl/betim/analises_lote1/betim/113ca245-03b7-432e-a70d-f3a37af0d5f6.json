@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "Lei 8.069/1990 (ECA)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "estudantes das escolas da rede municipal de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "Estabelece diretrizes para a promoção de ações de educação digital preventiva nas escolas da rede municipal de Betim, com foco nos riscos de desafios perigosos da internet, bullying e cyberbullying e dá outras providências.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto estabelece diretrizes para ações de educação digital preventiva nas escolas da rede municipal de Betim, com foco em desafios perigosos da internet, bullying e cyberbullying."
+}
