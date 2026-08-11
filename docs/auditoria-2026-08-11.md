@@ -143,6 +143,68 @@ membros na API de Dados Abertos. Não é bloqueio, é ausência de dado na fonte
 
 ---
 
+## Terceira rodada — o resto do dia 2026-08-11
+
+Depois da segunda rodada, o usuário foi pedindo item por item ao longo do dia — cada um rodou
+isolado (worktree próprio ou workflow paralelo), revisado, mesclado em `main` com `tsc`/`test`
+limpos, e publicado no GitHub. Resumo por frente:
+
+**Barragens — destravado por completo.** A decisão pendente do item acima foi tomada: opção 2
+(soltar a FK de `municipios`, criar `ref_municipios_mg` — as 853 cidades de MG do IBGE, com
+correspondência tolerante a erro de digitação via `pg_trgm`). FEAM foi de 4 para **249/249**,
+SNISB de 52 para **2.212/2.212** em MG (+ 28 de São Paulo preservadas, cadastro nacional).
+
+**Terras Devolutas — o globo 3D publicado.** O app de mapa 3D (Three.js, já pronto, rodava só
+localmente) foi integrado em `/funcaosocialterra/mapa` — copiado como asset estático do Worker,
+as 3 chamadas que dependiam do backend local viraram arquivo estático. Depois, uma camada nova
+cruza norma↔mapa: 743 leis/decretos com endereço reconhecível na ementa (de 1.151 candidatos,
+64,6% geocodificados via Nominatim), clicável nos dois sentidos (mapa → ficha da norma, página da
+norma → "ver no mapa").
+
+**Domínio próprio no ar.** `controlepopular.com.br` e `www.` — o NS já apontava pra Cloudflare
+(usuário trocou o provedor), faltava só o `custom_domain` no `wrangler.jsonc` pra Cloudflare
+provisionar o certificado. Um efeito colateral pego a tempo: ligar `routes` desliga
+`workers.dev` por padrão, e a landing page `sementeiraprojetos.com.br` linka os 4 eixos do
+Controle Popular por esse endereço — `workers_dev: true` ficou explícito pra manter os dois
+endereços vivos.
+
+**Busca corrigida.** 4 bugs achados testando ao vivo: termo curto ("PL") zerava a busca inteira;
+número perto (47 vs. 4793) casava por engano; chave de React duplicada quebrava a lista de
+sugestões; título cru aparecia pro cidadão ("projeto_lei" em vez de "Projeto de Lei"). "PL 4793"
+foi de 0 pra 1 resultado certo.
+
+**Acessibilidade.** Alto contraste e tamanho de texto já existiam; entrou modo de cor pra
+daltonismo (validado por medição de contraste, não só visual) e leitura em voz alta
+(`speechSynthesis` nativo do navegador, sem serviço pago).
+
+**Descoberta/dados**: sitemap.xml (7.040 URLs) + robots.txt · contador de visualizações com
+ranking em `/dados/populares` · contatos úteis das 5 cidades sem Betim (32 linhas, fonte citada)
+· coletor de coleta de lixo de Betim (230 linhas; as outras 5 ficaram documentadas, sem fonte
+raspável achada) · servidores de Itinga (605) e Diamantina (1.970), cada um corrigindo suposição
+errada da auditoria original · mapeamento do SIGPub (só Diamantina confirmado) · zona Ambiental
+ganhou tela real do COPAM (`/ambiental/copam`, 2.367 itens de pauta, 97,5% com município).
+
+**Análise garantista escalada.** Da calibração de 25 casos, foram duas levas: 120 itens (peso
+pela fila real de cada cidade, não suposição) e depois 1.021 (até 200 por cidade — Itinga só
+tinha 21 disponíveis, não redistribuído pra outra cidade). **Total acumulado: 1.226 análises**
+— 395 garantista, 13 reducionista, 2 misto, 816 neutro. No meio do caminho, achou e corrigiu um
+bug real no validador (marca "STF" não reconhecida) que classificaria errado uma lei sobre
+participação trans em esporte municipal.
+
+**Análise nova, em construção**: vício legislativo/inconstitucionalidade — régua própria
+(iniciativa, competência, material, formal, jabuti), sempre como "indício com base citada",
+nunca "veredito" — quem decide isso é o Judiciário. Câmara municipal e Congresso com critério de
+competência diferentes.
+
+**Ambiental — os 3 blocos que faltavam**: barragens estadual (dado já pronto, só faltava tela),
+licenciamento (WFS de 19.162 licenças, mapeado com armadilha e tudo em
+`docs/ambiental/F0-discovery.md`), legislação ambiental (ALMG + SEMAD + SIAM, três fontes que não
+se conversam). Disparados em paralelo — conferir o resultado antes de marcar como feito.
+
+Tudo publicado em `main` e no GitHub ao longo do dia — nenhum passo ficou só local.
+
+---
+
 ## Bloqueado — não é sobre esforço
 
 | Item | Tipo | Detalhe | O que destrava |
@@ -153,9 +215,12 @@ membros na API de Dados Abertos. Não é bloqueio, é ausência de dado na fonte
 | SISOP (obras públicas) | Certificado incompleto | Cobriria as 3 cidades do Vale de uma vez | Fora do nosso controle |
 | SIGIBAR (barragens, mais completo que FEAM/SNISB) | reCAPTCHA Enterprise | Projeto tem regra de não contornar CAPTCHA | Só se a SEMAD publicar sem captcha |
 | pgvector / embeddings | Falta elevação (UAC) nesta máquina | Não bloqueia nada hoje (busca é por palavra-chave) | Terminal administrativo |
-| Domínio `controlepopular.com.br` | Ação do usuário | DNS ainda não propagou | Usuário conferir no Registro.br |
 | Portais de terceiro fora do ar (503) | Disponibilidade externa | Convênios BH, benefícios SP | Esperar o terceiro voltar |
 | DataJud (CNJ) não busca por nome | Limite estrutural da fonte | Só busca por número de processo | Decisão de produto: aceitar, raspar e-SAJ/PJe, ou serviço pago |
+
+**Resolvido nesta rodada**: domínio `controlepopular.com.br` — não era falta de propagação, era
+falta de vincular o domínio ao Worker (`custom_domain` no `wrangler.jsonc`). NS e vínculo
+confirmados ao vivo, os dois endereços respondendo 200.
 
 ---
 
