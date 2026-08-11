@@ -3,6 +3,7 @@ import Script from "next/script";
 import { ThemeProvider } from "next-themes";
 import { clashDisplay, generalSans, tabular } from "@/app/fonts";
 import OuvirPagina from "@/app/components/OuvirPagina";
+import PageViewBeacon from "@/app/components/PageViewBeacon";
 import "./globals.css";
 
 /**
@@ -80,6 +81,10 @@ export default function RootLayout({
               componente, em vez de duplicar o botão zona por zona como
               ThemeSwitcher/FontSizeControl fazem hoje. Ver `OuvirPagina.tsx`. */}
           <OuvirPagina />
+          {/* Mesmo motivo do <OuvirPagina /> acima: contador de
+              visualizações precisa rodar em toda página das quatro zonas,
+              não só nas que têm layout próprio. Ver `PageViewBeacon.tsx`. */}
+          <PageViewBeacon />
         </ThemeProvider>
       </body>
     </html>
