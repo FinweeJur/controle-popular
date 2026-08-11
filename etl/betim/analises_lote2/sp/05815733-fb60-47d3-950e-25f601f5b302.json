@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "moderado",
+      "trecho": "Dispõe sobre a jornada de trabalho e a escala de trabalho adotadas nas contratações de prestação de serviços com regime de dedicação exclusiva e com predominância de mão de obra no âmbito da Administração Pública Direta e Indireta do Município de São Paulo",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre jornada e escala de trabalho nas contratações de prestação de serviços com dedicação exclusiva e predominância de mão de obra na Administração Pública Direta e Indireta do Município de São Paulo. A ementa não especifica se as regras ampliam ou restringem condições atuais de trabalho."
+}

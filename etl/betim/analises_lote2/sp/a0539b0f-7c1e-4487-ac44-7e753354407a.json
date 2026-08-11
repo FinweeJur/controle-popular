@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Regime Emergencial de Proteção Arbórea no Município de São Paulo, estabelece medidas excepcionais de proteção da vegetação arbórea urbana, orienta ações para garantir a ampliação da cobertura vegetal",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 14.887, de 15 de janeiro de 2009"
+  ],
+  "resumo_neutro": "O projeto institui o Regime Emergencial de Proteção Arbórea em São Paulo, com medidas excepcionais de proteção à vegetação arbórea urbana e diretrizes para ampliar a cobertura vegetal, definindo critérios mínimos para futura legislação e alterando a Lei Municipal nº 14.887/2009."
+}

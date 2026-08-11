@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "restringe",
+      "mecanismo": "transfere_onus_ao_titular",
+      "titulares": [
+        "condutores causadores de acidentes de trânsito em estado de embriaguez ou sob efeito de substâncias psicoativas"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de ressarcimento ao Município de São Paulo das despesas com serviço público de saúde, socorro, trânsito e infraestrutura decorrentes de acidentes de trânsito causados por condutores em estado de embriaguez ou sob efeitos de substâncias psicoativas",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto obriga condutores que causarem acidentes de trânsito em estado de embriaguez ou sob efeito de substâncias psicoativas a ressarcir o Município pelas despesas com saúde, socorro, trânsito e infraestrutura decorrentes do acidente."
+}

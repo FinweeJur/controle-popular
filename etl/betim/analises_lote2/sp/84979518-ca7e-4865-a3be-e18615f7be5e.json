@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "igualdade_nao_discriminacao",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "servidores e usuários da administração pública municipal, especialmente pessoas negras"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal de Enfrentamento ao Racismo Institucional no âmbito da Administração Pública do Município de São Paulo",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política Municipal de Enfrentamento ao Racismo Institucional no âmbito da Administração Pública de São Paulo."
+}

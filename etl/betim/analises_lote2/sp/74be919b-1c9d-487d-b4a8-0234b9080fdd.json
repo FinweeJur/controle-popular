@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "estudantes da rede pública municipal vítimas ou em risco de violência de gênero"
+      ],
+      "grau": "moderado",
+      "trecho": "implementação de políticas de prevenção e enfrentamento à violência de gênero nas escolas da rede pública municipal de São Paulo",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a implementação de políticas de prevenção e enfrentamento à violência de gênero nas escolas da rede pública municipal de São Paulo."
+}

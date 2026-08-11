@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "moradores de áreas periféricas do Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Programa Quebrada Verde, destinado à implantação de vasos com plantas e elementos de paisagismo urbano em calçadas de áreas periféricas do Município de São Paulo",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Quebrada Verde, destinado à implantação de vasos com plantas e elementos de paisagismo urbano em calçadas de áreas periféricas de São Paulo."
+}

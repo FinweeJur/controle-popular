@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "mulheres usuárias do transporte coletivo municipal"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o “Programa Municipal de Transporte Seguro – Espaço Mulher” no sistema municipal de transporte coletivo por ônibus",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o \"Programa Municipal de Transporte Seguro – Espaço Mulher\" no sistema municipal de transporte coletivo por ônibus de São Paulo."
+}

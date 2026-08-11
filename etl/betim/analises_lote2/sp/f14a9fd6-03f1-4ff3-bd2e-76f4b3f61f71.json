@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com deficiência e mobilidade reduzida"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o aplicativo SampaAccess, voltado à promoção da acessibilidade urbana para pessoas com deficiência e mobilidade reduzida no Município de São Paulo",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o aplicativo SampaAccess, voltado à promoção da acessibilidade urbana para pessoas com deficiência e mobilidade reduzida no Município de São Paulo."
+}

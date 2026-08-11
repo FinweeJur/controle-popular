@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "educandos com deficiência da Rede Municipal de Ensino"
+      ],
+      "grau": "moderado",
+      "trecho": "Veda a recusa de matrícula de educandos com deficiência na Rede Municipal de Ensino sob a alegação de falta de suporte",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto veda que a Rede Municipal de Ensino de São Paulo recuse matrícula de educandos com deficiência sob alegação de falta de suporte. Institui o Protocolo de Acesso à Educação Inclusiva (PAEI) e cria o Painel \"Vaga Inclusiva Transparente\" para acompanhamento público das vagas."
+}
