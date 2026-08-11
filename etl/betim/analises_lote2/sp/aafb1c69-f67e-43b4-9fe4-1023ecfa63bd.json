@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225, §1º, VII",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "animais domésticos"
+      ],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre a obrigatoriedade de comunicação de maus-tratos de animais por médicos veterinários e estabelecimentos do setor no Município de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto obriga médicos veterinários e estabelecimentos do setor a comunicarem casos de maus-tratos de animais no Município de São Paulo. Cria dever de notificação como mecanismo de fiscalização da proteção animal."
+}

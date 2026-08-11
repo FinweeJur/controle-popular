@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 203",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "população em situação de alta vulnerabilidade social"
+      ],
+      "grau": "moderado",
+      "trecho": "Autoriza o Poder Executivo a celebrar parcerias com organizações religiosas de qualquer culto para a implementação de programas e projetos de apoio social em áreas de alta vulnerabilidade social no Município de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo municipal a firmar parcerias com organizações religiosas de qualquer culto para executar programas de apoio social em áreas de alta vulnerabilidade, com base no Marco Regulatório das Organizações da Sociedade Civil (Lei Federal nº 13.019/2014)."
+}

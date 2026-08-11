@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "adolescentes de 15 a 17 anos em acolhimento institucional"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa de Capacitação para a Vida Autônoma (PCVA) destinado a adolescentes de 15 a 17 anos vivendo em abrigos institucionais municipais, visando a sua preparação profissional e inserção social para a vida adulta",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa de Capacitação para a Vida Autônoma (PCVA), destinado a adolescentes de 15 a 17 anos que vivem em abrigos institucionais municipais de São Paulo, com foco em preparação profissional e inserção social para a vida adulta."
+}

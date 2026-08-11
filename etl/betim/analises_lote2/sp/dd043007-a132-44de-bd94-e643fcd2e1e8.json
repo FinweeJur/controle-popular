@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 203",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "munícipes em situação de baixa renda"
+      ],
+      "grau": "moderado",
+      "trecho": "concessão da gratuidade no transporte coletivo municipal aos munícipes em situação de baixa renda",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a concessão de gratuidade no transporte coletivo municipal aos munícipes em situação de baixa renda em São Paulo."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "Guardas Civis Metropolitanos participantes do programa"
+      ],
+      "grau": "marginal",
+      "trecho": "cria adicional de atividade especial aos Guardas Civis Metropolitanos participantes",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Educação e Proteção Animal Assistida por Cães Institucionais na rede de ensino de São Paulo, prevê cooperação com a Polícia Militar e a Guarda Civil Metropolitana, e cria adicional de atividade especial para os guardas civis que participarem do programa."
+}

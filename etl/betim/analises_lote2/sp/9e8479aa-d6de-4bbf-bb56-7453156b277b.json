@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "privacidade_dados",
+      "dispositivo": "CF/88, art. 5º, X",
+      "direcao": "restringe",
+      "mecanismo": "flexibiliza_limite",
+      "titulares": [
+        "munícipes filmados por câmeras de videomonitoramento privadas integradas ao sistema municipal"
+      ],
+      "grau": "moderado",
+      "trecho": "concede redução na alíquota do Imposto Predial e Territorial Urbano (IPTU) a empresas e munícipes que instalarem ou integrarem câmeras de videomonitoramento de alta resolução",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria o programa \"Smart Sampa: Câmera Parceira\", concedendo desconto no IPTU a empresas e munícipes que instalarem ou integrarem câmeras de videomonitoramento de alta resolução ao sistema público de segurança. A ementa não detalha as regras de proteção de dados aplicáveis às imagens captadas."
+}

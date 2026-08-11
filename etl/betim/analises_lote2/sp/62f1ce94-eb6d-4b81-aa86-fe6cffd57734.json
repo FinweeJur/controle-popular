@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225, §1º, VII",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "animais domésticos protegidos contra maus-tratos"
+      ],
+      "grau": "marginal",
+      "trecho": "incluir a notificação obrigatória aos órgãos de segurança pública em caso de maus-tratos animais nos estabelecimentos que especifica",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 14.761, de 5 de junho de 2008"
+  ],
+  "resumo_neutro": "O projeto altera a Lei nº 14.761/2008 para incluir a notificação obrigatória aos órgãos de segurança pública em casos de maus-tratos de animais nos estabelecimentos que especifica."
+}

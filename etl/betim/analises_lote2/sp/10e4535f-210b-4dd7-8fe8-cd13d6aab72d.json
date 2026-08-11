@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com Transtorno do Espectro Autista"
+      ],
+      "grau": "moderado",
+      "trecho": "estabelece o fluxo simplificado para a emissão da Carteira de Identificação da Pessoa com Transtorno do Espectro Autista (CIPTEA) no Município de São Paulo, autoriza a emissão proativa e o pré-cadastro na conclusão do diagnóstico na rede SUS municipal",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o programa \"CIPTEA Expressa\", que simplifica a emissão da Carteira de Identificação da Pessoa com Transtorno do Espectro Autista no Município de São Paulo, autorizando emissão proativa e pré-cadastro assim que o diagnóstico é concluído na rede SUS municipal."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "criminaliza_violacao",
+      "titulares": [
+        "pessoas idosas"
+      ],
+      "grau": "moderado",
+      "trecho": "Impõe sanções administrativas à práticas e atos discriminatórios contra pessoas idosas na cidade de São Paulo",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto impõe sanções administrativas a práticas e atos discriminatórios contra pessoas idosas no Município de São Paulo."
+}

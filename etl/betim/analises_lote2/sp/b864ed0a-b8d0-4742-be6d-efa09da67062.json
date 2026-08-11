@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "crianças neurodivergentes atendidas em creches públicas e credenciadas"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade da implantação de salas sensoriais em creches públicas e creches credenciadas, destinadas ao atendimento de crianças neurodivergentes",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto obriga a implantação de salas sensoriais em creches públicas e creches credenciadas de São Paulo, destinadas ao atendimento de crianças neurodivergentes."
+}

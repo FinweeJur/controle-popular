@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 182",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "disciplina o parcelamento, o uso e a ocupação do solo no Município de São Paulo, de acordo com a Lei nº 16.050, de 31 de julho de 2014 – Plano Diretor Estratégico (PDE)",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 16.402, de 22 de março de 2016",
+    "Lei nº 15.031, de 13 de novembro de 2009"
+  ],
+  "resumo_neutro": "O projeto altera a Lei nº 16.402/2016, que disciplina parcelamento, uso e ocupação do solo em São Paulo conforme o Plano Diretor Estratégico, e altera a Lei nº 15.031/2009, que dispensa licença de funcionamento para atividades não residenciais do Microempreendedor Individual (MEI). A ementa não detalha o conteúdo específico das alterações."
+}

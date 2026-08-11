@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas surdas e usuárias de Libras"
+      ],
+      "grau": "moderado",
+      "trecho": "Torna obrigatória a disponibilização de placas informativas no formato da Linguagem Brasileira de Sinais (Libras) em estabelecimentos e instituições públicas no município de São Paulo",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto torna obrigatória a disponibilização de placas informativas em Libras em estabelecimentos e instituições públicas no Município de São Paulo."
+}
