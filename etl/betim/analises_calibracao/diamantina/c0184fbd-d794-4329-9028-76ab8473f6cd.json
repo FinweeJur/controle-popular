@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "alimentacao",
+      "dispositivo": "Lei 11.346/2006 (LOSAN)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população do Município de Diamantina, em especial famílias em insegurança alimentar"
+      ],
+      "grau": "estrutural",
+      "trecho": "INSTITUI A POLITICA MUNICIPAL DE SEGURANÇA ALIMENTAR E NUTRICIONAL - PMSAN, ESTABELECE OS PARÂMENTROS PARA A ELABORAÇÃO DO PLANO MUNICIPAL DE SEGURANÇA ALIMENTAR E NUTRICIONAL, ORGANIZA O SISTEMA NACIONAL DE SEGURANÇA ALIMENTAR E NUTRICIONAL- SISAN NO ÂMBITO DO MUNICIPIO DE DIAMANTINA/MG",
+      "confianca": 0.85
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal de Segurança Alimentar e Nutricional (PMSAN) em Diamantina, estabelece os parâmetros para elaboração do Plano Municipal de Segurança Alimentar e Nutricional e organiza, no âmbito do município, o Sistema Nacional de Segurança Alimentar e Nutricional (SISAN)."
+}

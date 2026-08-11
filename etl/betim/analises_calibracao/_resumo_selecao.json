@@ -1,0 +1,252 @@
+[
+  {
+    "cidade": "Betim",
+    "id_municipio": "3106705",
+    "id": "6edffce1-1665-445f-a437-be8a7b227d4f",
+    "tipo_objeto": "ato",
+    "identificacao": "Lei Ordinária nº 4788/2009",
+    "ementa": "CONCEDE ISENÇÃO FISCAL DE ISSQN E ITBI SOBRE OS EMPREENDIMENTOS HABITACIONAIS DECLARADOS DE INTERESSE SOCIAL PARA ATENDER AS DISPOSIÇÕES DO PROGRAMA &quot;MINHA CASA MINHA VIDA&quot;.",
+    "categoria_esperada": "garantista",
+    "nota": "isencao fiscal ISSQN/ITBI p/ habitacao de interesse social (MCMV) -- moradia, claro"
+  },
+  {
+    "cidade": "Betim",
+    "id_municipio": "3106705",
+    "id": "e3a06b25-1bf7-443d-a09e-87eca94c34d5",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 663/2025",
+    "ementa": "Institui o programa municipal de reflorestamento de áreas degradadas urbanas no município de Betim e dá outras providências.",
+    "categoria_esperada": "garantista",
+    "nota": "institui programa de reflorestamento de areas degradadas -- meio_ambiente, claro"
+  },
+  {
+    "cidade": "Betim",
+    "id_municipio": "3106705",
+    "id": "1358f0c1-7fc4-4865-9264-0eec3e3c8cc0",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 393/2025",
+    "ementa": "Torna facultativo o uso do uniforme escolar aos estudantes da rede municipal de ensino com Transtorno do Espectro do Autismo – TEA e outras neurodiversidades.",
+    "categoria_esperada": "garantista",
+    "nota": "torna facultativo uniforme escolar p/ TEA -- acomodacao, pcd/educacao, claro"
+  },
+  {
+    "cidade": "Betim",
+    "id_municipio": "3106705",
+    "id": "ba9eb595-b4d6-473a-a11b-fb9c9c28f143",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 616/2025",
+    "ementa": "Altera o artigo 4º da Lei Municipal nº 7.513, de 16 de abril de 2024, que dispõe sobre a proibição da utilização de veículos de tração animal no Município de Betim, reduzindo o prazo de transição.",
+    "categoria_esperada": "reducionista",
+    "nota": "reduz prazo de transicao da proibicao de tracao animal -- CASO-LIMITE: bem-estar animal nao tem direito CF na rubrica"
+  },
+  {
+    "cidade": "Betim",
+    "id_municipio": "3106705",
+    "id": "37014c78-eb82-41e8-bf2d-50c925d63679",
+    "tipo_objeto": "ato",
+    "identificacao": "Decreto nº 53423/2026",
+    "ementa": "ABRE CRÉDITO SUPLEMENTAR",
+    "categoria_esperada": "tecnico",
+    "nota": "abre credito suplementar -- classico ruido orcamentario"
+  },
+  {
+    "cidade": "Betim",
+    "id_municipio": "3106705",
+    "id": "5f5e3964-ed9b-4a1d-8119-fb51c379b956",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 176/2026",
+    "ementa": "Dispões sobre denominação de logradouro público, no Bairro São João, na unidade de planejamento São João, neste município. Fica denominada Rua Francisco Gino de Souza.",
+    "categoria_esperada": "tecnico",
+    "nota": "denominacao de logradouro -- classico ruido de homenagem"
+  },
+  {
+    "cidade": "Belo Horizonte",
+    "id_municipio": "3106200",
+    "id": "fe66df42-a2d5-4194-b14c-24c6ef647ce4",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 903/2026",
+    "ementa": "Institui a Política Municipal de Proteção dos Direitos da Pessoa com Síndrome de Down no Município de Belo Horizonte, em complementação à Lei Municipal n° 11.416, de 3 de outubro de 2022, à Lei Federal n° 13.146, de 6 de julho de 2015, e à Convenção sobre Direitos das Pessoas Com Deficiência, e dá outras providências.",
+    "categoria_esperada": "garantista",
+    "nota": "politica municipal de protecao dos direitos da pessoa com sindrome de down -- pcd, claro"
+  },
+  {
+    "cidade": "Belo Horizonte",
+    "id_municipio": "3106200",
+    "id": "f461a3a0-eadb-482e-acda-f1927bf9f698",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 891/2026",
+    "ementa": "Institui a Política Municipal de Prevenção à Violência contra a Pessoa Idosa e estabelece diretrizes para a promoção da segurança e da conscientização no Município de Belo Horizonte.",
+    "categoria_esperada": "garantista",
+    "nota": "politica municipal de prevencao a violencia contra pessoa idosa -- direitos_idoso, claro"
+  },
+  {
+    "cidade": "Belo Horizonte",
+    "id_municipio": "3106200",
+    "id": "e756e93a-309d-42b9-a686-38e2bb7e2cb0",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 892/2026",
+    "ementa": "Institui o Programa Linha Rosa, destinado à implantação de transporte coletivo urbano com atendimento prioritário para mulheres no Município de Belo Horizonte, e dá outras providências.",
+    "categoria_esperada": "garantista",
+    "nota": "programa linha rosa, transporte prioritario p/ mulheres -- direitos_mulher, claro"
+  },
+  {
+    "cidade": "Belo Horizonte",
+    "id_municipio": "3106200",
+    "id": "b91573be-7426-4893-ab1b-fe715dadfbd5",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 855/2026",
+    "ementa": "Altera a Lei n° 7.169, de 30 de agosto de 1996, para assegurar a manutenção do auxílio-alimentação ao servidor público municipal que possuir redução de jornada destinada ao acompanhamento de pessoa com deficiência.",
+    "categoria_esperada": "garantista",
+    "nota": "assegura auxilio-alimentacao a servidor com jornada reduzida p/ cuidar de PCD -- pcd/trabalho, claro"
+  },
+  {
+    "cidade": "Belo Horizonte",
+    "id_municipio": "3106200",
+    "id": "23b25025-371b-4566-ae4f-f93c835b991c",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 202/2025",
+    "ementa": "Revoga a Lei n° 7.852/99, que dispõe sobre a proibição da entrada de animal em hipermercado, supermercado e similar.",
+    "categoria_esperada": "reducionista",
+    "nota": "revoga proibicao de entrada de animal em supermercado -- CASO-LIMITE: sem direito CF nitido"
+  },
+  {
+    "cidade": "Belo Horizonte",
+    "id_municipio": "3106200",
+    "id": "a39a9808-81c7-4507-b615-fec86e15ab1f",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 899/2026",
+    "ementa": "Dá a denominação de Rua Celso Meireles à atual Rua 2466, localizada no Bairro Jardim Vitória, e dá outras providências.",
+    "categoria_esperada": "tecnico",
+    "nota": "denominacao de rua -- classico ruido de homenagem"
+  },
+  {
+    "cidade": "Belo Horizonte",
+    "id_municipio": "3106200",
+    "id": "e5d4ddf2-4443-4e15-bf19-470826b8cabe",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 236/2025",
+    "ementa": "Revoga a Lei nº 11.393, de 18 de agosto de 2022, que declara o Município de Belo Horizonte como Capital Nacional do Esporte Wheeling - \"Grau\".",
+    "categoria_esperada": "tecnico",
+    "nota": "revoga lei que declara BH capital do esporte wheeling -- honorifico/declaratorio"
+  },
+  {
+    "cidade": "Diamantina",
+    "id_municipio": "3121605",
+    "id": "c0184fbd-d794-4329-9028-76ab8473f6cd",
+    "tipo_objeto": "ato",
+    "identificacao": "Lei Ordinária nº 4257/2023",
+    "ementa": ".INSTITUI A POLITICA MUNICIPAL DE SEGURANÇA ALIMENTAR E NUTRICIONAL - PMSAN, ESTABELECE OS PARÂMENTROS PARA A ELABORAÇÃO DO PLANO MUNICIPAL DE SEGURANÇA ALIMENTAR E NUTRICIONAL, ORGANIZA O SISTEMA NACIONAL DE SEGURANÇA ALIMENTAR E NUTRICIONAL- SISAN NO ÂMBITO DO MUNICIPIO DE DIAMANTINA/MG, E DÁ OUTRAS PROVIDÊNCIAS.",
+    "categoria_esperada": "garantista",
+    "nota": "institui politica municipal de seguranca alimentar e nutricional (PMSAN) -- alimentacao, claro, estrutural"
+  },
+  {
+    "cidade": "Diamantina",
+    "id_municipio": "3121605",
+    "id": "c13cafdb-5a94-413e-a967-8e214c300390",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 26/2024",
+    "ementa": "Dispõe sobre a proteção da pessoa idosa nos procedimento de contratação de empréstimo consignado, de cartão de crédito consignado e de serviço cujo desconto incida sobre a folha de pagamento, no âmbito do Município de Diamantina/MG, e dá outras providências.",
+    "categoria_esperada": "garantista",
+    "nota": "protege pessoa idosa em contratacao de emprestimo/cartao consignado -- idoso/consumidor, claro"
+  },
+  {
+    "cidade": "Diamantina",
+    "id_municipio": "3121605",
+    "id": "3441bb36-eff5-4478-9994-fb5ef43368bc",
+    "tipo_objeto": "ato",
+    "identificacao": "Lei Ordinária nº 3974/2017",
+    "ementa": "Institui o passe livre às pessoas portadoras de deficiência, comprovadamente carentes, e aos idosos no sistema de transporte coletivo municipal, revoga a Lei municipal n° 2610 de 15 de dezembro de 1999.",
+    "categoria_esperada": "garantista",
+    "nota": "institui passe livre a PCD e idosos no transporte coletivo -- pcd/idoso, claro (tb contem revoga, mas efeito liquido e amplia)"
+  },
+  {
+    "cidade": "Diamantina",
+    "id_municipio": "3121605",
+    "id": "51db98e4-b908-4f6c-806e-c4337cd9011b",
+    "tipo_objeto": "ato",
+    "identificacao": "Lei Ordinária nº 4181/2022",
+    "ementa": "Revoga a Lei Nº 4.146, de 2021, que dispõe sobre o uso geral e obrigatório de máscara ou cobertura facial sobre o nariz e a boca nos espaços públicos, equipamentos de transporte coletivo e estabelecimentos comerciais e de serviços.",
+    "categoria_esperada": "reducionista",
+    "nota": "revoga uso obrigatorio de mascara facial em espacos publicos -- saude, CLARO"
+  },
+  {
+    "cidade": "Diamantina",
+    "id_municipio": "3121605",
+    "id": "ba00e8cd-94d0-4d37-b499-1cf158cbd487",
+    "tipo_objeto": "ato",
+    "identificacao": "Lei Ordinária nº 1877/1991",
+    "ementa": "Revoga os itens XIII e XVI e alineas K e N do artigo 1º da Lei nº 1.824 de 10 de maio de 1.991, que dispõe sobre o Conselho Municipal de Saúde.",
+    "categoria_esperada": "reducionista",
+    "nota": "revoga itens do artigo que criou o Conselho Municipal de Saude -- participacao_democratica, MODERADO (nao sabemos o conteudo exato dos itens revogados)"
+  },
+  {
+    "cidade": "Diamantina",
+    "id_municipio": "3121605",
+    "id": "744ac0af-91c7-47fc-9be5-05cc295320ef",
+    "tipo_objeto": "ato",
+    "identificacao": "Lei Ordinária nº 4002/2018",
+    "ementa": "REVOGA A LEI N°3998, DE 11 DE JUNHO DE 2018, QUE DISPÔE SOBRE APLICAÇÃO DE MULTA AO PROPRIETÁRIO DE ESTABELECIMENTO COMERCIAL QUE DEPOSITAR LIXO PRODUZIDO PELO SEU ESTABELECIMENTO NAS RUAS EM HORÁRIO DIVERSOS DAQUELES ESTABELECIDOS PARA A COLETA DE LIXO NA SEDE DO MUNICÍPIO E DÁ OUTRAS PROVIDÊNCIAS.",
+    "categoria_esperada": "reducionista",
+    "nota": "revoga multa por descarte irregular de lixo -- CASO-LIMITE: meio_ambiente fraco, sancao administrativa local"
+  },
+  {
+    "cidade": "Diamantina",
+    "id_municipio": "3121605",
+    "id": "3a5f1ee5-b47a-4623-a4c6-98b25dae00e5",
+    "tipo_objeto": "ato",
+    "identificacao": "Lei Ordinária nº 4398/2026",
+    "ementa": "AUTORIZA A ABERTURA DE CRÉDITO ADICIONAL ESPECIAL NO ORÇAMENTO DO MUNICÍPIO PARA O EXERCÍCIO DE 2026, E DÁ OUTRAS PROVIDÊNCIAS.",
+    "categoria_esperada": "tecnico",
+    "nota": "autoriza abertura de credito adicional especial -- classico ruido orcamentario"
+  },
+  {
+    "cidade": "Diamantina",
+    "id_municipio": "3121605",
+    "id": "6c60893d-4495-492a-b019-e98b1aafc6a8",
+    "tipo_objeto": "ato",
+    "identificacao": "Lei Ordinária nº 4407/2026",
+    "ementa": "DÁ DENOMINAÇÃO DE RUA FIDELCINO PIRES DA SILVA A UM LOGRADOURO PÚBLICO SEM NOME, SITUADO EM MENDANHA, DISTRITO DESTE MUNICÍPIO.",
+    "categoria_esperada": "tecnico",
+    "nota": "denominacao de rua -- classico ruido de homenagem"
+  },
+  {
+    "cidade": "Diamantina",
+    "id_municipio": "3121605",
+    "id": "ce8cb230-530c-4b40-9e19-f2138cd03a54",
+    "tipo_objeto": "ato",
+    "identificacao": "Lei Ordinária nº 4363/2025",
+    "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE PONTE EDIFICADA SOBRE O CÓRREGO DA FORMAÇÃO, NA SEDE DO MUNICÍPIO.",
+    "categoria_esperada": "tecnico",
+    "nota": "denominacao de ponte -- classico ruido de homenagem"
+  },
+  {
+    "cidade": "Diamantina",
+    "id_municipio": "3121605",
+    "id": "245a9d9f-f991-44c0-92d2-6db243682dea",
+    "tipo_objeto": "ato",
+    "identificacao": "Lei Orgânica nº 28/2004",
+    "ementa": "Nomeia comissão temporária especial para os fins que especifica.",
+    "categoria_esperada": "tecnico",
+    "nota": "nomeia comissao temporaria especial -- classico ruido de ato de pessoal"
+  },
+  {
+    "cidade": "São Paulo",
+    "id_municipio": "3550308",
+    "id": "14baccbe-9f36-4b0d-bbc5-bd1c7a0db48d",
+    "tipo_objeto": "ato",
+    "identificacao": "Decreto nº 64.935/2026",
+    "ementa": "Revoga o Decreto nº 48.915, de 8 de novembro de 2007, que declarou de utilidade pública a entidade denominada INSTITUTO TERRA, TRABALHO E CIDADANIA - ITTC.",
+    "categoria_esperada": "tecnico",
+    "nota": "revoga decreto que declarou utilidade publica a uma entidade -- declaratorio"
+  },
+  {
+    "cidade": "São Paulo",
+    "id_municipio": "3550308",
+    "id": "c213a0ec-055d-4e85-811d-16b480c9cc10",
+    "tipo_objeto": "proposicao",
+    "identificacao": "Projeto de Lei nº 1085/2025",
+    "ementa": "Revoga o inciso I do artigo 4º da Lei nº 14.471, de 10 de julho de 2007, para excluir a cidade de Havana, em Cuba, do reconhecimento como cidades-irmãs da cidade de São Paulo.",
+    "categoria_esperada": "tecnico",
+    "nota": "revoga inciso que reconhecia Havana como cidade-irma -- diplomatico/declaratorio"
+  }
+]

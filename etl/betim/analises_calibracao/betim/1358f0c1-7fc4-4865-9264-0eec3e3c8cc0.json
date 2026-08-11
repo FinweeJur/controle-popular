@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estudantes da rede municipal de ensino com TEA e outras neurodiversidades"
+      ],
+      "grau": "marginal",
+      "trecho": "Torna facultativo o uso do uniforme escolar aos estudantes da rede municipal de ensino com Transtorno do Espectro do Autismo – TEA e outras neurodiversidades.",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto torna facultativo o uso do uniforme escolar para estudantes da rede municipal de ensino de Betim com Transtorno do Espectro do Autismo (TEA) e outras neurodiversidades, dispensando-os da obrigatoriedade do uniforme padrão."
+}

@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "pessoa idosa"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre a proteção da pessoa idosa nos procedimento de contratação de empréstimo consignado, de cartão de crédito consignado",
+      "confianca": 0.7
+    },
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "Lei 8.078/1990 (CDC)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "pessoa idosa como consumidora de crédito consignado"
+      ],
+      "grau": "moderado",
+      "trecho": "e de serviço cujo desconto incida sobre a folha de pagamento",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a proteção da pessoa idosa nos procedimentos de contratação de empréstimo consignado, cartão de crédito consignado e outros serviços cujo desconto incida sobre a folha de pagamento, no Município de Diamantina."
+}

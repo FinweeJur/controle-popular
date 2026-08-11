@@ -1,0 +1,23 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "restringe",
+      "mecanismo": "desregulamenta_protecao",
+      "titulares": [
+        "população do Município de Diamantina",
+        "usuários de espaços públicos e transporte coletivo"
+      ],
+      "grau": "moderado",
+      "trecho": "Revoga a Lei Nº 4.146, de 2021, que dispõe sobre o uso geral e obrigatório de máscara ou cobertura facial sobre o nariz e a boca nos espaços públicos, equipamentos de transporte coletivo e estabelecimentos comerciais e de serviços.",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": true,
+  "normas_alteradas": [
+    "Lei Municipal nº 4.146/2021"
+  ],
+  "resumo_neutro": "A lei revoga integralmente a Lei Municipal nº 4.146/2021, que estabelecia o uso geral e obrigatório de máscara ou cobertura facial em espaços públicos, no transporte coletivo e em estabelecimentos comerciais e de serviços de Diamantina."
+}

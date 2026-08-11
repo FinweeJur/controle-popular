@@ -1,0 +1,52 @@
+{
+  "id_municipio": "3106200",
+  "municipio": "Belo Horizonte",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-calibracao-manual",
+  "camadas": {},
+  "objetos": [
+    {
+      "id": "fe66df42-a2d5-4194-b14c-24c6ef647ce4",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 903/2026",
+      "camada": "calibracao_garantista_esperado"
+    },
+    {
+      "id": "f461a3a0-eadb-482e-acda-f1927bf9f698",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 891/2026",
+      "camada": "calibracao_garantista_esperado"
+    },
+    {
+      "id": "e756e93a-309d-42b9-a686-38e2bb7e2cb0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 892/2026",
+      "camada": "calibracao_garantista_esperado"
+    },
+    {
+      "id": "b91573be-7426-4893-ab1b-fe715dadfbd5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 855/2026",
+      "camada": "calibracao_garantista_esperado"
+    },
+    {
+      "id": "23b25025-371b-4566-ae4f-f93c835b991c",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 202/2025",
+      "camada": "calibracao_reducionista_esperado"
+    },
+    {
+      "id": "a39a9808-81c7-4507-b615-fec86e15ab1f",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 899/2026",
+      "camada": "calibracao_tecnico_esperado"
+    },
+    {
+      "id": "e5d4ddf2-4443-4e15-bf19-470826b8cabe",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 236/2025",
+      "camada": "calibracao_tecnico_esperado"
+    }
+  ]
+}

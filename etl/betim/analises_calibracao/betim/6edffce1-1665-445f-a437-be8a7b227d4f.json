@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 182",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "empreendimentos habitacionais de interesse social",
+        "beneficiários do programa Minha Casa Minha Vida em Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "CONCEDE ISENÇÃO FISCAL DE ISSQN E ITBI SOBRE OS EMPREENDIMENTOS HABITACIONAIS DECLARADOS DE INTERESSE SOCIAL PARA ATENDER AS DISPOSIÇÕES DO PROGRAMA \"MINHA CASA MINHA VIDA\"",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei concede isenção do ISSQN e do ITBI sobre empreendimentos habitacionais declarados de interesse social vinculados ao programa federal Minha Casa Minha Vida, reduzindo o custo tributário desses empreendimentos em Betim."
+}

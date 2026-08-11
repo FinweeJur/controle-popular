@@ -1,0 +1,34 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com deficiência comprovadamente carentes"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o passe livre às pessoas portadoras de deficiência, comprovadamente carentes",
+      "confianca": 0.8
+    },
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "idosos"
+      ],
+      "grau": "moderado",
+      "trecho": "e aos idosos no sistema de transporte coletivo municipal",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei municipal nº 2.610/1999"
+  ],
+  "resumo_neutro": "A lei institui passe livre no sistema de transporte coletivo municipal de Diamantina para pessoas com deficiência comprovadamente carentes e para idosos, revogando a Lei municipal nº 2.610/1999, que tratava do tema anteriormente."
+}

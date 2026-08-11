@@ -1,0 +1,23 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei Federal nº 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas com Síndrome de Down no Município de Belo Horizonte"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal de Proteção dos Direitos da Pessoa com Síndrome de Down no Município de Belo Horizonte, em complementação à Lei Municipal n° 11.416, de 3 de outubro de 2022, à Lei Federal n° 13.146, de 6 de julho de 2015, e à Convenção sobre Direitos das Pessoas Com Deficiência",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 11.416/2022",
+    "Lei Federal nº 13.146/2015"
+  ],
+  "resumo_neutro": "O projeto institui a Política Municipal de Proteção dos Direitos da Pessoa com Síndrome de Down em Belo Horizonte, em complementação à Lei Municipal nº 11.416/2022, à Lei Federal nº 13.146/2015 e à Convenção sobre os Direitos das Pessoas com Deficiência."
+}

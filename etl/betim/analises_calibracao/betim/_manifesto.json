@@ -1,0 +1,46 @@
+{
+  "id_municipio": "3106705",
+  "municipio": "Betim",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-calibracao-manual",
+  "camadas": {},
+  "objetos": [
+    {
+      "id": "6edffce1-1665-445f-a437-be8a7b227d4f",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4788/2009",
+      "camada": "calibracao_garantista_esperado"
+    },
+    {
+      "id": "e3a06b25-1bf7-443d-a09e-87eca94c34d5",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 663/2025",
+      "camada": "calibracao_garantista_esperado"
+    },
+    {
+      "id": "1358f0c1-7fc4-4865-9264-0eec3e3c8cc0",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 393/2025",
+      "camada": "calibracao_garantista_esperado"
+    },
+    {
+      "id": "ba9eb595-b4d6-473a-a11b-fb9c9c28f143",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 616/2025",
+      "camada": "calibracao_reducionista_esperado"
+    },
+    {
+      "id": "37014c78-eb82-41e8-bf2d-50c925d63679",
+      "tipo_objeto": "ato",
+      "identificacao": "Decreto nº 53423/2026",
+      "camada": "calibracao_tecnico_esperado"
+    },
+    {
+      "id": "5f5e3964-ed9b-4a1d-8119-fb51c379b956",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 176/2026",
+      "camada": "calibracao_tecnico_esperado"
+    }
+  ]
+}

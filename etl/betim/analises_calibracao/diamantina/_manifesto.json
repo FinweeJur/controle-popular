@@ -1,0 +1,70 @@
+{
+  "id_municipio": "3121605",
+  "municipio": "Diamantina",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-calibracao-manual",
+  "camadas": {},
+  "objetos": [
+    {
+      "id": "c0184fbd-d794-4329-9028-76ab8473f6cd",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4257/2023",
+      "camada": "calibracao_garantista_esperado"
+    },
+    {
+      "id": "c13cafdb-5a94-413e-a967-8e214c300390",
+      "tipo_objeto": "proposicao",
+      "identificacao": "Projeto de Lei nº 26/2024",
+      "camada": "calibracao_garantista_esperado"
+    },
+    {
+      "id": "3441bb36-eff5-4478-9994-fb5ef43368bc",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 3974/2017",
+      "camada": "calibracao_garantista_esperado"
+    },
+    {
+      "id": "51db98e4-b908-4f6c-806e-c4337cd9011b",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4181/2022",
+      "camada": "calibracao_reducionista_esperado"
+    },
+    {
+      "id": "ba00e8cd-94d0-4d37-b499-1cf158cbd487",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 1877/1991",
+      "camada": "calibracao_reducionista_esperado"
+    },
+    {
+      "id": "744ac0af-91c7-47fc-9be5-05cc295320ef",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4002/2018",
+      "camada": "calibracao_reducionista_esperado"
+    },
+    {
+      "id": "3a5f1ee5-b47a-4623-a4c6-98b25dae00e5",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4398/2026",
+      "camada": "calibracao_tecnico_esperado"
+    },
+    {
+      "id": "6c60893d-4495-492a-b019-e98b1aafc6a8",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4407/2026",
+      "camada": "calibracao_tecnico_esperado"
+    },
+    {
+      "id": "ce8cb230-530c-4b40-9e19-f2138cd03a54",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Ordinária nº 4363/2025",
+      "camada": "calibracao_tecnico_esperado"
+    },
+    {
+      "id": "245a9d9f-f991-44c0-92d2-6db243682dea",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei Orgânica nº 28/2004",
+      "camada": "calibracao_tecnico_esperado"
+    }
+  ]
+}

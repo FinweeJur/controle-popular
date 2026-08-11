@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "mulheres usuárias do transporte coletivo urbano de Belo Horizonte"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Linha Rosa, destinado à implantação de transporte coletivo urbano com atendimento prioritário para mulheres no Município de Belo Horizonte",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Linha Rosa, destinado a implantar transporte coletivo urbano com atendimento prioritário para mulheres no Município de Belo Horizonte."
+}

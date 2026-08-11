@@ -1,0 +1,23 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei nº 1.824/1991, art. 1º, itens XIII e XVI, alíneas K e N",
+      "direcao": "restringe",
+      "mecanismo": "restringe_garantia_processual",
+      "titulares": [
+        "Conselho Municipal de Saúde de Diamantina",
+        "comunidade participante do controle social do SUS local"
+      ],
+      "grau": "marginal",
+      "trecho": "Revoga os itens XIII e XVI e alineas K e N do artigo 1º da Lei nº 1.824 de 10 de maio de 1.991, que dispõe sobre o Conselho Municipal de Saúde.",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 1.824/1991"
+  ],
+  "resumo_neutro": "A lei revoga os itens XIII e XVI e as alíneas K e N do artigo 1º da Lei nº 1.824/1991, que dispõe sobre o Conselho Municipal de Saúde de Diamantina. A ementa não especifica o conteúdo dos itens revogados."
+}

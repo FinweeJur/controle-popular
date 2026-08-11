@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "Lei Municipal nº 7.169/1996",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "servidor público municipal com jornada reduzida para acompanhamento de pessoa com deficiência"
+      ],
+      "grau": "marginal",
+      "trecho": "assegurar a manutenção do auxílio-alimentação ao servidor público municipal que possuir redução de jornada destinada ao acompanhamento de pessoa com deficiência",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 7.169/1996"
+  ],
+  "resumo_neutro": "O projeto altera a Lei nº 7.169/1996 para assegurar que o servidor público municipal de Belo Horizonte cuja jornada de trabalho seja reduzida para acompanhar pessoa com deficiência continue recebendo o auxílio-alimentação."
+}

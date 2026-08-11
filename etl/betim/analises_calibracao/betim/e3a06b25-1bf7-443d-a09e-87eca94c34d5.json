@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população do Município de Betim",
+        "áreas urbanas degradadas"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o programa municipal de reflorestamento de áreas degradadas urbanas no município de Betim e dá outras providências.",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui um programa municipal de reflorestamento de áreas urbanas degradadas em Betim."
+}
