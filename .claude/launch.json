@@ -21,6 +21,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3902"],
       "port": 3902
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-ambiental-barragens-tela) -- mesmo motivo da config acima.",
+      "name": "cp-ambiental-barragens-tela-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3903"],
+      "port": 3903
     }
   ]
 }

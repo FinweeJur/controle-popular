@@ -2,6 +2,7 @@ import Link from "@/lib/ambiental/link";
 import { ZONAS } from "@/lib/zonas";
 import { formatNumberBR } from "@/lib/betim/format";
 import { contarReunioesCopam } from "@/lib/db/queries/copam";
+import { contarBarragensMg } from "@/lib/db/queries/barragens";
 
 /**
  * Home da zona /ambiental.
@@ -20,12 +21,22 @@ import { contarReunioesCopam } from "@/lib/db/queries/copam";
  * ficou real (`etl.apis.copam_reunioes`, migration `0058`): agora o número
  * vem do banco, com o verbo no passado ("coletadas"), e o bloco é um link
  * de verdade para `/ambiental/copam` — não mais só uma promessa de fase.
+ *
+ * ═══ F5 (BARRAGENS) MESMA CORREÇÃO, 2026-08-11 ═══
+ *
+ * O bloco dizia "A fonte publica 249 barragens em Minas" com `href: null` —
+ * desatualizado (a coleta rodou: FEAM 249 + SNISB ~2.212, não só a FEAM) E
+ * incompleto (sem link). Corrigido pro mesmo padrão do COPAM acima.
  */
 
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
 
 export default async function AmbientalHome() {
-  const { reunioes, itens } = await contarReunioesCopam();
+  const [{ reunioes, itens }, barragens] = await Promise.all([
+    contarReunioesCopam(),
+    contarBarragensMg(),
+  ]);
+  const temBarragens = barragens.totalFeam > 0 || barragens.totalSnisb > 0;
 
   const BLOCOS = [
     {
@@ -39,6 +50,7 @@ export default async function AmbientalHome() {
       fase: "F3",
       href: "/copam",
       pronta: reunioes > 0,
+      linkTexto: "Ver a pauta →",
     },
     {
       titulo: "Licenciamento",
@@ -48,15 +60,19 @@ export default async function AmbientalHome() {
       fase: "F4",
       href: null,
       pronta: false,
+      linkTexto: "",
     },
     {
       titulo: "Barragens",
-      linha: "A fonte publica 249 barragens em Minas",
+      linha: temBarragens
+        ? `${formatNumberBR(barragens.totalFeam)} da FEAM + ${formatNumberBR(barragens.totalSnisb)} do SNISB, coletadas`
+        : "A fonte publica 249 barragens em Minas — coleta ainda não rodou",
       texto:
-        "Condição de estabilidade, nível de emergência, método construtivo e categoria de risco, do inventário da Feam cruzado com o registro nacional da ANM.",
+        "Condição de estabilidade, nível de emergência, método construtivo e categoria de risco, do inventário da FEAM (mineração e indústria) ao lado do cadastro nacional do SNISB (todos os usos) — as duas fontes lado a lado, nunca somadas.",
       fase: "F5",
-      href: null,
-      pronta: false,
+      href: "/barragens",
+      pronta: temBarragens,
+      linkTexto: "Ver as barragens →",
     },
     {
       titulo: "Legislação ambiental",
@@ -66,6 +82,7 @@ export default async function AmbientalHome() {
       fase: "F6",
       href: null,
       pronta: false,
+      linkTexto: "",
     },
   ];
 
@@ -85,9 +102,9 @@ export default async function AmbientalHome() {
           className="max-w-2xl rounded-lg border px-4 py-3 text-[.95em]"
           style={{ borderColor: ZONA.cor }}
         >
-          <strong>Seção em construção, por fase.</strong> A pauta do COPAM (F3) já tem tela real,
-          abaixo. Licenciamento, barragens estaduais e legislação seguem com fonte verificada e
-          documentada, tela ainda não.
+          <strong>Seção em construção, por fase.</strong> A pauta do COPAM (F3) e as barragens de
+          Minas (F5) já têm tela real, abaixo. Licenciamento e legislação seguem com fonte
+          verificada e documentada, tela ainda não.
         </p>
       </header>
 
@@ -107,7 +124,7 @@ export default async function AmbientalHome() {
               <p className="mt-2 flex-1 text-[.92em] text-text-soft">{b.texto}</p>
               {b.pronta && b.href ? (
                 <p className="mt-3 text-[.85em] font-semibold" style={{ color: ZONA.cor }}>
-                  Ver a pauta →
+                  {b.linkTexto}
                 </p>
               ) : null}
             </>
@@ -134,11 +151,10 @@ export default async function AmbientalHome() {
       <section className="mt-12 border-t border-border pt-8">
         <h2 className="font-display text-xl font-semibold">De onde vem o dado</h2>
         <p className="mt-2 max-w-2xl text-[.95em] text-text-soft">
-          Portal EcoSistemas e IDE-Sisema (Semad), inventário de barragens da Feam,
-          registro nacional de barragens da ANM, dados abertos da ALMG, Siam, banco de
-          legislação da Semad, CKAN do MMA e Conama. Cada fonte tem data de verificação e
-          licença registradas — nenhuma delas veda uso comercial, e é por isso que estão
-          aqui.
+          Portal EcoSistemas e IDE-Sisema (Semad), inventário de barragens da FEAM, cadastro
+          nacional de barragens SNISB (ANA), dados abertos da ALMG, Siam, banco de legislação
+          da Semad, CKAN do MMA e Conama. Cada fonte tem data de verificação e licença
+          registradas — nenhuma delas veda uso comercial, e é por isso que estão aqui.
         </p>
       </section>
     </div>
