@@ -146,7 +146,17 @@ function candidatos(
   //
   // A folga é de 2 letras na ponta — o bastante para `s`/`es`/`is` do plural
   // português, e curta o suficiente para "lei" NÃO arrastar "leitura".
-  if (palavra.length >= 3) {
+  //
+  // NÚMERO PURO NÃO ENTRA NESTE LAÇO. Medido: "4793" (a busca) e "47" (um
+  // radical qualquer do acervo — artigo, emenda, percentual) têm folga de 2
+  // dígitos e passavam como "o mesmo número com sufixo de plural" — mas
+  // número não tem plural em português, "2 dígitos de folga" é OUTRO
+  // número, não uma variação do mesmo. Sem este bloqueio, buscar "4793"
+  // devolvia os documentos que citam "47" (e não os que citam "4793") como
+  // se fossem a mesma coisa — medido 19 resultados em Cidades + 1 no
+  // Congresso, nenhum deles a proposição 4793 de verdade.
+  const numeroPuro = /^\d+$/.test(palavra);
+  if (palavra.length >= 3 && !numeroPuro) {
     for (let id = 0; id < indice.lexemas.length; id++) {
       if (achados.has(id)) continue;
       const lex = indice.lexemas[id];

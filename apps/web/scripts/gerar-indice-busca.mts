@@ -23,21 +23,30 @@
  * gerado (`public/busca-indice/**`) fica de fora do git (é artefato de
  * build, mesma categoria de `.next/`/`out/`) — regenerar é rodar de novo.
  *
- * ═══ O QUE ENTRA NO ÍNDICE, E POR QUE SÓ EMENTA ═══
+ * ═══ O QUE ENTRA NO ÍNDICE ═══
  *
- * O corpus é o que `/busca` já pesquisa hoje: `atos_oficiais.ementa`,
- * `proposicoes.ementa` (municipal), `congresso.proposicoes.ementa` (+
- * `keywords`, mesmo escopo do `ts_rank` de produção), mais
- * `judiciario.tribunais` (sigla+nome) e `judiciario.magistrados` (nome) —
- * o mesmo escopo de `buscaRapidaJudiciario`. DELIBERADAMENTE não título,
- * não número/ano: as três queries de produção
- * (`buscaLegislacaoMunicipal`/`buscaLegislacaoCongresso`) só rodam
- * `ts_rank`/`to_tsvector` sobre ementa — incluir título inflaria o
- * vocabulário com número de norma quase-único (cada `numero`/`ano` vira um
- * "lexema" a mais) sem ganhar cobertura de verdade: buscar por "PL 3611" já
- * não funciona na busca DINÂMICA de hoje pelo mesmo motivo (ementa não
- * contém o número da própria proposição). A versão estática mantém
- * paridade com essa característica existente, não introduz regressão.
+ * O corpus-base é `atos_oficiais.ementa`, `proposicoes.ementa` (municipal),
+ * `congresso.proposicoes.ementa` (+ `keywords`), mais `judiciario.tribunais`
+ * (sigla+nome) e `judiciario.magistrados` (nome). NÃO indexamos ementa
+ * inteira de norma nenhuma a mais que isso — ementa livre continua vindo só
+ * do `to_tsvector` do Postgres, sem gambiarra em JS.
+ *
+ * O que ENTRA A MAIS, e por que não é a mesma coisa que "indexar título":
+ * cada documento ganha até dois lexemas PRÓPRIOS — o número da própria
+ * proposição/ato (`"4793"`) e, quando existe abreviação de tipo conhecida
+ * (`"pl"`, `"pdl"`...), essa sigla — ver `ABREV_TIPO_PROPOSICAO_MUNICIPAL`/
+ * `abreviacoesCongresso` em `lib/busca/gerador.ts`. Isto NÃO é o que a versão
+ * antiga descartava: aquilo era "buscar número solto acha qualquer norma que
+ * cita esse número em qualquer lugar" (bloat real — cada `numero`/`ano` de
+ * TODO o acervo vira lexema, a maioria sem ninguém nunca buscar). Isto é
+ * "cada documento sabe dizer o PRÓPRIO número" — custo de UM token a mais
+ * por documento (~29 mil documentos, não milhares de números soltos de
+ * ementa), e é exatamente o padrão que a pessoa digita de verdade
+ * ("PL 4793", "Lei 1234") — placeholder de `BuscaClient.tsx` já promete
+ * "PL 3611" como exemplo. Medido sem este token: a ementa da PL 4793/2026
+ * de verdade (base local, 2026-08-11) NUNCA menciona "4793" — nenhum ajuste
+ * em `candidatos()` acharia essa proposição buscando pelo próprio número
+ * sem essa entrada dedicada.
  *
  * ═══ RADICAL VEM DO POSTGRES, NÃO DE RADICALIZADOR EM JS ═══
  *
@@ -75,7 +84,11 @@ import {
   montarTituloMunicipal,
   construirVocabulario,
   construirFormas,
+  ABREV_TIPO_PROPOSICAO_MUNICIPAL,
+  abreviacoesCongresso,
+  numeroCongresso,
 } from "../lib/busca/gerador.js";
+import { TIPO_PROPOSICAO_LABELS } from "../lib/betim/vereadores.js";
 import { arquivosDoIndice, arquivosDeIndiceVazio, type ArquivoIndice } from "../lib/estatico/emitir.js";
 import type { ManifestoFatias } from "../lib/estatico/fatiar.js";
 
@@ -127,12 +140,27 @@ async function main() {
   /** Registra um documento: aloca `i`, extrai radicais do `tsv` já
    *  calculado pelo Postgres, e coleta as formas de superfície do MESMO
    *  texto que gerou o `tsv` (garante que `formas`/`ocorrencias` descrevem
-   *  exatamente o mesmo corpo). */
-  function registrar(doc: Omit<DocumentoIndexado, "i">, textoIndexavel: string, tsv: string): void {
+   *  exatamente o mesmo corpo).
+   *
+   *  `extras`: lexemas PRÓPRIOS do documento que não vêm da ementa — número
+   *  da proposição/ato, abreviação de tipo (`abreviacoesCongresso`,
+   *  `ABREV_TIPO_PROPOSICAO_MUNICIPAL`). Passam direto, sem stemming: já são
+   *  a forma final (número não tem radical, sigla é sigla), e o lote de
+   *  `ts_lexize` mais abaixo confirma isso pra cada uma (ver cabeçalho do
+   *  arquivo). `new Set` deduplica o caso raro de a ementa já conter o
+   *  mesmo número/sigla — sem isso o documento apareceria duas vezes em
+   *  `ocorrencias` para o mesmo lexema. */
+  function registrar(
+    doc: Omit<DocumentoIndexado, "i">,
+    textoIndexavel: string,
+    tsv: string,
+    extras: string[] = []
+  ): void {
     const i = docs.length;
     docs.push(doc);
-    vocabEntradas.push({ docId: i, lexemas: parseTsvectorLexemas(tsv) });
+    vocabEntradas.push({ docId: i, lexemas: [...new Set([...parseTsvectorLexemas(tsv), ...extras])] });
     for (const palavra of separarPalavras(textoIndexavel)) superficies.add(palavra);
+    for (const extra of extras) superficies.add(extra);
   }
 
   // ─────────────────────────── atos_oficiais ───────────────────────────
@@ -179,7 +207,8 @@ async function main() {
         u: r.link_fonte ?? undefined,
       },
       r.ementa ?? "",
-      r.tsv
+      r.tsv,
+      r.numero?.trim() ? [r.numero.trim()] : []
     );
   }
 
@@ -215,9 +244,18 @@ async function main() {
     const href = tema
       ? `/${slug}/camara/proposicoes?tema=${encodeURIComponent(tema)}`
       : `/${slug}/camara/proposicoes`;
+    // `TIPO_PROPOSICAO_LABELS` traduz o slug cru do banco ("projeto_lei")
+    // pro rótulo que o resto do site já usa ("Projeto de Lei") — mesmo mapa
+    // de `ListaProposicoes.tsx`, não um novo. Sem isto, o card de `/busca`
+    // mostrava o enum cru ("projeto_lei nº 568/2026").
+    const rotulo = (r.tipo && TIPO_PROPOSICAO_LABELS[r.tipo]) || r.tipo;
+    const extras = [
+      r.numero !== null && r.numero !== undefined ? String(r.numero) : undefined,
+      r.tipo ? ABREV_TIPO_PROPOSICAO_MUNICIPAL[r.tipo] : undefined,
+    ].filter((x): x is string => Boolean(x));
     registrar(
       {
-        t: montarTituloMunicipal(r.tipo, r.numero, r.ano, "proposicao"),
+        t: montarTituloMunicipal(rotulo, r.numero, r.ano, "proposicao"),
         e: truncarEmenta(r.ementa, LIMITE_EMENTA),
         h: href,
         f: "cidades",
@@ -227,7 +265,8 @@ async function main() {
         u: r.link_fonte ?? undefined,
       },
       r.ementa ?? "",
-      r.tsv
+      r.tsv,
+      extras
     );
   }
 
@@ -255,6 +294,9 @@ async function main() {
       `)
     ).rows ?? [];
   for (const r of proposicoesCongresso) {
+    const extras = [...abreviacoesCongresso(r.identificacao), numeroCongresso(r.identificacao)].filter(
+      (x): x is string => Boolean(x)
+    );
     registrar(
       {
         t: r.identificacao ?? "Proposição",
@@ -265,7 +307,8 @@ async function main() {
         u: r.url ?? undefined,
       },
       `${r.ementa ?? ""} ${r.keywords ?? ""}`,
-      r.tsv
+      r.tsv,
+      extras
     );
   }
 

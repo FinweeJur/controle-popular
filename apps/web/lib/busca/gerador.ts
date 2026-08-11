@@ -56,6 +56,58 @@ export function montarTituloMunicipal(
 }
 
 /**
+ * Abreviação comum de tipo de proposição municipal — o jeito que a imprensa,
+ * a própria câmara e quem já usa buscador de legislação chamam essas
+ * espécies ("PL", "PLC"...), mas que a coluna `tipo` do ETL nunca grava
+ * (guarda o slug inteiro: `projeto_lei`). Entra no índice como um lexema A
+ * MAIS pra cada proposição do tipo — não troca o rótulo exibido, só ensina
+ * o buscador o sinônimo curto.
+ *
+ * Só os tipos de volume relevante entraram (conferido em
+ * `scripts/tipos-de-proposicao.mts`, base local de 2026-08-11: de
+ * `indicacao` com 4261 linhas até `projeto_lei_complementar` com 46). Tipo
+ * de 1-2 linhas (`portaria`, `denuncia`...) não tem abreviação de mercado
+ * conhecida — buscar pelo nome completo já basta, e errar um mapa inventado
+ * é pior que não ter.
+ *
+ * Cada entrada foi conferida em `ts_lexize('portuguese_stem', ...)`: nenhuma
+ * delas é stopword (voltam sem mudar — números e siglas curtas não têm
+ * radical). `"ela"` (Emenda à Lei Orgânica) ficou de fora por isso: É
+ * stopword do dicionário `portuguese_stem` (pronome "ela"), e um lexema que
+ * o próprio Postgres descarta não serve pra casamento exato.
+ */
+export const ABREV_TIPO_PROPOSICAO_MUNICIPAL: Record<string, string> = {
+  projeto_lei: "pl",
+  projeto_lei_complementar: "plc",
+  projeto_resolucao: "pr",
+  projeto_decreto_legislativo: "pdl",
+  indicacao: "ind",
+  requerimento: "req",
+  mocao: "moc",
+};
+
+/**
+ * Abreviação(ões) de tipo de proposição do Congresso — vem de graça do
+ * próprio `identificacao` ("PL 4793/2026" -> "pl"), sem mapa novo pra
+ * manter (conferido: só `PL`/`PDL`/`PLP`/`MPV`/`PLV`/`PEC` aparecem na base
+ * local). `MPV` ganha o sinônimo `"mp"` — é como a imprensa e o dia a dia
+ * chamam medida provisória; o dado da Câmara nunca abrevia assim.
+ */
+export function abreviacoesCongresso(identificacao: string | null | undefined): string[] {
+  const prefixo = identificacao?.trim().split(/\s+/)[0]?.toLowerCase();
+  if (!prefixo || !/^[a-z]+$/.test(prefixo)) return [];
+  return prefixo === "mpv" ? [prefixo, "mp"] : [prefixo];
+}
+
+/**
+ * Número da proposição do Congresso, extraído do `identificacao` ("PL
+ * 4793/2026" -> "4793") — mesma fonte, sem consulta extra.
+ */
+export function numeroCongresso(identificacao: string | null | undefined): string | undefined {
+  return identificacao?.match(/\d+/)?.[0];
+}
+
+/**
  * Monta `lexemas` (ordenados — contrato de `IndiceBusca`) e `ocorrencias`
  * (lexemaId -> ids de documento) a partir dos radicais extraídos de cada
  * documento.

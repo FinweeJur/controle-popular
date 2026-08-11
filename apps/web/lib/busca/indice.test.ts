@@ -10,7 +10,7 @@ import { interpretarConsulta, buscar, type IndiceBusca } from "./indice";
  *     iluminacao -> iluminaca      saude -> saud        lei -> lei
  *     leis       -> leis           contratos -> contrat
  */
-const LEXEMAS = ["iluminaca", "saud", "lei", "leis", "contrat", "public", "ambiental"];
+const LEXEMAS = ["iluminaca", "saud", "lei", "leis", "contrat", "public", "ambiental", "47", "4793", "pl"];
 const id = (l: string) => LEXEMAS.indexOf(l);
 
 const INDICE: IndiceBusca = {
@@ -25,6 +25,9 @@ const INDICE: IndiceBusca = {
     publica: id("public"),
     publicas: id("public"),
     ambiental: id("ambiental"),
+    47: id("47"),
+    4793: id("4793"),
+    pl: id("pl"),
   },
   ocorrencias: [
     [1], // iluminaca
@@ -34,6 +37,9 @@ const INDICE: IndiceBusca = {
     [3], // contrat
     [1, 4], // public
     [5], // ambiental
+    [6], // 47 — artigo/emenda solto na ementa do doc 6, NAO e a mesma proposicao que "4793"
+    [2], // 4793 — numero proprio da PL 3611/2023 (extra do gerador, ver gerador.ts)
+    [2], // pl — abreviacao de tipo (extra do gerador)
   ],
   docs: [
     { i: 1, t: "Lei 1.234/2020", e: "Dispoe sobre a iluminacao publica", h: "/a/1", f: "cidades", m: "betim", a: ["urbanismo"], d: "2020-01-01" },
@@ -41,6 +47,7 @@ const INDICE: IndiceBusca = {
     { i: 3, t: "Contrato 55", e: "Contratos de saude suplementar", h: "/a/3", f: "cidades", m: "bh", d: "2021-03-03" },
     { i: 4, t: "Consolidacao das leis", e: "Leis publicas municipais", h: "/a/4", f: "cidades", m: "betim", d: "2019-07-07" },
     { i: 5, t: "Norma ambiental", e: "Licenciamento ambiental", h: "/a/5", f: "cidades", m: "betim", d: "2022-02-02" },
+    { i: 6, t: "Decreto 9", e: "Altera o artigo 47 do regimento", h: "/a/6", f: "cidades", m: "betim", d: "2018-01-01" },
   ],
 };
 
@@ -160,7 +167,7 @@ describe("buscar", () => {
   });
 
   it("filtra por municipio e por tema sem palavra-chave", () => {
-    expect(ids(buscar("", INDICE, { municipio: "betim" }))).toEqual([1, 4, 5]);
+    expect(ids(buscar("", INDICE, { municipio: "betim" }))).toEqual([1, 4, 5, 6]);
     expect(ids(buscar("", INDICE, { tema: "urbanismo" }))).toEqual([1]);
   });
 
@@ -170,5 +177,23 @@ describe("buscar", () => {
 
   it("consulta sem resultado devolve lista vazia, nao o acervo", () => {
     expect(buscar("zzzzqqqq", INDICE)).toEqual([]);
+  });
+
+  // Bug 2: "47" (radical solto no doc 6) tem folga de 2 digitos com "4793"
+  // (o numero da PL 3611/2023, doc 2) — o laco de vizinho morfologico
+  // tratava isso como "mesma palavra, sufixo de plural" antes do guard de
+  // numero puro. Medido no acervo real: 19 resultados errados em Cidades.
+  it("numero puro nao casa por vizinho morfologico (Bug 2)", () => {
+    expect(ids(buscar("4793", INDICE))).toEqual([2]);
+    expect(ids(buscar("4793", INDICE))).not.toContain(6);
+  });
+
+  it("PL 3611 acha a proposicao pelo tipo + numero, nao pela ementa (Bug 1+2)", () => {
+    // "pl" e "4793" so existem no indice como extras do gerador (numero e
+    // abreviacao de tipo do proprio documento) — nenhum dos dois aparece na
+    // ementa "Politica de saude mental". Sem os dois bugs corrigidos, essa
+    // busca devolvia zero (Bug 1: "pl" sem fallback zera a consulta inteira
+    // em E) ou os documentos errados (Bug 2).
+    expect(ids(buscar("pl 4793", INDICE))).toEqual([2]);
   });
 });
