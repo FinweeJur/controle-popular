@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": [
+        "população do Município de Betim",
+        "frequentadores de cemitérios municipais"
+      ],
+      "grau": "marginal",
+      "trecho": "Define ações de combate à dengue nos cemitérios do Município de Betim e disciplina a colocação de vasos e recipientes para ornamentação de sepulturas",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto define ações municipais de combate à dengue em cemitérios de Betim e disciplina a colocação de vasos e recipientes para ornamentação de sepulturas. É execução local de política de saúde pública, sem criar ou retirar direito. A proposta foi sancionada."
+}

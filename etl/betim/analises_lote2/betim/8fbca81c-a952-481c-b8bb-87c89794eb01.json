@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças matriculadas em CMEIs, creches e pré-escola da rede municipal de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui Programa Fonaudiologia Educacional nos centros municipais de educação infantil, nas creches e na pré-escola do Município de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui um programa de fonoaudiologia educacional nos CMEIs, creches e pré-escola da rede municipal de Betim. A proposta foi vetada."
+}

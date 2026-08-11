@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pedestres e usuários de unidades de saúde do Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "implantação obrigatória de travessias seguras em frente às Unidades Básicas de Saúde (UBS), Unidades de Pronto Atendimento (UPA), Hospitais e demais estabelecimentos de saúde localizados no Município de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto torna obrigatória a implantação de travessias seguras em frente a UBS, UPA, hospitais e demais estabelecimentos de saúde de Betim. A proposta está em tramitação (situação: Em Trâmite)."
+}

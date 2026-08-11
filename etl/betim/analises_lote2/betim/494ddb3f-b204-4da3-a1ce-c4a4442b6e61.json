@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estudantes da rede municipal de Betim",
+        "crianças matriculadas em CMEIs"
+      ],
+      "grau": "moderado",
+      "trecho": "redução do número de estudantes por turma nas Escolas Municipais e nos Centros Municipais de Educação Infantil da Rede Municipal de Educação de Betim",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto reduz o número máximo de estudantes por turma nas Escolas Municipais e nos Centros Municipais de Educação Infantil de Betim. A proposta está em tramitação (situação: Em Trâmite)."
+}

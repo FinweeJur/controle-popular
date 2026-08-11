@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "gestantes",
+        "responsáveis legais de crianças até 2 anos"
+      ],
+      "grau": "marginal",
+      "trecho": "reserva de vaga de estacionamento às gestantes e aos responsáveis legais de crianças até 02 anos",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto reserva vagas de estacionamento para gestantes e para responsáveis legais de crianças de até 2 anos em Betim. A proposta está em tramitação (situação: Em Trâmite)."
+}

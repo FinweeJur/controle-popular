@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "gestantes atendidas pela rede de saúde de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre a realização de exames em gestantes",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a realização de exames em gestantes no Município de Betim. A proposta foi vetada."
+}

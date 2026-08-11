@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "alunos da educação básica e do ensino médio internados por período prolongado em Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "atendimento Educacional ao aluno da Educação Básica e do Ensino Médio, internado por período prolongado em regime Hospitalar ou domiciliar no Município de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre o atendimento educacional ao aluno da educação básica e do ensino médio internado por período prolongado em regime hospitalar ou domiciliar, em Betim. A proposta foi arquivada (situação: Prejudicado - Arquivado)."
+}

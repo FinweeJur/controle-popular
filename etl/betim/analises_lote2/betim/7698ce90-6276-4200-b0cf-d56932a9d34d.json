@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "igualdade_nao_discriminacao",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "estudantes da rede municipal de ensino de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o programa Caminhos Para a Igualdade na rede de ensino do Município de Betim",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o programa 'Caminhos Para a Igualdade' na rede municipal de ensino de Betim. A ementa não detalha o conteúdo do programa. A proposta está em tramitação (situação: Em Trâmite)."
+}
