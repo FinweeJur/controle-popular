@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_lgbtqia",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "estudantes LGBTQIA+ das instituições de ensino públicas e privadas"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de elaboração e divulgação de Planos de Prevenção e Enfrentamento à Discriminação por Identidade de Gênero e Orientação Sexual nas instituições de ensino públicas e privadas",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto torna obrigatória a elaboração e divulgação de Planos de Prevenção e Enfrentamento à Discriminação por Identidade de Gênero e Orientação Sexual nas instituições de ensino públicas e privadas de São Paulo. A norma busca dar visibilidade institucional ao enfrentamento dessa forma de discriminação no ambiente escolar."
+}

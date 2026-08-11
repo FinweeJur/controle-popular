@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "mães solo"
+      ],
+      "grau": "moderado",
+      "trecho": "Programa \"Tempo de Mãe\", de atendimento prioritário à mãe solo nos serviços públicos municipais",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa \"Tempo de Mãe\", que estabelece atendimento prioritário à mãe solo nos serviços públicos municipais de São Paulo. A medida cria preferência de atendimento para essa parcela da população."
+}

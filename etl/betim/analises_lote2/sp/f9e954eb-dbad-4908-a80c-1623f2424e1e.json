@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "recém-nascidos atendidos pela rede municipal de saúde"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre o teste do pezinho na rede municipal de saúde do Município de São Paulo, em consonância com a Lei Federal nº 14.154, de 26 de maio de 2021",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a realização do teste do pezinho na rede municipal de saúde de São Paulo, em consonância com a Lei Federal nº 14.154/2021, que ampliou o rol de doenças rastreadas. A norma reforça, no âmbito municipal, a oferta desse exame de triagem neonatal."
+}

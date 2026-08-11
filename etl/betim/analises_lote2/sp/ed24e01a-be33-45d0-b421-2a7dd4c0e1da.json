@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "estudantes da rede pública municipal de ensino"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade da presença de profissional psicopedagogo nos equipamentos públicos de ensino",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto torna obrigatória a presença de profissional psicopedagogo nos equipamentos públicos de ensino do Município de São Paulo. A medida amplia o quadro de apoio pedagógico disponível aos estudantes da rede municipal."
+}

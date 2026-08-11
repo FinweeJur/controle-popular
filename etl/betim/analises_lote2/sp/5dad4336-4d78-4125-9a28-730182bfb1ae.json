@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas com diabetes"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Selo de Identificação Veicular da Pessoa com Diabetes no Município de São Paulo",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui um selo de identificação veicular destinado a pessoas com diabetes no Município de São Paulo. A medida cria um instrumento de identificação que pode facilitar atendimento em situações de emergência relacionadas à doença."
+}

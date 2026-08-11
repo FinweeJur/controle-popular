@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças e adolescentes vítimas de abuso ou exploração sexual"
+      ],
+      "grau": "moderado",
+      "trecho": "prioridade no atendimento psicológico na rede pública municipal às crianças e adolescentes vítimas de abuso ou exploração sexual",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo a instituir prioridade no atendimento psicológico na rede pública municipal a crianças e adolescentes vítimas de abuso ou exploração sexual. A medida cria preferência de atendimento em saúde mental para essa população."
+}

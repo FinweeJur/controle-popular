@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população em geral"
+      ],
+      "grau": "marginal",
+      "trecho": "campanha anual denominada \"SP Cuidando de Você\", com o objetivo de conscientizar a população sobre as doenças cardiovasculares, sua prevenção e controle",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui campanha anual de conscientização sobre doenças cardiovasculares, sua prevenção e controle, denominada \"SP Cuidando de Você\". A medida tem caráter informativo, voltada à promoção da saúde cardiovascular no Município."
+}

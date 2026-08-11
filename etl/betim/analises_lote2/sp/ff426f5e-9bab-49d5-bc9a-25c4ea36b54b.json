@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população em geral",
+        "trabalhadores de obras"
+      ],
+      "grau": "marginal",
+      "trecho": "obrigatoriedade de medidas preventivas de segurança em obras e intervenções que envolvam escavações e infraestruturas subterrâneas",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto torna obrigatória a adoção de medidas preventivas de segurança em obras e intervenções que envolvam escavações e infraestruturas subterrâneas no Município de São Paulo. A norma cria exigências de prevenção de acidentes ligados a esse tipo de obra."
+}

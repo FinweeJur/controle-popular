@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com transtorno do espectro autista (TEA)"
+      ],
+      "grau": "marginal",
+      "trecho": "programa permanente de capacitação da Guarda Civil Metropolitana para atendimento humanizado às pessoas com transtorno do espectro autista (TEA)",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui programa permanente de capacitação da Guarda Civil Metropolitana para o atendimento humanizado a pessoas com transtorno do espectro autista. A medida busca qualificar o atendimento público prestado a essa população."
+}

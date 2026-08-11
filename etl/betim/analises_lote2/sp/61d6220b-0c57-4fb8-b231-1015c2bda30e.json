@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas idosas",
+        "cuidadores de pessoas idosas"
+      ],
+      "grau": "marginal",
+      "trecho": "Autoriza o Poder Executivo Municipal a instituir cursos de cuidadores de pessoas idosas",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo Municipal a instituir cursos de formação para cuidadores de pessoas idosas. A medida busca qualificar profissionais que prestam assistência à população idosa."
+}

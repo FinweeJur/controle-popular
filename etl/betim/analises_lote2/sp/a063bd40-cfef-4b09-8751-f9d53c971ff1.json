@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população em situação de rua"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal de Enfrentamento à Violência contra a População em Situação de Rua",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política Municipal de Enfrentamento à Violência contra a População em Situação de Rua no Município de São Paulo. A norma estabelece diretrizes voltadas à proteção dessa população contra atos de violência."
+}

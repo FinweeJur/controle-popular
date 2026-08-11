@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "idosos residentes em Instituições de Longa Permanência (ILPIs)"
+      ],
+      "grau": "moderado",
+      "trecho": "condições de regularização de Instituições de Longa Permanência para Idosos (ILPIs) já instaladas em Zonas Exclusivamente Residenciais (ZER) no Município de São Paulo, estabelece regime de transição",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto estabelece condições de regularização para Instituições de Longa Permanência para Idosos (ILPIs) já instaladas em Zonas Exclusivamente Residenciais, prevendo regime de transição. A medida viabiliza a permanência de estabelecimentos de acolhimento a idosos já em funcionamento nessas zonas."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "criminaliza_violacao",
+      "titulares": [
+        "animais no Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Programa Smart Patas, destinado à prevenção, identificação e responsabilização de autores de abandono e/ou maus-tratos de animais",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Smart Patas, voltado à prevenção, identificação e responsabilização de autores de abandono ou maus-tratos de animais, com integração aos sistemas Smart Sampa e SP156. A medida cria mecanismo de monitoramento e responsabilização nessa área."
+}

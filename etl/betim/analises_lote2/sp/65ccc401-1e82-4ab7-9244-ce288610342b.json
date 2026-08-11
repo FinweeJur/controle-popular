@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "catadores de resíduos e reciclagem"
+      ],
+      "grau": "marginal",
+      "trecho": "autorização do Executivo na celebração de parcerias, contratos e/ou convênios com a finalidade de instalação de Postos de Apoio aos Catadores de Resíduos e Reciclagem (P.A.C.s)",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Executivo a celebrar parcerias, contratos ou convênios para instalação de Postos de Apoio aos Catadores de Resíduos e Reciclagem no Município de São Paulo. A medida cria infraestrutura de apoio à atividade dos catadores."
+}

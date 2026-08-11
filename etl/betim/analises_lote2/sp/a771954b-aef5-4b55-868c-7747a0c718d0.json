@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "moradores do Município de São Paulo",
+        "fauna silvestre"
+      ],
+      "grau": "moderado",
+      "trecho": "prevenção e o controle da poluição sonora e da perturbação do sossego coletiva e individual, da tranquilidade pública, dos direitos de vizinhança, da saúde pública e individual, do meio ambiente urbano e da fauna silvestre",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto disciplina a prevenção e o controle da poluição sonora no Município de São Paulo, estabelecendo normas para uso de equipamentos de amplificação sonora e realização de eventos em logradouros públicos e privados. A norma visa proteger a tranquilidade pública, a saúde e o meio ambiente urbano, incluindo a fauna silvestre."
+}
