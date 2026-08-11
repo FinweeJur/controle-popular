@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ThemeSwitcher from "@/app/ambiental/components/ThemeSwitcher";
 import FontSizeControl from "@/app/ambiental/components/FontSizeControl";
+import CvdToggle from "@/app/components/CvdToggle";
 
 /**
  * Zona /ambiental. O `<html>`, as fontes e o ThemeProvider vêm do layout
@@ -72,6 +73,7 @@ export default function AmbientalLayout({
             </a>
             <FontSizeControl />
             <ThemeSwitcher />
+            <CvdToggle />
           </div>
         </div>
       </header>

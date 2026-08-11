@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { ThemeProvider } from "next-themes";
 import { clashDisplay, generalSans, tabular } from "@/app/fonts";
+import OuvirPagina from "@/app/components/OuvirPagina";
 import "./globals.css";
 
 /**
@@ -33,6 +34,18 @@ const FONT_SIZE_NO_FLASH_SCRIPT = `
 })();
 `;
 
+// Mesmo truque, para a paleta seguro-para-daltônicos (`CvdToggle.tsx`):
+// atributo próprio (`data-cvd`), lido antes da pintura para não trocar
+// --cp-accent/--cp-alert já com o primeiro frame na tela.
+const CVD_NO_FLASH_SCRIPT = `
+(function() {
+  try {
+    var cvd = localStorage.getItem('cp_cvd');
+    document.documentElement.setAttribute('data-cvd', cvd === 'on' ? 'on' : 'off');
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -48,6 +61,11 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: FONT_SIZE_NO_FLASH_SCRIPT }}
         />
+        <Script
+          id="cp-cvd-no-flash"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: CVD_NO_FLASH_SCRIPT }}
+        />
       </head>
       <body className="flex min-h-full flex-col antialiased">
         <ThemeProvider
@@ -56,6 +74,12 @@ export default function RootLayout({
           themes={["light", "dark", "high-contrast"]}
         >
           {children}
+          {/* Global, fora do cabeçalho de zona: cobre TODA página que tem
+              <main> (inclusive /busca e /funcaosocialterra, que não usam o
+              Header/layout de nenhuma das quatro zonas) com um só
+              componente, em vez de duplicar o botão zona por zona como
+              ThemeSwitcher/FontSizeControl fazem hoje. Ver `OuvirPagina.tsx`. */}
+          <OuvirPagina />
         </ThemeProvider>
       </body>
     </html>

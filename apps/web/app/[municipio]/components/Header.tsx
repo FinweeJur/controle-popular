@@ -1,6 +1,7 @@
 import Link from "@/lib/betim/link";
 import { temFonte, type Cidade } from "@/lib/db/queries/municipios";
 import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
+import CvdToggle from "@/app/components/CvdToggle";
 import FontSizeControl from "@/app/[municipio]/components/FontSizeControl";
 import NavDropdown from "@/app/[municipio]/components/NavDropdown";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
@@ -121,6 +122,7 @@ export default function Header({ cidade }: { cidade: Cidade }) {
           Judiciário →
         </a>
         <ThemeSwitcher />
+        <CvdToggle />
         <FontSizeControl />
       </div>
       </div>

@@ -42,11 +42,18 @@ export default function MapaTerrasPage() {
         </div>
       </header>
 
-      <iframe
-        src="/terras/globo/index.html"
-        title="Globo 3D — terras públicas e vazio cadastral em Minas Gerais"
-        className="w-full flex-1 border-0"
-      />
+      {/* <main> em vez do <iframe> solto: dá um alvo semântico à página
+          (antes não tinha nenhum), embora não haja texto para o botão
+          global de "Ouvir esta página" ler aqui -- o conteúdo é o globo
+          3D dentro do iframe, opaco a extração de texto do documento pai.
+          O botão detecta o <main> vazio e some sozinho nesta página. */}
+      <main className="flex-1">
+        <iframe
+          src="/terras/globo/index.html"
+          title="Globo 3D — terras públicas e vazio cadastral em Minas Gerais"
+          className="h-full w-full border-0"
+        />
+      </main>
     </div>
   );
 }

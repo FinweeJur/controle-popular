@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/lib/judiciario/link";
 import ThemeSwitcher from "@/app/judiciario/components/ThemeSwitcher";
 import FontSizeControl from "@/app/judiciario/components/FontSizeControl";
+import CvdToggle from "@/app/components/CvdToggle";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
 
 /**
@@ -74,6 +75,7 @@ export default function JudiciarioLayout({
             </a>
             <FontSizeControl />
             <ThemeSwitcher />
+            <CvdToggle />
           </div>
         </div>
         {/* Faixa própria para a busca — mesma decisão do /congresso e da zona

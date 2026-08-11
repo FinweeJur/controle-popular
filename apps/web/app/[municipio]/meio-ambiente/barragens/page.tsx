@@ -31,10 +31,13 @@ export const generateMetadata = metadataDaCidade(
  * fato exato, e diz de que fonte veio cada linha.
  */
 function Etiqueta({ children, tom }: { children: React.ReactNode; tom?: "alerta" | "neutro" }) {
-  const cor =
-    tom === "alerta"
-      ? "border-[var(--cp-danger,#b3261e)] text-[var(--cp-danger,#b3261e)]"
-      : "border-border text-text-soft";
+  // Era `var(--cp-danger, #b3261e)` -- `--cp-danger` nunca foi definida em
+  // `globals.css` (mesmo bug que `--cp-secondary` já teve, ver o
+  // comentário lá), então isto sempre caía no literal de fallback: cor
+  // fixa em TODO tema, inclusive alto contraste, e fora do alcance da
+  // paleta segura para daltônicos. `border-alert`/`text-alert` é o token
+  // que já existe pra isso -- mesmo par usado no alerta de contrato.
+  const cor = tom === "alerta" ? "border-alert text-alert" : "border-border text-text-soft";
   return (
     <span className={`rounded-md border px-2 py-0.5 text-xs ${cor}`}>{children}</span>
   );

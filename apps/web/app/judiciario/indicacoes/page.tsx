@@ -44,10 +44,14 @@ export default async function Indicacoes() {
               {n.senado_ementa && <p className="mt-1 opacity-80">{n.senado_ementa}</p>}
               <div className="mt-2 flex flex-wrap gap-3 text-xs">
                 {n.resultado && (
+                  // Era `var(--cp-danger, #b91c1c)` -- nunca definida em
+                  // globals.css, caía sempre no fallback: cor fixa em todo
+                  // tema e fora do alcance da paleta segura para
+                  // daltônicos. `text-alert` é o token que existe.
                   <span
                     className={
                       n.resultado === "rejeitado_plenario"
-                        ? "font-medium text-[var(--cp-danger,#b91c1c)]"
+                        ? "font-medium text-alert"
                         : "opacity-60"
                     }
                   >
