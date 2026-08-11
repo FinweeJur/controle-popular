@@ -47,6 +47,14 @@ export const ROTULOS = {
   camada: 'Camada',
   lat: 'Latitude',
   lon: 'Longitude',
+  // Normas geolocalizadas (camada `normas-geolocalizadas`).
+  numero: 'Número',
+  ano: 'Ano',
+  data_publicacao: 'Publicada em',
+  ementa: 'Ementa',
+  endereco_extraido: 'Lugar citado na norma',
+  confianca: 'Confiança da localização',
+  link_fonte: 'Norma original',
 };
 
 /** Os dois anos comparados pelo pipeline (mapbiomas.ANOS_MUDANCA). */
@@ -228,6 +236,21 @@ export function formatarValor(chave, valor) {
     const pct = Number(valor);
     if (pct === 0) return 'nenhuma';
     return `${formatarNumero(pct)}% da área`;
+  }
+  // Normas geolocalizadas: link para a fonte, confiança em português, data
+  // no formato brasileiro. `link_fonte` sai como <a> -- as outras camadas
+  // não têm campo de URL, então este é o primeiro caso desse tipo aqui.
+  if (chave === 'link_fonte' && valor) {
+    return `<a href="${valor}" target="_blank" rel="noopener">Ver norma original ↗</a>`;
+  }
+  if (chave === 'confianca') {
+    if (valor === 'alta') return 'Alta — rua, avenida ou praça citada por nome';
+    if (valor === 'media') return 'Média — só bairro ou distrito (ponto aproximado)';
+    return String(valor);
+  }
+  if (chave === 'data_publicacao' && valor) {
+    const [ano, mes, dia] = String(valor).split('-');
+    if (ano && mes && dia) return `${dia}/${mes}/${ano}`;
   }
   const texto = String(valor);
   return VALORES[texto] ?? texto;
