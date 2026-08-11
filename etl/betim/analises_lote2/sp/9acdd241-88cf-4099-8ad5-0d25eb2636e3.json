@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "comunidade do Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Programa Municipal de Educação Ambiental Comunitária no Município de São Paulo",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Educação Ambiental Comunitária. Cria estrutura municipal de ações educativas voltadas ao meio ambiente, endereçadas à comunidade em geral."
+}

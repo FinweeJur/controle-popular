@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas idosas residentes no empreendimento Vila dos Idosos, acompanhadas pelo Programa Acompanhante de Idosos (PAI)"
+      ],
+      "grau": "marginal",
+      "trecho": "diretrizes para o atendimento domiciliar de segurança alimentar e nutricional às pessoas idosas residentes no empreendimento Vila dos Idosos",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui diretrizes de atendimento domiciliar de segurança alimentar e nutricional para idosos residentes no empreendimento Vila dos Idosos, acompanhados pelo Programa Acompanhante de Idosos ou serviço municipal equivalente. Trata-se de política focalizada em um grupo específico de idosos vulneráveis."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças e jovens do Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "diretrizes para o Programa Municipal de Escolinhas Esportivas Comunitárias no Município de São Paulo",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui diretrizes para o Programa Municipal de Escolinhas Esportivas Comunitárias. Estabelece bases para oferta municipal de atividades esportivas comunitárias, sem detalhar público-alvo específico além da comunidade local."
+}

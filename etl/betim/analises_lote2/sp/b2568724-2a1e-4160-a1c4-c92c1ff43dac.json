@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "moradores do Jardim Adelfiore e região de Perus, no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Autoriza a criação de Unidade Básica de Saúde (UBS) na Rua Tarcon, Jardim Adelfiore, distrito de Perus",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza a criação de uma Unidade Básica de Saúde (UBS) na Rua Tarcon, Jardim Adelfiore, distrito de Perus. Cria autorização legislativa para ampliação da infraestrutura de saúde na região."
+}

@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_titularidade",
+      "titulares": [
+        "estagiários da Administração Pública Municipal de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Altera a Lei nº 13.392, de 17 de julho de 2002, para ampliar os direitos dos estagiários no âmbito da Administração Pública Municipal de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 13.392, de 17 de julho de 2002 (Município de São Paulo)"
+  ],
+  "resumo_neutro": "O projeto altera a lei municipal de estágio para ampliar os direitos dos estagiários no âmbito da Administração Pública Municipal de São Paulo. A ementa não especifica quais direitos são ampliados nem o artigo alterado."
+}

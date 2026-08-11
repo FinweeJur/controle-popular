@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estudantes da Rede Municipal de Ensino de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui a Política Municipal de Orientação e Preparação dos Estudantes da Rede Municipal de Ensino para o ingresso nas Escolas Técnicas Estaduais – ETECs",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui política municipal de orientação e preparação de estudantes da rede municipal de ensino para o ingresso em Escolas Técnicas Estaduais (ETECs). Cria ações voltadas a ampliar o acesso desses estudantes ao ensino técnico estadual."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "pessoas idosas no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "criação de medidas de combate ao idadismo e ao etarismo, com mecanismos de proteção e valorização da pessoa idosa, contendo ferramentas de inclusão social, campanhas e conscientização da sociedade",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui medidas de combate ao idadismo e ao etarismo, com mecanismos de proteção e valorização da pessoa idosa, incluindo ferramentas de inclusão social, campanhas e conscientização, com ênfase nas instituições de ensino. Cria política municipal de enfrentamento à discriminação etária."
+}

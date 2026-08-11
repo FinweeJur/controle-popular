@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "Lei 12.651/2012 (Código Florestal)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "comunidade escolar do Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "coleta, reaproveitamento, reutilização, doação e reciclagem de cadernos, livros escolares, apostilas e demais materiais didáticos em suporte de papel",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal \"Caderno Verde\", voltado à coleta, reaproveitamento, reutilização, doação e reciclagem de materiais escolares em suporte de papel. É programa de gestão ambiental de resíduos aplicado ao contexto escolar."
+}
