@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas idosas neurodivergentes do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Programa Municipal de Atendimento Especializado à Pessoa Idosa Neurodivergente",
+      "confianca": 0.7
+    },
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas idosas neurodivergentes"
+      ],
+      "grau": "moderado",
+      "trecho": "Atendimento Especializado à Pessoa Idosa Neurodivergente no âmbito do Município de São Paulo",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo a instituir o Programa Municipal de Atendimento Especializado à Pessoa Idosa Neurodivergente no Município de São Paulo."
+}

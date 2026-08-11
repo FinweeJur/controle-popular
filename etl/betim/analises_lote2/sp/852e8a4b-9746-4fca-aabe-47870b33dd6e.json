@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "crianças e adolescentes em consultas e terapias multidisciplinares"
+      ],
+      "grau": "moderado",
+      "trecho": "garantia de acompanhamento e monitoramento, presencial ou por meios indiretos, por pais ou responsáveis, em consultas e terapias multidisciplinares a crianças e adolescentes",
+      "confianca": 0.65
+    },
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "adultos com deficiência ou síndromes"
+      ],
+      "grau": "moderado",
+      "trecho": "bem como a adultos com deficiência ou síndromes, no âmbito do Município de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto garante o acompanhamento e monitoramento, presencial ou por meios indiretos, por pais ou responsáveis, durante consultas e terapias multidisciplinares realizadas por crianças, adolescentes e adultos com deficiência ou síndromes no Município de São Paulo."
+}

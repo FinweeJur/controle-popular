@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "alunos da Rede Municipal de Ensino de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "garantia de padrões mínimos de qualidade e infraestrutura nas escolas da Rede Municipal de Ensino de São Paulo, em conformidade com a Lei Federal n° 15.360/2026",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a garantia de padrões mínimos de qualidade e infraestrutura nas escolas da Rede Municipal de Ensino de São Paulo, em conformidade com a Lei Federal nº 15.360/2026."
+}

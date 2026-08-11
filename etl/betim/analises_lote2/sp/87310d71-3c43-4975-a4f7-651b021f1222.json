@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "entidades de proteção animal sem fins lucrativos e animais abandonados no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "autoriza parcerias, convênios e cooperação com entidades sem fins lucrativos que acolhem cães e gatos abandonados, e estabelece medidas de incentivo fiscal e apoio técnico-veterinário",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Apoio às Entidades de Proteção Animal, cria o Programa Agente Protetor dos Animais e o Programa Veterinário Amigo, autorizando parcerias com entidades que acolhem cães e gatos abandonados e prevendo incentivo fiscal e apoio técnico-veterinário no Município de São Paulo."
+}

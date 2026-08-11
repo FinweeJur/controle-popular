@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "crianças com deficiência ou condição clínica que exija nutrição enteral prolongada"
+      ],
+      "grau": "moderado",
+      "trecho": "avaliação periódica e a substituição de sonda gástrica de longa permanência, gastrostomia ou dispositivo equivalente utilizado por crianças com deficiência ou condição clínica que exija nutrição enteral prolongada",
+      "confianca": 0.7
+    },
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "crianças com deficiência que utilizam sonda gástrica, gastrostomia ou dispositivo equivalente"
+      ],
+      "grau": "moderado",
+      "trecho": "assegurar, no âmbito da rede pública municipal de saúde, a avaliação periódica e a substituição de sonda gástrica de longa permanência",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto estabelece diretrizes para assegurar, na rede pública municipal de saúde, a avaliação periódica e a substituição de sonda gástrica de longa permanência, gastrostomia ou dispositivo equivalente utilizado por crianças com deficiência ou condição clínica que exija nutrição enteral prolongada."
+}

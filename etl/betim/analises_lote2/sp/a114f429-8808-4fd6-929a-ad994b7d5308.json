@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 216",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "comunidade cinematográfica e público da Mostra Internacional de Cinema em São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "Declara Patrimônio Cultural Imaterial do Município de São Paulo a Mostra Internacional de Cinema em São Paulo",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto declara a Mostra Internacional de Cinema em São Paulo como Patrimônio Cultural Imaterial do Município de São Paulo."
+}

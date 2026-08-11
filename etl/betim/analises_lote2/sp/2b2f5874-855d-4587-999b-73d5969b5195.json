@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "mulheres em situação de violência doméstica e familiar"
+      ],
+      "grau": "marginal",
+      "trecho": "Altera a Lei no 16.684, de 10 de julho de 2017, que “Dispõe sobre a obrigatoriedade de afixação, no âmbito do Município de São Paulo, de avisos com o número do Disque Denúncia da Violência Contra a Mulher (Disque 180)\"",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 16.684, de 10 de julho de 2017"
+  ],
+  "resumo_neutro": "O projeto altera a lei municipal que obriga a afixação de avisos com o número do Disque 180 (Disque Denúncia da Violência Contra a Mulher) em estabelecimentos do Município de São Paulo. A ementa não detalha o conteúdo específico da alteração, apenas identifica a lei modificada."
+}

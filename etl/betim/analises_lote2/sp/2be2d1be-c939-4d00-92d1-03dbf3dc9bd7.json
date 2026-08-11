@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "crianças usuárias de transporte escolar particular e gratuito"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de formação continuada para profissionais do transporte escolar particular e gratuito no município de São Paulo, com foco na prevenção do esquecimento de crianças em veículos",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto torna obrigatória a formação continuada para profissionais do transporte escolar particular e gratuito no Município de São Paulo, com foco na prevenção do esquecimento de crianças em veículos."
+}

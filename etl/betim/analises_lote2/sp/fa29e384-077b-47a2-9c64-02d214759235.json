@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "praticantes e mestres de capoeira no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Programa Municipal de Fomento à Capoeira: Salvaguarda, Difusão Cultural e Inclusão Racial",
+      "confianca": 0.7
+    },
+    {
+      "direito": "igualdade_nao_discriminacao",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "comunidade afro-brasileira ligada à capoeira"
+      ],
+      "grau": "marginal",
+      "trecho": "Inclusão Racial",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Fomento à Capoeira, voltado à salvaguarda, difusão cultural e inclusão racial ligadas à manifestação da capoeira no Município de São Paulo."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_titularidade",
+      "titulares": [
+        "psicólogos da Administração Pública do Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "jornada de trabalho dos psicólogos no âmbito da Administração Pública do Município de São Paulo",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a jornada de trabalho dos psicólogos que atuam na Administração Pública do Município de São Paulo. A ementa não especifica se a jornada é reduzida, mantida ou ampliada em relação ao regime atual."
+}

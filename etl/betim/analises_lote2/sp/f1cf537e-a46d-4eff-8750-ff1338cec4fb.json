@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "motociclistas e demais usuários das vias públicas do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Trânsito Seguro e dispõe sobre a concessão do Selo Moto Segura/Trânsito Seguro",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Trânsito Seguro e cria o Selo Moto Segura/Trânsito Seguro, voltado a reconhecer e incentivar práticas de segurança viária, especialmente entre motociclistas, no Município de São Paulo."
+}
