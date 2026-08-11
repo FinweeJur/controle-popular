@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "Dispõe sobre a promoção de estudos e incentivos para a implantação de uma usina solar flutuante na Várzea das Flores, em Betim, por meio de parceria com a iniciativa privada",
+      "confianca": 0.35
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a promoção de estudos e incentivos, em parceria com a iniciativa privada, para a implantação de uma usina solar flutuante na Várzea das Flores, em Betim. O texto autoriza apenas estudos e incentivos preparatórios, sem definir efeitos ambientais concretos."
+}

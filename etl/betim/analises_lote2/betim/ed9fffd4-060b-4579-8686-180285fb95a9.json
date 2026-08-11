@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "Lei 8.069/1990 (ECA)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "crianças e adolescentes matriculados nas redes pública e privada de ensino"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre o programa de Combate ao diabetes e à obesidade infantil nas Rede pública e Privada de ensino da cidade de Betim",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre um programa de combate ao diabetes e à obesidade infantil nas redes pública e privada de ensino de Betim. O projeto foi vetado; a leitura acima refere-se ao teor do texto proposto, não ao seu status final de vigência."
+}

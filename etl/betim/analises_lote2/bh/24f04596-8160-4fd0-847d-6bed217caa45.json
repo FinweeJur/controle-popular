@@ -1,0 +1,32 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estudantes menstruantes da rede pública municipal de ensino"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa de Dignidade Menstrual na rede pública municipal de ensino",
+      "confianca": 0.55
+    },
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estudantes menstruantes da rede pública municipal de ensino"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa de Dignidade Menstrual na rede pública municipal de ensino",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa de Dignidade Menstrual na rede pública municipal de ensino de Belo Horizonte. A norma cria política voltada ao acesso de estudantes menstruantes a itens de higiene no ambiente escolar."
+}

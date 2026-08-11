@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "usuários de campos e quadras esportivas públicas e privadas, sobretudo crianças"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui a Política “Gol Seguro” de Obrigatoriedade de Instalação de Sistema de Travas em Gols de Campos ou Quadras Esportivas no Município de Betim",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política \"Gol Seguro\", tornando obrigatória a instalação de sistema de travas de segurança em gols de campos e quadras esportivas no município de Betim. O projeto foi vetado; a leitura acima refere-se ao teor do texto proposto, não ao seu status final de vigência."
+}

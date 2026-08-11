@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 14",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "Altera a Lei nº 5.796/90, que dispõe sobre eleição de diretores e vice-diretores dos estabelecimentos municipais de ensino",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 5.796/1990"
+  ],
+  "resumo_neutro": "A lei altera a Lei nº 5.796/1990, que dispõe sobre a eleição de diretores e vice-diretores dos estabelecimentos municipais de ensino de Belo Horizonte. A ementa não especifica quais regras do processo eleitoral são modificadas."
+}

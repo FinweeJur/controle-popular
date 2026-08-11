@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "dependentes químicos em reinserção social"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Municipal de Incentivo ao Emprego e à Reinserção Social de Dependentes Químicos e dá outras providências",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A proposição institui, no município, o Programa de Incentivo ao Emprego e à Reinserção Social de Dependentes Químicos. A norma cria política de acesso ao trabalho voltada a esse público em situação de vulnerabilidade."
+}

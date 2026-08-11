@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoa com deficiência oculta"
+      ],
+      "grau": "marginal",
+      "trecho": "utilização do cordão de girassol como símbolo para a identificação da pessoa com deficiência oculta",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a utilização do cordão de girassol como símbolo para identificação, no município, de pessoa com deficiência oculta. O objetivo declarado é facilitar o reconhecimento dessas pessoas em espaços públicos e privados."
+}
