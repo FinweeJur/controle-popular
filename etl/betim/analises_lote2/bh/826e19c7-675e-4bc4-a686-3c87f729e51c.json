@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "estudantes que integram delegações desportivas ou atividades artísticas"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre os direitos dos estudantes matriculados em instituições do sistema municipal de ensino que integrarem delegações desportivas ou atividades artísticas",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A proposição dispõe sobre direitos dos estudantes matriculados no sistema municipal de ensino que integram delegações desportivas ou atividades artísticas. A norma cria proteções específicas para esse grupo de estudantes no contexto escolar."
+}

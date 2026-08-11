@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "professores e demais profissionais da rede pública de ensino vítimas de violência nas escolas"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Municipal de Apoio Psicológico e Jurídico a Professores e Demais Profissionais da Rede Pública de Ensino, que Sofrem Violência nas Escolas",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Apoio Psicológico e Jurídico a professores e demais profissionais da rede pública de ensino de Betim que sofrem violência nas escolas. O projeto foi vetado; a leitura acima refere-se ao teor do texto proposto, não ao seu status final de vigência."
+}

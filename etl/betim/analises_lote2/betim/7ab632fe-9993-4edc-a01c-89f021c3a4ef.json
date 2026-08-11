@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "alimentacao",
+      "dispositivo": "Lei 11.346/2006 (LOSAN)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "crianças e adolescentes com seletividade e dificuldade alimentar na rede municipal de ensino"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa de Terapia Nutricional para Crianças e Adolescentes com Seletividade e Dificuldade Alimentar na Rede Municipal de Ensino de Betim",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa de Terapia Nutricional para crianças e adolescentes com seletividade e dificuldade alimentar na rede municipal de ensino de Betim. O projeto foi vetado; a leitura acima refere-se ao teor do texto proposto, não ao seu status final de vigência."
+}

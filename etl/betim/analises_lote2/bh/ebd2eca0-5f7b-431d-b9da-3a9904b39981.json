@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "igualdade_nao_discriminacao",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "Altera a Lei nº 9.934/10, que “Dispõe sobre a Política Municipal de Promoção da Igualdade Racial, cria o Conselho Municipal de Promoção da Igualdade Racial e dá outras providências”",
+      "confianca": 0.35
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 9.934/2010"
+  ],
+  "resumo_neutro": "A lei altera a Lei nº 9.934/2010, que dispõe sobre a Política Municipal de Promoção da Igualdade Racial e cria o Conselho Municipal de Promoção da Igualdade Racial em Belo Horizonte. A ementa não especifica quais dispositivos são modificados nem o teor da alteração."
+}

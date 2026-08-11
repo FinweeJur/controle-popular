@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "criminaliza_violacao",
+      "titulares": [
+        "população em geral",
+        "pessoas com hipersensibilidade auditiva",
+        "animais domésticos"
+      ],
+      "grau": "moderado",
+      "trecho": "Proíbe o manuseio, a utilização, a queima e a soltura de fogos de estampido e de artifício, assim como de quaisquer artefatos pirotécnicos de efeito sonoro ruidoso no Município",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei proíbe, no município, o manuseio, a utilização, a queima e a soltura de fogos de estampido e de artifício e de outros artefatos pirotécnicos de efeito sonoro ruidoso. A norma restringe essa prática por razões de saúde e bem-estar público associadas à poluição sonora."
+}

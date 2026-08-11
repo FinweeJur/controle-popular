@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "Lei 12.527/2011 (LAI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "cidadãos",
+        "sociedade civil"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política de Dados Abertos dos Poderes Públicos em Belo Horizonte",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política de Dados Abertos dos Poderes Públicos no município de Belo Horizonte. A norma cria diretriz para disponibilização de dados públicos municipais em formato aberto à sociedade."
+}

@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoa surda",
+        "gestante surda ou com deficiência auditiva"
+      ],
+      "grau": "moderado",
+      "trecho": "permitir a presença de tradutor e intérprete de Libras",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei obriga maternidades, casas de parto e estabelecimentos hospitalares das redes pública e privada do município a permitir a presença de tradutor e intérprete de Libras. A obrigação abrange atendimento a gestantes, parturientes e pacientes surdas nesses estabelecimentos."
+}

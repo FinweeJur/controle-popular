@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "usuários da Rede Pública Municipal de Saúde"
+      ],
+      "grau": "moderado",
+      "trecho": "criação de programa de ação contínua para diagnóstico e tratamento da depressão na Rede Pública Municipal de Saúde",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei determina a criação de programa de ação contínua para diagnóstico e tratamento da depressão na Rede Pública Municipal de Saúde de Belo Horizonte. A norma cria uma política permanente voltada à saúde mental dos usuários do sistema municipal."
+}

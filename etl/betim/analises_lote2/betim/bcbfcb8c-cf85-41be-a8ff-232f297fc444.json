@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "estudante com TEA, altas habilidades/superdotação, TDAH ou outras atipicidades"
+      ],
+      "grau": "marginal",
+      "trecho": "direito do estudante com Transtorno do Espectro Autista (TEA), altas habilidades/superdotação, Transtorno do Déficit de Atenção com Hiperatividade (TDAH) ou outras atipicidades de levar seu próprio lanche para a escola pública ou privada",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre o direito de o estudante com Transtorno do Espectro Autista, altas habilidades/superdotação, TDAH ou outras atipicidades levar seu próprio lanche à escola pública ou privada no município de Betim. A norma cria acomodação específica para esse grupo de estudantes."
+}

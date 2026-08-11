@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "para dispor sobre as Comissões Permanentes do Trabalho no Logradouro Público",
+      "confianca": 0.35
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 8.616/2003 (Código de Posturas do Município de Belo Horizonte)"
+  ],
+  "resumo_neutro": "A lei acrescenta uma subseção ao Código de Posturas do Município de Belo Horizonte (Lei nº 8.616/2003) para dispor sobre as Comissões Permanentes do Trabalho no Logradouro Público. A ementa não detalha as atribuições nem os efeitos concretos dessas comissões sobre quem trabalha em espaço público."
+}

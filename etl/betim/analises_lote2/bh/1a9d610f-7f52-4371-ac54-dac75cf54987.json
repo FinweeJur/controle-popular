@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "mulheres",
+        "pacientes com câncer de ovário"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política de Prevenção e Combate ao Câncer de Ovário no Município",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política de Prevenção e Combate ao Câncer de Ovário no município de Belo Horizonte. A norma cria diretriz municipal voltada à prevenção e ao enfrentamento dessa doença na rede de saúde local."
+}

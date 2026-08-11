@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "mulheres vítimas de violência doméstica"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa de Reconstrução Dentária para mulheres vítimas de violência doméstica, no âmbito do Sistema Único de Saúde (SUS) do Município de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa de Reconstrução Dentária para mulheres vítimas de violência doméstica no âmbito do SUS municipal de Betim. O projeto foi vetado; a leitura acima refere-se ao teor do texto proposto, não ao seu status final de vigência."
+}
