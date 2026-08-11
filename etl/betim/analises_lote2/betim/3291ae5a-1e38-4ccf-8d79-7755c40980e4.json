@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "comunidade cristã de Betim",
+        "manifestações artísticas cristãs locais"
+      ],
+      "grau": "marginal",
+      "trecho": "Reconhece as expressões artísticas cristãs, os reflexos e influências do cristianismo, além de seus aspectos religiosos, como manifestação cultural no Município de Betim",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto reconhece as expressões artísticas cristãs e seus reflexos e influências como manifestação cultural do Município de Betim. A proposta foi sancionada."
+}

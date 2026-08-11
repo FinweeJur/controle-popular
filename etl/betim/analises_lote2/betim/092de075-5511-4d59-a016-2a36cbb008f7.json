@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com deficiência ou mobilidade reduzida no Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade dos espaços culturais fornecerem cadeiras de rodas, motorizadas ou não, para o atendimento da pessoa com deficiência ou com mobilidade reduzida no município de Betim",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto obriga espaços culturais de Betim a fornecer cadeiras de rodas, motorizadas ou não, para atendimento de pessoa com deficiência ou mobilidade reduzida. A proposta foi vetada."
+}

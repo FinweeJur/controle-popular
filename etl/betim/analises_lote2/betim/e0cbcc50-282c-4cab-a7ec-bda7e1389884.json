@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "CF/88, art. 5º, XXXII",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "usuários do transporte público coletivo de Betim"
+      ],
+      "grau": "marginal",
+      "trecho": "disponibilização de   pagamento das passagens do sistema de transporte público coletivo pelas empresas concessionárias por meio de Pix e código eletrônico QR no Município de Betim",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto obriga as concessionárias do transporte público coletivo de Betim a disponibilizar pagamento de passagens por Pix e QR code. A proposta foi vetada."
+}

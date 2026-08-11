@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "estudantes da educação básica da rede municipal de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "inclusão da perspectiva feminina no currículo da educação básica e institui a Semana de Valorização de Mulheres que Fizeram História nas escolas do Município de Betim",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto determina a inclusão da perspectiva feminina no currículo da educação básica da rede municipal e institui uma semana escolar de valorização de mulheres na história. A proposta está em tramitação (situação: Em Trâmite)."
+}

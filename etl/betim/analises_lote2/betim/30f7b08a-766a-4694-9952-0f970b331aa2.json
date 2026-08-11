@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "vigilantes contratados para eventos no Município de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "estabelece critérios de qualificação profissional, regulamenta as condições de pagamento desses profissionais",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto obriga a contratação de vigilantes qualificados para eventos em Betim e regulamenta critérios de qualificação e condições de pagamento desses profissionais. A proposta foi arquivada (situação: Prejudicado - Arquivado)."
+}

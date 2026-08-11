@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "usuários do SUS em Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui, no Município de Betim, a Política de Práticas Integrativas e Complementares no âmbito do Sistema Único de Saúde – SUS",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política de Práticas Integrativas e Complementares no âmbito do SUS em Betim. A proposta foi arquivada (situação: Prejudicado - Arquivado)."
+}
