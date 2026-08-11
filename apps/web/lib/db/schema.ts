@@ -366,7 +366,16 @@ export const magistradosInJudiciario = judiciario.table("magistrados", {
 	url_foto: text(),
 	url_curriculo: text(),
 	slug: text(),
+	tribunal_atual: text(),
+	cargo: text(),
+	fonte_curadoria: text(),
 }, (table) => [
+	index("magistrados_tribunal_atual_idx").using("btree", table.tribunal_atual.asc().nullsLast().op("text_ops")).where(sql`(tribunal_atual IS NOT NULL)`),
+	foreignKey({
+			columns: [table.tribunal_atual],
+			foreignColumns: [tribunaisInJudiciario.id],
+			name: "magistrados_tribunal_atual_fkey"
+		}),
 	unique("magistrados_slug_key").on(table.slug),
 ]);
 
@@ -2803,4 +2812,81 @@ export const ambiental_licenciamento = pgTable("ambiental_licenciamento", {
 			name: "ambiental_licenciamento_id_municipio_fkey"
 		}).onDelete("cascade"),
 	unique("ambiental_licenciamento_id_fonte_key").on(table.id_fonte),
+]);
+
+/**
+ * Autos de infração e embargos do IBAMA (fiscalização federal), via
+ * `etl/betim/etl/apis/ibama_fiscalizacao.py`, migration 0048. Faltavam
+ * deste arquivo mesmo com dado real no banco (20.046 + 765 linhas,
+ * conferido em 2026-08-11) -- `relations.ts` já as esperava, só o
+ * schema.ts nunca tinha sido regenerado para incluí-las.
+ */
+export const ibama_autos_infracao = pgTable("ibama_autos_infracao", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	seq_auto_infracao: bigint({ mode: "number" }).notNull(),
+	numero_auto: text(),
+	tipo_auto: text(),
+	tipo_multa: text(),
+	valor_multa: numeric({ precision: 14, scale:  2 }),
+	gravidade: text(),
+	data_fato: date(),
+	data_lavratura: timestamp({ withTimezone: true, mode: 'string' }),
+	codigo_infracao: text(),
+	descricao_infracao: text(),
+	tipo_infracao: text(),
+	infrator_tipo_pessoa: text(),
+	infrator_nome: text(),
+	infrator_cpf_cnpj: text(),
+	latitude: numeric({ precision: 14, scale:  9 }),
+	longitude: numeric({ precision: 14, scale:  9 }),
+	local_infracao: text(),
+	numero_termo_embargo: text(),
+	municipio_fonte: text(),
+	uf_fonte: text(),
+	atualizado_em: timestamp({ withTimezone: true, mode: 'string' }),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("ibama_autos_infracao_municipio_data_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.data_fato.desc().nullsFirst().op("date_ops")),
+	index("ibama_autos_infracao_tipo_idx").using("btree", table.id_municipio.asc().nullsLast().op("text_ops"), table.tipo_infracao.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "ibama_autos_infracao_id_municipio_fkey"
+		}).onDelete("cascade"),
+	unique("ibama_autos_infracao_id_municipio_seq_auto_infracao_key").on(table.id_municipio, table.seq_auto_infracao),
+]);
+
+export const ibama_embargos = pgTable("ibama_embargos", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	seq_tad: bigint({ mode: "number" }).notNull(),
+	numero_tad: text(),
+	data_embargo: timestamp({ withTimezone: true, mode: 'string' }),
+	embargado_nome: text(),
+	embargado_cpf_cnpj: text(),
+	descricao: text(),
+	localizacao: text(),
+	latitude: numeric({ precision: 14, scale:  9 }),
+	longitude: numeric({ precision: 14, scale:  9 }),
+	area_embargada: numeric({ precision: 16, scale:  4 }),
+	tipo_area: text(),
+	situacao_desembargo: text(),
+	data_desembargo: timestamp({ withTimezone: true, mode: 'string' }),
+	seq_auto_infracao: bigint({ mode: "number" }),
+	numero_auto_infracao: text(),
+	municipio_fonte: text(),
+	uf_fonte: text(),
+	atualizado_em: timestamp({ withTimezone: true, mode: 'string' }),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("ibama_embargos_municipio_data_idx").using("btree", table.id_municipio.asc().nullsLast().op("timestamptz_ops"), table.data_embargo.desc().nullsFirst().op("timestamptz_ops")),
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "ibama_embargos_id_municipio_fkey"
+		}).onDelete("cascade"),
+	unique("ibama_embargos_id_municipio_seq_tad_key").on(table.id_municipio, table.seq_tad),
 ]);
