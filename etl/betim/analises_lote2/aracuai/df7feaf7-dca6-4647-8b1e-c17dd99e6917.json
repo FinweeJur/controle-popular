@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "pacientes atendidos pelo Hospital São Vicente de Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "AUTORIZA O PODER EXECUTIVO A REPASSAR RECURSOS A TITULO DE SUBVENÇÃO SOCIAL, PARA O HOSPITAL SÃO VICENTE DE PAULO - HSVP E DÁ OUTRAS PROVIDÊNCIAS, VALOR R$150.000,00",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo municipal a repassar R$ 150.000,00 a título de subvenção social ao Hospital São Vicente de Paulo (HSVP) de Araçuaí."
+}

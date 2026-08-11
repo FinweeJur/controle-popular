@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "servidores da educação municipal"
+      ],
+      "grau": "marginal",
+      "trecho": "CONCEDE ABONO ESPECIAL PARA OS SERVIDORES DA EDUCAÇÃO COM RECURSOS EVENTUALMENTE EXCEDENTES NA CONTA DO FUNDEB",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei concede abono especial aos servidores da educação, custeado com recursos eventualmente excedentes na conta do FUNDEB do município de Araçuaí."
+}

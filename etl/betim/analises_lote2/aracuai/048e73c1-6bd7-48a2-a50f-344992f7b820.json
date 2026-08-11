@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "moradores do Loteamento Céu Azul"
+      ],
+      "grau": "marginal",
+      "trecho": "CRIA ÁREA DE ESPORTES NAS QUADRAS 14 E 15 DO LOTEAMENTO CÉU AZUL",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 590/2022"
+  ],
+  "resumo_neutro": "A lei cria área de esportes nas quadras 14 e 15 do Loteamento Céu Azul, no espaço da travessa Jequitibás, suprimida pela Lei Municipal nº 590/2022."
+}

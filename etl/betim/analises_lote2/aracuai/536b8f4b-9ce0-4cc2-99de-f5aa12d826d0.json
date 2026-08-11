@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com Transtorno do Espectro Autista"
+      ],
+      "grau": "moderado",
+      "trecho": "ESTABELECE PRIORIDADE NO ATENDIMENTO EM ESTABELECIMENTO PÚBLICOS E PRIVADOS ÀS PESSOAS COM TRANSTORNO DO ESPECTRO AUTISTA - TEA",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estabelece prioridade de atendimento, em estabelecimentos públicos e privados, às pessoas com Transtorno do Espectro Autista (TEA) no município de Araçuaí."
+}

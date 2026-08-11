@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "Lei 12.527/2011 (LAI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do município"
+      ],
+      "grau": "moderado",
+      "trecho": "DISPÕE SOBRE A TRANSMISSÃO AO VIVO, VIA INTERNET, DAS SESSÕES DE JULGAMENTO DE LICITAÇÃO REALIZADAS PELOS PODERES EXECUTIVO E LEGISLATIVO DO MUNICÍPIO DE ARAÇUAÍ ATRAVÉS DE SEUS CANAIS DE COMUNICAÇÃO",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei determina a transmissão ao vivo, via internet, das sessões de julgamento de licitação realizadas pelos Poderes Executivo e Legislativo do município de Araçuaí."
+}

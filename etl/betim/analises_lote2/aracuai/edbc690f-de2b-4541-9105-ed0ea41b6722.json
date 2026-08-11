@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "pacientes atendidos pelo Hospital São Vicente de Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "AUTORIZA O PODER EXECUTIVO A REPASSAR RECURSOS A TÍTULO DE SUBVENÇÃO SOCIAL, PARA O HOSPITAL SÃO VICENTE DE PAULO DE ARAÇUAÍ E DÁ OUTRAS PROVIDÊNCIAS",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo municipal a repassar recursos, a título de subvenção social, ao Hospital São Vicente de Paulo de Araçuaí."
+}

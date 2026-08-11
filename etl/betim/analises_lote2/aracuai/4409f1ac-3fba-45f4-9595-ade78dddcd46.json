@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 198",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "pacientes da rede pública de saúde do município"
+      ],
+      "grau": "moderado",
+      "trecho": "DISPÕE SOBRE A PUBLICAÇÃO, NO SITE DA PREFEITURA MUNICIPAL DE ARAÇUAÍ, DA LISTA DE ESPERA DE PACIENTES QUE AGUARDAM POR CONSULTAS (DISCRIMINADAS POR ESPECIALIDADES), EXAMES, INTERVENÇÕES CIRÚRGICAS E OUTROS PROCEDIMENTOS NOS ESTABELECIMENTOS DA REDE PÚBLICA DE SAÚDE DO MUNICÍPIO",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei determina a publicação, no site da Prefeitura de Araçuaí, da lista de espera de pacientes por consultas, exames, cirurgias e outros procedimentos na rede pública municipal de saúde."
+}
