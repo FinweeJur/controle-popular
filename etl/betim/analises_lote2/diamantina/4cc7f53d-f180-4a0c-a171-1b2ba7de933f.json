@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 182",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "Código de Obras e Edificações do Municipio de Diamantina",
+      "confianca": 0.35
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A Lei Complementar institui o Código de Obras e Edificações do Município de Diamantina, exercendo a competência municipal ordinária de controle do uso do solo urbano (CF/88, art. 30), sem que a ementa indique criação ou supressão de direito específico."
+}

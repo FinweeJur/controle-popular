@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei Municipal nº 3125/2006, art. 1º, parágrafo único",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "usuários do CAPS Renascer em Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "contratar temporariamente Médico Psiquiatra para atender no CAPS - renascer",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 3125/2006"
+  ],
+  "resumo_neutro": "A lei altera a redação do parágrafo único do artigo 1º da Lei Municipal nº 3125/2006, que autoriza o Município de Diamantina a contratar temporariamente médico psiquiatra para atendimento no CAPS Renascer."
+}

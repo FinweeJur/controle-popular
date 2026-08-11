@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 6º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "famílias beneficiárias do Fundo de Arrendamento Residencial (FAR) em Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "doar terreno de sua propriedade ao Fundo de Arrendamento Residencial - FAR- representado pela Caixa Econômica Federal",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo de Diamantina a doar terreno de sua propriedade ao Fundo de Arrendamento Residencial (FAR), administrado pela Caixa Econômica Federal, viabilizando projeto de habitação social no Município."
+}

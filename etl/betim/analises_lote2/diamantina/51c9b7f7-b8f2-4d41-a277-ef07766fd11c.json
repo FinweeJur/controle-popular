@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208, I",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "estudantes de Educação de Jovens e Adultos (EJA) em Diamantina"
+      ],
+      "grau": "moderado",
+      "trecho": "implantar o Programa Bolsa Estudo em Educação de Jovens e Adultos no Município de Diamantina",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo de Diamantina a implantar o Programa Bolsa Estudo destinado a alunos da Educação de Jovens e Adultos (EJA), criando um benefício financeiro para essa modalidade de ensino."
+}
