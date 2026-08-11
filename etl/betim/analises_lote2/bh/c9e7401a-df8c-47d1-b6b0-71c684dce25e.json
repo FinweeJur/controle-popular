@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["pessoas idosas residentes no Município"],
+      "grau": "marginal",
+      "trecho": "Institui a Política Municipal de Informação e Orientação aos Idosos sobre Assistência Social no Município.",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal de Informação e Orientação aos Idosos sobre Assistência Social no Município, voltada a informar e orientar pessoas idosas sobre serviços de assistência social disponíveis."
+}

@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "Lei 12.527/2011 (LAI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": ["usuários do transporte público coletivo e população do Município"],
+      "grau": "marginal",
+      "trecho": "controle, a gestão e a transparência dos valores arrecadados para custeio da prestação de serviços de transporte público coletivo de passageiros por ônibus no Município",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Lei nº 11.458/2023"],
+  "resumo_neutro": "A lei altera a Lei nº 11.458/2023, que dispõe sobre o controle, a gestão e a transparência dos valores arrecadados para custeio da prestação de serviços de transporte público coletivo de passageiros por ônibus no Município, no âmbito dos contratos de concessão e permissão vigentes."
+}

@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["pessoas com deficiência visual"],
+      "grau": "moderado",
+      "trecho": "instalação de recursos assistivos para pessoas com deficiência visual nos principais e mais movimentados cruzamentos do Município",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A proposição torna obrigatória a instalação de recursos assistivos para pessoas com deficiência visual nos principais e mais movimentados cruzamentos do Município."
+}

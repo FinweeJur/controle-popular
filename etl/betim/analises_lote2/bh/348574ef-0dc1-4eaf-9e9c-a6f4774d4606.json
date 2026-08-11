@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "alimentacao",
+      "dispositivo": "Lei nº 10.255/2011, art. 3º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["agricultores urbanos e população beneficiária da Política Municipal de Apoio à Agricultura Urbana"],
+      "grau": "marginal",
+      "trecho": "Acrescenta os incisos XIV, XV e XVI ao caput do art. 3º da Lei nº 10.255/11, que institui a Política Municipal de Apoio à Agricultura Urbana.",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Lei nº 10.255/2011"],
+  "resumo_neutro": "A lei acrescenta os incisos XIV, XV e XVI ao caput do art. 3º da Lei nº 10.255/2011, que institui a Política Municipal de Apoio à Agricultura Urbana, ampliando as ações previstas nessa política."
+}

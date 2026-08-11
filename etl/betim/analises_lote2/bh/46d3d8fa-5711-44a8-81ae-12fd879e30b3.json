@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["estudantes e comunidade escolar da rede pública de ensino do Município"],
+      "grau": "moderado",
+      "trecho": "promoção de ações socioeducativas e preventivas na rede pública de ensino, visando ao combate aos atos de violência contra a mulher",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a promoção de ações socioeducativas e preventivas na rede pública de ensino do Município, voltadas ao combate aos atos de violência contra a mulher."
+}
