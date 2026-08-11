@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "Lei 9.394/1996 (LDB)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "unidades educacionais e profissionais da Rede Municipal de Ensino de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Mais Integração no âmbito da Rede Municipal de Ensino, estabelece diretrizes para a cooperação entre as unidades educacionais que o integram e dispõe sobre mecanismos de fomento e valorização profissional",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Programa Mais Integração na Rede Municipal de Ensino de São Paulo, estabelecendo diretrizes de cooperação entre unidades educacionais e mecanismos de fomento e valorização profissional no âmbito das parcerias."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "vítimas de violência doméstica no Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Cria o cadastro único de violência doméstica (CAVID) no âmbito do Município de São Paulo e dá outras providências",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o Cadastro Único de Violência Doméstica (CAVID) no âmbito do Município de São Paulo, instituindo um registro unificado de casos de violência doméstica."
+}

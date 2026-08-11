@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "estudantes e comunidade escolar da Rede Municipal de Ensino de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "diretrizes para a elaboração da Política Municipal de Adaptação Climática na Rede Municipal de Ensino do Município de São Paulo",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estabelece diretrizes para a elaboração da Política Municipal de Adaptação Climática na Rede Municipal de Ensino de São Paulo. Cria uma etapa preparatória institucional para uma futura política de adaptação às mudanças climáticas nas escolas municipais, sem detalhar ainda as medidas concretas."
+}
