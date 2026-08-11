@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "Estabelece regras e procedimentos para o regime jurídico das parcerias celebradas entre a Smed e as OSCs para oferta de educação infantil",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei estabelece regras e procedimentos para o regime jurídico das parcerias celebradas entre a Secretaria Municipal de Educação (Smed) e organizações da sociedade civil (OSCs) para a oferta de educação infantil. A ementa não indica se o efeito é de ampliação ou de restrição da oferta, tratando-se de disciplina procedimental da execução da política."
+}

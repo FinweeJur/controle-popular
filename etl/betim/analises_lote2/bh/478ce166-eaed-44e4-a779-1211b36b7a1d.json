@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 198",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "usuários da rede pública de saúde do Estado"
+      ],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre a desafetação e autoriza a alienação das áreas que menciona à Fhemig, com a finalidade específica de instalação do novo Complexo de Saúde HoPE e do novo Lacen-MG",
+      "confianca": 0.4
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a desafetação e autoriza a alienação de áreas municipais à Fhemig, com a finalidade específica de viabilizar a instalação do novo Complexo de Saúde HoPE e do novo Laboratório Central de Saúde Pública (Lacen-MG). Trata-se de ato patrimonial vinculado à finalidade de ampliação de infraestrutura pública de saúde."
+}

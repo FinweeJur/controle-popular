@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoa idosa"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui a Campanha Permanente de Orientação à Pessoa Idosa contra Fraudes Financeiras e Outros Crimes",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui, em caráter permanente, campanha de orientação voltada à pessoa idosa sobre fraudes financeiras e outros crimes, com finalidade informativa e preventiva. A ementa não define orçamento específico nem o órgão executor."
+}

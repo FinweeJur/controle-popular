@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoa com fibromialgia"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal de Proteção dos Direitos da Pessoa com Fibromialgia",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal de Proteção dos Direitos da Pessoa com Fibromialgia, criando política pública específica de atenção a essa condição de saúde. A ementa não detalha as ações, serviços ou órgão responsável pela execução da política."
+}

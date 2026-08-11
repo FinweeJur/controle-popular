@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoa com Transtorno do Espectro Autista (TEA)"
+      ],
+      "grau": "marginal",
+      "trecho": "Permite a dispensa do uso de uniforme escolar por pessoa com TEA, quando incompatível com suas sensibilidades sensoriais",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei permite a dispensa do uso de uniforme escolar por pessoa com Transtorno do Espectro Autista quando o uso for incompatível com suas sensibilidades sensoriais. A medida se aplica no âmbito da rede de ensino do Município."
+}

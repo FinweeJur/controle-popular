@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas com transtorno associado à dependência de jogos de azar"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal de Atenção à Saúde Mental de Pessoas com Transtornos Associados à Dependência de Jogos de Azar",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal de Atenção à Saúde Mental de Pessoas com Transtornos Associados à Dependência de Jogos de Azar, criando política pública específica de cuidado em saúde mental. A ementa não detalha as ações e serviços que compõem a política."
+}

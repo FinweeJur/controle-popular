@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoa idosa"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal de Enfrentamento da Violência contra a Pessoa Idosa",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal de Enfrentamento da Violência contra a Pessoa Idosa, criando política pública específica de prevenção e combate a essa forma de violência. A ementa não detalha as ações, órgãos responsáveis ou fontes de financiamento da política."
+}
