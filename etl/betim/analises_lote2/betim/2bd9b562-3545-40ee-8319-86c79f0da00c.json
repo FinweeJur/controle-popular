@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 226, §8º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "gestante vítima de violência sexual que opte por manter a gestação"
+      ],
+      "grau": "moderado",
+      "trecho": "programa municipal de apoio à gestante vítima de violência sexual que opte por manter a gestação",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria programa municipal de apoio à gestante vítima de violência sexual que opte por manter a gestação. Foi arquivado por prejudicialidade. A proposta previa suporte específico a essa situação, sem tratar da decisão sobre a gestação em si."
+}

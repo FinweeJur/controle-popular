@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças com Transtorno do Espectro Autista (TEA)"
+      ],
+      "grau": "marginal",
+      "trecho": "fornecimento de protetores auriculares para crianças com Transtorno do Espectro Autista – TEA, no âmbito do Município de Betim",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto, ainda em tramitação, determina o fornecimento de protetores auriculares a crianças com Transtorno do Espectro Autista no município. É medida de acomodação sensorial voltada a essa população específica. Não altera outras políticas de saúde ou educação."
+}

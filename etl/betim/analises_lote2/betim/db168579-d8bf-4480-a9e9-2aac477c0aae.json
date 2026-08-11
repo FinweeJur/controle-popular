@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "liberdade_expressao",
+      "dispositivo": "CF/88, art. 220",
+      "direcao": "restringe",
+      "mecanismo": null,
+      "titulares": [
+        "alunos e comunidade escolar da rede pública e privada"
+      ],
+      "grau": "marginal",
+      "trecho": "vedação de execução de musicas e videoclipes com letras e coreografias que façam apologia ao crime, ao uso de drogas, nas unidades escolares",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto proíbe a execução de músicas e videoclipes com letras ou coreografias que façam apologia ao crime ou ao uso de drogas nas unidades escolares públicas e privadas de Betim. Foi sancionado com veto parcial. A vedação se limita ao ambiente escolar, sem alcançar a circulação do conteúdo fora dele."
+}

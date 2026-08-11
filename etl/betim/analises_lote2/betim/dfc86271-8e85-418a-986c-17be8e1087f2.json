@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoa com doença celíaca internada em hospital do município"
+      ],
+      "grau": "moderado",
+      "trecho": "Assegura o direito à dieta isenta de glúten à pessoa com doença celíaca internada em hospital localizado no município de Betim",
+      "confianca": 0.85
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei assegura o direito a dieta isenta de glúten para pacientes com doença celíaca internados em hospitais do município. A norma já foi sancionada e está em vigor. Cria uma garantia concreta de atendimento alimentar adequado no ambiente hospitalar."
+}

@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 208",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "professores da rede municipal",
+        "alunos da educação especial"
+      ],
+      "grau": "marginal",
+      "trecho": "criação de programa de formação continuada de professores na educação especial por meio de modalidade à distância",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria programa de formação continuada, a distância, para professores que atuam na educação especial. Foi vetado. A medida amplia a capacitação docente voltada ao atendimento educacional especializado."
+}

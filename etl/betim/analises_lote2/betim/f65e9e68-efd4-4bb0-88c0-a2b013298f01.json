@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_consumidor",
+      "dispositivo": "Lei 8.078/1990 (CDC)",
+      "direcao": "amplia",
+      "mecanismo": null,
+      "titulares": [
+        "famílias de alunos da rede pública e privada"
+      ],
+      "grau": "marginal",
+      "trecho": "proíbe práticas abusivas relacionadas ao fornecimento desses materiais e promove a sustentabilidade ambiental e a economia familiar",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto trata do reaproveitamento de materiais didáticos em escolas públicas e privadas, proíbe práticas abusivas relacionadas ao fornecimento desses materiais e busca promover sustentabilidade ambiental e economia familiar. Foi retirado pelo autor. Combina proteção ao consumidor com finalidade ambiental."
+}
