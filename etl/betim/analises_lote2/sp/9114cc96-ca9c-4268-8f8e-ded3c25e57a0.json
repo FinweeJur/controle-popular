@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com deficiência auditiva"
+      ],
+      "grau": "moderado",
+      "trecho": "criação do Programa Municipal de Incentivo à Inclusão de Pessoas com Deficiência Auditiva no mercado de trabalho",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto cria o Programa Municipal de Incentivo à Inclusão de Pessoas com Deficiência Auditiva no mercado de trabalho. A medida busca ampliar as oportunidades de emprego para essa população no Município de São Paulo."
+}

@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "Lei nº 11.210/1992, art. 1º",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população em geral"
+      ],
+      "grau": "marginal",
+      "trecho": "Altera os artigos 1º e 3º, da Lei nº 11.210, de 20 de maio de 1992, bem como institui o Selo Amigo do Meio Ambiente",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 11.210/1992, arts. 1º e 3º"
+  ],
+  "resumo_neutro": "O projeto altera os artigos 1º e 3º da Lei nº 11.210/1992 e institui o Selo Amigo do Meio Ambiente no Município de São Paulo. A medida cria um instrumento de reconhecimento para práticas ambientalmente favoráveis."
+}

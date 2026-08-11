@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "moradia",
+      "dispositivo": "CF/88, art. 182",
+      "direcao": "restringe",
+      "mecanismo": "flexibiliza_limite",
+      "titulares": [
+        "moradores de Zonas Exclusivamente Residenciais (ZER)"
+      ],
+      "grau": "moderado",
+      "trecho": "explicitar a compatibilidade entre usos classificados como NR1-10 e moradia multifamiliar nas Zonas Exclusivamente Residenciais – ZER",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 16.402/2016"
+  ],
+  "resumo_neutro": "O projeto altera a Lei nº 16.402/2016 para explicitar a compatibilidade entre usos classificados como NR1-10 e moradia multifamiliar nas Zonas Exclusivamente Residenciais (ZER). A medida flexibiliza a exclusividade residencial prevista para essas zonas, permitindo a convivência com outros usos."
+}

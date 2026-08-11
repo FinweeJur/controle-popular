@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "CF/88, art. 227, §1º, II",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "crianças neurodivergentes na rede pública municipal de ensino"
+      ],
+      "grau": "moderado",
+      "trecho": "obrigatoriedade de disponibilização de tutores nas unidades educacionais da rede pública municipal",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Formação Inclusiva, voltado à capacitação de tutores e profissionais da educação para o atendimento de crianças neurodivergentes, e torna obrigatória a disponibilização de tutores nas unidades educacionais da rede pública municipal. A norma prevê o uso de metodologias como a Análise do Comportamento Aplicada (ABA), entre outras cientificamente reconhecidas."
+}

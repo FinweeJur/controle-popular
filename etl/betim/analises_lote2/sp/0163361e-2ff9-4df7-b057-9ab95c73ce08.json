@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "profissionais da educação da rede municipal"
+      ],
+      "grau": "marginal",
+      "trecho": "Programa comunicação pública, valorização e respeito aos profissionais da educação",
+      "confianca": 0.35
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza a instituição de programa de comunicação pública voltado à valorização e ao respeito aos profissionais da educação. A norma tem caráter predominantemente institucional e de conscientização, sem alterar condições concretas de trabalho."
+}

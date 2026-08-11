@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas idosas em situação de solidão e isolamento social"
+      ],
+      "grau": "marginal",
+      "trecho": "Programa \"Linha da Escuta 60+\", de acolhimento telefônico à pessoa idosa em situação de solidão e isolamento social",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa \"Linha da Escuta 60+\", de acolhimento telefônico voltado a pessoas idosas em situação de solidão e isolamento social. A medida cria canal de escuta e apoio para essa população no Município de São Paulo."
+}

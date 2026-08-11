@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "mulheres no período pós-parto"
+      ],
+      "grau": "moderado",
+      "trecho": "Programa Municipal de Triagem e Acompanhamento Psicológico Pós-Parto \"Cuidado Materno\"",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui o Programa Municipal de Triagem e Acompanhamento Psicológico Pós-Parto, denominado \"Cuidado Materno\". A medida cria serviço de triagem e acompanhamento psicológico voltado a mulheres no período pós-parto na rede municipal."
+}

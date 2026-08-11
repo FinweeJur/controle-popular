@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "entregadores por aplicativo que utilizam veículos de duas rodas"
+      ],
+      "grau": "moderado",
+      "trecho": "Política Municipal de Transição para a Mobilidade Elétrica e Segurança Tecnológica sobre Duas Rodas, direcionada aos serviços de entrega por aplicativos",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política Municipal de Transição para a Mobilidade Elétrica e Segurança Tecnológica sobre Duas Rodas, voltada aos serviços de entrega por aplicativos no Município de São Paulo. A norma busca fomentar a substituição por veículos elétricos e reforçar a segurança dessa categoria de trabalhadores."
+}

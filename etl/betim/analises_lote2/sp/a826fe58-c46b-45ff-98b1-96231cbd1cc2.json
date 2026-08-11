@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "CF/88, art. 230",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "pessoas idosas empreendedoras"
+      ],
+      "grau": "marginal",
+      "trecho": "para criar o eixo de fomento ao \"Empreendedorismo Prateado",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 17.271/2020"
+  ],
+  "resumo_neutro": "O projeto altera a Lei nº 17.271/2020, que institui o Programa Ativa Idade, para criar eixo de fomento ao \"Empreendedorismo Prateado\". A medida amplia o programa municipal voltado a pessoas idosas, incluindo apoio ao empreendedorismo dessa população."
+}

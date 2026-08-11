@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º, XXII",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "agentes da Guarda Civil Metropolitana",
+        "familiares de agentes falecidos por suicídio relacionado à função"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Municipal de Saúde Mental da Guarda Civil Metropolitana, estabelece diretrizes de prevenção ao sofrimento psíquico e ao suicídio",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui programa municipal de saúde mental voltado à Guarda Civil Metropolitana, com diretrizes de prevenção ao sofrimento psíquico e ao suicídio e atenção a casos de violência doméstica envolvendo agentes. Também prevê assistência aos familiares em caso de morte do agente por suicídio relacionado ao exercício funcional."
+}

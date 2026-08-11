@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população em geral"
+      ],
+      "grau": "marginal",
+      "trecho": "Programa de Conscientização e Reeducação quanto à Coleta Seletiva e ao Armazenamento Adequado de Resíduos Sólidos",
+      "confianca": 0.45
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui programa municipal de conscientização e reeducação sobre coleta seletiva e armazenamento adequado de resíduos sólidos. A norma estabelece diretrizes para a atuação da Administração Municipal nessa matéria."
+}

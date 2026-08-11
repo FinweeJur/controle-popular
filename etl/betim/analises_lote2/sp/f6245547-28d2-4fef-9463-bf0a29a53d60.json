@@ -1,0 +1,21 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "consumidores de bebidas alcoólicas destiladas",
+        "população em geral"
+      ],
+      "grau": "marginal",
+      "trecho": "Programa Municipal de Coleta, Controle, Descaracterização e Destinação de Vasilhames Vazios de Bebidas Alcoólicas Destiladas, visando ao combate à adulteração de bebidas e à proteção da saúde pública",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui programa municipal de coleta, controle, descaracterização e destinação de vasilhames vazios de bebidas alcoólicas destiladas. O objetivo declarado é combater a adulteração de bebidas e proteger a saúde pública."
+}
