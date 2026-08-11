@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei nº 11.416/2022, art. 2º",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["pessoa com deficiência e pessoa com mobilidade reduzida no Município"],
+      "grau": "marginal",
+      "trecho": "Acrescenta o § 5º ao art. 2º da Lei nº 11.416/22, que Institui a Lei Municipal de Inclusão da Pessoa com Deficiência e da Pessoa com Mobilidade Reduzida.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Lei nº 11.416/2022"],
+  "resumo_neutro": "A lei acrescenta o § 5º ao art. 2º da Lei nº 11.416/2022, que institui a Lei Municipal de Inclusão da Pessoa com Deficiência e da Pessoa com Mobilidade Reduzida."
+}

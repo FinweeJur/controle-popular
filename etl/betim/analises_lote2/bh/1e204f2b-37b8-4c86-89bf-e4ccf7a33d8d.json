@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["servidores públicos efetivos da área de atividades da Cultura do Município"],
+      "grau": "moderado",
+      "trecho": "Institui o plano de carreira dos servidores públicos efetivos da área de atividades da Cultura, concede reajustes remuneratórios",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o plano de carreira dos servidores públicos efetivos da área de atividades da Cultura do Município e concede reajustes remuneratórios a essa categoria."
+}

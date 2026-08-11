@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": ["pessoa idosa contratante de empréstimo consignado, cartão de crédito consignado ou serviço com desconto em folha de pagamento"],
+      "grau": "moderado",
+      "trecho": "proteção da pessoa idosa nos procedimentos de contratação de empréstimo consignado, de cartão de crédito consignado e de serviço cujo desconto incida sobre a folha de pagamento",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a proteção da pessoa idosa nos procedimentos de contratação de empréstimo consignado, de cartão de crédito consignado e de serviço cujo desconto incida sobre a folha de pagamento."
+}

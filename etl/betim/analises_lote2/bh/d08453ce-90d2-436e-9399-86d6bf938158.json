@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": ["vítimas de violência doméstica ou familiar partes em procedimento administrativo da administração municipal"],
+      "grau": "moderado",
+      "trecho": "Concede tramitação prioritária a procedimento administrativo da administração direta e indireta municipal em que pessoa vítima de violência doméstica ou familiar figure como parte.",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei concede tramitação prioritária a procedimento administrativo da administração direta e indireta municipal em que pessoa vítima de violência doméstica ou familiar figure como parte."
+}

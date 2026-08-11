@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": ["população do Município"],
+      "grau": "marginal",
+      "trecho": "coleta de medicamentos vencidos por farmácias e drogarias de grande porte do Município",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a coleta de medicamentos vencidos por farmácias e drogarias de grande porte do Município, com vistas ao descarte adequado desses produtos."
+}

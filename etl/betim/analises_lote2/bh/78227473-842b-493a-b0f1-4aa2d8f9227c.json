@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": ["mulheres em situação de violência no Município"],
+      "grau": "moderado",
+      "trecho": "Cria o Protocolo Mulheres Seguras no Município.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o Protocolo Mulheres Seguras no Município, instituindo procedimento voltado à proteção de mulheres em situação de violência."
+}

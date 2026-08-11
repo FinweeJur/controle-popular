@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["população do Município, especialmente agentes e coletivos culturais"],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal Cultura Viva",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Municipal Cultura Viva, voltada ao fomento de ações e iniciativas culturais no Município."
+}

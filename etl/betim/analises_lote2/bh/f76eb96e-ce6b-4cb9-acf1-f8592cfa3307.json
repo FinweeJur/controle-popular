@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": ["mulheres vítimas de violência doméstica e familiar e seus filhos ou crianças/adolescentes sob sua guarda"],
+      "grau": "moderado",
+      "trecho": "direito à preferência para matrícula e transferência de seus filhos ou de crianças e adolescentes sob sua guarda nas escolas da Rede Pública de Ensino do Município",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei garante à mulher vítima de violência doméstica e familiar o direito à preferência para matrícula e transferência de seus filhos, ou de crianças e adolescentes sob sua guarda, nas escolas da Rede Pública de Ensino do Município."
+}

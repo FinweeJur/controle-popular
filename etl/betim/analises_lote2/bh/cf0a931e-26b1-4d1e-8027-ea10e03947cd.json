@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "Lei 8.069/1990 (ECA)",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": ["estudantes da rede municipal de ensino"],
+      "grau": "moderado",
+      "trecho": "Institui o Sistema integrado sobre Violência nas Escolas da rede municipal de ensino.",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Sistema integrado sobre Violência nas Escolas da rede municipal de ensino, voltado ao registro e acompanhamento de casos de violência escolar."
+}

@@ -1,0 +1,28 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "liberdade_expressao",
+      "dispositivo": "CF/88, art. 5º, IX",
+      "direcao": "restringe",
+      "mecanismo": "restringe_titularidade",
+      "titulares": ["estudantes e educadores da Educação básica pública e privada do Município"],
+      "grau": "moderado",
+      "trecho": "proíbe a utilização e o ensino da linguagem neutra ou não binária na Educação básica pública e privada do Município",
+      "confianca": 0.75
+    },
+    {
+      "direito": "igualdade_nao_discriminacao",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "restringe",
+      "mecanismo": "restringe_titularidade",
+      "titulares": ["estudantes e pessoas não binárias na rede de ensino municipal"],
+      "grau": "moderado",
+      "trecho": "proíbe a utilização e o ensino da linguagem neutra ou não binária na Educação básica pública e privada do Município",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei garante aos estudantes do Município o direito ao aprendizado da Língua Portuguesa e proíbe a utilização e o ensino da linguagem neutra ou não binária na Educação básica pública e privada do Município, alcançando escolas públicas e privadas."
+}

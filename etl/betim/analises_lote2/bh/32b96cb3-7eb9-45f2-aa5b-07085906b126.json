@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 11.411/2022, art. 3º-A",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": ["usuários do SUS residentes no Município"],
+      "grau": "marginal",
+      "trecho": "direito ao acesso às informações acerca de sua saúde e às listas de espera para consultas e exames",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": ["Lei nº 11.411/2022"],
+  "resumo_neutro": "A lei acrescenta o art. 3º-A à Lei nº 11.411/2022, garantindo aos usuários do SUS residentes no Município o direito ao acesso às informações sobre sua saúde e às listas de espera para consultas e exames."
+}
