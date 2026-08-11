@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "meio_ambiente",
+      "dispositivo": "CF/88, art. 225",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "coletividade beneficiada pelo fortalecimento do quadro de gestão e fiscalização ambiental do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "criação do Quadro dos Profissionais do Meio Ambiente – QPMA, a criação de cargos e a revalorização remuneratória no Quadro de Gestão Administrativa Superior – QGAS",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 17.841/2022"
+  ],
+  "resumo_neutro": "O projeto dispõe sobre a criação do Quadro dos Profissionais do Meio Ambiente (QPMA), a criação de cargos e a revalorização remuneratória no Quadro de Gestão Administrativa Superior (QGAS), alterando a Lei nº 17.841, de 19 de agosto de 2022."
+}

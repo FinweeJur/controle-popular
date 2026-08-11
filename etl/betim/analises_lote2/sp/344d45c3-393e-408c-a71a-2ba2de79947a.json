@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "CF/88, art. 1º, parágrafo único",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "membros dos Conselhos Gestores de Unidades de Saúde e demais conselhos de controle social do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "garantia de infraestrutura de apoio, equipamentos tecnológicos e espaço físico aos Conselhos Gestores de Unidades de Saúde e demais conselhos de controle social, em paridade com o suporte oferecido ao Conselho Participativo Municipal",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto autoriza o Poder Executivo Municipal a garantir infraestrutura de apoio, equipamentos tecnológicos e espaço físico aos Conselhos Gestores de Unidades de Saúde e demais conselhos de controle social, em paridade com o suporte oferecido ao Conselho Participativo Municipal."
+}

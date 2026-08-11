@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "participacao_democratica",
+      "dispositivo": "Lei 12.527/2011 (LAI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "membros dos Conselhos Gestores de Saúde e demais Conselhos Municipais de Controle Social do Município de São Paulo"
+      ],
+      "grau": "marginal",
+      "trecho": "conceder acesso ao Sistema Eletrônico de Informações (SEI) aos membros dos Conselhos Gestores de Saúde e demais Conselhos Municipais de Controle Social no âmbito do Município de São Paulo",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a autorização, pelo Poder Executivo Municipal, de conceder acesso ao Sistema Eletrônico de Informações (SEI) aos membros dos Conselhos Gestores de Saúde e demais Conselhos Municipais de Controle Social no Município de São Paulo."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_lgbtqia",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "população LGBTQIA+ do Município de São Paulo"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui a Política Municipal de Fomento às Paradas LGBTQIA+ no Município de São Paulo.",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui a Política Municipal de Fomento às Paradas LGBTQIA+ no Município de São Paulo."
+}
