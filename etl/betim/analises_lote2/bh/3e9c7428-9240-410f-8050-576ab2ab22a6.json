@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "CF/88, art. 5º, I",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "mulheres em situação de vulnerabilidade social buscando emprego em Belo Horizonte"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o Selo BH Emprega + Mulher para certificar as empresas que contratarem mulheres em situação de vulnerabilidade social.",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Selo BH Emprega + Mulher, certificação municipal concedida a empresas que contratarem mulheres em situação de vulnerabilidade social, como incentivo à empregabilidade feminina em Belo Horizonte."
+}

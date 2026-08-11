@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pacientes atendidas em estabelecimento de saúde público e privado do Município de Belo Horizonte"
+      ],
+      "grau": "moderado",
+      "trecho": "Assegura à paciente o direito a acompanhante em consulta, exame e procedimento realizados em estabelecimento de saúde público e privado do Município.",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei assegura à paciente o direito a ter acompanhante durante consulta, exame e procedimento realizados em estabelecimento de saúde público ou privado do Município de Belo Horizonte."
+}

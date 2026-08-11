@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "gestantes, parturientes e puérperas atendidas na rede de saúde do Município de Belo Horizonte"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre a promoção da dignidade da gestante, da parturiente e da puérpera e sobre o enfrentamento da violência obstétrica no Município.",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a promoção da dignidade da gestante, da parturiente e da puérpera e sobre o enfrentamento da violência obstétrica na rede de saúde do Município de Belo Horizonte."
+}

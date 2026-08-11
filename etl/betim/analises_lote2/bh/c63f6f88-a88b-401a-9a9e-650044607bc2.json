@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "estudantes em situação de vulnerabilidade social e econômica do Município de Belo Horizonte"
+      ],
+      "grau": "moderado",
+      "trecho": "Cria a Política de Acesso ao Ensino Superior para Estudantes em Situação de Vulnerabilidade Social e Econômica.",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria a Política de Acesso ao Ensino Superior para Estudantes em Situação de Vulnerabilidade Social e Econômica no Município de Belo Horizonte."
+}

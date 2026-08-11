@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 215",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "população do Município de Belo Horizonte, em especial usuários de bibliotecas públicas"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Plano Municipal de Leitura, Literatura, Livro e Bibliotecas de Belo Horizonte.",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o Plano Municipal de Leitura, Literatura, Livro e Bibliotecas de Belo Horizonte, estabelecendo diretrizes municipais para a política de acesso à leitura e às bibliotecas."
+}

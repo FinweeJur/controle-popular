@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "vida_integridade",
+      "dispositivo": "CF/88, art. 5º, caput",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "estudantes e comunidade escolar das instituições de ensino do Município de Belo Horizonte"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui o selo Escolas Mais Seguras para incentivar as instituições de ensino a adotarem plano de evacuação, realização de palestras e treinamentos em casos de incêndios, danos estruturais e demais emergências.",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o selo Escolas Mais Seguras, certificação municipal para incentivar as instituições de ensino de Belo Horizonte a adotarem plano de evacuação, palestras e treinamentos voltados a situações de incêndio, danos estruturais e outras emergências."
+}

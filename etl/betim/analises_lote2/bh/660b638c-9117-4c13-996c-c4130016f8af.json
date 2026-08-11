@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "servidores e empregados da área de atividades de Educação da administração direta do Poder Executivo de Belo Horizonte"
+      ],
+      "grau": "moderado",
+      "trecho": "Concede reajustes remuneratórios aos servidores e empregados da área de atividades de Educação da administração direta do Poder Executivo e dá outras providências.",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei concede reajustes remuneratórios aos servidores e empregados da área de atividades de Educação da administração direta do Poder Executivo de Belo Horizonte."
+}

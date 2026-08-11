@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "educacao",
+      "dispositivo": "CF/88, art. 205",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "pais, mães e responsáveis legais de alunos de estabelecimentos de ensino públicos e privados do Município de Belo Horizonte"
+      ],
+      "grau": "marginal",
+      "trecho": "Dispõe sobre o dever de os estabelecimentos de ensino públicos ou privados situados no Município informarem o pai, a mãe ou os responsáveis legais sobre a realização de eventos extracurriculares.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o dever de os estabelecimentos de ensino públicos ou privados situados em Belo Horizonte informarem o pai, a mãe ou os responsáveis legais sobre a realização de eventos extracurriculares."
+}

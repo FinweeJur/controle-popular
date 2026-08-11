@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "servidores ocupantes dos cargos de Agente Sanitário, Cirurgião-Dentista, Enfermeiro e Técnico Superior de Saúde da administração direta e do HOB, em Belo Horizonte"
+      ],
+      "grau": "moderado",
+      "trecho": "Dispõe sobre o plano de carreira dos servidores ocupantes dos cargos públicos efetivos de Agente Sanitário, Cirurgião-Dentista, Enfermeiro e Técnico Superior de Saúde integrantes da área de atividades de Saúde da administração direta e do HOB",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o plano de carreira dos servidores ocupantes dos cargos públicos efetivos de Agente Sanitário, Cirurgião-Dentista, Enfermeiro e Técnico Superior de Saúde da administração direta e do Hospital Odilon Behrens, em Belo Horizonte. A ementa não detalha as regras específicas de progressão ou remuneração."
+}
