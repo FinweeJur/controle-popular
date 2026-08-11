@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "crianças e adolescentes e suas famílias"
+      ],
+      "grau": "marginal",
+      "trecho": "Institui a Campanha Municipal de Conscientização sobre os Riscos da Exposição Prolongada a Telas para Crianças e Adolescentes.",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Campanha Municipal de Conscientização sobre os Riscos da Exposição Prolongada a Telas para Crianças e Adolescentes. O objetivo declarado é informar famílias e a comunidade escolar sobre os riscos do uso excessivo de telas por esse público."
+}

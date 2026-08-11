@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "igualdade_nao_discriminacao",
+      "dispositivo": "CF/88, art. 3º, IV",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "pessoas sujeitas a discriminação por idade no Município"
+      ],
+      "grau": "moderado",
+      "trecho": "Proíbe qualquer forma de discriminação, exclusão, restrição ou preferência conhecida como etarismo.",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": true,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei proíbe qualquer forma de discriminação, exclusão, restrição ou preferência conhecida como etarismo. A proibição estabelece um marco legal municipal contra a discriminação baseada em idade."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "previdencia_assistencia",
+      "dispositivo": "CF/88, art. 203",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "usuários da rede de assistência social atendidos por Cras, CRPI e CREPPD"
+      ],
+      "grau": "moderado",
+      "trecho": "Autoriza contratação, mediante processo licitatório, de parceria público-privada para prestação de serviços de apoio e de infraestrutura para a implantação de Cras, CRPI e CREPPD.",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza a contratação, por licitação, de parceria público-privada para prestação de serviços de apoio e infraestrutura destinados à implantação de CRAS, CRPI e CREPPD. O objetivo é viabilizar a construção ou operação dessas unidades de assistência social por meio de PPP."
+}
