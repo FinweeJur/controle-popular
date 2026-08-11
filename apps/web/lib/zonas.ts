@@ -119,25 +119,20 @@ export const ZONAS: Zona[] = [
     etiqueta: "Estadual · Meio ambiente em Minas Gerais",
     titulo: "O que o COPAM vai decidir sobre a sua cidade",
     // CÓPIA CORTADA PARA O QUE EXISTE, ao publicar a zona em 2026-08-09;
-    // ATUALIZADA em 2026-08-11 quando a F3 (COPAM) ganhou tela e dado real
-    // (`/ambiental/copam`, migration `0058`) — mesma disciplina, cortar
-    // para o que existe, só que agora existe mais uma coisa. ATUALIZADA DE
-    // NOVO no mesmo dia quando a F6 (legislação) ganhou tela e dado real
-    // (`/ambiental/legislacao`, migration `0063`, três coletores: ALMG,
-    // Semad, Siam) — licenciamento e barragens estaduais continuam sem
-    // tela nesta rodada.
-    //
-    // Os números não-publicados continuam visíveis, mas onde são honestos: na
-    // própria `/ambiental`, que se declara em construção e cita a data da
-    // medição de cada um (`docs/ambiental/F0-discovery.md`).
+    // ATUALIZADA em 2026-08-11 conforme cada fase ganhou tela e dado real
+    // (F3 COPAM, F4 licenciamento, F5 barragens, F6 legislação — as quatro
+    // no ar no mesmo dia, migrations 0058/0064/0057+0049+0051/0065).
+    // Mesma disciplina de sempre: cortar pro que existe, atualizar quando
+    // deixa de ser promessa.
     descricao:
-      "A pauta de cada reunião do COPAM, item a item, com o município que cada processo trata. Leis, decretos, deliberações e portarias ambientais de três fontes que não conversam entre si, numa busca só. Licenciamento e barragens estaduais estão em construção, com as fontes já verificadas.",
+      "A pauta de cada reunião do COPAM, item a item, com o município que cada processo trata. Licenciamento ambiental e situação das barragens de Minas Gerais, por município. Leis, decretos, deliberações e portarias ambientais de três fontes que não conversam entre si, numa busca só.",
     resumo:
-      "A pauta do COPAM por município, e a legislação ambiental de três fontes numa busca só. Licenciamento e barragens seguem em construção.",
+      "COPAM, licenciamento, barragens e legislação ambiental de Minas Gerais — as quatro frentes com dado real, num lugar só.",
     itens: [
       "COPAM: pauta de cada reunião, item a item, por município",
+      "Licenciamento ambiental: filtro por município, setor e classe de risco",
+      "Barragens: FEAM e SNISB lado a lado, por município",
       "Legislação ambiental: busca por palavra-chave, fonte, tipo e ano",
-      "Em construção: licenciamento e barragens estaduais",
     ],
     cor: "var(--cp-tertiary)",
     publicada: true,
