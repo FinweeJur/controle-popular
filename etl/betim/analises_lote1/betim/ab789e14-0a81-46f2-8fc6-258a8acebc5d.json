@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "candidatos com Transtorno do Espectro Autista (TEA) em concursos públicos municipais de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "atendimento especializado para as pessoas com Transtorno do Espectro Autista (TEA) nos concursos públicos municipais",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre o atendimento especializado para pessoas com Transtorno do Espectro Autista (TEA) nos concursos públicos municipais de Betim, criando condições diferenciadas de participação nesses certames."
+}

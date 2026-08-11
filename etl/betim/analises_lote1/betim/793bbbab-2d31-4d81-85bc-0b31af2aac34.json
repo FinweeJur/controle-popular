@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_crianca_adolescente",
+      "dispositivo": "CF/88, art. 227",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "alunos das instituições de ensino de Betim no embarque e desembarque escolar"
+      ],
+      "grau": "marginal",
+      "trecho": "obrigatoriedade de  instituições de ensino disponibilizarem monitores de trânsito para auxílio no embarque e desembarque de alunos",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto obriga instituições de ensino de Betim a disponibilizarem monitores de trânsito para auxiliar no embarque e desembarque de alunos, criando uma exigência de segurança viária escolar."
+}

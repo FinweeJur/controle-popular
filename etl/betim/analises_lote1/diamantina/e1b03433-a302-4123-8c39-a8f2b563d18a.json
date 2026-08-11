@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do município de Diamantina usuária dos serviços públicos de abastecimento de água e esgotamento sanitário"
+      ],
+      "grau": "marginal",
+      "trecho": "APROVA A ATUALIZAÇÃO DO PLANO DE SANEAMENTO BÁSICO DO MUNICÍPIO DE DIAMANTINA/MG, PARA INCLUSÃO DE INDICADORES E METAS PROGRESSIVAS OPERACIONAIS PARA AVALIAÇÃO E MONITORAMENTO DA PRESTAÇÃO DOS SERVIÇOS PÚBLICOS DE ABASTECIMENTO DE ÁGUA E DE ESGOTAMENTO SANITÁRIO",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei aprova a atualização do Plano de Saneamento Básico do município de Diamantina, incluindo indicadores e metas progressivas operacionais para avaliação e monitoramento da prestação dos serviços de abastecimento de água e esgotamento sanitário."
+}

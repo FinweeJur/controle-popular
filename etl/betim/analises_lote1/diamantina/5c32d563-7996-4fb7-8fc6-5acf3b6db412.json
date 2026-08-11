@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com deficiências ocultas no município de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "INSTITUI O USO DO CORDÃO DE FITA COM DESENHOS DE GIRASSÓIS COMO SÍMBOLO DE IDENTIFICAÇÃO DE PESSOAS COM DEFICIÊNCIAS OCULTAS NO MUNICÍPIO DE DIAMANTINA",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui o uso do cordão de fita com desenhos de girassóis como símbolo de identificação de pessoas com deficiências ocultas no município de Diamantina, facilitando o reconhecimento dessas pessoas para fins de atendimento."
+}

@@ -1,0 +1,18 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "neutro",
+      "mecanismo": null,
+      "titulares": null,
+      "grau": "marginal",
+      "trecho": "AUTORIZA O PODER EXECUTIVO MUNICIPAL A REPASSAR OS RECURSOS RECEBIDOS DA UNIÃO NOS TERMOS DA POLÍTICA NACIONAL DA ATENÇÃO PRIMÁRIA Á SAÚDE, O INCENTIVO FINANCEIRO VARIÁVEL POR DESEMPENHO PARA PROFISSIONAIS DAS EQUIPES DE SAÚDE DA FAMÍLIA (ESF)",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei autoriza o Poder Executivo municipal de Diamantina a repassar aos profissionais das equipes de Saúde da Família o incentivo financeiro variável por desempenho recebido da União, nos termos da Política Nacional de Atenção Primária à Saúde — execução local de recursos e regras federais."
+}

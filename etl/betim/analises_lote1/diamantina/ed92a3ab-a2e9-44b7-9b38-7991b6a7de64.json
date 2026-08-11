@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "participantes de eventos culturais, artísticos, científicos, esportivos, educacionais, turísticos, tecnológicos e de inovação que representem oficialmente Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "CONCESSÃO DE AUXILIO FINANCEIRO A PARTICIPANTES DE EVENTOS, COMPETIÇÕES, FEIRAS, CONGRESSOS E MOSTRAS NAS ÁREAS CULTURAL, ARTÍSTICA, CIENTÍFICA, ESPORTIVA, EDUCACIONAL, TURÍSTICA, TECNOLÓGICA E DE INOVAÇÃO",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei dispõe sobre a concessão de auxílio financeiro a participantes de eventos, competições, feiras, congressos e mostras nas áreas cultural, artística, científica, esportiva, educacional, turística, tecnológica e de inovação que representem oficialmente Diamantina."
+}

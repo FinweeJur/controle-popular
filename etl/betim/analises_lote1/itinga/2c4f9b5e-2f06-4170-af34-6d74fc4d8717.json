@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com deficiências não visíveis no município de Itinga"
+      ],
+      "grau": "marginal",
+      "trecho": "RECONHECER O CORDÃO DE GIRASSOL COMO INSTRUMENTO AUXILIAR PARA IDENTIFICAÇÃO DE PESSOAS COM DEFICIÊNCIAS NÃO VISÍVEIS, PARA FINS DE ATENDIMENTO PRIORITÁRIO NO MUNICÍPIO DE ITINGA",
+      "confianca": 0.8
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre o reconhecimento do cordão de girassol como instrumento auxiliar para identificação de pessoas com deficiências não visíveis, para fins de atendimento prioritário no município de Itinga."
+}

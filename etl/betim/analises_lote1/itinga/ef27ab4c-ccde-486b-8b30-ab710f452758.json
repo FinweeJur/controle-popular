@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "Lei 8.080/1990",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do município de Itinga usuária dos serviços de saneamento básico"
+      ],
+      "grau": "moderado",
+      "trecho": "DISPÕE SOBRE A POLÍTICA MUNICIPAL DE SANEAMENTO BÁSICO - PMSB, CRIA O CONSELHO MUNICIPAL DE SANEAMENTO BÁSICO DE ITINGA - COMSBI, O FUNDO MUNICIPAL DE SANEAMENTO BÁSICO - FMSB",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto dispõe sobre a Política Municipal de Saneamento Básico de Itinga e cria o Conselho Municipal de Saneamento Básico (COMSBI) e o Fundo Municipal de Saneamento Básico (FMSB). A longa tramitação desde 2019 não muda o que o texto propõe."
+}

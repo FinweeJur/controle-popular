@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "servidores públicos do Poder Executivo Municipal de Diamantina e seus familiares ou dependentes"
+      ],
+      "grau": "moderado",
+      "trecho": "CONCESSÃO DE ABONO DE FALTAS AOS SERVIDORES PÚBLICOS DO PODER EXECUTIVO MUNICIPAL QUE SE AUSENTAREM DO TRABALHO PARA COMPARECIMENTO PRÓPRIO, DE FAMILIAR OU DEPENDENTE, PARA REALIZAÇÃO DE CONSULTAS MÉDICAS, EXAMES EM ESTABELECIMENTO DE SAÚDE E INTERNAÇÕES HOSPITALARES",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei concede abono de faltas aos servidores públicos do Poder Executivo Municipal de Diamantina que se ausentarem do trabalho para comparecimento próprio, de familiar ou dependente, a consultas médicas, exames e internações hospitalares."
+}

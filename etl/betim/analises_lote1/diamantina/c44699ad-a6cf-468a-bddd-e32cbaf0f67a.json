@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "saude",
+      "dispositivo": "CF/88, art. 196",
+      "direcao": "amplia",
+      "mecanismo": "amplia_acesso",
+      "titulares": [
+        "pessoas com laudo médico de doença sem cura, para fins administrativos no município de Diamantina"
+      ],
+      "grau": "marginal",
+      "trecho": "RECONHECIMENTO DA VALIDADE INDETERMINADA DOS LAUDOS MÉDICOS QUE ATESTAM O DIAGNOSTICO DE DOENÇAS SEM CURA PARA FINS ADMINISTRATIVOS",
+      "confianca": 0.7
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei reconhece a validade indeterminada dos laudos médicos que atestam diagnóstico de doenças sem cura, para fins administrativos no município de Diamantina, dispensando a renovação periódica desses laudos."
+}

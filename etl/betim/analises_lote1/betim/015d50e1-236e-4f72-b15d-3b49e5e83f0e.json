@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "profissionais da educação da rede pública de Betim"
+      ],
+      "grau": "moderado",
+      "trecho": "Institui o Programa Permanente de Prevenção contra as Doenças Ocupacionais dos Profissionais da Educação no Município de BETIM",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "O projeto institui programa permanente de prevenção contra doenças ocupacionais dos profissionais da educação do município de Betim. A situação de tramitação (arquivado) não altera o que o texto propunha."
+}
