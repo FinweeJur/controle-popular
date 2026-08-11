@@ -174,8 +174,15 @@ git pull
 ```bash
 cd etl/betim
 python -m etl.apis.cap_autos_infracao --id-municipio 3106705
-python -m etl.apis.feam_barragens --id-municipio 3106705
+python -m etl.apis.feam_barragens
+python -m etl.apis.snisb_barragens
 ```
+
+> `feam_barragens`/`snisb_barragens` não recebem mais `--id-municipio` desde a
+> migration `0057_ref_municipios_mg.sql` (2026-08-11): as duas fontes são
+> estaduais/nacionais, então o coletor sincroniza **MG inteira** numa rodada
+> só, resolvendo o município de cada linha pelo nome que a fonte grafa contra
+> `ref_municipios_mg`. `snisb_barragens` aceita `--uf` (default `MG`).
 
 Cada coletor aceita `--sondar`, que consulta e mostra o resultado **sem gravar
 nada**. Use quando quiser só conferir se a fonte mudou.

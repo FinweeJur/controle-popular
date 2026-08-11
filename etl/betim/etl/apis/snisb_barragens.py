@@ -56,17 +56,39 @@ abastece água em Betim.
    ser zero de verdade. `--sondar` sem `--nome-municipio` lista todos os nomes
    de município vistos na UF, exatamente para essa conferência manual.
 
+═══ 2026-08-11: DE "UMA CIDADE POR VEZ" PARA "UMA UF INTEIRA" ═══
+
+Até aqui `sync(id_municipio)` exigia a cidade em `municipios` (6 linhas — as
+do portal): `carregar_municipio` abortava para qualquer outra, e era ESSE
+abort — não a FK desta tabela — que travava a cobertura em 52 das 2.212
+barragens de MG. A migration `0057_ref_municipios_mg.sql` soltou a FK de
+`municipios` e criou `ref_municipios_mg` (as ~853 cidades de MG + as cidades
+do portal fora de MG, como São Paulo, que já tinham dado gravado). `sync()`
+não recebe mais `--id-municipio`: recebe `--uf` (default `MG`, o alvo desta
+mudança) e resolve o `id_municipio` de CADA barragem pelo nome que a própria
+ANA grafa (`ING_NM_MUNICIPIO`), contra `ref_municipios_mg`.
+
+O SNISB é nacional (armadilha 5), mas o catálogo novo só cobre MG (+ o
+grandfather de São Paulo) — rodar `--uf` diferente de `MG`/`SP` resolve
+poucas ou nenhuma barragem hoje, e o módulo AVISA em vez de fingir sucesso.
+Ampliar o catálogo para as 5.570 cidades do Brasil é decisão de escopo maior
+que esta migration, deliberadamente fora dela (ver o commit desta mudança).
+
 ═══ O QUE ESTE MÓDULO ESCREVE ═══
 
 `snisb_barragens` — uma linha por (município, barragem), chave natural
-`codigo_snisb` (BAR_CD_SNISB, da própria ANA). Refresh total filtrado por
-`id_municipio`, com o guarda de redução de `refresh_completo_seguro`.
+`codigo_snisb` (BAR_CD_SNISB, da própria ANA), para as linhas cujo município
+casou com confiança contra `ref_municipios_mg`
+(`etl.common.resolver_municipio_mg`). Refresh total por município resolvido,
+com o guarda de redução de `refresh_completo_seguro` (`ao_reduzir="skip"`:
+uma cidade com redução não aborta as outras da mesma rodada).
 
 Uso:
 
-    python -m etl.apis.snisb_barragens --id-municipio 3106705 --sondar --nome-municipio Betim
-    python -m etl.apis.snisb_barragens --id-municipio 3106705 --sondar   # sem nome: lista município da UF
-    python -m etl.apis.snisb_barragens --id-municipio 3106705
+    python -m etl.apis.snisb_barragens --sondar --nome-municipio Betim
+    python -m etl.apis.snisb_barragens --sondar   # sem nome: lista município da UF (MG por padrão)
+    python -m etl.apis.snisb_barragens           # sincroniza toda a UF (MG por padrão)
+    python -m etl.apis.snisb_barragens --uf SP
 """
 import argparse
 import datetime as dt
@@ -76,12 +98,7 @@ from decimal import Decimal
 
 import requests
 
-from etl.common import (
-    ID_MUNICIPIO_DEFAULT,
-    carregar_municipio,
-    get_supabase_client,
-    refresh_completo_seguro,
-)
+from etl.common import get_supabase_client, refresh_completo_seguro, resolver_municipio_mg
 
 LOG = "[etl.apis.snisb_barragens]"
 
@@ -89,6 +106,12 @@ FEATURESERVER = "https://www.snirh.gov.br/arcgis/rest/services/IG/SNISB/FeatureS
 TIMEOUT = 60
 PAGE_SIZE = 1000
 _UA = "ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular)"
+
+# `ref_municipios_mg` (migration 0057) só cobre MG (+ grandfather de cidade
+# do portal fora de MG) — é a UF que esta mudança destrava, por isso é o
+# padrão. Ver a nota "DE 'UMA CIDADE POR VEZ' PARA 'UMA UF INTEIRA'" no topo
+# do módulo antes de rodar com outra UF.
+UF_PADRAO = "MG"
 
 CAMPOS = [
     "BAR_CD_SNISB", "BAR_NM_NOME", "NM_EMPREENDEDOR", "USO_PRINCIPAL", "USO_COMPLEMENTAR",
@@ -99,28 +122,11 @@ CAMPOS = [
     "BAR_DT_CADASTRO",
 ]
 
-# Prefixo de 2 dígitos do código IBGE -> UF. Convenção nacional estável (não
-# muda), usada só no `--sondar` (sem banco); `sync` usa `cidade['uf']`.
-_UF_POR_PREFIXO_IBGE = {
-    "11": "RO", "12": "AC", "13": "AM", "14": "RR", "15": "PA", "16": "AP", "17": "TO",
-    "21": "MA", "22": "PI", "23": "CE", "24": "RN", "25": "PB", "26": "PE", "27": "AL",
-    "28": "SE", "29": "BA", "31": "MG", "32": "ES", "33": "RJ", "35": "SP", "41": "PR",
-    "42": "SC", "43": "RS", "50": "MS", "51": "MT", "52": "GO", "53": "DF",
-}
-
 
 def _sessao() -> requests.Session:
     s = requests.Session()
     s.headers["User-Agent"] = _UA
     return s
-
-
-def _uf_do_codigo_ibge(id_municipio: str) -> str:
-    prefixo = (id_municipio or "")[:2]
-    uf = _UF_POR_PREFIXO_IBGE.get(prefixo)
-    if not uf:
-        raise RuntimeError(f"{LOG} código IBGE {id_municipio!r} não tem prefixo de UF reconhecido.")
-    return uf
 
 
 def _consultar_uf(sessao: requests.Session, uf: str) -> list[dict]:
@@ -187,9 +193,11 @@ def _pertence_ao_municipio(linha: dict, nome_municipio: str) -> bool:
     return _normalizar(linha.get("ING_NM_MUNICIPIO") or "") == _normalizar(nome_municipio)
 
 
-def _parse_barragem(linha: dict, id_municipio: str) -> dict:
+def _parse_barragem(linha: dict) -> dict:
+    """Sem `id_municipio` — quem chama resolve o município (por nome, contra
+    `ref_municipios_mg`) e preenche essa chave depois, só nas linhas que
+    casaram com confiança."""
     return {
-        "id_municipio": id_municipio,
         "codigo_snisb": linha.get("BAR_CD_SNISB"),
         "nome": _vazio_para_none(linha.get("BAR_NM_NOME")),
         "empreendedor": _vazio_para_none(linha.get("NM_EMPREENDEDOR")),
@@ -218,29 +226,50 @@ def _parse_barragem(linha: dict, id_municipio: str) -> dict:
 # ─────────────────────────────── coleta ────────────────────────────────
 
 
-def coletar(id_municipio: str, uf: str, nome_municipio: str) -> list[dict]:
+def coletar(uf: str, nome_municipio: str) -> list[dict]:
+    """Filtra a UF por UM nome de município (usado por `--sondar
+    --nome-municipio`). Não resolve `id_municipio` — é só leitura/inspeção."""
     sessao = _sessao()
     todas = _consultar_uf(sessao, uf)
-    return [
-        _parse_barragem(linha, id_municipio)
-        for linha in todas
-        if _pertence_ao_municipio(linha, nome_municipio)
-    ]
+    return [_parse_barragem(linha) for linha in todas if _pertence_ao_municipio(linha, nome_municipio)]
+
+
+def coletar_e_resolver_uf(client, uf: str) -> tuple[list[dict], list[tuple[str, int]]]:
+    """Todas as barragens do SNISB na UF, cada uma com `id_municipio`
+    RESOLVIDO contra `ref_municipios_mg` (`etl.common.resolver_municipio_mg`).
+
+    Devolve `(linhas_casadas, sem_match)` — mesmo contrato de
+    `etl.apis.feam_barragens.coletar_e_resolver_estado`. As linhas que não
+    bateram com confiança NÃO entram em `linhas_casadas`."""
+    sessao = _sessao()
+    todas = _consultar_uf(sessao, uf)
+
+    casadas: list[dict] = []
+    sem_match: dict[str, int] = {}
+    for linha in todas:
+        nome_fonte = linha.get("ING_NM_MUNICIPIO")
+        resolvido = resolver_municipio_mg(client, nome_fonte)
+        if resolvido is None:
+            chave = nome_fonte or "(sem município)"
+            sem_match[chave] = sem_match.get(chave, 0) + 1
+            continue
+        registro = _parse_barragem(linha)
+        registro["id_municipio"] = resolvido["id_ibge"]
+        casadas.append(registro)
+
+    return casadas, sorted(sem_match.items(), key=lambda kv: -kv[1])
 
 
 # ─────────────────────────────── sondar ────────────────────────────────
 
 
-def sondar(id_municipio: str, nome_municipio: str | None) -> None:
-    """Sem tocar em `municipios` nem no banco (funciona com a Neon fora do
-    ar). A UF sai do código IBGE (armadilha zero: convenção nacional estável).
-    Sem `--nome-municipio`, lista os município da UF para conferência manual —
-    é o mesmo espírito da armadilha 6."""
-    uf = _uf_do_codigo_ibge(id_municipio)
+def sondar(uf: str, nome_municipio: str | None) -> None:
+    """Sem tocar em `municipios`/`ref_municipios_mg` nem gravar (funciona
+    com o banco fora do ar). Sem `--nome-municipio`, lista os município da
+    UF para conferência manual — é o mesmo espírito da armadilha 6."""
     sessao = _sessao()
     todas = _consultar_uf(sessao, uf)
-    print(f"{LOG} {id_municipio} (UF derivada do código IBGE: {uf}) — "
-          f"{len(todas)} barragem(ns) na UF — SEM GRAVAR, SEM LER `municipios`")
+    print(f"{LOG} UF={uf} — {len(todas)} barragem(ns) na UF — SEM GRAVAR, SEM LER O BANCO")
 
     if not nome_municipio:
         contagem: dict[str, int] = {}
@@ -252,7 +281,7 @@ def sondar(id_municipio: str, nome_municipio: str | None) -> None:
             print(f"       {m:<30} {n}")
         return
 
-    linhas = [_parse_barragem(l, id_municipio) for l in todas if _pertence_ao_municipio(l, nome_municipio)]
+    linhas = [_parse_barragem(l) for l in todas if _pertence_ao_municipio(l, nome_municipio)]
     print(f"\n{LOG} {nome_municipio}: {len(linhas)} barragem(ns)")
     for b in linhas:
         print(f"       {(b['nome'] or '(sem nome)'):<40} uso={b['uso_principal']!r:<32} "
@@ -263,45 +292,70 @@ def sondar(id_municipio: str, nome_municipio: str | None) -> None:
 # ──────────────────────────────── sync ─────────────────────────────────
 
 
-def sync(id_municipio: str, *, permitir_reducao: bool) -> None:
-    cidade = carregar_municipio(id_municipio)
-    print(f"{LOG} {cidade['nome']}-{cidade['uf']} ({id_municipio})")
-    linhas = coletar(id_municipio, cidade["uf"], cidade["nome"])
-    _gravar(cidade, linhas, permitir_reducao)
+def sync(uf: str, *, permitir_reducao: bool) -> None:
+    """Sincroniza a UF INTEIRA — a fonte já filtra server-side por UF, então
+    não há por-cidade para pedir (mesma razão de `feam_barragens.sync`)."""
+    if uf != "MG":
+        print(f"{LOG} AVISO: ref_municipios_mg cobre MG (+ grandfather de cidade do "
+              f"portal fora de MG) — rodar --uf {uf} tende a resolver poucas ou "
+              f"nenhuma barragem. Ver a nota no topo do módulo.")
+    client = get_supabase_client()
+    print(f"{LOG} UF={uf}: baixando e resolvendo município de cada barragem contra ref_municipios_mg...")
+    linhas, sem_match = coletar_e_resolver_uf(client, uf)
+    if sem_match:
+        total_sem_match = sum(n for _, n in sem_match)
+        print(f"{LOG} {total_sem_match} barragem(ns) em {len(sem_match)} nome(s) de município "
+              f"SEM MATCH CONFIÁVEL (limiar de similaridade não atingido) — NÃO gravadas:")
+        for nome, n in sem_match[:20]:
+            print(f"       {nome:<40} {n}")
+    _gravar(linhas, permitir_reducao)
 
 
-def _gravar(cidade: dict, linhas: list[dict], permitir_reducao: bool) -> None:
+def _gravar(linhas: list[dict], permitir_reducao: bool) -> None:
     if not linhas:
         # A maioria dos municípios pequenos legitimamente não tem barragem
-        # cadastrada no SNISB — refresh total com lista vazia apagaria
-        # histórico sem esta guarda.
-        print(f"{LOG} nada coletado para {cidade['nome']} — NÃO apago o que já existe.")
+        # cadastrada no SNISB — refresh total com lista vazia apagaria TODA
+        # a tabela.
+        print(f"{LOG} nada coletado/casado — NÃO apago o que já existe.")
         return
     client = get_supabase_client()
-    refresh_completo_seguro(
-        client,
-        "snisb_barragens",
-        {"id_municipio": cidade["id_municipio"]},
-        linhas,
-        permitir_reducao=permitir_reducao,
-        rotulo="etl.apis.snisb_barragens",
-    )
-    print(f"{LOG} snisb_barragens: {len(linhas)} linha(s) gravada(s).")
+    por_municipio: dict[str, list[dict]] = {}
+    for linha in linhas:
+        por_municipio.setdefault(linha["id_municipio"], []).append(linha)
+
+    gravados = 0
+    for id_municipio, linhas_da_cidade in por_municipio.items():
+        # `ao_reduzir="skip"`: uma cidade cuja rodada trouxe menos barragens
+        # que o banco já tem NÃO pode abortar a sincronização das outras
+        # cidades da mesma rodada.
+        escreveu = refresh_completo_seguro(
+            client,
+            "snisb_barragens",
+            {"id_municipio": id_municipio},
+            linhas_da_cidade,
+            permitir_reducao=permitir_reducao,
+            ao_reduzir="skip",
+            rotulo="etl.apis.snisb_barragens",
+        )
+        if escreveu:
+            gravados += len(linhas_da_cidade)
+    print(f"{LOG} snisb_barragens: {gravados} linha(s) gravada(s) em {len(por_municipio)} município(s).")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
+    parser.add_argument("--uf", default=UF_PADRAO, help="sigla de 2 letras (default: MG)")
     parser.add_argument("--permitir-reducao", action="store_true")
     parser.add_argument("--sondar", action="store_true", help="consulta e relata, NÃO grava, NÃO lê o banco")
     parser.add_argument("--nome-municipio", help="só com --sondar: filtra pelo nome (a fonte não tem código IBGE)")
     args = parser.parse_args()
 
     try:
+        uf = args.uf.strip().upper()
         if args.sondar:
-            sondar(args.id_municipio, args.nome_municipio)
+            sondar(uf, args.nome_municipio)
         else:
-            sync(args.id_municipio, permitir_reducao=args.permitir_reducao)
+            sync(uf, permitir_reducao=args.permitir_reducao)
     except RuntimeError as e:
         print(f"{LOG} ABORT: {e}", file=sys.stderr)
         sys.exit(1)

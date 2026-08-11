@@ -68,7 +68,22 @@ caminho aberto.
 
 8. **NÃO HÁ CÓDIGO IBGE.** Só `MUNICÍPIO` por nome (59 municípios distintos nas
    249 linhas). Mesma lacuna do SNISB, mesmo tratamento: casamento normalizado
-   em código, e `--sondar` sem `--nome-municipio` lista o que a fonte conhece.
+   contra `ref_municipios_mg` (`etl.common.resolver_municipio_mg` — migration
+   `0057_ref_municipios_mg.sql`), e `--sondar` sem `--nome-municipio` lista o
+   que a fonte conhece.
+
+═══ 2026-08-11: DE "UMA CIDADE POR VEZ" PARA "MG INTEIRA" ═══
+
+Até aqui `sync(id_municipio)` exigia que a cidade estivesse em `municipios` (6
+linhas — as do portal): `carregar_municipio` abortava para qualquer outra, e
+era ESSE abort — não a FK desta tabela — que travava a cobertura em 4 das 249
+barragens. A migration `0057` soltou a FK de `municipios` e criou
+`ref_municipios_mg` (as ~853 cidades de MG); este módulo casa CADA linha da
+planilha pelo próprio nome que a FEAM grafa, sem depender de `municipios` em
+nada. `sync()` não recebe mais `--id-municipio`: processa a planilha inteira
+numa rodada só, porque a fonte já é estadual (um XLSX só, sem filtro por
+cidade) — pedir a cidade por fora sempre foi um filtro aplicado DEPOIS do
+download completo, nunca uma economia de rede.
 
 ═══ FRESCOR: O [VERIFY] DA §5 ESTÁ RESOLVIDO ═══
 
@@ -97,15 +112,18 @@ SNISB/ANM 320) — ver a nota na migration `0049`.
 
 ═══ O QUE ESTE MÓDULO ESCREVE ═══
 
-`feam_barragens` — uma linha por (município, nome da barragem). Refresh total
-filtrado por `id_municipio`, com o guarda de redução de
-`refresh_completo_seguro`.
+`feam_barragens` — uma linha por (município, nome da barragem), para as
+linhas cujo município a fonte grafa casou com confiança contra
+`ref_municipios_mg` (ver `resolver_municipio_mg`). Refresh total por
+município resolvido, com o guarda de redução de `refresh_completo_seguro`
+(`ao_reduzir="skip"`: uma cidade com redução não aborta as outras ~centenas
+da mesma rodada).
 
 Uso:
 
-    python -m etl.apis.feam_barragens --id-municipio 3106705 --sondar --nome-municipio Betim
-    python -m etl.apis.feam_barragens --id-municipio 3106705 --sondar   # lista os municípios da fonte
-    python -m etl.apis.feam_barragens --id-municipio 3106705
+    python -m etl.apis.feam_barragens --sondar --nome-municipio Betim
+    python -m etl.apis.feam_barragens --sondar   # lista os municípios da fonte
+    python -m etl.apis.feam_barragens           # sincroniza MG inteira
 """
 import argparse
 import io
@@ -117,12 +135,7 @@ from decimal import Decimal, InvalidOperation
 import openpyxl
 import requests
 
-from etl.common import (
-    ID_MUNICIPIO_DEFAULT,
-    carregar_municipio,
-    get_supabase_client,
-    refresh_completo_seguro,
-)
+from etl.common import get_supabase_client, refresh_completo_seguro, resolver_municipio_mg
 
 LOG = "[etl.apis.feam_barragens]"
 
@@ -285,9 +298,11 @@ def _conferir_total(linhas: list[list], declarado: int | None) -> None:
         print(f"{LOG} {len(linhas)} barragem(ns), igual ao total declarado pela planilha.")
 
 
-def _parse(linha: list, id_municipio: str) -> dict:
+def _parse(linha: list) -> dict:
+    """Sem `id_municipio` — quem chama resolve o município (por nome, contra
+    `ref_municipios_mg`) e preenche essa chave depois, só nas linhas que
+    casaram com confiança."""
     return {
-        "id_municipio": id_municipio,
         "id_sigibar": _txt(linha[C_SIGIBAR]),   # armadilha 4: TEXTO, não número
         "nome": _txt(linha[C_NOME]),
         "empreendedor": _txt(linha[C_EMPREENDEDOR]),
@@ -307,30 +322,56 @@ def _parse(linha: list, id_municipio: str) -> dict:
         "suspensao": _txt(linha[C_SUSPENSAO]),
         "latitude": _coord(linha[C_LAT], MG_LAT, "latitude"),
         "longitude": _coord(linha[C_LON], MG_LON, "longitude"),
-        "municipio_fonte": _txt(linha[C_MUNICIPIO]),
+        "municipio_fonte": _txt(linha[C_MUNICIPIO]),   # grafia CRUA da FEAM, preservada
     }
 
 
 # ─────────────────────────────── coleta ────────────────────────────────
 
 
-def coletar(id_municipio: str, nome_municipio: str) -> list[dict]:
+def coletar(nome_municipio: str) -> list[dict]:
+    """Filtra a planilha por UM nome de município (usado por `--sondar
+    --nome-municipio`). Não resolve `id_municipio` — é só leitura/inspeção."""
     sessao = _sessao()
     linhas, declarado = _linhas_brutas(_baixar(sessao))
     _conferir_total(linhas, declarado)
     alvo = _normalizar(nome_municipio)
-    return [
-        _parse(l, id_municipio)
-        for l in linhas
-        if _normalizar(l[C_MUNICIPIO]) == alvo
-    ]
+    return [_parse(l) for l in linhas if _normalizar(l[C_MUNICIPIO]) == alvo]
+
+
+def coletar_e_resolver_estado(client) -> tuple[list[dict], list[tuple[str, int]]]:
+    """As 249 linhas da planilha, cada uma com `id_municipio` RESOLVIDO
+    contra `ref_municipios_mg` (`etl.common.resolver_municipio_mg`).
+
+    Devolve `(linhas_casadas, sem_match)`. `sem_match` é
+    `[(nome_da_fonte, quantidade_de_barragens), ...]` — as linhas que não
+    bateram com confiança NÃO entram em `linhas_casadas`: melhor barragem
+    ausente da tela do que barragem pendurada no município errado."""
+    sessao = _sessao()
+    linhas, declarado = _linhas_brutas(_baixar(sessao))
+    _conferir_total(linhas, declarado)
+
+    casadas: list[dict] = []
+    sem_match: dict[str, int] = {}
+    for l in linhas:
+        nome_fonte = _txt(l[C_MUNICIPIO])
+        resolvido = resolver_municipio_mg(client, nome_fonte)
+        if resolvido is None:
+            sem_match[nome_fonte or "(sem município)"] = sem_match.get(nome_fonte or "(sem município)", 0) + 1
+            continue
+        registro = _parse(l)
+        registro["id_municipio"] = resolvido["id_ibge"]
+        casadas.append(registro)
+
+    return casadas, sorted(sem_match.items(), key=lambda kv: -kv[1])
 
 
 # ─────────────────────────────── sondar ────────────────────────────────
 
 
-def sondar(id_municipio: str, nome_municipio: str | None) -> None:
-    """Sem gravar e sem ler `municipios` — funciona com a Neon fora do ar."""
+def sondar(nome_municipio: str | None) -> None:
+    """Sem gravar e sem ler `municipios`/`ref_municipios_mg` — funciona com
+    o banco fora do ar."""
     sessao = _sessao()
     linhas, declarado = _linhas_brutas(_baixar(sessao))
     _conferir_total(linhas, declarado)
@@ -347,7 +388,7 @@ def sondar(id_municipio: str, nome_municipio: str | None) -> None:
         return
 
     achadas = [
-        _parse(l, id_municipio) for l in linhas
+        _parse(l) for l in linhas
         if _normalizar(l[C_MUNICIPIO]) == _normalizar(nome_municipio)
     ]
     print(f"\n{LOG} {nome_municipio}: {len(achadas)} barragem(ns)")
@@ -362,39 +403,54 @@ def sondar(id_municipio: str, nome_municipio: str | None) -> None:
 # ──────────────────────────────── sync ─────────────────────────────────
 
 
-def sync(id_municipio: str, *, permitir_reducao: bool) -> None:
-    cidade = carregar_municipio(id_municipio)
-    if cidade["uf"] != "MG":
-        raise RuntimeError(
-            f"{LOG} {cidade['nome']}-{cidade['uf']} não é de Minas Gerais. O inventário "
-            f"da FEAM é estadual — para barragem fora de MG use `etl.apis.snisb_barragens`."
-        )
-    print(f"{LOG} {cidade['nome']}-{cidade['uf']} ({id_municipio})")
-    linhas = coletar(id_municipio, cidade["nome"])
-    _gravar(cidade, linhas, permitir_reducao)
+def sync(*, permitir_reducao: bool) -> None:
+    """Sincroniza a planilha INTEIRA (249 barragens, MG inteira) — a fonte é
+    um XLSX estadual único, então não há por-cidade para pedir."""
+    client = get_supabase_client()
+    print(f"{LOG} baixando e resolvendo município de cada barragem contra ref_municipios_mg...")
+    linhas, sem_match = coletar_e_resolver_estado(client)
+    if sem_match:
+        total_sem_match = sum(n for _, n in sem_match)
+        print(f"{LOG} {total_sem_match} barragem(ns) em {len(sem_match)} nome(s) de município "
+              f"SEM MATCH CONFIÁVEL (limiar de similaridade não atingido) — NÃO gravadas:")
+        for nome, n in sem_match[:20]:
+            print(f"       {nome:<40} {n}")
+    _gravar(linhas, permitir_reducao)
 
 
-def _gravar(cidade: dict, linhas: list[dict], permitir_reducao: bool) -> None:
+def _gravar(linhas: list[dict], permitir_reducao: bool) -> None:
     if not linhas:
-        # 59 municípios de 853 têm barragem da FEAM — o normal é não ter, e
-        # refresh total com lista vazia apagaria histórico sem esta guarda.
-        print(f"{LOG} nada coletado para {cidade['nome']} — NÃO apago o que já existe.")
+        # Fonte fora do ar ou layout mudou (já coberto por `_conferir_total`)
+        # — refresh total com lista vazia apagaria TODA a tabela.
+        print(f"{LOG} nada coletado/casado — NÃO apago o que já existe.")
         return
     client = get_supabase_client()
-    refresh_completo_seguro(
-        client,
-        "feam_barragens",
-        {"id_municipio": cidade["id_municipio"]},
-        linhas,
-        permitir_reducao=permitir_reducao,
-        rotulo="etl.apis.feam_barragens",
-    )
-    print(f"{LOG} feam_barragens: {len(linhas)} linha(s) gravada(s).")
+    por_municipio: dict[str, list[dict]] = {}
+    for linha in linhas:
+        por_municipio.setdefault(linha["id_municipio"], []).append(linha)
+
+    gravados = 0
+    for id_municipio, linhas_da_cidade in por_municipio.items():
+        # `ao_reduzir="skip"`: uma cidade cuja rodada trouxe menos barragens
+        # que o banco já tem NÃO pode abortar a sincronização das outras
+        # ~centenas de municípios da mesma rodada — é exatamente o call site
+        # que a docstring de `refresh_completo_seguro` descreve.
+        escreveu = refresh_completo_seguro(
+            client,
+            "feam_barragens",
+            {"id_municipio": id_municipio},
+            linhas_da_cidade,
+            permitir_reducao=permitir_reducao,
+            ao_reduzir="skip",
+            rotulo="etl.apis.feam_barragens",
+        )
+        if escreveu:
+            gravados += len(linhas_da_cidade)
+    print(f"{LOG} feam_barragens: {gravados} linha(s) gravada(s) em {len(por_municipio)} município(s).")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
     parser.add_argument("--permitir-reducao", action="store_true")
     parser.add_argument("--sondar", action="store_true", help="consulta e relata, NÃO grava, NÃO lê o banco")
     parser.add_argument("--nome-municipio", help="só com --sondar: a fonte não tem código IBGE")
@@ -402,9 +458,9 @@ if __name__ == "__main__":
 
     try:
         if args.sondar:
-            sondar(args.id_municipio, args.nome_municipio)
+            sondar(args.nome_municipio)
         else:
-            sync(args.id_municipio, permitir_reducao=args.permitir_reducao)
+            sync(permitir_reducao=args.permitir_reducao)
     except RuntimeError as e:
         print(f"{LOG} ABORT: {e}", file=sys.stderr)
         sys.exit(1)

@@ -54,13 +54,25 @@ O critério não é dificuldade: é **quanto cada seção muda a decisão de alg
   `geo.anm.gov.br/arcgis/rest/services/Producao/Barragens_Dashboard_Publico/MapServer/0/query?where=ATIVO>0&outFields=*&f=json`
 
 **Tarefas:**
-1. Rodar o coletor da FEAM para **as 249 barragens de Minas**, não só as das
-   cidades do portal. `feam_barragens` tem 4 linhas hoje.
-2. Idem SNISB: 52 linhas contra 2.212 em Minas.
+1. ~~Rodar o coletor da FEAM para as 249 barragens de Minas~~ — **feito em
+   2026-08-11** (migration `0057_ref_municipios_mg.sql` + coletores
+   reescritos): `feam_barragens` tem **249/249**, era 4. O bloqueio nunca foi
+   a FK da tabela — era `carregar_municipio` abortando para qualquer cidade
+   fora das 6 do portal; a correção soltou a FK de `municipios` para um
+   catálogo novo (`ref_municipios_mg`, as ~853 cidades de MG) e o coletor
+   passou a resolver o município de cada barragem pelo nome que a FEAM
+   grafa, casamento normalizado + `pg_trgm` para erro de digitação.
+2. ~~Idem SNISB~~ — **feito em 2026-08-11**: `snisb_barragens` tem
+   **2.212/2.212** em MG (mais 28 de São Paulo, preexistentes e preservadas
+   — o SNISB é nacional, ver o cuidado abaixo). Era 52 (24 de MG + 28 de SP).
 3. Decidir o recorte da tela estadual: `/ambiental/barragens` com filtro por
    município, ou manter só a página por cidade. **A tela estadual só se
-   justifica se o dado for estadual** — hoje não é.
-4. Trocar o número do card assim que o inventário entrar.
+   justifica se o dado for estadual** — agora é. Não fiz esta parte: é
+   decisão de produto/UI, fora do escopo da migration de dado.
+4. Trocar o número do card assim que o inventário entrar — dado já está no
+   banco; card não foi tocado nesta rodada (não achei JOIN nem contador de
+   card lendo `feam_barragens`/`snisb_barragens` fora das duas queries por
+   cidade em `lib/db/queries/betim.ts`, que já leem a tabela cheia).
 
 **Cuidado registrado na F0:** o SNISB é nacional, não só mineiro. Somar SNISB
 e FEAM sem deduplicar conta a mesma barragem duas vezes.

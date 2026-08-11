@@ -506,6 +506,110 @@ def nome_para_fonte_externa(nome: str) -> str:
     return sem_acento.upper()
 
 
+# Abaixo do limiar, `resolver_municipio_mg` NÃO adivinha: devolve None e quem
+# chamou loga "sem match confiável" e pula o registro. 0.6 medido contra os
+# pares reais das fontes ("BELO HORIZONTE - MG" -> "Belo Horizonte" bate
+# 0.83; municípios sem relação nenhuma medidos abaixo de 0.35) — ver a nota
+# na migration `0057_ref_municipios_mg.sql`.
+LIMIAR_SIMILARIDADE_MUNICIPIO_MG = 0.6
+
+_cache_catalogo_municipios_mg: dict[str, dict] | None = None
+
+
+def _normalizar_nome_municipio_mg(s: str) -> str:
+    """Sem acento, maiúsculo, sem sufixo " - MG", espaço único.
+
+    Usado só no passo 1 (igualdade) de `resolver_municipio_mg` — o passo 2
+    (similaridade) roda no banco, via `unaccent_immutable`/`pg_trgm`
+    (migration `0046_busca_legislativa_unaccent.sql`), porque comparar
+    trigrama em Python reimplementaria o que o Postgres já faz."""
+    import re
+    import unicodedata
+
+    base = unicodedata.normalize("NFD", s or "")
+    sem_acento = "".join(c for c in base if unicodedata.category(c) != "Mn")
+    sem_acento = sem_acento.upper().replace("\xa0", " ")
+    sem_acento = re.sub(r"\s*-\s*MG\s*$", "", sem_acento)
+    return " ".join(sem_acento.split())
+
+
+def _catalogo_municipios_mg(client) -> dict[str, dict]:
+    """As linhas de `ref_municipios_mg` (as 853 cidades de MG + o
+    grandfather de cidade do portal fora de MG — ver migration `0057`),
+    indexadas pelo nome normalizado. Cacheada NO PROCESSO: cada rodada de
+    `etl.apis.feam_barragens`/`etl.apis.snisb_barragens` casa dezenas a
+    milhares de nomes contra o mesmo catálogo, e ele cabe de sobra em
+    memória (~850 linhas) — sem a cache seriam outras tantas consultas."""
+    global _cache_catalogo_municipios_mg
+    if _cache_catalogo_municipios_mg is None:
+        linhas = client.table("ref_municipios_mg").select("id_ibge, nome").execute().data
+        _cache_catalogo_municipios_mg = {
+            _normalizar_nome_municipio_mg(r["nome"]): r for r in linhas
+        }
+    return _cache_catalogo_municipios_mg
+
+
+def resolver_municipio_mg(
+    client, nome_fonte: str | None, *, limiar: float = LIMIAR_SIMILARIDADE_MUNICIPIO_MG
+) -> dict | None:
+    """Casa `nome_fonte` (grafia CRUA da fonte — ex. `MUNICÍPIO` da FEAM,
+    `ING_NM_MUNICIPIO` do SNISB) contra `ref_municipios_mg.nome`.
+
+    Existe para substituir o abort de `carregar_municipio` quando o alvo é
+    UMA cidade de cada vez presa a `municipios` (6 linhas) — aqui o
+    casamento é por NOME, contra o catálogo estadual, então cobre qualquer
+    uma das ~853 cidades de MG sem depender de `municipios`.
+
+    Dois passos, nesta ordem:
+
+      1. Igualdade normalizada (sem acento, maiúsculo, sem sufixo " - MG") —
+         cobre a maioria: "BELO HORIZONTE - MG" == "Belo Horizonte".
+      2. Se não bateu, similaridade via `pg_trgm` (`similarity()`) contra
+         TODAS as linhas do catálogo, no banco — ~850 linhas é barato para
+         sequential scan, não vale forçar o índice trigram (que ajudaria
+         mais numa tabela grande ou num `WHERE nome % $1`). Comparação já
+         passa por `unaccent_immutable(upper(...))` dos dois lados, senão
+         "BETIM" vs "Betim" perderia trigrama por causa da caixa/acento, não
+         por erro de digitação de verdade.
+
+    Abaixo do limiar NÃO adivinha: devolve `None`. Quem chamou decide (logar
+    "sem match confiável" e pular o registro — nunca gravar linha órfã).
+
+    Devolve `{"id_ibge", "nome", "via": "exato"|"similaridade", "score"}` ou
+    `None`.
+    """
+    if not nome_fonte or not nome_fonte.strip():
+        return None
+
+    alvo = _normalizar_nome_municipio_mg(nome_fonte)
+    catalogo = _catalogo_municipios_mg(client)
+    exato = catalogo.get(alvo)
+    if exato:
+        return {"id_ibge": exato["id_ibge"], "nome": exato["nome"], "via": "exato", "score": 1.0}
+
+    from psycopg.rows import dict_row
+
+    with client.conexao().cursor(row_factory=dict_row) as cur:
+        cur.execute(
+            "select id_ibge, nome, "
+            "similarity(upper(public.unaccent_immutable(nome)), "
+            "upper(public.unaccent_immutable(%s))) as score "
+            "from ref_municipios_mg "
+            "order by score desc "
+            "limit 1",
+            (nome_fonte,),
+        )
+        linha = cur.fetchone()
+    if linha and linha["score"] is not None and linha["score"] >= limiar:
+        return {
+            "id_ibge": linha["id_ibge"],
+            "nome": linha["nome"],
+            "via": "similaridade",
+            "score": float(linha["score"]),
+        }
+    return None
+
+
 def fetch_all(query_factory, page_size: int = PAGE_SIZE) -> list[dict]:
     """Roda um select por quantas páginas `.range()` forem necessárias.
 
