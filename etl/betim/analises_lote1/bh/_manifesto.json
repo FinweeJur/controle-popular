@@ -1,0 +1,162 @@
+{
+  "id_municipio": "3106200",
+  "municipio": "Belo Horizonte",
+  "versao_rubrica": "1.0.0",
+  "versao_prompt": "1.0.0+cidades.1.0.0",
+  "modelo_pretendido": "claude-sonnet-5-lote1",
+  "camadas": {
+    "lei_vigente_com_sinal": 25
+  },
+  "objetos": [
+    {
+      "id": "8f36cfbf-dde2-44f7-b75e-5cb85b5f0b8e",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.095/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "3e4ad9fa-23c5-403e-8bcf-d23f0bf43406",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.084/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "4ddc091c-5064-458f-8013-7da5fe4515cd",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.076/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "01332740-a0de-4f76-b6ef-a8387e7e1d3c",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.077/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "954e57e9-7eab-42c1-b750-d2d4ceec3780",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.078/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "65bbe075-83f7-460f-8bea-8bde6b708502",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.079/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "37b53292-599b-42f2-ad6c-ab453534ffb4",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.073/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "12d0cf39-f460-472f-b288-0e374a6fc3d8",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.067/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "88f54c18-053a-4cfe-8f81-537e008767c3",
+      "tipo_objeto": "ato",
+      "identificacao": "Proposição de Lei nº 106/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "6afe848f-4354-4bc5-a215-c0ecee1da155",
+      "tipo_objeto": "ato",
+      "identificacao": "Proposição de Lei nº 80/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "f308ee89-af4b-4a68-a8ae-964e32b1bf07",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.045/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "df858947-0a48-4494-872f-82baf83bf0bd",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.047/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "cdf2eb30-0d36-4520-a1e5-f65e5520f44e",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.049/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "eb7deb1d-c537-4980-b809-59ef76d3a1cc",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.050/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "26026ce9-e63b-4f21-a81a-e3a747ad26ab",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.051/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "befe9dfc-7bc6-410e-8ecd-33e30c2470cd",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.052/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "9da75956-32e9-46e8-8158-cf04229fce02",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.040/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "3b83b9c5-e491-49c9-a677-e93b5f988b4d",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.041/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "043cb68a-b538-4a20-b791-d63665b2f37e",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.042/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "04314338-9fdc-474a-9fc9-504ab8aab3fb",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.023/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "deaa4c0d-0e8c-4edd-841d-68ffc4176a19",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.017/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "17068a4f-d9d1-4188-ba66-768d35257136",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.018/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "501ec90c-7d31-4baf-b42d-69b27eb0b9ed",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.019/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "a1bd0aca-390e-4fa7-ab9c-60ef02d8ea96",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.013/2026",
+      "camada": "lei_vigente_com_sinal"
+    },
+    {
+      "id": "79c5b523-4fd7-4323-ac37-d417f746ade0",
+      "tipo_objeto": "ato",
+      "identificacao": "Lei nº 12.014/2026",
+      "camada": "lei_vigente_com_sinal"
+    }
+  ]
+}
