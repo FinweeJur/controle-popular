@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "cultura_lazer",
+      "dispositivo": "CF/88, art. 217",
+      "direcao": "amplia",
+      "mecanismo": "cria_mecanismo_fiscalizacao",
+      "titulares": [
+        "população do Município de Araçuaí usuária de programas de esporte e lazer"
+      ],
+      "grau": "marginal",
+      "trecho": "ALTERA A LEI MUNICIPAL Nº575 DE 28 DE JUNHO DE 2022, QUE DISPÕE SOBRE A POLÍTICA MUNICIPAL DE ESPORTE E LAZER, INSTITUI O SISTEMA MUNICIPAL DE ESPORTE E LAZER, SUAS DERIVAÇÕES E DÁ OUTRAS PROVIDÊNCIAS",
+      "confianca": 0.5
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Municipal nº 575/2022"
+  ],
+  "resumo_neutro": "A lei altera a Lei Municipal nº 575/2022, que dispõe sobre a Política Municipal de Esporte e Lazer, e institui o Sistema Municipal de Esporte e Lazer em Araçuaí, com suas derivações."
+}

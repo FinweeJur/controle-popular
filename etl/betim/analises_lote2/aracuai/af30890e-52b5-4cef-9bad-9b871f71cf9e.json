@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_pcd",
+      "dispositivo": "Lei 13.146/2015 (LBI)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "pessoas com deficiência do Município de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "CONCESSÃO DE PASSE LIVRE ÀS PESSOAS COM DEFICIÊNCIA NO TRANSPORTE INTRAMUNICIPAL URBANO E RURAL NO MUNICÍPIO DE ARAÇUAÍ/MG",
+      "confianca": 0.75
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei nº 019/2001"
+  ],
+  "resumo_neutro": "A lei concede passe livre às pessoas com deficiência no transporte intramunicipal urbano e rural de Araçuaí e revoga a Lei nº 019/2001, que tratava do tema anteriormente."
+}

@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_mulher",
+      "dispositivo": "Lei 11.340/2006 (Maria da Penha)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "mulheres em situação de violência doméstica e familiar em Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "Política Pública Municipal de enfrentamento à violência doméstica e familiar contra a mulher no Município de Araçuaí/MG",
+      "confianca": 0.65
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei institui a Política Pública Municipal de enfrentamento à violência doméstica e familiar contra a mulher em Araçuaí, estabelecendo diretrizes e ações municipais de proteção às vítimas."
+}

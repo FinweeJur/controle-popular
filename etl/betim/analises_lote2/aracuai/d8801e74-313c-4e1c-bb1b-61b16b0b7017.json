@@ -1,0 +1,22 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "trabalho",
+      "dispositivo": "CF/88, art. 7º",
+      "direcao": "amplia",
+      "mecanismo": "aumenta_financiamento",
+      "titulares": [
+        "servidores públicos municipais de Araçuaí que exercem funções relacionadas à aplicação da Lei Federal nº 14.133/2021"
+      ],
+      "grau": "marginal",
+      "trecho": "CONCEDE GRATIFICAÇÃO PARA O EXERCÍCIO DE FUNÇÕES EM ATENDIMENTO À NOVA LEI DE LICITAÇÃO - LEI FEDERAL N° 14.133/2021",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [
+    "Lei Complementar Municipal nº 057/2024"
+  ],
+  "resumo_neutro": "A lei altera dispositivo da Lei Complementar Municipal nº 057/2024, que concede gratificação aos servidores no exercício de funções relacionadas à aplicação da Lei Federal de Licitações nº 14.133/2021. O texto não especifica qual artigo foi alterado nem o teor exato da mudança."
+}

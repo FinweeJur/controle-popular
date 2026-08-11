@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "devido_processo_ampla_defesa",
+      "dispositivo": "CF/88, art. 5º, LV",
+      "direcao": "amplia",
+      "mecanismo": "cria_garantia_processual",
+      "titulares": [
+        "servidores e agentes públicos apontados como causadores de danos materiais à administração pública de Araçuaí"
+      ],
+      "grau": "marginal",
+      "trecho": "OBRIGATORIEDADE DE INSTAURAÇÃO DE PROCESSO DISCIPLINAR ADMINISTRATIVOS PARA FINS DE DANOS MATERIAS CAUSADOS À ADMINISTRAÇÃO PÚBLICA",
+      "confianca": 0.55
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei disciplina a obrigatoriedade de instauração de processo administrativo disciplinar para apurar danos materiais causados à administração pública municipal, antes de qualquer cobrança ou penalização ao responsável."
+}

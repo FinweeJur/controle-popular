@@ -1,0 +1,20 @@
+{
+  "direitos_afetados": [
+    {
+      "direito": "direitos_idoso",
+      "dispositivo": "Lei 10.741/2003 (Estatuto da Pessoa Idosa)",
+      "direcao": "amplia",
+      "mecanismo": "cria_direito",
+      "titulares": [
+        "idosos acolhidos institucionalmente no Município de Araçuaí"
+      ],
+      "grau": "moderado",
+      "trecho": "CRIA O PROGRAMA DE APADRINHAMENTO AFETIVO DO IDOSO NO MUNICÍPIO DE ARAÇUAÍ E DÁ OUTRAS PROVIDÊNCIAS",
+      "confianca": 0.6
+    }
+  ],
+  "clausula_petrea": false,
+  "vedacao_retrocesso": false,
+  "normas_alteradas": [],
+  "resumo_neutro": "A lei cria o Programa de Apadrinhamento Afetivo do Idoso no Município de Araçuaí, voltado a estabelecer vínculos afetivos com idosos em situação de acolhimento."
+}
