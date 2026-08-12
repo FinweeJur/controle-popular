@@ -6,7 +6,7 @@
  * Sem build step: ES modules vanilla servidos como estáticos pelo FastAPI.
  */
 
-import { ABERTURA, FOCUS_PRESETS, LAYER_REGISTRY } from './config.js';
+import { ABERTURA, FOCUS_PRESETS, LAYER_REGISTRY, REGIOES_CAMADAS } from './config.js';
 import { municipioPorCodigo } from './data/municipios.js';
 import { createScene } from './core/scene.js';
 import { createEarth } from './core/earth.js';
@@ -210,8 +210,22 @@ async function bootstrap() {
 
     const layerId = decodeURIComponent(achado[1]);
     const idx = Number(achado[2]);
-    if (!LAYER_REGISTRY.some((l) => l.id === layerId)) {
+    const cfg = LAYER_REGISTRY.find((l) => l.id === layerId);
+    if (!cfg) {
       console.warn(`[globe] endereço aponta para a camada "${layerId}", que não existe.`);
+      return false;
+    }
+    // Camada `vazia` não tem área nenhuma para abrir hoje — mas `layers.enable`
+    // ligaria mesmo assim (o grupo 3D fica vazio, e um grupo vazio ainda é um
+    // `object` não-nulo, então `isEnabled` volta `true`; ver manager.js), e o
+    // `setStatus` logo abaixo reescreveria o rótulo "vazia" do painel para
+    // "sem dados ainda" e acenderia uma chave que a UI mantém sempre travada e
+    // desligada — sem clique nenhum para desfazer, porque `toggle.disabled`
+    // tira a chave do fluxo. Nada seria desenhado no globo; só o painel
+    // passaria a mentir sobre por que a camada está vazia. Sai cedo, sem
+    // tocar no estado da camada.
+    if (cfg.vazia) {
+      console.warn(`[globe] endereço aponta para a área ${idx} da camada "${layerId}", que está estruturalmente vazia hoje — nada para abrir.`);
       return false;
     }
 
@@ -311,6 +325,7 @@ async function bootstrap() {
   const layersPanel = createLayersPanel(
     document.getElementById('layers-panel'),
     LAYER_REGISTRY,
+    REGIOES_CAMADAS,
     (id) => Promise.resolve(layers.toggle(id)).then(() => syncFeatureCounts(id)),
   );
 

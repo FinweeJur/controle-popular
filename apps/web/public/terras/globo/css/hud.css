@@ -665,10 +665,50 @@ body {
   background: var(--color-hairline);
 }
 
+/* Envelope de todos os grupos de região (ver ui/layerspanel.js). Gap maior que
+   o das linhas dentro de um grupo — é o espaço que separa "Bacia do
+   Paraopeba" de "Vales", e precisa ser lido como separação de seção, não
+   como mais uma linha de camada. */
+#layers-panel .layer-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Um grupo = título de região + suas camadas. `section` já é um landmark;
+   nenhum estilo de caixa aqui — a separação é só o espaço acima. */
+#layers-panel .layer-group-titulo {
+  margin: 0 0 4px;
+  padding: 0 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
 #layers-panel .layer-list {
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+/* Camada cuja fonte está vazia HOJE (ver `vazia` no LAYER_REGISTRY): some com
+   o brilho de "isto é uma opção viva" sem sumir da lista — a lacuna é o
+   próprio achado (ex.: o INCRA não publica terras devolutas), não um defeito
+   a esconder. */
+#layers-panel .layer-row.layer-vazia {
+  opacity: 0.6;
+}
+
+#layers-panel .layer-row.layer-vazia .layer-count {
+  font-style: italic;
+}
+
+#layers-panel .layer-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* Linha de camada: dot de cor + (nome + explicação) + contador + chave */
@@ -805,8 +845,11 @@ body {
   outline-offset: 1px;
 }
 
-/* Estado colapsado: esconde a lista, mantém só o cabeçalho */
-#layers-panel.collapsed .layer-list {
+/* Estado colapsado: esconde os grupos (título de região incluso), mantém só
+   o cabeçalho. Era `.layer-list` — escondia as linhas mas deixava os três
+   títulos de região boiando sem nada embaixo, e aquilo lê como painel
+   quebrado, não como painel recolhido. */
+#layers-panel.collapsed .layer-groups {
   display: none;
 }
 
@@ -1005,10 +1048,37 @@ body {
 }
 #lista .lista-aviso[hidden] { display: none; }
 
+/* O viewport que rola. Virou um bloco simples (era `display:flex`) porque
+   `.lista-itens-espaco` é o único filho de verdade agora (ver ui/listapanel.js,
+   conserto de 12/08: janela deslizante em vez de 8.525 nós de uma vez). */
 #lista .lista-itens {
+  position: relative;
   overflow-y: auto;
   padding-right: 6px;
   margin-top: 6px;
+}
+
+/* O espaçador: sua altura é `entradas.length × PASSO_ESTIMADO`, calculada em
+   JS — é isto que dá à barra de rolagem o tamanho da lista INTEIRA, mesmo com
+   só umas dezenas de linhas de fato desenhadas. `position: relative` é o que
+   faz o `top` de `.lista-itens-janela` (a seguir) contar a partir DELE, não
+   da janela do navegador. */
+#lista .lista-itens-espaco {
+  position: relative;
+}
+
+/* O grupo com as linhas de fato renderizadas — só ELE ganha um `top` (em JS,
+   `inicio × PASSO_ESTIMADO`); as linhas dentro ficam em fluxo normal
+   (flex-column como antes do conserto), cada uma com a altura real do seu
+   próprio texto. Não é linha-a-linha posicionada: `.lista-item-sub` varia de
+   1 a 3 linhas conforme o resumo, e dar `top` fixo por linha exigiria uma
+   altura só pra todas — ou cortava texto (perderia titularidade, que o
+   projeto nunca omite), ou desperdiçava espaço nas 93% de linhas curtas. Ver
+   o comentário grande no topo de ui/listapanel.js. */
+#lista .lista-itens-janela {
+  position: absolute;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   gap: 2px;
