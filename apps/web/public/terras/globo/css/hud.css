@@ -538,11 +538,15 @@ body {
    (--caution: "ressalva, dado parcial") — este também é um aviso de origem
    do dado, só que sobre o PONTO, não sobre a área inteira. Sem ele, um par
    de coordenadas calculado aparece com a mesma cara de um vindo da fonte, e
-   quem olha não tem como saber a diferença. */
+   quem olha não tem como saber a diferença.
+   ⟲ `border-radius` era 3px cravado aqui e `var(--radius-sm)` (4px) no MESMO
+   selo em /static/detalhe.html — dois números pro mesmo elemento, com um
+   comentário lá afirmando que os dois seguem a mesma regra. Unificado no
+   token: é a mesma ficha nas duas telas (ver topo deste arquivo). */
 #inspector .ficha-coord-calc {
   margin-left: 4px;
   padding: 1px 5px;
-  border-radius: 3px;
+  border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: 9px;
   font-weight: 700;

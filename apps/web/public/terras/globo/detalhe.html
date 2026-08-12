@@ -231,7 +231,12 @@
         // lado, é onde ela mais importa.
         const extras = document.getElementById('nota-uso');
         const ehPonto = f.geometry?.type === 'Point' || f.geometry?.type === 'MultiPoint';
-        extras.innerHTML = blocoDeCoordenadas(props, ehPonto, f.geometry) + notaDeUso(props);
+        // Mesma porta de globe/js/ui/inspector.js: camada sem `listavel` (ex.
+        // municipios-mg, divisa do IBGE) não ganha "Copiar para ofício ou
+        // LAI" — esta tela desenha a MESMA ficha, e o texto de ofício ("quem
+        // confirma é o INCRA, a SPU ou a Justiça") seria falso ali.
+        const podeExportar = Boolean(cfg?.listavel);
+        extras.innerHTML = blocoDeCoordenadas(props, ehPonto, f.geometry, podeExportar) + notaDeUso(props);
         ligarCopiar(extras, props, cfg?.label, ehPonto, f.geometry);
       } catch (err) {
         document.getElementById('props').innerHTML =

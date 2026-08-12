@@ -411,6 +411,13 @@ export function coordenadasDaArea(props, geometry) {
   const e = Number(props?.utm_e);
   const n = Number(props?.utm_n);
   return {
+    // Números crus (ponto decimal, sem rótulo), ao lado das strings formatadas
+    // abaixo — quem precisa do VALOR (a coluna de latitude/longitude do CSV e
+    // do GeoJSON, em ui/exportar.js) não deveria reconstruir `lat`/`lon` a
+    // partir de `paraColar` na marra. Mesmo par que alimenta `decimal` e
+    // `paraColar` logo abaixo — não é um segundo cálculo.
+    lat,
+    lon,
     decimal: `${lat.toFixed(6).replace('.', ',')}, ${lon.toFixed(6).replace('.', ',')}`,
     // Ponto e vírgula não: em documento brasileiro a vírgula já é decimal.
     gms: `${paraGMS(lat, 'lat')} ${paraGMS(lon, 'lon')}`,
@@ -447,6 +454,14 @@ export function coordenadasDaArea(props, geometry) {
  * como se tivesse vindo da fonte junto com o resto do dado.
  */
 export function textoParaPedido(props, rotuloCamada, ehPonto = false, geometry) {
+  // ⟲ `coordenadasDaArea` aceita `props` nulo (só olha `geometry` quando falta
+  // ponto na fonte) e pode devolver não-nulo mesmo assim — mas as 20+ linhas
+  // abaixo leem `props.foo` cru, sem `?.`. Antes desta linha, `props` nulo +
+  // `geometry` presente derrubava esta função com TypeError em
+  // `props.proveniencia`. Hoje nenhum chamador manda `props` nulo (todos já
+  // normalizam com `?? {}` antes de chamar), mas essa garantia é dos
+  // chamadores, não desta função — e é esta função que devia se defender.
+  props = props ?? {};
   const c = coordenadasDaArea(props, geometry);
   if (!c) return '';
   const [ini, fim] = ANOS_COBERTURA;
@@ -542,8 +557,14 @@ export function textoParaPedido(props, rotuloCamada, ehPonto = false, geometry) 
  *   coordenadasDaArea). Sem isto, 839 áreas em quatro camadas apareciam com
  *   a ficha inteira MENOS este bloco — sem "Copiar coordenada", sem "Copiar
  *   para ofício ou LAI", e sem explicação nenhuma na tela do porquê.
+ * @param {boolean} [permiteOficio] `false` esconde só o botão "Copiar para
+ *   ofício ou LAI" — "Copiar coordenada" fica. Existe para camada SEM
+ *   `listavel` (ex.: `municipios-mg`, divisa do IBGE): o texto do ofício diz
+ *   "quem confirma a situação da terra é o INCRA, a SPU ou a Justiça" —
+ *   afirmação que não faz sentido nenhum sobre um limite municipal. Saber
+ *   ONDE fica continua legítimo; o texto pronto para pedir informação, não.
  */
-export function blocoDeCoordenadas(props, ehPonto = false, geometry) {
+export function blocoDeCoordenadas(props, ehPonto = false, geometry, permiteOficio = true) {
   const c = coordenadasDaArea(props, geometry);
   if (!c) return '';
   // Três leituras possíveis, e a diferença entre elas importa para quem vai
@@ -575,7 +596,7 @@ export function blocoDeCoordenadas(props, ehPonto = false, geometry) {
     </dl>
     <div class="ficha-coord-botoes">
       <button type="button" data-copiar="ponto">Copiar coordenada</button>
-      <button type="button" data-copiar="pedido">Copiar para ofício ou LAI</button>
+      ${permiteOficio ? '<button type="button" data-copiar="pedido">Copiar para ofício ou LAI</button>' : ''}
     </div>
     <p class="ficha-coord-nota">${nota}</p>
   </div>`;

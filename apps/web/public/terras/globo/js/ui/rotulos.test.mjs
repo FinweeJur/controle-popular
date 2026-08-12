@@ -19,7 +19,16 @@
  *   3. quando o dado JÁ traz ponto, nada muda — a distinção só aparece
  *      quando é verdade;
  *   4. sem ponto da fonte E sem contorno (nem isso a área tem), continua
- *      devolvendo nada — nunca um palpite.
+ *      devolvendo nada — nunca um palpite;
+ *   5. `permiteOficio=false` esconde só "Copiar para ofício ou LAI" — para
+ *      camada sem `listavel` (divisa do IBGE, por exemplo), cujo texto de
+ *      ofício ("quem confirma é o INCRA, a SPU ou a Justiça") não faz
+ *      sentido nenhum. "Copiar coordenada" continua: saber onde fica é
+ *      legítimo mesmo aí;
+ *   6. `textoParaPedido` não lança com `props` nulo/indefinido, mesmo quando
+ *      `coordenadasDaArea` já devolve um ponto calculado só a partir do
+ *      contorno (TypeError latente, nunca alcançado pelos chamadores de
+ *      hoje — mas latente é defeito).
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -134,6 +143,48 @@ test('sem ponto e sem geometry, ligarCopiar não liga nada (nada para copiar)', 
   ligarCopiar(raiz, PROPS_SEM_PONTO, 'Assentamentos', false, null);
 
   assert.equal(ligados.length, 0);
+});
+
+/* ---------- 5. camada sem `listavel`: "Copiar coordenada" fica, "Copiar
+   para ofício ou LAI" some (o botão de baixar segue a mesma regra em
+   inspector.js — este arquivo só cobre o bloco de coordenadas) ----------- */
+
+test('permiteOficio=false: o botão de ofício some, mas "Copiar coordenada" continua', () => {
+  const html = blocoDeCoordenadas(PROPS_COM_PONTO, false, QUADRADO, false);
+
+  assert.match(html, /data-copiar="ponto"/, '"Copiar coordenada" não devia sumir — saber onde fica continua legítimo');
+  assert.ok(!html.includes('data-copiar="pedido"'), '"Copiar para ofício ou LAI" devia ter sumido');
+  assert.ok(!html.includes('Copiar para ofício ou LAI'));
+});
+
+test('permiteOficio default (omitido): continua mostrando os dois botões — não muda nada para quem já chamava a função', () => {
+  const html = blocoDeCoordenadas(PROPS_COM_PONTO, false, QUADRADO);
+
+  assert.match(html, /data-copiar="ponto"/);
+  assert.match(html, /data-copiar="pedido"/);
+});
+
+test('permiteOficio=false também esconde o botão quando o ponto é CALCULADO — o selo "ponto calculado" fica', () => {
+  const html = blocoDeCoordenadas(PROPS_SEM_PONTO, false, QUADRADO, false);
+
+  assert.ok(!html.includes('data-copiar="pedido"'));
+  assert.match(html, /ficha-coord-calc/, 'o selo de ponto calculado não devia sumir — só o botão de ofício');
+});
+
+/* ---------- 6. textoParaPedido não derruba com props nulo --------------- */
+
+test('textoParaPedido(null, ...) com geometry presente não lança — props nulo vira {}', () => {
+  // coordenadasDaArea(null, QUADRADO) calcula um ponto a partir só do
+  // contorno (não olha props quando o cálculo roda) e devolve não-nulo; o
+  // resto da função lê `props.foo` várias vezes. Antes da correção, isto
+  // lançava TypeError em `props.proveniencia`.
+  assert.doesNotThrow(() => textoParaPedido(null, 'Assentamentos', false, QUADRADO));
+  const txt = textoParaPedido(null, 'Assentamentos', false, QUADRADO);
+  assert.match(txt, /calculado NESTA TELA/);
+});
+
+test('textoParaPedido(undefined, ...) com geometry presente também não lança', () => {
+  assert.doesNotThrow(() => textoParaPedido(undefined, 'Assentamentos', false, QUADRADO));
 });
 
 /* ---------- DOM mínimo para ligarCopiar --------------------------------- */

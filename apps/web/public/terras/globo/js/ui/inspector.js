@@ -14,6 +14,11 @@
  * ./rotulos.js, compartilhada com a vista de perto (/app/detalhe), que mostra a
  * mesma ficha.
  *
+ * Baixar e copiar-para-ofício só aparecem em camada `listavel` — a mesma porta
+ * de ./exportar.js e ./listapanel.js. Uma divisa do IBGE (`municipios-mg`, sem
+ * `listavel`) não é "área a apurar" e não deve ganhar nem arquivo baixável nem
+ * texto de ofício dizendo que o INCRA confirma a situação da terra ali.
+ *
  * Classes CSS esperadas (definidas em ../css/hud.css — NÃO estilizar aqui):
  *   #inspector, .inspector-title, .inspector-sub, .inspector-table,
  *   .inspector-actions, .inspector-close, .inspector-aviso, .btn-2d,
@@ -24,7 +29,7 @@ import * as THREE from 'three';
 import { LAYER_REGISTRY } from '../config.js';
 import { centroDe } from '../core/enquadrar.js';
 import { distanciaAoChao, radianosPorPixel } from '../core/arrastar.js';
-import { blocoDeCoordenadas, ligarCopiar, linhasDaFicha, notaDeUso } from './rotulos.js';
+import { blocoDeCoordenadas, escapar, ligarCopiar, linhasDaFicha, notaDeUso } from './rotulos.js';
 import { injetarProveniencia } from './proveniencia.js';
 import { FORMATOS, exportar } from './exportar.js';
 
@@ -173,13 +178,21 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
     // o outro delimita. A ficha precisa saber qual é.
     const ehPonto = feature.geometry?.type === 'Point' || feature.geometry?.type === 'MultiPoint';
     const linhas = linhasDaFicha(props);
+    // A MESMA porta que a lista (ui/listapanel.js, main.js → atualizarLista):
+    // só camada `listavel` exporta e só camada `listavel` ganha o texto de
+    // ofício. Sem isto, `#area=municipios-mg:100` — uma divisa do IBGE, sem
+    // `listavel` no registro — gerava um CSV com a ressalva genérica de terra
+    // devoluta, e um texto de ofício dizendo "quem confirma é o INCRA, a SPU
+    // ou a Justiça" sobre um limite municipal. "Copiar coordenada" continua:
+    // saber onde fica é legítimo mesmo aí.
+    const podeExportar = Boolean(cfg?.listavel);
     emFoco = { layerId, feature, idx };
     panel.innerHTML = `
       <button class="inspector-close" title="Fechar">×</button>
       <div class="inspector-title">${titulo}</div>
       ${cfg?.hint ? `<p class="inspector-sub">${cfg.hint}</p>` : ''}
       <table class="inspector-table">${linhas}</table>
-      ${blocoDeCoordenadas(props, ehPonto, feature.geometry)}
+      ${blocoDeCoordenadas(props, ehPonto, feature.geometry, podeExportar)}
       ${notaDeUso(props)}
       <div class="inspector-actions">
         <button class="btn-focar" type="button">Focar nesta área</button>
@@ -187,14 +200,15 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
           Ver de perto na imagem de satélite
         </a>
       </div>
+      ${podeExportar ? `
       <div class="inspector-exportar">
         <strong>Baixar esta área</strong>
         <div class="inspector-exportar-botoes">
           ${Object.entries(FORMATOS).map(([id, f]) => `
-            <button type="button" data-formato="${id}">${f.rotulo}</button>`).join('')}
+            <button type="button" data-formato="${escapar(id)}">${escapar(f.rotulo)}</button>`).join('')}
         </div>
         <p class="inspector-exportar-aviso" hidden></p>
-      </div>
+      </div>` : ''}
       <div class="inspector-prov"></div>
       ${cfg?.aviso ? `<p class="inspector-aviso">${cfg.aviso}</p>` : ''}`;
     panel.classList.add('visible');
@@ -202,7 +216,7 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
     panel.querySelector('.btn-focar').addEventListener('click', () => onFocar?.(feature, layerId, idx));
     ligarCopiar(panel, props, cfg?.label, ehPonto, feature.geometry);
     injetarProveniencia(panel.querySelector('.inspector-prov'));
-    ligarExportar(panel, { layerId, cfg, idx, feature });
+    if (podeExportar) ligarExportar(panel, { layerId, cfg, idx, feature });
   }
 
   /**
@@ -225,6 +239,12 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
    * (`.lista-itens` é que tem overflow, não `#lista`); a ficha não tem essa
    * separação, e não vale reestruturar o layout inteiro por um menu de três
    * itens que cabem numa linha.
+   *
+   * Só é chamada quando `cfg.listavel` é verdadeiro — a mesma porta que filtra
+   * o painel de lista (ver `podeExportar` em `mostrar()`, acima). Camada
+   * de demonstração (`fixture`) é um segundo filtro, ortogonal a esse: uma
+   * camada pode ser `listavel` E `fixture` ao mesmo tempo, e é o `fixture`
+   * abaixo que desabilita os botões nesse caso — não os esconde.
    */
   function ligarExportar(raiz, entrada) {
     const aviso = raiz.querySelector('.inspector-exportar-aviso');

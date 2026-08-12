@@ -32,7 +32,7 @@
  *
  * Medido contra as 970 áreas reais que hoje faltam ponto (bench em
  * scripts/, não versionado): 0,5 ms em média, 28 ms no pior caso (um
- * polígono de 888 vértices). Even o corredor mais extremo do dado inteiro
+ * polígono de 888 vértices). Mesmo o corredor mais extremo do dado inteiro
  * (1.104 vértices, compacidade 0,008, que já tem ponto pelo pipeline e por
  * isso nunca passa por aqui) fica em 113 ms. Executa uma vez por clique, não
  * por quadro — não há orçamento de frame para respeitar.
@@ -156,10 +156,17 @@ function criarCelula(x, y, h, aneis) {
  * bastante para importar num ponto de referência, não numa medição). */
 const PRECISAO_PADRAO = 1e-5;
 
-/** Válvula de segurança: nenhum polígono real deste dado passa de duas mil
- * células processadas (medido). Cem mil é folga de sobra para uma geometria
- * malformada não travar a aba — se bater no teto, devolve o melhor achado
- * até ali, que já está estritamente dentro da área. */
+/** Válvula de segurança: nenhum polígono real deste dado passa de 2.770
+ * células processadas — o pior caso medido é `municipios-mg` #188 (script de
+ * medição em scratchpad, não versionado: reproduz o algoritmo abaixo com um
+ * contador de células e roda sobre todo `dados/camadas/*.geojson`, filtrando
+ * pelas feições que de fato CHEGAM aqui — as que não têm `ponto_lat`/
+ * `ponto_lon` da fonte). Cem mil é folga de 36× sobre esse pior caso, para uma
+ * geometria malformada não travar a aba — se bater no teto MESMO ASSIM, devolve
+ * o melhor achado até ali (que já está estritamente dentro da área) e avisa no
+ * console: nunca disparou até hoje, mas teto que estoura calado é o defeito
+ * que este projeto trata como grave, e a folga de hoje não é garantia do
+ * próximo dado que entrar. */
 const LIMITE_CELULAS = 100_000;
 
 /**
@@ -210,6 +217,20 @@ function poloDeUmAnel(aneis, precisao) {
     fila.inserir(criarCelula(atual.x + h, atual.y - h, h, aneis));
     fila.inserir(criarCelula(atual.x - h, atual.y + h, h, aneis));
     fila.inserir(criarCelula(atual.x + h, atual.y + h, h, aneis));
+  }
+  // Se ainda sobrou célula na fila, o laço não saiu por convergir — saiu por
+  // estourar LIMITE_CELULAS. O ponto devolvido abaixo continua garantidamente
+  // dentro da área (é a mesma condição de sempre), só não é mais o polo exato
+  // dentro da precisão pedida. Teto que devolve calado é o defeito que este
+  // projeto trata como grave (ver comentário de LIMITE_CELULAS) — nunca
+  // disparou nos dados de hoje, e é exatamente por isso que precisa do aviso:
+  // se disparar amanhã, é a primeira vez, e ninguém vai estar procurando.
+  if (fila.tamanho) {
+    console.warn(
+      `pontoNaSuperficie: estourou o limite de ${LIMITE_CELULAS.toLocaleString('pt-BR')} `
+      + 'células processadas num polígono. Devolvendo o melhor ponto encontrado até aqui '
+      + '— ainda dentro da área, mas não necessariamente o polo de inacessibilidade exato.',
+    );
   }
   // `melhor.d <= 0` só acontece se NENHUMA célula caiu dentro do polígono —
   // possível num polígono absurdamente fino (mais fino que a precisão

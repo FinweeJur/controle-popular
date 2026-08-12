@@ -15,7 +15,11 @@
  *   2. nenhuma coluna carrega dado pessoal;
  *   3. a ressalva é POR CAMADA, e não uma só para tudo;
  *   4. CSV abre no Excel brasileiro (BOM + `;`);
- *   5. a régua de área muda com a escala, nas bordas exatas.
+ *   5. a régua de área muda com a escala, nas bordas exatas;
+ *   6. CSV e GeoJSON levam o PONTO CALCULADO nas áreas sem coordenada da
+ *      fonte — não coluna vazia enquanto a ficha já mostra o ponto certo;
+ *   7. o nome do arquivo identifica a área quando é uma exportação de uma
+ *      área só — nunca o mesmo `terras-1-areas-<data>` pra áreas diferentes.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -215,6 +219,74 @@ test('valor com ponto e vírgula não quebra a coluna', () => {
   assert.ok(csv.includes('"Um; Outro"'));
 });
 
+/* ---------- 6. o ponto CALCULADO vai para CSV e GeoJSON, não só para a
+   ficha (o CSV e o GeoJSON não podem afirmar "sem coordenada" enquanto a
+   ficha já sabe onde a área fica) --------------------------------------- */
+
+// Mesmo quadrado de rotulos.test.mjs — centro em (-41.5, -17.5), fácil de
+// conferir de cabeça.
+const QUADRADO = { type: 'Polygon', coordinates: [[[-42, -18], [-42, -17], [-41, -17], [-41, -18], [-42, -18]]] };
+
+test('linhaDe(): sem ponto da fonte mas com contorno, ponto_lat/ponto_lon saem preenchidos, não vazios', () => {
+  const l = linhaDe(area({ ponto_lat: undefined, ponto_lon: undefined }, { label: 'Assentamentos' }, 'assentamentos', QUADRADO));
+
+  assert.notEqual(l.ponto_lat, '', 'coluna de latitude saiu vazia — o defeito relatado');
+  assert.notEqual(l.ponto_lon, '', 'coluna de longitude saiu vazia — o defeito relatado');
+  assert.ok(Math.abs(l.ponto_lat - -17.5) < 0.01);
+  assert.ok(Math.abs(l.ponto_lon - -41.5) < 0.01);
+  assert.equal(l.ponto_origem, 'calculado a partir do contorno');
+});
+
+test('linhaDe(): com ponto da fonte, ponto_origem diz "fonte", e o valor é o publicado, não o calculado', () => {
+  const l = linhaDe(area()); // area() já vem com ponto_lat/ponto_lon da fonte
+
+  assert.equal(l.ponto_lat, -18.1234);
+  assert.equal(l.ponto_lon, -43.5678);
+  assert.equal(l.ponto_origem, 'fonte');
+});
+
+test('CSV: área sem ponto da fonte leva o ponto calculado nas colunas de latitude/longitude', () => {
+  const entrada = area({ ponto_lat: undefined, ponto_lon: undefined }, { label: 'Assentamentos' }, 'assentamentos', QUADRADO);
+  const csv = paraCsv([entrada], [], QUANDO);
+  const [cabecalho, linha] = csv.replace('﻿', '').split('\r\n').filter((l) => l && !l.startsWith('#'));
+
+  assert.match(cabecalho, /Origem do ponto/);
+  assert.match(linha, /-17\.5/);
+  assert.match(linha, /calculado a partir do contorno/);
+});
+
+test('CSV: coluna de coordenada não desaparece mesmo quando NENHUMA área da exportação tem ponto — ela precisa continuar lá para explicar a ausência', () => {
+  const csv = paraCsv([area({ ponto_lat: undefined, ponto_lon: undefined }, {}, 'x', null)], [], QUANDO);
+  const cabecalho = csv.replace('﻿', '').split('\r\n').find((l) => !l.startsWith('#'));
+
+  assert.match(cabecalho, /Latitude \(SIRGAS 2000\)/);
+  assert.match(cabecalho, /Origem do ponto/);
+});
+
+test('GeoJSON: área sem ponto da fonte leva o ponto calculado nas properties, não string vazia', () => {
+  const entrada = area({ ponto_lat: undefined, ponto_lon: undefined }, { label: 'Assentamentos' }, 'assentamentos', QUADRADO);
+  const fc = JSON.parse(paraGeoJson([entrada], [], QUANDO));
+  const props = fc.features[0].properties;
+
+  assert.notEqual(props.ponto_lat, '', 'ponto_lat saiu vazio no GeoJSON — o defeito relatado');
+  assert.notEqual(props.ponto_lon, '', 'ponto_lon saiu vazio no GeoJSON — o defeito relatado');
+  assert.equal(typeof props.ponto_lat, 'number');
+  assert.equal(props.ponto_origem, 'calculado a partir do contorno');
+});
+
+test('GeoJSON: com ponto da fonte, ponto_origem diz "fonte"', () => {
+  const fc = JSON.parse(paraGeoJson([area()], [], QUANDO));
+
+  assert.equal(fc.features[0].properties.ponto_origem, 'fonte');
+});
+
+test('cabeçalho explica a coluna "Origem do ponto" quando o ponto é calculado', () => {
+  const texto = cabecalhoDeRessalvas([area()], [], QUANDO).join('\n');
+
+  assert.match(texto, /Origem do ponto/);
+  assert.match(texto, /calculado a partir do contorno/);
+});
+
 /* ---------- GeoJSON e texto ------------------------------------------- */
 
 test('GeoJSON volta a fazer parse e mantém geometria e ressalvas', () => {
@@ -266,6 +338,54 @@ test('área sem ponto DA FONTE mas com contorno: o texto traz o ponto calculado,
 test('o nome do arquivo diz quantas áreas e de quando', () => {
   assert.equal(nomeDoArquivo('csv', 522, QUANDO), 'terras-522-areas-2026-08-06.csv');
   assert.equal(nomeDoArquivo('geojson', 1, QUANDO), 'terras-1-areas-2026-08-06.geojson');
+});
+
+/* ---------- 7. o nome do arquivo IDENTIFICA a área, quando é uma só ---- */
+
+test('nomeDoArquivo(): com identificador, o nome leva o sufixo', () => {
+  assert.equal(
+    nomeDoArquivo('csv', 1, QUANDO, 'diamantina-assentamentos-0'),
+    'terras-1-areas-diamantina-assentamentos-0-2026-08-06.csv',
+  );
+});
+
+test('exportar() de UMA área nomeia o arquivo com o município — não só "terras-1-areas-<data>"', () => {
+  // O defeito relatado: três áreas diferentes, exportadas uma de cada vez
+  // pelo botão "Baixar esta área" da ficha, viravam
+  // `terras-1-areas-<data>.csv`, "(1)", "(2)" — o mesmo nome três vezes.
+  const r = exportar('csv', [area({ municipio: 'Turmalina' }, { label: 'Assentamentos' }, 'assentamentos')],
+    { baixar() {}, agora: QUANDO });
+
+  assert.equal(r.nome, 'terras-1-areas-turmalina-assentamentos-0-2026-08-06.csv');
+});
+
+test('exportar() de UMA área SEM município cai para camada + índice — nunca fica genérico', () => {
+  const entrada = { layerId: 'vazio-cadastral-vales', cfg: { label: 'Terra sem cadastro' }, idx: 7,
+    feature: { type: 'Feature', geometry: GEOMETRIA_PADRAO, properties: { area_ha: 10 } } };
+  const r = exportar('csv', [entrada], { baixar() {}, agora: QUANDO });
+
+  assert.equal(r.nome, 'terras-1-areas-vazio-cadastral-vales-7-2026-08-06.csv');
+});
+
+test('exportar() de DUAS áreas não tenta identificar UMA — "quantas" já é a identificação que cabe', () => {
+  const r = exportar('csv',
+    [area({ municipio: 'Diamantina' }), area({ municipio: 'Turmalina' })],
+    { baixar() {}, agora: QUANDO });
+
+  assert.equal(r.nome, 'terras-2-areas-2026-08-06.csv');
+});
+
+test('duas áreas diferentes, baixadas uma de cada vez no mesmo dia, NUNCA colidem no nome — o próprio defeito relatado', () => {
+  const r1 = exportar('csv', [area({ municipio: 'Diamantina' }, {}, 'assentamentos')], { baixar() {}, agora: QUANDO });
+  const r2 = exportar('csv', [area({ municipio: 'Turmalina' }, {}, 'assentamentos')], { baixar() {}, agora: QUANDO });
+
+  assert.notEqual(r1.nome, r2.nome, 'duas áreas diferentes geraram o MESMO nome de arquivo');
+});
+
+test('acento e espaço no município viram nome de arquivo válido em qualquer sistema', () => {
+  const r = exportar('csv', [area({ municipio: 'São José da Lapa' }, {}, 'assentamentos')], { baixar() {}, agora: QUANDO });
+
+  assert.equal(r.nome, 'terras-1-areas-sao-jose-da-lapa-assentamentos-0-2026-08-06.csv');
 });
 
 /* ---------- 5. a régua de área ---------------------------------------- */
