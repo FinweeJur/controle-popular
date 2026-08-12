@@ -41,6 +41,33 @@ export default function TaxaDeErroTerras() {
         um defeito conhecido do recorte — e por isso mensurável e corrigível.
       </p>
 
+      {/*
+        A correção existe e ainda não está no dado da tela. Dizer isso é o
+        ponto: o bloco inteiro existe porque este portal cobra dos outros que
+        publiquem número com margem, e publicar um defeito JÁ diagnosticado,
+        JÁ medido e JÁ corrigido no código sem avisar que ele continua no mapa
+        seria cobrar o que não se faz em casa.
+
+        Renderiza pelo booleano, não por data: quando a rodada acontecer e o
+        dado novo entrar, `correcaoNoDadoPublicado` vira true e este parágrafo
+        some sozinho. Uma data escrita à mão aqui desatualizaria calada — é o
+        mesmo erro que o selo "dados de 28/07" cometeu no globo.
+      */}
+      {!t.correcaoNoDadoPublicado && (
+        <p className="mt-3 max-w-[62ch] rounded-lg border border-border bg-surface p-3 text-sm text-text-soft">
+          <strong className="text-text">
+            Esta correção ainda não está no mapa.
+          </strong>{" "}
+          Desde {new Date(t.dirigido.medidoEm + "T00:00:00").toLocaleDateString("pt-BR")} o
+          pipeline já subtrai a faixa das estradas, e a medição de controle
+          mostrou o efeito esperado: menos área e mais polígonos, porque a
+          estrada parte o contorno em dois. Mas aplicar isso à bacia inteira
+          exige reprocessar o cadastro dos 56 municípios, o que ainda não
+          rodou. As áreas que você vê aqui são as de antes da correção — e
+          algumas delas ainda têm estrada dentro do contorno.
+        </p>
+      )}
+
       <p className="mt-3 max-w-[62ch] text-sm text-text-soft">
         O projeto aceita publicar até {t.criterioPct}% de erro.{" "}
         {passa ? (

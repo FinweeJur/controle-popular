@@ -40,6 +40,22 @@ export const RESUMO_METODO: Record<string, string> = {
  * PLANO-MESTRE, e passou a 33% por decisão do usuário em 2026-08-10 — a taxa
  * medida não mudou junto. Está separado aqui porque a tela precisa dizer as
  * duas coisas sem confundi-las.
+ *
+ * ═══ O QUE MUDOU EM 2026-08-12 ═══
+ *
+ * A planilha do gate fechou: as 23 áreas que faltavam, do recorte DIRIGIDO
+ * (compactas ≥ 100 ha), foram julgadas. Deram 6 falsos em 23 = 26,1%.
+ *
+ * ESSE 26,1% NÃO É A TAXA, e é por isso que ele mora num campo separado em vez
+ * de ser somado aos 40. O recorte dirigido escolhe as áreas mais compactas de
+ * propósito — justamente a forma que o erro (faixa de estrada) não tem. Ele
+ * descreve o MELHOR CASO do método. Juntar os dois num "18 em 63 = 28,6%"
+ * seria diluir a medida honesta com uma amostra escolhida a dedo. A taxa
+ * publicada continua sendo, e só pode ser, a do recorte aleatório.
+ *
+ * O que os 23 acrescentam é força à causa: `faixa_de_via` responde por
+ * **18 dos 18** falso-positivos dos dois recortes. Água, fresta de geometria e
+ * mancha urbana não apareceram uma única vez em 63 julgamentos.
  */
 export const TAXA_ERRO_G0 = {
   falsoPositivos: 12,
@@ -50,7 +66,40 @@ export const TAXA_ERRO_G0 = {
   criterioPct: 33,
   medidoEm: "2026-08-09",
   /** O erro tem causa única, e isso é informação útil para quem lê. */
-  causaDominante: "faixa de estrada entrando no polígono — 12 dos 12 casos",
+  causaDominante:
+    "faixa de estrada entrando no polígono — 18 dos 18 falso-positivos, somando os dois recortes",
+  /**
+   * Recorte DIRIGIDO (compactas ≥ 100 ha), julgado em 2026-08-12.
+   *
+   * Campo separado e nunca somado ao de cima: descreve o melhor caso do
+   * método, não a taxa. Ver o bloco de comentário acima.
+   */
+  dirigido: {
+    falsoPositivos: 6,
+    julgados: 23,
+    /** 6/23 */
+    taxaPct: 26.1,
+    medidoEm: "2026-08-12",
+  },
+  /**
+   * A correção da causa única JÁ EXISTE no pipeline — e ainda NÃO está no dado
+   * que este portal publica.
+   *
+   * Em 2026-08-12 a faixa de via virou exclusão de produção no pipeline
+   * (camadas de sistema viário do IDE-Sisema, largura vinda do dado). Medido
+   * em Jaboticatubas: −6,8% de área e +105 polígonos, porque a estrada PARTE o
+   * polígono em dois — a assinatura do erro parcial sendo desfeito.
+   *
+   * Mas aplicar isso à bacia inteira exige rebaixar o CAR dos 56 municípios,
+   * que leva horas. Até essa rodada acontecer, as camadas publicadas aqui são
+   * as de ANTES da correção, e ainda contêm os corredores de estrada que o
+   * gate diagnosticou.
+   *
+   * Isto está escrito na tela, e não só aqui. Um portal que cobra procedência
+   * dos outros não pode publicar um defeito que ele mesmo já diagnosticou,
+   * mediu e sabe corrigir, sem dizer que ele está ali.
+   */
+  correcaoNoDadoPublicado: false,
 };
 
 export interface VazioMunicipioResumo {
