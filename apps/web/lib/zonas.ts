@@ -18,6 +18,13 @@
  * há uma frase "as três frentes" para alguém esquecer de corrigir.
  */
 
+// De `taxa-erro-g0.ts` e NÃO de `betim/terras.ts`, que reexporta a mesma
+// constante: aquele arquivo abre com `import * as q from "@/lib/db/queries/
+// terras"`, e este aqui é lido por toda página do portal. Importar de lá
+// arrastaria a camada de banco para dentro de tudo — foi esse acoplamento que
+// fez alguém copiar o número à mão em vez de importá-lo.
+import { TAXA_ERRO_G0 } from "@/lib/betim/taxa-erro-g0";
+
 export type ZonaId =
   | "cidades"
   | "congresso"
@@ -151,8 +158,14 @@ export const ZONAS: Zona[] = [
     // estimativa de método próprio, não leitura de fonte oficial; anunciá-lo
     // sem a margem, mesmo na vitrine, seria cobrar dos outros o que não se
     // faz em casa.
+    // ⟲ A TAXA VEM DA CONSTANTE, e não digitada aqui. Até 12/08 esta frase
+    // trazia "30%" escrito à mão, enquanto `TAXA_ERRO_G0` era lida por um
+    // único componente — exatamente o modo de falha que o cabeçalho daquela
+    // constante jurava impedir ("a tela por cidade e o hub da zona não podem
+    // divergir"). Este card é o texto que mais gente lê, e teria continuado
+    // anunciando 30% em silêncio na próxima rodada do gate.
     descricao:
-      "Quanto do território de Araçuaí, Diamantina e Itinga não tem imóvel rural declarado no Cadastro Ambiental Rural. É estimativa com taxa de erro medida — 30% da amostra checada a olho não se confirmou — e vem publicada com ela ao lado.",
+      `Quanto do território de Araçuaí, Diamantina e Itinga não tem imóvel rural declarado no Cadastro Ambiental Rural. É estimativa com taxa de erro medida — ${TAXA_ERRO_G0.taxaPct.toLocaleString("pt-BR", { minimumFractionDigits: 0 })}% da amostra checada a olho não se confirmou — e vem publicada com ela ao lado.`,
     resumo:
       "Vazio cadastral em três cidades do Jequitinhonha, com a taxa de erro do método ao lado do número.",
     itens: [
