@@ -30,9 +30,12 @@ na tela em que aparecem, e não em uma página de glossário que ninguém abre.
 
 O portal está no ar em **controlepopular.com.br** e em
 **controlepopular.finweejur.workers.dev** — os dois endereços responderam HTTP
-200 na conferência feita para este documento. Os dois estão declarados em
-`apps/web/wrangler.jsonc`, e o segundo é mantido de propósito, porque uma
-página externa ainda aponta para ele.
+200 na conferência feita para este documento. Só o primeiro é rota declarada em
+`apps/web/wrangler.jsonc`, ao lado da variante com `www`, ambas como domínio
+próprio. O segundo não é rota nenhuma: decorre do nome do Worker
+(`controlepopular`) somado ao subdomínio da conta, e continua respondendo
+porque o arquivo mantém `workers_dev: true` de propósito — uma página externa
+ainda aponta para ele.
 
 ### A regra que organiza tudo
 
@@ -62,7 +65,7 @@ corrige uma e esquece as outras três.
 |---|---|---|
 | **Municipal** | `/betim`, `/diamantina`, … | Para onde vai o dinheiro da prefeitura, e o que a câmara vota |
 | **Congresso** | `/congresso` | O que o Congresso Nacional decide sobre direitos |
-| **Judiciário** | `/judiciario` | Quem ocupa cada cadeira, quem indicou, quando ela vaga |
+| **Judiciário** | `/judiciario` | Quem compõe os sete tribunais e quando cada cadeira vaga por idade — com ocupação e indicação preenchidas em parte (seção 10) |
 | **Ambiental** | `/ambiental` | O que o órgão ambiental de Minas Gerais decide, e onde |
 | **Função social da terra** | `/funcaosocialterra` | Que áreas rurais ninguém declarou em cadastro |
 
@@ -76,13 +79,18 @@ análise descrita na seção 4 e a geração de um ofício em PDF para quem quis
 se manifestar sobre uma proposta.
 
 **Judiciário.** O único Poder cujos integrantes não são eleitos. O portal
-registra a composição de sete tribunais, quem indicou cada magistrado, e a
-data em que cada um atinge a aposentadoria compulsória — que é **calculada**,
-não estimada: são 75 anos de idade, por força da Emenda Constitucional 88/2015
-e da Lei Complementar 152/2015. Essa régua, com as respectivas bases legais,
-vive em `apps/web/lib/judiciario/regras.json`. O cálculo depende da data de
-nascimento, que ainda está sendo levantada nome a nome — o estado dessa
-curadoria aparece na seção 10.
+registra a composição de sete tribunais e a data em que cada magistrado atinge
+a aposentadoria compulsória — que é **calculada**, não estimada: são 75 anos de
+idade, por força da Emenda Constitucional 88/2015 e da Lei Complementar
+152/2015. Essa régua, com as respectivas bases legais, vive em
+`apps/web/lib/judiciario/regras.json`. O cálculo depende da data de nascimento,
+que ainda está sendo levantada nome a nome — o estado dessa curadoria aparece
+na seção 10.
+
+Quem indicou cada magistrado é a pergunta seguinte, e ela ainda tem resposta
+parcial: das 140 indicações levantadas, 88 não têm o magistrado vinculado, de
+modo que só **52 dos 252 cadastrados** chegam à tela com o nome de quem os
+indicou. O portal mostra o que tem, e a seção 10 diz o tamanho do que falta.
 
 **Ambiental.** Pauta das reuniões do COPAM (o conselho estadual que decide
 sobre licenciamento em Minas Gerais), item a item e com o município de cada
@@ -169,11 +177,14 @@ andamento, registrada na seção 10.
 
 Entre a fonte pública e a tela existe um conjunto de programas em Python que o
 projeto chama de **ETL** — sigla de *extract, transform, load*, isto é,
-extrair da fonte, ajustar o formato e gravar no banco. São **153 módulos
-Python** em três pacotes (`etl/betim`, `etl/congresso`, `etl/judiciario`), dos
-quais **93** ficam nos diretórios organizados por sistema de origem — as APIs
-públicas, as bases estatísticas, os portais de cada câmara, o PNCP, os
-sistemas de prefeitura.
+extrair da fonte, ajustar o formato e gravar no banco. São **153 arquivos
+Python** em três pacotes (`etl/betim`, `etl/congresso`, `etl/judiciario`) — a
+régua é "todo arquivo `.py` fora dos ambientes virtuais", e ela inclui os 18
+`__init__.py` que só declaram pacote; sem eles, são 135. A maior parte vive em
+subdiretórios batizados pela fonte que consultam: `apis`, `pbh`, `pncp`, `psp`,
+`prefeitura` e `camaras` na frente municipal, `camara` e `senado` no Congresso,
+`tj` e `senado` no Judiciário — as APIs públicas, as bases estatísticas, os
+portais de cada câmara, o PNCP, os sistemas de prefeitura.
 
 Cada tema tem a sua origem declarada:
 
@@ -228,8 +239,11 @@ em toda resposta daquela fonte.
 
 Por fim, o eixo ambiental mantém um cadastro de procedência em
 `docs/ambiental/PROVENIENCIA.json`: **16 fontes adotadas, 3 em avaliação e 7
-descartadas**, cada uma com o texto literal da licença de uso, a data de
-verificação e o motivo do descarte. O arquivo existe por dois motivos
+descartadas**. As 19 primeiras trazem, todas, o texto literal da licença de uso
+e a data de verificação. As 7 descartadas trazem identificador, endereço e o
+motivo do descarte, e só isso — nenhuma entrada do arquivo carrega os três
+campos ao mesmo tempo, porque licença e motivo de descarte descrevem situações
+que não coincidem. O arquivo existe por dois motivos
 declarados nele mesmo: resultado sem fonte datada não é citável, e a frente
 municipal veicula publicidade — fonte que veda uso comercial não pode entrar.
 
@@ -240,8 +254,12 @@ tratá-los igual daria a uma suspeita estatística o mesmo peso de uma violaçã
 de artigo de lei:
 
 - **Violação legal** — dispensa de licitação perto do limite, aditivo acima do
-  teto, fornecedor sancionado, fracionamento de despesa. Seis regras, cada uma
-  com o dispositivo citado na tela.
+  teto, fornecedor sancionado, fracionamento de despesa. São seis regras, e o
+  que cada uma cita na tela varia: três trazem artigo de lei (arts. 75, 125 e
+  14 e 156 da Lei 14.133/2021); duas se apoiam em entendimento consolidado do
+  TCU, sem artigo; e uma — situação cadastral irregular na Receita Federal —
+  descreve a situação sem citar dispositivo algum. A categoria é de violação
+  legal em todas; a densidade da fundamentação exibida, não.
 - **Heurística** — valor atípico para a categoria, capital social baixo,
   desproporção frente ao orçamento anual da cidade. Três regras. São sinais
   que TCU, CGU e Ministério Público usam para decidir o que investigar, e a
@@ -253,9 +271,16 @@ O catálogo com a fundamentação de cada regra está em
 menos um alerta, e a regra de "muitos contratos ao mesmo fornecedor em janela
 curta" responde sozinha por 4.168 deles.
 
-Todo contrato traz o link para a sua página no PNCP. Acusar sem oferecer o
-caminho de conferência seria pedir confiança — o contrário do que o portal
-defende.
+Todo contrato traz um link de origem — mas nem todo link leva à página daquele
+contrato, e a diferença precisa ser dita. **6.113 dos 12.991** apontam para a
+página do próprio contrato no PNCP, com CNPJ do órgão, ano e número no
+endereço; é o caso de São Paulo, Betim, Diamantina e Araçuaí. Os **6.878 de
+Belo Horizonte** — 53% do acervo — apontam todos para o mesmo endereço: a home
+do portal de transparência da prefeitura, que não é o PNCP e não identifica
+contrato nenhum. Oferecer o caminho de conferência é o que separa apontar de
+acusar, e em Belo Horizonte esse caminho ainda termina na portaria do sistema,
+não no documento — lacuna real, e das que mais pesam, porque é justamente a
+cidade com mais contratos marcados por alerta.
 
 ---
 
@@ -323,9 +348,17 @@ medida em vez de suposta. Conferido no banco em 2026-08-12: dos **809 itens**
 gravados na frente municipal e **608** na do Congresso, **nenhum** está sem
 dispositivo.
 
-Itens com confiança abaixo de 0,5 não são descartados, mas jogam a análise
-inteira para o estado "requer revisão" em vez de receber rótulo. Hoje são 72
-análises municipais e 6 do Congresso nessa condição.
+Itens com confiança abaixo de 0,5 não são descartados, mas marcam a análise
+inteira como **"requer revisão"**. O rótulo continua sendo calculado e gravado,
+e a página da proposição mostra os dois lado a lado — o rótulo e a etiqueta de
+revisão pendente (`apps/web/app/congresso/components/AnaliseAuditavel.tsx`). O
+que a marca faz é excluir a análise dos **rankings**: as listas de "alerta" e
+de "bom exemplo" filtram por `status = 'ok'` nas duas frentes
+(`apps/web/lib/congresso/destaques.ts` e
+`apps/web/lib/betim/legislacao-garantista.ts`), pela razão escrita nos dois
+arquivos — virar manchete com base numa extração que o próprio sistema
+considera duvidosa seria injusto com o autor da proposta. Hoje são 72 análises
+municipais e 6 do Congresso nessa condição.
 
 ### Terceira separação: cobertura é amostra, não censo
 
@@ -388,10 +421,12 @@ A régua vive em `apps/web/lib/congresso/rubrica/vicio_legislativo.json`, versã
    (criação de cargo, aumento de remuneração de servidor, organização
    administrativa) apresentada por parlamentar ou vereador. Âncora: art. 61,
    §1º, II da Constituição, aplicado aos municípios por simetria.
-2. **Vício de competência** — ente legislando fora da sua esfera. É o caso
-   central no âmbito municipal: o art. 30, I autoriza o município a legislar
-   sobre "assuntos de interesse local", e há município regulando matéria
-   privativa da União.
+2. **Vício de competência** — ente legislando fora da sua esfera. É a categoria
+   que mais pesa no âmbito municipal: o art. 30, I autoriza o município a
+   legislar sobre "assuntos de interesse local", e o que passa disso pode
+   invadir competência privativa da União. Na leva de calibração descrita
+   adiante, **dois itens** foram apontados nessa categoria — indício, nos
+   termos da própria rubrica, e não constatação de que a invasão ocorreu.
 3. **Inconstitucionalidade material** — o conteúdo da norma, não o rito nem
    quem propôs, contraria a Constituição. Inclui ofensa a direito fundamental
    e violação da separação de poderes.
@@ -432,8 +467,9 @@ indício grave, 8 sem indício) e **14 no Congresso** (6 graves, 8 sem indício)
 ### Relação com o projeto irmão
 
 O Controle Popular tem um projeto irmão em repositório separado, chamado
-**Terras Devolutas**, descrito por ele mesmo como ferramenta de pesquisa
-acadêmica. É lá que rodam os métodos que produzem as áreas: o pipeline em
+**Terras Públicas** — `terras-devolutas` é o nome do diretório, não o do
+projeto —, descrito por ele mesmo como ferramenta de pesquisa acadêmica. É lá
+que rodam os métodos que produzem as áreas: o pipeline em
 Python que calcula "vazio cadastral" a partir de bases abertas, sobre duas
 regiões de estudo (a bacia do rio Paraopeba e os Vales do Mucuri e do
 Jequitinhonha).
@@ -467,11 +503,20 @@ Nenhuma tela, e nenhum arquivo exportado, afirma que uma área é terra devoluta
 
 "Vazio cadastral" significa área que **nenhum imóvel rural declarou** no
 Cadastro Ambiental Rural. O CAR é autodeclaratório: a ausência de declaração
-não é ausência de dono, e muito menos prova de que a terra é pública. O
-vocabulário publicado é "lugar para conferir", fixado como termo do projeto e
-registrado como tal no código da exportação — a razão anotada ali é que quem
-abre o arquivo exportado pode não ser quem abriu o mapa e leu as ressalvas da
-tela.
+não é ausência de dono, e muito menos prova de que a terra é pública.
+
+O vocabulário publicado, porém, não é um só, e convém dizê-lo. No globo e nos
+arquivos exportados a expressão é **"lugar para conferir"**, e o código da
+exportação registra a razão da escolha: quem abre o arquivo pode não ser quem
+abriu o mapa e leu as ressalvas da tela. Nas páginas do portal em volta do
+globo a expressão é outra — **"candidato a verificação"**, na página da frente
+(`apps/web/app/funcaosocialterra/page.tsx`), na página de terras de cada cidade
+e no bloco da taxa de erro. O comentário da exportação afirma que "o lint
+reprova o segundo"; não reprova — não existe regra de verificação com esse
+efeito, e o diretório do globo está inteiro na lista de exclusão do ESLint. A
+disciplina de conteúdo vale nas duas formulações, e nenhuma delas afirma que a
+área é terra devoluta; o que não existe é a garantia mecânica de que o termo
+seja um só.
 
 Cada camada carrega a sua própria ressalva, e não uma genérica para todas.
 Esse erro já foi cometido no projeto: o botão de copiar para ofício rotulava
@@ -538,8 +583,12 @@ contorno, o "centro de massa" da figura. E a solução óbvia está errada.
 
 O centroide de uma ferradura cai no vão, fora do metal. Muitos polígonos deste
 acervo têm exatamente essa forma: são redes de corredores finos e sinuosos —
-há um caso, na camada da bacia, com 218 metros de largura média espalhados por
-1.967 hectares. O centroide de uma figura dessas cai fora dela.
+o caso mais extremo do acervo, na camada da bacia, tem 218 metros de largura
+média espalhados por 1.967 hectares. O centroide de uma figura dessas cai fora
+dela. (Esse polígono em particular não está entre os 1.823: ele já chega com
+ponto do pipeline e, por isso, nunca passa pelo cálculo. Serve para mostrar a
+forma que o método precisa saber tratar, não como caso tratado — o registro
+disso está no próprio cabeçalho do módulo.)
 
 Isso importaria pouco se o ponto fosse decorativo. Mas **a ficha afirma, em
 texto, que o ponto fica dentro da área** — e esse texto vai para ofício e para
@@ -727,10 +776,14 @@ trecho único em vez de replicá-lo. Medição de ponta a ponta:
 
 Três coisas, e todas são de método:
 
-1. **A medição inteira ficou escrita no arquivo de configuração**, em
-   `apps/web/package.json`, como um comentário ao lado do comando. O motivo é
-   explícito: quem apagar a opção no futuro reintroduzirá 788 KiB sem nenhum
-   aviso — o build passa, e é o deploy que morre.
+1. **A medição ficou escrita, e em dois lugares — cada um com uma parte dela.**
+   O comentário `//build` de `apps/web/package.json`, ao lado do comando,
+   guarda a comparação entre empacotadores: 626 KiB contra 127 KiB, economia
+   de 499, e os 222 KiB que faltavam. A medição ponta a ponta e o aviso de que
+   apagar a opção reintroduz 788 KiB sem aviso nenhum — o build passa, e é o
+   deploy que morre — estão na mensagem do commit `e7bdad6`, que é onde a
+   troca aconteceu. Nenhum dos dois números depende da memória de alguém; eles
+   só não moram no mesmo arquivo.
 2. **Os caminhos descartados ficaram registrados**, com o número que os
    descartou, para que ninguém os tente de novo: podar o mapa de rotas (20 KiB
    dos 222), dividir em vários Workers (a divisão é por camada, não por rota, e
@@ -771,16 +824,22 @@ escrito por modelo de linguagem.
 
 ### Exportação não leva dado pessoal
 
-Duas barreiras em série, em `apps/web/public/terras/globo/js/ui/exportar.js`:
+Duas barreiras em `apps/web/public/terras/globo/js/ui/exportar.js`, e vale
+dizer até onde cada uma alcança:
 
 1. **Lista branca de colunas.** As colunas exportadas estão enumeradas
-   explicitamente. Campo novo que apareça na fonte não vira coluna sem que
-   alguém decida.
+   explicitamente, e é essa lista que a função de montar a linha percorre.
+   Campo novo que apareça na fonte não vira coluna sem que alguém decida. Vale
+   para os dois formatos de dado, CSV e GeoJSON.
 2. **Bloqueio por padrão.** Uma expressão de verificação recusa qualquer coluna
    cujo nome comece por padrões proibidos — CPF, CNPJ, nome de proprietário,
-   nome de autuado, endereço, logradouro. Se alguém acrescentar uma coluna sem
-   pensar, **a exportação para** em vez de gravar dado pessoal em um arquivo
-   que sai do computador.
+   nome de autuado, endereço, logradouro — e interrompe a exportação com erro.
+   Se alguém acrescentar uma coluna sem pensar, **a exportação para** em vez de
+   gravar dado pessoal em um arquivo que sai do computador. Esta segunda
+   barreira, porém, roda **só na montagem do CSV**; o GeoJSON não a executa.
+   Ele fica protegido pela lista branca, mas sem a rede embaixo. "Em série"
+   descreve o CSV, não os dois formatos — e fechar essa assimetria é trabalho
+   pendente.
 
 A precaução não é hipotética. A camada de licenciamento ambiental do estado
 publica **CPF em claro em cerca de 25% dos registros**, ao lado do nome e da
@@ -794,10 +853,26 @@ não redigiu seria ser pior que a fonte.
 ### Número na tela vem junto da margem de erro
 
 Já descrito na seção 6. O ponto de arquitetura é que a taxa de erro é uma
-**constante única de código**, e não texto escrito em cada página. Sendo única,
-a tela da cidade e o painel da frente não podem divergir. E o cartão da frente
-na página inicial cita a taxa também: anunciá-la sem a margem, mesmo na
-vitrine, seria cobrar dos outros o que não se faz em casa.
+**constante única de código** — `TAXA_ERRO_G0`, em
+`apps/web/lib/betim/taxa-erro-g0.ts` — e não texto reescrito em cada página. A
+tela por cidade a lê, e o cartão da frente na página inicial a interpola dentro
+da própria frase, em vez de repetir o número: anunciar a estimativa sem a
+margem, mesmo na vitrine, seria cobrar dos outros o que não se faz em casa.
+
+Vale contar como isso passou a ser verdade, porque é o defeito que o projeto
+persegue nos outros encontrado dentro de casa. Até 12/08 a constante morava em
+`apps/web/lib/betim/terras.ts`, e o cabeçalho dela afirmava ser única
+justamente para que "a tela por cidade e o hub da zona não pudessem divergir".
+Divergiram: o cartão da home trazia "30%" digitado à mão em
+`apps/web/lib/zonas.ts`, e a constante era lida por um único componente. A
+causa não foi descuido, foi acoplamento — `terras.ts` abre importando a camada
+de banco, e `zonas.ts` é lido por toda página do portal, de modo que importar
+de lá arrastaria o banco para dentro de tudo; copiar o número era a saída
+barata que restava. A correção, de 12/08, foi mover a constante para um arquivo
+**sem nenhum import**, que qualquer módulo pode ler sem carregar nada junto.
+`terras.ts` a reexporta, para quem já a importava de lá; o cartão passou a
+interpolá-la; e um teste passou a exigir que o texto do cartão contenha o
+número da constante, para que a próxima divergência falhe em vez de ir ao ar.
 
 ### Truncamento silencioso é tratado como defeito grave
 
@@ -815,8 +890,15 @@ O projeto o combate em vários pontos:
 - Na coleta: o coletor da PBH tem o teto medido da fonte anotado como
   constante, com o comentário de que acima daquele valor a resposta vem
   truncada sem aviso.
-- Nos coletores paginados: cada um calcula um sinalizador de "coleta
-  possivelmente truncada" e o registra no diagnóstico da execução.
+- Em quatro coletores paginados — `cap_autos_infracao.py`,
+  `legislacao_almg.py`, `legislacao_semad.py` e `legislacao_siam.py` —, um
+  sinalizador de "coleta possivelmente truncada" é calculado e registrado no
+  diagnóstico da execução. São os quatro únicos que o fazem. Os demais
+  coletores paginados — o do CEIS/CNEP, os que rodam sobre o cliente paginado
+  da Câmara, o do SNISB, o do COPAM, entre outros — paginam sem essa marca; o
+  do Portal da Transparência federal fica no meio do caminho, porque imprime um
+  aviso ao parar no próprio teto de páginas, mas não grava sinalizador nenhum.
+  É disciplina implantada, não disciplina concluída.
 - Na fonte geográfica do estado: a verificação vai no corpo da resposta, nunca
   no código de status, pela razão descrita na seção 3.
 
@@ -872,9 +954,13 @@ natureza:
   folha agregada por órgão entrou inteira. É o máximo que a fonte permite — e
   a auditoria recomenda dizer isso na própria tela, para que não pareça que a
   capital tem 114 funcionários.
-- **Obras só em Betim** é bloqueio externo: o SISOP, sistema que cobriria as
-  três cidades do Vale do Jequitinhonha de uma vez, está com o certificado de
-  segurança incompleto — problema fora do alcance do projeto.
+- **Obras só em Betim** tem duas causas distintas, e só uma é bloqueio. Para as
+  três cidades do Vale do Jequitinhonha, é bloqueio externo: o SISOP, sistema
+  que cobriria as três de uma vez, está com o certificado de segurança
+  incompleto — problema fora do alcance do projeto. Para Belo Horizonte e São
+  Paulo não há bloqueio registrado: a auditoria de 11/08 recomenda avaliar um
+  raspador direto para as duas, o que faz delas trabalho não feito, e não porta
+  fechada.
 
 ### Frentes com dado ausente
 
@@ -892,17 +978,23 @@ natureza:
   magistrados têm data de nascimento levantada, e sem ela a data de
   aposentadoria compulsória não pode ser calculada. É curadoria manual, e ela
   não terminou. Das 251 cadeiras previstas em lei, 93 estão individuadas e 57
-  têm ocupação registrada.
+  têm ocupação registrada. A cadeia de indicação está no mesmo estado: das 140
+  indicações levantadas, 88 ainda não têm o magistrado vinculado, de modo que
+  apenas 52 dos 252 magistrados chegam à tela com quem os indicou.
 - **Análise de vício legislativo**: 29 análises no total. É calibração.
 - **Cobertura da análise garantista**: entre 3,2% e 12,2%, conforme o acervo.
   Ampliá-la é trabalho de execução, não de pesquisa — o método está validado.
 
 ### Bloqueios que não dependem de esforço
 
-- **Cota gratuita do BigQuery esgotada** — os dados de sócios de empresas estão
-  parados em Belo Horizonte e São Paulo. Enquanto isso, "nenhum grupo econômico
-  encontrado" nessas duas cidades não é resultado, é ausência de insumo, e não
-  deve ser lido como conclusão. A cota reinicia mensalmente; a decisão de não
+- **Cota gratuita do BigQuery esgotada** — a coleta de sócios de empresas, que
+  é de onde sai a detecção de grupo econômico, está parada em Belo Horizonte e
+  São Paulo. Em **São Paulo** o efeito é integral: zero grupos no acervo, e
+  esse zero é ausência de insumo, não resultado — não deve ser lido como
+  conclusão. Em **Belo Horizonte** a frase não cabe, e seria erro repeti-la:
+  há **5 grupos** gravados e **126 contratos** marcados com o alerta de grupo
+  econômico. O que a cota impede ali é completar o levantamento, de modo que o
+  publicado é piso, não total. A cota reinicia mensalmente; a decisão de não
   habilitar cobrança é deliberada.
 - **SIGIBAR**, o cadastro de barragens mais completo que os dois já usados,
   está atrás de um mecanismo de verificação anti-robô. O projeto tem regra de
