@@ -63,12 +63,23 @@ const HA_POR_CAMPO = 0.714;
  *
  * `ponto_lat`/`ponto_lon` levam o MESMO ponto que a ficha mostra — inclusive
  * quando ele foi CALCULADO aqui a partir do contorno, porque a fonte não
- * publica coordenada para aquela camada (839 áreas em quatro camadas; ver
- * rotulos.js → coordenadasDaArea/pontosuperficie.js). Antes desta correção,
- * `linhaDe()` só olhava `properties` cru: nessas 839 áreas a coluna saía
- * vazia no CSV e no GeoJSON, enquanto o cabeçalho de ressalvas e a ficha
- * (que já calcula o ponto) afirmavam uma coordenada que o arquivo não
+ * publica coordenada para aquela camada (**970 áreas em sete camadas**
+ * listáveis; ver rotulos.js → coordenadasDaArea/pontosuperficie.js). Antes
+ * desta correção, `linhaDe()` só olhava `properties` cru: nessas 970 áreas a
+ * coluna saía vazia no CSV e no GeoJSON, enquanto o cabeçalho de ressalvas e a
+ * ficha (que já calcula o ponto) afirmavam uma coordenada que o arquivo não
  * carregava — um botão entregava, dois omitiam calado.
+ *
+ * ⟲ O NÚMERO AQUI JÁ FOI 839, E ESTAVA ERRADO NAS DUAS PONTAS. Contava só
+ * quatro camadas (embargos 797 + assentamentos 21 + terra pública 19 +
+ * quilombolas 2) e esquecia as três irmãs `-vales`, que o próprio parêntese
+ * nomeava: assentamentos-vales 54, terra-pública-vales 65,
+ * quilombolas-vales 12. Recontado no dado em 12/08 varrendo
+ * `dados/camadas/*.geojson`: 970 em sete camadas listáveis, e 1.823 em oito
+ * se `municipios-mg` (853) entrar — ela é a única sem `listavel`, então a
+ * exportação não a alcança, mas o cálculo do ponto sim. Fica registrado
+ * porque o 839 chegou a se propagar para cinco comentários antes de alguém
+ * conferir.
  *
  * `ponto_origem` diz qual dos dois casos é: "fonte" ou "calculado a partir do
  * contorno". Vira COLUNA própria, e não sufixo dentro de `ponto_lat`, porque
@@ -165,6 +176,38 @@ function hoje(agora = new Date()) {
 }
 
 /**
+ * A camada pode virar arquivo baixado? Só se for `listavel`.
+ *
+ * ═══ POR QUE ISTO É UMA FUNÇÃO, E MORA AQUI ═══
+ *
+ * A regra já estava escrita no topo deste arquivo ("o conjunto exportado é o
+ * que está na lista: camadas ligadas e marcadas `listavel` … é o que impede a
+ * exportação de virar uma terceira versão da verdade"), e o painel de lista a
+ * aplicava em `main.js`. Mas quando a ficha ganhou botão próprio de baixar,
+ * ela nasceu SEM a porta: `#area=municipios-mg:100` — uma divisa do IBGE —
+ * gerava um CSV intitulado "Áreas exportadas do mapa Terras Públicas" com a
+ * ressalva genérica sobre terra devoluta. Quem escreveu o botão lembrou do
+ * `fixture` e esqueceu do `listavel`.
+ *
+ * Uma regra que vive só em prosa no cabeçalho e em `Boolean(cfg?.listavel)`
+ * solto dentro de um módulo que importa three.js não tem como ser testada — e
+ * o que não é testado reabre calado. Aqui ela é uma função pura de uma linha,
+ * ao lado da prosa que a explica e do teste que a trava.
+ *
+ * NÃO confundir com `fixture`, que é a outra porta e é independente: uma
+ * camada pode ser `listavel` E `fixture` (dado inventado que aparece na
+ * lista), e nesse caso `separarExportaveis()` abaixo é quem a barra. Esta aqui
+ * responde "este TIPO de camada é achado?"; aquela responde "esta feição é
+ * real?".
+ *
+ * @param {object} cfg entrada do LAYER_REGISTRY (config.js)
+ * @returns {boolean}
+ */
+export function podeExportarCamada(cfg) {
+  return Boolean(cfg?.listavel);
+}
+
+/**
  * Separa o que pode ser exportado do que é ficção.
  *
  * Devolve as duas coisas de propósito: quem chama precisa DIZER quantas ficaram
@@ -194,7 +237,7 @@ function camadasPresentes(entradas) {
  *
  * `ponto_lat`/`ponto_lon`/`ponto_origem` passam por `coordenadasDaArea()` — a
  * MESMA função que a ficha usa — em vez de ler `p.ponto_lat` cru: é o que
- * garante que a planilha e o GeoJSON levem o ponto CALCULADO nas 839 áreas
+ * garante que a planilha e o GeoJSON levem o ponto CALCULADO nas 970 áreas
  * cuja fonte não publica coordenada, em vez de saírem vazios enquanto a tela
  * mostra o ponto certo (ver o comentário de `COLUNAS`, acima).
  */
@@ -215,8 +258,23 @@ export function linhaDe(entrada) {
       linha[chave] = Number.isFinite(ha) ? Math.round(ha / HA_POR_CAMPO) : '';
       continue;
     }
-    if (chave === 'ponto_lat') { linha[chave] = coord ? coord.lat : ''; continue; }
-    if (chave === 'ponto_lon') { linha[chave] = coord ? coord.lon : ''; continue; }
+    // SEIS casas decimais, e não o número cru: `coord.lat` sai do algoritmo
+    // com toda a bagagem do ponto flutuante (-20.12881243877958, 14 casas),
+    // e a ficha, ao lado, mostra o MESMO ponto com seis. Duas telas dizendo
+    // números diferentes para a mesma área é o começo da desconfiança.
+    //
+    // Mas o motivo forte não é a coerência, é a honestidade da precisão. O
+    // ponto calculado converge com tolerância de 1e-5 grau (PRECISAO_PADRAO
+    // em pontosuperficie.js), coisa de ~1 m: da quinta ou sexta casa em
+    // diante é ruído do método, não medição. Seis casas valem ~11 cm — já é
+    // mais fino que a tolerância. Catorze casas afirmariam precisão de
+    // fração de mícron num arquivo cujo próprio cabeçalho insiste que "a
+    // coordenada localiza a área; não é marco de divisa".
+    //
+    // `+(...)` para voltar a NÚMERO depois do toFixed: a coluna precisa abrir
+    // como número em planilha e em QGIS, e `toFixed` devolve string.
+    if (chave === 'ponto_lat') { linha[chave] = coord ? +coord.lat.toFixed(6) : ''; continue; }
+    if (chave === 'ponto_lon') { linha[chave] = coord ? +coord.lon.toFixed(6) : ''; continue; }
     if (chave === 'ponto_origem') {
       linha[chave] = coord ? (coord.calculado ? 'calculado a partir do contorno' : 'fonte') : '';
       continue;
@@ -363,7 +421,7 @@ export function paraTexto(entradas, ficticias = [], agora = new Date()) {
       '',
       // `geometry` alimenta o cálculo de ponto quando `p` não traz
       // `ponto_lat`/`ponto_lon` (ver rotulos.js → coordenadasDaArea). Sem
-      // isto, TODA área das quatro camadas sem ponto da fonte (839 no total)
+      // isto, TODA área das sete camadas listáveis sem ponto da fonte (970)
       // saía do texto com esta linha de desculpa em vez de coordenada.
       //
       // `textoParaPedido` devolve string VAZIA quando não há ponto ALGUM,

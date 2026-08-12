@@ -33,9 +33,11 @@ import {
   paraCsv,
   paraGeoJson,
   paraTexto,
+  podeExportarCamada,
   ressalvaDaCamada,
   separarExportaveis,
 } from './exportar.js';
+import { LAYER_REGISTRY } from '../config.js';
 import { descreverArea, descreverAreaCurta } from './rotulos.js';
 
 const QUANDO = new Date('2026-08-06T12:00:00Z');
@@ -444,4 +446,65 @@ test('valor ausente não vira "NaN hectares"', () => {
   assert.equal(descreverArea(undefined), '');
   assert.equal(descreverArea(null), '');
   assert.equal(descreverAreaCurta('abc'), '');
+});
+
+// ---------------------------------------------------------------------------
+// A porta `listavel`: quem pode virar arquivo baixado
+//
+// Estes testes existem porque a porta JÁ FOI ESQUECIDA UMA VEZ. Quando a ficha
+// da área ganhou botão próprio de baixar, ele nasceu sem a regra que o painel
+// de lista sempre teve, e `#area=municipios-mg:100` — uma divisa do IBGE —
+// gerava um CSV intitulado "Áreas exportadas do mapa Terras Públicas" com a
+// ressalva genérica sobre terra devoluta. Quem escreveu lembrou do `fixture` e
+// esqueceu do `listavel`.
+//
+// O último teste é o que importa de verdade: ele não usa camada inventada,
+// olha o LAYER_REGISTRY publicado. Se alguém marcar `municipios-mg` como
+// listável, ou tirar `listavel` de uma camada de dado, ele reprova aqui em vez
+// de o defeito reaparecer calado num arquivo que vai pra ofício.
+// ---------------------------------------------------------------------------
+
+test('só camada listável pode virar arquivo baixado', () => {
+  assert.equal(podeExportarCamada({ listavel: true }), true);
+  assert.equal(podeExportarCamada({ listavel: false }), false);
+});
+
+test('camada sem a flag NÃO exporta — omitir não é permitir', () => {
+  assert.equal(podeExportarCamada({}), false, 'flag ausente virou permissão');
+  assert.equal(podeExportarCamada({ label: 'Divisas dos municípios' }), false);
+});
+
+test('cfg ausente não explode nem libera', () => {
+  assert.equal(podeExportarCamada(undefined), false);
+  assert.equal(podeExportarCamada(null), false);
+});
+
+test('`listavel` e `fixture` são portas INDEPENDENTES', () => {
+  // Uma camada de demonstração pode aparecer na lista; quem a barra do arquivo
+  // é `separarExportaveis`, não esta função. Cada porta guarda uma pergunta.
+  assert.equal(podeExportarCamada({ listavel: true, fixture: true }), true);
+  const { exportaveis, ficticias } = separarExportaveis([
+    { layerId: 'x', cfg: { listavel: true, fixture: true }, feature: { properties: {} } },
+  ]);
+  assert.equal(exportaveis.length, 0);
+  assert.equal(ficticias.length, 1);
+});
+
+test('no LAYER_REGISTRY publicado, divisa de municipio nao exporta e camada de dado exporta', () => {
+  const cfg = (id) => LAYER_REGISTRY.find((l) => l.id === id);
+
+  // Divisa do IBGE é moldura, não achado. Foi o caso real do defeito.
+  assert.equal(podeExportarCamada(cfg('municipios-mg')), false,
+    'municipios-mg voltou a ser exportavel — o CSV de divisa municipal com ressalva de terra devoluta volta junto');
+
+  // As camadas cujo ponto é CALCULADO (as sete sem coordenada da fonte) têm de
+  // continuar exportáveis: são elas que a correção do ponto atende.
+  for (const id of [
+    'assentamentos', 'assentamentos-vales',
+    'territorios-quilombolas', 'territorios-quilombolas-vales',
+    'terra-publica-certificada', 'terra-publica-certificada-vales',
+    'embargos-ambientais-vales',
+  ]) {
+    assert.equal(podeExportarCamada(cfg(id)), true, `${id} deixou de ser exportavel`);
+  }
 });

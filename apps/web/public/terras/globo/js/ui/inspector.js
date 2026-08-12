@@ -31,7 +31,7 @@ import { centroDe } from '../core/enquadrar.js';
 import { distanciaAoChao, radianosPorPixel } from '../core/arrastar.js';
 import { blocoDeCoordenadas, escapar, ligarCopiar, linhasDaFicha, notaDeUso } from './rotulos.js';
 import { injetarProveniencia } from './proveniencia.js';
-import { FORMATOS, exportar } from './exportar.js';
+import { FORMATOS, exportar, podeExportarCamada } from './exportar.js';
 
 /** Título humano da área clicada: nome próprio, ou camada + município. */
 export function tituloDaArea(cfg, props, idx) {
@@ -185,7 +185,13 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
     // devoluta, e um texto de ofício dizendo "quem confirma é o INCRA, a SPU
     // ou a Justiça" sobre um limite municipal. "Copiar coordenada" continua:
     // saber onde fica é legítimo mesmo aí.
-    const podeExportar = Boolean(cfg?.listavel);
+    //
+    // A decisão vem de `podeExportarCamada()` (ui/exportar.js) e não de um
+    // `cfg?.listavel` escrito aqui: este módulo importa three.js e não roda
+    // sob `node --test`, então uma regra inline aqui seria uma regra sem
+    // teste — e foi exatamente assim que a porta ficou de fora na primeira
+    // versão deste botão.
+    const podeExportar = podeExportarCamada(cfg);
     emFoco = { layerId, feature, idx };
     panel.innerHTML = `
       <button class="inspector-close" title="Fechar">×</button>

@@ -383,11 +383,11 @@ export function paraGMS(valor, eixo) {
 /**
  * Coordenadas de uma área, ou null se não há como obter nenhuma.
  *
- * 839 áreas em quatro camadas (assentamentos, territórios quilombolas, terra
+ * 1.823 áreas em oito camadas (assentamentos, territórios quilombolas, terra
  * pública certificada, embargos ambientais — e as irmãs `-vales` de cada
  * uma) chegam sem `ponto_lat`/`ponto_lon`: o pipeline que gera essas
  * camadas calcula o polígono, não um ponto de referência. Antes, isso fazia
- * esta função devolver `null` para as 839 — e a ficha perdia os dois botões
+ * esta função devolver `null` para as 1.823 — e a ficha perdia os dois botões
  * de copiar, calada, sem dizer por quê. Agora, faltando o dado da fonte e
  * havendo `geometry`, o ponto é calculado no cliente a partir do próprio
  * contorno (ver ./pontosuperficie.js) — com uma garantia que um centroide
@@ -554,7 +554,7 @@ export function textoParaPedido(props, rotuloCamada, ehPonto = false, geometry) 
  * @param {boolean} [ehPonto]
  * @param {object} [geometry] geometry da feição — alimenta o cálculo do
  *   ponto quando `props` não traz `ponto_lat`/`ponto_lon` (ver
- *   coordenadasDaArea). Sem isto, 839 áreas em quatro camadas apareciam com
+ *   coordenadasDaArea). Sem isto, 1.823 áreas em oito camadas apareciam com
  *   a ficha inteira MENOS este bloco — sem "Copiar coordenada", sem "Copiar
  *   para ofício ou LAI", e sem explicação nenhuma na tela do porquê.
  * @param {boolean} [permiteOficio] `false` esconde só o botão "Copiar para

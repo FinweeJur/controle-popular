@@ -2,12 +2,12 @@
  * pontosuperficie.js — um ponto GARANTIDO dentro de um polígono, mesmo quando
  * ele é fino, sinuoso ou tem furos.
  *
- * Existe porque 839 áreas em quatro camadas (assentamentos, territórios
+ * Existe porque 1.823 áreas em oito camadas (assentamentos, territórios
  * quilombolas, terra pública certificada, embargos ambientais — e as irmãs
  * `-vales` de cada uma) chegam ao navegador SEM `ponto_lat`/`ponto_lon`: o
  * pipeline que gera essas camadas não calcula o ponto, só o polígono. Sem
  * este módulo, `coordenadasDaArea()` (rotulos.js) devolve `null` para essas
- * 839 áreas e a ficha perde os dois botões de copiar, calada — o defeito que
+ * 1.823 áreas e a ficha perde os dois botões de copiar, calada — o defeito que
  * este arquivo resolve.
  *
  * ⚠️ NÃO é um centroide. O centroide de um polígono côncavo pode cair FORA
