@@ -98,14 +98,30 @@
      restava entre os matizes já usados — 53,8° entre a ressalva (75) e
      quilombolas (128,8) —, escolhido por medição e não por gosto. */
   --layer-lotes-vagos: oklch(0.754 0.139 102);        /* #c1b237 */
+  /* Áreas embargadas por infração ambiental (Sisema), nos Vales. Mesma régua do
+     matiz de lotes vagos: 223,5 é o meio da maior lacuna que restava — 83,1°
+     entre terra pública (181,9) e devolutas (265) —, o que a deixa a 41,5° de
+     cada vizinha, medido, não escolhido a gosto.
+     ⟲ POR QUE GANHOU COR PRÓPRIA: usava var(--caution), o MESMO âmbar de
+     checagem-g0. As duas são `fill` e `listavel`, então ligadas juntas
+     desenhavam 797 áreas embargadas e 63 áreas de amostra na cor idêntica —
+     e confundir "auto de infração lavrado pelo Estado" com "ninguém julgou
+     isto ainda" é justamente o salto que este projeto existe para não dar.
+     O slot do âmbar ficou com checagem-g0, que é quem a linha abaixo documenta
+     desde 30/07. O peso de "isto é grave" fica no `aviso` da camada, em
+     palavras — cor não é onde este projeto guarda afirmação. */
+  --layer-embargos: oklch(0.754 0.139 223.5);         /* #10c1ef ciano */
   --layer-moldura: var(--text-3);                     /* divisas: moldura, não dado */
 
-  /* Duas camadas NÃO têm cor própria de propósito — usam a semântica:
-       checagem-g0        → var(--caution)   amostra em conferência É ressalva
-       candidatos-curvelo → var(--fiction)   dado inventado (regra 4)
+  /* Uma camada NÃO tem cor própria de propósito — usa a semântica:
+       checagem-g0 → var(--caution)   amostra em conferência É ressalva
      ⟲ Antes era o inverso do certo: a camada fictícia usava âmbar, que é o
      slot da ressalva, e a amostra em conferência usava rosa a 20° do magenta
-     da ficção — as duas se confundiam justamente onde não podiam. */
+     da ficção — as duas se confundiam justamente onde não podiam.
+     --fiction continua definido e SEM camada que o use: a maquinaria de
+     fixture (selo FICTÍCIO, hachura, exclusão da exportação) segue de pé para
+     a próxima que precisar. O que saiu foi a camada de demonstração, não a
+     defesa contra ela. */
 }
 
 /* ---- modo papel -----------------------------------------------------

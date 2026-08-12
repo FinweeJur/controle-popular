@@ -13,8 +13,12 @@
  *
  * ## O que este arquivo se recusa a fazer
  *
- * **1. Não exporta camada fictícia.** `candidatos-curvelo` é dado inventado para
- * demonstração (`fixture: true`). O projeto já apagou uma linha sintética do
+ * **1. Não exporta camada fictícia.** Qualquer camada marcada `fixture: true` no
+ * LAYER_REGISTRY é dado inventado. Hoje NENHUMA está publicada — a única que
+ * existia (`candidatos-curvelo`) saiu do registro em 12/08 —, e esta guarda
+ * fica de pé mesmo assim: ela é a rede para a próxima, e o teste que a cobre
+ * monta a própria camada fictícia em vez de depender de haver uma no ar.
+ * O projeto já apagou uma linha sintética do
  * banco porque ela aparecia como imóvel real com nota; um arquivo exportado tem
  * destino pior que uma tela — vai para planilha, para ofício, para cartório. As
  * feições de camada fictícia ficam de fora e o arquivo **diz quantas ficaram**:

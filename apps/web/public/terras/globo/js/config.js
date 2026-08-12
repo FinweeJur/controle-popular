@@ -152,12 +152,19 @@ export const LAYER_REGISTRY = [
     hint: 'Terra que o Estado já declarou devoluta. O INCRA não publica essa base — por isso a camada está vazia.',
     color: 0x84acff,   /* --layer-devolutas: saiu do matiz do acento */ on: false, render: 'fill',
   },
-  {
-    id: 'candidatos-curvelo', label: 'Exemplo de demonstração',
-    hint: 'Três áreas inventadas, desenhadas à mão para testar a tela. Não são dado de lugar nenhum.',
-    aviso: 'Esta área não existe. Foi inventada para demonstração — não use como informação.',
-    color: 0xe08dd9,   /* --fiction: dado inventado (regra 4) */ on: false, render: 'fill', fixture: true, listavel: true,
-  },
+  // ⟲ SAIU A CAMADA `candidatos-curvelo` (12/08), a pedido do dono do projeto.
+  // Eram três polígonos inventados à mão para testar a tela, e estavam
+  // publicados no painel de um portal de transparência ao lado de camadas do
+  // INCRA e da SPU. As defesas funcionavam (selo FICTÍCIO no painel, exclusão
+  // da exportação em ui/exportar.js), mas nenhuma delas viaja num print de
+  // tela: o polígono era desenhado no globo com a mesma aparência das camadas
+  // reais. O jeito de um dado inventado nunca ser lido como oficial é ele não
+  // estar publicado.
+  //
+  // A MAQUINARIA DE FIXTURE FICA: a flag `fixture`, `separarExportaveis()`, o
+  // selo `.layer-fake`/`.lista-fake` e o token --fiction seguem de pé e
+  // testados. O que saiu foi a camada, não a defesa contra ela — a próxima
+  // que precisar de dado de demonstração acha o caminho pronto.
   // Ponto, não área: a SPU publica ONDE fica o imóvel, não o contorno dele.
   // O `aviso` carrega isso porque um ponto no mapa, ao lado de polígonos, é
   // lido como "área pequena" — e não é: é localização sem tamanho.
@@ -207,7 +214,14 @@ export const LAYER_REGISTRY = [
     id: 'embargos-ambientais-vales', label: 'Áreas embargadas por infração ambiental',
     hint: '797 áreas embargadas pela fiscalização ambiental de Minas nos Vales, somando 4.105 hectares (41 km²). Supressão de vegetação responde por 642 delas.',
     aviso: 'Embargo não é decisão final — cabe defesa e recurso. E recai sobre a área da infração, não sobre o imóvel inteiro. Ausência de embargo aqui não quer dizer regularidade: pode ser só ausência de fiscalização. Nome e documento do autuado não são exibidos.',
-    color: 0xe2a138,   /* --caution: indício é ressalva, não veredito */ on: false, render: 'fill', listavel: true,
+    // Ganhou cor PRÓPRIA em 12/08: usava 0xe2a138, o mesmo âmbar de
+    // `checagem-g0`. As duas são 'fill' e listáveis, então ligadas ao mesmo
+    // tempo pintavam 797 áreas embargadas e 63 de amostra na cor idêntica —
+    // no globo e no dot da lista. O matiz novo saiu por medição (meio da maior
+    // lacuna do círculo), não por gosto: ver --layer-embargos em
+    // css/tokens/colors.css. Que o embargo é grave continua dito no `aviso`,
+    // em palavras — não na cor.
+    color: 0x10c1ef,   /* --layer-embargos */ on: false, render: 'fill', listavel: true,
   },
   {
     id: 'terra-publica-certificada-vales', label: 'Terra pública com medição oficial — Vales',

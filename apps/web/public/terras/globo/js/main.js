@@ -340,6 +340,17 @@ async function bootstrap() {
   let reenquadrar = null;
   window.addEventListener('resize', () => {
     const { clientWidth: w, clientHeight: h } = container;
+    // Sai se o container estiver com medida zero. `w / h` daria NaN (0/0) ou
+    // Infinity, e `updateProjectionMatrix()` GRAVA essa matriz quebrada — ela
+    // persiste depois que o container volta a ter tamanho, e o globo fica
+    // sumido ou distorcido até alguém recarregar a página.
+    //
+    // Não é hipótese: o globo roda dentro de um <iframe> (app/
+    // funcaosocialterra/mapa/page.tsx) num layout flex, e mede zero em vários
+    // momentos reais — iframe ainda não medido no primeiro layout, aba de
+    // fundo, e no celular a folha de duas abas (ui/folha.js), que esconde um
+    // painel inteiro ao trocar de aba.
+    if (!(w > 0 && h > 0)) return;
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);

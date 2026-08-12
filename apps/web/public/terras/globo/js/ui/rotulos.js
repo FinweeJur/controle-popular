@@ -94,7 +94,52 @@ export const OCULTAS = new Set([
   // copiar: `ponto_lat: -18,758917` numa linha de tabela é número para ler, e
   // ninguém lê coordenada — copia. Ver blocoDeCoordenadas().
   'ponto_lat', 'ponto_lon', 'utm_e', 'utm_n',
+  // `link_no_app` é auto-referência: o dado grava o caminho da própria área
+  // NESTE app. Pior, grava o caminho do backend FastAPI original
+  // (`/app/globe#area=...`), que não existe neste portal — a rota publicada é
+  // `/funcaosocialterra/mapa`. Mostrar isso na ficha entrega à pessoa um
+  // caminho morto com cara de referência oficial. Quem já está com a ficha
+  // aberta chegou lá por esse link; ele não informa nada.
+  'link_no_app',
 ]);
+
+/**
+ * Escapa texto que vai para dentro de HTML.
+ *
+ * Existe porque `linhasDaFicha()` monta `<tr>` por interpolação e os valores
+ * vêm de `properties` de GeoJSON — e nem todo GeoJSON deste app é dado
+ * numérico de pipeline próprio: `normas-geolocalizadas` carrega `ementa` e
+ * `link_fonte`, que são texto raspado de portais de legislação municipal.
+ * Texto de terceiro interpolado cru em innerHTML é injeção de HTML; um `&`
+ * numa ementa já basta para quebrar a renderização.
+ *
+ * Os módulos irmãos (`ui/listapanel.js`, `ui/proveniencia.js`) já faziam isto;
+ * este arquivo era o único que interpolava sem escapar.
+ */
+export function escapar(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/**
+ * URL de fonte externa, ou `null` se não for segura para virar `href`.
+ *
+ * Só `http:` e `https:` passam. Sem esta checagem, um `link_fonte` raspado
+ * valendo `javascript:...` viraria código executável no clique — e a origem
+ * do campo é justamente uma página de terceiro, fora do controle do projeto.
+ */
+function urlSegura(valor) {
+  try {
+    const u = new URL(String(valor), 'https://controlepopular.com.br');
+    return u.protocol === 'http:' || u.protocol === 'https:' ? u.href : null;
+  } catch {
+    return null;
+  }
+}
 
 /** Campo de futebol oficial (105 × 68 m) = 0,714 ha — a régua que todo mundo tem. */
 const HA_POR_CAMPO = 0.714;
@@ -241,7 +286,15 @@ export function formatarValor(chave, valor) {
   // no formato brasileiro. `link_fonte` sai como <a> -- as outras camadas
   // não têm campo de URL, então este é o primeiro caso desse tipo aqui.
   if (chave === 'link_fonte' && valor) {
-    return `<a href="${valor}" target="_blank" rel="noopener">Ver norma original ↗</a>`;
+    // A URL vem RASPADA de portal municipal: valida o esquema antes de virar
+    // `href` e escapa antes de entrar no atributo. Sem as duas coisas, um
+    // `javascript:` executa no clique e uma aspa fecha o atributo e injeta
+    // HTML. Quando a URL não passa, mostra o texto cru em vez de link morto —
+    // sumir com o campo esconderia da pessoa que a fonte veio torta.
+    const href = urlSegura(valor);
+    return href
+      ? `<a href="${escapar(href)}" target="_blank" rel="noopener">Ver norma original ↗</a>`
+      : escapar(valor);
   }
   if (chave === 'confianca') {
     if (valor === 'alta') return 'Alta — rua, avenida ou praça citada por nome';
@@ -256,11 +309,27 @@ export function formatarValor(chave, valor) {
   return VALORES[texto] ?? texto;
 }
 
+/**
+ * Chaves cujo `formatarValor()` devolve HTML DE PROPÓSITO, e que por isso não
+ * podem ser escapadas de novo na montagem da linha.
+ *
+ * Lista branca explícita, e não "escapa só o que parece texto": é o que
+ * garante que um campo novo da fonte entre escapado por padrão. Quem quiser
+ * emitir HTML aqui precisa vir escrever a chave nesta lista e assumir que a
+ * própria `formatarValor` escapou o que interpolou — é o que o ramo de
+ * `link_fonte` faz.
+ */
+const CHAVES_COM_HTML = new Set(['link_fonte']);
+
 /** Monta as linhas <tr> da ficha de uma área, já traduzidas. */
 export function linhasDaFicha(props) {
   return Object.entries(props ?? {})
     .filter(([k]) => !OCULTAS.has(k))
-    .map(([k, v]) => `<tr><td>${ROTULOS[k] ?? k}</td><td>${formatarValor(k, v)}</td></tr>`)
+    .map(([k, v]) => {
+      const valor = formatarValor(k, v);
+      return `<tr><td>${escapar(ROTULOS[k] ?? k)}</td><td>${
+        CHAVES_COM_HTML.has(k) ? valor : escapar(valor)}</td></tr>`;
+    })
     .join('');
 }
 

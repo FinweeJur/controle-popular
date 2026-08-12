@@ -172,8 +172,20 @@
     document.getElementById('btn-rotas').onclick = (e) => { e.preventDefault(); mapa.removeLayer(esri); osm.addTo(mapa); };
 
     // --- Feição: busca a camada e desenha o polígono ------------------------
-    const CORES = { 'candidatos-curvelo': '#fbbf24', 'devolutas-arrecadadas': '#38bdf8',
-      'spu-imoveis-uniao': '#34d399', 'municipios-mg': '#94a3b8', 'pesquisa-noticias': '#fb7185' };
+    //
+    // A cor sai do LAYER_REGISTRY, que esta pagina JA importa — nao de uma
+    // tabela propria.
+    //
+    // ⟲ Havia uma: `const CORES = {...}`, cinco camadas cravadas a mao. Tinha
+    // divergido do registro nas CINCO (spu era #34d399 aqui e 0x45ca96 la;
+    // municipios #94a3b8 contra 0x6f7f93; e assim por diante), e as outras
+    // catorze camadas nem constavam — caiam todas no azul padrao. O efeito era
+    // clicar num poligono violeta no globo, abrir "ver de perto" e ele
+    // aparecer azul. Cor e identidade de camada neste app (css/tokens/
+    // colors.css normaliza L e C das vinte exatamente para isso), e duas
+    // tabelas de cor sao uma que vai divergir. Esta ja tinha divergido.
+    const corDaCamada = (cfg) =>
+      cfg?.color != null ? `#${cfg.color.toString(16).padStart(6, '0')}` : '#38bdf8';
 
     async function carregar() {
       if (!camada || Number.isNaN(fid)) {
@@ -190,7 +202,11 @@
         const f = fc.features[fid];
         if (!f) throw new Error(`esta área não existe mais na camada`);
 
-        const cor = CORES[camada] ?? '#38bdf8';
+        // Resolvido aqui em cima porque a COR e o RoTULO da camada saem os
+        // dois daqui — antes o rotulo era buscado la embaixo e a cor vinha de
+        // outra tabela, que e como as duas se separaram.
+        const cfg = LAYER_REGISTRY.find((l) => l.id === camada);
+        const cor = corDaCamada(cfg);
         const poly = L.geoJSON(f, {
           style: { color: cor, weight: 2, fillColor: cor, fillOpacity: 0.25 },
         }).addTo(mapa);
@@ -200,8 +216,8 @@
         const nome = props.nome || props.name;
         document.querySelector('.painel h1').textContent =
           nome ? nome : (props.municipio ? `Esta área em ${props.municipio}` : 'Esta área vista de perto');
-        // Nome legível da camada, não o id do arquivo ("vazio-cadastral-bacia")
-        const cfg = LAYER_REGISTRY.find((l) => l.id === camada);
+        // Nome legível da camada, não o id do arquivo ("vazio-cadastral-bacia").
+        // `cfg` foi resolvido lá em cima, junto com a cor.
         document.getElementById('props').innerHTML =
           linhasDaFicha(props) + `<tr><td>${ROTULOS.camada}</td><td>${cfg?.label ?? camada}</td></tr>`;
         // Coordenadas com botão de copiar, e a mesma nota do inspetor: "terra
