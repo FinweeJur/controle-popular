@@ -4,10 +4,16 @@ import { alertas, coberturaAnalise } from "@/lib/congresso/destaques";
 import AlertasLista, { AlertasListaCompleta } from "./AlertasLista";
 import { FiltroTema, Rodape, Vazio } from "./FiltroRodapeVazio";
 
-// Re-exportadas para `congresso/bons-exemplos/page.tsx` continuar
-// importando de `alertas/page.tsx` sem mudança — ver o porquê da mudança de
-// lugar em `FiltroRodapeVazio.tsx`.
-export { FiltroTema, Rodape, Vazio };
+// ⟲ SAIU o `export { FiltroTema, Rodape, Vazio }` que ficava aqui. Ele existia
+// para `congresso/bons-exemplos/page.tsx` seguir importando de `alertas/page`
+// sem mudar de linha — mas aquela página já passou a importar direto de
+// `./FiltroRodapeVazio`, então o re-export estava MORTO, e cobrando caro:
+//
+// uma `page.tsx` só pode exportar o contrato do Next (`default`, `metadata`,
+// `generateStaticParams`, `dynamic`, e os irmãos). Qualquer outro nome quebra
+// o type-check gerado em `.next/types/`. O build com Turbopack não roda essa
+// checagem e passava verde; o com webpack reprova, com uma mensagem que não
+// diz o que é ("Property 'FiltroTema' is incompatible with index signature").
 
 export const metadata: Metadata = {
   title: "Alertas — projetos que retiram direitos — Controle Popular · Congresso",

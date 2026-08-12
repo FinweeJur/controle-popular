@@ -6,7 +6,10 @@ import {
   Vazio,
   Contagem,
   CoberturaAviso,
-} from "@/app/[municipio]/legislacao/alertas/page";
+  // Vinham de `alertas/page`. Importar de uma PAGE viola o contrato de exports
+  // que o Next impõe ao arquivo: o build com webpack reprova, o com Turbopack
+  // não. Ver o cabeçalho de `componentes.tsx`.
+} from "@/app/[municipio]/legislacao/componentes";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { bonsExemplos, coberturaLegislacao } from "@/lib/betim/legislacao-garantista";
 
