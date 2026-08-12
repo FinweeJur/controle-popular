@@ -6,7 +6,7 @@
  * Sem build step: ES modules vanilla servidos como estáticos pelo FastAPI.
  */
 
-import { ABERTURA, FOCUS_PRESETS, LAYER_REGISTRY } from './config.js';
+import { ABERTURA, FOCUS_PRESETS, LAYER_REGISTRY, REGIOES_CAMADAS } from './config.js';
 import { municipioPorCodigo } from './data/municipios.js';
 import { createScene } from './core/scene.js';
 import { createEarth } from './core/earth.js';
@@ -311,6 +311,7 @@ async function bootstrap() {
   const layersPanel = createLayersPanel(
     document.getElementById('layers-panel'),
     LAYER_REGISTRY,
+    REGIOES_CAMADAS,
     (id) => Promise.resolve(layers.toggle(id)).then(() => syncFeatureCounts(id)),
   );
 
