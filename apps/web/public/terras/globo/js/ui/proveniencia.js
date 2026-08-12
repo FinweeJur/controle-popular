@@ -12,10 +12,24 @@
  * fonte e data) e quase ninguém quer ler sempre. Mas quem quer, precisa achar
  * sem sair da tela — "fonte: um arquivo .shp" não é proveniência.
  *
- * Busca uma vez por sessão e guarda. O arquivo `proveniencia.json` não foi
- * publicado junto (é gerado por um pipeline que roda fora deste portal, sem
- * saída neste checkout) — o fetch dá 404 e o bloco diz isso em vez de sumir:
- * campo ausente sem explicação a pessoa lê como app quebrado.
+ * Busca uma vez por sessão e guarda.
+ *
+ * ⟲ O arquivo passou a existir em 12/08. Antes ele simplesmente não era
+ * publicado — era gerado por `pipeline/proveniencia.py`, no repositório
+ * `terras-devolutas`, e a saída nunca vinha junto com as camadas. O fetch dava
+ * 404 e este bloco exibia "HTTP 404" na ficha de TODA área, num portal cuja
+ * tese é procedência de dado. Pior: `ui/statusbar.js` lê `gerado_em_utc` daqui
+ * para escrever o selo "dados de …", então o selo caía para sempre na
+ * constante `DADOS_DE` e anunciava 28/07 sobre camadas de agosto.
+ *
+ * Agora o manifesto é gerado por `scripts/gerar-proveniencia-globo.mjs`, que
+ * MEDE os arquivos publicados (contagem, mtime, SHA) em vez de descrever as
+ * entradas do pipeline — que exigem os shapefiles brutos do Acervo Fundiário,
+ * atrás de conta gov.br, e não rodam nesta máquina nem no CI.
+ *
+ * O caminho de erro continua de pé e continua sendo o certo: se o manifesto
+ * sumir de novo, o bloco DIZ o que houve em vez de desaparecer — campo ausente
+ * sem explicação a pessoa lê como app quebrado.
  */
 
 let cache = null; // Promise<{ok, dados|erro}> — uma busca por sessão
@@ -26,6 +40,33 @@ let cache = null; // Promise<{ok, dados|erro}> — uma busca por sessão
  * técnico, o que é feio mas honesto (melhor que sumir da lista).
  */
 const NOMES = {
+  // ── ids das camadas PUBLICADAS (as chaves que o manifesto do portal usa) ──
+  // O manifesto passou a ser gerado por `scripts/gerar-proveniencia-globo.mjs`,
+  // que descreve o que o portal publica — e não as entradas do pipeline. Os
+  // nomes abaixo são os mesmos `label` do LAYER_REGISTRY, para o bloco falar a
+  // língua do painel de camadas. As chaves do pipeline seguem logo abaixo,
+  // intactas: se o manifesto original voltar a ser publicado um dia, os dois
+  // conjuntos convivem sem conflito de nome.
+  'municipios-mg': 'Divisas dos municípios',
+  'vazio-cadastral-bacia': 'Terra sem cadastro — bacia do Paraopeba',
+  'vazio-cadastral': 'Terra sem cadastro — só Curvelo',
+  'vazio-cadastral-vales': 'Terra sem cadastro — Vales do Mucuri e Jequitinhonha',
+  'terra-publica-certificada': 'Terra pública com medição oficial',
+  'terra-publica-certificada-vales': 'Terra pública com medição oficial — Vales',
+  assentamentos: 'Assentamentos da reforma agrária',
+  'assentamentos-vales': 'Assentamentos da reforma agrária — Vales',
+  'territorios-quilombolas': 'Territórios quilombolas',
+  'territorios-quilombolas-vales': 'Territórios quilombolas — Vales',
+  'spu-imoveis-uniao': 'Imóveis do governo federal',
+  'spu-imoveis-uniao-vales': 'Imóveis do governo federal — Vales',
+  'embargos-ambientais-vales': 'Áreas embargadas por infração ambiental',
+  'lotes-vagos-bh': 'Lotes vagos em Belo Horizonte',
+  'normas-geolocalizadas': 'Leis e decretos com lugar citado',
+  'checagem-g0': 'Amostra em conferência',
+  'devolutas-arrecadadas': 'Terras devolutas já reconhecidas',
+  'pesquisa-noticias': 'Lugares abandonados na imprensa',
+
+  // ── chaves do pipeline original (`pipeline/proveniencia.py`) ──
   car_sicar: 'Cadastro Ambiental Rural (CAR)',
   ide_sisema_exclusoes: 'Áreas urbanas, água, conservação e APP',
   mapbiomas_cobertura: 'Cobertura do solo (mata, pasto, eucalipto)',

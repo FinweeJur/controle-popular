@@ -1,0 +1,257 @@
+/**
+ * gerar-proveniencia-globo.mjs — monta o manifesto "de onde vêm estes dados"
+ * do globo 3D, a partir do que o portal DE FATO publica.
+ *
+ * ═══ POR QUE ESTE ARQUIVO EXISTE ═══
+ *
+ * `js/ui/proveniencia.js` busca `/terras/globo/dados/proveniencia.json` e
+ * monta com ele o bloco recolhível que aparece na ficha de toda área e na
+ * vista de perto. Esse arquivo NUNCA foi publicado: o manifesto original era
+ * gerado por `pipeline/proveniencia.py`, no repositório `terras-devolutas`,
+ * cuja saída nunca veio junto com as camadas. O fetch dava 404 e a ficha
+ * exibia "HTTP 404" no lugar da lista de fontes — num portal cuja tese é
+ * procedência de dado.
+ *
+ * E o dano não parava na ficha: `ui/statusbar.js` lê `gerado_em_utc` deste
+ * mesmo manifesto para escrever o selo "dados de …". Sem manifesto, o selo
+ * caía para sempre na constante `DADOS_DE` de `js/config.js` e afirmava
+ * "dados de 28/07/2026" com confiança sobre camadas reexportadas depois — que
+ * é exatamente a falha que o comentário daquela constante registra já ter
+ * acontecido uma vez.
+ *
+ * ═══ POR QUE NÃO CHAMAR O PIPELINE ORIGINAL ═══
+ *
+ * `pipeline/proveniencia.py` descreve as ENTRADAS do pipeline (os shapefiles
+ * do Acervo Fundiário do INCRA, o WFS do CAR, os rasters do MapBiomas) e
+ * precisa dos arquivos brutos em disco para medir SHA e contagem. Esses
+ * arquivos estão atrás de conta gov.br e nunca foram versionados — o pipeline
+ * não roda nesta máquina nem no CI do portal, e não deveria mesmo.
+ *
+ * Este gerador responde a outra pergunta, que é a que a pessoa na ficha está
+ * fazendo: **de onde veio a camada que estou olhando agora**. Ele mede o
+ * arquivo publicado (quantas áreas, quando foi gerado, que impressão digital
+ * tem) e junta a isso a origem declarada de cada camada. Roda com Node puro,
+ * sem dependência nenhuma, contra os arquivos que estão no repositório.
+ *
+ * ═══ A REGRA DAS ORIGENS ═══
+ *
+ * Nada em `ORIGENS` é invenção deste arquivo. Cada linha é a fonte que a
+ * própria camada já declara — no `hint` e no `aviso` do LAYER_REGISTRY
+ * (`js/config.js`), na tabela "De onde vem cada dado" do README e no bloco
+ * homônimo de `app/funcaosocialterra/page.tsx`. Camada nova sem entrada aqui
+ * entra no manifesto marcada como origem não declarada, e não some: sumir
+ * seria a versão silenciosa do mesmo 404.
+ *
+ * Uso:
+ *   node scripts/gerar-proveniencia-globo.mjs
+ *   node scripts/gerar-proveniencia-globo.mjs --conferir   (não escreve; sai 1 se desatualizado)
+ */
+
+import { createHash } from 'node:crypto';
+import { readFileSync, readdirSync, writeFileSync, statSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const AQUI = path.dirname(fileURLToPath(import.meta.url));
+const GLOBO = path.join(AQUI, '..', 'public', 'terras', 'globo');
+const DIR_CAMADAS = path.join(GLOBO, 'dados', 'camadas');
+const SAIDA = path.join(GLOBO, 'dados', 'proveniencia.json');
+
+/**
+ * Origem declarada de cada camada.
+ *
+ * `obtencao` segue o vocabulário do manifesto original:
+ *   'automatica'  — serviço aberto, coletado por script
+ *   'manual'      — download por portal (às vezes autenticado)
+ *   'derivada'    — calculada aqui a partir de outras camadas
+ *   'propria'     — produzida pelo próprio projeto
+ */
+const ORIGENS = {
+  'municipios-mg': {
+    obtencao: 'automatica',
+    servico: 'Malha municipal do IBGE',
+  },
+  'vazio-cadastral-bacia': {
+    obtencao: 'derivada',
+    origem: 'CAR/SICAR menos as exclusões do IDE-Sisema, sobre a malha do IBGE',
+  },
+  'vazio-cadastral': {
+    obtencao: 'derivada',
+    origem: 'CAR/SICAR menos as exclusões do IDE-Sisema, sobre a malha do IBGE',
+  },
+  'vazio-cadastral-vales': {
+    obtencao: 'derivada',
+    origem: 'CAR/SICAR menos as exclusões do IDE-Sisema, sobre a malha do IBGE',
+  },
+  'terra-publica-certificada': {
+    obtencao: 'manual',
+    origem: 'INCRA — SIGEF e SNCI Público, pelo Acervo Fundiário',
+    portal: 'https://acervofundiario.incra.gov.br/ (requer conta gov.br)',
+  },
+  'terra-publica-certificada-vales': {
+    obtencao: 'manual',
+    origem: 'INCRA — SIGEF e SNCI Público, pelo Acervo Fundiário',
+    portal: 'https://acervofundiario.incra.gov.br/ (requer conta gov.br)',
+  },
+  assentamentos: {
+    obtencao: 'manual',
+    origem: 'INCRA — Projetos de Assentamento, pelo Acervo Fundiário',
+    portal: 'https://acervofundiario.incra.gov.br/ (requer conta gov.br)',
+  },
+  'assentamentos-vales': {
+    obtencao: 'manual',
+    origem: 'INCRA — Projetos de Assentamento, pelo Acervo Fundiário',
+    portal: 'https://acervofundiario.incra.gov.br/ (requer conta gov.br)',
+  },
+  'territorios-quilombolas': {
+    obtencao: 'manual',
+    origem: 'INCRA — Áreas de Quilombolas, pelo Acervo Fundiário',
+    portal: 'https://acervofundiario.incra.gov.br/ (requer conta gov.br)',
+  },
+  'territorios-quilombolas-vales': {
+    obtencao: 'manual',
+    origem: 'INCRA — Áreas de Quilombolas, pelo Acervo Fundiário',
+    portal: 'https://acervofundiario.incra.gov.br/ (requer conta gov.br)',
+  },
+  'spu-imoveis-uniao': {
+    obtencao: 'manual',
+    origem: 'SPU — cadastro de imóveis da União (só o ponto, nunca o perímetro)',
+  },
+  'spu-imoveis-uniao-vales': {
+    obtencao: 'manual',
+    origem: 'SPU — cadastro de imóveis da União (só o ponto, nunca o perímetro)',
+  },
+  'embargos-ambientais-vales': {
+    obtencao: 'automatica',
+    servico: 'IDE-Sisema (Semad-MG) — áreas embargadas por infração ambiental',
+  },
+  'lotes-vagos-bh': {
+    obtencao: 'automatica',
+    servico: 'Prefeitura de Belo Horizonte — cadastro do IPTU, classe "LOTE VAGO"',
+  },
+  'normas-geolocalizadas': {
+    obtencao: 'derivada',
+    origem:
+      'Acervo normativo das cidades do portal, com o lugar extraído da ementa '
+      + 'e geocodificado pelo Nominatim (nunca do PDF ou do texto completo)',
+  },
+  'checagem-g0': {
+    obtencao: 'propria',
+    origem:
+      'Amostra sorteada e conferida a olho sobre imagem de satélite, para medir '
+      + 'quanto o método erra',
+  },
+  'devolutas-arrecadadas': {
+    obtencao: 'automatica',
+    servico: 'INCRA — base não publicada; a camada existe vazia para registrar a lacuna',
+  },
+  'pesquisa-noticias': {
+    obtencao: 'propria',
+    origem: 'Levantamento em imprensa — ainda não coletado',
+  },
+};
+
+/**
+ * O aviso e a lacuna que o bloco exibe em destaque.
+ *
+ * Não é enfeite: `blocoProveniencia()` renderiza `aviso` no topo e
+ * `lacuna_principal` no rodapé, e a lacuna é a informação que este projeto
+ * mais insiste em não deixar implícita.
+ */
+const AVISO =
+  'Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. '
+  + 'O contorno das áreas derivadas é calculado por subtração de camadas '
+  + 'públicas, não levantado em campo.';
+
+const LACUNA_PRINCIPAL =
+  'Não existe base aberta de terra devoluta reconhecida, nem camada de terras '
+  + 'do Estado de Minas. Por isso o mapa mostra terra SEM CADASTRO, que é outra '
+  + 'coisa: ausência de declaração no CAR não é ausência de dono.';
+
+/** Feições e impressão digital de um arquivo de camada. */
+function medir(arquivo) {
+  const caminho = path.join(DIR_CAMADAS, arquivo);
+  const bruto = readFileSync(caminho);
+  let feicoes = null;
+  try {
+    const fc = JSON.parse(bruto.toString('utf8'));
+    feicoes = Array.isArray(fc.features) ? fc.features.length : null;
+  } catch {
+    // Arquivo ilegível entra no manifesto sem contagem, e não fora dele.
+    feicoes = null;
+  }
+  return {
+    feicoes,
+    bytes: bruto.length,
+    sha256: createHash('sha256').update(bruto).digest('hex'),
+    mtime_utc: statSync(caminho).mtime.toISOString(),
+  };
+}
+
+function gerar() {
+  const arquivos = readdirSync(DIR_CAMADAS).filter((f) => f.endsWith('.geojson')).sort();
+
+  const fontes = arquivos.map((arquivo) => {
+    const id = arquivo.replace(/\.geojson$/, '');
+    const declarada = ORIGENS[id];
+    return {
+      camada: id,
+      ...medir(arquivo),
+      ...(declarada ?? {
+        obtencao: 'nao_declarada',
+        origem: 'origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs',
+      }),
+    };
+  });
+
+  // O manifesto original separa automáticas de manuais, e `blocoProveniencia()`
+  // concatena as duas listas nessa ordem. Mantido: o que é coletado sozinho e
+  // o que dependeu de alguém baixar à mão têm confiabilidade de atualização
+  // diferente, e quem lê tem direito de saber qual é qual.
+  const automaticas = fontes.filter((f) => f.obtencao !== 'manual');
+  const manuais = fontes.filter((f) => f.obtencao === 'manual');
+
+  // A data do manifesto é a da camada MAIS RECENTE, não a de hoje: o selo
+  // "dados de …" da statusbar fala sobre os dados, não sobre quando alguém
+  // rodou este script. Rodar o gerador sem reexportar camada nenhuma não pode
+  // rejuvenescer o acervo.
+  const maisRecente = fontes
+    .map((f) => f.mtime_utc)
+    .sort()
+    .at(-1) ?? new Date().toISOString();
+
+  return {
+    gerado_em_utc: maisRecente,
+    aviso: AVISO,
+    fontes_automaticas: automaticas,
+    fontes_manuais: manuais,
+    lacuna_principal: LACUNA_PRINCIPAL,
+    camadas_sem_origem_declarada: fontes
+      .filter((f) => f.obtencao === 'nao_declarada')
+      .map((f) => f.camada),
+  };
+}
+
+const dados = gerar();
+const texto = `${JSON.stringify(dados, null, 2)}\n`;
+
+if (process.argv.includes('--conferir')) {
+  let atual = null;
+  try {
+    atual = readFileSync(SAIDA, 'utf8');
+  } catch {
+    atual = null;
+  }
+  if (atual !== texto) {
+    console.error('✗ proveniencia.json está desatualizado — rode `node scripts/gerar-proveniencia-globo.mjs`');
+    process.exit(1);
+  }
+  console.log('✓ proveniencia.json em dia');
+} else {
+  writeFileSync(SAIDA, texto, 'utf8');
+  const n = dados.fontes_automaticas.length + dados.fontes_manuais.length;
+  console.log(`✓ ${path.relative(process.cwd(), SAIDA)} — ${n} camadas, dados de ${dados.gerado_em_utc.slice(0, 10)}`);
+  for (const c of dados.camadas_sem_origem_declarada) {
+    console.log(`  ⚠ ${c} — origem não declarada`);
+  }
+}
