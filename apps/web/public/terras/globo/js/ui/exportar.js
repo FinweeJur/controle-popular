@@ -310,10 +310,15 @@ export function paraTexto(entradas, ficticias = [], agora = new Date()) {
       '─'.repeat(68),
       `Área ${i + 1} de ${entradas.length}${p.area_ha != null ? ` — ${descreverArea(p.area_ha)}` : ''}`,
       '',
-      // `textoParaPedido` devolve string VAZIA quando a área não tem
-      // coordenada — não null. `??` deixaria passar o vazio e a área sumiria do
-      // documento sem explicação.
-      textoParaPedido(p, e?.cfg?.label, ehPonto)
+      // `geometry` alimenta o cálculo de ponto quando `p` não traz
+      // `ponto_lat`/`ponto_lon` (ver rotulos.js → coordenadasDaArea). Sem
+      // isto, TODA área das quatro camadas sem ponto da fonte (839 no total)
+      // saía do texto com esta linha de desculpa em vez de coordenada.
+      //
+      // `textoParaPedido` devolve string VAZIA quando não há ponto ALGUM,
+      // nem da fonte nem calculável — não null. `??` deixaria passar o vazio
+      // e a área sumiria do documento sem explicação.
+      textoParaPedido(p, e?.cfg?.label, ehPonto, e?.feature?.geometry)
         || '(esta área não tem ponto de referência calculado)',
       '',
     );

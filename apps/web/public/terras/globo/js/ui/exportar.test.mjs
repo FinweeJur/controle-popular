@@ -36,14 +36,18 @@ import { descreverArea, descreverAreaCurta } from './rotulos.js';
 
 const QUANDO = new Date('2026-08-06T12:00:00Z');
 
-function area(props = {}, cfg = {}, layerId = 'vazio-cadastral-vales') {
+// Geometria padrão: um triângulo simples, só para os testes que precisam de
+// ALGUMA geometria presente sem se importar com a forma exata.
+const GEOMETRIA_PADRAO = { type: 'Polygon', coordinates: [[[-41, -16], [-41, -17], [-42, -17], [-41, -16]]] };
+
+function area(props = {}, cfg = {}, layerId = 'vazio-cadastral-vales', geometry = GEOMETRIA_PADRAO) {
   return {
     layerId,
     cfg: { label: 'Terra sem cadastro', ...cfg },
     idx: 0,
     feature: {
       type: 'Feature',
-      geometry: { type: 'Polygon', coordinates: [[[-41, -16], [-41, -17], [-42, -17], [-41, -16]]] },
+      geometry,
       properties: {
         municipio: 'Diamantina',
         codigo_ibge: '3121605',
@@ -234,10 +238,29 @@ test('o texto para ofício repete o bloco de cada área', () => {
   assert.match(txt, /Ressalvas/);
 });
 
-test('área sem coordenada aparece dizendo isso, em vez de sumir', () => {
-  const txt = paraTexto([area({ ponto_lat: undefined, ponto_lon: undefined })], [], QUANDO);
+test('área sem NENHUM ponto — nem da fonte, nem calculável — aparece dizendo isso, em vez de sumir', () => {
+  // `geometry: null` simula o caso em que nem sequer há contorno para
+  // calcular um ponto a partir dele — só aí a linha de desculpa é o certo.
+  const txt = paraTexto([area({ ponto_lat: undefined, ponto_lon: undefined }, {}, 'vazio-cadastral-vales', null)], [], QUANDO);
 
   assert.match(txt, /não tem ponto de referência/);
+});
+
+test('área sem ponto DA FONTE mas com contorno: o texto traz o ponto calculado, não a desculpa', () => {
+  // O defeito real: 839 áreas (assentamentos, territórios quilombolas, terra
+  // pública certificada, embargos ambientais) chegam sem ponto_lat/lon, mas
+  // TÊM contorno. Antes desta correção, todas saíam do ofício com
+  // "esta área não tem ponto de referência calculado" — falso, porque dava
+  // para calcular a partir do polígono que a própria área já carrega.
+  const quadrado = { type: 'Polygon', coordinates: [[[-42, -18], [-42, -17], [-41, -17], [-41, -18], [-42, -18]]] };
+  const txt = paraTexto(
+    [area({ ponto_lat: undefined, ponto_lon: undefined }, { label: 'Assentamentos' }, 'assentamentos', quadrado)],
+    [], QUANDO,
+  );
+
+  assert.ok(!txt.includes('não tem ponto de referência'), 'devia ter calculado um ponto, não desistido');
+  assert.match(txt, /calculado NESTA TELA/);
+  assert.match(txt, /-17\.5000|-41\.5000/); // o centro do quadrado, aproximado
 });
 
 test('o nome do arquivo diz quantas áreas e de quando', () => {

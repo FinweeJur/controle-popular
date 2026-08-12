@@ -16,7 +16,8 @@
  *
  * Classes CSS esperadas (definidas em ../css/hud.css — NÃO estilizar aqui):
  *   #inspector, .inspector-title, .inspector-sub, .inspector-table,
- *   .inspector-actions, .inspector-close, .inspector-aviso, .btn-2d
+ *   .inspector-actions, .inspector-close, .inspector-aviso, .btn-2d,
+ *   .inspector-exportar, .inspector-exportar-botoes, .inspector-exportar-aviso
  */
 
 import * as THREE from 'three';
@@ -25,6 +26,7 @@ import { centroDe } from '../core/enquadrar.js';
 import { distanciaAoChao, radianosPorPixel } from '../core/arrastar.js';
 import { blocoDeCoordenadas, ligarCopiar, linhasDaFicha, notaDeUso } from './rotulos.js';
 import { injetarProveniencia } from './proveniencia.js';
+import { FORMATOS, exportar } from './exportar.js';
 
 /** Título humano da área clicada: nome próprio, ou camada + município. */
 export function tituloDaArea(cfg, props, idx) {
@@ -177,7 +179,7 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
       <div class="inspector-title">${titulo}</div>
       ${cfg?.hint ? `<p class="inspector-sub">${cfg.hint}</p>` : ''}
       <table class="inspector-table">${linhas}</table>
-      ${blocoDeCoordenadas(props, ehPonto)}
+      ${blocoDeCoordenadas(props, ehPonto, feature.geometry)}
       ${notaDeUso(props)}
       <div class="inspector-actions">
         <button class="btn-focar" type="button">Focar nesta área</button>
@@ -185,13 +187,68 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
           Ver de perto na imagem de satélite
         </a>
       </div>
+      <div class="inspector-exportar">
+        <strong>Baixar esta área</strong>
+        <div class="inspector-exportar-botoes">
+          ${Object.entries(FORMATOS).map(([id, f]) => `
+            <button type="button" data-formato="${id}">${f.rotulo}</button>`).join('')}
+        </div>
+        <p class="inspector-exportar-aviso" hidden></p>
+      </div>
       <div class="inspector-prov"></div>
       ${cfg?.aviso ? `<p class="inspector-aviso">${cfg.aviso}</p>` : ''}`;
     panel.classList.add('visible');
     panel.querySelector('.inspector-close').addEventListener('click', esconder);
     panel.querySelector('.btn-focar').addEventListener('click', () => onFocar?.(feature, layerId, idx));
-    ligarCopiar(panel, props, cfg?.label, ehPonto);
+    ligarCopiar(panel, props, cfg?.label, ehPonto, feature.geometry);
     injetarProveniencia(panel.querySelector('.inspector-prov'));
+    ligarExportar(panel, { layerId, cfg, idx, feature });
+  }
+
+  /**
+   * Liga "Baixar esta área": reaproveita `exportar()` (ui/exportar.js) com
+   * uma lista de UMA entrada — a área da ficha aberta. Antes deste botão, só
+   * o painel de lista exportava, e sempre o conjunto INTEIRO: quem clicou
+   * num polígono e queria só aquela área para um ofício tinha que fechar a
+   * ficha, abrir a lista com milhares de linhas e procurar a área de novo.
+   *
+   * Não reimplementa nenhuma garantia do módulo de exportação — herda todas
+   * ao chamar a mesma função: ressalva por camada, exclusão de camada
+   * FICTÍCIA, lista branca de colunas. O que muda aqui é só o tamanho da
+   * lista de entrada.
+   *
+   * Três botões lado a lado, e não um botão com menu suspenso (como o da
+   * lista): `#inspector` rola como um bloco só (`overflow-y: auto` no
+   * container inteiro — ver hud.css), e um menu `position: absolute` dentro
+   * dele nasce cortado pela própria rolagem, não pela borda da tela. A lista
+   * escapa disso porque o cabeçalho dela fica FORA da área que rola
+   * (`.lista-itens` é que tem overflow, não `#lista`); a ficha não tem essa
+   * separação, e não vale reestruturar o layout inteiro por um menu de três
+   * itens que cabem numa linha.
+   */
+  function ligarExportar(raiz, entrada) {
+    const aviso = raiz.querySelector('.inspector-exportar-aviso');
+
+    // Área de demonstração: desabilita em vez de esconder — sumir com o
+    // controle apaga também a explicação de por que ele não está ali. Hoje
+    // nenhuma camada publicada é `fixture` (ver config.js), mas a defesa
+    // continua de pé para a próxima que precisar de dado de demonstração.
+    const fixture = Boolean(entrada.cfg?.fixture);
+
+    for (const botao of raiz.querySelectorAll('.inspector-exportar-botoes [data-formato]')) {
+      if (fixture) {
+        botao.disabled = true;
+        botao.title = 'Área de demonstração — não é exportável';
+        continue;
+      }
+      botao.addEventListener('click', () => {
+        const r = exportar(botao.dataset.formato, [entrada]);
+        aviso.hidden = false;
+        aviso.textContent = r.ok ? `${r.nome} baixado.` : `Nada a baixar: ${r.motivo}.`;
+        clearTimeout(aviso._t);
+        aviso._t = setTimeout(() => { aviso.hidden = true; }, 8000);
+      });
+    }
   }
 
   function esconder() {

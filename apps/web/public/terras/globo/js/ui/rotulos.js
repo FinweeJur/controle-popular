@@ -9,6 +9,7 @@
  * `veg_nativa_pct`, `proveniencia: limite_municipal − cadastro − exclusoes`.
  * Isso é legível para quem escreveu o pipeline e para mais ninguém.
  */
+import { pontoNaSuperficie } from './pontosuperficie.js';
 
 /** Nome de cada propriedade, em português. */
 export const ROTULOS = {
@@ -379,24 +380,55 @@ export function paraGMS(valor, eixo) {
   return `${grau}°${String(minuto).padStart(2, '0')}'${segundo.padStart(4, '0')}"${hemisferio}`;
 }
 
-/** Coordenadas de uma área, ou null se ela não as tiver. */
-export function coordenadasDaArea(props) {
-  const lat = Number(props?.ponto_lat);
-  const lon = Number(props?.ponto_lon);
-  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
-  const e = Number(props.utm_e);
-  const n = Number(props.utm_n);
+/**
+ * Coordenadas de uma área, ou null se não há como obter nenhuma.
+ *
+ * 839 áreas em quatro camadas (assentamentos, territórios quilombolas, terra
+ * pública certificada, embargos ambientais — e as irmãs `-vales` de cada
+ * uma) chegam sem `ponto_lat`/`ponto_lon`: o pipeline que gera essas
+ * camadas calcula o polígono, não um ponto de referência. Antes, isso fazia
+ * esta função devolver `null` para as 839 — e a ficha perdia os dois botões
+ * de copiar, calada, sem dizer por quê. Agora, faltando o dado da fonte e
+ * havendo `geometry`, o ponto é calculado no cliente a partir do próprio
+ * contorno (ver ./pontosuperficie.js) — com uma garantia que um centroide
+ * não teria: cai SEMPRE dentro da área, mesmo nas que são corredores finos
+ * e sinuosos, onde um centroide ingênuo cairia fora.
+ *
+ * @param {object} props properties da feição
+ * @param {object} [geometry] geometry da feição — só é OLHADA quando `props`
+ *   não traz ponto; quando traz, o cálculo nem roda.
+ */
+export function coordenadasDaArea(props, geometry) {
+  let lat = Number(props?.ponto_lat);
+  let lon = Number(props?.ponto_lon);
+  let calculado = false;
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
+    const calc = geometry ? pontoNaSuperficie(geometry) : null;
+    if (!calc) return null;
+    ({ lat, lon } = calc);
+    calculado = true;
+  }
+  const e = Number(props?.utm_e);
+  const n = Number(props?.utm_n);
   return {
     decimal: `${lat.toFixed(6).replace('.', ',')}, ${lon.toFixed(6).replace('.', ',')}`,
     // Ponto e vírgula não: em documento brasileiro a vírgula já é decimal.
     gms: `${paraGMS(lat, 'lat')} ${paraGMS(lon, 'lon')}`,
-    utm: Number.isFinite(e) && Number.isFinite(n)
+    // UTM só quando o ponto É o da fonte: um `utm_e`/`utm_n` publicado descreve
+    // O PONTO PUBLICADO, não o que foi calculado aqui — misturar os dois seria
+    // um par de coordenadas que não se referem à mesma coisa. (Na prática as
+    // camadas sem ponto também não têm UTM, mas a checagem fica por garantia.)
+    utm: !calculado && Number.isFinite(e) && Number.isFinite(n)
       ? `${formatarNumero(e, 0)} m E, ${formatarNumero(n, 0)} m N`
       : null,
     // O que vai para a área de transferência: o par cru, sem rótulo e com
     // ponto decimal. É o que Google Maps, QGIS e caixa de busca aceitam colados
     // — vírgula decimal quebra os três.
     paraColar: `${lat.toFixed(6)}, ${lon.toFixed(6)}`,
+    // Quem lê tem direito de saber que este ponto não veio da fonte junto com
+    // o resto do dado — veio do contorno, calculado agora nesta tela. Ver uso
+    // em blocoDeCoordenadas() e textoParaPedido().
+    calculado,
   };
 }
 
@@ -408,9 +440,14 @@ export function coordenadasDaArea(props) {
  * ofício, sozinho, vira uma afirmação sobre a terra que este projeto não faz —
  * e quem recebe o ofício não tem como saber que o contorno é calculado, não
  * levantado, nem que ausência de cadastro não é ausência de dono.
+ *
+ * Quando `props` não traz ponto (ver coordenadasDaArea), `geometry` permite
+ * calculá-lo a partir do contorno — e o texto PRECISA dizer que fez isso: é
+ * a mesma frase que seria falsa se um ponto calculado saísse daqui rotulado
+ * como se tivesse vindo da fonte junto com o resto do dado.
  */
-export function textoParaPedido(props, rotuloCamada, ehPonto = false) {
-  const c = coordenadasDaArea(props);
+export function textoParaPedido(props, rotuloCamada, ehPonto = false, geometry) {
+  const c = coordenadasDaArea(props, geometry);
   if (!c) return '';
   const [ini, fim] = ANOS_COBERTURA;
   // O cabeçalho sai da CAMADA, não fixo. Estava escrito "Área sem cadastro no
@@ -423,8 +460,14 @@ export function textoParaPedido(props, rotuloCamada, ehPonto = false) {
     `${titulo}${props.municipio ? ` — ${props.municipio}/MG` : ''}` +
       `${props.codigo_ibge ? ` (IBGE ${props.codigo_ibge})` : ''}`,
     '',
-    ehPonto ? 'Coordenada do imóvel (a fonte publica o ponto, não o perímetro):'
-            : 'Ponto de referência dentro da área:',
+    // O rótulo do bloco muda quando o ponto é calculado: dizer "ponto de
+    // referência dentro da área" sem mais nada deixaria a pessoa achar que
+    // este é o mesmo tipo de dado que o resto da ficha — publicado pela
+    // fonte. Não é.
+    c.calculado
+      ? 'Ponto calculado NESTA TELA a partir do contorno da área (a fonte não publica coordenada):'
+      : (ehPonto ? 'Coordenada do imóvel (a fonte publica o ponto, não o perímetro):'
+                 : 'Ponto de referência dentro da área:'),
     `  ${c.paraColar}   (grau decimal, SIRGAS 2000 / EPSG:4326)`,
     `  ${c.gms}`,
   ];
@@ -473,6 +516,16 @@ export function textoParaPedido(props, rotuloCamada, ehPonto = false) {
       '  - O dado é do cadastro da fonte e pode estar desatualizado ou impreciso.',
     );
   }
+  // Ressalva do ponto calculado, e não da camada: some independente de qual
+  // dos dois ramos rodou acima, porque a origem do PONTO é uma pergunta
+  // diferente da origem do CONTORNO.
+  if (c.calculado) {
+    linhas.push(
+      '  - O ponto de coordenada acima NÃO veio da fonte: foi calculado nesta',
+      '    tela a partir do contorno publicado, porque a fonte não traz um',
+      '    ponto de referência para esta área. Continua dentro da área.',
+    );
+  }
   linhas.push('  - Quem confirma a situação da terra é o INCRA, a SPU ou a Justiça.');
   return linhas.join('\n');
 }
@@ -481,20 +534,40 @@ export function textoParaPedido(props, rotuloCamada, ehPonto = false) {
  * Bloco de coordenadas com os botões de copiar.
  * Classe `ficha-coord` — definida em ../css/hud.css e em /static/detalhe.html.
  * Quem liga os botões é `ligarCopiar()`, chamado depois de inserir o HTML.
+ *
+ * @param {object} props
+ * @param {boolean} [ehPonto]
+ * @param {object} [geometry] geometry da feição — alimenta o cálculo do
+ *   ponto quando `props` não traz `ponto_lat`/`ponto_lon` (ver
+ *   coordenadasDaArea). Sem isto, 839 áreas em quatro camadas apareciam com
+ *   a ficha inteira MENOS este bloco — sem "Copiar coordenada", sem "Copiar
+ *   para ofício ou LAI", e sem explicação nenhuma na tela do porquê.
  */
-export function blocoDeCoordenadas(props, ehPonto = false) {
-  const c = coordenadasDaArea(props);
+export function blocoDeCoordenadas(props, ehPonto = false, geometry) {
+  const c = coordenadasDaArea(props, geometry);
   if (!c) return '';
-  // "O ponto fica dentro da área" é verdade para polígono e mentira para a
-  // camada de pontos, onde não existe área nenhuma desenhada. A nota segue o
-  // que a feição é.
+  // Três leituras possíveis, e a diferença entre elas importa para quem vai
+  // usar a coordenada num ofício:
+  //   1. camada de PONTO: a fonte publica onde o imóvel fica, não o contorno;
+  //   2. polígono com ponto DA FONTE: o ponto veio junto com o resto do dado;
+  //   3. polígono SEM ponto: calculado agora, aqui, a partir do contorno —
+  //      é a distinção que este bloco existe para não apagar (ver
+  //      coordenadasDaArea). O selo "ponto calculado" no título cumpre o
+  //      mesmo papel do selo FICTÍCIO da camada de demonstração: quem só
+  //      bate o olho já vê que aquela linha é diferente das outras.
   const nota = ehPonto
     ? `Esta camada publica a <strong>localização</strong> do imóvel, não o contorno dele.
        A coordenada marca onde ele fica; não delimita a área.`
+    : c.calculado
+    ? `Esta camada não publica um ponto para esta área — só o contorno. O ponto abaixo foi
+       <strong>calculado agora, nesta tela</strong>, a partir do polígono: cai garantidamente
+       <strong>dentro</strong> da área, inclusive nas que são corredores finos e sinuosos, onde o
+       centro geométrico simples cairia fora dela. Não é dado da fonte — é derivado.`
     : `O ponto fica <strong>dentro</strong> da área e serve para localizá-la — não é marco
        de divisa. O contorno é calculado a partir de camadas públicas, não levantado em campo.`;
   return `<div class="ficha-coord">
-    <strong>${ehPonto ? 'Onde fica este imóvel' : 'Onde fica esta área'}</strong>
+    <strong>${ehPonto ? 'Onde fica este imóvel' : 'Onde fica esta área'}</strong>${
+      c.calculado ? ' <span class="ficha-coord-calc" title="Este ponto não está na fonte: foi calculado aqui a partir do contorno.">ponto calculado</span>' : ''}
     <dl>
       <dt>Grau decimal</dt><dd>${c.decimal}</dd>
       <dt>Grau, minuto, segundo</dt><dd>${c.gms}</dd>
@@ -515,14 +588,18 @@ export function blocoDeCoordenadas(props, ehPonto = false) {
  * app for servido por http numa rede local — que é como se testa em outra
  * máquina — ele simplesmente não está lá, e um botão que não faz nada e não
  * avisa é pior que botão nenhum. Daí o caminho alternativo com `execCommand`.
+ *
+ * `geometry` segue o mesmo motivo de blocoDeCoordenadas(): sem ela, esta
+ * função também devolvia cedo — sem ponto da fonte, achava que não havia
+ * nada para copiar, e os dois botões ficavam no HTML sem fazer nada.
  */
-export function ligarCopiar(raiz, props, rotuloCamada, ehPonto = false) {
-  const c = coordenadasDaArea(props);
+export function ligarCopiar(raiz, props, rotuloCamada, ehPonto = false, geometry) {
+  const c = coordenadasDaArea(props, geometry);
   if (!c) return;
   for (const botao of raiz.querySelectorAll('[data-copiar]')) {
     botao.addEventListener('click', async () => {
       const texto = botao.dataset.copiar === 'pedido'
-        ? textoParaPedido(props, rotuloCamada, ehPonto)
+        ? textoParaPedido(props, rotuloCamada, ehPonto, geometry)
         : c.paraColar;
       const original = botao.textContent;
       const ok = await copiar(texto);
