@@ -48,6 +48,9 @@
  *   panel.isEnabled(id);          // estado atual da camada
  *   panel.setFeatureCount(id, n); // contador por camada
  *   panel.setStatus(id, { on, count, error });  // estado completo pós-carga
+ *
+ *   agruparPorRegiao(registry, regioes);  // exportada à parte, testada em
+ *                                         // layerspanel.test.mjs sem montar DOM
  */
 
 // Converte cor numérica (0x38bdf8) para string CSS "#38bdf8"
@@ -65,19 +68,29 @@ function colorToCss(color) {
  * erro de digitação) cai no 'geral' também, e AVISA no console — perder uma
  * camada da tela por um id que não bate é o tipo de bug que só aparece
  * quando alguém procura a camada e não acha, e ninguém procura tanto assim.
+ *
+ * NENHUMA camada é descartada, mesmo se 'geral' também não existir mais em
+ * `regioes` (alguém removeu a entrada de REGIOES_CAMADAS): antes disto, esse
+ * caso fazia `geral?.camadas.push(layer)` virar um no-op silencioso ao mesmo
+ * tempo em que o `console.warn` acima afirmava "caiu em geral" — aviso
+ * mentindo é pior que aviso nenhum. Se não há grupo 'geral' para receber a
+ * camada, um é criado na hora.
  */
-function agruparPorRegiao(registry, regioes) {
+export function agruparPorRegiao(registry, regioes) {
   const porId = new Map(regioes.map((r) => [r.id, { ...r, camadas: [] }]));
-  const geral = porId.get('geral');
   for (const layer of registry) {
     const idRegiao = layer.regiao ?? 'geral';
-    const grupo = porId.get(idRegiao);
-    if (grupo) {
-      grupo.camadas.push(layer);
-    } else {
+    let grupo = porId.get(idRegiao);
+    if (!grupo && idRegiao !== 'geral') {
       console.warn(`[layerspanel] camada "${layer.id}" tem regiao "${idRegiao}", que não existe em REGIOES_CAMADAS — caiu em "geral".`);
-      geral?.camadas.push(layer);
+      grupo = porId.get('geral');
     }
+    if (!grupo) {
+      console.warn(`[layerspanel] REGIOES_CAMADAS não tem grupo "geral" — criando um só para não descartar a camada "${layer.id}".`);
+      grupo = { id: 'geral', titulo: 'Geral', camadas: [] };
+      porId.set('geral', grupo);
+    }
+    grupo.camadas.push(layer);
   }
   return [...porId.values()].filter((g) => g.camadas.length > 0);
 }

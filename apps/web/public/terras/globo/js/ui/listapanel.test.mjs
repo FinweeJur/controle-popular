@@ -24,7 +24,11 @@
  *   5. a largura da janela cresce com o viewport e com o buffer, na conta
  *      exata — é o que decide quantos nós vira DOM por quadro;
  *   6. lista menor que uma janela inteira devolve a lista inteira (a
- *      virtualização não deve inventar um recorte onde não precisa de um).
+ *      virtualização não deve inventar um recorte onde não precisa de um);
+ *   7. `scrollTop` grande demais para o `total` ATUAL (uma camada grande foi
+ *      desligada com a lista rolada até o fim dela) não inverte a janela —
+ *      `inicio` nunca passa de `fim`, e a janela mostra a cauda do que
+ *      sobrou em vez de nada.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -89,4 +93,17 @@ test('lista menor que uma janela inteira devolve a lista inteira, sem recorte ar
 test('viewport ou scrollTop negativos (não deveriam acontecer, mas não podem travar) não geram janela invertida', () => {
   const { inicio, fim } = calcularJanela(1000, 0, -50, 48, 8);
   assert.ok(inicio <= fim, 'inicio nunca pode passar de fim, mesmo com entrada anômala');
+});
+
+test('scrollTop estourando o total (não o viewport) não apaga a lista', () => {
+  // Cenário real: lista rolada até o fim com `lotes-vagos-bh` (8.525 áreas)
+  // ligada, depois a camada é desligada e sobram só 35 áreas de outra camada
+  // — `entradas.length` cai na hora, `itens.scrollTop` só cai quando o
+  // navegador rola de novo. Sem o clamp, isto devolvia { inicio: 8539, fim: 35
+  // }, e `entradas.slice(8539, 35)` é `[]`: lista em branco com o título
+  // dizendo "35 áreas encontradas".
+  const { inicio, fim } = calcularJanela(35, 410296, 584, 48, 8);
+  assert.ok(inicio <= fim, 'inicio nunca pode passar de fim, mesmo com scrollTop de uma lista maior');
+  assert.equal(fim, 35, 'a janela cobre até o fim do total atual');
+  assert.ok(fim - inicio > 0, 'a janela tem de mostrar alguma linha, não ficar vazia com dado disponível');
 });

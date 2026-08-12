@@ -105,12 +105,23 @@ export const ABERTURA = { id: 'abertura', label: 'Minas Gerais', boundary: 'mg' 
 // identificando O QUE a camada é (ver css/tokens/colors.css), o grupo
 // identifica ONDE.
 //
-// 'geral' primeiro: é onde caem a moldura do mapa (divisas) e os satélites —
-// contexto que a pessoa vê antes de entrar em qualquer região — e também as
-// camadas de dado que não pertencem a nenhuma das duas regiões nomeadas
-// (lotes vagos de BH, devolutas, notícias, normas geolocalizadas). 'bacia'
-// depois porque é a região em que o globo abre por padrão (ABERTURA acima);
-// 'vales' por último, a região que se liga por escolha.
+// 'bacia' primeiro: é a região em que o globo abre por padrão (ABERTURA
+// acima) e a única camada de DADO ligada de saída é dela —
+// `vazio-cadastral-bacia`, as manchas roxas que o cartão de abertura manda
+// procurar ("As manchas roxas são terra sem cadastro rural"). Uma versão
+// anterior deste arquivo pôs 'geral' primeiro, o que empurrava essa camada
+// para `offsetTop: 1037px` num painel de `clientHeight: 743px` — abaixo da
+// dobra, sem rolar não dava pra ver. Medido de novo agora, já com esta ordem
+// (`layers-panel.querySelector('[data-layer-id="vazio-cadastral-bacia"]')
+// .offsetTop`, num navegador real via `node` servindo `apps/web/public`
+// estático): `offsetTop: 68px` num painel de `clientHeight: 743px` no
+// desktop, `offsetTop: 64px` num painel de `clientHeight: 501px` no celular
+// (375×812) — visível sem rolar nos dois. 'vales' depois, a segunda região de
+// estudo, ligada por escolha. 'geral' por ÚLTIMO: `municipios-mg` (a moldura)
+// e os satélites já nascem ligados por padrão — ninguém precisa rolar até
+// aqui para encontrá-los — e o resto do grupo (lotes vagos de BH, devolutas,
+// notícias, normas geolocalizadas) se procura por nome, não por posição no
+// topo da lista.
 //
 // ⟲ POR QUE CAMPO NOVO, E NÃO DERIVAR DO SUFIXO DO ID. O sufixo `-vales` é
 // convenção do PIPELINE (pipeline/regioes.py escreve os arquivos assim), não
@@ -126,9 +137,9 @@ export const ABERTURA = { id: 'abertura', label: 'Minas Gerais', boundary: 'mg' 
 // avisar, e é a mesma camada de decisão que `listavel`/`fixture` já usam.
 // ---------------------------------------------------------------------------
 export const REGIOES_CAMADAS = [
-  { id: 'geral', titulo: 'Geral' },
   { id: 'bacia', titulo: 'Bacia do Paraopeba' },
   { id: 'vales', titulo: 'Vales do Mucuri e Jequitinhonha' },
+  { id: 'geral', titulo: 'Geral' },
 ];
 
 export const LAYER_REGISTRY = [

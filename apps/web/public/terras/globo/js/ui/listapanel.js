@@ -29,9 +29,14 @@
  * (`entradas.map(linhaHtml).join('')` de uma vez) viram 51.150 nós
  * (`<button>` + cinco `<span>` cada), e a CONSTRUÇÃO DA STRING sozinha — antes
  * de qualquer parse de HTML, layout ou paint do navegador de verdade — já
- * leva ~0,9 s. A mesma reconstrução para a janela de abertura (30 linhas,
- * viewport de 640 px) leva ~4–9 ms: 284× menos nós, na casa de 100–200× menos
- * tempo de JS síncrono — e o navegador ainda soma por cima o parse/layout/
+ * leva na ordem de 800 ms a 1 s (5 execuções de `node scripts/medir-lista.mjs`
+ * medidas agora, 15 processos frios no total: medianas por execução entre
+ * 814 e 869 ms, mínimo bruto 774 ms, máximo bruto 986 ms — a variação é
+ * normal de processo frio, não ruído a esconder; rode você mesmo pra ver a
+ * faixa na sua máquina). A mesma
+ * reconstrução para a janela de abertura (30 linhas, viewport de 640 px)
+ * leva 3,6–8,1 ms: 284× menos nós, na casa de 90–280× menos tempo de JS
+ * síncrono — e o navegador ainda soma por cima o parse/layout/
  * paint de verdade, que só piora a proporção a favor da janela (confirmado à
  * mão num navegador real: abrir a lista com `lotes-vagos-bh` ligada, hoje,
  * roda o clique síncrono de `abrir()` em ~11 ms, coerente com a medição fria
@@ -48,30 +53,31 @@
  *
  * A tentação óbvia é dar `position: absolute; top: i × altura` a cada linha,
  * com `altura` medida uma vez. Não dá: `.lista-item-sub` (o resumo — formato,
- * largura, % de mata, titularidade) tem comprimento VARIÁVEL, e medido contra
- * as 11.758 áreas listáveis reais (todas as camadas `listavel`, script à
- * parte, não estimativa): 93,1% quebra em 1 linha, 1,4% em 2, 5,5% em 3 — a
- * família `vazio-cadastral*` é quem carrega quase toda a variação, porque
- * junta cinco campos (formato + largura + % mata + % uso + titularidade) e o
- * texto do formato ("corredor fino e comprido, não uma mancha") já é
- * comprido sozinho. Uma altura ÚNICA para todas as linhas ou trunca esse
- * resumo com reticências (perde justamente o campo — titularidade — que o
- * comentário de `resumoDaArea` faz questão de nunca omitir), ou reserva a
- * altura do PIOR caso pra toda linha, e 93% da lista passa a mostrar um vão
- * em branco embaixo de uma frase só.
+ * largura, % de mata, titularidade) tem comprimento VARIÁVEL — de VAZIO
+ * (72,5% da lista é `lotes-vagos-bh`, cujo `resumoDaArea()` não tem campo
+ * nenhum pra mostrar) a 3 linhas (a família `vazio-cadastral*`, que junta
+ * cinco campos e cujo texto de formato, "corredor fino e comprido, não uma
+ * mancha", já é comprido sozinho). Uma altura ÚNICA para todas as linhas ou
+ * trunca esse resumo com reticências (perde justamente o campo —
+ * titularidade — que o comentário de `resumoDaArea` faz questão de nunca
+ * omitir), ou reserva a altura do PIOR caso pra toda linha, e a maioria da
+ * lista passa a mostrar um vão em branco embaixo de uma linha vazia.
  *
  * A saída: `.lista-itens-janela` é UM wrapper, posicionado por uma ESTIMATIVA
- * de passo médio (`PASSO_ESTIMADO`, a média ponderada da medição acima:
- * ~48 px) só para decidir ONDE na rolagem ele fica e QUANTO a barra de
- * rolagem mede (`.lista-itens-espaco`). As linhas DENTRO dele ficam em fluxo
- * normal (flex-column, `gap`), cada uma com a altura real do seu próprio
- * conteúdo — sem truncar nada e sem vão nenhum. O preço é a barra de rolagem
+ * de passo médio (`PASSO_ESTIMADO`) só para decidir ONDE na rolagem ele fica
+ * e QUANTO a barra de rolagem mede (`.lista-itens-espaco`). As linhas DENTRO
+ * dele ficam em fluxo normal (flex-column, `gap`), cada uma com a altura real
+ * do seu próprio conteúdo — sem truncar nada. O preço é a barra de rolagem
  * ser uma aproximação (a posição de "50% rolado" pode não bater exatamente
  * com o meio verdadeiro do array, se muita área de `vazio-cadastral` se
  * amontoar de um lado) — troca aceita: é o mesmo tipo de aproximação que
  * qualquer lista virtualizada de altura variável faz, e o BUFFER_LINHAS de
  * cada lado (linhas a mais renderizadas além do que a estimativa acha
- * necessário) absorve a folga normal de uma tela de rolagem.
+ * necessário) absorve a folga normal de uma tela de rolagem. Ver o
+ * comentário de `PASSO_ESTIMADO`, logo abaixo, para a medição real por trás
+ * do número — e para o vão visual que uma estimativa mal calibrada deixava
+ * no fim da tela, mesmo sem truncar nada (todo item continuava alcançável
+ * rolando mais).
  *
  * Ver `calcularJanela()`, pura e testada à parte de DOM em
  * `listapanel.test.mjs`.
@@ -102,12 +108,8 @@
  *   lista.abrir() / .fechar() / .alternar()
  */
 
-import { descreverAreaCurta, formatarValor } from './rotulos.js';
+import { descreverAreaCurta, formatarValor, escapar } from './rotulos.js';
 import { FORMATOS, exportar, separarExportaveis } from './exportar.js';
-
-function escapar(s) {
-  return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
 
 /**
  * Forma curta da titularidade, para caber numa linha de lista.
@@ -144,25 +146,83 @@ function resumoDaArea(props) {
 /**
  * Passo médio estimado (px) — usado só pra decidir ONDE a janela fica na
  * rolagem e QUANTO a barra de rolagem mede, nunca pra desenhar uma linha.
- * Média ponderada da medição real contra as 11.758 áreas listáveis de hoje
- * (todas as camadas `listavel`, todos os campos que `resumoDaArea` produz):
- * 93,1% das linhas com 1 linha de resumo (~46 px de altura total), 1,4% com
- * 2 (~60 px), 5,5% com 3 (~74 px) → 0,931×46 + 0,014×60 + 0,055×74 ≈ 48.
+ *
+ * Medido AGORA no app de verdade, num navegador real (não estimado): as
+ * 11.758 áreas listáveis de hoje, TODAS as camadas `listavel` ligadas ao
+ * mesmo tempo (o pior caso realista de mistura de camadas), lista aberta, o
+ * passo de topo a topo entre `.lista-item` consecutivos amostrado em 40
+ * pontos ao longo de toda a rolagem (1.120 pares medidos via
+ * `item[k+1].offsetTop - item[k].offsetTop`). Só três valores aparecem:
+ *   - 34 px em 92,8% dos pares — inclui `lotes-vagos-bh` (72,5% da lista
+ *     sozinha), cujo `resumoDaArea()` não tem campo nenhum pra mostrar:
+ *     `.lista-item-sub` fica VAZIA, e uma `.lista-item-sub` vazia mede o
+ *     MESMO que uma de uma linha com texto — é o `line-height` do elemento,
+ *     não o conteúdo, que decide a altura de uma linha só;
+ *   - 62 px em 1,6% — resumo em 2 linhas;
+ *   - 76 px em 5,6% — resumo em 3 linhas (a família `vazio-cadastral*`, que
+ *     junta cinco campos).
+ * Média ponderada: 0,928×34 + 0,016×62 + 0,056×76 ≈ 37.
+ *
+ * ⟲ Uma versão anterior usava 48, de uma medição que não separava "resumo
+ * vazio" de "resumo em 1 linha de texto" — as duas medem 34 px na prática,
+ * mas a conta antiga usava ~46 px pra essa fatia (93% da lista) sem citar
+ * como chegou nesse número. Superestimar o passo em ~30% não trunca nada
+ * (as linhas dentro da janela continuam com a altura real do seu próprio
+ * conteúdo, sem teto) — mas desloca `inicio`/`fim` pra pontos que não batem
+ * com onde a rolagem de verdade está, e como a bucket mais curta é 72,5% da
+ * lista, o erro não é ruído pequeno: é viés sistemático que se acumula
+ * conforme se rola. Era isso que deixava um vão em branco visível no fim da
+ * lista com a estimativa de 48 — não truncamento (todo item continuava
+ * alcançável rolando mais), mas um limite visual silencioso.
+ *
  * Errar aqui só desloca ONDE a janela cai (corrigido a cada quadro de
  * rolagem, ver `renderJanela`) — nunca corta conteúdo, porque as linhas
  * dentro da janela ficam em fluxo normal, cada uma com sua altura real.
+ *
+ * Conferido de novo, no mesmo app e mesma lista de 11.758 áreas, com 37: o
+ * vão que aparecia em `scrollTop` 5.000, 5.024, 100.000, 100.037 e 250.000
+ * (todos os pontos medidos no relatório que achou o problema) some — 0 px
+ * nesses cinco pontos, em viewport de 584 px e de 1.179 px. Sobra um resíduo
+ * pequeno só nos ÚLTIMOS px de rolagem (98 px em 584 px de viewport, 146 px
+ * em 1.179 px — contra 296 px antes do ajuste): é a mesma aproximação que
+ * QUALQUER lista virtualizada por estimativa carrega no fim da barra de
+ * rolagem (a `.lista-itens-espaco` soma 11.758 × 37 px, e a soma real das
+ * alturas de verdade não bate igual até o último pixel) — não é o vão
+ * sistemático que crescia com a rolagem, e some assim que sobra mais de uma
+ * tela de itens abaixo do ponto rolado.
  */
-const PASSO_ESTIMADO = 48;
+const PASSO_ESTIMADO = 37;
 /** Linhas extras renderizadas acima e abaixo do que a estimativa acha
  *  necessário — absorve tanto a folga normal de rolagem rápida quanto o
  *  desvio entre PASSO_ESTIMADO e a altura real de um trecho concentrado de
- *  linhas de 2–3 linhas de resumo (a família `vazio-cadastral*`). */
+ *  linhas de 2–3 linhas de resumo (a família `vazio-cadastral*`). Mantido em
+ *  8 depois de recalibrar `PASSO_ESTIMADO`: o erro sistemático que exigia um
+ *  buffer maior morreu na calibração, não no buffer — ver o comentário de
+ *  `PASSO_ESTIMADO` acima. */
 const BUFFER_LINHAS = 8;
 
 /**
  * Calcula QUAIS índices de `entradas` devem virar DOM, dado o quanto já se
  * rolou. Pura — sem tocar em `document` — para poder testar a matemática da
  * virtualização sem montar navegador nenhum (ver listapanel.test.mjs).
+ *
+ * `scrollTop` pode estar defasado de `total`: quem muda `entradas.length` é
+ * `atualizar()`, a cada toggle de camada; quem muda `itens.scrollTop` é só o
+ * navegador, e só quando a pessoa rola de novo. Desligar uma camada grande
+ * (ex.: `lotes-vagos-bh`, 8.525 áreas) com a lista rolada até o fim entrega
+ * aqui um `scrollTop` grande demais para o `total` novo, bem menor — hoje
+ * isso não aparece na tela porque `renderJanela` lê `itens.clientHeight`
+ * ANTES de `itens.scrollTop`, e essa leitura força um reflow que o navegador
+ * aproveita para reclampar o `scrollTop` sozinho (ver o comentário de
+ * `renderJanela`). Mas essa proteção é sorte de ORDEM DE CHAMADA no
+ * navegador, não uma garantia desta função — e `calcularJanela` é chamada
+ * direto nos testes, sem navegador nenhum por trás. Sem o clamp abaixo,
+ * `calcularJanela(35, 410296, 584, 48, 8)` devolvia `{ inicio: 8539, fim: 35
+ * }`: `entradas.slice(8539, 35)` é `[]` — lista em branco com o título
+ * dizendo "35 áreas encontradas". Clampar `inicio` a nunca passar de
+ * `total - linhasNaTela` resolve na origem, e ainda cai bem: em vez de nada,
+ * mostra a CAUDA da lista — o mesmo que uma barra de rolagem de verdade faz
+ * quando o conteúdo encolhe com ela rolada até o fim.
  *
  * @param {number} total          entradas.length
  * @param {number} scrollTop      itens.scrollTop
@@ -173,8 +233,10 @@ const BUFFER_LINHAS = 8;
  */
 export function calcularJanela(total, scrollTop, alturaViewport, passo, buffer = BUFFER_LINHAS) {
   if (total <= 0 || !(passo > 0)) return { inicio: 0, fim: 0 };
-  const inicio = Math.max(0, Math.floor(scrollTop / passo) - buffer);
   const linhasNaTela = Math.ceil(Math.max(0, alturaViewport) / passo) + buffer * 2;
+  const inicioPedido = Math.max(0, Math.floor(Math.max(0, scrollTop) / passo) - buffer);
+  const inicioMax = Math.max(0, total - linhasNaTela);
+  const inicio = Math.min(inicioPedido, inicioMax);
   const fim = Math.min(total, inicio + linhasNaTela);
   return { inicio, fim };
 }

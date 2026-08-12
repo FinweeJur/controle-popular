@@ -33,9 +33,14 @@
  *
  * `linhaHtml`/`resumoDaArea`/`TITULARIDADE_CURTA` são copiados aqui verbatim
  * de listapanel.js (não são exportados de lá — são detalhe interno do
- * módulo). `calcularJanela`, `descreverAreaCurta` e `formatarValor` são
- * IMPORTADOS de verdade: são o contrato público que este script verifica,
- * não uma cópia que pode divergir do código real sem ninguém notar.
+ * módulo). `calcularJanela`, `descreverAreaCurta`, `formatarValor` e
+ * `escapar` são IMPORTADOS de verdade: são o contrato público que este
+ * script verifica, não uma cópia que pode divergir do código real sem
+ * ninguém notar. `escapar` em especial NÃO é copiado aqui à mão — é o mesmo
+ * ponto único de `js/ui/rotulos.js` que a convenção do projeto manda usar em
+ * todo dado que entra em innerHTML; uma cópia local já divergiu dele uma vez
+ * (não escapava aspas) sem que o cabeçalho antigo, que prometia "cópia
+ * verbatim", dissesse a verdade.
  */
 import { readFileSync } from 'node:fs';
 import { performance } from 'node:perf_hooks';
@@ -46,12 +51,8 @@ import { dirname, join } from 'node:path';
 const AQUI = dirname(fileURLToPath(import.meta.url));
 const GLOBO = join(AQUI, '..');
 
-const { descreverAreaCurta, formatarValor } = await import(`file://${join(GLOBO, 'js/ui/rotulos.js')}`);
+const { descreverAreaCurta, formatarValor, escapar } = await import(`file://${join(GLOBO, 'js/ui/rotulos.js')}`);
 const { calcularJanela } = await import(`file://${join(GLOBO, 'js/ui/listapanel.js')}`);
-
-function escapar(s) {
-  return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
 
 // Cópia verbatim de listapanel.js — ver o aviso no cabeçalho deste arquivo.
 const TITULARIDADE_CURTA = {
@@ -118,8 +119,8 @@ function rodarUmaMedicao(modo) {
   // real paga no toggle (já rodou antes, no footer/status bar) — sem isto a
   // medição de "depois" (só ~30 linhas) fica dominada pelo custo fixo de
   // carregar o ICU, não pelo trabalho de fato proporcional ao tamanho da
-  // janela. Ver aviso equivalente no cabeçalho de listapanel.test.mjs? não —
-  // lá é aritmética pura, sem Intl; o aviso mora só aqui.
+  // janela. `listapanel.test.mjs` não precisa do mesmo aviso: testa
+  // `calcularJanela`, que é aritmética pura, sem Intl no caminho.
   linhaHtml({ layerId: 'x', cfg: entradas[0].cfg, idx: 0, feature: { properties: { area_ha: 1 } } }, 0);
 
   let fatia, offset;
