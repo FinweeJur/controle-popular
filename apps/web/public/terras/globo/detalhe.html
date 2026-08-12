@@ -63,6 +63,12 @@
     .ficha-coord { margin-top: var(--space-2); padding-top: var(--space-2);
       border-top: var(--border-hair); font-size: 10px; line-height: 1.5; }
     .ficha-coord > strong { color: var(--text-1); }
+    /* Selo do ponto CALCULADO — mesma regra de globe/css/hud.css
+       (#inspector .ficha-coord-calc), repetida aqui pelo mesmo motivo do
+       resto deste bloco: esta tela desenha a mesma ficha, fora do #inspector. */
+    .ficha-coord-calc { margin-left: 4px; padding: 1px 5px; border-radius: var(--radius-sm);
+      font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+      color: var(--color-surface-2); background: var(--caution); white-space: nowrap; }
     .ficha-coord dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 6px 0 0; }
     .ficha-coord dt { color: var(--text-3); white-space: nowrap; }
     .ficha-coord dd { margin: 0; color: var(--text-2); user-select: all;
@@ -225,8 +231,13 @@
         // lado, é onde ela mais importa.
         const extras = document.getElementById('nota-uso');
         const ehPonto = f.geometry?.type === 'Point' || f.geometry?.type === 'MultiPoint';
-        extras.innerHTML = blocoDeCoordenadas(props, ehPonto) + notaDeUso(props);
-        ligarCopiar(extras, props, cfg?.label, ehPonto);
+        // Mesma porta de globe/js/ui/inspector.js: camada sem `listavel` (ex.
+        // municipios-mg, divisa do IBGE) não ganha "Copiar para ofício ou
+        // LAI" — esta tela desenha a MESMA ficha, e o texto de ofício ("quem
+        // confirma é o INCRA, a SPU ou a Justiça") seria falso ali.
+        const podeExportar = Boolean(cfg?.listavel);
+        extras.innerHTML = blocoDeCoordenadas(props, ehPonto, f.geometry, podeExportar) + notaDeUso(props);
+        ligarCopiar(extras, props, cfg?.label, ehPonto, f.geometry);
       } catch (err) {
         document.getElementById('props').innerHTML =
           `<tr><td>Não deu para carregar</td><td>${err.message}</td></tr>`;

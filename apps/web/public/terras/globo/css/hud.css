@@ -533,6 +533,27 @@ body {
   line-height: 1.5;
 }
 #inspector .ficha-coord > strong { color: var(--text-1); }
+/* Selo do ponto CALCULADO (rotulos.js → coordenadasDaArea, quando a fonte não
+   traz ponto e ele sai do contorno). Mesma linguagem visual do selo FICTÍCIO
+   (--caution: "ressalva, dado parcial") — este também é um aviso de origem
+   do dado, só que sobre o PONTO, não sobre a área inteira. Sem ele, um par
+   de coordenadas calculado aparece com a mesma cara de um vindo da fonte, e
+   quem olha não tem como saber a diferença.
+   ⟲ `border-radius` era 3px cravado aqui e `var(--radius-sm)` (4px) no MESMO
+   selo em /static/detalhe.html — dois números pro mesmo elemento, com um
+   comentário lá afirmando que os dois seguem a mesma regra. Unificado no
+   token: é a mesma ficha nas duas telas (ver topo deste arquivo). */
+#inspector .ficha-coord-calc {
+  margin-left: 4px;
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--color-surface-2);
+  background: var(--caution);
+  white-space: nowrap;
+}
 #inspector .ficha-coord dl {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -621,6 +642,55 @@ body {
   text-align: center;
 }
 #inspector .btn-2d:hover { color: var(--text-1); background: var(--color-hairline); }
+
+/* ---- "Baixar esta área" (ui/exportar.js, via ui/inspector.js) ----
+   Os mesmos três formatos do "Baixar" da lista (#lista .lista-exportar),
+   mas para a área desta ficha só — sem isto, levar UM polígono clicado para
+   um ofício exigia fechar a ficha, abrir a lista inteira e procurar a área
+   de novo entre milhares de linhas.
+
+   Três botões numa linha, e NÃO um botão com menu suspenso como o da lista:
+   `#inspector` rola como bloco único (`overflow-y: auto` no próprio
+   container, algumas regras acima) — um menu `position: absolute` aqui
+   dentro nasceria cortado pela rolagem da ficha, não pela borda da tela. A
+   lista escapa disso porque o cabeçalho dela fica FORA do trecho que rola
+   (é `.lista-itens` que tem overflow, não `#lista`); a ficha não separa as
+   duas coisas, e reestruturar o layout todo por um menu de três itens que já
+   cabem numa linha não valeria o risco. Visual herdado de
+   `.ficha-coord-botoes`, que já mora nesta mesma ficha — "Baixar" fica com a
+   cara de "Copiar", não de um controle novo e estranho. */
+#inspector .inspector-exportar {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-hairline);
+  font-size: 10px;
+  line-height: 1.5;
+}
+#inspector .inspector-exportar > strong { color: var(--text-1); }
+
+#inspector .inspector-exportar-botoes { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+#inspector .inspector-exportar-botoes button {
+  padding: 5px 9px;
+  border: 1px solid var(--glass-stroke);
+  border-radius: 7px;
+  background: var(--color-surface-1);
+  color: var(--text-2);
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+#inspector .inspector-exportar-botoes button:hover:not(:disabled) { background: var(--accent-weak); color: var(--accent); }
+/* Camada FICTÍCIA desabilita o botão em vez de escondê-lo — mesma regra de
+   #lista .lista-exportar-botao:disabled, e pelo mesmo motivo: um controle
+   que some faz a pessoa procurar o que não está mais lá. */
+#inspector .inspector-exportar-botoes button:disabled { opacity: 0.4; cursor: default; }
+
+/* O que foi baixado — mesma lógica de #lista .lista-aviso: fica na tela por
+   um tempo e depois some sozinho. */
+#inspector .inspector-exportar-aviso {
+  margin-top: 7px;
+  color: var(--text-3);
+}
 
 /* ------------------------------------------------------------
    Painel de camadas (direita): toggles com dot de cor
