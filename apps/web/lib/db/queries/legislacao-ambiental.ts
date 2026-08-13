@@ -36,6 +36,15 @@ export interface LegislacaoAmbientalRow {
   orgao: string | null;
   linkPdf: string | null;
   chaveDedup: string | null;
+  /** Os 8 temas do filtro (slugs de `etl/temas_ambientais.py`), união das
+   *  tags da ementa com — só para `fonte==="almg"` — a taxonomia oficial
+   *  da própria ALMG (`indexacao`). `[]` é resultado legítimo: "sem tema
+   *  atribuído" é honesto, não um balde "outros" fingindo cobertura. */
+  temas: string[];
+  /** Vocabulário mais fino que `temas` (ver `TAG_LABELS` em
+   *  `etl/temas_ambientais.py`) — pra entender do que trata a norma sem
+   *  abrir o PDF. Mesma regra de palavra-chave na ementa, `[]` legítimo. */
+  tags: string[];
 }
 
 function paraLinha(r: typeof ambiental_legislacao.$inferSelect): LegislacaoAmbientalRow {
@@ -49,6 +58,8 @@ function paraLinha(r: typeof ambiental_legislacao.$inferSelect): LegislacaoAmbie
     orgao: r.orgao,
     linkPdf: r.link_pdf,
     chaveDedup: r.chave_dedup,
+    temas: r.temas ?? [],
+    tags: r.tags ?? [],
   };
 }
 
@@ -86,4 +97,66 @@ export async function contarLegislacaoAmbiental(): Promise<ContagemLegislacaoAmb
     total += l.n;
   }
   return { total, porFonte };
+}
+
+export interface CoberturaTemasLegislacaoAmbiental {
+  total: number;
+  comTema: number;
+  /** Só a ALMG expõe taxonomia oficial (`indexacao`) — Semad e Siam viram
+   *  tags/temas só por palavra-chave na ementa. Números medidos, não a
+   *  premissa: ver `etl/temas_ambientais.py` para a diferença de método
+   *  entre as três fontes. */
+  porFonte: Record<FonteLegislacaoAmbiental, { total: number; comTema: number }>;
+}
+
+/** Quantas normas ficaram COM pelo menos um tema, de quantas — a
+ *  honestidade que a tarefa pediu: "sem tema atribuído" é contado, não
+ *  escondido atrás de um balde "outros". */
+export async function contarCoberturaTemasLegislacaoAmbiental(): Promise<CoberturaTemasLegislacaoAmbiental> {
+  const db = getDb();
+  const vazio: CoberturaTemasLegislacaoAmbiental = {
+    total: 0,
+    comTema: 0,
+    porFonte: {
+      almg: { total: 0, comTema: 0 },
+      semad: { total: 0, comTema: 0 },
+      siam: { total: 0, comTema: 0 },
+    },
+  };
+  if (!db) return vazio;
+
+  const linhas = await db.execute<{ fonte: FonteLegislacaoAmbiental; total: number; com_tema: number }>(sql`
+    select fonte, count(*)::int as total,
+           count(*) filter (where array_length(temas, 1) > 0)::int as com_tema
+    from ambiental_legislacao
+    group by fonte
+  `);
+  const porFonte = { ...vazio.porFonte };
+  let total = 0;
+  let comTema = 0;
+  for (const l of linhas.rows ?? []) {
+    porFonte[l.fonte] = { total: l.total, comTema: l.com_tema };
+    total += l.total;
+    comTema += l.com_tema;
+  }
+  return { total, comTema, porFonte };
+}
+
+export interface ContagemTemaLegislacaoAmbiental {
+  tema: string;
+  n: number;
+}
+
+/** Contadores por tema (os 8 do filtro) — medidos do banco a cada carga da
+ *  página, não um número fixo no código que possa envelhecer. */
+export async function contarPorTemaLegislacaoAmbiental(): Promise<ContagemTemaLegislacaoAmbiental[]> {
+  const db = getDb();
+  if (!db) return [];
+  const linhas = await db.execute<{ tema: string; n: number }>(sql`
+    select tema, count(*)::int as n
+    from ambiental_legislacao, unnest(temas) as tema
+    group by tema
+    order by n desc
+  `);
+  return linhas.rows ?? [];
 }

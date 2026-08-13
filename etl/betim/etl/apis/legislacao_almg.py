@@ -36,7 +36,10 @@ testado ao vivo em 2026-08-11 (ver `docs/ambiental/F0-discovery.md` §6):
    `F0-discovery.md` §3 para os setores do Copam ("nunca por palavra-chave
    em texto livre — é o bug do `licita` casando dentro de `SOlicitação`").
    Uma norma entra aqui se e só se `"Meio Ambiente"` aparecer em algum
-   caminho de `indexacao`.
+   caminho de `indexacao`. O valor bruto de `indexacao` é GRAVADO na coluna
+   de mesmo nome (migration 0066) — usado por `etl.temas_ambientais` pra
+   classificar tema pela taxonomia oficial da ALMG, não só por
+   palavra-chave na ementa (a única das três fontes que tem esse campo).
 
 5. **LIMITE DE TAXA É DA PRÓPRIA ALMG, DOCUMENTADO E ESTRITO**: máx. 2
    concorrentes, ≥1s entre pedidos, "acesso pode ser bloqueado sem aviso".
@@ -163,6 +166,12 @@ def _linha(item: dict) -> dict | None:
         "link_pdf": _url_publica(tipo, numero, ano_bruto or ""),
         "id_ibge_municipio": None,  # ver a nota da migration 0063 — normas estaduais não são por município
         "chave_dedup": chave_dedup(tipo, numero, ano),
+        # Migration 0066: até aqui `indexacao` só era lido pra filtrar
+        # ambiental (`_eh_ambiental`) e descartado — a ALMG é a única das
+        # três fontes que atribui taxonomia OFICIAL a cada norma, guardar o
+        # bruto é o que permite `etl.temas_ambientais.temas_da_indexacao_almg`
+        # classificar por essa taxonomia em vez de só palavra-chave.
+        "indexacao": (item.get("indexacao") or "").strip() or None,
     }
 
 
