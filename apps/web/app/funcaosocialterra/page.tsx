@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import FooterGlobal from "@/app/components/FooterGlobal";
 import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
 import { ZONAS } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
@@ -176,6 +177,17 @@ export default async function FuncaoSocialTerraPage() {
           </section>
         </>
       )}
+
+      {/* Rodapé padrão do portal, direto na página e não num `layout.tsx`.
+          Esta frente tem só duas rotas — este hub e `/mapa` —, e `/mapa` é o
+          globo 3D ocupando a tela inteira, com HUD nos quatro cantos do
+          canvas: rodapé embaixo dele seria ruído sobre uma tela que já
+          resolve a própria navegação e já tem link de volta para cá. Um
+          `layout.tsx` de zona colaria nas duas. Ver a nota em
+          `mapa/page.tsx`, que registra a mesma decisão pelo outro lado. */}
+      <footer className="mt-16 border-t border-border pt-8 text-sm">
+        <FooterGlobal />
+      </footer>
     </main>
   );
 }
