@@ -1,4 +1,5 @@
 import { ZONAS } from "@/lib/zonas";
+import { listarCidades } from "@/lib/db/queries/municipios";
 
 /**
  * Home da zona /ambiental — andaime da F1.
@@ -7,6 +8,19 @@ import { ZONAS } from "@/lib/zonas";
  * fontes feito na F0 e estão registrados em `docs/ambiental/F0-discovery.md`
  * com a data da medição. Página em construção que inventa número é como
  * gráfico sem cobertura declarada — a regra do projeto vale aqui também.
+ *
+ * ═══ POR QUE O BLOCO "BARRAGENS" GANHOU LINKS POR CIDADE (2026-08-09) ═══
+ *
+ * Os coletores de barragens (FEAM + SNISB) já rodaram contra o banco e as
+ * telas por município (`/[cidade]/meio-ambiente/barragens`) já leem esse
+ * dado real — não é mais só o censo estadual da F0, é o que está gravado
+ * agora. Os outros três blocos (COPAM, Licenciamento, Legislação) continuam
+ * sem coletor e sem tela, por isso continuam sem link: a zona acabou de
+ * entrar na home com a cópia cortada para o que existe, e reintroduzir um
+ * link morto seria prometer de novo o que ainda não tem dado.
+ *
+ * A lista de cidades vem de `listarCidades()`, a mesma fonte que gera as
+ * rotas — cidade nova aparece aqui sozinha, sem editar esta página.
  */
 
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
@@ -42,7 +56,8 @@ const BLOCOS = [
   },
 ];
 
-export default function AmbientalHome() {
+export default async function AmbientalHome() {
+  const cidades = await listarCidades();
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
       <header className="space-y-4">
@@ -81,6 +96,26 @@ export default function AmbientalHome() {
               {b.linha}
             </p>
             <p className="mt-2 flex-1 text-[.92em] text-text-soft">{b.texto}</p>
+
+            {b.titulo === "Barragens" && cidades.length > 0 && (
+              <div className="mt-4 border-t border-border pt-3">
+                <p className="text-[.8em] font-medium text-text-soft">
+                  Já dá pra ver por cidade:
+                </p>
+                <ul className="mt-2 flex flex-wrap gap-2">
+                  {cidades.map((c) => (
+                    <li key={c.slug}>
+                      <a
+                        href={`/${c.slug}/meio-ambiente/barragens`}
+                        className="inline-block rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium transition-colors hover:border-primary hover:text-primary"
+                      >
+                        {c.nome} →
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </section>
         ))}
       </div>

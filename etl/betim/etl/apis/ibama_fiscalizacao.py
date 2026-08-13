@@ -296,23 +296,54 @@ def _conferir_identidade(linhas: list[dict], cidade: dict, tabela: str) -> None:
 
 
 def coletar_autos(id_municipio: str) -> list[dict]:
+    """Armadilha 10 (achada ao vivo em 2026-08-09, rodando sync de verdade pela
+    primeira vez): pelo menos 1 linha de Betim tem `SEQ_AUTO_INFRACAO` vazio —
+    `NUM_AUTO_INFRACAO` nessas usa uma numeração alfanumérica nova (ex.:
+    `16L1JUFB`), não a sequencial numérica antiga que é a chave natural da
+    tabela (`(id_municipio, seq_auto_infracao)`, `NOT NULL`). Gravar cru
+    aborta o INSERT inteiro em lote (`NotNullViolation`) e derruba linhas boas
+    junto — já aconteceu: 44 de 2.844 ficaram de fora numa rodada real. Pular
+    e avisar é melhor que travar a tabela inteira por causa de 1 linha sem
+    chave; a fonte não documenta esse novo formato, então não há regra de
+    conversão confiável para reconstruir o sequencial a partir dele."""
     sessao = _sessao()
     url = _resolver_zip(sessao, PACOTE_AUTOS, SUFIXO_AUTOS)
     zip_bytes = _baixar(sessao, url)
-    return [
-        _parse_auto(linha, id_municipio)
-        for linha in _linhas_do_zip(zip_bytes, id_municipio)
-    ]
+    linhas: list[dict] = []
+    pulados: list[str] = []
+    for linha in _linhas_do_zip(zip_bytes, id_municipio):
+        parsed = _parse_auto(linha, id_municipio)
+        if parsed["seq_auto_infracao"] is None:
+            pulados.append(parsed["numero_auto"] or "(sem número)")
+            continue
+        linhas.append(parsed)
+    if pulados:
+        print(f"{LOG} ATENÇÃO: {len(pulados)} linha(s) sem SEQ_AUTO_INFRACAO (chave natural) "
+              f"PULADA(S), não gravadas — numero_auto: {pulados[:10]}"
+              + (f" e mais {len(pulados) - 10}" if len(pulados) > 10 else ""))
+    return linhas
 
 
 def coletar_embargos(id_municipio: str) -> list[dict]:
+    """Mesma guarda da armadilha 10 de `coletar_autos`, aplicada a `SEQ_TAD`
+    (chave natural de `ibama_embargos`) — não observada ao vivo ainda, mas o
+    mesmo formato de fonte pode repetir o gap."""
     sessao = _sessao()
     url = _resolver_zip(sessao, PACOTE_EMBARGOS, SUFIXO_EMBARGOS)
     zip_bytes = _baixar(sessao, url)
-    return [
-        _parse_embargo(linha, id_municipio)
-        for linha in _linhas_do_zip(zip_bytes, id_municipio)
-    ]
+    linhas: list[dict] = []
+    pulados: list[str] = []
+    for linha in _linhas_do_zip(zip_bytes, id_municipio):
+        parsed = _parse_embargo(linha, id_municipio)
+        if parsed["seq_tad"] is None:
+            pulados.append(parsed["numero_tad"] or "(sem número)")
+            continue
+        linhas.append(parsed)
+    if pulados:
+        print(f"{LOG} ATENÇÃO: {len(pulados)} linha(s) sem SEQ_TAD (chave natural) "
+              f"PULADA(S), não gravadas — numero_tad: {pulados[:10]}"
+              + (f" e mais {len(pulados) - 10}" if len(pulados) > 10 else ""))
+    return linhas
 
 
 # ─────────────────────────────── sondar ────────────────────────────────
