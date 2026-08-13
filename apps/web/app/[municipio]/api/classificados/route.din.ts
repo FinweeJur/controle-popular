@@ -1,17 +1,17 @@
 import type { NextRequest } from "next/server";
-import { inserirClassificadoD1 } from "@/lib/db/queries/betimD1";
+import { classificadosVigentesD1, inserirClassificadoD1 } from "@/lib/db/queries/betimD1";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 import {
   CLASSIFICADO_EXPIRACAO_DIAS,
-  fetchClassificados,
   validateClassificadoSubmission,
 } from "@/lib/betim/classificados";
 import { ipDoCliente } from "@/lib/rate-limit-ip";
 import { limitarBaixaFrequencia, respostaLimiteExcedido } from "@/lib/rate-limit";
 
 /**
- * Mesma divergência de `api/zap/route.din.ts`: GET lê do Postgres (fora do
- * escopo desta migration), POST grava em D1 desde 2026-08-13.
+ * GET e POST no mesmo D1 desde 2026-08-13, pela razão explicada em
+ * `api/zap/route.din.ts`: banco de escrita diferente do banco de leitura
+ * fazia a moderação aprovar anúncio que nunca chegava na tela.
  */
 
 /** Rota de cidade: `params.municipio` é o slug, e a consulta filtra por id. */
@@ -26,15 +26,14 @@ export async function GET(request: NextRequest, { params }: Ctx) {
   const categoria = sp.get("categoria") ?? undefined;
   const q = sp.get("q") ?? undefined;
 
-  const { rows, configured } = await fetchClassificados(cidade.id_municipio, {
-    categoria,
-    q,
-  });
+  // `null` é ausência de binding; `[]` é resposta legítima. Ver a nota
+  // equivalente em `api/zap/route.din.ts`.
+  const rows = await classificadosVigentesD1(cidade.id_municipio, { categoria, q });
 
-  if (!configured) {
+  if (!rows) {
     return Response.json({
       rows: [],
-      message: "Fonte de dados não configurada (DATABASE_URL ausente).",
+      message: "Fonte de dados não configurada (binding DB_ESCRITAS ausente).",
     });
   }
 

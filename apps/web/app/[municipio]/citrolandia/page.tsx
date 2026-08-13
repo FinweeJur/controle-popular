@@ -4,7 +4,7 @@ import { temFonte } from "@/lib/db/queries/municipios";
 import Link from "@/lib/betim/link";
 import { fetchZapEstabelecimentos } from "@/lib/betim/zap";
 import { fetchPostosAnp } from "@/lib/betim/postos";
-import ZapCard from "@/app/[municipio]/zap/ZapCard";
+import ZapDaRegiao from "./ZapDaRegiao";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
@@ -162,22 +162,7 @@ export default async function CitrolandiaPage({
         <h2 className="mb-4 font-display text-lg font-semibold text-text">
           Negócios da região no Zap {cidade.nome}
         </h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {rows.length > 0 ? (
-            rows.map((item) => <ZapCard key={item.id} item={item} />)
-          ) : (
-            <p className="col-span-full text-sm text-text-soft">
-              {configured
-                ? "Nenhum negócio dessa região cadastrado ainda. Seja o primeiro:"
-                : "Nenhum dado disponível no momento."}{" "}
-              {configured ? (
-                <Link href="/zap" className="font-medium text-accent hover:underline">
-                  cadastre seu negócio →
-                </Link>
-              ) : null}
-            </p>
-          )}
-        </div>
+        <ZapDaRegiao inicial={rows} configured={configured} bairros={BAIRROS_CONFIRMADOS} />
       </section>
     </main>
   );

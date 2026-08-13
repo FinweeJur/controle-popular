@@ -1,4 +1,4 @@
-import { and, desc, eq, sql } from "drizzle-orm";
+import { and, asc, desc, eq, gte, inArray, like, sql } from "drizzle-orm";
 import { getD1 } from "@/lib/db/clientD1";
 import { anuncios, classificados, page_views, zap_estabelecimentos } from "@/lib/db/schema.d1";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
@@ -11,8 +11,11 @@ import type { IdMunicipio } from "@/lib/db/queries/municipios";
  * instalação, quem distingue cidade é o filtro.
  *
  * NÃO confundir com `queries/betim.ts`: aquele arquivo é o Postgres (ETL,
- * build, toda LEITURA pública hoje). Este é só D1, só para as cinco rotas
- * de escrita. Ver o cabeçalho de `lib/db/schema.d1.ts`.
+ * build, e a leitura das dezenas de tabelas que o ETL alimenta). Este é só
+ * D1 — as escritas ao vivo E a leitura pública DAS MESMAS DUAS TABELAS que
+ * elas gravam (zap, classificados), porque banco de escrita e banco de
+ * leitura tinham que ser o mesmo para o cadastro aprovado aparecer.
+ * Ver o cabeçalho de `lib/db/schema.d1.ts`.
  */
 
 export async function inserirPageView(path: string) {
@@ -189,6 +192,103 @@ export async function removerAnuncioD1(idMunicipio: IdMunicipio, id: string) {
     .where(and(eq(anuncios.id_municipio, idMunicipio), eq(anuncios.id, id)))
     .returning({ id: anuncios.id });
   return linha ?? null;
+}
+
+/**
+ * ═══ LEITURA PÚBLICA — POR QUE ELA PRECISOU VIR PARA CÁ ═══
+ *
+ * O primeiro passo da migração moveu só as ESCRITAS para o D1 e deixou a
+ * listagem pública lendo do Postgres. Isso partiu o produto ao meio de um
+ * jeito que nenhum teste pegava: o cadastro entrava no D1, a moderação
+ * aprovava no D1 (`aprovarPendenteD1`), e a lista continuava consultando um
+ * Postgres onde aquela linha nunca existiu. Ou seja, aprovar não publicava
+ * nada. Pior, o clique de um item listado tentava um UPDATE no D1 sobre um
+ * id que só existia no outro banco.
+ *
+ * As funções abaixo são as versões D1 de `zapEstabelecimentos` e
+ * `classificadosVigentes` (`queries/betim.ts`, linhas ~465-522). Mesmo
+ * conjunto, mesmas colunas, mesma regra de visibilidade. Duas diferenças de
+ * FORMA, e as duas são limite do SQLite, não escolha:
+ *
+ * - `like` no lugar de `ilike`: SQLite não tem `ILIKE`, e o `LIKE` dele já
+ *   ignora caixa em ASCII — mesmo comportamento para o que a busca alcança
+ *   aqui, que são títulos e nomes digitados.
+ * - a ordenação por nome saiu do `ORDER BY` e foi para o JS. `ptBr()`
+ *   (`lib/db/ordem.ts`) é `collate "pt-BR-x-icu"`, ICU do Postgres; SQLite
+ *   só tem BINARY, NOCASE e RTRIM, e nenhuma põe "ANTÔNIO" no meio dos
+ *   "ANTONIO". Ordenar em memória devolve a MESMA lista porque esta
+ *   consulta não tem LIMIT nem paginação — é o conjunto inteiro que chega
+ *   aqui. Fosse paginada, cortar antes de ordenar mudaria quem aparece, e
+ *   aí não daria. É a mesma decisão já tomada no eixo Congresso.
+ *
+ * Classificados fica ordenado no SQL: `created_at` é texto ISO-8601, e
+ * ordem de byte sobre ISO-8601 É ordem cronológica.
+ */
+
+/** Negócios do Zap aprovados, com os filtros da página e da rota de API. */
+export async function zapEstabelecimentosD1(
+  idMunicipio: IdMunicipio,
+  opts: { categoria?: string; q?: string; bairros?: string[] } = {}
+) {
+  const db = await getD1();
+  if (!db) return null;
+  const cond = [
+    eq(zap_estabelecimentos.id_municipio, idMunicipio),
+    eq(zap_estabelecimentos.aprovado, true),
+  ];
+  if (opts.categoria) cond.push(eq(zap_estabelecimentos.categoria, opts.categoria));
+  if (opts.q) cond.push(like(zap_estabelecimentos.nome, `%${opts.q}%`));
+  // `?length` e não só `?`: `inArray` com lista vazia gera `in ()`, erro de
+  // sintaxe no SQLite. Mesmo guarda do Postgres.
+  if (opts.bairros?.length) cond.push(inArray(zap_estabelecimentos.bairro, opts.bairros));
+  const linhas = await db
+    .select({
+      id: zap_estabelecimentos.id,
+      nome: zap_estabelecimentos.nome,
+      whatsapp: zap_estabelecimentos.whatsapp,
+      categoria: zap_estabelecimentos.categoria,
+      descricao: zap_estabelecimentos.descricao,
+      bairro: zap_estabelecimentos.bairro,
+      cliques: zap_estabelecimentos.cliques,
+    })
+    .from(zap_estabelecimentos)
+    .where(and(...cond));
+  return linhas.sort(
+    (a, b) =>
+      (a.nome ?? "").localeCompare(b.nome ?? "", "pt-BR") || a.id.localeCompare(b.id)
+  );
+}
+
+/** Classificados aprovados e ainda no prazo. */
+export async function classificadosVigentesD1(
+  idMunicipio: IdMunicipio,
+  opts: { categoria?: string; q?: string } = {}
+) {
+  const db = await getD1();
+  if (!db) return null;
+  const hoje = new Date().toISOString().slice(0, 10);
+  const cond = [
+    eq(classificados.id_municipio, idMunicipio),
+    eq(classificados.aprovado, true),
+    gte(classificados.expira_em, hoje),
+  ];
+  if (opts.categoria) cond.push(eq(classificados.categoria, opts.categoria));
+  if (opts.q) cond.push(like(classificados.titulo, `%${opts.q}%`));
+  return db
+    .select({
+      id: classificados.id,
+      categoria: classificados.categoria,
+      titulo: classificados.titulo,
+      descricao: classificados.descricao,
+      preco: classificados.preco,
+      contato_whatsapp: classificados.contato_whatsapp,
+      expira_em: classificados.expira_em,
+    })
+    .from(classificados)
+    .where(and(...cond))
+    // Desempate por id pela mesma razão do Postgres: dois anúncios criados
+    // no mesmo instante sairiam em ordem indefinida.
+    .orderBy(desc(classificados.created_at), asc(classificados.id));
 }
 
 /**

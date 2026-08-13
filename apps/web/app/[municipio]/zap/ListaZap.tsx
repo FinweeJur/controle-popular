@@ -3,6 +3,8 @@
 import Link from "@/lib/betim/link";
 import { ZAP_CATEGORIAS, ZAP_CATEGORIA_LABELS } from "@/lib/betim/zap";
 import type { ZapEstabelecimento } from "@/lib/betim/zap";
+import { useCaminhoDaCidade } from "@/lib/betim/basePath";
+import { useListaAoVivo } from "@/lib/betim/lista-ao-vivo";
 import { useSearchParams } from "next/navigation";
 import ZapCard from "./ZapCard";
 
@@ -47,6 +49,12 @@ function ZapConteudo({
   categoria,
   q,
 }: ZapProps & { categoria: string | null; q: string | null }) {
+  // A lista do HTML é a do último build, e cadastro/moderação gravam em D1
+  // — sem esta troca, aprovar não publicava. Ver `lib/betim/lista-ao-vivo.ts`.
+  // Busca SEM filtro na query de propósito: o recorte é o mesmo `filter`
+  // logo abaixo, e assim a lista viva e a embutida passam pelo mesmo caminho.
+  const caminho = useCaminhoDaCidade();
+  const aoVivo = useListaAoVivo<ZapEstabelecimento>(caminho("/api/zap"), estabelecimentos);
 
   // Minúsculo dos dois lados porque no SQL o `q` era `ilike`, que ignora
   // caixa: um `includes` cru faria `?q=padaria` deixar de achar "Padaria".
@@ -56,7 +64,7 @@ function ZapConteudo({
   // mesmo `===` que acende a pílula.
   const termo = q ? q.toLocaleLowerCase("pt-BR") : null;
   // Parâmetro presente e vazio não filtra, como no servidor (`if (opts.q)`).
-  const rows = estabelecimentos.filter(
+  const rows = aoVivo.filter(
     (item) =>
       (!categoria || item.categoria === categoria) &&
       (!termo || (item.nome ?? "").toLocaleLowerCase("pt-BR").includes(termo))
