@@ -140,6 +140,56 @@ export default async function ParaopebaPage({ params }: ParaopebaPageProps) {
           </a>
         </p>
       </section>
+
+      {/* ═══ POR QUE A UFMG ENTRA COMO LINK, E NÃO COMO DADO ═══
+          A pesquisa de 13/08/2026 (`docs/FONTES-BRUMADINHO-UFMG.md`) foi
+          atrás de INTEGRAR o acervo do Projeto Brumadinho UFMG e concluiu o
+          contrário. O catálogo geoespacial deles tem 16 camadas, todas de
+          2020, todas cartografia-base que já existe mais fresca na fonte
+          primária (ANA, IBGE, IEDE-Sisema) — e os serviços WMS/WFS/REST
+          respondem erro de banco travado. O que teria valor de verdade para
+          quem foi atingido (saúde, contaminação, impacto socioeconômico)
+          está em relatório fechado, não em camada aberta.
+
+          Republicar aquilo seria dado velho com selo de universidade. Citar
+          é o uso honesto: a UFMG produziu 67 subprojetos sobre o rompimento,
+          e esse acervo não existe em outro lugar.
+
+          ⚠️ O LINK É `http://`, E ISSO FOI MEDIDO, NÃO DESCUIDO. O site do
+          projeto (`projetobrumadinho.ufmg.br`) responde 200 em HTTP e falha
+          a conexão em HTTPS — testado nas quatro variantes (com e sem www,
+          http e https), e o servidor não redireciona para a versão segura.
+          Escrever `https://` aqui produziria um link morto com cara de link
+          certo, que é exatamente o defeito que a auditoria de hiperlinks
+          deste mesmo dia foi caçar. Se um dia a UFMG publicar certificado,
+          trocar é uma letra. */}
+      <section className="mt-4 rounded-2xl border border-border bg-surface-2 px-6 py-5 text-sm text-text-soft">
+        <h2 className="font-display text-base font-semibold text-text">
+          A avaliação independente da UFMG
+        </h2>
+        <p className="mt-2">
+          Além da auditoria financeira da FGV, a UFMG mantém desde 2019 uma
+          avaliação dos impactos do rompimento — saúde das pessoas atingidas,
+          contaminação e efeitos sociais e econômicos na bacia. É pesquisa
+          acadêmica publicada em relatórios, e não entra neste portal como
+          dado: os relatórios não são planilha aberta, e o acervo geográfico
+          que eles publicam é cartografia de 2020 que já existe mais atual na
+          fonte original. Fica o caminho para quem quiser ler direto.
+        </p>
+        <p className="mt-2">
+          <a
+            href="http://www.projetobrumadinho.ufmg.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-accent hover:underline"
+          >
+            Ver o Projeto Brumadinho UFMG ↗
+          </a>{" "}
+          <span className="text-text-soft">
+            (o site da UFMG ainda não usa conexão segura)
+          </span>
+        </p>
+      </section>
     </div>
   );
 }
