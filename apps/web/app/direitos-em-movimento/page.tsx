@@ -22,18 +22,20 @@ import { formatNumberBR } from "@/lib/betim/format";
  * `/busca`: o assunto atravessa as cinco, uma versão dentro de uma delas
  * descreveria só um recorte.
  *
- * TRÊS das quatro portas abaixo já existem e estão em produção — este
- * arquivo é sobretudo NAVEGAÇÃO, não construção nova:
+ * As quatro portas abaixo já existem e estão em produção — este arquivo é
+ * sobretudo NAVEGAÇÃO, não construção nova:
  *  - "Que lei protege isso"   → `/ambiental/direito-critico` (não mudou de
  *    endereço; mudar quebraria link já compartilhado sem ganhar nada)
  *  - "Onde buscar ajuda"      → `/direitos-em-movimento/ajuda`, que reusa
  *    `lib/betim/redeProtecao.ts` inteiro
  *  - "Como pedir informação"  → `/direitos-em-movimento/informacao`, idem
- *  - "Como denunciar"         → `/direitos-em-movimento/denuncia`, a ÚNICA
- *    parte nova — hoje uma porta honesta "em construção"
- *    (`docs/PLANO-ACAO-CIDADA.md` tem o desenho inteiro; construir o
- *    facilitador de verdade — entrevista + .docx gerado só no navegador —
- *    é trabalho à parte do resto desta seção, que é navegação)
+ *  - "Como denunciar"         → `/direitos-em-movimento/denuncia`, a
+ *    entrevista guiada + `.docx` gerado só no navegador
+ *    (`docs/PLANO-ACAO-CIDADA.md`, Fase 1: roteiro de 9 passos, roteamento
+ *    de destino via `lib/denuncia/roteiro.ts` reusando `redeProtecao.ts`,
+ *    rascunho local opt-in. Fases 2 e 3 do plano — PDF e roteamento por
+ *    dado dinâmico do portal — ficaram de fora de propósito, não por
+ *    esquecimento)
  */
 export const metadata: Metadata = {
   title: "Direitos em Movimento — Controle Popular",
@@ -102,12 +104,12 @@ export default async function DireitosEmMovimentoHub() {
           cta="Ver os canais →"
         />
         <PortaCard
-          etiqueta="Em construção"
+          etiqueta="Passo a passo guiado"
           titulo="Como denunciar"
-          descricao="Um passo a passo guiado que ajuda a registrar uma violação e gera o documento no seu próprio navegador — sem passar pelo servidor. Ainda não existe; a porta abaixo diz o que já existe hoje."
-          numero="0 de 4 fases prontas"
+          descricao="Nove perguntas curtas, não um formulário em branco: o que aconteceu, quando, quem esteve envolvido, que prova reunir e para onde mandar. O documento (.docx) nasce no seu navegador e nunca é enviado a nenhum servidor."
+          numero="Fase 1 pronta — DOCX no navegador, sem envio"
           href="/direitos-em-movimento/denuncia"
-          cta="Ver o que existe hoje →"
+          cta="Começar →"
         />
       </div>
 
