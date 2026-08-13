@@ -28,6 +28,18 @@ página se chamam "Convênios e repasses federais", não "Emendas".
 não só convênio) devolve 403 com esta chave em qualquer combinação de
 parâmetros, inclusive sem nenhum — não é erro de parâmetro, é escopo da
 chave. Não retentar sem uma chave de nível diferente.
+
+ACHADO 2026-08-13 (docs/FONTES-FLUXO-FINANCEIRO.md §1.3, migration 0069):
+`convenente.cnpjFormatado` já chega em toda resposta e `_map_row()`
+descartava o campo, gravando só o nome. Corrigido: agora grava
+`cnpj_convenente` (o CNPJ inteiro, sem máscara — CNPJ de PJ não é dado
+pessoal) e `cnpj_raiz` (8 primeiros dígitos, mesma chave de
+`ambiental_licenciamento.cnpj_raiz`). `cpfFormatado` continua NUNCA lido:
+vem mascarado pela própria fonte para convênio de pessoa física, e este
+repositório público já vazou CPF real uma vez — ver `_map_row`. Depois de
+rodar a migration 0069, reprocessar os municípios já sincronizados chama de
+novo `python -m etl.apis.transparencia_gov --id-municipio <id>` — a API
+responde de novo em segundos, não precisa recoletar do zero.
 """
 import argparse
 import datetime as dt
@@ -113,6 +125,21 @@ def _fetch_all(codigo_ibge: str, teto_paginas: int = PAGE_LIMIT_SAFETY) -> list[
     return rows
 
 
+def _cnpj_raiz(cnpj_formatado: str | None) -> str | None:
+    """`"22.733.919/0001-27"` -> `"22733919"` (8 primeiros dígitos = raiz).
+
+    Mesma convenção de `ambiental_licenciamento.cnpj_raiz` (migration 0064):
+    a raiz identifica a empresa sem distinguir matriz de filial, e é a chave
+    que liga convênio a licença ambiental. Nunca chamada sobre CPF — ver a
+    nota em `_map_row` sobre por que este módulo nunca toca em
+    `cpfFormatado`.
+    """
+    if not cnpj_formatado:
+        return None
+    digitos = "".join(c for c in cnpj_formatado if c.isdigit())
+    return digitos[:8] if len(digitos) == 14 else None
+
+
 def _map_row(raw: dict, id_municipio: str) -> dict | None:
     id_externo = raw.get("id")
     if id_externo is None:
@@ -122,6 +149,18 @@ def _map_row(raw: dict, id_municipio: str) -> dict | None:
     convenente = raw.get("convenente") or {}
     dim_convenio = raw.get("dimConvenio") or {}
     tipo_instrumento = raw.get("tipoInstrumento") or {}
+
+    # ACHADO 2026-08-13 (docs/FONTES-FLUXO-FINANCEIRO.md §1.3): a fonte já
+    # devolve `convenente.cnpjFormatado` e este mapeamento jogava o campo
+    # fora, gravando só o nome. `cnpjFormatado` é sempre CNPJ inteiro, sem
+    # máscara (CNPJ de pessoa jurídica não é dado pessoal). NUNCA ler
+    # `cpfFormatado` daqui: convênio de pessoa física traz o CPF MASCARADO
+    # pela própria fonte (`***.918.086-**`, testado ao vivo em Belo
+    # Horizonte), e este repositório é público e já vazou CPF real uma vez
+    # (ver `scripts/checar-dado-pessoal.py`) — a regra é não abrir uma
+    # coluna que alguém preencha com CPF, mascarado ou não, por engano
+    # depois. Só pessoa jurídica sai daqui.
+    cnpj_convenente = convenente.get("cnpjFormatado") or None
 
     return {
         "id_municipio": id_municipio,
@@ -135,6 +174,10 @@ def _map_row(raw: dict, id_municipio: str) -> dict | None:
         "orgao_nome": orgao.get("nome"),
         "orgao_sigla": orgao.get("sigla"),
         "convenente_nome": convenente.get("nome"),
+        # Colunas opcionais novas (migration 0069). Ver nota acima — nunca
+        # `cpfFormatado`.
+        "cnpj_convenente": cnpj_convenente,
+        "cnpj_raiz": _cnpj_raiz(cnpj_convenente),
         "situacao": raw.get("situacao"),
         "tipo_instrumento": tipo_instrumento.get("descricao"),
         "valor": raw.get("valor"),
@@ -166,7 +209,7 @@ def sync(id_municipio: str, codigo_ibge: str | None = None, teto_paginas: int = 
             client,
             "convenios_federais",
             rows,
-            colunas_opcionais=["codigo"],
+            colunas_opcionais=["codigo", "cnpj_convenente", "cnpj_raiz"],
             on_conflict="id_municipio,id_externo",
         )
 
