@@ -1,16 +1,4 @@
-import { outrasZonas, ZONAS_PUBLICADAS, type ZonaId } from "@/lib/zonas";
-
-/**
- * A frase do bloco dizia "em três lugares diferentes... acompanha os três".
- * Com uma zona nova a caminho, número escrito à mão vira mentira silenciosa
- * no dia em que a quarta publicar. Sai da contagem real.
- */
-const NUMERAL: Record<number, string> = {
-  2: "dois",
-  3: "três",
-  4: "quatro",
-  5: "cinco",
-};
+import { outrasZonas, contagemZonasPublicadas, type ZonaId } from "@/lib/zonas";
 
 /**
  * Remissão cruzada entre as três frentes, para o pé da home de cada zona.
@@ -38,7 +26,7 @@ export default function OutrasFrentes({ atual }: { atual: ZonaId }) {
     <section className="mt-16 border-t border-border pt-8">
       <h2 className="font-display text-xl font-semibold">As outras frentes</h2>
       <p className="mt-2 max-w-2xl text-[.95em] text-text-soft">
-        O poder público decide em {NUMERAL[ZONAS_PUBLICADAS.length] ?? ZONAS_PUBLICADAS.length}{" "}
+        O poder público decide em {contagemZonasPublicadas()}{" "}
         lugares diferentes, e o Controle Popular acompanha todos. Acompanhar só um deixa boa
         parte da história de fora.
       </p>

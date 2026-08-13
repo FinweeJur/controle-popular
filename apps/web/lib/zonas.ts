@@ -223,3 +223,63 @@ export const ZONAS_PUBLICADAS: Zona[] = ZONAS.filter((z) => z.publicada);
 export function outrasZonas(atual: ZonaId): Zona[] {
   return ZONAS_PUBLICADAS.filter((z) => z.id !== atual);
 }
+
+/**
+ * `n` por extenso, em português — "cinco", não "5".
+ *
+ * ⟲ 13/08: existe porque o comentário no topo deste arquivo prometia que
+ * NENHUM texto crava a contagem à mão, e três telas cravavam mesmo assim —
+ * `FooterGlobal.tsx` ("As cinco frentes"), `sobre/page.tsx` (duas vezes).
+ * `OutrasFrentes.tsx` já tinha resolvido isto sozinho, com seu próprio
+ * `Record<number, string>` local; esta função substitui as cópias em
+ * potencial (a antiga de `OutrasFrentes` incluída) por uma só, porque a
+ * causa raiz era exatamente essa: cada tela que precisava do numeral por
+ * extenso reinventava a tabela, e é fácil reinventar errado ou esquecer
+ * uma. Mesma classe de falha do "30%" digitado à mão no card de terras
+ * (`TAXA_ERRO_G0`, mesmo arquivo) — número que devia vir de contagem
+ * ficou solto em texto, e passou dias errado sem ninguém ver.
+ *
+ * `toLocaleString("pt-BR")` foi cogitado e descartado: ele devolve o
+ * ALGARISMO ("5"), não a palavra. O pedido aqui é textual ("as cinco
+ * frentes"), não numérico.
+ *
+ * Cai para o algarismo (`String(n)`) além da tabela, de propósito: é
+ * melhor "as 11 frentes" feio do que a tela quebrar — mas
+ * `zonas.test.ts` trava se `ZONAS_PUBLICADAS.length` ultrapassar o que a
+ * tabela cobre, para que estender a tabela seja decisão de quem publica a
+ * frente, não descoberta de quem lê a tela depois.
+ *
+ * FLEXÃO DE GÊNERO NÃO É GARANTIDA: "1" e "2" saem no feminino ("uma",
+ * "duas") porque as três telas que existiam antes desta função concordavam
+ * com substantivo feminino ("frente(s)"). `OutrasFrentes.tsx` concorda com
+ * "lugares" (masculino) e usava "dois" à mão — hoje o número é 5
+ * ("cinco", invariável), então a divergência não aparece; se a contagem
+ * cair para 1 ou 2 algum dia, confira as três telas à mão antes de confiar
+ * no texto gerado.
+ */
+const NUMERAL_POR_EXTENSO: Record<number, string> = {
+  1: "uma",
+  2: "duas",
+  3: "três",
+  4: "quatro",
+  5: "cinco",
+  6: "seis",
+  7: "sete",
+  8: "oito",
+  9: "nove",
+  10: "dez",
+};
+
+export function numeralPorExtenso(n: number): string {
+  return NUMERAL_POR_EXTENSO[n] ?? String(n);
+}
+
+/**
+ * "cinco frentes" — a contagem por extenso das frentes hoje publicadas.
+ * Único lugar que `FooterGlobal.tsx`, `sobre/page.tsx` e
+ * `OutrasFrentes.tsx` devem ler; nenhum dos três deve manter tabela de
+ * numeral própria.
+ */
+export function contagemZonasPublicadas(): string {
+  return numeralPorExtenso(ZONAS_PUBLICADAS.length);
+}

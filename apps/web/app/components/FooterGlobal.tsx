@@ -1,4 +1,4 @@
-import { ZONAS_PUBLICADAS } from "@/lib/zonas";
+import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 
 /**
  * Rodapé padrão do portal — os links principais do site, no fim de toda
@@ -42,6 +42,13 @@ import { ZONAS_PUBLICADAS } from "@/lib/zonas";
  * lugar só; é ela que faz sentido linkar de qualquer zona.
  */
 const LINKS_PORTAL = [
+  // Primeiro da lista de propósito: "Direitos em Movimento" não é meta-
+  // página do portal (não é "sobre", não é "busca") — é a seção
+  // transversal às cinco frentes (que lei protege, onde buscar ajuda, como
+  // pedir informação, como denunciar). Mora aqui e não em "As cinco
+  // frentes" acima porque NÃO é zona — ver a nota de arquitetura em
+  // `lib/zonas.ts` e no bloco correspondente de `app/page.tsx`.
+  { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
   { label: "Busca", href: "/busca" },
   { label: "Páginas mais vistas", href: "/dados/populares" },
   { label: "Metodologia", href: "/sobre#metodologia" },
@@ -54,7 +61,11 @@ export default function FooterGlobal() {
       <div className="flex flex-wrap items-start justify-between gap-x-8 gap-y-4">
         <div>
           <h4 className="mb-2.5 font-semibold tracking-wide text-text-soft uppercase">
-            As cinco frentes
+            {/* Por extenso vindo de `lib/zonas.ts`, não cravado: era
+                "As cinco frentes" escrito à mão até 13/08, apesar do
+                comentário no topo de `zonas.ts` jurar que nenhum texto
+                fazia isso. Ver `contagemZonasPublicadas`. */}
+            As {contagemZonasPublicadas()} frentes
           </h4>
           <ul className="flex flex-wrap gap-x-4 gap-y-1.5">
             {ZONAS_PUBLICADAS.map((z) => (

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ZONAS_PUBLICADAS } from "@/lib/zonas";
+import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import { obterEstatisticasPortal } from "@/lib/betim/estatisticas-portal";
 import { formatNumberBR } from "@/lib/betim/format";
@@ -156,11 +156,15 @@ export default async function SobrePage() {
         </p>
       </section>
 
-      {/* ═══ 3. AS CINCO FRENTES ═══ */}
+      {/* ═══ 3. AS CINCO FRENTES ═══ (nome da seção fica — a CONTAGEM no
+          texto abaixo é que vem de `contagemZonasPublicadas()`, não mais
+          cravada à mão) */}
       <section className="space-y-5">
-        <h2 className="font-display text-2xl font-semibold">As cinco frentes</h2>
+        <h2 className="font-display text-2xl font-semibold">
+          As {contagemZonasPublicadas()} frentes
+        </h2>
         <p className="text-text-soft">
-          O portal se organiza em cinco frentes, chamadas internamente de <em>zonas</em>. A
+          O portal se organiza em {contagemZonasPublicadas()} frentes, chamadas internamente de <em>zonas</em>. A
           descrição de cada uma vive num arquivo único —{" "}
           <code className="font-mono text-[.85em]">lib/zonas.ts</code> — lido tanto pela home
           quanto pelo rodapé de cada zona, para que o mesmo texto não precise ser corrigido em

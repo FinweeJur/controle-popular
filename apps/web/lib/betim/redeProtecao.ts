@@ -676,4 +676,27 @@ export function montarItensPainel(cidade: Cidade): ItemPainel[] {
   return itens;
 }
 
+/**
+ * Itens que não dependem de NENHUMA cidade: LAI federal, LAI estadual (MG —
+ * a UF de 5 das 6 cidades cadastradas) e a fatia estadual/federal da rede de
+ * proteção. Existe para `/direitos-em-movimento`, a porta "onde buscar
+ * ajuda" (`docs/PLANO-DIREITOS-EM-MOVIMENTO.md`): a necessidade vem antes
+ * da cidade, e Disque 100 não espera a pessoa dizer onde está.
+ *
+ * Item `abrangencia: "municipal"` fica de fora de propósito — inclusive os
+ * que hoje não têm restrição de `CIDADES_POR_ITEM` (CRAS, CREAS, Conselho
+ * Tutelar): são genéricos por desenho ("procure o da sua cidade"), mas
+ * "genérico" não é "sem cidade" — mostrar antes da pergunta prometeria uma
+ * unidade que a pessoa ainda não localizou. Depois que ela escolhe a
+ * cidade, é `montarItensPainel(cidade)` — a mesma função de sempre — quem
+ * decide a lista inteira, municipal incluído.
+ */
+export function itensSemCidade(): ItemPainel[] {
+  return [
+    ...LAI_FEDERAL,
+    ...LAI_ESTADUAL,
+    ...REDE_ITENS.filter((i) => i.abrangencia !== "municipal"),
+  ];
+}
+
 export { nomePortal };
