@@ -1,7 +1,9 @@
 import { isAdminAuthorized } from "@/lib/betim/adminAuth";
-import * as q from "@/lib/db/queries/betim";
+import { atualizarAnuncioD1, removerAnuncioD1 } from "@/lib/db/queries/betimD1";
+import type { PatchAnuncioD1 } from "@/lib/db/queries/betimD1";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 
+// ⟲ 2026-08-13: migrado de Postgres para D1 (ver `api/admin/anuncios/route.din.ts`).
 const EDITABLE_FIELDS = [
   "nome_comercio",
   "plano",
@@ -36,7 +38,7 @@ export async function PATCH(request: Request, { params }: Ctx) {
     return Response.json({ error: "JSON inválido." }, { status: 400 });
   }
 
-  const patch: q.PatchAnuncio = {};
+  const patch: PatchAnuncioD1 = {};
   for (const field of EDITABLE_FIELDS) {
     if (field in body) (patch as Record<string, unknown>)[field] = body[field];
   }
@@ -45,7 +47,7 @@ export async function PATCH(request: Request, { params }: Ctx) {
   }
 
   try {
-    const row = await q.atualizarAnuncio(cidade.id_municipio, id, patch);
+    const row = await atualizarAnuncioD1(cidade.id_municipio, id, patch);
     // Sem linha devolvida: o anúncio não existe ou é de outra cidade. Nos
     // dois casos, deste endereço ele não existe.
     if (!row) return Response.json({ error: "Anúncio não encontrado." }, { status: 404 });
@@ -65,7 +67,7 @@ export async function DELETE(request: Request, { params }: Ctx) {
   if (!cidade) return Response.json({ error: "Cidade não encontrada." }, { status: 404 });
 
   try {
-    const row = await q.removerAnuncio(cidade.id_municipio, id);
+    const row = await removerAnuncioD1(cidade.id_municipio, id);
     if (!row) return Response.json({ error: "Anúncio não encontrado." }, { status: 404 });
     return Response.json({ ok: true });
   } catch {

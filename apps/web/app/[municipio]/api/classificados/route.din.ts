@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import * as q from "@/lib/db/queries/betim";
+import { inserirClassificadoD1 } from "@/lib/db/queries/betimD1";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 import {
   CLASSIFICADO_EXPIRACAO_DIAS,
@@ -8,6 +8,11 @@ import {
 } from "@/lib/betim/classificados";
 import { ipDoCliente } from "@/lib/rate-limit-ip";
 import { limitarBaixaFrequencia, respostaLimiteExcedido } from "@/lib/rate-limit";
+
+/**
+ * Mesma divergência de `api/zap/route.din.ts`: GET lê do Postgres (fora do
+ * escopo desta migration), POST grava em D1 desde 2026-08-13.
+ */
 
 /** Rota de cidade: `params.municipio` é o slug, e a consulta filtra por id. */
 type Ctx = { params: Promise<{ municipio: string }> };
@@ -68,7 +73,7 @@ export async function POST(request: NextRequest, { params }: Ctx) {
     // A cidade gravada vem do segmento da rota. Era a constante de build,
     // o que carimbava todo anúncio como de Betim independente de onde o
     // formulário estivesse.
-    const row = await q.inserirClassificado(cidade.id_municipio, {
+    const row = await inserirClassificadoD1(cidade.id_municipio, {
       titulo: validated.value.titulo,
       descricao: validated.value.descricao,
       categoria: validated.value.categoria,

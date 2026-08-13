@@ -35,12 +35,30 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
-  // Conta confirmadamente Free (F0.5b do plano) — nenhum binding de
-  // KV/R2/D1/DO no caminho crítico, por decisão: ISR virou SSG na Fase 5
-  // e o rebuild agendado substitui revalidação dinâmica.
+  // Conta confirmadamente Free (F0.5b do plano). ⟲ 2026-08-13: o `D1`
+  // abaixo é a EXCEÇÃO deliberada a "nenhum binding de armazenamento no
+  // caminho crítico" — ele é o próprio caminho crítico das cinco escritas
+  // ao vivo do portal (pageview, zap, clique, classificados, moderação
+  // admin). KV/R2/DO continuam fora: D1 Free cobre (500 MB por banco, 5M
+  // linhas lidas/dia, 100 mil linhas escritas/dia — medido na doc oficial
+  // em 2026-08-13, https://developers.cloudflare.com/d1/platform/pricing/)
+  // e as cinco tabelas nascem vazias (ver medição no cabeçalho de
+  // `lib/db/schema.d1.ts`).
   "observability": {
     "enabled": true
   },
+  // Banco das ESCRITAS AO VIVO (D1/SQLite) — COEXISTE com o Postgres do
+  // Neon (`lib/db/client.ts`, usado pelo ETL/build e por toda LEITURA).
+  // Ver o cabeçalho de `lib/db/schema.d1.ts` para a razão dos dois bancos
+  // e `lib/db/clientD1.ts` para como o binding é lido em runtime.
+  "d1_databases": [
+    {
+      "binding": "DB_ESCRITAS",
+      "database_name": "controlepopular-escritas",
+      "database_id": "c3818333-4600-45e4-a675-dea967fb75e9",
+      "migrations_dir": "lib/db/migrations-d1"
+    }
+  ],
   // Freio das 4 escritas públicas sem autenticação (pageview, zap,
   // classificados, clique — ver `lib/rate-limit.ts`). Binding `ratelimit`,
   // GA desde set/2026, escolhido depois de comparar com as outras opções

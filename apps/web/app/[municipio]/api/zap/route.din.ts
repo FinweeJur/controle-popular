@@ -1,9 +1,19 @@
 import type { NextRequest } from "next/server";
-import * as q from "@/lib/db/queries/betim";
+import { inserirZapEstabelecimentoD1 } from "@/lib/db/queries/betimD1";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 import { fetchZapEstabelecimentos, validateZapSubmission } from "@/lib/betim/zap";
 import { ipDoCliente } from "@/lib/rate-limit-ip";
 import { limitarBaixaFrequencia, respostaLimiteExcedido } from "@/lib/rate-limit";
+
+/**
+ * GET continua no Postgres (`fetchZapEstabelecimentos`, dado de LEITURA —
+ * fora do escopo desta migration, ver plano do dono). O POST abaixo grava
+ * em D1 (⟲ 2026-08-13) — os dois bancos DIVERGEM até a leitura pública
+ * também migrar ou passar a puxar de D1 no build: um negócio cadastrado
+ * agora só aparece nesta listagem depois que esse próximo passo existir.
+ * Documentado aqui para quem mexer na leitura não descobrir isso pela
+ * ausência de resultado.
+ */
 
 /** Rota de cidade: `params.municipio` é o slug, e a consulta filtra por id. */
 type Ctx = { params: Promise<{ municipio: string }> };
@@ -65,7 +75,7 @@ export async function POST(request: NextRequest, { params }: Ctx) {
   try {
     // A cidade gravada vem do segmento da rota, não mais de uma constante
     // de build que carimbava todo cadastro como de Betim.
-    const row = await q.inserirZapEstabelecimento(cidade.id_municipio, {
+    const row = await inserirZapEstabelecimentoD1(cidade.id_municipio, {
       nome: validated.value.nome,
       whatsapp: validated.value.whatsapp,
       categoria: validated.value.categoria,
