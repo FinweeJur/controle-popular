@@ -139,6 +139,30 @@
   /* SIGMINE — interesse minerário (ANM). Quinta maior lacuna (232,7 -> 265 =
      32,3°) — meio em 248,85°. */
   --layer-sigmine-interesse: oklch(0.754 0.139 248.85); /* #62b5ff azul */
+
+  /* Dinheiro público e mineração (13/08/2026) — docs/HANDOFF-CAMADA-DINHEIRO.md.
+     Mesmo método: meio da maior lacuna que resta no círculo DEPOIS da leva de
+     território/mineração acima. Hues ocupadas antes desta leva (18 ao todo):
+     13,4 / 25 / 55,9 / 75 / 102 / 128,8 / 146,05 / 163,2 / 181,9 / 202,7 /
+     223,5 / 232,7 / 248,85 / 265 / 293,5 / 311,75 / 330 / 351,7. */
+  /* CFEM por município (ANM). NÃO é a maior lacuna do círculo (essa é
+     25 -> 55,9 = 30,9°, mid 40,45° — mas cai perto de --danger/assentamentos
+     e não tem nada a ver com "royalty de mineração"). Terceira maior lacuna
+     (75 -> 102 = 27°) — meio em 88,5° — foi a escolhida: cai no dourado/oliva
+     que o nome sugere, e passa no teto de 11,6° de cada vizinho (13,5° dos
+     dois lados, medido). Confirmado antes de fixar, como o handoff pediu. */
+  --layer-cfem: oklch(0.754 0.139 88.5);              /* #d3a931 dourado */
+  /* Cruzamento dinheiro público × licença ambiental. O handoff propunha
+     magenta/fúcsia (~322°), mas 322° fica a só 8° de --fiction (330°) — abaixo
+     do teto de 11,6° que este arquivo usa desde a leva de 30/07, e --fiction
+     conta na lacuna (ver comentário da leva de território, acima). A região
+     magenta inteira (293,5—351,7) está tomada por vizinhos próximos demais —
+     a maior folga possível ali é 9,1° dos dois lados, sempre abaixo do teto.
+     Segunda maior lacuna REAL do círculo (265 -> 293,5 = 28,5°) — meio em
+     279,25°, roxo-azulado, 14,25° de cada vizinho — é o slot mais próximo do
+     pedido original que não colide. */
+  --layer-dinheiro-cruzamento: oklch(0.754 0.139 279.25); /* #9da4ff roxo-azulado */
+
   /* O alerta de TI × mancha de inundação NÃO tem cor própria, de propósito —
      mesma regra de checagem-g0: usa var(--danger). É risco CALCULADO sobre
      duas camadas que já existem, não uma fonte de dado nova, e reaproveitar

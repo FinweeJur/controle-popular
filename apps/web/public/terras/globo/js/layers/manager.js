@@ -158,7 +158,7 @@ export class LayerManager {
         if (typeof built.update === 'function') this.updaters.set(id, built.update);
         current.visibleCount = featureCount;
       } else {
-        const fc = await fetchLayer(id);
+        const fc = await fetchLayer(id, { comprimida: cfg.comprimida });
         this.geojson.set(id, fc);
         featureCount = fc.features.length;
         object = this._construir(id, cfg, fc);

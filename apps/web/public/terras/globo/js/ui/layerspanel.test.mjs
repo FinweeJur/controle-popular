@@ -35,11 +35,11 @@ import {
   ASSUNTOS, CAMADAS, CAMADAS_RESOLVIDAS, CAMADA_POR_FONTE, LAYER_REGISTRY,
 } from '../config.js';
 
-test('CAMADAS reais: 20 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
+test('CAMADAS reais: 22 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
   const grupos = agruparPorAssunto(CAMADAS_RESOLVIDAS, ASSUNTOS);
 
   assert.equal(
-    CAMADAS.length, 20,
+    CAMADAS.length, 22,
     'sentinela: se este número mudou, CAMADAS cresceu/encolheu e as contagens abaixo precisam ser revistas junto',
   );
   const totalAgrupado = grupos.reduce((n, g) => n + g.camadas.length, 0);
@@ -47,7 +47,7 @@ test('CAMADAS reais: 20 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
 
   assert.deepEqual(
     grupos.map((g) => g.id),
-    ['sem-cadastro', 'terra-publica', 'territorio-mineracao', 'cidade', 'pistas', 'referencia'],
+    ['sem-cadastro', 'terra-publica', 'territorio-mineracao', 'dinheiro', 'cidade', 'pistas', 'referencia'],
   );
 
   // Checagem cruzada 1:1 contra o registro, não só a contagem.
@@ -61,14 +61,15 @@ test('CAMADAS reais: 20 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   }
 });
 
-test('a reorganização de fato UNIFICOU: 25 fontes em 20 linhas, e as 5 que somem são as irmãs', () => {
-  assert.equal(LAYER_REGISTRY.length, 25, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 20, 'sentinela: o número de LINHAS mudou');
+test('a reorganização de fato UNIFICOU: 27 fontes em 22 linhas, e as 5 que somem são as irmãs', () => {
+  assert.equal(LAYER_REGISTRY.length, 27, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 22, 'sentinela: o número de LINHAS mudou');
 
   // As cinco camadas com mais de uma fonte continuam sendo exatamente os
   // conceitos que apareciam repetidos, um por região — as seis camadas de
-  // território/mineração de 13/08 são cada uma fonte única (nenhuma tem
-  // irmã regional: ver a nota em config.js sobre `regioes` ausente nelas).
+  // território/mineração de 13/08 e as duas de dinheiro público (mesmo dia,
+  // handoff à parte) são cada uma fonte única (nenhuma tem irmã regional: ver
+  // a nota em config.js sobre `regioes` ausente nelas).
   const comVariasFontes = CAMADAS.filter((c) => c.fontes.length > 1).map((c) => c.id).sort();
   assert.deepEqual(comVariasFontes, [
     'assentamentos',
@@ -103,6 +104,9 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     // docs/FONTES-TERRITORIO-E-MINERACAO.md.
     'zas-barragens', 'mancha-inundacao-barragens', 'terras-indigenas',
     'alerta-ti-mancha', 'sigmine-operacao', 'sigmine-interesse',
+    // Dinheiro público e mineração (13/08/2026) — ver
+    // docs/HANDOFF-CAMADA-DINHEIRO.md.
+    'cfem-municipios', 'cruzamento-dinheiro-ambiental-4cidades',
   ];
 
   const existentes = LAYER_REGISTRY.map((f) => f.id).sort();
