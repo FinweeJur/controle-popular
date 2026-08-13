@@ -29,3 +29,37 @@
 
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable
+
+# ═══ CABEÇALHOS DE SEGURANÇA — TODO O SITE ═══
+#
+# Repete a política de `next.config.ts` (bloco `SECURITY_HEADERS`/
+# `CSP_REPORT_ONLY` — leia o comentário lá, é onde a decisão está explicada)
+# porque este arquivo é quem de fato governa a resposta pra praticamente
+# todo o site. `wrangler.jsonc` não tem `run_worker_first`, então qualquer
+# request que bate num arquivo existente no binding de Static Assets —
+# TODA página SSG pré-renderizada, e tudo em `public/`, inclusive o globo 3D
+# em `/terras/globo/` — é respondida aqui, sem passar pelo Worker/Next. Só
+# rota que o Worker de fato executa (API routes, página com
+# `runtime = "nodejs"`) usa o `headers()` do Next em vez disto.
+#
+# Os dois arquivos precisam mudar JUNTOS. Mudar só um deixa a outra metade
+# do site sem a proteção, sem erro nenhum avisando — é assim que o
+# `Cache-Control` genérico do comentário acima também escapava, e é o motivo
+# deste arquivo já existir.
+#
+# CSP em Report-Only de propósito — ver o comentário completo em
+# `next.config.ts`. Resumo: 'unsafe-inline' em script-src é exigido pelos
+# dois `<script>` inline de `app/layout.tsx` (anti-flash) e pelo
+# `__next_f.push(...)` que o próprio Next injeta pra hidratar, nenhum dos
+# dois hasheável de forma estável entre builds; em style-src é exigido pelos
+# gráficos que escrevem `style` via JS e pelo globo 3D
+# (`rotulos.js`/`layerspanel.js`/`listapanel.js`). `server.arcgisonline.com`
+# e `tile.openstreetmap.org` são os tiles de satélite/OSM que
+# `terras/globo/detalhe.html` carrega.
+/*
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https://server.arcgisonline.com https://tile.openstreetmap.org; font-src 'self' https://cdn.fontshare.com; connect-src 'self'; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
