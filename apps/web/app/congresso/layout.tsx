@@ -84,6 +84,17 @@ export default function CongressoLayout({
             >
               Betim →
             </a>
+            {/* Direitos em Movimento é RAIZ, não zona irmã — mesmo <a> cru
+                pelo mesmo motivo, mas cor própria (`--cp-alert`) porque não
+                é um sexto eixo de poder, é transversal aos cinco (ver o
+                bloco em `app/page.tsx`). */}
+            <a
+              href="/direitos-em-movimento"
+              className="rounded-md border px-2.5 py-1 text-xs font-medium"
+              style={{ borderColor: "var(--cp-alert)", color: "var(--cp-alert)" }}
+            >
+              Direitos em Movimento →
+            </a>
             <FontSizeControl />
             <ThemeSwitcher />
             <CvdToggle />

@@ -138,7 +138,70 @@ export default async function Hub() {
         )}
       </div>
 
-      <section className="mt-12 rounded-lg border border-border p-6">
+      {/* ═══ DIREITOS EM MOVIMENTO — BLOCO PRÓPRIO, NÃO SEXTA FRENTE ═══
+          Decisão do dono (13/08): NÃO entra em `ZONAS`/`SECOES` acima. As
+          cinco frentes são EIXOS DE PODER — lugares onde alguém decide
+          sobre a vida da pessoa (prefeitura/câmara, Congresso, tribunais,
+          COPAM, terra). Esta seção não é um sexto lugar de decisão; é o
+          que a pessoa FAZ com o que achou nas outras cinco — transversal,
+          não paralela. Entrar em `ZONAS` faria a seção reivindicar um
+          estatuto que não tem, e arrastaria layout/nav/rodapé de zona que
+          ela não precisa (ver `lib/zonas.ts`). Por isso o tratamento
+          visual abaixo é deliberadamente diferente do grid de cards acima
+          — cor própria (`--cp-alert`, não usada por nenhuma das cinco
+          frentes) e forma de banner largo, não mais um card na grade. */}
+      <section
+        className="mt-10 rounded-lg border-2 p-6"
+        style={{ borderColor: "var(--cp-alert)" }}
+      >
+        <span
+          className="text-[.82em] font-semibold uppercase tracking-wide"
+          style={{ color: "var(--cp-alert)" }}
+        >
+          Transversal às cinco frentes
+        </span>
+        <h2 className="mt-2 font-display text-xl font-semibold">Direitos em Movimento</h2>
+        <p className="mt-2 max-w-2xl text-[.95em] text-text-soft">
+          Sofreu ou viu uma violação de direito? Que lei protege, onde buscar ajuda, como
+          pedir informação e como denunciar — reunidos num lugar só, sem precisar saber em
+          que frente do site cada resposta mora.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2 text-[.85em]">
+          <a
+            href="/ambiental/direito-critico"
+            className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
+          >
+            Que lei protege isso
+          </a>
+          <a
+            href="/direitos-em-movimento/ajuda"
+            className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
+          >
+            Onde buscar ajuda
+          </a>
+          <a
+            href="/direitos-em-movimento/informacao"
+            className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
+          >
+            Como pedir informação
+          </a>
+          <a
+            href="/direitos-em-movimento/denuncia"
+            className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
+          >
+            Como denunciar
+          </a>
+        </div>
+        <a
+          href="/direitos-em-movimento"
+          className="mt-4 inline-block font-medium"
+          style={{ color: "var(--cp-alert)" }}
+        >
+          Entrar em Direitos em Movimento →
+        </a>
+      </section>
+
+      <section className="mt-8 rounded-lg border border-border p-6">
         <h2 className="font-display text-lg font-semibold">Por que três portais</h2>
         <p className="mt-2 text-[.95em] text-text-soft">
           O poder público se divide em três frentes, e cada uma decide algo diferente: o

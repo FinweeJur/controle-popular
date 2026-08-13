@@ -121,6 +121,17 @@ export default function Header({ cidade }: { cidade: Cidade }) {
         >
           Judiciário →
         </a>
+        {/* Direitos em Movimento é RAIZ, fora do basePath desta cidade —
+            <a> cru pelo mesmo motivo dos três botões acima, mas cor
+            própria (`--cp-alert`): não é zona irmã, é transversal às
+            cinco frentes (ver o bloco em `app/page.tsx`). */}
+        <a
+          href="/direitos-em-movimento"
+          className="cp-btn-anim rounded-md border px-2.5 py-1 text-[.8em] font-medium transition-colors duration-150"
+          style={{ borderColor: "var(--cp-alert)", color: "var(--cp-alert)" }}
+        >
+          Direitos em Movimento →
+        </a>
         <ThemeSwitcher />
         <CvdToggle />
         <FontSizeControl />
