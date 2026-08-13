@@ -101,7 +101,12 @@ describe("nenhum CPF real em arquivo versionado", () => {
   test("a régua do mod-11 funciona nos dois sentidos", () => {
     // Sem isto, um bug no validador faria o teste acima passar sempre — que é
     // o pior modo de falha possível para um guarda de privacidade.
-    expect(cpfValido("39238687668")).toBe(true);   // um dos que vazaram
+    // `12345678909` e nao um dos que vazaram: o CPF canonico de teste do
+    // Brasil e mod-11 valido sem ser de ninguem. A primeira versao deste
+    // arquivo usava aqui um dos CPF REAIS que o commit estava removendo --
+    // o teste que guarda contra CPF real carregando um CPF real, pela
+    // mesma logica que criou o vazamento original: "e so um exemplo".
+    expect(cpfValido("12345678909")).toBe(true);
     expect(cpfValido("00000000000")).toBe(false);  // o substituto sintético
     expect(cpfValido("11111111111")).toBe(false);  // dígitos repetidos
     expect(cpfValido("12345678900")).toBe(false);  // DV errado

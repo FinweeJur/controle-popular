@@ -1,0 +1,35 @@
+# Rede de segurança para quando o hook não rodou.
+#
+# O hook de pre-push (`.githooks/pre-push`) depende de cada clone ter rodado
+# `git config core.hooksPath .githooks`. Quem não rodou não tem proteção
+# nenhuma, e não recebe aviso disso — é o modo de falha silencioso daquele
+# mecanismo. Esta action não depende de configuração de máquina.
+#
+# Contexto: em 13/08/2026 seis CPF de pessoa real foram achados já publicados
+# no `origin/main` deste repositório, que é PÚBLICO. Quatro deles estavam no
+# comentário que documenta a função que remove CPF.
+
+name: Dado pessoal e segredo
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # A checagem varre o conteúdo RASTREADO, não o histórico — mas sem o
+          # checkout completo o `git grep` só enxerga um commit, e um arquivo
+          # que entrou antes passaria batido.
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Procurar CPF de pessoa real e segredo
+        run: python scripts/checar-dado-pessoal.py

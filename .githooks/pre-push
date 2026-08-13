@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# Barra o push quando há CPF de pessoa real ou segredo em arquivo de código.
+#
+# ═══ POR QUE UM HOOK, E NÃO SÓ O TESTE ═══
+#
+# Em 13/08/2026 seis CPF de pessoa real foram descobertos JÁ PUBLICADOS no
+# `origin/main` de um repositório público. Nenhuma das defesas do projeto pegou,
+# porque todas vivem no caminho do DADO (lista branca de colunas na exportação,
+# `PROIBIDOS`, `_sanitizar_nome`) e o vazamento foi por COMENTÁRIO DE CÓDIGO.
+#
+# Um teste só protege quem roda o teste. Este hook roda sozinho, no último
+# instante em que o dado ainda é local — depois do push não há desfazer que
+# resolva, porque o GitHub guarda o commit órfão acessível por hash mesmo depois
+# de um force push.
+#
+# ═══ COMO LIGAR (uma vez por máquina, em cada clone) ═══
+#
+#     git config core.hooksPath .githooks
+#
+# `.git/hooks` não é versionado, por isso o hook mora aqui e o `core.hooksPath`
+# aponta para cá. Sem esse comando, o hook existe no repo e não roda — é o modo
+# de falha silencioso deste mecanismo, e o motivo de a CI ser a segunda camada.
+#
+# Emergência real: `git push --no-verify` pula a checagem. Se você usar, diga no
+# commit por quê. Pular calado é como arrancar o detector de fumaça porque ele
+# apitou.
+
+set -e
+
+if command -v python >/dev/null 2>&1; then
+    PY=python
+elif command -v python3 >/dev/null 2>&1; then
+    PY=python3
+else
+    echo "⚠️  pre-push: Python não encontrado — checagem de dado pessoal PULADA."
+    echo "    Instale o Python ou rode a checagem na CI antes de confiar neste push."
+    exit 0
+fi
+
+RAIZ=$(git rev-parse --show-toplevel)
+CHECADOR="$RAIZ/scripts/checar-dado-pessoal.py"
+
+if [ ! -f "$CHECADOR" ]; then
+    echo "⚠️  pre-push: $CHECADOR não existe — checagem PULADA."
+    exit 0
+fi
+
+"$PY" "$CHECADOR"
