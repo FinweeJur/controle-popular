@@ -48,6 +48,29 @@ function ringsOf(geometry) {
 }
 
 /**
+ * Percorre as feições de uma FeatureCollection respeitando um filtro opcional.
+ *
+ * Existe para que o filtro de região do painel possa desenhar só PARTE de um
+ * arquivo sem que ninguém precise construir uma FeatureCollection nova. Isso
+ * não é economia de alocação: é o que mantém o índice de cada área igual ao
+ * índice dela NO ARQUIVO. O índice é endereço público — vai no deep-link
+ * `#area=<fonte>:<índice>` e no link da vista 2D — então uma cópia filtrada,
+ * que renumera de 0, quebraria todo link já compartilhado de uma área que por
+ * acaso ficasse depois de uma escondida.
+ *
+ * @param {object} fc
+ * @param {(feature: object, i: number) => boolean} [incluir]
+ * @yields {object} feature
+ */
+function* feicoes(fc, incluir) {
+  const lista = fc.features ?? [];
+  for (let i = 0; i < lista.length; i++) {
+    if (incluir && !incluir(lista[i], i)) continue;
+    yield lista[i];
+  }
+}
+
+/**
  * Converte uma FeatureCollection em THREE.LineSegments (contornos).
  * Cada par de vértices consecutivos de cada anel vira um segmento.
  *
@@ -55,11 +78,12 @@ function ringsOf(geometry) {
  * @param {object} [opts]
  * @param {number|string} [opts.color=0x38bdf8] cor da linha (hex do registro)
  * @param {number} [opts.opacity=0.9]
+ * @param {function} [opts.incluir] filtro por feição — ver `feicoes()`
  * @returns {THREE.LineSegments}
  */
-export function geojsonToLines(fc, { color = 0x38bdf8, opacity = 0.9 } = {}) {
+export function geojsonToLines(fc, { color = 0x38bdf8, opacity = 0.9, incluir } = {}) {
   const positions = [];
-  for (const f of fc.features ?? []) {
+  for (const f of feicoes(fc, incluir)) {
     for (const ring of ringsOf(f.geometry)) {
       for (let i = 0; i < ring.length - 1; i++) {
         const [lonA, latA] = ring[i];
@@ -88,13 +112,14 @@ export function geojsonToLines(fc, { color = 0x38bdf8, opacity = 0.9 } = {}) {
  * @param {object} [opts]
  * @param {number|string} [opts.color=0xfbbf24]
  * @param {number} [opts.opacity=0.28]
+ * @param {function} [opts.incluir] filtro por feição — ver `feicoes()`
  * @returns {THREE.Mesh}
  */
-export function geojsonToFilled(fc, { color = 0xfbbf24, opacity = 0.28 } = {}) {
+export function geojsonToFilled(fc, { color = 0xfbbf24, opacity = 0.28, incluir } = {}) {
   const positions = [];
   const indices = [];
   let offset = 0;
-  for (const f of fc.features ?? []) {
+  for (const f of feicoes(fc, incluir)) {
     const polys = f.geometry?.type === 'Polygon' ? [f.geometry.coordinates]
       : f.geometry?.type === 'MultiPolygon' ? f.geometry.coordinates
       : [];
@@ -140,11 +165,12 @@ export function geojsonToFilled(fc, { color = 0xfbbf24, opacity = 0.28 } = {}) {
  * @param {object} [opts]
  * @param {number|string} [opts.color=0xfbbf24]
  * @param {number} [opts.size=0.01]
+ * @param {function} [opts.incluir] filtro por feição — ver `feicoes()`
  * @returns {THREE.Points}
  */
-export function geojsonToPoints(fc, { color = 0xfbbf24, size = 0.01 } = {}) {
+export function geojsonToPoints(fc, { color = 0xfbbf24, size = 0.01, incluir } = {}) {
   const positions = [];
-  for (const f of fc.features ?? []) {
+  for (const f of feicoes(fc, incluir)) {
     const g = f.geometry;
     if (!g) continue;
     const coords = g.type === 'Point' ? [g.coordinates]

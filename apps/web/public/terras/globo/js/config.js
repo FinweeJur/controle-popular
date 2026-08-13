@@ -77,9 +77,20 @@ export const ABERTURA = { id: 'abertura', label: 'Minas Gerais', boundary: 'mg' 
 //             de fixture: o globo é a vitrine do projeto, e polígono inventado
 //             com cara de oficial é o erro que custou duas semanas de
 //             diagnóstico errado na Fase 0.
-// - regiao  = a qual REGIÃO DE ESTUDO a camada pertence — ver REGIOES_CAMADAS
-//             logo abaixo. Omitido (undefined) = a camada cai no grupo
-//             'geral', para quem não pertence a região nenhuma.
+// - regioes = de quais REGIÕES DE ESTUDO (ver REGIOES acima) esta FONTE traz
+//             área. Lista, porque o pipeline grava os dois vales num arquivo
+//             só. Omitido/`null` = a fonte não é de região nenhuma (a moldura
+//             de municípios, os satélites, o cadastro de UM município, as
+//             normas das cidades do estudo): o filtro de região não a esconde,
+//             porque esconder exigiria afirmar uma região que ela não tem.
+// - mesoIndistinta = a fonte mistura Jequitinhonha e Mucuri E o dado NÃO
+//             permite dizer de qual mesorregião é cada área — não há
+//             `codigo_ibge` nem `municipio` nas propriedades, só `area_ha`.
+//             Com o filtro num dos dois vales, a fonte entra INTEIRA e o painel
+//             AVISA que ela traz também o outro vale. Fingir o contrário —
+//             esconder a camada, ou mostrá-la como se estivesse filtrada —
+//             seria precisão que o dado não tem. Conferido área por área hoje:
+//             ver o comentário de cada fonte.
 // - vazia   = a fonte está estruturalmente vazia HOJE: o arquivo é uma
 //             FeatureCollection sem nenhuma feição, não um erro de rede nem
 //             carga que ainda não aconteceu (ver ui/layerspanel.js, que
@@ -94,52 +105,85 @@ export const ABERTURA = { id: 'abertura', label: 'Minas Gerais', boundary: 'mg' 
 // ---------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------
-// Regiões de estudo — como o painel de camadas (ui/layerspanel.js) agrupa o
-// LAYER_REGISTRY. Existem porque duas leituras de fora do projeto (a mais
-// recente, do próprio dono) confundiram os cinco pares de camadas irmãs
-// (bacia do Paraopeba × Vales do Mucuri e Jequitinhonha) com duplicata: a
-// única pista de que são DUAS REGIÕES, e não a mesma coisa duas vezes, era um
-// sufixo "— Vales" no fim de um rótulo comprido. Agrupar por região põe a
-// pista no lugar onde ela precisa estar — no título da seção, antes de
-// qualquer nome de camada — sem mexer numa cor sequer: a cor continua
-// identificando O QUE a camada é (ver css/tokens/colors.css), o grupo
-// identifica ONDE.
+// DOIS EIXOS: o painel agrupa por ASSUNTO, e a região é um filtro à parte
 //
-// 'bacia' primeiro: é a região em que o globo abre por padrão (ABERTURA
-// acima) e a única camada de DADO ligada de saída é dela —
-// `vazio-cadastral-bacia`, as manchas roxas que o cartão de abertura manda
-// procurar ("As manchas roxas são terra sem cadastro rural"). Uma versão
-// anterior deste arquivo pôs 'geral' primeiro, o que empurrava essa camada
-// para `offsetTop: 1037px` num painel de `clientHeight: 743px` — abaixo da
-// dobra, sem rolar não dava pra ver. Medido de novo agora, já com esta ordem
-// (`layers-panel.querySelector('[data-layer-id="vazio-cadastral-bacia"]')
-// .offsetTop`, num navegador real via `node` servindo `apps/web/public`
-// estático): `offsetTop: 68px` num painel de `clientHeight: 743px` no
-// desktop, `offsetTop: 64px` num painel de `clientHeight: 501px` no celular
-// (375×812) — visível sem rolar nos dois. 'vales' depois, a segunda região de
-// estudo, ligada por escolha. 'geral' por ÚLTIMO: `municipios-mg` (a moldura)
-// e os satélites já nascem ligados por padrão — ninguém precisa rolar até
-// aqui para encontrá-los — e o resto do grupo (lotes vagos de BH, devolutas,
-// notícias, normas geolocalizadas) se procura por nome, não por posição no
-// topo da lista.
+// ⟲ 13/08/2026 — substitui o agrupamento por região que vigorou de 12/08 a
+// hoje. Aquele agrupamento tornou a lista legível, mas não resolveu o problema
+// que o dono relatou, e ele voltou a relatá-lo: "a questão das camadas tá muito
+// confuso. Não vamos ficar ligando apenas do Paraopeba ou dos Vales."
 //
-// ⟲ POR QUE CAMPO NOVO, E NÃO DERIVAR DO SUFIXO DO ID. O sufixo `-vales` é
-// convenção do PIPELINE (pipeline/regioes.py escreve os arquivos assim), não
-// um contrato da UI, e não é confiável para os dois fins: `vazio-cadastral`
-// (o recorte só de Curvelo) É da bacia e não leva sufixo nenhum; e
-// `normas-geolocalizadas` mistura município da bacia (Betim, BH) com
-// município dos Vales (Araçuaí, Diamantina) num arquivo só, porque a extração
-// varreu as duas regiões juntas — não há sufixo que descreva isso, porque a
-// camada não pertence a uma região, pertence às duas ou a nenhuma. Um regex
-// sobre o id ia precisar da mesma lista de exceções que este campo já é,
-// só que escondida numa função em vez de visível aqui. Campo explícito é uma
-// fonte de verdade só, não sobrevive a um id renomeado pelo pipeline sem
-// avisar, e é a mesma camada de decisão que `listavel`/`fixture` já usam.
+// O diagnóstico, contado no registro de hoje: as 19 fontes do LAYER_REGISTRY
+// cobrem só 14 assuntos, porque CINCO conceitos apareciam duas ou três vezes,
+// um por região — assentamentos, quilombolas, terra pública certificada,
+// imóveis da União e terra sem cadastro. Agrupar por região deixou os irmãos em
+// seções diferentes, o que explica que sejam lugares distintos mas PIORA o que
+// a pessoa quer fazer: para ver todos os assentamentos de Minas era preciso
+// descobrir que existem dois interruptores de nome quase igual, em seções
+// diferentes, e ligar os dois. Ninguém que abre o mapa pela primeira vez faz
+// isso.
+//
+// Agora: uma linha por CONCEITO (`CAMADAS`, mais abaixo), agrupada por ASSUNTO;
+// a região vira um filtro independente, que não muda o que está ligado, só o
+// recorte do que aparece. Ligar "Assentamentos da reforma agrária" liga o dado
+// de todas as regiões que existem.
+//
+// A COR NÃO MUDA e continua identificando O QUE a camada é (ver
+// css/tokens/colors.css) — agora com uma vantagem que o modelo antigo não
+// tinha: como cada conceito é UMA linha, as cores repetidas entre irmãs
+// deixaram de ser duas linhas da mesma cor e passaram a ser uma só.
 // ---------------------------------------------------------------------------
-export const REGIOES_CAMADAS = [
-  { id: 'bacia', titulo: 'Bacia do Paraopeba' },
-  { id: 'vales', titulo: 'Vales do Mucuri e Jequitinhonha' },
-  { id: 'geral', titulo: 'Geral' },
+
+// ---------------------------------------------------------------------------
+// Eixo 1 — ASSUNTO: o que a camada mostra. É a ordem da lista.
+//
+// 'sem-cadastro' primeiro porque é o achado central do projeto e porque a única
+// camada de DADO ligada de saída é dele — as manchas roxas que o cartão de
+// abertura (ui/intro.js) manda procurar. Medido num navegador real servindo
+// `apps/web/public` estático, já com esta ordem:
+// `#layers-panel [data-camada-id="vazio-cadastral"]`.offsetTop = 153px num
+// painel de clientHeight 743px — visível sem rolar. Os 153px são o cabeçalho
+// mais o filtro de região, que passou a morar acima da lista; a camada continua
+// acima da dobra, com folga de quase 600px.
+//
+// 'referencia' por último: são a moldura (divisas) e os satélites, que já nascem
+// ligados e ninguém precisa procurar.
+//
+// O painel inteiro encolheu de 3.084px para 958px de conteúdo — medido nos dois
+// checkouts lado a lado, 19 linhas de 152px de altura média contra 14 de ~46px,
+// e 2.804 caracteres de explicação sempre na tela contra zero (agora sob o "?").
+// ---------------------------------------------------------------------------
+export const ASSUNTOS = [
+  { id: 'sem-cadastro',  titulo: 'Terra sem cadastro' },
+  { id: 'terra-publica', titulo: 'Terra pública e destinação' },
+  { id: 'cidade',        titulo: 'Cidade e imóveis urbanos' },
+  { id: 'pistas',        titulo: 'Fiscalização e pistas' },
+  { id: 'referencia',    titulo: 'Referência do mapa' },
+];
+
+// ---------------------------------------------------------------------------
+// Eixo 2 — REGIÃO: onde. Filtro próprio, independente do que está ligado.
+//
+// ⚠️ NOMENCLATURA CORRIGIDA, e é fato, não gosto. O rótulo antigo era "Vales do
+// Mucuri e Jequitinhonha", juntando DUAS mesorregiões distintas do IBGE numa
+// entrada só. Conferido em `C:/DevCoder/terras-devolutas/pipeline/regioes.py`:
+// `jequitinhonha` (mesorregião 3103) e `mucuri` (3104) são tabelas separadas,
+// com 51 e 23 municípios — contados agora, e sem nenhum código em comum; a
+// entrada `vales` de lá é só a união das duas (74). Como Minas tem outros vales
+// (Vale do Aço, Vale do Rio Doce), "Vales" sem sobrenome é ambíguo, e o dono
+// pediu que se diga sempre qual.
+//
+// Elas aparecem separadas aqui porque o DADO sustenta a separação na maior
+// parte dos casos — ver `mesoIndistinta` nas fontes abaixo, que marca
+// exatamente as três camadas em que não sustenta. Sem `data/mesorregioes.js`
+// esta separação seria só um rótulo mais bonito sobre o mesmo balaio.
+//
+// 'todas' não está na lista: é o estado de partida do filtro (nenhuma região
+// escolhida = todas), não uma região. Ver ui/layerspanel.js.
+// ---------------------------------------------------------------------------
+export const REGIOES = [
+  { id: 'bacia',         titulo: 'Bacia do Paraopeba',    curto: 'Paraopeba' },
+  { id: 'jequitinhonha', titulo: 'Vale do Jequitinhonha', curto: 'Jequitinhonha' },
+  { id: 'mucuri',        titulo: 'Vale do Mucuri',        curto: 'Mucuri' },
 ];
 
 export const LAYER_REGISTRY = [
@@ -154,7 +198,7 @@ export const LAYER_REGISTRY = [
     id: 'vazio-cadastral-bacia', label: 'Terra sem cadastro — bacia do Paraopeba',
     hint: 'As 35 maiores áreas que nenhum imóvel declarou no CAR, de 500 hectares (5 km²) para cima. Quase todas são redes de corredores estreitos, não manchas. É o que o método chama de vazio cadastral.',
     aviso: 'Sem cadastro não quer dizer sem dono. Pode ser terra pública, pode ser imóvel particular que nunca se cadastrou. É um lugar para conferir, não uma conclusão.',
-    color: 0xb49dff,   /* --layer-vazio-bacia */ on: true, render: 'fill', listavel: true, regiao: 'bacia',
+    color: 0xb49dff,   /* --layer-vazio-bacia */ on: true, render: 'fill', listavel: true, regioes: ['bacia'],
   },
   {
     id: 'vazio-cadastral', label: 'Terra sem cadastro — só Curvelo',
@@ -163,7 +207,7 @@ export const LAYER_REGISTRY = [
     // Sem sufixo `-bacia` no id (é o recorte piloto de Curvelo, não o cálculo
     // dos 14 municípios), mas a região É a bacia do Paraopeba — Curvelo é um
     // dos municípios dela. Exatamente o caso que um regex sobre o id erraria.
-    color: 0xd0baff,   /* --layer-vazio-curvelo, irmã mais clara */ on: false, render: 'fill', listavel: true, regiao: 'bacia',
+    color: 0xd0baff,   /* --layer-vazio-curvelo, irmã mais clara */ on: false, render: 'fill', listavel: true, regioes: ['bacia'],
   },
   // --- Terra pública que EXISTE em base aberta -----------------------------
   //
@@ -180,17 +224,17 @@ export const LAYER_REGISTRY = [
     id: 'terra-publica-certificada', label: 'Terra pública com medição oficial',
     hint: '19 áreas, 12.240 hectares (122 km²), que o INCRA certificou como públicas na bacia — 0,5% do território. É a única terra que uma base aberta afirma ser do poder público.',
     aviso: 'Certificada como pública não quer dizer sem destino: 99% desta área já é assentamento.',
-    color: 0x00cbb6,   /* --layer-terra-publica */ on: false, render: 'fill', listavel: true, regiao: 'bacia',
+    color: 0x00cbb6,   /* --layer-terra-publica */ on: false, render: 'fill', listavel: true, regioes: ['bacia'],
   },
   {
     id: 'assentamentos', label: 'Assentamentos da reforma agrária',
     hint: '21 áreas, 13.438 hectares (134 km²). Terra pública que já tem destino — por isso sai do cálculo de terra sem cadastro.',
-    color: 0xf19650,   /* --layer-assentamentos */ on: false, render: 'fill', listavel: true, regiao: 'bacia',
+    color: 0xf19650,   /* --layer-assentamentos */ on: false, render: 'fill', listavel: true, regioes: ['bacia'],
   },
   {
     id: 'territorios-quilombolas', label: 'Territórios quilombolas',
     hint: '2 áreas, 22 hectares na bacia — uns 31 campos de futebol. Território tradicional titulado ou em titulação, pelo INCRA.',
-    color: 0x94c05b,   /* --layer-quilombolas */ on: false, render: 'fill', listavel: true, regiao: 'bacia',
+    color: 0x94c05b,   /* --layer-quilombolas */ on: false, render: 'fill', listavel: true, regioes: ['bacia'],
   },
   // Vazio URBANO, que é assunto diferente do vazio cadastral rural — e tem
   // instrumento jurídico próprio: CF art. 182, §4º e Estatuto da Cidade arts.
@@ -217,7 +261,7 @@ export const LAYER_REGISTRY = [
     id: 'checagem-g0', label: 'Amostra em conferência',
     hint: '63 áreas sorteadas ou escolhidas para alguém conferir uma a uma na imagem de satélite. É como se mede quanto o método erra.',
     aviso: 'Nada aqui está conferido ainda — é a fila de conferência, não o resultado dela.',
-    color: 0xe2a138,   /* --caution: amostra em conferência É ressalva */ on: false, render: 'fill', listavel: true, regiao: 'bacia',
+    color: 0xe2a138,   /* --caution: amostra em conferência É ressalva */ on: false, render: 'fill', listavel: true, regioes: ['bacia'],
   },
   {
     id: 'devolutas-arrecadadas', label: 'Terras devolutas já reconhecidas',
@@ -250,7 +294,7 @@ export const LAYER_REGISTRY = [
     id: 'spu-imoveis-uniao', label: 'Imóveis do governo federal',
     hint: '553 imóveis da União na bacia, do cadastro da SPU — de escola e prédio público a fazenda e terreno vago. 79 deles estão registrados como "sem destinação definida" em todas as suas utilizações.',
     aviso: 'Cada ponto marca ONDE fica o imóvel, não o contorno dele: a SPU não publica o perímetro. O tamanho vem do cadastro, não do desenho. Endereço não é exibido. Um imóvel pode ter mais de uma utilização, com regimes diferentes: quando tem, todas aparecem no campo "regime".',
-    color: 0x45ca96,   /* --layer-spu */ on: false, render: 'point', pointSize: 0.006, listavel: true, regiao: 'bacia',
+    color: 0x45ca96,   /* --layer-spu */ on: false, render: 'point', pointSize: 0.006, listavel: true, regioes: ['bacia'],
   },
   // ⚠️ Escopo corrigido em 30/07/2026. O hint dizia "conflito de terra", e o
   // alvo é outro: terreno abandonado, prédio abandonado, lugar fechado.
@@ -271,21 +315,34 @@ export const LAYER_REGISTRY = [
     // acima é literal, não retórica de carregamento.
     vazia: true,
   },
-  // --- Vales do Mucuri e do Jequitinhonha (06/08/2026) --------------------
+  // --- Jequitinhonha e Mucuri (06/08/2026) --------------------------------
   //
-  // Segunda região de estudo. Todas nascem DESLIGADAS: quem abre o globo cai
-  // sobre o Paraopeba, e ligar 74 municípios a mais de saída faria a primeira
-  // tela virar mancha. O sufixo `-vales` no id é o que mantém as duas regiões
-  // em arquivos separados (pipeline/regioes.py).
+  // Segunda e terceira regiões de estudo, num arquivo só por fonte: o pipeline
+  // grava a UNIÃO das duas mesorregiões com sufixo `-vales`
+  // (pipeline/regioes.py, entrada `vales` = MUCURI + JEQUITINHONHA). Todas
+  // nascem DESLIGADAS: quem abre o globo cai sobre o Paraopeba, e ligar 74
+  // municípios a mais de saída faria a primeira tela virar mancha.
+  //
+  // ⚠️ "Vales" saiu dos rótulos (13/08). Duas mesorregiões distintas do IBGE
+  // num nome só, num estado que tem Vale do Aço e Vale do Rio Doce, é ambíguo —
+  // e o dono pediu que se diga sempre qual. Onde a fonte permite separar, quem
+  // separa é o filtro de região; onde não permite, o rótulo diz "Jequitinhonha
+  // e Mucuri" por extenso e a fonte se marca `mesoIndistinta`.
   //
   // As cores repetem as das camadas irmãs do Paraopeba de propósito: a cor
-  // identifica O QUE a camada é, não onde fica. Trocar o matiz por região faria
-  // "terra pública" ter duas cores e quebraria a leitura do painel.
+  // identifica O QUE a camada é, não onde fica. Desde 13/08 isso deixou de ser
+  // um custo — como cada conceito é UMA linha no painel, as duas fontes de
+  // mesma cor moram na mesma linha em vez de parecerem duplicata.
   {
-    id: 'vazio-cadastral-vales', label: 'Terra sem cadastro — Vales do Mucuri e Jequitinhonha',
+    id: 'vazio-cadastral-vales', label: 'Terra sem cadastro — Jequitinhonha e Mucuri',
     hint: 'As 325 maiores áreas que nenhum imóvel declarou no CAR nos 74 municípios das duas mesorregiões, de 500 hectares (5 km²) para cima.',
     aviso: 'Sem cadastro não quer dizer sem dono. Pode ser terra pública, pode ser imóvel particular que nunca se cadastrou. É um lugar para conferir, não uma conclusão.',
-    color: 0xb49dff,   /* --layer-vazio-bacia: mesma coisa, outra região */ on: false, render: 'fill', listavel: true, regiao: 'vales',
+    // SEPARÁVEL por mesorregião: contadas hoje, as 325 áreas trazem
+    // `codigo_ibge` em 325 delas (100%), e todos os 325 códigos caem nas
+    // tabelas do IBGE — 279 no Jequitinhonha, 46 no Mucuri, nenhum fora. Por
+    // isso NÃO leva `mesoIndistinta`: o filtro de região filtra área por área.
+    color: 0xb49dff,   /* --layer-vazio-bacia: mesma coisa, outra região */ on: false, render: 'fill', listavel: true,
+    regioes: ['jequitinhonha', 'mucuri'],
   },
   // A camada nova do eixo de função social. É a única do projeto em que o
   // indício NÃO é inferência sobre imagem: cada polígono é um auto de infração
@@ -294,7 +351,7 @@ export const LAYER_REGISTRY = [
   // salto que este projeto existe para não dar.
   {
     id: 'embargos-ambientais-vales', label: 'Áreas embargadas por infração ambiental',
-    hint: '797 áreas embargadas pela fiscalização ambiental de Minas nos Vales, somando 4.105 hectares (41 km²). Supressão de vegetação responde por 642 delas.',
+    hint: '797 áreas embargadas pela fiscalização ambiental de Minas no Jequitinhonha e no Mucuri, somando 4.105 hectares (41 km²). Supressão de vegetação responde por 642 delas.',
     aviso: 'Embargo não é decisão final — cabe defesa e recurso. E recai sobre a área da infração, não sobre o imóvel inteiro. Ausência de embargo aqui não quer dizer regularidade: pode ser só ausência de fiscalização. Nome e documento do autuado não são exibidos.',
     // Ganhou cor PRÓPRIA em 12/08: usava 0xe2a138, o mesmo âmbar de
     // `checagem-g0`. As duas são 'fill' e listáveis, então ligadas ao mesmo
@@ -303,29 +360,54 @@ export const LAYER_REGISTRY = [
     // lacuna do círculo), não por gosto: ver --layer-embargos em
     // css/tokens/colors.css. Que o embargo é grave continua dito no `aviso`,
     // em palavras — não na cor.
-    color: 0x10c1ef,   /* --layer-embargos */ on: false, render: 'fill', listavel: true, regiao: 'vales',
+    // SEPARÁVEL: `codigo_ibge` nas 797 áreas (100%) — 565 no Jequitinhonha,
+    // 232 no Mucuri, nenhuma fora das tabelas do IBGE. Contado hoje.
+    color: 0x10c1ef,   /* --layer-embargos */ on: false, render: 'fill', listavel: true,
+    regioes: ['jequitinhonha', 'mucuri'],
   },
+  // ⚠️ AS TRÊS FONTES A SEGUIR NÃO SE SEPARAM POR MESORREGIÃO, e o motivo é o
+  // dado, não a preguiça: contadas hoje, as 65 + 54 + 12 = 131 áreas do INCRA
+  // dos Vales trazem UMA única propriedade, `area_ha`. Sem `codigo_ibge` e sem
+  // `municipio` não há como dizer se um assentamento é do Jequitinhonha ou do
+  // Mucuri sem cruzamento espacial contra a malha municipal — que este app não
+  // faz e que não vai fazer no cliente por uma legenda.
+  //
+  // Então elas se declaram `mesoIndistinta` e o painel DIZ isso na linha, em
+  // palavras. A alternativa seria escondê-las quando o filtro está num vale só
+  // (mentira por omissão: o dado da pessoa está ali) ou mostrá-las como se
+  // estivessem filtradas (mentira por comissão). O conserto de verdade é o
+  // pipeline gravar o município — anotado no relatório desta entrega.
   {
-    id: 'terra-publica-certificada-vales', label: 'Terra pública com medição oficial — Vales',
+    id: 'terra-publica-certificada-vales', label: 'Terra pública com medição oficial — Jequitinhonha e Mucuri',
     hint: '65 áreas, 51.082 hectares (511 km²) que o INCRA certificou como públicas nas duas mesorregiões — quatro vezes o volume da bacia do Paraopeba.',
     aviso: 'Certificada como pública não quer dizer sem destino: 56% desta área já é assentamento. Na bacia do Paraopeba eram 99%, e é essa diferença que faz a região valer o exame.',
-    color: 0x00cbb6,   /* --layer-terra-publica */ on: false, render: 'fill', listavel: true, regiao: 'vales',
+    color: 0x00cbb6,   /* --layer-terra-publica */ on: false, render: 'fill', listavel: true,
+    regioes: ['jequitinhonha', 'mucuri'], mesoIndistinta: true,
   },
   {
-    id: 'assentamentos-vales', label: 'Assentamentos da reforma agrária — Vales',
+    id: 'assentamentos-vales', label: 'Assentamentos da reforma agrária — Jequitinhonha e Mucuri',
     hint: '54 áreas, 48.412 hectares (484 km²). Terra pública que já tem destino — por isso sai do cálculo de terra sem cadastro.',
-    color: 0xf19650,   /* --layer-assentamentos */ on: false, render: 'fill', listavel: true, regiao: 'vales',
+    color: 0xf19650,   /* --layer-assentamentos */ on: false, render: 'fill', listavel: true,
+    regioes: ['jequitinhonha', 'mucuri'], mesoIndistinta: true,
   },
   {
-    id: 'territorios-quilombolas-vales', label: 'Territórios quilombolas — Vales',
+    id: 'territorios-quilombolas-vales', label: 'Territórios quilombolas — Jequitinhonha e Mucuri',
     hint: '12 áreas, 35.698 hectares (357 km²) titulados ou em titulação pelo INCRA. Na bacia do Paraopeba eram 22 hectares, uns 31 campos de futebol: aqui o território tradicional é uma das maiores presenças do mapa, não um detalhe.',
-    color: 0x94c05b,   /* --layer-quilombolas */ on: false, render: 'fill', listavel: true, regiao: 'vales',
+    color: 0x94c05b,   /* --layer-quilombolas */ on: false, render: 'fill', listavel: true,
+    regioes: ['jequitinhonha', 'mucuri'], mesoIndistinta: true,
   },
   {
-    id: 'spu-imoveis-uniao-vales', label: 'Imóveis do governo federal — Vales',
+    id: 'spu-imoveis-uniao-vales', label: 'Imóveis do governo federal — Jequitinhonha e Mucuri',
     hint: '154 imóveis da União nas duas mesorregiões, do cadastro da SPU. 24 deles estão registrados como "sem destinação definida" em todas as suas utilizações.',
     aviso: 'Cada ponto marca ONDE fica o imóvel, não o contorno dele: a SPU não publica o perímetro. O tamanho vem do cadastro, não do desenho. Endereço não é exibido. Um imóvel pode ter mais de uma utilização, com regimes diferentes: quando tem, todas aparecem no campo "regime".',
-    color: 0x45ca96,   /* --layer-spu */ on: false, render: 'point', pointSize: 0.006, listavel: true, regiao: 'vales',
+    // SEPARÁVEL, mas por NOME e não por código: esta fonte não traz
+    // `codigo_ibge` em nenhum dos 154 imóveis — traz `municipio` nos 154. Os 22
+    // nomes distintos casaram TODOS contra as tabelas do IBGE (98 no
+    // Jequitinhonha, 56 no Mucuri, zero sem correspondência), conferido hoje.
+    // `mesorregiaoDe()` cai no nome só quando não há código, exatamente por
+    // este caso — ver data/mesorregioes.js.
+    color: 0x45ca96,   /* --layer-spu */ on: false, render: 'point', pointSize: 0.006, listavel: true,
+    regioes: ['jequitinhonha', 'mucuri'],
   },
   // --- Normas geolocalizadas (11/08/2026) ----------------------------------
   //
@@ -341,10 +423,21 @@ export const LAYER_REGISTRY = [
   // adivinhar. Extração e geocodificação (Nominatim) em
   // `etl/betim/etl/normas_geo/`, GeoJSON gerado por `gerar_geojson.py`.
   //
-  // Sem `regiao`: as normas geocodificadas atravessam as duas — o arquivo tem
-  // município da bacia (Betim, Belo Horizonte) e dos Vales (Araçuaí,
+  // Sem `regioes`: as normas geocodificadas atravessam as regiões — o arquivo
+  // tem município da bacia (Betim, Belo Horizonte) e do Jequitinhonha (Araçuaí,
   // Diamantina) juntos, porque a extração varreu as cidades do estudo sem
   // separar por região. Forçar um grupo só mentiria sobre a outra metade.
+  //
+  // ⟲ E o filtro de região NÃO a recorta, embora o dado até permitisse (contado
+  // hoje: 248 das 743 normas estão em município do Jequitinhonha, 0 no Mucuri,
+  // 495 fora dos Vales). O recorte desta camada é "as 6 cidades do estudo", que
+  // não é uma região — filtrá-la por mesorregião responderia uma pergunta que
+  // ninguém fez e esconderia Betim e BH de quem escolheu "Bacia do Paraopeba",
+  // já que a fonte não diz a que bacia cada município pertence. Fonte sem
+  // região declarada aparece em qualquer filtro, e a linha diz por quê.
+  // (Curiosidade que o cruzamento revelou e não é desta entrega: 'São Paulo'
+  // aparece como município nesta camada — geocodificação que escapou do
+  // estado.)
   {
     id: 'normas-geolocalizadas', label: 'Leis e decretos com lugar citado',
     hint: '743 normas (de 1.151 com lugar extraído da ementa, de 10.317 no total) que o Nominatim conseguiu geocodificar pelo NOME do lugar — não por endereço exato. 189 em confiança "alta" (rua/avenida/praça citada por nome), 554 em "média" (só bairro/distrito).',
@@ -360,3 +453,297 @@ export const LAYER_REGISTRY = [
     color: 0xe8eef6,   /* --text-1: satélite é marca de UI, não camada de dado */ on: true, render: 'custom',
   },
 ];
+
+// ---------------------------------------------------------------------------
+// CAMADAS — o que o painel mostra: uma linha por CONCEITO.
+//
+// Cada entrada aponta para uma ou mais FONTES do LAYER_REGISTRY acima. 19
+// fontes viram 14 linhas; as 5 que encolhem são exatamente os conceitos que
+// existiam duas ou três vezes, um por região.
+//
+// ## Por que duas listas, e não uma só reescrita
+//
+// O LAYER_REGISTRY continua sendo a lista de FONTES, com os ids intactos,
+// porque o id de fonte é um endereço PÚBLICO em três lugares que não podem
+// quebrar:
+//
+//   1. o deep-link `#area=<fonte>:<índice>` (main.js), que é como se manda um
+//      achado para alguém;
+//   2. o link da vista 2D, `detalhe.html?camada=<fonte>&fid=<índice>`
+//      (ui/inspector.js);
+//   3. o nome do arquivo servido, `dados/camadas/<fonte>.geojson`
+//      (data/api.js), que o pipeline escreve.
+//
+// Mais: `ui/exportar.js`, `ui/inspector.js` e `ui/proveniencia.js` já resolvem
+// tudo por id de fonte, e `exportar.test.mjs` afirma coisas sobre ids de fonte
+// específicos. Reescrever o registry para conceitos obrigaria a mexer nos
+// quatro e a inventar uma tabela de-para para os links já publicados.
+//
+// ⚠️ COMO OS DEEP-LINKS ANTIGOS FORAM PRESERVADOS: eles não foram mapeados,
+// foram MANTIDOS. O endereço sempre apontou para uma fonte, o índice sempre foi
+// a posição dentro daquele ARQUIVO, e as duas coisas continuam valendo — nem um
+// id mudou, nem um arquivo foi refeito, nem um índice se deslocou.
+// `#area=assentamentos-vales:12` abre hoje a mesma área que abria ontem. O
+// conceito é uma camada de APRESENTAÇÃO por cima disso, e o filtro de região
+// nunca renumera nada: ele decide o que é DESENHADO, e o GeoJSON completo
+// continua em `layers.geojson` com os índices do arquivo (ver layers/manager.js).
+//
+// ## Por que não fundir os arquivos
+//
+// A opção óbvia era gerar um arquivo por conceito, com a região virando
+// propriedade de cada área. Foi medida e recusada. Cronometrado num navegador
+// real (servidor estático local, cache frio, rede + JSON.parse + construção da
+// geometria Three.js):
+//
+//     vazio-cadastral-bacia      652 KB    35 áreas     84 ms
+//     vazio-cadastral          1.511 KB   390 áreas    228 ms
+//     vazio-cadastral-vales    4.636 KB   325 áreas    398 ms   ← a maior
+//                                                      -------
+//     as três fundidas num arquivo só    6,8 MB        710 ms
+//
+// Fundir faria a camada que hoje abre o mapa em 84 ms passar a custar 710 ms e
+// 6,8 MB — e num celular em rede móvel, onde os 76 ms de "rede" acima
+// (localhost) viram segundos. Mantendo as fontes separadas e carregando SÓ as
+// que o filtro de região pede, o custo fica proporcional ao que se está
+// olhando: quem fica na bacia nunca baixa os 4,6 MB do Jequitinhonha.
+//
+// ⚠️ Isso NÃO torna a camada unificada barata — ela é honestamente cara. Ligar
+// "Terra sem cadastro" com o filtro em "todas as regiões" baixa as duas fontes
+// dela, 5,3 MB. É o preço de ter uma chave só, e é o preço certo: era isso que
+// a pessoa fazia à mão antes, ligando dois interruptores. O que o filtro de
+// região dá é a saída para quem não quer pagar — e trocar de região depois não
+// custa rede nenhuma, só o redesenho (ver `setFiltro` em layers/manager.js).
+//
+// Cada entrada: { id, assunto, label, hint, fontes[], aviso? }
+// - id      = identificador da LINHA (atributo `data-camada-id` no painel).
+//             Não é endereço público: quem endereça área é a fonte.
+// - assunto = id de ASSUNTOS. Define em que seção a linha cai.
+// - label/hint = o texto do painel. O `hint` agora fica SOB DEMANDA (o painel
+//             mostra a linha compacta e revela a explicação num botão), então
+//             pode ser mais completo que o de antes, quando era parede de
+//             texto sempre visível.
+// - fontes  = ids do LAYER_REGISTRY, na ordem de desenho.
+// ---------------------------------------------------------------------------
+export const CAMADAS = [
+  {
+    id: 'vazio-cadastral', assunto: 'sem-cadastro',
+    label: 'Terra sem cadastro',
+    // 35 + 325, contados nos arquivos hoje.
+    hint: 'As 360 maiores áreas que nenhum imóvel declarou no CAR, o Cadastro Ambiental Rural, de 500 hectares (5 km²) para cima. Na bacia do Paraopeba quase todas são redes de corredores estreitos, não manchas. É o que o método chama de vazio cadastral.',
+    aviso: 'Sem cadastro não quer dizer sem dono. Pode ser terra pública, pode ser imóvel particular que nunca se cadastrou. É um lugar para conferir, não uma conclusão.',
+    fontes: ['vazio-cadastral-bacia', 'vazio-cadastral-vales'],
+  },
+  // ⚠️ POR QUE CURVELO CONTINUA SENDO UMA LINHA À PARTE, e não é regressão ao
+  // problema que esta entrega conserta.
+  //
+  // As outras irmãs eram o MESMO cálculo em regiões diferentes — juntar é só
+  // ganho. Esta não é: é o mesmo cálculo em outro LIMIAR. A camada acima começa
+  // em 500 ha; esta começa em 10 ha, num município só. Duas escalas de detalhe,
+  // não duas regiões.
+  //
+  // E elas se SOBREPÕEM, o que decide a questão. Medido hoje: das 35 áreas da
+  // bacia, 12 estão em Curvelo; das 390 de Curvelo, exatamente 12 têm 500 ha ou
+  // mais, e 9 dessas 12 têm geometria idêntica (mesmo primeiro vértice) à da
+  // camada da bacia. Fundir as duas numa chave só desenharia esse punhado de
+  // áreas DUAS VEZES, sobrepostas — o preenchimento dobraria de opacidade
+  // justamente nas maiores áreas do piloto, e a lista mostraria cada uma duas
+  // vezes. A saída "some com as repetidas ao juntar" está fora de questão: é
+  // truncamento silencioso, e o índice de cada área é endereço público.
+  {
+    id: 'vazio-cadastral-curvelo', assunto: 'sem-cadastro',
+    label: 'Terra sem cadastro — detalhe de Curvelo',
+    hint: 'O mesmo cálculo em um município só, descendo às manchas pequenas: 390 áreas a partir de 10 hectares — uns 14 campos de futebol cada. É o recorte piloto, onde o método foi afinado. As 12 áreas de 500 hectares ou mais também aparecem na camada acima: aqui elas vêm acompanhadas das pequenas.',
+    aviso: 'Sem cadastro não quer dizer sem dono. Pode ser terra pública, pode ser imóvel particular que nunca se cadastrou. É um lugar para conferir, não uma conclusão.',
+    fontes: ['vazio-cadastral'],
+  },
+  {
+    id: 'terra-publica-certificada', assunto: 'terra-publica',
+    label: 'Terra pública com medição oficial',
+    // 19 + 65 áreas; 12.240 + 51.082 ha.
+    hint: '84 áreas, 63.322 hectares (633 km²) que o INCRA certificou como públicas. É a única terra que uma base aberta afirma ser do poder público.',
+    aviso: 'Certificada como pública não quer dizer sem destino: na bacia do Paraopeba 99% desta área já é assentamento, no Jequitinhonha e no Mucuri são 56% — e é essa diferença que faz a segunda região valer o exame.',
+    fontes: ['terra-publica-certificada', 'terra-publica-certificada-vales'],
+  },
+  {
+    id: 'assentamentos', assunto: 'terra-publica',
+    label: 'Assentamentos da reforma agrária',
+    // 21 + 54 áreas; 13.438 + 48.412 ha.
+    hint: '75 áreas, 61.850 hectares (619 km²). Terra pública que já tem destino — por isso sai do cálculo de terra sem cadastro.',
+    fontes: ['assentamentos', 'assentamentos-vales'],
+  },
+  {
+    id: 'territorios-quilombolas', assunto: 'terra-publica',
+    label: 'Territórios quilombolas',
+    // 2 + 12 áreas; 22 + 35.698 ha.
+    hint: '14 áreas, 35.720 hectares (357 km²) de território tradicional titulado ou em titulação pelo INCRA. Quase tudo isso está no Jequitinhonha e no Mucuri: na bacia do Paraopeba são 22 hectares, uns 31 campos de futebol.',
+    fontes: ['territorios-quilombolas', 'territorios-quilombolas-vales'],
+  },
+  {
+    id: 'spu-imoveis-uniao', assunto: 'terra-publica',
+    label: 'Imóveis do governo federal',
+    // 553 + 154 imóveis; 79 + 24 sem destinação.
+    hint: '707 imóveis da União no cadastro da SPU — de escola e prédio público a fazenda e terreno vago. 103 deles estão registrados como "sem destinação definida" em todas as suas utilizações.',
+    aviso: 'Cada ponto marca ONDE fica o imóvel, não o contorno dele: a SPU não publica o perímetro. O tamanho vem do cadastro, não do desenho. Endereço não é exibido. Um imóvel pode ter mais de uma utilização, com regimes diferentes: quando tem, todas aparecem no campo "regime".',
+    fontes: ['spu-imoveis-uniao', 'spu-imoveis-uniao-vales'],
+  },
+  {
+    id: 'devolutas-arrecadadas', assunto: 'terra-publica',
+    label: 'Terras devolutas já reconhecidas',
+    hint: 'Terra que o Estado já declarou devoluta. O INCRA não publica essa base — por isso a camada está vazia. A lacuna é o achado: não há como conferir de fora quanta terra devoluta já foi reconhecida em Minas.',
+    fontes: ['devolutas-arrecadadas'],
+  },
+  {
+    id: 'lotes-vagos-bh', assunto: 'cidade',
+    label: 'Lotes vagos em Belo Horizonte',
+    hint: '8.525 terrenos que a prefeitura registra como vagos no cadastro do IPTU, de 500 m² para cima. O número ao lado diz de quantos serviços urbanos a rua já dispõe — quanto mais alto, mais a cidade já investiu ali. Vazio urbano é assunto diferente do vazio cadastral rural, e tem instrumento jurídico próprio: CF art. 182, §4º e Estatuto da Cidade arts. 5º a 8º, competência do município.',
+    aviso: 'Vago no cadastro não quer dizer irregular. O terreno pode estar em obra, em inventário ou à espera de licença. É lugar para conferir, e quem decide é a Prefeitura.',
+    fontes: ['lotes-vagos-bh'],
+  },
+  {
+    id: 'normas-geolocalizadas', assunto: 'cidade',
+    label: 'Leis e decretos com lugar citado',
+    hint: '743 normas (de 1.151 com lugar extraído da ementa, de 10.317 no total) que o Nominatim conseguiu geocodificar pelo NOME do lugar — não por endereço exato. 189 em confiança "alta" (rua/avenida/praça citada por nome), 554 em "média" (só bairro/distrito).',
+    aviso: 'O ponto marca o LUGAR CITADO, não o endereço exato da norma nem de nenhum imóvel — normas de bairro/distrito (confiança "média") caem no centro aproximado da área. Extraído só da ementa, nunca de PDF ou texto completo: testado e não ajuda. A maioria das normas não aparece aqui — não tem endereço reconhecível na ementa, o que é o caso comum, não uma falha da busca.',
+    fontes: ['normas-geolocalizadas'],
+  },
+  {
+    id: 'embargos-ambientais', assunto: 'pistas',
+    label: 'Áreas embargadas por infração ambiental',
+    hint: '797 áreas embargadas pela fiscalização ambiental de Minas no Jequitinhonha e no Mucuri, somando 4.105 hectares (41 km²). Supressão de vegetação responde por 642 delas. É a única camada do projeto em que o indício não é inferência sobre imagem: cada polígono é um auto de infração que o Estado lavrou.',
+    aviso: 'Embargo não é decisão final — cabe defesa e recurso. E recai sobre a área da infração, não sobre o imóvel inteiro. Ausência de embargo aqui não quer dizer regularidade: pode ser só ausência de fiscalização. Nome e documento do autuado não são exibidos.',
+    fontes: ['embargos-ambientais-vales'],
+  },
+  {
+    id: 'checagem-g0', assunto: 'pistas',
+    label: 'Amostra em conferência',
+    hint: '63 áreas sorteadas ou escolhidas para alguém conferir uma a uma na imagem de satélite. É como se mede quanto o método erra.',
+    aviso: 'Nada aqui está conferido ainda — é a fila de conferência, não o resultado dela.',
+    fontes: ['checagem-g0'],
+  },
+  {
+    id: 'pesquisa-noticias', assunto: 'pistas',
+    label: 'Lugares abandonados na imprensa',
+    hint: 'Terreno vazio, prédio abandonado e lugar fechado que apareceram em notícia. É pista para conferir, não cadastro. Ainda não coletadas.',
+    aviso: 'Cada ponto marca o que a reportagem descreveu, na data dela. Notícia não é documento de propriedade, e situação de imóvel muda.',
+    fontes: ['pesquisa-noticias'],
+  },
+  {
+    id: 'municipios-mg', assunto: 'referencia',
+    label: 'Divisas dos municípios',
+    hint: 'Os 853 municípios de Minas Gerais, pelo mapa oficial do IBGE. É moldura para se localizar, não um achado da pesquisa.',
+    fontes: ['municipios-mg'],
+  },
+  {
+    id: 'satelites-orbita', assunto: 'referencia',
+    label: 'Satélites em órbita',
+    hint: 'Onde estão agora os satélites que fotografam essas áreas. Posição calculada em tempo real, pelo SGP4 sobre os TLE do CelesTrak.',
+    fontes: ['satelites-orbita'],
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Índices derivados. Existem para que ninguém precise varrer listas com
+// `find()` em caminho quente (o inspetor faz isso a cada clique no globo) e,
+// principalmente, para que a relação fonte↔conceito tenha UM dono só.
+// ---------------------------------------------------------------------------
+
+/** id de fonte → entrada do LAYER_REGISTRY. */
+export const FONTE_POR_ID = new Map(LAYER_REGISTRY.map((f) => [f.id, f]));
+
+/** id de fonte → entrada de CAMADAS que a contém. */
+export const CAMADA_POR_FONTE = new Map(
+  CAMADAS.flatMap((c) => c.fontes.map((idFonte) => [idFonte, c])),
+);
+
+/**
+ * Confere, na carga do módulo, que os dois lados batem: toda fonte citada por
+ * uma camada existe, e toda fonte do registro está em alguma camada.
+ *
+ * É barato (33 comparações) e pega na hora o erro que de outro modo aparece
+ * como "uma camada sumiu do painel" — que é exatamente o defeito que
+ * `agruparPorRegiao` já tinha tido de aprender a não cometer em silêncio.
+ * Aviso, e não exceção: uma fonte órfã não deve impedir o globo de abrir.
+ */
+for (const camada of CAMADAS) {
+  for (const idFonte of camada.fontes) {
+    if (!FONTE_POR_ID.has(idFonte)) {
+      console.warn(`[config] camada "${camada.id}" cita a fonte "${idFonte}", que não existe no LAYER_REGISTRY.`);
+    }
+  }
+}
+for (const fonte of LAYER_REGISTRY) {
+  if (!CAMADA_POR_FONTE.has(fonte.id)) {
+    console.warn(`[config] fonte "${fonte.id}" não é citada por nenhuma entrada de CAMADAS — não vai aparecer no painel.`);
+  }
+}
+
+/**
+ * As fontes de uma camada que o filtro de região deixa passar.
+ *
+ * @param {object} camada  entrada de CAMADAS (ou já resolvida)
+ * @param {string|null} regiao  id de REGIOES, ou null para "todas"
+ * @returns {Array<object>} entradas do LAYER_REGISTRY, na ordem declarada
+ */
+export function fontesVisiveis(camada, regiao) {
+  return camada.fontes
+    .map((id) => FONTE_POR_ID.get(id))
+    .filter((fonte) => fonte && fonteNaRegiao(fonte, regiao));
+}
+
+/**
+ * Resolve uma camada contra o registro de fontes: junta o que o painel precisa
+ * saber e que hoje só existe espalhado nas fontes.
+ *
+ * As regras de junção, e o porquê de cada uma:
+ *
+ *  · `color`/`render` vêm da PRIMEIRA fonte. Não é arbitrário — as fontes
+ *    irmãs de um mesmo conceito têm a mesma cor de propósito desde 06/08 (a
+ *    cor identifica O QUE a camada é, não onde fica) e o mesmo tipo de
+ *    desenho. Se um dia divergirem, o aviso abaixo aparece: um conceito com
+ *    duas cores é um conceito mal dividido, não um detalhe de exibição.
+ *  · `on` = ALGUMA fonte nasce ligada. Hoje só `vazio-cadastral-bacia`,
+ *    `municipios-mg` e os satélites nascem assim.
+ *  · `vazia` = TODAS as fontes estão vazias. Se uma tem dado, a linha é
+ *    utilizável e não deve nascer travada.
+ *  · `listavel`/`fixture` = ALGUMA fonte. São portas de segurança
+ *    (ui/exportar.js): na dúvida, a que protege mais.
+ *  · `semRegiao` = NENHUMA fonte declara região. É o que faz a linha dizer
+ *    "o filtro de região não muda o que ela mostra" em vez de sumir.
+ */
+export function resolverCamada(camada) {
+  const fontesResolvidas = camada.fontes.map((id) => FONTE_POR_ID.get(id)).filter(Boolean);
+  const primeira = fontesResolvidas[0];
+
+  const cores = new Set(fontesResolvidas.map((f) => f.color));
+  if (cores.size > 1) {
+    console.warn(`[config] camada "${camada.id}" reúne fontes de cores diferentes (${[...cores].map((c) => `#${c.toString(16)}`).join(', ')}) — o painel vai mostrar a da primeira, e a legenda vai mentir sobre as outras.`);
+  }
+
+  return {
+    ...camada,
+    fontesResolvidas,
+    color: primeira?.color ?? 0x9aa6b2,
+    render: primeira?.render ?? 'fill',
+    on: fontesResolvidas.some((f) => f.on),
+    vazia: fontesResolvidas.length > 0 && fontesResolvidas.every((f) => f.vazia),
+    fixture: fontesResolvidas.some((f) => f.fixture),
+    listavel: fontesResolvidas.some((f) => f.listavel),
+    semRegiao: fontesResolvidas.every((f) => !f.regioes),
+  };
+}
+
+/** As 14 linhas do painel, já resolvidas. É isto que o main.js entrega à UI. */
+export const CAMADAS_RESOLVIDAS = CAMADAS.map(resolverCamada);
+
+/**
+ * A fonte tem alguma área na região escolhida?
+ *
+ * Fonte sem `regioes` (a moldura, os satélites, o cadastro de BH, as normas)
+ * passa SEMPRE: ela não afirma região nenhuma, e escondê-la num filtro seria
+ * afirmar por ela. Ver a nota de `normas-geolocalizadas` no registro.
+ */
+export function fonteNaRegiao(fonte, regiao) {
+  if (!regiao) return true;
+  if (!fonte.regioes) return true;
+  return fonte.regioes.includes(regiao);
+}

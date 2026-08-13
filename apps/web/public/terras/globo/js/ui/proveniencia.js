@@ -47,18 +47,22 @@ const NOMES = {
   // língua do painel de camadas. As chaves do pipeline seguem logo abaixo,
   // intactas: se o manifesto original voltar a ser publicado um dia, os dois
   // conjuntos convivem sem conflito de nome.
+  // ⚠️ Estes rótulos espelham o `label` das FONTES em config.js e não se
+  // atualizam sozinhos. Os cinco "— Vales" viraram "— Jequitinhonha e Mucuri"
+  // em 13/08, junto com a correção de nomenclatura: "Vales" sem sobrenome é
+  // ambíguo num estado que tem Vale do Aço e Vale do Rio Doce.
   'municipios-mg': 'Divisas dos municípios',
   'vazio-cadastral-bacia': 'Terra sem cadastro — bacia do Paraopeba',
   'vazio-cadastral': 'Terra sem cadastro — só Curvelo',
-  'vazio-cadastral-vales': 'Terra sem cadastro — Vales do Mucuri e Jequitinhonha',
+  'vazio-cadastral-vales': 'Terra sem cadastro — Jequitinhonha e Mucuri',
   'terra-publica-certificada': 'Terra pública com medição oficial',
-  'terra-publica-certificada-vales': 'Terra pública com medição oficial — Vales',
+  'terra-publica-certificada-vales': 'Terra pública com medição oficial — Jequitinhonha e Mucuri',
   assentamentos: 'Assentamentos da reforma agrária',
-  'assentamentos-vales': 'Assentamentos da reforma agrária — Vales',
+  'assentamentos-vales': 'Assentamentos da reforma agrária — Jequitinhonha e Mucuri',
   'territorios-quilombolas': 'Territórios quilombolas',
-  'territorios-quilombolas-vales': 'Territórios quilombolas — Vales',
+  'territorios-quilombolas-vales': 'Territórios quilombolas — Jequitinhonha e Mucuri',
   'spu-imoveis-uniao': 'Imóveis do governo federal',
-  'spu-imoveis-uniao-vales': 'Imóveis do governo federal — Vales',
+  'spu-imoveis-uniao-vales': 'Imóveis do governo federal — Jequitinhonha e Mucuri',
   'embargos-ambientais-vales': 'Áreas embargadas por infração ambiental',
   'lotes-vagos-bh': 'Lotes vagos em Belo Horizonte',
   'normas-geolocalizadas': 'Leis e decretos com lugar citado',

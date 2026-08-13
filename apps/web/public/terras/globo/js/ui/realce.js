@@ -48,8 +48,17 @@ const suavizar = (t) => 1 - Math.pow(1 - t, 3);
 /**
  * @param {import('../layers/manager.js').LayerManager} layers
  * @param {HTMLElement} painel #layers-panel
+ * @param {object} [opts]
+ * @param {(idLinha: string) => string[]} [opts.fontesDe]
+ *        Traduz o id da LINHA do painel (um conceito, desde 13/08/2026) para os
+ *        ids de FONTE que o LayerManager conhece — uma linha pode acender duas
+ *        camadas, porque "Assentamentos da reforma agrária" é um arquivo da
+ *        bacia mais um dos Vales. O padrão é a identidade: sem tradução, o id
+ *        da linha É o id da camada, que é como o painel funcionava antes e como
+ *        os testes deste módulo continuam exercitando-o.
  */
-export function criarRealce(layers, painel) {
+export function criarRealce(layers, painel, { fontesDe } = {}) {
+  const resolver = typeof fontesDe === 'function' ? fontesDe : (id) => [id];
   /** material → opacidade original. Guardada na primeira vez que o material é
    *  tocado, para o retorno ser exato em vez de aproximado. */
   const base = new WeakMap();
@@ -109,19 +118,23 @@ export function criarRealce(layers, painel) {
     if (quadro == null) quadro = requestAnimationFrame(animar);
   }
 
-  function focar(idFoco) {
+  function focar(idLinha) {
+    const acesas = idLinha == null ? null : new Set(resolver(idLinha));
     for (const id of layers.registry.keys()) {
       if (!layers.isEnabled?.(id) && !layers.state?.get(id)?.object) continue;
-      pedir(id, idFoco == null ? 1 : (id === idFoco ? FOCO : RECUO));
+      pedir(id, acesas == null ? 1 : (acesas.has(id) ? FOCO : RECUO));
     }
   }
+
+  /** O id da linha, do atributo novo ou do antigo — ver `fontesDe` acima. */
+  const idDaLinha = (linha) => linha.dataset.camadaId ?? linha.dataset.layerId;
 
   // Delegação: as linhas são criadas por layerspanel.js e podem ser recriadas.
   // Ouvir no painel evita ter de religar ouvinte a cada redesenho.
   painel.addEventListener('pointerover', (ev) => {
     const linha = ev.target.closest?.('.layer-row');
     if (!linha || !painel.contains(linha)) return;
-    focar(linha.dataset.layerId);
+    focar(idDaLinha(linha));
     linha.classList.add('em-realce');
   });
   painel.addEventListener('pointerout', (ev) => {
@@ -138,6 +151,31 @@ export function criarRealce(layers, painel) {
   painel.addEventListener('pointerleave', () => {
     focar(null);
     for (const l of painel.querySelectorAll('.em-realce')) l.classList.remove('em-realce');
+  });
+
+  // --- O MESMO realce pelo teclado ----------------------------------------
+  //
+  // Sem isto, "qual mancha é qual?" só tinha resposta para quem usa mouse — e
+  // esta é a única pista NÃO-CROMÁTICA que o globo oferece para separar duas
+  // camadas de cor parecida. Deixá-la atrás do `hover` é justamente o padrão
+  // que exclui teclado e toque.
+  //
+  // `focusin`/`focusout` e não `focus`/`blur`: os dois primeiros sobem na
+  // árvore, então pegam o foco caindo em qualquer controle DENTRO da linha (a
+  // chave, o botão de explicar), que é onde o Tab de fato para.
+  painel.addEventListener('focusin', (ev) => {
+    const linha = ev.target.closest?.('.layer-row');
+    if (!linha || !painel.contains(linha)) return;
+    focar(idDaLinha(linha));
+    linha.classList.add('em-realce');
+  });
+  painel.addEventListener('focusout', (ev) => {
+    const linha = ev.target.closest?.('.layer-row');
+    if (!linha) return;
+    // Andar entre a chave e o botão de explicar da MESMA linha não é sair dela.
+    if (linha.contains(ev.relatedTarget)) return;
+    focar(null);
+    linha.classList.remove('em-realce');
   });
 
   return {
