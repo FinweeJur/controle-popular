@@ -2,6 +2,8 @@ import type { NextRequest } from "next/server";
 import { sql } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { pathValido } from "@/lib/pageviews/validar";
+import { ipDoCliente } from "@/lib/rate-limit-ip";
+import { limitarAltaFrequencia, respostaLimiteExcedido } from "@/lib/rate-limit";
 
 /**
  * Contador de visualizações das páginas principais do portal
@@ -23,6 +25,10 @@ const LIMITE_PADRAO = 100;
 const LIMITE_MAXIMO = 500;
 
 export async function POST(request: NextRequest) {
+  // Alta frequência (1 escrita por navegação): ver `lib/rate-limit.ts`.
+  const { permitido, retryAfter } = await limitarAltaFrequencia(ipDoCliente(request));
+  if (!permitido) return respostaLimiteExcedido(retryAfter);
+
   const path = request.nextUrl.searchParams.get("path");
   if (!pathValido(path)) {
     return Response.json({ ok: false, error: "path inválido" }, { status: 400 });

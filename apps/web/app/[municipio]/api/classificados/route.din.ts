@@ -6,6 +6,8 @@ import {
   fetchClassificados,
   validateClassificadoSubmission,
 } from "@/lib/betim/classificados";
+import { ipDoCliente } from "@/lib/rate-limit-ip";
+import { limitarBaixaFrequencia, respostaLimiteExcedido } from "@/lib/rate-limit";
 
 /** Rota de cidade: `params.municipio` é o slug, e a consulta filtra por id. */
 type Ctx = { params: Promise<{ municipio: string }> };
@@ -35,6 +37,10 @@ export async function GET(request: NextRequest, { params }: Ctx) {
 }
 
 export async function POST(request: NextRequest, { params }: Ctx) {
+  // Baixa frequência (cadastro raro): ver `lib/rate-limit.ts`.
+  const { permitido, retryAfter } = await limitarBaixaFrequencia(ipDoCliente(request));
+  if (!permitido) return respostaLimiteExcedido(retryAfter);
+
   const { municipio } = await params;
   const cidade = await obterCidadePorSlug(municipio);
   if (!cidade) return Response.json({ error: "Cidade não encontrada." }, { status: 404 });
