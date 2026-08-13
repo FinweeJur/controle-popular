@@ -36,6 +36,18 @@ export interface Zona {
   id: ZonaId;
   href: string;
   etiqueta: string;
+  /**
+   * Nome curto da frente, para menu e rodapé — onde só cabe uma palavra ou
+   * duas e o leitor precisa saber PARA ONDE vai.
+   *
+   * ⟲ 13/08: existe porque o rodapé estava fabricando esse nome cortando a
+   * `etiqueta` no "·". O corte produzia "Estadual" para a frente ambiental,
+   * que não diz nada — a matéria (meio ambiente em Minas) mora justamente na
+   * metade que o corte jogava fora. "Municipal" e "Federal" saíam igualmente
+   * vagos. Rótulo de navegação é decisão editorial; derivar por cirurgia de
+   * string entrega o que sobrou, não o que se quis dizer.
+   */
+  nomeCurto: string;
   titulo: string;
   /** Frase longa, para os cards grandes da home da marca. */
   descricao: string;
@@ -66,6 +78,7 @@ export const ZONAS: Zona[] = [
     // como destino de fallback para quem renderiza o card como link único.
     href: "/betim",
     etiqueta: "Municipal · Prefeituras e Câmaras",
+    nomeCurto: "Cidades",
     titulo: "Para onde vai o dinheiro da sua cidade",
     descricao:
       "Contratos, fornecedores, orçamento, obras e a atuação de cada vereador — com os serviços do dia a dia reunidos no mesmo lugar.",
@@ -84,6 +97,7 @@ export const ZONAS: Zona[] = [
     id: "congresso",
     href: "/congresso",
     etiqueta: "Federal · Congresso Nacional",
+    nomeCurto: "Congresso",
     titulo: "O que o Congresso decide sobre seus direitos",
     descricao:
       "Projetos de lei federais por tema, comissão e bancada, com uma análise fundamentada de quais direitos cada proposta amplia ou restringe — e o ofício pronto para você se manifestar.",
@@ -102,6 +116,7 @@ export const ZONAS: Zona[] = [
     id: "judiciario",
     href: "/judiciario",
     etiqueta: "Judiciário · Tribunais superiores",
+    nomeCurto: "Judiciário",
     titulo: "Quem ocupa, quem indicou, quando vaga",
     descricao:
       "O único Poder cujos membros ninguém elege. Composição de cada tribunal, quem indicou cada ministro, e a data em que cada um é obrigado a se aposentar — calculada, não estimada.",
@@ -124,6 +139,7 @@ export const ZONAS: Zona[] = [
     id: "ambiental",
     href: "/ambiental",
     etiqueta: "Estadual · Meio ambiente em Minas Gerais",
+    nomeCurto: "Meio ambiente",
     titulo: "O que o COPAM vai decidir sobre a sua cidade",
     // CÓPIA CORTADA PARA O QUE EXISTE, ao publicar a zona em 2026-08-09;
     // ATUALIZADA em 2026-08-11 conforme cada fase ganhou tela e dado real
@@ -148,6 +164,7 @@ export const ZONAS: Zona[] = [
     id: "terras",
     href: "/funcaosocialterra",
     etiqueta: "Fundiário e território · Minas Gerais",
+    nomeCurto: "Terra e território",
     titulo: "De quem é a terra que ninguém declarou",
     // ⟲ 13/08: A ETIQUETA DIZIA "Vale do Jequitinhonha" E ENVELHECEU NO
     // MESMO DIA. O mapa passou a carregar camadas de alcance ESTADUAL — 16
@@ -175,8 +192,14 @@ export const ZONAS: Zona[] = [
     // constante jurava impedir ("a tela por cidade e o hub da zona não podem
     // divergir"). Este card é o texto que mais gente lê, e teria continuado
     // anunciando 30% em silêncio na próxima rodada do gate.
+    // ⟲ 13/08, SEGUNDA PASSADA: a etiqueta foi ampliada para "Minas Gerais"
+    // quando as camadas estaduais entraram, e ESTA frase ficou para trás
+    // falando só das três cidades. O card passou a se contradizer sozinho —
+    // promete o estado no rótulo e entrega três cidades no texto. Agora as
+    // duas metades estão ditas: o que é estadual como estadual, e o vazio
+    // cadastral como o recorte de três cidades que ele é.
     descricao:
-      `Quanto do território de Araçuaí, Diamantina e Itinga não tem imóvel rural declarado no Cadastro Ambiental Rural. É estimativa com taxa de erro medida — ${TAXA_ERRO_G0.taxaPct.toLocaleString("pt-BR", { minimumFractionDigits: 0 })}% da amostra checada a olho não se confirmou — e vem publicada com ela ao lado.`,
+      `Mapa 3D do território de Minas Gerais: terras indígenas, a área que a água alcança se uma barragem rompe, e o que é mina em operação separado do que é só requerimento no papel. E o vazio cadastral — quanto do território de Araçuaí, Diamantina e Itinga não tem imóvel rural declarado no Cadastro Ambiental Rural, estimativa com taxa de erro medida (${TAXA_ERRO_G0.taxaPct.toLocaleString("pt-BR", { minimumFractionDigits: 0 })}% da amostra checada a olho não se confirmou) publicada ao lado do número.`,
     resumo:
       "Mapa 3D de Minas Gerais — terra indígena, barragem e mineração no estado inteiro; o vazio cadastral, com a taxa de erro ao lado, em três cidades do Jequitinhonha.",
     itens: [

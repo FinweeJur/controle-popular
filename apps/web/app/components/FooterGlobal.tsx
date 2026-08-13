@@ -60,7 +60,10 @@ export default function FooterGlobal() {
             {ZONAS_PUBLICADAS.map((z) => (
               <li key={z.id}>
                 <a href={z.href} className="text-primary hover:text-accent">
-                  {z.etiqueta.split("·")[0]?.trim() ?? z.etiqueta}
+                  {/* `nomeCurto`, não `etiqueta` cortada no "·": o corte
+                      entregava "Estadual" para a frente ambiental, que não
+                      diz a matéria. Ver o campo em `lib/zonas.ts`. */}
+                  {z.nomeCurto}
                 </a>
               </li>
             ))}
