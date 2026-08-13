@@ -205,12 +205,23 @@ def sync(id_municipio: str, codigo_ibge: str | None = None, teto_paginas: int = 
     rows = [m for r in brutos if (m := _map_row(r, id_municipio)) is not None]
 
     if rows:
+        # `id_municipio,codigo` e NÃO `id_municipio,id_externo`. O campo `id`
+        # da API (gravado em `id_externo`) muda de uma rodada para a outra
+        # para o MESMO convênio, então ele nunca colidia e todo `upsert`
+        # virava `insert`. Foi assim que Betim acumulou 501 linhas para 167
+        # convênios e o site publicou o dobro do dinheiro federal recebido —
+        # a medição completa está na migration 0071.
+        #
+        # `codigo` saiu de `colunas_opcionais`: ele agora sustenta o índice
+        # único, e coluna de chave não pode ser tratada como "grava se
+        # existir". Sem a migration 0024 este upsert tem de falhar alto, não
+        # degradar em silêncio de volta para o comportamento que duplicava.
         upsert_com_colunas_opcionais(
             client,
             "convenios_federais",
             rows,
-            colunas_opcionais=["codigo", "cnpj_convenente", "cnpj_raiz"],
-            on_conflict="id_municipio,id_externo",
+            colunas_opcionais=["cnpj_convenente", "cnpj_raiz"],
+            on_conflict="id_municipio,codigo",
         )
 
     total_valor = sum(r["valor"] or 0 for r in rows)
