@@ -1,7 +1,37 @@
 {
-  "gerado_em_utc": "2026-08-13T14:27:26.515Z",
+  "gerado_em_utc": "2026-08-13T21:27:56.252Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
+    {
+      "camada": "alerta-quilombola-mancha",
+      "feicoes": 0,
+      "bytes": 159,
+      "comprimido": false,
+      "sha256": "795da445a078e76f0924e147716777dce815e9ba61166156cf8813d1caf8fd70",
+      "mtime_utc": "2026-08-13T20:26:01.886Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "alerta-territorio-sigmine-interesse",
+      "feicoes": 195,
+      "bytes": 206256,
+      "comprimido": false,
+      "sha256": "9a4e2b3c9aa67a91e5464ed6ebe60514ab37ae958a0840a2ea12833429003e1b",
+      "mtime_utc": "2026-08-13T21:27:56.246Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
+      "camada": "alerta-territorio-sigmine-operacao",
+      "feicoes": 12,
+      "bytes": 13519,
+      "comprimido": false,
+      "sha256": "2751dc237025fa4dd66d0d2cb17ae43460a5380f57e2408887f3668a74481180",
+      "mtime_utc": "2026-08-13T21:27:56.249Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
     {
       "camada": "alerta-ti-mancha",
       "feicoes": 0,
@@ -11,6 +41,16 @@
       "mtime_utc": "2026-08-13T13:27:28.063Z",
       "obtencao": "derivada",
       "origem": "Interseção geométrica real (shapely, não bbox) entre terras-indigenas e a geometria completa (não simplificada) da mancha de inundação"
+    },
+    {
+      "camada": "atos-area-protegida-municipios",
+      "feicoes": 3,
+      "bytes": 20789,
+      "comprimido": false,
+      "sha256": "160dc4f03e26bafc2cf69f6b73ceb327a43f7545af25bdc72fb9868c9957d3a8",
+      "mtime_utc": "2026-08-13T20:26:01.905Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
     },
     {
       "camada": "cfem-municipios",
@@ -251,10 +291,10 @@
     {
       "camada": "territorios-quilombolas-vales",
       "feicoes": 12,
-      "bytes": 42362,
+      "bytes": 83810,
       "comprimido": false,
-      "sha256": "d0476d0f646c5b33c3859a87db8cc43e350c5a76185ead49b5ee62df6cb2ab92",
-      "mtime_utc": "2026-08-11T14:55:52.418Z",
+      "sha256": "359bde627c8b7473f1900b465a9c07e25301b860c6b8517d828dbf2a41eb4ed8",
+      "mtime_utc": "2026-08-13T21:27:56.250Z",
       "obtencao": "manual",
       "origem": "INCRA — Áreas de Quilombolas, pelo Acervo Fundiário",
       "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
@@ -262,15 +302,20 @@
     {
       "camada": "territorios-quilombolas",
       "feicoes": 2,
-      "bytes": 1826,
+      "bytes": 2888,
       "comprimido": false,
-      "sha256": "9bdfcd794bb0d00917c76163523ea58c121b5b374606c416072afaa3d62f9544",
-      "mtime_utc": "2026-08-11T14:55:52.419Z",
+      "sha256": "486955c342996fbc394015449f6538fce2fe2faf56dbe04b3ff4b562b616effe",
+      "mtime_utc": "2026-08-13T21:27:56.252Z",
       "obtencao": "manual",
       "origem": "INCRA — Áreas de Quilombolas, pelo Acervo Fundiário",
       "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
     }
   ],
   "lacuna_principal": "Não existe base aberta de terra devoluta reconhecida, nem camada de terras do Estado de Minas. Por isso o mapa mostra terra SEM CADASTRO, que é outra coisa: ausência de declaração no CAR não é ausência de dono.",
-  "camadas_sem_origem_declarada": []
+  "camadas_sem_origem_declarada": [
+    "alerta-quilombola-mancha",
+    "alerta-territorio-sigmine-interesse",
+    "alerta-territorio-sigmine-operacao",
+    "atos-area-protegida-municipios"
+  ]
 }
