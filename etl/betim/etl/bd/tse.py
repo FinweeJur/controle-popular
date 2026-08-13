@@ -20,7 +20,9 @@ R$2,285,486.71. Joins the same `sequencial_candidato` key already resolved to
 `doador_documento_mascarado` is named for the `doacoes_campanha` schema's
 column, but schema verified live 2026-07-20: the real BD column is
 `cpf_cnpj_doador`, and sample rows show it is **NOT masked** (e.g. a full
-11-digit CPF came back plainly, `'24349267620'`). This isn't a bug or a
+11-digit CPF came back plainly -- format `'00000000000'`, synthetic here on
+ purpose: the legal basis below covers the PIPELINE handling real donor data,
+ not this comment pasting a real person's CPF into a public repo). Not a bug or a
 privacy leak on our side -- Brazilian electoral law (Lei das Eleições)
 mandates full donor CPF/CNPJ disclosure for campaign finance transparency,
 the same legal basis piracanjuba.ai relies on to show donor lists. The

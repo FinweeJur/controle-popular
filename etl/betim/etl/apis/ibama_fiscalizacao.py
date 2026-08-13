@@ -51,8 +51,8 @@ memória, nem o CSV inteiro de uma vez).
 6. **CPF/CNPJ EM CLARO, SEM REDAÇÃO, NOS DOIS DATASETS** — ao lado de nome
    completo, endereço e coordenada exata. Mesmo "Risco 1" já documentado para
    o WFS de licenciamento estadual (`docs/ambiental/F0-discovery.md` §1.3).
-   Formato de serialização difere entre datasets (autos: `096.948.166-70`;
-   embargo: `09685268614`) — gravado fiel ao que cada fonte publica.
+   Formato de serialização difere entre datasets (autos: `000.000.000-00`;
+   embargo: `00000000000`) — gravado fiel ao que cada fonte publica.
 
 7. **CAIXA INCONSISTENTE EM `MUNICIPIO`** (`BETIM` no auto, `Betim` no
    embargo). Nunca facetar pelo texto — a chave é sempre `COD_MUNICIPIO`

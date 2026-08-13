@@ -70,8 +70,8 @@ indeterminado_tratado_como_pf 265 · corrompido_na_fonte 2.
 F0 §1.3 já registrava "nome com CPF colado no texto (padrão MEI): 273"
 como achado geral da camada. Medido ao vivo PARA ESTA CARGA: **360 linhas**
 têm um CPF de 11 dígitos dentro do texto livre de `nome_pf_pj` — ex.
-`"ANDREIVE PEDRO MARQUES 05593124663"`,
-`"EDMAR GERALDO DA COSTA CPF 392.386.876-68"` — e as 360 são TODAS
+`"FULANO DE TAL 00000000000"`,
+`"BELTRANO DA SILVA CPF 000.000.000-00"` — e as 360 são TODAS
 classificadas como CNPJ (redigido ou não) pelo `cpf_cnpj` oficial, ou seja,
 TODAS entrariam como "empreendimento PJ, publicar nome e coordenada" pela
 regra normal. Gravar o texto cru vazaria o CPF do titular por uma coluna
@@ -279,7 +279,7 @@ def _classificar_documento(bruto) -> dict:
 
 
 # `\d[\d.\-/]{8,}\d`: um dígito, 9+ chars de dígito/pontuação de documento,
-# um dígito — cobre "05593124663", "246553256-15", "397.265.506/10". O
+# um dígito — cobre "00000000000", "000000000-00", "000.000.000/00". O
 # corte por CONTAGEM DE DÍGITOS (11 ou 14), não pelo tamanho da string
 # batida, é o que evita apagar um pedaço de nome que só parece numérico.
 _RE_NUMERO_DOCUMENTO = re.compile(r"\d[\d.\-/]{8,}\d")

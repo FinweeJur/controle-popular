@@ -68,8 +68,8 @@
 -- O F0 §1.3 já registrava "nome com CPF colado no texto (padrão MEI): 273"
 -- como achado geral. Medido ao vivo para ESTA carga: **360 linhas** têm um
 -- CPF de 11 dígitos dentro do texto livre de `nome_pf_pj` (ex.
--- `"ANDREIVE PEDRO MARQUES 05593124663"`, `"EDMAR GERALDO DA COSTA CPF
--- 392.386.876-68"`) — e as 360 são TODAS classificadas como CNPJ
+-- `"FULANO DE TAL 00000000000"`, `"BELTRANO DA SILVA CPF
+-- 000.000.000-00"`) — e as 360 são TODAS classificadas como CNPJ
 -- (redigido ou não), ou seja, TODAS entrariam como "empreendimento PJ,
 -- publicar nome e coordenada" pela regra normal. Gravar o texto cru
 -- vazaria o CPF do titular por uma coluna que o resto da regra de

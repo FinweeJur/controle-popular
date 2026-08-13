@@ -591,7 +591,7 @@ saída de páginas aparentemente fechadas de `igam.mg.gov.br`:
 |---|---|---|---|---|
 | **B1** `sistemas.meioambiente.mg.gov.br/licenciamento/site/lista-outorgas` | Atual (55.729 registros) | Só no detalhe (`?id=N`), não na listagem | Grid HTML + export Excel | Export pode não ter município (não testado — exigiria replicar POST com CSRF) |
 | **B2 índice** `outorga.meioambiente.mg.gov.br/index.php?r=portaria/listar` | Atual, 2001-2026 (4.192 `.doc`) | Sim, em texto livre | `.doc` binário sem campos fixos | Parsing caro/frágil (~4.192 documentos) |
-| **B2 export** `outorga.meioambiente.mg.gov.br/arquivos/outorgas_ate_31_12_2015.xlsx` | Só até 2015 | Sim, coluna limpa | XLSX estruturado | **CPF completo, SEM máscara** — ex. `449.918.516-53` |
+| **B2 export** `outorga.meioambiente.mg.gov.br/arquivos/outorgas_ate_31_12_2015.xlsx` | Só até 2015 | Sim, coluna limpa | XLSX estruturado | **CPF completo, SEM máscara** — ex. `000.000.000-00` |
 
 **Achado de privacidade — o mais sério desta sessão**: o export XLSX estruturado (única
 fonte com município limpo E dado atual-o-bastante-pra-ser-útil-em-massa) expõe CPF
