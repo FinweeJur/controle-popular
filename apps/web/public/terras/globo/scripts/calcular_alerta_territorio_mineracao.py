@@ -146,12 +146,17 @@ def _identificar_territorio(t: dict) -> dict:
             "territorio_fase": props.get("fase_ti"),
             "territorio_municipio": props.get("municipio_nome"),
         }
+    # Desde `ingerir_incra_quilombolas.py` (13/08/2026), as duas camadas de
+    # quilombola trazem nome/município/fase reais do INCRA — MAS não todas as
+    # feições: a que não achou par no INCRA (ver docstring daquele script)
+    # continua com `fonte_incra: false` e sem `nome`. `.get()` devolve None
+    # nesse caso, que é exatamente o comportamento antigo — sem quebrar nada.
     return {
         "territorio_tipo": "quilombola",
-        "territorio_nome": None,  # fonte ingerida não carrega nome do território, ver docstring
-        "territorio_etnia": None,
-        "territorio_fase": None,
-        "territorio_municipio": None,
+        "territorio_nome": props.get("nome"),
+        "territorio_etnia": None,  # quilombola não tem "etnia" — campo é só de TI
+        "territorio_fase": props.get("fase_quilombola"),
+        "territorio_municipio": props.get("municipio_nome"),
         "territorio_arquivo_origem": t["_origem_arquivo"],
         "territorio_indice_origem": t["_origem_indice"],
     }

@@ -459,7 +459,7 @@ export const LAYER_REGISTRY = [
   },
   {
     id: 'territorios-quilombolas-vales', label: 'Territórios quilombolas — Jequitinhonha e Mucuri',
-    hint: '12 áreas, 35.698 hectares (357 km²) titulados ou em titulação pelo INCRA. Na bacia do Paraopeba eram 22 hectares, uns 31 campos de futebol: aqui o território tradicional é uma das maiores presenças do mapa, não um detalhe.',
+    hint: '12 áreas, 35.908 hectares (359 km²) titulados ou em titulação pelo INCRA. Na bacia do Paraopeba eram 22 hectares, uns 31 campos de futebol: aqui o território tradicional é uma das maiores presenças do mapa, não um detalhe.',
     color: 0x94c05b,   /* --layer-quilombolas */ on: false, render: 'fill', listavel: true,
     regioes: ['jequitinhonha', 'mucuri'], mesoIndistinta: true,
   },
@@ -770,8 +770,9 @@ export const CAMADAS = [
   {
     id: 'territorios-quilombolas', assunto: 'terra-publica',
     label: 'Territórios quilombolas',
-    // 2 + 12 áreas; 22 + 35.698 ha.
-    hint: '14 áreas, 35.720 hectares (357 km²) de território tradicional titulado ou em titulação pelo INCRA. Quase tudo isso está no Jequitinhonha e no Mucuri: na bacia do Paraopeba são 22 hectares, uns 31 campos de futebol.',
+    // 2 + 12 áreas; 22 + 35.908 ha (INCRA, 13/08/2026 — ver
+    // scripts/ingerir_incra_quilombolas.py).
+    hint: '14 áreas, 35.930 hectares (359 km²) de território tradicional titulado ou em titulação pelo INCRA. Quase tudo isso está no Jequitinhonha e no Mucuri: na bacia do Paraopeba são 22 hectares, uns 31 campos de futebol.',
     fontes: ['territorios-quilombolas', 'territorios-quilombolas-vales'],
   },
   {

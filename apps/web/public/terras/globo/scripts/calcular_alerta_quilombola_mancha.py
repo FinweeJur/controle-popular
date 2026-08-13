@@ -31,10 +31,15 @@ que já tem onboardadas. Um território quilombola fora dessas duas regiões
 NÃO aparece aqui, e "zero cruzamento" não pode ser lido como "MG inteira
 está livre de sobreposição": é "as 14 áreas que temos hoje não cruzam".
 
-Cada feature de origem só tem `area_ha` como propriedade (sem nome do
-território/etnia/município na fonte já ingerida) -- a feição de saída
-carrega o que existe: índice do território de origem + arquivo de origem,
-`area_ha`, e os dados completos do lado da barragem.
+Até 13/08/2026 cada feature de origem só tinha `area_ha` como propriedade
+(sem nome do território/município na fonte ingerida). Desde
+`ingerir_incra_quilombolas.py` (mesmo dia), as duas camadas passaram a trazer
+`nome`, `municipio_nome` e `fase_quilombola` do INCRA -- exceto a ÚNICA
+feição que não achou par lá (`territorios-quilombolas-vales.geojson` índice
+3, ver a docstring daquele script), que continua sem nome. A feição de saída
+carrega índice do território de origem + arquivo de origem, `area_ha`,
+`territorio_nome`/`territorio_municipio`/`territorio_fase` (None quando a
+fonte não tinha), e os dados completos do lado da barragem.
 
 Uso:
     python scripts/calcular_alerta_quilombola_mancha.py
@@ -173,6 +178,13 @@ def main() -> None:
                     "territorio_arquivo_origem": terr["_origem_arquivo"],
                     "territorio_indice_origem": terr["_origem_indice"],
                     "territorio_area_ha": terr_props.get("area_ha"),
+                    # Desde `ingerir_incra_quilombolas.py` (13/08/2026): nome e
+                    # município reais do INCRA, quando a feição achou par lá
+                    # (ver `fonte_incra` naquele script) -- None senão, igual
+                    # ao comportamento antigo.
+                    "territorio_nome": terr_props.get("nome"),
+                    "territorio_municipio": terr_props.get("municipio_nome"),
+                    "territorio_fase": terr_props.get("fase_quilombola"),
                     "barragem": props_m.get("estrutura"),
                     "empreendedor": props_m.get("empreended"),
                     "municipio_barragem": props_m.get("municipio"),
