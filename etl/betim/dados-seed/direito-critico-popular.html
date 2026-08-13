@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direito Crítico Popular — Guia de Conceitos e Microssistema de Proteção</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   DESIGN SYSTEM — Claude dark mode
+   ================================================================ */
+:root {
+  --bg-0:#0d0d0d; --bg-1:#111; --bg-2:#181818; --bg-3:#1f1f1f; --bg-4:#282828;
+  --border:rgba(255,255,255,.08); --border-h:rgba(255,255,255,.16);
+  --text-p:#f0ede8; --text-s:#9a9690; --text-m:#5a5855;
+  --ajp:#1DAA78; --ins:#7B6FE8; --ach:#D4921A; --tat:#3B8FD4; --bar:#E05252;
+  --ajp-d:rgba(29,170,120,.12); --ins-d:rgba(123,111,232,.12);
+  --ach-d:rgba(212,146,26,.12);  --tat-d:rgba(59,143,212,.12); --bar-d:rgba(224,82,82,.12);
+  --fd:'DM Serif Display',Georgia,serif;
+  --fb:'Outfit',sans-serif;
+  --fm:'DM Mono',monospace;
+  --r-sm:6px; --r-md:10px; --r-lg:16px;
+  --tr:.2s ease;
+  --font-scale:1;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:calc(16px * var(--font-scale));}
+body{background:var(--bg-0);color:var(--text-p);font-family:var(--fb);font-weight:300;line-height:1.7;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;cursor:pointer;}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:400;line-height:1.15;}
+h1{font-size:clamp(2.4rem,5vw,4rem);}
+h2{font-size:clamp(1.8rem,3vw,2.6rem);}
+h3{font-size:clamp(1.2rem,2vw,1.5rem);}
+em{font-style:italic;color:var(--text-s);}
+
+/* PAGE SYSTEM */
+.page{display:none;min-height:100vh;animation:fadeIn .25s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+
+.container{max-width:1140px;margin:0 auto;padding:0 1.5rem;}
+.section{padding:5rem 0;}
+.section-dark{background:var(--bg-1);}
+
+/* ── NAVBAR ── */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:56px;}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 1.2rem;height:100%;display:flex;align-items:center;gap:1.5rem;}
+.nav-logo{font-family:var(--fm);font-size:.95rem;font-weight:500;letter-spacing:.05em;color:var(--text-p);flex-shrink:0;cursor:pointer;}
+.logo-bracket{color:var(--ajp);}
+.nav-links{display:flex;gap:2px;flex:1;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
+.nav-links::-webkit-scrollbar{display:none;}
+.nav-link{font-size:.78rem;font-weight:400;letter-spacing:.02em;color:var(--text-s);padding:.3rem .65rem;border-radius:var(--r-sm);transition:color var(--tr),background var(--tr);cursor:pointer;background:none;border:none;font-family:var(--fb);white-space:nowrap;}
+.nav-link:hover,.nav-link.active{color:var(--text-p);background:var(--bg-3);}
+.nav-link.active{color:var(--text-p);}
+
+/* Separator between site sections */
+.nav-sep{width:1px;height:20px;background:var(--border);flex-shrink:0;margin:0 4px;}
+.nav-section-label{font-family:var(--fm);font-size:.62rem;color:var(--text-m);letter-spacing:.08em;text-transform:uppercase;flex-shrink:0;white-space:nowrap;}
+
+.nav-controls{display:flex;gap:.35rem;align-items:center;flex-shrink:0;}
+.ctrl-btn{background:var(--bg-3);border:1px solid var(--border);color:var(--text-s);font-family:var(--fm);font-size:.75rem;padding:.28rem .5rem;border-radius:var(--r-sm);cursor:pointer;transition:all var(--tr);white-space:nowrap;}
+.ctrl-btn:hover{background:var(--bg-4);color:var(--text-p);border-color:var(--border-h);}
+.hamburger{display:none;}
+
+/* ── SEARCH ── */
+.search-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);display:none;align-items:flex-start;justify-content:center;padding-top:12vh;}
+.search-overlay.active{display:flex;}
+.search-box{background:var(--bg-2);border:1px solid var(--border-h);border-radius:var(--r-lg);width:min(680px,92vw);padding:1.25rem;position:relative;}
+#searchInput{width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--text-p);font-family:var(--fb);font-size:1.2rem;font-weight:300;padding:.5rem 2.5rem .75rem 0;outline:none;}
+#searchInput::placeholder{color:var(--text-m);}
+.search-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;color:var(--text-m);font-size:1rem;cursor:pointer;}
+.search-results{margin-top:1rem;}
+.search-result-item{display:block;padding:.75rem 1rem;border-radius:var(--r-md);border:1px solid transparent;margin-bottom:.4rem;transition:all var(--tr);cursor:pointer;}
+.search-result-item:hover{background:var(--bg-3);border-color:var(--border);}
+.sri-title{font-size:.95rem;font-weight:500;color:var(--text-p);}
+.sri-page{font-size:.75rem;color:var(--text-m);margin-top:.15rem;font-family:var(--fm);}
+.sri-match{color:var(--ajp);font-weight:500;}
+.no-results{color:var(--text-m);font-size:.9rem;padding:.5rem 0;}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 1.5rem 5rem;position:relative;overflow:hidden;max-width:1140px;margin:0 auto;}
+.hero-grid{position:relative;z-index:2;max-width:700px;}
+.hero-tag{display:inline-block;font-family:var(--fm);font-size:.72rem;letter-spacing:.12em;color:var(--ajp);text-transform:uppercase;border:1px solid rgba(29,170,120,.35);padding:.28rem .7rem;border-radius:20px;margin-bottom:1.75rem;}
+.hero-title{font-size:clamp(3rem,6vw,5rem);line-height:1.08;margin-bottom:1.5rem;}
+.hero-title em{color:var(--text-s);font-style:italic;}
+.hero-desc{font-size:1rem;color:var(--text-s);line-height:1.75;max-width:520px;margin-bottom:2.5rem;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--text-p);color:var(--bg-0);font-family:var(--fb);font-size:.88rem;font-weight:500;padding:.7rem 1.4rem;border-radius:var(--r-md);border:none;cursor:pointer;transition:all var(--tr);}
+.btn-primary:hover{background:#e0ddd8;transform:translateY(-1px);}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--text-s);font-family:var(--fb);font-size:.88rem;font-weight:400;padding:.7rem 1.2rem;border-radius:var(--r-md);border:1px solid var(--border-h);cursor:pointer;transition:all var(--tr);}
+.btn-ghost:hover{background:var(--bg-3);color:var(--text-p);}
+.hero-deco{position:absolute;right:-5%;top:50%;transform:translateY(-50%);z-index:1;}
+.deco-ring{position:absolute;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
+.ring-1{width:420px;height:420px;border:1px solid rgba(29,170,120,.12);}
+.ring-2{width:620px;height:620px;border:1px solid rgba(123,111,232,.07);}
+.ring-3{width:820px;height:820px;border:1px solid rgba(212,146,26,.05);}
+.deco-line{position:absolute;width:1px;height:480px;background:linear-gradient(to bottom,transparent,rgba(29,170,120,.3),transparent);top:50%;left:50%;transform:translate(-50%,-50%);}
+
+/* ── INTRO STRIP ── */
+.intro-strip{background:var(--bg-1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 0;}
+.intro-grid{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
+.intro-stat{text-align:center;flex:1;min-width:90px;}
+.stat-num{display:block;font-family:var(--fd);font-size:2.2rem;color:var(--text-p);line-height:1;}
+.stat-label{display:block;font-size:.72rem;color:var(--text-m);font-family:var(--fm);letter-spacing:.05em;margin-top:.3rem;}
+.intro-divider{width:1px;height:48px;background:var(--border);flex-shrink:0;}
+
+/* ── SECTION HEADER ── */
+.section-header{margin-bottom:3rem;}
+.section-tag{display:inline-block;font-family:var(--fm);font-size:.7rem;letter-spacing:.12em;color:var(--text-m);text-transform:uppercase;margin-bottom:.75rem;}
+.section-title{color:var(--text-p);}
+
+/* ── CONCEPT CARDS ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;}
+.concept-card{position:relative;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:border-color var(--tr),transform var(--tr),box-shadow var(--tr);cursor:pointer;}
+.concept-card:hover{transform:translateY(-3px);}
+.card-ajp:hover{border-color:rgba(29,170,120,.5);box-shadow:0 12px 40px rgba(29,170,120,.1);}
+.card-ins:hover{border-color:rgba(123,111,232,.5);box-shadow:0 12px 40px rgba(123,111,232,.1);}
+.card-ach:hover{border-color:rgba(212,146,26,.5);box-shadow:0 12px 40px rgba(212,146,26,.1);}
+.card-tat:hover{border-color:rgba(59,143,212,.5);box-shadow:0 12px 40px rgba(59,143,212,.1);}
+.card-bar:hover{border-color:rgba(224,82,82,.5);box-shadow:0 12px 40px rgba(224,82,82,.1);}
+.card-number{position:absolute;top:1.25rem;right:1.25rem;font-family:var(--fm);font-size:.68rem;color:var(--text-m);letter-spacing:.08em;}
+.card-accent-bar{height:3px;width:100%;}
+.card-ajp .card-accent-bar{background:var(--ajp);}
+.card-ins .card-accent-bar{background:var(--ins);}
+.card-ach .card-accent-bar{background:var(--ach);}
+.card-tat .card-accent-bar{background:var(--tat);}
+.card-bar .card-accent-bar{background:var(--bar);}
+.card-content{padding:1.4rem;flex:1;display:flex;flex-direction:column;gap:.55rem;}
+.card-tag{font-family:var(--fm);font-size:.68rem;letter-spacing:.08em;color:var(--text-m);text-transform:uppercase;}
+.card-ajp .card-tag{color:var(--ajp);opacity:.85;}
+.card-ins .card-tag{color:var(--ins);opacity:.85;}
+.card-ach .card-tag{color:var(--ach);opacity:.85;}
+.card-tat .card-tag{color:var(--tat);opacity:.85;}
+.card-bar .card-tag{color:var(--bar);opacity:.85;}
+.card-title{font-size:1.1rem;font-family:var(--fd);color:var(--text-p);line-height:1.25;}
+.card-desc{font-size:.84rem;color:var(--text-s);line-height:1.65;flex:1;}
+.card-meta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem;}
+.meta-item{font-family:var(--fm);font-size:.64rem;color:var(--text-m);background:var(--bg-3);padding:.18rem .45rem;border-radius:4px;border:1px solid var(--border);}
+.card-arrow{font-size:1rem;color:var(--text-m);margin-top:.6rem;transition:transform var(--tr),color var(--tr);}
+.concept-card:hover .card-arrow{transform:translateX(4px);}
+.card-ajp:hover .card-arrow{color:var(--ajp);}
+.card-ins:hover .card-arrow{color:var(--ins);}
+.card-ach:hover .card-arrow{color:var(--ach);}
+.card-tat:hover .card-arrow{color:var(--tat);}
+.card-bar:hover .card-arrow{color:var(--bar);}
+
+/* ── COMPARE TABLE ── */
+.compare-table-wrap{overflow-x:auto;border-radius:var(--r-lg);border:1px solid var(--border);}
+.compare-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:680px;}
+.compare-table thead{background:var(--bg-3);}
+.compare-table th{padding:.85rem 1rem;text-align:left;font-family:var(--fm);font-size:.7rem;letter-spacing:.06em;font-weight:500;color:var(--text-s);text-transform:uppercase;border-bottom:1px solid var(--border);}
+.th-ajp{color:var(--ajp)!important;} .th-ins{color:var(--ins)!important;} .th-ach{color:var(--ach)!important;} .th-tat{color:var(--tat)!important;}
+.compare-table td{padding:.75rem 1rem;border-bottom:1px solid var(--border);color:var(--text-s);line-height:1.5;vertical-align:top;}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table tr:hover td{background:rgba(255,255,255,.02);}
+.td-dim{color:var(--text-m)!important;font-family:var(--fm);font-size:.7rem!important;white-space:nowrap;background:var(--bg-3);border-right:1px solid var(--border);}
+
+/* ── QUOTE ── */
+.quote-section{padding:6rem 0;background:linear-gradient(135deg,var(--bg-1) 0%,var(--bg-0) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.big-quote{max-width:820px;margin:0 auto;padding:0 1.5rem;text-align:center;}
+.big-quote::before{content:'"';font-family:var(--fd);font-size:6rem;color:var(--border);display:block;line-height:.5;margin-bottom:1rem;}
+.big-quote p{font-family:var(--fd);font-style:italic;font-size:clamp(1.2rem,2.5vw,1.8rem);color:var(--text-s);line-height:1.5;margin-bottom:1.5rem;}
+.big-quote cite{font-family:var(--fm);font-size:.75rem;color:var(--text-m);font-style:normal;letter-spacing:.05em;}
+
+/* ── REF PREVIEW ── */
+.ref-intro{color:var(--text-s);max-width:620px;margin-bottom:2rem;}
+.ref-preview{display:flex;flex-direction:column;}
+.ref-item{display:flex;gap:1.5rem;align-items:flex-start;padding:1.2rem 0;border-bottom:1px solid var(--border);}
+.ref-item:first-child{border-top:1px solid var(--border);}
+.ref-year{font-family:var(--fm);font-size:.75rem;color:var(--ajp);min-width:36px;flex-shrink:0;padding-top:.2rem;}
+.ref-text{font-size:.85rem;color:var(--text-s);line-height:1.65;}
+.ref-text strong{color:var(--text-p);font-weight:500;}
+
+/* ── FOOTER ── */
+.footer{background:var(--bg-1);border-top:1px solid var(--border);padding:3rem 0 1.5rem;}
+.footer-inner{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.footer-brand p{font-size:.8rem;color:var(--text-m);margin-top:.75rem;line-height:1.6;}
+.footer-nav{display:flex;flex-direction:column;gap:.5rem;}
+.footer-nav a{font-size:.82rem;color:var(--text-s);transition:color var(--tr);cursor:pointer;}
+.footer-nav a:hover{color:var(--text-p);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;}
+.footer-bottom p{font-size:.72rem;color:var(--text-m);}
+
+/* ── BACK TO TOP ── */
+.back-to-top{position:fixed;bottom:1.5rem;right:1.5rem;z-index:50;background:var(--bg-3);border:1px solid var(--border-h);color:var(--text-s);font-size:1rem;width:40px;height:40px;border-radius:50%;cursor:pointer;display:none;align-items:center;justify-content:center;transition:all var(--tr);}
+.back-to-top.visible{display:flex;}
+.back-to-top:hover{background:var(--bg-4);color:var(--text-p);transform:translateY(-2px);}
+
+/* ── INNER PAGES (DCP) ── */
+.page-hero{padding:8rem 0 4rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.page-hero-bg{position:absolute;inset:0;z-index:0;opacity:.03;background-size:60px 60px;background-image:linear-gradient(to right,var(--text-p) 1px,transparent 1px),linear-gradient(to bottom,var(--text-p) 1px,transparent 1px);}
+.page-hero-inner{position:relative;z-index:1;}
+.page-breadcrumb{display:flex;gap:.5rem;align-items:center;font-family:var(--fm);font-size:.72rem;color:var(--text-m);margin-bottom:1.5rem;}
+.page-breadcrumb a{color:var(--text-m);cursor:pointer;}
+.page-breadcrumb a:hover{color:var(--text-p);}
+.page-tag{display:inline-block;font-family:var(--fm);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .7rem;border-radius:20px;border:1px solid;margin-bottom:1rem;}
+.page-hero-title{font-size:clamp(2.5rem,5vw,4rem);margin-bottom:1rem;}
+.page-hero-subtitle{font-size:1rem;color:var(--text-s);max-width:560px;line-height:1.7;}
+.accent-ajp{color:var(--ajp);border-color:rgba(29,170,120,.35);}
+.accent-ins{color:var(--ins);border-color:rgba(123,111,232,.35);}
+.accent-ach{color:var(--ach);border-color:rgba(212,146,26,.35);}
+.accent-tat{color:var(--tat);border-color:rgba(59,143,212,.35);}
+.accent-bar{color:var(--bar);border-color:rgba(224,82,82,.35);}
+.page-content{padding:4rem 0;}
+.content-grid{display:grid;grid-template-columns:1fr 270px;gap:4rem;align-items:start;}
+.content-main{min-width:0;}
+.content-sidebar{position:sticky;top:76px;}
+.prose h2{font-family:var(--fd);font-size:1.5rem;color:var(--text-p);margin:2.5rem 0 1rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+.prose h2:first-child{border-top:none;padding-top:0;margin-top:0;}
+.prose p{color:var(--text-s);margin-bottom:1.2rem;font-size:.95rem;line-height:1.8;}
+.prose strong{color:var(--text-p);font-weight:500;}
+.prose ul{padding-left:1.25rem;margin-bottom:1.2rem;}
+.prose li{color:var(--text-s);margin-bottom:.5rem;font-size:.95rem;line-height:1.7;}
+.prose a{border-bottom:1px solid var(--border-h);transition:border-color var(--tr);}
+.prose a:hover{border-color:var(--ajp);color:var(--text-p);}
+.callout{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid;border-radius:var(--r-md);padding:1.2rem 1.4rem;margin:2rem 0;}
+.callout p{margin-bottom:0;}
+.callout-label{font-family:var(--fm);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;display:block;}
+.callout-ajp{border-left-color:var(--ajp);} .callout-ins{border-left-color:var(--ins);} .callout-ach{border-left-color:var(--ach);} .callout-tat{border-left-color:var(--tat);} .callout-bar{border-left-color:var(--bar);}
+.sidebar-box{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.2rem;margin-bottom:1rem;}
+.sidebar-title{font-family:var(--fm);font-size:.68rem;color:var(--text-m);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem;}
+.toc-list{list-style:none;padding:0;}
+.toc-list li{margin-bottom:.25rem;}
+.toc-list a{font-size:.8rem;color:var(--text-m);display:block;padding:.28rem .5rem;border-radius:var(--r-sm);transition:all var(--tr);border-left:2px solid transparent;cursor:pointer;}
+.toc-list a:hover{color:var(--text-p);background:var(--bg-3);}
+.qf-item{display:flex;flex-direction:column;margin-bottom:.85rem;padding-bottom:.85rem;border-bottom:1px solid var(--border);}
+.qf-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.qf-label{font-family:var(--fm);font-size:.65rem;color:var(--text-m);letter-spacing:.06em;margin-bottom:.18rem;text-transform:uppercase;}
+.qf-value{font-size:.82rem;color:var(--text-p);}
+.pl-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;}
+.pl-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-md);padding:1.2rem;}
+.pl-label{font-family:var(--fm);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.7rem;}
+.pl-label.potential{color:var(--ajp);} .pl-label.limit{color:#E05252;}
+.pl-list{list-style:none;padding:0;}
+.pl-list li{font-size:.82rem;color:var(--text-s);padding:.32rem 0 .32rem 1rem;position:relative;border-bottom:1px solid var(--border);line-height:1.5;}
+.pl-list li:last-child{border-bottom:none;}
+.pl-list li::before{content:'·';position:absolute;left:0;color:var(--text-m);}
+.potential .pl-list li::before{color:var(--ajp);} .limit .pl-list li::before{color:#E05252;}
+.author-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0;}
+.author-tag{background:var(--bg-3);border:1px solid var(--border);border-radius:20px;padding:.22rem .7rem;font-size:.75rem;color:var(--text-s);}
+.concept-nav{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);}
+.cnav-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.2rem;transition:border-color var(--tr),transform var(--tr);display:flex;flex-direction:column;gap:.3rem;cursor:pointer;}
+.cnav-card:hover{border-color:var(--border-h);transform:translateY(-2px);}
+.cnav-dir{font-family:var(--fm);font-size:.68rem;color:var(--text-m);letter-spacing:.06em;text-transform:uppercase;}
+.cnav-title{font-size:.9rem;color:var(--text-p);font-weight:500;}
+.cnav-next{text-align:right;}
+
+/* ── REFERENCES PAGE ── */
+.refs-filter{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:2rem;}
+.filter-btn{background:var(--bg-2);border:1px solid var(--border);color:var(--text-s);font-family:var(--fm);font-size:.7rem;letter-spacing:.05em;padding:.32rem .75rem;border-radius:20px;cursor:pointer;transition:all var(--tr);}
+.filter-btn:hover,.filter-btn.active{background:var(--bg-3);color:var(--text-p);border-color:var(--border-h);font-weight:500;}
+.juris-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem;}
+.juris-filters .filter-btn.active{background:var(--bar);color:#fff;border-color:var(--bar);}
+.refs-list{display:flex;flex-direction:column;}
+.ref-entry{padding:1.2rem 0;border-bottom:1px solid var(--border);display:flex;gap:1.5rem;align-items:flex-start;}
+.ref-entry:first-child{border-top:1px solid var(--border);}
+.ref-num{font-family:var(--fm);font-size:.7rem;color:var(--text-m);min-width:26px;padding-top:.1rem;flex-shrink:0;}
+.ref-body{flex:1;}
+.ref-citation{font-size:.88rem;color:var(--text-s);line-height:1.7;margin-bottom:.5rem;}
+.ref-citation strong{color:var(--text-p);font-weight:500;}
+.ref-citation em{font-style:italic;}
+.ref-tags-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem;}
+.ref-tag{font-family:var(--fm);font-size:.63rem;padding:.16rem .5rem;border-radius:4px;letter-spacing:.04em;}
+.tag-ajp{background:var(--ajp-d);color:var(--ajp);} .tag-ins{background:var(--ins-d);color:var(--ins);} .tag-ach{background:var(--ach-d);color:var(--ach);} .tag-tat{background:var(--tat-d);color:var(--tat);} .tag-geral{background:var(--bg-3);color:var(--text-m);}
+.ref-link{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--fm);font-size:.7rem;color:var(--text-m);border:1px solid var(--border);padding:.18rem .55rem;border-radius:4px;transition:all var(--tr);}
+.ref-link:hover{color:var(--text-p);border-color:var(--border-h);background:var(--bg-3);}
+
+/* ══════════════════════════════════════════════
+   MICROSSISTEMA STYLES (integrated, DCP palette)
+   ══════════════════════════════════════════════ */
+.ms-hero{background:linear-gradient(160deg,#1a0a0a 0%,#0d0d0d 40%,#0a1a12 100%);border-bottom:1px solid var(--border);padding:8rem 0 4rem;position:relative;overflow:hidden;}
+.ms-hero::after{content:'🌊';position:absolute;right:2rem;bottom:-1rem;font-size:10rem;opacity:.04;pointer-events:none;}
+.ms-hero-inner{position:relative;z-index:1;}
+.ms-hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fm);font-size:.7rem;color:var(--bar);letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(224,82,82,.35);padding:.28rem .7rem;border-radius:20px;margin-bottom:1.5rem;}
+.ms-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem;margin:2rem 0;}
+.ms-stat-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-md);padding:1.2rem;text-align:center;}
+.ms-stat-num{font-family:var(--fd);font-size:2rem;color:var(--text-p);display:block;line-height:1;}
+.ms-stat-lbl{font-size:.72rem;color:var(--text-m);font-family:var(--fm);margin-top:.3rem;display:block;letter-spacing:.04em;}
+.ms-nav-tabs{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:2rem;}
+.ms-tab-btn{background:var(--bg-2);border:1px solid var(--border);color:var(--text-s);font-family:var(--fb);font-size:.8rem;padding:.5rem 1rem;border-radius:var(--r-md);cursor:pointer;transition:all var(--tr);white-space:nowrap;}
+.ms-tab-btn:hover{background:var(--bg-3);color:var(--text-p);}
+.ms-tab-btn.active{background:var(--bar);color:#fff;border-color:var(--bar);}
+.ms-page{display:none;animation:fadeIn .25s ease;}
+.ms-page.active{display:block;}
+.ms-layout{display:grid;grid-template-columns:240px 1fr;gap:1.5rem;align-items:start;}
+.ms-sidebar{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;position:sticky;top:76px;max-height:calc(100vh - 100px);display:flex;flex-direction:column;}
+.ms-sb-head{background:var(--bar);color:#fff;padding:.9rem 1rem;font-family:var(--fm);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;flex-shrink:0;}
+.ms-law-list{overflow-y:auto;flex:1;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.ms-law-btn{width:100%;text-align:left;padding:.7rem 1rem;background:none;border:none;border-bottom:1px solid var(--border);cursor:pointer;color:var(--text-s);font-size:.78rem;line-height:1.4;transition:all .15s;display:flex;align-items:flex-start;gap:.6rem;font-family:var(--fb);}
+.ms-law-btn:hover{background:var(--bg-3);color:var(--text-p);}
+.ms-law-btn.active{background:rgba(224,82,82,.15);color:var(--bar);border-left:2px solid var(--bar);}
+.ms-law-num{background:var(--bar);color:#fff;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:600;flex-shrink:0;margin-top:1px;}
+.ms-law-btn.active .ms-law-num{background:var(--bar);}
+.ms-law-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:1.5rem;}
+.ms-law-head{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;background:var(--bg-3);}
+.ms-law-head h2{font-family:var(--fd);font-size:1.2rem;color:var(--text-p);line-height:1.3;}
+.ms-law-head-right{display:flex;flex-direction:column;gap:.4rem;align-items:flex-end;flex-shrink:0;}
+.ms-tag{font-family:var(--fm);font-size:.65rem;padding:.2rem .6rem;border-radius:4px;letter-spacing:.05em;}
+.ms-tag-nac{background:var(--bar-d);color:var(--bar);}
+.ms-tag-int{background:var(--ins-d);color:var(--ins);}
+.ms-tag-key{background:rgba(212,146,26,.15);color:var(--ach);}
+.ms-law-body{padding:1.5rem;}
+.ms-relevance{background:var(--bg-3);border-left:3px solid var(--bar);border-radius:var(--r-md);padding:1rem 1.2rem;margin-bottom:1.5rem;font-size:.85rem;line-height:1.7;color:var(--text-s);}
+.ms-relevance strong{color:var(--bar);}
+.ms-art-block{border:1px solid var(--border);border-radius:var(--r-md);margin-bottom:.75rem;overflow:hidden;}
+.ms-art-block.key{border-color:var(--ach);border-width:1.5px;}
+.ms-art-head{background:var(--bg-3);padding:.75rem 1rem;display:flex;justify-content:space-between;align-items:center;gap:.75rem;flex-wrap:wrap;}
+.ms-art-title{font-size:.82rem;font-weight:500;color:var(--text-p);}
+.ms-art-actions{display:flex;gap:.4rem;align-items:center;}
+.ms-art-body{padding:.9rem 1rem;font-size:.84rem;line-height:1.75;color:var(--text-s);}
+.ms-copy-btn,.ms-speak-btn{background:none;border:1px solid var(--border);color:var(--text-m);padding:.22rem .6rem;border-radius:6px;cursor:pointer;font-size:.68rem;font-weight:500;transition:all .2s;font-family:var(--fb);}
+.ms-copy-btn:hover{border-color:var(--ajp);color:var(--ajp);}
+.ms-copy-btn.done{background:var(--ajp);color:#fff;border-color:var(--ajp);}
+.ms-speak-btn:hover{border-color:var(--ins);color:var(--ins);}
+.normas-link{display:inline-flex;align-items:center;gap:.3rem;background:var(--bg-3);border:1px solid var(--border);color:var(--text-m);padding:.22rem .6rem;border-radius:6px;font-size:.68rem;transition:all .2s;font-family:var(--fm);}
+.normas-link:hover{border-color:var(--bar);color:var(--bar);}
+.ms-breadcrumb{font-family:var(--fm);font-size:.72rem;color:var(--text-m);margin-bottom:1rem;}
+.ms-breadcrumb span{color:var(--bar);}
+.ms-welcome{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;text-align:center;}
+.ms-welcome h3{font-family:var(--fd);color:var(--text-p);font-size:1.4rem;margin-bottom:.75rem;}
+.ms-stat-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem;}
+.ms-stat-b{background:var(--bg-3);border:1px solid var(--border);padding:1rem 1.5rem;border-radius:var(--r-md);text-align:center;min-width:100px;}
+.ms-stat-b .n{font-family:var(--fd);font-size:1.8rem;color:var(--bar);display:block;}
+.ms-stat-b .l{font-size:.7rem;color:var(--text-m);font-family:var(--fm);margin-top:.2rem;display:block;}
+.ms-cmp-add{background:none;border:1px solid var(--border);color:var(--text-m);padding:.22rem .7rem;border-radius:6px;cursor:pointer;font-size:.7rem;transition:all .2s;font-family:var(--fb);}
+.ms-cmp-add:hover,.ms-cmp-add.on{background:var(--ach);color:#fff;border-color:var(--ach);}
+.ms-badge-key{display:inline-block;background:rgba(212,146,26,.15);color:var(--ach);font-size:.63rem;font-weight:600;padding:.18rem .55rem;border-radius:6px;margin-bottom:.5rem;font-family:var(--fm);letter-spacing:.06em;}
+
+/* Juris */
+.juris-card{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);margin-bottom:1rem;overflow:hidden;}
+.juris-card.int{border-left:2px solid var(--ins);}
+.juris-card.nat{border-left:2px solid var(--bar);}
+.juris-head{padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;cursor:pointer;user-select:none;}
+.juris-head h3{font-size:.9rem;font-weight:500;color:var(--text-p);line-height:1.4;}
+.juris-meta{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.4rem;}
+.jm-tag{font-size:.63rem;font-weight:600;padding:.15rem .55rem;border-radius:4px;font-family:var(--fm);}
+.jm-nat{background:var(--bar-d);color:var(--bar);}
+.jm-int{background:var(--ins-d);color:var(--ins);}
+.juris-body{padding:0 1.25rem;max-height:0;overflow:hidden;transition:max-height .5s ease,padding .3s;}
+.juris-body.open{max-height:2000px;padding:0 1.25rem 1.25rem;}
+.juris-ementa{background:var(--bg-3);border-radius:var(--r-md);padding:.9rem 1rem;font-size:.82rem;line-height:1.7;color:var(--text-s);margin-bottom:.75rem;font-style:italic;border-left:2px solid var(--border-h);}
+.juris-rel{font-size:.83rem;line-height:1.65;color:var(--text-s);}
+.juris-rel strong{color:var(--bar);}
+.juris-chev{font-size:.9rem;color:var(--text-m);transition:transform .3s;flex-shrink:0;}
+.juris-chev.open{transform:rotate(180deg);}
+.juris-destaque{font-size:.65rem;font-weight:700;color:var(--ach);font-family:var(--fm);letter-spacing:.06em;margin-bottom:.35rem;}
+
+/* Timeline and MAB cards */
+.mab-card{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--ajp);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.5rem;}
+.mab-card h3{color:var(--ajp);font-family:var(--fd);font-size:1.1rem;margin-bottom:.75rem;}
+.mab-card p{font-size:.88rem;line-height:1.75;color:var(--text-s);}
+.tragedy-card{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--bar);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.5rem;}
+.tragedy-card h3{color:var(--bar);font-family:var(--fd);font-size:1.1rem;margin-bottom:.75rem;}
+.tragedy-card p{font-size:.88rem;line-height:1.75;color:var(--text-s);}
+.tragedy-card strong{color:var(--text-p);}
+.mab-card strong{color:var(--text-p);}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:2rem 0;}
+.info-box{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-md);padding:1.25rem;text-align:center;border-top:2px solid var(--bar);}
+.info-box .n{font-family:var(--fd);font-size:2rem;color:var(--text-p);display:block;}
+.info-box .l{font-size:.72rem;color:var(--text-m);font-family:var(--fm);margin-top:.3rem;display:block;}
+.timeline{position:relative;padding-left:1.75rem;margin:1.5rem 0;}
+.timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:1px;background:var(--border);}
+.tl-item{position:relative;margin-bottom:1.25rem;}
+.tl-dot{position:absolute;left:-1.5rem;top:4px;width:12px;height:12px;border-radius:50%;background:var(--ajp);border:2px solid var(--bg-2);}
+.tl-item.tragedy .tl-dot{background:var(--bar);}
+.tl-year{font-weight:600;color:var(--text-p);font-size:.85rem;font-family:var(--fm);}
+.tl-text{font-size:.83rem;color:var(--text-s);line-height:1.6;margin-top:.25rem;}
+
+/* Search results */
+.ms-sr-item{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-md);padding:.9rem 1rem;margin-bottom:.6rem;cursor:pointer;transition:all .2s;border-left:2px solid var(--bar);}
+.ms-sr-item:hover{background:var(--bg-3);transform:translateX(3px);}
+.ms-sr-item h4{color:var(--text-p);font-size:.88rem;margin-bottom:.25rem;font-weight:500;}
+.ms-sr-item p{font-size:.78rem;color:var(--text-s);}
+mark{background:rgba(212,146,26,.3);color:var(--ach);border-radius:2px;padding:0 2px;}
+
+/* Tooltip */
+.lt{border-bottom:1px dotted var(--ajp);cursor:help;color:var(--ajp);position:relative;}
+.lt .tt{display:none;position:fixed;background:var(--bg-3);color:var(--text-p);padding:.75rem 1rem;border-radius:var(--r-md);font-size:.75rem;width:min(260px,80vw);line-height:1.55;font-weight:400;z-index:9999;box-shadow:0 8px 30px rgba(0,0,0,.5);pointer-events:none;border:1px solid var(--border);}
+.lt:hover .tt{display:block;}
+
+/* Compare panel */
+.ms-cmp-panel{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--bg-2);border-top:1px solid var(--bar);box-shadow:0 -4px 30px rgba(0,0,0,.4);z-index:300;max-height:48vh;}
+.ms-cmp-panel.open{display:block;}
+.ms-cmp-hd{background:var(--bg-3);padding:.75rem 1.25rem;display:flex;justify-content:space-between;align-items:center;gap:.75rem;flex-wrap:wrap;border-bottom:1px solid var(--border);}
+.ms-cmp-hd strong{font-size:.88rem;color:var(--text-p);}
+.ms-cmp-cols{display:flex;overflow-y:auto;max-height:calc(48vh - 48px);}
+.ms-cmp-col{flex:1;min-width:220px;padding:1rem;border-right:1px solid var(--border);font-size:.8rem;line-height:1.6;}
+.ms-cmp-col:last-child{border-right:none;}
+.ms-cmp-col h4{color:var(--text-p);font-size:.82rem;margin-bottom:.4rem;font-weight:500;}
+.ms-cmp-col p{color:var(--text-s);}
+
+/* Toast */
+.toast{position:fixed;bottom:80px;right:1.25rem;background:var(--ajp);color:#fff;padding:.6rem 1.2rem;border-radius:20px;font-weight:500;font-size:.8rem;opacity:0;transform:translateY(12px);transition:all .3s;z-index:999;pointer-events:none;}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* Guide */
+.guide-item{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-md);padding:1rem 1.25rem;margin-bottom:.75rem;font-size:.85rem;color:var(--text-s);line-height:1.7;}
+.guide-item strong{color:var(--text-p);}
+.ms-warning{background:rgba(224,82,82,.08);border:1px solid rgba(224,82,82,.25);border-radius:var(--r-md);padding:1rem 1.25rem;font-size:.82rem;color:var(--text-s);line-height:1.65;margin-top:1.5rem;}
+.ms-warning strong{color:var(--bar);}
+
+/* Mobile sidebar */
+@media(max-width:900px){
+  .content-grid{grid-template-columns:1fr;}
+  .content-sidebar{position:static;}
+  .sidebar-box:not(.show-mobile){display:none;}
+  .pl-grid{grid-template-columns:1fr;}
+  .concept-nav{grid-template-columns:1fr;}
+  .cnav-next{text-align:left;}
+  .ms-layout{grid-template-columns:1fr;}
+  .ms-sidebar{position:static;max-height:none;}
+}
+@media(max-width:700px){
+  .nav-links{display:none;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:var(--bg-1);border-bottom:1px solid var(--border);padding:1rem;z-index:99;gap:.25rem;}
+  .nav-links.open{display:flex;}
+  .hamburger{display:flex;}
+  .hero-deco{opacity:.25;}
+  .intro-divider{display:none;}
+  .cards-grid{grid-template-columns:1fr;}
+  .ms-nav-tabs{gap:.25rem;}
+  .ms-tab-btn{font-size:.72rem;padding:.4rem .75rem;}
+  .nav-section-label,.nav-sep{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <span class="nav-logo" onclick="goTo('home')"><span class="logo-bracket">[</span>DCP<span class="logo-bracket">]</span></span>
+    <div class="nav-links" id="navLinks">
+      <span class="nav-section-label">Conceitos</span>
+      <button class="nav-link" data-page="home"       onclick="goTo('home')">Início</button>
+      <button class="nav-link" data-page="ajp"        onclick="goTo('ajp')">AJP</button>
+      <button class="nav-link" data-page="insurgente" onclick="goTo('insurgente')">Dir. Insurgente</button>
+      <button class="nav-link" data-page="achado"     onclick="goTo('achado')">Dir. Achado na Rua</button>
+      <button class="nav-link" data-page="tatico"     onclick="goTo('tatico')">Uso Tático</button>
+      <button class="nav-link" data-page="referencias" onclick="goTo('referencias')">Referências</button>
+      <div class="nav-sep"></div>
+      <span class="nav-section-label">Microssistema</span>
+      <button class="nav-link" data-page="ms-intro"  onclick="goTo('ms-intro')">Apresentação</button>
+      <button class="nav-link" data-page="ms-leis"   onclick="goTo('ms-leis')">📚 Legislação</button>
+      <button class="nav-link" data-page="ms-juris"  onclick="goTo('ms-juris')">⚖️ Jurisprudências</button>
+      <button class="nav-link" data-page="ms-guia"   onclick="goTo('ms-guia')">Guia de Uso</button>
+    </div>
+    <div class="nav-controls">
+      <button class="ctrl-btn" id="fontDown">A-</button>
+      <button class="ctrl-btn" id="fontUp">A+</button>
+      <button class="ctrl-btn" id="openSearch" title="Buscar (/ ou Ctrl+K)">⌕</button>
+      <button class="ctrl-btn hamburger" id="menuToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── SEARCH OVERLAY ── -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Buscar conceito, lei, autor, jurisprudência…" autocomplete="off">
+    <button class="search-close" id="searchClose">✕</button>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ════════════════════ PAGE: HOME ════════════════════ -->
+<div class="page active" id="page-home">
+  <header style="position:relative;overflow:hidden;">
+    <div class="hero">
+      <div class="hero-grid">
+        <div class="hero-tag">Direito Crítico Popular</div>
+        <h1 class="hero-title">Teoria, prática<br><em>e proteção</em><br>em um lugar.</h1>
+        <p class="hero-desc">Conceitos do direito crítico latino-americano — Assessoria Jurídica Popular, Direito Insurgente, Direito Achado na Rua, Uso Tático do Direito — integrados ao Microssistema de Proteção às Populações Atingidas por Barragens.</p>
+        <div class="hero-ctas">
+          <button class="btn-primary" onclick="document.getElementById('conceitos').scrollIntoView({behavior:'smooth'})">Explorar conceitos</button>
+          <button class="btn-ghost" onclick="goTo('ms-intro')">🌊 Microssistema de Barragens</button>
+        </div>
+      </div>
+      <div class="hero-deco"><div class="deco-ring ring-1"></div><div class="deco-ring ring-2"></div><div class="deco-ring ring-3"></div><div class="deco-line"></div></div>
+    </div>
+  </header>
+
+  <section class="intro-strip">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-stat"><span class="stat-num">4</span><span class="stat-label">Conceitos críticos</span></div>
+        <div class="intro-divider"></div>
+        <div class="intro-stat"><span class="stat-num">30</span><span class="stat-label">Instrumentos normativos</span></div>
+        <div class="intro-divider"></div>
+        <div class="intro-stat"><span class="stat-num">41</span><span class="stat-label">Referências bibliográficas</span></div>
+        <div class="intro-divider"></div>
+        <div class="intro-stat"><span class="stat-num">272</span><span class="stat-label">Vítimas em Brumadinho</span></div>
+        <div class="intro-divider"></div>
+        <div class="intro-stat"><span class="stat-num">∞</span><span class="stat-label">Direitos a conquistar</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="conceitos">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Parte I — Direito Crítico Popular</span>
+        <h2 class="section-title">Quatro perspectivas,<br>um horizonte comum</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="concept-card card-ajp" onclick="goTo('ajp')">
+          <div class="card-number">01</div><div class="card-accent-bar"></div>
+          <div class="card-content">
+            <div class="card-tag">Prática política e pedagógica</div>
+            <h3 class="card-title">Assessoria Jurídica Popular</h3>
+            <p class="card-desc">Construção coletiva do saber jurídico junto a movimentos sociais, a partir da educação popular de Paulo Freire.</p>
+            <div class="card-meta"><span class="meta-item">Brasil · Anos 1960</span><span class="meta-item">RENAP · NAJUPs</span></div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+        <div class="concept-card card-ins" onclick="goTo('insurgente')">
+          <div class="card-number">02</div><div class="card-accent-bar"></div>
+          <div class="card-content">
+            <div class="card-tag">Teoria crítica marxista</div>
+            <h3 class="card-title">Direito Insurgente</h3>
+            <p class="card-desc">O direito que nasce nas lutas dos movimentos populares, contra e além do direito oficial do Estado capitalista.</p>
+            <div class="card-meta"><span class="meta-item">Pressburger · Pazello</span><span class="meta-item">AJUP/FASE</span></div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+        <div class="concept-card card-ach" onclick="goTo('achado')">
+          <div class="card-number">03</div><div class="card-accent-bar"></div>
+          <div class="card-content">
+            <div class="card-tag">Escola teórica pluralista</div>
+            <h3 class="card-title">Direito Achado na Rua</h3>
+            <p class="card-desc">O direito como fenômeno social vivo, encontrado nas práticas coletivas e nas lutas por reconhecimento e dignidade.</p>
+            <div class="card-meta"><span class="meta-item">UnB · Anos 1980</span><span class="meta-item">Lyra Filho</span></div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+        <div class="concept-card card-tat" onclick="goTo('tatico')">
+          <div class="card-number">04</div><div class="card-accent-bar"></div>
+          <div class="card-content">
+            <div class="card-tag">Conceito estratégico</div>
+            <h3 class="card-title">Uso Tático do Direito</h3>
+            <p class="card-desc">A mobilização estratégica do direito como arma de luta, sem ilusões sobre sua neutralidade ou potencial emancipatório autônomo.</p>
+            <div class="card-meta"><span class="meta-item">Lênin · Cause Lawyering</span></div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="microssistema-preview">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Parte II — Microssistema de Proteção</span>
+        <h2 class="section-title">30 instrumentos normativos<br>para os atingidos por barragens</h2>
+      </div>
+      <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+        <div class="concept-card card-bar" onclick="goTo('ms-intro')">
+          <div class="card-accent-bar"></div>
+          <div class="card-content">
+            <div class="card-tag">Apresentação e contexto</div>
+            <h3 class="card-title">🌊 A Luta dos Atingidos</h3>
+            <p class="card-desc">O MAB, as tragédias de Mariana e Brumadinho e a construção histórica do microssistema normativo de proteção.</p>
+            <div class="card-meta"><span class="meta-item">MAB · RENAP</span><span class="meta-item">Mariana · Brumadinho</span></div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+        <div class="concept-card card-bar" onclick="goTo('ms-leis')">
+          <div class="card-accent-bar"></div>
+          <div class="card-content">
+            <div class="card-tag">Legislação comentada</div>
+            <h3 class="card-title">📚 30 Instrumentos Normativos</h3>
+            <p class="card-desc">18 nacionais e 12 internacionais com artigos relevantes, glossário jurídico e links para o texto oficial.</p>
+            <div class="card-meta"><span class="meta-item">CF/88 · LAP · PNSB</span><span class="meta-item">ONU · Corte IDH</span></div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+        <div class="concept-card card-bar" onclick="goTo('ms-juris')">
+          <div class="card-accent-bar"></div>
+          <div class="card-content">
+            <div class="card-tag">Jurisprudências</div>
+            <h3 class="card-title">⚖️ Decisões Paradigmáticas</h3>
+            <p class="card-desc">STF, STJ, TJMG e Corte Interamericana de Direitos Humanos — precedentes essenciais para casos de barragens.</p>
+            <div class="card-meta"><span class="meta-item">STF · STJ · TJMG</span><span class="meta-item">Corte IDH · ONU</span></div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Comparação</span>
+        <h2 class="section-title">Os quatro conceitos em perspectiva</h2>
+      </div>
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Dimensão</th>
+              <th class="th-ajp">AJP</th>
+              <th class="th-ins">Dir. Insurgente</th>
+              <th class="th-ach">Dir. Achado na Rua</th>
+              <th class="th-tat">Uso Tático</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="td-dim">Natureza</td><td>Prática pedagógica</td><td>Teoria crítica marxista</td><td>Escola teórica pluralista</td><td>Conceito estratégico</td></tr>
+            <tr><td class="td-dim">Origem</td><td>Brasil, anos 1960</td><td>Brasil, anos 1980–90</td><td>UnB, anos 1980</td><td>Sociologia jurídica</td></tr>
+            <tr><td class="td-dim">Referências</td><td>Paulo Freire, RENAP</td><td>Pressburger, Pazello</td><td>Lyra Filho, José Geraldo</td><td>Lênin, cause lawyering</td></tr>
+            <tr><td class="td-dim">Relação com o direito</td><td>Disputa e questiona</td><td>Crítica estrutural</td><td>Amplia as fontes</td><td>Usa instrumentalmente</td></tr>
+            <tr><td class="td-dim">Horizonte</td><td>Emancipação popular</td><td>Superação do capitalismo</td><td>Democracia radical</td><td>Ganhos concretos</td></tr>
+            <tr><td class="td-dim">Principal limite</td><td>Risco de assistencialismo</td><td>Alta abstração teórica</td><td>Pode diluir conflito de classe</td><td>Sem horizonte emancipatório</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="container">
+      <blockquote class="big-quote">
+        <p>"O direito achado na rua se apoia sobre um exercício analítico que desloca a centralidade e prioridade da norma estatal, para encontrar como referencial os processos sociais de lutas por libertação e dignidade."</p>
+        <cite>— Correia, Escrivão Filho e Sousa Junior (2016)</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="nav-logo" onclick="goTo('home')"><span class="logo-bracket">[</span>DCP<span class="logo-bracket">]</span></span>
+          <p>Direito Crítico Popular<br>Conceitos críticos + Microssistema de Proteção às Populações Atingidas por Barragens</p>
+        </div>
+        <nav class="footer-nav">
+          <a onclick="goTo('ajp')">AJP</a><a onclick="goTo('insurgente')">Dir. Insurgente</a><a onclick="goTo('achado')">Dir. Achado na Rua</a><a onclick="goTo('tatico')">Uso Tático</a><a onclick="goTo('referencias')">Referências</a>
+          <a onclick="goTo('ms-intro')" style="margin-top:.5rem;color:var(--bar);">🌊 Microssistema</a><a onclick="goTo('ms-leis')">Legislação</a><a onclick="goTo('ms-juris')">Jurisprudências</a>
+        </nav>
+      </div>
+      <div class="footer-bottom"><p>Conteúdo baseado em pesquisa bibliográfica. Fins educativos e informativos. Não substitui orientação jurídica profissional.</p></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ════════════════════ PAGE: AJP ════════════════════ -->
+<div class="page" id="page-ajp">
+  <header class="page-hero"><div class="page-hero-bg"></div>
+    <div class="container page-hero-inner">
+      <div class="page-breadcrumb"><a onclick="goTo('home')">Início</a><span>/</span><span style="color:var(--ajp)">Assessoria Jurídica Popular</span></div>
+      <span class="page-tag accent-ajp">Prática política e pedagógica · 01</span>
+      <h1 class="page-hero-title">Assessoria<br>Jurídica Popular</h1>
+      <p class="page-hero-subtitle">Construção coletiva do saber jurídico junto a movimentos sociais e comunidades vulnerabilizadas, a partir da educação popular de Paulo Freire.</p>
+      <div class="author-tags"><span class="author-tag">Paulo Freire</span><span class="author-tag">RENAP</span><span class="author-tag">NAJUPs</span><span class="author-tag">Ana Lia Almeida</span><span class="author-tag">Diego Diehl</span><span class="author-tag">Luiz Otávio Ribas</span></div>
+    </div>
+  </header>
+  <div class="page-content"><div class="container"><div class="content-grid">
+    <main class="content-main"><div class="prose">
+      <h2>O que é a Assessoria Jurídica Popular?</h2>
+      <p>A <strong>Assessoria Jurídica Popular (AJP)</strong> é uma prática política e pedagógica por meio da qual advogadas, advogados e estudantes de direito atuam junto a movimentos sociais, comunidades campesinas, povos indígenas, quilombolas e populações urbanas periféricas — não como especialistas neutros, mas como sujeitos comprometidos com a transformação social.</p>
+      <p>Seu traço central é a recusa ao assistencialismo: ao invés de simplesmente "dar" orientação jurídica, o assessor ou assessora <strong>constrói conhecimento coletivamente</strong> junto com o assessorado, reconhecendo que o saber popular é válido e legítimo.</p>
+      <div class="callout callout-ajp"><span class="callout-label" style="color:var(--ajp)">Conceito central</span><p>A AJP não é assistência jurídica gratuita. É uma prática de educação popular que usa o direito como ferramenta — mas coloca o protagonismo político nas mãos dos próprios sujeitos assessorados.</p></div>
+      <h2>Origem histórica</h2>
+      <p>A AJP como campo organizado no Brasil emerge na <strong>década de 1960</strong>, em plena ditadura militar. Organizações como a FASE e a AJUP passaram a combinar orientação jurídica com formação política e educação popular. A <strong>RENAP</strong>, fundada em 1995, articula profissionais do direito comprometidos com a defesa dos direitos humanos. Nos anos 2000, a AJP se expandiu para o ambiente universitário através dos <strong>NAJUPs</strong>.</p>
+      <h2>A influência de Paulo Freire</h2>
+      <p>A matriz teórica fundante é a <strong>pedagogia do oprimido</strong> de Paulo Freire. O assessor jurídico popular não enxerga o assessorado como objeto de sua intervenção, mas como sujeito histórico capaz de nomear o mundo e transformá-lo. Isso implica metodologias dialógicas: rodas de conversa, mapeamento participativo, formação jurídica coletiva e linguagem acessível.</p>
+      <h2>AJP e os Atingidos por Barragens</h2>
+      <p>A AJP tem papel central nos processos de reparação de comunidades atingidas por barragens. A <strong>Assessoria Técnica Independente (ATI)</strong> — garantida pelo art. 3-A, VI da Lei 12.340/2010 — é uma das expressões da AJP no contexto dos desastres da mineração: equipes de advogados, engenheiros e assistentes sociais que apoiam gratuitamente comunidades na negociação com empresas como Vale e Samarco. <span class="btn-ghost" style="display:inline-block;font-size:.78rem;padding:.3rem .8rem;margin-top:.5rem;cursor:pointer;" onclick="goTo('ms-leis')">Ver legislação sobre ATI →</span></p>
+      <h2>Potenciais e limites</h2>
+      <div class="pl-grid">
+        <div class="pl-card"><div class="pl-label potential">Potenciais</div><ul class="pl-list"><li>Fortalece a autonomia política dos assessorados</li><li>Une teoria jurídica e prática política</li><li>Forma juristas críticos e comprometidos</li><li>Reconhece a normatividade dos movimentos</li><li>Democratiza o acesso à justiça</li></ul></div>
+        <div class="pl-card"><div class="pl-label limit">Limites</div><ul class="pl-list"><li>Risco de assistencialismo</li><li>Dependência de financiamento externo</li><li>Dificuldade de sustentação a longo prazo</li><li>Tensão entre demanda imediata e formação política</li><li>Rotatividade nos núcleos universitários</li></ul></div>
+      </div>
+      <div class="concept-nav">
+        <div class="cnav-card" onclick="goTo('home')"><span class="cnav-dir">← Voltar</span><span class="cnav-title">Página inicial</span></div>
+        <div class="cnav-card cnav-next" onclick="goTo('insurgente')"><span class="cnav-dir">Próximo →</span><span class="cnav-title">Direito Insurgente</span></div>
+      </div>
+    </div></main>
+    <aside class="content-sidebar">
+      <div class="sidebar-box"><div class="sidebar-title">Ficha rápida</div>
+        <div class="qf-item"><span class="qf-label">Natureza</span><span class="qf-value">Prática política e pedagógica</span></div>
+        <div class="qf-item"><span class="qf-label">Origem</span><span class="qf-value">Brasil, anos 1960</span></div>
+        <div class="qf-item"><span class="qf-label">Base teórica</span><span class="qf-value">Paulo Freire, marxismo, pluralismo</span></div>
+        <div class="qf-item"><span class="qf-label">Horizonte</span><span class="qf-value">Emancipação popular</span></div>
+        <div class="qf-item"><span class="qf-label">Organizações</span><span class="qf-value">RENAP, NAJUPs, RENAJU</span></div>
+      </div>
+    </aside>
+  </div></div></div>
+  <footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-brand"><span class="nav-logo" onclick="goTo('home')"><span class="logo-bracket">[</span>DCP<span class="logo-bracket">]</span></span></div><nav class="footer-nav"><a onclick="goTo('ajp')">AJP</a><a onclick="goTo('insurgente')">Dir. Insurgente</a><a onclick="goTo('achado')">Dir. Achado na Rua</a><a onclick="goTo('tatico')">Uso Tático</a><a onclick="goTo('referencias')">Referências</a><a onclick="goTo('ms-intro')" style="color:var(--bar)">🌊 Microssistema</a></nav></div><div class="footer-bottom"><p>Conteúdo baseado em pesquisa bibliográfica.</p></div></div></footer>
+</div>
+
+<!-- ════════════════════ PAGE: INSURGENTE ════════════════════ -->
+<div class="page" id="page-insurgente">
+  <header class="page-hero"><div class="page-hero-bg"></div>
+    <div class="container page-hero-inner">
+      <div class="page-breadcrumb"><a onclick="goTo('home')">Início</a><span>/</span><span style="color:var(--ins)">Direito Insurgente</span></div>
+      <span class="page-tag accent-ins">Teoria crítica marxista · 02</span>
+      <h1 class="page-hero-title">Direito<br>Insurgente</h1>
+      <p class="page-hero-subtitle">O direito que nasce nas lutas dos movimentos populares — contra e além do direito oficial do Estado capitalista.</p>
+      <div class="author-tags"><span class="author-tag">Miguel Pressburger</span><span class="author-tag">Ricardo Prestes Pazello</span><span class="author-tag">Pachukanis</span><span class="author-tag">AJUP/FASE</span></div>
+    </div>
+  </header>
+  <div class="page-content"><div class="container"><div class="content-grid">
+    <main class="content-main"><div class="prose">
+      <h2>O que é o Direito Insurgente?</h2>
+      <p>O <strong>Direito Insurgente</strong> é um conceito teórico-político que designa o direito produzido pelas próprias classes subalternas em suas lutas — um direito que nasce da insurgência popular, não da concessão estatal. Tem dupla natureza: é <strong>norma</strong> (cria obrigações dentro dos movimentos) e <strong>fato social</strong> (emerge de práticas concretas de luta). Seu horizonte é a superação do capitalismo e a supressão do próprio direito como forma separada da vida social.</p>
+      <div class="callout callout-ins"><span class="callout-label" style="color:var(--ins)">Tese central</span><p>O direito insurgente não é o direito do Estado a serviço dos oprimidos. É o direito <em>dos</em> oprimidos, produzido em suas lutas, como instrumento de resistência e prefiguração de uma ordem distinta.</p></div>
+      <h2>Origem e base marxista</h2>
+      <p>Formulado a partir da <strong>AJUP/FASE</strong>, no Rio de Janeiro, especialmente por <strong>Miguel Pressburger</strong> no final dos anos 1980. Depois sistematizado por <strong>Ricardo Prestes Pazello</strong> (UFPR), articulado com a teoria da forma jurídica de <strong>Evgeni Pachukanis</strong> e com a crítica descolonial latino-americana. A chave central é: o direito não é neutro — é, em sua própria forma, expressão das relações mercantis capitalistas. Não se pode usar o direito capitalista para superar o capitalismo.</p>
+      <h2>Insurgência e barragens</h2>
+      <p>Nas lutas dos atingidos por barragens, o direito insurgente aparece nas práticas normativas próprias do MAB: assembleias que deliberam sobre aceitação ou rejeição de acordos, regulamentos internos dos acampamentos, rituais coletivos de tomada de decisão que não precisam de homologação judicial para serem legítimos. A AJP que parte do direito insurgente não apenas representa esses movimentos juridicamente — acompanha e fortalece sua autonomia normativa. <span class="btn-ghost" style="display:inline-block;font-size:.78rem;padding:.3rem .8rem;margin-top:.5rem;cursor:pointer;" onclick="goTo('ms-intro')">Ver contexto histórico das barragens →</span></p>
+      <h2>Potenciais e limites</h2>
+      <div class="pl-grid">
+        <div class="pl-card"><div class="pl-label potential">Potenciais</div><ul class="pl-list"><li>Radicaliza a crítica ao direito capitalista</li><li>Articula direito e transformação social</li><li>Reconhece normatividade dos movimentos</li><li>Diálogo com a crítica descolonial</li></ul></div>
+        <div class="pl-card"><div class="pl-label limit">Limites</div><ul class="pl-list"><li>Alta abstração teórica</li><li>Risco de voluntarismo político</li><li>Tensão com o uso tático do direito</li><li>Pouco inserido na academia jurídica convencional</li></ul></div>
+      </div>
+      <div class="concept-nav">
+        <div class="cnav-card" onclick="goTo('ajp')"><span class="cnav-dir">← Anterior</span><span class="cnav-title">Assessoria Jurídica Popular</span></div>
+        <div class="cnav-card cnav-next" onclick="goTo('achado')"><span class="cnav-dir">Próximo →</span><span class="cnav-title">Direito Achado na Rua</span></div>
+      </div>
+    </div></main>
+    <aside class="content-sidebar">
+      <div class="sidebar-box"><div class="sidebar-title">Ficha rápida</div>
+        <div class="qf-item"><span class="qf-label">Natureza</span><span class="qf-value">Teoria crítica marxista</span></div>
+        <div class="qf-item"><span class="qf-label">Origem</span><span class="qf-value">Brasil, anos 1980–90</span></div>
+        <div class="qf-item"><span class="qf-label">Base teórica</span><span class="qf-value">Marxismo, Pachukanis, descolonial</span></div>
+        <div class="qf-item"><span class="qf-label">Horizonte</span><span class="qf-value">Superação do capitalismo e da forma jurídica</span></div>
+        <div class="qf-item"><span class="qf-label">Autores-chave</span><span class="qf-value">Pressburger, Pazello</span></div>
+      </div>
+    </aside>
+  </div></div></div>
+  <footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-brand"><span class="nav-logo" onclick="goTo('home')"><span class="logo-bracket">[</span>DCP<span class="logo-bracket">]</span></span></div><nav class="footer-nav"><a onclick="goTo('ajp')">AJP</a><a onclick="goTo('insurgente')">Dir. Insurgente</a><a onclick="goTo('achado')">Dir. Achado na Rua</a><a onclick="goTo('tatico')">Uso Tático</a><a onclick="goTo('ms-intro')" style="color:var(--bar)">🌊 Microssistema</a></nav></div><div class="footer-bottom"><p>Conteúdo baseado em pesquisa bibliográfica.</p></div></div></footer>
+</div>
+
+<!-- ════════════════════ PAGE: ACHADO ════════════════════ -->
+<div class="page" id="page-achado">
+  <header class="page-hero"><div class="page-hero-bg"></div>
+    <div class="container page-hero-inner">
+      <div class="page-breadcrumb"><a onclick="goTo('home')">Início</a><span>/</span><span style="color:var(--ach)">Direito Achado na Rua</span></div>
+      <span class="page-tag accent-ach">Escola teórica pluralista · 03</span>
+      <h1 class="page-hero-title">Direito Achado<br><em>na Rua</em></h1>
+      <p class="page-hero-subtitle">O direito como fenômeno social vivo, encontrado nas práticas coletivas e nas lutas por reconhecimento, dignidade e libertação.</p>
+      <div class="author-tags"><span class="author-tag">Roberto Lyra Filho</span><span class="author-tag">José Geraldo de Sousa Junior</span><span class="author-tag">UnB</span><span class="author-tag">Pluralismo jurídico</span></div>
+    </div>
+  </header>
+  <div class="page-content"><div class="container"><div class="content-grid">
+    <main class="content-main"><div class="prose">
+      <h2>O que é o Direito Achado na Rua?</h2>
+      <p>O <strong>Direito Achado na Rua</strong> parte da ideia de que o direito legítimo não se encontra apenas nos códigos e tribunais — mas é produzido nas ruas, nas lutas sociais e nas práticas coletivas. Baseia-se no <strong>pluralismo jurídico</strong>: existem múltiplas ordens normativas legítimas para além do monopólio estatal. Movimentos de sem-terra, comunidades indígenas, associações de ribeirinhos — todos são manifestações legítimas de juridicidade.</p>
+      <div class="callout callout-ach"><span class="callout-label" style="color:var(--ach)">Premissa fundante</span><p>O direito não é monopólio do Estado. Ele emerge das lutas por libertação e dignidade, e pode ser identificado nas práticas coletivas de sujeitos que reivindicam reconhecimento mesmo sem amparo legal formal.</p></div>
+      <h2>Roberto Lyra Filho e a NELJB</h2>
+      <p>Nasce na <strong>UnB</strong> no final dos anos 1980. <strong>Roberto Lyra Filho</strong> propôs que o direito fosse compreendido como processo histórico em construção — tensionado entre opressão e libertação. O direito positivo do Estado é apenas um dos planos em que o direito se manifesta. O direito justo emerge das lutas sociais. Essa perspectiva ficou conhecida como a <strong>Nova Escola Jurídica Brasileira (NELJB)</strong>, continuada por <strong>José Geraldo de Sousa Junior</strong>.</p>
+      <h2>Sujeitos coletivos de direito e barragens</h2>
+      <p>A noção de <strong>sujeitos coletivos de direito</strong> é fundamental para os casos de barragens: comunidades ribeirinhas, povos indígenas e quilombolas não são apenas vítimas — são sujeitos de direito que, ao se organizar no MAB e exigir reparação integral, criam normatividade nova. A <strong>definição ampla de "atingido"</strong> — incluindo quem sofre danos culturais, territoriais e de meios de vida, mesmo fora da área de inundação direta — é uma conquista dessa perspectiva. <span class="btn-ghost" style="display:inline-block;font-size:.78rem;padding:.3rem .8rem;margin-top:.5rem;cursor:pointer;" onclick="goTo('ms-leis')">Ver PNAB e conceito de atingido →</span></p>
+      <h2>Potenciais e limites</h2>
+      <div class="pl-grid">
+        <div class="pl-card"><div class="pl-label potential">Potenciais</div><ul class="pl-list"><li>Amplia as fontes legítimas do direito</li><li>Alta inserção acadêmica e institucional</li><li>Abertura para direitos indígenas, quilombolas, LGBTQIA+</li><li>Articula pesquisa e engajamento político</li></ul></div>
+        <div class="pl-card"><div class="pl-label limit">Limites</div><ul class="pl-list"><li>Pode ficar restrito ao debate acadêmico</li><li>Pluralismo pode diluir conflito de classe</li><li>Tensão entre amplitude teórica e prática</li></ul></div>
+      </div>
+      <div class="concept-nav">
+        <div class="cnav-card" onclick="goTo('insurgente')"><span class="cnav-dir">← Anterior</span><span class="cnav-title">Direito Insurgente</span></div>
+        <div class="cnav-card cnav-next" onclick="goTo('tatico')"><span class="cnav-dir">Próximo →</span><span class="cnav-title">Uso Tático do Direito</span></div>
+      </div>
+    </div></main>
+    <aside class="content-sidebar">
+      <div class="sidebar-box"><div class="sidebar-title">Ficha rápida</div>
+        <div class="qf-item"><span class="qf-label">Natureza</span><span class="qf-value">Escola teórica pluralista</span></div>
+        <div class="qf-item"><span class="qf-label">Origem</span><span class="qf-value">UnB, anos 1980</span></div>
+        <div class="qf-item"><span class="qf-label">Base teórica</span><span class="qf-value">Pluralismo jurídico, humanismo</span></div>
+        <div class="qf-item"><span class="qf-label">Horizonte</span><span class="qf-value">Democracia radical</span></div>
+        <div class="qf-item"><span class="qf-label">Autores-chave</span><span class="qf-value">Lyra Filho, José Geraldo</span></div>
+      </div>
+    </aside>
+  </div></div></div>
+  <footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-brand"><span class="nav-logo" onclick="goTo('home')"><span class="logo-bracket">[</span>DCP<span class="logo-bracket">]</span></span></div><nav class="footer-nav"><a onclick="goTo('ajp')">AJP</a><a onclick="goTo('insurgente')">Dir. Insurgente</a><a onclick="goTo('achado')">Dir. Achado na Rua</a><a onclick="goTo('tatico')">Uso Tático</a><a onclick="goTo('ms-intro')" style="color:var(--bar)">🌊 Microssistema</a></nav></div><div class="footer-bottom"><p>Conteúdo baseado em pesquisa bibliográfica.</p></div></div></footer>
+</div>
+
+<!-- ════════════════════ PAGE: TÁTICO ════════════════════ -->
+<div class="page" id="page-tatico">
+  <header class="page-hero"><div class="page-hero-bg"></div>
+    <div class="container page-hero-inner">
+      <div class="page-breadcrumb"><a onclick="goTo('home')">Início</a><span>/</span><span style="color:var(--tat)">Uso Tático do Direito</span></div>
+      <span class="page-tag accent-tat">Conceito estratégico-instrumental · 04</span>
+      <h1 class="page-hero-title">Uso Tático<br><em>do Direito</em></h1>
+      <p class="page-hero-subtitle">A mobilização estratégica do direito como ferramenta de luta — sem ilusões sobre sua neutralidade, mas sem abrir mão de seus usos possíveis.</p>
+      <div class="author-tags"><span class="author-tag">Mobilização do direito</span><span class="author-tag">Cause Lawyering</span><span class="author-tag">Litigância estratégica</span><span class="author-tag">Conflitos fundiários</span></div>
+    </div>
+  </header>
+  <div class="page-content"><div class="container"><div class="content-grid">
+    <main class="content-main"><div class="prose">
+      <h2>O que é o uso tático do direito?</h2>
+      <p>O <strong>uso tático do direito</strong> descreve a utilização instrumental do ordenamento jurídico — normas, processos, instituições — como ferramenta de luta pelas classes subalternas, sem ilusão sobre a neutralidade do direito. A distinção entre <strong>tática</strong> e <strong>estratégia</strong> é central: taticamente, usa-se o que está disponível; estrategicamente, reconhece-se que o direito não é o terreno decisivo da transformação social.</p>
+      <div class="callout callout-tat"><span class="callout-label" style="color:var(--tat)">Tensão constitutiva</span><p>O uso tático do direito vive de uma tensão permanente: usar o direito sem ser usado por ele. A juridicização das lutas pode protegê-las no curto prazo e neutralizá-las no longo prazo.</p></div>
+      <h2>Tático nas lutas por barragens</h2>
+      <p>Nas lutas dos atingidos por barragens, o uso tático aparece em múltiplas frentes: ações civis públicas do MP para bloqueio de bens da Vale (como nos R$ 11 bilhões bloqueados após Brumadinho), mandados de segurança para acesso a informações sobre PAEs, ações de imprescritibilidade do dano ambiental para permitir reparação anos depois do evento, habeas corpus em favor de lideranças do MAB. Em todos esses casos, o direito é uma arma — não a solução. <span class="btn-ghost" style="display:inline-block;font-size:.78rem;padding:.3rem .8rem;margin-top:.5rem;cursor:pointer;" onclick="goTo('ms-juris')">Ver jurisprudências de barragens →</span></p>
+      <h2>Potenciais e limites</h2>
+      <div class="pl-grid">
+        <div class="pl-card"><div class="pl-label potential">Potenciais</div><ul class="pl-list"><li>Pragmático, usa o que existe</li><li>Articula ação judicial e organização popular</li><li>Útil em conflitos urgentes</li><li>Protege territórios e pessoas no curto prazo</li></ul></div>
+        <div class="pl-card"><div class="pl-label limit">Limites</div><ul class="pl-list"><li>Risco de juridicização excessiva</li><li>Vitória judicial pode não ser vitória política</li><li>Sem horizonte emancipatório próprio</li><li>Pode gerar dependência em relação aos juristas</li></ul></div>
+      </div>
+      <div class="concept-nav">
+        <div class="cnav-card" onclick="goTo('achado')"><span class="cnav-dir">← Anterior</span><span class="cnav-title">Direito Achado na Rua</span></div>
+        <div class="cnav-card cnav-next" onclick="goTo('referencias')"><span class="cnav-dir">Ver fontes →</span><span class="cnav-title">Referências bibliográficas</span></div>
+      </div>
+    </div></main>
+    <aside class="content-sidebar">
+      <div class="sidebar-box"><div class="sidebar-title">Ficha rápida</div>
+        <div class="qf-item"><span class="qf-label">Natureza</span><span class="qf-value">Conceito estratégico-instrumental</span></div>
+        <div class="qf-item"><span class="qf-label">Tradições</span><span class="qf-value">Marxismo, sociologia jurídica</span></div>
+        <div class="qf-item"><span class="qf-label">Horizonte</span><span class="qf-value">Ganhos concretos imediatos</span></div>
+        <div class="qf-item"><span class="qf-label">Tensão central</span><span class="qf-value">Usar o direito sem ser usado por ele</span></div>
+      </div>
+    </aside>
+  </div></div></div>
+  <footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-brand"><span class="nav-logo" onclick="goTo('home')"><span class="logo-bracket">[</span>DCP<span class="logo-bracket">]</span></span></div><nav class="footer-nav"><a onclick="goTo('ajp')">AJP</a><a onclick="goTo('insurgente')">Dir. Insurgente</a><a onclick="goTo('achado')">Dir. Achado na Rua</a><a onclick="goTo('tatico')">Uso Tático</a><a onclick="goTo('ms-intro')" style="color:var(--bar)">🌊 Microssistema</a></nav></div><div class="footer-bottom"><p>Conteúdo baseado em pesquisa bibliográfica.</p></div></div></footer>
+</div>
+
+<!-- ════════════════════ PAGE: REFERÊNCIAS ════════════════════ -->
+<div class="page" id="page-referencias">
+  <header class="page-hero"><div class="page-hero-bg"></div>
+    <div class="container page-hero-inner">
+      <div class="page-breadcrumb"><a onclick="goTo('home')">Início</a><span>/</span><span style="color:var(--text-s)">Referências</span></div>
+      <span class="page-tag" style="color:var(--text-m);border-color:var(--border)">Base bibliográfica completa</span>
+      <h1 class="page-hero-title">Referências<br><em>bibliográficas</em></h1>
+      <p class="page-hero-subtitle">41 artigos e obras sobre direito crítico popular, com links de acesso aberto. Formato ABNT.</p>
+    </div>
+  </header>
+  <div class="page-content"><div class="container">
+    <div class="refs-filter">
+      <button class="filter-btn active" data-tag="all">Todas</button>
+      <button class="filter-btn" data-tag="ajp" style="color:var(--ajp)">AJP</button>
+      <button class="filter-btn" data-tag="ins" style="color:var(--ins)">Dir. Insurgente</button>
+      <button class="filter-btn" data-tag="ach" style="color:var(--ach)">Dir. Achado na Rua</button>
+      <button class="filter-btn" data-tag="tat" style="color:var(--tat)">Uso Tático</button>
+      <button class="filter-btn" data-tag="geral">Geral</button>
+    </div>
+    <div class="refs-list" id="refsList">
+      <div class="ref-entry" data-tags="ins"><div class="ref-num">01</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ins">Dir. Insurgente</span></div><div class="ref-citation"><strong>PAZELLO, Ricardo Prestes.</strong> Direito e marxismo: entre o antinormativo e o insurgente. <em>Revista Direito e Práxis</em>, Rio de Janeiro, v. 5, n. 9, p. 291–329, 2014. DOI: 10.12957/dep.2014.13109.</div><a class="ref-link" href="https://www.e-publicacoes.uerj.br/index.php/revistaceaju/article/view/13109" target="_blank" rel="noopener">↗ e-publicacoes.uerj.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp ins"><div class="ref-num">02</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span><span class="ref-tag tag-ins">Dir. Insurgente</span></div><div class="ref-citation"><strong>PAZELLO, Ricardo Prestes.</strong> A práxis da assessoria jurídica popular como vetor para o estudo da relação entre Direito e movimentos populares. <em>Caderno Eletrônico de Ciências Sociais</em>, Vitória, v. 4, n. 2, p. 94–117, 2016.</div><a class="ref-link" href="https://periodicos.ufes.br/index.php/cadecs/article/view/17344" target="_blank" rel="noopener">↗ periodicos.ufes.br</a></div></div>
+      <div class="ref-entry" data-tags="ins"><div class="ref-num">03</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ins">Dir. Insurgente</span></div><div class="ref-citation"><strong>PAZELLO, Ricardo Prestes.</strong> Direito insurgente: fundamentações marxistas desde a América Latina. <em>Revista Direito e Práxis</em>, Rio de Janeiro, v. 9, n. 3, p. 1555–1597, 2018.</div><a class="ref-link" href="https://www.scielo.br/j/rdp/a/Jg3ZjDGRnyrJnkCRZ7fwzCC/" target="_blank" rel="noopener">↗ scielo.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp ins"><div class="ref-num">04</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span><span class="ref-tag tag-ins">Dir. Insurgente</span></div><div class="ref-citation"><strong>PAZELLO, Ricardo Prestes.</strong> Teorias críticas do direito e assessoria jurídica popular. <em>Revista Direitos Humanos e Sociedade</em>, Criciúma, 2019.</div><a class="ref-link" href="https://periodicos.unesc.net/ojs/index.php/dirhumanos/article/view/5890" target="_blank" rel="noopener">↗ periodicos.unesc.net</a></div></div>
+      <div class="ref-entry" data-tags="ins"><div class="ref-num">05</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ins">Dir. Insurgente</span></div><div class="ref-citation"><strong>UCHIMURA, Guilherme Cavicchioli; FERREIRA, Pedro Pompeo Pistelli.</strong> Retorno ao Direito Insurgente [resenha]. <em>InSURgência</em>, Brasília, v. 7, n. 2, p. 388–396, 2021. DOI: 10.26512/insurgncia.v8i2.38970.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/article/view/38970" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ins"><div class="ref-num">06</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ins">Dir. Insurgente</span></div><div class="ref-citation"><strong>RIBAS, Luiz Otávio.</strong> Direito insurgente como direito das classes emergentes. <em>InSURgência</em>, Brasília, v. 11, n. 2, 2025.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/article/view/59392" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp"><div class="ref-num">07</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>ALMEIDA, Ana Lia.</strong> Junto aos esfarrapados do mundo: a educação popular da Assessoria Jurídica Universitária Popular. <em>InSURgência</em>, Brasília, v. 2, n. 2, 2016.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/article/view/19368" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp"><div class="ref-num">08</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>NORONHA, Evanderson Camilo.</strong> A Assessoria Jurídica Universitária Popular como uma proposta contra-hegemônica à educação jurídica tradicional. <em>InSURgência</em>, Brasília, v. 2, n. 2, 2016.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/article/view/19370" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp"><div class="ref-num">09</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>MORAES, Rayanne Gomes de; PINTO, Bernardo Marques; ALMEIDA, Bianca Davi de.</strong> NAJUP e as Esperanças: possibilidades de diálogo sobre Assessoria Jurídica Universitária Popular. <em>InSURgência</em>, Brasília, v. 2, n. 2, 2016.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/article/view/19349" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp"><div class="ref-num">10</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>RIBAS, Luiz Otávio.</strong> Diretrizes metodológicas freireanas e a educação jurídica popular. <em>InSURgência</em>, Brasília, v. 1, n. 1, 2015.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/article/view/18784" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp"><div class="ref-num">11</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>DIEHL, Diego Augusto.</strong> O lugar da assessoria jurídica popular como práxis de educação popular freireana (NAJUP Josiane Evangelista, MST-GO). <em>InSURgência</em>, Brasília, v. 8, n. 1, 2022. DOI: 10.26512/REVISTAINSURGNCIA.V8I1.40686.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/index" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp"><div class="ref-num">12</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>MOREIRA, Natally Lopes Pereira.</strong> Assessoria Jurídica Popular e Assistência Jurídica Universitária: acesso à justiça, direitos humanos e a necessidade de um direito alternativo e popular. <em>Revista do CEPEJ</em>, Salvador, n. 17, 2017.</div><a class="ref-link" href="https://periodicos.ufba.br/index.php/CEPEJ/article/view/22435" target="_blank" rel="noopener">↗ periodicos.ufba.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp"><div class="ref-num">13</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>SANDRI, Anna Carolina Lucca.</strong> Rede Nacional de Assessoria Jurídica Universitária (RENAJU). <em>InSURgência</em>, Brasília, v. 11, n. 2, 2025.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/article/view/57758" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp"><div class="ref-num">14</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>CARLET, Flávia.</strong> Advocacia Popular. <em>InSURgência</em>, Brasília, v. 8, n. 2, 2022.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/index" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp"><div class="ref-num">15</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>MALDONADO BRAVO, Efendy Emiliano; CARNEIRO, Maria do Rosário de Oliveira; MOTA, Maria Solara Pontes.</strong> RENAP: 30 anos de construção insurgente da assessoria jurídica popular. <em>InSURgência</em>, Brasília, v. 11, n. 2, 2025.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/index" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp"><div class="ref-num">16</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>ALMEIDA, Ana Lia et al.</strong> Bala, cadeia e luta: a assessoria do Núcleo Flor de Mandacaru ao Setor de Direitos Humanos do MST-PB. <em>InSURgência</em>, Brasília, v. 11, n. 2, 2025.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/article/view/58214" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="geral ajp"><div class="ref-num">17</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-geral">Geral</span><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>RIBAS, Luiz Otávio; CARLET, Flávia; ORDÓÑEZ GÓMEZ, Freddy.</strong> Apresentação do dossiê "Pesquisa em advocacia popular na América Latina". <em>InSURgência</em>, Brasília, v. 11, n. 2, p. 15–30, 2025. DOI: 10.26512/revistainsurgncia.v11i2.59826.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/article/view/59826" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp geral"><div class="ref-num">18</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span><span class="ref-tag tag-geral">Geral</span></div><div class="ref-citation"><strong>SANTOS, Cecília MacDowell; CARLET, Flávia.</strong> Por uma justiça epistêmica: delimitações conceituais da advocacia popular e do ativismo jurídico transnacional. <em>InSURgência</em>, Brasília, v. 11, n. 2, 2025.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/index" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp geral"><div class="ref-num">19</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span><span class="ref-tag tag-geral">Geral</span></div><div class="ref-citation"><strong>ORDÓÑEZ GÓMEZ, Freddy.</strong> Serviços jurídicos alternativos e advocacia popular na América Latina — O Caso Colômbia. <em>InSURgência</em>, Brasília, v. 11, n. 2, 2025.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/index" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="ach ajp"><div class="ref-num">20</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ach">Dir. Achado na Rua</span><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>CORREIA, Ludmila Cerqueira; ESCRIVÃO FILHO, Antonio; SOUSA JUNIOR, José Geraldo de.</strong> A expansão semântica do acesso à justiça e o direito achado na assessoria jurídica popular. In: REBOUÇAS, Gabriela Maia et al. (Org.). <em>Experiências compartilhadas de acesso à justiça</em>. Santa Cruz do Sul: Essere nel Mondo, 2016.</div><a class="ref-link" href="http://odireitoachadonarua.blogspot.com/2017/06/resenha-do-artigo-expansao-semantica-do.html" target="_blank" rel="noopener">↗ odireitoachadonarua.blogspot.com</a></div></div>
+      <div class="ref-entry" data-tags="ach geral"><div class="ref-num">21</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ach">Dir. Achado na Rua</span><span class="ref-tag tag-geral">Geral</span></div><div class="ref-citation"><strong>SOUSA JÚNIOR, José Geraldo de; DIEHL, Diego Augusto; PAZELLO, Ricardo Prestes; KURTEN, Anna Caroline.</strong> Dos 30 anos do Direito Achado na Rua aos 10 anos do IPDMS. <em>InSURgência</em>, Brasília, 2022.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia/index" target="_blank" rel="noopener">↗ periodicos.unb.br</a></div></div>
+      <div class="ref-entry" data-tags="tat ajp"><div class="ref-num">22</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-tat">Uso Tático</span><span class="ref-tag tag-ajp">AJP</span></div><div class="ref-citation"><strong>SANDRI, Anna Carolina Lucca.</strong> A assessoria jurídica popular no contexto das ocupações urbanas: o Coletivo Margarida Alves e a mobilização do direito em Belo Horizonte. <em>Revista Eletrônica da OAB-RJ</em>, Rio de Janeiro, 2018.</div><a class="ref-link" href="https://revistaeletronicaoabrj.emnuvens.com.br/revista/article/view/635" target="_blank" rel="noopener">↗ revistaeletronicaoabrj.emnuvens.com.br</a></div></div>
+      <div class="ref-entry" data-tags="ins tat"><div class="ref-num">23</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ins">Dir. Insurgente</span><span class="ref-tag tag-tat">Uso Tático</span></div><div class="ref-citation"><strong>[Autoria coletiva].</strong> Towards an Insurgent Ecological Law: limits and potentials of Law as an instrument to a just eco-social transition. <em>Revista Direito e Práxis</em>, Rio de Janeiro, 2024.</div><a class="ref-link" href="https://www.scielo.br/j/rdp/a/jSGd3PkwWfC3hv6xWGwRVPw/" target="_blank" rel="noopener">↗ scielo.br</a></div></div>
+      <div class="ref-entry" data-tags="tat ins"><div class="ref-num">24</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-tat">Uso Tático</span></div><div class="ref-citation">O uso tático do Direito nos conflitos socioambientais: um olhar ecossocialista. <em>Acervo Digital UFPR</em>, Curitiba, [s.d.].</div><a class="ref-link" href="https://acervodigital.ufpr.br/handle/1884/72430" target="_blank" rel="noopener">↗ acervodigital.ufpr.br</a></div></div>
+      <div class="ref-entry" data-tags="geral"><div class="ref-num">25</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-geral">Geral</span></div><div class="ref-citation"><strong>RIBAS, Luiz Otávio.</strong> Direito insurgente e pluralismo jurídico: assessoria jurídica de movimentos populares em Porto Alegre e no Rio de Janeiro (1960–2000). Dissertação de Mestrado — PPGD/UFSC. Florianópolis, 2009.</div><a class="ref-link" href="https://repositorio.ufsc.br/xmlui/handle/123456789/93227" target="_blank" rel="noopener">↗ repositorio.ufsc.br</a></div></div>
+      <div class="ref-entry" data-tags="ajp geral"><div class="ref-num">26–41</div><div class="ref-body"><div class="ref-tags-row"><span class="ref-tag tag-ajp">AJP</span><span class="ref-tag tag-geral">Geral</span></div><div class="ref-citation">Demais artigos dos Dossiês "Assessoria Jurídica Popular" (v. 2, n. 2, 2016) e "Pesquisa em advocacia popular na América Latina" (v. 11, n. 2, 2025). Autores: Diehl, Almeida, Góes Junior, Sandri, Costa, Pazello, Ribas, Carlet, Melo, Pereira, Maso, Guimarães, entre outros.</div><a class="ref-link" href="https://periodicos.unb.br/index.php/insurgencia" target="_blank" rel="noopener">↗ Portal InSURgência — Acervo completo</a></div></div>
+    </div>
+    <p style="font-size:.78rem;color:var(--text-m);line-height:1.7;border-top:1px solid var(--border);margin-top:2.5rem;padding-top:1.5rem;"><strong style="color:var(--text-s)">Nota metodológica.</strong> Lista compilada a partir de SciELO, Portal de Periódicos CAPES, repositórios institucionais da UFSC e UFPR, e portal da <em>InSURgência</em> (IPDMS/UnB). Verifique DOIs em periodicos.unb.br/index.php/insurgencia antes de uso acadêmico formal.</p>
+  </div></div>
+  <footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-brand"><span class="nav-logo" onclick="goTo('home')"><span class="logo-bracket">[</span>DCP<span class="logo-bracket">]</span></span></div><nav class="footer-nav"><a onclick="goTo('ajp')">AJP</a><a onclick="goTo('insurgente')">Dir. Insurgente</a><a onclick="goTo('ms-intro')" style="color:var(--bar)">🌊 Microssistema</a></nav></div><div class="footer-bottom"><p>Fins educativos e informativos.</p></div></div></footer>
+</div>
+
+<!-- ════════ MICROSSISTEMA PAGES ════════ -->
+
+<!-- MS: INTRO -->
+<div class="page" id="page-ms-intro">
+  <header class="ms-hero">
+    <div class="container ms-hero-inner">
+      <div class="page-breadcrumb"><a onclick="goTo('home')">Início</a><span>/</span><span style="color:var(--bar)">Microssistema</span></div>
+      <div class="ms-hero-badge">🌊 Microssistema de Proteção</div>
+      <h1 class="page-hero-title">A Luta dos<br><em>Atingidos por Barragens</em></h1>
+      <p class="page-hero-subtitle">Por décadas, comunidades ribeirinhas, indígenas, quilombolas, pescadores e trabalhadores rurais foram varridos de seus territórios pelo avanço de grandes empreendimentos — frequentemente sem consulta, sem indenização justa, sem voz.</p>
+    </div>
+  </header>
+  <div class="page-content"><div class="container">
+    <div class="ms-nav-tabs">
+      <button class="ms-tab-btn" data-page="ms-intro" onclick="goTo('ms-intro')">🏠 Apresentação</button>
+      <button class="ms-tab-btn" data-page="ms-leis" onclick="goTo('ms-leis')">📚 Legislação</button>
+      <button class="ms-tab-btn" data-page="ms-juris" onclick="goTo('ms-juris')">⚖️ Jurisprudências</button>
+      <button class="ms-tab-btn" data-page="ms-guia" onclick="goTo('ms-guia')">📖 Guia de Uso</button>
+    </div>
+    <div class="ms-stats">
+      <div class="ms-stat-card"><span class="ms-stat-num">272</span><span class="ms-stat-lbl">Vítimas em Brumadinho (2019)</span></div>
+      <div class="ms-stat-card"><span class="ms-stat-num">19</span><span class="ms-stat-lbl">Mortes em Mariana (2015)</span></div>
+      <div class="ms-stat-card"><span class="ms-stat-num">600km</span><span class="ms-stat-lbl">Do Rio Doce devastados</span></div>
+      <div class="ms-stat-card"><span class="ms-stat-num">1991</span><span class="ms-stat-lbl">Fundação Nacional do MAB</span></div>
+      <div class="ms-stat-card"><span class="ms-stat-num">30</span><span class="ms-stat-lbl">Instrumentos normativos</span></div>
+    </div>
+    <div class="mab-card">
+      <h3>✊ O Movimento dos Atingidos por Barragens (MAB)</h3>
+      <p>O MAB surgiu no final dos anos 1970 e se consolidou nacionalmente em 1991, como resposta organizada das comunidades afetadas por barragens hidrelétricas. Nasceu da resistência ao modelo energético brasileiro que priorizava grandes obras — como Itaipu, Tucuruí, Sobradinho e Itaparica — sem qualquer política de proteção às populações deslocadas.</p>
+      <p style="margin-top:.75rem;">A partir da luta organizada, o MAB cunhou princípios fundamentais: <strong>"terra por terra, casa por casa, trabalho por trabalho"</strong> — a <span class="lt">reparação integral<span class="tt">Princípio que exige que a pessoa atingida seja colocada na mesma situação (ou melhor) que estava antes do dano. Não basta pagar em dinheiro: é preciso repor moradia, renda, relações comunitárias e qualidade de vida.</span></span> como direito, não como favor. Lutaram pela definição ampla de "atingido", pelo reconhecimento dos danos culturais e territoriais, e pela participação das comunidades em todas as decisões.</p>
+    </div>
+    <div class="tragedy-card">
+      <h3>💔 As Maiores Tragédias: Mariana (2015) e Brumadinho (2019)</h3>
+      <p><strong>Mariana, 5 de novembro de 2015:</strong> O rompimento da barragem de Fundão, da Samarco (Vale/BHP Billiton), liberou cerca de 40 milhões de m³ de rejeitos. O Rio Doce foi devastado por mais de 600 km. Houve 19 mortes, destruição do distrito de Bento Rodrigues e impacto sobre centenas de comunidades ribeirinhas. A lama chegou ao mar 16 dias depois, no Espírito Santo.</p>
+      <p style="margin-top:.75rem;"><strong>Brumadinho, 25 de janeiro de 2019:</strong> O colapso da barragem B1 da Vale matou 272 pessoas — a maioria trabalhadores no refeitório da empresa, soterrados em menos de 10 minutos. O Rio Paraopeba foi gravemente contaminado. É o maior acidente de trabalho da história recente do Brasil e um dos maiores desastres tecnológicos do mundo.</p>
+      <p style="margin-top:.75rem;">Ambas as tragédias expuseram a falência do modelo regulatório e a necessidade urgente de um <strong>microssistema normativo integrado</strong> de proteção aos atingidos.</p>
+    </div>
+    <div style="background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--bar);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.5rem;">
+      <h3 style="font-family:var(--fd);color:var(--bar);margin-bottom:.75rem;font-size:1.1rem;">📅 Linha do Tempo da Luta</h3>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1970s</div><div class="tl-text">Primeiras resistências ao modelo hidrelétrico — comunidades de Itaipu, Tucuruí e Sobradinho se organizam sem apoio estatal ou legal.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1988</div><div class="tl-text">A Constituição Federal reconhece direitos indígenas (art. 231), direito ao meio ambiente (art. 225) e função social da propriedade — bases constitucionais da proteção.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1991</div><div class="tl-text">Fundação do Movimento dos Atingidos por Barragens (MAB) como organização nacional.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2010</div><div class="tl-text">Lei de Segurança de Barragens (12.334/2010) aprovada — marco regulatório que, porém, não impediu as tragédias posteriores.</div></div>
+        <div class="tl-item tragedy"><div class="tl-dot"></div><div class="tl-year">2015</div><div class="tl-text">💔 Rompimento de Fundão em Mariana/MG. 19 mortes. Rio Doce devastado por 600 km.</div></div>
+        <div class="tl-item tragedy"><div class="tl-dot"></div><div class="tl-year">2019</div><div class="tl-text">💔 Rompimento da B1 em Brumadinho/MG. 272 mortes. Rio Paraopeba contaminado.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2023</div><div class="tl-text">Reforma da PNPDEC para incluir desastres induzidos por ação humana. Acordo de reparação de Mariana firmado (R$ 100 bilhões).</div></div>
+      </div>
+    </div>
+    <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem;">
+      <h3 style="font-family:var(--fd);color:var(--text-p);margin-bottom:.75rem;font-size:1.1rem;">🗺️ O que é este Microssistema?</h3>
+      <p style="font-size:.88rem;line-height:1.75;color:var(--text-s);">Este sistema reúne e organiza 30 instrumentos normativos — leis federais, tratados internacionais, declarações da ONU, opiniões consultivas da Corte Interamericana e recomendações de conselhos de direitos humanos — que, em conjunto, formam um <strong style="color:var(--text-p)">microssistema integrado de proteção</strong> às populações atingidas por barragens.</p>
+      <button onclick="goTo('ms-leis')" class="btn-primary" style="margin-top:1rem;">📚 Explorar a Legislação →</button>
+    </div>
+  </div></div>
+  <footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-brand"><span class="nav-logo" onclick="goTo('home')"><span class="logo-bracket">[</span>DCP<span class="logo-bracket">]</span></span></div><nav class="footer-nav"><a onclick="goTo('home')">Início</a><a onclick="goTo('ms-leis')">Legislação</a><a onclick="goTo('ms-juris')">Jurisprudências</a><a onclick="goTo('ajp')">AJP</a></nav></div><div class="footer-bottom"><p>Fins educativos. Não substitui orientação jurídica profissional.</p></div></div></footer>
+</div>
+
+<!-- MS: LEIS -->
+<div class="page" id="page-ms-leis">
+  <header style="padding-top:56px;background:var(--bg-1);border-bottom:1px solid var(--border);">
+    <div class="container" style="padding-top:1.5rem;padding-bottom:1rem;">
+      <div class="page-breadcrumb"><a onclick="goTo('home')">Início</a><span>/</span><a onclick="goTo('ms-intro')" style="color:var(--bar)">Microssistema</a><span>/</span><span>Legislação</span></div>
+      <div class="ms-nav-tabs" style="margin-bottom:0;">
+        <button class="ms-tab-btn" data-page="ms-intro" onclick="goTo('ms-intro')">🏠 Apresentação</button>
+        <button class="ms-tab-btn" data-page="ms-leis" onclick="goTo('ms-leis')">📚 Legislação</button>
+        <button class="ms-tab-btn" data-page="ms-juris" onclick="goTo('ms-juris')">⚖️ Jurisprudências</button>
+        <button class="ms-tab-btn" data-page="ms-guia" onclick="goTo('ms-guia')">📖 Guia de Uso</button>
+      </div>
+    </div>
+  </header>
+  <div class="page-content"><div class="container">
+    <div class="ms-layout">
+      <nav class="ms-sidebar">
+        <div class="ms-sb-head">📚 30 Instrumentos Normativos</div>
+        <div class="ms-law-list" id="msLawList"></div>
+      </nav>
+      <main id="msLawContent">
+        <div class="ms-welcome">
+          <div style="font-size:3rem;margin-bottom:1rem;">🦜🐆🌸🐬🌻🦅</div>
+          <h3>Selecione um instrumento na barra lateral</h3>
+          <p style="color:var(--text-s);font-size:.88rem;line-height:1.7;margin-top:.5rem;">Leis marcadas com ⭐ são os instrumentos mais relevantes para casos de barragens.</p>
+          <div class="ms-stat-row">
+            <div class="ms-stat-b"><span class="n">30</span><span class="l">Instrumentos</span></div>
+            <div class="ms-stat-b"><span class="n">18</span><span class="l">Nacionais</span></div>
+            <div class="ms-stat-b"><span class="n">12</span><span class="l">Internacionais</span></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div></div>
+  <div class="ms-cmp-panel" id="msCmpPanel">
+    <div class="ms-cmp-hd"><strong>⚖️ Comparação de Leis</strong><div style="display:flex;gap:.5rem;align-items:center;"><span id="msCmpCount" style="font-size:.75rem;color:var(--text-m)"></span><button onclick="msClearCmp()" class="ctrl-btn">Limpar</button><button onclick="msToggleCmp()" class="ctrl-btn" style="color:var(--bar);border-color:var(--bar)">✕ Fechar</button></div></div>
+    <div class="ms-cmp-cols" id="msCmpCols"><div style="padding:1.5rem;color:var(--text-m);text-align:center;width:100%;font-size:.85rem;">Selecione leis clicando em "+ Comparar" nos cards.</div></div>
+  </div>
+  <footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-brand"><span class="nav-logo" onclick="goTo('home')"><span class="logo-bracket">[</span>DCP<span class="logo-bracket">]</span></span></div><nav class="footer-nav"><a onclick="goTo('home')">Início</a><a onclick="goTo('ms-intro')">Apresentação</a><a onclick="goTo('ms-juris')">Jurisprudências</a></nav></div><div class="footer-bottom"><p>Fins educativos. Não substitui orientação jurídica.</p></div></div></footer>
+</div>
+
+<!-- MS: JURIS -->
+<div class="page" id="page-ms-juris">
+  <header style="padding-top:56px;background:var(--bg-1);border-bottom:1px solid var(--border);">
+    <div class="container" style="padding-top:1.5rem;padding-bottom:1rem;">
+      <div class="page-breadcrumb"><a onclick="goTo('home')">Início</a><span>/</span><a onclick="goTo('ms-intro')" style="color:var(--bar)">Microssistema</a><span>/</span><span>Jurisprudências</span></div>
+      <div class="ms-nav-tabs" style="margin-bottom:0;">
+        <button class="ms-tab-btn" data-page="ms-intro" onclick="goTo('ms-intro')">🏠 Apresentação</button>
+        <button class="ms-tab-btn" data-page="ms-leis" onclick="goTo('ms-leis')">📚 Legislação</button>
+        <button class="ms-tab-btn" data-page="ms-juris" onclick="goTo('ms-juris')">⚖️ Jurisprudências</button>
+        <button class="ms-tab-btn" data-page="ms-guia" onclick="goTo('ms-guia')">📖 Guia de Uso</button>
+      </div>
+    </div>
+  </header>
+  <div class="page-content"><div class="container">
+    <div class="section-header">
+      <span class="section-tag">Decisões nacionais e internacionais</span>
+      <h2 class="section-title">Jurisprudências Relevantes</h2>
+    </div>
+    <div id="msJurisContent"></div>
+  </div></div>
+  <footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-brand"><span class="nav-logo" onclick="goTo('home')"><span class="logo-bracket">[</span>DCP<span class="logo-bracket">]</span></span></div><nav class="footer-nav"><a onclick="goTo('home')">Início</a><a onclick="goTo('ms-leis')">Legislação</a></nav></div><div class="footer-bottom"><p>Fins educativos. Não substitui orientação jurídica.</p></div></div></footer>
+</div>
+
+<!-- MS: GUIA -->
+<div class="page" id="page-ms-guia">
+  <header style="padding-top:56px;background:var(--bg-1);border-bottom:1px solid var(--border);">
+    <div class="container" style="padding-top:1.5rem;padding-bottom:1rem;">
+      <div class="page-breadcrumb"><a onclick="goTo('home')">Início</a><span>/</span><a onclick="goTo('ms-intro')" style="color:var(--bar)">Microssistema</a><span>/</span><span>Guia de Uso</span></div>
+      <div class="ms-nav-tabs" style="margin-bottom:0;">
+        <button class="ms-tab-btn" data-page="ms-intro" onclick="goTo('ms-intro')">🏠 Apresentação</button>
+        <button class="ms-tab-btn" data-page="ms-leis" onclick="goTo('ms-leis')">📚 Legislação</button>
+        <button class="ms-tab-btn" data-page="ms-juris" onclick="goTo('ms-juris')">⚖️ Jurisprudências</button>
+        <button class="ms-tab-btn" data-page="ms-guia" onclick="goTo('ms-guia')">📖 Guia de Uso</button>
+      </div>
+    </div>
+  </header>
+  <div class="page-content"><div class="container" style="max-width:760px;">
+    <div class="section-header"><span class="section-tag">Instruções</span><h2 class="section-title">Guia de Uso do Microssistema</h2></div>
+    <div class="guide-item"><strong>🔍 Busca global:</strong> Use o botão ⌕ na barra superior para buscar em todo o site — conceitos, leis, autores e jurisprudências.</div>
+    <div class="guide-item"><strong>📋 Copiar artigos:</strong> Cada artigo tem botão "📋 Copiar". O texto vai direto para sua área de transferência.</div>
+    <div class="guide-item"><strong>💡 Termos jurídicos:</strong> Passe o mouse (ou toque) sobre palavras sublinhadas em verde para ver a explicação em linguagem simples.</div>
+    <div class="guide-item"><strong>🔊 Leitura em voz alta:</strong> Clique em "🔊 Ouvir" em qualquer artigo para ouvir o texto lido em português.</div>
+    <div class="guide-item"><strong>⚖️ Comparar leis:</strong> Clique em "+ Comparar" em até 3 leis e veja-as lado a lado no painel inferior.</div>
+    <div class="guide-item"><strong>🔗 Texto oficial:</strong> Cada lei tem link direto para o texto oficial no Planalto, OHCHR ou Corte IDH.</div>
+    <div class="guide-item"><strong>A- / A+:</strong> Ajuste o tamanho da fonte pelos botões no canto superior direito da barra de navegação.</div>
+    <div class="guide-item"><strong>🏠 Navegação:</strong> Use a barra de navegação para transitar entre os quatro conceitos críticos (AJP, Direito Insurgente, Direito Achado na Rua, Uso Tático) e o Microssistema (Legislação, Jurisprudências).</div>
+    <div class="ms-warning"><strong>⚠️ Aviso Legal:</strong> Este sistema tem fins educativos e informativos. Os textos reproduzem dispositivos relevantes das legislações, mas não substituem a leitura integral das normas nos canais oficiais. Para orientação jurídica, consulte um advogado ou a Defensoria Pública.</div>
+  </div></div>
+  <footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-brand"><span class="nav-logo" onclick="goTo('home')"><span class="logo-bracket">[</span>DCP<span class="logo-bracket">]</span></span></div><nav class="footer-nav"><a onclick="goTo('home')">Início</a><a onclick="goTo('ms-leis')">Legislação</a><a onclick="goTo('ms-juris')">Jurisprudências</a></nav></div><div class="footer-bottom"><p>Fins educativos e informativos.</p></div></div></footer>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop">↑</button>
+<div class="toast" id="toast"></div>
+
+<script>
+// ════════════════════════════════════
+// DATA: LAWS (from microssistema)
+// ════════════════════════════════════
+const LAWS=[
+{id:1,num:"1",short:"Constituição Federal",full:"Constituição da República Federativa do Brasil (1988)",tag:"Nacional",key:true,normas:"https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm",relevance:"A <strong>Constituição Federal</strong> é a norma máxima do ordenamento jurídico brasileiro. Para populações atingidas por barragens, garante: dignidade da pessoa humana (art. 1º), direito ao meio ambiente ecologicamente equilibrado (art. 225), função social da propriedade (art. 5º, XXIII), proteção às comunidades indígenas (art. 231) e quilombolas (art. 68 ADCT).",articles:[
+{id:"cf_a1",key:true,title:"Art. 1º – Fundamentos da República",text:"A República Federativa do Brasil constitui-se em Estado Democrático de Direito e tem como fundamentos: I – a soberania; II – a cidadania; III – a <span class='lt'>dignidade da pessoa humana<span class='tt'>Princípio que garante a todo ser humano respeito mínimo, impedindo tratamentos degradantes. É a base de todas as indenizações por violações de direitos.</span></span>; IV – os valores sociais do trabalho e da livre iniciativa; V – o pluralismo político."},
+{id:"cf_a5",key:true,title:"Art. 5º – Direitos e Garantias Fundamentais (seleção)",text:"Todos são iguais perante a lei [...] XXII – é garantido o direito de propriedade; XXIII – a propriedade atenderá a sua <span class='lt'>função social<span class='tt'>A propriedade não é direito absoluto: ela deve beneficiar a coletividade. Empreendimentos que violam esse dever podem ser contestados.</span></span>; [...] LXXIII – qualquer cidadão é parte legítima para propor <span class='lt'>ação popular<span class='tt'>Ação judicial que qualquer cidadão pode propor gratuitamente para anular ato lesivo ao meio ambiente ou ao patrimônio público.</span></span> que vise a anular ato lesivo ao patrimônio público, à moralidade administrativa, ao meio ambiente e ao patrimônio histórico e cultural."},
+{id:"cf_a225",key:true,title:"Art. 225 – Direito ao Meio Ambiente",text:"Todos têm direito ao meio ambiente ecologicamente equilibrado, bem de uso comum do povo e essencial à sadia qualidade de vida, impondo-se ao Poder Público e à coletividade o dever de defendê-lo e preservá-lo para as presentes e futuras gerações. § 3º As condutas e atividades consideradas lesivas ao meio ambiente sujeitarão os infratores, pessoas físicas ou jurídicas, a sanções penais e administrativas, independentemente da obrigação de reparar os danos causados."},
+{id:"cf_a231",key:true,title:"Art. 231 – Direitos dos Povos Indígenas",text:"São reconhecidos aos índios sua organização social, costumes, línguas, crenças e tradições, e os direitos originários sobre as terras que tradicionalmente ocupam. § 3º O aproveitamento dos recursos hídricos, incluídos os potenciais energéticos, em terras indígenas só pode ser efetivado com autorização do Congresso Nacional, ouvidas as comunidades afetadas."}
+]},
+{id:2,num:"2",short:"Código de Defesa do Consumidor",full:"Código de Defesa do Consumidor – Lei nº 8.078/1990",tag:"Nacional",key:false,normas:"https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm",relevance:"Aplica-se às relações entre empresas e comunidades quando há relação de consumo. Estabelece <span class='lt'>responsabilidade objetiva<span class='tt'>A empresa é responsável pelos danos independentemente de culpa — basta mostrar o dano e a ligação com a atividade da empresa.</span></span> e inverte o ônus da prova a favor do consumidor/atingido.",articles:[
+{id:"cdc_6",key:true,title:"Art. 6º – Direitos Básicos",text:"São direitos básicos do consumidor: [...] VI – a efetiva prevenção e reparação de danos patrimoniais e morais, individuais, coletivos e difusos; [...] VIII – a facilitação da defesa de seus direitos, inclusive com a <span class='lt'>inversão do ônus da prova<span class='tt'>Em vez de a vítima provar que a empresa causou o dano, a empresa é quem precisa provar que não causou — favorece os atingidos.</span></span>."},
+{id:"cdc_14",key:false,title:"Art. 14 – Responsabilidade pelo Fato do Serviço",text:"O fornecedor de serviços responde, independentemente da existência de culpa, pela reparação dos danos causados aos consumidores por defeitos relativos à prestação dos serviços."}
+]},
+{id:3,num:"3",short:"Lei da Ação Civil Pública",full:"Lei da Ação Civil Pública – Lei nº 7.347/1985",tag:"Nacional",key:true,normas:"https://www.planalto.gov.br/ccivil_03/leis/l7347orig.htm",relevance:"Instrumento processual fundamental para defesa coletiva dos atingidos. Permite que o <span class='lt'>Ministério Público<span class='tt'>Órgão público independente que pode processar empresas e governos para defender direitos coletivos das comunidades, sem custo para as vítimas.</span></span>, Defensoria Pública e associações ajuízem ações de reparação por danos ao meio ambiente e a outros interesses difusos e coletivos.",articles:[
+{id:"lacp_1",key:true,title:"Art. 1º – Cabimento da Ação",text:"Regem-se pelas disposições desta Lei as ações de responsabilidade por danos morais e patrimoniais causados: I – ao meio ambiente; II – ao consumidor; III – a bens e direitos de valor artístico, estético, histórico, turístico e paisagístico; IV – a qualquer outro interesse difuso ou coletivo."},
+{id:"lacp_5",key:true,title:"Art. 5º – Legitimados para Propor Ação",text:"Têm legitimidade para propor a ação principal e a ação cautelar: I – o Ministério Público; II – a Defensoria Pública; III – a União, os Estados, o Distrito Federal e os Municípios; IV – autarquias, empresas públicas e fundações; V – associações constituídas há pelo menos 1 ano, que incluam em suas finalidades a proteção ao meio ambiente ou ao patrimônio público."}
+]},
+{id:4,num:"4",short:"Lei da Mediação",full:"Lei da Mediação – Lei nº 13.140/2015",tag:"Nacional",key:false,normas:"https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13140.htm",relevance:"Regula a <span class='lt'>mediação<span class='tt'>Processo voluntário em que um mediador imparcial ajuda as partes a chegarem a um acordo. Muito usado em conflitos de reparação, mas criticado quando há assimetria de poder entre empresa e comunidade.</span></span> como método alternativo de resolução de conflitos. Deve ser aplicada com rigor para garantir isonomia e autonomia das comunidades.",articles:[
+{id:"med_2",key:true,title:"Art. 2º – Princípios da Mediação",text:"A mediação será orientada pelos seguintes princípios: I – imparcialidade do mediador; II – isonomia entre as partes; III – oralidade; IV – informalidade; V – autonomia da vontade das partes; VI – busca do consenso; VII – confidencialidade; VIII – boa-fé. § 1º Na hipótese de <span class='lt'>mediação coletiva<span class='tt'>Negociação envolvendo uma comunidade inteira, exigindo mecanismos especiais de participação e representação.</span></span> envolvendo ente público, o acordo será submetido à consulta pública."}
+]},
+{id:5,num:"5",short:"Código Civil – Responsabilidade Objetiva",full:"Código Civil Brasileiro – Lei nº 10.406/2002 (arts. 186, 927, 944)",tag:"Nacional",key:false,normas:"https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm",relevance:"Estabelece as bases da <span class='lt'>responsabilidade civil<span class='tt'>Obrigação de indenizar pelos danos causados, seja por culpa ou pelo simples risco da atividade perigosa.</span></span>. O art. 927, parágrafo único, institui responsabilidade objetiva por atividades de risco — como mineração e geração de energia.",articles:[
+{id:"cc_927",key:true,title:"Art. 927 – Responsabilidade Objetiva por Risco",text:"Aquele que, por ato ilícito, causar dano a outrem, fica obrigado a repará-lo. Parágrafo único: Haverá obrigação de reparar o dano, independentemente de culpa, nos casos especificados em lei, ou quando a atividade normalmente desenvolvida pelo autor do dano implicar, por sua natureza, risco para os direitos de outrem. [Aplicado a mineração, barragens e atividades industriais de alto risco]"}
+]},
+{id:6,num:"6",short:"Política Nacional do Meio Ambiente",full:"Política Nacional do Meio Ambiente – Lei nº 6.938/1981",tag:"Nacional",key:true,normas:"https://www.planalto.gov.br/ccivil_03/leis/l6938.htm",relevance:"Lei pioneira que criou o SISNAMA e o princípio do <span class='lt'>poluidor-pagador<span class='tt'>Quem polui paga os custos da reparação ambiental — não a sociedade. Impede que o lucro seja privatizado e o dano seja socializado.</span></span>. Fundamenta o EIA/RIMA e a responsabilidade civil ambiental independente de culpa.",articles:[
+{id:"pnma_14",key:true,title:"Art. 14, §1º – Responsabilidade Civil Ambiental Objetiva",text:"Sem obstar a aplicação das penalidades previstas neste artigo, é o poluidor obrigado, independentemente da existência de culpa, a indenizar ou reparar os danos causados ao meio ambiente e a terceiros, afetados por sua atividade. O Ministério Público da União e dos Estados terá legitimidade para propor ação de responsabilidade civil e criminal, por danos causados ao meio ambiente."}
+]},
+{id:7,num:"7",short:"Segurança de Barragens",full:"Política Nacional de Segurança de Barragens – Lei nº 12.334/2010",tag:"Nacional",key:true,normas:"https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12334.htm",relevance:"Lei central para o tema, que regula segurança, <span class='lt'>classificação de risco<span class='tt'>Categorização das barragens por nível de perigo: considera altura, volume, tipo de material e danos potenciais. Determina as exigências de segurança de cada barragem.</span></span> e Planos de Ação de Emergência (PAE). A tragédia de Brumadinho expôs lacunas graves em sua implementação.",articles:[
+{id:"pnsb_5",key:true,title:"Art. 5º – Classificação de Barragens",text:"As barragens serão classificadas pelos agentes fiscalizadores considerando: I – a categoria de risco; II – o dano potencial associado; III – o volume do reservatório. Barragens de alto risco ou alto dano potencial devem ser inspecionadas pelo empreendedor ao menos uma vez por ano."},
+{id:"pnsb_8",key:true,title:"Art. 8º – Plano de Ação de Emergência (PAE)",text:"O empreendedor de barragem com alto dano potencial deve elaborar o Plano de Ação de Emergência (PAE), que identifica os agentes a serem notificados e as ações a executar em caso de emergência, devendo ser de acesso público e amplamente divulgado na área de <span class='lt'>autossalvamento<span class='tt'>Zona imediatamente abaixo da barragem onde as pessoas devem ser evacuadas imediatamente em caso de rompimento iminente, sem esperar ordens.</span></span>."}
+]},
+{id:8,num:"8",short:"Lei de Acesso à Informação",full:"Lei de Acesso à Informação – Lei nº 12.527/2011",tag:"Nacional",key:false,normas:"https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm",relevance:"Garante o direito de todos obterem informações de órgãos públicos e empresas que recebem recursos públicos. Fundamental para acessar laudos, PAEs, licenças ambientais e contratos de barragens.",articles:[
+{id:"lai_7",key:true,title:"Art. 7º – Direito de Acesso à Informação",text:"O acesso à informação compreende, entre outros, os direitos de obter: [...] VI – informação pertinente à administração do patrimônio público, utilização de recursos públicos, licitação, contratos administrativos; VII – informação relativa à implementação, acompanhamento e resultados dos programas, projetos e ações dos órgãos e entidades públicas, bem como metas e indicadores propostos."}
+]},
+{id:9,num:"9",short:"PNAB",full:"Política Nacional dos Atingidos por Barragens (PNAB)",tag:"Nacional",key:true,normas:"https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/d10179.htm",relevance:"Política específica de reconhecimento e garantia dos direitos das populações atingidas. Define o conceito de 'atingido' de forma ampla, reivindicação histórica do <span class='lt'>MAB<span class='tt'>Movimento dos Atingidos por Barragens: organização nacional que representa comunidades afetadas desde 1991 e luta por reconhecimento e reparação integral.</span></span>.",articles:[
+{id:"pnab_1",key:true,title:"Conceito Amplo de Atingido por Barragem",text:"A PNAB reconhece como atingidos por barragens as pessoas que sofrem impactos sociais, econômicos, culturais, ambientais e de saúde decorrentes de empreendimentos hidrelétricos, de mineração ou outros, incluindo: famílias removidas; trabalhadores rurais afetados; pescadores e ribeirinhos; populações indígenas e quilombolas; e comunidades afetadas por alterações nos cursos d'água, qualidade da água e dos ecossistemas aquáticos, independentemente de estarem na área de inundação direta."}
+]},
+{id:10,num:"10",short:"Lei 12.340/2010 – Assessoria Técnica",full:"Lei nº 12.340/2010 – Fundamento da Assessoria Técnica Independente (ATI)",tag:"Nacional",key:true,normas:"https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12340compilado.htm",relevance:"O Art. 3-A, VI, prevê <span class='lt'>cadastramento de equipes técnicas e de voluntários<span class='tt'>Registro de profissionais e voluntários para atuar em desastres. Interpretado como base normativa da Assessoria Técnica Independente (ATI) — apoio técnico gratuito às comunidades atingidas.</span></span>, fundamento normativo da Assessoria Técnica Independente (ATI) às comunidades atingidas.",articles:[
+{id:"l12340_3a",key:true,title:"Art. 3-A, VI – Fundamento da ATI",text:"Para fins desta Lei, o Sistema Nacional de Proteção e Defesa Civil (SINPDEC) contará com: VI – o cadastramento de equipes técnicas e de voluntários para atuarem em circunstâncias de desastres. [Este dispositivo fundamenta a Assessoria Técnica Independente (ATI): equipe de engenheiros, advogados e assistentes sociais que apoia gratuitamente comunidades atingidas por barragens nos processos de reparação, garantindo que não fiquem desassistidas na negociação com empresas]"}
+]},
+{id:11,num:"11",short:"PNPDEC – Lei 12.608/2012",full:"Política Nacional de Proteção e Defesa Civil – Lei nº 12.608/2012 (alt. 2023)",tag:"Nacional",key:false,normas:"https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12608.htm",relevance:"Alterada em 2023 para incluir capítulo específico sobre <span class='lt'>desastres induzidos por ação humana<span class='tt'>Categoria de desastres causados por atividade humana, como rompimentos de barragens de mineração. Diferente dos desastres naturais, esses têm responsável identificável.</span></span>, reconhecendo a especificidade de eventos como rompimentos de barragens.",articles:[
+{id:"pnpdec_2",key:true,title:"Art. 2º – Definições (redação de 2023)",text:"Para fins desta Lei, considera-se: II – desastre: resultado de eventos adversos, naturais ou <strong>induzidos por ação humana</strong>, sobre um cenário vulnerável, causando grave perturbação ao funcionamento de uma comunidade ou sociedade, envolvendo extensas perdas e danos humanos, materiais, econômicos ou ambientais. [A inclusão de 'desastres induzidos por ação humana' reconhece explicitamente rompimentos de barragens como desastres tecnológicos com responsáveis identificáveis]"}
+]},
+{id:12,num:"12",short:"Recursos Hídricos",full:"Política Nacional de Recursos Hídricos – Lei nº 9.433/1997",tag:"Nacional",key:false,normas:"https://www.planalto.gov.br/ccivil_03/leis/l9433.htm",relevance:"Institui a <span class='lt'>água como bem público<span class='tt'>A água pertence ao povo brasileiro, não pode ser privatizada. Seu uso é autorizado pelo Estado via outorga, sempre no interesse coletivo.</span></span> e a bacia hidrográfica como unidade de gestão. Regula o uso da água e exige participação social nos Comitês de Bacia.",articles:[
+{id:"pnrh_1",key:true,title:"Art. 1º – Fundamentos",text:"A Política Nacional de Recursos Hídricos baseia-se nos seguintes fundamentos: I – a água é um bem de domínio público; II – a água é um recurso natural limitado, dotado de valor econômico; III – em situações de escassez, o uso prioritário dos recursos hídricos é o consumo humano e a dessedentação de animais."}
+]},
+{id:13,num:"13",short:"Estatuto do Índio",full:"Estatuto do Índio – Lei nº 6.001/1973 e Art. 231/232 CF/88",tag:"Nacional",key:false,normas:"https://www.planalto.gov.br/ccivil_03/leis/l6001.htm",relevance:"Protege os direitos territoriais, culturais e sociais dos povos indígenas. Exige <span class='lt'>consulta prévia, livre e informada<span class='tt'>Direito dos povos indígenas de ser consultados antes de qualquer medida que afete seus territórios, culturas ou meios de vida, garantido pela Convenção 169 da OIT. A consulta deve ocorrer antes da decisão, com informação completa e sem pressão.</span></span> conforme a Convenção 169 da OIT.",articles:[
+{id:"ei_20",key:true,title:"Art. 20 – Terras Inalienáveis",text:"As terras indígenas e o usufruto das riquezas naturais naquelas terras existentes serão inalienáveis e imprescritíveis. As terras indígenas não poderão ser objeto de arrendamento ou de qualquer ato ou negócio jurídico que restrinja o pleno exercício da posse direta pela comunidade indígena. [Nenhuma barragem pode ser construída sem consulta prévia e sem respeitar os direitos originários dos povos indígenas sobre seus territórios]"}
+]},
+{id:14,num:"14",short:"Estatuto da Igualdade Racial",full:"Estatuto da Igualdade Racial – Lei nº 12.288/2010",tag:"Nacional",key:false,normas:"https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12288.htm",relevance:"Protege comunidades quilombolas e populações negras. Barragens frequentemente afetam territórios quilombolas, constituindo violação dos direitos protegidos pelo Estatuto.",articles:[
+{id:"eir_32",key:true,title:"Art. 32 – Proteção às Comunidades Quilombolas",text:"O Estado garantirá às comunidades remanescentes de quilombos os recursos para a regularização fundiária, bem como pela proteção e manutenção dos seus bens culturais. [A remoção forçada de comunidades quilombolas para construção de barragens sem consulta e sem indenização justa constitui violação grave deste dispositivo]"}
+]},
+{id:15,num:"15",short:"LOAS – Assistência Social",full:"Lei Orgânica da Assistência Social – Lei nº 8.742/1993",tag:"Nacional",key:false,normas:"https://www.planalto.gov.br/ccivil_03/leis/l8742.htm",relevance:"Garante assistência social como direito do cidadão, devendo ser acionada imediatamente após desastres. Assegura benefícios e serviços socioassistenciais às famílias desalojadas e em calamidade pública.",articles:[
+{id:"loas_2",key:true,title:"Art. 2º – Objetivos da Assistência Social",text:"A assistência social tem por objetivos: I – a proteção social, que visa à garantia da vida, à redução de danos e à prevenção da incidência de riscos, especialmente: a) a proteção à família, à maternidade, à infância, à adolescência e à velhice; b) o amparo às crianças e aos adolescentes carentes."}
+]},
+{id:16,num:"16",short:"Lei 7.342/2010 – Cadastro Socioeconômico",full:"Lei nº 7.342/2010 – Cadastro Socioeconômico das Populações Atingidas",tag:"Nacional",key:false,normas:"https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/decreto/d7342.htm",relevance:"Estabelece o <span class='lt'>cadastro socioeconômico<span class='tt'>Levantamento detalhado das condições de vida das famílias afetadas — renda, moradia, atividade produtiva — usado como base para calcular indenizações.</span></span> como instrumento obrigatório para identificar e documentar danos às populações atingidas.",articles:[
+{id:"l7342_1",key:true,title:"Art. 1º – Cadastro Socioeconômico Obrigatório",text:"O empreendedor de aproveitamento de potencial de energia hidráulica é obrigado a elaborar cadastro socioeconômico das famílias a serem atingidas pelo empreendimento, com o objetivo de identificar a composição familiar, as atividades econômicas, as características das moradias e benfeitorias, a posse e uso da terra, os impactos sofridos e as expectativas das populações afetadas."}
+]},
+{id:17,num:"17",short:"Portaria ANM 70.389/2017",full:"Portaria nº 70.389/2017 – Agência Nacional de Mineração (ANM)",tag:"Nacional",key:false,normas:"https://www.gov.br/anm/pt-br/assuntos/barragens/portaria-no-70-389-2017-atualizada-pela-portaria-no-526-2023.pdf",relevance:"Regulamenta o Cadastro Nacional de Barragens de Mineração, planos de emergência e procedimentos de segurança.",articles:[
+{id:"anm_3",key:true,title:"Art. 3º – Classificação das Barragens de Mineração",text:"As barragens de mineração serão classificadas quanto a: I – Categoria de Risco (CRI), em função das características técnicas e do estado de conservação; II – Dano Potencial Associado (DPA), em função do volume armazenado, das características dos rejeitos e das populações potencialmente afetadas a jusante."}
+]},
+{id:18,num:"18",short:"Princípios de Ruggie – ONU",full:"Princípios Orientadores sobre Empresas e Direitos Humanos – ONU (2011)",tag:"Internacional",key:true,normas:"https://www.ohchr.org/sites/default/files/documents/publications/guidingprinciplesbusinesshr_en.pdf",relevance:"Estabelecem o marco 'Proteger, Respeitar e Remediar': Estados devem proteger; empresas devem respeitar; ambos devem garantir remediação. Fundamentais para responsabilizar empresas como Vale, Samarco e BHP.",articles:[
+{id:"rug_11",key:true,title:"Princípio 11 – Responsabilidade Empresarial de Respeitar",text:"As empresas devem respeitar os direitos humanos. Isso significa que devem evitar que suas próprias atividades provoquem ou contribuam para provocar impactos negativos sobre os direitos humanos e devem remediar esses impactos quando ocorram."},
+{id:"rug_22",key:true,title:"Princípio 22 – Remediação Efetiva",text:"Quando as empresas identificam que provocaram ou contribuíram para provocar impactos negativos, devem oferecer ou participar de sua remediação por meio de mecanismos legítimos. A remediação efetiva deve ser: legítima, acessível, previsível, equitativa, transparente, compatível com os direitos humanos e capaz de gerar aprendizado contínuo."}
+]},
+{id:19,num:"19",short:"Declaração Campesinos – ONU",full:"Declaração da ONU sobre Direitos dos Camponeses e Outras Pessoas que Trabalham no Campo (2018)",tag:"Internacional",key:false,normas:"https://documents.un.org/doc/undoc/gen/n18/405/39/pdf/n1840539.pdf",relevance:"Reconhece direitos específicos de camponeses, pescadores, trabalhadores rurais e comunidades tradicionais: direito à terra, à água, ao território e ao meio ambiente sadio — todos ameaçados por barragens.",articles:[
+{id:"camp_5",key:true,title:"Art. 5º – Direito à Terra e ao Território",text:"Os camponeses e outras pessoas que trabalham nas zonas rurais têm o direito de ter acesso à terra, de usar a terra e os recursos naturais que possuem ou ocupam. Não devem ser vítimas de desalojamento forçado ou de reassentamento arbitrário. Os Estados devem adotar medidas para garantir que as atividades privadas e estatais não gerem desalojamentos forçados."}
+]},
+{id:20,num:"20",short:"Marco de Sendai",full:"Marco de Sendai para Redução do Risco de Desastres 2015-2030 – ONU",tag:"Internacional",key:false,normas:"https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030",relevance:"Acordo internacional para redução de riscos de desastres, incluindo tecnológicos e industriais. Prevê proteção às populações vulneráveis e aplica o princípio 'não deixar ninguém para trás'.",articles:[
+{id:"sendai_p4",key:true,title:"Prioridade 4 – Preparação para Resposta e Recuperação",text:"Fortalecer a preparação para desastres visando uma resposta efetiva e 'Reconstruir Melhor' nos aspectos de recuperação, reabilitação e reconstrução. Os Estados devem preparar e revisar regularmente as políticas e planos de contingência, considerando as mudanças demográficas, tecnológicas e ambientais relevantes."}
+]},
+{id:21,num:"21",short:"Opinião Consultiva OC-23/17 – CIDH",full:"Opinião Consultiva OC-23/17 – Meio Ambiente e Direitos Humanos (Corte IDH, 2017)",tag:"Internacional",key:true,normas:"https://www.corteidh.or.cr/docs/opiniones/seriea_23_esp.pdf",relevance:"A Corte IDH reconhece que o direito ao meio ambiente sadio é um direito humano autônomo e que danos ambientais de barragens constituem violações de direitos humanos exigíveis dos Estados.",articles:[
+{id:"oc23_59",key:true,title:"Parágrafo 59 – Meio Ambiente como Direito Humano Autônomo",text:"A Corte considera que o direito ao meio ambiente saudável como direito autônomo protege os componentes do meio ambiente, tais como bosques, rios, mares e outros, como interesses jurídicos em si mesmos, mesmo na ausência de certeza ou evidência sobre o risco às pessoas individuais."},
+{id:"oc23_139",key:true,title:"Parágrafo 139 – Obrigações Estatais em Matéria Ambiental",text:"Os Estados têm as seguintes obrigações em matéria ambiental: (a) obrigação de prevenir danos ambientais; (b) princípio da precaução; (c) obrigação de regulamentar e fiscalizar as atividades que possam causar dano ambiental; (d) obrigação de realizar estudos de impacto ambiental; (f) obrigação de garantir acesso à informação; (g) obrigação de garantir participação pública; e (h) obrigação de garantir acesso à justiça ambiental."}
+]},
+{id:22,num:"22",short:"OC – Clima e Direitos Humanos",full:"Opinião Consultiva sobre Emergência Climática e Direitos Humanos (Corte IDH, 2024)",tag:"Internacional",key:false,normas:"https://www.corteidh.or.cr/docs/opiniones/seriea_32_esp.pdf",relevance:"Reafirma que mudanças climáticas e desastres ambientais, incluindo os causados por barragens, constituem grave violação de direitos humanos. Obriga os Estados a adotar medidas de prevenção, mitigação e adaptação.",articles:[
+{id:"oc_clima",key:true,title:"Obrigações Estatais frente à Emergência Climática",text:"Os Estados têm obrigações específicas em matéria de direitos humanos frente à emergência climática: (a) obrigação de prevenir danos ambientais significativos; (b) obrigação de regulamentar e fiscalizar as atividades das empresas; (d) obrigação de garantir participação pública nas decisões ambientais; (f) obrigações específicas frente à situação de povos indígenas, mulheres, crianças e outros grupos em situação de vulnerabilidade, que sofrem de forma desproporcional os efeitos dos desastres."}
+]},
+{id:23,num:"23",short:"Relatório ONU – Atingidos por Barragens",full:"Relatório do Relator Especial da ONU sobre Direitos dos Atingidos por Barragens",tag:"Internacional",key:false,normas:"https://www.ohchr.org/en/calls-for-input/2022/call-inputs-report-human-rights-and-dam-construction",relevance:"Documenta violações de direitos humanos causadas por barragens em todo o mundo e estabelece padrões internacionais para reassentamento, indenização, participação e reparação integral.",articles:[
+{id:"rel_oea",key:true,title:"Padrões Internacionais de Reparação Integral",text:"O Relator Especial estabelece que a reparação integral dos atingidos por barragens deve incluir cinco componentes: (1) restituição: restauração das condições de vida anteriores ou superiores; (2) compensação financeira justa por todos os danos materiais e morais; (3) reabilitação dos meios de vida; (4) satisfação: reconhecimento público e não repetição; e (5) participação efetiva das comunidades em todas as etapas do processo de reparação, com representação autônoma e assistência técnica independente."}
+]},
+{id:24,num:"24",short:"Recomendação CNDH – Brumadinho",full:"Recomendação do CNDH – Relatório Caso Brumadinho (2019)",tag:"Nacional",key:true,normas:"https://www.gov.br/mdh/pt-br/navegue-por-temas/cndh",relevance:"Documento específico do CNDH sobre o rompimento da B1 da Vale em Brumadinho (25/01/2019), que causou 272 mortes. Recomendou medidas urgentes de reparação, responsabilização e prevenção.",articles:[
+{id:"cndh_bru",key:true,title:"Recomendações Emergenciais – Brumadinho",text:"O CNDH recomendou ao governo federal e ao Estado de Minas Gerais: (1) garantia de assistência emergencial imediata; (2) aceleração das buscas e identificação das vítimas; (3) monitoramento e publicidade dos danos ao Rio Paraopeba; (4) fortalecimento da fiscalização das demais barragens de mineração; (5) garantia de assessoria técnica independente às comunidades atingidas em todos os processos de reparação; (6) participação efetiva das comunidades nos processos liderados pela Vale; (7) responsabilização penal e civil dos dirigentes da empresa."}
+]},
+{id:25,num:"25",short:"Recomendação CNDH – DH e Empresas",full:"Recomendação do CNDH sobre Direitos Humanos e Empresas",tag:"Nacional",key:false,normas:"https://www.gov.br/mdh/pt-br/navegue-por-temas/cndh",relevance:"Recomenda ao governo federal a adoção de um Plano Nacional de Ação sobre Empresas e Direitos Humanos, com foco especial nas indústrias extrativas.",articles:[
+{id:"cndh_dh",key:true,title:"Recomendação – Responsabilização Empresarial",text:"O Conselho Nacional de Direitos Humanos recomenda: (1) regulamentação das atividades empresariais com impacto sobre direitos humanos; (2) criação de mecanismos de remediação acessíveis às vítimas; (3) obrigação de due diligence em direitos humanos para empresas; (4) proteção de defensores de direitos humanos que atuam em casos de violações empresariais; (5) participação das comunidades afetadas na definição de padrões e processos de reparação."}
+]},
+{id:26,num:"26",short:"PNDH-4",full:"4º Programa Nacional de Direitos Humanos (PNDH-4)",tag:"Nacional",key:false,normas:"https://www.gov.br/mdh/pt-br/navegue-por-temas/direitos-humanos-para-todos/pndh-3",relevance:"O PNDH-4 inclui eixos sobre empresas e direitos humanos, populações vulneráveis, meio ambiente e direito à cidade, todos relevantes para os atingidos por barragens.",articles:[
+{id:"pndh4_1",key:true,title:"Eixo – Empresas e Direitos Humanos",text:"O PNDH-4 estabelece como diretriz a responsabilização de empresas por violações de direitos humanos decorrentes de suas atividades, com obrigação de due diligence, acesso à informação e remediação efetiva. Prevê mecanismos de consulta e participação de comunidades afetadas por empreendimentos de infraestrutura, energia e mineração."}
+]},
+{id:27,num:"27",short:"PIDESC – ONU",full:"Pacto Internacional sobre Direitos Econômicos, Sociais e Culturais – ONU (1966)",tag:"Internacional",key:false,normas:"https://www.ohchr.org/en/instruments-mechanisms/instruments/international-covenant-economic-social-and-cultural-rights",relevance:"Tratado internacional incorporado ao direito brasileiro que garante os <span class='lt'>direitos econômicos, sociais e culturais (DESC)<span class='tt'>Direitos que garantem condições mínimas de vida digna: saúde, educação, moradia, trabalho, alimentação e cultura. São exigíveis dos Estados.</span></span>. Fundamental para garantir moradia, alimentação, trabalho e participação cultural aos atingidos.",articles:[
+{id:"pidesc_11",key:true,title:"Art. 11 – Direito à Moradia e Alimentação Adequadas",text:"Os Estados Partes reconhecem o direito de toda pessoa a um nível de vida adequado para si próprio e sua família, inclusive à alimentação, vestimenta e moradia adequadas, assim como a uma melhoria contínua de suas condições de vida. [O rompimento de barragens e o reassentamento inadequado violam diretamente este artigo, obrigando os Estados a garantir padrão de vida equivalente ou superior ao anterior]"}
+]},
+{id:28,num:"28",short:"Condenações CIDH – Brasil",full:"Casos Paradigmáticos na Corte IDH: Alcântara, Escher, Gabriel Sales Pimenta",tag:"Internacional",key:false,normas:"https://www.corteidh.or.cr/docs/casos/articulos/seriec_400_esp.pdf",relevance:"Casos em que o Brasil foi responsabilizado internacionalmente, estabelecendo precedentes sobre responsabilidade estatal por violações de direitos humanos — especialmente em caso de remoções forçadas e omissão na proteção de comunidades vulneráveis.",articles:[
+{id:"cidh_casos",key:true,title:"Casos Paradigmáticos – Resumo",text:"Caso Alcântara x Brasil: remoção forçada de comunidade quilombola sem consulta prévia para o Centro de Lançamento de Alcântara — paradigma direto para comunidades atingidas por grandes obras sem consulta. Caso Escher x Brasil: interceptação ilegal de comunicações de membros de movimentos sociais rurais (MST). Caso Gabriel Sales Pimenta: assassinato de advogado de trabalhadores rurais, responsabilidade do Estado por omissão na proteção de defensor de direitos humanos."}
+]},
+{id:29,num:"29",short:"Declaração Universal dos DH",full:"Declaração Universal dos Direitos Humanos – ONU (1948)",tag:"Internacional",key:false,normas:"https://www.ohchr.org/en/human-rights/universal-declaration/translations/portuguese",relevance:"Documento fundacional do sistema internacional de direitos humanos. Garante dignidade, igualdade e proteção a todos os seres humanos — incluindo ribeirinhos, indígenas, quilombolas e pescadores afetados por barragens.",articles:[
+{id:"dudh_1",key:true,title:"Art. 1º – Dignidade e Igualdade",text:"Todos os seres humanos nascem livres e iguais em dignidade e direitos. São dotados de razão e consciência e devem agir em relação uns aos outros com espírito de fraternidade."},
+{id:"dudh_25",key:true,title:"Art. 25 – Direito ao Nível de Vida Adequado",text:"Todo ser humano tem direito a um padrão de vida capaz de assegurar a si e à sua família saúde e bem-estar, inclusive alimentação, vestuário, habitação, cuidados médicos e os serviços sociais indispensáveis. [A destruição desse padrão por rompimento de barragens constitui violação direta da DUDH, obrigando reparação plena]"}
+]},
+{id:30,num:"30",short:"Caso Lhaka Honhat – Corte IDH",full:"Caso Comunidades Indígenas Lhaka Honhat x Argentina – Corte IDH (2020)",tag:"Internacional",key:true,normas:"https://www.corteidh.or.cr/CF/jurisprudencia2/ficha_tecnica.cfm?nId_Ficha=309",relevance:"A Argentina foi condenada por violação dos direitos ao território, à identidade cultural, à alimentação e ao meio ambiente saudável de comunidades indígenas. Precedente internacional direto para casos de barragens e mineração em territórios tradicionais no Brasil.",articles:[
+{id:"lhaka_1",key:true,title:"Sentença – Síntese (06/02/2020)",text:"A Corte IDH condenou a Argentina por violação dos direitos ao território indígena, à identidade cultural, à alimentação adequada, à água e ao meio ambiente saudável, reconhecendo a interdependência entre direitos territoriais e direitos culturais e ambientais. [Precedente direto: barragens e mineração em territórios indígenas e quilombolas no Brasil podem ser levadas à Corte IDH com base neste caso]"}
+]}
+];
+
+const JURIS=[
+// ── NACIONAIS ──────────────────────────────────────────────────────────────
+{id:1,trib:"STJ",tipo:"nat",destaque:true,
+ link:"https://scon.stj.jus.br/SCON/pesquisar.jsp?i=1&b=ACOR&livre=(('RESP'.clas.+e+@num%3D'1374284')+ou+('REsp'+adj+'1374284').suce.)&O=JT",
+ titulo:"REsp 1.374.284/MG – Responsabilidade Objetiva e Risco Integral (Tema 681 – Repetitivo)",
+ ref:"STJ – 2ª Seção – Rel. Min. Luis Felipe Salomão – DJe 05/09/2014",
+ tags:["Dano Ambiental","Risco Integral","Recurso Repetitivo"],
+ ementa:"A responsabilidade por dano ambiental é objetiva, informada pela teoria do risco integral. O nexo de causalidade é o fator aglutinante que permite que o risco se integre na unidade do ato, sendo descabida a invocação de excludentes de responsabilidade civil (caso fortuito, força maior, fato de terceiro) para afastar a obrigação de indenizar. Tese firmada em recurso repetitivo (art. 543-C CPC).",
+ relevancia:"Tese vinculante para todos os tribunais. Empresas de mineração e geração de energia não podem alegar 'acidente imprevisível' para se eximir de indenizar. Origem: rompimento de barragem de bauxita em Miraí/MG (2007) — caso predecessor de Mariana e Brumadinho."},
+{id:2,trib:"STJ",tipo:"nat",destaque:true,
+ link:"https://scon.stj.jus.br/SCON/pesquisar.jsp?i=1&b=ACOR&livre=(('RESP'.clas.+e+@num%3D'1114398')+ou+('REsp'+adj+'1114398').suce.)&O=JT",
+ titulo:"REsp 1.114.398/PR – Dano Moral Coletivo Ambiental e Pescadores (Tema 438 – Repetitivo)",
+ ref:"STJ – 2ª Seção – Rel. Min. Sidnei Beneti – DJe 16/02/2012",
+ tags:["Dano Moral Coletivo","Pescadores","Recurso Repetitivo"],
+ ementa:"O dano moral coletivo ambiental prescinde de comprovação de dor, sofrimento ou abalo psicológico individual. A privação das condições de trabalho do pescador artesanal por dano ambiental configura dano moral indenizável in re ipsa. A excludente de responsabilidade por fato de terceiro é afastada pela teoria do risco integral.",
+ relevancia:"Garante indenização por dano moral coletivo às comunidades de pescadores, ribeirinhos e trabalhadores rurais atingidos por barragens, sem necessidade de provar sofrimento individual de cada membro. Decisão proferida a partir do derramamento de óleo da Petrobras na Baía de Paranaguá."},
+{id:3,trib:"STF",tipo:"nat",destaque:true,
+ link:"https://portal.stf.jus.br/jurisprudenciaRepercussao/verAndamentoProcesso.asp?incidente=4130104&numeroProcesso=654833&classeProcesso=RE&numeroTema=999",
+ titulo:"RE 654.833/AC – Imprescritibilidade da Reparação Civil de Dano Ambiental (Tema 999)",
+ ref:"STF – Plenário – Rel. Min. Alexandre de Moraes – DJe 24/06/2020 – Repercussão Geral Tema 999",
+ tags:["Imprescritibilidade","Dano Ambiental","Repercussão Geral"],
+ ementa:"É imprescritível a pretensão de reparação civil de dano ambiental. A reparação do dano ao meio ambiente é direito fundamental indisponível, sendo imperativo o reconhecimento da imprescritibilidade quanto à recomposição dos danos ambientais. Tese com repercussão geral vinculante.",
+ relevancia:"Comunidades atingidas por barragens não perdem o direito de exigir reparação ambiental com o passar do tempo. Permite acionar empresas por danos ocorridos décadas atrás — essencial para comunidades de hidrelétricas dos anos 1970–80 que nunca foram indenizadas."},
+{id:4,trib:"STF",tipo:"nat",destaque:false,
+ link:"https://portal.stf.jus.br/processos/detalhe.asp?incidente=5965986",
+ titulo:"ADPF 709 – Dever Estatal de Proteção Ativa a Povos Indígenas",
+ ref:"STF – Plenário – Rel. Min. Roberto Barroso – 2020",
+ tags:["Povos Indígenas","Omissão Estatal","Proteção"],
+ ementa:"O Estado tem dever constitucional ativo de proteção às comunidades indígenas. A omissão estatal em situações de grave risco à saúde e vida dessas comunidades configura violação dos arts. 231 e 232 da CF, gerando obrigações imediatas de tutela.",
+ relevancia:"Impõe ao Estado obrigação positiva de atuação em favor de populações vulneráveis — aplicável diretamente a contextos de licenciamento de barragens em territórios indígenas e quilombolas, onde a omissão fiscalizatória é sistemática."},
+{id:5,trib:"STF",tipo:"nat",destaque:false,
+ link:"https://portal.stf.jus.br/processos/detalhe.asp?incidente=2610544",
+ titulo:"ADPF 101 – Vedação ao Retrocesso Ambiental",
+ ref:"STF – Plenário – Rel. Min. Cármen Lúcia – DJe 2012",
+ tags:["Meio Ambiente","Vedação ao Retrocesso","Direito Fundamental"],
+ ementa:"O direito ao meio ambiente ecologicamente equilibrado constitui direito fundamental de terceira geração. É vedado o retrocesso normativo ambiental: o legislador não pode reduzir o nível de proteção já conquistado sem fundamento constitucional robusto.",
+ relevancia:"Qualquer tentativa de flexibilizar a legislação de segurança de barragens, reduzir exigências do EIA/RIMA ou limitar indenizações pode ser contestada como inconstitucional com base nesta decisão. Protege as normas do microssistema contra revogação ou enfraquecimento por legislação posterior."},
+{id:6,trib:"TJMG",tipo:"nat",destaque:true,
+ link:"https://www.tjmg.jus.br/portal-tjmg/noticias/tjmg-mantem-bloqueio-de-11-bilhoes-em-bens-da-vale.htm",
+ titulo:"ACP Brumadinho – Bloqueio Cautelar de R$ 11 Bilhões da Vale (TJMG, 2019)",
+ ref:"TJMG – ACP nº 5010709-36.2019.8.13.0024 – MPMG – 2019",
+ tags:["Brumadinho","Tutela de Urgência","Vale"],
+ ementa:"Determinado bloqueio cautelar de R$ 11 bilhões em bens da Vale S.A. para garantia de reparação integral dos danos causados pelo rompimento da barragem B1 em Brumadinho (272 mortes). A urgência foi reconhecida diante da magnitude do dano e do risco de dissipação do patrimônio.",
+ relevancia:"Demonstra a viabilidade de medidas cautelares de grande monta imediatamente após rompimentos de barragens. Instrumento prioritário que advogados populares e o MP devem buscar assim que ocorre o desastre, para assegurar recursos para a reparação antes que a empresa os dissipe."},
+{id:7,trib:"TJMG",tipo:"nat",destaque:false,
+ link:"https://www.tjmg.jus.br/portal-tjmg/jurisprudencia/pesquisa-de-jurisprudencia.htm",
+ titulo:"Caso Rio Doce – Dano ao Projeto de Vida como Categoria Autônoma (Mariana, 2017–2019)",
+ ref:"TJMG – Comarca de Mariana – Ações individuais pós-rompimento de Fundão (2017–2019)",
+ tags:["Mariana","Projeto de Vida","Reparação Integral"],
+ ementa:"Reconhecido o dano ao projeto de vida dos atingidos pelo rompimento da Barragem de Fundão (Samarco/Vale/BHP) como categoria autônoma de dano indenizável, abrangendo perda do território, identidade cultural, laços comunitários e atividade produtiva tradicional.",
+ relevancia:"Expande a reparação para além do dano material e moral tradicionais. Reconhece a integralidade da perda — inclusive cultural e existencial — sofrida pelas comunidades. Reforça a tese do MAB de 'terra por terra, casa por casa, trabalho por trabalho'."},
+{id:8,trib:"TJMG",tipo:"nat",destaque:false,
+ link:"https://www.tjmg.jus.br/portal-tjmg/noticias/justica-de-minas-reconhece-culpa-consciente-no-caso-brumadinho.htm",
+ titulo:"Caso Brumadinho – Culpa Consciente da Vale e da TÜV SÜD (TJMG, 2021)",
+ ref:"TJMG – Câmara Criminal – Processo nº 0090165-53.2019.8.13.0024 – 2021",
+ tags:["Brumadinho","Culpa Consciente","Responsabilidade Penal","TÜV SÜD"],
+ ementa:"Reconhecida a culpa consciente dos gestores da Vale S.A. e dos responsáveis da certificadora TÜV SÜD no rompimento da Barragem B1 em Brumadinho. Laudos internos demonstravam risco iminente de colapso há meses; o quadro foi ocultado por razões econômicas.",
+ relevancia:"Afasta definitivamente o argumento de 'acidente imprevisível' quando há documentação interna demonstrando que a empresa conhecia o risco. Fundamenta responsabilidade penal dos gestores e civil agravada da empresa. Aplicável a qualquer barragem onde existam laudos internos de risco suprimidos."},
+{id:9,trib:"STJ",tipo:"nat",destaque:false,
+ link:"https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2025/01062025-O-poluidor-indireto-e-a-extensao-da-responsabilizacao-ambiental--segundo-a-jurisprudencia-do-STJ.aspx",
+ titulo:"STJ – Responsabilidade Solidária do Poluidor Indireto e do Estado Omisso (2025)",
+ ref:"STJ – 2ª Turma – Rel. Min. Herman Benjamin – AREsp 1.678.232 e outros – 2025",
+ tags:["Poluidor Indireto","Responsabilidade Solidária","Estado","Fiscalização"],
+ ementa:"O poluidor indireto responde solidariamente pela reparação e restauração do dano ambiental. O conceito de 'empreendedor' da Lei 12.334/2010 deve ser interpretado amplamente, alcançando financiadores, certificadoras e agentes na cadeia causal. O Estado responde solidariamente quando sua omissão na fiscalização for determinante para o dano.",
+ relevancia:"Permite responsabilizar além da operadora da barragem: financiadores (bancos que financiaram obras), certificadoras (como a TÜV SÜD em Brumadinho), órgãos licenciadores e entes estatais que omitiram fiscalização. Amplia substancialmente o leque de réus nas ações de reparação."},
+{id:10,trib:"STJ",tipo:"nat",destaque:false,
+ link:"https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2025/05062025-Primeira-Turma-define-criterios-objetivos-para-reconhecer-dano-moral-coletivo-em-casos-de-lesao-ambiental.aspx",
+ titulo:"REsp 2.200.069/MT – Parâmetros Objetivos para Dano Moral Coletivo Ambiental (STJ, 2025)",
+ ref:"STJ – 1ª Turma – Rel. Min. Regina Helena Costa – 2025",
+ tags:["Dano Moral Coletivo","Parâmetros Objetivos","Biomas"],
+ ementa:"Fixados parâmetros objetivos para o dano moral coletivo ambiental: ocorre quando ato ilícito causa desequilíbrio ambiental prejudicial à sociedade, independentemente de prova de sofrimento subjetivo. Nos biomas patrimônio nacional (art. 225, §4º CF), presume-se o dano imaterial sempre que evidenciada conduta que os descaracterize.",
+ relevancia:"Consolida critérios objetivos para dano moral coletivo ambiental em biomas constitucionalmente protegidos — precedente direto para casos de barragens que causem dano ao Rio Doce, Rio Paraopeba e outros rios e ecossistemas com proteção constitucional."},
+// ── INTERNACIONAIS ─────────────────────────────────────────────────────────
+{id:11,trib:"Corte IDH",tipo:"int",destaque:true,
+ link:"https://www.corteidh.or.cr/docs/casos/articulos/seriec_400_esp.pdf",
+ titulo:"Caso Lhaka Honhat x Argentina – Território Indígena e Meio Ambiente (Corte IDH, 2020)",
+ ref:"Corte IDH – Série C nº 400 – Sentença de 06/02/2020",
+ tags:["Povos Indígenas","Território","Meio Ambiente","CIDH"],
+ ementa:"A Argentina foi condenada por violação dos direitos ao território coletivo, à identidade cultural, à alimentação adequada, à água e ao meio ambiente saudável de comunidades indígenas. A Corte reconheceu a interdependência entre direitos territoriais, culturais, alimentares e ambientais dos povos tradicionais.",
+ relevancia:"Precedente paradigmático: impactos de barragens e mineração em territórios indígenas e quilombolas no Brasil podem ensejar responsabilização do Estado perante a Corte IDH. Reforça a obrigação de consulta prévia, livre e informada (Convenção 169 OIT) antes de qualquer empreendimento."},
+{id:12,trib:"Corte IDH",tipo:"int",destaque:false,
+ link:"https://www.corteidh.or.cr/docs/casos/articulos/seriec_200_por.pdf",
+ titulo:"Caso Escher e Outros x Brasil – Proteção de Movimentos Sociais (Corte IDH, 2009)",
+ ref:"Corte IDH – Série C nº 200 – Sentença de 06/07/2009",
+ tags:["MST","Movimentos Sociais","Privacidade","Brasil"],
+ ementa:"O Brasil foi condenado por violar os direitos à vida privada, às garantias judiciais e à liberdade de associação de membros do MST mediante interceptações ilegais de comunicações telefônicas. O Estado foi condenado a indenizar e a adotar medidas de não repetição.",
+ relevancia:"Precedente sobre responsabilidade estatal pela integridade dos movimentos sociais que defendem direitos de populações rurais. Aplicável à proteção jurídica do MAB, de lideranças de atingidos e de advogados populares contra vigilância, perseguição ou criminalização ilegais."},
+{id:13,trib:"Corte IDH",tipo:"int",destaque:true,
+ link:"https://www.corteidh.or.cr/docs/opiniones/seriea_23_esp.pdf",
+ titulo:"OC-23/17 – Meio Ambiente como Direito Humano Autônomo (Corte IDH, 2017)",
+ ref:"Corte IDH – Opinião Consultiva OC-23/17 – 15/11/2017",
+ tags:["Meio Ambiente","Direito Humano","Obrigações Estatais","CIDH"],
+ ementa:"O direito ao meio ambiente saudável é um direito humano autônomo protegido pela Convenção Americana. Os Estados têm obrigações procedimentais (acesso à informação, participação e justiça ambiental) e substantivas (prevenção, precaução, avaliação de impacto ambiental) em matéria ambiental.",
+ relevancia:"Fundamenta que a destruição ambiental por barragens é uma violação de direitos humanos exigível perante a Corte IDH — não apenas um problema de direito ambiental interno. O acesso à informação sobre PAEs e laudos de segurança é um direito humano, não uma concessão da empresa."},
+{id:14,trib:"Corte IDH",tipo:"int",destaque:false,
+ link:"https://www.corteidh.or.cr/docs/opiniones/seriea_32_esp.pdf",
+ titulo:"OC-32/23 – Emergência Climática e Direitos Humanos (Corte IDH, 2024)",
+ ref:"Corte IDH – Opinião Consultiva OC-32/23 – 2024",
+ tags:["Clima","Direitos Humanos","Obrigações Estatais"],
+ ementa:"Os Estados têm obrigações de direitos humanos frente à emergência climática: prevenir danos ambientais significativos, regular e fiscalizar empresas, garantir participação pública nas decisões ambientais, e proteger grupos vulneráveis (indígenas, mulheres, crianças) que sofrem desproporcionalmente os efeitos dos desastres.",
+ relevancia:"Reafirma que desastres ambientais causados por barragens — agravados pela emergência climática — constituem grave violação de direitos humanos, com responsabilidade estatal direta pela omissão em regulamentar e fiscalizar."},
+{id:15,trib:"ONU",tipo:"int",destaque:false,
+ link:"https://www.ohchr.org/sites/default/files/documents/publications/gcArticle15.pdf",
+ titulo:"OG nº 15 (CDESC) – Direito à Água como Direito Humano (ONU, 2002)",
+ ref:"ONU – Comitê DESC – Observação Geral nº 15 – 2002",
+ tags:["Água","Direito Humano","PIDESC"],
+ ementa:"O direito à água é um direito humano implícito nos arts. 11 e 12 do PIDESC. Os Estados devem garantir acesso suficiente, seguro, aceitável, fisicamente acessível e economicamente acessível à água potável. A contaminação de fontes de água por atividade industrial constitui violação deste direito.",
+ relevancia:"Rompimentos de barragens que contaminam rios e mananciais — como o Rio Doce (Mariana, 2015) e o Rio Paraopeba (Brumadinho, 2019) — constituem violação do direito humano à água, exigível internacionalmente perante o sistema ONU e como fundamento em ações internas."}
+];
+
+// ════════════════════════════════════════════════════════════════
+// NAVIGATION
+// Mapeia page-ids em elementos para evitar querySelector repetido
+// ════════════════════════════════════════════════════════════════
+const ALL_PAGES = ['home','ajp','insurgente','achado','tatico','referencias',
+                   'ms-intro','ms-leis','ms-juris','ms-guia'];
+
+// Pré-cacheia elementos de página e botões de nav ao carregar
+const pageEls  = {};
+const navBtns  = {};   // page → button element
+ALL_PAGES.forEach(id => {
+  pageEls[id] = document.getElementById('page-' + id);
+});
+document.querySelectorAll('.nav-link[data-page]').forEach(btn => {
+  navBtns[btn.dataset.page] = btn;
+});
+
+function goTo(page) {
+  if (!ALL_PAGES.includes(page)) return;
+  ALL_PAGES.forEach(id => {
+    pageEls[id]?.classList.toggle('active', id === page);
+    navBtns[id]?.classList.toggle('active', id === page);
+  });
+  // também marca abas ms-tab-btn
+  document.querySelectorAll('.ms-tab-btn[data-page]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.page === page);
+  });
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  document.getElementById('navLinks').classList.remove('open');
+  if (page === 'ms-leis')  msRenderSidebar();
+  if (page === 'ms-juris') msRenderJuris();
+}
+
+// ════════════════════════════════════════════════════════════════
+// FONT SIZE
+// ════════════════════════════════════════════════════════════════
+let fontScale = parseFloat(localStorage.getItem('fontScale') || '1');
+const setFontScale = v => {
+  fontScale = Math.round(v * 10) / 10;
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+  localStorage.setItem('fontScale', fontScale);
+};
+setFontScale(fontScale); // aplica valor inicial sem duplicar lógica
+document.getElementById('fontUp').addEventListener('click',   () => { if (fontScale < 1.4) setFontScale(fontScale + 0.1); });
+document.getElementById('fontDown').addEventListener('click', () => { if (fontScale > 0.8) setFontScale(fontScale - 0.1); });
+
+// ════════════════════════════════════════════════════════════════
+// BACK TO TOP
+// ════════════════════════════════════════════════════════════════
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 400), { passive: true });
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ════════════════════════════════════════════════════════════════
+// MOBILE MENU
+// ════════════════════════════════════════════════════════════════
+document.getElementById('menuToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// ════════════════════════════════════════════════════════════════
+// SEARCH
+// ════════════════════════════════════════════════════════════════
+const PAGE_LABELS = {
+  'home':       'Início',
+  'ajp':        'AJP',
+  'insurgente': 'Dir. Insurgente',
+  'achado':     'Dir. Achado na Rua',
+  'tatico':     'Uso Tático',
+  'referencias':'Referências',
+  'ms-intro':   'Microssistema — Apresentação',
+  'ms-leis':    'Microssistema — Legislação',
+  'ms-juris':   'Microssistema — Jurisprudências',
+  'ms-guia':    'Microssistema — Guia'
+};
+
+const SEARCH_INDEX = [
+  { title: 'Assessoria Jurídica Popular',                        page: 'ajp',        kw: ['assessoria','ajp','freire','renap','najup','pedagógica','educação popular'] },
+  { title: 'Direito Insurgente',                                 page: 'insurgente', kw: ['insurgente','marxismo','pachukanis','pazello','pressburger','capitalismo'] },
+  { title: 'Direito Achado na Rua',                              page: 'achado',     kw: ['achado na rua','lyra filho','josé geraldo','unb','pluralismo','sujeito coletivo'] },
+  { title: 'Uso Tático do Direito',                              page: 'tatico',     kw: ['tático','mobilização','litigância','cause lawyering','juridicização'] },
+  { title: 'Referências bibliográficas',                         page: 'referencias',kw: ['referências','bibliografias','artigos','fontes','scielo','abnt'] },
+  { title: 'Microssistema — Contexto histórico',                 page: 'ms-intro',   kw: ['mab','mariana','brumadinho','barragem','atingidos','vale','samarco','rio doce'] },
+  { title: 'Legislação — 30 Instrumentos Normativos',            page: 'ms-leis',    kw: ['lei','legislação','norma','constituição','código','portaria','política','decreto'] },
+  { title: 'Jurisprudências — STF, STJ, TJMG, Corte IDH',       page: 'ms-juris',   kw: ['jurisprudência','stf','stj','tjmg','corte idh','decisão','precedente','acórdão'] },
+  { title: 'Guia de Uso do Microssistema',                       page: 'ms-guia',    kw: ['guia','instrução','como usar','acessibilidade','copiar','ouvir'] },
+  { title: 'RENAP — Rede Nacional de Advogados Populares',       page: 'ajp',        kw: ['renap','rede','advogados populares'] },
+  { title: 'Assessoria Técnica Independente (ATI)',               page: 'ms-leis',    kw: ['ati','assessoria técnica','12340'] },
+  { title: 'Princípios de Ruggie — Empresas e Direitos Humanos', page: 'ms-leis',    kw: ['ruggie','empresas','direitos humanos'] },
+  { title: 'Imprescritibilidade do Dano Ambiental — RE 654.833', page: 'ms-juris',   kw: ['imprescritibilidade','prescricional','dano ambiental'] },
+  { title: 'Dano Moral Coletivo — REsp 1.114.398',               page: 'ms-juris',   kw: ['dano moral coletivo','herman benjamin'] },
+  { title: 'Roberto Lyra Filho e a Nova Escola Jurídica',        page: 'achado',     kw: ['lyra filho','neljb','nova escola','humanismo'] },
+  { title: 'Ricardo Prestes Pazello',                            page: 'insurgente', kw: ['pazello','ufpr','majup','marxismo'] },
+  ...LAWS.map(l => ({
+    title: l.num + '. ' + l.full,
+    page:  'ms-leis',
+    kw:    [l.short.toLowerCase(), l.full.toLowerCase(), l.tag.toLowerCase(),
+            ...l.articles.map(a => a.title.toLowerCase())],
+    lawId: l.id
+  })),
+  ...JURIS.map(j => ({
+    title: j.titulo,
+    page:  'ms-juris',
+    kw:    [j.trib.toLowerCase(), ...j.tags.map(t => t.toLowerCase()), j.ref.toLowerCase()]
+  })),
+];
+
+const searchOverlay  = document.getElementById('searchOverlay');
+const searchInput    = document.getElementById('searchInput');
+const searchResults  = document.getElementById('searchResults');
+
+function openSearch() {
+  searchOverlay.classList.add('active');
+  setTimeout(() => searchInput.focus(), 50);
+}
+function closeSearch() {
+  searchOverlay.classList.remove('active');
+  searchInput.value = '';
+  searchResults.innerHTML = '';
+}
+
+document.getElementById('openSearch').addEventListener('click', openSearch);
+document.getElementById('searchClose').addEventListener('click', closeSearch);
+searchOverlay.addEventListener('click', e => { if (e.target === searchOverlay) closeSearch(); });
+document.addEventListener('keydown', e => {
+  if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || e.key === '/') { e.preventDefault(); openSearch(); }
+  if (e.key === 'Escape') closeSearch();
+});
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.trim().toLowerCase();
+  if (!q) { searchResults.innerHTML = ''; return; }
+  const hits = SEARCH_INDEX.filter(d =>
+    d.title.toLowerCase().includes(q) || d.kw.some(k => k.includes(q))
+  );
+  if (!hits.length) {
+    searchResults.innerHTML = '<p class="no-results">Nenhum resultado encontrado.</p>';
+    return;
+  }
+  // Escapa q para uso seguro em RegExp
+  const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(`(${escaped})`, 'gi');
+  searchResults.innerHTML = hits.slice(0, 8).map(h => {
+    const hl = h.title.replace(re, '<span class="sri-match">$1</span>');
+    return `<div class="search-result-item" data-page="${h.page}" data-lawid="${h.lawId ?? ''}">
+      <div class="sri-title">${hl}</div>
+      <div class="sri-page">${PAGE_LABELS[h.page] || h.page}</div>
+    </div>`;
+  }).join('');
+  searchResults.querySelectorAll('.search-result-item').forEach(el => {
+    el.addEventListener('click', () => {
+      closeSearch();
+      goTo(el.dataset.page);
+      if (el.dataset.lawid) setTimeout(() => msSelLaw(Number(el.dataset.lawid)), 150);
+    });
+  });
+});
+
+// ════════════════════════════════════════════════════════════════
+// REFERENCES FILTER
+// ════════════════════════════════════════════════════════════════
+document.querySelectorAll('.refs-filter .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.refs-filter .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const tag = btn.dataset.tag;
+    document.querySelectorAll('.ref-entry').forEach(entry => {
+      entry.style.display = (tag === 'all' || entry.dataset.tags?.includes(tag)) ? '' : 'none';
+    });
+  });
+});
+
+// ════════════════════════════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════════════════════════════
+function msShowToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ════════════════════════════════════════════════════════════════
+// MICROSSISTEMA — LAWS
+// ════════════════════════════════════════════════════════════════
+let msSelLawId  = null;   // id da lei selecionada (Number)
+let msCmpIds    = [];     // ids das leis em comparação (Number[])
+let msSpeaking  = false;
+let msSpeakBtn  = null;   // referência ao botão ativo de fala
+
+function msRenderSidebar() {
+  const ul = document.getElementById('msLawList');
+  if (!ul) return;
+  ul.innerHTML = LAWS.map(l => `
+    <button class="ms-law-btn ${msSelLawId === l.id ? 'active' : ''}"
+            data-id="${l.id}" aria-pressed="${msSelLawId === l.id}">
+      <span class="ms-law-num">${l.num}</span>
+      <span>${l.key ? '⭐ ' : ''}${l.short}</span>
+    </button>`).join('');
+  ul.querySelectorAll('.ms-law-btn').forEach(btn => {
+    btn.addEventListener('click', () => msSelLaw(Number(btn.dataset.id)));
+  });
+}
+
+function msSelLaw(id) {
+  msSelLawId = id;
+  msRenderSidebar();
+  msRenderLaw();
+}
+
+function _escAttr(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+}
+
+function msRenderLaw() {
+  const c = document.getElementById('msLawContent');
+  if (!c) return;
+  if (msSelLawId === null) {
+    c.innerHTML = `<div class="ms-welcome">
+      <div style="font-size:3rem;margin-bottom:1rem;">🦜🐆🌸🐬🌻🦅</div>
+      <h3>Selecione um instrumento na barra lateral</h3>
+      <p style="color:var(--text-s);font-size:.88rem;line-height:1.7;margin-top:.5rem;">
+        Leis marcadas com ⭐ são os instrumentos mais relevantes para casos de barragens.</p>
+      <div class="ms-stat-row">
+        <div class="ms-stat-b"><span class="n">30</span><span class="l">Instrumentos</span></div>
+        <div class="ms-stat-b"><span class="n">18</span><span class="l">Nacionais</span></div>
+        <div class="ms-stat-b"><span class="n">12</span><span class="l">Internacionais</span></div>
+      </div></div>`;
+    return;
+  }
+  const l      = LAWS.find(x => x.id === msSelLawId);
+  if (!l) return;
+  const inCmp  = msCmpIds.includes(l.id);
+  c.innerHTML = `
+    <div class="ms-breadcrumb">Microssistema › <span>${l.tag}</span> › ${l.short}</div>
+    ${l.key ? '<div class="ms-badge-key">⭐ INSTRUMENTO DESTACADO</div>' : ''}
+    <div class="ms-law-card">
+      <div class="ms-law-head">
+        <div><h2>${l.full}</h2></div>
+        <div class="ms-law-head-right">
+          <span class="ms-tag ${l.tag === 'Internacional' ? 'ms-tag-int' : 'ms-tag-nac'}">${l.tag}</span>
+          <button class="ms-cmp-add ${inCmp ? 'on' : ''}" data-cmp="${l.id}">
+            ${inCmp ? '✓ Comparando' : '+ Comparar'}
+          </button>
+          <a class="normas-link" href="${_escAttr(l.normas)}" target="_blank" rel="noopener">🔗 Texto oficial</a>
+        </div>
+      </div>
+      <div class="ms-law-body">
+        <div class="ms-relevance"><strong>🎯 Relevância para Atingidos por Barragens:</strong><br>${l.relevance}</div>
+        ${l.articles.map(a => `
+          <div class="ms-art-block ${a.key ? 'key' : ''}">
+            <div class="ms-art-head">
+              <span class="ms-art-title">${a.key ? '⭐ ' : ''}${a.title}</span>
+              <div class="ms-art-actions">
+                <button class="ms-copy-btn" data-target="${a.id}">📋 Copiar</button>
+                <button class="ms-speak-btn" data-target="${a.id}">🔊 Ouvir</button>
+              </div>
+            </div>
+            <div class="ms-art-body" id="${a.id}">${a.text}</div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+
+  // Botão comparar
+  c.querySelector('[data-cmp]')?.addEventListener('click', e => {
+    msToggleCmp(Number(e.currentTarget.dataset.cmp));
+  });
+  // Botões copiar e ouvir — usa event delegation só no container do card
+  c.querySelectorAll('.ms-copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => msCopyArt(btn.dataset.target, btn));
+  });
+  c.querySelectorAll('.ms-speak-btn').forEach(btn => {
+    btn.addEventListener('click', () => msSpeakText(btn.dataset.target, btn));
+  });
+}
+
+function msCopyArt(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  navigator.clipboard.writeText(el.innerText).then(() => {
+    btn.textContent = '✓ Copiado!';
+    btn.classList.add('done');
+    msShowToast('Texto copiado!');
+    setTimeout(() => { btn.textContent = '📋 Copiar'; btn.classList.remove('done'); }, 2000);
+  }).catch(() => msShowToast('Falha ao copiar.'));
+}
+
+function msSpeakText(id, btn) {
+  if (!window.speechSynthesis) { msShowToast('Síntese de voz não suportada.'); return; }
+  // Se já está falando, cancela (qualquer botão serve para parar)
+  if (msSpeaking) {
+    window.speechSynthesis.cancel();
+    msSpeaking = false;
+    if (msSpeakBtn) { msSpeakBtn.textContent = '🔊 Ouvir'; msSpeakBtn = null; }
+    return;
+  }
+  const el = document.getElementById(id);
+  if (!el) return;
+  const u  = new SpeechSynthesisUtterance(el.innerText);
+  u.lang   = 'pt-BR';
+  u.rate   = 0.9;
+  const reset = () => {
+    msSpeaking = false;
+    if (msSpeakBtn) { msSpeakBtn.textContent = '🔊 Ouvir'; msSpeakBtn = null; }
+  };
+  u.onend  = reset;
+  u.onerror = reset;
+  window.speechSynthesis.speak(u);
+  msSpeaking  = true;
+  msSpeakBtn  = btn;
+  btn.textContent = '⏹ Parar';
+}
+
+function msToggleCmp(id) {
+  const idx = msCmpIds.indexOf(id);
+  if (idx >= 0) {
+    msCmpIds.splice(idx, 1);
+  } else {
+    if (msCmpIds.length >= 3) { msShowToast('Máx. 3 leis para comparar'); return; }
+    msCmpIds.push(id);
+  }
+  // Abre o painel se há itens, fecha se ficou vazio
+  const panel = document.getElementById('msCmpPanel');
+  panel.classList.toggle('open', msCmpIds.length > 0);
+  msRenderCmpPanel();
+  msRenderLaw(); // atualiza botão "Comparar" no card atual
+}
+
+function msClearCmp() {
+  msCmpIds = [];
+  document.getElementById('msCmpPanel').classList.remove('open');
+  msRenderCmpPanel();
+  msRenderLaw();
+}
+
+function msRenderCmpPanel() {
+  const co  = document.getElementById('msCmpCols');
+  const cnt = document.getElementById('msCmpCount');
+  if (cnt) cnt.textContent = `${msCmpIds.length}/3`;
+  if (!co) return;
+  if (!msCmpIds.length) {
+    co.innerHTML = `<div style="padding:1.5rem;color:var(--text-m);text-align:center;width:100%;font-size:.85rem;">
+      Selecione leis clicando em "+ Comparar" nos cards.</div>`;
+    return;
+  }
+  co.innerHTML = msCmpIds.map(id => {
+    const l = LAWS.find(x => x.id === id);
+    if (!l) return '';
+    const preview = l.relevance.replace(/<[^>]*>/g, '').substring(0, 260);
+    return `<div class="ms-cmp-col">
+      <h4>${l.num}. ${l.short}</h4>
+      <p style="font-size:.72rem;color:var(--text-m);margin-bottom:.5rem;">${l.tag}</p>
+      <p style="font-size:.78rem;line-height:1.6;">${preview}…</p>
+      <div style="margin-top:.75rem;">${l.articles.slice(0, 2).map(a =>
+        `<div style="background:var(--bg-3);padding:.45rem .65rem;border-radius:6px;margin-top:.35rem;font-size:.75rem;color:var(--text-s);">${a.title}</div>`
+      ).join('')}</div>
+      <a class="normas-link" href="${_escAttr(l.normas)}" target="_blank" rel="noopener"
+         style="margin-top:.75rem;display:inline-flex;">🔗 Texto oficial</a>
+    </div>`;
+  }).join('');
+}
+
+// ════════════════════════════════════════════════════════════════
+// MICROSSISTEMA — JURISPRUDÊNCIAS
+// ════════════════════════════════════════════════════════════════
+// Valores de filtro válidos: 'all' | 'nat' | 'int' | 'dest'
+let jurisFilter = 'all';
+
+function _jurisFiltered() {
+  if (jurisFilter === 'all')  return JURIS;
+  if (jurisFilter === 'dest') return JURIS.filter(j => j.destaque);
+  return JURIS.filter(j => j.tipo === jurisFilter);
+}
+
+function msRenderJuris() {
+  const c = document.getElementById('msJurisContent');
+  if (!c) return;
+  const nat  = JURIS.filter(j => j.tipo === 'nat').length;
+  const intl = JURIS.filter(j => j.tipo === 'int').length;
+  const dest = JURIS.filter(j => j.destaque).length;
+
+  const filters = [
+    { key: 'all',  label: `Todas (${JURIS.length})` },
+    { key: 'nat',  label: `🇧🇷 Nacionais (${nat})` },
+    { key: 'int',  label: `🌐 Internacionais (${intl})` },
+    { key: 'dest', label: `⭐ Paradigmáticas (${dest})` },
+  ];
+
+  c.innerHTML = `
+    <div class="juris-filters" role="group" aria-label="Filtros de jurisprudência">
+      ${filters.map(f =>
+        `<button class="filter-btn ${jurisFilter === f.key ? 'active' : ''}"
+                 data-juris-filter="${f.key}">${f.label}</button>`
+      ).join('')}
+    </div>
+    <div id="jurisCards">${_renderJurisCards()}</div>`;
+
+  c.querySelectorAll('[data-juris-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      jurisFilter = btn.dataset.jurisFilter;
+      // Atualiza só filtros e cards, sem re-renderizar o container todo
+      c.querySelectorAll('[data-juris-filter]').forEach(b =>
+        b.classList.toggle('active', b.dataset.jurisFilter === jurisFilter)
+      );
+      document.getElementById('jurisCards').innerHTML = _renderJurisCards();
+      _bindJurisEvents();
+    });
+  });
+  _bindJurisEvents();
+}
+
+function _renderJurisCards() {
+  const list = _jurisFiltered();
+  if (!list.length) return '<p style="color:var(--text-m);padding:1rem 0;">Nenhuma jurisprudência nesta categoria.</p>';
+  return list.map(j => `
+    <div class="juris-card ${j.tipo}">
+      <div class="juris-head" data-jid="${j.id}" role="button" tabindex="0"
+           aria-expanded="false" aria-controls="jbody-${j.id}">
+        <div>
+          ${j.destaque ? '<div class="juris-destaque">⭐ CASO PARADIGMÁTICO</div>' : ''}
+          <h3>${j.titulo}</h3>
+          <div class="juris-meta">
+            <span class="jm-tag ${j.tipo === 'int' ? 'jm-int' : 'jm-nat'}">${j.trib}</span>
+            ${j.tags.map(t => `<span class="jm-tag ${j.tipo === 'int' ? 'jm-int' : 'jm-nat'}">${t}</span>`).join('')}
+          </div>
+          <div style="font-size:.72rem;color:var(--text-m);margin-top:.3rem;">${j.ref}</div>
+        </div>
+        <div class="juris-chev" aria-hidden="true">▼</div>
+      </div>
+      <div class="juris-body" id="jbody-${j.id}" role="region">
+        <div class="juris-ementa">"${j.ementa}"</div>
+        <div class="juris-rel"><strong>📌 Relevância para Atingidos por Barragens:</strong><br>${j.relevancia}</div>
+        ${j.link ? `
+          <div style="margin-top:.9rem;display:flex;gap:.5rem;flex-wrap:wrap;">
+            <a href="${_escAttr(j.link)}" target="_blank" rel="noopener" class="normas-link">
+              🔗 Acórdão / Documento oficial</a>
+            <button class="ms-copy-btn" data-jref="${_escAttr(j.titulo + ' — ' + j.ref)}">
+              📋 Copiar referência</button>
+          </div>` : ''}
+      </div>
+    </div>`).join('');
+}
+
+function _bindJurisEvents() {
+  const cards = document.getElementById('jurisCards');
+  if (!cards) return;
+  cards.querySelectorAll('.juris-head[data-jid]').forEach(head => {
+    head.addEventListener('click',   () => _toggleJurisCard(head));
+    head.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); _toggleJurisCard(head); } });
+  });
+  cards.querySelectorAll('[data-jref]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(btn.dataset.jref)
+        .then(() => msShowToast('Referência copiada!'))
+        .catch(() => msShowToast('Falha ao copiar.'));
+    });
+  });
+}
+
+function _toggleJurisCard(head) {
+  const body = document.getElementById('jbody-' + head.dataset.jid);
+  const chev = head.querySelector('.juris-chev');
+  if (!body) return;
+  const open = body.classList.toggle('open');
+  chev?.classList.toggle('open', open);
+  head.setAttribute('aria-expanded', String(open));
+}
+
+// ════════════════════════════════════════════════════════════════
+// TOOLTIP POSITIONING
+// ════════════════════════════════════════════════════════════════
+document.addEventListener('mouseover', e => {
+  const lt = e.target.closest('.lt');
+  if (!lt) return;
+  const tt = lt.querySelector('.tt');
+  if (!tt) return;
+  const r = lt.getBoundingClientRect();
+  tt.style.left = Math.min(r.left, window.innerWidth - 280 - 10) + 'px';
+  requestAnimationFrame(() => {
+    const th = tt.offsetHeight;
+    tt.style.top = Math.max(10, r.top - th - 8) + 'px';
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
