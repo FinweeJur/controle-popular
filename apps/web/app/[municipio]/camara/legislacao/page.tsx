@@ -146,9 +146,15 @@ export default async function LegislacaoPage({ params: rotaParams }: LegislacaoP
                   as que ampliam
                 </Link>{" "}
                 ·{" "}
-                <Link href="/metodologia" className="text-accent hover:underline">
+                {/* `<a>` cru, não o `Link` de zona: `/metodologia` aqui
+                    dentro é a página de alertas de CONTRATO
+                    (`[municipio]/metodologia/page.tsx`), que não fala do
+                    rótulo garantista — apontava pro assunto errado. A régua
+                    (e o aviso de que erro de extração vira erro de rótulo)
+                    está em `/sobre#metodologia`. */}
+                <a href="/sobre#metodologia" className="text-accent hover:underline">
                   como o rótulo é calculado
-                </Link>
+                </a>
               </p>
             </section>
           )}

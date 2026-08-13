@@ -130,13 +130,23 @@ export function CoberturaAviso({ cobertura }: { cobertura: CoberturaLegislacao }
       </p>
       {/* A régua é invocada no texto das duas telas ("segundo a régua
           declarada deste portal"). Sem link, "declarada" é promessa não
-          cumprida: o leitor não tem como conferir o critério. */}
+          cumprida: o leitor não tem como conferir o critério.
+          "se a extração erra, o rótulo erra": o parágrafo dizia só a
+          metade boa da doutrina (rótulo é conta, não opinião do modelo) e
+          deixava de fora que a conta depende do que o modelo extraiu — a
+          mesma lacuna corrigida em `/sobre` e em `/congresso/metodologia`
+          em 13/08. `<a>` cru, não o `Link` de zona: `/metodologia` aqui
+          dentro é sobre alertas de CONTRATO
+          (`[municipio]/metodologia/page.tsx`), não sobre a régua
+          garantista — apontava pro assunto errado. */}
       <p className="mt-2">
         O rótulo não é escrito por inteligência artificial — sai de uma soma sobre itens
-        que citam, cada um, o dispositivo legal que fundamenta a leitura.{" "}
-        <Link href="/metodologia" className="text-accent hover:underline">
+        que citam, cada um, o dispositivo legal que fundamenta a leitura. Mas o modelo
+        extrai os itens que entram nessa soma: se a extração erra, o rótulo calculado a
+        partir dela também erra.{" "}
+        <a href="/sobre#metodologia" className="text-accent hover:underline">
           Ver a metodologia
-        </Link>{" "}
+        </a>{" "}
         ·{" "}
         <Link href="/camara/legislacao" className="text-accent hover:underline">
           ver todas as normas publicadas

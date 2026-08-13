@@ -87,6 +87,22 @@ export default function Metodologia() {
           proposição, com a mesma rubrica, produz sempre o mesmo resultado — e por isso
           você pode clicar no score e chegar até a frase do projeto que o gerou.
         </p>
+        {/* A separação acima (o modelo extrai, o programa calcula) é real e
+            é o que torna o rótulo auditável — mas não é imunidade a erro.
+            Sem este parágrafo a página lia como blindagem: "a IA não decide
+            o rótulo" sugeria que a IA não influi no resultado. Ela influi:
+            é a origem dos itens que a fórmula soma. Mesma correção feita em
+            `/sobre` em 13/08 (achado da auditoria de discurso do mesmo dia)
+            — aqui era a página que mais precisava dela, por ser o destino
+            de "ver a metodologia" em toda tela do Congresso e das cidades. */}
+        <p className="opacity-80">
+          Essa separação não torna a IA inofensiva. <strong>Se a extração erra — se o
+          modelo aponta um direito que o texto não afeta, ou cita um dispositivo que não
+          sustenta o item —, o rótulo calculado a partir dela também erra</strong>, porque
+          a fórmula confia no que o formulário diz. É por isso que confiança baixa marca a
+          análise inteira como &ldquo;requer revisão&rdquo; e a tira dos rankings, mesmo
+          continuando publicada ao lado do rótulo.
+        </p>
       </section>
 
       <section className="space-y-3">
