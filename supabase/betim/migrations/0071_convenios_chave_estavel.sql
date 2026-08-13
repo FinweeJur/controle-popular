@@ -52,6 +52,26 @@
 --
 -- `id_externo` continua existindo como coluna: é dado da fonte e pode servir
 -- para depurar. O que ele deixa de ser é chave.
+-- ═══ ONDE ESTA MIGRATION AINDA NÃO RODOU — LEIA ANTES DE ACHAR QUE ACABOU ═══
+--
+-- Ela foi aplicada em 2026-08-13 SÓ no Postgres LOCAL da máquina de build,
+-- que é de onde o `next build` lê e, portanto, o que decide o número que o
+-- site publica. A correção do valor de Betim está garantida por aí.
+--
+-- A NEON NÃO FOI TOCADA, e isso é de propósito: esta máquina tem regra de
+-- nunca apontar para a Neon (`docs/build-em-outro-pc.md` — um build local
+-- que conectou nela custou HTTP 402 por estouro de egress), e a Neon segue
+-- em 402 até 2026-09-01.
+--
+-- Consequência prática, para quem pegar isto depois: os 6 workflows de ETL
+-- do GitHub continuam apontando para a Neon. Enquanto esta migration não
+-- rodar LÁ, aquele banco continua com a chave instável e vai voltar a
+-- acumular cópia a cada execução. Se um dia alguém restaurar o local a
+-- partir de um dump da Neon, a duplicata volta junto — e o site volta a
+-- publicar o dobro.
+--
+-- Rodar esta migration na Neon é o passo que fecha o assunto. O `delete`
+-- abaixo é seguro de repetir: ele só remove o que sobra por chave.
 
 begin;
 
