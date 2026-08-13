@@ -15,7 +15,8 @@ import Facilitador from "./Facilitador";
  *    `app/congresso/proposicoes/[id]/oficio/page.tsx`;
  *  - só o passo final, `BaixarDocumento`, é carregado com
  *    `next/dynamic({ ssr: false })` DE DENTRO de `Facilitador.tsx` — é ele
- *    quem importa `docx` via `await import()`, e só nesse momento.
+ *    quem importa `docx` OU `pdf-lib` via `await import()`, um por clique,
+ *    só nesse momento.
  *
  * `listarCidades()` roda aqui, no servidor, pela mesma razão de
  * `AjudaPage`: o passo "onde foi" e a sugestão de destino (`roteiro.ts` +
@@ -81,8 +82,8 @@ export default async function DenunciaPage() {
         <p className="max-w-2xl text-[1.05em] text-text-soft">
           Um passo a passo guiado — pergunta por pergunta, não um formulário em branco — que
           ajuda a registrar o que aconteceu, sugere que prova reunir e para onde mandar, e
-          entrega um documento pronto (.docx) para levar à Defensoria, a um advogado ou ao
-          NAJUP.
+          entrega um documento pronto (.docx ou .pdf) para levar à Defensoria, a um advogado ou
+          ao NAJUP.
         </p>
         <p className="max-w-2xl text-[.92em] text-text-soft">
           O documento nasce no seu navegador e nunca é enviado a este ou a qualquer outro

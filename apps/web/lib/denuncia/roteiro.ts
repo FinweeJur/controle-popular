@@ -133,6 +133,46 @@ export const TEXTO_NAO_E_ACONSELHAMENTO =
   "organizar o que aconteceu e sugere para onde levar — a decisão e o acompanhamento continuam " +
   "sendo seus, com quem você procurar a seguir.";
 
+/**
+ * Aviso de lacuna municipal — Fase 3. Só 6 cidades têm dado próprio em
+ * `redeProtecao.ts` (LAI municipal + itens restritos por
+ * `CIDADES_POR_ITEM`); as outras ~848 de Minas não. NÃO existe aqui
+ * nenhuma tentativa de adivinhar delegacia/CRAS/Conselho Tutelar de uma
+ * cidade não cadastrada — a saída honesta, por doutrina do projeto ("dado
+ * não confirmado não é publicado"), é dizer que não há canal municipal
+ * catalogado ali e apontar a busca oficial, não um endereço.
+ *
+ * O link da PCMG não é fato novo: é o MESMO texto já verificado em
+ * `redeProtecao.ts`, no campo `nota` de `rede-deam-bh` ("Fora de BH, use a
+ * busca oficial da PCMG...") — reaproveitado aqui de propósito, porque
+ * aquele item de delegacia (abrangência "municipal") é filtrado por
+ * `itensSemCidade()` para quem não tem cidade cadastrada, e a pessoa
+ * perderia a pista se ela ficasse presa só dentro daquele item.
+ */
+export const TEXTO_BUSCA_DELEGACIA_PCMG =
+  "Para achar a delegacia mais próxima de você, use a busca oficial da PCMG " +
+  "(policiacivil.mg.gov.br/delegacia/exibir) ou ligue 190. Não temos endereço de delegacia " +
+  "confirmado fora de Belo Horizonte — mostrar um endereço não conferido é pior do que dizer " +
+  "que não temos.";
+
+/**
+ * `cidadeCadastrada` distingue as 6 cidades com dado próprio das demais —
+ * ver `Facilitador.tsx` (`cidadeEscolhida !== null`). Quando `false`, os
+ * itens sugeridos já vêm só estaduais/federais (`itensSemCidade()`, em
+ * `lib/betim/redeProtecao.ts`); esta função só decide o TEXTO que explica
+ * por quê, para a tela nunca parecer que "esqueceu" o municipal — ela
+ * nunca teve o dado.
+ */
+export function textoLacunaMunicipal(cidadeCadastrada: boolean): string | null {
+  if (cidadeCadastrada) return null;
+  return (
+    "Nenhum canal municipal (delegacia, CRAS, Conselho Tutelar, Prefeitura) está catalogado " +
+    "para a sua cidade — só 6 cidades de Minas têm esse levantamento pronto hoje. Os canais " +
+    "abaixo são estaduais e federais, e atendem qualquer município mineiro do mesmo jeito. " +
+    TEXTO_BUSCA_DELEGACIA_PCMG
+  );
+}
+
 export function textoUrgencia(continua: Continuacao | null): string | null {
   if (continua !== "sim") return null;
   return (

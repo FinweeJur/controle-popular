@@ -63,6 +63,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3908"],
       "port": 3908
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-denuncia-f23) -- mesma razao das entradas acima. `next dev`, nao `wrangler dev --local`: bug preexistente de '__name is not defined' quebra hidratacao sob wrangler local (nao e desta feature; producao esta limpa).",
+      "name": "cp-denuncia-f23-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3909"],
+      "port": 3909
     }
   ]
 }
