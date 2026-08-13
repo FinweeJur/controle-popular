@@ -147,12 +147,23 @@ export const ZONAS: Zona[] = [
   {
     id: "terras",
     href: "/funcaosocialterra",
-    etiqueta: "Fundiário · Vale do Jequitinhonha",
+    etiqueta: "Fundiário e território · Minas Gerais",
     titulo: "De quem é a terra que ninguém declarou",
-    // MESMA DISCIPLINA DO CARD DO /ambiental LOGO ACIMA: descreve o que
-    // existe, que são TRÊS cidades do Vale. Não cita as seis do portal nem
-    // promete cobertura estadual — as camadas cobrem 76 municípios de Minas,
-    // mas só entram os que o portal tem página para mostrar.
+    // ⟲ 13/08: A ETIQUETA DIZIA "Vale do Jequitinhonha" E ENVELHECEU NO
+    // MESMO DIA. O mapa passou a carregar camadas de alcance ESTADUAL — 16
+    // terras indígenas da FUNAI (todas as fases), ZAS e mancha de inundação
+    // de 156 barragens da FEAM, e as 54.920 poligonais do SIGMINE separadas
+    // entre operação e interesse. Anunciar um vale só passou a ESCONDER o
+    // que existe, que é o erro inverso do que a disciplina abaixo evita — e
+    // igualmente feio.
+    //
+    // MESMA DISCIPLINA DO CARD DO /ambiental LOGO ACIMA, e ela não mudou: o
+    // texto descreve o que existe, não o que se pretende. O que é estadual
+    // aparece como estadual; o VAZIO CADASTRAL continua sendo TRÊS cidades e
+    // continua dito como três, porque é o recorte que tem número medido. O
+    // foco da verificação cadastral é Jequitinhonha, Mucuri e a bacia do
+    // Paraopeba — dizer isso é mais honesto que "Minas inteira" e mais útil
+    // que "um vale".
     //
     // E cita a taxa de erro no próprio card. É o único dado do portal que é
     // estimativa de método próprio, não leitura de fonte oficial; anunciá-lo
@@ -167,8 +178,9 @@ export const ZONAS: Zona[] = [
     descricao:
       `Quanto do território de Araçuaí, Diamantina e Itinga não tem imóvel rural declarado no Cadastro Ambiental Rural. É estimativa com taxa de erro medida — ${TAXA_ERRO_G0.taxaPct.toLocaleString("pt-BR", { minimumFractionDigits: 0 })}% da amostra checada a olho não se confirmou — e vem publicada com ela ao lado.`,
     resumo:
-      "Vazio cadastral em três cidades do Jequitinhonha, com a taxa de erro do método ao lado do número.",
+      "Mapa 3D de Minas Gerais — terra indígena, barragem e mineração no estado inteiro; o vazio cadastral, com a taxa de erro ao lado, em três cidades do Jequitinhonha.",
     itens: [
+      "Terra indígena, mancha de barragem e mineração, em Minas inteira",
       "Área sem imóvel rural declarado no CAR, por cidade",
       "Denominador explícito: o município inteiro, pela malha do IBGE",
       "Taxa de erro medida a olho em 40 polígonos sorteados",

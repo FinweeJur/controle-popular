@@ -113,12 +113,22 @@ export default async function DireitoCriticoIndex() {
         <p className="mt-3 text-[.92em] text-text-soft">
           Diferente da legislação ambiental estadual (que classifica por palavra-chave
           reproduzível na ementa), aqui não existe campo de tema nenhum na fonte — cada
-          atribuição veio de leitura humana do texto de cada lei/precedente, registrada linha a
-          linha em{" "}
+          atribuição saiu da leitura do texto de cada lei/precedente{" "}
+          <strong className="font-semibold text-text">feita com auxílio de inteligência artificial</strong>
+          , e ficou registrada linha a linha em{" "}
           <code className="font-mono text-[.85em]">etl/temas_direito_critico.py</code>, com o
           trecho que sustenta cada tema. É reexecutável (o mesmo HTML fonte mais o mesmo
-          dicionário sempre produz o mesmo resultado), mas é curadoria declarada como tal — não
-          um indício automático por palavra solta.
+          dicionário sempre produz o mesmo resultado) e é auditável item a item — o trecho
+          citado está ali para você conferir se ele sustenta mesmo o tema. Mas é curadoria
+          assistida por máquina, não leitura humana de ponta a ponta, e{" "}
+          <strong className="font-semibold text-text">está em revisão</strong>.
+        </p>
+        <p className="mt-3 text-[.92em] text-text-soft">
+          Esta página dizia, até 13/08/2026, que a atribuição vinha de &ldquo;leitura
+          humana&rdquo;. Não vinha, e a correção está aqui em vez de sumir no histórico:
+          quem cobra procedência dos outros deve o mesmo padrão sobre si. Se você encontrar
+          um tema que o trecho citado não sustenta, é erro nosso — e é exatamente o tipo de
+          erro que esta revisão procura.
         </p>
       </section>
     </div>
