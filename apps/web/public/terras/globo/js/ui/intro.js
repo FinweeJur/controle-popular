@@ -42,7 +42,13 @@ export function createIntro(el) {
 
       <ol class="intro-steps">
         <li><strong>Escolha onde olhar.</strong> Os botões embaixo do globo levam a sete municípios do estudo. O campo ao lado deles busca qualquer um dos 853 de Minas.</li>
-        <li><strong>Ligue e desligue camadas.</strong> No painel da direita. Cada linha explica o que aquela camada mostra.</li>
+        <!-- ⟲ 13/08: este passo dizia "cada linha explica o que aquela camada
+             mostra", e a reorganização do painel tornou isso falso — a
+             explicação saiu da linha e foi para trás do botão "?". Cartão de
+             abertura que descreve uma tela que não existe mais é pior que
+             cartão nenhum: ensina a procurar o que não está lá. -->
+        <li><strong>Ligue e desligue camadas.</strong> No painel da direita, agrupadas por assunto. Cada linha tem um <strong>?</strong> que abre a explicação: o que a camada mostra, de onde veio e o que ela <em>não</em> prova.</li>
+        <li><strong>Filtre por região, se quiser.</strong> Em cima do painel. Escolher a região não liga nem desliga camada nenhuma — só recorta o que já está ligado. O estudo cobre a bacia do Paraopeba, o Vale do Jequitinhonha e o Vale do Mucuri.</li>
         <li><strong>Clique numa mancha.</strong> Abre o tamanho da área, o município e quanto dela é mata nativa — e dá para focar a câmera nela ou ver o lugar de perto, na imagem de satélite.</li>
         <li><strong>Ou veja tudo em lista.</strong> O botão <em>Ver em lista</em>, lá em cima, mostra as áreas encontradas da maior para a menor. Clicar numa linha leva ao lugar.</li>
       </ol>

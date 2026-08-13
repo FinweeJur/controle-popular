@@ -105,13 +105,17 @@ function featureContem(f, lon, lat) {
  *
  * @returns {number} índice, ou -1
  */
-export function pontoMaisProximo(fc, lon, lat, tolRad) {
+export function pontoMaisProximo(fc, lon, lat, tolRad, visivel) {
   let melhor = -1;
   let menor = tolRad;
   const cosLat = Math.cos((lat * Math.PI) / 180);
   fc.features.forEach((f, i) => {
     const g = f.geometry;
     if (g?.type !== 'Point') return;
+    // `visivel` é opcional: sem ele, todo ponto do arquivo concorre — que é o
+    // comportamento de sempre, e o que os testes deste módulo exercitam. Com
+    // ele, o filtro de região tira do páreo os pontos que não estão na tela.
+    if (visivel && !visivel(i)) return;
     const [gl, ga] = g.coordinates;
     // Distância plana em radianos, com a longitude encolhida pelo cosseno da
     // latitude. Em escala de município a diferença para a ortodrômica é
@@ -148,9 +152,15 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
     if (!ponto) return esconder();
     const [lat, lon] = vec3ToLatLon(ponto);
 
-    // Procura a feição clicada, da camada mais específica para a mais geral
+    // Procura a feição clicada, da camada mais específica para a mais geral.
+    //
+    // ⚠️ `estaVisivel` não é zelo excessivo: `layers.geojson` guarda o arquivo
+    // INTEIRO de cada fonte (é dele que sai o índice estável dos deep-links),
+    // então o filtro de região esconde áreas do globo sem tirá-las daqui. Sem
+    // esta checagem, clicar no vazio abriria a ficha de uma área que não está
+    // desenhada — o mapa diria uma coisa e a ficha, outra.
     for (const [id, fc] of [...layers.geojson.entries()].reverse()) {
-      const idx = fc.features.findIndex((f) => featureContem(f, lon, lat));
+      const idx = fc.features.findIndex((f, i) => layers.estaVisivel(id, i) && featureContem(f, lon, lat));
       if (idx >= 0) return mostrar(id, fc.features[idx], idx, lat, lon);
     }
     // Nenhum polígono pegou. Camada de ponto responde por proximidade — e vem
@@ -163,7 +173,7 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
     }) * TOLERANCIA_PX;
     if (tolRad > 0) {
       for (const [id, fc] of [...layers.geojson.entries()].reverse()) {
-        const idx = pontoMaisProximo(fc, lon, lat, tolRad);
+        const idx = pontoMaisProximo(fc, lon, lat, tolRad, (i) => layers.estaVisivel(id, i));
         if (idx >= 0) return mostrar(id, fc.features[idx], idx, lat, lon);
       }
     }

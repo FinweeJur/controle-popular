@@ -6,7 +6,12 @@
  * Sem build step: ES modules vanilla servidos como estáticos pelo FastAPI.
  */
 
-import { ABERTURA, FOCUS_PRESETS, LAYER_REGISTRY, REGIOES_CAMADAS } from './config.js';
+import {
+  ABERTURA, FOCUS_PRESETS, LAYER_REGISTRY,
+  ASSUNTOS, REGIOES, CAMADAS_RESOLVIDAS, CAMADA_POR_FONTE, FONTE_POR_ID,
+  fonteNaRegiao, fontesVisiveis,
+} from './config.js';
+import { mesorregiaoDe } from './data/mesorregioes.js';
 import { municipioPorCodigo } from './data/municipios.js';
 import { createScene } from './core/scene.js';
 import { createEarth } from './core/earth.js';
@@ -99,10 +104,18 @@ async function bootstrap() {
   // lista e deep-link `#area=`) sinalizam. Ver ui/folha.js.
   const folha = criarFolha(document.getElementById('layers-panel'), document.getElementById('inspector'));
 
-  // Passar o mouse numa camada acende as áreas dela no globo e recua as outras.
-  // Não é enfeite: com o vazio da bacia e o de Curvelo em violetas irmãs, era
-  // impossível saber qual mancha era qual sem desligar uma. Ver ui/realce.js.
-  const realce = criarRealce(layers, document.getElementById('layers-panel'));
+  // Passar o mouse (ou o foco do teclado) numa camada acende as áreas dela no
+  // globo e recua as outras. Não é enfeite: com o vazio da bacia e o de Curvelo
+  // em violetas irmãs, era impossível saber qual mancha era qual sem desligar
+  // uma. Ver ui/realce.js.
+  //
+  // `fontesDe` porque uma LINHA do painel é um conceito e pode acender duas
+  // camadas do globo: realçar "Assentamentos da reforma agrária" tem de acender
+  // o arquivo da bacia e o dos Vales ao mesmo tempo, senão o realce mostraria
+  // metade do que a chave liga.
+  const realce = criarRealce(layers, document.getElementById('layers-panel'), {
+    fontesDe: (idCamada) => CAMADAS_RESOLVIDAS.find((c) => c.id === idCamada)?.fontes ?? [idCamada],
+  });
   // No celular o painel desaparece ao trocar de aba, sem o ponteiro sair dele —
   // então o realce não receberia `pointerleave` e a camada ficaria acesa.
   new MutationObserver(() => { if (document.body.dataset.aba !== 'camadas') realce.soltar(); })
@@ -229,15 +242,40 @@ async function bootstrap() {
       return false;
     }
 
+    // ⚠️ O endereço aponta para uma FONTE e um índice DENTRO DO ARQUIVO dela —
+    // é assim desde que o deep-link existe, e continua assim depois da
+    // reorganização de 13/08: nenhum id de fonte mudou, nenhum arquivo foi
+    // refeito, nenhum índice se deslocou. Por isso não há tabela de-para de
+    // endereços antigos: os antigos são os atuais.
+    //
+    // O que mudou é que a fonte agora mora dentro de um CONCEITO, e é o
+    // conceito que tem chave no painel — daí a tradução abaixo.
+    const camada = CAMADA_POR_FONTE.get(layerId);
+
+    // O filtro de região pode estar escondendo justamente esta área. Um link
+    // compartilhado tem de abrir a área que promete, então o recorte cede: volta
+    // para "todas as regiões" em vez de o link falhar em silêncio.
+    if (layersPanel.regiaoAtual() && !fonteNaRegiao(cfg, layersPanel.regiaoAtual())) {
+      console.info(`[globe] o endereço pede "${layerId}", que está fora do filtro de região — mostrando todas as regiões.`);
+      layersPanel.escolherRegiao(null);
+      await aplicarRegiao(null);
+    }
+
     // A camada pode estar desligada (ou ainda carregando) — espere de verdade.
     await layers.enable(layerId);
-    layersPanel.setEnabled?.(layerId, layers.isEnabled(layerId));
-    syncFeatureCounts(layerId);
+    if (camada) sincronizarCamada(camada.id);
 
     const feature = layers.geojson.get(layerId)?.features?.[idx];
     if (!feature) {
       console.warn(`[globe] a camada "${layerId}" não tem a área ${idx}.`);
       return false;
+    }
+
+    // Mesma ideia da região: se o filtro esconde ESTA área (fonte dos Vales,
+    // filtro num vale só), o link ainda tem de funcionar.
+    if (!layers.estaVisivel(layerId, idx)) {
+      layersPanel.escolherRegiao(null);
+      await aplicarRegiao(null);
     }
 
     inspector.mostrarPorId(layerId, idx);
@@ -287,28 +325,138 @@ async function bootstrap() {
     { onSelecionar: (feature) => focarMunicipio(feature) },
   );
 
+  // --- Os dois eixos do painel: conceito (a chave) e região (o filtro) -----
+  //
+  // O painel fala em CONCEITOS ("Assentamentos da reforma agrária"); o
+  // LayerManager fala em FONTES (`assentamentos`, `assentamentos-vales`), que
+  // são os arquivos e os ids que os links publicados carregam. Esta seção é a
+  // tradução entre os dois, e é o único lugar do app onde ela acontece.
+
   /**
-   * Sincroniza o painel com o que o LayerManager realmente conseguiu carregar:
-   * quantos itens entraram, se deu erro e se a camada ficou mesmo ligada. Sem
-   * isso, uma camada que falha continua com a chave ligada e o mapa vazio — e
-   * a pessoa conclui que a chave não funciona.
+   * O filtro por ÁREA que o LayerManager aplica ao desenhar.
+   *
+   * A regra em ordem, e cada linha existe por um motivo medido:
+   *
+   *  1. fonte sem região declarada passa sempre — ela não afirma região
+   *     nenhuma (a moldura, os satélites, o cadastro de BH, as normas), e
+   *     escondê-la seria afirmar por ela;
+   *  2. fonte de outra região sai inteira — é o recorte grosso, e é o que
+   *     evita baixar 4,6 MB do Jequitinhonha para quem está na bacia;
+   *  3. dentro da bacia não há sub-recorte a fazer;
+   *  4. fonte que mistura os dois vales SEM permitir separar entra inteira, e
+   *     o painel diz isso na linha (ver `mesoIndistinta` em config.js);
+   *  5. o resto se decide área por área pelo município.
+   *
+   * ⚠️ Área cujo município não dá para determinar APARECE, em vez de sumir.
+   * Medido hoje, esse caso não acontece em nenhuma das três fontes separáveis
+   * (325 + 797 + 154 áreas, todas resolvidas), mas a escolha do padrão importa
+   * para o dia em que acontecer: esconder o que não se sabe classificar é
+   * exatamente o truncamento silencioso que este projeto não faz.
    */
-  function syncFeatureCounts(id) {
-    if (id) {
-      const st = layers.state.get(id);
-      layersPanel.setStatus?.(id, {
-        on: layers.isEnabled(id),
-        count: st?.featureCount ?? 0,
-        error: st?.error ?? null,
-      });
+  function filtroDeRegiao(regiao) {
+    if (!regiao) return null;
+    return (idFonte, feature) => {
+      const fonte = FONTE_POR_ID.get(idFonte);
+      if (!fonte?.regioes) return true;
+      if (!fonte.regioes.includes(regiao)) return false;
+      if (regiao === 'bacia') return true;
+      if (fonte.mesoIndistinta) return true;
+      const meso = mesorregiaoDe(feature?.properties);
+      return meso == null ? true : meso === regiao;
+    };
+  }
+
+  /** Soma o estado das fontes de um conceito e devolve isso ao painel. */
+  function sincronizarCamada(idCamada) {
+    const camada = CAMADAS_RESOLVIDAS.find((c) => c.id === idCamada);
+    if (!camada) return;
+    const regiao = layersPanel.regiaoAtual();
+    const doRecorte = fontesVisiveis(camada, regiao);
+
+    let count = 0;
+    let total = 0;
+    let erro = null;
+    let ligada = false;
+    for (const fonte of doRecorte) {
+      const st = layers.state.get(fonte.id);
+      if (layers.isEnabled(fonte.id)) ligada = true;
+      count += layers.visibleCount(fonte.id);
+      total += st?.featureCount ?? 0;
+      // Um erro em qualquer fonte do conceito é o erro do conceito: a chave
+      // mostra menos do que promete, e calar isso é o defeito que `setStatus`
+      // existe para não repetir.
+      if (st?.error) erro = st.error;
     }
+
+    layersPanel.setStatus(idCamada, {
+      on: ligada,
+      count,
+      total,
+      error: erro,
+      indistinta: doRecorte.some((f) => f.mesoIndistinta),
+    });
     statusBar.setFeatureCount?.(layers.totalFeatures());
     atualizarLista();
   }
 
   /**
+   * Liga ou desliga um CONCEITO: age sobre todas as fontes dele que o filtro de
+   * região deixa passar, e desliga as que ficaram de fora.
+   */
+  async function alternarCamada(idCamada, ligar) {
+    const camada = CAMADAS_RESOLVIDAS.find((c) => c.id === idCamada);
+    if (!camada) return;
+    const regiao = layersPanel.regiaoAtual();
+
+    layersPanel.setCarregando(idCamada, ligar);
+    await Promise.all(camada.fontesResolvidas.map((fonte) => {
+      const querida = ligar && fonteNaRegiao(fonte, regiao);
+      if (querida) return layers.enable(fonte.id);
+      layers.disable(fonte.id);
+      return Promise.resolve();
+    }));
+    layersPanel.setCarregando(idCamada, false);
+    sincronizarCamada(idCamada);
+  }
+
+  /**
+   * Troca o recorte de região sem mexer no que está LIGADO. Esse é o ponto do
+   * eixo separado: a pessoa escolheu ver assentamentos, e continuar vendo
+   * assentamentos ao mudar de região é o comportamento que ela espera.
+   *
+   * A ordem importa. Primeiro desligar o que saiu do recorte (essas fontes nem
+   * precisam ser redesenhadas), depois trocar o filtro (o que sobrou é
+   * redesenhado uma vez só) e por fim ligar o que entrou (já nasce com o filtro
+   * certo). Na ordem inversa, a maior camada seria redesenhada e logo em
+   * seguida jogada fora.
+   */
+  async function aplicarRegiao(regiao) {
+    for (const camada of CAMADAS_RESOLVIDAS) {
+      for (const fonte of camada.fontesResolvidas) {
+        if (!fonteNaRegiao(fonte, regiao)) layers.disable(fonte.id);
+      }
+    }
+
+    layers.setFiltro(filtroDeRegiao(regiao));
+
+    const ligando = [];
+    for (const camada of CAMADAS_RESOLVIDAS) {
+      if (!layersPanel.isEnabled(camada.id)) continue;
+      for (const fonte of fontesVisiveis(camada, regiao)) {
+        if (!layers.isEnabled(fonte.id)) ligando.push(layers.enable(fonte.id));
+      }
+    }
+    await Promise.all(ligando);
+
+    for (const camada of CAMADAS_RESOLVIDAS) sincronizarCamada(camada.id);
+    layersPanel.atualizarNotas();
+  }
+
+  /**
    * Reconstrói a lista a partir do que está de fato desenhado. A lista mostra
-   * o que o mapa mostra — se divergir, uma das duas está mentindo.
+   * o que o mapa mostra — se divergir, uma das duas está mentindo. Por isso o
+   * filtro de região entra aqui também: área escondida no globo não pode
+   * continuar clicável numa lista ao lado dele.
    */
   function atualizarLista() {
     const entradas = [];
@@ -316,6 +464,7 @@ async function bootstrap() {
       if (!cfg.listavel || !layers.isEnabled(cfg.id)) continue;
       const fc = layers.geojson.get(cfg.id);
       (fc?.features ?? []).forEach((feature, idx) => {
+        if (!layers.estaVisivel(cfg.id, idx)) return;
         entradas.push({ layerId: cfg.id, cfg, idx, feature });
       });
     }
@@ -324,15 +473,23 @@ async function bootstrap() {
 
   const layersPanel = createLayersPanel(
     document.getElementById('layers-panel'),
-    LAYER_REGISTRY,
-    REGIOES_CAMADAS,
-    (id) => Promise.resolve(layers.toggle(id)).then(() => syncFeatureCounts(id)),
+    {
+      camadas: CAMADAS_RESOLVIDAS,
+      assuntos: ASSUNTOS,
+      regioes: REGIOES,
+      onToggle: (idCamada, ligar) => { alternarCamada(idCamada, ligar); },
+      onRegiao: (regiao) => { aplicarRegiao(regiao); },
+    },
   );
 
-  // Ativa as camadas marcadas como ligadas por padrão (on: true) e já
-  // sincroniza os contadores quando cada fetch terminar.
-  for (const cfg of LAYER_REGISTRY) {
-    if (cfg.on) layers.enable(cfg.id).then(() => syncFeatureCounts(cfg.id));
+  // Ativa as camadas marcadas como ligadas por padrão e já sincroniza os
+  // contadores quando cada fetch terminar. O filtro nasce em "todas as
+  // regiões", então nenhuma fonte é barrada aqui.
+  for (const camada of CAMADAS_RESOLVIDAS) {
+    if (!camada.on) continue;
+    for (const fonte of camada.fontesResolvidas) {
+      if (fonte.on) layers.enable(fonte.id).then(() => sincronizarCamada(camada.id));
+    }
   }
 
   const footerHud = createFooterHud(document.getElementById('footer-hud'));

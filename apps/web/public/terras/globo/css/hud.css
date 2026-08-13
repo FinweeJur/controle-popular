@@ -698,7 +698,11 @@ body {
 #layers-panel {
   top: calc(var(--space-3) + 56px);
   right: var(--space-3);
-  width: 232px;
+  /* 232px → 252px em 13/08. Com o marcador, o contador, o botão "?" e a chave
+     na mesma linha, sobravam ~110 px para o nome e "Terra sem cadastro —
+     detalhe de Curvelo" quebrava em quatro linhas — medido no navegador. Vinte
+     pixels resolvem sem comer mapa: o painel flutua sobre o globo. */
+  width: 252px;
   max-height: calc(100vh - 160px);
   overflow-y: auto;
   display: flex;
@@ -735,20 +739,80 @@ body {
   background: var(--color-hairline);
 }
 
-/* Envelope de todos os grupos de região (ver ui/layerspanel.js). Gap maior que
-   o das linhas dentro de um grupo — é o espaço que separa "Bacia do
-   Paraopeba" de "Vales", e precisa ser lido como separação de seção, não
-   como mais uma linha de camada. */
+/* ============================================================
+   PAINEL DE CAMADAS — dois eixos (ver ui/layerspanel.js)
+   A lista agrupa por ASSUNTO; a região é um filtro à parte, acima dela.
+   ============================================================ */
+
+/* ---- Filtro de região: o segundo eixo, e ele tem de PARECER outro eixo ----
+   Fica fora de `.layer-groups`, separado por uma linha, porque confundi-lo
+   visualmente com um grupo de camadas seria repetir a confusão que a
+   reorganização desfez — a pessoa achava que região era mais uma coisa para
+   ligar. */
+#layers-panel .regiao-filtro {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+#layers-panel .regiao-filtro-titulo {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+#layers-panel .regiao-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+#layers-panel .regiao-chip {
+  appearance: none;
+  padding: 4px 9px;
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text-3);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+
+#layers-panel .regiao-chip:hover {
+  color: var(--text-1);
+  background: var(--color-surface-1);
+}
+
+/* A região escolhida não se distingue SÓ por cor: fica preenchida, com peso
+   maior e borda de acento. Três canais visuais, e o `aria-checked` no quarto,
+   para quem ouve a tela. */
+#layers-panel .regiao-chip[aria-checked="true"] {
+  background: var(--accent-weak);
+  border-color: var(--accent-line);
+  color: var(--text-1);
+  font-weight: var(--weight-semibold);
+}
+
+/* ---- Grupos de assunto ------------------------------------------------- */
 #layers-panel .layer-groups {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
-/* Um grupo = título de região + suas camadas. `section` já é um landmark;
-   nenhum estilo de caixa aqui — a separação é só o espaço acima. */
 #layers-panel .layer-group-titulo {
-  margin: 0 0 4px;
+  margin: 0 0 2px;
   padding: 0 6px;
   font-family: var(--font-mono);
   font-size: 10px;
@@ -761,56 +825,96 @@ body {
 #layers-panel .layer-list {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 /* Camada cuja fonte está vazia HOJE (ver `vazia` no LAYER_REGISTRY): some com
    o brilho de "isto é uma opção viva" sem sumir da lista — a lacuna é o
    próprio achado (ex.: o INCRA não publica terras devolutas), não um defeito
    a esconder. */
-#layers-panel .layer-row.layer-vazia {
-  opacity: 0.6;
-}
+#layers-panel .layer-row.layer-vazia { opacity: 0.6; }
+#layers-panel .layer-row.layer-vazia .layer-count { font-style: italic; }
+#layers-panel .layer-toggle:disabled { cursor: not-allowed; opacity: 0.5; }
 
-#layers-panel .layer-row.layer-vazia .layer-count {
-  font-style: italic;
-}
+/* Camada que o filtro de região deixou sem nenhuma fonte. Continua na lista,
+   apagada: sumir faria a lista mudar de tamanho a cada troca de região e
+   esconderia que a camada EXISTE. */
+#layers-panel .layer-row.fora-do-filtro { opacity: 0.45; }
 
-#layers-panel .layer-toggle:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-/* Linha de camada: dot de cor + (nome + explicação) + contador + chave */
+/* ---- A linha ------------------------------------------------------------
+   COMPACTA, e essa é a mudança de 13/08: a explicação saiu da linha e foi para
+   trás do botão "?". Antes cada linha carregava um parágrafo sempre visível, e
+   dezenove deles eram uma parede de texto. Grid em vez de flex porque o bloco
+   de explicação precisa ocupar a linha INTEIRA quando abre (`grid-column:
+   1 / -1`), e não a coluna estreita do nome. */
 #layers-panel .layer-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 8px 6px;
-  border-radius: 8px;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  border-radius: var(--radius-md);
   transition: background var(--dur-fast) var(--ease-out);
 }
 
-#layers-panel .layer-row:hover {
-  background: var(--color-surface-1);
+#layers-panel .layer-row:hover { background: var(--color-surface-1); }
+
+/* A altura da linha É o alvo de toque agora — ver o comentário de
+   `.layer-toggle::before`. 34 px cobre o piso de 32 px do ponteiro fino; no
+   dedo sobe para 44 px, no bloco `@media (pointer: coarse)` que fecha esta
+   seção. */
+#layers-panel .layer-row { min-height: 34px; }
+
+/* ---- O marcador: cor E FORMA -------------------------------------------
+   O painel tinha catorze pontinhos redondos idênticos em catorze matizes, e o
+   globo é a única tela do projeto inteiramente dependente de distinguir cor.
+   A forma diz o que a camada é NO MAPA — área preenchida, ponto solto,
+   contorno — e é informação verdadeira, não um código a decorar. Isso acaba
+   com a dependência de cor? Não. Reduz: quem não separa os matizes tem nome,
+   forma e contador. O que falta está relatado na entrega. */
+#layers-panel .layer-marca {
+  flex: 0 0 auto;
+  width: 11px;
+  height: 11px;
+  background: var(--cor-camada, var(--accent));
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
 }
 
-#layers-panel .layer-dot {
-  flex: 0 0 auto;
+/* Área = quadrado cheio (o preenchimento do polígono no globo). */
+#layers-panel .layer-marca[data-forma="area"] { border-radius: 2px; }
+
+/* Ponto = círculo menor, como o ponto no globo. Menor de propósito: a fonte
+   publica uma localização, não um tamanho. */
+#layers-panel .layer-marca[data-forma="ponto"] {
   width: 8px;
   height: 8px;
-  margin-top: 5px; /* alinha com a primeira linha do nome */
   border-radius: 50%;
-  /* cor inline via style (vem do LAYER_REGISTRY.color) */
 }
 
-#layers-panel .layer-text {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+/* Só contorno = quadrado VAZADO, que é literalmente o que se vê no mapa. */
+#layers-panel .layer-marca[data-forma="linha"] {
+  background: transparent;
+  border: 2px solid var(--cor-camada, var(--accent));
+  border-radius: 2px;
 }
+
+/* Satélite = losango, a única marca que não é dado de terra. */
+#layers-panel .layer-marca[data-forma="satelite"] {
+  width: 9px;
+  height: 9px;
+  rotate: 45deg;
+  border-radius: 1px;
+}
+
+/* Brilho na camada LIGADA — pedido do dono, e aqui ele informa: distingue
+   "ligada" de "desligada" por um canal a mais que a chave. Estático, sem
+   pulsar: brilho que pisca em repouso vira ruído. */
+#layers-panel .layer-row.on .layer-marca {
+  box-shadow: 0 0 8px -1px var(--cor-camada, var(--accent));
+}
+
+#layers-panel .layer-text { min-width: 0; }
 
 #layers-panel .layer-name {
   font-size: 12px;
@@ -821,20 +925,12 @@ body {
 
 #layers-panel .layer-row.on .layer-name {
   color: var(--text-1);
-}
-
-/* A explicação de uma linha: sempre visível, nunca só no hover — tooltip não
-   existe no celular e ninguém passa o mouse por sete camadas para descobrir. */
-#layers-panel .layer-hint {
-  font-size: 10px;
-  line-height: 1.4;
-  color: var(--text-3);
+  font-weight: var(--weight-semibold);
 }
 
 #layers-panel .layer-count {
   flex: 0 0 auto;
-  max-width: 68px;
-  margin-top: 1px;
+  max-width: 76px;
   font-family: var(--font-mono);
   font-size: 10px;
   line-height: 1.3;
@@ -843,41 +939,108 @@ body {
 }
 
 /* Camada que carregou vazia ou falhou: o contador vira palavra, não silêncio */
-#layers-panel .layer-empty .layer-count {
-  color: var(--caution);
+#layers-panel .layer-empty .layer-count { color: var(--caution); }
+#layers-panel .layer-error .layer-count { color: var(--danger); }
+
+/* Camada recortada pelo filtro: o número mostrado é menor que o do arquivo, e
+   isso não pode passar como se fosse o total. O ponto avisa que há mais, e o
+   `title` do contador diz quanto — escrito por `setStatus`. */
+#layers-panel .layer-row.layer-recortada .layer-count::after {
+  content: "•";
+  margin-left: 3px;
+  color: var(--accent);
 }
 
-#layers-panel .layer-error .layer-count {
-  color: var(--danger);
-}
-
-/* Camada de fixture: a marca tem de ser lida antes do nome da camada, não
-   depois. Quem bate o olho no painel precisa saber que aquilo é inventado sem
-   abrir tooltip nenhuma. */
-#layers-panel .layer-fake {
-  margin-left: 6px;
-  padding: 1px 5px;
-  border-radius: 3px;
+/* ---- Botão "?" — a explicação sob demanda ------------------------------
+   Não é tooltip e não depende de hover: é um botão de verdade, com
+   `aria-expanded`, que abre o texto na própria linha. Funciona no dedo, no
+   mouse e no Tab. */
+#layers-panel .layer-explicar {
+  appearance: none;
+  position: relative;
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  border: 1px solid var(--glass-stroke);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-3);
   font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--color-surface-2);
-  background: var(--caution);
-  vertical-align: middle;
+  font-size: 10px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
 }
 
-#layers-panel .layer-fixture .layer-name,
-#layers-panel .layer-fixture .layer-label {
+#layers-panel .layer-explicar:hover {
+  color: var(--text-1);
+  border-color: var(--accent-line);
+  background: var(--accent-weak);
+}
+
+#layers-panel .layer-explicar[aria-expanded="true"] {
+  color: var(--text-on-accent);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ⚠️ ESTA LINHA NÃO É REDUNDANTE. `hidden` esconde por `display: none` na
+   folha do NAVEGADOR, que perde em especificidade para qualquer regra nossa
+   com id + classe — e a regra logo abaixo declara `display: flex`. Sem isto, o
+   `detalhe.hidden = true` do JS não escondia coisa nenhuma e as catorze
+   explicações nasciam todas abertas, espremidas na coluna do nome. Foi
+   exatamente o que apareceu na primeira montagem desta tela, no navegador. */
+#layers-panel .layer-detalhe[hidden] { display: none; }
+
+/* O bloco de explicação ocupa a linha inteira embaixo, não a coluna do nome:
+   texto de 10 px espremido em ~120 px de largura seria pior que o de antes.
+   Depende de o bloco ser filho DIRETO de `.layer-row` — ver ui/layerspanel.js. */
+#layers-panel .layer-detalhe {
+  grid-column: 1 / -1;
+  margin-top: 4px;
+  padding: 6px 8px;
+  border-left: 2px solid var(--accent-line);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--color-surface-1);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#layers-panel .layer-hint,
+#layers-panel .layer-aviso,
+#layers-panel .layer-nota-regiao {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+#layers-panel .layer-hint { color: var(--text-2); }
+
+/* O aviso é a ressalva que impede a leitura errada do dado ("sem cadastro não
+   quer dizer sem dono"). Cor de ressalva, e um símbolo antes do texto para não
+   depender só dela. */
+#layers-panel .layer-aviso { color: var(--caution); }
+#layers-panel .layer-aviso::before {
+  content: "⚠ ";
+  font-weight: var(--weight-semibold);
+}
+
+/* A nota sobre o filtro de região: o que o recorte escolhido faz — ou deixa de
+   fazer — com esta camada. É onde o painel confessa que a fonte não separa
+   Jequitinhonha de Mucuri. */
+#layers-panel .layer-nota-regiao {
+  color: var(--text-3);
   font-style: italic;
 }
 
-/* Switch (toggle) */
+/* ---- A chave ------------------------------------------------------------ */
 #layers-panel .layer-toggle {
   appearance: none;
   position: relative;
   flex: 0 0 auto;
-  margin-top: 1px;
   width: 30px;
   height: 17px;
   border-radius: 999px;
@@ -886,6 +1049,40 @@ body {
   cursor: pointer;
   padding: 0;
   transition: background var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+
+/* ---- ÁREA DE TOQUE, e por que NÃO com `[data-target]` --------------------
+   Duas razoes, e a segunda é a séria.
+
+   1. `tokens/targets.css` monta o alvo num `::after`, e o `::after` desta chave
+      já é a bolinha do interruptor. Dois donos do mesmo pseudo-elemento e um
+      dos dois some.
+
+   2. ⚠️ O alvo de `[data-target]` cresce PARA FORA do elemento, sem teto. Isso
+      funciona nos botões isolados da statusbar e do zoom, e QUEBRA numa lista
+      densa: as linhas do painel têm ~28 px de passo, então dois alvos de 44 px
+      empilhados se sobrepõem em ~16 px, e no trecho sobreposto quem ganha o
+      clique é o último do DOM — tocar a chave de uma camada ligaria a de
+      baixo. Um alvo grande que ativa a coisa errada é pior que um alvo
+      pequeno.
+
+   A saída é fazer a LINHA ter a altura do alvo e o alvo caber DENTRO dela: o
+   piso de 44 px passa a ser cumprido pela própria linha, e o `::before` só
+   estica até a borda dela. Sem sobreposição, e o piso do sistema respeitado.
+   Medido no navegador depois da mudança — ver o relatório da entrega. */
+#layers-panel .layer-toggle::before {
+  content: "";
+  position: absolute;
+  /* 17 px de chave dentro de 34 px de linha: 8 px para cada lado fecham a
+     altura da linha sem passar dela. Na largura, 30 + 2×7 = 44 px, e a
+     sobreposição horizontal não existe — a chave é o último item da linha. */
+  inset: -8px -7px;
+}
+
+@media (pointer: coarse) {
+  /* No dedo a linha cresce para 44 px e o alvo cresce junto, ainda contido:
+     17 + 2×13 = 43 px de altura dentro de uma linha de 44. */
+  #layers-panel .layer-toggle::before { inset: -13px -7px; }
 }
 
 #layers-panel .layer-toggle::after {
@@ -910,16 +1107,51 @@ body {
   background: var(--accent);
 }
 
-#layers-panel .layer-toggle:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 1px;
+/* ---- Camada de fixture --------------------------------------------------
+   A marca tem de ser lida antes do nome da camada, não depois. Quem bate o
+   olho no painel precisa saber que aquilo é inventado sem abrir nada. */
+#layers-panel .layer-fake {
+  margin-left: 6px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-surface-2);
+  background: var(--caution);
+  vertical-align: middle;
 }
 
-/* Estado colapsado: esconde os grupos (título de região incluso), mantém só
-   o cabeçalho. Era `.layer-list` — escondia as linhas mas deixava os três
-   títulos de região boiando sem nada embaixo, e aquilo lê como painel
-   quebrado, não como painel recolhido. */
-#layers-panel.collapsed .layer-groups {
+#layers-panel .layer-fixture .layer-name,
+#layers-panel .layer-fixture .layer-label { font-style: italic; }
+
+/* ---- No dedo, tudo cresce ------------------------------------------------
+   ⚠️ ESTE BLOCO FICA NO FIM DA SEÇÃO DE PROPÓSITO. `@media` não adiciona
+   especificidade nenhuma: `@media (pointer: coarse) { .layer-explicar { ... } }`
+   empata com `.layer-explicar { ... }`, e no empate ganha quem vem por último
+   no arquivo. Numa primeira tentativa este bloco estava ANTES das regras base
+   e o "?" continuava com 17 px no celular — medido em 375×812, `pointer:
+   coarse` ativo e `--target-min: 44px`, e ainda assim 17×17. As linhas e os
+   chips "funcionavam" só porque `min-height` não disputava com nada.
+
+   O piso de 44 px do sistema (tokens/targets.css) vale para o dedo; aqui ele
+   é cumprido pela ALTURA DA LINHA, e não por pseudo-elemento transbordando —
+   ver o comentário de `.layer-toggle::before`. */
+@media (pointer: coarse) {
+  #layers-panel .layer-row { min-height: 44px; }
+  #layers-panel .layer-explicar { width: 28px; height: 28px; font-size: 12px; }
+  #layers-panel .regiao-chip { min-height: 36px; padding: 8px 12px; }
+}
+
+/* Estado colapsado: esconde os grupos E o filtro de região, mantendo só o
+   cabeçalho. Era `.layer-list` — escondia as linhas mas deixava os títulos de
+   seção boiando sem nada embaixo, e aquilo lê como painel quebrado, não como
+   painel recolhido. O filtro entrou na regra em 13/08 pelo mesmo motivo: um
+   painel "recolhido" que ainda mostra quatro chips de região não está
+   recolhido. */
+#layers-panel.collapsed .layer-groups,
+#layers-panel.collapsed .regiao-filtro {
   display: none;
 }
 
@@ -1657,12 +1889,23 @@ body {
 /* ---- Glow de foco: o público usa teclado -------------------------------
    O sistema pede foco sempre visível, inclusive no mouse. O `outline: 2px`
    que estava nos controles é abrupto e não anima; `--shadow-focus` é um anel
-   duplo que cresce do próprio botão. */
+   duplo que cresce do próprio botão.
+
+   ⚠️ Esta lista é NOMINAL, e é a armadilha dela: controle novo não herda nada,
+   cai no `outline` padrão do navegador e sai do sistema sem ninguém notar.
+   Foi o que aconteceu com os dois controles criados em 13/08 — o "?" de cada
+   linha e os chips de região. Medido no navegador, com Tab de verdade: o "?"
+   recebia `outline: auto 1px rgb(229,151,0)`, o laranja do Chrome, sobre o
+   vidro escuro do painel. Entraram na regra. Quem acrescentar o próximo
+   controle ao painel acrescenta aqui também. */
 #statusbar .lista-btn:focus-visible,
 #statusbar .help-btn:focus-visible,
 #focusbar .focus-btn:focus-visible,
 #zoombar .zoom-btn:focus-visible,
 #layers-panel .layer-toggle:focus-visible,
+#layers-panel .layer-explicar:focus-visible,
+#layers-panel .regiao-chip:focus-visible,
+#layers-panel .panel-collapse-btn:focus-visible,
 #inspector .inspector-close:focus-visible,
 #inspector .btn-focar:focus-visible {
   outline: none;
@@ -1689,7 +1932,12 @@ body {
 
 /* ---- A linha da camada em realce ---------------------------------------
    Espelha no painel o que `ui/realce.js` faz no globo: a mesma camada acende
-   nos dois lugares ao mesmo tempo, o que é o que amarra a lista ao mapa. */
+   nos dois lugares ao mesmo tempo, o que é o que amarra a lista ao mapa.
+
+   Desde 13/08 vale também para o TECLADO: `realce.js` põe `.em-realce` no
+   `focusin` da linha, não só no `pointerover`. Era o único jeito de responder
+   "qual mancha é qual?" sem enxergar a diferença de matiz, e estava atrás do
+   mouse — fechado para teclado e para toque. */
 #layers-panel .layer-row {
   transition: background var(--dur-fast) var(--ease-out);
 }
@@ -1698,39 +1946,67 @@ body {
   background: var(--accent-weak);
 }
 
-/* O ponto de cor é o identificador da camada. No realce ele ganha um anel da
-   PRÓPRIA cor da camada — `currentColor` herdado do inline style —, então o
-   anel nunca contradiz a legenda. */
-#layers-panel .layer-dot {
+/* O marcador é o identificador da camada. No realce ele ganha um anel da
+   PRÓPRIA cor da camada, então o anel nunca contradiz a legenda. */
+#layers-panel .layer-marca {
   transition: transform var(--dur-fast) var(--ease-out),
               box-shadow var(--dur-base) var(--ease-out);
 }
 
-#layers-panel .layer-row.em-realce .layer-dot {
+#layers-panel .layer-row.em-realce .layer-marca {
   transform: scale(1.35);
   /* `--cor-camada` vem inline de ui/layerspanel.js, com o mesmo valor do
-     `background-color` do ponto. Aqui NÃO serve `currentColor`: ele resolve
-     para a cor de texto herdada, quase branca, e o anel saía branco — medido
-     em 30/07. Legenda que muda de cor no hover mente sobre a camada. */
+     fundo do marcador. Aqui NÃO serve `currentColor`: ele resolve para a cor
+     de texto herdada, quase branca, e o anel saía branco — medido em 30/07.
+     Legenda que muda de cor no realce mente sobre a camada. */
   box-shadow: 0 0 0 3px color-mix(in oklab, var(--cor-camada, var(--accent)) 30%, transparent),
               0 0 12px -2px var(--cor-camada, var(--accent));
 }
 
-/* ---- Carregando: pulso honesto — algo ESTÁ acontecendo ---------------- */
+/* ---- Carregando: pulso honesto — algo ESTÁ acontecendo ----------------
+   `.carregando` é posto por `layerspanel.setCarregando()`, que o main.js liga
+   ao ligar as fontes de um conceito e desliga quando todas responderam. A
+   espera é real e mensurável: a maior fonte do mapa leva 398 ms só de rede +
+   parse + geometria em servidor local, e mais que isso em rede móvel. */
 @keyframes tp-respirar {
   0%, 100% { opacity: 0.35; }
   50%      { opacity: 1; }
 }
 
-#layers-panel .layer-row.loading .layer-dot,
-#layers-panel .layer-loading .layer-dot {
+#layers-panel .layer-row.carregando .layer-marca {
   animation: tp-respirar 1.4s var(--ease-in-out) infinite;
+}
+
+/* ---- Acabou de ligar: um pulso, uma vez -------------------------------
+   O pedido era "pulso quando a camada termina de carregar", e o valor dele é
+   fechar o ciclo: a chave respondeu, o dado chegou, ISTO aqui é o que apareceu
+   no globo. Uma vez só — confirmação que fica pulsando deixa de ser
+   confirmação e vira ruído (mesma regra do anel de "copiado"). A classe é
+   removida por tempo em `layerspanel.js`, e não no `animationend`: com
+   `prefers-reduced-motion` a animação não roda e o evento nunca chegaria. */
+@keyframes tp-acendeu {
+  0%   { box-shadow: 0 0 0 0 var(--cor-camada, var(--accent)); }
+  40%  { box-shadow: 0 0 0 6px color-mix(in oklab, var(--cor-camada, var(--accent)) 40%, transparent); }
+  100% { box-shadow: 0 0 8px -1px var(--cor-camada, var(--accent)); }
+}
+
+#layers-panel .layer-row.acabou-de-ligar .layer-marca {
+  animation: tp-acendeu var(--dur-slow) var(--ease-out) 1;
+}
+
+/* ---- A explicação entra de leve --------------------------------------
+   Animação de entrada e não transição de altura: o bloco é escondido com o
+   atributo `hidden`, de forma síncrona, porque estado de acessibilidade não
+   pode depender de um `transitionend` que sob movimento reduzido talvez nem
+   dispare. Ver o comentário em ui/layerspanel.js. */
+#layers-panel .layer-detalhe:not([hidden]) {
+  animation: tp-entrar var(--dur-base) var(--ease-out) 1;
 }
 
 /* ---- Satélites: o único pulso permanente, e é legítimo ----------------
    A camada diz "posição calculada em tempo real", e é verdade: o SGP4 roda a
    cada frame. Aqui o pulso descreve o dado em vez de decorar a tela. */
-#layers-panel .layer-row[data-layer-id="satelites-orbita"].on .layer-dot {
+#layers-panel .layer-row[data-camada-id="satelites-orbita"].on .layer-marca {
   animation: tp-respirar 2.6s var(--ease-in-out) infinite;
 }
 
@@ -1815,4 +2091,37 @@ body {
   body[data-aba] #inspector {
     animation: tp-trocar var(--dur-fast) var(--ease-out) 1;
   }
+}
+
+/* ============================================================
+   MOVIMENTO REDUZIDO — o que os tokens NÃO alcançam
+   ============================================================
+   O cabeçalho deste bloco afirma, desde 12/08, que "as durações vêm de
+   tokens/motion.css, que zera todas sob `prefers-reduced-motion` — então
+   nenhuma regra daqui precisa de media query própria".
+
+   ⟲ Isso era verdade para as transições e para as animações de um disparo,
+   que usam `var(--dur-*)`. NÃO era verdade para as três animações INFINITAS
+   deste arquivo, cujas durações são literais (1.4s, 2.6s, 3.2s) e portanto
+   não passam por token nenhum: `tp-respirar` no marcador que carrega,
+   `tp-respirar` no marcador dos satélites e `tp-hachura` no selo FICTÍCIO.
+   As três continuavam girando para sempre para quem pediu menos movimento.
+
+   Num portal cujo tema é acessibilidade isso não é detalhe: animação em laço
+   na periferia da visão é exatamente o que causa enjoo e dor de cabeça em
+   quem tem sensibilidade vestibular ou enxaqueca.
+
+   O estado final é preservado em todos os casos — o marcador dos satélites
+   fica aceso, não apagado, e o selo FICTÍCIO mantém a hachura parada. O que
+   some é o movimento, não a informação. */
+@media (prefers-reduced-motion: reduce) {
+  #layers-panel .layer-row.carregando .layer-marca,
+  #layers-panel .layer-row[data-camada-id="satelites-orbita"].on .layer-marca,
+  #layers-panel .layer-fake::before {
+    animation: none;
+  }
+
+  /* O marcador que estaria pulsando fica na opacidade cheia: "carregando" passa
+     a ser dito só pelo contador, em palavras, que é onde ele já estava dito. */
+  #layers-panel .layer-row.carregando .layer-marca { opacity: 1; }
 }
