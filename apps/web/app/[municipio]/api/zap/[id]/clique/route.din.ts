@@ -1,5 +1,7 @@
 import * as q from "@/lib/db/queries/betim";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
+import { ipDoCliente } from "@/lib/rate-limit-ip";
+import { limitarAltaFrequencia, respostaLimiteExcedido } from "@/lib/rate-limit";
 
 /**
  * Soma um clique num negócio do Zap.
@@ -11,9 +13,13 @@ import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
  * liam o mesmo número e gravavam o mesmo, perdendo uma contagem.
  */
 export async function POST(
-  _request: Request,
+  request: Request,
   { params }: { params: Promise<{ municipio: string; id: string }> }
 ) {
+  // Alta frequência (1 escrita por clique real): ver `lib/rate-limit.ts`.
+  const { permitido, retryAfter } = await limitarAltaFrequencia(ipDoCliente(request));
+  if (!permitido) return respostaLimiteExcedido(retryAfter);
+
   const { municipio, id } = await params;
   const cidade = await obterCidadePorSlug(municipio);
   if (!cidade) return Response.json({ ok: false }, { status: 404 });

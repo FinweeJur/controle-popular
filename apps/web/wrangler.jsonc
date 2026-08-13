@@ -40,5 +40,42 @@
   // e o rebuild agendado substitui revalidação dinâmica.
   "observability": {
     "enabled": true
-  }
+  },
+  // Freio das 4 escritas públicas sem autenticação (pageview, zap,
+  // classificados, clique — ver `lib/rate-limit.ts`). Binding `ratelimit`,
+  // GA desde set/2026, escolhido depois de comparar com as outras opções
+  // do Free (relato completo no PR):
+  //   - Rate Limiting Rules (borda): Free dá 1 regra só, janela FIXA de
+  //     10s — não dá pra ter limite diferente para pageview/clique
+  //     (alta frequência) vs zap/classificados (rara).
+  //   - KV: Free dá 1.000 escritas/dia; só `pageview` sozinho estoura
+  //     isso em minutos com tráfego normal (é 1 escrita por navegação).
+  //   - Durable Objects: entram no Free (SQLite-backed), mas exigiriam
+  //     uma classe nova só para contar requisição — complexidade que este
+  //     binding já resolve de graça.
+  // Este binding É de graça no Free (é runtime do Worker, não produto de
+  // borda com tier) e não conta como "banco" — por isso o comentário
+  // acima sobre KV/R2/D1/DO continua verdadeiro.
+  "ratelimits": [
+    {
+      // Alta frequência: `pageview` e `clique`, ~1 escrita por navegação
+      // real. 300 req/60s por IP = 5/s sustentado, generoso o bastante
+      // pra escola/telecentro atrás do mesmo IP (dezenas de pessoas
+      // navegando ao mesmo tempo) sem abrir espaço pra um script em
+      // loop inflar o contador sem limite.
+      "name": "RL_ALTA_FREQUENCIA",
+      "namespace_id": "1",
+      "simple": { "limit": 300, "period": 60 }
+    },
+    {
+      // Baixa frequência: `zap` e `classificados`, cadastro que uma
+      // pessoa faz raras vezes. 5 req/60s por IP cobre alguém errando o
+      // formulário e tentando de novo, ou duas pessoas cadastrando do
+      // mesmo IP compartilhado quase ao mesmo tempo — sem abrir espaço
+      // pra um bot inundando a fila de moderação.
+      "name": "RL_BAIXA_FREQUENCIA",
+      "namespace_id": "2",
+      "simple": { "limit": 5, "period": 60 }
+    }
+  ]
 }
