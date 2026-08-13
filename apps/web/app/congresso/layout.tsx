@@ -4,6 +4,7 @@ import ThemeSwitcher from "@/app/congresso/components/ThemeSwitcher";
 import FontSizeControl from "@/app/congresso/components/FontSizeControl";
 import CvdToggle from "@/app/components/CvdToggle";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
+import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * Zona /congresso. O `<html>`, as fontes e o ThemeProvider vêm do layout
@@ -125,6 +126,9 @@ export default function CongressoLayout({
             </Link>
             .
           </p>
+
+          {/* Rodapé padrão do portal — ver `FooterGlobal.tsx`. */}
+          <FooterGlobal />
         </div>
       </footer>
     </>

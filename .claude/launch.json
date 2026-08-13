@@ -56,6 +56,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3907"],
       "port": 3907
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-rodape) -- mesma razao das entradas acima.",
+      "name": "cp-rodape-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3908"],
+      "port": 3908
     }
   ]
 }

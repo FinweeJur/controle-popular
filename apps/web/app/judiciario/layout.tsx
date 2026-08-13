@@ -4,6 +4,7 @@ import ThemeSwitcher from "@/app/judiciario/components/ThemeSwitcher";
 import FontSizeControl from "@/app/judiciario/components/FontSizeControl";
 import CvdToggle from "@/app/components/CvdToggle";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
+import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * Zona /judiciario. O `<html>`, as fontes e o ThemeProvider vêm do layout
@@ -127,6 +128,12 @@ export default function JudiciarioLayout({
               Código
             </a>
           </p>
+
+          {/* Rodapé padrão do portal — ver `FooterGlobal.tsx`. O "Sobre"
+              logo acima é desta zona (`/judiciario/sobre`); o "Sobre o
+              projeto" do bloco abaixo é a apresentação do portal inteiro
+              (`/sobre`, raiz) — são páginas diferentes de propósito. */}
+          <FooterGlobal />
         </div>
       </footer>
     </>
