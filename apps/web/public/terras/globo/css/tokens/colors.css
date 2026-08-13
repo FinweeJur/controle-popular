@@ -113,6 +113,37 @@
   --layer-embargos: oklch(0.754 0.139 223.5);         /* #10c1ef ciano */
   --layer-moldura: var(--text-3);                     /* divisas: moldura, não dado */
 
+  /* Território e mineração (13/08/2026) — mesmo método das cores acima:
+     meio da maior lacuna que restava no círculo de matiz, medido depois de
+     cada inserção, não escolhido a gosto. Hues ocupadas antes desta leva:
+     13,4 / 25 / 55,9 / 75 / 102 / 128,8 / 163,2 / 181,9 / 223,5 / 232,7 /
+     265 / 293,5 / 330 (as onze camadas de dado + --caution/--fiction/
+     --danger/--accent, que também contam para o cálculo — --danger já vive a
+     11,6° de --layer-noticias "porque nunca ficam lado a lado": mesma lógica
+     usada aqui). */
+  /* Terras indígenas (FUNAI). Maior lacuna do círculo (330 -> 13,4+360 =
+     43,4°) — meio em 351,7°. */
+  --layer-terras-indigenas: oklch(0.754 0.139 351.7);   /* #f188b9 rosa */
+  /* Zona de Autossalvamento das barragens (FEAM). Segunda maior lacuna
+     (181,9 -> 223,5 = 41,6°) — meio em 202,7°. */
+  --layer-zas: oklch(0.754 0.139 202.7);                /* #00c8d6 ciano-azulado */
+  /* Mancha de inundação das barragens (FEAM). Terceira maior lacuna
+     (293,5 -> 330 = 36,5°) — meio em 311,75°. Vizinha da ZAS no círculo por
+     coincidência da lacuna, não por escolha: as duas camadas SÃO parentes
+     (mesmo PAE, mesma barragem), e ficarem próximas no matiz não atrapalha
+     aqui porque quase não se sobrepõem na tela (a mancha contém a ZAS). */
+  --layer-mancha-inundacao: oklch(0.754 0.139 311.75);  /* #cc94ef lilás */
+  /* SIGMINE — minas em operação (ANM). Quarta maior lacuna (128,8 -> 163,2 =
+     34,4°) — meio em 146,05°. */
+  --layer-sigmine-operacao: oklch(0.754 0.139 146.05);  /* #70c678 verde */
+  /* SIGMINE — interesse minerário (ANM). Quinta maior lacuna (232,7 -> 265 =
+     32,3°) — meio em 248,85°. */
+  --layer-sigmine-interesse: oklch(0.754 0.139 248.85); /* #62b5ff azul */
+  /* O alerta de TI × mancha de inundação NÃO tem cor própria, de propósito —
+     mesma regra de checagem-g0: usa var(--danger). É risco CALCULADO sobre
+     duas camadas que já existem, não uma fonte de dado nova, e reaproveitar
+     o slot semântico de perigo é mais honesto do que inventar mais uma cor. */
+
   /* Uma camada NÃO tem cor própria de propósito — usa a semântica:
        checagem-g0 → var(--caution)   amostra em conferência É ressalva
      ⟲ Antes era o inverso do certo: a camada fictícia usava âmbar, que é o
