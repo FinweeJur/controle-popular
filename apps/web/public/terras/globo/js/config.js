@@ -39,15 +39,55 @@ export const DADOS_DE = '28/07/2026';
 // Cada preset: { id, label, geocodigo }. A distância de câmera não se escreve
 // aqui — `core/enquadrar.js` calcula a partir da geometria do município e da
 // proporção da janela. Número fixo nunca enquadrou nada em duas telas.
+//
+// ⟲ 13/08/2026 — trocado de "municípios da bacia do Paraopeba" (Betim, BH,
+// Contagem, Curvelo, Pompéu, S. J. de Bicas, Brumadinho) para "as cidades que
+// têm PORTAL DETALHADO próprio no site", a pedido do dono, olhando o mapa no
+// celular: ele quer os botões levando a lugar que já tem página pronta, não a
+// todo município que apareceu num cálculo. Geocódigos conferidos contra
+// `ref_municipios_mg` e `lib/db/cidades-do-build.ts` (não deduzidos):
+//   Araçuaí 3103405, Itinga 3134004, Diamantina 3121605 (Jequitinhonha),
+//   Betim 3106705, Belo Horizonte 3106200 (bacia do Paraopeba).
+//
+// São Paulo (3550308) FICOU DE FORA, embora tenha portal: o globo é só de
+// Minas Gerais, e `municipioPorCodigo` (data/municipios.js) resolve o botão
+// contra a camada `municipios-mg` — a malha do IBGE com os 853 municípios de
+// MG, e SÓ eles. Conferido hoje: `3550308` não existe nas 853 features de
+// `dados/camadas/municipios-mg.geojson`. Um botão "São Paulo" chamaria
+// `focar()` (main.js), que chamaria `municipioPorCodigo('3550308')`, receberia
+// `null`, daria `console.warn` e não moveria a câmera nem um grau — um botão
+// que parece fazer algo e não faz nada é pior do que não ter o botão. Incluir
+// SP de verdade exigiria uma malha municipal de SP nova (fora do escopo de um
+// globo de MG) ou um preset com recorte próprio como `ABERTURA` tem — nenhum
+// dos dois é "um item nesta lista".
+//
+// Curvelo, Pompéu, Contagem e Brumadinho SAÍRAM da barra — mas não do app:
+// - `vazio-cadastral-curvelo` (a linha "Terra sem cadastro — detalhe de
+//   Curvelo" no painel de camadas, ver o comentário grande logo abaixo em
+//   LAYER_REGISTRY) continua existindo. O comentário explica por que ela é
+//   INDEPENDENTE da camada da bacia (limiares de área diferentes, 12 áreas
+//   sobrepostas) — motivo nenhum tem a ver com o botão de foco da barra, que é
+//   só um atalho de câmera. Tirar o atalho não tira a camada nem os dados;
+//   quem quiser ver Curvelo de perto chega lá pelo campo de busca, como
+//   qualquer um dos outros 848 municípios de MG.
+// - Conferido no código (grep por "curvelo", "pompeu", "brumadinho",
+//   "contagem" em js/): as menções que sobram fora deste arquivo são
+//   comentários históricos (o sistema de recorte por região Brasil/Sudeste/
+//   Minas/Curvelo, substituído em 28/07 — main.js, boundaries.js,
+//   controls.js), fixtures de TESTE que usam "Curvelo" como nome de
+//   município de exemplo (rotulos.test.mjs, mesorregioes.test.mjs) e a antiga
+//   camada de demonstração `candidatos-curvelo` (já removida em 12/08,
+//   exportar.test.mjs testa que ela CONTINUA fora). Nenhum deep-link, nenhuma
+//   camada e nenhum teste depende do id `curvelo`/`pompeu`/`brumadinho`/
+//   `contagem` desta lista — `focarbar.js` é genérico, itera `FOCUS_PRESETS`
+//   sem conhecer nomes de cidade.
 // ---------------------------------------------------------------------------
 export const FOCUS_PRESETS = [
+  { id: 'aracuai',     label: 'Araçuaí',     geocodigo: '3103405' },
+  { id: 'itinga',      label: 'Itinga',      geocodigo: '3134004' },
+  { id: 'diamantina',  label: 'Diamantina',  geocodigo: '3121605' },
   { id: 'betim',       label: 'Betim',       geocodigo: '3106705' },
   { id: 'bh',          label: 'BH',          geocodigo: '3106200' },
-  { id: 'contagem',    label: 'Contagem',    geocodigo: '3118601' },
-  { id: 'curvelo',     label: 'Curvelo',     geocodigo: '3120904' },
-  { id: 'pompeu',      label: 'Pompéu',      geocodigo: '3152006' },
-  { id: 'sjbicas',     label: 'S. J. de Bicas', geocodigo: '3162922' },
-  { id: 'brumadinho',  label: 'Brumadinho',  geocodigo: '3109006' },
 ];
 
 // Vista de abertura: o estado inteiro, para dar o contexto antes de descer.
@@ -522,7 +562,21 @@ export const LAYER_REGISTRY = [
     // teto de 25 MiB do Workers Static Assets (free E pago). Sem isto o
     // deploy falha neste arquivo. Ver scripts/comprimir-camadas-grandes.mjs
     // (32,37 MiB -> 6,06 MiB, 5,3×).
-    color: 0x62b5ff, /* --layer-sigmine-interesse */ on: false, render: 'fill', listavel: true, comprimida: true,
+    //
+    // pesada: única camada do registro com esta flag, e é por medição, não
+    // por medo do número grande. 47.830 polígonos são 6,7× os 7.090 de
+    // "Minas em operação" — a segunda maior camada de preenchimento do globo,
+    // que já fica ligada por padrão desde a abertura sem travar nada. E o
+    // custo não é só rede: `geojsonToFilled` (layers/geojson3d.js) cria um
+    // `THREE.Shape`/`ShapeGeometry` POR POLÍGONO, triangulado na THREAD
+    // PRINCIPAL, um de cada vez — não existe worker nem geometria instanciada
+    // aqui. "Ligar tudo" (ui/layerspanel.js) pula qualquer camada `pesada`
+    // de propósito: ligar as outras ~21 linhas soma umas 1.900 áreas de
+    // preenchimento, a mesma ordem de grandeza do que já liga sozinho hoje;
+    // somar esta aqui multiplicaria isso por si só, na hora em que o dono
+    // testou o pedido — no celular. Continua alcançável, uma a uma, pela
+    // chave dela.
+    color: 0x62b5ff, /* --layer-sigmine-interesse */ on: false, render: 'fill', listavel: true, comprimida: true, pesada: true,
   },
   // --- Dinheiro público e mineração (13/08/2026) --------------------------
   //
@@ -911,6 +965,10 @@ export function fontesVisiveis(camada, regiao) {
  *    (ui/exportar.js): na dúvida, a que protege mais.
  *  · `semRegiao` = NENHUMA fonte declara região. É o que faz a linha dizer
  *    "o filtro de região não muda o que ela mostra" em vez de sumir.
+ *  · `pesada` = ALGUMA fonte. Mesma lógica de segurança de `listavel`/
+ *    `fixture`: "ligar tudo" (ui/layerspanel.js) usa este campo para pular a
+ *    linha, e a dúvida tem de pender para NÃO ligar — não para ligar demais
+ *    numa camada que hoje só `sigmine-interesse` carrega.
  */
 export function resolverCamada(camada) {
   const fontesResolvidas = camada.fontes.map((id) => FONTE_POR_ID.get(id)).filter(Boolean);
@@ -931,6 +989,7 @@ export function resolverCamada(camada) {
     fixture: fontesResolvidas.some((f) => f.fixture),
     listavel: fontesResolvidas.some((f) => f.listavel),
     semRegiao: fontesResolvidas.every((f) => !f.regioes),
+    pesada: fontesResolvidas.some((f) => f.pesada),
   };
 }
 
