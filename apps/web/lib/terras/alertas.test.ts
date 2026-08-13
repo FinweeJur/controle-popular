@@ -40,9 +40,23 @@ describe("alerta território × SIGMINE — operação (lavra autorizada)", () =
 
   test("a contagem bate com o arquivo, não é digitada", () => {
     expect(lista.itens).toHaveLength(bruto.features.length);
-    // Medido em 13/08: 12 sobreposições, 1.203,5 ha.
+    // ═══ SENTINELA, e ela JÁ TRABALHOU ═══
+    //
+    // A primeira asserção acima é a que importa de verdade: a lista tem que
+    // ter o mesmo tamanho do arquivo, seja ele qual for. As duas abaixo são
+    // sentinela — existem para AVISAR quando o número muda, não para
+    // congelá-lo. Se você está lendo esta linha por causa de um teste
+    // vermelho, confira se a mudança era esperada e atualize de propósito.
+    //
+    // ⟲ 13/08, algumas horas depois de escrita: caiu de 1.203,5 para 1.202,9
+    // ha. A causa é boa — os territórios quilombolas deixaram de ser a
+    // poligonal herdada do projeto irmão e passaram a ser a oficial do
+    // Acervo Fundiário do INCRA, que traz nome, município e fase. Geometria
+    // oficial diferente dá área de interseção ligeiramente diferente. A
+    // CONTAGEM de sobreposições não mudou (12), o que é o sinal de que não
+    // se perdeu nem se inventou alerta: só a medida ficou mais exata.
     expect(lista.itens.length).toBe(12);
-    expect(+lista.areaTotalHa.toFixed(1)).toBe(1203.5);
+    expect(+lista.areaTotalHa.toFixed(1)).toBe(1202.9);
   });
 
   test("cada item some a mesma área que o feature bruto", () => {

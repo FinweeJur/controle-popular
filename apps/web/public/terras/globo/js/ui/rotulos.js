@@ -67,6 +67,20 @@ export const ROTULOS = {
   faixa_fronteira: 'Faixa de fronteira',
   terrai_codigo: 'Código FUNAI',
   data_atualizacao: 'Atualizado em',
+  // Territórios quilombolas (INCRA/Acervo Fundiário, `territorios-quilombolas`
+  // e `territorios-quilombolas-vales` — ver ingerir_incra_quilombolas.py).
+  // `fase_quilombola` é DEDUZIDA (o INCRA não publica campo de fase pronto,
+  // ao contrário da FUNAI): ver a nota grande em VALORES sobre por que ela é
+  // etiqueta, nunca filtro escondido — mesma lógica de `fase_ti`.
+  fase_quilombola: 'Situação da titulação',
+  processo_incra: 'Processo no INCRA',
+  esfera: 'Instância responsável',
+  num_familias: 'Famílias no território',
+  data_publicacao_rtid: 'RTID publicado em',
+  data_publicacao_rtid_retificacao: 'RTID retificado em',
+  data_titulacao: 'Titulado em',
+  superintendencia_regional_incra: 'Superintendência Regional do INCRA',
+  fonte_incra: 'Nome vem do INCRA',
   // ZAS e mancha de inundação de barragens (FEAM, `zas-barragens` e
   // `mancha-inundacao-barragens`).
   estrutura: 'Barragem',
@@ -122,6 +136,14 @@ const VALORES = {
   'Homologada': 'Decreto do Presidente da República homologou a demarcação; falta só o registro em cartório.',
   'Regularizada': 'Demarcação concluída e registrada em cartório e na Secretaria de Patrimônio da União — o fim da linha do processo.',
   'Encaminhada RI': 'Reserva Indígena em tramitação: terra comprada ou doada para o grupo, não é terra de ocupação tradicional.',
+  // As fases (DEDUZIDAS, não um campo oficial do INCRA — ver
+  // ingerir_incra_quilombolas.py) da titulação de território quilombola,
+  // campo `fase_quilombola`. Mesma razão de não esconder fase nenhuma: a
+  // Convenção 169 da OIT condiciona o dever de consulta à AFETAÇÃO da
+  // comunidade, não ao estágio cartorial do processo de titulação.
+  'Sem RTID publicado': 'O INCRA ainda não publicou o Relatório Técnico de Identificação e Delimitação (RTID) deste território — fase inicial do processo, e ainda assim território quilombola de pleno direito.',
+  'RTID publicado — em titulação': 'O RTID já foi publicado no Diário Oficial; o processo segue para Portaria de Reconhecimento, decreto de desapropriação e titulação — ainda não concluído.',
+  'Titulado': 'Processo de titulação concluído: a terra já está registrada em nome da comunidade ou de sua associação.',
   // A situação do PAE (Plano de Ação de Emergência) de cada barragem, campo
   // `status_pae` das camadas da FEAM. "Em análise" importa dizer em voz alta:
   // é o próprio órgão avisando que ainda não bateu o martelo sobre aquela
@@ -141,6 +163,11 @@ export const OCULTAS = new Set([
   // mesmo motivo de 'nome'/'name': o que já apareceu no título não precisa
   // de uma linha própria repetindo.
   'nome', 'name', 'estrutura', 'fixture',
+  // `fonte_incra` é um sinalizador interno de `ingerir_incra_quilombolas.py`
+  // (true/false), não informação para quem lê a ficha. Quando é false, o
+  // `aviso` da própria feição já explica em texto por que não há nome —
+  // mostrar "fonte_incra: false" cru ao lado seria redundante e ilegível.
+  'fonte_incra',
   // As coordenadas saem da tabela e viram um bloco próprio, com botão de
   // copiar: `ponto_lat: -18,758917` numa linha de tabela é número para ler, e
   // ninguém lê coordenada — copia. Ver blocoDeCoordenadas().
@@ -200,14 +227,14 @@ const HA_POR_KM2 = 100;
 
 // Faixas da descrição de área. Existem porque **nenhuma régua funciona em toda a
 // escala**, e este mapa vai de embargo de 0,3 ha a território quilombola de
-// 15.409 ha:
+// 15.500 ha (Baú, Araçuaí — INCRA, 13/08/2026):
 //
 //   · abaixo de 1 ha, hectare é unidade ruim e campo de futebol é pior — um
 //     terreno de 420 m² viraria "0,06 campo". Metro quadrado todo mundo lê;
 //   · abaixo de 1 km² (100 ha), km² sai como "0,42" e informa menos que o
 //     hectare que já está do lado;
 //   · acima de ~1.400 campos, o campo de futebol deixa de ser imagem mental e
-//     vira número grande: 15.409 ha são 21.581 campos, o que não ajuda ninguém.
+//     vira número grande: 15.500 ha são 21.709 campos, o que não ajuda ninguém.
 //     Aí o km² assume sozinho.
 const HA_MIN_KM2 = HA_POR_KM2;   // 100 ha = 1 km²
 const HA_MAX_CAMPOS = 1000;      // ~1.400 campos

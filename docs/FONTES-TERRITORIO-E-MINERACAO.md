@@ -490,7 +490,95 @@ por município para geometria. Não puxar a camada inteira num request.
 
 ---
 
-## 7. Ordem sugerida
+## 7. Territórios quilombolas — INCRA (poligonal) e Palmares (lista, sem polígono)
+
+Levantado em 13/08/2026, no mesmo dia em que um alerta novo
+(`calcular_alerta_territorio_mineracao.py`) achou 12 sobreposições reais de
+território quilombola com lavra de granito autorizada e não conseguiu dizer o
+NOME de nenhum território — as duas camadas já publicadas
+(`territorios-quilombolas.geojson`, `territorios-quilombolas-vales.geojson`)
+só tinham `area_ha`. Ver `scripts/ingerir_incra_quilombolas.py` para a
+ingestão completa; aqui fica só o registro da fonte.
+
+### Duas fontes, e são coisas diferentes
+
+| | **INCRA** | **Fundação Cultural Palmares** |
+|---|---|---|
+| O que é | POLIGONAL do processo de regularização fundiária | CERTIDÃO de comunidade remanescente de quilombo (CRQ) |
+| Geometria | Sim | **Não** — é lista |
+| Serve para | Desenhar o território no mapa | Cruzar/enriquecir nome × município |
+
+### INCRA — Acervo Fundiário, camada `quilombolas_mg`
+
+```
+http://acervofundiario.incra.gov.br/i3geo/ogc.php
+  ?tema=quilombolas_mg&service=WFS&version=1.1.0&request=GetFeature
+```
+
+Confirmado hoje, chamando de verdade: HTTP 200, **22 feições em MG**
+(`resultType=hits`), esquema com `nm_comunid`, `nm_municip`, `nr_process`,
+`area_calc_ha`, `nr_familia`, `dt_publica`/`dt_public1` (publicação do RTID),
+`dt_titulac` (titulação), `esfera`, `responsave`. Só sai GML 3.1.1 — não tem
+`outputFormat=application/json` habilitado para esta camada (erro do próprio
+servidor confirma). Eixo do `posList` é (lat, lon), invertido do que GeoJSON
+espera. UTF-8 declarado bate com os bytes (ao contrário do WFS da FUNAI —
+ver seção 1). Licença, do `AccessConstraints` do `GetCapabilities`: **"vedado
+o uso comercial"** — mais restritiva que a da FUNAI. Fees: "none".
+
+Não existe campo de fase pronto como `fase_ti`; a fase usada no mapa
+(`fase_quilombola`) é DEDUZIDA das datas de RTID/titulação — documentado com
+o mesmo cuidado do campo da FUNAI: é etiqueta, nunca filtro.
+
+`responsave` (responsável pela titulação) foi conferido nas 22 feições de MG:
+só assume "INCRA" ou "CEMIG" — nomes de instituição, não de pessoa física.
+Mesmo assim não entra no GeoJSON publicado (ver docstring do script) — não
+soma informação e é campo do tipo que um dia pode trazer nome de
+representante.
+
+### Fundação Cultural Palmares — lista de comunidades certificadas
+
+```
+https://dados.cultura.gov.br/dataset/comunidades-quilombolas-certificadas
+```
+
+Confirmado hoje: HTTP 200, CSV de 749.619 bytes
+(`.../resource/d95c6eca-38f7-4f4a-998f-97849df2575a/download/planilhacertificadas.csv`),
+licença **Creative Commons Atribuição**. Última atualização: **05/07/2022** —
+portanto quase quatro anos desatualizada em relação a hoje. **Não usada nesta
+ingestão**: a poligonal do INCRA já resolve nome + geometria na mesma fonte, e
+a lista da Palmares não tem coordenada nenhuma — só serviria para cruzar nome
+×município, o que o INCRA já traz. Fica registrada para um dia servir de
+conferência cruzada (ex.: um território "Sem RTID publicado" no INCRA que já
+tem certidão da Palmares é candidato a checar se o INCRA está atrasado).
+
+### O que a ingestão achou, medido
+
+Das 14 feições que as duas camadas já tinham: **13 casaram** com uma feição do
+INCRA por geometria (centróide + área — não há ID em comum entre a base
+antiga e o INCRA). Uma (`territorios-quilombolas-vales.geojson` índice 3,
+58,2 ha, perto de Lagoa Grande) **não achou par** e continua sem nome — não foi
+apagada, nem inventado nome: fica com `fonte_incra: false` e um aviso na
+própria ficha.
+
+O INCRA tem **13 territórios em MG que não entram em nenhuma das duas
+camadas** hoje (TQ Nogueira, São Sebastião, Baú-Serro, Ausente, Tabua, Brejo
+dos Criolos, Amaros, Sete Ladeiras e Terra Dura, Machadinho, São Domingos,
+Gurutuba, Lapinha, Pimentel) — nenhum é claramente Paraopeba nem
+Jequitinhonha/Mucuri pela leitura do município; a maioria é Norte/Noroeste de
+Minas, fora das regiões que este projeto já delimita. Decidir se algum deles
+(sobretudo Pimentel, Pedro Leopoldo — perto da RMBH) entra na camada da bacia
+exige checar contra a malha real da bacia do Paraopeba, não contra o nome do
+município. Fica como próximo passo, não decidido aqui.
+
+**A resposta que motivou toda esta seção**: as duas maiores sobreposições com
+lavra de granito autorizada (551,3 ha e 256,7 ha, GRANSENA EXPORTAÇÃO E
+COMÉRCIO, `territorios-quilombolas-vales.geojson` índice 5) são no território
+**Baú, em Araçuaí** — RTID publicado em 27/11/2023, ainda em titulação,
+15.500 ha, 95 famílias, processo INCRA 54170.000070/2009-81.
+
+---
+
+## 8. Ordem sugerida
 
 1. **ZAS + mancha da FEAM.** Maior ganho, menor esforço — é o geoserver que o
    projeto já consome, e substitui uma feature que teria nascido errada.
