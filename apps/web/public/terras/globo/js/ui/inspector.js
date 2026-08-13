@@ -33,9 +33,22 @@ import { blocoDeCoordenadas, escapar, ligarCopiar, linhasDaFicha, notaDeUso } fr
 import { injetarProveniencia } from './proveniencia.js';
 import { FORMATOS, exportar, podeExportarCamada } from './exportar.js';
 
-/** Título humano da área clicada: nome próprio, ou camada + município. */
+/**
+ * Título humano da área clicada: nome próprio, ou camada + município.
+ *
+ * ⚠️ `props.estrutura` (o nome da barragem, ZAS/mancha de inundação — FEAM,
+ * ver rotulos.js) entra ANTES do nome genérico. Conferido na tela em
+ * 13/08/2026: sem isto, clicar numa mancha abria "Mancha de inundação
+ * (barragens) · Brumadinho" — e a barragem de verdade ("Barragem VI – Mina
+ * Córrego do Feijão") só aparecia na TERCEIRA linha da tabela, depois de
+ * "Identificador" e "Código SIGBM", dois números que não dizem nada sozinhos.
+ * O dono pediu para conferir que a mancha já diz de qual barragem é — dizia,
+ * mas enterrado; a pergunta que a pessoa faz ao clicar ("de qual barragem é
+ * isso?") merece a resposta no título, não na terceira linha da ficha.
+ */
 export function tituloDaArea(cfg, props, idx) {
   if (props.nome || props.name) return props.nome || props.name;
+  if (props.estrutura) return props.estrutura;
   const base = cfg?.label?.split('—')[0].trim() || 'Área';
   if (props.municipio) return `${base} · ${props.municipio}`;
   return `${base} · área ${idx + 1}`;

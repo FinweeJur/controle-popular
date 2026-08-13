@@ -19,9 +19,18 @@
  *   intro.abrir();   // usado pelo botão "?" da statusbar
  */
 
+import { FOCUS_PRESETS } from '../config.js';
+
 const CHAVE = 'terras-publicas:intro-vista';
 
 export function createIntro(el) {
+  // ⚠️ "sete municípios" era escrito à mão e ficou ERRADO em silêncio quando
+  // FOCUS_PRESETS mudou de 7 para 5 em 13/08/2026 (troca para as cidades com
+  // portal próprio — ver o comentário grande em config.js). Lido de
+  // `FOCUS_PRESETS.length` para não poder divergir de novo: o cartão de
+  // abertura descreve a barra de botões de verdade, não um número congelado
+  // no dia em que este texto foi escrito.
+  const nMunicipios = FOCUS_PRESETS.length === 1 ? '1 município' : `${FOCUS_PRESETS.length} cidades`;
   el.innerHTML = `
     <div class="intro-card" role="dialog" aria-labelledby="intro-title" aria-modal="false">
       <button class="intro-close" type="button" aria-label="Fechar">×</button>
@@ -41,7 +50,7 @@ export function createIntro(el) {
       </p>
 
       <ol class="intro-steps">
-        <li><strong>Escolha onde olhar.</strong> Os botões embaixo do globo levam a sete municípios do estudo. O campo ao lado deles busca qualquer um dos 853 de Minas.</li>
+        <li><strong>Escolha onde olhar.</strong> Os botões embaixo do globo levam a ${nMunicipios} com página própria no site. O campo ao lado deles busca qualquer um dos 853 municípios de Minas.</li>
         <!-- ⟲ 13/08: este passo dizia "cada linha explica o que aquela camada
              mostra", e a reorganização do painel tornou isso falso — a
              explicação saiu da linha e foi para trás do botão "?". Cartão de
