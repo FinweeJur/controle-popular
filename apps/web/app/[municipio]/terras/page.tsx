@@ -1,5 +1,4 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
-import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
@@ -60,9 +59,16 @@ export default async function TerrasPage({
         Cadastro Ambiental Rural (CAR). <strong>Vazio cadastral não é terra
         devoluta</strong> — é candidato a verificação, não afirmação de
         titularidade.{" "}
-        <Link href="/metodologia" className="text-accent hover:underline">
+        {/* `<a>` cru, não o `Link` de zona: `/metodologia` aqui dentro é a
+            página de alertas de CONTRATO
+            (`[municipio]/metodologia/page.tsx`) — não fala de terras nem
+            de taxa de erro. A explicação de como a taxa de erro de 30% e
+            o teto de 33% funcionam está em `/sobre#metodologia`, e o
+            bloco `TaxaDeErroTerras` logo abaixo já mostra o número ao
+            vivo. */}
+        <a href="/sobre#metodologia" className="text-accent hover:underline">
           Como este número é calculado
-        </Link>
+        </a>
         .
       </p>
 
