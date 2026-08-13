@@ -79,3 +79,43 @@ que virou byte de backspace literal na escrita.
 
 **Sempre sabote o próprio guarda antes de confiar nele.** Guarda cego é pior
 que guarda nenhum: dá a sensação de estar protegido.
+
+---
+
+## Antes do build: derrube o seu próprio wrangler
+
+Aconteceu **duas vezes na mesma sessão** (13/08/2026), e a segunda só porque a
+primeira não estava escrita em lugar nenhum.
+
+`wrangler dev` deixa `workerd.exe` segurando `apps/web/.open-next/assets`
+aberto. No Windows isso é lock de verdade: a pasta não pode ser removida
+enquanto o processo viver. E o comando que a gente escreve por reflexo é
+
+```
+rm -rf .open-next && npx opennextjs-cloudflare build
+```
+
+O `rm` falha com `EBUSY`, o `&&` curto-circuita, **e o build nunca roda**. O
+erro que aparece na tela é do passo SEGUINTE:
+
+```
+ERROR Could not find compiled Open Next config, did you run the build command?
+```
+
+Ou seja: a mensagem culpa o `populateCache` e pergunta se você rodou o build —
+quando o problema é que o build foi pulado por causa do comando anterior. Ler
+essa mensagem ao pé da letra manda investigar o lugar errado.
+
+**A regra:** sessão que testou ao vivo derruba o próprio `wrangler dev` antes de
+buildar. Matando SÓ os seus — pode haver outra sessão com dev server em outro
+worktree, e derrubar o dela é sabotagem cruzada:
+
+```powershell
+Get-CimInstance Win32_Process -Filter "Name='workerd.exe' or Name='node.exe'" |
+  Where-Object { $_.CommandLine -like '*<seu-worktree>*' -and $_.CommandLine -like '*wrangler*' } |
+  ForEach-Object { Stop-Process -Id $_.ProcessId -Force }
+```
+
+Confira o `CommandLine` antes de matar: é ele que diz de qual worktree o
+processo é. `Get-Process -Name workerd` sozinho não distingue, e mata o da
+outra sessão junto.
