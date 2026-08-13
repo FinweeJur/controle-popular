@@ -41,7 +41,118 @@ import type { NextConfig } from "next";
 const PAGES_BASE_PATH = process.env.PAGES_BASE_PATH;
 const exportandoEstatico = PAGES_BASE_PATH !== undefined;
 
+/**
+ * Cabeçalhos de segurança HTTP.
+ *
+ * ═══ POR QUE ISTO NÃO BASTA SOZINHO — LEIA ANTES DE MEXER ═══
+ *
+ * Medido em 2026-08-10 (comentário de `public/_headers`): todo arquivo
+ * estático em produção — inclusive HTML pré-renderizado — sai direto do
+ * binding de Static Assets do Cloudflare Workers, e NUNCA passa pelo Worker
+ * (logo nunca passa por este `headers()` do Next). `wrangler.jsonc` não tem
+ * `run_worker_first`, então só as rotas que o Worker de fato executa — API
+ * routes, páginas com `runtime = "nodejs"` — recebem o que está aqui embaixo.
+ * Todo o resto (as páginas SSG das três zonas, e tudo em `public/`, inclusive
+ * o globo 3D) só ganha estes mesmos cabeçalhos porque `public/_headers`
+ * repete a mesma política pro binding de assets. Os dois arquivos precisam
+ * mudar JUNTOS — um sem o outro deixa metade do site sem proteção, do jeito
+ * mais silencioso que existe: sem erro, sem 404, só ausência.
+ *
+ * ═══ CSP: REPORT-ONLY DE PROPÓSITO ═══
+ *
+ * Começa em `Content-Security-Policy-Report-Only`. Uma CSP restritiva que
+ * quebra o mapa 3D ou o globo e é revertida na semana seguinte vale menos
+ * que uma em observação que ninguém precisa reverter. Promover para
+ * `Content-Security-Policy` (bloqueante) é um passo separado, depois de
+ * alguns dias sem violação inesperada no relatório/console.
+ *
+ * `script-src 'unsafe-inline'`: NÃO é preguiça. `app/layout.tsx` injeta dois
+ * `<script>` inline via `dangerouslySetInnerHTML` (anti-flash de tamanho de
+ * fonte e de modo daltônico) em TODA página, e o próprio Next.js RSC emite
+ * `<script>__next_f.push(...)</script>` inline pra hidratar — conteúdo que
+ * muda por página/build, não por request. Hash por script exigiria recalcular
+ * um hash por rota a cada build (inviável com ~80 rotas) e nonce por request
+ * exigiria middleware rodando em TODA resposta — que é exatamente o que
+ * `run_worker_first: false` acima evita. Dado que quase o site inteiro é SSG
+ * servido como arquivo estático (sem request handler nenhum no meio),
+ * 'unsafe-inline' é a opção real, não a preguiçosa.
+ *
+ * `style-src 'unsafe-inline'`: os componentes de gráfico
+ * (`app/[municipio]/components/charts/*`) calculam largura/cor em JS e
+ * escrevem via `style={{...}}` do React — vira atributo `style` no HTML. O
+ * globo 3D faz o mesmo via `.style.propriedade =` em `rotulos.js`,
+ * `layerspanel.js` e `listapanel.js` (posição de item virtualizado, cor do
+ * indicador de camada). CSP trata as duas formas — atributo HTML e escrita
+ * via `.style` do DOM — como "inline style", e bloqueia as duas sem esta
+ * permissão. Sem CSSOM dinâmico dá pra tirar depois; hoje não dá.
+ *
+ * `img-src`: `server.arcgisonline.com` é o tile de satélite Esri que
+ * `public/terras/globo/detalhe.html` carrega (ver plano do globo, §Esri).
+ * `tile.openstreetmap.org` é o basemap OSM da mesma página. Os dois só
+ * servem imagem (tile PNG/JPEG), nunca script.
+ *
+ * `frame-src 'self'`: o mapa em `/funcaosocialterra/mapa`
+ * (`GloboIframe.tsx`) embute `/terras/globo/index.html` num `<iframe>` do
+ * PRÓPRIO domínio — sem isto, o iframe fica em branco.
+ *
+ * `frame-ancestors 'self'`: substitui `X-Frame-Options` pras CSP-aware; o
+ * `X-Frame-Options: SAMEORIGIN` abaixo fica como reforço pra navegador que
+ * ainda não lê `frame-ancestors`.
+ *
+ * `connect-src 'self'`: toda chamada `fetch()` client-side no app
+ * (busca, chat, classificados, admin, ofício) é pra rota relativa do próprio
+ * domínio — conferido, não tem `fetch()` client-side pra host de fora.
+ *
+ * Nada de `unsafe-eval`: nem o bundle do Next nem o Three.js vendorizado
+ * usam `eval`/`new Function` (conferido no vendor de `public/terras/globo`).
+ */
+const CSP_REPORT_ONLY = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline'",
+  // ⟲ `api.fontshare.com` entrou depois: a revisao abriu o mapa com o console
+  // e viu violacao de style-src A CADA CARREGAMENTO, vinda de
+  // `public/terras/globo/css/tokens/fonts.css`, que importa as fontes
+  // Switzer/Tabular do Fontshare. O comentario anterior afirmava ter auditado
+  // as origens de estilo -- e nao tinha. Como a politica esta em Report-Only,
+  // ninguem via: promover para bloqueante confiando naquele comentario
+  // quebraria a tipografia do mapa em silencio.
+  "style-src 'self' 'unsafe-inline' https://api.fontshare.com",
+  "img-src 'self' data: https://server.arcgisonline.com https://tile.openstreetmap.org",
+  // Mesmo caso do style-src acima: os arquivos woff/woff2/ttf vem do CDN do
+  // Fontshare, num host DIFERENTE do CSS que os importa.
+  "font-src 'self' https://cdn.fontshare.com",
+  "connect-src 'self'",
+  "frame-src 'self'",
+  "frame-ancestors 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join("; ");
+
+/**
+ * Permissions-Policy: nenhuma página do portal usa câmera, microfone,
+ * geolocalização do navegador (o globo usa coordenadas dos dados, não do
+ * visitante) nem pagamento — desliga tudo isso explicitamente em vez de
+ * herdar o padrão do navegador.
+ */
+const SECURITY_HEADERS = [
+  { key: "Content-Security-Policy-Report-Only", value: CSP_REPORT_ONLY },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+  },
+  // `preload` fica de fora por decisão: é um envio irreversível na prática
+  // (some do domínio custa esperar a lista do navegador expirar). `max-age`
+  // de 1 ano com `includeSubDomains` já cobre o caso real, que é HTTPS
+  // sempre depois da primeira visita.
+  { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
+];
+
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   ...(exportandoEstatico
     ? {
         output: "export" as const,
@@ -124,6 +235,19 @@ const nextConfig: NextConfig = {
               permanent: true,
             },
           ];
+        },
+      }),
+  // `headers()` também consta da lista de recursos não suportados por
+  // `output: 'export'`, pela mesma razão do `redirects()` acima: sem
+  // servidor, não há quem aplique. E mesmo no alvo Cloudflare esta função só
+  // cobre as respostas que o Worker de fato gera — ver o comentário grande
+  // em `SECURITY_HEADERS` sobre por que `public/_headers` carrega a mesma
+  // política pro resto do site.
+  ...(exportandoEstatico
+    ? {}
+    : {
+        async headers() {
+          return [{ source: "/(.*)", headers: SECURITY_HEADERS }];
         },
       }),
 };

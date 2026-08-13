@@ -30,6 +30,34 @@ const JANELA_MS = 60_000;
 const LIMITE_POR_JANELA = 20;
 const acessos = new Map<string, number[]>();
 
+/**
+ * IP do visitante para o rate limit — não é `X-Forwarded-For`.
+ *
+ * A Cloudflare ACRESCENTA o IP real ao FINAL do `X-Forwarded-For`, não
+ * substitui o cabeçalho recebido do cliente. Então `X-Forwarded-For.split(",")[0]`
+ * é o PRIMEIRO valor da lista — e esse primeiro valor é o que o próprio
+ * cliente mandou. Quem quiser ganhar um balde novo por requisição só precisa
+ * mandar um XFF diferente a cada vez; o limitador de `permitido()` virava
+ * decorativo.
+ *
+ * `CF-Connecting-IP` é a borda quem escreve, sempre — o cliente não consegue
+ * forjar porque a Cloudflare reescreve esse cabeçalho específico em toda
+ * requisição que passa por ela, descartando o que veio do cliente.
+ *
+ * Em dev local (`next dev`) não existe borda nenhuma, logo não existe
+ * `CF-Connecting-IP` — a requisição nem passou pela Cloudflare. Cair para
+ * XFF (ou "anon") AQUI é seguro: é o próprio processo local recebendo a
+ * própria requisição, não há atacante entre as duas pontas para forjar nada.
+ * Cair para XFF em PRODUÇÃO anularia o conserto — por isso o fallback para
+ * XFF é só isso, um fallback de desenvolvimento, nunca o caminho real atrás
+ * da Cloudflare.
+ */
+export function ipDoVisitante(req: Request): string {
+  const cf = req.headers.get("cf-connecting-ip")?.trim();
+  if (cf) return cf;
+  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "anon";
+}
+
 function permitido(ip: string): boolean {
   const agora = Date.now();
   const recentes = (acessos.get(ip) ?? []).filter((t) => agora - t < JANELA_MS);
@@ -57,7 +85,7 @@ export interface OpcoesAssistente {
 }
 
 export async function responderAssistente(req: Request, op: OpcoesAssistente) {
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "anon";
+  const ip = ipDoVisitante(req);
   if (!permitido(ip)) {
     return NextResponse.json(
       { erro: "Muitas perguntas em pouco tempo. Espere um minuto e tente de novo." },
