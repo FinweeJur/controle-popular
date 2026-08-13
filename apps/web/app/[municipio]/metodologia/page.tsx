@@ -220,8 +220,13 @@ export default async function MetodologiaPage({
 
       <p className="mt-6 text-xs text-text-soft">
         Revisão completa, regra a regra, com as fontes verificadas:{" "}
+        {/* Apontava para `FinweeJur/betim-ai`, repo predecessor privado
+            (pré-unificação) — 404 público, achado na auditoria de
+            hiperlinks de 2026-08-13. O mesmo arquivo já vive neste repo
+            público, em `docs/betim/alertas-contratos-revisao-juridica.md`;
+            trocado o destino, não o texto do link. */}
         <a
-          href="https://github.com/FinweeJur/betim-ai/blob/master/docs/alertas-contratos-revisao-juridica.md"
+          href="https://github.com/FinweeJur/controle-popular/blob/main/docs/betim/alertas-contratos-revisao-juridica.md"
           target="_blank"
           rel="noopener noreferrer"
           className="text-accent hover:underline"

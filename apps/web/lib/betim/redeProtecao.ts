@@ -560,7 +560,11 @@ export const REDE_ITENS: ItemPainel[] = [
     necessidades: ["direitos_humanos"],
     abrangencia: "estadual",
     natureza: "popular",
-    site: "https://www.juizdefora-oabmg.org.br/comissoes/humanos-cidadania",
+    // Subpágina antiga (`/comissoes/humanos-cidadania`) 404 confirmado na
+    // auditoria de 2026-08-13 — o site não tem mais URL individual por
+    // comissão, só a listagem em `/comissoes` (a Comissão de Direitos
+    // Humanos e Cidadania continua nela, conferido ao vivo).
+    site: "https://www.juizdefora-oabmg.org.br/comissoes",
     endereco: "Av. dos Andradas, 696, Morro da Glória, Juiz de Fora/MG",
     gratuito: true,
     verificadoEm: V,
@@ -573,7 +577,13 @@ export const REDE_ITENS: ItemPainel[] = [
     necessidades: ["direitos_humanos"],
     abrangencia: "estadual",
     natureza: "popular",
-    site: "https://oabcontagem.org.br/direitos-humanos/",
+    // `/direitos-humanos/` 404 confirmado na auditoria de 2026-08-13, e a
+    // listagem atual de comissões (`oabcontagem.org.br/comissoes/`) não tem
+    // mais nenhuma comissão de Direitos Humanos — só correlatas (igualdade
+    // racial, pessoa com deficiência, pessoa idosa, criança e adolescente).
+    // Sem destino confiável: `site: null` (mesma doutrina do Conselho
+    // Tutelar acima), telefone/endereço institucionais permanecem.
+    site: null,
     endereco: "Rua Edmir Leão, 454, Centro, Contagem/MG",
     telefone: "(31) 3398-4711",
     gratuito: true,

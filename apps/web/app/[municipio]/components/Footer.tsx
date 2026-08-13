@@ -110,9 +110,12 @@ export default function Footer({ cidade }: { cidade: Cidade }) {
           <Link href="/privacidade" className="hover:text-primary">
             Privacidade (LGPD)
           </Link>
-          <Link href="/termos" className="hover:text-primary">
-            Termos
-          </Link>
+          {/* "Termos" apontava para `/termos`, rota que nunca existiu em
+              `app/[municipio]/` nem na raiz — 404 em produção, em TODA
+              página do eixo Cidades, desde sempre (achado na auditoria de
+              hiperlinks de 2026-08-13). Mesma doutrina do resto deste
+              arquivo (ver `acaoCidada` acima): sem destino real, o link
+              some, não aponta para lugar nenhum. */}
           <Link href="/sobre" className="hover:text-primary">
             Sobre o projeto
           </Link>

@@ -57,7 +57,11 @@ export const FONTE_OFICIAL: Record<string, FonteOficial> = {
   },
   br_mdr_snis: {
     rotulo: "SNIS — saneamento",
-    url: "https://www.gov.br/cidades/pt-br/assuntos/saneamento/snis",
+    // URL antiga redirecionava (302, destino estável) para este mesmo
+    // caminho: o SNIS foi absorvido pelo SINISA dentro de `gov.br/cidades`
+    // — achado e trocado direto na fonte na auditoria de hiperlinks de
+    // 2026-08-13, em vez de deixar o código pagar o pulo do redirect.
+    url: "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa",
   },
   br_me_rais: {
     rotulo: "RAIS — Ministério do Trabalho",

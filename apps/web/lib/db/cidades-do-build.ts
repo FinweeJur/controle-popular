@@ -105,7 +105,7 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "ouvidoria": "https://www.betim.mg.gov.br/portal/ouvidoria",
         "paraopeba": true,
         "sic_camara": "https://www.camarabetim.mg.gov.br/LAI/LeiAcesso",
-        "camara_host": "https://camarabetim.mg.gov.br/",
+        "camara_host": "https://www.camarabetim.mg.gov.br/",
         "citrolandia": true,
         "datasus_6dig": "310670",
         "camara_render": "spa",

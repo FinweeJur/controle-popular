@@ -35,7 +35,16 @@ export default async function InfraestruturaPage({
       </p>
 
       <section className="mt-8 grid gap-4 sm:grid-cols-2">
-        <DataCard title="Cobertura de água" source={{ label: "SNIS", url: "http://www.snis.gov.br/" }}>
+        <DataCard title="Cobertura de água" source={{
+          label: "SNIS",
+          // www.snis.gov.br serve certificado TLS de *.cidades.gov.br — SNI
+          // errado no servidor, confirmado com `openssl s_client` (não é
+          // bloqueio anti-bot: dois clientes TLS distintos no Windows
+          // reproduziram a mesma falha de handshake). SNIS virou SINISA
+          // dentro de `gov.br/cidades` — mesma troca de `fontesIndicadores.ts`.
+          // Achado na auditoria de hiperlinks de 2026-08-13.
+          url: "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa",
+        }}>
           {agua ? (
             <>
               <p className="font-tabular text-2xl font-bold text-text">
@@ -50,7 +59,16 @@ export default async function InfraestruturaPage({
             <p className="text-sm text-text-soft">em breve</p>
           )}
         </DataCard>
-        <DataCard title="Cobertura de esgoto" source={{ label: "SNIS", url: "http://www.snis.gov.br/" }}>
+        <DataCard title="Cobertura de esgoto" source={{
+          label: "SNIS",
+          // www.snis.gov.br serve certificado TLS de *.cidades.gov.br — SNI
+          // errado no servidor, confirmado com `openssl s_client` (não é
+          // bloqueio anti-bot: dois clientes TLS distintos no Windows
+          // reproduziram a mesma falha de handshake). SNIS virou SINISA
+          // dentro de `gov.br/cidades` — mesma troca de `fontesIndicadores.ts`.
+          // Achado na auditoria de hiperlinks de 2026-08-13.
+          url: "https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa",
+        }}>
           {esgoto ? (
             <>
               <p className="font-tabular text-2xl font-bold text-text">
