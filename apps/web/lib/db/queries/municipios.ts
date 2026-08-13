@@ -1,6 +1,7 @@
 import { asc, eq } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { municipios } from "@/lib/db/schema";
+import { CIDADES_DO_BUILD } from "@/lib/db/cidades-do-build";
 
 /**
  * A tabela `municipios` é o registro das cidades atendidas pelo eixo
@@ -113,8 +114,59 @@ function paraCidade(l: typeof municipios.$inferSelect): Cidade {
   };
 }
 
-/** Cidades ativas, em ordem estável. */
+/**
+ * Cidades ativas, em ordem estável.
+ *
+ * ═══ POR QUE HÁ UM PLANO B, E POR QUE ELE NÃO É GAMBIARRA ═══
+ *
+ * Esta é a PRIMEIRA consulta de toda rota de cidade: `obterCidadePorSlug()`
+ * a chama para traduzir o slug da URL em `id_municipio`. E do Worker em
+ * produção o Postgres da máquina de build não é alcançável, então ela
+ * lançava e as DEZ rotas `.din.ts` de cidade devolviam 500 antes de tocar em
+ * qualquer dado — inclusive as que já tinham sido migradas para o D1, que
+ * morriam sem nunca chegar no banco de escrita. Diagnóstico não deduzido:
+ * `wrangler tail controlepopular` em 2026-08-13 mostrou o erro sendo
+ * exatamente `Failed query: select ... from "municipios"`.
+ *
+ * `CIDADES_DO_BUILD` é ESTA MESMA CONSULTA, congelada pelo `prebuild`
+ * (`scripts/gerar-cidades.mts`) minutos antes do bundle ser montado. Não é
+ * dado de segunda classe nem cópia que envelhece sozinha: cidade nova só
+ * entra no portal com build novo, porque as rotas `/[municipio]/**` são
+ * geradas por `generateStaticParams`. O plano B e o plano A saem da mesma
+ * linha da mesma tabela.
+ *
+ * A ORDEM IMPORTA: o Postgres vem primeiro, e é isso que mantém o
+ * comportamento do BUILD idêntico ao de antes — lá o banco responde e o
+ * congelado nunca é usado. O `catch` só age onde o banco não existe, que é
+ * precisamente o runtime do Worker.
+ *
+ * O erro é REGISTRADO, não engolido. Fallback silencioso aqui esconderia um
+ * Postgres caído durante o build, e aí o site sairia com a lista de ontem
+ * sem ninguém saber.
+ */
 export async function listarCidades(): Promise<Cidade[]> {
+  try {
+    const linhas = await listarCidadesDoPostgres();
+    if (linhas.length > 0) return linhas;
+  } catch (e) {
+    console.error("[listarCidades] Postgres indisponível; usando a lista do build:", e);
+  }
+  return CIDADES_DO_BUILD;
+}
+
+/**
+ * A consulta CRUA, sem plano B — lança se o Postgres não responder.
+ *
+ * Existe separada por uma razão só, e ela custou uma trava cega:
+ * `scripts/gerar-cidades.mts` é quem ESCREVE `CIDADES_DO_BUILD`, e ele
+ * chamava `listarCidades()`. Com o fallback no lugar, o gerador passou a ler
+ * a saída dele mesmo: com o banco derrubado de propósito para testar, ele
+ * recebeu as 6 cidades do arquivo antigo, achou tudo certo e reescreveu o
+ * arquivo com o próprio conteúdo. A guarda de "não sobrescrever com lista
+ * vazia" nunca poderia disparar — verificado quebrando de propósito, não
+ * deduzido. Quem CONGELA a lista tem que falar com o banco de verdade.
+ */
+export async function listarCidadesDoPostgres(): Promise<Cidade[]> {
   const db = getDb();
   if (!db) return [];
   const linhas = await db
