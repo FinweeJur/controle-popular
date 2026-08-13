@@ -49,6 +49,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3906"],
       "port": 3906
+    },
+    {
+      "//": "Porta separada so para este worktree (painel-lai) -- mesma razao das entradas acima.",
+      "name": "painel-lai-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3907"],
+      "port": 3907
     }
   ]
 }

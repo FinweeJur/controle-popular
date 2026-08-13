@@ -121,6 +121,7 @@ const ROTAS_CIDADE: {
   { sufixo: "/prefeitura/obras", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/servidores", changeFrequency: "weekly" },
   { sufixo: "/privacidade", changeFrequency: "yearly", priority: 0.2 },
+  { sufixo: "/rede-de-protecao", changeFrequency: "monthly", priority: 0.5 },
   { sufixo: "/saude" },
   { sufixo: "/seguranca" },
   { sufixo: "/servicos", changeFrequency: "weekly", priority: 0.6 },

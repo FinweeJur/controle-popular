@@ -14,6 +14,7 @@ import {
   ShieldAlert,
   Phone,
   Landmark,
+  Scale,
   type LucideIcon,
 } from "lucide-react";
 
@@ -53,6 +54,7 @@ const servicos = (cidade: Cidade): ItemServico[] => [
   { href: "/clima", nome: "Clima", desc: "Previsão e chuva acumulada", icon: CloudSun },
   { href: "/defesa-civil", nome: "Defesa Civil", desc: "Alertas de chuva forte e emergências", icon: ShieldAlert },
   { href: "/contatos", nome: "Contatos Úteis", desc: "Telefones de emergência e órgãos públicos", icon: Phone },
+  { href: "/rede-de-protecao", nome: "Onde Pedir e Onde Buscar Ajuda", desc: "LAI, Defensoria, denúncia e defesa jurídica gratuita", icon: Scale },
   { href: "/links-uteis-mg", nome: "Links Úteis do Estado", desc: `Fontes oficiais de ${cidade.uf} por tema`, icon: Landmark, fonte: "links_uteis_mg" },
 ];
 
