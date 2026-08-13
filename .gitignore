@@ -45,3 +45,11 @@ etl/betim/analises_pendentes/
 # (politica de uso do Nominatim pede cache) -- e um artefato de maquina, nao
 # fonte; o dado que importa fica gravado em atos_oficiais_geo.
 etl/betim/etl/normas_geo/.cache/
+
+# Download bruto dos scripts de ingestao do globo (ingerir_feam_zas_mancha.py,
+# ingerir_sigmine.py, calcular_alerta_ti_mancha.py): a geometria da FEAM sem
+# simplificar chega a 418 MB + 598 MB por camada (medido em 13/08/2026 -- ver
+# docs/FONTES-TERRITORIO-E-MINERACAO.md). Fica em disco so como cache para nao
+# baixar de novo a cada rodada do script; o resultado que importa e o
+# `dados/camadas/*.geojson` ja simplificado, que esse SIM e versionado.
+apps/web/public/terras/globo/scripts/.tmp-ingest/
