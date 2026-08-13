@@ -56,6 +56,31 @@ function cpfValido(digitos: string): boolean {
  */
 const EXTENSOES = ["*.ts", "*.tsx", "*.js", "*.mjs", "*.py", "*.md", "*.sql", "*.json"];
 
+/**
+ * CPF sintético usado de propósito — para ilustrar formato, ou para testar o
+ * próprio validador.
+ *
+ * `12345678909` é o CPF canônico de teste do Brasil: passa no mod-11 sem ser de
+ * ninguém. Precisa estar aqui **justamente porque é válido** — sem a isenção,
+ * este arquivo se reprovaria, já que o teste da régua (mais abaixo) usa esse
+ * número como exemplo de "válido".
+ *
+ * ⚠️ ESTA LISTA TEM UMA GÊMEA em `scripts/checar-dado-pessoal.py` (`SINTETICOS`),
+ * que é a versão usada pelo hook de pre-push e pela CI. Elas JÁ DIVERGIRAM: o
+ * `12345678909` foi acrescentado lá e esquecido aqui, e a suíte quebrou no
+ * primeiro merge seguinte. Mexeu numa, mexa na outra.
+ *
+ * Duas implementações existem por um motivo real — o hook precisa rodar em
+ * repositório sem Node, e o teste precisa rodar no `npm test`. O preço é este:
+ * mantê-las de acordo é trabalho manual.
+ */
+const SINTETICOS = new Set([
+  "00000000000", "000.000.000-00",
+  "11111111111",
+  "12345678900",
+  "12345678909", "123.456.789-09",
+]);
+
 describe("nenhum CPF real em arquivo versionado", () => {
   test("varre o que é escrito à mão e valida por mod-11", () => {
     const raiz = path.resolve(__dirname, "..", "..", "..");
@@ -87,6 +112,7 @@ describe("nenhum CPF real em arquivo versionado", () => {
       saida.split("\n")
         .map((l) => l.trim())
         .filter(Boolean)
+        .filter((n) => !SINTETICOS.has(n))
         .filter((n) => cpfValido(n.replace(/\D/g, ""))),
     )];
 

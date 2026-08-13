@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { formatNumberBR } from "@/lib/betim/format";
-import { contarLegislacaoAmbiental, listarLegislacaoAmbiental } from "@/lib/db/queries/legislacao-ambiental";
+import {
+  contarCoberturaTemasLegislacaoAmbiental,
+  contarLegislacaoAmbiental,
+  listarLegislacaoAmbiental,
+} from "@/lib/db/queries/legislacao-ambiental";
 import BuscaLegislacaoAmbiental from "./BuscaLegislacaoAmbiental";
 
 export const metadata: Metadata = {
@@ -27,9 +31,10 @@ export const metadata: Metadata = {
  * passo, não forçado aqui.
  */
 export default async function LegislacaoAmbientalIndex() {
-  const [linhas, contagem] = await Promise.all([
+  const [linhas, contagem, cobertura] = await Promise.all([
     listarLegislacaoAmbiental(),
     contarLegislacaoAmbiental(),
+    contarCoberturaTemasLegislacaoAmbiental(),
   ]);
 
   return (
@@ -72,6 +77,29 @@ export default async function LegislacaoAmbientalIndex() {
             mais de uma fonte, e o card avisa quando isso acontece.
           </p>
         )}
+
+        {cobertura.total > 0 && (
+          <p className="max-w-2xl rounded-lg border border-dashed border-border px-4 py-3 text-[.88em] text-text-soft">
+            <strong className="font-tabular text-text">{formatNumberBR(cobertura.comTema)}</strong> de{" "}
+            <strong className="font-tabular text-text">{formatNumberBR(cobertura.total)}</strong> normas
+            (
+            {((100 * cobertura.comTema) / cobertura.total).toFixed(1).replace(".", ",")}%) receberam
+            pelo menos um tema — as demais não bateram em nenhuma palavra-chave e ficam &quot;sem
+            tema atribuído&quot;, não empurradas para um tema qualquer. A classificação também tem
+            cobertura desigual entre fontes:{" "}
+            <strong className="font-tabular text-text">{formatNumberBR(cobertura.porFonte.almg.comTema)}</strong>/
+            <strong className="font-tabular text-text">{formatNumberBR(cobertura.porFonte.almg.total)}</strong>{" "}
+            da ALMG (que atribui a cada norma um tema OFICIAL, cruzado aqui com a busca por
+            palavra-chave),{" "}
+            <strong className="font-tabular text-text">{formatNumberBR(cobertura.porFonte.semad.comTema)}</strong>/
+            <strong className="font-tabular text-text">{formatNumberBR(cobertura.porFonte.semad.total)}</strong>{" "}
+            da Semad e{" "}
+            <strong className="font-tabular text-text">{formatNumberBR(cobertura.porFonte.siam.comTema)}</strong>/
+            <strong className="font-tabular text-text">{formatNumberBR(cobertura.porFonte.siam.total)}</strong>{" "}
+            do Siam — as duas últimas SÓ por palavra-chave na ementa, porque nenhuma das duas
+            publica uma taxonomia própria (indício, não afirmação oficial).
+          </p>
+        )}
       </header>
 
       <section className="mt-10">
@@ -112,6 +140,29 @@ export default async function LegislacaoAmbientalIndex() {
           Fontes nacionais (Ministério do Meio Ambiente, Conama) ainda não entraram nesta busca —
           são catálogos de outra ordem de grandeza, com formato próprio, que ficam para uma
           próxima rodada.
+        </p>
+      </section>
+
+      <section className="mt-12 border-t border-border pt-8">
+        <h2 className="font-display text-xl font-semibold">Como o tema de cada norma é decidido</h2>
+        <p className="mt-3 text-[.92em] text-text-soft">
+          A ALMG é a única das três fontes que atribui, a cada norma, uma taxonomia oficial própria
+          (o campo &quot;indexação&quot; da sua API de dados abertos — o mesmo que já filtra o que
+          entra aqui como &quot;ambiental&quot;). Os 8 temas do filtro acima nasceram de ramos REAIS
+          dessa taxonomia (ex.: <code className="font-mono text-[.85em]">/Tema/Mineração</code>,{" "}
+          <code className="font-mono text-[.85em]">
+            /Tema/Meio Ambiente/Gestão Ambiental/Proteção Ambiental/Unidade de Conservação
+          </code>
+          ) — não foram inventados aqui. Para as normas da ALMG, o tema cruza essa taxonomia
+          oficial com uma busca por palavra-chave na ementa.
+        </p>
+        <p className="mt-3 text-[.92em] text-text-soft">
+          Semad e Siam não publicam nenhuma taxonomia equivalente — medido diretamente no formato
+          que as duas fontes expõem (uma tabela HTML de 6 colunas, sem coluna de tema/assunto).
+          Para essas ~6.300 normas o tema vem só de palavra-chave auditável na ementa (regras em{" "}
+          <code className="font-mono text-[.85em]">etl/temas_ambientais.py</code>), o que é
+          indício de conteúdo, não uma classificação oficial — e por isso boa parte fica sem
+          nenhum tema, em vez de forçada para um tema que a ementa não sustenta.
         </p>
       </section>
     </div>

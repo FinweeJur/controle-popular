@@ -27,6 +27,46 @@ import type { FonteLegislacaoAmbiental, LegislacaoAmbientalRow } from "@/lib/db/
  * X" para quem quiser conferir. É sinalização, não fusão.
  */
 
+// Os 8 temas do pedido — mesmos slugs/rótulos de `etl/temas_ambientais.py`
+// (`TEMA_LABELS`), copiados aqui porque o componente cliente não importa
+// Python. Mudar um rótulo lá sem mudar aqui é o risco assumido — os dois
+// lados são pequenos o bastante (8 entradas) pra conferir de olho.
+const TEMA_LABEL: Record<string, string> = {
+  mineracao: "Mineração",
+  energia: "Energia",
+  agropecuaria: "Agropecuária",
+  barragens: "Barragens",
+  recursos_hidricos: "Recursos Hídricos",
+  residuos: "Resíduos",
+  unidades_conservacao: "Unidades de Conservação",
+  fauna_flora: "Fauna e Flora",
+};
+
+const TEMA_ORDEM = Object.keys(TEMA_LABEL);
+
+// Tags finas — mesmos slugs/rótulos de `TAG_LABELS` em
+// `etl/temas_ambientais.py`, só pra exibir no card sem precisar duplicar
+// a lógica de classificação no cliente.
+const TAG_LABEL: Record<string, string> = {
+  mineracao_geral: "Mineração",
+  energia_geral: "Energia",
+  agropecuaria_geral: "Agropecuária",
+  barragem: "Barragem",
+  recursos_hidricos_geral: "Recursos Hídricos",
+  bacia_hidrografica: "Bacia Hidrográfica",
+  residuos_solidos: "Resíduos Sólidos",
+  reciclagem: "Reciclagem",
+  unidade_conservacao: "Unidade de Conservação",
+  area_protecao_ambiental: "Área de Proteção Ambiental",
+  rppn: "Reserva Particular (RPPN)",
+  fauna: "Fauna",
+  flora_florestal: "Flora e Política Florestal",
+  licenciamento_ambiental: "Licenciamento Ambiental",
+  fiscalizacao_ambiental: "Fiscalização Ambiental",
+  mudanca_climatica: "Mudança Climática",
+  desastre_ambiental: "Desastre Ambiental",
+};
+
 const FONTE_LABEL: Record<FonteLegislacaoAmbiental, string> = {
   almg: "ALMG",
   semad: "Semad",
@@ -68,18 +108,22 @@ export default function BuscaLegislacaoAmbiental({ linhas }: Props) {
   const [fonte, setFonte] = useState<string>("");
   const [tipo, setTipo] = useState<string>("");
   const [ano, setAno] = useState<string>("");
+  const [tema, setTema] = useState<string>("");
   const [visiveis, setVisiveis] = useState(PAGINA);
 
-  const { tipos, anos } = useMemo(() => {
+  const { tipos, anos, temasContagem } = useMemo(() => {
     const tiposCont = new Map<string, number>();
     const anosSet = new Set<number>();
+    const temasCont = new Map<string, number>();
     for (const l of linhas) {
       tiposCont.set(l.tipo, (tiposCont.get(l.tipo) ?? 0) + 1);
       if (l.ano) anosSet.add(l.ano);
+      for (const t of l.temas) temasCont.set(t, (temasCont.get(t) ?? 0) + 1);
     }
     return {
       tipos: [...tiposCont.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])),
       anos: [...anosSet].sort((a, b) => b - a),
+      temasContagem: temasCont,
     };
   }, [linhas]);
 
@@ -104,12 +148,13 @@ export default function BuscaLegislacaoAmbiental({ linhas }: Props) {
       if (fonte && l.fonte !== fonte) return false;
       if (tipo && l.tipo !== tipo) return false;
       if (ano && String(l.ano ?? "") !== ano) return false;
+      if (tema && !l.temas.includes(tema)) return false;
       if (termoNormalizado && !textoBusca(l).includes(termoNormalizado)) return false;
       return true;
     });
-  }, [linhas, fonte, tipo, ano, termoNormalizado]);
+  }, [linhas, fonte, tipo, ano, tema, termoNormalizado]);
 
-  const temFiltro = Boolean(q || fonte || tipo || ano);
+  const temFiltro = Boolean(q || fonte || tipo || ano || tema);
   const visiveisAtuais = filtradas.slice(0, visiveis);
 
   function limpar() {
@@ -117,6 +162,12 @@ export default function BuscaLegislacaoAmbiental({ linhas }: Props) {
     setFonte("");
     setTipo("");
     setAno("");
+    setTema("");
+    setVisiveis(PAGINA);
+  }
+
+  function alternarTema(t: string) {
+    setTema((atual) => (atual === t ? "" : t));
     setVisiveis(PAGINA);
   }
 
@@ -218,6 +269,26 @@ export default function BuscaLegislacaoAmbiental({ linhas }: Props) {
         )}
       </form>
 
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <span className="text-xs font-medium text-text-soft">Tema:</span>
+        {TEMA_ORDEM.filter((t) => temasContagem.has(t)).map((t) => (
+          <button
+            key={t}
+            type="button"
+            onClick={() => alternarTema(t)}
+            aria-pressed={tema === t}
+            className="cursor-pointer rounded-full border px-3 py-1 text-xs font-medium transition-colors"
+            style={
+              tema === t
+                ? { background: "var(--cp-tertiary)", color: "var(--cp-tertiary-ink)", borderColor: "var(--cp-tertiary)" }
+                : { borderColor: "var(--border)", color: "var(--color-text-soft, inherit)" }
+            }
+          >
+            {TEMA_LABEL[t]} ({formatNumberBR(temasContagem.get(t) ?? 0)})
+          </button>
+        ))}
+      </div>
+
       <p className="mt-4 text-sm text-text-soft">
         <strong className="font-tabular text-text">{formatNumberBR(filtradas.length)}</strong>{" "}
         {filtradas.length === 1 ? "norma encontrada" : "normas encontradas"}
@@ -261,6 +332,19 @@ export default function BuscaLegislacaoAmbiental({ linhas }: Props) {
                   {l.orgao ? <span className="font-normal text-text-soft"> — {l.orgao}</span> : null}
                 </p>
                 {l.ementa && <p className="mt-1 text-sm text-text-soft">{l.ementa}</p>}
+
+                {l.tags.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {l.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-border px-2 py-0.5 text-[.72em] text-text-soft"
+                      >
+                        {TAG_LABEL[t] ?? t}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 <div className="mt-3 flex flex-wrap items-center gap-3">
                   {l.linkPdf && (

@@ -1504,6 +1504,13 @@ export const ambiental_legislacao = pgTable("ambiental_legislacao", {
 	link_pdf: text(),
 	id_ibge_municipio: text(),
 	chave_dedup: text(),
+	// Migration 0066: `indexacao` só é preenchida para `fonte='almg'`
+	// (única das três com taxonomia oficial — ver etl/temas_ambientais.py).
+	// `temas`/`tags` são a classificação derivada, default `'{}'`, nunca
+	// `null` — mesmo padrão de `atos_oficiais.temas`/`contratos.temas`.
+	indexacao: text(),
+	temas: text().array().default([]).notNull(),
+	tags: text().array().default([]).notNull(),
 	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
 	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
 }, (table) => [
@@ -1513,6 +1520,8 @@ export const ambiental_legislacao = pgTable("ambiental_legislacao", {
 	index("ambiental_legislacao_data_idx").using("btree", table.data.desc().nullsFirst().op("date_ops")),
 	index("ambiental_legislacao_dedup_idx").using("btree", table.chave_dedup.asc().nullsLast().op("text_ops")),
 	index("ambiental_legislacao_municipio_idx").using("btree", table.id_ibge_municipio.asc().nullsLast().op("text_ops")),
+	index("ambiental_legislacao_temas_idx").using("gin", table.temas.asc().nullsLast().op("array_ops")),
+	index("ambiental_legislacao_tags_idx").using("gin", table.tags.asc().nullsLast().op("array_ops")),
 	// A FK real para `ref_municipios_mg(id_ibge)` existe no Postgres (migration
 	// 0063) — não declarada aqui porque `ref_municipios_mg` não tem `pgTable`
 	// próprio neste arquivo (mesmo drift já visto em `feam_barragens`/
