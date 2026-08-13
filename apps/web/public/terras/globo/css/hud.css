@@ -804,6 +804,57 @@ body {
   font-weight: var(--weight-semibold);
 }
 
+/* ---- Ligar tudo / Desligar tudo (13/08/2026) ---------------------------
+   Mesma lógica visual do filtro de região: fora de `.layer-groups`, com
+   linha própria, porque também não é "mais uma camada" — é uma ação sobre
+   todas elas. Botões cheios (não outline como `.regiao-chip`) porque aqui
+   não há estado ativo/inativo para marcar: é comando, não escolha. */
+#layers-panel .layer-bulk {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+#layers-panel .layer-bulk-btns {
+  display: flex;
+  gap: 6px;
+}
+
+#layers-panel .layer-bulk-btn {
+  appearance: none;
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-1);
+  color: var(--text-2);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+
+#layers-panel .layer-bulk-btn:hover {
+  color: var(--text-1);
+  background: var(--accent-weak);
+  border-color: var(--accent-line);
+}
+
+/* A ressalva sobre camadas pesadas puladas — mesma hierarquia visual de
+   `.layer-nota-regiao`: informação real, não erro nem decoração. */
+#layers-panel .layer-bulk-nota {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--text-3);
+}
+
 /* ---- Grupos de assunto ------------------------------------------------- */
 #layers-panel .layer-groups {
   display: flex;
@@ -849,7 +900,8 @@ body {
    1 / -1`), e não a coluna estreita do nome. */
 #layers-panel .layer-row {
   display: grid;
-  grid-template-columns: auto 1fr auto auto auto;
+  /* marca · ícone · nome (1fr) · contador · explicar · chave */
+  grid-template-columns: auto auto 1fr auto auto auto;
   align-items: center;
   gap: 6px;
   padding: 4px 6px;
@@ -912,6 +964,33 @@ body {
    pulsar: brilho que pisca em repouso vira ruído. */
 #layers-panel .layer-row.on .layer-marca {
   box-shadow: 0 0 8px -1px var(--cor-camada, var(--accent));
+}
+
+/* ---- Ícone do conceito (13/08/2026, ver ui/icones.js) --------------------
+   Coluna própria, ao lado do marcador — não no lugar dele. O marcador
+   continua sendo a única pista de FORMA (área/ponto/linha); o ícone é
+   reconhecimento de ASSUNTO à primeira vista, decorativo (`aria-hidden` no
+   SVG — ver icones.js), nunca a única forma de identificar a linha. Herda
+   `--cor-camada` do mesmo jeito que `.layer-marca`: a cor identifica O QUE a
+   camada é, e o ícone não inventa uma segunda paleta por cima. */
+#layers-panel .layer-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  color: var(--cor-camada, var(--text-3));
+  /* Um degrau abaixo do texto ligado, um acima do apagado — o ícone marca
+     presença sem competir com o nome pela atenção. */
+  opacity: 0.75;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+#layers-panel .layer-row.on .layer-icone { opacity: 1; }
+
+#layers-panel .layer-icone-svg {
+  width: 100%;
+  height: 100%;
 }
 
 #layers-panel .layer-text { min-width: 0; }
@@ -1142,6 +1221,7 @@ body {
   #layers-panel .layer-row { min-height: 44px; }
   #layers-panel .layer-explicar { width: 28px; height: 28px; font-size: 12px; }
   #layers-panel .regiao-chip { min-height: 36px; padding: 8px 12px; }
+  #layers-panel .layer-bulk-btn { min-height: 36px; padding: 8px 12px; }
 }
 
 /* Estado colapsado: esconde os grupos E o filtro de região, mantendo só o
@@ -1151,7 +1231,8 @@ body {
    painel "recolhido" que ainda mostra quatro chips de região não está
    recolhido. */
 #layers-panel.collapsed .layer-groups,
-#layers-panel.collapsed .regiao-filtro {
+#layers-panel.collapsed .regiao-filtro,
+#layers-panel.collapsed .layer-bulk {
   display: none;
 }
 
@@ -1897,7 +1978,8 @@ body {
    linha e os chips de região. Medido no navegador, com Tab de verdade: o "?"
    recebia `outline: auto 1px rgb(229,151,0)`, o laranja do Chrome, sobre o
    vidro escuro do painel. Entraram na regra. Quem acrescentar o próximo
-   controle ao painel acrescenta aqui também. */
+   controle ao painel acrescenta aqui também — foi o caso de
+   `.layer-bulk-btn` (Ligar/Desligar tudo), no mesmo dia. */
 #statusbar .lista-btn:focus-visible,
 #statusbar .help-btn:focus-visible,
 #focusbar .focus-btn:focus-visible,
@@ -1906,6 +1988,7 @@ body {
 #layers-panel .layer-explicar:focus-visible,
 #layers-panel .regiao-chip:focus-visible,
 #layers-panel .panel-collapse-btn:focus-visible,
+#layers-panel .layer-bulk-btn:focus-visible,
 #inspector .inspector-close:focus-visible,
 #inspector .btn-focar:focus-visible {
   outline: none;

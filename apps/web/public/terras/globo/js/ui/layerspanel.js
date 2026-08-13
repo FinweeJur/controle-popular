@@ -36,10 +36,12 @@
  * Classes CSS esperadas (definidas em ../css/hud.css — NÃO estilizar aqui):
  *   .panel-header / .panel-title / .panel-collapse-btn
  *   .regiao-filtro / .regiao-chip        — o filtro de região (radiogroup)
+ *   .layer-bulk / .layer-bulk-btn / .layer-bulk-nota — ligar/desligar tudo
  *   .layer-groups / .layer-group / .layer-group-titulo / .layer-list
  *   .layer-row (+ .on, .em-realce, .layer-vazia, .layer-empty, .layer-error,
  *               .carregando, .acabou-de-ligar)
  *   .layer-marca                          — o marcador de forma+cor da camada
+ *   .layer-icone                          — ícone Lucide por conceito (ver icones.js)
  *   .layer-name / .layer-count / .layer-toggle
  *   .layer-explicar / .layer-detalhe / .layer-aviso / .layer-nota-regiao
  *
@@ -55,13 +57,42 @@
  *   agruparPorAssunto(camadas, assuntos);  // exportada à parte, testada em
  *                                          // layerspanel.test.mjs sem montar DOM
  *
- * ⚠️ Nada aqui usa `innerHTML` com dado de camada — a árvore é montada com
- * `createElement`/`textContent`, que não tem como injetar marcação. É a mesma
- * garantia que `escapar()` (ui/rotulos.js) dá em quem precisa de innerHTML, sem
- * depender de alguém lembrar de chamá-la.
+ * ## "Ligar tudo" / "Desligar tudo" (13/08/2026)
+ *
+ * Pedido do dono olhando o mapa no celular: não existia jeito de ligar tudo de
+ * uma vez. A pergunta que decidiu o desenho não foi "dá para ligar tudo" — dá,
+ * é só chamar `onToggle` de cada linha — mas "o que acontece no celular dele
+ * quando alguém aperta esse botão".
+ *
+ * A resposta está em `sigmine-interesse` (config.js): 47.830 polígonos, cada
+ * um triangulado por `geojsonToFilled` na THREAD PRINCIPAL, um de cada vez —
+ * 6,7× a segunda maior camada de preenchimento do globo (`sigmine-operacao`,
+ * 7.090, e essa já liga sozinha na abertura sem travar nada). Ligar essa
+ * camada junto com as outras ~21 somaria, numa pancada só, muito mais
+ * trabalho síncrono do que o navegador de um celular tolera sem congelar —
+ * exatamente onde o dono estava quando pediu o botão.
+ *
+ * Por isso "Ligar tudo" LIGA TODAS AS LINHAS QUE NÃO SÃO `pesada` (hoje só
+ * "Interesse minerário na ANM"), e o texto abaixo dos botões diz isso em
+ * palavras, com o nome da camada que ficou de fora. `pesada` é decidida em
+ * `resolverCamada` (config.js) por MEDIÇÃO — não é um jeito de esconder a
+ * camada, que continua na lista, com hint e chave normais: só não entra no
+ * "tudo". "Desligar tudo" não tem esse problema (desligar é síncrono e barato
+ * — `LayerManager.disable` só remove da cena e libera GPU) e desliga
+ * literalmente todas, pesadas inclusive.
+ *
+ * ## Ícones por conceito (13/08/2026)
+ *
+ * Pedido do dono, na mesma entrega: reconhecimento visual imediato nas 22
+ * linhas — "algo mais leve no design tipo Lucide", não emoji. `criarIconeCamada`
+ * (./icones.js) devolve o `<svg>` já pronto (ou `null` se a camada não tiver
+ * ícone mapeado — a linha não quebra, só fica sem ele). O ícone é SEMPRE
+ * decorativo (`aria-hidden`): o nome da camada continua sendo o que a
+ * identifica para quem usa leitor de tela.
  */
 
 import { fonteNaRegiao } from '../config.js';
+import { criarIconeCamada } from './icones.js';
 
 // Converte cor numérica (0x38bdf8) para string CSS "#38bdf8"
 function colorToCss(color) {
@@ -255,6 +286,73 @@ export function createLayersPanel(el, { camadas, assuntos, regioes, onToggle, on
     if (typeof onRegiao === 'function') onRegiao(regiaoAtual);
   }
 
+  // -------------------------------------------------------------------------
+  // "Ligar tudo" / "Desligar tudo" — ver o comentário grande no topo do
+  // arquivo para o porquê de "tudo" não incluir as camadas `pesada`.
+  //
+  // Os dois botões reaproveitam o MESMO caminho de uma chave individual
+  // (`aplicarEstado` + `onToggle`), só que em laço — nada de estado ou
+  // contagem é decidido aqui: quem confirma o que de fato ficou ligado é
+  // `setStatus`, chamado pelo main.js depois que cada fonte carrega.
+  // -------------------------------------------------------------------------
+  const bulk = document.createElement('div');
+  bulk.className = 'layer-bulk';
+
+  const bulkBtns = document.createElement('div');
+  bulkBtns.className = 'layer-bulk-btns';
+
+  const btnLigarTudo = document.createElement('button');
+  btnLigarTudo.type = 'button';
+  btnLigarTudo.className = 'layer-bulk-btn';
+  btnLigarTudo.textContent = 'Ligar tudo';
+  btnLigarTudo.addEventListener('click', () => {
+    for (const camada of camadas) {
+      // Camada vazia tem a chave desabilitada (ver montarLinha) — respeitar
+      // o mesmo estado aqui, em vez de chamar onToggle numa linha que a
+      // própria UI nunca deixaria a pessoa ligar pelo clique.
+      if (camada.vazia) continue;
+      // A trava do dia: ver o comentário grande no topo do arquivo.
+      if (camada.pesada) continue;
+      if (state.get(camada.id)) continue;
+      aplicarEstado(camada.id, true);
+      if (typeof onToggle === 'function') onToggle(camada.id, true);
+    }
+  });
+
+  const btnDesligarTudo = document.createElement('button');
+  btnDesligarTudo.type = 'button';
+  btnDesligarTudo.className = 'layer-bulk-btn';
+  btnDesligarTudo.textContent = 'Desligar tudo';
+  btnDesligarTudo.addEventListener('click', () => {
+    // Desligar não tem o custo de ligar (LayerManager.disable só remove da
+    // cena e libera GPU) — por isso desliga TUDO, pesadas inclusive, sem
+    // exceção: é a saída de emergência de quem ligou demais.
+    for (const camada of camadas) {
+      if (!state.get(camada.id)) continue;
+      aplicarEstado(camada.id, false);
+      if (typeof onToggle === 'function') onToggle(camada.id, false);
+    }
+  });
+
+  bulkBtns.append(btnLigarTudo, btnDesligarTudo);
+  bulk.appendChild(bulkBtns);
+
+  // Diz, em palavras, o que "tudo" não cobre — sem isto o botão mentiria por
+  // omissão toda vez que alguém conferisse a lista depois e achasse uma
+  // camada pesada desligada sem explicação.
+  const pesadas = camadas.filter((c) => c.pesada);
+  if (pesadas.length) {
+    const notaPesadas = document.createElement('p');
+    notaPesadas.className = 'layer-bulk-nota';
+    const nomes = pesadas.map((c) => c.label).join(', ');
+    notaPesadas.textContent = pesadas.length === 1
+      ? `"Ligar tudo" pula "${nomes}" — é grande demais para ligar de uma vez sem travar o navegador no celular. Liga na chave dela, à parte.`
+      : `"Ligar tudo" pula estas camadas, grandes demais para ligar de uma vez sem travar o navegador no celular: ${nomes}. Ligue-as na chave de cada uma, à parte.`;
+    bulk.appendChild(notaPesadas);
+  }
+
+  el.appendChild(bulk);
+
   // Envelope de todos os grupos — é isto que `.collapsed` esconde (ver
   // hud.css). Precisa envolver os TÍTULOS de assunto também: escondendo só as
   // `.layer-list` internas, o painel colapsado mostraria títulos de seção sem
@@ -307,6 +405,24 @@ export function createLayersPanel(el, { camadas, assuntos, regioes, onToggle, on
     // que a linha tem.
     marca.setAttribute('role', 'img');
     marca.setAttribute('aria-label', NOME_DA_FORMA[forma] ?? '');
+
+    // --- ícone do conceito (ver icones.js) -----------------------------------
+    // Junto do marcador, não no lugar dele: o marcador diz FORMA DE DESENHO
+    // (área/ponto/linha — real e verificável no globo); o ícone diz ASSUNTO
+    // (barragem, mineração, dinheiro...) — são duas perguntas diferentes, e a
+    // pessoa que já usa o marcador para se orientar sem cor não pode perder
+    // essa pista por causa de um ícone novo.
+    //
+    // O `span.layer-icone` é criado SEMPRE, mesmo quando `criarIconeCamada`
+    // devolve `null` (camada nova sem ícone mapeado ainda): cada `.layer-row`
+    // é o próprio grid (`display: grid` por linha — ver hud.css), então uma
+    // coluna a menos numa linha só desalinharia nome/contador dela contra
+    // todas as outras. Melhor uma célula vazia do que a lista tremendo.
+    const iconeWrap = document.createElement('span');
+    iconeWrap.className = 'layer-icone';
+    iconeWrap.style.setProperty('--cor-camada', cor);
+    const icone = criarIconeCamada(camada.id);
+    if (icone) iconeWrap.appendChild(icone);
 
     // --- nome + contador ----------------------------------------------------
     const texto = document.createElement('div');
@@ -423,7 +539,7 @@ export function createLayersPanel(el, { camadas, assuntos, regioes, onToggle, on
     // Dentro de `.layer-text` ele herdaria a coluna estreita do nome — medido:
     // ~120 px para um parágrafo de 10 px, que sai pior que o texto sempre
     // visível que esta entrega veio substituir.
-    row.append(marca, texto, count, explicar, chave, detalhe);
+    row.append(marca, iconeWrap, texto, count, explicar, chave, detalhe);
     linhas.set(camada.id, row);
     return row;
   }
