@@ -5,6 +5,7 @@ import { contarReunioesCopam } from "@/lib/db/queries/copam";
 import { contarBarragensMg } from "@/lib/db/queries/barragens";
 import { contarLicenciamento } from "@/lib/db/queries/ambiental-licenciamento";
 import { contarLegislacaoAmbiental } from "@/lib/db/queries/legislacao-ambiental";
+import { contarDireitoCritico } from "@/lib/db/queries/direito-critico";
 
 /**
  * Home da zona /ambiental.
@@ -27,12 +28,14 @@ import { contarLegislacaoAmbiental } from "@/lib/db/queries/legislacao-ambiental
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
 
 export default async function AmbientalHome() {
-  const [{ reunioes, itens }, barragens, { total: totalLicencas }, legislacao] = await Promise.all([
-    contarReunioesCopam(),
-    contarBarragensMg(),
-    contarLicenciamento(),
-    contarLegislacaoAmbiental(),
-  ]);
+  const [{ reunioes, itens }, barragens, { total: totalLicencas }, legislacao, direitoCritico] =
+    await Promise.all([
+      contarReunioesCopam(),
+      contarBarragensMg(),
+      contarLicenciamento(),
+      contarLegislacaoAmbiental(),
+      contarDireitoCritico(),
+    ]);
   const temBarragens = barragens.totalFeam > 0 || barragens.totalSnisb > 0;
 
   const BLOCOS = [
@@ -86,6 +89,19 @@ export default async function AmbientalHome() {
       href: "/legislacao",
       pronta: legislacao.total > 0,
       linkTexto: "Buscar legislação →",
+    },
+    {
+      titulo: "Legislação e precedentes por tema",
+      linha:
+        direitoCritico.normas + direitoCritico.precedentes > 0
+          ? `${formatNumberBR(direitoCritico.normas)} instrumentos + ${formatNumberBR(direitoCritico.precedentes)} precedentes`
+          : "Carga inicial ainda não rodou",
+      texto:
+        "Legislação nacional/internacional e precedentes de tribunais, na mesma busca, filtrados por tema de direito protegido: rios, indígena, quilombola, comunidades tradicionais e direitos humanos.",
+      fase: "F7",
+      href: "/direito-critico",
+      pronta: direitoCritico.normas + direitoCritico.precedentes > 0,
+      linkTexto: "Ver legislação e precedentes →",
     },
   ];
 
