@@ -7,6 +7,7 @@ import {
   TEXTO_CIDH,
   TEXTO_NAO_E_ACONSELHAMENTO,
   textoUrgencia,
+  textoLacunaMunicipal,
 } from "@/lib/denuncia/roteiro";
 import { TIPO_PROVA_LABEL } from "@/lib/denuncia/provas";
 
@@ -65,6 +66,15 @@ export interface OpcoesDocumento {
   cidadeNome: string | null;
   /** Itens já filtrados e deduplicados pelo chamador (ver `Facilitador.tsx`). */
   itensSugeridos: ItemPainel[];
+  /**
+   * Fase 3 — distingue as 6 cidades com dado municipal próprio das demais
+   * ~848 de Minas. Decide se o documento leva o aviso de
+   * `textoLacunaMunicipal()` ("nenhum canal municipal catalogado aqui").
+   * Sem isto, o documento herdaria só a lista (já corretamente vazia de
+   * municipal para cidade não cadastrada) sem explicar o porquê — e quem lê
+   * o documento depois, sem o contexto da tela, pode achar que é omissão.
+   */
+  cidadeCadastrada: boolean;
   data?: Date;
 }
 
@@ -121,6 +131,8 @@ export function comporDocumentoDenuncia(
   }
 
   blocos.push({ tipo: "subtitulo", texto: "Para onde este documento pode ser levado" });
+  const lacunaMunicipal = textoLacunaMunicipal(opcoes.cidadeCadastrada);
+  if (lacunaMunicipal) blocos.push({ tipo: "aviso", texto: lacunaMunicipal });
   if (opcoes.itensSugeridos.length === 0) {
     blocos.push({
       tipo: "paragrafo",
@@ -128,9 +140,10 @@ export function comporDocumentoDenuncia(
     });
   } else {
     for (const item of opcoes.itensSugeridos) {
+      const nota = item.nota ? ` — atenção: ${item.nota}` : "";
       blocos.push({
         tipo: "item",
-        texto: `${item.nome} — ${item.oQueAtende} (${contatoDoItem(item)}; verificado em ${item.verificadoEm})`,
+        texto: `${item.nome} — ${item.oQueAtende} (${contatoDoItem(item)}; verificado em ${item.verificadoEm})${nota}`,
       });
     }
   }

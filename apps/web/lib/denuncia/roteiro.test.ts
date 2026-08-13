@@ -1,7 +1,12 @@
 import { describe, expect, test } from "vitest";
-import { REDE_ITENS, montarItensPainel } from "@/lib/betim/redeProtecao";
+import { REDE_ITENS, montarItensPainel, itensSemCidade } from "@/lib/betim/redeProtecao";
 import { comoIdMunicipio, type Cidade } from "@/lib/db/queries/municipios";
-import { necessidadesSugeridas, regrasAplicaveis, textoUrgencia } from "./roteiro";
+import {
+  necessidadesSugeridas,
+  regrasAplicaveis,
+  textoUrgencia,
+  textoLacunaMunicipal,
+} from "./roteiro";
 import type { RespostasDenuncia } from "./tipos";
 import { respostasVazias } from "./tipos";
 
@@ -126,6 +131,35 @@ describe("integridade: toda Necessidade usada em roteiro.ts existe em algum item
     // documenta a decisão: se algum dia `roteiro.ts` passar a citar um id
     // fixo, este teste vira o lugar certo para checar que ele existe.
     expect(idsReais.size).toBeGreaterThan(0);
+  });
+});
+
+describe("textoLacunaMunicipal — Fase 3, a trava contra endereço inventado", () => {
+  test("cidade cadastrada não leva aviso nenhum", () => {
+    expect(textoLacunaMunicipal(true)).toBeNull();
+  });
+
+  test("cidade não cadastrada leva aviso explícito, com a busca oficial da PCMG, nunca um endereço", () => {
+    const texto = textoLacunaMunicipal(false);
+    expect(texto).not.toBeNull();
+    expect(texto).toMatch(/nenhum canal municipal/i);
+    expect(texto).toMatch(/PCMG/);
+    // A trava real: o aviso não pode conter um número de rua — só a busca
+    // oficial. Se algum dia alguém colar um endereço aqui "para ajudar",
+    // este teste quebra.
+    expect(texto).not.toMatch(/\bRua\b|\bAv\.\b|\bAvenida\b/);
+  });
+
+  test("trava real: itensSemCidade() nunca devolve item municipal — é o que sustenta o aviso acima", () => {
+    // Este é o teste que prova a garantia por trás do texto: se algum item
+    // municipal (delegacia, CRAS, LAI de prefeitura específica) algum dia
+    // vazar para `itensSemCidade()`, a Fase 3 estaria mostrando um endereço
+    // não cadastrado para a cidade da pessoa ao lado do aviso "nenhum canal
+    // municipal catalogado" — os dois juntos seriam uma contradição visível
+    // na tela. Quebrar isto de propósito (comentar o `.filter` em
+    // `redeProtecao.ts`) faz este teste falhar.
+    const itens = itensSemCidade();
+    expect(itens.every((it) => it.abrangencia !== "municipal")).toBe(true);
   });
 });
 

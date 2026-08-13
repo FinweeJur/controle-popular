@@ -16,6 +16,7 @@ import {
   necessidadesSugeridas,
   regrasAplicaveis,
   textoUrgencia,
+  textoLacunaMunicipal,
   TEXTO_CIDH,
   TEXTO_NAO_E_ACONSELHAMENTO,
   TEXTO_VISITA_REGISTRADA,
@@ -29,10 +30,11 @@ import { apagarRascunho, carregarRascunho, salvarRascunho, type RascunhoCarregad
 /**
  * `ssr: false` é obrigatório, não preferência — mesmo motivo de
  * `BotoesBinarios.tsx`/`FormularioOficio.tsx` em `app/congresso/...`: sem
- * isto o Next compila `docx` (importado por `render-binario.ts`) para o
- * grafo de SSR também, e o teto de 3 MB gzip do Worker do Cloudflare Free
- * fica em risco. Aqui isso é bônus — o motivo que decide é de privacidade
- * (ver `render-binario.ts`), mas o motivo técnico continua valendo.
+ * isto o Next compila `docx` E `pdf-lib` (importados por `render-binario.ts`)
+ * para o grafo de SSR também, e o teto de 3 MB gzip do Worker do Cloudflare
+ * Free fica em risco. Aqui isso é bônus — o motivo que decide é de
+ * privacidade (ver `render-binario.ts`), mas o motivo técnico continua
+ * valendo.
  */
 const BaixarDocumento = dynamic(() => import("./BaixarDocumento"), {
   ssr: false,
@@ -225,6 +227,13 @@ export default function Facilitador({ cidades }: { cidades: Cidade[] }) {
     [violadores, situacoes]
   );
 
+  // Fase 3: distingue as 6 cidades com dado próprio (LAI municipal + itens
+  // restritos de `redeProtecao.ts`) das demais ~848 de Minas, que não têm
+  // levantamento nenhum aqui. `itensSemCidade()` já resolve os itens (só
+  // estadual/federal); `textoLacunaMunicipal` só decide o texto que
+  // explica o porquê, para a ausência nunca parecer esquecimento.
+  const cidadeCadastrada = cidadeEscolhida !== null;
+
   const itensSugeridos = useMemo((): ItemPainel[] => {
     const base = cidadeEscolhida ? montarItensPainel(cidadeEscolhida) : itensSemCidade();
     const filtrados = base.filter((it) => it.necessidades.some((n) => necessidades.includes(n)));
@@ -236,9 +245,11 @@ export default function Facilitador({ cidades }: { cidades: Cidade[] }) {
     });
   }, [cidadeEscolhida, necessidades]);
 
+  const lacunaMunicipal = textoLacunaMunicipal(cidadeCadastrada);
+
   const documento = useMemo(
-    () => comporDocumentoDenuncia(respostas, { cidadeNome, itensSugeridos }),
-    [respostas, cidadeNome, itensSugeridos]
+    () => comporDocumentoDenuncia(respostas, { cidadeNome, itensSugeridos, cidadeCadastrada }),
+    [respostas, cidadeNome, itensSugeridos, cidadeCadastrada]
   );
 
   const urgencia = textoUrgencia(respostas.continua);
@@ -589,9 +600,22 @@ export default function Facilitador({ cidades }: { cidades: Cidade[] }) {
         <div className="mt-3 space-y-6">
           <h2 className="font-display text-xl font-semibold">Para onde levar isto</h2>
 
+          {/* O plano exige este aviso ONDE A SUGESTÃO DE DESTINO APARECE, não só no
+              rodapé — por isso vem antes da lista, não depois: é a moldura com que a
+              pessoa deve LER a lista, não uma nota de rodapé que ela já passou. */}
+          <div className="rounded-2xl border-2 p-5" style={{ borderColor: "var(--cp-primary)" }}>
+            <p className="font-medium text-text">{TEXTO_NAO_E_ACONSELHAMENTO}</p>
+          </div>
+
           {urgencia && (
             <div className="rounded-2xl border-2 p-5" style={{ borderColor: "var(--cp-alert)" }}>
               <p className="font-medium text-text">{urgencia}</p>
+            </div>
+          )}
+
+          {lacunaMunicipal && (
+            <div className="rounded-2xl border border-dashed border-accent bg-accent/10 p-5">
+              <p className="font-medium text-text">{lacunaMunicipal}</p>
             </div>
           )}
 
@@ -627,6 +651,17 @@ export default function Facilitador({ cidades }: { cidades: Cidade[] }) {
                       Abrir site oficial →
                     </a>
                   )}
+                  {/* `nota` é onde a Fase 1 já guardava ressalva por item (ex.: "fora de
+                      BH, use a busca da PCMG" em `rede-deam-bh`) — a Fase 1 não
+                      renderizava este campo aqui, então a ressalva existia no dado mas
+                      não chegava à tela exatamente onde mais importa: junto da
+                      sugestão. Mesmo padrão de `CardItem` em `SeletorRedeGeral.tsx`. */}
+                  {it.nota && (
+                    <p className="mt-2 rounded-lg border border-dashed border-accent bg-accent/10 px-2.5 py-1.5 text-xs text-text">
+                      <span className="font-medium">Atenção: </span>
+                      {it.nota}
+                    </p>
+                  )}
                   <p className="mt-2 text-[.7em] text-text-soft">Verificado em {it.verificadoEm}</p>
                 </li>
               ))}
@@ -657,9 +692,6 @@ export default function Facilitador({ cidades }: { cidades: Cidade[] }) {
             </p>
           </div>
 
-          <div className="rounded-2xl border-2 p-5" style={{ borderColor: "var(--cp-primary)" }}>
-            <p className="font-medium text-text">{TEXTO_NAO_E_ACONSELHAMENTO}</p>
-          </div>
           <div className="rounded-2xl border border-border bg-surface p-5">
             <p className="text-[.9em] text-text-soft">{TEXTO_CIDH}</p>
           </div>
@@ -672,8 +704,9 @@ export default function Facilitador({ cidades }: { cidades: Cidade[] }) {
         <div className="mt-3 space-y-6">
           <h2 className="font-display text-xl font-semibold">Baixe o registro</h2>
           <p className="text-text-soft">
-            Um arquivo .docx com tudo que você respondeu, pronto para levar à Defensoria, a um
-            advogado ou ao NAJUP. Nada de &quot;enviar&quot; — só baixar.
+            Um arquivo com tudo que você respondeu, pronto para levar à Defensoria, a um advogado
+            ou ao NAJUP — em .docx (para editar) ou .pdf (para abrir em qualquer celular e
+            mostrar na tela, se precisar). Nada de &quot;enviar&quot; — só baixar.
           </p>
           <BaixarDocumento documento={documento} />
           <BarraNavegacao passo={passo} onVoltar={() => irPara(7)} />
