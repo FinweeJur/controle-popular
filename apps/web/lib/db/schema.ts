@@ -1533,6 +1533,67 @@ export const ambiental_legislacao = pgTable("ambiental_legislacao", {
 	check("ambiental_legislacao_fonte_check", sql`fonte = ANY (ARRAY['almg'::text, 'semad'::text, 'siam'::text])`),
 ]);
 
+/**
+ * Legislação (LAWS) da seção "legislação e precedentes por tema de direito
+ * protegido" — migration `0067`. Fonte:
+ * `etl/betim/dados-seed/direito-critico-popular.html`, ingestor
+ * `scripts/ingest-direito-critico-popular.mts`. `relevancia_html` já vem
+ * sanitizado do ingestor (só `<strong>` sobrevive); `artigos` é texto puro
+ * (tooltips de glossário da fonte são descartados, não reproduzidos).
+ */
+export const direito_critico_normas = pgTable("direito_critico_normas", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	origem: text().default('direito-critico-popular').notNull(),
+	id_fonte: integer().notNull(),
+	numero: text(),
+	nome_curto: text().notNull(),
+	nome_completo: text().notNull(),
+	natureza: text().notNull(),
+	destaque: boolean().default(false).notNull(),
+	link_oficial: text().notNull(),
+	relevancia_html: text().notNull(),
+	artigos: jsonb().default([]).notNull(),
+	temas: text().array().default([]).notNull(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("direito_critico_normas_natureza_idx").using("btree", table.natureza.asc().nullsLast().op("text_ops")),
+	index("direito_critico_normas_temas_idx").using("gin", table.temas.asc().nullsLast().op("array_ops")),
+	unique("direito_critico_normas_origem_id_fonte_key").on(table.origem, table.id_fonte),
+	check("direito_critico_normas_natureza_check", sql`natureza = ANY (ARRAY['nacional'::text, 'internacional'::text])`),
+]);
+
+/**
+ * Precedentes (JURIS) da mesma seção — migration `0067`. Mesma fonte e
+ * mesmo ingestor de `direito_critico_normas`. `tags` é o vocabulário
+ * próprio da fonte (ex.: "Risco Integral"); `temas` são os mesmos temas de
+ * direito protegido usados no filtro da legislação — eixo independente de
+ * `natureza` (nacional/internacional).
+ */
+export const direito_critico_precedentes = pgTable("direito_critico_precedentes", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	origem: text().default('direito-critico-popular').notNull(),
+	id_fonte: integer().notNull(),
+	tribunal: text().notNull(),
+	natureza: text().notNull(),
+	destaque: boolean().default(false).notNull(),
+	link_oficial: text(),
+	titulo: text().notNull(),
+	referencia: text(),
+	ementa: text().notNull(),
+	relevancia: text().notNull(),
+	tags: text().array().default([]).notNull(),
+	temas: text().array().default([]).notNull(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("direito_critico_precedentes_natureza_idx").using("btree", table.natureza.asc().nullsLast().op("text_ops")),
+	index("direito_critico_precedentes_temas_idx").using("gin", table.temas.asc().nullsLast().op("array_ops")),
+	index("direito_critico_precedentes_tags_idx").using("gin", table.tags.asc().nullsLast().op("array_ops")),
+	unique("direito_critico_precedentes_origem_id_fonte_key").on(table.origem, table.id_fonte),
+	check("direito_critico_precedentes_natureza_check", sql`natureza = ANY (ARRAY['nacional'::text, 'internacional'::text])`),
+]);
+
 export const mortalidade = pgTable("mortalidade", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
 	id_municipio: text().notNull(),
