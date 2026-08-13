@@ -49,6 +49,7 @@
 
 import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync, writeFileSync, statSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -175,6 +176,16 @@ const ORIGENS = {
     obtencao: 'automatica',
     servico: 'ANM/SIGMINE — processos minerários de MG nas demais fases (requerimento, pesquisa, disponibilidade): processo protocolado, não mina',
   },
+  // Dinheiro público e mineração (13/08/2026) — ver
+  // docs/HANDOFF-CAMADA-DINHEIRO.md e docs/FONTES-FLUXO-FINANCEIRO.md.
+  'cfem-municipios': {
+    obtencao: 'automatica',
+    servico: 'ANM — CFEM (Compensação Financeira pela Exploração Mineral) arrecadada em 2024, por município',
+  },
+  'cruzamento-dinheiro-ambiental-4cidades': {
+    obtencao: 'derivada',
+    origem: 'IDE-Sisema/SEMAD (licenciamento ambiental) cruzado com PNCP (contratos) e Portal da Transparência (convênios federais), por raiz de CNPJ, só nos 4 municípios com dado de contrato/convênio coletado',
+  },
 };
 
 /**
@@ -194,31 +205,58 @@ const LACUNA_PRINCIPAL =
   + 'do Estado de Minas. Por isso o mapa mostra terra SEM CADASTRO, que é outra '
   + 'coisa: ausência de declaração no CAR não é ausência de dono.';
 
-/** Feições e impressão digital de um arquivo de camada. */
+/**
+ * Feições e impressão digital de um arquivo de camada.
+ *
+ * ⟲ 13/08/2026 — passou a aceitar `.geojson.gz` (três camadas saíram do
+ * repositório em versão crua — teto de 25 MiB do Workers Static Assets, ver
+ * scripts/comprimir-camadas-grandes.mjs). `bytes`/`sha256` continuam medindo
+ * o arquivo QUE O NAVEGADOR BAIXA (o `.gz`, menor — é o que importa para
+ * quem está pensando em teto de deploy e custo de rede), e `feicoes` precisa
+ * descomprimir primeiro: contar direto no `.gz` cru daria a contagem de
+ * bytes comprimidos, não de feições.
+ */
 function medir(arquivo) {
   const caminho = path.join(DIR_CAMADAS, arquivo);
   const bruto = readFileSync(caminho);
+  const comprimido = arquivo.endsWith('.gz');
   let feicoes = null;
   try {
-    const fc = JSON.parse(bruto.toString('utf8'));
+    const texto = (comprimido ? gunzipSync(bruto) : bruto).toString('utf8');
+    const fc = JSON.parse(texto);
     feicoes = Array.isArray(fc.features) ? fc.features.length : null;
   } catch {
-    // Arquivo ilegível entra no manifesto sem contagem, e não fora dele.
+    // Arquivo ilegível (ou .gz corrompido) entra no manifesto sem contagem,
+    // e não fora dele.
     feicoes = null;
   }
   return {
     feicoes,
     bytes: bruto.length,
+    comprimido,
     sha256: createHash('sha256').update(bruto).digest('hex'),
     mtime_utc: statSync(caminho).mtime.toISOString(),
   };
 }
 
 function gerar() {
-  const arquivos = readdirSync(DIR_CAMADAS).filter((f) => f.endsWith('.geojson')).sort();
+  // `.geojson.gz` ANTES de `.geojson` na ordenação não importa aqui — o que
+  // importa é que os dois casam com o mesmo `id` (tira as duas extensões) e
+  // nenhum arquivo é ignorado. Hoje nenhuma camada tem as duas versões ao
+  // mesmo tempo (ver a nota de `comprimida` em js/config.js: o cru saiu do
+  // repo nas três que ganharam `.gz`), mas se algum dia tiver, o `.gz` vence
+  // — é o que o navegador de fato baixa.
+  const arquivos = readdirSync(DIR_CAMADAS)
+    .filter((f) => f.endsWith('.geojson') || f.endsWith('.geojson.gz'))
+    .sort();
 
-  const fontes = arquivos.map((arquivo) => {
-    const id = arquivo.replace(/\.geojson$/, '');
+  const porId = new Map();
+  for (const arquivo of arquivos) {
+    const id = arquivo.replace(/\.geojson(\.gz)?$/, '');
+    if (arquivo.endsWith('.gz') || !porId.has(id)) porId.set(id, arquivo);
+  }
+
+  const fontes = [...porId.entries()].map(([id, arquivo]) => {
     const declarada = ORIGENS[id];
     return {
       camada: id,

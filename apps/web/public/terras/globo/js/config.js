@@ -101,6 +101,18 @@ export const ABERTURA = { id: 'abertura', label: 'Minas Gerais', boundary: 'mg' 
 //             nessa fonte apaga a flag — mesma disciplina de manter os
 //             números escritos à mão no `hint` (ex.: "35 áreas") batendo com
 //             o pipeline: ninguém aqui é recalculado sozinho.
+// - comprimida = o arquivo servido é `dados/camadas/<id>.geojson.gz`, não
+//             `<id>.geojson` — `data/api.js` (`fetchLayer`) busca o `.gz` e
+//             descomprime com `DecompressionStream('gzip')` antes do
+//             `JSON.parse`. Existe porque o teto de arquivo do Workers Static
+//             Assets é 25 MiB (free E pago) e `sigmine-interesse.geojson` cru
+//             pesava 32,4 MiB — o deploy falhava nesse arquivo. Só as camadas
+//             acima de ~8 MiB levam a flag (lista e antes/depois medido em
+//             scripts/comprimir-camadas-grandes.mjs); as menores ficam cru,
+//             porque gzipar tudo complicaria o carregador sem ganho nenhum.
+//             Nasce omitida/`false`. O `.geojson` cru destas três fontes
+//             SAIU do repositório de propósito — manter as duas versões
+//             dobraria o peso do repo sem servir a ninguém.
 // Cores seguem o design system Orbit Veil (documents/designs/).
 // ---------------------------------------------------------------------------
 
@@ -163,6 +175,13 @@ export const ASSUNTOS = [
   // assentamento ou terra certificada), e mineração/barragem são risco, não
   // destinação.
   { id: 'territorio-mineracao', titulo: 'Território indígena, mineração e barragens' },
+  // Novo em 13/08/2026 (docs/HANDOFF-CAMADA-DINHEIRO.md). Logo depois de
+  // 'territorio-mineracao' porque a CFEM é royalty de mineração — a mesma
+  // atividade que a seção acima trata como risco, aqui vira dinheiro público.
+  // O cruzamento de licença ambiental × contrato/convênio não é só mineração
+  // (setor inclui resíduos e infraestrutura também), mas nasceu junto e cabe
+  // melhor perto da irmã do que sozinho antes de 'cidade'.
+  { id: 'dinheiro', titulo: 'Dinheiro público e mineração' },
   { id: 'cidade',        titulo: 'Cidade e imóveis urbanos' },
   { id: 'pistas',        titulo: 'Fiscalização e pistas' },
   { id: 'referencia',    titulo: 'Referência do mapa' },
@@ -440,13 +459,18 @@ export const LAYER_REGISTRY = [
     id: 'zas-barragens', label: 'Zona de Autossalvamento (ZAS)',
     hint: 'O trecho do vale, rio abaixo de cada barragem, onde a lei manda o EMPREENDEDOR avisar a população — não dá tempo de a Defesa Civil chegar primeiro. 156 barragens de MG têm essa mancha publicada pela FEAM. NÃO é um raio: é a geometria real do Estudo de Ruptura Hipotética de Barragem (ERHB), medida caso a caso. Um círculo de 8 km erraria até 127× a área e, pior, erraria a DIREÇÃO — incluiria morro acima onde não há risco e excluiria vale abaixo de 8 km, onde a onda de fato chega.',
     aviso: 'A FEAM publica ZAS para 156 das 259 barragens que cadastra em MG — as outras 103 não têm mancha aqui: ausência de mancha não é ausência de risco, é ausência de dado publicado. O status do PAE (Plano de Ação de Emergência) de cada barragem aparece na ficha: "em análise" quer dizer que o próprio órgão ainda não bateu o martelo sobre aquela mancha.',
-    color: 0x00c8d6, /* --layer-zas */ on: false, render: 'fill', listavel: true,
+    // comprimida: arquivo cru pesava 12,08 MiB — acima do limiar de ~8 MiB
+    // que justifica o custo do carregador saber descomprimir. Ver
+    // scripts/comprimir-camadas-grandes.mjs (12,08 MiB -> 3,28 MiB, 3,7×).
+    color: 0x00c8d6, /* --layer-zas */ on: false, render: 'fill', listavel: true, comprimida: true,
   },
   {
     id: 'mancha-inundacao-barragens', label: 'Mancha de inundação (barragens)',
     hint: 'O alcance máximo da onda numa ruptura hipotética da barragem — maior que a ZAS, porque a ZAS é só o trecho onde não dá tempo de a autoridade agir; a mancha é o alcance inteiro. Mesma fonte (FEAM/ERHB), 156 barragens de MG.',
     aviso: 'Cenário de RUPTURA HIPOTÉTICA — é o que o estudo de engenharia considera o pior caso plausível, não uma previsão de que a barragem vá romper.',
-    color: 0xcc94ef, /* --layer-mancha-inundacao */ on: false, render: 'fill', listavel: true,
+    // comprimida: arquivo cru pesava 14,36 MiB. Ver
+    // scripts/comprimir-camadas-grandes.mjs (14,36 MiB -> 3,93 MiB, 3,7×).
+    color: 0xcc94ef, /* --layer-mancha-inundacao */ on: false, render: 'fill', listavel: true, comprimida: true,
   },
   {
     id: 'terras-indigenas', label: 'Terras indígenas',
@@ -494,7 +518,38 @@ export const LAYER_REGISTRY = [
     id: 'sigmine-interesse', label: 'Interesse minerário (processo na ANM)',
     hint: '47.830 poligonais em MG — requerimento de pesquisa, de lavra, de licenciamento, área em disponibilidade. É um PAPEL PROTOCOLADO na ANM, não uma mina: mostra onde há interesse ou pressão futura, não onde já se extrai. Muitos nunca viram nada.',
     aviso: 'Nenhum destes polígonos representa extração em curso — para isso, ver a camada "Minas em operação". A fase de cada processo aparece na ficha.',
-    color: 0x62b5ff, /* --layer-sigmine-interesse */ on: false, render: 'fill', listavel: true,
+    // comprimida: é a MAIOR camada do globo cru — 32,37 MiB, sozinha acima do
+    // teto de 25 MiB do Workers Static Assets (free E pago). Sem isto o
+    // deploy falha neste arquivo. Ver scripts/comprimir-camadas-grandes.mjs
+    // (32,37 MiB -> 6,06 MiB, 5,3×).
+    color: 0x62b5ff, /* --layer-sigmine-interesse */ on: false, render: 'fill', listavel: true, comprimida: true,
+  },
+  // --- Dinheiro público e mineração (13/08/2026) --------------------------
+  //
+  // docs/HANDOFF-CAMADA-DINHEIRO.md — entregue por outro agente, noutro
+  // worktree, que deixou este arquivo e o painel intocados de propósito para
+  // não colidir com quem editava território/mineração ao mesmo tempo (ver o
+  // bloco de comentário logo acima). Este é o "ligar" — as duas fontes abaixo
+  // são exatamente as que o handoff descreve, com os textos dele.
+  //
+  // Nenhuma das duas tem `regioes`: nenhuma bate contra REGIOES (bacia do
+  // Paraopeba / Jequitinhonha / Mucuri) — CFEM cruza Jequitinhonha com o
+  // Quadrilátero Ferrífero, que nem está na lista, e o cruzamento de dinheiro
+  // mistura Jequitinhonha (Araçuaí/Diamantina/Itinga) com a Metropolitana
+  // (Betim). Forçar região aqui seria afirmar um recorte que a fonte não tem.
+  {
+    id: 'cfem-municipios',
+    label: 'CFEM — royalty da mineração por município',
+    hint: '10 municípios de MG (Vale do Jequitinhonha + Quadrilátero Ferrífero) e quanto arrecadaram de CFEM em 2024 — de R$ 679 mil em Conselheiro Lafaiete a R$ 346,8 milhões em Congonhas.',
+    aviso: 'CFEM arrecadada não é o que a prefeitura recebe: a Lei 13.540/2017 reparte entre União, estado, município produtor e afetados, e o relatório de distribuição por município da ANM está vazio (reconfirmado ao vivo em 13/08/2026). NÃO SOME entre municípios: a mesma guia de uma mineradora pode aparecer inteira em duas cidades ao mesmo tempo (medido: SIGMA MINERAÇÃO, R$ 6,29 milhões, em Itinga E em Araçuaí) — somar dobra o número. Cobertura: 10 de 854 municípios de MG, não é o estado inteiro.',
+    color: 0xd3a931, /* --layer-cfem */ on: false, render: 'fill', listavel: true,
+  },
+  {
+    id: 'cruzamento-dinheiro-ambiental-4cidades',
+    label: 'Quem tem licença ambiental e recebe dinheiro público',
+    hint: '4 empresas que têm licença ambiental em algum lugar de Minas e já receberam R$ 33 milhões em contratos (PNCP) ou convênios federais pagos por Araçuaí, Betim, Diamantina ou Itinga — 11 licenças ambientais ao todo, porque uma mesma empresa (ex. CEMIG) pode ter várias.',
+    aviso: 'Cobre só 4 dos 854 municípios de MG (Araçuaí, Betim, Diamantina, Itinga) — os únicos onde contratos/convênios (presos à tabela `municipios`, 6 linhas) já coexistem com o licenciamento ambiental estadual (854 municípios). Ausência de ponto aqui NÃO quer dizer que a empresa não recebe dinheiro público — quer dizer que os outros 850 municípios ainda não têm contrato/convênio coletado para cruzar. O ponto marca ONDE fica a licença ambiental, não a sede de quem pagou. O cruzamento é por RAIZ de CNPJ (8 dígitos): identifica a empresa, mas não distingue matriz de filial.',
+    color: 0x9da4ff, /* --layer-dinheiro-cruzamento */ on: false, render: 'point', pointSize: 0.007, listavel: true,
   },
   // --- Normas geolocalizadas (11/08/2026) ----------------------------------
   //
@@ -724,6 +779,21 @@ export const CAMADAS = [
     aviso: 'Nenhum destes polígonos representa extração em curso — para isso, ver a camada "Minas em operação". A fase de cada processo aparece na ficha.',
     fontes: ['sigmine-interesse'],
   },
+  // --- Dinheiro público e mineração (13/08/2026, docs/HANDOFF-CAMADA-DINHEIRO.md)
+  {
+    id: 'cfem-municipios', assunto: 'dinheiro',
+    label: 'CFEM — royalty da mineração por município',
+    hint: '10 municípios de MG (Vale do Jequitinhonha + Quadrilátero Ferrífero) e quanto arrecadaram de CFEM em 2024 — de R$ 679 mil em Conselheiro Lafaiete a R$ 346,8 milhões em Congonhas.',
+    aviso: 'CFEM arrecadada não é o que a prefeitura recebe: a Lei 13.540/2017 reparte entre União, estado, município produtor e afetados. NÃO SOME entre municípios: a mesma guia de uma mineradora pode aparecer inteira em duas cidades ao mesmo tempo (medido: SIGMA MINERAÇÃO, R$ 6,29 milhões, em Itinga E em Araçuaí). Cobertura: 10 de 854 municípios de MG.',
+    fontes: ['cfem-municipios'],
+  },
+  {
+    id: 'cruzamento-dinheiro-ambiental-4cidades', assunto: 'dinheiro',
+    label: 'Quem tem licença ambiental e recebe dinheiro público',
+    hint: '4 empresas que têm licença ambiental em algum lugar de Minas e já receberam R$ 33 milhões em contratos (PNCP) ou convênios federais pagos por Araçuaí, Betim, Diamantina ou Itinga — 11 licenças ambientais ao todo, porque uma mesma empresa (ex. CEMIG) pode ter várias.',
+    aviso: 'Cobre só 4 dos 854 municípios de MG — os únicos onde contratos/convênios coletados já coexistem com o licenciamento ambiental estadual. Ausência de ponto aqui NÃO quer dizer que a empresa não recebe dinheiro público, quer dizer que os outros 850 municípios ainda não têm contrato/convênio coletado para cruzar. O cruzamento é por RAIZ de CNPJ (8 dígitos): identifica a empresa, mas não distingue matriz de filial.',
+    fontes: ['cruzamento-dinheiro-ambiental-4cidades'],
+  },
   {
     id: 'lotes-vagos-bh', assunto: 'cidade',
     label: 'Lotes vagos em Belo Horizonte',
@@ -791,7 +861,7 @@ export const CAMADA_POR_FONTE = new Map(
  * Confere, na carga do módulo, que os dois lados batem: toda fonte citada por
  * uma camada existe, e toda fonte do registro está em alguma camada.
  *
- * É barato (33 comparações) e pega na hora o erro que de outro modo aparece
+ * É barato (49 comparações) e pega na hora o erro que de outro modo aparece
  * como "uma camada sumiu do painel" — que é exatamente o defeito que
  * `agruparPorRegiao` já tinha tido de aprender a não cometer em silêncio.
  * Aviso, e não exceção: uma fonte órfã não deve impedir o globo de abrir.
@@ -864,7 +934,7 @@ export function resolverCamada(camada) {
   };
 }
 
-/** As 14 linhas do painel, já resolvidas. É isto que o main.js entrega à UI. */
+/** As 22 linhas do painel, já resolvidas. É isto que o main.js entrega à UI. */
 export const CAMADAS_RESOLVIDAS = CAMADAS.map(resolverCamada);
 
 /**

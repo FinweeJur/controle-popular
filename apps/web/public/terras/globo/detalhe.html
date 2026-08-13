@@ -154,6 +154,7 @@
       from '/terras/globo/js/ui/rotulos.js';
     import { LAYER_REGISTRY } from '/terras/globo/js/config.js';
     import { injetarProveniencia } from '/terras/globo/js/ui/proveniencia.js';
+    import { fetchLayer } from '/terras/globo/js/data/api.js';
 
     injetarProveniencia(document.getElementById('prov'));
 
@@ -200,18 +201,26 @@
         return;
       }
       try {
-        // Arquivo estático do portal — era /api/v1/camadas/{id} no backend
-        // FastAPI original (só um FileResponse do mesmo arquivo, sem lógica).
-        const resp = await fetch(`/terras/globo/dados/camadas/${encodeURIComponent(camada)}.geojson`);
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-        const fc = await resp.json();
+        // Resolvido ANTES do fetch porque `fetchLayer` precisa saber se esta
+        // camada é `comprimida` (config.js) para pedir o `.geojson.gz` certo
+        // em vez do `.geojson` cru — ver js/data/api.js. A COR e o RÓTULO da
+        // camada também saem daqui, mesmo motivo de antes: antes o rótulo era
+        // buscado lá embaixo e a cor vinha de outra tabela, que é como as
+        // duas se separaram.
+        const cfg = LAYER_REGISTRY.find((l) => l.id === camada);
+        // `fetchLayer` é o MESMO caminho que o globo usa (js/layers/manager.js):
+        // arquivo estático do portal, com o desvio de descompressão para as
+        // camadas grandes demais para o teto do Workers Static Assets. Antes
+        // esta tela tinha o próprio `fetch(".../<id>.geojson")` cravado à
+        // mão — funcionava até o dia em que uma camada passou a ser servida
+        // só como `.geojson.gz`, e "ver de perto" de um achado de
+        // sigmine-interesse/zas-barragens/mancha-inundacao-barragens quebrava
+        // com 404 enquanto o globo, que já usava `fetchLayer`, continuava
+        // funcionando.
+        const fc = await fetchLayer(camada, { comprimida: cfg?.comprimida });
         const f = fc.features[fid];
         if (!f) throw new Error(`esta área não existe mais na camada`);
 
-        // Resolvido aqui em cima porque a COR e o RoTULO da camada saem os
-        // dois daqui — antes o rotulo era buscado la embaixo e a cor vinha de
-        // outra tabela, que e como as duas se separaram.
-        const cfg = LAYER_REGISTRY.find((l) => l.id === camada);
         const cor = corDaCamada(cfg);
         const poly = L.geoJSON(f, {
           style: { color: cor, weight: 2, fillColor: cor, fillOpacity: 0.25 },
