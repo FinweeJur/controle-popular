@@ -1,9 +1,31 @@
 # Fontes: Plataforma Brumadinho UFMG
 
+> ⚠️ **CORREÇÃO REGISTRADA EM 13/08/2026, MESMO DIA — ver
+> `docs/PLANO-INTEGRACAO-BRUMADINHO.md`.** A conclusão "não ingerir" do
+> buscador de processos (seções 3 e 7 abaixo) partia de risco **não medido**
+> — "pode conter dado pessoal" tratado como motivo de bloqueio total, em vez
+> de pergunta a medir. O dono corrigiu a premissa: **processo coletivo é
+> público por natureza**, publicidade dos atos processuais é regra
+> (CPC art. 189; LOMAN), não exceção, e o acervo já está publicado pela
+> própria UFMG — copiar metadado já público não cria exposição nova. O plano
+> de integração mediu o índice de verdade (distribuição por tipo de
+> documento, campos expostos, confirmação de que NÃO há PDF nem texto
+> integral acessível ao público) e achou que o risco real está concentrado
+> em ~1,3% do acervo (tipos como "documento de identificação", "comprovante
+> de residência"), não no acervo inteiro. **A ingestão de metadado, com
+> triagem por tipo, está planejada — não bloqueada.** A seção 2 do IDE
+> (camadas geoespaciais) segue com a mesma conclusão de não ingerir, essa
+> reconfirmada, não corrigida. Este documento fica como está abaixo, como
+> registro histórico da pesquisa original — a correção vive no documento
+> novo, não por cima daqui.
+
 Pergunta do dono: dá pra integrar algo do mapa/dados da Plataforma Brumadinho
 UFMG? Resposta longa abaixo. A curta é **quase nada do mapa, e nada do
 buscador de processos** — mas achei um jeito honesto e de custo zero de
 puxar valor de lá mesmo assim: **linkar**, não copiar.
+>
+> *(Ver a caixa de correção no topo: a parte "nada do buscador de processos"
+> foi corrigida em 13/08/2026 — ver `docs/PLANO-INTEGRACAO-BRUMADINHO.md`.)*
 
 Tudo abaixo foi **chamado de verdade e confirmado respondendo** em
 2026-08-13. Onde não confirmei, está escrito que não confirmei.
