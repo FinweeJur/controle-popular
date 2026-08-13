@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { incrementarCliquesZapD1 } from "@/lib/db/queries/betimD1";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 import { ipDoCliente } from "@/lib/rate-limit-ip";
 import { limitarAltaFrequencia, respostaLimiteExcedido } from "@/lib/rate-limit";
@@ -11,6 +11,12 @@ import { limitarAltaFrequencia, respostaLimiteExcedido } from "@/lib/rate-limit"
  * ao papel anônimo nesta tabela. Sem RLS no caminho, virou um UPDATE só,
  * atômico — o que também fecha a janela em que dois cliques simultâneos
  * liam o mesmo número e gravavam o mesmo, perdendo uma contagem.
+ *
+ * ⟲ 2026-08-13: migrado de Postgres para D1 — mesmo motivo do
+ * `api/pageview` (ver o cabeçalho daquele arquivo). `zap_estabelecimentos`
+ * em D1 só tem as linhas cadastradas via D1 depois desta migration; a
+ * tabela homônima do Postgres continua existindo, mas não recebe mais
+ * escrita — é a mesma divergência documentada em `api/zap/route.din.ts`.
  */
 export async function POST(
   request: Request,
@@ -25,7 +31,7 @@ export async function POST(
   if (!cidade) return Response.json({ ok: false }, { status: 404 });
 
   try {
-    const row = await q.incrementarCliquesZap(cidade.id_municipio, id);
+    const row = await incrementarCliquesZapD1(cidade.id_municipio, id);
     // Sem linha: não existe, não é desta cidade, ou não está aprovado.
     if (!row) return Response.json({ ok: false }, { status: 404 });
     return Response.json({ ok: true, cliques: row.cliques });

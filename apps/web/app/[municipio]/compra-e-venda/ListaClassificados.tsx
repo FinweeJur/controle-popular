@@ -7,6 +7,8 @@ import {
   type ClassificadoAnuncio,
 } from "@/lib/betim/classificados";
 import { formatCurrencyBRL } from "@/lib/betim/format";
+import { useCaminhoDaCidade } from "@/lib/betim/basePath";
+import { useListaAoVivo } from "@/lib/betim/lista-ao-vivo";
 import { useSearchParams } from "next/navigation";
 
 /**
@@ -58,9 +60,13 @@ function ClassificadosConteudo({
   categoria,
   q,
 }: ClassificadosProps & { categoria: string | null; q: string | null }) {
+  // Mesma razão de `ListaZap`: o HTML tem a lista do último build e o
+  // anúncio aprovado vive no D1. Ver `lib/betim/lista-ao-vivo.ts`.
+  const caminho = useCaminhoDaCidade();
+  const aoVivo = useListaAoVivo<ClassificadoAnuncio>(caminho("/api/classificados"), anuncios);
 
   const termo = q?.toLocaleLowerCase("pt-BR");
-  const rows = anuncios.filter((item) => {
+  const rows = aoVivo.filter((item) => {
     // Igualdade estrita, ao contrário da bandeira em `ListaPostos`: a
     // categoria não vem de fonte externa. O único caminho de escrita é a POST
     // de `/api/classificados`, que recusa o que não estiver em

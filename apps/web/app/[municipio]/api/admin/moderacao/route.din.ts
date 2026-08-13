@@ -1,7 +1,17 @@
 import { isAdminAuthorized } from "@/lib/betim/adminAuth";
-import * as q from "@/lib/db/queries/betim";
+import {
+  aprovarPendenteD1,
+  pendentesDeModeracaoD1,
+  rejeitarPendenteD1,
+  TABELAS_MODERADAS_D1,
+} from "@/lib/db/queries/betimD1";
+import type { TabelaModeradaD1 } from "@/lib/db/queries/betimD1";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 
+// ⟲ 2026-08-13: migrado de Postgres para D1 — `zap_estabelecimentos` e
+// `classificados` só existem em D1 desde esta migration (ver o cabeçalho
+// de `lib/db/schema.d1.ts`), então a moderação tem de ler e escrever lá,
+// não mais no Postgres.
 type Ctx = { params: Promise<{ municipio: string }> };
 
 export async function GET(request: Request, { params }: Ctx) {
@@ -13,7 +23,7 @@ export async function GET(request: Request, { params }: Ctx) {
   const cidade = await obterCidadePorSlug(municipio);
   if (!cidade) return Response.json({ error: "Cidade não encontrada." }, { status: 404 });
 
-  const pendentes = await q.pendentesDeModeracao(cidade.id_municipio);
+  const pendentes = await pendentesDeModeracaoD1(cidade.id_municipio);
   if (!pendentes) return Response.json({ error: "Banco não configurado." }, { status: 503 });
 
   return Response.json(pendentes);
@@ -42,18 +52,18 @@ export async function POST(request: Request, { params }: Ctx) {
   // identificador SQL.
   if (
     typeof tabela !== "string" ||
-    !(tabela in q.TABELAS_MODERADAS) ||
+    !(tabela in TABELAS_MODERADAS_D1) ||
     typeof id !== "string" ||
     typeof aprovado !== "boolean"
   ) {
     return Response.json({ error: "tabela/id/aprovado inválidos." }, { status: 400 });
   }
-  const alvo = tabela as q.TabelaModerada;
+  const alvo = tabela as TabelaModeradaD1;
 
   try {
     const row = aprovado
-      ? await q.aprovarPendente(cidade.id_municipio, alvo, id)
-      : await q.rejeitarPendente(cidade.id_municipio, alvo, id);
+      ? await aprovarPendenteD1(cidade.id_municipio, alvo, id)
+      : await rejeitarPendenteD1(cidade.id_municipio, alvo, id);
     // Nada devolvido: o cadastro não existe, é de outra cidade, ou (no
     // caso de rejeitar) já estava aprovado.
     if (!row) return Response.json({ error: "Cadastro não encontrado." }, { status: 404 });

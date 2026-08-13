@@ -1,9 +1,21 @@
 import type { NextRequest } from "next/server";
-import * as q from "@/lib/db/queries/betim";
+import { inserirZapEstabelecimentoD1, zapEstabelecimentosD1 } from "@/lib/db/queries/betimD1";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
-import { fetchZapEstabelecimentos, validateZapSubmission } from "@/lib/betim/zap";
+import { validateZapSubmission } from "@/lib/betim/zap";
 import { ipDoCliente } from "@/lib/rate-limit-ip";
 import { limitarBaixaFrequencia, respostaLimiteExcedido } from "@/lib/rate-limit";
+
+/**
+ * GET e POST no MESMO banco (D1) desde 2026-08-13. Enquanto o GET ficou no
+ * Postgres, aprovar um cadastro não publicava nada: a linha existia só no
+ * D1 e a listagem procurava no outro banco.
+ *
+ * A página `/zap` é estática — o HTML dela sai do build, que não tem
+ * binding de D1 e por isso ainda vem do Postgres. É ESTA rota que tem o
+ * dado de verdade, e é o navegador que troca uma lista pela outra depois de
+ * montar (`useListaAoVivo`, em `ListaZap`). Sem essa troca, um cadastro
+ * aprovado só apareceria no rebuild seguinte.
+ */
 
 /** Rota de cidade: `params.municipio` é o slug, e a consulta filtra por id. */
 type Ctx = { params: Promise<{ municipio: string }> };
@@ -19,16 +31,16 @@ export async function GET(request: NextRequest, { params }: Ctx) {
   const bairrosParam = sp.get("bairros") ?? undefined;
   const bairros = bairrosParam ? bairrosParam.split(",") : undefined;
 
-  const { rows, configured } = await fetchZapEstabelecimentos(cidade.id_municipio, {
-    categoria,
-    q,
-    bairros,
-  });
+  // `null` só quando o binding não existe (fora do Worker). Lista vazia é
+  // resposta legítima e NÃO pode virar `message` — o cliente trata resposta
+  // com `message` como "não deu, fica com o que veio do HTML", e aí uma
+  // cidade sem nenhum cadastro nunca conseguiria mostrar a lista vazia.
+  const rows = await zapEstabelecimentosD1(cidade.id_municipio, { categoria, q, bairros });
 
-  if (!configured) {
+  if (!rows) {
     return Response.json({
       rows: [],
-      message: "Fonte de dados não configurada (DATABASE_URL ausente).",
+      message: "Fonte de dados não configurada (binding DB_ESCRITAS ausente).",
     });
   }
 
@@ -65,7 +77,7 @@ export async function POST(request: NextRequest, { params }: Ctx) {
   try {
     // A cidade gravada vem do segmento da rota, não mais de uma constante
     // de build que carimbava todo cadastro como de Betim.
-    const row = await q.inserirZapEstabelecimento(cidade.id_municipio, {
+    const row = await inserirZapEstabelecimentoD1(cidade.id_municipio, {
       nome: validated.value.nome,
       whatsapp: validated.value.whatsapp,
       categoria: validated.value.categoria,

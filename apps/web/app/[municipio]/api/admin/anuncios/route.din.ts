@@ -1,5 +1,5 @@
 import { isAdminAuthorized } from "@/lib/betim/adminAuth";
-import * as q from "@/lib/db/queries/betim";
+import { inserirAnuncioD1, listarAnunciosAdminD1 } from "@/lib/db/queries/betimD1";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 import { ANUNCIO_PLANOS } from "@/lib/betim/anuncios";
 
@@ -7,6 +7,11 @@ import { ANUNCIO_PLANOS } from "@/lib/betim/anuncios";
  * O `ADMIN_TOKEN` é um só para toda a instalação, então ele autoriza mas
  * NÃO escolhe a cidade — quem escolhe é o segmento da rota, e é ele que
  * entra no filtro de toda consulta daqui.
+ *
+ * ⟲ 2026-08-13: migrado de Postgres para D1 — `anuncios` é escrita
+ * admin-only (criação/edição de banner pago), mas mexe no mesmo registro
+ * que o painel lê, então vai junto com as outras quatro escritas nesta
+ * migration.
  */
 type Ctx = { params: Promise<{ municipio: string }> };
 
@@ -19,7 +24,7 @@ export async function GET(request: Request, { params }: Ctx) {
   const cidade = await obterCidadePorSlug(municipio);
   if (!cidade) return Response.json({ error: "Cidade não encontrada." }, { status: 404 });
 
-  const rows = await q.listarAnunciosAdmin(cidade.id_municipio);
+  const rows = await listarAnunciosAdminD1(cidade.id_municipio);
   if (!rows) return Response.json({ error: "Banco não configurado." }, { status: 503 });
 
   return Response.json({ rows });
@@ -53,7 +58,7 @@ export async function POST(request: Request, { params }: Ctx) {
   }
 
   try {
-    const row = await q.inserirAnuncio(cidade.id_municipio, {
+    const row = await inserirAnuncioD1(cidade.id_municipio, {
       nome_comercio,
       plano,
       banner_url,

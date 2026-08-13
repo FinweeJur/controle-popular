@@ -1,13 +1,18 @@
 import type { NextRequest } from "next/server";
-import * as q from "@/lib/db/queries/betim";
+import { classificadosVigentesD1, inserirClassificadoD1 } from "@/lib/db/queries/betimD1";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
 import {
   CLASSIFICADO_EXPIRACAO_DIAS,
-  fetchClassificados,
   validateClassificadoSubmission,
 } from "@/lib/betim/classificados";
 import { ipDoCliente } from "@/lib/rate-limit-ip";
 import { limitarBaixaFrequencia, respostaLimiteExcedido } from "@/lib/rate-limit";
+
+/**
+ * GET e POST no mesmo D1 desde 2026-08-13, pela razão explicada em
+ * `api/zap/route.din.ts`: banco de escrita diferente do banco de leitura
+ * fazia a moderação aprovar anúncio que nunca chegava na tela.
+ */
 
 /** Rota de cidade: `params.municipio` é o slug, e a consulta filtra por id. */
 type Ctx = { params: Promise<{ municipio: string }> };
@@ -21,15 +26,14 @@ export async function GET(request: NextRequest, { params }: Ctx) {
   const categoria = sp.get("categoria") ?? undefined;
   const q = sp.get("q") ?? undefined;
 
-  const { rows, configured } = await fetchClassificados(cidade.id_municipio, {
-    categoria,
-    q,
-  });
+  // `null` é ausência de binding; `[]` é resposta legítima. Ver a nota
+  // equivalente em `api/zap/route.din.ts`.
+  const rows = await classificadosVigentesD1(cidade.id_municipio, { categoria, q });
 
-  if (!configured) {
+  if (!rows) {
     return Response.json({
       rows: [],
-      message: "Fonte de dados não configurada (DATABASE_URL ausente).",
+      message: "Fonte de dados não configurada (binding DB_ESCRITAS ausente).",
     });
   }
 
@@ -68,7 +72,7 @@ export async function POST(request: NextRequest, { params }: Ctx) {
     // A cidade gravada vem do segmento da rota. Era a constante de build,
     // o que carimbava todo anúncio como de Betim independente de onde o
     // formulário estivesse.
-    const row = await q.inserirClassificado(cidade.id_municipio, {
+    const row = await inserirClassificadoD1(cidade.id_municipio, {
       titulo: validated.value.titulo,
       descricao: validated.value.descricao,
       categoria: validated.value.categoria,
