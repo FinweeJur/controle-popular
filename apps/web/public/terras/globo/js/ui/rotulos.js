@@ -56,6 +56,29 @@ export const ROTULOS = {
   endereco_extraido: 'Lugar citado na norma',
   confianca: 'Confiança da localização',
   link_fonte: 'Norma original',
+  // Terras indígenas (FUNAI, `terras-indigenas`). `fase_ti` é o campo que
+  // mais importa nesta ficha — ver a nota grande em VALORES sobre por que
+  // TODAS as fases entram no mapa, não só "Regularizada".
+  etnia_nome: 'Povo',
+  municipio_nome: 'Município(s)',
+  fase_ti: 'Fase da demarcação',
+  modalidade_ti: 'Modalidade',
+  reestudo_ti: 'Reestudo em andamento',
+  faixa_fronteira: 'Faixa de fronteira',
+  terrai_codigo: 'Código FUNAI',
+  data_atualizacao: 'Atualizado em',
+  // ZAS e mancha de inundação de barragens (FEAM, `zas-barragens` e
+  // `mancha-inundacao-barragens`).
+  estrutura: 'Barragem',
+  empreended: 'Empreendedor',
+  status_pae: 'Situação do PAE',
+  status_erh: 'Situação do estudo de ruptura (ERHB)',
+  id_sigibar: 'Código SIGBM',
+  // SIGMINE/ANM (`sigmine-operacao`, `sigmine-interesse`).
+  processo: 'Processo na ANM',
+  fase: 'Fase do processo',
+  subs: 'Substância',
+  uso: 'Uso declarado',
 };
 
 /** Os dois anos comparados pelo pipeline (mapbiomas.ANOS_MUDANCA). */
@@ -83,6 +106,29 @@ const VALORES = {
     'Encosta em assentamento da reforma agrária: terra pública que já tem destino.',
   territorio_tradicional:
     'Encosta em território quilombola, titulado ou em titulação.',
+  // As fases da demarcação de terra indígena (FUNAI, campo `fase_ti`).
+  //
+  // Por que TODAS aparecem, e por que a frase de cada uma evita soar como
+  // "essa vale menos": o direito territorial indígena é ORIGINÁRIO (CF art.
+  // 231) — a demarcação DECLARA um direito que já existe, não o cria. A
+  // Convenção 169 da OIT (Decreto 10.088/2019, força de lei no Brasil)
+  // condiciona o dever de consulta à AFETAÇÃO do povo, não ao estágio
+  // cartorial do processo. Uma TI "Em Estudo" atingida por uma barragem gera
+  // o mesmo dever de consulta que uma "Regularizada" — ver
+  // docs/FONTES-TERRITORIO-E-MINERACAO.md, seção 1.
+  'Em Estudo': 'Grupo de trabalho constituído pela FUNAI, estudo antropológico em curso. Fase inicial — e uma das mais vulneráveis: é onde um empreendimento tenta correr na frente da demarcação.',
+  'Delimitada': 'Estudo antropológico aprovado e publicado pela FUNAI; ainda não foi ao Ministro da Justiça.',
+  'Declarada': 'Portaria do Ministro da Justiça reconhece os limites da terra — já vale posse plena, mesmo sem o passo seguinte.',
+  'Homologada': 'Decreto do Presidente da República homologou a demarcação; falta só o registro em cartório.',
+  'Regularizada': 'Demarcação concluída e registrada em cartório e na Secretaria de Patrimônio da União — o fim da linha do processo.',
+  'Encaminhada RI': 'Reserva Indígena em tramitação: terra comprada ou doada para o grupo, não é terra de ocupação tradicional.',
+  // A situação do PAE (Plano de Ação de Emergência) de cada barragem, campo
+  // `status_pae` das camadas da FEAM. "Em análise" importa dizer em voz alta:
+  // é o próprio órgão avisando que ainda não bateu o martelo sobre aquela
+  // mancha — ver docs/FONTES-TERRITORIO-E-MINERACAO.md, seção 3.
+  'EM ANALISE': 'A FEAM ainda está analisando o Plano de Ação de Emergência desta barragem — a mancha mostrada é a do Estudo de Ruptura Hipotética já aprovado, mas o PAE em si não foi fechado.',
+  'APROVADO': 'A FEAM já aprovou o Plano de Ação de Emergência desta barragem.',
+  'APROVADA': 'O Estudo de Ruptura Hipotética de Barragem (ERHB) desta estrutura já foi aprovado pela FEAM.',
 };
 
 /**

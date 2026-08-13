@@ -155,6 +155,14 @@ export const ABERTURA = { id: 'abertura', label: 'Minas Gerais', boundary: 'mg' 
 export const ASSUNTOS = [
   { id: 'sem-cadastro',  titulo: 'Terra sem cadastro' },
   { id: 'terra-publica', titulo: 'Terra pública e destinação' },
+  // Novo em 13/08/2026 (docs/FONTES-TERRITORIO-E-MINERACAO.md). Fica logo
+  // depois de 'terra-publica' porque as duas falam de território — mas o que
+  // esta seção reúne é distinto o bastante para não caber lá: terra indígena
+  // não é terra do poder público (é terra da União com usufruto exclusivo do
+  // povo, direito ORIGINÁRIO — CF art. 231, não uma categoria fundiária como
+  // assentamento ou terra certificada), e mineração/barragem são risco, não
+  // destinação.
+  { id: 'territorio-mineracao', titulo: 'Território indígena, mineração e barragens' },
   { id: 'cidade',        titulo: 'Cidade e imóveis urbanos' },
   { id: 'pistas',        titulo: 'Fiscalização e pistas' },
   { id: 'referencia',    titulo: 'Referência do mapa' },
@@ -409,6 +417,85 @@ export const LAYER_REGISTRY = [
     color: 0x45ca96,   /* --layer-spu */ on: false, render: 'point', pointSize: 0.006, listavel: true,
     regioes: ['jequitinhonha', 'mucuri'],
   },
+  // --- Território indígena, mineração e segurança de barragens (13/08/2026)
+  //
+  // docs/FONTES-TERRITORIO-E-MINERACAO.md — pesquisa completa, com todos os
+  // endpoints chamados e as contagens medidas no dia. Corrige uma premissa
+  // errada do plano anterior ("raio de ZAS ou 8 km" em volta da TI): ZAS e
+  // raio de 8 km são dois institutos jurídicos DIFERENTES (seção 4 do
+  // documento) — a ZAS é da barragem, desce o vale, e a FEAM publica a
+  // geometria real; o raio de 8 km é da terra indígena, é círculo de
+  // verdade, e serve para outra pergunta (licenciamento ambiental exigir
+  // oitiva da FUNAI). Esta entrega publica a ZAS real. O raio de 8 km fica
+  // registrado como próximo passo (fonte pronta:
+  // `IDE:ide_2004_mg_raio_rest_terras_indigenas_pol`), fora do escopo de
+  // hoje.
+  //
+  // Nenhuma destas seis fontes tem `regioes`: nenhuma delas traz
+  // `codigo_ibge` nem `municipio` normalizado contra a malha do IBGE (a FEAM
+  // e a FUNAI trazem nome de município cru, não conferido; o SIGMINE não
+  // traz município nenhum), e cruzar isso é trabalho para outra entrega — não
+  // afirmar região que o dado não sustenta agora.
+  {
+    id: 'zas-barragens', label: 'Zona de Autossalvamento (ZAS)',
+    hint: 'O trecho do vale, rio abaixo de cada barragem, onde a lei manda o EMPREENDEDOR avisar a população — não dá tempo de a Defesa Civil chegar primeiro. 156 barragens de MG têm essa mancha publicada pela FEAM. NÃO é um raio: é a geometria real do Estudo de Ruptura Hipotética de Barragem (ERHB), medida caso a caso. Um círculo de 8 km erraria até 127× a área e, pior, erraria a DIREÇÃO — incluiria morro acima onde não há risco e excluiria vale abaixo de 8 km, onde a onda de fato chega.',
+    aviso: 'A FEAM publica ZAS para 156 das 259 barragens que cadastra em MG — as outras 103 não têm mancha aqui: ausência de mancha não é ausência de risco, é ausência de dado publicado. O status do PAE (Plano de Ação de Emergência) de cada barragem aparece na ficha: "em análise" quer dizer que o próprio órgão ainda não bateu o martelo sobre aquela mancha.',
+    color: 0x00c8d6, /* --layer-zas */ on: false, render: 'fill', listavel: true,
+  },
+  {
+    id: 'mancha-inundacao-barragens', label: 'Mancha de inundação (barragens)',
+    hint: 'O alcance máximo da onda numa ruptura hipotética da barragem — maior que a ZAS, porque a ZAS é só o trecho onde não dá tempo de a autoridade agir; a mancha é o alcance inteiro. Mesma fonte (FEAM/ERHB), 156 barragens de MG.',
+    aviso: 'Cenário de RUPTURA HIPOTÉTICA — é o que o estudo de engenharia considera o pior caso plausível, não uma previsão de que a barragem vá romper.',
+    color: 0xcc94ef, /* --layer-mancha-inundacao */ on: false, render: 'fill', listavel: true,
+  },
+  {
+    id: 'terras-indigenas', label: 'Terras indígenas',
+    hint: 'As 16 terras indígenas de Minas Gerais, pelo WFS oficial da FUNAI — TODAS as fases de demarcação, não só as já regularizadas. A fase de cada uma aparece na ficha.',
+    aviso: 'O direito territorial indígena é ORIGINÁRIO (CF art. 231): a demarcação DECLARA um direito que já existe, não o cria. Uma TI "Em Estudo" ou "Delimitada" tem o mesmo peso jurídico de consulta (Convenção 169 da OIT) que uma "Regularizada" — por isso o mapa nunca filtra por fase sozinho. — Esta camada NÃO representa territórios de povos e comunidades tradicionais não indígenas e não quilombolas (geraizeiros, vazanteiros, apanhadoras de flores, pescadores artesanais, povos de terreiro): não existe base geográfica oficial aberta para eles em MG — nem no IDE-Sisema, nem em base federal sem login. Ausência no mapa não é ausência do povo: é lacuna de dado, registrada aqui de propósito para ninguém confundir uma coisa com a outra.',
+    color: 0xf188b9, /* --layer-terras-indigenas */ on: false, render: 'fill', listavel: true,
+  },
+  // O alerta é CALCULADO, não uma fonte nova — interseção geométrica de
+  // verdade (`shapely.intersects`/`intersection` sobre a malha COMPLETA, não
+  // simplificada, e não bbox) entre as 16 TIs e as 156 manchas de inundação,
+  // ver scripts/calcular_alerta_ti_mancha.py.
+  //
+  // RESULTADO MEDIDO em 13/08/2026, RODADO de verdade (não presumido): ZERO
+  // interseções reais nas 2.496 combinações possíveis. O documento de
+  // pesquisa tinha achado 6 barragens cruzando a CAIXA (bbox) da TI Aldeia
+  // Katurama e avisava, com todas as letras, que bbox não é interseção de
+  // polígono. Rodada a conta de verdade: era isso mesmo — bbox falso
+  // positivo. Conferido por medição direta (não só pelo `intersects()`): a
+  // mancha mais próxima de Katurama (Barragem de Ibirité, Sarzedo) fica a uns
+  // 2,3 km; as 6 que bateram a caixa ficam entre ~450 m e ~650 m de distância
+  // da borda da TI — perto, mas do lado de fora.
+  //
+  // Isto NÃO torna a camada dispensável — o oposto: "nenhuma terra indígena
+  // de MG está hoje dentro de uma mancha de inundação publicada" é a resposta
+  // à pergunta que a camada existe para fazer, e é uma resposta que só existe
+  // porque a conta rodou. Fica com `vazia: true` pela mesma regra de
+  // `devolutas-arrecadadas`: arquivo estruturalmente vazio HOJE, resultado
+  // real, não erro de carga — o painel avisa isso antes do clique.
+  {
+    id: 'alerta-ti-mancha', label: 'Terra indígena atingida por mancha de barragem',
+    hint: 'Interseção de geometria de verdade (não caixa aproximada) entre as 16 terras indígenas de MG e as 156 manchas de inundação de barragem da FEAM. Hoje o resultado é zero: nenhuma terra indígena publicada está dentro de uma mancha publicada. A mais próxima (Aldeia Katurama, perto de Brumadinho) fica a uns 450 m de distância de seis manchas diferentes — perto, mas fora.',
+    aviso: '"Zero hoje" não é "seguro para sempre": a FEAM só publica mancha para 156 das 259 barragens de MG (ver a camada "Mancha de inundação"), e a distância mais próxima medida é de poucas centenas de metros — dentro da margem de um novo estudo de ruptura, ou de uma barragem sem mancha publicada, mudar essa conta. Se algum dia uma interseção real aparecer, esta camada é o lugar onde ela vai surgir.',
+    color: 0xfb8a82, /* var(--danger) — risco calculado, não fonte de dado nova */ on: false, render: 'fill', listavel: true, vazia: true,
+  },
+  // SIGMINE/ANM. DUAS camadas, nunca uma — ver a nota grande em
+  // scripts/ingerir_sigmine.py. Só ~12,9% das 54.920 poligonais de MG
+  // autorizam extrair; publicar tudo como "empreendimento minerário" diria
+  // que uns 30% do estado é mina, o que é falso.
+  {
+    id: 'sigmine-operacao', label: 'Minas em operação',
+    hint: 'Processos da ANM cuja fase autoriza extrair minério de verdade: Concessão de Lavra, Licenciamento, Lavra Garimpeira ou Registro de Extração. 7.090 poligonais em MG — só aqui a palavra "mina" é precisa.',
+    color: 0x70c678, /* --layer-sigmine-operacao */ on: true, render: 'fill', listavel: true,
+  },
+  {
+    id: 'sigmine-interesse', label: 'Interesse minerário (processo na ANM)',
+    hint: '47.830 poligonais em MG — requerimento de pesquisa, de lavra, de licenciamento, área em disponibilidade. É um PAPEL PROTOCOLADO na ANM, não uma mina: mostra onde há interesse ou pressão futura, não onde já se extrai. Muitos nunca viram nada.',
+    aviso: 'Nenhum destes polígonos representa extração em curso — para isso, ver a camada "Minas em operação". A fase de cada processo aparece na ficha.',
+    color: 0x62b5ff, /* --layer-sigmine-interesse */ on: false, render: 'fill', listavel: true,
+  },
   // --- Normas geolocalizadas (11/08/2026) ----------------------------------
   //
   // Pedido do dono do projeto: leis/decretos com endereço virarem camada no
@@ -591,6 +678,51 @@ export const CAMADAS = [
     label: 'Terras devolutas já reconhecidas',
     hint: 'Terra que o Estado já declarou devoluta. O INCRA não publica essa base — por isso a camada está vazia. A lacuna é o achado: não há como conferir de fora quanta terra devoluta já foi reconhecida em Minas.',
     fontes: ['devolutas-arrecadadas'],
+  },
+  // --- Território indígena, mineração e segurança de barragens -----------
+  // Seis linhas, cada uma numa fonte só (sem irmã regional a fundir) — ver o
+  // bloco de comentário grande em LAYER_REGISTRY, acima, para o porquê de
+  // cada camada e as ressalvas jurídicas.
+  {
+    id: 'zas-barragens', assunto: 'territorio-mineracao',
+    label: 'Zona de Autossalvamento (ZAS)',
+    hint: 'O trecho do vale, rio abaixo de cada barragem, onde a lei manda o EMPREENDEDOR avisar a população — não dá tempo de a Defesa Civil chegar primeiro. 156 barragens de MG têm essa mancha publicada pela FEAM. NÃO é um raio: é a geometria real do Estudo de Ruptura Hipotética de Barragem (ERHB). Um círculo de 8 km erraria até 127× a área e, pior, erraria a direção.',
+    aviso: 'A FEAM publica ZAS para 156 das 259 barragens que cadastra em MG — as outras 103 não têm mancha aqui: ausência de mancha não é ausência de risco, é ausência de dado publicado.',
+    fontes: ['zas-barragens'],
+  },
+  {
+    id: 'mancha-inundacao-barragens', assunto: 'territorio-mineracao',
+    label: 'Mancha de inundação (barragens)',
+    hint: 'O alcance máximo da onda numa ruptura hipotética da barragem — maior que a ZAS, que é só o trecho onde não dá tempo de a autoridade agir. Mesma fonte (FEAM/ERHB), 156 barragens de MG.',
+    aviso: 'Cenário de RUPTURA HIPOTÉTICA — o pior caso plausível que o estudo de engenharia considera, não uma previsão de que a barragem vá romper.',
+    fontes: ['mancha-inundacao-barragens'],
+  },
+  {
+    id: 'terras-indigenas', assunto: 'territorio-mineracao',
+    label: 'Terras indígenas',
+    hint: 'As 16 terras indígenas de Minas Gerais, pelo WFS oficial da FUNAI — TODAS as fases de demarcação, não só as já regularizadas. A fase de cada uma aparece na ficha.',
+    aviso: 'O direito territorial indígena é ORIGINÁRIO (CF art. 231): a demarcação DECLARA um direito que já existe, não o cria. Uma TI "Em Estudo" ou "Delimitada" tem o mesmo peso de consulta (Convenção 169 da OIT) que uma "Regularizada". — Esta camada NÃO representa territórios de povos e comunidades tradicionais não indígenas e não quilombolas (geraizeiros, vazanteiros, apanhadoras de flores, pescadores artesanais, povos de terreiro): não existe base geográfica oficial aberta para eles em MG. Ausência no mapa é lacuna de dado, não ausência do povo.',
+    fontes: ['terras-indigenas'],
+  },
+  {
+    id: 'alerta-ti-mancha', assunto: 'territorio-mineracao',
+    label: 'Terra indígena atingida por mancha de barragem',
+    hint: 'Interseção de geometria de verdade (não caixa aproximada) entre as 16 terras indígenas de MG e as 156 manchas de inundação de barragem da FEAM. Hoje o resultado é zero: nenhuma terra indígena publicada está dentro de uma mancha publicada. A mais próxima (Aldeia Katurama, perto de Brumadinho) fica a uns 450 m de distância de seis manchas diferentes — perto, mas fora.',
+    aviso: '"Zero hoje" não é "seguro para sempre": a FEAM só publica mancha para 156 das 259 barragens de MG, e a distância mais próxima medida é de poucas centenas de metros. Se algum dia uma interseção real aparecer, esta camada é o lugar onde ela vai surgir.',
+    fontes: ['alerta-ti-mancha'],
+  },
+  {
+    id: 'sigmine-operacao', assunto: 'territorio-mineracao',
+    label: 'Minas em operação',
+    hint: 'Processos da ANM cuja fase autoriza extrair minério de verdade: Concessão de Lavra, Licenciamento, Lavra Garimpeira ou Registro de Extração. 7.090 poligonais em MG — só aqui a palavra "mina" é precisa.',
+    fontes: ['sigmine-operacao'],
+  },
+  {
+    id: 'sigmine-interesse', assunto: 'territorio-mineracao',
+    label: 'Interesse minerário (processo na ANM)',
+    hint: '47.830 poligonais em MG — requerimento de pesquisa, de lavra, de licenciamento, área em disponibilidade. É um PAPEL PROTOCOLADO na ANM, não uma mina: mostra onde há interesse ou pressão futura, não onde já se extrai.',
+    aviso: 'Nenhum destes polígonos representa extração em curso — para isso, ver a camada "Minas em operação". A fase de cada processo aparece na ficha.',
+    fontes: ['sigmine-interesse'],
   },
   {
     id: 'lotes-vagos-bh', assunto: 'cidade',

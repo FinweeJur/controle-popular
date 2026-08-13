@@ -149,6 +149,32 @@ const ORIGENS = {
     obtencao: 'propria',
     origem: 'Levantamento em imprensa — ainda não coletado',
   },
+  // Território indígena, mineração e barragens (13/08/2026) — ver
+  // docs/FONTES-TERRITORIO-E-MINERACAO.md.
+  'zas-barragens': {
+    obtencao: 'automatica',
+    servico: 'FEAM/IDE-Sisema — Zona de Autossalvamento (ide_1903_mg_zas_pae_pol), geometria do Estudo de Ruptura Hipotética de Barragem, simplificada para desenho',
+  },
+  'mancha-inundacao-barragens': {
+    obtencao: 'automatica',
+    servico: 'FEAM/IDE-Sisema — mancha de inundação (ide_1903_mg_mancha_inundacao_pae_pol), mesma origem da ZAS, simplificada para desenho',
+  },
+  'terras-indigenas': {
+    obtencao: 'automatica',
+    servico: 'FUNAI — WFS oficial (Funai:tis_poligonais), todas as fases de demarcação',
+  },
+  'alerta-ti-mancha': {
+    obtencao: 'derivada',
+    origem: 'Interseção geométrica real (shapely, não bbox) entre terras-indigenas e a geometria completa (não simplificada) da mancha de inundação',
+  },
+  'sigmine-operacao': {
+    obtencao: 'automatica',
+    servico: 'ANM/SIGMINE — processos minerários de MG, só as fases que autorizam extrair (Concessão de Lavra, Licenciamento, Lavra Garimpeira, Registro de Extração)',
+  },
+  'sigmine-interesse': {
+    obtencao: 'automatica',
+    servico: 'ANM/SIGMINE — processos minerários de MG nas demais fases (requerimento, pesquisa, disponibilidade): processo protocolado, não mina',
+  },
 };
 
 /**

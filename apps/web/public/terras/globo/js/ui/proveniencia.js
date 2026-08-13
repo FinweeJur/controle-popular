@@ -69,6 +69,13 @@ const NOMES = {
   'checagem-g0': 'Amostra em conferência',
   'devolutas-arrecadadas': 'Terras devolutas já reconhecidas',
   'pesquisa-noticias': 'Lugares abandonados na imprensa',
+  // Território indígena, mineração e barragens (13/08/2026).
+  'zas-barragens': 'Zona de Autossalvamento (ZAS)',
+  'mancha-inundacao-barragens': 'Mancha de inundação (barragens)',
+  'terras-indigenas': 'Terras indígenas',
+  'alerta-ti-mancha': 'Terra indígena atingida por mancha de barragem',
+  'sigmine-operacao': 'Minas em operação',
+  'sigmine-interesse': 'Interesse minerário (processo na ANM)',
 
   // ── chaves do pipeline original (`pipeline/proveniencia.py`) ──
   car_sicar: 'Cadastro Ambiental Rural (CAR)',
