@@ -3,6 +3,7 @@ import Link from "@/lib/ambiental/link";
 import ThemeSwitcher from "@/app/ambiental/components/ThemeSwitcher";
 import FontSizeControl from "@/app/ambiental/components/FontSizeControl";
 import CvdToggle from "@/app/components/CvdToggle";
+import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * Zona /ambiental. O `<html>`, as fontes e o ThemeProvider vêm do layout
@@ -120,6 +121,11 @@ export default function AmbientalLayout({
               Código
             </a>
           </p>
+
+          {/* Rodapé padrão do portal (busca, dados populares, as cinco
+              frentes, sobre/metodologia) — ver `FooterGlobal.tsx` para por
+              que ele mora aqui e não foi reinventado zona a zona. */}
+          <FooterGlobal />
         </div>
       </footer>
     </>

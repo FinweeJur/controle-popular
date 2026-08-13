@@ -1,5 +1,6 @@
 import Link from "@/lib/betim/link";
 import type { Cidade } from "@/lib/db/queries/municipios";
+import FooterGlobal from "@/app/components/FooterGlobal";
 
 const CIDADE_LINKS = [
   { label: "Prefeitura", href: "/prefeitura" },
@@ -89,6 +90,20 @@ export default function Footer({ cidade }: { cidade: Cidade }) {
           </ul>
         </div>
       </div>
+
+      {/* Extensão do rodapé padrão do portal (busca, dados populares, as
+          cinco frentes, sobre/metodologia) — ver `FooterGlobal.tsx` para a
+          decisão de arquitetura: este rodapé de cidade é RICO demais
+          (LAI, ouvidoria, fontes de dados por município) para virar
+          FooterGlobal sozinho, então ele o ESTENDE em vez de ser
+          substituído por ele. O "Sobre o projeto" logo abaixo, no rodapé
+          de baixo, é o `/sobre` LOCAL da cidade (via `<Link>` de zona,
+          `/betim/sobre`); o "Sobre o projeto" dentro do FooterGlobal é o
+          `/sobre` da RAIZ — a apresentação do portal inteiro. */}
+      <div className="mx-auto max-w-6xl">
+        <FooterGlobal />
+      </div>
+
       <div className="mx-auto mt-8 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-border pt-5 text-[.8em] text-text-soft">
         <span>© {new Date().getFullYear()} controlepopular.br · iniciativa cidadã independente</span>
         <div className="flex flex-wrap gap-4">
