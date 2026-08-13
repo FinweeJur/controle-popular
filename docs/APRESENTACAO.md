@@ -924,7 +924,100 @@ lado a lado rótulos produzidos por réguas diferentes.
 
 ---
 
-## 10. O que falta
+## 10. O que mudou em 13 de agosto de 2026
+
+Esta seção é o registro do dia, e existe pela mesma razão que a seção sobre a
+taxa de erro: **é mais fácil confiar num projeto que conta o que deu errado.**
+
+### Seis CPF de pessoa real saíram do repositório — que é público
+
+Uma varredura de segurança encontrou seis CPF válidos, de pessoas reais, em
+arquivos já publicados. O repositório é `PUBLIC`; qualquer busca pelo número
+devolvia o vínculo.
+
+**Quatro deles estavam no comentário que documenta a função que remove CPF.**
+Alguém mediu o vazamento na base real, colou o exemplo verdadeiro para
+justificar a proteção, e o exemplo virou o vazamento.
+
+A lição generaliza para além deste projeto: as defesas existentes — lista
+branca de colunas na exportação, bloqueio de campo com nome de autuado,
+sanitização no coletor — vivem **todas no caminho do dado**. Nenhuma olhava
+para código-fonte, e foi por ali que vazou.
+
+Entrou uma trava em três camadas (teste na suíte, hook de pre-push e
+verificação na integração contínua), todas chamando o mesmo script. E entrou
+uma regra: ao ilustrar formato de documento em comentário, usa-se sempre valor
+sintético — o exemplo real não documenta melhor, só vaza. Detalhe em
+`docs/ANTES-DO-PUSH.md`.
+
+⚠️ **O histórico não foi limpo.** Os valores continuam recuperáveis nos commits
+antigos. Limpar exige reescrever 304 dos 305 commits e um pedido de coleta de
+lixo ao GitHub — decisão pendente, registrada como tal.
+
+### Três das quatro travas nasceram cegas
+
+Vale contar porque é o tipo de erro que passa despercebido: das quatro
+verificações escritas naquele dia, **três passavam verde sem enxergar nada.**
+Uma usava `\d` numa ferramenta que não conhece `\d`; outra usava sintaxe de
+expressão regular que a ferramenta rejeitava em silêncio; a terceira teve um
+caractere convertido em byte de controle na escrita.
+
+Nenhuma apareceria sem sabotagem deliberada — reintroduzir o defeito de
+propósito e confirmar que a trava reprova. Ao fazer isso, ela pegou o sabotado
+**e um sexto CPF que a varredura original não tinha achado.**
+
+E a quarta: o teste que valida o detector de CPF usava, como exemplo de
+"válido", **um dos CPF reais que o commit estava removendo** — pela mesma
+lógica que criou o vazamento original.
+
+### Legislação e precedentes por tema de direito protegido
+
+Seção nova reunindo 30 instrumentos normativos (20 nacionais, 10
+internacionais) e 15 decisões paradigmáticas (STJ, Corte IDH, STF, TJMG e
+ONU), consultáveis juntos e filtráveis por tema.
+
+O acervo semente foi curado em torno de barragens e atingidos, e **a
+consequência disso está declarada na tela**: temas como proteção de serras
+nascem com zero instrumento, e a interface diz isso ao ser clicada, em vez de
+esconder o tema ou fingir cobertura. Uma pesquisa paralela
+(`docs/MICROSSISTEMA-LACUNAS.md`) mediu a lacuna tema a tema e recomenda
+lançar com três, não sete.
+
+### Filtro temático na legislação ambiental
+
+Oito temas e tags derivadas da ementa sobre as 6.378 normas. A classificação
+alcança **1.991 normas, 31,2% do acervo** — e a tela publica esse número, com
+a divisão por fonte, porque só a ALMG mantém indexação temática oficial e ela
+cobre 69 normas. Norma que não casa aparece como "sem tema atribuído", nunca
+empurrada para um balde genérico.
+
+### Endurecimento
+
+- **Cabeçalhos de segurança** nos dois caminhos de resposta. A política de
+  conteúdo entra em modo de observação, não bloqueante: uma política
+  restritiva que apagasse o mapa 3D seria removida na semana seguinte.
+- **O IP do visitante** passou a vir do cabeçalho que a borda reescreve. O
+  anterior era escrito pelo cliente — quem quisesse trocava a cada requisição
+  e ganhava um limite novo, o que tornava o limitador decorativo.
+- **Limite nas quatro escritas públicas**, com dois patamares: alto onde a
+  frequência legítima é alta, apertado no cadastro. Quem é barrado recebe
+  resposta que explica e diz quando tentar de novo.
+
+### O que estava fora do ar, e por quê
+
+Todas as rotas dinâmicas respondiam erro 500 — busca, chat, contador,
+classificados. As páginas, servidas como arquivos estáticos, respondiam
+normalmente.
+
+A causa: o Worker tentava alcançar um banco em `127.0.0.1`, que de dentro da
+Cloudflare é a própria Cloudflare. A correção em curso separa por natureza —
+**leitura vira estática** (a busca já tem índice estático de 16 MB e
+provavelmente nem precisa de banco) e **escrita vai para um banco nativo da
+plataforma**, porque não se escreve em arquivo estático.
+
+---
+
+## 11. O que falta
 
 Esta seção é parte do produto, não um apêndice.
 
