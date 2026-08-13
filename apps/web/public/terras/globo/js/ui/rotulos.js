@@ -136,7 +136,11 @@ const VALORES = {
  * de camadas e no aviso ao pé da ficha.
  */
 export const OCULTAS = new Set([
-  'nome', 'name', 'fixture',
+  // 'estrutura' (nome da barragem, FEAM) entrou aqui em 13/08/2026 junto com
+  // `tituloDaArea` (ui/inspector.js) passar a usá-la como TÍTULO da ficha —
+  // mesmo motivo de 'nome'/'name': o que já apareceu no título não precisa
+  // de uma linha própria repetindo.
+  'nome', 'name', 'estrutura', 'fixture',
   // As coordenadas saem da tabela e viram um bloco próprio, com botão de
   // copiar: `ponto_lat: -18,758917` numa linha de tabela é número para ler, e
   // ninguém lê coordenada — copia. Ver blocoDeCoordenadas().
