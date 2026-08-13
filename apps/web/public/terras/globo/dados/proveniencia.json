@@ -1,5 +1,5 @@
 {
-  "gerado_em_utc": "2026-08-13T13:56:15.533Z",
+  "gerado_em_utc": "2026-08-13T14:27:26.515Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
     {
@@ -8,7 +8,7 @@
       "bytes": 151,
       "comprimido": false,
       "sha256": "baddff86c41968a366bc5eb331420b43d513c93a890934b841e22dc085db0551",
-      "mtime_utc": "2026-08-13T13:49:15.738Z",
+      "mtime_utc": "2026-08-13T13:27:28.063Z",
       "obtencao": "derivada",
       "origem": "Interseção geométrica real (shapely, não bbox) entre terras-indigenas e a geometria completa (não simplificada) da mancha de inundação"
     },
@@ -18,7 +18,7 @@
       "bytes": 48351,
       "comprimido": false,
       "sha256": "1087564fc396e175d727084363749e5e95165f373e29516d5d719f2df949aac5",
-      "mtime_utc": "2026-08-13T13:49:15.740Z",
+      "mtime_utc": "2026-08-13T13:40:16.375Z",
       "obtencao": "automatica",
       "servico": "ANM — CFEM (Compensação Financeira pela Exploração Mineral) arrecadada em 2024, por município"
     },
@@ -28,7 +28,7 @@
       "bytes": 197428,
       "comprimido": false,
       "sha256": "0dd12119f5fe96f96e2724600707e729d27ef730352af4649037ddcfa62c019b",
-      "mtime_utc": "2026-08-13T13:49:11.090Z",
+      "mtime_utc": "2026-08-11T14:55:52.371Z",
       "obtencao": "propria",
       "origem": "Amostra sorteada e conferida a olho sobre imagem de satélite, para medir quanto o método erra"
     },
@@ -38,7 +38,7 @@
       "bytes": 18298,
       "comprimido": false,
       "sha256": "4df5781329c9ed6c56b22a7668e4300643c740db39e6cfb0f1216a2e38c00bed",
-      "mtime_utc": "2026-08-13T13:49:15.741Z",
+      "mtime_utc": "2026-08-13T13:40:16.383Z",
       "obtencao": "derivada",
       "origem": "IDE-Sisema/SEMAD (licenciamento ambiental) cruzado com PNCP (contratos) e Portal da Transparência (convênios federais), por raiz de CNPJ, só nos 4 municípios com dado de contrato/convênio coletado"
     },
@@ -48,7 +48,7 @@
       "bytes": 45,
       "comprimido": false,
       "sha256": "7d09e532fc380630caac6b4b1b5174a7a9f7a308f6544bcb79eefb97b1e12306",
-      "mtime_utc": "2026-08-13T13:49:11.091Z",
+      "mtime_utc": "2026-08-11T14:55:52.372Z",
       "obtencao": "automatica",
       "servico": "INCRA — base não publicada; a camada existe vazia para registrar a lacuna"
     },
@@ -58,7 +58,7 @@
       "bytes": 1153249,
       "comprimido": false,
       "sha256": "574dd6875d11fb93da0711ca62504afc48633e082e8cb945f4fa2c1de1ef026c",
-      "mtime_utc": "2026-08-13T13:49:11.101Z",
+      "mtime_utc": "2026-08-11T14:55:52.376Z",
       "obtencao": "automatica",
       "servico": "IDE-Sisema (Semad-MG) — áreas embargadas por infração ambiental"
     },
@@ -68,7 +68,7 @@
       "bytes": 3114001,
       "comprimido": false,
       "sha256": "71bb044ced0a7442336e8e97bda9c48ce8c512fd5f88752ff79ae2ef217c0492",
-      "mtime_utc": "2026-08-13T13:49:11.124Z",
+      "mtime_utc": "2026-08-11T14:55:52.387Z",
       "obtencao": "automatica",
       "servico": "Prefeitura de Belo Horizonte — cadastro do IPTU, classe \"LOTE VAGO\""
     },
@@ -78,7 +78,7 @@
       "bytes": 4119218,
       "comprimido": true,
       "sha256": "1431f719eda0aa4ac657f8bc3b5d38e555fbafadd3de73df7b86a1b156bd05ff",
-      "mtime_utc": "2026-08-13T13:56:10.568Z",
+      "mtime_utc": "2026-08-13T14:27:26.452Z",
       "obtencao": "automatica",
       "servico": "FEAM/IDE-Sisema — mancha de inundação (ide_1903_mg_mancha_inundacao_pae_pol), mesma origem da ZAS, simplificada para desenho"
     },
@@ -88,7 +88,7 @@
       "bytes": 1559243,
       "comprimido": false,
       "sha256": "b0db3d3b41c434eb1e2c17bd86946ec3aa33daec03fb39ff544a2017bf64df34",
-      "mtime_utc": "2026-08-13T13:49:11.136Z",
+      "mtime_utc": "2026-08-11T14:55:52.408Z",
       "obtencao": "automatica",
       "servico": "Malha municipal do IBGE"
     },
@@ -98,7 +98,7 @@
       "bytes": 436253,
       "comprimido": false,
       "sha256": "dc7257a3b039cffa0a145f493e946d1944b11819b53b8e780f885286154f8913",
-      "mtime_utc": "2026-08-13T13:49:11.136Z",
+      "mtime_utc": "2026-08-11T16:48:46.994Z",
       "obtencao": "derivada",
       "origem": "Acervo normativo das cidades do portal, com o lugar extraído da ementa e geocodificado pelo Nominatim (nunca do PDF ou do texto completo)"
     },
@@ -108,7 +108,7 @@
       "bytes": 45,
       "comprimido": false,
       "sha256": "7d09e532fc380630caac6b4b1b5174a7a9f7a308f6544bcb79eefb97b1e12306",
-      "mtime_utc": "2026-08-13T13:49:11.136Z",
+      "mtime_utc": "2026-08-11T14:55:52.409Z",
       "obtencao": "propria",
       "origem": "Levantamento em imprensa — ainda não coletado"
     },
@@ -118,7 +118,7 @@
       "bytes": 6352147,
       "comprimido": true,
       "sha256": "a56d0c71b981bc8df3cf3302563b9aec8a4c9b3bbfdd10f8a0a527b6cbb9934c",
-      "mtime_utc": "2026-08-13T13:56:02.995Z",
+      "mtime_utc": "2026-08-13T14:27:26.488Z",
       "obtencao": "automatica",
       "servico": "ANM/SIGMINE — processos minerários de MG nas demais fases (requerimento, pesquisa, disponibilidade): processo protocolado, não mina"
     },
@@ -128,7 +128,7 @@
       "bytes": 5944028,
       "comprimido": false,
       "sha256": "9fadc8af10581a54ad795baf78155e7f312a0a4c3df11f02d90ad180fcb28c56",
-      "mtime_utc": "2026-08-13T13:49:16.074Z",
+      "mtime_utc": "2026-08-13T13:27:28.424Z",
       "obtencao": "automatica",
       "servico": "ANM/SIGMINE — processos minerários de MG, só as fases que autorizam extrair (Concessão de Lavra, Licenciamento, Lavra Garimpeira, Registro de Extração)"
     },
@@ -138,7 +138,7 @@
       "bytes": 260663,
       "comprimido": false,
       "sha256": "b33276b3bfc06c43881b6f376e6124acf5b68d31c52e84cde8ebd96489318a0d",
-      "mtime_utc": "2026-08-13T13:49:16.077Z",
+      "mtime_utc": "2026-08-13T13:27:28.424Z",
       "obtencao": "automatica",
       "servico": "FUNAI — WFS oficial (Funai:tis_poligonais), todas as fases de demarcação"
     },
@@ -148,7 +148,7 @@
       "bytes": 667213,
       "comprimido": false,
       "sha256": "9072fa88a8ac9f8dfc4d3478ac11fbe6e09cf63714c85288f89079d852f0eea6",
-      "mtime_utc": "2026-08-13T13:49:11.156Z",
+      "mtime_utc": "2026-08-11T14:55:52.422Z",
       "obtencao": "derivada",
       "origem": "CAR/SICAR menos as exclusões do IDE-Sisema, sobre a malha do IBGE"
     },
@@ -158,7 +158,7 @@
       "bytes": 4747632,
       "comprimido": false,
       "sha256": "d5f0e67909a9b4bb6eefddbf716619bdfa4bece830302ac098ff24990deba189",
-      "mtime_utc": "2026-08-13T13:49:11.186Z",
+      "mtime_utc": "2026-08-11T14:55:52.452Z",
       "obtencao": "derivada",
       "origem": "CAR/SICAR menos as exclusões do IDE-Sisema, sobre a malha do IBGE"
     },
@@ -168,7 +168,7 @@
       "bytes": 1547567,
       "comprimido": false,
       "sha256": "7bb6c6639066e676ae224639803b335556341d5ea8cad2a8c2b110ea11499b6e",
-      "mtime_utc": "2026-08-13T13:49:11.198Z",
+      "mtime_utc": "2026-08-11T14:55:52.455Z",
       "obtencao": "derivada",
       "origem": "CAR/SICAR menos as exclusões do IDE-Sisema, sobre a malha do IBGE"
     },
@@ -178,7 +178,7 @@
       "bytes": 3436718,
       "comprimido": true,
       "sha256": "054f238e5a7c12634787b6e71e4a55ae808f03660484536c96744fad60cc43b8",
-      "mtime_utc": "2026-08-13T13:56:15.533Z",
+      "mtime_utc": "2026-08-13T14:27:26.515Z",
       "obtencao": "automatica",
       "servico": "FEAM/IDE-Sisema — Zona de Autossalvamento (ide_1903_mg_zas_pae_pol), geometria do Estudo de Ruptura Hipotética de Barragem, simplificada para desenho"
     }
@@ -190,7 +190,7 @@
       "bytes": 113542,
       "comprimido": false,
       "sha256": "2a757c34d7e33adf60b93dc97fcb2941cf1994570b85dea6c48a3d02a1524117",
-      "mtime_utc": "2026-08-13T13:49:11.086Z",
+      "mtime_utc": "2026-08-11T14:55:52.353Z",
       "obtencao": "manual",
       "origem": "INCRA — Projetos de Assentamento, pelo Acervo Fundiário",
       "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
@@ -201,7 +201,7 @@
       "bytes": 48870,
       "comprimido": false,
       "sha256": "1c734b979e19833df7ef43693a22df1d29a072b02333dbca239f18c86108e7c2",
-      "mtime_utc": "2026-08-13T13:49:11.087Z",
+      "mtime_utc": "2026-08-11T14:55:52.368Z",
       "obtencao": "manual",
       "origem": "INCRA — Projetos de Assentamento, pelo Acervo Fundiário",
       "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
@@ -212,7 +212,7 @@
       "bytes": 70917,
       "comprimido": false,
       "sha256": "598ae3f0372f28a39a9bcfa1ad2e1e94637434f08e82a4c1a4f840c9d702468a",
-      "mtime_utc": "2026-08-13T13:49:11.136Z",
+      "mtime_utc": "2026-08-11T14:55:52.409Z",
       "obtencao": "manual",
       "origem": "SPU — cadastro de imóveis da União (só o ponto, nunca o perímetro)"
     },
@@ -222,7 +222,7 @@
       "bytes": 252309,
       "comprimido": false,
       "sha256": "682eabc4e507d8f27a9f61621b906d2b4320e94c9320f3671a7de870d4c8334a",
-      "mtime_utc": "2026-08-13T13:49:11.136Z",
+      "mtime_utc": "2026-08-11T14:55:52.409Z",
       "obtencao": "manual",
       "origem": "SPU — cadastro de imóveis da União (só o ponto, nunca o perímetro)"
     },
@@ -232,7 +232,7 @@
       "bytes": 208072,
       "comprimido": false,
       "sha256": "2bd133d526600382f7e49460cf1c5ef235c59ed5fc6a3bb519fb339c0111bac7",
-      "mtime_utc": "2026-08-13T13:49:11.147Z",
+      "mtime_utc": "2026-08-11T14:55:52.409Z",
       "obtencao": "manual",
       "origem": "INCRA — SIGEF e SNCI Público, pelo Acervo Fundiário",
       "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
@@ -243,7 +243,7 @@
       "bytes": 55737,
       "comprimido": false,
       "sha256": "e251ededd54b28aefd02200ac0381b8c8434e02fbac6ff10b12f7f17274b169b",
-      "mtime_utc": "2026-08-13T13:49:11.149Z",
+      "mtime_utc": "2026-08-11T14:55:52.409Z",
       "obtencao": "manual",
       "origem": "INCRA — SIGEF e SNCI Público, pelo Acervo Fundiário",
       "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
@@ -254,7 +254,7 @@
       "bytes": 42362,
       "comprimido": false,
       "sha256": "d0476d0f646c5b33c3859a87db8cc43e350c5a76185ead49b5ee62df6cb2ab92",
-      "mtime_utc": "2026-08-13T13:49:11.150Z",
+      "mtime_utc": "2026-08-11T14:55:52.418Z",
       "obtencao": "manual",
       "origem": "INCRA — Áreas de Quilombolas, pelo Acervo Fundiário",
       "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
@@ -265,7 +265,7 @@
       "bytes": 1826,
       "comprimido": false,
       "sha256": "9bdfcd794bb0d00917c76163523ea58c121b5b374606c416072afaa3d62f9544",
-      "mtime_utc": "2026-08-13T13:49:11.151Z",
+      "mtime_utc": "2026-08-11T14:55:52.419Z",
       "obtencao": "manual",
       "origem": "INCRA — Áreas de Quilombolas, pelo Acervo Fundiário",
       "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
