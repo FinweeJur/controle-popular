@@ -105,7 +105,31 @@ _REGRAS: dict[str, re.Pattern] = {
         r"barragem|nascente|recurso h[ií]dric|polui[cç][aã]o|"
         r"animais dom[eé]sticos|animais? abandonad|bem-estar animal|"
         r"prote[cç][aã]o animal|usina solar|energia renov[aá]vel|"
-        r"queimada|desmatamento|[oó]leo.{0,15}reciclagem",
+        r"queimada|desmatamento|[oó]leo.{0,15}reciclagem|"
+        # Área protegida -- achado 2026-08-13 investigando a Lei 726/2025 de
+        # Araçuaí, que MODIFICA o zoneamento da APA da Chapada do Lagoão e
+        # caía só em habitacao_urbanismo (por causa da palavra solta
+        # "zoneamento" lá embaixo) sem NUNCA marcar meio_ambiente -- uma
+        # norma que redesenha uma unidade de conservação não é achável por
+        # quem filtra o alerta ambiental. Termos abaixo generalizam a mesma
+        # calibração já usada em `etl/temas_ambientais.py` (tags
+        # `unidade_conservacao`/`area_protecao_ambiental`/`rppn`), que já
+        # tinha essas regras pra `ambiental_legislacao` -- este arquivo
+        # (`atos_oficiais`, câmaras/prefeituras) só não as tinha ainda.
+        # Medido contra as 10.317 linhas de `atos_oficiais` (2026-08-13,
+        # ver scratchpad da sessão): 24 linhas GANHAM meio_ambiente com esta
+        # regra (nenhuma perde tema -- é só união de alternativas), em 4
+        # municípios (Belo Horizonte 9, São Paulo 12, Diamantina 2, Araçuaí
+        # 1 -- a própria Lei 726/2025).
+        r"[aá]rea de prote[çc][aã]o ambiental|\bapa\b|"
+        r"unidade(?:s)? de conserva[çc][aã]o|"
+        r"esta[çc][aã]o ecol[oó]gica|"
+        r"parque (?:estadual|nacional|municipal)|"
+        r"monumento natural|"
+        r"reserva particular do patrim[oô]nio natural|\brppn\b|"
+        r"reserva (?:biol[oó]gica|extrativista|ecol[oó]gica)|"
+        r"ref[uú]gio de vida silvestre|"
+        r"zoneamento (?:ambiental|ecol[oó]gico[- ]econ[oô]mico)",
         re.IGNORECASE,
     ),
     "infraestrutura_obras": re.compile(
