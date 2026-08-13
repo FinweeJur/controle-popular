@@ -35,8 +35,16 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Busca — Controle Popular",
+  // ⟲ 13/08: dizia "nas TRÊS frentes do Controle Popular", o que virou falso
+  // quando o portal passou a ter cinco. A COBERTURA, porém, continua sendo
+  // três e isso é medido, não descuido — o índice de `/busca` é gerado sobre
+  // atos oficiais, proposições municipais, proposições do Congresso e
+  // tribunais/magistrados (ver `scripts/gerar-indice-busca.mts`). Meio
+  // ambiente e terra não entram nele. Então o conserto não é trocar "três"
+  // por "cinco": é parar de apresentar a cobertura da busca como se fosse o
+  // tamanho do portal, e declarar as duas coisas separadamente.
   description:
-    "Busque legislação por tema, palavra-chave e território nas três frentes do Controle Popular: Cidades, Congresso e Judiciário.",
+    "Busque legislação por tema, palavra-chave e território em três frentes do Controle Popular: Cidades, Congresso e Judiciário.",
 };
 
 export default async function BuscaPage() {

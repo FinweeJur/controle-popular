@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ZONAS_PUBLICADAS } from "@/lib/zonas";
+import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
 
 /**
@@ -201,14 +201,26 @@ export default async function Hub() {
         </a>
       </section>
 
+      {/* ⟲ 13/08: dizia "Por que TRÊS portais", e o texto contava três
+          frentes — a herança dos três sites que foram unificados num só.
+          Ficou colado embaixo de CINCO cartões, e nessa vizinhança ele lia
+          como contagem furada, não como história. O conceito não estava
+          errado: os três Poderes continuam sendo três. O que envelheceu foi
+          tratar "Poder" e "frente do portal" como a mesma coisa — meio
+          ambiente é o estado agindo dentro do Executivo, e terra atravessa
+          os três. Agora o texto separa as duas ideias em vez de fingir que
+          coincidem, e a contagem sai de `lib/zonas.ts` como em todo lugar. */}
       <section className="mt-8 rounded-lg border border-border p-6">
-        <h2 className="font-display text-lg font-semibold">Por que três portais</h2>
+        <h2 className="font-display text-lg font-semibold">Por que mais de um portal</h2>
         <p className="mt-2 text-[.95em] text-text-soft">
-          O poder público se divide em três frentes, e cada uma decide algo diferente: o
-          dinheiro é executado na prefeitura e na câmara municipal, os direitos são
-          definidos — e às vezes reduzidos — no Congresso, e é o Judiciário quem interpreta
-          essas leis e resolve os conflitos, sem que ninguém tenha votado em quem ocupa
-          essas cadeiras. Acompanhar só uma frente deixa boa parte da história de fora.
+          O poder público se divide, e cada parte decide algo diferente: o dinheiro é
+          executado na prefeitura e na câmara municipal, os direitos são definidos — e às
+          vezes reduzidos — no Congresso, e é o Judiciário quem interpreta essas leis e
+          resolve os conflitos, sem que ninguém tenha votado em quem ocupa essas cadeiras.
+          A isso somam-se duas frentes que não são um quarto Poder, e sim onde o Estado
+          decide sobre o território: o licenciamento ambiental de Minas e quem é dono da
+          terra. São {contagemZonasPublicadas()} ao todo, e acompanhar só uma deixa boa
+          parte da história de fora.
         </p>
       </section>
 
