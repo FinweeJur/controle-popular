@@ -51,7 +51,11 @@ export default async function Hub() {
     // nenhum outro `<main>` por perto para salvar a leitura. Mesmo padrão
     // que `funcaosocialterra/page.tsx` já usa: `<main>` envolvendo
     // `<header>` e `<footer>` próprios da página.
-    <main className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+    <main
+      id="conteudo-principal"
+      tabIndex={-1}
+      className="mx-auto max-w-4xl px-4 py-12 sm:py-16"
+    >
       <header className="space-y-4">
         <p className="font-display text-[1.4em] font-bold tracking-tight">
           controlepopular<span className="text-primary">.br</span>

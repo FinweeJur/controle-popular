@@ -74,6 +74,19 @@ export default function RootLayout({
           defaultTheme="light"
           themes={["light", "dark", "high-contrast"]}
         >
+          {/* ⟲ 13/08, revisão de onboarding: WCAG 2.4.1 (Bypass Blocks).
+              Precisa ser o PRIMEIRO elemento focável do `<body>` — antes
+              de qualquer cabeçalho de zona — para valer a pena; por isso
+              mora aqui e não dentro de cada `layout.tsx` de zona. Aponta
+              para `#conteudo-principal`, o `id` que o `<main>` de cada
+              zona compartilhada (Cidades/Congresso/Judiciário/Ambiental)
+              e a home da marca já ganharam nesta revisão. Página sem o
+              `id` (ainda faltam algumas fora das quatro zonas — ver
+              `docs/REVISAO-UX-E-ONBOARDING.md`) só não faz nada ao
+              clicar, não quebra. */}
+          <a href="#conteudo-principal" className="cp-skip-link">
+            Pular para o conteúdo
+          </a>
           {children}
           {/* Global, fora do cabeçalho de zona: cobre TODA página que tem
               <main> (inclusive /busca e /funcaosocialterra, que não usam o

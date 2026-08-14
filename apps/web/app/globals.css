@@ -302,6 +302,30 @@ body {
   border-radius: 4px;
 }
 
+/* Link "Pular para o conteúdo" -- WCAG 2.4.1 (Bypass Blocks). Escondido
+   fora da tela até ganhar foco por Tab, primeiro elemento focável de toda
+   página (ver `app/layout.tsx`). Existe porque o cabeçalho de cada zona
+   já chegava perto de dez paradas de Tab antes do `<main>` (nav da zona,
+   busca/pontes pras zonas irmãs, tema, tamanho de texto) mesmo antes da
+   revisão de 13/08 que ACRESCENTOU as pontes que faltavam -- sem este
+   link, quem navega só por teclado repete a barra inteira em toda troca
+   de página. */
+.cp-skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0.5rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 6px 6px;
+  background: var(--color-primary);
+  color: var(--color-primary-ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.cp-skip-link:focus {
+  top: 0;
+}
+
 /* ── Microanimações ───────────────────────────────────────────────────
    Pedido do usuário 2026-07-24: hover/glow/pulse pra ajudar o fluxo e a
    experiência. Regra do site: sutil, nunca decorativo a ponto de

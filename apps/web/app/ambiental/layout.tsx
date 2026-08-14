@@ -109,7 +109,9 @@ export default function AmbientalLayout({
         </div>
       </header>
 
-      <main className="flex-1">{children}</main>
+      <main id="conteudo-principal" tabIndex={-1} className="flex-1">
+        {children}
+      </main>
 
       <footer className="mt-16 border-t border-[var(--cp-border)] py-8 text-sm">
         <div className="mx-auto max-w-5xl space-y-2 px-4 opacity-80">
