@@ -250,14 +250,40 @@ export const ATORES_REPARACAO: AtorReparacao[] = [
     "papelNoPainel": "Co-autora da ação civil pública",
     "nome": "Ascotélite — Associação Comunitária do Bairro Cidade Satélite",
     "atuacao": "Representa moradores do bairro Cidade Satélite em Brumadinho. Co-autora da ação civil pública.",
-    "contatos": []
+    "contatos": [
+      {
+        "tipo": "mail",
+        "label": "cont.alvesjg@gmail.com",
+        "href": "mailto:cont.alvesjg@gmail.com"
+      }
+    ],
+    // Achado em 2026-08-14 no Mapa das OSC (IPEA, cadastro federal de
+    // organizações da sociedade civil por CNPJ), não na fonte original do
+    // painel-paraopeba. CNPJ 00.251.566/0001-96, endereço registrado: Av.
+    // Bernardo Mascarenhas, Cidade Satélite, Juatuba/MG, CEP 35675-000 —
+    // Juatuba, não Brumadinho, mas o bairro é o mesmo citado na atuação.
+    // Telefone do cadastro ("3103535801") tem um dígito a mais que um
+    // fixo de BH/região deveria ter -- não virou `tel:` por isso. Confirme
+    // por e-mail antes de tratar como canal validado.
+    "nota": "E-mail e CNPJ do Mapa das OSC (IPEA) — não confirmados por contato direto com a associação."
   },
   {
     "categoria": "mov",
     "papelNoPainel": "Co-autora da ação civil pública",
     "nome": "IEM — Instituto Esperança Maria",
     "atuacao": "Co-autor da ação civil pública que garantiu o Novo Auxílio Emergencial.",
-    "contatos": []
+    "contatos": [
+      {
+        "tipo": "web",
+        "label": "Contato via MAB",
+        "href": "https://mab.org.br/contato"
+      }
+    ],
+    // Nenhum telefone/e-mail/site institucional encontrado em 2026-08-14
+    // (mesma lacuna da ABA acima, que já usava este mesmo desvio). O IEM
+    // atua em Belo Horizonte ao lado do MAB nesta ação -- não é o canal
+    // oficial do IEM, é o mesmo atalho já aceito para a ABA.
+    "nota": "Canal direto não encontrado — usa o mesmo desvio via MAB já adotado para a ABA."
   },
   {
     "categoria": "pub",
