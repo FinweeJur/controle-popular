@@ -404,8 +404,21 @@ body {
 }
 #inspector .inspector-close:hover { color: var(--text-1); }
 
+/* ⟲ 13/08: A FICHA ESTOURAVA A LARGURA DO PAINEL, relatado pelo dono com
+   captura de tela do desktop. Causa: `table-layout` automático somado a
+   `white-space: nowrap` na coluna do rótulo. Enquanto os campos eram curtos
+   (`area_ha`, `nome`) ninguém via; quando entraram os avisos longos das
+   camadas de CFEM e de cobertura — texto de várias linhas, e chave também
+   comprida — a tabela cresceu para caber e vazou para fora da caixa.
+
+   `table-layout: fixed` é o que faz o navegador respeitar a largura do
+   painel em vez de dimensionar pelo conteúdo. E o rótulo passa a poder
+   quebrar: `nowrap` ali fazia sentido para `area_ha`, não para
+   `aviso_nao_somar_entre_municipios`. `overflow-wrap: anywhere` no valor
+   cobre URL e código de processo, que não têm espaço onde quebrar. */
 #inspector .inspector-table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -415,10 +428,11 @@ body {
   border-bottom: 1px solid var(--color-hairline);
   color: var(--text-2);
   vertical-align: top;
+  overflow-wrap: anywhere;
 }
 #inspector .inspector-table td:first-child {
   color: var(--text-3);
-  white-space: nowrap;
+  width: 38%;
 }
 
 /* Linha que explica de que camada é a área clicada */
