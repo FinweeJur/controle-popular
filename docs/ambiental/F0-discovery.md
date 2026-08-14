@@ -576,9 +576,13 @@ trecho de drenagem (`cobacia`). Amarrar a um município específico exige **join
 abaixo (licença da malha municipal do IBGE) — já em aberto por outro motivo, agora com uma
 segunda razão para resolver.
 
-Portal dedicado **InfoHidro** (`portalinfohidro.igam.mg.gov.br`) existe mas está
-**bloqueado por período eleitoral** em toda rota testada (Lei nº 9.504/1997, aviso da
-SEMAD) — não avaliado o que ofereceria além do WFS.
+Portal dedicado **InfoHidro** (`portalinfohidro.igam.mg.gov.br/sobre` — URL corrigida em
+2026-08-14, a anterior estava incompleta) existe mas está **bloqueado por período eleitoral**
+em toda rota testada (Lei nº 9.504/1997). Reconferido ao vivo em 2026-08-14 (revisão de
+completude): mesmo bloqueio, agora com o aviso citado ao pé da letra — "Em atendimento à Lei
+nº 9.504/1997, o acesso a este sistema encontra-se temporariamente suspenso para garantir a
+isonomia eleitoral." Não avaliado o que ofereceria além do WFS; religar após a eleição de
+outubro/2026.
 
 ### 12.2 Outorga — viável, mas fragmentado em 3 fontes com trade-offs diferentes
 
