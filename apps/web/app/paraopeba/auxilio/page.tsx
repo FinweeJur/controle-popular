@@ -1,7 +1,30 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import DataCard from "@/app/[municipio]/components/DataCard";
 import { PAGAMENTOS_PARAOPEBA, RESUMO_AUXILIO_PARAOPEBA } from "@/lib/paraopeba";
+
+/**
+ * Cartão de número-resumo — MESMO visual de `DataCard.tsx`
+ * (`app/[municipio]/components/DataCard.tsx`: `rounded-2xl border
+ * border-border bg-surface p-5 shadow-sm`, título em `font-display
+ * text-base font-semibold`), mas sem importar o componente. `DataCard` é
+ * `"use client"` e lê `useCidade()`/`useNomePortal()` — hooks que só
+ * existem dentro do `<CidadeProvider>` montado no layout de
+ * `/[municipio]`. `/paraopeba` é rota de raiz, fora dessa árvore: importar
+ * `DataCard` aqui quebra em runtime ("useCidade() fora do
+ * <CidadeProvider>"), confirmado ao vivo nesta integração. Sem
+ * compartilhar/WhatsApp aqui de propósito — aquele botão também depende de
+ * `cidade.dominio`, que não existe fora de `/[municipio]`.
+ */
+function CardResumo({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="cp-card-hover rounded-2xl border border-border bg-surface p-5 shadow-sm">
+      <header className="mb-3">
+        <h3 className="font-display text-base font-semibold text-text">{title}</h3>
+      </header>
+      <div className="text-sm text-text-soft">{children}</div>
+    </section>
+  );
+}
 
 /**
  * `/paraopeba/auxilio` — acompanhamento mês a mês do Novo Auxílio
@@ -90,10 +113,10 @@ export default function AuxilioPage() {
 
       <section className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {RESUMO_ITENS.map((item) => (
-          <DataCard key={item.label} title={item.label}>
+          <CardResumo key={item.label} title={item.label}>
             <p className="font-tabular text-xl font-bold text-text">{item.valor}</p>
             <p className="mt-1 text-xs text-text-soft">{item.detalhe}</p>
-          </DataCard>
+          </CardResumo>
         ))}
       </section>
 
