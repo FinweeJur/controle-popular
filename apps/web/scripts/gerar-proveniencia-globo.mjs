@@ -114,6 +114,16 @@ const ORIGENS = {
     origem: 'INCRA — Áreas de Quilombolas, pelo Acervo Fundiário',
     portal: 'https://acervofundiario.incra.gov.br/ (requer conta gov.br)',
   },
+  // Terceira fonte, NOVA em 13/08/2026 (mais tarde) — os 13 territórios do
+  // INCRA que não entram nas duas fontes acima (ver
+  // scripts/ingerir_incra_quilombolas.py, seção "OS 13 QUE SOBRAVAM AGORA
+  // ENTRAM"). Mesmo serviço (WFS i3Geo do Acervo Fundiário, camada
+  // `quilombolas_mg`, GML), mesma licença ("vedado o uso comercial",
+  // conferida no `AccessConstraints` do `GetCapabilities`).
+  'territorios-quilombolas-outras-regioes': {
+    obtencao: 'automatica',
+    servico: 'INCRA — Acervo Fundiário (WFS i3Geo, tema quilombolas_mg) — territórios de MG fora da bacia do Paraopeba e do Jequitinhonha/Mucuri',
+  },
   'spu-imoveis-uniao': {
     obtencao: 'manual',
     origem: 'SPU — cadastro de imóveis da União (só o ponto, nunca o perímetro)',
@@ -185,6 +195,44 @@ const ORIGENS = {
   'cruzamento-dinheiro-ambiental-4cidades': {
     obtencao: 'derivada',
     origem: 'IDE-Sisema/SEMAD (licenciamento ambiental) cruzado com PNCP (contratos) e Portal da Transparência (convênios federais), por raiz de CNPJ, só nos 4 municípios com dado de contrato/convênio coletado',
+  },
+  // O rompimento real da B1, Brumadinho (13/08/2026, mais tarde) — ver
+  // docs/PLANO-INTEGRACAO-BRUMADINHO.md, seção 1.2. Mesmo geoserver de
+  // `zas-barragens`/`mancha-inundacao-barragens`, série `ide_250102_mg_*`.
+  // Licença "acesso livre" conferida no GeoNetwork da Semad camada a camada
+  // só para `impactos_ambientais_pol` e `remanejamento_pto`; presumida (não
+  // confirmada individualmente) para as outras 6 da mesma série/publicador.
+  'brumadinho-area-atingida': {
+    obtencao: 'automatica',
+    servico: 'Semad/IDE-Sisema — área diretamente afetada pelo rompimento (ide_250102_mg_impactos_ambientais_pol), mapeada por satélite Pleiades a 1:2.500 — licença conferida individualmente',
+  },
+  'brumadinho-monitoramento': {
+    obtencao: 'automatica',
+    servico: 'Semad/IDE-Sisema — pontos de monitoramento ambiental pós-rompimento (ide_250102_mg_monitoramento_pto) — licença presumida da série, não conferida individualmente',
+  },
+  'brumadinho-remanejamento': {
+    obtencao: 'automatica',
+    servico: 'Semad/IDE-Sisema — origem de famílias remanejadas, agregada por bairro (ide_250102_mg_remanejamento_pto) — licença conferida individualmente',
+  },
+  'brumadinho-estruturas-contencao': {
+    obtencao: 'automatica',
+    servico: 'Semad/IDE-Sisema — estruturas de contenção de rejeito pós-rompimento (ide_250102_mg_estruturas_contecao_pol) — licença presumida da série, não conferida individualmente',
+  },
+  'brumadinho-obras-poligonais': {
+    obtencao: 'automatica',
+    servico: 'Semad/IDE-Sisema — obras e intervenções emergenciais com área (ide_250102_mg_obras_intervencoes_poligonais_pol) — licença presumida da série, não conferida individualmente',
+  },
+  'brumadinho-obras-pontuais': {
+    obtencao: 'automatica',
+    servico: 'Semad/IDE-Sisema — obras e intervenções emergenciais pontuais (ide_250102_mg_obras_intervencoes_pontuais_pto) — licença presumida da série, não conferida individualmente',
+  },
+  'brumadinho-obras-lineares': {
+    obtencao: 'automatica',
+    servico: 'Semad/IDE-Sisema — obras e intervenções emergenciais lineares (ide_250102_mg_obras_intervencoes_lineares_lin) — licença presumida da série, não conferida individualmente',
+  },
+  'brumadinho-restauracao': {
+    obtencao: 'automatica',
+    servico: 'Semad/IDE-Sisema — áreas de revegetação/restauração pós-rompimento (ide_250102_mg_restauracao_pol) — licença presumida da série, não conferida individualmente',
   },
 };
 

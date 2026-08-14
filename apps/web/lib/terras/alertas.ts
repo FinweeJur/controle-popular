@@ -248,6 +248,12 @@ export function carregarAlertaQuilombolaMancha(): AlertaVazioMedido {
   return carregarAlertaVazioContraMancha("alerta-quilombola-mancha.geojson", [
     "territorios-quilombolas.geojson",
     "territorios-quilombolas-vales.geojson",
+    // Terceira fonte, NOVA em 13/08/2026 (mais tarde): os 13 territórios do
+    // INCRA que não entravam nas duas de cima — ver
+    // public/terras/globo/scripts/ingerir_incra_quilombolas.py, "OS 13 QUE
+    // SOBRAVAM AGORA ENTRAM". universoCombinacoes cresce de 14×156 pra
+    // 27×156 por causa desta linha.
+    "territorios-quilombolas-outras-regioes.geojson",
   ]);
 }
 

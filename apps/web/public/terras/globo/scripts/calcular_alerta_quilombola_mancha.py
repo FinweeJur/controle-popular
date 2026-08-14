@@ -17,19 +17,24 @@ substituto da interseção real).
 
 ═══ COBERTURA -- LEIA ANTES DE CONFIAR NO RESULTADO ═══
 
-Este projeto tem quilombola em DOIS arquivos regionais, nunca unificados
-num arquivo estadual (diferente de `terras-indigenas.geojson`, que já é
-as 16 TIs de MG inteiras):
+Este projeto tem quilombola em TRÊS arquivos (⟲ 13/08/2026, mais tarde: era
+DOIS até esta mesma tarde), nunca unificados num arquivo estadual (diferente
+de `terras-indigenas.geojson`, que já é as 16 TIs de MG inteiras):
 
-  `territorios-quilombolas.geojson`       — 2 territórios (bacia do Paraopeba)
-  `territorios-quilombolas-vales.geojson` — 12 territórios (Vales -- Jequitinhonha/Mucuri/Rio Doce)
+  `territorios-quilombolas.geojson`                — 2 territórios (bacia do Paraopeba)
+  `territorios-quilombolas-vales.geojson`          — 12 territórios (Vales -- Jequitinhonha/Mucuri/Rio Doce)
+  `territorios-quilombolas-outras-regioes.geojson` — 13 territórios (demais regiões de MG,
+                                                       principalmente Norte/Noroeste -- ver
+                                                       scripts/ingerir_incra_quilombolas.py)
 
-Este script lê os DOIS e junta (14 territórios no total). **Não temos
-confirmação de que isto é a totalidade dos territórios quilombolas
-certificados de MG** -- é o que este projeto ingeriu para as duas regiões
-que já tem onboardadas. Um território quilombola fora dessas duas regiões
-NÃO aparece aqui, e "zero cruzamento" não pode ser lido como "MG inteira
-está livre de sobreposição": é "as 14 áreas que temos hoje não cruzam".
+Este script lê os TRÊS e junta (27 territórios no total, eram 14 antes da
+terceira fonte). Com a terceira fonte, os 27 são a totalidade que o INCRA
+publica hoje para o Acervo Fundiário em MG (22 casaram por nome/geometria,
+1 ficou sem par -- ver `ingerir_incra_quilombolas.py` --, e os 13 que
+sobravam agora entram). Um território quilombola que o INCRA não publica
+(ou que a Fundação Palmares certificou sem o INCRA ainda titular) continua
+fora, e "zero cruzamento" não pode ser lido como "MG inteira está livre de
+sobreposição": é "as 27 áreas que o INCRA publica hoje não cruzam".
 
 Até 13/08/2026 cada feature de origem só tinha `area_ha` como propriedade
 (sem nome do território/município na fonte ingerida). Desde
@@ -63,6 +68,10 @@ DIR_TMP = DIR_GLOBO / "scripts" / ".tmp-ingest"
 QUILOMBOLA_PATHS = [
     DIR_CAMADAS / "territorios-quilombolas.geojson",        # bacia do Paraopeba
     DIR_CAMADAS / "territorios-quilombolas-vales.geojson",  # Vales
+    # Terceira fonte, NOVA em 13/08/2026 (mais tarde) — os 13 territórios do
+    # INCRA que não entravam nas duas de cima. Ver
+    # scripts/ingerir_incra_quilombolas.py, "OS 13 QUE SOBRAVAM AGORA ENTRAM".
+    DIR_CAMADAS / "territorios-quilombolas-outras-regioes.geojson",  # demais regiões de MG
 ]
 MANCHA_BRUTA_PATH = DIR_TMP / "mancha.json"
 SAIDA_PATH = DIR_CAMADAS / "alerta-quilombola-mancha.geojson"
