@@ -138,18 +138,22 @@ export default async function Hub() {
         )}
       </div>
 
-      {/* ═══ DIREITOS EM MOVIMENTO — BLOCO PRÓPRIO, NÃO SEXTA FRENTE ═══
+      {/* ═══ DIREITOS EM MOVIMENTO — BLOCO PRÓPRIO, NÃO É UMA FRENTE ═══
           Decisão do dono (13/08): NÃO entra em `ZONAS`/`SECOES` acima. As
-          cinco frentes são EIXOS DE PODER — lugares onde alguém decide
-          sobre a vida da pessoa (prefeitura/câmara, Congresso, tribunais,
-          COPAM, terra). Esta seção não é um sexto lugar de decisão; é o
-          que a pessoa FAZ com o que achou nas outras cinco — transversal,
-          não paralela. Entrar em `ZONAS` faria a seção reivindicar um
-          estatuto que não tem, e arrastaria layout/nav/rodapé de zona que
-          ela não precisa (ver `lib/zonas.ts`). Por isso o tratamento
-          visual abaixo é deliberadamente diferente do grid de cards acima
-          — cor própria (`--cp-alert`, não usada por nenhuma das cinco
-          frentes) e forma de banner largo, não mais um card na grade. */}
+          frentes são EIXOS DE PODER — lugares onde alguém decide sobre a
+          vida da pessoa (prefeitura/câmara, Congresso, tribunais, COPAM,
+          terra, e agora a reparação de Brumadinho). Esta seção não é mais
+          um desses lugares de decisão; é o que a pessoa FAZ com o que
+          achou nas outras — transversal, não paralela. Entrar em `ZONAS`
+          faria a seção reivindicar um estatuto que não tem, e arrastaria
+          layout/nav/rodapé de zona que ela não precisa (ver
+          `lib/zonas.ts`). Por isso o tratamento visual abaixo é
+          deliberadamente diferente do grid de cards acima — cor própria
+          (`--cp-alert`, não usada por nenhuma frente) e forma de banner
+          largo, não mais um card na grade.
+          ⟲ 13/08, Paraopeba: o texto renderizado usa
+          `contagemZonasPublicadas()`, não o numeral cravado — a sexta
+          frente que motivou essa troca é exatamente esta seção. */}
       <section
         className="mt-10 rounded-lg border-2 p-6"
         style={{ borderColor: "var(--cp-alert)" }}
@@ -158,7 +162,7 @@ export default async function Hub() {
           className="text-[.82em] font-semibold uppercase tracking-wide"
           style={{ color: "var(--cp-alert)" }}
         >
-          Transversal às cinco frentes
+          Transversal às {contagemZonasPublicadas()} frentes
         </span>
         <h2 className="mt-2 font-display text-xl font-semibold">Direitos em Movimento</h2>
         <p className="mt-2 max-w-2xl text-[.95em] text-text-soft">
@@ -217,10 +221,11 @@ export default async function Hub() {
           executado na prefeitura e na câmara municipal, os direitos são definidos — e às
           vezes reduzidos — no Congresso, e é o Judiciário quem interpreta essas leis e
           resolve os conflitos, sem que ninguém tenha votado em quem ocupa essas cadeiras.
-          A isso somam-se duas frentes que não são um quarto Poder, e sim onde o Estado
-          decide sobre o território: o licenciamento ambiental de Minas e quem é dono da
-          terra. São {contagemZonasPublicadas()} ao todo, e acompanhar só uma deixa boa
-          parte da história de fora.
+          A isso somam-se três frentes que não são um quarto Poder: duas são onde o Estado
+          decide sobre o território — o licenciamento ambiental de Minas e quem é dono da
+          terra —, e a terceira acompanha se uma reparação já decidida na Justiça está
+          sendo paga de verdade, mês a mês. São {contagemZonasPublicadas()} ao todo, e
+          acompanhar só uma deixa boa parte da história de fora.
         </p>
       </section>
 

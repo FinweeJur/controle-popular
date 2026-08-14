@@ -30,7 +30,8 @@ export type ZonaId =
   | "congresso"
   | "judiciario"
   | "ambiental"
-  | "terras";
+  | "terras"
+  | "paraopeba";
 
 export interface Zona {
   id: ZonaId;
@@ -209,6 +210,32 @@ export const ZONAS: Zona[] = [
       "Taxa de erro medida a olho em 40 polígonos sorteados",
     ],
     cor: "var(--cp-accent)",
+    publicada: true,
+  },
+  {
+    id: "paraopeba",
+    // Sexta frente, pedida pelo dono a partir de um painel entregue à mão
+    // (`painel-paraopeba.html`) mais o índice público da Plataforma
+    // Brumadinho UFMG — `docs/PLANO-INGESTAO-PARAOPEBA.md` mede as duas
+    // fontes. Acrescentar aqui NÃO quebra texto nenhum: `nomeCurto` é campo
+    // obrigatório desde 13/08, e a contagem por extenso
+    // (`contagemZonasPublicadas`) e o footer/remissão cruzada já leem
+    // `ZONAS_PUBLICADAS.length`, não um número cravado.
+    href: "/paraopeba",
+    etiqueta: "Reparação · Rompimento da barragem em Brumadinho",
+    nomeCurto: "Paraopeba",
+    titulo: "A reparação de Brumadinho, acompanhada mês a mês",
+    descricao:
+      "Acompanhamento da reparação pelo rompimento da barragem da Vale em Brumadinho (25/01/2019, 270 mortes): clipping de imprensa desde abril de 2024, linha do tempo do processo, os órgãos e organizações que atuam na reparação — a maioria sem entrada em nenhum outro lugar do portal — e o auxílio emergencial pago mês a mês, com os documentos do processo judicial que citam cada município da bacia.",
+    resumo:
+      "Clipping, linha do tempo, quem atua na reparação e o auxílio emergencial pago mês a mês — o rompimento da barragem da Vale em Brumadinho, acompanhado.",
+    itens: [
+      "Clipping de 149 notícias (abr/2024–jul/2026), filtrável por tipo e período",
+      "Linha do tempo com os 17 marcos do processo, do corte do auxílio à ADPF no STF",
+      "18 órgãos e organizações que atuam na reparação — 16 sem entrada em outro lugar do portal",
+      "9 pagamentos do Novo Auxílio Emergencial e os documentos do processo que citam cada município, com link e citação",
+    ],
+    cor: "var(--cp-secondary)",
     publicada: true,
   },
 ];
