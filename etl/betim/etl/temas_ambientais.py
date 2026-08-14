@@ -1,6 +1,27 @@
 """etl.temas_ambientais — classificação temática de `ambiental_legislacao`
 (6.378 normas de três fontes: ALMG, Semad, Siam — ver migration 0065).
 
+═══ TEMA "SERRAS" (2026-08-13) ═══
+
+Adicionado na unificação de `/ambiental/legislacao` com `/ambiental/direito-
+critico`: aquele painel já tinha um chip "Proteção de serras" (slug
+`serras`) parado em ZERO instrumentos desde a carga inicial — o material
+fonte (Direito Crítico Popular) simplesmente não cobre o assunto. Antes de
+sair atrás de uma fonte NOVA para preencher esse chip (o pedido original
+cogitava isso), medi se a legislação ESTADUAL que já está no banco cobre
+serra — e cobre: 180 ementas com "serra" (sondagem 2026-08-13 contra as
+6.378 linhas), quase todas atos do Semad/Siam sobre conselhos consultivos e
+planos de manejo de parques/APAs/RPPNs situados em serras nomeadas (Serra
+do Cipó, Serra da Moeda, Serra do Brigadeiro...). A ALMG tem inclusive um
+RAMO OFICIAL da própria taxonomia para isso —
+`/Tema/Meio Ambiente/Atributo Ambiental/Relevo/Serra (Relevo)` — então o
+tema aqui não é inventado, é o MESMO padrão dos outros 8: ramo real da
+indexação ALMG, generalizado por palavra-chave pras outras duas fontes.
+Reusa o slug `serras` de `etl.temas_direito_critico` de propósito — é o
+mesmo conceito, e usar o mesmo slug nos dois lados é o que faz o chip
+"Proteção de serras" do painel unificado somar as duas fontes sem precisar
+de tabela de tradução.
+
 Pedido do usuário (2026-08-12): quem chega em `/ambiental/legislacao`
 querendo "o que existe sobre mineração" hoje precisa ler ementa por ementa.
 Este módulo dá dois níveis de classificação, guardados como colunas
@@ -65,7 +86,7 @@ fingiria cobertura que a classificação não tem.
 """
 import re
 
-# ─── OS 8 TEMAS DO PEDIDO — rótulo pra tela ────────────────────────────
+# ─── OS 8 TEMAS DO PEDIDO, + `serras` (ver docstring do módulo) ────────
 TEMA_LABELS: dict[str, str] = {
     "mineracao": "Mineração",
     "energia": "Energia",
@@ -75,6 +96,7 @@ TEMA_LABELS: dict[str, str] = {
     "residuos": "Resíduos",
     "unidades_conservacao": "Unidades de Conservação",
     "fauna_flora": "Fauna e Flora",
+    "serras": "Proteção de Serras",
 }
 
 # ─── TAGS FINAS — cada uma pertence a EXATAMENTE UM tema (TAG_TEMA), pra
@@ -101,6 +123,7 @@ TAG_LABELS: dict[str, str] = {
     "fiscalizacao_ambiental": "Fiscalização Ambiental",
     "mudanca_climatica": "Mudança Climática",
     "desastre_ambiental": "Desastre Ambiental",
+    "serra_relevo": "Serra",
 }
 
 TAG_TEMA: dict[str, str] = {
@@ -117,6 +140,7 @@ TAG_TEMA: dict[str, str] = {
     "rppn": "unidades_conservacao",
     "fauna": "fauna_flora",
     "flora_florestal": "fauna_flora",
+    "serra_relevo": "serras",
     # As três tags abaixo são transversais no acervo (licenciamento,
     # fiscalização, clima/desastre aparecem em normas de todos os 8 temas
     # E fora deles) — de propósito NÃO mapeadas a nenhum dos 8 temas do
@@ -136,6 +160,7 @@ TAG_TEMA: dict[str, str] = {
 #   unidade_conservacao        21   area_protecao_ambiental    84
 #   rppn                      150   fauna                       6
 #   flora_florestal            34
+#   serra_relevo               180  (medido 2026-08-13, ver docstring)
 _REGRAS: dict[str, re.Pattern] = {
     "mineracao_geral": re.compile(
         r"minera[çc][aã]o|minerad|min[eé]rio|jazida mineral|recurso mineral|"
@@ -217,6 +242,16 @@ _REGRAS: dict[str, re.Pattern] = {
         r"desastre ambiental|rompimento de barragem|degrada[çc][aã]o ambiental",
         re.IGNORECASE,
     ),
+    # Medido 2026-08-13: 180 ementas com "serra" nas 6.378, quase todas
+    # nome próprio de serra em unidade de conservação (Parque Estadual
+    # Serra do X, APA Serra do Y) — mesmo risco de falso positivo que as
+    # outras regras de palavra solta já assumem (ex. `\bfauna\b`), e a
+    # amostragem manual da sondagem não achou nenhum "serra" como verbo
+    # (serrar) nas ementas reais.
+    "serra_relevo": re.compile(
+        r"\bserra\b",
+        re.IGNORECASE,
+    ),
 }
 
 
@@ -258,6 +293,12 @@ _SEGMENTO_INDEXACAO_TEMA: list[tuple[str, str]] = [
     ("Animais", "fauna_flora"),
     ("Fauna Silvestre", "fauna_flora"),
     ("Política Florestal", "fauna_flora"),
+    # Ramo oficial confirmado ao vivo em 2026-08-13 (ver docstring do
+    # módulo): "/Tema/Meio Ambiente/Atributo Ambiental/Relevo/Serra
+    # (Relevo)". Casa só o segmento específico "Serra (Relevo)", não
+    # "Relevo" sozinho — "Relevo" também cobre outras formas de terreno que
+    # não são serra.
+    ("Serra (Relevo)", "serras"),
 ]
 
 

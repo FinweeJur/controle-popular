@@ -116,10 +116,11 @@ export default async function SobrePage() {
           não sai do modelo: é aritmética sobre esse formulário, feita por código
           determinístico e reexecutável. A mesma separação organiza a análise de vício
           legislativo e a atribuição de tema da legislação em{" "}
-          <a href="/ambiental/direito-critico" className="text-primary hover:text-accent">
-            /ambiental/direito-critico
-          </a>
-          .
+          <a href="/ambiental/legislacao" className="text-primary hover:text-accent">
+            /ambiental/legislacao
+          </a>{" "}
+          (até 13/08/2026, <code className="text-[.85em]">/ambiental/direito-critico</code> — unificada
+          com a legislação estadual num painel só, a URL antiga redireciona pra cá).
         </p>
         <p className="text-text-soft">
           A analogia é a do escrivão e do juiz: o modelo é escrivão, preenche um formulário de
@@ -136,7 +137,7 @@ export default async function SobrePage() {
         <p className="text-text-soft">
           Isso já falhou em público, e a correção ficou na própria página em vez de sumir no
           histórico do código. Até 13/08/2026, a página de{" "}
-          <a href="/ambiental/direito-critico" className="text-primary hover:text-accent">
+          <a href="/ambiental/legislacao" className="text-primary hover:text-accent">
             legislação e precedentes por tema de direito
           </a>{" "}
           afirmava que a atribuição de tema de cada lei e precedente &ldquo;veio de leitura

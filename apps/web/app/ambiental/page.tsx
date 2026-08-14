@@ -6,6 +6,7 @@ import { contarBarragensMg } from "@/lib/db/queries/barragens";
 import { contarLicenciamento } from "@/lib/db/queries/ambiental-licenciamento";
 import { contarLegislacaoAmbiental } from "@/lib/db/queries/legislacao-ambiental";
 import { contarDireitoCritico } from "@/lib/db/queries/direito-critico";
+import { contarPatrimonioTombado } from "@/lib/db/queries/patrimonio-tombado";
 
 /**
  * Home da zona /ambiental.
@@ -28,13 +29,14 @@ import { contarDireitoCritico } from "@/lib/db/queries/direito-critico";
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
 
 export default async function AmbientalHome() {
-  const [{ reunioes, itens }, barragens, { total: totalLicencas }, legislacao, direitoCritico] =
+  const [{ reunioes, itens }, barragens, { total: totalLicencas }, legislacao, direitoCritico, totalPatrimonio] =
     await Promise.all([
       contarReunioesCopam(),
       contarBarragensMg(),
       contarLicenciamento(),
       contarLegislacaoAmbiental(),
       contarDireitoCritico(),
+      contarPatrimonioTombado(),
     ]);
   const temBarragens = barragens.totalFeam > 0 || barragens.totalSnisb > 0;
 
@@ -78,30 +80,39 @@ export default async function AmbientalHome() {
       linkTexto: "Ver as barragens →",
     },
     {
-      titulo: "Legislação ambiental",
-      linha:
-        legislacao.total > 0
-          ? `${formatNumberBR(legislacao.total)} normas coletadas, de três fontes`
-          : "ALMG, Semad e Siam — três fontes que não conversam",
-      texto:
-        "Leis, decretos, deliberações e portarias ambientais de Minas Gerais, das três fontes que hoje não conversam entre si, numa busca só — com a fonte de cada uma sempre visível.",
-      fase: "F6",
-      href: "/legislacao",
-      pronta: legislacao.total > 0,
-      linkTexto: "Buscar legislação →",
-    },
-    {
+      // Unificação de 13/08/2026: era dois blocos (F6 "Legislação
+      // ambiental" e F7 "Legislação e precedentes por tema") apontando
+      // para duas páginas que respondiam à mesma pergunta. Agora é uma
+      // página só (`/legislacao`, com `/direito-critico` redirecionando
+      // pra lá) — o bloco também virou um só, somando as duas contagens.
       titulo: "Legislação e precedentes por tema",
       linha:
-        direitoCritico.normas + direitoCritico.precedentes > 0
-          ? `${formatNumberBR(direitoCritico.normas)} instrumentos + ${formatNumberBR(direitoCritico.precedentes)} precedentes`
-          : "Carga inicial ainda não rodou",
+        legislacao.total + direitoCritico.normas + direitoCritico.precedentes > 0
+          ? `${formatNumberBR(legislacao.total)} normas estaduais + ${formatNumberBR(direitoCritico.normas)} nacionais/internacionais + ${formatNumberBR(direitoCritico.precedentes)} precedentes`
+          : "ALMG, Semad, Siam e curadoria nacional/internacional — fontes que hoje não conversam",
       texto:
-        "Legislação nacional/internacional e precedentes de tribunais, na mesma busca, filtrados por tema de direito protegido: rios, indígena, quilombola, comunidades tradicionais e direitos humanos.",
-      fase: "F7",
-      href: "/direito-critico",
-      pronta: direitoCritico.normas + direitoCritico.precedentes > 0,
-      linkTexto: "Ver legislação e precedentes →",
+        "Leis, decretos, deliberações e portarias de Minas Gerais ao lado de tratados e decisões de tribunais nacionais e internacionais, numa busca só — filtrável por esfera (estadual/nacional/internacional) e por tema: mineração, recursos hídricos, serras, indígena, quilombola, comunidades tradicionais e direitos humanos.",
+      fase: "F6+F7",
+      href: "/legislacao",
+      pronta: legislacao.total + direitoCritico.normas + direitoCritico.precedentes > 0,
+      linkTexto: "Buscar legislação e precedentes →",
+    },
+    {
+      // Nova em 13/08/2026 (Tarefa 2b da mesma unificação): tombamento
+      // restringe território como área protegida ambiental restringe, mas
+      // não é norma — acervo próprio, ligado ao de legislação por texto,
+      // não pelo mesmo filtro de tema.
+      titulo: "Patrimônio cultural tombado",
+      linha:
+        totalPatrimonio > 0
+          ? `${formatNumberBR(totalPatrimonio)} bens tombados pelo IEPHA-MG`
+          : "IEPHA-MG — coleta ainda não rodou",
+      texto:
+        "Imóveis, conjuntos paisagísticos e centros históricos protegidos pelo Estado — o mesmo tipo de restrição territorial que a legislação ambiental impõe, pela via do valor histórico e cultural, não do ecológico.",
+      fase: "F8",
+      href: "/patrimonio-cultural",
+      pronta: totalPatrimonio > 0,
+      linkTexto: "Ver o patrimônio tombado →",
     },
   ];
 
@@ -121,8 +132,10 @@ export default async function AmbientalHome() {
           className="max-w-2xl rounded-lg border px-4 py-3 text-[.95em]"
           style={{ borderColor: ZONA.cor }}
         >
-          <strong>As quatro frentes têm tela real agora.</strong> COPAM (F3), licenciamento
-          (F4), barragens (F5) e legislação ambiental (F6) — todos com dado coletado, abaixo.
+          <strong>As cinco frentes têm tela real agora.</strong> COPAM (F3), licenciamento
+          (F4), barragens (F5), legislação e precedentes por tema (F6+F7, unificados em
+          13/08/2026) e patrimônio cultural tombado (F8, novo) — todos com dado coletado,
+          abaixo.
         </p>
       </header>
 

@@ -172,7 +172,7 @@ export default async function Hub() {
         </p>
         <div className="mt-4 flex flex-wrap gap-2 text-[.85em]">
           <a
-            href="/ambiental/direito-critico"
+            href="/ambiental/legislacao"
             className="rounded-full border border-border px-3 py-1.5 font-medium hover:border-primary hover:text-primary"
           >
             Que lei protege isso

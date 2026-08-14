@@ -72,11 +72,18 @@
       "port": 3909
     },
     {
-      "//": "Porta separada so para este worktree (cp-paraopeba) -- mesma razao das entradas acima. Outra sessao ja tinha um dev server rodando neste worktree (mesmo diretorio, outro chat) quando esta config foi criada; porta propria evita anexar no servidor errado.",
+      "//": "Porta separada so para este worktree (cp-paraopeba) -- mesma razao das entradas acima. Outra sessao ja tinha um dev server rodando neste worktree quando esta config foi criada; porta propria evita anexar no servidor errado.",
       "name": "cp-paraopeba-dev",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3910"],
       "port": 3910
+    },
+    {
+      "//": "Porta separada so para o worktree cp-legis-unificada. As duas frentes pediram 3910 e colidiram na mescla -- porta por worktree e o que impede uma sessao anexar no dev server da outra, que e falha silenciosa: o servidor responde, so que com o codigo errado.",
+      "name": "cp-legis-unificada-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3911"],
+      "port": 3911
     }
   ]
 }
