@@ -233,7 +233,18 @@ UA = "Mozilla/5.0 (compatible; ControlePopular/1.0; +https://github.com/FinweeJu
 
 DIR_GLOBO = Path(__file__).resolve().parent.parent
 DIR_CAMADAS = DIR_GLOBO / "dados" / "camadas"
-DIR_TMP = DIR_GLOBO / "scripts" / ".tmp-ingest"
+# ⚠️ O CACHE DE DOWNLOAD FICA FORA DE `public/`, E ISSO NÃO É ORGANIZAÇÃO.
+# Ele já ficou em `public/terras/globo/scripts/.tmp-ingest/` e, em 13/08/2026,
+# um `mancha.json` de 570 MiB sobrou ali e foi COPIADO PARA O BUNDLE pelo
+# build — `public/` inteiro vira Static Assets. O teto do Cloudflare é 25 MiB
+# POR ARQUIVO, então o deploy morreria naquele arquivo.
+#
+# O `.gitignore` não protegia de nada aqui: o arquivo nunca foi commitado, e
+# mesmo assim entrou no build, porque quem copia é o Next e não o git. Modo
+# de falha silencioso — ninguém vê até o upload falhar.
+#
+# `apps/web/.tmp-ingest/` está fora de `public/`, então o build não o enxerga.
+DIR_TMP = Path(__file__).resolve().parents[4] / ".tmp-ingest"
 CACHE_RAW = DIR_TMP / "quilombolas_mg_raw.xml"
 
 ALVOS = [

@@ -52,4 +52,12 @@ etl/betim/etl/normas_geo/.cache/
 # docs/FONTES-TERRITORIO-E-MINERACAO.md). Fica em disco so como cache para nao
 # baixar de novo a cada rodada do script; o resultado que importa e o
 # `dados/camadas/*.geojson` ja simplificado, que esse SIM e versionado.
+# ⟲ 13/08: o cache de download saiu de dentro de `public/`. Ficava em
+# `public/terras/globo/scripts/.tmp-ingest/` e um arquivo de 570 MiB dali foi
+# COPIADO PARA O BUNDLE pelo build — `public/` inteiro vira Static Assets, e o
+# teto do Cloudflare é 25 MiB por arquivo. Ignorar no git não protegia: quem
+# copia é o Next, não o git.
+apps/web/.tmp-ingest/
+# A linha antiga fica por enquanto, para limpar clone que ainda tenha o
+# diretório velho no disco.
 apps/web/public/terras/globo/scripts/.tmp-ingest/
