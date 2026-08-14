@@ -7,6 +7,7 @@ import {
 } from "@/lib/db/queries/legislacao-ambiental";
 import { listarNormasDireitoCritico, listarPrecedentesDireitoCritico } from "@/lib/db/queries/direito-critico";
 import BuscaLegislacaoUnificada from "./BuscaLegislacaoUnificada";
+import Link from "@/lib/ambiental/link";
 
 export const metadata: Metadata = {
   title: "Legislação e precedentes por tema — Controle Popular · Ambiental",
@@ -170,6 +171,14 @@ export default async function LegislacaoAmbientalIndex() {
           Legislação federal ambiental (Ministério do Meio Ambiente, Conama) ainda não entrou nesta
           busca — outra frente do projeto está mapeando essa fonte; quando entrar, soma à esfera
           &quot;Nacional&quot; que já existe no filtro, sem precisar de painel novo.
+        </p>
+        <p className="mt-3 text-[.9em] text-text-soft">
+          Tombamento de patrimônio cultural (histórico, paisagístico, arquitetônico) é o mesmo tipo
+          de restrição territorial que a legislação ambiental impõe, mas não é norma — é um registro
+          de bem protegido. Por isso tem acervo próprio:{" "}
+          <Link href="/patrimonio-cultural" className="text-accent hover:underline">
+            153 bens tombados pelo IEPHA-MG →
+          </Link>
         </p>
       </section>
 

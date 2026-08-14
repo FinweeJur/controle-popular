@@ -6,6 +6,7 @@ import { contarBarragensMg } from "@/lib/db/queries/barragens";
 import { contarLicenciamento } from "@/lib/db/queries/ambiental-licenciamento";
 import { contarLegislacaoAmbiental } from "@/lib/db/queries/legislacao-ambiental";
 import { contarDireitoCritico } from "@/lib/db/queries/direito-critico";
+import { contarPatrimonioTombado } from "@/lib/db/queries/patrimonio-tombado";
 
 /**
  * Home da zona /ambiental.
@@ -28,13 +29,14 @@ import { contarDireitoCritico } from "@/lib/db/queries/direito-critico";
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
 
 export default async function AmbientalHome() {
-  const [{ reunioes, itens }, barragens, { total: totalLicencas }, legislacao, direitoCritico] =
+  const [{ reunioes, itens }, barragens, { total: totalLicencas }, legislacao, direitoCritico, totalPatrimonio] =
     await Promise.all([
       contarReunioesCopam(),
       contarBarragensMg(),
       contarLicenciamento(),
       contarLegislacaoAmbiental(),
       contarDireitoCritico(),
+      contarPatrimonioTombado(),
     ]);
   const temBarragens = barragens.totalFeam > 0 || barragens.totalSnisb > 0;
 
@@ -95,6 +97,23 @@ export default async function AmbientalHome() {
       pronta: legislacao.total + direitoCritico.normas + direitoCritico.precedentes > 0,
       linkTexto: "Buscar legislação e precedentes →",
     },
+    {
+      // Nova em 13/08/2026 (Tarefa 2b da mesma unificação): tombamento
+      // restringe território como área protegida ambiental restringe, mas
+      // não é norma — acervo próprio, ligado ao de legislação por texto,
+      // não pelo mesmo filtro de tema.
+      titulo: "Patrimônio cultural tombado",
+      linha:
+        totalPatrimonio > 0
+          ? `${formatNumberBR(totalPatrimonio)} bens tombados pelo IEPHA-MG`
+          : "IEPHA-MG — coleta ainda não rodou",
+      texto:
+        "Imóveis, conjuntos paisagísticos e centros históricos protegidos pelo Estado — o mesmo tipo de restrição territorial que a legislação ambiental impõe, pela via do valor histórico e cultural, não do ecológico.",
+      fase: "F8",
+      href: "/patrimonio-cultural",
+      pronta: totalPatrimonio > 0,
+      linkTexto: "Ver o patrimônio tombado →",
+    },
   ];
 
   return (
@@ -113,9 +132,10 @@ export default async function AmbientalHome() {
           className="max-w-2xl rounded-lg border px-4 py-3 text-[.95em]"
           style={{ borderColor: ZONA.cor }}
         >
-          <strong>As quatro frentes têm tela real agora.</strong> COPAM (F3), licenciamento
-          (F4), barragens (F5) e legislação e precedentes por tema (F6+F7, unificados em
-          13/08/2026) — todos com dado coletado, abaixo.
+          <strong>As cinco frentes têm tela real agora.</strong> COPAM (F3), licenciamento
+          (F4), barragens (F5), legislação e precedentes por tema (F6+F7, unificados em
+          13/08/2026) e patrimônio cultural tombado (F8, novo) — todos com dado coletado,
+          abaixo.
         </p>
       </header>
 

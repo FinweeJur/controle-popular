@@ -1594,6 +1594,37 @@ export const direito_critico_precedentes = pgTable("direito_critico_precedentes"
 	check("direito_critico_precedentes_natureza_check", sql`natureza = ANY (ARRAY['nacional'::text, 'internacional'::text])`),
 ]);
 
+/**
+ * Patrimônio cultural tombado por Minas Gerais — migration `0072`. Fonte:
+ * dataset CKAN "Patrimônio Cultural Tombado" do IEPHA-MG
+ * (https://dados.mg.gov.br/dataset/bens-tombados, CC-BY-4.0), arquivo
+ * semente `etl/betim/dados-seed/patrimonio-tombado-iepha.csv`. Cada linha é
+ * um BEM tombado (imóvel, conjunto), não uma norma — `ato_legal` é só o
+ * instrumento que tombou aquele bem específico, texto livre da fonte (a
+ * fonte não publica link pro diploma). Ver a migration para a lacuna
+ * declarada (sem geometria, sem busca por processo).
+ */
+export const patrimonio_tombado_iepha = pgTable("patrimonio_tombado_iepha", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	origem: text().default('iepha-bens-tombados').notNull(),
+	processo_ano: text().notNull(),
+	denominacao: text().notNull(),
+	denominacao_completa: text().notNull(),
+	categoria: text().notNull(),
+	classe_subclasse: text(),
+	municipio: text().notNull(),
+	distrito: text(),
+	ato_legal: text(),
+	livro_de_tombo: text(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
+}, (table) => [
+	index("patrimonio_tombado_iepha_municipio_idx").using("btree", table.municipio.asc().nullsLast().op("text_ops")),
+	index("patrimonio_tombado_iepha_categoria_idx").using("btree", table.categoria.asc().nullsLast().op("text_ops")),
+	unique("patrimonio_tombado_iepha_origem_processo_ano_denominacao_key").on(table.origem, table.processo_ano, table.denominacao),
+	check("patrimonio_tombado_iepha_categoria_check", sql`categoria = ANY (ARRAY['BI'::text, 'BM'::text, 'CH'::text, 'CP'::text])`),
+]);
+
 export const mortalidade = pgTable("mortalidade", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
 	id_municipio: text().notNull(),
