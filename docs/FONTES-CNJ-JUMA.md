@@ -17,6 +17,14 @@ não consegui, e por quê.
 
 ---
 
+> ⚠️ **A chave do DataJud não está escrita aqui, de propósito.** O CNJ
+> publica uma chave de acesso à API pública na documentação oficial do
+> DataJud; pegue-a de lá na hora de usar e guarde como variável de ambiente,
+> nunca no repositório. Este repo é PÚBLICO e já vazou dado sensível uma vez
+> (ver `docs/ANTES-DO-PUSH.md`): credencial em arquivo versionado é credencial
+> exposta, mesmo quando a origem dela é aberta — porque o arquivo sobrevive à
+> rotação da chave e vira histórico permanente.
+
 ## Resposta curta
 
 | Fonte | Dado extraível? | Licença permite republicar? | Onde encaixa | Entra no mapa? |
@@ -93,7 +101,7 @@ CACOL usa dados do **DataJud — Base Nacional de Dados do Poder Judiciário**
 
 ```
 POST https://api-publica.datajud.cnj.jus.br/api_publica_tjmg/_search
-Authorization: APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==
+Authorization: APIKey <CHAVE_DATAJUD>   # ver nota abaixo — NÃO commitar a chave
 Content-Type: application/json
 ```
 
