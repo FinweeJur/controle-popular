@@ -78,6 +78,27 @@ SEGREDOS = [
     (r"\bxox[baprs]-[0-9A-Za-z-]{10,}", "token do Slack"),
     (r"BEGIN [A-Z ]*PRIVATE KEY", "chave privada"),
     (r"postgres(ql)?://[^:/@ ]+:[^@ ]{4,}@", "string de conexão com senha"),
+    # ⟲ 13/08: SEXTA TRAVA CEGA DO DIA, e esta era sobre segredo — a matéria
+    # deste script. Um agente commitou `Authorization: APIKey <base64>` do
+    # DataJud num .md e a varredura passou VERDE. O alcance estava certo
+    # (`.md` já está em EXTENSOES); faltava o padrão. Os sete de cima
+    # reconhecem credencial pelo PREFIXO do emissor (sk-, ghp_, AKIA...) e
+    # não veem chave que não anuncia de quem é — que é a maioria das APIs
+    # públicas brasileiras.
+    #
+    # Casa pelo CABEÇALHO, não pelo formato da chave.
+    #
+    # ⚠️ CLASSE DE MAIÚSCULA ESCRITA À MÃO, e não `(?i)`: `git grep -E` é
+    # POSIX ERE e REJEITA `(?i)` — a primeira versão disto morreu com
+    # "Invalid preceding regular expression" no stderr E O SCRIPT AINDA
+    # IMPRIMIU "✓ nenhum segredo". É o mesmo modo de falha que o cabeçalho
+    # deste arquivo já registra duas vezes. Sem dialeto errado aqui.
+    (r"[Aa][Uu][Tt][Hh][Oo][Rr][Ii][Zz][Aa][Tt][Ii][Oo][Nn][[:space:]]*:[[:space:]]*"
+     r"([Aa][Pp][Ii][Kk][Ee][Yy]|[Bb][Ee][Aa][Rr][Ee][Rr]|[Bb][Aa][Ss][Ii][Cc]|[Tt][Oo][Kk][Ee][Nn])"
+     r"[[:space:]]+[A-Za-z0-9+/=_.-]{16,}",
+     "credencial em cabeçalho Authorization"),
+    (r"[Xx]-[Aa][Pp][Ii]-[Kk][Ee][Yy][[:space:]]*:[[:space:]]*[A-Za-z0-9+/=_.-]{16,}",
+     "credencial em cabeçalho X-API-Key"),
 ]
 
 # Host local não é vazamento: é o banco de desenvolvimento do projeto
