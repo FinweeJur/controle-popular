@@ -217,6 +217,18 @@ const nextConfig: NextConfig = {
             // é a ÚNICA URL pública que mudou na unificação — as outras 77
             // continuam idênticas.
             { source: "/betim/hub", destination: "/", permanent: true },
+            // Unificação dos painéis de legislação ambiental (2026-08-13,
+            // decisão do dono): `/ambiental/direito-critico` (legislação
+            // nacional/internacional + precedentes, migration 0067) virou
+            // filtro dentro de `/ambiental/legislacao` (as 6.378 normas
+            // estaduais, migration 0063). Cobre o alvo Cloudflare; o alvo
+            // `output: 'export'` usa o bridge estático em
+            // `app/ambiental/direito-critico/page.tsx` (ver comentário lá).
+            {
+              source: "/ambiental/direito-critico",
+              destination: "/ambiental/legislacao",
+              permanent: true,
+            },
             // A Legislação saiu de `/prefeitura` em 2026-08-07: o acervo é da
             // CÂMARA em Araçuaí e Diamantina, e a URL era o único lugar onde
             // isso não dava para corrigir com texto.

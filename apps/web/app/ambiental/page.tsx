@@ -78,30 +78,22 @@ export default async function AmbientalHome() {
       linkTexto: "Ver as barragens →",
     },
     {
-      titulo: "Legislação ambiental",
-      linha:
-        legislacao.total > 0
-          ? `${formatNumberBR(legislacao.total)} normas coletadas, de três fontes`
-          : "ALMG, Semad e Siam — três fontes que não conversam",
-      texto:
-        "Leis, decretos, deliberações e portarias ambientais de Minas Gerais, das três fontes que hoje não conversam entre si, numa busca só — com a fonte de cada uma sempre visível.",
-      fase: "F6",
-      href: "/legislacao",
-      pronta: legislacao.total > 0,
-      linkTexto: "Buscar legislação →",
-    },
-    {
+      // Unificação de 13/08/2026: era dois blocos (F6 "Legislação
+      // ambiental" e F7 "Legislação e precedentes por tema") apontando
+      // para duas páginas que respondiam à mesma pergunta. Agora é uma
+      // página só (`/legislacao`, com `/direito-critico` redirecionando
+      // pra lá) — o bloco também virou um só, somando as duas contagens.
       titulo: "Legislação e precedentes por tema",
       linha:
-        direitoCritico.normas + direitoCritico.precedentes > 0
-          ? `${formatNumberBR(direitoCritico.normas)} instrumentos + ${formatNumberBR(direitoCritico.precedentes)} precedentes`
-          : "Carga inicial ainda não rodou",
+        legislacao.total + direitoCritico.normas + direitoCritico.precedentes > 0
+          ? `${formatNumberBR(legislacao.total)} normas estaduais + ${formatNumberBR(direitoCritico.normas)} nacionais/internacionais + ${formatNumberBR(direitoCritico.precedentes)} precedentes`
+          : "ALMG, Semad, Siam e curadoria nacional/internacional — fontes que hoje não conversam",
       texto:
-        "Legislação nacional/internacional e precedentes de tribunais, na mesma busca, filtrados por tema de direito protegido: rios, indígena, quilombola, comunidades tradicionais e direitos humanos.",
-      fase: "F7",
-      href: "/direito-critico",
-      pronta: direitoCritico.normas + direitoCritico.precedentes > 0,
-      linkTexto: "Ver legislação e precedentes →",
+        "Leis, decretos, deliberações e portarias de Minas Gerais ao lado de tratados e decisões de tribunais nacionais e internacionais, numa busca só — filtrável por esfera (estadual/nacional/internacional) e por tema: mineração, recursos hídricos, serras, indígena, quilombola, comunidades tradicionais e direitos humanos.",
+      fase: "F6+F7",
+      href: "/legislacao",
+      pronta: legislacao.total + direitoCritico.normas + direitoCritico.precedentes > 0,
+      linkTexto: "Buscar legislação e precedentes →",
     },
   ];
 
@@ -122,7 +114,8 @@ export default async function AmbientalHome() {
           style={{ borderColor: ZONA.cor }}
         >
           <strong>As quatro frentes têm tela real agora.</strong> COPAM (F3), licenciamento
-          (F4), barragens (F5) e legislação ambiental (F6) — todos com dado coletado, abaixo.
+          (F4), barragens (F5) e legislação e precedentes por tema (F6+F7, unificados em
+          13/08/2026) — todos com dado coletado, abaixo.
         </p>
       </header>
 

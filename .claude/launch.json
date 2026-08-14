@@ -70,6 +70,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3909"],
       "port": 3909
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-legis-unificada) -- mesma razao das entradas acima.",
+      "name": "cp-legis-unificada-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3910"],
+      "port": 3910
     }
   ]
 }

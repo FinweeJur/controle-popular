@@ -24,8 +24,10 @@ import { formatNumberBR } from "@/lib/betim/format";
  *
  * As quatro portas abaixo já existem e estão em produção — este arquivo é
  * sobretudo NAVEGAÇÃO, não construção nova:
- *  - "Que lei protege isso"   → `/ambiental/direito-critico` (não mudou de
- *    endereço; mudar quebraria link já compartilhado sem ganhar nada)
+ *  - "Que lei protege isso"   → `/ambiental/legislacao` (até 13/08/2026 era
+ *    `/ambiental/direito-critico`; a unificação dos dois painéis de
+ *    legislação moveu o conteúdo pra lá e a URL antiga redireciona — sem
+ *    isso o link já compartilhado quebraria)
  *  - "Onde buscar ajuda"      → `/direitos-em-movimento/ajuda`, que reusa
  *    `lib/betim/redeProtecao.ts` inteiro
  *  - "Como pedir informação"  → `/direitos-em-movimento/informacao`, idem
@@ -84,7 +86,7 @@ export default async function DireitosEmMovimentoHub() {
           titulo="Que lei protege isso"
           descricao="Normas nacionais e internacionais, e decisões de tribunais, filtráveis por tema: rios, povos indígenas, quilombolas, comunidades tradicionais e direitos humanos."
           numero={`${formatNumberBR(totalLei)} itens catalogados`}
-          href="/ambiental/direito-critico"
+          href="/ambiental/legislacao"
           cta="Ver o acervo →"
         />
         <PortaCard
@@ -151,7 +153,7 @@ export default async function DireitosEmMovimentoHub() {
             Faiscadores, geraizeiros, apanhadoras de flores sempre-vivas, vazanteiros, povos de
             terreiro, pescadores artesanais: o acervo de LEI os alcança — o tema{" "}
             <em>povos_tradicionais</em> existe na porta{" "}
-            <a href="/ambiental/direito-critico" className="font-medium text-primary hover:underline">
+            <a href="/ambiental/legislacao" className="font-medium text-primary hover:underline">
               Que lei protege isso
             </a>
             . O MAPA de território não os representa — o mapa 3D da zona Terra e Território
