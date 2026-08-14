@@ -58,8 +58,12 @@ export const ESFERA_LABEL: Record<EsferaLegislacao, string> = {
 
 /** As três fontes de `ambiental_legislacao` são todas estaduais — medido
  *  (ALMG = Legislativo de MG; Semad/Siam = órgão ambiental estadual),
- *  nenhuma das três publica norma municipal ou federal. */
-export function esferaEstadual(_fonte: FonteLegislacaoAmbiental): "estadual" {
+ *  nenhuma das três publica norma municipal ou federal. Recebe `fonte`
+ *  (sem usar) por simetria com `esferaDaNatureza` — o dia em que uma
+ *  quarta fonte estadual tiver esfera diferente, a mudança fica CONTIDA
+ *  aqui, não espalhada pelos chamadores. */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function esferaEstadual(fonte: FonteLegislacaoAmbiental): "estadual" {
   return "estadual";
 }
 

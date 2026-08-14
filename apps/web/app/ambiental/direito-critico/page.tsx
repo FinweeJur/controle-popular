@@ -37,7 +37,6 @@ export const metadata: Metadata = {
 export default function DireitoCriticoPonte() {
   return (
     <>
-      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
       <meta httpEquiv="refresh" content={`0; url=${DESTINO}`} />
       <div className="mx-auto max-w-2xl px-4 py-20 text-center">
         <h1 className="font-display text-2xl font-semibold text-text">

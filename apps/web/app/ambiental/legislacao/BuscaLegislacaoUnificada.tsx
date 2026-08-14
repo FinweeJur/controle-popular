@@ -5,7 +5,6 @@ import { semAcento } from "@/lib/busca/normalizar";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import type { FonteLegislacaoAmbiental, LegislacaoAmbientalRow } from "@/lib/db/queries/legislacao-ambiental";
 import type {
-  NaturezaDireitoCritico,
   NormaDireitoCriticoRow,
   PrecedenteDireitoCriticoRow,
 } from "@/lib/db/queries/direito-critico";
@@ -18,7 +17,6 @@ import {
   unificarItens,
   type ClasseItemLegislacao,
   type EsferaLegislacao,
-  type ItemLegislacaoUnificada,
 } from "@/lib/ambiental/legislacao-unificada";
 
 /**
@@ -87,11 +85,6 @@ const TAG_LABEL: Record<string, string> = {
   mudanca_climatica: "Mudança Climática",
   desastre_ambiental: "Desastre Ambiental",
   serra_relevo: "Serra",
-};
-
-const NATUREZA_LABEL: Record<NaturezaDireitoCritico, string> = {
-  nacional: "Nacional",
-  internacional: "Internacional",
 };
 
 const CLASSE_LABEL: Record<ClasseItemLegislacao, string> = {
