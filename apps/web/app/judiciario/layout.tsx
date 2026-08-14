@@ -5,6 +5,7 @@ import FontSizeControl from "@/app/judiciario/components/FontSizeControl";
 import CvdToggle from "@/app/components/CvdToggle";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { outrasZonas } from "@/lib/zonas";
 
 /**
  * Zona /judiciario. O `<html>`, as fontes e o ThemeProvider vêm do layout
@@ -44,36 +45,39 @@ export default function JudiciarioLayout({
           </nav>
           <div className="flex flex-wrap items-center gap-2">
             {/* flex-wrap é OBRIGATÓRIO aqui: achado real em revisão —
-                esta div (Busca/Congresso/Betim/Entrar + 3 botões de texto +
-                3 de tema = 9 itens) mede mais que o viewport de celular
-                inteiro (375px). Sem quebrar linha, o navegador não estoura
-                o layout visualmente, mas comprime/corta os itens — lido
+                esta div mede mais que o viewport de celular inteiro
+                (375px). Sem quebrar linha, o navegador não estoura o
+                layout visualmente, mas comprime/corta os itens — lido
                 como "navbar espremida". Cada zona irmã tem essa mesma div;
                 se ganhar mais um botão lá, checar de novo.
 
-                Busca unificada e pontes para as zonas irmãs (mesmo motivo
-                do <a> acima). Mesmo rótulo/estilo que o /congresso já usa
-                pro link de volta a esta zona — convenção do ecossistema,
-                não inventar rótulo novo. "Betim" por enquanto: é a única
-                cidade publicada (BH/SP vêm na Fase 3, multi-cidade). */}
+                Busca unificada e pontes para as zonas irmãs.
+
+                ⟲ 13/08, revisão de onboarding: "Congresso"/"Betim" eram
+                CRAVADOS À MÃO, comentário incluído, e ficaram parados no
+                dia em que a barra foi escrita — quando Ambiental, Terras
+                e Paraopeba publicaram depois, nenhum dos três entrou
+                aqui. É a classe de bug que fez o dono não achar uma
+                frente que existia navegando no celular. `outrasZonas()`
+                devolve toda `ZONA_PUBLICADA` menos a atual — a mesma
+                fonte que `OutrasFrentes.tsx` e `FooterGlobal.tsx` usam —
+                para esta lista nunca mais atrasar em relação a
+                `lib/zonas.ts`. */}
             <a
               href="/busca"
               className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
             >
               Busca →
             </a>
-            <a
-              href="/congresso"
-              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
-            >
-              Congresso →
-            </a>
-            <a
-              href="/betim"
-              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
-            >
-              Betim →
-            </a>
+            {outrasZonas("judiciario").map((z) => (
+              <a
+                key={z.id}
+                href={z.href}
+                className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
+              >
+                {z.nomeCurto} →
+              </a>
+            ))}
             {/* Direitos em Movimento é RAIZ, não zona irmã — mesmo <a> cru
                 pelo mesmo motivo, mas cor própria (`--cp-alert`) porque não
                 é um sexto eixo de poder, é transversal aos cinco (ver o

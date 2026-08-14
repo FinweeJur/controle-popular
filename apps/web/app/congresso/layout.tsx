@@ -5,6 +5,7 @@ import FontSizeControl from "@/app/congresso/components/FontSizeControl";
 import CvdToggle from "@/app/components/CvdToggle";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { outrasZonas } from "@/lib/zonas";
 
 /**
  * Zona /congresso. O `<html>`, as fontes e o ThemeProvider vêm do layout
@@ -57,14 +58,19 @@ export default function CongressoLayout({
               barra ganhou o botão de Busca.
 
               Busca unificada e pontes para as zonas irmãs (mesmo motivo
-              do <a> acima). Precisa apontar para AS DUAS: o /judiciario
-              faltava aqui, enquanto as outras duas zonas já se linkavam
-              mutuamente — era o único vértice quebrado do triângulo.
-              Mesmo rótulo e estilo que as irmãs usam, convenção do
-              ecossistema. Ambiental não entra aqui: é `publicada: false`
-              em `lib/zonas.ts`, a mesma flag que tira a 4ª zona de
-              `OutrasFrentes.tsx` e da home até alguém virá-la de
-              propósito — esta barra segue a mesma régua. */}
+              do <a> acima).
+
+              ⟲ 13/08, revisão de onboarding: os links de zona irmã eram
+              CRAVADOS À MÃO ("Judiciário", "Betim"), com um comentário
+              dizendo que Ambiental ficava fora porque estava
+              `publicada: false` — e ninguém voltou aqui quando ela (e
+              Terras, e Paraopeba) publicaram depois. Resultado real:
+              o dono navegou no celular e não achou uma frente que
+              EXISTIA, porque esta barra tinha parado no dia em que foi
+              escrita. `outrasZonas()` devolve toda `ZONA_PUBLICADA`
+              menos a atual — a mesma fonte que `OutrasFrentes.tsx` e
+              `FooterGlobal.tsx` já usam — para esta lista nunca mais
+              atrasar em relação a `lib/zonas.ts`. */}
           <div className="flex flex-wrap items-center gap-2">
             <a
               href="/busca"
@@ -72,18 +78,15 @@ export default function CongressoLayout({
             >
               Busca →
             </a>
-            <a
-              href="/judiciario"
-              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
-            >
-              Judiciário →
-            </a>
-            <a
-              href="/betim"
-              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
-            >
-              Betim →
-            </a>
+            {outrasZonas("congresso").map((z) => (
+              <a
+                key={z.id}
+                href={z.href}
+                className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
+              >
+                {z.nomeCurto} →
+              </a>
+            ))}
             {/* Direitos em Movimento é RAIZ, não zona irmã — mesmo <a> cru
                 pelo mesmo motivo, mas cor própria (`--cp-alert`) porque não
                 é um sexto eixo de poder, é transversal aos cinco (ver o

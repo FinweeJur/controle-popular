@@ -1,5 +1,6 @@
 import Link from "@/lib/ambiental/link";
 import { ZONAS } from "@/lib/zonas";
+import OutrasFrentes from "@/app/components/OutrasFrentes";
 import { formatNumberBR } from "@/lib/betim/format";
 import { contarReunioesCopam } from "@/lib/db/queries/copam";
 import { contarBarragensMg } from "@/lib/db/queries/barragens";
@@ -188,6 +189,13 @@ export default async function AmbientalHome() {
           registradas — nenhuma delas veda uso comercial, e é por isso que estão aqui.
         </p>
       </section>
+
+      {/* ⟲ 13/08, revisão de onboarding: faltava aqui — Cidades, Congresso
+          e Judiciário já mostravam a remissão cruzada na própria home,
+          e /ambiental publicou sem ganhar a mesma. Mesmo componente que
+          as outras três, mesma régua (`outrasZonas` filtra a própria
+          zona e só lista `publicada: true`). */}
+      <OutrasFrentes atual="ambiental" />
     </div>
   );
 }

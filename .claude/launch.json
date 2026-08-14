@@ -84,6 +84,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3911"],
       "port": 3911
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-ux, branch worktree/ux) -- revisao critica de onboarding/acessibilidade/design system, mesma razao das entradas acima.",
+      "name": "cp-ux-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3912"],
+      "port": 3912
     }
   ]
 }

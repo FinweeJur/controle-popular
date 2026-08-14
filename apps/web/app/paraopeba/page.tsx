@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import OutrasFrentes from "@/app/components/OutrasFrentes";
 import { ZONAS } from "@/lib/zonas";
 import { formatNumberBR } from "@/lib/betim/format";
 import {
@@ -138,6 +139,12 @@ export default function ParaopebaHome() {
           (o domínio ainda não usa conexão segura).
         </p>
       </section>
+
+      {/* ⟲ 13/08, revisão de onboarding: mesma lacuna do /funcaosocialterra
+          — esta zona também não tem `layout.tsx` nem cabeçalho fixo com
+          link para as outras frentes, então a remissão cruzada só existia
+          no rodapé, depois de rolar a página inteira. */}
+      <OutrasFrentes atual="paraopeba" />
 
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <FooterGlobal />

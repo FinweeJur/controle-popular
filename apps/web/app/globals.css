@@ -114,8 +114,27 @@
   --cp-tertiary: #6b3f00; /* 8,99:1 */
   --cp-tertiary-ink: #ffffff;
   --cp-border: #000000;
-  --cp-alert: #cc0000;
-  --cp-focus: #ffd500;
+  /* ⟲ 13/08, revisão de onboarding: os dois valores abaixo eram os únicos
+     tokens deste tema que ninguém tinha medido contra a régua que o
+     próprio tema promete (7:1 para texto). Medido nesta revisão contra
+     `--cp-bg`/`--cp-surface` (#ffffff, os dois iguais aqui) com a fórmula
+     de luminância relativa do WCAG:
+
+     `--cp-alert` era #cc0000 = 5,89:1 — abaixo do piso de 7:1 do próprio
+     tema, embora passasse no piso genérico de 4,5:1 que ninguém aqui
+     pede. Usado como TEXTO em ~40 telas (selo de violação legal, CTA de
+     denúncia) e como FUNDO com texto branco em cima
+     (`direitos-em-movimento/denuncia/Facilitador.tsx`) — escurecer ajuda
+     as duas leituras ao mesmo tempo, porque o branco fixo do texto vira
+     mais contrastante quanto mais escuro o fundo. #990000 = 8,92:1.
+
+     `--cp-focus` era #ffd500 = 1,42:1 contra o fundo branco — o anel de
+     foco mais visível do site (WCAG pede só 3:1 para indicador de UI,
+     não 7:1) ficava quase invisível bem no tema feito para quem precisa
+     MAIS dele. #806a00 = 5,28:1, ainda na família "amarelo/dourado" que
+     o comentário abaixo documenta como escolha proposital do tema. */
+  --cp-alert: #990000; /* 8,92:1 sobre a surface (texto E fundo) */
+  --cp-focus: #806a00; /* 5,28:1 sobre a surface — WCAG 1.4.11 pede 3:1 */
   --cp-bw: 2px;
 
   /* High-contrast keeps the same navy->olive tier order but pushes every

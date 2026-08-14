@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import OutrasFrentes from "@/app/components/OutrasFrentes";
 import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
 import { ZONAS } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
@@ -292,6 +293,17 @@ export default async function FuncaoSocialTerraPage() {
           </section>
         </>
       )}
+
+      {/* ⟲ 13/08, revisão de onboarding: faltava aqui — Cidades, Congresso
+          e Judiciário já mostravam a remissão cruzada na própria home; esta
+          frente e Paraopeba nunca ganharam. Agrava um problema maior desta
+          zona: ela não tem `layout.tsx` (ver o comentário abaixo), então
+          NENHUM link para as outras cinco frentes aparece até quem lê
+          rolar a página inteira até o rodapé — sem o cabeçalho fixo que
+          as outras quatro zonas têm. Ver `docs/REVISAO-UX-E-ONBOARDING.md`
+          para a decisão maior (dar um cabeçalho a esta zona), que fica
+          para o dono por mexer em layout, não em conteúdo. */}
+      <OutrasFrentes atual="terras" />
 
       {/* Rodapé padrão do portal, direto na página e não num `layout.tsx`.
           Esta frente tem três rotas — este hub, `/mapa` e `/alertas` — e
