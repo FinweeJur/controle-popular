@@ -153,6 +153,28 @@ export const LAI_ESTADUAL: ItemPainel[] = [
     verificadoEm: V,
     nota: "Prazo de resposta não aparece na página; o formulário pode ficar suspenso em recesso/feriado prolongado. Alternativa: tel. (31) 3330-9504 / 127.",
   },
+  {
+    id: "lai-mg-defensoria",
+    tipo: "informacao",
+    nome: "Defensoria Pública de MG — SIC",
+    oQueAtende: "Pedido de informação sobre a atuação da Defensoria Pública estadual.",
+    necessidades: ["pedir_informacao"],
+    abrangencia: "estadual",
+    natureza: "oficial",
+    // Estava em NAO_VERIFICADO até 2026-08-14: a URL testada antes
+    // (`defensoria.mg.def.br/acesso-a-informacao/`) dá 404 porque o SIC
+    // mora num SUBDOMÍNIO diferente do site institucional
+    // (`transparencia.defensoria.mg.def.br`), não porque o canal não
+    // existe. Formulário SEI confirmado ao vivo, com campo "Tipo: LAI -
+    // Lei de Acesso à Informação".
+    site: "https://transparencia.defensoria.mg.def.br/acesso-a-informacao/",
+    telefone: "(31) 3526-0500",
+    endereco: "Rua dos Guajajaras, 1707, Barro Preto, Belo Horizonte/MG",
+    prazo: "20 dias, prorrogáveis por 10 (Resolução nº 3573/2025)",
+    gratuito: true,
+    verificadoEm: "2026-08-14",
+    nota: "O formulário em si é um SEI (sei.defensoria.mg.def.br) alcançado por um link \"Pedido de Acesso à Informação\" dentro da página acima — não uma URL de formulário direta e estável.",
+  },
 ];
 
 // ═══════════════════════════ LAI — federal ═══════════════════════════
@@ -508,6 +530,25 @@ export const REDE_ITENS: ItemPainel[] = [
     nota: "Plantão presencial \"Porta Aberta\": segundas, 12h–14h, Rua Guajajaras, 300, Centro, BH. WhatsApp (31) 99923-4677.",
   },
   {
+    id: "rede-ajup-ufmg",
+    tipo: "ajuda",
+    nome: "AJUP-UFMG — Assessoria Jurídica Universitária Popular",
+    oQueAtende:
+      "Assessoria jurídica a movimentos sociais (foco atual: desencarceramento), ligada à Faculdade de Direito da UFMG. Não é atendimento individual de balcão — é assessoria a coletivos.",
+    necessidades: ["defesa_gratuita", "direitos_humanos"],
+    abrangencia: "municipal",
+    natureza: "academico",
+    // Estava em NAO_VERIFICADO até 2026-08-14: a página institucional
+    // existe e está ativa (edital de seleção 2026 aberto), só não tinha
+    // sido encontrada antes. Sem e-mail/telefone dedicado — o canal real
+    // de contato é o Instagram, confirmado na própria página oficial.
+    site: "https://www.ufmg.br/proex/ajup/",
+    endereco: "Av. Antônio Carlos, 6627, Pampulha, Belo Horizonte/MG (Faculdade de Direito da UFMG)",
+    gratuito: true,
+    verificadoEm: "2026-08-14",
+    nota: "Contato real é o Instagram @ajupufmg, citado na própria página oficial como \"Siga o projeto nas redes sociais\" — sem telefone/e-mail dedicado (o (31) 3409-5000 é da PROEX em geral, não linha direta do AJUP, por isso fica de fora do campo telefone). Um e-mail antigo (ajupufmg@gmail.com) circula num blog de 2016, não confirmado como ativo.",
+  },
+  {
     id: "rede-saj-pucminas",
     tipo: "ajuda",
     nome: "SAJ — Serviço de Assistência Judiciária, PUC Minas",
@@ -597,20 +638,25 @@ export interface NaoVerificado {
   nota: string;
 }
 
+// Reconferido AO VIVO em 2026-08-14 (revisão de completude, item 6 do TODO):
+// dos 13 itens que estavam aqui, 2 foram RESOLVIDOS e saíram da lista —
+// Defensoria Pública de MG (achava-se o subdomínio errado; item agora em
+// `LAI_ESTADUAL`) e Ouvidoria de Betim (URL morta dois dias seguidos;
+// trocada por alternativa viva no mesmo domínio via migration `0073`, o
+// link real que `PedidoLAI`/`Footer` usam). Os 11 que sobraram: SEM
+// MUDANÇA na maioria, 2 ganharam detalhe novo sem virar confirmação plena
+// (ver nota de cada um).
 export const NAO_VERIFICADO: NaoVerificado[] = [
-  { titulo: "Câmara de Betim — e-SIC/LAI", nota: "Erro de app JS ao abrir a rota /LAI/LeiAcesso hoje (404 dentro da SPA). Já foi verificada ao vivo em 2026-08-04 — pode ser instabilidade pontual. Religue antes de confiar." },
-  { titulo: "Câmara de Diamantina — qualquer canal", nota: "Domínio oficial devolve HTTP 403 a acesso automatizado; domínio alternativo tem certificado TLS que não bate com o host." },
-  { titulo: "Câmara de Araçuaí — LAI", nota: "Nenhuma página de e-SIC/LAI encontrada no site institucional (SAPL). Único contato achado foi e-mail não confirmado como canal formal." },
-  { titulo: "ALMG — e-SIC/LAI dedicado", nota: "Não existe formulário específico visível — pedidos de LAI parecem ir pelo canal genérico \"Fale com a Assembleia\" (CAC). Ligue (31) 2108-7000 antes de confiar só no formulário." },
-  { titulo: "Defensoria Pública de MG — e-SIC/LAI", nota: "A URL de \"acesso à informação\" indicada por busca devolveu 404; a página de transparência geral não mostra formulário operacional visível." },
-  { titulo: "SPU (federal) — Serviço de Informação ao Cidadão", nota: "A SPU migrou para dentro do Ministério da Gestão; três tentativas de abrir a página falharam por erro de conexão. Use o Fala.BR e escolha o órgão na lista." },
-  { titulo: "Portal de Transparência de São Paulo", nota: "Domínio responde e é da Prefeitura, mas está atrás de verificação anti-bot (captcha da Prodam-SP) — conteúdo não confirmado." },
-  { titulo: "NAJUP / AJUP-UFMG", nota: "Existência confirmada por fonte acadêmica (movimento estudantil, Centro Acadêmico Afonso Pena), mas sem telefone/e-mail/site oficial estável encontrado para o público procurar atendimento." },
-  { titulo: "Núcleo de MG da RENAP", nota: "O site nacional não confirma nem nega um núcleo específico em Minas Gerais." },
-  { titulo: "Comissão de Direitos Humanos da OAB-MG (seccional)", nota: "A página de comissões da seccional bloqueou acesso automatizado (HTTP 403) — nome, composição e contato não confirmados. A sede em si está confirmada: Rua Tenente Brito Melo, 210, Barro Preto, BH, (31) 2102-5800." },
-  { titulo: "Comissões de Direitos Humanos das câmaras municipais", nota: "Não verificadas município a município — podem não existir formalmente em cidades pequenas." },
-  { titulo: "Delegacias especializadas fora de Belo Horizonte", nota: "Existem em dezenas de municípios (por notícia de inauguração), mas sem endereço/telefone atual confirmado de cada uma. Use a busca oficial da PCMG e confirme por telefone antes de ir." },
-  { titulo: "Ouvidoria da Prefeitura de Betim", nota: "WebFetch recebeu conteúdo vazio na verificação de hoje; a URL foi confirmada ao vivo em 2026-08-04 (commit 1583fa4) e não é invenção, só não foi reconfirmada agora." },
+  { titulo: "Câmara de Betim — e-SIC/LAI", nota: "SEM MUDANÇA em 2026-08-14: `www.camarabetim.mg.gov.br/LAI/LeiAcesso` mostra tela de erro do SPA (\"Algo deu errado. A aplicação não irá responder até ser recarregada\"); o domínio sem `www` nem conecta (ECONNRESET). Dois dias seguidos quebrado — deixou de parecer instabilidade pontual da verificação de 2026-08-04." },
+  { titulo: "Câmara de Diamantina — qualquer canal", nota: "SEM MUDANÇA em 2026-08-14: domínio oficial não conecta (ECONNRESET, antes era 403); domínio alternativo continua com certificado TLS de terceiro (`*.locaweb.com.br`), não do próprio host. Telefone (38) 3531-1228 segue só em agregador (`camaramunicipal.com.br`), nunca confirmado pela própria Câmara." },
+  { titulo: "Câmara de Araçuaí — LAI", nota: "SEM MUDANÇA em 2026-08-14: o site institucional completo (SAPL, sapl.aracuai.mg.leg.br) carregou com todo o menu — Mesa Diretora, Comissões, Atividade Legislativa, Normas Jurídicas — e nenhuma seção de e-SIC/LAI. O e-mail administracao.cm@aracuai.mg.leg.br segue sem confirmação como canal formal." },
+  { titulo: "ALMG — e-SIC/LAI dedicado", nota: "PARCIAL em 2026-08-14: continua sem formulário dedicado (almg.gov.br/acesso-a-informacao e /sic dão 404), mas o canal genérico \"Fale com a Assembleia\" (almg.gov.br/apps/fale-com) lista expressamente como assunto \"Lei de Acesso à Informação (LAI) e Lei Geral de Proteção de Dados (LGPD)\" — é o canal certo, só não é dedicado." },
+  { titulo: "SPU (federal) — Serviço de Informação ao Cidadão", nota: "SEM MUDANÇA (na prática) em 2026-08-14: a página de contato da SPU dentro do Ministério da Gestão (gov.br/pt-br/servicos/mgi-fale-conosco-spu) agora exige login gov.br em vez de falhar por erro de conexão — mas continua sem SIC público dedicado. Use o Fala.BR e escolha o órgão na lista." },
+  { titulo: "Portal de Transparência de São Paulo", nota: "SEM MUDANÇA em 2026-08-14: ainda atrás do captcha anti-bot da Prodam-SP — a página devolveu \"Este desafio é para testar se você é um visitante legítimo\" com campo de código da imagem. Conteúdo seguem não confirmado por automação." },
+  { titulo: "Núcleo de MG da RENAP", nota: "PARCIAL em 2026-08-14: o site nacional (renap.org.br) segue sem citar Minas Gerais. Busca encontrou um Instagram @renap_mg (664 seguidores) que PODE ser o núcleo — achado só por busca, não confirmado no site oficial nem acessado diretamente. Não usar até confirmar." },
+  { titulo: "Comissão de Direitos Humanos da OAB-MG (seccional)", nota: "SEM MUDANÇA em 2026-08-14: a página de comissões da seccional (oabmg.org.br/institucional/comissoes e .../comissao?id=300) segue bloqueando acesso automatizado (HTTP 403). Um resumo de busca alegou o que a comissão faz, mas é resumo gerado, não texto verbatim da página — não tratado como confirmado. A sede em si está confirmada: Rua Tenente Brito Melo, 210, Barro Preto, BH, (31) 2102-5800." },
+  { titulo: "Comissões de Direitos Humanos das câmaras municipais", nota: "Betim tem uma comissão real e nomeada — \"Comissão de Direitos Humanos, Promoção da Igualdade Racial e das Minorias\" (Kenin do G10 na presidência, mandato 2025/2026), citada por reportagem de abril/2026 — mas sem telefone/e-mail direto encontrado, só o mandato via Câmara. Diamantina: sem evidência de comissão própria, só conselhos do Executivo (CMDCA, COMDIM). Não verificadas as demais câmaras do portal." },
+  { titulo: "Delegacias especializadas fora de Belo Horizonte", nota: "Betim como amostra: a DEAM tem endereço/telefone confirmados numa fonte federal (gov.br/mdh/.../deam_mg_betim — Rua Pedro Neves, 44, Centro, Betim/MG, CEP 32500-000, tel. (31) 3539-2579 / 3539-3531), mas um agregador não-oficial diverge nos dois dados (outro endereço, outro telefone, outro e-mail). Como as duas fontes discordam e nenhuma foi cross-confirmada com o buscador oficial da PCMG, o item continua não promovido a item confirmado — mas fica registrado aqui como pista forte. As demais dezenas de municípios seguem sem checagem individual: use a busca oficial da PCMG (policiacivil.mg.gov.br/delegacia/exibir) e confirme por telefone antes de ir." },
 ];
 
 /**
