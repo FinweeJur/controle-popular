@@ -80,8 +80,13 @@ export default function ParaopebaHome() {
     },
   ];
 
+  // ⟲ 13/08, revisão de onboarding: era `<div>` — mesmo conserto aplicado
+  // nas cinco subpáginas de /paraopeba e na home da marca (ver o
+  // comentário em `paraopeba/clipping/page.tsx`): sem `<main>`,
+  // `OuvirPagina.tsx` não achava texto e "Ouvir esta página" sumia bem
+  // no hub desta frente.
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+    <main className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
       <header className="space-y-4">
         <p
           className="text-[.82em] font-semibold uppercase tracking-wide"
@@ -149,6 +154,6 @@ export default function ParaopebaHome() {
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <FooterGlobal />
       </footer>
-    </div>
+    </main>
   );
 }
