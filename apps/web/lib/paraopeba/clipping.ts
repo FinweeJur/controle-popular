@@ -1,0 +1,2566 @@
+// GERADO a partir de `painel-paraopeba.html` (`docs/PLANO-INGESTAO-PARAOPEBA.md`
+// mede a estrutura da fonte). Dado histórico/institucional — não recalculado
+// pelo portal, atualiza por commit quando a fonte mudar.
+//
+// `NEWS_DATA` do painel — clipping de imprensa sobre a reparação do
+// rompimento da barragem da Vale em Brumadinho (25/01/2019).
+//
+// ═══ POR QUE ISTO É ACERVO DATADO, NUNCA "NOTÍCIAS DE HOJE" ═══
+//
+// É um snapshot manual, sem API/RSS por trás — não se atualiza sozinho.
+// `PERIODO_CLIPPING` existe para toda tela rotular o acervo pelo período
+// real que ele cobre, nunca como "atual". O Instituto Guaicuy mantém o
+// Painel da Reparação atualizado em guaicuy.org.br — é a fonte viva; este
+// acervo é o retrato congelado que o Controle Popular pode auditar.
+
+export type TipoNoticia = "institucional" | "imprensa" | "assessoria" | "movimento";
+
+export const TIPO_NOTICIA_LABEL: Record<TipoNoticia, string> = {
+  institucional: "Institucional (TJMG, ALMG, órgãos públicos)",
+  imprensa: "Imprensa",
+  assessoria: "Assessoria de comunicação (ATIs e movimento)",
+  movimento: "Movimento social",
+};
+
+export interface NoticiaClipping {
+  id: number;
+  titulo: string;
+  /** Resumo escrito por quem montou o painel-fonte, não pelo Controle Popular. */
+  resumo: string;
+  data: string;
+  portal: string;
+  tipo: TipoNoticia;
+  url: string;
+  tags: string[];
+  /** Agrupa notícias do mesmo evento/decisão, quando o painel-fonte marcou. */
+  grupo?: string;
+}
+
+/** Cobertura real do acervo — usar para rotular a tela, nunca "notícias de hoje". */
+export const PERIODO_CLIPPING = {
+  de: "2024-04-08",
+  ate: "2026-07-30",
+} as const;
+
+export const CLIPPING_PARAOPEBA: NoticiaClipping[] = [
+  {
+    "id": 1,
+    "titulo": "Atingidos por barragem em Brumadinho cobram continuidade de programa de renda",
+    "resumo": "Centenas de pessoas atingidas mobilizam-se na Assembleia Legislativa de MG para audiência sobre o corte do auxílio. Povo indígena Aranã relata não ter acesso ao programa.",
+    "data": "2025-03-14",
+    "portal": "ALMG",
+    "tipo": "institucional",
+    "url": "https://www.almg.gov.br/comunicacao/noticias/arquivos/Atingidos-por-barragem-em-Brumadinho-cobram-continuidade-de-programa-de-renda/",
+    "tags": [
+      "ALMG",
+      "audiência",
+      "reparação",
+      "redução"
+    ]
+  },
+  {
+    "id": 2,
+    "titulo": "TJMG determina manutenção de pagamento a atingidos pela barragem de Brumadinho",
+    "resumo": "Juiz Murilo Abreu concede tutela de urgência determinando que a Vale mantenha o pagamento com base na PNAB (Lei 14.755/2023).",
+    "data": "2025-03-31",
+    "portal": "Portal TJMG",
+    "tipo": "institucional",
+    "url": "https://www.tjmg.jus.br/portal-tjmg/noticias/tjmg-determina-manutencao-de-pagamento-a-atingidos-pela-tragedia-de-brumadinho.htm",
+    "tags": [
+      "TJMG",
+      "decisão",
+      "auxílio",
+      "PNAB",
+      "tutela"
+    ],
+    "grupo": "G_liminar_mar25"
+  },
+  {
+    "id": 3,
+    "titulo": "Brumadinho: Justiça determina que Vale mantenha benefício a atingidos",
+    "resumo": "Agência Brasil reporta decisão que obriga a Vale a manter o repasse mensal, revertendo o corte de 50% aplicado em março de 2025.",
+    "data": "2025-04-03",
+    "portal": "Agência Brasil",
+    "tipo": "imprensa",
+    "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2025-04/brumadinho-justica-determina-que-vale-mantenha-beneficio-atingidos",
+    "tags": [
+      "Agência Brasil",
+      "Justiça",
+      "Vale",
+      "auxílio",
+      "PNAB"
+    ],
+    "grupo": "G_liminar_mar25"
+  },
+  {
+    "id": 4,
+    "titulo": "Justiça obriga Vale a manter benefícios a atingidos de Brumadinho",
+    "resumo": "Portal jurídico detalha os fundamentos legais da decisão que obriga a Vale a manter o auxílio com base na Lei Federal 14.755/2023.",
+    "data": "2025-04-03",
+    "portal": "Migalhas",
+    "tipo": "imprensa",
+    "url": "https://www.migalhas.com.br/quentes/427617/justica-obriga-vale-a-manter-beneficios-a-atingidos-de-brumadinho",
+    "tags": [
+      "Migalhas",
+      "Justiça",
+      "Vale",
+      "auxílio",
+      "decisão"
+    ],
+    "grupo": "G_liminar_mar25"
+  },
+  {
+    "id": 5,
+    "titulo": "Associações parceiras do MAB recorrem à Justiça para garantir auxílio emergencial",
+    "resumo": "ABA, Ascotélite e IEM protocolam agravo no TJMG para restabelecer decisão que determinava novo auxílio emergencial.",
+    "data": "2025-05-27",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2025/05/27/associacoes-parceiras-do-mab-recorrem-a-justica-para-garantir-auxilio-emergencial-aos-atingidos-de-brumadinho/",
+    "tags": [
+      "MAB",
+      "ABA",
+      "recurso",
+      "TJMG",
+      "auxílio"
+    ]
+  },
+  {
+    "id": 6,
+    "titulo": "Vale não cogita pagar novo auxílio emergencial às pessoas atingidas",
+    "resumo": "Guaicuy repercute manifestação da Vale que afirma ter cumprido suas obrigações e rejeita novo auxílio, argumentando inconstitucionalidade da PNAB.",
+    "data": "2025-06-02",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/vale-nao-cogita-pagar-novo-auxilio-emergencial/",
+    "tags": [
+      "Vale",
+      "posição",
+      "agravo",
+      "TJMG",
+      "Guaicuy"
+    ]
+  },
+  {
+    "id": 7,
+    "titulo": "Atingidas e atingidos do Paraopeba reivindicam auxílio e protestam contra precarização das ATIs",
+    "resumo": "Centenas de lideranças marcham em BH exigindo auxílio e contra o corte de 61% nas assessorias técnicas independentes.",
+    "data": "2025-07-14",
+    "portal": "AEDAS",
+    "tipo": "assessoria",
+    "url": "https://aedasmg.org/ato-11-de-julho-2025-atingidos-atingidas-paraopeba/",
+    "tags": [
+      "protesto",
+      "ATI",
+      "auxílio",
+      "Paraopeba",
+      "AEDAS"
+    ]
+  },
+  {
+    "id": 8,
+    "titulo": "MPMG defende que Vale arque com novo auxílio emergencial para pessoas atingidas",
+    "resumo": "Procuradoria de Justiça do MPMG: Vale é responsável pelo financiamento do auxílio até a reparação integral dos danos.",
+    "data": "2025-07-30",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/mpmg-defende-novo-auxilio-emergencial/",
+    "tags": [
+      "MPMG",
+      "auxílio",
+      "Vale",
+      "Paraopeba",
+      "Guaicuy"
+    ]
+  },
+  {
+    "id": 9,
+    "titulo": "MP anuncia fim de programa para atingidos da barragem de Brumadinho",
+    "resumo": "MPMG, MPF e Defensoria anunciam encerramento do programa de repasses com os últimos pagamentos em outubro de 2025.",
+    "data": "2025-09-20",
+    "portal": "Estado de Minas",
+    "tipo": "imprensa",
+    "url": "https://www.em.com.br/gerais/2025/09/7252929-mp-anuncia-fim-de-programa-para-atingidos-da-barragem-de-brumadinho.html",
+    "tags": [
+      "MP",
+      "encerramento",
+      "Estado de Minas",
+      "FGV",
+      "outubro"
+    ]
+  },
+  {
+    "id": 10,
+    "titulo": "Atingidos pela barragem se manifestam contra fim de programa",
+    "resumo": "MAB organiza mobilização após anúncio do encerramento, alertando que mais de 160 mil famílias ficarão desassistidas.",
+    "data": "2025-09-26",
+    "portal": "Estado de Minas",
+    "tipo": "imprensa",
+    "url": "https://www.em.com.br/gerais/2025/09/7255820-atingidos-pela-tragedia-em-brumadinho-se-manifestam-contra-fim-de-programa.html",
+    "tags": [
+      "protesto",
+      "MAB",
+      "encerramento",
+      "Estado de Minas",
+      "Paraopeba"
+    ],
+    "grupo": "G_ato_set25"
+  },
+  {
+    "id": 11,
+    "titulo": "Atingidos e atingidas do Paraopeba realizam ato pela continuidade do auxílio",
+    "resumo": "Centenas de pessoas manifestam em frente ao TJMG relatando danos à saúde, à pesca e ao modo de vida após o rompimento.",
+    "data": "2025-09-25",
+    "portal": "AEDAS",
+    "tipo": "assessoria",
+    "url": "https://aedasmg.org/2025/09/29/ato-continuidade-auxilio-emergencial-paraopeba/",
+    "tags": [
+      "AEDAS",
+      "ato",
+      "TJMG",
+      "continuidade",
+      "danos"
+    ],
+    "grupo": "G_ato_set25"
+  },
+  {
+    "id": 12,
+    "titulo": "Nota: Luta dos Atingidos conquista avanços na ação pelo auxílio emergencial",
+    "resumo": "MAB informa que manifestação de 25/08 pressionou o TJMG a agendar julgamento do conflito de competência para 22 de outubro.",
+    "data": "2025-10-17",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2025/10/17/nota-luta-dos-atingidos-de-brumadinho-conquista-avancos-na-acao-pelo-auxilio-emergencial/",
+    "tags": [
+      "MAB",
+      "nota",
+      "TJMG",
+      "mobilização",
+      "competência"
+    ],
+    "grupo": "G_mat_out25"
+  },
+  {
+    "id": 13,
+    "titulo": "Data marcada para julgamento do auxílio e nova tentativa da Vale de limitar ATIs",
+    "resumo": "TJMG confirma julgamento virtual do conflito de competência para 22/10, negando pedido da Vale por sessão presencial.",
+    "data": "2025-10-20",
+    "portal": "NACAB",
+    "tipo": "assessoria",
+    "url": "https://nacab.org.br/julgamento-auxilio-vale-limita-atis/",
+    "tags": [
+      "NACAB",
+      "julgamento",
+      "TJMG",
+      "Vale",
+      "ATI"
+    ]
+  },
+  {
+    "id": 14,
+    "titulo": "Processo do novo auxílio emergencial avança para ter sentença em breve",
+    "resumo": "TJMG define a 19ª Câmara Cível como órgão julgador do recurso da Vale. Prazo limite para julgamento em 2025: 19/12.",
+    "data": "2025-10-29",
+    "portal": "NACAB",
+    "tipo": "assessoria",
+    "url": "https://nacab.org.br/processo-novo-auxilio-emergencial-avanca/",
+    "tags": [
+      "NACAB",
+      "sentença",
+      "TJMG",
+      "19ª Câmara",
+      "prazo"
+    ]
+  },
+  {
+    "id": 15,
+    "titulo": "Novo auxílio no Paraopeba: Vale tem 48h para se justificar sobre adiamento",
+    "resumo": "Vice-presidência do TJMG intima a Vale a explicar em 48h por que pede adiamento do julgamento virtual sobre o auxílio.",
+    "data": "2025-10-17",
+    "portal": "AEDAS",
+    "tipo": "assessoria",
+    "url": "https://aedasmg.org/novo-auxilio-paraopeba-jugalmento/",
+    "tags": [
+      "AEDAS",
+      "Vale",
+      "48h",
+      "competência",
+      "FGV"
+    ],
+    "grupo": "G_mat_out25"
+  },
+  {
+    "id": 16,
+    "titulo": "Vitória: TJMG autoriza instituição imediata de novo auxílio emergencial",
+    "resumo": "Desembargador André Leite Praça determina que a Vale pague novo auxílio provisoriamente nos moldes anteriores à redução, aplicando a PNAB.",
+    "data": "2025-11-13",
+    "portal": "AEDAS",
+    "tipo": "assessoria",
+    "url": "https://aedasmg.org/tjmg-autoriza-novo-auxilio-emergencial/",
+    "tags": [
+      "TJMG",
+      "vitória",
+      "novo auxílio",
+      "PNAB",
+      "AEDAS"
+    ],
+    "grupo": "G_tjmg_nov25"
+  },
+  {
+    "id": 17,
+    "titulo": "Decisão obriga Vale a retomar auxílio nos moldes anteriores à redução",
+    "resumo": "O Tempo reporta decisão do desembargador Leite Praça que obriga a Vale a retomar repasses nos valores anteriores a março de 2025.",
+    "data": "2025-11-13",
+    "portal": "O Tempo",
+    "tipo": "imprensa",
+    "url": "https://www.otempo.com.br/cidades/2025/11/13/tragedia-de-brumadinho-decisao-obriga-vale-a-retomar-auxilio-nos-moldes-do-ptr",
+    "tags": [
+      "O Tempo",
+      "TJMG",
+      "Vale",
+      "auxílio",
+      "retomada"
+    ],
+    "grupo": "G_tjmg_nov25"
+  },
+  {
+    "id": 18,
+    "titulo": "Justiça institui novo auxílio a pessoas atingidas pelo rompimento da barragem",
+    "resumo": "Portal oficial do TJMG publica decisão que determina novo auxílio, reconhecendo danos continuados e aplicabilidade da PNAB.",
+    "data": "2025-11-14",
+    "portal": "Portal TJMG",
+    "tipo": "institucional",
+    "url": "https://www.tjmg.jus.br/portal-tjmg/noticias/justica-mantem-programa-de-transferencia-de-renda-em-brumadinho.htm",
+    "tags": [
+      "TJMG",
+      "auxílio",
+      "PNAB",
+      "Vale",
+      "decisão"
+    ],
+    "grupo": "G_tjmg_nov25"
+  },
+  {
+    "id": 19,
+    "titulo": "Vale é intimada a depositar R$ 234 milhões para auxílio emergencial",
+    "resumo": "Justiça determina à Vale depósito de R$ 234 milhões (1/3 do valor necessário até jan/2026) para viabilizar os pagamentos.",
+    "data": "2025-11-17",
+    "portal": "O Tempo",
+    "tipo": "imprensa",
+    "url": "https://www.otempo.com.br/cidades/2025/11/17/tragedia-de-brumadinho-vale-e-intimada-a-depositar-r-234-milhoes-para-auxilio-emergencial",
+    "tags": [
+      "O Tempo",
+      "R$234 milhões",
+      "intimação",
+      "FGV",
+      "prazo"
+    ],
+    "grupo": "G_vale_234_nov25"
+  },
+  {
+    "id": 20,
+    "titulo": "Vale questiona valores para auxílio emergencial e pede prazo maior",
+    "resumo": "Vale questiona cálculos da FGV e pede 30 dias para depósito. Advogados: qualquer atraso impacta diretamente a subsistência das famílias.",
+    "data": "2025-11-22",
+    "portal": "O Tempo",
+    "tipo": "imprensa",
+    "url": "https://www.otempo.com.br/cidades/2025/11/21/brumadinho-vale-questiona-valores-para-auxilio-emergencial-e-pede-prazo-maior",
+    "tags": [
+      "O Tempo",
+      "Vale",
+      "contestação",
+      "prazo",
+      "R$234 milhões"
+    ],
+    "grupo": "G_vale_questiona_nov25"
+  },
+  {
+    "id": 21,
+    "titulo": "Auxílio emergencial: Justiça mantém prazo para Vale depositar R$ 234 milhões",
+    "resumo": "Justiça rejeita pedidos da Vale e mantém prazo para depósito de R$ 234 milhões sem impacto ao funcionamento da empresa.",
+    "data": "2025-11-25",
+    "portal": "O Tempo",
+    "tipo": "imprensa",
+    "url": "https://www.otempo.com.br/cidades/2025/11/25/auxilio-emergencial-em-brumadinho-justica-mantem-prazo-para-vale-depositar-r-234-milhoes",
+    "tags": [
+      "O Tempo",
+      "prazo",
+      "Vale",
+      "depósito",
+      "decisão"
+    ],
+    "grupo": "G_vale_234_nov25"
+  },
+  {
+    "id": 22,
+    "titulo": "Vale deposita valor para retomada do auxílio emergencial",
+    "resumo": "Vale deposita R$ 234 mi. Prefeito de Brumadinho chama de 'vitória gigantesca'. FGV confirma capacidade de operacionalizar pagamentos.",
+    "data": "2025-11-27",
+    "portal": "O Tempo",
+    "tipo": "imprensa",
+    "url": "https://www.otempo.com.br/cidades/2025/11/27/auxilio-emergencial-em-brumadinho-veja-os-proximos-passos-apos-o-deposito-da-vale",
+    "tags": [
+      "O Tempo",
+      "depósito",
+      "FGV",
+      "cronograma",
+      "dezembro"
+    ],
+    "grupo": "G_vale_234_nov25"
+  },
+  {
+    "id": 23,
+    "titulo": "Justiça manda pagar com urgência auxílio emergencial das pessoas atingidas",
+    "resumo": "Juiz Murilo Abreu ordena transferência imediata dos R$ 234 mi para a FGV e determina novos depósitos da Vale para jan e fev/2026.",
+    "data": "2025-11-28",
+    "portal": "NACAB",
+    "tipo": "assessoria",
+    "url": "https://nacab.org.br/justica-manda-pagar-auxilio-emergencial-das-pessoas-atingidas-com-urgencia/",
+    "tags": [
+      "NACAB",
+      "FGV",
+      "urgência",
+      "dezembro",
+      "depósito"
+    ],
+    "grupo": "G_vale_234_nov25"
+  },
+  {
+    "id": 24,
+    "titulo": "Vale deve transferir R$ 234 mi para pessoas atingidas de Brumadinho",
+    "resumo": "Conjur detalha decisão que confirma tutela em duas instâncias, determinando à Vale o repasse para viabilizar pagamentos mensais.",
+    "data": "2025-12-02",
+    "portal": "Consultor Jurídico (Conjur)",
+    "tipo": "imprensa",
+    "url": "https://www.conjur.com.br/2025-dez-02/vale-deve-pagar-r-234-mi-a-conta-de-auxilio-para-vitimas-de-brumadinho/",
+    "tags": [
+      "Conjur",
+      "Vale",
+      "R$234 mi",
+      "FGV",
+      "repasse"
+    ],
+    "grupo": "G_urgencia_dez25"
+  },
+  {
+    "id": 25,
+    "titulo": "Brumadinho: Justiça garante urgência para auxílio e exige novo repasse da Vale",
+    "resumo": "Juiz ordena transferência imediata dos valores à FGV e determina novos depósitos da Vale para dez/2025 a fev/2026.",
+    "data": "2025-12-02",
+    "portal": "O Tempo",
+    "tipo": "imprensa",
+    "url": "https://www.otempo.com.br/cidades/2025/12/2/brumadinho-justica-garante-urgencia-para-auxilio-emergencial-e-exige-novo-repasse-da-vale",
+    "tags": [
+      "O Tempo",
+      "urgência",
+      "FGV",
+      "repasse",
+      "Vale"
+    ],
+    "grupo": "G_urgencia_dez25"
+  },
+  {
+    "id": 26,
+    "titulo": "Qual a diferença entre o Novo Auxílio Emergencial e o programa anterior?",
+    "resumo": "Guaicuy explica diferenças jurídicas entre o programa anterior (Acordo 2021) e o Novo Auxílio Emergencial (direito autônomo da PNAB).",
+    "data": "2025-12-09",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/qual-a-diferenca-entre-o-novo-auxilio-emergencial-e-a-continuidade-do-ptr/",
+    "tags": [
+      "Guaicuy",
+      "explicação",
+      "PNAB",
+      "FGV",
+      "diferença"
+    ]
+  },
+  {
+    "id": 27,
+    "titulo": "Juiz acolhe solicitação da FGV e liberação do auxílio emergencial está próxima",
+    "resumo": "Despacho judicial acolhe pedido da FGV e aponta que o pagamento do auxílio emergencial deve começar em dezembro de 2025.",
+    "data": "2025-12-10",
+    "portal": "AEDAS",
+    "tipo": "assessoria",
+    "url": "https://aedasmg.org/juiz-fgv-pagamento-novo-auxilio-emergencial-financeiro/",
+    "tags": [
+      "AEDAS",
+      "FGV",
+      "despacho",
+      "pagamento",
+      "calendário"
+    ],
+    "grupo": "G_fgv_data_dez25"
+  },
+  {
+    "id": 28,
+    "titulo": "FGV anuncia data de pagamento do auxílio emergencial",
+    "resumo": "FGV confirma pagamento do auxílio de dezembro para 17/12/2025, após receber os recursos depositados pela Vale.",
+    "data": "2025-12-12",
+    "portal": "O Tempo",
+    "tipo": "imprensa",
+    "url": "https://www.otempo.com.br/cidades/2025/12/12/brumadinho-fgv-anuncia-data-de-pagamento-do-auxilio-emergencial-da-vale-veja",
+    "tags": [
+      "O Tempo",
+      "FGV",
+      "data",
+      "pagamento",
+      "dezembro"
+    ],
+    "grupo": "G_fgv_data_dez25"
+  },
+  {
+    "id": 29,
+    "titulo": "Últimas atualizações de 2025 sobre o Novo Auxílio Emergencial e as ATIs",
+    "resumo": "Guaicuy fecha 2025: a 19ª Câmara restabeleceu os efeitos da decisão de 1ª instância. 'Ganhos significativos nos direitos das pessoas atingidas'.",
+    "data": "2025-12-23",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/ultimas-atualizacoes-2025-novo-auxilio-emergencial/",
+    "tags": [
+      "Guaicuy",
+      "2025",
+      "balanço",
+      "Vale",
+      "ATI"
+    ]
+  },
+  {
+    "id": 30,
+    "titulo": "Vale deposita R$ 133 milhões para o Novo Auxílio Emergencial de março",
+    "resumo": "Vale deposita em 12/02 o valor de R$ 133,1 mi para março. FGV efetua repasses até o 5º dia útil do mês.",
+    "data": "2026-02-13",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/vale-deposita-r-133-milhoes-para-o-novo-auxilio-emergencial-de-marco/",
+    "tags": [
+      "Guaicuy",
+      "Vale",
+      "depósito",
+      "março",
+      "R$133 mi"
+    ],
+    "grupo": "G_deposito_mar26"
+  },
+  {
+    "id": 31,
+    "titulo": "Novo Auxílio Emergencial de março está garantido",
+    "resumo": "NACAB confirma depósito judicial de R$ 133,1 mi para março de 2026. Valores dependem de etapas legais antes de chegar às famílias.",
+    "data": "2026-02-13",
+    "portal": "NACAB",
+    "tipo": "assessoria",
+    "url": "https://nacab.org.br/auxilio-emergencial-marco-garantido/",
+    "tags": [
+      "NACAB",
+      "março",
+      "garantido",
+      "Vale",
+      "depósito"
+    ],
+    "grupo": "G_deposito_mar26"
+  },
+  {
+    "id": 32,
+    "titulo": "TJMG determina data para julgamento do recurso do Novo Auxílio Emergencial",
+    "resumo": "TJMG agenda para 05/03/2026 o julgamento do agravo de instrumento da Vale contra a decisão que determinou o Novo Auxílio Emergencial.",
+    "data": "2026-02-03",
+    "portal": "NACAB",
+    "tipo": "assessoria",
+    "url": "https://nacab.org.br/julgamento-auxilio-vale-limita-atis/",
+    "tags": [
+      "NACAB",
+      "TJMG",
+      "julgamento",
+      "05/03",
+      "agravo"
+    ]
+  },
+  {
+    "id": 33,
+    "titulo": "TJMG mantém pagamento do novo auxílio às pessoas atingidas",
+    "resumo": "TJMG publica decisão unânime da 19ª Câmara Cível que rejeita recurso da Vale e mantém o Novo Auxílio Emergencial.",
+    "data": "2026-03-05",
+    "portal": "Portal TJMG",
+    "tipo": "institucional",
+    "url": "https://www.tjmg.jus.br/portal-tjmg/noticias/pagamento-do-novo-auxilio-aos-atingidos-de-brumadinho-e-mantido-pelo-tjmg-8ACC80299CB119E5019CBFF2ABE85520-00.htm",
+    "tags": [
+      "TJMG",
+      "manutenção",
+      "auxílio",
+      "19ª Câmara",
+      "decisão"
+    ],
+    "grupo": "G_tjmg_mar26"
+  },
+  {
+    "id": 34,
+    "titulo": "TJMG rejeita recurso da Vale e mantém pagamento do novo auxílio",
+    "resumo": "19ª Câmara Cível rejeita por unanimidade o agravo da Vale, mantendo o Novo Auxílio Emergencial.",
+    "data": "2026-03-05",
+    "portal": "O Tempo",
+    "tipo": "imprensa",
+    "url": "https://www.otempo.com.br/politica/2026/3/5/tjmg-rejeita-recurso-da-vale-e-mantem-pagamento-do-novo-auxilio-aos-atingidos-de-brumadinho",
+    "tags": [
+      "O Tempo",
+      "TJMG",
+      "recurso",
+      "Vale",
+      "auxílio"
+    ],
+    "grupo": "G_tjmg_mar26"
+  },
+  {
+    "id": 35,
+    "titulo": "Juiz intima Vale a depositar valor para o pagamento do auxílio de abril",
+    "resumo": "Juiz Murilo Abreu intima a Vale a depositar R$ 133 mi para abril. Pedidos de retroativo de nov/2025 e das parcelas reduzidas foram negados.",
+    "data": "2026-03-05",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/juiz-intima-vale-a-depositar-valor-para-o-pagamento-do-auxilio-emergencial-de-abril/",
+    "tags": [
+      "Guaicuy",
+      "abril",
+      "intimação",
+      "Vale",
+      "depósito"
+    ],
+    "grupo": "G_tjmg_mar26"
+  },
+  {
+    "id": 36,
+    "titulo": "Vale é derrotada na segunda instância. Novo Auxílio Emergencial continua",
+    "resumo": "Guaicuy informa que o Novo Auxílio Emergencial terá continuidade após derrota da Vale no TJMG. FGV divulgará data do pagamento de março.",
+    "data": "2026-03-06",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/vale-derrotada-na-segunda-instancia-novo-auxilio-emergencial-continua/",
+    "tags": [
+      "Guaicuy",
+      "TJMG",
+      "segunda instância",
+      "auxílio",
+      "continuidade"
+    ],
+    "grupo": "G_tjmg_mar26"
+  },
+  {
+    "id": 37,
+    "titulo": "TJMG confirma auxílio emergencial e nega recurso da Vale",
+    "resumo": "Portal reporta decisão unânime com fundamento no dano continuado e aplicabilidade da PNAB ao caso de Brumadinho.",
+    "data": "2026-03-06",
+    "portal": "Portal Carlos Souto",
+    "tipo": "imprensa",
+    "url": "https://www.portalcarlossouto.com.br/noticias/tjmg-confirma-auxilio-emergencial-a-vitimas-de-brumadinho-e-nega-recurso-da-vale/",
+    "tags": [
+      "Portal Carlos Souto",
+      "TJMG",
+      "Vale",
+      "auxílio",
+      "dano continuado"
+    ],
+    "grupo": "G_tjmg_mar26"
+  },
+  {
+    "id": 38,
+    "titulo": "Respostas para as principais dúvidas sobre o Novo Auxílio Emergencial",
+    "resumo": "Guia prático respondendo dúvidas sobre direito, valores, critérios e como acionar a FGV caso o pagamento não tenha sido realizado.",
+    "data": "2026-03-24",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/respostas-auxilio-emergencial-vale/",
+    "tags": [
+      "Guaicuy",
+      "dúvidas",
+      "quem recebe",
+      "valores",
+      "FGV"
+    ],
+    "grupo": "G_explicativo_mar26"
+  },
+  {
+    "id": 39,
+    "titulo": "Auxílio emergencial na Bacia do Paraopeba: entenda em 5 pontos",
+    "resumo": "MAB explica quem recebe, quanto, por quanto tempo, o que pende no Judiciário e por que a luta continua após a vitória no TJMG.",
+    "data": "2026-03-26",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2026/03/26/auxilio-emergencial-na-bacia-do-paraopeba-entenda-em-5-pontos/",
+    "tags": [
+      "MAB",
+      "5 pontos",
+      "Paraopeba",
+      "continuidade",
+      "recurso"
+    ],
+    "grupo": "G_explicativo_mar26"
+  },
+  {
+    "id": 40,
+    "titulo": "TJMG rejeita recurso da Vale e mantém auxílio emergencial",
+    "resumo": "Veículo local repercute a derrota da Vale com ênfase nos dados de saúde apresentados pela Prefeitura após o corte.",
+    "data": "2026-03-16",
+    "portal": "Folha de Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://www.folhadebrumadinho.com.br/noticias/tragedia-vale/tjmg-rejeita-recurso-da-vale-e-mantem-auxilio-emergencial/",
+    "tags": [
+      "Folha de Brumadinho",
+      "TJMG",
+      "Vale",
+      "auxílio",
+      "saúde"
+    ]
+  },
+  {
+    "id": 41,
+    "titulo": "TJMG rejeita recurso e mantém novo auxílio emergencial para atingidos",
+    "resumo": "Frances News reporta a derrota da Vale no TJMG e informa que a Justiça determinou novo depósito de R$ 133 mi para abril de 2026.",
+    "data": "2026-03-26",
+    "portal": "Frances News",
+    "tipo": "imprensa",
+    "url": "https://francesnews.com.br/post/2026/03/26/16832-tjmg-rejeita-recurso-da-vale-e-mantem-novo-auxilio-emergencial-para-atingidos-de-brumadinho",
+    "tags": [
+      "Frances News",
+      "TJMG",
+      "Vale",
+      "auxílio",
+      "abril"
+    ],
+    "grupo": "G_explicativo_mar26"
+  },
+  {
+    "id": 42,
+    "titulo": "Pagamento emergencial de abril está garantido",
+    "resumo": "Vale informa depósito de R$ 133 mi para abril. FGV aguarda alvará do juiz para realizar os repasses às famílias.",
+    "data": "2026-03-30",
+    "portal": "NACAB",
+    "tipo": "assessoria",
+    "url": "https://nacab.org.br/emergencial-abril-garantido/",
+    "tags": [
+      "NACAB",
+      "abril",
+      "garantido",
+      "FGV",
+      "depósito"
+    ]
+  },
+  {
+    "id": 43,
+    "titulo": "Mais uma decisão favorável ao Novo Auxílio Emergencial no TJMG",
+    "resumo": "Presidente do TJMG Corrêa Júnior julga reclamação da Vale monocraticamente e mantém o auxílio, impedindo julgamento pelo Órgão Especial.",
+    "data": "2026-04-24",
+    "portal": "NACAB",
+    "tipo": "assessoria",
+    "url": "https://nacab.org.br/decisao-favoravel-novo-auxilio-emergencial-tjmg/",
+    "tags": [
+      "NACAB",
+      "TJMG",
+      "presidente",
+      "reclamação",
+      "Vale"
+    ],
+    "grupo": "G_presidente_tjmg_abr26"
+  },
+  {
+    "id": 44,
+    "titulo": "STF vai decidir se Vale deve continuar pagando novo auxílio emergencial",
+    "resumo": "O Fator revela que o Ibram ajuizou ADPF 1314 no STF pedindo suspensão das decisões do TJMG sobre o Novo Auxílio Emergencial.",
+    "data": "2026-04-01",
+    "portal": "O Fator",
+    "tipo": "imprensa",
+    "url": "https://ofator.com.br/informacao/stf-vai-decidir-se-vale-deve-continuar-pagando-novo-auxilio-emergencial-a-atingidos-de-brumadinho/",
+    "tags": [
+      "STF",
+      "Vale",
+      "Ibram",
+      "ADPF 1314",
+      "auxílio"
+    ],
+    "grupo": "G_adpf_abr26"
+  },
+  {
+    "id": 45,
+    "titulo": "Mineradoras acionam STF contra a PNAB e ameaçam auxílio emergencial",
+    "resumo": "MAB denuncia que o Ibram aciona o STF contra a PNAB, podendo suspender o auxílio para mais de 160 mil famílias da Bacia do Paraopeba.",
+    "data": "2026-04-02",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2026/04/02/mineradoras-acionam-stf-contra-a-pnab-e-ameacam-auxilio-emergencial/",
+    "tags": [
+      "MAB",
+      "STF",
+      "Ibram",
+      "PNAB",
+      "ameaça"
+    ],
+    "grupo": "G_adpf_abr26"
+  },
+  {
+    "id": 46,
+    "titulo": "Manutenção do auxílio às pessoas atingidas é questionada no STF",
+    "resumo": "Conjur detalha ADPF 1314 do Ibram no STF sob relatoria de Gilmar Mendes, questionando constitucionalidade da PNAB no caso.",
+    "data": "2026-04-08",
+    "portal": "Consultor Jurídico (Conjur)",
+    "tipo": "imprensa",
+    "url": "https://www.conjur.com.br/2026-abr-08/manutencao-de-auxilio-as-vitimas-de-brumadinho-e-questionada-no-stf/",
+    "tags": [
+      "Conjur",
+      "STF",
+      "Ibram",
+      "ADPF 1314",
+      "Gilmar Mendes"
+    ],
+    "grupo": "G_adpf_abr26"
+  },
+  {
+    "id": 47,
+    "titulo": "Decisão que determinou manutenção do auxílio é questionada no STF",
+    "resumo": "Portal oficial do STF registra o ajuizamento da ADPF 1314, que pede liminar para suspender decisões do TJMG sobre o auxílio.",
+    "data": "2026-04-08",
+    "portal": "Portal STF",
+    "tipo": "institucional",
+    "url": "https://noticias.stf.jus.br/postsnoticias/decisao-que-determinou-manutencao-de-auxilio-as-vitimas-de-brumadinho-e-questionada-no-stf/",
+    "tags": [
+      "STF",
+      "ADPF 1314",
+      "Ibram",
+      "Gilmar Mendes",
+      "liminar"
+    ],
+    "grupo": "G_adpf_abr26"
+  },
+  {
+    "id": 48,
+    "titulo": "No STF, Ibram contesta manutenção do auxílio às pessoas atingidas",
+    "resumo": "Migalhas: Ibram alega que lei posterior ao acordo viola coisa julgada, segurança jurídica e separação de poderes.",
+    "data": "2026-04-08",
+    "portal": "Migalhas",
+    "tipo": "imprensa",
+    "url": "https://www.migalhas.com.br/quentes/453486/no-stf-ibram-contesta-manutencao-de-auxilio-as-vitimas-de-brumadinho",
+    "tags": [
+      "Migalhas",
+      "Ibram",
+      "STF",
+      "coisa julgada",
+      "segurança jurídica"
+    ],
+    "grupo": "G_adpf_abr26"
+  },
+  {
+    "id": 49,
+    "titulo": "Instituto de Mineração aciona STF contra extensão do auxílio",
+    "resumo": "JOTA reporta a ação do Ibram e os pedidos de suspensão das decisões do TJMG que obrigam a Vale ao pagamento do Novo Auxílio.",
+    "data": "2026-04-08",
+    "portal": "JOTA",
+    "tipo": "imprensa",
+    "url": "https://www.jota.info/stf/do-supremo/instituto-de-mineracao-aciona-stf-contra-extensao-de-auxilio-a-vitimas-de-brumadinho",
+    "tags": [
+      "JOTA",
+      "STF",
+      "Ibram",
+      "Vale",
+      "ADPF"
+    ],
+    "grupo": "G_adpf_abr26"
+  },
+  {
+    "id": 50,
+    "titulo": "Prefeitura de Brumadinho vai ao STF defender continuidade do auxílio",
+    "resumo": "Prefeito Gabriel Parreiras reúne-se com o ministro Gilmar Mendes no STF para defender o auxílio com dados de saúde e pobreza do município.",
+    "data": "2026-04-06",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias",
+    "tags": [
+      "Prefeitura",
+      "Brumadinho",
+      "STF",
+      "Gilmar Mendes",
+      "auxílio"
+    ],
+    "grupo": "G_adpf_abr26"
+  },
+  {
+    "id": 51,
+    "titulo": "Presidente do TJMG nega recursos da Vale e mantém auxílio a atingidos",
+    "resumo": "Corrêa Júnior rejeita dois recursos da Vale: um por intempestividade e outro no mérito, mantendo as decisões sobre o auxílio.",
+    "data": "2026-04-24",
+    "portal": "O Fator",
+    "tipo": "imprensa",
+    "url": "https://ofator.com.br/informacao/presidente-do-tjmg-nega-recursos-da-vale-e-mantem-auxilio-a-atingidos-de-brumadinho/",
+    "tags": [
+      "O Fator",
+      "TJMG",
+      "presidente",
+      "Vale",
+      "intempestivo"
+    ],
+    "grupo": "G_presidente_tjmg_abr26"
+  },
+  {
+    "id": 52,
+    "titulo": "Novo argumento do Ibram no STF para barrar continuidade do auxílio",
+    "resumo": "Ibram apresenta novo argumento no STF: 25 ações individuais em mar–abr/2026 seriam indício de litigância coordenada contra a Vale.",
+    "data": "2026-04-30",
+    "portal": "O Fator",
+    "tipo": "imprensa",
+    "url": "https://ofator.com.br/informacao/argumento-ibram-stf-sobre-auxilio-emergencial-vale-brumadinho/",
+    "tags": [
+      "O Fator",
+      "Ibram",
+      "STF",
+      "litigância",
+      "25 ações"
+    ],
+    "grupo": "G_ibram_maio26"
+  },
+  {
+    "id": 53,
+    "titulo": "Câmara dos Deputados defende no STF a continuidade do auxílio emergencial",
+    "resumo": "Advocacia da Câmara defende a PNAB para Gilmar Mendes: norma passou por longo debate legislativo após Mariana e Brumadinho.",
+    "data": "2026-04-25",
+    "portal": "O Fator",
+    "tipo": "imprensa",
+    "url": "https://ofator.com.br/informacao/camara-stf-manutencao-auxilio-emergencial-pago-pela-vale-brumadinho/",
+    "tags": [
+      "O Fator",
+      "Câmara",
+      "STF",
+      "PNAB",
+      "continuidade"
+    ]
+  },
+  {
+    "id": 54,
+    "titulo": "MPMG defende no STF a manutenção do Novo Auxílio Emergencial",
+    "resumo": "MPMG pede ingresso como amicus curiae na ADPF 1314, argumentando que o Novo Auxílio é direito autônomo distinto do programa anterior.",
+    "data": "2026-05-05",
+    "portal": "NACAB",
+    "tipo": "assessoria",
+    "url": "https://nacab.org.br/mpmg-defende-manutencao-novo-auxilio-stf/",
+    "tags": [
+      "NACAB",
+      "MPMG",
+      "STF",
+      "amicus curiae",
+      "ADPF 1314"
+    ]
+  },
+  {
+    "id": 55,
+    "titulo": "Auxílio emergencial de maio: Vale transfere R$ 133 milhões e juiz ordena depósito de junho",
+    "resumo": "Vale deposita R$ 133 mi para maio em 23/04/2026. Juiz já ordena novo depósito para junho. Pagamentos feitos pela FGV até o 5º dia útil.",
+    "data": "2026-04-29",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/auxilio-emergencial-de-maio-vale-deposita-r-133-milhoes/",
+    "tags": [
+      "Guaicuy",
+      "maio",
+      "Vale",
+      "R$133 mi",
+      "junho"
+    ],
+    "grupo": "G_ibram_maio26"
+  },
+  {
+    "id": 56,
+    "titulo": "Auxílio previsto na PNAB será cortado em Brumadinho prejudicando renda de mais de 150 mil atingidos",
+    "resumo": "MAB denuncia o corte de 50% anunciado pela FGV para março de 2025 e o encerramento do PTR em abril de 2026, alertando para impactos sobre 153 mil pessoas na Bacia do Paraopeba.",
+    "data": "2024-12-27",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2024/12/27/auxilio-sera-cortado-em-brumadinho-150-mil-prejudicados/",
+    "tags": [
+      "MAB",
+      "corte",
+      "PNAB",
+      "153 mil",
+      "FGV"
+    ]
+  },
+  {
+    "id": 57,
+    "titulo": "MAB organiza atos para lembrar seis anos do crime da Vale em Brumadinho",
+    "resumo": "Agência Brasil cobre os atos organizados pelo MAB no aniversário de seis anos: protesto em frente ao MPMG e reunião com instituições de justiça para cobrar continuidade do auxílio.",
+    "data": "2025-01-24",
+    "portal": "Agência Brasil",
+    "tipo": "imprensa",
+    "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2025-01/mab-organiza-atos-para-lembrar-seis-anos-da-tragedia-em-brumadinho",
+    "tags": [
+      "Agência Brasil",
+      "MAB",
+      "6 anos",
+      "PNAB",
+      "reparação"
+    ],
+    "grupo": "G_6anos_jan25"
+  },
+  {
+    "id": 58,
+    "titulo": "Brumadinho: atingidos cobram transparência de programa gerido pela FGV",
+    "resumo": "MAB questiona a taxa retida pela FGV (12% dos rendimentos acima da poupança) e cobra transparência sobre a gestão dos R$ 4,4 bilhões destinados ao PTR.",
+    "data": "2025-01-25",
+    "portal": "Agência Brasil",
+    "tipo": "imprensa",
+    "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2025-01/brumadinho-atingidos-cobram-transparencia-de-programa-gerido-pela-fgv",
+    "tags": [
+      "Agência Brasil",
+      "FGV",
+      "transparência",
+      "PTR",
+      "taxa"
+    ],
+    "grupo": "G_6anos_jan25"
+  },
+  {
+    "id": 59,
+    "titulo": "Seis anos após o crime da Vale, Estado e IJs não dão respostas satisfatórias sobre reparação",
+    "resumo": "MAB analisa respostas do Estado de MG e IJs às demandas entregues em 24/01 e aponta vagueza: sem garantia de continuidade do auxílio, sem participação popular, sem reparação ambiental.",
+    "data": "2025-02-26",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2025/02/26/seis-anos-apos-o-crime-da-vale-em-brumadinho-estado-e-instituicoes-de-justica-nao-dao-respostas-satisfatorias-sobre-a-reparacao/",
+    "tags": [
+      "MAB",
+      "nota",
+      "reparação",
+      "PNAB",
+      "ATI"
+    ],
+    "grupo": "G_sem_reparacao_fev25"
+  },
+  {
+    "id": 60,
+    "titulo": "Ainda sem reparação, atingidos de Brumadinho lutam por manutenção integral de auxílio",
+    "resumo": "Brasil de Fato reporta o temor com o corte de março e ouve especialistas: reparação não avançou, rio segue contaminado, apenas 10% das pessoas foram indenizadas.",
+    "data": "2025-02-27",
+    "portal": "Brasil de Fato",
+    "tipo": "imprensa",
+    "url": "https://www.brasildefato.com.br/2025/02/27/ainda-sem-reparacao-atingidos-de-brumadinho-mg-lutam-por-manutencao-integral-de-auxilio/",
+    "tags": [
+      "Brasil de Fato",
+      "PNAB",
+      "corte",
+      "reparação",
+      "FGV"
+    ],
+    "grupo": "G_sem_reparacao_fev25"
+  },
+  {
+    "id": 61,
+    "titulo": "Brumadinho: vítimas processam Vale e cobram MP sobre fim do auxílio",
+    "resumo": "Agência Brasil detalha a Ação Civil Pública movida pelas associações parceiras do MAB logo após o corte, e o fundamento jurídico na PNAB para exigir a continuidade do auxílio.",
+    "data": "2025-03-26",
+    "portal": "Agência Brasil",
+    "tipo": "imprensa",
+    "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2025-03/brumadinho-vitimas-processam-vale-e-cobram-mp-sobre-fim-de-beneficio",
+    "tags": [
+      "Agência Brasil",
+      "ABA",
+      "Ascotélite",
+      "IEM",
+      "ação civil"
+    ]
+  },
+  {
+    "id": 62,
+    "titulo": "Sem corte de direitos! Justiça determina que Vale mantenha auxílio emergencial",
+    "resumo": "MAB comemora a decisão do juiz Murilo Abreu de 28/03: Vale deve manter o auxílio às 158 mil famílias. MAB destaca que a medida reforça a obrigatoriedade de cumprimento da PNAB e da PEAB.",
+    "data": "2025-04-04",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2025/04/04/justica-determina-que-a-vale-mantenha-o-programa-de-transferencia-de-renda-para-os-atingidos-de-brumadinho/",
+    "tags": [
+      "MAB",
+      "decisão",
+      "juiz Murilo",
+      "PNAB",
+      "conquista"
+    ],
+    "grupo": "G_liminar_mar25"
+  },
+  {
+    "id": 63,
+    "titulo": "NOTA | Atingidos da Bacia do Paraopeba rebatem argumentos da Vale",
+    "resumo": "MAB denuncia novo recurso da Vale e informa que o MPMG se manifestou favoravelmente com Nota Técnica da AECOM apontando atrasos da empresa na reparação ambiental em Brumadinho.",
+    "data": "2025-06-16",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2025/06/16/nota-atingidos-da-bacia-do-paraopeba-rebatem-argumentos-apresentados-pela-vale/",
+    "tags": [
+      "MAB",
+      "nota",
+      "Vale",
+      "AECOM",
+      "MPMG"
+    ]
+  },
+  {
+    "id": 64,
+    "titulo": "NOTA | Instituições impõem injustiças e agravam desigualdades na reparação pelo crime de Brumadinho",
+    "resumo": "MAB repudia o desmonte das ATIs pelas IJs (MPMG, DPMG e MPF) que definiram orçamentos sem consulta às comunidades, deixando 70% dos atingidos das Regiões 1 e 2 sem assessoria técnica.",
+    "data": "2025-10-14",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2025/10/14/nota-instituicoes-impoem-injusticas-e-agravam-desigualdades-na-reparacao-pelo-crime-de-brumadinho/",
+    "tags": [
+      "MAB",
+      "nota",
+      "ATI",
+      "IJs",
+      "desmonte"
+    ]
+  },
+  {
+    "id": 65,
+    "titulo": "Atingidos de Brumadinho protestam no TJMG contra fim do auxílio e cobram continuidade",
+    "resumo": "MixVale cobre o protesto em frente ao TJMG em 25/09. MAB alerta para risco de fome generalizada. Juíza auxiliar comprometeu-se a agilizar processos junto a representantes das cinco regiões da bacia.",
+    "data": "2025-09-26",
+    "portal": "MixVale",
+    "tipo": "imprensa",
+    "url": "https://www.mixvale.com.br/2025/09/26/atingidos-de-brumadinho-protestam-no-tjmg-contra-fim-do-ptr-em-outubro-e-cobram-auxilio-continuo/",
+    "tags": [
+      "MixVale",
+      "protesto",
+      "TJMG",
+      "PTR",
+      "MAB"
+    ],
+    "grupo": "G_ato_set25"
+  },
+  {
+    "id": 66,
+    "titulo": "Representantes de atingidos de Brumadinho defendem continuidade do auxílio na Câmara dos Deputados",
+    "resumo": "Comissão externa da Câmara debate o fim do PTR. Prefeito de Brumadinho afirma que o crime é contínuo e o auxílio deve durar até que a comunidade recupere autonomia financeira.",
+    "data": "2025-09-25",
+    "portal": "Portal da Câmara dos Deputados",
+    "tipo": "institucional",
+    "url": "https://www.camara.leg.br/noticias/1143714-representantes-de-vitimas-de-brumadinho-defendem-continuidade-de-auxilio-emergencial/",
+    "tags": [
+      "Câmara",
+      "comissão",
+      "FGV",
+      "prefeito",
+      "PTR"
+    ],
+    "grupo": "G_ato_set25"
+  },
+  {
+    "id": 67,
+    "titulo": "Mariana e Brumadinho: é tempo de avançar por reparação integral e soberania popular",
+    "resumo": "Na Jornada de Lutas de 10 anos de Mariana e 7 anos de Brumadinho, MAB inclui entre as pautas o pagamento imediato do Auxílio Emergencial para as mais de 160 mil pessoas desassistidas desde outubro de 2025.",
+    "data": "2025-11-05",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2025/11/05/mariana-e-brumadinho-e-tempo-de-avancar-por-reparacao-integral-e-soberania-popular/",
+    "tags": [
+      "MAB",
+      "jornada",
+      "reparação",
+      "soberania",
+      "Mariana"
+    ]
+  },
+  {
+    "id": 68,
+    "titulo": "NOTA | Vitória das pessoas atingidas da Bacia do Paraopeba no TJMG garante Auxílio Financeiro Emergencial",
+    "resumo": "Nota oficial do MAB celebra a decisão do desembargador André Leite Praça de 13/11/2025. Destaca que o auxílio volta aos valores anteriores a março de 2025 para as mais de 160 mil pessoas da Bacia do Paraopeba e Represa de Três Marias.",
+    "data": "2025-11-14",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2025/11/14/nota-vitoria-das-pessoas-atingidas-da-bacia-do-paraopeba/",
+    "tags": [
+      "MAB",
+      "nota",
+      "vitória",
+      "desembargador",
+      "PNAB"
+    ],
+    "grupo": "G_tjmg_nov25"
+  },
+  {
+    "id": 69,
+    "titulo": "NOTA | Informe sobre o auxílio emergencial na Bacia do Paraopeba",
+    "resumo": "MAB informa que a Vale tenta adiar o pagamento e questiona os valores. Prefeitura de Brumadinho denuncia tentativa da empresa de confundir atingidos. UFMG divulgará resultados de estudos sobre danos em 25/11.",
+    "data": "2025-11-21",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2025/11/21/nota-informe-sobre-o-auxilio-emergencial-na-bacia-do-paraopeba/",
+    "tags": [
+      "MAB",
+      "informe",
+      "Vale",
+      "UFMG",
+      "Prefeitura"
+    ],
+    "grupo": "G_vale_questiona_nov25"
+  },
+  {
+    "id": 70,
+    "titulo": "TJMG aprova retomada do pagamento de auxílio emergencial a atingidos de Brumadinho",
+    "resumo": "Brasil de Fato cobre o julgamento da 19ª Câmara Cível que manteve o auxílio em 05/03/2026 e a vigília convocada pelo MAB em frente ao TJMG durante a sessão.",
+    "data": "2026-03-05",
+    "portal": "Brasil de Fato",
+    "tipo": "imprensa",
+    "url": "https://www.brasildefato.com.br/2026/03/05/tjmg-aprova-retomada-do-pagamento-de-auxilio-emergencial-a-atingidos-de-brumadinho/",
+    "tags": [
+      "Brasil de Fato",
+      "TJMG",
+      "19ª Câmara",
+      "vigília",
+      "MAB"
+    ],
+    "grupo": "G_tjmg_mar26"
+  },
+  {
+    "id": 71,
+    "titulo": "Atingidos conquistam a continuidade do auxílio emergencial pelo crime da Vale em Brumadinho",
+    "resumo": "MAB celebra vitória no TJMG em 05/03 e alerta: a decisão é provisória, a Vale segue recorrendo e a PNAB ainda precisa ser regulamentada para garantir os direitos plenamente.",
+    "data": "2026-03-10",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2026/03/10/atingidos-conquistam-a-continuidade-do-auxilio-emergencial-em-minas-gerais/",
+    "tags": [
+      "MAB",
+      "conquista",
+      "PNAB",
+      "160 mil",
+      "regulamentação"
+    ]
+  },
+  {
+    "id": 72,
+    "titulo": "TJMG divulga data para escolha da câmara que vai julgar ação do novo auxílio emergencial",
+    "resumo": "AEDAS informa a publicação da data para definição do órgão julgador da ação. Desde março de 2025 o processo passou por pelo menos três desembargadores, refletindo as disputas de competência.",
+    "data": "2025-10-01",
+    "portal": "AEDAS",
+    "tipo": "assessoria",
+    "url": "https://aedasmg.org/2025/10/01/tjmg-divulga-data-escolha-camara-que-vai-julgar-acao-auxilio-emergencial/",
+    "tags": [
+      "AEDAS",
+      "TJMG",
+      "câmara",
+      "relator",
+      "agravo"
+    ]
+  },
+  {
+    "id": 73,
+    "titulo": "FGV: pagamento do Novo Auxílio Emergencial de janeiro de 2026 efetivado",
+    "resumo": "FGV informa que cerca de 99% dos beneficiários foram pagos regularmente em janeiro de 2026, dentro da normalidade. Disponibiliza canais de atendimento para casos pendentes.",
+    "data": "2026-01-10",
+    "portal": "FGV — Portal PTR",
+    "tipo": "institucional",
+    "url": "https://ptr.fgv.br/brumadinho/noticia/comunicado-pagamento-do-novo-auxilio-emergencial-efetivado-0",
+    "tags": [
+      "FGV",
+      "comunicado",
+      "janeiro",
+      "pagamento",
+      "99%"
+    ]
+  },
+  {
+    "id": 74,
+    "titulo": "AGU defende continuidade do Auxílio Emergencial no STF e aponta fragilidades do Acordo de 2021",
+    "resumo": "A AGU manifestou-se na ADPF 1314 pedindo ao STF que rejeite a ação do Ibram. Para o órgão, a PNAB pode incidir sobre danos ainda em curso, apontou fragilidades estruturais do Acordo de 2021 e citou o risco de crise humanitária para mais de 160 mil pessoas. A manifestação foi protocolada em 7 de maio de 2026.",
+    "data": "2026-05-07",
+    "portal": "O Fator",
+    "tipo": "imprensa",
+    "url": "https://ofator.com.br/informacao/agu-pede-ao-stf-que-rejeite-acao-do-ibram-e-defende-continuidade-do-auxilio-emergencial-a-atingidos-de-brumadinho/",
+    "tags": [
+      "AGU",
+      "STF",
+      "ADPF 1314",
+      "PNAB",
+      "Ibram",
+      "acordo"
+    ]
+  },
+  {
+    "id": 75,
+    "titulo": "Governo Lula envia ao STF duas posições contraditórias sobre o auxílio emergencial de Brumadinho",
+    "resumo": "A AGU enviou ao STF dois documentos com posições opostas: o setor de Contencioso (7/05) reconheceu a aplicabilidade da PNAB aos danos em curso; já a Consultoria-Geral da União (14/05), a pedido da Presidência, defendeu a irretroatividade absoluta da norma, em linha com o veto de Lula à PNAB em 2023. A divergência gerou insegurança jurídica para as famílias atingidas.",
+    "data": "2026-05-14",
+    "portal": "O Fator",
+    "tipo": "imprensa",
+    "url": "https://ofator.com.br/informacao/governo-lula-stf-posicoes-distintas-auxilio-emergencial-brumadinho/",
+    "tags": [
+      "AGU",
+      "STF",
+      "ADPF 1314",
+      "PNAB",
+      "Lula",
+      "veto",
+      "Consultoria-Geral"
+    ]
+  },
+  {
+    "id": 76,
+    "titulo": "TJMG explica ao STF suas decisões sobre o Auxílio Emergencial e rebate argumento da retroatividade",
+    "resumo": "O desembargador André Leite Praça enviou ao STF esclarecimentos sobre as decisões da 19ª Câmara Cível, rebatendo a alegação de violação ao Acordo de 2021. Argumentou que o PTR e o NAE são institutos juridicamente distintos, que o Acordo excluiu danos futuros, e que a PNAB não está sendo aplicada retroativamente — mas a danos que continuam ocorrendo.",
+    "data": "2026-05-13",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/tjmg-explica-ao-stf-decisoes-sobre-o-auxilio-emergencial/",
+    "tags": [
+      "TJMG",
+      "STF",
+      "ADPF 1314",
+      "Leite Praça",
+      "PNAB",
+      "retroatividade"
+    ]
+  },
+  {
+    "id": 77,
+    "titulo": "TJMG diz ao STF que acordo de Brumadinho não encerrou obrigações da Vale",
+    "resumo": "O TJMG defendeu ao STF que o próprio texto do Acordo de 2021 deixou de fora os danos futuros e supervenientes, tornando inválido o argumento da coisa julgada. O desembargador Leite Praça citou o art. 3º, VI, da PNAB que assegura o auxílio emergencial 'até que as famílias e indivíduos alcancem condições pelo menos equivalentes às precedentes'.",
+    "data": "2026-05-13",
+    "portal": "O Fator",
+    "tipo": "imprensa",
+    "url": "https://ofator.com.br/informacao/tjmg-diz-ao-stf-que-acordo-de-brumadinho-nao-encerrou-obrigacoes-da-vale-e-defende-auxilio-emergencial/",
+    "tags": [
+      "TJMG",
+      "STF",
+      "ADPF 1314",
+      "Leite Praça",
+      "Vale",
+      "obrigações",
+      "danos futuros"
+    ]
+  },
+  {
+    "id": 78,
+    "titulo": "MAB: nota com atualizações sobre a luta pelo auxílio emergencial na Bacia do Paraopeba",
+    "resumo": "O MAB divulga nota explicando o estado atual do processo no STF: o TJMG e a Advocacia Geral da União (Contencioso) defenderam a manutenção do auxílio; a Presidência da República enviou posição distinta sobre irretroatividade. Para o movimento, a PNAB deve ser aplicada a danos atuais, não ao passado.",
+    "data": "2026-05-15",
+    "portal": "MAB",
+    "tipo": "movimento",
+    "url": "https://mab.org.br/2026/05/15/nota-atualizacoes-sobre-a-luta-do-auxilio-emergencial-na-bacia-do-paraopeba/",
+    "tags": [
+      "MAB",
+      "STF",
+      "ADPF 1314",
+      "TJMG",
+      "AGU",
+      "PNAB",
+      "nota"
+    ]
+  },
+  {
+    "id": 79,
+    "titulo": "Município de Brumadinho pede manutenção do Auxílio Emergencial e impugna contestação da Vale",
+    "resumo": "O município de Brumadinho, habilitado como assistente litisconsorcial, apresentou impugnação contra manifestação da Vale junto ao comprovante de depósito de maio. A prefeitura reforça que já existe decisão judicial mantida pelo TJMG e que os critérios do PTR serviram apenas como referência inicial, sem estabelecer limite definitivo para o NAE.",
+    "data": "2026-05-12",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/brumadinho-pede-manutencao-do-auxilio-emergencial/",
+    "tags": [
+      "Prefeitura",
+      "Brumadinho",
+      "Vale",
+      "PNAB",
+      "impugnação",
+      "NAE"
+    ]
+  },
+  {
+    "id": 80,
+    "titulo": "Vale é derrotada mais uma vez: presidente do TJMG rejeita reclamação da mineradora",
+    "resumo": "O presidente do TJMG, Corrêa Junior, rejeitou em 24 de abril reclamação da Vale que buscava suspender as decisões judiciais sobre o NAE. Na decisão, afirmou que o Novo Auxílio Emergencial não é continuação do PTR, tornando a reclamação improcedente.",
+    "data": "2026-04-24",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/vale-derrotada-mais-uma-vez-auxilio-emergencial/",
+    "tags": [
+      "TJMG",
+      "presidente",
+      "Corrêa Junior",
+      "Vale",
+      "reclamação",
+      "NAE"
+    ]
+  },
+  {
+    "id": 81,
+    "titulo": "Auxílio aos atingidos pela tragédia será cortado em Brumadinho, diz o MAB",
+    "resumo": "O Portal da Cidade Brumadinho informa que a FGV anunciou o corte do PTR pela metade a partir de março de 2025 e seu encerramento em abril de 2026. O portal destaca que o Programa paga um salário mínimo para moradores da Zona Quente e meio salário para os demais, e que apenas 15% da população atingida foi contemplada. Reproduz a íntegra da PNAB referente ao auxílio emergencial.",
+    "data": "2024-12-27",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/auxilio-aos-atingidos-pela-tragedia-sera-cortado-em-brumadinho-diz-o-mab-3753",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "PTR",
+      "corte",
+      "FGV",
+      "PNAB"
+    ]
+  },
+  {
+    "id": 82,
+    "titulo": "Redução no valor de parcelas do PTR ocorrerá a partir de março de 2025",
+    "resumo": "O portal detalha as novas faixas de valores após a redução aprovada pelas IJs: adultos da Zona Quente passam a receber 50% do salário mínimo e os demais 25%. Familiares de vítimas fatais, adolescentes e crianças não terão alterações. A FGV explica que a redução gradativa evita interrupção abrupta e que os rendimentos do Fundo PTR podem estender os pagamentos até abril de 2026.",
+    "data": "2024-11-08",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/reducao-no-valor-de-parcelas-do-ptr-ocorrera-a-partir-de-marco-de-2025-3645",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "PTR",
+      "FGV",
+      "redução",
+      "parcelas"
+    ]
+  },
+  {
+    "id": 83,
+    "titulo": "Justiça determina que Vale continue pagamento do PTR aos atingidos em Brumadinho",
+    "resumo": "O portal noticia a decisão do juiz Murilo Silvio de Abreu determinando à Vale que continue o pagamento do auxílio. Reproduz nota da Vale informando não ter sido comunicada e reiterando que o PTR foi 'estabelecido como solução definitiva' no Acordo de 2021. O magistrado determinou que a FGV apresente em cinco dias o valor necessário para manter os beneficiários nos valores anteriores ao corte de março de 2025.",
+    "data": "2025-03-30",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/justica-determina-que-vale-continue-pagamento-do-ptr-aos-atingidos-em-brumadinho-2558",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "Vale",
+      "PTR",
+      "liminar",
+      "juiz Murilo"
+    ]
+  },
+  {
+    "id": 84,
+    "titulo": "Representantes de Brumadinho defendem continuidade de auxílio emergencial na Câmara Federal",
+    "resumo": "O portal cobre a audiência na comissão externa da Câmara dos Deputados com a presença do prefeito Gabriel Parreiras e do secretário Guilherme Morais, que defendem a continuidade do PTR. A coordenadora de relacionamento do PTR da FGV, Marcela Galvani Borges, informa que a fundação respeita os termos da reparação e que não cabe a ela determinar quem é ou não atingido pelo rompimento.",
+    "data": "2025-03-26",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/representantes-de-brumadinho-defendem-continuidade-de-auxilio-emergencial-2404",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "Câmara",
+      "PTR",
+      "FGV",
+      "prefeito"
+    ]
+  },
+  {
+    "id": 85,
+    "titulo": "Auxílio emergencial de Brumadinho será analisado pelo STF",
+    "resumo": "Portal da Cidade Brumadinho noticia o ajuizamento da ADPF 1314 pelo Ibram no STF e a possibilidade de suspensão dos pagamentos de R$ 133 milhões mensais a mais de 164 mil pessoas. Destaca que o MAB convocou reunião emergencial após a ação e que a Prefeitura passou a atuar no processo para defender a continuidade do auxílio.",
+    "data": "2026-04-02",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/auxilio-emergencial-de-brumadinho-sera-analisado-pelo-stf-5657",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "STF",
+      "Ibram",
+      "ADPF 1314",
+      "Vale",
+      "auxílio"
+    ]
+  },
+  {
+    "id": 86,
+    "titulo": "Prefeitura de Brumadinho atua no STF para defender manutenção do auxílio emergencial",
+    "resumo": "O portal noticia a reunião da cúpula municipal com o ministro Gilmar Mendes no STF. O procurador Dalvo Bemfeito comentou: 'Foi um encontro bastante positivo. O Ministro nos recebeu muito bem e nos ouviu com absoluta atenção, tendo, ao final, afirmado que analisará o pleito com os argumentos apresentados.' Também integrou a comitiva o secretário Guilherme Morais.",
+    "data": "2026-04-07",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/prefeitura-de-brumadinho-atua-no-stf-para-defender-manutencao-do-auxilio-emergencial-5745",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "Prefeitura",
+      "STF",
+      "Gilmar Mendes",
+      "Gabriel Parreiras"
+    ]
+  },
+  {
+    "id": 87,
+    "titulo": "TJMG autoriza Brumadinho a atuar em processo do Auxílio Emergencial",
+    "resumo": "O portal noticia a habilitação do município de Brumadinho como assistente litisconsorcial das associações de atingidos no processo do Novo Auxílio Emergencial no TJMG, ampliando a participação da Prefeitura na defesa da continuidade dos pagamentos.",
+    "data": "2026-05-07",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/tjmg-autoriza-brumadinho-a-atuar-em-processo-do-auxilio-emergencial-6012",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "TJMG",
+      "Brumadinho",
+      "assistente litisconsorcial",
+      "auxílio"
+    ]
+  },
+  {
+    "id": 88,
+    "titulo": "MPMG solicita participação no STF em disputa sobre auxílio a vítimas de Brumadinho",
+    "resumo": "O portal noticia o pedido do MPMG de ingresso como amicus curiae na ADPF 1314 no STF. A matéria destaca que a participação do MP estadual reforça o conjunto de instituições que defendem a manutenção do Novo Auxílio Emergencial na Corte Suprema.",
+    "data": "2026-05-05",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/mpmg-solicita-participacao-no-stf-em-disputa-sobre-auxilio-a-vitimas-de-brumadinho-6089",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "MPMG",
+      "STF",
+      "ADPF 1314",
+      "amicus curiae"
+    ]
+  },
+  {
+    "id": 89,
+    "titulo": "Vale recorre ao STJ e gera reação de atingidos na bacia do Paraopeba",
+    "resumo": "O portal informa que a Vale apresentou recurso especial no STJ, solicitando efeito suspensivo ao acórdão da 19ª Câmara Cível do TJMG que manteve o Novo Auxílio Emergencial. A decisão gerou reação imediata de atingidos e lideranças da Bacia do Paraopeba.",
+    "data": "2026-04-30",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/vale-recorre-ao-stj-e-gera-reacao-de-atingidos-na-bacia-do-paraopeba-5987",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "Vale",
+      "STJ",
+      "recurso",
+      "atingidos"
+    ]
+  },
+  {
+    "id": 90,
+    "titulo": "Centenas de pessoas seguem sem receber primeira parcela do novo auxílio emergencial",
+    "resumo": "O De Vera Notícias noticia que centenas de beneficiários não receberam a primeira parcela do Novo Auxílio Emergencial, mesmo estando devidamente cadastradas. A FGV não se manifestou sobre os casos pendentes. O portal acompanhou relatos de moradores de Brumadinho em situação de angústia financeira às vésperas do Natal.",
+    "data": "2025-12-24",
+    "portal": "De Vera Notícias",
+    "tipo": "imprensa",
+    "url": "https://www.deveranoticias.com.br/noticia/centenas-de-pessoas-seguem-sem-receber-primeira-parcela-do-novo-auxilio-emergencial",
+    "tags": [
+      "De Vera Notícias",
+      "FGV",
+      "pagamento",
+      "atraso",
+      "beneficiários"
+    ]
+  },
+  {
+    "id": 91,
+    "titulo": "Prefeitura aciona Justiça e cobra regularização imediata do auxílio emergencial, com multa diária de R$ 100 mil",
+    "resumo": "O portal noticia a ação civil pública da Prefeitura de Brumadinho contra a FGV por atrasos nos pagamentos do Novo Auxílio Emergencial. Em vídeo publicado em 28 de dezembro, o prefeito Gabriel Parreiras e o secretário Guilherme Morais informaram a medida judicial. O pedido inclui intimação pessoal da direção da FGV em 48 horas e possibilidade de responsabilização criminal dos dirigentes em caso de descumprimento.",
+    "data": "2025-12-29",
+    "portal": "De Vera Notícias",
+    "tipo": "imprensa",
+    "url": "https://www.deveranoticias.com.br/noticia/prefeitura-aciona-justica-e-cobra-regularizacao-imediata-do-novo-auxilio-emergencial-em-brumadinho-com-multa-diaria-de-r-100-mil",
+    "tags": [
+      "De Vera Notícias",
+      "Prefeitura",
+      "FGV",
+      "ação civil",
+      "multa",
+      "Guilherme Morais"
+    ]
+  },
+  {
+    "id": 92,
+    "titulo": "Vale e Ibram recorrem ao STF para tentar barrar o novo auxílio emergencial de Brumadinho",
+    "resumo": "O De Vera Notícias explica em profundidade a ADPF 1314 do Ibram no STF e a questão central do processo: se os danos do rompimento ainda persistem, a obrigação de garantir auxílio não desaparece com o encerramento do PTR. Conclui que o STF deverá decidir se a reparação financeira pode ser considerada encerrada com o acordo de 2021 ou se a persistência dos danos permite a continuidade dos pagamentos.",
+    "data": "2026-04-02",
+    "portal": "De Vera Notícias",
+    "tipo": "imprensa",
+    "url": "https://www.deveranoticias.com.br/noticia/vale-e-ibram-recorrem-ao-stf-para-tentar-barrar-novo-auxilio-emergencial-pago-a-atingidos-pelo-crime-em-brumadinho",
+    "tags": [
+      "De Vera Notícias",
+      "STF",
+      "Vale",
+      "Ibram",
+      "ADPF",
+      "PNAB"
+    ]
+  },
+  {
+    "id": 95,
+    "titulo": "Lideranças falam sobre redução e possível fim do PTR em Brumadinho",
+    "resumo": "Após manifestação de centenas de brumadinhenses contra a redução do PTR, lideranças falam sobre as principais reivindicações. Silas Fialho, uma das principais lideranças dos atingidos, cobra estudo de impactos e audiência pública na ALMG antes da redução entrar em vigor em março de 2025. Destaca que cerca de 90% dos atingidos ainda não receberam indenização individual.",
+    "data": "2024-11-13",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/liderancas-falam-sobre-reducao-e-possivel-fim-do-ptr-em-brumadinho-2629",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "PTR",
+      "FGV",
+      "redução",
+      "Silas Fialho",
+      "atingidos"
+    ]
+  },
+  {
+    "id": 96,
+    "titulo": "Vale recorre contra decisão que determina a continuidade do PTR",
+    "resumo": "O portal noticia que a Vale recorreu em 4 de abril ao TJMG com Agravo de Instrumento contra a manutenção do PTR nos valores anteriores ao corte. O MAB publica nota: 'Esse recurso já era esperado. Como sempre, é mais uma tentativa da Vale de atrasar as decisões favoráveis aos atingidos.'",
+    "data": "2025-04-08",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/vale-recorre-contra-decisao-que-determina-a-continuidade-do-ptr-3054",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "Vale",
+      "agravo",
+      "PTR",
+      "MAB"
+    ]
+  },
+  {
+    "id": 97,
+    "titulo": "FGV diz que são necessários R$ 702 milhões para manter o PTR até o fim",
+    "resumo": "O portal noticia documento da FGV à Justiça indicando que seriam necessários R$ 702.355.294,56 para manter os beneficiários do PTR nos valores anteriores ao corte de março de 2025 até o encerramento do programa, incluindo o pagamento retroativo das parcelas reduzidas de março e abril.",
+    "data": "2025-04-11",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/fgv-diz-que-sao-necessarios-r-702-milhoes-para-manter-pagamento-do-ptr-3456",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "FGV",
+      "R$ 702 milhões",
+      "PTR",
+      "retroativo"
+    ]
+  },
+  {
+    "id": 98,
+    "titulo": "Obrigação da Vale de repassar R$ 234 milhões ao PTR é suspensa pelo TJMG",
+    "resumo": "O portal noticia que o TJMG suspendeu a obrigação da Vale de repassar R$ 234 milhões ao PTR. A Justiça havia determinado o depósito para manter os valores anteriores ao corte de março de 2025, mas a Vale recorreu alegando já ter cumprido a obrigação prevista no Acordo de Reparação.",
+    "data": "2025-04-25",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/obrigacao-da-vale-de-repassar-r-234-milhoes-ao-ptr-e-suspensa-pelo-tjmg-5305",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "TJMG",
+      "Vale",
+      "R$ 234 milhões",
+      "suspensão"
+    ]
+  },
+  {
+    "id": 99,
+    "titulo": "MAB diz que não aceita esmolas e cobra que a Vale coloque novos recursos no PTR",
+    "resumo": "O portal reproduz carta do MAB às Instituições de Justiça exigindo o depósito integral de R$ 702 mi pela Vale para o PTR. O movimento destaca que os lucros líquidos da Vale desde 2019 (R$ 347 bilhões) são 1.476 vezes maiores que os valores necessários para manter a dignidade mínima dos atingidos. Guilherme Camponêz afirma que o objetivo de sensibilizar os tribunais foi alcançado.",
+    "data": "2025-05-16",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/mab-diz-que-nao-aceita-esmolas-e-cobra-que-a-vale-coloque-novos-recursos-ao-ptr-3849",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "MAB",
+      "Vale",
+      "PTR",
+      "PNAB",
+      "R$ 702 milhões"
+    ]
+  },
+  {
+    "id": 100,
+    "titulo": "Novo ato marca luta dos atingidos para manter o PTR em Brumadinho",
+    "resumo": "O portal cobre manifestação na Assembleia Legislativa de Minas Gerais (ALMG) com o objetivo de garantir a continuidade do PTR e das Assessorias Técnicas Independentes (ATIs). A mobilização busca que as comunidades atingidas tenham acesso a direitos fundamentais como reassentamento digno, indenizações justas e participação nos processos decisórios.",
+    "data": "2025-03-18",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/novo-ato-marca-luta-dos-atingidos-para-manter-o-ptr-em-brumadinho-4659",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "ato",
+      "ALMG",
+      "PTR",
+      "ATIs",
+      "atingidos"
+    ]
+  },
+  {
+    "id": 101,
+    "titulo": "FGV divulga prazos para pedido de recursos sobre o PTR",
+    "resumo": "A FGV divulga os prazos para entrada de recursos relativos ao PTR: requerentes com solicitação indeferida até 10 de março podem recorrer até 30 de maio de 2025; os indeferidos em maio têm até 30 de junho. O comunicado é publicado conforme deliberações das Instituições de Justiça.",
+    "data": "2025-05-16",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/fgv-divulga-prazos-para-pedido-de-recursos-sobre-ptr-4615",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "FGV",
+      "recursos",
+      "PTR",
+      "prazos"
+    ]
+  },
+  {
+    "id": 102,
+    "titulo": "Justiça mantém pagamento de auxílio emergencial a atingidos pela tragédia",
+    "resumo": "O portal noticia a decisão da 19ª Câmara Cível do TJMG que manteve por unanimidade o pagamento do Novo Auxílio Emergencial, rejeitando o recurso da Vale. A matéria destaca a vigília dos atingidos em frente ao tribunal e o valor de R$ 133 milhões mensais que a Vale deverá continuar depositando.",
+    "data": "2026-03-05",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/justica-mantem-pagamento-de-auxilio-emergencial-a-atingidos-por-tragedia-5456",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "TJMG",
+      "19ª Câmara",
+      "Vale",
+      "auxílio",
+      "decisão"
+    ]
+  },
+  {
+    "id": 103,
+    "titulo": "Depósito de R$ 133 milhões garante continuidade do Auxílio Emergencial em maio",
+    "resumo": "O portal confirma o depósito de R$ 133 milhões pela Vale que garante o pagamento do Novo Auxílio Emergencial referente ao mês de maio de 2026. A notícia integra a cobertura sistemática do portal sobre os depósitos mensais e a situação dos atingidos na Bacia do Paraopeba.",
+    "data": "2026-04-24",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/deposito-de-r-133-milhoes-garante-continuidade-do-auxilio-emergencial-em-maio-5890",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "Vale",
+      "R$ 133 milhões",
+      "maio",
+      "depósito"
+    ]
+  },
+  {
+    "id": 104,
+    "titulo": "TJMG mantém decisão que obriga Vale a continuar pagamento de auxílio aos atingidos",
+    "resumo": "O portal noticia a decisão do presidente do TJMG, Corrêa Júnior, que negou reclamação da Vale e manteve as decisões que obrigam a mineradora a pagar o Novo Auxílio Emergencial. A decisão reafirma que o NAE não é continuação do PTR, tornando a reclamação da Vale improcedente.",
+    "data": "2026-04-27",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/tjmg-mantem-decisao-que-obriga-vale-a-continuar-pagamento-de-auxilio-aos-atingidos-5931",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "TJMG",
+      "Corrêa Júnior",
+      "Vale",
+      "reclamação",
+      "auxílio"
+    ]
+  },
+  {
+    "id": 105,
+    "titulo": "Governo envia manifestações com enfoques distintos sobre auxílio emergencial em Brumadinho ao STF",
+    "resumo": "O portal noticia a divergência interna na AGU: o setor de Contencioso defende a aplicabilidade da PNAB ao caso, enquanto a Consultoria-Geral da União, a pedido da Presidência da República, defende a irretroatividade absoluta da norma. A contradição entre os dois documentos enviados ao STF gerou insegurança jurídica para as famílias atingidas.",
+    "data": "2026-05-15",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/governo-envia-manifestacoes-com-enfoques-distintos-sobre-auxilio-em-brumadinho-6201",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "AGU",
+      "STF",
+      "Presidência",
+      "PNAB",
+      "divergência"
+    ]
+  },
+  {
+    "id": 106,
+    "titulo": "Brumadinho contesta pedido da Vale e defende continuidade do Auxílio Emergencial",
+    "resumo": "O portal noticia a impugnação do município de Brumadinho contra manifestação da Vale junto ao comprovante do depósito de maio. A Prefeitura, habilitada como assistente litisconsorcial, reforça que já existe decisão judicial mantida pelo TJMG e que os critérios do PTR serviram apenas como referência inicial para o NAE.",
+    "data": "2026-05-13",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/brumadinho-contesta-pedido-da-vale-e-defende-continuidade-do-auxilio-emergencial-6178",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "Brumadinho",
+      "Vale",
+      "impugnação",
+      "PNAB",
+      "auxílio"
+    ]
+  },
+  {
+    "id": 107,
+    "titulo": "Justiça dá prazo para FGV informar se continuará à frente do Novo Auxílio Emergencial",
+    "resumo": "O juiz Murilo Sílvio de Abreu dá prazo para a FGV informar se continuará à frente da operacionalização do Novo Auxílio Emergencial, diante das incertezas geradas pelas disputas judiciais em andamento no STF e no STJ. A decisão integra o processo de definição dos critérios permanentes do NAE.",
+    "data": "2026-05-12",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/justica-da-prazo-para-fgv-informar-se-continuara-a-frente-do-novo-auxilio-emergencial-6145",
+    "tags": [
+      "Portal da Cidade Brumadinho",
+      "Justiça",
+      "FGV",
+      "prazo",
+      "operacionalização",
+      "auxílio"
+    ]
+  },
+  {
+    "id": 108,
+    "titulo": "João Santos, Camila Moreira e Guilherme Morais esclarecem adiamento do pagamento do auxílio emergencial",
+    "resumo": "O secretário João Santos explica que o juiz estabeleceu uma exceção ao calendário do quinto dia útil para março de 2026. Guilherme Morais confirma a situação. Camila Moreira, presidenta da AMARIOS, e Silas Fialho, presidente da AAMB, são citados como lideranças que acompanham o processo. A FGV deveria divulgar nova data no início da semana seguinte.",
+    "data": "2026-03-06",
+    "portal": "De Vera Notícias",
+    "tipo": "imprensa",
+    "url": "https://www.deveranoticias.com.br/noticia/joao-santos-camila-moreira-e-guilherme-morais-esclarecem-adiamento-do-pagamento-do-auxilio-emergencial",
+    "tags": [
+      "De Vera Notícias",
+      "Guilherme Morais",
+      "FGV",
+      "pagamento",
+      "adiamento",
+      "março"
+    ]
+  },
+  {
+    "id": 109,
+    "titulo": "Parcela de maio do Novo Auxílio Emergencial será paga na sexta-feira, dia 08",
+    "resumo": "O De Vera Notícias confirma que a parcela de maio do Novo Auxílio Emergencial será paga na sexta-feira, dia 8. A matéria contextualiza que o benefício vem sendo mantido após sucessivas decisões judiciais relacionadas à continuidade da reparação, e que nos últimos meses passou a ser alvo de disputas no STF e no STJ.",
+    "data": "2026-05-07",
+    "portal": "De Vera Notícias",
+    "tipo": "imprensa",
+    "url": "https://www.deveranoticias.com.br/noticia/parcela-de-maio-do-novo-auxilio-emergencial-sera-paga-nesta-sexta-feira-dia-08",
+    "tags": [
+      "De Vera Notícias",
+      "FGV",
+      "maio",
+      "pagamento",
+      "Novo Auxílio Emergencial"
+    ]
+  },
+  {
+    "id": 110,
+    "titulo": "MPMG defende no STF manutenção do auxílio emergencial para atingidos de Brumadinho",
+    "resumo": "O De Vera Notícias noticia o pedido do MPMG de ingresso como amicus curiae na ADPF 1314 no STF, defendendo a manutenção do Novo Auxílio Emergencial. O portal destaca também outros desdobramentos da disputa judicial no STJ.",
+    "data": "2026-05-05",
+    "portal": "De Vera Notícias",
+    "tipo": "imprensa",
+    "url": "https://www.deveranoticias.com.br/noticia/mpmg-defende-no-stf-manutencao-do-auxilio-emergencial-para-atingidos-de-brumadinho",
+    "tags": [
+      "De Vera Notícias",
+      "MPMG",
+      "STF",
+      "amicus curiae",
+      "ADPF 1314",
+      "auxílio"
+    ]
+  },
+  {
+    "id": 111,
+    "titulo": "STJ nega pedido da Vale para suspender auxílio emergencial a atingidos de Brumadinho",
+    "resumo": "O De Vera Notícias noticia que o STJ negou pedido da Vale de suspensão dos depósitos mensais do Novo Auxílio Emergencial. A ministra Maria Isabel Gallotti havia negado o pedido da mineradora, que então apresentou embargos de declaração tentando reverter a decisão — também negados.",
+    "data": "2026-05-08",
+    "portal": "De Vera Notícias",
+    "tipo": "imprensa",
+    "url": "https://www.deveranoticias.com.br/noticia/stj-nega-pedido-da-vale-para-suspender-auxilio-emergencial-a-atingidos-de-brumadinho",
+    "tags": [
+      "De Vera Notícias",
+      "STJ",
+      "Vale",
+      "suspensão",
+      "auxílio",
+      "decisão"
+    ]
+  },
+  {
+    "id": 112,
+    "titulo": "Vale deposita R$ 133 milhões para garantir Auxílio Emergencial de junho",
+    "resumo": "A Vale realizou o depósito judicial de R$ 133.101.752,13 para o NAE de junho/2026, atendendo à determinação do juiz Murilo Silvio de Abreu. Os pagamentos serão realizados pela FGV até o quinto dia útil do mês.",
+    "data": "2026-05-19",
+    "portal": "Portal Independente de Notícias",
+    "tipo": "imprensa",
+    "url": "https://www.portalindependentenoticia.com.br/post/vale-deposita-r-133-mi-para-garantir-auxilio-emergencial-de-junho-a-atingidos-da-bacia-do-paraopeba",
+    "tags": [
+      "Vale",
+      "junho",
+      "depósito",
+      "R$133 mi",
+      "FGV",
+      "NAE"
+    ]
+  },
+  {
+    "id": 113,
+    "titulo": "Comissão de Barragens da Câmara aprova recomendação ao STF para manter auxílio de Brumadinho",
+    "resumo": "A Comissão Externa de Fiscalização de Barragens da Câmara aprovou recomendação ao STF para que o auxílio seja mantido. O requerimento do dep. Rogério Correia (PT-MG) pede que o STF considere as diretrizes da PNAB e aponta risco de insegurança alimentar e desestruturação econômica dos municípios afetados.",
+    "data": "2026-04-17",
+    "portal": "ICL Notícias",
+    "tipo": "imprensa",
+    "url": "https://iclnoticias.com.br/vale-deixa-pagar-auxilio-vitimas-brumadinho-stf/",
+    "tags": [
+      "Câmara",
+      "Comissão Barragens",
+      "STF",
+      "ADPF 1314",
+      "Rogério Correia",
+      "PNAB"
+    ]
+  },
+  {
+    "id": 114,
+    "titulo": "Pagamento de auxílio a vítimas de Brumadinho é questionado no STF",
+    "resumo": "Portal O Brasilianista noticia a ADPF 1314 do Ibram. O Ibram alega que o TJMG manteve o pagamento mesmo após o acordo judicial, aplicando lei posterior ao contrato firmado entre as vítimas e a Vale.",
+    "data": "2026-04-08",
+    "portal": "O Brasilianista",
+    "tipo": "imprensa",
+    "url": "https://obrasilianista.com.br/redacao/pagamento-de-auxilio-as-vitimas-de-brumadinho-e-questionado-no-stf/",
+    "tags": [
+      "STF",
+      "Ibram",
+      "ADPF 1314",
+      "Gilmar Mendes",
+      "Vale",
+      "NAE"
+    ]
+  },
+  {
+    "id": 115,
+    "titulo": "Após depósito judicial da Vale, auxílio emergencial em Brumadinho deve ser retomado",
+    "resumo": "Explica os próximos passos após o depósito de R$234 mi em 27/11/2025: FGV opera pagamentos e já confirmou condições técnicas até junho/2026. Pagamento retroativo segue incerto por falta de recursos. Guilherme Camponêz (MAB) estima receber parcela de novembro ainda em dezembro.",
+    "data": "2025-11-28",
+    "portal": "De Fato Online",
+    "tipo": "imprensa",
+    "url": "https://defatoonline.com.br/apos-deposito-judicial-da-vale-auxilio-emergencial-em-brumadinho-deve-ser-retomado-veja-o-que-acontece-agora/",
+    "tags": [
+      "Vale",
+      "depósito",
+      "R$234 mi",
+      "FGV",
+      "retomada",
+      "PTR",
+      "dezembro"
+    ]
+  },
+  {
+    "id": 116,
+    "titulo": "Desastre de Brumadinho: Justiça determina continuidade do auxílio emergencial",
+    "resumo": "Noticia a decisão do juiz Murilo que determinou à Vale depositar R$234 mi para retomar o auxílio, com complemento de R$22,9 mi para dez/2025 e jan/2026 e novo depósito de R$133 mi para fev/2026. A Justiça reafirma que o benefício deve seguir até que os atingidos recuperem condições anteriores ao desastre.",
+    "data": "2025-11-28",
+    "portal": "Diário do Comércio",
+    "tipo": "imprensa",
+    "url": "https://diariodocomercio.com.br/legislacao/desastre-brumadinho-auxilio-emergencial-ptr-vale/",
+    "tags": [
+      "Diário do Comércio",
+      "Vale",
+      "R$234 mi",
+      "FGV",
+      "juiz Murilo",
+      "fevereiro 2026"
+    ]
+  },
+  {
+    "id": 117,
+    "titulo": "Câmara dos Deputados vota parecer sobre rompimento da barragem da Vale em Brumadinho",
+    "resumo": "A comissão externa da Câmara se reuniu em 10/12/2024 para votar o relatório do dep. Pedro Aihara (PRD-MG), um dos bombeiros que atuaram no socorro. Cinco anos depois, lembra que nenhum responsável direto foi efetivamente punido.",
+    "data": "2024-12-10",
+    "portal": "Portal da Cidade Brumadinho",
+    "tipo": "imprensa",
+    "url": "https://brumadinho.portaldacidade.com/noticias/cidade/camara-vota-parecer-sobre-rompimento-da-barragem-da-vale-em-brumadinho-2712",
+    "tags": [
+      "Câmara",
+      "Pedro Aihara",
+      "parecer",
+      "barragem",
+      "Vale",
+      "Brumadinho"
+    ]
+  },
+  {
+    "id": 118,
+    "titulo": "Câmara dos Deputados defende no STF continuidade do NAE de Brumadinho",
+    "resumo": "A Câmara dos Deputados protocolou em 25/04/2026 informações ao ministro Gilmar Mendes defendendo a continuidade do NAE para cerca de 160 mil pessoas atingidas. Sustenta que os pagamentos devem seguir enquanto os impactos do desastre não forem plenamente reparados. A manifestação se soma às do TJMG e de outras instituições acumuladas no processo.",
+    "data": "2026-04-25",
+    "portal": "O Fator",
+    "tipo": "imprensa",
+    "url": "https://ofator.com.br/informacao/camara-stf-manutencao-auxilio-emergencial-pago-pela-vale-brumadinho/",
+    "tags": [
+      "Câmara",
+      "STF",
+      "ADPF 1314",
+      "Gilmar Mendes",
+      "PNAB",
+      "160 mil"
+    ]
+  },
+  {
+    "id": 119,
+    "titulo": "Ibram usa posições da União para pressionar STF a suspender auxílio emergencial de Brumadinho",
+    "resumo": "O Ibram protocolou nova peça ao STF em 18/05/2026 pedindo urgência ao ministro Gilmar Mendes para suspender o NAE. Usou as manifestações da Presidência da República e da AGU (Consultoria-Geral da União) para embasar o pedido de urgência. O Ibram argumenta que a Vale paga mensalmente obrigação que considera já quitada. Senado Federal e PGR ainda não prestaram informações ao relator.",
+    "data": "2026-05-18",
+    "portal": "O Fator",
+    "tipo": "imprensa",
+    "url": "https://ofator.com.br/informacao/ibram-pressiona-stf-disputa-sobre-continuidade-auxilio-emergencial-brumadinho/",
+    "tags": [
+      "Ibram",
+      "STF",
+      "Gilmar Mendes",
+      "ADPF 1314",
+      "AGU",
+      "Presidência",
+      "urgência"
+    ]
+  },
+  {
+    "id": 120,
+    "titulo": "Entenda a ação sobre o NAE no STF — liminar pronta para ser julgada a qualquer momento",
+    "resumo": "O NACAB publica guia explicativo sobre a ADPF 1314: o Ibram representa 300 empresas do setor mineral (85% da produção nacional) e contesta R$133 mi/mês — mais de R$1,5 bi/ano. A liminar está pronta para ser julgada a qualquer momento. O NACAB alerta sobre o risco grave ao NAE e convoca mobilização das pessoas atingidas.",
+    "data": "2026-04-02",
+    "portal": "NACAB",
+    "tipo": "assessoria",
+    "url": "https://nacab.org.br/entenda-a-acao-sobre-o-novo-auxilio-emergencial-no-stf/",
+    "tags": [
+      "NACAB",
+      "STF",
+      "ADPF 1314",
+      "Ibram",
+      "liminar",
+      "Gilmar Mendes",
+      "PNAB",
+      "mobilização"
+    ]
+  },
+  {
+    "id": 121,
+    "titulo": "AEDAS: FGV confirma R$ 1,18 bilhão necessários para manter NAE até julho de 2026",
+    "resumo": "A AEDAS informa que a FGV indicou ao juízo que seriam necessários R$ 1.184.684.923,40 para manter o pagamento do NAE até julho de 2026. O depósito inicial da Vale de R$234 mi corresponde a apenas 1/3 do valor necessário para até janeiro/2026. O juiz Murilo solicitou atualização dos valores e metodologia para o novo auxílio emergencial.",
+    "data": "2025-11-27",
+    "portal": "AEDAS",
+    "tipo": "assessoria",
+    "url": "https://aedasmg.org/vale-realiza-deposito-novo-auxilio-emergencial/",
+    "tags": [
+      "AEDAS",
+      "FGV",
+      "R$1,18 bi",
+      "julho 2026",
+      "juiz Murilo",
+      "depósito"
+    ]
+  },
+  {
+    "id": 122,
+    "titulo": "Justiça Federal marca 76 audiências para o caso Brumadinho — instrução até maio de 2027",
+    "resumo": "A 2ª Vara Federal Criminal de BH define 76 audiências de instrução entre 23/02/2026 e 17/05/2027. Réus: Vale, TÜV SÜD e 16 ex-executivos acusados de 272 homicídios e crimes ambientais. A juíza Raquel Vasconcelos rejeitou pedidos de trancamento das defesas. Sessões às segundas e sextas no TRF6 em BH.",
+    "data": "2026-02-02",
+    "portal": "TRF6 — Justiça Federal",
+    "tipo": "institucional",
+    "url": "https://sjmg.trf6.jus.br/caso-brumadinho-justica-federal-marca-audiencias-de-julgamento/",
+    "tags": [
+      "TRF6",
+      "ação penal",
+      "audiências",
+      "Vale",
+      "Tüv Süd",
+      "17 réus"
+    ]
+  },
+  {
+    "id": 123,
+    "titulo": "TRF6 inicia audiências do caso Brumadinho — 15 réus respondem por 272 homicídios",
+    "resumo": "A Justiça Federal de MG inicia as audiências de instrução em 23/02/2026. São 15 réus pessoas físicas e duas empresas (Vale e TÜV SÜD). A corte alemã também marcou audiências paralelas contra a TÜV SÜD AG. A AVABRUM atua como assistente de acusação ao lado dos familiares das 272 vítimas.",
+    "data": "2026-02-23",
+    "portal": "Agência Brasil",
+    "tipo": "imprensa",
+    "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-01/brumadinho-corte-alema-marca-audiencias-em-acao-contra-TUV-SUD-AG",
+    "tags": [
+      "ação penal",
+      "TRF6",
+      "Vale",
+      "Tüv Süd",
+      "AVABRUM",
+      "Agência Brasil"
+    ]
+  },
+  {
+    "id": 124,
+    "titulo": "TRF6 nega trancamento da ação penal e garante continuidade das audiências de Brumadinho",
+    "resumo": "A 2ª Turma do TRF6 rejeitou por unanimidade pedidos das defesas de encerramento antecipado. O tribunal seguiu pareceres do MPF: divergências sobre causas técnicas do desastre devem ser debatidas no julgamento.",
+    "data": "2026-03-11",
+    "portal": "MPF — PR/MG",
+    "tipo": "institucional",
+    "url": "https://www.mpf.mp.br/o-mpf/unidades/pr-mg/noticias/caso-brumadinho-trf6-nega-pedidos-de-trancamento-dos-processos-criminais-em-andamento",
+    "tags": [
+      "TRF6",
+      "ação penal",
+      "trancamento",
+      "MPF",
+      "Vale",
+      "Tüv Süd"
+    ]
+  },
+  {
+    "id": 125,
+    "titulo": "Vale anuncia 81% do Acordo de Reparação executado e R$ 4 bilhões em indenizações individuais",
+    "resumo": "A Vale informa execução de 81% do Acordo Judicial de Reparação até dezembro de 2025, com R$ 21 bilhões pagos e 17,5 mil pessoas indenizadas. Remoção de rejeitos nos primeiros 2km do Paraopeba finalizada. 240 hectares de Mata Atlântica recuperados. R$ 7,7 bilhões adicionais previstos entre 2026 e 2030.",
+    "data": "2026-01-22",
+    "portal": "O Tempo",
+    "tipo": "imprensa",
+    "url": "https://www.otempo.com.br/minas-sa/2026/1/22/vale-avanca-na-reparacao-de-brumadinho",
+    "tags": [
+      "Vale",
+      "81%",
+      "indenizações",
+      "R$ 4 bi",
+      "reparação",
+      "Paraopeba"
+    ]
+  },
+  {
+    "id": 126,
+    "titulo": "Prazo para ações individuais de indenização por Brumadinho encerrava em 24 de fevereiro de 2026",
+    "resumo": "O Guaicuy alerta que 24/02/2026 é o prazo final para ações individuais de indenização — resultado da equiparação dos atingidos a consumidores pelo TJMG (prazo de 5 anos do CDC). O processo coletivo de liquidação não tem prescrição em andamento. O NAE não é indenização.",
+    "data": "2026-02-05",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/prazo-acoes-individuais-indenizacao-vale-brumadinho-fevereiro-2026/",
+    "tags": [
+      "prescrição",
+      "prazo",
+      "indenização individual",
+      "TJMG",
+      "CDC",
+      "5 anos"
+    ]
+  },
+  {
+    "id": 127,
+    "titulo": "Vale tenta no STJ suspender depósitos mensais do NAE — embargos contra ministra Gallotti",
+    "resumo": "A Vale apresentou embargos de declaração no STJ contra a ministra Maria Isabel Gallotti, que negou a suspensão dos depósitos de R$133 mi. A mineradora aponta que o custo acumulado já supera R$ 923 mi e levanta dúvida sobre eventual devolução dos valores pagos às famílias — argumento que o Guaicuy contesta.",
+    "data": "2026-05-14",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/vale-tenta-no-stj-suspender-depositos-do-auxilio-emergencial/",
+    "tags": [
+      "STJ",
+      "Vale",
+      "embargos",
+      "Maria Isabel Gallotti",
+      "depósitos",
+      "R$133 mi"
+    ]
+  },
+  {
+    "id": 128,
+    "titulo": "Brumadinho contesta recurso da Vale no STJ e defende continuidade do NAE",
+    "resumo": "O município de Brumadinho protocolou em 19/05/2026 manifestação no STJ contestando os embargos da Vale. A Prefeitura afirma que a decisão mineira não tem erros e que a Vale está inconformada com a obrigação de financiar o NAE. Reitera que os danos são continuados e que a PNAB é aplicável.",
+    "data": "2026-05-19",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/auxilio-municipio-de-brumadinho-contesta-recurso-da-vale-no-stj/",
+    "tags": [
+      "Brumadinho",
+      "STJ",
+      "Vale",
+      "PNAB",
+      "danos continuados"
+    ]
+  },
+  {
+    "id": 129,
+    "titulo": "DPU defende auxílio emergencial no STF como Custos Vulnerabilis na ADPF 1314",
+    "resumo": "A Defensoria Pública da União enviou ao min. Gilmar Mendes manifestação em defesa do NAE em 09/05/2026 e pediu ingresso como Custos Vulnerabilis. A DPU argumenta que o NAE é direito autônomo pela PNAB, distinto do PTR. O Ibram aceita a participação mas quer limitar a DPU ao papel de colaboradora técnica.",
+    "data": "2026-05-09",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/dpu-defende-auxilio-emergencial/",
+    "tags": [
+      "DPU",
+      "STF",
+      "ADPF 1314",
+      "Custos Vulnerabilis",
+      "Gilmar Mendes",
+      "PNAB"
+    ]
+  },
+  {
+    "id": 130,
+    "titulo": "AVABRUM: após anos de disputas, ação penal avança com 166 testemunhas a serem ouvidas",
+    "resumo": "A AVABRUM celebra o início das audiências em 23/02/2026: 166 testemunhas de acusação e defesa, incluindo estrangeiras. Interrogatórios dos réus ao final. A organização atuou como assistente de acusação em todas as etapas, combatendo pedidos de trancamento no STF e STJ.",
+    "data": "2026-01-26",
+    "portal": "AVABRUM",
+    "tipo": "movimento",
+    "url": "https://avabrum.org.br/apos-anos-de-disputas-e-atrasos-acao-penal-de-brumadinho-avanca-para-a-fase-de-audiencias/",
+    "tags": [
+      "AVABRUM",
+      "ação penal",
+      "166 testemunhas",
+      "TRF6",
+      "Vale",
+      "Tüv Süd"
+    ]
+  },
+  {
+    "id": 131,
+    "titulo": "Vale chega a 81% do acordo de reparação e R$ 4 bilhões em indenizações",
+    "resumo": "A Itatiaia cobre o balanço da Vale: 81% do Acordo executado, 17,5 mil pessoas indenizadas, R$ 4 bi pagos. Destaca o Programa de Turismo de Brumadinho (premiado em 2025) e o Projeto Brumadinho Digital. Os dados são da própria Vale.",
+    "data": "2026-01-23",
+    "portal": "Itatiaia",
+    "tipo": "imprensa",
+    "url": "https://www.itatiaia.com.br/sudeste/mg/brumadinho-vale-chega-a-81-do-acordo-de-reparacao-e-r-4-bilhoes-em-indenizacoes",
+    "tags": [
+      "Itatiaia",
+      "Vale",
+      "81%",
+      "R$ 4 bi",
+      "reparação",
+      "turismo"
+    ]
+  },
+  {
+    "id": 132,
+    "titulo": "Conciliação entre Vale e espólios das 272 vítimas encerra 63 ações trabalhistas no TST",
+    "resumo": "Migalhas noticia que a conciliação entre Vale e espólios das 272 vítimas encerrou 63 ações trabalhistas no TST. Prazo para adesão ao acordo vai até julho de 2026. O processo contou com participação do MPT e do MPMG.",
+    "data": "2026-04-01",
+    "portal": "Migalhas",
+    "tipo": "imprensa",
+    "url": "https://www.migalhas.com.br/quentes/453768/conciliacao-entre-vale-e-espolios-das-272-vitimas-encerra-63-acoes-trabalhistas",
+    "tags": [
+      "TST",
+      "272 vítimas",
+      "conciliação",
+      "ações trabalhistas",
+      "julho 2026",
+      "Migalhas"
+    ]
+  },
+  {
+    "id": 133,
+    "titulo": "PGR pede que STF derrube decisão do TJMG que manteve auxílio emergencial da Vale",
+    "resumo": "O procurador-geral Paulo Gonet protocolou em 11/07/2026 parecer que opina pela procedência total da ação do Ibram, defendendo a cassação das decisões do TJMG. Gonet argumenta que o Acordo de 2021 tem caráter definitivo e que a PNAB (Lei 14.755/2023) não pode alterar direitos estabelecidos por decisão homologada, sob pena de violar a coisa julgada e a segurança jurídica.",
+    "data": "2026-07-11",
+    "portal": "O Fator",
+    "tipo": "imprensa",
+    "url": "https://ofator.com.br/informacao/pgr-stf-decisao-tjmg-manteve-auxilio-emergencial-vale-brumadinho/",
+    "tags": [
+      "PGR",
+      "Gonet",
+      "STF",
+      "ADPF 1314",
+      "cassação",
+      "coisa julgada",
+      "AJRI"
+    ]
+  },
+  {
+    "id": 134,
+    "titulo": "Atingidos protestam em BH contra ameaça ao Novo Auxílio Emergencial após parecer da PGR",
+    "resumo": "Centenas de atingidos protestaram em BH em 21/07/2026 contra o parecer da PGR. O MAB defende que o NAE é direito garantido pela PNAB e só pode ser encerrado com a reparação integral. O deputado Rogério Correia (PT) anunciou a entrega de carta aberta a Gilmar Mendes. O movimento cobra que a ADPF 1314 seja julgada pelo plenário do STF, não por decisão monocrática.",
+    "data": "2026-07-21",
+    "portal": "Brasil de Fato",
+    "tipo": "movimento",
+    "url": "https://www.brasildefato.com.br/2026/07/21/atingidos-protestam-em-bh-contra-ameaca-ao-novo-auxilio-emergencial-de-brumadinho-mg/",
+    "tags": [
+      "MAB",
+      "protesto",
+      "PGR",
+      "STF",
+      "plenário",
+      "Rogério Correia",
+      "carta aberta"
+    ]
+  },
+  {
+    "id": 135,
+    "titulo": "Julgamento no STF pode acabar com o auxílio aos atingidos de Brumadinho",
+    "resumo": "Com o parecer da PGR favorável ao Ibram, Gilmar Mendes pode agora deliberar sobre a ADPF 1314 — inclusive monocraticamente. O MAB defende julgamento em plenário. Guilherme Camponêz, da coordenação estadual do MAB, afirma que a posição da PGR surpreendeu e que o Ibram usa argumento tecnicamente equivocado para confundir. Cerca de 163 mil pessoas dependem do auxílio.",
+    "data": "2026-07-22",
+    "portal": "ICL Notícias",
+    "tipo": "imprensa",
+    "url": "https://iclnoticias.com.br/stf-acabar-auxilio-rompimento-brumadinho/",
+    "tags": [
+      "STF",
+      "Gilmar Mendes",
+      "PGR",
+      "MAB",
+      "163 mil",
+      "monocrática",
+      "plenário"
+    ]
+  },
+  {
+    "id": 136,
+    "titulo": "Ibram faz quarto pedido de urgência ao STF para suspender pagamento do auxílio da Vale",
+    "resumo": "O Ibram acionou pela quarta vez o ministro Gilmar Mendes pedindo suspensão imediata das decisões do TJMG. Na petição, protocolada após o parecer da PGR, o instituto alega prejuízo bilionário de R$ 1,055 bilhão de caráter 'praticamente irrepetível', que cresce R$ 133,1 milhões por mês. É o quarto pedido de urgência desde março de 2026.",
+    "data": "2026-07-18",
+    "portal": "O Fator",
+    "tipo": "imprensa",
+    "url": "https://ofator.com.br/informacao/poderes/ibram-pedido-urgencia-stf-suspender-pagamento-auxilio-emergencial-vale-brumadinho/",
+    "tags": [
+      "Ibram",
+      "STF",
+      "urgência",
+      "R$ 1,055 bi",
+      "Gilmar Mendes",
+      "suspensão"
+    ]
+  },
+  {
+    "id": 137,
+    "titulo": "Justiça dá prazo para FGV decidir se continua à frente do NAE após julho de 2026",
+    "resumo": "O juiz Murilo de Abreu determinou que a FGV informe em 15 dias úteis se pretende continuar operando o NAE após julho de 2026, quando encerra o contrato atual. A decisão também estabelece atendimento presencial itinerante mensal em todos os municípios do programa — reivindicação antiga dos atingidos com dificuldade de acesso a canais digitais.",
+    "data": "2026-05-12",
+    "portal": "Portal Independente de Notícias",
+    "tipo": "imprensa",
+    "url": "https://www.portalindependentenoticia.com.br/post/justi%C3%A7a-d%C3%A1-prazo-para-fgv-decidir-se-continua-%C3%A0-frente-do-novo-aux%C3%ADlio-emergencial-ap%C3%B3s-julho",
+    "tags": [
+      "FGV",
+      "juiz Murilo",
+      "contrato",
+      "atendimento presencial",
+      "itinerante",
+      "julho 2026"
+    ]
+  },
+  {
+    "id": 138,
+    "titulo": "MPF conclui primeiro semestre de oitivas na ação penal do caso Brumadinho",
+    "resumo": "O MPF encerrou em 22/06/2026 o primeiro semestre da fase de oitivas da ação penal. Em 25/06, os procuradores Bruno José Silva Nunes, Bruno Costa Magalhães e Samir Cabus Nachef Júnior realizaram agendas técnicas em Brumadinho e reafirmaram que o órgão não poupará esforços para garantir a punição dos responsáveis pelas 270 mortes e pelos danos ambientais.",
+    "data": "2026-07-03",
+    "portal": "MPF — PR/MG",
+    "tipo": "institucional",
+    "url": "https://www.mpf.mp.br/o-mpf/unidades/pr-mg/noticias/mpf-conclui-primeiro-semestre-de-oitivas-na-acao-penal-do-caso-brumadinho-e-reafirma-busca-por-justica",
+    "tags": [
+      "MPF",
+      "ação penal",
+      "oitivas",
+      "270 mortes",
+      "TRF6",
+      "procuradores"
+    ]
+  },
+  {
+    "id": 139,
+    "titulo": "TRF6 mantém suspensão de cláusulas abusivas de escritório inglês contra vítimas",
+    "resumo": "O TRF6 manteve decisão que suspende cláusulas abusivas em contratos do escritório inglês Pogust Goodhead (PGMBM) com vítimas. A medida atende ação civil pública do MPF com MPMG, MPES, DPU, DPMG e DPES, garantindo liberdade para as vítimas aderirem ao programa de indenização no Brasil. Aplica-se ao caso Mariana, com relevância para o modelo de reparação de Brumadinho.",
+    "data": "2026-07-14",
+    "portal": "MPF — PRR6",
+    "tipo": "institucional",
+    "url": "https://www.mpf.mp.br/o-mpf/unidades/prr6/noticias/trf6-mantem-suspensao-de-clausulas-abusivas-de-escritorio-ingles-contra-vitimas-do-rompimento-da-barragem-do-fundao-em-mariana-mg",
+    "tags": [
+      "TRF6",
+      "Pogust Goodhead",
+      "cláusulas abusivas",
+      "MPF",
+      "MPMG",
+      "DPU",
+      "indenização"
+    ]
+  },
+  {
+    "id": 140,
+    "titulo": "TRF6 retoma julgamento das apelações criminais de Mariana e nega habeas corpus a réus de Brumadinho",
+    "resumo": "O TRF6 negou dois pedidos de habeas corpus de quatro réus de Brumadinho (um engenheiro da Vale e três da Tüv Süd), mantendo a validade do processo criminal. A sessão focou nas apelações de Mariana, que buscam reverter a absolvição de 2024. O advogado Danilo Chammas (Instituto Cordilheira), assistente de acusação, sustentou a omissão intencional das mineradoras. Julgamento retomado em 10/06/2026.",
+    "data": "2026-06-10",
+    "portal": "AEDAS",
+    "tipo": "assessoria",
+    "url": "https://aedasmg.org/2026/03/23/julgamento-no-trf6-sobre-a-responsabilizacao-penal-em-virtude-dos-rompimentos-ocorridos-em-mariana-e-brumadinho/",
+    "tags": [
+      "TRF6",
+      "habeas corpus",
+      "Mariana",
+      "apelações",
+      "Tüv Süd",
+      "Instituto Cordilheira",
+      "AEDAS"
+    ]
+  },
+  {
+    "id": 141,
+    "titulo": "AECOM analisa convergência entre perícias da UFMG e o Plano de Reparação Socioambiental",
+    "resumo": "Nota técnica da AECOM — auditora ambiental da reparação — analisa os pontos de convergência entre os estudos periciais do Comitê Técnico-Científico da UFMG (CTC/UFMG) e o Plano de Reparação Socioambiental da Bacia do Paraopeba. O documento foi elaborado a pedido do NUCARD/MPMG para avaliar como os diagnósticos da universidade foram incorporados aos programas de reparação.",
+    "data": "2026-04-16",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/resultados-pericias-acordo-reparacao/",
+    "tags": [
+      "AECOM",
+      "nota técnica",
+      "UFMG",
+      "CTC",
+      "NUCARD",
+      "MPMG",
+      "auditoria",
+      "PRSABP"
+    ]
+  },
+  {
+    "id": 142,
+    "titulo": "Perícias da UFMG apontam contaminantes no Paraopeba e identificam 26 categorias de impactos",
+    "resumo": "As perícias do CTC/UFMG identificaram 26 categorias de impactos (renda, moradia, água, adoecimento) em 19 dos 26 municípios atingidos — a Região 5 (Três Marias) ficou de fora. Na calha do Paraopeba, 11 categorias afetam mais de 50% dos domicílios: qualidade da água (85%), dificuldade de acesso à saúde (82%). Das 67 chamadas iniciais, várias foram extintas ou agrupadas no ERSHRE.",
+    "data": "2025-11-27",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/pericias-ufmg-apontam-contaminantes-no-paraopeba/",
+    "tags": [
+      "UFMG",
+      "CTC",
+      "perícia",
+      "26 categorias",
+      "manganês",
+      "mercúrio",
+      "19 municípios",
+      "Três Marias"
+    ]
+  },
+  {
+    "id": 144,
+    "titulo": "FGV divulga segundo relatório do Novo Auxílio Emergencial: R$ 396,6 milhões pagos em três meses",
+    "resumo": "O 2º relatório da FGV detalha os pagamentos: março/2026 R$133,7 mi a 162.103 beneficiários; abril R$131,1 mi a 162.146; maio R$131,8 mi a 162.061 — total de R$396,7 mi. Os recursos são depositados pela Vale em conta judicial na Caixa e aplicados no fundo FGV-PTR. O relatório reforça que o NAE é medida autônoma, não confundível com o PTR encerrado em outubro de 2025.",
+    "data": "2026-07-06",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/fgv-divulga-segundo-relatorio-do-novo-auxilio-emergencial/",
+    "tags": [
+      "FGV",
+      "relatório",
+      "162 mil",
+      "pagamentos",
+      "março",
+      "abril",
+      "maio",
+      "Caixa"
+    ]
+  },
+  {
+    "id": 145,
+    "titulo": "Auxílio Emergencial de agosto é confirmado; parcelas vão de R$ 202,62 a R$ 1.621",
+    "resumo": "O NAE de agosto/2026 foi confirmado, com parcelas de R$202,62 a R$1.621 (salário mínimo de 2026). Destinado aos atingidos da Bacia do Paraopeba e Represa de Três Marias, segue a estrutura do antigo PTR. Embora agosto esteja garantido, o futuro do programa depende da decisão pendente no STF.",
+    "data": "2026-07-30",
+    "portal": "Agência GBC",
+    "tipo": "imprensa",
+    "url": "https://agenciagbc.com/2026/07/30/auxilio-emergencial-de-agosto-foi-confirmado-veja-quem-vai-receber-o-pagamento/",
+    "tags": [
+      "agosto",
+      "parcelas",
+      "salário mínimo",
+      "Três Marias",
+      "beneficiários",
+      "confirmação"
+    ]
+  },
+  {
+    "id": 146,
+    "titulo": "Auxílio emergencial de agosto está garantido — NACAB atualiza pessoas atingidas",
+    "resumo": "O NACAB confirma às comunidades que o auxílio de agosto está garantido e atualiza sobre o processo: a Justiça intimou a FGV a responder se pretende continuar operando o NAE por mais um ano, enquanto o MPMG defende a manutenção do benefício no STF.",
+    "data": "2026-07-02",
+    "portal": "NACAB",
+    "tipo": "assessoria",
+    "url": "https://nacab.org.br/auxilio-emergencial-agosto-garantido/",
+    "tags": [
+      "NACAB",
+      "agosto",
+      "FGV",
+      "garantia",
+      "atingidos",
+      "calendário"
+    ]
+  },
+  {
+    "id": 149,
+    "titulo": "Juiz indefere termos aditivos das ATIs e AEDAS anuncia saída; IJs vão constituir nova assessoria",
+    "resumo": "O juiz Murilo indeferiu a homologação dos termos aditivos com Guaicuy e NACAB (Regiões 3, 4 e 5), apontando cortes orçamentários sem justificativa e redução desigual de equipes, ferindo a isonomia. A AEDAS não assinou o termo aditivo e as IJs informaram que 'adotarão medidas para constituir nova assessoria técnica'. A AEDAS seguiu o assessoramento até janeiro de 2026, revelando tensão entre ATIs e Instituições de Justiça.",
+    "data": "2025-08-24",
+    "portal": "AEDAS",
+    "tipo": "assessoria",
+    "url": "https://aedasmg.org/desembargador-suspende-decisao-valor-anexo-1-1-regiao1e2/",
+    "tags": [
+      "AEDAS",
+      "ATI",
+      "CAMF",
+      "Anexo I.1",
+      "cisão",
+      "isonomia",
+      "juiz Murilo",
+      "cortes"
+    ]
+  },
+  {
+    "id": 150,
+    "titulo": "Justiça confirma dupla fonte de custeio para as ATIs — Acordo e ações coletivas por recursos distintos",
+    "resumo": "O juiz Murilo confirmou que as ATIs devem ter dupla fonte de recursos: as ações do Acordo de Reparação custeadas pelo orçamento previsto, e as atividades ligadas às ações coletivas (ainda em disputa) financiadas por recursos novos da Vale. Concedeu 30 dias para a Vale depositar o valor faltante. A Vale recorre da decisão de novembro/2023 que estabeleceu o modelo.",
+    "data": "2024-04-08",
+    "portal": "NACAB",
+    "tipo": "assessoria",
+    "url": "https://nacab.org.br/novos-planos-de-trabalho-das-atis-da-bacia-do-paraopeba-sao-aprovados-pela-justica/",
+    "tags": [
+      "NACAB",
+      "dupla fonte",
+      "custeio",
+      "Vale",
+      "planos de trabalho",
+      "ações coletivas",
+      "juiz Murilo"
+    ]
+  },
+  {
+    "id": 151,
+    "titulo": "Sete anos após a tragédia, só 17% do rejeito foi removido do rio Paraopeba",
+    "resumo": "Dados do portal da auditoria socioambiental (avanços até outubro/2025) mostram que apenas 274 mil dos ~1 milhão de m³ de rejeitos na calha do Paraopeba foram removidos por dragagem — 17%. A bióloga Mônica Campos (Guaicuy) aponta 0% de recomposição de áreas degradadas e projeta dragar 86 mil m³ em 2026, chegando a 368 mil m³ — 'menos da metade do que alcançou o rio'.",
+    "data": "2026-01-24",
+    "portal": "O Tempo",
+    "tipo": "imprensa",
+    "url": "https://www.otempo.com.br/cidades/2026/1/24/sete-anos-apos-a-tragedia-em-brumadinho-so-17-do-rejeito-foi-removido-do-rio-paraopeba",
+    "tags": [
+      "dragagem",
+      "17%",
+      "274 mil m³",
+      "Guaicuy",
+      "Mônica Campos",
+      "auditoria socioambiental",
+      "2026"
+    ]
+  },
+  {
+    "id": 152,
+    "titulo": "Auditoria aponta erros no monitoramento de água e sedimentos; dragagem do Trecho 2 atrasa para 2027",
+    "resumo": "Relatório de auditoria: a dragagem do Trecho 1 (0–3 km) do Paraopeba foi finalizada em março/2026, mas o Trecho 2 (3–6 km), previsto para maio, não obteve licença no prazo — conclusão adiada para junho de 2027. A Declaração de Condição de Estabilidade (DCE) das barragens remanescentes foi positiva no 1º ciclo de 2026. O documento aponta erros no monitoramento de água e sedimentos.",
+    "data": "2026-07-09",
+    "portal": "Instituto Guaicuy",
+    "tipo": "assessoria",
+    "url": "https://guaicuy.org.br/erros-monitoramento-agua-sedimentos/",
+    "tags": [
+      "auditoria",
+      "monitoramento",
+      "dragagem",
+      "Trecho 1",
+      "Trecho 2",
+      "DCE",
+      "licença",
+      "2027"
+    ]
+  },
+  {
+    "id": 153,
+    "titulo": "Relatório do Sisema: dragagem removeu 43 mil m³ em 2024 e meta é remover 12,4 milhões de m³ até 2030",
+    "resumo": "O Sistema Estadual de Meio Ambiente (Sisema) divulgou relatório das ações de 2024: dragagem removeu 43 mil m³ de rejeitos (mais que o dobro do ano anterior), recuperação das áreas Remanso 1B e Braço Sul/Remanso 1A, testes de dragagem mecanizada. Meta de remover 12,4 milhões de m³ de rejeitos até 2030. Até janeiro/2025, 17 dos 26 municípios firmaram contratos.",
+    "data": "2025-01-27",
+    "portal": "Agência Minas",
+    "tipo": "institucional",
+    "url": "https://www.agenciaminas.mg.gov.br/noticia/recuperacao-do-rio-paraopeba-avancos-e-desafios-seis-anos-apos-o-rompimento-de-barragens-em-brumadinho-124961",
+    "tags": [
+      "Sisema",
+      "relatório",
+      "dragagem",
+      "43 mil m³",
+      "12,4 milhões",
+      "2030",
+      "Remanso",
+      "recuperação"
+    ]
+  },
+  {
+    "id": 154,
+    "titulo": "Guaicuy: Vale não é transparente com dados do monitoramento ambiental do Paraopeba",
+    "resumo": "O coordenador de Análises Ambientais do Guaicuy, Bernardo Beirão, denuncia que a Vale não é transparente com o monitoramento que executa na região. Mesmo com cobrança do MPMG e MPF, pesquisadores alegam nunca ter tido acesso aos dados do monitoramento da empresa. As ações no leito (dragagem, contenções) geraram impactos secundários que demandam diagnóstico mais preciso e ações de longo prazo do poder público.",
+    "data": "2025-05-01",
+    "portal": "((o))eco",
+    "tipo": "imprensa",
+    "url": "https://oeco.org.br/reportagens/apos-4-anos-de-rompimento-da-barragem-da-vale-em-brumadinho-rio-paraopeba-segue-sem-data-pra-descontaminacao/",
+    "tags": [
+      "Guaicuy",
+      "Bernardo Beirão",
+      "monitoramento",
+      "transparência",
+      "Vale",
+      "13 milhões m³",
+      "descontaminação"
+    ]
+  }
+];
