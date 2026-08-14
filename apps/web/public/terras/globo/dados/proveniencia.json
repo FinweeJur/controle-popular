@@ -1,36 +1,36 @@
 {
-  "gerado_em_utc": "2026-08-13T21:27:56.252Z",
+  "gerado_em_utc": "2026-08-14T01:01:22.788Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
     {
       "camada": "alerta-quilombola-mancha",
-      "feicoes": 0,
-      "bytes": 159,
+      "feicoes": 6,
+      "bytes": 48068,
       "comprimido": false,
-      "sha256": "795da445a078e76f0924e147716777dce815e9ba61166156cf8813d1caf8fd70",
-      "mtime_utc": "2026-08-13T20:26:01.886Z",
-      "obtencao": "nao_declarada",
-      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+      "sha256": "92191a8c3d0fd18d90636306559cd2fc7d16fd4cff8715698089c09dae99c399",
+      "mtime_utc": "2026-08-14T01:00:10.745Z",
+      "obtencao": "derivada",
+      "origem": "Mesma interseção geométrica real de alerta-ti-mancha, aplicada aos territórios quilombolas do INCRA. Resultado medido: zero — nenhum território publicado cai dentro de mancha publicada"
     },
     {
       "camada": "alerta-territorio-sigmine-interesse",
-      "feicoes": 195,
-      "bytes": 206256,
+      "feicoes": 271,
+      "bytes": 300471,
       "comprimido": false,
-      "sha256": "9a4e2b3c9aa67a91e5464ed6ebe60514ab37ae958a0840a2ea12833429003e1b",
-      "mtime_utc": "2026-08-13T21:27:56.246Z",
-      "obtencao": "nao_declarada",
-      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+      "sha256": "a87bc1c0796124fa5c4ba76596734f7f26798b2ac796eec6424e53eb864f516d",
+      "mtime_utc": "2026-08-14T01:01:22.788Z",
+      "obtencao": "derivada",
+      "origem": "Mesma interseção, contra as poligonais do SIGMINE em fase de requerimento ou pesquisa. É processo protocolado sobre território, não lavra — mantida em camada separada de propósito"
     },
     {
       "camada": "alerta-territorio-sigmine-operacao",
-      "feicoes": 12,
-      "bytes": 13519,
+      "feicoes": 21,
+      "bytes": 22173,
       "comprimido": false,
-      "sha256": "2751dc237025fa4dd66d0d2cb17ae43460a5380f57e2408887f3668a74481180",
-      "mtime_utc": "2026-08-13T21:27:56.249Z",
-      "obtencao": "nao_declarada",
-      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+      "sha256": "f0139f6c977c201d7ebd0b0b11779e8b1f8f659ad3f4318fc4c6817714915a1a",
+      "mtime_utc": "2026-08-14T01:01:09.281Z",
+      "obtencao": "derivada",
+      "origem": "Interseção geométrica real entre territórios (terras indígenas da FUNAI + quilombolas do INCRA) e as poligonais do SIGMINE em fase que AUTORIZA extrair. É sobreposição consumada, não risco futuro"
     },
     {
       "camada": "alerta-ti-mancha",
@@ -49,8 +49,88 @@
       "comprimido": false,
       "sha256": "160dc4f03e26bafc2cf69f6b73ceb327a43f7545af25bdc72fb9868c9957d3a8",
       "mtime_utc": "2026-08-13T20:26:01.905Z",
-      "obtencao": "nao_declarada",
-      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+      "obtencao": "derivada",
+      "origem": "Normas de atos_oficiais cuja ementa indica criação, alteração, redução ou extinção de área protegida, com cada ementa lida e classificada à mão antes de entrar"
+    },
+    {
+      "camada": "brumadinho-area-atingida",
+      "feicoes": 2,
+      "bytes": 96774,
+      "comprimido": false,
+      "sha256": "9671e495de9f66204cb85efea42187b872f89caee00477e1289acff38ed2a4a7",
+      "mtime_utc": "2026-08-14T00:32:55.356Z",
+      "obtencao": "automatica",
+      "servico": "Semad/IDE-Sisema — área diretamente afetada pelo rompimento (ide_250102_mg_impactos_ambientais_pol), mapeada por satélite Pleiades a 1:2.500 — licença conferida individualmente"
+    },
+    {
+      "camada": "brumadinho-estruturas-contencao",
+      "feicoes": 37,
+      "bytes": 881083,
+      "comprimido": false,
+      "sha256": "39e565c72830b59b713baeecb6ec88a96c06ee13678138270ee436eb7569b30e",
+      "mtime_utc": "2026-08-14T00:32:55.370Z",
+      "obtencao": "automatica",
+      "servico": "Semad/IDE-Sisema — estruturas de contenção de rejeito pós-rompimento (ide_250102_mg_estruturas_contecao_pol) — licença presumida da série, não conferida individualmente"
+    },
+    {
+      "camada": "brumadinho-monitoramento",
+      "feicoes": 291,
+      "bytes": 63212,
+      "comprimido": false,
+      "sha256": "f5f04975bd6187bb5ae1f15293449404d7d06ffab5fc1d236c1dff76259790de",
+      "mtime_utc": "2026-08-14T00:32:55.370Z",
+      "obtencao": "automatica",
+      "servico": "Semad/IDE-Sisema — pontos de monitoramento ambiental pós-rompimento (ide_250102_mg_monitoramento_pto) — licença presumida da série, não conferida individualmente"
+    },
+    {
+      "camada": "brumadinho-obras-lineares",
+      "feicoes": 1,
+      "bytes": 2639,
+      "comprimido": false,
+      "sha256": "fb548918f0500b86bac7978aa5dc7e9b6e9d37a796f9cb269b559b446cd5b90f",
+      "mtime_utc": "2026-08-14T00:32:55.370Z",
+      "obtencao": "automatica",
+      "servico": "Semad/IDE-Sisema — obras e intervenções emergenciais lineares (ide_250102_mg_obras_intervencoes_lineares_lin) — licença presumida da série, não conferida individualmente"
+    },
+    {
+      "camada": "brumadinho-obras-poligonais",
+      "feicoes": 22,
+      "bytes": 282615,
+      "comprimido": false,
+      "sha256": "77ba2100517303b3c106a13016ab803bffccaf04cf2467df565f4e21f742ab10",
+      "mtime_utc": "2026-08-14T00:32:55.370Z",
+      "obtencao": "automatica",
+      "servico": "Semad/IDE-Sisema — obras e intervenções emergenciais com área (ide_250102_mg_obras_intervencoes_poligonais_pol) — licença presumida da série, não conferida individualmente"
+    },
+    {
+      "camada": "brumadinho-obras-pontuais",
+      "feicoes": 13,
+      "bytes": 2963,
+      "comprimido": false,
+      "sha256": "c70193588a796314b3bfb2cc5ff0a5438a56c637af6f6c2af4aeed1506f48927",
+      "mtime_utc": "2026-08-14T00:32:55.370Z",
+      "obtencao": "automatica",
+      "servico": "Semad/IDE-Sisema — obras e intervenções emergenciais pontuais (ide_250102_mg_obras_intervencoes_pontuais_pto) — licença presumida da série, não conferida individualmente"
+    },
+    {
+      "camada": "brumadinho-remanejamento",
+      "feicoes": 104,
+      "bytes": 23655,
+      "comprimido": false,
+      "sha256": "dd8243dc6b3d1d55f37b3869da3259335c87a9ea99e3718cb5214ef97f014974",
+      "mtime_utc": "2026-08-14T00:32:55.383Z",
+      "obtencao": "automatica",
+      "servico": "Semad/IDE-Sisema — origem de famílias remanejadas, agregada por bairro (ide_250102_mg_remanejamento_pto) — licença conferida individualmente"
+    },
+    {
+      "camada": "brumadinho-restauracao",
+      "feicoes": 35,
+      "bytes": 47903,
+      "comprimido": false,
+      "sha256": "62746ca1dc44e5c66458b7047c6528634675f590778872e61c41de63e4bfd391",
+      "mtime_utc": "2026-08-14T00:32:55.386Z",
+      "obtencao": "automatica",
+      "servico": "Semad/IDE-Sisema — áreas de revegetação/restauração pós-rompimento (ide_250102_mg_restauracao_pol) — licença presumida da série, não conferida individualmente"
     },
     {
       "camada": "cfem-municipios",
@@ -175,10 +255,10 @@
     {
       "camada": "terras-indigenas",
       "feicoes": 16,
-      "bytes": 260663,
+      "bytes": 260288,
       "comprimido": false,
-      "sha256": "b33276b3bfc06c43881b6f376e6124acf5b68d31c52e84cde8ebd96489318a0d",
-      "mtime_utc": "2026-08-13T13:27:28.424Z",
+      "sha256": "ec091fed876bd2c685dc7d9fd7a3b6676a2ec3e203ca8153f784b4731d49f5b2",
+      "mtime_utc": "2026-08-14T01:00:55.789Z",
       "obtencao": "automatica",
       "servico": "FUNAI — WFS oficial (Funai:tis_poligonais), todas as fases de demarcação"
     },
@@ -289,33 +369,17 @@
       "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
     },
     {
-      "camada": "territorios-quilombolas-vales",
-      "feicoes": 12,
-      "bytes": 83810,
-      "comprimido": false,
-      "sha256": "359bde627c8b7473f1900b465a9c07e25301b860c6b8517d828dbf2a41eb4ed8",
-      "mtime_utc": "2026-08-13T21:27:56.250Z",
-      "obtencao": "manual",
-      "origem": "INCRA — Áreas de Quilombolas, pelo Acervo Fundiário",
-      "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
-    },
-    {
       "camada": "territorios-quilombolas",
-      "feicoes": 2,
-      "bytes": 2888,
+      "feicoes": 27,
+      "bytes": 410252,
       "comprimido": false,
-      "sha256": "486955c342996fbc394015449f6538fce2fe2faf56dbe04b3ff4b562b616effe",
-      "mtime_utc": "2026-08-13T21:27:56.252Z",
+      "sha256": "c261190313ca7c79767ee619285c781d4ffbf2ee85be2ff0e30c694c47299c3e",
+      "mtime_utc": "2026-08-14T00:35:27.225Z",
       "obtencao": "manual",
       "origem": "INCRA — Áreas de Quilombolas, pelo Acervo Fundiário",
       "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
     }
   ],
   "lacuna_principal": "Não existe base aberta de terra devoluta reconhecida, nem camada de terras do Estado de Minas. Por isso o mapa mostra terra SEM CADASTRO, que é outra coisa: ausência de declaração no CAR não é ausência de dono.",
-  "camadas_sem_origem_declarada": [
-    "alerta-quilombola-mancha",
-    "alerta-territorio-sigmine-interesse",
-    "alerta-territorio-sigmine-operacao",
-    "atos-area-protegida-municipios"
-  ]
+  "camadas_sem_origem_declarada": []
 }

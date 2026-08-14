@@ -298,10 +298,24 @@ export const LAYER_REGISTRY = [
     hint: '21 áreas, 13.438 hectares (134 km²). Terra pública que já tem destino — por isso sai do cálculo de terra sem cadastro.',
     color: 0xf19650,   /* --layer-assentamentos */ on: false, render: 'fill', listavel: true, regioes: ['bacia'],
   },
+  // ⟲ 13/08 (fim do dia): TRÊS FONTES VIRARAM UMA, a pedido do dono, e ele
+  // estava certo: "qual o sentido de dividir?". Havia
+  // `territorios-quilombolas` (bacia), `-vales` e `-outras-regioes`, e a
+  // única razão da separação era técnica — `regioes` é filtro POR FONTE, e
+  // cada recorte queria o seu. Mas essa é exatamente a organização por
+  // REGIÃO que este arquivo abandonou em 13/08 de manhã, quando o painel
+  // passou a agrupar por ASSUNTO justamente porque "para ver todos os
+  // assentamentos de Minas era preciso descobrir dois interruptores de nome
+  // quase igual e ligar os dois". Território quilombola é UM conceito.
+  //
+  // SEM `regioes`, de propósito: fonte estadual não pertence a um recorte.
+  // O município de cada território está na ficha, que é onde a informação
+  // de lugar deve morar — não num filtro que esconde metade do conceito.
   {
     id: 'territorios-quilombolas', label: 'Territórios quilombolas',
-    hint: '2 áreas, 22 hectares na bacia — uns 31 campos de futebol. Território tradicional titulado ou em titulação, pelo INCRA.',
-    color: 0x94c05b,   /* --layer-quilombolas */ on: false, render: 'fill', listavel: true, regioes: ['bacia'],
+    hint: '27 polígonos de 23 territórios, 141.446 hectares (1.414 km²) titulados ou em titulação pelo INCRA, em Minas inteira. Um território pode ter várias parcelas separadas: Marobá dos Teixeira, por exemplo, são 5. Os maiores são Gurutuba (Jaíba/Gamaleira/Monte Azul, 45.852 ha), Brejo dos Crioulos (17.409 ha) e Tabua (Manga, 16.638 ha).',
+    aviso: 'Fase incluída de propósito, do "RTID publicado" ao titulado: o direito não espera o título. Foi essa escolha que fez aparecer a sobreposição de lavra de granito sobre o Território do Baú, em Araçuaí — ele ainda não tem título definitivo e, filtrado por "titulado", não apareceria.',
+    color: 0x94c05b,   /* --layer-quilombolas */ on: false, render: 'fill', listavel: true,
   },
   // Vazio URBANO, que é assunto diferente do vazio cadastral rural — e tem
   // instrumento jurídico próprio: CF art. 182, §4º e Estatuto da Cidade arts.
@@ -457,12 +471,18 @@ export const LAYER_REGISTRY = [
     color: 0xf19650,   /* --layer-assentamentos */ on: false, render: 'fill', listavel: true,
     regioes: ['jequitinhonha', 'mucuri'], mesoIndistinta: true,
   },
-  {
-    id: 'territorios-quilombolas-vales', label: 'Territórios quilombolas — Jequitinhonha e Mucuri',
-    hint: '12 áreas, 35.908 hectares (359 km²) titulados ou em titulação pelo INCRA. Na bacia do Paraopeba eram 22 hectares, uns 31 campos de futebol: aqui o território tradicional é uma das maiores presenças do mapa, não um detalhe.',
-    color: 0x94c05b,   /* --layer-quilombolas */ on: false, render: 'fill', listavel: true,
-    regioes: ['jequitinhonha', 'mucuri'], mesoIndistinta: true,
-  },
+  // Terceira fonte de quilombolas, NOVA em 13/08/2026 (mais tarde) — os 13
+  // territórios do INCRA que não entram nem na bacia nem nos Vales (ver
+  // scripts/ingerir_incra_quilombolas.py, seção "OS 13 QUE SOBRAVAM AGORA
+  // ENTRAM", para a decisão completa de por que é uma fonte nova em vez de
+  // fundir as duas de cima). Mesma cor das duas irmãs — é o MESMO conceito
+  // (território quilombola), só em municípios que não caem em nenhuma das
+  // regiões de estudo já delimitadas. SEM `regioes`, de propósito: nenhum
+  // dos 13 municípios bate `js/data/mesorregioes.js` nem foi conferido
+  // contra o polígono da bacia do Paraopeba — declarar uma região que o
+  // dado não sustenta seria o erro que este arquivo evita em toda outra
+  // fonte "geral" (ver `normas-geolocalizadas`, mais abaixo, pelo mesmo
+  // motivo: fonte sem região aparece em qualquer filtro, nunca escondida).
   {
     id: 'spu-imoveis-uniao-vales', label: 'Imóveis do governo federal — Jequitinhonha e Mucuri',
     hint: '154 imóveis da União nas duas mesorregiões, do cadastro da SPU. 24 deles estão registrados como "sem destinação definida" em todas as suas utilizações.',
@@ -511,6 +531,86 @@ export const LAYER_REGISTRY = [
     // comprimida: arquivo cru pesava 14,36 MiB. Ver
     // scripts/comprimir-camadas-grandes.mjs (14,36 MiB -> 3,93 MiB, 3,7×).
     color: 0xcc94ef, /* --layer-mancha-inundacao */ on: false, render: 'fill', listavel: true, comprimida: true,
+  },
+  // --- O rompimento real da Barragem I (B1), Brumadinho (13/08/2026) ------
+  //
+  // docs/PLANO-INTEGRACAO-BRUMADINHO.md, seção 1.2 — pesquisa completa. As
+  // duas camadas acima (`zas-barragens`, `mancha-inundacao-barragens`) são a
+  // simulação HIPOTÉTICA (PAE/ERHB) de 156 barragens de MG, incluindo a B1:
+  // "o que a água alcançaria SE uma barragem parecida rompesse". Estas 8
+  // camadas são o PAR FACTUAL, só da B1: o que aconteceu de verdade em
+  // 25/01/2019, quando ela rompeu — 270 mortes. Mesmo GeoServer que já serve
+  // as duas de cima (`geoserver.meioambiente.mg.gov.br/IDE`, prefixo
+  // `ide_250102_mg_*`), mesma licença "acesso livre" — conferida no
+  // GeoNetwork da Semad camada a camada só para `impactos_ambientais_pol` e
+  // `remanejamento_pto`; as outras 6 desta série NÃO tiveram o metadado
+  // individual aberto — presumida a mesma licença por serem do mesmo
+  // publicador/série, presunção registrada aqui, não confirmação camada a
+  // camada. Ingestão: scripts/ingerir_semad_brumadinho_b1.py.
+  //
+  // Nenhuma das 8 leva `comprimida`: a maior (`estruturas-contencao`) pesa
+  // 881 KB crua, a família inteira soma ~1,37 MiB — bem abaixo do limiar de
+  // ~8 MiB que justifica o custo do carregador saber descomprimir.
+  //
+  // Cores: nenhuma reaproveita as 20 já em uso (ver css/tokens/colors.css) —
+  // cada uma é o meio da maior lacuna que restava no círculo de matiz
+  // (mesmo método oklch L .754 / C .139 do resto do arquivo), calculado nesta
+  // entrega. `css/tokens/colors.css` NÃO foi editado (fora do escopo desta
+  // tarefa — só config.js/layerspanel.js/icones.js): os comentários abaixo
+  // trazem o hex já convertido, para quem um dia formalizar o token lá achar
+  // o valor pronto, sem recalcular.
+  {
+    id: 'brumadinho-area-atingida', label: 'Brumadinho — área REALMENTE atingida (2019)',
+    hint: 'Os 2 polígonos que a Semad mapeou por satélite (Pleiades, escala 1:2.500) sobre o que o rejeito de fato cobriu quando a Barragem I rompeu, 25/01/2019 — 270 mortes. NÃO é a mesma coisa que "Mancha de inundação (barragens)", acima: aquela é um cenário hipotético de engenharia para 156 barragens; esta é o registro do que aconteceu de verdade, só na B1.',
+    aviso: 'Não confundir com a camada "Mancha de inundação (barragens)": esta aqui é FATO CONSUMADO, medido por satélite depois do rompimento — não é simulação, não é previsão, é o que já aconteceu.',
+    color: 0xf88f68, /* hex calculado, hue 40,45° — ver comentário do bloco acima */ on: false, render: 'fill', listavel: true,
+  },
+  {
+    id: 'brumadinho-monitoramento', label: 'Brumadinho — pontos de monitoramento ambiental',
+    hint: '291 pontos onde a Semad monitora água, ar, ruído e geotecnia depois do rompimento. Maioria (140) é monitoramento de rejeito. O campo "categoria" na ficha diz o quê: Rejeitos, Água Superficial e Sedimentos, Água Subterrânea, Água Superficial, Ruído, Hidrossedimentométrico, Ar, Efluente, Poço Cava Feijão, Radar Geotécnico.',
+    color: 0xacb947, /* hex calculado, hue 115,4° */ on: false, render: 'point', pointSize: 0.005, listavel: true,
+  },
+  {
+    id: 'brumadinho-remanejamento', label: 'Brumadinho — origem de famílias remanejadas',
+    hint: '104 pontos de ORIGEM (não o destino) de famílias remanejadas depois do rompimento, agrupados por bairro/comunidade — "Parque da Cachoeira" (57), "Córrego do Feijão" (34) e mais 6 origens. O esquema desta camada tem só duas colunas de texto (classe + descrição): sem nome, sem CPF, sem endereço — conferido campo a campo antes de publicar.',
+    aviso: 'Cada ponto marca a ORIGEM agregada por bairro, não a casa de ninguém: a Semad não publica endereço nem nome de família. Ainda assim, evite aumentar a precisão deste ponto ou cruzá-lo com CAR/cadastro de imóvel por CPF — use como o dado de política de reparação que ele é, não como localizador de pessoa.',
+    color: 0xea8ac9, /* hex calculado, hue 340,85° */ on: false, render: 'point', pointSize: 0.006, listavel: true,
+  },
+  {
+    id: 'brumadinho-estruturas-contencao', label: 'Brumadinho — estruturas de contenção',
+    hint: '37 estruturas emergenciais construídas para conter o rejeito depois do rompimento: diques, estacas-prancha, barreiras estabilizantes de calha.',
+    color: 0xf787a7, /* hex calculado, hue 2,55° */ on: false, render: 'fill', listavel: true,
+  },
+  // As três camadas abaixo são o MESMO conceito ("Obras e Intervenções" —
+  // pontes, ETA, disposição de rejeito, dragagem, bombeamento emergencial,
+  // instrumentação) partido em três pela GEOMETRIA que cada obra tem na
+  // origem (polígono/ponto/linha) — não por região nem por assunto distinto.
+  // Mantidas como TRÊS fontes de UM painel cada (não uma linha só fundindo as
+  // três): `_construir` (layers/manager.js) desenha cada FONTE com o render
+  // dela própria, então fundir numa única entrada de CAMADAS misturaria
+  // fill+point+line sob um `render` resolvido só da primeira — o padrão que
+  // este arquivo já usa para fundir fontes (vazio-cadastral, quilombolas...)
+  // é sempre entre fontes do MESMO render; não há precedente de mistura, e
+  // esta entrega não abre um novo sem necessidade.
+  {
+    id: 'brumadinho-obras-poligonais', label: 'Brumadinho — obras e intervenções (área)',
+    hint: '22 obras emergenciais com área própria: pontes, ETA, disposição de rejeito, dragagem.',
+    color: 0x00c5e3, /* hex calculado, hue 213,1° */ on: false, render: 'fill', listavel: true,
+  },
+  {
+    id: 'brumadinho-obras-pontuais', label: 'Brumadinho — obras e intervenções (ponto)',
+    hint: '13 obras emergenciais pontuais: tratamento de sedimento, bombeamento emergencial, instrumentação.',
+    color: 0x00cac6, /* hex calculado, hue 192,3° */ on: false, render: 'point', pointSize: 0.006, listavel: true,
+  },
+  {
+    id: 'brumadinho-obras-lineares', label: 'Brumadinho — obras e intervenções (linha)',
+    hint: '1 obra linear: dragagem emergencial.',
+    color: 0xeb9b43, /* hex calculado, hue 65,45° */ on: false, render: 'line', listavel: true,
+  },
+  {
+    id: 'brumadinho-restauracao', label: 'Brumadinho — áreas de restauração',
+    hint: '35 áreas de revegetação/restauração, por platô/setor, nas áreas afetadas pelo rompimento.',
+    color: 0x24cba6, /* hex calculado, hue 172,55° */ on: false, render: 'fill', listavel: true,
   },
   {
     id: 'terras-indigenas', label: 'Terras indígenas',
@@ -770,10 +870,17 @@ export const CAMADAS = [
   {
     id: 'territorios-quilombolas', assunto: 'terra-publica',
     label: 'Territórios quilombolas',
-    // 2 + 12 áreas; 22 + 35.908 ha (INCRA, 13/08/2026 — ver
-    // scripts/ingerir_incra_quilombolas.py).
-    hint: '14 áreas, 35.930 hectares (359 km²) de território tradicional titulado ou em titulação pelo INCRA. Quase tudo isso está no Jequitinhonha e no Mucuri: na bacia do Paraopeba são 22 hectares, uns 31 campos de futebol.',
-    fontes: ['territorios-quilombolas', 'territorios-quilombolas-vales'],
+    // 2 + 12 + 13 áreas; 22 + 35.908,1 + 105.515,6 ha (INCRA, 13/08/2026 —
+    // ver scripts/ingerir_incra_quilombolas.py). A terceira fonte
+    // (`-outras-regioes`) entrou mais tarde no mesmo dia: os 13 territórios
+    // do INCRA em MG que não caem nem na bacia do Paraopeba nem no
+    // Jequitinhonha/Mucuri — a linha do painel continua sendo UMA só,
+    // "Territórios quilombolas": a unificação que importa (uma chave, não
+    // duas ou três) já tinha acontecido na reorganização por ASSUNTO de mais
+    // cedo em 13/08; o que mudou agora foi só a COBERTURA de dado por trás
+    // dela, nunca o contrato de id/índice das duas fontes antigas.
+    hint: '27 áreas, 141.446 hectares (1.414 km²) de território tradicional titulado ou em titulação pelo INCRA. A maior parte está fora da bacia do Paraopeba e do Jequitinhonha/Mucuri — em municípios do Norte e Noroeste de Minas (105.516 ha) — com 35.908 ha no Jequitinhonha/Mucuri e só 22 hectares na bacia do Paraopeba, uns 31 campos de futebol.',
+    fontes: ['territorios-quilombolas'],
   },
   {
     id: 'spu-imoveis-uniao', assunto: 'terra-publica',
@@ -790,9 +897,14 @@ export const CAMADAS = [
     fontes: ['devolutas-arrecadadas'],
   },
   // --- Território indígena, mineração e segurança de barragens -----------
-  // Seis linhas, cada uma numa fonte só (sem irmã regional a fundir) — ver o
-  // bloco de comentário grande em LAYER_REGISTRY, acima, para o porquê de
-  // cada camada e as ressalvas jurídicas.
+  // Catorze linhas (seis do lote de 13/08 + as 8 do rompimento real da B1,
+  // 13/08 mais tarde) — TODAS numa fonte só, sem irmã a fundir, incluindo as
+  // três "obras e intervenções" (mesmo conceito, geometria diferente:
+  // mantidas em linhas SEPARADAS de propósito, ver o comentário delas em
+  // LAYER_REGISTRY sobre por que fundir misturaria render fill+point+line
+  // sob um valor resolvido só da primeira fonte). Ver o bloco de comentário
+  // grande em LAYER_REGISTRY, acima, para o porquê de cada camada e as
+  // ressalvas jurídicas.
   {
     id: 'zas-barragens', assunto: 'territorio-mineracao',
     label: 'Zona de Autossalvamento (ZAS)',
@@ -806,6 +918,61 @@ export const CAMADAS = [
     hint: 'O alcance máximo da onda numa ruptura hipotética da barragem — maior que a ZAS, que é só o trecho onde não dá tempo de a autoridade agir. Mesma fonte (FEAM/ERHB), 156 barragens de MG.',
     aviso: 'Cenário de RUPTURA HIPOTÉTICA — o pior caso plausível que o estudo de engenharia considera, não uma previsão de que a barragem vá romper.',
     fontes: ['mancha-inundacao-barragens'],
+  },
+  // O rompimento real da B1, Brumadinho — par factual das duas linhas acima.
+  // Ver o comentário grande em LAYER_REGISTRY para a proveniência e para a
+  // distinção que importa mais: `brumadinho-area-atingida` é FATO CONSUMADO
+  // (satélite, depois do rompimento), nunca confundir com a simulação
+  // hipotética das duas linhas de cima.
+  {
+    id: 'brumadinho-area-atingida', assunto: 'territorio-mineracao',
+    label: 'Brumadinho — área REALMENTE atingida (2019)',
+    hint: 'Os 2 polígonos que a Semad mapeou por satélite (Pleiades, escala 1:2.500) sobre o que o rejeito de fato cobriu quando a Barragem I rompeu, 25/01/2019 — 270 mortes. NÃO é a mesma coisa que "Mancha de inundação (barragens)": aquela é um cenário hipotético de engenharia para 156 barragens; esta é o registro do que aconteceu de verdade, só na B1.',
+    aviso: 'Não confundir com a camada "Mancha de inundação (barragens)": esta aqui é FATO CONSUMADO, medido por satélite depois do rompimento — não é simulação, não é previsão, é o que já aconteceu.',
+    fontes: ['brumadinho-area-atingida'],
+  },
+  {
+    id: 'brumadinho-monitoramento', assunto: 'territorio-mineracao',
+    label: 'Brumadinho — pontos de monitoramento ambiental',
+    hint: '291 pontos onde a Semad monitora água, ar, ruído e geotecnia depois do rompimento. Maioria (140) é monitoramento de rejeito. O campo "categoria" na ficha diz o quê: Rejeitos, Água Superficial e Sedimentos, Água Subterrânea, Água Superficial, Ruído, Hidrossedimentométrico, Ar, Efluente, Poço Cava Feijão, Radar Geotécnico.',
+    fontes: ['brumadinho-monitoramento'],
+  },
+  {
+    id: 'brumadinho-remanejamento', assunto: 'territorio-mineracao',
+    label: 'Brumadinho — origem de famílias remanejadas',
+    hint: '104 pontos de ORIGEM (não o destino) de famílias remanejadas depois do rompimento, agrupados por bairro/comunidade — "Parque da Cachoeira" (57), "Córrego do Feijão" (34) e mais 6 origens. O esquema desta camada tem só duas colunas de texto (classe + descrição): sem nome, sem CPF, sem endereço — conferido campo a campo antes de publicar.',
+    aviso: 'Cada ponto marca a ORIGEM agregada por bairro, não a casa de ninguém: a Semad não publica endereço nem nome de família. Ainda assim, evite ler isto como localizador de pessoa — é dado de política de reparação, não cadastro de residência.',
+    fontes: ['brumadinho-remanejamento'],
+  },
+  {
+    id: 'brumadinho-estruturas-contencao', assunto: 'territorio-mineracao',
+    label: 'Brumadinho — estruturas de contenção',
+    hint: '37 estruturas emergenciais construídas para conter o rejeito depois do rompimento: diques, estacas-prancha, barreiras estabilizantes de calha.',
+    fontes: ['brumadinho-estruturas-contencao'],
+  },
+  {
+    id: 'brumadinho-obras-poligonais', assunto: 'territorio-mineracao',
+    label: 'Brumadinho — obras e intervenções (área)',
+    hint: '22 obras emergenciais com área própria: pontes, ETA, disposição de rejeito, dragagem. Mesmo conceito de "obras e intervenções" que as duas linhas seguintes — partido em três linhas porque cada uma tem geometria diferente na origem (área/ponto/linha), não porque sejam assuntos distintos.',
+    fontes: ['brumadinho-obras-poligonais'],
+  },
+  {
+    id: 'brumadinho-obras-pontuais', assunto: 'territorio-mineracao',
+    label: 'Brumadinho — obras e intervenções (ponto)',
+    hint: '13 obras emergenciais pontuais: tratamento de sedimento, bombeamento emergencial, instrumentação.',
+    fontes: ['brumadinho-obras-pontuais'],
+  },
+  {
+    id: 'brumadinho-obras-lineares', assunto: 'territorio-mineracao',
+    label: 'Brumadinho — obras e intervenções (linha)',
+    hint: '1 obra linear: dragagem emergencial.',
+    fontes: ['brumadinho-obras-lineares'],
+  },
+  {
+    id: 'brumadinho-restauracao', assunto: 'territorio-mineracao',
+    label: 'Brumadinho — áreas de restauração',
+    hint: '35 áreas de revegetação/restauração, por platô/setor, nas áreas afetadas pelo rompimento.',
+    fontes: ['brumadinho-restauracao'],
   },
   {
     id: 'terras-indigenas', assunto: 'territorio-mineracao',

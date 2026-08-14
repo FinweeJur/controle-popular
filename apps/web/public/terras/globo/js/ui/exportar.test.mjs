@@ -501,7 +501,7 @@ test('no LAYER_REGISTRY publicado, divisa de municipio nao exporta e camada de d
   // continuar exportáveis: são elas que a correção do ponto atende.
   for (const id of [
     'assentamentos', 'assentamentos-vales',
-    'territorios-quilombolas', 'territorios-quilombolas-vales',
+    'territorios-quilombolas',
     'terra-publica-certificada', 'terra-publica-certificada-vales',
     'embargos-ambientais-vales',
   ]) {

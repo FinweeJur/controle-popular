@@ -140,22 +140,44 @@ export const ZONAS: Zona[] = [
     href: "/ambiental",
     etiqueta: "Estadual · Meio ambiente em Minas Gerais",
     nomeCurto: "Meio ambiente",
-    titulo: "O que o COPAM vai decidir sobre a sua cidade",
+    titulo: "Quem decide o que pode ser feito com o meio ambiente daqui",
     // CÓPIA CORTADA PARA O QUE EXISTE, ao publicar a zona em 2026-08-09;
     // ATUALIZADA em 2026-08-11 conforme cada fase ganhou tela e dado real
     // (F3 COPAM, F4 licenciamento, F5 barragens, F6 legislação — as quatro
     // no ar no mesmo dia, migrations 0058/0064/0057+0049+0051/0065).
     // Mesma disciplina de sempre: cortar pro que existe, atualizar quando
     // deixa de ser promessa.
+    //
+    // ⟲ 13/08, A PEDIDO DO DONO: "não explica bem o estágio atual do painel".
+    // Ele estava certo por três razões, e as três são de precisão:
+    //
+    // 1. O TÍTULO PROMETIA MENOS DO QUE A ZONA FAZ. "O que o COPAM vai
+    //    decidir" descreve UMA das cinco telas. Quem lê e não sabe o que é
+    //    COPAM (a maioria) não descobre que ali dentro há licença, barragem,
+    //    legislação e precedente judicial.
+    // 2. O TEXTO ERA UM INVENTÁRIO SEM TAMANHO. Dizia "a pauta", "as
+    //    barragens", "três fontes" — nada que deixasse o leitor saber se são
+    //    dez linhas ou vinte mil. São 454 reuniões, 19.704 licenças, 6.378
+    //    normas estaduais, 30 nacionais e internacionais e 15 precedentes,
+    //    contados no banco nesta data.
+    // 3. O ACERVO POR TEMA DE DIREITO nem aparecia. `/ambiental/direito-
+    //    critico` é a tela que responde "que lei protege isto", e ficava
+    //    invisível no cartão que é o texto mais lido do portal.
+    //
+    // O que NÃO mudou, de propósito: nenhum número aqui é promessa, e a
+    // legislação federal continua FORA — são 6.378 normas e todas estaduais.
+    // Enquanto o acervo do MMA não entrar, o texto não pode sugerir que a
+    // lei federal está aqui.
     descricao:
-      "A pauta de cada reunião do COPAM, item a item, com o município que cada processo trata. Licenciamento ambiental e situação das barragens de Minas Gerais, por município. Leis, decretos, deliberações e portarias ambientais de três fontes que não conversam entre si, numa busca só.",
+      "Cinco coisas decidem o que pode ser feito com o ambiente de uma cidade, e todas ficam em lugares diferentes: o COPAM, que aprova ou barra empreendimento em reunião pública; a licença ambiental já concedida; a situação das barragens; a legislação estadual; e o que os tribunais já decidiram sobre rios, terra indígena, quilombola e comunidade tradicional. Aqui elas estão no mesmo lugar — 454 reuniões do COPAM, 19.704 licenças, 6.378 normas ambientais de Minas e 45 instrumentos e precedentes por tema de direito protegido.",
     resumo:
-      "COPAM, licenciamento, barragens e legislação ambiental de Minas Gerais — as quatro frentes com dado real, num lugar só.",
+      "COPAM, licença ambiental, barragem, legislação de Minas e precedente judicial por tema de direito — o que decide o ambiente da cidade, num lugar só.",
     itens: [
       "COPAM: pauta de cada reunião, item a item, por município",
-      "Licenciamento ambiental: filtro por município, setor e classe de risco",
-      "Barragens: FEAM e SNISB lado a lado, por município",
-      "Legislação ambiental: busca por palavra-chave, fonte, tipo e ano",
+      "19.704 licenças ambientais, por município, setor e classe de risco",
+      "Barragens: FEAM e SNISB lado a lado, nunca somadas",
+      "6.378 normas ambientais de Minas, de três fontes que não conversam",
+      "Lei e precedente por tema: rios, indígena, quilombola, comunidade tradicional",
     ],
     cor: "var(--cp-tertiary)",
     publicada: true,

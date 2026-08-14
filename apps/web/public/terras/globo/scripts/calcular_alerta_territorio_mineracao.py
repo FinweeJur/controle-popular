@@ -34,12 +34,16 @@ geometria completa dos dois lados, igual ao script de TI×mancha.
 
 `terras-indigenas.geojson` -- 16 TIs, MG inteira (fonte primária FUNAI).
 `territorios-quilombolas.geojson` (2, bacia do Paraopeba) +
-`territorios-quilombolas-vales.geojson` (12, Vales) -- 14 territórios;
-**cobertura parcial**, ver docstring de
-`calcular_alerta_quilombola_mancha.py` pra o motivo (não existe arquivo
-estadual único de quilombola neste projeto ainda).
+⟲ 13/08 (fim do dia): as três fontes de quilombola viraram UMA
+(`territorios-quilombolas.geojson`, 27 polígonos de 23 territórios em Minas
+inteira). A divisão anterior era por região e contradizia o painel, que já
+agrupa por assunto. Antes eram três arquivos (bacia, Vales e demais regiões,
+NOVA em 13/08/2026 mais tarde -- ver
+scripts/ingerir_incra_quilombolas.py) -- 27 territórios; é a totalidade que
+o INCRA publica hoje para MG no Acervo Fundiário, ver docstring de
+`calcular_alerta_quilombola_mancha.py` pro detalhe da cobertura.
 
-30 territórios no total (16 TI + 14 quilombola).
+43 territórios no total (16 TI + 27 quilombola).
 
 Uso:
     python scripts/calcular_alerta_territorio_mineracao.py
@@ -64,7 +68,9 @@ DIR_CAMADAS = DIR_GLOBO / "dados" / "camadas"
 TI_PATH = DIR_CAMADAS / "terras-indigenas.geojson"
 QUILOMBOLA_PATHS = [
     DIR_CAMADAS / "territorios-quilombolas.geojson",
-    DIR_CAMADAS / "territorios-quilombolas-vales.geojson",
+    # Terceira fonte, NOVA em 13/08/2026 (mais tarde) — os 13 territórios do
+    # INCRA que não entravam nas duas de cima. Ver
+    # scripts/ingerir_incra_quilombolas.py, "OS 13 QUE SOBRAVAM AGORA ENTRAM".
 ]
 SIGMINE_OPERACAO_PATH = DIR_CAMADAS / "sigmine-operacao.geojson"
 SIGMINE_INTERESSE_GZ_PATH = DIR_CAMADAS / "sigmine-interesse.geojson.gz"

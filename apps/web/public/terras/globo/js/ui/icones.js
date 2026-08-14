@@ -161,6 +161,41 @@ const DEFINICOES = {
     ['path', { d: 'M15 5.764v15' }],
     ['path', { d: 'M9 3.236v15' }],
   ],
+  // --- Os 6 ícones novos abaixo entraram em 13/08/2026 para as 8 camadas do
+  // rompimento real da B1 (Brumadinho) — confirmados no pacote antes de
+  // entrar aqui, mesma disciplina do resto deste arquivo, via
+  // https://unpkg.com/lucide-static/icons/<nome>.svg.
+  droplets: [
+    ['path', { d: 'M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z' }],
+    ['path', { d: 'M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97' }],
+  ],
+  radio: [
+    ['path', { d: 'M16.247 7.761a6 6 0 0 1 0 8.478' }],
+    ['path', { d: 'M19.075 4.933a10 10 0 0 1 0 14.134' }],
+    ['path', { d: 'M4.925 19.067a10 10 0 0 1 0-14.134' }],
+    ['path', { d: 'M7.753 16.239a6 6 0 0 1 0-8.478' }],
+    ['circle', { cx: '12', cy: '12', r: '2' }],
+  ],
+  footprints: [
+    ['path', { d: 'M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z' }],
+    ['path', { d: 'M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z' }],
+    ['path', { d: 'M16 17h4' }],
+    ['path', { d: 'M4 13h4' }],
+  ],
+  shield: [
+    ['path', { d: 'M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z' }],
+  ],
+  'hard-hat': [
+    ['path', { d: 'M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5' }],
+    ['path', { d: 'M14 6a6 6 0 0 1 6 6v3' }],
+    ['path', { d: 'M4 15v-3a6 6 0 0 1 6-6' }],
+    ['rect', { x: '2', y: '15', width: '20', height: '4', rx: '1' }],
+  ],
+  sprout: [
+    ['path', { d: 'M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3' }],
+    ['path', { d: 'M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4' }],
+    ['path', { d: 'M5 21h14' }],
+  ],
   satellite: [
     ['path', { d: 'm13.5 6.5-3.148-3.148a1.205 1.205 0 0 0-1.704 0L6.352 5.648a1.205 1.205 0 0 0 0 1.704L9.5 10.5' }],
     ['path', { d: 'M16.5 7.5 19 5' }],
@@ -202,6 +237,22 @@ const ICONE_POR_CAMADA = {
   'devolutas-arrecadadas': 'circle-help',
   'zas-barragens': 'triangle-alert',
   'mancha-inundacao-barragens': 'waves',
+  // As 8 camadas do rompimento real da B1 (13/08/2026) — 'droplets' (rejeito
+  // líquido) em vez de 'waves' de propósito: 'waves' já é a mancha
+  // HIPOTÉTICA acima, e reusar o mesmo ícone confundiria visualmente o par
+  // que o hint/aviso de cada camada trabalha pra distinguir por texto.
+  'brumadinho-area-atingida': 'droplets',
+  'brumadinho-monitoramento': 'radio',
+  'brumadinho-remanejamento': 'footprints',
+  'brumadinho-estruturas-contencao': 'shield',
+  // As três "obras e intervenções" (área/ponto/linha) são o MESMO conceito
+  // partido por geometria — mesmo ícone nas três de propósito, ao contrário
+  // do par sigmine-operacao/interesse (que É de propósito diferente, ver
+  // comentário deles acima).
+  'brumadinho-obras-poligonais': 'hard-hat',
+  'brumadinho-obras-pontuais': 'hard-hat',
+  'brumadinho-obras-lineares': 'hard-hat',
+  'brumadinho-restauracao': 'sprout',
   // Não é ícone de pessoa (pedido explícito) — evita a leitura de "isto
   // representa UMA pessoa/etnia genérica"; penas remetem a território
   // originário sem caricaturar um povo específico.

@@ -55,8 +55,14 @@ describe("alerta território × SIGMINE — operação (lavra autorizada)", () =
     // oficial diferente dá área de interseção ligeiramente diferente. A
     // CONTAGEM de sobreposições não mudou (12), o que é o sinal de que não
     // se perdeu nem se inventou alerta: só a medida ficou mais exata.
-    expect(lista.itens.length).toBe(12);
-    expect(+lista.areaTotalHa.toFixed(1)).toBe(1202.9);
+    // ⟲ 13/08, fim do dia: 12 → 21 sobreposições, 1.202,9 → 1.539,4 ha.
+    // NÃO é dado novo do SIGMINE: é a unificação das três camadas de
+    // território quilombola numa só. Uma delas nunca era cruzada com nada,
+    // e por isso 9 sobreposições existiam no dado e não apareciam — entre
+    // elas lavra de OURO autorizada sobre São Domingos e Machadinho.
+    // Conceito partido em três arquivos estava escondendo alerta.
+    expect(lista.itens.length).toBe(21);
+    expect(+lista.areaTotalHa.toFixed(1)).toBe(1539.4);
   });
 
   test("cada item some a mesma área que o feature bruto", () => {
@@ -94,7 +100,8 @@ describe("alerta território × SIGMINE — interesse (requerimento, risco futur
   test("a contagem bate com o arquivo, não é digitada", () => {
     expect(lista.itens).toHaveLength(bruto.features.length);
     // Medido em 13/08: 195 sobreposições.
-    expect(lista.itens.length).toBe(195);
+    // ⟲ Mesma causa da unificação: 195 → 271.
+    expect(lista.itens.length).toBe(271);
   });
 
   test("o deep-link do mapa aponta para a MESMA feição em sigmine-interesse", () => {
@@ -124,15 +131,30 @@ describe("TI × mancha de barragem — zero medido, não zero suposto", () => {
   });
 });
 
-describe("quilombola × mancha de barragem — zero medido, não zero suposto", () => {
-  test("universo soma as duas fontes de território quilombola", () => {
+describe("quilombola × mancha de barragem — DEIXOU DE SER ZERO", () => {
+  test("universo cobre a fonte única de território quilombola", () => {
     const r = carregarAlertaQuilombolaMancha();
-    expect(r.vazio).toBe(true);
-    expect(r.qtdFeaturesEncontradas).toBe(0);
-    // Medido em 13/08: territorios-quilombolas (2) + …-vales (12) = 14.
-    expect(r.qtdTerritorios).toBe(14);
+    // ⟲ 13/08, fim do dia — E ESTA É A MUDANÇA QUE MAIS IMPORTA DO DIA.
+    // Este alerta era ZERO e deixou de ser. Não porque a FEAM publicou
+    // mancha nova: porque as três camadas de território quilombola foram
+    // unificadas, e a que continha estes territórios NUNCA era cruzada com
+    // nada. São 6 interseções em 3 territórios — AMAROS e MACHADINHO
+    // (Paracatu) e SÃO SEBASTIÃO (Patos de Minas / Presidente Olegário) —,
+    // todos "RTID publicado, em titulação": reconhecidos pelo INCRA e ainda
+    // sem título definitivo.
+    //
+    // Território quilombola dentro da área que a água alcança se a barragem
+    // romper. Estava no dado o tempo todo, invisível por causa de como o
+    // dado estava dividido.
+    expect(r.vazio).toBe(false);
+    expect(r.qtdFeaturesEncontradas).toBe(6);
+    // ⟲ 13/08, fim do dia: eram três fontes (2 + 12 + 13) e viraram UMA,
+    // com 27 polígonos. O universo cresce e o resultado continua ZERO —
+    // que é o que dá valor ao zero: ele foi medido de novo, sobre mais
+    // território, e seguiu zero.
+    expect(r.qtdTerritorios).toBe(27);
     expect(r.qtdBarragensComManchaPublicada).toBe(156);
-    expect(r.universoCombinacoes).toBe(14 * 156);
+    expect(r.universoCombinacoes).toBe(27 * 156);
   });
 });
 

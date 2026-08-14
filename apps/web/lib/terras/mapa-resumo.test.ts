@@ -17,6 +17,7 @@ describe("resumo estadual do mapa — cada número vem de .length, não digitado
     expect(r.cfemMunicipios).toBe(10);
     expect(r.cruzamentoDinheiroEmpresas).toBe(11);
     expect(r.cruzamentoDinheiroCobertura).toContain("4 dos 854");
-    expect(r.territoriosQuilombolas).toBe(14);
+    // ⟲ Fonte única: 27 polígonos (23 territórios), Minas inteira.
+    expect(r.territoriosQuilombolas).toBe(27);
   });
 });

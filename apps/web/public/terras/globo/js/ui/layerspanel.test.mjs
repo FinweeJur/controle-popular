@@ -35,11 +35,14 @@ import {
   ASSUNTOS, CAMADAS, CAMADAS_RESOLVIDAS, CAMADA_POR_FONTE, LAYER_REGISTRY,
 } from '../config.js';
 
-test('CAMADAS reais: 22 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
+test('CAMADAS reais: 30 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
   const grupos = agruparPorAssunto(CAMADAS_RESOLVIDAS, ASSUNTOS);
 
   assert.equal(
-    CAMADAS.length, 22,
+    CAMADAS.length, 30,
+    // ⟲ 13/08/2026, mais tarde: subiu de 22 para 30 — as 8 camadas do
+    // rompimento real da B1/Brumadinho (docs/PLANO-INTEGRACAO-BRUMADINHO.md,
+    // seção 1.2), cada uma numa linha própria, sem irmã regional.
     'sentinela: se este número mudou, CAMADAS cresceu/encolheu e as contagens abaixo precisam ser revistas junto',
   );
   const totalAgrupado = grupos.reduce((n, g) => n + g.camadas.length, 0);
@@ -61,25 +64,38 @@ test('CAMADAS reais: 22 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   }
 });
 
-test('a reorganização de fato UNIFICOU: 27 fontes em 22 linhas, e as 5 que somem são as irmãs', () => {
-  assert.equal(LAYER_REGISTRY.length, 27, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 22, 'sentinela: o número de LINHAS mudou');
+test('a reorganização de fato UNIFICOU: 34 fontes em 30 linhas, e as 4 que somem são as irmãs', () => {
+  // ⟲ 13/08/2026, fim do dia: 36→34 fontes, LINHAS continuam 30. O dono
+  // perguntou "qual o sentido de dividir?" sobre as TRÊS fontes de
+  // território quilombola (bacia, Vales, demais regiões) e tinha razão: a
+  // separação era por REGIÃO, que é justamente o critério que este painel
+  // abandonou de manhã ao passar a agrupar por ASSUNTO. As três viraram uma
+  // (27 polígonos, 23 territórios, Minas inteira), então somem 2 fontes e
+  // a diferença fonte-linha volta de 6 para 4.
+  //
+  // A unificação não foi cosmética: ao cruzar a fonte única com o SIGMINE,
+  // apareceram 9 sobreposições que nenhuma das três camadas antigas pegava
+  // — incluindo lavra de OURO autorizada sobre São Domingos e Machadinho.
+  // Conceito partido em três arquivos estava escondendo alerta.
+  assert.equal(LAYER_REGISTRY.length, 34, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 30, 'sentinela: o número de LINHAS mudou');
 
-  // As cinco camadas com mais de uma fonte continuam sendo exatamente os
-  // conceitos que apareciam repetidos, um por região — as seis camadas de
-  // território/mineração de 13/08 e as duas de dinheiro público (mesmo dia,
-  // handoff à parte) são cada uma fonte única (nenhuma tem irmã regional: ver
-  // a nota em config.js sobre `regioes` ausente nelas).
+  // ⟲ Fim do dia: `territorios-quilombolas` SAIU desta lista. Ela tinha 2
+  // fontes, chegou a ter 3, e agora tem UMA só — as três foram unificadas.
+  // É o caminho inverso do que esta lista costuma registrar: em vez de um
+  // conceito repetido por região virar uma linha com várias fontes, aqui a
+  // própria multiplicidade acabou. Sobram quatro conceitos com irmãs
+  // regionais; as camadas de território/mineração, dinheiro e Brumadinho
+  // sempre foram fonte única.
   const comVariasFontes = CAMADAS.filter((c) => c.fontes.length > 1).map((c) => c.id).sort();
   assert.deepEqual(comVariasFontes, [
     'assentamentos',
     'spu-imoveis-uniao',
     'terra-publica-certificada',
-    'territorios-quilombolas',
     'vazio-cadastral',
   ]);
 
-  // E o total fecha: 25 fontes distribuídas em 20 linhas.
+  // E o total fecha: 34 fontes distribuídas em 30 linhas.
   const somaDasFontes = CAMADAS.reduce((n, c) => n + c.fontes.length, 0);
   assert.equal(somaDasFontes, LAYER_REGISTRY.length);
 });
@@ -98,7 +114,7 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     'normas-geolocalizadas', 'pesquisa-noticias', 'satelites-orbita',
     'spu-imoveis-uniao', 'spu-imoveis-uniao-vales',
     'terra-publica-certificada', 'terra-publica-certificada-vales',
-    'territorios-quilombolas', 'territorios-quilombolas-vales',
+    'territorios-quilombolas',
     'vazio-cadastral', 'vazio-cadastral-bacia', 'vazio-cadastral-vales',
     // Território indígena, mineração e barragens (13/08/2026) — ver
     // docs/FONTES-TERRITORIO-E-MINERACAO.md.
@@ -107,6 +123,12 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     // Dinheiro público e mineração (13/08/2026) — ver
     // docs/HANDOFF-CAMADA-DINHEIRO.md.
     'cfem-municipios', 'cruzamento-dinheiro-ambiental-4cidades',
+    // O rompimento real da B1, Brumadinho (13/08/2026, mais tarde) — ver
+    // docs/PLANO-INTEGRACAO-BRUMADINHO.md.
+    'brumadinho-area-atingida', 'brumadinho-monitoramento',
+    'brumadinho-remanejamento', 'brumadinho-estruturas-contencao',
+    'brumadinho-obras-poligonais', 'brumadinho-obras-pontuais',
+    'brumadinho-obras-lineares', 'brumadinho-restauracao',
   ];
 
   const existentes = LAYER_REGISTRY.map((f) => f.id).sort();
@@ -222,6 +244,7 @@ test('as camadas REAIS marcadas como indistintas são exatamente as três do INC
   assert.deepEqual(indistintas, [
     'assentamentos-vales',
     'terra-publica-certificada-vales',
-    'territorios-quilombolas-vales',
+    // `territorios-quilombolas-vales` saiu: a fonte foi absorvida pela
+    // unificada, que é estadual e por isso não declara mesorregião.
   ]);
 });

@@ -126,12 +126,13 @@ outra. As 13 feições que batem nesse critério (2 na bacia + 11 nos Vales)
 foram conferidas manualmente hoje antes de travar o limiar — todas com
 distância de centróide abaixo de 30 m.
 
-IDS DE CAMADA E ÍNDICE NÃO MUDAM: este script preserva a ORDEM e a CONTAGEM
-originais dos dois arquivos — nunca adiciona nem remove feição, só substitui
-propriedades (sempre) e geometria (só quando achou o par no INCRA, pela razão
-acima: a geometria do INCRA é mais confiável que a antiga, que não tem
-proveniência registrada). Feição sem par no INCRA MANTÉM a geometria antiga
-e grava `fonte_incra: false` — nunca inventa nome nem apaga a área.
+IDS DE CAMADA E ÍNDICE NÃO MUDAM PARA AS DUAS CAMADAS JÁ PUBLICADAS: este
+script preserva a ORDEM e a CONTAGEM originais de `territorios-quilombolas` e
+`territorios-quilombolas-vales` — nunca adiciona nem remove feição delas, só
+substitui propriedades (sempre) e geometria (só quando achou o par no INCRA,
+pela razão acima: a geometria do INCRA é mais confiável que a antiga, que não
+tem proveniência registrada). Feição sem par no INCRA MANTÉM a geometria
+antiga e grava `fonte_incra: false` — nunca inventa nome nem apaga a área.
 
 ═══ COBERTURA — O QUE SOBRA DE CADA LADO (declarado, não escondido) ═══
 
@@ -142,8 +143,8 @@ Medido hoje, casando as 14 feições antigas contra as 22 do INCRA:
   * 1 NÃO casa: `territorios-quilombolas-vales.geojson` índice 3 (58,2 ha,
     perto de Lagoa Grande/Jenipapo de Minas). Não há feição do INCRA com
     centróide nem área parecidos — fica sem nome, com `fonte_incra: false`.
-  * O INCRA tem 13 feições a MAIS que não entram em nenhuma das duas camadas
-    hoje: TQ Nogueira (Montes Claros), São Sebastião (Patos de Minas/
+  * O INCRA tem 13 feições a MAIS que não entravam em nenhuma das duas
+    camadas: TQ Nogueira (Montes Claros), São Sebastião (Patos de Minas/
     Presidente Olegário), Baú-Serro, Ausente (Serro), Tabua (Manga), Brejo
     dos Criolos (São João da Ponte/Varzelândia/Verdelândia), Amaros
     (Paracatu), Sete Ladeiras e Terra Dura (São João da Ponte), Machadinho
@@ -152,15 +153,62 @@ Medido hoje, casando as 14 feições antigas contra as 22 do INCRA:
     partes). Nenhuma delas é Paraopeba nem Jequitinhonha/Mucuri "puro" pela
     leitura do nome do município — Montes Claros, Manga, Paracatu e Jaíba são
     Norte/Noroeste de Minas, fora das DUAS regiões que este projeto já
-    delimita (`bacia`, `jequitinhonha`, `mucuri`). Pimentel (Pedro Leopoldo) e
-    Lapinha (Matias Cardoso) são os casos mais discutíveis: Pedro Leopoldo
-    fica perto da RMBH, Matias Cardoso já tem OUTRO território seu (Lapinha
-    mesmo, ou vizinho de Porto Corós) na camada dos Vales — mas decidir se
-    cada um cai dentro do polígono da bacia do Paraopeba ou das mesorregiões
-    Jequitinhonha/Mucuri exige conferir contra a malha real dessas regiões,
-    não contra o nome do município — fora do escopo desta tarefa. Por isso
-    este script NÃO adiciona as 13: só IMPRIME a lista (ver `main`) para quem
-    decidir os próximos passos.
+    delimita (`bacia`, `jequitinhonha`, `mucuri`); conferido também contra
+    `js/data/mesorregioes.js` (a tabela real de município → mesorregião que o
+    filtro do painel usa): NENHUM dos 13 municípios está nela.
+
+═══ 13/08/2026, MAIS TARDE: OS 13 QUE SOBRAVAM AGORA ENTRAM — TERCEIRA FONTE,
+NÃO FUSÃO DAS DUAS QUE JÁ EXISTIAM ═══
+
+Decisão registrada aqui porque foi pedida explicitamente: unificar
+`territorios-quilombolas`/`territorios-quilombolas-vales` num arquivo só, ou
+manter as duas e ACRESCENTAR os 13 que faltam? Resposta: acrescentar, numa
+TERCEIRA fonte nova (`territorios-quilombolas-outras-regioes.geojson`) — nunca
+fundir as duas que já existem. Duas razões, uma de cada lado do argumento:
+
+  1. O argumento para unificar ("o painel já foi reorganizado por ASSUNTO
+     para não ter irmã em seção diferente" — ver o comentário grande sobre
+     `ASSUNTOS` em js/config.js) JÁ ESTÁ satisfeito, e desde 13/08 mais cedo:
+     `CAMADAS` (config.js) tem UMA linha `territorios-quilombolas` cujo
+     `fontes` já lista as duas fontes regionais — quem abre o painel vê UM
+     interruptor, "Territórios quilombolas", não dois. A fusão dos ARQUIVOS
+     não muda nada que a pessoa vê; só arrisca o que vem no item 2.
+  2. O argumento para manter ("ids são contrato") é sobre ÍNDICE, não só id:
+     `#area=<fonte>:<índice>` (main.js) e `detalhe.html?camada=<fonte>&fid=`
+     (inspector.js) resolvem por POSIÇÃO dentro do ARQUIVO daquela fonte. Um
+     arquivo fundido teria que renumerar pelo menos um dos dois lados (bacia
+     + vales não podem ocupar os mesmos índices 0..13 nos DOIS arquivos
+     originais ao mesmo tempo) — todo link `#area=territorios-quilombolas-
+     vales:N` já compartilhado passaria a abrir OUTRA área, calado, sem
+     erro. `calcular_alerta_quilombola_mancha.py` e
+     `calcular_alerta_territorio_mineracao.py` também leem os dois arquivos
+     por posição (`_origem_indice`) — fundir quebraria a proveniência de
+     cada alerta já publicado.
+
+  Uma TERCEIRA fonte não tem nenhum desses dois problemas: id novo (nunca
+  existiu, nada aponta pra ele ainda), índices 0..12 novos em folha (nunca
+  existiram, nada aponta pra eles), e o painel continua mostrando UMA linha
+  só — `CAMADAS` ganha `territorios-quilombolas-outras-regioes` na lista
+  `fontes` da MESMA linha `territorios-quilombolas` (config.js). Nenhum id
+  antigo muda, nenhum índice antigo se desloca — ver
+  js/ui/layerspanel.test.mjs, teste "CONTRATO PÚBLICO", que trava isso.
+
+  Por que "outras regiões" e não forçar os 13 dentro de `bacia` ou de
+  `jequitinhonha`/`mucuri`: nenhum dos 13 município bate a tabela real de
+  `js/data/mesorregioes.js` nem o polígono da bacia do Paraopeba (não
+  conferido geometricamente contra a malha da bacia nesta entrega — mesma
+  lacuna que o parágrafo de COBERTURA acima já registrava). Forçar região que
+  o dado não sustenta seria o mesmo erro que este arquivo já evita para
+  `esfera`/`responsave` — por isso a nova fonte NÃO leva `regioes` no
+  LAYER_REGISTRY (mesmo padrão de `normas-geolocalizadas`: fonte sem região
+  aparece em qualquer filtro, nunca escondida por um recorte que não é dela).
+
+  As propriedades dos 13 seguem EXATAMENTE o mesmo esquema das 13 que já
+  casaram nas duas camadas antigas (`nome`, `municipio_nome`, `area_ha`,
+  `fase_quilombola` deduzida, `processo_incra`, `esfera`, `num_familias`,
+  datas de RTID/titulação, `superintendencia_regional_incra`,
+  `fonte_incra: true`) — mesma função `_props_incra_para_saida`, chamada três
+  vezes agora em vez de duas.
 
 Uso:
     python scripts/ingerir_incra_quilombolas.py
@@ -192,6 +240,12 @@ ALVOS = [
     DIR_CAMADAS / "territorios-quilombolas.geojson",        # bacia do Paraopeba
     DIR_CAMADAS / "territorios-quilombolas-vales.geojson",  # Jequitinhonha/Mucuri
 ]
+
+# Terceira fonte, NOVA em 13/08/2026 (mais tarde) — os 13 territórios do
+# INCRA que não entram em nenhum dos dois arquivos acima. Ver a seção grande
+# da docstring ("OS 13 QUE SOBRAVAM AGORA ENTRAM") para por que é uma fonte
+# nova e não uma fusão das duas de cima.
+SAIDA_OUTRAS_REGIOES = DIR_CAMADAS / "territorios-quilombolas-outras-regioes.geojson"
 
 NS = {"gml": "http://www.opengis.net/gml", "ms": "http://www.omsug.ca/osgis2004"}
 
@@ -339,6 +393,26 @@ def _casar(geom_antiga, partes_incra: list[tuple[dict, object]]):
 
 # ─────────────────────────── ingestão de cada arquivo ───────────────────────
 
+def _props_incra_para_saida(props_incra: dict, geom_incra) -> dict:
+    """Esquema de saída comum às TRÊS fontes que este script escreve (as duas
+    antigas, casadas por geometria, e a nova `outras-regioes`, direto do
+    INCRA) — ver docstring, "OS 13 QUE SOBRAVAM AGORA ENTRAM"."""
+    return {
+        "nome": props_incra["nm_comunid"],
+        "municipio_nome": props_incra["nm_municip"],
+        "area_ha": round(_area_ha(geom_incra), 1),
+        "fase_quilombola": _fase_quilombola(props_incra),
+        "processo_incra": props_incra["nr_process"] or None,
+        "esfera": props_incra["esfera"] or None,
+        "num_familias": props_incra["nr_familia"] or None,
+        "data_publicacao_rtid": props_incra["dt_publica"] or None,
+        "data_publicacao_rtid_retificacao": props_incra["dt_public1"] or None,
+        "data_titulacao": props_incra["dt_titulac"] or None,
+        "superintendencia_regional_incra": props_incra["cd_sr"] or None,
+        "fonte_incra": True,
+    }
+
+
 def _ingerir_arquivo(path: Path, partes_incra: list[tuple[dict, object]]) -> tuple[int, int]:
     d = json.loads(path.read_text(encoding="utf-8"))
     n_casou = 0
@@ -368,20 +442,7 @@ def _ingerir_arquivo(path: Path, partes_incra: list[tuple[dict, object]]) -> tup
 
         props_incra, geom_incra = par
         n_casou += 1
-        props_saida = {
-            "nome": props_incra["nm_comunid"],
-            "municipio_nome": props_incra["nm_municip"],
-            "area_ha": round(_area_ha(geom_incra), 1),
-            "fase_quilombola": _fase_quilombola(props_incra),
-            "processo_incra": props_incra["nr_process"] or None,
-            "esfera": props_incra["esfera"] or None,
-            "num_familias": props_incra["nr_familia"] or None,
-            "data_publicacao_rtid": props_incra["dt_publica"] or None,
-            "data_publicacao_rtid_retificacao": props_incra["dt_public1"] or None,
-            "data_titulacao": props_incra["dt_titulac"] or None,
-            "superintendencia_regional_incra": props_incra["cd_sr"] or None,
-            "fonte_incra": True,
-        }
+        props_saida = _props_incra_para_saida(props_incra, geom_incra)
         features_saida.append({
             "type": "Feature",
             "properties": props_saida,
@@ -401,6 +462,42 @@ def _ingerir_arquivo(path: Path, partes_incra: list[tuple[dict, object]]) -> tup
     print(f"{LOG} gravado {path} ({path.stat().st_size:,} bytes), "
           f"{len(features_saida)} feições ({n_casou} com nome, {n_nao_casou} sem).")
     return n_casou, n_nao_casou
+
+
+def _gravar_outras_regioes(territorios_sobrando: list[dict], path: Path) -> int:
+    """Grava a TERCEIRA fonte: os territórios do INCRA que não casaram com
+    nenhuma feição de `territorios-quilombolas(.geojson|-vales.geojson)`.
+
+    UMA feição por território do INCRA (usa `t["geom"]`, a geometria
+    combinada — Polygon ou MultiPolygon), NÃO decomposta em partes soltas:
+    ao contrário de `_todas_as_partes` (usada para casar contra as feições
+    ANTIGAS, que já vinham pré-separadas por parte, ex. Marobá dos
+    Teixeira), aqui não existe feição antiga nenhuma para casar — cada
+    território do INCRA vira UMA feição nova, multi-parte quando o INCRA
+    já o publica assim (Lapinha e Pimentel, 2 e 3 partes). Inventar uma
+    separação que a fonte não tinha antes seria precisão que ninguém pediu.
+    """
+    features_saida = []
+    for t in sorted(territorios_sobrando, key=lambda t: t["props"]["nm_comunid"]):
+        props_saida = _props_incra_para_saida(t["props"], t["geom"])
+        features_saida.append({
+            "type": "Feature",
+            "properties": props_saida,
+            "geometry": mapping(t["geom"]),
+        })
+        print(f"{LOG} outras-regioes: {t['props']['nm_comunid']} "
+              f"({t['props']['nm_municip']}) -- {props_saida['fase_quilombola']}")
+
+    saida = {
+        "type": "FeatureCollection",
+        "name": path.stem,
+        "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}},
+        "features": features_saida,
+    }
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(saida, fh, ensure_ascii=False, separators=(",", ": "))
+    print(f"{LOG} gravado {path} ({path.stat().st_size:,} bytes), {len(features_saida)} feições.")
+    return len(features_saida)
 
 
 def main() -> None:
@@ -447,15 +544,25 @@ def main() -> None:
     for t in territorios:
         chave = (t["props"]["nm_comunid"], t["props"]["nm_municip"])
         if chave not in nomes_usados_por_geometria:
-            sobrando.append(t["props"])
+            sobrando.append(t)
 
     print(f"\n{LOG} RESUMO: {total_casou} feição(ões) ganharam nome, "
           f"{total_nao_casou} continuam sem correspondência no INCRA.")
-    print(f"{LOG} O INCRA tem {len(sobrando)} território(s) em MG que NÃO entram em "
-          f"nenhuma das duas camadas hoje (fora das regiões bacia/Jequitinhonha/Mucuri "
-          f"já delimitadas, ou não conferidos contra a malha da bacia -- ver docstring):")
-    for p in sobrando:
+    print(f"{LOG} O INCRA tem {len(sobrando)} território(s) em MG que não entravam em "
+          f"nenhuma das duas camadas antigas (fora das regiões bacia/Jequitinhonha/Mucuri "
+          f"já delimitadas, ou não conferidos contra a malha da bacia -- ver docstring). "
+          f"Gravando como terceira fonte, {SAIDA_OUTRAS_REGIOES.name}:")
+    for t in sobrando:
+        p = t["props"]
         print(f"{LOG}   - {p['nm_comunid']} ({p['nm_municip']}) -- {p['area_calc_ha']} ha")
+
+    if len(sobrando) != 13:
+        print(f"{LOG} AVISO: esperava 13 território(s) sobrando (medido em 13/08/2026) "
+              f"e achei {len(sobrando)}. Pode ser atualização real do INCRA ou sintoma "
+              f"de outro problema -- conferir antes de publicar se o número mudou muito.")
+
+    n_gravado = _gravar_outras_regioes(sobrando, SAIDA_OUTRAS_REGIOES)
+    print(f"{LOG} {n_gravado} feição(ões) na terceira fonte (esperado: 13).")
 
 
 if __name__ == "__main__":

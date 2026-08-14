@@ -43,9 +43,16 @@ export function carregarResumoMapaEstadual(): ResumoMapaEstadual {
   const cruzamento = lerGeoJSON<{ aviso_cobertura?: string }>(
     "cruzamento-dinheiro-ambiental-4cidades.geojson"
   );
-  const territoriosQuilombolas =
-    lerGeoJSON<unknown>("territorios-quilombolas.geojson").features.length +
-    lerGeoJSON<unknown>("territorios-quilombolas-vales.geojson").features.length;
+  // ⟲ 13/08, fim do dia: era a SOMA de duas fontes (bacia + Vales) e virou
+  // leitura de uma só. As três camadas de território quilombola foram
+  // unificadas — o dono perguntou "qual o sentido de dividir?" e a divisão
+  // era por região, critério que o painel do globo já havia abandonado de
+  // manhã ao passar a agrupar por assunto. Somar arquivos aqui era o
+  // sintoma: número de tela que precisa de aritmética para existir é sinal
+  // de que o dado está partido no lugar errado.
+  const territoriosQuilombolas = lerGeoJSON<unknown>(
+    "territorios-quilombolas.geojson"
+  ).features.length;
 
   return {
     terrasIndigenas,
