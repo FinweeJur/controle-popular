@@ -1625,6 +1625,40 @@ export const patrimonio_tombado_iepha = pgTable("patrimonio_tombado_iepha", {
 	check("patrimonio_tombado_iepha_categoria_check", sql`categoria = ANY (ARRAY['BI'::text, 'BM'::text, 'CH'::text, 'CP'::text])`),
 ]);
 
+/**
+ * Arquivo (cópia) dos documentos que o portal cita como fonte — migration
+ * `0073`, plano em `docs/PLANO-ARQUIVO-DE-FONTES.md`. Sem FK para a norma:
+ * a ligação é por `url_original` (a mesma URL pode ser citada por linhas de
+ * tabelas diferentes; uma norma pode ter mais de um documento). Sem
+ * `unique(url_original)`: recapturar e ver o hash mudar é informação de
+ * transparência, cada captura é uma linha nova — a vigente é a de
+ * `capturado_em` mais recente (índice composto serve essa consulta).
+ * `aprovado_para_publicacao` só vira `true` depois da varredura de dado
+ * pessoal no TEXTO EXTRAÍDO (não coberta por `checar-dado-pessoal.py`, que
+ * varre código-fonte, não PDF ingerido) — nenhuma tela deve linkar uma
+ * cópia com esta coluna falsa.
+ */
+export const arquivo_fontes = pgTable("arquivo_fontes", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	url_original: text().notNull(),
+	capturado_em: timestamp({ withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+	http_status: integer(),
+	content_type: text(),
+	tamanho_bytes: integer(),
+	sha256: text().notNull(),
+	modo_armazenamento: text().default('local').notNull(),
+	caminho_armazenamento: text().notNull(),
+	aprovado_para_publicacao: boolean().default(false).notNull(),
+	motivo_reprovacao: text(),
+	erro_captura: text(),
+	user_agent: text().notNull(),
+	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
+}, (table) => [
+	index("arquivo_fontes_url_capturado_idx").using("btree", table.url_original.asc().nullsLast().op("text_ops"), table.capturado_em.desc().nullsFirst().op("timestamptz_ops")),
+	index("arquivo_fontes_sha256_idx").using("btree", table.sha256.asc().nullsLast().op("text_ops")),
+	check("arquivo_fontes_modo_armazenamento_check", sql`modo_armazenamento = ANY (ARRAY['local'::text, 'r2'::text])`),
+]);
+
 export const mortalidade = pgTable("mortalidade", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
 	id_municipio: text().notNull(),
