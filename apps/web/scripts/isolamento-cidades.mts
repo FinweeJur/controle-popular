@@ -26,7 +26,7 @@ import { getComerciosEssenciais } from "../lib/betim/comercios.js";
 import { fetchIndicadores } from "../lib/betim/indicadores.js";
 import { getSegurancaData } from "../lib/betim/seguranca.js";
 import { getVerbasAnalytics } from "../lib/betim/verbas.js";
-import { getEducacaoData } from "../lib/betim/educacao.js";
+import { getEducacaoResumo } from "../lib/betim/educacao.js";
 import { fetchPostosAnp } from "../lib/betim/postos.js";
 import { getServidores } from "../lib/betim/servidores.js";
 import { getNotaTransparenciaData } from "../lib/betim/notaTransparencia.js";
@@ -104,7 +104,7 @@ const casos: [string, (id: typeof BETIM) => Promise<number>][] = [
   ["indicadores", async (id) => Object.keys(await fetchIndicadores(id, ["pib"])).length],
   ["seguranca", async (id) => ((await getSegurancaData(id)).ok ? 1 : 0)],
   ["verbas", async (id) => (await getVerbasAnalytics(id)).totalRegistros],
-  ["educacao", async (id) => (await getEducacaoData(id)).totalEscolas],
+  ["educacao", async (id) => (await getEducacaoResumo(id)).totalEscolas],
   ["postos", async (id) => (await fetchPostosAnp(id)).rows.length],
   ["servidores", async (id) => (await getServidores(id, {})).total],
   ["notaTransparencia", async (id) => ((await getNotaTransparenciaData(id)).ok ? 1 : 0)],

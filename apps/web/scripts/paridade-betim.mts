@@ -9,7 +9,7 @@ import { getComerciosEssenciais } from "../lib/betim/comercios.js";
 import { fetchIndicadores } from "../lib/betim/indicadores.js";
 import { getSegurancaData } from "../lib/betim/seguranca.js";
 import { getVerbasAnalytics } from "../lib/betim/verbas.js";
-import { getEducacaoData } from "../lib/betim/educacao.js";
+import { getEducacaoResumo, listarEscolasDoMunicipio } from "../lib/betim/educacao.js";
 import { fetchPostosAnp } from "../lib/betim/postos.js";
 import { getServidores } from "../lib/betim/servidores.js";
 import { getNotaTransparenciaData } from "../lib/betim/notaTransparencia.js";
@@ -125,7 +125,7 @@ eq(`verbas soma (${somaV.toFixed(2)} vs ${vbN.total.toFixed(2)})`, Math.round(so
 
 // educacao: total de escolas
 const ec = await rest(`escolas?select=id_inep&id_municipio=eq.${ID}`);
-const ecN = await getEducacaoData(ID);
+const ecN = await getEducacaoResumo(ID);
 eq(`escolas (${ec.length} vs ${ecN.totalEscolas})`, ec.length, ecN.totalEscolas);
 
 // postos
@@ -160,8 +160,11 @@ eq(`servidores pagina 24 em ordem pt-BR`,
    sv.slice(1150, 1200).map((r) => r.nome),
    (await getServidores(ID, { page: 24 })).rows.map((r) => r.nome));
 const es = await rest(`escolas?select=nome&id_municipio=eq.${ID}&order=nome.asc`);
+// O `?? es.map(...)` que estava aqui comparava a fonte com ela mesma quando
+// `escolas` vinha indefinido — ou seja, o check passava sem ter conferido nada.
+// `listarEscolasDoMunicipio` devolve sempre um array, entao a comparacao e real.
 eq(`escolas em ordem pt-BR (${es.length})`,
-   es.map((r) => r.nome), (await getEducacaoData(ID)).escolas?.map((e) => e.nome) ?? es.map((r) => r.nome));
+   es.map((r) => r.nome), (await listarEscolasDoMunicipio(ID)).map((e) => e.nome));
 const pa = await rest(`postos_anp?select=razao_social&id_municipio=eq.${ID}&order=razao_social.asc`);
 eq(`postos em ordem pt-BR (${pa.length})`,
    pa.map((r) => r.razao_social), (await fetchPostosAnp(ID)).rows.map((r) => r.razao_social));

@@ -126,6 +126,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3033"],
       "port": 3033
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-sp-educacao) -- mesma razao das entradas acima. Sem DATABASE_URL a rota /[municipio]/educacao cai em 'Nenhum dado disponivel' e o indice fatiado sai vazio (manifesto com total 0), entao o que se verifica nesta porta e a pagina viva e o contrato de vazio, nao o volume.",
+      "name": "cp-sp-educacao-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3032"],
+      "port": 3032
     }
   ]
 }

@@ -444,7 +444,18 @@ export async function comerciosEssenciais(idMunicipio: IdMunicipio) {
     .where(eq(comercios_essenciais.id_municipio, idMunicipio));
 }
 
-/** Escolas com o total do conjunto, na mesma consulta. */
+/**
+ * Escolas do município, uma linha por escola.
+ *
+ * ═══ POR QUE O `count(*) over ()` SAIU ═══
+ *
+ * A coluna `total` vinha repetida em TODA linha (era como a página obtinha a
+ * contagem numa consulta só). Agora as linhas não vão mais para a página:
+ * vão para o índice fatiado de `educacao/dados/[arquivo]/route.ts`, e lá cada
+ * campo é serializado uma vez POR LINHA — `"total":9918` em ~10 mil linhas é
+ * puro peso repetido num arquivo que existe justamente para caber num teto.
+ * A contagem passou a vir de `resumoEscolas`, que já a calcula de graça.
+ */
 export async function listarEscolas(idMunicipio: IdMunicipio) {
   const db = getDb();
   if (!db) return null;
@@ -454,11 +465,40 @@ export async function listarEscolas(idMunicipio: IdMunicipio) {
       nome: escolas.nome,
       rede: escolas.rede,
       matriculas: escolas.matriculas,
-      total: sql<number>`(count(*) over ())::int`,
     })
     .from(escolas)
     .where(eq(escolas.id_municipio, idMunicipio))
     .orderBy(ptBr(escolas.nome));
+}
+
+/**
+ * Os agregados da tela de educação — contagem, matrículas e quebra por rede —
+ * calculados NO POSTGRES, sem trazer uma linha de escola sequer.
+ *
+ * ═══ POR QUE UMA CONSULTA PRÓPRIA, E NÃO REDUZIR AS LINHAS EM JS ═══
+ *
+ * Era o que `getEducacaoData` fazia: baixava as ~10 mil escolas de São Paulo
+ * para somar `matriculas` e contar por rede — ou seja, o custo do acervo
+ * inteiro para produzir quatro números. Com as linhas fora da página (ver o
+ * comentário de `listarEscolas`), manter a redução em JS obrigaria a página a
+ * continuar carregando exatamente o que ela deixou de exibir.
+ *
+ * `group by rede` devolve no máximo cinco linhas (as quatro redes do INEP mais
+ * `null`), e os totais saem de somá-las — a mesma aritmética de antes, num
+ * conjunto 2.000× menor.
+ */
+export async function resumoEscolas(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      rede: escolas.rede,
+      qtd: sql<number>`count(*)::int`,
+      matriculas: sql<number>`coalesce(sum(${escolas.matriculas}), 0)::int`,
+    })
+    .from(escolas)
+    .where(eq(escolas.id_municipio, idMunicipio))
+    .groupBy(escolas.rede);
 }
 
 /** Classificados aprovados e ainda no prazo. */
