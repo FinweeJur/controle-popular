@@ -135,6 +135,7 @@ import requests
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_fixed
 
 from etl.common import get_supabase_client
+from etl.dado_pessoal import mascarar_linha
 from etl.apis._legislacao_ambiental import UA, chave_dedup
 
 LOG = "[etl.apis.legislacao_mma]"
@@ -327,7 +328,13 @@ def _linha(c: dict) -> dict | None:
         return None
     ano = int(c["ano"]) if c["ano"].isdigit() and len(c["ano"]) == 4 else None
     link = _link(c["link"])
-    return {
+    # Máscara de CPF ANTES de qualquer coisa a jusante: esta função alimenta
+    # tanto o `sync()` quanto o `--json`, e o JSON é versionado no repo
+    # PÚBLICO. Mascarar no sync deixaria o arquivo exportado sujo; mascarar na
+    # exportação deixaria o banco sujo. Aqui é o único ponto por onde as duas
+    # saídas passam. Ver `etl/dado_pessoal.py` para o caso que originou isto
+    # (Portaria IBAMA 2080/2012, CPF na ementa oficial).
+    return mascarar_linha({
         "fonte": "mma",
         # Armadilha 5 — a fonte não tem id; `ATO NORMATIVO` + `LINK` é o
         # que mais perto chega de identificar o ato de forma estável.
@@ -344,7 +351,7 @@ def _linha(c: dict) -> dict | None:
         "id_ibge_municipio": None,        # norma federal não é territorializável — ver 0065
         "chave_dedup": chave_dedup(c["documento"], c["numero"], ano),
         "indexacao": c["assunto"] or None,  # taxonomia oficial do MMA — ver 0073
-    }
+    })
 
 
 def coletar(*, verboso: bool = False) -> tuple[list[dict], dict]:

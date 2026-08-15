@@ -130,6 +130,7 @@ from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_fi
 
 from etl.common import get_supabase_client
 from etl.apis._legislacao_ambiental import UA
+from etl.dado_pessoal import mascarar_cpf
 
 LOG = "[etl.apis.legislacao_cndh]"
 
@@ -278,7 +279,7 @@ def _recomendacoes() -> tuple[list[dict], dict]:
             "tipo": "Recomendação",
             "numero": _numero(titulo),
             "ano": int(data[:4]) if data else _ano_da_url(href),
-            "ementa": titulo,     # citação literal — CC BY-ND
+            "ementa": mascarar_cpf(titulo),  # citação literal (CC BY-ND), menos CPF
             "data": data,
             "orgao": "CNDH",
             "link_pdf": href,
@@ -339,7 +340,7 @@ def _resolucoes() -> tuple[list[dict], dict]:
             "tipo": "Resolução",
             "numero": _numero(titulo),
             "ano": ano,
-            "ementa": titulo,     # citação literal — CC BY-ND
+            "ementa": mascarar_cpf(titulo),  # citação literal (CC BY-ND), menos CPF
             "data": data,
             "orgao": "CNDH",
             "link_pdf": href,
