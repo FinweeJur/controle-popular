@@ -91,6 +91,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3912"],
       "port": 3912
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-termo-lgpd) -- termo de uso e origem dos dados. Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
+      "name": "cp-termo-lgpd-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3024"],
+      "port": 3024
     }
   ]
 }
