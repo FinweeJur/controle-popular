@@ -98,6 +98,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3024"],
       "port": 3024
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-normas-urn) -- mesma razao das entradas acima. Convivia com a entrada de cp-termo-lgpd num conflito de rebase em 15/08: as duas frentes acrescentaram no mesmo ponto do arquivo, e as duas devem existir -- nao ha disputa de porta nem de nome.",
+      "name": "cp-normas-urn-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3026"],
+      "port": 3026
     }
   ]
 }

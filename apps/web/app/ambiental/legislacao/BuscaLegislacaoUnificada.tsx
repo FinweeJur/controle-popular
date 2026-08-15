@@ -18,6 +18,7 @@ import {
   type ClasseItemLegislacao,
   type EsferaLegislacao,
 } from "@/lib/ambiental/legislacao-unificada";
+import { RESOLVEDOR_NORMAS_LEG_BR, urnLexmlDaNorma } from "@/lib/ambiental/urn-lexml";
 
 /**
  * Busca unificada de `/ambiental/legislacao` — legislação ambiental
@@ -499,6 +500,13 @@ function CardEstadual({
   esfera: EsferaLegislacao;
   outrasFontes: FonteLegislacaoAmbiental[];
 }) {
+  // A esfera vem do PROP (já resolvida por `esferaDaLegislacao`), não de
+  // `l.esfera` cru: linha lida de banco anterior à migration 0073 não tem a
+  // coluna, e aí o `undefined` derrubaria a URN de uma norma federal boa.
+  const paraUrn = { esfera, tipo: l.tipo, numero: l.numero, data: l.data };
+  const urn = urnLexmlDaNorma(paraUrn);
+  const linkCanonico = urn ? `${RESOLVEDOR_NORMAS_LEG_BR}${urn}` : null;
+
   return (
     <li className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -547,6 +555,24 @@ function CardEstadual({
             className="text-xs font-semibold text-accent hover:underline"
           >
             Ver documento na fonte oficial →
+          </a>
+        )}
+        {/* Endereço canônico LexML. Só aparece quando a URN pôde ser montada
+            — `linkCanonicoDaNorma` devolve null para 14.667 das 15.318 linhas
+            do acervo (toda a estadual, toda portaria/resolução, e o que não
+            tem data ou número). Renderizar o link mesmo assim levaria o leitor
+            a uma página sem norma nenhuma, que é pior do que não ter link:
+            o portal responde HTTP 200 até para URN inexistente. Ver
+            `docs/URN-LEXML-NORMAS-LEG-BR.md` — 16 de 17 da amostra resolvem. */}
+        {linkCanonico && (
+          <a
+            href={linkCanonico}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`Identificador permanente: ${urn}`}
+            className="text-xs font-semibold text-accent hover:underline"
+          >
+            Endereço permanente (LexML) →
           </a>
         )}
         {outrasFontes.length > 0 && (
