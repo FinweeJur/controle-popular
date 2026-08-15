@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { CLIPPING_PARAOPEBA, PERIODO_CLIPPING, TIPO_NOTICIA_LABEL } from "./clipping";
-import { MARCOS_PARAOPEBA } from "./linha-do-tempo";
+import { MARCOS_PARAOPEBA, formatarDataMarco } from "./linha-do-tempo";
 import { ATORES_REPARACAO, CATEGORIA_ATOR_LABEL } from "./atores";
 import { PAGAMENTOS_PARAOPEBA, RESUMO_AUXILIO_PARAOPEBA } from "./auxilio";
 import {
@@ -60,14 +60,15 @@ describe("clipping.ts — parsing de NEWS_DATA (149 itens medidos)", () => {
   });
 });
 
-describe("linha-do-tempo.ts — parsing de MILESTONES (17 marcos medidos)", () => {
-  test("tem exatamente 17 marcos", () => {
-    expect(MARCOS_PARAOPEBA.length).toBe(17);
+describe("linha-do-tempo.ts — 17 marcos de MILESTONES + 6 pré-2025 de EDU_TIMELINE", () => {
+  test("tem exatamente 23 marcos — os 17 medidos em MILESTONES mais os 6 que faltavam", () => {
+    expect(MARCOS_PARAOPEBA.length).toBe(23);
   });
 
   test("todo marco tem data, título, descrição e cor", () => {
     for (const m of MARCOS_PARAOPEBA) {
-      expect(m.data).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      // `YYYY-MM` é válido de propósito: a fonte de três marcos não tem o dia.
+      expect(m.data, `data em formato inesperado: ${m.data}`).toMatch(/^\d{4}-\d{2}(-\d{2})?$/);
       expect(m.titulo).toBeTruthy();
       expect(m.descricao).toBeTruthy();
       expect(m.cor).toMatch(/^#[0-9A-Fa-f]{6}$/);
@@ -78,6 +79,60 @@ describe("linha-do-tempo.ts — parsing de MILESTONES (17 marcos medidos)", () =
     const datas = MARCOS_PARAOPEBA.map((m) => m.data);
     const ordenadas = [...datas].sort();
     expect(datas).toEqual(ordenadas);
+  });
+
+  /**
+   * O buraco que a fusão de 15/08/2026 fechou. Sem o rompimento, a linha do
+   * tempo de um acervo sobre a reparação de Brumadinho começava na ação
+   * judicial contra o corte do auxílio, seis anos depois do fato.
+   */
+  test("a lista começa no rompimento, não na ACP de 2025", () => {
+    expect(MARCOS_PARAOPEBA[0].data).toBe("2019-01-25");
+    expect(MARCOS_PARAOPEBA[0].titulo).toContain("Rompimento");
+  });
+
+  test("são 6 os marcos anteriores a 2025 — se virar 5, algum sumiu numa regeneração", () => {
+    expect(MARCOS_PARAOPEBA.filter((m) => m.data < "2025").length).toBe(6);
+  });
+
+  /**
+   * Trava contra "completar o formato": três marcos vêm do painel com mês e
+   * sem dia, e a tentação de gravar `2020-01-01` para uniformizar daria a um
+   * dia inventado a mesma aparência de fato que 25/01/2019 tem.
+   */
+  test("os 3 marcos sem dia continuam sem dia", () => {
+    const semDia = MARCOS_PARAOPEBA.filter((m) => /^\d{4}-\d{2}$/.test(m.data)).map((m) => m.data);
+    expect(semDia).toEqual(["2020-01", "2021-11", "2024-11"]);
+  });
+
+  test("o Acordo de R$ 37,6 bi entrou com a mesma data que clipping-ij.ts registra", () => {
+    const acordo = MARCOS_PARAOPEBA.find((m) => m.titulo.includes("37,6"));
+    expect(acordo?.data).toBe("2021-02-04");
+    const noClipping = CLIPPING_IJ.filter((n) => n.grupo === "CG_acordo_2021");
+    expect(noClipping.length).toBeGreaterThan(0);
+    for (const n of noClipping) expect(n.data).toBe(acordo?.data);
+  });
+});
+
+describe("formatarDataMarco — a forma da data avisa a precisão dela", () => {
+  test("data completa sai em dd/mm/aaaa", () => {
+    expect(formatarDataMarco("2019-01-25")).toBe("25/01/2019");
+  });
+
+  test("data de mês sai por extenso, e nunca com um dia inventado", () => {
+    expect(formatarDataMarco("2020-01")).toBe("janeiro de 2020");
+    expect(formatarDataMarco("2024-11")).toBe("novembro de 2024");
+  });
+
+  test("entrada que não é data nenhuma vira travessão, não 'Invalid Date'", () => {
+    expect(formatarDataMarco("")).toBe("—");
+    expect(formatarDataMarco("Nov/2024")).toBe("—");
+  });
+
+  test("todo marco real rende um rótulo legível — nenhum cai no travessão", () => {
+    for (const m of MARCOS_PARAOPEBA) {
+      expect(formatarDataMarco(m.data), `marco "${m.titulo}" sem rótulo`).not.toBe("—");
+    }
   });
 });
 
