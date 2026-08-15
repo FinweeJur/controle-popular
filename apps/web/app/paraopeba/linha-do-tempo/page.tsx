@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import { MARCOS_PARAOPEBA } from "@/lib/paraopeba";
-import { formatDateBR } from "@/lib/betim/format";
+import { MARCOS_PARAOPEBA, formatarDataMarco } from "@/lib/paraopeba";
 
+/**
+ * A data sai por `formatarDataMarco`, NÃO por `formatDateBR`: desde 15/08/2026
+ * três marcos guardam mês sem dia (`2020-01`), porque a fonte não tem o dia e
+ * inventar um daria cara de fato a um palpite. `formatDateBR` devolveria "—"
+ * para eles. Ver o cabeçalho de `lib/paraopeba/linha-do-tempo.ts`.
+ */
 export const metadata: Metadata = {
   title: "Linha do tempo — Paraopeba | Controle Popular",
   description:
-    "Os marcos do processo de reparação pelo rompimento da barragem da Vale em Brumadinho, do corte do auxílio emergencial à confirmação do pagamento de agosto de 2026.",
+    "Os marcos do processo de reparação pelo rompimento da barragem da Vale em Brumadinho, do rompimento de 25 de janeiro de 2019 à confirmação do pagamento de agosto de 2026.",
 };
 
 export default function LinhaDoTempoPage() {
@@ -24,11 +29,17 @@ export default function LinhaDoTempoPage() {
       </nav>
 
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
-        Do corte do auxílio à confirmação de agosto
+        Do rompimento à confirmação de agosto
       </h1>
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
-        {MARCOS_PARAOPEBA.length} marcos do processo de reparação, em ordem — cada decisão
-        judicial, cada resposta da Vale, cada passo do caso no STF.
+        {MARCOS_PARAOPEBA.length} marcos do processo de reparação, em ordem — do rompimento da
+        barragem B1, em 25 de janeiro de 2019, a cada decisão judicial, cada resposta da Vale e
+        cada passo do caso no STF.
+      </p>
+      <p className="mt-2 max-w-2xl text-[.9em] text-text-soft">
+        Onde a data aparece por extenso (&ldquo;janeiro de 2020&rdquo;), é porque a fonte
+        registrou só o mês — o dia não é conhecido, e preencher um daria a um palpite a mesma
+        aparência de fato que as datas cheias têm.
       </p>
 
       <ol className="mt-8 flex flex-col gap-0">
@@ -47,7 +58,7 @@ export default function LinhaDoTempoPage() {
             />
             <div className="rounded-2xl border border-border bg-surface p-4 shadow-sm">
               <p className="font-tabular text-xs font-semibold text-text-soft">
-                {formatDateBR(m.data)}
+                {formatarDataMarco(m.data)}
               </p>
               <p className="mt-0.5 font-display text-base font-semibold text-text">{m.titulo}</p>
               <p className="mt-1 text-sm text-text-soft">{m.descricao}</p>

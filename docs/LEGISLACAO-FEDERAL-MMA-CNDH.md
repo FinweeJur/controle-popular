@@ -268,6 +268,105 @@ npx tsx scripts/carregar-legislacao-federal.mts ../../etl/betim/dados/legislacao
 cd ../../etl/betim && python -m etl.apis.classificar_temas_ambientais
 ```
 
+### ⚠️ Um CPF veio dentro de uma ementa oficial
+
+Medido em 2026-08-15: **1 das 8.940** ementas trazia o CPF de uma pessoa
+física — a portaria do IBAMA que delega competência para firmar um TAC e
+escreve o nome do proprietário rural com o CPF ao lado. Uma em 8.940 é
+exatamente o número que faz uma conferência manual passar batido; quem pegou
+foi o teste `apps/web/lib/sem-cpf-no-repo.test.ts`, que valida por mod-11.
+
+Que a fonte publique não autoriza republicar. Este repositório é **público**:
+um CPF aqui fica indexável e clonável para sempre, o que é diferente de estar
+numa portaria no Diário Oficial.
+
+A limpeza ficou na origem — `redigir_documentos`, em
+`etl/betim/etl/apis/_legislacao_ambiental.py`, aplicada pelos dois coletores,
+para o dado não chegar a ser gravado em lugar nenhum. **O nome da pessoa
+permanece**: o ato é público e quem assina um TAC ambiental responde por ele
+com nome. Sai o identificador que serve para cruzar cadastros. **CNPJ também
+permanece**, e por decisão: saber qual empresa assinou o TAC é o que este
+portal existe para mostrar.
+
+O CNDH mediu **zero** ocorrências; a chamada está lá para que uma resolução
+futura não vaze.
+
+> **Pendência para o dono.** O arquivo com o CPF chegou a ser commitado e
+> pushado antes da correção (commit `e510f4e`). O conteúdo atual está limpo,
+> mas o histórico do Git ainda tem a versão antiga, e o repositório é público.
+> Limpar exige reescrever histórico já publicado (`git filter-repo` + push
+> forçado), o que afeta qualquer clone existente — é decisão de quem é dono do
+> repositório, não deste documento.
+
+### A proteção animal, conferida nos arquivos
+
+A falha que abriu esta tarefa era buscar proteção animal e não achar nada.
+Conferido no arquivo exportado, com o número da norma:
+
+| norma | ano | ementa |
+|---|---:|---|
+| Lei nº 5.197 | 1967 | proteção à fauna |
+| Decreto-lei nº 221 | 1967 | proteção e estímulos à pesca |
+| Lei nº 6.638 | 1979 | vivissecção didático-científica de animais |
+| Lei nº 7.643 | 1987 | proíbe a pesca e o molestamento de cetáceos |
+| Lei nº 9.605 | 1998 | sanções penais e administrativas (crimes ambientais) |
+| Lei nº 11.794 | 2008 | uso científico de animais |
+
+Ao todo, **402 ementas** falam de fauna, animais, caça ou pesca.
+
+Isso obrigou a **recalibrar o classificador de temas**
+(`etl/betim/etl/temas_ambientais.py`), e a razão é estrutural: as regras foram
+calibradas em 2026-08-12 contra um acervo **100% estadual de Minas**, e o
+vocabulário federal é outro. Vivissecção, cetáceos e quelônios não têm
+equivalente na legislação da Semad — não podiam aparecer na sondagem original.
+
+- `fauna` ganhou `caça`, `vivissec`, `cetáceo`, `quelônio` e `proteção à
+  fauna`: de 251 para **298** ementas.
+- **`pesca` é tag nova** (`Pesca e Aquicultura`, dentro do tema *Fauna e
+  Flora*): **136** ementas, das quais só 11 a regra de fauna já alcançava.
+  Pesca é um bloco inteiro do acervo federal — Decreto-lei 221/1967, a
+  Convenção da Baleia, os defesos — e não existe no estadual.
+- `caçador` foi **medido e descartado**: os 4 acertos eram a Floresta Nacional
+  de Caçador, cidade de Santa Catarina. `maus-tratos` e `bem-estar animal`
+  ficaram de fora com 0 ocorrência — incluí-los fingiria cobertura inexistente.
+
+### Tags de lugar
+
+O dono também pediu tags de nome próprio — "Serra do Curral", "Serra da
+Caraça", "Parque Estadual". A tag `serra_relevo` que existia responde *"esta
+norma fala de alguma serra"*; não responde *"quais normas tratam da Serra do
+Curral"*, que é a pergunta que alguém de fato faz.
+
+Oito tags novas, contadas nas 8.940 federais:
+
+| tag | federais |
+|---|---:|
+| Parque Nacional | 423 |
+| Serra da Canastra | 13 |
+| Serra do Espinhaço | 10 |
+| Serra do Cipó | 8 |
+| Serra do Gandarela | 4 |
+| Parque Estadual | 2 |
+| Serra do Curral | **0** |
+| Serra da Caraça | **0** |
+
+Os dois zeros são esperados, não erro: Curral e Caraça são objeto de norma
+**estadual** de Minas, e o acervo estadual vive no Postgres, que esta máquina
+não alcança. A contagem real aparece quando `classificar_temas_ambientais`
+rodar na máquina de build, sobre a tabela inteira. Nome próprio não corre o
+risco de falso positivo da regra genérica — "Serra da Canastra" não é uma
+frase que apareça por acaso.
+
+Nenhuma tag de lugar entra em `TAG_TEMA`: lugar não é tema, e empurrar uma
+delas para dentro dos 8 inflaria aquele tema com normas que não são sobre ele
+— a mesma decisão já tomada para licenciamento, fiscalização e clima.
+
+Depois disso, **6.073 das 8.940 normas federais continuam sem nenhuma tag**
+(68%). Não é defeito a corrigir com mais regex: são em boa parte atos
+administrativos e de estrutura de órgão, que não são *sobre* um tema
+ambiental. O número está aqui para que ninguém leia a classificação como
+completa.
+
 ### Por que o passo 2 lê arquivo em vez de rodar o coletor de novo
 
 Porque **não seriam os mesmos dados**. Rodar `legislacao_mma` na outra máquina

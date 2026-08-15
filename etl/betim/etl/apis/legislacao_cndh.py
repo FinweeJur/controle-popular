@@ -22,6 +22,15 @@ branco (`\s+` -> " "), que não é obra derivada, é normalização de
 marcação. Toda linha guarda o `link_pdf` para o documento oficial. Quem
 mexer aqui: **não reescreva ementa do CNDH**, nem por IA nem à mão.
 
+A ÚNICA exceção é `redigir_documentos`, que troca CPF de pessoa física por
+`[CPF removido]`. É supressão, não obra derivada — nada é reescrito, um dado
+sai. E privacidade de pessoa natural não é matéria que uma licença de
+conteúdo decida: o CNDH pode dispensar derivação da sua obra, não pode
+autorizar este repositório PÚBLICO a republicar o CPF de um terceiro. Medido
+em 2026-08-15: **zero** ocorrências nesta fonte — a chamada está aqui para
+que uma resolução futura não vaze, não para consertar algo que vazou. (A
+fonte irmã, o MMA, teve uma em 8.940.)
+
 (A fonte irmã desta rodada, o MMA, é CC-BY — mais permissiva. As duas
 licenças convivem na mesma tabela porque a coluna `fonte` diz de quem é
 cada linha; a documentação de licença por fonte está em
@@ -129,8 +138,7 @@ from lxml import html as LH
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_fixed
 
 from etl.common import get_supabase_client
-from etl.apis._legislacao_ambiental import UA
-from etl.dado_pessoal import mascarar_cpf
+from etl.apis._legislacao_ambiental import UA, redigir_documentos
 
 LOG = "[etl.apis.legislacao_cndh]"
 
@@ -279,7 +287,7 @@ def _recomendacoes() -> tuple[list[dict], dict]:
             "tipo": "Recomendação",
             "numero": _numero(titulo),
             "ano": int(data[:4]) if data else _ano_da_url(href),
-            "ementa": mascarar_cpf(titulo),  # citação literal (CC BY-ND), menos CPF
+            "ementa": redigir_documentos(titulo),  # citação literal (CC BY-ND), menos CPF
             "data": data,
             "orgao": "CNDH",
             "link_pdf": href,
@@ -340,7 +348,7 @@ def _resolucoes() -> tuple[list[dict], dict]:
             "tipo": "Resolução",
             "numero": _numero(titulo),
             "ano": ano,
-            "ementa": mascarar_cpf(titulo),  # citação literal (CC BY-ND), menos CPF
+            "ementa": redigir_documentos(titulo),  # citação literal (CC BY-ND), menos CPF
             "data": data,
             "orgao": "CNDH",
             "link_pdf": href,

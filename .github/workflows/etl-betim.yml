@@ -122,15 +122,16 @@ jobs:
       # `etl-congresso.yml`: roda em TODA invocação, antes de qualquer coletor
       # escrever. É teste de função pura, não custa rede nem banco.
       #
-      # Guarda a máscara de CPF que passou a rodar na ingestão em 15/08/2026,
-      # depois que a ementa oficial da Portaria IBAMA 2080/2012 levou o CPF de
-      # uma pessoa nomeada para dentro do repositório PÚBLICO. Os casos cobrem
-      # os dois lados — o que TEM de ser mascarado e o que NÃO PODE ser tocado
-      # (número de processo na mesma frase, CNPJ, código IBGE) —, porque a
-      # primeira versão do guarda de CPF deste repo passava verde com CPF real
-      # dentro, e ninguém notou até alguém sabotá-la de propósito.
-      - name: Regressão da máscara de dado pessoal
-        run: python -m etl.dado_pessoal --testar
+      # Guarda a `redigir_documentos`, que passou a rodar na ingestão em
+      # 15/08/2026 depois que a ementa oficial da Portaria IBAMA 2080/2012
+      # levou o CPF de uma pessoa nomeada para dentro do repositório PÚBLICO.
+      # Os casos cobrem os dois lados — o que TEM de sair e o que NÃO PODE ser
+      # tocado (número de processo na mesma frase, CNPJ, código IBGE, número
+      # de norma) —, porque a primeira versão do guarda de CPF deste repo
+      # passava verde com CPF real dentro, e ninguém notou até alguém
+      # sabotá-la de propósito.
+      - name: Regressão da redação de dado pessoal
+        run: python -m etl.apis._legislacao_ambiental --testar
 
       # ── Daily (0 8 * * *): PNCP + weather ─────────────────────────────
       - name: 'PNCP contratos (daily)'
