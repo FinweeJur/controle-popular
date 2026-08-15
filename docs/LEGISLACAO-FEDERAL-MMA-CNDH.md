@@ -268,6 +268,44 @@ npx tsx scripts/carregar-legislacao-federal.mts ../../etl/betim/dados/legislacao
 cd ../../etl/betim && python -m etl.apis.classificar_temas_ambientais
 ```
 
+### A proteção animal, conferida nos arquivos
+
+A falha que abriu esta tarefa era buscar proteção animal e não achar nada.
+Conferido no arquivo exportado, com o número da norma:
+
+| norma | ano | ementa |
+|---|---:|---|
+| Lei nº 5.197 | 1967 | proteção à fauna |
+| Decreto-lei nº 221 | 1967 | proteção e estímulos à pesca |
+| Lei nº 6.638 | 1979 | vivissecção didático-científica de animais |
+| Lei nº 7.643 | 1987 | proíbe a pesca e o molestamento de cetáceos |
+| Lei nº 9.605 | 1998 | sanções penais e administrativas (crimes ambientais) |
+| Lei nº 11.794 | 2008 | uso científico de animais |
+
+Ao todo, **402 ementas** falam de fauna, animais, caça ou pesca.
+
+Isso obrigou a **recalibrar o classificador de temas**
+(`etl/betim/etl/temas_ambientais.py`), e a razão é estrutural: as regras foram
+calibradas em 2026-08-12 contra um acervo **100% estadual de Minas**, e o
+vocabulário federal é outro. Vivissecção, cetáceos e quelônios não têm
+equivalente na legislação da Semad — não podiam aparecer na sondagem original.
+
+- `fauna` ganhou `caça`, `vivissec`, `cetáceo`, `quelônio` e `proteção à
+  fauna`: de 251 para **298** ementas.
+- **`pesca` é tag nova** (`Pesca e Aquicultura`, dentro do tema *Fauna e
+  Flora*): **136** ementas, das quais só 11 a regra de fauna já alcançava.
+  Pesca é um bloco inteiro do acervo federal — Decreto-lei 221/1967, a
+  Convenção da Baleia, os defesos — e não existe no estadual.
+- `caçador` foi **medido e descartado**: os 4 acertos eram a Floresta Nacional
+  de Caçador, cidade de Santa Catarina. `maus-tratos` e `bem-estar animal`
+  ficaram de fora com 0 ocorrência — incluí-los fingiria cobertura inexistente.
+
+Depois disso, **6.073 das 8.940 normas federais continuam sem nenhuma tag**
+(68%). Não é defeito a corrigir com mais regex: são em boa parte atos
+administrativos e de estrutura de órgão, que não são *sobre* um tema
+ambiental. O número está aqui para que ninguém leia a classificação como
+completa.
+
 ### Por que o passo 2 lê arquivo em vez de rodar o coletor de novo
 
 Porque **não seriam os mesmos dados**. Rodar `legislacao_mma` na outra máquina

@@ -118,6 +118,7 @@ TAG_LABELS: dict[str, str] = {
     "area_protecao_ambiental": "Área de Proteção Ambiental",
     "rppn": "Reserva Particular (RPPN)",
     "fauna": "Fauna",
+    "pesca": "Pesca e Aquicultura",
     "flora_florestal": "Flora e Política Florestal",
     "licenciamento_ambiental": "Licenciamento Ambiental",
     "fiscalizacao_ambiental": "Fiscalização Ambiental",
@@ -139,6 +140,11 @@ TAG_TEMA: dict[str, str] = {
     "area_protecao_ambiental": "unidades_conservacao",
     "rppn": "unidades_conservacao",
     "fauna": "fauna_flora",
+    # Pesca entra em "Fauna e Flora" e não vira tema próprio: os 8 temas são
+    # o pedido do usuário, e recurso pesqueiro é fauna aquática — o rótulo do
+    # tema já cobre. Um nono tema mudaria a lista da tela sem que ninguém
+    # tenha pedido.
+    "pesca": "fauna_flora",
     "flora_florestal": "fauna_flora",
     "serra_relevo": "serras",
     # As três tags abaixo são transversais no acervo (licenciamento,
@@ -216,9 +222,32 @@ _REGRAS: dict[str, re.Pattern] = {
         r"reserva particular do patrim[oô]nio natural|\brppn\b",
         re.IGNORECASE,
     ),
+    # Ampliada em 2026-08-15, quando as 8.940 normas FEDERAIS entraram na
+    # mesma tabela. As regras deste dicionário foram calibradas em 2026-08-12
+    # contra um acervo 100% estadual de Minas, e o vocabulário federal é
+    # outro: a Lei 6.638/1979 (vivissecção), a 7.643/1987 (cetáceos) e os
+    # planos de ação de quelônios do ICMBio não têm equivalente na legislação
+    # da Semad, então nenhuma delas podia aparecer na sondagem original.
+    # Ganho medido: fauna sai de 251 para 298 ementas nas 8.940 federais.
+    #
+    # `\bca[çc]ador` foi CONSIDERADO E DESCARTADO: os 4 acertos eram todos a
+    # Floresta Nacional de Caçador, cidade de Santa Catarina — nome próprio,
+    # não atividade. "maus-tratos" e "bem-estar animal" também ficaram de
+    # fora, com 0 ocorrência medida: incluí-los fingiria uma cobertura que a
+    # classificação não tem, contra a regra da docstring deste módulo.
     "fauna": re.compile(
         r"\bfauna\b|vida silvestre|esp[eé]cie(?:s)? (?:amea[çc]ad|ex[oó]tica invasora)|"
-        r"manejo de (?:animal|animais)|animal(?:is)? silvestre",
+        r"manejo de (?:animal|animais)|animal(?:is)? silvestre|"
+        r"\bca[çc]a\b|vivissec|cet[aá]ceo|quel[oô]nio|prote[çc][aã]o (?:[àa] |da )fauna",
+        re.IGNORECASE,
+    ),
+    # Tag NOVA da mesma rodada, pelo mesmo motivo: pesca é um bloco inteiro da
+    # legislação ambiental federal (Decreto-lei 221/1967, a Convenção da
+    # Baleia, os defesos) e não existe na estadual de Minas — 136 ementas
+    # medidas, das quais só 11 a regra de fauna já alcançava. Sem esta tag,
+    # buscar pesca no acervo federal devolve quase nada.
+    "pesca": re.compile(
+        r"\bpesca\b|pesqueir|aquicultura|piscicultura|\bdefeso\b",
         re.IGNORECASE,
     ),
     "flora_florestal": re.compile(

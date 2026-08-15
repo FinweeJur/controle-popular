@@ -91,6 +91,10 @@ const TAG_LABEL: Record<string, string> = {
   area_protecao_ambiental: "Área de Proteção Ambiental",
   rppn: "Reserva Particular (RPPN)",
   fauna: "Fauna",
+  // Criada em 2026-08-15 junto com a carga das normas federais: pesca é um
+  // bloco inteiro do acervo federal (136 ementas medidas) que não existia no
+  // estadual de Minas. Sem rótulo aqui, a tag apareceria pelo slug cru.
+  pesca: "Pesca e Aquicultura",
   flora_florestal: "Flora e Política Florestal",
   licenciamento_ambiental: "Licenciamento Ambiental",
   fiscalizacao_ambiental: "Fiscalização Ambiental",
