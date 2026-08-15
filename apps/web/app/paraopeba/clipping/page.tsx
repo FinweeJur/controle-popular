@@ -9,6 +9,7 @@ import {
 } from "@/lib/paraopeba";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import ClippingClient from "./ClippingClient";
+import RadarRecente from "./RadarRecente";
 
 /**
  * `/paraopeba/clipping` — clipping de imprensa sobre a reparação de
@@ -68,6 +69,9 @@ export default function ClippingPage() {
           continua onde ele é exato — no `source`/`ati` de cada material. */}
 
       <ClippingClient />
+
+      {/* Varredura automática, depois dos acervos com autoria. Ver RadarRecente. */}
+      <RadarRecente />
 
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <FooterGlobal />

@@ -48,6 +48,21 @@ const WORKFLOWS = path.join(RAIZ, ".github", "workflows");
 const WEB = path.join(RAIZ, "apps", "web");
 const LOGS = path.join(RAIZ, "logs");
 
+/**
+ * Interpretador do radar de notícias.
+ *
+ * `py -3` e não `python`: o `python` do PATH desta máquina é o venv do
+ * hermes-agent, e o dessa rotina roda pelo Agendador de Tarefas, cujo PATH é
+ * outro — a mesma classe de armadilha que já fez os 25 passos de ETL rodarem
+ * no bash do WSL (ver o bloco grande acima). O launcher `py` está em
+ * `system32` e resolve o Python do sistema em qualquer PATH.
+ *
+ * O coletor só usa biblioteca padrão, então qualquer 3.x serve — nenhuma
+ * instalação de pacote acontece aqui.
+ */
+const PYTHON = process.env.RADAR_PYTHON ?? "py";
+const PYTHON_ARGS = process.env.RADAR_PYTHON ? [] : ["-3"];
+
 // A ordem importa: Betim primeiro (é a cidade que já serve gente), e o
 // congresso/judiciário por último porque são os mais lentos e os menos
 // urgentes. É a mesma ordem de dependência que as cadências do GitHub
@@ -592,6 +607,33 @@ async function principal() {
   if (SO_ETL) {
     registrar("--so-etl: coleta terminada, parando antes do build.");
     return;
+  }
+
+  // ── radar de notícias ────────────────────────────────────────────
+  //
+  // Roda ANTES do build, e é aqui e não numa tarefa agendada própria por um
+  // motivo: o radar só chega ao site quando o site é reconstruído. Agendado à
+  // parte, ele coletaria todo dia e ficaria esperando um build que talvez não
+  // venha — e a tela mostraria notícia velha com data nova. Amarrado ao build,
+  // nunca existe coleta que não foi publicada.
+  //
+  // Falha aqui NÃO aborta a publicação: três servidores de notícia de pé é
+  // condição do radar, não do portal. O coletor também não sobrescreve o
+  // arquivo bom quando volta vazio (ver scripts/coletar-noticias-paraopeba.py).
+  registrar("radar: coletando notícias do Paraopeba");
+  {
+    const r = spawnSync(PYTHON, [...PYTHON_ARGS, path.join(RAIZ, "scripts", "coletar-noticias-paraopeba.py")], {
+      cwd: RAIZ,
+      encoding: "utf-8",
+    });
+    if (r.status === 0) {
+      registrar("radar: coleta concluída");
+    } else {
+      registrar(
+        `radar: coleta falhou (${r.status ?? "sem status"}) — seguindo assim mesmo, ` +
+          `o site publica com o radar da coleta anterior.`
+      );
+    }
   }
 
   registrar("build: npm run build (apps/web)");
