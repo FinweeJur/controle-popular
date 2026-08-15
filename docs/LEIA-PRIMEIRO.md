@@ -1,8 +1,12 @@
 # Leia primeiro
 
-> `docs/` tem **54 arquivos e ~17 mil linhas**, e **9 nasceram num único dia**
+> `docs/` tem **63 arquivos**, e **mais de uma dezena nasceu num único dia**
 > (15/08/2026). O problema nunca foi o volume — é não haver onde descobrir
-> quais três abrir. Este arquivo é essa porta.
+> quais quatro abrir. Este arquivo é essa porta.
+>
+> *(Contagem conferida em 15/08 à noite. Ela dizia 54 de manhã e envelheceu no
+> mesmo dia — se for decidir por este número, conte de novo:*
+> `ls -1 docs | wc -l`*.)*
 >
 > **Ninguém precisa ler `docs/` inteiro. Nunca.**
 
@@ -26,7 +30,8 @@ Quatro arquivos. Se você só ler estes, já trabalha sem quebrar nada.
 | Vou mexer em… | Leia |
 |---|---|
 | deploy, build, publicação | `rotina-local.md`, `build-em-outro-pc.md`, `HANDOFF-PAYLOAD-LEGISLACAO.md` |
-| uma fonte de dados nova | o `FONTES-*.md` do assunto — são 7, cada um de um domínio |
+| uma fonte de dados nova | o `FONTES-*.md` do assunto — **são 8**, cada um de um domínio (`ls docs/FONTES-*.md` é mais confiável que este número) |
+| Lei Rouanet, incentivo cultural | `FONTES-ROUANET-SALIC.md` — e a API mente de três jeitos, todos medidos |
 | território, mineração, barragem | `FONTES-TERRITORIO-E-MINERACAO.md` |
 | Paraopeba / Brumadinho | `PLANO-INGESTAO-PARAOPEBA.md`, `RADAR-NOTICIAS-PARAOPEBA.md` |
 | dinheiro da reparação de Brumadinho | `FONTES-PRO-BRUMADINHO-E-FGV.md` — portal do Governo de MG e auditoria da FGV |
