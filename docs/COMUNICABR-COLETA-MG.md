@@ -37,10 +37,46 @@ direto **não acha nada** — os itens não estão lá em forma expandida. Use
 ingênua sobre o JSON devolve zero itens e parece que a coleta falhou; foi o que
 aconteceu na primeira conferência.
 
-## As lacunas, que são o dado mais honesto daqui
+## As lacunas — e o que "vazio" quer dizer, exatamente
 
-**39% dos itens vieram vazios** (106.446 de 174.012), e a distribuição não é
-uniforme. As cinco categorias com mais buracos:
+**39% dos itens vieram vazios** (106.446 de 174.012). Mas "vazio" aqui esconde
+**duas coisas diferentes**, e a distinção foi medida contra a API ao vivo em
+15/08/2026, em 5 municípios (Betim, São Paulo, Belo Horizonte, Contagem e
+Uberlândia), todos com 132 itens:
+
+| Município | Com valor | `valorBruto: 0` sem `valor` | Sem nada |
+|---|---:|---:|---:|
+| Betim | 60 | 34 | **38** |
+| São Paulo | 67 | 27 | **38** |
+| Belo Horizonte | 67 | 27 | **38** |
+| Contagem | 60 | 34 | **38** |
+| Uberlândia | 64 | 30 | **38** |
+
+Duas leituras saem daí:
+
+**1. Os 38 "sem nada" são idênticos nos cinco.** Não é lacuna da cidade — é
+lacuna da FONTE: o ComunicaBR publica a estrutura da categoria e não publica
+valor municipal nenhum para ela. Quatro categorias vêm **zeradas nos cinco
+municípios**: `mulheres` (0 de 100 itens), `desenvolvimento-produtivo` (0 de
+30), `minha-casa-minha-vida` (0 de 15) e `governo-digital` (0 de 10).
+
+**2. O `valorBruto: 0` sem `valor` NÃO é uma medida de zero** — e é a parte que
+varia por cidade (27 a 34). Testado: em **660 itens dos 5 municípios, nenhum
+único item exibe zero** (nenhum tem `valor` preenchido com `valorBruto: 0`), e
+nenhum tem `valor` sem `valorBruto`. Ou seja, a fonte **nunca mostra um zero**;
+aquele `0` é preenchimento padrão de campo não publicado.
+
+Por isso `parDeValor()` anula o `valorBruto` quando não há `valor`. Republicar
+aqueles zeros diria **"R$ 0,00 repassado"** onde o governo disse "não se
+aplica" — e num portal de transparência essa troca é grave: afirmaria que uma
+cidade não recebeu nada quando o que houve foi ausência de publicação.
+
+⚠️ **Consequência**: o arquivo coletado não distingue as duas espécies de vazio
+(o `valorBruto` já entra anulado). Para medir a divisão é preciso consultar a
+API ao vivo, como foi feito acima. Se a distinção virar necessária na tela, o
+coletor precisa guardar uma marca do estado bruto.
+
+As cinco categorias com mais buracos no total de MG:
 
 | Categoria | Itens vazios |
 |---|---:|
