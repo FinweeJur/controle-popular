@@ -1,4 +1,11 @@
 import type { Metadata } from "next";
+// `next/link` DIRETO, e não o `<Link>` de zona (`lib/link-zona.tsx`): esta
+// página mora na RAIZ do domínio, então todo caminho interno daqui já é
+// absoluto — o wrapper de zona geraria `/betim/` a partir de `/`. Mesma
+// escolha, pelo mesmo motivo, de `app/termos/page.tsx`. `<a>` cru também não
+// serve: o lint do Next (`no-html-link-for-pages`) reprova, e com razão,
+// porque perde o pré-carregamento da rota.
+import Link from "next/link";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import PopularesClient from "./PopularesClient";
 
@@ -31,9 +38,9 @@ export default async function PaginasPopularesPage() {
     // achar conteúdo, mesma razão documentada em `app/busca/page.tsx`.
     <main className="mx-auto max-w-3xl px-4 py-12 sm:py-16">
       <nav className="mb-4 text-sm text-text-soft">
-        <a href="/" className="hover:text-primary">
+        <Link href="/" className="hover:text-primary">
           Início
-        </a>{" "}
+        </Link>{" "}
         · <span className="text-text">Páginas mais vistas</span>
       </nav>
 
