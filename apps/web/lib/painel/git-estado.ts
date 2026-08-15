@@ -37,6 +37,8 @@ function git(...args: string[]): string {
 
 export interface EstadoDoRepo {
   ramo: string;
+  /** SHA curto do HEAD local — para comparar com o commit buildado. */
+  head: string;
   /** Commits que `origin/main` tem e o local não. > 0 = precisa atualizar. */
   atras: number;
   /** Commits locais ainda não publicados. */
@@ -68,6 +70,7 @@ export function lerEstadoDoRepo(): EstadoDoRepo {
   }
 
   const ramo = git("rev-parse", "--abbrev-ref", "HEAD");
+  const head = git("rev-parse", "--short", "HEAD");
   const sujos = git("status", "--porcelain")
     .split("\n")
     .filter(Boolean)
@@ -87,6 +90,7 @@ export function lerEstadoDoRepo(): EstadoDoRepo {
   const podeEditar = atras === 0;
   return {
     ramo,
+    head,
     atras,
     aFrente,
     sujos,

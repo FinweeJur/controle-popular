@@ -4,6 +4,7 @@ import path from "node:path";
 
 import { painelAutorizado } from "@/lib/painel/edicoes-io";
 import { lerEstadoDoRepo } from "@/lib/painel/git-estado";
+import { lerUltimoBuild } from "@/lib/painel/ultimo-build";
 
 /**
  * API do painel de edição — `POST` puxa a `main` do GitHub para a máquina.
@@ -72,6 +73,7 @@ export async function POST(request: Request) {
       {
         erro: `Não consegui sincronizar. ${detalhe} Se houver divergência ou arquivo local modificado, rode \`git pull\` no terminal.`,
         repo: lerEstadoDoRepo(),
+        ultimoBuild: lerUltimoBuild(),
       },
       { status: 409 }
     );
@@ -81,5 +83,6 @@ export async function POST(request: Request) {
     ok: true,
     aviso: "Local atualizado com a main do GitHub.",
     repo: lerEstadoDoRepo(),
+    ultimoBuild: lerUltimoBuild(),
   });
 }

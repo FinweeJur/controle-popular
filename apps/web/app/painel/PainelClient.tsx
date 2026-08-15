@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import type { Edicao } from "@/lib/edicoes";
 import type { EstadoDoRepo } from "@/lib/painel/git-estado";
 import type { RotaEditavel } from "@/lib/painel/rotas-editaveis";
+import type { UltimoBuild } from "@/lib/painel/ultimo-build";
 
 /**
  * A tela do painel de edição.
@@ -26,10 +27,25 @@ import type { RotaEditavel } from "@/lib/painel/rotas-editaveis";
 
 const TOKEN_LOCAL = "cp-painel-token";
 
+/** ISO -> "15/08/2026 às 20:04" no fuso da máquina. */
+function formatarData(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  const dia = d.toLocaleDateString("pt-BR");
+  const hora = d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  return `em ${dia} às ${hora}`;
+}
+
+/** SHA completo -> 7 primeiros caracteres. */
+function curto(sha: string): string {
+  return sha.length > 7 ? sha.slice(0, 7) : sha;
+}
+
 interface Props {
   rotasEditaveis: RotaEditavel[];
   edicoesIniciais: Edicao[];
   repoInicial: EstadoDoRepo;
+  ultimoBuildInicial: UltimoBuild | null;
 }
 
 type Aviso = { tipo: "ok" | "erro"; texto: string } | null;
@@ -42,7 +58,12 @@ interface TextoAtual {
   calculado: boolean;
 }
 
-export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInicial }: Props) {
+export default function PainelClient({
+  rotasEditaveis,
+  edicoesIniciais,
+  repoInicial,
+  ultimoBuildInicial,
+}: Props) {
   const [token, setToken] = useState<string>(() => {
     if (typeof window === "undefined") return "";
     try {
@@ -53,6 +74,7 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
   });
   const [edicoes, setEdicoes] = useState<Edicao[]>(edicoesIniciais);
   const [repo, setRepo] = useState<EstadoDoRepo>(repoInicial);
+  const [ultimoBuild, setUltimoBuild] = useState<UltimoBuild | null>(ultimoBuildInicial);
   const [aviso, setAviso] = useState<Aviso>(null);
   const [ocupado, setOcupado] = useState(false);
 
@@ -88,6 +110,7 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
     edicoes?: Edicao[];
     pendentes?: number;
     repo?: EstadoDoRepo;
+    ultimoBuild?: UltimoBuild | null;
     aviso?: string;
   };
 
@@ -115,6 +138,7 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
       }
       if (Array.isArray(corpo.edicoes)) setEdicoes(corpo.edicoes);
       if (corpo.repo) setRepo(corpo.repo);
+      if (corpo.ultimoBuild !== undefined) setUltimoBuild(corpo.ultimoBuild);
       return corpo;
     } catch (e) {
       setAviso({ tipo: "erro", texto: `Erro de rede: ${(e as Error).message}` });
@@ -230,6 +254,37 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
           última informação conhecida, não contra o estado atual da outra máquina.
         </p>
       )}
+
+      <section className="mt-6 rounded-2xl border border-border bg-surface p-5 shadow-sm">
+        <h2 className="font-display text-base font-semibold text-text">Último deploy</h2>
+        {ultimoBuild ? (
+          <div className="mt-3 space-y-2 text-sm text-text-soft">
+            <p>
+              <strong className="text-text">
+                {ultimoBuild.publicou ? "Publicou" : "Falhou"}
+              </strong>{" "}
+              {formatarData(ultimoBuild.terminouEm)}
+              {ultimoBuild.erro && (
+                <span className="mt-1 block text-xs text-alert">{ultimoBuild.erro}</span>
+              )}
+            </p>
+            <p>
+              Commit no ar: <code className="text-text">{curto(ultimoBuild.commitBuildado)}</code>
+            </p>
+            {repo.head !== curto(ultimoBuild.commitBuildado) && (
+              <p className="rounded-lg bg-surface-2 p-3 text-xs text-text-soft">
+                Esta máquina está no <code>{repo.head}</code>, diferente do que está no ar. O que
+                você fez depois disso ainda não foi publicado — veja abaixo se precisa pedir
+                publicação.
+              </p>
+            )}
+          </div>
+        ) : (
+          <p className="mt-3 text-sm text-text-soft">
+            Nenhum build registrado ainda nesta máquina. O primeiro deploy registra a data aqui.
+          </p>
+        )}
+      </section>
 
       <div className="mt-6 rounded-2xl border border-border bg-surface-2 p-4">
         <label className={rotulo} htmlFor="token">
