@@ -710,6 +710,59 @@ body {
   gap: 8px;
 }
 
+/* ------------------------------------------------------------
+   Sanfona do painel — só no computador (15/08/2026)
+
+   252 px é o que cabe sem comer mapa, mas os nomes que a seção de território
+   ganhou não cabem: "Terra indígena/quilombola sob interesse minerário" e
+   "Documentos do processo que citam o município" quebram em três e quatro
+   linhas. Aos 340 px cabem em uma ou duas, e a seção volta a ser varrível de
+   relance. Em vez de alargar para sempre (que come mapa o tempo todo), o
+   painel cresce enquanto o ponteiro está nele — e volta ao sair.
+
+   E o recolhido passa a ESPIAR: hoje `.collapsed` esconde tudo menos o
+   cabeçalho, então quem recolhe para ver o mapa precisa clicar duas vezes para
+   olhar uma camada. Com a espiada, recolher vira uma escolha barata — é o
+   comportamento da barra lateral do Claude Desktop, e a razão é a mesma: o
+   estado recolhido só é útil se sair dele não custar nada.
+
+   ⚠️ Tudo isto vive dentro de `hover: hover` E `pointer: fine`, e não é
+   detalhe. Em tela de toque o navegador dispara o hover no PRIMEIRO TOQUE: o
+   painel cresceria no mesmo gesto que liga a camada, movendo o alvo debaixo do
+   dedo. No celular o painel já é folha de largura cheia com abas
+   (`@media (max-width: 767px)` mais abaixo), então não há o que alargar lá —
+   quem manda no mobile é o clique da aba, como deve ser.
+
+   `:focus-within` anda junto com `:hover` em todas as regras: quem chega às
+   chaves por Tab não passa mouse nenhum, e ficaria preso na versão estreita,
+   que é justamente a de leitura mais difícil.
+   ------------------------------------------------------------ */
+@media (hover: hover) and (pointer: fine) {
+  #layers-panel {
+    transition: width var(--dur-base) var(--ease-out);
+  }
+
+  #layers-panel:hover,
+  #layers-panel:focus-within {
+    width: 340px;
+  }
+
+  /* Recolhido + ponteiro em cima = espiada. Sai do jeito que entrou. */
+  #layers-panel.collapsed:hover,
+  #layers-panel.collapsed:focus-within {
+    width: 340px;
+  }
+
+  #layers-panel.collapsed:hover .layer-groups,
+  #layers-panel.collapsed:hover .regiao-filtro,
+  #layers-panel.collapsed:hover .layer-bulk,
+  #layers-panel.collapsed:focus-within .layer-groups,
+  #layers-panel.collapsed:focus-within .regiao-filtro,
+  #layers-panel.collapsed:focus-within .layer-bulk {
+    display: flex;
+  }
+}
+
 #layers-panel .panel-header {
   display: flex;
   align-items: center;
@@ -2198,6 +2251,11 @@ body {
    fica aceso, não apagado, e o selo FICTÍCIO mantém a hachura parada. O que
    some é o movimento, não a informação. */
 @media (prefers-reduced-motion: reduce) {
+  /* A sanfona continua funcionando — só para de deslizar. Quem pediu menos
+     movimento quer menos ANIMAÇÃO, não menos função: tirar o alargamento
+     junto devolveria a essa pessoa a versão estreita, que é a pior de ler. */
+  #layers-panel { transition: none; }
+
   #layers-panel .layer-row.carregando .layer-marca,
   #layers-panel .layer-row[data-camada-id="satelites-orbita"].on .layer-marca,
   #layers-panel .layer-fake::before {
