@@ -279,6 +279,16 @@ export const ASSUNTOS = [
   // O cruzamento de licença ambiental × contrato/convênio não é só mineração
   // (setor inclui resíduos e infraestrutura também), mas nasceu junto e cabe
   // melhor perto da irmã do que sozinho antes de 'cidade'.
+  // Novo em 15/08/2026. A seção acima chegou a 21 linhas, e 9 delas eram do
+  // rompimento de 2019 — o assunto mais específico do painel enterrando os
+  // mais gerais. Separar não é arrumação: as camadas de Brumadinho respondem
+  // "o que aconteceu naquele lugar", e as de cima respondem "onde há risco e
+  // pressão hoje". Só uma delas é história.
+  //
+  // Fica DEPOIS de território/mineração, e não antes, porque é o caso
+  // particular daquilo: quem chega ao mapa procurando barragem encontra
+  // primeiro a régua geral (ZAS, mancha, minas) e só então o episódio.
+  { id: 'brumadinho', titulo: 'Rompimento de Brumadinho (2019)' },
   { id: 'dinheiro', titulo: 'Dinheiro público e mineração' },
   { id: 'cidade',        titulo: 'Cidade e imóveis urbanos' },
   { id: 'pistas',        titulo: 'Fiscalização e pistas' },
@@ -1115,51 +1125,51 @@ export const CAMADAS = [
   // (satélite, depois do rompimento), nunca confundir com a simulação
   // hipotética das duas linhas de cima.
   {
-    id: 'brumadinho-area-atingida', assunto: 'territorio-mineracao',
+    id: 'brumadinho-area-atingida', assunto: 'brumadinho',
     label: 'Brumadinho — área REALMENTE atingida (2019)',
     hint: 'Os 2 polígonos que a Semad mapeou por satélite (Pleiades, escala 1:2.500) sobre o que o rejeito de fato cobriu quando a Barragem I rompeu, 25/01/2019 — 270 mortes. NÃO é a mesma coisa que "Mancha de inundação (barragens)": aquela é um cenário hipotético de engenharia para 156 barragens; esta é o registro do que aconteceu de verdade, só na B1.',
     aviso: 'Não confundir com a camada "Mancha de inundação (barragens)": esta aqui é FATO CONSUMADO, medido por satélite depois do rompimento — não é simulação, não é previsão, é o que já aconteceu.',
     fontes: ['brumadinho-area-atingida'],
   },
   {
-    id: 'brumadinho-monitoramento', assunto: 'territorio-mineracao',
+    id: 'brumadinho-monitoramento', assunto: 'brumadinho',
     label: 'Brumadinho — pontos de monitoramento ambiental',
     hint: '291 pontos onde a Semad monitora água, ar, ruído e geotecnia depois do rompimento. Maioria (140) é monitoramento de rejeito. O campo "categoria" na ficha diz o quê: Rejeitos, Água Superficial e Sedimentos, Água Subterrânea, Água Superficial, Ruído, Hidrossedimentométrico, Ar, Efluente, Poço Cava Feijão, Radar Geotécnico.',
     fontes: ['brumadinho-monitoramento'],
   },
   {
-    id: 'brumadinho-remanejamento', assunto: 'territorio-mineracao',
+    id: 'brumadinho-remanejamento', assunto: 'brumadinho',
     label: 'Brumadinho — origem de famílias remanejadas',
     hint: '104 pontos de ORIGEM (não o destino) de famílias remanejadas depois do rompimento, agrupados por bairro/comunidade — "Parque da Cachoeira" (57), "Córrego do Feijão" (34) e mais 6 origens. O esquema desta camada tem só duas colunas de texto (classe + descrição): sem nome, sem CPF, sem endereço — conferido campo a campo antes de publicar.',
     aviso: 'Cada ponto marca a ORIGEM agregada por bairro, não a casa de ninguém: a Semad não publica endereço nem nome de família. Ainda assim, evite ler isto como localizador de pessoa — é dado de política de reparação, não cadastro de residência.',
     fontes: ['brumadinho-remanejamento'],
   },
   {
-    id: 'brumadinho-estruturas-contencao', assunto: 'territorio-mineracao',
+    id: 'brumadinho-estruturas-contencao', assunto: 'brumadinho',
     label: 'Brumadinho — estruturas de contenção',
     hint: '37 estruturas emergenciais construídas para conter o rejeito depois do rompimento: diques, estacas-prancha, barreiras estabilizantes de calha.',
     fontes: ['brumadinho-estruturas-contencao'],
   },
   {
-    id: 'brumadinho-obras-poligonais', assunto: 'territorio-mineracao',
+    id: 'brumadinho-obras-poligonais', assunto: 'brumadinho',
     label: 'Brumadinho — obras e intervenções (área)',
     hint: '22 obras emergenciais com área própria: pontes, ETA, disposição de rejeito, dragagem. Mesmo conceito de "obras e intervenções" que as duas linhas seguintes — partido em três linhas porque cada uma tem geometria diferente na origem (área/ponto/linha), não porque sejam assuntos distintos.',
     fontes: ['brumadinho-obras-poligonais'],
   },
   {
-    id: 'brumadinho-obras-pontuais', assunto: 'territorio-mineracao',
+    id: 'brumadinho-obras-pontuais', assunto: 'brumadinho',
     label: 'Brumadinho — obras e intervenções (ponto)',
     hint: '13 obras emergenciais pontuais: tratamento de sedimento, bombeamento emergencial, instrumentação.',
     fontes: ['brumadinho-obras-pontuais'],
   },
   {
-    id: 'brumadinho-obras-lineares', assunto: 'territorio-mineracao',
+    id: 'brumadinho-obras-lineares', assunto: 'brumadinho',
     label: 'Brumadinho — obras e intervenções (linha)',
     hint: '1 obra linear: dragagem emergencial.',
     fontes: ['brumadinho-obras-lineares'],
   },
   {
-    id: 'brumadinho-restauracao', assunto: 'territorio-mineracao',
+    id: 'brumadinho-restauracao', assunto: 'brumadinho',
     label: 'Brumadinho — áreas de restauração',
     hint: '35 áreas de revegetação/restauração, por platô/setor, nas áreas afetadas pelo rompimento.',
     fontes: ['brumadinho-restauracao'],
@@ -1234,7 +1244,7 @@ export const CAMADAS = [
     fontes: ['alerta-raio-territorio-sigmine-interesse'],
   },
   {
-    id: 'documentos-processo-municipios', assunto: 'territorio-mineracao',
+    id: 'documentos-processo-municipios', assunto: 'brumadinho',
     label: 'Documentos do processo que citam o município',
     hint: '53 municípios citados nos documentos do processo judicial de Brumadinho, 1.149 menções. Brumadinho 192, São Joaquim de Bicas 81, Mário Campos 65.',
     aviso: 'Mostra onde o acervo CITA, não onde o dano foi: só 6,6% dos documentos têm município identificado, e as contagens não se somam entre municípios.',
