@@ -2,6 +2,7 @@ import Link from "@/lib/judiciario/link";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import { listarTribunais, proximasVacancias, listarNomeacoes } from "@/lib/judiciario/tribunais";
 import { rotuloResultado } from "@/lib/judiciario/rotulos";
+import FonteRodape, { FONTE_SENADO, FONTE_REGUA } from "@/app/judiciario/components/FonteRodape";
 
 const fmtData = (d: string | null) =>
   d ? new Date(d + "T00:00:00").toLocaleDateString("pt-BR") : "—";
@@ -45,8 +46,9 @@ export default async function Home() {
         </p>
         <p className="max-w-2xl text-sm opacity-70">
           Nenhum número desta página é opinião ou estimativa: todos vêm direto de fontes
-          oficiais (o Senado Federal e os próprios tribunais), com link para conferir na
-          fonte em cada página.
+          oficiais — o Senado Federal e os próprios tribunais —, creditadas no rodapé de cada
+          página que os exibe. O documento de origem aparece na linha de cada indicação
+          quando o Senado o publica.
         </p>
       </section>
 
@@ -122,6 +124,11 @@ export default async function Home() {
           </Link>
         </p>
       </section>
+
+      <FonteRodape
+        fontes={[FONTE_REGUA, FONTE_SENADO]}
+        nota="A composição de cada tribunal é copiada da página oficial do próprio tribunal, creditada com o link na página dele."
+      />
 
       <OutrasFrentes atual="judiciario" />
     </div>

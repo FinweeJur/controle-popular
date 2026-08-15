@@ -5,6 +5,7 @@ import {
   TETO_INDICACAO_ANOS,
 } from "@/lib/judiciario/regras";
 import { rotuloCota } from "@/lib/judiciario/rotulos";
+import FonteRodape, { FONTE_SENADO, FONTE_REGUA } from "@/app/judiciario/components/FonteRodape";
 
 export const metadata = {
   title: "Metodologia · Controle Popular — Judiciário",
@@ -103,7 +104,9 @@ export default function Metodologia() {
           O site sempre mostra os dois números da conta (quantas cadeiras e de quantas no
           total), não só a porcentagem — e avisa quando faltam dados suficientes para
           afirmar qualquer tendência. Nunca é uma média ou uma pontuação: é uma contagem
-          simples, que qualquer pessoa pode conferir clicando.
+          simples. Para conferir, a composição de cada tribunal traz o link da fonte de onde
+          foi copiada, quando o tribunal publica uma, e cada indicação traz o documento do
+          Senado, quando o Senado publica um.
         </p>
       </section>
 
@@ -117,6 +120,8 @@ export default function Metodologia() {
           um fato que já foi verificado dessa forma — nunca para decidir um número.
         </p>
       </section>
+
+      <FonteRodape fontes={[FONTE_REGUA, FONTE_SENADO]} />
     </div>
   );
 }

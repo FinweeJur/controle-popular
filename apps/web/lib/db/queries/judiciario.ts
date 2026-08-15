@@ -150,9 +150,15 @@ export async function integrantesSemCadeira(tribunalId: string) {
     origem_carreira: string | null;
     url_curriculo: string | null;
     data_nascimento: string | null;
+    /** De onde a composição foi copiada — o `fonte` de `etl/composicao.py`.
+        Existe na coluna desde a migration 0008 e era gravado sem nunca ser
+        lido; é o que credita a origem no rodapé da página do tribunal. Nem
+        sempre é URL (o STJ publica em PDF e o dado guarda a descrição), por
+        isso a tela testa antes de transformar em link. */
+    fonte_curadoria: string | null;
   }>(sql`
     select m.id, m.nome, m.nome_completo, m.cargo, m.origem_carreira,
-           m.url_curriculo, m.data_nascimento
+           m.url_curriculo, m.data_nascimento, m.fonte_curadoria
       from judiciario.magistrados m
      where m.tribunal_atual = ${tribunalId}
        and not exists (

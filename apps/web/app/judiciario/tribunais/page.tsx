@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/lib/judiciario/link";
 import { listarTribunais } from "@/lib/judiciario/tribunais";
+import FonteRodape, { FONTE_REGUA } from "@/app/judiciario/components/FonteRodape";
 
 export const metadata: Metadata = {
   title: "Tribunais — Controle Popular · Judiciário",
@@ -72,6 +73,11 @@ export default async function Tribunais() {
         </Link>
         .
       </p>
+
+      {/* Esta página é só a régua legal — cadeiras e cotas. Quem ocupa, e de
+          que página oficial esse nome foi copiado, é a página de cada
+          tribunal, que credita a própria fonte. */}
+      <FonteRodape fontes={[FONTE_REGUA]} />
     </div>
   );
 }

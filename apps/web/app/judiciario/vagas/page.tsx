@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/lib/judiciario/link";
 import { proximasVacancias } from "@/lib/judiciario/tribunais";
 import { rotuloCota } from "@/lib/judiciario/rotulos";
+import FonteRodape, { FONTE_REGUA } from "@/app/judiciario/components/FonteRodape";
 
 export const metadata: Metadata = {
   title: "Vagas — Controle Popular · Judiciário",
@@ -59,6 +60,15 @@ export default async function Vagas() {
           </tbody>
         </table>
       )}
+
+      {/* A data de nascimento — o único insumo da conta desta página — vem da
+          curadoria de composição de cada tribunal, creditada com link na
+          página do tribunal. Aqui a fonte é a regra que transforma nascimento
+          em data de vacância, que é lei, não raspagem. */}
+      <FonteRodape
+        fontes={[FONTE_REGUA]}
+        nota="A data de nascimento de cada ministro vem da composição publicada pelo próprio tribunal, creditada na página dele."
+      />
     </div>
   );
 }

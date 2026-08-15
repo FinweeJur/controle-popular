@@ -161,6 +161,13 @@
       "runtimeExecutable": "node",
       "runtimeArgs": ["apps/web/scripts/dev-alvo-estatico.mjs", "--port", "3039"],
       "port": 3039
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-judiciario-procedencia) -- correcao das afirmacoes de procedencia do eixo Judiciario. Mesma razao das entradas acima.",
+      "name": "cp-judiciario-procedencia-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3028"],
+      "port": 3028
     }
   ]
 }

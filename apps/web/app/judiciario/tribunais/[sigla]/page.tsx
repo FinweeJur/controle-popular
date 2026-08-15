@@ -12,6 +12,12 @@ import {
 import { agregarPoder } from "@/lib/judiciario/agregado";
 import { TRIBUNAIS } from "@/lib/judiciario/regras";
 import { rotuloCota, rotuloMotivoVacancia, rotuloResultado } from "@/lib/judiciario/rotulos";
+import FonteRodape, {
+  FONTE_SENADO,
+  FONTE_REGUA,
+  type Fonte,
+} from "@/app/judiciario/components/FonteRodape";
+import { fontesDaComposicao } from "@/lib/judiciario/procedencia";
 
 /**
  * Parte da RÉGUA (`regras.json`) e completa com o BANCO.
@@ -93,6 +99,18 @@ export default async function TribunalPage({
   };
   const direcao = mandatos.filter((m) => m.cargo === "presidente" || m.cargo === "vice_presidente" || m.cargo === "corregedor_eleitoral");
   const membros = mandatos.filter((m) => !direcao.includes(m));
+
+  // Crédito de fonte DERIVADO do próprio dado (`fonte_curadoria`, gravado
+  // por `etl/composicao.py`), nunca de uma tabela de URLs escrita à mão
+  // aqui. A derivação e a guarda de "fonte que não é URL" moram em
+  // `lib/judiciario/procedencia.ts`, com teste.
+  const fontesDaPagina: Fonte[] = [
+    FONTE_REGUA,
+    ...fontesDaComposicao(semCadeira),
+    // O Senado só é fonte onde a nomeação passa por ele: nem na 2ª
+    // instância, nem no TSE, cujos membros são eleitos pelos tribunais.
+    ...(ehSegundaInstancia || ehEletivo ? [] : [FONTE_SENADO]),
+  ];
 
   return (
     <div className="mx-auto max-w-4xl space-y-8 px-4 py-10">
@@ -363,6 +381,20 @@ export default async function TribunalPage({
                         {n.motivo_vacancia ? ` (${rotuloMotivoVacancia(n.motivo_vacancia)})` : ""}
                       </p>
                     )}
+                    {/* Mesmo `url_fonte` de `/judiciario/indicacoes`: já vinha
+                        do ETL e do tipo `Nomeacao`, nunca havia sido exibido. */}
+                    {n.url_fonte && (
+                      <p className="mt-1 text-xs">
+                        <a
+                          href={n.url_fonte}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium underline"
+                        >
+                          documento no Senado ↗
+                        </a>
+                      </p>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -370,6 +402,8 @@ export default async function TribunalPage({
           </section>
         </>
       )}
+
+      <FonteRodape fontes={fontesDaPagina} />
     </div>
   );
 }

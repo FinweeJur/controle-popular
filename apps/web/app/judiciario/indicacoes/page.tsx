@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { listarNomeacoes } from "@/lib/judiciario/tribunais";
 import { rotuloResultado } from "@/lib/judiciario/rotulos";
+import FonteRodape, { FONTE_SENADO } from "@/app/judiciario/components/FonteRodape";
+import { resumoProcedencia } from "@/lib/judiciario/procedencia";
 
 export const metadata: Metadata = {
   title: "Indicações — Controle Popular · Judiciário",
@@ -13,6 +15,11 @@ const fmtData = (d: string | null) =>
 
 export default async function Indicacoes() {
   const nomeacoes = await listarNomeacoes();
+
+  // COBERTURA sempre exposta, e DERIVADA — as duas regras da casa, a
+  // primeira de `lib/judiciario/agregado.ts`. A frase mora em
+  // `lib/judiciario/procedencia.ts` para ficar ao alcance do vitest.
+  const procedencia = resumoProcedencia(nomeacoes);
 
   return (
     <div className="mx-auto max-w-4xl space-y-8 px-4 py-10">
@@ -62,6 +69,20 @@ export default async function Indicacoes() {
                 {n.antecessor_nome && (
                   <span className="opacity-60">vaga de {n.antecessor_nome}</span>
                 )}
+                {/* A procedência clicável de cada indicação. `url_fonte` já
+                    vinha do ETL (`url_documento` do processo do Senado) e já
+                    estava no tipo `Nomeacao` desde a F2 — só nunca havia sido
+                    renderizado, aqui nem na página do tribunal. */}
+                {n.url_fonte && (
+                  <a
+                    href={n.url_fonte}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium underline"
+                  >
+                    documento no Senado ↗
+                  </a>
+                )}
               </div>
             </li>
           ))}
@@ -72,6 +93,8 @@ export default async function Indicacoes() {
         O voto de cada senador na sabatina é secreto por regra do próprio Senado — só o
         resultado final (aprovado ou rejeitado) é público, e é isso que o app mostra.
       </p>
+
+      <FonteRodape fontes={[FONTE_SENADO]} nota={procedencia.frase ?? undefined} />
     </div>
   );
 }
