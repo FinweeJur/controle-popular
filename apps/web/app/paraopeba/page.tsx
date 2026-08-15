@@ -16,6 +16,16 @@ import {
 // Fora do barril de propósito: `biblioteca.ts` lê disco com `node:fs`, e o
 // barril é importado por componente de cliente. Mesma razão de `radar.ts`.
 import { COBERTURA_BIBLIOTECA } from "@/lib/paraopeba/biblioteca";
+// Também fora do barril, por outra razão: o acervo da auditoria tem 336 KiB, e
+// pô-lo em `@/lib/paraopeba` levaria esse peso a toda tela que importa o
+// barril. Aqui só a contagem é usada, e esta rota é servidor — nada disso vai
+// para o payload (ver `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`).
+import {
+  AUDITORIA_AJRI,
+  AUTOR_AUDITORIA_AJRI,
+  INSTRUMENTO_AJRI_ORDEM,
+  PERIODO_AUDITORIA_AJRI,
+} from "@/lib/paraopeba/auditoria-ajri";
 import { GLOSSARIO_PARAOPEBA, PERGUNTAS_PARAOPEBA } from "@/lib/paraopeba/educacao";
 
 /**
@@ -105,6 +115,17 @@ export default function ParaopebaHome() {
         "Cartilhas, boletins, jornais, rádio, vídeos e documentos técnicos publicados pelas próprias assessorias técnicas independentes — não são peças do processo, é o material que elas produziram para as pessoas atingidas. Só metadado e link: o arquivo abre no site da ATI.",
       href: "/paraopeba/biblioteca",
       linkTexto: "Ver a biblioteca →",
+    },
+    {
+      // TERCEIRO cartão de documento, e o texto tem que dizer na primeira
+      // linha de quem é a voz: nos autos falam as partes, na biblioteca falam
+      // as assessorias, e aqui fala quem AUDITA os dois. Sem isso, "mais um
+      // acervo de PDF" é tudo o que se lê.
+      titulo: "Auditoria socioambiental independente",
+      linha: `${formatNumberBR(AUDITORIA_AJRI.length)} documentos em ${formatNumberBR(INSTRUMENTO_AJRI_ORDEM.length)} instrumentos jurídicos`,
+      texto: `Relatórios e notas técnicas da ${AUTOR_AUDITORIA_AJRI}, a auditoria independente prevista no Acordo de R$ 37,6 bilhões para fiscalizar a reparação — de ${PERIODO_AUDITORIA_AJRI.de.slice(0, 4)} a ${PERIODO_AUDITORIA_AJRI.ate.slice(0, 4)}. Catálogo e link: o documento abre no portal da própria auditoria, que exige cadastro.`,
+      href: "/paraopeba/auditoria",
+      linkTexto: "Ver a auditoria →",
     },
   ];
 

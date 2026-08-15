@@ -11,6 +11,19 @@ import {
   TEMA_CLIPPING_IJ_ORDEM,
 } from "./clipping-ij";
 import { DOCUMENTOS_PROCESSO, COBERTURA_DOCUMENTOS_PROCESSO } from "./documentos";
+import {
+  AUDITORIA_AJRI,
+  AUTOR_AUDITORIA_AJRI,
+  FONTE_AUDITORIA_AJRI,
+  INSTRUMENTO_AJRI_LABEL,
+  INSTRUMENTO_AJRI_ORDEM,
+  PERIODO_AUDITORIA_AJRI,
+  TEMAS_AJRI_FUNDIDOS,
+  TEMA_AJRI_LABEL,
+  TEMA_AJRI_ORDEM,
+  TIPO_DOCUMENTO_AJRI_LABEL,
+  urlDocumentoAjri,
+} from "./auditoria-ajri";
 
 /**
  * `clipping.ts`, `linha-do-tempo.ts`, `atores.ts` e `auxilio.ts` foram
@@ -294,5 +307,189 @@ describe("documentos.ts — cobertura declarada bate com o acervo publicado", ()
   test("ids são únicos", () => {
     const ids = DOCUMENTOS_PROCESSO.map((d) => d.id);
     expect(new Set(ids).size).toBe(ids.length);
+  });
+});
+
+/**
+ * `auditoria-ajri.ts` é GERADO por `scripts/extrair-auditoria-ajri.mts` a
+ * partir do catálogo que `scripts/coletor_auditoria.py` raspa do portal da
+ * auditoria socioambiental. O JSON não é versionado — de propósito, para não
+ * existirem duas cópias do mesmo acervo —, então estes testes são a única
+ * régua que sobra no repositório: eles travam contra o portal-fonte o que foi
+ * medido em 15/08/2026, e falham se uma regeneração cortar, duplicar ou
+ * reclassificar documento sem ninguém notar.
+ */
+describe("auditoria-ajri.ts — catálogo da auditoria independente (467 documentos medidos)", () => {
+  test("tem exatamente 467 documentos, o número medido no portal em 15/08/2026", () => {
+    expect(AUDITORIA_AJRI.length).toBe(467);
+  });
+
+  test("a distribuição por tipo bate com a medida (391 Relatórios · 76 Notas Técnicas)", () => {
+    const contagem: Record<string, number> = {};
+    for (const d of AUDITORIA_AJRI) contagem[d.tipo] = (contagem[d.tipo] ?? 0) + 1;
+    expect(contagem["relatorio"]).toBe(391);
+    expect(contagem["nota-tecnica"]).toBe(76);
+    expect(Object.keys(contagem).length).toBe(Object.keys(TIPO_DOCUMENTO_AJRI_LABEL).length);
+  });
+
+  test("a distribuição pelos 7 instrumentos jurídicos bate com as facetas do portal", () => {
+    const contagem: Record<string, number> = {};
+    for (const d of AUDITORIA_AJRI) contagem[d.instrumento] = (contagem[d.instrumento] ?? 0) + 1;
+    expect(contagem).toEqual({
+      "acordo-de-reparacao": 93,
+      "acoes-emergenciais": 87,
+      monitoramento: 85,
+      "aguas-e-seguranca-hidrica": 84,
+      "estudo-de-risco": 82,
+      "seguranca-das-estruturas": 30,
+      "estudo-da-producao-agropecuaria": 6,
+    });
+    // A soma das facetas TEM que fechar com o acervo: se o portal ganhar um
+    // instrumento novo e a coleta não o pegar, é aqui que aparece.
+    const soma = Object.values(contagem).reduce((a, b) => a + b, 0);
+    expect(soma).toBe(AUDITORIA_AJRI.length);
+  });
+
+  test("todo documento tem id, código, descrição, data, tema e rótulos conhecidos", () => {
+    for (const d of AUDITORIA_AJRI) {
+      expect(d.id, "id ausente").toBeGreaterThan(0);
+      expect(d.codigo, `documento ${d.id} sem código`).toBeTruthy();
+      expect(d.descricao, `documento ${d.id} sem descrição`).toBeTruthy();
+      expect(d.data, `documento ${d.id} sem data`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(d.temas.length, `documento ${d.id} sem tema`).toBeGreaterThan(0);
+      expect(INSTRUMENTO_AJRI_LABEL[d.instrumento]).toBeTruthy();
+      expect(TIPO_DOCUMENTO_AJRI_LABEL[d.tipo]).toBeTruthy();
+      for (const t of d.temas) expect(TEMA_AJRI_LABEL[t], `tema órfão: ${t}`).toBeTruthy();
+    }
+  });
+
+  test("ids e códigos são únicos — 467 de cada", () => {
+    expect(new Set(AUDITORIA_AJRI.map((d) => d.id)).size).toBe(467);
+    expect(new Set(AUDITORIA_AJRI.map((d) => d.codigo)).size).toBe(467);
+  });
+
+  /**
+   * O código carrega `RP` (Relatório) ou `TN` (Nota Técnica) na 5ª parte, e
+   * `projeto`/`disciplina`/`ano` nas outras. Se a geração trocar o mapa de
+   * tipos, o código e o campo divergem — e a ficha passa a dizer uma coisa
+   * com o carimbo da outra.
+   */
+  test("o código de cada documento concorda com tipo, projeto, disciplina e ano", () => {
+    const sigla: Record<string, string> = { relatorio: "RP", "nota-tecnica": "TN" };
+    for (const d of AUDITORIA_AJRI) {
+      const p = d.codigo.split("-");
+      expect(p.length, `código fora do formato: ${d.codigo}`).toBe(8);
+      expect(p[0]).toBe(d.projeto);
+      expect(p[3]).toBe(d.disciplina);
+      expect(p[4]).toBe(sigla[d.tipo]);
+      expect(p[7]).toBe(d.ano);
+    }
+  });
+
+  test("PERIODO_AUDITORIA_AJRI é o mínimo e o máximo reais das datas — nunca digitado solto", () => {
+    const datas = AUDITORIA_AJRI.map((d) => d.data).sort();
+    expect(PERIODO_AUDITORIA_AJRI.de).toBe(datas[0]);
+    expect(PERIODO_AUDITORIA_AJRI.ate).toBe(datas[datas.length - 1]);
+    expect(PERIODO_AUDITORIA_AJRI.de).toBe("2019-02-28");
+    expect(PERIODO_AUDITORIA_AJRI.ate).toBe("2026-07-31");
+  });
+
+  /**
+   * O acervo alcança um mês depois do rompimento (25/01/2019) e dois anos
+   * antes do Acordo de R$ 37,6 bi (04/02/2021) — a auditoria das ações
+   * emergenciais começou muito antes de existir Acordo para auditar.
+   */
+  test("começa em 2019, antes do Acordo — e o primeiro documento é das Ações Emergenciais", () => {
+    const primeiro = [...AUDITORIA_AJRI].sort((a, b) => a.data.localeCompare(b.data))[0];
+    expect(primeiro.data < "2021-02-04").toBe(true);
+    expect(primeiro.instrumento).toBe("acoes-emergenciais");
+  });
+
+  /**
+   * O que a normalização de tema fundiu, travado no dado. O portal cadastra
+   * `Risco Saúde Pública` duas vezes (uma sem acento) e `Segurança do
+   * Alimento` duas vezes com o mesmo nome; sem a fusão a tela teria 27
+   * filtros, dois deles fantasmas com 3 e 1 documento.
+   */
+  test("as 27 facetas do portal viraram 25 temas, e as 2 fusões estão declaradas", () => {
+    expect(TEMA_AJRI_ORDEM.length).toBe(25);
+    expect(Object.keys(TEMA_AJRI_LABEL).length).toBe(25);
+    expect(TEMAS_AJRI_FUNDIDOS.length).toBe(2);
+    const facetas = TEMAS_AJRI_FUNDIDOS.reduce((s, f) => s + f.facetas.length, 0);
+    // 25 slugs, 2 deles vindos de 2 facetas cada = 27 facetas na origem.
+    expect(TEMA_AJRI_ORDEM.length - TEMAS_AJRI_FUNDIDOS.length + facetas).toBe(27);
+
+    const saude = TEMAS_AJRI_FUNDIDOS.find((f) => f.slug === "risco-saude-publica");
+    expect(saude?.grafias).toEqual(["Risco Saúde Publica", "Risco Saúde Pública"]);
+    // Vence a grafia mais frequente (79 documentos), não a primeira que aparece (3).
+    expect(TEMA_AJRI_LABEL["risco-saude-publica"]).toBe("Risco Saúde Pública");
+
+    const alimento = TEMAS_AJRI_FUNDIDOS.find((f) => f.slug === "seguranca-do-alimento");
+    // Nome idêntico, faceta dobrada — é registro duplicado, não erro de acento.
+    expect(alimento?.grafias.length).toBe(1);
+    expect(alimento?.facetas.length).toBe(2);
+  });
+
+  test("os temas fundidos somam o que as duas facetas somavam (82 e 6)", () => {
+    const conta = (slug: string) =>
+      AUDITORIA_AJRI.filter((d) => (d.temas as string[]).includes(slug)).length;
+    expect(conta("risco-saude-publica")).toBe(79 + 3);
+    expect(conta("seguranca-do-alimento")).toBe(5 + 1);
+  });
+
+  test("nenhuma ficha repete tema depois da normalização", () => {
+    for (const d of AUDITORIA_AJRI) {
+      expect(new Set(d.temas).size, `documento ${d.id} com tema repetido`).toBe(d.temas.length);
+    }
+  });
+
+  test("TEMA_AJRI_ORDEM e INSTRUMENTO_AJRI_ORDEM não prometem filtro vazio", () => {
+    const temasUsados = new Set(AUDITORIA_AJRI.flatMap((d) => d.temas));
+    for (const t of TEMA_AJRI_ORDEM) expect(temasUsados, `tema sem documento: ${t}`).toContain(t);
+    for (const t of temasUsados) expect(TEMA_AJRI_ORDEM).toContain(t);
+
+    const instrumentosUsados = new Set(AUDITORIA_AJRI.map((d) => d.instrumento));
+    for (const i of INSTRUMENTO_AJRI_ORDEM) expect(instrumentosUsados).toContain(i);
+    for (const i of instrumentosUsados) expect(INSTRUMENTO_AJRI_ORDEM).toContain(i);
+  });
+
+  /**
+   * A regra de conteúdo que não é negociável: material de terceiro só entra
+   * com crédito e com link canônico para a fonte oficial. `autor` é constante
+   * porque os 467 documentos são da AECOM (conferido registro a registro na
+   * geração), e a URL é derivada do id — se ela deixar de apontar para o
+   * portal, o catálogo vira republicação sem fonte.
+   */
+  test("todo registro rende um link canônico para o portal da auditoria", () => {
+    expect(AUTOR_AUDITORIA_AJRI).toBe("AECOM");
+    expect(FONTE_AUDITORIA_AJRI.autor).toBe("AECOM");
+    expect(FONTE_AUDITORIA_AJRI.repositorio).toMatch(
+      /^https:\/\/portal\.auditoriasocioambiental\.com\.br\//
+    );
+    for (const d of AUDITORIA_AJRI) {
+      const url = urlDocumentoAjri(d.id);
+      expect(url).toBe(`${FONTE_AUDITORIA_AJRI.repositorio}/${d.id}/download_cover`);
+      expect(url).toMatch(/^https:\/\//);
+    }
+    expect(new Set(AUDITORIA_AJRI.map((d) => urlDocumentoAjri(d.id))).size).toBe(467);
+  });
+
+  /**
+   * Trava de payload. `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`: o deploy de
+   * 15/08/2026 morreu porque uma rota serializou o corpus inteiro e o asset
+   * passou de 25 MiB. Aqui o acervo é importado (não vai por prop), mas o
+   * texto ainda pesa — 155 KB de descrição. Se alguém dobrar isso sem paginar
+   * a tela, é melhor descobrir no teste do que no deploy.
+   *
+   * Medido em 15/08/2026: 308.788 bytes serializados (24 KB em gzip — a
+   * descrição repete muita fórmula contratual). O teto de 400 KB dá folga
+   * para uns 200 documentos novos e ainda assim avisa antes de dobrar.
+   */
+  test("o texto do acervo continua abaixo de 400 KB — teto de payload da rota", () => {
+    const bytes = new TextEncoder().encode(JSON.stringify(AUDITORIA_AJRI)).length;
+    expect(bytes).toBeLessThan(400_000);
+    // Piso também: um corte acidental na regeneração encolheria o acervo, e
+    // "menos dado" não falha em nenhum outro teste de conteúdo.
+    expect(bytes).toBeGreaterThan(250_000);
   });
 });

@@ -119,6 +119,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3030"],
       "port": 3030
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-ajri) -- catalogo da auditoria socioambiental independente do Acordo de Brumadinho. Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, e sem aviso nenhum.",
+      "name": "cp-ajri-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3033"],
+      "port": 3033
     }
   ]
 }

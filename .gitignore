@@ -81,3 +81,13 @@ apps/web/public/terras/globo/scripts/.tmp-ingest/
 # ponto de retomada de um PC nao vale nada no outro. O que importa e o JSON
 # consolidado em apps/web/data/, esse sim versionado.
 apps/web/.tmp-salic/
+
+# Catalogo bruto da auditoria socioambiental (AJRI/Brumadinho), saida de
+# `scripts/coletor_auditoria.py`. Nao e versionado de proposito: o acervo
+# publicado e `apps/web/lib/paraopeba/auditoria-ajri.ts`, gerado dele por
+# `scripts/extrair-auditoria-ajri.mts`, e guardar as duas copias e como um
+# repo aprende a divergir de si mesmo (docs/HANDOFF-PAINEL-PARAOPEBA-PAGINAS-
+# PERDIDAS.md §0: editar a copia que nao esta publicada custou um dia).
+# A proveniencia mora no par que E versionado: o coletor e
+# docs/FONTES-AUDITORIA-AJRI.md.
+.tmp-fontes/

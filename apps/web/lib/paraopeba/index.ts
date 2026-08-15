@@ -25,6 +25,14 @@ export * from "./linha-do-tempo";
 export * from "./atores";
 export * from "./auxilio";
 export * from "./documentos";
+// `auditoria-ajri.ts` NÃO entra aqui de propósito, e a razão é peso, não
+// origem: são 336 KiB de catálogo (467 documentos com descrição longa), e este
+// barril é importado por telas que não têm nada a ver com a auditoria.
+// Reexportá-lo apostaria em tree-shaking para não afundar o payload das outras
+// rotas — e `docs/HANDOFF-PAYLOAD-LEGISLACAO.md` é o registro de um deploy que
+// morreu justamente por payload de rota. Quem precisa importa de
+// `@/lib/paraopeba/auditoria-ajri`, como já acontece com `biblioteca.ts` e
+// `radar.ts` (lá o motivo é `node:fs`).
 
 /** Fonte do clipping/linha do tempo/atores/auxílio — citar sempre que exibir. */
 export const FONTE_PAINEL = {
