@@ -689,6 +689,22 @@ export const LAYER_REGISTRY = [
     color: 0x24cba6, /* hex calculado, hue 172,55° */ on: false, render: 'fill', listavel: true,
   },
   {
+    // Novo em 15/08/2026 — CNUC/MMA pelo GeoServer da INDE, ver
+    // scripts/ingerir_cnuc_unidades_conservacao.py.
+    //
+    // A COR: hue 235,4° em OKLCH, o mais livre do painel — 12,0° do vizinho
+    // mais próximo, acima do piso de 11,6° que a paleta exige, e longe de
+    // `--fiction` (326,6°), reservada a dado inventado. NÃO é verde, que
+    // seria o óbvio para parque: os três verdes (129°, 146°, 163°) já estão
+    // ocupados e qualquer vão entre eles cai abaixo do piso. Separação de
+    // paleta ganha da associação temática — duas camadas que o olho confunde
+    // são piores que uma camada de cor inesperada.
+    id: 'unidades-conservacao', label: 'Unidades de conservação',
+    hint: 'As 387 unidades de conservação com área em Minas, pelo CNUC/MMA: 198 estaduais, 111 federais, 78 municipais. Inclui as 200 RPPNs (reservas particulares), os 81 parques e as 46 APAs — a categoria de cada uma está na ficha.',
+    aviso: 'Uma UC que cruza divisa entra INTEIRA, não recortada em Minas: a APA Serra da Mantiqueira aparece com as partes paulista e fluminense, porque recortar adulteraria o limite oficial da unidade. O campo "uf" da ficha diz quais estados ela cruza. — A geometria foi simplificada para caber num globo em WebGL (~11 m de tolerância; unidade menor que ~120 ha não foi tocada). Serve para VER onde a unidade fica, nunca para medir: a área oficial está em "area_ha", que vem da fonte e não é recalculada. Quem precisar cruzar UC com mineração ou barragem tem de baixar a malha completa.',
+    color: 0x54b6ec, /* oklch(0.74 0.12 235.4) */ on: false, render: 'fill', listavel: true,
+  },
+  {
     id: 'terras-indigenas', label: 'Terras indígenas',
     hint: 'As 16 terras indígenas de Minas Gerais, pelo WFS oficial da FUNAI — TODAS as fases de demarcação, não só as já regularizadas. A fase de cada uma aparece na ficha.',
     aviso: 'O direito territorial indígena é ORIGINÁRIO (CF art. 231): a demarcação DECLARA um direito que já existe, não o cria. Uma TI "Em Estudo" ou "Delimitada" tem o mesmo peso jurídico de consulta (Convenção 169 da OIT) que uma "Regularizada" — por isso o mapa nunca filtra por fase sozinho. — Esta camada NÃO representa territórios de povos e comunidades tradicionais não indígenas e não quilombolas (geraizeiros, vazanteiros, apanhadoras de flores, pescadores artesanais, povos de terreiro): não existe base geográfica oficial aberta para eles em MG — nem no IDE-Sisema, nem em base federal sem login. Ausência no mapa não é ausência do povo: é lacuna de dado, registrada aqui de propósito para ninguém confundir uma coisa com a outra.',
@@ -1200,6 +1216,17 @@ export const CAMADAS = [
     label: 'Brumadinho — áreas de restauração',
     hint: '35 áreas de revegetação/restauração, por platô/setor, nas áreas afetadas pelo rompimento.',
     fontes: ['brumadinho-restauracao'],
+  },
+  {
+    // Fica em 'territorio-mineracao' e não numa seção própria: a pergunta que
+    // ela responde no painel é a mesma das vizinhas — onde há área protegida
+    // sob pressão de mineração e barragem. Uma seção "áreas protegidas" com
+    // uma camada só seria mais um nível de menu para o leitor abrir.
+    id: 'unidades-conservacao', assunto: 'territorio-mineracao',
+    label: 'Unidades de conservação',
+    hint: 'As 387 unidades de conservação com área em Minas, pelo CNUC/MMA: 198 estaduais, 111 federais, 78 municipais. Inclui as 200 RPPNs, os 81 parques e as 46 APAs — a categoria de cada uma está na ficha.',
+    aviso: 'Uma UC que cruza divisa entra INTEIRA, não recortada em Minas: a APA Serra da Mantiqueira aparece com as partes paulista e fluminense, porque recortar adulteraria o limite oficial. — Geometria simplificada para caber num globo em WebGL: serve para VER onde a unidade fica, nunca para medir. A área oficial está no campo "area_ha" da ficha.',
+    fontes: ['unidades-conservacao'],
   },
   {
     id: 'terras-indigenas', assunto: 'territorio-mineracao',

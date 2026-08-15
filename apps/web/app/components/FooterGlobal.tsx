@@ -52,6 +52,16 @@ const LINKS_PORTAL = [
   { label: "Busca", href: "/busca" },
   { label: "Páginas mais vistas", href: "/dados/populares" },
   { label: "Metodologia", href: "/sobre#metodologia" },
+  // "Termos" existiu no rodapé do eixo Cidades apontando para `/termos`, rota
+  // que nunca existiu — 404 em toda página daquele eixo, achado na auditoria
+  // de hiperlinks de 13/08 e resolvido lá REMOVENDO o link, porque não havia
+  // destino. Agora há (`app/termos/page.tsx`), e ele volta AQUI, não no
+  // `[municipio]/components/Footer.tsx`: a página fala do portal inteiro, e
+  // este é o único rodapé que aparece nas cinco frentes. Voltar no rodapé de
+  // cidade cobriria uma zona só e ainda exigiria `<a>` cru no meio de um bloco
+  // de `<Link>` de zona — o wrapper prefixaria `/betim/termos`, a mesma classe
+  // de 404 mudo que o arquivo de lá documenta ter acontecido três vezes.
+  { label: "Termos e origem dos dados", href: "/termos" },
   { label: "Sobre o projeto", href: "/sobre" },
 ];
 

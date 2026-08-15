@@ -115,7 +115,14 @@ export default function Footer({ cidade }: { cidade: Cidade }) {
               página do eixo Cidades, desde sempre (achado na auditoria de
               hiperlinks de 2026-08-13). Mesma doutrina do resto deste
               arquivo (ver `acaoCidada` acima): sem destino real, o link
-              some, não aponta para lugar nenhum. */}
+              some, não aponta para lugar nenhum.
+
+              ⟲ 15/08: a rota EXISTE agora (`app/termos/page.tsx`, termo de
+              uso e origem dos dados). O link não volta para cá: ele entrou
+              em `FooterGlobal.tsx` — renderizado logo acima, dentro deste
+              mesmo rodapé —, que é o único que aparece nas cinco frentes.
+              Aqui ele teria de ser `<a>` cru no meio de `<Link>` de zona,
+              porque o wrapper prefixaria `/betim/termos`. */}
           <Link href="/sobre" className="hover:text-primary">
             Sobre o projeto
           </Link>

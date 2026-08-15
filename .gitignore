@@ -74,3 +74,10 @@ apps/web/.tmp-ingest/
 # A linha antiga fica por enquanto, para limpar clone que ainda tenha o
 # diretório velho no disco.
 apps/web/public/terras/globo/scripts/.tmp-ingest/
+
+# Rascunho da coleta do SALIC (scripts/coletar-salic-rouanet.mts): NDJSON por
+# pagina, checkpoint de retomada e a saida da sonda. Sao artefato de UMA
+# execucao desta maquina -- 281 requisicoes para MG, 1.136 para o Brasil, e o
+# ponto de retomada de um PC nao vale nada no outro. O que importa e o JSON
+# consolidado em apps/web/data/, esse sim versionado.
+apps/web/.tmp-salic/

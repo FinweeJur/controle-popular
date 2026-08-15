@@ -35,15 +35,16 @@ import {
   ASSUNTOS, CAMADAS, CAMADAS_RESOLVIDAS, CAMADA_POR_FONTE, LAYER_REGISTRY,
 } from '../config.js';
 
-test('CAMADAS reais: 38 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
+test('CAMADAS reais: 39 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
   const grupos = agruparPorAssunto(CAMADAS_RESOLVIDAS, ASSUNTOS);
 
   assert.equal(
-    CAMADAS.length, 38,
+    CAMADAS.length, 39,
     // ⟲ 13/08/2026, mais tarde: subiu de 22 para 30 — as 8 camadas do
     // rompimento real da B1/Brumadinho (docs/PLANO-INTEGRACAO-BRUMADINHO.md,
     // seção 1.2), cada uma numa linha própria, sem irmã regional.
-    // ⟲ 15/08/2026: 30 → 38 ao mesclar o trabalho do PC externo. As 8 são
+    // ⟲ 15/08/2026: 30 → 39. Oito ao mesclar o trabalho do PC externo, e a
+    // nona é `unidades-conservacao` (CNUC/MMA), desta sessão. As 8 são
     // as 5 de alerta território × mineração (sobreposição e faixa de 8 km da
     // Portaria 60/2015, mais quilombola × mancha de barragem), as normas que
     // criam área protegida, os documentos do processo por município, e a
@@ -74,7 +75,7 @@ test('CAMADAS reais: 38 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   }
 });
 
-test('a reorganização de fato UNIFICOU: 42 fontes em 38 linhas, e as 4 que somem são as irmãs', () => {
+test('a reorganização de fato UNIFICOU: 43 fontes em 39 linhas, e as 4 que somem são as irmãs', () => {
   // ⟲ 13/08/2026, fim do dia: 36→34 fontes, LINHAS continuam 30. O dono
   // perguntou "qual o sentido de dividir?" sobre as TRÊS fontes de
   // território quilombola (bacia, Vales, demais regiões) e tinha razão: a
@@ -87,13 +88,14 @@ test('a reorganização de fato UNIFICOU: 42 fontes em 38 linhas, e as 4 que som
   // apareceram 9 sobreposições que nenhuma das três camadas antigas pegava
   // — incluindo lavra de OURO autorizada sobre São Domingos e Machadinho.
   // Conceito partido em três arquivos estava escondendo alerta.
-  // ⟲ 15/08/2026: 34 → 42 fontes e 30 → 38 linhas, +8 de cada no merge do PC
-  // externo. As 8 chegaram com fonte única, então a diferença fonte-linha
+  // ⟲ 15/08/2026: 34 → 43 fontes e 30 → 39 linhas — +8 de cada no merge do PC
+  // externo, +1 de `unidades-conservacao`. As 9 chegaram com fonte única, e a
+  // soma continua fechando, então a diferença fonte-linha
   // continua 4 — são as mesmas quatro irmãs regionais de sempre, listadas
   // abaixo. Se um dia a diferença mudar sem esta lista mudar junto, é porque
   // alguém partiu ou unificou conceito sem dizer.
-  assert.equal(LAYER_REGISTRY.length, 42, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 38, 'sentinela: o número de LINHAS mudou');
+  assert.equal(LAYER_REGISTRY.length, 43, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 39, 'sentinela: o número de LINHAS mudou');
 
   // ⟲ Fim do dia: `territorios-quilombolas` SAIU desta lista. Ela tinha 2
   // fontes, chegou a ter 3, e agora tem UMA só — as três foram unificadas.
@@ -159,6 +161,9 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     'documentos-processo-municipios',
     // Fundo de imagem de satélite do globo (Esri World Imagery).
     'imagens-satelite',
+    // Unidades de conservação de Minas, CNUC/MMA pelo GeoServer da INDE —
+    // ver scripts/ingerir_cnuc_unidades_conservacao.py.
+    'unidades-conservacao',
   ];
 
   const existentes = LAYER_REGISTRY.map((f) => f.id).sort();
