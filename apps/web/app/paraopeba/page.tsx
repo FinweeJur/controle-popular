@@ -15,6 +15,7 @@ import {
 // Fora do barril de propósito: `biblioteca.ts` lê disco com `node:fs`, e o
 // barril é importado por componente de cliente. Mesma razão de `radar.ts`.
 import { COBERTURA_BIBLIOTECA } from "@/lib/paraopeba/biblioteca";
+import { GLOSSARIO_PARAOPEBA, PERGUNTAS_PARAOPEBA } from "@/lib/paraopeba/educacao";
 
 /**
  * Home da frente /paraopeba — acompanhamento da reparação pelo rompimento
@@ -43,6 +44,17 @@ export default function ParaopebaHome() {
   const tiposDeAtor = new Set(ATORES_REPARACAO.map((a) => a.categoria));
 
   const BLOCOS = [
+    {
+      // PRIMEIRO cartão de propósito: as siglas deste bloco (NAE, PTR, ERSHRE,
+      // zona quente) aparecem em todas as outras telas. Quem chega sem elas lê
+      // o resto sem entender, e não sabe que existe um lugar que explica.
+      titulo: "Entenda o caso",
+      linha: `${formatNumberBR(PERGUNTAS_PARAOPEBA.length)} perguntas e ${formatNumberBR(GLOSSARIO_PARAOPEBA.length)} termos`,
+      texto:
+        "O que é o Novo Auxílio Emergencial, o que era o PTR, o que significa zona quente — as siglas que aparecem em toda página deste bloco, explicadas em linguagem comum pelo painel de acompanhamento.",
+      href: "/paraopeba/entenda",
+      linkTexto: "Entender o caso →",
+    },
     {
       titulo: "Clipping",
       linha: `${formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias`,
