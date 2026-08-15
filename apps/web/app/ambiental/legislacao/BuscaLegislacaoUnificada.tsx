@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { semAcento } from "@/lib/busca/normalizar";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import type { FonteLegislacaoAmbiental, LegislacaoAmbientalRow } from "@/lib/db/queries/legislacao-ambiental";
+import { expandir, type CorpusCompacto } from "@/lib/ambiental/payload-compacto";
 import type {
   NormaDireitoCriticoRow,
   PrecedenteDireitoCriticoRow,
@@ -134,12 +135,19 @@ const TEMAS_SEM_INSTRUMENTO_CRITICO = new Set(["especies"]);
 const PAGINA = 40;
 
 interface Props {
-  estaduais: LegislacaoAmbientalRow[];
+  /** Chega COMPACTADO, não como array de linhas — ver
+   *  `lib/ambiental/payload-compacto.ts`. O corpus atravessa a fronteira
+   *  servidor→cliente dentro do payload da rota, e em 15/08/2026 ele passou
+   *  do teto de 25 MiB por asset do Workers, derrubando o deploy. Expandir
+   *  aqui custa um `map` no cliente e devolve exatamente a forma que o resto
+   *  deste arquivo já consumia. */
+  corpus: CorpusCompacto;
   criticas: NormaDireitoCriticoRow[];
   precedentes: PrecedenteDireitoCriticoRow[];
 }
 
-export default function BuscaLegislacaoUnificada({ estaduais, criticas, precedentes }: Props) {
+export default function BuscaLegislacaoUnificada({ corpus, criticas, precedentes }: Props) {
+  const estaduais: LegislacaoAmbientalRow[] = useMemo(() => expandir(corpus), [corpus]);
   const [q, setQ] = useState("");
   const [esfera, setEsfera] = useState<EsferaLegislacao | "">("");
   const [classe, setClasse] = useState<ClasseItemLegislacao | "">("");

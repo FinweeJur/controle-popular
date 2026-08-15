@@ -1,5 +1,5 @@
 {
-  "gerado_em_utc": "2026-08-15T17:07:38.088Z",
+  "gerado_em_utc": "2026-08-15T19:43:04.129Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
     {
@@ -293,6 +293,16 @@
       "servico": "FUNAI — WFS oficial (Funai:tis_poligonais), todas as fases de demarcação"
     },
     {
+      "camada": "unidades-conservacao",
+      "feicoes": 387,
+      "bytes": 3279478,
+      "comprimido": false,
+      "sha256": "51059d5f1705a2c6d207f299424339ec08747c44ef0ee0100ae1ce49f4b5246d",
+      "mtime_utc": "2026-08-15T19:43:04.129Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
       "camada": "vazio-cadastral-bacia",
       "feicoes": 35,
       "bytes": 667213,
@@ -411,5 +421,7 @@
     }
   ],
   "lacuna_principal": "Não existe base aberta de terra devoluta reconhecida, nem camada de terras do Estado de Minas. Por isso o mapa mostra terra SEM CADASTRO, que é outra coisa: ausência de declaração no CAR não é ausência de dono.",
-  "camadas_sem_origem_declarada": []
+  "camadas_sem_origem_declarada": [
+    "unidades-conservacao"
+  ]
 }

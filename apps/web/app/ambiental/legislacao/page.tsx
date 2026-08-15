@@ -7,6 +7,10 @@ import {
 } from "@/lib/db/queries/legislacao-ambiental";
 import { listarNormasDireitoCritico, listarPrecedentesDireitoCritico } from "@/lib/db/queries/direito-critico";
 import BuscaLegislacaoUnificada from "./BuscaLegislacaoUnificada";
+// Compactado ANTES de cruzar a fronteira: o corpus inteiro vai no payload
+// da rota, e sem isto o asset passa dos 25 MiB do Workers. Ver
+// `lib/ambiental/payload-compacto.ts` e `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`.
+import { compactar } from "@/lib/ambiental/payload-compacto";
 import Link from "@/lib/ambiental/link";
 
 export const metadata: Metadata = {
@@ -153,7 +157,7 @@ export default async function LegislacaoAmbientalIndex() {
       </header>
 
       <section className="mt-10">
-        <BuscaLegislacaoUnificada estaduais={estaduais} criticas={criticas} precedentes={precedentes} />
+        <BuscaLegislacaoUnificada corpus={compactar(estaduais)} criticas={criticas} precedentes={precedentes} />
       </section>
 
       <section className="mt-12 border-t border-border pt-8">
