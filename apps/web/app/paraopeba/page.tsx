@@ -12,6 +12,9 @@ import {
   DOCUMENTOS_PROCESSO,
   COBERTURA_DOCUMENTOS_PROCESSO,
 } from "@/lib/paraopeba";
+// Fora do barril de propósito: `biblioteca.ts` lê disco com `node:fs`, e o
+// barril é importado por componente de cliente. Mesma razão de `radar.ts`.
+import { COBERTURA_BIBLIOTECA } from "@/lib/paraopeba/biblioteca";
 
 /**
  * Home da frente /paraopeba — acompanhamento da reparação pelo rompimento
@@ -77,6 +80,18 @@ export default function ParaopebaHome() {
         "Documentos do processo judicial da reparação que citam cada município da bacia, direto do índice público da Plataforma Brumadinho UFMG — com link e citação em cada um.",
       href: "/paraopeba/documentos",
       linkTexto: "Ver os documentos →",
+    },
+    {
+      // Cartão vizinho ao de "Documentos do processo", e o texto precisa
+      // separar os dois logo na primeira linha: as duas rotas soam iguais e
+      // guardam coisas opostas — lá são os autos, aqui é o que as ATIs
+      // escreveram para quem foi atingido.
+      titulo: "Biblioteca das assessorias",
+      linha: `${formatNumberBR(COBERTURA_BIBLIOTECA.publicados)} publicações`,
+      texto:
+        "Cartilhas, boletins, jornais, rádio, vídeos e documentos técnicos publicados pelas próprias assessorias técnicas independentes — não são peças do processo, é o material que elas produziram para as pessoas atingidas. Só metadado e link: o arquivo abre no site da ATI.",
+      href: "/paraopeba/biblioteca",
+      linkTexto: "Ver a biblioteca →",
     },
   ];
 
