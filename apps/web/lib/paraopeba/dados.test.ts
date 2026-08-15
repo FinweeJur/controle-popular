@@ -3,6 +3,13 @@ import { CLIPPING_PARAOPEBA, PERIODO_CLIPPING, TIPO_NOTICIA_LABEL } from "./clip
 import { MARCOS_PARAOPEBA } from "./linha-do-tempo";
 import { ATORES_REPARACAO, CATEGORIA_ATOR_LABEL } from "./atores";
 import { PAGAMENTOS_PARAOPEBA, RESUMO_AUXILIO_PARAOPEBA } from "./auxilio";
+import {
+  CLIPPING_IJ,
+  PERIODO_CLIPPING_IJ,
+  INSTITUICAO_JUSTICA_LABEL,
+  TEMA_CLIPPING_IJ_LABEL,
+  TEMA_CLIPPING_IJ_ORDEM,
+} from "./clipping-ij";
 import { DOCUMENTOS_PROCESSO, COBERTURA_DOCUMENTOS_PROCESSO } from "./documentos";
 
 /**
@@ -120,6 +127,92 @@ describe("auxilio.ts — parsing de PAYMENTS e DATA_PANEL (9 pagamentos medidos)
     // apurado por este portal (`docs/PLANO-INGESTAO-PARAOPEBA.md`, 1.6) —
     // se ela sumir, alguém removeu a única ressalva de proveniência.
     expect(RESUMO_AUXILIO_PARAOPEBA.nota.length).toBeGreaterThan(20);
+  });
+});
+
+describe("clipping-ij.ts — parsing de CLIPPING_DATA (59 itens medidos)", () => {
+  test("tem exatamente 59 matérias, o número medido em docs/HANDOFF-PAINEL-PARAOPEBA-PAGINAS-PERDIDAS.md §3", () => {
+    expect(CLIPPING_IJ.length).toBe(59);
+  });
+
+  test("todo item tem id, título, resumo, data, fonte e url — nenhum campo obrigatório vazio", () => {
+    for (const n of CLIPPING_IJ) {
+      expect(n.id, "id ausente").toBeTruthy();
+      expect(n.titulo, `matéria ${n.id} sem título`).toBeTruthy();
+      expect(n.resumo, `matéria ${n.id} sem resumo`).toBeTruthy();
+      expect(n.data, `matéria ${n.id} sem data`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(n.fonte, `matéria ${n.id} sem fonte`).toBeTruthy();
+      expect(n.url, `matéria ${n.id} sem url`).toMatch(/^https?:\/\//);
+      expect(Object.keys(INSTITUICAO_JUSTICA_LABEL)).toContain(n.instituicao);
+      expect(Object.keys(TEMA_CLIPPING_IJ_LABEL)).toContain(n.tema);
+    }
+  });
+
+  test("ids são únicos", () => {
+    const ids = CLIPPING_IJ.map((n) => n.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  test("a distribuição por instituição bate com a contagem medida no HTML (MPMG 25 · DPMG 20 · MPF 14)", () => {
+    const contagem: Record<string, number> = {};
+    for (const n of CLIPPING_IJ) contagem[n.instituicao] = (contagem[n.instituicao] ?? 0) + 1;
+    expect(contagem["mpmg"]).toBe(25);
+    expect(contagem["dpmg"]).toBe(20);
+    expect(contagem["mpf"]).toBe(14);
+  });
+
+  test("a distribuição por tema bate com a medida (ptr_auxilio 24 · indenizacao 11 · acordo 9 · acao_penal 9 · consulta_popular 6)", () => {
+    const contagem: Record<string, number> = {};
+    for (const n of CLIPPING_IJ) contagem[n.tema] = (contagem[n.tema] ?? 0) + 1;
+    expect(contagem["ptr_auxilio"]).toBe(24);
+    expect(contagem["indenizacao"]).toBe(11);
+    expect(contagem["acordo"]).toBe(9);
+    expect(contagem["acao_penal"]).toBe(9);
+    expect(contagem["consulta_popular"]).toBe(6);
+  });
+
+  test("PERIODO_CLIPPING_IJ é o mínimo e o máximo reais de CLIPPING_IJ.data — nunca digitado solto", () => {
+    const datas = CLIPPING_IJ.map((n) => n.data).sort();
+    expect(PERIODO_CLIPPING_IJ.de).toBe(datas[0]);
+    expect(PERIODO_CLIPPING_IJ.ate).toBe(datas[datas.length - 1]);
+  });
+
+  test("TEMA_CLIPPING_IJ_ORDEM cobre todos os temas usados — senão um filtro some da tela sem aviso", () => {
+    const usados = new Set(CLIPPING_IJ.map((n) => n.tema));
+    for (const t of usados) expect(TEMA_CLIPPING_IJ_ORDEM).toContain(t);
+    // E o contrário: ordem que promete tema sem item vira filtro vazio.
+    for (const t of TEMA_CLIPPING_IJ_ORDEM) expect(usados).toContain(t);
+  });
+
+  test("o campo `grupo` amarra 36 matérias a 13 fatos, e todo grupo tem mais de um item", () => {
+    // É a chave que nenhum outro acervo do portal tem: a mesma decisão
+    // noticiada por MPMG, MPF e DPMG em paralelo. Grupo de um item só seria
+    // erro de parsing — o painel-fonte só marca quando há repetição de fato.
+    const comGrupo = CLIPPING_IJ.filter((n) => n.grupo);
+    expect(comGrupo.length).toBe(36);
+
+    const porGrupo: Record<string, number> = {};
+    for (const n of comGrupo) porGrupo[n.grupo!] = (porGrupo[n.grupo!] ?? 0) + 1;
+    expect(Object.keys(porGrupo).length).toBe(13);
+    for (const [g, n] of Object.entries(porGrupo)) {
+      expect(n, `grupo ${g} tem um item só`).toBeGreaterThan(1);
+    }
+  });
+
+  test("é acervo novo, não duplicata de clipping.ts — no máximo 1 url em comum, nenhum título", () => {
+    // O que justifica os dois arrays conviverem sem deduplicação
+    // (HANDOFF §3). Se esta trava cair, alguém está reingerindo o mesmo
+    // material sob outra classificação.
+    const chave = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+    const urls = new Set(CLIPPING_PARAOPEBA.map((n) => chave(n.url)));
+    const titulos = new Set(CLIPPING_PARAOPEBA.map((n) => chave(n.titulo)));
+    expect(CLIPPING_IJ.filter((n) => urls.has(chave(n.url))).length).toBe(1);
+    expect(CLIPPING_IJ.filter((n) => titulos.has(chave(n.titulo))).length).toBe(0);
+  });
+
+  test("cobre 5 anos a mais que o clipping geral — é o único acervo que alcança o Acordo de 2021", () => {
+    expect(PERIODO_CLIPPING_IJ.de < PERIODO_CLIPPING.de).toBe(true);
+    expect(CLIPPING_IJ.some((n) => n.data < "2021-03-01")).toBe(true);
   });
 });
 
