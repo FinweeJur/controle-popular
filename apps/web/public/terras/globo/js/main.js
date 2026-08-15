@@ -34,6 +34,7 @@ import { criarFolha } from './ui/folha.js';
 import { criarRealce } from './ui/realce.js';
 import { LayerManager } from './layers/manager.js';
 import { createSatellitesGroup } from './layers/satelites.js';
+import { criarImagensPorZoom } from './layers/imagens.js';
 import { FocusBoundaries } from './layers/boundaries.js';
 
 async function bootstrap() {
@@ -69,6 +70,26 @@ async function bootstrap() {
   // Camadas 'custom' (Fase G3) recebem factories locais — ex.: satélites SGP4.
   const layers = new LayerManager(scene, LAYER_REGISTRY, {
     'satelites-orbita': createSatellitesGroup,
+    // A imagem por zoom é camada 'custom' como os satélites: o LayerManager
+    // chama o `update` dela a cada frame (é assim que o nível da imagem
+    // acompanha a câmera) e o descarte libera a malha quando a chave desliga.
+    // A factory recebe câmera e controles porque a decisão dela é,
+    // literalmente, "de onde estamos olhando e de que altura".
+    'imagens-satelite': () => criarImagensPorZoom({
+      camera, controls, renderer,
+      onEstado: (estado) => {
+        footerHud?.setImagens?.(estado);
+        // A coluna do painel diz a ESCALA, não uma contagem: esta camada não
+        // tem feição, e o caminho genérico anunciaria "sem dados ainda" numa
+        // camada que está desenhando o chão inteiro.
+        layersPanel?.setStatus?.('imagens-satelite', {
+          on: layers.isEnabled('imagens-satelite'),
+          texto: estado.carregando ? 'baixando…'
+            : estado.z == null ? 'aproxime para ver'
+            : `${Math.round(estado.mpp)} m/ponto`,
+        });
+      },
+    }),
   });
 
   // --- HUD -----------------------------------------------------------------
@@ -430,6 +451,16 @@ async function bootstrap() {
       if (st?.error) erro = st.error;
     }
 
+    // Camada que não se mede em feições escreve o próprio rótulo (a imagem de
+    // satélite diz a escala). Sem esta saída, o caminho genérico entra DEPOIS
+    // do rótulo dela e troca "aproxime para ver" por "sem dados ainda" —
+    // anunciando defeito numa camada que está funcionando.
+    if (camada.fontesResolvidas.some((f) => FONTE_POR_ID.get(f.id)?.semContagem)) {
+      layersPanel.setEnabled?.(idCamada, ligada);
+      destaques?.sincronizar();
+      return;
+    }
+
     layersPanel.setStatus(idCamada, {
       on: ligada,
       count,
@@ -545,6 +576,12 @@ async function bootstrap() {
     },
   });
 
+  // O rodapé nasce ANTES do laço que liga as camadas de saída, e não depois:
+  // a camada de imagem avisa o seu estado assim que é ligada, e ligar
+  // acontece naquele laço. Declarado depois, o aviso caía num `const` ainda
+  // não inicializado — zona morta temporal, que o `?.` NÃO protege.
+  const footerHud = createFooterHud(document.getElementById('footer-hud'));
+
   // Ativa as camadas marcadas como ligadas por padrão e já sincroniza os
   // contadores quando cada fetch terminar. O filtro nasce em "todas as
   // regiões", então nenhuma fonte é barrada aqui.
@@ -555,7 +592,6 @@ async function bootstrap() {
     }
   }
 
-  const footerHud = createFooterHud(document.getElementById('footer-hud'));
 
   // --- Loop de animação -----------------------------------------------------
   renderer.setAnimationLoop(() => {

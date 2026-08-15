@@ -27,10 +27,12 @@ const FPS_WINDOW = 30; // tamanho da janela da média móvel (frames)
 export function createFooterHud(el) {
   el.innerHTML = '';
 
+  const BASE_CREDITOS =
+    'Divisas: IBGE · Cadastro rural: CAR/SICAR · Áreas protegidas: IDE-Sisema (MG) e INCRA · Vegetação: MapBiomas · Imagem da Terra: NASA Blue Marble';
+
   const credits = document.createElement('span');
   credits.className = 'data-credits';
-  credits.textContent =
-    'Divisas: IBGE · Cadastro rural: CAR/SICAR · Áreas protegidas: IDE-Sisema (MG) e INCRA · Vegetação: MapBiomas · Imagem da Terra: NASA Blue Marble';
+  credits.textContent = BASE_CREDITOS;
   credits.title = 'De onde vem cada camada deste mapa.';
 
   const spacer = document.createElement('span');
@@ -50,6 +52,35 @@ export function createFooterHud(el) {
   let lastPaint = 0;       // evita repintar o DOM a cada frame
 
   return {
+    /**
+     * Crédito da imagem de satélite em uso, com a escala REAL do que está na
+     * tela — `layers/imagens.js` chama isto a cada troca de nível.
+     *
+     * A escala fica visível aqui, e não escondida num tooltip, por método: o
+     * mapa acabou de trocar de imagem sozinho, e sem dizer a escala ele passa
+     * a impressão de que aproximar revela mais dado. Passado o nível nativo da
+     * fonte, ampliar só estica o mesmo pixel. Escala visível é o que separa
+     * "aproximou" de "descobriu".
+     */
+    setImagens(estado = {}) {
+      if (!estado.z) {
+        credits.textContent = BASE_CREDITOS;
+        credits.title = 'De onde vem cada camada deste mapa.';
+        return;
+      }
+      const escala = estado.mpp ? ` · ${Math.round(estado.mpp)} m por ponto na tela` : '';
+      const falhas = estado.falhas ? ` · ${estado.falhas} sem resposta` : '';
+      const baixando = estado.carregando ? ' · baixando imagem…' : '';
+      const ampliado = estado.ampliado
+        ? ` · ampliada além do dado (fonte de ${estado.resolucaoM ?? 30} m)`
+        : '';
+      credits.textContent =
+        `${BASE_CREDITOS} · ${estado.atribuicao ?? 'Imagem de satélite'}${escala}${ampliado}${falhas}${baixando}`;
+      credits.title = falhas
+        ? 'Parte dos ladrilhos de imagem não chegou — ali o fundo continua sendo o Blue Marble.'
+        : 'Imagem redesenhada na escala do zoom atual.';
+    },
+
     /**
      * Registra um frame renderizado. Deve ser chamado 1× por frame dentro do
      * loop de animação. Atualiza o texto do contador no máximo 4×/s para não

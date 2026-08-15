@@ -936,6 +936,25 @@ export const LAYER_REGISTRY = [
   // Camada dinâmica custom (Fase G3): satélites dos sensores do projeto em
   // órbita SGP4 real (TLE CelesTrak). Não vem do endpoint /camadas — a
   // factory fica em layers/satelites.js e é registrada no main.js.
+  // Imagem de satélite que acompanha o zoom (15/08/2026). É o CHÃO das outras
+  // camadas: tudo é desenhado sobre ela.
+  //
+  // Nasce ligada, e isso é decisão de conteúdo: a queixa que originou a camada
+  // é que, no zoom fundo, o contorno da área ficava sobre um borrão do Blue
+  // Marble esticado — 7,4 km por pixel. Ou seja, o defeito aparecia justamente
+  // para quem já tinha chegado onde queria. Ligada por padrão, ninguém precisa
+  // descobrir uma chave para o mapa fazer sentido. Nada é baixado enquanto a
+  // câmera está longe: ver layers/imagens.js.
+  {
+    id: 'imagens-satelite', label: 'Imagem de satélite',
+    hint: 'Foto do terreno, que vai ficando mais nítida conforme você aproxima. Em cor natural, do World Imagery da Esri.',
+    aviso: 'A imagem mostra como o lugar estava quando foi fotografado, não hoje. Serve para ver a FORMA da área — mata, lavoura, estrada, represa —, não para dizer de quem ela é.',
+    color: 0x7c8b9e,   /* cinza de instrumento: é fundo, não achado */
+    on: true, render: 'custom',
+    // Não se mede em feições: o contador dela diz a ESCALA na tela, e quem
+    // escreve esse rótulo é a própria camada (ver main.js).
+    semContagem: true,
+  },
   {
     id: 'satelites-orbita', label: 'Satélites em órbita',
     hint: 'Onde estão agora os satélites que fotografam essas áreas. Posição calculada em tempo real.',
@@ -1321,6 +1340,13 @@ export const CAMADAS = [
     label: 'Divisas dos municípios',
     hint: 'Os 853 municípios de Minas Gerais, pelo mapa oficial do IBGE. É moldura para se localizar, não um achado da pesquisa.',
     fontes: ['municipios-mg'],
+  },
+  {
+    id: 'imagens-satelite', assunto: 'referencia',
+    label: 'Imagem de satélite',
+    hint: 'Foto do terreno, que fica mais nítida conforme você aproxima. Cor natural, do World Imagery da Esri.',
+    aviso: 'Mostra como o lugar estava quando foi fotografado, não hoje.',
+    fontes: ['imagens-satelite'],
   },
   {
     id: 'satelites-orbita', assunto: 'referencia',
