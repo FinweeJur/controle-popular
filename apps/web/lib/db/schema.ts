@@ -1488,8 +1488,15 @@ export const copam_pauta_itens = pgTable("copam_pauta_itens", {
  * localmente por tema "Meio Ambiente"), Banco da Semad (Deliberação Copam,
  * Portaria IEF/Igam, Resolução Conjunta) e SIAM (arquivo histórico). As três
  * fontes SE SOBREPÕEM de propósito — ver a nota de `chave_dedup` na
- * migration `0063`. Coletores: `etl/betim/etl/apis/legislacao_almg.py`,
- * `legislacao_semad.py`, `legislacao_siam.py`.
+ * migration `0063`.
+ *
+ * Desde a migration `0073` a tabela também guarda legislação FEDERAL: MMA
+ * (CSV CC-BY do `dados.mma.gov.br`, inclusive as Resoluções Conama) e CNDH
+ * (resoluções e recomendações, CC BY-ND — ementa citada, nunca reescrita).
+ * `esfera` distingue as duas famílias; `fonte` continua dizendo quem
+ * publicou cada linha. Coletores: `etl/betim/etl/apis/legislacao_almg.py`,
+ * `legislacao_semad.py`, `legislacao_siam.py`, `legislacao_mma.py`,
+ * `legislacao_cndh.py`.
  */
 export const ambiental_legislacao = pgTable("ambiental_legislacao", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
@@ -1504,17 +1511,28 @@ export const ambiental_legislacao = pgTable("ambiental_legislacao", {
 	link_pdf: text(),
 	id_ibge_municipio: text(),
 	chave_dedup: text(),
-	// Migration 0066: `indexacao` só é preenchida para `fonte='almg'`
-	// (única das três com taxonomia oficial — ver etl/temas_ambientais.py).
+	// Migration 0066: `indexacao` guarda a taxonomia OFICIAL da fonte —
+	// era exclusiva de `fonte='almg'` até a 0073, que passou a gravar nela
+	// o campo ASSUNTO do CSV do MMA (mesmo papel, vocabulário plano em vez
+	// de caminho hierárquico — ver etl/temas_ambientais.py).
 	// `temas`/`tags` são a classificação derivada, default `'{}'`, nunca
 	// `null` — mesmo padrão de `atos_oficiais.temas`/`contratos.temas`.
 	indexacao: text(),
 	temas: text().array().default([]).notNull(),
 	tags: text().array().default([]).notNull(),
+	// Migration 0073: `esfera` deixou de ser derivada da fonte dentro do app
+	// no momento em que esta tabela passou a receber legislação FEDERAL
+	// (MMA/Conama e CNDH). `situacao` é a vigência tal como a fonte escreve
+	// ("VIGENTE", "REVOGADO", "NÃO CONSTA REVOGAÇÃO EXPRESSA"); é nula nas
+	// três fontes estaduais, que não publicam esse dado — nulo quer dizer
+	// "a fonte não informa", nunca "está vigente".
+	esfera: text().default('estadual').notNull(),
+	situacao: text(),
 	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
 	updated_at: timestamp({ withTimezone: true, mode: 'string' }),
 }, (table) => [
 	index("ambiental_legislacao_fonte_idx").using("btree", table.fonte.asc().nullsLast().op("text_ops")),
+	index("ambiental_legislacao_esfera_idx").using("btree", table.esfera.asc().nullsLast().op("text_ops")),
 	index("ambiental_legislacao_tipo_idx").using("btree", table.tipo.asc().nullsLast().op("text_ops")),
 	index("ambiental_legislacao_ano_idx").using("btree", table.ano.desc().nullsFirst().op("int4_ops")),
 	index("ambiental_legislacao_data_idx").using("btree", table.data.desc().nullsFirst().op("date_ops")),
@@ -1530,7 +1548,8 @@ export const ambiental_legislacao = pgTable("ambiental_legislacao", {
 	// coluna é sempre `null` hoje (ver a nota da migration), e a integridade
 	// referencial já é garantida pelo Postgres, não pelo Drizzle.
 	unique("ambiental_legislacao_fonte_id_fonte_key").on(table.fonte, table.id_fonte),
-	check("ambiental_legislacao_fonte_check", sql`fonte = ANY (ARRAY['almg'::text, 'semad'::text, 'siam'::text])`),
+	check("ambiental_legislacao_fonte_check", sql`fonte = ANY (ARRAY['almg'::text, 'semad'::text, 'siam'::text, 'mma'::text, 'cndh'::text])`),
+	check("ambiental_legislacao_esfera_check", sql`esfera = ANY (ARRAY['municipal'::text, 'estadual'::text, 'nacional'::text, 'internacional'::text])`),
 ]);
 
 /**

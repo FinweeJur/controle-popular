@@ -12,7 +12,7 @@ import Link from "@/lib/ambiental/link";
 export const metadata: Metadata = {
   title: "Legislação e precedentes por tema — Controle Popular · Ambiental",
   description:
-    "Legislação ambiental estadual de Minas (ALMG, Semad, Siam), legislação nacional/internacional e precedentes judiciais, numa busca só, filtrável por esfera e por tema de proteção — mineração, recursos hídricos, serras, indígena, quilombola, rios e mais.",
+    "Legislação ambiental estadual de Minas (ALMG, Semad, Siam) e federal (MMA, Ibama, ICMBio, Resoluções Conama, CNDH), legislação nacional/internacional e precedentes judiciais, numa busca só, filtrável por esfera e por tema de proteção — mineração, fauna e flora, recursos hídricos, serras, indígena, quilombola, rios e mais.",
 };
 
 /**
@@ -45,12 +45,18 @@ export const metadata: Metadata = {
  * Antes a esfera de cada norma era implícita na fonte (ALMG = estadual,
  * "direito-crítico" = nacional/internacional misturados sem rótulo). Agora
  * todo item carrega `esfera` (municipal/estadual/nacional/internacional) —
- * FILTRO próprio, badge no card, e o tipo já reserva `"municipal"` pro dia
- * em que outra frente ligar `atos_oficiais` aqui, e `"nacional"` já cobre o
- * espaço pro dia em que a legislação federal do MMA entrar (outra frente
- * está planejando essa fonte — ver `lib/ambiental/legislacao-unificada.ts`).
- * Norma federal e portaria estadual não vão se misturar sem o leitor saber
- * qual é qual quando isso acontecer.
+ * FILTRO próprio e badge no card.
+ *
+ * ═══ 14/08/2026: A LEGISLAÇÃO FEDERAL ENTROU ═══
+ *
+ * Este comentário dizia, até aqui, que a esfera "nacional" guardava espaço
+ * "pro dia em que a legislação federal do MMA entrar". Entrou: migration
+ * `0073` + coletores `etl.apis.legislacao_mma` (CSV CC-BY do MMA, com as
+ * Resoluções Conama) e `etl.apis.legislacao_cndh` (resoluções e
+ * recomendações do CNDH, CC BY-ND — ementa citada, nunca reescrita). As
+ * duas gravam na MESMA `ambiental_legislacao`, com `esfera='nacional'`, e
+ * por isso o card estadual deixou de carimbar "Estadual" fixo: ele lê a
+ * coluna. Números medidos da carga em `docs/LEGISLACAO-FEDERAL-MMA-CNDH.md`.
  *
  * ═══ PRECEDENTE NÃO É NORMA ═══
  *
@@ -78,16 +84,18 @@ export default async function LegislacaoAmbientalIndex() {
           className="text-[.82em] font-semibold uppercase tracking-wide"
           style={{ color: "var(--cp-tertiary)" }}
         >
-          Ambiental · Estadual, nacional e internacional · Legislação e precedentes
+          Ambiental · Estadual, federal e internacional · Legislação e precedentes
         </p>
         <h1 className="font-display text-3xl font-bold sm:text-4xl">
           A legislação e os precedentes de proteção, numa busca só
         </h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">
-          Leis, decretos, deliberações e portarias ambientais de Minas Gerais ao lado de tratados,
-          declarações e decisões de tribunais nacionais e internacionais — numa busca só, filtrável
-          por esfera (estadual, nacional, internacional) e por tema de proteção, do licenciamento de
-          mineração à proteção de povos indígenas.
+          Leis, decretos, deliberações e portarias ambientais de Minas Gerais ao lado da legislação
+          ambiental federal (Ministério do Meio Ambiente, Ibama, ICMBio e as Resoluções Conama), das
+          resoluções e recomendações do Conselho Nacional dos Direitos Humanos, de tratados e de
+          decisões de tribunais nacionais e internacionais — numa busca só, filtrável por esfera e
+          por tema de proteção, do licenciamento de mineração à proteção da fauna e dos povos
+          indígenas.
         </p>
 
         {totalGeral === 0 ? (
@@ -96,6 +104,8 @@ export default async function LegislacaoAmbientalIndex() {
             <code className="font-mono text-[.85em]">etl.apis.legislacao_almg</code>,{" "}
             <code className="font-mono text-[.85em]">legislacao_semad</code>,{" "}
             <code className="font-mono text-[.85em]">legislacao_siam</code>,{" "}
+            <code className="font-mono text-[.85em]">legislacao_mma</code>,{" "}
+            <code className="font-mono text-[.85em]">legislacao_cndh</code>,{" "}
             <code className="font-mono text-[.85em]">direito_critico_popular</code>) ainda não
             rodaram contra este banco.
           </p>
@@ -105,12 +115,24 @@ export default async function LegislacaoAmbientalIndex() {
             style={{ borderColor: "var(--cp-tertiary)" }}
           >
             <strong className="font-tabular">{formatNumberBR(totalGeral)}</strong> itens ao todo:{" "}
-            <strong className="font-tabular">{formatNumberBR(estaduais.length)}</strong> normas
-            estaduais (<strong className="font-tabular">{formatNumberBR(contagemEstadual.porFonte.almg)}</strong>{" "}
+            <strong className="font-tabular">
+              {formatNumberBR(
+                contagemEstadual.porFonte.almg + contagemEstadual.porFonte.semad + contagemEstadual.porFonte.siam
+              )}
+            </strong>{" "}
+            normas estaduais de Minas (
+            <strong className="font-tabular">{formatNumberBR(contagemEstadual.porFonte.almg)}</strong>{" "}
             ALMG, <strong className="font-tabular">{formatNumberBR(contagemEstadual.porFonte.semad)}</strong>{" "}
             Semad, <strong className="font-tabular">{formatNumberBR(contagemEstadual.porFonte.siam)}</strong>{" "}
-            Siam), <strong className="font-tabular">{formatNumberBR(criticas.length)}</strong>{" "}
-            instrumentos nacionais/internacionais e{" "}
+            Siam),{" "}
+            <strong className="font-tabular">
+              {formatNumberBR(contagemEstadual.porFonte.mma + contagemEstadual.porFonte.cndh)}
+            </strong>{" "}
+            normas federais (
+            <strong className="font-tabular">{formatNumberBR(contagemEstadual.porFonte.mma)}</strong>{" "}
+            MMA/Conama, <strong className="font-tabular">{formatNumberBR(contagemEstadual.porFonte.cndh)}</strong>{" "}
+            CNDH), <strong className="font-tabular">{formatNumberBR(criticas.length)}</strong>{" "}
+            instrumentos nacionais/internacionais curados e{" "}
             <strong className="font-tabular">{formatNumberBR(precedentes.length)}</strong> precedentes
             judiciais. As três fontes estaduais se sobrepõem em parte — a mesma Lei/Decreto pode
             estar em mais de uma, e o card avisa quando isso acontece.
@@ -119,7 +141,7 @@ export default async function LegislacaoAmbientalIndex() {
 
         {coberturaEstadual.total > 0 && (
           <p className="max-w-2xl rounded-lg border border-dashed border-border px-4 py-3 text-[.88em] text-text-soft">
-            Das normas estaduais,{" "}
+            Das normas ambientais coletadas em massa (as estaduais e as federais),{" "}
             <strong className="font-tabular text-text">{formatNumberBR(coberturaEstadual.comTema)}</strong> de{" "}
             <strong className="font-tabular text-text">{formatNumberBR(coberturaEstadual.total)}</strong> (
             {((100 * coberturaEstadual.comTema) / coberturaEstadual.total).toFixed(1).replace(".", ",")}%)
@@ -160,6 +182,29 @@ export default async function LegislacaoAmbientalIndex() {
             </dd>
           </div>
           <div>
+            <dt className="font-semibold text-text">MMA — legislação ambiental federal, inclusive Conama</dt>
+            <dd>
+              Catálogo de dados abertos do Ministério do Meio Ambiente e Mudança do Clima (licença
+              Creative Commons Atribuição): leis, decretos, portarias do Ibama e do ICMBio, instruções
+              normativas e as Resoluções Conama. É a esfera que faltava — até 14/08/2026 esta busca
+              não tinha uma única norma federal, nem a Resolução Conama que rege o licenciamento que
+              o próprio portal publica. Cada norma traz a situação declarada pela fonte (vigente,
+              revogada, ato exaurido), mostrada no card: uma portaria revogada não pode ter a mesma
+              cara de uma norma em vigor.
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-text">CNDH — resoluções e recomendações (federal)</dt>
+            <dd>
+              Conselho Nacional dos Direitos Humanos, nas duas plataformas em que ele publica (a
+              página de resoluções do gov.br/mdh e o componente de recomendações do Brasil
+              Participativo). Licença Creative Commons Atribuição-SemDerivações: a ementa aqui é{" "}
+              <strong className="font-semibold text-text">citação literal</strong> do CNDH, nunca
+              reescrita. Inclui a Resolução nº 1/2019, sobre a missão emergencial a Brumadinho depois
+              do rompimento da barragem.
+            </dd>
+          </div>
+          <div>
             <dt className="font-semibold text-text">Direito Crítico Popular (nacional e internacional)</dt>
             <dd>
               Carga inicial curada em torno de barragens e populações atingidas (Mariana, Brumadinho,
@@ -168,9 +213,10 @@ export default async function LegislacaoAmbientalIndex() {
           </div>
         </dl>
         <p className="mt-4 text-[.9em] text-text-soft">
-          Legislação federal ambiental (Ministério do Meio Ambiente, Conama) ainda não entrou nesta
-          busca — outra frente do projeto está mapeando essa fonte; quando entrar, soma à esfera
-          &quot;Nacional&quot; que já existe no filtro, sem precisar de painel novo.
+          O que ainda falta: legislação{" "}
+          <strong className="font-semibold text-text">municipal</strong> — as leis ambientais das
+          câmaras de vereadores não entraram nesta busca. A esfera já está reservada no banco e no
+          filtro por esfera; fica dito aqui em vez de a lacuna passar despercebida.
         </p>
         <p className="mt-3 text-[.9em] text-text-soft">
           Tombamento de patrimônio cultural (histórico, paisagístico, arquitetônico) é o mesmo tipo
@@ -194,6 +240,14 @@ export default async function LegislacaoAmbientalIndex() {
           <code className="font-mono text-[.85em]">etl/temas_ambientais.py</code>). Semad e Siam não
           publicam taxonomia equivalente — para essas ~6.300 normas o tema vem só de palavra-chave,
           indício de conteúdo, não afirmação oficial.
+        </p>
+        <p className="mt-3 text-[.92em] text-text-soft">
+          O MMA publica taxonomia própria por norma (o campo &quot;assunto&quot;: biodiversidade,
+          licenciamento ambiental, pesca, áreas protegidas...), guardada junto com cada linha. Mas é
+          um vocabulário plano, diferente da árvore da ALMG, e o classificador não sabe traduzir um
+          no outro — então, na prática, as normas federais também recebem tema só por palavra-chave
+          na ementa. Isso está dito aqui em vez de a taxonomia guardada dar a impressão de um rigor
+          que ela ainda não produz na tela.
         </p>
         <p className="mt-3 text-[.92em] text-text-soft">
           Os 6 temas exclusivos da legislação nacional/internacional (indígena, quilombola, povos e
