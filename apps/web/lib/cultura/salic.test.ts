@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 
 import {
+  DOCUMENTO_REDIGIDO,
   agregarPorCgccpf,
   anoDeQuatroDigitos,
   conferirFiltroHonrado,
@@ -14,6 +15,7 @@ import {
   montarUrl,
   normalizarCgccpf,
   ordenarPorTotalDoado,
+  redigirDocumentosSoltos,
   topPorTotalDoado,
   type Incentivador,
 } from "./salic";
@@ -252,6 +254,80 @@ describe("privacidade — a fonte mascara CPF, e o coletor não confia nisso", (
     // positivo: um guarda que grita à toa é um guarda que se aprende a ignorar.
     expect(() => conferirSemCpf([{ cgccpf: "12345678900" }])).not.toThrow();
     expect(() => conferirSemCpf([{ cgccpf: "11111111111" }])).not.toThrow();
+  });
+});
+
+describe("redigirDocumentosSoltos — o buraco entre `conferirSemCpf` e a máscara", () => {
+  test("11 dígitos por extenso em `cgccpf` são apagados e contados", () => {
+    // O caso REAL da coleta completa de MG: 5 dos 20.784 incentivadores vieram
+    // com 11 dígitos por extenso, e nenhum passa no mod-11 — então
+    // `conferirSemCpf` os deixaria seguir para um repositório PÚBLICO.
+    // `12345678900` tem DV errado, igual aos cinco.
+    const { itens, redigidos } = redigirDocumentosSoltos([
+      { nome: "FULANO DE TAL", cgccpf: "12345678900" },
+      { nome: "EMPRESA S.A.", cgccpf: "00000000000191" },
+    ]);
+    expect(redigidos).toBe(1);
+    expect(itens[0].cgccpf).toBe(DOCUMENTO_REDIGIDO);
+    expect(itens[1].cgccpf).toBe("00000000000191");
+  });
+
+  test("CPF DENTRO do campo de nome também é apagado — foi onde estavam os 215", () => {
+    // O caso grave: a fonte mascara `cgccpf` e NÃO mascara o nome, onde o
+    // mesmo documento vai por extenso, colado à pessoa. 210 em `proponente`
+    // dos projetos e 5 em `nome` dos incentivadores, todos válidos por mod-11.
+    // `12345678909` é o CPF canônico de teste — o exemplo real aqui SERIA o
+    // vazamento que esta função existe para impedir.
+    const { itens, redigidos } = redigirDocumentosSoltos([
+      { PRONAC: "266269", proponente: "GERALDO MAGELLA DA SILVA 12345678909" },
+    ]);
+    expect(redigidos).toBe(1);
+    expect(itens[0].proponente).toBe(`GERALDO MAGELLA DA SILVA ${DOCUMENTO_REDIGIDO}`);
+    // O nome da pessoa fica: quem propôs projeto com dinheiro renunciado é
+    // informação pública. O documento é que não é.
+    expect(itens[0].proponente).toContain("GERALDO MAGELLA DA SILVA");
+    expect(itens[0].PRONAC).toBe("266269");
+  });
+
+  test("CNPJ de 14 dígitos e número de 8 não são tocados", () => {
+    // A fronteira de palavra protege o CNPJ; os únicos outros números longos
+    // medidos no acervo têm 8 dígitos. Um guarda que apagasse CNPJ destruiria
+    // a junção que é a razão desta fonte existir.
+    const { itens, redigidos } = redigirDocumentosSoltos([
+      { a: "EMPRESA 00000000000191", b: "processo 01234567", c: "***008317**" },
+    ]);
+    expect(redigidos).toBe(0);
+    expect(itens[0]).toEqual({ a: "EMPRESA 00000000000191", b: "processo 01234567", c: "***008317**" });
+  });
+
+  test("conta cada ocorrência, e não cada registro", () => {
+    const { redigidos } = redigirDocumentosSoltos([
+      { nome: "FULANO 12345678909", responsavel: "BELTRANO 12345678909" },
+    ]);
+    expect(redigidos).toBe(2);
+  });
+
+  test("a máscara da FONTE é preservada — reescrevê-la apagaria a evidência", () => {
+    const { itens, redigidos } = redigirDocumentosSoltos([{ cgccpf: "***008317**" }]);
+    expect(redigidos).toBe(0);
+    expect(itens[0].cgccpf).toBe("***008317**");
+  });
+
+  test("a marca diz quem apagou, e não imita a fonte", () => {
+    expect(DOCUMENTO_REDIGIDO).not.toMatch(/\d/);
+  });
+
+  test("não altera a lista original", () => {
+    const original = [{ cgccpf: "12345678900" }];
+    redigirDocumentosSoltos(original);
+    expect(original[0].cgccpf).toBe("12345678900");
+  });
+
+  test("a fixture da API passa intacta", () => {
+    const { redigidos } = redigirDocumentosSoltos(
+      inc10() as unknown as Array<Record<string, unknown>>
+    );
+    expect(redigidos).toBe(0);
   });
 });
 
