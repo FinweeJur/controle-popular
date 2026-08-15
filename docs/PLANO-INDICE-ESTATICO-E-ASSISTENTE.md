@@ -142,6 +142,27 @@ já aceita `?camada=…&idx=…` (é o que o botão "Ver no mapa" dos alertas us
 hoje), e as rotas de cidade são `/[municipio]/[secao]`. Casar texto com essa
 lista é comparação de string sem acento — o `lib/busca/normalizar.ts` já faz.
 
+> ### ⚠️ Correção de 15/08, vinda da implementação
+>
+> Este plano dizia que "a lista de rotas e municípios **já existe** no índice
+> estático da `/busca`". **Existe, e é a fonte errada para isso** — ela está
+> misturada a 8.979 documentos, e o índice inteiro pesa **~5,0 MB** (docs
+> 3.614 KB em 2 fatias, vocabulário 1.188 KB, formas 264 KB; e o vocabulário já
+> subiu de 11.561 para 31.375 lexemas depois dessa medição).
+>
+> Baixar 5 MB para descobrir que "saúde em BH" é `/bh/saude` é **pagar o acervo
+> inteiro por uma tabela de rotas**.
+>
+> O que a implementação fez, e é melhor: **catálogo próprio de navegação** — 33
+> sufixos de cidade × 6 cidades + 43 rotas gerais = **241 destinos** em
+> **2.467 B gzip (2,4 KiB)**, ou **0,078% do teto de 3 MiB** do Worker. Três
+> ordens de grandeza de folga.
+>
+> O índice de documentos não sumiu do desenho: virou o **degrau 1**, carregado
+> **sob demanda** e só quando a navegação não resolve. E é justamente por ele
+> pesar 5 MB que o botão de interromper tem o que interromper — o requisito de
+> interface e a decisão de arquitetura são a mesma coisa aqui.
+
 O degrau 2 é o que transforma o assistente de menu em ferramenta: "o que este
 município tem de pior" é uma **regra escrita** sobre os dados (maior lacuna,
 maior sobreposição, maior valor monetário), não uma pergunta para modelo.
