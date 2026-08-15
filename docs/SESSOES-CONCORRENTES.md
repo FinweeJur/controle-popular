@@ -65,9 +65,27 @@ sessão de forma irreversível.
 
 **Conflito no rebase:** se for em `docs/` ou em `.claude/launch.json`, quase
 sempre a resolução é **manter as duas versões** — cada frente edita uma seção
-ou acrescenta uma entrada, e não há disputa real. Aconteceu duas vezes hoje, e
-nas duas as duas versões deviam coexistir. Qualquer outro conflito: **parar e
-avisar**, não adivinhar.
+ou acrescenta uma entrada, e não há disputa real. Aconteceu **seis vezes** em
+15/08, e em cinco delas as duas versões deviam coexistir. Qualquer outro
+conflito: **parar e avisar**, não adivinhar.
+
+⚠️ **Manter as duas versões NÃO basta quando as duas pedem a mesma porta.** Na
+sexta ocorrência, a entrada que chegava pedia a **3033**, que `cp-ajri-dev` já
+ocupava. Colar as duas cruas teria criado exatamente a colisão que estas
+entradas existem para evitar — e ela é silenciosa: o servidor responde 200, com
+o código do outro worktree. A resolução certa é **manter as duas e mover a que
+chegou para uma porta livre**. Confira antes de continuar o rebase:
+
+```bash
+node -e "const j=require('./.claude/launch.json');const p=j.configurations.map(c=>c.port);const d=[...new Set(p.filter((v,i)=>p.indexOf(v)!==i))];console.log(d.length?'DUPLICADA: '+d.join(','):'portas ok')"
+```
+
+⚠️ **Esquecer um marcador quebra o JSON.** São **três** linhas (`<<<<<<<`,
+`=======`, `>>>>>>>`), e onde estava o `=======` precisa entrar `},` e `{` — os
+dois lados são corpos de objeto diferentes, não o mesmo objeto. Apagar as três
+e mais nada produz JSON inválido, e o erro aponta um `position` que não diz
+qual marcador sobrou. Valide com o comando acima **antes** do
+`git rebase --continue`.
 
 ## Antes de todo commit
 
@@ -102,6 +120,66 @@ git worktree remove .claude/worktrees/<nome>
 git branch -d <nome>
 ```
 
-Havia **16** worktrees em 15/08. A maioria já não tinha trabalho pendente — e
-worktree abandonado é onde alguém edita por engano, achando que é o checkout
-principal.
+Havia **16** worktrees em 15/08 de manhã e **23 diretórios** à noite; a limpeza
+levou a **8**. A maioria já não tinha trabalho pendente — e worktree abandonado
+é onde alguém edita por engano, achando que é o checkout principal.
+
+### ⚠️ Diretório órfão é pior que worktree abandonado
+
+Sete dos 23 **não eram worktrees**: pastas em `.claude/worktrees/` sem arquivo
+`.git`, sobra de remoção pela metade. O perigo é específico e silencioso:
+
+> **`git -C .claude/worktrees/<orfao> <comando>` sobe a árvore e executa no
+> CHECKOUT PRINCIPAL.**
+
+Foi assim que se descobriu: os sete reportavam "branch `main`, 1 arquivo
+modificado" — que era o estado do checkout principal, não deles. Uma sessão que
+confie nisso conclui sobre o repositório errado, com toda a aparência de rigor.
+
+Como distinguir, antes de acreditar em qualquer `git -C`:
+
+```bash
+git worktree list                    # a verdade
+ls -1 .claude/worktrees | wc -l      # se der mais que a lista acima, há orfao
+test -e .claude/worktrees/<nome>/.git && echo "worktree" || echo "ORFAO"
+```
+
+Antes de apagar um órfão, confirme que ele não guarda nada exclusivo — o que
+importa não são os arquivos que **diferem** (um checkout parado num commit
+antigo difere em tudo, e isso é esperado), e sim os que **só existem lá**:
+
+```bash
+diff -rq --exclude=node_modules --exclude=.next --exclude=.git \
+     .claude/worktrees/<orfao> . | grep "^Only in .claude/worktrees"
+```
+
+⚠️ **`node_modules` ali é junção.** `rm -rf` numa junção no Windows pode seguir
+o link e apagar o alvo — ou seja, o `node_modules` do repositório inteiro.
+Remova o link primeiro, pelo caminho que não o segue, e confira a contagem do
+alvo antes e depois:
+
+```powershell
+cmd /c rmdir "<caminho-da-juncao>"
+```
+
+E um aviso prático: **diretório vazio pode se recusar a sair** com "está sendo
+usado por outro processo" — é algum processo com o `cwd` ali. Não vale caçar
+PID nem matar node alheio: sai sozinho quando o processo morrer.
+
+### Trabalho duplicado: aconteceu de novo, e o git mostra
+
+Em 15/08 um branch parado trazia `lib/paraopeba/clipping-ij.ts` com 721 linhas
+**byte a byte idênticas** às já publicadas por outro commit. Duas sessões
+escreveram a mesma coisa — a segunda vez no mesmo dia (a primeira foi
+`RadarSecao.tsx` × `RadarRecente.tsx`).
+
+Antes de publicar branch parado, confira se o trabalho já não está lá:
+
+```bash
+git show <commit> --stat                       # quais arquivos
+git cat-file -e origin/main:<arquivo> && echo "JA EXISTE em main"
+diff <(git show <commit>:<arquivo>) <(git show origin/main:<arquivo>) | wc -l
+```
+
+Zero de diferença quer dizer **não publique** — não há nada a levar, e o branch
+pode ser removido sem perda.
