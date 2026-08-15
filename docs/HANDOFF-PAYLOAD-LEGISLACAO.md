@@ -1,8 +1,14 @@
-# O deploy está travado por tamanho de asset — e o culpado não é o dado
+# O deploy travou por tamanho de asset — e o culpado não era o dado
 
-> Escrito em 2026-08-15, no fim da sessão que carregou a legislação federal.
-> **O site no ar é o de 10:08 daquele dia.** O código está publicado
-> (`b9e34c5`), o build passa, mas `cf:deploy` recusa.
+> ✅ **DESTRAVADO em 2026-08-15**, versão `721e648b` no ar em
+> `controlepopular.com.br`, com as 15.318 normas e cobertura de tema de 30,6%
+> conferidas na página publicada. O conserto está em
+> `apps/web/lib/ambiental/payload-compacto.ts`.
+>
+> **O passo 2 continua valendo.** O que se fez aqui foi levantar o teto, não
+> tirá-lo do caminho: `sp/educacao.cache` seguia em 21 MiB quando isto foi
+> escrito, e nada impede o corpus de dobrar de novo. Leia o resto deste
+> documento como o diagnóstico que continua verdadeiro.
 
 ## O erro, literal
 
@@ -54,9 +60,21 @@ isto como caso isolado da legislação é adiar o mesmo susto.
 
 ## O plano combinado com o dono
 
-1. **Enxugar o payload** — nomes de campo curtos ou array de arrays em vez de
-   objetos, e cortar campo que a busca não usa. Contido, mensurável, invisível
-   na tela, e ataca exatamente os 7,5×. É o que destrava.
+1. ✅ **Enxugar o payload** — FEITO. Nenhum campo pôde ser cortado (a tela usa
+   os treze), então o ganho veio da forma: tupla em vez de objeto, dicionário
+   para vocabulário fechado (`situacao` com 11 valores distintos, `tipo` com
+   53, `orgao` com 174), prefixo de link em dicionário (4.077 links começam no
+   mesmo domínio) e `chaveDedup` virando id de grupo — a tela nunca mostra a
+   chave, só agrupa por ela.
+
+   Medido: `legislacao.html` de 35,5 MiB de cache para **4,99 MiB**, `.rsc`
+   **4,71 MiB**. Deploy passou.
+
+   A armadilha que o formato introduz está coberta por teste: trocar duas
+   posições da tupla grava campo errado **sem erro de tipo** — `ementa` e
+   `data` são ambos `string | null`. Por isso o teste é ida-e-volta com
+   igualdade profunda, e não amostragem de campo.
+
 2. **Servir a busca do índice estático** — a infraestrutura já existe
    (`public/busca-indice/**`, fatiada por grupo, gerada por
    `scripts/gerar-indice-busca.mts`, consumida por `lib/busca/indice.ts`).

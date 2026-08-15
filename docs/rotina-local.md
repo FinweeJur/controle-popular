@@ -21,13 +21,15 @@
 A sequência é **ETL → build → trava de páginas → deploy**. Cada etapa só
 acontece se a anterior passou.
 
-> ⚠️ **DESDE 15/08/2026 O DEPLOY ESTÁ FALHANDO**, e não é a rotina que está
-> quebrada: o `cf:deploy` recusa `ambiental/legislacao.cache` (35,5 MiB) contra
-> o teto de 25 MiB por asset do Workers. O ETL passa, o build passa com 3.872
-> páginas, e só a publicação morre — **o site não quebra, ele para no tempo**.
-> Causa, medição e plano em `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`. Note que a
-> trava de contagem de páginas descrita abaixo **não pega este caso**: ela mede
-> se o banco foi lido, não o tamanho do que saiu.
+> ⚠️ **A TRAVA DE PÁGINAS NÃO PEGA TAMANHO DE ASSET.** Em 15/08/2026 o
+> `cf:deploy` passou a recusar `ambiental/legislacao.cache` (35,5 MiB) contra o
+> teto de 25 MiB por asset do Workers — e o ETL passava, o build passava com
+> 3.872 páginas e exit 0, e só a publicação morria. **O site não quebra nesse
+> caso; ele para no tempo.** Resolvido no mesmo dia
+> (`lib/ambiental/payload-compacto.ts`), mas o modo de falha continua possível
+> em qualquer rota que entregue coleção grande ao cliente: a trava abaixo mede
+> se o banco foi lido, não o tamanho do que saiu. Ver
+> `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`.
 
 ## A trava, que é a razão de tudo
 
