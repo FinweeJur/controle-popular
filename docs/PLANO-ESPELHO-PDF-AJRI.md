@@ -18,6 +18,11 @@
   acadêmica e não comercial no topo.
 - `scripts/coletor_auditoria.py` + `docs/FONTES-AUDITORIA-AJRI.md` — a
   proveniência: o que raspa e o mapa de rotas/facetas do portal.
+- `apps/web/lib/paraopeba/ficha-legivel-ajri.ts` (15/08, à noite) — a **ficha
+  legível** de cada documento: o que é, quando, sobre o quê, de onde vem, em
+  linguagem comum. Função pura sobre os metadados, 24 testes, **zero modelo**.
+  É a metade do pedido do dono que dava para entregar sem baixar nada; a outra
+  metade — conclusões e recomendações — é o §6 deste documento.
 
 Catálogo + link é **integralmente compatível** com os Termos de Uso do portal,
 que proíbem modificar e usar comercialmente o material, e exigem manter os
@@ -146,3 +151,185 @@ credencial de R2, do upload, da tabela `arquivo_fontes` e da política escrita.
   na origem.
 - Se o texto extraído dos PDFs entra em busca (isso reabre a discussão de
   "modificar", que os Termos de Uso proíbem — e é decisão separada de guardar).
+
+---
+
+# 6. Fase 3 — resumir o **conteúdo** dos documentos
+
+> Escrito em 15/08/2026, na sessão que entregou a ficha legível. **Isto é
+> plano, e nada dele foi feito.** Vive aqui, e não em arquivo novo, porque não
+> é um projeto paralelo: é a continuação literal do pipeline acima — sem os
+> passos 1 a 5 deste documento, não existe texto para resumir.
+
+## 6.1. O que ficou de fora da ficha legível, e por que não foi preguiça
+
+O dono pediu, para cada documento, um resumo acessível com **tema, data, fato e
+conclusões/recomendações**. Os três primeiros saíram inteiros do metadado, sem
+modelo — é o que `ficha-legivel-ajri.ts` entrega hoje em 467/467.
+
+**Conclusões e recomendações não existem em metadado nenhum.** Medido nas 467
+descrições, em 15/08/2026:
+
+| expressão procurada na `descricao` | documentos |
+|---|---:|
+| `conclus` (conclui / conclusão) | **0** |
+| `recomenda` | 4 |
+| `não conformidade` | 1 |
+| `apontamento` | 0 |
+| `destaque crítico` | 0 |
+
+Zero de 467 para a palavra que dá nome ao pedido. O veredito do auditor está
+**dentro do PDF**, e nenhum PDF foi baixado. Não há atalho, não há campo
+escondido, não há inferência honesta a partir de "Relatório nº 84 referente aos
+trabalhos de auditoria…". Quem tentar produzir conclusão a partir do metadado
+está inventando.
+
+Para dimensionar: as 467 descrições somam **151,2 KiB** de texto (média de 332
+caracteres). É o acervo inteiro de texto que este portal tem hoje da auditoria
+— e é, provavelmente, menos que **um** dos relatórios em PDF.
+
+## 6.2. A ordem é obrigatória, e cada passo tem um dono anterior
+
+```
+1. baixar  →  2. extrair texto  →  3. varrer dado pessoal  →  4. resumir
+```
+
+**Inverter dois quaisquer desses passos publica dado pessoal.** Não é hipótese:
+
+1. **Baixar** — é a fase 2, §§1–4 acima, e ela tem custo, teto e uma decisão de
+   marca d'água já registrada. O `download_cover` **carimba nome e CPF de quem
+   está logado** em cada PDF gerado. Enquanto a fase 2 não estiver executada,
+   este passo não existe e a fase 3 não começa.
+2. **Extrair texto** — e o texto extraído carrega a marca d'água junto, porque
+   ela é conteúdo do arquivo, não decoração. Ou seja: **o texto de cada um dos
+   467 PDFs contém um CPF**, antes de qualquer varredura.
+3. **Varrer dado pessoal** — `scripts/checar-dado-pessoal.py` e
+   `apps/web/lib/sem-cpf-no-repo.test.ts` (validação por mod-11) são as duas
+   travas que já existem, e a segunda **ficou vermelha em 15/08/2026** por um
+   CPF numa ementa do IBAMA. Elas funcionam, e vão disparar aqui. A varredura
+   roda **antes** de o texto encostar em prompt, banco ou repositório —
+   mandar para um modelo um texto não varrido é enviar o CPF para um terceiro,
+   e isso não se desfaz.
+4. **Resumir** — só depois dos três.
+
+O passo 3 antes do 4 tem uma segunda razão, além da óbvia: os relatórios de
+auditoria socioambiental citam **pessoas atingidas** — nome de proprietário
+rural, de pescador, de morador de comunidade. Um resumo de modelo sobre texto
+não varrido reescreve esses nomes num campo novo, indexável, num portal
+público. `docs/ANTES-DO-PUSH.md` é o procedimento; ele não vira opcional
+porque o texto veio de PDF.
+
+## 6.3. Um resumo de modelo, publicado, é **o portal afirmando algo**
+
+Esta é a regra que governa a fase 3 inteira.
+
+Quando `/paraopeba/auditoria` imprime uma frase, o leitor a lê como frase do
+Controle Popular. Hoje isso é seguro porque **toda** frase da tela é
+determinística: a ficha legível é função pura de metadado, e a descrição é
+transcrição literal da AECOM. Um resumo de modelo quebra essa propriedade —
+ele é texto novo, sobre obra de terceiro, produzido por um sistema que erra
+sem avisar, num portal cuja única moeda é a confiança.
+
+O projeto já resolveu isso duas vezes, e as duas soluções valem aqui:
+
+- **Sementeira** — *"a IA só sugere, o motor decide"*: o modelo nunca é a
+  autoridade final; ele propõe, e um mecanismo determinístico resolve.
+- **Eixo Congresso** — *"o LLM não decide o rótulo; a rubrica é
+  determinística"* (`apps/web/lib/congresso/rubrica/rubrica.json`, versionada;
+  `docs/APRESENTACAO.md` §"a rubrica é um arquivo"). O rótulo é reprodutível e
+  auditável, e o leitor pode partir dele e chegar ao texto.
+- E `docs/PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` já fixou o limite para o
+  assistente: o modelo **"nunca produz número"**, e "toda resposta cita a
+  página e linka".
+
+Traduzido para a fase 3, em quatro obrigações que não são negociáveis:
+
+1. **Rótulo visível de origem de máquina**, na própria ficha, não em rodapé:
+   *"Resumo gerado por máquina — não é texto da AECOM"*. O leitor tem que
+   saber antes de ler, não depois.
+2. **Data e modelo gravados junto do resumo**, no dado, não só na tela:
+   `gerado_em`, `modelo`, `versao_prompt`. Sem isso não se responde "por que
+   este resumo diz isso" seis meses depois, e não se reprocessa o acervo
+   quando o prompt mudar. É o mesmo motivo pelo qual `versao_rubrica` existe
+   no eixo Congresso.
+3. **Nunca apresentado como conclusão do auditor.** A frase não pode ser "a
+   auditoria apontou X"; tem que ser "este resumo, gerado por máquina, indica
+   que o documento trata de X — leia o original". A diferença entre as duas é
+   a diferença entre citar e afirmar.
+4. **O resumo nunca substitui o link para a fonte.** Vale para as duas fases:
+   a ficha legível de hoje mantém o link e a descrição original da AECOM em
+   toda ficha; o resumo de amanhã entra **ao lado** deles, jamais no lugar. É
+   a mesma regra que `PLANO-ARQUIVO-DE-FONTES.md` fixou para a cópia
+   arquivada — *"o link original nunca sai da tela"*.
+
+O teste `ficha-legivel-ajri.test.ts` já trava metade disso hoje: ele reprova
+qualquer ficha que contenha "conclui", "recomend", "apontou", "não
+conformidade", "irregularidade". Se a fase 3 acontecer, esse teste continua
+válido **para a ficha determinística** — e o resumo de máquina nasce em campo
+separado, com trava própria.
+
+## 6.4. O custo real, e o que medir antes de assumir qualquer número
+
+**O piso é 467 documentos × 1 chamada.** Não há como resumir 467 documentos com
+menos de 467 chamadas, e esse é o caso feliz — o caso real é maior, porque um
+relatório de auditoria não cabe numa chamada.
+
+O que **não** dá para estimar hoje, e por isso não está escrito aqui como
+número: tamanho médio do PDF, número de páginas, contagem de tokens. O §1 deste
+mesmo documento já registra que o tamanho dos PDFs **não foi medido** e que o
+passo 1 é capturar ~10 e medir. A régua de 112,7 KiB de
+`PLANO-ARQUIVO-DE-FONTES.md` é de norma ambiental — um relatório mensal com
+anexo fotográfico e mapa é outra ordem de grandeza. **Decidir com número, não
+com estimativa**, vale aqui igual.
+
+O que medir, nessa mesma captura de 10:
+
+| medida | por que ela decide algo |
+|---|---|
+| páginas por documento (mín/mediana/máx) | separa "cabe numa chamada" de "precisa de fatiamento" |
+| caracteres do texto extraído | é o insumo de token, e o PDF-imagem dá ~0 (ver abaixo) |
+| existe seção "Conclusões" / "Recomendações"? em quantos dos 10 | se ela existe e é localizável, o custo despenca |
+| o texto extraído tem CPF/nome? | confirma o §6.2 antes de escalar |
+
+### Quando o PDF tem centenas de páginas
+
+Três estratégias, em ordem de preferência — e a primeira é de longe a melhor:
+
+1. **Resumir só a seção que interessa, não o documento.** O que o leitor quer é
+   conclusão e recomendação, e num relatório de auditoria isso é uma seção
+   nomeada. Localizá-la é trabalho **determinístico** (sumário, cabeçalho,
+   expressão regular sobre "CONCLUSÕES", "RECOMENDAÇÕES", "CONSIDERAÇÕES
+   FINAIS") e reduz o insumo de centenas de páginas para poucas. É o mesmo
+   padrão do assistente: o modelo recebe **só o trecho recuperado**, nunca o
+   acervo inteiro.
+2. **Se a seção não for encontrada, não resuma.** Ficha sem resumo é honesta;
+   resumo de um documento lido pela metade não é. Registrar
+   `motivo_sem_resumo='secao_nao_localizada'` e seguir — o portal já tem o
+   hábito de declarar lacuna em vez de omitir.
+3. **Só em último caso, mapa-e-redução por capítulo** (resumir cada trecho,
+   depois resumir os resumos). Custa N+1 chamadas por documento, multiplica o
+   erro em duas camadas e é a variante mais difícil de auditar. Se for usada,
+   `versao_prompt` tem que distinguir os dois níveis.
+
+**Duas armadilhas que já custaram caro neste projeto e reaparecem aqui:**
+
+- **PDF que é imagem digitalizada extrai texto vazio** — e um resumo sobre
+  string vazia sai fluente e falso. A extração tem que abortar abaixo de um
+  piso de caracteres por página, não seguir com o que veio. (É o mesmo modo de
+  errar do `GeoServer` que devolve corpo abortado com HTTP 200: a guarda lê o
+  conteúdo, não o status.)
+- **Processar 467 documentos numa sessão é irretomável se não houver
+  manifesto.** O coletor já resolve isso para download (`manifest.json`, modo
+  `sync`); o resumo precisa do equivalente, ou uma interrupção no documento 300
+  joga fora 300 chamadas pagas.
+
+## 6.5. Ordem sugerida da fase 3
+
+1. Executar a fase 2 (§4 acima). Sem PDF, nada disto começa.
+2. Extrair texto de 10 documentos e preencher a tabela de medidas do §6.4.
+3. Rodar a varredura de dado pessoal nesses 10 e **olhar o resultado** antes de
+   decidir qualquer coisa. Se o CPF da marca d'água aparecer no texto — e vai —,
+   a política do §2 deste documento precisa estar escrita antes do passo 4.
+4. Só então decidir se o resumo por modelo se justifica, com o custo na mesa.
+   **É uma decisão do dono, não de engenharia** — e a alternativa "não resumir,
+   e melhorar a ficha determinística" continua sobre a mesa até ele decidir.

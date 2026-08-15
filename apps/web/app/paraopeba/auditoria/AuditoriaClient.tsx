@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import {
   AUDITORIA_AJRI,
-  AUTOR_AUDITORIA_AJRI,
   INSTRUMENTO_AJRI_LABEL,
   INSTRUMENTO_AJRI_ORDEM,
   PERIODO_AUDITORIA_AJRI,
@@ -17,6 +16,7 @@ import {
   type TemaAjri,
   type TipoDocumentoAjri,
 } from "@/lib/paraopeba/auditoria-ajri";
+import { fichaLegivelAjri } from "@/lib/paraopeba/ficha-legivel-ajri";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 
 /**
@@ -341,7 +341,26 @@ function alternar<T>(atual: Set<T>, valor: T): Set<T> {
   return novo;
 }
 
+/**
+ * ═══ A FICHA LEGÍVEL VEM ANTES DO TEXTO DA AECOM, E ISSO É A ENTREGA ═══
+ *
+ * A `descricao` original tem **mediana de 346 caracteres** e é escrita em
+ * jargão de contrato ("referente aos trabalhos de auditoria das ações
+ * emergenciais em desenvolvimento pela VALE para o restabelecimento das
+ * captações…"). Quem não é técnico não sabe, lendo isso, o que o documento é.
+ *
+ * Então o card abre pela ficha — o que é, quando, de onde vem — e guarda o
+ * texto original num `<details>` rotulado. Guarda, não descarta: ele continua
+ * no DOM, continua sendo o que a busca desta página filtra, e continua sendo a
+ * palavra da AECOM, transcrita sem edição. **A ficha nunca substitui a fonte**,
+ * e o link para o portal segue em toda ficha.
+ *
+ * Nada aqui é gerado por modelo: cada frase sai de `fichaLegivelAjri()`, que é
+ * função pura sobre os metadados e tem contrato travado em
+ * `lib/paraopeba/ficha-legivel-ajri.test.ts`.
+ */
 function Ficha({ doc }: { doc: DocumentoAuditoriaAjri }) {
+  const legivel = fichaLegivelAjri(doc);
   return (
     <li className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
       <div className="flex flex-wrap items-start justify-between gap-2">
@@ -355,22 +374,44 @@ function Ficha({ doc }: { doc: DocumentoAuditoriaAjri }) {
       <p className="mt-1 text-xs text-text-soft">
         {formatDateBR(doc.data)} · <span className="font-mono">{doc.codigo}</span>
       </p>
-      {/* Crédito na ficha, não só no topo da página — ver o cabeçalho. */}
-      <p className="mt-1 text-xs text-text-soft">
-        Autoria: <strong className="text-text">{AUTOR_AUDITORIA_AJRI}</strong>, auditoria
-        socioambiental independente do Acordo Judicial
+
+      <p className="mt-2.5 text-[.97em] leading-snug text-text">{legivel.oQueE}</p>
+
+      {/* `data` é a publicação; o período examinado está DENTRO da descrição e
+          costuma ser outro mês — dizer os dois evita ler o relatório de julho
+          como se fosse sobre julho. */}
+      <p className="mt-1.5 text-sm text-text-soft">
+        Publicado em <strong className="font-medium text-text">{legivel.quando}</strong>
+        {legivel.periodoExaminado && (
+          <>
+            {" "}
+            · examina o período{" "}
+            <strong className="font-medium text-text">{legivel.periodoExaminado.frase}</strong>
+          </>
+        )}
       </p>
-      <p className="mt-2 text-sm text-text-soft">{doc.descricao}</p>
-      <div className="mt-2 flex flex-wrap gap-1.5">
-        {doc.temas.map((t) => (
+
+      {/* Crédito na ficha, não só no topo da página — ver o cabeçalho. */}
+      <p className="mt-1 text-xs text-text-soft">De onde vem: {legivel.deOndeVem}</p>
+
+      <details className="mt-2.5">
+        <summary className="cursor-pointer text-xs font-medium text-text-soft hover:text-text">
+          Ler a descrição original da AECOM, transcrita sem edição
+        </summary>
+        <p className="mt-2 text-sm text-text-soft">{doc.descricao}</p>
+      </details>
+
+      <p className="mt-2.5 flex flex-wrap items-center gap-1.5 text-xs text-text-soft">
+        Sobre o quê:
+        {legivel.sobreOQue.map((rotulo, i) => (
           <span
-            key={t}
-            className="rounded-full bg-surface-2 px-2 py-0.5 text-[.72em] text-text-soft"
+            key={doc.temas[i]}
+            className="rounded-full bg-surface-2 px-2 py-0.5 text-[.92em] text-text-soft"
           >
-            {TEMA_AJRI_LABEL[t]}
+            {rotulo}
           </span>
         ))}
-      </div>
+      </p>
       <a
         href={urlDocumentoAjri(doc.id)}
         target="_blank"

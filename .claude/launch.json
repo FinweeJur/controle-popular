@@ -140,6 +140,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3034"],
       "port": 3034
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-fichas-legiveis) -- a ficha em linguagem acessivel de cada documento da auditoria AJRI. Mesma razao das entradas acima, e aqui ela morde mais forte: o worktree cp-ajri (porta 3033) serve a MESMA rota /paraopeba/auditoria SEM a ficha, entao anexar na porta errada mostraria a pagina antiga com cara de resultado. Quarto conflito do dia neste arquivo, e a quarta vez que a resolucao e manter as duas entradas: 3034 e 3035 nao disputam nada.",
+      "name": "cp-fichas-legiveis-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3035"],
+      "port": 3035
     }
   ]
 }
