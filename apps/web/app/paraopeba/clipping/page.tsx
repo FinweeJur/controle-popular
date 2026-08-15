@@ -50,18 +50,13 @@ export default function ClippingPage() {
         — não é notícia do dia. É um retrato datado, reunido à mão, que não se atualiza
         sozinho. São dois acervos: {formatNumberBR(CLIPPING_ATI.length)} materiais das
         assessorias técnicas independentes, classificados por eixo da reparação, e{" "}
-        {formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias do clipping geral. O Instituto
-        Guaicuy mantém a fonte viva em{" "}
-        <a
-          href="https://guaicuy.org.br/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-accent hover:underline"
-        >
-          guaicuy.org.br ↗
-        </a>
-        .
+        {formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias do clipping geral.
       </p>
+      {/* O ponteiro para o Guaicuy saiu da hero em 15/08/2026. Ele dava crédito
+          errado logo na abertura: o acervo das assessorias é de TRÊS ATIs
+          (Guaicuy 22, NACAB 12, AEDAS 12), e nomear uma delas no primeiro
+          parágrafo faz o conjunto parecer obra de uma só. O crédito por item
+          continua onde ele é exato — no `source`/`ati` de cada material. */}
 
       <ClippingClient />
 
