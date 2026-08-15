@@ -98,6 +98,33 @@ FONTES = [
         "filtrar": True,
         "nota": "agregador; o veículo real vem no campo source de cada item",
     },
+    # As três ATIs — a voz de quem é PARTE no processo, que publica a decisão
+    # primeiro (docs/FONTES-BIBLIOTECA-ATI.md §6). Feed de taxonomia: o escopo
+    # já vem garantido pela categoria, então NÃO filtram por termo de lugar.
+    # ⚠️ A regra de triagem de "Nota de pesar: <nome>" (obituário do Guaicuy)
+    # entra ANTES de qualquer item destas fontes — ver triagem.ts e
+    # docs/TODO-PROXIMAS-RODADAS.md §9.
+    {
+        "id": "aedas",
+        "veiculo": "AEDAS — Associação Estadual de Defesa Ambiental e Social",
+        "url": "https://aedasmg.org/projeto/paraopeba/feed/",
+        "filtrar": False,
+        "nota": "parte interessada; feed de taxonomia do projeto Paraopeba",
+    },
+    {
+        "id": "adai",
+        "veiculo": "ADAI — Associação de Defesa Ambiental e Desenvolvimento Social",
+        "url": "https://adaibrasil.org.br/programa/paraopeba/feed/",
+        "filtrar": False,
+        "nota": "parte interessada; feed de taxonomia do programa Paraopeba",
+    },
+    {
+        "id": "guaicuy",
+        "veiculo": "Guaicuy — Assessoria dos Atingidos pela Vale",
+        "url": "https://guaicuy.org.br/categoria/ati-paraopeba/feed/",
+        "filtrar": False,
+        "nota": "parte interessada; feed de taxonomia; traz obituários 'Nota de pesar' (triagem dedicada)",
+    },
 ]
 
 # Termo de LUGAR — é o que faz um item ser DESTE caso. Minúsculas e sem acento;
@@ -154,6 +181,22 @@ def _limpar(titulo: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", titulo)).strip()
 
 
+# "Nota de pesar: <nome completo>" — obituário público do Guaicuy. Nome por
+# extenso de vítima é dado pessoal; o radar publica o título, então o nome é
+# redigido ANTES de gravar (mesma regra de `triagem.ts::temNotaDePesar`, que
+# cobre o acervo de documentos — ver docs/TODO-PROXIMAS-RODADAS.md §9).
+RE_NOTA_DE_PESAR = re.compile(
+    r"nota\s+de\s+pesar\s*:?\s+([A-ZÀ-Ý][a-zà-ÿ]+(?:\s+[A-ZÀ-Ý][a-zà-ÿ]+)+)",
+    re.IGNORECASE,
+)
+
+
+def _redigir_nota_de_pesar(titulo: str) -> str:
+    if not RE_NOTA_DE_PESAR.search(titulo):
+        return titulo
+    return RE_NOTA_DE_PESAR.sub("Nota de pesar: [nome redigido]", titulo)
+
+
 def coletar_fonte(fonte: dict) -> list[dict]:
     """Lê um feed e devolve os itens já normalizados."""
     try:
@@ -184,7 +227,7 @@ def coletar_fonte(fonte: dict) -> list[dict]:
         veiculo = fonte["veiculo"] or _limpar(item.findtext("source") or "") or "veículo não identificado"
 
         itens.append({
-            "titulo": titulo,
+            "titulo": _redigir_nota_de_pesar(titulo),
             "link": link,
             "veiculo": veiculo,
             "fonte_id": fonte["id"],
@@ -233,7 +276,8 @@ def coletar(dias: int) -> dict:
         ],
         "lacuna_conhecida": (
             "TJMG e MPMG não entram: os endereços de RSS dos dois respondiam HTTP 404 "
-            "em 14/08/2026. Decisão judicial chega aqui pela imprensa, com o atraso dela."
+            "em 14/08/2026. Decisão judicial chega aqui pela imprensa ou pelas ATIs, "
+            "com o atraso delas."
         ),
         "itens": itens,
     }

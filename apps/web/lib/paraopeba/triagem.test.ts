@@ -4,6 +4,7 @@ import {
   temCpfValido,
   temIniciais,
   temContatoPessoal,
+  temNotaDePesar,
   ehTipoPessoal,
   ehTemaSaude,
   precisaRedigirResumo,
@@ -94,6 +95,24 @@ describe("temContatoPessoal", () => {
 
   test("texto vazio não aciona", () => {
     expect(temContatoPessoal(null)).toBe(false);
+  });
+});
+
+describe("temNotaDePesar", () => {
+  test("acha o padrão real do feed do Guaicuy: Nota de pesar + nome completo", () => {
+    expect(temNotaDePesar("Nota de pesar: Maria Aparecida da Silva Santos")).toBe(true);
+  });
+
+  test("acha sem os dois-pontos", () => {
+    expect(temNotaDePesar("Nota de pesar João Pereira Lima")).toBe(true);
+  });
+
+  test("nome só com uma palavra não aciona (pode ser título de evento, não pessoa)", () => {
+    expect(temNotaDePesar("Nota de pesar: Vitória")).toBe(false);
+  });
+
+  test("texto comum não aciona", () => {
+    expect(temNotaDePesar("Reunião da comissão em Abaeté discute repasse")).toBe(false);
   });
 });
 
