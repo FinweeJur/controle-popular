@@ -1,5 +1,43 @@
 # Handoff: alertas de território (indígena/quilombola × barragem/mineração/legislação)
 
+> ## ✅ ENTREGUE em 15/08/2026 — e três números deste documento estavam VENCIDOS
+>
+> As quatro camadas foram registradas no `config.js` (commit `d1777b3`) e estão
+> na tela, na seção "Território indígena, mineração e barragens". **Mas os
+> textos propostos aqui não puderam ser colados como estavam**: recontados
+> contra os arquivos servidos, os três números tinham mudado.
+>
+> | Camada | Este documento dizia | Medido em 15/08 |
+> |---|---|---|
+> | território × SIGMINE operação | 12 sobreposições, 5 TIs + 1 quilombola | **21**, 4 TIs + 6 quilombolas, 1.539 ha |
+> | território × SIGMINE interesse | 195 sobreposições, 10 TIs + 13 quilombolas | **271**, 14 TIs + 18 quilombolas, 51.609 ha |
+> | quilombola × mancha de inundação | **zero**, com `vazia: true` | **6 sobreposições em 3 territórios** |
+>
+> ⚠️ **A terceira linha é a que importa.** Colar o texto proposto teria
+> afirmado na tela, com cara de medição, que nenhum território quilombola está
+> sob mancha de inundação de barragem. O dado diz o contrário: **AMAROS** e
+> **MACHADINHO** estão sob barragens da Kinross em Paracatu, e **SÃO SEBASTIÃO**
+> sob três da Salitre Fertilizantes em Serra do Salitre (Do Sabão I, Do Sabão II
+> e Do Jacó) — a maior atingindo 934,9 ha do território. As cinco estão com
+> plano de emergência **"em análise"** na FEAM.
+>
+> **Por que mudou:** entre 13/08 e 15/08 os territórios quilombolas do INCRA que
+> faltavam foram ingeridos, e os alertas, recalculados sobre a base maior,
+> deixaram de ser zero. Nada estava errado quando foi escrito — envelheceu em
+> dois dias.
+>
+> **A lição, que vale para o próximo handoff:** documento que carrega texto de
+> tela pronto tem prazo de validade curto, porque o dado por baixo continua se
+> movendo. Quem colar daqui **reconta no arquivo antes**, sempre. O `aviso` da
+> camada de mancha ganhou ainda uma proibição que este documento não previa:
+> **não somar as áreas** — as três barragens de Serra do Salitre cobrem a mesma
+> parte do território, e somá-las contaria o mesmo chão três vezes.
+>
+> A cor de `atos-area-protegida-municipios`, deixada como `0x??????` aqui,
+> também não foi a proposta: medidos os 30 matizes em uso, o ~115° sugerido
+> cairia a 10,2° do verde de "Minas em operação" — as duas camadas mais opostas
+> do mapa quase da mesma cor. Ficou `0xeb8dec`. Ver a nota no `config.js`.
+
 Este documento é para quem estiver com `apps/web/public/terras/globo/js/config.js`
 e `js/ui/layerspanel.js` abertos — **eu não toquei em nenhum dos dois**, de
 propósito: outra frente estava editando os dois arquivos ao vivo, noutro

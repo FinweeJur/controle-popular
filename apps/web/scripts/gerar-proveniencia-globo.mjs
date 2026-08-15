@@ -184,6 +184,20 @@ const ORIGENS = {
     obtencao: 'derivada',
     origem: 'Mesma interseção, contra as poligonais do SIGMINE em fase de requerimento ou pesquisa. É processo protocolado sobre território, não lavra — mantida em camada separada de propósito',
   },
+  // O raio de 8 km da Portaria Interministerial 60/2015 (14/08/2026) — ver
+  // docs/HANDOFF-ALERTA-RAIO-8KM.md. É o primeiro alerta do projeto que mede
+  // PROXIMIDADE e não sobreposição: a faixa de restrição vem PRONTA do
+  // IDE-Sisema (não é buffer calculado aqui) e o cruzamento é com o SIGMINE,
+  // nunca com barragem — para barragem, o círculo superestima a ZAS real de
+  // 14× a 127×, medido em docs/FONTES-TERRITORIO-E-MINERACAO.md §3.
+  'alerta-raio-territorio-sigmine-operacao': {
+    obtencao: 'derivada',
+    origem: 'Interseção geométrica real entre a faixa de restrição de 8 km que o IDE-Sisema publica em volta de terra indígena e de território quilombola (Portaria Interministerial 60/2015, Anexo I — empreendimento pontual, que inclui mineração) e as poligonais do SIGMINE em fase que AUTORIZA extrair. Mede proximidade, não sobreposição',
+  },
+  'alerta-raio-territorio-sigmine-interesse': {
+    obtencao: 'derivada',
+    origem: 'Mesma faixa de 8 km, contra as poligonais do SIGMINE em fase de requerimento, pesquisa ou disponibilidade. Papel protocolado perto do território — nem extração nem sobreposição; mantida em camada separada de propósito',
+  },
   'atos-area-protegida-municipios': {
     obtencao: 'derivada',
     origem: 'Normas de atos_oficiais cuja ementa indica criação, alteração, redução ou extinção de área protegida, com cada ementa lida e classificada à mão antes de entrar',
@@ -243,6 +257,17 @@ const ORIGENS = {
   'brumadinho-restauracao': {
     obtencao: 'automatica',
     servico: 'Semad/IDE-Sisema — áreas de revegetação/restauração pós-rompimento (ide_250102_mg_restauracao_pol) — licença presumida da série, não conferida individualmente',
+  },
+  // Documentos do processo judicial da reparação, agregados por município
+  // (15/08/2026) — ver docs/CAMADA-DOCUMENTOS-PROCESSO-MUNICIPIO.md.
+  // `derivada`, não `automatica`, de propósito: o script NÃO chama o Solr da
+  // UFMG — ele conta o que o portal JÁ PUBLICA em /paraopeba/documentos
+  // (apps/web/lib/paraopeba/documentos.ts, já passado pela triagem de dado
+  // pessoal de lib/paraopeba/triagem.ts). A camada leva contagem por tipo e
+  // por processo; resumo, título e id de documento ficam fora do GeoJSON.
+  'documentos-processo-municipios': {
+    obtencao: 'derivada',
+    origem: 'Contagem, sobre a malha municipal do IBGE, dos 471 documentos do processo de Brumadinho já publicados em /paraopeba/documentos que CITAM cada município (campo de local da Plataforma Brumadinho UFMG) — 6,6% do acervo de 7.107 documentos, e só contagem: nenhum resumo entra no mapa',
   },
 };
 
