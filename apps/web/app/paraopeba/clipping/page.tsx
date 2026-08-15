@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import { PERIODO_CLIPPING, CLIPPING_PARAOPEBA } from "@/lib/paraopeba";
+import {
+  PERIODO_CLIPPING,
+  CLIPPING_PARAOPEBA,
+  PERIODO_CLIPPING_ATI,
+  CLIPPING_ATI,
+} from "@/lib/paraopeba";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import ClippingClient from "./ClippingClient";
 
@@ -14,10 +19,14 @@ import ClippingClient from "./ClippingClient";
  * atualização automática. Rotular pelo período real (`PERIODO_CLIPPING`) é
  * o que separa "acervo histórico honesto" de "página que mente a partir de
  * amanhã".
+ *
+ * São DOIS acervos com períodos diferentes, e a página diz os dois: o das
+ * ATIs começa em 2021 (`PERIODO_CLIPPING_ATI`), o geral só em 2024. Um
+ * período único no cabeçalho esconderia três anos de material das ATIs.
  */
 export const metadata: Metadata = {
   title: `Clipping — Paraopeba | Controle Popular`,
-  description: `${formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias sobre a reparação do rompimento da barragem da Vale em Brumadinho, de ${formatDateBR(PERIODO_CLIPPING.de)} a ${formatDateBR(PERIODO_CLIPPING.ate)}.`,
+  description: `${formatNumberBR(CLIPPING_ATI.length)} materiais das assessorias técnicas independentes e ${formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias sobre a reparação do rompimento da barragem da Vale em Brumadinho, de ${formatDateBR(PERIODO_CLIPPING_ATI.de)} a ${formatDateBR(PERIODO_CLIPPING.ate)}.`,
 };
 
 export default function ClippingPage() {
@@ -36,10 +45,13 @@ export default function ClippingPage() {
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
         Acervo de{" "}
         <strong className="text-text">
-          {formatDateBR(PERIODO_CLIPPING.de)} a {formatDateBR(PERIODO_CLIPPING.ate)}
+          {formatDateBR(PERIODO_CLIPPING_ATI.de)} a {formatDateBR(PERIODO_CLIPPING.ate)}
         </strong>{" "}
         — não é notícia do dia. É um retrato datado, reunido à mão, que não se atualiza
-        sozinho. O Instituto Guaicuy mantém a fonte viva em{" "}
+        sozinho. São dois acervos: {formatNumberBR(CLIPPING_ATI.length)} materiais das
+        assessorias técnicas independentes, classificados por eixo da reparação, e{" "}
+        {formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias do clipping geral. O Instituto
+        Guaicuy mantém a fonte viva em{" "}
         <a
           href="https://guaicuy.org.br/"
           target="_blank"
