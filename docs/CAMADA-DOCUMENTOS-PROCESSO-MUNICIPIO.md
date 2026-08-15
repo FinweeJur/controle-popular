@@ -407,18 +407,33 @@ bytes 193.055, sha256, mtime), e `gerado_em_utc` passou para a data desta
 camada, que é a mais recente do acervo — que é exatamente a regra do
 gerador.
 
-**Como foi atualizado, e por que não pela rodada completa:** rodar
-`node scripts/gerar-proveniencia-globo.mjs` neste momento traria junto
-duas camadas de OUTRA sessão que trabalha no mesmo worktree agora
-(`alerta-raio-territorio-sigmine-*`, ainda não versionadas e sem entrada em
-`ORIGENS`), e mais o remexer de `mtime` de todas as camadas do disco. A
-entrada desta camada foi então inserida na posição que o gerador daria
-(ordem alfabética de arquivo, entre `devolutas-arrecadadas` e
-`embargos-ambientais-vales`), com os mesmos campos e o mesmo formato — o
-diff em `proveniencia.json` é de 11 linhas, só as desta camada.
-**Quem rodar o gerador depois que a outra sessão fechar o trabalho dela
-obtém o mesmo conteúdo para esta camada**, com os `mtime` do disco
-atualizados.
+**Duas sessões no mesmo worktree, e como isso apareceu aqui.** Enquanto
+esta camada era gerada, outra sessão trabalhava no MESMO worktree
+(camadas `alerta-raio-territorio-sigmine-*` e `js/config.js`). Por isso a
+entrada desta camada foi primeiro inserida à mão em `proveniencia.json`,
+na posição exata que o gerador daria (ordem alfabética de arquivo, entre
+`devolutas-arrecadadas` e `embargos-ambientais-vales`) — rodar a geração
+completa naquele instante teria arrastado camadas ainda não versionadas da
+outra sessão para dentro do manifesto.
+
+O que ficou no repositório, porém, é a **rodada completa**: a outra sessão
+rodou `node scripts/gerar-proveniencia-globo.mjs` logo depois, já com as
+`ORIGENS` das duas camadas dela e a desta, e o commit `df02693` levou o
+manifesto inteiro regenerado — **incluindo, sem alteração, a entrada desta
+camada** (53 feições, 193.055 bytes, sha256
+`9e105f1d…`, `obtencao: "derivada"`). Conferido depois do fato: o sha256
+do manifesto bate com o do arquivo em disco.
+
+⚠️ **O mesmo commit `df02693` levou junto os arquivos desta entrega**
+(script, GeoJSON, `ORIGENS` e este documento), que estavam no índice do
+git no momento em que a outra sessão fez `git commit`. Nada se perdeu e
+nada foi alterado — mas a mensagem daquele commit fala do handoff de
+alertas, não desta camada. Registrado aqui porque a mensagem de commit
+deixou de ser o lugar onde a história desta camada está: ela está neste
+documento. **Lição operacional, já anotada em outros repos do projeto:
+duas sessões no mesmo worktree compartilham o índice do git — quem
+trabalha em paralelo commita por caminho (`git commit <path>`), nunca
+confia no índice inteiro.**
 
 ---
 
