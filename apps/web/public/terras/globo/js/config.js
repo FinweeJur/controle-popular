@@ -1030,8 +1030,15 @@ export const CAMADAS = [
   // truncamento silencioso, e o índice de cada área é endereço público.
   {
     id: 'vazio-cadastral-curvelo', assunto: 'sem-cadastro',
-    label: 'Terra sem cadastro — detalhe de Curvelo',
-    hint: 'O mesmo cálculo em um município só, descendo às manchas pequenas: 390 áreas a partir de 10 hectares — uns 14 campos de futebol cada. É o recorte piloto, onde o método foi afinado. As 12 áreas de 500 hectares ou mais também aparecem na camada acima: aqui elas vêm acompanhadas das pequenas.',
+    label: 'Terra sem cadastro — as áreas pequenas de Curvelo',
+    // ⚠️ 378, não 390, e a diferença é o conserto de uma DUPLICAÇÃO real
+    // (15/08/2026, scripts/deduplicar_vazio_curvelo.py). Curvelo é um dos 14
+    // municípios da camada acima, então as 12 áreas de 500 ha ou mais estavam
+    // NOS DOIS arquivos — mesmo polígono, mesma cor, desenhado duas vezes com
+    // as duas camadas ligadas, e o contador somava 425 onde existem 413 áreas
+    // distintas. Agora esta camada é o COMPLEMENTO da de cima, não um
+    // superconjunto dela: as duas se somam sem repetir nada.
+    hint: 'O mesmo cálculo em um município só, descendo às manchas pequenas que o corte de 500 hectares não alcança: 378 áreas entre 10 e 500 hectares — a menor tem uns 14 campos de futebol. É o recorte piloto, onde o método foi afinado. As áreas grandes de Curvelo estão na camada acima, e não se repetem aqui.',
     aviso: 'Sem cadastro não quer dizer sem dono. Pode ser terra pública, pode ser imóvel particular que nunca se cadastrou. É um lugar para conferir, não uma conclusão.',
     fontes: ['vazio-cadastral'],
   },
