@@ -31,7 +31,7 @@ pior do que análise nenhuma, porque a fundamentação empresta credibilidade
 ao erro.
 
 O viés é de positividade: o modelo lê quase tudo como benéfico. É a
-hipótese (b) do `F0-discovery §4.2` — descartada para o Sonnet (lá era
+hipótese (b) do `../_historico/congresso-F0-discovery.md §4.2` — descartada para o Sonnet (lá era
 viés de amostra), **confirmada para o 8B**.
 
 ### O que o 8B acerta

@@ -4,7 +4,7 @@
 > público por natureza**, publicidade dos atos processuais é a regra, o
 > sigilo é exceção, e o acervo do processo 5010709-36.2019.8.13.0024 (e os
 > outros 15 processos ligados a Brumadinho) já está publicado na internet
-> pela própria UFMG. A conclusão anterior de `docs/FONTES-BRUMADINHO-UFMG.md`
+> pela própria UFMG. A conclusão anterior de `docs/_historico/FONTES-BRUMADINHO-UFMG.md`
 > — **"não ingerir" o buscador de processos** — está **corrigida por este
 > documento**: a integração é para ser planejada, não descartada. Ver seção 6.
 
@@ -452,7 +452,7 @@ público do Solr entrar no repositório ou em qualquer bucket:
 
 ## 4. Ordem sugerida — maior ganho para quem foi atingido, menor esforço primeiro
 
-1. **Corrigir o registro em `docs/FONTES-BRUMADINHO-UFMG.md`**: a conclusão
+1. **Corrigir o registro em `docs/_historico/FONTES-BRUMADINHO-UFMG.md`**: a conclusão
    "não ingerir" do buscador de processos (seção 3 e 7 daquele documento)
    estava fundamentada em risco não medido; este documento mede o risco e
    propõe a régua da seção 2.4/3 acima. Deixar o documento anterior citando

@@ -353,7 +353,7 @@ Wix)** sobre dados pessoais de cadastro/cookies — fala de "produtos adquiridos
 (PDF, 2ª edição 2026) não fala de licença de reuso na própria página que a
 referencia. **Não encontrei nenhuma declaração de licença de redistribuição da
 base.** PUC-Rio é universidade privada — mesmo critério já usado pelo projeto
-em `docs/FONTES-BRUMADINHO-UFMG.md` para material acadêmico sem licença
+em `docs/_historico/FONTES-BRUMADINHO-UFMG.md` para material acadêmico sem licença
 declarada: **tratar como direitos reservados**. Caminho seguro: **citar e
 linkar** cada caso ao `/visualizacao_caso/{id}/0/` original (que já é o "link
 para consulta pública do tribunal" mais o resumo do JUMA), e **pedir permissão

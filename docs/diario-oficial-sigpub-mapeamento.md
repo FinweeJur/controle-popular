@@ -2,7 +2,7 @@
 
 > Escrito em 2026-08-11, a pedido da auditoria: "engenharia pode adiantar o
 > mapeamento em paralelo à decisão de LGPD" (item #25 de
-> `docs/auditoria-2026-08-11.md`). **Esta tarefa não coletou dado nenhum** —
+> `docs/_historico/auditoria-2026-08-11.md`). **Esta tarefa não coletou dado nenhum** —
 > nenhuma edição foi baixada, nenhuma matéria individual foi aberta, nada foi
 > gravado no banco. Só confirma fonte, formato de busca e estrutura de URL.
 > A coleta em si continua bloqueada até o usuário decidir o corte de LGPD

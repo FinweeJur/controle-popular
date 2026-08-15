@@ -61,7 +61,7 @@ Conferido em 2026-08-15 na home, no rodapé e nas rotas `/termos-de-uso/`,
 | **ADAI** (`adaibrasil.org.br`) | só `/politica-de-privacidade/` (200), que é sobre dado do visitante, não sobre uso da obra. | **Direitos reservados.** Não entra nesta rodada de qualquer forma. |
 
 Sem declaração expressa, a obra é protegida por padrão — Lei 9.610/98, art. 7º.
-É o mesmo veredito que `docs/FONTES-BRUMADINHO-UFMG.md` já registrou para
+É o mesmo veredito que `docs/_historico/FONTES-BRUMADINHO-UFMG.md` já registrou para
 acervo de terceiro: **linkar, não copiar**.
 
 Consequências concretas no código, todas travadas por teste:

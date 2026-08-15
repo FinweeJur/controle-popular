@@ -9,7 +9,7 @@
 > móvel 375×812, e os três temas (`light`/`dark`/`high-contrast`) via
 > `getComputedStyle` no navegador — não só inspeção de código. Todo
 > problema abaixo tem onde está e por que atrapalha; os consertos baratos
-> já foram para o código, com commit citado. `docs/DIARIO-2026-08-13.md`
+> já foram para o código, com commit citado. `docs/_historico/DIARIO-2026-08-13.md`
 > registrava quatro pistas achadas por acaso; as quatro **já estavam
 > corrigidas** por sessões anteriores no mesmo dia (ver a seção "As quatro
 > pistas" abaixo) — o padrão sistêmico que elas apontavam, porém, seguia

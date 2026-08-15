@@ -1,11 +1,11 @@
 # Leia primeiro
 
-> `docs/` tem **63 arquivos**, e **mais de uma dezena nasceu num único dia**
-> (15/08/2026). O problema nunca foi o volume — é não haver onde descobrir
-> quais quatro abrir. Este arquivo é essa porta.
+> `docs/` tem **46 arquivos na raiz** + **22 arquivados em `docs/_historico/`**
+> (datados, entregues ou superados — lá só para arqueologia). O problema nunca
+> foi o volume — é não haver onde descobrir quais quatro abrir. Este arquivo é
+> essa porta.
 >
-> *(Contagem conferida em 15/08 à noite. Ela dizia 54 de manhã e envelheceu no
-> mesmo dia — se for decidir por este número, conte de novo:*
+> *(Contagem conferida em 16/08. Se for decidir por este número, conte de novo:*
 > `ls -1 docs | wc -l`*.)*
 >
 > **Ninguém precisa ler `docs/` inteiro. Nunca.**
@@ -47,16 +47,26 @@ Estes documentam **um dia** e não descrevem o estado atual. Servem para
 responder "por que isto está assim", nunca "como está hoje". Se a resposta que
 você quer é sobre o presente, o arquivo certo é outro.
 
+Todos vivem em **`docs/_historico/`** — curadoria de 16/08 os tirou da raiz
+para o GitBook espelhar só o essencial. A lista dos que ficaram lá:
+
 `DIARIO-2026-08-13.md` · `auditoria-2026-08-11.md` ·
 `auditoria-2026-08-14-normas-protecao.md` · `HANDOFF-ALERTA-RAIO-8KM.md` ·
 `HANDOFF-ALERTAS-TERRITORIO.md` · `HANDOFF-CAMADA-DINHEIRO.md` ·
 `HANDOFF-PAINEL-PARAOPEBA-PAGINAS-PERDIDAS.md` ·
-`coleta-lixo-farmacia-plantao-descoberta.md`
+`coleta-lixo-farmacia-plantao-descoberta.md` ·
+`CAMADA-DOCUMENTOS-PROCESSO-MUNICIPIO.md` · `normas-mapa-viabilidade.md` ·
+`REVISAO-COMPLETUDE.md` · `SPU-SEM-DESTINACAO.md` ·
+`ROTEIROS-REDES-SOCIAIS.md` · `worktrees.md` ·
+`FONTES-BRUMADINHO-UFMG.md` · `PLANO-IMAGENS-INPE.md` · `betim-F0-discovery.md` ·
+`betim-ambiental-pecma-research.md` · `congresso-F0-discovery.md` ·
+`judiciario-F0-discovery.md` · `judiciario-F9-lancamento.md`
 
 ⚠️ **Documento datado envelhece sem avisar.** Em 15/08 dois deles discordavam
 sobre desde quando o site estava parado, e um terceiro dizia "17 marcos" horas
 depois de virarem 23. Número em documento antigo **não** é medição atual — se
-for decidir com ele, remeça.
+for decidir com ele, remeça. (A curadoria de 16/08 moveu os datados para
+`docs/_historico/` — o que ainda está na raiz descreve o presente.)
 
 ## Regra para quem escrever aqui
 
