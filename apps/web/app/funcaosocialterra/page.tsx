@@ -8,7 +8,12 @@ import { listarCidades } from "@/lib/db/queries/municipios";
 import { vazioResumoPorMunicipio } from "@/lib/betim/terras";
 import { formatNumberBR } from "@/lib/betim/format";
 import { carregarResumoMapaEstadual } from "@/lib/terras/mapa-resumo";
-import { carregarAlertasSigmine, carregarAtosAreaProtegida } from "@/lib/terras/alertas";
+import {
+  carregarAlertasSigmine,
+  carregarAlertaTiMancha,
+  carregarAlertaQuilombolaMancha,
+  carregarAtosAreaProtegida,
+} from "@/lib/terras/alertas";
 
 /**
  * `/funcaosocialterra` — a frente de função social da terra.
@@ -72,6 +77,8 @@ export default async function FuncaoSocialTerraPage() {
   const resumoMapa = carregarResumoMapaEstadual();
   const alertaOperacao = carregarAlertasSigmine("operacao");
   const alertaInteresse = carregarAlertasSigmine("interesse");
+  const alertaTiMancha = carregarAlertaTiMancha();
+  const alertaQuilombolaMancha = carregarAlertaQuilombolaMancha();
   const atosAreaProtegida = carregarAtosAreaProtegida();
 
   return (
@@ -184,9 +191,11 @@ export default async function FuncaoSocialTerraPage() {
             {formatNumberBR(alertaOperacao.itens.length)} sobreposições entre território e lavra
             já autorizada, {formatNumberBR(alertaInteresse.itens.length)} entre território e
             requerimento minerário, e {formatNumberBR(atosAreaProtegida.totalNormas)} normas
-            municipais que criam ou alteram área protegida. Terra indígena e território
-            quilombola atingidos por mancha de barragem: zero, medido numa varredura completa —
-            não é ausência de checagem.
+            municipais que criam ou alteram área protegida. Terra indígena atingida por mancha
+            de barragem: zero, medido numa varredura completa — não é ausência de checagem.
+            Território quilombola atingido por mancha de barragem:{" "}
+            {formatNumberBR(alertaQuilombolaMancha.qtdFeaturesEncontradas)} interseções, em{" "}
+            {formatNumberBR(alertaQuilombolaMancha.qtdTerritoriosAtingidos)} territórios.
           </p>
           <a
             href="/funcaosocialterra/alertas"

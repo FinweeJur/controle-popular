@@ -156,6 +156,30 @@ describe("quilombola × mancha de barragem — DEIXOU DE SER ZERO", () => {
     expect(r.qtdBarragensComManchaPublicada).toBe(156);
     expect(r.universoCombinacoes).toBe(27 * 156);
   });
+
+  test("os 6 itens saem do arquivo, com 3 territórios distintos", () => {
+    const r = carregarAlertaQuilombolaMancha();
+    expect(r.itens).toHaveLength(6);
+    // Medido em 15/08: AMAROS (2 interseções), MACHADINHO (1) e SÃO
+    // SEBASTIÃO (3) — contados por nome único, não por feature.
+    expect(r.qtdTerritoriosAtingidos).toBe(3);
+    expect(r.itens.filter((i) => i.territorioNome === "AMAROS")).toHaveLength(2);
+    expect(r.itens.filter((i) => i.territorioNome === "MACHADINHO")).toHaveLength(1);
+    expect(r.itens.filter((i) => i.territorioNome === "SÃO SEBASTIÃO")).toHaveLength(3);
+    // Medido em 15/08, somando as 6 area_intersecao_ha do arquivo bruto.
+    expect(+r.areaTotalHa.toFixed(1)).toBe(3192.1);
+  });
+
+  test("o deep-link aponta para a MESMA feição em mancha-inundacao-barragens", () => {
+    const r = carregarAlertaQuilombolaMancha();
+    const mancha = lerBruto("mancha-inundacao-barragens.geojson.gz");
+    for (const item of r.itens) {
+      expect(item.mapa).not.toBeNull();
+      expect(item.mapa!.camada).toBe("mancha-inundacao-barragens");
+      const feicao = mancha.features[item.mapa!.idx];
+      expect(feicao.properties.estrutura).toBe(item.barragem);
+    }
+  });
 });
 
 describe("normas que mexem em área protegida", () => {
