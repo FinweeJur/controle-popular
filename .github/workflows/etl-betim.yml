@@ -10,7 +10,10 @@ name: ETL betim
 #                                 once those modules exist)
 #   0 10 1 * *        monthly   — Base dos Dados Track A, agropecuária (IBGE
 #                                 PAM/PPM), frota de veículos (DENATRAN),
-#                                 caixa disponível/balanço (+ almg once built)
+#                                 caixa disponível/balanço, legislação
+#                                 ambiental das 5 fontes — ALMG/SEMAD/SIAM
+#                                 (estaduais) e MMA/CNDH (nacionais)
+#                                 (+ almg emendas once built)
 #   0 11 1 1,4,7,10 * quarterly — IBGE malha/hierarquia geográfica, feriados
 #                                 nacionais (BrasilAPI), IDH/pobreza (PNUD/ADH,
 #                                 só muda em ano de Censo mas sem cadência
@@ -265,6 +268,73 @@ jobs:
       - name: 'BD DENATRAN — frota de veículos (monthly)'
         if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
         run: python -m etl.bd.frota --id-municipio $ID_MUNICIPIO
+
+      # ── Legislação ambiental: as 5 fontes de `ambiental_legislacao` ───
+      #
+      # DECLARADAS EM 2026-08-15, e o motivo importa mais que a cadência: até
+      # hoje NENHUMA das cinco estava em workflow nenhum. O corpus inteiro
+      # (15.318 normas) era carregado à mão na máquina de build, o que quer
+      # dizer que ele congelava no dia da última carga manual e ninguém era
+      # avisado — a tela seguiria mostrando um número correto na forma e
+      # velho no conteúdo, que é o pior jeito de estar errado.
+      #
+      # Descoberto ao mesclar o PC externo: ele trouxe schema, coletor e tela
+      # da legislação FEDERAL, mas não tem Postgres, então as 8.940 normas
+      # nunca chegaram a banco nenhum. A tela ia ao ar prometendo MMA, Ibama,
+      # ICMBio e Conama com filtro por esfera, e imprimindo "0 normas
+      # federais" logo abaixo.
+      #
+      # MENSAL, e não diário/semanal, é a cadência da própria fonte: o recurso
+      # do MMA é um CSV anual ('Legislação Ambiental Brasileira_2025', criado
+      # em 23/09/2025) e a página do CNDH no Decidim estava, ao declarar isto,
+      # atualizada em 29/01/2026. Lei não muda de manhã pra tarde; bater
+      # diariamente em API de governo por dado que muda no mês seria custo sem
+      # informação.
+      #
+      # `continue-on-error` em todos: ALMG e SEMAD paginam com pausa de >=1s
+      # exigida pela fonte, então são os passos mais demorados do mês e os
+      # mais sujeitos a timeout. Um deles cair não pode derrubar os outros
+      # quatro nem o build do dia — a rotina local só recusa publicar se
+      # TODOS os passos de ETL falharem (ver docs/rotina-local.md).
+      - name: 'Legislação ambiental ALMG — leis estaduais (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        continue-on-error: true
+        run: python -m etl.apis.legislacao_almg
+
+      - name: 'Legislação ambiental SEMAD — deliberações/portarias (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        continue-on-error: true
+        run: python -m etl.apis.legislacao_semad
+
+      - name: 'Legislação ambiental SIAM — atos do sistema estadual (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        continue-on-error: true
+        run: python -m etl.apis.legislacao_siam
+
+      - name: 'Legislação ambiental MMA/Conama — federal (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        continue-on-error: true
+        run: python -m etl.apis.legislacao_mma
+
+      - name: 'CNDH — resoluções e recomendações (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        continue-on-error: true
+        run: python -m etl.apis.legislacao_cndh
+
+      # DEPOIS dos cinco acima, e a ordem é o passo: este módulo não bate em
+      # fonte externa nenhuma — lê `ementa`/`indexacao` das linhas que já estão
+      # na tabela e deriva `temas`. Rodar antes dos coletores classificaria o
+      # corpus do mês passado e deixaria o novo sem tema, que é exatamente o
+      # estado encontrado em 15/08/2026: as 8.940 normas nacionais entraram com
+      # 0% de tema contra 31,5% das estaduais, e a tela publicava só a média
+      # das duas (13,1%) — verdadeira e, sozinha, enganosa.
+      #
+      # É determinístico e idempotente (mesma entrada, mesma saída), então
+      # rodar de novo sobre linha já classificada não duplica nem estraga.
+      - name: 'Classificar temas ambientais (monthly, depois dos coletores)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        continue-on-error: true
+        run: python -m etl.apis.classificar_temas_ambientais
 
       - name: 'Auditoria Rio Paraopeba — FGV (manual só, ver nota 2026-08-09)'
         # Planilha mensal (geral-MM-AAAA.xlsx); mensal é a cadência certa da
