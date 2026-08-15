@@ -1,6 +1,7 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
+import RepasseBrumadinho from "@/app/[municipio]/components/RepasseBrumadinho";
 import BarrasValor from "@/app/[municipio]/components/charts/BarrasValor";
 import { getVisaoGeral } from "@/lib/betim/prefeitura";
 import { getCaixaDisponivel } from "@/lib/betim/caixa";
@@ -99,6 +100,8 @@ export default async function PrefeituraHubPage({
           </DataCard>
         </div>
       ) : null}
+
+      <RepasseBrumadinho idMunicipio={cidade.id_municipio} />
 
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border bg-surface p-5 shadow-sm">
         <div>

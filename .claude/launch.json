@@ -168,6 +168,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3028"],
       "port": 3028
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-repasse-853) -- repasse do Acordo de Brumadinho aos 853 municipios de MG, no bloco de /[municipio]/prefeitura. Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso. Detalhe proprio desta frente: o bloco so renderiza em cidade de Minas, entao /sp/prefeitura NAO deve mostra-lo -- ausencia ali e o comportamento certo, e nao prova de porta errada.",
+      "name": "cp-repasse-853-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3038"],
+      "port": 3038
     }
   ]
 }

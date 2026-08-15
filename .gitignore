@@ -91,3 +91,11 @@ apps/web/.tmp-salic/
 # A proveniencia mora no par que E versionado: o coletor e
 # docs/FONTES-AUDITORIA-AJRI.md.
 .tmp-fontes/
+
+# HTML bruto da pagina do repasse do Acordo de Brumadinho
+# (scripts/coletar-repasse-brumadinho-mg.mts): 347 KB de uma requisicao, mantido
+# em disco so para nao repedir os MESMOS bytes a um servico publico a cada
+# passagem do parser. Nao e fonte: o que vale e o par versionado
+# `apps/web/data/repasse-brumadinho-mg.json` + o coletor que o gerou. Versionar
+# o HTML tambem seria criar a segunda copia que o repo aprende a divergir.
+.cache/

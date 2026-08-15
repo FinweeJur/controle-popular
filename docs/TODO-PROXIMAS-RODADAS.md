@@ -57,6 +57,39 @@ em favor do coletor novo, já que a tela do Paraopeba agora cobre a bacia
 inteira e a de Betim cobre só Betim. Decisão do dono. Enquanto isso, não
 aumentar a frequência de nenhum dos dois.
 
+O coletor do repasse dos 853 (`scripts/coletar-repasse-brumadinho-mg.mts`,
+15/08) nasceu na mesma régua e acrescenta uma peça: o HTML de 347 KB fica em
+`.cache/` (ignorado no git) por 12 h, porque o momento em que se pede a mesma
+coisa muitas vezes ao mesmo servidor é o desenvolvimento do parser, não a
+produção. `robots.txt` de `www.mg.gov.br` **permite** `/pro-brumadinho`, e
+ainda assim vale a mesma regra: manual, com pausa, User-Agent honesto, e nunca
+em CI.
+
+### 3c. ⚠️ O exemplo da armadilha "IBGE 7 × 6 dígitos" está errado nas anotações
+
+Medido em 15/08/2026, ao coletar o repasse dos 853. A anotação que circula
+neste projeto diz:
+
+> "Código IBGE tem 7 dígitos no IBGE e 6 no ComunicaBR. Betim é `3106200` (7)
+> e `310670` (6)."
+
+**`3106200` é Belo Horizonte.** O par curto dele é `310620`. Betim é
+`3106705`, e é dele que sai `310670`, tirando o dígito verificador — ou seja,
+o de 6 é o de 7 truncado, e não "outra numeração", como a anotação também dá
+a entender.
+
+A armadilha em si é real e continua valendo: misturar as duas numerações
+responde 200 e devolve vazio (medido em `lib/comunicabr/mg.ts`). O que está
+errado é o **exemplo** — e é o exemplo que as pessoas copiam. Ele atravessou o
+enunciado de uma rodada inteira sem ninguém tropeçar, porque dois códigos de
+sete dígitos começados em `3106` ocupam o mesmo lugar na frase e ninguém
+decora código de município.
+
+Quem pegou foi um teste que compara o código com o **nome**
+(`lib/brumadinho/repasse.test.ts`), não a revisão humana. **Dívida:** corrigir
+a anotação onde ela estiver guardada fora do repositório. Dentro do
+repositório os dois pares já estão travados por teste.
+
 ### 4. Cobertura de território que ficou de fora
 
 - **13 territórios quilombolas** do INCRA fora das camadas publicadas.
