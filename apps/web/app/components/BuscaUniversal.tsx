@@ -1,6 +1,13 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import {
+  DESTINOS_SEM_ASSISTENTE,
+  TEXTO_SEM_ASSISTENTE,
+  TITULO_SEM_ASSISTENTE,
+  lerJsonDaRota,
+  lerRespostaDoAssistente,
+} from "@/lib/rota-ausente";
 
 /**
  * Barra de busca + assistente, compartilhada pelas TRÊS zonas
@@ -18,6 +25,16 @@ import { useEffect, useId, useRef, useState } from "react";
  * isso entra por props (`endpointSugestoes`, `endpointChat`, `exemplos`).
  * Três cópias divergiriam no primeiro ajuste, como já aconteceu com os oito
  * `.replace(/_/g," ")` espalhados que o /judiciario teve de centralizar.
+ *
+ * DUAS CÓPIAS DO SITE, E UMA DELAS NÃO TEM AS ROTAS: `endpointSugestoes` e
+ * `endpointChat` apontam para arquivos `*.din.ts`, que só existem no alvo
+ * Cloudflare. No alvo GitHub Pages (`output: 'export'`) as duas somem, e este
+ * componente passa a operar no modo `semRotas`: sem fetch por tecla, sem
+ * "Consultando os dados…", e com o painel dizendo que o assistente não foi
+ * publicado nesta cópia — com link para `/busca` e `/assistente`, que
+ * funcionam lá. Antes disso, o 404 caía no `catch` e virava "Falha de
+ * conexão", mandando o leitor investigar a própria rede. Ver
+ * `lib/rota-ausente.ts`.
  *
  * ACESSIBILIDADE: padrão ARIA de combobox com listbox — `aria-expanded`,
  * `aria-activedescendant`, `aria-controls`, e `role="option"` em cada item.
@@ -46,7 +63,11 @@ type Estado =
   | { fase: "sugerindo" }
   | { fase: "pensando" }
   | { fase: "resposta"; texto: string; semIa?: boolean }
-  | { fase: "erro"; texto: string };
+  | { fase: "erro"; texto: string }
+  // Separado de `erro` porque a saída é outra: `erro` oferece "tentar de
+  // novo", e aqui tentar de novo não tem como funcionar — as rotas não
+  // foram publicadas nesta cópia do site. Ver `lib/rota-ausente.ts`.
+  | { fase: "ausente" };
 
 const DEBOUNCE_MS = 180;
 const MIN_CARACTERES = 2;
@@ -74,6 +95,11 @@ export default function BuscaUniversal({
   const [perguntas, setPerguntas] = useState<string[]>([]);
   const [indice, setIndice] = useState(-1);
   const [estado, setEstado] = useState<Estado>({ fase: "parado" });
+  // Uma vez descoberto que as rotas não existem neste build, não desdescobre:
+  // para de disparar fetch a cada tecla e para de prometer resposta. As duas
+  // rotas (`api/busca` e `api/chat`) são `*.din.ts` e somem JUNTAS no alvo
+  // estático, então a descoberta por qualquer uma delas vale para as duas.
+  const [semRotas, setSemRotas] = useState(false);
 
   const idBase = useId();
   const idLista = `${idBase}-lista`;
@@ -113,7 +139,10 @@ export default function BuscaUniversal({
 
   useEffect(() => {
     const q = texto.trim();
-    if (q.length < MIN_CARACTERES) {
+    // Sem rotas neste build, digitar não pode produzir sugestão nenhuma —
+    // não gasta uma requisição por tecla para descobrir de novo o que já se
+    // sabe (e para de encher o console de 404).
+    if (semRotas || q.length < MIN_CARACTERES) {
       setSugestoes([]);
       setPerguntas([]);
       if (estado.fase === "sugerindo") setEstado({ fase: "parado" });
@@ -128,9 +157,21 @@ export default function BuscaUniversal({
         const res = await fetch(`${endpointSugestoes}?q=${encodeURIComponent(q)}`, {
           signal: ctrl.signal,
         });
-        const data = (await res.json()) as Resposta;
-        setSugestoes(data.sugestoes ?? []);
-        setPerguntas(data.perguntas ?? []);
+        const leitura = await lerJsonDaRota<Resposta>(res);
+        if (leitura.tipo === "ausente") {
+          // Antes isto caía no `catch` abaixo e sumia em silêncio: a lista
+          // ficava vazia, como se nada casasse com o termo. Quem digitasse
+          // concluiria que o portal não tem o assunto — quando o que não há
+          // é a rota. Silêncio aqui é uma resposta errada, não a ausência
+          // de resposta.
+          setSemRotas(true);
+          setSugestoes([]);
+          setPerguntas([]);
+          setEstado({ fase: "parado" });
+          return;
+        }
+        setSugestoes(leitura.dados.sugestoes ?? []);
+        setPerguntas(leitura.dados.perguntas ?? []);
         setIndice(-1);
         setEstado({ fase: "parado" });
       } catch (e) {
@@ -144,15 +185,22 @@ export default function BuscaUniversal({
     return () => clearTimeout(timer);
     // `estado` de propósito fora das deps: ele muda DENTRO do efeito e
     // incluí-lo religaria o debounce a cada transição, disparando fetch em
-    // loop.
+    // loop. `semRotas` ENTRA: ele só vai de false para true uma vez, e a
+    // religada serve justamente para o efeito passar a cair no atalho acima.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [texto, endpointSugestoes]);
+  }, [texto, endpointSugestoes, semRotas]);
 
   async function perguntar(pergunta: string) {
     const q = pergunta.trim();
     if (q.length < 3) return;
     setTexto(q);
     setAberto(true);
+    // Já se sabe que não há rota: mostra o aviso na hora, sem o "Consultando
+    // os dados do portal…" que seria encenação — não há consulta nenhuma.
+    if (semRotas) {
+      setEstado({ fase: "ausente" });
+      return;
+    }
     setEstado({ fase: "pensando" });
     try {
       const res = await fetch(endpointChat, {
@@ -160,20 +208,21 @@ export default function BuscaUniversal({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ pergunta: q }),
       });
-      const data = (await res.json()) as {
-        resposta?: string;
-        erro?: string;
-        semIa?: boolean;
-      };
-      if (data.resposta) {
-        setEstado({ fase: "resposta", texto: data.resposta, semIa: data.semIa });
-      } else {
-        setEstado({
-          fase: "erro",
-          texto: data.erro ?? "Não consegui responder agora.",
-        });
+      const leitura = await lerRespostaDoAssistente(res);
+      if (leitura.tipo === "ausente") {
+        setSemRotas(true);
+        setEstado({ fase: "ausente" });
+        return;
       }
+      if (leitura.tipo === "resposta") {
+        setEstado({ fase: "resposta", texto: leitura.texto, semIa: leitura.semIa });
+        return;
+      }
+      setEstado({ fase: "erro", texto: leitura.texto });
     } catch {
+      // `fetch` rejeitado é falha de rede DE VERDADE (offline, DNS, TLS), e
+      // aí "verifique a rede" é o conselho certo. O 404 da cópia estática
+      // não chega mais aqui — `lerRespostaDoAssistente` o separa antes.
       setEstado({
         fase: "erro",
         texto: "Falha de conexão. Verifique a rede e tente de novo.",
@@ -215,7 +264,11 @@ export default function BuscaUniversal({
       estado.fase === "pensando" ||
       estado.fase === "resposta" ||
       estado.fase === "erro" ||
-      (texto.trim().length === 0 && exemplos.length > 0));
+      estado.fase === "ausente" ||
+      // Com as rotas ausentes não há sugestão nem resposta para mostrar, e
+      // os "exemplos" viraram convite para o que não funciona — o painel de
+      // campo vazio some junto.
+      (!semRotas && texto.trim().length === 0 && exemplos.length > 0));
 
   return (
     <div ref={raiz} className={`relative ${className}`}>
@@ -354,7 +407,7 @@ export default function BuscaUniversal({
             })}
           </ul>
 
-          {texto.trim().length === 0 && exemplos.length > 0 ? (
+          {!semRotas && texto.trim().length === 0 && exemplos.length > 0 ? (
             <div className="border-t border-[var(--cp-border)] p-3">
               <p className="text-xs uppercase tracking-wide opacity-60">Experimente</p>
               <div className="mt-2 flex flex-wrap gap-2">
@@ -417,6 +470,37 @@ export default function BuscaUniversal({
               >
                 Tentar de novo
               </button>
+            </div>
+          ) : null}
+
+          {/* Sem `cp-tremor` e sem `role="alert"`: o tremor e a interrupção do
+              leitor de tela anunciam "algo deu errado agora", e aqui nada deu
+              errado agora — esta cópia do portal nunca teve essas rotas. E sem
+              "Tentar de novo", que é o botão que não pode funcionar. */}
+          {estado.fase === "ausente" ? (
+            <div
+              className="border-t border-[var(--cp-border)] p-3 text-sm"
+              role="status"
+              aria-live="polite"
+            >
+              <p className="font-medium">{TITULO_SEM_ASSISTENTE}</p>
+              <p className="mt-1 opacity-75">{TEXTO_SEM_ASSISTENTE}</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {DESTINOS_SEM_ASSISTENTE.map((d) => (
+                  // Caminho de raiz e `<a>` cru: `/busca` e `/assistente` são
+                  // as duas páginas que existem FORA das zonas, e este
+                  // componente roda dentro das três — mesma regra dos `href`
+                  // de sugestão logo acima.
+                  <a
+                    key={d.href}
+                    href={d.href}
+                    title={d.descricao}
+                    className="rounded-full border border-[var(--cp-border)] px-3 py-1 text-sm no-underline hover:border-[var(--cp-primary)]"
+                  >
+                    {d.rotulo}
+                  </a>
+                ))}
+              </div>
             </div>
           ) : null}
         </div>

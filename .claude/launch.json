@@ -154,6 +154,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3036"],
       "port": 3036
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-degrada-estatico). E a UNICA entrada do arquivo que nao sobe o alvo Cloudflare: `dev-alvo-estatico.mjs` define PAGES_BASE_PATH=\"\", o que tira todas as rotas *.din.ts do build -- e e exatamente nesse alvo que o assistente precisa degradar com honestidade. O `npm run dev` das outras entradas nao reproduz o defeito, porque la as rotas existem. Quinto conflito do dia neste arquivo, e o primeiro em que manter as duas versoes NAO basta: esta entrada nasceu pedindo a 3033, que cp-ajri-dev ja ocupa. Manter as duas cruas criaria a colisao de porta que estas entradas existem para evitar -- entao ela foi movida para a 3039, a primeira livre acima das reservadas hoje (3036, 3037 e 3038).",
+      "name": "cp-degrada-estatico-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["apps/web/scripts/dev-alvo-estatico.mjs", "--port", "3039"],
+      "port": 3039
     }
   ]
 }
