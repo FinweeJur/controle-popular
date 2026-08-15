@@ -15,11 +15,20 @@ import {
   type NoticiaAti,
   type SiglaAti,
   type TemaAti,
+  CLIPPING_IJ,
+  INSTITUICAO_JUSTICA_LABEL,
+  INSTITUICAO_JUSTICA_NOME,
+  TEMA_CLIPPING_IJ_LABEL,
+  TEMA_CLIPPING_IJ_ORDEM,
+  PERIODO_CLIPPING_IJ,
+  type NoticiaInstituicaoJustica,
+  type SiglaInstituicaoJustica,
+  type TemaClippingIj,
 } from "@/lib/paraopeba";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 
 /**
- * `/paraopeba/clipping` — dois acervos, dois filtros, um componente.
+ * `/paraopeba/clipping` — três acervos, três filtros, um componente.
  *
  * ═══ POR QUE AS ATIs VÊM PRIMEIRO ═══
  *
@@ -28,24 +37,36 @@ import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
  * lado de quem foi atingido. O clipping geral é cobertura sobre o caso; o
  * das ATIs é a voz da assessoria da população. Ordem de leitura importa.
  *
+ * ═══ POR QUE AS INSTITUIÇÕES DE JUSTIÇA VÊM NO MEIO ═══
+ *
+ * MPMG, MPF e DPMG são as três signatárias do Acordo pelo lado público. O que
+ * elas publicam não é cobertura de terceiro — é a palavra de quem assinou, e
+ * por isso não pertence ao clipping geral. Mas também não é a voz das
+ * atingidas, que é o das ATIs. Fica entre os dois, que é onde está.
+ *
+ * É também o acervo mais fundo dos três: começa em 05/04/2019 contra
+ * 08/04/2024 do geral. A assinatura do Acordo de R$ 37,6 bi, em fevereiro de
+ * 2021, só existe no portal por causa dele.
+ *
  * ═══ POR QUE OS FILTROS VOLTARAM ═══
  *
  * O painel-fonte tinha busca, intervalo de data, ordenação, recorte por
  * fonte e por tema, com contador e "limpar filtros" — e a primeira ingestão
- * trouxe só um `select` de ano. Com 46 + 149 itens, sem filtro a página é
- * uma parede: o acervo existe mas não é consultável. Aqui os dois blocos
+ * trouxe só um `select` de ano. Com 46 + 59 + 149 itens, sem filtro a página
+ * é uma parede: o acervo existe mas não é consultável. Aqui os três blocos
  * têm a mesma barra (Buscar · De · Até · Ordenar · contador · Limpar), o
  * que muda são os recortes próprios de cada acervo.
  *
  * Estado local, sem `useSearchParams()`: não precisa de link compartilhável
  * e evita o `<Suspense>` que `ListaProjetos.tsx` precisa por ler a query.
- * Os dois acervos cabem em memória (~195 itens), filtrar aqui é suficiente.
+ * Os três acervos cabem em memória (~254 itens), filtrar aqui é suficiente.
  */
 
 type Ordem = "recente" | "antigo" | "az";
 
 const TODOS_OS_TIPOS = Object.keys(TIPO_NOTICIA_LABEL) as TipoNoticia[];
 const TODAS_AS_ATIS = Object.keys(ATI_LABEL) as SiglaAti[];
+const TODAS_AS_IJS = Object.keys(INSTITUICAO_JUSTICA_LABEL) as SiglaInstituicaoJustica[];
 
 /** Vazio = sem limite. Compara ISO como string: `2025-03-14` ordena sozinho. */
 function dentroDoIntervalo(data: string, de: string, ate: string): boolean {
@@ -73,6 +94,7 @@ export default function ClippingClient() {
   return (
     <>
       <SecaoAti />
+      <SecaoIj />
       <SecaoClipping />
     </>
   );
@@ -245,7 +267,282 @@ function ItemAti({ noticia, onTag }: { noticia: NoticiaAti; onTag: (t: string) =
 }
 
 // ══════════════════════════════════════════════════════════════════════════
-// Bloco 2 — Clipping geral (o que já estava no portal)
+// Bloco 2 — Clipping das instituições de justiça (MPMG, MPF, DPMG)
+// ══════════════════════════════════════════════════════════════════════════
+
+/** Um FATO do acervo: ou um item solto, ou os que o painel marcou como o mesmo. */
+interface FatoIj {
+  chave: string;
+  itens: NoticiaInstituicaoJustica[];
+}
+
+/**
+ * Junta os itens que o painel-fonte marcou com o mesmo `grupo`.
+ *
+ * Sem isto, a assinatura do Acordo de R$ 37,6 bi aparece TRÊS vezes na tela —
+ * uma por instituição — e o acervo parece maior do que é: 59 itens que são 36
+ * publicações sobre 13 fatos, mais 23 fatos próprios. Quem conta card na tela
+ * chegaria a um número de "cobertura" inflado por um detalhe de origem.
+ *
+ * Preserva a ordem de chegada, então a ordenação escolhida na barra continua
+ * valendo: o fato aparece onde apareceria sua publicação mais bem colocada.
+ *
+ * Agrupa DEPOIS de filtrar, de propósito. Filtrar por DPMG e ver o card do
+ * Acordo encolher para uma publicação é a resposta certa — o card mostra o
+ * que sobrevive ao filtro, não o grupo inteiro que existia antes dele.
+ */
+function agruparPorFato(itens: NoticiaInstituicaoJustica[]): FatoIj[] {
+  const porGrupo = new Map<string, NoticiaInstituicaoJustica[]>();
+  const fatos: FatoIj[] = [];
+  for (const item of itens) {
+    if (!item.grupo) {
+      fatos.push({ chave: item.id, itens: [item] });
+      continue;
+    }
+    const existente = porGrupo.get(item.grupo);
+    if (existente) {
+      existente.push(item);
+      continue;
+    }
+    const novo = [item];
+    porGrupo.set(item.grupo, novo);
+    fatos.push({ chave: item.grupo, itens: novo });
+  }
+  return fatos;
+}
+
+function SecaoIj() {
+  const [busca, setBusca] = useState("");
+  const [de, setDe] = useState("");
+  const [ate, setAte] = useState("");
+  const [ordem, setOrdem] = useState<Ordem>("recente");
+  const [ijsAtivas, setIjsAtivas] = useState<Set<SiglaInstituicaoJustica>>(new Set(TODAS_AS_IJS));
+  const [tema, setTema] = useState<TemaClippingIj | "todos">("todos");
+
+  const faixa = useMemo(() => faixaDeDatas(CLIPPING_IJ.map((n) => n.data)), []);
+
+  const lista = useMemo(() => {
+    const filtrada = CLIPPING_IJ.filter(
+      (n) =>
+        ijsAtivas.has(n.instituicao) &&
+        (tema === "todos" || n.tema === tema) &&
+        dentroDoIntervalo(n.data, de, ate) &&
+        // Sem tags: este acervo não tem o campo. Busca no que ele tem.
+        casaBusca(busca, [n.titulo, n.resumo, n.fonte], [])
+    );
+    return ordenar(filtrada, ordem, (n) => INSTITUICAO_JUSTICA_LABEL[n.instituicao]);
+  }, [ijsAtivas, tema, de, ate, busca, ordem]);
+
+  const grupos = useMemo(
+    () =>
+      TEMA_CLIPPING_IJ_ORDEM.map((t) => ({
+        tema: t,
+        fatos: agruparPorFato(lista.filter((n) => n.tema === t)),
+      })).filter((g) => g.fatos.length > 0),
+    [lista]
+  );
+
+  /**
+   * Conta CARD, não publicação e não fato — é o que a pessoa vê na tela, e é
+   * a única contagem que fecha com os olhos dela. A diferença aparece em um
+   * caso, medido: o edital da nova ATI de 31/10/2025 é um fato só, e o
+   * painel-fonte classificou MPMG e MPF sob "PTR / Auxílio" e a DPMG sob
+   * "Indenização". Como a tela agrupa por eixo, ele rende dois cards.
+   *
+   * Contar fato distinto aqui diria "36" com 37 cards à vista. A saída não é
+   * escolher o número bonito: é a prosa acima dizer os dois e explicar por quê.
+   */
+  const cardsExibidos = useMemo(
+    () => grupos.reduce((soma, g) => soma + g.fatos.length, 0),
+    [grupos]
+  );
+  const totalDeCards = useMemo(
+    () =>
+      TEMA_CLIPPING_IJ_ORDEM.reduce(
+        (soma, t) => soma + agruparPorFato(CLIPPING_IJ.filter((n) => n.tema === t)).length,
+        0
+      ),
+    []
+  );
+  /** Fatos distintos de verdade, ignorando o eixo — o número da prosa. */
+  const totalDeFatos = useMemo(() => agruparPorFato(CLIPPING_IJ).length, []);
+
+  const filtroAtivo =
+    busca !== "" || de !== "" || ate !== "" || ordem !== "recente" || tema !== "todos" ||
+    ijsAtivas.size !== TODAS_AS_IJS.length;
+
+  function limpar() {
+    setBusca("");
+    setDe("");
+    setAte("");
+    setOrdem("recente");
+    setIjsAtivas(new Set(TODAS_AS_IJS));
+    setTema("todos");
+  }
+
+  return (
+    <section className="mt-14 border-t border-border pt-10" aria-labelledby="titulo-ij">
+      <h2
+        id="titulo-ij"
+        className="font-display text-[clamp(1.25em,2.6vw,1.6em)] leading-tight font-bold tracking-tight"
+      >
+        O que as instituições de justiça publicaram
+      </h2>
+      <p className="mt-2 max-w-2xl text-[.95em] text-text-soft">
+        As três signatárias do Acordo pelo lado público —{" "}
+        {TODAS_AS_IJS.map((s, i) => (
+          <span key={s}>
+            {i > 0 ? ", " : ""}
+            <strong className="text-text">{INSTITUICAO_JUSTICA_NOME[s]}</strong> (
+            {INSTITUICAO_JUSTICA_LABEL[s]})
+          </span>
+        ))}
+        . Acervo de {formatDateBR(PERIODO_CLIPPING_IJ.de)} a{" "}
+        {formatDateBR(PERIODO_CLIPPING_IJ.ate)} — o mais fundo dos três desta página, e o único
+        que alcança a assinatura do Acordo de R$ 37,6 bilhões, em fevereiro de 2021.
+      </p>
+      <p className="mt-2 max-w-2xl text-[.9em] text-text-soft">
+        São <strong className="text-text">{formatNumberBR(CLIPPING_IJ.length)} publicações</strong>{" "}
+        sobre <strong className="text-text">{formatNumberBR(totalDeFatos)} fatos</strong>: quando as
+        três noticiam a mesma decisão, elas aparecem num card só, como o painel-fonte marcou —
+        senão a mesma decisão contaria três vezes e o acervo pareceria maior do que é.
+      </p>
+      <p className="mt-1 max-w-2xl text-[.85em] text-text-soft">
+        O contador abaixo fecha em {formatNumberBR(totalDeCards)}, não{" "}
+        {formatNumberBR(totalDeFatos)}, e a diferença tem uma causa só: o edital da nova
+        assessoria técnica, de 31/10/2025, foi classificado pelo painel sob{" "}
+        <em>PTR / Auxílio</em> (MPMG e MPF) e sob <em>Indenização</em> (DPMG). É um fato em dois
+        eixos, e ele aparece nos dois — a classificação é da fonte, e o portal não a corrige.
+      </p>
+
+      <BarraFiltros
+        idPrefixo="ij"
+        busca={busca}
+        setBusca={setBusca}
+        de={de}
+        setDe={setDe}
+        ate={ate}
+        setAte={setAte}
+        ordem={ordem}
+        setOrdem={setOrdem}
+        rotuloAz="Instituição (A–Z)"
+        faixa={faixa}
+        exibidos={cardsExibidos}
+        total={totalDeCards}
+        filtroAtivo={filtroAtivo}
+        onLimpar={limpar}
+      />
+
+      <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Filtrar por instituição">
+        {TODAS_AS_IJS.map((sigla) => (
+          <BotaoAlternar
+            key={sigla}
+            ativo={ijsAtivas.has(sigla)}
+            onClick={() =>
+              setIjsAtivas((atual) => {
+                const novo = new Set(atual);
+                if (novo.has(sigla)) novo.delete(sigla);
+                else novo.add(sigla);
+                return novo;
+              })
+            }
+          >
+            {INSTITUICAO_JUSTICA_LABEL[sigla]}
+          </BotaoAlternar>
+        ))}
+      </div>
+
+      <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Filtrar por tema">
+        <BotaoAlternar ativo={tema === "todos"} onClick={() => setTema("todos")}>
+          Todos os temas
+        </BotaoAlternar>
+        {TEMA_CLIPPING_IJ_ORDEM.map((t) => (
+          <BotaoAlternar key={t} ativo={tema === t} onClick={() => setTema(t)}>
+            {TEMA_CLIPPING_IJ_LABEL[t]}
+          </BotaoAlternar>
+        ))}
+      </div>
+
+      {grupos.map((g) => (
+        <div key={g.tema} className="mt-6">
+          <h3 className="border-b border-border pb-1.5 font-display text-base font-semibold text-text">
+            {TEMA_CLIPPING_IJ_LABEL[g.tema]}{" "}
+            <span className="font-normal text-text-soft">({formatNumberBR(g.fatos.length)})</span>
+          </h3>
+          <ul className="mt-3 flex flex-col gap-3">
+            {g.fatos.map((f) => (
+              <ItemIj key={f.chave} fato={f} />
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      {lista.length === 0 && <SemResultado onLimpar={limpar} />}
+    </section>
+  );
+}
+
+/** "MPMG e MPF", "MPMG, MPF e DPMG" — vírgula até o penúltimo, "e" no último. */
+function listarPorExtenso(siglas: string[]): string {
+  if (siglas.length <= 1) return siglas[0] ?? "";
+  return `${siglas.slice(0, -1).join(", ")} e ${siglas[siglas.length - 1]}`;
+}
+
+function ItemIj({ fato }: { fato: FatoIj }) {
+  const varias = fato.itens.length > 1;
+  /**
+   * Sem `Set`, um grupo com duas publicações da MESMA instituição imprimia
+   * "noticiado por MPMG, MPMG" — medido no grupo do recurso ao STJ, que tem
+   * duas do MPMG. Repetir a sigla parece defeito de dado e não é.
+   */
+  const siglas = [...new Set(fato.itens.map((n) => INSTITUICAO_JUSTICA_LABEL[n.instituicao]))];
+  return (
+    <li className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
+      {varias && (
+        /* "Agrupado pelo painel-fonte", não "mesmo fato" seco: o `grupo` às
+           vezes junta publicações separadas por mais de um ano sobre a mesma
+           linha processual (o recurso ao STJ tem uma de 2024 e outra de 2025).
+           Chamar as duas de um fato só seria afirmação nossa; a decisão é da
+           fonte, e a tela diz de quem é. */
+        <p className="mb-3 text-xs font-medium text-text-soft">
+          Agrupado pelo painel-fonte como um fato só —{" "}
+          {formatNumberBR(fato.itens.length)} publicações:{" "}
+          <strong className="text-text">{listarPorExtenso(siglas)}</strong>
+        </p>
+      )}
+      <div className={varias ? "flex flex-col gap-4" : ""}>
+        {fato.itens.map((n) => (
+          <div
+            key={n.id}
+            className={varias ? "border-l-2 border-border pl-3" : ""}
+          >
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <p className="font-display font-semibold text-text">{n.titulo}</p>
+              <span className="shrink-0 rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-text-soft">
+                {INSTITUICAO_JUSTICA_LABEL[n.instituicao]}
+              </span>
+            </div>
+            <p className="mt-1 text-xs text-text-soft">
+              {formatDateBR(n.data)} · {n.fonte}
+            </p>
+            <p className="mt-2 text-sm text-text-soft">{n.resumo}</p>
+            <a
+              href={n.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block text-xs font-medium text-primary underline underline-offset-2 hover:text-accent"
+            >
+              Ver o material na fonte original ↗
+            </a>
+          </div>
+        ))}
+      </div>
+    </li>
+  );
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// Bloco 3 — Clipping geral (o que já estava no portal)
 // ══════════════════════════════════════════════════════════════════════════
 
 function SecaoClipping() {
