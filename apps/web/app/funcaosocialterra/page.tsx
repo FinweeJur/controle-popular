@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import AvisoColetaEmCurso from "@/app/components/AvisoColetaEmCurso";
 import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
 import { ZONAS } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
@@ -89,6 +90,11 @@ export default async function FuncaoSocialTerraPage() {
         ele também mostra terra indígena, barragem, mineração, dinheiro
         público e onde essas camadas se cruzam.
       </p>
+
+      {/* A cobertura desta frente é MUITO desigual entre camadas, e a página
+          não dizia isso em nenhum lugar visível — quem lê "6.378 normas" não
+          tem como adivinhar que elas cobrem 6 municípios de 854. */}
+      <AvisoColetaEmCurso escopo="Nesta frente a cobertura varia muito de camada para camada: o vazio cadastral cobre duas regiões de estudo, a legislação municipal cobre 6 dos 854 municípios de Minas, e a mancha de inundação existe para 156 das 259 barragens." />
 
       <div className="mt-5 flex flex-wrap gap-3">
         <a
