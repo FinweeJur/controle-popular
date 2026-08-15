@@ -553,7 +553,15 @@ export const LAYER_REGISTRY = [
   // motivo: fonte sem região aparece em qualquer filtro, nunca escondida).
   {
     id: 'spu-imoveis-uniao-vales', label: 'Imóveis do governo federal — Jequitinhonha e Mucuri',
-    hint: '154 imóveis da União nas duas mesorregiões, do cadastro da SPU. 24 deles estão registrados como "sem destinação definida" em todas as suas utilizações.',
+    // ⚠️ 24 **em todas as utilizações**, mais 1 de regime composto — conferido
+    // em 15/08/2026. Um imóvel de Teófilo Otoni grava "Em Processo de
+    // Destinação · Sem Destinação Definida" e por isso ficava fora da conta. O
+    // número não estava errado: respondia a um critério mais estrito. Só que o
+    // imóvel excluído é o mais documentado dos 25 — antigo acampamento do
+    // DNER, com 22 casas, escola e canteiro da ponte do Rio Mucuri, destinação
+    // reaberta em 30/01/2025. Então a frase passa a dizer os dois números em
+    // vez de escolher um. Ver docs/SPU-SEM-DESTINACAO.md.
+    hint: '154 imóveis da União nas duas mesorregiões, do cadastro da SPU. 24 estão registrados como "sem destinação definida" em todas as suas utilizações — 25, contando um cujo registro mistura "em processo de destinação" com "sem destinação".',
     aviso: 'Cada ponto marca ONDE fica o imóvel, não o contorno dele: a SPU não publica o perímetro. O tamanho vem do cadastro, não do desenho. Endereço não é exibido. Um imóvel pode ter mais de uma utilização, com regimes diferentes: quando tem, todas aparecem no campo "regime".',
     // SEPARÁVEL, mas por NOME e não por código: esta fonte não traz
     // `codigo_ibge` em nenhum dos 154 imóveis — traz `municipio` nos 154. Os 22
