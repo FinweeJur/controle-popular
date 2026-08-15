@@ -46,6 +46,12 @@ const TOTAL = AUDITORIA_AJRI.length;
 const Por = (tipo: (typeof TIPO_DOCUMENTO_AJRI_ORDEM)[number]) =>
   AUDITORIA_AJRI.filter((d) => d.tipo === tipo).length;
 
+// `AuditoriaClient` lê `?q=` (deep-link das fichas relacionadas) com
+// `useSearchParams()` dentro de `<Suspense>` — mesma armadilha de
+// `[municipio]/meio-ambiente/paraopeba/page.tsx`: sem `force-static`,
+// `output: export` trata a rota como dinâmica e aborta o build.
+export const dynamic = "force-static";
+
 /**
  * "Nota Técnica" → "Notas Técnicas": em português o plural vai em TODAS as
  * palavras do sintagma, e um `+ "s"` no fim escreveria "Nota Técnicas". Os
