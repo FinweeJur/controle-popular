@@ -234,6 +234,33 @@ abortou). Autenticação própria do painel, restrita a `localhost`/tailnet.
 Sem apagar, sem renomear. Isto sozinho já resolve o caso de uso mais comum
 ("corrigir um erro de digitação no título") sem tocar em nada arquitetural.
 
+> **Entregue em 2026-08-15, com duas diferenças do que está escrito acima.**
+>
+> **Sem tabela.** Só o arquivo versionado, `apps/web/data/edicoes.json`, lido
+> no build por `apps/web/lib/edicoes.ts`. A Neon está em HTTP 402 até 01/09, e
+> este dado é minúsculo e sem junção; o arquivo já entrega as duas coisas que
+> a tabela existia para dar — trilha (`git log -p`) e desfazer (`git revert`).
+>
+> **Sem painel web.** Quem edita é `scripts/editar-pagina.mts`, na linha de
+> comando: `--listar`, `--rota … --titulo … --por … --motivo …`, `--remover`.
+> A seção de segurança deste plano gasta várias páginas justificando por que o
+> painel não pode estar exposto; um CLI resolve o mesmo caso de uso com
+> superfície de ataque zero. O painel web deixa de ser Fase 1 e vira 1b — só
+> vale a pena quando alguém que não usa terminal precisar editar, e aí o botão
+> "publicar" entra junto.
+>
+> Consequência prática: **publicar continua sendo um ato separado**. Editar
+> grava o arquivo na hora; o site muda no próximo build (15 a 20 minutos, na
+> máquina de build). O script termina avisando isso, em vez de deixar o autor
+> achar que já está no ar.
+>
+> Uma página só aceita edição se estiver ligada: `metadataEditavel(rota, …)`
+> nas estáticas, ou o terceiro argumento de `metadataDaCidade` nas de cidade —
+> sem ele, o helper não teria como distinguir `/bh/saude` de `/bh/educacao`,
+> porque as duas chegam pelo mesmo código e o `params` só carrega a cidade.
+> Ligadas até agora: `/paraopeba/entenda`. As demais entram conforme a
+> necessidade aparecer.
+
 **Fase 2 — apagar página**, via arquivo de supressão versionado, com o
 estado "pendente de publicação" visível até o rebuild passar, e desfazer por
 `git revert`.
