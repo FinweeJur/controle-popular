@@ -300,6 +300,37 @@ equivalente na legislação da Semad — não podiam aparecer na sondagem origin
   de Caçador, cidade de Santa Catarina. `maus-tratos` e `bem-estar animal`
   ficaram de fora com 0 ocorrência — incluí-los fingiria cobertura inexistente.
 
+### Tags de lugar
+
+O dono também pediu tags de nome próprio — "Serra do Curral", "Serra da
+Caraça", "Parque Estadual". A tag `serra_relevo` que existia responde *"esta
+norma fala de alguma serra"*; não responde *"quais normas tratam da Serra do
+Curral"*, que é a pergunta que alguém de fato faz.
+
+Oito tags novas, contadas nas 8.940 federais:
+
+| tag | federais |
+|---|---:|
+| Parque Nacional | 423 |
+| Serra da Canastra | 13 |
+| Serra do Espinhaço | 10 |
+| Serra do Cipó | 8 |
+| Serra do Gandarela | 4 |
+| Parque Estadual | 2 |
+| Serra do Curral | **0** |
+| Serra da Caraça | **0** |
+
+Os dois zeros são esperados, não erro: Curral e Caraça são objeto de norma
+**estadual** de Minas, e o acervo estadual vive no Postgres, que esta máquina
+não alcança. A contagem real aparece quando `classificar_temas_ambientais`
+rodar na máquina de build, sobre a tabela inteira. Nome próprio não corre o
+risco de falso positivo da regra genérica — "Serra da Canastra" não é uma
+frase que apareça por acaso.
+
+Nenhuma tag de lugar entra em `TAG_TEMA`: lugar não é tema, e empurrar uma
+delas para dentro dos 8 inflaria aquele tema com normas que não são sobre ele
+— a mesma decisão já tomada para licenciamento, fiscalização e clima.
+
 Depois disso, **6.073 das 8.940 normas federais continuam sem nenhuma tag**
 (68%). Não é defeito a corrigir com mais regex: são em boa parte atos
 administrativos e de estrutura de órgão, que não são *sobre* um tema

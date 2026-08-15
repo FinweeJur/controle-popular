@@ -101,6 +101,17 @@ const TAG_LABEL: Record<string, string> = {
   mudanca_climatica: "Mudança Climática",
   desastre_ambiental: "Desastre Ambiental",
   serra_relevo: "Serra",
+  // Lugares com nome, criados em 2026-08-15. `serra_relevo` responde "fala de
+  // alguma serra"; não responde "quais normas tratam da Serra do Curral", que
+  // é a pergunta que alguém de fato faz.
+  serra_curral: "Serra do Curral",
+  serra_caraca: "Serra da Caraça",
+  serra_gandarela: "Serra do Gandarela",
+  serra_cipo: "Serra do Cipó",
+  serra_espinhaco: "Serra do Espinhaço",
+  serra_canastra: "Serra da Canastra",
+  parque_nacional: "Parque Nacional",
+  parque_estadual: "Parque Estadual",
 };
 
 // A chave `estadual` é o nome da CLASSE (linha de `ambiental_legislacao`) e

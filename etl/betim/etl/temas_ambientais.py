@@ -125,6 +125,16 @@ TAG_LABELS: dict[str, str] = {
     "mudanca_climatica": "Mudança Climática",
     "desastre_ambiental": "Desastre Ambiental",
     "serra_relevo": "Serra",
+    # Lugares com nome — ver o bloco em `_REGRAS`. Ficam fora de TAG_TEMA de
+    # propósito: lugar não é tema.
+    "serra_curral": "Serra do Curral",
+    "serra_caraca": "Serra da Caraça",
+    "serra_gandarela": "Serra do Gandarela",
+    "serra_cipo": "Serra do Cipó",
+    "serra_espinhaco": "Serra do Espinhaço",
+    "serra_canastra": "Serra da Canastra",
+    "parque_nacional": "Parque Nacional",
+    "parque_estadual": "Parque Estadual",
 }
 
 TAG_TEMA: dict[str, str] = {
@@ -281,6 +291,38 @@ _REGRAS: dict[str, re.Pattern] = {
         r"\bserra\b",
         re.IGNORECASE,
     ),
+    # ─── LUGARES COM NOME, pedidos pelo dono em 2026-08-15 ──────────────
+    #
+    # `serra_relevo` responde "esta norma fala de alguma serra". Não responde
+    # "quais normas tratam da Serra do Curral", que é a pergunta que alguém
+    # de fato faz. Por isso estas tags são de NOME PRÓPRIO, e é também por
+    # isso que não correm o risco de falso positivo que a regra genérica
+    # assume: "Serra da Canastra" não é uma frase que apareça por acaso.
+    #
+    # Contagens medidas nas 8.940 federais em 2026-08-15. Nenhuma delas está
+    # mapeada em TAG_TEMA — lugar não é tema, e forçar uma para dentro dos 8
+    # inflaria aquele tema com normas que não são sobre ele. Mesma decisão já
+    # tomada para licenciamento/fiscalização/clima.
+    #
+    # ⚠️ `serra_curral` e `serra_caraca` deram **0 nas federais**, e isso é
+    # esperado, não erro: as duas são objeto de norma ESTADUAL de Minas, e o
+    # acervo estadual vive no Postgres — que esta máquina não alcança (a Neon
+    # está em cota até 01/09). São as duas que o dono nomeou primeiro; a
+    # contagem real aparece quando `classificar_temas_ambientais` rodar na
+    # máquina de build, sobre a tabela inteira.
+    "serra_curral": re.compile(r"serra do curral", re.IGNORECASE),
+    "serra_caraca": re.compile(r"serra (?:do |da )?cara[çc]a", re.IGNORECASE),
+    "serra_gandarela": re.compile(r"gandarela", re.IGNORECASE),          # 4
+    "serra_cipo": re.compile(r"serra do cip[oó]", re.IGNORECASE),        # 8
+    "serra_espinhaco": re.compile(r"espinha[çc]o", re.IGNORECASE),       # 10
+    "serra_canastra": re.compile(r"canastra", re.IGNORECASE),            # 13
+    # Os dois tipos de parque separados: o dono pediu "Parque Estadual"
+    # explicitamente, e `unidade_conservacao` funde os dois num rótulo só.
+    # A assimetria das contagens é a própria natureza do acervo — 423
+    # parques nacionais contra 2 estaduais nas federais, e o inverso no
+    # acervo de Minas.
+    "parque_nacional": re.compile(r"parque nacional", re.IGNORECASE),    # 423
+    "parque_estadual": re.compile(r"parque estadual", re.IGNORECASE),    # 2
 }
 
 
