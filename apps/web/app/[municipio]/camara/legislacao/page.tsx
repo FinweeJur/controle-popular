@@ -1,21 +1,21 @@
-import { Suspense } from "react";
 import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import AreasAtuacao from "@/app/[municipio]/components/charts/AreasAtuacao";
-import { getLegislacao } from "@/lib/betim/legislacao";
+import { getLegislacaoResumo } from "@/lib/betim/legislacao";
 import { TEMA_LABELS } from "@/lib/betim/temas";
 import { percentualAnalisado } from "@/lib/betim/legislacao-garantista";
 import { formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { hostDoAcervoNormativo, orgaoDoAcervoNormativo } from "@/lib/db/queries/municipios";
-import ListaLegislacao, { ListaLegislacaoCompleta } from "./ListaLegislacao";
+import ListaLegislacao from "./ListaLegislacao";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
 // reconhecido pelo Turbopack. Ver `lib/betim/staticParams.ts`.
-// Filtro é do cliente (`useSearchParams()` em `ListaLegislacao`). Sem
-// `force-static`, `output: export` trata a rota como dinâmica e aborta com
-// "missing generateStaticParams()" — mensagem que não descreve a causa.
+// `force-static` continua aqui mesmo depois de `useSearchParams()` sair da
+// árvore: a rota não deve virar dinâmica por nenhum caminho, e sem a
+// declaração o `output: export` aborta com "missing generateStaticParams()" —
+// mensagem que não descreve a causa.
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
@@ -43,13 +43,12 @@ export default async function LegislacaoPage({ params: rotaParams }: LegislacaoP
   // (SAPL e portal da Casa), então nem o `hostDaPrefeitura` serve.
   const fonteLegislacao = hostDoAcervoNormativo(cidade);
   const acervo = orgaoDoAcervoNormativo(cidade);
-  // SEM filtro: `getLegislacao` já buscava a cidade INTEIRA e filtrava em JS
-  // (não havia LIMIT a preservar — ver o comentário original em
-  // `lib/betim/legislacao.ts`). O filtro por categoria/tema/ano/direito
-  // passou para `ListaLegislacao` (cliente); pedir `{}` aqui é o que
-  // devolve `atos` sem corte nenhum, pronto para o componente filtrar.
+  // SEM as normas: o que vem daqui são as opções de filtro, o ranking de áreas
+  // e os contadores — tudo O(valores distintos), nada que cresça com o acervo.
+  // A coleção saiu do payload e passou a vir do índice fatiado em
+  // `legislacao/dados/**`; o porquê, com os números medidos, está em
+  // `LegislacaoResumo` (`lib/betim/legislacao.ts`).
   const {
-    atos,
     categoriasDisponiveis,
     anosDisponiveis,
     temas,
@@ -58,7 +57,13 @@ export default async function LegislacaoPage({ params: rotaParams }: LegislacaoP
     analiseOk,
     total,
     ok,
-  } = await getLegislacao(cidade.id_municipio, {});
+  } = await getLegislacaoResumo(cidade.id_municipio);
+
+  // Mesmo cálculo de `prefeitura/servidores/page.tsx`: `PAGES_BASE_PATH` é o
+  // prefixo do export estático, e o `fetch()` cru de `TabelaEstatica` não passa
+  // por `next/link`, que é quem normalmente o acrescentaria.
+  const prefixoExport = process.env.PAGES_BASE_PATH ?? "";
+  const baseDados = `${prefixoExport}/${cidade.slug}/camara/legislacao/dados`;
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
@@ -183,38 +188,28 @@ export default async function LegislacaoPage({ params: rotaParams }: LegislacaoP
             </div>
           )}
 
-          {/* Formulário, banners de filtro ativo e lista: tudo que dependia
-              de `searchParams` agora mora em `ListaLegislacao` (cliente). O
-              fallback é o formulário sem filtro + a lista COMPLETA — o que o
-              servidor tem para mostrar antes de o navegador ler a query, e
-              também o conteúdo certo para quem chega sem filtro. */}
-          <Suspense
-            fallback={
-              <ListaLegislacaoCompleta
-                atos={atos}
-                categoriasDisponiveis={categoriasDisponiveis}
-                anosDisponiveis={anosDisponiveis}
-                direitosDisponiveis={direitosDisponiveis}
-                atosAnalisados={atosAnalisados}
-                analiseOk={analiseOk}
-                total={total}
-                cidadeNome={cidade.nome}
-                temaLabels={TEMA_LABELS}
-              />
-            }
-          >
-            <ListaLegislacao
-              atos={atos}
-              categoriasDisponiveis={categoriasDisponiveis}
-              anosDisponiveis={anosDisponiveis}
-              direitosDisponiveis={direitosDisponiveis}
-              atosAnalisados={atosAnalisados}
-              analiseOk={analiseOk}
-              total={total}
-              cidadeNome={cidade.nome}
-              temaLabels={TEMA_LABELS}
-            />
-          </Suspense>
+          {/* As normas não são mais renderizadas aqui: chegam do índice
+              fatiado, baixadas pelo navegador. Sumiu junto o `<Suspense>` com
+              o componente-sósia de fallback — ele existia só porque
+              `ListaLegislacao` usava `useSearchParams()`, e o filtro agora é
+              estado do componente. A condição `atos.length > 0` que valia
+              neste ponto não tem substituto no servidor, e nem precisa:
+              `TabelaEstatica` lê o `manifesto.json` e distingue sozinha
+              "cidade sem norma" (mostra o texto de `vazio`) de "não consegui
+              buscar" (mostra erro) — que é o que o `null` daqui não sabia
+              diferenciar. */}
+          <ListaLegislacao
+            base={baseDados}
+            categoriasDisponiveis={categoriasDisponiveis}
+            anosDisponiveis={anosDisponiveis}
+            temas={temas}
+            direitosDisponiveis={direitosDisponiveis}
+            atosAnalisados={atosAnalisados}
+            analiseOk={analiseOk}
+            total={total}
+            cidadeNome={cidade.nome}
+            temaLabels={TEMA_LABELS}
+          />
         </>
       )}
     </div>

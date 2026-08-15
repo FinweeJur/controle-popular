@@ -147,6 +147,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3035"],
       "port": 3035
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-legislacao-fatiado) -- mesma razao das entradas acima: anexar no dev server de outro checkout responde 200 com o codigo ERRADO, e sem aviso. Quinto conflito do dia neste arquivo, e a quinta vez que a resolucao e manter todas as entradas: 3034, 3035 e 3036 nao disputam nada. Sem DATABASE_URL a rota /[municipio]/camara/legislacao cai no ramo 'Nenhuma norma encontrada no momento' (a lista nem chega a montar) e /camara/legislacao/dados/manifesto.json responde o manifesto vazio, total 0. Nesta porta se verifica a pagina viva, a rota de dados de pe e o contrato de vazio -- nao o volume, que so um build com banco mede.",
+      "name": "cp-legislacao-fatiado-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3036"],
+      "port": 3036
     }
   ]
 }

@@ -17,7 +17,8 @@ import { fetchClassificados } from "../lib/betim/classificados.js";
 import { fetchZapEstabelecimentos } from "../lib/betim/zap.js";
 import { fetchAnunciosAtivos } from "../lib/betim/anuncios.js";
 import { getConveniosFederais } from "../lib/betim/convenios.js";
-import { getLegislacao } from "../lib/betim/legislacao.js";
+import { getLegislacaoResumo, listarAtosDoMunicipio } from "../lib/betim/legislacao.js";
+import { filtrarAtos } from "../lib/betim/legislacao-filtro.js";
 import { getDespesasPorFuncao } from "../lib/betim/despesas.js";
 import { getTemasCamara, getTemasPrefeitura, getTemasVereador } from "../lib/betim/temas.js";
 import {
@@ -261,8 +262,14 @@ eq(`convenios ordenados por valor desc`, true,
 
 // legislacao: total, categorias e anos
 const lg = await rest(`atos_oficiais?select=tipo,ano,data_publicacao&id_municipio=eq.${ID}`);
-const lgN = await getLegislacao(ID);
+const lgN = await getLegislacaoResumo(ID);
+// As normas nao vao mais no payload da pagina (indice fatiado); quem as
+// entrega e `listarAtosDoMunicipio`, e e ela que a rota `dados/**` grava.
+// Conferir os dois lados aqui e o que impede o resumo e o indice de contarem
+// coisas diferentes.
+const lgAtos = await listarAtosDoMunicipio(ID);
 eq(`legislacao total (${lg.length} vs ${lgN.total})`, lg.length, lgN.total);
+eq(`legislacao: resumo e indice contam o mesmo (${lgAtos.length})`, lgN.total, lgAtos.length);
 eq(`legislacao categorias`,
    [...new Set(lg.map((r) => r.tipo).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR")),
    lgN.categoriasDisponiveis);
@@ -272,7 +279,7 @@ eq(`legislacao anos`,
 // data_publicacao desc NULLS LAST dos dois lados
 eq(`legislacao mais recente (${lg.map((r) => r.data_publicacao).filter(Boolean).sort().at(-1)})`,
    lg.map((r) => r.data_publicacao).filter(Boolean).sort().at(-1) ?? null,
-   lgN.atos[0]?.dataPublicacao ?? null);
+   lgAtos[0]?.dataPublicacao ?? null);
 /**
  * `atos_oficiais.temas` (migration 0025) — antes esta comparacao provava
  * que a coluna NAO EXISTIA nos dois bancos e que o ranking por area era
@@ -291,9 +298,13 @@ eq(`legislacao ranking por area (${contagemTemasS.size} areas)`,
    lgN.temas.map((t) => [t.tema, t.qtd]));
 const temaLeg = lgN.temas[0]?.tema;
 if (temaLeg) {
+  // O filtro deixou de rodar no servidor e virou `filtrarAtos`, a MESMA
+  // funcao que a tela usa (`lib/betim/legislacao-filtro.ts`). O lado
+  // esperado continua vindo do PostgREST, entao isto segue sendo fonte
+  // contra codigo -- nao o codigo comparado com ele mesmo.
   eq(`legislacao filtro ?tema=${temaLeg}`,
      lgTemas.filter((r) => (r.temas ?? []).includes(temaLeg)).length,
-     (await getLegislacao(ID, { tema: temaLeg })).atos.length);
+     filtrarAtos(lgAtos, { tema: temaLeg }).length);
 }
 
 // ---- bloco 3: despesas, temas, servicos, proposicoes, grupos ----

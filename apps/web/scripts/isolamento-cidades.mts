@@ -34,7 +34,7 @@ import { fetchClassificados } from "../lib/betim/classificados.js";
 import { fetchZapEstabelecimentos } from "../lib/betim/zap.js";
 import { fetchAnunciosAtivos } from "../lib/betim/anuncios.js";
 import { getConveniosFederais } from "../lib/betim/convenios.js";
-import { getLegislacao } from "../lib/betim/legislacao.js";
+import { getLegislacaoResumo } from "../lib/betim/legislacao.js";
 import { getDespesasPorFuncao } from "../lib/betim/despesas.js";
 import { getTemasCamara, getTemasPrefeitura } from "../lib/betim/temas.js";
 import {
@@ -112,7 +112,7 @@ const casos: [string, (id: typeof BETIM) => Promise<number>][] = [
   ["zap", async (id) => (await fetchZapEstabelecimentos(id)).rows.length],
   ["anuncios", async (id) => (await fetchAnunciosAtivos(id)).length],
   ["convenios", async (id) => (await getConveniosFederais(id)).convenios.length],
-  ["legislacao", async (id) => (await getLegislacao(id)).total],
+  ["legislacao", async (id) => (await getLegislacaoResumo(id)).total],
   ["despesas", async (id) => (await getDespesasPorFuncao(id)).funcoes.length],
   ["temas da camara", async (id) => (await getTemasCamara(id)).temas.length],
   ["temas da prefeitura", async (id) => (await getTemasPrefeitura(id)).temas.length],
