@@ -112,6 +112,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3031"],
       "port": 3031
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-comunicabr-tela) -- mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
+      "name": "cp-comunicabr-tela-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3030"],
+      "port": 3030
     }
   ]
 }

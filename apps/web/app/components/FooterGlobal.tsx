@@ -51,6 +51,10 @@ const LINKS_PORTAL = [
   { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
   { label: "Busca", href: "/busca" },
   { label: "Páginas mais vistas", href: "/dados/populares" },
+  // Rótulo pela MATÉRIA, não pela sigla: "ComunicaBR" não diz nada a quem
+  // nunca ouviu falar do portal da Presidência, e o rodapé é onde o leitor
+  // decide se clica. Mesmo raciocínio de `nomeCurto` em `lib/zonas.ts`.
+  { label: "Governo federal nas cidades de MG", href: "/dados/comunicabr" },
   { label: "Metodologia", href: "/sobre#metodologia" },
   // "Termos" existiu no rodapé do eixo Cidades apontando para `/termos`, rota
   // que nunca existiu — 404 em toda página daquele eixo, achado na auditoria

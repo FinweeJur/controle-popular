@@ -39,7 +39,27 @@ aconteceu na primeira conferência.
 
 ## As lacunas — e o que "vazio" quer dizer, exatamente
 
-**39% dos itens vieram vazios** (106.446 de 174.012). Mas "vazio" aqui esconde
+> ⚠️ **Duas correções feitas em 15/08/2026, ao ligar o dado na tela**
+> (`/dados/comunicabr`), as duas medidas sobre o arquivo INTEIRO:
+>
+> 1. **O percentual estava invertido.** 106.446 de 174.012 é **61%** vazio —
+>    39% é a fatia COM valor. A tela calcula a razão em vez de repetir a frase
+>    daqui, e foi o cálculo que apontou a troca.
+> 2. **Das quatro categorias abaixo, só UMA é lacuna da fonte em Minas.**
+>    Contadas nas 853 cidades (`municipiosComCategoriaZerada`, em
+>    `lib/comunicabr/arquivo.ts`): `governo-digital` vem zerada em **853/853**;
+>    `desenvolvimento-produtivo` em 7/853, `minha-casa-minha-vida` em 163/853 e
+>    `mulheres` em **nenhuma** — os valores dela estão nos `sub_items[]`, o
+>    nível que a amostra de 5 municípios abaixo não desceu. É a mesma armadilha
+>    3 de `indicadores.ts`, de novo: contar lacuna sem descer inventa lacuna.
+>    (Duas categorias que a amostra não flagrou zeram em 727/853:
+>    `meio-ambiente` e `infraestrutura`.)
+>
+> O parágrafo abaixo fica como está, porque a medição AO VIVO que ele descreve
+> continua verdadeira e é ela que prova a segunda leitura — a do zero que não é
+> zero. O que mudou é o alcance da primeira.
+
+**61% dos itens vieram vazios** (106.446 de 174.012). Mas "vazio" aqui esconde
 **duas coisas diferentes**, e a distinção foi medida contra a API ao vivo em
 15/08/2026, em 5 municípios (Betim, São Paulo, Belo Horizonte, Contagem e
 Uberlândia), todos com 132 itens:
@@ -123,7 +143,14 @@ plano — resumidas aqui porque as três respondem **HTTP 200**:
 
 ## O que falta
 
-- **Ligar na tela**, com o número de itens vazios visível por município.
+- ~~**Ligar na tela**, com o número de itens vazios visível por município.~~
+  Feito em 15/08/2026: `/dados/comunicabr` (índice de Minas, com a lacuna por
+  tema e a contagem de cidades zeradas) e `/dados/comunicabr/<código IBGE de 6
+  dígitos>` (ficha da cidade, item a item, com os vazios no meio da lista e o
+  ministério ao lado de cada bloco). Página própria, fora de `app/[municipio]`,
+  pelos três motivos escritos no topo de `app/dados/comunicabr/page.tsx` — o
+  principal é que o eixo Cidades cobre as cidades que estão no Postgres e o
+  acervo cobre as 853.
 - **As outras 26 UFs** — a coleta é por UF (`--uf`), e MG levou 10,5 min.
 - **Cruzar com o Portal da Transparência**, que é o que transforma "o governo
   diz que investiu" em "e a execução mostra isto".

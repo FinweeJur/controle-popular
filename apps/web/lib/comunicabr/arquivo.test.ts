@@ -172,4 +172,34 @@ describe("arquivo inteiro", () => {
     expect(c.vaziosPorCategoria["governo-digital"]).toBe(7);
     expect(c.itensPorCategoria["mulheres"]).toBe(44);
   });
+
+  /**
+   * A contagem que separa as DUAS espécies de vazio.
+   *
+   * `vaziosPorCategoria` conta ITEM sem valor, e não serve para isso:
+   * `mulheres` tem 26.952 itens vazios em Minas e ainda assim não zera em
+   * cidade nenhuma. Tratar as duas contagens como a mesma coisa inventaria uma
+   * lacuna da fonte onde há dado — o mesmo erro que o §N4 registra ter
+   * cometido por medir só o primeiro nível de `items[]`.
+   *
+   * O arquivo daqui tem o MESMO município duas vezes: as categorias zeradas
+   * dele (`infraestrutura` e `governo-digital`) contam 2 cidades, e `mulheres`,
+   * que tem valor, nenhuma.
+   */
+  test("a cobertura conta em quantas cidades cada categoria vem zerada", () => {
+    const arq = arquivoDeTeste();
+    arq.municipios.push({ ...arq.municipios[0], cod: 310620, nome: "Betim de Teste/MG" });
+    const c = medirCoberturaUF(expandirArquivo(arq), 853, 1);
+
+    expect(c.municipiosComResposta).toBe(2);
+    expect(c.municipiosComCategoriaZerada["governo-digital"]).toBe(2);
+    expect(c.municipiosComCategoriaZerada["infraestrutura"]).toBe(2);
+    expect(c.municipiosComCategoriaZerada["mulheres"]).toBeUndefined();
+    // Categoria sem item nenhum NÃO é categoria zerada: não há valor que a
+    // fonte tenha deixado de preencher naquela cidade — é o tema inteiro que
+    // ela não publica, em lugar nenhum. A tela diz as duas coisas com frases
+    // diferentes, e por isso as duas contagens são separadas.
+    expect(c.itensPorCategoria["igualdade-racial"]).toBe(0);
+    expect(c.municipiosComCategoriaZerada["igualdade-racial"]).toBeUndefined();
+  });
 });

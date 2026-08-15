@@ -278,6 +278,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const urls: MetadataRoute.Sitemap = [
     item("/", { changeFrequency: "daily", priority: 1.0 }),
     item("/busca", { changeFrequency: "weekly", priority: 0.6 }),
+    // Só o índice, não as 853 fichas de cidade: elas mudam juntas, na mesma
+    // coleta, e listá-las aqui inflaria o sitemap em 853 linhas para repetir a
+    // mesma `lastModified` do build. O índice linka todas.
+    item("/dados/comunicabr", { changeFrequency: "monthly", priority: 0.6 }),
     item("/ambiental", { changeFrequency: "weekly", priority: 0.7 }),
     item("/funcaosocialterra", { changeFrequency: "monthly", priority: 0.6 }),
     item("/funcaosocialterra/mapa", { changeFrequency: "monthly", priority: 0.6 }),

@@ -360,6 +360,23 @@ export interface CoberturaUF {
   /** Chave da categoria -> quantos itens vieram vazios na UF inteira. */
   vaziosPorCategoria: Record<string, number>;
   itensPorCategoria: Record<string, number>;
+  /**
+   * Chave da categoria -> em quantos municípios ela veio com item e **nenhum
+   * valor**.
+   *
+   * É o número que separa as DUAS espécies de vazio, e sem ele a tela não
+   * consegue dizer a verdade sobre nenhuma das duas. Medido no arquivo de MG
+   * em 15/08/2026: `governo-digital` vem zerada nos **853** municípios — isso
+   * é afirmação sobre o portal federal, não sobre cidade nenhuma —, enquanto
+   * `minha-casa-minha-vida` zera em 163 e `cultura` em 1. Uma tela que
+   * tratasse os dois casos com a mesma frase acusaria 852 prefeituras de algo
+   * que é do governo federal, ou absolveria a única em que a lacuna é local.
+   *
+   * `vaziosPorCategoria` sozinho não responde isso: ele conta ITEM vazio, e
+   * uma categoria pode ter 26.952 itens vazios em MG (é o caso de `mulheres`)
+   * sem zerar em município nenhum.
+   */
+  municipiosComCategoriaZerada: Record<string, number>;
   fontes: string[];
 }
 
@@ -370,6 +387,7 @@ export function medirCoberturaUF(
 ): CoberturaUF {
   const vaziosPorCategoria: Record<string, number> = {};
   const itensPorCategoria: Record<string, number> = {};
+  const municipiosComCategoriaZerada: Record<string, number> = {};
   const fontes = new Set<string>();
   let itens = 0;
   let comValor = 0;
@@ -385,6 +403,12 @@ export function medirCoberturaUF(
       itensPorCategoria[cat.categoria] = (itensPorCategoria[cat.categoria] ?? 0) + cat.itens.length;
       vaziosPorCategoria[cat.categoria] = (vaziosPorCategoria[cat.categoria] ?? 0) + cat.itensVazios;
     }
+    // Reaproveita a lista que `medirCobertura` já apurou por município (item
+    // nenhum com valor, nos DOIS níveis) em vez de refazer o teste aqui: se um
+    // dia a regra de "categoria zerada" mudar, ela muda num lugar só.
+    for (const cat of c.categoriasSemNenhumValor) {
+      municipiosComCategoriaZerada[cat] = (municipiosComCategoriaZerada[cat] ?? 0) + 1;
+    }
   }
 
   return {
@@ -397,6 +421,7 @@ export function medirCoberturaUF(
     itensVazios: itens - comValor,
     vaziosPorCategoria,
     itensPorCategoria,
+    municipiosComCategoriaZerada,
     fontes: [...fontes].sort((a, b) => a.localeCompare(b, "pt")),
   };
 }
