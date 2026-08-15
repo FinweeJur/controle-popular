@@ -93,8 +93,20 @@ export async function POST(request: Request) {
    * `git commit` sem pathspec leva tudo que estiver em staging — inclusive o
    * de outra sessão trabalhando no mesmo checkout. Isso já aconteceu neste
    * repositório e engoliu arquivos alheios num commit com a mensagem errada.
+   *
+   * ⚠️ O `git add` ANTES do `--only` não é zelo: o primeiro pedido de build
+   * nasce como arquivo NOVO (nada no git o conhece), e `git commit --only
+   * <path>` exige pathspec "conhecido do git" — sem o add, o commit morre
+   * com "pathspec did not match any file(s) known to git" e o pedido fica
+   * preso no disco (reportado por Artur em 15/08/2026). O add é por
+   * pathspec, nunca `git add -A` — mesma disciplina do commit.
    */
   try {
+    git(
+      "add",
+      "apps/web/data/pedido-build.json",
+      "apps/web/data/edicoes.json"
+    );
     git(
       "commit",
       "--only",
