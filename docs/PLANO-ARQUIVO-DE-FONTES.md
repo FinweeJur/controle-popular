@@ -37,14 +37,59 @@ as duas** — por isso o pedido é explícito em manter o link original visível
 
 Duas conclusões que mudam o desenho:
 
-1. **`ambiental_legislacao` não guarda URL de fonte.** São 6.378 normas
-   ambientais estaduais sem endereço de origem registrado na tabela. Antes de
-   arquivar qualquer coisa dali, é preciso descobrir se a URL existe no
-   coletor e não está sendo gravada — que é exatamente o defeito já encontrado
-   em `convenios_federais` (o CNPJ chegava da API e era descartado). **Este é
-   o primeiro item a investigar, e pode ser o mais barato de todos.**
+1. ~~**`ambiental_legislacao` não guarda URL de fonte.**~~ **Errado — corrigido
+   em 2026-08-15.** A coluna `link_pdf` está na migration 0065 desde o
+   princípio, e é o campo que os coletores gravam. A linha da tabela acima
+   dizia "nenhuma" porque a sondagem procurou por `link_fonte`, o nome usado
+   nas OUTRAS tabelas. Medido nos arquivos exportados:
+
+   | acervo | com `link_pdf` |
+   |---|---:|
+   | MMA (federal) | 8.345 / 8.570 — **97,4%** |
+   | CNDH (federal) | 370 / 370 — **100%** |
+
+   O item que era "o primeiro a investigar, e talvez o mais barato" não
+   existe: não há nada a consertar no coletor.
 2. O grosso arquivável hoje são as ~23,6 mil linhas de `proposicoes` +
-   `atos_oficiais`.
+   `atos_oficiais`, mais **7.138 URLs distintas** do acervo federal de
+   legislação (8.940 linhas apontam para 7.138 endereços — várias normas
+   compartilham a mesma página de diário oficial, e contar por linha inflaria
+   o acervo com cópias do mesmo objeto).
+
+## Medição de 2026-08-15 — e por que o primeiro número estava errado
+
+Feita por `etl/betim/scripts/medir_links_fonte.py`, amostra sistemática de 100
+das 7.138 URLs federais, **só HEAD, sem baixar corpo**.
+
+**A primeira leitura deu 68% de links sem resposta. Estava errada**, e o modo
+de errar vale mais que o número: `planalto.gov.br` **derruba a conexão** do
+User-Agent identificável do projeto e responde **200** ao mesmo pedido com UA
+de Chrome. Contado como quebra, isso colocaria as 577 URLs do Planalto na
+lista de acervo perdido. É a mesma armadilha já registrada para
+`conama.mma.gov.br`. Com reteste por UA de navegador, o número real é **25%**.
+
+| resultado | de 100 |
+|---|---:|
+| 200 | 42 |
+| inconclusivo (recusa HEAD, serve GET) | 24 |
+| 502 | 22 |
+| só responde a UA de navegador | 9 |
+| 404 / erro de conexão / timeout | 3 |
+
+**Tamanho projetado: 0,37 GiB** para as 7.138 URLs (média 54 KiB, mediana
+17 KiB, medidos nos 13 `Content-Length` da amostra). É custo desprezível em
+R2 — o obstáculo do arquivamento nunca foi o preço.
+
+**`pesquisa.in.gov.br` é intermitente, e isso muda o método.** Duas execuções
+da mesma amostra, com minutos de intervalo, deram 56 e depois 22 falhas. Não é
+rajada nossa (sonda lenta, com 4 s entre pedidos, manteve o 502 em URLs
+específicas), mas também não é serviço morto. São 3.298 das 7.138 — 46% do
+acervo federal — dependendo de um host que responde às vezes.
+
+Consequência: **uma execução só não mede link morto, mede o humor do servidor
+naquele minuto.** Rodar duas ou três vezes e só considerar quebrado o que
+falhar em todas. Sem isso, o arquivamento sai atrás de ~2.000 URLs que estavam
+apenas de mau humor, e a conta de custo infla na mesma proporção.
 
 ## Onde guardar: R2, não Static Assets
 
