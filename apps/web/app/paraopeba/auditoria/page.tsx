@@ -156,10 +156,15 @@ export default function AuditoriaAjriPage() {
             <a href="/termos" className="text-primary underline underline-offset-2 hover:text-accent">
               /termos
             </a>{" "}
-            (seções 5 e 6). O canal reservado do projeto{" "}
-            <strong className="text-text">ainda não está definido</strong> — esta página não inventa
-            um endereço que ninguém lê. Enquanto ele não existir, o que há é o relato público no
-            repositório do projeto, linkado lá.
+            (seções 5 e 6). Para pedido que envolva dado pessoal, o canal reservado é{" "}
+            <a
+              href="mailto:contato@controlepopular.com.br"
+              className="text-primary underline underline-offset-2 hover:text-accent"
+            >
+              contato@controlepopular.com.br
+            </a>{" "}
+            — e não o relato público do repositório, que serve para erro factual: abrir uma issue
+            com o dado que se quer remover republica exatamente o que se pretende tirar.
           </li>
         </ul>
       </section>

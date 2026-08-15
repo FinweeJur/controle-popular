@@ -539,29 +539,50 @@ export default function TermosPage() {
         </ul>
       </section>
 
-      {/* ═══ 6. CANAL — o marcador é proposital ═══
-          NÃO INVENTAR ENDEREÇO. Varredura de 15/08 em `apps/web/app` e `docs/`
-          não achou nenhum e-mail de contato do próprio projeto (só e-mails de
-          ÓRGÃOS: ouvidorias, defensorias, câmaras). O único canal declarado
-          hoje, em `/judiciario/privacidade`, é a issue pública do repositório —
-          que serve para erro factual e é PÉSSIMA para dado pessoal, porque
-          abrir uma issue republica o dado. Enquanto o dono não decidir um canal
-          reservado, a página diz isso em vez de fingir que existe. E não promete
-          prazo: prazo que ninguém pode cumprir é a única parte de um termo que
-          falha sozinha, sem ninguém mexer. */}
+      {/* ═══ 6. CANAL ═══
+          Até 15/08/2026 esta seção dizia que o canal reservado NÃO existia, e
+          isso estava certo: a varredura daquele dia em `apps/web/app` e `docs/`
+          não achou nenhum e-mail do próprio projeto (só e-mails de ÓRGÃOS —
+          ouvidorias, defensorias, câmaras). O dono definiu o endereço na mesma
+          noite, e ele entra aqui.
+
+          A DIVISÃO ENTRE OS DOIS CANAIS NÃO É ENFEITE, é a razão de o e-mail
+          ter sido necessário: a issue do repositório é PÚBLICA, então descrever
+          nela o CPF que se quer remover republica exatamente o que se pretende
+          tirar. Erro factual pode ser público; dado pessoal, não. Se um dia o
+          endereço mudar, mude NOS DOIS lugares — ele também é citado na seção
+          de remoção acima.
+
+          O que continua valendo: NÃO PROMETER PRAZO. Prazo que ninguém pode
+          cumprir é a única parte de um termo que fica falsa sozinha, sem
+          ninguém mexer. */}
       <section className="space-y-4">
         <h2 className="font-display text-2xl font-semibold">6. Como falar com o projeto</h2>
         <div className="space-y-3 rounded-xl border border-border bg-surface-2 p-5">
           <p className="text-[.95em] text-text">
-            <strong>
-              O canal reservado para pedido sobre dado pessoal ainda não está
-              definido.
-            </strong>{" "}
-            Esta página não vai inventar um endereço que ninguém lê.
+            <strong className="text-text">
+              Para pedido sobre dado pessoal — correção, remoção ou dúvida sobre
+              algo que cite você:
+            </strong>
+          </p>
+          <p className="text-[1.05em]">
+            <a
+              href="mailto:contato@controlepopular.com.br"
+              className="font-semibold text-primary hover:text-accent"
+            >
+              contato@controlepopular.com.br
+            </a>
           </p>
           <p className="text-[.95em] text-text-soft">
-            O que existe hoje é o repositório público do projeto, onde qualquer
-            pessoa pode abrir um relato:
+            Use este endereço, e não a via pública abaixo, quando o pedido
+            envolver dado pessoal. Escreva o endereço da página e onde no texto
+            está o problema.
+          </p>
+          <p className="text-[.95em] text-text-soft">
+            Para <strong className="text-text">erro factual</strong> — número
+            errado, fonte trocada, link quebrado — o repositório público do
+            projeto é o melhor lugar, porque a correção fica registrada junto
+            com o código:
           </p>
           <p className="text-[.95em]">
             <a
@@ -575,12 +596,11 @@ export default function TermosPage() {
           </p>
           <p className="text-[.95em] text-text">
             <strong className="text-alert">
-              Não escreva dado pessoal nesse relato.
+              Não escreva dado pessoal na issue.
             </strong>{" "}
-            A issue é pública: descrever ali o CPF, endereço ou telefone que você
-            quer remover republicaria exatamente o que se pretende tirar. Aponte
-            o endereço da página e onde no texto está o problema — isso basta
-            para localizar, e não expõe nada de novo.
+            Ela é pública: descrever ali o CPF, endereço ou telefone que você
+            quer remover republicaria exatamente o que se pretende tirar. Para
+            esse caso existe o e-mail acima.
           </p>
           <p className="text-[.9em] text-text-soft">
             O projeto é mantido por voluntários e{" "}
