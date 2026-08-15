@@ -29,6 +29,15 @@
  * com o clique que abre a ficha. No celular, quem responde "o que é isto?" é a
  * própria ficha, que é o gesto disponível lá.
  *
+ * ## Verificado
+ *
+ * 15/08/2026, no dev server, com evento de ponteiro real disparado sobre uma
+ * feição que o clique reconhece (Unaí, na camada de divisas): escondida a 1 s,
+ * visível a 2 s com "Divisas dos municípios — Unaí — clique para a ficha", e
+ * some ao sair. O primeiro teste tinha falhado por cache de módulo do
+ * navegador, não por defeito — o arquivo servido era o anterior ao `export`
+ * que a dica importa.
+ *
  * ## Contrato
  *   criarDica(el, { layers, camera, domElement, textoDe })
  *     -> { destruir() }
