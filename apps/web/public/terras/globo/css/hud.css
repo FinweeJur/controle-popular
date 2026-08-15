@@ -225,6 +225,105 @@ body {
 /* ------------------------------------------------------------
    Focus bar (base-central): botões de presets de câmera
    ------------------------------------------------------------ */
+/* ------------------------------------------------------------
+   Barra de destaques — as 5 camadas mais procuradas (15/08/2026)
+
+   Sobe 42 px sobre a barra de cidades, a mesma folga que a de cidades tem
+   sobre o rodapé: as três faixas do rodapé passam a andar no mesmo ritmo
+   vertical, em vez de cada uma escolher seu respiro.
+   ------------------------------------------------------------ */
+#destaques {
+  left: 50%;
+  bottom: calc(var(--space-3) + 34px + 42px);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  max-width: calc(100vw - 2 * var(--space-3));
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+#destaques::-webkit-scrollbar { display: none; }
+
+#destaques .destaques-rotulo {
+  padding-left: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+#destaques .destaque-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-2);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 7px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+
+/* O ponto é a MESMA cor da camada no globo e no painel — é o que liga o botão
+   à mancha sem ler rótulo nenhum. Por isso a cor não muda entre estados: o que
+   muda é o preenchimento dele. */
+#destaques .destaque-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--cor-camada);
+  background: transparent;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+#destaques .destaque-btn:hover {
+  color: var(--text-1);
+  background: var(--color-hairline);
+}
+
+#destaques .destaque-btn[aria-checked='true'] {
+  color: var(--text-1);
+  border-color: var(--cor-camada);
+}
+
+#destaques .destaque-btn[aria-checked='true'] .destaque-dot {
+  background: var(--cor-camada);
+}
+
+/* Camada grande demora a chegar. Sem sinal, o clique parece ignorado — e o
+   segundo clique desliga o que a pessoa acabou de pedir. */
+#destaques .destaque-btn.carregando .destaque-dot {
+  animation: destaque-pulso 900ms var(--ease-out) infinite;
+}
+
+@keyframes destaque-pulso {
+  0%, 100% { background: transparent; }
+  50%      { background: var(--cor-camada); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #destaques .destaque-btn.carregando .destaque-dot { animation: none; opacity: .55; }
+}
+
+/* No celular a barra de cidades já rola sozinha; o rótulo sai para os cinco
+   botões caberem sem competir com o mapa. */
+@media (max-width: 640px) {
+  #destaques .destaques-rotulo { display: none; }
+}
+
 #focusbar {
   left: 50%;
   bottom: calc(var(--space-3) + 34px); /* acima do footer HUD */

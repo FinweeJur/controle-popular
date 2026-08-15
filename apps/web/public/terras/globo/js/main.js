@@ -8,7 +8,7 @@
 
 import {
   ABERTURA, FOCUS_PRESETS, LAYER_REGISTRY,
-  ASSUNTOS, REGIOES, CAMADAS_RESOLVIDAS, CAMADA_POR_FONTE, FONTE_POR_ID,
+  ASSUNTOS, DESTAQUES, REGIOES, CAMADAS_RESOLVIDAS, CAMADA_POR_FONTE, FONTE_POR_ID,
   fonteNaRegiao, fontesVisiveis,
 } from './config.js';
 import { mesorregiaoDe } from './data/mesorregioes.js';
@@ -21,6 +21,7 @@ import { flyTo } from './core/flyto.js';
 import { centroDe, coordenadasDe, distanciaParaEnquadrar } from './core/enquadrar.js';
 import { createStatusBar } from './ui/statusbar.js';
 import { createFocusBar } from './ui/focusbar.js';
+import { criarDestaques } from './ui/destaques.js';
 import { createLayersPanel } from './ui/layerspanel.js';
 import { createFooterHud } from './ui/footerhud.js';
 import { createZoomControls } from './ui/zoomcontrols.js';
@@ -367,6 +368,12 @@ async function bootstrap() {
   }
 
   /** Soma o estado das fontes de um conceito e devolve isso ao painel. */
+  // Declarada aqui, criada mais abaixo (precisa do painel pronto). `let` e
+  // não `const` de propósito: `sincronizarCamada` fala com ela, e `const`
+  // numa linha posterior daria ReferenceError por zona morta temporal — que
+  // o `?.` NÃO protege, ao contrário do que a leitura rápida sugere.
+  let destaques = null;
+
   function sincronizarCamada(idCamada) {
     const camada = CAMADAS_RESOLVIDAS.find((c) => c.id === idCamada);
     if (!camada) return;
@@ -396,6 +403,9 @@ async function bootstrap() {
       indistinta: doRecorte.some((f) => f.mesoIndistinta),
     });
     statusBar.setFeatureCount?.(layers.totalFeatures());
+    // A barra de destaques espelha as mesmas camadas: ligar pelo painel tem
+    // de acender o botão lá embaixo, e vice-versa.
+    destaques?.sincronizar();
     atualizarLista();
   }
 
@@ -481,6 +491,24 @@ async function bootstrap() {
       onRegiao: (regiao) => { aplicarRegiao(regiao); },
     },
   );
+
+  // Atalho para as cinco camadas mais procuradas, acima dos botões de cidade.
+  // Comanda exatamente as mesmas camadas do painel, pelo mesmo `alternarCamada`
+  // — os dois controles nunca podem divergir. Ver ui/destaques.js.
+  destaques = criarDestaques(document.getElementById('destaques'), DESTAQUES, {
+    estaLigado: (id) => layersPanel.isEnabled(id),
+    aoAlternar: async (destaque, ligar) => {
+      // Só desliga quando TODAS as camadas do destaque estão ligadas; enquanto
+      // faltar alguma, clicar completa o grupo. Com destaque de camada única
+      // isto é idêntico a inverter, mas a regra tem de nascer certa: foi a
+      // leitura ingênua ("inverte o que o botão mostra") que fez, na primeira
+      // versão desta barra, o clique DESLIGAR o que já estava aceso em vez de
+      // trazer o resto.
+      const todas = destaque.camadas.every((id) => layersPanel.isEnabled(id));
+      const alvo = ligar && !todas;
+      await Promise.all(destaque.camadas.map((id) => alternarCamada(id, alvo)));
+    },
+  });
 
   // Ativa as camadas marcadas como ligadas por padrão e já sincroniza os
   // contadores quando cada fetch terminar. O filtro nasce em "todas as

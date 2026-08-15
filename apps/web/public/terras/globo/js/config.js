@@ -204,6 +204,64 @@ export const ABERTURA = { id: 'abertura', label: 'Minas Gerais', boundary: 'mg' 
 // checkouts lado a lado, 19 linhas de 152px de altura média contra 14 de ~46px,
 // e 2.804 caracteres de explicação sempre na tela contra zero (agora sob o "?").
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Destaques: as cinco camadas mais procuradas, fora da lista
+//
+// Cinco, como os cinco botões de cidade logo abaixo — a barra é o "o quê" e a
+// de baixo é o "onde", e as duas juntas são a decisão que a pessoa toma ao
+// abrir o mapa. Mais que cinco e ela vira um segundo painel; menos e não vale
+// ocupar a faixa.
+//
+// ⚠️ "Barragens" NÃO virou um botão, e isso foi medido, não achado: neste globo
+// não existe camada de barragem. Existem `zas-barragens` (a zona onde não dá
+// tempo de esperar socorro) e `mancha-inundacao-barragens` (até onde o rejeito
+// chegaria) — as duas SÃO as barragens, e um botão "Barragens" seria um
+// terceiro controle para duas camadas que já teriam os seus. Então o slot que
+// sobrou foi para "Minas em operação", que é o que dá sentido às outras duas:
+// a barragem é de alguma mina.
+//
+// O que fica DE FORA de propósito: os chips de região e o "Ligar tudo", que já
+// estão no topo do painel, a dois centímetros. Barra de atalho que repete o
+// que está do lado não é atalho, é ruído.
+// ---------------------------------------------------------------------------
+export const DESTAQUES = [
+  {
+    id: 'sem-cadastro',
+    label: 'Terra sem cadastro',
+    hint: 'As áreas rurais que nenhum imóvel declarou no CAR, nas regiões de estudo.',
+    cor: '#b49dff',
+    camadas: ['vazio-cadastral'],
+  },
+  {
+    id: 'zas',
+    label: 'ZAS',
+    hint: 'Zona de Autossalvamento: o trecho a jusante da barragem onde não há tempo hábil para intervenção da defesa civil depois do alerta.',
+    cor: '#8ecae6',
+    camadas: ['zas-barragens'],
+  },
+  {
+    id: 'mancha',
+    label: 'Mancha de inundação',
+    hint: 'Até onde o rejeito chegaria se a barragem rompesse, pelos estudos que a FEAM publica — 156 das 259 barragens de Minas.',
+    cor: '#f8b0c8',
+    camadas: ['mancha-inundacao-barragens'],
+  },
+  {
+    id: 'minas',
+    label: 'Minas em operação',
+    hint: 'Onde há extração de minério autorizada de verdade — 7.090 poligonais da ANM em Minas.',
+    cor: '#70c678',
+    camadas: ['sigmine-operacao'],
+  },
+  {
+    id: 'imoveis-uniao',
+    label: 'Imóveis da União',
+    hint: 'Onde ficam os imóveis do governo federal, pelo cadastro da SPU. Ponto de localização, não contorno.',
+    cor: '#45ca96',
+    camadas: ['spu-imoveis-uniao'],
+  },
+];
+
 export const ASSUNTOS = [
   { id: 'sem-cadastro',  titulo: 'Terra sem cadastro' },
   { id: 'terra-publica', titulo: 'Terra pública e destinação' },
