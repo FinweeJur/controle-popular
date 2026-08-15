@@ -70,12 +70,26 @@
  *    ordem natural. Só se prova varrendo tudo e ordenando aqui — que é o que
  *    `ordenarPorTotalDoado` e `topPorTotalDoado` fazem.
  *
- * 7. **A fonte já mascara CPF — e é por isso que há um guarda.** Pessoa física
- *    chega como `cgccpf: "***008317**"`; 1.461 dos 6.100 projetos de MG
- *    conferidos vieram assim, contra 4.639 com CNPJ inteiro. Consequência
- *    prática: a junção por documento só existe para pessoa jurídica, que é
- *    justamente o lado que interessa. `conferirSemCpf` para a coleta se a
- *    máscara sumir — este repositório é público.
+ * 7. **A fonte mascara o CAMPO DE DOCUMENTO e não mascara o CAMPO DE NOME.**
+ *    Esta é a pior, e só apareceu com a coleta de MG completa.
+ *
+ *    `cgccpf` de pessoa física chega mascarado (`"***008317**"`) — 1.885 dos
+ *    7.206 projetos e 18.518 dos 20.784 incentivadores. Isso convence qualquer
+ *    um de que a fonte protege dado pessoal. **Não protege:** medido, há
+ *    **215 CPFs válidos por mod-11 dentro do campo de nome** — 210 em
+ *    `proponente` dos projetos e 5 em `nome` dos incentivadores, no formato
+ *    `"<NOME COMPLETO DA PESSOA> <11 dígitos>"`. Mais 5 incentivadores com
+ *    `cgccpf` de 11 dígitos sem máscara e com DV errado, que nenhum guarda de
+ *    mod-11 pegaria.
+ *
+ *    `conferirSemCpf` (um campo, aborta em CPF válido) e
+ *    `redigirDocumentosSoltos` (todos os campos de texto, redige e conta)
+ *    existem por causa disso, nesta ordem. Este repositório é PÚBLICO e já
+ *    publicou CPF dentro de ementa oficial pela mesma razão: o dado pessoal
+ *    não estava no campo de dado pessoal, estava no texto ao lado.
+ *
+ *    Consequência prática: a junção por documento só existe para pessoa
+ *    jurídica, que é justamente o lado que interessa.
  */
 
 /** Sem barra no fim: com ela vem 301 para http:// e corpo HTML (armadilha 1). */
@@ -305,6 +319,84 @@ export function conferirSemCpf(itens: Array<Record<string, unknown>>, campo = "c
       );
     }
   }
+}
+
+/** O que substitui um documento de pessoa física que veio SEM a máscara. */
+export const DOCUMENTO_REDIGIDO = "***REDIGIDO***";
+
+/**
+ * Apaga TODA sequência de 11 dígitos de TODO campo de texto do registro.
+ *
+ * ═══ O BURACO QUE ISTO TAPA, E ELE É GRANDE ═══
+ *
+ * `conferirSemCpf` acima olha **um campo** (`cgccpf`) e aborta em CPF válido
+ * por mod-11. Ao fechar a coleta de MG apareceram os dois casos que ele deixa
+ * passar, e o segundo é grave:
+ *
+ * 1. **5 incentivadores com `cgccpf` de 11 dígitos por extenso**, nenhum
+ *    válido por mod-11 — contra 18.518 com a máscara `***008317**` e 2.261
+ *    com CNPJ de 14 dígitos. Nenhum guarda de mod-11 dispararia. Mas "não
+ *    passa no dígito verificador" **não é promessa de que o número não
+ *    identifica ninguém**: pode ser CPF digitado errado no cadastro do MinC,
+ *    que continua apontando para a pessoa certa por aproximação.
+ *
+ * 2. **215 CPFs VÁLIDOS por mod-11, dentro do campo de NOME.** 210 em
+ *    `proponente` dos projetos e 5 em `nome` dos incentivadores, no formato
+ *    `"<NOME COMPLETO DA PESSOA> <11 dígitos>"`. A fonte mascara `cgccpf` e
+ *    **não mascara o nome**, onde o mesmo documento vai por extenso, colado à
+ *    pessoa. Nenhuma proteção deste repositório olhava para lá: `conferirSemCpf`
+ *    lê só `cgccpf`; `normalizarCgccpf` idem.
+ *
+ * É a mesma classe do vazamento de CPF dentro de ementa oficial que já
+ * aconteceu neste repositório PÚBLICO — o dado pessoal não estava no campo de
+ * dado pessoal, estava no texto ao lado. Por isso esta função varre **todos**
+ * os campos de texto, e não uma lista de campos suspeitos: a lista estaria
+ * sempre um campo atrasada.
+ *
+ * ═══ POR QUE REDIGIR EM VEZ DE ABORTAR ═══
+ *
+ * `conferirSemCpf` continua abortando quando `cgccpf` traz CPF válido, porque
+ * ali significa que a máscara da fonte caiu. Aqui não: 215 de 27.990 registros
+ * é a fonte funcionando como sempre funcionou, e abortar a coleta inteira
+ * perderia a fonte sem proteger ninguém a mais. Redigir e CONTAR resolve os
+ * dois lados — `redigidos` vai para o cabeçalho do arquivo, e crescimento
+ * desse número é sinal de que a origem mudou.
+ *
+ * ⚠️ Não usa a máscara da própria fonte (`***008317**`) de propósito: o
+ * resultado seria indistinguível do que o MinC mascarou, e o portal estaria
+ * fingindo que a origem fez o que ele mesmo fez. `***REDIGIDO***` diz quem
+ * apagou.
+ *
+ * ⚠️ Onze dígitos exatos, com fronteira de palavra. Medido nos dois arquivos:
+ * fora de `cgccpf` e `PRONAC`, as ÚNICAS sequências de 11 dígitos são os 215
+ * CPFs — os outros números longos do acervo têm 8 dígitos e ficam. CNPJ tem 14
+ * e a fronteira de palavra o protege. A máscara da fonte tem 6 dígitos e é
+ * preservada: reescrevê-la apagaria a evidência de que a origem mascara.
+ *
+ * A perda de dado é zero para o que motiva esta fonte: a junção com fornecedor
+ * de contrato público é entre CNPJ.
+ */
+export function redigirDocumentosSoltos<T extends Record<string, unknown>>(
+  itens: T[]
+): { itens: T[]; redigidos: number } {
+  let redigidos = 0;
+  const saida = itens.map((item) => {
+    let mexeu = false;
+    const copia: Record<string, unknown> = { ...item };
+    for (const [campo, valor] of Object.entries(item)) {
+      if (typeof valor !== "string") continue;
+      const limpo = valor.replace(/\b\d{11}\b/g, () => {
+        redigidos += 1;
+        return DOCUMENTO_REDIGIDO;
+      });
+      if (limpo !== valor) {
+        copia[campo] = limpo;
+        mexeu = true;
+      }
+    }
+    return mexeu ? (copia as T) : item;
+  });
+  return { itens: saida, redigidos };
 }
 
 /**
