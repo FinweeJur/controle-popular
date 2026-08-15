@@ -105,6 +105,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3026"],
       "port": 3026
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-assistente, assistente de navegacao do N8) -- mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
+      "name": "cp-assistente-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3031"],
+      "port": 3031
     }
   ]
 }
