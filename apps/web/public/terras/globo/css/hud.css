@@ -729,6 +729,39 @@ body {
 #inspector .ficha-nota p { margin: 6px 0 0; }
 #inspector .ficha-nota .ficha-nota-ressalva { color: var(--text-3); }
 
+/* A seção "Na faixa de 8 km" da ficha do território (ui/pares-do-territorio.js
+   → secaoDePares): os pares processo×faixa DAQUELE território, do mais próximo
+   ao mais longe. Entra por último, depois do bloco de coordenadas, porque é o
+   extra do clique — a tabela é o que a área É; a lista é o que a circunda.
+   `--danger` é o matiz das camadas de alerta (config.js usa a MESMA variável
+   para a cor da camada de operação). */
+#inspector .inspector-pares {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-hairline);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+#inspector .inspector-pares > strong { color: var(--text-1); }
+#inspector .inspector-pares ul {
+  margin: 6px 0 0;
+  padding-left: 15px;
+  display: grid;
+  gap: 6px;
+}
+#inspector .inspector-pares li strong { color: var(--text-1); }
+#inspector .inspector-pares .pares-encosta {
+  color: var(--danger);
+  font-weight: 600;
+}
+#inspector .inspector-pares-nota,
+#inspector .inspector-pares-vazio {
+  margin: 6px 0 0;
+  color: var(--text-3);
+}
+#inspector .inspector-pares-vazio { margin-top: 8px; }
+
 /* O aviso de leitura: "sem cadastro não quer dizer sem dono". Fica embaixo do
    botão porque é o que a pessoa precisa ler antes de sair contando a alguém. */
 #inspector .inspector-aviso {

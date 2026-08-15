@@ -842,13 +842,13 @@ export const LAYER_REGISTRY = [
   // contra 25,1° do --danger, e 75,8° contra 75,1° do --caution.
   {
     id: 'alerta-raio-territorio-sigmine-operacao', label: 'Mina em operação na faixa de 8 km do território',
-    hint: '328 pares processo×faixa, de 289 processos distintos, com lavra EM OPERAÇÃO dentro da faixa de restrição de 12 terras indígenas e 18 territórios quilombolas. 269 deles não encostam no território — a sobreposição não os vê. O mais próximo é uma lavra de ouro da Kinross a 73 metros dos quilombos Machadinho e São Domingos, em Paracatu.',
+    hint: '328 pares processo×faixa, de 289 processos distintos, com lavra EM OPERAÇÃO dentro da faixa de restrição de 12 terras indígenas e 18 territórios quilombolas. 269 deles não encostam no território — a sobreposição não os vê. O mais próximo é uma lavra de ouro da Kinross a 73 metros dos quilombos Machadinho e São Domingos, em Paracatu. Clique num território para ver os empreendimentos da faixa dele; clique num par para ver o processo.',
     aviso: 'Estar na faixa não é estar dentro do território: é a distância em que a Portaria Interministerial 60/2015 exige manifestação do órgão indigenista. A faixa vem publicada pelo IDE-Sisema, não é círculo desenhado por nós, e vale para mineração — não para barragem, cuja zona de risco é trecho de vale a jusante, não raio.',
     color: 0xffa79e, /* irmã mais clara de --danger (oklch 0.845 0.139 25) */ on: false, render: 'fill', listavel: true,
   },
   {
     id: 'alerta-raio-territorio-sigmine-interesse', label: 'Interesse minerário na faixa de 8 km do território',
-    hint: '2.285 pares, de 1.875 processos, dentro da faixa de restrição — atingindo TODAS as 15 terras indígenas de Minas e 24 territórios quilombolas. 1.630 não encostam no território. 243 já são requerimento de lavra, e 169 são de lítio, espalhados por 12 territórios. Há processo a 3 metros da borda.',
+    hint: '2.285 pares, de 1.875 processos, dentro da faixa de restrição — atingindo TODAS as 15 terras indígenas de Minas e 24 territórios quilombolas. 1.630 não encostam no território. 243 já são requerimento de lavra, e 169 são de lítio, espalhados por 12 territórios. Há processo a 3 metros da borda. Clique num território para ver os processos da faixa dele; clique num par para ver o requerimento.',
     aviso: 'Papel protocolado na ANM, não extração em curso — e estar na faixa não é estar dentro do território. Nunca somar com a camada de operação: são categorias jurídicas diferentes.',
     color: 0xffbe59, /* irmã mais clara de --caution (oklch 0.845 0.139 75) */ on: false, render: 'fill', listavel: true,
   },

@@ -32,6 +32,15 @@ import { distanciaAoChao, radianosPorPixel } from '../core/arrastar.js';
 import { blocoDeCoordenadas, escapar, ligarCopiar, linhasDaFicha, notaDeUso } from './rotulos.js';
 import { injetarProveniencia } from './proveniencia.js';
 import { FORMATOS, exportar, podeExportarCamada } from './exportar.js';
+import { fetchLayer } from '../data/api.js';
+import { paresDoTerritorio, secaoDePares } from './pares-do-territorio.js';
+
+// A ficha de um território (terra indígena ou quilombo) lista os pares da
+// faixa de 8 km DAQUELE território — o pedido que criou o cruzamento em
+// ui/pares-do-territorio.js. A fonte é a camada de operação: é dela que o
+// usuário leu "328 pares" no resumo, e é a resposta por área que faltava.
+const CAMADAS_DE_TERRITORIO = new Set(['terras-indigenas', 'territorios-quilombolas']);
+const FONTE_FAIXA_8KM = 'alerta-raio-territorio-sigmine-operacao';
 
 /**
  * Título humano da área clicada: nome próprio, ou camada + município.
@@ -47,6 +56,13 @@ import { FORMATOS, exportar, podeExportarCamada } from './exportar.js';
  * isso?") merece a resposta no título, não na terceira linha da ficha.
  */
 export function tituloDaArea(cfg, props, idx) {
+  // Par processo×faixa (camadas `alerta-raio-territorio-*`): o título é o
+  // CASAL — território × empreendedor. Antes caía no genérico "…· área 36",
+  // e a pergunta que a pessoa faz ao clicar ("qual empreendimento está na
+  // faixa de qual território?") ficava para a terceira linha da tabela.
+  if (props.territorio_nome && props.sigmine_nome) {
+    return `${props.territorio_nome} × ${props.sigmine_nome}`;
+  }
   if (props.nome || props.name) return props.nome || props.name;
   if (props.estrutura) return props.estrutura;
   const base = cfg?.label?.split('—')[0].trim() || 'Área';
@@ -202,6 +218,10 @@ export function procurarFeicaoNoPonto(event, layers, camera, domElement) {
 
 export function createInspector(panel, layers, camera, domElement, { onFocar } = {}) {
   let emFoco = null; // { layerId, feature } da ficha aberta
+  // Cada ficha aberta é uma geração; o fetch do raio que termina depois de a
+  // ficha ter trocado (ou fechado) é descartado — injetar o par de um
+  // território na ficha de outro seria mentira na tela.
+  let geracao = 0;
 
   domElement.addEventListener('click', (event) => {
     const achado = procurarFeicaoNoPonto(event, layers, camera, domElement);
@@ -210,6 +230,7 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
   });
 
   function mostrar(layerId, feature, idx, lat, lon) {
+    geracao++;
     const props = feature.properties ?? {};
     const cfg = LAYER_REGISTRY.find((l) => l.id === layerId);
     const titulo = tituloDaArea(cfg, props, idx);
@@ -262,6 +283,37 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
     ligarCopiar(panel, props, cfg?.label, ehPonto, feature.geometry);
     injetarProveniencia(panel.querySelector('.inspector-prov'));
     if (podeExportar) ligarExportar(panel, { layerId, cfg, idx, feature });
+    if (CAMADAS_DE_TERRITORIO.has(layerId) && props.nome) {
+      anexarParesDoTerritorio(panel, props.nome);
+    }
+  }
+
+  /**
+   * Acrescenta à ficha do território a seção "Na faixa de 8 km" — os pares
+   * processo×faixa DAQUELE território, do mais próximo ao mais longe.
+   *
+   * O fetch é assíncrono de propósito: o raio pode já estar carregado (a
+   * camada ligada usa o MESMO arquivo, `layers.geojson`), e quando não está,
+   * baixá-lo só porque alguém clicou num território seria pesado — o arquivo
+   * vem inteiro, com os 328 pares. Enquanto carrega, a ficha mostra um slot
+   * "procurando…"; se o fetch falhar (rede), o slot some — a ficha do
+   * território continua de pé, sem o extra.
+   */
+  async function anexarParesDoTerritorio(panel, nome) {
+    const minha = geracao;
+    const slot = document.createElement('div');
+    slot.className = 'inspector-pares';
+    slot.innerHTML = '<strong>Na faixa de 8 km — procurando…</strong>';
+    panel.appendChild(slot);
+    let fc;
+    try {
+      fc = layers.geojson.get(FONTE_FAIXA_8KM) ?? await fetchLayer(FONTE_FAIXA_8KM);
+    } catch {
+      if (minha === geracao && slot.isConnected) slot.remove();
+      return;
+    }
+    if (minha !== geracao || !slot.isConnected) return;
+    slot.outerHTML = secaoDePares(paresDoTerritorio(fc, nome));
   }
 
   /**
@@ -317,6 +369,7 @@ export function createInspector(panel, layers, camera, domElement, { onFocar } =
   }
 
   function esconder() {
+    geracao++; // o fetch do raio em voo não pode voltar para uma ficha fechada
     emFoco = null;
     panel.classList.remove('visible');
     panel.innerHTML = '';
