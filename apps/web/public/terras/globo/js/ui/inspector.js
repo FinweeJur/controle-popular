@@ -157,40 +157,56 @@ const TOLERANCIA_PX = 14;
  *        mundo se mexer sozinho assusta (ainda mais num globo, onde o clique
  *        erra com frequência). Mover é decisão explícita, num botão.
  */
+/**
+ * Qual feição está sob este ponto do globo — a mesma resposta que o clique usa.
+ *
+ * Extraída do handler de clique em 15/08/2026 porque ganhou um segundo
+ * consumidor: a dica que aparece ao pousar o mouse (`ui/dica.js`). Duas buscas
+ * separadas para a mesma pergunta divergiriam com o tempo, e divergir AQUI
+ * significa a dica falar de uma área e o clique abrir outra.
+ *
+ * @returns {{layerId: string, feature: object, idx: number, lat: number, lon: number}|null}
+ */
+export function procurarFeicaoNoPonto(event, layers, camera, domElement) {
+  const ponto = pickNaEsfera(event, camera, domElement);
+  if (!ponto) return null;
+  const [lat, lon] = vec3ToLatLon(ponto);
+
+  // Da camada mais específica para a mais geral.
+  //
+  // ⚠️ `estaVisivel` não é zelo excessivo: `layers.geojson` guarda o arquivo
+  // INTEIRO de cada fonte (é dele que sai o índice estável dos deep-links),
+  // então o filtro de região esconde áreas do globo sem tirá-las daqui. Sem
+  // esta checagem, apontar o vazio responderia com uma área que não está
+  // desenhada — o mapa diria uma coisa e a ficha, outra.
+  for (const [id, fc] of [...layers.geojson.entries()].reverse()) {
+    const idx = fc.features.findIndex((f, i) => layers.estaVisivel(id, i) && featureContem(f, lon, lat));
+    if (idx >= 0) return { layerId: id, feature: fc.features[idx], idx, lat, lon };
+  }
+  // Nenhum polígono pegou. Camada de ponto responde por proximidade — e vem
+  // depois de propósito: onde um ponto cai dentro de uma área, a área é a
+  // resposta mais informativa, e o ponto continua alcançável ao lado dela.
+  const tolRad = radianosPorPixel({
+    altitude: distanciaAoChao(camera),
+    fovDeg: camera.fov,
+    alturaPx: domElement.clientHeight || window.innerHeight,
+  }) * TOLERANCIA_PX;
+  if (tolRad > 0) {
+    for (const [id, fc] of [...layers.geojson.entries()].reverse()) {
+      const idx = pontoMaisProximo(fc, lon, lat, tolRad, (i) => layers.estaVisivel(id, i));
+      if (idx >= 0) return { layerId: id, feature: fc.features[idx], idx, lat, lon };
+    }
+  }
+  return null;
+}
+
 export function createInspector(panel, layers, camera, domElement, { onFocar } = {}) {
   let emFoco = null; // { layerId, feature } da ficha aberta
 
   domElement.addEventListener('click', (event) => {
-    const ponto = pickNaEsfera(event, camera, domElement);
-    if (!ponto) return esconder();
-    const [lat, lon] = vec3ToLatLon(ponto);
-
-    // Procura a feição clicada, da camada mais específica para a mais geral.
-    //
-    // ⚠️ `estaVisivel` não é zelo excessivo: `layers.geojson` guarda o arquivo
-    // INTEIRO de cada fonte (é dele que sai o índice estável dos deep-links),
-    // então o filtro de região esconde áreas do globo sem tirá-las daqui. Sem
-    // esta checagem, clicar no vazio abriria a ficha de uma área que não está
-    // desenhada — o mapa diria uma coisa e a ficha, outra.
-    for (const [id, fc] of [...layers.geojson.entries()].reverse()) {
-      const idx = fc.features.findIndex((f, i) => layers.estaVisivel(id, i) && featureContem(f, lon, lat));
-      if (idx >= 0) return mostrar(id, fc.features[idx], idx, lat, lon);
-    }
-    // Nenhum polígono pegou. Camada de ponto responde por proximidade — e vem
-    // depois de propósito: onde um ponto cai dentro de uma área, a área é a
-    // resposta mais informativa, e o ponto continua alcançável ao lado dela.
-    const tolRad = radianosPorPixel({
-      altitude: distanciaAoChao(camera),
-      fovDeg: camera.fov,
-      alturaPx: domElement.clientHeight || window.innerHeight,
-    }) * TOLERANCIA_PX;
-    if (tolRad > 0) {
-      for (const [id, fc] of [...layers.geojson.entries()].reverse()) {
-        const idx = pontoMaisProximo(fc, lon, lat, tolRad, (i) => layers.estaVisivel(id, i));
-        if (idx >= 0) return mostrar(id, fc.features[idx], idx, lat, lon);
-      }
-    }
-    esconder();
+    const achado = procurarFeicaoNoPonto(event, layers, camera, domElement);
+    if (!achado) return esconder();
+    mostrar(achado.layerId, achado.feature, achado.idx, achado.lat, achado.lon);
   });
 
   function mostrar(layerId, feature, idx, lat, lon) {

@@ -2365,3 +2365,56 @@ body {
      a ser dito só pelo contador, em palavras, que é onde ele já estava dito. */
   #layers-panel .layer-row.carregando .layer-marca { opacity: 1; }
 }
+
+/* ------------------------------------------------------------
+   Dica ao pousar o mouse numa área (15/08/2026) — ui/dica.js
+
+   Não é `.hud-panel`: os painéis do HUD são ancorados nos cantos e têm o
+   vidro e a borda da moldura. Esta segue o ponteiro e precisa ser lida em
+   cima de qualquer coisa que esteja embaixo, inclusive imagem de satélite —
+   daí o fundo mais opaco que o do resto do HUD.
+
+   `pointer-events: none` é obrigatório, não estético: a dica nasce a 14 px do
+   ponteiro, e sem isso ela roubaria o `pointermove` do canvas no instante em
+   que aparecesse, disparando `pointerleave` e apagando a si mesma. Um
+   piscar infinito.
+   ------------------------------------------------------------ */
+#dica {
+  position: fixed;
+  z-index: 40;
+  max-width: 22rem;
+  padding: 8px 11px;
+  border: 1px solid var(--cor-camada, var(--color-hairline));
+  border-left-width: 3px;
+  border-radius: 6px;
+  background: color-mix(in oklab, var(--color-base) 92%, transparent);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.35);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+#dica.visivel { opacity: 1; }
+
+#dica .dica-titulo {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-1);
+  line-height: 1.3;
+}
+
+#dica .dica-corpo {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #dica { transition: none; }
+}

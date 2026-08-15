@@ -25,7 +25,8 @@ import { criarDestaques } from './ui/destaques.js';
 import { createLayersPanel } from './ui/layerspanel.js';
 import { createFooterHud } from './ui/footerhud.js';
 import { createZoomControls } from './ui/zoomcontrols.js';
-import { createInspector } from './ui/inspector.js';
+import { createInspector, procurarFeicaoNoPonto, tituloDaArea } from './ui/inspector.js';
+import { criarDica } from './ui/dica.js';
 import { createIntro } from './ui/intro.js';
 import { createBuscaMunicipio } from './ui/buscamunicipio.js';
 import { createListaPanel } from './ui/listapanel.js';
@@ -97,6 +98,40 @@ async function bootstrap() {
     document.getElementById('inspector'), layers, camera, renderer.domElement,
     { onFocar: (feature, layerId, idx) => focarFeicao(feature, layerId, idx) },
   );
+
+  // Pousar o mouse numa área por 2 s → uma frase dizendo o que ela é. Usa a
+  // MESMA busca do clique (`procurarFeicaoNoPonto`), para a dica nunca falar de
+  // uma área e o clique abrir outra. Só no computador — ver ui/dica.js.
+  const dica = criarDica(document.getElementById('dica'), {
+    layers, camera, domElement: renderer.domElement,
+    textoDe: ({ layerId, feature, idx }) => {
+      const cfg = LAYER_REGISTRY.find((l) => l.id === layerId);
+      const camada = CAMADA_POR_FONTE.get(layerId);
+      if (!cfg && !camada) return null;
+      const props = feature.properties ?? {};
+
+      // O corpo é UMA frase, e o que entra nela é escolha editorial: o campo
+      // mais forte da feição, sem repetir o título. O resto continua na ficha
+      // do clique — a dica existe para responder "o que é isto?", não para
+      // ser a ficha aparecendo sozinha na cara de quem passou o mouse.
+      const area = props.area_ha ?? props.area_intersecao_ha;
+      const partes = [];
+      if (props.territorio_nome) partes.push(props.territorio_nome);
+      if (props.sigmine_subs) partes.push(String(props.sigmine_subs).toLowerCase());
+      if (props.municipio && !partes.length) partes.push(props.municipio);
+      if (props.nome && !partes.length) partes.push(props.nome);
+      if (area) partes.push(`${Math.round(area).toLocaleString('pt-BR')} hectares`);
+
+      return {
+        titulo: camada?.label ?? cfg?.label ?? tituloDaArea(cfg, props, idx),
+        // Sem nenhum campo conhecido a dica ainda vale: o nome da camada já
+        // responde a pergunta, e a segunda metade diz onde está o resto.
+        corpo: partes.length ? `${partes.join(' · ')} — clique para a ficha` : 'Clique para ver a ficha',
+        cor: cfg ? `#${(cfg.color ?? 0x8899aa).toString(16).padStart(6, '0')}` : undefined,
+      };
+    },
+  });
+  dica.usarBusca((event) => procurarFeicaoNoPonto(event, layers, camera, renderer.domElement));
 
   // No celular, camadas e ficha dividem UMA folha de duas abas: os dois painéis
   // somam 520 px numa tela de 375, então a sobreposição é aritmética. A folha
