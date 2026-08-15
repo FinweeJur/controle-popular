@@ -645,6 +645,22 @@ export const LAYER_REGISTRY = [
     aviso: '"Zero hoje" não é "seguro para sempre": a FEAM só publica mancha para 156 das 259 barragens de MG (ver a camada "Mancha de inundação"), e a distância mais próxima medida é de poucas centenas de metros — dentro da margem de um novo estudo de ruptura, ou de uma barragem sem mancha publicada, mudar essa conta. Se algum dia uma interseção real aparecer, esta camada é o lugar onde ela vai surgir.',
     color: 0xfb8a82, /* var(--danger) — risco calculado, não fonte de dado nova */ on: false, render: 'fill', listavel: true, vazia: true,
   },
+  // A gêmea quilombola da camada acima — e a que MUDOU DE RESPOSTA.
+  //
+  // ⚠️ O handoff de 13/08 descrevia esta camada como "resultado zero" e
+  // pedia `vazia: true`. Ao ligar o arquivo hoje (15/08), ele tem **6
+  // interseções em 3 territórios**. O que mudou entre uma data e outra foi a
+  // ingestão dos territórios quilombolas do INCRA que faltavam — e o alerta,
+  // recalculado sobre a base maior, deixou de ser zero. Publicar o texto do
+  // handoff teria posto na tela, com cara de medição, exatamente o contrário
+  // do que o dado diz: que nenhum território quilombola está sob mancha de
+  // inundação. Os números aqui foram RECONTADOS no arquivo, não copiados.
+  {
+    id: 'alerta-quilombola-mancha', label: 'Território quilombola atingido por mancha de barragem',
+    hint: 'Interseção de geometria de verdade entre os territórios quilombolas ingeridos e as manchas de inundação de barragem da FEAM. São 6 sobreposições em 3 territórios: AMAROS e MACHADINHO, sob barragens da Kinross em Paracatu, e SÃO SEBASTIÃO, sob três barragens da Salitre Fertilizantes em Serra do Salitre. A maior atinge 934,9 hectares do território.',
+    aviso: 'As áreas NÃO se somam: as três barragens de Serra do Salitre cobrem a mesma parte do território, então somá-las contaria o mesmo chão três vezes. Todas as cinco barragens estão com o plano de emergência "EM ANÁLISE" na FEAM. E a cobertura ainda é parcial — a FEAM publica mancha para 156 das 259 barragens de Minas, então território sem alerta aqui pode estar sob uma barragem que não publicou mancha.',
+    color: 0xfb8a82, /* var(--danger) — mesma regra de alerta-ti-mancha */ on: false, render: 'fill', listavel: true,
+  },
   // SIGMINE/ANM. DUAS camadas, nunca uma — ver a nota grande em
   // scripts/ingerir_sigmine.py. Só ~12,9% das 54.920 poligonais de MG
   // autorizam extrair; publicar tudo como "empreendimento minerário" diria
@@ -677,6 +693,35 @@ export const LAYER_REGISTRY = [
     // testou o pedido — no celular. Continua alcançável, uma a uma, pela
     // chave dela.
     color: 0x62b5ff, /* --layer-sigmine-interesse */ on: false, render: 'fill', listavel: true, comprimida: true, pesada: true,
+  },
+  // --- O cruzamento das duas coisas acima (15/08/2026) --------------------
+  //
+  // Estes dois arquivos existiam em `dados/camadas/` desde 13/08 e NÃO tinham
+  // entrada aqui: o handoff que os gerou deixou o `config.js` intocado de
+  // propósito, porque outro worktree editava este arquivo ao vivo. Resultado:
+  // o cruzamento mais consequente do mapa — mina autorizada em cima de terra
+  // indígena — ficou calculado e invisível por dois dias. É a mesma classe de
+  // erro que o projeto já nomeou noutro lugar: dado gravado sem consumidor é
+  // dado que não existe.
+  //
+  // A geometria de cada feição é a INTERSEÇÃO RECORTADA, não o território nem
+  // a poligonal da ANM inteiros — quem clica vê o pedaço sobreposto, com
+  // `area_intersecao_ha`. Ver docs/HANDOFF-ALERTAS-TERRITORIO.md §5.
+  // ⚠️ Os números abaixo foram RECONTADOS no arquivo em 15/08, e são maiores
+  // que os do handoff de 13/08 (que dizia 12 e 195). A base de territórios
+  // cresceu no meio do caminho. Ao reexportar qualquer um dos dois arquivos,
+  // recontar aqui também — texto de tela e arquivo servido têm que se cobrir.
+  {
+    id: 'alerta-territorio-sigmine-operacao', label: 'Terra indígena/quilombola atingida por mina em operação',
+    hint: '21 sobreposições entre território e lavra EM OPERAÇÃO, atingindo 4 terras indígenas (entre elas Krenak de Sete Salões, Xacriabá e Caxixé) e 6 territórios quilombolas. Interseção de geometria de verdade, malha completa — não caixa aproximada. Somadas, 1.539 hectares.',
+    aviso: 'Isto é FATO CONSUMADO: extração já autorizada sobreposta ao território. Nunca some esta camada com "sob interesse minerário" — são categorias jurídicas diferentes, e somá-las inventaria um número que não existe.',
+    color: 0xfb8a82, /* var(--danger) — mesma regra semântica de alerta-ti-mancha */ on: false, render: 'fill', listavel: true,
+  },
+  {
+    id: 'alerta-territorio-sigmine-interesse', label: 'Terra indígena/quilombola sob interesse minerário',
+    hint: '271 sobreposições entre território e processo de INTERESSE minerário (requerimento de pesquisa ou de lavra, área em disponibilidade), atingindo 14 terras indígenas e 18 territórios quilombolas — 51.609 hectares no total.',
+    aviso: 'Não é extração em curso: é papel protocolado na ANM, pressão futura. Muitos processos nunca viram nada. Para extração já autorizada, ver "atingida por mina em operação" — e nunca some as duas.',
+    color: 0xe2a138, /* var(--caution) — o mesmo âmbar de checagem-g0: atenção, ainda não é fato consumado */ on: false, render: 'fill', listavel: true,
   },
   // --- Dinheiro público e mineração (13/08/2026) --------------------------
   //
@@ -739,6 +784,29 @@ export const LAYER_REGISTRY = [
     hint: '743 normas (de 1.151 com lugar extraído da ementa, de 10.317 no total) que o Nominatim conseguiu geocodificar pelo NOME do lugar — não por endereço exato. 189 em confiança "alta" (rua/avenida/praça citada por nome), 554 em "média" (só bairro/distrito).',
     aviso: 'O ponto marca o LUGAR CITADO, não o endereço exato da norma nem de nenhum imóvel — normas de bairro/distrito (confiança "média") caem no centro aproximado da área. Extraído só da ementa, nunca de PDF ou texto completo: testado e não ajuda (ver docs/normas-mapa-viabilidade.md). A maioria das normas não aparece aqui — não tem endereço reconhecível na ementa, o que é o caso comum, não uma falha da busca.',
     color: 0x6366f1,   /* --layer-normas: violeta-azulado, sem par no restante do registro */ on: false, render: 'point', pointSize: 0.005, listavel: true,
+  },
+  // Norma que MEXE em área protegida — parente de `normas-geolocalizadas`
+  // (as duas saem de `atos_oficiais`), mas responde outra pergunta: aquela
+  // mostra onde a norma cita um lugar; esta mostra onde a norma cria, amplia
+  // ou redefine unidade de conservação. Ver docs/HANDOFF-ALERTAS-TERRITORIO.md §3.
+  //
+  // ⚠️ A cor NÃO é a que o handoff propôs, e a diferença é medida. Ele sugeria
+  // matiz ~115° ("verde-lima, combina com parque"), calculado sobre uma leva de
+  // cores que não é mais a deste arquivo. Medidos os 30 matizes em uso hoje, a
+  // maior lacuna livre é 276,9° → 320,6° (43,7°), e 115° cairia a **10,2° do
+  // verde de "Minas em operação"** — as duas camadas mais opostas do mapa
+  // ficariam quase da mesma cor, justamente onde elas aparecem juntas. Fica o
+  // meio da lacuna real (298,8°), a 21,9° e 21,8° das vizinhas e a 173° do
+  // verde das minas. Conotação perde para legibilidade quando o vizinho é a
+  // camada que esta contradiz.
+  {
+    id: 'atos-area-protegida-municipios', label: 'Normas que criam ou alteram área protegida',
+    // Um ponto por MUNICÍPIO, não por norma: são 3 pontos para 8 normas
+    // (Belo Horizonte 4, Diamantina 3, Araçuaí 1). O contador do painel mostra
+    // 3, e sem esta frase a diferença para o "8" do texto pareceria erro.
+    hint: '8 normas municipais que criam, ampliam ou redefinem o zoneamento de área de proteção ambiental, parque ou monumento natural — reunidas em 3 pontos, um por município: Belo Horizonte (4), Diamantina (3) e Araçuaí (1, a Lei 726/2025, que modifica o zoneamento da APA da Chapada do Lagoão).',
+    aviso: 'Cobre só 3 dos 854 municípios de Minas Gerais. Betim e Itinga têm zero normas deste tipo, medido — não é lacuna de coleta. Nos outros 846, ausência aqui quer dizer que a legislação ainda não foi coletada, não que não exista norma. A classificação de cada norma (cria/altera área × só administrativo) foi feita lendo a ementa inteira à mão.',
+    color: 0xeb8dec, /* meio da maior lacuna de matiz medida (298,8°) — ver a nota acima */ on: false, render: 'point', pointSize: 0.005, listavel: true,
   },
   // Camada dinâmica custom (Fase G3): satélites dos sensores do projeto em
   // órbita SGP4 real (TLE CelesTrak). Não vem do endpoint /camadas — a
@@ -1000,6 +1068,47 @@ export const CAMADAS = [
     hint: '47.830 poligonais em MG — requerimento de pesquisa, de lavra, de licenciamento, área em disponibilidade. É um PAPEL PROTOCOLADO na ANM, não uma mina: mostra onde há interesse ou pressão futura, não onde já se extrai.',
     aviso: 'Nenhum destes polígonos representa extração em curso — para isso, ver a camada "Minas em operação". A fase de cada processo aparece na ficha.',
     fontes: ['sigmine-interesse'],
+  },
+  // --- Os cruzamentos, ligados em 15/08/2026 -------------------------------
+  // Ordem deliberada: o que JÁ ACONTECE vem antes do que PODE acontecer, e o
+  // zero medido vem por último. Quem abre a seção lê primeiro as 12 minas em
+  // operação sobre território, não as 195 de papel protocolado.
+  {
+    id: 'alerta-territorio-sigmine-operacao', assunto: 'territorio-mineracao',
+    label: 'Terra indígena/quilombola atingida por mina em operação',
+    hint: '21 sobreposições — 4 terras indígenas e 6 territórios quilombolas com lavra JÁ EM OPERAÇÃO por cima, somando 1.539 hectares.',
+    aviso: 'Fato consumado. Nunca somar com "sob interesse minerário": é outra categoria jurídica.',
+    fontes: ['alerta-territorio-sigmine-operacao'],
+  },
+  {
+    id: 'alerta-territorio-sigmine-interesse', assunto: 'territorio-mineracao',
+    label: 'Terra indígena/quilombola sob interesse minerário',
+    hint: '271 sobreposições — 14 terras indígenas e 18 territórios quilombolas com algum processo de interesse por cima, somando 51.609 hectares. Não é mina: é requerimento.',
+    aviso: 'Papel protocolado na ANM, não extração em curso. Para extração de verdade, ver "atingida por mina em operação".',
+    fontes: ['alerta-territorio-sigmine-interesse'],
+  },
+  {
+    id: 'alerta-quilombola-mancha', assunto: 'territorio-mineracao',
+    label: 'Território quilombola atingido por mancha de barragem',
+    hint: '6 sobreposições em 3 territórios: AMAROS e MACHADINHO sob barragens da Kinross em Paracatu, e SÃO SEBASTIÃO sob três barragens da Salitre Fertilizantes em Serra do Salitre. A maior atinge 934,9 hectares.',
+    aviso: 'As áreas não se somam — as três barragens de Serra do Salitre cobrem a mesma parte do território. Todas as cinco barragens estão com plano de emergência "em análise" na FEAM.',
+    fontes: ['alerta-quilombola-mancha'],
+  },
+  // Fica em `territorio-mineracao`, e NÃO num assunto `legislacao-ambiental`
+  // novo como o handoff sugeria. Duas razões: uma seção de um item só é ruído
+  // no painel que este projeto está justamente tentando enxugar, e a camada
+  // dialoga diretamente com as de cima — é onde a lei protege contra a pressão
+  // que as outras mostram. A irmã dela (`normas-geolocalizadas`) também não
+  // tem seção própria: está em `cidade`.
+  // 👉 Quando a legislação FEDERAL entrar (docs/FONTES-CNJ-JUMA.md: 8,5 a 10,4
+  // mil normas do MMA/CONAMA), aí sim há massa para um assunto próprio — e
+  // esta entrada é a primeira que deve migrar para ele.
+  {
+    id: 'atos-area-protegida-municipios', assunto: 'territorio-mineracao',
+    label: 'Normas que criam ou alteram área protegida',
+    hint: '8 normas que criam, ampliam ou redefinem área de proteção ambiental, parque ou monumento natural, em 3 pontos — um por município: Belo Horizonte (4), Diamantina (3) e Araçuaí (1).',
+    aviso: 'Cobre só municípios com legislação já coletada — 6 de 854. Betim e Itinga foram medidos e têm zero normas deste tipo; nos outros 848, ausência aqui quer dizer coleta que ainda não aconteceu.',
+    fontes: ['atos-area-protegida-municipios'],
   },
   // --- Dinheiro público e mineração (13/08/2026, docs/HANDOFF-CAMADA-DINHEIRO.md)
   {
