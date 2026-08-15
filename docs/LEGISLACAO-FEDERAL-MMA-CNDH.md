@@ -268,6 +268,36 @@ npx tsx scripts/carregar-legislacao-federal.mts ../../etl/betim/dados/legislacao
 cd ../../etl/betim && python -m etl.apis.classificar_temas_ambientais
 ```
 
+### ⚠️ Um CPF veio dentro de uma ementa oficial
+
+Medido em 2026-08-15: **1 das 8.940** ementas trazia o CPF de uma pessoa
+física — a portaria do IBAMA que delega competência para firmar um TAC e
+escreve o nome do proprietário rural com o CPF ao lado. Uma em 8.940 é
+exatamente o número que faz uma conferência manual passar batido; quem pegou
+foi o teste `apps/web/lib/sem-cpf-no-repo.test.ts`, que valida por mod-11.
+
+Que a fonte publique não autoriza republicar. Este repositório é **público**:
+um CPF aqui fica indexável e clonável para sempre, o que é diferente de estar
+numa portaria no Diário Oficial.
+
+A limpeza ficou na origem — `redigir_documentos`, em
+`etl/betim/etl/apis/_legislacao_ambiental.py`, aplicada pelos dois coletores,
+para o dado não chegar a ser gravado em lugar nenhum. **O nome da pessoa
+permanece**: o ato é público e quem assina um TAC ambiental responde por ele
+com nome. Sai o identificador que serve para cruzar cadastros. **CNPJ também
+permanece**, e por decisão: saber qual empresa assinou o TAC é o que este
+portal existe para mostrar.
+
+O CNDH mediu **zero** ocorrências; a chamada está lá para que uma resolução
+futura não vaze.
+
+> **Pendência para o dono.** O arquivo com o CPF chegou a ser commitado e
+> pushado antes da correção (commit `e510f4e`). O conteúdo atual está limpo,
+> mas o histórico do Git ainda tem a versão antiga, e o repositório é público.
+> Limpar exige reescrever histórico já publicado (`git filter-repo` + push
+> forçado), o que afeta qualquer clone existente — é decisão de quem é dono do
+> repositório, não deste documento.
+
 ### A proteção animal, conferida nos arquivos
 
 A falha que abriu esta tarefa era buscar proteção animal e não achar nada.

@@ -45,6 +45,38 @@ UA = "ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular)"
 
 FONTES = ("almg", "semad", "siam")
 
+# ═══ CPF NA EMENTA — MEDIDO, NÃO HIPOTÉTICO ═══
+#
+# A ementa é texto oficial, e texto oficial às vezes traz CPF de pessoa
+# física. Medido em 2026-08-15 nas 8.940 normas federais: **uma** ocorrência
+# — a portaria do IBAMA que delega competência para firmar um TAC e escreve o
+# nome do proprietário rural com o CPF ao lado. Uma em 8.940 é exatamente o
+# número que faz uma conferência manual passar batido.
+#
+# Que a fonte publique não autoriza republicar. Este repositório é PÚBLICO: um
+# CPF aqui fica indexável e clonável para sempre, o que é bem diferente de
+# estar numa portaria no Diário Oficial. O teste `lib/sem-cpf-no-repo.test.ts`
+# já barrava a entrada no repo — foi ele que pegou esta; a limpeza fica aqui,
+# na origem, para o dado nunca chegar a ser gravado em lugar nenhum.
+#
+# O NOME DA PESSOA PERMANECE. O ato é público e a responsabilidade nele é
+# pública — quem assina um TAC ambiental responde por ele com nome. Sai o
+# identificador que serve para cruzar cadastros, não a informação de
+# interesse público.
+_CPF = re.compile(r"\b\d{3}\.\d{3}\.\d{3}-\d{2}\b")
+
+
+def redigir_documentos(texto: str | None) -> str | None:
+    """Troca CPF por `[CPF removido]`. CNPJ fica, de propósito.
+
+    A assimetria é a decisão: CNPJ identifica empresa, e saber QUAL empresa
+    assinou o TAC é justamente o que este portal existe para mostrar. CPF
+    identifica pessoa natural.
+    """
+    if not texto:
+        return texto
+    return _CPF.sub("[CPF removido]", texto)
+
 # A ALMG entrega o tipo já abreviado (`tipo=LEI` no parâmetro de busca, mas o
 # campo devolvido em `listaItem[].tipo` usa estes códigos curtos — DEC, LCP
 # — vistos ao vivo em 2026-08-11 nas primeiras páginas da pesquisa

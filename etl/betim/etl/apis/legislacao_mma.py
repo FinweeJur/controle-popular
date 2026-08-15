@@ -135,7 +135,7 @@ import requests
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_fixed
 
 from etl.common import get_supabase_client
-from etl.apis._legislacao_ambiental import UA, chave_dedup
+from etl.apis._legislacao_ambiental import UA, chave_dedup, redigir_documentos
 
 LOG = "[etl.apis.legislacao_mma]"
 
@@ -336,7 +336,10 @@ def _linha(c: dict) -> dict | None:
         "tipo": c["documento"],          # como a fonte escreve: "RESOLUÇÃO CONAMA", "LEI"...
         "numero": c["numero"] or None,
         "ano": ano,
-        "ementa": c["ementa"] or None,
+        # `redigir_documentos` tira CPF de pessoa física — uma ocorrência
+        # medida em 8.940, e o repositório é público. Ver o bloco em
+        # `_legislacao_ambiental`; o nome da pessoa fica, o CPF não.
+        "ementa": redigir_documentos(c["ementa"]) or None,
         "data": _data_do_ato(ato),
         "orgao": c["area"] or None,      # IBAMA | ICMBio | CONAMA | SBIO | EXTERNO ...
         "link_pdf": link,
