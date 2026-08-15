@@ -1,0 +1,124 @@
+{
+  "_documentacao": {
+    "proposito": "Registro persistente de protocolo de cada pedido de LAI (Lei 12.527/2011) aberto pelo projeto Controle Popular ou por projetos irmãos cujo dado alimenta este. Existe porque, até 2026-08-14, nenhum protocolo era gravado em lugar nenhum -- nem tabela, nem arquivo, nem convenção -- e o pedido ao INCRA quase perdeu o prazo de recurso por isso. Ver docs/LAI-PORTAIS.md, secao 'Nivel federal', para o mapa de canais.",
+    "por_que_arquivo_e_nao_tabela": "O banco (Neon) esta em HTTP 402 ate 2026-09-01 -- nao da para escrever nele agora, e nem seria o lugar certo depois: protocolo de LAI e dado de baixissima cardinalidade (poucos pedidos, muda em ritmo de semanas, nunca em ritmo de request), sem relacao com o schema de cidades/votacoes que justifica o Postgres. Um arquivo JSON versionado da o que uma tabela nao da de graca aqui: 'git log -p docs/LAI-PROTOCOLOS.json' mostra exatamente quando cada pedido mudou de situacao, sem precisar de tabela de auditoria a parte.",
+    "por_que_json_e_nao_yaml": "JSON para o validador (scripts/checar-protocolos-lai.py) nao precisar de PyYAML. O 'python' no PATH desta maquina e o venv do hermes-agent (ver memoria 'python_venv_hermes_trap') e 'pip install' nele quebra o Hermes; um script sem dependencia externa, como scripts/checar-dado-pessoal.py ja faz neste repo, roda em qualquer Python de qualquer maquina sem tocar em venv nenhum.",
+    "sobre_os_quatro_arquivos_pedido_lai": "docs/LAI-PORTAIS.md afirma, corretamente, que docs/PEDIDO-LAI-INCRA.md, PEDIDO-LAI-SPU.md, PEDIDO-LAI-SEAPA-MG.md e PEDIDO-LAI-PBH-FAZENDA.md 'nao existem neste repositorio'. Isso e verdade e nao e contradicao com este arquivo: os quatro rascunhos moram no repositorio irmao terras-devolutas (X:\\DevCoder\\terras-devolutas\\docs\\), que e onde a pesquisa de terras devolutas vive. Este arquivo aqui registra o ESTADO do pedido (protocolo, prazo, situacao); o TEXTO do pedido continua la. O campo 'documento_pedido' de cada item abaixo aponta pro caminho no outro repositorio -- nao e um link que resolve dentro deste repo.",
+    "schema_situacao": {
+      "nao_enviado": "rascunho pronto, ainda nao enviado ao orgao -- sem protocolo, sem prazo correndo",
+      "aguardando": "enviado, dentro do prazo legal, sem resposta do orgao ainda",
+      "respondido": "orgao respondeu (positivo, negativo parcial ou remissao) -- ver campo 'resposta'",
+      "negado": "orgao negou o pedido de forma expressa",
+      "em_recurso": "resposta negativa esta sob recurso (art. 15 da Lei 12.527/2011)"
+    },
+    "schema_protocolo_status": {
+      "confirmado": "numero de protocolo gravado abaixo, conferido na tela de confirmacao ou no e-mail do orgao",
+      "desconhecido": "pedido foi enviado mas o numero de protocolo NAO foi anotado em nenhum lugar -- e a lacuna que este arquivo existe para nao repetir. NUNCA preencher com numero inventado.",
+      "nao_aplicavel": "pedido ainda nao foi enviado (situacao = nao_enviado), entao nao existe protocolo para anotar"
+    },
+    "como_calcular_data_limite": "data_envio + prazo_dias (20, art. 11 caput da Lei 12.527/2011) = data_limite. A prorrogacao (art. 11 par. 2o, mais 10 dias) NAO e automatica -- exige que o orgao comunique, dentro do prazo original, justificativa expressa. Por isso 'data_limite_prorrogado' e so o teto TEORICO (para quem quiser saber ate quando esperar antes de reclamar de vez), e o campo que decide o vencimento real e 'prorrogacao_concedida': false ate que uma prorrogacao de fato chegue por escrito. O validador em scripts/checar-protocolos-lai.py usa 'data_limite' (nao o prorrogado) enquanto 'prorrogacao_concedida' for false, e falha se a data de hoje passar do teto com situacao ainda 'aguardando' -- prazo perdido tem que ser erro visivel, nao descoberta tardia numa reuniao."
+  },
+  "pedidos": [
+    {
+      "id": "incra-terras-devolutas-2026",
+      "orgao": "INCRA",
+      "orgao_completo": "Instituto Nacional de Colonizacao e Reforma Agraria",
+      "canal": "Fala.BR",
+      "canal_url": "https://falabr.cgu.gov.br/",
+      "destinatario": "INCRA (orgao federal, selecionado na lista do Fala.BR)",
+      "protocolo": null,
+      "protocolo_status": "desconhecido",
+      "data_redacao": "2026-07-28",
+      "data_envio": "2026-07-29",
+      "prazo_dias": 20,
+      "prorrogacao_dias": 10,
+      "data_limite": "2026-08-18",
+      "data_limite_prorrogado": "2026-08-28",
+      "prorrogacao_concedida": false,
+      "situacao": "aguardando",
+      "resposta": null,
+      "documento_pedido": {
+        "repositorio": "terras-devolutas",
+        "caminho": "docs/PEDIDO-LAI-INCRA.md",
+        "aviso": "arquivo local ao repositorio terras-devolutas (X:\\DevCoder\\terras-devolutas), nao existe em controle-popular"
+      },
+      "resumo": "Base geoespacial vetorial das terras devolutas arrecadadas sob gestao do INCRA (recorte MG, subsidiariamente Brasil) -- e o gabarito de validacao que falta ao metodo do projeto Terras Devolutas.",
+      "fonte_confirmacao": "terras-devolutas/TODO.md linha 644 ('ENVIADO em 29/07/2026') e linha 649-652 (prazo 18/08, protocolo nao anotado); terras-devolutas/docs/FONTES-DE-DADOS.md linha 567-568 e 644-652"
+    },
+    {
+      "id": "seapa-mg-terras-devolutas-2026",
+      "orgao": "SEAPA-MG",
+      "orgao_completo": "Secretaria de Estado de Agricultura, Pecuaria e Abastecimento de Minas Gerais",
+      "canal": "Fala.BR ou canal estadual de acesso a informacao (acessoainformacao.mg.gov.br)",
+      "canal_url": "https://falabr.cgu.gov.br/",
+      "destinatario": "SEAPA-MG, atencao a Subsecretaria de Acesso a Terra e Regularizacao Fundiaria",
+      "protocolo": null,
+      "protocolo_status": "nao_aplicavel",
+      "data_redacao": "2026-07-29",
+      "data_envio": null,
+      "prazo_dias": 20,
+      "prorrogacao_dias": 10,
+      "data_limite": null,
+      "data_limite_prorrogado": null,
+      "situacao": "nao_enviado",
+      "resposta": null,
+      "documento_pedido": {
+        "repositorio": "terras-devolutas",
+        "caminho": "docs/PEDIDO-LAI-SEAPA-MG.md",
+        "aviso": "arquivo local ao repositorio terras-devolutas (X:\\DevCoder\\terras-devolutas), nao existe em controle-popular"
+      },
+      "resumo": "Base geoespacial das terras devolutas estaduais (arrecadadas e tituladas pelo Programa Estadual de Regularizacao Fundiaria) -- rascunho pronto, aguardando envio.",
+      "fonte_confirmacao": "terras-devolutas/TODO.md linha 626-642 ('rascunho pronto, falta enviar')"
+    },
+    {
+      "id": "spu-imoveis-uniao-2026",
+      "orgao": "SPU",
+      "orgao_completo": "Secretaria do Patrimonio da Uniao (Ministerio da Gestao e da Inovacao em Servicos Publicos)",
+      "canal": "Fala.BR",
+      "canal_url": "https://falabr.cgu.gov.br/",
+      "destinatario": "SPU / Ministerio da Gestao e Inovacao em Servicos Publicos",
+      "protocolo": null,
+      "protocolo_status": "nao_aplicavel",
+      "data_redacao": "2026-07-29",
+      "data_envio": null,
+      "prazo_dias": 20,
+      "prorrogacao_dias": 10,
+      "data_limite": null,
+      "data_limite_prorrogado": null,
+      "situacao": "nao_enviado",
+      "resposta": null,
+      "documento_pedido": {
+        "repositorio": "terras-devolutas",
+        "caminho": "docs/PEDIDO-LAI-SPU.md",
+        "aviso": "arquivo local ao repositorio terras-devolutas (X:\\DevCoder\\terras-devolutas), nao existe em controle-popular"
+      },
+      "resumo": "Forma vetorial (ou WFS anonimo) dos imoveis da Uniao ja publicados sem login no Geoportal da SPU -- pedido de formato, nao de acesso; rascunho pronto, aguardando envio.",
+      "fonte_confirmacao": "terras-devolutas/TODO.md linha 610-619 ('rascunho pronto, falta enviar')"
+    },
+    {
+      "id": "pbh-fazenda-divida-ativa-2026",
+      "orgao": "PBH",
+      "orgao_completo": "Prefeitura de Belo Horizonte -- Secretaria Municipal de Fazenda",
+      "canal": "e-SIC da PBH",
+      "canal_url": "https://prefeitura.pbh.gov.br/lei-de-acesso-a-informacao",
+      "destinatario": "Secretaria Municipal de Fazenda (PBH)",
+      "protocolo": null,
+      "protocolo_status": "nao_aplicavel",
+      "data_redacao": "2026-07-30",
+      "data_envio": null,
+      "prazo_dias": 20,
+      "prorrogacao_dias": 10,
+      "data_limite": null,
+      "data_limite_prorrogado": null,
+      "situacao": "nao_enviado",
+      "resposta": null,
+      "documento_pedido": {
+        "repositorio": "terras-devolutas",
+        "caminho": "docs/PEDIDO-LAI-PBH-FAZENDA.md",
+        "aviso": "arquivo local ao repositorio terras-devolutas (X:\\DevCoder\\terras-devolutas), nao existe em controle-popular"
+      },
+      "resumo": "Divida ativa da PBH por inscricao imobiliaria (nao por contribuinte) -- cruza com o cadastro de lotes vagos para medir a distancia entre o potencial do PEUC e os 27 lotes hoje aplicados. Achado ao ler terras-devolutas/docs/ para esta tarefa; nao estava nos tres pedidos originalmente apontados, mas e um quarto rascunho real do mesmo tipo, e omiti-lo recriaria a mesma lacuna que este arquivo existe para fechar.",
+      "fonte_confirmacao": "terras-devolutas/docs/PEDIDO-LAI-PBH-FAZENDA.md linha 1-3 ('Redigido em 30/07/2026'); terras-devolutas/docs/FONTES-DE-DADOS.md linha 322-325"
+    }
+  ]
+}
