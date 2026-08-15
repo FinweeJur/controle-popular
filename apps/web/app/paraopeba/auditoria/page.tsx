@@ -12,6 +12,7 @@ import {
 } from "@/lib/paraopeba/auditoria-ajri";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import AuditoriaClient from "./AuditoriaClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/paraopeba/auditoria` — catálogo da auditoria socioambiental independente
@@ -64,10 +65,10 @@ const plural = (rotulo: string) =>
     .map((p) => `${p}s`)
     .join(" ");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/paraopeba/auditoria", {
   title: "Auditoria socioambiental — Paraopeba | Controle Popular",
   description: `Catálogo dos ${formatNumberBR(TOTAL)} documentos da auditoria socioambiental independente (${AUTOR_AUDITORIA_AJRI}) do Acordo Judicial de Reparação Integral de Brumadinho, de ${formatDateBR(PERIODO_AUDITORIA_AJRI.de)} a ${formatDateBR(PERIODO_AUDITORIA_AJRI.ate)} — filtrável por instrumento jurídico, tipo, tema e período, com link para a fonte oficial em cada registro.`,
-};
+});
 
 export default function AuditoriaAjriPage() {
   return (

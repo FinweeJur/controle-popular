@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import GloboIframe from "./GloboIframe";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/funcaosocialterra/mapa` — o globo 3D de terras públicas, publicado como
@@ -18,11 +19,11 @@ import GloboIframe from "./GloboIframe";
  * `?camada=X&idx=N` abre direto na ficha daquela feature (usado pelo link
  * "Ver no mapa" da página da norma) — ver `GloboIframe.tsx`.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/funcaosocialterra/mapa", {
   title: "Mapa 3D — Função social da terra | Controle Popular",
   description:
     "Globo 3D interativo com vazio cadastral, terras públicas certificadas, assentamentos e territórios quilombolas em Minas Gerais, camada por camada.",
-};
+});
 
 // `GloboIframe` lê `?camada=&idx=` com `useSearchParams()` (dentro de
 // Suspense) para montar o deep-link do globo — mesma armadilha de

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { PAGAMENTOS_PARAOPEBA, RESUMO_AUXILIO_PARAOPEBA } from "@/lib/paraopeba";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Cartão de número-resumo — MESMO visual de `DataCard.tsx`
@@ -39,11 +40,11 @@ function CardResumo({ title, children }: { title: string; children: React.ReactN
  * painel-fonte) é sempre exibida junto, sem edição — nenhum número aqui
  * finge ter uma fonte mais firme do que tem.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/paraopeba/auxilio", {
   title: "Auxílio emergencial — Paraopeba | Controle Popular",
   description:
     "Acompanhamento mês a mês do Novo Auxílio Emergencial pago pela FGV às pessoas atingidas pelo rompimento da barragem da Vale em Brumadinho, com os números-resumo e a fonte de cada um.",
-};
+});
 
 const RESUMO_ITENS: Array<{
   label: string;

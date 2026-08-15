@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 // (`no-html-link-for-pages`) reprova, e com razão, porque perde o
 // pré-carregamento da rota.
 import Link from "next/link";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/termos` — termo de uso e origem dos dados.
@@ -58,11 +59,11 @@ import Link from "next/link";
  * global "Ouvir esta página" (`OuvirPagina.tsx`) não acha conteúdo. Mesma nota
  * de `app/sobre/page.tsx` e `app/busca/page.tsx`.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/termos", {
   title: "Termo de uso e origem dos dados — Controle Popular",
   description:
     "De onde vem cada dado publicado, com que base legal, sob qual licença, o que o portal mascara antes de publicar — e como pedir correção ou remoção se você aparece no conteúdo.",
-};
+});
 
 const GH = "https://github.com/FinweeJur/controle-popular/blob/main";
 

@@ -10,6 +10,7 @@ import {
   REFERENCIA_EXECUCAO_FGV,
   TOTAL_EXECUCAO_FGV,
 } from "@/lib/paraopeba/execucao-fgv";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/paraopeba/execucao` — quanto do Acordo de Reparação já virou projeto e
@@ -44,11 +45,11 @@ import {
  * 3. **455 linhas de status são 234 projetos.** Um projeto que alcança 25
  *    cidades aparece 25 vezes. A contagem exibida é de `idFdi` distinto.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/paraopeba/execucao", {
   title: "Execução do Acordo por município — Paraopeba | Controle Popular",
   description:
     "Quanto do Acordo de Reparação de Brumadinho já virou projeto e quanto já foi pago em cada um dos 26 municípios da Bacia do Paraopeba, pela auditoria independente da FGV.",
-};
+});
 
 /** Cor da frente, do registro único de zonas — nunca hex cravado aqui. */
 const COR = ZONAS.find((z) => z.id === "paraopeba")!.cor;

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "@/lib/congresso/link";
 import { listarOrgaos } from "@/lib/congresso/orgaos";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/comissoes", {
   title: "Comissões — Controle Popular · Congresso",
   description:
     "Comissões da Câmara dos Deputados, com quantas proposições estão paradas em cada uma e o que elas ampliam ou restringem em direitos.",
-};
+});
 
 export default async function Comissoes() {
   const orgaos = await listarOrgaos();

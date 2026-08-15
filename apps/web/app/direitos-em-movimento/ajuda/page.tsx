@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import SeletorRedeGeral from "../components/SeletorRedeGeral";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/direitos-em-movimento/ajuda` — porta "Onde buscar ajuda", 2 de 4.
@@ -15,11 +16,11 @@ import SeletorRedeGeral from "../components/SeletorRedeGeral";
  * cliente sem outra ida ao banco — são poucas dezenas de linhas, o mesmo
  * raciocínio de `listarCidades()` em `app/page.tsx` e `app/sobre/page.tsx`.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-em-movimento/ajuda", {
   title: "Onde buscar ajuda — Direitos em Movimento | Controle Popular",
   description:
     "Defensoria, Ministério Público, delegacias especializadas, assistência social, redes populares e clínicas jurídicas gratuitas — por necessidade, depois por cidade.",
-};
+});
 
 export default async function AjudaPage() {
   const cidades = await listarCidades();

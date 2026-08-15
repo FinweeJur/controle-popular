@@ -12,6 +12,7 @@ import {
   type AtiBiblioteca,
 } from "@/lib/paraopeba/biblioteca";
 import BibliotecaClient from "./BibliotecaClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/paraopeba/biblioteca` — o que as Assessorias Técnicas Independentes
@@ -32,11 +33,11 @@ import BibliotecaClient from "./BibliotecaClient";
  * Nenhum número abaixo é digitado — todos vêm de `COBERTURA_BIBLIOTECA`, que
  * conta o array já triado.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/paraopeba/biblioteca", {
   title: "Biblioteca das assessorias — Paraopeba | Controle Popular",
   description:
     "Cartilhas, boletins, jornais, produtos do plano de trabalho, documentos técnicos e vídeos publicados pelas assessorias técnicas independentes da bacia do Paraopeba — com link para a fonte original de cada item.",
-};
+});
 
 const ATIS_COM_ACERVO = [...new Set(BIBLIOTECA_ATI.map((i) => i.ati))].sort() as AtiBiblioteca[];
 

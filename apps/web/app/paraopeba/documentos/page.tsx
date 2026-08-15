@@ -3,6 +3,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import { COBERTURA_DOCUMENTOS_PROCESSO } from "@/lib/paraopeba";
 import { formatNumberBR } from "@/lib/betim/format";
 import DocumentosClient from "./DocumentosClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/paraopeba/documentos` — documentos do processo judicial da reparação
@@ -25,10 +26,10 @@ import DocumentosClient from "./DocumentosClient";
  * município. Todo texto desta tela (e de `DocumentosClient.tsx`) diz
  * "cita", nunca "é sobre" ou "aconteceu em".
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/paraopeba/documentos", {
   title: "Documentos do processo — Paraopeba | Controle Popular",
   description: `${formatNumberBR(COBERTURA_DOCUMENTOS_PROCESSO.publicados)} documentos do processo judicial da reparação de Brumadinho que citam um município da Bacia do Paraopeba, com link para o original e citação da fonte — Plataforma Brumadinho UFMG.`,
-};
+});
 
 export default function DocumentosPage() {
   const c = COBERTURA_DOCUMENTOS_PROCESSO;

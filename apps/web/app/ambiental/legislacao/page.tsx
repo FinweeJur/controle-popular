@@ -12,12 +12,13 @@ import BuscaLegislacaoUnificada from "./BuscaLegislacaoUnificada";
 // `lib/ambiental/payload-compacto.ts` e `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`.
 import { compactar } from "@/lib/ambiental/payload-compacto";
 import Link from "@/lib/ambiental/link";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/legislacao", {
   title: "Legislação e precedentes por tema — Controle Popular · Ambiental",
   description:
     "Legislação ambiental estadual de Minas (ALMG, Semad, Siam) e federal (MMA, Ibama, ICMBio, Resoluções Conama, CNDH), legislação nacional/internacional e precedentes judiciais, numa busca só, filtrável por esfera e por tema de proteção — mineração, fauna e flora, recursos hídricos, serras, indígena, quilombola, rios e mais.",
-};
+});
 
 /**
  * `/ambiental/legislacao` — painel unificado, decisão do dono (2026-08-13):

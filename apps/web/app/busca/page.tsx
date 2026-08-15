@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import BuscaClient from "./BuscaClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Busca unificada — tema + palavra-chave + território — agrupada pelas três
@@ -33,7 +34,7 @@ import BuscaClient from "./BuscaClient";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/busca", {
   title: "Busca — Controle Popular",
   // ⟲ 13/08: dizia "nas TRÊS frentes do Controle Popular", o que virou falso
   // quando o portal passou a ter cinco. A COBERTURA, porém, continua sendo
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
   // tamanho do portal, e declarar as duas coisas separadamente.
   description:
     "Busque legislação por tema, palavra-chave e território em três frentes do Controle Popular: Cidades, Congresso e Judiciário.",
-};
+});
 
 export default async function BuscaPage() {
   // Não depende de `searchParams` — roda em build, uma vez, igual a

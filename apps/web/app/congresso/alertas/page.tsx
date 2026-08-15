@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { alertas, coberturaAnalise } from "@/lib/congresso/destaques";
 import AlertasLista, { AlertasListaCompleta } from "./AlertasLista";
 import { FiltroTema, Rodape, Vazio } from "./FiltroRodapeVazio";
+import { metadataEditavel } from "@/lib/edicoes";
 
 // ⟲ SAIU o `export { FiltroTema, Rodape, Vazio }` que ficava aqui. Ele existia
 // para `congresso/bons-exemplos/page.tsx` seguir importando de `alertas/page`
@@ -15,11 +16,11 @@ import { FiltroTema, Rodape, Vazio } from "./FiltroRodapeVazio";
 // checagem e passava verde; o com webpack reprova, com uma mensagem que não
 // diz o que é ("Property 'FiltroTema' is incompatible with index signature").
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/alertas", {
   title: "Alertas — projetos que retiram direitos — Controle Popular · Congresso",
   description:
     "Projetos de lei federais que restringem direitos, com o dispositivo legal e o trecho que fundamentam cada classificação.",
-};
+});
 
 /**
  * Filtro por `?tema=` foi para o cliente — ver `AlertasLista.tsx` para o

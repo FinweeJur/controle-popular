@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { MARCOS_PARAOPEBA, formatarDataMarco } from "@/lib/paraopeba";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * A data sai por `formatarDataMarco`, NÃO por `formatDateBR`: desde 15/08/2026
@@ -8,11 +9,11 @@ import { MARCOS_PARAOPEBA, formatarDataMarco } from "@/lib/paraopeba";
  * inventar um daria cara de fato a um palpite. `formatDateBR` devolveria "—"
  * para eles. Ver o cabeçalho de `lib/paraopeba/linha-do-tempo.ts`.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/paraopeba/linha-do-tempo", {
   title: "Linha do tempo — Paraopeba | Controle Popular",
   description:
     "Os marcos do processo de reparação pelo rompimento da barragem da Vale em Brumadinho, do rompimento de 25 de janeiro de 2019 à confirmação do pagamento de agosto de 2026.",
-};
+});
 
 export default function LinhaDoTempoPage() {
   // ⟲ 13/08, revisão de onboarding: era `<div>` — mesmo conserto de

@@ -5,6 +5,7 @@ import {
   CATEGORIA_ATOR_LABEL,
   type CategoriaAtor,
 } from "@/lib/paraopeba";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/paraopeba/quem-atua` — os órgãos e organizações que atuam na reparação
@@ -19,11 +20,11 @@ import {
  * Guaicuy). Página simples de propósito — lista por categoria, cada
  * organização com o que ela faz e como contatar, sem card inventado.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/paraopeba/quem-atua", {
   title: "Quem atua na reparação — Paraopeba | Controle Popular",
   description:
     "Os 18 órgãos e organizações que atuam na reparação pelo rompimento da barragem da Vale em Brumadinho — do Judiciário às três assessorias técnicas independentes (ATIs) que atendem quem foi atingido.",
-};
+});
 
 const ORDEM_CATEGORIAS: CategoriaAtor[] = ["judiciario", "mp", "gestora", "mov", "pub"];
 

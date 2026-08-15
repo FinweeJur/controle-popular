@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import ListaVotacoes from "./ListaVotacoes";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/votacoes", {
   title: "Votações — Controle Popular · Congresso",
   description: "Como cada parlamentar votou, votação por votação, na Câmara dos Deputados.",
-};
+});
 
 /**
  * `/congresso/votacoes` — mesma conversão de `congresso/proposicoes`: o

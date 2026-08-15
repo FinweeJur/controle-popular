@@ -14,6 +14,7 @@ import {
   carregarAlertaQuilombolaMancha,
   carregarAtosAreaProtegida,
 } from "@/lib/terras/alertas";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/funcaosocialterra` — a frente de função social da terra.
@@ -51,11 +52,11 @@ import {
  */
 const ZONA = ZONAS.find((z) => z.id === "terras")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/funcaosocialterra", {
   title: "Função social da terra — Controle Popular",
   description:
     "Mapa 3D de Minas Gerais com terra indígena, barragem, mineração (SIGMINE), CFEM e alertas de sobreposição, e o vazio cadastral — quanto do território de cada cidade não tem imóvel rural declarado no CAR — com a metodologia aberta e a taxa de erro medida ao lado do número.",
-};
+});
 
 export default async function FuncaoSocialTerraPage() {
   const cidades = await listarCidades();

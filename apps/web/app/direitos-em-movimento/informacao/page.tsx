@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import SeletorRedeGeral from "../components/SeletorRedeGeral";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/direitos-em-movimento/informacao` — porta "Como pedir informação", 3 de 4.
@@ -17,11 +18,11 @@ import SeletorRedeGeral from "../components/SeletorRedeGeral";
  * `necessidadeFixa="pedir_informacao"` pula a pergunta 1 do
  * `SeletorRedeGeral`: aqui a necessidade já é sabida pelo nome da porta.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-em-movimento/informacao", {
   title: "Como pedir informação — Direitos em Movimento | Controle Popular",
   description:
     "Lei de Acesso à Informação: os canais estaduais e federais, e o canal municipal de cada cidade cadastrada. Qualquer cidadão pode pedir, é gratuito.",
-};
+});
 
 export default async function InformacaoPage() {
   const cidades = await listarCidades();

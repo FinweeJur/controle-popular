@@ -3,12 +3,13 @@ import Link from "@/lib/judiciario/link";
 import { proximasVacancias } from "@/lib/judiciario/tribunais";
 import { rotuloCota } from "@/lib/judiciario/rotulos";
 import FonteRodape, { FONTE_REGUA } from "@/app/judiciario/components/FonteRodape";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/judiciario/vagas", {
   title: "Vagas — Controle Popular · Judiciário",
   description:
     "Quando cada ministro completa 75 anos e é obrigado a se aposentar, calculado a partir da data de nascimento — não uma estimativa.",
-};
+});
 
 const fmtData = (d: string | null) =>
   d ? new Date(d + "T00:00:00").toLocaleDateString("pt-BR") : "—";

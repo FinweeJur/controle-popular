@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { RUBRICA, VERSAO_RUBRICA } from "@/lib/congresso/rubrica";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/metodologia", {
   title: "Metodologia — Controle Popular · Congresso",
   description:
     "Como classificamos um projeto de lei como garantista ou reducionista: taxonomia de direitos, mecanismos, pesos e o cálculo do score. Régua declarada e auditável.",
-};
+});
 
 /**
  * Esta página é renderizada A PARTIR de `rubrica/rubrica.json` — a mesma

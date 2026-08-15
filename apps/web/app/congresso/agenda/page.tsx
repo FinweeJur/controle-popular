@@ -2,12 +2,13 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { agenda, pautaDosEventos, orgaosDaAgenda, COD_AUDIENCIA, type ItemPauta } from "@/lib/db/queries/congresso";
 import AgendaLista, { AgendaListaCompleta } from "./AgendaLista";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/agenda", {
   title: "Agenda legislativa — audiências públicas e reuniões — Controle Popular · Congresso",
   description:
     "O que a Câmara tem marcado: audiências públicas, reuniões deliberativas, pauta de votação, local, convidados e link para o registro.",
-};
+});
 
 /**
  * Agenda legislativa.

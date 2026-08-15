@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "@/lib/judiciario/link";
 import { listarTribunais } from "@/lib/judiciario/tribunais";
 import FonteRodape, { FONTE_REGUA } from "@/app/judiciario/components/FonteRodape";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/judiciario/tribunais", {
   title: "Tribunais — Controle Popular · Judiciário",
   description:
     "Composição legal dos tribunais superiores brasileiros: quantas cadeiras, por qual cota de origem, e quem indica.",
-};
+});
 
 const RAMO_NOME: Record<string, string> = {
   constitucional: "Constitucional",

@@ -12,6 +12,7 @@ import {
   type AlvoNoMapa,
 } from "@/lib/terras/alertas";
 import { formatNumberBR, formatDateBR } from "@/lib/betim/format";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/funcaosocialterra/alertas` — verificação item a item dos alertas que o
@@ -42,11 +43,11 @@ import { formatNumberBR, formatDateBR } from "@/lib/betim/format";
  * de `mapa/page.tsx`, que precisa da declaração explícita por causa do
  * `useSearchParams()` do `GloboIframe`.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/funcaosocialterra/alertas", {
   title: "Alertas — Função social da terra | Controle Popular",
   description:
     "Sobreposição entre território (indígena e quilombola) e processo minerário na ANM, terra indígena atingida por mancha de barragem, e normas municipais que mexem em área protegida — item a item, com o caminho para conferir na fonte oficial.",
-};
+});
 
 function AlvoMapaLink({ alvo, texto }: { alvo: AlvoNoMapa | null; texto: string }) {
   if (!alvo) return null;
