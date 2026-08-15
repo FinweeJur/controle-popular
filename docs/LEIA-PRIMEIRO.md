@@ -21,7 +21,7 @@ Três arquivos. Se você só ler estes, já trabalha sem quebrar nada.
 | Vou mexer em… | Leia |
 |---|---|
 | deploy, build, publicação | `rotina-local.md`, `build-em-outro-pc.md`, `HANDOFF-PAYLOAD-LEGISLACAO.md` |
-| uma fonte de dados nova | o `FONTES-*.md` do assunto — são 6, cada um de um domínio |
+| uma fonte de dados nova | o `FONTES-*.md` do assunto — são 7, cada um de um domínio |
 | território, mineração, barragem | `FONTES-TERRITORIO-E-MINERACAO.md` |
 | Paraopeba / Brumadinho | `PLANO-INGESTAO-PARAOPEBA.md`, `RADAR-NOTICIAS-PARAOPEBA.md` |
 | dinheiro da reparação de Brumadinho | `FONTES-PRO-BRUMADINHO-E-FGV.md` — portal do Governo de MG e auditoria da FGV |
