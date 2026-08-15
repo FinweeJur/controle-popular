@@ -43,6 +43,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 
+import { medirAssets, explicar } from "../apps/web/lib/deploy/tamanho-assets.js";
+
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WORKFLOWS = path.join(RAIZ, ".github", "workflows");
 const WEB = path.join(RAIZ, "apps", "web");
@@ -662,6 +664,41 @@ async function principal() {
       `ABORTADO: ${paginas} páginas contra ${antes} da última rodada — queda de ` +
         `${(((antes - paginas) / antes) * 100).toFixed(1)}%. Uma tabela pode ter esvaziado. ` +
         `Se a queda for esperada, rode de novo com --forcar-deploy.`
+    );
+    process.exitCode = 1;
+    return;
+  }
+
+  /**
+   * Terceira trava, irmã das duas de contagem acima — e a que faltava em
+   * 15/08/2026.
+   *
+   * Naquele dia o build passou, as duas travas de contagem passaram, e o
+   * `cf:deploy` morreu com "Asset too large: 35.5 MiB" **depois** de 6 a 7
+   * minutos de build já gastos. Medir aqui custa milissegundos e dá o mesmo
+   * veredito antes de pagar o deploy — é a regra do `preflight-deploy.mts`
+   * ("nada que o job precise no fim pode ser descoberto no fim") aplicada ao
+   * que só existe depois do build, e que por isso ele não podia medir.
+   *
+   * O limite é 20 MiB, não os 25 da Cloudflare: `sp/educacao` já estava em 21
+   * MiB naquele mesmo build, publicando, e era o próximo a estourar sozinho na
+   * ingestão seguinte. Ver `lib/deploy/tamanho-assets.ts`.
+   *
+   * `--forcar-deploy` atravessa o AVISO, nunca o teto: acima de 25 MiB o
+   * deploy falha de qualquer jeito, e deixar passar trocaria um abort claro por
+   * um erro da Cloudflare sete minutos depois.
+   */
+  const tamanho = medirAssets(path.join(WEB, ".open-next", "assets"));
+  registrar(`assets: ${explicar(tamanho)}`);
+  if (tamanho.estoura.length > 0) {
+    registrar("ABORTADO: asset acima do teto da Cloudflare. O deploy falharia no fim.");
+    process.exitCode = 1;
+    return;
+  }
+  if (tamanho.emRisco.length > 0 && !FORCAR_DEPLOY) {
+    registrar(
+      "ABORTADO: asset perto do teto. Publica hoje e estoura na próxima ingestão — " +
+        "conserte o payload ou rode com --forcar-deploy se a folga for aceitável."
     );
     process.exitCode = 1;
     return;
