@@ -72,12 +72,24 @@ mudança de esquema. ⚠️ **Antes**, uma regra nova na triagem: o feed do Guai
 traz "Nota de pesar: \<nome completo\>", e `triagem.ts` não pega nome por
 extenso — só CPF, iniciais e contato.
 
-### 12. Unificar as duas implementações de compactação
+### 12. Unificar as duas implementações de compactação — ❌ premissa falsa, fechado
 
-`lib/comunicabr/arquivo.ts` e `lib/estatico/compactar.ts` fazem a mesma coisa
-(esqueleto + rótulos internados), escritas por sessões que não se viram. A
-segunda nasceu porque o agente olhou a árvore **antes** do rebase e concluiu que
-a primeira não existia.
+`lib/comunicabr/arquivo.ts` e `lib/estatico/compactar.ts` **não fazem a mesma
+coisa** — conferido de novo em 16/08, arquivo a arquivo:
+
+- `estatico/compactar.ts` é genérico para **tabela plana**: esqueleto de
+  campos + dicionário por coluna + uma linha por registro. Usado nos dois
+  arquivos da Rouanet.
+- `comunicabr/arquivo.ts` é codec de **estrutura aninhada com esqueleto
+  NACIONAL compartilhado**: o texto é o mesmo nos 853 municípios, então o
+  esqueleto é gravado uma vez e o município guarda só valores esparsos
+  (`[posição, valor, bruto]`). É isso que faz 99 MiB caberem em 2,16 MB —
+  aplicar o compactor plano aos municípios expandidos daria dezenas de MiB.
+
+Unificar = ou aplainar o ComunicaBR (perde o ganho de ordem de grandeza) ou
+enxertar suporte a aninhamento no genérico (complexidade para um único
+consumidor). Decisão: **não unificar**; cada um resolve o caso que o outro
+não resolve. A única duplicação real era o comentário do handoff.
 
 ### 13. Pró-Brumadinho: as outras duas páginas
 
