@@ -1,7 +1,7 @@
 # Revisão de onboarding, acessibilidade e design system
 
 > Escrita em 14/08/2026, atendendo aos itens 7 e 8 de
-> `docs/TODO-PROXIMAS-RODADAS.md`. Pedido do dono, em duas partes: revisão
+> `docs/planos/TODO-PROXIMAS-RODADAS.md`. Pedido do dono, em duas partes: revisão
 > crítica de onboarding/acessibilidade/facilidade de uso, e o que dá para
 > aproveitar de Kokonut UI, Motion.dev e Bklit UI.
 >

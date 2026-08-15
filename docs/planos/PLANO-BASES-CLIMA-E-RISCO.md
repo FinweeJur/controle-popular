@@ -14,7 +14,7 @@ plataforma e cada dataset citado abaixo foi **aberto, chamado e medido**
 em 13/08/2026. Onde a chamada falhou ou veio vazia, está escrito que
 falhou — isso também é resultado, não lacuna de pesquisa.
 
-Padrão de rigor, o mesmo de `docs/FONTES-TERRITORIO-E-MINERACAO.md`:
+Padrão de rigor, o mesmo de `docs/_historico/FONTES-TERRITORIO-E-MINERACAO.md`:
 endpoint citado foi chamado, contagem foi medida, licença foi conferida.
 Uma regra a mais, específica deste levantamento: **índice composto não é
 medida**. Várias das fontes abaixo publicam um número de 0 a 1 ("risco

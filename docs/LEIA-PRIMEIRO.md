@@ -1,85 +1,64 @@
 # Leia primeiro
 
-> `docs/` tem **46 arquivos na raiz** + **22 arquivados em `docs/_historico/`**
-> (datados, entregues ou superados — lá só para arqueologia). O problema nunca
-> foi o volume — é não haver onde descobrir quais quatro abrir. Este arquivo é
-> essa porta.
+> `docs/` tem **8 documentos na raiz** — cada um cobre uma parte do portal, e a
+> regra é: **ninguém lê tudo. Nunca.** `docs/planos/` guarda o que ainda está por
+> fazer; `docs/_historico/` guarda o que foi entregue ou superado (54 arquivos,
+> datados — lá só para arqueologia).
 >
-> *(Contagem conferida em 16/08. Se for decidir por este número, conte de novo:*
-> `ls -1 docs | wc -l`*.)*
->
-> **Ninguém precisa ler `docs/` inteiro. Nunca.**
+> *(Contagens conferidas em 16/08. Se for decidir por elas, conte de novo:*
+> `ls -1 docs | wc -l`*, `ls -1 docs/planos | wc -l`*, `ls -1 docs/_historico | wc -l`*.)*
 
-## Comece por aqui, sempre
+## Os oito documentos
 
-| Arquivo | O que é |
-|---|---|
-| **`PLANO-2026-08-15.md`** | a fila viva, ranqueada por custo × benefício. **É o que está por fazer.** |
-| **`TODO-PROXIMAS-RODADAS.md`** | dívida antes de feature |
-| **`SESSOES-CONCORRENTES.md`** | como não atropelar outra sessão. Leia antes do primeiro commit |
-| **`HANDOFF-2026-08-15-NOITE.md`** | o que ficou por fazer, separado pelo que **de fato** bloqueia cada item |
+| Documento | O que é | Quando ler |
+|---|---|---|
+| **`PRODUTO.md`** | o que é o portal, as seis frentes, features, regras editoriais | sempre — é a porta |
+| **`ESTADO.md`** | o que está no ar, a fila viva ranqueada, bloqueios, dívida registrada | sempre que for decidir o que fazer |
+| **`DESENVOLVIMENTO.md`** | worktrees, regras de commit, checklist antes do push, uso de IA | **antes do primeiro commit**, sempre |
+| **`FONTES.md`** | cada fonte de dados: como coletar, o que mente, o que falta | mexer em fonte ou dado |
+| **`ARQUITETURA.md`** | tetos de payload, compactação, índice e assistente, banco | mexer em rota, payload ou banco |
+| **`OPERACAO.md`** | quem publica, rotina de coleta e build, credenciais | publicar, coletar, buildar |
+| **`EDICAO.md`** | como editar conteúdo sem código (painel, dados, verificação) | editar conteúdo |
+| **`LEIA-PRIMEIRO.md`** | este arquivo | sempre |
 
 E na **raiz do repositório**, não aqui em `docs/`: **`AGENTS.md`** — as regras
-que não se negociam e as nove armadilhas que já custaram tempo. Ferramenta de
-agente lê esse arquivo sozinha; humano também deveria.
+que não se negociam e as armadilhas que já custaram tempo. Ferramenta de agente
+lê esse arquivo sozinha; humano também deveria.
 
-Quatro arquivos. Se você só ler estes, já trabalha sem quebrar nada.
+## `docs/planos/` — o que ainda está por fazer
 
-## Depois, só o que a sua tarefa pede
+Planos de trabalho ativos, cada um com o próprio estado. Ler o que a tarefa
+tocar. Hoje: índice estático e assistente (o degrau 2 é o próximo trabalho),
+revisão de UX, diário oficial, bases de clima e risco, espelho PDF da AJRI,
+GitHub Pages (alvo alternativo) e a dívida antes de feature.
 
-| Vou mexer em… | Leia |
-|---|---|
-| deploy, build, publicação | `rotina-local.md`, `build-em-outro-pc.md`, `HANDOFF-PAYLOAD-LEGISLACAO.md` |
-| uma fonte de dados nova | o `FONTES-*.md` do assunto — **são 8**, cada um de um domínio (`ls docs/FONTES-*.md` é mais confiável que este número) |
-| Lei Rouanet, incentivo cultural | `FONTES-ROUANET-SALIC.md` — e a API mente de três jeitos, todos medidos |
-| território, mineração, barragem | `FONTES-TERRITORIO-E-MINERACAO.md` |
-| Paraopeba / Brumadinho | `PLANO-INGESTAO-PARAOPEBA.md`, `RADAR-NOTICIAS-PARAOPEBA.md` |
-| dinheiro da reparação de Brumadinho | `FONTES-PRO-BRUMADINHO-E-FGV.md` — portal do Governo de MG e auditoria da FGV |
-| legislação, normas | `LEGISLACAO-FEDERAL-MMA-CNDH.md`, `URN-LEXML-NORMAS-LEG-BR.md` |
-| busca, assistente, payload pesado | `PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` |
-| edição de conteúdo sem código | `PAINEL-EDICAO-COMO-USAR.md` |
-| privacidade, LGPD, dado pessoal | `ANTES-DO-PUSH.md` |
-| apresentar o projeto | `APRESENTACAO.md` |
+## `docs/_historico/` — não leia, salvo arqueologia
 
-## Registro histórico — **não leia, salvo arqueologia**
+Documentam **um dia** e não descrevem o estado atual. Respondem "por que isto
+está assim", nunca "como está hoje". A curadoria de 16/08 unificou a raiz em
+oito documentos e moveu para cá todo o resto: os `FONTES-*.md` de cada domínio
+(absorvidos por `FONTES.md`), os `PLANO-*` entregues (absorvidos por
+`ESTADO.md`), os diários, handoffs e descobertas de cada dia.
 
-Estes documentam **um dia** e não descrevem o estado atual. Servem para
-responder "por que isto está assim", nunca "como está hoje". Se a resposta que
-você quer é sobre o presente, o arquivo certo é outro.
+⚠️ **Documento datado envelhece sem avisar.** Número em documento antigo **não**
+é medição atual — se for decidir com ele, remeça. O que está na raiz descreve o
+presente, com a data da medição ao lado de cada número.
 
-Todos vivem em **`docs/_historico/`** — curadoria de 16/08 os tirou da raiz
-para o GitBook espelhar só o essencial. A lista dos que ficaram lá:
+## Subpastas de domínio
 
-`DIARIO-2026-08-13.md` · `auditoria-2026-08-11.md` ·
-`auditoria-2026-08-14-normas-protecao.md` · `HANDOFF-ALERTA-RAIO-8KM.md` ·
-`HANDOFF-ALERTAS-TERRITORIO.md` · `HANDOFF-CAMADA-DINHEIRO.md` ·
-`HANDOFF-PAINEL-PARAOPEBA-PAGINAS-PERDIDAS.md` ·
-`coleta-lixo-farmacia-plantao-descoberta.md` ·
-`CAMADA-DOCUMENTOS-PROCESSO-MUNICIPIO.md` · `normas-mapa-viabilidade.md` ·
-`REVISAO-COMPLETUDE.md` · `SPU-SEM-DESTINACAO.md` ·
-`ROTEIROS-REDES-SOCIAIS.md` · `worktrees.md` ·
-`FONTES-BRUMADINHO-UFMG.md` · `PLANO-IMAGENS-INPE.md` · `betim-F0-discovery.md` ·
-`betim-ambiental-pecma-research.md` · `congresso-F0-discovery.md` ·
-`judiciario-F0-discovery.md` · `judiciario-F9-lancamento.md`
-
-⚠️ **Documento datado envelhece sem avisar.** Em 15/08 dois deles discordavam
-sobre desde quando o site estava parado, e um terceiro dizia "17 marcos" horas
-depois de virarem 23. Número em documento antigo **não** é medição atual — se
-for decidir com ele, remeça. (A curadoria de 16/08 moveu os datados para
-`docs/_historico/` — o que ainda está na raiz descreve o presente.)
+`docs/betim/`, `docs/congresso/` e `docs/ambiental/` continuam onde estão —
+são referência de domínio de frentes específicas, consultadas junto com
+`FONTES.md` quando a tarefa toca o assunto.
 
 ## Regra para quem escrever aqui
 
-Antes de criar arquivo novo, **pergunte se ele cabe num que já existe.** Nove
-arquivos num dia foi excesso, e o excesso é meu: a maioria dos achados de
-15/08 caberia como seção do plano do dia.
+Antes de criar arquivo novo, **pergunte se ele cabe num que já existe.** Um
+arquivo novo se justifica quando:
 
-Um arquivo novo se justifica quando:
-
-- é **referência de domínio** que vai ser consultada muitas vezes (`FONTES-*`);
-- é **procedimento** que alguém executa (`rotina-local`, `PAINEL-EDICAO-COMO-USAR`);
-- é **plano** de trabalho que ainda não começou.
+- é **referência de domínio** que vai ser consultada muitas vezes (vira seção de `FONTES.md`);
+- é **procedimento** que alguém executa (vira seção de `OPERACAO.md` ou `EDICAO.md`);
+- é **plano** de trabalho que ainda não começou (vai para `docs/planos/`).
 
 Não se justifica para registrar o que foi feito num dia — isso é mensagem de
-commit, e o `git log` já guarda. Se for indispensável, entra aqui na lista de
-registro histórico, com a data no nome.
+commit, e o `git log` já guarda. Se for indispensável, vai para
+`docs/_historico/`, com a data no nome.

@@ -14,7 +14,7 @@
 
 ### O que quebrou hoje, e por que vai quebrar de novo
 
-`docs/HANDOFF-PAYLOAD-LEGISLACAO.md` mediu: `/ambiental/legislacao` entregava
+`docs/_historico/HANDOFF-PAYLOAD-LEGISLACAO.md` mediu: `/ambiental/legislacao` entregava
 todas as normas como props de um componente de cliente, e o `.cache` da rota
 saiu com **35,5 MiB** contra o teto de **25 MiB** do Cloudflare Workers.
 

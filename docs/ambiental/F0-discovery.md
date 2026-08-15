@@ -371,7 +371,7 @@ robots.txt → 404 (sem restrição publicada).
 ## 7. Restrições do app que a F0 confirmou
 
 - **`searchParams` em Server Component quebra o build de `output: 'export'`** — não degrada,
-  **para**. Mas o alvo GitHub Pages **já não fecha hoje**: `docs/deploy-github-pages.md` §3
+  **para**. Mas o alvo GitHub Pages **já não fecha hoje**: `docs/planos/deploy-github-pages.md` §3
   lista 11 páginas na mesma situação. Padrão A é seguro no alvo Cloudflare (o real) e só
   acrescenta 2 linhas àquela tabela. Se o Pages voltar a importar, o remédio documentado
   para lista grande é **"JSON estático + tabela cliente"** (um Route Handler `GET` sem

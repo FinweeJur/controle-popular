@@ -18,15 +18,19 @@ mesmo quando cada dado isolado está certo**.
 
 ## Por onde começar a ler
 
-`docs/` tem ~55 arquivos. **Ninguém precisa ler tudo. Nunca.**
+`docs/` tem **8 documentos na raiz** (curadoria de 16/08) + `planos/` (o que
+está por fazer) + `_historico/` (entregue, só arqueologia). **Ninguém precisa
+ler tudo. Nunca.**
 
 | Arquivo | Quando |
 |---|---|
-| **`docs/LEIA-PRIMEIRO.md`** | sempre — é a porta, e diz quais 3 abrir |
-| `docs/PLANO-2026-08-15.md` | a fila viva, ranqueada por custo × benefício |
-| `docs/TODO-PROXIMAS-RODADAS.md` | dívida antes de feature |
-| `docs/SESSOES-CONCORRENTES.md` | **antes do primeiro commit**, se houver outra sessão |
-| `docs/HANDOFF-2026-08-15-NOITE.md` | o que ficou por fazer, com o que está travado em decisão |
+| **`docs/PRODUTO.md`** | sempre — é a porta: o que é o portal, frentes, regras editoriais |
+| `docs/ESTADO.md` | a fila viva, ranqueada por custo × benefício, e os bloqueios |
+| `docs/DESENVOLVIMENTO.md` | **antes do primeiro commit** — worktrees, commit, push |
+| `docs/FONTES.md` | mexer em fonte ou dado coletado |
+| `docs/ARQUITETURA.md` | mexer em rota, payload ou banco |
+| `docs/OPERACAO.md` | publicar, coletar, buildar |
+| `docs/EDICAO.md` | editar conteúdo sem código |
 
 ## Os dois tetos que mandam na arquitetura
 
@@ -48,8 +52,8 @@ O texto real das ementas dava 4,7 MiB — **inflação de 7,5×**, porque o payl
 o nome de todos os campos.
 
 Acima de ~2 mil linhas: ou serve do índice fatiado, ou pagina no servidor.
-**Nove rotas já usam `apps/web/app/[municipio]/components/TabelaEstatica.tsx`** —
-siga uma delas, não invente mecanismo novo.
+**Onze listas em onze rotas já usam `apps/web/app/[municipio]/components/TabelaEstatica.tsx`**
+(medição em 16/08 — remeça antes de decidir com ele) — siga uma delas, não invente mecanismo novo.
 
 ### 2. Dado pessoal: varrer o DADO, não só o código
 
@@ -183,9 +187,10 @@ docs/                 ver LEIA-PRIMEIRO.md
 
 **Compactação de dado**: `apps/web/lib/comunicabr/arquivo.ts` e
 `apps/web/lib/estatico/compactar.ts` — esqueleto + rótulos internados. Fez 853
-municípios caberem em 2,26 MB, e 7,9 MB da Rouanet virarem 2,4 MB (−69%).
-⚠️ São **duas** implementações da mesma técnica, escritas por sessões que não se
-viram. Unificar é dívida aberta.
+municípios caberem em 2,16 MB, e 7,9 MB da Rouanet virarem 2,4 MB (−69%).
+⚠️ São **duas** implementações da mesma técnica com formatos diferentes — por
+**decisão documentada** (16/08) **não unificar**: aplainar o codec do ComunicaBR
+perderia o ganho de ordem de grandeza (99 MiB → 2,16 MB). Remeça antes de reabrir.
 
 ## Coleta de dado de fonte pública
 

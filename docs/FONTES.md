@@ -1,0 +1,128 @@
+# Fontes de dados — referência operacional
+
+Este documento consolida o levantamento, a classificação e o estado operacional de cada fonte de dados do portal, com as decisões de coleta e as armadilhas medidas em cada uma.
+
+## Regras gerais de coleta
+
+| Regra | Prática |
+|---|---|
+| Pausa entre requisições | 1–2 s por host; 1,5 s na FGV; 4 s em sondas de link |
+| User-Agent honesto | Identifica o projeto. Exceções medidas: SIGMINE/ANM, CONAMA e planalto.gov.br só respondem a UA de navegador (403 ou conexão derrubada sem ele); Guaicuy devolve 406 ao urllib padrão |
+| Checkpoint | Coleta vazia não sobrescreve arquivo bom; 429/503 param a coleta; validar conteúdo, nunca só o status HTTP (302→200 de bloqueio eleitoral, `[]` com 200, esqueleto com nome nulo) |
+| Fora da CI | Nada agendado para fonte que muda 1×/mês; o radar roda antes do build; coletores manuais com retomada |
+| robots.txt | Respeitar, com decisão registrada (FGV veda o host inteiro — ver seção própria) |
+| Dado pessoal | Varredura mod-11 antes do commit + régua de triagem no build para dado ingerido + redação na origem para campos de 11 dígitos; máscara da fonte não é prova de proteção (ver Rouanet). CPF real já vazou em ementa oficial e em campo de nome; o hook é o que pegou |
+
+## CNJ e JUMA — litígio e jurisprudência nacional
+
+| Fonte | O que dá | Estado |
+|---|---|---|
+| CACOL (painel CNJ) | Power BI "publish to web", visual puro, sem export; filtros por UF/município do órgão julgador e CNPJ da parte | Não raspável; a fonte real é o DataJud |
+| DataJud (API pública) | `POST /api_publica_tjmg/_search` com APIKey do wiki oficial (copiar do HTML bruto — resumo por IA corrompeu a chave); devolve `codigoMunicipioIBGE` do órgão julgador; **não devolve nome/CNPJ de parte** (LGPD; `_mapping` dá 403); paginar com `search_after` (teto 10.000 do `from`) | Medido: TJMG 69.983 ACP, 3.528 AP, 1.322 MSC, 962 ACC; ~6.011 ACP com assunto "ambiental". **Licença bloqueia publicação: cláusulas 3.8/3.9 vedam distribuir derivado sem ciência ao CNJ — decidir entre notificar o CNJ ou consulta ao vivo (recomendado)** |
+| JUMA (PUC-Rio) | 187 casos já no HTML de um GET (rodapé declara 381 — contagens não reconciliadas; usar 187); 6 casos de MG; único campo geográfico = UF; sem caso Brumadinho dedicado | Sem licença declarada → direitos reservados: linkar e pedir permissão formal antes de reproduzir resumos; encaixe como recurso novo em `/ambiental`, não nos precedentes |
+
+## Biblioteca das ATIs do Paraopeba
+
+597 publicações (26/03/2020–23/06/2026), só metadado e link — nenhum arquivo, nenhum resumo (nenhuma fonte declara licença; Lei 9.610/98 → linkar, não copiar). AEDAS 435 via REST (`projeto=3` + `299`; **435+231=666 não existe** — a união deduplicada é 435); Guaicuy 162 fora da REST (sitemaps por tipo + tarja de localidade; a vitrine mostra 9; o link "Ver todas" usa filtro `_sft_` de plugin inativo e devolve o arquivo inteiro). ADAI: 0 documentos da bacia (medido); NACAB sem biblioteca. Triagem: 0/597 barrados (zero estrutural, acervo sem texto). Notícias das ATIs (1.100+) ficam para o radar, não acervo. (medição em 16/08 — remeça antes de decidir com ele)
+
+## Auditoria AJRI (Brumadinho)
+
+Portal Rails autenticado por cookie Devise (sem API; 401/403 = renove o cookie). Acervo: 467 documentos (391 Relatórios + 76 Notas Técnicas), 28/02/2019–31/07/2026, autor AECOM, 7 instrumentos jurídicos, 27 facetas de tema reduzidas a 25 (duas duplicatas sujas — normalizar por slug). Rate mínimo 2 s; PDF gerado sob demanda com marca-d'água (timeout 180). **A marca-d'água contém nome e CPF do solicitante: não publicar os 467 PDFs** — publicar catálogo + link é compatível com os Termos; espelho integral só em acesso restrito a pesquisadores.
+
+## Lei Rouanet / SALIC — e os três jeitos que a API mente
+
+API pública sem chave; medido: 7.206 projetos UF=MG (7.141 com `valor_aprovado` > 0; soma R$ 8,6 bi aprovado / R$ 1,9 bi captado), 333 municípios, 20.784 incentivadores domiciliados (2.263 PJ + 18.521 PF), chave de junção `cgccpf` (2.261 válidos). 29 projetos trazem outro valor no próprio campo UF — contar a divergência, nunca refiltrar.
+
+| Mentira | Comportamento medido |
+|---|---|
+| Filtro inexistente devolve o catálogo inteiro | `?parametro_inexistente=1` → 200 com 113.548, igual a sem filtro. O próprio portal do MinC cai: `_links.incentivadores` usa `incentivador_id=<PRONAC>`, filtro não reconhecido → os 113.548 do Brasil com cara de "os deste projeto". Abortar quando total com/sem filtro bater |
+| `sort` é ignorado em silêncio | 5 variações de sort → mesmas linhas na mesma ordem (200 nas 5). **Nunca publique "o maior incentivador é X"** sem varrer a lista e ordenar localmente; um ranking falso já foi passado ao dono assim |
+| Código IBGE errado devolve esqueleto com `nome_ibge: null` | Mesma família de 200 mentiroso, medida no ComunicaBR: IBGE de 7 dígitos → 200 com esqueleto vazio e `nome_ibge: null`; validar `nome_ibge`, não o status |
+
+Armadilha `total_doado`: é o total **no Brasil** do incentivador; `_links.doacoes` responde 404 em 9/9 — a trilha incentivador→projeto não existe hoje. Publicar `total_doado` de um domiciliado em BH como "dinheiro que entrou em MG" **inventa um número que parece certo** — a coluna sai rotulada "(Brasil)". Dado pessoal: a máscara cobre só `cgccpf`; 215 CPFs válidos vieram por extenso em campos de nome (210 proponentes + 5 incentivadores) — o hook pegou; redigir toda sequência de 11 dígitos em todo campo de texto. Arquivos compactados (esqueleto + dicionários + linhas; 69,1% menor) — ler sempre via `expandir()`, nunca por posição.
+
+## Território e mineração
+
+| Camada | Fonte | Números medidos |
+|---|---|---|
+| Terras indígenas | WFS FUNAI (EPSG:4674) | 16 polígonos em MG (15 TIs; Xacriabá em 2 fases); 2 na bacia do Paraopeba (Katurama, São Joaquim de Bicas; Caxixé, Pompéu, em fase *Delimitada*). **Paginar por UF — GetFeature sem filtro dá 403 do nginx**; mostrar todas as fases (direito originário, CF 231; Convenção 169); filtro por fase é decisão do usuário |
+| Processos minerários | SIGMINE/ANM, zip diário (exige UA de navegador) | 54.916 polígonos em MG; só 7.083 (12,9%) autorizam extrair, 3.184 (5,8%) são Concessão de Lavra. Publicar como "minas em operação" (7.083) + "interesse minerário" separadas; nunca somar nem chamar o conjunto de empreendimentos; CFEM não localiza mina |
+| ZAS | FEAM/IDE-Sisema (geoserver já usado) | ZAS real (156) + mancha de inundação (156); a ZAS é trecho do **vale à jusante** (Res. ANM 95/2022; piso 10 km ou 30 min de onda), não círculo — o círculo de 8 km superestima até 127× e erra a direção. 8 km é outra coisa (raio de TI, Portaria Interministerial 60/2015): não fundir. 103 barragens sem mancha → "sem mancha ≠ sem risco"; 24 ZAS na bacia; `status_pae` na etiqueta; PAE textual só via LAI |
+| Quilombolas | INCRA WFS (22 feições MG, só GML, eixo lat,lon; "vedado uso comercial") + Palmares (lista CC-BY desatualizada 05/07/2022, não usada) | 13/14 feições antigas casaram por geometria; 13 territórios INCRA fora das camadas atuais (decisão pendente p/ Pimentel); sobreposições reais com lavra de granito: maior no Baú, Araçuaí (551,3 ha, GRANSENA) |
+| PCTs não indígenas/quilombolas | **Não existe base com poligonal** | Lacuna declarada; o mapa deve dizer que não os representa |
+
+(medição em 16/08 — remeça antes de decidir com ele)
+
+## Pró-Brumadinho (Governo de MG) e auditoria FGV
+
+**Portal de MG**: Drupal sem API; 209 arquivos (156 PDF + 28 ZIP + 25 XLSX; 20/20 amostrados respondem); busca de documentos responde 403 ao público (só dá para listar varrendo páginas); notícias em **bloqueio eleitoral** desde 25/06 (302→200 — validar conteúdo ou o cabeçalho `X-Drupal-Periodo-Eleitoral-Redirect`); obrigações da Vale: previsto R$ 11,48 bi × arrecadado R$ 16,38 bi (31/07/2026) — **arrecadado maior não é sobra, é correção monetária**; link oficial para a FGV (`projetos-convertidos.html`) está morto (404).
+
+**FGV (Projeto Rio Paraopeba)**: SPA cujos dados são 4 JSONs de caminho fixo; ampliado de Betim para a bacia: 26 municípios, 450 linhas, 234 projetos; acordo corrigido R$ 5,48 bi — **é só Anexos I.3/I.4 (14,6% do acordo de R$ 37,6 bi); "executado" é desembolso, não obra pronta**; avanço físico deduplicado (12× menor) não ingerido. Armadilhas travadas por teste: célula mesclada de município (88% sem chave), rodapés/notas disfarçados de município, "Todos os Municípios de MG" não é município, número ora JS ora string com espaço rígido, BOM UTF-8. **`robots.txt` do www18.fgv.br é `Disallow: /`** — decisão registrada: duas requisições de caminho fixo (as mesmas do navegador), manual e nunca em CI, UA honesto, 1,5 s de pausa, canal aberto (`projetorioparaopeba@fgv.br`) antes de aumentar a frequência. (medição em 16/08 — remeça antes de decidir com ele)
+
+## Fluxo financeiro — dinheiro ligado ao mapa
+
+`ambiental_licenciamento`: 19.704 linhas, 75,2% com `cnpj_raiz` (100% das PJ), 10.934 raízes, 825/854 municípios. Raiz de 8 dígitos é decisão de privacidade — não distingue matriz/filial.
+
+| Fonte | Estado |
+|---|---|
+| PNCP | Contratos por `codigoMunicipioIbge` + filtro `esferaId=M` (só `cnpjOrgao` subconta); 12.991 contratos em 5 municípios; cruzamento com ambiental: 16 raízes/299 linhas — teto da coleta, não da fonte |
+| TCE-MG SICOM | JWT de ~1 h nascido de captcha humano — cobre cidades em cache, não escala para 854 |
+| Portal da Transparência | Convênios já devolvem `cnpjFormatado` — **o coletor descarta o campo; correção pendente**; CPF de convenente vem mascarado pela própria fonte |
+| CFEM (ANM) | Sem CNPJ (só razão social); atraso ~2 meses; não somar entre municípios (a guia aparece inteira em cada um); relatório de distribuição ao município vazio — arrecadada ≠ recebida |
+| QSA (Base dos Dados) | Só para CNPJ que ganhou contrato; CPF de sócio mascarado (6/11 dígitos) — "sócio em comum" é sinal, não prova; nunca tentar completar CPF |
+| Repasse Brumadinho | **853/853 municípios**, R$ 1,65 bi (Lei 23.830/2021; 853 + 142 + 219 linhas; somas fecham ao centavo; 1.214/1.214 casaram — 5 grafias oficiais divergentes em `APELIDOS`); malha por prefixo de 6 dígitos, sem colisão. **Ressalva: receber repasse não significa ser atingido** — o dado é estadual e pertence à página do município, não à tela da bacia |
+
+## Clima e risco — AdaptaBrasil e INMET
+
+**AdaptaBrasil**: 853 municípios × 8 indicadores = 6.824 linhas (índice 0–1, **não é gente**). BH pontua 0,00 nos dois índices de manchete (vulnerabilidade zera o produto) enquanto o BATER mede 389.218 pessoas em risco — **índice de manchete nunca aparece sozinho**: vem com as 3 componentes e o link da metodologia. Licença CC-BY-SA com citação obrigatória (campos NOT NULL). Armadilhas: 403 sem UA; ano errado → `[]` com 200 (abortar); cenário no nó do setor; `unique nulls not distinct`. **Migration e carga pendentes** — coletor testado, banco de produção não recebeu as linhas (Neon em cota 402 até 01/09). **INMET avisos ativos**: 9 avisos, 4 sobre MG (15/08); `municipios`/`geocodes` são string, não lista; `hoje`/`futuro` se sobrepõem; fuso de data/hora separado (decisão pendente); domínio público; coletor pronto, tabela futura. **BATER**: 1.377.577 pessoas expostas em MG — não coletado (geometria atrás de Cloudflare; caminho é navegador manual ou pedido ao IBGE).
+
+## Legislação federal e URN LexML
+
+**MMA (CKAN)**: 8.570 normas federais (1937–2025), CC-BY, 8.345 com `link_pdf` (97,4%) — CNDH 370/370 (100%). O CSV não se lê com split ingênuo (CRLF termina registro; ancorar por vocabulário fechado de `ÁREA MMA`/`STATUS`; 280 registros sujos resolvidos; Resolução Conama: 511 por campo, não 536 do grep). 1.501 revogadas (`situacao`); grafo de revogação não construído. **CNDH**: 248 recomendações (GraphQL no Decidim, WAF exige curl_cffi) + 122 resoluções; CC BY-ND — ementa copiada literal, nunca resumida; `id_fonte` = URL (numeração reinicia por gestão). Um CPF real veio dentro de uma ementa oficial (pego por teste mod-11, limpo na origem; **histórico do git ainda contém o commit `e510f4e` — limpeza é decisão do dono**). **URN LexML**: só Lei/Decreto/Decreto-Lei/MP federais com data+número = 651 de 15.318 (4,2%); 16/17 resolveram (94,1% — ~6% de link morto conhecido); HTTP 200 não prova nada (SPA ecoa a URN; o sinal é `legislationIdentifier`); SRU do LexML atrás de bot-check — não usar; URN derivada a cada render, sem coluna.
+
+## ComunicaBR — coleta de MG
+
+853/853 municípios, 174.012 itens, 67.566 com valor (39%); 106.446 vazios (61%) — e "vazio" tem duas espécies: lacuna da fonte (4 categorias zeradas em todos; `governo-digital` 853/853) e `valorBruto: 0` sem `valor` = campo não publicado (**nunca mostrar "R$ 0,00"** onde o governo disse "não se aplica"). Estrutura idêntica entre municípios: 1 esqueleto + 366 rótulos em 2,26 MB — **nunca percorrer `itens` sem `expandirArquivo()`**. 21 ministérios como fonte declarada — citar. Telas: índice de MG + ficha por município. Armadilhas da API: IBGE de 6 dígitos (7 → esqueleto com `nome_ibge: null`); valor em `subIndicadores[].items[].valor`; filtro real é `&tema=` (`&categoria=` ignorado). Outras 26 UFs pendentes (10,5 min por UF). (medição em 16/08 — remeça antes de decidir com ele)
+
+## LAI — portais e protocolos
+
+Canal federal = Fala.BR (todo órgão gov.br encaminha para lá); prazo padrão 20+10 dias. **Protocolo do Fala.BR não é gravado em lugar nenhum do projeto** — quem abre pedido anota à mão (órgão, data, protocolo, prazo); foi exatamente essa a lacuna do pedido ao INCRA, com **prazo vencendo em 18/08 e protocolo nunca anotado** (remeça antes de decidir com ele — o pedido em si não existe no repositório; os 4 pedidos redigidos citados na tarefa nunca foram achados). Municípios: Betim (Decreto 43.201, 20+10), BH (e-SIC próprio; Câmara = ouvidoria), SP (e-SIC; portal de transparência atrás de captcha), Araçuaí e Itinga (e-SIC próprios), Diamantina (portaltransp; Câmara inacessível a bot). Estadual: e-SIC central CGE-MG (**exige login gov.br — interação humana**); Semad/Feam/Igam não têm e-SIC próprio (redirecionam); TCE-MG 20 dias + 5 para recurso; ALMG sem e-SIC dedicado. Não verificado: Câmara de Betim (404), DPMG, SPU, Câmara de Araçuaí.
+
+## Diário oficial — mapeamento SIGPub (sem coleta)
+
+Mapeamento feito, coleta bloqueada até o corte de LGPD (nomeação/exoneração, CPF). Só **Diamantina** usa SIGPub/AMM-MG (diariomunicipal.com.br/amm-mg; uma edição estadual por dia útil; busca por `entidadeUsuaria`; sem filtro de tipo de ato; URLs por hash opaco; mecanismo de busca POST/token não confirmado). **Araçuaí e Itinga têm diário próprio** (CMS da prefeitura; Itinga = "Simple System", endpoint JSON atrás de JS não mapeado; `fontes.diario_oficial` de Itinga não preenchido). Betim (dados abertos JSON), BH (DOM-Web) e SP (DOC/PubNet) em fases posteriores. Próximos passos técnicos: ids `entidadeUsuaria` de Diamantina no HTML do select; inspeção de rede do diário de Itinga.
+
+## Rede de proteção de MG
+
+30 itens curados (3 LAI estadual + 5 federal + 22 rede), todos por organização, verificados em 13/08/2026. Defensoria em 109–110 comarcas (unidade de Araçuaí cobre Itinga; Diamantina inaugurada nov/2024); MPMG com CAOs temáticos (denúncia pela Ouvidoria 127); delegacias especializadas de BH no mesmo prédio (Barro Preto); CRAS/CREAS/Conselho Tutelar são por município — o material ensina a achar, não lista endereços; clínicas gratuitas DAJ-UFMG e SAJ-PUC Minas. Não verificado (não usar como definitivo): NAJUP, núcleo da RENAP em MG, comissão de DH da OAB-MG (403), comissões de câmaras municipais.
+
+## Radar de notícias do Paraopeba
+
+Coleta diária de título/veículo/data/link — nunca o corpo (reportagem é obra de terceiro). Fontes: MAB + Agência Brasil + Google Notícias + **os feeds das 3 ATIs** (AEDAS, ADAI e Guaicuy — entregues em 16/08); **TJMG e MPMG ficaram fora: RSS respondem 404** (lacuna na tela). Armadilhas travadas: filtro exige termo de **lugar** (tema deixa entrar outro estado); Google devolve link do agregador (usar o nome do veículo do `<source>`); data em RFC 822; coleta vazia não sobrescreve. Regra de triagem **"Nota de pesar: \<nome\>"** (obituário público do Guaicuy) implementada na régua (`temNotaDePesar`, redigido na origem — nome de vítima é dado pessoal). 14 itens na janela de 45 dias (15/08). Roda antes do build; `gerado_em` sempre visível na tela. (medição em 16/08 — remeça antes de decidir com ele)
+
+## Microsistema de lacunas — cobertura declarada
+
+Acervo semente: 30 instrumentos + 15 precedentes (barragens/atingidos). Dos 7 temas propostos, só direitos humanos nasce pronto; indígena nasce com conteúdo mas sem a Convenção 169 como instrumento próprio e sem jurisprudência de demarcação; **serras, rios, flora/fauna, quilombola e povos tradicionais nasceriam vazios** — cada um exige norma central (Código Florestal arts. 4º I/IX-X, Lei 5.197/67, Lei 9.605/98, SNUC, Decreto 4.887/2003, Decreto 6.040/2007). A carga federal fechou a lacuna normativa (todas conferidas no banco: 5.197/67, 9.605/98, 9.985/00, 12.651/12, 11.428/06, 6.938/81, Conama 237). Contagem de vazios declarada, não maquiada: 29,1% das federais do MMA e 6,5% do CNDH com tema; 68% sem nenhuma tag; precedentes que faltam: Awas Tingni, Yakye Axa, Saramaka, Sarayaku, Tema 1.031 do STF, Súmula 613 do STJ, Convenção Americana como instrumento autônomo.
+
+## Origem
+
+Este documento absorve os seguintes arquivos, com a classificação de destino:
+
+- `FONTES-CNJ-JUMA.md` → ENTREGUE/absorvido (referência; DataJud e JUMA sem ingestão — decisões de licença pendentes)
+- `FONTES-BIBLIOTECA-ATI.md` → ENTREGUE (coletor, dado, tela e testes no código)
+- `FONTES-AUDITORIA-AJRI.md` → ENTREGUE (catálogo 467 + rota no código; espelho de PDF não feito, declarado)
+- `FONTES-ROUANET-SALIC.md` → ENTREGUE (dados gravados; tela não feita, declarado)
+- `FONTES-TERRITORIO-E-MINERACAO.md` → ENTREGUE/absorvido (referência e mapeamento)
+- `FONTES-PRO-BRUMADINHO-E-FGV.md` → ENTREGUE (execução FGV 26 municípios + repasse 853 no código)
+- `FONTES-FLUXO-FINANCEIRO.md` → ENTREGUE/absorvido (levantamento; correção do CNPJ de convênio pendente no código)
+- `CLIMA-ADAPTABRASIL-E-INMET.md` → ENTREGUE/absorvido (coletor no código; migration 0074 não aplicada)
+- `LEGISLACAO-FEDERAL-MMA-CNDH.md` → ENTREGUE (carga 8.940 + migration no código)
+- `URN-LEXML-NORMAS-LEG-BR.md` → ENTREGUE (lib, testes e tela no código)
+- `COMUNICABR-COLETA-MG.md` → ENTREGUE (arquivo 2,26 MB + telas no código)
+- `LAI-PORTAIS.md` → ENTREGUE/absorvido (referência)
+- `diario-oficial-sigpub-mapeamento.md` → ENTREGUE/absorvido (mapeamento D0; coleta bloqueada por LGPD)
+- `REDE-PROTECAO-MG.md` → ENTREGUE/absorvido (referência)
+- `MICROSSISTEMA-LACUNAS.md` → ENTREGUE/absorvido (pesquisa; lacuna normativa fechada pela carga federal)
+- `RADAR-NOTICIAS-PARAOPEBA.md` → ENTREGUE (coletor, dado e tela no código)
+- `PLANO-INGESTAO-PARAOPEBA.md` → ENTREGUE/parcial (INST_DATA em `atores.ts`, auxílio em `auxilio.ts` e acervo UFMG em `documentos.ts` existem; camada de contagem por município do Solr não localizada no código)
+- `PLANO-ARQUIVO-DE-FONTES.md` → ENTREGUE/parcial (capturador com sha256/robots/CPF e tabela `arquivo_fontes` no código; upload R2 e selo na UI pendentes, declarados)

@@ -36,7 +36,7 @@ lá. Enquanto isso não rodar, aquele banco volta a duplicar convênio.
 SEMAD 2.232, ALMG 69). O portal publica 19.704 licenças ambientais e não tem a
 Resolução CONAMA que rege o licenciamento.
 
-Plano pronto em `docs/FONTES-CNJ-JUMA.md` (CSV do MMA, licença CC-BY
+Plano pronto em `docs/_historico/FONTES-CNJ-JUMA.md` (CSV do MMA, licença CC-BY
 confirmada, ~8,5 a 10,4 mil normas federais).
 
 ### 3b. O ETL antigo da FGV finge ser navegador, e o host pede para não ser rastreado
