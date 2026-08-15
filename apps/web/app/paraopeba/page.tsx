@@ -13,6 +13,10 @@ import {
   DOCUMENTOS_PROCESSO,
   COBERTURA_DOCUMENTOS_PROCESSO,
 } from "@/lib/paraopeba";
+// Fora do barril de propósito: `biblioteca.ts` lê disco com `node:fs`, e o
+// barril é importado por componente de cliente. Mesma razão de `radar.ts`.
+import { COBERTURA_BIBLIOTECA } from "@/lib/paraopeba/biblioteca";
+import { GLOSSARIO_PARAOPEBA, PERGUNTAS_PARAOPEBA } from "@/lib/paraopeba/educacao";
 
 /**
  * Home da frente /paraopeba — acompanhamento da reparação pelo rompimento
@@ -41,6 +45,17 @@ export default function ParaopebaHome() {
   const tiposDeAtor = new Set(ATORES_REPARACAO.map((a) => a.categoria));
 
   const BLOCOS = [
+    {
+      // PRIMEIRO cartão de propósito: as siglas deste bloco (NAE, PTR, ERSHRE,
+      // zona quente) aparecem em todas as outras telas. Quem chega sem elas lê
+      // o resto sem entender, e não sabe que existe um lugar que explica.
+      titulo: "Entenda o caso",
+      linha: `${formatNumberBR(PERGUNTAS_PARAOPEBA.length)} perguntas e ${formatNumberBR(GLOSSARIO_PARAOPEBA.length)} termos`,
+      texto:
+        "O que é o Novo Auxílio Emergencial, o que era o PTR, o que significa zona quente — as siglas que aparecem em toda página deste bloco, explicadas em linguagem comum pelo painel de acompanhamento.",
+      href: "/paraopeba/entenda",
+      linkTexto: "Entender o caso →",
+    },
     {
       titulo: "Clipping",
       linha: `${formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias`,
@@ -78,6 +93,18 @@ export default function ParaopebaHome() {
         "Documentos do processo judicial da reparação que citam cada município da bacia, direto do índice público da Plataforma Brumadinho UFMG — com link e citação em cada um.",
       href: "/paraopeba/documentos",
       linkTexto: "Ver os documentos →",
+    },
+    {
+      // Cartão vizinho ao de "Documentos do processo", e o texto precisa
+      // separar os dois logo na primeira linha: as duas rotas soam iguais e
+      // guardam coisas opostas — lá são os autos, aqui é o que as ATIs
+      // escreveram para quem foi atingido.
+      titulo: "Biblioteca das assessorias",
+      linha: `${formatNumberBR(COBERTURA_BIBLIOTECA.publicados)} publicações`,
+      texto:
+        "Cartilhas, boletins, jornais, rádio, vídeos e documentos técnicos publicados pelas próprias assessorias técnicas independentes — não são peças do processo, é o material que elas produziram para as pessoas atingidas. Só metadado e link: o arquivo abre no site da ATI.",
+      href: "/paraopeba/biblioteca",
+      linkTexto: "Ver a biblioteca →",
     },
   ];
 

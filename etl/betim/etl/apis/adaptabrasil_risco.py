@@ -94,6 +94,7 @@ Uso:
     python -m etl.apis.adaptabrasil_risco --indicadores 60001 --ano 2030 --cenario 40
 """
 import argparse
+import pathlib
 import datetime as dt
 import sys
 from collections import Counter
@@ -336,6 +337,42 @@ def sync(indicadores, uf: str, ano: int | None, cenario: int | None) -> None:
     print(f"{LOG} {len(linhas)} linha(s) gravada(s)/atualizada(s) em adaptabrasil_indicadores.")
 
 
+def exportar_json(indicadores, uf: str, ano: int | None, cenario: int | None, destino) -> None:
+    """Grava o resultado num JSON que o site lê no BUILD, sem passar por banco.
+
+    ⚠️ Existe porque o banco é o gargalo, não a coleta. A Neon está em HTTP 402
+    até 2026-09-01 e a máquina de trabalho não tem cópia do Postgres de
+    produção — então `sync()` fica bloqueado e, com ele, a tela. Este caminho
+    tira o banco da frente para o que a tela precisa: 853 municípios × 8
+    indicadores é dado pequeno e sem junção, exatamente o caso em que um
+    arquivo versionado serve melhor que uma tabela.
+
+    Não substitui `sync()`: o banco continua sendo o destino para quem for
+    cruzar isto com outra tabela. São dois consumidores diferentes.
+    """
+    import json
+
+    linhas = coletar(indicadores, uf=uf, ano=ano, cenario=cenario)
+    if not linhas:
+        print(f"{LOG} nada coletado — NÃO sobrescrevo o arquivo que já existe.")
+        return
+
+    destino = pathlib.Path(destino)
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    destino.write_text(
+        json.dumps(
+            {
+                "gerado_em": dt.datetime.now(dt.timezone.utc).isoformat(),
+                "uf": uf,
+                "linhas": linhas,
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    print(f"{LOG} {len(linhas)} linha(s) em {destino}")
+
+
 def _parse_indicadores(txt: str) -> tuple[int, ...]:
     ids = tuple(int(p.strip()) for p in txt.split(",") if p.strip())
     if not ids:
@@ -346,6 +383,11 @@ def _parse_indicadores(txt: str) -> tuple[int, ...]:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sondar", action="store_true", help="mede e relata, NÃO grava")
+    parser.add_argument(
+        "--json",
+        metavar="CAMINHO",
+        help="grava num JSON em vez do banco (o site lê este arquivo no build)",
+    )
     parser.add_argument("--uf", default=UF_PADRAO)
     parser.add_argument(
         "--indicadores",
@@ -372,6 +414,8 @@ if __name__ == "__main__":
     try:
         if args.sondar:
             sondar(args.indicadores, args.uf, args.ano, args.cenario)
+        elif args.json:
+            exportar_json(args.indicadores, args.uf, args.ano, args.cenario, args.json)
         else:
             sync(args.indicadores, args.uf, args.ano, args.cenario)
     except RuntimeError as e:

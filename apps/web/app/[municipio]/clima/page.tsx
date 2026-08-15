@@ -1,5 +1,6 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
 import DataCard from "@/app/[municipio]/components/DataCard";
+import RiscoClimatico from "./RiscoClimatico";
 import * as q from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
@@ -139,6 +140,12 @@ export default async function ClimaPage({
           </div>
         </section>
       ) : null}
+
+      {/* Risco climático estrutural (AdaptaBrasil), abaixo da previsão: a
+          previsão responde "como vai estar amanhã", isto responde "quão
+          exposta esta cidade é" — e a segunda pergunta é a que não muda com o
+          tempo. Ver o cabeçalho de RiscoClimatico: o índice nunca vai sozinho. */}
+      <RiscoClimatico idIbge={String(cidade.id_municipio)} />
     </main>
   );
 }

@@ -3,11 +3,13 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import {
   PERIODO_CLIPPING,
   CLIPPING_PARAOPEBA,
-  PERIODO_CLIPPING_ATI,
   CLIPPING_ATI,
+  PERIODO_CLIPPING_IJ,
+  CLIPPING_IJ,
 } from "@/lib/paraopeba";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import ClippingClient from "./ClippingClient";
+import RadarRecente from "./RadarRecente";
 
 /**
  * `/paraopeba/clipping` — clipping de imprensa sobre a reparação de
@@ -20,13 +22,19 @@ import ClippingClient from "./ClippingClient";
  * o que separa "acervo histórico honesto" de "página que mente a partir de
  * amanhã".
  *
- * São DOIS acervos com períodos diferentes, e a página diz os dois: o das
- * ATIs começa em 2021 (`PERIODO_CLIPPING_ATI`), o geral só em 2024. Um
- * período único no cabeçalho esconderia três anos de material das ATIs.
+ * São TRÊS acervos com períodos diferentes, e a página diz os três: o das
+ * instituições de justiça começa em 2019 (`PERIODO_CLIPPING_IJ`), o das ATIs
+ * em 2021 (`PERIODO_CLIPPING_ATI`), o geral só em 2024. Um período único no
+ * cabeçalho esconderia cinco anos de material.
+ *
+ * A abertura tem que anunciar a data MAIS ANTIGA dos três, senão a página
+ * declara um começo em 2021 e entrega material de 2019 — inclusive o Termo de
+ * Compromisso que a DPMG firmou com a Vale menos de três meses depois do
+ * rompimento.
  */
 export const metadata: Metadata = {
   title: `Clipping — Paraopeba | Controle Popular`,
-  description: `${formatNumberBR(CLIPPING_ATI.length)} materiais das assessorias técnicas independentes e ${formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias sobre a reparação do rompimento da barragem da Vale em Brumadinho, de ${formatDateBR(PERIODO_CLIPPING_ATI.de)} a ${formatDateBR(PERIODO_CLIPPING.ate)}.`,
+  description: `${formatNumberBR(CLIPPING_ATI.length)} materiais das assessorias técnicas independentes, ${formatNumberBR(CLIPPING_IJ.length)} publicações do MPMG, MPF e DPMG e ${formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias sobre a reparação do rompimento da barragem da Vale em Brumadinho, de ${formatDateBR(PERIODO_CLIPPING_IJ.de)} a ${formatDateBR(PERIODO_CLIPPING.ate)}.`,
 };
 
 export default function ClippingPage() {
@@ -49,11 +57,13 @@ export default function ClippingPage() {
       <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
         Acervo de{" "}
         <strong className="text-text">
-          {formatDateBR(PERIODO_CLIPPING_ATI.de)} a {formatDateBR(PERIODO_CLIPPING.ate)}
+          {formatDateBR(PERIODO_CLIPPING_IJ.de)} a {formatDateBR(PERIODO_CLIPPING.ate)}
         </strong>{" "}
         — não é notícia do dia. É um retrato datado, reunido à mão, que não se atualiza
-        sozinho. São dois acervos: {formatNumberBR(CLIPPING_ATI.length)} materiais das
-        assessorias técnicas independentes, classificados por eixo da reparação, e{" "}
+        sozinho. São três acervos: {formatNumberBR(CLIPPING_ATI.length)} materiais das
+        assessorias técnicas independentes, classificados por eixo da reparação;{" "}
+        {formatNumberBR(CLIPPING_IJ.length)} publicações das três instituições de justiça que
+        assinaram o Acordo — MPMG, MPF e DPMG —, que é o que alcança 2019 e 2021; e{" "}
         {formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias do clipping geral.
       </p>
       {/* O ponteiro para o Guaicuy saiu da hero em 15/08/2026. Ele dava crédito
@@ -63,6 +73,9 @@ export default function ClippingPage() {
           continua onde ele é exato — no `source`/`ati` de cada material. */}
 
       <ClippingClient />
+
+      {/* Varredura automática, depois dos acervos com autoria. Ver RadarRecente. */}
+      <RadarRecente />
 
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <FooterGlobal />
