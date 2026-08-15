@@ -197,6 +197,7 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
           onChange={(e) => setToken(e.target.value)}
           placeholder="cole aqui — fica só na memória desta aba"
           className={campo}
+          suppressHydrationWarning
         />
       </div>
 
