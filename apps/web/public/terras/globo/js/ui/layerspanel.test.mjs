@@ -35,14 +35,24 @@ import {
   ASSUNTOS, CAMADAS, CAMADAS_RESOLVIDAS, CAMADA_POR_FONTE, LAYER_REGISTRY,
 } from '../config.js';
 
-test('CAMADAS reais: 30 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
+test('CAMADAS reais: 39 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
   const grupos = agruparPorAssunto(CAMADAS_RESOLVIDAS, ASSUNTOS);
 
   assert.equal(
-    CAMADAS.length, 30,
+    CAMADAS.length, 39,
     // ⟲ 13/08/2026, mais tarde: subiu de 22 para 30 — as 8 camadas do
     // rompimento real da B1/Brumadinho (docs/PLANO-INTEGRACAO-BRUMADINHO.md,
     // seção 1.2), cada uma numa linha própria, sem irmã regional.
+    //
+    // ⟲ 15/08/2026: 30 → 39. Oito da rodada de alertas de território (as 4
+    // de interseção, as 2 de raio de 8 km, documentos do processo, imagem de
+    // satélite) e a nona é `unidades-conservacao` (CNUC/MMA).
+    //
+    // A sentinela esteve VERMELHA por vários commits — o número real já era
+    // 38 antes desta rodada. Ela existe para obrigar a revisão quando o
+    // painel cresce, e um teste que fica vermelho e ninguém atualiza para de
+    // ser guarda e vira ruído. Quem acrescentar camada: atualize aqui no
+    // mesmo commit.
     'sentinela: se este número mudou, CAMADAS cresceu/encolheu e as contagens abaixo precisam ser revistas junto',
   );
   const totalAgrupado = grupos.reduce((n, g) => n + g.camadas.length, 0);
@@ -50,7 +60,11 @@ test('CAMADAS reais: 30 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
 
   assert.deepEqual(
     grupos.map((g) => g.id),
-    ['sem-cadastro', 'terra-publica', 'territorio-mineracao', 'dinheiro', 'cidade', 'pistas', 'referencia'],
+    // ⟲ 15/08/2026: 'brumadinho' entrou entre 'territorio-mineracao' e
+    // 'dinheiro'. As camadas do rompimento saíram de dentro de
+    // território/mineração, que tinha chegado a 21 linhas com 9 delas do
+    // episódio de 2019 — o assunto mais específico enterrando os gerais.
+    ['sem-cadastro', 'terra-publica', 'territorio-mineracao', 'brumadinho', 'dinheiro', 'cidade', 'pistas', 'referencia'],
   );
 
   // Checagem cruzada 1:1 contra o registro, não só a contagem.
@@ -77,8 +91,12 @@ test('a reorganização de fato UNIFICOU: 34 fontes em 30 linhas, e as 4 que som
   // apareceram 9 sobreposições que nenhuma das três camadas antigas pegava
   // — incluindo lavra de OURO autorizada sobre São Domingos e Machadinho.
   // Conceito partido em três arquivos estava escondendo alerta.
-  assert.equal(LAYER_REGISTRY.length, 34, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 30, 'sentinela: o número de LINHAS mudou');
+  // ⟲ 15/08/2026: 34 → 43 fontes e 30 → 39 linhas. As nove que entraram são
+  // fonte única cada uma (alertas de interseção, raios de 8 km, documentos do
+  // processo, imagem de satélite, unidades de conservação), então a diferença
+  // fonte-linha continua sendo exatamente as 4 camadas com irmã regional.
+  assert.equal(LAYER_REGISTRY.length, 43, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 39, 'sentinela: o número de LINHAS mudou');
 
   // ⟲ Fim do dia: `territorios-quilombolas` SAIU desta lista. Ela tinha 2
   // fontes, chegou a ter 3, e agora tem UMA só — as três foram unificadas.
@@ -129,6 +147,20 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     'brumadinho-remanejamento', 'brumadinho-estruturas-contencao',
     'brumadinho-obras-poligonais', 'brumadinho-obras-pontuais',
     'brumadinho-obras-lineares', 'brumadinho-restauracao',
+    // Alertas de território × mineração e barragem (15/08/2026): interseção
+    // real, não bbox. As duas de `raio-` são a faixa de 8 km da Portaria
+    // 60/2015 do então MME, e por isso são fonte separada da interseção
+    // direta — a pergunta "está dentro" e a pergunta "está a menos de 8 km"
+    // não são a mesma.
+    'alerta-quilombola-mancha',
+    'alerta-territorio-sigmine-interesse', 'alerta-territorio-sigmine-operacao',
+    'alerta-raio-territorio-sigmine-interesse', 'alerta-raio-territorio-sigmine-operacao',
+    // Referência e contexto (15/08/2026).
+    'atos-area-protegida-municipios', 'documentos-processo-municipios',
+    'imagens-satelite',
+    // Unidades de conservação, CNUC/MMA pela INDE (15/08/2026) — ver
+    // scripts/ingerir_cnuc_unidades_conservacao.py.
+    'unidades-conservacao',
   ];
 
   const existentes = LAYER_REGISTRY.map((f) => f.id).sort();
