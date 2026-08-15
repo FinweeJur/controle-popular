@@ -42,6 +42,40 @@ const PAGES_BASE_PATH = process.env.PAGES_BASE_PATH;
 const exportandoEstatico = PAGES_BASE_PATH !== undefined;
 
 /**
+ * ═══ O PAINEL DE EDIÇÃO SÓ EXISTE EM `next dev`. NUNCA EM BUILD. ═══
+ *
+ * `docs/PLANO-PAINEL-EDICAO.md` gasta uma seção inteira explicando por que
+ * este painel não pode estar na internet: ele apaga página e renomeia URL, e
+ * um token vazado ali derruba conteúdo do ar em massa. A conclusão de lá é
+ * "nunca exposto por `custom_domain` nem por `workers_dev`", e — palavras do
+ * plano — **"isso não é intenção, é verificação"**.
+ *
+ * Esta é a verificação, e ela é estrutural em vez de disciplinar. As rotas do
+ * painel moram em arquivos `*.local.tsx` / `*.local.ts`, e essa extensão só
+ * entra em `pageExtensions` quando as DUAS condições valem:
+ *
+ *   1. `PAINEL_LOCAL=1` — quem quer o painel pede por ele, explicitamente;
+ *   2. `NODE_ENV !== "production"` — e `next build` sempre define
+ *      `production`, enquanto `next dev` define `development`.
+ *
+ * A condição 2 é a que fecha a porta de verdade: mesmo que alguém exporte
+ * `PAINEL_LOCAL=1` no ambiente de build por engano — ou que a variável vaze
+ * para o CI —, o `next build` continua sem enxergar os arquivos, o Worker sai
+ * sem as rotas e não há o que vazar. Não depende de ninguém lembrar de
+ * desligar nada.
+ *
+ * O mecanismo é o mesmo que o alvo estático já usa para `*.din.ts` logo
+ * abaixo: fora da lista de extensões, o Next não enxerga o arquivo e nem
+ * tenta gerar a rota. Aqui ele é usado ao contrário — para tirar do build o
+ * que existe no repositório.
+ *
+ * Como subir o painel: `PAINEL_LOCAL=1 npx next dev --port 3028`.
+ */
+const painelLocalLigado =
+  process.env.PAINEL_LOCAL === "1" && process.env.NODE_ENV !== "production";
+const extensoesDoPainel = painelLocalLigado ? ["local.tsx", "local.ts"] : [];
+
+/**
  * Cabeçalhos de segurança HTTP.
  *
  * ═══ POR QUE ISTO NÃO BASTA SOZINHO — LEIA ANTES DE MEXER ═══
@@ -181,7 +215,7 @@ const nextConfig: NextConfig = {
         pageExtensions: ["tsx", "ts"],
       }
     : {
-        pageExtensions: ["tsx", "ts", "din.tsx", "din.ts"],
+        pageExtensions: ["tsx", "ts", "din.tsx", "din.ts", ...extensoesDoPainel],
       }),
   experimental: {
     /**
