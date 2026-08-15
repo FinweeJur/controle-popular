@@ -723,6 +723,51 @@ export const LAYER_REGISTRY = [
     aviso: 'Não é extração em curso: é papel protocolado na ANM, pressão futura. Muitos processos nunca viram nada. Para extração já autorizada, ver "atingida por mina em operação" — e nunca some as duas.',
     color: 0xe2a138, /* var(--caution) — o mesmo âmbar de checagem-g0: atenção, ainda não é fato consumado */ on: false, render: 'fill', listavel: true,
   },
+  // --- A faixa de 8 km, que enxerga o que a sobreposição não vê (15/08) -----
+  //
+  // As duas camadas acima só acusam quando o polígono da ANM ENTRA no
+  // território. A Portaria Interministerial 60/2015 não trabalha assim: ela
+  // fixa uma faixa em volta da terra indígena dentro da qual o empreendimento
+  // exige manifestação do órgão indigenista. Perto, ali, já é assunto.
+  //
+  // A diferença medida é enorme, e é o argumento inteiro destas camadas: a
+  // interseção pura vê 292 sobreposições; a faixa vê 2.164 processos, dos
+  // quais **1.899 nunca encostam no território** — e por isso eram invisíveis.
+  // A Aldeia Katurama, que dá ZERO em todo alerta de sobreposição (inclusive
+  // no de mancha de barragem, logo acima), tem 20 minas em operação e 114
+  // processos de interesse dentro dos 8 km dela.
+  //
+  // ⚠️ A faixa vem PRONTA do IDE-Sisema (`ide_2004_mg_raio_rest_*`), não é
+  // buffer desenhado por nós — e cruza SÓ o SIGMINE, nunca barragem: para
+  // barragem o piso legal é trecho de vale a jusante, e círculo superestima a
+  // zona real de 14× a 127× (docs/FONTES-TERRITORIO-E-MINERACAO.md).
+  //
+  // Cor: não há mais lacuna de matiz livre no círculo (a maior é 17,3°, e o
+  // meio dela ficaria a 8,6° de cada vizinha, abaixo do piso de 11,6° do
+  // colors.css). Então cada uma usa a IRMÃ MAIS CLARA da cor do seu alerta de
+  // interseção — mesmo precedente de `--layer-vazio-bacia` → `-curvelo`
+  // ("mesmo método, outro recorte"). Conferido em OKLCH, não em HSL: 26,0°
+  // contra 25,1° do --danger, e 75,8° contra 75,1° do --caution.
+  {
+    id: 'alerta-raio-territorio-sigmine-operacao', label: 'Mina em operação na faixa de 8 km do território',
+    hint: '328 pares processo×faixa, de 289 processos distintos, com lavra EM OPERAÇÃO dentro da faixa de restrição de 12 terras indígenas e 18 territórios quilombolas. 269 deles não encostam no território — a sobreposição não os vê. O mais próximo é uma lavra de ouro da Kinross a 73 metros dos quilombos Machadinho e São Domingos, em Paracatu.',
+    aviso: 'Estar na faixa não é estar dentro do território: é a distância em que a Portaria Interministerial 60/2015 exige manifestação do órgão indigenista. A faixa vem publicada pelo IDE-Sisema, não é círculo desenhado por nós, e vale para mineração — não para barragem, cuja zona de risco é trecho de vale a jusante, não raio.',
+    color: 0xffa79e, /* irmã mais clara de --danger (oklch 0.845 0.139 25) */ on: false, render: 'fill', listavel: true,
+  },
+  {
+    id: 'alerta-raio-territorio-sigmine-interesse', label: 'Interesse minerário na faixa de 8 km do território',
+    hint: '2.285 pares, de 1.875 processos, dentro da faixa de restrição — atingindo TODAS as 15 terras indígenas de Minas e 24 territórios quilombolas. 1.630 não encostam no território. 243 já são requerimento de lavra, e 169 são de lítio, espalhados por 12 territórios. Há processo a 3 metros da borda.',
+    aviso: 'Papel protocolado na ANM, não extração em curso — e estar na faixa não é estar dentro do território. Nunca somar com a camada de operação: são categorias jurídicas diferentes.',
+    color: 0xffbe59, /* irmã mais clara de --caution (oklch 0.845 0.139 75) */ on: false, render: 'fill', listavel: true,
+  },
+  // Documentos do processo judicial de Brumadinho, por município citado.
+  // Entra nesta seção porque o processo É sobre o rompimento de uma barragem.
+  {
+    id: 'documentos-processo-municipios', label: 'Documentos do processo que citam o município',
+    hint: '53 municípios de Minas citados nos documentos do processo judicial de Brumadinho — 1.149 menções ao todo, de 10 dos 16 processos. Brumadinho lidera com 192, seguida de São Joaquim de Bicas (81), Mário Campos (65), Pará de Minas (58) e Paraopeba (57). Clicar leva à lista publicada.',
+    aviso: 'Isto mostra onde o acervo CITA, não onde o dano foi. Só 471 dos 7.107 documentos (6,6%) têm município identificado, então município ausente do mapa não é município não atingido — e "citar" não é "ser sobre". As contagens não se somam entre municípios: um documento que cita cinco cidades aparece nas cinco.',
+    color: 0xf8b651, /* irmã mais clara de --caution, distinta do âmbar do interesse minerário */ on: false, render: 'fill', listavel: true,
+  },
   // --- Dinheiro público e mineração (13/08/2026) --------------------------
   //
   // docs/HANDOFF-CAMADA-DINHEIRO.md — entregue por outro agente, noutro
@@ -1105,6 +1150,30 @@ export const CAMADAS = [
     hint: '6 sobreposições em 3 territórios: AMAROS e MACHADINHO sob barragens da Kinross em Paracatu, e SÃO SEBASTIÃO sob três barragens da Salitre Fertilizantes em Serra do Salitre. A maior atinge 934,9 hectares.',
     aviso: 'As áreas não se somam — as três barragens de Serra do Salitre cobrem a mesma parte do território. Todas as cinco barragens estão com plano de emergência "em análise" na FEAM.',
     fontes: ['alerta-quilombola-mancha'],
+  },
+  // A faixa de 8 km. Vem DEPOIS das três de sobreposição de propósito: quem
+  // lê a seção encontra primeiro o que já está dentro do território, e só
+  // então o que está perto. Ver a nota grande no LAYER_REGISTRY.
+  {
+    id: 'alerta-raio-territorio-sigmine-operacao', assunto: 'territorio-mineracao',
+    label: 'Mina em operação na faixa de 8 km do território',
+    hint: '328 pares, de 289 processos com lavra em operação dentro da faixa de restrição de 12 terras indígenas e 18 territórios quilombolas — 269 deles sem encostar no território, invisíveis para o alerta de sobreposição. O mais próximo, ouro da Kinross a 73 m de Machadinho e São Domingos.',
+    aviso: 'Estar na faixa não é estar dentro: é a distância em que a Portaria 60/2015 exige manifestação do órgão indigenista. Vale para mineração, não para barragem.',
+    fontes: ['alerta-raio-territorio-sigmine-operacao'],
+  },
+  {
+    id: 'alerta-raio-territorio-sigmine-interesse', assunto: 'territorio-mineracao',
+    label: 'Interesse minerário na faixa de 8 km do território',
+    hint: '2.285 pares, de 1.875 processos, atingindo TODAS as 15 terras indígenas de Minas e 24 territórios quilombolas. 1.630 não encostam no território. 243 já são requerimento de lavra; 169 são de lítio, em 12 territórios.',
+    aviso: 'Papel protocolado na ANM, não extração. Nunca somar com a camada de operação.',
+    fontes: ['alerta-raio-territorio-sigmine-interesse'],
+  },
+  {
+    id: 'documentos-processo-municipios', assunto: 'territorio-mineracao',
+    label: 'Documentos do processo que citam o município',
+    hint: '53 municípios citados nos documentos do processo judicial de Brumadinho, 1.149 menções. Brumadinho 192, São Joaquim de Bicas 81, Mário Campos 65.',
+    aviso: 'Mostra onde o acervo CITA, não onde o dano foi: só 6,6% dos documentos têm município identificado, e as contagens não se somam entre municípios.',
+    fontes: ['documentos-processo-municipios'],
   },
   // Fica em `territorio-mineracao`, e NÃO num assunto `legislacao-ambiental`
   // novo como o handoff sugeria. Duas razões: uma seção de um item só é ruído
