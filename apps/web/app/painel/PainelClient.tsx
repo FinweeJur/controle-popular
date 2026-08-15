@@ -31,6 +31,14 @@ interface Props {
 
 type Aviso = { tipo: "ok" | "erro"; texto: string } | null;
 
+/** Texto atual da página, lido do código pela API (`lib/painel/texto-atual.ts`). */
+interface TextoAtual {
+  rota: string;
+  titulo: string | null;
+  descricao: string | null;
+  calculado: boolean;
+}
+
 export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInicial }: Props) {
   const [token, setToken] = useState("");
   const [edicoes, setEdicoes] = useState<Edicao[]>(edicoesIniciais);
@@ -43,6 +51,7 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
   const [descricao, setDescricao] = useState("");
   const [por, setPor] = useState("");
   const [motivo, setMotivo] = useState("");
+  const [textoAtual, setTextoAtual] = useState<TextoAtual | null>(null);
 
   const edicaoDaRota = useMemo(
     () => edicoes.find((e) => e.rota === rota),
@@ -115,6 +124,20 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
       setTitulo("");
       setDescricao("");
       setAviso({ tipo: "ok", texto: "Edição removida — a página volta ao texto do código." });
+    }
+  }
+
+  /** Lê o texto atual (do código) da rota, para mostrar o que será substituído. */
+  async function carregarTextoAtual(rotaNova: string) {
+    setTextoAtual(null);
+    if (!token || !rotaNova) return;
+    try {
+      const r = await fetch(`/api/painel/texto-atual?rota=${encodeURIComponent(rotaNova)}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (r.ok) setTextoAtual((await r.json()) as TextoAtual);
+    } catch {
+      setTextoAtual(null);
     }
   }
 
@@ -193,6 +216,7 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
               const j = edicoes.find((x) => x.rota === e.target.value);
               setTitulo(j?.titulo ?? "");
               setDescricao(j?.descricao ?? "");
+              carregarTextoAtual(e.target.value);
             }}
             className={campo}
           >
@@ -216,6 +240,34 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
             em {edicaoDaRota.em.slice(0, 10).split("-").reverse().join("/")} — motivo:{" "}
             {edicaoDaRota.motivo}
           </p>
+        )}
+
+        {textoAtual && (
+          <div className="mt-3 rounded-lg border border-border bg-surface-2 p-3 text-xs text-text-soft">
+            <p className="font-medium text-text">
+              Texto atual no código — é isso que uma edição salva vai substituir
+            </p>
+            <dl className="mt-2 space-y-2">
+              <div>
+                <dt className="font-medium text-text-soft">Título</dt>
+                <dd className="mt-0.5 text-text">
+                  {textoAtual.titulo ??
+                    (textoAtual.calculado
+                      ? "Calculado no código (contém conta) — confira a página."
+                      : "Nenhum título no código.")}
+                </dd>
+              </div>
+              <div>
+                <dt className="font-medium text-text-soft">Descrição</dt>
+                <dd className="mt-0.5 text-text">
+                  {textoAtual.descricao ??
+                    (textoAtual.calculado
+                      ? "Calculada no código (contém conta) — confira a página."
+                      : "Nenhuma descrição no código.")}
+                </dd>
+              </div>
+            </dl>
+          </div>
         )}
 
         <div className="mt-4">
