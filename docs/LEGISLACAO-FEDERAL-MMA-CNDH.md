@@ -260,14 +260,46 @@ Para completar, na máquina que tiver o banco de produção local
 cd apps/web && npx tsx scripts/aplicar-migration-local.mts \
   ../../supabase/betim/migrations/0073_legislacao_federal_esfera.sql
 
-# 2. coleta (DATABASE_URL apontando para 127.0.0.1)
-cd etl/betim
-python -m etl.apis.legislacao_mma
-python -m etl.apis.legislacao_cndh
+# 2. carga a partir dos arquivos JÁ COLETADOS (não refaz a coleta)
+npx tsx scripts/carregar-legislacao-federal.mts ../../etl/betim/dados/legislacao-mma.json
+npx tsx scripts/carregar-legislacao-federal.mts ../../etl/betim/dados/legislacao-cndh.json
 
 # 3. reclassificar temas/tags (roda sobre a tabela inteira)
-python -m etl.apis.classificar_temas_ambientais
+cd ../../etl/betim && python -m etl.apis.classificar_temas_ambientais
 ```
+
+### Por que o passo 2 lê arquivo em vez de rodar o coletor de novo
+
+Porque **não seriam os mesmos dados**. Rodar `legislacao_mma` na outra máquina
+rebaixa o CSV do MMA, e `legislacao_cndh` raspa o site do CNDH outra vez — as
+duas fontes mudam sem aviso, e o coletor do CNDH depende da estrutura HTML da
+página. Duas coletas em momentos diferentes produzem dois conjuntos diferentes
+com o mesmo nome, e a divergência só apareceria depois, como um número que não
+bate com este documento.
+
+Os arquivos versionados congelam o que foi conferido aqui:
+
+| arquivo | linhas | tamanho |
+|---|---:|---:|
+| `etl/betim/dados/legislacao-mma.json` | 8.570 | 6,9 MB |
+| `etl/betim/dados/legislacao-cndh.json` | 370 | 0,3 MB |
+| **total** | **8.940** | |
+
+Gerados em 2026-08-15 pelo `--json` de cada coletor, que produz exatamente as
+linhas que o `sync()` gravaria e não abre conexão com banco nenhum. Para
+refazê-los quando a fonte atualizar:
+
+```bash
+cd etl/betim
+python -m etl.apis.legislacao_mma  --json dados/legislacao-mma.json
+python -m etl.apis.legislacao_cndh --json dados/legislacao-cndh.json
+```
+
+O carregador só aceita `127.0.0.1`/`localhost` — a mesma recusa de
+`aplicar-migration-local.mts`, porque um upsert de 8.940 linhas contra a Neon
+em cota é justamente o tráfego que ela não comporta. E faz upsert por
+`(fonte, id_fonte)`, nunca DELETE: a tabela guarda também as normas estaduais,
+e limpá-la levaria junto o trabalho da coleta anterior.
 
 Os dois coletores têm `--sondar`, que consulta a fonte e relata **sem tocar
 o banco** — é o jeito de conferir os números deste documento sem gravar

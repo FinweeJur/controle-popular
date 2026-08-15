@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { obterCidadePorSlug, nomePortal, type Cidade } from "@/lib/db/queries/municipios";
+import { aplicarEdicao } from "@/lib/edicoes";
 
 export type { Cidade };
 export { nomePortal };
@@ -53,17 +54,28 @@ export async function cidadeDaRota(
  *     (c) => `Assistência Social — ${c.nome} em Dados | ${nomePortal(c)}`,
  *     (c) => `Benefícios sociais pagos a moradores de ${c.nome}-${c.uf}.`
  *   );
+ *
+ * O terceiro argumento — a sub-rota, `"/saude"` — só existe para a
+ * sobreposição de `lib/edicoes.ts` saber QUAL página é esta. Sem ele, o
+ * arquivo de edições não teria como distinguir `/bh/saude` de `/bh/educacao`:
+ * as duas chegam aqui pelo mesmo helper, e o `params` só carrega a cidade.
+ * Omiti-lo não quebra nada; apenas deixa a página fora do alcance da edição
+ * manual, que é o comportamento certo para quem ainda não precisou dela.
  */
 export function metadataDaCidade(
   titulo: (cidade: Cidade) => string,
-  descricao: (cidade: Cidade) => string
+  descricao: (cidade: Cidade) => string,
+  subrota?: string
 ) {
   return async function generateMetadata({
     params,
   }: {
     params: Promise<{ municipio: string }>;
   }): Promise<Metadata> {
-    const cidade = await cidadeDaRota(params);
-    return { title: titulo(cidade), description: descricao(cidade) };
+    const { municipio } = await params;
+    const cidade = await cidadeDaRota(Promise.resolve({ municipio }));
+    const base = { title: titulo(cidade), description: descricao(cidade) };
+    if (subrota === undefined) return base;
+    return aplicarEdicao(`/${municipio}${subrota}`, base);
   };
 }

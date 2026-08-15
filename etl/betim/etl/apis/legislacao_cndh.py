@@ -116,9 +116,11 @@ Uso:
 """
 import argparse
 import datetime as dt
+import json
 import re
 import sys
 import unicodedata
+from pathlib import Path
 from urllib.parse import urljoin
 
 import requests
@@ -400,6 +402,26 @@ def sondar(max_linhas: int | None) -> None:
         print(f"       {l['tipo']:<13} {(l['numero'] or '-'):<5} {l['ano']} {l['data']}  {(l['ementa'] or '')[:70]}")
 
 
+def exportar_json(caminho: str) -> None:
+    """Grava as linhas em arquivo, sem tocar em banco nenhum.
+
+    Mesma razão do gêmeo em `legislacao_mma`: quem coleta é este desktop e quem
+    o site lê é o Postgres da máquina de build. Repetir a coleta lá seria
+    raspar o site do CNDH de novo — e este coletor depende da estrutura HTML da
+    página, que muda sem aviso. O arquivo congela o que já foi conferido.
+    """
+    linhas, _ = coletar(verboso=True)
+    if not linhas:
+        print(f"{LOG} ABORT: nada coletado — não sobrescrevo {caminho}.", file=sys.stderr)
+        sys.exit(1)
+    Path(caminho).parent.mkdir(parents=True, exist_ok=True)
+    Path(caminho).write_text(
+        json.dumps({"fonte": "cndh", "linhas": linhas}, ensure_ascii=False, indent=1),
+        encoding="utf-8",
+    )
+    print(f"{LOG} {len(linhas)} linha(s) em {caminho}.")
+
+
 def sync() -> None:
     client = get_supabase_client()
     linhas, diag = coletar(verboso=True)
@@ -418,11 +440,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sondar", action="store_true", help="consulta e relata, NÃO grava, NÃO lê o banco")
     parser.add_argument("--linhas", type=int, help="quantas amostras imprimir — só com --sondar")
+    parser.add_argument("--json", metavar="ARQUIVO", help="grava as linhas em arquivo, NÃO toca no banco")
     args = parser.parse_args()
 
     try:
         if args.sondar:
             sondar(args.linhas)
+        elif args.json:
+            exportar_json(args.json)
         else:
             sync()
     except FonteMudou as e:

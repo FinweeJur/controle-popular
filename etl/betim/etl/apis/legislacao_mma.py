@@ -125,9 +125,11 @@ import argparse
 import csv
 import datetime as dt
 import io
+import json
 import re
 import sys
 import unicodedata
+from pathlib import Path
 
 import requests
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_fixed
@@ -425,6 +427,33 @@ def sondar(max_linhas: int | None) -> None:
               f"chave={l['chave_dedup']!r}  {(l['ementa'] or '')[:50]}")
 
 
+def exportar_json(caminho: str) -> None:
+    """Grava as linhas em arquivo, sem tocar em banco nenhum.
+
+    Existe porque a carga e o banco de destino estão em MÁQUINAS DIFERENTES:
+    quem coleta é este desktop, e quem o site lê é o Postgres da máquina de
+    build. Sem isto, a única forma de levar as normas até lá seria repetir a
+    coleta na outra máquina — refazendo o download do CSV do MMA e torcendo
+    para que a fonte não tenha mudado no meio, o que produziria dois conjuntos
+    diferentes com o mesmo nome.
+
+    O arquivo carrega as MESMAS linhas que `sync()` gravaria, e é carregado por
+    `scripts/carregar-legislacao-federal.mts` na máquina que tem o banco.
+    """
+    linhas, diag = coletar(verboso=True)
+    if not linhas:
+        # Arquivo vazio sobrescrevendo um bom seria pior que não exportar:
+        # a carga seguinte leria zero linha e concluiria que a fonte esvaziou.
+        print(f"{LOG} ABORT: nada coletado — não sobrescrevo {caminho}.", file=sys.stderr)
+        sys.exit(1)
+    Path(caminho).parent.mkdir(parents=True, exist_ok=True)
+    Path(caminho).write_text(
+        json.dumps({"fonte": "mma", "linhas": linhas}, ensure_ascii=False, indent=1),
+        encoding="utf-8",
+    )
+    print(f"{LOG} {len(linhas)} linha(s) em {caminho} ({diag['registros_csv']} no CSV de origem).")
+
+
 def sync() -> None:
     client = get_supabase_client()
     linhas, diag = coletar(verboso=True)
@@ -443,11 +472,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sondar", action="store_true", help="consulta e relata, NÃO grava, NÃO lê o banco")
     parser.add_argument("--linhas", type=int, help="quantas amostras imprimir — só com --sondar")
+    parser.add_argument("--json", metavar="ARQUIVO", help="grava as linhas em arquivo, NÃO toca no banco")
     args = parser.parse_args()
 
     try:
         if args.sondar:
             sondar(args.linhas)
+        elif args.json:
+            exportar_json(args.json)
         else:
             sync()
     except FonteMudou as e:

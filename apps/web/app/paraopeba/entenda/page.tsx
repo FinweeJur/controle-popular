@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { GLOSSARIO_PARAOPEBA, PERGUNTAS_PARAOPEBA } from "@/lib/paraopeba/educacao";
 import { formatNumberBR } from "@/lib/betim/format";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/paraopeba/entenda` — o glossário e as perguntas do painel-fonte.
@@ -20,10 +21,10 @@ import { formatNumberBR } from "@/lib/betim/format";
  * somos observador seria assumir uma autoridade que não temos — e o leitor
  * precisa saber a quem atribuir o que lê.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/paraopeba/entenda", {
   title: "Entenda o caso — Paraopeba | Controle Popular",
   description: `${formatNumberBR(GLOSSARIO_PARAOPEBA.length)} termos e ${formatNumberBR(PERGUNTAS_PARAOPEBA.length)} perguntas sobre a reparação do rompimento da barragem da Vale em Brumadinho, em linguagem comum.`,
-};
+});
 
 export default function EntendaPage() {
   return (
