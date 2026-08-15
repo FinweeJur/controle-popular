@@ -204,6 +204,64 @@ export const ABERTURA = { id: 'abertura', label: 'Minas Gerais', boundary: 'mg' 
 // checkouts lado a lado, 19 linhas de 152px de altura média contra 14 de ~46px,
 // e 2.804 caracteres de explicação sempre na tela contra zero (agora sob o "?").
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Destaques: as cinco camadas mais procuradas, fora da lista
+//
+// Cinco, como os cinco botões de cidade logo abaixo — a barra é o "o quê" e a
+// de baixo é o "onde", e as duas juntas são a decisão que a pessoa toma ao
+// abrir o mapa. Mais que cinco e ela vira um segundo painel; menos e não vale
+// ocupar a faixa.
+//
+// ⚠️ "Barragens" NÃO virou um botão, e isso foi medido, não achado: neste globo
+// não existe camada de barragem. Existem `zas-barragens` (a zona onde não dá
+// tempo de esperar socorro) e `mancha-inundacao-barragens` (até onde o rejeito
+// chegaria) — as duas SÃO as barragens, e um botão "Barragens" seria um
+// terceiro controle para duas camadas que já teriam os seus. Então o slot que
+// sobrou foi para "Minas em operação", que é o que dá sentido às outras duas:
+// a barragem é de alguma mina.
+//
+// O que fica DE FORA de propósito: os chips de região e o "Ligar tudo", que já
+// estão no topo do painel, a dois centímetros. Barra de atalho que repete o
+// que está do lado não é atalho, é ruído.
+// ---------------------------------------------------------------------------
+export const DESTAQUES = [
+  {
+    id: 'sem-cadastro',
+    label: 'Terra sem cadastro',
+    hint: 'As áreas rurais que nenhum imóvel declarou no CAR, nas regiões de estudo.',
+    cor: '#b49dff',
+    camadas: ['vazio-cadastral'],
+  },
+  {
+    id: 'zas',
+    label: 'ZAS',
+    hint: 'Zona de Autossalvamento: o trecho a jusante da barragem onde não há tempo hábil para intervenção da defesa civil depois do alerta.',
+    cor: '#8ecae6',
+    camadas: ['zas-barragens'],
+  },
+  {
+    id: 'mancha',
+    label: 'Mancha de inundação',
+    hint: 'Até onde o rejeito chegaria se a barragem rompesse, pelos estudos que a FEAM publica — 156 das 259 barragens de Minas.',
+    cor: '#f8b0c8',
+    camadas: ['mancha-inundacao-barragens'],
+  },
+  {
+    id: 'minas',
+    label: 'Minas em operação',
+    hint: 'Onde há extração de minério autorizada de verdade — 7.090 poligonais da ANM em Minas.',
+    cor: '#70c678',
+    camadas: ['sigmine-operacao'],
+  },
+  {
+    id: 'imoveis-uniao',
+    label: 'Imóveis da União',
+    hint: 'Onde ficam os imóveis do governo federal, pelo cadastro da SPU. Ponto de localização, não contorno.',
+    cor: '#45ca96',
+    camadas: ['spu-imoveis-uniao'],
+  },
+];
+
 export const ASSUNTOS = [
   { id: 'sem-cadastro',  titulo: 'Terra sem cadastro' },
   { id: 'terra-publica', titulo: 'Terra pública e destinação' },
@@ -221,6 +279,16 @@ export const ASSUNTOS = [
   // O cruzamento de licença ambiental × contrato/convênio não é só mineração
   // (setor inclui resíduos e infraestrutura também), mas nasceu junto e cabe
   // melhor perto da irmã do que sozinho antes de 'cidade'.
+  // Novo em 15/08/2026. A seção acima chegou a 21 linhas, e 9 delas eram do
+  // rompimento de 2019 — o assunto mais específico do painel enterrando os
+  // mais gerais. Separar não é arrumação: as camadas de Brumadinho respondem
+  // "o que aconteceu naquele lugar", e as de cima respondem "onde há risco e
+  // pressão hoje". Só uma delas é história.
+  //
+  // Fica DEPOIS de território/mineração, e não antes, porque é o caso
+  // particular daquilo: quem chega ao mapa procurando barragem encontra
+  // primeiro a régua geral (ZAS, mancha, minas) e só então o episódio.
+  { id: 'brumadinho', titulo: 'Rompimento de Brumadinho (2019)' },
   { id: 'dinheiro', titulo: 'Dinheiro público e mineração' },
   { id: 'cidade',        titulo: 'Cidade e imóveis urbanos' },
   { id: 'pistas',        titulo: 'Fiscalização e pistas' },
@@ -485,7 +553,15 @@ export const LAYER_REGISTRY = [
   // motivo: fonte sem região aparece em qualquer filtro, nunca escondida).
   {
     id: 'spu-imoveis-uniao-vales', label: 'Imóveis do governo federal — Jequitinhonha e Mucuri',
-    hint: '154 imóveis da União nas duas mesorregiões, do cadastro da SPU. 24 deles estão registrados como "sem destinação definida" em todas as suas utilizações.',
+    // ⚠️ 24 **em todas as utilizações**, mais 1 de regime composto — conferido
+    // em 15/08/2026. Um imóvel de Teófilo Otoni grava "Em Processo de
+    // Destinação · Sem Destinação Definida" e por isso ficava fora da conta. O
+    // número não estava errado: respondia a um critério mais estrito. Só que o
+    // imóvel excluído é o mais documentado dos 25 — antigo acampamento do
+    // DNER, com 22 casas, escola e canteiro da ponte do Rio Mucuri, destinação
+    // reaberta em 30/01/2025. Então a frase passa a dizer os dois números em
+    // vez de escolher um. Ver docs/SPU-SEM-DESTINACAO.md.
+    hint: '154 imóveis da União nas duas mesorregiões, do cadastro da SPU. 24 estão registrados como "sem destinação definida" em todas as suas utilizações — 25, contando um cujo registro mistura "em processo de destinação" com "sem destinação".',
     aviso: 'Cada ponto marca ONDE fica o imóvel, não o contorno dele: a SPU não publica o perímetro. O tamanho vem do cadastro, não do desenho. Endereço não é exibido. Um imóvel pode ter mais de uma utilização, com regimes diferentes: quando tem, todas aparecem no campo "regime".',
     // SEPARÁVEL, mas por NOME e não por código: esta fonte não traz
     // `codigo_ibge` em nenhum dos 154 imóveis — traz `municipio` nos 154. Os 22
@@ -645,6 +721,22 @@ export const LAYER_REGISTRY = [
     aviso: '"Zero hoje" não é "seguro para sempre": a FEAM só publica mancha para 156 das 259 barragens de MG (ver a camada "Mancha de inundação"), e a distância mais próxima medida é de poucas centenas de metros — dentro da margem de um novo estudo de ruptura, ou de uma barragem sem mancha publicada, mudar essa conta. Se algum dia uma interseção real aparecer, esta camada é o lugar onde ela vai surgir.',
     color: 0xfb8a82, /* var(--danger) — risco calculado, não fonte de dado nova */ on: false, render: 'fill', listavel: true, vazia: true,
   },
+  // A gêmea quilombola da camada acima — e a que MUDOU DE RESPOSTA.
+  //
+  // ⚠️ O handoff de 13/08 descrevia esta camada como "resultado zero" e
+  // pedia `vazia: true`. Ao ligar o arquivo hoje (15/08), ele tem **6
+  // interseções em 3 territórios**. O que mudou entre uma data e outra foi a
+  // ingestão dos territórios quilombolas do INCRA que faltavam — e o alerta,
+  // recalculado sobre a base maior, deixou de ser zero. Publicar o texto do
+  // handoff teria posto na tela, com cara de medição, exatamente o contrário
+  // do que o dado diz: que nenhum território quilombola está sob mancha de
+  // inundação. Os números aqui foram RECONTADOS no arquivo, não copiados.
+  {
+    id: 'alerta-quilombola-mancha', label: 'Território quilombola atingido por mancha de barragem',
+    hint: 'Interseção de geometria de verdade entre os territórios quilombolas ingeridos e as manchas de inundação de barragem da FEAM. São 6 sobreposições em 3 territórios: AMAROS e MACHADINHO, sob barragens da Kinross em Paracatu, e SÃO SEBASTIÃO, sob três barragens da Salitre Fertilizantes em Serra do Salitre. A maior atinge 934,9 hectares do território.',
+    aviso: 'As áreas NÃO se somam: as três barragens de Serra do Salitre cobrem a mesma parte do território, então somá-las contaria o mesmo chão três vezes. Todas as cinco barragens estão com o plano de emergência "EM ANÁLISE" na FEAM. E a cobertura ainda é parcial — a FEAM publica mancha para 156 das 259 barragens de Minas, então território sem alerta aqui pode estar sob uma barragem que não publicou mancha.',
+    color: 0xfb8a82, /* var(--danger) — mesma regra de alerta-ti-mancha */ on: false, render: 'fill', listavel: true,
+  },
   // SIGMINE/ANM. DUAS camadas, nunca uma — ver a nota grande em
   // scripts/ingerir_sigmine.py. Só ~12,9% das 54.920 poligonais de MG
   // autorizam extrair; publicar tudo como "empreendimento minerário" diria
@@ -677,6 +769,80 @@ export const LAYER_REGISTRY = [
     // testou o pedido — no celular. Continua alcançável, uma a uma, pela
     // chave dela.
     color: 0x62b5ff, /* --layer-sigmine-interesse */ on: false, render: 'fill', listavel: true, comprimida: true, pesada: true,
+  },
+  // --- O cruzamento das duas coisas acima (15/08/2026) --------------------
+  //
+  // Estes dois arquivos existiam em `dados/camadas/` desde 13/08 e NÃO tinham
+  // entrada aqui: o handoff que os gerou deixou o `config.js` intocado de
+  // propósito, porque outro worktree editava este arquivo ao vivo. Resultado:
+  // o cruzamento mais consequente do mapa — mina autorizada em cima de terra
+  // indígena — ficou calculado e invisível por dois dias. É a mesma classe de
+  // erro que o projeto já nomeou noutro lugar: dado gravado sem consumidor é
+  // dado que não existe.
+  //
+  // A geometria de cada feição é a INTERSEÇÃO RECORTADA, não o território nem
+  // a poligonal da ANM inteiros — quem clica vê o pedaço sobreposto, com
+  // `area_intersecao_ha`. Ver docs/HANDOFF-ALERTAS-TERRITORIO.md §5.
+  // ⚠️ Os números abaixo foram RECONTADOS no arquivo em 15/08, e são maiores
+  // que os do handoff de 13/08 (que dizia 12 e 195). A base de territórios
+  // cresceu no meio do caminho. Ao reexportar qualquer um dos dois arquivos,
+  // recontar aqui também — texto de tela e arquivo servido têm que se cobrir.
+  {
+    id: 'alerta-territorio-sigmine-operacao', label: 'Terra indígena/quilombola atingida por mina em operação',
+    hint: '21 sobreposições entre território e lavra EM OPERAÇÃO, atingindo 4 terras indígenas (entre elas Krenak de Sete Salões, Xacriabá e Caxixé) e 6 territórios quilombolas. Interseção de geometria de verdade, malha completa — não caixa aproximada. Somadas, 1.539 hectares.',
+    aviso: 'Isto é FATO CONSUMADO: extração já autorizada sobreposta ao território. Nunca some esta camada com "sob interesse minerário" — são categorias jurídicas diferentes, e somá-las inventaria um número que não existe.',
+    color: 0xfb8a82, /* var(--danger) — mesma regra semântica de alerta-ti-mancha */ on: false, render: 'fill', listavel: true,
+  },
+  {
+    id: 'alerta-territorio-sigmine-interesse', label: 'Terra indígena/quilombola sob interesse minerário',
+    hint: '271 sobreposições entre território e processo de INTERESSE minerário (requerimento de pesquisa ou de lavra, área em disponibilidade), atingindo 14 terras indígenas e 18 territórios quilombolas — 51.609 hectares no total.',
+    aviso: 'Não é extração em curso: é papel protocolado na ANM, pressão futura. Muitos processos nunca viram nada. Para extração já autorizada, ver "atingida por mina em operação" — e nunca some as duas.',
+    color: 0xe2a138, /* var(--caution) — o mesmo âmbar de checagem-g0: atenção, ainda não é fato consumado */ on: false, render: 'fill', listavel: true,
+  },
+  // --- A faixa de 8 km, que enxerga o que a sobreposição não vê (15/08) -----
+  //
+  // As duas camadas acima só acusam quando o polígono da ANM ENTRA no
+  // território. A Portaria Interministerial 60/2015 não trabalha assim: ela
+  // fixa uma faixa em volta da terra indígena dentro da qual o empreendimento
+  // exige manifestação do órgão indigenista. Perto, ali, já é assunto.
+  //
+  // A diferença medida é enorme, e é o argumento inteiro destas camadas: a
+  // interseção pura vê 292 sobreposições; a faixa vê 2.164 processos, dos
+  // quais **1.899 nunca encostam no território** — e por isso eram invisíveis.
+  // A Aldeia Katurama, que dá ZERO em todo alerta de sobreposição (inclusive
+  // no de mancha de barragem, logo acima), tem 20 minas em operação e 114
+  // processos de interesse dentro dos 8 km dela.
+  //
+  // ⚠️ A faixa vem PRONTA do IDE-Sisema (`ide_2004_mg_raio_rest_*`), não é
+  // buffer desenhado por nós — e cruza SÓ o SIGMINE, nunca barragem: para
+  // barragem o piso legal é trecho de vale a jusante, e círculo superestima a
+  // zona real de 14× a 127× (docs/FONTES-TERRITORIO-E-MINERACAO.md).
+  //
+  // Cor: não há mais lacuna de matiz livre no círculo (a maior é 17,3°, e o
+  // meio dela ficaria a 8,6° de cada vizinha, abaixo do piso de 11,6° do
+  // colors.css). Então cada uma usa a IRMÃ MAIS CLARA da cor do seu alerta de
+  // interseção — mesmo precedente de `--layer-vazio-bacia` → `-curvelo`
+  // ("mesmo método, outro recorte"). Conferido em OKLCH, não em HSL: 26,0°
+  // contra 25,1° do --danger, e 75,8° contra 75,1° do --caution.
+  {
+    id: 'alerta-raio-territorio-sigmine-operacao', label: 'Mina em operação na faixa de 8 km do território',
+    hint: '328 pares processo×faixa, de 289 processos distintos, com lavra EM OPERAÇÃO dentro da faixa de restrição de 12 terras indígenas e 18 territórios quilombolas. 269 deles não encostam no território — a sobreposição não os vê. O mais próximo é uma lavra de ouro da Kinross a 73 metros dos quilombos Machadinho e São Domingos, em Paracatu.',
+    aviso: 'Estar na faixa não é estar dentro do território: é a distância em que a Portaria Interministerial 60/2015 exige manifestação do órgão indigenista. A faixa vem publicada pelo IDE-Sisema, não é círculo desenhado por nós, e vale para mineração — não para barragem, cuja zona de risco é trecho de vale a jusante, não raio.',
+    color: 0xffa79e, /* irmã mais clara de --danger (oklch 0.845 0.139 25) */ on: false, render: 'fill', listavel: true,
+  },
+  {
+    id: 'alerta-raio-territorio-sigmine-interesse', label: 'Interesse minerário na faixa de 8 km do território',
+    hint: '2.285 pares, de 1.875 processos, dentro da faixa de restrição — atingindo TODAS as 15 terras indígenas de Minas e 24 territórios quilombolas. 1.630 não encostam no território. 243 já são requerimento de lavra, e 169 são de lítio, espalhados por 12 territórios. Há processo a 3 metros da borda.',
+    aviso: 'Papel protocolado na ANM, não extração em curso — e estar na faixa não é estar dentro do território. Nunca somar com a camada de operação: são categorias jurídicas diferentes.',
+    color: 0xffbe59, /* irmã mais clara de --caution (oklch 0.845 0.139 75) */ on: false, render: 'fill', listavel: true,
+  },
+  // Documentos do processo judicial de Brumadinho, por município citado.
+  // Entra nesta seção porque o processo É sobre o rompimento de uma barragem.
+  {
+    id: 'documentos-processo-municipios', label: 'Documentos do processo que citam o município',
+    hint: '53 municípios de Minas citados nos documentos do processo judicial de Brumadinho — 1.149 menções ao todo, de 10 dos 16 processos. Brumadinho lidera com 192, seguida de São Joaquim de Bicas (81), Mário Campos (65), Pará de Minas (58) e Paraopeba (57). Clicar leva à lista publicada.',
+    aviso: 'Isto mostra onde o acervo CITA, não onde o dano foi. Só 471 dos 7.107 documentos (6,6%) têm município identificado, então município ausente do mapa não é município não atingido — e "citar" não é "ser sobre". As contagens não se somam entre municípios: um documento que cita cinco cidades aparece nas cinco.',
+    color: 0xf8b651, /* irmã mais clara de --caution, distinta do âmbar do interesse minerário */ on: false, render: 'fill', listavel: true,
   },
   // --- Dinheiro público e mineração (13/08/2026) --------------------------
   //
@@ -740,9 +906,63 @@ export const LAYER_REGISTRY = [
     aviso: 'O ponto marca o LUGAR CITADO, não o endereço exato da norma nem de nenhum imóvel — normas de bairro/distrito (confiança "média") caem no centro aproximado da área. Extraído só da ementa, nunca de PDF ou texto completo: testado e não ajuda (ver docs/normas-mapa-viabilidade.md). A maioria das normas não aparece aqui — não tem endereço reconhecível na ementa, o que é o caso comum, não uma falha da busca.',
     color: 0x6366f1,   /* --layer-normas: violeta-azulado, sem par no restante do registro */ on: false, render: 'point', pointSize: 0.005, listavel: true,
   },
+  // Norma que MEXE em área protegida — parente de `normas-geolocalizadas`
+  // (as duas saem de `atos_oficiais`), mas responde outra pergunta: aquela
+  // mostra onde a norma cita um lugar; esta mostra onde a norma cria, amplia
+  // ou redefine unidade de conservação. Ver docs/HANDOFF-ALERTAS-TERRITORIO.md §3.
+  //
+  // ⚠️ ERRO CORRIGIDO em 15/08 — a cor que entrou primeiro aqui estava errada,
+  // e o handoff estava certo o tempo todo.
+  //
+  // Eu tinha rejeitado o matiz ~115° que ele propunha, alegando que cairia a
+  // 10,2° do verde de "Minas em operação". Aquela medição foi feita em **HSL**,
+  // convertendo os hexadecimais um a um. Mas `css/tokens/colors.css` declara
+  // toda a paleta em **OKLCH**, e é nesse espaço que o piso de 11,6° de
+  // separação daquele arquivo é definido — HSL e OKLCH não concordam sobre o
+  // que é "mesmo matiz", e a conversão levou a conclusão para o lado oposto.
+  //
+  // Medido de novo, com os valores que o próprio colors.css declara:
+  //   115,4° fica a 13,4° de --layer-lotes-vagos e 13,4° de --layer-quilombolas
+  //          (acima do piso), e a 30,7° do verde das minas — não 10,2°.
+  //   O 0xeb8dec que eu tinha escolhido mede oklch(0,774 0,164 326,65): a
+  //          **3,4° de --fiction**, a cor reservada a dado INVENTADO. Uma
+  //          camada de norma medida ia sair quase da cor do "isto é fictício".
+  //
+  // Fica `oklch(0.754 0.139 115.4)` = #acb947, o meio da segunda maior lacuna
+  // real, na mesma família L/C do resto da paleta. A lição não é sobre esta
+  // camada: é que medir cor no espaço errado inverte a resposta com toda a
+  // aparência de rigor.
+  {
+    id: 'atos-area-protegida-municipios', label: 'Normas que criam ou alteram área protegida',
+    // Um ponto por MUNICÍPIO, não por norma: são 3 pontos para 8 normas
+    // (Belo Horizonte 4, Diamantina 3, Araçuaí 1). O contador do painel mostra
+    // 3, e sem esta frase a diferença para o "8" do texto pareceria erro.
+    hint: '8 normas municipais que criam, ampliam ou redefinem o zoneamento de área de proteção ambiental, parque ou monumento natural — reunidas em 3 pontos, um por município: Belo Horizonte (4), Diamantina (3) e Araçuaí (1, a Lei 726/2025, que modifica o zoneamento da APA da Chapada do Lagoão).',
+    aviso: 'Cobre só 3 dos 854 municípios de Minas Gerais. Betim e Itinga têm zero normas deste tipo, medido — não é lacuna de coleta. Nos outros 846, ausência aqui quer dizer que a legislação ainda não foi coletada, não que não exista norma. A classificação de cada norma (cria/altera área × só administrativo) foi feita lendo a ementa inteira à mão.',
+    color: 0xacb947, /* oklch(0.754 0.139 115.4) — ver a nota acima */ on: false, render: 'point', pointSize: 0.005, listavel: true,
+  },
   // Camada dinâmica custom (Fase G3): satélites dos sensores do projeto em
   // órbita SGP4 real (TLE CelesTrak). Não vem do endpoint /camadas — a
   // factory fica em layers/satelites.js e é registrada no main.js.
+  // Imagem de satélite que acompanha o zoom (15/08/2026). É o CHÃO das outras
+  // camadas: tudo é desenhado sobre ela.
+  //
+  // Nasce ligada, e isso é decisão de conteúdo: a queixa que originou a camada
+  // é que, no zoom fundo, o contorno da área ficava sobre um borrão do Blue
+  // Marble esticado — 7,4 km por pixel. Ou seja, o defeito aparecia justamente
+  // para quem já tinha chegado onde queria. Ligada por padrão, ninguém precisa
+  // descobrir uma chave para o mapa fazer sentido. Nada é baixado enquanto a
+  // câmera está longe: ver layers/imagens.js.
+  {
+    id: 'imagens-satelite', label: 'Imagem de satélite',
+    hint: 'Foto do terreno, que vai ficando mais nítida conforme você aproxima. Em cor natural, do World Imagery da Esri.',
+    aviso: 'A imagem mostra como o lugar estava quando foi fotografado, não hoje. Serve para ver a FORMA da área — mata, lavoura, estrada, represa —, não para dizer de quem ela é.',
+    color: 0x7c8b9e,   /* cinza de instrumento: é fundo, não achado */
+    on: true, render: 'custom',
+    // Não se mede em feições: o contador dela diz a ESCALA na tela, e quem
+    // escreve esse rótulo é a própria camada (ver main.js).
+    semContagem: true,
+  },
   {
     id: 'satelites-orbita', label: 'Satélites em órbita',
     hint: 'Onde estão agora os satélites que fotografam essas áreas. Posição calculada em tempo real.',
@@ -847,8 +1067,15 @@ export const CAMADAS = [
   // truncamento silencioso, e o índice de cada área é endereço público.
   {
     id: 'vazio-cadastral-curvelo', assunto: 'sem-cadastro',
-    label: 'Terra sem cadastro — detalhe de Curvelo',
-    hint: 'O mesmo cálculo em um município só, descendo às manchas pequenas: 390 áreas a partir de 10 hectares — uns 14 campos de futebol cada. É o recorte piloto, onde o método foi afinado. As 12 áreas de 500 hectares ou mais também aparecem na camada acima: aqui elas vêm acompanhadas das pequenas.',
+    label: 'Terra sem cadastro — as áreas pequenas de Curvelo',
+    // ⚠️ 378, não 390, e a diferença é o conserto de uma DUPLICAÇÃO real
+    // (15/08/2026, scripts/deduplicar_vazio_curvelo.py). Curvelo é um dos 14
+    // municípios da camada acima, então as 12 áreas de 500 ha ou mais estavam
+    // NOS DOIS arquivos — mesmo polígono, mesma cor, desenhado duas vezes com
+    // as duas camadas ligadas, e o contador somava 425 onde existem 413 áreas
+    // distintas. Agora esta camada é o COMPLEMENTO da de cima, não um
+    // superconjunto dela: as duas se somam sem repetir nada.
+    hint: 'O mesmo cálculo em um município só, descendo às manchas pequenas que o corte de 500 hectares não alcança: 378 áreas entre 10 e 500 hectares — a menor tem uns 14 campos de futebol. É o recorte piloto, onde o método foi afinado. As áreas grandes de Curvelo estão na camada acima, e não se repetem aqui.',
     aviso: 'Sem cadastro não quer dizer sem dono. Pode ser terra pública, pode ser imóvel particular que nunca se cadastrou. É um lugar para conferir, não uma conclusão.',
     fontes: ['vazio-cadastral'],
   },
@@ -925,51 +1152,51 @@ export const CAMADAS = [
   // (satélite, depois do rompimento), nunca confundir com a simulação
   // hipotética das duas linhas de cima.
   {
-    id: 'brumadinho-area-atingida', assunto: 'territorio-mineracao',
+    id: 'brumadinho-area-atingida', assunto: 'brumadinho',
     label: 'Brumadinho — área REALMENTE atingida (2019)',
     hint: 'Os 2 polígonos que a Semad mapeou por satélite (Pleiades, escala 1:2.500) sobre o que o rejeito de fato cobriu quando a Barragem I rompeu, 25/01/2019 — 270 mortes. NÃO é a mesma coisa que "Mancha de inundação (barragens)": aquela é um cenário hipotético de engenharia para 156 barragens; esta é o registro do que aconteceu de verdade, só na B1.',
     aviso: 'Não confundir com a camada "Mancha de inundação (barragens)": esta aqui é FATO CONSUMADO, medido por satélite depois do rompimento — não é simulação, não é previsão, é o que já aconteceu.',
     fontes: ['brumadinho-area-atingida'],
   },
   {
-    id: 'brumadinho-monitoramento', assunto: 'territorio-mineracao',
+    id: 'brumadinho-monitoramento', assunto: 'brumadinho',
     label: 'Brumadinho — pontos de monitoramento ambiental',
     hint: '291 pontos onde a Semad monitora água, ar, ruído e geotecnia depois do rompimento. Maioria (140) é monitoramento de rejeito. O campo "categoria" na ficha diz o quê: Rejeitos, Água Superficial e Sedimentos, Água Subterrânea, Água Superficial, Ruído, Hidrossedimentométrico, Ar, Efluente, Poço Cava Feijão, Radar Geotécnico.',
     fontes: ['brumadinho-monitoramento'],
   },
   {
-    id: 'brumadinho-remanejamento', assunto: 'territorio-mineracao',
+    id: 'brumadinho-remanejamento', assunto: 'brumadinho',
     label: 'Brumadinho — origem de famílias remanejadas',
     hint: '104 pontos de ORIGEM (não o destino) de famílias remanejadas depois do rompimento, agrupados por bairro/comunidade — "Parque da Cachoeira" (57), "Córrego do Feijão" (34) e mais 6 origens. O esquema desta camada tem só duas colunas de texto (classe + descrição): sem nome, sem CPF, sem endereço — conferido campo a campo antes de publicar.',
     aviso: 'Cada ponto marca a ORIGEM agregada por bairro, não a casa de ninguém: a Semad não publica endereço nem nome de família. Ainda assim, evite ler isto como localizador de pessoa — é dado de política de reparação, não cadastro de residência.',
     fontes: ['brumadinho-remanejamento'],
   },
   {
-    id: 'brumadinho-estruturas-contencao', assunto: 'territorio-mineracao',
+    id: 'brumadinho-estruturas-contencao', assunto: 'brumadinho',
     label: 'Brumadinho — estruturas de contenção',
     hint: '37 estruturas emergenciais construídas para conter o rejeito depois do rompimento: diques, estacas-prancha, barreiras estabilizantes de calha.',
     fontes: ['brumadinho-estruturas-contencao'],
   },
   {
-    id: 'brumadinho-obras-poligonais', assunto: 'territorio-mineracao',
+    id: 'brumadinho-obras-poligonais', assunto: 'brumadinho',
     label: 'Brumadinho — obras e intervenções (área)',
     hint: '22 obras emergenciais com área própria: pontes, ETA, disposição de rejeito, dragagem. Mesmo conceito de "obras e intervenções" que as duas linhas seguintes — partido em três linhas porque cada uma tem geometria diferente na origem (área/ponto/linha), não porque sejam assuntos distintos.',
     fontes: ['brumadinho-obras-poligonais'],
   },
   {
-    id: 'brumadinho-obras-pontuais', assunto: 'territorio-mineracao',
+    id: 'brumadinho-obras-pontuais', assunto: 'brumadinho',
     label: 'Brumadinho — obras e intervenções (ponto)',
     hint: '13 obras emergenciais pontuais: tratamento de sedimento, bombeamento emergencial, instrumentação.',
     fontes: ['brumadinho-obras-pontuais'],
   },
   {
-    id: 'brumadinho-obras-lineares', assunto: 'territorio-mineracao',
+    id: 'brumadinho-obras-lineares', assunto: 'brumadinho',
     label: 'Brumadinho — obras e intervenções (linha)',
     hint: '1 obra linear: dragagem emergencial.',
     fontes: ['brumadinho-obras-lineares'],
   },
   {
-    id: 'brumadinho-restauracao', assunto: 'territorio-mineracao',
+    id: 'brumadinho-restauracao', assunto: 'brumadinho',
     label: 'Brumadinho — áreas de restauração',
     hint: '35 áreas de revegetação/restauração, por platô/setor, nas áreas afetadas pelo rompimento.',
     fontes: ['brumadinho-restauracao'],
@@ -1000,6 +1227,71 @@ export const CAMADAS = [
     hint: '47.830 poligonais em MG — requerimento de pesquisa, de lavra, de licenciamento, área em disponibilidade. É um PAPEL PROTOCOLADO na ANM, não uma mina: mostra onde há interesse ou pressão futura, não onde já se extrai.',
     aviso: 'Nenhum destes polígonos representa extração em curso — para isso, ver a camada "Minas em operação". A fase de cada processo aparece na ficha.',
     fontes: ['sigmine-interesse'],
+  },
+  // --- Os cruzamentos, ligados em 15/08/2026 -------------------------------
+  // Ordem deliberada: o que JÁ ACONTECE vem antes do que PODE acontecer, e o
+  // zero medido vem por último. Quem abre a seção lê primeiro as 12 minas em
+  // operação sobre território, não as 195 de papel protocolado.
+  {
+    id: 'alerta-territorio-sigmine-operacao', assunto: 'territorio-mineracao',
+    label: 'Terra indígena/quilombola atingida por mina em operação',
+    hint: '21 sobreposições — 4 terras indígenas e 6 territórios quilombolas com lavra JÁ EM OPERAÇÃO por cima, somando 1.539 hectares.',
+    aviso: 'Fato consumado. Nunca somar com "sob interesse minerário": é outra categoria jurídica.',
+    fontes: ['alerta-territorio-sigmine-operacao'],
+  },
+  {
+    id: 'alerta-territorio-sigmine-interesse', assunto: 'territorio-mineracao',
+    label: 'Terra indígena/quilombola sob interesse minerário',
+    hint: '271 sobreposições — 14 terras indígenas e 18 territórios quilombolas com algum processo de interesse por cima, somando 51.609 hectares. Não é mina: é requerimento.',
+    aviso: 'Papel protocolado na ANM, não extração em curso. Para extração de verdade, ver "atingida por mina em operação".',
+    fontes: ['alerta-territorio-sigmine-interesse'],
+  },
+  {
+    id: 'alerta-quilombola-mancha', assunto: 'territorio-mineracao',
+    label: 'Território quilombola atingido por mancha de barragem',
+    hint: '6 sobreposições em 3 territórios: AMAROS e MACHADINHO sob barragens da Kinross em Paracatu, e SÃO SEBASTIÃO sob três barragens da Salitre Fertilizantes em Serra do Salitre. A maior atinge 934,9 hectares.',
+    aviso: 'As áreas não se somam — as três barragens de Serra do Salitre cobrem a mesma parte do território. Todas as cinco barragens estão com plano de emergência "em análise" na FEAM.',
+    fontes: ['alerta-quilombola-mancha'],
+  },
+  // A faixa de 8 km. Vem DEPOIS das três de sobreposição de propósito: quem
+  // lê a seção encontra primeiro o que já está dentro do território, e só
+  // então o que está perto. Ver a nota grande no LAYER_REGISTRY.
+  {
+    id: 'alerta-raio-territorio-sigmine-operacao', assunto: 'territorio-mineracao',
+    label: 'Mina em operação na faixa de 8 km do território',
+    hint: '328 pares, de 289 processos com lavra em operação dentro da faixa de restrição de 12 terras indígenas e 18 territórios quilombolas — 269 deles sem encostar no território, invisíveis para o alerta de sobreposição. O mais próximo, ouro da Kinross a 73 m de Machadinho e São Domingos.',
+    aviso: 'Estar na faixa não é estar dentro: é a distância em que a Portaria 60/2015 exige manifestação do órgão indigenista. Vale para mineração, não para barragem.',
+    fontes: ['alerta-raio-territorio-sigmine-operacao'],
+  },
+  {
+    id: 'alerta-raio-territorio-sigmine-interesse', assunto: 'territorio-mineracao',
+    label: 'Interesse minerário na faixa de 8 km do território',
+    hint: '2.285 pares, de 1.875 processos, atingindo TODAS as 15 terras indígenas de Minas e 24 territórios quilombolas. 1.630 não encostam no território. 243 já são requerimento de lavra; 169 são de lítio, em 12 territórios.',
+    aviso: 'Papel protocolado na ANM, não extração. Nunca somar com a camada de operação.',
+    fontes: ['alerta-raio-territorio-sigmine-interesse'],
+  },
+  {
+    id: 'documentos-processo-municipios', assunto: 'brumadinho',
+    label: 'Documentos do processo que citam o município',
+    hint: '53 municípios citados nos documentos do processo judicial de Brumadinho, 1.149 menções. Brumadinho 192, São Joaquim de Bicas 81, Mário Campos 65.',
+    aviso: 'Mostra onde o acervo CITA, não onde o dano foi: só 6,6% dos documentos têm município identificado, e as contagens não se somam entre municípios.',
+    fontes: ['documentos-processo-municipios'],
+  },
+  // Fica em `territorio-mineracao`, e NÃO num assunto `legislacao-ambiental`
+  // novo como o handoff sugeria. Duas razões: uma seção de um item só é ruído
+  // no painel que este projeto está justamente tentando enxugar, e a camada
+  // dialoga diretamente com as de cima — é onde a lei protege contra a pressão
+  // que as outras mostram. A irmã dela (`normas-geolocalizadas`) também não
+  // tem seção própria: está em `cidade`.
+  // 👉 Quando a legislação FEDERAL entrar (docs/FONTES-CNJ-JUMA.md: 8,5 a 10,4
+  // mil normas do MMA/CONAMA), aí sim há massa para um assunto próprio — e
+  // esta entrada é a primeira que deve migrar para ele.
+  {
+    id: 'atos-area-protegida-municipios', assunto: 'territorio-mineracao',
+    label: 'Normas que criam ou alteram área protegida',
+    hint: '8 normas que criam, ampliam ou redefinem área de proteção ambiental, parque ou monumento natural, em 3 pontos — um por município: Belo Horizonte (4), Diamantina (3) e Araçuaí (1).',
+    aviso: 'Cobre só municípios com legislação já coletada — 6 de 854. Betim e Itinga foram medidos e têm zero normas deste tipo; nos outros 848, ausência aqui quer dizer coleta que ainda não aconteceu.',
+    fontes: ['atos-area-protegida-municipios'],
   },
   // --- Dinheiro público e mineração (13/08/2026, docs/HANDOFF-CAMADA-DINHEIRO.md)
   {
@@ -1056,6 +1348,13 @@ export const CAMADAS = [
     label: 'Divisas dos municípios',
     hint: 'Os 853 municípios de Minas Gerais, pelo mapa oficial do IBGE. É moldura para se localizar, não um achado da pesquisa.',
     fontes: ['municipios-mg'],
+  },
+  {
+    id: 'imagens-satelite', assunto: 'referencia',
+    label: 'Imagem de satélite',
+    hint: 'Foto do terreno, que fica mais nítida conforme você aproxima. Cor natural, do World Imagery da Esri.',
+    aviso: 'Mostra como o lugar estava quando foi fotografado, não hoje.',
+    fontes: ['imagens-satelite'],
   },
   {
     id: 'satelites-orbita', assunto: 'referencia',

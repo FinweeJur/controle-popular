@@ -137,7 +137,7 @@ adotado tem que passar nos três.
 | Integração Brumadinho (8 camadas + acervo) | `docs/PLANO-INTEGRACAO-BRUMADINHO.md` |
 | Ingestão do painel Paraopeba e do acervo UFMG | `docs/PLANO-INGESTAO-PARAOPEBA.md` |
 | CNJ/DataJud, JUMA, MMA/CONAMA, CNDH | `docs/FONTES-CNJ-JUMA.md` |
-| Bases de clima e risco | `docs/PLANO-BASES-CLIMA-E-RISCO.md` |
+| Bases de clima e risco | `docs/PLANO-BASES-CLIMA-E-RISCO.md` — **1ª fatia feita em 15/08** (AdaptaBrasil + INMET): `docs/CLIMA-ADAPTABRASIL-E-INMET.md`. Falta aplicar a `0074` e rodar a carga num Postgres local, e o BATER inteiro. |
 | Direitos em Movimento | `docs/PLANO-DIREITOS-EM-MOVIMENTO.md` |
 | Facilitador de ação cidadã | `docs/PLANO-ACAO-CIDADA.md` |
 

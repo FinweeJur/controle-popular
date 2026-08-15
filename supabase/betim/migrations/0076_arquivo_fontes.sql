@@ -1,4 +1,8 @@
--- 0073_arquivo_fontes.sql
+-- 0076_arquivo_fontes.sql
+-- ⟲ 15/08/2026: era 0073. Renumerada no merge com o PC externo, que trouxe
+-- o seu próprio 0073 (legislacao_federal_esfera) e um 0074. Convenção de
+-- docs/worktrees.md: quem mescla por último renumera. Renumerar não reaplica
+-- nada — não há tabela de controle, o número só ordena a leitura humana.
 -- Arquivo (cópia) dos documentos que o portal cita como fonte — pedido do
 -- dono em 13/08/2026, desenhado em `docs/PLANO-ARQUIVO-DE-FONTES.md`.
 -- Recorte desta primeira leva: normas de PROTEÇÃO (serras, recursos

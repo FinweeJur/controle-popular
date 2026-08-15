@@ -19,17 +19,19 @@ import type {
  *
  * ═══ ESFERA — CAMPO DE PRIMEIRA CLASSE (pedido explícito da tarefa) ═══
  *
- * Hoje ela é IMPLÍCITA: as três fontes de `ambiental_legislacao` (ALMG,
- * Semad, Siam) são todas estaduais — ALMG é a Assembleia de MG, Semad e
- * Siam são o órgão ambiental estadual — e `direito_critico_*.natureza` já
- * distingue nacional de internacional. Nenhuma migration foi necessária:
- * a esfera de cada linha é uma função DETERMINÍSTICA da fonte/natureza que
- * ela já tem (`esferaEstadual`/`esferaDaNatureza` abaixo), não um dado
- * novo para coletar. Isso é deliberado — a legislação federal do MMA que
- * outra frente está planejando entra trocando só a função de origem
- * (`esferaFederal` a escrever quando aquela fonte chegar), sem mexer no
- * filtro nem no tipo `EsferaLegislacao`, que já tem `"nacional"` e
- * `"municipal"` previstos.
+ * Era IMPLÍCITA até 14/08/2026: as três fontes de `ambiental_legislacao`
+ * (ALMG, Semad, Siam) eram todas estaduais, e `esferaEstadual()` devolvia
+ * a constante `"estadual"` sem sequer olhar a linha. Isso parou de valer
+ * quando a MESMA tabela recebeu legislação FEDERAL — MMA/Conama e CNDH,
+ * migration `0073`: a função continuaria devolvendo "estadual" e a tela
+ * mentiria o rótulo de quase 9 mil normas federais.
+ *
+ * A esfera agora é COLUNA do banco (`ambiental_legislacao.esfera`, com
+ * `check`), lida direto da linha por `esferaDaLegislacao`. O `check` do
+ * Postgres e o tipo `EsferaLegislacao` daqui usam o MESMO vocabulário de
+ * quatro valores — `municipal` fica reservado para o dia em que
+ * `atos_oficiais` entrar, `internacional` é o que `direito_critico_*` já
+ * usava. Nenhuma tabela de tradução entre banco e tela.
  *
  * ═══ POR QUE UNIÃO DE VOCABULÁRIOS, NÃO UM NOVO INVENTADO AQUI ═══
  *
@@ -56,15 +58,17 @@ export const ESFERA_LABEL: Record<EsferaLegislacao, string> = {
   internacional: "Internacional",
 };
 
-/** As três fontes de `ambiental_legislacao` são todas estaduais — medido
- *  (ALMG = Legislativo de MG; Semad/Siam = órgão ambiental estadual),
- *  nenhuma das três publica norma municipal ou federal. Recebe `fonte`
- *  (sem usar) por simetria com `esferaDaNatureza` — o dia em que uma
- *  quarta fonte estadual tiver esfera diferente, a mudança fica CONTIDA
- *  aqui, não espalhada pelos chamadores. */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function esferaEstadual(fonte: FonteLegislacaoAmbiental): "estadual" {
-  return "estadual";
+/** Esfera de uma linha de `ambiental_legislacao`: vem da COLUNA `esfera`
+ *  (migration 0073), não de um `case` sobre a fonte. O `??` cobre um caso
+ *  só — linha lida de um banco anterior à migration, onde a coluna não
+ *  existe: aí "estadual" é o default correto, porque as únicas fontes que
+ *  existiam antes dela eram as três de Minas. Um valor fora do
+ *  vocabulário (impossível pelo `check` do banco, mas o tipo da query é
+ *  `string`) também cai em "estadual" em vez de quebrar a tela. */
+export function esferaDaLegislacao(esfera: string | null | undefined): EsferaLegislacao {
+  return esfera === "municipal" || esfera === "nacional" || esfera === "internacional"
+    ? esfera
+    : "estadual";
 }
 
 /** `natureza` de `direito_critico_*` já É a esfera (nacional/internacional)
@@ -122,9 +126,12 @@ interface ItemBase {
   esfera: EsferaLegislacao;
 }
 
+/** O nome da CLASSE continua "estadual" por compatibilidade com o filtro
+ *  já publicado, mas ela agora quer dizer "linha de `ambiental_legislacao`"
+ *  — que pode ser estadual (ALMG/Semad/Siam) ou nacional (MMA/CNDH). Por
+ *  isso `esfera` aqui é o tipo inteiro, não mais o literal `"estadual"`. */
 export interface ItemEstadual extends ItemBase {
   classe: "estadual";
-  esfera: "estadual";
   row: LegislacaoAmbientalRow;
 }
 
@@ -156,8 +163,15 @@ export function unificarItens(
 ): ItemLegislacaoUnificada[] {
   const itensEstaduais: ItemEstadual[] = estaduais.map((row, idx) => ({
     classe: "estadual",
-    esfera: esferaEstadual(row.fonte),
-    chave: `estadual-${row.fonte}-${row.chaveDedup ?? `${row.tipo}-${row.numero}-${row.ano}-${idx}`}`,
+    esfera: esferaDaLegislacao(row.esfera),
+    // A chave é POSICIONAL (índice no array base, que nunca é reordenado —
+    // filtrar só produz subconjunto). Já foi `chaveDedup`, e isso quebrou
+    // com a chegada das fontes federais: `chave_dedup` NÃO é única por
+    // construção — ela existe justamente para APONTAR repetição (a mesma
+    // norma em duas fontes), e no MMA colide também dentro da própria
+    // fonte (324 chaves cobrindo 772 registros, medido). React reclamava
+    // de chave duplicada e podia omitir cards.
+    chave: `estadual-${row.fonte}-${idx}`,
     row,
   }));
   const itensCriticos: ItemCritico[] = criticas.map((row) => ({

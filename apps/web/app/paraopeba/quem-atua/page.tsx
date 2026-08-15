@@ -27,6 +27,21 @@ export const metadata: Metadata = {
 
 const ORDEM_CATEGORIAS: CategoriaAtor[] = ["judiciario", "mp", "gestora", "mov", "pub"];
 
+// A categoria "mov" mistura dois papéis distintos que `atores.ts` já
+// descreve separadamente em `papelNoPainel`: o movimento social de base
+// (MAB) e as três assessorias técnicas independentes — ATIs (AEDAS, NACAB,
+// Instituto Guaicuy), eleitas pelas pessoas atingidas mas profissionais de
+// apoio, não o movimento em si. `docs/PLANO-INGESTAO-PARAOPEBA.md` (1.5)
+// já trata o MAB à parte das ATIs ("MAB (organização, contato de
+// articulação)" vs. "as três ATIs") e trata ABA/Ascotélite/IEM como
+// "associações autoras da ação" institucionais, não movimento — duas delas
+// com `contatos: []` no próprio painel-fonte. Por isso o destaque na hero
+// é só o MAB: é o único ator cujo `papelNoPainel` o identifica como
+// "Movimento social de base", e é o pedido literal do dono ("o movimento").
+const MOVIMENTO = ATORES_REPARACAO.find(
+  (a) => a.papelNoPainel === "Movimento social de base",
+);
+
 export default function QuemAtuaPage() {
   // ⟲ 13/08, revisão de onboarding: era `<div>` — mesmo conserto de
   // `clipping/page.tsx` (ver o comentário lá).
@@ -48,9 +63,47 @@ export default function QuemAtuaPage() {
         atingidas, que raramente aparecem em outro lugar.
       </p>
 
+      {/* Hero do movimento: num rompimento de barragem, a organização das
+          pessoas atingidas é parte interessada com posição própria — não
+          mais um item em ordem alfabética ao lado de gestora de repasse ou
+          Advocacia-Geral da União. Fica sozinho aqui mesmo que a base tenha
+          pouco sobre ele (2 contatos); o pouco aparece, nada é inventado. */}
+      {MOVIMENTO && (
+        <section className="mt-6 rounded-2xl border-2 border-primary bg-surface p-6 shadow-sm">
+          <p className="text-xs font-semibold tracking-wide text-primary uppercase">
+            O movimento
+          </p>
+          <h2 className="mt-1 font-display text-xl font-semibold text-text">
+            {MOVIMENTO.nome}
+          </h2>
+          <p className="mt-2 text-sm text-text-soft">{MOVIMENTO.atuacao}</p>
+          {MOVIMENTO.nota && (
+            <p className="mt-2 text-xs text-text-soft italic">{MOVIMENTO.nota}</p>
+          )}
+          {MOVIMENTO.contatos.length > 0 && (
+            <div className="mt-3 flex flex-wrap gap-3 border-t border-border/60 pt-3">
+              {MOVIMENTO.contatos.map((c) => (
+                <a
+                  key={c.href}
+                  href={c.href}
+                  target={c.tipo === "web" ? "_blank" : undefined}
+                  rel={c.tipo === "web" ? "noopener noreferrer" : undefined}
+                  className="text-xs font-medium text-primary underline underline-offset-2 hover:text-accent"
+                >
+                  {c.label}
+                  {c.tipo === "web" ? " ↗" : ""}
+                </a>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
+
       <div className="mt-8 flex flex-col gap-10">
         {ORDEM_CATEGORIAS.map((cat) => {
-          const itens = ATORES_REPARACAO.filter((a) => a.categoria === cat);
+          const itens = ATORES_REPARACAO.filter(
+            (a) => a.categoria === cat && a !== MOVIMENTO,
+          );
           if (itens.length === 0) return null;
           return (
             <section key={cat}>

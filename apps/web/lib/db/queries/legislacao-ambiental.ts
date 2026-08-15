@@ -24,10 +24,29 @@ import { ambiental_legislacao } from "@/lib/db/schema";
  * ninguém lembra de rodar, por um ganho que o tamanho atual não justifica.
  */
 
-export type FonteLegislacaoAmbiental = "almg" | "semad" | "siam";
+/** As três estaduais (migration 0065) mais as duas federais (0073) — cada
+ *  uma com licença própria, ver `docs/LEGISLACAO-FEDERAL-MMA-CNDH.md`. */
+export type FonteLegislacaoAmbiental = "almg" | "semad" | "siam" | "mma" | "cndh";
+
+export const FONTES_LEGISLACAO_AMBIENTAL = [
+  "almg",
+  "semad",
+  "siam",
+  "mma",
+  "cndh",
+] as const satisfies readonly FonteLegislacaoAmbiental[];
 
 export interface LegislacaoAmbientalRow {
   fonte: FonteLegislacaoAmbiental;
+  /** Coluna do banco desde a migration 0073 — não mais uma constante
+   *  calculada no app. Na prática 'estadual' (ALMG/Semad/Siam) ou
+   *  'nacional' (MMA/CNDH); o check do banco reserva ainda 'municipal' e
+   *  'internacional' para fontes que não chegaram. */
+  esfera: string;
+  /** Vigência tal como a FONTE escreve ("VIGENTE", "REVOGADO", "NÃO CONSTA
+   *  REVOGAÇÃO EXPRESSA"...). `null` quer dizer que a fonte não informa —
+   *  o caso das três estaduais —, nunca "está em vigor". */
+  situacao: string | null;
   tipo: string;
   numero: string | null;
   ano: number | null;
@@ -50,6 +69,8 @@ export interface LegislacaoAmbientalRow {
 function paraLinha(r: typeof ambiental_legislacao.$inferSelect): LegislacaoAmbientalRow {
   return {
     fonte: r.fonte as FonteLegislacaoAmbiental,
+    esfera: r.esfera,
+    situacao: r.situacao,
     tipo: r.tipo,
     numero: r.numero,
     ano: r.ano,
@@ -84,7 +105,13 @@ export interface ContagemLegislacaoAmbiental {
 /** Card da home de `/ambiental` — número real, não estimativa. */
 export async function contarLegislacaoAmbiental(): Promise<ContagemLegislacaoAmbiental> {
   const db = getDb();
-  const vazio: ContagemLegislacaoAmbiental = { total: 0, porFonte: { almg: 0, semad: 0, siam: 0 } };
+  const vazio: ContagemLegislacaoAmbiental = {
+    total: 0,
+    porFonte: Object.fromEntries(FONTES_LEGISLACAO_AMBIENTAL.map((f) => [f, 0])) as Record<
+      FonteLegislacaoAmbiental,
+      number
+    >,
+  };
   if (!db) return vazio;
 
   const linhas = await db.execute<{ fonte: FonteLegislacaoAmbiental; n: number }>(sql`
@@ -102,10 +129,11 @@ export async function contarLegislacaoAmbiental(): Promise<ContagemLegislacaoAmb
 export interface CoberturaTemasLegislacaoAmbiental {
   total: number;
   comTema: number;
-  /** Só a ALMG expõe taxonomia oficial (`indexacao`) — Semad e Siam viram
-   *  tags/temas só por palavra-chave na ementa. Números medidos, não a
-   *  premissa: ver `etl/temas_ambientais.py` para a diferença de método
-   *  entre as três fontes. */
+  /** ALMG e MMA expõem taxonomia oficial (`indexacao`) — Semad, Siam e
+   *  CNDH viram tags/temas só por palavra-chave na ementa, e o vocabulário
+   *  plano do MMA não casa com o classificador de caminho da ALMG, então
+   *  na prática só a ALMG tem os dois sinais. Números medidos, não a
+   *  premissa: ver `etl/temas_ambientais.py`. */
   porFonte: Record<FonteLegislacaoAmbiental, { total: number; comTema: number }>;
 }
 
@@ -117,11 +145,9 @@ export async function contarCoberturaTemasLegislacaoAmbiental(): Promise<Cobertu
   const vazio: CoberturaTemasLegislacaoAmbiental = {
     total: 0,
     comTema: 0,
-    porFonte: {
-      almg: { total: 0, comTema: 0 },
-      semad: { total: 0, comTema: 0 },
-      siam: { total: 0, comTema: 0 },
-    },
+    porFonte: Object.fromEntries(
+      FONTES_LEGISLACAO_AMBIENTAL.map((f) => [f, { total: 0, comTema: 0 }])
+    ) as Record<FonteLegislacaoAmbiental, { total: number; comTema: number }>,
   };
   if (!db) return vazio;
 

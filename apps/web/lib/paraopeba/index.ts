@@ -9,8 +9,9 @@
  *
  * ═══ DUAS FONTES, DUAS DISCIPLINAS DIFERENTES ═══
  *
- * `clipping.ts`, `linha-do-tempo.ts`, `atores.ts` e `auxilio.ts` vêm de
- * `painel-paraopeba.html` — um snapshot manual entregue pelo dono, sem API
+ * `clipping.ts`, `clipping-ati.ts`, `clipping-ij.ts`, `linha-do-tempo.ts`,
+ * `atores.ts` e `auxilio.ts` vêm de `painel-paraopeba.html` — um snapshot
+ * manual entregue pelo dono, sem API
  * por trás. `documentos.ts` vem do índice Solr público e vivo da Plataforma
  * Brumadinho UFMG, cruzado por município via o campo `places` que a própria
  * UFMG preenche (zero inferência de texto). As duas nunca se misturam num
@@ -18,6 +19,8 @@
  * separadas, e este barril preserva a separação.
  */
 export * from "./clipping";
+export * from "./clipping-ati";
+export * from "./clipping-ij";
 export * from "./linha-do-tempo";
 export * from "./atores";
 export * from "./auxilio";

@@ -36,7 +36,7 @@ a maioria **sem mudança**.
 | Item | Tipo antes | O que foi feito | Tipo depois |
 |---|---|---|---|
 | Defensoria Pública de MG — e-SIC/LAI | não verificado | O SIC mora em subdomínio diferente do site institucional (`transparencia.defensoria.mg.def.br`, não `defensoria.mg.def.br`) — a URL testada antes simplesmente era a errada. Formulário SEI confirmado ao vivo, com telefone (31) 3526-0500 e endereço. Virou item confirmado em `LAI_ESTADUAL`. | **resolvido** |
-| Ouvidoria da Prefeitura de Betim | não verificado (URL viva em 2026-08-04, sem resposta em 13/08) | A URL antiga voltou vazia **dois dias seguidos** (13 e 14/08) — deixou de ser instabilidade pontual. Trocada por alternativa viva no mesmo domínio institucional via migration `0073_ouvidoria_betim_link_morto.sql`, aplicada ao Postgres local. É o link real que `PedidoLAI`/`FooterGlobal` usam (`municipios.fontes.ouvidoria`). | **desatualizado → corrigido com fonte confirmada** |
+| Ouvidoria da Prefeitura de Betim | não verificado (URL viva em 2026-08-04, sem resposta em 13/08) | A URL antiga voltou vazia **dois dias seguidos** (13 e 14/08) — deixou de ser instabilidade pontual. Trocada por alternativa viva no mesmo domínio institucional via migration `0075_ouvidoria_betim_link_morto.sql`, aplicada ao Postgres local. É o link real que `PedidoLAI`/`FooterGlobal` usam (`municipios.fontes.ouvidoria`). | **desatualizado → corrigido com fonte confirmada** |
 | NAJUP / AJUP-UFMG | não verificado | Página institucional (`ufmg.br/proex/ajup/`) achada e ativa — edital de seleção 2026 aberto. Contato real é o Instagram @ajupufmg, citado na própria página oficial. Virou item confirmado em `REDE_ITENS` (académico). | **resolvido** |
 | Câmara de Betim — e-SIC/LAI | não verificado | Reconferido: SPA mostra tela de erro, 2º dia seguido quebrado. | **não verificado, nota atualizada** |
 | Câmara de Diamantina — qualquer canal | não verificado | Domínio oficial não conecta mais (antes 403, agora ECONNRESET); alternativo segue com TLS de terceiro. Telefone segue só em agregador. | **sem mudança** |
@@ -149,7 +149,7 @@ aqui como registro de cobertura, não como pendência urgente.
 - `cd apps/web && npx tsc --noEmit` — limpo, sem erros.
 - `npm run test:lib` — 247/247 passando, nenhum quebrado pelas mudanças.
 - `python scripts/checar-dado-pessoal.py` — sem CPF/segredo em código, rodado antes de cada commit desta rodada.
-- Migration `0073_ouvidoria_betim_link_morto.sql` aplicada ao Postgres
+- Migration `0075_ouvidoria_betim_link_morto.sql` aplicada ao Postgres
   local desta máquina (nunca a Neon — enquanto a Neon estiver em HTTP 402,
   esta correção só existe aqui; ver item 2 do `TODO-PROXIMAS-RODADAS.md`
   sobre o mesmo problema já valendo para a migration `0071`).

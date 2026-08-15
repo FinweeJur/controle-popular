@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import {
   contarPorEsfera,
   contarPorTema,
+  esferaDaLegislacao,
   esferaDaNatureza,
-  esferaEstadual,
   filtrarItens,
   TEMA_LABEL_UNIFICADO,
   TEMA_ORDEM_UNIFICADO,
@@ -20,6 +20,8 @@ import { semAcento } from "@/lib/busca/normalizar";
 function estadual(overrides: Partial<LegislacaoAmbientalRow> = {}): LegislacaoAmbientalRow {
   return {
     fonte: "almg",
+    esfera: "estadual",
+    situacao: null,
     tipo: "LEI",
     numero: "123",
     ano: 2020,
@@ -68,15 +70,59 @@ function precedente(overrides: Partial<PrecedenteDireitoCriticoRow> = {}): Prece
 }
 
 describe("esfera — campo de primeira classe", () => {
-  it("as três fontes de ambiental_legislacao são sempre estaduais", () => {
-    expect(esferaEstadual("almg")).toBe("estadual");
-    expect(esferaEstadual("semad")).toBe("estadual");
-    expect(esferaEstadual("siam")).toBe("estadual");
+  it("a esfera vem da COLUNA da linha, não de um case sobre a fonte", () => {
+    expect(esferaDaLegislacao("estadual")).toBe("estadual");
+    expect(esferaDaLegislacao("nacional")).toBe("nacional");
+    expect(esferaDaLegislacao("municipal")).toBe("municipal");
+    expect(esferaDaLegislacao("internacional")).toBe("internacional");
+  });
+
+  it("linha sem esfera (banco anterior à migration 0073) cai em estadual", () => {
+    expect(esferaDaLegislacao(null)).toBe("estadual");
+    expect(esferaDaLegislacao(undefined)).toBe("estadual");
+    expect(esferaDaLegislacao("")).toBe("estadual");
+  });
+
+  it("valor fora do vocabulário não quebra a tela — vira estadual", () => {
+    expect(esferaDaLegislacao("federal")).toBe("estadual");
   });
 
   it("natureza do direito crítico vira esfera 1:1", () => {
     expect(esferaDaNatureza("nacional")).toBe("nacional");
     expect(esferaDaNatureza("internacional")).toBe("internacional");
+  });
+});
+
+describe("legislação federal na mesma tabela (migration 0073)", () => {
+  it("uma linha do MMA é nacional, não estadual, mesmo sendo classe 'estadual'", () => {
+    const [item] = unificarItens([estadual({ fonte: "mma", esfera: "nacional" })], [], []);
+    expect(item.classe).toBe("estadual");
+    expect(item.esfera).toBe("nacional");
+  });
+
+  it("filtro por esfera 'nacional' alcança MMA/CNDH sem derrubar o filtro por fonte", () => {
+    const itens = unificarItens(
+      [
+        estadual({ fonte: "almg", esfera: "estadual" }),
+        estadual({ fonte: "mma", esfera: "nacional", chaveDedup: "mma-1" }),
+        estadual({ fonte: "cndh", esfera: "nacional", chaveDedup: "cndh-1" }),
+      ],
+      [],
+      []
+    );
+    expect(filtrarItens(itens, { esfera: "nacional" }, semAcento)).toHaveLength(2);
+    expect(filtrarItens(itens, { esfera: "nacional", fonte: "mma" }, semAcento)).toHaveLength(1);
+  });
+
+  it("contarPorEsfera separa Minas do federal dentro da mesma classe", () => {
+    const itens = unificarItens(
+      [estadual({ fonte: "siam" }), estadual({ fonte: "mma", esfera: "nacional", chaveDedup: "m1" })],
+      [],
+      []
+    );
+    const cont = contarPorEsfera(itens);
+    expect(cont.estadual).toBe(1);
+    expect(cont.nacional).toBe(1);
   });
 });
 

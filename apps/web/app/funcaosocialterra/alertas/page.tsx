@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import AvisoColetaEmCurso from "@/app/components/AvisoColetaEmCurso";
 import {
   carregarAlertasSigmine,
   carregarAlertaTiMancha,
@@ -144,6 +145,12 @@ export default function AlertasPage() {
         o titular, o link para a fonte oficial e o atalho para o mesmo ponto
         no mapa.
       </p>
+
+      {/* A ressalva vem ANTES dos números, não no rodapé: quem lê "zero
+          interseções" na primeira dobra já formou a conclusão muito antes de
+          chegar ao fim da página. E o exemplo que o componente cita aconteceu
+          nesta página, com este cálculo. */}
+      <AvisoColetaEmCurso escopo="Aqui a cobertura pesa duas vezes: depende de quantos territórios já foram ingeridos E de para quantas barragens a FEAM publicou mancha — 156 das 259 de Minas." />
 
       <div className="mt-5 flex flex-wrap gap-2">
         <a

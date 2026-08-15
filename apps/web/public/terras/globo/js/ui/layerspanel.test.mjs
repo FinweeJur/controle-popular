@@ -35,22 +35,32 @@ import {
   ASSUNTOS, CAMADAS, CAMADAS_RESOLVIDAS, CAMADA_POR_FONTE, LAYER_REGISTRY,
 } from '../config.js';
 
-test('CAMADAS reais: 30 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
+test('CAMADAS reais: 38 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
   const grupos = agruparPorAssunto(CAMADAS_RESOLVIDAS, ASSUNTOS);
 
   assert.equal(
-    CAMADAS.length, 30,
+    CAMADAS.length, 38,
     // ⟲ 13/08/2026, mais tarde: subiu de 22 para 30 — as 8 camadas do
     // rompimento real da B1/Brumadinho (docs/PLANO-INTEGRACAO-BRUMADINHO.md,
     // seção 1.2), cada uma numa linha própria, sem irmã regional.
+    // ⟲ 15/08/2026: 30 → 38 ao mesclar o trabalho do PC externo. As 8 são
+    // as 5 de alerta território × mineração (sobreposição e faixa de 8 km da
+    // Portaria 60/2015, mais quilombola × mancha de barragem), as normas que
+    // criam área protegida, os documentos do processo por município, e a
+    // imagem de satélite. Medido no merge: NENHUM id saiu ou foi renomeado —
+    // só entrou. Foi este sentinela que pegou a mudança, que é o trabalho dele.
     'sentinela: se este número mudou, CAMADAS cresceu/encolheu e as contagens abaixo precisam ser revistas junto',
   );
   const totalAgrupado = grupos.reduce((n, g) => n + g.camadas.length, 0);
   assert.equal(totalAgrupado, CAMADAS.length, 'nenhuma camada pode desaparecer no agrupamento');
 
+  // ⟲ 15/08/2026: entrou 'brumadinho' entre 'territorio-mineracao' e
+  // 'dinheiro'. A posição é a afirmação: o rompimento é o caso particular do
+  // assunto acima, então quem procura barragem encontra primeiro a régua geral
+  // (ZAS, mancha, minas) e só então o episódio. Ver o comentário em config.js.
   assert.deepEqual(
     grupos.map((g) => g.id),
-    ['sem-cadastro', 'terra-publica', 'territorio-mineracao', 'dinheiro', 'cidade', 'pistas', 'referencia'],
+    ['sem-cadastro', 'terra-publica', 'territorio-mineracao', 'brumadinho', 'dinheiro', 'cidade', 'pistas', 'referencia'],
   );
 
   // Checagem cruzada 1:1 contra o registro, não só a contagem.
@@ -64,7 +74,7 @@ test('CAMADAS reais: 30 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   }
 });
 
-test('a reorganização de fato UNIFICOU: 34 fontes em 30 linhas, e as 4 que somem são as irmãs', () => {
+test('a reorganização de fato UNIFICOU: 42 fontes em 38 linhas, e as 4 que somem são as irmãs', () => {
   // ⟲ 13/08/2026, fim do dia: 36→34 fontes, LINHAS continuam 30. O dono
   // perguntou "qual o sentido de dividir?" sobre as TRÊS fontes de
   // território quilombola (bacia, Vales, demais regiões) e tinha razão: a
@@ -77,8 +87,13 @@ test('a reorganização de fato UNIFICOU: 34 fontes em 30 linhas, e as 4 que som
   // apareceram 9 sobreposições que nenhuma das três camadas antigas pegava
   // — incluindo lavra de OURO autorizada sobre São Domingos e Machadinho.
   // Conceito partido em três arquivos estava escondendo alerta.
-  assert.equal(LAYER_REGISTRY.length, 34, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 30, 'sentinela: o número de LINHAS mudou');
+  // ⟲ 15/08/2026: 34 → 42 fontes e 30 → 38 linhas, +8 de cada no merge do PC
+  // externo. As 8 chegaram com fonte única, então a diferença fonte-linha
+  // continua 4 — são as mesmas quatro irmãs regionais de sempre, listadas
+  // abaixo. Se um dia a diferença mudar sem esta lista mudar junto, é porque
+  // alguém partiu ou unificou conceito sem dizer.
+  assert.equal(LAYER_REGISTRY.length, 42, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 38, 'sentinela: o número de LINHAS mudou');
 
   // ⟲ Fim do dia: `territorios-quilombolas` SAIU desta lista. Ela tinha 2
   // fontes, chegou a ter 3, e agora tem UMA só — as três foram unificadas.
@@ -129,6 +144,21 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     'brumadinho-remanejamento', 'brumadinho-estruturas-contencao',
     'brumadinho-obras-poligonais', 'brumadinho-obras-pontuais',
     'brumadinho-obras-lineares', 'brumadinho-restauracao',
+    // ⟲ 15/08/2026 — as 8 que entraram no merge do PC externo. Elas nascem
+    // JÁ dentro do contrato: no instante em que um id é publicado num
+    // `#area=`, acrescentá-lo aqui deixa de ser opcional. Conferido no merge
+    // que nenhum dos 34 acima saiu ou mudou de nome.
+    // Território × mineração — sobreposição e a faixa de 8 km da Portaria
+    // 60/2015 (ver docs/HANDOFF-ALERTAS-TERRITORIO.md).
+    'alerta-territorio-sigmine-operacao', 'alerta-territorio-sigmine-interesse',
+    'alerta-raio-territorio-sigmine-operacao', 'alerta-raio-territorio-sigmine-interesse',
+    'alerta-quilombola-mancha',
+    // Normas municipais que criam ou alteram área protegida.
+    'atos-area-protegida-municipios',
+    // Documentos do processo de Brumadinho, por município citado.
+    'documentos-processo-municipios',
+    // Fundo de imagem de satélite do globo (Esri World Imagery).
+    'imagens-satelite',
   ];
 
   const existentes = LAYER_REGISTRY.map((f) => f.id).sort();

@@ -20,8 +20,9 @@ import {
 } from "@/lib/ambiental/legislacao-unificada";
 
 /**
- * Busca unificada de `/ambiental/legislacao` — legislação estadual (ALMG +
- * Semad + Siam), legislação nacional/internacional e precedentes judiciais,
+ * Busca unificada de `/ambiental/legislacao` — legislação ambiental
+ * estadual (ALMG + Semad + Siam) e FEDERAL (MMA/Conama + CNDH, migration
+ * 0073), legislação nacional/internacional curada e precedentes judiciais,
  * NUMA busca só, filtrável por esfera, tema (vocabulário unificado, ver
  * `lib/ambiental/legislacao-unificada.ts`) e tipo/classe.
  *
@@ -44,24 +45,35 @@ const FONTE_LABEL: Record<FonteLegislacaoAmbiental, string> = {
   almg: "ALMG",
   semad: "Semad",
   siam: "Siam",
+  mma: "MMA",
+  cndh: "CNDH",
 };
 
 const FONTE_LABEL_LONGO: Record<FonteLegislacaoAmbiental, string> = {
   almg: "Assembleia Legislativa de MG",
   semad: "Banco de Legislação Ambiental (Semad)",
   siam: "Siam — arquivo histórico",
+  mma: "Ministério do Meio Ambiente e Mudança do Clima — inclui as Resoluções Conama",
+  cndh: "Conselho Nacional dos Direitos Humanos",
 };
 
+// As duas fontes federais reusam as cores das estaduais de propósito: o
+// que separa esfera é o selo "Nacional"/"Estadual" ao lado, não a cor —
+// inventar duas cores novas faria a paleta competir com o selo.
 const FONTE_COR: Record<FonteLegislacaoAmbiental, string> = {
   almg: "var(--cp-primary)",
   semad: "var(--cp-tertiary)",
   siam: "var(--cp-secondary)",
+  mma: "var(--cp-primary)",
+  cndh: "var(--cp-secondary)",
 };
 
 const FONTE_COR_INK: Record<FonteLegislacaoAmbiental, string> = {
   almg: "var(--cp-primary-ink)",
   semad: "var(--cp-tertiary-ink)",
   siam: "var(--cp-secondary-ink)",
+  mma: "var(--cp-primary-ink)",
+  cndh: "var(--cp-secondary-ink)",
 };
 
 // Cópia TS de `TAG_LABELS` em `etl/temas_ambientais.py` — mesma razão de
@@ -87,8 +99,13 @@ const TAG_LABEL: Record<string, string> = {
   serra_relevo: "Serra",
 };
 
+// A chave `estadual` é o nome da CLASSE (linha de `ambiental_legislacao`) e
+// ficou desde a versão em que essa tabela só tinha Minas; desde a migration
+// 0073 ela abriga também MMA/Conama e CNDH, por isso o RÓTULO fala das
+// duas esferas. Renomear a chave quebraria o filtro já publicado sem
+// ganhar nada — o rótulo é o que o leitor vê.
 const CLASSE_LABEL: Record<ClasseItemLegislacao, string> = {
-  estadual: "Norma estadual",
+  estadual: "Norma ambiental (MG e federal)",
   critica: "Legislação nacional/internacional",
   precedente: "Precedente judicial",
 };
@@ -120,17 +137,25 @@ export default function BuscaLegislacaoUnificada({ estaduais, criticas, preceden
     [estaduais, criticas, precedentes]
   );
 
-  // chaveDedup -> fontes distintas que a compartilham, ENTRE as linhas
-  // ESTADUAIS carregadas — a dica "também consta em" do painel original,
-  // que só faz sentido dentro da mesma classe (ALMG/Semad/Siam duplicam
-  // entre si; crítica/precedente nunca duplicam nada).
+  // chaveDedup -> fontes distintas que a compartilham — a dica "também
+  // consta em" do painel original, que só faz sentido dentro da mesma
+  // classe (ALMG/Semad/Siam duplicam entre si; crítica/precedente nunca
+  // duplicam nada).
+  //
+  // A chave do mapa inclui a ESFERA desde a entrada das fontes federais:
+  // `chave_dedup` é "TIPO:NÚMERO:ANO", e um Decreto federal nº 6.040/2007
+  // e um Decreto estadual de mesmo número e ano geram a MESMA string sem
+  // serem nem parentes. Sem a esfera na chave, o card anunciaria "também
+  // consta em MMA" para uma norma de Minas — uma afirmação falsa com cara
+  // de conferência.
   const fontesPorDedup = useMemo(() => {
     const mapa = new Map<string, Set<FonteLegislacaoAmbiental>>();
     for (const l of estaduais) {
       if (!l.chaveDedup) continue;
-      const s = mapa.get(l.chaveDedup) ?? new Set<FonteLegislacaoAmbiental>();
+      const chave = `${l.esfera}||${l.chaveDedup}`;
+      const s = mapa.get(chave) ?? new Set<FonteLegislacaoAmbiental>();
       s.add(l.fonte);
-      mapa.set(l.chaveDedup, s);
+      mapa.set(chave, s);
     }
     return mapa;
   }, [estaduais]);
@@ -240,10 +265,16 @@ export default function BuscaLegislacaoUnificada({ estaduais, criticas, preceden
           </select>
         </div>
 
-        {esfera !== "nacional" && esfera !== "internacional" && classe !== "critica" && classe !== "precedente" && (
+        {/* O seletor de fonte só some quando NENHUMA linha de
+            `ambiental_legislacao` pode aparecer: com classe crítica/
+            precedente, ou com esfera "internacional" (que nenhuma das cinco
+            fontes tem). Antes ele sumia também em esfera "nacional" — o que
+            deixou de valer quando MMA e CNDH, que SÃO nacionais, passaram a
+            viver nesta mesma tabela. */}
+        {esfera !== "internacional" && classe !== "critica" && classe !== "precedente" && (
           <div className="flex flex-col">
             <label htmlFor="fonte" className="mb-1 text-xs font-medium text-text-soft">
-              Fonte estadual
+              Fonte
             </label>
             <select
               id="fonte"
@@ -252,17 +283,19 @@ export default function BuscaLegislacaoUnificada({ estaduais, criticas, preceden
                 setFonte(e.target.value as FonteLegislacaoAmbiental | "");
                 setVisiveis(PAGINA);
               }}
-              className="w-36 rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
+              className="w-44 rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
             >
               <option value="">Todas</option>
-              <option value="almg">ALMG</option>
-              <option value="semad">Semad</option>
-              <option value="siam">Siam</option>
+              <option value="almg">ALMG (MG)</option>
+              <option value="semad">Semad (MG)</option>
+              <option value="siam">Siam (MG)</option>
+              <option value="mma">MMA/Conama (federal)</option>
+              <option value="cndh">CNDH (federal)</option>
             </select>
           </div>
         )}
 
-        {classe !== "critica" && classe !== "precedente" && esfera !== "nacional" && esfera !== "internacional" && (
+        {classe !== "critica" && classe !== "precedente" && esfera !== "internacional" && (
           <div className="flex flex-col">
             <label htmlFor="ano" className="mb-1 text-xs font-medium text-text-soft">
               Ano
@@ -337,8 +370,9 @@ export default function BuscaLegislacaoUnificada({ estaduais, criticas, preceden
             {filtrados.length === 1 ? "item encontrado" : "itens encontrados"}
             {temFiltro ? " com este filtro" : ""} — de{" "}
             <strong className="font-tabular text-text">{formatNumberBR(itens.length)}</strong> ao todo (
-            {formatNumberBR(estaduais.length)} normas estaduais, {formatNumberBR(criticas.length)}{" "}
-            nacionais/internacionais, {formatNumberBR(precedentes.length)} precedentes).
+            {formatNumberBR(estaduais.length)} normas ambientais de Minas e federais,{" "}
+            {formatNumberBR(criticas.length)} instrumentos nacionais/internacionais,{" "}
+            {formatNumberBR(precedentes.length)} precedentes).
           </p>
 
           {filtrados.length === 0 ? (
@@ -351,12 +385,15 @@ export default function BuscaLegislacaoUnificada({ estaduais, criticas, preceden
                 if (item.classe === "estadual") {
                   const l = item.row;
                   const outras = l.chaveDedup
-                    ? [...(fontesPorDedup.get(l.chaveDedup) ?? [])].filter((f) => f !== l.fonte)
+                    ? [...(fontesPorDedup.get(`${l.esfera}||${l.chaveDedup}`) ?? [])].filter(
+                        (f) => f !== l.fonte
+                      )
                     : [];
                   return (
                     <CardEstadual
                       key={item.chave}
                       linha={l}
+                      esfera={item.esfera}
                       outrasFontes={outras}
                     />
                   );
@@ -415,11 +452,36 @@ function TemasDoItem({ temas }: { temas: string[] }) {
   );
 }
 
+/** "REVOGADO" e "ATO EXAURIDO" precisam saltar aos olhos — uma portaria
+ *  revogada com a mesma cara de norma em vigor é desinformação, não
+ *  detalhe. O texto é o da FONTE, sem tradução; quando a fonte não informa
+ *  (as três estaduais, e o CNDH), o selo simplesmente não aparece — a
+ *  ausência não vira "vigente". */
+function SituacaoBadge({ situacao }: { situacao: string | null }) {
+  if (!situacao) return null;
+  const alerta = /REVOGA|SEM EFEITO|EXAURIDO|SUSPENS|ENCERRAD/i.test(situacao);
+  return (
+    <span
+      title="Situação declarada pela fonte oficial"
+      className="rounded-full px-2.5 py-1 text-xs font-semibold"
+      style={
+        alerta
+          ? { background: "var(--cp-secondary)", color: "var(--cp-secondary-ink)" }
+          : { background: "var(--surface-2, transparent)", color: "var(--color-text-soft, inherit)" }
+      }
+    >
+      {situacao}
+    </span>
+  );
+}
+
 function CardEstadual({
   linha: l,
+  esfera,
   outrasFontes,
 }: {
   linha: LegislacaoAmbientalRow;
+  esfera: EsferaLegislacao;
   outrasFontes: FonteLegislacaoAmbiental[];
 }) {
   return (
@@ -433,10 +495,11 @@ function CardEstadual({
           >
             {FONTE_LABEL[l.fonte]}
           </span>
-          <EsferaBadge esfera="estadual" />
+          <EsferaBadge esfera={esfera} />
           <span className="rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-text-soft">
             {l.tipo}
           </span>
+          <SituacaoBadge situacao={l.situacao} />
         </div>
         {l.data && <span className="font-tabular text-xs text-text-soft">{formatDateBR(l.data)}</span>}
       </div>

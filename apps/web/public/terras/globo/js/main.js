@@ -8,7 +8,7 @@
 
 import {
   ABERTURA, FOCUS_PRESETS, LAYER_REGISTRY,
-  ASSUNTOS, REGIOES, CAMADAS_RESOLVIDAS, CAMADA_POR_FONTE, FONTE_POR_ID,
+  ASSUNTOS, DESTAQUES, REGIOES, CAMADAS_RESOLVIDAS, CAMADA_POR_FONTE, FONTE_POR_ID,
   fonteNaRegiao, fontesVisiveis,
 } from './config.js';
 import { mesorregiaoDe } from './data/mesorregioes.js';
@@ -21,10 +21,12 @@ import { flyTo } from './core/flyto.js';
 import { centroDe, coordenadasDe, distanciaParaEnquadrar } from './core/enquadrar.js';
 import { createStatusBar } from './ui/statusbar.js';
 import { createFocusBar } from './ui/focusbar.js';
+import { criarDestaques } from './ui/destaques.js';
 import { createLayersPanel } from './ui/layerspanel.js';
 import { createFooterHud } from './ui/footerhud.js';
 import { createZoomControls } from './ui/zoomcontrols.js';
-import { createInspector } from './ui/inspector.js';
+import { createInspector, procurarFeicaoNoPonto, tituloDaArea } from './ui/inspector.js';
+import { criarDica } from './ui/dica.js';
 import { createIntro } from './ui/intro.js';
 import { createBuscaMunicipio } from './ui/buscamunicipio.js';
 import { createListaPanel } from './ui/listapanel.js';
@@ -32,6 +34,7 @@ import { criarFolha } from './ui/folha.js';
 import { criarRealce } from './ui/realce.js';
 import { LayerManager } from './layers/manager.js';
 import { createSatellitesGroup } from './layers/satelites.js';
+import { criarImagensPorZoom } from './layers/imagens.js';
 import { FocusBoundaries } from './layers/boundaries.js';
 
 async function bootstrap() {
@@ -67,6 +70,26 @@ async function bootstrap() {
   // Camadas 'custom' (Fase G3) recebem factories locais — ex.: satélites SGP4.
   const layers = new LayerManager(scene, LAYER_REGISTRY, {
     'satelites-orbita': createSatellitesGroup,
+    // A imagem por zoom é camada 'custom' como os satélites: o LayerManager
+    // chama o `update` dela a cada frame (é assim que o nível da imagem
+    // acompanha a câmera) e o descarte libera a malha quando a chave desliga.
+    // A factory recebe câmera e controles porque a decisão dela é,
+    // literalmente, "de onde estamos olhando e de que altura".
+    'imagens-satelite': () => criarImagensPorZoom({
+      camera, controls, renderer,
+      onEstado: (estado) => {
+        footerHud?.setImagens?.(estado);
+        // A coluna do painel diz a ESCALA, não uma contagem: esta camada não
+        // tem feição, e o caminho genérico anunciaria "sem dados ainda" numa
+        // camada que está desenhando o chão inteiro.
+        layersPanel?.setStatus?.('imagens-satelite', {
+          on: layers.isEnabled('imagens-satelite'),
+          texto: estado.carregando ? 'baixando…'
+            : estado.z == null ? 'aproxime para ver'
+            : `${Math.round(estado.mpp)} m/ponto`,
+        });
+      },
+    }),
   });
 
   // --- HUD -----------------------------------------------------------------
@@ -96,6 +119,40 @@ async function bootstrap() {
     document.getElementById('inspector'), layers, camera, renderer.domElement,
     { onFocar: (feature, layerId, idx) => focarFeicao(feature, layerId, idx) },
   );
+
+  // Pousar o mouse numa área por 2 s → uma frase dizendo o que ela é. Usa a
+  // MESMA busca do clique (`procurarFeicaoNoPonto`), para a dica nunca falar de
+  // uma área e o clique abrir outra. Só no computador — ver ui/dica.js.
+  const dica = criarDica(document.getElementById('dica'), {
+    layers, camera, domElement: renderer.domElement,
+    textoDe: ({ layerId, feature, idx }) => {
+      const cfg = LAYER_REGISTRY.find((l) => l.id === layerId);
+      const camada = CAMADA_POR_FONTE.get(layerId);
+      if (!cfg && !camada) return null;
+      const props = feature.properties ?? {};
+
+      // O corpo é UMA frase, e o que entra nela é escolha editorial: o campo
+      // mais forte da feição, sem repetir o título. O resto continua na ficha
+      // do clique — a dica existe para responder "o que é isto?", não para
+      // ser a ficha aparecendo sozinha na cara de quem passou o mouse.
+      const area = props.area_ha ?? props.area_intersecao_ha;
+      const partes = [];
+      if (props.territorio_nome) partes.push(props.territorio_nome);
+      if (props.sigmine_subs) partes.push(String(props.sigmine_subs).toLowerCase());
+      if (props.municipio && !partes.length) partes.push(props.municipio);
+      if (props.nome && !partes.length) partes.push(props.nome);
+      if (area) partes.push(`${Math.round(area).toLocaleString('pt-BR')} hectares`);
+
+      return {
+        titulo: camada?.label ?? cfg?.label ?? tituloDaArea(cfg, props, idx),
+        // Sem nenhum campo conhecido a dica ainda vale: o nome da camada já
+        // responde a pergunta, e a segunda metade diz onde está o resto.
+        corpo: partes.length ? `${partes.join(' · ')} — clique para a ficha` : 'Clique para ver a ficha',
+        cor: cfg ? `#${(cfg.color ?? 0x8899aa).toString(16).padStart(6, '0')}` : undefined,
+      };
+    },
+  });
+  dica.usarBusca((event) => procurarFeicaoNoPonto(event, layers, camera, renderer.domElement));
 
   // No celular, camadas e ficha dividem UMA folha de duas abas: os dois painéis
   // somam 520 px numa tela de 375, então a sobreposição é aritmética. A folha
@@ -367,6 +424,12 @@ async function bootstrap() {
   }
 
   /** Soma o estado das fontes de um conceito e devolve isso ao painel. */
+  // Declarada aqui, criada mais abaixo (precisa do painel pronto). `let` e
+  // não `const` de propósito: `sincronizarCamada` fala com ela, e `const`
+  // numa linha posterior daria ReferenceError por zona morta temporal — que
+  // o `?.` NÃO protege, ao contrário do que a leitura rápida sugere.
+  let destaques = null;
+
   function sincronizarCamada(idCamada) {
     const camada = CAMADAS_RESOLVIDAS.find((c) => c.id === idCamada);
     if (!camada) return;
@@ -388,6 +451,16 @@ async function bootstrap() {
       if (st?.error) erro = st.error;
     }
 
+    // Camada que não se mede em feições escreve o próprio rótulo (a imagem de
+    // satélite diz a escala). Sem esta saída, o caminho genérico entra DEPOIS
+    // do rótulo dela e troca "aproxime para ver" por "sem dados ainda" —
+    // anunciando defeito numa camada que está funcionando.
+    if (camada.fontesResolvidas.some((f) => FONTE_POR_ID.get(f.id)?.semContagem)) {
+      layersPanel.setEnabled?.(idCamada, ligada);
+      destaques?.sincronizar();
+      return;
+    }
+
     layersPanel.setStatus(idCamada, {
       on: ligada,
       count,
@@ -396,6 +469,9 @@ async function bootstrap() {
       indistinta: doRecorte.some((f) => f.mesoIndistinta),
     });
     statusBar.setFeatureCount?.(layers.totalFeatures());
+    // A barra de destaques espelha as mesmas camadas: ligar pelo painel tem
+    // de acender o botão lá embaixo, e vice-versa.
+    destaques?.sincronizar();
     atualizarLista();
   }
 
@@ -482,6 +558,30 @@ async function bootstrap() {
     },
   );
 
+  // Atalho para as cinco camadas mais procuradas, acima dos botões de cidade.
+  // Comanda exatamente as mesmas camadas do painel, pelo mesmo `alternarCamada`
+  // — os dois controles nunca podem divergir. Ver ui/destaques.js.
+  destaques = criarDestaques(document.getElementById('destaques'), DESTAQUES, {
+    estaLigado: (id) => layersPanel.isEnabled(id),
+    aoAlternar: async (destaque, ligar) => {
+      // Só desliga quando TODAS as camadas do destaque estão ligadas; enquanto
+      // faltar alguma, clicar completa o grupo. Com destaque de camada única
+      // isto é idêntico a inverter, mas a regra tem de nascer certa: foi a
+      // leitura ingênua ("inverte o que o botão mostra") que fez, na primeira
+      // versão desta barra, o clique DESLIGAR o que já estava aceso em vez de
+      // trazer o resto.
+      const todas = destaque.camadas.every((id) => layersPanel.isEnabled(id));
+      const alvo = ligar && !todas;
+      await Promise.all(destaque.camadas.map((id) => alternarCamada(id, alvo)));
+    },
+  });
+
+  // O rodapé nasce ANTES do laço que liga as camadas de saída, e não depois:
+  // a camada de imagem avisa o seu estado assim que é ligada, e ligar
+  // acontece naquele laço. Declarado depois, o aviso caía num `const` ainda
+  // não inicializado — zona morta temporal, que o `?.` NÃO protege.
+  const footerHud = createFooterHud(document.getElementById('footer-hud'));
+
   // Ativa as camadas marcadas como ligadas por padrão e já sincroniza os
   // contadores quando cada fetch terminar. O filtro nasce em "todas as
   // regiões", então nenhuma fonte é barrada aqui.
@@ -492,7 +592,6 @@ async function bootstrap() {
     }
   }
 
-  const footerHud = createFooterHud(document.getElementById('footer-hud'));
 
   // --- Loop de animação -----------------------------------------------------
   renderer.setAnimationLoop(() => {

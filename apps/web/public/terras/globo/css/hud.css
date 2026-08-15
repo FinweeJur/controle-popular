@@ -225,6 +225,105 @@ body {
 /* ------------------------------------------------------------
    Focus bar (base-central): botões de presets de câmera
    ------------------------------------------------------------ */
+/* ------------------------------------------------------------
+   Barra de destaques — as 5 camadas mais procuradas (15/08/2026)
+
+   Sobe 42 px sobre a barra de cidades, a mesma folga que a de cidades tem
+   sobre o rodapé: as três faixas do rodapé passam a andar no mesmo ritmo
+   vertical, em vez de cada uma escolher seu respiro.
+   ------------------------------------------------------------ */
+#destaques {
+  left: 50%;
+  bottom: calc(var(--space-3) + 34px + 42px);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  max-width: calc(100vw - 2 * var(--space-3));
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+#destaques::-webkit-scrollbar { display: none; }
+
+#destaques .destaques-rotulo {
+  padding-left: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+#destaques .destaque-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-2);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 7px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+
+/* O ponto é a MESMA cor da camada no globo e no painel — é o que liga o botão
+   à mancha sem ler rótulo nenhum. Por isso a cor não muda entre estados: o que
+   muda é o preenchimento dele. */
+#destaques .destaque-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--cor-camada);
+  background: transparent;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+#destaques .destaque-btn:hover {
+  color: var(--text-1);
+  background: var(--color-hairline);
+}
+
+#destaques .destaque-btn[aria-checked='true'] {
+  color: var(--text-1);
+  border-color: var(--cor-camada);
+}
+
+#destaques .destaque-btn[aria-checked='true'] .destaque-dot {
+  background: var(--cor-camada);
+}
+
+/* Camada grande demora a chegar. Sem sinal, o clique parece ignorado — e o
+   segundo clique desliga o que a pessoa acabou de pedir. */
+#destaques .destaque-btn.carregando .destaque-dot {
+  animation: destaque-pulso 900ms var(--ease-out) infinite;
+}
+
+@keyframes destaque-pulso {
+  0%, 100% { background: transparent; }
+  50%      { background: var(--cor-camada); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #destaques .destaque-btn.carregando .destaque-dot { animation: none; opacity: .55; }
+}
+
+/* No celular a barra de cidades já rola sozinha; o rótulo sai para os cinco
+   botões caberem sem competir com o mapa. */
+@media (max-width: 640px) {
+  #destaques .destaques-rotulo { display: none; }
+}
+
 #focusbar {
   left: 50%;
   bottom: calc(var(--space-3) + 34px); /* acima do footer HUD */
@@ -722,6 +821,59 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+/* ------------------------------------------------------------
+   Sanfona do painel — só no computador (15/08/2026)
+
+   252 px é o que cabe sem comer mapa, mas os nomes que a seção de território
+   ganhou não cabem: "Terra indígena/quilombola sob interesse minerário" e
+   "Documentos do processo que citam o município" quebram em três e quatro
+   linhas. Aos 340 px cabem em uma ou duas, e a seção volta a ser varrível de
+   relance. Em vez de alargar para sempre (que come mapa o tempo todo), o
+   painel cresce enquanto o ponteiro está nele — e volta ao sair.
+
+   E o recolhido passa a ESPIAR: hoje `.collapsed` esconde tudo menos o
+   cabeçalho, então quem recolhe para ver o mapa precisa clicar duas vezes para
+   olhar uma camada. Com a espiada, recolher vira uma escolha barata — é o
+   comportamento da barra lateral do Claude Desktop, e a razão é a mesma: o
+   estado recolhido só é útil se sair dele não custar nada.
+
+   ⚠️ Tudo isto vive dentro de `hover: hover` E `pointer: fine`, e não é
+   detalhe. Em tela de toque o navegador dispara o hover no PRIMEIRO TOQUE: o
+   painel cresceria no mesmo gesto que liga a camada, movendo o alvo debaixo do
+   dedo. No celular o painel já é folha de largura cheia com abas
+   (`@media (max-width: 767px)` mais abaixo), então não há o que alargar lá —
+   quem manda no mobile é o clique da aba, como deve ser.
+
+   `:focus-within` anda junto com `:hover` em todas as regras: quem chega às
+   chaves por Tab não passa mouse nenhum, e ficaria preso na versão estreita,
+   que é justamente a de leitura mais difícil.
+   ------------------------------------------------------------ */
+@media (hover: hover) and (pointer: fine) {
+  #layers-panel {
+    transition: width var(--dur-base) var(--ease-out);
+  }
+
+  #layers-panel:hover,
+  #layers-panel:focus-within {
+    width: 340px;
+  }
+
+  /* Recolhido + ponteiro em cima = espiada. Sai do jeito que entrou. */
+  #layers-panel.collapsed:hover,
+  #layers-panel.collapsed:focus-within {
+    width: 340px;
+  }
+
+  #layers-panel.collapsed:hover .layer-groups,
+  #layers-panel.collapsed:hover .regiao-filtro,
+  #layers-panel.collapsed:hover .layer-bulk,
+  #layers-panel.collapsed:focus-within .layer-groups,
+  #layers-panel.collapsed:focus-within .regiao-filtro,
+  #layers-panel.collapsed:focus-within .layer-bulk {
+    display: flex;
+  }
 }
 
 #layers-panel .panel-header {
@@ -2212,6 +2364,11 @@ body {
    fica aceso, não apagado, e o selo FICTÍCIO mantém a hachura parada. O que
    some é o movimento, não a informação. */
 @media (prefers-reduced-motion: reduce) {
+  /* A sanfona continua funcionando — só para de deslizar. Quem pediu menos
+     movimento quer menos ANIMAÇÃO, não menos função: tirar o alargamento
+     junto devolveria a essa pessoa a versão estreita, que é a pior de ler. */
+  #layers-panel { transition: none; }
+
   #layers-panel .layer-row.carregando .layer-marca,
   #layers-panel .layer-row[data-camada-id="satelites-orbita"].on .layer-marca,
   #layers-panel .layer-fake::before {
@@ -2221,4 +2378,57 @@ body {
   /* O marcador que estaria pulsando fica na opacidade cheia: "carregando" passa
      a ser dito só pelo contador, em palavras, que é onde ele já estava dito. */
   #layers-panel .layer-row.carregando .layer-marca { opacity: 1; }
+}
+
+/* ------------------------------------------------------------
+   Dica ao pousar o mouse numa área (15/08/2026) — ui/dica.js
+
+   Não é `.hud-panel`: os painéis do HUD são ancorados nos cantos e têm o
+   vidro e a borda da moldura. Esta segue o ponteiro e precisa ser lida em
+   cima de qualquer coisa que esteja embaixo, inclusive imagem de satélite —
+   daí o fundo mais opaco que o do resto do HUD.
+
+   `pointer-events: none` é obrigatório, não estético: a dica nasce a 14 px do
+   ponteiro, e sem isso ela roubaria o `pointermove` do canvas no instante em
+   que aparecesse, disparando `pointerleave` e apagando a si mesma. Um
+   piscar infinito.
+   ------------------------------------------------------------ */
+#dica {
+  position: fixed;
+  z-index: 40;
+  max-width: 22rem;
+  padding: 8px 11px;
+  border: 1px solid var(--cor-camada, var(--color-hairline));
+  border-left-width: 3px;
+  border-radius: 6px;
+  background: color-mix(in oklab, var(--color-base) 92%, transparent);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.35);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+#dica.visivel { opacity: 1; }
+
+#dica .dica-titulo {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-1);
+  line-height: 1.3;
+}
+
+#dica .dica-corpo {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--text-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #dica { transition: none; }
 }

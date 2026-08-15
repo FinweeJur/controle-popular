@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import AvisoColetaEmCurso from "@/app/components/AvisoColetaEmCurso";
 import { ZONAS } from "@/lib/zonas";
 import { formatNumberBR } from "@/lib/betim/format";
 import {
@@ -96,6 +97,11 @@ export default function ParaopebaHome() {
         </p>
         <h1 className="font-display text-3xl font-bold sm:text-4xl">{ZONA.titulo}</h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">{ZONA.descricao}</p>
+
+        {/* Esta frente é a que mais depende de acervo de terceiro (7.107
+            documentos do processo, dos quais 471 têm município identificado),
+            e a que mais corre risco de ser lida como retrato completo. */}
+        <AvisoColetaEmCurso escopo="Aqui isso é especialmente forte: dos 7.107 documentos do processo judicial, só 471 têm município identificado — o acervo mostra o que foi possível ler, não tudo o que existe nos autos." />
       </header>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2">

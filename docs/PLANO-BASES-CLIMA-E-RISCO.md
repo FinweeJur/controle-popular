@@ -26,6 +26,16 @@ diferente de fato.
 
 ---
 
+> **Estado da execução (2026-08-15).** A primeira fatia deste plano saiu:
+> **AdaptaBrasil** (coletor `etl/betim/etl/apis/adaptabrasil_risco.py`,
+> migration `0074`, 6.824 linhas medidas) e **INMET avisos ativos** (coletor
+> `etl/betim/etl/apis/inmet_avisos.py`, só leitura). O que foi medido, o que
+> mudou em relação a este documento e o que ficou bloqueado está em
+> **`docs/CLIMA-ADAPTABRASIL-E-INMET.md`** — inclusive o achado que este
+> plano não previa: **Belo Horizonte pontua 0,00 ("Muito baixo") nos dois
+> índices de manchete do AdaptaBrasil**, a mesma cidade que o BATER mede com
+> 389.218 pessoas em área de risco. BATER e CEMADEN seguem sem tocar.
+
 ## Resposta curta
 
 | Base | Dado extraível | Granularidade | Licença | Onde encaixa |

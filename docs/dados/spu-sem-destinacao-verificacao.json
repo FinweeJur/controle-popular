@@ -1,0 +1,797 @@
+[
+  {
+    "rip": "4067000025006",
+    "municipio": "Aracuai",
+    "bairro": "Itatiaia",
+    "area_ha": 0.04,
+    "ponto_lat": -16.804969,
+    "ponto_lon": -42.064523,
+    "logradouro_osm": "BR-342;MGC-342",
+    "o_que_e_hoje": "Terreno de 360 m2 na Rua Hilda Carmona, bairro Itatiaia, Aracuai. Unico dos 25 cujo proprietario oficial NAO e a Uniao direta, e sim 'Fundacao ou Autarquia (Adm. Pub. Fed. indireta)' - o cadastro nao diz qual autarquia. Nao foi encontrada fonte sobre o uso atual.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "baixa",
+    "observacoes": "Endereco cadastral diz 'entre os n. 80 e 111', precisao 'Geocodificado - Endereco completo encontrado', mas Nominatim devolve a rodovia BR-342/MGC-342 na localidade Itira, incompativel com rua urbana: a coordenada nao serve para identificar o lote."
+  },
+  {
+    "rip": "4259000055004",
+    "municipio": "Carai",
+    "bairro": "-",
+    "area_ha": 9.6,
+    "ponto_lat": -17.185983,
+    "ponto_lon": -41.695886,
+    "logradouro_osm": "Rua Doutor Waldo Brito",
+    "o_que_e_hoje": "Terreno da Uniao de 96.000 m2 (9,6 ha) no km 748 da Rodovia Rio-Bahia (BR-116), localidade Marambaia, Carai. Nao foi encontrada nenhuma fonte publica sobre o que existe hoje na area.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "baixa",
+    "observacoes": "Precisao cadastral 'Manual - No Municipio': a coordenada aponta a cidade, NAO o imovel - Nominatim devolve 'Rua Doutor Waldo Brito', rua urbana, incompativel com um lote de 9,6 ha em rodovia. O campo bairro vem vazio ('-') na fonte. Carai tem distrito 'Marambainha'; se e o mesmo lugar que a 'Marambaia' do cadastro, nao foi possivel confirmar."
+  },
+  {
+    "rip": "4665010001098",
+    "municipio": "Itaobim",
+    "bairro": "CENTRO",
+    "area_ha": 0.06,
+    "ponto_lat": -16.56553,
+    "ponto_lon": -41.502051,
+    "logradouro_osm": "Rua do Prédio",
+    "o_que_e_hoje": "Lote dominial da Uniao na Rua Tonico Murta, Centro de Itaobim. A Portaria SPU n. 2, de 19/01/2017, autorizou a doacao de imoveis dominiais da Uniao exatamente nas Ruas Tonico Murta e Paraiba e Praca Tiradentes, Centro de Itaobim (4.034,39 m2, 9 matriculas), para regularizacao fundiaria de interesse social em beneficio das FAMILIAS QUE OS OCUPAM, com renda de ate 5 salarios minimos. A indicacao forte e de que se trata de moradia ocupada.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/gestao/pt-br/assuntos/estatais/legislacao/portarias/AMAZULPORTARIANo01DE20_01_2017.pdf",
+        "titulo": "DOU n. 16, 23/01/2017, secao 1, p. 60 - Portaria SPU n. 2, de 19/01/2017: doacao de imoveis dominiais da Uniao nas Ruas Tonico Murta e Paraiba e Praca Tiradentes, Centro, Itaobim/MG, area total 4.034,39 m2, matriculas 4.423/4.424/4.425/4.427/4.428/4.431/4.432/4.433/4.434 do RI de Medina, para regularizacao fundiaria de interesse social em beneficio das familias ocupantes",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": "A portaria nomeia a rua e a classe do imovel, NAO este RIP - por isso 'media' e nao 'alta'. O cadastro deste lote e de 28/09/2021, posterior a portaria de 2017, e continua 'Sem Destinacao Definida': ou a doacao nao se completou, ou este e outro lote da mesma rua. Coordenada erra: Nominatim devolve 'Rua do Predio', nao Tonico Murta."
+  },
+  {
+    "rip": "4665010001250",
+    "municipio": "Itaobim",
+    "bairro": "CENTRO",
+    "area_ha": 0.08,
+    "ponto_lat": -16.56574,
+    "ponto_lon": -41.500959,
+    "logradouro_osm": "Rua Dirceu Gomes Soares",
+    "o_que_e_hoje": "Lote dominial da Uniao na Rua Tonico Murta, Centro de Itaobim, na mesma situacao do RIP 4665010001098: alcancado pelo perimetro descrito na Portaria SPU n. 2, de 19/01/2017, que autorizou doacao para regularizacao fundiaria de interesse social as familias ocupantes.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/gestao/pt-br/assuntos/estatais/legislacao/portarias/AMAZULPORTARIANo01DE20_01_2017.pdf",
+        "titulo": "DOU n. 16, 23/01/2017, secao 1, p. 60 - Portaria SPU n. 2, de 19/01/2017: doacao de imoveis dominiais da Uniao nas Ruas Tonico Murta e Paraiba e Praca Tiradentes, Centro, Itaobim/MG, area total 4.034,39 m2, matriculas 4.423/4.424/4.425/4.427/4.428/4.431/4.432/4.433/4.434 do RI de Medina, para regularizacao fundiaria de interesse social em beneficio das familias ocupantes",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": "A portaria nomeia a rua, nao este RIP. Cadastro de 01/10/2021. Coordenada erra: Nominatim devolve 'Rua Dirceu Gomes Soares', nao Tonico Murta."
+  },
+  {
+    "rip": "4827010001128",
+    "municipio": "Medina",
+    "bairro": "CENTRO",
+    "area_ha": 0.01,
+    "ponto_lat": -16.227549,
+    "ponto_lon": -41.477153,
+    "logradouro_osm": "Rua Professor Querubim Quirino",
+    "o_que_e_hoje": "Nao encontrado.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "nao_encontrado",
+    "observacoes": "Menor imovel dos 25 (149,15 m2), dominial, Centro de Medina, Rua Bartolomeu Mauricio de Souza. Precisao cadastral 'Manual - No Municipio': a coordenada aponta a cidade, nao o lote, e o logradouro devolvido pelo Nominatim ('Rua Professor Querubim Quirino') NAO corresponde ao endereco do cadastro - nao deve ser usado. Nenhuma fonte publica encontrada sobre o imovel."
+  },
+  {
+    "rip": "5371000135009",
+    "municipio": "Teofilo Otoni",
+    "bairro": "topázio",
+    "area_ha": 25.8,
+    "ponto_lat": -17.669962,
+    "ponto_lon": -41.49507,
+    "logradouro_osm": "Rodovia Santos Dumont",
+    "o_que_e_hoje": "Fazenda da Uniao de 258.000 m2 (25,8 ha) no lugar 'Mestre Campo de Baixo', bairro/localidade topazio. E o maior imovel dos 25. Nao foi encontrada fonte publica sobre o uso atual.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "baixa",
+    "observacoes": "Precisao cadastral 'Manual - No Centro do imovel'. Data de inicio de utilizacao 01/12/2023. Nominatim devolve a Rodovia Santos Dumont, no distrito de Mucuri - a 20 km do centro."
+  },
+  {
+    "rip": "5371000165005",
+    "municipio": "Teofilo Otoni",
+    "bairro": "CENTRO",
+    "area_ha": 0.02,
+    "ponto_lat": -17.860196,
+    "ponto_lon": -41.51493,
+    "logradouro_osm": "Rua Francisco Sá",
+    "o_que_e_hoje": "Terreno da Uniao de 240 m2 na esquina da Rua Francisco Sa com a BR-116, Centro de Teofilo Otoni. Cadastro da SPU e Nominatim concordam no logradouro. Nao foi encontrada fonte que diga o que existe hoje sobre o lote.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "baixa",
+    "observacoes": "Unico caso em que a coordenada bate com o endereco oficial (CEP 39800-118)."
+  },
+  {
+    "rip": "5371000185006",
+    "municipio": "Teofilo Otoni",
+    "bairro": "Distrito de Mucuri",
+    "area_ha": 4.21,
+    "ponto_lat": -17.596527,
+    "ponto_lon": -41.491833,
+    "logradouro_osm": "Rodovia Santos Dumont",
+    "o_que_e_hoje": "Antigo acampamento do DNER no Distrito de Mucuri. O proprio cadastro da SPU grava o endereco como 'Rua Moises Ferreira da Costa s/n DNER', e a historia local registra que o DNER instalou ali acampamento com 22 casas de funcionarios, escola, almoxarifado e canteiro de obras da ponte sobre o Rio Mucuri, mantido depois da inauguracao da rodovia em 1963. Area cadastrada de 42.142,25 m2, compativel com acampamento.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/distrito-de-mucuri.php",
+        "titulo": "Redescobrindo os Vales - Historia do Distrito de Mucuri: o DNER instalou acampamento com 22 casas de funcionarios, escola, almoxarifado e canteiro de obras para a ponte sobre o Rio Mucuri, mantido apos a inauguracao da rodovia em 1963 (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "alta",
+    "observacoes": "UNICO dos 25 com regime composto: tem duas utilizacoes, uma 'Sem Destinacao Definida' (inicio 04/03/2024) e outra 'Em Processso de Destinacao' (inicio 30/01/2025) - ou seja, a destinacao voltou a andar em 2025. E por causa dele que 'contem Sem Destinacao Definida' da 25 e nao 24. Coordenada cai na Rodovia Santos Dumont (BR-116), no distrito de Mucuri."
+  },
+  {
+    "rip": "5371000685009",
+    "municipio": "Teofilo Otoni",
+    "bairro": "DOUTOR LAERTE LAENDE",
+    "area_ha": 0.01,
+    "ponto_lat": -17.873274,
+    "ponto_lon": -41.512812,
+    "logradouro_osm": "Rua Engenheiro Celso Murta",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Celso Murta, o eixo das autarquias rodoviarias federais em Teofilo Otoni: o DNIT mantem ali Unidade Local (n. 208) e galpao (n. 286), e a historia local registra que a area do antigo DNER fica no bairro Olga Prates Correa. O conjunto de lotes miudos e contiguos da Uniao nesta rua e compativel com a antiga vila residencial do DNER. NAO foi encontrado documento que nomeie este RIP e diga o que ocupa o lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/bens-moveis-e-imoveis/Planilha___GESTOR___Imoveis_uso_SERVICO_PUBLICO___2021.pdf",
+        "titulo": "DNIT - Planilha GESTOR de imoveis de uso em servico publico (2021), item 128: RIP 5371.00017.500-0, Teofilo Otoni, Rua Engenheiro Celso Murta n. 208 (Unidade Local) e n. 286 (Galpao), situacao B - em regularizacao junto a SPU/MG",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/bairro-olga-prates-correa.php",
+        "titulo": "Redescobrindo os Vales - Bairro Olga Prates Correa: a area onde hoje fica o DNER foi doada por Olga Prates Correa (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/prf/pt-br/canais-de-atendimento/unidades-prf/minas-gerais/teofilo-otoni",
+        "titulo": "PRF - Unidade Operacional Teofilo Otoni: BR-116, km 278, CEP 39802-236 (NAO confirma o endereco da Rua Engenheiro Celso Murta)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": "Unico dos 25 cadastrado como tipo 'Casa' (145 m2). Por ser edificacao residencial, o numero do lote foi omitido deste arquivo (ver secao de privacidade no .md)."
+  },
+  {
+    "rip": "5371000765002",
+    "municipio": "Teofilo Otoni",
+    "bairro": "DOUTOR LAERTE LAENDE",
+    "area_ha": 0.11,
+    "ponto_lat": -17.870018,
+    "ponto_lon": -41.513125,
+    "logradouro_osm": "Rua Engenheiro Celso Murta",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Celso Murta, o eixo das autarquias rodoviarias federais em Teofilo Otoni: o DNIT mantem ali Unidade Local (n. 208) e galpao (n. 286), e a historia local registra que a area do antigo DNER fica no bairro Olga Prates Correa. O conjunto de lotes miudos e contiguos da Uniao nesta rua e compativel com a antiga vila residencial do DNER. NAO foi encontrado documento que nomeie este RIP e diga o que ocupa o lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/bens-moveis-e-imoveis/Planilha___GESTOR___Imoveis_uso_SERVICO_PUBLICO___2021.pdf",
+        "titulo": "DNIT - Planilha GESTOR de imoveis de uso em servico publico (2021), item 128: RIP 5371.00017.500-0, Teofilo Otoni, Rua Engenheiro Celso Murta n. 208 (Unidade Local) e n. 286 (Galpao), situacao B - em regularizacao junto a SPU/MG",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/bairro-olga-prates-correa.php",
+        "titulo": "Redescobrindo os Vales - Bairro Olga Prates Correa: a area onde hoje fica o DNER foi doada por Olga Prates Correa (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/prf/pt-br/canais-de-atendimento/unidades-prf/minas-gerais/teofilo-otoni",
+        "titulo": "PRF - Unidade Operacional Teofilo Otoni: BR-116, km 278, CEP 39802-236 (NAO confirma o endereco da Rua Engenheiro Celso Murta)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": "Maior lote da rua entre os 25 (1.125,70 m2), cadastrado como 'Lote 08'."
+  },
+  {
+    "rip": "5371001335001",
+    "municipio": "Teofilo Otoni",
+    "bairro": "DOUTOR LAERTE LAENDE",
+    "area_ha": 0.05,
+    "ponto_lat": -17.873717,
+    "ponto_lon": -41.5128,
+    "logradouro_osm": "Praça Chiquito Correira",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Celso Murta, o eixo das autarquias rodoviarias federais em Teofilo Otoni: o DNIT mantem ali Unidade Local (n. 208) e galpao (n. 286), e a historia local registra que a area do antigo DNER fica no bairro Olga Prates Correa. O conjunto de lotes miudos e contiguos da Uniao nesta rua e compativel com a antiga vila residencial do DNER. NAO foi encontrado documento que nomeie este RIP e diga o que ocupa o lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/bens-moveis-e-imoveis/Planilha___GESTOR___Imoveis_uso_SERVICO_PUBLICO___2021.pdf",
+        "titulo": "DNIT - Planilha GESTOR de imoveis de uso em servico publico (2021), item 128: RIP 5371.00017.500-0, Teofilo Otoni, Rua Engenheiro Celso Murta n. 208 (Unidade Local) e n. 286 (Galpao), situacao B - em regularizacao junto a SPU/MG",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/bairro-olga-prates-correa.php",
+        "titulo": "Redescobrindo os Vales - Bairro Olga Prates Correa: a area onde hoje fica o DNER foi doada por Olga Prates Correa (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/prf/pt-br/canais-de-atendimento/unidades-prf/minas-gerais/teofilo-otoni",
+        "titulo": "PRF - Unidade Operacional Teofilo Otoni: BR-116, km 278, CEP 39802-236 (NAO confirma o endereco da Rua Engenheiro Celso Murta)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": "Cadastro grava 'antigo Bairro Olga Prates Correa' no endereco - a propria SPU registra que o lote mudou de bairro, o que explica os dois nomes de bairro no mesmo trecho de rua."
+  },
+  {
+    "rip": "5371010000904",
+    "municipio": "Teofilo Otoni",
+    "bairro": "SAO CRISTOVAO",
+    "area_ha": 0.03,
+    "ponto_lat": -17.834349,
+    "ponto_lon": -41.510626,
+    "logradouro_osm": "Rua Edmar Neves",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Edmar Neves (Vila Ramos / Sao Cristovao), rua residencial proxima a BR-116. Nenhuma fonte publica encontrada nomeia este RIP nem diz o que existe no lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "baixa",
+    "observacoes": "Cadastrado com o MESMO numero de porta do RIP 5371010001552 (areas diferentes: 276,23 m2 contra 62,10 m2) e com bairro trocado entre os dois registros - duplicidade/superposicao cadastral na fonte."
+  },
+  {
+    "rip": "5371010001552",
+    "municipio": "Teofilo Otoni",
+    "bairro": "VILA RAMOS",
+    "area_ha": 0.01,
+    "ponto_lat": -17.834349,
+    "ponto_lon": -41.510626,
+    "logradouro_osm": "Rua Edmar Neves",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Edmar Neves (Vila Ramos / Sao Cristovao), rua residencial proxima a BR-116. Nenhuma fonte publica encontrada nomeia este RIP nem diz o que existe no lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "baixa",
+    "observacoes": "Menor lote dos 25 (62,10 m2). Conceituacao do terreno vem como 'Marinha com Nacional Interior' - Teofilo Otoni fica a mais de 200 km do mar, entao a marcacao de terreno de marinha e erro do cadastro. Divide o numero de porta com o RIP 5371010000904."
+  },
+  {
+    "rip": "5371010001633",
+    "municipio": "Teofilo Otoni",
+    "bairro": "OLGA PRATES CORREA",
+    "area_ha": 0.03,
+    "ponto_lat": -17.873335,
+    "ponto_lon": -41.512806,
+    "logradouro_osm": "Rua Engenheiro Celso Murta",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Celso Murta, o eixo das autarquias rodoviarias federais em Teofilo Otoni: o DNIT mantem ali Unidade Local (n. 208) e galpao (n. 286), e a historia local registra que a area do antigo DNER fica no bairro Olga Prates Correa. O conjunto de lotes miudos e contiguos da Uniao nesta rua e compativel com a antiga vila residencial do DNER. NAO foi encontrado documento que nomeie este RIP e diga o que ocupa o lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/bens-moveis-e-imoveis/Planilha___GESTOR___Imoveis_uso_SERVICO_PUBLICO___2021.pdf",
+        "titulo": "DNIT - Planilha GESTOR de imoveis de uso em servico publico (2021), item 128: RIP 5371.00017.500-0, Teofilo Otoni, Rua Engenheiro Celso Murta n. 208 (Unidade Local) e n. 286 (Galpao), situacao B - em regularizacao junto a SPU/MG",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/bairro-olga-prates-correa.php",
+        "titulo": "Redescobrindo os Vales - Bairro Olga Prates Correa: a area onde hoje fica o DNER foi doada por Olga Prates Correa (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/prf/pt-br/canais-de-atendimento/unidades-prf/minas-gerais/teofilo-otoni",
+        "titulo": "PRF - Unidade Operacional Teofilo Otoni: BR-116, km 278, CEP 39802-236 (NAO confirma o endereco da Rua Engenheiro Celso Murta)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": ""
+  },
+  {
+    "rip": "5371010001714",
+    "municipio": "Teofilo Otoni",
+    "bairro": "OLGA PRATES CORREA",
+    "area_ha": 0.02,
+    "ponto_lat": -17.873766,
+    "ponto_lon": -41.512849,
+    "logradouro_osm": "Praça Chiquito Correira",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Celso Murta, o eixo das autarquias rodoviarias federais em Teofilo Otoni: o DNIT mantem ali Unidade Local (n. 208) e galpao (n. 286), e a historia local registra que a area do antigo DNER fica no bairro Olga Prates Correa. O conjunto de lotes miudos e contiguos da Uniao nesta rua e compativel com a antiga vila residencial do DNER. NAO foi encontrado documento que nomeie este RIP e diga o que ocupa o lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/bens-moveis-e-imoveis/Planilha___GESTOR___Imoveis_uso_SERVICO_PUBLICO___2021.pdf",
+        "titulo": "DNIT - Planilha GESTOR de imoveis de uso em servico publico (2021), item 128: RIP 5371.00017.500-0, Teofilo Otoni, Rua Engenheiro Celso Murta n. 208 (Unidade Local) e n. 286 (Galpao), situacao B - em regularizacao junto a SPU/MG",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/bairro-olga-prates-correa.php",
+        "titulo": "Redescobrindo os Vales - Bairro Olga Prates Correa: a area onde hoje fica o DNER foi doada por Olga Prates Correa (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/prf/pt-br/canais-de-atendimento/unidades-prf/minas-gerais/teofilo-otoni",
+        "titulo": "PRF - Unidade Operacional Teofilo Otoni: BR-116, km 278, CEP 39802-236 (NAO confirma o endereco da Rua Engenheiro Celso Murta)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": ""
+  },
+  {
+    "rip": "5371010002109",
+    "municipio": "Teofilo Otoni",
+    "bairro": "SAO CRISTOVAO",
+    "area_ha": 0.02,
+    "ponto_lat": -17.83405,
+    "ponto_lon": -41.510695,
+    "logradouro_osm": "Rodovia Santos Dumont",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Edmar Neves (Vila Ramos / Sao Cristovao), rua residencial proxima a BR-116. Nenhuma fonte publica encontrada nomeia este RIP nem diz o que existe no lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "baixa",
+    "observacoes": ""
+  },
+  {
+    "rip": "5371010002281",
+    "municipio": "Teofilo Otoni",
+    "bairro": "OLGA PRATES CORREA",
+    "area_ha": 0.02,
+    "ponto_lat": -17.873796,
+    "ponto_lon": -41.512768,
+    "logradouro_osm": "Praça Chiquito Correira",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Celso Murta, o eixo das autarquias rodoviarias federais em Teofilo Otoni: o DNIT mantem ali Unidade Local (n. 208) e galpao (n. 286), e a historia local registra que a area do antigo DNER fica no bairro Olga Prates Correa. O conjunto de lotes miudos e contiguos da Uniao nesta rua e compativel com a antiga vila residencial do DNER. NAO foi encontrado documento que nomeie este RIP e diga o que ocupa o lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/bens-moveis-e-imoveis/Planilha___GESTOR___Imoveis_uso_SERVICO_PUBLICO___2021.pdf",
+        "titulo": "DNIT - Planilha GESTOR de imoveis de uso em servico publico (2021), item 128: RIP 5371.00017.500-0, Teofilo Otoni, Rua Engenheiro Celso Murta n. 208 (Unidade Local) e n. 286 (Galpao), situacao B - em regularizacao junto a SPU/MG",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/bairro-olga-prates-correa.php",
+        "titulo": "Redescobrindo os Vales - Bairro Olga Prates Correa: a area onde hoje fica o DNER foi doada por Olga Prates Correa (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/prf/pt-br/canais-de-atendimento/unidades-prf/minas-gerais/teofilo-otoni",
+        "titulo": "PRF - Unidade Operacional Teofilo Otoni: BR-116, km 278, CEP 39802-236 (NAO confirma o endereco da Rua Engenheiro Celso Murta)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": ""
+  },
+  {
+    "rip": "5371010002362",
+    "municipio": "Teofilo Otoni",
+    "bairro": "OLGA PRATES CORREA",
+    "area_ha": 0.03,
+    "ponto_lat": -17.872899,
+    "ponto_lon": -41.512839,
+    "logradouro_osm": "Rua Engenheiro Celso Murta",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Celso Murta, o eixo das autarquias rodoviarias federais em Teofilo Otoni: o DNIT mantem ali Unidade Local (n. 208) e galpao (n. 286), e a historia local registra que a area do antigo DNER fica no bairro Olga Prates Correa. O conjunto de lotes miudos e contiguos da Uniao nesta rua e compativel com a antiga vila residencial do DNER. NAO foi encontrado documento que nomeie este RIP e diga o que ocupa o lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/bens-moveis-e-imoveis/Planilha___GESTOR___Imoveis_uso_SERVICO_PUBLICO___2021.pdf",
+        "titulo": "DNIT - Planilha GESTOR de imoveis de uso em servico publico (2021), item 128: RIP 5371.00017.500-0, Teofilo Otoni, Rua Engenheiro Celso Murta n. 208 (Unidade Local) e n. 286 (Galpao), situacao B - em regularizacao junto a SPU/MG",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/bairro-olga-prates-correa.php",
+        "titulo": "Redescobrindo os Vales - Bairro Olga Prates Correa: a area onde hoje fica o DNER foi doada por Olga Prates Correa (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/prf/pt-br/canais-de-atendimento/unidades-prf/minas-gerais/teofilo-otoni",
+        "titulo": "PRF - Unidade Operacional Teofilo Otoni: BR-116, km 278, CEP 39802-236 (NAO confirma o endereco da Rua Engenheiro Celso Murta)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": ""
+  },
+  {
+    "rip": "5371010002443",
+    "municipio": "Teofilo Otoni",
+    "bairro": "VILA RAMOS",
+    "area_ha": 0.03,
+    "ponto_lat": -17.834402,
+    "ponto_lon": -41.510647,
+    "logradouro_osm": "Rua Edmar Neves",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Edmar Neves (Vila Ramos / Sao Cristovao), rua residencial proxima a BR-116. Nenhuma fonte publica encontrada nomeia este RIP nem diz o que existe no lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "baixa",
+    "observacoes": ""
+  },
+  {
+    "rip": "5371010002524",
+    "municipio": "Teofilo Otoni",
+    "bairro": "DOUTOR LAERTE LAENDE",
+    "area_ha": 0.02,
+    "ponto_lat": -17.873122,
+    "ponto_lon": -41.512817,
+    "logradouro_osm": "Rua Engenheiro Celso Murta",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Celso Murta, o eixo das autarquias rodoviarias federais em Teofilo Otoni: o DNIT mantem ali Unidade Local (n. 208) e galpao (n. 286), e a historia local registra que a area do antigo DNER fica no bairro Olga Prates Correa. O conjunto de lotes miudos e contiguos da Uniao nesta rua e compativel com a antiga vila residencial do DNER. NAO foi encontrado documento que nomeie este RIP e diga o que ocupa o lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/bens-moveis-e-imoveis/Planilha___GESTOR___Imoveis_uso_SERVICO_PUBLICO___2021.pdf",
+        "titulo": "DNIT - Planilha GESTOR de imoveis de uso em servico publico (2021), item 128: RIP 5371.00017.500-0, Teofilo Otoni, Rua Engenheiro Celso Murta n. 208 (Unidade Local) e n. 286 (Galpao), situacao B - em regularizacao junto a SPU/MG",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/bairro-olga-prates-correa.php",
+        "titulo": "Redescobrindo os Vales - Bairro Olga Prates Correa: a area onde hoje fica o DNER foi doada por Olga Prates Correa (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/prf/pt-br/canais-de-atendimento/unidades-prf/minas-gerais/teofilo-otoni",
+        "titulo": "PRF - Unidade Operacional Teofilo Otoni: BR-116, km 278, CEP 39802-236 (NAO confirma o endereco da Rua Engenheiro Celso Murta)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": ""
+  },
+  {
+    "rip": "5371010002605",
+    "municipio": "Teofilo Otoni",
+    "bairro": "DOUTOR LAERTE LAENDE",
+    "area_ha": 0.02,
+    "ponto_lat": -17.873824,
+    "ponto_lon": -41.512677,
+    "logradouro_osm": "Rua Engenheiro Celso Murta",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Celso Murta, o eixo das autarquias rodoviarias federais em Teofilo Otoni: o DNIT mantem ali Unidade Local (n. 208) e galpao (n. 286), e a historia local registra que a area do antigo DNER fica no bairro Olga Prates Correa. O conjunto de lotes miudos e contiguos da Uniao nesta rua e compativel com a antiga vila residencial do DNER. NAO foi encontrado documento que nomeie este RIP e diga o que ocupa o lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/bens-moveis-e-imoveis/Planilha___GESTOR___Imoveis_uso_SERVICO_PUBLICO___2021.pdf",
+        "titulo": "DNIT - Planilha GESTOR de imoveis de uso em servico publico (2021), item 128: RIP 5371.00017.500-0, Teofilo Otoni, Rua Engenheiro Celso Murta n. 208 (Unidade Local) e n. 286 (Galpao), situacao B - em regularizacao junto a SPU/MG",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/bairro-olga-prates-correa.php",
+        "titulo": "Redescobrindo os Vales - Bairro Olga Prates Correa: a area onde hoje fica o DNER foi doada por Olga Prates Correa (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/prf/pt-br/canais-de-atendimento/unidades-prf/minas-gerais/teofilo-otoni",
+        "titulo": "PRF - Unidade Operacional Teofilo Otoni: BR-116, km 278, CEP 39802-236 (NAO confirma o endereco da Rua Engenheiro Celso Murta)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": ""
+  },
+  {
+    "rip": "5371010002958",
+    "municipio": "Teofilo Otoni",
+    "bairro": "SAO CRISTOVAO",
+    "area_ha": 0.03,
+    "ponto_lat": -17.834538,
+    "ponto_lon": -41.5107,
+    "logradouro_osm": "Rua Edmar Neves",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Edmar Neves (Vila Ramos / Sao Cristovao), rua residencial proxima a BR-116. Nenhuma fonte publica encontrada nomeia este RIP nem diz o que existe no lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "baixa",
+    "observacoes": ""
+  },
+  {
+    "rip": "5371010003091",
+    "municipio": "Teofilo Otoni",
+    "bairro": "DOUTOR LAERTE LAENDE",
+    "area_ha": 0.05,
+    "ponto_lat": -17.87197,
+    "ponto_lon": -41.512942,
+    "logradouro_osm": "Rua Engenheiro Celso Murta",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Celso Murta, o eixo das autarquias rodoviarias federais em Teofilo Otoni: o DNIT mantem ali Unidade Local (n. 208) e galpao (n. 286), e a historia local registra que a area do antigo DNER fica no bairro Olga Prates Correa. O conjunto de lotes miudos e contiguos da Uniao nesta rua e compativel com a antiga vila residencial do DNER. NAO foi encontrado documento que nomeie este RIP e diga o que ocupa o lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/bens-moveis-e-imoveis/Planilha___GESTOR___Imoveis_uso_SERVICO_PUBLICO___2021.pdf",
+        "titulo": "DNIT - Planilha GESTOR de imoveis de uso em servico publico (2021), item 128: RIP 5371.00017.500-0, Teofilo Otoni, Rua Engenheiro Celso Murta n. 208 (Unidade Local) e n. 286 (Galpao), situacao B - em regularizacao junto a SPU/MG",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/bairro-olga-prates-correa.php",
+        "titulo": "Redescobrindo os Vales - Bairro Olga Prates Correa: a area onde hoje fica o DNER foi doada por Olga Prates Correa (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/prf/pt-br/canais-de-atendimento/unidades-prf/minas-gerais/teofilo-otoni",
+        "titulo": "PRF - Unidade Operacional Teofilo Otoni: BR-116, km 278, CEP 39802-236 (NAO confirma o endereco da Rua Engenheiro Celso Murta)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": "Coordenada cai sobre o ponto que o OpenStreetMap marca como Policia Rodoviaria Federal na Rua Engenheiro Celso Murta - mas a PRF publica sua unidade operacional em Teofilo Otoni na BR-116 km 278, endereco diferente. A associacao com a PRF NAO esta confirmada."
+  },
+  {
+    "rip": "5371010003172",
+    "municipio": "Teofilo Otoni",
+    "bairro": "OLGA PRATES CORREA",
+    "area_ha": 0.05,
+    "ponto_lat": -17.87113,
+    "ponto_lon": -41.513007,
+    "logradouro_osm": "Rua Engenheiro Celso Murta",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Celso Murta, o eixo das autarquias rodoviarias federais em Teofilo Otoni: o DNIT mantem ali Unidade Local (n. 208) e galpao (n. 286), e a historia local registra que a area do antigo DNER fica no bairro Olga Prates Correa. O conjunto de lotes miudos e contiguos da Uniao nesta rua e compativel com a antiga vila residencial do DNER. NAO foi encontrado documento que nomeie este RIP e diga o que ocupa o lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/bens-moveis-e-imoveis/Planilha___GESTOR___Imoveis_uso_SERVICO_PUBLICO___2021.pdf",
+        "titulo": "DNIT - Planilha GESTOR de imoveis de uso em servico publico (2021), item 128: RIP 5371.00017.500-0, Teofilo Otoni, Rua Engenheiro Celso Murta n. 208 (Unidade Local) e n. 286 (Galpao), situacao B - em regularizacao junto a SPU/MG",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/bairro-olga-prates-correa.php",
+        "titulo": "Redescobrindo os Vales - Bairro Olga Prates Correa: a area onde hoje fica o DNER foi doada por Olga Prates Correa (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/prf/pt-br/canais-de-atendimento/unidades-prf/minas-gerais/teofilo-otoni",
+        "titulo": "PRF - Unidade Operacional Teofilo Otoni: BR-116, km 278, CEP 39802-236 (NAO confirma o endereco da Rua Engenheiro Celso Murta)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": "Mesma ressalva do RIP 5371010003091 quanto ao ponto da PRF no OpenStreetMap."
+  },
+  {
+    "rip": "5371010003253",
+    "municipio": "Teofilo Otoni",
+    "bairro": "DOUTOR LAERTE LAENDE",
+    "area_ha": 0.05,
+    "ponto_lat": -17.871203,
+    "ponto_lon": -41.513093,
+    "logradouro_osm": "Rua Engenheiro Celso Murta",
+    "o_que_e_hoje": "Lote da Uniao na Rua Engenheiro Celso Murta, o eixo das autarquias rodoviarias federais em Teofilo Otoni: o DNIT mantem ali Unidade Local (n. 208) e galpao (n. 286), e a historia local registra que a area do antigo DNER fica no bairro Olga Prates Correa. O conjunto de lotes miudos e contiguos da Uniao nesta rua e compativel com a antiga vila residencial do DNER. NAO foi encontrado documento que nomeie este RIP e diga o que ocupa o lote hoje.",
+    "evidencia": [
+      {
+        "url": "https://qlik-publico.paineis.gov.br/extensions/transparencia-ativa/transparencia-ativa.html",
+        "titulo": "SPU - Painel de Transparencia Ativa, aba Imoveis da Uniao, filtro UF=MG (export CSV de 29/07/2026, 4.336 linhas)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/dnit/pt-br/acesso-a-informacao/bens-moveis-e-imoveis/Planilha___GESTOR___Imoveis_uso_SERVICO_PUBLICO___2021.pdf",
+        "titulo": "DNIT - Planilha GESTOR de imoveis de uso em servico publico (2021), item 128: RIP 5371.00017.500-0, Teofilo Otoni, Rua Engenheiro Celso Murta n. 208 (Unidade Local) e n. 286 (Galpao), situacao B - em regularizacao junto a SPU/MG",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://redescobrindoosvales.tur.br/vale-do-mucuri/microrregiao-de-teofilo-otoni/teofilo-otoni/bairro-olga-prates-correa.php",
+        "titulo": "Redescobrindo os Vales - Bairro Olga Prates Correa: a area onde hoje fica o DNER foi doada por Olga Prates Correa (LIDO PELO INDICE DE BUSCA: fetch direto devolve HTTP 403)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://www.gov.br/prf/pt-br/canais-de-atendimento/unidades-prf/minas-gerais/teofilo-otoni",
+        "titulo": "PRF - Unidade Operacional Teofilo Otoni: BR-116, km 278, CEP 39802-236 (NAO confirma o endereco da Rua Engenheiro Celso Murta)",
+        "data_acesso": "2026-08-15"
+      },
+      {
+        "url": "https://nominatim.openstreetmap.org/reverse?format=jsonv2",
+        "titulo": "OpenStreetMap/Nominatim - geocodificacao reversa da coordenada do cadastro",
+        "data_acesso": "2026-08-15"
+      }
+    ],
+    "confianca": "media",
+    "observacoes": "Mesma ressalva do RIP 5371010003091 quanto ao ponto da PRF no OpenStreetMap."
+  }
+]

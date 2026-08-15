@@ -679,8 +679,18 @@ export function createLayersPanel(el, { camadas, assuntos, regioes, onToggle, on
      * @param {string}  [p.error]
      * @param {boolean} [p.indistinta] alguma fonte mistura os dois vales sem separar
      */
-    setStatus(id, { on, count, total, error, indistinta } = {}) {
+    setStatus(id, { on, count, total, error, indistinta, texto } = {}) {
       if (on != null) aplicarEstado(id, on);
+      // `texto` existe para a camada que não se mede em feições. A imagem de
+      // satélite ligada e sem retalho na tela não está "sem dados": está longe
+      // demais para precisar de um. Contar feições nela e concluir "sem dados
+      // ainda" era relatar defeito onde havia funcionamento normal.
+      if (texto != null && !error) {
+        const alvo = contadores.get(id);
+        if (alvo) { alvo.textContent = texto; alvo.title = ''; }
+        linhas.get(id)?.classList.remove('layer-empty', 'layer-error');
+        return;
+      }
       const el2 = contadores.get(id);
       const row = linhas.get(id);
       if (!el2) return;
