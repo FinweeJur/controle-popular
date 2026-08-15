@@ -790,15 +790,27 @@ export const LAYER_REGISTRY = [
   // mostra onde a norma cita um lugar; esta mostra onde a norma cria, amplia
   // ou redefine unidade de conservação. Ver docs/HANDOFF-ALERTAS-TERRITORIO.md §3.
   //
-  // ⚠️ A cor NÃO é a que o handoff propôs, e a diferença é medida. Ele sugeria
-  // matiz ~115° ("verde-lima, combina com parque"), calculado sobre uma leva de
-  // cores que não é mais a deste arquivo. Medidos os 30 matizes em uso hoje, a
-  // maior lacuna livre é 276,9° → 320,6° (43,7°), e 115° cairia a **10,2° do
-  // verde de "Minas em operação"** — as duas camadas mais opostas do mapa
-  // ficariam quase da mesma cor, justamente onde elas aparecem juntas. Fica o
-  // meio da lacuna real (298,8°), a 21,9° e 21,8° das vizinhas e a 173° do
-  // verde das minas. Conotação perde para legibilidade quando o vizinho é a
-  // camada que esta contradiz.
+  // ⚠️ ERRO CORRIGIDO em 15/08 — a cor que entrou primeiro aqui estava errada,
+  // e o handoff estava certo o tempo todo.
+  //
+  // Eu tinha rejeitado o matiz ~115° que ele propunha, alegando que cairia a
+  // 10,2° do verde de "Minas em operação". Aquela medição foi feita em **HSL**,
+  // convertendo os hexadecimais um a um. Mas `css/tokens/colors.css` declara
+  // toda a paleta em **OKLCH**, e é nesse espaço que o piso de 11,6° de
+  // separação daquele arquivo é definido — HSL e OKLCH não concordam sobre o
+  // que é "mesmo matiz", e a conversão levou a conclusão para o lado oposto.
+  //
+  // Medido de novo, com os valores que o próprio colors.css declara:
+  //   115,4° fica a 13,4° de --layer-lotes-vagos e 13,4° de --layer-quilombolas
+  //          (acima do piso), e a 30,7° do verde das minas — não 10,2°.
+  //   O 0xeb8dec que eu tinha escolhido mede oklch(0,774 0,164 326,65): a
+  //          **3,4° de --fiction**, a cor reservada a dado INVENTADO. Uma
+  //          camada de norma medida ia sair quase da cor do "isto é fictício".
+  //
+  // Fica `oklch(0.754 0.139 115.4)` = #acb947, o meio da segunda maior lacuna
+  // real, na mesma família L/C do resto da paleta. A lição não é sobre esta
+  // camada: é que medir cor no espaço errado inverte a resposta com toda a
+  // aparência de rigor.
   {
     id: 'atos-area-protegida-municipios', label: 'Normas que criam ou alteram área protegida',
     // Um ponto por MUNICÍPIO, não por norma: são 3 pontos para 8 normas
@@ -806,7 +818,7 @@ export const LAYER_REGISTRY = [
     // 3, e sem esta frase a diferença para o "8" do texto pareceria erro.
     hint: '8 normas municipais que criam, ampliam ou redefinem o zoneamento de área de proteção ambiental, parque ou monumento natural — reunidas em 3 pontos, um por município: Belo Horizonte (4), Diamantina (3) e Araçuaí (1, a Lei 726/2025, que modifica o zoneamento da APA da Chapada do Lagoão).',
     aviso: 'Cobre só 3 dos 854 municípios de Minas Gerais. Betim e Itinga têm zero normas deste tipo, medido — não é lacuna de coleta. Nos outros 846, ausência aqui quer dizer que a legislação ainda não foi coletada, não que não exista norma. A classificação de cada norma (cria/altera área × só administrativo) foi feita lendo a ementa inteira à mão.',
-    color: 0xeb8dec, /* meio da maior lacuna de matiz medida (298,8°) — ver a nota acima */ on: false, render: 'point', pointSize: 0.005, listavel: true,
+    color: 0xacb947, /* oklch(0.754 0.139 115.4) — ver a nota acima */ on: false, render: 'point', pointSize: 0.005, listavel: true,
   },
   // Camada dinâmica custom (Fase G3): satélites dos sensores do projeto em
   // órbita SGP4 real (TLE CelesTrak). Não vem do endpoint /camadas — a
