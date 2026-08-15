@@ -253,7 +253,12 @@ export const ZONAS: Zona[] = [
       "Clipping, linha do tempo, quem atua na reparação e o auxílio emergencial pago mês a mês — o rompimento da barragem da Vale em Brumadinho, acompanhado.",
     itens: [
       "Clipping de 149 notícias (abr/2024–jul/2026), filtrável por tipo e período",
-      "Linha do tempo com os 17 marcos do processo, do corte do auxílio à ADPF no STF",
+      // Eram 17 e viraram 23 em 15/08/2026 (`96de91e`), quando os 6 marcos
+      // pré-2025 entraram — entre eles o próprio rompimento. Este texto ficou
+      // para trás por meia hora e passou a anunciar um acervo menor do que o
+      // que a tela mostrava. Número aqui é cópia manual do que `linha-do-tempo.ts`
+      // guarda; quem mexer lá tem de mexer aqui.
+      "Linha do tempo com os 23 marcos do processo, do rompimento em 25/01/2019 à ADPF no STF",
       "18 órgãos e organizações que atuam na reparação — 16 sem entrada em outro lugar do portal",
       "9 pagamentos do Novo Auxílio Emergencial e os documentos do processo que citam cada município, com link e citação",
     ],

@@ -13,11 +13,21 @@
  *   EDU_GLOSSARIO — 15 verbetes (NAE, PTR, PNAB, ERSHRE…)
  *   EDU_FAQ       — 9 perguntas e respostas
  *
- * **`EDU_TIMELINE` fica DE FORA de propósito.** O portal já tem
- * `lib/paraopeba/linha-do-tempo.ts` com 17 marcos, e o painel em disco tem 12
- * — ele é MAIS VELHO que o portal. Importar aquela lista por cima apagaria
- * cinco marcos. Quem quiser reconciliar as duas tem de fazer item a item, com
- * a data de cada uma à vista, e isso não é trabalho de script.
+ * **`EDU_TIMELINE` fica DE FORA de propósito**, e a reconciliação que este
+ * comentário pedia já foi feita à mão em 15/08/2026 (`96de91e`): os 6 itens
+ * dela anteriores a 2025 entraram em `lib/paraopeba/linha-do-tempo.ts`, que
+ * passou de 17 para **23** marcos — e o primeiro deles é o rompimento, que o
+ * portal não tinha.
+ *
+ * Continua fora do script porque a fusão é item a item: dos **16** itens da
+ * `EDU_TIMELINE`, 10 já existiam no portal com dado melhor (o painel para em
+ * "Mai/2026 · STF analisa" e o portal já tem junho e julho; o painel junta num
+ * item só o que o portal separa em 07/05 e 14/05). Importar por cima
+ * rebaixaria esses dez. Isso não é trabalho de script.
+ *
+ * ⚠️ A versão anterior deste comentário dizia que o painel tinha **12** itens.
+ * Contados em 15/08: são **16**. O número errado é o que sustentava a
+ * conclusão de que importar "apagaria cinco".
  *
  * ## Por que glossário e FAQ valem a ingestão
  *
@@ -119,9 +129,14 @@ const arquivo = `// GERADO por scripts/extrair-educacao-paraopeba.mts — não e
 // dizer isso — atribuir a nós a explicação de um caso em que somos observador
 // seria assumir uma autoridade que não temos.
 //
-// A linha do tempo do painel (EDU_TIMELINE) NÃO entra aqui: o portal já tem 17
-// marcos e o painel tem 12, porque o arquivo em disco é mais velho. Importar
-// por cima apagaria cinco.
+// A linha do tempo do painel (EDU_TIMELINE) NÃO entra aqui, e o motivo mudou
+// em 15/08/2026 (`96de91e`): os 6 marcos dela anteriores a 2025 FORAM fundidos
+// à mão em `linha-do-tempo.ts`, que passou de 17 para 23 marcos. Continua fora
+// deste script porque a fusão é item a item — dos 16 itens da EDU_TIMELINE, 10
+// já existiam no portal com dado melhor, e importar por cima os rebaixaria.
+//
+// ⚠️ A contagem anterior deste comentário dizia que o painel tinha 12 itens.
+// Contados em 15/08: são 16.
 
 export interface Verbete {
   /** A sigla ou o termo, como o painel escreve. */

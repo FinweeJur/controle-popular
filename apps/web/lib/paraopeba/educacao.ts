@@ -7,9 +7,14 @@
 // dizer isso — atribuir a nós a explicação de um caso em que somos observador
 // seria assumir uma autoridade que não temos.
 //
-// A linha do tempo do painel (EDU_TIMELINE) NÃO entra aqui: o portal já tem 17
-// marcos e o painel tem 12, porque o arquivo em disco é mais velho. Importar
-// por cima apagaria cinco.
+// A linha do tempo do painel (EDU_TIMELINE) NÃO entra aqui, e o motivo mudou
+// em 15/08/2026 (`96de91e`): os 6 marcos dela anteriores a 2025 FORAM fundidos
+// à mão em `linha-do-tempo.ts`, que passou de 17 para 23 marcos. Continua fora
+// deste script porque a fusão é item a item — dos 16 itens da EDU_TIMELINE, 10
+// já existiam no portal com dado melhor, e importar por cima os rebaixaria.
+//
+// ⚠️ A contagem anterior deste comentário dizia que o painel tinha 12 itens.
+// Contados em 15/08: são 16.
 
 export interface Verbete {
   /** A sigla ou o termo, como o painel escreve. */
