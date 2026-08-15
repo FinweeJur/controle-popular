@@ -428,7 +428,21 @@ def _coletar_leis(cidade: dict) -> list[dict]:
                 "ano": l.get("ano"),
                 "ementa": ementa or None,
                 "data_publicacao": data,
-                "link_fonte": f"{_SESSAO.headers['Origin']}/leis",
+                # ⟲ 14/08/2026: linkava para `/leis` (a LISTAGEM genérica) em
+                # TODA linha, nunca para a norma específica — achado numa
+                # auditoria vigorosa das normas de proteção: 3 leis de
+                # área protegida de Diamantina (2723/2001, 2924/2004,
+                # LC 178/2023) apontavam pra mesma URL genérica, indistinguível
+                # umas das outras. O front do SysSolution usa `/Lei/${lei.id}`
+                # como deep link (confirmado lendo o HTML publicado de
+                # cmdiamantina.mg.gov.br/leis) e a API já devolve esse `id`
+                # em cada item — só não estava sendo usado. Fallback pra
+                # `/leis` só se a fonte um dia mandar item sem `id`.
+                "link_fonte": (
+                    f"{_SESSAO.headers['Origin']}/Lei/{l['id']}"
+                    if l.get("id")
+                    else f"{_SESSAO.headers['Origin']}/leis"
+                ),
                 "temas": classificar_texto(ementa),
             }
         )

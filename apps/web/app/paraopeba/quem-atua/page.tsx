@@ -43,8 +43,10 @@ const MOVIMENTO = ATORES_REPARACAO.find(
 );
 
 export default function QuemAtuaPage() {
+  // ⟲ 13/08, revisão de onboarding: era `<div>` — mesmo conserto de
+  // `clipping/page.tsx` (ver o comentário lá).
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
+    <main className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
         <a href="/paraopeba" className="hover:text-primary">
           Paraopeba
@@ -169,6 +171,6 @@ export default function QuemAtuaPage() {
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <FooterGlobal />
       </footer>
-    </div>
+    </main>
   );
 }

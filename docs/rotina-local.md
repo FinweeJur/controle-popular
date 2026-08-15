@@ -95,6 +95,67 @@ deliberadamente burro e **recusa o que não entende** em vez de pular: um `if:`
 de formato novo aborta a rotina imprimindo a expressão. Pular seria o mesmo
 modo de falha silenciosa que esta rotina existe para matar.
 
+## O corpus que ficava velho em silêncio (corrigido em 15/08/2026)
+
+Até 15/08/2026 **nenhuma das cinco fontes de `ambiental_legislacao` estava
+declarada em workflow nenhum** — nem as estaduais (ALMG, Semad, Siam) nem as
+nacionais (MMA/Conama, CNDH). As 15.318 normas eram carregadas à mão nesta
+máquina, o que significa que o corpus congelava no dia da última carga e
+**ninguém era avisado**: a tela seguia mostrando um número correto na forma e
+velho no conteúdo. É o mesmo modo de falha que o §20 descreve lá em cima, só
+que num eixo em vez de no site inteiro.
+
+Apareceu ao mesclar o PC externo: ele trouxe a migration `0073`, os coletores
+`legislacao_mma`/`legislacao_cndh` e a tela com filtro por esfera — mas **não
+tem Postgres**, então as 8.940 normas federais nunca chegaram a banco nenhum.
+A tela ia ao ar prometendo MMA, Ibama, ICMBio e Conama e imprimindo "0 normas
+federais" logo abaixo. Os números são calculados do banco, então não era
+mentira; era a vitrine prometendo o que não entrega, que esta base trata como
+falha grave.
+
+As cinco agora são passos **mensais** (`0 10 1 * *`) em `etl-betim.yml`.
+Mensal é a cadência da própria fonte, não um teto arbitrário: o recurso do MMA
+é um CSV anual (`Legislação Ambiental Brasileira_2025`, criado em 23/09/2025)
+e a página do CNDH no Decidim estava atualizada em 29/01/2026 quando isto foi
+escrito. Todas com `continue-on-error`: ALMG e Semad paginam com pausa de ≥1 s
+exigida pela fonte e são os passos mais demorados do mês — um cair não pode
+levar os outros quatro nem o build do dia.
+
+Contagem medida no dia em que foram ligadas, para servir de régua na próxima:
+
+| fonte | esfera | normas |
+|---|---|---:|
+| MMA/Conama | nacional | 8.570 |
+| CNDH | nacional | 370 |
+| Siam | estadual | 4.077 |
+| Semad | estadual | 2.232 |
+| ALMG | estadual | 69 |
+| **total** | | **15.318** |
+
+O vocabulário de esfera é `municipal | estadual | nacional | internacional` —
+**não existe `federal`**, nem no tipo `EsferaLegislacao` nem na constraint da
+tabela. A tela escreve "federais" como rótulo humano e conta por `fonte`.
+Quem consultar o banco por `esfera = 'federal'` recebe zero e conclui a coisa
+errada.
+
+### E um sexto passo, cuja ORDEM é o passo
+
+`classificar_temas_ambientais` roda **depois** dos cinco, no mesmo bloco
+mensal. Ele não bate em fonte externa nenhuma: lê `ementa`/`indexacao` das
+linhas já gravadas e deriva `temas`. Rodar antes dos coletores classificaria o
+corpus do mês passado e deixaria o novo sem tema — que foi exatamente o estado
+encontrado em 15/08, e o motivo de este parágrafo existir.
+
+O sintoma vale registrar porque é sutil: as 8.940 normas nacionais entraram com
+**0%** de tema contra **31,5%** das estaduais, e a tela publicava só a média
+das duas, **13,1%**. O número era verdadeiro — e, sozinho, enganoso: sugeria
+cobertura ralinha e espalhada quando na verdade era boa de um lado e nula do
+outro. Média que esconde bimodalidade é o tipo de número que esta base existe
+para não publicar.
+
+O módulo é determinístico e idempotente, então rodar de novo sobre linha já
+classificada não duplica nem estraga.
+
 ## O que ela nunca faz
 
 Conectar na Neon. Antes de qualquer coisa ela lê `etl/betim/.env` e

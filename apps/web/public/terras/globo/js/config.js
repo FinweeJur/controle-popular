@@ -382,7 +382,7 @@ export const LAYER_REGISTRY = [
   {
     id: 'territorios-quilombolas', label: 'Territórios quilombolas',
     hint: '27 polígonos de 23 territórios, 141.446 hectares (1.414 km²) titulados ou em titulação pelo INCRA, em Minas inteira. Um território pode ter várias parcelas separadas: Marobá dos Teixeira, por exemplo, são 5. Os maiores são Gurutuba (Jaíba/Gamaleira/Monte Azul, 45.852 ha), Brejo dos Crioulos (17.409 ha) e Tabua (Manga, 16.638 ha).',
-    aviso: 'Fase incluída de propósito, do "RTID publicado" ao titulado: o direito não espera o título. Foi essa escolha que fez aparecer a sobreposição de lavra de granito sobre o Território do Baú, em Araçuaí — ele ainda não tem título definitivo e, filtrado por "titulado", não apareceria.',
+    aviso: 'Fase incluída de propósito, do RTID (Relatório Técnico de Identificação e Delimitação) publicado ao titulado: o direito não espera o título. Foi essa escolha que fez aparecer a sobreposição de lavra de granito sobre o Território do Baú, em Araçuaí — ele ainda não tem título definitivo e, filtrado por "titulado", não apareceria.',
     color: 0x94c05b,   /* --layer-quilombolas */ on: false, render: 'fill', listavel: true,
   },
   // Vazio URBANO, que é assunto diferente do vazio cadastral rural — e tem

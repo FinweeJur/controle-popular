@@ -13,6 +13,24 @@ import { pontoNaSuperficie } from './pontosuperficie.js';
 
 /** Nome de cada propriedade, em português. */
 export const ROTULOS = {
+  // ⟲ 13/08: OS AVISOS APARECIAM COMO CHAVE CRUA NA FICHA — o dono viu
+  // `aviso_nao_somar_entre_municipios` na tela, em snake_case. Eles foram
+  // gravados DENTRO de cada feição de propósito, para que a ressalva viaje
+  // com o dado e não fique só na legenda: o geojson é exportável, e quem
+  // baixa o arquivo leva o aviso junto. Só faltava traduzir a chave, que é
+  // exatamente o trabalho deste arquivo.
+  aviso_nao_e_repasse_prefeitura: 'Atenção',
+  aviso_nao_somar_entre_municipios: 'Não somar',
+  cobertura_da_camada: 'Cobertura desta camada',
+  cfem_arrecadada_2024: 'CFEM arrecadada (2024)',
+  cfem_ano_referencia: 'Ano de referência',
+  cfem_substancias_2024: 'Substâncias',
+  cfem_serie_desde: 'Série começa em',
+  cfem_serie_ate: 'Série vai até',
+  cfem_maior_pagador_2024: 'Maior pagador',
+  cfem_maior_pagador_valor_2024: 'Valor do maior pagador',
+  cfem_atraso_medido_meses: 'Atraso da fonte (meses)',
+
   area_ha: 'Tamanho',
   municipio: 'Município',
   uf: 'Estado',

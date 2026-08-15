@@ -133,3 +133,76 @@ def chave_dedup(tipo_bruto: str | None, numero_bruto: str | None, ano: int | Non
     if not tipo or not numero or not ano:
         return None
     return f"{tipo}:{numero}:{ano}"
+
+
+# ─────────────────────────── regressão ──────────────────────────────────
+#
+# Convenção do repo: extrator carrega a própria suíte atrás de `--testar`, e
+# ela vira passo de workflow (`etl.normas --testar`, `etl.cota --testar`).
+# Aqui isso pesa mais do que o normal, porque `docs/ANTES-DO-PUSH.md` conta
+# que a PRIMEIRA versão do guarda de CPF deste repo **passava verde com CPF
+# real dentro**: usava `\d` num `grep -E` POSIX, que não conhece `\d`, e
+# casava zero. Guarda cego é pior que guarda nenhum — dá a sensação de estar
+# protegido.
+#
+# Por isso os casos cobrem os DOIS lados. Só testar que o CPF sai deixaria
+# passar uma regressão que redige demais e corrompe o texto oficial — e a
+# ementa que originou tudo isto tem, na mesma frase, um número de processo
+# que NÃO pode ser tocado.
+#
+# ⚠️ AS FIXTURES SÃO SINTÉTICAS, E ISSO NÃO É DETALHE. A primeira versão
+# destes casos usava o CPF VERDADEIRO da ementa — e o guarda barrou o push,
+# repetindo ao pé da letra o incidente de 13/08/2026 descrito em
+# `docs/ANTES-DO-PUSH.md`: quatro dos seis CPF vazados estavam no comentário
+# que documentava a função que remove CPF. Medir o vazamento na base real e
+# colar o exemplo verdadeiro para justificar a proteção é como o exemplo
+# VIRA o vazamento. `123.456.789-09` e `000.000.000-00` ilustram o formato
+# igual e não são o CPF de ninguém.
+
+_CASOS_REDACAO = [
+    ("CPF nº 123.456.789-09, proprietário",
+     "CPF nº [CPF removido], proprietário",
+     "a forma do caso que originou esta função (Portaria IBAMA 2080/2012)"),
+    ("Ação Civil Pública nº 2008.39.00.011777-1",
+     "Ação Civil Pública nº 2008.39.00.011777-1",
+     "número de processo na MESMA ementa — redigir isto corromperia o ato"),
+    ("com Zandino Uliana, inscrito no CPF nº 123.456.789-09",
+     "com Zandino Uliana, inscrito no CPF nº [CPF removido]",
+     "o NOME permanece: quem assina um TAC ambiental responde por ele com nome"),
+    ("CNPJ 33.000.167/0001-01",
+     "CNPJ 33.000.167/0001-01",
+     "CNPJ identifica empresa e é o que este portal existe para mostrar"),
+    ("município 3106705", "município 3106705", "código IBGE não é documento"),
+    ("Portaria nº 2.080, de 2012", "Portaria nº 2.080, de 2012", "número de norma fica"),
+    ("dois: 123.456.789-09 e 000.000.000-00",
+     "dois: [CPF removido] e [CPF removido]",
+     "redige todos, não só o primeiro"),
+    (None, None, "None continua None"),
+    ("", "", "vazio continua vazio"),
+]
+
+
+def testar() -> bool:
+    ok = True
+    for entrada, esperado, porque in _CASOS_REDACAO:
+        obtido = redigir_documentos(entrada)
+        if obtido != esperado:
+            ok = False
+            print(f"  FALHA  {porque}")
+            print(f"         esperado={esperado!r}")
+            print(f"         obtido  ={obtido!r}")
+    print(f"[etl.apis._legislacao_ambiental] {len(_CASOS_REDACAO)} caso(s) de redação: "
+          f"{'OK' if ok else 'FALHOU'}")
+    return ok
+
+
+if __name__ == "__main__":
+    import argparse
+    import sys
+
+    p = argparse.ArgumentParser(description="Helpers das fontes de legislação ambiental.")
+    p.add_argument("--testar", action="store_true", help="roda a suíte de regressão da redação")
+    args = p.parse_args()
+    if args.testar:
+        sys.exit(0 if testar() else 1)
+    p.print_help()

@@ -102,7 +102,7 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         "nome_portal": "Controle Popular Betim"
       },
       "fontes": {
-        "ouvidoria": "https://www.betim.mg.gov.br/portal/ouvidoria",
+        "ouvidoria": "https://www.betim.mg.gov.br/portal/secretarias-paginas/85/conhecendo-a-ouvidoria/",
         "paraopeba": true,
         "sic_camara": "https://www.camarabetim.mg.gov.br/LAI/LeiAcesso",
         "camara_host": "https://www.camarabetim.mg.gov.br/",

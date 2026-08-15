@@ -170,3 +170,66 @@ o que foi baixado na data X.
 
 *Universo medido em 2026-08-13 contra o Postgres local. Limites do Cloudflare
 conferidos na documentação na mesma data.*
+
+## Atualização — 2026-08-14: item 1 da ordem sugerida já não se aplica
+
+**`ambiental_legislacao` JÁ TEM `link_pdf`, desde a migration `0065` (o
+mesmo dia em que este plano foi escrito) — 6.378/6.378 linhas preenchidas,
+100%.** A frase acima ("não guarda URL de fonte... sem endereço de origem
+registrado") estava desatualizada no momento em que foi escrita, não é uma
+regressão: a migration 0065 e este plano nasceram no mesmo dia, e o plano
+não conferiu a coluna que a migration já tinha adicionado. O "primeiro item
+a investigar, pode ser o mais barato de todos" não precisa de investigação
+nenhuma — já está feito. Conferido com `SELECT count(*), count(link_pdf)
+FROM ambiental_legislacao` contra o Postgres local em 2026-08-14.
+
+Consequência boa: as 1.183 normas de `serras` (180) + `recursos_hidricos`
+(1.003) — o recorte de maior prioridade pedido pelo dono — já tinham fonte
+citável o tempo todo, e por isso entraram na varredura e na amostra de
+captura desta rodada (ver `docs/auditoria-2026-08-14-normas-protecao.md`).
+
+## Atualização — 2026-08-14: item 2 (medir antes de baixar), medido de verdade
+
+Amostra de 30 documentos de `ambiental_legislacao` (temas `serras` +
+`recursos_hidricos`, sorteio aleatório, `scripts/arquivar-fontes.mjs`):
+
+| Métrica | Valor medido |
+|---|---:|
+| Tentativas | 30 |
+| Sucesso na captura | 30/30 (100%) |
+| Com CPF no texto extraído (barrado) | 0 |
+| Tamanho médio | 112,7 KiB |
+| Total da amostra | 3,30 MiB |
+| **Projeção para as 1.183 normas de serras+recursos_hídricos** | **≈ 130 MiB** |
+| Projeção para os 25.729 links do universo total do portal (mesma média) | ≈ 2,8 GiB |
+
+Ambos os números cabem folgados na franquia gratuita do R2 (10 GB/mês).
+Custo não é motivo para conter escopo aqui — a única coisa que falta é a
+credencial de R2 configurada nesta máquina (não inventada por este
+trabalho, ver "O que falta" abaixo).
+
+**Achado colateral da amostra**: uma URL fora da amostra (`idNorma=51241`)
+respondeu `200` com `Content-Type: text/html` em vez de PDF — confirma ao
+vivo o que o comentário da migration 0065 já registrava ("Semad/Siam às
+vezes servem HTML sob uma URL de nome `download.pdf`"). Não é link
+quebrado: o conteúdo é um documento Word exportado como página web (marcas
+`mso-style` no HTML), extraído normalmente como texto pelo capturador.
+Tratar pelo Content-Type real, nunca pelo nome da URL, é o que
+`scripts/arquivar-fontes.mjs` faz.
+
+## O que falta para publicar cópias de verdade
+
+1. **Credencial de R2** nesta máquina (bucket + token). Sem isso, o
+   capturador grava em `apps/web/.arquivo-local/` (fora de `public/`,
+   gitignored) e a linha em `arquivo_fontes` fica com
+   `modo_armazenamento='local'` — correto e seguro, mas **inacessível ao
+   Worker publicado**: o Worker roda na borda da Cloudflare, nunca no disco
+   desta máquina de build. Sem upload para R2, a cópia não pode aparecer
+   ao lado do link na tela nenhuma — não é feature faltando, é
+   impossibilidade física da arquitetura atual.
+2. **Decisão** (já registrada como não decidida acima): bucket público ou
+   Worker com autenticação.
+3. Só depois disso faz sentido integrar a UI ("cópia arquivada em
+   DD/MM/AAAA" ao lado do link) — construir o badge sem R2 mostraria um
+   selo sem link nenhum por trás, o mesmo tipo de promessa vazia que este
+   plano existe para evitar.

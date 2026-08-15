@@ -6,6 +6,7 @@ import FontSizeControl from "@/app/[municipio]/components/FontSizeControl";
 import NavDropdown from "@/app/[municipio]/components/NavDropdown";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
 import { paginasDados } from "@/lib/betim/dadosNav";
+import { outrasZonas } from "@/lib/zonas";
 
 // Ordem do nav: [Prefeitura], [Câmara], Serviços, [Dados], Notícias, Sobre.
 // Prefeitura, Câmara e Dados têm menu suspenso (pedido do usuário
@@ -99,28 +100,36 @@ export default function Header({ cidade }: { cidade: Cidade }) {
         </nav>
       </div>
       <div className="flex flex-wrap items-center gap-2">
-        {/* Busca unificada (tema/palavra-chave/território nas 3 frentes) e
-            pontes para as zonas irmãs. <a> puro nas três: `/busca` e as
-            zonas irmãs estão FORA do basePath desta cidade, e o <Link> da
-            zona prefixaria (`/betim/busca`), mesmo motivo do wordmark acima. */}
+        {/* Busca unificada (tema/palavra-chave/território nas seis frentes) e
+            pontes para as zonas irmãs. <a> puro: `/busca` e as zonas irmãs
+            estão FORA do basePath desta cidade, e o <Link> da zona
+            prefixaria (`/betim/busca`), mesmo motivo do wordmark acima.
+
+            ⟲ 13/08, revisão de onboarding: esta lista era CRAVADA À MÃO
+            (só Congresso e Judiciário) desde que só existiam três frentes
+            — Ambiental, Terra e território e Paraopeba publicaram depois
+            e nunca entraram aqui. É a barra de navegação mais visível do
+            portal em celular (o resto exige rolar até o rodapé), e foi
+            aqui que o dono não achou uma frente que existia.
+            `outrasZonas()` devolve toda `ZONA_PUBLICADA` menos a atual —
+            a mesma fonte que `OutrasFrentes.tsx` e `FooterGlobal.tsx`
+            usam — para esta lista nunca mais atrasar em relação a
+            `lib/zonas.ts`. */}
         <a
           href="/busca"
           className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
         >
           Busca →
         </a>
-        <a
-          href="/congresso"
-          className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
-        >
-          Congresso →
-        </a>
-        <a
-          href="/judiciario"
-          className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
-        >
-          Judiciário →
-        </a>
+        {outrasZonas("cidades").map((z) => (
+          <a
+            key={z.id}
+            href={z.href}
+            className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
+          >
+            {z.nomeCurto} →
+          </a>
+        ))}
         {/* Direitos em Movimento é RAIZ, fora do basePath desta cidade —
             <a> cru pelo mesmo motivo dos três botões acima, mas cor
             própria (`--cp-alert`): não é zona irmã, é transversal às

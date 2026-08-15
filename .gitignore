@@ -5,6 +5,19 @@ out/
 .wrangler/
 .env
 .env.local
+
+# Cópias baixadas por `scripts/arquivar-fontes.mjs` (arquivamento de fontes,
+# docs/PLANO-ARQUIVO-DE-FONTES.md). NUNCA dentro de `apps/web/public/` — ver
+# o aviso grande na migration 0073 e o commit `e82a58e` (570 MiB ali quase
+# quebrou o deploy: `public/` inteiro vira Static Assets, teto de 25 MiB por
+# arquivo no Cloudflare). Local até o R2 estar configurado; mesmo depois,
+# PDF de norma não é código-fonte do projeto — nunca deveria ir pro commit.
+apps/web/.arquivo-local/
+
+# Saída bruta de scripts/auditoria-links-normas.mjs e scripts/arquivar-
+# fontes.mjs: JSON de trabalho de UMA rodada, não fonte do projeto. O
+# resumo que importa vai para doc (docs/), não para o repo em JSON cru.
+apps/web/scripts/_tmp-auditoria/
 # Variaveis do `wrangler dev` / `opennextjs-cloudflare preview` (Fase 6):
 # contem DATABASE_URL e BETTER_AUTH_SECRET, mesmo peso de .env.local.
 .dev.vars

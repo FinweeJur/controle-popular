@@ -276,19 +276,33 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
               title="Contato"
               source={fonteCamara}
             >
-              <p className="text-text">{row.email ?? "—"}</p>
-              {mailtoCobrar && (
-                <a
-                  href={mailtoCobrar}
-                  className="mt-3 inline-flex items-center gap-1 rounded-full bg-primary px-3.5 py-1.5 text-sm font-semibold text-primary-ink hover:bg-primary/90"
-                >
-                  Perguntar sobre a atuação ✉
-                </a>
-              )}
-              <p className="mt-2 text-[.8em] text-text-soft">
-                Abre um e-mail já endereçado ao vereador, com um rascunho que
-                cita a área de atuação dele — é só escrever sua pergunta.
+              <p className="text-text">
+                {row.email ?? "E-mail individual não divulgado pela Câmara"}
               </p>
+              {mailtoCobrar ? (
+                <>
+                  <a
+                    href={mailtoCobrar}
+                    className="mt-3 inline-flex items-center gap-1 rounded-full bg-primary px-3.5 py-1.5 text-sm font-semibold text-primary-ink hover:bg-primary/90"
+                  >
+                    Perguntar sobre a atuação ✉
+                  </a>
+                  <p className="mt-2 text-[.8em] text-text-soft">
+                    Abre um e-mail já endereçado ao vereador, com um rascunho que
+                    cita a área de atuação dele — é só escrever sua pergunta.
+                  </p>
+                </>
+              ) : (
+                fonteCamara.url && (
+                  <p className="mt-2 text-[.8em] text-text-soft">
+                    Sem e-mail individual cadastrado nesta fonte — fale com a{" "}
+                    <a href={fonteCamara.url} target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">
+                      {fonteCamara.label} ↗
+                    </a>{" "}
+                    para chegar até ele(a).
+                  </p>
+                )
+              )}
             </DataCard>
             {(custo.mensalBruto != null || custo.gastoPorAno.length > 0) && (
               <DataCard

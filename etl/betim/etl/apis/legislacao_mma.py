@@ -327,6 +327,10 @@ def _linha(c: dict) -> dict | None:
         return None
     ano = int(c["ano"]) if c["ano"].isdigit() and len(c["ano"]) == 4 else None
     link = _link(c["link"])
+    # A redação de CPF acontece no campo `ementa`, logo abaixo, e não num
+    # wrapper em volta do dict: esta função é o único ponto por onde passam
+    # tanto o `sync()` quanto o `--json`, então limpar aqui basta para as duas
+    # saídas — e o JSON é versionado no repositório PÚBLICO.
     return {
         "fonte": "mma",
         # Armadilha 5 — a fonte não tem id; `ATO NORMATIVO` + `LINK` é o

@@ -74,7 +74,17 @@ A varredura precisa distinguir três coisas, porque o tratamento difere:
 **ausente** (nunca teve), **desatualizado** (teve e envelheceu) e **não
 verificado** (existe e ninguém confirmou).
 
-### 7. Revisão crítica de onboarding, acessibilidade e uso por leigo
+### 7. Revisão crítica de onboarding, acessibilidade e uso por leigo — ✅ feito em 14/08
+
+Ver `docs/REVISAO-UX-E-ONBOARDING.md`. Resumo: as quatro pistas abaixo já
+tinham sido corrigidas antes desta rodada (a última, "não achou uma
+frente", só em 14/08 — era cabeçalho de zona cravado à mão, corrigido na
+raiz). A revisão dedicada achou mais: `<main>` faltando em 7 páginas
+(inclusive a home) escondia o botão "Ouvir esta página", e o tema alto
+contraste tinha o anel de foco em 1,42:1. Os baratos foram consertados
+direto no código (3 commits); o que é decisão de layout/identidade visual
+(dar cabeçalho a Terras e Paraopeba, hierarquia da home) ficou registrado
+para o dono decidir.
 
 Pedido literal: *"pensando no onboarding, facilitação de uso, acessibilidade
 da plataforma pra leigos, busque por possíveis dificuldades, possíveis
@@ -95,7 +105,16 @@ apertado (ver o comentário do script `build` em `apps/web/package.json`, que
 explica por que o build usa `--webpack`). Animação que exija biblioteca precisa
 caber nisso — e `prefers-reduced-motion` não é opcional.
 
-### 8. Design system — o que aproveitar de Kokonut UI, Motion.dev, Bklit UI
+### 8. Design system — o que aproveitar de Kokonut UI, Motion.dev, Bklit UI — ✅ feito em 14/08
+
+Ver a seção "Design system" de `docs/REVISAO-UX-E-ONBOARDING.md`.
+Veredito curto: nenhum dos três entra como dependência — os três trazem
+Motion (ex-Framer Motion) por baixo, custo real de bundle contra um
+sistema de microanimação que hoje é 100% CSS e custa zero. O que vale
+copiar é padrão, não código: o próprio globo 3D do portal já resolveu o
+problema de "sigla sem explicação" melhor do que o hover-card que essas
+bibliotecas ensinam (explicação sempre visível, porque "tooltip não
+existe no celular" — comentário já existente em `config.js`).
 
 Pergunta do dono: o que dá para se inspirar/apropriar desses três para melhorar
 navegabilidade e design system.
