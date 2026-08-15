@@ -226,10 +226,11 @@ def coletar_aedas(pausa: float) -> list[dict[str, Any]]:
                 if p in projetos and p in AEDAS_PROJETOS
             ),
             "url": d["link"],
-            # A API da AEDAS não expõe autor no tipo `documento`. `None` diz
-            # "a fonte não declarou", que é diferente de "não tem autor" — a
-            # tela precisa poder distinguir os dois.
+            # A API da AEDAS não expõe autor nem origem no tipo `documento`.
+            # `None` diz "a fonte não declarou", que é diferente de "não tem" —
+            # a tela precisa poder distinguir os dois.
             "autoria": None,
+            "origem": None,
         })
     return itens
 
@@ -288,12 +289,19 @@ def coletar_guaicuy(pausa: float) -> list[dict[str, Any]]:
                 "titulo": texto_limpo(h1.group(1)),
                 "data": data_pt_br(meta_txt),
                 "tipo": rotulo,
-                "temas": [origem] if origem else [],
+                # ⚠️ Vazio, e não `[origem]`. "Produção própria" é ORIGEM, não
+                # tema: jogá-la em `temas` põe um rótulo de autoria no mesmo
+                # seletor que "Saúde e ERSHRE" e "Anexo I.1", e o filtro passa
+                # a misturar duas perguntas diferentes. O Guaicuy simplesmente
+                # não classifica a biblioteca por tema — dizer isso na tela é
+                # mais honesto que inventar um vocabulário para ele.
+                "temas": [],
                 # Rótulo, não slug — o mesmo vocabulário que a AEDAS usa em
                 # `projeto`, para os dois lados caírem no mesmo filtro da tela.
                 "colecoes": ["Paraopeba"],
                 "url": url,
                 "autoria": texto_limpo(autoria.group(1)) if autoria else None,
+                "origem": origem,
             })
             if i % 20 == 0:
                 print(f"    {i}/{len(urls)} lidos, {len(itens)} do Paraopeba", file=sys.stderr)

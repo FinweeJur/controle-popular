@@ -53,6 +53,13 @@ export default function BibliotecaClient({ itens, tipos, temas, atis, atiLabel }
     return { min: datas[0] ?? "", max: datas[datas.length - 1] ?? "" };
   }, [itens]);
 
+  /**
+   * Só a AEDAS classifica por tema. Sem este número ao lado do seletor, filtrar
+   * por "Saúde e ERSHRE" some com o Guaicuy inteiro e a tela dá a entender que
+   * ele não publicou nada sobre o assunto — quando ele só não etiqueta.
+   */
+  const comTema = useMemo(() => itens.filter((i) => i.temas.length > 0).length, [itens]);
+
   const lista = useMemo(() => {
     const termo = busca.toLowerCase().trim();
     const filtrada = itens.filter((i) => {
@@ -68,6 +75,8 @@ export default function BibliotecaClient({ itens, tipos, temas, atis, atiLabel }
       return (
         i.titulo.toLowerCase().includes(termo) ||
         i.tipo.toLowerCase().includes(termo) ||
+        (i.origem ?? "").toLowerCase().includes(termo) ||
+        (i.autoria ?? "").toLowerCase().includes(termo) ||
         i.temas.some((t) => t.toLowerCase().includes(termo)) ||
         i.colecoes.some((c) => c.toLowerCase().includes(termo))
       );
@@ -124,7 +133,7 @@ export default function BibliotecaClient({ itens, tipos, temas, atis, atiLabel }
                 setBusca(e.target.value);
                 setVisiveis(LOTE);
               }}
-              placeholder="Título, tipo, tema ou região…"
+              placeholder="Título, tipo, tema, autoria ou região…"
               className={campo}
             />
           </div>
@@ -197,7 +206,10 @@ export default function BibliotecaClient({ itens, tipos, temas, atis, atiLabel }
           </div>
           <div className="flex min-w-[180px] flex-1 flex-col">
             <label htmlFor="bib-tema" className="mb-1 text-xs font-medium text-text-soft">
-              Tema
+              Tema{" "}
+              <span className="font-normal">
+                ({formatNumberBR(comTema)} dos {formatNumberBR(itens.length)} itens têm)
+              </span>
             </label>
             <select
               id="bib-tema"
@@ -312,8 +324,12 @@ function ItemDaBiblioteca({
           {atiLabel[item.ati]}
         </span>
       </div>
+      {/* Origem e autoria entram na linha de metadado, não entre as etiquetas
+          clicáveis: as etiquetas filtram por ASSUNTO, e "Produção de parceiros"
+          é uma afirmação sobre quem escreveu. */}
       <p className="mt-1 text-xs text-text-soft">
         {item.data ? formatDateBR(item.data) : "sem data na fonte"} · {item.tipo}
+        {item.origem ? ` · ${item.origem}` : ""}
         {item.autoria ? ` · ${item.autoria}` : ""}
       </p>
       {(item.temas.length > 0 || item.colecoes.length > 0) && (

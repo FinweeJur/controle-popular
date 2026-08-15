@@ -59,8 +59,19 @@ export interface ItemBiblioteca {
   data: string | null;
   /** Rótulo do tipo, como a própria fonte o nomeia. */
   tipo: string;
-  /** Temas/eixos declarados pela fonte. Vazio quando ela não classifica. */
+  /**
+   * Temas/eixos declarados pela fonte. Vazio quando ela não classifica — é o
+   * caso do Guaicuy, que não tem taxonomia temática na biblioteca. Vazio aqui
+   * significa "a fonte não classificou", nunca "o portal não soube ler".
+   */
   temas: string[];
+  /**
+   * Origem declarada pela fonte: produção própria, produção de parceiros,
+   * documento legal/público. Separada de `temas` de propósito — é uma
+   * afirmação sobre AUTORIA, não sobre assunto, e misturar as duas num filtro
+   * só faz o seletor responder duas perguntas ao mesmo tempo.
+   */
+  origem: string | null;
   /** Recortes do Paraopeba em que a fonte encaixou o item. */
   colecoes: string[];
   /** Página do item no site da ATI — nunca o arquivo. */
@@ -187,4 +198,17 @@ export function temasDaBiblioteca(itens: ItemBiblioteca[] = BIBLIOTECA_ATI): str
   const contagem = new Map<string, number>();
   for (const i of itens) for (const t of i.temas) contagem.set(t, (contagem.get(t) ?? 0) + 1);
   return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt")).map(([t]) => t);
+}
+
+/**
+ * Quantos itens de cada ATI têm tema declarado.
+ *
+ * Existe para a tela poder dizer, em números, que o filtro de tema só alcança
+ * parte do acervo — em vez de deixar o usuário concluir que o Guaicuy não
+ * publica nada sobre saúde quando ele apenas não etiqueta por assunto.
+ */
+export function comTemaPorAti(itens: ItemBiblioteca[] = BIBLIOTECA_ATI): Record<string, number> {
+  const contagem: Record<string, number> = {};
+  for (const i of itens) if (i.temas.length > 0) contagem[i.ati] = (contagem[i.ati] ?? 0) + 1;
+  return contagem;
 }

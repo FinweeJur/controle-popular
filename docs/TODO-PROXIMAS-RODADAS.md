@@ -121,6 +121,35 @@ adotado tem que passar nos três.
 | Bases de clima e risco | `docs/PLANO-BASES-CLIMA-E-RISCO.md` — **1ª fatia feita em 15/08** (AdaptaBrasil + INMET): `docs/CLIMA-ADAPTABRASIL-E-INMET.md`. Falta aplicar a `0074` e rodar a carga num Postgres local, e o BATER inteiro. |
 | Direitos em Movimento | `docs/PLANO-DIREITOS-EM-MOVIMENTO.md` |
 | Facilitador de ação cidadã | `docs/PLANO-ACAO-CIDADA.md` |
+| Biblioteca das ATIs do Paraopeba | `docs/FONTES-BIBLIOTECA-ATI.md` — **feito em 15/08** (597 publicações da AEDAS e do Guaicuy, em `/paraopeba/biblioteca`). Sobrou o item 9 abaixo. |
+
+---
+
+## 🟠 Aberto pela rodada de 15/08 (biblioteca das ATIs)
+
+### 9. As três ATIs ainda não são fonte do radar de notícias
+
+`docs/FONTES-BIBLIOTECA-ATI.md` §6 mede e justifica a escolha: a lacuna do radar
+não é de tempo (o clipping vai até 30/07/2026 e a janela de 45 dias do radar
+começa em 01/07), é de **voz** — as três fontes atuais são imprensa, e falta
+quem é parte no processo, que publica a decisão primeiro. Os três feeds de
+taxonomia já foram conferidos respondendo com o escopo certo, sem precisar do
+filtro por termo de lugar:
+
+```
+https://aedasmg.org/projeto/paraopeba/feed/
+https://adaibrasil.org.br/programa/paraopeba/feed/
+https://guaicuy.org.br/categoria/ati-paraopeba/feed/
+```
+
+São três entradas na lista `FONTES` de `scripts/coletar-noticias-paraopeba.py`,
+sem mudança de esquema — `radar.ts` lê `fontes` como dado. Ficou de fora em
+15/08 porque `radar.ts` e a tela do radar estavam sendo escritos noutra sessão.
+
+**Junto vai uma regra nova para a régua de triagem:** o feed do Guaicuy traz
+itens "Nota de pesar: <nome completo>". São obituários públicos da própria
+organização, mas `triagem.ts` não pega nome por extenso — só CPF, iniciais e
+contato. Se notícia de ATI entrar, essa regra entra antes.
 
 ---
 
