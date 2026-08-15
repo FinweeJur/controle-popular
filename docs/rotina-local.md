@@ -21,6 +21,14 @@
 A sequência é **ETL → build → trava de páginas → deploy**. Cada etapa só
 acontece se a anterior passou.
 
+> ⚠️ **DESDE 15/08/2026 O DEPLOY ESTÁ FALHANDO**, e não é a rotina que está
+> quebrada: o `cf:deploy` recusa `ambiental/legislacao.cache` (35,5 MiB) contra
+> o teto de 25 MiB por asset do Workers. O ETL passa, o build passa com 3.872
+> páginas, e só a publicação morre — **o site não quebra, ele para no tempo**.
+> Causa, medição e plano em `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`. Note que a
+> trava de contagem de páginas descrita abaixo **não pega este caso**: ela mede
+> se o banco foi lido, não o tamanho do que saiu.
+
 ## A trava, que é a razão de tudo
 
 O `next build` tem um modo de falha silencioso que já custou uma sessão: sem
