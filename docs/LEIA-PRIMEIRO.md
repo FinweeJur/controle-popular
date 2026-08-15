@@ -13,8 +13,13 @@
 | **`PLANO-2026-08-15.md`** | a fila viva, ranqueada por custo × benefício. **É o que está por fazer.** |
 | **`TODO-PROXIMAS-RODADAS.md`** | dívida antes de feature |
 | **`SESSOES-CONCORRENTES.md`** | como não atropelar outra sessão. Leia antes do primeiro commit |
+| **`HANDOFF-2026-08-15-NOITE.md`** | o que ficou por fazer, separado pelo que **de fato** bloqueia cada item |
 
-Três arquivos. Se você só ler estes, já trabalha sem quebrar nada.
+E na **raiz do repositório**, não aqui em `docs/`: **`AGENTS.md`** — as regras
+que não se negociam e as nove armadilhas que já custaram tempo. Ferramenta de
+agente lê esse arquivo sozinha; humano também deveria.
+
+Quatro arquivos. Se você só ler estes, já trabalha sem quebrar nada.
 
 ## Depois, só o que a sua tarefa pede
 
