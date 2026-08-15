@@ -39,6 +39,24 @@ Resolução CONAMA que rege o licenciamento.
 Plano pronto em `docs/FONTES-CNJ-JUMA.md` (CSV do MMA, licença CC-BY
 confirmada, ~8,5 a 10,4 mil normas federais).
 
+### 3b. O ETL antigo da FGV finge ser navegador, e o host pede para não ser rastreado
+
+Medido em 15/08/2026: `https://www18.fgv.br/robots.txt` responde
+`User-Agent: * / Disallow: /` — o host inteiro, sem exceção. E
+`etl/betim/etl/apis/fgv_paraopeba.py` (de 24/07) baixa de lá **com
+User-Agent de navegador falso** (`Mozilla/5.0 ... AppleWebKit/537.36`), sem
+pausa e sem ressalva nenhuma.
+
+O coletor novo da mesma fonte (`scripts/coletar-execucao-fgv.mts`) já nasceu
+do outro jeito: identifica o projeto, pausa 1,5 s, é manual e nunca entra em
+CI — o raciocínio está no cabeçalho dele e em
+`docs/FONTES-PRO-BRUMADINHO-E-FGV.md` §3.3.
+
+**Dívida:** alinhar o ETL antigo (User-Agent honesto + pausa) ou aposentá-lo
+em favor do coletor novo, já que a tela do Paraopeba agora cobre a bacia
+inteira e a de Betim cobre só Betim. Decisão do dono. Enquanto isso, não
+aumentar a frequência de nenhum dos dois.
+
 ### 4. Cobertura de território que ficou de fora
 
 - **13 territórios quilombolas** do INCRA fora das camadas publicadas.

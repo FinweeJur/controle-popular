@@ -27,6 +27,12 @@ import {
   PERIODO_AUDITORIA_AJRI,
 } from "@/lib/paraopeba/auditoria-ajri";
 import { GLOSSARIO_PARAOPEBA, PERGUNTAS_PARAOPEBA } from "@/lib/paraopeba/educacao";
+// Fora do barril de propósito (ver o comentário em `lib/paraopeba/index.ts`):
+// são 226 KB de dado gerado, e esta home só usa duas contagens deles.
+import {
+  MUNICIPIOS_EXECUCAO_FGV,
+  STATUS_PROJETOS_FGV,
+} from "@/lib/paraopeba/execucao-fgv";
 
 /**
  * Home da frente /paraopeba — acompanhamento da reparação pelo rompimento
@@ -53,6 +59,9 @@ const ZONA = ZONAS.find((z) => z.id === "paraopeba")!;
 
 export default function ParaopebaHome() {
   const tiposDeAtor = new Set(ATORES_REPARACAO.map((a) => a.categoria));
+  // 455 linhas de status descrevem 234 projetos — um projeto que alcança 25
+  // cidades aparece 25 vezes. O cartão mostra o distinto, nunca o `length`.
+  const projetosDistintos = new Set(STATUS_PROJETOS_FGV.map((s) => s.idFdi)).size;
 
   const BLOCOS = [
     {
@@ -95,6 +104,17 @@ export default function ParaopebaHome() {
         "O Novo Auxílio Emergencial, pago pela FGV desde dezembro de 2025 — mês a mês, com os números-resumo e a fonte de cada um.",
       href: "/paraopeba/auxilio",
       linkTexto: "Ver o auxílio →",
+    },
+    {
+      // Cartão do DINHEIRO. Vem depois do auxílio (que é o que chega na mão
+      // da pessoa) e antes dos documentos, porque é a ponte entre os dois:
+      // o auxílio é pagamento individual, isto é obra e serviço no município.
+      titulo: "Execução por município",
+      linha: `${formatNumberBR(MUNICIPIOS_EXECUCAO_FGV.length)} municípios, ${formatNumberBR(projetosDistintos)} projetos`,
+      texto:
+        "Quanto do Acordo já virou projeto e quanto já foi pago em cada município da bacia, pela auditoria independente da FGV — com a ressalva de que estes R$ 5,48 bi são os Anexos I.3/I.4, não os R$ 37,6 bi do Acordo inteiro.",
+      href: "/paraopeba/execucao",
+      linkTexto: "Ver a execução →",
     },
     {
       titulo: "Documentos do processo",

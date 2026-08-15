@@ -133,6 +133,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3032"],
       "port": 3032
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-fontes-paraopeba, execucao do Acordo por municipio) -- mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso. Conflitou com cp-ajri e cp-sp-educacao no rebase de 15/08: as tres acrescentaram no mesmo ponto do arquivo, e as tres devem existir -- as portas 3032, 3033 e 3034 nao disputam nada.",
+      "name": "cp-fontes-paraopeba-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3034"],
+      "port": 3034
     }
   ]
 }

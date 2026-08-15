@@ -17,6 +17,17 @@
  * UFMG preenche (zero inferência de texto). As duas nunca se misturam num
  * mesmo array — `docs/PLANO-INGESTAO-PARAOPEBA.md` mede as duas fontes
  * separadas, e este barril preserva a separação.
+ *
+ * ═══ E UM TERCEIRO ARQUIVO, QUE NÃO ENTRA AQUI ═══
+ *
+ * `execucao-fgv.ts` (auditoria financeira da FGV, 26 municípios) fica fora
+ * do barril de propósito, como `biblioteca.ts` e `radar.ts` — mas por outro
+ * motivo. Não é `node:fs`: são 226 KB de dado gerado (450 linhas de projeto
+ * + 455 de status). Reexportá-lo daqui puxaria tudo isso para dentro de
+ * qualquer componente de CLIENTE que importe o barril, que é exatamente
+ * como o payload da legislação estourou o teto de 25 MiB do Worker em 15/08
+ * (`docs/HANDOFF-PAYLOAD-LEGISLACAO.md`). Quem precisa importa
+ * `@/lib/paraopeba/execucao-fgv` direto, e só de servidor.
  */
 export * from "./clipping";
 export * from "./clipping-ati";
