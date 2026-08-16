@@ -9,6 +9,43 @@
 > tirá-lo do caminho: `sp/educacao.cache` seguia em 21 MiB quando isto foi
 > escrito, e nada impede o corpus de dobrar de novo. Leia o resto deste
 > documento como o diagnóstico que continua verdadeiro.
+>
+> ⚠️ **16/08/2026, mais tarde: apareceu um segundo teto, DIFERENTE deste.**
+> Depois de mesclar 21+ commits do PC externo (novos coletores: Rouanet/
+> SALIC, ComunicaBR, AJRI, índice estático generalizado em
+> `lib/estatico/compactar.ts`), o `wrangler deploy` passou a recusar por
+> **tamanho do SCRIPT do Worker**, não de um asset:
+>
+>     Your Worker exceeded the size limit of 3 MiB.
+>     Total Upload: 22411.32 KiB / gzip: 3074.74 KiB
+>
+> Teto real: **3.072 KiB gzip** (plano gratuito). Overage medido: **~2,7 KiB**
+> — quase nada, mas o site ficou na versão anterior até resolver (seguro, sem
+> downtime). Causa isolada por medição: `apps/web/data/comunicabr-31.json`
+> (2,16 MiB brutos, **687,9 KiB gzip** sozinho — ~22% do teto inteiro) é lido
+> via `readFileSync` em `lib/comunicabr/mg.ts`, e esse padrão faz o
+> OpenNext/Cloudflare adapter EMBUTIR o conteúdo do arquivo dentro do bundle
+> do Worker, não servi-lo como asset separado.
+>
+> **Testado e descartado**: mover o arquivo para `apps/web/public/data/` e
+> ajustar o `readFileSync` para o caminho novo — **não mudou nada**
+> (3.074,71 → 3.074,74 KiB gzip). O mecanismo de embutir não olha para o
+> diretório de origem; qualquer `readFileSync` de um caminho estático dentro
+> do código do servidor parece ser candidato a inlining, esteja em `data/`
+> ou em `public/`.
+>
+> **O que provavelmente resolve, não tentado ainda por falta de tempo**:
+> converter `acervo()` em `lib/comunicabr/mg.ts` de leitura síncrona
+> (`readFileSync` no escopo do módulo) para leitura assíncrona via
+> `fetch()`/Cloudflare Assets binding, igual ao padrão que `educacao`/
+> `legislacao` (municipal) já usam para tirar dado grande do bundle
+> (`dados/[arquivo]/route.ts`). Blast radius pequeno e já medido: só 2
+> arquivos de página (`app/dados/comunicabr/page.tsx`,
+> `app/dados/comunicabr/[codigo]/page.tsx`) e o próprio teste de `mg.ts`
+> importam essas funções — ambos já são Server Components `async`, então
+> adicionar `await` nas chamadas é mudança pequena, não estrutural. Não fiz
+> porque a sessão virou para outra prioridade (gatilho remoto,
+> `docs/GATILHO-REMOTO.md`) antes de terminar de testar.
 
 ## O erro, literal
 
