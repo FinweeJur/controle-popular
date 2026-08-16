@@ -135,13 +135,18 @@ export function sincronizarEPublicar(): Resultado {
     }
   }
 
-  // 4. Guarda de dado pessoal, sempre — antes de qualquer push.
-  const guarda = spawnSync("python", ["scripts/checar-dado-pessoal.py"], {
-    cwd: RAIZ,
-    encoding: "utf-8",
-  });
-  if (guarda.status !== 0) {
-    return falhar("guarda-dado-pessoal", guarda.stdout || guarda.stderr);
+  // 4. Guarda de dado pessoal, sempre — antes de qualquer push. As DUAS: o
+  //    hook pre-push já roda as duas (.githooks/pre-push), mas só quando
+  //    `core.hooksPath` está ligado no clone, e este script não confia nisso
+  //    — mesma razão de rodar explícito em vez de deixar para o hook.
+  for (const script of ["checar-dado-pessoal.py", "checar-dado-pessoal-em-dado.py"]) {
+    const guarda = spawnSync("python", [`scripts/${script}`], {
+      cwd: RAIZ,
+      encoding: "utf-8",
+    });
+    if (guarda.status !== 0) {
+      return falhar(`guarda-${script}`, guarda.stdout || guarda.stderr);
+    }
   }
 
   // 5. Push, se este checkout tem commit que o origin não tem — com uma
