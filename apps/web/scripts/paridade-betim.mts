@@ -2,6 +2,7 @@ import fs from "node:fs";
 import { neon } from "@neondatabase/serverless";
 import { comoIdMunicipio } from "../lib/db/queries/municipios.js";
 import * as q from "../lib/db/queries/betim.js";
+import * as qE from "../lib/db/queries/betim-escritas.js";
 import { getCaixaDisponivel } from "../lib/betim/caixa.js";
 import { getObras } from "../lib/betim/obras.js";
 import { getSocialData } from "../lib/betim/social.js";
@@ -980,7 +981,7 @@ const OUTRA_CIDADE = comoIdMunicipio("3106200"); // Belo Horizonte, nao cadastra
 await limpar();
 try {
   // --- INSERT carimba a cidade da rota ---
-  const novoCl = await q.inserirClassificado(ID, {
+  const novoCl = await qE.inserirClassificado(ID, {
     titulo: "Fixture escrita",
     descricao: "descricao de teste",
     categoria: "outros",
@@ -999,9 +1000,9 @@ try {
      false, (await fetchClassificados(ID)).rows.some((r) => r.id === novoCl!.id));
   eq(`escrita classificado: aparece na fila de moderacao`,
      true,
-     (await q.pendentesDeModeracao(ID))!.classificados.some((r) => r.id === novoCl!.id));
+     (await qE.pendentesDeModeracao(ID))!.classificados.some((r) => r.id === novoCl!.id));
 
-  const novoZap = await q.inserirZapEstabelecimento(ID, {
+  const novoZap = await qE.inserirZapEstabelecimento(ID, {
     nome: "Fixture escrita zap",
     whatsapp: "5531999990010",
     categoria: "outros",
@@ -1014,17 +1015,17 @@ try {
 
   // --- moderacao respeita a cidade ---
   eq(`moderacao: aprovar de OUTRA cidade nao alcanca a linha`,
-     null, await q.aprovarPendente(OUTRA_CIDADE, "zap_estabelecimentos", novoZap!.id));
+     null, await qE.aprovarPendente(OUTRA_CIDADE, "zap_estabelecimentos", novoZap!.id));
   eq(`moderacao: e a linha continua pendente depois disso`,
      false,
      (await neonSql.query("select aprovado from zap_estabelecimentos where id = $1", [novoZap!.id]))[0].aprovado);
   eq(`moderacao: aprovar da cidade certa funciona`,
-     true, (await q.aprovarPendente(ID, "zap_estabelecimentos", novoZap!.id)) !== null);
+     true, (await qE.aprovarPendente(ID, "zap_estabelecimentos", novoZap!.id)) !== null);
   eq(`moderacao: aprovado passa a aparecer na listagem publica`,
      true, (await fetchZapEstabelecimentos(ID)).rows.some((r) => r.id === novoZap!.id));
   // Rejeitar so alcanca pendente: este ja foi aprovado.
   eq(`moderacao: rejeitar NAO apaga cadastro ja aprovado e publico`,
-     null, await q.rejeitarPendente(ID, "zap_estabelecimentos", novoZap!.id));
+     null, await qE.rejeitarPendente(ID, "zap_estabelecimentos", novoZap!.id));
   eq(`moderacao: ele continua la`,
      1,
      (await neonSql.query("select count(*)::int n from zap_estabelecimentos where id = $1", [novoZap!.id]))[0].n);
@@ -1032,19 +1033,19 @@ try {
   // --- cliques: atomico ---
   const CLIQUES = 10;
   const resultados = await Promise.all(
-    Array.from({ length: CLIQUES }, () => q.incrementarCliquesZap(ID, novoZap!.id))
+    Array.from({ length: CLIQUES }, () => qE.incrementarCliquesZap(ID, novoZap!.id))
   );
   eq(`cliques: ${CLIQUES} incrementos simultaneos somam ${CLIQUES} (read-then-write perderia)`,
      CLIQUES,
      (await neonSql.query("select cliques from zap_estabelecimentos where id = $1", [novoZap!.id]))[0].cliques);
   eq(`cliques: todas as ${CLIQUES} chamadas confirmaram`, CLIQUES, resultados.filter(Boolean).length);
   eq(`cliques: de OUTRA cidade nao incrementa`,
-     null, await q.incrementarCliquesZap(OUTRA_CIDADE, novoZap!.id));
+     null, await qE.incrementarCliquesZap(OUTRA_CIDADE, novoZap!.id));
   eq(`cliques: id inexistente nao incrementa`,
-     null, await q.incrementarCliquesZap(ID, "00000000-0000-4000-8000-00000000ffff"));
+     null, await qE.incrementarCliquesZap(ID, "00000000-0000-4000-8000-00000000ffff"));
 
   // --- anuncios: insert, patch e delete escopados por cidade ---
-  const novoAn = await q.inserirAnuncio(ID, {
+  const novoAn = await qE.inserirAnuncio(ID, {
     nome_comercio: "Fixture anuncio",
     plano: "premium",
     banner_url: null,
@@ -1057,18 +1058,18 @@ try {
   eq(`anuncio: inativo nao aparece na home`,
      false, (await fetchAnunciosAtivos(ID)).some((r) => r.id === novoAn!.id));
   eq(`anuncio: patch de OUTRA cidade nao alcanca`,
-     null, await q.atualizarAnuncio(OUTRA_CIDADE, novoAn!.id, { ativo: true }));
+     null, await qE.atualizarAnuncio(OUTRA_CIDADE, novoAn!.id, { ativo: true }));
   eq(`anuncio: e continua inativo`,
      false,
      (await neonSql.query("select ativo from anuncios where id = $1", [novoAn!.id]))[0].ativo);
   eq(`anuncio: patch da cidade certa ativa`,
-     true, (await q.atualizarAnuncio(ID, novoAn!.id, { ativo: true }))?.ativo);
+     true, (await qE.atualizarAnuncio(ID, novoAn!.id, { ativo: true }))?.ativo);
   eq(`anuncio: ativo passa a aparecer na home`,
      true, (await fetchAnunciosAtivos(ID)).some((r) => r.id === novoAn!.id));
   eq(`anuncio: delete de OUTRA cidade nao alcanca`,
-     null, await q.removerAnuncio(OUTRA_CIDADE, novoAn!.id));
+     null, await qE.removerAnuncio(OUTRA_CIDADE, novoAn!.id));
   eq(`anuncio: delete da cidade certa remove`,
-     true, (await q.removerAnuncio(ID, novoAn!.id)) !== null);
+     true, (await qE.removerAnuncio(ID, novoAn!.id)) !== null);
   eq(`anuncio: sumiu do banco`,
      0, (await neonSql.query("select count(*)::int n from anuncios where id = $1", [novoAn!.id]))[0].n);
 } finally {
