@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { contagemVereadoresAtivos, contratosPorTermos, listarIndicadores, proposicoesPorTermos, resumoContratosAtivos } from "@/lib/db/queries/betim";
 import { obterCidadePorId, type IdMunicipio } from "@/lib/db/queries/municipios";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 
@@ -42,11 +42,11 @@ async function fatosGerais(idMunicipio: IdMunicipio): Promise<string[]> {
   try {
     const [cidade, pop, contratos, qtdVereadores] = await Promise.all([
       obterCidadePorId(idMunicipio),
-      q.listarIndicadores(idMunicipio, ["populacao"]),
+      listarIndicadores(idMunicipio, ["populacao"]),
       // Era `select valor_global` de todos os contratos ativos só para
       // somar no JS; agora count e sum vêm do banco.
-      q.resumoContratosAtivos(idMunicipio),
-      q.contagemVereadoresAtivos(idMunicipio),
+      resumoContratosAtivos(idMunicipio),
+      contagemVereadoresAtivos(idMunicipio),
     ]);
     const popRow = pop?.[0];
     if (popRow?.valor_numerico) {
@@ -92,8 +92,8 @@ export async function montarContexto(
   if (termos.length) {
     try {
       const [contratos, proposicoes] = await Promise.all([
-        q.contratosPorTermos(idMunicipio, termos, LIMITE_POR_ENTIDADE),
-        q.proposicoesPorTermos(idMunicipio, termos, LIMITE_POR_ENTIDADE),
+        contratosPorTermos(idMunicipio, termos, LIMITE_POR_ENTIDADE),
+        proposicoesPorTermos(idMunicipio, termos, LIMITE_POR_ENTIDADE),
       ]);
 
       const cRows = contratos ?? [];

@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { contratosPaginados, contratosParaExport, sancoesCeisPorCnpj, totaisDeContratos } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export const CONTRATOS_PAGE_SIZE = 25;
@@ -217,7 +217,7 @@ export async function fetchContratos(
 ): Promise<ContratosResult> {
   try {
     const filtros = filtrosParaQuery(filters);
-    const linhas = await q.contratosPaginados(idMunicipio, {
+    const linhas = await contratosPaginados(idMunicipio, {
       ...filtros,
       pagina: filters.page,
       porPagina: filters.porPagina ?? CONTRATOS_PAGE_SIZE,
@@ -239,7 +239,7 @@ export async function fetchContratos(
     // dele. Uma consulta a mais só nesse caso raro.
     const agregados = linhas[0]
       ? { total: linhas[0].total, soma: linhas[0].soma, total_alertas: linhas[0].total_alertas }
-      : ((await q.totaisDeContratos(idMunicipio, filtros)) ?? {
+      : ((await totaisDeContratos(idMunicipio, filtros)) ?? {
           total: 0,
           soma: 0,
           total_alertas: 0,
@@ -279,7 +279,7 @@ async function anexarSancoesCeis(rows: ContratoRow[]): Promise<void> {
   if (cnpjsComAlerta.length === 0) return;
 
   try {
-    const data = await q.sancoesCeisPorCnpj(cnpjsComAlerta);
+    const data = await sancoesCeisPorCnpj(cnpjsComAlerta);
     if (!data) return;
 
     const detalhesPorCnpj = new Map<string, SancaoCeis[]>(
@@ -306,7 +306,7 @@ export async function fetchContratosForExport(
   filters: Omit<ContratosFilters, "page"> = {}
 ): Promise<{ rows: ContratoRow[]; configured: boolean; ok: boolean }> {
   try {
-    const data = await q.contratosParaExport(
+    const data = await contratosParaExport(
       idMunicipio,
       filtrosParaQuery(filters),
       EXPORT_ROW_LIMIT

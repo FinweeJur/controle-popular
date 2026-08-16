@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { analisesDeObjetos, analisesDoMunicipio, coberturaAnaliseMunicipio, direitosDoMunicipio, itensDeAnalises } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import { labelDoDireito, type Rotulo } from "@/lib/congresso/rubrica";
 import { TIPO_PROPOSICAO_LABELS } from "@/lib/betim/vereadores";
@@ -77,10 +77,10 @@ function identificacaoProposicao(a: { prop_tipo: string | null; prop_numero: num
  */
 async function carregar(idMunicipio: IdMunicipio, rotulos: Rotulo[]): Promise<DestaqueLegislacao[]> {
   try {
-    const analises = await q.analisesDoMunicipio(idMunicipio, rotulos);
+    const analises = await analisesDoMunicipio(idMunicipio, rotulos);
     if (!analises || analises.length === 0) return [];
 
-    const itens = await q.itensDeAnalises(idMunicipio, analises.map((a) => a.id));
+    const itens = await itensDeAnalises(idMunicipio, analises.map((a) => a.id));
     const itensPorAnalise = new Map<string, typeof itens>();
     for (const i of itens) {
       const lista = itensPorAnalise.get(i.analise_id) ?? [];
@@ -171,7 +171,7 @@ const COBERTURA_VAZIA: CoberturaLegislacao = {
  */
 export async function coberturaLegislacao(idMunicipio: IdMunicipio): Promise<CoberturaLegislacao> {
   try {
-    const c = await q.coberturaAnaliseMunicipio(idMunicipio);
+    const c = await coberturaAnaliseMunicipio(idMunicipio);
     return c ? { ...c, ok: true } : COBERTURA_VAZIA;
   } catch {
     return COBERTURA_VAZIA;
@@ -200,7 +200,7 @@ export interface DireitoContagem {
  */
 export async function direitosDeAtos(idMunicipio: IdMunicipio): Promise<DireitoContagem[]> {
   try {
-    const linhas = await q.direitosDoMunicipio(idMunicipio);
+    const linhas = await direitosDoMunicipio(idMunicipio);
     if (!linhas) return [];
     const porDireito = new Map<string, number>();
     for (const r of linhas) {
@@ -245,7 +245,7 @@ export async function analisesDeAtos(
   const mapa = new Map<string, AnaliseAto>();
   if (atoIds.length === 0) return mapa;
   try {
-    const resultado = await q.analisesDeObjetos(idMunicipio, { atos: atoIds });
+    const resultado = await analisesDeObjetos(idMunicipio, { atos: atoIds });
     if (!resultado) return mapa;
     const { linhas, itens } = resultado;
 

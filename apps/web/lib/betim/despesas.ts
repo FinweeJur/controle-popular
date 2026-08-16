@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { anosDeDespesas, despesasPorFuncao } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 /**
@@ -82,7 +82,7 @@ export async function getDespesasPorFuncao(
     // linhas), porque `select distinct` não existe no PostgREST sem RPC.
     // Agora são duas consultas que devolvem dezenas de linhas: os anos, e
     // a soma por função já agregada no banco.
-    const anos = await q.anosDeDespesas(idMunicipio);
+    const anos = await anosDeDespesas(idMunicipio);
     if (!anos) return EMPTY;
     const anosDisponiveis = anos
       .map((r) => r.ano)
@@ -90,7 +90,7 @@ export async function getDespesasPorFuncao(
     if (anosDisponiveis.length === 0) return { ...EMPTY, configured: true };
     const ano = anoParam && anosDisponiveis.includes(anoParam) ? anoParam : anosDisponiveis[0];
 
-    const linhas = await q.despesasPorFuncao(idMunicipio, ano, [...FUNCOES_COFOG]);
+    const linhas = await despesasPorFuncao(idMunicipio, ano, [...FUNCOES_COFOG]);
     if (!linhas) return { ...EMPTY, configured: true };
 
     const total = linhas.reduce((a, r) => a + (r.valor ?? 0), 0);

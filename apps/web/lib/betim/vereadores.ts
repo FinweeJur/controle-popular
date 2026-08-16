@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { bensDeVereador, contagemDeProposicoesPorVereador, contagemDeVotosPorVereador, diariasDeVereador, doacoesDeVereador, listarVereadores, listarVereadoresForaDeExercicio, proposicoesDeVereador, ultimaProposicao, vereadorPorSlug, votosPorRotuloDeDireito } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import {
   aplicarFatores,
@@ -99,7 +99,7 @@ export async function getProposicoesByVereador(
   limite?: number
 ): Promise<{ rows: ProposicaoRow[]; total: number; ok: boolean }> {
   try {
-    const data = await q.proposicoesDeVereador(idMunicipio, vereadorId, tema, limite);
+    const data = await proposicoesDeVereador(idMunicipio, vereadorId, tema, limite);
     if (!data) return { rows: [], total: 0, ok: false };
     // O total do conjunto (que passa das 10 exibidas) vem por
     // `count(*) over ()` na mesma consulta.
@@ -114,7 +114,7 @@ export async function getDiariasByVereador(
   vereadorId: string
 ): Promise<{ rows: DiariaRow[]; ok: boolean }> {
   try {
-    const data = await q.diariasDeVereador(idMunicipio, vereadorId);
+    const data = await diariasDeVereador(idMunicipio, vereadorId);
     if (!data) return { rows: [], ok: false };
     return { rows: data as DiariaRow[], ok: true };
   } catch {
@@ -145,7 +145,7 @@ export async function getDoacoesSummary(
   vereadorId: string
 ): Promise<{ total: number; soma: number; rows: DoadorRow[]; ok: boolean }> {
   try {
-    const data = await q.doacoesDeVereador(idMunicipio, vereadorId);
+    const data = await doacoesDeVereador(idMunicipio, vereadorId);
     if (!data) return { total: 0, soma: 0, rows: [], ok: false };
     // Total e soma vêm por `over ()` na mesma consulta.
     return {
@@ -178,7 +178,7 @@ export async function getBensCandidato(
   vereadorId: string
 ): Promise<{ rows: BemCandidatoRow[]; total: number; soma: number; ok: boolean }> {
   try {
-    const data = await q.bensDeVereador(idMunicipio, vereadorId);
+    const data = await bensDeVereador(idMunicipio, vereadorId);
     if (!data) return { rows: [], total: 0, soma: 0, ok: false };
     return {
       rows: data as BemCandidatoRow[],
@@ -195,7 +195,7 @@ export async function getVereadores(
   idMunicipio: IdMunicipio
 ): Promise<{ rows: VereadorRow[]; ok: boolean }> {
   try {
-    const data = await q.listarVereadores(idMunicipio);
+    const data = await listarVereadores(idMunicipio);
     if (!data) return { rows: [], ok: false };
     return { rows: data as VereadorRow[], ok: true };
   } catch {
@@ -222,7 +222,7 @@ export async function getVereadoresForaDeExercicio(
   idMunicipio: IdMunicipio
 ): Promise<{ rows: VereadorRow[]; ok: boolean }> {
   try {
-    const data = await q.listarVereadoresForaDeExercicio(idMunicipio);
+    const data = await listarVereadoresForaDeExercicio(idMunicipio);
     if (!data) return { rows: [], ok: false };
     return { rows: data as VereadorRow[], ok: true };
   } catch {
@@ -553,13 +553,13 @@ export async function getRankingVereadores(idMunicipio: IdMunicipio): Promise<{
 }> {
   try {
     const [vereadoresRows, contagens, votos, votosRotulo] = await Promise.all([
-      q.listarVereadores(idMunicipio),
-      q.contagemDeProposicoesPorVereador(idMunicipio),
+      listarVereadores(idMunicipio),
+      contagemDeProposicoesPorVereador(idMunicipio),
       // Presença e coerência degradam para "não medido" quando a consulta
       // falha — a tabela pode não existir ainda numa cidade nova, e a
       // ausência de voto coletado NÃO pode derrubar o ranking inteiro.
-      q.contagemDeVotosPorVereador(idMunicipio).catch(() => null),
-      q.votosPorRotuloDeDireito(idMunicipio).catch(() => null),
+      contagemDeVotosPorVereador(idMunicipio).catch(() => null),
+      votosPorRotuloDeDireito(idMunicipio).catch(() => null),
     ]);
     if (!vereadoresRows || !contagens)
       return { rows: [], totaisPorTipo: {}, totaisLinhas: [], ok: false };
@@ -681,9 +681,9 @@ export async function getAtividadeRecenteCamara(
   const EMPTY = { ultimoProjeto: null, ultimoAprovado: null, ultimoRequerimento: null, ok: false };
   try {
     const [projeto, aprovado, requerimento] = await Promise.all([
-      q.ultimaProposicao(idMunicipio, { tipo: "projeto_lei" }),
-      q.ultimaProposicao(idMunicipio, { situacao: "Aprovado" }),
-      q.ultimaProposicao(idMunicipio, { tipo: "requerimento" }),
+      ultimaProposicao(idMunicipio, { tipo: "projeto_lei" }),
+      ultimaProposicao(idMunicipio, { situacao: "Aprovado" }),
+      ultimaProposicao(idMunicipio, { tipo: "requerimento" }),
     ]);
 
     return {
@@ -702,7 +702,7 @@ export async function getVereadorBySlug(
   slug: string
 ): Promise<{ row: VereadorRow | null; ok: boolean }> {
   try {
-    const row = await q.vereadorPorSlug(idMunicipio, slug);
+    const row = await vereadorPorSlug(idMunicipio, slug);
     return { row: (row as VereadorRow) ?? null, ok: true };
   } catch {
     return { row: null, ok: false };

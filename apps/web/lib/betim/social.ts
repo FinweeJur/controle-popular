@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { beneficiosSociais } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface BeneficioMes {
@@ -41,7 +41,7 @@ interface Row {
  */
 export async function getSocialData(idMunicipio: IdMunicipio): Promise<SocialData> {
   try {
-    const data = await q.beneficiosSociais(idMunicipio);
+    const data = await beneficiosSociais(idMunicipio);
     if (!data) return VAZIO;
 
     const rows = data as Row[];

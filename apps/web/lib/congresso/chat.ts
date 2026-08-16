@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/congresso";
+import { agenda, autoriaDeProposicoes, coberturaAnalise, proposicoesRelevantes } from "@/lib/db/queries/congresso";
 import { REGRAS_COMUNS } from "@/lib/chat-comum";
 
 /**
@@ -51,7 +51,7 @@ export async function montarContexto(pergunta: string): Promise<string> {
 
   // Cobertura primeiro: é a moldura de honestidade de tudo o que vem depois.
   try {
-    const c = await q.coberturaAnalise();
+    const c = await coberturaAnalise();
     if (c.total > 0) {
       const pct = Math.round((c.analisadas / c.total) * 100);
       secoes.push(
@@ -76,7 +76,7 @@ export async function montarContexto(pergunta: string): Promise<string> {
   // domínio — aparecem em quase toda ementa. Sem tirá-los, "projetos sobre
   // trabalho escravo" pontuaria alto qualquer coisa que diga "projeto".
   try {
-    const brutos = await q.proposicoesRelevantes(ts, LIMITE);
+    const brutos = await proposicoesRelevantes(ts, LIMITE);
 
     // EXIGE COBERTURA DE TERMOS quando a pergunta tem mais de um.
     //
@@ -111,7 +111,7 @@ export async function montarContexto(pergunta: string): Promise<string> {
     if (ids.length) {
       let autoria = new Map<string, string>();
       try {
-        const autorias = await q.autoriaDeProposicoes(ids);
+        const autorias = await autoriaDeProposicoes(ids);
         autoria = new Map(
           autorias.map((a) => [
             a.proposicao_id,
@@ -144,7 +144,7 @@ export async function montarContexto(pergunta: string): Promise<string> {
 
   // Agenda: só os próximos, que é o que a pergunta "quando" quer.
   try {
-    const { proximos } = await q.agenda({ limite: 12 });
+    const { proximos } = await agenda({ limite: 12 });
     // Casa também pela SIGLA DO ÓRGÃO, não só pela descrição: quem pergunta
     // "quando a CCJC se reúne" digita a sigla, e a sigla mora em `orgaos` —
     // a descrição do evento raramente a repete. Sem isto, a pergunta mais

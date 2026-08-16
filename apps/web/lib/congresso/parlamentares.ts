@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/congresso";
+import { listarParlamentaresAtivos, listarParlamentaresComResumo, obterParlamentarPorId, presencaDiasDoParlamentar, proposicoesDeAutores, votosPorRotuloDoParlamentar } from "@/lib/db/queries/congresso";
 import { agregar, type PerfilAgregado } from "@/lib/congresso/agregado";
 import type { Rotulo } from "@/lib/congresso/rubrica";
 import {
@@ -57,13 +57,13 @@ export async function obterParlamentar(id: string): Promise<{
   perfilAutoria: PerfilAgregado;
   proposicoes: ProposicaoDoParlamentar[];
 } | null> {
-  const parlamentar = await q.obterParlamentarPorId(id);
+  const parlamentar = await obterParlamentarPorId(id);
   if (!parlamentar) return null;
 
   const [diasBrutos, votosRotulo, autorias] = await Promise.all([
-    q.presencaDiasDoParlamentar(id),
-    q.votosPorRotuloDoParlamentar(id),
-    q.proposicoesDeAutores([id]),
+    presencaDiasDoParlamentar(id),
+    votosPorRotuloDoParlamentar(id),
+    proposicoesDeAutores([id]),
   ]);
 
   const presenca = calcularPresencaDias(diasBrutos);
@@ -118,7 +118,7 @@ export async function obterParlamentar(id: string): Promise<{
 }
 
 export async function listarIdsDeParlamentares(): Promise<string[]> {
-  return (await q.listarParlamentaresAtivos()).map((p) => p.id);
+  return (await listarParlamentaresAtivos()).map((p) => p.id);
 }
 
 export interface ParlamentarResumo {
@@ -144,7 +144,7 @@ export const ROTULO_CASA: Record<string, string> = {
  * existe de fato.
  */
 export async function listarParlamentares(): Promise<ParlamentarResumo[] | null> {
-  const linhas = await q.listarParlamentaresComResumo();
+  const linhas = await listarParlamentaresComResumo();
   if (!linhas) return null;
   return (linhas as ParlamentarResumo[]).sort((a, b) =>
     (a.nome_eleitoral ?? a.nome).localeCompare(b.nome_eleitoral ?? b.nome, "pt-BR")

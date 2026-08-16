@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { temasDeContratos, temasDeProposicoes } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 /**
@@ -80,7 +80,7 @@ export async function getTemasVereador(
   vereadorId: string
 ): Promise<TemasResult> {
   try {
-    const linhas = await q.temasDeProposicoes(idMunicipio, vereadorId);
+    const linhas = await temasDeProposicoes(idMunicipio, vereadorId);
     if (!linhas) return SEM_BANCO;
     return { temas: comRotulo(linhas), ok: true };
   } catch {
@@ -91,7 +91,7 @@ export async function getTemasVereador(
 /** Áreas de atuação da Câmara inteira — conta os temas de toda proposição. */
 export async function getTemasCamara(idMunicipio: IdMunicipio): Promise<TemasResult> {
   try {
-    const linhas = await q.temasDeProposicoes(idMunicipio);
+    const linhas = await temasDeProposicoes(idMunicipio);
     if (!linhas) return SEM_BANCO;
     return { temas: comRotulo(linhas), ok: true };
   } catch {
@@ -102,7 +102,7 @@ export async function getTemasCamara(idMunicipio: IdMunicipio): Promise<TemasRes
 /** Áreas de atuação da Prefeitura — conta os temas de todo contrato. */
 export async function getTemasPrefeitura(idMunicipio: IdMunicipio): Promise<TemasResult> {
   try {
-    const linhas = await q.temasDeContratos(idMunicipio);
+    const linhas = await temasDeContratos(idMunicipio);
     if (!linhas) return SEM_BANCO;
     return { temas: comRotulo(linhas), ok: true };
   } catch {

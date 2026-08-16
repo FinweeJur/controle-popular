@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { caixaDisponivel } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface CaixaDisponivel {
@@ -19,7 +19,7 @@ export async function getCaixaDisponivel(
   idMunicipio: IdMunicipio
 ): Promise<CaixaDisponivel | null> {
   try {
-    const data = await q.caixaDisponivel(idMunicipio);
+    const data = await caixaDisponivel(idMunicipio);
     if (!data || data.length === 0) return null;
 
     const [atual, anterior] = data as { ano: number; valor: number }[];

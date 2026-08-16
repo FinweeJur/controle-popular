@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { anoMaisRecenteDeMortalidade, arbovirosesDoMunicipio, internacoesSaude, internacoesUrgenciaDesde, mortalidadeDesde, resumoEstabelecimentosSaude, topCausasDeMortalidade, ultimasSemanasDeDengue } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 /**
@@ -105,8 +105,8 @@ export async function getSaudeTendencias(
   try {
     const anoMinimo = new Date().getFullYear() - 6;
     const [mortData, internData] = await Promise.all([
-      q.mortalidadeDesde(idMunicipio, anoMinimo),
-      q.internacoesUrgenciaDesde(idMunicipio, anoMinimo),
+      mortalidadeDesde(idMunicipio, anoMinimo),
+      internacoesUrgenciaDesde(idMunicipio, anoMinimo),
     ]);
     if (!mortData || !internData) return EMPTY_TENDENCIAS;
 
@@ -156,7 +156,7 @@ export async function getSaudeTendencias(
     // Dengue: o InfoDengue só retorna uma janela recente de semanas, não
     // histórico completo — não dá pra calcular tendência sazonal real com
     // isso, só mostrar o que temos e avisar da limitação.
-    const dengueData = await q.ultimasSemanasDeDengue(idMunicipio, 8);
+    const dengueData = await ultimasSemanasDeDengue(idMunicipio, 8);
     const dengueUltimasSemanas = ((dengueData ?? []) as { semana_epidemiologica: number; casos: number }[])
       .map((r) => ({ semana: r.semana_epidemiologica, casos: r.casos }))
       .reverse();
@@ -179,10 +179,10 @@ export async function getSaudeData(idMunicipio: IdMunicipio): Promise<SaudeData>
     const [estabRes, internRes, arboRes, anoMortalidade] = await Promise.all([
       // Contagem e soma no banco: eram todas as linhas de
       // `saude_estabelecimentos` trazidas só para somar uma coluna.
-      q.resumoEstabelecimentosSaude(idMunicipio),
-      q.internacoesSaude(idMunicipio),
-      q.arbovirosesDoMunicipio(idMunicipio),
-      q.anoMaisRecenteDeMortalidade(idMunicipio),
+      resumoEstabelecimentosSaude(idMunicipio),
+      internacoesSaude(idMunicipio),
+      arbovirosesDoMunicipio(idMunicipio),
+      anoMaisRecenteDeMortalidade(idMunicipio),
     ]);
     if (!estabRes || !internRes || !arboRes) return EMPTY;
 
@@ -234,7 +234,7 @@ export async function getSaudeData(idMunicipio: IdMunicipio): Promise<SaudeData>
 
     let topCausasMortalidade: MortalidadeCausa[] = [];
     if (anoMortalidade) {
-      topCausasMortalidade = ((await q.topCausasDeMortalidade(
+      topCausasMortalidade = ((await topCausasDeMortalidade(
         idMunicipio,
         anoMortalidade,
         5

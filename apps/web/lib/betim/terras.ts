@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/terras";
+import { vazioPorMunicipio } from "@/lib/db/queries/terras";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 // Reexportado para não quebrar quem já importava daqui. A constante MUDOU DE
 // CASA (ver o cabeçalho de `taxa-erro-g0.ts`): este arquivo puxa as queries
@@ -43,7 +43,7 @@ export interface VazioMunicipioResumo {
 export async function vazioResumoPorMunicipio(
   idMunicipio: IdMunicipio
 ): Promise<VazioMunicipioResumo[] | null> {
-  const linhas = await q.vazioPorMunicipio(idMunicipio);
+  const linhas = await vazioPorMunicipio(idMunicipio);
   if (linhas === null) return null;
   return linhas.map((l) => ({
     metodo: l.metodo,

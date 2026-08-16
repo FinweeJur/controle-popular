@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { proposicoesPaginadas, situacoesDeProposicoes } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import { viciosDeProposicoes, type VicioAto } from "@/lib/betim/legislacao-vicio";
 
@@ -65,7 +65,7 @@ export async function fetchProposicoes(
   filters: ProposicoesFilters = {}
 ): Promise<ProposicoesResult> {
   try {
-    const data = await q.proposicoesPaginadas(idMunicipio, {
+    const data = await proposicoesPaginadas(idMunicipio, {
       tipo: filters.tipo,
       situacao: filters.situacao,
       ano: filters.ano ? Number(filters.ano) : undefined,
@@ -107,7 +107,7 @@ export async function fetchProposicoes(
  *  desatualizada se a Câmara mudar a nomenclatura de tramitação. */
 export async function getSituacoesDisponiveis(idMunicipio: IdMunicipio): Promise<string[]> {
   try {
-    const data = await q.situacoesDeProposicoes(idMunicipio);
+    const data = await situacoesDeProposicoes(idMunicipio);
     if (!data) return [];
     // Ordenação no JS, não no `order by`: `Array.sort()` sem comparador é
     // por code unit UTF-16, e a collation do Postgres não reproduz isso —

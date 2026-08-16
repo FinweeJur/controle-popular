@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { ocorrenciasSeguranca } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface NaturezaAno {
@@ -47,7 +47,7 @@ interface Row {
  */
 export async function getSegurancaData(idMunicipio: IdMunicipio): Promise<SegurancaData> {
   try {
-    const data = await q.ocorrenciasSeguranca(idMunicipio);
+    const data = await ocorrenciasSeguranca(idMunicipio);
     if (!data) return VAZIO;
     if (data.length === 0) return { ...VAZIO, configured: true };
 

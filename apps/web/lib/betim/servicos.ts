@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { coletaLixo, contatosUteis, farmaciasPlantao } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface ContatoUtil {
@@ -21,7 +21,7 @@ export async function fetchContatosUteis(idMunicipio: IdMunicipio): Promise<{
   configured: boolean;
 }> {
   try {
-    const data = await q.contatosUteis(idMunicipio);
+    const data = await contatosUteis(idMunicipio);
     if (!data) return { rows: [], configured: false };
     return { rows: data as ContatoUtil[], configured: true };
   } catch {
@@ -44,7 +44,7 @@ export async function fetchColetaLixo(
   configured: boolean;
 }> {
   try {
-    const data = await q.coletaLixo(idMunicipio, bairro);
+    const data = await coletaLixo(idMunicipio, bairro);
     if (!data) return { rows: [], configured: false };
     return { rows: data as ColetaLixoRow[], configured: true };
   } catch {
@@ -90,7 +90,7 @@ export async function fetchFarmaciasPlantao(idMunicipio: IdMunicipio): Promise<{
   configured: boolean;
 }> {
   try {
-    const data = await q.farmaciasPlantao(idMunicipio);
+    const data = await farmaciasPlantao(idMunicipio);
     if (!data) return { rows: [], configured: false };
     return { rows: data as FarmaciaPlantao[], configured: true };
   } catch {

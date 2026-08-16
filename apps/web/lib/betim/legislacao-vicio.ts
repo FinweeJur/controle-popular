@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { viciosDeObjetos } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import { labelDaCategoria, type Categoria, type NivelGravidade } from "@/lib/congresso/rubrica_vicio";
 
@@ -47,7 +47,7 @@ export async function viciosDeAtos(
   const mapa = new Map<string, VicioAto>();
   if (atoIds.length === 0) return mapa;
   try {
-    const resultado = await q.viciosDeObjetos(idMunicipio, { atos: atoIds });
+    const resultado = await viciosDeObjetos(idMunicipio, { atos: atoIds });
     if (!resultado) return mapa;
     const { linhas, itens } = resultado;
 
@@ -98,7 +98,7 @@ export async function viciosDeProposicoes(
   const mapa = new Map<string, VicioAto>();
   if (proposicaoIds.length === 0) return mapa;
   try {
-    const resultado = await q.viciosDeObjetos(idMunicipio, { proposicoes: proposicaoIds });
+    const resultado = await viciosDeObjetos(idMunicipio, { proposicoes: proposicaoIds });
     if (!resultado) return mapa;
     const { linhas, itens } = resultado;
 

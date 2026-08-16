@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { royaltiesCfemPorEmpresa, royaltiesCfemPorSubstancia } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface RoyaltiesCfemAno {
@@ -56,8 +56,8 @@ const VAZIO: RoyaltiesCfemData = {
 export async function getRoyaltiesCfemData(idMunicipio: IdMunicipio): Promise<RoyaltiesCfemData> {
   try {
     const [substancias, empresas] = await Promise.all([
-      q.royaltiesCfemPorSubstancia(idMunicipio),
-      q.royaltiesCfemPorEmpresa(idMunicipio),
+      royaltiesCfemPorSubstancia(idMunicipio),
+      royaltiesCfemPorEmpresa(idMunicipio),
     ]);
     if (!substancias || !empresas) return VAZIO;
     if (substancias.length === 0) return { ...VAZIO, configured: true, ok: true };

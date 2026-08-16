@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { classificadosVigentes } from "@/lib/db/queries/betim";
 import { normalizeWhatsapp } from "@/lib/betim/zap";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
@@ -40,7 +40,7 @@ export async function fetchClassificados(
   params: { categoria?: string; q?: string } = {}
 ): Promise<{ rows: ClassificadoAnuncio[]; configured: boolean }> {
   try {
-    const data = await q.classificadosVigentes(idMunicipio, params);
+    const data = await classificadosVigentes(idMunicipio, params);
     if (!data) return { rows: [], configured: false };
     return { rows: data as ClassificadoAnuncio[], configured: true };
   } catch {

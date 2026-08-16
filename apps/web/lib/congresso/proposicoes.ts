@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/congresso";
+import { AutoriaResumo, FiltrosProposicoes, analiseDaProposicao, autoresDaProposicao, autoriaCompletaDaProposicao, autoriaDeProposicoes, itensDaAnalise, itensDoVicio, obterProposicaoPorId, paginaDeProposicoes, temasDistintos, tramitacoesDaProposicao, vicioDaProposicao } from "@/lib/db/queries/congresso";
 import type { AnaliseItem, Rotulo } from "@/lib/congresso/rubrica";
 import type { NivelGravidade, VicioItem } from "@/lib/congresso/rubrica_vicio";
 
@@ -91,11 +91,11 @@ export async function listarProposicoes(
     analise: Analise | null;
     /** Só o nível — o detalhamento (categoria/dispositivo/trecho) mora na página da proposição. */
     vicioNivelGravidade: NivelGravidade | null;
-    autoria?: q.AutoriaResumo;
+    autoria?: AutoriaResumo;
   })[];
   total: number;
 } | null> {
-  const linhas = await q.paginaDeProposicoes(filtros as q.FiltrosProposicoes);
+  const linhas = await paginaDeProposicoes(filtros as FiltrosProposicoes);
   if (!linhas) return null;
 
   const itens = linhas.map((l) => ({
@@ -105,14 +105,14 @@ export async function listarProposicoes(
   })) as (Proposicao & {
     analise: Analise | null;
     vicioNivelGravidade: NivelGravidade | null;
-    autoria?: q.AutoriaResumo;
+    autoria?: AutoriaResumo;
   })[];
 
   // Autoria numa segunda query, sobre os ids DESTA página (25). Não dá para
   // vir no mesmo join: uma proposição tem N autores e o join multiplicaria
   // as linhas da página, quebrando o `count(*) over ()` que dá o total.
   try {
-    const autorias = await q.autoriaDeProposicoes(itens.map((i) => i.id));
+    const autorias = await autoriaDeProposicoes(itens.map((i) => i.id));
     const porId = new Map(autorias.map((a) => [a.proposicao_id, a]));
     for (const i of itens) i.autoria = porId.get(i.id);
   } catch (e) {
@@ -145,34 +145,34 @@ export async function obterProposicao(
   vicioItens: VicioItem[];
   autores: Autor[];
   /** Autoria de leitura: inclui Poder Executivo, comissões e Senado. */
-  autoriaCompleta: Awaited<ReturnType<typeof q.autoriaCompletaDaProposicao>>;
+  autoriaCompleta: Awaited<ReturnType<typeof autoriaCompletaDaProposicao>>;
   tramitacoes: { sequencia: number; data_hora: string; sigla_orgao: string; descricao: string; despacho: string }[];
 } | null> {
-  const prop = await q.obterProposicaoPorId(id);
+  const prop = await obterProposicaoPorId(id);
   if (!prop) return null;
 
   const [analise, vicio, autores, autoriaCompleta, tramitacoes] = await Promise.all([
-    q.analiseDaProposicao(id),
-    q.vicioDaProposicao(id),
-    q.autoresDaProposicao(id),
-    q.autoriaCompletaDaProposicao(id).catch((e) => {
+    analiseDaProposicao(id),
+    vicioDaProposicao(id),
+    autoresDaProposicao(id),
+    autoriaCompletaDaProposicao(id).catch((e) => {
       if ((e as { code?: string }).code === "42P01") return [];
       throw e;
     }),
-    q.tramitacoesDaProposicao(id),
+    tramitacoesDaProposicao(id),
   ]);
 
   let itens: AnaliseItem[] = [];
   if (analise) {
     // Peso decrescente em módulo: o item que mais move o score aparece
     // primeiro, que é a ordem em que a pessoa quer auditar.
-    itens = (await q.itensDaAnalise(analise.id)) as AnaliseItem[];
+    itens = (await itensDaAnalise(analise.id)) as AnaliseItem[];
     itens.sort((a, b) => Math.abs(b.peso ?? 0) - Math.abs(a.peso ?? 0));
   }
 
   let vicioItens: VicioItem[] = [];
   if (vicio) {
-    vicioItens = (await q.itensDoVicio(vicio.id)) as VicioItem[];
+    vicioItens = (await itensDoVicio(vicio.id)) as VicioItem[];
   }
 
   return {
@@ -192,7 +192,7 @@ export async function listarTemas(): Promise<string[]> {
   try {
     // O `distinct unnest` agrega no banco; antes vinham TODAS as
     // proposições só para montar um Set em memória.
-    return (await q.temasDistintos()).sort((a, b) => a.localeCompare(b, "pt-BR"));
+    return (await temasDistintos()).sort((a, b) => a.localeCompare(b, "pt-BR"));
   } catch {
     return [];
   }

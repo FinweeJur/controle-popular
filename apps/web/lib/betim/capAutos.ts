@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { CapAutoRecente, CapResumo, capAutosRecentes, capResumo } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import type { Cidade } from "@/lib/db/queries/municipios";
 
@@ -45,8 +45,8 @@ export const ORGAO_AUTUANTE: Record<string, string> = {
 export interface CapData {
   /** `false` = banco não configurado. Distinto de "cidade sem autuação". */
   configurado: boolean;
-  resumo: q.CapResumo | null;
-  recentes: q.CapAutoRecente[];
+  resumo: CapResumo | null;
+  recentes: CapAutoRecente[];
 }
 
 const VAZIO: CapData = { configurado: false, resumo: null, recentes: [] };
@@ -54,8 +54,8 @@ const VAZIO: CapData = { configurado: false, resumo: null, recentes: [] };
 export async function getCapData(idMunicipio: IdMunicipio): Promise<CapData> {
   try {
     const [resumo, recentes] = await Promise.all([
-      q.capResumo(idMunicipio),
-      q.capAutosRecentes(idMunicipio),
+      capResumo(idMunicipio),
+      capAutosRecentes(idMunicipio),
     ]);
     if (resumo === null) return VAZIO;
     return { configurado: true, resumo, recentes };

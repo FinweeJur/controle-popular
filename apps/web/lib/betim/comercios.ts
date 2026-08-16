@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { comerciosEssenciais } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface ComercioEssencial {
@@ -58,7 +58,7 @@ export async function getComerciosEssenciais(
   idMunicipio: IdMunicipio
 ): Promise<ComerciosData> {
   try {
-    const data = await q.comerciosEssenciais(idMunicipio);
+    const data = await comerciosEssenciais(idMunicipio);
     if (!data) return VAZIO;
 
     const rows = (data as Row[]).map((r) => ({

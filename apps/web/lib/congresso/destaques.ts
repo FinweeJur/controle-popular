@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/congresso";
+import { analisesComProposicao, autoriaDeProposicoes, coberturaAnalise as coberturaAnaliseQuery, itensDasAnalises } from "@/lib/db/queries/congresso";
 import type { AutoriaResumo } from "@/lib/db/queries/congresso";
 import { casaComTema, type Tema } from "@/lib/congresso/temas";
 import type { Rotulo } from "@/lib/congresso/rubrica";
@@ -66,10 +66,10 @@ async function carregar(rotulos: Rotulo[]): Promise<Destaque[]> {
   try {
     // O join ja traz a proposicao junto: eram TRES idas ao banco
     // (analises, itens, proposicoes) e agora sao duas.
-    const analises = await q.analisesComProposicao(rotulos);
+    const analises = await analisesComProposicao(rotulos);
     if (analises.length === 0) return [];
 
-    const itens = await q.itensDasAnalises(analises.map((a) => a.id));
+    const itens = await itensDasAnalises(analises.map((a) => a.id));
 
     const itensPorAnalise = new Map<string, typeof itens>();
     for (const i of itens) {
@@ -132,7 +132,7 @@ async function carregar(rotulos: Rotulo[]): Promise<Destaque[]> {
 async function hidratarAutoria(lista: Destaque[]): Promise<Destaque[]> {
   if (lista.length === 0) return lista;
   try {
-    const autorias = await q.autoriaDeProposicoes(lista.map((d) => d.id));
+    const autorias = await autoriaDeProposicoes(lista.map((d) => d.id));
     const porId = new Map(autorias.map((a) => [a.proposicao_id, a]));
     for (const d of lista) d.autoria = porId.get(d.id);
   } catch (e) {
@@ -162,5 +162,5 @@ export async function bonsExemplos(limite?: number, tema?: Tema): Promise<Destaq
 
 /** Quantas proposições já têm análise concluída — o denominador honesto. */
 export async function coberturaAnalise(): Promise<{ analisadas: number; total: number }> {
-  return q.coberturaAnalise();
+  return coberturaAnaliseQuery();
 }

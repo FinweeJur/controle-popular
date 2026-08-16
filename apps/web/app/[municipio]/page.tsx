@@ -5,7 +5,7 @@ import FotoBrasilComS from "@/app/components/FotoBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import RankingVereadores from "@/app/[municipio]/components/charts/RankingVereadores";
-import * as q from "@/lib/db/queries/betim";
+import { climaDaCidade, contatosUteis, listarIndicadores, resumoContratosAtivos } from "@/lib/db/queries/betim";
 import {
   rotuloLegislatura,
   temFonte,
@@ -126,7 +126,7 @@ async function getIndicadores(
   idMunicipio: IdMunicipio
 ): Promise<Record<string, IndicadorRow>> {
   try {
-    const data = await q.listarIndicadores(
+    const data = await listarIndicadores(
       idMunicipio,
       INDICATOR_LABELS.map((i) => i.nome)
     );
@@ -148,7 +148,7 @@ async function getContratosAtivosSummary(
   try {
     // Era `select valor_global` de todos os contratos ativos com
     // `count: "exact"`, e a soma no JS; agora COUNT e SUM saem do banco.
-    const r = await q.resumoContratosAtivos(idMunicipio);
+    const r = await resumoContratosAtivos(idMunicipio);
     if (!r) return null;
     return { count: r.qtd, sum: r.soma };
   } catch {
@@ -164,7 +164,7 @@ interface ContatoUtil {
 
 async function getContatosUteis(idMunicipio: IdMunicipio): Promise<ContatoUtil[]> {
   try {
-    const data = await q.contatosUteis(idMunicipio);
+    const data = await contatosUteis(idMunicipio);
     return (data ?? []) as ContatoUtil[];
   } catch {
     return [];
@@ -173,7 +173,7 @@ async function getContatosUteis(idMunicipio: IdMunicipio): Promise<ContatoUtil[]
 
 async function getClima(idMunicipio: IdMunicipio): Promise<ClimaAtual | null> {
   try {
-    return ((await q.climaDaCidade(idMunicipio)) as ClimaAtual) ?? null;
+    return ((await climaDaCidade(idMunicipio)) as ClimaAtual) ?? null;
   } catch {
     return null;
   }

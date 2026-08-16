@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { listarEscolas, resumoEscolas } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export const REDE_LABELS: Record<string, string> = {
@@ -94,7 +94,7 @@ export function resumirGrupos(grupos: GrupoRede[]): Omit<EducacaoResumo, "config
 
 export async function getEducacaoResumo(idMunicipio: IdMunicipio): Promise<EducacaoResumo> {
   try {
-    const grupos = await q.resumoEscolas(idMunicipio);
+    const grupos = await resumoEscolas(idMunicipio);
     if (!grupos) return VAZIO;
     // `grupos` tem no máximo cinco linhas (quatro redes do INEP + `null`), então
     // somar em JS aqui não é o mesmo que somar as ~10 mil escolas de antes.
@@ -115,7 +115,7 @@ export async function getEducacaoResumo(idMunicipio: IdMunicipio): Promise<Educa
  */
 export async function listarEscolasDoMunicipio(idMunicipio: IdMunicipio): Promise<EscolaRow[]> {
   try {
-    const linhas = await q.listarEscolas(idMunicipio);
+    const linhas = await listarEscolas(idMunicipio);
     return linhas ?? [];
   } catch {
     return [];

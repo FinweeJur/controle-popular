@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { listarComissoes, membrosDeComissoes, participacoesEmComissoes } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface MembroComissao {
@@ -44,8 +44,8 @@ export async function getComissoesAtuais(
 ): Promise<{ rows: ComissaoAtual[]; ok: boolean }> {
   try {
     const [comissoesData, membrosData] = await Promise.all([
-      q.listarComissoes(idMunicipio),
-      q.membrosDeComissoes(idMunicipio),
+      listarComissoes(idMunicipio),
+      membrosDeComissoes(idMunicipio),
     ]);
     if (!comissoesData || !membrosData) return { rows: [], ok: false };
 
@@ -111,7 +111,7 @@ export async function getParticipacoesByVereador(
   try {
     // A consulta antiga filtrava só por `vereador_id`, sem a cidade —
     // mesmo caso de `getTemasVereador`. Agora filtra pelos dois.
-    const data = await q.participacoesEmComissoes(idMunicipio, vereadorId);
+    const data = await participacoesEmComissoes(idMunicipio, vereadorId);
     if (!data) return VAZIO;
 
     const rows = (

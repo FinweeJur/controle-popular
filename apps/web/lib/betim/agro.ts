@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { producaoAgropecuaria } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface ProdutoAgro {
@@ -63,7 +63,7 @@ interface Row {
  */
 export async function getAgroData(idMunicipio: IdMunicipio): Promise<AgroData> {
   try {
-    const data = await q.producaoAgropecuaria(idMunicipio);
+    const data = await producaoAgropecuaria(idMunicipio);
     if (!data) return VAZIO;
 
     const rows = (data as Row[]).map((r) => ({

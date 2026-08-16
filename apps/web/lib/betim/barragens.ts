@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { barragensFeam, barragensSnisb } from "@/lib/db/queries/betim";
 import type { Cidade, IdMunicipio } from "@/lib/db/queries/municipios";
 
 /**
@@ -118,8 +118,8 @@ function normalizar(s: string | null): string {
 export async function getBarragensData(idMunicipio: IdMunicipio): Promise<BarragensData> {
   try {
     const [feam, snisb] = await Promise.all([
-      q.barragensFeam(idMunicipio),
-      q.barragensSnisb(idMunicipio),
+      barragensFeam(idMunicipio),
+      barragensSnisb(idMunicipio),
     ]);
     if (feam === null || snisb === null) return VAZIO;
 

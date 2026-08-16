@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/congresso";
+import { listarBancadasComContagem, membrosDaBancada, obterBancadaPorId, proposicoesDeAutores } from "@/lib/db/queries/congresso";
 import { agregar, type PerfilAgregado } from "@/lib/congresso/agregado";
 import type { Rotulo } from "@/lib/congresso/rubrica";
 
@@ -36,7 +36,7 @@ export const DESCRICAO_TIPO: Record<TipoBancada, string> = {
 export async function listarBancadas(
   tipo?: TipoBancada
 ): Promise<BancadaComContagem[] | null> {
-  const linhas = await q.listarBancadasComContagem(tipo);
+  const linhas = await listarBancadasComContagem(tipo);
   if (!linhas) return null;
   // A contagem de membros vem agregada do banco; a ordenação fica no JS
   // porque o desempate é `localeCompare(pt-BR)`, que a collation do
@@ -67,10 +67,10 @@ export async function obterBancada(id: string): Promise<{
     autores: string[];
   }[];
 } | null> {
-  const bancada = await q.obterBancadaPorId(id);
+  const bancada = await obterBancadaPorId(id);
   if (!bancada) return null;
 
-  const membros: MembroBancada[] = (await q.membrosDaBancada(id)).sort((a, b) => {
+  const membros: MembroBancada[] = (await membrosDaBancada(id)).sort((a, b) => {
     // Coordenação primeiro; o resto em ordem alfabética.
     const peso = (m: MembroBancada) => (m.papel ? 0 : 1);
     return peso(a) - peso(b) || (a.nome ?? "").localeCompare(b.nome ?? "", "pt-BR");
@@ -81,7 +81,7 @@ export async function obterBancada(id: string): Promise<{
     return { bancada: bancada as Bancada, membros, perfil: agregar([]), proposicoes: [] };
   }
 
-  const autorias = await q.proposicoesDeAutores(idsMembros);
+  const autorias = await proposicoesDeAutores(idsMembros);
 
   const nomePorId = new Map(membros.map((m) => [m.id, m.nome ?? ""]));
 

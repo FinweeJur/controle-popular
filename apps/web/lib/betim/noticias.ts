@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { listarNoticias, noticiaPorSlug } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface NoticiaResumo {
@@ -61,7 +61,7 @@ export async function getNoticias(
   idMunicipio: IdMunicipio
 ): Promise<{ rows: NoticiaResumo[]; ok: boolean }> {
   try {
-    const data = await q.listarNoticias(idMunicipio);
+    const data = await listarNoticias(idMunicipio);
     if (!data) return { rows: [], ok: false };
     return { rows: (data as RowResumo[]).map(mapResumo), ok: true };
   } catch {
@@ -74,7 +74,7 @@ export async function getNoticiaBySlug(
   slug: string
 ): Promise<NoticiaCompleta | null> {
   try {
-    const row = await q.noticiaPorSlug(idMunicipio, slug);
+    const row = await noticiaPorSlug(idMunicipio, slug);
     if (!row) return null;
     return {
       ...mapResumo(row as RowResumo),

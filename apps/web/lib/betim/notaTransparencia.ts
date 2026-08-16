@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { notaTransparencia } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface AvaliacaoPntp {
@@ -67,7 +67,7 @@ export async function getNotaTransparenciaData(
   idMunicipio: IdMunicipio
 ): Promise<NotaTransparenciaData> {
   try {
-    const data = await q.notaTransparencia(idMunicipio);
+    const data = await notaTransparencia(idMunicipio);
     const error = null;
     if (!data) return VAZIO;
     if (error || !data || data.length === 0) return { ...VAZIO, configured: true };

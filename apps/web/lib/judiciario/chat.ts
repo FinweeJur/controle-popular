@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/judiciario";
+import { listarNomeacoes, listarTribunais, listarVagas, ocupacoesAtuais, proximasVacancias } from "@/lib/db/queries/judiciario";
 import { REGRAS_COMUNS } from "@/lib/chat-comum";
 
 /**
@@ -43,11 +43,11 @@ export async function montarContexto(pergunta: string): Promise<string> {
   // permite ao modelo dizer "o STJ tem 33 cadeiras e o portal ainda não curou
   // quem as ocupa" em vez de inventar 33 nomes.
   try {
-    const tribunais = (await q.listarTribunais()) ?? [];
+    const tribunais = (await listarTribunais()) ?? [];
     if (tribunais.length) {
       const linhas = await Promise.all(
         tribunais.map(async (t) => {
-          const ocup = await q.ocupacoesAtuais(t.id);
+          const ocup = await ocupacoesAtuais(t.id);
           const comNome = ocup.filter((o) => o.magistrado_nome);
           const detalhe =
             comNome.length && ts.some((x) => t.id.includes(x) || (t.sigla ?? "").toLowerCase().includes(x))
@@ -80,7 +80,7 @@ export async function montarContexto(pergunta: string): Promise<string> {
 
   // Vacância projetada: o núcleo do produto.
   try {
-    const vac = await q.proximasVacancias(10);
+    const vac = await proximasVacancias(10);
     if (vac.length) {
       secoes.push(
         "PRÓXIMAS VACÂNCIAS PROJETADAS (por aposentadoria compulsória aos 75 anos):\n" +
@@ -100,7 +100,7 @@ export async function montarContexto(pergunta: string): Promise<string> {
 
   // Vagas abertas agora.
   try {
-    const vagas = await q.listarVagas();
+    const vagas = await listarVagas();
     if (vagas.length) {
       secoes.push(
         "VAGAS ABERTAS:\n" +
@@ -126,7 +126,7 @@ export async function montarContexto(pergunta: string): Promise<string> {
   );
   if (pareceIndicacao) {
     try {
-      const nom = (await q.listarNomeacoes()) ?? [];
+      const nom = (await listarNomeacoes()) ?? [];
       if (nom.length) {
         secoes.push(
           `INDICAÇÕES (${nom.length} no total; as mais recentes):\n` +

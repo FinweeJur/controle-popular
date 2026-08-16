@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { atosOficiais } from "@/lib/db/queries/betim";
 import { TEMA_LABELS, type ContagemTema } from "@/lib/betim/temas";
 import {
   analisesDeAtos,
@@ -225,7 +225,7 @@ async function carregar(idMunicipio: IdMunicipio): Promise<CargaLegislacao> {
 
 async function carregarDoBanco(idMunicipio: IdMunicipio): Promise<CargaLegislacao> {
   try {
-    const data = await q.atosOficiais(idMunicipio);
+    const data = await atosOficiais(idMunicipio);
     if (!data) return CARGA_VAZIA;
 
     const base = ((data ?? []) as RawRow[]).map((r) => ({

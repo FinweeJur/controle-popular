@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { listarPostos } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface PostoAnp {
@@ -38,7 +38,7 @@ export async function fetchPostosAnp(
   rows: PostoAnp[];
   configured: boolean;
 }> {
-  const data = await q.listarPostos(idMunicipio, bandeira);
+  const data = await listarPostos(idMunicipio, bandeira);
   if (!data) return { rows: [], configured: false };
 
   let rows = data as PostoAnp[];

@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { totaisDeVotacoes, votacoesPaginadas, votosDeVotacoes } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import { classificarVoto, normalizarRotulo } from "@/lib/presenca/vocabulario";
 
@@ -118,7 +118,7 @@ export async function fetchVotacoes(
       ano: filters.ano ? Number(filters.ano) : undefined,
       q: sanitizeSearchTerm(filters.q),
     };
-    const rows = await q.votacoesPaginadas(idMunicipio, {
+    const rows = await votacoesPaginadas(idMunicipio, {
       ...filtros,
       pagina: filters.page,
       porPagina: filters.porPagina ?? VOTACOES_PAGE_SIZE,
@@ -128,11 +128,11 @@ export async function fetchVotacoes(
       // Mesmo cuidado de `fetchContratos`: sem linha na página, o total real
       // pode não ser zero (filtro que não casa nada É zero; página além da
       // última não é).
-      const agregados = await q.totaisDeVotacoes(idMunicipio, filtros);
+      const agregados = await totaisDeVotacoes(idMunicipio, filtros);
       return { rows: [], total: agregados?.total ?? 0, configured: true, ok: true };
     }
 
-    const votosBrutos = await q.votosDeVotacoes(
+    const votosBrutos = await votosDeVotacoes(
       idMunicipio,
       rows.map((r) => r.id)
     );

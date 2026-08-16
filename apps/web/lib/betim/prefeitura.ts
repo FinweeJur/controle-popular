@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { anoMaisRecenteDeDespesas, despesasAgrupadasPorFuncao, listarIndicadores, maioresFornecedores as maioresFornecedoresQuery, receitaTotalDoAno } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface VisaoGeralData {
@@ -56,7 +56,7 @@ export async function getVisaoGeral(
   idMunicipio: IdMunicipio
 ): Promise<VisaoGeralData> {
   try {
-    const ano = await q.anoMaisRecenteDeDespesas(idMunicipio);
+    const ano = await anoMaisRecenteDeDespesas(idMunicipio);
     if (ano == null) return { ...EMPTY, configured: true, ok: false };
 
     // `funcao`/`conta` in despesas/receitas are hierarchical SICONFI charts
@@ -79,10 +79,10 @@ export async function getVisaoGeral(
     // sobra a separação entre os blocos de escopo (que são o total geral) e
     // as funções COFOG (que são o ranking).
     const [linhasFuncao, popRows, receitaTotal, fornecedores] = await Promise.all([
-      q.despesasAgrupadasPorFuncao(idMunicipio, ano),
-      q.listarIndicadores(idMunicipio, ["populacao"]),
-      q.receitaTotalDoAno(idMunicipio, ano),
-      q.maioresFornecedores(idMunicipio, 5),
+      despesasAgrupadasPorFuncao(idMunicipio, ano),
+      listarIndicadores(idMunicipio, ["populacao"]),
+      receitaTotalDoAno(idMunicipio, ano),
+      maioresFornecedoresQuery(idMunicipio, 5),
     ]);
 
     let despesaTotal = 0;

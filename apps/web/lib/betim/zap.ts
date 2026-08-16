@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { zapEstabelecimentos } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export const ZAP_CATEGORIAS = [
@@ -51,7 +51,7 @@ export async function fetchZapEstabelecimentos(
   params: { categoria?: string; q?: string; bairros?: string[] } = {}
 ): Promise<{ rows: ZapEstabelecimento[]; configured: boolean }> {
   try {
-    const data = await q.zapEstabelecimentos(idMunicipio, params);
+    const data = await zapEstabelecimentos(idMunicipio, params);
     if (!data) return { rows: [], configured: false };
     return { rows: data as ZapEstabelecimento[], configured: true };
   } catch {

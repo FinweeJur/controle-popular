@@ -1,7 +1,7 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import RiscoClimatico from "./RiscoClimatico";
-import * as q from "@/lib/db/queries/betim";
+import { climaDaCidade } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { classificarChuva7d } from "@/lib/betim/format";
@@ -51,7 +51,7 @@ interface ClimaCache {
 
 async function getClima(idMunicipio: IdMunicipio): Promise<ClimaCache | null> {
   try {
-    return ((await q.climaDaCidade(idMunicipio)) as ClimaCache) ?? null;
+    return ((await climaDaCidade(idMunicipio)) as ClimaCache) ?? null;
   } catch {
     return null;
   }

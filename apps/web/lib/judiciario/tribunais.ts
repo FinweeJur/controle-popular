@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/judiciario";
+import { integrantesSemCadeira as integrantesSemCadeiraQ, listarNomeacoes as listarNomeacoesQ, listarTribunais as listarTribunaisQ, listarVagas as listarVagasQ, mandatosDirecao as mandatosDirecaoQ, obterNomeacao as obterNomeacaoQ, obterVaga as obterVagaQ, ocupacoesAtuais as ocupacoesAtuaisQ, proximasVacancias as proximasVacanciasQ } from "@/lib/db/queries/judiciario";
 import { TRIBUNAIS } from "@/lib/judiciario/regras";
 
 export interface Tribunal {
@@ -79,7 +79,7 @@ export interface MandatoDirecao {
  * Devolve `null` só nunca acontece aqui de propósito: a régua é o piso.
  */
 export async function listarTribunais(): Promise<Tribunal[]> {
-  const doBanco = await q.listarTribunais();
+  const doBanco = await listarTribunaisQ();
   if (doBanco && doBanco.length) return doBanco as Tribunal[];
   // Fallback pela régua — composição legal, sem ocupantes.
   return Object.entries(TRIBUNAIS).map(([id, t]) => ({
@@ -104,7 +104,7 @@ export async function obterTribunal(id: string): Promise<Tribunal | null> {
 
 /** Cadeiras de um tribunal, com o ocupante atual (via vw_vacancia). */
 export async function ocupacoesAtuais(tribunalId: string): Promise<Ocupacao[]> {
-  return (await q.ocupacoesAtuais(tribunalId)) as Ocupacao[];
+  return (await ocupacoesAtuaisQ(tribunalId)) as Ocupacao[];
 }
 
 /**
@@ -113,7 +113,7 @@ export async function ocupacoesAtuais(tribunalId: string): Promise<Ocupacao[]> {
  */
 export async function integrantesSemCadeira(tribunalId: string) {
   try {
-    return await q.integrantesSemCadeira(tribunalId);
+    return await integrantesSemCadeiraQ(tribunalId);
   } catch (e) {
     const codigo = (e as { code?: string }).code;
     if (codigo === "42703" || codigo === "42P01") return [];
@@ -126,7 +126,7 @@ export async function proximasVacancias(limite = 50): Promise<Ocupacao[]> {
   // O filtro por vacância conhecida, a ordenação e o limite passaram para
   // o SQL — antes era `fetchAll` + filter/sort/slice em memória, porque o
   // PostgREST truncava em 1000 linhas.
-  return (await q.proximasVacancias(limite)) as Ocupacao[];
+  return (await proximasVacanciasQ(limite)) as Ocupacao[];
 }
 
 /**
@@ -140,21 +140,21 @@ export async function proximasVacancias(limite = 50): Promise<Ocupacao[]> {
  * tecnicamente real mas respondendo à pergunta errada na tela errada.
  */
 export async function mandatosDirecao(tribunalId: string): Promise<MandatoDirecao[]> {
-  return q.mandatosDirecao(tribunalId);
+  return mandatosDirecaoQ(tribunalId);
 }
 
 export async function obterNomeacao(id: string): Promise<Nomeacao | null> {
-  return (await q.obterNomeacao(id)) as Nomeacao | null;
+  return (await obterNomeacaoQ(id)) as Nomeacao | null;
 }
 
 export async function obterVaga(id: string): Promise<Vaga | null> {
-  return (await q.obterVaga(id)) as Vaga | null;
+  return (await obterVagaQ(id)) as Vaga | null;
 }
 
 export async function listarVagas(): Promise<Vaga[]> {
-  return (await q.listarVagas()) as Vaga[];
+  return (await listarVagasQ()) as Vaga[];
 }
 
 export async function listarNomeacoes(tribunalId?: string): Promise<Nomeacao[] | null> {
-  return (await q.listarNomeacoes(tribunalId)) as Nomeacao[] | null;
+  return (await listarNomeacoesQ(tribunalId)) as Nomeacao[] | null;
 }

@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { iniciativasParaopeba, iniciativasParaopebaMenosConcluidas, saldoParaopeba } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface SaldoMunicipio {
@@ -110,8 +110,8 @@ export async function getParaopebaData(
 ): Promise<ParaopebaData> {
   try {
     const [saldoRes, iniciativasRes] = await Promise.all([
-      q.saldoParaopeba(idMunicipio),
-      q.iniciativasParaopeba(idMunicipio),
+      saldoParaopeba(idMunicipio),
+      iniciativasParaopeba(idMunicipio),
     ]);
 
     if (!iniciativasRes) return VAZIO;
@@ -148,7 +148,7 @@ export async function getObrasParaopebaMenosConcluidas(
   limite = 5
 ): Promise<IniciativaParaopeba[]> {
   try {
-    const data = await q.iniciativasParaopebaMenosConcluidas(idMunicipio, limite);
+    const data = await iniciativasParaopebaMenosConcluidas(idMunicipio, limite);
     if (!data) return [];
     return (data as RowIniciativa[]).map(mapIniciativa);
   } catch {

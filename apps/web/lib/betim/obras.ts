@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { listarObras } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface ObraRow {
@@ -46,7 +46,7 @@ export async function getObras(
   situacaoFiltro?: string
 ): Promise<ObrasData> {
   try {
-    const data = await q.listarObras(idMunicipio);
+    const data = await listarObras(idMunicipio);
     if (!data) return EMPTY;
 
     const todas = ((data ?? []) as RawRow[]).map((r) => ({

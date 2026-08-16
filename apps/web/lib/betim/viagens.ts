@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { viagensDoMunicipio } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 /**
@@ -84,7 +84,7 @@ function naturezaDe(r: { natureza: string | null }): string {
 
 export async function getViagens(idMunicipio: IdMunicipio): Promise<ViagensData> {
   try {
-    const linhas = await q.viagensDoMunicipio(idMunicipio);
+    const linhas = await viagensDoMunicipio(idMunicipio);
     if (!linhas) return VAZIO;
     if (linhas.length === 0) return { ...VAZIO, ok: true };
 

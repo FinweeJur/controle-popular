@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { licitacoesPaginadas, modalidadesDeLicitacoesDisponiveis, situacoesDeLicitacoesDisponiveis, totaisDeLicitacoes } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export const LICITACOES_PAGE_SIZE = 25;
@@ -83,7 +83,7 @@ export async function fetchLicitacoes(
 ): Promise<LicitacoesResult> {
   try {
     const filtros = filtrosParaQuery(filters);
-    const linhas = await q.licitacoesPaginadas(idMunicipio, {
+    const linhas = await licitacoesPaginadas(idMunicipio, {
       ...filtros,
       pagina: filters.page,
       porPagina: filters.porPagina ?? LICITACOES_PAGE_SIZE,
@@ -102,7 +102,7 @@ export async function fetchLicitacoes(
     // numa página além da última.
     const agregados = linhas[0]
       ? { total: linhas[0].total, soma_estimado: linhas[0].soma_estimado }
-      : ((await q.totaisDeLicitacoes(idMunicipio, filtros)) ?? { total: 0, soma_estimado: 0 });
+      : ((await totaisDeLicitacoes(idMunicipio, filtros)) ?? { total: 0, soma_estimado: 0 });
 
     return {
       rows,
@@ -119,7 +119,7 @@ export async function fetchLicitacoes(
 /** Situações de licitação existentes no banco — sem chutar valores fixos. */
 export async function getSituacoesLicitacoes(idMunicipio: IdMunicipio): Promise<string[]> {
   try {
-    return await q.situacoesDeLicitacoesDisponiveis(idMunicipio);
+    return await situacoesDeLicitacoesDisponiveis(idMunicipio);
   } catch {
     return [];
   }
@@ -128,7 +128,7 @@ export async function getSituacoesLicitacoes(idMunicipio: IdMunicipio): Promise<
 /** Modalidades de licitação existentes no banco — sem chutar valores fixos. */
 export async function getModalidadesLicitacoes(idMunicipio: IdMunicipio): Promise<string[]> {
   try {
-    return await q.modalidadesDeLicitacoesDisponiveis(idMunicipio);
+    return await modalidadesDeLicitacoesDisponiveis(idMunicipio);
   } catch {
     return [];
   }

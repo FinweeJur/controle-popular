@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { PerfilServidor, listarServidores } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export const SERVIDORES_PAGE_SIZE = 50;
@@ -33,7 +33,7 @@ export async function getServidores(
     q?: string;
     orgao?: string;
     /** `comissionados` | `alto_escalao` — ver `PERFIS_SERVIDOR`. */
-    perfil?: q.PerfilServidor;
+    perfil?: PerfilServidor;
     page?: number;
     /** Default `SERVIDORES_PAGE_SIZE`. `prefeitura/servidores` pede um
      *  valor bem maior pra buscar a cidade inteira de uma vez — ver
@@ -42,7 +42,7 @@ export async function getServidores(
   }
 ): Promise<ServidoresResult> {
   try {
-    const data = await q.listarServidores(idMunicipio, {
+    const data = await listarServidores(idMunicipio, {
       q: opts.q,
       orgao: opts.orgao,
       perfil: opts.perfil,

@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { conveniosFederais } from "@/lib/db/queries/betim";
 import {
   obterCidadePorId,
   normalizarParaComparacao,
@@ -92,7 +92,7 @@ export async function getConveniosFederais(
     // degradava pro select sem ela. A coluna EXISTE no banco — conferido na
     // introspecção e no PostgREST — então o fallback nunca foi usado e o
     // select agora é direto.
-    const data = await q.conveniosFederais(idMunicipio);
+    const data = await conveniosFederais(idMunicipio);
     if (!data) return VAZIO;
 
     const rows = data as ConvenioRow[];

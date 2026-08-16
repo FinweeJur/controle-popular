@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { fornecedoresPorCnpj, gruposEconomicos, somaContratada } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface EmpresaDoGrupo {
@@ -91,7 +91,7 @@ export async function getGruposEconomicos(
   idMunicipio: IdMunicipio
 ): Promise<GruposEconomicosResult> {
   try {
-    const data = await q.gruposEconomicos(idMunicipio);
+    const data = await gruposEconomicos(idMunicipio);
     if (!data) return VAZIO;
 
     const rows = data as GrupoRow[];
@@ -101,7 +101,7 @@ export async function getGruposEconomicos(
     // guarda só os CNPJs). Sem esse join a página mostraria 14 dígitos
     // crus, que ninguém reconhece.
     const porCnpj = new Map<string, FornecedorRow>();
-    for (const f of ((await q.fornecedoresPorCnpj(cnpjs)) ?? []) as FornecedorRow[]) {
+    for (const f of ((await fornecedoresPorCnpj(cnpjs)) ?? []) as FornecedorRow[]) {
       porCnpj.set(f.cnpj, f);
     }
 
@@ -144,7 +144,7 @@ export async function getGruposEconomicos(
       // Denominador da concentração. Era um laço paginado de 1000 em 1000
       // porque o PostgREST truncava sem erro e a soma viria MENOR — o que
       // inflaria o percentual. Virou `sum()` no banco.
-      valorTotalMunicipio: (await q.somaContratada(idMunicipio)) ?? 0,
+      valorTotalMunicipio: (await somaContratada(idMunicipio)) ?? 0,
       totalEmpresas: cnpjs.length,
     };
   } catch {

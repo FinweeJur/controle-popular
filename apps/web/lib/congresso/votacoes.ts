@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/congresso";
+import { totaisDeVotacoes, votacoesPaginadas, votosDeVotacoes } from "@/lib/db/queries/congresso";
 import { normalizarRotulo } from "@/lib/presenca/vocabulario";
 
 export const POR_PAGINA_PADRAO = 25;
@@ -61,7 +61,7 @@ export interface Filtros {
 export async function listarVotacoes(
   filtros: Filtros = {}
 ): Promise<{ itens: Votacao[]; total: number } | null> {
-  const linhas = await q.votacoesPaginadas({
+  const linhas = await votacoesPaginadas({
     ano: filtros.ano,
     q: filtros.q,
     pagina: filtros.pagina,
@@ -69,11 +69,11 @@ export async function listarVotacoes(
   });
   if (!linhas) return null;
   if (linhas.length === 0) {
-    const agregado = await q.totaisDeVotacoes({ ano: filtros.ano, q: filtros.q });
+    const agregado = await totaisDeVotacoes({ ano: filtros.ano, q: filtros.q });
     return { itens: [], total: agregado?.total ?? 0 };
   }
 
-  const votosBrutos = await q.votosDeVotacoes(linhas.map((l) => l.id));
+  const votosBrutos = await votosDeVotacoes(linhas.map((l) => l.id));
   const votosPorVotacao = new Map<string, VotoIndividual[]>();
   for (const v of votosBrutos ?? []) {
     const lista = votosPorVotacao.get(v.votacao_id) ?? [];

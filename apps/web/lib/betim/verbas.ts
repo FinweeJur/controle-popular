@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/betim";
+import { subsidioAtual, verbasIndenizatorias, verbasPorAno, verbasPorVereadorPorAno } from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 export interface VerbasAnalytics {
@@ -28,7 +28,7 @@ export async function getVerbasAnalytics(
   vereadorId?: string
 ): Promise<VerbasAnalytics> {
   try {
-    const data = await q.verbasIndenizatorias(idMunicipio, vereadorId);
+    const data = await verbasIndenizatorias(idMunicipio, vereadorId);
     if (!data) return EMPTY;
     const rows = data ?? [];
 
@@ -120,8 +120,8 @@ export async function getCustoVereador(
     // Belo Horizonte tem as duas, Betim não tem nenhuma, e uma câmara que
     // publique só o custeio continua rendendo meia tela útil.
     const [subsidio, porAno] = await Promise.all([
-      q.subsidioAtual(idMunicipio, vereadorId),
-      q.verbasPorAno(idMunicipio, vereadorId),
+      subsidioAtual(idMunicipio, vereadorId),
+      verbasPorAno(idMunicipio, vereadorId),
     ]);
 
     return {
@@ -165,7 +165,7 @@ export async function getGastoGabineteDaCasa(idMunicipio: IdMunicipio): Promise<
   ok: boolean;
 }> {
   try {
-    const dados = await q.verbasPorVereadorPorAno(idMunicipio);
+    const dados = await verbasPorVereadorPorAno(idMunicipio);
     if (!dados || dados.length === 0) return { linhas: [], anos: [], ok: false };
 
     const porVereador = new Map<string, GastoGabinete>();

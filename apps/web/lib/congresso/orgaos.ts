@@ -1,4 +1,4 @@
-import * as q from "@/lib/db/queries/congresso";
+import { listarOrgaosAtivos, membrosDoOrgao as membrosDoOrgaoQuery, obterOrgaoPorSigla, proposicoesDoOrgao, rotulosDoOrgao, rotulosPorOrgao } from "@/lib/db/queries/congresso";
 import { agregar, type PerfilAgregado } from "@/lib/congresso/agregado";
 import type { Rotulo } from "@/lib/congresso/rubrica";
 
@@ -32,7 +32,7 @@ export interface OrgaoComPerfil extends Orgao {
 async function rotulosPorSigla(): Promise<Map<string, (Rotulo | null)[]>> {
   const mapa = new Map<string, (Rotulo | null)[]>();
   try {
-    for (const linha of await q.rotulosPorOrgao()) {
+    for (const linha of await rotulosPorOrgao()) {
       const sigla = linha.orgao_atual;
       if (!sigla) continue;
       const lista = mapa.get(sigla) ?? [];
@@ -48,7 +48,7 @@ async function rotulosPorSigla(): Promise<Map<string, (Rotulo | null)[]>> {
 
 export async function listarOrgaos(): Promise<OrgaoComPerfil[] | null> {
   try {
-    const [orgaos, porSigla] = await Promise.all([q.listarOrgaosAtivos(), rotulosPorSigla()]);
+    const [orgaos, porSigla] = await Promise.all([listarOrgaosAtivos(), rotulosPorSigla()]);
     if (!orgaos) return null;
 
     return (orgaos as Orgao[])
@@ -82,7 +82,7 @@ export interface MembroOrgao {
  */
 async function membrosDoOrgao(orgaoId: string): Promise<MembroOrgao[]> {
   try {
-    return await q.membrosDoOrgao(orgaoId);
+    return await membrosDoOrgaoQuery(orgaoId);
   } catch (e) {
     if ((e as { code?: string }).code === "42P01") return [];
     throw e;
@@ -122,7 +122,7 @@ export async function obterOrgao(sigla: string): Promise<{
     score: number | null;
   }[];
 } | null> {
-  const orgao = await q.obterOrgaoPorSigla(sigla);
+  const orgao = await obterOrgaoPorSigla(sigla);
   if (!orgao) return null;
 
   const siglaReal = (orgao as Orgao).sigla ?? sigla;
@@ -132,8 +132,8 @@ export async function obterOrgao(sigla: string): Promise<{
   // `proposicoesDoOrgao`), mas o perfil agregado precisa de TODAS as linhas
   // para não mentir. Só o rótulo de cada uma, que é barato.
   const [linhas, rotulos, membros] = await Promise.all([
-    q.proposicoesDoOrgao(siglaReal, LIMITE_PROPOSICOES_ORGAO),
-    q.rotulosDoOrgao(siglaReal),
+    proposicoesDoOrgao(siglaReal, LIMITE_PROPOSICOES_ORGAO),
+    rotulosDoOrgao(siglaReal),
     membrosDoOrgao((orgao as Orgao).id),
   ]);
 
