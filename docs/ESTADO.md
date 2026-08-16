@@ -19,7 +19,7 @@ Transversais confirmados: **painel de edição web** (token, editar, publicar, s
 
 ## Fila viva — ranqueada por custo × benefício
 
-**Degrau 2 do assistente entregue (16/08)** — composição determinística, sem modelo: "compare Betim e Belo Horizonte", "o que falta em Betim", "Contagem não é atendida". Regra escrita em `apps/web/lib/assistente/compor.ts`, sobre o índice do degrau 1, sem rede além dele; 23 testes novos. Próximo trabalho executável: **LAI do INCRA** (18/08 — a única com prazo fatal), depois a indexação do ComunicaBR por município no índice (item 6), que espera o banco local.
+**Degrau 2 do assistente entregue (16/08)** — composição determinística, sem modelo: "compare Betim e Belo Horizonte", "o que falta em Betim", "Contagem não é atendida". Regra escrita em `apps/web/lib/assistente/compor.ts`, sobre o índice do degrau 1, sem rede além dele; 23 testes novos. Trabalho em andamento (16/08): **diário oficial D1** (coletor SIGPub — mecanismo de busca confirmado; a coleta em si aguarda o corte de LGPD). Depois: indexação do ComunicaBR por município no índice (item 6), que espera o banco local.
 
 | # | Tarefa | Estado | Por quê / bloqueio |
 |---|---|---|---|
@@ -40,9 +40,10 @@ Transversais confirmados: **painel de edição web** (token, editar, publicar, s
 | 15 | Incentivo ao esporte | ⛔ | `DADOS_GOV_BR_API_TOKEN` é JWT expirado — renovar em `etl/betim/.env` e o item destrava inteiro |
 | 16 | Conecta gov.br (CNPJ/CEP) | ⛔ | decisão do dono: credenciamento de PJ de direito privado ou não |
 | 17 | AJRI fase 2 (espelho dos 467 PDFs) e fase 3 (resumo) | ⛔ | sem `AJRI_COOKIE` a fase B não começa; ordem obrigatória: baixar → extrair → varrer dado pessoal → resumir; medir 10 PDFs antes de projetar |
-| 18 | Diário oficial (D0–D5) | 🟡 | plano sem código; D1 primeiro (coletor por plataforma SIGPub), `link_fonte` obrigatório, LGPD é decisão do dono |
+| 18 | Diário oficial (D0–D5) | 🟡 | D1 em andamento: mecanismo SIGPub confirmado, migration 0077 + classificador pronto; coleta espera o corte de LGPD (decisão do dono) |
 | 19 | Pró-Brumadinho: outras duas páginas | 🟡 | obrigações da Vale (R$ 11,48 bi × R$ 16,38 bi) e 99 publicações; validar conteúdo (302 de período eleitoral), não status |
 | 20 | ETL antigo da FGV | 🟡 | alinhar User-Agent honesto + pausa ou aposentar em favor do coletor novo — decisão do dono |
+| 21 | Ordenar e filtrar as listas de dados | 🟡 | pedido do dono (16/08): ordenar/filtrar por valor, prestador, tema, data, tipo de alerta, emendas parlamentares e outros campos — estender o padrão `TabelaEstatica.tsx` (11 listas já usam), não criar mecanismo novo |
 
 ## Bloqueios
 

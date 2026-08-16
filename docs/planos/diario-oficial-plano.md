@@ -22,7 +22,7 @@ compram de poucos fornecedores. Um coletor por plataforma cobre várias cidades.
 
 | Fase | Plataforma | Cidades | Endereço |
 |---|---|---|---|
-| **D1** | **SIGPub** (Assoc. Mineira de Municípios) | Araçuaí, Diamantina, provavelmente Itinga | `diariomunicipal.com.br/amm-mg/` · busca em `/pesquisar` |
+| **D1** | **SIGPub** (Assoc. Mineira de Municípios) | Diamantina (a única confirmação limpa) | `diariomunicipal.com.br/amm-mg/` · busca em `/pesquisar` |
 | **D2** | Portal próprio de Betim | Betim | `betim.mg.gov.br/portal/diario-oficial/` |
 | **D3** | DOM-Web da PBH | Belo Horizonte | `dom-web.pbh.gov.br/` |
 | **D4** | DOC paulistano | São Paulo | `diariooficial.prefeitura.sp.gov.br/` |
@@ -33,9 +33,11 @@ associações municipais de vários estados. Um coletor escrito por FORNECEDOR
 hoje e qualquer estado que o portal ganhe depois. Escrever primeiro o de Betim
 resolveria uma cidade e não ensinaria nada.
 
-**Itinga precisa ser confirmada.** O `fontes` dela não tem `diario_oficial`
-registrado, mas quase todo município pequeno de Minas publica no AMM-MG.
-Confirmar é a primeira tarefa da D1 — se confirmar, D1 cobre metade do portal.
+**Itinga foi confirmada: não é SIGPub.** O mapeamento (16/08/2026,
+`docs/_historico/diario-oficial-sigpub-mapeamento.md`) mediu que Araçuaí e
+Itinga publicam em diário **próprio** de cada prefeitura; só Diamantina bate
+limpo com SIGPub. Araçuaí e Itinga entram na fase de coletor por-prefeitura,
+não no D1 SIGPub.
 
 **São Paulo por último**, como pedido, e há razão técnica junto: é o maior
 volume e o único com caderno diário de centenas de páginas.
@@ -82,14 +84,21 @@ contrato; aqui vale a mesma disciplina.
 
 ## Fases
 
-**D0 — confirmar as plataformas** (algumas horas)
-Descobrir se Itinga publica no AMM-MG. Mapear a busca do SIGPub: parâmetros,
-paginação, formato (HTML/JSON/PDF). Registrar em `municipios.fontes` como foi
-feito com os portais de transparência na migration `0052`.
+**D0 — confirmar as plataformas** — ✅ feito (16/08/2026)
+Diamantina confirmada como única cidade limpa no SIGPub/AMM-MG; Araçuaí e
+Itinga têm diário próprio (ver `docs/_historico/diario-oficial-sigpub-mapeamento.md`).
+Mecanismo de busca do SIGPub mapeado: GET + CSRF de sessão + datas
+obrigatórias em `dd/mm/yyyy` + tabela de resultados + paginação por mês
+(teto de itens por consulta — range longo devolve vazio).
 
 **D1 — coletor SIGPub** (o grosso do trabalho)
-Migration + coletor por fornecedor + classificação por tipo. Meta: Araçuaí,
-Diamantina e Itinga com diário indexado e buscável.
+Migration + coletor por fornecedor + classificação por tipo. Meta: Diamantina
+com diário indexado e buscável. Progresso (16/08/2026):
+- ✅ migration `0077_atos_diario.sql` (tabela `atos_diario`, `link_fonte`
+  obrigatório, upsert por chave natural);
+- ✅ classificador `apps/web/lib/diario/classificarAto.ts`, calibrado contra
+  70 títulos reais (67/70 com tipo ≠ `outro`);
+- ⏳ coletor em si: bloqueado até a decisão de LGPD do usuário.
 
 **D2 — Betim.** Portal próprio. Betim é a cidade mais completa do portal e a
 que mais gente usa.

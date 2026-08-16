@@ -185,6 +185,28 @@ custa mais aqui que num site comum. O `globals.css` já tem três blocos de tema
 inclusive **alto contraste com exigência de 7:1** — qualquer componente
 adotado tem que passar nos três.
 
+### 10. Ordenar e filtrar a visualização das listas de dados
+
+Pedido literal (16/08): *"Quero poder ordenar os contatos por valor, nome de
+prestador, tema, data, tipo de alerta, as emendas parlamentares tbm e outros
+dados, num geral que possa ser por filtro e também por ordenação a
+visualização"*.
+
+Isto é um mecanismo **horizontal**, não uma tela: as listas de dados do portal
+(contratos, licitações, alertas, emendas parlamentares e demais tabelas) devem
+poder **filtrar** e **ordenar** por campo. Campos citados: valor, nome do
+prestador/fornecedor, tema, data, tipo de alerta, emendas parlamentares.
+
+- **Padrão a estender, não inventar:** 11 listas em 11 rotas já usam
+  `apps/web/app/[municipio]/components/TabelaEstatica.tsx` (medição em 16/08) —
+  é o ponto de partida para filtro + ordenação com o mesmo visual.
+- **a11y desde o dia 1:** filtro e ordenação são controles interativos —
+  teclado, focus visível e `prefers-reduced-motion` valem aqui (ver
+  `docs/REVISAO-UX-E-ONBOARDING.md`). Não usar cor como único sinal de "ativo".
+- **Teste primeiro:** o mecanismo de ordenar (comparador) e filtrar (predicado)
+  é lógica pura — cabe num módulo testável no molde de `lib/assistente/compor.ts`,
+  antes de ser colado no componente.
+
 ---
 
 ## 🟢 Planos já escritos, esperando execução
