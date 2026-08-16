@@ -1,0 +1,276 @@
+/**
+ * Gatilho remoto: deixa o `desktop-fefpddp` (ou qualquer dispositivo do
+ * tailnet) pedir "sincronize e publique" a este PC, sem SSH e sem sessão
+ * interativa — por HTTP dentro do Tailscale ou por mensagem no bot do
+ * Telegram que hoje só ENVIA alerta do canário (`.github/scripts/
+ * canario_limites.py`).
+ *
+ * ═══ POR QUE NÃO É SSH DO TAILSCALE ═══
+ *
+ * `tailscale up --ssh` resolveria isto num comando, mas é mudança de
+ * configuração de segurança da MÁQUINA (abre uma porta de entrada nova), e
+ * essa decisão é de quem senta na frente dela — não de uma sessão de agente.
+ * O comando certo, se um dia for essa a escolha, é:
+ *
+ *     tailscale set --ssh
+ *
+ * Este arquivo é o caminho que não pede essa decisão: um processo comum,
+ * sem privilégio novo, escutando só onde o Tailscale já alcança.
+ *
+ * ═══ MODELO DE SEGURANÇA, CAMADA POR CAMADA ═══
+ *
+ * 1. **Bind no IP do Tailscale, nunca em `0.0.0.0`.** `tailscale ip -4`
+ *    devolve o endereço `100.x.y.z` deste PC — só tráfego que já atravessou
+ *    o WireGuard do tailnet chega aqui. Um dispositivo fora do tailnet não
+ *    alcança este processo mesmo sabendo a porta.
+ * 2. **Token próprio.** Nem `PAINEL_TOKEN` nem `ADMIN_TOKEN` — cada um já
+ *    circula com um raio de vazamento diferente (ver
+ *    `docs/PAINEL-EDICAO-COMO-USAR.md`), e reusar amplia o raio de todos.
+ *    `GATILHO_TOKEN` vive só em `scripts/.env` (gitignored) e é comparado
+ *    por hash com tempo constante — `crypto.timingSafeEqual`, não `===`.
+ * 3. **Telegram: só o chat_id configurado.** Mensagem de qualquer outro
+ *    chat é registrada e IGNORADA — achar o bot no Telegram não basta.
+ * 4. **Fail-closed nos dois casos.** Sem `GATILHO_TOKEN`/`TELEGRAM_CHAT_ID`
+ *    configurado, o respectivo canal simplesmente não sobe — nunca "libera
+ *    tudo porque não configuraram".
+ *
+ * ═══ O QUE O GATILHO FAZ, E O QUE ELE DELEGA ═══
+ *
+ * Este arquivo só recebe o pedido e autentica. O trabalho de verdade —
+ * git fetch/merge/push, guarda de dado pessoal, build, as travas de página e
+ * de tamanho de asset, deploy — é `sincronizar-e-publicar.mts`, que já
+ * recusa árvore suja, recusa merge com conflito e nunca força deploy. Este
+ * gatilho não reimplementa nenhuma dessas decisões.
+ *
+ * Uso:
+ *   npx tsx scripts/gatilho-remoto.mts
+ *
+ * Variáveis em `scripts/.env` (ver `scripts/.env.exemplo`):
+ *   GATILHO_TOKEN=<valor aleatório>
+ *   TELEGRAM_BOT_TOKEN=<o mesmo do canário>
+ *   TELEGRAM_CHAT_ID=<o mesmo do canário>
+ */
+import { createHash, timingSafeEqual } from "node:crypto";
+import { execFileSync } from "node:child_process";
+import fs from "node:fs";
+import http from "node:http";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+import { sincronizarEPublicar } from "./sincronizar-e-publicar.mts";
+
+const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const LOGS = path.join(RAIZ, "logs");
+const ARQUIVO_OFFSET = path.join(RAIZ, "scripts", ".gatilho-offset");
+const ARQUIVO_LOG = path.join(LOGS, "gatilho-remoto.log");
+
+fs.mkdirSync(LOGS, { recursive: true });
+
+function log(msg: string) {
+  const linha = `[${new Date().toISOString()}] ${msg}`;
+  console.log(linha);
+  fs.appendFileSync(ARQUIVO_LOG, linha + "\n");
+}
+
+// ─── Config: scripts/.env, parse manual (mesmo padrão de aplicar-migration-
+// local.mts — sem dependência nova só para ler três variáveis). ───────────
+function lerEnv(caminho: string): Record<string, string> {
+  const out: Record<string, string> = {};
+  if (!fs.existsSync(caminho)) return out;
+  for (const linha of fs.readFileSync(caminho, "utf-8").split("\n")) {
+    const m = linha.match(/^([A-Z_]+)=(.*)$/);
+    if (m) out[m[1]] = m[2].trim().replace(/^["']|["']$/g, "");
+  }
+  return out;
+}
+const ENV = lerEnv(path.join(RAIZ, "scripts", ".env"));
+
+const GATILHO_TOKEN = ENV.GATILHO_TOKEN || "";
+const TELEGRAM_BOT_TOKEN = ENV.TELEGRAM_BOT_TOKEN || "";
+const TELEGRAM_CHAT_ID = ENV.TELEGRAM_CHAT_ID || "";
+const PORTA = Number(ENV.GATILHO_PORTA || 3029);
+
+if (!GATILHO_TOKEN) log("AVISO: GATILHO_TOKEN ausente — o canal HTTP fica DESLIGADO.");
+if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID)
+  log("AVISO: TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID ausente — o canal Telegram fica DESLIGADO.");
+
+/** Um sync por vez — um segundo pedido durante um sync em andamento só avisa. */
+let emAndamento = false;
+
+async function rodarSync(origem: string): Promise<{ ok: boolean; resumo: string }> {
+  if (emAndamento) {
+    return { ok: false, resumo: "já há uma sincronização em andamento — aguarde." };
+  }
+  emAndamento = true;
+  log(`sync iniciado (origem: ${origem})`);
+  try {
+    const r = sincronizarEPublicar();
+    log(`sync terminou: etapa=${r.etapa} ok=${r.ok}`);
+    const resumo =
+      r.etapa === "sem-novidades"
+        ? "sem novidades, nada publicado"
+        : r.ok
+          ? `publicado. ${r.commitAntes?.slice(0, 7)} → ${r.commitDepois?.slice(0, 7)}`
+          : `ABORTADO em "${r.etapa}": ${r.motivo.slice(0, 500)}`;
+    return { ok: r.ok, resumo };
+  } catch (e) {
+    const msg = (e as Error).message;
+    log(`sync explodiu: ${msg}`);
+    return { ok: false, resumo: `erro inesperado: ${msg}` };
+  } finally {
+    emAndamento = false;
+  }
+}
+
+// ─── Canal 1: HTTP dentro do tailnet ──────────────────────────────────────
+
+function tokenBate(recebido: string): boolean {
+  if (!GATILHO_TOKEN) return false;
+  const a = createHash("sha256").update(recebido).digest();
+  const b = createHash("sha256").update(GATILHO_TOKEN).digest();
+  return timingSafeEqual(a, b);
+}
+
+function subirServidorHttp(ip: string) {
+  const servidor = http.createServer((req, res) => {
+    if (req.method !== "POST" || req.url !== "/sincronizar") {
+      res.writeHead(404).end();
+      return;
+    }
+    const auth = req.headers.authorization || "";
+    const recebido = auth.startsWith("Bearer ") ? auth.slice(7) : "";
+    if (!tokenBate(recebido)) {
+      log(`HTTP: token inválido de ${req.socket.remoteAddress}`);
+      res.writeHead(401).end();
+      return;
+    }
+    if (emAndamento) {
+      res.writeHead(409, { "content-type": "text/plain; charset=utf-8" }).end(
+        "já há uma sincronização em andamento"
+      );
+      return;
+    }
+    res.writeHead(202, { "content-type": "text/plain; charset=utf-8" }).end(
+      `iniciado — acompanhe em ${ARQUIVO_LOG}`
+    );
+    void rodarSync(`http:${req.socket.remoteAddress}`);
+  });
+  servidor.listen(PORTA, ip, () => {
+    log(`HTTP escutando em http://${ip}:${PORTA}/sincronizar (só dentro do tailnet)`);
+  });
+  servidor.on("error", (e) => log(`HTTP falhou ao subir: ${(e as Error).message}`));
+}
+
+// ─── Canal 2: Telegram (long-poll, sem webhook — não precisa de porta   ───
+// exposta nem de HTTPS público). ───────────────────────────────────────────
+
+const COMANDOS: Record<string, string> = {
+  "/sincronizar": "sync",
+  "/status": "status",
+};
+
+async function telegramApi(metodo: string, corpo: Record<string, unknown>) {
+  const r = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/${metodo}`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(corpo),
+  });
+  return r.json();
+}
+
+function lerOffset(): number {
+  try {
+    return Number(fs.readFileSync(ARQUIVO_OFFSET, "utf-8").trim()) || 0;
+  } catch {
+    return 0;
+  }
+}
+function gravarOffset(n: number) {
+  fs.writeFileSync(ARQUIVO_OFFSET, String(n));
+}
+
+async function loopTelegram() {
+  let offset = lerOffset();
+  for (;;) {
+    try {
+      const resp = await fetch(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates` +
+          `?offset=${offset}&timeout=30&allowed_updates=["message"]`
+      );
+      const dados = (await resp.json()) as {
+        ok: boolean;
+        result: Array<{ update_id: number; message?: { chat: { id: number }; text?: string } }>;
+      };
+      if (!dados.ok) {
+        log(`Telegram: getUpdates devolveu erro, esperando 10s`);
+        await esperar(10_000);
+        continue;
+      }
+      for (const upd of dados.result) {
+        offset = upd.update_id + 1;
+        gravarOffset(offset);
+        const msg = upd.message;
+        if (!msg?.text) continue;
+        if (String(msg.chat.id) !== String(TELEGRAM_CHAT_ID)) {
+          log(`Telegram: mensagem de chat_id não autorizado (${msg.chat.id}), ignorada`);
+          continue;
+        }
+        const comando = COMANDOS[msg.text.trim()];
+        if (!comando) {
+          await telegramApi("sendMessage", {
+            chat_id: msg.chat.id,
+            text: `Comando não reconhecido. Uso: /sincronizar ou /status`,
+          });
+          continue;
+        }
+        if (comando === "status") {
+          await telegramApi("sendMessage", {
+            chat_id: msg.chat.id,
+            text: emAndamento ? "sincronização em andamento" : "ocioso, pronto para /sincronizar",
+          });
+          continue;
+        }
+        await telegramApi("sendMessage", {
+          chat_id: msg.chat.id,
+          text: "sincronizando e publicando — aviso quando terminar",
+        });
+        const { ok, resumo } = await rodarSync(`telegram:${msg.chat.id}`);
+        await telegramApi("sendMessage", {
+          chat_id: msg.chat.id,
+          text: `${ok ? "✅" : "❌"} ${resumo}`,
+        });
+      }
+    } catch (e) {
+      log(`Telegram: loop falhou (${(e as Error).message}), esperando 10s`);
+      await esperar(10_000);
+    }
+  }
+}
+function esperar(ms: number) {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+// ─── Sobe os dois canais que tiverem config ───────────────────────────────
+
+function tailscaleIp(): string | null {
+  try {
+    return execFileSync("tailscale", ["ip", "-4"], { encoding: "utf-8" }).trim();
+  } catch {
+    return null;
+  }
+}
+
+const ip = tailscaleIp();
+if (GATILHO_TOKEN && ip) {
+  subirServidorHttp(ip);
+} else if (GATILHO_TOKEN && !ip) {
+  log("GATILHO_TOKEN configurado mas `tailscale ip -4` falhou — canal HTTP não subiu.");
+}
+if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+  void loopTelegram();
+  log("Telegram: long-poll iniciado.");
+}
+if (!(GATILHO_TOKEN && ip) && !(TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID)) {
+  log("NENHUM canal configurado — preencha scripts/.env (ver scripts/.env.exemplo) e reinicie.");
+  process.exit(1);
+}
