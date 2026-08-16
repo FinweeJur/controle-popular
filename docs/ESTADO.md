@@ -44,6 +44,8 @@ Transversais confirmados: **painel de edição web** (token, editar, publicar, s
 | 19 | Pró-Brumadinho: outras duas páginas | 🟡 | obrigações da Vale (R$ 11,48 bi × R$ 16,38 bi) e 99 publicações; validar conteúdo (302 de período eleitoral), não status |
 | 20 | ETL antigo da FGV | 🟡 | alinhar User-Agent honesto + pausa ou aposentar em favor do coletor novo — decisão do dono |
 | 21 | Ordenar e filtrar as listas de dados | 🟡 | pedido do dono (16/08): ordenar/filtrar por valor, prestador, tema, data, tipo de alerta, emendas parlamentares e outros campos — estender o padrão `TabelaEstatica.tsx` (11 listas já usam), não criar mecanismo novo |
+| 22 | Monitoramento da Vale — página dedicada | 🟡 | pedido do dono (16/08): documentos, prestação de contas, relatórios, notícias, onde investiu, benefícios fiscais recebidos, onde presta contas, pra quem vendeu — uma frente nova, camadas detalhadas no TODO-PROXIMAS-RODADAS.md (item 11) |
+| 23 | Geocodificar os dados da Vale | 🟡 | pedido do dono (16/08): escrever o plano de georreferenciar o que o item 22 levantar, reutilizando a infra de mapa/geometria existente (TODO-PROXIMAS-RODADAS.md item 12); executar quando houver dado |
 
 ## Bloqueios
 

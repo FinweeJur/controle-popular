@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/lib/congresso/link";
-import ThemeSwitcher from "@/app/congresso/components/ThemeSwitcher";
-import FontSizeControl from "@/app/congresso/components/FontSizeControl";
-import CvdToggle from "@/app/components/CvdToggle";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import { outrasZonas } from "@/lib/zonas";
 
 /**
  * Zona /congresso. O `<html>`, as fontes e o ThemeProvider vêm do layout
@@ -36,11 +32,12 @@ export default function CongressoLayout({
     <>
       <header className="border-b border-[var(--cp-border)]">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-4 px-4 py-4">
-          {/* <a> puro, não o <Link> da zona: a raiz do domínio está FORA
-              de /congresso, e o wrapper a prefixaria — o clique na marca
-              cairia em /congresso em vez da home que lista as seções. */}
-          <a href="/" className="font-display text-lg font-bold">
-            Controle Popular <span className="opacity-60">· Congresso</span>
+          {/* Wordmark da MARCA, botões de zona irmã e controles de
+              tema/tamanho/contraste agora moram na barra global (`TopNav.tsx`,
+              layout raiz). Aqui fica só o nome da zona como <a> cru: o <Link>
+              da zona prefixaria e geraria /congresso/congresso. */}
+          <a href="/congresso" className="font-display text-lg font-bold">
+            Congresso
           </a>
           <nav className="flex flex-1 flex-wrap gap-4 text-sm">
             {NAV.map((item) => (
@@ -49,59 +46,6 @@ export default function CongressoLayout({
               </Link>
             ))}
           </nav>
-          {/* flex-wrap: esta div é gêmea da do /judiciario, que já carrega
-              a nota de por que ele é obrigatório — os itens medem ~560px
-              contra um viewport de celular de 375px, e sem quebrar linha
-              o navegador comprime em vez de estourar, o que se lê como
-              "navbar espremida" e não como bug. Aqui ele faltava até o
-              scaffold da 4ª zona (/ambiental) chegar, que é quando esta
-              barra ganhou o botão de Busca.
-
-              Busca unificada e pontes para as zonas irmãs (mesmo motivo
-              do <a> acima).
-
-              ⟲ 13/08, revisão de onboarding: os links de zona irmã eram
-              CRAVADOS À MÃO ("Judiciário", "Betim"), com um comentário
-              dizendo que Ambiental ficava fora porque estava
-              `publicada: false` — e ninguém voltou aqui quando ela (e
-              Terras, e Paraopeba) publicaram depois. Resultado real:
-              o dono navegou no celular e não achou uma frente que
-              EXISTIA, porque esta barra tinha parado no dia em que foi
-              escrita. `outrasZonas()` devolve toda `ZONA_PUBLICADA`
-              menos a atual — a mesma fonte que `OutrasFrentes.tsx` e
-              `FooterGlobal.tsx` já usam — para esta lista nunca mais
-              atrasar em relação a `lib/zonas.ts`. */}
-          <div className="flex flex-wrap items-center gap-2">
-            <a
-              href="/busca"
-              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
-            >
-              Busca →
-            </a>
-            {outrasZonas("congresso").map((z) => (
-              <a
-                key={z.id}
-                href={z.href}
-                className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
-              >
-                {z.nomeCurto} →
-              </a>
-            ))}
-            {/* Direitos em Movimento é RAIZ, não zona irmã — mesmo <a> cru
-                pelo mesmo motivo, mas cor própria (`--cp-alert`) porque não
-                é um sexto eixo de poder, é transversal aos cinco (ver o
-                bloco em `app/page.tsx`). */}
-            <a
-              href="/direitos-em-movimento"
-              className="rounded-md border px-2.5 py-1 text-xs font-medium"
-              style={{ borderColor: "var(--cp-alert)", color: "var(--cp-alert)" }}
-            >
-              Direitos em Movimento →
-            </a>
-            <FontSizeControl />
-            <ThemeSwitcher />
-            <CvdToggle />
-          </div>
         </div>
         {/* Barra de busca/assistente em faixa própria, largura inteira: no
             meio do nav ela ficaria estreita demais para ler a sugestão, e o

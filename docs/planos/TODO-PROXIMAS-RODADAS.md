@@ -207,6 +207,47 @@ prestador/fornecedor, tema, data, tipo de alerta, emendas parlamentares.
   é lógica pura — cabe num módulo testável no molde de `lib/assistente/compor.ts`,
   antes de ser colado no componente.
 
+### 11. Monitoramento da Vale — uma página dedicada
+
+Pedido literal (16/08): *"um monitoramento da Vale completo: documentos, prestação
+de contas, relatórios, notícias, onde investiu, quais benefícios fiscais recebeu,
+onde presta contas, pra quem vendeu — e coloque isso numa página"*.
+
+A Vale é o maior agente econômico da região (Pró-Brumadinho, R$ 11,48 bi ×
+R$ 16,38 bi, fila 19) e o que mais concentra atenção da comunidade; hoje não há
+uma frente única que reúna o que a empresa publica e o que os órgãos publicam
+sobre ela.
+
+Camadas pedidas, cada uma com fonte própria a confirmar antes de coletar (mesmo
+método do diário oficial: confirmar o mecanismo da fonte antes de construir):
+
+- **Documentos** — acervo e processos (Brumadinho, AJRI, FGV, acordo) e o que a Vale publica.
+- **Prestação de contas** — execução do Acordo (26 municípios), repasses, relatórios de cumprimento.
+- **Relatórios** — anuais/sustentabilidade/auditoria da Vale e dos órgãos fiscalizadores.
+- **Notícias** — o radar existente (coletor diário) filtrável por "Vale".
+- **Onde investiu** — investimentos e obras por município (liga à fila 8, barragens sem mancha, e ao Pró-Brumadinho).
+- **Benefícios fiscais recebidos** — renúncia/incentivos (estadual e federal); mapear fontes antes (TCFA, compensações, incentivos de MG).
+- **Onde presta contas** — canais institucionais (comissões, tribunais, RCC, site próprio).
+- **Pra quem vendeu** — fornecedores/clientes da Vale na região (cruzamento com `contratos.fornecedor_cnpj` quando o banco existir).
+
+- **Padrão a estender:** uma frente nova no padrão das existentes (zona + listas `TabelaEstatica`), reunindo as camadas como índices por fonte — não inventar mecanismo novo.
+- **Fonte única de verdade:** listar as fontes por camada antes de construir, para não inventar tela sobre dado que não existe (mesmo erro evitado no diário).
+- **a11y desde o dia 1** e `prefers-reduced-motion`: mesma disciplina das outras telas.
+
+### 12. Plano de geocodificação dos dados da Vale
+
+Pedido literal (16/08): *"plano de como geocodificar isso tudo depois"*.
+
+É um **plano**, não uma tela: escrever o documento de como georreferenciar o que
+o monitoramento da Vale (item 11) levantar — investimentos por município, obras,
+barragens, vendas, prestações de contas — reutilizando a infra de mapa/geometria
+que a Função Social da Terra e as camadas de barragem/mineração já têm.
+
+- **Entregável:** o plano escrito em `docs/planos/`, com método de geocodificação
+  por camada, fontes de geometria (limite municipal, SIGMINE) e o que precisa de
+  conferência manual.
+- **Dependência:** começa a executar quando o item 11 tiver dado coletado.
+
 ---
 
 ## 🟢 Planos já escritos, esperando execução

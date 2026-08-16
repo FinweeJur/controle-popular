@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import { clashDisplay, generalSans, tabular } from "@/app/fonts";
 import OuvirPagina from "@/app/components/OuvirPagina";
 import PageViewBeacon from "@/app/components/PageViewBeacon";
+import TopNav from "@/app/components/TopNav";
 import "./globals.css";
 
 /**
@@ -87,6 +88,12 @@ export default function RootLayout({
           <a href="#conteudo-principal" className="cp-skip-link">
             Pular para o conteúdo
           </a>
+          {/* Barra superior global, fixa em TODA página: logo no canto abre
+              o menu do portal (hover/foco/clique) e os controles de
+              tema/tamanho/contraste moram aqui, em UMA cópia. Fica antes de
+              {children} porque precisa estar ACIMA dos headers de zona (que
+              deixaram de ser fixos — ver `TopNav.tsx` e os layouts de zona). */}
+          <TopNav />
           {children}
           {/* Global, fora do cabeçalho de zona: cobre TODA página que tem
               <main> (inclusive /busca e /funcaosocialterra, que não usam o
