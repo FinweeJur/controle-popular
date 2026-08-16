@@ -3,22 +3,42 @@
 import { brasilIcons, iconesBrasil } from "./fonts-icones";
 
 /**
- * Mapa nome → letra. Preenchido depois que o dono usar o Character Map
- * e reportar as respostas (ver `docs/CREDITOS-MIDIA.md`).
+ * Mapa nome → letra, preenchido via Character Map do Windows
+ * (ver `docs/CREDITOS-MIDIA.md`).
  *
  * Formato: `{ nome: "letra" }` onde nome é descritivo (ex. "tucano")
  * e letra é o caractere que renderiza o glifo na fonte respectiva.
  *
- * Enquanto vazio, o componente renderiza um quadrado placeholder.
+ * Brasil Icons (Woodcutter): 11 figuras pedidas — 9 mapeadas, 2 faltando.
+ * Icones do Brasil (Maranzana): 13 figuras pedidas — 13 mapeadas.
  */
 const MAP_BRASIL_ICONS: Record<string, string> = {
-  // TODO: preencher com Character Map (Brasil Icons - Woodcutter)
-  // Exemplo: "tucano": "h",
+  tucano: "D",
+  cacto: "u",
+  arara: "y",
+  "cafe em graos": "U",
+  maraca: "l",
+  arvore: "k",
+  "mapa do brasil com bandeira": "h",
+  havaianas: "j",
+  capoeirista: "H",
+  // TODO: cruz e mapa da america latina — dono não reportou ainda
 };
 
 const MAP_ICONES_BRASIL: Record<string, string> = {
-  // TODO: preencher com Character Map (Icones do Brasil - Maranzana)
-  // Exemplo: "tartaruga": "k",
+  tartaruga: "n",
+  papagaio: "a",
+  banana: "b",
+  capoeira: "e",
+  violao: "g",
+  palmeira: "h",
+  onca: "s",
+  pandeiro: "t",
+  santa: "r",
+  mico: "Q",
+  "pao de acucar": "U",
+  indigena: "M",
+  saci: "X",
 };
 
 type Props = {

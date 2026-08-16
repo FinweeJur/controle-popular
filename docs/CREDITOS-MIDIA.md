@@ -67,28 +67,34 @@ regra do projeto: nada de mídia sem fonte declarada — o mesmo padrão de
   pedidos pelo dono: tartaruga, papagaio, banana, capoeira, violão, palmeira,
   onça, pandeiro, santa, mico, pão de açúcar, indígena, saci.
 
-### Mapa letra→ícone (pendente)
+### Mapa letra→ícone (22/24 preenchidos via Character Map, 16/08/2026)
 
-Os ícones das duas fontes vivem nas letras ASCII sem nome descritivo, e a
-automação não lê imagem — o mapa letra→ícone é humano.
-
-**Método recomendado: Character Map do Windows (`charmap.exe`).**
-
-1. Abra `charmap.exe` (Pesquisar Windows → "Mapa de Caracteres").
-2. Em "Fonte", selecione **Brasil Icons**.
-3. Rola a grade até achar o ícone desejado (tucano, arara, etc.).
-4. Clique nele — o Character Map mostra o **"Keystroke"** (atalho) embaixo.
-5. Anote a letra. Repita para as 11 figuras pedidas.
-6. Troque a fonte para **Icones do Brasil** e repita para as 13 figuras.
-
-Formato pra colar na conversa:
-```
-tucano=h; arara=m; cafe em graos=z; ...
-```
-
-O componente `BrasilIcon` (`apps/web/app/BrasilIcon.tsx`) já tem o esqueleto
-pronto com placeholders — ao receber o mapa, preenche `MAP_BRASIL_ICONS` e
-`MAP_ICONES_BRASIL` e os ícones ficam funcionais com microanimações CSS.
+| Fonte | Ícone | Letra |
+|---|---|---|
+| Brasil Icons | tucano | D |
+| Brasil Icons | cacto | u |
+| Brasil Icons | arara | y |
+| Brasil Icons | café em grãos | U |
+| Brasil Icons | maracá | l |
+| Brasil Icons | árvore | k |
+| Brasil Icons | mapa do Brasil com bandeira | h |
+| Brasil Icons | havaianas | j |
+| Brasil Icons | capoeirista | H |
+| Brasil Icons | **cruz** | _(pendente)_ |
+| Brasil Icons | **mapa da América Latina** | _(pendente)_ |
+| Icones do Brasil | tartaruga | n |
+| Icones do Brasil | papagaio | a |
+| Icones do Brasil | banana | b |
+| Icones do Brasil | capoeira | e |
+| Icones do Brasil | violão | g |
+| Icones do Brasil | palmeira | h |
+| Icones do Brasil | onça | s |
+| Icones do Brasil | pandeiro | t |
+| Icones do Brasil | santa | r |
+| Icones do Brasil | mico | Q |
+| Icones do Brasil | pão de açúcar | U |
+| Icones do Brasil | indígena | M |
+| Icones do Brasil | saci | X |
 
 ## Origem dos arquivos
 

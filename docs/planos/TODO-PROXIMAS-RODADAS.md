@@ -267,7 +267,7 @@ não se perder:
   template exigia fora de EUA/Europa, mas o portal já roda em GitHub/Cloudflare/
   Neon — não é automático), qual acervo entra, e a ressalva de IA.
 
-### 14. Ícones do Brasil nas páginas — mapa letra→ícone pendente do dono
+### 14. Ícones do Brasil nas páginas — 22/24 mapeados, 2 faltando
 
 Pedido literal (16/08): usar, da fonte **Brasil Icons** (Woodcutter), os ícones
 tucano, cacto, arara, café em grãos, maracá, árvore, mapa do Brasil com
@@ -280,13 +280,16 @@ Infra pronta em 16/08: as duas fontes convertidas para woff2 self-hosted
 separado do layout para não pesar o bundle até serem usadas) e licenças
 registradas em `docs/CREDITOS-MIDIA.md`.
 
-**O que falta é o dono:** os glifos das duas fontes vivem nas letras A-Z/a-z
-SEM nome descritivo, e o modelo não lê imagem. Abrir
-`C:\Users\teste\AppData\Local\Temp\opencode\brasilcoms\mapa-icones.html`
-(gerado em 16/08 — grades das duas fontes com cada letra rotulada) e
-reportar qual LETRA renderiza cada um dos 24 ícones acima. Depois: componente
-`BrasilIcon` (nome→letra, font-family, `aria-hidden`) + microanimações CSS
-(regra do site: `prefers-reduced-motion` e alto contraste sem efeito).
+**Mapa preenchido em 16/08 via Character Map:** 22 de 24 ícones mapeados
+(Componente `BrasilIcon` em `apps/web/app/BrasilIcon.tsx` com `MAP_BRASIL_ICONS`
+e `MAP_ICONES_BRASIL` preenchidos). Microanimações CSS (`cp-icon-hover`,
+`cp-icon-pulse`, `cp-icon-spin`) em `globals.css` com `prefers-reduced-motion`
+e alto contraste desligando efeitos.
+
+**Faltam 2 do Brasil Icons:** cruz e mapa da América Latina — dono não reportou
+ainda a letra no Character Map. Pedir ao dono para abrir `charmap.exe`,
+selecionar "Brasil Icons", localizar cruz e mapa da América Latina, e informar
+o "Keystroke".
 
 **Licença (decisão do dono antes de publicar):** Brasil Icons é donationware
 (uso pessoal e comercial livre, crédito ©Woodcutter Manero). Icones do Brasil
