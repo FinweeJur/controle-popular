@@ -8,9 +8,11 @@ import {
   carregarAtosAreaProtegida,
   FONTE_ANM_PROCESSOS,
   type AlertaSigmine,
+  type AlertaQuilombolaManchaItem,
   type AlvoNoMapa,
 } from "@/lib/terras/alertas";
 import { formatNumberBR, formatDateBR } from "@/lib/betim/format";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/funcaosocialterra/alertas` — verificação item a item dos alertas que o
@@ -41,11 +43,11 @@ import { formatNumberBR, formatDateBR } from "@/lib/betim/format";
  * de `mapa/page.tsx`, que precisa da declaração explícita por causa do
  * `useSearchParams()` do `GloboIframe`.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/funcaosocialterra/alertas", {
   title: "Alertas — Função social da terra | Controle Popular",
   description:
     "Sobreposição entre território (indígena e quilombola) e processo minerário na ANM, terra indígena atingida por mancha de barragem, e normas municipais que mexem em área protegida — item a item, com o caminho para conferir na fonte oficial.",
-};
+});
 
 function AlvoMapaLink({ alvo, texto }: { alvo: AlvoNoMapa | null; texto: string }) {
   if (!alvo) return null;
@@ -118,6 +120,38 @@ function ItemSigmine({ item, fato }: { item: AlertaSigmine; fato: boolean }) {
           </a>
           <AlvoMapaLink alvo={item.mapa} texto="Ver no mapa" />
         </div>
+      </div>
+    </li>
+  );
+}
+
+function ItemQuilombolaMancha({ item }: { item: AlertaQuilombolaManchaItem }) {
+  return (
+    <li className="rounded-xl border border-border bg-surface p-4 text-sm">
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <div>
+          <p className="font-semibold text-text">{item.territorioNome}</p>
+          <p className="mt-0.5 text-xs text-text-soft">
+            Território quilombola{item.territorioFase ? ` · fase ${item.territorioFase}` : ""}
+            {item.territorioMunicipios.length > 0 &&
+              ` · ${item.territorioMunicipios.join(", ")}`}
+          </p>
+        </div>
+        <span className="shrink-0 rounded-full bg-alert/15 px-2.5 py-1 text-xs font-semibold text-alert">
+          {haFmt(item.areaIntersecaoHa)} ha
+        </span>
+      </div>
+
+      <div className="mt-3 border-t border-border/60 pt-3">
+        <p className="text-text">
+          <span className="font-medium">{item.barragem}</span> — {item.empreendedor}
+        </p>
+        <p className="mt-0.5 text-xs text-text-soft">
+          {item.municipioBarragem}
+          {item.statusPae ? ` · status do PAE: ${item.statusPae}` : ""} — a mancha é o alcance
+          máximo da onda numa ruptura hipotética (ERHB), não uma previsão de rompimento.
+        </p>
+        <AlvoMapaLink alvo={item.mapa} texto="Ver a mancha desta barragem no mapa" />
       </div>
     </li>
   );
@@ -237,13 +271,17 @@ export default function AlertasPage() {
         <h2 className="font-display text-xl font-semibold">
           Terra indígena atingida por mancha de barragem
         </h2>
-        <div className="mt-3 rounded-2xl border border-border bg-surface p-5">
-          <p className="text-2xl font-bold font-tabular text-text">Zero</p>
+<div className="mt-3 rounded-2xl border border-border bg-surface p-5">
+          <p className="text-2xl font-bold font-tabular text-text">
+            {tiMancha.qtdFeaturesEncontradas === 0
+              ? "Zero"
+              : formatNumberBR(tiMancha.qtdFeaturesEncontradas)}
+          </p>
           <p className="mt-1 text-sm text-text-soft">
-            interseções de geometria de verdade entre as {formatNumberBR(tiMancha.qtdTerritorios)}{" "}
+            interseções de geometria entre as {formatNumberBR(tiMancha.qtdTerritorios)}{" "}
             terras indígenas de MG e as{" "}
-            {formatNumberBR(tiMancha.qtdBarragensComManchaPublicada)} manchas de inundação de
-            barragem publicadas — varredura completa de{" "}
+            {formatNumberBR(tiMancha.qtdBarragensComManchaPublicada)} manchas de
+            inundação de barragem publicadas — varredura completa de{" "}
             <strong className="text-text">
               {formatNumberBR(tiMancha.universoCombinacoes)} combinações
             </strong>
@@ -267,25 +305,66 @@ export default function AlertasPage() {
         <h2 className="font-display text-xl font-semibold">
           Território quilombola atingido por mancha de barragem
         </h2>
-        <div className="mt-3 rounded-2xl border border-border bg-surface p-5">
-          <p className="text-2xl font-bold font-tabular text-text">Zero</p>
-          <p className="mt-1 text-sm text-text-soft">
-            interseções entre os {formatNumberBR(quilombolaMancha.qtdTerritorios)} territórios
-            quilombolas publicados e as{" "}
-            {formatNumberBR(quilombolaMancha.qtdBarragensComManchaPublicada)} manchas de
-            inundação de barragem — varredura completa de{" "}
-            <strong className="text-text">
-              {formatNumberBR(quilombolaMancha.universoCombinacoes)} combinações
-            </strong>
-            .
+        {quilombolaMancha.vazio ? (
+          <div className="mt-3 rounded-2xl border border-border bg-surface p-5">
+            <p className="text-2xl font-bold font-tabular text-text">Zero</p>
+            <p className="mt-1 text-sm text-text-soft">
+              interseções entre os {formatNumberBR(quilombolaMancha.qtdTerritorios)} territórios
+              quilombolas publicados e as{" "}
+              {formatNumberBR(quilombolaMancha.qtdBarragensComManchaPublicada)} manchas de
+              inundação de barragem — varredura completa de{" "}
+              <strong className="text-text">
+                {formatNumberBR(quilombolaMancha.universoCombinacoes)} combinações
+              </strong>
+              .
+            </p>
+            <p className="mt-3 text-sm text-text-soft">
+              Mesma ressalva da seção acima sobre a cobertura da mancha da FEAM: ausência de
+              mancha publicada não é ausência de risco — é ausência de dado publicado.
+            </p>
+          </div>
+        ) : (
+          <div className="mt-3 rounded-2xl border border-border bg-surface p-5">
+            <p className="text-2xl font-bold font-tabular text-text">
+              {formatNumberBR(quilombolaMancha.qtdFeaturesEncontradas)}
+            </p>
+            <p className="mt-1 text-sm text-text-soft">
+              interseções de geometria entre os{" "}
+              {formatNumberBR(quilombolaMancha.qtdTerritorios)} territórios quilombolas
+              publicados e as{" "}
+              {formatNumberBR(quilombolaMancha.qtdBarragensComManchaPublicada)} manchas de
+              inundação de barragem — varredura completa de{" "}
+              <strong className="text-text">
+                {formatNumberBR(quilombolaMancha.universoCombinacoes)} combinações
+              </strong>
+              , em {formatNumberBR(quilombolaMancha.qtdTerritoriosAtingidos)} territórios
+              distintos, somando {haFmt(quilombolaMancha.areaTotalHa)} ha.
+            </p>
+            <p className="mt-3 text-sm text-text-soft">
+              Estes alertas existem no dado desde que a varredura passou a cruzar a camada
+              oficial de territórios quilombolas do INCRA (13/08/2026) — antes, uma das três
+              camadas de território nunca era cruzada com nada, e os alertas ficavam
+              invisíveis. Todos os territórios estão com <strong className="text-text">RTID
+              publicado, em titulação</strong>: reconhecidos pelo INCRA e ainda sem título
+              definitivo.
+            </p>
+          </div>
+        )}
+        {!quilombolaMancha.vazio && (
+          <ul className="mt-4 flex flex-col gap-3">
+            {quilombolaMancha.itens.map((item, i) => (
+              <ItemQuilombolaMancha key={`${item.territorioNome}-${item.barragem}-${i}`} item={item} />
+            ))}
+          </ul>
+        )}
+        {!quilombolaMancha.vazio && (
+          <p className="mt-4 max-w-[62ch] text-xs text-text-soft">
+            Vale a ressalva da seção de terra indígena: a FEAM publica mancha de inundação só
+            para as barragens acima — 156 das 259 do inventário dela. Se uma barragem sem
+            mancha publicada ganhar o estudo, ou um novo estudo de ruptura mudar o alcance,
+            esta lista pode crescer.
           </p>
-          <p className="mt-3 text-sm text-text-soft">
-            Mesma ressalva da seção acima sobre a cobertura da mancha da FEAM. Some-se outra: a
-            base de território quilombola usada aqui não tem nome por polígono (só geometria e
-            área) — ver a seção de território×SIGMINE acima, onde essa mesma lacuna aparece nos
-            processos que atravessam território quilombola.
-          </p>
-        </div>
+        )}
       </section>
 
       {/* ═══ Normas em área protegida ════════════════════════════════════ */}

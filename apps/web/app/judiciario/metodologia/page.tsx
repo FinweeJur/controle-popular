@@ -6,12 +6,13 @@ import {
 } from "@/lib/judiciario/regras";
 import { rotuloCota } from "@/lib/judiciario/rotulos";
 import FonteRodape, { FONTE_SENADO, FONTE_REGUA } from "@/app/judiciario/components/FonteRodape";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata = {
+export const metadata = metadataEditavel("/judiciario/metodologia", {
   title: "Metodologia · Controle Popular — Judiciário",
   description:
     "Como cada número deste site é calculado: a regra da aposentadoria aos 75 anos, a origem de cada cadeira e o cálculo do poder de indicação — sem opinião escondida em número.",
-};
+});
 
 export default function Metodologia() {
   const comp = REGRAS.idades.aposentadoria_compulsoria;

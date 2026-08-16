@@ -63,7 +63,7 @@ de LAI separados; a Câmara não recebe pedido endereçado à Prefeitura.
 
 | Canal | URL | Verificado |
 |---|---|---|
-| Portal de Transparência (Prefeitura) | `http://servicos.betim.mg.gov.br/transparencia/` | Segundo `docs/betim/F0-discovery.md`; não reaberto nesta rodada |
+| Portal de Transparência (Prefeitura) | `http://servicos.betim.mg.gov.br/transparencia/` | Segundo `docs/_historico/betim-F0-discovery.md`; não reaberto nesta rodada |
 | e-SIC / LAI da Prefeitura | https://www.betim.mg.gov.br/portal/sic | ✅ 2026-08-13 — WebFetch confirma: registra pedido, acompanha protocolo, recurso. Prazo: **20 dias, prorrogáveis por 10** (Decreto Municipal 43.201) |
 | Ouvidoria da Prefeitura | https://www.betim.mg.gov.br/portal/ouvidoria | ⚠️ não confirmado hoje (WebFetch recebeu conteúdo vazio); URL vem de `0040_canais_de_acao_cidada.sql`, conferida ao vivo em 2026-08-04 pelo commit `1583fa4` |
 | e-SIC / LAI da Câmara | https://www.camarabetim.mg.gov.br/LAI/LeiAcesso | ⚠️ **não confirmado hoje** — ver "Não verificado" abaixo |

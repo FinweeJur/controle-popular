@@ -7,12 +7,13 @@ import {
 } from "@/lib/db/queries/barragens";
 import BuscaMunicipio from "./BuscaMunicipio";
 import TabelaFeam from "./TabelaFeam";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/barragens", {
   title: "Barragens em Minas Gerais — Controle Popular · Ambiental",
   description:
     "Barragens de Minas Gerais nos dois cadastros públicos: o inventário da FEAM (mineração e indústria, com condição de estabilidade e nível de emergência) e o cadastro nacional do SNISB (todos os usos). Busca por município e filtro por nível de emergência, condição de estabilidade e categoria de risco.",
-};
+});
 
 /**
  * `/ambiental/barragens` — estadual, sem `[municipio]`, mesmo padrão de

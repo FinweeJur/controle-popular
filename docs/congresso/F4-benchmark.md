@@ -14,7 +14,7 @@ python -m etl.benchmark.pontuar_saidas --dir saidas_sonnet   # saídas já grava
 
 ## 1. A pergunta que motivou o teste
 
-`docs/F0-discovery.md` §4.2: nas 5 primeiras proposições analisadas com o
+`../_historico/congresso-F0-discovery.md` §4.2: nas 5 primeiras proposições analisadas com o
 Llama 3.1 8B local, **todas** saíram "garantista". Duas explicações
 possíveis, indistinguíveis com 5 casos:
 
@@ -79,7 +79,7 @@ armadilhas inclusive. A regra 3 do system prompt ("não force uma
 classificação que não existe") está funcionando.
 
 Taxa de descarte **0%** — contra 20% do 8B local depois da calibração e
-75% antes dela (§4.1 do F0-discovery).
+75% antes dela (§4.1 do F0-discovery do congresso, em `../_historico/`).
 
 ## 4. O único caso fora do gabarito — e por que ele não é um erro
 
@@ -142,7 +142,7 @@ relatório.
   foi montado só com a ementa, então o teste é justo — mas mede um cenário
   mais fácil que o real.
 - **O nº do artigo citado não é validado**, só a lei. Validar artigo exige
-  base normativa completa e o LexML está bloqueado (§3 do F0-discovery).
+  base normativa completa e o LexML está bloqueado (§3 do F0-discovery do congresso, em `../_historico/`).
 - **30 casos são poucos** para medir subgrupo: 9/10 e 10/10 têm intervalo
   de confiança largo. Serve para descartar a hipótese (b), que era o
   objetivo, não para afirmar "97% em produção".

@@ -4,6 +4,7 @@ import { listarCidades } from "@/lib/db/queries/municipios";
 import { obterEstatisticasPortal } from "@/lib/betim/estatisticas-portal";
 import { formatNumberBR } from "@/lib/betim/format";
 import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/sobre` — a apresentação do Controle Popular, na RAIZ do domínio.
@@ -31,11 +32,11 @@ import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
  * (`FooterGlobal.tsx`) em qualquer zona — inclusive as que não têm
  * `/metodologia` própria (`/ambiental`, `/funcaosocialterra`).
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/sobre", {
   title: "Sobre o Controle Popular — o que é, de onde vem o dado, e o papel da IA",
   description:
     "O que é o Controle Popular, como cada dado chega ao portal, a separação entre o que o modelo de linguagem extrai e o que o código calcula, e por que o portal está em revisão.",
-};
+});
 
 export default async function SobrePage() {
   const [cidades, stats] = await Promise.all([listarCidades(), obterEstatisticasPortal()]);

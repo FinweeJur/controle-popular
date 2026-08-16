@@ -438,9 +438,47 @@ legislação estourou.
 
 ## 5. O que ficou de fora, e o plano
 
-### 5.1. Repasse aos 853 municípios — vale, mas não é tela do Paraopeba
+### 5.1. Repasse aos 853 municípios — ✅ INGERIDO em 15/08/2026
 
-**Recomendo ingerir, em outra rodada e em outra tela.** É barato (uma
+> **Feito**, e na tela que este plano recomendou. Coletor
+> `scripts/coletar-repasse-brumadinho-mg.mts`, dado em
+> `apps/web/data/repasse-brumadinho-mg.json` (291 KB), camada em
+> `apps/web/lib/brumadinho/repasse.ts` com 27 testes, e o bloco por cidade em
+> `/[municipio]/prefeitura`. **1.214 de 1.214 linhas casaram** (853 + 142 +
+> 219), 853 municípios distintos, e as três somas fecham em CENTAVOS com o
+> TOTAL impresso na própria página: R$ 1.645.796.000,00. As três parcelas de
+> cada uma das 853 cidades somam o total dela, e a população somada dá
+> 21.168.791 — a de Minas em 2019, que é a testemunha de que a coluna lida é
+> a certa.
+>
+> Duas correções ao plano abaixo, medidas na execução:
+>
+> 1. **O casamento por nome precisou de 5 apelidos, não de aproximação.**
+>    Normalizar (caixa + acento) resolve 1.209 das 1.214 linhas. As 5 que
+>    sobram — `SÃO THOMÉ DAS LETRAS`, `DONA EUSÉBIA`, `AMPARO DA SERRA`,
+>    `SANTA RITA DO IBITIPOCA`, `CÓRREGO DANTAS` — são divergência de grafia
+>    OFICIAL, não de digitação, e nenhuma normalização as alcança. Estão
+>    resolvidas à mão em `APELIDOS`, com o código IBGE escrito por extenso
+>    para poder ser conferido sem rodar nada. Distância de edição não foi
+>    usada de propósito: `CÓRREGO DANTAS` tem três vizinhos plausíveis em
+>    Minas (Córrego Danta, Córrego Fundo, Córrego Novo), e a linha vale
+>    R$ 500 mil.
+> 2. ⚠️ **O par de exemplo da armadilha do código IBGE circula ERRADO neste
+>    projeto.** A anotação que abriu a rodada dizia "Betim é `3106200` (7) e
+>    `310670` (6)". `3106200` é **Belo Horizonte** — o par curto dele é
+>    `310620`. Betim é `3106705`, e é dele que sai `310670`, tirando o dígito
+>    verificador. Quem pegou foi um teste que compara código com NOME; a
+>    leitura humana passou por cima porque dois códigos começados em `3106`
+>    ocupam o mesmo lugar na frase. Os dois pares estão travados em
+>    `repasse.test.ts`.
+>
+> E a malha dos 853 com código de 7 dígitos **já existia no repositório** —
+> não precisou de coleta nova nem de casar nome nenhum: `risco-climatico.json`
+> tem os 853 códigos de 7 dígitos e `comunicabr-31.json` tem os 853 nomes do
+> IBGE com o prefixo de 6. A junção pelo prefixo é exata, 853/853, sem colisão
+> e sem sobra. Ver `malhaMinas()`.
+
+**O plano original, mantido para registro:** é barato (uma
 requisição, uma página, três tabelas HTML) e o dado é forte (853 municípios,
 R$ 1,65 bi, base legal citada, atualizado em 11/08/2026). Mas é **estadual**,
 não da bacia: colocá-lo em `/paraopeba` misturaria "os 26 que foram atingidos"

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "@/lib/judiciario/link";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/judiciario/privacidade", {
   title: "Privacidade · Controle Popular — Judiciário",
   description:
     "O que este app coleta, por quê, e com que base legal — dado público de agente em função pública, sem CPF, filiação ou endereço.",
-};
+});
 
 export default function Privacidade() {
   return (

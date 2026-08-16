@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { listarTemas } from "@/lib/congresso/proposicoes";
 import ListaProposicoes from "./ListaProposicoes";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/proposicoes", {
   title: "Proposições — Controle Popular · Congresso",
   description:
     "Busque projetos de lei federais por tema, palavra-chave e classificação de ampliação ou restrição de direitos.",
-};
+});
 
 /**
  * `/congresso/proposicoes` — servidor não busca mais as proposições em si

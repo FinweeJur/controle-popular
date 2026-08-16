@@ -1,65 +1,65 @@
 # Leia primeiro
 
-> `docs/` tem **54 arquivos e ~17 mil linhas**, e **9 nasceram num único dia**
-> (15/08/2026). O problema nunca foi o volume — é não haver onde descobrir
-> quais três abrir. Este arquivo é essa porta.
+> `docs/` tem **8 documentos na raiz** — cada um cobre uma parte do portal, e a
+> regra é: **ninguém lê tudo. Nunca.** `docs/planos/` guarda o que ainda está por
+> fazer; `docs/_historico/` guarda o que foi entregue ou superado (54 arquivos,
+> datados — lá só para arqueologia).
 >
-> **Ninguém precisa ler `docs/` inteiro. Nunca.**
+> *(Contagens conferidas em 16/08. Se for decidir por elas, conte de novo:*
+> `ls -1 docs | wc -l`*, `ls -1 docs/planos | wc -l`*, `ls -1 docs/_historico | wc -l`*.)*
 
-## Comece por aqui, sempre
+## Os oito documentos
 
-| Arquivo | O que é |
-|---|---|
-| **`PLANO-2026-08-15.md`** | a fila viva, ranqueada por custo × benefício. **É o que está por fazer.** |
-| **`TODO-PROXIMAS-RODADAS.md`** | dívida antes de feature |
-| **`SESSOES-CONCORRENTES.md`** | como não atropelar outra sessão. Leia antes do primeiro commit |
+| Documento | O que é | Quando ler |
+|---|---|---|
+| **`PRODUTO.md`** | o que é o portal, as seis frentes, features, regras editoriais | sempre — é a porta |
+| **`ESTADO.md`** | o que está no ar, a fila viva ranqueada, bloqueios, dívida registrada | sempre que for decidir o que fazer |
+| **`DESENVOLVIMENTO.md`** | worktrees, regras de commit, checklist antes do push, uso de IA | **antes do primeiro commit**, sempre |
+| **`FONTES.md`** | cada fonte de dados: como coletar, o que mente, o que falta | mexer em fonte ou dado |
+| **`ARQUITETURA.md`** | tetos de payload, compactação, índice e assistente, banco | mexer em rota, payload ou banco |
+| **`OPERACAO.md`** | quem publica, rotina de coleta e build, credenciais | publicar, coletar, buildar |
+| **`EDICAO.md`** | como editar conteúdo sem código (painel, dados, verificação) | editar conteúdo |
+| **`LEIA-PRIMEIRO.md`** | este arquivo | sempre |
 
-Três arquivos. Se você só ler estes, já trabalha sem quebrar nada.
+E na **raiz do repositório**, não aqui em `docs/`: **`AGENTS.md`** — as regras
+que não se negociam e as armadilhas que já custaram tempo. Ferramenta de agente
+lê esse arquivo sozinha; humano também deveria.
 
-## Depois, só o que a sua tarefa pede
+## `docs/planos/` — o que ainda está por fazer
 
-| Vou mexer em… | Leia |
-|---|---|
-| deploy, build, publicação | `rotina-local.md`, `build-em-outro-pc.md`, `HANDOFF-PAYLOAD-LEGISLACAO.md` |
-| uma fonte de dados nova | o `FONTES-*.md` do assunto — são 7, cada um de um domínio |
-| território, mineração, barragem | `FONTES-TERRITORIO-E-MINERACAO.md` |
-| Paraopeba / Brumadinho | `PLANO-INGESTAO-PARAOPEBA.md`, `RADAR-NOTICIAS-PARAOPEBA.md` |
-| dinheiro da reparação de Brumadinho | `FONTES-PRO-BRUMADINHO-E-FGV.md` — portal do Governo de MG e auditoria da FGV |
-| legislação, normas | `LEGISLACAO-FEDERAL-MMA-CNDH.md`, `URN-LEXML-NORMAS-LEG-BR.md` |
-| busca, assistente, payload pesado | `PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` |
-| edição de conteúdo sem código | `PAINEL-EDICAO-COMO-USAR.md` |
-| privacidade, LGPD, dado pessoal | `ANTES-DO-PUSH.md` |
-| apresentar o projeto | `APRESENTACAO.md` |
+Planos de trabalho ativos, cada um com o próprio estado. Ler o que a tarefa
+tocar. Hoje: índice estático e assistente (degraus 0–2 no ar; o degrau 3 é
+opcional por decisão), revisão de UX, diário oficial, bases de clima e risco,
+espelho PDF da AJRI, GitHub Pages (alvo alternativo) e a dívida antes de
+feature.
 
-## Registro histórico — **não leia, salvo arqueologia**
+## `docs/_historico/` — não leia, salvo arqueologia
 
-Estes documentam **um dia** e não descrevem o estado atual. Servem para
-responder "por que isto está assim", nunca "como está hoje". Se a resposta que
-você quer é sobre o presente, o arquivo certo é outro.
+Documentam **um dia** e não descrevem o estado atual. Respondem "por que isto
+está assim", nunca "como está hoje". A curadoria de 16/08 unificou a raiz em
+oito documentos e moveu para cá todo o resto: os `FONTES-*.md` de cada domínio
+(absorvidos por `FONTES.md`), os `PLANO-*` entregues (absorvidos por
+`ESTADO.md`), os diários, handoffs e descobertas de cada dia.
 
-`DIARIO-2026-08-13.md` · `auditoria-2026-08-11.md` ·
-`auditoria-2026-08-14-normas-protecao.md` · `HANDOFF-ALERTA-RAIO-8KM.md` ·
-`HANDOFF-ALERTAS-TERRITORIO.md` · `HANDOFF-CAMADA-DINHEIRO.md` ·
-`HANDOFF-PAINEL-PARAOPEBA-PAGINAS-PERDIDAS.md` ·
-`coleta-lixo-farmacia-plantao-descoberta.md`
+⚠️ **Documento datado envelhece sem avisar.** Número em documento antigo **não**
+é medição atual — se for decidir com ele, remeça. O que está na raiz descreve o
+presente, com a data da medição ao lado de cada número.
 
-⚠️ **Documento datado envelhece sem avisar.** Em 15/08 dois deles discordavam
-sobre desde quando o site estava parado, e um terceiro dizia "17 marcos" horas
-depois de virarem 23. Número em documento antigo **não** é medição atual — se
-for decidir com ele, remeça.
+## Subpastas de domínio
+
+`docs/betim/`, `docs/congresso/` e `docs/ambiental/` continuam onde estão —
+são referência de domínio de frentes específicas, consultadas junto com
+`FONTES.md` quando a tarefa toca o assunto.
 
 ## Regra para quem escrever aqui
 
-Antes de criar arquivo novo, **pergunte se ele cabe num que já existe.** Nove
-arquivos num dia foi excesso, e o excesso é meu: a maioria dos achados de
-15/08 caberia como seção do plano do dia.
+Antes de criar arquivo novo, **pergunte se ele cabe num que já existe.** Um
+arquivo novo se justifica quando:
 
-Um arquivo novo se justifica quando:
-
-- é **referência de domínio** que vai ser consultada muitas vezes (`FONTES-*`);
-- é **procedimento** que alguém executa (`rotina-local`, `PAINEL-EDICAO-COMO-USAR`);
-- é **plano** de trabalho que ainda não começou.
+- é **referência de domínio** que vai ser consultada muitas vezes (vira seção de `FONTES.md`);
+- é **procedimento** que alguém executa (vira seção de `OPERACAO.md` ou `EDICAO.md`);
+- é **plano** de trabalho que ainda não começou (vai para `docs/planos/`).
 
 Não se justifica para registrar o que foi feito num dia — isso é mensagem de
-commit, e o `git log` já guarda. Se for indispensável, entra aqui na lista de
-registro histórico, com a data no nome.
+commit, e o `git log` já guarda. Se for indispensável, vai para
+`docs/_historico/`, com a data no nome.

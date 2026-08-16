@@ -16,7 +16,7 @@
 - `/paraopeba/auditoria` — catálogo filtrável, crédito da AECOM em cada ficha,
   link canônico para o portal em cada registro, declaração de finalidade
   acadêmica e não comercial no topo.
-- `scripts/coletor_auditoria.py` + `docs/FONTES-AUDITORIA-AJRI.md` — a
+- `scripts/coletor_auditoria.py` + `docs/_historico/FONTES-AUDITORIA-AJRI.md` — a
   proveniência: o que raspa e o mapa de rotas/facetas do portal.
 - `apps/web/lib/paraopeba/ficha-legivel-ajri.ts` (15/08, à noite) — a **ficha
   legível** de cada documento: o que é, quando, sobre o quê, de onde vem, em

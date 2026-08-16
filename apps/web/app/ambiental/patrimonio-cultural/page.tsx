@@ -3,12 +3,13 @@ import { formatNumberBR } from "@/lib/betim/format";
 import { listarPatrimonioTombado } from "@/lib/db/queries/patrimonio-tombado";
 import BuscaPatrimonioTombado from "./BuscaPatrimonioTombado";
 import Link from "@/lib/ambiental/link";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/patrimonio-cultural", {
   title: "Patrimônio cultural tombado — Controle Popular · Ambiental",
   description:
     "Os bens culturais materiais tombados pelo Estado de Minas Gerais — imóveis, conjuntos paisagísticos e centros históricos protegidos pelo IEPHA-MG, filtráveis por município e categoria.",
-};
+});
 
 /**
  * `/ambiental/patrimonio-cultural` — Tarefa 2b da unificação de legislação

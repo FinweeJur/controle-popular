@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Home da marca Controle Popular, na raiz do domínio.
@@ -27,11 +28,11 @@ import { listarCidades } from "@/lib/db/queries/municipios";
  * aparecer aqui sozinha, sem ninguém lembrar de editar esta página.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/", {
   title: "Controle Popular — dados públicos que dá para usar",
   description:
     "Transparência do orçamento e dos contratos de Betim-MG, monitoramento do que o Congresso Nacional decide sobre direitos, e quem ocupa cada cadeira do Judiciário. Portal independente.",
-};
+});
 
 // A cópia das frentes mora em `lib/zonas.ts`, porque o bloco de remissão no
 // pé de cada zona (`app/components/OutrasFrentes.tsx`) descreve as mesmas

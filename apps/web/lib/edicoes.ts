@@ -75,15 +75,16 @@ function normalizar(rota: string): string {
  * ela declara. Uma edição que muda só o título deixa a descrição como o código
  * a calcula — inclusive os números, que continuam vindo da contagem real.
  */
-export function aplicarEdicao(
+export function aplicarEdicao<T extends { title: string }>(
   rota: string,
-  base: { title: string; description: string }
-): { title: string; description: string } {
+  base: T
+): T & { description?: string } {
   const e = carregar().get(normalizar(rota));
   if (!e) return base;
   return {
+    ...base,
     title: e.titulo ?? base.title,
-    description: e.descricao ?? base.description,
+    description: e.descricao ?? (base as { description?: string }).description,
   };
 }
 
@@ -99,10 +100,10 @@ export function aplicarEdicao(
  * `metadata` estático. Uma rota errada aqui não quebra nada: a edição
  * simplesmente não encontra a página, e o texto do código continua valendo.
  */
-export function metadataEditavel(
+export function metadataEditavel<T extends { title: string }>(
   rota: string,
-  base: { title: string; description: string }
-): { title: string; description: string } {
+  base: T
+): T & { description?: string } {
   return aplicarEdicao(rota, base);
 }
 

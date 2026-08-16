@@ -10,6 +10,7 @@ import {
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import ClippingClient from "./ClippingClient";
 import RadarRecente from "./RadarRecente";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/paraopeba/clipping` — clipping de imprensa sobre a reparação de
@@ -32,10 +33,10 @@ import RadarRecente from "./RadarRecente";
  * Compromisso que a DPMG firmou com a Vale menos de três meses depois do
  * rompimento.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/paraopeba/clipping", {
   title: `Clipping — Paraopeba | Controle Popular`,
   description: `${formatNumberBR(CLIPPING_ATI.length)} materiais das assessorias técnicas independentes, ${formatNumberBR(CLIPPING_IJ.length)} publicações do MPMG, MPF e DPMG e ${formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias sobre a reparação do rompimento da barragem da Vale em Brumadinho, de ${formatDateBR(PERIODO_CLIPPING_IJ.de)} a ${formatDateBR(PERIODO_CLIPPING.ate)}.`,
-};
+});
 
 export default function ClippingPage() {
   // ⟲ 13/08, revisão de onboarding: era `<div>` — `OuvirPagina.tsx` só lê

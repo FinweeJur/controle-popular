@@ -8,7 +8,13 @@ import { listarCidades } from "@/lib/db/queries/municipios";
 import { vazioResumoPorMunicipio } from "@/lib/betim/terras";
 import { formatNumberBR } from "@/lib/betim/format";
 import { carregarResumoMapaEstadual } from "@/lib/terras/mapa-resumo";
-import { carregarAlertasSigmine, carregarAtosAreaProtegida } from "@/lib/terras/alertas";
+import {
+  carregarAlertasSigmine,
+  carregarAlertaTiMancha,
+  carregarAlertaQuilombolaMancha,
+  carregarAtosAreaProtegida,
+} from "@/lib/terras/alertas";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/funcaosocialterra` — a frente de função social da terra.
@@ -46,11 +52,11 @@ import { carregarAlertasSigmine, carregarAtosAreaProtegida } from "@/lib/terras/
  */
 const ZONA = ZONAS.find((z) => z.id === "terras")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/funcaosocialterra", {
   title: "Função social da terra — Controle Popular",
   description:
     "Mapa 3D de Minas Gerais com terra indígena, barragem, mineração (SIGMINE), CFEM e alertas de sobreposição, e o vazio cadastral — quanto do território de cada cidade não tem imóvel rural declarado no CAR — com a metodologia aberta e a taxa de erro medida ao lado do número.",
-};
+});
 
 export default async function FuncaoSocialTerraPage() {
   const cidades = await listarCidades();
@@ -72,6 +78,8 @@ export default async function FuncaoSocialTerraPage() {
   const resumoMapa = carregarResumoMapaEstadual();
   const alertaOperacao = carregarAlertasSigmine("operacao");
   const alertaInteresse = carregarAlertasSigmine("interesse");
+  const alertaTiMancha = carregarAlertaTiMancha();
+  const alertaQuilombolaMancha = carregarAlertaQuilombolaMancha();
   const atosAreaProtegida = carregarAtosAreaProtegida();
 
   return (
@@ -184,9 +192,11 @@ export default async function FuncaoSocialTerraPage() {
             {formatNumberBR(alertaOperacao.itens.length)} sobreposições entre território e lavra
             já autorizada, {formatNumberBR(alertaInteresse.itens.length)} entre território e
             requerimento minerário, e {formatNumberBR(atosAreaProtegida.totalNormas)} normas
-            municipais que criam ou alteram área protegida. Terra indígena e território
-            quilombola atingidos por mancha de barragem: zero, medido numa varredura completa —
-            não é ausência de checagem.
+            municipais que criam ou alteram área protegida. Terra indígena atingida por mancha
+            de barragem: zero, medido numa varredura completa — não é ausência de checagem.
+            Território quilombola atingido por mancha de barragem:{" "}
+            {formatNumberBR(alertaQuilombolaMancha.qtdFeaturesEncontradas)} interseções, em{" "}
+            {formatNumberBR(alertaQuilombolaMancha.qtdTerritoriosAtingidos)} territórios.
           </p>
           <a
             href="/funcaosocialterra/alertas"

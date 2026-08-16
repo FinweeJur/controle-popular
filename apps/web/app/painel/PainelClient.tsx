@@ -5,16 +5,18 @@ import { useMemo, useState } from "react";
 import type { Edicao } from "@/lib/edicoes";
 import type { EstadoDoRepo } from "@/lib/painel/git-estado";
 import type { RotaEditavel } from "@/lib/painel/rotas-editaveis";
+import type { UltimoBuild } from "@/lib/painel/ultimo-build";
 
 /**
  * A tela do painel de edição.
  *
- * ═══ O TOKEN FICA NA MEMÓRIA DA ABA, NUNCA EM DISCO ═══
+ * ═══ O TOKEN FICA NO `localStorage` DESTA MÁQUINA ═══
  *
- * Nada de `localStorage`: token em `localStorage` sobrevive a fechar o
- * navegador e a qualquer script que rode na página depois. Aqui ele vive em
- * `useState` — fechou a aba, sumiu. O incômodo de redigitar é pequeno para
- * uma ferramenta usada por duas pessoas em duas máquinas conhecidas.
+ * O painel só existe localmente (`PAINEL_LOCAL=1` + dev server, ver
+ * `next.config.ts`) e nunca é publicado — a proteção real é a rede, não o
+ * token. Guardar o token no `localStorage` é escolha do dono (2026-08-15):
+ * redigitar a cada aba era o custo de uma defesa que a arquitetura já não
+ * precisa. Quem quiser a versão rígida usa o botão "Esquecer token".
  *
  * ═══ TODA RESPOSTA DIZ QUANTAS EDIÇÕES ESPERAM PUBLICAÇÃO ═══
  *
@@ -23,18 +25,56 @@ import type { RotaEditavel } from "@/lib/painel/rotas-editaveis";
  * voltar em toda resposta da API em vez de ser calculado aqui.
  */
 
+const TOKEN_LOCAL = "cp-painel-token";
+
+/** ISO -> "15/08/2026 às 20:04" no fuso da máquina. */
+function formatarData(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  const dia = d.toLocaleDateString("pt-BR");
+  const hora = d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  return `em ${dia} às ${hora}`;
+}
+
+/** SHA completo -> 7 primeiros caracteres. */
+function curto(sha: string): string {
+  return sha.length > 7 ? sha.slice(0, 7) : sha;
+}
+
 interface Props {
   rotasEditaveis: RotaEditavel[];
   edicoesIniciais: Edicao[];
   repoInicial: EstadoDoRepo;
+  ultimoBuildInicial: UltimoBuild | null;
 }
 
 type Aviso = { tipo: "ok" | "erro"; texto: string } | null;
 
-export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInicial }: Props) {
-  const [token, setToken] = useState("");
+/** Texto atual da página, lido do código pela API (`lib/painel/texto-atual.ts`). */
+interface TextoAtual {
+  rota: string;
+  titulo: string | null;
+  descricao: string | null;
+  calculado: boolean;
+}
+
+export default function PainelClient({
+  rotasEditaveis,
+  edicoesIniciais,
+  repoInicial,
+  ultimoBuildInicial,
+}: Props) {
+  const [token, setToken] = useState<string>(() => {
+    if (typeof window === "undefined") return "";
+    try {
+      return window.localStorage.getItem(TOKEN_LOCAL) ?? "";
+    } catch {
+      return "";
+    }
+  });
   const [edicoes, setEdicoes] = useState<Edicao[]>(edicoesIniciais);
   const [repo, setRepo] = useState<EstadoDoRepo>(repoInicial);
+  const [ultimoBuild, setUltimoBuild] = useState<UltimoBuild | null>(ultimoBuildInicial);
   const [aviso, setAviso] = useState<Aviso>(null);
   const [ocupado, setOcupado] = useState(false);
 
@@ -43,6 +83,18 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
   const [descricao, setDescricao] = useState("");
   const [por, setPor] = useState("");
   const [motivo, setMotivo] = useState("");
+  const [textoAtual, setTextoAtual] = useState<TextoAtual | null>(null);
+
+  /** Persiste o token no `localStorage` enquanto a pessoa digita. */
+  function aoMudarToken(novo: string) {
+    setToken(novo);
+    try {
+      if (novo) window.localStorage.setItem(TOKEN_LOCAL, novo);
+      else window.localStorage.removeItem(TOKEN_LOCAL);
+    } catch {
+      // Sem storage, segue só na memória da aba.
+    }
+  }
 
   const edicaoDaRota = useMemo(
     () => edicoes.find((e) => e.rota === rota),
@@ -54,9 +106,11 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
   /** O que a API devolve; campos opcionais porque cada rota preenche os seus. */
   type RespostaDoPainel = {
     erro?: string;
+    ok?: boolean;
     edicoes?: Edicao[];
     pendentes?: number;
     repo?: EstadoDoRepo;
+    ultimoBuild?: UltimoBuild | null;
     aviso?: string;
   };
 
@@ -84,6 +138,7 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
       }
       if (Array.isArray(corpo.edicoes)) setEdicoes(corpo.edicoes);
       if (corpo.repo) setRepo(corpo.repo);
+      if (corpo.ultimoBuild !== undefined) setUltimoBuild(corpo.ultimoBuild);
       return corpo;
     } catch (e) {
       setAviso({ tipo: "erro", texto: `Erro de rede: ${(e as Error).message}` });
@@ -118,6 +173,31 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
     }
   }
 
+  /** Lê o texto atual (do código) da rota, para mostrar o que será substituído. */
+  async function carregarTextoAtual(rotaNova: string) {
+    setTextoAtual(null);
+    if (!token || !rotaNova) return;
+    try {
+      const r = await fetch(`/api/painel/texto-atual?rota=${encodeURIComponent(rotaNova)}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (r.ok) setTextoAtual((await r.json()) as TextoAtual);
+    } catch {
+      setTextoAtual(null);
+    }
+  }
+
+  /** Grava o token para a próxima visita; "Esquecer token" apaga. */
+  function esquecerToken() {
+    try {
+      window.localStorage.removeItem(TOKEN_LOCAL);
+    } catch {
+      // Sem storage (modo privado), o token vive só na memória — igual antes.
+    }
+    setToken("");
+    setAviso({ tipo: "ok", texto: "Token esquecido — esta aba continua autenticada até fechar." });
+  }
+
   async function publicar() {
     if (!por.trim()) {
       setAviso({ tipo: "erro", texto: "Preencha 'quem' antes de pedir a publicação." });
@@ -128,6 +208,18 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
       body: JSON.stringify({ por, motivo: motivo || "publicação pelo painel" }),
     });
     if (corpo) setAviso({ tipo: "ok", texto: corpo.aviso ?? "Pedido enviado." });
+  }
+
+  async function sincronizar() {
+    const corpo = await chamar("/api/painel/sincronizar", { method: "POST" });
+    if (corpo) {
+      setAviso({
+        tipo: corpo.ok ? "ok" : "erro",
+        texto: corpo.ok
+          ? "Local atualizado com a main do GitHub."
+          : (corpo.erro ?? "Não consegui sincronizar."),
+      });
+    }
   }
 
   const campo =
@@ -163,6 +255,37 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
         </p>
       )}
 
+      <section className="mt-6 rounded-2xl border border-border bg-surface p-5 shadow-sm">
+        <h2 className="font-display text-base font-semibold text-text">Último deploy</h2>
+        {ultimoBuild ? (
+          <div className="mt-3 space-y-2 text-sm text-text-soft">
+            <p>
+              <strong className="text-text">
+                {ultimoBuild.publicou ? "Publicou" : "Falhou"}
+              </strong>{" "}
+              {formatarData(ultimoBuild.terminouEm)}
+              {ultimoBuild.erro && (
+                <span className="mt-1 block text-xs text-alert">{ultimoBuild.erro}</span>
+              )}
+            </p>
+            <p>
+              Commit no ar: <code className="text-text">{curto(ultimoBuild.commitBuildado)}</code>
+            </p>
+            {repo.head !== curto(ultimoBuild.commitBuildado) && (
+              <p className="rounded-lg bg-surface-2 p-3 text-xs text-text-soft">
+                Esta máquina está no <code>{repo.head}</code>, diferente do que está no ar. O que
+                você fez depois disso ainda não foi publicado — veja abaixo se precisa pedir
+                publicação.
+              </p>
+            )}
+          </div>
+        ) : (
+          <p className="mt-3 text-sm text-text-soft">
+            Nenhum build registrado ainda nesta máquina. O primeiro deploy registra a data aqui.
+          </p>
+        )}
+      </section>
+
       <div className="mt-6 rounded-2xl border border-border bg-surface-2 p-4">
         <label className={rotulo} htmlFor="token">
           Token do painel (<code>PAINEL_TOKEN</code> do <code>.env.local</code>)
@@ -171,10 +294,18 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
           id="token"
           type="password"
           value={token}
-          onChange={(e) => setToken(e.target.value)}
-          placeholder="cole aqui — fica só na memória desta aba"
+          onChange={(e) => aoMudarToken(e.target.value)}
+          placeholder="cole aqui — fica salvo nesta máquina até você esquecer"
           className={campo}
+          suppressHydrationWarning
         />
+        <button
+          type="button"
+          onClick={esquecerToken}
+          className="mt-2 text-xs text-text-soft underline decoration-dotted hover:text-text"
+        >
+          Esquecer token
+        </button>
       </div>
 
       <section className="mt-6 rounded-2xl border border-border bg-surface p-5 shadow-sm">
@@ -193,6 +324,7 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
               const j = edicoes.find((x) => x.rota === e.target.value);
               setTitulo(j?.titulo ?? "");
               setDescricao(j?.descricao ?? "");
+              carregarTextoAtual(e.target.value);
             }}
             className={campo}
           >
@@ -216,6 +348,34 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
             em {edicaoDaRota.em.slice(0, 10).split("-").reverse().join("/")} — motivo:{" "}
             {edicaoDaRota.motivo}
           </p>
+        )}
+
+        {textoAtual && (
+          <div className="mt-3 rounded-lg border border-border bg-surface-2 p-3 text-xs text-text-soft">
+            <p className="font-medium text-text">
+              Texto atual no código — é isso que uma edição salva vai substituir
+            </p>
+            <dl className="mt-2 space-y-2">
+              <div>
+                <dt className="font-medium text-text-soft">Título</dt>
+                <dd className="mt-0.5 text-text">
+                  {textoAtual.titulo ??
+                    (textoAtual.calculado
+                      ? "Calculado no código (contém conta) — confira a página."
+                      : "Nenhum título no código.")}
+                </dd>
+              </div>
+              <div>
+                <dt className="font-medium text-text-soft">Descrição</dt>
+                <dd className="mt-0.5 text-text">
+                  {textoAtual.descricao ??
+                    (textoAtual.calculado
+                      ? "Calculada no código (contém conta) — confira a página."
+                      : "Nenhuma descrição no código.")}
+                </dd>
+              </div>
+            </dl>
+          </div>
         )}
 
         <div className="mt-4">
@@ -304,14 +464,30 @@ export default function PainelClient({ rotasEditaveis, edicoesIniciais, repoInic
           o encontra e roda o build. <strong className="text-text">Não é instantâneo</strong> — são
           15 a 20 minutos de build, mais o intervalo do vigia.
         </p>
-        <button
-          type="button"
-          onClick={publicar}
-          disabled={ocupado || bloqueado}
-          className="cp-btn-anim mt-4 rounded-full border border-accent bg-accent px-4 py-2 text-sm font-medium text-accent-ink disabled:cursor-not-allowed disabled:opacity-45"
-        >
-          Pedir publicação
-        </button>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <button
+            type="button"
+            onClick={publicar}
+            disabled={ocupado || bloqueado}
+            className="cp-btn-anim rounded-full border border-accent bg-accent px-4 py-2 text-sm font-medium text-accent-ink disabled:cursor-not-allowed disabled:opacity-45"
+          >
+            Pedir publicação
+          </button>
+          <button
+            type="button"
+            onClick={sincronizar}
+            disabled={ocupado}
+            className="cp-btn-anim rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium text-text-soft disabled:cursor-not-allowed disabled:opacity-45"
+            title="git fetch + git pull --ff-only origin main"
+          >
+            Sincronizar com o GitHub
+          </button>
+        </div>
+        <p className="mt-3 text-xs text-text-soft">
+          Sincronizar puxa os commits da main do GitHub para esta máquina — inclusive o resultado
+          do último build (home-pc). Se houver divergência ou arquivo local modificado, ele recusa
+          e avisa o que fazer no terminal.
+        </p>
       </section>
 
       {aviso && (

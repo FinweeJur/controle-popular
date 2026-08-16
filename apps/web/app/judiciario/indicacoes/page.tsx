@@ -3,12 +3,13 @@ import { listarNomeacoes } from "@/lib/judiciario/tribunais";
 import { rotuloResultado } from "@/lib/judiciario/rotulos";
 import FonteRodape, { FONTE_SENADO } from "@/app/judiciario/components/FonteRodape";
 import { resumoProcedencia } from "@/lib/judiciario/procedencia";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/judiciario/indicacoes", {
   title: "Indicações — Controle Popular · Judiciário",
   description:
     "Toda indicação enviada pelo Presidente ao Senado para STF, STJ, TST e STM, com data, resultado e a cadeira que ela preenche.",
-};
+});
 
 const fmtData = (d: string | null) =>
   d ? new Date(d + "T00:00:00").toLocaleDateString("pt-BR") : "—";

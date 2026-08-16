@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/lib/ambiental/link";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/ambiental/direito-critico` — página-PONTE. O painel próprio (30 normas
@@ -28,11 +29,11 @@ import Link from "@/lib/ambiental/link";
 
 const DESTINO = "/ambiental/legislacao";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/direito-critico", {
   title: "Legislação e precedentes por tema — Controle Popular · Ambiental",
   robots: { index: false, follow: true },
   alternates: { canonical: DESTINO },
-};
+});
 
 export default function DireitoCriticoPonte() {
   return (

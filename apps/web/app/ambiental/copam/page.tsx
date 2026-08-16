@@ -7,12 +7,13 @@ import {
   listarReunioesCopamRecentes,
 } from "@/lib/db/queries/copam";
 import BuscaMunicipio from "./BuscaMunicipio";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/copam", {
   title: "Reuniões do COPAM — Controle Popular · Ambiental",
   description:
     "A pauta de cada reunião do Conselho Estadual de Política Ambiental de Minas Gerais, item a item, com o município que cada processo trata — antes da decisão sair.",
-};
+});
 
 /**
  * `/ambiental/copam` — a F3 do plano de execução. Método de coleta e as

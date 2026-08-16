@@ -62,6 +62,18 @@ export function temContatoPessoal(texto: string | null | undefined): boolean {
   return RE_NOMEIA_VITIMA.test(texto) || RE_CONTATO_PESSOAL.test(texto);
 }
 
+// "Nota de pesar: <nome completo>" — obituário público publicado pela
+// própria ATI (medido no feed do Guaicuy, `docs/FONTES-BIBLIOTECA-ATI.md`
+// §5). A régua pegava CPF, iniciais e contato, mas não nome por extenso —
+// e este é o caso em que o nome chega INTEIRO no título. O nome por extenso
+// de vítima é dado pessoal: a mesma regra que redige iniciais redige aqui.
+const RE_NOTA_DE_PESAR = /nota\s+de\s+pesar\s*:?\s+([A-ZÀ-Ý][a-zà-ÿ]+(?:\s+[A-ZÀ-Ý][a-zà-ÿ]+)+)/i;
+
+export function temNotaDePesar(texto: string | null | undefined): boolean {
+  if (!texto) return false;
+  return RE_NOTA_DE_PESAR.test(texto);
+}
+
 // Tipo confirmado como pessoal em `docs/PLANO-INTEGRACAO-BRUMADINHO.md`
 // (seção 2.2): documento de identificação, comprovante de residência,
 // declaração de hipossuficiência — e qualquer variação com essas palavras
@@ -99,6 +111,7 @@ export function precisaRedigirResumo(doc: DocumentoParaTriagem): boolean {
   return (
     temCpfValido(texto) ||
     temIniciais(texto) ||
+    temNotaDePesar(texto) ||
     temContatoPessoal(texto) ||
     (ehTemaSaude(doc.temas) && RE_TIPO_CATCH_ALL.test(doc.tipo))
   );

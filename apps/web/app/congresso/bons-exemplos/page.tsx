@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { Rodape } from "@/app/congresso/alertas/FiltroRodapeVazio";
 import { coberturaAnalise } from "@/lib/congresso/destaques";
 import ListaBonsExemplos from "./ListaBonsExemplos";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/bons-exemplos", {
   title: "Bons exemplos — projetos que ampliam direitos — Controle Popular · Congresso",
   description:
     "Projetos de lei federais que ampliam direitos, com o dispositivo legal e o trecho que fundamentam cada classificação.",
-};
+});
 
 /**
  * `/congresso/bons-exemplos` — página pesada (ver o porquê em

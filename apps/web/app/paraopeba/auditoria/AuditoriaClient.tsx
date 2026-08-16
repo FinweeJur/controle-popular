@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   AUDITORIA_AJRI,
   INSTRUMENTO_AJRI_LABEL,
@@ -16,6 +17,9 @@ import {
   type TemaAjri,
   type TipoDocumentoAjri,
 } from "@/lib/paraopeba/auditoria-ajri";
+import { ATI_LABEL } from "@/lib/paraopeba/clipping-ati";
+import { INSTITUICAO_JUSTICA_LABEL } from "@/lib/paraopeba/clipping-ij";
+import { relacionadosDaFicha } from "@/lib/paraopeba/relacionados";
 import { fichaLegivelAjri } from "@/lib/paraopeba/ficha-legivel-ajri";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 
@@ -89,8 +93,28 @@ const TOTAL_POR_INSTRUMENTO = INSTRUMENTO_AJRI_ORDEM.reduce<Record<string, numbe
   return acc;
 }, {});
 
-export default function AuditoriaClient() {
-  const [busca, setBusca] = useState("");
+export default function AuditoriaClientEnvolto() {
+  return (
+    <Suspense fallback={<AuditoriaClient />}>
+      <AuditoriaClientComQuery />
+    </Suspense>
+  );
+}
+
+/**
+ * Lê `?q=` (o link "mesmo tema" das fichas relacionadas chega aqui) e
+ * repassa como busca inicial. O `<Suspense>` acima é obrigatório — sem ele o
+ * `next build` aborta (ver o comentário do cabeçalho de `ListaProjetos.tsx`,
+ * que documenta o mesmo contrato); o fallback é a lista completa sem busca,
+ * quem chega sem JavaScript continua vendo tudo.
+ */
+function AuditoriaClientComQuery() {
+  const searchParams = useSearchParams();
+  return <AuditoriaClient buscaInicial={searchParams.get("q") ?? ""} />;
+}
+
+function AuditoriaClient({ buscaInicial = "" }: { buscaInicial?: string }) {
+  const [busca, setBusca] = useState(buscaInicial);
   const [de, setDe] = useState("");
   const [ate, setAte] = useState("");
   const [ordem, setOrdem] = useState<Ordem>("recente");
@@ -100,6 +124,15 @@ export default function AuditoriaClient() {
   const [tipos, setTipos] = useState<Set<TipoDocumentoAjri>>(new Set(TODOS_OS_TIPOS));
   const [tema, setTema] = useState<TemaAjri | "todos">("todos");
   const [visiveis, setVisiveis] = useState(POR_PAGINA);
+
+  // `?q=` muda com a página já aberta (link de "relacionados" clicado na
+  // própria ficha): o estado inicial não reage sozinho, então o efeito
+  // sincroniza busca e volta a lista ao início — mesmo contrato de quem
+  // chega de fora com `?q=` na URL.
+  useEffect(() => {
+    setBusca(buscaInicial);
+    setVisiveis(POR_PAGINA);
+  }, [buscaInicial]);
 
   const lista = useMemo(() => {
     const filtrada = AUDITORIA_AJRI.filter(
@@ -425,7 +458,122 @@ function Ficha({ doc }: { doc: DocumentoAuditoriaAjri }) {
       <span className="text-xs text-text-soft">
         — o portal exige cadastro e gera o PDF na hora
       </span>
+
+      <RelacionadosDaFicha doc={doc} />
     </li>
+  );
+}
+
+/**
+ * ═══ O FIM DA FICHA APONTA PARA O QUE O PORTAL JÁ TEM ═══
+ *
+ * Mesmo tema, até 6 meses antes ou depois, no máximo 3 de cada acervo, os
+ * mais próximos no tempo — a régua inteira está em
+ * `lib/paraopeba/relacionados.ts`, sem modelo, com os números pinçados em
+ * `relacionados.test.ts`. Ficha do mesmo catálogo abre com o código na
+ * busca (`?q=`); notícia de ATI, instituição de justiça e imprensa abre na
+ * fonte original — o portal nunca copia o conteúdo, só aponta.
+ */
+function RelacionadosDaFicha({ doc }: { doc: DocumentoAuditoriaAjri }) {
+  const rel = useMemo(() => relacionadosDaFicha(doc), [doc]);
+  const total =
+    rel.mesmosTemas.length +
+    rel.noticiasAti.length +
+    rel.noticiasIj.length +
+    rel.noticiasImprensa.length;
+
+  if (total === 0) return null;
+
+  return (
+    <details className="mt-3 border-t border-border/60 pt-3">
+      <summary className="cursor-pointer text-xs font-medium text-text hover:text-primary">
+        Relacionados ({formatNumberBR(total)})
+      </summary>
+      <div className="mt-2.5 space-y-3 text-xs text-text-soft">
+        {rel.mesmosTemas.length > 0 && (
+          <div>
+            <p className="font-medium text-text">Neste catálogo, mesmo tema</p>
+            <ul className="mt-1 space-y-1">
+              {rel.mesmosTemas.map((x) => (
+                <li key={x.id}>
+                  <a
+                    href={`/paraopeba/auditoria?q=${encodeURIComponent(x.codigo)}`}
+                    className="font-medium text-primary underline underline-offset-2 hover:text-accent"
+                  >
+                    {x.codigo}
+                  </a>{" "}
+                  · {formatDateBR(x.data)}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {rel.noticiasAti.length > 0 && (
+          <div>
+            <p className="font-medium text-text">ATIs</p>
+            <ul className="mt-1 space-y-1">
+              {rel.noticiasAti.map((n) => (
+                <li key={n.id}>
+                  <a
+                    href={n.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline underline-offset-2 hover:text-accent"
+                  >
+                    {n.titulo} ↗
+                  </a>{" "}
+                  · {ATI_LABEL[n.ati]} · {formatDateBR(n.data)}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {rel.noticiasIj.length > 0 && (
+          <div>
+            <p className="font-medium text-text">Instituições de justiça</p>
+            <ul className="mt-1 space-y-1">
+              {rel.noticiasIj.map((n) => (
+                <li key={n.id}>
+                  <a
+                    href={n.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline underline-offset-2 hover:text-accent"
+                  >
+                    {n.titulo} ↗
+                  </a>{" "}
+                  · {INSTITUICAO_JUSTICA_LABEL[n.instituicao]} · {formatDateBR(n.data)}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {rel.noticiasImprensa.length > 0 && (
+          <div>
+            <p className="font-medium text-text">Imprensa</p>
+            <ul className="mt-1 space-y-1">
+              {rel.noticiasImprensa.map((n) => (
+                <li key={n.id}>
+                  <a
+                    href={n.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline underline-offset-2 hover:text-accent"
+                  >
+                    {n.titulo} ↗
+                  </a>{" "}
+                  · {n.portal} · {formatDateBR(n.data)}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <p className="pt-1 text-[.95em] text-text-soft">
+          Mesmo tema, até 6 meses antes ou depois, no máximo 3 por acervo — os mais próximos no
+          tempo. Regra fixa, sem modelo. Fichas do catálogo abrem com o código na busca.
+        </p>
+      </div>
+    </details>
   );
 }
 

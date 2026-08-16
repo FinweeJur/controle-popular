@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { listarParlamentares } from "@/lib/congresso/parlamentares";
 import ListaParlamentares, { ListaParlamentaresCompleta } from "./ListaParlamentares";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/parlamentares", {
   title: "Parlamentares — Controle Popular · Congresso",
   description:
     "Todos os deputados federais em exercício, com presença em plenário, coerência de voto com direitos fundamentais e proposições de autoria. Filtre por casa, partido e UF.",
-};
+});
 
 export default async function Parlamentares() {
   // SEM filtro no SQL: o mesmo motivo de `bancadas` — o recorte é do

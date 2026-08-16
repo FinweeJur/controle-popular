@@ -1,7 +1,7 @@
 # Revisão de onboarding, acessibilidade e design system
 
 > Escrita em 14/08/2026, atendendo aos itens 7 e 8 de
-> `docs/TODO-PROXIMAS-RODADAS.md`. Pedido do dono, em duas partes: revisão
+> `docs/planos/TODO-PROXIMAS-RODADAS.md`. Pedido do dono, em duas partes: revisão
 > crítica de onboarding/acessibilidade/facilidade de uso, e o que dá para
 > aproveitar de Kokonut UI, Motion.dev e Bklit UI.
 >
@@ -9,7 +9,7 @@
 > móvel 375×812, e os três temas (`light`/`dark`/`high-contrast`) via
 > `getComputedStyle` no navegador — não só inspeção de código. Todo
 > problema abaixo tem onde está e por que atrapalha; os consertos baratos
-> já foram para o código, com commit citado. `docs/DIARIO-2026-08-13.md`
+> já foram para o código, com commit citado. `docs/_historico/DIARIO-2026-08-13.md`
 > registrava quatro pistas achadas por acaso; as quatro **já estavam
 > corrigidas** por sessões anteriores no mesmo dia (ver a seção "As quatro
 > pistas" abaixo) — o padrão sistêmico que elas apontavam, porém, seguia

@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { listarBancadas } from "@/lib/congresso/bancadas";
 import ListaBancadas, { ListaBancadasCompleta } from "./ListaBancadas";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/congresso/bancadas", {
   title: "Bancadas — Controle Popular · Congresso",
   description:
     "Frentes parlamentares, blocos, federações e partidos na Câmara dos Deputados, com quantos deputados cada um reúne.",
-};
+});
 
 export default async function Bancadas() {
   // SEM o filtro de tipo: ele agora é do cliente (ver `ListaBancadas`).

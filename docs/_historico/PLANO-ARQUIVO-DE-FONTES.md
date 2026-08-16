@@ -186,7 +186,7 @@ FROM ambiental_legislacao` contra o Postgres local em 2026-08-14.
 Consequência boa: as 1.183 normas de `serras` (180) + `recursos_hidricos`
 (1.003) — o recorte de maior prioridade pedido pelo dono — já tinham fonte
 citável o tempo todo, e por isso entraram na varredura e na amostra de
-captura desta rodada (ver `docs/auditoria-2026-08-14-normas-protecao.md`).
+captura desta rodada (ver `docs/_historico/auditoria-2026-08-14-normas-protecao.md`).
 
 ## Atualização — 2026-08-14: item 2 (medir antes de baixar), medido de verdade
 

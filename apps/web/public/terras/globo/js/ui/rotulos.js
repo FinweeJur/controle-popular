@@ -111,6 +111,26 @@ export const ROTULOS = {
   fase: 'Fase do processo',
   subs: 'Substância',
   uso: 'Uso declarado',
+  // Alerta de faixa de 8 km (IDE-Sisema × SIGMINE, `alerta-raio-territorio-*`).
+  // Cada feição é UM par processo×faixa — as chaves abaixo são as duas metades
+  // dele (o território da faixa e o empreendimento do SIGMINE). Sem tradução,
+  // a ficha do clique despejava `sigmine_processo` cru — foi o que motivou o
+  // conserto de 15/08 (ver ui/pares-do-territorio.js).
+  territorio_tipo: 'Tipo de território',
+  territorio_nome: 'Território',
+  territorio_nome_projeto: 'Nome do projeto',
+  territorio_fase: 'Situação do território',
+  territorio_municipio: 'Município do território',
+  faixa_dist_m: 'Raio da faixa',
+  faixa_tipologia: 'Tipologia da faixa',
+  faixa_camada_ide: 'Camada original (IDE-Sisema)',
+  orgao_manifestacao: 'Quem se manifesta',
+  ja_sobrepoe_territorio_publicado: 'Encosta no território',
+  distancia_ao_territorio_m: 'Distância até o território',
+  sigmine_fonte: 'Lado do SIGMINE',
+  sigmine_nome: 'Empreendedor',
+  area_processo_ha: 'Tamanho do processo',
+  area_dentro_da_faixa_ha: 'Área do processo na faixa',
 };
 
 /** Os dois anos comparados pelo pipeline (mapbiomas.ANOS_MUDANCA). */
@@ -169,6 +189,13 @@ const VALORES = {
   'EM ANALISE': 'A FEAM ainda está analisando o Plano de Ação de Emergência desta barragem — a mancha mostrada é a do Estudo de Ruptura Hipotética já aprovado, mas o PAE em si não foi fechado.',
   'APROVADO': 'A FEAM já aprovou o Plano de Ação de Emergência desta barragem.',
   'APROVADA': 'O Estudo de Ruptura Hipotética de Barragem (ERHB) desta estrutura já foi aprovado pela FEAM.',
+  // Lado do SIGMINE e tipo de território da faixa de 8 km — valores crus que
+  // a ficha do par exibiria como 'operacao'/'interesse' e 'indigena'/
+  // 'quilombola' sem esta tabela.
+  operacao: 'Lavra em operação',
+  interesse: 'Requerimento ou área em disponibilidade',
+  indigena: 'Terra indígena',
+  quilombola: 'Território quilombola',
 };
 
 /**
@@ -345,6 +372,28 @@ function descreverFormato(c) {
 export function formatarValor(chave, valor) {
   if (chave === 'area_ha' && Number.isFinite(Number(valor))) {
     return descreverArea(valor);
+  }
+  // Áreas do par processo×faixa: mesma régua de `area_ha` (de 420 m² a
+  // milhares de hectares, o descreverArea é a única régua que atravessa).
+  if ((chave === 'area_processo_ha' || chave === 'area_dentro_da_faixa_ha')) {
+    const n = numeroOuNada(valor);
+    return n === null ? '' : descreverArea(n);
+  }
+  // Distâncias da faixa de 8 km. Metros com régua de rua: abaixo de 1 km
+  // fica em m (72,9 m tem de sair como "73 m", não "0,1 km"), acima vira km.
+  // Ausência é caso REAL medido (13 pares sem distância, todos do território
+  // "FAMILIA TEODORO DE OLIVEIRA E VENTURA") — e não pode sair como zero.
+  if (chave === 'distancia_ao_territorio_m' || chave === 'faixa_dist_m') {
+    const n = numeroOuNada(valor);
+    if (n === null) return chave === 'distancia_ao_territorio_m' ? 'não medida' : '';
+    return n < 1000
+      ? `${formatarNumero(n, 0)} m`
+      : `${formatarNumero(n / 1000)} km`;
+  }
+  if (chave === 'ja_sobrepoe_territorio_publicado') {
+    return valor
+      ? 'sim — a poligonal encosta no território'
+      : 'não — só dentro da faixa';
   }
   if (chave === 'largura_media_m' && Number.isFinite(Number(valor))) {
     const m = Number(valor);

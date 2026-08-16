@@ -12,6 +12,7 @@ import {
 } from "@/lib/paraopeba/auditoria-ajri";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import AuditoriaClient from "./AuditoriaClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/paraopeba/auditoria` — catálogo da auditoria socioambiental independente
@@ -46,6 +47,12 @@ const TOTAL = AUDITORIA_AJRI.length;
 const Por = (tipo: (typeof TIPO_DOCUMENTO_AJRI_ORDEM)[number]) =>
   AUDITORIA_AJRI.filter((d) => d.tipo === tipo).length;
 
+// `AuditoriaClient` lê `?q=` (deep-link das fichas relacionadas) com
+// `useSearchParams()` dentro de `<Suspense>` — mesma armadilha de
+// `[municipio]/meio-ambiente/paraopeba/page.tsx`: sem `force-static`,
+// `output: export` trata a rota como dinâmica e aborta o build.
+export const dynamic = "force-static";
+
 /**
  * "Nota Técnica" → "Notas Técnicas": em português o plural vai em TODAS as
  * palavras do sintagma, e um `+ "s"` no fim escreveria "Nota Técnicas". Os
@@ -58,10 +65,10 @@ const plural = (rotulo: string) =>
     .map((p) => `${p}s`)
     .join(" ");
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/paraopeba/auditoria", {
   title: "Auditoria socioambiental — Paraopeba | Controle Popular",
   description: `Catálogo dos ${formatNumberBR(TOTAL)} documentos da auditoria socioambiental independente (${AUTOR_AUDITORIA_AJRI}) do Acordo Judicial de Reparação Integral de Brumadinho, de ${formatDateBR(PERIODO_AUDITORIA_AJRI.de)} a ${formatDateBR(PERIODO_AUDITORIA_AJRI.ate)} — filtrável por instrumento jurídico, tipo, tema e período, com link para a fonte oficial em cada registro.`,
-};
+});
 
 export default function AuditoriaAjriPage() {
   return (

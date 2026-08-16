@@ -11,11 +11,18 @@ import Link from "next/link";
 import { interpretar, type Candidato } from "@/lib/assistente/navegacao";
 import {
   IndiceIndisponivel,
+  carregarIndice,
   indiceJaCarregado,
-  procurarDocumentos,
   type Progresso,
 } from "@/lib/assistente/documentos";
-import type { Resultado } from "@/lib/busca/indice";
+import {
+  cidadeDaResposta,
+  compor,
+  interpretarComposicao,
+  type IntentComposicao,
+  type RespostaComposicao,
+} from "@/lib/assistente/compor";
+import { buscar, type Resultado } from "@/lib/busca/indice";
 
 /**
  * Assistente de navegação do portal — a metade DETERMINÍSTICA do N8.
@@ -32,6 +39,15 @@ import type { Resultado } from "@/lib/busca/indice";
  * Quando não reconhece a intenção, ele diz que não reconheceu. `interpretar()`
  * devolve `[]` para texto sem intenção e para cidade que o portal não
  * atende, e esta tela mostra isso como resposta, não como falha.
+ *
+ * ═══ O TERCEIRO PASSO: COMPOSIÇÃO ═══
+ *
+ * "compare Betim e Belo Horizonte" e "o que falta em Betim" são respondidos
+ * por regra escrita (`lib/assistente/compor.ts`) sobre o índice de
+ * documentos JÁ carregado do degrau 1 — sem modelo, sem rede além dele. A
+ * disciplina de não afirmar número continua: as contagens que a composição
+ * mostra vêm do índice, e o texto da resposta diz que vêm dele. "Compare
+ * Betim e Contagem" tem resposta honesta: Contagem não é atendida.
  *
  * ═══ POR QUE O CATÁLOGO É IMPORTADO AQUI E NÃO VEM COMO PROP ═══
  *
@@ -98,13 +114,15 @@ type Passo =
       decorrido: number;
       progresso: Progresso | null;
     }
-  | { fase: "resposta"; pergunta: string; candidatos: Candidato[]; documentos: Resultado[] | null; ms: number }
+  | { fase: "resposta"; pergunta: string; candidatos: Candidato[]; documentos: Resultado[] | null; composicao: RespostaComposicao | null; ms: number }
   | { fase: "interrompido"; pergunta: string; candidatos: Candidato[]; ms: number }
   | { fase: "erro"; pergunta: string; candidatos: Candidato[]; texto: string; ms: number };
 
 const SUGESTOES = [
   "saúde em BH",
   "contratos da prefeitura de Betim",
+  "compare Betim e Belo Horizonte",
+  "o que falta em Betim",
   "abrir Diamantina no mapa",
   "proposições da câmara em São Paulo",
   "parlamentares",
@@ -171,21 +189,54 @@ export default function AssistenteNavegacao() {
 
   /**
    * Passo 1: navegar. Determinístico, sem rede, sem modelo.
+   *
+   * Uma exceção instantânea: quando a intenção é "cidade não atendida"
+   * ("compare Betim e Contagem"), a resposta não precisa do índice — é uma
+   * regra escrita sobre o catálogo, e sai sem "pensando".
    */
   function perguntar(pergunta: string) {
     const q = pergunta.trim();
     if (!q) return;
     const inicio = performance.now();
     const candidatos = interpretar(q);
-    irPara({ fase: "resposta", pergunta: q, candidatos, documentos: null, ms: performance.now() - inicio });
+    const intencao = interpretarComposicao(q);
+    if (intencao?.tipo === "cidadeNaoAtendida") {
+      irPara({
+        fase: "resposta",
+        pergunta: q,
+        candidatos,
+        documentos: null,
+        composicao: {
+          tipo: "cidadeNaoAtendida",
+          nome: intencao.nome,
+          cidade: intencao.cidade ? cidadeDaResposta(intencao.cidade) : null,
+        },
+        ms: performance.now() - inicio,
+      });
+      setTexto("");
+      return;
+    }
+    irPara({
+      fase: "resposta",
+      pergunta: q,
+      candidatos,
+      documentos: null,
+      composicao: null,
+      ms: performance.now() - inicio,
+    });
     setTexto("");
   }
 
   /**
-   * Passo 2, opcional: procurar documento. É aqui que existe espera de
-   * verdade, e portanto interrupção de verdade.
+   * Passo 2, opcional: procurar documento — e o degrau 2, COMPOR.
+   *
+   * Os dois custam o mesmo: o índice da `/busca` (~5 MB) entra por
+   * `carregarIndice`, interrompível de verdade. Sem intenção de composição,
+   * o índice alimenta a busca de documentos; com intenção (comparar,
+   * lacuna), ele alimenta `compor()` — que é pura e determinística, nada
+   * além do índice entra na resposta.
    */
-  async function procurar(pergunta: string, candidatos: Candidato[]) {
+  async function procurar(pergunta: string, candidatos: Candidato[], intencao?: IntentComposicao) {
     emVoo.current?.abort();
     const ctrl = new AbortController();
     emVoo.current = ctrl;
@@ -194,10 +245,19 @@ export default function AssistenteNavegacao() {
     setPasso({ fase: "pensando", pergunta, candidatos, inicio, decorrido: 0, progresso: null });
 
     try {
-      const documentos = await procurarDocumentos(pergunta, ctrl.signal, (progresso) =>
+      const indice = await carregarIndice(ctrl.signal, (progresso) =>
         setPasso((atual) => (atual.fase === "pensando" ? { ...atual, progresso } : atual))
       );
-      setPasso({ fase: "resposta", pergunta, candidatos, documentos, ms: performance.now() - inicio });
+      const composicao = intencao ? compor(intencao, indice) : null;
+      const documentos = intencao ? null : buscar(pergunta, indice, { limite: 5 });
+      setPasso({
+        fase: "resposta",
+        pergunta,
+        candidatos,
+        documentos,
+        composicao,
+        ms: performance.now() - inicio,
+      });
     } catch (e) {
       const ms = performance.now() - inicio;
       // Interromper é o caminho que a pessoa PEDIU, não uma falha para
@@ -374,7 +434,7 @@ export default function AssistenteNavegacao() {
                 ))}
               </ul>
             </>
-          ) : (
+          ) : passo.composicao ? null : (
             <p className="mt-3 text-sm">
               Não reconheci um destino nessa frase. O assistente só leva a
               páginas que existem — ele não tenta adivinhar a cidade nem o
@@ -382,6 +442,113 @@ export default function AssistenteNavegacao() {
               &quot;vereadores&quot;) e a cidade.
             </p>
           )}
+
+          {/* ── Degrau 2: composição (comparar / lacuna / não atendida) ── */}
+          {passo.composicao ? (
+            <div className="mt-5 border-t border-[var(--cp-border)] pt-4">
+              {passo.composicao.tipo === "comparacao" ? (
+                <>
+                  <p className="text-sm font-semibold">Comparação no índice de documentos:</p>
+                  <p className="mt-1 text-sm">
+                    {passo.composicao.a.nome}: {passo.composicao.a.total} documento
+                    {passo.composicao.a.total === 1 ? "" : "s"} · {passo.composicao.b.nome}:{" "}
+                    {passo.composicao.b.total} documento
+                    {passo.composicao.b.total === 1 ? "" : "s"}
+                  </p>
+                  {passo.composicao.linhas.length > 0 ? (
+                    <table className="mt-3 w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-[var(--cp-border)] text-left text-[var(--cp-text-soft)]">
+                          <th scope="col" className="py-1.5 pr-3 font-normal">Tema</th>
+                          <th scope="col" className="py-1.5 pr-3 font-normal">
+                            {passo.composicao.a.nome}
+                          </th>
+                          <th scope="col" className="py-1.5 font-normal">
+                            {passo.composicao.b.nome}
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {passo.composicao.linhas.map((l) => (
+                          <tr key={l.tema} className="border-b border-[var(--cp-border)] last:border-0">
+                            <td className="py-1.5 pr-3">{l.tema}</td>
+                            <td className="font-tabular py-1.5 pr-3">{l.a}</td>
+                            <td className="font-tabular py-1.5">{l.b}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  ) : (
+                    <p className="mt-2 text-sm">
+                      Nenhum documento das duas cidades tem tema cadastrado — só as
+                      contagens valem.
+                    </p>
+                  )}
+                  <p className="mt-3 text-xs text-[var(--cp-text-soft)]">
+                    Contagem do índice de documentos do portal, que cobre leis municipais e
+                    proposições. Há páginas além dele — quem afirma o dado é a página.
+                  </p>
+                </>
+              ) : null}
+
+              {passo.composicao.tipo === "lacuna" ? (
+                <>
+                  <p className="text-sm font-semibold">
+                    Lacunas no índice de documentos de {passo.composicao.cidade.nome}:
+                  </p>
+                  {passo.composicao.faltando.length > 0 ? (
+                    <ul className="mt-2 flex flex-col gap-1.5">
+                      {passo.composicao.faltando.map((f) => (
+                        <li key={f.tema} className="text-sm">
+                          <span className="font-semibold">{f.tema}</span>
+                          <span className="text-[var(--cp-text-soft)]">
+                            {" "}
+                            — exemplo: {f.exemplo.nome} ({f.exemplo.total} documento
+                            {f.exemplo.total === 1 ? "" : "s"})
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="mt-2 text-sm">
+                      Nenhum tema com documento em outra cidade atendida e zero em{" "}
+                      {passo.composicao.cidade.nome}.
+                    </p>
+                  )}
+                  <p className="mt-3 text-xs text-[var(--cp-text-soft)]">
+                    A ausência é de documento no índice, não de página — {passo.composicao.cidade.nome}{" "}
+                    tem todas as páginas do portal. O índice cobre leis municipais e proposições.
+                  </p>
+                </>
+              ) : null}
+
+              {passo.composicao.tipo === "cidadeNaoAtendida" ? (
+                <>
+                  <p className="text-sm font-semibold">
+                    &quot;{passo.composicao.nome}&quot; não é atendida pelo portal.
+                  </p>
+                  {passo.composicao.cidade ? (
+                    <>
+                      <p className="mt-1 text-sm text-[var(--cp-text-soft)]">
+                        O portal atende {passo.composicao.cidade.nome} — ele não tenta adivinhar
+                        cidade fora da lista de atendidas.
+                      </p>
+                      <Link
+                        href={`/${passo.composicao.cidade.slug}`}
+                        className="mt-3 inline-block rounded-lg border border-[var(--cp-border)] px-3 py-1.5 text-sm hover:border-[var(--cp-primary)]"
+                      >
+                        Ir para {passo.composicao.cidade.nome}
+                      </Link>
+                    </>
+                  ) : (
+                    <p className="mt-1 text-sm text-[var(--cp-text-soft)]">
+                      Atendemos: Betim, Belo Horizonte, São Paulo, Araçuaí, Diamantina e Itinga.
+                    </p>
+                  )}
+                </>
+              ) : null}
+            </div>
+          ) : null}
 
           {passo.documentos ? (
             <div className="mt-5 border-t border-[var(--cp-border)] pt-4">
@@ -406,10 +573,10 @@ export default function AssistenteNavegacao() {
                 ))}
               </ul>
             </div>
-          ) : (
+          ) : passo.composicao ? null : (
             <button
               type="button"
-              onClick={() => procurar(passo.pergunta, passo.candidatos)}
+              onClick={() => procurar(passo.pergunta, passo.candidatos, interpretarComposicao(passo.pergunta) ?? undefined)}
               className="mt-4 cursor-pointer rounded-lg border border-[var(--cp-border)] px-3 py-1.5 text-sm hover:border-[var(--cp-primary)]"
             >
               Procurar nos documentos
@@ -426,7 +593,9 @@ export default function AssistenteNavegacao() {
           {/* Contagem de tempo que PERMANECE — exigência escrita do N8. */}
           <p className="font-tabular mt-4 text-xs text-[var(--cp-text-soft)]">
             Respondido em {formatarDuracao(passo.ms)}
-            {passo.documentos === null ? " · sem rede, sem modelo" : " · índice de documentos"}
+            {passo.documentos === null && passo.composicao === null
+              ? " · sem rede, sem modelo"
+              : " · índice de documentos"}
           </p>
         </div>
       ) : null}
@@ -446,7 +615,7 @@ export default function AssistenteNavegacao() {
           <div className="mt-3 flex flex-wrap gap-2">
             <button
               type="button"
-              onClick={() => procurar(passo.pergunta, passo.candidatos)}
+              onClick={() => procurar(passo.pergunta, passo.candidatos, interpretarComposicao(passo.pergunta) ?? undefined)}
               className="cursor-pointer rounded-lg border border-[var(--cp-border)] px-3 py-1.5 text-sm hover:border-[var(--cp-primary)]"
             >
               Tentar de novo
@@ -468,7 +637,7 @@ export default function AssistenteNavegacao() {
           <div className="mt-3 flex flex-wrap gap-2">
             <button
               type="button"
-              onClick={() => procurar(passo.pergunta, passo.candidatos)}
+              onClick={() => procurar(passo.pergunta, passo.candidatos, interpretarComposicao(passo.pergunta) ?? undefined)}
               className="cursor-pointer rounded-lg border border-[var(--cp-border)] px-3 py-1.5 text-sm hover:border-[var(--cp-primary)]"
             >
               Tentar de novo

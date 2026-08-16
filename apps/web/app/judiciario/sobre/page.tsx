@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "@/lib/judiciario/link";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/judiciario/sobre", {
   title: "Sobre · Controle Popular — Judiciário",
   description:
     "Por que este app existe: mapear quem ocupa, quem indicou e quando vaga cada cadeira do Judiciário — o único Poder cujos membros ninguém elege.",
-};
+});
 
 export default function Sobre() {
   return (

@@ -203,18 +203,84 @@ export function carregarAlertasSigmine(
 
 // ═══ TI × mancha de barragem, e quilombola × mancha de barragem ═════════
 //
-// As duas hoje dão ZERO — resultado publicável, não ausência de conteúdo
-// (ver cabeçalho do arquivo). O "universo" (quantas combinações foram
-// testadas) é o que dá peso ao zero: 16×156 é uma varredura completa,
-// "zero de duas checadas" não seria notícia nenhuma.
+// TI ainda dá ZERO — resultado publicável, não ausência de conteúdo (ver
+// cabeçalho do arquivo). O "universo" (quantas combinações foram testadas)
+// é o que dá peso ao zero: 16×156 é uma varredura completa, "zero de duas
+// checadas" não seria notícia nenhuma.
+//
+// Quilombola DEIXOU de ser zero em 13/08/2026, quando as três camadas de
+// território quilombola foram unificadas: 6 interseções em 3 territórios
+// (AMAROS e MACHADINHO, em Paracatu; SÃO SEBASTIÃO, em Patos de Minas e
+// Presidente Olegário) com manchas de barragens da Kinross (Paracatu) e da
+// Salitre (Serra do Salitre). Estavam no dado o tempo todo, invisíveis por
+// causa de como o dado estava dividido. `carregarAlertaQuilombolaMancha`
+// devolve os ITENS, para a página listar um por um — não só o agregado.
 
 export interface AlertaVazioMedido {
-  /** `true` hoje para as duas camadas — mas lido do arquivo, não suposto. */
+  /** `true` hoje para TI — mas lido do arquivo, não suposto. */
   vazio: boolean;
   qtdFeaturesEncontradas: number;
   qtdTerritorios: number;
   qtdBarragensComManchaPublicada: number;
   universoCombinacoes: number;
+}
+
+// ═══ Índice de posição da barragem, para o deep-link ════════════════════
+//
+// Mesmo padrão de `idxSigminePorProcesso`: a mancha é um arquivo comprimido
+// de 156 feições e o alerta carrega o nome da barragem — casa-se por
+// `estrutura` (nome oficial da FEAM, presente nos dois arquivos, mesma
+// extração). O globo já registra `mancha-inundacao-barragens` como camada
+// (comprimida), então `?camada=mancha-inundacao-barragens&idx=N` abre o
+// polígono da mancha daquela barragem.
+
+let cacheIdxMancha: Map<string, number> | null = null;
+
+function idxBarragemPorEstrutura(): Map<string, number> {
+  if (cacheIdxMancha) return cacheIdxMancha;
+  const dados = lerGeoJSON<{ estrutura: string }>("mancha-inundacao-barragens.geojson.gz");
+  const mapa = new Map<string, number>();
+  dados.features.forEach((f, idx) => {
+    if (!mapa.has(f.properties.estrutura)) mapa.set(f.properties.estrutura, idx);
+  });
+  cacheIdxMancha = mapa;
+  return mapa;
+}
+
+interface PropsAlertaQuilombolaManchaBruto {
+  territorio_arquivo_origem: string;
+  territorio_indice_origem: number;
+  territorio_area_ha: number;
+  territorio_nome: string;
+  territorio_municipio: string;
+  territorio_fase: string;
+  barragem: string;
+  empreendedor: string;
+  municipio_barragem: string;
+  status_pae: string;
+  area_intersecao_ha: number;
+}
+
+export interface AlertaQuilombolaManchaItem {
+  territorioNome: string;
+  territorioMunicipios: string[];
+  territorioFase: string;
+  barragem: string;
+  empreendedor: string;
+  municipioBarragem: string;
+  statusPae: string;
+  areaIntersecaoHa: number;
+  /** Aponta para a MANCHA da barragem em `mancha-inundacao-barragens` — a
+   *  granularidade real desta camada é por barragem, não por interseção. */
+  mapa: AlvoNoMapa | null;
+}
+
+export interface AlertaQuilombolaMancha extends AlertaVazioMedido {
+  itens: AlertaQuilombolaManchaItem[];
+  areaTotalHa: number;
+  /** Territórios DISTINTOS com pelo menos uma interseção (3 hoje: AMAROS,
+   *  MACHADINHO e SÃO SEBASTIÃO) — contado por nome, não por feature. */
+  qtdTerritoriosAtingidos: number;
 }
 
 function carregarAlertaVazioContraMancha(
@@ -244,8 +310,8 @@ export function carregarAlertaTiMancha(): AlertaVazioMedido {
   ]);
 }
 
-export function carregarAlertaQuilombolaMancha(): AlertaVazioMedido {
-  return carregarAlertaVazioContraMancha("alerta-quilombola-mancha.geojson", [
+export function carregarAlertaQuilombolaMancha(): AlertaQuilombolaMancha {
+  const base = carregarAlertaVazioContraMancha("alerta-quilombola-mancha.geojson", [
     "territorios-quilombolas.geojson",
     // Terceira fonte, NOVA em 13/08/2026 (mais tarde): os 13 territórios do
     // INCRA que não entravam nas duas de cima — ver
@@ -253,6 +319,29 @@ export function carregarAlertaQuilombolaMancha(): AlertaVazioMedido {
     // SOBRAVAM AGORA ENTRAM". universoCombinacoes cresce de 14×156 pra
     // 27×156 por causa desta linha.
   ]);
+  const dados = lerGeoJSON<PropsAlertaQuilombolaManchaBruto>("alerta-quilombola-mancha.geojson");
+  const idx = idxBarragemPorEstrutura();
+
+  const itens: AlertaQuilombolaManchaItem[] = dados.features.map((f) => {
+    const p = f.properties;
+    const posicao = idx.get(p.barragem);
+    return {
+      territorioNome: p.territorio_nome,
+      territorioMunicipios: p.territorio_municipio.split(","),
+      territorioFase: p.territorio_fase,
+      barragem: p.barragem,
+      empreendedor: p.empreendedor,
+      municipioBarragem: p.municipio_barragem,
+      statusPae: p.status_pae,
+      areaIntersecaoHa: p.area_intersecao_ha,
+      mapa: posicao !== undefined ? { camada: "mancha-inundacao-barragens", idx: posicao } : null,
+    };
+  });
+
+  const areaTotalHa = itens.reduce((s, i) => s + i.areaIntersecaoHa, 0);
+  const qtdTerritoriosAtingidos = new Set(itens.map((i) => i.territorioNome)).size;
+
+  return { ...base, itens, areaTotalHa, qtdTerritoriosAtingidos };
 }
 
 // ═══ Normas que mexem em área protegida ══════════════════════════════════

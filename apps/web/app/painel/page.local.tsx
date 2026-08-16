@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { listarRotasEditaveis } from "@/lib/painel/rotas-editaveis";
 import { lerEstadoDoRepo } from "@/lib/painel/git-estado";
 import { lerEdicoes } from "@/lib/painel/edicoes-io";
+import { lerUltimoBuild } from "@/lib/painel/ultimo-build";
 
 import PainelClient from "./PainelClient";
 
@@ -48,6 +49,7 @@ export default function PainelPage() {
       rotasEditaveis={listarRotasEditaveis()}
       edicoesIniciais={lerEdicoes()}
       repoInicial={lerEstadoDoRepo()}
+      ultimoBuildInicial={lerUltimoBuild()}
     />
   );
 }

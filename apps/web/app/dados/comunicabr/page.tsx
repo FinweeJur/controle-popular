@@ -14,6 +14,7 @@ import {
   tituloDaCategoria,
 } from "@/lib/comunicabr/mg";
 import BuscaCidade from "./BuscaCidade";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/dados/comunicabr` — o que o governo federal DIZ ter feito em cada uma das
@@ -60,11 +61,11 @@ import BuscaCidade from "./BuscaCidade";
  * TODO NÚMERO DAQUI SAI DE `medirCoberturaUF()`. Nenhum é digitado: o dia em
  * que a coleta for refeita, a tela conta o acervo novo sozinha.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/dados/comunicabr", {
   title: "ComunicaBR nas 853 cidades de Minas — Controle Popular",
   description:
     "O que o governo federal publica sobre a própria atuação em cada município de Minas Gerais, com a lacuna medida: quantos indicadores vieram sem valor, em quais temas, e em quantas cidades. Cada número cita o ministério que o declarou.",
-};
+});
 
 function Numero({ valor, rotulo }: { valor: number; rotulo: string }) {
   return (

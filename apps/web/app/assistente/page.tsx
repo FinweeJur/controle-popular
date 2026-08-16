@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AssistenteNavegacao from "./AssistenteNavegacao";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * A casa do assistente de navegação (N8, metade determinística).
@@ -32,11 +33,11 @@ import AssistenteNavegacao from "./AssistenteNavegacao";
  * roda com a Neon fora do ar — que é o estado de hoje (402).
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/assistente", {
   title: "Assistente de navegação — Controle Popular",
   description:
     "Diga para onde quer ir e o assistente leva você à página certa do portal: cidades, Congresso, Judiciário, ambiental, terras e Paraopeba. Funciona sem rede e sem modelo de linguagem.",
-};
+});
 
 export default function AssistentePage() {
   return (

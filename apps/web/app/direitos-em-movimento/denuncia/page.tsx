@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import Facilitador from "./Facilitador";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/direitos-em-movimento/denuncia` — porta "Como denunciar", 4 de 4, e a
@@ -24,11 +25,11 @@ import Facilitador from "./Facilitador";
  * `fontes`), sem outra ida ao banco depois que a pessoa já está no meio da
  * entrevista.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-em-movimento/denuncia", {
   title: "Como denunciar — Direitos em Movimento | Controle Popular",
   description:
     "Um passo a passo guiado para registrar uma violação de direitos humanos. O documento nasce no seu navegador e nunca é enviado a este ou a qualquer outro servidor.",
-};
+});
 
 export default async function DenunciaPage() {
   const cidades = await listarCidades();

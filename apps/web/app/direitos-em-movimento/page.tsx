@@ -5,6 +5,7 @@ import {
 } from "@/lib/db/queries/direito-critico";
 import { REDE_ITENS, LAI_ESTADUAL, LAI_FEDERAL, NAO_VERIFICADO } from "@/lib/betim/redeProtecao";
 import { formatNumberBR } from "@/lib/betim/format";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * `/direitos-em-movimento` — a PORTA, não uma seção nova para construir.
@@ -39,11 +40,11 @@ import { formatNumberBR } from "@/lib/betim/format";
  *    dado dinâmico do portal — ficaram de fora de propósito, não por
  *    esquecimento)
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/direitos-em-movimento", {
   title: "Direitos em Movimento — Controle Popular",
   description:
     "Que lei protege isso, onde buscar ajuda, como pedir informação e como denunciar — reunidos num lugar só, para quem sofreu ou viu uma violação de direitos.",
-};
+});
 
 const CARD_COR = "var(--cp-alert)";
 

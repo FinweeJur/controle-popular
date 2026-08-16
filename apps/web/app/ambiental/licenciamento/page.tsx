@@ -6,12 +6,13 @@ import {
   listarMunicipiosComLicenciamento,
 } from "@/lib/db/queries/ambiental-licenciamento";
 import BuscaMunicipioLicenciamento from "./BuscaMunicipioLicenciamento";
+import { metadataEditavel } from "@/lib/edicoes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/ambiental/licenciamento", {
   title: "Licenciamento ambiental — Controle Popular · Ambiental",
   description:
     "Todo empreendimento com licença ambiental deferida em Minas Gerais, por município, setor, modalidade e classe — do censo público da Semad (IDE-Sisema).",
-};
+});
 
 /**
  * `/ambiental/licenciamento` — a F4 do plano de execução. Método de coleta

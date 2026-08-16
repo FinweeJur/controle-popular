@@ -33,6 +33,7 @@ import {
   MUNICIPIOS_EXECUCAO_FGV,
   STATUS_PROJETOS_FGV,
 } from "@/lib/paraopeba/execucao-fgv";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * Home da frente /paraopeba — acompanhamento da reparação pelo rompimento
@@ -49,11 +50,11 @@ import {
  * Nenhum número aqui é digitado — todos vêm da contagem real dos arquivos
  * de `lib/paraopeba/`.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/paraopeba", {
   title: "Paraopeba — Controle Popular",
   description:
     "Acompanhamento da reparação pelo rompimento da barragem da Vale em Brumadinho: clipping de notícias, linha do tempo do processo, quem atua na reparação e o auxílio emergencial pago mês a mês.",
-};
+});
 
 const ZONA = ZONAS.find((z) => z.id === "paraopeba")!;
 

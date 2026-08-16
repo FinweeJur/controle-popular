@@ -8,6 +8,7 @@ import {
   lerEdicoes,
 } from "@/lib/painel/edicoes-io";
 import { lerEstadoDoRepo } from "@/lib/painel/git-estado";
+import { lerUltimoBuild } from "@/lib/painel/ultimo-build";
 
 /**
  * API do painel de edição — `GET`, `POST` e `DELETE` sobre `data/edicoes.json`.
@@ -47,6 +48,7 @@ export async function GET(request: Request) {
     edicoes: lerEdicoes(),
     pendentes: listarEdicoes().length,
     repo: lerEstadoDoRepo(),
+    ultimoBuild: lerUltimoBuild(),
   });
 }
 

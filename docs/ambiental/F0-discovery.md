@@ -6,7 +6,7 @@
 > quem tem de resolver. Licenças de uso das fontes: `docs/ambiental/PROVENIENCIA.json`.
 >
 > **A sessão de 2026-08-09 fecha a pergunta que a pesquisa de 2026-07-21**
-> (`docs/betim/ambiental-pecma-research.md`) **deixou em aberto** — "sem fonte
+> (`docs/_historico/betim-ambiental-pecma-research.md`) **deixou em aberto** — "sem fonte
 > ambiental por município" — que só tinha olhado PECMA e o site do MPMG. Três fontes
 > novas foram investigadas a pedido: IBAMA (§10), cadastro nacional de barragens (§11)
 > e IGAM/SEMAD-MG (§12). **Nenhuma das três confirma "sem fonte"** — pelo contrário,
@@ -371,7 +371,7 @@ robots.txt → 404 (sem restrição publicada).
 ## 7. Restrições do app que a F0 confirmou
 
 - **`searchParams` em Server Component quebra o build de `output: 'export'`** — não degrada,
-  **para**. Mas o alvo GitHub Pages **já não fecha hoje**: `docs/deploy-github-pages.md` §3
+  **para**. Mas o alvo GitHub Pages **já não fecha hoje**: `docs/planos/deploy-github-pages.md` §3
   lista 11 páginas na mesma situação. Padrão A é seguro no alvo Cloudflare (o real) e só
   acrescenta 2 linhas àquela tabela. Se o Pages voltar a importar, o remédio documentado
   para lista grande é **"JSON estático + tabela cliente"** (um Route Handler `GET` sem
@@ -746,7 +746,7 @@ de entrar como fonte:
 ```
 SISEMACADU (Cadu — cadastro de PF/PJ, não é fonte de dado)  · SEMADGAIA (Fiscalização —
 provavelmente o backend do CAP, §13.2)  · SEMADPECMA (Programa Estadual de Conversão de
-Multas — permanece login-gated, ver docs/betim/ambiental-pecma-research.md)  ·
+Multas — permanece login-gated, ver docs/_historico/betim-ambiental-pecma-research.md)  ·
 FEAMSLA (= SLA, já documentado)  · FEAMSIGIBAR (= SIGIBAR, §13.1)  · IEFMG Florestas ·
 IEFMGPESCA (Pesca Amadora)  · IEFREC (Registro Fauna/Flora)  · IGAMDAURH (Declaração Anual
 de Uso de Recursos Hídricos)  · IGAMMIRA (Monitoramento Remoto Integrado das Águas)  ·

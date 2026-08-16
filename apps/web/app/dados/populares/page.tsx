@@ -8,6 +8,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import PopularesClient from "./PopularesClient";
+import { metadataEditavel } from "@/lib/edicoes";
 
 /**
  * "Páginas mais vistas" do portal inteiro — todas as zonas juntas.
@@ -23,11 +24,11 @@ import PopularesClient from "./PopularesClient";
  * parado até lá. `PopularesClient` busca a contagem atual no navegador,
  * depois de montada (ver `app/api/pageview/route.din.ts`).
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = metadataEditavel("/dados/populares", {
   title: "Páginas mais vistas — Controle Popular",
   description:
     "O que mais se lê no portal: ranking de visualizações das páginas principais de Cidades, Congresso e Judiciário.",
-};
+});
 
 export default async function PaginasPopularesPage() {
   const cidades = await listarCidades();

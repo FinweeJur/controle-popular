@@ -8,6 +8,7 @@
 
 import * as THREE from 'three';
 import { latLonToVec3 } from '../core/earth.js';
+import { tamanhoDePontoEmPx } from './pontos.js';
 
 /**
  * Altura das camadas sobre a superfície.
@@ -157,6 +158,12 @@ export function geojsonToFilled(fc, { color = 0xfbbf24, opacity = 0.28, incluir 
  * Stub (G2): converte feições de ponto em THREE.Points — 1 draw call para
  * milhares de feições. Hoje usa PointsMaterial simples.
  *
+ * ⚠️ `sizeAttenuation: false` + tamanho em PIXELS — não radianos. Os
+ * `pointSize` do registro (0,005–0,007) nasceram calibrados para unidades
+ * de mundo: 0,006 rad sobre a esfera unitária são ~38 km, e cada ponto
+ * virava um quadrado gigante no zoom da bacia (imóveis da União,
+ * reportado em 15/08). A conversão mora em `pontos.js`, com teste.
+ *
  * TODO(G2): trocar por ShaderMaterial de sprite redondo com rampa de cor
  * por propriedade (score do pipeline: verde → âmbar → vermelho), conforme
  * plano §4.4.
@@ -164,11 +171,11 @@ export function geojsonToFilled(fc, { color = 0xfbbf24, opacity = 0.28, incluir 
  * @param {object} fc   GeoJSON FeatureCollection (geometrias Point/MultiPoint)
  * @param {object} [opts]
  * @param {number|string} [opts.color=0xfbbf24]
- * @param {number} [opts.size=0.01]
+ * @param {number} [opts.size=0.006] pointSize do registro (ver pontos.js)
  * @param {function} [opts.incluir] filtro por feição — ver `feicoes()`
  * @returns {THREE.Points}
  */
-export function geojsonToPoints(fc, { color = 0xfbbf24, size = 0.01, incluir } = {}) {
+export function geojsonToPoints(fc, { color = 0xfbbf24, size = 0.006, incluir } = {}) {
   const positions = [];
   for (const f of feicoes(fc, incluir)) {
     const g = f.geometry;
@@ -182,6 +189,12 @@ export function geojsonToPoints(fc, { color = 0xfbbf24, size = 0.01, incluir } =
   }
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-  const material = new THREE.PointsMaterial({ color, size, transparent: true, opacity: 0.95 });
+  const material = new THREE.PointsMaterial({
+    color,
+    size: tamanhoDePontoEmPx(size),
+    sizeAttenuation: false,
+    transparent: true,
+    opacity: 0.95,
+  });
   return new THREE.Points(geometry, material);
 }
