@@ -70,11 +70,25 @@ regra do projeto: nada de mídia sem fonte declarada — o mesmo padrão de
 ### Mapa letra→ícone (pendente)
 
 Os ícones das duas fontes vivem nas letras ASCII sem nome descritivo, e a
-automação não lê imagem — o mapa letra→ícone é humano. `mapa-icones.html`
-(gerado em 16/08, no temp do PC de trabalho — `C:\Users\teste\AppData\Local\
-Temp\opencode\brasilcoms\mapa-icones.html`) renderiza as duas fontes em grade
-com cada letra rotulada e a checklist dos 24 ícones pedidos; o resultado
-preenche o componente `BrasilIcon` (ver TODO item 14).
+automação não lê imagem — o mapa letra→ícone é humano.
+
+**Método recomendado: Character Map do Windows (`charmap.exe`).**
+
+1. Abra `charmap.exe` (Pesquisar Windows → "Mapa de Caracteres").
+2. Em "Fonte", selecione **Brasil Icons**.
+3. Rola a grade até achar o ícone desejado (tucano, arara, etc.).
+4. Clique nele — o Character Map mostra o **"Keystroke"** (atalho) embaixo.
+5. Anote a letra. Repita para as 11 figuras pedidas.
+6. Troque a fonte para **Icones do Brasil** e repita para as 13 figuras.
+
+Formato pra colar na conversa:
+```
+tucano=h; arara=m; cafe em graos=z; ...
+```
+
+O componente `BrasilIcon` (`apps/web/app/BrasilIcon.tsx`) já tem o esqueleto
+pronto com placeholders — ao receber o mapa, preenche `MAP_BRASIL_ICONS` e
+`MAP_ICONES_BRASIL` e os ícones ficam funcionais com microanimações CSS.
 
 ## Origem dos arquivos
 

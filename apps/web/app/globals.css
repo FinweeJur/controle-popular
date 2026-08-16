@@ -392,6 +392,37 @@ body {
   animation: cp-glow 1.6s ease-in-out infinite;
 }
 
+/* ── Ícones Brasil ───────────────────────────────────────────────────
+   Microanimações para os ícones fonte (Brasil Icons / Icones do Brasil).
+   Sempre sutil, sempre geométrica (transform), sempre desligável. */
+
+/* Hover: escala leve + sutil brilho no contraste. */
+.cp-icon-hover {
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.cp-icon-hover:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--color-primary) 40%, transparent));
+}
+
+/* Pulse: respiração lenta pra ícones que pedem atenção (ex. alerta). */
+@keyframes cp-icon-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+.cp-icon-pulse {
+  animation: cp-icon-pulse 2s ease-in-out infinite;
+}
+
+/* Spin: rotação contínua (ex. carregando). */
+@keyframes cp-icon-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.cp-icon-spin {
+  animation: cp-icon-spin 1.2s linear infinite;
+}
+
 /* Sublinhado que "cresce" da esquerda -- usado nos links de navegação
    do Header em vez de só trocar de cor. */
 .cp-link-underline {
@@ -424,15 +455,23 @@ body {
     transform: none;
   }
   .cp-pulse-alert,
-  .cp-glow-primary:hover {
+  .cp-glow-primary:hover,
+  .cp-icon-pulse,
+  .cp-icon-spin {
     animation: none !important;
+  }
+  .cp-icon-hover:hover {
+    transform: none;
+    filter: none;
   }
 }
 
 /* Alto contraste prioriza legibilidade sobre efeito -- sem pulse/glow
    coloridos, só o essencial de foco/hover que já existe. */
 [data-theme="high-contrast"] .cp-pulse-alert,
-[data-theme="high-contrast"] .cp-glow-primary:hover {
+[data-theme="high-contrast"] .cp-glow-primary:hover,
+[data-theme="high-contrast"] .cp-icon-pulse,
+[data-theme="high-contrast"] .cp-icon-spin {
   animation: none;
 }
 
