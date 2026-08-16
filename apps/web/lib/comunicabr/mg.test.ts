@@ -11,8 +11,8 @@ import {
 } from "./mg";
 
 /**
- * Estes testes rodam sobre o ACERVO REAL (`data/comunicabr-31.json`, 853
- * municípios, versionado no repositório) — de propósito.
+ * Estes testes rodam sobre o ACERVO REAL (`public/data/comunicabr-31.json`,
+ * 853 municípios, versionado no repositório) — de propósito.
  *
  * O que eles travam não é aritmética: é a afirmação editorial da tela. Dizer
  * "este tema não tem valor" é acusar alguém, e de quem é a falta depende de
@@ -26,8 +26,8 @@ import {
  */
 
 describe("o acervo de Minas é lido pelo codec, não percorrido na mão", () => {
-  test("a leitura devolve as 853 cidades e a cobertura medida", () => {
-    const c = coberturaComunicaBR();
+  test("a leitura devolve as 853 cidades e a cobertura medida", async () => {
+    const c = await coberturaComunicaBR();
     expect(c).not.toBeNull();
     expect(c!.municipiosComResposta).toBe(853);
     expect(c!.itens).toBe(174012);
@@ -44,17 +44,17 @@ describe("o acervo de Minas é lido pelo codec, não percorrido na mão", () => 
    * entrou pela porta certa: se alguém trocar `expandirArquivo()` por um
    * `municipios[].itens`, a cobertura cai para zero aqui antes de cair na tela.
    */
-  test("uma cidade qualquer volta com os itens expandidos", () => {
-    const betim = municipioComunicaBR("310670");
+  test("uma cidade qualquer volta com os itens expandidos", async () => {
+    const betim = await municipioComunicaBR("310670");
     expect(betim).not.toBeNull();
     expect(betim!.nomeIbge).toBe("Betim/MG");
     expect(betim!.cobertura.itens).toBe(204);
     expect(betim!.cobertura.itensComValor).toBe(105);
-    expect(municipioComunicaBR("3106200")).toBeNull(); // o IBGE de 7 dígitos não é a chave desta API
+    expect(await municipioComunicaBR("3106200")).toBeNull(); // o IBGE de 7 dígitos não é a chave desta API
   });
 
-  test("o resumo cobre as 853 e sai em ordem alfabética, sem o sufixo da UF", () => {
-    const r = resumoDosMunicipios();
+  test("o resumo cobre as 853 e sai em ordem alfabética, sem o sufixo da UF", async () => {
+    const r = await resumoDosMunicipios();
     expect(r.length).toBe(853);
     expect(r[0].nome).toBe("Abadia dos Dourados");
     expect(r.every((m) => !m.nome.includes("/"))).toBe(true);
@@ -67,8 +67,8 @@ describe("as duas espécies de vazio — de quem é a lacuna", () => {
    * afirmação sobre o portal federal; escrevê-la como lacuna municipal
    * acusaria 853 prefeituras de algo que não é delas.
    */
-  test("governo digital é lacuna da fonte na UF inteira", () => {
-    const l = lacunaDaCategoria("governo-digital");
+  test("governo digital é lacuna da fonte na UF inteira", async () => {
+    const l = await lacunaDaCategoria("governo-digital");
     expect(l).not.toBeNull();
     expect(l!.cidadesZeradas).toBe(853);
     expect(l!.cidades).toBe(853);
@@ -83,16 +83,16 @@ describe("as duas espécies de vazio — de quem é a lacuna", () => {
    * amostra de 5 cidades lida só no primeiro nível; se alguém reintroduzir
    * aquela conclusão na tela, este teste cai.
    */
-  test("mulheres tem muito item vazio e nenhuma cidade zerada", () => {
-    const l = lacunaDaCategoria("mulheres");
+  test("mulheres tem muito item vazio e nenhuma cidade zerada", async () => {
+    const l = await lacunaDaCategoria("mulheres");
     expect(l).not.toBeNull();
     expect(l!.itensVazios).toBeGreaterThan(20000);
     expect(l!.cidadesZeradas).toBe(0);
     expect(l!.especie).toBe("poucas-cidades");
   });
 
-  test("categoria que a fonte lista sem nenhum item fica na espécie própria", () => {
-    const l = lacunaDaCategoria("igualdade-racial");
+  test("categoria que a fonte lista sem nenhum item fica na espécie própria", async () => {
+    const l = await lacunaDaCategoria("igualdade-racial");
     expect(l!.itens).toBe(0);
     expect(l!.especie).toBe("sem-item");
   });
@@ -103,8 +103,8 @@ describe("as duas espécies de vazio — de quem é a lacuna", () => {
    * é de uma cidade só. Todas as 17 categorias da fonte entram na lista —
    * nenhuma some por não ter buraco.
    */
-  test("a lista traz todas as categorias, da lacuna mais estrutural para a mais local", () => {
-    const lacunas = lacunasDaUF();
+  test("a lista traz todas as categorias, da lacuna mais estrutural para a mais local", async () => {
+    const lacunas = await lacunasDaUF();
     expect(lacunas.length).toBe(17);
     const ordem = lacunas.map((l) => l.especie);
     expect(ordem[0]).toBe("sem-item");
@@ -120,9 +120,10 @@ describe("as duas espécies de vazio — de quem é a lacuna", () => {
  * 174.012 itens do acervo — porque basta um para a página dizer "R$ 0,00
  * repassado" onde o governo disse "não se aplica".
  */
-test("nenhum item vazio do acervo carrega um número por baixo", () => {
-  const vazioComNumero = resumoDosMunicipios()
-    .map((r) => municipioComunicaBR(r.codigo))
+test("nenhum item vazio do acervo carrega um número por baixo", async () => {
+  const resumo = await resumoDosMunicipios();
+  const municipios = await Promise.all(resumo.map((r) => municipioComunicaBR(r.codigo)));
+  const vazioComNumero = municipios
     .flatMap((m) => m?.categorias.flatMap((c) => c.itens) ?? [])
     .filter((i) => i.valor === null && i.valorBruto !== null);
   expect(vazioComNumero).toEqual([]);
@@ -137,8 +138,8 @@ test("nenhum item vazio do acervo carrega um número por baixo", () => {
  * anos seguidos, com aparência de medição, exatamente onde a fonte se calou.
  */
 describe("a série histórica não pode inventar zero", () => {
-  test("a série de Estados de Betim é zero de ponta a ponta e não passa no filtro", () => {
-    const betim = municipioComunicaBR("310670")!;
+  test("a série de Estados de Betim é zero de ponta a ponta e não passa no filtro", async () => {
+    const betim = (await municipioComunicaBR("310670"))!;
     const sub = betim.categorias
       .flatMap((c) => c.subindicadores)
       .find((s) => s.titulo.includes("entes federados"))!;

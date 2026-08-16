@@ -78,10 +78,12 @@ function Numero({ valor, rotulo }: { valor: number; rotulo: string }) {
   );
 }
 
-export default function ComunicaBRIndex() {
-  const cobertura = coberturaComunicaBR();
-  const meta = metaComunicaBR();
-  const cidades = resumoDosMunicipios();
+export default async function ComunicaBRIndex() {
+  const [cobertura, meta, cidades] = await Promise.all([
+    coberturaComunicaBR(),
+    metaComunicaBR(),
+    resumoDosMunicipios(),
+  ]);
 
   if (!cobertura || !meta || cidades.length === 0) {
     return (
@@ -89,14 +91,14 @@ export default function ComunicaBRIndex() {
         <h1 className="font-display text-3xl font-bold">ComunicaBR</h1>
         <p className="mt-3 text-text-soft">
           A coleta do ComunicaBR ainda não está neste build. O acervo é um arquivo versionado
-          (<code>apps/web/data/comunicabr-31.json</code>); sem ele esta página não inventa número.
+          (<code>apps/web/public/data/comunicabr-31.json</code>); sem ele esta página não inventa número.
         </p>
       </main>
     );
   }
 
   const pctVazio = Math.round((cobertura.itensVazios / cobertura.itens) * 100);
-  const lacunas = lacunasDaUF();
+  const lacunas = await lacunasDaUF();
   const semItem = lacunas.filter((l) => l.especie === "sem-item");
   const naUFInteira = lacunas.filter((l) => l.especie === "fonte-em-toda-uf");
   const comValor = lacunas.filter((l) => l.itens > 0);

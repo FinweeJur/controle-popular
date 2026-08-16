@@ -221,11 +221,12 @@ export interface MunicipioMG {
  * Montada por JUNÇÃO EXATA de dois arquivos que já existiam no repositório, e
  * de propósito sem casar nome nenhum:
  *
- * - `data/risco-climatico.json` (AdaptaBrasil/MCTI) tem os 853 códigos de 7
+ * - `public/data/risco-climatico.json` (AdaptaBrasil/MCTI) tem os 853 códigos de 7
  *   dígitos, sem nome;
- * - `data/comunicabr-31.json` tem os 853 nomes oficiais do IBGE com o código
- *   de 6 dígitos — que aqui, ao contrário do que o nome do arquivo sugere, é o
- *   prefixo IBGE (`3106200` → `310620`) e não a numeração do ComunicaBR.
+ * - `public/data/comunicabr-31.json` tem os 853 nomes oficiais do IBGE com o
+ *   código de 6 dígitos — que aqui, ao contrário do que o nome do arquivo
+ *   sugere, é o prefixo IBGE (`3106200` → `310620`) e não a numeração do
+ *   ComunicaBR.
  *
  * Medido: os 853 prefixos de 6 dígitos são distintos e casam 853/853, sem
  * colisão e sem sobra. Por isso a junção é determinística — se um dia deixar
@@ -242,10 +243,16 @@ export function malhaMinas(raiz = process.cwd()): MunicipioMG[] {
   if (malhaCache) return malhaCache;
   try {
     const risco = JSON.parse(
-      readFileSync(path.join(raiz, "data", "risco-climatico.json"), "utf-8")
+      // Movido de data/ para public/data/ em 16/08/2026 (ver `lib/clima/risco.ts`).
+      readFileSync(path.join(raiz, "public", "data", "risco-climatico.json"), "utf-8")
     ) as { linhas: { id_municipio: string }[] };
     const comunica = JSON.parse(
-      readFileSync(path.join(raiz, "data", "comunicabr-31.json"), "utf-8")
+      // Movido de data/ para public/data/ em 16/08/2026 — o arquivo agora é
+      // servido pelo binding de Assets do Worker em vez de embutido no bundle
+      // (ver `lib/comunicabr/mg.ts`). `malhaMinas()` só roda no script de
+      // coleta (build machine, filesystem real), então continua sendo
+      // `readFileSync` puro — só o caminho mudou.
+      readFileSync(path.join(raiz, "public", "data", "comunicabr-31.json"), "utf-8")
     ) as { municipios: { cod: number; nome: string }[] };
 
     const porPrefixo = new Map<string, string>();

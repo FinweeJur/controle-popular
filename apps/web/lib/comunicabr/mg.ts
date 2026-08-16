@@ -1,6 +1,8 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+
 import {
   type ArquivoComunicaBR,
   type CoberturaUF,
@@ -10,8 +12,12 @@ import {
 import type { MunicipioComunicaBR, SerieComunicaBR } from "./indicadores";
 
 /**
- * O acervo do ComunicaBR já coletado (`data/comunicabr-31.json`), lido no
- * BUILD e servido às telas de `/dados/comunicabr`.
+ * O acervo do ComunicaBR já coletado (`public/data/comunicabr-31.json`),
+ * servido às telas de `/dados/comunicabr`. Lido no build local via
+ * `readFileSync`, e no Worker publicado via `env.ASSETS.fetch()` — nunca
+ * `readFileSync` de caminho estático em código de Worker, que o adapter
+ * embutiria no bundle (ver `lerArquivoBruto()` abaixo, e
+ * `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`).
  *
  * ═══ POR QUE ARQUIVO, E NÃO BANCO ═══
  *
@@ -108,49 +114,110 @@ interface Acervo {
 
 /** `undefined` = ainda não tentei ler; `null` = tentei e não há arquivo. */
 let cache: Acervo | null | undefined;
+/** Evita duas leituras em paralelo na primeira chamada concorrente (SSG
+ *  chama várias páginas ao mesmo tempo; sem isto, cada uma dispararia sua
+ *  própria leitura de 2 MiB antes da primeira terminar de preencher `cache`). */
+let emVoo: Promise<Acervo | null> | null = null;
 
-function acervo(): Acervo | null {
-  if (cache !== undefined) return cache;
+/**
+ * Lê `public/data/comunicabr-31.json` — mas NUNCA com `readFileSync` de um caminho
+ * estático em código que roda no Worker. Esse padrão faz o
+ * OpenNext/Cloudflare adapter EMBUTIR o conteúdo do arquivo dentro do bundle
+ * do Worker (medido: moveu o arquivo para `public/data/` sem trocar o
+ * mecanismo de leitura, e o tamanho do bundle não mudou nem 1 byte — não é o
+ * diretório que importa, é a chamada de `fs` estática). `comunicabr-31.json`
+ * sozinho pesa 687,9 KiB gzip — ~22% do teto de 3 MiB do Worker — e foi o que
+ * derrubou o deploy em 16/08/2026 (`docs/HANDOFF-PAYLOAD-LEGISLACAO.md`).
+ *
+ * A saída: `env.ASSETS` (o binding de Static Assets do Cloudflare) serve o
+ * arquivo por HTTP, sem ele nunca entrar no bundle do Worker — mesma
+ * separação que já existe para `.geojson`/`.cache` de outras rotas, só que
+ * chamada explicitamente em vez de implícita pelo Next. Em build local
+ * (`next build` nesta máquina) e em teste (`vitest`) não há Worker nenhum de
+ * pé, `getCloudflareContext` lança, e cai no `readFileSync` de sempre — o
+ * arquivo físico continua em `public/data/` também, então os DOIS caminhos
+ * leem o MESMO arquivo, só por mecanismos diferentes.
+ */
+/**
+ * Achado medido em 16/08/2026, depurando por que o build local publicava a
+ * seção vazia mesmo com o arquivo em disco: durante o `next build` NESTA
+ * máquina, `getCloudflareContext({ async: true })` já devolve `env.ASSETS`
+ * como objeto — não lança, como o comentário acima de `lerArquivoBruto`
+ * assumia. O binding de build local É alcançável, só que o asset ainda não
+ * está publicado nele nesse momento do build, então `ASSETS.fetch()` devolve
+ * **404** em vez de lançar. Uma versão anterior deste código tratava esse
+ * 404 como falha "real" e relançava — pulando o `readFileSync` que
+ * funcionaria e fazendo `acervo()` cair em `cache = null` em SILÊNCIO
+ * (nenhum erro de build, só a seção saindo vazia).
+ *
+ * A regra agora é simples e não distingue os dois casos: QUALQUER falha do
+ * lado do binding — `getCloudflareContext` lançar, `env.ASSETS` ausente,
+ * `fetch` devolver não-200 — cai para `readFileSync`. Isso cobre build local
+ * (o caso medido acima) e também não piora produção: se `ASSETS.fetch` falhar
+ * de verdade num Worker publicado, o arquivo também não está embutido no
+ * bundle (é a razão deste módulo existir), então `readFileSync` falha do
+ * mesmo jeito e a seção some — mesma degradação segura que `lib/clima/risco.ts`
+ * já pratica para arquivo ausente.
+ */
+async function lerArquivoBruto(): Promise<ArquivoComunicaBR> {
   try {
-    const bruto = JSON.parse(
-      readFileSync(path.join(process.cwd(), "data", ARQUIVO), "utf-8")
-    ) as ArquivoComunicaBR;
-    const municipios = expandirArquivo(bruto);
-    cache = {
-      meta: {
-        uf: bruto.uf,
-        geradoEm: bruto.gerado_em,
-        fonte: bruto.fonte,
-        ressalva: bruto.ressalva,
-        duracaoS: bruto.duracao_s,
-      },
-      municipios,
-      cobertura: medirCoberturaUF(
-        municipios,
-        bruto.municipios.length + bruto.recusados.length,
-        bruto.recusados.length
-      ),
-      porCodigo: new Map(municipios.map((m) => [String(m.codigoIbge), m])),
-    };
+    const { env } = await getCloudflareContext({ async: true });
+    if (env.ASSETS) {
+      const resp = await env.ASSETS.fetch(new URL(`http://assets.local/data/${ARQUIVO}`));
+      if (resp.ok) return (await resp.json()) as ArquivoComunicaBR;
+    }
   } catch {
-    // Arquivo ausente não derruba o build — mesma decisão de `lib/clima/risco.ts`:
-    // um clone antes da primeira coleta não pode impedir a publicação do portal
-    // inteiro por causa de uma seção. As telas devolvem `notFound()`/estado vazio.
-    cache = null;
+    // Cai para o disco abaixo — ver o comentário acima.
   }
-  return cache;
+  return JSON.parse(
+    readFileSync(path.join(process.cwd(), "public", "data", ARQUIVO), "utf-8")
+  ) as ArquivoComunicaBR;
 }
 
-export function metaComunicaBR(): MetaComunicaBR | null {
-  return acervo()?.meta ?? null;
+async function acervo(): Promise<Acervo | null> {
+  if (cache !== undefined) return cache;
+  if (emVoo) return emVoo;
+  emVoo = (async () => {
+    try {
+      const bruto = await lerArquivoBruto();
+      const municipios = expandirArquivo(bruto);
+      cache = {
+        meta: {
+          uf: bruto.uf,
+          geradoEm: bruto.gerado_em,
+          fonte: bruto.fonte,
+          ressalva: bruto.ressalva,
+          duracaoS: bruto.duracao_s,
+        },
+        municipios,
+        cobertura: medirCoberturaUF(
+          municipios,
+          bruto.municipios.length + bruto.recusados.length,
+          bruto.recusados.length
+        ),
+        porCodigo: new Map(municipios.map((m) => [String(m.codigoIbge), m])),
+      };
+    } catch {
+      // Arquivo ausente não derruba o build — mesma decisão de `lib/clima/risco.ts`:
+      // um clone antes da primeira coleta não pode impedir a publicação do portal
+      // inteiro por causa de uma seção. As telas devolvem `notFound()`/estado vazio.
+      cache = null;
+    }
+    return cache;
+  })();
+  return emVoo;
 }
 
-export function coberturaComunicaBR(): CoberturaUF | null {
-  return acervo()?.cobertura ?? null;
+export async function metaComunicaBR(): Promise<MetaComunicaBR | null> {
+  return (await acervo())?.meta ?? null;
 }
 
-export function municipioComunicaBR(codigo: string): MunicipioComunicaBR | null {
-  return acervo()?.porCodigo.get(codigo) ?? null;
+export async function coberturaComunicaBR(): Promise<CoberturaUF | null> {
+  return (await acervo())?.cobertura ?? null;
+}
+
+export async function municipioComunicaBR(codigo: string): Promise<MunicipioComunicaBR | null> {
+  return (await acervo())?.porCodigo.get(codigo) ?? null;
 }
 
 /**
@@ -167,8 +234,8 @@ export interface ResumoMunicipio {
   comValor: number;
 }
 
-export function resumoDosMunicipios(): ResumoMunicipio[] {
-  return (acervo()?.municipios ?? [])
+export async function resumoDosMunicipios(): Promise<ResumoMunicipio[]> {
+  return ((await acervo())?.municipios ?? [])
     .map((m) => ({
       codigo: String(m.codigoIbge),
       nome: m.nomeIbge.replace(/\/[A-Z]{2}$/, ""),
@@ -222,8 +289,8 @@ function especie(cidadesZeradas: number, cidades: number, itens: number): Especi
  * lacuna mais estrutural para a mais local — é a ordem em que a tela precisa
  * explicar, porque a primeira frase que o leitor lê é a que ele leva.
  */
-export function lacunasDaUF(): LacunaDeCategoria[] {
-  const c = coberturaComunicaBR();
+export async function lacunasDaUF(): Promise<LacunaDeCategoria[]> {
+  const c = await coberturaComunicaBR();
   if (!c) return [];
   const cidades = c.municipiosComResposta;
   const ordem: Record<EspecieDeLacuna, number> = {
@@ -254,8 +321,8 @@ export function lacunasDaUF(): LacunaDeCategoria[] {
 }
 
 /** A classificação de UMA categoria, para a ficha da cidade consultar. */
-export function lacunaDaCategoria(categoria: string): LacunaDeCategoria | null {
-  return lacunasDaUF().find((l) => l.categoria === categoria) ?? null;
+export async function lacunaDaCategoria(categoria: string): Promise<LacunaDeCategoria | null> {
+  return (await lacunasDaUF()).find((l) => l.categoria === categoria) ?? null;
 }
 
 /**

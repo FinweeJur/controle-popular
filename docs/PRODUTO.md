@@ -62,7 +62,7 @@ Todas as medições abaixo foram refeitas em 16/08 contra o código (medição e
 |---|---|---|
 | 853 | municípios de MG na camada de divisas do globo | `node -e "const fs=require('fs');const f=JSON.parse(fs.readFileSync('apps/web/public/terras/globo/dados/camadas/municipios-mg.geojson','utf8'));console.log(f.features.length)"` |
 | 8.570 | normas federais do MMA no acervo de legislação | `node -e "const f=require('./etl/betim/dados/legislacao-mma.json');console.log(f.linhas.length)"` |
-| 2,26 MB | dado dos 853 municípios compactado para o build | `Get-Item apps/web/data/comunicabr-31.json \| Select-Object Length` |
+| 2,26 MB | dado dos 853 municípios compactado para o build | `Get-Item apps/web/public/data/comunicabr-31.json \| Select-Object Length` |
 | 1.471+ | páginas do último build — 21 significa banco não lido | `node -e "console.log(Object.keys(require('./.next/prerender-manifest.json').routes).length)"` |
 
 ## Origem

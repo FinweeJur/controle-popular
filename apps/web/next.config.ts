@@ -217,6 +217,25 @@ const nextConfig: NextConfig = {
     : {
         pageExtensions: ["tsx", "ts", "din.tsx", "din.ts", ...extensoesDoPainel],
       }),
+  /**
+   * ═══ POR QUE ISTO EXISTE: `readFileSync` DE CAMINHO ESTÁTICO EMBUTE O
+   * ARQUIVO NO BUNDLE DO WORKER, MESMO NUM RAMO QUE NUNCA RODA LÁ ═══
+   *
+   * `lib/comunicabr/mg.ts` lê `public/data/comunicabr-31.json` (2,16 MiB, 688
+   * KiB gzip) por `env.ASSETS.fetch()` quando publicado — mas mantém um
+   * `readFileSync` do MESMO caminho como fallback para build local e teste
+   * (sem Worker de pé, sem binding). Medido em 16/08/2026: mesmo esse
+   * `readFileSync` estando dentro de um `catch`, atrás de um `if (env.ASSETS)`
+   * que nunca é falso em produção, o tracer de saída do Next (`@vercel/nft`)
+   * SEGUE o caminho estático de qualquer jeito e embute o arquivo — ele
+   * analisa alcançabilidade do código, não se o ramo executa em runtime.
+   * O bundle mal encolheu (35,5 KiB de ~688 esperados) até esta exclusão
+   * entrar. Ver `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`.
+   */
+  outputFileTracingExcludes: {
+    "/dados/comunicabr": ["public/data/comunicabr-31.json"],
+    "/dados/comunicabr/[codigo]": ["public/data/comunicabr-31.json"],
+  },
   experimental: {
     /**
      * Fase 6: o prerender das 354 páginas de `/congresso/bancadas/[id]` bateu

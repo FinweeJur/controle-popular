@@ -46,7 +46,7 @@ As duas aplicam a mesma técnica — **esqueleto + rótulos internados** — a f
 
 | Implementação | Formato | Ganho medido |
 |---|---|---|
-| `lib/comunicabr/arquivo.ts` | esqueleto nacional compartilhado + codec específico do ComunicaBR: o texto é nacional, o número é municipal; `rotulos`, `esqueletos` (com assinatura anti-desalinhamento) e valores esparsos `v` | 853 municípios: 99 MiB → **2,16 MB** (`data/comunicabr-31.json` em disco, 16/08) |
+| `lib/comunicabr/arquivo.ts` | esqueleto nacional compartilhado + codec específico do ComunicaBR: o texto é nacional, o número é municipal; `rotulos`, `esqueletos` (com assinatura anti-desalinhamento) e valores esparsos `v` | 853 municípios: 99 MiB → **2,16 MB** (`public/data/comunicabr-31.json` em disco — movido de `data/` em 16/08 para sair do bundle do Worker via Assets binding, ver `lib/comunicabr/mg.ts`) |
 | `lib/estatico/compactar.ts` | tabela plana genérica: esqueleto + dicionário, com a decisão de internar **medida por coluna** (internar errado aumenta o arquivo) | Rouanet: 7,9 MB → 2,4 MB (−69%); 7.206 projetos + 20.784 incentivadores |
 
 **Decisão documentada: não unificar.** As duas nasceram em sessões que não se viram, mas cada uma serve a um formato — a do ComunicaBR carrega um esqueleto nacional com assinatura; a genérica decide coluna a coluna. Unificá-las descartaria exatamente a especialização que levou 99 MiB a 2,16 MB. Números em 16/08 — remeça antes de decidir com eles.

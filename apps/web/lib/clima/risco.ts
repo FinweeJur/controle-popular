@@ -1,8 +1,19 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+
 /**
- * Risco climático por município (AdaptaBrasil / MCTI), lido no BUILD.
+ * Risco climático por município (AdaptaBrasil / MCTI), lido no BUILD e,
+ * quando publicado, por `env.ASSETS.fetch()` — nunca `readFileSync` de
+ * caminho estático em código de Worker, que embutiria os 2,78 MiB de
+ * `public/data/risco-climatico.json` no bundle. Mesmo mecanismo de
+ * `lib/comunicabr/mg.ts`, e a mesma regra medida lá em 16/08/2026: qualquer
+ * falha do lado do binding (inclusive um 404 esperado durante `next build`
+ * local, quando `env.ASSETS` existe mas o asset ainda não foi publicado
+ * nele) cai para `readFileSync` — nunca relança. Relançar foi o bug que
+ * publicou `/dados/comunicabr` vazio em silêncio; ver
+ * `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`.
  *
  * ## Por que arquivo, e não banco
  *
@@ -61,28 +72,46 @@ export interface RiscoMunicipio {
   zeroPorVulnerabilidade: boolean;
 }
 
-let cache: LinhaRisco[] | null = null;
+const ARQUIVO = "risco-climatico.json";
 
-function linhas(): LinhaRisco[] {
+let cache: LinhaRisco[] | null = null;
+let emVoo: Promise<LinhaRisco[]> | null = null;
+
+async function linhas(): Promise<LinhaRisco[]> {
   if (cache) return cache;
-  try {
-    const caminho = path.join(process.cwd(), "data", "risco-climatico.json");
-    cache = (JSON.parse(readFileSync(caminho, "utf-8")).linhas ?? []) as LinhaRisco[];
-  } catch {
-    // Arquivo ausente não derruba o build: uma instalação nova, ou um clone
-    // antes da primeira coleta, não pode impedir a publicação do site inteiro
-    // por causa de uma seção. A tela diz que não há dado.
-    cache = [];
-  }
-  return cache;
+  if (emVoo) return emVoo;
+  emVoo = (async () => {
+    try {
+      let bruto: string;
+      try {
+        const { env } = await getCloudflareContext({ async: true });
+        if (!env.ASSETS) throw new Error("sem ASSETS");
+        const resp = await env.ASSETS.fetch(new URL(`http://assets.local/data/${ARQUIVO}`));
+        if (!resp.ok) throw new Error(`ASSETS.fetch devolveu ${resp.status}`);
+        bruto = await resp.text();
+      } catch {
+        // Cai para o disco — build local, teste, ou 404 de build (ver o
+        // comentário grande no topo do arquivo).
+        bruto = readFileSync(path.join(process.cwd(), "public", "data", ARQUIVO), "utf-8");
+      }
+      cache = (JSON.parse(bruto).linhas ?? []) as LinhaRisco[];
+    } catch {
+      // Arquivo ausente não derruba o build: uma instalação nova, ou um clone
+      // antes da primeira coleta, não pode impedir a publicação do site inteiro
+      // por causa de uma seção. A tela diz que não há dado.
+      cache = [];
+    }
+    return cache;
+  })();
+  return emVoo;
 }
 
-export function riscoDoMunicipio(
+export async function riscoDoMunicipio(
   idMunicipio: string,
   qual: keyof typeof INDICES
-): RiscoMunicipio | null {
+): Promise<RiscoMunicipio | null> {
   const cfg = INDICES[qual];
-  const doMunicipio = linhas().filter((l) => String(l.id_municipio) === String(idMunicipio));
+  const doMunicipio = (await linhas()).filter((l) => String(l.id_municipio) === String(idMunicipio));
   if (!doMunicipio.length) return null;
 
   const principal = doMunicipio.find((l) => l.indicador_id === cfg.id);
@@ -103,8 +132,8 @@ export function riscoDoMunicipio(
 }
 
 /** Quantos municípios o arquivo cobre — para a tela dizer a cobertura real. */
-export function coberturaRisco(): { municipios: number; ano: number | null } {
-  const ls = linhas();
+export async function coberturaRisco(): Promise<{ municipios: number; ano: number | null }> {
+  const ls = await linhas();
   return {
     municipios: new Set(ls.map((l) => String(l.id_municipio))).size,
     ano: ls[0]?.ano ?? null,

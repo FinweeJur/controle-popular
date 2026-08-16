@@ -49,12 +49,12 @@ import {
 type Params = Promise<{ codigo: string }>;
 
 export async function generateStaticParams() {
-  return resumoDosMunicipios().map((m) => ({ codigo: m.codigo }));
+  return (await resumoDosMunicipios()).map((m) => ({ codigo: m.codigo }));
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { codigo } = await params;
-  const m = municipioComunicaBR(codigo);
+  const m = await municipioComunicaBR(codigo);
   if (!m) return { title: "Cidade não encontrada — Controle Popular" };
   const nome = m.nomeIbge.replace(/\/[A-Z]{2}$/, "");
   return {
@@ -201,10 +201,10 @@ function Subindicador({ sub }: { sub: SubIndicadorComunicaBR }) {
   );
 }
 
-function Tema({ cat }: { cat: CategoriaComunicaBR }) {
+async function Tema({ cat }: { cat: CategoriaComunicaBR }) {
   const comValor = cat.itens.length - cat.itensVazios;
   const zerada = cat.itens.length > 0 && comValor === 0;
-  const lacuna = zerada ? lacunaDaCategoria(cat.categoria) : null;
+  const lacuna = zerada ? await lacunaDaCategoria(cat.categoria) : null;
   const frase = lacuna ? fraseDaLacuna(lacuna) : null;
 
   return (
@@ -236,8 +236,7 @@ function Tema({ cat }: { cat: CategoriaComunicaBR }) {
 
 export default async function FichaComunicaBR({ params }: { params: Params }) {
   const { codigo } = await params;
-  const municipio = municipioComunicaBR(codigo);
-  const meta = metaComunicaBR();
+  const [municipio, meta] = await Promise.all([municipioComunicaBR(codigo), metaComunicaBR()]);
   if (!municipio || !meta) notFound();
 
   const nome = municipio.nomeIbge.replace(/\/[A-Z]{2}$/, "");

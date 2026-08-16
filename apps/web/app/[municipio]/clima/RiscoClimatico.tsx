@@ -22,13 +22,18 @@ import { riscoDoMunicipio, coberturaRisco, INDICES } from "@/lib/clima/risco";
  * com componente alta, o aviso vem antes do número — não depois, em nota de
  * rodapé que ninguém lê.
  */
-export default function RiscoClimatico({ idIbge }: { idIbge: string }) {
-  const cobertura = coberturaRisco();
+export default async function RiscoClimatico({ idIbge }: { idIbge: string }) {
+  const cobertura = await coberturaRisco();
   if (!cobertura.municipios) return null;
 
-  const blocos = (["deslizamento", "inundacao"] as const)
-    .map((qual) => ({ qual, dados: riscoDoMunicipio(idIbge, qual) }))
-    .filter((b) => b.dados);
+  const blocos = (
+    await Promise.all(
+      (["deslizamento", "inundacao"] as const).map(async (qual) => ({
+        qual,
+        dados: await riscoDoMunicipio(idIbge, qual),
+      }))
+    )
+  ).filter((b) => b.dados);
 
   if (!blocos.length) return null;
 
