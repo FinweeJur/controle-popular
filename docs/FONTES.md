@@ -90,7 +90,7 @@ Canal federal = Fala.BR (todo órgão gov.br encaminha para lá); prazo padrão 
 
 ## Diário oficial — mapeamento SIGPub (sem coleta)
 
-Mapeamento feito, coleta bloqueada até o corte de LGPD (nomeação/exoneração, CPF). Só **Diamantina** usa SIGPub/AMM-MG (diariomunicipal.com.br/amm-mg; uma edição estadual por dia útil; busca por `entidadeUsuaria`; sem filtro de tipo de ato; URLs por hash opaco; mecanismo de busca POST/token não confirmado). **Araçuaí e Itinga têm diário próprio** (CMS da prefeitura; Itinga = "Simple System", endpoint JSON atrás de JS não mapeado; `fontes.diario_oficial` de Itinga não preenchido). Betim (dados abertos JSON), BH (DOM-Web) e SP (DOC/PubNet) em fases posteriores. Próximos passos técnicos: ids `entidadeUsuaria` de Diamantina no HTML do select; inspeção de rede do diário de Itinga.
+Mapeamento feito, coleta bloqueada até o corte de LGPD (nomeação/exoneração, CPF). Só **Diamantina** usa SIGPub/AMM-MG (diariomunicipal.com.br/amm-mg; uma edição estadual por dia útil; busca por `entidadeUsuaria` — Prefeitura = 905, Câmara = 21672; sem filtro de tipo de ato; URLs por hash opaco; **mecanismo confirmado em 16/08**: GET + CSRF de sessão + datas obrigatórias em `dd/mm/yyyy` + paginação por mês, pois range longo devolve vazio). **Araçuaí e Itinga têm diário próprio** (CMS da prefeitura; Itinga = "Simple System", endpoint JSON atrás de JS não mapeado; `fontes.diario_oficial` de Itinga não preenchido). Betim (dados abertos JSON), BH (DOM-Web) e SP (DOC/PubNet) em fases posteriores. Engenharia adiantada: migration `0077_atos_diario.sql` + classificador `apps/web/lib/diario/classificarAto.ts` (calibrado contra 70 títulos reais). Pendente: inspeção de rede do diário de Itinga (fase de coletor por-prefeitura).
 
 ## Rede de proteção de MG
 

@@ -1,12 +1,8 @@
 import Link from "@/lib/betim/link";
 import { temFonte, type Cidade } from "@/lib/db/queries/municipios";
-import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
-import CvdToggle from "@/app/components/CvdToggle";
-import FontSizeControl from "@/app/[municipio]/components/FontSizeControl";
 import NavDropdown from "@/app/[municipio]/components/NavDropdown";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
 import { paginasDados } from "@/lib/betim/dadosNav";
-import { outrasZonas } from "@/lib/zonas";
 
 // Ordem do nav: [Prefeitura], [Câmara], Serviços, [Dados], Notícias, Sobre.
 // Prefeitura, Câmara e Dados têm menu suspenso (pedido do usuário
@@ -51,30 +47,24 @@ const NAV_LINKS_DEPOIS_DADOS = [
 
 export default function Header({ cidade }: { cidade: Cidade }) {
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-surface px-4 py-3 backdrop-blur sm:px-8">
+    // Deixou de ser `sticky`: a barra global fixa (`TopNav.tsx`, no layout
+    // raiz) assume o papel de "navbar sempre visível". Este header é só da
+    // zona de cidade — wordmark, botões de zona irmã e controles de
+    // tema/tamanho/contraste agora moram na barra global (uma cópia só).
+    <header className="border-b border-border bg-surface px-4 py-3 sm:px-8">
       {/* Deixou de ser um flex-row único: a faixa da busca precisa de largura
           inteira embaixo, e no meio da linha do nav ela ficaria estreita
           demais para o painel de sugestões mostrar o subtítulo (objeto do
           contrato, ementa da proposição). */}
       <div className="flex flex-wrap items-center justify-between gap-3">
       <div className="flex flex-wrap items-center gap-2 sm:gap-6">
-        {/* <a> puro: a raiz está FORA do basePath (`/betim`) deste app, e
-            next/link a prefixaria, mandando para a home do Betim em vez da
-            home da marca. */}
-        <a
-          href="/"
-          className="font-display text-[1.15em] font-bold tracking-tight text-text"
-        >
-          controlepopular<span className="text-primary">.br</span>
-        </a>
         {/* "<Cidade> · UF" leva pra home da cidade (pedido do usuário
             2026-07-24). `<Link href="/">` sob o basePath `/betim` resolve
-            pra `/betim` — a home desta cidade —, diferente do wordmark
-            acima, que é `<a href="/">` cru pra raiz da MARCA (fora do
-            basePath). */}
+            pra `/betim` — a home desta cidade. O wordmark da MARCA ficou só
+            na barra global (TopNav), acima deste header. */}
         <Link
           href="/"
-          className="border-l border-border pl-3 text-[.85em] text-text-soft transition-colors duration-150 hover:text-primary"
+          className="text-[.85em] text-text-soft transition-colors duration-150 hover:text-primary"
         >
           {cidade.nome} · {cidade.uf}
         </Link>
@@ -98,52 +88,6 @@ export default function Header({ cidade }: { cidade: Cidade }) {
             </Link>
           ))}
         </nav>
-      </div>
-      <div className="flex flex-wrap items-center gap-2">
-        {/* Busca unificada (tema/palavra-chave/território nas seis frentes) e
-            pontes para as zonas irmãs. <a> puro: `/busca` e as zonas irmãs
-            estão FORA do basePath desta cidade, e o <Link> da zona
-            prefixaria (`/betim/busca`), mesmo motivo do wordmark acima.
-
-            ⟲ 13/08, revisão de onboarding: esta lista era CRAVADA À MÃO
-            (só Congresso e Judiciário) desde que só existiam três frentes
-            — Ambiental, Terra e território e Paraopeba publicaram depois
-            e nunca entraram aqui. É a barra de navegação mais visível do
-            portal em celular (o resto exige rolar até o rodapé), e foi
-            aqui que o dono não achou uma frente que existia.
-            `outrasZonas()` devolve toda `ZONA_PUBLICADA` menos a atual —
-            a mesma fonte que `OutrasFrentes.tsx` e `FooterGlobal.tsx`
-            usam — para esta lista nunca mais atrasar em relação a
-            `lib/zonas.ts`. */}
-        <a
-          href="/busca"
-          className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
-        >
-          Busca →
-        </a>
-        {outrasZonas("cidades").map((z) => (
-          <a
-            key={z.id}
-            href={z.href}
-            className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
-          >
-            {z.nomeCurto} →
-          </a>
-        ))}
-        {/* Direitos em Movimento é RAIZ, fora do basePath desta cidade —
-            <a> cru pelo mesmo motivo dos três botões acima, mas cor
-            própria (`--cp-alert`): não é zona irmã, é transversal às
-            cinco frentes (ver o bloco em `app/page.tsx`). */}
-        <a
-          href="/direitos-em-movimento"
-          className="cp-btn-anim rounded-md border px-2.5 py-1 text-[.8em] font-medium transition-colors duration-150"
-          style={{ borderColor: "var(--cp-alert)", color: "var(--cp-alert)" }}
-        >
-          Direitos em Movimento →
-        </a>
-        <ThemeSwitcher />
-        <CvdToggle />
-        <FontSizeControl />
       </div>
       </div>
 

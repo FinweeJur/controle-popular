@@ -58,9 +58,8 @@ export default async function Hub() {
       className="mx-auto max-w-4xl px-4 py-12 sm:py-16"
     >
       <header className="space-y-4">
-        <p className="font-display text-[1.4em] font-bold tracking-tight">
-          controlepopular<span className="text-primary">.br</span>
-        </p>
+        {/* O wordmark da marca ficou só na barra global (`TopNav.tsx`), acima
+            desta página — aqui começa direto no título. */}
         <h1 className="font-display text-3xl font-bold sm:text-4xl">
           Dados públicos que dá para usar
         </h1>

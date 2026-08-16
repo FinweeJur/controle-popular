@@ -225,18 +225,73 @@ Só para fechar as 6 cidades do projeto, mesmo sem SIGPub nelas:
   palavra-chave/data/edição no front público. Fase D4, por último, como já
   decidido.
 
+## D1 — mecanismo de busca confirmado (16/08/2026)
+
+Continuação do D0, feita via `Invoke-WebRequest`/`curl.exe` (o socket direto
+do Python é bloqueado nesta máquina — WinError 10013; usar PowerShell/curl
+para baixar e Python para parsear local). Nenhum conteúdo de matéria foi
+aberto: só o mecanismo da lista de busca foi confirmado.
+
+**ids `entidadeUsuaria` de Diamantina** (o item que o D0 deixou pendente):
+
+| Entidade | id | Órgãos |
+|---|---|---|
+| Prefeitura de Diamantina | **905** | 19 |
+| Câmara Municipal de Diamantina | **21672** | 1 |
+
+- **A busca é GET, mas não funciona sem sessão:** a página `pesquisar`
+  emite um CSRF `_token` ligado à sessão do servidor. Requisitar a página uma
+  vez com um `WebRequestSession` (PowerShell) ou `-c <cookie jar>`
+  (curl.exe) e reusar a sessão nas requisições seguintes — senão a resposta é
+  só o formulário vazio, mesmo com os parâmetros certos.
+- **Datas são OBRIGATÓRIAS e em `dd/mm/yyyy`:** `busca_avancada[data_inicio]`
+  e `busca_avancada[data_fim]`. Sem as duas (ou com formato errado) a busca
+  volta vazia, não em erro — fácil de confundir com "não há matérias".
+- **Resultados em tabela HTML** (`#datatable`), uma linha por matéria:
+  Entidade · Título · Órgão · Data (`dd-mm-yyyy`) · link para a matéria
+  (`/amm-mg/load/<HASH>` — hash opaco, não enumerável).
+- **Paginação:** `busca_avancada[page]=N`, Páginas numeradas na tabela.
+- **Teto de resultados por busca:** um range de datas longo (ex.: um mês
+  inteiro da Prefeitura) devolve VAZIO — o SIGPub tem teto de itens por
+  consulta. **O coletor tem que paginar por MÊS** (ou período menor), e a
+  verificação de cobertura por dia é o que pega buracos silenciosos.
+- **Endpoint auxiliar** para o dropdown de órgãos de uma entidade:
+  `https://www.diariomunicipal.com.br/amm-mg/rest/diario/search-orgaos-entidade?entidadeUsuaria=N`.
+
+**Volumes medidos** (busca filtrada por entidade, sem abrir matéria):
+
+| Entidade | Período | Matérias |
+|---|---|---|
+| Prefeitura | fev/2026 | 194 |
+| Prefeitura | 01/07–15/08/2026 | 20+ (pág. 1–2) |
+| Câmara | jul/2026 | 11 |
+| Câmara | ago–dez/2025 | 44 |
+
+**O que saiu daí:** a migration `0077_atos_diario.sql` (tabela `atos_diario`,
+uma linha por matéria, `link_fonte` obrigatório, upsert por chave natural) e o
+classificador `apps/web/lib/diario/classificarAto.ts`, calibrado contra 70
+títulos reais extraídos desta busca (67/70 com tipo ≠ `outro`). A coleta em si
+continua bloqueada no corte de LGPD.
+
 ## O que fazer com isto (não fiz aqui)
 
-- Atualizar `docs/diario-oficial-plano.md`, fase D1: trocar "Araçuaí,
+- ~~Atualizar `docs/diario-oficial-plano.md`, fase D1: trocar "Araçuaí,
   Diamantina, provavelmente Itinga via SIGPub" por "Diamantina via SIGPub;
   Araçuaí e Itinga via diário próprio de cada prefeitura — precisam de um
   coletor por-prefeitura (ou dois, se o CMS de cada uma for diferente), não
-  do coletor único por-fornecedor que a D1 supunha para as três".
-- Descobrir os `entidadeUsuaria` (Prefeitura e Câmara) de Diamantina no
-  SIGPub — só dá abrindo o HTML bruto do `<select>` do formulário de busca.
-- Confirmar via navegador real (não fetch estático) o mecanismo de busca do
+  do coletor único por-fornecedor que a D1 supunha para as três".~~ Feito
+  em 16/08/2026.
+- ~~Descobrir os `entidadeUsuaria` (Prefeitura e Câmara) de Diamantina no
+  SIGPub — só dá abrindo o HTML bruto do `<select>` do formulário de busca.~~
+  Feito em 16/08/2026: Prefeitura = **905**, Câmara = **21672** (ver seção
+  "D1 — mecanismo de busca confirmado" acima).
+- ~~Confirmar via navegador real (não fetch estático) o mecanismo de busca do
   SIGPub (GET vs POST/AJAX) e o endpoint JSON por trás do calendário de
-  `itinga.mg.gov.br/diario`.
+  `itinga.mg.gov.br/diario`.~~ SIGPub: feito em 16/08/2026 — GET + CSRF de
+  sessão + datas obrigatórias + paginação por mês (ver acima). **Itinga
+  segue pendente** (abrir a aba de rede num navegador de verdade para achar o
+  endpoint do calendário — sem interpretar matéria) — mas virou trabalho da
+  fase de coletor por-prefeitura de Itinga, não da D1 SIGPub.
 - Decidir se vale a pena confirmar uso ativo do SIGPub por Araçuaí/Itinga
   (pode ser que nunca publicaram lá, ou que publiquem só tipos específicos
   de ato que a plataforma própria não cobre) — isso só se resolve abrindo

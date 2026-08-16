@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import Link from "@/lib/judiciario/link";
-import ThemeSwitcher from "@/app/judiciario/components/ThemeSwitcher";
-import FontSizeControl from "@/app/judiciario/components/FontSizeControl";
-import CvdToggle from "@/app/components/CvdToggle";
 import BuscaUniversal from "@/app/components/BuscaUniversal";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import { outrasZonas } from "@/lib/zonas";
 
 /**
  * Zona /judiciario. O `<html>`, as fontes e o ThemeProvider vêm do layout
@@ -31,10 +27,12 @@ export default function JudiciarioLayout({
     <>
       <header className="border-b border-[var(--cp-border)]">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-4 px-4 py-4">
-          {/* <a> puro, não o <Link> da zona: a raiz do domínio está FORA
-              de /judiciario, e o wrapper a prefixaria. */}
-          <a href="/" className="font-display text-lg font-bold">
-            Controle Popular <span className="opacity-60">· Judiciário</span>
+          {/* Wordmark da MARCA, botões de zona irmã e controles de
+              tema/tamanho/contraste agora moram na barra global (`TopNav.tsx`,
+              layout raiz). Aqui fica só o nome da zona como <a> cru: o <Link>
+              da zona prefixaria e geraria /judiciario/judiciario. */}
+          <a href="/judiciario" className="font-display text-lg font-bold">
+            Judiciário
           </a>
           <nav className="flex flex-1 flex-wrap gap-4 text-sm">
             {NAV.map((item) => (
@@ -43,56 +41,6 @@ export default function JudiciarioLayout({
               </Link>
             ))}
           </nav>
-          <div className="flex flex-wrap items-center gap-2">
-            {/* flex-wrap é OBRIGATÓRIO aqui: achado real em revisão —
-                esta div mede mais que o viewport de celular inteiro
-                (375px). Sem quebrar linha, o navegador não estoura o
-                layout visualmente, mas comprime/corta os itens — lido
-                como "navbar espremida". Cada zona irmã tem essa mesma div;
-                se ganhar mais um botão lá, checar de novo.
-
-                Busca unificada e pontes para as zonas irmãs.
-
-                ⟲ 13/08, revisão de onboarding: "Congresso"/"Betim" eram
-                CRAVADOS À MÃO, comentário incluído, e ficaram parados no
-                dia em que a barra foi escrita — quando Ambiental, Terras
-                e Paraopeba publicaram depois, nenhum dos três entrou
-                aqui. É a classe de bug que fez o dono não achar uma
-                frente que existia navegando no celular. `outrasZonas()`
-                devolve toda `ZONA_PUBLICADA` menos a atual — a mesma
-                fonte que `OutrasFrentes.tsx` e `FooterGlobal.tsx` usam —
-                para esta lista nunca mais atrasar em relação a
-                `lib/zonas.ts`. */}
-            <a
-              href="/busca"
-              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
-            >
-              Busca →
-            </a>
-            {outrasZonas("judiciario").map((z) => (
-              <a
-                key={z.id}
-                href={z.href}
-                className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-primary)]"
-              >
-                {z.nomeCurto} →
-              </a>
-            ))}
-            {/* Direitos em Movimento é RAIZ, não zona irmã — mesmo <a> cru
-                pelo mesmo motivo, mas cor própria (`--cp-alert`) porque não
-                é um sexto eixo de poder, é transversal aos cinco (ver o
-                bloco em `app/page.tsx`). */}
-            <a
-              href="/direitos-em-movimento"
-              className="rounded-md border px-2.5 py-1 text-xs font-medium"
-              style={{ borderColor: "var(--cp-alert)", color: "var(--cp-alert)" }}
-            >
-              Direitos em Movimento →
-            </a>
-            <FontSizeControl />
-            <ThemeSwitcher />
-            <CvdToggle />
-          </div>
         </div>
         {/* Faixa própria para a busca — mesma decisão do /congresso e da zona
             de cidades: largura inteira, fora do <nav>. */}
