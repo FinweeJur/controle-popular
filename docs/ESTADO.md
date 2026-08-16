@@ -46,6 +46,7 @@ Transversais confirmados: **painel de edição web** (token, editar, publicar, s
 | 21 | Ordenar e filtrar as listas de dados | 🟡 | pedido do dono (16/08): ordenar/filtrar por valor, prestador, tema, data, tipo de alerta, emendas parlamentares e outros campos — estender o padrão `TabelaEstatica.tsx` (11 listas já usam), não criar mecanismo novo |
 | 22 | Monitoramento da Vale — página dedicada | 🟡 | pedido do dono (16/08): documentos, prestação de contas, relatórios, notícias, onde investiu, benefícios fiscais recebidos, onde presta contas, pra quem vendeu — uma frente nova, camadas detalhadas no TODO-PROXIMAS-RODADAS.md (item 11) |
 | 23 | Geocodificar os dados da Vale | 🟡 | pedido do dono (16/08): escrever o plano de georreferenciar o que o item 22 levantar, reutilizando a infra de mapa/geometria existente (TODO-PROXIMAS-RODADAS.md item 12); executar quando houver dado |
+| 24 | Chatbot IA sobre o acervo | 🟡 | pedido do dono (16/08): adaptar criticamente o plano do "Notebook LM do negócio" pro portal — RAG sobre documentos públicos com citação, degrau 3 do assistente; decisões do dono em aberto (região do cérebro, acervo, ressalva); plano em `docs/planos/PLANO-CHATBOT-IA.md` |
 
 ## Bloqueios
 

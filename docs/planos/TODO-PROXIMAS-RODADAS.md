@@ -248,6 +248,25 @@ que a Função Social da Terra e as camadas de barragem/mineração já têm.
   conferência manual.
 - **Dependência:** começa a executar quando o item 11 tiver dado coletado.
 
+### 13. Chatbot IA sobre o acervo (adaptação do plano do Leilões)
+
+Pedido literal (16/08): o dono trouxe o "Plano Final Contextualizado — Chatbot
+IA pra Leilões.app" e pediu para **adaptar criticamente** pro Controle Popular
+e registrar no plano.
+
+O plano adaptado está em `docs/planos/PLANO-CHATBOT-IA.md`. Três pontos para
+não se perder:
+
+- **Não substitui o assistente determinístico** (degraus 0–2,
+  `lib/assistente/compor.ts`): é um degrau 3 opcional, com citação obrigatória
+  e ressalva visível de IA — o portal é lido por quem está sob estresse, e a
+  confiança é o ativo.
+- **Só documento público entra na memória**, varrido pelas duas guardas de dado
+  pessoal antes da ingestão — a barra aqui é LGPD, não FAQ de leilão.
+- **Decisões do dono em aberto antes de construir:** região do cérebro (o
+  template exigia fora de EUA/Europa, mas o portal já roda em GitHub/Cloudflare/
+  Neon — não é automático), qual acervo entra, e a ressalva de IA.
+
 ---
 
 ## 🟢 Planos já escritos, esperando execução
@@ -263,6 +282,7 @@ que a Função Social da Terra e as camadas de barragem/mineração já têm.
 | Direitos em Movimento | `docs/PLANO-DIREITOS-EM-MOVIMENTO.md` |
 | Facilitador de ação cidadã | `docs/PLANO-ACAO-CIDADA.md` |
 | Biblioteca das ATIs do Paraopeba | `docs/FONTES-BIBLIOTECA-ATI.md` — **feito em 15/08** (597 publicações da AEDAS e do Guaicuy, em `/paraopeba/biblioteca`). Sobrou o item 9 abaixo. |
+| Chatbot IA sobre o acervo | `docs/planos/PLANO-CHATBOT-IA.md` — **adaptação do plano do Leilões**, pedida em 16/08; decisões do dono em aberto (região do cérebro, acervo, ressalva) — item 13 acima |
 
 ---
 
