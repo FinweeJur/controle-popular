@@ -59,7 +59,7 @@ O assistente é uma escada de quatro degraus, e cada degrau só é acionado quan
 |---|---|---|
 | 0 — rota direta | "saúde em BH" → `/bh/saude` | **no ar** |
 | 1 — índice estático | "onde fala de barragem em Brumadinho" — busca no índice da `/busca` | **no ar** |
-| 2 — composição determinística | "compare Betim e Contagem" — regra escrita sobre respostas do degrau 1 | **próximo trabalho** |
+| 2 — composição determinística | "compare Betim e Contagem" — regra escrita sobre respostas do degrau 1 | **no ar** (16/08) |
 | 3 — LLM | pergunta livre que os anteriores não casaram; chave opcional | não iniciado |
 
 - **Catálogo** (`lib/assistente/catalogo.ts`): ~380 destinos (6 cidades × 33 sufixos + 44 rotas gerais) como **constante de módulo** importada pelo cliente, nunca como prop — cabe em ~2,4 KiB gzip (medição em 16/08 — remeça antes de decidir com ele). Foi criado porque o índice da `/busca` é a fonte errada para isso: ~5,0 MB não comprimidos (docs 3.614 KB + vocabulário 1.188 KB + formas 264 KB; o vocabulário cresceu 11.561 → 31.375 lexemas) — pagar o acervo inteiro por uma tabela de rotas não.

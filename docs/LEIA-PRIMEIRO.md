@@ -28,9 +28,10 @@ lê esse arquivo sozinha; humano também deveria.
 ## `docs/planos/` — o que ainda está por fazer
 
 Planos de trabalho ativos, cada um com o próprio estado. Ler o que a tarefa
-tocar. Hoje: índice estático e assistente (o degrau 2 é o próximo trabalho),
-revisão de UX, diário oficial, bases de clima e risco, espelho PDF da AJRI,
-GitHub Pages (alvo alternativo) e a dívida antes de feature.
+tocar. Hoje: índice estático e assistente (degraus 0–2 no ar; o degrau 3 é
+opcional por decisão), revisão de UX, diário oficial, bases de clima e risco,
+espelho PDF da AJRI, GitHub Pages (alvo alternativo) e a dívida antes de
+feature.
 
 ## `docs/_historico/` — não leia, salvo arqueologia
 

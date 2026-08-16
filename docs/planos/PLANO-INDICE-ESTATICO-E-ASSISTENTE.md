@@ -167,6 +167,17 @@ O degrau 2 é o que transforma o assistente de menu em ferramenta: "o que este
 município tem de pior" é uma **regra escrita** sobre os dados (maior lacuna,
 maior sobreposição, maior valor monetário), não uma pergunta para modelo.
 
+> ### ✅ Entregue em 16/08
+>
+> Primeira fatia do degrau 2 no ar, sobre o índice atual (comparar duas cidades
+> atendidas por tema, "o que falta em X" relativo ao acervo das outras cidades,
+> e resposta honesta para cidade não atendida: "Contagem não é atendida").
+> Regra em `apps/web/lib/assistente/compor.ts`, sem modelo e sem rede além do
+> índice; 23 testes novos. O que a regra NÃO faz ainda: comparar lacuna entre
+> as **seções** do catálogo (só temas do índice) e "o que este município tem de
+> pior" em valor monetário — isso depende da indexação dos acervos ricos (item
+> 10), que espera o Postgres do home-pc.
+
 ### O que o LLM entra fazendo, e o que ele nunca faz
 
 **Entra:** interpretar pergunta torta ("e aquele negócio da barragem que caiu?"),

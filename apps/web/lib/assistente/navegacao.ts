@@ -71,11 +71,12 @@ const PREPOSICOES_DE_LUGAR = new Set(["em", "no", "na", "de", "do", "da", "para"
  * quando devia. São artigos, possessivos e os genéricos que a fala usa no
  * lugar do nome da cidade ("na minha cidade", "do meu município").
  */
-const PALAVRAS_COMUNS = new Set([
+export const PALAVRAS_COMUNS = new Set([
   "o", "a", "os", "as", "um", "uma", "uns", "umas",
   "meu", "minha", "meus", "minhas", "seu", "sua", "nosso", "nossa",
   "tudo", "todos", "todas", "isso", "aqui", "la", "ai",
   "cidade", "municipio", "portal", "site", "pagina",
+  "e", "ou", "com",
 ]);
 
 /** Uma cidade reconhecida no texto, com as posições que ela ocupou. */
@@ -153,6 +154,54 @@ function detectarCidade(palavras: string[]): CidadeCasada | null {
     }
   }
   return melhor;
+}
+
+/**
+ * TODAS as ocorrências de cidades nomeadas no texto, em ordem de aparição.
+ *
+ * Ao contrário de `detectarCidade` (que devolve a melhor grafia), aqui
+ * queremos saber QUAIS cidades a frase menciona — e QUANTAS VEZES: é o que
+ * o degrau 2 (composição) usa para "compare Betim e Belo Horizonte", e é
+ * também o que faz "compare Betim com Betim" (duas menções da mesma cidade)
+ * não virar comparação de uma cidade consigo mesma. A mesma grafia pode
+ * casar duas vezes no mesmo lugar (o slug e o nome oficial tokenizam
+ * iguais: "betim" e "Betim") — menção repetida na MESMA posição entra uma
+ * vez; quem usa decide se deduplica cidades repetidas em posições
+ * diferentes.
+ */
+export function cidadesMencionadas(
+  palavras: string[]
+): { slug: string; nome: string; posicao: number; posicoes: Set<number> }[] {
+  const achadas: { slug: string; nome: string; posicao: number; posicoes: Set<number> }[] = [];
+  const vistas = new Set<string>();
+  for (const c of GRAFIAS_POR_CIDADE) {
+    for (const grafia of c.grafias) {
+      // Varre TODAS as posições de propósito — `casarSequencia` só devolve a
+      // primeira, e "compare Betim com Betim" precisa enxergar a segunda
+      // menção para não virar comparação de uma cidade consigo mesma.
+      for (let i = 0; i + grafia.length <= palavras.length; i++) {
+        let bate = true;
+        for (let j = 0; j < grafia.length; j++) {
+          if (palavras[i + j] !== grafia[j]) {
+            bate = false;
+            break;
+          }
+        }
+        if (!bate) continue;
+        const chave = `${c.slug}@${i}`;
+        if (vistas.has(chave)) continue;
+        vistas.add(chave);
+        achadas.push({
+          slug: c.slug,
+          nome: c.nome,
+          posicao: i,
+          posicoes: new Set(Array.from({ length: grafia.length }, (_, j) => i + j)),
+        });
+      }
+    }
+  }
+  achadas.sort((a, b) => a.posicao - b.posicao);
+  return achadas;
 }
 
 /** Uma entrada do catálogo que casou, com pontos e palavras gastas. */

@@ -15,15 +15,15 @@ Publicado em 15/08 (build no `home-pc`, deploy passou). Seis frentes:
 | **Paraopeba** | auditoria AJRI com 467 fichas legíveis (sem modelo) e relacionados por tema+data; execução do Acordo (26 municípios, R$ 5,48 bi, 73,8% pago); repasse (1.214/1.214 linhas, R$ 1,65 bi); biblioteca das ATIs (597); clipping de ATIs (46) e IJs (59); radar de notícias; linha do tempo; ressalva `AvisoColetaEmCurso` em 5 páginas |
 | **Ambiental** | direito crítico (30 normas + 15 precedentes em 5 temas); legislação estadual (6.378 normas); microssistema com instrumento e precedente por tema |
 
-Transversais confirmados: **painel de edição web** (token, editar, publicar, sincronizar, último deploy); **termo LGPD** com canal de contato; **assistente** degraus 0 (navegação, 0,35 ms) e 1 (busca no índice) no ar; **Direitos em Movimento** com as quatro portas e o facilitador de denúncia (`.docx`/`.pdf` só no navegador, rascunho opt-in); **Rouanet** coletado e compactado no repo (7.206 projetos + 20.785 incentivadores de MG, 7,9 MB → 2,4 MB), tela adiada de propósito; **ComunicaBR** dos 853 municípios coletado (17fccf9, 61% dos itens vazios).
+Transversais confirmados: **painel de edição web** (token, editar, publicar, sincronizar, último deploy); **termo LGPD** com canal de contato; **assistente** degraus 0 (navegação, 0,35 ms), 1 (busca no índice) e 2 (composição determinística) no ar; **Direitos em Movimento** com as quatro portas e o facilitador de denúncia (`.docx`/`.pdf` só no navegador, rascunho opt-in); **Rouanet** coletado e compactado no repo (7.206 projetos + 20.785 incentivadores de MG, 7,9 MB → 2,4 MB), tela adiada de propósito; **ComunicaBR** dos 853 municípios coletado (17fccf9, 61% dos itens vazios).
 
 ## Fila viva — ranqueada por custo × benefício
 
-**Próximo passo: degrau 2 do assistente** — composição determinística, sem modelo: "compare Betim e Contagem", "o que falta em mulheres aqui". Regra escrita sobre os dados em `apps/web/lib/assistente/` (`navegacao.ts`, `documentos.ts`, `catalogo.ts`). Barato, sem banco, e é o grosso do pedido do dono. O degrau 3 (LLM) é opcional por decisão: sem chave, o portal continua inteiro.
+**Degrau 2 do assistente entregue (16/08)** — composição determinística, sem modelo: "compare Betim e Belo Horizonte", "o que falta em Betim", "Contagem não é atendida". Regra escrita em `apps/web/lib/assistente/compor.ts`, sobre o índice do degrau 1, sem rede além dele; 23 testes novos. Próximo trabalho executável: **LAI do INCRA** (18/08 — a única com prazo fatal), depois a indexação do ComunicaBR por município no índice (item 6), que espera o banco local.
 
 | # | Tarefa | Estado | Por quê / bloqueio |
 |---|---|---|---|
-| 1 | Degrau 2 do assistente | 🟡 | próximo passo acima; destrava o pedido do dono sem tocar arquitetura |
+| 1 | Degrau 2 do assistente | ✅ | entregue em 16/08: comparar/lacuna/não-atendida; 23 testes novos (681 vitest + 137 globo verdes); sem modelo, sem rede além do índice |
 | 2 | Protocolo da LAI do INCRA no Fala.BR | ⛔ | `data_limite: 2026-08-18` — a única tarefa que fica **impossível** se atrasar; exige login humano e anotar o número |
 | 3 | Carregar as 8.940 normas federais | ⛔ | código pronto e testado; sem a carga, `/ambiental/legislacao` mostra 0 nacionais (e a proteção animal fica invisível) |
 | 4 | Clima e risco: aplicar migration `0074` e carregar o coletado | 🟡 | `381b467` coletado (AdaptaBrasil 6.824 linhas + INMET), não carregado; BH pontua 0,00 "muito baixo" — índice nunca vai sozinho para a tela |
