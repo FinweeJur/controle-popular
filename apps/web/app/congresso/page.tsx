@@ -1,5 +1,7 @@
 import Link from "@/lib/congresso/link";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import FotoBrasilComS from "@/app/components/FotoBrasilComS";
+import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import { totaisHome } from "@/lib/db/queries/congresso";
 
 /**
@@ -38,6 +40,14 @@ export default async function Home() {
           </Link>
         </div>
       </section>
+
+      {/* Foto de abertura da zona — acervo Brasil com S, com crédito na
+          legenda. Cartão emoldurado e não "fundo" de propósito: foto como
+          fundo de texto furaria o contraste; sem corte (termos do acervo). */}
+      <FotoBrasilComS
+        id="00031"
+        className="mx-auto max-w-sm overflow-hidden rounded-xl border border-border bg-surface shadow-sm"
+      />
 
       {totalProposicoes === null ? (
         <section className="rounded-lg border border-[var(--cp-border)] p-6">
@@ -81,6 +91,9 @@ export default async function Home() {
       </section>
 
       <OutrasFrentes atual="congresso" />
+
+      {/* Faixa decorativa com crédito — ver `CenasDoBrasil.tsx`. */}
+      <CenasDoBrasil fotos={["00089", "00433", "00308", "00304"]} />
     </div>
   );
 }

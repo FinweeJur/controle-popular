@@ -1,5 +1,7 @@
 import Link from "@/lib/judiciario/link";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import FotoBrasilComS from "@/app/components/FotoBrasilComS";
+import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import { listarTribunais, proximasVacancias, listarNomeacoes } from "@/lib/judiciario/tribunais";
 import { rotuloResultado } from "@/lib/judiciario/rotulos";
 import FonteRodape, { FONTE_SENADO, FONTE_REGUA } from "@/app/judiciario/components/FonteRodape";
@@ -51,6 +53,14 @@ export default async function Home() {
           quando o Senado o publica.
         </p>
       </section>
+
+      {/* Foto de abertura da zona — acervo Brasil com S, com crédito na
+          legenda. Cartão emoldurado e não "fundo" de propósito: foto como
+          fundo de texto furaria o contraste; sem corte (termos do acervo). */}
+      <FotoBrasilComS
+        id="00033"
+        className="mx-auto max-w-sm overflow-hidden rounded-xl border border-border bg-surface shadow-sm"
+      />
 
       <section className="grid gap-4 sm:grid-cols-3">
         <div className="rounded-lg border border-[var(--cp-border)] p-4">
@@ -131,6 +141,9 @@ export default async function Home() {
       />
 
       <OutrasFrentes atual="judiciario" />
+
+      {/* Faixa decorativa com crédito — ver `CenasDoBrasil.tsx`. */}
+      <CenasDoBrasil fotos={["00414", "00416", "00417"]} />
     </div>
   );
 }

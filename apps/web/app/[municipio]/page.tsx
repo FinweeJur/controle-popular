@@ -1,6 +1,8 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import FotoBrasilComS from "@/app/components/FotoBrasilComS";
+import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import RankingVereadores from "@/app/[municipio]/components/charts/RankingVereadores";
 import * as q from "@/lib/db/queries/betim";
@@ -308,6 +310,13 @@ export default async function HomePage({
               ) : null}
             </div>
           ) : null}
+
+          {/* Foto do acervo Brasil com S (Lab 678), com crédito na legenda
+              — ver `FotoBrasilComS.tsx`. Sem corte, por termos do acervo. */}
+          <FotoBrasilComS
+            id="00039"
+            className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm"
+          />
         </div>
       </section>
 
@@ -813,6 +822,9 @@ export default async function HomePage({
         </section>
 
         <OutrasFrentes atual="cidades" />
+
+        {/* Faixa decorativa com crédito — ver `CenasDoBrasil.tsx`. */}
+        <CenasDoBrasil fotos={["00253", "00254", "00293", "00325"]} />
       </main>
     </div>
   );

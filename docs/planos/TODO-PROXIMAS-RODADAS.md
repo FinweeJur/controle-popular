@@ -267,6 +267,40 @@ não se perder:
   template exigia fora de EUA/Europa, mas o portal já roda em GitHub/Cloudflare/
   Neon — não é automático), qual acervo entra, e a ressalva de IA.
 
+### 14. Ícones do Brasil nas páginas — mapa letra→ícone pendente do dono
+
+Pedido literal (16/08): usar, da fonte **Brasil Icons** (Woodcutter), os ícones
+tucano, cacto, arara, café em grãos, maracá, árvore, mapa do Brasil com
+bandeira, havaianas, mapa da América Latina, cruz e capoeirista; e, da fonte
+**Icones do Brasil** (Maranzana), tartaruga, papagaio, banana, capoeira,
+violão, palmeira, onça, pandeiro, santa, mico, pão de açúcar, indígena e saci.
+
+Infra pronta em 16/08: as duas fontes convertidas para woff2 self-hosted
+(`apps/web/app/fonts/`, `fonts-icones.ts` via `next/font/local` — módulo
+separado do layout para não pesar o bundle até serem usadas) e licenças
+registradas em `docs/CREDITOS-MIDIA.md`.
+
+**O que falta é o dono:** os glifos das duas fontes vivem nas letras A-Z/a-z
+SEM nome descritivo, e o modelo não lê imagem. Abrir
+`C:\Users\teste\AppData\Local\Temp\opencode\brasilcoms\mapa-icones.html`
+(gerado em 16/08 — grades das duas fontes com cada letra rotulada) e
+reportar qual LETRA renderiza cada um dos 24 ícones acima. Depois: componente
+`BrasilIcon` (nome→letra, font-family, `aria-hidden`) + microanimações CSS
+(regra do site: `prefers-reduced-motion` e alto contraste sem efeito).
+
+**Licença (decisão do dono antes de publicar):** Brasil Icons é donationware
+(uso pessoal e comercial livre, crédito ©Woodcutter Manero). Icones do Brasil
+tem licença **não verificada** — fonttoolbox marca "Unknown" e fonts2u marca
+"Personal use" — uso público precisa de autorização do autor ou troca de
+fonte.
+
+### 15. Descrever a foto 00296 do acervo Brasil com S
+
+A página do produto (`brasilcoms-00296`) não publica descrição/tags — sem o
+que mostrar na imagem, ela ficou de fora das faixas `CenasDoBrasil` (alt
+honesto é requisito). Alguém com visão descreve a foto (ou o dono passa o
+texto do produto) e ela entra na grade.
+
 ---
 
 ## 🟢 Planos já escritos, esperando execução

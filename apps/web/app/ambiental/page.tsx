@@ -1,6 +1,8 @@
 import Link from "@/lib/ambiental/link";
 import { ZONAS } from "@/lib/zonas";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import FotoBrasilComS from "@/app/components/FotoBrasilComS";
+import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import { formatNumberBR } from "@/lib/betim/format";
 import { contarReunioesCopam } from "@/lib/db/queries/copam";
 import { contarBarragensMg } from "@/lib/db/queries/barragens";
@@ -140,6 +142,16 @@ export default async function AmbientalHome() {
         </p>
       </header>
 
+      {/* Foto de abertura da zona — acervo Brasil com S (Lab 678), com
+          crédito na legenda. O "fundo de página" pedido pelo dono virou
+          cartão emoldurado de propósito: foto como fundo de texto furaria o
+          contraste dos temas; em cartão, nenhum número fica por cima dela.
+          Sem corte (termos do acervo) — ver `FotoBrasilComS.tsx`. */}
+      <FotoBrasilComS
+        id="00036"
+        className="mt-10 mx-auto max-w-sm overflow-hidden rounded-xl border border-border bg-surface shadow-sm"
+      />
+
       <div className="mt-10 grid gap-5 sm:grid-cols-2">
         {BLOCOS.map((b) => {
           const conteudo = (
@@ -196,6 +208,9 @@ export default async function AmbientalHome() {
           as outras três, mesma régua (`outrasZonas` filtra a própria
           zona e só lista `publicada: true`). */}
       <OutrasFrentes atual="ambiental" />
+
+      {/* Faixa decorativa com crédito — ver `CenasDoBrasil.tsx`. */}
+      <CenasDoBrasil fotos={["00483", "00500", "00503", "00517"]} />
     </div>
   );
 }

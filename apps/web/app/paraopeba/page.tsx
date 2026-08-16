@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import FotoBrasilComS from "@/app/components/FotoBrasilComS";
+import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import AvisoColetaEmCurso from "@/app/components/AvisoColetaEmCurso";
 import { ZONAS } from "@/lib/zonas";
 import { formatNumberBR } from "@/lib/betim/format";
@@ -173,6 +175,14 @@ export default function ParaopebaHome() {
         <AvisoColetaEmCurso escopo="Aqui isso é especialmente forte: dos 7.107 documentos do processo judicial, só 471 têm município identificado — o acervo mostra o que foi possível ler, não tudo o que existe nos autos." />
       </header>
 
+      {/* Foto de abertura da zona — acervo Brasil com S, com crédito na
+          legenda. Cartão emoldurado e não "fundo" de propósito: foto como
+          fundo de texto furaria o contraste; sem corte (termos do acervo). */}
+      <FotoBrasilComS
+        id="00085"
+        className="mt-10 mx-auto max-w-sm overflow-hidden rounded-xl border border-border bg-surface shadow-sm"
+      />
+
       <div className="mt-10 grid gap-5 sm:grid-cols-2">
         {BLOCOS.map((b) => (
           <a
@@ -225,6 +235,9 @@ export default function ParaopebaHome() {
           link para as outras frentes, então a remissão cruzada só existia
           no rodapé, depois de rolar a página inteira. */}
       <OutrasFrentes atual="paraopeba" />
+
+      {/* Faixa decorativa com crédito — ver `CenasDoBrasil.tsx`. */}
+      <CenasDoBrasil fotos={["00397", "00410"]} />
 
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <FooterGlobal />
