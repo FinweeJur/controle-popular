@@ -71,7 +71,7 @@ O assistente é uma escada de quatro degraus, e cada degrau só é acionado quan
 ## Radar Paraopeba
 
 - **Coleta de notícias**: coletor diário grava `data/noticias-paraopeba.json` (título, veículo, data e link — nunca o corpo da matéria), lido no build por `lib/paraopeba/radar.ts`. Fontes: MAB, Agência Brasil, Google Notícias e os feeds das 3 ATIs (AEDAS, ADAI, Guaicuy); TJMG e MPMG ficaram fora — os RSS respondem 404 — e a tela mostra a lacuna. Volume total do bloco: 254 itens (149 clipping + 46 ATIs + 59 radar) (medição em 16/08 — remeça antes de decidir com ele).
-- **Triagem de dado pessoal** (`lib/paraopeba/triagem.ts`): régua dedicada ao acervo da Plataforma Brumadinho UFMG — CPF por mod-11, iniciais, contato pessoal e **nota de pesar** (nome por extenso de vítima é dado pessoal e é redigido). Complementa a varredura de código-fonte, que não cobre dado ingerido em massa.
+- **Triagem de dado pessoal** (`lib/paraopeba/triagem.ts`): régua dedicada ao acervo da Plataforma Brumadinho UFMG — CPF por mod-11, iniciais, contato pessoal e **nota de pesar** (nome por extenso de vítima é dado pessoal e é redigido). Complementa a rede de DADO (`scripts/checar-dado-pessoal-em-dado.py`), que varre CPF nos valores de JSON de acervo no pre-push e na CI, e a varredura de código-fonte (`scripts/checar-dado-pessoal.py`).
 - **Três ATIs**: AEDAS (Regiões 1 e 2), NACAB (Região 3) e Guaicuy (Regiões 4 e 5) — curadoria separada do painel-fonte, classificada por ATI e por tema da reparação.
 
 ## Painel de edição

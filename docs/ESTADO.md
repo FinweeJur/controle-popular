@@ -31,7 +31,7 @@ Transversais confirmados: **painel de edição web** (token, editar, publicar, s
 | 6 | ComunicaBR: indexação por município no índice estático | 🟡 | nunca o estado inteiro; ressalva viaja junto (61% dos itens vazios — índice que guarde só o que tem valor responde com falsa completude) |
 | 7 | Arquivo de fontes em R2 (espelho) | 🟡 | 8.345/8.570 normas MMA têm `link_pdf` (97,4% — medição em 16/08); upload por fazer; medir antes em massa |
 | 8 | 13 quilombolas + 103 barragens sem mancha | 🟡 | lacuna de dado; cobertura ainda é o maior risco de conclusão errada (a primeira lacuna desse tipo mudou um alerta de zero para seis) |
-| 9 | Trava de dado pessoal que varre o DADO | 🟡 | adiada para 18/08; bloqueia a amostragem dos 200 documentos do acervo |
+| 9 | Trava de dado pessoal que varre o DADO | ✅ | entregue em 16/08: `scripts/checar-dado-pessoal-em-dado.py` (CPF mod-11 sobre valores de JSON de acervo) no pre-push e na CI + teste gêmeo vitest; segue a amostragem dos 200 documentos do acervo (plano Brumadinho §3) quando o dump existir |
 | 10 | Rouanet: junção incentivador × fornecedor + tela | 🟡 | 2.261 CNPJs (de 20.785 incentivadores) × `contratos.fornecedor_cnpj`; quantos casam só se sabe com banco; tela com ressalva colada ao número |
 | 11 | Coletor de notícias diário | 🟡 | escrito e rodando à mão; agendamento depende do servidor |
 | 12 | Três ATIs como fonte do radar | ✅ | entregue em 16/08: feeds AEDAS/ADAI/Guaicuy no coletor + regra "Nota de pesar" na triagem, com teste (35 testes verdes) |

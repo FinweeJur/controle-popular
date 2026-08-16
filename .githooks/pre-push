@@ -1,6 +1,7 @@
 #!/bin/sh
 #
-# Barra o push quando há CPF de pessoa real ou segredo em arquivo de código.
+# Barra o push quando há CPF de pessoa real ou segredo em arquivo de código —
+# e CPF de pessoa real em DADO ingerido (JSON de acervo/dataset).
 #
 # ═══ POR QUE UM HOOK, E NÃO SÓ O TESTE ═══
 #
@@ -8,6 +9,8 @@
 # `origin/main` de um repositório público. Nenhuma das defesas do projeto pegou,
 # porque todas vivem no caminho do DADO (lista branca de colunas na exportação,
 # `PROIBIDOS`, `_sanitizar_nome`) e o vazamento foi por COMENTÁRIO DE CÓDIGO.
+# A mesma varredura voltou a achar CPF no DADO ingerido (`docs/FONTES-ROUANET-
+# SALIC.md`), por isso o hook roda DUAS checagens: a de código e a de dado.
 #
 # Um teste só protege quem roda o teste. Este hook roda sozinho, no último
 # instante em que o dado ainda é local — depois do push não há desfazer que
@@ -39,11 +42,12 @@ else
 fi
 
 RAIZ=$(git rev-parse --show-toplevel)
-CHECADOR="$RAIZ/scripts/checar-dado-pessoal.py"
 
-if [ ! -f "$CHECADOR" ]; then
-    echo "⚠️  pre-push: $CHECADOR não existe — checagem PULADA."
-    exit 0
-fi
-
-"$PY" "$CHECADOR"
+for CHECADOR in "$RAIZ/scripts/checar-dado-pessoal.py" \
+                "$RAIZ/scripts/checar-dado-pessoal-em-dado.py"; do
+    if [ ! -f "$CHECADOR" ]; then
+        echo "⚠️  pre-push: $CHECADOR não existe — checagem PULADA."
+        continue
+    fi
+    "$PY" "$CHECADOR"
+done

@@ -31,5 +31,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Procurar CPF de pessoa real e segredo
+      - name: Procurar CPF de pessoa real e segredo (código)
         run: python scripts/checar-dado-pessoal.py
+
+      - name: Procurar CPF de pessoa real em dado ingerido (JSON de acervo)
+        run: python scripts/checar-dado-pessoal-em-dado.py
+
+      - name: Provar que a régua de dado vê e não é cega
+        run: python scripts/checar-dado-pessoal-em-dado.py --self-test

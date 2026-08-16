@@ -8,6 +8,14 @@
 
 ### 1. A trava de dado pessoal não varre o DADO, só o código
 
+> ✅ **feito em 16/08.** `scripts/checar-dado-pessoal-em-dado.py` (CPF mod-11
+> sobre os VALORES de JSON de acervo, com `--staged`, `--extra` e `--self-test`)
+> está no pre-push e na CI (`dado-pessoal.yml`), com teste gêmeo
+> `apps/web/lib/sem-dado-pessoal-no-repo.test.ts`. A régua semântica por acervo
+> (`lib/paraopeba/triagem.ts`) segue sendo a triagem de verdade para o
+> Brumadinho — a rede pega CPF no texto e não substitui aquela. O histórico
+> abaixo fica para registrar por que ela existe.
+
 `scripts/checar-dado-pessoal.py` foi desenhado para varrer **código-fonte**.
 Ele não cobre acervo ingerido — e o portal começou a ingerir acervo hoje.
 
