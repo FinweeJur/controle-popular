@@ -187,12 +187,16 @@ adotado tem que passar nos três.
 
 ### 10. Ordenar e filtrar a visualização das listas de dados
 
-> 🟡 **fatia 1 feita em 17/08.** A lógica pura está em `lib/tabela/ordenar.ts`
-> (comparador por texto/número/data + `ordenarPor` imutável + `filtrarPorIgual`
-> + `filtrarPorTexto`), com 14 testes em `ordenar.test.ts` — no molde que o
-> próprio item prescreve. Falta a fatia 2: colar no componente
-> (`TabelaEstatica.tsx` ganhar ordenação por coluna com o mesmo visual; UI de
-> seletor de filtro) e a a11y (teclado, focus, `prefers-reduced-motion`).
+> ✅ **feito em 17/08.** Lógica pura em `lib/tabela/ordenar.ts` (comparador por
+> texto/número/data + `ordenarPor` imutável + `filtrarPorIgual` +
+> `filtrarPorTexto`, 14 testes) e colada no componente: `TabelaEstatica.tsx`
+> ganhou ordenação por clique no cabeçalho — 1º clique asc, 2º desc, 3º volta
+> à ordem original; `aria-sort` no `<th>`, `⇅/▲/▼` como indicador, estado
+> espelhado na URL (`?ordem=chave:asc`), paginação resetada ao ordenar.
+> Coluna com `formatar` só ordena se declarar `ordernavel: true` (o valor
+> exibido pode não ser o campo cru). As 11 listas que já usam
+> `TabelaEstatica` herdam a ordenação; as listas de data que usam `formatar`
+> precisam declarar `tipoOrdenacao: "data"` quando quiserem ordenar.
 
 Pedido literal (16/08): *"Quero poder ordenar os contatos por valor, nome de
 prestador, tema, data, tipo de alerta, as emendas parlamentares tbm e outros

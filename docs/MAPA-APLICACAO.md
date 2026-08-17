@@ -12,7 +12,7 @@
 - **Banco de escritas ao vivo**: **Cloudflare D1** (SQLite) em `lib/db/schema.d1.ts` — `page_views`, `zap_estabelecimentos`, `classificados`, `anuncios`. O Postgres é o banco do ETL/build; o D1 é o banco de runtime para conteúdo moderado.
 - **Testes**: Vitest (`npx vitest run`), 49 arquivos, 699 testes verdes. Typecheck: `npx tsc --noEmit`.
 - **Lint**: ESLint tem 2.091 erros pré-existentes no repo todo — só checar arquivos tocados: `npx eslint <files>`. Erros conhecidos e aceitos: `no-html-link-for-pages` (breadcrumbs/footers usam `<a>` de propósito).
-- **Ordenação/filtro de listas**: lógica pura em `lib/tabela/ordenar.ts` (`ordenarPor` imutável, `compararValores` por texto/número/data, `filtrarPorIgual`, `filtrarPorTexto`, sem acento via `lib/busca/normalizar.ts`; ausentes sempre no fim). 14 testes. Ainda não colada no `TabelaEstatica.tsx` (item 10 fatia 2).
+- **Ordenação/filtro de listas**: lógica pura em `lib/tabela/ordenar.ts` (`ordenarPor` imutável, `compararValores` por texto/número/data, `filtrarPorIgual`, `filtrarPorTexto`, sem acento via `lib/busca/normalizar.ts`; ausentes sempre no fim). 14 testes. Colada em `TabelaEstatica.tsx` (17/08): clique no cabeçalho ordena (asc → desc → original), `aria-sort`, indicador `⇅/▲/▼`, URL `?ordem=chave:asc`, coluna com `formatar` precisa de `ordernavel: true` + `tipoOrdenacao` para ordenar.
 
 ## 2. As três camadas de dados
 
@@ -152,6 +152,6 @@ Fonte: `lib/db/schema.ts` (123 KB, introspectado do Neon via drizzle-kit) + `lib
 3. Foto `00296` fora das faixas — **depende de alguém descrever** a imagem (a página do produto não publica descrição; alt honesto é requisito). Ver TODO §15.
 4. Índices do banco (trigram GIN em nomes é o maior ganho por esforço) — **aguarda Neon** (HTTP 402 até 2026-09-01) e decisão de aplicar DDL.
 5. Neon Free voltou em 2026-09-01 → retomar build local, aplicar migrations pendentes (`0071` convenios, backfill classificador de temas, URL TJMG) e índices.
-6. Item 10 fatia 2: colar `lib/tabela/ordenar.ts` no `TabelaEstatica.tsx` (ordenação por coluna + seletor de filtro + a11y). Fatia 1 (lógica pura, 14 testes) feita em 17/08.
+6. Item 10 — **feito em 17/08** (ordenação por coluna no `TabelaEstatica.tsx`, herdada pelas 11 listas). Filtro por seletor (enum/ano) via UI continua pendente; `filtrarPorIgual` já existe em `lib/tabela/ordenar.ts`.
 7. Item 12: plano de geocodificação escrito em `docs/planos/PLANO-GEOCODIFICACAO.md` — executar quando o monitoramento da Vale (§11) tiver dado.
 8. Item 9 (ATIs no radar) — **já feito**, TODO atualizado em 17/08.

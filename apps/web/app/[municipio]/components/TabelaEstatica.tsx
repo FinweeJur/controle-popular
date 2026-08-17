@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ManifestoFatias } from "@/lib/estatico/fatiar";
+import { ordenarPor } from "@/lib/tabela/ordenar";
+import type { Direcao, TipoCampo } from "@/lib/tabela/ordenar";
 
 /**
  * Tabela que lê um índice estático fatiado (ver `lib/estatico/fatiar.ts`) e faz
@@ -42,6 +44,20 @@ export interface ColunaTabela<T> {
   /** Alinha à direita e usa `tabular-nums` — para dinheiro e contagem. */
   numerica?: boolean;
   formatar?: (linha: T) => React.ReactNode;
+  /**
+   * Ordenável por clique no cabeçalho. O padrão é `true` para coluna sem
+   * `formatar` e `false` para coluna com `formatar`: quando o valor exibido
+   * NÃO é o valor cru do campo (link, moeda formatada), ordenar por ele
+   * enganaria. Quem quiser ordenar assim mesmo declara `ordernavel: true`
+   * e o tipo de comparação certo em `tipoOrdenacao`.
+   */
+  ordenavel?: boolean;
+  /**
+   * Como comparar os valores ao ordenar. O padrão é `"numero"` para coluna
+   * `numerica` e `"texto"` para o resto; data precisa declarar `"data"` com
+   * o valor em ISO (ver `lib/tabela/ordenar.ts`).
+   */
+  tipoOrdenacao?: TipoCampo;
 }
 
 export interface TabelaEstaticaProps<T> {
@@ -84,11 +100,18 @@ export interface TabelaEstaticaProps<T> {
 
 type Estado = "carregando" | "pronto" | "erro";
 
+interface OrdemAtiva {
+  chave: string;
+  direcao: Direcao;
+}
+
 const normalizar = (v: unknown) =>
   String(v ?? "")
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase();
+
+const FORMATO_ORDEM = /^([a-z0-9_]+):(asc|desc)$/;
 
 export default function TabelaEstatica<T extends Record<string, unknown>>({
   base,
@@ -104,6 +127,7 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
   const [estado, setEstado] = useState<Estado>("carregando");
   const [busca, setBusca] = useState("");
   const [pagina, setPagina] = useState(1);
+  const [ordem, setOrdem] = useState<OrdemAtiva | null>(null);
   const primeiraRenderizacao = useRef(true);
 
   // Estado inicial vindo da URL, uma vez, depois da hidratação.
@@ -111,8 +135,13 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
     const sp = new URLSearchParams(window.location.search);
     const q = sp.get("q");
     const p = Number(sp.get("page"));
+    const o = sp.get("ordem");
     if (q) setBusca(q);
     if (p > 1) setPagina(p);
+    if (o) {
+      const m = FORMATO_ORDEM.exec(o);
+      if (m) setOrdem({ chave: m[1], direcao: m[2] as Direcao });
+    }
   }, []);
 
   // Espelha o estado de volta na URL, sem entrar no histórico.
@@ -124,9 +153,10 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
     const sp = new URLSearchParams(window.location.search);
     busca ? sp.set("q", busca) : sp.delete("q");
     pagina > 1 ? sp.set("page", String(pagina)) : sp.delete("page");
+    ordem ? sp.set("ordem", `${ordem.chave}:${ordem.direcao}`) : sp.delete("ordem");
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
-  }, [busca, pagina]);
+  }, [busca, pagina, ordem]);
 
   useEffect(() => {
     let cancelado = false;
@@ -162,15 +192,44 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
 
   const completo = estado === "pronto";
 
+  // Ordenação ativa: a coluna vira chave, o tipo vem dela (ou o padrão).
+  const ordemAtiva = useMemo(() => {
+    if (!ordem) return null;
+    const coluna = colunas.find((c) => c.chave === ordem.chave);
+    if (!coluna) return null;
+    return {
+      chave: coluna.chave,
+      direcao: ordem.direcao,
+      tipo: coluna.tipoOrdenacao ?? (coluna.numerica ? "numero" : "texto"),
+    } as const;
+  }, [ordem, colunas]);
+
   const filtradas = useMemo(() => {
     // Filtro por coluna primeiro, busca textual depois: a busca varre string e
     // é a parte cara; reduzir o conjunto antes é o que mantém a digitação fluida
-    // numa tabela de milhares de linhas.
+    // numa tabela de milhares de linhas. Ordenação por último, sobre o conjunto
+    // já filtrado (ordenar antes de filtrar seria trabalho jogado fora).
     const base = filtrar ? linhas.filter(filtrar) : linhas;
-    if (!busca.trim() || camposBusca.length === 0) return base;
-    const alvo = normalizar(busca);
-    return base.filter((l) => camposBusca.some((c) => normalizar(l[c]).includes(alvo)));
-  }, [linhas, busca, camposBusca, filtrar]);
+    let resultado = base;
+    if (busca.trim() && camposBusca.length > 0) {
+      const alvo = normalizar(busca);
+      resultado = base.filter((l) => camposBusca.some((c) => normalizar(l[c]).includes(alvo)));
+    }
+    if (ordemAtiva) {
+      resultado = ordenarPor(resultado, ordemAtiva.chave, ordemAtiva.direcao, ordemAtiva.tipo);
+    }
+    return resultado;
+  }, [linhas, busca, camposBusca, filtrar, ordemAtiva]);
+
+  const alternarOrdem = (coluna: ColunaTabela<T>) => {
+    setPagina(1);
+    setOrdem((atual) => {
+      // 1º clique ordena; 2º inverte; 3º devolve a ordem original do dado.
+      if (atual?.chave !== coluna.chave) return { chave: coluna.chave, direcao: "asc" };
+      if (atual.direcao === "asc") return { chave: coluna.chave, direcao: "desc" };
+      return null;
+    });
+  };
 
   // Filtro novo pode deixar menos páginas que a atual; sem isto o leitor cai
   // numa página vazia e conclui que o filtro não achou nada.
@@ -236,17 +295,42 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
         <table className="w-full text-sm">
           <thead>
             <tr>
-              {colunas.map((c) => (
-                <th
-                  key={c.chave}
-                  scope="col"
-                  className={`whitespace-nowrap border-b border-border bg-surface px-3 py-2 text-xs uppercase tracking-wide text-text-soft ${
-                    c.numerica ? "text-right" : "text-left"
-                  }`}
-                >
-                  {c.rotulo}
-                </th>
-              ))}
+              {colunas.map((c) => {
+                const podeOrdenar = c.ordenavel ?? !c.formatar;
+                const ativa = ordemAtiva?.chave === c.chave;
+                const rotulo = ativa
+                  ? `${c.rotulo} (${ordemAtiva.direcao === "asc" ? "crescente" : "decrescente"})`
+                  : c.rotulo;
+                return (
+                  <th
+                    key={c.chave}
+                    scope="col"
+                    aria-sort={ativa ? (ordemAtiva.direcao === "asc" ? "ascending" : "descending") : "none"}
+                    className={`whitespace-nowrap border-b border-border bg-surface px-3 py-2 text-xs uppercase tracking-wide text-text-soft ${
+                      c.numerica ? "text-right" : "text-left"
+                    }`}
+                  >
+                    {podeOrdenar ? (
+                      <button
+                        type="button"
+                        onClick={() => alternarOrdem(c)}
+                        aria-label={`Ordenar por ${c.rotulo}`}
+                        title={`Ordenar por ${c.rotulo}`}
+                        className={`inline-flex items-center gap-1 rounded transition-colors hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 ${
+                          ativa ? "text-text" : ""
+                        }`}
+                      >
+                        {c.rotulo}
+                        <span aria-hidden="true" className="font-tabular text-[0.8em]">
+                          {ativa ? (ordemAtiva.direcao === "asc" ? "▲" : "▼") : "⇅"}
+                        </span>
+                      </button>
+                    ) : (
+                      rotulo
+                    )}
+                  </th>
+                );
+              })}
             </tr>
           </thead>
           <tbody>
