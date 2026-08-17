@@ -139,8 +139,13 @@ verificado** (existe e ninguém confirmou).
 > confirmação plena — Portal de Transparência de SP (captcha caiu; canal de
 > LAI do estado é `fala.sp.gov.br`) e OAB-MG (bloqueio 403 sumiu; comissão de
 > Direitos Humanos ainda não localizada na listagem, que pagina via JS).
-> Faltam as frentes maiores: auditoria total dos 25.729 links em banco e a
-> classificação ausente/desatualizado/não verificado por página.
+> **Rodada 3 (17/08):** classificação completa das páginas — 67 buracos
+> (44 AUSENTE, 18 NAO_VERIFICADO, 5 DESATUALIZADO), ver
+> `docs/planos/CLASSIFICACAO-COMPLETUDE.md`. 4 críticos de código (WhatsApp
+> placeholder do `/anuncie`, Diário Oficial hardcoded de Betim em todas as
+> cidades, plantão de farmácias sem telefone/endereço, zap sem link).
+> Faltam: auditoria total dos 25.729 links em banco (Neon, 01/09) e as
+> decisões do dono listadas na seção 5 do relatório.
 
 ### 7. Revisão crítica de onboarding, acessibilidade e uso por leigo — ✅ feito em 14/08
 

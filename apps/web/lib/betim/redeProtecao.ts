@@ -643,11 +643,11 @@ export interface NaoVerificado {
 // Defensoria Pública de MG (achava-se o subdomínio errado; item agora em
 // `LAI_ESTADUAL`) e Ouvidoria de Betim (URL morta dois dias seguidos;
 // trocada por alternativa viva no mesmo domínio via migration `0073`, o
-// link real que `PedidoLAI`/`Footer` usam). Os 11 que sobraram: SEM
+// link real que `PedidoLAI`/`Footer` usam). Os 10 que sobraram: SEM
 // MUDANÇA na maioria, 2 ganharam detalhe novo sem virar confirmação plena
 // (ver nota de cada um).
 //
-// Reconferido de novo AO VIVO em 2026-08-17 (item 6, rodada 2): os 9 que
+// Reconferido de novo AO VIVO em 2026-08-17 (item 6, rodada 2): os 8 que
 // permanecem SEM MUDANÇA seguem como estavam; 2 registraram MUDANÇA real —
 // Portal de Transparência de SP (o captcha anti-bot da Prodam caiu, o
 // conteúdo agora carrega por automação; o canal de LAI do estado é o
