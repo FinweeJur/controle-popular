@@ -12,12 +12,11 @@ import {
   MARCOS_PARAOPEBA,
   ATORES_REPARACAO,
   PAGAMENTOS_PARAOPEBA,
-  DOCUMENTOS_PROCESSO,
   COBERTURA_DOCUMENTOS_PROCESSO,
 } from "@/lib/paraopeba";
 // Fora do barril de propósito: `biblioteca.ts` lê disco com `node:fs`, e o
 // barril é importado por componente de cliente. Mesma razão de `radar.ts`.
-import { COBERTURA_BIBLIOTECA } from "@/lib/paraopeba/biblioteca";
+import { coberturaBiblioteca } from "@/lib/paraopeba/biblioteca";
 // Também fora do barril, por outra razão: o acervo da auditoria tem 336 KiB, e
 // pô-lo em `@/lib/paraopeba` levaria esse peso a toda tela que importa o
 // barril. Aqui só a contagem é usada, e esta rota é servidor — nada disso vai
@@ -60,7 +59,8 @@ export const metadata: Metadata = metadataEditavel("/paraopeba", {
 
 const ZONA = ZONAS.find((z) => z.id === "paraopeba")!;
 
-export default function ParaopebaHome() {
+export default async function ParaopebaHome() {
+  const cob = await coberturaBiblioteca();
   const tiposDeAtor = new Set(ATORES_REPARACAO.map((a) => a.categoria));
   // 455 linhas de status descrevem 234 projetos — um projeto que alcança 25
   // cidades aparece 25 vezes. O cartão mostra o distinto, nunca o `length`.
@@ -133,7 +133,7 @@ export default function ParaopebaHome() {
       // guardam coisas opostas — lá são os autos, aqui é o que as ATIs
       // escreveram para quem foi atingido.
       titulo: "Biblioteca das assessorias",
-      linha: `${formatNumberBR(COBERTURA_BIBLIOTECA.publicados)} publicações`,
+      linha: `${formatNumberBR(cob.publicados)} publicações`,
       texto:
         "Cartilhas, boletins, jornais, rádio, vídeos e documentos técnicos publicados pelas próprias assessorias técnicas independentes — não são peças do processo, é o material que elas produziram para as pessoas atingidas. Só metadado e link: o arquivo abre no site da ATI.",
       href: "/paraopeba/biblioteca",

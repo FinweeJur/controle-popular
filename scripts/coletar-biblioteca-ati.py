@@ -1,6 +1,6 @@
 """coletar-biblioteca-ati.py — biblioteca das Assessorias Técnicas Independentes do Paraopeba.
 
-Grava `apps/web/data/biblioteca-ati.json`, lido no BUILD por
+Grava `apps/web/public/data/biblioteca-ati.json`, lido no BUILD por
 `apps/web/lib/paraopeba/biblioteca.ts` e exibido em `/paraopeba/biblioteca`.
 
 Rodar:
@@ -88,7 +88,7 @@ from html import unescape
 from pathlib import Path
 from typing import Any, Iterable
 
-SAIDA = Path(__file__).resolve().parent.parent / "apps" / "web" / "data" / "biblioteca-ati.json"
+SAIDA = Path(__file__).resolve().parent.parent / "apps" / "web" / "public" / "data" / "biblioteca-ati.json"
 
 # Agente identificado, só ASCII (cabeçalho com acento quebra cliente HTTP —
 # lição de `backend/app/api/imagens.py`). O Guaicuy devolve 406 sem ele.

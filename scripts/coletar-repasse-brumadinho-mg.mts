@@ -1,7 +1,7 @@
 /**
  * Coletor do repasse do Acordo de Brumadinho aos 853 municípios de Minas.
  *
- * Grava `apps/web/data/repasse-brumadinho-mg.json`, no formato de
+ * Grava `apps/web/public/data/repasse-brumadinho-mg.json`, no formato de
  * `apps/web/lib/brumadinho/repasse.ts`. Não toca em banco: é uma requisição
  * GET sem autenticação e um arquivo.
  *
@@ -70,7 +70,7 @@ import {
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const WEB = resolve(RAIZ, "apps/web");
-const DESTINO = resolve(WEB, "data/repasse-brumadinho-mg.json");
+const DESTINO = resolve(WEB, "public/data/repasse-brumadinho-mg.json");
 const CACHE = resolve(RAIZ, ".cache/repasse-brumadinho.html");
 const CACHE_VALIDO_MS = 12 * 60 * 60 * 1000;
 

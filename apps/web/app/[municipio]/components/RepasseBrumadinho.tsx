@@ -35,12 +35,12 @@ import { URL_REPASSE, repasseDoMunicipio } from "@/lib/brumadinho/repasse";
  * norma que define no que o dinheiro pode ser gasto. Cada linha aparece com a
  * sua base legal.
  */
-export default function RepasseBrumadinho({ idMunicipio }: { idMunicipio: string }) {
+export default async function RepasseBrumadinho({ idMunicipio }: { idMunicipio: string }) {
   // Cidade fora de Minas (São Paulo é uma das do build) simplesmente não tem
   // linha aqui: o arquivo é estadual, e ausência não é lacuna a ser avisada.
   if (!/^31\d{5}$/.test(String(idMunicipio))) return null;
 
-  const repasse = repasseDoMunicipio(String(idMunicipio));
+  const repasse = await repasseDoMunicipio(String(idMunicipio));
   if (!repasse?.rateio) return null;
 
   const { rateio, complementares } = repasse;

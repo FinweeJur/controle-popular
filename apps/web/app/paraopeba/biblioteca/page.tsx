@@ -4,9 +4,9 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import {
   ATI_BIBLIOTECA_LABEL,
-  BIBLIOTECA_ATI,
-  COBERTURA_BIBLIOTECA,
-  FONTES_BIBLIOTECA,
+  bibliotecaAti,
+  coberturaBiblioteca,
+  fontesBiblioteca,
   temasDaBiblioteca,
   tiposDaBiblioteca,
   type AtiBiblioteca,
@@ -39,12 +39,17 @@ export const metadata: Metadata = metadataEditavel("/paraopeba/biblioteca", {
     "Cartilhas, boletins, jornais, produtos do plano de trabalho, documentos técnicos e vídeos publicados pelas assessorias técnicas independentes da bacia do Paraopeba — com link para a fonte original de cada item.",
 });
 
-const ATIS_COM_ACERVO = [...new Set(BIBLIOTECA_ATI.map((i) => i.ati))].sort() as AtiBiblioteca[];
+export default async function BibliotecaPage() {
+  const [itens, cobertura, fontes] = await Promise.all([
+    bibliotecaAti(),
+    coberturaBiblioteca(),
+    fontesBiblioteca(),
+  ]);
+  const tipos = tiposDaBiblioteca(itens);
+  const temas = temasDaBiblioteca(itens);
+  const semColeta = cobertura.geradoEm === "";
 
-export default function BibliotecaPage() {
-  const tipos = tiposDaBiblioteca();
-  const temas = temasDaBiblioteca();
-  const semColeta = COBERTURA_BIBLIOTECA.geradoEm === "";
+  const atis = [...new Set(itens.map((i) => i.ati))].sort() as AtiBiblioteca[];
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
@@ -72,11 +77,11 @@ export default function BibliotecaPage() {
         <>
           <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
             <strong className="text-text">
-              {formatNumberBR(COBERTURA_BIBLIOTECA.publicados)} publicações
+              {formatNumberBR(cobertura.publicados)} publicações
             </strong>{" "}
             das assessorias técnicas independentes da bacia, de{" "}
-            {formatDateBR(COBERTURA_BIBLIOTECA.periodo.de)} a{" "}
-            {formatDateBR(COBERTURA_BIBLIOTECA.periodo.ate)} — cartilhas, boletins, jornais,
+            {formatDateBR(cobertura.periodo.de)} a{" "}
+            {formatDateBR(cobertura.periodo.ate)} — cartilhas, boletins, jornais,
             programas de rádio, vídeos, documentos técnicos e os produtos que cada ATI entrega no
             plano de trabalho.
           </p>
@@ -102,20 +107,20 @@ export default function BibliotecaPage() {
             <p className="mt-3">
               A régua de dado pessoal de{" "}
               <code className="rounded bg-surface px-1.5 py-0.5">lib/paraopeba/triagem.ts</code>{" "}
-              rodou sobre os {formatNumberBR(COBERTURA_BIBLIOTECA.publicados + COBERTURA_BIBLIOTECA.barradosPelaTriagem)}{" "}
+              rodou sobre os {formatNumberBR(cobertura.publicados + cobertura.barradosPelaTriagem)}{" "}
               itens coletados e barrou{" "}
               <strong className="text-text">
-                {formatNumberBR(COBERTURA_BIBLIOTECA.barradosPelaTriagem)}
+                {formatNumberBR(cobertura.barradosPelaTriagem)}
               </strong>
               . Item barrado não é publicado nem em título.
             </p>
           </div>
 
           <BibliotecaClient
-            itens={BIBLIOTECA_ATI}
+            itens={itens}
             tipos={tipos}
             temas={temas}
-            atis={ATIS_COM_ACERVO}
+            atis={atis}
             atiLabel={ATI_BIBLIOTECA_LABEL}
           />
 
@@ -127,7 +132,7 @@ export default function BibliotecaPage() {
               De onde veio, e o que ficou de fora
             </h2>
             <ul className="mt-4 flex flex-col gap-3">
-              {FONTES_BIBLIOTECA.map((f) => (
+              {fontes.map((f) => (
                 <li key={f.id} className="rounded-2xl border border-border bg-surface p-5 text-sm">
                   <p className="font-display font-semibold text-text">
                     {f.nome}{" "}
@@ -155,10 +160,10 @@ export default function BibliotecaPage() {
             </ul>
             <p className="mt-4 rounded-2xl border border-border bg-surface-2 p-5 text-sm text-text-soft">
               <strong className="text-text">Fora do acervo:</strong>{" "}
-              {COBERTURA_BIBLIOTECA.ficouDeFora}
+              {cobertura.ficouDeFora}
             </p>
             <p className="mt-3 text-xs text-text-soft">
-              Coleta de {formatDateBR(COBERTURA_BIBLIOTECA.geradoEm.slice(0, 10))}. O acervo não se
+              Coleta de {formatDateBR(cobertura.geradoEm.slice(0, 10))}. O acervo não se
               atualiza sozinho: ele muda quando o coletor roda e o site é reconstruído.
             </p>
           </section>

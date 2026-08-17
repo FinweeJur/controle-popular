@@ -1,6 +1,8 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+
 import { ehTipoPessoal, precisaRedigirResumo } from "./triagem";
 
 /**
@@ -111,6 +113,54 @@ const VAZIO: BibliotecaAti = {
   itens: [],
 };
 
+const ARQUIVO_BIBLIOTECA = "biblioteca-ati.json";
+
+interface LidoBiblioteca {
+  dados: BibliotecaAti;
+  barrados: ItemBiblioteca[];
+}
+
+let lido: LidoBiblioteca | undefined;
+let emVoo: Promise<LidoBiblioteca> | null = null;
+
+async function ler(): Promise<LidoBiblioteca> {
+  if (lido) return lido;
+  if (emVoo) return emVoo;
+  emVoo = (async () => {
+    let bruto: ArquivoBruto;
+    try {
+      let texto: string;
+      try {
+        const { env } = await getCloudflareContext({ async: true });
+        if (!env.ASSETS) throw new Error("sem ASSETS");
+        const resp = await env.ASSETS.fetch(
+          new URL(`http://assets.local/data/${ARQUIVO_BIBLIOTECA}`)
+        );
+        if (!resp.ok) throw new Error(`ASSETS.fetch devolveu ${resp.status}`);
+        texto = await resp.text();
+      } catch {
+        const caminho = path.join(process.cwd(), "public", "data", ARQUIVO_BIBLIOTECA);
+        texto = readFileSync(caminho, "utf-8");
+      }
+      bruto = JSON.parse(texto) as ArquivoBruto;
+    } catch {
+      const vazio: LidoBiblioteca = { dados: VAZIO, barrados: [] };
+      lido = vazio;
+      return vazio;
+    }
+
+    const barrados = bruto.itens.filter(ehItemBloqueadoPelaTriagem);
+    const publicaveis = bruto.itens.filter((i) => !ehItemBloqueadoPelaTriagem(i));
+    const resultado: LidoBiblioteca = {
+      dados: { ...bruto, itens: publicaveis },
+      barrados,
+    };
+    lido = resultado;
+    return resultado;
+  })();
+  return emVoo;
+}
+
 /**
  * `true` quando o item não pode ser publicado.
  *
@@ -130,34 +180,14 @@ export function ehItemBloqueadoPelaTriagem(item: ItemBiblioteca): boolean {
   });
 }
 
-/**
- * Lê o acervo gravado pelo coletor e aplica a triagem.
- *
- * ⚠️ Arquivo ausente devolve vazio em vez de quebrar o build, pelo mesmo
- * motivo de `radar.ts`: um `git clone` antes da primeira coleta não pode
- * derrubar a publicação do site inteiro por causa de uma seção. Quem lê
- * `gerado_em: ""` sabe que a coleta não rodou, e a tela diz isso em palavras.
- */
-function ler(): { dados: BibliotecaAti; barrados: ItemBiblioteca[] } {
-  let bruto: ArquivoBruto;
-  try {
-    const caminho = path.join(process.cwd(), "data", "biblioteca-ati.json");
-    bruto = JSON.parse(readFileSync(caminho, "utf-8")) as ArquivoBruto;
-  } catch {
-    return { dados: VAZIO, barrados: [] };
-  }
-
-  const barrados = bruto.itens.filter(ehItemBloqueadoPelaTriagem);
-  const publicaveis = bruto.itens.filter((i) => !ehItemBloqueadoPelaTriagem(i));
-  return { dados: { ...bruto, itens: publicaveis }, barrados };
+/** Acervo já triado — é este array, e só ele, que qualquer tela pode exibir. */
+export async function bibliotecaAti(): Promise<ItemBiblioteca[]> {
+  return (await ler()).dados.itens;
 }
 
-const LIDO = ler();
-
-/** Acervo já triado — é este array, e só ele, que qualquer tela pode exibir. */
-export const BIBLIOTECA_ATI: ItemBiblioteca[] = LIDO.dados.itens;
-
-export const FONTES_BIBLIOTECA: FonteBiblioteca[] = LIDO.dados.fontes;
+export async function fontesBiblioteca(): Promise<FonteBiblioteca[]> {
+  return (await ler()).dados.fontes;
+}
 
 /**
  * Números medidos do que foi de fato publicado, nunca digitados.
@@ -166,17 +196,25 @@ export const FONTES_BIBLIOTECA: FonteBiblioteca[] = LIDO.dados.fontes;
  * achou nada" e "a régua não rodou" são estados diferentes, e só o primeiro
  * merece confiança. Um contador escondido quando é zero apaga essa diferença.
  */
-export const COBERTURA_BIBLIOTECA = {
-  geradoEm: LIDO.dados.gerado_em,
-  publicados: BIBLIOTECA_ATI.length,
-  barradosPelaTriagem: LIDO.barrados.length,
-  ficouDeFora: LIDO.dados.ficou_de_fora,
-  /** Período real coberto pelo acervo — a tela rotula por ele, não por "hoje". */
-  periodo: (() => {
-    const datas = BIBLIOTECA_ATI.map((i) => i.data).filter((d): d is string => Boolean(d)).sort();
-    return { de: datas[0] ?? "", ate: datas[datas.length - 1] ?? "" };
-  })(),
-} as const;
+export async function coberturaBiblioteca(): Promise<{
+  geradoEm: string;
+  publicados: number;
+  barradosPelaTriagem: number;
+  ficouDeFora: string;
+  periodo: { de: string; ate: string };
+}> {
+  const { dados, barrados } = await ler();
+  const itens = dados.itens;
+  const datas = itens.map((i) => i.data).filter((d): d is string => Boolean(d)).sort();
+  return {
+    geradoEm: dados.gerado_em,
+    publicados: itens.length,
+    barradosPelaTriagem: barrados.length,
+    ficouDeFora: dados.ficou_de_fora,
+    /** Período real coberto pelo acervo — a tela rotula por ele, não por "hoje". */
+    periodo: { de: datas[0] ?? "", ate: datas[datas.length - 1] ?? "" },
+  };
+}
 
 /** Rótulo curto de cada ATI — mesmo vocabulário de `clipping-ati.ts`. */
 export const ATI_BIBLIOTECA_LABEL: Record<AtiBiblioteca, string> = {
@@ -187,14 +225,14 @@ export const ATI_BIBLIOTECA_LABEL: Record<AtiBiblioteca, string> = {
 };
 
 /** Tipos presentes no acervo, em ordem de frequência medida. */
-export function tiposDaBiblioteca(itens: ItemBiblioteca[] = BIBLIOTECA_ATI): string[] {
+export function tiposDaBiblioteca(itens: ItemBiblioteca[]): string[] {
   const contagem = new Map<string, number>();
   for (const i of itens) contagem.set(i.tipo, (contagem.get(i.tipo) ?? 0) + 1);
   return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt")).map(([t]) => t);
 }
 
 /** Temas presentes no acervo, em ordem de frequência medida. */
-export function temasDaBiblioteca(itens: ItemBiblioteca[] = BIBLIOTECA_ATI): string[] {
+export function temasDaBiblioteca(itens: ItemBiblioteca[]): string[] {
   const contagem = new Map<string, number>();
   for (const i of itens) for (const t of i.temas) contagem.set(t, (contagem.get(t) ?? 0) + 1);
   return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt")).map(([t]) => t);
@@ -207,7 +245,7 @@ export function temasDaBiblioteca(itens: ItemBiblioteca[] = BIBLIOTECA_ATI): str
  * parte do acervo — em vez de deixar o usuário concluir que o Guaicuy não
  * publica nada sobre saúde quando ele apenas não etiqueta por assunto.
  */
-export function comTemaPorAti(itens: ItemBiblioteca[] = BIBLIOTECA_ATI): Record<string, number> {
+export function comTemaPorAti(itens: ItemBiblioteca[]): Record<string, number> {
   const contagem: Record<string, number> = {};
   for (const i of itens) if (i.temas.length > 0) contagem[i.ati] = (contagem[i.ati] ?? 0) + 1;
   return contagem;

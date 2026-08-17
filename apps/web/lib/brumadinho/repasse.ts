@@ -1,12 +1,14 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+
 /**
  * Repasse do Acordo Judicial de Brumadinho aos 853 municípios de Minas Gerais.
  *
  * Fonte: Pró-Brumadinho (Governo de MG), uma página HTML com três tabelas.
  * Coletor: `scripts/coletar-repasse-brumadinho-mg.mts`.
- * Arquivo: `apps/web/data/repasse-brumadinho-mg.json`, lido no BUILD.
+ * Arquivo: `apps/web/public/data/repasse-brumadinho-mg.json`, lido no BUILD.
  *
  * ═══ O QUE ESTE DADO É, E O QUE ELE NÃO É ═══
  *
@@ -425,19 +427,57 @@ export function lerPaginaRepasse(html: string): TabelaLida[] {
 /* ─────────────────────────── leitura ─────────────────────────── */
 
 let arquivoCache: ArquivoRepasse | null | undefined;
+/** Evita leituras em paralelo na primeira chamada concorrente (SSG). */
+let arquivoEmVoo: Promise<ArquivoRepasse | null> | null = null;
 
-/** Lê `data/repasse-brumadinho-mg.json`. `null` se ainda não foi coletado. */
-export function arquivoRepasse(raiz = process.cwd()): ArquivoRepasse | null {
+const ARQUIVO_REPASSE = "repasse-brumadinho-mg.json";
+
+/**
+ * Lê `public/data/repasse-brumadinho-mg.json` — NUNCA com `readFileSync` de
+ * caminho estático em código de Worker, que faz o OpenNext/Cloudflare adapter
+ * embutir o conteúdo no bundle (medido em `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`:
+ * 687,9 KiB gzip só do comunicabr-31.json derrubaram o deploy em 16/08/2026).
+ * Mesmo mecanismo de `lib/comunicabr/mg.ts` e `lib/clima/risco.ts`: em
+ * produção `env.ASSETS.fetch()` serve o arquivo por HTTP; em build local e em
+ * teste o binding não alcança (404 esperado), e cai para `readFileSync` do
+ * mesmo arquivo físico. `null` se ainda não foi coletado.
+ */
+export async function arquivoRepasse(): Promise<ArquivoRepasse | null> {
   if (arquivoCache !== undefined) return arquivoCache;
-  try {
-    arquivoCache = JSON.parse(
-      readFileSync(path.join(raiz, "data", "repasse-brumadinho-mg.json"), "utf-8")
-    ) as ArquivoRepasse;
-  } catch {
-    // Arquivo ausente não derruba o build — mesma regra de `lib/clima/risco.ts`.
-    arquivoCache = null;
-  }
-  return arquivoCache;
+  if (arquivoEmVoo) return arquivoEmVoo;
+  arquivoEmVoo = (async () => {
+    let bruto: string;
+    try {
+      try {
+        const { env } = await getCloudflareContext({ async: true });
+        if (!env.ASSETS) throw new Error("sem ASSETS");
+        const resp = await env.ASSETS.fetch(
+          new URL(`http://assets.local/data/${ARQUIVO_REPASSE}`)
+        );
+        if (!resp.ok) throw new Error(`ASSETS.fetch devolveu ${resp.status}`);
+        bruto = await resp.text();
+      } catch {
+        // Build local, teste, ou 404 de build — cai para o disco.
+        bruto = readFileSync(
+          path.join(process.cwd(), "public", "data", ARQUIVO_REPASSE),
+          "utf-8"
+        );
+      }
+      arquivoCache = JSON.parse(bruto) as ArquivoRepasse;
+    } catch {
+      // Arquivo ausente não derruba o build — mesma regra de `lib/clima/risco.ts`.
+      arquivoCache = null;
+    }
+    return arquivoCache;
+  })();
+  return arquivoEmVoo;
+}
+
+/** Só para os testes: derruba os caches de módulo. */
+export function limparCacheRepasse(): void {
+  arquivoCache = undefined;
+  arquivoEmVoo = null;
+  malhaCache = null;
 }
 
 /**
@@ -447,10 +487,9 @@ export function arquivoRepasse(raiz = process.cwd()): ArquivoRepasse | null {
  * "esta cidade não recebeu nada", e é exatamente assim que a armadilha 2 vira
  * uma tela dizendo que Betim ficou de fora do rateio.
  */
-export function repasseDoMunicipio(
-  ibge7: string,
-  raiz = process.cwd()
-): RepasseMunicipio | null {
+export async function repasseDoMunicipio(
+  ibge7: string
+): Promise<RepasseMunicipio | null> {
   const chave = String(ibge7);
   if (!/^\d{7}$/.test(chave)) {
     throw new Error(
@@ -459,13 +498,7 @@ export function repasseDoMunicipio(
         `sistemas (Betim: 3106705 no IBGE, 310670 no ComunicaBR).`
     );
   }
-  const arq = arquivoRepasse(raiz);
+  const arq = await arquivoRepasse();
   if (!arq) return null;
   return arq.municipios.find((m) => m.ibge7 === chave) ?? null;
-}
-
-/** Só para os testes: derruba os caches de módulo. */
-export function limparCacheRepasse(): void {
-  arquivoCache = undefined;
-  malhaCache = null;
 }

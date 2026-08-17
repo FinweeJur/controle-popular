@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { beforeAll, describe, expect, test } from "vitest";
 
 import {
   APELIDOS,
@@ -13,6 +13,7 @@ import {
   repasseDoMunicipio,
   textoDaCelula,
   validarPaginaRepasse,
+  type ArquivoRepasse,
   type FonteTabela,
 } from "./repasse";
 
@@ -29,7 +30,11 @@ import {
  * Se o arquivo sumir, os testes FALHAM em vez de passar vazios.
  */
 
-const arq = arquivoRepasse();
+let arq: ArquivoRepasse | null = null;
+
+beforeAll(async () => {
+  arq = await arquivoRepasse();
+});
 
 /* ══════════════════ o acervo, e os três totais ══════════════════ */
 
@@ -220,15 +225,15 @@ describe("armadilha 2: o código de 6 dígitos é de outra numeração", () => {
    * Por isso os dois pares ficam escritos aqui por extenso: o teste não trava
    * só a leitura do arquivo, trava a afirmação sobre qual código é de quem.
    */
-  test("Betim é 3106705/310670, e Belo Horizonte é 3106200/310620", () => {
-    const betim = repasseDoMunicipio("3106705");
+  test("Betim é 3106705/310670, e Belo Horizonte é 3106200/310620", async () => {
+    const betim = await repasseDoMunicipio("3106705");
     expect(betim).not.toBeNull();
     expect(betim!.nome).toBe("Betim");
     expect(betim!.populacao2019).toBe(439_340);
     expect(betim!.rateio!.centavos).toBe(1_500_000_000); // R$ 15 milhões
     expect("3106705".slice(0, 6)).toBe("310670"); // o de 6 é o de 7 sem o verificador
 
-    const bh = repasseDoMunicipio("3106200");
+    const bh = await repasseDoMunicipio("3106200");
     expect(bh!.nome).toBe("Belo Horizonte"); // NÃO é Betim
     expect("3106200".slice(0, 6)).toBe("310620");
   });
@@ -238,12 +243,12 @@ describe("armadilha 2: o código de 6 dígitos é de outra numeração", () => {
    * cidade não recebeu nada", e é assim que a troca de código vira uma tela
    * afirmando, com cara de dado, que Betim ficou de fora do rateio.
    */
-  test("6 dígitos lançam, em vez de virar `null` silencioso", () => {
-    expect(() => repasseDoMunicipio("310670")).toThrow(/7 dígitos/); // Betim no ComunicaBR
-    expect(() => repasseDoMunicipio("310620")).toThrow(/7 dígitos/);
-    expect(() => repasseDoMunicipio("")).toThrow(/7 dígitos/);
+  test("6 dígitos lançam, em vez de virar `null` silencioso", async () => {
+    await expect(repasseDoMunicipio("310670")).rejects.toThrow(/7 dígitos/); // Betim no ComunicaBR
+    await expect(repasseDoMunicipio("310620")).rejects.toThrow(/7 dígitos/);
+    await expect(repasseDoMunicipio("")).rejects.toThrow(/7 dígitos/);
     // 7 dígitos que não existem em Minas: aí `null` é a resposta honesta.
-    expect(repasseDoMunicipio("3500000")).toBeNull();
+    expect(await repasseDoMunicipio("3500000")).toBeNull();
   });
 
   test("o arquivo não publica nenhum código de 6 dígitos", () => {
@@ -382,9 +387,9 @@ describe("os extremos do rateio, que a tela não pode explicar errado", () => {
    * que dissesse "proporcional à população", sem mais, estaria errada — e
    * estes números são o que impede a frase de ser escrita.
    */
-  test("BH no teto, Serra da Saudade no piso", () => {
-    const bh = repasseDoMunicipio("3106200")!;
-    const ssa = repasseDoMunicipio("3166600")!;
+  test("BH no teto, Serra da Saudade no piso", async () => {
+    const bh = (await repasseDoMunicipio("3106200"))!;
+    const ssa = (await repasseDoMunicipio("3166600"))!;
     expect(bh.rateio!.centavos).toBe(5_000_000_000); // R$ 50 mi, o teto
     expect(ssa.rateio!.centavos).toBe(75_000_000); // R$ 750 mil, o piso
     expect(bh.populacao2019! / ssa.populacao2019!).toBeGreaterThan(3_000);
