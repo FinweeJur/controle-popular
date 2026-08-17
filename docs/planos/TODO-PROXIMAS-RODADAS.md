@@ -187,6 +187,13 @@ adotado tem que passar nos três.
 
 ### 10. Ordenar e filtrar a visualização das listas de dados
 
+> 🟡 **fatia 1 feita em 17/08.** A lógica pura está em `lib/tabela/ordenar.ts`
+> (comparador por texto/número/data + `ordenarPor` imutável + `filtrarPorIgual`
+> + `filtrarPorTexto`), com 14 testes em `ordenar.test.ts` — no molde que o
+> próprio item prescreve. Falta a fatia 2: colar no componente
+> (`TabelaEstatica.tsx` ganhar ordenação por coluna com o mesmo visual; UI de
+> seletor de filtro) e a a11y (teclado, focus, `prefers-reduced-motion`).
+
 Pedido literal (16/08): *"Quero poder ordenar os contatos por valor, nome de
 prestador, tema, data, tipo de alerta, as emendas parlamentares tbm e outros
 dados, num geral que possa ser por filtro e também por ordenação a
@@ -235,6 +242,11 @@ método do diário oficial: confirmar o mecanismo da fonte antes de construir):
 - **a11y desde o dia 1** e `prefers-reduced-motion`: mesma disciplina das outras telas.
 
 ### 12. Plano de geocodificação dos dados da Vale
+
+> ✅ **plano escrito em 17/08** — `docs/planos/PLANO-GEOCODIFICACAO.md`
+> (método por camada, fontes de geometria já publicadas, regras de
+> procedência e conferência manual). Execução começa quando o item 11 tiver
+> dado coletado.
 
 Pedido literal (16/08): *"plano de como geocodificar isso tudo depois"*.
 
@@ -326,6 +338,16 @@ texto do produto) e ela entra na grade.
 ## 🟠 Aberto pela rodada de 15/08 (biblioteca das ATIs)
 
 ### 9. As três ATIs ainda não são fonte do radar de notícias
+
+> ✅ **feito.** As três ATIs (AEDAS, ADAI, Guaicuy) já são fonte do radar
+> (`FONTES` em `scripts/coletar-noticias-paraopeba.py`, feeds de taxonomia,
+> `filtrar: False` — o escopo vem da categoria), e a regra de obituário entrou
+> ANTES: `RE_NOTA_DE_PESAR` + `_redigir_nota_de_pesar` no coletor redigem o
+> nome do título antes de gravar, e `temNotaDePesar` em
+> `lib/paraopeba/triagem.ts` cobre o acervo de documentos (testes em
+> `triagem.test.ts`). `radar.ts` lê `fontes` como dado — sem mudança de
+> esquema, como o plano previa. O histórico abaixo fica para registrar a
+> justificativa.
 
 `docs/FONTES-BIBLIOTECA-ATI.md` §6 mede e justifica a escolha: a lacuna do radar
 não é de tempo (o clipping vai até 30/07/2026 e a janela de 45 dias do radar

@@ -12,6 +12,7 @@
 - **Banco de escritas ao vivo**: **Cloudflare D1** (SQLite) em `lib/db/schema.d1.ts` — `page_views`, `zap_estabelecimentos`, `classificados`, `anuncios`. O Postgres é o banco do ETL/build; o D1 é o banco de runtime para conteúdo moderado.
 - **Testes**: Vitest (`npx vitest run`), 49 arquivos, 699 testes verdes. Typecheck: `npx tsc --noEmit`.
 - **Lint**: ESLint tem 2.091 erros pré-existentes no repo todo — só checar arquivos tocados: `npx eslint <files>`. Erros conhecidos e aceitos: `no-html-link-for-pages` (breadcrumbs/footers usam `<a>` de propósito).
+- **Ordenação/filtro de listas**: lógica pura em `lib/tabela/ordenar.ts` (`ordenarPor` imutável, `compararValores` por texto/número/data, `filtrarPorIgual`, `filtrarPorTexto`, sem acento via `lib/busca/normalizar.ts`; ausentes sempre no fim). 14 testes. Ainda não colada no `TabelaEstatica.tsx` (item 10 fatia 2).
 
 ## 2. As três camadas de dados
 
@@ -147,7 +148,10 @@ Fonte: `lib/db/schema.ts` (123 KB, introspectado do Neon via drizzle-kit) + `lib
 ## 8. Pendências para próximas sessões
 
 1. **Medir o bundle real** no deploy home-pc (Worker gzip) após os três commits de 2026-08-17.
-2. Ícones `cruz` e `mapa da América Latina` (Brasil Icons) pendentes no painel de edição.
-3. Foto `00296` fora das faixas (pipeline de imagens).
-4. Decidir quais melhorias de banco da seção 5 entram (índices trigram em nomes é o maior ganho por esforço).
-5. Neon Free voltou em 2026-09-01 → retomar build local e aplicar índices.
+2. Ícones `cruz` e `mapa da América Latina` (Brasil Icons) — **dependem do dono** reportar a letra no Character Map (`charmap.exe` → "Brasil Icons" → Keystroke). Ver `docs/planos/TODO-PROXIMAS-RODADAS.md` §14 e `apps/web/app/BrasilIcon.tsx` (TODO na linha 25).
+3. Foto `00296` fora das faixas — **depende de alguém descrever** a imagem (a página do produto não publica descrição; alt honesto é requisito). Ver TODO §15.
+4. Índices do banco (trigram GIN em nomes é o maior ganho por esforço) — **aguarda Neon** (HTTP 402 até 2026-09-01) e decisão de aplicar DDL.
+5. Neon Free voltou em 2026-09-01 → retomar build local, aplicar migrations pendentes (`0071` convenios, backfill classificador de temas, URL TJMG) e índices.
+6. Item 10 fatia 2: colar `lib/tabela/ordenar.ts` no `TabelaEstatica.tsx` (ordenação por coluna + seletor de filtro + a11y). Fatia 1 (lógica pura, 14 testes) feita em 17/08.
+7. Item 12: plano de geocodificação escrito em `docs/planos/PLANO-GEOCODIFICACAO.md` — executar quando o monitoramento da Vale (§11) tiver dado.
+8. Item 9 (ATIs no radar) — **já feito**, TODO atualizado em 17/08.
