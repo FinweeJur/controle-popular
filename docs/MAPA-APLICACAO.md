@@ -148,7 +148,7 @@ Fonte: `lib/db/schema.ts` (123 KB, introspectado do Neon via drizzle-kit) + `lib
 ## 8. Pendências para próximas sessões
 
 1. **Medir o bundle real** no deploy home-pc (Worker gzip) após os três commits de 2026-08-17.
-2. Ícones `cruz` e `mapa da América Latina` (Brasil Icons) — **dependem do dono** reportar a letra no Character Map (`charmap.exe` → "Brasil Icons" → Keystroke). Ver `docs/planos/TODO-PROXIMAS-RODADAS.md` §14 e `apps/web/app/BrasilIcon.tsx` (TODO na linha 25).
+2. Ícones `cruz` e `mapa da América Latina` — **fora do escopo** (decisão do dono em 17/08: usar só os 22 mapeados; ver `docs/CREDITOS-MIDIA.md`).
 3. Foto `00296` fora das faixas — **depende de alguém descrever** a imagem (a página do produto não publica descrição; alt honesto é requisito). Ver TODO §15.
 4. Índices do banco (trigram GIN em nomes é o maior ganho por esforço) — **aguarda Neon** (HTTP 402 até 2026-09-01) e decisão de aplicar DDL.
 5. Neon Free voltou em 2026-09-01 → retomar build local, aplicar migrations pendentes (`0071` convenios, backfill classificador de temas, URL TJMG) e índices.

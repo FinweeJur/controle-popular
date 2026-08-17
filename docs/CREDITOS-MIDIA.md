@@ -69,6 +69,9 @@ regra do projeto: nada de mídia sem fonte declarada — o mesmo padrão de
 
 ### Mapa letra→ícone (22/24 preenchidos via Character Map, 16/08/2026)
 
+> Decisão do dono em 17/08/2026: cruz e mapa da América Latina ficam de fora —
+> usar só os ícones já mapeados. 22 ícones em uso.
+
 | Fonte | Ícone | Letra |
 |---|---|---|
 | Brasil Icons | tucano | D |
@@ -80,8 +83,8 @@ regra do projeto: nada de mídia sem fonte declarada — o mesmo padrão de
 | Brasil Icons | mapa do Brasil com bandeira | h |
 | Brasil Icons | havaianas | j |
 | Brasil Icons | capoeirista | H |
-| Brasil Icons | **cruz** | _(pendente)_ |
-| Brasil Icons | **mapa da América Latina** | _(pendente)_ |
+| Brasil Icons | ~~cruz~~ | _saiu — decisão do dono em 17/08: usar só os mapeados_ |
+| Brasil Icons | ~~mapa da América Latina~~ | _saiu — decisão do dono em 17/08: usar só os mapeados_ |
 | Icones do Brasil | tartaruga | n |
 | Icones do Brasil | papagaio | a |
 | Icones do Brasil | banana | b |

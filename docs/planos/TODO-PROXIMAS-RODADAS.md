@@ -307,6 +307,10 @@ ainda a letra no Character Map. Pedir ao dono para abrir `charmap.exe`,
 selecionar "Brasil Icons", localizar cruz e mapa da América Latina, e informar
 o "Keystroke".
 
+> ✅ **decidido em 17/08:** o dono mandou esquecer as duas letras e usar só os
+> 22 mapeados — cruz e mapa da América Latina saem do escopo
+> (`docs/CREDITOS-MIDIA.md`).
+
 **Licença (decisão do dono antes de publicar):** Brasil Icons é donationware
 (uso pessoal e comercial livre, crédito ©Woodcutter Manero). Icones do Brasil
 tem licença **não verificada** — fonttoolbox marca "Unknown" e fonts2u marca
