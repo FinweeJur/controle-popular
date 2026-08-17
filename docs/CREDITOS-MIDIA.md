@@ -28,14 +28,17 @@ regra do projeto: nada de mídia sem fonte declarada — o mesmo padrão de
   congresso 00031 (janela de vidro), judiciário 00033 (muro de tijolos),
   Paraopeba 00085 (laje ao sol) — e faixas decorativas `CenasDoBrasil`:
   cidade 00253/00254/00293/00325, ambiental 00483/00500/00503/00517,
-  congresso 00089/00433/00308/00304, judiciário 00414/00416/00417,
+  congresso 00089/00433/00308/00304/00296, judiciário 00414/00416/00417,
   Paraopeba 00397/00410.
 - **Decisões registradas:**
   - "Fundo de página" pedido pelo dono virou cartão emoldurado: foto como
     fundo de texto furaria o contraste dos três temas; em cartão, nenhum
     número fica por cima dela.
-  - **00296 fora** das faixas: a página do produto não publica descrição, e
-    `alt` honesto é requisito (ver TODO item 15).
+  - **00296 voltou para a grade em 17/08**: a página do produto não publica
+    descrição, mas o dono descreveu a cena ("mulher com notebook, fone de
+    ouvido e prato de comida na mesa") — alt honesto é requisito, e a
+    descrição do dono preenche. Entrou na faixa da frente Congresso (ao lado
+    do "home office").
   - As faixas dizem em voz alta que são ilustração e que os dados da página
     não dependem delas.
 

@@ -319,6 +319,11 @@ fonte.
 
 ### 15. Descrever a foto 00296 do acervo Brasil com S
 
+> ✅ **feito em 17/08.** O dono descreveu: "mulher com notebook, fone de
+> ouvido e prato de comida na mesa". A foto entrou no `FOTOS_BRASILCOMS`
+> (`FotoBrasilComS.tsx`) com esse alt honesto e na faixa da frente Congresso.
+> Histórico abaixo fica para registrar a régua.
+
 A página do produto (`brasilcoms-00296`) não publica descrição/tags — sem o
 que mostrar na imagem, ela ficou de fora das faixas `CenasDoBrasil` (alt
 honesto é requisito). Alguém com visão descreve a foto (ou o dono passa o

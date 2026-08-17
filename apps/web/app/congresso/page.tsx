@@ -93,7 +93,7 @@ export default async function Home() {
       <OutrasFrentes atual="congresso" />
 
       {/* Faixa decorativa com crédito — ver `CenasDoBrasil.tsx`. */}
-      <CenasDoBrasil fotos={["00089", "00433", "00308", "00304"]} />
+      <CenasDoBrasil fotos={["00089", "00433", "00308", "00304", "00296"]} />
     </div>
   );
 }

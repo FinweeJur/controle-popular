@@ -9,8 +9,9 @@
  *   (sem `object-fit: cover`): o que se vê é o quadro inteiro do acervo.
  *
  * `alt` descreve a cena pelos dados do acervo (tags da própria página do
- * produto); a 00296 ficou fora por não ter descrição publicada — a
- * legenda só entra com descrição honesta.
+ * produto) ou, quando a página não publica descrição, pela descrição do dono
+ * (00296, em 17/08: "mulher com notebook, fone de ouvido e prato de comida
+ * na mesa"). A legenda só entra com descrição honesta.
  *
  * O prefixo `PAGES_BASE_PATH` é o mesmo sinal que `next.config.ts` usa:
  * vazio no alvo Cloudflare, `/controle-popular` no export estático.
@@ -33,6 +34,7 @@ export const FOTOS_BRASILCOMS: Record<string, FotoBrasilComSInfo> = {
   "00253": { w: 667, h: 1000, alt: "Passando café na cozinha" },
   "00254": { w: 667, h: 1000, alt: "Cafezinho na cozinha" },
   "00293": { w: 1000, h: 667, alt: "Almoço em família, com risadas" },
+  "00296": { w: 667, h: 1000, alt: "Mulher no notebook, com fone de ouvido e prato de comida na mesa" },
   "00304": { w: 1000, h: 667, alt: "Almoço em família na cozinha" },
   "00308": { w: 1000, h: 667, alt: "Trabalho em home office" },
   "00325": { w: 667, h: 1000, alt: "Mulher na cozinha com o celular" },
