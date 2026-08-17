@@ -7,7 +7,7 @@ import AvisoColetaEmCurso from "@/app/components/AvisoColetaEmCurso";
 import { ZONAS } from "@/lib/zonas";
 import { formatNumberBR } from "@/lib/betim/format";
 import {
-  CLIPPING_PARAOPEBA,
+  COBERTURA_CLIPPING,
   PERIODO_CLIPPING,
   MARCOS_PARAOPEBA,
   ATORES_REPARACAO,
@@ -19,21 +19,19 @@ import {
 import { coberturaBiblioteca } from "@/lib/paraopeba/biblioteca";
 // Também fora do barril, por outra razão: o acervo da auditoria tem 336 KiB, e
 // pô-lo em `@/lib/paraopeba` levaria esse peso a toda tela que importa o
-// barril. Aqui só a contagem é usada, e esta rota é servidor — nada disso vai
-// para o payload (ver `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`).
+// barril. A página usa só as CONTAGENS (`COBERTURA_AUDITORIA_AJRI`), e esta
+// rota é servidor — nada disso vai para o payload (ver
+// `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`).
 import {
-  AUDITORIA_AJRI,
+  COBERTURA_AUDITORIA_AJRI,
   AUTOR_AUDITORIA_AJRI,
-  INSTRUMENTO_AJRI_ORDEM,
   PERIODO_AUDITORIA_AJRI,
 } from "@/lib/paraopeba/auditoria-ajri";
 import { GLOSSARIO_PARAOPEBA, PERGUNTAS_PARAOPEBA } from "@/lib/paraopeba/educacao";
 // Fora do barril de propósito (ver o comentário em `lib/paraopeba/index.ts`):
-// são 226 KB de dado gerado, e esta home só usa duas contagens deles.
-import {
-  MUNICIPIOS_EXECUCAO_FGV,
-  STATUS_PROJETOS_FGV,
-} from "@/lib/paraopeba/execucao-fgv";
+// são 226 KB de dado gerado, e esta home só usa as contagens
+// (`COBERTURA_EXECUCAO_FGV`).
+import { COBERTURA_EXECUCAO_FGV } from "@/lib/paraopeba/execucao-fgv";
 import { metadataEditavel } from "@/lib/edicoes";
 
 /**
@@ -63,8 +61,8 @@ export default async function ParaopebaHome() {
   const cob = await coberturaBiblioteca();
   const tiposDeAtor = new Set(ATORES_REPARACAO.map((a) => a.categoria));
   // 455 linhas de status descrevem 234 projetos — um projeto que alcança 25
-  // cidades aparece 25 vezes. O cartão mostra o distinto, nunca o `length`.
-  const projetosDistintos = new Set(STATUS_PROJETOS_FGV.map((s) => s.idFdi)).size;
+  // cidades aparece 25 vezes. O cartão mostra o distinto, nunca o `length`
+  // (medido em `COBERTURA_EXECUCAO_FGV`, travado por teste).
 
   const BLOCOS = [
     {
@@ -80,7 +78,7 @@ export default async function ParaopebaHome() {
     },
     {
       titulo: "Clipping",
-      linha: `${formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias`,
+      linha: `${formatNumberBR(COBERTURA_CLIPPING.total)} notícias`,
       texto: `Cobertura de imprensa, institucional e de assessoria sobre o caso, de ${PERIODO_CLIPPING.de.slice(0, 4)} a ${PERIODO_CLIPPING.ate.slice(0, 4)} — filtrável por tipo e período, com link para a fonte original em cada item.`,
       href: "/paraopeba/clipping",
       linkTexto: "Ver o clipping →",
@@ -113,7 +111,7 @@ export default async function ParaopebaHome() {
       // da pessoa) e antes dos documentos, porque é a ponte entre os dois:
       // o auxílio é pagamento individual, isto é obra e serviço no município.
       titulo: "Execução por município",
-      linha: `${formatNumberBR(MUNICIPIOS_EXECUCAO_FGV.length)} municípios, ${formatNumberBR(projetosDistintos)} projetos`,
+      linha: `${formatNumberBR(COBERTURA_EXECUCAO_FGV.municipios)} municípios, ${formatNumberBR(COBERTURA_EXECUCAO_FGV.projetosDistintos)} projetos`,
       texto:
         "Quanto do Acordo já virou projeto e quanto já foi pago em cada município da bacia, pela auditoria independente da FGV — com a ressalva de que estes R$ 5,48 bi são os Anexos I.3/I.4, não os R$ 37,6 bi do Acordo inteiro.",
       href: "/paraopeba/execucao",
@@ -145,7 +143,7 @@ export default async function ParaopebaHome() {
       // as assessorias, e aqui fala quem AUDITA os dois. Sem isso, "mais um
       // acervo de PDF" é tudo o que se lê.
       titulo: "Auditoria socioambiental independente",
-      linha: `${formatNumberBR(AUDITORIA_AJRI.length)} documentos em ${formatNumberBR(INSTRUMENTO_AJRI_ORDEM.length)} instrumentos jurídicos`,
+      linha: `${formatNumberBR(COBERTURA_AUDITORIA_AJRI.total)} documentos em ${formatNumberBR(COBERTURA_AUDITORIA_AJRI.instrumentos)} instrumentos jurídicos`,
       texto: `Relatórios e notas técnicas da ${AUTOR_AUDITORIA_AJRI}, a auditoria independente prevista no Acordo de R$ 37,6 bilhões para fiscalizar a reparação — de ${PERIODO_AUDITORIA_AJRI.de.slice(0, 4)} a ${PERIODO_AUDITORIA_AJRI.ate.slice(0, 4)}. Catálogo e link: o documento abre no portal da própria auditoria, que exige cadastro.`,
       href: "/paraopeba/auditoria",
       linkTexto: "Ver a auditoria →",

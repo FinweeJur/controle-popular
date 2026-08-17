@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import {
   PERIODO_CLIPPING,
-  CLIPPING_PARAOPEBA,
-  CLIPPING_ATI,
+  COBERTURA_CLIPPING,
+  COBERTURA_CLIPPING_ATI,
   PERIODO_CLIPPING_IJ,
-  CLIPPING_IJ,
+  COBERTURA_CLIPPING_IJ,
 } from "@/lib/paraopeba";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import ClippingClient from "./ClippingClient";
@@ -35,7 +35,7 @@ import { metadataEditavel } from "@/lib/edicoes";
  */
 export const metadata: Metadata = metadataEditavel("/paraopeba/clipping", {
   title: `Clipping — Paraopeba | Controle Popular`,
-  description: `${formatNumberBR(CLIPPING_ATI.length)} materiais das assessorias técnicas independentes, ${formatNumberBR(CLIPPING_IJ.length)} publicações do MPMG, MPF e DPMG e ${formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias sobre a reparação do rompimento da barragem da Vale em Brumadinho, de ${formatDateBR(PERIODO_CLIPPING_IJ.de)} a ${formatDateBR(PERIODO_CLIPPING.ate)}.`,
+  description: `${formatNumberBR(COBERTURA_CLIPPING_ATI.total)} materiais das assessorias técnicas independentes, ${formatNumberBR(COBERTURA_CLIPPING_IJ.total)} publicações do MPMG, MPF e DPMG e ${formatNumberBR(COBERTURA_CLIPPING.total)} notícias sobre a reparação do rompimento da barragem da Vale em Brumadinho, de ${formatDateBR(PERIODO_CLIPPING_IJ.de)} a ${formatDateBR(PERIODO_CLIPPING.ate)}.`,
 });
 
 export default function ClippingPage() {
@@ -61,11 +61,11 @@ export default function ClippingPage() {
           {formatDateBR(PERIODO_CLIPPING_IJ.de)} a {formatDateBR(PERIODO_CLIPPING.ate)}
         </strong>{" "}
         — não é notícia do dia. É um retrato datado, reunido à mão, que não se atualiza
-        sozinho. São três acervos: {formatNumberBR(CLIPPING_ATI.length)} materiais das
+        sozinho. São três acervos: {formatNumberBR(COBERTURA_CLIPPING_ATI.total)} materiais das
         assessorias técnicas independentes, classificados por eixo da reparação;{" "}
-        {formatNumberBR(CLIPPING_IJ.length)} publicações das três instituições de justiça que
+        {formatNumberBR(COBERTURA_CLIPPING_IJ.total)} publicações das três instituições de justiça que
         assinaram o Acordo — MPMG, MPF e DPMG —, que é o que alcança 2019 e 2021; e{" "}
-        {formatNumberBR(CLIPPING_PARAOPEBA.length)} notícias do clipping geral.
+        {formatNumberBR(COBERTURA_CLIPPING.total)} notícias do clipping geral.
       </p>
       {/* O ponteiro para o Guaicuy saiu da hero em 15/08/2026. Ele dava crédito
           errado logo na abertura: o acervo das assessorias é de TRÊS ATIs

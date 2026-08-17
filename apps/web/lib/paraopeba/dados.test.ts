@@ -1,5 +1,10 @@
 import { describe, expect, test } from "vitest";
-import { CLIPPING_PARAOPEBA, PERIODO_CLIPPING, TIPO_NOTICIA_LABEL } from "./clipping";
+import {
+  CLIPPING_PARAOPEBA,
+  PERIODO_CLIPPING,
+  TIPO_NOTICIA_LABEL,
+  COBERTURA_CLIPPING,
+} from "./clipping";
 import { MARCOS_PARAOPEBA, formatarDataMarco } from "./linha-do-tempo";
 import { ATORES_REPARACAO, CATEGORIA_ATOR_LABEL } from "./atores";
 import { PAGAMENTOS_PARAOPEBA, RESUMO_AUXILIO_PARAOPEBA } from "./auxilio";
@@ -9,11 +14,14 @@ import {
   INSTITUICAO_JUSTICA_LABEL,
   TEMA_CLIPPING_IJ_LABEL,
   TEMA_CLIPPING_IJ_ORDEM,
+  COBERTURA_CLIPPING_IJ,
 } from "./clipping-ij";
+import { COBERTURA_CLIPPING_ATI, CLIPPING_ATI } from "./clipping-ati";
 import { DOCUMENTOS_PROCESSO, COBERTURA_DOCUMENTOS_PROCESSO } from "./documentos";
 import {
   AUDITORIA_AJRI,
   AUTOR_AUDITORIA_AJRI,
+  COBERTURA_AUDITORIA_AJRI,
   FONTE_AUDITORIA_AJRI,
   INSTRUMENTO_AJRI_LABEL,
   INSTRUMENTO_AJRI_ORDEM,
@@ -22,8 +30,14 @@ import {
   TEMA_AJRI_LABEL,
   TEMA_AJRI_ORDEM,
   TIPO_DOCUMENTO_AJRI_LABEL,
+  TIPO_DOCUMENTO_AJRI_ORDEM,
   urlDocumentoAjri,
 } from "./auditoria-ajri";
+import {
+  COBERTURA_EXECUCAO_FGV,
+  MUNICIPIOS_EXECUCAO_FGV,
+  STATUS_PROJETOS_FGV,
+} from "./execucao-fgv";
 
 /**
  * `clipping.ts`, `linha-do-tempo.ts`, `atores.ts` e `auxilio.ts` foram
@@ -491,5 +505,33 @@ describe("auditoria-ajri.ts — catálogo da auditoria independente (467 documen
     // Piso também: um corte acidental na regeneração encolheria o acervo, e
     // "menos dado" não falha em nenhum outro teste de conteúdo.
     expect(bytes).toBeGreaterThan(250_000);
+  });
+});
+
+/* ═══════ coberturas literais — a paridade com o array é o teste ═══════ */
+
+describe("as coberturas literais batem com o array real (Worker usa as coberturas)", () => {
+  test("COBERTURA_CLIPPING.total", () => {
+    expect(CLIPPING_PARAOPEBA.length).toBe(COBERTURA_CLIPPING.total);
+  });
+  test("COBERTURA_CLIPPING_ATI.total", () => {
+    expect(CLIPPING_ATI.length).toBe(COBERTURA_CLIPPING_ATI.total);
+  });
+  test("COBERTURA_CLIPPING_IJ.total", () => {
+    expect(CLIPPING_IJ.length).toBe(COBERTURA_CLIPPING_IJ.total);
+  });
+  test("COBERTURA_AUDITORIA_AJRI.total e porTipo", () => {
+    expect(AUDITORIA_AJRI.length).toBe(COBERTURA_AUDITORIA_AJRI.total);
+    for (const t of TIPO_DOCUMENTO_AJRI_ORDEM) {
+      const real = AUDITORIA_AJRI.filter((d) => d.tipo === t).length;
+      expect(real).toBe(COBERTURA_AUDITORIA_AJRI.porTipo[t]);
+    }
+    expect(INSTRUMENTO_AJRI_ORDEM.length).toBe(COBERTURA_AUDITORIA_AJRI.instrumentos);
+    expect(TEMA_AJRI_ORDEM.length).toBe(COBERTURA_AUDITORIA_AJRI.temas);
+  });
+  test("COBERTURA_EXECUCAO_FGV.municipios e projetosDistintos", () => {
+    expect(MUNICIPIOS_EXECUCAO_FGV.length).toBe(COBERTURA_EXECUCAO_FGV.municipios);
+    const distintos = new Set(STATUS_PROJETOS_FGV.map((s) => s.idFdi)).size;
+    expect(distintos).toBe(COBERTURA_EXECUCAO_FGV.projetosDistintos);
   });
 });

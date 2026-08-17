@@ -240,6 +240,30 @@ export const PERIODO_AUDITORIA_AJRI = {
   ate: "2026-07-31",
 } as const;
 
+/**
+ * Contagens do acervo, para páginas SERVIDOR que só mostram números.
+ *
+ * ═══ POR QUE ISTO EXISTE ═══
+ *
+ * `AUDITORIA_AJRI` abaixo tem 336 KiB — se uma página de servidor importar o
+ * array só para exibir `.length` ou contagem por tipo, o webpack embute o
+ * arquivo inteiro no bundle do Worker (ver `docs/HANDOFF-PAYLOAD-
+ * LEGISLACAO.md`). Esta cobertura é literal e pequena; o array fica
+ * reservado aos componentes de CLIENTE (`AuditoriaClient.tsx`), que têm
+ * bundle próprio sem teto de 3 MiB gzip. A paridade entre a cobertura e o
+ * array é travada por teste em `dados.test.ts` — se alguém regenerar o
+ * acervo e a contagem mudar, o teste falha.
+ */
+export const COBERTURA_AUDITORIA_AJRI = {
+  total: 467,
+  porTipo: {
+    relatorio: 391,
+    "nota-tecnica": 76,
+  },
+  instrumentos: 7,
+  temas: 25,
+} as const;
+
 export const AUDITORIA_AJRI: DocumentoAuditoriaAjri[] = [
   {
     id: 1204,

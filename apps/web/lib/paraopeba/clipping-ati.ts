@@ -74,6 +74,15 @@ export const PERIODO_CLIPPING_ATI = {
   ate: "2026-02-13",
 } as const;
 
+/**
+ * Contagens do acervo, para páginas SERVIDOR que só mostram números. O array
+ * `CLIPPING_ATI` fica reservado aos componentes de CLIENTE; paridade travada
+ * por teste em `dados.test.ts` (ver `COBERTURA_CLIPPING` em `clipping.ts`).
+ */
+export const COBERTURA_CLIPPING_ATI = {
+  total: 46,
+} as const;
+
 export const CLIPPING_ATI: NoticiaAti[] = [
   {
     id: "pj01",

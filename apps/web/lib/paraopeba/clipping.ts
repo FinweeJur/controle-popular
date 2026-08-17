@@ -42,6 +42,23 @@ export const PERIODO_CLIPPING = {
   ate: "2026-07-30",
 } as const;
 
+/**
+ * Contagens do acervo, para páginas SERVIDOR que só mostram números.
+ *
+ * ═══ POR QUE ISTO EXISTE ═══
+ *
+ * `CLIPPING_PARAOPEBA` abaixo tem 108 KB — se uma página `async` de servidor
+ * importar o array só para exibir `.length`, o webpack embute o arquivo
+ * inteiro no bundle do Worker (ver `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`).
+ * Esta cobertura é literal e pequena; o array fica reservado aos componentes
+ * de CLIENTE, que têm bundle próprio sem teto de 3 MiB gzip. A paridade
+ * entre a cobertura e o array é travada por teste em `dados.test.ts` — se
+ * alguém regenerar o acervo e a contagem mudar, o teste falha.
+ */
+export const COBERTURA_CLIPPING = {
+  total: 149,
+} as const;
+
 export const CLIPPING_PARAOPEBA: NoticiaClipping[] = [
   {
     "id": 1,

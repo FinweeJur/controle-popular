@@ -91,6 +91,15 @@ export const PERIODO_CLIPPING_IJ = {
   ate: "2026-05-05",
 } as const;
 
+/**
+ * Contagens do acervo, para páginas SERVIDOR que só mostram números. O array
+ * `CLIPPING_IJ` fica reservado aos componentes de CLIENTE; paridade travada
+ * por teste em `dados.test.ts` (ver `COBERTURA_CLIPPING` em `clipping.ts`).
+ */
+export const COBERTURA_CLIPPING_IJ = {
+  total: 59,
+} as const;
+
 export const CLIPPING_IJ: NoticiaInstituicaoJustica[] = [
   {
     id: "m01",

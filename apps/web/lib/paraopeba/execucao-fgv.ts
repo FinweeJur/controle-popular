@@ -94,6 +94,26 @@ export const TOTAL_EXECUCAO_FGV = {
   saldoTeto: 521325903.44,
 } as const;
 
+/**
+ * Contagens do acervo, para páginas SERVIDOR que só mostram números.
+ *
+ * ═══ POR QUE ISTO EXISTE ═══
+ *
+ * `MUNICIPIOS_EXECUCAO_FGV` (26 cidades) e `STATUS_PROJETOS_FGV` (455
+ * linhas) somam 226 KB — se a home importar os arrays só para exibir
+ * `.length` e `new Set(...).size`, o webpack embute o arquivo inteiro no
+ * bundle do Worker (ver `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`). Esta
+ * cobertura é literal e pequena. A paridade entre a cobertura e os arrays é
+ * travada por teste em `dados.test.ts` — se alguém regenerar o acervo e a
+ * contagem mudar, o teste falha. A página `/paraopeba/execucao` continua
+ * importando os arrays DE PROPÓSITO (monta a tabela no servidor, zero JS);
+ * a home usa só as contagens daqui.
+ */
+export const COBERTURA_EXECUCAO_FGV = {
+  municipios: 26,
+  projetosDistintos: 234,
+} as const;
+
 export const MUNICIPIOS_EXECUCAO_FGV: MunicipioExecucaoFgv[] = [
   { municipio: "Abaeté", acordoInicial: 66282894.34, acordoAtual: 90878377.86, empenhosAutorizados: 88219560.94, saldoTeto: 2584370.29 },
   { municipio: "Betim", acordoInicial: 260354626.41, acordoAtual: 356963985.24, empenhosAutorizados: 323514934.15, saldoTeto: 31170686.76 },

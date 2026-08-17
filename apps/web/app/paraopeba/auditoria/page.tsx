@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import {
-  AUDITORIA_AJRI,
+  COBERTURA_AUDITORIA_AJRI,
   AUTOR_AUDITORIA_AJRI,
   FONTE_AUDITORIA_AJRI,
   INSTRUMENTO_AJRI_ORDEM,
@@ -43,9 +43,8 @@ import { metadataEditavel } from "@/lib/edicoes";
  * `lib/paraopeba/auditoria-ajri.ts`.
  */
 
-const TOTAL = AUDITORIA_AJRI.length;
-const Por = (tipo: (typeof TIPO_DOCUMENTO_AJRI_ORDEM)[number]) =>
-  AUDITORIA_AJRI.filter((d) => d.tipo === tipo).length;
+const Por = (tipo: (typeof TIPO_DOCUMENTO_AJRI_ORDEM)[number]): number =>
+  COBERTURA_AUDITORIA_AJRI.porTipo[tipo];
 
 // `AuditoriaClient` lê `?q=` (deep-link das fichas relacionadas) com
 // `useSearchParams()` dentro de `<Suspense>` — mesma armadilha de
@@ -67,7 +66,7 @@ const plural = (rotulo: string) =>
 
 export const metadata: Metadata = metadataEditavel("/paraopeba/auditoria", {
   title: "Auditoria socioambiental — Paraopeba | Controle Popular",
-  description: `Catálogo dos ${formatNumberBR(TOTAL)} documentos da auditoria socioambiental independente (${AUTOR_AUDITORIA_AJRI}) do Acordo Judicial de Reparação Integral de Brumadinho, de ${formatDateBR(PERIODO_AUDITORIA_AJRI.de)} a ${formatDateBR(PERIODO_AUDITORIA_AJRI.ate)} — filtrável por instrumento jurídico, tipo, tema e período, com link para a fonte oficial em cada registro.`,
+  description: `Catálogo dos ${formatNumberBR(COBERTURA_AUDITORIA_AJRI.total)} documentos da auditoria socioambiental independente (${AUTOR_AUDITORIA_AJRI}) do Acordo Judicial de Reparação Integral de Brumadinho, de ${formatDateBR(PERIODO_AUDITORIA_AJRI.de)} a ${formatDateBR(PERIODO_AUDITORIA_AJRI.ate)} — filtrável por instrumento jurídico, tipo, tema e período, com link para a fonte oficial em cada registro.`,
 });
 
 export default function AuditoriaAjriPage() {
@@ -90,7 +89,7 @@ export default function AuditoriaAjriPage() {
         <strong className="text-text">auditoria socioambiental independente</strong> para fiscalizar
         a execução da reparação. Quem a conduz é a{" "}
         <strong className="text-text">{AUTOR_AUDITORIA_AJRI}</strong>, e este é o catálogo do que
-        ela publicou: <strong className="text-text">{formatNumberBR(TOTAL)} documentos</strong> —{" "}
+        ela publicou: <strong className="text-text">{formatNumberBR(COBERTURA_AUDITORIA_AJRI.total)} documentos</strong> —{" "}
         {TIPO_DOCUMENTO_AJRI_ORDEM.map((t, i) => (
           <span key={t}>
             {i > 0 ? " e " : ""}
