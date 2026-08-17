@@ -235,6 +235,21 @@ const nextConfig: NextConfig = {
   outputFileTracingExcludes: {
     "/dados/comunicabr": ["public/data/comunicabr-31.json"],
     "/dados/comunicabr/[codigo]": ["public/data/comunicabr-31.json"],
+    // Mesmo mecanismo das exclusões acima. `outputFileTracingExcludes` é a
+    // ÚNICA coisa que realmente tira o arquivo do bundle: o `@vercel/nft`
+    // segue o `readFileSync` do fallback (dentro do catch, atrás do
+    // `if (env.ASSETS)`) e embute o JSON de qualquer jeito — medido em
+    // 16/08/2026: mover `comunicabr-31.json` de `data/` para `public/data/`
+    // não mudou nada (3.074,71 → 3.074,74 KiB gzip). Ver
+    // `docs/HANDOFF-PAYLOAD-LEGISLACAO.md` e o comentário acima.
+    //
+    // Cada rota que importa um módulo com `readFileSync` precisa da exclusão
+    // do arquivo que ele lê; sem isso, o arquivo fica no bundle do Worker
+    // mesmo sendo servido por `env.ASSETS.fetch()` em runtime.
+    "/paraopeba": ["public/data/biblioteca-ati.json"],
+    "/paraopeba/biblioteca": ["public/data/biblioteca-ati.json"],
+    "/[municipio]/prefeitura": ["public/data/repasse-brumadinho-mg.json"],
+    "/[municipio]/clima": ["public/data/risco-climatico.json"],
   },
   experimental: {
     /**
