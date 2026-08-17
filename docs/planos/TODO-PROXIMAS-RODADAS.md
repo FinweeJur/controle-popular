@@ -133,6 +133,15 @@ A varredura precisa distinguir três coisas, porque o tratamento difere:
 **ausente** (nunca teve), **desatualizado** (teve e envelheceu) e **não
 verificado** (existe e ninguém confirmou).
 
+> **Rodada 1 (14/08):** 13 → 11 itens em `NAO_VERIFICADO` (2 resolvidos:
+> Defensoria de MG e Ouvidoria de Betim — ver comentário no arquivo).
+> **Rodada 2 (17/08):** 2 itens registraram MUDANÇA real, nenhum virou
+> confirmação plena — Portal de Transparência de SP (captcha caiu; canal de
+> LAI do estado é `fala.sp.gov.br`) e OAB-MG (bloqueio 403 sumiu; comissão de
+> Direitos Humanos ainda não localizada na listagem, que pagina via JS).
+> Faltam as frentes maiores: auditoria total dos 25.729 links em banco e a
+> classificação ausente/desatualizado/não verificado por página.
+
 ### 7. Revisão crítica de onboarding, acessibilidade e uso por leigo — ✅ feito em 14/08
 
 Ver `docs/REVISAO-UX-E-ONBOARDING.md`. Resumo: as quatro pistas abaixo já
