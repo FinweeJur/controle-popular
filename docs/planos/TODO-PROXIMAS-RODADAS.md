@@ -38,6 +38,15 @@ Rodaram **só no banco local** desta máquina:
 A Neon segue em HTTP 402 até 2026-09-01, e os 6 ETLs do GitHub apontam para
 lá. Enquanto isso não rodar, aquele banco volta a duplicar convênio.
 
+> ✅ **roteiro pronto em 17/08:** `docs/planos/ROTEIRO-NEON-01-09.md` —
+> passo a passo do 01/09 (migrations 0071–0077 em ordem, backfill de temas,
+> as TRÊS URLs TJMG corrigidas via UPDATE reproduzível — o seed
+> `dados-seed/direito-critico-popular.html` foi corrigido na raiz em 17/08,
+> já que a correção manual de 13/08 só rodou no banco local — carga da
+> legislação federal e varredura total dos 25.729 links). Ficou registrado
+> também por que as três URLs antigas morreram (medido: 404; a consulta de
+> jurisprudência unificada do TJMG existe desde 22/06/2026).
+
 ### 3. Legislação federal continua ausente
 
 `ambiental_legislacao` tem 6.378 normas e **todas são estaduais** (SIAM 4.077,
@@ -46,6 +55,14 @@ Resolução CONAMA que rege o licenciamento.
 
 Plano pronto em `docs/_historico/FONTES-CNJ-JUMA.md` (CSV do MMA, licença CC-BY
 confirmada, ~8,5 a 10,4 mil normas federais).
+
+> ✅ **coleta pronta em 17/08:** `etl/betim/dados/legislacao-mma.json`
+> (8.570 normas) re-coletado e **idêntico** ao já versionado (o CSV da fonte
+> não mudou desde 2025-09-23 — a re-coleta confirmou que o congelado segue
+> atual). O `legislacao-cndh.json` já existia. **Falta só a carga** — está no
+> `ROTEIRO-NEON-01-09.md` (passo 4), junto com a reclassificação de temas.
+> A lacuna fecha quando o banco voltar: `ambiental_legislacao` passa a ter
+> as 8.570 normas federais, inclusive as Resoluções CONAMA.
 
 ### 3b. O ETL antigo da FGV finge ser navegador, e o host pede para não ser rastreado
 
@@ -64,6 +81,13 @@ CI — o raciocínio está no cabeçalho dele e em
 em favor do coletor novo, já que a tela do Paraopeba agora cobre a bacia
 inteira e a de Betim cobre só Betim. Decisão do dono. Enquanto isso, não
 aumentar a frequência de nenhum dos dois.
+
+> ✅ **alinhado em 17/08:** `fgv_paraopeba.py` trocou o UA de navegador
+> falso pelo honesto `ControlePopular/1.0 (+https://github.com/FinweeJur/
+> controle-popular)` (mesma régua dos coletores novos) e ganhou pausa de
+> 1,5 s entre requisições. A aposentadoria do ETL em favor do coletor novo
+> continua sendo decisão do dono — o ETL antigo segue sendo o que alimenta
+> a tela de Betim (`paraopeba_iniciativas`/`saldo`) via CI.
 
 O coletor do repasse dos 853 (`scripts/coletar-repasse-brumadinho-mg.mts`,
 15/08) nasceu na mesma régua e acrescenta uma peça: o HTML de 347 KB fica em
@@ -98,13 +122,22 @@ Quem pegou foi um teste que compara o código com o **nome**
 a anotação onde ela estiver guardada fora do repositório. Dentro do
 repositório os dois pares já estão travados por teste.
 
+## 🟢 Resolvido em 13–17/08 (o histórico abaixo fica registrado)
+
 ### 4. Cobertura de território que ficou de fora
 
-- **13 territórios quilombolas** do INCRA fora das camadas publicadas.
-- **1 feição** da camada unificada sem par no INCRA (marcada `fonte_incra:
-  false`, sem nome inventado).
-- **2 de 271** sobreposições de interesse minerário ainda sem nome de
-  território.
+> ✅ **resolvido.** Em 13/08 os 13 territórios quilombolas do INCRA que
+> faltavam entraram (terceira fonte `-outras-regioes`, depois **fundida em
+> UMA camada** a pedido do dono — "qual o sentido de dividir?"); em 15/08 os
+> alertas foram recalculados sobre a base maior e os números atualizados na
+> tela (ver `docs/_historico/HANDOFF-ALERTAS-TERRITORIO.md`, seção "✅
+> ENTREGUE em 15/08": 21 operação, 271 interesse, 6 mancha). Medido em
+> 17/08: 27 polígonos de 23 territórios, só **1 feição sem par no INCRA**
+> (58,2 ha, Lagoa Grande/Jenipapo de Minas — `fonte_incra: false`, nome
+> nunca inventado); as **2 de 271** sobreposições de interesse "sem nome"
+> são a MESMA feição (índice 5 da camada unificada) — lacuna do dado de
+> origem, declarada na ficha do alerta, não bug. O histórico abaixo fica
+> para registrar o estado de 13/08.
 
 ---
 

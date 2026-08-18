@@ -16,10 +16,20 @@ financeiro agregado por município). Não precisa de scraping de HTML.
 O nome do arquivo do mês mais recente nem sempre está disponível no dia
 1 do mês seguinte (defasagem de publicação) -- este módulo tenta o mês
 atual e recua até `MESES_TENTATIVAS` meses até achar um 200.
+
+Régua da casa (medido em 15/08/2026): `www18.fgv.br/robots.txt` responde
+`User-Agent: * / Disallow: /` -- o host inteiro pede para não ser
+rastreado. Desde 17/08/2026 este módulo usa User-Agent honesto
+(`ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular)`,
+o mesmo dos coletores novos) e pausa de 1,5 s entre requisições, em vez
+de fingir navegador. A aposentadoria deste ETL em favor de
+`scripts/coletar-execucao-fgv.mts` (que cobre a bacia inteira) continua
+sendo decisão do dono.
 """
 import argparse
 import io
 import sys
+import time
 from datetime import date
 
 import openpyxl
@@ -35,6 +45,8 @@ GERAL_URL = "https://www18.fgv.br/projetorioparaopeba/projetos-dados/dados-abert
 FINANCEIRO_URL = "https://www18.fgv.br/projetorioparaopeba/library/dados-abertos/financeiro-{ano}-{mes:02d}.xlsx"
 MESES_TENTATIVAS = 4
 NOME_MUNICIPIO = "Betim"
+USER_AGENT = "ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular)"
+PAUSA_SEGUNDOS = 1.5
 
 COL_INICIATIVAS = {
     "id_fdi": "ID FDI",
@@ -60,7 +72,7 @@ COL_INICIATIVAS = {
 
 
 def _baixar(url: str) -> bytes | None:
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+    headers = {"User-Agent": USER_AGENT}
     resp = requests.get(url, headers=headers, timeout=30)
     return resp.content if resp.status_code == 200 else None
 
@@ -70,7 +82,9 @@ def _achar_planilhas() -> tuple[bytes, bytes, str]:
     ano, mes = hoje.year, hoje.month
     for _ in range(MESES_TENTATIVAS):
         geral = _baixar(GERAL_URL.format(mes=mes, ano=ano))
+        time.sleep(PAUSA_SEGUNDOS)  # uma requisição por vez, com pausa
         financeiro = _baixar(FINANCEIRO_URL.format(mes=mes, ano=ano))
+        time.sleep(PAUSA_SEGUNDOS)
         if geral and financeiro:
             return geral, financeiro, f"{ano}-{mes:02d}"
         mes -= 1
