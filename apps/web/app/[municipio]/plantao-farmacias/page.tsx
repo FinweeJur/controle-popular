@@ -43,7 +43,9 @@ export default async function PlantaoFarmaciasPage({
                 <p className="font-display font-semibold text-text">
                   {f.nome} {f.h24 ? <span className="ml-1 text-xs text-accent">24h</span> : null}
                 </p>
-                <p className="text-sm text-text-soft">{f.endereco ?? "—"}</p>
+                {f.endereco ? (
+                  <p className="text-sm text-text-soft">{f.endereco}</p>
+                ) : null}
                 {f.telefone ? (
                   <p className="font-tabular text-sm text-text-soft">{f.telefone}</p>
                 ) : null}
