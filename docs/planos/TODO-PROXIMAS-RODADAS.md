@@ -145,7 +145,7 @@ verificado** (existe e ninguém confirmou).
 > placeholder do `/anuncie`, Diário Oficial hardcoded de Betim em todas as
 > cidades, plantão de farmácias sem telefone/endereço, zap sem link).
 > **Rodada 4 (17/08):** críticos 1 e 2 corrigidos — WhatsApp comercial real
-> (dono confirmou 553195709609) e Diário Oficial por cidade
+> (dono confirmou 5531975709609) e Diário Oficial por cidade
 > (`fontes.diario_oficial`, contagem de edições só em Betim, Itinga sem
 > fonte não renderiza o card). Faltam: críticos 3 e 4, auditoria total dos
 > 25.729 links em banco (Neon, 01/09) e as decisões do dono listadas na

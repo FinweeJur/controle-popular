@@ -14,7 +14,7 @@ export const generateMetadata = metadataDaCidade(
 );
 
 // Número comercial confirmado pelo dono em 2026-08-17.
-const WHATSAPP_COMERCIAL = "553195709609";
+const WHATSAPP_COMERCIAL = "5531975709609";
 
 export default async function AnunciePage({
   params,
