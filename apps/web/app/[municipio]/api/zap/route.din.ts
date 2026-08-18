@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { inserirZapEstabelecimentoD1, zapEstabelecimentosD1 } from "@/lib/db/queries/betimD1";
 import { obterCidadePorSlug } from "@/lib/db/queries/municipios";
-import { validateZapSubmission } from "@/lib/betim/zap";
+import { normalizarLinhasZap, validateZapSubmission } from "@/lib/betim/zap";
 import { ipDoCliente } from "@/lib/rate-limit-ip";
 import { limitarBaixaFrequencia, respostaLimiteExcedido } from "@/lib/rate-limit";
 
@@ -44,7 +44,10 @@ export async function GET(request: NextRequest, { params }: Ctx) {
     });
   }
 
-  return Response.json({ rows });
+  // Mesma normalização do build estático (`fetchZapEstabelecimentos`):
+  // linha legada com whatsapp nulo/inválido não pode virar `wa.me/...`
+  // quebrado no card.
+  return Response.json({ rows: normalizarLinhasZap(rows) });
 }
 
 export async function POST(request: NextRequest, { params }: Ctx) {

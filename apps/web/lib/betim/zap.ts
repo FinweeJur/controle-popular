@@ -46,6 +46,28 @@ export function normalizeWhatsapp(raw: string): string | null {
   return /^55\d{10,11}$/.test(withCountry) ? withCountry : null;
 }
 
+/**
+ * Linhas legadas do banco podem ter `whatsapp` nulo ou em formato que não
+ * vira link — o card monta `wa.me/{whatsapp}` direto, então número inválido
+ * produziria link quebrado (pior que ausência, mesma doutrina da rede de
+ * proteção). Aplica `normalizeWhatsapp` e descarta o que não passa, nos DOIS
+ * lados que servem a lista: build estático (Postgres) e API ao vivo (D1).
+ * `whatsapp` entra como `string | null` porque as colunas do banco são
+ * anuláveis; sai sempre preenchido.
+ */
+export function normalizarLinhasZap(
+  rows: { whatsapp: string | null }[]
+): ZapEstabelecimento[] {
+  const out: ZapEstabelecimento[] = [];
+  for (const r of rows) {
+    if (r.whatsapp === null) continue;
+    const whatsapp = normalizeWhatsapp(r.whatsapp);
+    if (!whatsapp) continue;
+    out.push({ ...(r as ZapEstabelecimento), whatsapp });
+  }
+  return out;
+}
+
 export async function fetchZapEstabelecimentos(
   idMunicipio: IdMunicipio,
   params: { categoria?: string; q?: string; bairros?: string[] } = {}
@@ -53,7 +75,7 @@ export async function fetchZapEstabelecimentos(
   try {
     const data = await zapEstabelecimentos(idMunicipio, params);
     if (!data) return { rows: [], configured: false };
-    return { rows: data as ZapEstabelecimento[], configured: true };
+    return { rows: normalizarLinhasZap(data as ZapEstabelecimento[]), configured: true };
   } catch {
     return { rows: [], configured: true };
   }

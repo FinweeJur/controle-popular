@@ -23,7 +23,7 @@ Três classes, tratamento diferente:
 | 1 | `app/[municipio]/anuncie/page.tsx:16-18` | AUSENTE | ~~WhatsApp comercial é placeholder `5531999999999` com `TODO(F7.6)` em produção — link falso no ar~~ **✅ 17/08: número real 5531975709609 confirmado pelo dono** |
 | 2 | `app/[municipio]/prefeitura/page.tsx:125` + `lib/betim/diarioOficial.ts:27` | DESATUALIZADO | ~~Card "Diário Oficial de {cidade.nome}" linka e busca SEMPRE o de Betim — nas 5 cidades não-Betim promete diário local e manda pro de Betim~~ **✅ 17/08: link usa `fontes.diario_oficial` de cada cidade; contagem de edições só em Betim (única com dataset); cidade sem fonte (Itinga) não renderiza o card** |
 | 3 | `app/[municipio]/plantao-farmacias/page.tsx` | AUSENTE | ~~"—" renderizado quando farmácia sem endereço~~ **✅ 17/08: endereço omitido quando nulo (mesmo padrão do telefone). O dado real segue dependente da escala oficial — buscas de 17/08 não acharam escala estruturada de Betim (portal da prefeitura sem a página; post no Instagram da prefeitura não acessível por automação); fica como integração futura, não bug de página** |
-| 4 | `app/[municipio]/zap/zap.ts:35` | AUSENTE | `normalizeWhatsapp` → null → card sem link (linhas legadas) |
+| 4 | `lib/betim/zap.ts` + `app/[municipio]/api/zap/route.din.ts` | AUSENTE | ~~`normalizeWhatsapp` → null → card com `wa.me/...` quebrado (linhas legadas)~~ **✅ 17/08: `normalizarLinhasZap` descarta linha com whatsapp nulo/inválido nas DUAS pontas (build estático via `fetchZapEstabelecimentos` e API ao vivo D1) — mesmo padrão do telefone: link quebrado é pior que ausência. 10 testes novos** |
 
 ## 2. AUSENTE (44)
 
