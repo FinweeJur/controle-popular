@@ -42,7 +42,7 @@ export default async function PrefeituraHubPage({
   const [visaoGeral, caixa, diario] = await Promise.all([
     getVisaoGeral(cidade.id_municipio),
     getCaixaDisponivel(cidade.id_municipio),
-    getDiarioOficialInfo(),
+    getDiarioOficialInfo(cidade),
   ]);
 
   return (
@@ -103,40 +103,45 @@ export default async function PrefeituraHubPage({
 
       <RepasseBrumadinho idMunicipio={cidade.id_municipio} />
 
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border bg-surface p-5 shadow-sm">
-        <div>
-          <h2 className="flex items-center gap-2 font-display text-base font-semibold text-text">
-            Diário Oficial (Órgão Oficial)
-          </h2>
-          <p className="mt-1 max-w-xl text-sm text-text-soft">
-            Leis, decretos e atos são publicados diariamente no Órgão Oficial
-            de {cidade.nome}.{" "}
-            {diario?.ultimaEdicao ? (
-              <>
-                Última edição: <strong className="text-text">nº {diario.ultimaEdicao}</strong>
-                {diario.ultimaData ? <> de {formatDateBR(diario.ultimaData)}</> : null} ·{" "}
-                {formatNumberBR(diario.totalAno)} edições em {diario.ano}.
-              </>
-            ) : null}
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <a
-            href="https://www.betim.mg.gov.br/portal/diario-oficial"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-primary-ink hover:bg-primary/90"
-          >
-            Ver edições ↗
-          </a>
+      {/* Só cidade com fonte `diario_oficial` ganha o card — link para o
+          diário errado é pior que ausência (mesma doutrina da rede de
+          proteção). Itinga não tem fonte e não renderiza. */}
+      {typeof cidade.fontes?.diario_oficial === "string" ? (
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border bg-surface p-5 shadow-sm">
+          <div>
+            <h2 className="flex items-center gap-2 font-display text-base font-semibold text-text">
+              Diário Oficial (Órgão Oficial)
+            </h2>
+            <p className="mt-1 max-w-xl text-sm text-text-soft">
+              Leis, decretos e atos são publicados diariamente no Órgão Oficial
+              de {cidade.nome}.{" "}
+              {diario?.ultimaEdicao ? (
+                <>
+                  Última edição: <strong className="text-text">nº {diario.ultimaEdicao}</strong>
+                  {diario.ultimaData ? <> de {formatDateBR(diario.ultimaData)}</> : null} ·{" "}
+                  {formatNumberBR(diario.totalAno)} edições em {diario.ano}.
+                </>
+              ) : null}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <a
+              href={cidade.fontes.diario_oficial}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-primary-ink hover:bg-primary/90"
+            >
+              Ver edições ↗
+            </a>
           <Link
-            href="/camara/legislacao"
-            className="rounded-full bg-surface-2 px-4 py-1.5 text-sm font-medium text-text hover:bg-surface-2/70"
-          >
-            Leis e decretos
-          </Link>
+              href="/camara/legislacao"
+              className="rounded-full bg-surface-2 px-4 py-1.5 text-sm font-medium text-text hover:bg-surface-2/70"
+            >
+              Leis e decretos
+            </Link>
+          </div>
         </div>
-      </div>
+      ) : null}
 
       {!visaoGeral.ok ? (
         <div className="rounded-2xl border border-dashed border-border bg-surface-2 p-8 text-sm text-text-soft">

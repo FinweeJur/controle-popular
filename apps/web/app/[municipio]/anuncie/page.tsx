@@ -13,9 +13,8 @@ export const generateMetadata = metadataDaCidade(
   (c) => `Anuncie seu negócio local no ${nomePortal(c)} — divulgação única a partir de R$ 200, sem mensalidade.`
 );
 
-// TODO(F7.6): placeholder number — swap for the real commercial WhatsApp
-// before launch (see TODO.md "Bloqueado no usuário").
-const WHATSAPP_COMERCIAL = "5531999999999";
+// Número comercial confirmado pelo dono em 2026-08-17.
+const WHATSAPP_COMERCIAL = "553195709609";
 
 export default async function AnunciePage({
   params,

@@ -144,8 +144,12 @@ verificado** (existe e ninguém confirmou).
 > `docs/planos/CLASSIFICACAO-COMPLETUDE.md`. 4 críticos de código (WhatsApp
 > placeholder do `/anuncie`, Diário Oficial hardcoded de Betim em todas as
 > cidades, plantão de farmácias sem telefone/endereço, zap sem link).
-> Faltam: auditoria total dos 25.729 links em banco (Neon, 01/09) e as
-> decisões do dono listadas na seção 5 do relatório.
+> **Rodada 4 (17/08):** críticos 1 e 2 corrigidos — WhatsApp comercial real
+> (dono confirmou 553195709609) e Diário Oficial por cidade
+> (`fontes.diario_oficial`, contagem de edições só em Betim, Itinga sem
+> fonte não renderiza o card). Faltam: críticos 3 e 4, auditoria total dos
+> 25.729 links em banco (Neon, 01/09) e as decisões do dono listadas na
+> seção 5 do relatório.
 
 ### 7. Revisão crítica de onboarding, acessibilidade e uso por leigo — ✅ feito em 14/08
 

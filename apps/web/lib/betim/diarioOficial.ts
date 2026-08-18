@@ -1,3 +1,5 @@
+import type { Cidade } from "@/lib/db/queries/municipios";
+
 export interface DiarioOficialInfo {
   ano: number;
   ultimaEdicao: string | null;
@@ -15,10 +17,24 @@ export interface DiarioOficialInfo {
  * (onde as edições abrem de verdade); não replica um diretório com links
  * quebrados.
  *
+ * Só Betim publica esse dataset de diário em dados abertos — as demais
+ * cidades do portal têm o diário em outro lugar (`fontes.diario_oficial`
+ * aponta para o Diário Municipal da AMM-MG em Araçuaí/Diamantina, DOM-PBH
+ * em BH, Diário Oficial da Cidade em SP) e a página usa só o link da fonte,
+ * sem a contagem de edições. Cidade sem `fontes.diario_oficial` (Itinga)
+ * não ganha o card — mesma doutrina do resto: link para o órgão errado é
+ * pior que ausência de link.
+ *
  * Best-effort com timeout curto: se o portal de Betim estiver fora, degrada
  * pra `null` e a página mostra só o link estático — nunca trava o render.
  */
-export async function getDiarioOficialInfo(): Promise<DiarioOficialInfo | null> {
+export async function getDiarioOficialInfo(
+  cidade: Cidade
+): Promise<DiarioOficialInfo | null> {
+  const diario = cidade.fontes?.["diario_oficial"];
+  if (typeof diario !== "string" || !diario) return null;
+  // Única cidade com dataset de edições em dados abertos hoje.
+  if (cidade.slug !== "betim") return null;
   const ano = new Date().getFullYear();
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 5000);
