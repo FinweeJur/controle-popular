@@ -88,6 +88,40 @@ Conflito no rebase: em `docs/` ou no arquivo de launch, quase sempre a resoluç�
 - **Nunca cole segredo na conversa** — nem `DATABASE_URL`, nem nada de `.env`, com nenhum provedor (a jurisdição do provedor muda, o risco não).
 - A regra editorial vale dobrado: dois dados verdadeiros lado a lado podem implicar um terceiro, falso. O número vem do dado; o modelo, se houver, só embrulha.
 
+## Grafo de código (code-graph-rag)
+
+Ferramenta opcional para explorar a estrutura do repo por consulta em vez de grep: [`code-graph-rag`](https://github.com/vitali87/code-graph-rag) faz o parsing com Tree-sitter e grava um grafo (Memgraph) + busca semântica (Qdrant) em Docker local. Não faz parte do build nem do CI — é ferramenta de sessão, sob demanda.
+
+**Instalação** (uma vez por máquina; usa `uv tool install`, isolado, não toca em nenhum venv do projeto — ver a armadilha do venv do Hermes no `AGENTS.md`):
+
+```bash
+uv tool install cmake                                          # cmake não vem por padrão nesta máquina
+uv tool install "code-graph-rag[treesitter-full,semantic]"
+```
+
+**Uso:**
+
+```bash
+cgr daemon up                                                   # sobe Memgraph (7687) + Qdrant (6333) no Docker
+cgr start --repo-path X:\DevCoder\controle-popular --update-graph   # reindexa
+```
+
+Repetir `--update-graph` sempre que quiser refletir mudanças recentes — a indexação inteira do monorepo leva ~5-10 min. Consultas Cypher diretas usam o Python do próprio tool (evita instalar `pymgclient` em outro venv):
+
+```bash
+"$(uv tool dir)/code-graph-rag/Scripts/python.exe" - <<'PY'
+import mgclient
+conn = mgclient.connect(host="localhost", port=7687); conn.autocommit = True
+cur = conn.cursor()
+cur.execute("MATCH (n) RETURN labels(n)[0], count(*) ORDER BY count(*) DESC")
+print(cur.fetchall())
+PY
+```
+
+**Snapshot em 20/08/2026** (repo inteiro, incl. `apps/web`, `etl/*`, `scripts/`): 781 módulos, 3.664 arquivos, 8.123 funções, 110 métodos, 30 classes; 15.051 chamadas de função e 2.891 imports resolvidos no grafo. Módulos mais centrais (mais importados por outros) são os utilitários de base: `lib/db/queries/municipios.ts` (111), `lib/betim/format.ts` (83), `lib/betim/staticParams.ts` (63), `lib/betim/cidade.ts` (56) — mexer neles tem raio de impacto amplo. Os mais acoplados (mais imports próprios) são scripts geradores: `scripts/paridade-betim.mts` (37 imports), `scripts/isolamento-cidades.mts` (32) — esperado, são scripts de ETL/build que amarram várias fontes.
+
+*(Número muda a cada reindexação — se for decidir com ele, rode `cgr start --update-graph` de novo antes.)*
+
 ## Verificação
 
 ```bash
