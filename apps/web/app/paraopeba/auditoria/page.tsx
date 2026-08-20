@@ -11,6 +11,7 @@ import {
   TIPO_DOCUMENTO_AJRI_ORDEM,
 } from "@/lib/paraopeba/auditoria-ajri";
 import { COBERTURA_RESUMO_AJRI } from "@/lib/paraopeba/resumo-ajri";
+import { SINTESE_AJRI } from "@/lib/paraopeba/sintese-ajri";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import AuditoriaClient from "./AuditoriaClient";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -203,6 +204,90 @@ export default function AuditoriaAjriPage() {
             com o dado que se quer remover republica exatamente o que se pretende tirar.
           </li>
         </ul>
+      </section>
+
+      {/* ═══ SÍNTESE TEMÁTICA — a leitura de conjunto antes da lista ═══
+          Os 337 resumos viram 16 eixos, com o veredito de conjunto visível e
+          cada eixo num `<details>` nativo — zero JavaScript, zero estado de
+          React, funciona sem hidratação. A síntese é obra deste portal
+          (auditada na fase de conteúdo contra os 337 resumos e o texto
+          original); cada achado carrega o código do documento que o
+          sustenta, a mesma ponte das fichas abaixo. */}
+      <section aria-labelledby="sintese-auditoria" className="mt-10">
+        <h2
+          id="sintese-auditoria"
+          className="font-display text-xl font-bold tracking-tight text-text"
+        >
+          O que os {formatNumberBR(COBERTURA_RESUMO_AJRI.total)} relatórios dizem, por tema
+        </h2>
+        <p className="mt-3 text-[.95em] leading-relaxed text-text-soft">
+          {SINTESE_AJRI.executivo}
+        </p>
+
+        <div className="mt-5 space-y-3">
+          {SINTESE_AJRI.eixos.map((eixo) => (
+            <details
+              key={eixo.titulo}
+              className="group rounded-xl border border-border bg-surface px-4 py-3"
+            >
+              <summary className="cursor-pointer list-none">
+                <span className="font-semibold text-text">{eixo.titulo}</span>
+              </summary>
+              <div className="mt-3 space-y-3 text-[.92em] leading-relaxed text-text-soft">
+                <p>
+                  <strong className="font-medium text-text">Estado geral.</strong>{" "}
+                  {eixo.estadoGeral}
+                </p>
+                <p>
+                  <strong className="font-medium text-text">Evolução no tempo.</strong>{" "}
+                  {eixo.evolucao}
+                </p>
+                <div>
+                  <p className="font-medium text-text">Achados mais relevantes</p>
+                  <ul className="mt-1.5 list-disc space-y-1.5 pl-5">
+                    {eixo.achados.map((a, i) => (
+                      <li key={i}>{a}</li>
+                    ))}
+                  </ul>
+                </div>
+                <p>
+                  <strong className="font-medium text-text">Números-chave.</strong>{" "}
+                  {eixo.numerosChave}
+                </p>
+              </div>
+            </details>
+          ))}
+
+          <details className="group rounded-xl border border-border bg-surface px-4 py-3">
+            <summary className="cursor-pointer list-none">
+              <span className="font-semibold text-text">
+                Pendências que atravessam o acervo inteiro
+              </span>
+            </summary>
+            <ol className="mt-3 space-y-2.5 text-[.92em] leading-relaxed text-text-soft">
+              {SINTESE_AJRI.transversais.map((t, i) => (
+                <li key={i}>
+                  <strong className="font-medium text-text">{t.titulo.replace(/\.$/, "")}.</strong>{" "}
+                  {t.texto}
+                </li>
+              ))}
+            </ol>
+          </details>
+
+          <details className="group rounded-xl border border-border bg-surface px-4 py-3">
+            <summary className="cursor-pointer list-none">
+              <span className="font-semibold text-text">Onde a base de evidência é mais rasa</span>
+            </summary>
+            <ul className="mt-3 space-y-2.5 text-[.92em] leading-relaxed text-text-soft">
+              {SINTESE_AJRI.fragilidades.map((f, i) => (
+                <li key={i}>
+                  <strong className="font-medium text-text">{f.titulo.replace(/\.$/, "")}.</strong>{" "}
+                  {f.texto}
+                </li>
+              ))}
+            </ul>
+          </details>
+        </div>
       </section>
 
       <AuditoriaClient />
