@@ -17,6 +17,26 @@ import AuditoriaClient from "./AuditoriaClient";
 import { metadataEditavel } from "@/lib/edicoes";
 
 /**
+ * A síntese por eixos vem em markdown simples de origem (`.md` fora do repo)
+ * e o gerador não converte `**negrito**` para HTML — a maioria dos achados
+ * nunca usou a marca, mas os que citam o painel de indicadores começam com
+ * `**Painel de indicadores (DD/MM/AAAA):**`, e sem este parser os asteriscos
+ * apareceriam literalmente na tela.
+ */
+function negritoInline(texto: string) {
+  const partes = texto.split(/(\*\*[^*]+\*\*)/g);
+  return partes.map((parte, i) =>
+    parte.startsWith("**") && parte.endsWith("**") ? (
+      <strong key={i} className="font-medium text-text">
+        {parte.slice(2, -2)}
+      </strong>
+    ) : (
+      <span key={i}>{parte}</span>
+    ),
+  );
+}
+
+/**
  * `/paraopeba/auditoria` — catálogo da auditoria socioambiental independente
  * (AECOM) prevista no Acordo Judicial de Reparação Integral de Brumadinho.
  *
@@ -225,6 +245,51 @@ export default function AuditoriaAjriPage() {
         </p>
 
         <div className="mt-5 space-y-3">
+          <details className="group rounded-xl border border-border bg-surface px-4 py-3">
+            <summary className="cursor-pointer list-none">
+              <span className="font-semibold text-text">
+                Tabela de prazos — o que foi prometido e o que está valendo hoje
+              </span>
+            </summary>
+            <div className="mt-3 overflow-x-auto text-[.9em] leading-relaxed text-text-soft">
+              <table className="w-full min-w-[640px] border-collapse">
+                <thead>
+                  <tr className="border-b border-border text-left text-text">
+                    <th className="py-1.5 pr-3 font-medium">Obra / iniciativa</th>
+                    <th className="py-1.5 pr-3 font-medium">Prazo inicial</th>
+                    <th className="py-1.5 pr-3 font-medium">Prazo atual</th>
+                    <th className="py-1.5 pr-3 font-medium">Atraso / prorrogação</th>
+                    <th className="py-1.5 font-medium">Resumo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {SINTESE_AJRI.prazos.map((p, i) => (
+                    <tr key={i} className="border-b border-border/60 align-top">
+                      <td className="py-1.5 pr-3 font-medium text-text">{p.obra}</td>
+                      <td className="py-1.5 pr-3">{p.prazoInicial}</td>
+                      <td className="py-1.5 pr-3">{p.prazoAtual}</td>
+                      <td className="py-1.5 pr-3">{p.atraso}</td>
+                      <td className="py-1.5">{p.resumo}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {SINTESE_AJRI.graficosGerais.length > 0 && (
+                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                  {SINTESE_AJRI.graficosGerais.map((g, i) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={i}
+                      src={g.src}
+                      alt={g.legenda}
+                      className="w-full rounded-lg border border-border"
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          </details>
+
           {SINTESE_AJRI.eixos.map((eixo) => (
             <details
               key={eixo.titulo}
@@ -246,7 +311,7 @@ export default function AuditoriaAjriPage() {
                   <p className="font-medium text-text">Achados mais relevantes</p>
                   <ul className="mt-1.5 list-disc space-y-1.5 pl-5">
                     {eixo.achados.map((a, i) => (
-                      <li key={i}>{a}</li>
+                      <li key={i}>{negritoInline(a)}</li>
                     ))}
                   </ul>
                 </div>
@@ -254,6 +319,19 @@ export default function AuditoriaAjriPage() {
                   <strong className="font-medium text-text">Números-chave.</strong>{" "}
                   {eixo.numerosChave}
                 </p>
+                {eixo.graficos.length > 0 && (
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {eixo.graficos.map((g, i) => (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        key={i}
+                        src={g.src}
+                        alt={g.legenda}
+                        className="w-full rounded-lg border border-border"
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             </details>
           ))}

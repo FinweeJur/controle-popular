@@ -2,6 +2,8 @@ import { describe, expect, test } from "vitest";
 import { SINTESE_AJRI } from "./sintese-ajri";
 
 const CODIGO = /\d{5}-ACM-[A-Z0-9-]{8,}/;
+/** A outra fonte que o gerador aceita — ver o cabeçalho de gerar-sintese-ajri.mts. */
+const PAINEL = /Painel de indicadores \(\D{0,12}\d{2}\/\d{2}\/\d{4}\)/i;
 
 /**
  * A síntese é conteúdo auditado que transpila para TS — o teste impede que a
@@ -22,12 +24,12 @@ describe("síntese temática da auditoria", () => {
     }
   });
 
-  test("todo achado cita um documento, exceto a negação documentada de varredura", () => {
+  test("todo achado cita um documento ou o painel de indicadores, exceto a negação documentada de varredura", () => {
     for (const eixo of SINTESE_AJRI.eixos) {
       for (const achado of eixo.achados) {
         const negacaoDeAusencia = /^Nenhuma? menção|^Nenhum dos relatórios/.test(achado);
-        if (CODIGO.test(achado) || negacaoDeAusencia) continue;
-        expect.fail(`Achado sem código no eixo '${eixo.titulo}': ${achado}`);
+        if (CODIGO.test(achado) || PAINEL.test(achado) || negacaoDeAusencia) continue;
+        expect.fail(`Achado sem código nem citação ao painel no eixo '${eixo.titulo}': ${achado}`);
       }
     }
   });
@@ -48,5 +50,25 @@ describe("síntese temática da auditoria", () => {
 
   test("resumo executivo é um parágrafo completo", () => {
     expect(SINTESE_AJRI.executivo.length).toBeGreaterThan(500);
+  });
+
+  test("tabela de prazos tem linhas completas, e todo gráfico aponta para um asset público", () => {
+    expect(SINTESE_AJRI.prazos.length).toBeGreaterThan(0);
+    for (const p of SINTESE_AJRI.prazos) {
+      expect(p.obra.length, "linha de prazo sem obra").toBeGreaterThan(0);
+      expect(p.prazoInicial.length, `${p.obra} sem prazo inicial`).toBeGreaterThan(0);
+      expect(p.prazoAtual.length, `${p.obra} sem prazo atual`).toBeGreaterThan(0);
+      expect(p.atraso.length, `${p.obra} sem atraso/prorrogação`).toBeGreaterThan(0);
+      expect(p.resumo.length, `${p.obra} sem resumo`).toBeGreaterThan(10);
+    }
+    const todosOsGraficos: { src: string; legenda: string }[] = [
+      ...SINTESE_AJRI.graficosGerais,
+      ...SINTESE_AJRI.eixos.flatMap((e): { src: string; legenda: string }[] => [...e.graficos]),
+    ];
+    expect(todosOsGraficos.length).toBeGreaterThan(0);
+    for (const g of todosOsGraficos) {
+      expect(g.src).toMatch(/^\/paraopeba\/auditoria\/graficos\/.+\.png$/);
+      expect(g.legenda.length).toBeGreaterThan(0);
+    }
   });
 });
