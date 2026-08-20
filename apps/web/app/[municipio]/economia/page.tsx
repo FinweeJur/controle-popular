@@ -2,7 +2,8 @@ import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { fetchIndicadores } from "@/lib/betim/indicadores";
-import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
@@ -33,17 +34,17 @@ export default async function EconomiaPage({
     {
       key: "pib",
       titulo: "PIB do município",
-      formatar: (v: number) => formatCurrencyBRL(v),
+      formatar: (v: number) => <Moeda value={v} />,
     },
     {
       key: "pib_per_capita",
       titulo: "PIB per capita",
-      formatar: (v: number) => formatCurrencyBRL(v),
+      formatar: (v: number) => <Moeda value={v} />,
     },
     {
       key: "salario_medio",
       titulo: "Salário médio mensal",
-      formatar: (v: number) => formatCurrencyBRL(v),
+      formatar: (v: number) => <Moeda value={v} />,
     },
     {
       key: "saldo_empregos_caged",

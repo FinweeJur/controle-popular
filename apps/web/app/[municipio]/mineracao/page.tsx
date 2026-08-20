@@ -3,7 +3,8 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getRoyaltiesCfemData } from "@/lib/betim/royaltiesCfem";
-import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
@@ -70,7 +71,7 @@ export default async function MineracaoPage({
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <DataCard title={`CFEM arrecadada em ${data.anoMaisRecente}`} source={FONTE_ANM}>
           <p className="font-tabular text-2xl font-bold text-text">
-            {formatCurrencyBRL(data.totalAnoMaisRecente)}
+            <Moeda value={data.totalAnoMaisRecente} />
           </p>
           <p className="mt-1 text-xs">somando todas as substâncias do ano</p>
         </DataCard>
@@ -79,7 +80,7 @@ export default async function MineracaoPage({
           source={FONTE_ANM}
         >
           <p className="font-tabular text-2xl font-bold text-text">
-            {formatCurrencyBRL(data.totalHistorico)}
+            <Moeda value={data.totalHistorico} />
           </p>
           <p className="mt-1 text-xs">soma de todos os anos coletados, só neste município</p>
         </DataCard>
@@ -92,7 +93,7 @@ export default async function MineracaoPage({
               {data.substanciasAnoMaisRecente.map((s) => (
                 <li key={s.substancia} className="flex items-center justify-between gap-3 py-2 text-sm">
                   <span className="text-text">{s.substancia}</span>
-                  <strong className="font-tabular text-text">{formatCurrencyBRL(s.valor)}</strong>
+                  <strong className="font-tabular text-text"><Moeda value={s.valor} /></strong>
                 </li>
               ))}
             </ul>
@@ -109,7 +110,7 @@ export default async function MineracaoPage({
                   <div className="flex items-center justify-between gap-3">
                     <span className="text-text">{e.empresa}</span>
                     <strong className="font-tabular text-text">
-                      {formatCurrencyBRL(e.valorCfem)}
+                      <Moeda value={e.valorCfem} />
                     </strong>
                   </div>
                   <span className="text-xs text-text-soft">
@@ -132,7 +133,7 @@ export default async function MineracaoPage({
               {[...data.serieAnual].reverse().map((s) => (
                 <li key={s.ano} className="flex items-center justify-between gap-3 py-2 text-sm">
                   <span className="text-text">{s.ano}</span>
-                  <strong className="font-tabular text-text">{formatCurrencyBRL(s.valor)}</strong>
+                  <strong className="font-tabular text-text"><Moeda value={s.valor} /></strong>
                 </li>
               ))}
             </ul>

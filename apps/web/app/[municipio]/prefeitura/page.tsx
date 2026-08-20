@@ -6,7 +6,8 @@ import BarrasValor from "@/app/[municipio]/components/charts/BarrasValor";
 import { getVisaoGeral } from "@/lib/betim/prefeitura";
 import { getCaixaDisponivel } from "@/lib/betim/caixa";
 import { getDiarioOficialInfo } from "@/lib/betim/diarioOficial";
-import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatCurrencyBRL, formatCurrencyCompactaBR, formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
@@ -84,12 +85,12 @@ export default async function PrefeituraHubPage({
             source={{ label: "SICONFI/Tesouro Nacional", url: "https://siconfi.tesouro.gov.br/" }}
           >
             <p className="font-tabular text-2xl font-bold text-text">
-              {formatCurrencyBRL(caixa.valor)}
+              <Moeda value={caixa.valor} />
             </p>
             {caixa.anoAnterior && caixa.valorAnterior ? (
               <p className="mt-1 text-xs text-text-soft">
                 {caixa.valor >= caixa.valorAnterior ? "+" : ""}
-                {formatCurrencyBRL(caixa.valor - caixa.valorAnterior)} em relação a{" "}
+                <Moeda value={caixa.valor - caixa.valorAnterior} /> em relação a{" "}
                 {caixa.anoAnterior}
               </p>
             ) : null}
@@ -165,17 +166,17 @@ export default async function PrefeituraHubPage({
             >
               <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1">
                 <p className="font-tabular text-2xl font-bold text-text">
-                  {formatCurrencyBRL(visaoGeral.custoPerCapitaAno / 12)}
+                  <Moeda value={visaoGeral.custoPerCapitaAno / 12} />
                   <span className="ml-1 text-sm font-normal text-text-soft">por mês</span>
                 </p>
                 <p className="font-tabular text-lg font-semibold text-text-soft">
-                  {formatCurrencyBRL(visaoGeral.custoPerCapitaAno)}
+                  <Moeda value={visaoGeral.custoPerCapitaAno} />
                   <span className="ml-1 text-sm font-normal">por ano</span>
                 </p>
               </div>
               <p className="mt-2 text-xs text-text-soft">
                 Despesa total paga em {visaoGeral.ano} (
-                {formatCurrencyBRL(visaoGeral.despesaTotal)}) dividida pela
+                <Moeda value={visaoGeral.despesaTotal} />) dividida pela
                 população de {visaoGeral.populacaoAno} (
                 {formatNumberBR(visaoGeral.populacao)} habitantes). Mede o
                 tamanho do orçamento por pessoa — não é um valor cobrado de
@@ -189,7 +190,7 @@ export default async function PrefeituraHubPage({
             source={{ label: "SICONFI/Tesouro Nacional", url: "https://siconfi.tesouro.gov.br/" }}
           >
             <p className="font-tabular text-2xl font-bold text-text">
-              {formatCurrencyBRL(visaoGeral.receitaTotal)}
+              <Moeda value={visaoGeral.receitaTotal} />
             </p>
           </DataCard>
 
@@ -198,7 +199,7 @@ export default async function PrefeituraHubPage({
             source={{ label: "SICONFI/Tesouro Nacional", url: "https://siconfi.tesouro.gov.br/" }}
           >
             <BarrasValor
-              formatValor={formatCurrencyBRL}
+              formatValor={formatCurrencyCompactaBR}
               itens={visaoGeral.gastosPorFuncao.map((item) => ({
                 label: item.funcao,
                 valor: item.valor,
@@ -218,7 +219,7 @@ export default async function PrefeituraHubPage({
             source={{ label: "PNCP", url: "https://pncp.gov.br/" }}
           >
             <BarrasValor
-              formatValor={formatCurrencyBRL}
+              formatValor={formatCurrencyCompactaBR}
               itens={visaoGeral.maioresFornecedores.map((item) => ({
                 label: item.nome,
                 valor: item.valor,

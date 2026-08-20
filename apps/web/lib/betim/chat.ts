@@ -1,6 +1,6 @@
 import { contagemVereadoresAtivos, contratosPorTermos, listarIndicadores, proposicoesPorTermos, resumoContratosAtivos } from "@/lib/db/queries/betim";
 import { obterCidadePorId, type IdMunicipio } from "@/lib/db/queries/municipios";
-import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import { formatCurrencyCompactaBR, formatNumberBR } from "@/lib/betim/format";
 
 /**
  * "Pergunte ao portal" (F8) — recuperação de contexto pro chat. NÃO usa
@@ -66,7 +66,7 @@ async function fatosGerais(idMunicipio: IdMunicipio): Promise<string[]> {
     // que a segunda entra antes do ETL.
     if (contratos && contratos.qtd > 0) {
       linhas.push(
-        `Contratos ativos da Prefeitura: ${formatNumberBR(contratos.qtd)}, somando ${formatCurrencyBRL(contratos.soma)}.`
+        `Contratos ativos da Prefeitura: ${formatNumberBR(contratos.qtd)}, somando ${formatCurrencyCompactaBR(contratos.soma)}.`
       );
     }
     if (qtdVereadores) {
@@ -103,7 +103,7 @@ export async function montarContexto(
             cRows
               .map(
                 (c) =>
-                  `- ${c.fornecedor_nome ?? "fornecedor não informado"} · ${c.valor_global != null ? formatCurrencyBRL(Number(c.valor_global)) : "valor n/d"} · ${c.status ?? ""} (${c.ano ?? ""}): ${(c.objeto ?? "").slice(0, 160)}`
+                  `- ${c.fornecedor_nome ?? "fornecedor não informado"} · ${c.valor_global != null ? formatCurrencyCompactaBR(Number(c.valor_global)) : "valor n/d"} · ${c.status ?? ""} (${c.ano ?? ""}): ${(c.objeto ?? "").slice(0, 160)}`
               )
               .join("\n")
         );

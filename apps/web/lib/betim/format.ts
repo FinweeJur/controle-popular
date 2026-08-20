@@ -7,6 +7,34 @@ export function formatCurrencyBRL(value: number): string {
   }).format(value);
 }
 
+/**
+ * Formats a number as Brazilian Real currency in short form when it's big
+ * enough to be hard to read at a glance (e.g. "R$ 922.368" stays as is, but
+ * "R$ 12.345" becomes "R$ 12,3 mil" and "R$ 37.600.000.000" becomes "R$ 37,6
+ * bilhões"). Rule of thumb: a human reads "92,6 milhões" faster than
+ * "R$ 92.600.000" (pedido do usuário 2026-08-20). The full value lives in
+ * the `title` of the `<Moeda />` component that renders this — the short
+ * form is never the only way to see the number.
+ */
+export function formatCurrencyCompactaBR(value: number): string {
+  const abs = Math.abs(value);
+  if (abs < 1000) return formatCurrencyBRL(value);
+  const sinal = value < 0 ? "-" : "";
+  const parte = (n: number, singular: string, plural: string) =>
+    `${sinal}R$ ${n.toLocaleString("pt-BR", { maximumFractionDigits: 1 }).replace(",0", "")} ${n < 2 ? singular : plural}`;
+  // A escala é decidida pelo valor ARREDONDADO: 999.999 arredonda para
+  // "1.000 mil" — que não existe — e promove para "R$ 1 milhão".
+  const mil = abs / 1000;
+  if (Math.round(mil * 10) / 10 < 1000) {
+    return `${sinal}R$ ${mil.toLocaleString("pt-BR", { maximumFractionDigits: 1 }).replace(",0", "")} mil`;
+  }
+  const milhao = abs / 1_000_000;
+  if (Math.round(milhao * 10) / 10 < 1000) return parte(milhao, "milhão", "milhões");
+  const bilhao = abs / 1_000_000_000;
+  if (Math.round(bilhao * 10) / 10 < 1000) return parte(bilhao, "bilhão", "bilhões");
+  return parte(abs / 1_000_000_000_000, "trilhão", "trilhões");
+}
+
 /** Formats a number using Brazilian thousands/decimal separators. */
 export function formatNumberBR(value: number): string {
   return new Intl.NumberFormat("pt-BR").format(value);

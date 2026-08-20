@@ -24,7 +24,8 @@ import { listarCidades, rotuloLegislatura, type Cidade } from "@/lib/db/queries/
 import { getTemasVereador, TEMA_LABELS } from "@/lib/betim/temas";
 import { getCustoVereador, getVerbasAnalytics } from "@/lib/betim/verbas";
 import { getParticipacoesByVereador } from "@/lib/betim/comissoes";
-import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, nomePortal } from "@/lib/betim/cidade";
 
 interface VereadorPageProps {
@@ -328,14 +329,14 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                         Recebe por mês
                       </p>
                       <p className="font-tabular text-2xl font-bold text-text">
-                        {formatCurrencyBRL(custo.mensalBruto)}
+                        <Moeda value={custo.mensalBruto} />
                       </p>
                       <p className="text-xs text-text-soft">
                         subsídio bruto, antes dos descontos
                       </p>
                       {custo.mensalExtras != null && custo.mensalExtras > 0 && (
                         <p className="mt-1.5 text-xs text-text-soft">
-                          + {formatCurrencyBRL(custo.mensalExtras)} de verbas
+                          + <Moeda value={custo.mensalExtras} /> de verbas
                           fixas (auxílio-alimentação)
                         </p>
                       )}
@@ -360,7 +361,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                             <span className="font-tabular text-sm text-text-soft">{a.ano}</span>
                             <span className="flex-1 border-b border-dotted border-border" />
                             <span className="font-tabular text-base font-semibold text-text">
-                              {formatCurrencyBRL(a.total)}
+                              <Moeda value={a.total} />
                             </span>
                             <span className="text-[.75em] text-text-soft">
                               {formatNumberBR(a.qtd)} desp.
@@ -401,7 +402,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
               >
                 <p className="mb-2 text-text">
                   {formatNumberBR(bens.total)} {bens.total === 1 ? "bem" : "bens"}, total{" "}
-                  <strong>{formatCurrencyBRL(bens.soma)}</strong>
+                  <strong><Moeda value={bens.soma} /></strong>
                 </p>
                 <ul className="divide-y divide-border/60">
                   {bens.rows.map((b, i) => (
@@ -411,7 +412,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                         {b.descricao_item ? ` — ${b.descricao_item}` : ""}
                       </span>
                       <span className="font-tabular shrink-0 text-text">
-                        {b.valor != null ? formatCurrencyBRL(Number(b.valor)) : "—"}
+                        {b.valor != null ? <Moeda value={Number(b.valor)} /> : "—"}
                       </span>
                     </li>
                   ))}
@@ -433,7 +434,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                 <p className="mb-3 text-text">
                   {formatNumberBR(doacoes.total)}{" "}
                   {doacoes.total === 1 ? "doação" : "doações"}, total{" "}
-                  <strong className="font-tabular">{formatCurrencyBRL(doacoes.soma)}</strong>
+                  <strong className="font-tabular"><Moeda value={doacoes.soma} /></strong>
                 </p>
                 <ul className="divide-y divide-border/60">
                   {doacoes.rows.slice(0, 8).map((d, i) => (
@@ -447,7 +448,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                         )}
                       </span>
                       <span className="font-tabular shrink-0 text-text">
-                        {d.valor != null ? formatCurrencyBRL(Number(d.valor)) : "—"}
+                        {d.valor != null ? <Moeda value={Number(d.valor)} /> : "—"}
                       </span>
                     </li>
                   ))}
@@ -469,7 +470,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                             )}
                           </span>
                           <span className="font-tabular shrink-0 text-text">
-                            {d.valor != null ? formatCurrencyBRL(Number(d.valor)) : "—"}
+                            {d.valor != null ? <Moeda value={Number(d.valor)} /> : "—"}
                           </span>
                         </li>
                       ))}
@@ -574,7 +575,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                           {formatDateBR(d.data_inicio)} – {formatDateBR(d.data_fim)}
                         </span>
                         <strong className="font-tabular text-text">
-                          {d.valor != null ? formatCurrencyBRL(d.valor) : "—"}
+                          {d.valor != null ? <Moeda value={d.valor} /> : "—"}
                         </strong>
                       </div>
                       <p className="text-text-soft">{d.destino}</p>
@@ -593,7 +594,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
               <p className="mb-3 text-sm text-text-soft">
                 {formatNumberBR(verbas.totalRegistros)} reembolsos, total{" "}
                 <strong className="font-tabular text-text">
-                  {formatCurrencyBRL(verbas.total)}
+                  <Moeda value={verbas.total} />
                 </strong>
               </p>
               <DataCard
@@ -608,7 +609,7 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
                         <span className="text-text-soft">({formatNumberBR(item.qtd)})</span>
                       </span>
                       <strong className="font-tabular text-text">
-                        {formatCurrencyBRL(item.valor)}
+                        <Moeda value={item.valor} />
                       </strong>
                     </li>
                   ))}

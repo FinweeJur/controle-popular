@@ -2,7 +2,8 @@ import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { getGruposEconomicos } from "@/lib/betim/grupos";
-import { formatCNPJ, formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatCNPJ, formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
@@ -86,7 +87,7 @@ export default async function GruposEconomicosPage({
             </DataCard>
             <DataCard title="Valor contratado pelos grupos">
               <p className="font-tabular text-2xl font-bold text-text">
-                {formatCurrencyBRL(valorTotal)}
+                <Moeda value={valorTotal} />
               </p>
               {percentualDoTotal !== null && (
                 <p className="mt-1 text-xs">
@@ -176,7 +177,7 @@ export default async function GruposEconomicosPage({
                     </h2>
                     <p className="font-tabular text-sm text-text-soft">
                       <strong className="font-semibold text-text">
-                        {formatCurrencyBRL(grupo.valorTotalContratos)}
+                        <Moeda value={grupo.valorTotalContratos} />
                       </strong>{" "}
                       em {formatNumberBR(grupo.qtdContratos)}{" "}
                       {grupo.qtdContratos === 1 ? "contrato" : "contratos"} ·{" "}

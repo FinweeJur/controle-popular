@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatNumberBR } from "@/lib/betim/format";
 import { ZONAS } from "@/lib/zonas";
 import {
   MUNICIPIOS_EXECUCAO_FGV,
@@ -143,17 +144,17 @@ export default function ExecucaoParaopebaPage() {
         {[
           {
             rotulo: "Acordo atualizado nos 26 municípios",
-            valor: formatCurrencyBRL(TOTAL_EXECUCAO_FGV.acordoAtual),
+            valor: (<Moeda value={TOTAL_EXECUCAO_FGV.acordoAtual} />),
             nota: "corrigido pelo IPCA desde 04/02/2021",
           },
           {
             rotulo: "Reservado em projetos autorizados",
-            valor: formatCurrencyBRL(TOTAL_EXECUCAO_FGV.empenhosAutorizados),
+            valor: (<Moeda value={TOTAL_EXECUCAO_FGV.empenhosAutorizados} />),
             nota: `${pct(percentual(TOTAL_EXECUCAO_FGV.empenhosAutorizados, TOTAL_EXECUCAO_FGV.acordoAtual))} do acordo atualizado`,
           },
           {
             rotulo: "Efetivamente pago",
-            valor: formatCurrencyBRL(executadoTotal),
+            valor: (<Moeda value={executadoTotal} />),
             nota: `${pct(percentual(executadoTotal, TOTAL_EXECUCAO_FGV.acordoAtual))} do acordo atualizado`,
           },
         ].map((c) => (
@@ -198,8 +199,8 @@ export default function ExecucaoParaopebaPage() {
                       </span>
                     </span>
                     <span className="font-tabular text-[.9em] text-text-soft">
-                      {formatCurrencyBRL(executado)} pagos de{" "}
-                      <span className="text-text">{formatCurrencyBRL(m.acordoAtual)}</span> ·{" "}
+                      <Moeda value={executado} /> pagos de{" "}
+                      <span className="text-text"><Moeda value={m.acordoAtual} /></span> ·{" "}
                       {pct(pctPago)}
                     </span>
                   </span>
@@ -213,25 +214,25 @@ export default function ExecucaoParaopebaPage() {
                     <div>
                       <dt className="text-text-soft">Acordo original</dt>
                       <dd className="font-tabular font-medium">
-                        {formatCurrencyBRL(m.acordoInicial)}
+                        <Moeda value={m.acordoInicial} />
                       </dd>
                     </div>
                     <div>
                       <dt className="text-text-soft">Corrigido (IPCA)</dt>
                       <dd className="font-tabular font-medium">
-                        {formatCurrencyBRL(m.acordoAtual)}
+                        <Moeda value={m.acordoAtual} />
                       </dd>
                     </div>
                     <div>
                       <dt className="text-text-soft">Reservado em projetos</dt>
                       <dd className="font-tabular font-medium">
-                        {formatCurrencyBRL(m.empenhosAutorizados)}
+                        <Moeda value={m.empenhosAutorizados} />
                       </dd>
                     </div>
                     <div>
                       <dt className="text-text-soft">Saldo a destinar</dt>
                       <dd className="font-tabular font-medium">
-                        {formatCurrencyBRL(m.saldoTeto)}
+                        <Moeda value={m.saldoTeto} />
                       </dd>
                     </div>
                   </dl>
@@ -259,10 +260,10 @@ export default function ExecucaoParaopebaPage() {
                           <tr key={`${p.projeto}-${i}`} className="border-b border-border/50">
                             <td className="py-1.5 pr-3">{p.projeto}</td>
                             <td className="py-1.5 pr-3 text-right font-tabular">
-                              {formatCurrencyBRL(p.empenhoAtualizado)}
+                              <Moeda value={p.empenhoAtualizado} />
                             </td>
                             <td className="py-1.5 pr-3 text-right font-tabular">
-                              {formatCurrencyBRL(p.executado)}
+                              <Moeda value={p.executado} />
                             </td>
                             <td className="py-1.5 text-right font-tabular">
                               {pct(p.nivelExecucao)}
@@ -337,10 +338,10 @@ export default function ExecucaoParaopebaPage() {
                 <tr key={e.projeto} className="border-b border-border/50">
                   <td className="py-2 pr-3">{e.projeto}</td>
                   <td className="py-2 pr-3 text-right font-tabular">
-                    {formatCurrencyBRL(e.empenhoAtualizado)}
+                    <Moeda value={e.empenhoAtualizado} />
                   </td>
                   <td className="py-2 pr-3 text-right font-tabular">
-                    {formatCurrencyBRL(e.executado)}
+                    <Moeda value={e.executado} />
                   </td>
                   <td className="py-2 text-right font-tabular">{pct(e.nivelExecucao)}</td>
                 </tr>

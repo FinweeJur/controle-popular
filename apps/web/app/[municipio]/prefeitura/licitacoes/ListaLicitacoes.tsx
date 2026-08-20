@@ -4,7 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/TabelaEstatica";
 import ObjetoExpansivel from "@/app/[municipio]/components/ObjetoExpansivel";
 import type { LicitacaoRow } from "@/lib/betim/licitacoes";
-import { formatCurrencyBRL, formatDateBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatDateBR } from "@/lib/betim/format";
 
 /**
  * Tabela de `/[municipio]/prefeitura/licitacoes` — mesmo mecanismo de
@@ -57,10 +58,10 @@ const COLUNAS: ColunaTabela<LinhaLicitacao>[] = [
     formatar: (l) => (
       <div className="flex flex-col items-end gap-0.5">
         <span className="font-semibold text-text">
-          {l.valor_estimado != null ? formatCurrencyBRL(l.valor_estimado) : "—"}
+          {l.valor_estimado != null ? <Moeda value={l.valor_estimado} /> : "—"}
         </span>
         {l.valor_homologado != null && (
-          <span className="text-xs text-text-soft">homologado: {formatCurrencyBRL(l.valor_homologado)}</span>
+          <span className="text-xs text-text-soft">homologado: <Moeda value={l.valor_homologado} /></span>
         )}
       </div>
     ),

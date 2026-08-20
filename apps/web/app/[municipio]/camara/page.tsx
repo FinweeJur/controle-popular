@@ -14,7 +14,8 @@ import {
 } from "@/lib/betim/vereadores";
 import { getTemasCamara } from "@/lib/betim/temas";
 import { getGastoGabineteDaCasa, getVerbasAnalytics } from "@/lib/betim/verbas";
-import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import {
   creditoDosVereadores,
@@ -213,11 +214,11 @@ export default async function CamaraPage({
                     </td>
                     {gabinetes.anos.map((a) => (
                       <td key={a} className="py-2 pr-3 text-right font-tabular text-text-soft">
-                        {l.porAno[a] != null ? formatCurrencyBRL(l.porAno[a]) : "—"}
+                        {l.porAno[a] != null ? <Moeda value={l.porAno[a]} /> : "—"}
                       </td>
                     ))}
                     <td className="py-2 text-right font-tabular font-semibold text-text">
-                      {formatCurrencyBRL(l.total)}
+                      <Moeda value={l.total} />
                     </td>
                   </tr>
                 ))}
@@ -234,7 +235,7 @@ export default async function CamaraPage({
           </h2>
           <p className="mb-4 text-sm text-text-soft">
             {formatNumberBR(verbas.totalRegistros)} reembolsos, total{" "}
-            <strong className="font-tabular text-text">{formatCurrencyBRL(verbas.total)}</strong>
+            <strong className="font-tabular text-text"><Moeda value={verbas.total} /></strong>
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <DataCard
@@ -249,7 +250,7 @@ export default async function CamaraPage({
                       <span className="text-text-soft">({formatNumberBR(item.qtd)})</span>
                     </span>
                     <strong className="font-tabular text-text">
-                      {formatCurrencyBRL(item.valor)}
+                      <Moeda value={item.valor} />
                     </strong>
                   </li>
                 ))}
@@ -267,7 +268,7 @@ export default async function CamaraPage({
                       <span className="text-text-soft">({formatNumberBR(item.qtd)})</span>
                     </span>
                     <strong className="font-tabular text-text">
-                      {formatCurrencyBRL(item.valor)}
+                      <Moeda value={item.valor} />
                     </strong>
                   </li>
                 ))}

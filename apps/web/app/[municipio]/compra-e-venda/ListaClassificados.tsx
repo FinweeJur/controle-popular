@@ -6,7 +6,7 @@ import {
   CLASSIFICADO_CATEGORIA_LABELS,
   type ClassificadoAnuncio,
 } from "@/lib/betim/classificados";
-import { formatCurrencyBRL } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
 import { useCaminhoDaCidade } from "@/lib/betim/basePath";
 import { useListaAoVivo } from "@/lib/betim/lista-ao-vivo";
 import { useSearchParams } from "next/navigation";
@@ -121,7 +121,7 @@ function ClassificadosConteudo({
                 </span>
                 {item.preco !== null ? (
                   <span className="font-tabular text-lg font-semibold text-primary">
-                    {formatCurrencyBRL(item.preco)}
+                    <Moeda value={item.preco} />
                   </span>
                 ) : null}
                 {item.descricao ? (

@@ -1,5 +1,6 @@
 import DataCard from "@/app/[municipio]/components/DataCard";
-import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatNumberBR } from "@/lib/betim/format";
 import { URL_REPASSE, repasseDoMunicipio } from "@/lib/brumadinho/repasse";
 
 /**
@@ -52,18 +53,18 @@ export default async function RepasseBrumadinho({ idMunicipio }: { idMunicipio: 
         source={{ label: "Pró-Brumadinho / Governo de MG", url: URL_REPASSE }}
       >
         <p className="font-tabular text-2xl font-bold text-text">
-          {formatCurrencyBRL(repasse.centavos / 100)}
+          <Moeda value={repasse.centavos / 100} />
         </p>
 
         <p className="mt-1 text-xs text-text-soft">
-          Rateio de {formatCurrencyBRL(rateio.centavos / 100)} em 3 parcelas (40% em
+          Rateio de <Moeda value={rateio.centavos / 100} /> em 3 parcelas (40% em
           agosto/2021, 30% até janeiro/2022, 30% até julho/2022) — Lei nº 23.830/2021,
           art. 5º e Anexo V.
         </p>
 
         {complementares.map((c) => (
           <p key={c.fonte} className="mt-1 text-xs text-text-soft">
-            Repasse complementar de {formatCurrencyBRL(c.centavos / 100)} em parcela
+            Repasse complementar de <Moeda value={c.centavos / 100} /> em parcela
             única — {c.baseLegal}.
           </p>
         ))}

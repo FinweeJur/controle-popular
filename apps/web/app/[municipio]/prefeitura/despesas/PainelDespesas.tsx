@@ -3,7 +3,8 @@
 import DataCard from "@/app/[municipio]/components/DataCard";
 import BarrasValor, { type BarraItem } from "@/app/[municipio]/components/charts/BarrasValor";
 import type { DespesasPorFuncaoData } from "@/lib/betim/despesas";
-import { formatCurrencyBRL } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatCurrencyBRL, formatCurrencyCompactaBR } from "@/lib/betim/format";
 import { useSearchParams } from "next/navigation";
 
 /**
@@ -120,11 +121,11 @@ function DespesasConteudo({
           <p className="mb-4 text-sm text-text-soft">
             Total por função:{" "}
             <strong className="font-tabular text-text">
-              {formatCurrencyBRL(dados.total)}
+              <Moeda value={dados.total} />
             </strong>{" "}
             — a barra de cada área é proporcional à maior.
           </p>
-          <BarrasValor itens={itens} formatValor={formatCurrencyBRL} />
+          <BarrasValor itens={itens} formatValor={formatCurrencyCompactaBR} />
           <p className="mt-4 text-xs text-text-soft">
             Mostra o que a Prefeitura de fato <strong>pagou</strong> em
             cada área ao longo do ano. Não inclui alguns repasses internos

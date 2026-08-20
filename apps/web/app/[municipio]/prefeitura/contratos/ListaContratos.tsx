@@ -4,7 +4,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/TabelaEstatica";
 import ObjetoExpansivel from "@/app/[municipio]/components/ObjetoExpansivel";
 import type { ContratoRow, MotivoAlertaInfo } from "@/lib/betim/contratos";
-import { formatCurrencyBRL, formatDateBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatDateBR } from "@/lib/betim/format";
 import { contratoEstaAtivo } from "@/lib/betim/statusContrato";
 
 /**
@@ -222,7 +223,7 @@ export default function ListaContratos({
       chave: "valor_global",
       rotulo: "Valor global",
       numerica: true,
-      formatar: (c) => (c.valor_global != null ? formatCurrencyBRL(Number(c.valor_global)) : "—"),
+      formatar: (c) => (c.valor_global != null ? <Moeda value={Number(c.valor_global)} /> : "—"),
     },
     {
       chave: "status",

@@ -2,7 +2,7 @@
 
 import Link from "@/lib/betim/link";
 import type { IniciativaParaopeba } from "@/lib/betim/paraopeba";
-import { formatCurrencyBRL } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
 import { useSearchParams } from "next/navigation";
 
 /**
@@ -146,7 +146,7 @@ function ProjetosConteudo({
             <div className="mt-2 flex flex-wrap items-center gap-4 text-sm">
               {p.valorTotal != null && (
                 <span className="font-tabular font-semibold text-text">
-                  {formatCurrencyBRL(p.valorTotal)}
+                  <Moeda value={p.valorTotal} />
                 </span>
               )}
               {p.percentualRealizado != null && (

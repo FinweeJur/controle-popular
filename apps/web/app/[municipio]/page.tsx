@@ -12,7 +12,8 @@ import {
   type Cidade,
   type IdMunicipio,
 } from "@/lib/db/queries/municipios";
-import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatNumberBR } from "@/lib/betim/format";
 import { fetchAnunciosAtivos } from "@/lib/betim/anuncios";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import {
@@ -376,7 +377,7 @@ export default async function HomePage({
                       <div className="mt-1.5 font-tabular text-[1.6em] leading-none font-semibold">
                         {row.valor_numerico !== null ? (
                           row.unidade === "R$" ? (
-                            formatCurrencyBRL(row.valor_numerico)
+                            <Moeda value={row.valor_numerico} />
                           ) : row.unidade === "pontos" ? (
                             // IDEB é uma nota com casa decimal significativa
                             // (4,9 != 5) -- arredondar pro inteiro mais
@@ -473,7 +474,7 @@ export default async function HomePage({
                 </div>
                 <div>
                   <p className="font-tabular text-2xl font-bold text-text">
-                    {formatCurrencyBRL(contratosSummary.sum)}
+                    <Moeda value={contratosSummary.sum} />
                   </p>
                   <p className="text-xs text-text-soft">valor global somado</p>
                 </div>

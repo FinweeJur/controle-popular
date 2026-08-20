@@ -3,7 +3,8 @@ import { Suspense } from "react";
 import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import { getObras } from "@/lib/betim/obras";
-import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import ListaObras, { ListaObrasCompleta } from "./ListaObras";
 
@@ -104,7 +105,7 @@ export default async function ObrasPage({ params }: ObrasPageProps) {
               ) : (
                 <>
                   <p className="font-tabular text-2xl font-bold text-text">
-                    {formatCurrencyBRL(valorTotal)}
+                    <Moeda value={valorTotal} />
                   </p>
                   {comValor < total && (
                     <p className="mt-1 text-xs text-text-soft">

@@ -3,7 +3,8 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import TabelaScroll from "@/app/[municipio]/components/TabelaScroll";
 import { getViagens, type GrupoViagens } from "@/lib/betim/viagens";
-import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
@@ -104,7 +105,7 @@ export default async function DiariasPage({
                 }}
               >
                 <p className="font-tabular text-2xl font-bold text-text">
-                  {formatCurrencyBRL(g.total)}
+                  <Moeda value={g.total} />
                 </p>
                 <p className="mt-1 text-sm text-text-soft">
                   {formatNumberBR(g.linhas.length)}{" "}
@@ -182,7 +183,7 @@ function Grupo({ grupo, varios }: { grupo: GrupoViagens; varios: boolean }) {
                   {l.valor == null ? (
                     <span className="text-text-soft">não publicado</span>
                   ) : (
-                    formatCurrencyBRL(l.valor)
+                    <Moeda value={l.valor} />
                   )}
                 </td>
               </tr>

@@ -1,4 +1,5 @@
-import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatNumberBR } from "@/lib/betim/format";
 import type { RankingVereador } from "@/lib/betim/vereadores";
 
 /**
@@ -180,11 +181,11 @@ export default function PainelAtuacao({
             {gastos.map((g, i) => (
               <li key={i} className="flex flex-wrap items-baseline gap-x-3 gap-y-1 px-3 py-2.5 text-xs">
                 <strong className="font-tabular text-sm text-text">
-                  {formatCurrencyBRL(g.valor)}
+                  <Moeda value={g.valor} />
                 </strong>
                 <span className="font-tabular text-text-soft">
                   {g.vezes_a_mediana.toFixed(1)}× a mediana do grupo (
-                  {formatCurrencyBRL(g.mediana_grupo)})
+                  <Moeda value={g.mediana_grupo} />)
                 </span>
                 <span className="w-full text-text-soft sm:w-auto">
                   {g.grupo_verba ?? "—"}

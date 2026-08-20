@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "@/lib/betim/link";
-import { formatCurrencyBRL } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
 import type { ObraRow } from "@/lib/betim/obras";
 import { useSearchParams } from "next/navigation";
 
@@ -105,7 +105,7 @@ function ObrasConteudo({
             <div className="mt-2 flex flex-wrap items-center gap-4 text-sm">
               {o.valor != null && o.valor > 0 && (
                 <span className="font-tabular font-semibold text-text">
-                  {formatCurrencyBRL(o.valor)}
+                  <Moeda value={o.valor} />
                 </span>
               )}
               {o.percentualExecucao != null && (

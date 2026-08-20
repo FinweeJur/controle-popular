@@ -3,7 +3,8 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getAgroData } from "@/lib/betim/agro";
-import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
@@ -70,7 +71,7 @@ export default async function AgroPage({
             source={{ label: "IBGE (PAM) / Base dos Dados", url: "https://sidra.ibge.gov.br/pesquisa/pam" }}
           >
             <p className="font-tabular text-2xl font-bold text-text">
-              {formatCurrencyBRL(data.valorTotalLavouras)}
+              <Moeda value={data.valorTotalLavouras} />
             </p>
             <p className="mt-1 text-xs">valor total da produção agrícola declarada</p>
           </DataCard>
@@ -104,7 +105,7 @@ export default async function AgroPage({
                     ) : null}
                   </span>
                   <strong className="font-tabular text-text">
-                    {formatCurrencyBRL(p.valorProducaoReais ?? 0)}
+                    <Moeda value={p.valorProducaoReais ?? 0} />
                   </strong>
                 </li>
               ))}
@@ -132,7 +133,7 @@ export default async function AgroPage({
                     ) : null}
                   </span>
                   <strong className="font-tabular text-text">
-                    {formatCurrencyBRL(p.valorProducaoReais ?? 0)}
+                    <Moeda value={p.valorProducaoReais ?? 0} />
                   </strong>
                 </li>
               ))}

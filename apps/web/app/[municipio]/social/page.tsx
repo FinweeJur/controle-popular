@@ -3,7 +3,8 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getSocialData } from "@/lib/betim/social";
-import { formatCurrencyBRL, formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
@@ -80,7 +81,7 @@ export default async function SocialPage({
                   pessoas/famílias beneficiadas em{" "}
                   {formatDateBR(p.ultimo.competencia).slice(3)} · total pago{" "}
                   <strong className="font-tabular text-text">
-                    {formatCurrencyBRL(p.ultimo.valorTotal ?? 0)}
+                    <Moeda value={p.ultimo.valorTotal ?? 0} />
                   </strong>
                 </p>
                 {p.variacao12m !== null && (

@@ -6,7 +6,8 @@ import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import { getParaopebaData } from "@/lib/betim/paraopeba";
-import { formatCurrencyBRL, formatDateBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatDateBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import ListaProjetos, { ListaProjetosCompleta } from "./ListaProjetos";
 
@@ -88,21 +89,21 @@ export default async function ParaopebaPage({ params }: ParaopebaPageProps) {
             source={{ label: "FGV — Projeto Paraopeba", url: "https://www18.fgv.br/projetorioparaopeba/" }}
           >
             <p className="font-tabular text-xl font-bold text-text">
-              {saldo.valorAcordoAtual != null ? formatCurrencyBRL(saldo.valorAcordoAtual) : "—"}
+              {saldo.valorAcordoAtual != null ? <Moeda value={saldo.valorAcordoAtual} /> : "—"}
             </p>
             <p className="text-xs text-text-soft">
               inicial:{" "}
-              {saldo.valorAcordoInicial != null ? formatCurrencyBRL(saldo.valorAcordoInicial) : "—"}
+              {saldo.valorAcordoInicial != null ? <Moeda value={saldo.valorAcordoInicial} /> : "—"}
             </p>
           </DataCard>
           <DataCard title="Empenhado autorizado">
             <p className="font-tabular text-xl font-bold text-text">
-              {saldo.empenhosAutorizados != null ? formatCurrencyBRL(saldo.empenhosAutorizados) : "—"}
+              {saldo.empenhosAutorizados != null ? <Moeda value={saldo.empenhosAutorizados} /> : "—"}
             </p>
           </DataCard>
           <DataCard title="Saldo disponível">
             <p className="font-tabular text-xl font-bold text-text">
-              {saldo.saldoTeto != null ? formatCurrencyBRL(saldo.saldoTeto) : "—"}
+              {saldo.saldoTeto != null ? <Moeda value={saldo.saldoTeto} /> : "—"}
             </p>
             <p className="text-xs text-text-soft">já reservados 25% de contingência</p>
           </DataCard>

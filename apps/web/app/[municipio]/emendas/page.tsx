@@ -4,6 +4,7 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import PaginaEmBreve from "@/app/[municipio]/components/PaginaEmBreve";
 import ListaEmendas from "./ListaEmendas";
 import { getConveniosFederais } from "@/lib/betim/convenios";
+import Moeda from "@/app/components/Moeda";
 import { formatCurrencyBRL, formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 
@@ -90,10 +91,10 @@ export default async function EmendasPage({
         </DataCard>
         <DataCard title="Valor total combinado">
           <p className="font-tabular text-2xl font-bold text-text">
-            {formatCurrencyBRL(valorTotal)}
+            <Moeda value={valorTotal} />
           </p>
           <p className="mt-1 text-xs">
-            {formatCurrencyBRL(valorLiberadoTotal)} já liberado (
+            <Moeda value={valorLiberadoTotal} /> já liberado (
             {valorTotal > 0
               ? ((valorLiberadoTotal / valorTotal) * 100).toFixed(0)
               : "0"}
@@ -162,7 +163,7 @@ export default async function EmendasPage({
                       />
                     </div>
                     <span className="shrink-0 text-right font-tabular text-xs whitespace-nowrap">
-                      {formatCurrencyBRL(o.valor)}
+<Moeda value={o.valor} />
                     </span>
                   </li>
                 );

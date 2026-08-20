@@ -8,8 +8,9 @@ import {
   capCobreCidade,
   getCapData,
 } from "@/lib/betim/capAutos";
+import Moeda from "@/app/components/Moeda";
 import {
-  formatCurrencyBRL,
+  formatCurrencyCompactaBR,
   formatDateBR,
   formatNumberBR,
 } from "@/lib/betim/format";
@@ -118,7 +119,7 @@ export default async function AutuacoesAmbientaisPage({
               <div className="flex flex-wrap gap-8">
                 <div>
                   <p className="font-tabular text-2xl font-bold text-text">
-                    {formatCurrencyBRL(resumo.total_multa)}
+                    <Moeda value={resumo.total_multa} />
                   </p>
                   <p className="mt-1 text-xs text-text-soft">
                     Soma das multas aplicadas
@@ -126,7 +127,7 @@ export default async function AutuacoesAmbientaisPage({
                 </div>
                 <div>
                   <p className="font-tabular text-2xl font-bold text-text">
-                    {formatCurrencyBRL(resumo.total_remanescente)}
+                    <Moeda value={resumo.total_remanescente} />
                   </p>
                   <p className="mt-1 text-xs text-text-soft">
                     Saldo remanescente em cobrança
@@ -155,7 +156,7 @@ export default async function AutuacoesAmbientaisPage({
                       <span className="text-sm text-text">{d.chave}</span>
                       <span className="font-tabular text-sm text-text-soft">
                         {formatNumberBR(d.autos)} auto(s)
-                        {d.valor > 0 && ` · ${formatCurrencyBRL(d.valor)} em aberto`}
+                        {d.valor > 0 && ` · ${formatCurrencyCompactaBR(d.valor)} em aberto`}
                       </span>
                     </li>
                   ))}
@@ -205,7 +206,7 @@ export default async function AutuacoesAmbientaisPage({
                       <span className="font-tabular text-sm text-text">{a.ano}</span>
                       <span className="font-tabular text-sm text-text-soft">
                         {formatNumberBR(a.autos)} auto(s)
-                        {a.multa > 0 && ` · ${formatCurrencyBRL(a.multa)}`}
+                        {a.multa > 0 && ` · ${formatCurrencyCompactaBR(a.multa)}`}
                       </span>
                     </li>
                   ))}
@@ -287,7 +288,7 @@ export default async function AutuacoesAmbientaisPage({
                     )}
                     <p className="mt-2 font-tabular text-sm text-text">
                       {a.valor_multa && a.valor_multa > 0
-                        ? formatCurrencyBRL(a.valor_multa)
+                        ? <Moeda value={a.valor_multa} />
                         : "Sem multa em dinheiro"}
                       <span className="ml-2 text-xs font-normal text-text-soft">
                         {[a.status_ai, a.status_processo, a.status_debito]

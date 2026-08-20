@@ -4,7 +4,8 @@ import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/
 import ObjetoExpansivel from "@/app/[municipio]/components/ObjetoExpansivel";
 import type { ConvenioFederal } from "@/lib/betim/convenios";
 import { CONVENIO_URL_BASE } from "@/lib/betim/convenios";
-import { formatCurrencyBRL, formatDateBR } from "@/lib/betim/format";
+import Moeda from "@/app/components/Moeda";
+import { formatDateBR } from "@/lib/betim/format";
 
 /**
  * Tabela de `/[municipio]/emendas`, servida por índice estático fatiado.
@@ -57,7 +58,7 @@ const COLUNAS: ColunaTabela<LinhaConvenio>[] = [
     chave: "valor",
     rotulo: "Valor",
     numerica: true,
-    formatar: (c) => formatCurrencyBRL(c.valor),
+    formatar: (c) => <Moeda value={c.valor} />,
   },
   {
     chave: "situacao",
