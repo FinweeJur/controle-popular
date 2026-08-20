@@ -108,10 +108,12 @@ export default function AuditoriaAjriPage() {
         .
       </p>
 
-      {/* ═══ DECLARAÇÃO — as quatro coisas que esta página tem que dizer ═══
-          Autoria alheia, finalidade não comercial, o que NÃO está aqui (o
-          arquivo), e por onde pedir correção. As três primeiras vêm dos Termos
-          de Uso do portal-fonte; a quarta é a regra da casa (`/termos`, §5). */}
+      {/* ═══ DECLARAÇÃO — as cinco coisas que esta página tem que dizer ═══
+          Autoria alheia, resumo como obra do portal, publicação sob os
+          termos de uso da fonte, finalidade não comercial, o que NÃO está
+          aqui (o arquivo), e por onde pedir correção. As quatro primeiras
+          vêm dos Termos de Uso do portal-fonte; a última é a regra da casa
+          (`/termos`, §5). */}
       <section
         aria-labelledby="declaracao-auditoria"
         className="mt-6 rounded-2xl border border-border bg-surface-2 p-5"
@@ -133,6 +135,20 @@ export default function AuditoriaAjriPage() {
             que sustenta cada veredito. Onde a AECOM não escreve veredito, o resumo diz{" "}
             <em className="text-text">não declarado</em>, e não inventa um. A palavra da auditora
             continua em toda ficha, transcrita sem edição.
+          </li>
+          <li>
+            <strong className="text-text">Publicação sob os termos de uso da fonte.</strong> Tanto o
+            catálogo quanto os resumos em linguagem comum — obra deste portal sobre os documentos —
+            são publicados nos{" "}
+            <a
+              href={FONTE_AUDITORIA_AJRI.termos}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline underline-offset-2 hover:text-accent"
+            >
+              termos de uso do portal da auditoria ↗
+            </a>
+            , que regem o uso do material de autoria da {AUTOR_AUDITORIA_AJRI}.
           </li>
           <li>
             <strong className="text-text">Finalidade acadêmica e informativa, não comercial.</strong>{" "}
