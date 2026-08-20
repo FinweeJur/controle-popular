@@ -54,8 +54,14 @@ encontrado, nunca ao conteúdo do PDF em si — este coletor não abre PDF):
     de apresentações e gravação de resultados, nov/2025 — um `/node/N` que
     NÃO espelha nenhuma seção nomeada do menu, por isso tem rótulo próprio
     em vez de cair em "institucional").
-  - `institucional` — qualquer outra página do BFS (home, `/sobre`,
-    `/escola`, etc.) — fallback explícito, nunca "sem seção".
+  - `processo` — `/processos` ou `/integra-dos-processos`: as duas rotas
+    da MESMA seção, e o maior acervo do site (262 dos 445 documentos).
+  - `material_didatico` — `/escola/eu-quero-saber/...`: os explicadores que
+    traduzem o laudo para quem não é técnico.
+  - `comunicacao` — `/materias`, `/videos`, `/podcasts`,
+    `/nucleo-de-comunicacao`.
+  - `institucional` — qualquer outra página do BFS (home, `/sobre`) —
+    fallback explícito, nunca "sem seção".
 
 ═══ (b) O SITE ESPELHA `/en/` E DUPLICA PELO MESMO CONTEÚDO EM DOIS CAMINHOS ═══
 
@@ -135,7 +141,11 @@ UA = "ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular)"
 TIMEOUT = 60
 ATRASO_ENTRE_REQUISICOES = 1.5
 
-TETO_PADRAO = 400
+# Medido em 20/08/2026: a varredura completa visita 555 páginas e só então
+# esvazia a fila. Um teto de 400 pararia com ~150 páginas pendentes e
+# devolveria acervo parcial COM aviso -- correto, mas inútil como padrão.
+# 800 dá folga para o site crescer sem virar varredura sem fim.
+TETO_PADRAO = 800
 
 SAIDA_PADRAO = Path(__file__).resolve().parents[2] / "dados" / "pericia-ufmg.json"
 
