@@ -10,6 +10,10 @@ import {
   type TemaClippingIj,
 } from "./clipping-ij";
 import { CLIPPING_PARAOPEBA, type NoticiaClipping } from "./clipping";
+import {
+  ESTUDOS_PERICIA_COM_TEMA,
+  type EstudoPericiaComTema,
+} from "./pericia-ufmg";
 
 /**
  * Relacionados de uma ficha da auditoria AJRI — o fim da ficha aponta para
@@ -43,6 +47,24 @@ import { CLIPPING_PARAOPEBA, type NoticiaClipping } from "./clipping";
  * slug estável para ligar — ligar por palavra seria a régua que não é régua.
  * A primeira fatia entrega o que tem chave estável; o resto fica para uma
  * fatia futura se a fonte ganhar tema estruturado.
+ *
+ * ═══ A PERÍCIA DA UFMG ENTROU — E SEM A JANELA DE 180 DIAS ═══
+ *
+ * `estudosPericia` é a segunda fatia: o acervo da perícia ganhou tema
+ * estruturado em `temas-acervo.ts` e passou a ligar. Mas ele liga POR TEMA
+ * SÓ, sem janela de tempo, e a diferença é deliberada.
+ *
+ * A janela existe para notícia: um clipping de seis meses antes ainda fala do
+ * momento da ficha; um de dois anos, não. Estudo de perícia não é notícia. Os
+ * 7 documentos de resultado saíram todos de uma vez (nov/2025) e são
+ * referência permanente sobre o eixo, não registro de um momento. Com janela,
+ * uma ficha de 2021 sobre qualidade da água não veria o estudo que mede
+ * exatamente aquilo — o que seria perder a ligação mais útil da página por
+ * fidelidade a uma régua feita para outro acervo.
+ *
+ * O teto de `MAX_ITENS_POR_ACERVO` continua valendo: são 21 documentos com
+ * tema no acervo inteiro (de 445), então o teto raramente morde, mas ele
+ * impede que um eixo denso vire lista.
  */
 
 /** Janela de tempo, em dias, para um item contar como relacionado. */
@@ -103,6 +125,9 @@ export interface RelacionadosFicha {
   noticiasAti: NoticiaAti[];
   noticiasIj: NoticiaInstituicaoJustica[];
   noticiasImprensa: NoticiaClipping[];
+  /** Estudos da perícia da UFMG sobre o mesmo eixo. Sem janela de tempo — ver
+   *  o cabeçalho deste arquivo. */
+  estudosPericia: EstudoPericiaComTema[];
 }
 
 export function relacionadosDaFicha(doc: DocumentoAuditoriaAjri): RelacionadosFicha {
@@ -152,5 +177,19 @@ export function relacionadosDaFicha(doc: DocumentoAuditoriaAjri): RelacionadosFi
     .sort((a, b) => sortNoticia(a, b, doc.data))
     .slice(0, MAX_ITENS_POR_ACERVO);
 
-  return { mesmosTemas, noticiasAti, noticiasIj, noticiasImprensa };
+  // Sem `diasEntre`: estudo de perícia é referência sobre o eixo, não notícia
+  // do momento da ficha. O desempate é estável (tema mais específico primeiro,
+  // depois o nome) para a lista não dançar entre builds.
+  const estudosPericia = ESTUDOS_PERICIA_COM_TEMA.filter((e) =>
+    e.temas.some((t) => doc.temas.includes(t)),
+  )
+    .slice()
+    .sort((a, b) => {
+      const especifico = a.temas.length - b.temas.length;
+      if (especifico !== 0) return especifico;
+      return a.nomeArquivo.localeCompare(b.nomeArquivo);
+    })
+    .slice(0, MAX_ITENS_POR_ACERVO);
+
+  return { mesmosTemas, noticiasAti, noticiasIj, noticiasImprensa, estudosPericia };
 }

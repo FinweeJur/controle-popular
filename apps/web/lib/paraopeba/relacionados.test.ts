@@ -88,3 +88,57 @@ describe("relacionados da ficha AJRI", () => {
     expect(r.noticiasImprensa).toHaveLength(3);
   });
 });
+/**
+ * A perícia da UFMG é a segunda fatia da ponte: entrou porque ganhou tema
+ * estruturado (`temas-acervo.ts`), e entrou SEM a janela de 180 dias. Estes
+ * testes travam a divergência de propósito — se alguém "uniformizar" a régua
+ * aplicando a janela aqui, a ligação mais útil da página some em silêncio.
+ */
+describe("estudos da perícia como relacionados", () => {
+  test("liga por tema mesmo com anos de distância — a janela não vale aqui", () => {
+    // Os 7 resultados saíram todos em nov/2025; as fichas cobrem 2019–2026.
+    // Uma ficha antiga sobre um eixo coberto pela perícia PRECISA ver o estudo.
+    const antiga = AUDITORIA_AJRI.filter((d) => d.data < "2021-01-01").find((d) =>
+      d.temas.some((t) =>
+        ["risco-saude-publica", "qualidade-da-agua", "solos-e-sedimentos"].includes(t),
+      ),
+    );
+    expect(antiga, "não há ficha anterior a 2021 nos eixos da perícia").toBeDefined();
+    expect(relacionadosDaFicha(antiga!).estudosPericia.length).toBeGreaterThan(0);
+  });
+
+  test("respeita o teto por acervo", () => {
+    for (const doc of AUDITORIA_AJRI) {
+      expect(relacionadosDaFicha(doc).estudosPericia.length).toBeLessThanOrEqual(
+        MAX_ITENS_POR_ACERVO,
+      );
+    }
+  });
+
+  test("todo estudo devolvido compartilha tema com a ficha — nunca por proximidade de texto", () => {
+    for (const doc of AUDITORIA_AJRI.slice(0, 120)) {
+      for (const estudo of relacionadosDaFicha(doc).estudosPericia) {
+        expect(estudo.temas.some((t) => doc.temas.includes(t))).toBe(true);
+      }
+    }
+  });
+
+  test("é estável entre chamadas — a lista não dança entre builds", () => {
+    const doc = AUDITORIA_AJRI.find(
+      (d) => relacionadosDaFicha(d).estudosPericia.length > 1,
+    );
+    expect(doc).toBeDefined();
+    expect(relacionadosDaFicha(doc!).estudosPericia.map((e) => e.url)).toEqual(
+      relacionadosDaFicha(doc!).estudosPericia.map((e) => e.url),
+    );
+  });
+
+  test("ficha de eixo que a perícia não cobre não inventa ligação", () => {
+    const semCobertura = AUDITORIA_AJRI.find(
+      (d) => d.temas.length > 0 && d.temas.every((t) => t === "cronograma"),
+    );
+    if (semCobertura) {
+      expect(relacionadosDaFicha(semCobertura).estudosPericia).toEqual([]);
+    }
+  });
+});
