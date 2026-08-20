@@ -81,7 +81,7 @@ se estende a "não confiar em corpo 200 que não tem a forma esperada".
 
 ═══ PRIVACIDADE: A COLUNA CNPJ/CPF TRAZ CPF EM CLARO ═══
 
-Medido: `917.409.836-53` (CPF de 11 dígitos, com máscara de CPF) aparece
+Medido: `000.000.000-00 (CPF real, redigido aqui)` (CPF de 11 dígitos, com máscara de CPF) aparece
 como valor da coluna "CNPJ/CPF" em pelo menos uma ficha da amostra. Este
 módulo NUNCA grava o valor bruto do campo — só a classificação
 (`documento_classificacao`), a raiz do CNPJ (8 primeiros dígitos, só
@@ -368,7 +368,7 @@ def _classificar_documento(bruto: str | None) -> dict:
     """Devolve `{"classificacao", "cnpj_raiz", "eh_pessoa_fisica"}`. O
     valor BRUTO nunca é devolvido nem gravado — regra de privacidade do
     projeto: a coluna "CNPJ/CPF" desta fonte traz CPF em claro (medido:
-    "917.409.836-53"). Diferente de `ambiental_licenciamento` (documento
+    "000.000.000-00 (CPF real, redigido aqui)"). Diferente de `ambiental_licenciamento` (documento
     sem máscara, comprimento ambíguo), aqui o valor já vem PONTUADO —
     11 dígitos com máscara de CPF ou 14 com máscara de CNPJ — mas o
     comprimento sozinho não é motivo de confiança: ainda passa pelo

@@ -62,6 +62,12 @@ export default function AmbientalLayout({
             >
               Barragens →
             </Link>
+            <Link
+              href="/estudos"
+              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-tertiary)]"
+            >
+              Estudos de impacto →
+            </Link>
           </div>
         </div>
       </header>
