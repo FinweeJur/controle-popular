@@ -93,20 +93,49 @@ _SAIDA = "dados/tacs-mineradoras.json"
 # Nomes COM acento e espaço, exatamente como o modelo declara — vão crus no
 # JSON do pedido. "Normalizar" qualquer um deles devolve esqueleto vazio.
 ENTIDADES: dict[str, dict] = {
+    # ⟲ CORRIGIDO 20/08/2026 contra o metadado do relatório. A primeira versão
+    # desta tabela pediu `Valor Transferido` dentro de `Contas x Projetos`, e o
+    # endpoint devolveu HTTP 200 com `odata.error`
+    # (`CouldNotResolveSemanticQueryDefinition ... invalid Column reference`).
+    # A coluna existe, mas em OUTRA entidade — o erro nasceu de contar as
+    # propriedades do relatório inteiro em vez de por entidade.
+    #
+    # O mapa abaixo sai do cruzamento `From[].Name -> From[].Entity` com os
+    # `SourceRef.Source` de cada `Select`, dentro de cada visual: é o único
+    # jeito de saber a que entidade uma propriedade pertence, porque o mesmo
+    # nome ("Ano", "Mineradora") aparece em quase todas.
+    #
+    # ⚠️ E ainda assim o metadado ENGANA: nomes como "Saldo Acumulado Ano Mais
+    # Recente", "Deposito 2022-2025" e "Percentual Execucao_Depositado" são
+    # `NativeReferenceName`/`displayName` de AGREGAÇÕES nos visuais, não colunas
+    # da entidade — pedi-los devolve HTTP 200 com `odata.error`. A lista final
+    # abaixo foi confirmada COLUNA A COLUNA contra o endpoint em 20/08/2026
+    # (uma consulta por nome, janela 5): o que resolve fica, o que não resolve
+    # sai. `Contas x Projetos` tem 5 colunas reais; `Soma
+    # Deposito_Execucao_Transferencia` tem 3 — o resto daquele visual é
+    # `Aggregation` calculada na hora, e agregação a gente refaz aqui a partir
+    # da coluna crua, em vez de fingir que existe campo para pedir.
     "projetos": {
         "entidade": "Execução_Projetos_Completa",
         "campos": [
             "Projeto", "Mineradora", "Órgão/Instituição", "Ano", "Status",
-            "Valor Previsto", "Valor Executado", "Breve relato da situação",
+            "Valor Previsto", "Valor Previsto Real", "Valor Executado",
+            "Valor Transferido", "Execução", "Breve relato da situação",
         ],
     },
     "empresas": {
         "entidade": "Empresas_valores Estado Consulta Geral",
-        "campos": ["Empresa", "Valor Estado", "Valor MP", "Valor Total correto"],
+        "campos": ["Empresa", "Ano", "Valor Estado", "Valor MP", "Valor Total correto"],
     },
     "contas": {
         "entidade": "Contas x Projetos",
-        "campos": ["DEPÓSITO", "VALOR DO PROJETO", "Valor Transferido"],
+        "campos": ["Mineradora", "Ano", "DEPÓSITO", "VALOR DO PROJETO", "ACUMULADO"],
+    },
+    # Quarta entidade, que faltava: é a que fecha a conta entre o que foi
+    # depositado, o que foi comprometido e o que foi executado.
+    "soma": {
+        "entidade": "Soma Deposito_Execucao_Transferencia",
+        "campos": ["Mineradora", "Ano", "Soma Deposito"],
     },
 }
 
