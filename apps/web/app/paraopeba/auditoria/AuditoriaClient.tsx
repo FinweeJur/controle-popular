@@ -21,6 +21,12 @@ import { ATI_LABEL } from "@/lib/paraopeba/clipping-ati";
 import { INSTITUICAO_JUSTICA_LABEL } from "@/lib/paraopeba/clipping-ij";
 import { relacionadosDaFicha } from "@/lib/paraopeba/relacionados";
 import { fichaLegivelAjri } from "@/lib/paraopeba/ficha-legivel-ajri";
+import {
+  RESUMO_AJRI,
+  VEREDITO_AJRI_LABEL,
+  type ResumoAjri,
+  type VereditoAjri,
+} from "@/lib/paraopeba/resumo-ajri";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 
 /**
@@ -51,6 +57,14 @@ import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
  * fonte oficial ao lado — mesmo tratamento que `clipping-ij.ts` dá aos
  * resumos do painel-fonte. Um aviso único no cabeçalho não acompanha a ficha
  * quando alguém copia, imprime ou compartilha um documento específico.
+ * ═══ O RESUMO VIVE NUM CHUNK PRÓPRIO, SÓ NO CLIENTE ═══
+ *
+ * Os 337 resumos (2,09 MiB de TS, 350 KiB em gzip) moram em
+ * `lib/paraopeba/resumo-ajri.ts`, em record chaveado por `codigo`, e são
+ * importados AQUI junto com o catálogo — nunca na página de servidor nem em
+ * prop de rota (a lição de `docs/_historico/HANDOFF-PAYLOAD-LEGISLACAO.md`).
+ * A ficha só monta o resumo quando `RESUMO_AJRI[doc.codigo]` existe: 337 de
+ * 467 — os 130 restantes nunca foram baixados na fase de conteúdo.
  */
 
 type Ordem = "recente" | "antigo" | "codigo";
@@ -68,13 +82,26 @@ function dentroDoIntervalo(data: string, de: string, ate: string): boolean {
   return true;
 }
 
-/** Busca no que a ficha mostra: descrição, código e rótulo dos temas. */
+/** Busca no que a ficha mostra: descrição, código, temas e resumo. */
 function casaBusca(termo: string, doc: DocumentoAuditoriaAjri): boolean {
   const t = termo.toLowerCase().trim();
   if (!t) return true;
   if (doc.descricao.toLowerCase().includes(t)) return true;
   if (doc.codigo.toLowerCase().includes(t)) return true;
-  return doc.temas.some((tema) => TEMA_AJRI_LABEL[tema].toLowerCase().includes(t));
+  if (doc.temas.some((tema) => TEMA_AJRI_LABEL[tema].toLowerCase().includes(t))) return true;
+  const resumo = RESUMO_AJRI[doc.codigo];
+  if (!resumo) return false;
+  if (resumo.objeto.toLowerCase().includes(t)) return true;
+  if (
+    resumo.resumo.some(
+      (b) => b.texto.toLowerCase().includes(t) || b.titulo.toLowerCase().includes(t)
+    )
+  ) {
+    return true;
+  }
+  if (resumo.constatacoes.some((c) => c.toLowerCase().includes(t))) return true;
+  if (resumo.pendencias.some((p) => p.toLowerCase().includes(t))) return true;
+  return false;
 }
 
 const FAIXA = {
@@ -427,6 +454,10 @@ function Ficha({ doc }: { doc: DocumentoAuditoriaAjri }) {
       {/* Crédito na ficha, não só no topo da página — ver o cabeçalho. */}
       <p className="mt-1 text-xs text-text-soft">De onde vem: {legivel.deOndeVem}</p>
 
+      {/* O resumo é obra nova deste portal; a ficha separa as duas vozes — ver
+          o cabeçalho do próprio componente ResumoDaFicha. */}
+      <ResumoDaFicha doc={doc} />
+
       <details className="mt-2.5">
         <summary className="cursor-pointer text-xs font-medium text-text-soft hover:text-text">
           Ler a descrição original da AECOM, transcrita sem edição
@@ -463,6 +494,173 @@ function Ficha({ doc }: { doc: DocumentoAuditoriaAjri }) {
     </li>
   );
 }
+
+/**
+ * ═══ O RESUMO É OBRA NOVA — E A FICHA DIZ ISSO NA PRÓPRIA FICHA ═══
+ *
+ * Os 337 resumos são paráfrase em linguagem comum escrita por este projeto,
+ * não texto da AECOM: a rubrica da fase de conteúdo
+ * (`X:\DevCoder\_ajri\RUBRICA.md`) mandou PREENCHER campos, não escrever
+ * texto livre, e cada `citacao` foi conferida literalmente contra o
+ * texto-fonte em 3 passadas de crítico + rede de segurança determinística.
+ * Por isso o veredito aparece com a citação que o sustenta — e o
+ * "não declarado" diz que a AECOM não escreveu veredito, sem que este portal
+ * invente um. A palavra da auditora continua logo abaixo, transcrita sem
+ * edição, junto do link para a fonte.
+ */
+
+/** Data de reunião pode vir só com mês ("AAAA-MM") quando o documento não dá o
+ * dia — formata como "agosto de 2021", nunca inventa o dia 1. */
+function formatDataReuniaoBR(data: string): string {
+  const soMes = /^(\d{4})-(\d{2})$/.exec(data);
+  if (soMes) {
+    const [, ano, mes] = soMes;
+    const nome = new Date(Number(ano), Number(mes) - 1, 1).toLocaleDateString("pt-BR", {
+      month: "long",
+    });
+    return `${nome} de ${ano}`;
+  }
+  return formatDateBR(data);
+}
+
+function ResumoDaFicha({ doc }: { doc: DocumentoAuditoriaAjri }) {
+  const resumo = RESUMO_AJRI[doc.codigo];
+  if (!resumo) return null;
+  return (
+    <div className="mt-3 space-y-3 border-t border-border/60 pt-3">
+      <p className="text-xs text-text-soft">
+        Resumo em linguagem comum, escrito por este portal a partir do documento — obra nova,
+        não texto da AECOM. A descrição original, transcrita sem edição, está abaixo.
+      </p>
+
+      <p className="text-[.97em] leading-snug text-text">{resumo.objeto}</p>
+
+      {resumo.resumo.map((b) => (
+        <div key={b.titulo}>
+          <h3 className="font-display text-sm font-semibold text-text">{b.titulo}</h3>
+          <p className="mt-0.5 text-sm leading-snug text-text-soft">{b.texto}</p>
+        </div>
+      ))}
+
+      <VereditoDaFicha resumo={resumo} />
+
+      {resumo.constatacoes.length > 0 && (
+        <div>
+          <h3 className="font-display text-sm font-semibold text-text">O que a auditoria verificou</h3>
+          <ul className="mt-1 list-inside list-disc space-y-1 text-sm text-text-soft">
+            {resumo.constatacoes.map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {resumo.pendencias.length > 0 && (
+        <div>
+          <h3 className="font-display text-sm font-semibold text-text">O que ficou em aberto</h3>
+          <ul className="mt-1 list-inside list-disc space-y-1 text-sm text-text-soft">
+            {resumo.pendencias.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {resumo.numeros.length > 0 && (
+        <div>
+          <h3 className="font-display text-sm font-semibold text-text">Os números</h3>
+          <ul className="mt-1 space-y-1 text-sm text-text-soft">
+            {resumo.numeros.map((n) => (
+              <li key={n.o_que}>
+                <strong className="font-medium text-text">{n.o_que}:</strong> {n.valor}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {resumo.quem_participou.length > 0 && (
+        <div>
+          <h3 className="font-display text-sm font-semibold text-text">Quem participou</h3>
+          <ul className="mt-1 space-y-1.5 text-sm text-text-soft">
+            {resumo.quem_participou.map((i, idx) => (
+              <li key={`${i.sigla}-${idx}`}>
+                <strong className="font-medium text-text">{i.sigla}</strong>
+                {" — "}
+                {i.nome}
+                {i.pessoas.length > 0 && (
+                  <span className="block pl-4 text-xs">
+                    {i.pessoas.map((p) => `${p.nome} (${p.cargo})`).join(" · ")}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {resumo.reunioes.length > 0 && (
+        <div>
+          <h3 className="font-display text-sm font-semibold text-text">Reuniões e inspeções</h3>
+          <ul className="mt-1 space-y-1 text-sm text-text-soft">
+            {resumo.reunioes.map((e) => (
+              <li key={`${e.data}-${e.assunto}`}>
+                <strong className="font-medium text-text">{formatDataReuniaoBR(e.data)}</strong> —{" "}
+                {e.assunto}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/**
+ * O veredito que a AECOM escreveu, com a citação que o sustenta. O rótulo é
+ * o sinal (a cor só reforça — a11y), e o não-declarado explica o que é:
+ * ausência de veredito na fonte, não veredito neutro deste portal.
+ */
+function VereditoDaFicha({ resumo }: { resumo: ResumoAjri }) {
+  const declarado = resumo.veredito !== "nao-declarado";
+  return (
+    <div className="rounded-xl border border-border bg-surface-2 p-3 text-sm">
+      <p className="text-text">
+        {declarado ? (
+          <>
+            O que a AECOM escreveu como veredito:{" "}
+            <span className={VEREDITO_COR[resumo.veredito]}>
+              {VEREDITO_AJRI_LABEL[resumo.veredito]}
+            </span>
+          </>
+        ) : (
+          <>
+            Veredito:{" "}
+            <span className={VEREDITO_COR["nao-declarado"]}>
+              {VEREDITO_AJRI_LABEL["nao-declarado"]}
+            </span>{" "}
+            <span className="text-text-soft">
+              — a AECOM não escreve veredito neste documento, e este portal não inventa um.
+            </span>
+          </>
+        )}
+      </p>
+      {resumo.citacao && (
+        <blockquote className="mt-2 border-l-2 border-primary pl-3 text-sm italic text-text-soft">
+          {resumo.citacao}
+        </blockquote>
+      )}
+    </div>
+  );
+}
+
+/** Cor de apoio ao rótulo do veredito — nunca o único sinal (a11y). */
+const VEREDITO_COR: Record<VereditoAjri, string> = {
+  satisfatorio: "font-semibold text-emerald-700",
+  "com-ressalvas": "font-semibold text-amber-700",
+  insatisfatorio: "font-semibold text-red-700",
+  "nao-declarado": "font-medium text-text-soft",
+};
 
 /**
  * ═══ O FIM DA FICHA APONTA PARA O QUE O PORTAL JÁ TEM ═══

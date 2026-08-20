@@ -38,6 +38,12 @@ import {
   MUNICIPIOS_EXECUCAO_FGV,
   STATUS_PROJETOS_FGV,
 } from "./execucao-fgv";
+import {
+  COBERTURA_RESUMO_AJRI,
+  RESUMO_AJRI,
+  VEREDITO_AJRI_LABEL,
+  type VereditoAjri,
+} from "./resumo-ajri";
 
 /**
  * `clipping.ts`, `linha-do-tempo.ts`, `atores.ts` e `auxilio.ts` foram
@@ -505,6 +511,83 @@ describe("auditoria-ajri.ts — catálogo da auditoria independente (467 documen
     // Piso também: um corte acidental na regeneração encolheria o acervo, e
     // "menos dado" não falha em nenhum outro teste de conteúdo.
     expect(bytes).toBeGreaterThan(250_000);
+  });
+});
+
+/**
+ * `resumo-ajri.ts` é GERADO por `scripts/gerar-resumo-ajri.mts` a partir dos
+ * 337 resumos auditados em `X:\DevCoder\_ajri\resumo\` (fora do repo, de
+ * propósito). O gerador revalida o schema do `validar.py` do acervo e a
+ * paridade com o catálogo antes de gravar; estes testes são a régua que
+ * sobra no repositório — falham se uma regeneração cortar, duplicar ou
+ * misturar resumo sem ninguém notar, e travam o teto de payload do chunk.
+ */
+describe("resumo-ajri.ts — resumos em linguagem comum (337 medidos)", () => {
+  test("tem exatamente 337 resumos, e a cobertura literal bate com o catálogo", () => {
+    expect(Object.keys(RESUMO_AJRI).length).toBe(337);
+    expect(Object.keys(RESUMO_AJRI).length).toBe(COBERTURA_RESUMO_AJRI.total);
+    expect(COBERTURA_RESUMO_AJRI.semResumo).toBe(AUDITORIA_AJRI.length - 337);
+  });
+
+  test("todo resumo existe no catálogo, e a chave é o código do documento", () => {
+    const codigos = new Set(AUDITORIA_AJRI.map((d) => d.codigo));
+    for (const [chave, r] of Object.entries(RESUMO_AJRI)) {
+      expect(codigos.has(chave), `resumo órfão: ${chave}`).toBe(true);
+      expect(r.codigo, `chave ≠ codigo interno em ${chave}`).toBe(chave);
+    }
+  });
+
+  test("veredito afirmado tem citação; não-declarado nunca tem", () => {
+    for (const r of Object.values(RESUMO_AJRI)) {
+      const declarado = r.veredito !== "nao-declarado";
+      expect(Boolean(r.citacao), `veredito ${r.veredito} de ${r.codigo} sem citação`).toBe(
+        declarado
+      );
+    }
+  });
+
+  test("todo resumo tem de 3 a 6 blocos, cada um com título e texto", () => {
+    for (const r of Object.values(RESUMO_AJRI)) {
+      expect(r.resumo.length, `${r.codigo} com ${r.resumo.length} blocos`).toBeGreaterThanOrEqual(3);
+      expect(r.resumo.length, `${r.codigo} com ${r.resumo.length} blocos`).toBeLessThanOrEqual(6);
+      for (const b of r.resumo) {
+        expect(b.titulo, `bloco sem título em ${r.codigo}`).toBeTruthy();
+        expect(b.texto, `bloco sem texto em ${r.codigo}`).toBeTruthy();
+      }
+    }
+  });
+
+  test("todo veredito usado tem rótulo, e todo rótulo tem documento", () => {
+    const usados = new Set(Object.values(RESUMO_AJRI).map((r) => r.veredito));
+    for (const v of usados) expect(VEREDITO_AJRI_LABEL[v], `rótulo órfão: ${v}`).toBeTruthy();
+    for (const v of Object.keys(VEREDITO_AJRI_LABEL) as VereditoAjri[]) {
+      expect(usados.has(v), `rótulo ${v} sem documento`).toBe(true);
+    }
+  });
+
+  test("periodo: `de` é sempre ISO; `ate` é ISO ou null (nunca o contrário)", () => {
+    for (const r of Object.values(RESUMO_AJRI)) {
+      if (r.periodo === null) continue;
+      expect(r.periodo.de, `${r.codigo}: de inválido`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      if (r.periodo.ate !== null) {
+        expect(r.periodo.ate, `${r.codigo}: ate inválido`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      }
+    }
+  });
+
+  /**
+   * Trava de payload, na mesma doutrina do teste do catálogo: o chunk é de
+   * CLIENTE (importado só em `AuditoriaClient.tsx`), então o teto não é o de
+   * 3 MiB do Worker nem o de 25 MiB de asset — mas um corte acidental na
+   * regeneração encolheria os resumos sem falhar em teste de conteúdo, e um
+   * descontrole dobraria o peso da página para todo mundo.
+   *
+   * Medido em 20/08/2026: 2.091.557 bytes serializados (350 KiB em gzip).
+   */
+  test("o texto dos resumos fica entre 1,5 e 3,5 MiB — nem cortado, nem dobrado", () => {
+    const bytes = new TextEncoder().encode(JSON.stringify(RESUMO_AJRI)).length;
+    expect(bytes).toBeLessThan(3_500_000);
+    expect(bytes).toBeGreaterThan(1_500_000);
   });
 });
 

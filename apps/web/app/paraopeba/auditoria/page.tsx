@@ -10,6 +10,7 @@ import {
   TIPO_DOCUMENTO_AJRI_LABEL,
   TIPO_DOCUMENTO_AJRI_ORDEM,
 } from "@/lib/paraopeba/auditoria-ajri";
+import { COBERTURA_RESUMO_AJRI } from "@/lib/paraopeba/resumo-ajri";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import AuditoriaClient from "./AuditoriaClient";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -66,7 +67,7 @@ const plural = (rotulo: string) =>
 
 export const metadata: Metadata = metadataEditavel("/paraopeba/auditoria", {
   title: "Auditoria socioambiental — Paraopeba | Controle Popular",
-  description: `Catálogo dos ${formatNumberBR(COBERTURA_AUDITORIA_AJRI.total)} documentos da auditoria socioambiental independente (${AUTOR_AUDITORIA_AJRI}) do Acordo Judicial de Reparação Integral de Brumadinho, de ${formatDateBR(PERIODO_AUDITORIA_AJRI.de)} a ${formatDateBR(PERIODO_AUDITORIA_AJRI.ate)} — filtrável por instrumento jurídico, tipo, tema e período, com link para a fonte oficial em cada registro.`,
+  description: `Catálogo dos ${formatNumberBR(COBERTURA_AUDITORIA_AJRI.total)} documentos da auditoria socioambiental independente (${AUTOR_AUDITORIA_AJRI}) do Acordo Judicial de Reparação Integral de Brumadinho, de ${formatDateBR(PERIODO_AUDITORIA_AJRI.de)} a ${formatDateBR(PERIODO_AUDITORIA_AJRI.ate)} — filtrável por instrumento jurídico, tipo, tema e período, com resumo em linguagem comum de ${formatNumberBR(COBERTURA_RESUMO_AJRI.total)} deles e link para a fonte oficial em cada registro.`,
 });
 
 export default function AuditoriaAjriPage() {
@@ -100,7 +101,11 @@ export default function AuditoriaAjriPage() {
         —, de <strong className="text-text">{formatDateBR(PERIODO_AUDITORIA_AJRI.de)}</strong> a{" "}
         <strong className="text-text">{formatDateBR(PERIODO_AUDITORIA_AJRI.ate)}</strong>,
         distribuídos em {formatNumberBR(INSTRUMENTO_AJRI_ORDEM.length)} instrumentos jurídicos e{" "}
-        {formatNumberBR(TEMA_AJRI_ORDEM.length)} temas.
+        {formatNumberBR(TEMA_AJRI_ORDEM.length)} temas —{" "}
+        <strong className="text-text">
+          {formatNumberBR(COBERTURA_RESUMO_AJRI.total)} com resumo em linguagem comum
+        </strong>
+        .
       </p>
 
       {/* ═══ DECLARAÇÃO — as quatro coisas que esta página tem que dizer ═══
@@ -118,7 +123,16 @@ export default function AuditoriaAjriPage() {
           <li>
             <strong className="text-text">A autoria é da {AUTOR_AUDITORIA_AJRI}</strong>, não do
             Controle Popular. Cada ficha traz o crédito e a descrição escrita pela própria auditora,
-            transcrita sem edição. O portal não resume, não reclassifica e não recalcula nada daqui.
+            transcrita sem edição. O portal não reclassifica e não recalcula nada daqui.
+          </li>
+          <li>
+            <strong className="text-text">O resumo é obra deste portal, e a ficha separa as duas
+            vozes.</strong>{" "}
+            {formatNumberBR(COBERTURA_RESUMO_AJRI.total)} fichas trazem resumo em linguagem comum —
+            paráfrase nova, escrita por este projeto a partir do documento, com a citação literal
+            que sustenta cada veredito. Onde a AECOM não escreve veredito, o resumo diz{" "}
+            <em className="text-text">não declarado</em>, e não inventa um. A palavra da auditora
+            continua em toda ficha, transcrita sem edição.
           </li>
           <li>
             <strong className="text-text">Finalidade acadêmica e informativa, não comercial.</strong>{" "}
