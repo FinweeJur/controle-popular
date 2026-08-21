@@ -100,6 +100,20 @@ Mapeamento feito, coleta bloqueada até o corte de LGPD (nomeação/exoneração
 
 Coleta diária de título/veículo/data/link — nunca o corpo (reportagem é obra de terceiro). Fontes: MAB + Agência Brasil + Google Notícias + **os feeds das 3 ATIs** (AEDAS, ADAI e Guaicuy — entregues em 16/08); **TJMG e MPMG ficaram fora: RSS respondem 404** (lacuna na tela). Armadilhas travadas: filtro exige termo de **lugar** (tema deixa entrar outro estado); Google devolve link do agregador (usar o nome do veículo do `<source>`); data em RFC 822; coleta vazia não sobrescreve. Regra de triagem **"Nota de pesar: \<nome\>"** (obituário público do Guaicuy) implementada na régua (`temNotaDePesar`, redigido na origem — nome de vítima é dado pessoal). 14 itens na janela de 45 dias (15/08). Roda antes do build; `gerado_em` sempre visível na tela. (medição em 16/08 — remeça antes de decidir com ele)
 
+## Dados abertos de MG (`dados.mg.gov.br`) — CKAN que funciona, com três armadilhas
+
+Medido em 21/08/2026. É CKAN de verdade (`/api/3/action/…`), 94 conjuntos, 18 órgãos, e a Controladoria-Geral publica **convênios de saída com atualização diária**. Coletores: `scripts/coletar-convenios-ambientais-mg.mts` (recorte dos 4 órgãos ambientais) e `scripts/coletar-tac-projetos.mts` (TACs, de captura de painel).
+
+1. **403 sem User-Agent de navegador.** `curl` puro leva 403; com UA de navegador, 200. Não é rate limit, é bloqueio de cliente não-navegador — e silencioso o bastante para parecer indisponibilidade.
+2. **O DataStore responde `success: true` com `total: 0`.** Está habilitado e vazio. Quem usar `datastore_search` conclui que o conjunto não tem dado. O caminho é baixar os CSV.GZ dos `resources`.
+3. **`ft_convenio_metaetapa.csv.gz` vem VAZIO — só cabeçalho, 78 bytes descompactados, HTTP 200.** Conferido duas vezes. É o arquivo que carregaria meta e etapa por convênio: sem ele dá para dizer quanto custou e quanto tempo levou, **não** se o convênio entregou o que prometeu. **Candidato direto a pedido de LAI à CGE-MG.**
+
+**A armadilha de nome de campo, que é a pior:** `dt_vigencia_inicial` **não é data de início**. Em 90.045 dos 90.254 registros ela é igual a `dt_vigencia_final` — as duas guardam a data-limite originalmente pactuada, e o prazo que vale hoje é `dt_vigencia_atual`. Quem ler "inicial" como começo calcula duração zero para 99,8% dos convênios, e zero passa por plausível. Prorrogação = `dt_vigencia_atual − dt_vigencia_final`.
+
+Número que saiu disso: **47,7% dos 870 convênios ambientais foram prorrogados, contra 27,6% dos 90.254 do Estado inteiro** — mesma base, mesmo cálculo. Mediana de 365 dias; a maior, 5.171.
+
+**Fora do CKAN:** o meio ambiente de MG quase não publica ali — nenhuma das 18 organizações é SEMAD/FEAM/IEF/IGAM (os convênios acima aparecem porque a CGE publica os de TODOS os órgãos). O ambiental vive nos sistemas do SISEMA. E a **SEDESE tem 1 conjunto só** (transferência de renda, 2020-21): tratar como dimensão, não como fonte.
+
 ## Microsistema de lacunas — cobertura declarada
 
 Acervo semente: 30 instrumentos + 15 precedentes (barragens/atingidos). Dos 7 temas propostos, só direitos humanos nasce pronto; indígena nasce com conteúdo mas sem a Convenção 169 como instrumento próprio e sem jurisprudência de demarcação; **serras, rios, flora/fauna, quilombola e povos tradicionais nasceriam vazios** — cada um exige norma central (Código Florestal arts. 4º I/IX-X, Lei 5.197/67, Lei 9.605/98, SNUC, Decreto 4.887/2003, Decreto 6.040/2007). A carga federal fechou a lacuna normativa (todas conferidas no banco: 5.197/67, 9.605/98, 9.985/00, 12.651/12, 11.428/06, 6.938/81, Conama 237). Contagem de vazios declarada, não maquiada: 29,1% das federais do MMA e 6,5% do CNDH com tema; 68% sem nenhuma tag; precedentes que faltam: Awas Tingni, Yakye Axa, Saramaka, Sarayaku, Tema 1.031 do STF, Súmula 613 do STJ, Convenção Americana como instrumento autônomo.

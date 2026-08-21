@@ -68,6 +68,12 @@ export default function AmbientalLayout({
             >
               TACs →
             </Link>
+            <Link
+              href="/convenios"
+              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-tertiary)]"
+            >
+              Convênios →
+            </Link>
           </div>
         </div>
       </header>

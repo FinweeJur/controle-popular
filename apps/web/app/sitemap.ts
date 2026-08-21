@@ -284,6 +284,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     item("/dados/comunicabr", { changeFrequency: "monthly", priority: 0.6 }),
     item("/ambiental", { changeFrequency: "weekly", priority: 0.7 }),
     item("/ambiental/tac", { changeFrequency: "monthly", priority: 0.6 }),
+    item("/ambiental/convenios", { changeFrequency: "monthly", priority: 0.6 }),
     item("/funcaosocialterra", { changeFrequency: "monthly", priority: 0.6 }),
     item("/funcaosocialterra/mapa", { changeFrequency: "monthly", priority: 0.6 }),
   ];
