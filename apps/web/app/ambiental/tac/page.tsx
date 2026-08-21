@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "@/lib/ambiental/link";
-import { formatCurrencyCompactaBR, formatNumberBR } from "@/lib/betim/format";
+import { formatCurrencyCompactaBR, formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import Moeda from "@/app/components/Moeda";
 import {
   COBERTURA_TAC_PROJETOS,
@@ -9,6 +9,7 @@ import {
   TAC_POR_PROJETO,
   TAC_POR_STATUS,
 } from "@/lib/ambiental/tac-projetos";
+import { COBERTURA_TAC_GTAC } from "@/lib/ambiental/tac-gtac";
 import { metadataEditavel } from "@/lib/edicoes";
 
 /**
@@ -43,6 +44,7 @@ export const metadata: Metadata = metadataEditavel("/ambiental/tac", {
 });
 
 const C = COBERTURA_TAC_PROJETOS;
+const G = COBERTURA_TAC_GTAC;
 
 /** "R$ 12,3 milhões" com o valor cheio no `title` — ver `Moeda.tsx`. */
 function Dinheiro({ valor }: { valor: number }) {
@@ -260,6 +262,81 @@ export default function TacAmbientalPage() {
               </div>
             </details>
           ))}
+        </div>
+      </section>
+
+      {/* ═══ O CADASTRO DE TACs (GTAC) ═══
+          Fonte diferente da de cima: o painel mostra o DINHEIRO de projetos de
+          alguns TACs; o GTAC é o cadastro de todos os termos assinados. Só
+          agregados aqui — o array tem 2.002 registros. */}
+      <section aria-labelledby="cadastro" className="mt-10">
+        <h2 id="cadastro" className="font-display text-xl font-bold tracking-tight text-text">
+          O cadastro de termos assinados
+        </h2>
+        <p className="mt-2 max-w-3xl text-[.95em] leading-relaxed text-text-soft">
+          Além do painel de dinheiro acima, o Estado mantém um cadastro dos TACs ambientais
+          assinados: <strong className="text-text">{formatNumberBR(G.tacs)} termos</strong> entre{" "}
+          {G.anoInicial} e {G.anoFinal}, em{" "}
+          <strong className="text-text">{formatNumberBR(G.municipios)} municípios</strong>,
+          distribuídos por {formatNumberBR(G.unidades)} unidades regionais.
+        </p>
+
+        <div className="mt-5 grid gap-4 sm:grid-cols-3">
+          <div className="rounded-xl border border-border bg-surface px-4 py-4">
+            <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+              Marcados como vigentes
+            </p>
+            <p className="mt-1 font-display text-2xl font-bold text-text">
+              {formatNumberBR(G.vigentes)}
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-surface px-4 py-4">
+            <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+              Vigentes cuja data de vencimento já passou
+            </p>
+            <p className="mt-1 font-display text-2xl font-bold text-text">
+              {formatNumberBR(G.vigentesComVencimentoPassado)}
+            </p>
+            <p className="mt-1 text-[.86em] text-text-soft">
+              de {formatNumberBR(G.vigentes)}, na coleta de {formatDateBR(G.coletadoEm)}
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-surface px-4 py-4">
+            <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+              Sem data de vencimento na base
+            </p>
+            <p className="mt-1 font-display text-2xl font-bold text-text">
+              {formatNumberBR(G.semDataDeVencimento)}
+            </p>
+            <p className="mt-1 text-[.86em] text-text-soft">
+              de {formatNumberBR(G.tacs)} — ficam fora de qualquer conta de prazo
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-5 rounded-xl border border-border bg-surface-2 p-5 text-[.92em] leading-relaxed text-text-soft">
+          <p>
+            <strong className="text-text">A base se contradiz em {formatNumberBR(G.vigentesComVencimentoPassado)}{" "}
+            casos.</strong>{" "}
+            São termos que o próprio sistema marca como <em>vigentes</em> e, ao mesmo tempo,
+            registra com data de vencimento anterior à data da coleta.{" "}
+            <strong className="text-text">Isso não prova descumprimento</strong> — pode ser aditivo
+            assinado e não lançado, ou situação não atualizada. Mas é a base discordando de si
+            mesma, e quem fiscaliza precisa saber onde olhar.
+          </p>
+          <p className="mt-3">
+            <strong className="text-text">Mais da metade não tem prazo declarado.</strong> Em{" "}
+            {formatNumberBR(G.semDataDeVencimento)} dos {formatNumberBR(G.tacs)} termos a base não
+            traz data de vencimento — sobre esses não dá para dizer nada a respeito de prazo, e
+            qualquer percentual que os incluísse no denominador estaria mentindo.
+          </p>
+          <p className="mt-3">
+            <strong className="text-text">Dado pessoal:</strong> a fonte publica o documento do
+            signatário, e em {formatNumberBR(G.cpfRedigidos)} registros ele é o{" "}
+            <strong className="text-text">CPF de uma pessoa física</strong>. Este portal não
+            republica CPF: eles são removidos na coleta. Os {formatNumberBR(G.comCnpj)} CNPJ ficam,
+            porque identificam a empresa que assinou.
+          </p>
         </div>
       </section>
 

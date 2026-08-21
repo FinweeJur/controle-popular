@@ -133,6 +133,20 @@ Mais: **4.884 dos 29.475 convênios não trazem ano válido** e ficam fora de qu
 
 **Descompactar:** usar `Expand-Archive` do PowerShell. O `tar` que responde neste ambiente é o do Git Bash, que **recusa zip e ainda assim sai com código 0** — falha silenciosa.
 
+## GTAC — o cadastro de TACs ambientais de MG (e o 403 que engana)
+
+Medido em 21/08/2026. Coletor: `scripts/coletar-tac-gtac-mg.mts`. API em `https://ecosistemas.meioambiente.mg.gov.br/gtac/api/tacs` — 2.002 termos, 392 municípios, 10 unidades regionais, assinaturas de 2002 a 2026.
+
+**O 403 engana.** A API responde `Forbidden - Consulte a DGTI sobre esta autorização`, o que sugere que é preciso autorização da diretoria de TI. **Não é**: é checagem de origem. Com `Referer: …/gtac/acessoExterno` e `Origin: …meioambiente.mg.gov.br`, a mesma rota devolve 200 com o cadastro inteiro. Ler a mensagem ao pé da letra faz desistir de dado que é público.
+
+**O `page` é ignorado.** `?page=1` e `?page=2` devolvem os mesmos 2.002 registros (conferido comparando conjuntos de `id`). Paginar em laço baixaria o mesmo conteúdo N vezes e concluiria "N × 2.002 TACs". O coletor confere isso e aborta se a API passar a paginar de verdade.
+
+Existe um `POST /resolveocaptcha` no mesmo domínio, mas ele guarda outro fluxo — a consulta não passa por captcha.
+
+**Dado pessoal — atenção.** A API expõe `cpf_usuario` e `nome_usuario` (o servidor que cadastrou) em **todos** os 2.002 registros, e `cpf_cnpj` com **CPF de pessoa física em 355 deles**. O coletor redige na origem: sai CPF, saem os campos do servidor, ficam os 1.647 CNPJ e o nome do empreendimento (que é parte de acordo público). A quantidade redigida é publicada, não escondida.
+
+Dois achados do cadastro: **72 dos 150 termos marcados "Vigente" têm data de vencimento anterior à coleta** — a base discordando de si mesma (pode ser aditivo não lançado; não é prova de descumprimento). E **1.119 dos 2.002 não têm data de vencimento**, o que os deixa fora de qualquer conta de prazo — incluí-los em denominador de percentual seria mentir. Há ainda 1 registro com vencimento anterior à assinatura (id 23895), com as datas trocadas na fonte.
+
 ## Microsistema de lacunas — cobertura declarada
 
 Acervo semente: 30 instrumentos + 15 precedentes (barragens/atingidos). Dos 7 temas propostos, só direitos humanos nasce pronto; indígena nasce com conteúdo mas sem a Convenção 169 como instrumento próprio e sem jurisprudência de demarcação; **serras, rios, flora/fauna, quilombola e povos tradicionais nasceriam vazios** — cada um exige norma central (Código Florestal arts. 4º I/IX-X, Lei 5.197/67, Lei 9.605/98, SNUC, Decreto 4.887/2003, Decreto 6.040/2007). A carga federal fechou a lacuna normativa (todas conferidas no banco: 5.197/67, 9.605/98, 9.985/00, 12.651/12, 11.428/06, 6.938/81, Conama 237). Contagem de vazios declarada, não maquiada: 29,1% das federais do MMA e 6,5% do CNDH com tema; 68% sem nenhuma tag; precedentes que faltam: Awas Tingni, Yakye Axa, Saramaka, Sarayaku, Tema 1.031 do STF, Súmula 613 do STJ, Convenção Americana como instrumento autônomo.
