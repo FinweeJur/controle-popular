@@ -202,3 +202,41 @@ Este documento absorve os seguintes arquivos, com a classificação de destino:
 - `RADAR-NOTICIAS-PARAOPEBA.md` → ENTREGUE (coletor, dado e tela no código)
 - `PLANO-INGESTAO-PARAOPEBA.md` → ENTREGUE/parcial (INST_DATA em `atores.ts`, auxílio em `auxilio.ts` e acervo UFMG em `documentos.ts` existem; camada de contagem por município do Solr não localizada no código)
 - `PLANO-ARQUIVO-DE-FONTES.md` → ENTREGUE/parcial (capturador com sha256/robots/CPF e tabela `arquivo_fontes` no código; upload R2 e selo na UI pendentes, declarados)
+## Painel Sisema (Power BI público) — um MENU que esconde 4 painéis e 87 abas
+
+Sondado em 2026-08-21. O link que circula como "Painel de Termos de Compromisso de Barragens de Mineração" (`app.powerbi.com/view?r=eyJrIjoiOThhNzgyMTQt…`, resourceKey `98a78214-4e97-4394-b382-48779609fba2`) **não tem dado nenhum**: é um menu com duas abas, `MENU PAINEL` e `EQUIPE`. Quem abre e não acha número conclui que o painel é vazio — e ele não é.
+
+**O dado está em 4 relatórios-filhos**, cujos links só aparecem dentro do JSON de `modelsAndExploration` do menu. Juntos são **87 abas**:
+
+| resourceKey | modelId | abas | o que traz |
+|---|---:|---:|---|
+| `6f0dee31-708d-42fd-ad2d-9a70e2f49dbc` | 5910103 | 30 | **AUTOS DE INFRAÇÃO**, **GESTÃO DE BARRAGENS**, **CLASSIFICAÇÃO DE BARRAGENS**, **BARRAGENS EM EMERGÊNCIA**, DENÚNCIAS, FISCALIZAÇÃO, HISTÓRICO DE FISCALIZAÇÕES, UCs estaduais, saneamento |
+| `e0057134-0e75-4e3d-9679-824d662eccc7` | 5910139 | 23 | CAR, ÁREAS A RECOMPOR, **TERMOS DE COMPROMISSO PRA**, ICMS ecológico, IDAM, recursos hídricos (PERH, IPA, ISG) |
+| `a279135b-2ca1-4f52-ab06-cb9842bbb3de` | 6768507 | 19 | PMI, METAS REGIONAIS, INTERVENÇÃO AMBIENTAL e LICENCIAMENTO, **por ano, de 2022 a 2026** |
+| `6db83fcd-58ec-4439-9e9e-dd83e9ba0b9a` | 5910129 | 15 | educação ambiental, Programa Água Doce, portfólio de projetos do Sisema, fauna doméstica |
+
+**Como se chega neles:** `GET https://wabi-brazil-south-b-primary-api.analysis.windows.net/public/reports/{resourceKey}/modelsAndExploration?preferReadOnlySession=true` com o header `X-PowerBI-ResourceKey: {resourceKey}`. Sem login. Os links dos filhos saem por regex de `app.powerbi.com/view?r=` sobre esse JSON, e o `r=` é base64 de `{"k": resourceKey, "t": tenant}`.
+
+⚠️ **A resposta vem gzipada e o `Content-Type` diz JSON.** Sem `curl --compressed`, o parse morre em `invalid start byte 0x8b` — que parece corrupção e é só compressão.
+
+⚠️ **`schema.entities` vem VAZIO neste endpoint** (o do menu devolveu `entidades: 0`). O modelo existe (`modelId` está lá); a lista de colunas se descobre por `conceptualschema`, entidade a entidade — mesma armadilha já registrada no painel de TACs, onde contar propriedade do relatório inteiro em vez de por entidade produziu `CouldNotResolveSemanticQueryDefinition`.
+
+**O decodificador do DSR já existe e serve aqui:** `etl/betim/etl/apis/_powerbi_dsr.py` (mesmo tenant `924f9847-242e-4a9a-8913-9e43649b9eaa` do painel de TACs).
+
+**Status:** menu e filhos mapeados; nenhuma aba extraída ainda. As de maior valor público, na ordem: AUTOS DE INFRAÇÃO, BARRAGENS EM EMERGÊNCIA, GESTÃO DE BARRAGENS, TERMOS DE COMPROMISSO PRA.
+
+## barragens.mpmg.mp.br — 45 barragens em descaracterização, uma por post
+
+Coletado em 2026-08-21 (`scripts/coletar-barragens-mpmg.mts`). O site do projeto "Desativando Bombas-relógio" (MPMG/Caoma) é um WordPress, e a leitura fácil seria tratá-lo como clipping. **Não é: cada um dos 45 posts é uma barragem**, com empreendedor, município, volume de rejeito, previsão de descaracterização e andamento.
+
+Via: `wp-json/wp/v2/posts?per_page=100` — REST aberta, 200, os 45 de uma vez (`x-wp-total: 45`). Raspar o HTML seria escolher a via frágil: o tema é Elementor e troca de classe a cada atualização.
+
+Cobertura medida: empreendedor 45/45 · previsão 45/45 · andamento 44/45 · volume 38/45 · município reconhecido 40/45.
+
+⚠️ **A coluna de volume mistura três grafias**: `812,9 mil m³`, `12,137 milhões de m³` e `1,800 milhão de m³` (singular, 4 registros). Ler as três como a mesma unidade erra por 1.000× — e 12 vira uma barragem *menor* que 813, o que passa por plausível. Na regex, `mil` casa o prefixo de `milhão`: o singular e o plural têm de vir ANTES na alternância.
+
+⚠️ **Município não se extrai por forma, se reconhece por dicionário.** O texto é `<Nome da barragem> <Município>/<UF>` e as duas partes são capitalizadas igual. Regex gulosa produziu "Baixo João Pereira Congonhas" e "MAC Nova Lima" — municípios que não existem e que passariam batido num join por nome. A extração confronta com os municípios reais do cadastro GTAC; 5 não casam (Igarapé, Araxá, Fortaleza de Minas, Nazareno) porque faltam no dicionário, não na fonte, e ficam com `municipio: null` e `municipioBruto` preservado.
+
+## MPMG — `transparencia.mpmg.mp.br/buscarTac` está morto (B7)
+
+Medido em 2026-08-21: `buscarTac?idTac=N` responde **HTTP 200 com 0 byte** para todo id testado (1, 50, 500), com e sem `Referer` do próprio domínio. Não é bloqueio nem 404: é resposta vazia com status de sucesso — a mesma família de armadilha do `ft_convenio_metaetapa`. O visualizador de TAC do MPMG **não serve mais documento por essa rota**, e o B7 (OCR dos TACs do MPMG) não tem por onde começar enquanto não houver rota de listagem. Nota histórica em `docs/_historico/betim-ambiental-pecma-research.md:49` já registrava que nunca se achou o endpoint de busca — agora nem o de visualização responde.

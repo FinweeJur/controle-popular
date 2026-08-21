@@ -21,20 +21,16 @@
 
 ## Em curso
 
-- **Perícia UFMG × Auditoria AECOM** — os 7 documentos do `node/582` estão todos
-  em `cruzado`; falta a síntese final. **4 marcados para revisão humana** e
-  entram na página com aviso.
-  · retomar: `python X:/DevCoder/_lote-ambiental/analise/estado.py` (ele imprime
-  o próximo comando)
-  · worktree: `.claude/worktrees/cp-ambiental-estudos` · plano:
-  `Projetos/Controle Popular — Perícia UFMG × Auditoria (Executable Plan).md`
-
 - **Expansão: acordos, contratos e convênios de MG** — Blocos 0, A e metade do
   B entregues. No ar: `/ambiental/tac` (execução financeira dos TACs + cadastro
   GTAC) e `/ambiental/convenios` (convênios ambientais estaduais + régua
   federal do Transferegov).
-  · **próximo:** B6 (coletor das decisões da CGE — a sondagem já está feita, ver
-  abaixo), B7 (TACs do MPMG, exige OCR), B8 (DataJud TJMG).
+  · **em curso agora:** B6 (decisões da CGE), B2-resíduo (conjuntos CKAN sem
+  coletor) e B1-resíduo (`_tacs_contas.json`), os três em paralelo no worktree
+  `.claude/worktrees/cp-acordos-mg`, particionados por arquivo.
+  · **depois:** B7 (TACs do MPMG, exige OCR), B8 (DataJud TJMG — a licença veda
+  redistribuir derivado, então o caminho é consulta ao vivo), B4 (PNCP: o
+  coletor existente escreve no banco; reescrever para arquivo o destrava).
   · **B4 (PNCP) saiu da fila: não é "custo baixo", é bloqueado.** O coletor
   existente (`etl/betim/etl/pncp/contratos.py`) grava via
   `get_supabase_client()`, e a Neon está em 402 — ver "Esperando data".
