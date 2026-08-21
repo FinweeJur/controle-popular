@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { AUDITORIA_AJRI } from "./auditoria-ajri";
 import { relacionadosDaFicha, MAX_ITENS_POR_ACERVO } from "./relacionados";
+import { ESTUDOS_PERICIA_COM_TEMA } from "./pericia-ufmg";
 
 /**
  * A régua de relacionado é fixa (mesmo tema, até 180 dias, no máximo 3 por
@@ -140,5 +141,64 @@ describe("estudos da perícia como relacionados", () => {
     if (semCobertura) {
       expect(relacionadosDaFicha(semCobertura).estudosPericia).toEqual([]);
     }
+  });
+});
+
+/**
+ * SIMETRIA DA LIGAÇÃO. A página da perícia manda para a auditoria por chip de
+ * eixo (`/paraopeba/auditoria?tema=X`), e a ficha da auditoria manda de volta
+ * para o estudo. Se um lado aponta para um eixo que o outro não tem, o
+ * visitante cai num filtro vazio — link morto que parece link bom.
+ */
+describe("simetria entre perícia e auditoria", () => {
+  test("todo eixo exibido num estudo da perícia existe no catálogo da auditoria", () => {
+    const temasDaAuditoria = new Set(AUDITORIA_AJRI.flatMap((d) => d.temas));
+    for (const estudo of ESTUDOS_PERICIA_COM_TEMA) {
+      for (const tema of estudo.temas) {
+        expect(
+          temasDaAuditoria.has(tema),
+          `${tema} aparece na perícia mas nenhuma ficha da auditoria o usa — o chip levaria a filtro vazio`,
+        ).toBe(true);
+      }
+    }
+  });
+
+  /**
+   * Não se exige que TODO estudo apareça em alguma ficha: o teto de 3 por
+   * acervo existe justamente para cortar, e dez documentos carregam
+   * `plano-de-reparacao`. O que se exige é que o corte deixe passar o que
+   * importa — nenhum eixo mudo, e o resultado ganhando da ata de reunião.
+   */
+  test("nenhum eixo da perícia fica mudo: todo tema chega a alguma ficha", () => {
+    const alcancados = new Set<string>();
+    for (const doc of AUDITORIA_AJRI) {
+      for (const e of relacionadosDaFicha(doc).estudosPericia) {
+        for (const t of e.temas) alcancados.add(t);
+      }
+    }
+    const temasDaPericia = new Set(ESTUDOS_PERICIA_COM_TEMA.flatMap((e) => e.temas));
+    for (const tema of temasDaPericia) {
+      expect(alcancados.has(tema), `nenhuma ficha alcança o eixo ${tema}`).toBe(true);
+    }
+  });
+
+  test("o resumo dos resultados vence a ata de reunião quando o teto corta", () => {
+    // Dez documentos dividem `plano-de-reparacao` e só 3 cabem. Se a ordem
+    // voltar a ser alfabética, as atas de 2020 tomam as três vagas e a peça
+    // mais útil do acervo some da ficha sem ninguém perceber.
+    // Precisa ser uma ficha cuja ÚNICA interseção com a perícia seja
+    // `plano-de-reparacao` — numa ficha de 14 temas as três vagas vão para
+    // resultados temáticos, e aí o resumo perder é o comportamento correto.
+    const temasDaPericia = new Set(ESTUDOS_PERICIA_COM_TEMA.flatMap((e) => e.temas));
+    const ficha = AUDITORIA_AJRI.find(
+      (d) =>
+        d.temas.includes("plano-de-reparacao") &&
+        d.temas.filter((t) => temasDaPericia.has(t)).length === 1,
+    );
+    expect(ficha, "não há ficha que toque a perícia só pelo plano de reparação").toBeDefined();
+    const nomes = relacionadosDaFicha(ficha!).estudosPericia.map((e) =>
+      decodeURIComponent(e.nomeArquivo),
+    );
+    expect(nomes.some((n) => n.includes("RESUMO_DAS_APRESENTA"))).toBe(true);
   });
 });

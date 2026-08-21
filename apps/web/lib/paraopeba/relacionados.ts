@@ -178,15 +178,30 @@ export function relacionadosDaFicha(doc: DocumentoAuditoriaAjri): RelacionadosFi
     .slice(0, MAX_ITENS_POR_ACERVO);
 
   // Sem `diasEntre`: estudo de perícia é referência sobre o eixo, não notícia
-  // do momento da ficha. O desempate é estável (tema mais específico primeiro,
-  // depois o nome) para a lista não dançar entre builds.
+  // do momento da ficha.
+  //
+  // A ORDEM É O QUE FAZ O TETO DE 3 VALER A PENA. Dez documentos carregam
+  // `plano-de-reparacao` (as 9 apresentações às partes mais o resumo dos
+  // resultados) e só 3 cabem. Ordenar por nome fazia vencerem as atas de
+  // reunião de 2020 — e o RESUMO DAS APRESENTAÇÕES DE RESULTADOS, que é a
+  // peça mais útil do acervo inteiro, nunca aparecia. Resultado ganha de ata.
+  const PESO_DA_SECAO: Record<string, number> = {
+    apresentacao_de_resultados: 0,
+    material_didatico: 1,
+    subprojeto: 2,
+    reuniao_com_partes: 3,
+  };
   const estudosPericia = ESTUDOS_PERICIA_COM_TEMA.filter((e) =>
     e.temas.some((t) => doc.temas.includes(t)),
   )
     .slice()
     .sort((a, b) => {
-      const especifico = a.temas.length - b.temas.length;
-      if (especifico !== 0) return especifico;
+      const peso = (PESO_DA_SECAO[a.secao] ?? 9) - (PESO_DA_SECAO[b.secao] ?? 9);
+      if (peso !== 0) return peso;
+      // Depois: mais recente primeiro (o `anoMes` é "AAAA-MM"; sem data vai
+      // para o fim). Empate final pelo nome, para a lista não dançar.
+      const data = (b.anoMes ?? "").localeCompare(a.anoMes ?? "");
+      if (data !== 0) return data;
       return a.nomeArquivo.localeCompare(b.nomeArquivo);
     })
     .slice(0, MAX_ITENS_POR_ACERVO);
