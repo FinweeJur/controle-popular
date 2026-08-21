@@ -29,14 +29,24 @@
   · worktree: `.claude/worktrees/cp-ambiental-estudos` · plano:
   `Projetos/Controle Popular — Perícia UFMG × Auditoria (Executable Plan).md`
 
-- **Expansão: acordos, contratos e convênios de MG** — Blocos 0 e A entregues
-  (`509df09`, `f51558e`, `d9297ab`). Próximo: Bloco B, começando pelo dinheiro — coletor CKAN
-  do `dados.mg.gov.br` (`convenios-saida`, que tem `Convênio - Meta Etapa`).
-  · atenção: `dados.mg.gov.br` devolve **403 sem User-Agent de navegador**, e o
-  DataStore do CKAN responde `success: true` com `total: 0` — baixar os CSV
-  direto.
-  · worktree: ainda não aberto · plano:
-  `C:\Users\teste\.claude\plans\joyful-gathering-willow.md`
+- **Expansão: acordos, contratos e convênios de MG** — Blocos 0, A e metade do
+  B entregues. No ar: `/ambiental/tac` (execução financeira dos TACs + cadastro
+  GTAC) e `/ambiental/convenios` (convênios ambientais estaduais + régua
+  federal do Transferegov).
+  · **próximo:** B4 (PNCP, contratos estaduais — já há base em
+  `etl/betim/etl/pncp/`), B6 (corpus de decisões da CGE, o proxy de LAI),
+  B7 (TACs do MPMG, exige OCR), B8 (DataJud TJMG).
+  · armadilhas de cada fonte já registradas em `docs/FONTES.md` — ler antes de
+  tocar em qualquer uma delas.
+  · worktree: nenhum (feito no checkout principal) · plano em
+  `.claude/plans/joyful-gathering-willow.md` (fora do repo, no perfil)
+
+- **Pedido de LAI a escrever: o arquivo de metas que vem vazio.** O conjunto
+  `convenios-saida` do `dados.mg.gov.br` publica `ft_convenio_metaetapa`, e ele
+  vem com **só o cabeçalho** (78 bytes, HTTP 200, conferido duas vezes). Sem ele
+  não dá para dizer se um convênio entregou o que prometeu — só quanto custou e
+  quanto demorou. Destinatário: CGE-MG. O argumento é o mesmo do pedido ao
+  TCE-MG que já está redigido e sem protocolo.
 
 ## Esperando data
 
