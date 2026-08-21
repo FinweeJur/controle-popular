@@ -7,6 +7,7 @@ import {
   SECAO_PERICIA_LABEL,
 } from "@/lib/paraopeba/pericia-ufmg";
 import { TEMA_AJRI_LABEL } from "@/lib/paraopeba/auditoria-ajri";
+import { SINTESE_PERICIA } from "@/lib/paraopeba/sintese-pericia";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import AcervoPericia from "./AcervoPericia";
@@ -130,6 +131,56 @@ export default function PericiaPage() {
             .
           </li>
         </ul>
+      </section>
+
+      {/* ═══ A SÍNTESE — o que a perícia apurou, cruzado com a auditoria ═══
+          Gerada a partir dos 7 resumos já auditados (Haiku resume, Sonnet
+          audita até 2 rodadas, Opus sintetiza) e checada de novo contra o
+          material de origem antes de publicar — mesmo padrão do resto do
+          acervo: número sem lastro não entra, e o que ficou com ressalva
+          carrega o aviso junto, não escondido em rodapé. */}
+      <section aria-labelledby="sintese" className="mt-10">
+        <h2 id="sintese" className="font-display text-xl font-semibold text-text">
+          {SINTESE_PERICIA.titulo}
+        </h2>
+        <div className="mt-3 space-y-3 text-[.95em] leading-relaxed text-text-soft">
+          {SINTESE_PERICIA.concluiu.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+
+        <details className="mt-5 rounded-xl border border-border bg-surface-2 p-4">
+          <summary className="cursor-pointer font-medium text-text">
+            Onde a perícia e a auditoria dizem a mesma coisa ({SINTESE_PERICIA.mesmaCoisa.length})
+          </summary>
+          <ul className="mt-3 space-y-3 text-[.9em] text-text-soft">
+            {SINTESE_PERICIA.mesmaCoisa.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </details>
+
+        <details className="mt-3 rounded-xl border border-border bg-surface-2 p-4">
+          <summary className="cursor-pointer font-medium text-text">Onde divergem</summary>
+          <div className="mt-3 space-y-3 text-[.9em] text-text-soft">
+            {SINTESE_PERICIA.divergem.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+        </details>
+
+        <details className="mt-3 rounded-xl border border-border bg-surface-2 p-4">
+          <summary className="cursor-pointer font-medium text-text">
+            O que nenhuma das duas responde ({SINTESE_PERICIA.naoRespondem.length})
+          </summary>
+          <ul className="mt-3 space-y-3 text-[.9em] text-text-soft">
+            {SINTESE_PERICIA.naoRespondem.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </details>
+
+        <p className="mt-4 text-[.82em] text-text-soft italic">{SINTESE_PERICIA.observacaoDeMetodo}</p>
       </section>
 
       {/* ═══ OS 7 QUE IMPORTAM ═══ */}
