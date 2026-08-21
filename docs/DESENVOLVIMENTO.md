@@ -137,7 +137,7 @@ Baseline em 15/08/2026: **601 testes no vitest + 121 no globo**. Serve como refe
 
 Documentos absorvidos por esta página (movidos para `docs/_historico/`):
 
-- `docs/SESSOES-CONCORRENTES.md` — **absorvido** (multi-sessão, worktrees, commit)
-- `docs/ANTES-DO-PUSH.md` — **absorvido** (checklist, hook, dado pessoal)
-- `docs/USAR-COM-IA.md` — **absorvido** (padrões de uso de IA)
+- `docs/_historico/SESSOES-CONCORRENTES.md` — **absorvido** (multi-sessão, worktrees, commit)
+- `docs/_historico/ANTES-DO-PUSH.md` — **absorvido** (checklist, hook, dado pessoal)
+- `docs/_historico/USAR-COM-IA.md` — **absorvido** (padrões de uso de IA)
 - `docs/_historico/worktrees.md` — já histórico; lições (território, migração, build) preservadas na memória do repositório

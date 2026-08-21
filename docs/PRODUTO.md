@@ -38,7 +38,7 @@ Rotas principais por frente, confirmadas no código:
 | Tabelas estáticas | rotas pesadas de cada zona | Acima de ~2 mil linhas, serve-se do índice fatiado ou da tabela estática — nunca o corpus inteiro como prop de componente de cliente (teto de 25 MiB por asset) |
 | Alertas de contrato | páginas de contratos de Cidades | Duas categorias, nunca uma: violação legal (com dispositivo citado) e heurística (sinal de investigação, com a ressalva de que não é prova) |
 | Radar de notícias Paraopeba | `/paraopeba/clipping` | Itens dos últimos dias por fonte, com as fontes que vieram vazias declaradas |
-| Busca e assistente | `/busca`, `/assistente` | Índice de texto sobre todo o acervo; o assistente navega para ~380 destinos e não afirma nada — nenhum número é escrito por modelo de linguagem |
+| Busca e assistente | `/busca`, `/assistente` | Índice de texto sobre todo o acervo; o assistente navega para 241 destinos e não afirma nada — nenhum número é escrito por modelo de linguagem |
 | Painel de edição | `/[municipio]/admin` | Edição de conteúdo sem tocar em código |
 | Globo 3D | `/funcaosocialterra/mapa` | Dezenas de camadas geográficas, incluindo as oito do rompimento real de Brumadinho (SEMAD) e os documentos do processo por município |
 
@@ -70,7 +70,7 @@ Todas as medições abaixo foram refeitas em 16/08 contra o código (medição e
 Este documento absorve e substitui os seguintes arquivos-fonte:
 
 - `README.md` — absorvido (visão geral, operação, dados).
-- `docs/APRESENTACAO.md` — absorvido (o que é, frentes, método, garantias, lacunas).
-- `docs/REVISAO-UX-E-ONBOARDING.md` — **ATIVO** (pendências abertas; segue em `docs/planos/`).
-- `docs/PLANO-INTEGRACAO-BRUMADINHO.md` — **ENTREGUE** (camadas no globo, triagem e documentos do processo implementados; vai para `docs/_historico/`).
+- `docs/_historico/APRESENTACAO.md` — absorvido (o que é, frentes, método, garantias, lacunas).
+- `docs/planos/REVISAO-UX-E-ONBOARDING.md` — **ATIVO** (pendências abertas; segue em `docs/planos/`).
+- `docs/_historico/PLANO-INTEGRACAO-BRUMADINHO.md` — **ENTREGUE** (camadas no globo, triagem e documentos do processo implementados; vai para `docs/_historico/`).
 - `docs/LEIA-PRIMEIRO.md` — lido como contexto; não reescrito aqui.

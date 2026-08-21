@@ -52,5 +52,5 @@ O commit e o push seguem as regras de DESENVOLVIMENTO.md e AGENTS.md: mensagem p
 
 ## Origem
 
-- `docs/PAINEL-EDICAO-COMO-USAR.md` — absorvido (procedimento de uso do painel).
-- `docs/PLANO-PAINEL-EDICAO.md` — **ENTREGUE**: painel no ar em dev (rota `/painel`, API `/api/painel/*`, token próprio), uso absorvido acima. Fases 2 e 3 (apagar página, renomear URL) seguem pendentes como dívida registrada. Mover para `docs/_historico/`.
+- `docs/_historico/PAINEL-EDICAO-COMO-USAR.md` — absorvido (procedimento de uso do painel).
+- `docs/_historico/PLANO-PAINEL-EDICAO.md` — **ENTREGUE**: painel no ar em dev (rota `/painel`, API `/api/painel/*`, token próprio), uso absorvido acima. Fases 2 e 3 (apagar página, renomear URL) seguem pendentes como dívida registrada. Mover para `docs/_historico/`.

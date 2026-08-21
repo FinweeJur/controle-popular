@@ -6,7 +6,7 @@ Falha quando um pedido de LAI passou do prazo e ninguem trocou a situacao.
 
 Ate 13/08/2026 nao existia, no repositorio, nenhum lugar que gravasse
 protocolo de pedido de LAI -- nem tabela, nem arquivo, nem convencao (ver
-docs/LAI-PORTAIS.md). O pedido ao INCRA foi enviado em 29/07/2026 pelo
+docs/_historico/LAI-PORTAIS.md). O pedido ao INCRA foi enviado em 29/07/2026 pelo
 Fala.BR e o numero de protocolo nunca foi anotado; o prazo de 20 dias vence
 em 18/08/2026 e, sem o protocolo, recurso e acompanhamento ficam muito mais
 dificeis. `docs/LAI-PROTOCOLOS.json` e o registro; este script e a diferenca

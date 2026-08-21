@@ -75,7 +75,7 @@ pausa e sem ressalva nenhuma.
 O coletor novo da mesma fonte (`scripts/coletar-execucao-fgv.mts`) já nasceu
 do outro jeito: identifica o projeto, pausa 1,5 s, é manual e nunca entra em
 CI — o raciocínio está no cabeçalho dele e em
-`docs/FONTES-PRO-BRUMADINHO-E-FGV.md` §3.3.
+`docs/_historico/FONTES-PRO-BRUMADINHO-E-FGV.md` §3.3.
 
 **Dívida:** alinhar o ETL antigo (User-Agent honesto + pausa) ou aposentá-lo
 em favor do coletor novo, já que a tela do Paraopeba agora cobre a bacia
@@ -147,7 +147,7 @@ repositório os dois pares já estão travados por teste.
 
 Houve um commit no `desktop-fefpddp` com análise de CAR/INCRA. **Ler, e ver o
 que dá para integrar a mais.** Esta máquina não tem o dado bruto do CAR/INCRA
-(ver `docs/build-em-outro-pc.md`), então a análise pode ter chegado a coisa
+(ver `docs/_historico/build-em-outro-pc.md`), então a análise pode ter chegado a coisa
 que aqui não se reproduz.
 
 ### 6. Revisão geral de completude — páginas com buraco
@@ -190,7 +190,7 @@ verificado** (existe e ninguém confirmou).
 
 ### 7. Revisão crítica de onboarding, acessibilidade e uso por leigo — ✅ feito em 14/08
 
-Ver `docs/REVISAO-UX-E-ONBOARDING.md`. Resumo: as quatro pistas abaixo já
+Ver `docs/planos/REVISAO-UX-E-ONBOARDING.md`. Resumo: as quatro pistas abaixo já
 tinham sido corrigidas antes desta rodada (a última, "não achou uma
 frente", só em 14/08 — era cabeçalho de zona cravado à mão, corrigido na
 raiz). A revisão dedicada achou mais: `<main>` faltando em 7 páginas
@@ -221,7 +221,7 @@ caber nisso — e `prefers-reduced-motion` não é opcional.
 
 ### 8. Design system — o que aproveitar de Kokonut UI, Motion.dev, Bklit UI — ✅ feito em 14/08
 
-Ver a seção "Design system" de `docs/REVISAO-UX-E-ONBOARDING.md`.
+Ver a seção "Design system" de `docs/planos/REVISAO-UX-E-ONBOARDING.md`.
 Veredito curto: nenhum dos três entra como dependência — os três trazem
 Motion (ex-Framer Motion) por baixo, custo real de bundle contra um
 sistema de microanimação que hoje é 100% CSS e custa zero. O que vale
@@ -268,7 +268,7 @@ prestador/fornecedor, tema, data, tipo de alerta, emendas parlamentares.
   é o ponto de partida para filtro + ordenação com o mesmo visual.
 - **a11y desde o dia 1:** filtro e ordenação são controles interativos —
   teclado, focus visível e `prefers-reduced-motion` valem aqui (ver
-  `docs/REVISAO-UX-E-ONBOARDING.md`). Não usar cor como único sinal de "ativo".
+  `docs/planos/REVISAO-UX-E-ONBOARDING.md`). Não usar cor como único sinal de "ativo".
 - **Teste primeiro:** o mecanismo de ordenar (comparador) e filtrar (predicado)
   é lógica pura — cabe num módulo testável no molde de `lib/assistente/compor.ts`,
   antes de ser colado no componente.
@@ -390,15 +390,15 @@ texto do produto) e ela entra na grade.
 
 | Plano | Arquivo |
 |---|---|
-| Painel de edição do site (CMS) | `docs/PLANO-PAINEL-EDICAO.md` |
-| Arquivar cópia dos documentos citados | `docs/PLANO-ARQUIVO-DE-FONTES.md` |
-| Integração Brumadinho (8 camadas + acervo) | `docs/PLANO-INTEGRACAO-BRUMADINHO.md` |
-| Ingestão do painel Paraopeba e do acervo UFMG | `docs/PLANO-INGESTAO-PARAOPEBA.md` |
-| CNJ/DataJud, JUMA, MMA/CONAMA, CNDH | `docs/FONTES-CNJ-JUMA.md` |
-| Bases de clima e risco | `docs/PLANO-BASES-CLIMA-E-RISCO.md` — **1ª fatia feita em 15/08** (AdaptaBrasil + INMET): `docs/CLIMA-ADAPTABRASIL-E-INMET.md`. Falta aplicar a `0074` e rodar a carga num Postgres local, e o BATER inteiro. |
-| Direitos em Movimento | `docs/PLANO-DIREITOS-EM-MOVIMENTO.md` |
-| Facilitador de ação cidadã | `docs/PLANO-ACAO-CIDADA.md` |
-| Biblioteca das ATIs do Paraopeba | `docs/FONTES-BIBLIOTECA-ATI.md` — **feito em 15/08** (597 publicações da AEDAS e do Guaicuy, em `/paraopeba/biblioteca`). Sobrou o item 9 abaixo. |
+| Painel de edição do site (CMS) | `docs/_historico/PLANO-PAINEL-EDICAO.md` |
+| Arquivar cópia dos documentos citados | `docs/_historico/PLANO-ARQUIVO-DE-FONTES.md` |
+| Integração Brumadinho (8 camadas + acervo) | `docs/_historico/PLANO-INTEGRACAO-BRUMADINHO.md` |
+| Ingestão do painel Paraopeba e do acervo UFMG | `docs/_historico/PLANO-INGESTAO-PARAOPEBA.md` |
+| CNJ/DataJud, JUMA, MMA/CONAMA, CNDH | `docs/_historico/FONTES-CNJ-JUMA.md` |
+| Bases de clima e risco | `docs/planos/PLANO-BASES-CLIMA-E-RISCO.md` — **1ª fatia feita em 15/08** (AdaptaBrasil + INMET): `docs/_historico/CLIMA-ADAPTABRASIL-E-INMET.md`. Falta aplicar a `0074` e rodar a carga num Postgres local, e o BATER inteiro. |
+| Direitos em Movimento | `docs/_historico/PLANO-DIREITOS-EM-MOVIMENTO.md` |
+| Facilitador de ação cidadã | `docs/_historico/PLANO-ACAO-CIDADA.md` |
+| Biblioteca das ATIs do Paraopeba | `docs/_historico/FONTES-BIBLIOTECA-ATI.md` — **feito em 15/08** (597 publicações da AEDAS e do Guaicuy, em `/paraopeba/biblioteca`). Sobrou o item 9 abaixo. |
 | Chatbot IA sobre o acervo | `docs/planos/PLANO-CHATBOT-IA.md` — **adaptação do plano do Leilões**, pedida em 16/08; decisões do dono em aberto (região do cérebro, acervo, ressalva) — item 13 acima |
 
 ---
@@ -417,7 +417,7 @@ texto do produto) e ela entra na grade.
 > esquema, como o plano previa. O histórico abaixo fica para registrar a
 > justificativa.
 
-`docs/FONTES-BIBLIOTECA-ATI.md` §6 mede e justifica a escolha: a lacuna do radar
+`docs/_historico/FONTES-BIBLIOTECA-ATI.md` §6 mede e justifica a escolha: a lacuna do radar
 não é de tempo (o clipping vai até 30/07/2026 e a janela de 45 dias do radar
 começa em 01/07), é de **voz** — as três fontes atuais são imprensa, e falta
 quem é parte no processo, que publica a decisão primeiro. Os três feeds de

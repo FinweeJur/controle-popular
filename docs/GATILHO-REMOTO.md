@@ -25,7 +25,7 @@
   disciplina usada nas sessões manuais de hoje.
 - **Não força deploy.** Chama `rotina-local.mts --so-build`, sem
   `--forcar-deploy`: a trava de contagem de páginas e a de tamanho de asset
-  (`docs/HANDOFF-PAYLOAD-LEGISLACAO.md`) continuam valendo. Se alguma
+  (`docs/_historico/HANDOFF-PAYLOAD-LEGISLACAO.md`) continuam valendo. Se alguma
   acender, o gatilho reporta e para — forçar é decisão de quem está vendo o
   motivo.
 - **Não roda o ETL de novo.** É para código/conteúdo novo, não para
@@ -38,7 +38,7 @@
    alcança a porta mesmo sabendo o número.
 2. **Token próprio** (`GATILHO_TOKEN`), comparado por hash com
    `crypto.timingSafeEqual` — nunca `PAINEL_TOKEN` nem `ADMIN_TOKEN` (cada um
-   já tem seu raio de vazamento, ver `docs/PAINEL-EDICAO-COMO-USAR.md`).
+   já tem seu raio de vazamento, ver `docs/_historico/PAINEL-EDICAO-COMO-USAR.md`).
 3. **Telegram só aceita o `TELEGRAM_CHAT_ID` já configurado** — mensagem de
    qualquer outro chat é registrada em log e ignorada. Achar o bot no
    Telegram não basta.
@@ -156,7 +156,7 @@ acima para redirecionar: `... >> logs\checar-novidades.log 2>&1`.
 
 ## Painel de edição, acessível do tailnet inteiro
 
-`docs/PAINEL-EDICAO-COMO-USAR.md` já sobe o painel com
+`docs/_historico/PAINEL-EDICAO-COMO-USAR.md` já sobe o painel com
 `PAINEL_LOCAL=1 npx next dev --port 3028` — e **o `next dev` desta versão já
 escuta em `0.0.0.0` por padrão** (`npx next dev --help` confirma). Ou seja:
 **nenhuma mudança de código é necessária.** Rodando o mesmo comando de sempre

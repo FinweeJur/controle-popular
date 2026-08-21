@@ -97,8 +97,8 @@ A lista completa (incluindo a regra editorial: o número vem do dado, o modelo s
 
 Este arquivo absorveu, em 16/08/2026:
 
-- `docs/rotina-local.md` — **ENTREGUE** (→ `docs/_historico/`): rotina local, travas e armadilhas viraram as seções acima.
-- `docs/build-em-outro-pc.md` — **ENTREGUE** (→ `docs/_historico/`): virou a seção "Build em outro PC".
-- `docs/HANDOFF-PAYLOAD-LEGISLACAO.md` — **ENTREGUE** (→ `docs/_historico/`): virou a seção "Payload de legislação".
-- `docs/RADAR-NOTICIAS-PARAOPEBA.md` — **ENTREGUE** (→ `docs/_historico/`): só o procedimento de coleta; a parte de fontes pertence ao doc de fontes.
-- `docs/deploy-github-pages.md` — **ATIVO** (→ `docs/planos/`): alvo alternativo com decisões em aberto; não é procedimento diário.
+- `docs/_historico/rotina-local.md` — **ENTREGUE** (→ `docs/_historico/`): rotina local, travas e armadilhas viraram as seções acima.
+- `docs/_historico/build-em-outro-pc.md` — **ENTREGUE** (→ `docs/_historico/`): virou a seção "Build em outro PC".
+- `docs/_historico/HANDOFF-PAYLOAD-LEGISLACAO.md` — **ENTREGUE** (→ `docs/_historico/`): virou a seção "Payload de legislação".
+- `docs/_historico/RADAR-NOTICIAS-PARAOPEBA.md` — **ENTREGUE** (→ `docs/_historico/`): só o procedimento de coleta; a parte de fontes pertence ao doc de fontes.
+- `docs/planos/deploy-github-pages.md` — **ATIVO** (→ `docs/planos/`): alvo alternativo com decisões em aberto; não é procedimento diário.

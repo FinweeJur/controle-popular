@@ -70,7 +70,7 @@ O assistente é uma escada de quatro degraus, e cada degrau só é acionado quan
 | 2 — composição determinística | "compare Betim e Contagem" — regra escrita sobre respostas do degrau 1 | **no ar** (16/08) |
 | 3 — LLM | pergunta livre que os anteriores não casaram; chave opcional | não iniciado |
 
-- **Catálogo** (`lib/assistente/catalogo.ts`): ~380 destinos (6 cidades × 33 sufixos + 44 rotas gerais) como **constante de módulo** importada pelo cliente, nunca como prop — cabe em ~2,4 KiB gzip (medição em 16/08 — remeça antes de decidir com ele). Foi criado porque o índice da `/busca` é a fonte errada para isso: ~5,0 MB não comprimidos (docs 3.614 KB + vocabulário 1.188 KB + formas 264 KB; o vocabulário cresceu 11.561 → 31.375 lexemas) — pagar o acervo inteiro por uma tabela de rotas não.
+- **Catálogo** (`lib/assistente/catalogo.ts`): 241 destinos (6 cidades × 33 sufixos + 43 rotas gerais, contados de `CIDADES`/`SUFIXOS_DE_CIDADE`/`ROTAS_GERAIS` em 20/08) como **constante de módulo** importada pelo cliente, nunca como prop — cabe em ~2,4 KiB gzip (medição em 16/08 — remeça antes de decidir com ele). Foi criado porque o índice da `/busca` é a fonte errada para isso: ~5,0 MB não comprimidos (docs 3.614 KB + vocabulário 1.188 KB + formas 264 KB; o vocabulário cresceu 11.561 → 31.375 lexemas) — pagar o acervo inteiro por uma tabela de rotas não.
 - **Navegação** (`navegacao.ts`): `interpretar()` devolve candidatos (máx. 8), nunca um palpite único; vazio é resposta. Sem rede, sem banco.
 - **Documentos** (`documentos.ts`): o degrau 1 carrega o índice sob demanda, **uma vez por sessão**, e interrompe de verdade (`AbortController`) — é o único passo caro, e por isso o botão de interromper existe.
 - **Degrau 3**: mora em rota `*.din.ts`, chave em secret do Worker (nunca no cliente); o prompt recebe só o trecho do índice recuperado, nunca o acervo. Sem `LLM_API_KEY` o portal continua inteiro com os degraus 0–2.
@@ -106,6 +106,6 @@ O assistente é uma escada de quatro degraus, e cada degrau só é acionado quan
 
 Documentos absorvidos por esta página:
 
-- `docs/PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` — **ATIVO** → `docs/planos/`; o degrau 2 do assistente é o próximo trabalho
-- `docs/HANDOFF-PAYLOAD-LEGISLACAO.md` — absorvido (seção "Regra de payload") → `docs/_historico/`
-- `docs/RADAR-NOTICIAS-PARAOPEBA.md` — absorvido (seção "Radar Paraopeba") → `docs/_historico/`
+- `docs/planos/PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` — **ATIVO** → `docs/planos/`; o degrau 2 do assistente é o próximo trabalho
+- `docs/_historico/HANDOFF-PAYLOAD-LEGISLACAO.md` — absorvido (seção "Regra de payload") → `docs/_historico/`
+- `docs/_historico/RADAR-NOTICIAS-PARAOPEBA.md` — absorvido (seção "Radar Paraopeba") → `docs/_historico/`
