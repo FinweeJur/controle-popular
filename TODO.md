@@ -41,7 +41,8 @@
   · armadilhas de cada fonte já registradas em `docs/FONTES.md` — ler antes de
   tocar em qualquer uma delas.
   · worktree: nenhum (feito no checkout principal) · plano em
-  `.claude/plans/joyful-gathering-willow.md` (fora do repo, no perfil)
+  `docs/planos/PLANO-EXPANSAO-ACORDOS-MG.md` (movido para dentro do repo em
+  21/08, depois de a auditoria achar 12 afirmacoes vencidas nele)
 
 - **B6 — decisões de recurso da CGE: sondado, coletor por escrever.** 753
   decisões (2020–2026), sem login e sem captcha, mas é WebForms: cada POST exige
