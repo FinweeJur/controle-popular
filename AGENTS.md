@@ -166,7 +166,7 @@ Se a fonte não tem, a resposta é "não sei, e aqui está o que existe perto".
 ## Como verificar
 
 ```bash
-cd apps/web && npm test        # vitest (lib/**/*.test.ts) + node:test (globo 3D)
+npm test                       # da raiz: vitest (lib/**/*.test.ts) + node:test (globo 3D)
 npx tsc --noEmit
 ```
 

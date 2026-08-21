@@ -82,7 +82,7 @@ deste repo confere isso antes de publicar.
 
 Uma tarefa agendada roda `ETL → build → trava de contagem → deploy` uma vez
 por dia, e **recusa publicar** se a contagem cair. Ver
-[`docs/rotina-local.md`](docs/rotina-local.md).
+[`docs/_historico/rotina-local.md`](docs/_historico/rotina-local.md).
 
 ```bash
 npx tsx scripts/rotina-local.mts --listar
@@ -209,10 +209,10 @@ conferir seria pedir confiança, que é o contrário do que o portal defende.
 
 | | |
 |---|---|
-| [`docs/rotina-local.md`](docs/rotina-local.md) | Como o site se atualiza sozinho |
-| [`docs/worktrees.md`](docs/worktrees.md) | Trabalhar em frentes paralelas sem colidir |
-| [`docs/build-em-outro-pc.md`](docs/build-em-outro-pc.md) | Montar a máquina de build do zero |
-| [`docs/USAR-COM-IA.md`](docs/USAR-COM-IA.md) | Navegar o repo com um assistente no terminal |
+| [`docs/_historico/rotina-local.md`](docs/_historico/rotina-local.md) | Como o site se atualiza sozinho |
+| [`docs/_historico/worktrees.md`](docs/_historico/worktrees.md) | Trabalhar em frentes paralelas sem colidir |
+| [`docs/_historico/build-em-outro-pc.md`](docs/_historico/build-em-outro-pc.md) | Montar a máquina de build do zero |
+| [`docs/_historico/USAR-COM-IA.md`](docs/_historico/USAR-COM-IA.md) | Navegar o repo com um assistente no terminal |
 
 ---
 

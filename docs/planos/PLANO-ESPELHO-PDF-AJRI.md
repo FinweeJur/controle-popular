@@ -34,19 +34,19 @@ Não é opinião de arquitetura, é o teto medido:
 
 | Limite | Valor | Fonte |
 |---|---:|---|
-| Asset do Cloudflare Workers | **25 MiB por arquivo** | `docs/PLANO-ARQUIVO-DE-FONTES.md` |
+| Asset do Cloudflare Workers | **25 MiB por arquivo** | `docs/_historico/PLANO-ARQUIVO-DE-FONTES.md` |
 | Contagem de assets (plano gratuito) | 20.000 arquivos | idem |
 | Bundle do Worker | 3 MiB gzip | limite estrutural do projeto |
 | Objeto no R2 | 5 TB, sem limite prático de contagem | idem |
 
 E o teto de asset **já cobrou a conta hoje**: em 15/08/2026 o deploy parou com
 `Asset too large … 35.5 MiB` no cache da rota `/ambiental/legislacao`
-(`docs/HANDOFF-PAYLOAD-LEGISLACAO.md`). O site no ar é o das 10:08 daquele dia.
+(`docs/_historico/HANDOFF-PAYLOAD-LEGISLACAO.md`). O site no ar é o das 10:08 daquele dia.
 Somar centenas de PDFs ao mesmo bundle, no mesmo dia em que ele estourou por
 outro motivo, é escolher travar o deploy de novo.
 
 **Destino: R2.** Este plano é um caso particular de
-`docs/PLANO-ARQUIVO-DE-FONTES.md` e segue as regras que ele já fixou:
+`docs/_historico/PLANO-ARQUIVO-DE-FONTES.md` e segue as regras que ele já fixou:
 
 1. o link original **nunca sai da tela** — a cópia aparece ao lado, rotulada
    como cópia, com a data da captura;
@@ -106,7 +106,7 @@ ela:
   mudado no conteúdo. O manifesto tem que registrar isso, senão a próxima
   varredura de integridade acusa alteração em 467 documentos de uma vez.
 
-**Alternativa que continua na mesa** (§7 de `docs/FONTES-AUDITORIA-AJRI.md`):
+**Alternativa que continua na mesa** (§7 de `docs/_historico/FONTES-AUDITORIA-AJRI.md`):
 espelho em acesso restrito, liberado sob solicitação para pesquisadores. Custa
 uma decisão de produto, não de engenharia, e é a única variante que zera os
 dois riscos ao mesmo tempo. Fica registrada; não é o que foi decidido.
@@ -114,7 +114,7 @@ dois riscos ao mesmo tempo. Fica registrada; não é o que foi decidido.
 ## 3. Cadência de sincronização
 
 Os números vêm do comportamento medido do portal e do que
-`docs/FONTES-AUDITORIA-AJRI.md` (§6) registra:
+`docs/_historico/FONTES-AUDITORIA-AJRI.md` (§6) registra:
 
 | Parâmetro | Valor | Por quê |
 |---|---:|---|
@@ -216,7 +216,7 @@ O passo 3 antes do 4 tem uma segunda razão, além da óbvia: os relatórios de
 auditoria socioambiental citam **pessoas atingidas** — nome de proprietário
 rural, de pescador, de morador de comunidade. Um resumo de modelo sobre texto
 não varrido reescreve esses nomes num campo novo, indexável, num portal
-público. `docs/ANTES-DO-PUSH.md` é o procedimento; ele não vira opcional
+público. `docs/_historico/ANTES-DO-PUSH.md` é o procedimento; ele não vira opcional
 porque o texto veio de PDF.
 
 ## 6.3. Um resumo de modelo, publicado, é **o portal afirmando algo**
@@ -236,9 +236,9 @@ O projeto já resolveu isso duas vezes, e as duas soluções valem aqui:
   autoridade final; ele propõe, e um mecanismo determinístico resolve.
 - **Eixo Congresso** — *"o LLM não decide o rótulo; a rubrica é
   determinística"* (`apps/web/lib/congresso/rubrica/rubrica.json`, versionada;
-  `docs/APRESENTACAO.md` §"a rubrica é um arquivo"). O rótulo é reprodutível e
+  `docs/_historico/APRESENTACAO.md` §"a rubrica é um arquivo"). O rótulo é reprodutível e
   auditável, e o leitor pode partir dele e chegar ao texto.
-- E `docs/PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` já fixou o limite para o
+- E `docs/planos/PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` já fixou o limite para o
   assistente: o modelo **"nunca produz número"**, e "toda resposta cita a
   página e linka".
 

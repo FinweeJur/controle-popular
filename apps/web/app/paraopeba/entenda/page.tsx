@@ -28,7 +28,7 @@ export const metadata: Metadata = metadataEditavel("/paraopeba/entenda", {
 
 export default function EntendaPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
         <a href="/paraopeba" className="hover:text-primary">
           Paraopeba
@@ -98,6 +98,6 @@ export default function EntendaPage() {
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <FooterGlobal />
       </footer>
-    </div>
+    </main>
   );
 }

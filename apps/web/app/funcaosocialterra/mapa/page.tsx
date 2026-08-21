@@ -58,7 +58,7 @@ export default function MapaTerrasPage() {
           global de "Ouvir esta página" ler aqui -- o conteúdo é o globo
           3D dentro do iframe, opaco a extração de texto do documento pai.
           O botão detecta o <main> vazio e some sozinho nesta página. */}
-      <main className="flex flex-1 flex-col">
+      <main id="conteudo-principal" tabIndex={-1} className="flex flex-1 flex-col">
         <GloboIframe />
       </main>
     </div>

@@ -156,7 +156,7 @@ export default async function ParaopebaHome() {
   // `OuvirPagina.tsx` não achava texto e "Ouvir esta página" sumia bem
   // no hub desta frente.
   return (
-    <main className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
       <header className="space-y-4">
         <p
           className="text-[.82em] font-semibold uppercase tracking-wide"

@@ -5,15 +5,23 @@ Mapa do monorepo: como o dado chega, onde os dois tetos mandam e onde cada mecan
 ## Visão geral
 
 ```
-scripts/ (coletores)  →  apps/web/data/ (versionado)  →  next build (output: export)  →  Cloudflare Workers (Static Assets)
+scripts/ (coletores)  →  apps/web/data/ (versionado)  →  opennextjs-cloudflare build  →  Cloudflare Workers
                              ↑                                        ↑
       Postgres local (home-pc) / Neon — Drizzle (lib/db/),     *.din.ts só entra no alvo Workers;
       lido no build, só onde a rota precisa                    *.local.* só existe em next dev
 ```
 
+**O alvo principal é Cloudflare Workers com OpenNext — NÃO é `output: 'export'`.**
+Publica-se com `npm run cf:deploy` (`opennextjs-cloudflare build && populateCache
+remote && deploy`). O `output: 'export'` existe, mas só liga quando `PAGES_BASE_PATH`
+está definido (`apps/web/next.config.ts:41-42,190`), que é o **alvo alternativo** do
+GitHub Pages — hoje inviável por não caber no teto de 20 mil arquivos (ver
+`docs/planos/deploy-github-pages.md`). Confundir os dois faz decidir payload pela
+restrição errada. O detalhamento está em `docs/MAPA-APLICACAO.md`.
+
 - `apps/web/app/` — rotas (App Router). Hoje há 16 rotas `*.din.ts` (chat, busca, contratos, zap, classificados, coleta, moderação, anúncios, pageview), ignoradas pelo export estático.
 - `apps/web/lib/` — lógica pura com teste ao lado; `data/` é lido no build; `scripts/` coleta e publica (`rotina-local.mts`).
-- O site é estático nos dois alvos: nada de rede nem banco em tempo de execução — a tela abre com a Neon fora do ar.
+- **As páginas são pré-renderizadas no build nos dois alvos** — nenhuma consulta banco em tempo de execução, e a tela abre com a Neon fora do ar. O que muda é o que sobra ao lado delas: no alvo Workers as 16 rotas `*.din.ts` existem e rodam em runtime; no export estático elas não entram.
 
 ## Os dois tetos
 
@@ -62,7 +70,7 @@ O assistente é uma escada de quatro degraus, e cada degrau só é acionado quan
 | 2 — composição determinística | "compare Betim e Contagem" — regra escrita sobre respostas do degrau 1 | **no ar** (16/08) |
 | 3 — LLM | pergunta livre que os anteriores não casaram; chave opcional | não iniciado |
 
-- **Catálogo** (`lib/assistente/catalogo.ts`): ~380 destinos (6 cidades × 33 sufixos + 44 rotas gerais) como **constante de módulo** importada pelo cliente, nunca como prop — cabe em ~2,4 KiB gzip (medição em 16/08 — remeça antes de decidir com ele). Foi criado porque o índice da `/busca` é a fonte errada para isso: ~5,0 MB não comprimidos (docs 3.614 KB + vocabulário 1.188 KB + formas 264 KB; o vocabulário cresceu 11.561 → 31.375 lexemas) — pagar o acervo inteiro por uma tabela de rotas não.
+- **Catálogo** (`lib/assistente/catalogo.ts`): 241 destinos (6 cidades × 33 sufixos + 43 rotas gerais, contados de `CIDADES`/`SUFIXOS_DE_CIDADE`/`ROTAS_GERAIS` em 20/08) como **constante de módulo** importada pelo cliente, nunca como prop — cabe em ~2,4 KiB gzip (medição em 16/08 — remeça antes de decidir com ele). Foi criado porque o índice da `/busca` é a fonte errada para isso: ~5,0 MB não comprimidos (docs 3.614 KB + vocabulário 1.188 KB + formas 264 KB; o vocabulário cresceu 11.561 → 31.375 lexemas) — pagar o acervo inteiro por uma tabela de rotas não.
 - **Navegação** (`navegacao.ts`): `interpretar()` devolve candidatos (máx. 8), nunca um palpite único; vazio é resposta. Sem rede, sem banco.
 - **Documentos** (`documentos.ts`): o degrau 1 carrega o índice sob demanda, **uma vez por sessão**, e interrompe de verdade (`AbortController`) — é o único passo caro, e por isso o botão de interromper existe.
 - **Degrau 3**: mora em rota `*.din.ts`, chave em secret do Worker (nunca no cliente); o prompt recebe só o trecho do índice recuperado, nunca o acervo. Sem `LLM_API_KEY` o portal continua inteiro com os degraus 0–2.
@@ -98,6 +106,6 @@ O assistente é uma escada de quatro degraus, e cada degrau só é acionado quan
 
 Documentos absorvidos por esta página:
 
-- `docs/PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` — **ATIVO** → `docs/planos/`; o degrau 2 do assistente é o próximo trabalho
-- `docs/HANDOFF-PAYLOAD-LEGISLACAO.md` — absorvido (seção "Regra de payload") → `docs/_historico/`
-- `docs/RADAR-NOTICIAS-PARAOPEBA.md` — absorvido (seção "Radar Paraopeba") → `docs/_historico/`
+- `docs/planos/PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` — **ATIVO** → `docs/planos/`; o degrau 2 do assistente é o próximo trabalho
+- `docs/_historico/HANDOFF-PAYLOAD-LEGISLACAO.md` — absorvido (seção "Regra de payload") → `docs/_historico/`
+- `docs/_historico/RADAR-NOTICIAS-PARAOPEBA.md` — absorvido (seção "Radar Paraopeba") → `docs/_historico/`

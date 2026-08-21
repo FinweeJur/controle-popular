@@ -201,14 +201,16 @@ def descobrir(de: int, ate: int, saida: Path | None = None) -> dict:
             json.dumps({"relatorio": relatorio, "indicacoes": todas}, ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
-        # Relatório separado e pequeno: é o que a home lê para exibir a
-        # cobertura da F0. A página não pode carregar o corpus inteiro só
-        # para mostrar quatro números, e nenhum número da tela pode ser
-        # digitado à mão (regra herdada do /congresso: toda frase de
-        # leitura é DERIVADA do dado, nunca escrita).
-        rel_path = saida.with_name("f0-relatorio.json")
-        rel_path.write_text(json.dumps(relatorio, ensure_ascii=False, indent=2), encoding="utf-8")
-        print(f"\nCorpus  : {saida}\nRelatório: {rel_path}")
+        # 2026-08-20: o `f0-relatorio.json` irmão SAIU daqui e do repo. Ele era
+        # byte a byte a chave `relatorio` do corpus gravado acima (conferido
+        # com `json.dumps(..., sort_keys=True)`: idêntico, 14 chaves), e o
+        # comentário que justificava a cópia — "é o que a home lê" — já não era
+        # verdade: `/judiciario` deriva a procedência das nomeações do BANCO
+        # (`apps/web/lib/judiciario/procedencia.ts`) e cita o corpus só em
+        # comentário, como origem do número. Nenhum código lia o arquivo.
+        # Duas cópias do mesmo dado, uma sem consumidor, é a receita de alguém
+        # atualizar a que não vale.
+        print(f"\nCorpus: {saida}")
 
     return relatorio
 

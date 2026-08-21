@@ -21,7 +21,7 @@ export default function LinhaDoTempoPage() {
   // `OuvirPagina.tsx` não achava texto e o botão "Ouvir esta página"
   // sumia nesta tela.
   return (
-    <main className="mx-auto max-w-3xl px-4 py-10 sm:px-8">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-3xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
         <a href="/paraopeba" className="hover:text-primary">
           Paraopeba

@@ -30,7 +30,7 @@
  *
  * Baixar 5 MB para descobrir que "saúde em BH" é `/bh/saude` seria pagar o
  * acervo inteiro por uma tabela de rotas. O catálogo abaixo faz esse
- * trabalho com ~380 destinos derivados de 6 cidades × 33 sufixos + 44
+ * trabalho com 241 destinos derivados de 6 cidades × 33 sufixos + 43
  * rotas gerais, e cabe no chunk. O índice da `/busca` continua sendo o
  * caminho certo para procurar DOCUMENTO — e é por isso que ele é carregado
  * sob demanda, e só quando a pessoa pede (ver `lib/assistente/documentos.ts`).

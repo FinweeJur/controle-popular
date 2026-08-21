@@ -37,7 +37,7 @@ export default function DocumentosPage() {
   // ⟲ 13/08, revisão de onboarding: era `<div>` — mesmo conserto de
   // `clipping/page.tsx` (ver o comentário lá).
   return (
-    <main className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
         <a href="/paraopeba" className="hover:text-primary">
           Paraopeba

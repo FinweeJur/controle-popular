@@ -88,6 +88,35 @@ Armadilha `total_doado`: é o total **no Brasil** do incentivador; `_links.doaco
 
 Canal federal = Fala.BR (todo órgão gov.br encaminha para lá); prazo padrão 20+10 dias. **Protocolo do Fala.BR não é gravado em lugar nenhum do projeto** — quem abre pedido anota à mão (órgão, data, protocolo, prazo); foi exatamente essa a lacuna do pedido ao INCRA, com **prazo vencendo em 18/08 e protocolo nunca anotado** (remeça antes de decidir com ele — o pedido em si não existe no repositório; os 4 pedidos redigidos citados na tarefa nunca foram achados). Municípios: Betim (Decreto 43.201, 20+10), BH (e-SIC próprio; Câmara = ouvidoria), SP (e-SIC; portal de transparência atrás de captcha), Araçuaí e Itinga (e-SIC próprios), Diamantina (portaltransp; Câmara inacessível a bot). Estadual: e-SIC central CGE-MG (**exige login gov.br — interação humana**); Semad/Feam/Igam não têm e-SIC próprio (redirecionam); TCE-MG 20 dias + 5 para recurso; ALMG sem e-SIC dedicado. Não verificado: Câmara de Betim (404), DPMG, SPU, Câmara de Araçuaí.
 
+## Decisões de recurso de LAI da CGE-MG — o único corpus de LAI de MG pesquisável
+
+`acessoainformacao.mg.gov.br/sistema/site/busca_decisao.aspx`, **sem login e sem captcha**. Sondado em 21/08/2026.
+
+**Contexto que decide o resto:** MG **não** publica os pedidos de LAI nem as respostas. Não há busca de pedidos respondidos, não há download em massa (o link chamado "Download de Dados" leva a *Informações Classificadas e Desclassificadas*, outra coisa) e não há como enumerar — sem índice, sem id público, sem paginação. O federal publica pedidos e respostas em CSV; MG publica só estatística agregada. **Este corpus de decisões é o que existe**, e por isso vale mapeá-lo.
+
+**Como se conversa com ele:** ASP.NET WebForms — POST com `__VIEWSTATE`/`__EVENTVALIDATION` colhidos de um GET anterior; sem eles o servidor rejeita. Filtros: `ddlYear` (2020–2026), `ddlOrgao` (90 órgãos) e `ddlTipoDecisao` (6 tipos). Prefixo dos campos: `ctl00$ctl00$ConteudoGeral$ConteudoPrincipalSemAjax$`.
+
+⚠️ **Zero resultado NÃO traz "Total de resultados: 0"** — a página troca a frase inteira por *"Nenhum resultado encontrado para a pesquisa."* Quem só procura o total lê a ausência como falha de parsing e inventa um erro que não existe — ou pula o caso e nunca registra o zero, que aqui é informação.
+
+**O tamanho do corpus, medido (2020–2026): 753 decisões.**
+
+| ano | total | Desprovimento | Não conhecimento | Perda de objeto | Perda parcial | Provimento | Prov. parcial |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 2020 | 51 | 14 | 23 | 10 | 4 | 0 | 0 |
+| 2021 | 60 | 21 | 28 | 7 | 3 | 1 | 0 |
+| 2022 | 86 | 17 | 21 | 4 | 0 | 0 | 0 |
+| 2023 | 204 | 30 | 59 | 5 | 0 | 3 | 2 |
+| 2024 | 156 | 16 | 50 | 11 | 0 | 1 | 1 |
+| 2025 | 143 | 14 | 56 | 7 | 2 | 3 | 0 |
+| 2026 | 53 | 14 | 28 | 1 | 5 | 3 | 2 |
+
+**Duas leituras que mudam o que dá para prometer com esta fonte:**
+
+1. **Provimento é raro: 16 em sete anos** (2020 e 2022 tiveram nenhum). A ideia de "filtrar por Provimento e obter o mapa das negativas indevidas" — que chegou a ser escrita no plano de expansão — **não se sustenta no volume**: são 16 casos, não um veio. Valem como casos exemplares, nunca como base estatística. O que domina é *Não conhecimento* (265) e *Desprovimento* (126): o recurso não é apreciado, ou o cidadão perde.
+2. **Em 2022–2025 a soma dos tipos não fecha com o total do ano** (2023: 99 de 204; 2024: 79 de 156; 2025: 82 de 143), enquanto 2020, 2021 e 2026 fecham exatamente. Ou parte das decisões não tem tipo preenchido, ou existe tipo fora do dropdown. **Não investigado** — mas ninguém deve somar por tipo e publicar como total do ano sem resolver isso antes.
+
+**Status:** sondagem feita, coletor **não** escrito. O corpus é pequeno e enumerável; o custo está em percorrer os anos mantendo o viewstate a cada requisição.
+
 ## Diário oficial — mapeamento SIGPub (sem coleta)
 
 Mapeamento feito, coleta bloqueada até o corte de LGPD (nomeação/exoneração, CPF). Só **Diamantina** usa SIGPub/AMM-MG (diariomunicipal.com.br/amm-mg; uma edição estadual por dia útil; busca por `entidadeUsuaria` — Prefeitura = 905, Câmara = 21672; sem filtro de tipo de ato; URLs por hash opaco; **mecanismo confirmado em 16/08**: GET + CSRF de sessão + datas obrigatórias em `dd/mm/yyyy` + paginação por mês, pois range longo devolve vazio). **Araçuaí e Itinga têm diário próprio** (CMS da prefeitura; Itinga = "Simple System", endpoint JSON atrás de JS não mapeado; `fontes.diario_oficial` de Itinga não preenchido). Betim (dados abertos JSON), BH (DOM-Web) e SP (DOC/PubNet) em fases posteriores. Engenharia adiantada: migration `0077_atos_diario.sql` + classificador `apps/web/lib/diario/classificarAto.ts` (calibrado contra 70 títulos reais). Pendente: inspeção de rede do diário de Itinga (fase de coletor por-prefeitura).
@@ -99,6 +128,53 @@ Mapeamento feito, coleta bloqueada até o corte de LGPD (nomeação/exoneração
 ## Radar de notícias do Paraopeba
 
 Coleta diária de título/veículo/data/link — nunca o corpo (reportagem é obra de terceiro). Fontes: MAB + Agência Brasil + Google Notícias + **os feeds das 3 ATIs** (AEDAS, ADAI e Guaicuy — entregues em 16/08); **TJMG e MPMG ficaram fora: RSS respondem 404** (lacuna na tela). Armadilhas travadas: filtro exige termo de **lugar** (tema deixa entrar outro estado); Google devolve link do agregador (usar o nome do veículo do `<source>`); data em RFC 822; coleta vazia não sobrescreve. Regra de triagem **"Nota de pesar: \<nome\>"** (obituário público do Guaicuy) implementada na régua (`temNotaDePesar`, redigido na origem — nome de vítima é dado pessoal). 14 itens na janela de 45 dias (15/08). Roda antes do build; `gerado_em` sempre visível na tela. (medição em 16/08 — remeça antes de decidir com ele)
+
+## Dados abertos de MG (`dados.mg.gov.br`) — CKAN que funciona, com três armadilhas
+
+Medido em 21/08/2026. É CKAN de verdade (`/api/3/action/…`), 94 conjuntos, 18 órgãos, e a Controladoria-Geral publica **convênios de saída com atualização diária**. Coletores: `scripts/coletar-convenios-ambientais-mg.mts` (recorte dos 4 órgãos ambientais) e `scripts/coletar-tac-projetos.mts` (TACs, de captura de painel).
+
+1. **403 sem User-Agent de navegador.** `curl` puro leva 403; com UA de navegador, 200. Não é rate limit, é bloqueio de cliente não-navegador — e silencioso o bastante para parecer indisponibilidade.
+2. **O DataStore responde `success: true` com `total: 0`.** Está habilitado e vazio. Quem usar `datastore_search` conclui que o conjunto não tem dado. O caminho é baixar os CSV.GZ dos `resources`.
+3. **`ft_convenio_metaetapa.csv.gz` vem VAZIO — só o cabeçalho, HTTP 200.** Medido em 21/08/2026: **87 bytes comprimidos, 75 descomprimidos, 1 linha** (`id_convenio;id_tipo_atendimento;ds_descricao;ds_unidade_medida;quantidade`). O controle que fecha o argumento: no **mesmo** conjunto, no mesmo minuto e pelo mesmo método, o recurso irmão de convênios devolveu 8,4 MB e **784.802 linhas** — a publicação funciona, o que não vem é o conteúdo desta tabela. É o arquivo que carregaria meta e etapa por convênio: sem ele dá para dizer quanto custou e quanto tempo levou, **não** se o convênio entregou o que prometeu. Pedido de LAI à CGE-MG **já redigido** (`Projetos/Controle Popular — Pedido LAI CGE-MG (metas de convênio).md`, no vault), aguardando protocolo.
+
+**A armadilha de nome de campo, que é a pior:** `dt_vigencia_inicial` **não é data de início**. Em 90.045 dos 90.254 registros ela é igual a `dt_vigencia_final` — as duas guardam a data-limite originalmente pactuada, e o prazo que vale hoje é `dt_vigencia_atual`. Quem ler "inicial" como começo calcula duração zero para 99,8% dos convênios, e zero passa por plausível. Prorrogação = `dt_vigencia_atual − dt_vigencia_final`.
+
+Número que saiu disso: **47,7% dos 870 convênios ambientais foram prorrogados, contra 27,6% dos 90.254 do Estado inteiro** — mesma base, mesmo cálculo. Mediana de 365 dias; a maior, 5.171.
+
+**Fora do CKAN:** o meio ambiente de MG quase não publica ali — nenhuma das 18 organizações é SEMAD/FEAM/IEF/IGAM (os convênios acima aparecem porque a CGE publica os de TODOS os órgãos). O ambiental vive nos sistemas do SISEMA. E a **SEDESE tem 1 conjunto só** (transferência de renda, 2020-21): tratar como dimensão, não como fonte.
+
+## Transferegov (ex-SICONV) — o federal publica o que o estadual não publica
+
+Medido em 21/08/2026. Coletor: `scripts/coletar-convenios-federais-mg.mts`. CSV puro, **sem chave e sem login**, em `https://repositorio.dados.gov.br/seges/detru/`. Recorte de MG: 29.475 convênios da União com proponente mineiro, R$ 27,98 bi, 49,2% desembolsado.
+
+**Por que importa:** a base federal traz `DIA_FIM_VIGENC_ORIGINAL_CONV` e `VALOR_GLOBAL_ORIGINAL_CONV` ao lado dos atuais, mais `QTD_PRORROGA` — prazo e valor originais, e um contador de prorrogações. É o que a base estadual não deixa medir (o arquivo de meta/etapa dela vem vazio).
+
+Quatro armadilhas:
+
+1. **O `siconv.zip` completo tem 3,34 GB.** Os arquivos individuais ficam no mesmo diretório; baixar o pacote inteiro para pegar três tabelas é desperdício.
+2. **`siconv_meta.csv.zip` e `siconv_etapa.csv.zip` dão 404.** Os nomes reais são `siconv_meta_crono_fisico.csv.zip` (103 MB) e `siconv_etapa_crono_fisico.csv.zip` (183 MB) — a documentação lista os CONCEITOS ("Meta", "Etapa"), não os nomes dos arquivos.
+3. **Os CSV são UTF-8, e ler como latin-1 quebra duas coisas de uma vez.** Além dos acentos, o BOM `EF BB BF` vira três caracteres colados no nome da PRIMEIRA coluna, então `ID_PROPOSTA` fica indefinido e o join devolve **1 proposta de MG em vez de 98.949** — sem lançar erro, com número pequeno e plausível.
+4. **`VALOR_GLOBAL_ORIGINAL_CONV` só está preenchido em 37,7% dos registros.** Somar o atual de todos contra o original de alguns dá crescimento de **3,3×** — falso. No mesmo subconjunto, o crescimento real é **+39,6%**. Publicar o percentual sem o denominador é o erro.
+
+Mais: **4.884 dos 29.475 convênios não trazem ano válido** e ficam fora de qualquer série temporal — a diferença precisa ter nome, senão a soma da série bate menos que o total e parece que registros sumiram.
+
+**Limite de string do V8:** `siconv_proposta.csv` tem ~700 MB descompactado, e `readFileSync(…, "utf8")` estoura com `ERR_STRING_TOO_LONG` (teto de ~512 MB) — mesma armadilha dos CSV do TSE. O coletor lê em fluxo, guardando o estado de aspas entre os pedaços.
+
+**Descompactar:** usar `Expand-Archive` do PowerShell. O `tar` que responde neste ambiente é o do Git Bash, que **recusa zip e ainda assim sai com código 0** — falha silenciosa.
+
+## GTAC — o cadastro de TACs ambientais de MG (e o 403 que engana)
+
+Medido em 21/08/2026. Coletor: `scripts/coletar-tac-gtac-mg.mts`. API em `https://ecosistemas.meioambiente.mg.gov.br/gtac/api/tacs` — 2.002 termos, 392 municípios, 10 unidades regionais, assinaturas de 2002 a 2026.
+
+**O 403 engana.** A API responde `Forbidden - Consulte a DGTI sobre esta autorização`, o que sugere que é preciso autorização da diretoria de TI. **Não é**: é checagem de origem. Com `Referer: …/gtac/acessoExterno` e `Origin: …meioambiente.mg.gov.br`, a mesma rota devolve 200 com o cadastro inteiro. Ler a mensagem ao pé da letra faz desistir de dado que é público.
+
+**O `page` é ignorado.** `?page=1` e `?page=2` devolvem os mesmos 2.002 registros (conferido comparando conjuntos de `id`). Paginar em laço baixaria o mesmo conteúdo N vezes e concluiria "N × 2.002 TACs". O coletor confere isso e aborta se a API passar a paginar de verdade.
+
+Existe um `POST /resolveocaptcha` no mesmo domínio, mas ele guarda outro fluxo — a consulta não passa por captcha.
+
+**Dado pessoal — atenção.** A API expõe `cpf_usuario` e `nome_usuario` (o servidor que cadastrou) em **todos** os 2.002 registros, e `cpf_cnpj` com **CPF de pessoa física em 355 deles**. O coletor redige na origem: sai CPF, saem os campos do servidor, ficam os 1.647 CNPJ e o nome do empreendimento (que é parte de acordo público). A quantidade redigida é publicada, não escondida.
+
+Dois achados do cadastro: **72 dos 150 termos marcados "Vigente" têm data de vencimento anterior à coleta** — a base discordando de si mesma (pode ser aditivo não lançado; não é prova de descumprimento). E **1.119 dos 2.002 não têm data de vencimento**, o que os deixa fora de qualquer conta de prazo — incluí-los em denominador de percentual seria mentir. Há ainda 1 registro com vencimento anterior à assinatura (id 23895), com as datas trocadas na fonte.
 
 ## Microsistema de lacunas — cobertura declarada
 

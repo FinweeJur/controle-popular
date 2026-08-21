@@ -35,7 +35,7 @@ export default async function DenunciaPage() {
   const cidades = await listarCidades();
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12 sm:py-16">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-3xl px-4 py-12 sm:py-16">
       <nav className="text-sm text-text-soft">
         <a href="/" className="hover:text-primary">
           Início

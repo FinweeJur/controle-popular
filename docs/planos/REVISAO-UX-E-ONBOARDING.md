@@ -39,7 +39,7 @@
 ## As quatro pistas do diário — todas já corrigidas antes desta revisão
 
 Antes de procurar coisa nova, conferi as quatro pistas do
-`docs/TODO-PROXIMAS-RODADAS.md` (item 7) no código atual. As quatro já
+`docs/planos/TODO-PROXIMAS-RODADAS.md` (item 7) no código atual. As quatro já
 tinham commit de conserto, todos de 13/08, todos **antes** desta sessão:
 
 1. **Rodapé fabricava "Estadual" pra frente ambiental** — corrigido em

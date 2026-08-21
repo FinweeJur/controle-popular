@@ -41,7 +41,7 @@ export const metadata: Metadata = metadataEditavel("/assistente", {
 
 export default function AssistentePage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-8">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-3xl px-4 py-10 sm:px-8">
       <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
         Para onde você quer ir?
       </h1>
@@ -52,6 +52,6 @@ export default function AssistentePage() {
         quem responde é a página.
       </p>
       <AssistenteNavegacao />
-    </div>
+    </main>
   );
 }
