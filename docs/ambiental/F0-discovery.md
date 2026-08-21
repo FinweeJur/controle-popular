@@ -923,3 +923,138 @@ conservadora): **171/176 = 97,2%**. Muito acima do corte de 80% do pedido.
 por reunião, só quando a camada 1 vier vazia)** — não o que o §4 sugeria (ler âncora/nome
 de anexo por item). PDF individual de parecer/recurso (um por documento) **não precisa
 ser aberto** para este propósito.
+
+---
+
+## 15. Onde o EIA/RIMA realmente está (sondado ao vivo em 2026-08-20)
+
+Esta seção corrige uma conclusão implícita das anteriores. O §2 mapeou o SLA como "a fila
+viva" e o §1 tratou o WFS como espinha dorsal — mas nenhum dos dois entrega **o estudo**.
+A pergunta "onde o cidadão baixa o EIA/RIMA de um licenciamento de Minas" ficou sem
+resposta até aqui, e a resposta existe.
+
+### 15.1 A via pública: módulo de audiência do SISEMA
+
+`https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-audiencia`
+— mesmo host do coletor de reuniões do COPAM (§4), módulo Yii2 diferente. Sem login, sem
+CAPTCHA. Lista os empreendimentos com EIA/RIMA passíveis de audiência pública
+(DN COPAM 225/2018).
+
+A ficha `view-audiencia?id=N` traz, já estruturado:
+
+> ID · Empreendimento · CNPJ/CPF · Processo · Data Publicação · Ano · Mês · Classe ·
+> Data Limite de Solicitação · Link IOF · **Link EIA / Rima** ·
+> **Município(s) do Empreendimento** · Unidade · Atividade(s) · Modalidade
+
+Ou seja: o campo de município que o §14 gastou uma sessão inteira para extrair de PDF de
+pauta, aqui vem pronto. E há um campo chamado literalmente "Link EIA / Rima".
+
+### 15.2 ⚠️ A contagem que a tela anuncia é inflada por junção
+
+O grid diz **"2.287 itens"**. Não são 2.287 audiências. Medido:
+
+| Página | Janela anunciada | Linhas renderizadas |
+|---|---|---|
+| 1 | 1-12 | 12 |
+| 2 | 21-28 | 8 |
+| 3 | 41-48 | 8 |
+| 4 | 61-68 | 8 |
+| 5 | 81-88 | 8 |
+| 114 | 2.261-2.280 | 20 |
+
+A janela anda de 20 em 20 e o número de linhas varia — assinatura de consulta com junção e
+agrupamento, em que o `count` sai do total **antes** de agrupar. O fecho da prova: as fichas
+vivem em `view-audiencia?id=N` com **N de 1 a 1016** (1017 e acima devolvem `Erro (#2)`), e
+numa amostra de 20 ids espalhados **19 respondem 200** — densidade ~95%. Universo real:
+**~965 audiências**.
+
+**Método que segue disso: enumerar ids, não paginar o grid.** É completo por construção e
+imune ao defeito. É o que `etl/betim/etl/apis/ambiental_audiencias.py` faz.
+
+### 15.3 ⚠️ HTTP 500 intermitente — e o corpo distingue os dois casos
+
+A primeira medição pegou `consulta-licenca?page=1` em 500 duas vezes seguidas enquanto
+`?page=2` respondia 200 — o que parecia defeito fixo da página 1. A medição de controle (4
+tentativas na mesma URL) deu **500 · 200 · 200 · 200**. É instabilidade do servidor.
+
+A consequência é a regra do coletor: **500 com `Erro (#2)` no corpo é "não existe"; 500 com
+qualquer outro corpo é "tente de novo"**. Confundir os dois faz o coletor declarar
+inexistente uma ficha que existe — e, com ~1.000 ids, apagar dezenas em silêncio.
+
+### 15.4 O achado que a página tem de publicar: o Estado não hospeda o estudo
+
+O "Link EIA / Rima" aponta para fora. Distribuição medida por link em 458 fichas:
+
+| Onde o estudo mora | Links |
+|---|---|
+| Site do empreendedor ou da consultoria | 111 |
+| Google Drive | 97 |
+| Dropbox | 54 |
+| OneDrive | 17 |
+| PDF direto em site próprio | 17 |
+| MEGA | 6 |
+| Google Sites | 4 |
+| **Página institucional da SEMAD que não é estudo nenhum** | **9** |
+
+Pasta pública do Drive lista anonimamente por
+`https://drive.google.com/embeddedfolderview?id=<ID>#list`, e o arquivo baixa por
+`uc?export=download&id=<FILE_ID>` (medido: RIMA 2.657.598 bytes, EIA 18.857.977 bytes,
+magic bytes `%PDF-1.7`). MEGA e OneDrive exigem cliente próprio — ficam registrados como
+não automatizáveis, com o link.
+
+**A consequência é de política pública, não técnica:** o estudo que embasa uma licença
+ambiental em Minas depende da conta de nuvem de um particular continuar existindo. E o preço
+já está cobrado — os **895 endereços distintos** foram testados um a um em 20/08/2026:
+
+| Situação do endereço publicado | Ocorrências |
+|---|---|
+| Abre normalmente | 737 |
+| Erro 404 (arquivo/pasta não existe) | 205 |
+| Domínio não existe mais | 30 |
+| Acesso negado (401/403) | 28 |
+| Sem resposta / instável | 21 |
+
+**235 endereços quebrados, em 144 municípios.** Contado por processo é pior: **276 das 1.004
+audiências (27%) não têm nenhum endereço que abra**. Entre os quebrados, 31 são de
+empreendimento classe 5 ou 6, e há erro de digitação na publicação oficial —
+`http://httdrive.google.com/...` no processo 01289/2024 (ficha id 774).
+
+Método, para reprodução: um acesso por endereço, seguindo redirecionamento, UA identificável,
+intervalo entre requisições. Só conta como quebrado o que devolveu 404/410 ou cujo domínio não
+resolve — timeout **não** entra, porque pode ser a nossa rede.
+
+É o que justifica espelhar cópia local (`arquivo_fontes`, migration 0076) em vez de só guardar
+a URL, e é a base factual do pedido de LAI redigido nesta rodada
+(`X:\DevCoder\_lote-ambiental\saida\PEDIDO-LAI.md`).
+
+### 15.5 As decisões, e os PDFs que o Estado hospeda de verdade
+
+`.../licenciamento/site/consulta-licenca` — **43.555 decisões**, 20 por página, com
+Regional · Município · Empreendimento · CNPJ/CPF · Processo · Protocolo · Modalidade ·
+Classe · Atividade · Ano · Mês · Publicação · Decisão. A ficha `view-externo?id=N` traz
+**Certificado** e **Outros Documentos** como PDF em `/licenciamento/uploads/<token>.pdf`,
+públicos e baixáveis (medido: HTTP 206, `application/pdf`).
+
+### 15.6 O que o SLA continua sendo, e por que saiu do caminho crítico
+
+`GET /sla/processo/documentosProcesso/{idSolicitacao}` é público e devolve o **inventário**
+de arquivos do processo — EIA/RIMA aparece como `documento.id` 75 e 83. Medido: processo
+`115337` (Vale, Conceição do Mato Dentro) tem 87 documentos, 41 deles EIA/RIMA.
+
+Mas **nenhuma rota de download abre sem login**: 401 em `/documento/downloadPath`,
+`/documento/download/{id}`, `/processo/downloadPath` e
+`/documento/visualizarDocumentoAnexado/{id}`; e o `doLogin()` do próprio bundle Angular só
+funciona com token pré-existente. Some-se a isso o reCAPTCHA Enterprise na tela do
+visitante e vale a regra de parada do §2.2. Com a via pública do §15.1 disponível, o SLA
+vira complemento: serve para saber que o estudo EXISTE mesmo quando não foi publicado.
+
+⚠️ `loginUltAtual` do SLA vem com **CPF em claro** (medido: `00000000000 (CPF real, redigido aqui)`), e o grid de
+audiência também publica CPF na coluna CNPJ/CPF (medido: `000.000.000-00 (CPF real, redigido aqui)`). Redigidos na
+origem, como manda `ambiental_licenciamento.py`.
+
+### 15.7 Um aviso de segurança, não uma tarefa
+
+O HTML público de `licenciamento/site/view-externo?id=…` expõe
+`href="/licenciamento/site/deletearquivo?id=…"`. **O endpoint não foi chamado** — é ação
+destrutiva sobre documento oficial. Se não houver checagem de sessão no servidor, é remoção
+por GET anônimo. Registrado para decisão do dono sobre comunicar à SEMAD.
