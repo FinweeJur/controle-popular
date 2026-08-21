@@ -36,7 +36,7 @@ O site é estático: `next build` imprime o HTML. Salvar grava `apps/web/data/ed
 
 | Passo | Comando |
 |---|---|
-| Testes | `cd apps/web && npm test` |
+| Testes | `npm test` (da raiz) |
 | Tipos | `npx tsc --noEmit` |
 | Dado pessoal | a suíte `sem-cpf-no-repo` valida por mod-11 — rode os testes **antes** de commitar dado coletado, varrendo o dado e não só o código |
 

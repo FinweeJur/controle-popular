@@ -69,7 +69,7 @@ git commit --only <caminho> -F <arquivo-da-mensagem>
 
 | # | Passo | Comando |
 |---|---|---|
-| 1 | Testes | `cd apps/web && npm test` |
+| 1 | Testes | `npm test` (da raiz; delega ao workspace) |
 | 2 | Tipos | `npx tsc --noEmit` |
 | 3 | Dado pessoal | roda na suíte; o hook pre-push e a CI rechecam — ligue o hook uma vez por clone: `git config core.hooksPath .githooks` |
 | 4 | Atualizar | `git fetch origin && git rebase origin/main` |
@@ -125,11 +125,19 @@ PY
 ## Verificação
 
 ```bash
-cd apps/web && npm test        # vitest (lib/**/*.test.ts) + node:test (globo 3D)
+npm test                       # da raiz: vitest (lib/**/*.test.ts) + node:test (globo 3D)
 npx tsc --noEmit
 ```
 
-Baseline em 15/08/2026: **601 testes no vitest + 121 no globo**. Serve como referência de regressão, não como verdade eterna — se o seu número divergir, **remeça** e explique a diferença antes de concluir.
+Medido em 21/08/2026: **57 arquivos, 776 testes no vitest + 137 no globo**. Serve como referência de regressão, não como verdade eterna — se o seu número divergir, **remeça** e explique a diferença antes de concluir.
+
+⚠️ **Contagem de teste envelhece rápido e já circulou em seis versões diferentes** neste repo (247, 401, 601, 681, 699, 741), cada documento citando a sua. Antes de repetir um número daqui, meça:
+
+```bash
+npm test                       # da raiz: delega ao workspace, roda vitest + globo
+```
+
+E, ao citar, escreva a data ao lado — número sem data é o que produziu as seis versões.
 
 **Armadilha: comentário vira teste, não convicção.** Um comentário errado sobre código IBGE sobreviveu meses e foi copiado para o enunciado de uma tarefa, propagando o erro — quem pegou foi um **teste** que compara código com nome. Comentário errado continua convincente; afirmação sobre comportamento que importa vira teste, não comentário.
 
