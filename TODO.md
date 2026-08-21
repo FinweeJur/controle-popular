@@ -29,8 +29,8 @@
   · worktree: `.claude/worktrees/cp-ambiental-estudos` · plano:
   `Projetos/Controle Popular — Perícia UFMG × Auditoria (Executable Plan).md`
 
-- **Expansão: acordos, contratos e convênios de MG** — Bloco A entregue
-  (commit `509df09`). Próximo: Bloco B, começando pelo dinheiro — coletor CKAN
+- **Expansão: acordos, contratos e convênios de MG** — Blocos 0 e A entregues
+  (`509df09`, `f51558e`, `d9297ab`). Próximo: Bloco B, começando pelo dinheiro — coletor CKAN
   do `dados.mg.gov.br` (`convenios-saida`, que tem `Convênio - Meta Etapa`).
   · atenção: `dados.mg.gov.br` devolve **403 sem User-Agent de navegador**, e o
   DataStore do CKAN responde `success: true` com `total: 0` — baixar os CSV
