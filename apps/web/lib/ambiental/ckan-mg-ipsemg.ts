@@ -1,5 +1,4 @@
 import dados from "../../../../etl/betim/dados/ckan-mg-ipsemg.json";
-
 /**
  * Contratos vigentes de prestadores de saúde credenciados ao IPSEMG (Instituto
  * de Previdência dos Servidores do Estado de Minas Gerais — assistência à
@@ -55,13 +54,23 @@ export interface ContratoIpsemgMg {
   fimVigencia: string | null;
 }
 
-/**
- * O array vive em `etl/betim/dados/ckan-mg-ipsemg.json`, nao inline neste arquivo.
- *
- * POR QUE: inline, este conjunto gerava `TS2590: union type too complex`
- * (o compilador desiste de inferir literal grande demais) e o arquivo
- * passava de 1 MB de codigo -- num repo cujo teto de Worker e 3 MiB
- * gzip para a rota INTEIRA. Pagina de servidor deve importar o
- * `COBERTURA_*`, nunca este array.
- */
 export const CONTRATOS_VIGENTES_IPSEMG: ContratoIpsemgMg[] = dados as ContratoIpsemgMg[];
+
+export const COBERTURA_CONTRATOS_VIGENTES_IPSEMG = {
+  contratos: 6699,
+  comCnpj: 1775,
+  cnpjVazios: 4924,
+  cnpjInvalidos: 0,
+  /** `AAAA-MM-DD` — único valor não-vazio de `periodo_referencia`; 4925
+   *  das 6699 linhas não trazem essa data (campo vazio na fonte). */
+  referenciaEm: "2026-07-01",
+  semReferencia: 4925,
+  /** CPF de pessoa física achado DENTRO do campo `nome` (não do campo de
+   *  documento) e redigido antes de gravar. */
+  nomesComCpfRedigido: 11,
+  ramosDeAtividade: 10,
+  regioesAssistenciais: 12,
+} as const;
+
+export const IPSEMG_POR_RAMO_ATIVIDADE = [{"chave":"CLINICA","contratos":774},{"chave":"LABORATORIO","contratos":476},{"chave":"HOSPITAL/FUNDACAO","contratos":155},{"chave":"CLINICA ODONTOLOGICA","contratos":125},{"chave":"CONSULTORIO MEDICO","contratos":111},{"chave":"CONSULTORIO ODONTOLOGICO","contratos":86},{"chave":"HOSPITAL DIA","contratos":31},{"chave":"SERVICO DE ATENCAO DOMICILIAR","contratos":11},{"chave":"LABORATORIO ODONTOLOGICO","contratos":3},{"chave":"HOSPITAL ESPECIALIZADO","contratos":3}] as const;
+export const IPSEMG_POR_REGIAO_ASSISTENCIAL = [{"chave":"CENTRO","contratos":372},{"chave":"SUL","contratos":247},{"chave":"SUDESTE","contratos":212},{"chave":"NORTE","contratos":187},{"chave":"OESTE","contratos":142},{"chave":"TRIANGULO DO NORTE","contratos":136},{"chave":"NORDESTE","contratos":127},{"chave":"LESTE","contratos":116},{"chave":"CENTRO SUL","contratos":83},{"chave":"LESTE DO SUL","contratos":66},{"chave":"NOROESTE","contratos":45},{"chave":"TRIANGULO DO SUL","contratos":42}] as const;

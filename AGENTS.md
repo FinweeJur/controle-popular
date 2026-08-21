@@ -163,6 +163,35 @@ Casos reais deste repositório, e como foram resolvidos:
 E a regra que resume: **o número vem do dado; o modelo, se houver, só embrulha.**
 Se a fonte não tem, a resposta é "não sei, e aqui está o que existe perto".
 
+## 📊 Página com muito dado tem cinco coisas, sempre
+
+**Regra do dono, 2026-08-21.** Vale para as páginas que já existem e para toda
+página nova. Se a rota publica uma lista grande — licenciamento, TACs,
+convênios, decisões, barragens, estudos, contratos —, ela **precisa** ter:
+
+1. **Gráfico** — evolução no tempo ou distribuição. SVG inline ou CSS; **não se
+   instala biblioteca de gráfico** (a dependência nova pesa no bundle e o teto
+   do Worker é 3 MiB gzip para a rota inteira).
+2. **Status / cartões de topo** — os agregados que respondem "quanto é isso?"
+   antes de o leitor rolar a lista.
+3. **Planilha** — botão de baixar CSV do que está **filtrado na tela**, não do
+   conjunto inteiro. Separador `;` e **BOM UTF-8**, senão o Excel brasileiro
+   abre tudo numa coluna e com acento quebrado.
+4. **Filtro** — pelos campos que o acervo realmente tem (órgão, ano, situação,
+   município). Filtro que devolve vazio sempre é pior que filtro nenhum.
+5. **Ordenação por coluna** — inclusive por tipo/classe, não só por data.
+
+Três coisas que essa regra **não** dispensa:
+
+- **A página de servidor importa o agregado (`COBERTURA_*`), nunca o array
+  inteiro.** Já houve `.ts` de 14,6 MB neste repo por ignorar isso, e o
+  TypeScript avisou antes do navegador (`TS2590: union type too complex`).
+  Array grande mora em `etl/betim/dados/*.json` e entra por `import`.
+- **Gráfico precisa de alternativa em texto ou tabela**, e cor nunca pode ser o
+  único canal de informação.
+- **Número na tela vem de constante medida com data.** Digitar total à mão é
+  como a contagem de testes já circulou errada em seis versões.
+
 ## Como verificar
 
 ```bash

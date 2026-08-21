@@ -1,5 +1,4 @@
 import dados from "../../../../etl/betim/dados/ckan-mg-fiscais-contrato.json";
-
 /**
  * Fiscais e gestores de contratos administrativos do Poder Executivo de Minas
  * Gerais, 2022–2026. ARQUIVO GERADO — não editar à mão.
@@ -65,13 +64,22 @@ export interface FiscalContratoMg {
   valorAtual: number;
 }
 
-/**
- * O array vive em `etl/betim/dados/ckan-mg-fiscais-contrato.json`, nao inline neste arquivo.
- *
- * POR QUE: inline, este conjunto gerava `TS2590: union type too complex`
- * (o compilador desiste de inferir literal grande demais) e o arquivo
- * passava de 1 MB de codigo -- num repo cujo teto de Worker e 3 MiB
- * gzip para a rota INTEIRA. Pagina de servidor deve importar o
- * `COBERTURA_*`, nunca este array.
- */
 export const FISCAIS_CONTRATO_MG: FiscalContratoMg[] = dados as FiscalContratoMg[];
+
+/** Importe ISTO em página de servidor, nunca o array (regra de payload). */
+export const COBERTURA_FISCAIS_CONTRATO = {
+  contratos: 16922,
+  anoInicial: 2022,
+  anoFinal: 2026,
+  valorAtualTotal: 37482402887.11004,
+  /** CPF de pessoa física no campo `cnpj_cpf` do fornecedor, confirmado por mod-11 e redigido. */
+  cpfRedigidos: 615,
+  /** Linhas com CPF achado DENTRO de campo de texto livre (fornecedor, objeto,
+   *  fiscais ou gestores) — não do campo de documento. Redigido. */
+  linhasComCpfEmTextoLivre: 257,
+  /** Nem CNPJ válido nem CPF válido — inclui fornecedor estrangeiro sem CNPJ real. */
+  documentosInvalidos: 15,
+} as const;
+
+export const FISCAIS_CONTRATO_POR_SITUACAO = [{"chave":"Vigente publicado","contratos":9866},{"chave":"Encerrado","contratos":3458},{"chave":"Vencido","contratos":3426},{"chave":"Rescindido","contratos":172}] as const;
+export const FISCAIS_CONTRATO_POR_ANO = [{"ano":2022,"contratos":4122,"valorAtualTotal":7029914563.589996},{"ano":2023,"contratos":4248,"valorAtualTotal":8223266555.66999},{"ano":2024,"contratos":2696,"valorAtualTotal":2209609993.5800014},{"ano":2025,"contratos":3840,"valorAtualTotal":6863542006.519988},{"ano":2026,"contratos":2016,"valorAtualTotal":13156069767.749989}] as const;

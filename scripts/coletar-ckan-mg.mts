@@ -114,9 +114,18 @@ async function baixar(
  *  primeiro e barra o arquivo de nascer. Varre o texto INTEIRO (não só campos
  *  chamados "cpf" ou "documento"): o achado em \`contratos_vigentes.nome\`
  *  (ver \`redigirTextoLivre\`) prova que CPF pode estar em qualquer campo de
- *  texto livre, não só no campo com nome óbvio. */
+ *  texto livre, não só no campo com nome óbvio.
+ *
+ *  Só o formato PONTUADO (\`000.000.000-00\`) — não o de 11 dígitos corridos.
+ *  Um total agregado grande (ex. \`vlrLiquidadoTotal\` do SIAFI) é um número de
+ *  11+ dígitos sem aspas no JSON gerado, e bate por acaso no mod-11 de CPF de
+ *  vez em quando (medido em 21/08/2026, gerando \`ckan-mg-siafi.ts\`) — falso
+ *  positivo que travaria a gravação de um agregado sem NENHUM campo de texto
+ *  livre. O formato pontuado nunca aparece em número serializado pelo
+ *  \`JSON.stringify\` (que nunca agrupa dígitos por ponto), então continua
+ *  seguro como rede de segurança para os conjuntos com texto livre. */
 function conferirSemCpf(destino: string, conteudo: string) {
-  for (const m of conteudo.matchAll(/\b\d{3}\.\d{3}\.\d{3}-\d{2}\b|\b\d{11}\b/g)) {
+  for (const m of conteudo.matchAll(/\b\d{3}\.\d{3}\.\d{3}-\d{2}\b/g)) {
     if (cpfValido(m[0].replace(/\D/g, ""))) {
       abortar(
         `CPF real sobreviveu à redação em ${destino}: ${m[0].slice(0, 4)}… (mod-11 válido). ` +

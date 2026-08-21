@@ -1,0 +1,4265 @@
+{
+ "fonte": "sisema_mg_painel_fiscalizacao_barragens",
+ "fonteNome": "Painel \"Outros Indicadores\" — SISEMA/SEMAD-MG (Power BI público, filho do menu de barragens)",
+ "resourceKey": "6f0dee31-708d-42fd-ad2d-9a70e2f49dbc",
+ "modelId": 5910103,
+ "dadoCongeladoEm": "2026-08-19",
+ "ressalvaCongelamento": "O painel declara refreshEnabled=false; lastRefreshTime=2026-08-19T18:27:40.36Z — o dado NÃO reflete a situação atual de autos, barragens, denúncias ou fiscalizações.",
+ "ressalvaWorkspace": "O relatório-filho foi publicado de uma 'My workspace' pessoal, não de workspace institucional — depende de uma conta individual, sem governança de área.",
+ "coletadoEm": "2026-08-21T23:04:45.904985+00:00",
+ "agregadoEm": "2026-08-21",
+ "observacao": "Agregado a partir de 723.261 linhas brutas (290 MB, fora do repo). A linha crua não é publicável: excede o limite do GitHub e o teto de 3 MiB gzip do Worker.",
+ "autosInfracao": {
+  "total": 582210,
+  "valorTotalAplicado": 11482528819.076323,
+  "avisoValor": "Valor de auto LAVRADO é multa aplicada, não arrecadada. Ver valorPorSituacao antes de citar qualquer total.",
+  "semDataValida": 2106,
+  "dataFutura": 48,
+  "valorSemDataValida": 8419850.853599945,
+  "avisoData": "Fora de porAno por data implausível: 1899-12-29/30/31 é a data-zero do OLE (campo nulo na origem), e há autos datados até 2090 (erro de digitação). Contados aqui, nunca somados a um ano real.",
+  "porAno": [
+   {
+    "ano": 1991,
+    "autos": 1,
+    "valor": 6280.86
+   },
+   {
+    "ano": 1992,
+    "autos": 1,
+    "valor": 20.61
+   },
+   {
+    "ano": 1993,
+    "autos": 105,
+    "valor": 76390275.43999998
+   },
+   {
+    "ano": 1994,
+    "autos": 135,
+    "valor": 783535563.1800001
+   },
+   {
+    "ano": 1995,
+    "autos": 449,
+    "valor": 161007741.79999918
+   },
+   {
+    "ano": 1996,
+    "autos": 887,
+    "valor": 1591748.5099999986
+   },
+   {
+    "ano": 1997,
+    "autos": 2688,
+    "valor": 4264446.63000002
+   },
+   {
+    "ano": 1998,
+    "autos": 5041,
+    "valor": 4976571.460000013
+   },
+   {
+    "ano": 1999,
+    "autos": 5098,
+    "valor": 10174126.919999948
+   },
+   {
+    "ano": 2000,
+    "autos": 5745,
+    "valor": 15516196.059999932
+   },
+   {
+    "ano": 2001,
+    "autos": 7292,
+    "valor": 36465533.01000003
+   },
+   {
+    "ano": 2002,
+    "autos": 1081,
+    "valor": 6500511.58
+   },
+   {
+    "ano": 2003,
+    "autos": 6996,
+    "valor": 16854707.03
+   },
+   {
+    "ano": 2004,
+    "autos": 14751,
+    "valor": 41785528.57000098
+   },
+   {
+    "ano": 2005,
+    "autos": 21510,
+    "valor": 72785141.03999929
+   },
+   {
+    "ano": 2006,
+    "autos": 19882,
+    "valor": 68787687.46000268
+   },
+   {
+    "ano": 2007,
+    "autos": 35813,
+    "valor": 116536024.34000346
+   },
+   {
+    "ano": 2008,
+    "autos": 32639,
+    "valor": 121302825.77999978
+   },
+   {
+    "ano": 2009,
+    "autos": 31624,
+    "valor": 187953997.19000027
+   },
+   {
+    "ano": 2010,
+    "autos": 21461,
+    "valor": 109893196.4499936
+   },
+   {
+    "ano": 2011,
+    "autos": 43212,
+    "valor": 156379961.99998954
+   },
+   {
+    "ano": 2012,
+    "autos": 27786,
+    "valor": 140934946.100007
+   },
+   {
+    "ano": 2013,
+    "autos": 26280,
+    "valor": 170844227.6700023
+   },
+   {
+    "ano": 2014,
+    "autos": 25110,
+    "valor": 279476881.7500161
+   },
+   {
+    "ano": 2015,
+    "autos": 25133,
+    "valor": 366257324.6899753
+   },
+   {
+    "ano": 2016,
+    "autos": 26177,
+    "valor": 718699251.6699818
+   },
+   {
+    "ano": 2017,
+    "autos": 27429,
+    "valor": 929119721.5099374
+   },
+   {
+    "ano": 2018,
+    "autos": 27269,
+    "valor": 990738826.0300558
+   },
+   {
+    "ano": 2019,
+    "autos": 25547,
+    "valor": 664068588.0144235
+   },
+   {
+    "ano": 2020,
+    "autos": 20955,
+    "valor": 394897818.6684827
+   },
+   {
+    "ano": 2021,
+    "autos": 20808,
+    "valor": 630402827.0243423
+   },
+   {
+    "ano": 2022,
+    "autos": 18077,
+    "valor": 1154026948.159196
+   },
+   {
+    "ano": 2023,
+    "autos": 18005,
+    "valor": 1143433323.1989915
+   },
+   {
+    "ano": 2024,
+    "autos": 14516,
+    "valor": 1073224322.2277268
+   },
+   {
+    "ano": 2025,
+    "autos": 14746,
+    "valor": 580338375.1399915
+   },
+   {
+    "ano": 2026,
+    "autos": 5855,
+    "valor": 244937500.44999787
+   }
+  ],
+  "porSituacao": [
+   {
+    "nome": "Remissão",
+    "total": 172081
+   },
+   {
+    "nome": "Quitação do DAE",
+    "total": 140640
+   },
+   {
+    "nome": "Em processamento",
+    "total": 121533
+   },
+   {
+    "nome": "Encaminhado p/Insc divida ativa",
+    "total": 118879
+   },
+   {
+    "nome": "Apto Envio AGE",
+    "total": 12141
+   },
+   {
+    "nome": "Anulação de Processo",
+    "total": 6776
+   },
+   {
+    "nome": "Cumprimento de Advertência",
+    "total": 4909
+   },
+   {
+    "nome": "Prescrição",
+    "total": 4026
+   },
+   {
+    "nome": "Defesa Deferida",
+    "total": 625
+   },
+   {
+    "nome": "PECMA",
+    "total": 261
+   },
+   {
+    "nome": "Recurso Deferido",
+    "total": 215
+   },
+   {
+    "nome": "ART 47 - 46668/2014",
+    "total": 89
+   },
+   {
+    "nome": "Arquivado",
+    "total": 26
+   },
+   {
+    "nome": "Decadência",
+    "total": 8
+   }
+  ],
+  "valorPorSituacao": [
+   {
+    "nome": "Em processamento",
+    "valor": 5815301028.071293
+   },
+   {
+    "nome": "Encaminhado p/Insc divida ativa",
+    "valor": 2253235190.5350237
+   },
+   {
+    "nome": "Quitação do DAE",
+    "valor": 1399202849.4391818
+   },
+   {
+    "nome": "Anulação de Processo",
+    "valor": 1061419497.0003706
+   },
+   {
+    "nome": "Remissão",
+    "valor": 482024102.0699934
+   },
+   {
+    "nome": "Apto Envio AGE",
+    "valor": 340715579.1618002
+   },
+   {
+    "nome": "Prescrição",
+    "valor": 55453008.440000236
+   },
+   {
+    "nome": "Defesa Deferida",
+    "valor": 29597807.492500033
+   },
+   {
+    "nome": "PECMA",
+    "valor": 26505354.236
+   },
+   {
+    "nome": "ART 47 - 46668/2014",
+    "valor": 9701542.3
+   },
+   {
+    "nome": "Recurso Deferido",
+    "valor": 6998728.270000003
+   },
+   {
+    "nome": "Cumprimento de Advertência",
+    "valor": 2235291.010158998
+   },
+   {
+    "nome": "Decadência",
+    "valor": 84493.85
+   },
+   {
+    "nome": "Arquivado",
+    "valor": 54347.200000000004
+   },
+   {
+    "nome": "(sem situação)",
+    "valor": 0
+   }
+  ]
+ },
+ "denuncias": {
+  "total": 102369,
+  "porMunicipio": [
+   {
+    "nome": "BELO HORIZONTE",
+    "total": 6070
+   },
+   {
+    "nome": "CONTAGEM",
+    "total": 2064
+   },
+   {
+    "nome": "UBERLÂNDIA",
+    "total": 1606
+   },
+   {
+    "nome": "JUIZ DE FORA",
+    "total": 1371
+   },
+   {
+    "nome": "ITAÚNA",
+    "total": 1261
+   },
+   {
+    "nome": "DIVINÓPOLIS",
+    "total": 1203
+   },
+   {
+    "nome": "MONTES CLAROS",
+    "total": 1097
+   },
+   {
+    "nome": "GOVERNADOR VALADARES",
+    "total": 1083
+   },
+   {
+    "nome": "BETIM",
+    "total": 1068
+   },
+   {
+    "nome": "DIAMANTINA",
+    "total": 939
+   },
+   {
+    "nome": "NOVA LIMA",
+    "total": 911
+   },
+   {
+    "nome": "SETE LAGOAS",
+    "total": 899
+   },
+   {
+    "nome": "RIBEIRÃO DAS NEVES",
+    "total": 877
+   },
+   {
+    "nome": "OURO PRETO",
+    "total": 741
+   },
+   {
+    "nome": "SANTA LUZIA",
+    "total": 702
+   },
+   {
+    "nome": "SABARÁ",
+    "total": 699
+   },
+   {
+    "nome": "CAMANDUCAIA",
+    "total": 661
+   },
+   {
+    "nome": "ESMERALDAS",
+    "total": 647
+   },
+   {
+    "nome": "UBÁ",
+    "total": 613
+   },
+   {
+    "nome": "BRUMADINHO",
+    "total": 605
+   },
+   {
+    "nome": "CARATINGA",
+    "total": 603
+   },
+   {
+    "nome": "VESPASIANO",
+    "total": 595
+   },
+   {
+    "nome": "VARGINHA",
+    "total": 491
+   },
+   {
+    "nome": "IPATINGA",
+    "total": 490
+   },
+   {
+    "nome": "UNAÍ",
+    "total": 453
+   },
+   {
+    "nome": "POUSO ALEGRE",
+    "total": 445
+   },
+   {
+    "nome": "PIRANGA",
+    "total": 438
+   },
+   {
+    "nome": "JABOTICATUBAS",
+    "total": 436
+   },
+   {
+    "nome": "IBIRITÉ",
+    "total": 432
+   },
+   {
+    "nome": "PARÁ DE MINAS",
+    "total": 430
+   },
+   {
+    "nome": "SÃO JOÃO DEL REI",
+    "total": 414
+   },
+   {
+    "nome": "EXTREMA",
+    "total": 410
+   },
+   {
+    "nome": "ITANHANDU",
+    "total": 400
+   },
+   {
+    "nome": "BELO ORIENTE",
+    "total": 398
+   },
+   {
+    "nome": "TEÓFILO OTONI",
+    "total": 390
+   },
+   {
+    "nome": "MATEUS LEME",
+    "total": 379
+   },
+   {
+    "nome": "ITAMARANDIBA",
+    "total": 378
+   },
+   {
+    "nome": "PARACATU",
+    "total": 369
+   },
+   {
+    "nome": "ITABIRITO",
+    "total": 368
+   },
+   {
+    "nome": "SENADOR MODESTINO GONÇALVES",
+    "total": 367
+   },
+   {
+    "nome": "MANHUAÇU",
+    "total": 359
+   },
+   {
+    "nome": "GUARACIABA",
+    "total": 348
+   },
+   {
+    "nome": "VIÇOSA",
+    "total": 338
+   },
+   {
+    "nome": "TRÊS CORAÇÕES",
+    "total": 337
+   },
+   {
+    "nome": "CAPITÓLIO",
+    "total": 336
+   },
+   {
+    "nome": "BARBACENA",
+    "total": 331
+   },
+   {
+    "nome": "AÇUCENA",
+    "total": 330
+   },
+   {
+    "nome": "MATOZINHOS",
+    "total": 330
+   },
+   {
+    "nome": "IGARAPÉ",
+    "total": 328
+   },
+   {
+    "nome": "POÇOS DE CALDAS",
+    "total": 327
+   },
+   {
+    "nome": "SERRO",
+    "total": 327
+   },
+   {
+    "nome": "PATOS DE MINAS",
+    "total": 326
+   },
+   {
+    "nome": "GONÇALVES",
+    "total": 314
+   },
+   {
+    "nome": "CLÁUDIO",
+    "total": 312
+   },
+   {
+    "nome": "PEDRO LEOPOLDO",
+    "total": 312
+   },
+   {
+    "nome": "TIMÓTEO",
+    "total": 309
+   },
+   {
+    "nome": "CURVELO",
+    "total": 305
+   },
+   {
+    "nome": "LAGOA SANTA",
+    "total": 304
+   },
+   {
+    "nome": "SÃO TOMÉ DAS LETRAS",
+    "total": 302
+   },
+   {
+    "nome": "MINAS NOVAS",
+    "total": 300
+   },
+   {
+    "nome": "MARIANA",
+    "total": 295
+   },
+   {
+    "nome": "CAETÉ",
+    "total": 289
+   },
+   {
+    "nome": "SANTO ANTÔNIO DO MONTE",
+    "total": 288
+   },
+   {
+    "nome": "UBERABA",
+    "total": 288
+   },
+   {
+    "nome": "CONSELHEIRO LAFAIETE",
+    "total": 287
+   },
+   {
+    "nome": "CORDISBURGO",
+    "total": 282
+   },
+   {
+    "nome": "VISCONDE DO RIO BRANCO",
+    "total": 276
+   },
+   {
+    "nome": "NOVA SERRANA",
+    "total": 266
+   },
+   {
+    "nome": "CARMO DO CAJURU",
+    "total": 258
+   },
+   {
+    "nome": "ITABIRA",
+    "total": 258
+   },
+   {
+    "nome": "LAVRAS",
+    "total": 258
+   },
+   {
+    "nome": "COROACI",
+    "total": 257
+   },
+   {
+    "nome": "ARAGUARI",
+    "total": 255
+   },
+   {
+    "nome": "ITAJUBÁ",
+    "total": 254
+   },
+   {
+    "nome": "CARANDAÍ",
+    "total": 243
+   },
+   {
+    "nome": "MURIAÉ",
+    "total": 242
+   },
+   {
+    "nome": "ITATIAIUÇU",
+    "total": 241
+   },
+   {
+    "nome": "BOCAINA DE MINAS",
+    "total": 239
+   },
+   {
+    "nome": "ARCOS",
+    "total": 236
+   },
+   {
+    "nome": "OURO BRANCO",
+    "total": 236
+   },
+   {
+    "nome": "POMPÉU",
+    "total": 234
+   },
+   {
+    "nome": "RIO ACIMA",
+    "total": 234
+   },
+   {
+    "nome": "CONSELHEIRO PENA",
+    "total": 228
+   },
+   {
+    "nome": "BELO VALE",
+    "total": 227
+   },
+   {
+    "nome": "SANTA BÁRBARA",
+    "total": 227
+   },
+   {
+    "nome": "SÃO LOURENÇO",
+    "total": 225
+   },
+   {
+    "nome": "FORMIGA",
+    "total": 224
+   },
+   {
+    "nome": "JANAÚBA",
+    "total": 221
+   },
+   {
+    "nome": "CAPELINHA",
+    "total": 220
+   },
+   {
+    "nome": "CATAGUASES",
+    "total": 220
+   },
+   {
+    "nome": "CONCEIÇÃO DO MATO DENTRO",
+    "total": 219
+   },
+   {
+    "nome": "CORONEL FABRICIANO",
+    "total": 219
+   },
+   {
+    "nome": "SÃO DOMINGOS DO PRATA",
+    "total": 217
+   },
+   {
+    "nome": "CONGONHAS",
+    "total": 216
+   },
+   {
+    "nome": "GOUVEIA",
+    "total": 214
+   },
+   {
+    "nome": "SAPUCAÍ-MIRIM",
+    "total": 214
+   },
+   {
+    "nome": "BARÃO DE COCAIS",
+    "total": 210
+   },
+   {
+    "nome": "ITAGUARA",
+    "total": 209
+   },
+   {
+    "nome": "MACHADO",
+    "total": 208
+   },
+   {
+    "nome": "SANTANA DO PARAÍSO",
+    "total": 208
+   },
+   {
+    "nome": "ITAPECERICA",
+    "total": 207
+   },
+   {
+    "nome": "MERCÊS",
+    "total": 202
+   },
+   {
+    "nome": "SÃO JOSÉ DA LAPA",
+    "total": 202
+   },
+   {
+    "nome": "BRAZÓPOLIS",
+    "total": 199
+   },
+   {
+    "nome": "CARMÓPOLIS DE MINAS",
+    "total": 199
+   },
+   {
+    "nome": "NOVO CRUZEIRO",
+    "total": 198
+   },
+   {
+    "nome": "INHAPIM",
+    "total": 196
+   },
+   {
+    "nome": "ITAMONTE",
+    "total": 192
+   },
+   {
+    "nome": "JOÃO MONLEVADE",
+    "total": 192
+   },
+   {
+    "nome": "PIRANGUÇU",
+    "total": 191
+   },
+   {
+    "nome": "TARUMIRIM",
+    "total": 191
+   },
+   {
+    "nome": "PARAOPEBA",
+    "total": 189
+   },
+   {
+    "nome": "ERVÁLIA",
+    "total": 187
+   },
+   {
+    "nome": "SÃO GERALDO",
+    "total": 187
+   },
+   {
+    "nome": "TAIOBEIRAS",
+    "total": 187
+   },
+   {
+    "nome": "BOM JESUS DO GALHO",
+    "total": 186
+   },
+   {
+    "nome": "COLUNA",
+    "total": 186
+   },
+   {
+    "nome": "ANDRADAS",
+    "total": 184
+   },
+   {
+    "nome": "FELIXLÂNDIA",
+    "total": 184
+   },
+   {
+    "nome": "BOM DESPACHO",
+    "total": 180
+   }
+  ],
+  "porSituacao": [
+   {
+    "nome": "Finalizada",
+    "total": 79878
+   },
+   {
+    "nome": "Anulada",
+    "total": 20560
+   },
+   {
+    "nome": "Em andamento",
+    "total": 1931
+   }
+  ],
+  "porAno": [
+   {
+    "ano": 2015,
+    "total": 5067
+   },
+   {
+    "ano": 2016,
+    "total": 7336
+   },
+   {
+    "ano": 2017,
+    "total": 6904
+   },
+   {
+    "ano": 2018,
+    "total": 5538
+   },
+   {
+    "ano": 2019,
+    "total": 8654
+   },
+   {
+    "ano": 2020,
+    "total": 8797
+   },
+   {
+    "ano": 2021,
+    "total": 10790
+   },
+   {
+    "ano": 2022,
+    "total": 8014
+   },
+   {
+    "ano": 2023,
+    "total": 11288
+   },
+   {
+    "ano": 2024,
+    "total": 12664
+   },
+   {
+    "ano": 2025,
+    "total": 12258
+   },
+   {
+    "ano": 2026,
+    "total": 5059
+   }
+  ]
+ },
+ "fiscalizacoes": {
+  "total": 38445,
+  "porRegional": [
+   {
+    "nome": "LM",
+    "total": 5962
+   },
+   {
+    "nome": "NM",
+    "total": 5501
+   },
+   {
+    "nome": "SM",
+    "total": 5202
+   },
+   {
+    "nome": "ZM",
+    "total": 4409
+   },
+   {
+    "nome": "CM",
+    "total": 4193
+   },
+   {
+    "nome": "TM",
+    "total": 3778
+   },
+   {
+    "nome": "JEQ",
+    "total": 3741
+   },
+   {
+    "nome": "ASF",
+    "total": 2781
+   },
+   {
+    "nome": "NOR",
+    "total": 2700
+   }
+  ],
+  "porTipologia": [
+   {
+    "nome": "Flora",
+    "total": 20116
+   },
+   {
+    "nome": "Fauna",
+    "total": 6365
+   },
+   {
+    "nome": "Atividades Potencialmente Poluidoras",
+    "total": 6091
+   },
+   {
+    "nome": "Recursos Hídricos",
+    "total": 3509
+   },
+   {
+    "nome": "Pesca",
+    "total": 1251
+   },
+   {
+    "nome": "Não Passível",
+    "total": 1113
+   }
+  ],
+  "porMunicipio": [
+   {
+    "nome": "Montes Claros",
+    "total": 1302
+   },
+   {
+    "nome": "Unaí",
+    "total": 503
+   },
+   {
+    "nome": "Diamantina",
+    "total": 465
+   },
+   {
+    "nome": "Paracatu",
+    "total": 423
+   },
+   {
+    "nome": "Tiros",
+    "total": 359
+   },
+   {
+    "nome": "Uberlândia",
+    "total": 320
+   },
+   {
+    "nome": "Manhuaçu",
+    "total": 309
+   },
+   {
+    "nome": "Belo Horizonte",
+    "total": 296
+   },
+   {
+    "nome": "São Gonçalo do Abaeté",
+    "total": 292
+   },
+   {
+    "nome": "Governador Valadares",
+    "total": 286
+   },
+   {
+    "nome": "Taiobeiras",
+    "total": 269
+   },
+   {
+    "nome": "Sete Lagoas",
+    "total": 266
+   },
+   {
+    "nome": "Esmeraldas",
+    "total": 257
+   },
+   {
+    "nome": "João Pinheiro",
+    "total": 253
+   },
+   {
+    "nome": "Divinópolis",
+    "total": 242
+   },
+   {
+    "nome": "Patos de Minas",
+    "total": 238
+   },
+   {
+    "nome": "Juiz de Fora",
+    "total": 237
+   },
+   {
+    "nome": "Teófilo Otoni",
+    "total": 236
+   },
+   {
+    "nome": "Mariana",
+    "total": 234
+   },
+   {
+    "nome": "Itabira",
+    "total": 228
+   },
+   {
+    "nome": "Buritis",
+    "total": 225
+   },
+   {
+    "nome": "Timóteo",
+    "total": 222
+   },
+   {
+    "nome": "Almenara",
+    "total": 220
+   },
+   {
+    "nome": "Caratinga",
+    "total": 218
+   },
+   {
+    "nome": "Mutum",
+    "total": 215
+   },
+   {
+    "nome": "Ouro Preto",
+    "total": 215
+   },
+   {
+    "nome": "Morada Nova de Minas",
+    "total": 209
+   },
+   {
+    "nome": "Conselheiro Pena",
+    "total": 207
+   },
+   {
+    "nome": "Douradoquara",
+    "total": 205
+   },
+   {
+    "nome": "Araguari",
+    "total": 204
+   },
+   {
+    "nome": "Campo Belo",
+    "total": 203
+   },
+   {
+    "nome": "Betim",
+    "total": 193
+   },
+   {
+    "nome": "Formiga",
+    "total": 193
+   },
+   {
+    "nome": "Curvelo",
+    "total": 186
+   },
+   {
+    "nome": "Jequitinhonha",
+    "total": 186
+   },
+   {
+    "nome": "São Francisco",
+    "total": 183
+   },
+   {
+    "nome": "Três Marias",
+    "total": 180
+   },
+   {
+    "nome": "Uberaba",
+    "total": 178
+   },
+   {
+    "nome": "Arinos",
+    "total": 177
+   },
+   {
+    "nome": "Divisópolis",
+    "total": 174
+   },
+   {
+    "nome": "Ponte Nova",
+    "total": 171
+   },
+   {
+    "nome": "Pouso Alegre",
+    "total": 164
+   },
+   {
+    "nome": "Gameleiras",
+    "total": 159
+   },
+   {
+    "nome": "Januária",
+    "total": 159
+   },
+   {
+    "nome": "Janaúba",
+    "total": 157
+   },
+   {
+    "nome": "Candeias",
+    "total": 153
+   },
+   {
+    "nome": "Ubá",
+    "total": 150
+   },
+   {
+    "nome": "Barbacena",
+    "total": 149
+   },
+   {
+    "nome": "Itamarandiba",
+    "total": 149
+   },
+   {
+    "nome": "Rio Paranaíba",
+    "total": 143
+   },
+   {
+    "nome": "Pocrane",
+    "total": 141
+   },
+   {
+    "nome": "Conceição do Mato Dentro",
+    "total": 140
+   },
+   {
+    "nome": "Buritizeiro",
+    "total": 139
+   },
+   {
+    "nome": "Rio Pardo de Minas",
+    "total": 139
+   },
+   {
+    "nome": "Sacramento",
+    "total": 137
+   },
+   {
+    "nome": "Santa Rita do Sapucaí",
+    "total": 136
+   },
+   {
+    "nome": "Capelinha",
+    "total": 134
+   },
+   {
+    "nome": "Presidente Olegário",
+    "total": 134
+   },
+   {
+    "nome": "Poços de Caldas",
+    "total": 133
+   },
+   {
+    "nome": "Carmo do Rio Claro",
+    "total": 124
+   },
+   {
+    "nome": "Jaíba",
+    "total": 124
+   },
+   {
+    "nome": "Cataguases",
+    "total": 122
+   },
+   {
+    "nome": "Serro",
+    "total": 122
+   },
+   {
+    "nome": "Brasilândia de Minas",
+    "total": 119
+   },
+   {
+    "nome": "Lajinha",
+    "total": 119
+   },
+   {
+    "nome": "Taquaraçu de Minas",
+    "total": 117
+   },
+   {
+    "nome": "Novo Cruzeiro",
+    "total": 116
+   },
+   {
+    "nome": "Caputira",
+    "total": 114
+   },
+   {
+    "nome": "Coração de Jesus",
+    "total": 114
+   },
+   {
+    "nome": "Antônio Dias",
+    "total": 113
+   },
+   {
+    "nome": "São João da Ponte",
+    "total": 113
+   },
+   {
+    "nome": "Luz",
+    "total": 112
+   },
+   {
+    "nome": "Santos Dumont",
+    "total": 111
+   },
+   {
+    "nome": "Minas Novas",
+    "total": 110
+   },
+   {
+    "nome": "Araxá",
+    "total": 109
+   },
+   {
+    "nome": "Monte Carmelo",
+    "total": 109
+   },
+   {
+    "nome": "Caraí",
+    "total": 108
+   },
+   {
+    "nome": "Pedra Azul",
+    "total": 108
+   },
+   {
+    "nome": "Chapada Gaúcha",
+    "total": 107
+   },
+   {
+    "nome": "Lavras",
+    "total": 105
+   },
+   {
+    "nome": "Porteirinha",
+    "total": 105
+   },
+   {
+    "nome": "Francisco Sá",
+    "total": 103
+   },
+   {
+    "nome": "Pará de Minas",
+    "total": 102
+   },
+   {
+    "nome": "São Roque de Minas",
+    "total": 98
+   },
+   {
+    "nome": "Ituiutaba",
+    "total": 97
+   },
+   {
+    "nome": "Três Corações",
+    "total": 97
+   },
+   {
+    "nome": "Santa Juliana",
+    "total": 95
+   },
+   {
+    "nome": "Além Paraíba",
+    "total": 94
+   },
+   {
+    "nome": "São João del Rei",
+    "total": 94
+   },
+   {
+    "nome": "Grão Mogol",
+    "total": 92
+   },
+   {
+    "nome": "Patrocínio",
+    "total": 92
+   },
+   {
+    "nome": "Abadia dos Dourados",
+    "total": 91
+   },
+   {
+    "nome": "Guapé",
+    "total": 91
+   },
+   {
+    "nome": "Ferros",
+    "total": 90
+   },
+   {
+    "nome": "Vazante",
+    "total": 90
+   },
+   {
+    "nome": "Coromandel",
+    "total": 89
+   },
+   {
+    "nome": "Itumirim",
+    "total": 89
+   },
+   {
+    "nome": "Joaquim Felício",
+    "total": 89
+   },
+   {
+    "nome": "Campos Gerais",
+    "total": 88
+   },
+   {
+    "nome": "Conselheiro Lafaiete",
+    "total": 88
+   },
+   {
+    "nome": "Santo Antônio do Monte",
+    "total": 87
+   },
+   {
+    "nome": "São Gonçalo do Rio Abaixo",
+    "total": 87
+   },
+   {
+    "nome": "Simonésia",
+    "total": 87
+   },
+   {
+    "nome": "Boa Esperança",
+    "total": 86
+   },
+   {
+    "nome": "Mateus Leme",
+    "total": 85
+   },
+   {
+    "nome": "Varginha",
+    "total": 85
+   },
+   {
+    "nome": "Varzelândia",
+    "total": 85
+   },
+   {
+    "nome": "Águas Formosas",
+    "total": 83
+   },
+   {
+    "nome": "Alto Rio Doce",
+    "total": 83
+   },
+   {
+    "nome": "Brumadinho",
+    "total": 83
+   },
+   {
+    "nome": "Ipanema",
+    "total": 83
+   },
+   {
+    "nome": "Florestal",
+    "total": 82
+   },
+   {
+    "nome": "Malacacheta",
+    "total": 82
+   },
+   {
+    "nome": "Patis",
+    "total": 82
+   },
+   {
+    "nome": "Cristais",
+    "total": 81
+   },
+   {
+    "nome": "Raul Soares",
+    "total": 81
+   },
+   {
+    "nome": "Turmalina",
+    "total": 81
+   },
+   {
+    "nome": "Pedras de Maria da Cruz",
+    "total": 80
+   },
+   {
+    "nome": "Coluna",
+    "total": 79
+   },
+   {
+    "nome": "Itatiaiuçu",
+    "total": 79
+   }
+  ],
+  "porAno": [
+   {
+    "ano": 2022,
+    "total": 1
+   },
+   {
+    "ano": 2023,
+    "total": 13
+   },
+   {
+    "ano": 2024,
+    "total": 22
+   },
+   {
+    "ano": 2025,
+    "total": 16885
+   },
+   {
+    "ano": 2026,
+    "total": 21372
+   }
+  ]
+ },
+ "barragens": [
+  {
+   "Id Sigibar": 101,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Conceição do Pará",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 1087,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 1088,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Serra do Salitre",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 1089,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Serra do Salitre",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 1090,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Serra do Salitre",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 11,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 112,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itabirito",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "MEDIO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 113,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 115,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itabirito",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 12,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 124,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 125,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 127,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 128,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 129,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 130,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "São Gonçalo do Rio Abaixo",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 131,
+   "FINALIDADE": "Barragem de rejeitos da indústria",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 132,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 134,
+   "FINALIDADE": "Barragem de rejeitos da indústria",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Três Marias",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 135,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itaúna",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "MEDIO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 136,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itaúna",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "MEDIO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 137,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 14,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Conceição do Mato Dentro",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 142,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Pedra Azul",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 143,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 144,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Pedra Azul",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 1447,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Belo Horizonte",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "D",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 149,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 153,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "São Tiago",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 16,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Tapira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 1627,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Ipatinga",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "D",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 169,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Lagoa da Prata",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 17,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Tapira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 170,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "São Gonçalo do Rio Abaixo",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 171,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itatiaiuçu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 172,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "São Gonçalo do Rio Abaixo",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 173,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itatiaiuçu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 174,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Barão de Cocais",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 177,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "São Gonçalo do Rio Abaixo",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 18,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Uberaba",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 180,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "São Gonçalo do Rio Abaixo",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 186,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Santa Bárbara",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 188,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Santa Bárbara",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 1887,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 189,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Rio Piracicaba",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 19,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Conceição do Mato Dentro",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 191,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Astolfo Dutra",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "D",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 192,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 193,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 20,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Conceição do Mato Dentro",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 204,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Barão de Cocais",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 205,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 206,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Barão de Cocais",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 21,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Conceição do Mato Dentro",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 211,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 214,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Barão de Cocais",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 22,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Santo Antônio do Grama",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 224,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 226,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 232,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 240,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 241,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Caranaíba",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 242,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 243,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 244,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 245,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 246,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 247,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 248,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 249,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 250,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Congonhas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 251,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 2589,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Santa Bárbara",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 259,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 261,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 262,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 263,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Caeté",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 272,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Antônio Dias",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "D",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 273,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 274,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itabira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 278,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Congonhas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 279,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Paracatu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 280,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 281,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Paracatu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 282,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 283,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Santa Bárbara",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 286,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 287,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Congonhas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 288,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Congonhas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 289,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Congonhas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 300,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Vazante",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 301,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Itatiaiuçu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "ALTO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 303,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Paracatu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 304,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Paracatu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 305,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Paracatu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 306,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Paracatu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 307,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Poços de Caldas",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 311,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "MEDIO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 312,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "MEDIO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 313,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Catas Altas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 314,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 315,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "ALTO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 316,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "ALTO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 319,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 321,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "ALTO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 322,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 323,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 324,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 326,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Matipó",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 329,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itatiaiuçu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 334,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Nova Era",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 335,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "MEDIO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 337,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabirito",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 340,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Catas Altas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "MEDIO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 342,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 343,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Riacho dos Machados",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 347,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Patos de Minas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 350,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 352,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 354,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 355,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Mariana",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 356,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Patos de Minas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 357,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Juiz de Fora",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 358,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Juiz de Fora",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 360,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 361,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Lagamar",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 362,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 363,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 364,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Congonhas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 365,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 366,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Congonhas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 367,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Congonhas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 368,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Belo Vale",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 369,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 370,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 371,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 372,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 373,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "ALTO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 374,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Caranaíba",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "D",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 375,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 376,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itabirito",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 379,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Belo Vale",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 380,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 381,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Inconclusivo",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 382,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 384,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Inconclusivo",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "MEDIO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 385,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 386,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 387,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 388,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Sabará",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 390,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 392,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 393,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 398,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itabirito",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 400,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itabirito",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 402,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Igarapé",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 405,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 406,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Igarapé",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 407,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 416,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Itabirito",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 417,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Poços de Caldas",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 418,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Poços de Caldas",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 419,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Poços de Caldas",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 42,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Patos de Minas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 420,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Poços de Caldas",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 421,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Poços de Caldas",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 422,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Poços de Caldas",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 423,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Poços de Caldas",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 424,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Poços de Caldas",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 454,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Betim",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 455,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 462,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Tapira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 463,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Tapira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 464,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Tapira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 465,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Tapira",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 469,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 470,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Jeceaba",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 471,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Rio Acima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 472,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Sarzedo",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 473,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 474,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Rio Acima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 476,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 478,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Arcos",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 479,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Sarzedo",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 481,
+   "FINALIDADE": "Barragem de rejeitos da indústria",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Três Marias",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 482,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 485,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itabirito",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "D",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 486,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 488,
+   "FINALIDADE": "Barragem de rejeitos da indústria",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Três Marias",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 490,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabirito",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 491,
+   "FINALIDADE": "Barragem de rejeitos da indústria",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Três Marias",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 492,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Sabará",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 493,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 494,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 495,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 496,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 497,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Nova Lima",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 500,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Miraí",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 501,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Santa Bárbara",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 502,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Arcos",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 505,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Itamarati de Minas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 508,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Paracatu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 512,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Ouro Preto",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "ALTO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 513,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Paracatu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 514,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Paracatu",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 523,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Riacho dos Machados",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "D",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 530,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Sarzedo",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 531,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Montante",
+   "MUNICÍPIO": "Fortaleza de Minas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 532,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos de mineração",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Fortaleza de Minas",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 538,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "João Pinheiro",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "D",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 7,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Araxá",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "BAIXO",
+   "CLASSE": "E",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 8,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Itabirito",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 801,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 802,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Linha de Centro",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 843,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 844,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Brumadinho",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 90,
+   "FINALIDADE": "Barragem de rejeitos de mineração",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Salto da Divisa",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 91,
+   "FINALIDADE": "Barragem de água ou líquidos associados a processos industriais",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Ouro Branco",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "A",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 92,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Uberaba",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 93,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Uberaba",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 94,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Uberaba",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 942,
+   "FINALIDADE": "Barragem de contenção de sedimentos",
+   "MÉTODO CONSTRUTIVO": "Etapa Única",
+   "MUNICÍPIO": "Conceição do Mato Dentro",
+   "ATIVIDADE": "Mineração",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "MEDIO",
+   "CLASSE": "C",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 95,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Uberaba",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "Id Sigibar": 96,
+   "FINALIDADE": "Barragem de resíduos industriais",
+   "MÉTODO CONSTRUTIVO": "Jusante",
+   "MUNICÍPIO": "Uberaba",
+   "ATIVIDADE": " Indústria",
+   "CATEGORIA DE RISCO": "BAIXO",
+   "POTENCIAL DE DANO AMBIENTAL": "ALTO",
+   "CLASSE": "B",
+   "_entidade": "gestao_e_classificacao_barragens",
+   "_dado_congelado_em": "2026-08-19"
+  }
+ ],
+ "barragensEmEmergencia": [
+  {
+   "ID": 1,
+   "EMPREENDED": "VALE S.A.",
+   "NOME_SIGBM": "Barragem 7A",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 1",
+   "MUNICIPIO": "Nova Lima",
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "ID": 10,
+   "EMPREENDED": "Emicon Mineração E Terraplanagem Ltda.",
+   "NOME_SIGBM": "Barragem B1-A",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 2",
+   "MUNICIPIO": "Brumadinho",
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "ID": 11,
+   "EMPREENDED": "GREEN METALS NOVA ERA SOLUCOES AMBIENTAIS S.A",
+   "NOME_SIGBM": "Barragem Mãe D'Água",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 1",
+   "MUNICIPIO": "Nova Era",
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "ID": 12,
+   "EMPREENDED": "Morro Agudo Minerais Ltda",
+   "NOME_SIGBM": "Barragem 3",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 1",
+   "MUNICIPIO": "Paracatu",
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "ID": 13,
+   "EMPREENDED": "Morro Agudo Minerais Ltda",
+   "NOME_SIGBM": "Barragem 2",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 1",
+   "MUNICIPIO": null,
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "ID": 2,
+   "EMPREENDED": "ARCELORMITTAL BRASIL S.A.",
+   "NOME_SIGBM": "Barragem de Rejeitos",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 3",
+   "MUNICIPIO": "Itatiaiuçu",
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "ID": 3,
+   "EMPREENDED": "VALE S.A.",
+   "NOME_SIGBM": "Forquilha I",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 2",
+   "MUNICIPIO": "Ouro Preto",
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "ID": 4,
+   "EMPREENDED": "VALE S.A.",
+   "NOME_SIGBM": "Forquilha II",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 2",
+   "MUNICIPIO": "Ouro Preto",
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "ID": 5,
+   "EMPREENDED": "VALE S.A.",
+   "NOME_SIGBM": "Forquilha III",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 2",
+   "MUNICIPIO": "Ouro Preto",
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "ID": 6,
+   "EMPREENDED": "VALE S.A.",
+   "NOME_SIGBM": "Sistema Pontal",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 1",
+   "MUNICIPIO": "Itabira",
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "ID": 7,
+   "EMPREENDED": "VALE S.A.",
+   "NOME_SIGBM": "Sul Superior",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 2",
+   "MUNICIPIO": "Barão de Cocais",
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "ID": 8,
+   "EMPREENDED": "VALE S.A.",
+   "NOME_SIGBM": "Xingu",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 1",
+   "MUNICIPIO": "Mariana",
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  },
+  {
+   "ID": 9,
+   "EMPREENDED": "Serra da Fortaleza Mineração e Metalurgia Ltda",
+   "NOME_SIGBM": "Barragem de Rejeito",
+   "PDA_DECRET": "ALTO",
+   "EMERGENCIA": "Nível 1",
+   "MUNICIPIO": "Fortaleza de Minas",
+   "_entidade": "barragens_emergencia",
+   "_dado_congelado_em": "2026-08-19"
+  }
+ ]
+}
