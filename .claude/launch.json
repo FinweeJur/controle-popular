@@ -175,6 +175,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3038"],
       "port": 3038
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-acordos-mg) -- dashboard/graficos/planilha de /ambiental/tac (TACs ambientais de mineradoras). Mesma razao das entradas acima.",
+      "name": "cp-acordos-mg-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3040"],
+      "port": 3040
     }
   ]
 }

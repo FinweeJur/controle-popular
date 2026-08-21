@@ -181,6 +181,14 @@ convênios, decisões, barragens, estudos, contratos —, ela **precisa** ter:
    município). Filtro que devolve vazio sempre é pior que filtro nenhum.
 5. **Ordenação por coluna** — inclusive por tipo/classe, não só por data.
 
+⚠️ **Página que lê do banco só mostra as cinco coisas quando o banco responde.**
+`/ambiental/licenciamento` e `/ambiental/copam` já têm gráfico, cartões, CSV,
+filtro e ordenação escritos — e renderizam "Nenhuma licença coletada ainda"
+enquanto a Neon estiver em HTTP 402. Não é regressão nem código faltando:
+conferir a regra nessas duas exige banco de pé. As que leem de arquivo
+(`/ambiental/tac`, `/convenios`, `/legislacao`, `/patrimonio-cultural`,
+`/decisoes-lai`, `/barragens/descaracterizacao`) mostram tudo agora.
+
 Três coisas que essa regra **não** dispensa:
 
 - **A página de servidor importa o agregado (`COBERTURA_*`), nunca o array

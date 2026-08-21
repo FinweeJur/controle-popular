@@ -1,4 +1,4 @@
-import { asc, desc, eq, sql } from "drizzle-orm";
+import { asc, desc, eq, isNotNull, isNull, sql } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { ambiental_licenciamento, ref_municipios_mg } from "@/lib/db/schema";
 
@@ -117,6 +117,47 @@ export async function contarLicenciamento(): Promise<ContagemLicenciamento> {
     .orderBy(asc(ambiental_licenciamento.classe));
 
   return { total: totalRow?.n ?? 0, porSetor, porModalidade, porClasse };
+}
+
+export interface LicenciamentoPorAno {
+  ano: number;
+  total: number;
+}
+
+export interface ContagemLicenciamentoPorAno {
+  porAno: LicenciamentoPorAno[];
+  /** Licenças sem `data_emissao` na fonte — nunca somadas em silêncio a um
+   *  ano, aparecem como categoria própria na página. */
+  semDataEmissao: number;
+}
+
+/**
+ * Série temporal para o gráfico "por ano" de `/ambiental/licenciamento` —
+ * agregada no banco (nunca traz uma linha por licença). Mesmo padrão de
+ * `verbasPorAno` em `lib/db/queries/betim.ts`: `extract(year from …)` no
+ * `groupBy`/`orderBy`, com as linhas sem data contadas à parte em vez de
+ * caírem num "ano" inventado.
+ */
+export async function contarLicenciamentoPorAno(): Promise<ContagemLicenciamentoPorAno> {
+  const db = getDb();
+  if (!db) return { porAno: [], semDataEmissao: 0 };
+
+  const porAno = await db
+    .select({
+      ano: sql<number>`extract(year from ${ambiental_licenciamento.data_emissao})::int`,
+      total: sql<number>`count(*)::int`,
+    })
+    .from(ambiental_licenciamento)
+    .where(isNotNull(ambiental_licenciamento.data_emissao))
+    .groupBy(sql`extract(year from ${ambiental_licenciamento.data_emissao})`)
+    .orderBy(sql`extract(year from ${ambiental_licenciamento.data_emissao}) asc`);
+
+  const [semData] = await db
+    .select({ n: sql<number>`count(*)::int` })
+    .from(ambiental_licenciamento)
+    .where(isNull(ambiental_licenciamento.data_emissao));
+
+  return { porAno, semDataEmissao: semData?.n ?? 0 };
 }
 
 export interface MunicipioComLicenciamento {
