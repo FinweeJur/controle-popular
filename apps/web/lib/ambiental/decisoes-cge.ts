@@ -1,0 +1,6973 @@
+/**
+ * Decisões de recurso de LAI da CGE-MG. ARQUIVO GERADO — não editar à mão.
+ *
+ * Gerado por `scripts/coletar-decisoes-cge-mg.mts` a partir de
+ * `acessoainformacao.mg.gov.br/sistema/site/busca_decisao.aspx`. O cabeçalho
+ * daquele script documenta o protocolo ASP.NET WebForms e as armadilhas
+ * medidas — inclusive a que mais importa aqui:
+ *
+ * ═══ A SOMA POR TIPO NÃO FECHA EM 2022–2025, E ISTO NÃO FOI RESOLVIDO ═══
+ *
+ * `porTipo` de cada ano vem do filtro oficial `ddlTipoDecisao` (mesmo campo
+ * que `docs/FONTES.md` já documentava). Em 2020, 2021, 2026 a soma
+ * dos 6 tipos bate com o total do ano; em 2022, 2023, 2024, 2025 não bate —
+ * até ~50% dos registros não têm tipo atribuído nesse filtro. O coletor
+ * investigou uma hipótese nova (a pasta do link do PDF, que em parte dos
+ * registros de 2022–2025 ainda guarda um rótulo de tipo) e a hipótese **não
+ * fechou a conta**: o rótulo da pasta e o total do `ddlTipoDecisao` discordam
+ * entre si no mesmo ano (medido em 2023: pasta encontra 4 arquivos "Perda de
+ * objeto parcial", o filtro oficial dá 0 para "Perda parcial de objeto").
+ * **Não publique "total de decisões por tipo" para 2022, 2023, 2024, 2025
+ * sem resolver esta lacuna antes.** O que ela é — campo não preenchido no
+ * sistema de origem, tipo fora do dropdown, os dois — segue não investigado.
+ */
+
+export interface DecisaoRecursoCgeMg {
+  ano: number;
+  arquivo: string;
+  url: string;
+  /** Inferido do padrão da URL (`App_Data`, pasta reservada do ASP.NET que
+   *  nunca é servida) — medido 404 em 11/11 amostras, 200 em 6/6 do outro
+   *  padrão, não verificado registro a registro. */
+  linkProvavelmenteQuebrado: boolean;
+  /** Só quando a fonte guardou o órgão no caminho do PDF (estrutura antiga). */
+  orgaoSigla: string | null;
+  /** Rótulo CRU da pasta — não normalizado aos 6 rótulos do dropdown oficial. */
+  tipoPasta: string | null;
+  /** Número do processo SEI, quando o nome do arquivo o carrega. */
+  seiId: string | null;
+}
+
+export const DECISOES_CGE_MG: DecisaoRecursoCgeMg[] = [
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_14_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/AGE/Perda%20de%20objeto/Nota_Tecnica_14_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "AGE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_5_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/CBMMG/Perda%20de%20objeto/Nota_Tecnica_5_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CBMMG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_44_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/CEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_44_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_36_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/CGE/N%C3%A3o%20conhecimento/Nota_Tecnica_36_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_37_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/CGE/Perda%20de%20objeto/Nota_Tecnica_37_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_12_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/COPASA/N%C3%A3o%20conhecimento/Nota_Tecnica_12_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "COPASA",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_13_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/COPASA/N%C3%A3o%20conhecimento/Nota_Tecnica_13_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "COPASA",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_9_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/COPASA/N%C3%A3o%20conhecimento/Nota_Tecnica_9_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "COPASA",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_16_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/COPASA/Perda%20de%20objeto/Nota_Tecnica_16_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "COPASA",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_31_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/FHEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_31_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FHEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_6_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/FHEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_6_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FHEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_1_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/FHEMIG/Perda%20de%20objeto/Nota_Tecnica_1_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FHEMIG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_4_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/FUNED/Desprovimento/Nota_Tecnica_4_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FUNED",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_40_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/IMA/Desprovimento/Nota_Tecnica_40_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IMA",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_32_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/MGS/N%C3%A3o%20conhecimento/Nota_Tecnica_32_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "MGS",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_3_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/MGS/N%C3%A3o%20conhecimento/Nota_Tecnica_3_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "MGS",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_42_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/MGS/N%C3%A3o%20conhecimento/Nota_Tecnica_42_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "MGS",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_43_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/MGS/N%C3%A3o%20conhecimento/Nota_Tecnica_43_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "MGS",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_43_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/MGS/Perda%20de%20objeto/Nota_Tecnica_43_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "MGS",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_43_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/MGS/Perda%20parcial%20de%20objeto/Nota_Tecnica_43_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "MGS",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_46_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/PCMG/Perda%20de%20objeto/Nota_Tecnica_46_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_11_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/PCMG/Perda%20parcial%20de%20objeto/Nota_Tecnica_11_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_2_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/PMMG/Desprovimento/Nota_Tecnica_2_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_33_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/PMMG/Desprovimento/Nota_Tecnica_33_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_27_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_27_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_28_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_28_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_29_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_29_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_47_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/PMMG/Perda%20de%20objeto/Nota_Tecnica_47_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_2_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/PMMG/Perda%20parcial%20de%20objeto/Nota_Tecnica_2_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_35_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEE/Desprovimento/Nota_Tecnica_35_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_7_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEE/Desprovimento/Nota_Tecnica_7_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_17_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_17_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_18_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_18_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_19_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_19_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_23_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_23_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_30_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_30_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_22_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEE/Perda%20de%20objeto/Nota_Tecnica_22_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_10_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEF/Desprovimento/Nota_Tecnica_10_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_24_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEF/Desprovimento/Nota_Tecnica_24_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_25_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEF/Desprovimento/Nota_Tecnica_25_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_26_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEF/Desprovimento/Nota_Tecnica_26_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_34_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEF/Desprovimento/Nota_Tecnica_34_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_49_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEF/Desprovimento/Nota_Tecnica_49_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_41_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEJUSP/Desprovimento/Nota_Tecnica_41_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_21_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_21_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_50_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_50_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_45_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEPLAG/Desprovimento/Nota_Tecnica_45_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_8_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SEPLAG/N%C3%A3o%20conhecimento/Nota_Tecnica_8_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_38_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SES/Perda%20de%20objeto/Nota_Tecnica_38_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_48_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/SES/Perda%20parcial%20de%20objeto/Nota_Tecnica_48_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2020,
+    "arquivo": "Nota_Tecnica_39_2020.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2020/UNIMONTES/N%C3%A3o%20conhecimento/Nota_Tecnica_39_2020.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "UNIMONTES",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_26_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/AGE/Desprovimento/Nota_Tecnica_26_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "AGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_48_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/ARMBH/Desprovimento/Nota_Tecnica_48_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "ARMBH",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_54_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/CEMIG/Desprovimento/Nota_Tecnica_54_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_39_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/CEMIG/Perda%20de%20objeto/Nota_Tecnica_39_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_28_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/CGE/Desprovimento/Nota_Tecnica_28_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_55_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/CGE/Desprovimento/Nota_Tecnica_55_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_28_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/CGE/N%C3%A3o%20conhecimento/Nota_Tecnica_28_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_38_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/CGE/N%C3%A3o%20conhecimento/Nota_Tecnica_38_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_5_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/CGE/N%C3%A3o%20conhecimento/Nota_Tecnica_5_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_10_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/CGE/Perda%20de%20objeto/Nota_Tecnica_10_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_22_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/CGE/Perda%20de%20objeto/Nota_Tecnica_22_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_4_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/CODEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_4_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CODEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_50_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/COPASA/N%C3%A3o%20conhecimento/Nota_Tecnica_50_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "COPASA",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_23_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/EPAMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_23_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "EPAMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_14_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/GASMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_14_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "GASMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_15_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/GASMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_15_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "GASMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_32_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/IEF/Desprovimento/Nota_Tecnica_32_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_13_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/IEF/Perda%20parcial%20de%20objeto/Nota_Tecnica_13_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IEF",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_58_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/IEPHA/N%C3%A3o%20conhecimento/Nota_Tecnica_58_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IEPHA",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_30_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/MGS/Desprovimento/Nota_Tecnica_30_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "MGS",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_20_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_20_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_16_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_16_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_17_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_17_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_18_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_18_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_42_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/PMMG/Desprovimento/Nota_Tecnica_42_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_49_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/PMMG/Desprovimento/Nota_Tecnica_49_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_51_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/PMMG/Desprovimento/Nota_Tecnica_51_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_27_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_27_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_42_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_42_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_7_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_7_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_8_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_8_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_56_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEDESE/Perda%20parcial%20de%20objeto/Nota_Tecnica_56_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEDESE",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_52_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEE/Desprovimento/Nota_Tecnica_52_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_12_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_12_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_2_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_2_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_43_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_43_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_45_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_45_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_46_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_46_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_36_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEE/Perda%20de%20objeto/Nota_Tecnica_36_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_40_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEE/Perda%20de%20objeto/Nota_Tecnica_40_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_21_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEF/Desprovimento/Nota_Tecnica_21_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_31_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEF/Desprovimento/Nota_Tecnica_31_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_34_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEF/Desprovimento/Nota_Tecnica_34_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_3_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEF/Desprovimento/Nota_Tecnica_3_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_44_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEF/Desprovimento/Nota_Tecnica_44_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_53_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEF/Desprovimento/Nota_Tecnica_53_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_59_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEF/Desprovimento/Nota_Tecnica_59_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_37_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEF/Perda%20de%20objeto/Nota_Tecnica_37_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_6_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEF/Perda%20parcial%20de%20objeto/Nota_Tecnica_6_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_41_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEF/Provimento/Nota_Tecnica_41_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Provimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_47_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEGOV/N%C3%A3o%20conhecimento/Nota_Tecnica_47_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEGOV",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_11_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEINFRA/Desprovimento/Nota_Tecnica_11_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEINFRA",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_11_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEINFRA/N%C3%A3o%20conhecimento/Nota_Tecnica_11_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEINFRA",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_57_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEINFRA/N%C3%A3o%20conhecimento/Nota_Tecnica_57_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEINFRA",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_1_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_1_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_29_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SES/Desprovimento/Nota_Tecnica_29_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_9_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SES/Desprovimento/Nota_Tecnica_9_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_35_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SES/N%C3%A3o%20conhecimento/Nota_Tecnica_35_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_33_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/SES/Perda%20de%20objeto/Nota_Tecnica_33_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2021,
+    "arquivo": "Nota_Tecnica_19_2021.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2021/UEMG/N%C3%A3o%20conhecimento/Nota_Tecnica_19_2021.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "UEMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_40618973_Nota_Tecnica_2.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_40618973_Nota_Tecnica_2.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "40618973"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_40871715_Nota_Tecnica_3.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_40871715_Nota_Tecnica_3.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "40871715"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_40993261_Nota_Tecnica_4.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_40993261_Nota_Tecnica_4.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "40993261"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_41978887_Nota_Tecnica_5.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_41978887_Nota_Tecnica_5.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "41978887"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_42015408_Nota_Tecnica_6.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_42015408_Nota_Tecnica_6.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "42015408"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_42294273_Nota_Tecnica_7.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_42294273_Nota_Tecnica_7.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "42294273"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_43387606_Nota_Tecnica_8.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_43387606_Nota_Tecnica_8.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "43387606"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_44824366_Nota_Tecnica_9.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_44824366_Nota_Tecnica_9.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "44824366"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_45246779_Nota_Tecnica_10.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_45246779_Nota_Tecnica_10.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "45246779"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_45532004_Nota_Tecnica_11.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_45532004_Nota_Tecnica_11.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "45532004"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_46531406_Nota_Tecnica_12.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_46531406_Nota_Tecnica_12.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "46531406"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_46710075_Nota_Tecnica_13.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_46710075_Nota_Tecnica_13.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "46710075"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_47129218_Nota_Tecnica_14.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_47129218_Nota_Tecnica_14.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "47129218"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_48703488_Nota_Tecnica_15.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_48703488_Nota_Tecnica_15.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "48703488"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_48779892_Nota_Tecnica_16.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_48779892_Nota_Tecnica_16.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "48779892"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_49468470_Nota_Tecnica_17.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_49468470_Nota_Tecnica_17.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "49468470"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_49892385_Nota_Tecnica_18.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_49892385_Nota_Tecnica_18.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "49892385"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_50246205_Nota_Tecnica_19.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_50246205_Nota_Tecnica_19.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "50246205"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_50291821_Nota_Tecnica_20.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_50291821_Nota_Tecnica_20.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "50291821"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_50436936_Nota_Tecnica_21.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_50436936_Nota_Tecnica_21.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "50436936"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_51221712_Nota_Tecnica_22.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_51221712_Nota_Tecnica_22.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "51221712"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_51603535_Nota_Tecnica_23.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_51603535_Nota_Tecnica_23.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "51603535"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_51834223_Nota_Tecnica_24.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_51834223_Nota_Tecnica_24.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "51834223"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_52077608_Nota_Tecnica_25.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_52077608_Nota_Tecnica_25.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "52077608"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_52161800_Nota_Tecnica_26.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_52161800_Nota_Tecnica_26.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "52161800"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_52336959_Nota_Tecnica_27.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_52336959_Nota_Tecnica_27.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "52336959"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_52760948_Nota_Tecnica_28.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_52760948_Nota_Tecnica_28.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "52760948"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_53425641_Nota_Tecnica_29.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_53425641_Nota_Tecnica_29.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "53425641"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_53673408_Nota_Tecnica_30.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_53673408_Nota_Tecnica_30.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "53673408"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_53717812_Nota_Tecnica_31.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_53717812_Nota_Tecnica_31.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "53717812"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_54387216_Nota_Tecnica_32.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_54387216_Nota_Tecnica_32.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "54387216"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_54389387_Nota_Tecnica_33.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_54389387_Nota_Tecnica_33.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "54389387"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_54391145_Nota_Tecnica_34.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_54391145_Nota_Tecnica_34.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "54391145"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_54394469_Nota_Tecnica_35.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_54394469_Nota_Tecnica_35.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "54394469"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_54514254_Nota_Tecnica_36.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_54514254_Nota_Tecnica_36.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "54514254"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_55722103_Nota_Tecnica_38.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_55722103_Nota_Tecnica_38.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "55722103"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_56096650_Nota_Tecnica_39.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_56096650_Nota_Tecnica_39.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "56096650"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_56292624_Nota_Tecnica_40.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_56292624_Nota_Tecnica_40.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "56292624"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_56615975_Nota_Tecnica_41.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_56615975_Nota_Tecnica_41.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "56615975"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_56739837_Nota_Tecnica_42.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_56739837_Nota_Tecnica_42.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "56739837"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_58481707_Nota_Tecnica_43.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_58481707_Nota_Tecnica_43.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "58481707"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "SEI_58600170_Nota_Tecnica_44.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2022/SEI_58600170_Nota_Tecnica_44.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "58600170"
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_20_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/CBMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_20_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CBMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_23_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/CEMIG/Desprovimento/Nota_Tecnica_23_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_14_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/CEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_14_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_21_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/CEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_21_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_11_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/CEMIG/Perda%20de%20objeto/Nota_Tecnica_11_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_6_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/CGE/Desprovimento/Nota_Tecnica_6_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_1_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/CGE/N%C3%A3o%20conhecimento/Nota_Tecnica_1_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_36_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/COPASA/Desprovimento/Nota_Tecnica_36_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "COPASA",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_2_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/COPASA/N%C3%A3o%20conhecimento/Nota_Tecnica_2_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "COPASA",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_13_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/DER/N%C3%A3o%20conhecimento/Nota_Tecnica_13_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "DER",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_16_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/DER/N%C3%A3o%20conhecimento/Nota_Tecnica_16_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "DER",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_27_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/FHEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_27_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FHEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_40_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/GASMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_40_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "GASMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_25__2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/IEF/N%C3%A3o%20conhecimento/Nota_Tecnica_25__2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IEF",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_15_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/IPSEMG/Desprovimento/Nota_Tecnica_15_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IPSEMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_28_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/IPSEMG/N%C3%A3o%20conhecimento/Nota_Tecnica_28_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IPSEMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_4_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_4_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_17__2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_17__2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_19__2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_19__2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_39_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/PCMG/Perda%20de%20objeto/Nota_Tecnica_39_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_3_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/PCMG/Perda%20de%20objeto/Nota_Tecnica_3_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_30_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/PRODEMGE/Desprovimento/Nota_Tecnica_30_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PRODEMGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_31_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/PRODEMGE/Desprovimento/Nota_Tecnica_31_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PRODEMGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_32_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/PRODEMGE/Desprovimento/Nota_Tecnica_32_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PRODEMGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_33_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/PRODEMGE/Desprovimento/Nota_Tecnica_33_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PRODEMGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_32_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/PRODEMGE/N%C3%A3o%20conhecimento/Nota_Tecnica_32_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PRODEMGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_6_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEAPA/Desprovimento/Nota_Tecnica_6_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEAPA",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_12_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEDE/N%C3%A3o%20conhecimento/Nota_Tecnica_12_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEDE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_8_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEDE/N%C3%A3o%20conhecimento/Nota_Tecnica_8_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEDE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "_Nota_Tecnica_9_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEDE/Provimento%20Parcial/_Nota_Tecnica_9_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEDE",
+    "tipoPasta": "Provimento Parcial",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_34__2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEE/Desprovimento/Nota_Tecnica_34__2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_35_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_35_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_38_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_38_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_43_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEE/Perda%20de%20objeto/Nota_Tecnica_43_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_42_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEF/Desprovimento/Nota_Tecnica_42_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_5_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEF/Desprovimento/Nota_Tecnica_5_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_7_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEF/Desprovimento/Nota_Tecnica_7_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_41_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEJUSP/Desprovimento/Nota_Tecnica_41_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_44_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEJUSP/Desprovimento/Nota_Tecnica_44_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_26_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEMAD/N%C3%A3o%20conhecimento/Nota_Tecnica_26_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEMAD",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_29_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEPLAG/Desprovimento/Nota_Tecnica_29_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_18_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SEPLAG/N%C3%A3o%20conhecimento/Nota_Tecnica_18_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_22_2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2022/SES/Desprovimento/Nota_Tecnica_22_2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2022,
+    "arquivo": "Nota_Tecnica_24__2022.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/Pdfs/2022/UEMG/Nota_Tecnica_24__2022.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "2022",
+    "tipoPasta": "UEMG",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_59398066_Nota_Tecnica_1.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_59398066_Nota_Tecnica_1.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "59398066"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_59437100_Nota_Tecnica_2.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_59437100_Nota_Tecnica_2.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "59437100"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_59481347_Nota_Tecnica_3.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_59481347_Nota_Tecnica_3.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "59481347"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_60156991_Nota_Tecnica_4.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_60156991_Nota_Tecnica_4.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "60156991"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_61391411_Nota_Tecnica_5.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_61391411_Nota_Tecnica_5.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "61391411"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_62503327_Nota_Tecnica_6.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_62503327_Nota_Tecnica_6.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "62503327"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_62589192_Nota_Tecnica_7.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_62589192_Nota_Tecnica_7.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "62589192"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_62886574_Nota_Tecnica_8.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_62886574_Nota_Tecnica_8.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "62886574"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_63170325_Nota_Tecnica_10.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_63170325_Nota_Tecnica_10.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "63170325"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_63732973_Nota_Tecnica_11.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_63732973_Nota_Tecnica_11.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "63732973"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_63854450_Nota_Tecnica_12.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_63854450_Nota_Tecnica_12.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "63854450"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_63863783_Nota_Tecnica_13.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_63863783_Nota_Tecnica_13.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "63863783"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_64682587_Nota_Tecnica_14.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_64682587_Nota_Tecnica_14.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "64682587"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_65375029_Nota_Tecnica_15.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_65375029_Nota_Tecnica_15.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "65375029"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_65743248_Nota_Tecnica_16.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_65743248_Nota_Tecnica_16.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "65743248"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_65746674_Nota_Tecnica_17.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_65746674_Nota_Tecnica_17.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "65746674"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_65749185_Nota_Tecnica_18.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_65749185_Nota_Tecnica_18.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "65749185"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_66059929_Nota_Tecnica_19.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_66059929_Nota_Tecnica_19.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "66059929"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_66062503_Nota_Tecnica_20.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_66062503_Nota_Tecnica_20.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "66062503"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_66064063_Nota_Tecnica_21.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_66064063_Nota_Tecnica_21.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "66064063"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_66183859_Nota_Tecnica_22.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_66183859_Nota_Tecnica_22.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "66183859"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_66389867_Nota_Tecnica_23.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_66389867_Nota_Tecnica_23.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "66389867"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_66392561_Nota_Tecnica_24.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_66392561_Nota_Tecnica_24.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "66392561"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_66394099_Nota_Tecnica_25.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_66394099_Nota_Tecnica_25.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "66394099"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_66502790_Nota_Tecnica_26.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_66502790_Nota_Tecnica_26.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "66502790"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_66503798_Nota_Tecnica_27.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_66503798_Nota_Tecnica_27.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "66503798"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_66594525_Nota_Tecnica_28.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_66594525_Nota_Tecnica_28.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "66594525"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_67007599_Nota_Tecnica_29.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_67007599_Nota_Tecnica_29.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "67007599"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_67490161_Nota_Tecnica_30.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_67490161_Nota_Tecnica_30.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "67490161"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_67590422_Nota_Tecnica_31.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_67590422_Nota_Tecnica_31.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "67590422"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_68071863_Nota_Tecnica_32.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_68071863_Nota_Tecnica_32.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "68071863"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_68141873_Nota_Tecnica_33.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_68141873_Nota_Tecnica_33.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "68141873"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_68186527_Nota_Tecnica_34.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_68186527_Nota_Tecnica_34.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "68186527"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_68187580_Nota_Tecnica_35.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_68187580_Nota_Tecnica_35.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "68187580"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_68825969_Nota_Tecnica_36.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_68825969_Nota_Tecnica_36.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "68825969"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_69359540_Nota_Tecnica_37.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_69359540_Nota_Tecnica_37.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "69359540"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_69360587_Nota_Tecnica_38.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_69360587_Nota_Tecnica_38.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "69360587"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_69454265_Nota_Tecnica_39.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_69454265_Nota_Tecnica_39.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "69454265"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_69456579_Nota_Tecnica_40.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_69456579_Nota_Tecnica_40.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "69456579"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_69457271_Nota_Tecnica_41.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_69457271_Nota_Tecnica_41.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "69457271"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_69592809_Nota_Tecnica_42.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_69592809_Nota_Tecnica_42.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "69592809"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_69652864_Nota_Tecnica_43.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_69652864_Nota_Tecnica_43.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "69652864"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_69654134_Nota_Tecnica_44.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_69654134_Nota_Tecnica_44.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "69654134"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_69791366_Nota_Tecnica_45.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_69791366_Nota_Tecnica_45.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "69791366"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_69910008_Nota_Tecnica_46.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_69910008_Nota_Tecnica_46.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "69910008"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_69911904_Nota_Tecnica_47.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_69911904_Nota_Tecnica_47.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "69911904"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_69913770_Nota_Tecnica_48.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_69913770_Nota_Tecnica_48.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "69913770"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_70257003_Nota_Tecnica_49.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_70257003_Nota_Tecnica_49.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "70257003"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_70530605_Nota_Tecnica_50.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_70530605_Nota_Tecnica_50.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "70530605"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_70533452_Nota_Tecnica_51.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_70533452_Nota_Tecnica_51.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "70533452"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_70889690_Nota_Tecnica_52.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_70889690_Nota_Tecnica_52.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "70889690"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_70891357_Nota_Tecnica_53.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_70891357_Nota_Tecnica_53.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "70891357"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_70893604_Nota_Tecnica_54.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_70893604_Nota_Tecnica_54.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "70893604"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_70894923_Nota_Tecnica_55.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_70894923_Nota_Tecnica_55.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "70894923"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_70898244_Nota_Tecnica_56.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_70898244_Nota_Tecnica_56.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "70898244"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_70899411_Nota_Tecnica_57.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_70899411_Nota_Tecnica_57.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "70899411"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_70903978_Nota_Tecnica_58.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_70903978_Nota_Tecnica_58.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "70903978"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_71407925_Nota_Tecnica_59.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_71407925_Nota_Tecnica_59.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "71407925"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_71776980_Nota_Tecnica_60.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_71776980_Nota_Tecnica_60.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "71776980"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_71804980_Nota_Tecnica_61.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_71804980_Nota_Tecnica_61.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "71804980"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_72184669_Nota_Tecnica_62.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_72184669_Nota_Tecnica_62.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "72184669"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_72196404_Nota_Tecnica_63.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_72196404_Nota_Tecnica_63.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "72196404"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_72197328_Nota_Tecnica_64.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_72197328_Nota_Tecnica_64.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "72197328"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_72225284_Nota_Tecnica_65.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_72225284_Nota_Tecnica_65.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "72225284"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_72229187_Nota_Tecnica_66.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_72229187_Nota_Tecnica_66.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "72229187"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_72471430_Nota_Tecnica_67.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_72471430_Nota_Tecnica_67.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "72471430"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_72502577_Nota_Tecnica_68.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_72502577_Nota_Tecnica_68.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "72502577"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_73205623_Nota_Tecnica_69.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_73205623_Nota_Tecnica_69.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "73205623"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_73205845_Nota_Tecnica_70.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_73205845_Nota_Tecnica_70.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "73205845"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_73263133_Nota_Tecnica_71.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_73263133_Nota_Tecnica_71.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "73263133"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_73314418_Nota_Tecnica_72.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_73314418_Nota_Tecnica_72.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "73314418"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_74351667_Nota_Tecnica_73.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_74351667_Nota_Tecnica_73.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "74351667"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_74352877_Nota_Tecnica_74.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_74352877_Nota_Tecnica_74.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "74352877"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_74410512_Nota_Tecnica_75.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_74410512_Nota_Tecnica_75.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "74410512"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_74643387_Nota_Tecnica_76.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_74643387_Nota_Tecnica_76.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "74643387"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_74751187_Nota_Tecnica_77.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_74751187_Nota_Tecnica_77.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "74751187"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_75599338_Nota_Tecnica_78.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_75599338_Nota_Tecnica_78.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "75599338"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_75788371_Nota_Tecnica_79.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_75788371_Nota_Tecnica_79.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "75788371"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_76038877_Nota_Tecnica_80.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_76038877_Nota_Tecnica_80.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "76038877"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_76042074_Nota_Tecnica_81.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_76042074_Nota_Tecnica_81.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "76042074"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_76046075_Nota_Tecnica_82.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_76046075_Nota_Tecnica_82.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "76046075"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_76293893_Nota_Tecnica_83.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_76293893_Nota_Tecnica_83.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "76293893"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_76304607_Nota_Tecnica_84.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_76304607_Nota_Tecnica_84.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "76304607"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_76525196_Nota_Tecnica_85.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_76525196_Nota_Tecnica_85.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "76525196"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_76710382_Nota_Tecnica_86.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_76710382_Nota_Tecnica_86.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "76710382"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_76713442_Nota_Tecnica_87.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_76713442_Nota_Tecnica_87.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "76713442"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_76762532_Nota_Tecnica_88.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_76762532_Nota_Tecnica_88.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "76762532"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_76765379_Nota_Tecnica_89.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_76765379_Nota_Tecnica_89.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "76765379"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_77665579_Nota_Tecnica_90.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_77665579_Nota_Tecnica_90.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "77665579"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_78083161_Nota_Tecnica_91.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_78083161_Nota_Tecnica_91.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "78083161"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_78344353_Nota_Tecnica_93.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_78344353_Nota_Tecnica_93.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "78344353"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_78599095_Nota_Tecnica_94.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_78599095_Nota_Tecnica_94.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "78599095"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_78601330_Nota_Tecnica_95.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_78601330_Nota_Tecnica_95.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "78601330"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_78605925_Nota_Tecnica_96.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_78605925_Nota_Tecnica_96.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "78605925"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_78617345_Nota_Tecnica_97.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_78617345_Nota_Tecnica_97.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "78617345"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_78649451_Nota_Tecnica_98.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_78649451_Nota_Tecnica_98.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "78649451"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_78856443_Nota_Tecnica_99.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_78856443_Nota_Tecnica_99.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "78856443"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_79271690_Nota_Tecnica_100.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_79271690_Nota_Tecnica_100.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "79271690"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_79657147_Nota_Tecnica_101.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_79657147_Nota_Tecnica_101.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "79657147"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_79658170_Nota_Tecnica_102.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2023/SEI_79658170_Nota_Tecnica_102.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "79658170"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_90_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/Pdfs/2023/AGE/Nota_Tecnica_90_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "2023",
+    "tipoPasta": "AGE",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_90_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/AGE/N%C3%A3o%20conhecimento/Nota_Tecnica_90_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "AGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_30_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/ARSAE/Desprovimento/Nota_Tecnica_30_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "ARSAE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_18_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/CBMMG/Desprovimento/Nota_Tecnica_18_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CBMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_28__2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/CEMIG/Desprovimento/Nota_Tecnica_28__2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_3_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/CEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_3_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_87_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/CEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_87_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_11_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/CGE/N%C3%A3o%20conhecimento/Nota_Tecnica_11_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_49_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/CGE/N%C3%A3o%20conhecimento/Nota_Tecnica_49_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_14_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/CODEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_14_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CODEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_20_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/COHAB/Desprovimento/Nota_Tecnica_20_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "COHAB",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_19_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/COPASA/Desprovimento/Nota_Tecnica_19_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "COPASA",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "SEI_59437100_Nota_Tecnica_2.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/COPASA/Perda%20de%20objeto%20parcial/SEI_59437100_Nota_Tecnica_2.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "COPASA",
+    "tipoPasta": "Perda de objeto parcial",
+    "seiId": "59437100"
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_21_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/DER/Desprovimento/Nota_Tecnica_21_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "DER",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_32_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/FAPEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_32_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FAPEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_7_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/FEAM/Desprovimento/Nota_Tecnica_7_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FEAM",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_6_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/IGAM/N%C3%A3o%20conhecimento/Nota_Tecnica_6_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IGAM",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_101_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/IMA/N%C3%A3o%20conhecimento/Nota_Tecnica_101_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IMA",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_101+2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/IMA/Perda%20de%20objeto%20parcial/Nota_Tecnica_101+2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IMA",
+    "tipoPasta": "Perda de objeto parcial",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_57_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/IPSM/Provimento%20parcial/Nota_Tecnica_57_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IPSM",
+    "tipoPasta": "Provimento parcial",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_1_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/MGS/N%C3%A3o%20conhecimento/Nota_Tecnica_1_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "MGS",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_29_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/OGE/Desprovimento/Nota_Tecnica_29_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_37_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_37_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_48_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_48_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_60_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_60_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_63_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_63_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_81_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_81_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_88_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_88_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_29_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/OGE/Perda%20de%20objeto%20parcial/Nota_Tecnica_29_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Perda de objeto parcial",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_10_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/Desprovimento/Nota_Tecnica_10_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_16_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/Desprovimento/Nota_Tecnica_16_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_23_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/Desprovimento/Nota_Tecnica_23_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_53_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/Desprovimento/Nota_Tecnica_53_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_64_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/Desprovimento/Nota_Tecnica_64_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_67_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/Desprovimento/Nota_Tecnica_67_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_68_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/Desprovimento/Nota_Tecnica_68_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_73_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/Desprovimento/Nota_Tecnica_73_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_85_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/Desprovimento/Nota_Tecnica_85_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_95_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/Desprovimento/Nota_Tecnica_95_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_100_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_100_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_34_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_34_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_35_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_35_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_39_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_39_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_40_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_40_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_41_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_41_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_42_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_42_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_43_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_43_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_44_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_44_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_45_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_45_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_46_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_46_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_47_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_47_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_50_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_50_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_51_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_51_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_52_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_52_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_53_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_53_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_55_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_55_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_59_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_59_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_61_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_61_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_62_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_62_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_65_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_65_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_66_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_66_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_70_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_70_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_71_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_71_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_74_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_74_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_77_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_77_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_78_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_78_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_79_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_79_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_80_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_80_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_82_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_82_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_8_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_8_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_91_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_91_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_93_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_93_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_24_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PMMG/Desprovimento/Nota_Tecnica_24_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_5_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PMMG/Desprovimento/Nota_Tecnica_5_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_97__2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_97__2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_54_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/PMMG/Provimento/Nota_Tecnica_54_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Provimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_26_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEAPA/Desprovimento/Nota_Tecnica_26_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEAPA",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_31_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/Secretaria-Geral/Desprovimento/Nota_Tecnica_31_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "Secretaria-Geral",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_25_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEE/Desprovimento/Nota_Tecnica_25_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_36_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEE/Desprovimento/Nota_Tecnica_36_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_38_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_38_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_72_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_72_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_84_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_84_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_86_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_86_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_89_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_89_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_12_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEE/Perda%20de%20objeto/Nota_Tecnica_12_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_94_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEE/Perda%20de%20objeto/Nota_Tecnica_94_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_58_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEE/Perda%20de%20objeto%20parcial/Nota_Tecnica_58_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Perda de objeto parcial",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_76_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEE/Provimento%20parcial/Nota_Tecnica_76_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Provimento parcial",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_99_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEF/N%C3%A3o%20conhecimento/Nota_Tecnica_99_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "_Nota_Tecnica_4_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEF/Perda%20de%20objeto/_Nota_Tecnica_4_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_17_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEGOV/Desprovimento/Nota_Tecnica_17_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEGOV",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_22_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEINFRA/Desprovimento/Nota_Tecnica_22_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEINFRA",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_13_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEJUSP/Desprovimento/Nota_Tecnica_13_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_15_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEJUSP/Desprovimento/Nota_Tecnica_15_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_69_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_69_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_102_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEJUSP/Perda%20de%20objeto/Nota_Tecnica_102_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_56_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEJUSP/Perda%20de%20objeto/Nota_Tecnica_56_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_33_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEMAD/Desprovimento/Nota_Tecnica_33_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEMAD",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_83_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEMAD/Provimento/Nota_Tecnica_83_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEMAD",
+    "tipoPasta": "Provimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_27_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEPLAG/Desprovimento/Nota_Tecnica_27_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_96_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEPLAG/N%C3%A3o%20conhecimento/Nota_Tecnica_96_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_98_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEPLAG/N%C3%A3o%20conhecimento/Nota_Tecnica_98_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2023,
+    "arquivo": "Nota_Tecnica_75_2023.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2023/SEPLAG/Provimento/Nota_Tecnica_75_2023.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Provimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_100096311_Nota_Tecnica_65.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_100096311_Nota_Tecnica_65.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "100096311"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_100098302_Nota_Tecnica_66.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_100098302_Nota_Tecnica_66.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "100098302"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_100738899_Nota_Tecnica_67.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_100738899_Nota_Tecnica_67.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "100738899"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_100740272_Nota_Tecnica_68.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_100740272_Nota_Tecnica_68.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "100740272"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_100983761_Nota_Tecnica_69.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_100983761_Nota_Tecnica_69.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "100983761"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_101242123_Nota_Tecnica_70.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_101242123_Nota_Tecnica_70.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "101242123"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_101244385_Nota_Tecnica_71.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_101244385_Nota_Tecnica_71.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "101244385"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_101312393_Nota_Tecnica_72.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_101312393_Nota_Tecnica_72.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "101312393"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_101862967_Nota_Tecnica_73.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_101862967_Nota_Tecnica_73.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "101862967"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_102303228_Nota_Tecnica_74.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_102303228_Nota_Tecnica_74.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "102303228"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_102360655_Nota_Tecnica_75.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_102360655_Nota_Tecnica_75.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "102360655"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_102862182_Nota_Tecnica_76.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_102862182_Nota_Tecnica_76.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "102862182"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_104418458_Nota_Tecnica_77.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_104418458_Nota_Tecnica_77.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "104418458"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_80134312_Nota_Tecnica_1.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_80134312_Nota_Tecnica_1.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "80134312"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_80137470_Nota_Tecnica_2.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_80137470_Nota_Tecnica_2.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "80137470"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_80138520_Nota_Tecnica_3.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_80138520_Nota_Tecnica_3.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "80138520"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_80139426_Nota_Tecnica_4.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_80139426_Nota_Tecnica_4.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "80139426"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_80672089_Nota_Tecnica_5.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_80672089_Nota_Tecnica_5.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "80672089"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_80674213_Nota_Tecnica_6.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_80674213_Nota_Tecnica_6.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "80674213"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_80833614_Nota_Tecnica_7.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_80833614_Nota_Tecnica_7.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "80833614"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_80834359_Nota_Tecnica_8.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_80834359_Nota_Tecnica_8.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "80834359"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_81219388_Nota_Tecnica_9.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_81219388_Nota_Tecnica_9.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "81219388"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_81359192_Nota_Tecnica_10.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_81359192_Nota_Tecnica_10.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "81359192"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_81365217_Nota_Tecnica_11.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_81365217_Nota_Tecnica_11.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "81365217"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_81749806_Nota_Tecnica_12.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_81749806_Nota_Tecnica_12.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "81749806"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_81847246_Nota_Tecnica_13.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_81847246_Nota_Tecnica_13.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "81847246"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_82050062_Nota_Tecnica_14.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_82050062_Nota_Tecnica_14.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "82050062"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_82053410_Nota_Tecnica_15.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_82053410_Nota_Tecnica_15.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "82053410"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_82690121_Nota_Tecnica_16.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_82690121_Nota_Tecnica_16.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "82690121"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_82692388_Nota_Tecnica_17.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_82692388_Nota_Tecnica_17.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "82692388"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_82742828_Nota_Tecnica_18.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_82742828_Nota_Tecnica_18.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "82742828"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_83213007_Nota_Tecnica_19.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_83213007_Nota_Tecnica_19.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "83213007"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_83541788_Nota_Tecnica_20.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_83541788_Nota_Tecnica_20.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "83541788"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_83544234_Nota_Tecnica_21.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_83544234_Nota_Tecnica_21.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "83544234"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_84247861_Nota_Tecnica_22.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_84247861_Nota_Tecnica_22.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "84247861"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_84250127_Nota_Tecnica_23.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_84250127_Nota_Tecnica_23.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "84250127"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_84309775_Nota_Tecnica_24.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_84309775_Nota_Tecnica_24.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "84309775"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_84405903_Nota_Tecnica_25.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_84405903_Nota_Tecnica_25.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "84405903"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_84645833_Nota_Tecnica_26.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_84645833_Nota_Tecnica_26.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "84645833"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_84657614_Nota_Tecnica_27.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_84657614_Nota_Tecnica_27.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "84657614"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_84660412_Nota_Tecnica_28.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_84660412_Nota_Tecnica_28.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "84660412"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_84811657_Nota_Tecnica_29.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_84811657_Nota_Tecnica_29.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "84811657"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_84897065_Nota_Tecnica_30.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_84897065_Nota_Tecnica_30.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "84897065"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_85046689_Nota_Tecnica_31.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_85046689_Nota_Tecnica_31.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "85046689"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_85509161_Nota_Tecnica_32.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_85509161_Nota_Tecnica_32.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "85509161"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_85662720_Nota_Tecnica_33.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_85662720_Nota_Tecnica_33.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "85662720"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_86275156_Nota_Tecnica_34.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_86275156_Nota_Tecnica_34.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "86275156"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_86276406_Nota_Tecnica_35.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_86276406_Nota_Tecnica_35.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "86276406"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_86482869_Nota_Tecnica_36.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_86482869_Nota_Tecnica_36.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "86482869"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_87515240_Nota_Tecnica_37.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_87515240_Nota_Tecnica_37.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "87515240"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_87563516_Nota_Tecnica_38.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_87563516_Nota_Tecnica_38.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "87563516"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_87663163_Nota_Tecnica_39.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_87663163_Nota_Tecnica_39.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "87663163"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_88345580_Nota_Tecnica_40.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_88345580_Nota_Tecnica_40.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "88345580"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_88347356_Nota_Tecnica_41.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_88347356_Nota_Tecnica_41.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "88347356"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_88536726_Nota_Tecnica_42.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_88536726_Nota_Tecnica_42.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "88536726"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_88538474_Nota_Tecnica_43.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_88538474_Nota_Tecnica_43.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "88538474"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_88539304_Nota_Tecnica_44.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_88539304_Nota_Tecnica_44.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "88539304"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_88553519_Nota_Tecnica_45.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_88553519_Nota_Tecnica_45.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "88553519"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_88558138_Nota_Tecnica_46.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_88558138_Nota_Tecnica_46.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "88558138"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_89422851_Nota_Tecnica_47.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_89422851_Nota_Tecnica_47.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "89422851"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_89637400_Nota_Tecnica_48.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_89637400_Nota_Tecnica_48.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "89637400"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_90140129_Nota_Tecnica_49.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_90140129_Nota_Tecnica_49.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "90140129"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_90251629_Nota_Tecnica_50.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_90251629_Nota_Tecnica_50.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "90251629"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_90911434_Nota_Tecnica_51.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_90911434_Nota_Tecnica_51.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "90911434"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_91860257_Nota_Tecnica_52.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_91860257_Nota_Tecnica_52.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "91860257"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_91862554_Nota_Tecnica_53.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_91862554_Nota_Tecnica_53.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "91862554"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_92558813_Nota_Tecnica_54.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_92558813_Nota_Tecnica_54.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "92558813"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_94283959_Nota_Tecnica_55.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_94283959_Nota_Tecnica_55.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "94283959"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_94378094_Nota_Tecnica_57.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_94378094_Nota_Tecnica_57.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "94378094"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_95418400_Nota_Tecnica_58.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_95418400_Nota_Tecnica_58.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "95418400"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_95420022_Nota_Tecnica_59.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_95420022_Nota_Tecnica_59.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "95420022"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_95794822_Nota_Tecnica_60.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_95794822_Nota_Tecnica_60.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "95794822"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_96266449_Nota_Tecnica_61.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_96266449_Nota_Tecnica_61.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "96266449"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_97006466_Nota_Tecnica_62.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_97006466_Nota_Tecnica_62.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "97006466"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_98234034_Nota_Tecnica_63.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_98234034_Nota_Tecnica_63.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "98234034"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_98949824_Nota_Tecnica_64.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2024/SEI_98949824_Nota_Tecnica_64.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "98949824"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_77_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/CEMIG/Desprovimento/Nota_Tecnica_77_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_21_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/CEMIG/Perda%20de%20objeto/Nota_Tecnica_21_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_22_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/CGE/Desprovimento/Nota_Tecnica_22_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_63_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/CGE/N%C3%A3o%20conhecimento/Nota_Tecnica_63_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_41_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/Pdfs/2024/CODEMGE/Nota_Tecnica_41_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "2024",
+    "tipoPasta": "CODEMGE",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_88345580_Nota_Tecnica_40.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/CODEMGE/Desprovimento/SEI_88345580_Nota_Tecnica_40.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CODEMGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": "88345580"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_33_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/CODEMGE/N%C3%A3o%20conhecimento/Nota_Tecnica_33_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CODEMGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_41_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/CODEMGE/Perda%20de%20objeto/Nota_Tecnica_41_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CODEMGE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_10_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/DER/Desprovimento/Nota_Tecnica_10_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "DER",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_74_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/DER/N%C3%A3o%20conhecimento/Nota_Tecnica_74_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "DER",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_72_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/FHEMIG/Perda%20de%20objeto/Nota_Tecnica_72_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FHEMIG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_18_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/IMA/Perda%20de%20objeto/Nota_Tecnica_18_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IMA",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "SEI_82742828_Nota_Tecnica_18.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/IMA/Perda%20de%20objeto/SEI_82742828_Nota_Tecnica_18.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IMA",
+    "tipoPasta": "Perda de objeto",
+    "seiId": "82742828"
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_28_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_28_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_60_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_60_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_64_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_64_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_67_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_67_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_46_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/Desprovimento/Nota_Tecnica_46_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_52_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/Desprovimento/Nota_Tecnica_52_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_55_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/Desprovimento/Nota_Tecnica_55_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_76_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/Desprovimento/Nota_Tecnica_76_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_11_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_11_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_12_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_12_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_17_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_17_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_20_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_20_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_39_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_39_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_43_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_43_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_4_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_4_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_50_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_50_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_51_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_51_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_65_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_65_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_66_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_66_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_68_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_68_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_69_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_69_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_70_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_70_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_71_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_71_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_73_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_73_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_8_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_8_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_29_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PCMG/Perda%20de%20objeto/Nota_Tecnica_29_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_45_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PMMG/Desprovimento/Nota_Tecnica_45_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_7_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PMMG/Desprovimento/Nota_Tecnica_7_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_13_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_13_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_16_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_16_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_23_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_23_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_2_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_2_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_5_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_5_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_38_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PMMG/Perda%20de%20objeto/Nota_Tecnica_38_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_30_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PMMG/Provimento/Nota_Tecnica_30_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Provimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_36_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PMMG/Provimento%20parcial/Nota_Tecnica_36_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Provimento parcial",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_27_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/PRODEMGE/N%C3%A3o%20conhecimento/Nota_Tecnica_27_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PRODEMGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_26_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEE/Desprovimento/Nota_Tecnica_26_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_31_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEE/Desprovimento/Nota_Tecnica_31_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_3_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEE/Desprovimento/Nota_Tecnica_3_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_31_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_31_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_3_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_3_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_49_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_49_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_54_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_54_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_62_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_62_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_6_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_6_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_9_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_9_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_53_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEE/Perda%20de%20objeto/Nota_Tecnica_53_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_57_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEE/Perda%20de%20objeto/Nota_Tecnica_57_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_19_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEF/N%C3%A3o%20conhecimento/Nota_Tecnica_19_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_35_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEF/N%C3%A3o%20conhecimento/Nota_Tecnica_35_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_44_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEF/N%C3%A3o%20conhecimento/Nota_Tecnica_44_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_1_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEJUSP/Desprovimento/Nota_Tecnica_1_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_47_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEJUSP/Desprovimento/Nota_Tecnica_47_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_15_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_15_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_24_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_24_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_42_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_42_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_58_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_58_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_59_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_59_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_48_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEMAD/N%C3%A3o%20conhecimento/Nota_Tecnica_48_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEMAD",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_14_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEPLAG/N%C3%A3o%20conhecimento/Nota_Tecnica_14_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_75_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEPLAG/N%C3%A3o%20conhecimento/Nota_Tecnica_75_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_25_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SEPLAG/Perda%20de%20objeto/Nota_Tecnica_25_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_34_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SES/Desprovimento/Nota_Tecnica_34_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_37_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SES/N%C3%A3o%20conhecimento/Nota_Tecnica_37_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_61_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SES/N%C3%A3o%20conhecimento/Nota_Tecnica_61_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2024,
+    "arquivo": "Nota_Tecnica_32_2024.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2024/SES/Perda%20de%20objeto/Nota_Tecnica_32_2024.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_104808343_Nota_Tecnica_1.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_104808343_Nota_Tecnica_1.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "104808343"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_105827919_Nota_Tecnica_2.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_105827919_Nota_Tecnica_2.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "105827919"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_105829167_Nota_Tecnica_3.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_105829167_Nota_Tecnica_3.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "105829167"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_106259962_Nota_Tecnica_4.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_106259962_Nota_Tecnica_4.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "106259962"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_106440527_Nota_Tecnica_5.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_106440527_Nota_Tecnica_5.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "106440527"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_106533342_Nota_Tecnica_6.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_106533342_Nota_Tecnica_6.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "106533342"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_106639886_Nota_Tecnica_7.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_106639886_Nota_Tecnica_7.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "106639886"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_107440805_Nota_Tecnica_8.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_107440805_Nota_Tecnica_8.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "107440805"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_107443761_Nota_Tecnica_9.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_107443761_Nota_Tecnica_9.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "107443761"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_108166028_Nota_Tecnica_10.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_108166028_Nota_Tecnica_10.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "108166028"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_108981254_Nota_Tecnica_11.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_108981254_Nota_Tecnica_11.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "108981254"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_109172170_Nota_Tecnica_12.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_109172170_Nota_Tecnica_12.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "109172170"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_109172606_Nota_Tecnica_13.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_109172606_Nota_Tecnica_13.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "109172606"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_109713209_Nota_Tecnica_14.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_109713209_Nota_Tecnica_14.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "109713209"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_109721040_Nota_Tecnica_15.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_109721040_Nota_Tecnica_15.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "109721040"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_109722339_Nota_Tecnica_16.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_109722339_Nota_Tecnica_16.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "109722339"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_109723627_Nota_Tecnica_17.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_109723627_Nota_Tecnica_17.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "109723627"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_109724179_Nota_Tecnica_18.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_109724179_Nota_Tecnica_18.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "109724179"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_110568087_Nota_Tecnica_19.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_110568087_Nota_Tecnica_19.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "110568087"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_111293948_Nota_Tecnica_20.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_111293948_Nota_Tecnica_20.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "111293948"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_111295647_Nota_Tecnica_21.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_111295647_Nota_Tecnica_21.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "111295647"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_111639487_Nota_Tecnica_22.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_111639487_Nota_Tecnica_22.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "111639487"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_111846082_Nota_Tecnica_24.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_111846082_Nota_Tecnica_24.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "111846082"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_111976022_Nota_Tecnica_25.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_111976022_Nota_Tecnica_25.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "111976022"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_111977954_Nota_Tecnica_26.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_111977954_Nota_Tecnica_26.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "111977954"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_111979878_Nota_Tecnica_27.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_111979878_Nota_Tecnica_27.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "111979878"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_112088448_Nota_Tecnica_28.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_112088448_Nota_Tecnica_28.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "112088448"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_112777324_Nota_Tecnica_29.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_112777324_Nota_Tecnica_29.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "112777324"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_113098902_Nota_Tecnica_30.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_113098902_Nota_Tecnica_30.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "113098902"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_113102986_Nota_Tecnica_31.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_113102986_Nota_Tecnica_31.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "113102986"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_113306841_Nota_Tecnica_32.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_113306841_Nota_Tecnica_32.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "113306841"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_113308682_Nota_Tecnica_33.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_113308682_Nota_Tecnica_33.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "113308682"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_113703879_Nota_Tecnica_34.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_113703879_Nota_Tecnica_34.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "113703879"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_113706011_Nota_Tecnica_35.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_113706011_Nota_Tecnica_35.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "113706011"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_114408458_Nota_Tecnica_36.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_114408458_Nota_Tecnica_36.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "114408458"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_114410194_Nota_Tecnica_37 (1).pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_114410194_Nota_Tecnica_37%20(1).pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "114410194"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_114515879_Nota_Tecnica_38.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_114515879_Nota_Tecnica_38.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "114515879"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_114548073_Nota_Tecnica_39.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_114548073_Nota_Tecnica_39.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "114548073"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_114618047_Nota_Tecnica_40.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_114618047_Nota_Tecnica_40.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "114618047"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_114682045_Nota_Tecnica_41.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_114682045_Nota_Tecnica_41.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "114682045"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_115341026_Nota_Tecnica_42.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_115341026_Nota_Tecnica_42.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "115341026"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_115987567_Nota_Tecnica_43.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_115987567_Nota_Tecnica_43.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "115987567"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_116199292_Nota_Tecnica_44.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_116199292_Nota_Tecnica_44.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "116199292"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_116436702_Nota_Tecnica_45.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_116436702_Nota_Tecnica_45.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "116436702"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_116764309_Nota_Tecnica_46.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_116764309_Nota_Tecnica_46.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "116764309"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_116765231_Nota_Tecnica_47.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_116765231_Nota_Tecnica_47.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "116765231"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_117307902_Nota_Tecnica_48.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_117307902_Nota_Tecnica_48.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "117307902"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_117309524_Nota_Tecnica_49.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_117309524_Nota_Tecnica_49.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "117309524"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_117439243_Nota_Tecnica_50.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_117439243_Nota_Tecnica_50.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "117439243"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_117440438_Nota_Tecnica_51.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_117440438_Nota_Tecnica_51.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "117440438"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_118167199_Nota_Tecnica_52.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_118167199_Nota_Tecnica_52.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "118167199"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_118482662_Nota_Tecnica_53.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_118482662_Nota_Tecnica_53.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "118482662"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_119290022_Nota_Tecnica_54.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_119290022_Nota_Tecnica_54.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "119290022"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_119662197_Nota_Tecnica_55.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_119662197_Nota_Tecnica_55.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "119662197"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_119968338_Nota_Tecnica_56.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_119968338_Nota_Tecnica_56.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "119968338"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_120361245_Nota_Tecnica_57.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_120361245_Nota_Tecnica_57.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "120361245"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_121276659_Nota_Tecnica_58.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_121276659_Nota_Tecnica_58.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "121276659"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_121536669_Nota_Tecnica_59.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_121536669_Nota_Tecnica_59.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "121536669"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_122044014_Nota_Tecnica_60.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_122044014_Nota_Tecnica_60.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "122044014"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "SEI_126358513_Nota_Tecnica_70.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/App_Data/Pdfs/2025/SEI_126358513_Nota_Tecnica_70.pdf",
+    "linkProvavelmenteQuebrado": true,
+    "orgaoSigla": null,
+    "tipoPasta": null,
+    "seiId": "126358513"
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_7_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/AGE/N%C3%A3o%20conhecimento/Nota_Tecnica_7_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "AGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_9_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/AGE/N%C3%A3o%20conhecimento/Nota_Tecnica_9_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "AGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_66_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/CBMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_66_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CBMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_55_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/CBMMG/Perda%20de%20objeto/Nota_Tecnica_55_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CBMMG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_59_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/CEMIG/Desprovimento/Nota_Tecnica_59_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CEMIG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_65_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/CGE/Desprovimento/Nota_Tecnica_65_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_22_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/CGE/N%C3%A3o%20conhecimento/Nota_Tecnica_22_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_63_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/CGE/N%C3%A3o%20conhecimento/Nota_Tecnica_63_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_65_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/CGE/N%C3%A3o%20conhecimento/Nota_Tecnica_65_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "CGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_44_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/COPASA/N%C3%A3o%20conhecimento/Nota_Tecnica_44_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "COPASA",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_70_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/COPASA/Perda%20de%20objeto/Nota_Tecnica_70_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "COPASA",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_67_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/FHEMIG/FHEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_67_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FHEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_67_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/FHEMIG/N%C3%A3o%20conhecimento/Nota_Tecnica_67_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FHEMIG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_19_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/FUNED/N%C3%A3o%20conhecimento/Nota_Tecnica_19_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FUNED",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_53_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/IPSEMG/N%C3%A3o%20conhecimento/Nota_Tecnica_53_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IPSEMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_20_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_20_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_24_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/Desprovimento/Nota_Tecnica_24_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_42_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/Desprovimento/Nota_Tecnica_42_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_57_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/Desprovimento/Nota_Tecnica_57_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_76_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/Desprovimento/Nota_Tecnica_76_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_12_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_12_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_13_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_13_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_14_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_14_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_15_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_15_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_16_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_16_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_17_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_17_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_18_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_18_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_1_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_1_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_21_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_21_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_24_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_24_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_25_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_25_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_26_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_26_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_27_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_27_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_28_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_28_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_2_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_2_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_30_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_30_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_31_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_31_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_32_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_32_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_34_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_34_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_35_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_35_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_36_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_36_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_41_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_41_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_43_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_43_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_51_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_51_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_42_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PCMG/Perda%20parcial%20de%20objeto/Nota_Tecnica_42_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_29_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PMMG/Desprovimento/Nota_Tecnica_29_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_3_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PMMG/Desprovimento/Nota_Tecnica_3_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_54_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PMMG/Desprovimento/Nota_Tecnica_54_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_58_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/PMMG/Desprovimento/Nota_Tecnica_58_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_60_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/Secretaria-Geral/N%C3%A3o%20conhecimento/Nota_Tecnica_60_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "Secretaria-Geral",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_69_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SECULT/Desprovimento/Nota_Tecnica_69_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SECULT",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_69_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SECULT/N%C3%A3o%20conhecimento/Nota_Tecnica_69_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SECULT",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_69_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SECULT/Provimento/Nota_Tecnica_69_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SECULT",
+    "tipoPasta": "Provimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_68_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEE/Desprovimento/Nota_Tecnica_68_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_11_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_11_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_46_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_46_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_72_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_72_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_75_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_75_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_8_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_8_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_37_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEE/Perda%20de%20objeto/Nota_Tecnica_37_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_40_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEE/Perda%20de%20objeto/Nota_Tecnica_40_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_49_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEE/Provimento/Nota_Tecnica_49_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Provimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_64_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEF/N%C3%A3o%20conhecimento/Nota_Tecnica_64_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_38_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEF/Perda%20de%20objeto/Nota_Tecnica_38_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_62_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEF/Perda%20de%20objeto/Nota_Tecnica_62_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_10_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEJUSP/Desprovimento/Nota_Tecnica_10_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_10_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_10_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_48_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_48_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_4_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_4_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_50_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_50_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_52_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_52_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_6_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_6_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_71_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_71_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_73_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEJUSP/N%C3%A3o%20conhecimento/Nota_Tecnica_73_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_61_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEJUSP/Perda%20parcial%20de%20objeto/Nota_Tecnica_61_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEJUSP",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_45_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEPLAG/Desprovimento/Nota_Tecnica_45_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_45_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEPLAG/N%C3%A3o%20conhecimento/Nota_Tecnica_45_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_47_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEPLAG/N%C3%A3o%20conhecimento/Nota_Tecnica_47_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_5_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEPLAG/N%C3%A3o%20conhecimento/Nota_Tecnica_5_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_56_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEPLAG/Perda%20de%20objeto/Nota_Tecnica_56_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_39_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/SEPLAG/Provimento/Nota_Tecnica_39_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Provimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_33_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/UEMG/N%C3%A3o%20conhecimento/Nota_Tecnica_33_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "UEMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2025,
+    "arquivo": "Nota_Tecnica_74_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2025/UNIMONTES/N%C3%A3o%20conhecimento/Nota_Tecnica_74_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "UNIMONTES",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_20_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/DER/N%C3%A3o%20conhecimento/Nota_Tecnica_20_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "DER",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_30_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/DETRAN/Desprovimento/Nota_Tecnica_30_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "DETRAN",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_30_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/DETRAN/N%C3%A3o%20conhecimento/Nota_Tecnica_30_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "DETRAN",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_12_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/FCS/N%C3%A3o%20conhecimento/Nota_Tecnica_12_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FCS",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_12_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/FCS/Perda%20parcial%20de%20objeto/Nota_Tecnica_12_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "FCS",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_25_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/HEMOMINAS/N%C3%A3o%20conhecimento/Nota_Tecnica_25_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "HEMOMINAS",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_10_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/IGAM/N%C3%A3o%20conhecimento/Nota_Tecnica_10_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IGAM",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_10_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/IGAM/Perda%20parcial%20de%20objeto/Nota_Tecnica_10_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IGAM",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_1_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/IMA/N%C3%A3o%20conhecimento/Nota_Tecnica_1_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IMA",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_4_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/IMA/N%C3%A3o%20conhecimento/Nota_Tecnica_4_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IMA",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_4_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/IMA/Provimento/Nota_Tecnica_4_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "IMA",
+    "tipoPasta": "Provimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_9_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/MGS/Desprovimento/Nota_Tecnica_9_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "MGS",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_14_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/MGS/N%C3%A3o%20conhecimento/Nota_Tecnica_14_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "MGS",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_9_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/MGS/N%C3%A3o%20conhecimento/Nota_Tecnica_9_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "MGS",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_32_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/OGE/Desprovimento/Nota_Tecnica_32_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_37_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/OGE/Desprovimento/Nota_Tecnica_37_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_32_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/OGE/N%C3%A3o%20conhecimento/Nota_Tecnica_32_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "OGE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_34_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/PCMG/Desprovimento/Nota_Tecnica_34_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_21_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_21_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_34_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_34_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_3_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/PCMG/N%C3%A3o%20conhecimento/Nota_Tecnica_3_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_26_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/PCMG/Perda%20parcial%20de%20objeto/Nota_Tecnica_26_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PCMG",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_22_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/PMMG/Desprovimento/Nota_Tecnica_22_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_28_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/PMMG/Desprovimento/Nota_Tecnica_28_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_6_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/PMMG/Desprovimento/Nota_Tecnica_6_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_24_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_24_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_29_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_29_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_6_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/PMMG/N%C3%A3o%20conhecimento/Nota_Tecnica_6_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "PMMG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_36_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEE/Desprovimento/Nota_Tecnica_36_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_13_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_13_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_15_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_15_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_17_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_17_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_23_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_23_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_36_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_36_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_7_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEE/N%C3%A3o%20conhecimento/Nota_Tecnica_7_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_19_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEE/Perda%20de%20objeto/Nota_Tecnica_19_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Perda de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_13_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEE/Provimento/Nota_Tecnica_13_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Provimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_8_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEE/Provimento%20parcial/Nota_Tecnica_8_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEE",
+    "tipoPasta": "Provimento parcial",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_27_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEF/Desprovimento/Nota_Tecnica_27_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_27_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEF/N%C3%A3o%20conhecimento/Nota_Tecnica_27_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEF",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_31_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEMAD/Desprovimento/Nota_Tecnica_31_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEMAD",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_18_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEMAD/Provimento%20parcial/Nota_Tecnica_18_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEMAD",
+    "tipoPasta": "Provimento parcial",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_5_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEPLAG/Desprovimento/Nota_Tecnica_5_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_5_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEPLAG/N%C3%A3o%20conhecimento/Nota_Tecnica_5_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_5_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SEPLAG/Perda%20parcial%20de%20objeto/Nota_Tecnica_5_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SEPLAG",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_35_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SES/Desprovimento/Nota_Tecnica_35_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_16_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SES/N%C3%A3o%20conhecimento/Nota_Tecnica_16_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_2_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SES/N%C3%A3o%20conhecimento/Nota_Tecnica_2_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_35_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SES/N%C3%A3o%20conhecimento/Nota_Tecnica_35_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_2_2026.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/SES/Provimento/Nota_Tecnica_2_2026.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "SES",
+    "tipoPasta": "Provimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_11_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/UNIMONTES/Desprovimento/Nota_Tecnica_11_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "UNIMONTES",
+    "tipoPasta": "Desprovimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_11_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/UNIMONTES/N%C3%A3o%20conhecimento/Nota_Tecnica_11_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "UNIMONTES",
+    "tipoPasta": "Não conhecimento",
+    "seiId": null
+  },
+  {
+    "ano": 2026,
+    "arquivo": "Nota_Tecnica_11_2025.pdf",
+    "url": "https://www.acessoainformacao.mg.gov.br/sistema/Downloads/2026/UNIMONTES/Perda%20parcial%20de%20objeto/Nota_Tecnica_11_2025.pdf",
+    "linkProvavelmenteQuebrado": false,
+    "orgaoSigla": "UNIMONTES",
+    "tipoPasta": "Perda parcial de objeto",
+    "seiId": null
+  }
+];
+
+export interface DecisoesPorTipoAno {
+  ano: number;
+  /** `Total de resultados` do ano, sem filtro de tipo. */
+  total: number;
+  /** Contagem por tipo, do filtro oficial `ddlTipoDecisao` — não da pasta. */
+  porTipo: Record<
+    "desprovimento" | "naoConhecimento" | "perdaDeObjeto" | "perdaParcialDeObjeto" | "provimento" | "provimentoParcial",
+    number
+  >;
+  somaTipos: number;
+  /** `total - somaTipos`. Ver a lacuna documentada no topo do arquivo. */
+  semTipo: number;
+  percentualSemTipo: number;
+}
+
+export const DECISOES_CGE_POR_TIPO_ANO: DecisoesPorTipoAno[] = [
+  {
+    ano: 2020,
+    total: 51,
+    porTipo: {
+  "desprovimento": 14,
+  "naoConhecimento": 23,
+  "perdaDeObjeto": 10,
+  "perdaParcialDeObjeto": 4,
+  "provimento": 0,
+  "provimentoParcial": 0
+},
+    somaTipos: 51,
+    semTipo: 0,
+    percentualSemTipo: 0,
+  },
+  {
+    ano: 2021,
+    total: 60,
+    porTipo: {
+  "desprovimento": 21,
+  "naoConhecimento": 28,
+  "perdaDeObjeto": 7,
+  "perdaParcialDeObjeto": 3,
+  "provimento": 1,
+  "provimentoParcial": 0
+},
+    somaTipos: 60,
+    semTipo: 0,
+    percentualSemTipo: 0,
+  },
+  {
+    ano: 2022,
+    total: 86,
+    porTipo: {
+  "desprovimento": 17,
+  "naoConhecimento": 21,
+  "perdaDeObjeto": 4,
+  "perdaParcialDeObjeto": 0,
+  "provimento": 0,
+  "provimentoParcial": 0
+},
+    somaTipos: 42,
+    semTipo: 44,
+    percentualSemTipo: 51.2,
+  },
+  {
+    ano: 2023,
+    total: 204,
+    porTipo: {
+  "desprovimento": 30,
+  "naoConhecimento": 59,
+  "perdaDeObjeto": 5,
+  "perdaParcialDeObjeto": 0,
+  "provimento": 3,
+  "provimentoParcial": 2
+},
+    somaTipos: 99,
+    semTipo: 105,
+    percentualSemTipo: 51.5,
+  },
+  {
+    ano: 2024,
+    total: 156,
+    porTipo: {
+  "desprovimento": 16,
+  "naoConhecimento": 50,
+  "perdaDeObjeto": 11,
+  "perdaParcialDeObjeto": 0,
+  "provimento": 1,
+  "provimentoParcial": 1
+},
+    somaTipos: 79,
+    semTipo: 77,
+    percentualSemTipo: 49.4,
+  },
+  {
+    ano: 2025,
+    total: 143,
+    porTipo: {
+  "desprovimento": 14,
+  "naoConhecimento": 56,
+  "perdaDeObjeto": 7,
+  "perdaParcialDeObjeto": 2,
+  "provimento": 3,
+  "provimentoParcial": 0
+},
+    somaTipos: 82,
+    semTipo: 61,
+    percentualSemTipo: 42.7,
+  },
+  {
+    ano: 2026,
+    total: 53,
+    porTipo: {
+  "desprovimento": 14,
+  "naoConhecimento": 28,
+  "perdaDeObjeto": 1,
+  "perdaParcialDeObjeto": 5,
+  "provimento": 3,
+  "provimentoParcial": 2
+},
+    somaTipos: 53,
+    semTipo: 0,
+    percentualSemTipo: 0,
+  }
+];
+
+/** Importe ISTO em página de servidor, nunca o array inteiro (regra de payload). */
+export const COBERTURA_DECISOES_CGE = {
+  medidoEm: "2026-08-21",
+  totalGeral: 753,
+  anoInicial: 2020,
+  anoFinal: 2026,
+  /** Soma de `porTipo` pelo filtro oficial, nos 7 anos — sempre menor que
+   *  `totalGeral` por causa da lacuna de 2022–2025 (ver docstring acima). */
+  totalComTipoOficial: 466,
+  totalSemTipoOficial: 287,
+  percentualSemTipoOficial: 38.1,
+  /** Anos em que `porTipo` soma exatamente o total do ano. */
+  anosQueFecham: [
+  2020,
+  2021,
+  2026
+] as const,
+  /** Anos em que soma menos que o total — a lacuna NÃO resolvida. */
+  anosComLacuna: [
+  2022,
+  2023,
+  2024,
+  2025
+] as const,
+  /** Registros cujo link do PDF ainda guarda órgão+tipo na própria pasta
+   *  (estrutura "antiga" — ver docstring do coletor). */
+  registrosComOrgaoETipoNaPasta: 475,
+  /** Registros cujo link provavelmente devolve 404 (padrão `App_Data`). */
+  registrosComLinkProvavelmenteQuebrado: 278,
+} as const;
