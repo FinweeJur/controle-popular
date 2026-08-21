@@ -4,9 +4,11 @@
   "license": "AGPL-3.0-or-later",
   "repository": "https://github.com/FinweeJur/controle-popular",
   "workspaces": ["apps/*"],
+  "//test": "Delega para o workspace, como dev/build/lint. NAO trocar por um `vitest run` aqui na raiz: os testes carregam fixture por caminho relativo ao cwd (ex.: lib/cultura/fixtures/incentivadores-mg.json), entao rodar vitest com o cwd na raiz quebra 32 deles com ENOENT sem que haja defeito nenhum no codigo. E `test.root` no config nao resolve, porque ele muda a resolucao do vitest e nao o process.cwd(). Medido em 2026-08-20: da raiz sem escopo, 591 arquivos coletados e 229 falhas (o vitest varria tambem os worktrees de outras sessoes); via workspace, 53 arquivos e 742 testes verdes.",
   "scripts": {
     "dev": "npm run dev -w @cp/web",
     "build": "npm run build -w @cp/web",
-    "lint": "npm run lint -w @cp/web"
+    "lint": "npm run lint -w @cp/web",
+    "test": "npm run test -w @cp/web"
   }
 }

@@ -99,3 +99,10 @@ apps/web/.tmp-salic/
 # `apps/web/data/repasse-brumadinho-mg.json` + o coletor que o gerou. Versionar
 # o HTML tambem seria criar a segunda copia que o repo aprende a divergir.
 .cache/
+
+# Cache do code-graph-rag (ver docs/DESENVOLVIMENTO.md, "Grafo de código").
+# A ferramenta grava estes na raiz do repo que ela indexa; são derivados da
+# árvore de arquivos e não descrevem nada do projeto.
+.cgr-dir-mtimes.json
+.cgr-hash-cache.json
+.cgr-parser-fingerprint

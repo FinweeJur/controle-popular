@@ -34,7 +34,8 @@
       "prorrogacao_dias": 10,
       "data_limite": "2026-08-18",
       "data_limite_prorrogado": "2026-08-28",
-      "prorrogacao_concedida": false,
+      "prorrogacao_concedida": true,
+      "nota_prorrogacao": "Prorrogacao de 10 dias (art. 11 par. 2o da Lei 12.527/2011) concedida pelo INCRA -- o prazo que vale agora e 2026-08-28. Informado pelo dono do projeto em 2026-08-20; a data exata da comunicacao do orgao nao foi anotada. O numero de protocolo continua desconhecido, e o aviso do validador sobre isso segue de proposito ate que alguem volte no Fala.BR e grave o numero.",
       "situacao": "aguardando",
       "resposta": null,
       "documento_pedido": {

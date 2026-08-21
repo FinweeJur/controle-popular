@@ -1,0 +1,59 @@
+# Falha quando um pedido de LAI vence e ninguém trocou a situação.
+#
+# ═══ POR QUE AGENDADO, E NÃO SÓ NO PUSH ═══
+#
+# Prazo é disparado por TEMPO, não por commit. Um hook de pre-push só percebe
+# o vencimento se alguém acontecer de empurrar alguma coisa naquele dia — e o
+# modo de falha típico é justamente o contrário: ninguém mexe no repo por uma
+# semana e o prazo passa em silêncio. Foi o que quase aconteceu com o pedido
+# ao INCRA (`scripts/checar-protocolos-lai.py` documenta o caso).
+#
+# Por isso o gatilho principal é o cron diário. O `push`/`pull_request` fica
+# como reforço, não como mecanismo.
+#
+# ═══ POR QUE NÃO BARRA O PUSH ═══
+#
+# O hook `.githooks/pre-push` barra CPF porque o push É o dano — depois dele
+# não há desfazer. Um prazo de LAI vencido não é causado pelo push, e barrar
+# um ajuste de CSS por causa de um prazo de outro assunto treina todo mundo a
+# usar `--no-verify`, o que desliga junto a proteção de CPF, que é séria.
+# Aqui a saída é ficar vermelho na aba Actions e mandar e-mail.
+#
+# ═══ LIMITAÇÃO CONHECIDA ═══
+#
+# Isto avisa; não alerta. O `canario-limites.yml` manda Telegram porque o teto
+# do Cloudflare é urgente. Se um prazo perdido passar a doer de verdade, o
+# passo seguinte é reusar aquele mesmo mecanismo de notificação — não inventar
+# outro.
+
+name: Prazos de LAI
+
+on:
+  schedule:
+    # 09:12 UTC ≈ 06:12 em Brasília — cedo, e fora do minuto 0, que é quando
+    # todo mundo agenda e a fila do GitHub engasga.
+    - cron: "12 9 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "docs/LAI-PROTOCOLOS.json"
+      - "scripts/checar-protocolos-lai.py"
+      - ".github/workflows/prazos-lai.yml"
+  pull_request:
+    paths:
+      - "docs/LAI-PROTOCOLOS.json"
+      - "scripts/checar-protocolos-lai.py"
+
+jobs:
+  checar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Conferir prazo de cada pedido de LAI
+        run: python scripts/checar-protocolos-lai.py

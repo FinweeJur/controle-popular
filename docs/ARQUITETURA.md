@@ -5,15 +5,23 @@ Mapa do monorepo: como o dado chega, onde os dois tetos mandam e onde cada mecan
 ## Visão geral
 
 ```
-scripts/ (coletores)  →  apps/web/data/ (versionado)  →  next build (output: export)  →  Cloudflare Workers (Static Assets)
+scripts/ (coletores)  →  apps/web/data/ (versionado)  →  opennextjs-cloudflare build  →  Cloudflare Workers
                              ↑                                        ↑
       Postgres local (home-pc) / Neon — Drizzle (lib/db/),     *.din.ts só entra no alvo Workers;
       lido no build, só onde a rota precisa                    *.local.* só existe em next dev
 ```
 
+**O alvo principal é Cloudflare Workers com OpenNext — NÃO é `output: 'export'`.**
+Publica-se com `npm run cf:deploy` (`opennextjs-cloudflare build && populateCache
+remote && deploy`). O `output: 'export'` existe, mas só liga quando `PAGES_BASE_PATH`
+está definido (`apps/web/next.config.ts:41-42,190`), que é o **alvo alternativo** do
+GitHub Pages — hoje inviável por não caber no teto de 20 mil arquivos (ver
+`docs/planos/deploy-github-pages.md`). Confundir os dois faz decidir payload pela
+restrição errada. O detalhamento está em `docs/MAPA-APLICACAO.md`.
+
 - `apps/web/app/` — rotas (App Router). Hoje há 16 rotas `*.din.ts` (chat, busca, contratos, zap, classificados, coleta, moderação, anúncios, pageview), ignoradas pelo export estático.
 - `apps/web/lib/` — lógica pura com teste ao lado; `data/` é lido no build; `scripts/` coleta e publica (`rotina-local.mts`).
-- O site é estático nos dois alvos: nada de rede nem banco em tempo de execução — a tela abre com a Neon fora do ar.
+- **As páginas são pré-renderizadas no build nos dois alvos** — nenhuma consulta banco em tempo de execução, e a tela abre com a Neon fora do ar. O que muda é o que sobra ao lado delas: no alvo Workers as 16 rotas `*.din.ts` existem e rodam em runtime; no export estático elas não entram.
 
 ## Os dois tetos
 
