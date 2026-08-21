@@ -7,6 +7,7 @@ import {
   CONVENIOS_AMBIENTAIS_POR_ANO,
   CONVENIOS_AMBIENTAIS_POR_ORGAO,
 } from "@/lib/ambiental/convenios-mg";
+import { COBERTURA_CONVENIOS_FEDERAIS_MG } from "@/lib/ambiental/convenios-federais-mg";
 import { metadataEditavel } from "@/lib/edicoes";
 import ConveniosClient from "./ConveniosClient";
 
@@ -36,6 +37,7 @@ export const metadata: Metadata = metadataEditavel("/ambiental/convenios", {
 });
 
 const C = COBERTURA_CONVENIOS_AMBIENTAIS;
+const F = COBERTURA_CONVENIOS_FEDERAIS_MG;
 
 export default function ConveniosAmbientaisPage() {
   const anosVisiveis = [...CONVENIOS_AMBIENTAIS_POR_ANO]
@@ -118,6 +120,78 @@ export default function ConveniosAmbientaisPage() {
             média do Estado, e essa diferença é que merece explicação.
           </p>
         </div>
+      </section>
+
+      {/* ═══ A COMPARAÇÃO FEDERAL ═══
+          Escopo diferente, e o rótulo diz isso em toda menção: os convênios
+          federais aqui são de TODOS os setores (saúde, cidades, esporte), não
+          só ambiental. Servem para duas coisas: dar uma segunda régua de
+          prorrogação, e mostrar que a base federal publica o que a estadual
+          não publica. Só agregados — o detalhe são 29 mil registros. */}
+      <section aria-labelledby="federal" className="mt-10">
+        <h2 id="federal" className="font-display text-xl font-bold tracking-tight text-text">
+          O que a base federal mostra e a estadual não
+        </h2>
+        <p className="mt-2 max-w-3xl text-[.95em] leading-relaxed text-text-soft">
+          O Transferegov publica os convênios da União com proponentes de Minas — e publica,
+          para cada um, <strong className="text-text">o prazo e o valor originais ao lado dos
+          atuais</strong>, mais um contador de prorrogações. É exatamente o tipo de campo que
+          permite dizer se o combinado mudou. São{" "}
+          <strong className="text-text">{formatNumberBR(F.convenios)} convênios</strong> de{" "}
+          {F.anoInicial} a {F.anoFinal},{" "}
+          <strong className="text-text">de todos os setores</strong> — saúde, cidades, agricultura,
+          esporte —, não só ambiental. Por isso servem de régua, não de comparação direta.
+        </p>
+        <div className="mt-5 grid gap-4 sm:grid-cols-3">
+          <div className="rounded-xl border border-border bg-surface px-4 py-4">
+            <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+              Valor global (federal, MG)
+            </p>
+            <p className="mt-1 font-display text-2xl font-bold text-text">
+              <Moeda value={F.valorGlobal} />
+            </p>
+            <p className="mt-1 text-[.86em] text-text-soft">
+              {F.percentualDesembolsado.toString().replace(".", ",")}% desembolsado
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-surface px-4 py-4">
+            <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+              Com pelo menos uma prorrogação
+            </p>
+            <p className="mt-1 font-display text-2xl font-bold text-text">
+              {F.percentualComProrrogacao.toString().replace(".", ",")}%
+            </p>
+            <p className="mt-1 text-[.86em] text-text-soft">
+              contra {C.percentualProrrogados.toString().replace(".", ",")}% nos convênios
+              ambientais estaduais
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-surface px-4 py-4">
+            <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+              Crescimento do valor pactuado
+            </p>
+            <p className="mt-1 font-display text-2xl font-bold text-text">
+              +{F.crescimentoDeValor.toString().replace(".", ",")}%
+            </p>
+            <p className="mt-1 text-[.86em] text-text-soft">
+              só nos {formatNumberBR(F.conveniosComValorOriginal)} que declaram o valor original (
+              {F.percentualComValorOriginal.toString().replace(".", ",")}%)
+            </p>
+          </div>
+        </div>
+        <p className="mt-4 rounded-xl border border-border bg-surface-2 p-5 text-[.92em] leading-relaxed text-text-soft">
+          <strong className="text-text">Por que o terceiro número tem um denominador
+          próprio.</strong>{" "}
+          A base só preenche o valor original em{" "}
+          {F.percentualComValorOriginal.toString().replace(".", ",")}% dos convênios. Somar o valor
+          atual de todos contra o original de alguns daria um crescimento de 3,3 vezes — número
+          impressionante e falso. Comparando apenas quem declara os dois, o valor pactuado cresceu{" "}
+          <strong className="text-text">
+            +{F.crescimentoDeValor.toString().replace(".", ",")}%
+          </strong>
+          . Outros {formatNumberBR(F.conveniosSemAno)} convênios não trazem ano válido e ficam fora
+          de qualquer série temporal.
+        </p>
       </section>
 
       <section aria-labelledby="por-orgao" className="mt-10">

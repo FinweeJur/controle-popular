@@ -114,6 +114,25 @@ Número que saiu disso: **47,7% dos 870 convênios ambientais foram prorrogados,
 
 **Fora do CKAN:** o meio ambiente de MG quase não publica ali — nenhuma das 18 organizações é SEMAD/FEAM/IEF/IGAM (os convênios acima aparecem porque a CGE publica os de TODOS os órgãos). O ambiental vive nos sistemas do SISEMA. E a **SEDESE tem 1 conjunto só** (transferência de renda, 2020-21): tratar como dimensão, não como fonte.
 
+## Transferegov (ex-SICONV) — o federal publica o que o estadual não publica
+
+Medido em 21/08/2026. Coletor: `scripts/coletar-convenios-federais-mg.mts`. CSV puro, **sem chave e sem login**, em `https://repositorio.dados.gov.br/seges/detru/`. Recorte de MG: 29.475 convênios da União com proponente mineiro, R$ 27,98 bi, 49,2% desembolsado.
+
+**Por que importa:** a base federal traz `DIA_FIM_VIGENC_ORIGINAL_CONV` e `VALOR_GLOBAL_ORIGINAL_CONV` ao lado dos atuais, mais `QTD_PRORROGA` — prazo e valor originais, e um contador de prorrogações. É o que a base estadual não deixa medir (o arquivo de meta/etapa dela vem vazio).
+
+Quatro armadilhas:
+
+1. **O `siconv.zip` completo tem 3,34 GB.** Os arquivos individuais ficam no mesmo diretório; baixar o pacote inteiro para pegar três tabelas é desperdício.
+2. **`siconv_meta.csv.zip` e `siconv_etapa.csv.zip` dão 404.** Os nomes reais são `siconv_meta_crono_fisico.csv.zip` (103 MB) e `siconv_etapa_crono_fisico.csv.zip` (183 MB) — a documentação lista os CONCEITOS ("Meta", "Etapa"), não os nomes dos arquivos.
+3. **Os CSV são UTF-8, e ler como latin-1 quebra duas coisas de uma vez.** Além dos acentos, o BOM `EF BB BF` vira três caracteres colados no nome da PRIMEIRA coluna, então `ID_PROPOSTA` fica indefinido e o join devolve **1 proposta de MG em vez de 98.949** — sem lançar erro, com número pequeno e plausível.
+4. **`VALOR_GLOBAL_ORIGINAL_CONV` só está preenchido em 37,7% dos registros.** Somar o atual de todos contra o original de alguns dá crescimento de **3,3×** — falso. No mesmo subconjunto, o crescimento real é **+39,6%**. Publicar o percentual sem o denominador é o erro.
+
+Mais: **4.884 dos 29.475 convênios não trazem ano válido** e ficam fora de qualquer série temporal — a diferença precisa ter nome, senão a soma da série bate menos que o total e parece que registros sumiram.
+
+**Limite de string do V8:** `siconv_proposta.csv` tem ~700 MB descompactado, e `readFileSync(…, "utf8")` estoura com `ERR_STRING_TOO_LONG` (teto de ~512 MB) — mesma armadilha dos CSV do TSE. O coletor lê em fluxo, guardando o estado de aspas entre os pedaços.
+
+**Descompactar:** usar `Expand-Archive` do PowerShell. O `tar` que responde neste ambiente é o do Git Bash, que **recusa zip e ainda assim sai com código 0** — falha silenciosa.
+
 ## Microsistema de lacunas — cobertura declarada
 
 Acervo semente: 30 instrumentos + 15 precedentes (barragens/atingidos). Dos 7 temas propostos, só direitos humanos nasce pronto; indígena nasce com conteúdo mas sem a Convenção 169 como instrumento próprio e sem jurisprudência de demarcação; **serras, rios, flora/fauna, quilombola e povos tradicionais nasceriam vazios** — cada um exige norma central (Código Florestal arts. 4º I/IX-X, Lei 5.197/67, Lei 9.605/98, SNUC, Decreto 4.887/2003, Decreto 6.040/2007). A carga federal fechou a lacuna normativa (todas conferidas no banco: 5.197/67, 9.605/98, 9.985/00, 12.651/12, 11.428/06, 6.938/81, Conama 237). Contagem de vazios declarada, não maquiada: 29,1% das federais do MMA e 6,5% do CNDH com tema; 68% sem nenhuma tag; precedentes que faltam: Awas Tingni, Yakye Axa, Saramaka, Sarayaku, Tema 1.031 do STF, Súmula 613 do STJ, Convenção Americana como instrumento autônomo.
