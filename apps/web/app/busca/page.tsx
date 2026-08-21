@@ -61,7 +61,7 @@ export default async function BuscaPage() {
     // sem <main> nenhum -- o botão global de "Ouvir esta página"
     // (`OuvirPagina.tsx`) lê o `<main>`, e sem a tag a página inteira ficava
     // fora do alcance dele.
-    <main className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
       <nav className="mb-4 text-sm text-text-soft">
         <a href="/" className="hover:text-primary">
           Início

@@ -152,7 +152,7 @@ const LICENCAS = [
 
 export default function TermosPage() {
   return (
-    <main className="mx-auto max-w-3xl space-y-12 px-4 py-12 sm:py-16">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-3xl space-y-12 px-4 py-12 sm:py-16">
       <nav className="text-sm text-text-soft">
         <Link href="/" className="hover:text-primary">
           Início

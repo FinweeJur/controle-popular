@@ -58,7 +58,7 @@ export default async function DireitosEmMovimentoHub() {
   const totalLai = LAI_ESTADUAL.length + LAI_FEDERAL.length;
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
       <nav className="text-sm text-text-soft">
         <a href="/" className="hover:text-primary">
           Início

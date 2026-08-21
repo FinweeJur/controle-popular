@@ -44,7 +44,7 @@ export default async function SobrePage() {
   const N = formatNumberBR;
 
   return (
-    <main className="mx-auto max-w-3xl space-y-14 px-4 py-12 sm:py-16">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-3xl space-y-14 px-4 py-12 sm:py-16">
       <nav className="text-sm text-text-soft">
         <a href="/" className="hover:text-primary">
           Início

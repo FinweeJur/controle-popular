@@ -83,7 +83,7 @@ export default async function FuncaoSocialTerraPage() {
   const atosAreaProtegida = carregarAtosAreaProtegida();
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
       <p className="text-[.8em] font-semibold tracking-wide text-text-soft uppercase">
         {ZONA.etiqueta}
       </p>

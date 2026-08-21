@@ -165,7 +165,7 @@ export default function AlertasPage() {
   const atos = carregarAtosAreaProtegida();
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
       <p className="text-[.8em] font-semibold tracking-wide text-text-soft uppercase">
         Terra e território · Alertas
       </p>
