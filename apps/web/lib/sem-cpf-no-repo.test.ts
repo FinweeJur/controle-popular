@@ -94,7 +94,13 @@ describe("nenhum CPF real em arquivo versionado", () => {
           // `\d` — a primeira versão deste teste usava `\d`, não casava nada, e
           // passava verde com CPF real no repositório. Guarda cego é pior que
           // guarda nenhum, porque dá a sensação de estar protegido.
-          "grep", "-hoIE", String.raw`\b[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}\b|\b[0-9]{11}\b`,
+          // As duas primeiras alternativas capturam o NÚMERO INTEIRO quando os
+          // 11 dígitos são parte de um decimal — sem elas, `\b[0-9]{11}\b`
+          // casava dentro de `47018614139.37967` (R$ 47 bi liquidados no
+          // SIAFI), porque o `.` conta como fronteira de palavra. O filtro
+          // logo abaixo descarta esses. Guarda que grita com valor monetário
+          // treina todo mundo a ignorar o alerta — e aí o CPF real passa.
+          "grep", "-hoIE", String.raw`[0-9]{11}\.[0-9]+|[0-9]+\.[0-9]{11}\b|\b[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}\b|\b[0-9]{11}\b`,
           "--", ...EXTENSOES,
           ":!*package-lock.json", ":!**/node_modules/**", ":!*.next/**",
           ":!*.open-next/**", ":!out/**", ":!**/busca-indice/**",
@@ -112,6 +118,9 @@ describe("nenhum CPF real em arquivo versionado", () => {
       saida.split("\n")
         .map((l) => l.trim())
         .filter(Boolean)
+        // Ponto sem hífen = número decimal, não CPF. CPF formatado tem os
+        // dois (`123.456.789-09`); valor monetário tem só o ponto.
+        .filter((n) => !(n.includes(".") && !n.includes("-")))
         .filter((n) => !SINTETICOS.has(n))
         .filter((n) => cpfValido(n.replace(/\D/g, ""))),
     )];
