@@ -247,16 +247,6 @@ Os que existem, ambos sem protocolo e **nenhum registrado em
 **Está** (`docs/LEIA-PRIMEIRO.md:27`, com a ressalva de sobreposição em `:35`).
 O que continua pendente é só a decisão de fundir, e qual caminho sobrevive.
 
-## D4. A memória do Agitprop está se contradizendo
-
-⚠️ **O que foi feito é o oposto do que ficou registrado aqui.** A decisão era
-"manter indexado e corrigir o texto". O que aconteceu: o arquivo ganhou banner
-**"SUPERADO … Fora do índice"**, o texto da linha 23 **não** foi corrigido, e o
-`MEMORY.md` **continua indexando** o arquivo. Hoje os dois se contradizem.
-
-Escolher **um**: honrar o banner (tirar do `MEMORY.md`) ou honrar a decisão
-original (tirar o banner e corrigir o texto). Não pode ser os dois.
-
 ---
 
 ## Mapa de fontes
