@@ -38,8 +38,11 @@ import {
 test('CAMADAS reais: 39 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
   const grupos = agruparPorAssunto(CAMADAS_RESOLVIDAS, ASSUNTOS);
 
+  // ⟲ 20/08/2026: 39 → 40. Entrou `estudos-ambientais` (audiências públicas de
+  // EIA/RIMA da SEMAD-MG, um ponto por município), no grupo 'pistas', ao lado
+  // de embargos e da amostra em conferência. Só entrou — nenhum id saiu.
   assert.equal(
-    CAMADAS.length, 39,
+    CAMADAS.length, 40,
     // ⟲ 13/08/2026, mais tarde: subiu de 22 para 30 — as 8 camadas do
     // rompimento real da B1/Brumadinho (docs/PLANO-INTEGRACAO-BRUMADINHO.md,
     // seção 1.2), cada uma numa linha própria, sem irmã regional.
@@ -94,8 +97,8 @@ test('a reorganização de fato UNIFICOU: 43 fontes em 39 linhas, e as 4 que som
   // continua 4 — são as mesmas quatro irmãs regionais de sempre, listadas
   // abaixo. Se um dia a diferença mudar sem esta lista mudar junto, é porque
   // alguém partiu ou unificou conceito sem dizer.
-  assert.equal(LAYER_REGISTRY.length, 43, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 39, 'sentinela: o número de LINHAS mudou');
+  assert.equal(LAYER_REGISTRY.length, 44, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 40, 'sentinela: o número de LINHAS mudou');
 
   // ⟲ Fim do dia: `territorios-quilombolas` SAIU desta lista. Ela tinha 2
   // fontes, chegou a ter 3, e agora tem UMA só — as três foram unificadas.
@@ -127,7 +130,11 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
   const IDS_PUBLICADOS = [
     'assentamentos', 'assentamentos-vales',
     'checagem-g0', 'devolutas-arrecadadas',
-    'embargos-ambientais-vales', 'lotes-vagos-bh', 'municipios-mg',
+    'embargos-ambientais-vales',
+    // ⟲ 20/08/2026: audiências públicas de EIA/RIMA (SEMAD-MG), um ponto por
+    // município, no grupo 'pistas'. Id NOVO no contrato — nenhum id antigo saiu.
+    'estudos-ambientais',
+    'lotes-vagos-bh', 'municipios-mg',
     'normas-geolocalizadas', 'pesquisa-noticias', 'satelites-orbita',
     'spu-imoveis-uniao', 'spu-imoveis-uniao-vales',
     'terra-publica-certificada', 'terra-publica-certificada-vales',
