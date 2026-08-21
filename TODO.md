@@ -21,33 +21,20 @@
 
 ## Em curso
 
-- **Expansão: acordos, contratos e convênios de MG** — Blocos 0, A e metade do
-  B entregues. No ar: `/ambiental/tac` (execução financeira dos TACs + cadastro
-  GTAC) e `/ambiental/convenios` (convênios ambientais estaduais + régua
-  federal do Transferegov).
-  · **em curso agora:** B6 (decisões da CGE), B2-resíduo (conjuntos CKAN sem
-  coletor) e B1-resíduo (`_tacs_contas.json`), os três em paralelo no worktree
-  `.claude/worktrees/cp-acordos-mg`, particionados por arquivo.
-  · **depois:** B7 (TACs do MPMG, exige OCR), B8 (DataJud TJMG — a licença veda
-  redistribuir derivado, então o caminho é consulta ao vivo), B4 (PNCP: o
-  coletor existente escreve no banco; reescrever para arquivo o destrava).
-  · **B4 (PNCP) saiu da fila: não é "custo baixo", é bloqueado.** O coletor
-  existente (`etl/betim/etl/pncp/contratos.py`) grava via
-  `get_supabase_client()`, e a Neon está em 402 — ver "Esperando data".
-  · armadilhas de cada fonte já registradas em `docs/FONTES.md` — ler antes de
-  tocar em qualquer uma delas.
-  · worktree: nenhum (feito no checkout principal) · plano em
-  `docs/planos/PLANO-EXPANSAO-ACORDOS-MG.md` (movido para dentro do repo em
-  21/08, depois de a auditoria achar 12 afirmacoes vencidas nele)
-
-- **B6 — decisões de recurso da CGE: sondado, coletor por escrever.** 753
-  decisões (2020–2026), sem login e sem captcha, mas é WebForms: cada POST exige
-  o `__VIEWSTATE` de um GET anterior. Tabela por ano e tipo em `docs/FONTES.md`.
-  · **corrige o plano:** eu havia escrito que filtrar por *Provimento* daria "o
-  mapa das negativas indevidas". São **16 casos em 7 anos** — servem de exemplo,
-  não de base estatística. O que domina é *Não conhecimento* (265).
-  · antes de publicar qualquer total por tipo: em 2022–2025 a soma dos tipos não
-  fecha com o total do ano, e ninguém investigou por quê.
+- **Expansão: acordos, contratos e convênios de MG** — Blocos 0, A e quase todo
+  o B entregues, no worktree `.claude/worktrees/cp-acordos-mg` (branch
+  `cp-acordos-mg`, pushado). No ar: `/ambiental/tac` (com dashboard, 2 gráficos
+  e CSV), `/ambiental/convenios`, `/ambiental/decisoes-lai` (753 decisões da
+  CGE), `/ambiental/barragens/descaracterizacao` (45 barragens do MPMG).
+  · **entregue nesta rodada:** B1 destravado (o modelo do Power BI expõe 11
+  entidades, não 4), B2 (6 conjuntos do CKAN + SIAFI com 718 mil linhas),
+  B5, B6, o painel Sisema (582 mil autos de infração, R$ 11,48 bi aplicados) e
+  a **regra das cinco coisas** aplicada a 8 páginas.
+  · **em curso:** B4 (PNCP por arquivo) e B8 (DataJud por consulta ao vivo).
+  · **B7 está morto**, com medição: `buscarTac` responde 200 com 0 byte. Não é
+  pendência, é resultado — não reabrir sem a fonte voltar.
+  · armadilhas de cada fonte em `docs/FONTES.md` — ler antes de tocar.
+  · plano: `docs/planos/PLANO-EXPANSAO-ACORDOS-MG.md`
 
 - **Pedido de LAI à CGE-MG — redigido, falta protocolar.** O
   `ft_convenio_metaetapa` do conjunto `convenios-saida` sai com **só o
