@@ -33,26 +33,43 @@
   B entregues. No ar: `/ambiental/tac` (execução financeira dos TACs + cadastro
   GTAC) e `/ambiental/convenios` (convênios ambientais estaduais + régua
   federal do Transferegov).
-  · **próximo:** B4 (PNCP, contratos estaduais — já há base em
-  `etl/betim/etl/pncp/`), B6 (corpus de decisões da CGE, o proxy de LAI),
-  B7 (TACs do MPMG, exige OCR), B8 (DataJud TJMG).
+  · **próximo:** B6 (coletor das decisões da CGE — a sondagem já está feita, ver
+  abaixo), B7 (TACs do MPMG, exige OCR), B8 (DataJud TJMG).
+  · **B4 (PNCP) saiu da fila: não é "custo baixo", é bloqueado.** O coletor
+  existente (`etl/betim/etl/pncp/contratos.py`) grava via
+  `get_supabase_client()`, e a Neon está em 402 — ver "Esperando data".
   · armadilhas de cada fonte já registradas em `docs/FONTES.md` — ler antes de
   tocar em qualquer uma delas.
   · worktree: nenhum (feito no checkout principal) · plano em
   `.claude/plans/joyful-gathering-willow.md` (fora do repo, no perfil)
 
-- **Pedido de LAI a escrever: o arquivo de metas que vem vazio.** O conjunto
-  `convenios-saida` do `dados.mg.gov.br` publica `ft_convenio_metaetapa`, e ele
-  vem com **só o cabeçalho** (78 bytes, HTTP 200, conferido duas vezes). Sem ele
-  não dá para dizer se um convênio entregou o que prometeu — só quanto custou e
-  quanto demorou. Destinatário: CGE-MG. O argumento é o mesmo do pedido ao
-  TCE-MG que já está redigido e sem protocolo.
+- **B6 — decisões de recurso da CGE: sondado, coletor por escrever.** 753
+  decisões (2020–2026), sem login e sem captcha, mas é WebForms: cada POST exige
+  o `__VIEWSTATE` de um GET anterior. Tabela por ano e tipo em `docs/FONTES.md`.
+  · **corrige o plano:** eu havia escrito que filtrar por *Provimento* daria "o
+  mapa das negativas indevidas". São **16 casos em 7 anos** — servem de exemplo,
+  não de base estatística. O que domina é *Não conhecimento* (265).
+  · antes de publicar qualquer total por tipo: em 2022–2025 a soma dos tipos não
+  fecha com o total do ano, e ninguém investigou por quê.
+
+- **Pedido de LAI à CGE-MG — redigido, falta protocolar.** O
+  `ft_convenio_metaetapa` do conjunto `convenios-saida` sai com **só o
+  cabeçalho**: 87 bytes comprimidos, 75 descomprimidos, 1 linha. No mesmo
+  conjunto e no mesmo minuto, um recurso irmão devolveu 784.802 linhas — o que
+  elimina a resposta "problema na sua conexão". Sem essa tabela dá para dizer
+  quanto um convênio custou e quanto demorou, **não** se ele entregou o que
+  prometeu.
+  · texto pronto: `Projetos/Controle Popular — Pedido LAI CGE-MG (metas de
+  convênio).md`, no vault
+  · depois de protocolar, registrar em `docs/LAI-PROTOCOLOS.json` — aí a CI
+  diária passa a vigiar o prazo sozinha
 
 ## Esperando data
 
 - **Neon volta em 2026-09-01** (HTTP 402 até lá; sem banco não há `next build`).
   Trava: migrations 0071–0077, carga das 8.570 normas federais do MMA + 370 do
-  CNDH, auditoria dos 25.729 links, backfill de temas (100 de 10.317).
+  CNDH, auditoria dos 25.729 links, backfill de temas (100 de 10.317), **e o B4
+  (PNCP, contratos estaduais de MG)** — o coletor escreve no banco.
   · runbook pronto: `docs/planos/ROTEIRO-NEON-01-09.md`
 
 - **LAI INCRA — prazo 2026-08-28** (protocolado, prorrogado por 10 dias). O

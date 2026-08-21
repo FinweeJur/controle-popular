@@ -88,6 +88,35 @@ Armadilha `total_doado`: é o total **no Brasil** do incentivador; `_links.doaco
 
 Canal federal = Fala.BR (todo órgão gov.br encaminha para lá); prazo padrão 20+10 dias. **Protocolo do Fala.BR não é gravado em lugar nenhum do projeto** — quem abre pedido anota à mão (órgão, data, protocolo, prazo); foi exatamente essa a lacuna do pedido ao INCRA, com **prazo vencendo em 18/08 e protocolo nunca anotado** (remeça antes de decidir com ele — o pedido em si não existe no repositório; os 4 pedidos redigidos citados na tarefa nunca foram achados). Municípios: Betim (Decreto 43.201, 20+10), BH (e-SIC próprio; Câmara = ouvidoria), SP (e-SIC; portal de transparência atrás de captcha), Araçuaí e Itinga (e-SIC próprios), Diamantina (portaltransp; Câmara inacessível a bot). Estadual: e-SIC central CGE-MG (**exige login gov.br — interação humana**); Semad/Feam/Igam não têm e-SIC próprio (redirecionam); TCE-MG 20 dias + 5 para recurso; ALMG sem e-SIC dedicado. Não verificado: Câmara de Betim (404), DPMG, SPU, Câmara de Araçuaí.
 
+## Decisões de recurso de LAI da CGE-MG — o único corpus de LAI de MG pesquisável
+
+`acessoainformacao.mg.gov.br/sistema/site/busca_decisao.aspx`, **sem login e sem captcha**. Sondado em 21/08/2026.
+
+**Contexto que decide o resto:** MG **não** publica os pedidos de LAI nem as respostas. Não há busca de pedidos respondidos, não há download em massa (o link chamado "Download de Dados" leva a *Informações Classificadas e Desclassificadas*, outra coisa) e não há como enumerar — sem índice, sem id público, sem paginação. O federal publica pedidos e respostas em CSV; MG publica só estatística agregada. **Este corpus de decisões é o que existe**, e por isso vale mapeá-lo.
+
+**Como se conversa com ele:** ASP.NET WebForms — POST com `__VIEWSTATE`/`__EVENTVALIDATION` colhidos de um GET anterior; sem eles o servidor rejeita. Filtros: `ddlYear` (2020–2026), `ddlOrgao` (90 órgãos) e `ddlTipoDecisao` (6 tipos). Prefixo dos campos: `ctl00$ctl00$ConteudoGeral$ConteudoPrincipalSemAjax$`.
+
+⚠️ **Zero resultado NÃO traz "Total de resultados: 0"** — a página troca a frase inteira por *"Nenhum resultado encontrado para a pesquisa."* Quem só procura o total lê a ausência como falha de parsing e inventa um erro que não existe — ou pula o caso e nunca registra o zero, que aqui é informação.
+
+**O tamanho do corpus, medido (2020–2026): 753 decisões.**
+
+| ano | total | Desprovimento | Não conhecimento | Perda de objeto | Perda parcial | Provimento | Prov. parcial |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 2020 | 51 | 14 | 23 | 10 | 4 | 0 | 0 |
+| 2021 | 60 | 21 | 28 | 7 | 3 | 1 | 0 |
+| 2022 | 86 | 17 | 21 | 4 | 0 | 0 | 0 |
+| 2023 | 204 | 30 | 59 | 5 | 0 | 3 | 2 |
+| 2024 | 156 | 16 | 50 | 11 | 0 | 1 | 1 |
+| 2025 | 143 | 14 | 56 | 7 | 2 | 3 | 0 |
+| 2026 | 53 | 14 | 28 | 1 | 5 | 3 | 2 |
+
+**Duas leituras que mudam o que dá para prometer com esta fonte:**
+
+1. **Provimento é raro: 16 em sete anos** (2020 e 2022 tiveram nenhum). A ideia de "filtrar por Provimento e obter o mapa das negativas indevidas" — que chegou a ser escrita no plano de expansão — **não se sustenta no volume**: são 16 casos, não um veio. Valem como casos exemplares, nunca como base estatística. O que domina é *Não conhecimento* (265) e *Desprovimento* (126): o recurso não é apreciado, ou o cidadão perde.
+2. **Em 2022–2025 a soma dos tipos não fecha com o total do ano** (2023: 99 de 204; 2024: 79 de 156; 2025: 82 de 143), enquanto 2020, 2021 e 2026 fecham exatamente. Ou parte das decisões não tem tipo preenchido, ou existe tipo fora do dropdown. **Não investigado** — mas ninguém deve somar por tipo e publicar como total do ano sem resolver isso antes.
+
+**Status:** sondagem feita, coletor **não** escrito. O corpus é pequeno e enumerável; o custo está em percorrer os anos mantendo o viewstate a cada requisição.
+
 ## Diário oficial — mapeamento SIGPub (sem coleta)
 
 Mapeamento feito, coleta bloqueada até o corte de LGPD (nomeação/exoneração, CPF). Só **Diamantina** usa SIGPub/AMM-MG (diariomunicipal.com.br/amm-mg; uma edição estadual por dia útil; busca por `entidadeUsuaria` — Prefeitura = 905, Câmara = 21672; sem filtro de tipo de ato; URLs por hash opaco; **mecanismo confirmado em 16/08**: GET + CSRF de sessão + datas obrigatórias em `dd/mm/yyyy` + paginação por mês, pois range longo devolve vazio). **Araçuaí e Itinga têm diário próprio** (CMS da prefeitura; Itinga = "Simple System", endpoint JSON atrás de JS não mapeado; `fontes.diario_oficial` de Itinga não preenchido). Betim (dados abertos JSON), BH (DOM-Web) e SP (DOC/PubNet) em fases posteriores. Engenharia adiantada: migration `0077_atos_diario.sql` + classificador `apps/web/lib/diario/classificarAto.ts` (calibrado contra 70 títulos reais). Pendente: inspeção de rede do diário de Itinga (fase de coletor por-prefeitura).
@@ -106,7 +135,7 @@ Medido em 21/08/2026. É CKAN de verdade (`/api/3/action/…`), 94 conjuntos, 18
 
 1. **403 sem User-Agent de navegador.** `curl` puro leva 403; com UA de navegador, 200. Não é rate limit, é bloqueio de cliente não-navegador — e silencioso o bastante para parecer indisponibilidade.
 2. **O DataStore responde `success: true` com `total: 0`.** Está habilitado e vazio. Quem usar `datastore_search` conclui que o conjunto não tem dado. O caminho é baixar os CSV.GZ dos `resources`.
-3. **`ft_convenio_metaetapa.csv.gz` vem VAZIO — só cabeçalho, 78 bytes descompactados, HTTP 200.** Conferido duas vezes. É o arquivo que carregaria meta e etapa por convênio: sem ele dá para dizer quanto custou e quanto tempo levou, **não** se o convênio entregou o que prometeu. **Candidato direto a pedido de LAI à CGE-MG.**
+3. **`ft_convenio_metaetapa.csv.gz` vem VAZIO — só o cabeçalho, HTTP 200.** Medido em 21/08/2026: **87 bytes comprimidos, 75 descomprimidos, 1 linha** (`id_convenio;id_tipo_atendimento;ds_descricao;ds_unidade_medida;quantidade`). O controle que fecha o argumento: no **mesmo** conjunto, no mesmo minuto e pelo mesmo método, o recurso irmão de convênios devolveu 8,4 MB e **784.802 linhas** — a publicação funciona, o que não vem é o conteúdo desta tabela. É o arquivo que carregaria meta e etapa por convênio: sem ele dá para dizer quanto custou e quanto tempo levou, **não** se o convênio entregou o que prometeu. Pedido de LAI à CGE-MG **já redigido** (`Projetos/Controle Popular — Pedido LAI CGE-MG (metas de convênio).md`, no vault), aguardando protocolo.
 
 **A armadilha de nome de campo, que é a pior:** `dt_vigencia_inicial` **não é data de início**. Em 90.045 dos 90.254 registros ela é igual a `dt_vigencia_final` — as duas guardam a data-limite originalmente pactuada, e o prazo que vale hoje é `dt_vigencia_atual`. Quem ler "inicial" como começo calcula duração zero para 99,8% dos convênios, e zero passa por plausível. Prorrogação = `dt_vigencia_atual − dt_vigencia_final`.
 
