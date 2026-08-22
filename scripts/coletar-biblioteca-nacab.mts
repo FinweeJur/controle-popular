@@ -1,4 +1,14 @@
 /**
+ * ⚠ RODADO E REVERTIDO EM 2026-08-21. Este script grava com sucesso (48
+ * itens, testado em `--conferir` e de verdade), mas o resultado foi tirado
+ * de `biblioteca-ati.json` de volta ao estado sem NACAB: o desvio nº 2 do
+ * cabeçalho (URL aponta pro PDF, não pra uma página do item) quebra a regra
+ * "nunca o arquivo" que `biblioteca.test.ts` trava para o acervo, e ninguém
+ * decidiu abrir uma exceção lá para `ati === "nacab"`. Rodar de novo
+ * reproduz o mesmo conflito. Antes de rodar: (a) decidir e registrar a
+ * exceção em `biblioteca.test.ts`, OU (b) achar uma URL de página por item
+ * que o NACAB não tinha em 2026-08 — o que vier primeiro.
+ *
  * Acrescenta o NACAB (ATI da Região 3) a `apps/web/public/data/biblioteca-ati.json`
  * — a mesma biblioteca que `coletar-biblioteca-ati.py` grava para AEDAS e
  * Guaicuy. Lê `X:\DevCoder\_lote-ambiental\saida\nacab.json`, já coletado por

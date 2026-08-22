@@ -43,12 +43,23 @@
  *
  * `coberturaTemasAti()` mede, sobre o acervo publicado de verdade, quantos
  * itens ganham pelo menos um `TemaAjri` por esta tabela. Medido em
- * 2026-08-21: 238 dos 597 itens de AEDAS/Guaicuy (os 48 do NACAB entram com
- * `temas: []` — a fonte não declara tema por item, então não somam nada
- * aqui, mas contam no total do acervo, 645). `temas-ati.test.ts` trava esse
+ * 2026-08-21: 238 dos 597 itens publicados (AEDAS + Guaicuy — as únicas
+ * fontes com tema livre no acervo hoje). `temas-ati.test.ts` trava esse
  * número: se uma regra nova nesta tabela fizer ele saltar, é sinal de que a
  * régua passou a mapear o que não devia — mudar o número travado exige
  * decisão deliberada no teste, não só rodar de novo.
+ *
+ * ═══ O NACAB NÃO ESTÁ NO DENOMINADOR ═══
+ *
+ * `scripts/coletar-biblioteca-nacab.mts` (mesma sessão) tentou acrescentar
+ * os 48 itens do NACAB a `biblioteca-ati.json`, mas foi revertido: a fonte
+ * do NACAB não tem página própria por publicação, só um link direto para o
+ * PDF — o que quebra a regra "nunca o arquivo" que `biblioteca.test.ts`
+ * trava para o acervo. Este mapa de temas não depende disso (o NACAB não
+ * declara tema por item de qualquer forma; entraria com `temas: []` e não
+ * mudaria o numerador), então a tabela e a função aqui já valem para quando
+ * o NACAB entrar pela via certa — só o denominador de `coberturaTemasAti()`
+ * muda nesse dia, de 597 para 645.
  */
 import type { TemaAjri } from "./auditoria-ajri";
 import { bibliotecaAti, type ItemBiblioteca } from "./biblioteca";

@@ -460,6 +460,8 @@ async function main() {
 
   const saida = {
     coletadoEm: new Date().toISOString().slice(0, 10),
+    coletaPendente: false,
+    motivoPendencia: null,
     fonte: "https://pncp.gov.br/",
     via: "GET /api/consulta/v1/contratos (cnpjOrgao) + /api/consulta/v1/contratacoes/publicacao (codigoMunicipioIbge, filtrado por CNPJ)",
     escopo: {
