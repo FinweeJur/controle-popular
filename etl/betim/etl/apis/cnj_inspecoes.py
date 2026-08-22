@@ -107,10 +107,19 @@ def redigir_cpf(texto):
     """Troca todo CPF VALIDO por marcador. Devolve (texto, quantidade).
 
     Roda sobre o TEXTO, nao sobre um campo rotulado -- no relatorio o CPF
-    aparece no meio de frase corrida ("Ana Lucia ... - CPF 061.504.606-14"),
+    aparece no meio de frase corrida ("<Nome da pessoa> - CPF 000.000.000-00"),
     onde nenhum rotulo de fonte ajudaria.
 
     CNPJ FICA. Pessoa juridica em ato oficial e' informacao publica.
+
+    ⚠️ **O EXEMPLO ACIMA E' FICTICIO, E ISSO NAO E' FRESCURA.** A primeira
+    versao deste comentario trazia um CPF REAL, copiado do relatorio para
+    ilustrar o formato -- e foi commitado num repositorio PUBLICO. Quem pegou
+    foi `apps/web/lib/sem-cpf-no-repo.test.ts`, que valida por mod-11 tudo o
+    que esta escrito a mao, nao so' o dado coletado. A licao: o coletor redigia
+    o dado corretamente e o VAZAMENTO SAIU PELA DOCUMENTACAO DO PROPRIO
+    REDATOR. Exemplo em comentario, mensagem de commit e docs sao superficie de
+    vazamento igual ao dado. Use sempre 000.000.000-00.
     """
     n = [0]
 
