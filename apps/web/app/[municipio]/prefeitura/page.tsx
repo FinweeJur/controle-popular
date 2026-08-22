@@ -27,6 +27,7 @@ const TABS: { label: string; href: string | null }[] = [
   { label: "Visão geral", href: "/prefeitura" },
   { label: "Contratos", href: "/prefeitura/contratos" },
   { label: "Licitações", href: "/prefeitura/licitacoes" },
+  { label: "Cultura", href: "/prefeitura/cultura" },
   { label: "Servidores", href: "/prefeitura/servidores" },
   { label: "Despesas", href: "/prefeitura/despesas" },
   { label: "Diárias", href: "/prefeitura/diarias" },
