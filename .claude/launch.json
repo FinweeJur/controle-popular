@@ -2,6 +2,21 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "//": "Worktree cabecalho-zonas (trilha do item 4 do plano unico, docs/ESTADO.md) -- porta propria, mesma regra dos outros worktrees.",
+      "name": "cp-cabecalho-zonas-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3023"
+      ],
+      "port": 3023
+    },
+    {
       "//": "runtimeExecutable era um caminho absoluto de OUTRO usuario (C:\\Users\\teste\\...), entao esta config nao subia em nenhuma outra maquina. `npm` resolvido pelo PATH funciona nas duas.",
       "name": "controle-popular-web-dev",
       "runtimeExecutable": "npm",
