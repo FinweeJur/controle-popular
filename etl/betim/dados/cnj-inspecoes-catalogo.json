@@ -3,8 +3,8 @@
  "url": "https://www.cnj.jus.br/corregedoria/",
  "extraidoEm": "2026-08-22",
  "faixaDeIdsVarrida": {
-  "de": 2630,
-  "ate": 2700
+  "de": 2400,
+  "ate": 2950
  },
  "avisoCobertura": "Não existe rota de listagem de categorias no CNJ (task=categories.getCategories responde HTTP 500). O universo foi descoberto varrendo ids no intervalo acima. Pode haver categoria de órgão fora dele — a contagem é piso, não total.",
  "avisoLink": "Só o permalink sem token entra aqui. A URL com `token=` que o navegador mostra rotaciona e morre.",
@@ -2872,9 +2872,120 @@
      "url": "https://www.cnj.jus.br/download/2693/tribunal-regional-do-trabalho-da-14a-regiao/83258/correicao_precatorio_trt14_2013"
     }
    ]
+  },
+  {
+   "categoriaId": 2796,
+   "orgao": "tribunal-de-justica-do-estado-de-roraima",
+   "orgaoTitulo": "Tribunal de Justiça do Estado de Roraima",
+   "relatorios": [
+    {
+     "id": 159184,
+     "titulo": "Relatório de Inspeção TJRR - Extrajudicial - Março_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 613815,
+     "publicadoEm": "2021-09-16 14:27:01",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/159184/relatorio-de-inspecao-tjrr-extrajudicial-marco_2021-2"
+    },
+    {
+     "id": 176578,
+     "titulo": "Relatório de Inspeção TJRR - Outubro_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 4408967,
+     "publicadoEm": "2022-03-03 13:56:49",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/176578/relatorio-de-inspecao-tjrr-outubro_2021-2"
+    },
+    {
+     "id": 317268,
+     "titulo": "Relatório de Inspeção - TJRR - 2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 35354517,
+     "publicadoEm": "2024-02-29 15:31:48",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/317268/relatorio-de-inspecao-tjrr-2022"
+    },
+    {
+     "id": 378361,
+     "titulo": "TJRR - Relatório de inspeção ordinária 2024",
+     "extensao": "pdf",
+     "tamanhoBytes": 3203852,
+     "publicadoEm": "2025-07-07 08:57:25",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/378361/tjrr-relatorio-de-inspecao-ordinaria-2024"
+    },
+    {
+     "id": 83291,
+     "titulo": "relatorio_inspecao_sistemas_judiciais_processuais_TJRR_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 2023729,
+     "publicadoEm": "2019-10-01 12:56:05",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/83291/relatorio_inspecao_sistemas_judiciais_processuais_tjrr_2018"
+    },
+    {
+     "id": 83293,
+     "titulo": "auto_circunstanciado_insecao_TJRR_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 46718490,
+     "publicadoEm": "2019-10-01 12:56:08",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/83293/auto_circunstanciado_insecao_tjrr_2018"
+    },
+    {
+     "id": 83290,
+     "titulo": "Relatorio_Unidades_Administrativas_TJRR_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 311887,
+     "publicadoEm": "2019-10-01 12:56:05",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/83290/relatorio_unidades_administrativas_tjrr_2018"
+    },
+    {
+     "id": 83292,
+     "titulo": "Relatorio_NUPEMEC_CEJUSC_TJRR_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 738881,
+     "publicadoEm": "2019-10-01 12:56:05",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/83292/relatorio_nupemec_cejusc_tjrr_2018"
+    },
+    {
+     "id": 83289,
+     "titulo": "Relatorio_ENFAN_TJRR_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 161849,
+     "publicadoEm": "2019-10-01 12:56:04",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/83289/relatorio_enfan_tjrr_2018"
+    },
+    {
+     "id": 83285,
+     "titulo": "Inspeção - 2012",
+     "extensao": "pdf",
+     "tamanhoBytes": 1120387,
+     "publicadoEm": "2019-10-01 12:56:03",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/83285/inspecao-2012-7"
+    },
+    {
+     "id": 83288,
+     "titulo": "Relatório de Inspeção do Tribunal de Justiça do Estado de Roraima-2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 2694698,
+     "publicadoEm": "2019-10-01 12:56:04",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/83288/relatorio-de-inspecao-do-tribunal-de-justica-do-estado-de-roraima-2019"
+    },
+    {
+     "id": 83287,
+     "titulo": "Relatório de Inspeção do Tribunal de Justiça do Estado de Roraima-2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 2694698,
+     "publicadoEm": "2019-10-01 12:56:04",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/83287/relatorio-de-inspecao-do-tribunal-de-justica-do-estado-de-roraima-2019-3"
+    },
+    {
+     "id": 83286,
+     "titulo": "Relatório de Inspeção do Tribunal de Justiça do Estado de Roraima-2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 279785,
+     "publicadoEm": "2019-10-01 12:56:04",
+     "url": "https://www.cnj.jus.br/download/2796/tribunal-de-justica-do-estado-de-roraima/83286/relatorio-de-inspecao-do-tribunal-de-justica-do-estado-de-roraima-2019-2"
+    }
+   ]
   }
  ],
- "totalOrgaos": 32,
- "totalRelatorios": 330,
- "totalBytes": 1711702368
+ "totalOrgaos": 33,
+ "totalRelatorios": 343,
+ "totalBytes": 1812027923
 }

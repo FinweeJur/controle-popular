@@ -59,10 +59,15 @@ AJAX = ("https://www.cnj.jus.br/wp-admin/admin-ajax.php"
 UA = "controle-popular/1.0 (+https://github.com/FinweeJur/controle-popular)"
 
 # Intervalo varrido. Registrado no dado: contagem sem intervalo mente por
-# omissao. As categorias de tribunal medidas ficam em 2650-2678; a folga cobre
-# as colecoes por ano, que sao vizinhas.
-FAIXA = (2630, 2700)
-PAUSA_S = 1.5
+# omissao.
+#
+# ⚠️ OS IDS NAO SAO CONTIGUOS. A primeira varredura cobriu 2630-2700, achou o
+# bloco alfabetico dos TJs em 2650-2678 e pareceu completa. **Estava
+# incompleta**: o TJ de Roraima mora sozinho no **2796**, a 118 ids do bloco.
+# Uma varredura estreita teria publicado "27 tribunais" faltando um, sem
+# nenhum sinal de erro. Por isso a faixa e' larga e fica gravada no dado.
+FAIXA = (2400, 2950)
+PAUSA_S = 1.0
 
 # So' entram categorias cujo nome e' de orgao. As demais da faixa sao colecoes
 # por ano ("2013", "abril") e nao sao acervo por tribunal.
@@ -254,6 +259,21 @@ def achados_do_relatorio(caminho_pdf, meta):
     bruto = "\n".join(p.get_text() for p in doc)
     paginas = doc.page_count
     doc.close()
+
+    # ⚠️ PDF DIGITALIZADO NAO E' PDF VAZIO -- e' PDF que precisa de OCR, e a
+    # diferenca importa porque o resto do parser trata os dois igual: sem
+    # texto, nenhum regex casa, a conferencia contra o sumario compara 0 com 0
+    # e PASSA, e o arquivo e' gravado com `achados: []`. Medido: o
+    # `Relatorio_Inspecao_Sistema_Judiciais_Processuais_TJMG_2017.pdf` tem 16
+    # paginas e **zero caractere**. Sem esta guarda, ele entraria na serie como
+    # "ano sem nenhum achado" -- que e' uma afirmacao sobre o TJMG, e falsa.
+    if len(bruto.strip()) < 1000:
+        raise SystemExit(
+            "PARE: %s tem %d paginas e so' %d caracteres de texto. E' "
+            "digitalizado (imagem), nao vazio. Sem OCR nao ha o que extrair -- "
+            "e gravar um JSON com lista vazia afirmaria que o ano nao teve "
+            "achado nenhum."
+            % (os.path.basename(caminho_pdf), paginas, len(bruto.strip())))
 
     texto, n_cpf = redigir_cpf(bruto)
     texto = RE_RODAPE.sub("\n", texto)

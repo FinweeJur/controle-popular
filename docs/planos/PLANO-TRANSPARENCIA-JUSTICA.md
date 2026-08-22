@@ -355,23 +355,20 @@ publica quando o assunto é reclamação contra ela mesma.
 a Res. CNMP 89/2012 exigem essa publicação. **Isso torna a matéria mais forte,
 não mais fraca** — e evita publicar acusação errada de ilegalidade.
 
-### 🚨 E uma que NÃO é matéria: é comunicação ao órgão
+### E uma que fica FORA da pauta, por decisão
 
-**O CNJ publica CPF de pessoa física no relatório de inspeção do TJMG 2026.**
-Medido: **6 ocorrências válidas por dígito verificador**, de particulares — nome
-completo ao lado do CPF, em atos de cartório (compradores e vendedores de um
-lote; um delegatário com pendência fiscal). O arquivo está aberto na
-biblioteca pública do CNJ, sem login.
+**O CNJ publica CPF de pessoa física no relatório de inspeção do TJMG 2026** —
+6 ocorrências válidas por dígito verificador, de particulares, com nome completo
+ao lado, em atos de cartório.
 
-**Isto não vira matéria antes de virar comunicação.** O caminho é o mesmo do
-`deletearquivo` da SEMAD, que já está em rascunho no projeto: comunicar ao órgão
-e dar prazo. Publicar antes disso aumenta a exposição das pessoas — que é
-exatamente o dano que se quer apontar.
+**Decisão do projeto (22/08/2026): não publicamos os CPFs e não comunicamos ao
+CNJ.** Não vira matéria nem ofício. Fica só a salvaguarda técnica:
 
-**O que o projeto faz enquanto isso:** redige na origem (mod-11 sobre o texto,
-nunca por rótulo da fonte), **não espelha o PDF**, e publica extrato com link
-para a origem. Ver [[flag_de_pessoa_fisica_mente]] e
-[[cpf_dentro_de_ementa_oficial]].
+- **redação na origem** (mod-11 sobre o texto, nunca por rótulo da fonte)
+- **o PDF original não é espelhado** pelo projeto
+- o que publicamos é **resumo próprio com link para a origem**
+
+Ver [[flag_de_pessoa_fisica_mente]] e [[cpf_dentro_de_ementa_oficial]].
 
 ---
 
@@ -472,8 +469,9 @@ liberar o meio-termo sem depender dele.
 | $ | JUSTA — orçamento da justiça por estado | ✅ **coletado e conferido** (21 estados, MG 2º em ambos os eixos) |
 | 0 | catálogo nacional de inspeções do CNJ | ✅ **coletado** — 32 órgãos, 330 relatórios, ~1,7 GB, 2008→2026 |
 | 0b | achados do relatório TJMG 2026 | ✅ **extraído e conferido** — 140 seções com conteúdo, 100 unidades, 0 CPF no dado |
-| 0c | demais 12 relatórios do TJMG (2012→2023) | ⬜ mesmo coletor, série histórica pronta para rodar |
-| 0d | os outros 31 órgãos | ⬜ decidir recorte: MG basta para o portal hoje |
+| 0c | demais 12 relatórios do TJMG (2012→2023) | 🔄 baixando — série histórica |
+| 0d | análise longitudinal: **o que NÃO mudou** e quais unidades reincidem | 🔄 é o produto desta rodada |
+| 0e | recorte de órgãos: **STJ, TST, TRT de MG e STF** | 🔄 decidido em 22/08 — os outros 27 TJs ficam fora por ora |
 | 1 | cobertura da Defensoria por comarca | ⬜ **próxima** — 4 fontes medidas, denominador resolvido (298) |
 | 2 | inspeções em presídios (CNIEP) | ⬜ 3 rotas JSON medidas; conteúdo da inspeção dá 404 |
 | 3 | congestionamento do TJMG (Justiça em Números) | ⬜ ZIP medido; falta raspar o link vigente |
@@ -482,7 +480,7 @@ liberar o meio-termo sem depender dele.
 | M | matéria das 3 lacunas | ⬜ pronta para escrever, tudo medido |
 | L | pedidos de LAI pelo e-SIC | ⬜ 4 pedidos priorizados (§6) — ação humana |
 | C | notificar o CNJ sobre o DataJud | ⬜ um e-mail (§7) |
-| D | 🚨 comunicar ao CNJ o CPF exposto no relatório | ⬜ **antes de qualquer publicação sobre isso** (§5) |
+| D | CPF exposto pelo CNJ | ✅ **decidido**: não publicar, não comunicar; só redigir na origem (§5) |
 
 ---
 
