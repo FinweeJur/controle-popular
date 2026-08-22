@@ -1,80 +1,59 @@
 # Leia primeiro
 
-> `docs/` tem **12 arquivos na raiz** — cada um cobre uma parte do portal, e a
-> regra é: **ninguém lê tudo. Nunca.** `docs/planos/` guarda o que ainda está por
-> fazer (11 arquivos); `docs/_historico/` guarda o que foi entregue ou superado
-> (54 arquivos, datados — lá só para arqueologia).
->
-> *(Contagens conferidas em 20/08. Se for decidir por elas, conte de novo — e
-> repare que o comando precisa do glob, senão conta as subpastas junto e devolve
-> 20:)*
->
-> ```bash
-> ls -1 docs/*.md docs/*.json | wc -l    # raiz
-> ls -1 docs/planos | wc -l
-> ls -1 docs/_historico | wc -l
-> ```
+> **Tipo:** INDICE
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** curta (< 5 min)
+> **Relacionados:** [README.md](README.md), [GUIA-DE-DOCUMENTACAO.md](GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** índice, documentação, portal, frentes, planos, histórico
 
-## Os documentos da raiz
+## Sumário
 
-| Documento | O que é | Quando ler |
+- [Propósito](#propósito)
+- [Regra de ouro](#regra-de-ouro)
+- [Porta de entrada](#porta-de-entrada)
+- [Documentos por área](#documentos-por-área)
+- [Planos ativos](#planos-ativos)
+- [Histórico](#histórico)
+- [Decisões registradas](#decisões-registradas)
+
+## Propósito
+
+Orientar qualquer pessoa que chegue em `docs/` a encontrar o documento certo em menos de um minuto.
+
+## Regra de ouro
+
+**Ninguém lê tudo. Nunca.** Cada documento tem um propósito claro no cabeçalho. Leia só o que sua tarefa exige.
+
+## Porta de entrada
+
+| Quando ler | Documento | Caminho |
 |---|---|---|
-| **`PRODUTO.md`** | o que é o portal, as seis frentes, features, regras editoriais | sempre — é a porta |
-| **`ESTADO.md`** | o que está no ar, a fila viva ranqueada, bloqueios, dívida registrada | sempre que for decidir o que fazer |
-| **`DESENVOLVIMENTO.md`** | worktrees, regras de commit, checklist antes do push, uso de IA | **antes do primeiro commit**, sempre |
-| **`FONTES.md`** | cada fonte de dados: como coletar, o que mente, o que falta | mexer em fonte ou dado |
-| **`ARQUITETURA.md`** | tetos de payload, compactação, índice e assistente, banco | mexer em rota, payload ou banco |
-| **`MAPA-APLICACAO.md`** | o mapa técnico detalhado: stack, as 3 camadas de dado, regras de bundle, mapa de rotas | quando `ARQUITETURA.md` não bastar — é o mesmo assunto, com mais detalhe |
-| **`OPERACAO.md`** | quem publica, rotina de coleta e build, credenciais | publicar, coletar, buildar |
-| **`EDICAO.md`** | como editar conteúdo sem código (painel, dados, verificação) | editar conteúdo |
-| **`GATILHO-REMOTO.md`** | sincronizar e publicar de longe (Tailscale + Telegram), e o modelo de segurança disso | publicar sem estar na máquina de build |
-| **`CREDITOS-MIDIA.md`** | procedência e licença de cada foto e de cada fonte de ícone | usar imagem ou ícone novo |
-| **`LAI-PROTOCOLOS.json`** | protocolo, prazo e situação de cada pedido de LAI — conferido por `scripts/checar-protocolos-lai.py` e por CI diária | abrir pedido de LAI, ou responder a um |
-| **`LEIA-PRIMEIRO.md`** | este arquivo | sempre |
+| Sempre — o que é o portal, frentes e regras editoriais | **PRODUTO** | [`01-produto/PRODUTO.md`](01-produto/PRODUTO.md) |
+| Decidir o que fazer agora — fila, bloqueios, dívida | **ESTADO** | [`02-estado/ESTADO.md`](02-estado/ESTADO.md) |
+| Antes do primeiro commit | **DESENVOLVIMENTO** | [`03-desenvolvimento/DESENVOLVIMENTO.md`](03-desenvolvimento/DESENVOLVIMENTO.md) |
 
-> ⚠️ **`ARQUITETURA.md` e `MAPA-APLICACAO.md` se sobrepõem bastante** (payload,
-> tetos, banco). O `MAPA` é mais novo e mais detalhado; onde os dois divergirem,
-> confira no código antes de decidir. Fundir os dois está na fila.
+## Documentos por área
 
-E na **raiz do repositório**, não aqui em `docs/`: **`AGENTS.md`** — as regras
-que não se negociam e as armadilhas que já custaram tempo. Ferramenta de agente
-lê esse arquivo sozinha; humano também deveria.
+| Área | Documento | Caminho |
+|---|---|---|
+| Fontes e coleta | FONTES | [`06-fontes/FONTES.md`](06-fontes/FONTES.md) |
+| Arquitetura, payload e banco | ARQUITETURA | [`04-arquitetura/ARQUITETURA.md`](04-arquitetura/ARQUITETURA.md) |
+| Operação, build e deploy | OPERACAO | [`05-operacao/OPERACAO.md`](05-operacao/OPERACAO.md) |
+| Gatilho remoto de publicação | GATILHO-REMOTO | [`05-operacao/GATILHO-REMOTO.md`](05-operacao/GATILHO-REMOTO.md) |
+| Edição de conteúdo sem código | EDICAO | [`07-edicao/EDICAO.md`](07-edicao/EDICAO.md) |
+| Créditos de mídia | CREDITOS-MIDIA | [`07-edicao/CREDITOS-MIDIA.md`](07-edicao/CREDITOS-MIDIA.md) |
+| Protocolos de LAI | LAI-PROTOCOLOS | [`06-fontes/LAI-PROTOCOLOS.json`](06-fontes/LAI-PROTOCOLOS.json) |
 
-## `docs/planos/` — o que ainda está por fazer
+## Planos ativos
 
-Planos de trabalho ativos, cada um com o próprio estado. Ler o que a tarefa
-tocar. Hoje: índice estático e assistente (degraus 0–2 no ar; o degrau 3 é
-opcional por decisão), revisão de UX, diário oficial, bases de clima e risco,
-espelho PDF da AJRI, GitHub Pages (alvo alternativo) e a dívida antes de
-feature.
+Planos de trabalho não iniciados ou em andamento vivem em [`planos/`](planos/). Veja o estado de cada um em [`02-estado/ESTADO.md`](02-estado/ESTADO.md).
 
-## `docs/_historico/` — não leia, salvo arqueologia
+## Histórico
 
-Documentam **um dia** e não descrevem o estado atual. Respondem "por que isto
-está assim", nunca "como está hoje". A curadoria de 16/08 unificou a raiz em
-oito documentos e moveu para cá todo o resto: os `FONTES-*.md` de cada domínio
-(absorvidos por `FONTES.md`), os `PLANO-*` entregues (absorvidos por
-`ESTADO.md`), os diários, handoffs e descobertas de cada dia.
+Documentos entregues ou superados vivem em [`historico/`](historico/). Números lá são medições do passado; se for decidir com eles, remeça.
 
-⚠️ **Documento datado envelhece sem avisar.** Número em documento antigo **não**
-é medição atual — se for decidir com ele, remeça. O que está na raiz descreve o
-presente, com a data da medição ao lado de cada número.
+## Decisões registradas
 
-## Subpastas de domínio
-
-`docs/betim/`, `docs/congresso/` e `docs/ambiental/` continuam onde estão —
-são referência de domínio de frentes específicas, consultadas junto com
-`FONTES.md` quando a tarefa toca o assunto.
-
-## Regra para quem escrever aqui
-
-Antes de criar arquivo novo, **pergunte se ele cabe num que já existe.** Um
-arquivo novo se justifica quando:
-
-- é **referência de domínio** que vai ser consultada muitas vezes (vira seção de `FONTES.md`);
-- é **procedimento** que alguém executa (vira seção de `OPERACAO.md` ou `EDICAO.md`);
-- é **plano** de trabalho que ainda não começou (vai para `docs/planos/`).
-
-Não se justifica para registrar o que foi feito num dia — isso é mensagem de
-commit, e o `git log` já guarda. Se for indispensável, vai para
-`docs/_historico/`, com a data no nome.
+- **A docs/ foi reorganizada em pastas numeradas (`01-produto/` a `07-edicao/`)** — decisão de 22/08/2026, executada em 22/08/2026.
+- **`ARQUITETURA.md` e `MAPA-APLICACAO.md` serão fundidos** — decisão ainda em aberto (item 28 de `02-estado/ESTADO.md`). Até lá, ambos estão em [`04-arquitetura/`](04-arquitetura/).
