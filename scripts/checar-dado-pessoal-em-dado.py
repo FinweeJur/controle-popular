@@ -23,14 +23,30 @@ desaparecidas", que não têm CPF e passariam batidos aqui).
 
 Só JSON de acervo/dataset em caminhos de DADO, por padrão:
 
-    DIRETORIOS_DADO = ["apps/web/data", "docs/dados"]
+    DIRETORIOS_DADO = [
+        "apps/web/data", "apps/web/public/data",
+        "docs/dados", "docs/judiciario", "docs/ambiental",
+        "etl/betim/dados", "etl/judiciario/etl/dados",
+    ]
+
+A lista não é só os dois diretórios originais: é todo diretório rastreado
+onde um coletor (`scripts/coletar-*`, `etl/*/etl/apis/*`) grava JSON bruto,
+ou onde um doc de frente versiona corpus curado (ex. `docs/judiciario/f0-
+corpus-indicacoes.json`, 724 indicações). Ficar de fora daqui é ficar de fora
+do pre-push e da CI — foi o caso de `etl/betim/dados/` até 22/08/2026: 25 JSON
+de coletor, um deles com 8.570 normas, sem varredura nenhuma até alguém abrir
+o arquivo à mão por outro motivo e notar o buraco.
 
 Espacial (`.geojson`) e CSV ficam de fora pela mesma decisão de design do
 script irmão: são dados de órgão público já vistados na ingestão, e varrer
 megabyte de geometria a cada push deixa o guarda lento a ponto de alguém
 desligá-lo. Para um acervo novo (ex. o dump do Solr da Plataforma Brumadinho
 UFMG), basta apontar `--extra <arquivo|dir>` — a chamada do dump entra no
-pipeline de ingestão, antes de qualquer JSON público sair da máquina.
+pipeline de ingestão, antes de qualquer JSON público sair da máquina. Isso
+serve para um dump de UMA rodada: `--extra` não roda sozinho no pre-push nem
+na CI (nenhum dos dois passa a flag hoje). Diretório que um coletor grava a
+CADA rodada precisa estar em DIRETORIOS_DADO, não só atrás de `--extra` — do
+contrário a proteção depende de alguém lembrar de digitar a flag toda vez.
 
 Só os VALORES de texto são varridos (não as chaves, não a estrutura), e só
 valores que seriam um CPF de verdade — mod-11. CNPJ (14 dígitos), código IBGE
@@ -71,7 +87,11 @@ import tempfile
 # pessoal.py`) não se aplicam aqui — este arquivo não usa `git grep`, lê o
 # arquivo e caminha pela estrutura.
 # ---------------------------------------------------------------------------
-DIRETORIOS_DADO = ["apps/web/data", "docs/dados"]
+DIRETORIOS_DADO = [
+    "apps/web/data", "apps/web/public/data",
+    "docs/dados", "docs/judiciario", "docs/ambiental",
+    "etl/betim/dados", "etl/judiciario/etl/dados",
+]
 
 # `[0-9]` e NÃO `\d`: mesmo dialeto do script irmão, e a mesma razão — a
 # primeira versão do teste irmão usava `\d` num contexto POSIX ERE e casava

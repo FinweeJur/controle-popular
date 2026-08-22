@@ -72,10 +72,12 @@ vezes, por dois caminhos diferentes:
 
 A lição: **guarda que olha uma lista de campos suspeitos falha.** Varra todo
 campo de texto de todo registro. `apps/web/lib/sem-cpf-no-repo.test.ts` valida
-por mod-11; **dado ingerido** (JSON de `apps/web/data/` e `docs/dados/`) é
-varrido por `scripts/checar-dado-pessoal-em-dado.py` (no pre-push, na CI e na
-suíte); dump novo usa `--extra`. Rode a suíte **antes** de commitar dado
-coletado.
+por mod-11; **dado ingerido** (JSON nos diretórios listados em
+`DIRETORIOS_DADO`, no topo de `scripts/checar-dado-pessoal-em-dado.py`) é
+varrido por esse script (no pre-push, na CI e na suíte). Coletor novo que
+grava JSON a cada rodada entra nessa lista — `--extra` só cobre dump de UMA
+rodada, não roda sozinho no pre-push nem na CI. Rode a suíte **antes** de
+commitar dado coletado.
 
 ### 3. `--force` nunca
 
