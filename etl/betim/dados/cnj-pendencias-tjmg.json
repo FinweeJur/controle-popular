@@ -1,0 +1,709 @@
+{
+ "fonte": "Corregedoria Nacional de Justiça (CNJ) — seções “Pendências da última inspeção”",
+ "orgao": "TJMG",
+ "extraidoEm": "2026-08-22",
+ "oQueEh": "Em cada unidade, o relatório lista o que a Corregedoria Nacional determinou na inspeção ANTERIOR e diz o que foi ou não cumprido. É o órgão conferindo a si mesmo — a melhor resposta disponível para “o que não mudou no TJMG”, porque é afirmação do próprio CNJ e não depende de inferência deste projeto.",
+ "avisoContagem": "`mencionaCumprida`, `mencionaNaoCumprida` e `mencionaReiterada` são contagem CRUA de palavras no texto, não veredito. “cumprida” aparece dentro de “não cumprida”, então esses campos servem de pista para leitura, nunca de estatística publicável.",
+ "avisoCobertura": "Só 2022 e 2023 trazem seções assim nomeadas. 2012, 2017, 2019 e 2026 cobram a inspeção anterior de outras formas, ainda não extraídas. A série é de dois pontos, não de seis.",
+ "cpfsRedigidosNaOrigem": 0,
+ "documentos": [
+  {
+   "ano": 2022,
+   "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022",
+   "total": 24,
+   "pendencias": [
+    {
+     "secao": "1.5",
+     "unidadeNumero": "1",
+     "unidade": "PRESIDÊNCIA",
+     "texto": "Na inspeção de 2019, a Presidência recebeu 4 (quatro) determinações e 35 (trinta e cinco) recomendações. Embora não constituam ações específicas, todas as determinações e recomendações foram a ela dirigidas. Contudo, em face da fase inicial em que se encontra a gestão, não foram prestadas as informações no período da inspeção. Num. 4833334 - Pág. 10",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "4.4",
+     "unidadeNumero": "4",
+     "unidade": "3ª VICE-PRESIDÊNCIA",
+     "texto": "Determinações da última inspeção realizada em 2019: a) Desenvolvimento de mecanismo que permita a avaliação dos conciliadores e mediadores judiciais (art. 167, § 4º, do CPC); b) De mecanismos capazes de suprir a falta de serviço judiciário de conciliação e de mediação nas comarcas onde não há CEJUSC, valendo-se o TJMG dos permissivos legais (artigos 334, § 7º, do CPC e 46 da Lei n. 13.140/2015); c) Monitoramento do cumprimento do art. 334 do CPC por todas as unidades judiciárias e, na forma prevista na legislação de regência, por profissional regularmente capacitado, cadastrado e avaliado. Num. 4833334 - Pág. 41 Em relação ao primeiro ponto, está em elaboração formulário de avaliação próprio que possibilite coletar os dados dispostos no artigo 167, §3º, do CPC (“número de processos de que participou, o sucesso ou insucesso da atividade, a matéria sobre a qual versou a controvérsia”, etc.), de forma individual para cada conciliador e mediador judicial, supervisionado pelo Juiz Coordenador de cada CEJUSC. Ainda pendente de implantação. Quanto aos mecanismos para suprir a falta de serviço judiciário de conciliação e mediação, foram atendidos. Com a instalação do CEJUSC de Nova Lima no último mês de junho, todas as 297 comarcas do Estado de Minas Gerais contam com serviço de conciliação e mediação. Além disso, em setembro de 2020 foi criado o Centro Judiciário de Solução de Conflitos e Cidadania Virtual – CEJUSC Virtual, por meio da Portaria Conjunta n. 1.055 de 2020 do TJMG, com o objetivo de atender comarcas que, até aquele momento, ainda não contavam com um CEJUSC físico, além de auxiliar as comarcas com insuficiência de equipamentos de videoconferência ou ausência de conciliadores e/ou mediadores. No que diz respeito ao último ponto, a unidade limitou-se a registrar que “foi oficiada a Corregedoria-Geral de Justiça solicitando que o Corregedor requeira dos magistrados o envio de informações quanto ao número de audiências do art. 334 realizadas por mês”. Ainda pende a implantação mecanismo de monitoramento efetivo conforme anteriormente determinado.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "5.4",
+     "unidadeNumero": "5",
+     "unidade": "CORREGEDORIA-GERAL DA JUSTIÇA",
+     "texto": "Na última inspeção houve recomendação para que fosse enviado à Assembleia Legislativa do Estado de Minas Gerais projeto de lei para alterar a forma de gestão do RECIVIL para que o próprio Tribunal a gerisse. Em atenção, o TJMG encaminhou a proposta de ato normativo que originou o projeto de Lei n. 1.931/2020, objetivando a alteração a Lei n. 15.424/2004 que dispõe sobre a fixação, a contagem, a cobrança e o pagamento de emolumentos relativos aos atos praticados pelos serviços notariais e de registro, o recolhimento da Taxa de Fiscalização Judiciária e a compensação dos atos sujeitos à gratuidade estabelecida em lei federal e dá outras providências. Ressalte-se que tal projeto ainda está em trâmite na ALMG e pode ser acompanhado pelo link: https://www.almg.gov.br/atividade_parlamentar/tramitacao_projetos/texto.html?a=2020&n=1 931&t=PL Num. 4833334 - Pág. 50",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.2.3",
+     "unidadeNumero": "6.2",
+     "unidade": "GABINETE DA DESEMBARGADORA MARIA APARECIDA DE OLIVEIRA GROSSI ANDRADE",
+     "texto": "Na inspeção realizada em 2017, o gabinete recebeu determinação para reduzir o prazo na apreciação das medidas liminares e a recomendação de distribuir os recursos aos servidores por matéria. Num. 4833334 - Pág. 66 A determinação foi atendida, de modo que atualmente as medidas liminares são priorizadas para análise imediatamente, com prazo aproximado de 24 horas para seu exame. A recomendação de divisão por matéria, porém, não foi implementada, considerando-se desejável que a assessoria possua desenvoltura em todas as matérias, em face do tamanho reduzido da equipe.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.17.3",
+     "unidadeNumero": "6.17",
+     "unidade": "GABINETE DO DESEMBARGADOR OSVALDO OLIVEIRA ARAÚJO FIRMO",
+     "texto": "Na última inspeção, tramitava na unidade 531 processos paralisados há mais de 100 dias, motivo pelo qual determinou-se a adoção de plano de trabalho para redução da quantidade. Como resultado, o número de processos fora do prazo diminuiu, mas ainda é considerável.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.21.3",
+     "unidadeNumero": "6.21",
+     "unidade": "GABINETE DO DESEMBARGADOR VÍTOR INÁCIO PEIXOTO PARREIRA HENRIQUES",
+     "texto": "Na última inspeção, havia 279 processos conclusos há mais de 100 dias, razão pela qual foram determinadas medidas de ajustes, entre elas envio de extrato processual dos feitos paralisados, das ações de improbidade em curso e julgamento prioritário destas. De acordo com informações colhidas na unidade, houve cumprimento do que foi determinado.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.3.3",
+     "unidadeNumero": "7.3",
+     "unidade": "1ª UNIDADE JURISDICIONAL JUIZADO ESPECIAL DA FAZENDA PÚBLICA DE BELO HORIZONTE",
+     "texto": "Não há determinação ou recomendação da última inspeção do Conselho Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.4.3",
+     "unidadeNumero": "7.4",
+     "unidade": "8ª UNIDADE JURISDICIONAL DO JUIZADO ESPECIAL CÍVEL DE BELO HORIZONTE (FRAN. SALLES)",
+     "texto": "Existem, apenas, determinações oriundas da Corregedoria logal, fruto de correição realizada neste ano, decerto que objeto de acompanhamento.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.10.3",
+     "unidadeNumero": "7.10",
+     "unidade": "1ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS DE BELO HORIZONTE",
+     "texto": "Determinação/recomendação à Vara na última inspeção do Conselho Nacional de Justiça: AO JUIZ DE DIREITO I- Prazo de 30 dias: a) Regularizar 30% da quantidade de processos físicos paralisados há mais de 100 dias em Gabinete. b) Regularizar 30% da quantidade de processos eletrônicos paralisados há mais de 100 dias em Gabinete. II- Prazo de 60 dias: a) Regularizar outros 30% da quantidade de processos físicos paralisados há mais de 100 dias em Gabinete. b) Regularizar outros 30% da quantidade de processos eletrônicos paralisados há mais de 100 dias em Gabinete. III- Prazo de 90 dias: a) Regularizar o restante dos processos físicos paralisados há mais de 100 dias em Gabinete. Num. 4833334 - Pág. 222 b) Regularizar o restante dos processos eletrônicos paralisados há mais de 100 dias em Gabinete. À GERENTE DE SECRETARIA I- Prazo de 30 dias: a) Regularizar 30% da quantidade de processos físicos paralisados há mais de 100 dias em Secretaria. b) Regularizar 30% da quantidade de processos eletrônicos paralisados há mais de 100 dias em Secretaria. II- Prazo de 60 dias: a) Regularizar outros 30% da quantidade de processos físicos paralisados há mais de 100 dias em Secretaria. b) Regularizar outros 30% da quantidade de processos eletrônicos paralisados há mais de 100 dias em Secretaria. III- Prazo de 90 dias: a) Regularizar o restante dos processos físicos paralisados há mais de 100 dias em Secretaria. b) Regularizar o restante dos processos eletrônicos paralisados há mais de 100 dias em Secretaria. Conforme será detalhado em sequência, referidas recomendações/determinações não foram integralmente cumpridas.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.11.3",
+     "unidadeNumero": "7.11",
+     "unidade": "2ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS DE BELO HORIZONTE",
+     "texto": "Não há determinação ou recomendação à Vara da última inspeção do Conselho Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.12.3",
+     "unidadeNumero": "7.12",
+     "unidade": "1ª VARA DE EXECUÇÃO FISCAL MUNICIPAL DE BELO HORIZONTE",
+     "texto": "Não há determinação ou recomendação à Vara da última inspeção do Conselho Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.13.3",
+     "unidadeNumero": "7.13",
+     "unidade": "2ª VARA DE EXECUÇÃO FISCAL MUNICIPAL DE BELO HORIZONTE",
+     "texto": "Não há determinação ou recomendação à Vara da última inspeção do Conselho Nacional de Justiça. Num. 4833334 - Pág. 234",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.14.3",
+     "unidadeNumero": "7.14",
+     "unidade": "1ª VARA DE FAMÍLIA DE BELO HORIZONTE",
+     "texto": "Não foi indicada a existência de inspeção anterior do CNJ, apenas da Corregedoria local, quando foram determinadas ações e regularizações",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.15.3",
+     "unidadeNumero": "7.15",
+     "unidade": "2ª VARA DE FAMÍLIA DE BELO HORIZONTE",
+     "texto": "Não foi indicada a existência de inspeção anterior do CNJ, apenas da Corregedoria local, quando foram determinadas ações e regularizações, as quais, de acordo com o informado, teriam sido cumpridas, especialmente, movimentações e baixas em processos físicos e eletrônicos.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.16.3",
+     "unidadeNumero": "7.16",
+     "unidade": "11ª VARA DE FAMÍLIA DE BELO HORIZONTE",
+     "texto": "Não foi indicada a existência de inspeção anterior do CNJ, apenas da Corregedoria local, quando foram determinadas ações e regularizações",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.17.3",
+     "unidadeNumero": "7.17",
+     "unidade": "4ª VARA DE SUCESSÕES E AUSÊNCIAS DE BELO HORIZONTE",
+     "texto": "Não foi indicada a existência de inspeção anterior do CNJ, apenas da Corregedoria local, quando foram determinadas ações e regularizações",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.20.3",
+     "unidadeNumero": "7.20",
+     "unidade": "VARA DE REGISTROS PÚBLICOS DE BELO HORIZONTE",
+     "texto": "Em relação à última inspeção do CNJ, foi determinado julgamento prioritário dos processos paralisados há mais de 100 dias (515 naquela ocasião); informar sobre plano de ação visando reduzir o acervo e aumentar a produtividade; informar sobre restauração de processos extraviados e cobrança de autos, mandados e precatórias com excesso de prazo; juntar todas as petições pendentes. Houve também recomendação para priorizar o julgamento mensal de um número de feitos superior ao da distribuição, com separação por matéria, de modo a aumentar a produtividade. De acordo com as declarações prestadas, não restam pendências relacionadas às determinações e recomendações então lançadas",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.23.3",
+     "unidadeNumero": "7.23",
+     "unidade": "VARA INFRACIONAL DA INFÂNCIA E JUVENTUDE DE BELO HORIZONTE",
+     "texto": "Foram identificadas as seguintes pendências na última inspeção realizada pela Corregedoria Nacional de Justiça: a) Determinação de redução do acervo; - Medida adotada: A Gerente de Secretaria modificou o método de distribuição de tarefas, que outrora era divisão por dígitos. Com a implementação de divisão por tarefas, houve considerável redução no acervo, que na última inspeção era de 9.352 processos e no mês de maio/22 a Vara possui um acervo de 4.590 processos. Redução de 49,08% do acervo. b) Regularizar o procedimento de apuração de ato infracional; - Medida adotada: O adolescente após ser apreendido em flagrante é ouvido em audiência preliminar. A oitiva é realizada informalmente pelo membro do Ministério Público, na presença do Juiz e do seu Defensor. Cabe ressaltar que, segundo informado pela Vara, nunca houve a oitiva de vítimas e testemunhas neste ato, embora conste do último relatório de Inspeção. Na audiência preliminar, caso o Ministério Público entenda que há necessidade de se instruir os autos do processo, ele oferece a representação, e o Magistrado, após recebê-la, designa-a para uma outra data a audiência de apresentação e posteriormente a audiência em continuação. c) Realizações de inspeções nas unidades em meio aberto feita por Magistrado: - Medida adotada: Foram realizadas inspeções pelo magistrado Dr. Afrânio José Fonseca Nardy. d) Solução rápida do processo, sem a necessidade de julgamento de mérito. - Medida adotada: Num. 4833334 - Pág. 289 Na inspeção de 2017, constatou-se que 950 processos foram extintos sem resolução do mérito. No período compreendido entre maio/21 a maio/22, foram extintos 2.948 processos sem a resolução do mérito (aumento de 310,32%). e) Ação a fim de verificar a existência de processos ativos em que o jovem já tenha completado 21 anos. - Medida adotada: Mensalmente há verificação se há processos ativos na secretaria em que o jovem adulto já tenha completado 21 anos. Os que se encontram ativos, são aqueles que aguardam recursos nos Tribunais Superiores. f) Julgamento mensal de número de ações superior ao feito distribuído no mesmo período, de modo a reduzir o acervo; - Medida adotada: A recomendação foi observada. No período compreendido entre maio/21 a maio/22 foram distribuídos 5.722 processos e julgados 6.064, o que corresponde 18,69 % de processos julgados superior à distribuição.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.26.3",
+     "unidadeNumero": "7.26",
+     "unidade": "2ª VARA CÍVEL DE ITABIRA",
+     "texto": "Num. 4833334 - Pág. 305 Não foi indicada a existência de inspeção anterior do CNJ, apenas da Corregedoria local, quando foram determinadas ações e regularizações.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.28.3",
+     "unidadeNumero": "7.28",
+     "unidade": "2ª VARA CÍVEL DE OURO PRETO",
+     "texto": "Na última inspeção realizada pelo Conselho Nacional de Justiça, constatou-se “distribuição acentuada de ações civis públicas e necessidade de priorização destas para que fossem minoradas, bem como solicitado empenho para finalização de processos mais antigos, sendo estes, em sua maioria, procedimentos de jurisdição voluntária, com entraves dos próprios herdeiros (inventário), bem como execuções fiscais pendentes por ausência de localização de bens”. A magistrada informa que a maioria das ACP’s se referia a casas tombadas sem alvará quando da realização de obras. A providência adotada foi alterar o acordo para a fase de execução, estando todos sentenciados, com acordo para regularização das obras, sob pena de demolição. Os processos demoram em função da necessidade de arquitetos para regularização, visto que, em sua maioria, os réus são pessoas hipossuficientes.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.29.4",
+     "unidadeNumero": "7.29",
+     "unidade": "VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DE OURO PRETO",
+     "texto": "As determinações e recomendações decorrentes da inspeção realizada pelo Conselho Nacional de Justiça em 2017 foram, conforme relatado, cumpridas: a) providencie a apreciação de todos os feitos paralisados há mais de 100 dias, com julgamento prioritário dos processos de réus presos e daqueles conclusos há mais de 100 dias; Medida adotada: a relação de processos físicos paralisados há mais de cem dias está sendo feita mensalmente com extração de relatório e regularização dos autos que estão na secretaria. Com relação aos processos eletrônicos, em razão da virtualização do acervo físico, a regularização demanda mais tempo em razão da conferência dos eventos e dados criminais no momento da implantação no PJE. b) a regularização da juntada de petições, cobrança de mandados e precatórias com prazos excedidos; Medida adotada: com relação a juntada de petições, foi designado um estagiário para proceder diariamente a juntada das petições. A cobrança de mandados fica a cargo do servidor responsável pelo processo e a cobrança de cartas precatórias também é realizada quando da verificação no relatório de paralisados. Num. 4833334 - Pág. 324 c) determine a restauração dos processos extraviados; Medida adotadas: Foram regularizados. d) confira andamento aos processos sentenciados, evitando-se o implemento da prescrição da pretensão executória; Medida adotada: acompanhamento sistemático das execuções penais pelos servidores, dando andamento necessário para evitar a prescrição. e) tome as providências para observância e o desenvolvimento de ferramenta que propicie o cumprimento da Resolução n. 112/CNJ; Medida adotada: O sistema utilizado pelo TJMG com relação aos processos físicos (Siscom) não contém campo específico para preenchimento do art. 2º, VII, da Resolução 112/2010 do CNJ, então a medida adotada é dar o andamento dentro dos prazos contidos no CP, a fim de evitar a prescrição. f) reoriente o responsável pela elaboração dos mapas estatísticos para a correta classificação dos despachos, decisões e sentenças, considerando que foram contatados lançamentos incongruentes. Medida adotada: a movimentação dos autos passou a ficar a cargo do gabinete, a fim de evitar interpretação diversa da decisão proferida nos autos.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.34.3",
+     "unidadeNumero": "7.34",
+     "unidade": "1ª VARA CÍVEL DE SETE LAGOAS",
+     "texto": "Em inspeção do CNJ, foi determinada a regularização do andamento processual na secretaria e gabinete (relatório constante no processo n. 0006964- Num. 4833334 - Pág. 356 43.2017.2.00.0000), cujo cumprimento foi acompanhado pelo Pedido de Providências CNJ n. 0006620-28.2018.2.00.0000 e SEI TJMG n. 0096100-53.2018.8.13.0000.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.34.3",
+     "unidadeNumero": "7.34",
+     "unidade": "1ª VARA CÍVEL DE SETE LAGOAS",
+     "texto": "Não há determinação ou recomendação à Vara referente a inspeção do Conselho Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "8.2",
+     "unidadeNumero": "8",
+     "unidade": "PRECATÓRIOS",
+     "texto": "Medidas pendentes de cumprimento das determinações e recomendações da última inspeção do CNJ com as respectivas justificativas: - 3.4, item 17) priorizar o desenvolvimento e implantação de ferramenta eletrônica, denominada precatório eletrônico, contendo módulos para apresentação, expedição, gestão e pagamento de precatórios, podendo haver cooperação entre tribunais para implantação de outra solução tecnológica já existente, notadamente o sistema eletrônico do TRF 5° Região, que utiliza a plataforma PJe: Em razão da pandemia, foi feita a redução da equipe da DIRFOR, que migrou para a iniciativa privada. Houve também necessidade de deslocamento dos responsáveis pelo projeto para colaborar com o CNJ no desenvolvimento do SIDEJUD, razões pelas quais o projeto encontra-se no momento suspenso. Além disso, como há notícia do desenvolvimento pelo CNJ do processamento a nível nacional, optou-se por aguardar esse sistema, a fim de evitar que um sistema próprio a ser desenvolvimento por este Tribunal mostre-se incompatível com o modelo nacional. - 3.4, item 20) criar mecanismo, no aplicativo eletrônico que está sendo desenvolvido para gestão de precatórios, que possibilite o pagamento de prioridade independentemente de requerimento expresso quando se tratar de idoso: Num. 4833334 - Pág. 391 Essa ferramenta está prevista no projeto do precatório eletrônico que se encontra em desenvolvimento, conforme item 17. - 3.4, item 24) não realizar o pagamento proporcional ou parcial de crédito a beneficiário de precatório, aguardando a integralização do recurso financeiro para realização do pagamento de uma só vez a cada beneficiário, estabelecendo uma ordem de classificação em precatórios que possuem mais de um beneficiário: A recomendação não foi plenamente acatada, tendo em vista a existência de situações em que devedores no regime especial realizam aportes mensais regulares insuficientes para a quitação integral do precatório, em razão do vultuoso valor da requisição. Neste caso, sendo o primeiro da cronologia, realizam-se pagamentos parciais por não ser razoável permanecer com o recurso parado em conta do tribunal, quando se pode minimizar a expectativa do beneficiário em haver o seu direito. Ademais, a recomendação foi feita com a louvável finalidade de minimizar a repetição de cálculos pelo setor próprio. De qualquer forma, ressalte-se que o volume de situações em que o pagamento parcial é feito não tem o condão de prejudicar o trabalho dos calculistas porquanto representa uma exceção. - 3.4, item 25) disponibilizar ao juízo da execução requisitante os valores não levantados pelos credores, após não atendida a intimação para fornecimento de conta bancária, evitando-se a paralisação do precatório por falta de indicação dos elementos para pagamento. O juiz da execução deve promover a intimação e pagamento do precatório diretamente ao beneficiário em tal hipótese: Em relação a esta recomendação, foi ventilada a possibilidade de criação na ASPREC de um setor oficial responsável pela localização dos beneficiários, cujos créditos estão reservados, valendo-se para tanto dos sistemas informatizados disponibilizados pelo CNJ e TJMG Tal projeto, entretanto, se viu postergado pela pandemia e, diante da assunção da nova gestão do TJMG, o setor aguarda autorização da nova direção para sua concretização. Caso não se acate este plano, cumprir-se-á a determinação de envio dos valores não levantados ao Num. 4833334 - Pág. 392 juízo da execução, ressalvando-se a preocupação de assoberbação dos Colegas com tal demanda e da persistência de dúvida quanto ao efetivo encaminhamento da verba a quem de direito.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 0
+    }
+   ]
+  },
+  {
+   "ano": 2023,
+   "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023",
+   "total": 52,
+   "pendencias": [
+    {
+     "secao": "1.4",
+     "unidadeNumero": "1",
+     "unidade": "PRESIDÊNCIA",
+     "texto": "A Presidência do Tribunal de Justiça do Estado de Minas Gerais foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022. O relatório de inspeção se encontra sob o Id 4833334, do Processo Insp n. 0003742-91.2022.2.00.0000. No voto do Acórdão foi feita a seguinte determinação ao Gabinete (Id 4861783): (...) i) supervisione os processos n. 1.0000.06.439109/7-005, 1.000.21.200981/5-000, 1.0000.21.075409/9-000, 1.000.21.208320/8- 000, 1.0153.14.003056/7-003, 1.0000.22.016189/7-000, 1.0000.20.578839/1-000, 1.000.20.579757/4-001, 1.0000.12.035737/1- 000, 1.0000.13.0367773/3-001, 1.0000.13.036772/5-001, 1.0000.13.036771/7-001, 1.000013.083857/6-000, 1.0000.15.038064/0- 000, 1.0000.21.268860/0-001, 1.0000.21.268860/0-002, 1.0000.21.268860/0-003, 1.0000.21.268860/0-004, 1.0000.21.268860/0- 005, 1.0000.21.268860/0-006, informando a Corregedoria Nacional de 14 Justiça do atendimento da determinação; ii) impulsione os processos administrativos disciplinares 1.0000.18.036548/8-005 e 1.0000.21.225959/2-001 e informar à Corregedoria Nacional de Justiça as medidas tomadas nesses feitos e nos outros 3 (três) em andamento; iii) informe à Corregedoria Nacional de Justiça o cumprimento das determinações e a implementação das recomendações dirigidas à Presidência na Inspeção realizada pelo Conselho Nacional de Justiça no ano de 2019; iv) informe à Corregedoria Nacional de Justiça a relação dos magistrados para os quais foi deferido teletrabalho e o fundamento de cada concessão, juntando a portaria concessória; v) adote as providências cabíveis relativas ao trabalho à distância realizado permanentemente e sem autorização pela juíza Karen Castro dos Montes, titular da 1ª Vara Cível da Comarca de Itabira/MG, informando as medidas à Corregedoria Nacional de Justiça; vi) providencie o envio de estatísticas mensais aos gabinetes, para fins de controle de acervo completo (não apenas dos conclusos), bem como das metas nacionais do Poder Judiciário. (cap. 1) - anotação no campo objeto do processo: “Insp 3742-91.2022.- TJMG - DET1”. (...) i) dotar a unidade de equipamentos de videoconferência apropriados ao uso, especialmente, para fins de utilização do Balcão Virtual (Resolução CNJ n. 372/2021). Devendo-se prestar as informações no prazo de 90 dias; ii) realizar estudos voltados à reestruturação do quadro de servidores dos juizados unificados, considerando a possibilidade de ampliar o número de gerentes. Devendo-se prestar as informações no prazo de 90 dias. (cap. 7.1) - anotação no campo objeto do processo: “Insp 3742-91.2022.- TJMG – DET15”. (...) para que verifique e corrija as inconsistências no painel de acompanhamento das metas nacionais, notadamente a identificação das metas aplicáveis a cada unidade judicial. Devendo-se prestar as informações no prazo de 60 dias. (cap. 7.2) - anotação no campo objeto do processo: “Insp 3742-91.2022.- TJMG – DET16”. (...) i) cobrar da equipe de TI a correção da rotina de expedição de alvarás pelo sistema próprio (DEPOX), envidando esforços junto ao Banco do Brasil com vistas a solucionar a inconsistência encontrada. Devendo-se prestar as informações no prazo de 45 dias; ii) cobrar da equipe de TI encarregada de gerir o PJe local solução para os processos que estão na tarefa “processo com prazo em curso” parados em face da não movimentação automática após o decurso de prazo. Deverá, também, de forma preventiva, cuidar para que esse procedimento (movimentação automática) sempre aconteça nos casos programados para tanto. Devendo-se prestar as informações no prazo de 45 dias; iii) corrigir inconsistência nos relatórios gerenciais e estatísticos que indicam “classe genérica do PJe”. Devendo-se prestar as informações no prazo de 30 dias. (cap. 7.3) - anotação no campo objeto do processo: “Insp 3742- 91.2022.- TJMG – DET17”. (...) realizar treinamento e capacitação aos servidores para uso adequado dos sistemas eletrônicos disponibilizados (PJe, SIJUD, Painéis de BI, entre outros). Devendo-se prestar informações no prazo de 90 dias. (cap. 7.6) - anotação no campo objeto do processo: “Insp 3742-91.2022.- TJMG – DET20”. (...) i) dotar a unidade com equipamentos de videoconferência apropriados ao uso, especialmente, para fins de utilização do Balcão 15 Virtual (Resolução CNJ n. 372/2021). Devendo-se prestar as informações no prazo de 90 dias; ii) realizar treinamento e capacitação aos servidores para uso adequado dos sistemas eletrônicos disponibilizados (PJe, SIJUD, Painéis de BI, entre outros). Devendo-se prestar as informações no prazo de 90 dias (...) anotação no campo objeto do processo: “Insp 3742-91.2022.- TJMG – DET21”. (...) i) adotar as medidas necessárias para suprir a CENTRASE de servidores efetivos em número suficiente ao acervo a fim de evitar a prestação precária/temporária de serviço por meio de servidores que executam horas extras e estagiários. Devendo-se prestar informações no prazo de 60 dias; ii) providenciar a indexação dos documentos dos processos físicos que foram digitalizados e migrados para o PJe. Devendo-se prestar informações no prazo de 60 dias; iii) considerar a possibilidade de conceder token ou acesso limitado (criação de perfil) aos terceirizados para acesso ao PJe de acordo com a previsão contratual de tarefas. Devendo-se prestar informações no prazo de 60 dias. (cap. 7.10) - anotação no campo objeto do processo: “Insp 3742-91.2022.- TJMG – DET24”. (...) que mantenha a atuação de Juiz de Direito Auxiliar de forma permanente, enquanto o titular da unidade estiver convocado para atuar no TJMG. (cap. 7.11) - anotação no campo objeto do processo: “Insp 3742-91.2022.- TJMG – DET25”. (...) i) priorizar o andamento/julgamento dos processos paralisados há mais de 100 dias, especialmente aqueles que possuam prioridade legal, bem como das cartas precatórias em semelhante situação. Devendo-se prestar as informações no prazo de 90 dias; ii) identificar e priorizar o andamento dos processos com pedido liminar pendente de apreciação, estabelecendo controle efetivo quanto à apreciação de processos nessa condição. Devendo-se prestar as informações no prazo de 60 dias; iii) realize e/ou reiterar a cobrança dos autos físicos com carga além do prazo. Devendo-se prestar as informações no prazo de 60 dias; iv) verificar a baixa ou eventual devolução dos autos que constam como remetidos ao Tribunal. Devendo-se prestar as informações no prazo de 60 dias; v) adotar as providências necessárias para cobrança de cartas precatórias com prazo vencido. Devendo-se prestar as informações no prazo de 60 dias; vi) providenciar a juntada de petições pendentes. Devendo-se prestar as informações no prazo de 60 dias; vii) Cobrar os mandados pendentes há mais de 45 dias. Devendo-se prestar as informações no prazo de 30 dias; viii) regularizar a data de distribuição dos processos recentemente virtualizados, de modo a assegurar que correspondam à realidade dos respectivos autos. Devendo-se prestar as informações no prazo de 60 dias. (cap. 7.14) - anotação no campo objeto do processo: “Insp 3742-91.2022.- TJMG – DET28”. (...) i) adotar as providências cabíveis para mitigar a indisponibilidade recorrente do PJe. Devendo-se prestar as informações no prazo de 90 dias; ii) realizar treinamento e capacitação aos servidores para uso adequado dos sistemas eletrônicos disponibilizados (PJe, SIJUD, Painéis de BI, entre outros). Devendo-se prestar as informações no prazo de 90 dias. (cap. 7.16) - anotação no campo objeto do processo: “Insp 3742- 91.2022.- TJMG – DET30”. (...) determine ao Setor de Precatórios a adoção das seguintes providências: i) cumprir ou encaminhar aos setores responsáveis/competentes as determinações e recomendações 16 decorrentes da inspeção anterior e que ainda não foram cumpridas, à exceção da constante do item 8.4, subitem 24, tendo em vista a justificativa apresentada. Devendo-se prestar as informações no prazo de 45 dias; ii) distribuir e repassar aos beneficiários a integralidade dos saldos existentes nas contas especiais (cronológica e acordo). Devendo- se prestar as informações no prazo de 60 dias; iii) elaborar e executar planejamento estratégico, dando especial atenção aos procedimentos que envolvem a cobrança, processamento e pagamento dos precatórios com vistas a emprestar agilidade em todas as suas fases; iv) conceder, de ofício, as prioridades por idade para credores de entes inseridos no regime especial (art. 74, § 1º, “a”, Resolução CNJ n. 303); v) constar no corpo da certidão de protocolo do ofício precatório o horário exato de registro no Tribunal. Devendo-se prestar as informações no prazo de 15 dias; vi) abrir um procedimento de controle para cada entidade do regime especial, no qual deverão ficar registrados todos os repasses e ausências, os precatórios alcançados por cada parcela e medidas adotadas em caso de eventual inadimplência. Devendo-se prestar as informações no prazo de 15 dias; vii) providenciar a disponibilização de link na página de precatórios, zelando para manter, sempre, as informações atualizadas (Prazo: 15 dias): a) para acesso direto aos planos de pagamento; b) para acesso direto às listas cronológicas e preferenciais de cada ente/entidade devedora, considerando, além de uma lista geral, outra com, apenas, os precatórios não quitados; viii) disponibilizar as informações relativas a precatórios em geral de forma mais compreensível e de fácil acesso para o público leigo. Devendo-se prestar as informações no prazo de 15 dias; ix) Atualizar a norma de regência para que os dados bancários dos beneficiários sejam inseridos pelo juízo da execução no formulário ofício precatório. Devendo-se prestar as informações no prazo de 15 dias; x) disponibilizar no portal da internet do TJMG o valor da Receita Corrente Líquida de cada ente devedor e não somente o percentual anual (item 8.3.5 supra). Devendo- se prestar as informações no prazo de 15 dias; xi) ajustar o formato de cobrança das parcelas mensais devidas pelos entes integrantes do regime especial, de modo que seja realizada com base em percentual da RCL atualizada do devedor (art. 101 da ADCT). Devendo-se prestar as informações no prazo: de 15 dias; xii) certificar ou providenciar a publicação no DJE da decisão da Presidência n. 28526/2021 (id 6984072), proferida no processo 1080.01.0074250/2021-77, do Estado de Minas Gerais, que homologou o plano anual de pagamento de precatórios para o exercício financeiro de 2022. Devendo-se prestar as informações no prazo de 15 dias. Determina-se, ainda, à Presidência: implantar sistemas eletrônicos para (i) cadastramento, tramitação e controle dos precatórios, (ii) atualização de cálculos como forma de otimizar tempo e mão de obra (construção de sistemas próprios ou adoção de sistemas de outro tribunal mediante convênio). (cap. 8) - anotação no campo objeto do processo: “Insp 3742-91.2022.- TJMG – DET57”. (...) i) no prazo de 60 dias, proceder ao levantamento de todos os valores, sob qualquer designação, que tenham sido instituídos ou majorados em favor de seus servidores e magistrados desde a vigência do Provimento n. 64/2017, informando quais foram submetidos ao CNJ, indicando o processo, e neste mesmo prazo procedendo à sua publicação na Transparência, assim como de novas autorizações que venham se concedidas; ii) em relação aos que não tenham sido submetidos, 17 proceder imediatamente ao pedido de autorização dos itens relativos ao Provimento n. 64, informando os processos instaurados para este fim e se abstendo de instituir ou majorar quaisquer novos valores sem a devida autorização, sob pena de responsabilização individual; iii) no prazo de 60 dias, notificar os inadimplentes com a obrigação de apresentação das declarações de bens e rendas, conferindo prazo máximo de 30 dias para a regularização. Após o transcurso, deverá promover a abertura de procedimento administrativo disciplinar respectivo aos que permanecerem irregulares, informando à Corregedoria Nacional de Justiça o número dos procedimentos disciplinares, assim como o nome dos servidores e magistrados irregulares, a matrícula e o cargo (cargo efetivo, comissionado assim como funções comissionadas ocupadas); iv) no prazo de 90 dias, prestar esclarecimento sobre a existência da prática de realização de despesas sem empenho prévio, encaminhando documentação que evidencie suas justificativas ou que demonstre não ser esta a prática do Tribunal. (cap. 9) - anotação no campo objeto do processo: “Insp 3742-91.2022.- TJMG – DET58”. (...) i) apresentar cronograma de digitalização do acervo de processos físicos, bem como estabelecer data para impedir a entrada de novos processos físicos, sobretudo nas Varas da Infância e Juventude para o cumprimento da Resolução CNJ n. 420/2021. Devendo-se prestar as informações no prazo de 90 dias; ii) criar estrutura de segurança desvinculada à área de TIC nos termos do Art. 21 da Resolução CNJ N. 396/2021. Devendo-se prestar as informações no prazo de 90 dias; iii) publicar as aquisições de bens e contratação, disponibilizando junto ao repositório nacional os editais de licitação, lista de fornecedores por tema de aquisição e contratos de aquisição de bens e contratação de serviços de Tecnologia da Informação e Comunicação. Elaborar plano de transformação digital, contemplando a transformação digital de serviços, integração de canais digitais, interoperabilidade de sistemas e estratégia de monitoramento, pela unidade competente e aprovado pelo Comitê de Governança de Tecnologia da Informação e Comunicação. Desenvolver o Plano de Gestão de Continuidade de Negócios ou de Serviço no qual estabeleça estratégias e planos de ação que garantam o funcionamento dos serviços essenciais quando na ocorrência de falhas. Instituir o Plano de Gestão de Riscos de TIC, com foco na continuidade de negócios, manutenção dos serviços e alinhado ao plano institucional de gestão de riscos, objetivando mitigar as ameaças mapeadas par atuar de forma preditiva e preventiva às possíveis incertezas, nos termos da Resolução CNJ N. 370/2021. Devendo-se prestar as informações no prazo de 90 dias; iv) elaborar formulário eletrônico ou sistema para atendimento das requisições e/ou reclamações apresentadas por parte dos titulares dos dados pessoais, bem como o fluxo de atendimento aos direitos dos titulares (art. 18. 19 e 20 da LGPD), requisições e/ou reclamações apresentadas, desde o seu ingresso até o fornecimento da respectiva resposta, com todas as atividades constantes na Resolução CNJ N. 363/2021. Devendo-se prestar as informações no prazo de 90 dias; v) implantar sistema informatizado para resolução de conflitos e por meio da conciliação e mediação (SIREC), dando preferência ao desenvolvimento colaborativo de sistema, nos termos preconizados pela PDPJ instituída pela Resolução CNJ n. 335/2020, para integral cumprimento à Resolução CNJ N. 358/2020. Devendo-se prestar as informações no prazo de 90 18 dias; vi) concluir integralmente o plano de ação para implantação da Plataforma Codex, realizando a extração, transformação e saneamento dos dados estruturados e não estruturados dos processos judiciais eletrônicos em tramitação. Devendo-se prestar as informações no prazo de 90 dias; vii) implementar funcionalidade na ferramenta SGP – Sistema de Gestão de Precatórios para controlar as entidades devedoras inadimplentes de precatórios, para atender ao disposto no Art. 1º da Resolução CNJ N. 428/2021. Devendo-se prestar as informações no prazo de 90 dias. (cap. 10) - anotação no campo objeto do processo: “Insp 3742-91.2022.- TJMG – DET59”. As determinações foram acompanhadas através dos PPs n. 0001151- 59.2022.2.00.0000 (DET1), 0005994-67.2022.2.00.0000 (DET15), 0005996- 37.2022.2.00.0000 (DET16), 0006080-38.2022.2.00.0000 (DET17), 0006083- 90.2022.2.00.0000 (DET20), 0006084-75.2022.2.00.0000 (DET21), 0006087- 30.2022.2.00.0000 (DET24), 0006088-15.2022.2.00.0000 (DET25), 0006091- 67.2022.2.00.0000 (DET28), 0006093-37.2022.2.00.0000 (DET30), 0006076- 98.2022.2.00.0000 (DET57), 0006078-68.2022.2.00.0000 (DET58) e 0006079- 53.2022.2.00.0000 (DET59). Para registro cabe mencionar que a determinação contida no PP n. 0006093-37.2022.2.00.0000 (DET30) consta replicada em outros pedidos de providências. Por meio da Decisão de Id 5003692, foram consideradas adequadas as medidas adotadas pela unidade e determinado o arquivamento do Pedido de Providências n. 0001151-59.2022.2.00.0000 (DET1). Pela Decisão de Id 5111550, foram consideradas adequadas as medidas adotadas pela unidade e determinado o arquivamento do Pedido de Providências n. 0005994-67.2022.2.00.0000 (DET15). Pela Decisão de Id 4955685, foram consideradas adequadas as medidas adotadas pela unidade e determinado o arquivamento do Pedido de Providências n. 0005996-37.2022.2.00.0000 (DET16). Pela Decisão de Id 5290940, foram consideradas adequadas as medidas adotadas pela unidade e determinado o arquivamento do Pedido de Providências n. 0006080-38.2022.2.00.0000 (DET17). 19 Pela Decisão de Id 5075198, foram consideradas adequadas as medidas adotadas pela unidade e determinado o arquivamento do Pedido de Providências n. 0006083-90.2022.2.00.0000 (DET20). Pela Decisão de Id 5208914, foram consideradas adequadas as medidas adotadas pela unidade e determinado o arquivamento do Pedido de Providências n. 0006084-75.2022.2.00.0000 (DET21). Pela Decisão de Id 5236083, foram consideradas adequadas as medidas adotadas pela unidade e determinado o arquivamento do Pedido de Providências n. 0006087-30.2022.2.00.0000 (DET24). Referente ao PP n. 0006088-15.2022.2.00.0000 (DET25), por meio do Despacho de Id 5383207, verifica-se que o item “ii” foi considerado atendido. Pela Decisão de Id 4997670, foram consideradas adequadas as medidas adotadas pela unidade e determinado o arquivamento do Pedido de Providências n. 0006091-67.2022.2.00.0000 (DET28). Pela Decisão de Id 5304039, foram consideradas adequadas as medidas adotadas pela unidade e determinado o arquivamento do Pedido de Providências n. 0006093-37.2022.2.00.0000 (DET30). Pela Decisão de Id 5341936, foram consideradas adequadas as medidas adotadas pela unidade e determinado o arquivamento do Pedido de Providências n. 0006076-98.2022.2.00.0000 (DET57). Quanto às determinações do Pedido de Providências n. 0006078- 68.2022.2.00.0000 (DET58), permanecem pendentes de cumprimento e em tramitação. Quanto às determinações do Pedido de Providências n. 0006079- 53.2022.2.00.0000 (DET59), a Corregedoria Nacional de Justiça entendeu por satisfeitas as medidas adotadas quanto aos itens “i”, “ii”, “iii”, “iv”, “v” e “vi”, restando pendente a constante no item “vii”, portanto, permanecem os autos em tramitação.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "2.4",
+     "unidadeNumero": "2",
+     "unidade": "1ª VICE-PRESIDÊNCIA",
+     "texto": "Na última inspeção realizada pela Corregedoria Nacional de Justiça foram dirigidas à 1ª Vice-Presidência as seguintes determinações e recomendações: 38 DETERMINAÇÕES (D.1) Supervisione os processos n. 1.0000.06.439109/7-005, 1.000.21.200981/5-000, 1.0000.21.075409/9-000, 1.000.21.208320/8- 000, 1.0153.14.003056/7-003,1.0000.22.016189/7-000, 1.0000.20.578839/1-000, 1.000.20.579757/4-001, 1.0000.12.035737/1- 000, 1.0000.13.0367773/3-001, 1.0000.13.036772/5-001, 1.0000.13.036771/7-001, 1.000013.083857/6-000, 1.0000.15.038064/0- 000, 1.0000.21.268860/0-001, 1.0000.21.268860/0-002, 1.0000.21.268860/0-003, 1.0000.21.268860/0-004, 1.0000.21.268860/0- 005, 1.0000.21.268860/0-006, informando a Corregedoria Nacional de Justiça do atendimento da determinação. [Ref. item 1.9, (i)] (D.2) Impulsione os processos administrativos disciplinares 1.0000.18.036548/8-005 e 1.0000.21.225959/2-001 e informar à Corregedoria Nacional de Justiça as medidas tomadas nesses feitos e nos outros 3 (três) em andamento [Ref. item 1.9, (ii)] (D.3) Providencie o envio de estatísticas mensais aos gabinetes, para fins de controle de acervo completo (não apenas dos conclusos), bem como das metas nacionais do Poder Judiciário. [Ref. item 1.9 (vi) ;item 6.1 (i); item 6.2 (i); item 6.3 (i); item 6.8 (i); item 6.9 (i)] (D.4) Providenciar o envio de estatísticas mensais aos gabinetes para fins de controle de acervo completo e não apenas dos processos conclusos, bem como de metas nacionais do Poder Judiciário. Prazo: 30 dias. [Ref. item 6.1 (i); item 6.2 (i); item 6.3 (i); item 6.8 (i); item 6.9 (i)] (D.5) Apresentar cronograma de digitalização do acervo de processos físicos, bem como estabelecer data para impedir a entrada de novos processos físicos, sobretudo nas Varas da Infância e Juventude para o cumprimento da Resolução CNJ n. 420/2021. Devendo-se prestar as informações no prazo de 90 dias. [Ref. item 10, (i)] RECOMENDAÇÕES (R.1.a) Verificar a viabilidade de criação de mais uma Câmara Especializada em Direito Empresarial, Registros Públicos e Direito Previdenciário. [Ref. item 2.7, (i); item 6.12.6; ] (R.1.b) Verificar a viabilidade da aplicação da norma regimental que permite que os conflitos de competência sejam decididos monocraticamente, a fim de dar maior vazão aos conflitos suscitados [Ref. item 2.7, (ii)] (R.2) Customizar as informações estatísticas para os gabinetes em painéis visuais de controle, em lugar de relatórios brutos, com publicidade no desempenho das unidades judiciárias suficiente para viabilizar que 39 gabinetes de mesma matéria tenham referência sobre o desempenho médio. [Ref. item 4.1.7, (i); item 6.1.6, (ii); item 6.2.7, (ii); item 6.3.6, (ii); Item 6.6.6 (iii); item 6.9.6, (i); item 6.22.6, (ii)] (R.3) Adotar medidas para o trâmite célere de mídias contendo arquivos de vídeo das audiências, não juntados em processo eletrônico ou não acessíveis por meio remoto. [Ref. item 4.1.7, (ii); item 6.3.6, (iii); Item 6.6.6 (ii); item 6.22.6, (iii)] (R.4) Orientar o 2º Cartório de Feitos Especiais quanto à necessidade de controle dos processos paralisados em secretaria. [Ref. item 6.1.6, (i); item 6.2.7, (i); item 6.3.6, (i); item 6.22.6, (i)] (R.5) Monitorar a distribuição de processos nas câmaras de direito civil residual, objetivando o controle sobre a equalização do trabalho após a criação de turmas de direito civil especializadas. [Ref. item 6.1.6, (iii); item 6.2.7, (iii); Item 6.6.6 (iv); item 6.9.6, (ii)] (R.6) Criar forma mais célere para a intimação do Ministério Público atuante no primeiro grau, considerando que cartas de ordem expedidas objetivando mera intimação estão demorando cerca de 3 meses para retornar cumpridas. [Ref. item 6.3.6, (iv)] (R.7) Orientar o cartório a fazer conclusões ao relator quando houver petição juntada, decurso de prazo ou reativação. [Ref. item 6.6.6 (i)] Quanto às medidas adotadas para o cumprimento das determinações/recomendações atendidas, a unidade informa o seguinte: DETERMINAÇÕES (D.1) Determinação atendida pelo 1º CAFES e comprovada no Pedido de Providências n. 0005953-03.2022.2.00.0000. (D.2) Determinação atendida pelo 1º CAFES e comprovada no Pedido de Providências n. 0005953-03.2022.2.00.0000. (D.3) Em cumprimento à determinação, no que se refere às competências regimentais da 1ª Vice-Presidência, foram disponibilizados na intranet painéis táticos que apresentam dados e informações para gestão dos gabinetes, como, por exemplo, a quantidade de processos conclusos com cada assessor e o tempo de conclusão; a quantidade de documentos gerados no gabinete, separados por tipo de documento; o número de julgamentos do(a) Desembargador(a); o acervo total do Desembargador(a) em tramitação e as situações processuais em que cada processo se encontra; o acervo sobrestado do(a) Desembargador(a) e os respectivos temas associados; o número de processos distribuídos ao (à) Desembargador(a), mês a mês e por órgão 40 julgador; o número de processos sob a relatoria do(a) Desembargador(a) baixados, entre outras informações veiculadas. No que diz respeito aos feitos relacionados às metas do Poder Judiciário, o levantamento é feito pelo Centro de Informações de Resultados da Prestação Jurisdicional na 2ª Instância – CEINJUR, que encaminha aos cartórios respectivos para validação antes de serem enviados aos Gabinetes (Ref. PP n. 0005953-03.2022.2.00.0000). Relativamente à solicitação de que a apuração do cumprimento das metas pelo TJMG seja levado ao conhecimento do público em geral, observa-se que na aba “Cidadão – Transparência – TJ em Números” do portal eletrônico do TJMG há um item denominado “Metas Nacionais” no qual não foram inseridas informações em razão da não divulgação do respectivo Glossário. Entretanto, pode ser encontrada, na aba “Cidadão – Transparência – TJ em Números – Estatísticas da 2ª Instância – Metas nacionais do poder judiciário” a disponibilização de informações genéricas do cumprimento das metas pela instituição. Entende-se que todos os dados relevantes concernentes ao cumprimento das metas, globalmente e divididos por instância e unidade judiciária deveriam ser disponibilizados. Porém a 1ª Vice-Presidência não tem ingerência sobre o Portal da Transparência, que é alimentado pela Presidência. Aliás, o Portal do TJMG é todo alimentado, via de regra, pela Presidência, por meio da Diretoria de Comunicação. De se notar que todos os dados relativos ao cumprimento das metas pela 2ª Instância são plenamente acessíveis diretamente pela Presidência, particularmente por meio do Centro de Informação Institucional – CINFO. Finalmente, pontua-se que as equipes de apoio aos Desembargadores têm por hábito consultar apenas a interface de Gabinete (Themis), que reflete apenas os processos conclusos, não explorando os painéis táticos que, que contêm diversos dados processuais e viabilizam a gestão de processos de trabalho e processos judiciais, inclusive em alinhamento com o planejamento estratégico institucional e com as metas do CNJ. (D. 4) Em cumprimento à determinação, no que se refere às competências regimentais da 1ª Vice-Presidência, foram disponibilizados na intranet painéis táticos que apresentam dados e informações para gestão dos gabinetes, como, por exemplo, a quantidade de processos conclusos com cada assessor e o tempo de conclusão; a quantidade de documentos gerados no gabinete, separados por tipo de documento; o número de julgamentos do(a) Desembargador(a); o acervo total do Desembargador(a) em tramitação e as situações processuais em que cada processo se encontra; o acervo sobrestado do(a) Desembargador(a) e os respectivos temas associados; o número de processos distribuídos ao (à) Desembargador(a), mês a mês e por órgão julgador; o número de processos sob a relatoria do(a) Desembargador(a) baixados, entre outras informações veiculadas. No que diz respeito aos feitos relacionados às metas do Poder Judiciário, o levantamento é feito pelo Centro de Informações de Resultados da Prestação Jurisdicional na 2ª Instância – CEINJUR, que encaminha aos cartórios respectivos para validação antes de serem enviados aos Gabinetes (Ref. PP n. 0005953-03.2022.2.00.0000). 41 Relativamente à solicitação de que a apuração do cumprimento das metas pelo TJMG seja levado ao conhecimento do público em geral, observa-se que na aba “Cidadão – Transparência – TJ em Números” do portal eletrônico do TJMG há um item denominado “Metas Nacionais” no qual não foram inseridas informações em razão da não divulgação do respectivo Glossário. Entretanto, pode ser encontrada, na aba “Cidadão – Transparência – TJ em Números – Estatísticas da 2ª Instância – Metas nacionais do poder judiciário” a disponibilização de informações genéricas do cumprimento das metas pela instituição. Entende-se que todos os dados relevantes concernentes ao cumprimento das metas, globalmente e divididos por instância e unidade judiciária deveriam ser disponibilizados. Porém a 1ª Vice-Presidência não tem ingerência sobre o Portal da Transparência, que é alimentado pela Presidência. Aliás, o Portal do TJMG é todo alimentado, via de regra, pela Presidência, por meio da Diretoria de Comunicação. De se notar que todos os dados relativos ao cumprimento das metas pela 2ª Instância são plenamente acessíveis diretamente pela Presidência, particularmente por meio do Centro de Informação Institucional – CINFO. (D.5) A Diretoria Executiva de Suporte à Prestação Jurisdicional - DIRSUP subsidiou a Secretaria de Governança e Gestão Estratégica na elaboração do cronograma aplicável à 2ª instância (Ref. PP n. 0006079- 53.2022.2.00.0000). Já houve virtualização de todo o acervo processual que se encontrava disponível nos Gabinetes e nos Cartórios, considerados os processos elegíveis à virtualização. Decidiu-se por não virtualizar processos prestes a serem baixados, com temas repetitivos decididos contrariamente à pretensão do autor e em outras situações processuais análogas que permitiram verificar que o investimento na virtualização e a sobrecarga que seria gerada nos sistemas de tramitação processual de 2ª Instância configurariam prejuízos muito superiores aos ligeiros benefícios de tornar virtuais processos físicos prestes a serem definitivamente encerrados. Resta uma quantidade percentualmente pouco significativa de processos físicos elegíveis à virtualização (vide quadro a seguir) que a ela têm sido submetidos sistematicamente, sempre que se tornam disponíveis em Cartório, sem prejuízo da prestação jurisdicional adequada, eficiente e eficaz. A Diretoria Executiva de Suporte à Prestação Jurisdicional – DIRSUP ainda recebe da 1ª Instância quantidades relevantes de processos físicos para distribuição, os quais são imediatamente digitalizados, para distribuição, já nos sistemas JPe/SIAP. RECOMENDAÇÕES (R.1.a) Consoante as normas Regimentais deste Tribunal, a iniciativa do processo de criação de novas Câmaras não é da 1ª Vice-Presidência, sendo conveniente enfatizar que a especialização das Câmaras no TJMG ocorreu por meio da publicação da Resolução do Órgão Especial n. 977/2021, de modo precário, ad referendum de deliberação do Tribunal Pleno. Na condição de Presidente da Comissão de Regimento Interno o 1º Vice- Presidente tem envidado esforços para o prosseguimento do processo no qual se formulou proposta de Emenda Regimental para regularização da especialização das Câmaras. 43 Trata-se dos processos SEI n. 0187862-77.2023.8.13.0000, 0123945- 84.2023.8.13.0000 e 0205497-71.2023.8.13.0000, nos quais o 1º Vice- Presidente tomou providências inclusive quanto à adequação do texto às normas de redação legislativa, estando a proposta de Emenda em condições de ser submetida ao Tribunal Pleno para regularização. Após certa estabilização dos entendimentos pelo Órgão Especial sobre a adequada interpretação das disposições da Resolução n. 977/2021, os dados jurimétricos de distribuição processual média não revelam, s.m.j., a necessidade de criação de mais uma Câmara Especializada em Direito Empresarial, Registros Públicos e Previdenciário. (R.1.b) Conforme constou do relatório de inspeção, relevante enfatizar o elevado número de conflitos de competência que vem sendo suscitados desde a especialização de Câmaras realizada pela Resolução do Órgão Especial n. 977/2021. Referidos conflitos são dirimidos pelo Órgão Especial, sob a relatoria do Primeiro Vice-Presidente. O Regimento Interno autoriza o relator decidi- los monocraticamente nos casos em que há jurisprudência no Tribunal sobre a questão suscitada (§1º do art. 541 do RITJMG). Para julgar com eficiência os conflitos suscitados e não sobrecarregar o Órgão Especial, tal como recomendado pelo CNJ (item 2.7.ii), este Vice- Presidente tem aplicado a norma em comento e levado a julgamento colegiado somente os casos em que o Órgão Especial ainda não se manifestou sobre a questão controvertida ou quando se mostra necessário reavaliar as teses já firmadas em matéria de competência. Registra-se que, nos últimos 12 meses, foram distribuídos ao Primeiro Vice-Presidente 2.440 conflitos de competência relacionados às matérias do Órgão Especial. No mesmo período, 2.500 conflitos dessa espécie foram decididos monocraticamente e 294 foram submetidos ao referido colegiado. Não obstante a regra regimental e a observância da recomendação do CNJ, o acervo de conflitos de competência pendentes de apreciação ainda é bastante significativo, sobretudo porque alguns magistrados se recusam a analisar os processos cuja competência lhes foi atribuída. Há, ainda, constantes manifestações de insatisfação com as decisões monocráticas, apesar de apenas replicarem precedentes estabelecidos pelo Órgão Especial. Além disso, recorrente a distribuição de novos conflitos pelos mesmos desembargadores sobre temas idênticos, além de frequentes pedidos de reconsideração e interposição de agravos internos e de embargos de declaração pelos próprios desembargadores, embora incabíveis. Houve, inclusive, casos em que as partes foram provocadas para interpor recurso contra a decisão desta 1ª Vice-Presidência em conflitos de competência. (R.2) Foram disponibilizados na intranet deste Tribunal painéis táticos com informações estatísticas, acessíveis pelos servidores contendo dados gerenciais com atualização diária e possibilidade de aplicação de filtros dinâmicos. Foram disponibilizados, também, no Painel da Transparência mantido pela Presidência, painéis estatísticos da Segunda Instância, com dados globais ou por Câmara. 44 Registra-se que o lançamento dos painéis táticos foi comunicado a todos os desembargadores da Casa no processo SEI n. 0800497- 75.2022.8.13.0000 no qual se convidava os Magistrados a iniciarem os acessos e análises das informações contidas nos painéis e formulassem dúvidas a serem dirimidas em evento que ocorreu no salão do Órgão especial no dia 07 de novembro de 2022. Na ocasião, o Comunicado encaminhado pela 1ª Vice-Presidência foi acompanhado de Cartilha explicativa sobre o acesso e as informações constantes nos painéis (evento 112867147 do referido processo SEI). Outrossim, nos processos SEI n. 0889318-55.2022.8.13.0000, 0280924- 74.2023.8.13.0000, e 0134084-95.2023.8.13.0000 a 1ª Vice-Presidência, em continuidade ao cumprimento das determinações do Conselho Nacional de Justiça, apresentou novos e aprimorados paneis estatísticos, sempre contendo informações sobre as particularidades das informações e os caminhos para acesso. (R.3) Até a gestão anterior, as mídias remetidas pela 1ª Instância eram devolvidas assim que o processo era virtualizado em 2ª Instância. Após a inspeção do CNJ ocorrida em julho de 2022, cerca de duas semanas após o início da atual gestão, determinou-se, por meio da Secretaria de Padronização e Acompanhamento da Gestão Judiciária – SEPAD e da Diretoria Executiva de Suporte à Prestação Jurisdicional – DIRSUP, a adoção de novos e mais adequados processos de trabalho, de modo que a mídia é encaminhada, imediatamente após a distribuição processual, para o Cartório ao qual o processo foi distribuído, certificando-se nos autos a existência da mídia e seu arquivamento em Cartório. Os Cartórios receberam orientações adequadas sobre a Certificação do depósito das mídias, guarda e conservação. Quanto aos arquivos que já foram inseridos no sistema PJe Mídias ou Seal Conect para acesso remoto e os arquivos de vídeo gravados em mídias físicas, os Desembargadores foram orientados a acessar o sistema PJe Mídias, quando necessária a consulta de arquivos de vídeo vinculados a processos vindos da Primeira Instância (processo SEI n. 0135608-98.2021.8.13.0000). (R.4) No Cartório de Feitos Especiais – CAFES houve o aperfeiçoamento gerencial integral, inclusive com a troca da escrivã, o que impactou muito positivamente não apenas em relação à regularização do andamento processual, quanto no tocante à ampliação da eficiência e eficácia de todos os demais processos de trabalho. (R.5) A especialização das Câmaras no Tribunal de Justiça de Minas Gerais ocorreu por meio da publicação da Resolução do Órgão Especial n. 977/2021, de modo precário, ad referendum de deliberação do Tribunal Pleno. Na condição de Presidente da Comissão de Regimento Interno o 1º Vice- Presidente tem envidado esforços para o prosseguimento do processo no qual se formulou proposta de Emenda Regimental para regularização da especialização das Câmaras. Até esta data a especialização não foi validada pelo Tribunal Pleno. Pontua-se que a especialização não foi planejada ou subsidiada por dados jurimétricos, nem previamente avaliados impactos no volume 45 de trabalho. Não houve avaliação de distribuição média para permitir que viabilizasse equilíbrio de trabalho nas Câmaras que resultaram da especialização. De modo que hoje as Câmaras de competência privada residual têm carga maior que as Câmaras de Direito Público. A competência das Câmaras de Direito Privado Especializado têm gerado muitos conflitos, notadamente em razão de haver controvérsia sobre os órgãos competentes para julgamento de ações relacionadas a registros públicos, e contratos com alienação fiduciária. O monitoramento da distribuição é realizado diuturnamente – em especial por meio do Centro de Informações de Resultados da Prestação Jurisdicional na 2ª Instância - CEINJUR – inclusive com finalidade de contribuir para gestão adequada de litigância e de conflitos de competência, e também por meio da adequada aplicação do sistema brasileiro de precedentes qualificados e do microssistema de processo coletivo (o 1º Vice-Presidente é o gestor máximo do Núcleo de Gerenciamento de Precedentes e Ações Coletivas – NUGEPNAC); para remessa de alertas a Magistrados sobre eventuais pontos de atenção e para a adoção de providências gerenciais adequadas no âmbito da Superintendência Judiciária especialmente no que diz respeito à distribuição dos servidores disponibilizados pela Presidência entre os diversos Cartórios e áreas de apoio à prestação jurisdicional. Nesse último aspecto, a SEPAD aprimorou os critérios de distribuição de servidores entre os diversos Cartórios, considerando a deficiência da lotação real de servidores em relação à lotação paradigma, a distribuição processual média após a especialização das Câmaras e a complexidade dos processos de trabalho, levando em conta as diversas competências. Os dados jurimétricos medidos evidenciam a necessidade de reavaliar as distribuições de competências, considerando especialmente, a grande elevação dos índices de litigiosidade na área privada, o que, s. m. j., deverá ser avaliado pelo Tribunal Pleno quando for pautada a proposta de Emenda Regimental destinada a regularizar a especialização instituída em caráter ad referendum por meio da Resolução n. 977/21. (R.6) A criação de uma forma procedimental mais célere para a intimação do Ministério Público atuante no primeiro grau dependia de ação conjunta entre 1ª e 2ª Instâncias e também do desenvolvimento de ferramentas tecnológicas para a integração entre os sistemas de Processo Eletrônico da 2ª Instância e o sistema eletrônico utilizado pelo do Ministério Público, o qual somente poderia ser providenciado pela Diretoria de Informática - DIRFOR. Seguindo as exigências da DIRFOR, conforme informado pelo Centro de Suporte Técnico ao Processo Judicial Eletrônico e demais Sistemas Eletrônicos de 2ª Instância - CESUPE, foi iniciado um Projeto Trace, registrado sob o n. 3449, em desenvolvimento, \"que objetiva permitir a integração total do sistema JPe com o Ministério Público, de modo que, a partir de sua implantação, seja possível a intimação dos promotores por meio eletrônico, incluindo-se ou substituindo-se as Cartas de Ordem, tornando mais célere sua tramitação\" (SEI 0687940- 48.2022.8.13.0000). Releva anotar que desde a implantação do JPe, em meados de 2014, foi feita uma integração entre o JPe e o Ministério Público utilizando-se como base o MNI (Modelo Nacional de Interoperabilidade), apenas para o recebimento de intimações para ciência e parecer, não havendo 46 integração para peticionamento inicial, recursal e intermediário. O cenário acima permanece o mesmo até hoje. Em 28/09/2018, o Primeiro Vice-Presidente à época, Desembargador Afrânio Vilela, hoje Ministro do Superior Tribunal de Justiça, encaminhou ofício à Diretoria de Informática – DIRFOR, por meio do SEI 0107606- 26.2018.8.13.0000 requisitando do desenvolvimento e implantação integral do MNI. Entre 2018 e 2020, após a afirmação de impossibilidade de atendimento da demanda, por questões de alocação de recursos humanos e priorização de outras demandas, a DIRFOR se manifestou em 06/08/2020, no referido processo SEI, informando que o Projeto 3449 teria sido criado para conduzir o desenvolvimento, com início previsto para 03/11/2020 e término em 22/03/2021. Em 10/02/2023 houve nova manifestação da DIRFOR, informando a criação de novo projeto para condução do desenvolvimento, Jira GPD- 718, com divisão da entrega em três etapas, previstas para finalizar em 26/06/2023.Em 2023 foram entregues as duas primeiras etapas previstas no projeto, mas o MNI ainda não se encontra totalmente entregue e integrado, principalmente com o Ministério Público, que solicitou ao Tribunal diversas adaptações, inclusive para o peticionamento das promotorias, em resposta a intimações, eliminando, após a integração, o uso das Cartas de Ordem. Portanto, o integral atendimento da recomendação depende da finalização do projeto pela Diretoria de Informática, vinculada à Presidência. (R.7) Todos os Cartórios de todas as Câmaras foram orientados a fazer conclusões ao relator quando houver petição juntada, decurso de prazo ou reativação (Conforme SEI 0690962-17.2022.8.13.0000), como, inclusive, consta do Manual de Gestão Cartorária produzido e continuamente atualizado pela Secretaria de Padronização e Acompanhamento da Gestão Judiciária – SEPAD, tendo em vista o específico problema citado (grifou-se).",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "4.5",
+     "unidadeNumero": "4",
+     "unidade": "3ª VICE-PRESIDÊNCIA",
+     "texto": "Na última inspeção realizada pela Corregedoria Nacional de Justiça, foram dirigidas à 3ª Vice-Presidência as seguintes determinações e recomendações: DETERMINAÇÕES À 3ª Vice-Presidência: 62 (i) Desenvolver mecanismo que permita a avaliação dos conciliadores e mediadores judiciais (art. 167, § 4º, do CPC), tal qual já recomendado em inspeção anterior, comunicando às providências adotadas e resultados obtidos à Corregedoria Nacional no prazo de 180 (cento e oitenta) dias. Prazo: 90 dias. (ii) Desenvolver ferramenta, junto à Corregedoria-Geral de Justiça, para efetivo monitoramento do cumprimento do art. 334 do CPC por todas as unidades judiciárias e, na forma prevista na legislação de regência, por profissional regularmente capacitado, cadastrado e avaliado, comunicando às providências adotadas à Corregedoria Nacional no prazo de 180 (cento de oitenta) dias. Prazo: 90 dias. RECOMENDAÇÃO À 3ª Vice-Presidência: (i) Buscar, junto às unidades de gestão de pessoal do tribunal e de outros tribunais, formas de incentivo para aumento do número de conciliadores.” Em conversa com a equipe da Unidade e a partir da análise do questionário previamente respondido, para o cumprimento das determinações e recomendação acima indicadas, foram adotadas as seguintes providências: Determinação I (i) Desenvolver mecanismo que permita a avaliação dos conciliadores e mediadores judiciais (art. 167, § 4º, do CPC), tal qual já recomendado em inspeção anterior, comunicando às providências adotadas e resultados obtidos à Corregedoria Nacional no prazo de 180 (cento e oitenta) dias. Prazo: 90 dias Providência de Atendimento: Conforme consta do Processo SEI n. 0707556-09.2022.8.13.0000 foi ali documentada a criação de formulário próprio para atendimento à determinação de avaliação dos conciliadores e mediadores judiciais na forma do artigo 167, §4º do CPC por todas as unidades judiciárias na forma determinada na r. inspeção do Egrégio Conselho Nacional de Justiça. Neste sentido, houve, inclusive, a aprovação do cumprimento 63 desta obrigação nos autos do Pedido de Providências – 0005955- 70.2022.2.00.0000 por decisão do Exmo. Senhor Ministro Luís Felipe Salomão conforme consta do evento 13401156 do processo SEI referido no parágrafo anterior. Determinação II (ii) Desenvolver ferramenta, junto à Corregedoria-Geral de Justiça, para efetivo monitoramento do cumprimento do art. 334 do CPC por todas as unidades judiciárias e, na forma prevista na legislação de regência, por profissional regularmente capacitado, cadastrado e avaliado, comunicando às providências adotadas à Corregedoria Nacional no prazo de 180 (cento de oitenta) dias. Prazo: 90 dias. Providência de Atendimento: Conforme consta do Processo SEI n. 0707556-09.2022.8.13.0000 foi ali documentada a criação de formulário próprio efetivo monitoramento do cumprimento do art. 334 do CPC por todas as unidades judiciárias na forma determinada na r. inspeção do Egrégio Conselho Nacional de Justiça. Neste sentido, houve, inclusive, a aprovação do cumprimento desta obrigação nos autos do Pedido de Providências – 0005955- 70.2022.2.00.0000 por decisão do Exmo. Senhor Ministro Luís Felipe Salomão conforme consta do evento 13401156 do processo SEI referido no parágrafo anterior. RECOMENDAÇÃO À 3ª Vice-Presidência: (i) Buscar, junto às unidades de gestão de pessoal do tribunal e de outros tribunais, formas de incentivo para aumento do número de conciliadores. Providência de Atendimento: No que se refere aos conciliadores, nos Centros Judiciários de Solução de Conflitos e Cidadania estão alocadas 618 vagas de estágio que são preenchidas por universitários previamente selecionados 12 para atuarem sob supervisão de magistrados como conciliadores em feitos 64 pré-processuais e processuais que ali tramitam. Complementarmente, buscando expandir-se o número de conciliadores, a pedido da Terceira Vice-Presidência a Escola Judicial Desembargador Edésio Fernandes tem ofertado cursos de formação a magistrados e servidores. Nesse sentido, o Exmo. Juiz Auxiliar da 3ª Vice-Presidência, Dr. Marcus Vinícius Mendes do Valle, consignou no âmbito do SEI n. 0687817- 50.2022.8.13.0000, outras ações que foram tomadas em 2022 para incentivar o aumento do número de conciliadores (evento 11184863), quais sejam: i – Foram ofertados apenas em 2022 quatro cursos de capacitação em conciliação, com 640 vagas, e dois cursos de capacitação mediação, com 280 vagas; (...) iii – Oferta permanente de cursos de aperfeiçoamento em conciliação e mediação em diversas áreas de atuação; As medidas de capacitação e aperfeiçoamento foram intensificadas em 2023, considerando que: V – Foram ofertados quatro cursos de capacitação em conciliação, com 860 vagas, e dois cursos de capacitação em mediação, com 245 vagas; VI – Início do Ciclo de Palestras de Conciliação e Mediação em Direito de Família para difusão e sensibilização dessa metodologia. (g. n.) Desta forma, tem-se que também foi adequadamente cumprida a recomendação de ampliar-se o número de conciliadores no quadro gerido por esta Terceira Vice- Presidência. Ressalte-se que a atividade formativa tem fundamental importância inclusive para o aumento do número de estagiários interessados em desenvolver a atividade conciliatória, reduzindo-se a migração, muito frequente, para estágio em gabinete e em outras instituições.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "5.4",
+     "unidadeNumero": "5",
+     "unidade": "CORREGEDORIA-GERAL DA JUSTIÇA",
+     "texto": "As determinações/recomendações oriundas da última inspeção que se relacionam às demais unidades do TJMG vêm sendo acompanhadas por meio de Pedidos de Providências em trâmite no CNJ. Já no que se refere às recomendações endereçadas à própria Corregedoria-Geral do TJMG, vê-se que a primeira foi a de que aquele órgão censor desse continuidade ao acompanhamento do projeto de Lei 1.931/2020, “que altera a Lei 15.424/2004, que dispõe sobre a fixação, a contagem, a cobrança e o pagamento de emolumentos relativos aos atos praticados pelos serviços notariais e de registro, o recolhimento da Taxa de Fiscalização Judiciária e a compensação dos atos sujeitos à gratuidade estabelecida em lei federal e dá outras providências”. Tal proposta legislativa busca transferir, para o Tribunal Mineiro, a gestão do Fundo de Compensação pela prática de atos gratuitos por oficiais de registro civil e por registradores de imóveis, que, atualmente, é gerido por comissão gestora vinculada ao Sindicato dos Oficiais de Registro Civil de Minas Gerais (RECIVIL). Nesta inspeção, verificou-se que o projeto ainda se encontra em trâmite na Assembleia Legislativa de Minas Gerais (disponível em: PROJETO DE LEI 1931 de 2020 - Assembleia Legislativa de Minas Gerais (almg.gov.br)) e que a Corregedoria permanece promovendo o acompanhamento (SEI 0690649-56.2022.8.13.0000). Outra recomendação direcionada àquele órgão censor foi a de que promovesse a implantação de projetos na área da infância e juventude, em razão do alto número de crianças e adolescentes abrigadas no Estado e do fato de a diretriz estratégica 11 não estar sendo cumprida. No que concerne a essas providências, a unidade informou que foi editada a Portaria 7.471/CGJ/2023, que constituiu “Grupo de Trabalho para promover estudos 73 visando traçar as estratégias e o plano de trabalho para atendimento das demandas relativas ao funcionamento e fiscalização do Sistema Nacional de Adoção e Acolhimento - SNA\" (SEI 0018059-33.2022.8.13.0000). Também destacou que foram construídos, pelo Centro de Estatística Aplicada à Justiça de Primeira Instância (CEJUR), os painéis “Painel de Adoção e Destituição do Poder Familiar” e “Alertas do SNA”, com utilização do Qlik Sense. Em relação aos resultados alcançados pelo referido grupo de trabalho, a Corregedoria ressaltou as seguintes medidas: 1 - Remessa de ofício-circular aos Juízes de Direito com atribuições da infância e da juventude para que indicassem dois servidores como responsáveis pelos lançamentos do SNA, bem como, em cumprimento aos itens elencados pelo CNJ informassem: (i) se a unidade judiciária com a competência relativa à adoção e ao acolhimento está cadastrada no SNA; (ii) se todas as crianças e adolescentes acolhidos, em processo de adoção e adotados, estão cadastrados no SNA; (iii) se preenchidas as situações correspondentes às crianças ou aos adolescentes ativos na aba “andamento” do SNA; (iv) se todas as ações as habilitações à adoção, as ações com pedido de destituição do poder familiar, as ações de adoção e as ações de guarda para pessoas que não detêm o Poder Familiar estão cadastradas no SNA; (v) se todos os serviços de acolhimento estão cadastrados e com informações atualizadas no SNA; Resultado: Todas a comarcas responderam ao ofício e a CEJUR elaborou gráfico com as respostas. 2 - Criação de tutoriais, simples, curtos e objetivos (referenciando o Manual do SNA) para envio aos juízes com atribuições da infância e da juventude, inclusive com a realização de ENCOR com foco no SNA, e a realização de comunicação no COMUNICOR; Resultado: Os tutoriais foram elaborados e disponibilizados na Comunidade Virtual do SNA, além de terem sido realizados painéis específicos sobre o SNA no ENCOR. 74 3 - Solicitar apoio do NUPLAN para criação de IPT sobre a alimentação e atualização do SNA; Resultado: A meta foi parcialmente cumprida e “será brevemente submetida à apreciação” (SEI 0735928-65.2022.8.13.0000). 4 - Solicitar apoio da EJEF para a realização de Webinário sobre o SNA, com convocação dos magistrados e dos servidores indicados; Resultado: A Escola Judicial Desembargador Edésio Fernandes (EJEF) realizou uma live educacional, por meio do YouTube, com o tema “Sistema Nacional de Adoção e Acolhimento – SNA: atualizações e desafios”, da qual participaram 850 pessoas. 5 - Solicitar apoio ao Centro de Estatística Aplicada à Justiça de Primeira Instância (CEJUR), para análise de criação de comunicação automática via painel parametrizado (deskboard no click); Resultado: A meta foi parcialmente cumprida. Foi criado o painel “Painel de Adoção e Destituição do Poder Familiar” e as comunicações automáticas estão em andamento na Diretoria de Informática. 6 - Criação de \"perguntas frequentes\" pela CEJA/COINJ para disponibilizar no sítio eletrônico do TJMG; Resultado: A meta foi parcialmente cumprida. A Coordenação de Publicidade já apresentou a diagramação do “Perguntas e Resposta Frequentes”, mas está apreciando as sugestões feitas pela Coordenadoria da Infância e da Juventude (COINJ), para disponibilização no Portal/Rede TJMG. 7 - Criação de fluxo para aprimoramento do trabalho de fiscalização; Resultado: A meta foi parcialmente cumprida. O fluxo apresentado pela Gerência de Orientação e Fiscalização do Foro Judicial foi aprovado pelo grupo, com ressalvas relativas às comunicações 75 obrigatórias que dependem do desenvolvimento de ferramenta específica, porém ainda não foi implementado, em virtude da necessidade aperfeiçoamento dos extratos dos painéis Qlik Sense, bem como de novo alinhamento com a COINJ. 8- Propostas a serem apresentadas ao SNA; Resultado: A meta foi parcialmente cumprida. A COINJ e a Comissão Estadual Judiciária de Adoção propuseram-se a elaborar documento com propostas de aprimoramento dos manuais já disponibilizados no SNA. O documento será encaminhado ao CNJ, bem como uma solicitação de atualização da área de teste do SNA. 9- Autos SEIs 0428760-51.2023.8.13.0000 e 0422982- 03.2023.8.13.0000. Resultado: A priorização dos alertas vermelhos de “situação não identificada foi bem sucedida, com a redução de 125 alertas (janeiro 2023) para 46 (novembro 2023), que equivaleu a uma redução de 63,2%. Por fim, foi recomendado à Corregedoria Mineira que adotasse protocolo de cooperação entre os juízos criminal e os da infância, para compartilhamento do depoimento especial, devido às previsões constantes da Resolução CNJ 299/2019. Quanto a esse ponto, noticiou que estão sendo realizadas tratativas para a celebração do termo de cooperação interinstitucional, das quais têm participado o Ministério Público, a Secretaria de Estado de Saúde, a Defensoria Pública, as Polícias Civil e Militar, a Secretaria de Estado da Educação, a Secretaria de Estado de Desenvolvimento Social, a Secretaria de Estado de Justiça e Segurança Pública, IML, CEAHGVIS CEPCAD e a Subsecretaria de Assistência Social. Pontuou, ainda, que: a) houve elaboração de material informativo específico voltado a crianças e adolescentes sobre os meios de denúncia e o depoimento especial (Cartilha-TJMG-Depoimento-Especial); b) foi regulamentada a forma de compartilhamento de provas entre jurisdições distintas (Portaria Conjunta 823/PR/2019 – TJMG); c) foram implementadas salas de depoimento especial em 204 unidades e mais 55 seriam implementadas até outubro de 2023; d) em todas as salas de depoimento 76 especial há transmissão on-line à sala de audiência; e) os profissionais responsáveis pelas entrevistas são servidores (assistentes sociais e psicólogos); f) o protocolo utilizado para a realização do depoimento especial é o “Protocolo Brasileiro de Entrevista Forense”; g) as gravações integrais dos depoimentos especiais são mantidas no PJe mídias; h) a Escola Judicial Desembargador Edésio Fernandes capacitou 114 magistrados e 131 servidores (carga horária 40h) que atuam na realização do depoimento especial.",
+     "mencionaCumprida": 6,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.2.5",
+     "unidadeNumero": "6.2",
+     "unidade": "GABINETE DO DESEMBARGADOR ANDRÉ LUIZ AMORIM SIQUEIRA",
+     "texto": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.3.5",
+     "unidadeNumero": "6.3",
+     "unidade": "GABINETE DO DESEMBARGADOR ANTONIO CARLOS DE OLIVEIRA BISPO",
+     "texto": "Na última inspeção realizada pela Corregedoria Nacional de Justiça, houve a determinação de que a Unidade envidasse esforços para o efetivo acompanhamento das Metas Nacionais do Poder Judiciário, ante a verificação do aumento do acervo ajustado.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.5.5",
+     "unidadeNumero": "6.5",
+     "unidade": "GABINETE DO DESEMBARGADOR CARLOS AUGUSTO DE BARROS LEVENHAGEN",
+     "texto": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.6.4",
+     "unidadeNumero": "6.6",
+     "unidade": "GABINETE DO DESEMBARGADOR CARLOS ROBERTO DE FARIA",
+     "texto": "Não houve recomendações ou pendências na última inspeção da unidade. 132",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.7.4",
+     "unidadeNumero": "6.7",
+     "unidade": "GABINETE DA DESEMBARGADORA DANIELA VILLANI BONACCORSI RODRIGUES",
+     "texto": "O Gabinete da Desembargadora Daniela Villani Bonaccorsi Rodrigues não foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.8.4",
+     "unidadeNumero": "6.8",
+     "unidade": "GABINETE DO DESEMBARGADOR DANTON SOARES MARTINS",
+     "texto": "O Gabinete do Desembargador Danton Soares Martins não foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.9.4",
+     "unidadeNumero": "6.9",
+     "unidade": "GABINETE DO DESEMBARGADOR EDUARDO BRUM VIEIRA CHAVES",
+     "texto": "O Gabinete do Desembargador Eduardo Brum Vieira Chaves foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022. O relatório consta do Processo de Inspeção n. 0003742- 91.2022.2.00.0000. Por meio do Acórdão de Id 4861783, constaram as seguintes determinações ao Gabinete: i) julgar os processos 1.0024.14.169809-2/001 e 1.0000.18.109348-5/000, os quais devem ser priorizados de acordo com a Meta 2/2022 e o segundo também quanto à Meta 4/2022, concluir as providências relativas à baixa em diligência e julgar o processo 1.0702.13.019592-9/001, julgar os processos 1.0000.21.228216-4/000, 1.0287.12.005413-8/004, 1.0443.11.002309-2/001, 1.0384.19.001985-9/001, 1.0071.21.000936- 2/001, 1.0518.21.001695-3/001, 1.0672.21.004976-9/001, 1.0024.19.048826-2/001, 1.0024.17.131370-3/001, 1.0134.19.001382- 8/001, 1.0024.12.053204-9/002, 1.0346.19.001274-7/001, 1.0024.18.070939-6/001, 1.0607.18.004767-4/001, 1.0287.12.005413- 8/004, 1.0443.11.002309-2/001, 1.0384.19.001985-9/001, 1.0071.21.000936-2/001, 1.0518.21.001695-3/001, 1.0324.17.014496- 154 2/001, 1.0313.16.011060-4/001, 1.0145.14.063995-9/001, informando a Corregedoria Nacional de Justiça do atendimento da determinação; ii) aperfeiçoar a triagem dos processos a fim de identificar e separar aqueles que necessitam de despachos de mero impulsionamento daqueles processos prontos para julgamento, agilizando sua tramitação; iii) remeter processos à revisão com minutas de voto concluídas e disponibilizadas. As referidas determinações foram acompanhadas por meio do PP n. 0005965-17.2022.2.00.0000. Diante das providências adotadas, situações idênticas foram consideradas atendidas, conforme consta da Decisão de Id 4995725, que também determinou o arquivamento do feito.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.10.4",
+     "unidadeNumero": "6.10",
+     "unidade": "GABINETE DO DESEMBARGADOR EDUARDO CÉSAR FORTUNA GRION",
+     "texto": "Não houve inspeção anterior.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.12.5",
+     "unidadeNumero": "6.12",
+     "unidade": "GABINETE DO DESEMBARGADOR FERNANDO VASCONCELOS LINS",
+     "texto": "Na inspeção anterior realizada pela Corregedoria Nacional de Justiça, foram formuladas determinações relacionadas com o efetivo controle dos dados de produtividade do gabinete, especialmente os relacionados ao cumprimento das Metas Nacionais do Poder Judiciário.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.13.5",
+     "unidadeNumero": "6.13",
+     "unidade": "GABINETE DO DESEMBARGADOR GILSON SOARES LEMES",
+     "texto": "Não houve pendências verificadas a partir de inspeção anterior realizada pela Corregedoria Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.14.5",
+     "unidadeNumero": "6.14",
+     "unidade": "GABINETE DO JUIZ DE DIREITO CONVOCADO HAROLDO ANDRÉ TOSCANO DE OLIVEIRA",
+     "texto": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.15.5",
+     "unidadeNumero": "6.15",
+     "unidade": "GABINETE DO DESEMBARGADOR JOEMILSON DONIZETTI LOPES",
+     "texto": "Não houve pendências verificadas a partir de inspeção anterior realizada pela Corregedoria Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.16.5",
+     "unidadeNumero": "6.16",
+     "unidade": "GABINETE DO DESEMBARGADOR JOSÉ AMÉRICO MARTINS DA COSTA",
+     "texto": "Não houve pendências verificadas a partir da última inspeção realizada pela Corregedoria Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.17.4",
+     "unidadeNumero": "6.17",
+     "unidade": null,
+     "texto": "O gabinete foi objeto de inspeção em 2017, com a recomendação, à época, de implementar a especialização por matéria entre a equipe para aumento da produtividade; plano de ação devidamente seguido desde então.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.18.4",
+     "unidadeNumero": "6.18",
+     "unidade": null,
+     "texto": "O gabinete foi inspecionado em 2017 e todas as determinações e recomendações foram cumpridas.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.19.4",
+     "unidadeNumero": "6.19",
+     "unidade": "GABINETE DA DESEMBARGADORA KÁRIN LILIANE DE LIMA EMMERICH E MENDONÇA",
+     "texto": "O Gabinete da Desembargadora Kárin Liliane de Lima Emmerich e Mendonça não foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.20.4",
+     "unidadeNumero": "6.20",
+     "unidade": "GABINETE DO DESEMBARGADOR KILDARE GONÇALVES CARVALHO",
+     "texto": "O Gabinete foi inspecionado em 2019 e, à época, houve recomendação quanto à adequação processual alinhada aos parâmetros estabelecidos na tabela de processos unificada; a rotina foi implementada e eventuais incorreções passaram a ter o processo encaminhado aos setores competentes para regularização. 226",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.21.4",
+     "unidadeNumero": "6.21",
+     "unidade": "GABINETE DA DESEMBARGADORA LILIAN MACIEL SANTOS",
+     "texto": "Não se aplica.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.22.4",
+     "unidadeNumero": "6.22",
+     "unidade": "GABINETE DO DESEMBARGADOR MARCELO GUIMARÃES RODRIGUES",
+     "texto": "Não houve inspeção no ano anterior no Gabinete ora inspecionado. 243",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.24.5",
+     "unidadeNumero": "6.24",
+     "unidade": null,
+     "texto": "A partir da última inspeção realizada pela Corregedoria Nacional de Justiça, houve uma série de determinações dirigidas à Unidade, relacionadas ao julgamento de processos específicos que impactavam no descumprimento da Meta 2 do CNJ. Além disso, foi determinada a melhoria dos fluxos internos de triagem e gestão processual. Em conversa com a equipe de assessoria e com a Desembargadora, ficou claro que todas as determinações anteriores foram devidamente cumpridas, bem como que houve clara melhoria da gestão e triagem processual.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.25.4",
+     "unidadeNumero": "6.25",
+     "unidade": "GABINETE DA DESEMBARGADORA MARIA DAS GRAÇAS ROCHA SANTOS",
+     "texto": "O Gabinete da Desembargadora Maria das Graças Rocha Santos não foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.26.5",
+     "unidadeNumero": "6.26",
+     "unidade": "GABINETE DA DESEMBARGADORA MARIA INÊS RODRIGUES DE SOUZA",
+     "texto": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.27.4",
+     "unidadeNumero": "6.27",
+     "unidade": "GABINETE DO DESEMBARGADOR NELSON MISSIAS DE MORAIS",
+     "texto": "O Gabinete do Desembargador Nelson Missias de Morais não foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.28.4",
+     "unidadeNumero": "6.28",
+     "unidade": "GABINETE DO DESEMBARGADOR OCTÁVIO DE ALMEIDA NEVES",
+     "texto": "Na inspeção do ano de 2022, houve determinação para que o Gabinete promovesse o efetivo julgamento dos processos que foram remetidos para pauta após permanecerem conclusos por mais de 90 dias (n. 1.0000.22.028220-6/001; 1.0000.22.062277-3/001; 1.0000.19.066071-2/002; 1.0000.21.079926-8/002; 1.0000.21.060971-5/001), bem como dos processos conclusos no gabinete há mais de 90 dias e que foram despachados para cumprimento de diligências (n. 1.0000.21.065543-7/001; 1.0000.18.095919-9/004; 1.0000.22.008002-2/001; 1.0000.22.060164-5/001; 1.0000.22.035107-6/001, devidamente cumpridas. Além disso, também houve recomendação para que fossem envidados esforços para julgamento dos processos visando ao cumprimento da Meta 1 e que se evitasse acumulação de processos conclusos, em relação às quais, houve informação 292 de que a Meta 1 fora atingida naquela oportunidade e, neste momento, estão em ajustes da rotina, impactada pela redistribuição de processos em razão da especialização de Câmaras no TJMG, para redução do acervo em tramitação.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.29.4",
+     "unidadeNumero": "6.29",
+     "unidade": "GABINETE DO DESEMBARGADOR PEDRO ALEIXO NETO",
+     "texto": "Não houve inspeção anterior.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.30.4",
+     "unidadeNumero": "6.30",
+     "unidade": "GABINETE DO DESEMBARGADOR PEDRO BERNARDES DE OLIVEIRA",
+     "texto": "Na inspeção realizada no ano de 2022 houve recomendação para que o gabinete promovesse gestão junto à Secretaria para evitar a acumulação de processos paralisados por período superior a 100 dias, devidamente adotada, não havendo pendências para regularização nesta inspeção.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.31.4",
+     "unidadeNumero": "6.31",
+     "unidade": "GABINETE DO DESEMBARGADOR RAIMUNDO MESSIAS JUNIOR",
+     "texto": "Na última inspeção realizada foi determinado: Priorizar o julgamento dos processos conclusos no gabinete há mais de 100 (cem) dias e comunicando seu cumprimento à Corregedoria Nacional no prazo de 90 dias, o que foi realizado conforme se verifica pelas informações fornecidas nos dados processuais. Promover o julgamento dos processos relacionados à Meta 4 comunicando seu cumprimento à Corregedoria Nacional no prazo de 60 dias. Priorizar a análise dos pleitos liminares que aguardam há mais de 30 dias; promover o efetivo julgamento dos processos que foram remetidos para pauta após aguardarem no gabinete por mais de 90 dias; promover o efetivo julgamento dos processos conclusos no gabinete há mais de 90 dias e que foram despachados para cumprimento de diligências. 312 Verifica-se que não há determinações ou recomendações pendentes, sendo que o referido procedimento já foi encerrado junto ao CNJ que, após as últimas informações que foram prestadas sobre o tema SEI 0690866-02.2022.8.13. 0000",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.32.5",
+     "unidadeNumero": "6.32",
+     "unidade": null,
+     "texto": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.33.5",
+     "unidadeNumero": "6.33",
+     "unidade": null,
+     "texto": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.34.4",
+     "unidadeNumero": "6.34",
+     "unidade": null,
+     "texto": "O Gabinete da Desembargadora Valéria Rodrigues não foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.35.5",
+     "unidadeNumero": "6.35",
+     "unidade": "GABINETE DO DESEMBARGADOR VITOR INÁCIO PEIXOTO PARREIRAS HENRIQUES",
+     "texto": "Na última inspeção realizada pela Corregedoria Nacional de Justiça, foram feitas as seguintes recomendações: i) estabelecimento de metas de produtividade para superação dos processos julgados sobre os distribuídos; ii) monitoramento mensal de processos novos e os julgados para fins de estabelecer outras estratégias necessárias ao cumprimento da Meta 1/2022; iii) classificação de processos por assunto, para que sejam julgados de forma célere, sobretudo os paralisados há mais de 100 dias; e iv) análise mais apurada dos processos com possibilidade de celebração de acordo entre as partes. A despeito da unidade relatar a adoção de determinadas providências para o atendimento das recomendações, foi informado que não foi possível atingir o resultado esperado, sob a justificativa de que a dinâmica e organização das sessões de julgamento da 7ª Câmara Cível do TJMG, que condiciona a inclusão de processos em pauta ao intervalo mínimo de 30 dias, faz emergir diversas situações que postergam o julgamento dos processos, impedindo que a quantidade de processos julgados supere os distribuídos. Além disso, atribui o não cumprimento das recomendações ao represamento de distribuições de feitos, no primeiro semestre de 2023, conforme comunicado oficial encaminhado aos Gabinetes pela 1ª Vice-Presidência do Tribunal em 28/02/2023 (Ofício n. 10096/2023 – SEJUD / 1º GAVIP), bem como à especialização de Câmaras, que 342 ocasionou a redistribuição de feitos, e ao enfrentamento prioritário da Primeira Vice- Presidência com conclusão em blocos para os magistrados de muitos processos com retorno para juízo de retratação.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.36.5",
+     "unidadeNumero": "6.36",
+     "unidade": "GABINETE DO DESEMBARGADOR WILSON ALMEIDA BENEVIDES",
+     "texto": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.9.4",
+     "unidadeNumero": "7.9",
+     "unidade": "4ª VARA CRIMINAL DA COMARCA DE BELO HORIZONTE",
+     "texto": "Em análise das determinações e medidas adotadas pela unidade judiciária, constata-se que alguns apontamentos foram atendidos, como a lista de processos paralisados há mais de 100 dias.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.13.4",
+     "unidadeNumero": "7.13",
+     "unidade": "1ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS DE BELO HORIZONTE",
+     "texto": "Trata-se da 3ª inspeção seguida do CNJ na unidade. Conforme consta no relatório de inspeção do CNJ de 2022 foi determinando à unidade no prazo de 45 dias julgar/decidir/despachar os processos conclusos há mais de 150 dias com atenção às prioridades legais; bem como apresentar, no prazo de 60 dias, plano de gestão que contemple o julgamento dos processos conclusos há mais de 100 dias. Segundo a unidade foi elaborado um Projeto de Gestão do Gabinete com os seguintes pontos relevantes: julgar mais processos que os distribuídos, julgar 449 processos mais antigos, tornar a atividade jurisdicional mais efetiva, impulsionar processos de execução, atribuir valor, confiança e celeridade ao serviço; priorizar julgamento de casos repetitivos; assegurara melhoria dos processos de trabalho/otimização; aumentar produtividade com qualidade, administrar o fluxo de processos digitais, aumentar a produtividade da vara, aperfeiçoar a gestão do gabinete.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.16.4",
+     "unidadeNumero": "7.16",
+     "unidade": "2ª VARA DE FAMÍLIA DA COMARCA DE BELO HORIZONTE",
+     "texto": "A unidade judicial foi inspecionada em julho de 2022, ocasião que foram apontadas situações que ainda persistem, tais como processos aguardando devolução 485 de precatórias por prazo desarrazoado e processos sem movimentação há mais de 100 dias. Ademais, à época, foi determinado à Presidência a adoção de providências para mitigar a indisponibilidade recorrente do PJe. Do cenário atual, infere-se que eventuais medidas, se adotadas, não foram suficientes, haja vista as recorrentes indisponibilidades sistêmicas, noticiadas pelos servidores e presenciada pela equipe inspecional.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.18.4",
+     "unidadeNumero": "7.18",
+     "unidade": "1ª VARA DE FEITOS DA FAZENDA PÚBLICA MUNICIPAL",
+     "texto": "A unidade, então denominada 1ª Vara de Execução Fiscal Municipal de Belo Horizonte foi inspecionada pela Corregedoria local do TJMG. A própria unidade judiciária apontou as seguintes determinações/recomendações: 1 - julgamento dos processos conclusos há mais de 100 dias; 2 - implementação de plano de ação proposto pelo magistrado, para reduzir acervo e aumentar a produtividade; 3 – publicação de despachos e decisões proferidas nos autos; 4 – cobrança de processos com cargas a advogados com prazos excedidos e de cartas precatórias com mais de 90 dias; 5 – priorizar o andamento das ações civis públicas, com informação individualizadas de cada uma das ações em trâmite na unidade; 6 – proceder ao julgamento mensal de número de ações superior aos feitos 509 distribuídos no mesmo período, visando a redução do acervo; 7 – separar ações por matéria, propiciando aumento de produtividade, viabilizando o número de feitos julgados. Afirmou ter adotado as seguintes medidas: a) separação de processos prioritários, ações civis públicas, incluindo improbidade administrativa, idosos, etc, paralisados há mais de 100 dias; b) realização de mutirões de despachos e sentenças com os respectivos juízes, servidores do gabinete e da secretaria, para diminuição do acervo.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.21.4",
+     "unidadeNumero": "7.21",
+     "unidade": "1ª VARA DE FEITOS TRIBUTÁRIOS DO MUNICÍPIO DE BELO HORIZONTE",
+     "texto": "A unidade foi inspecionada pelo CNJ em 2022, foi determinado, no prazo de 45 dias, a movimentação dos processos paralisados há mais de 100 dias e a priorização da restauração dos autos n. 51275515120098130024 no mesmo prazo. Informou-se que processos paralisados há mais de 100 dias foram movimentados e ações de Restauração de Autos foram priorizadas. Em pesquisa ao PJe foi possível constatar que foi proferia sentença de homologação de restauração de autos no processo 5127551-51.2009.8.13.0024 em 2/11/23, ou seja, dias antes da atual inspeção.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.22.4",
+     "unidadeNumero": "7.22",
+     "unidade": null,
+     "texto": "A unidade foi inspecionada pelo CNJ em 2022, foi determinado, no prazo de 30 dias, a movimentação dos processos paralisados há mais de 100 dias, a priorização da restauração dos autos no prazo de 45 dias e adotar as providências necessárias para devolução dos processos com prazo de carga ao advogado excedido. Informou-se que todas as restaurações iniciadas até 2021 foram priorizadas e convertida na classe originária. Todos os processos em carga além do prazo legal foram diligenciados para devolução, bem como mandado de busca e apreensão.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.35.4",
+     "unidadeNumero": "7.35",
+     "unidade": "2ª UNIDADE JURISDICIONAL DO JUIZADO ESPECIAL CRIMINAL DA COMARCA DE BELO HORIZONTE",
+     "texto": "Em análise das determinações e medidas adotadas pela unidade judiciária, constata-se que alguns apontamentos foram atendidos, como a lista de processos paralisados há mais de 100 dias.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.44.4",
+     "unidadeNumero": "7.44",
+     "unidade": "VARA DE EXECUÇÕES PENAIS DA COMARCA DE BELO HORIZONTE",
+     "texto": "A última inspeção realizada na unidade ocorreu em julho/202. Naquela oportunidade, foram determinadas apenas cumprimento de diligências em processos e adequação do modelo do mandado de prisão, determinações cumpridas pela unidade.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.49.4",
+     "unidadeNumero": "7.49",
+     "unidade": null,
+     "texto": "A unidade foi inspecionada em julho/2022, oportunidade em que foram feitas as seguintes recomendações/determinações: DETERMINAÇÕES […] À Vara: Priorizar o andamento/julgamento dos processos paralisados há mais de 100 dias. Prazo: 90 dias. 752 Julgar os processos conclusos há mais de 100 dias. Prazo de 90 dias. Estabelecer meios de identificação e controle de processos relativos às Metas do CNJ. Prazo: 60 dias. RECOMENDAÇÕES […] À Vara: Implementar plano de trabalho com vistas a cumprir as Metas do Conselho Nacional de Justiça. Instituir metodologia de trabalho com vistas a controlar o cumprimento das cartas precatórias e mandados expedidos. Instituir forma de identificação (tarjas/etiquetas) dos feitos com prioridade na tramitação. Conforme apurado na inspeção, apesar de inexistir processos conclusos há mais de 100(cem) dias, ainda há certa quantidade de processos paralisados em cartório no referido prazo. Ainda não foi adotada medida efetiva para identificação dos processos da Metas Nacionais. Aliado a isso, há tendência a descumprimento das Metas Nacionais 1 e 2 de 2023. As demais determinações/recomendações foram cumpridas.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "9.1.2",
+     "unidadeNumero": "9.1",
+     "unidade": null,
+     "texto": "Processo PJe: 0003742-91.2022.2.00.0000 Relatório: 4833334 799 Data do relatório: 23/08/2022 Quantidade de determinações pendentes: 2 Unidade avaliada Determinação Medidas adotadas Secretaria de Auditoria Interna - SECAUD (ii) Alocar pessoal na SECAUD, assim que possível, em razão das dimensões do Tribunal, da quantidade de atribuições e da quantidade de documentos que devem ser analisados, ainda que com metodologia de amostragem, para a realização dos serviços de auditoria. Prazo: 90 dias. A determinação não foi plenamente atendida devido a déficits de pessoal, conforme informado pela unidade no questionário de inspeção: “Em termos práticos, a lotação de servidores no setor ainda não corresponde ao quadro ideal formalizado perante a COMOV. Entretanto, há multiplicidade de fatores relativos às dinâmicas de pessoal no âmbito deste TJMG e que o déficit de pessoal atinge toda a instituição, aguardando-se, portanto, os atos de nomeação decorrentes dos concursos públicos em andamento. Informa-se, ainda, que a SECAUD teve recomposição parcial de seu quadro funcional com o retorno de servidora Lívia de Souza Marotta, que estava em lotação temporária na Comarca de Varginha.” Secretaria de Auditoria Interna - SECAUD (v) Implantação de ferramenta de apoio à atividade de auditoria, nos termos da Resolução CNJ n. 309/2020, art. 75. Prazo: 90 dias. A determinação não foi atendida por ausência de confirmação no Fórum Permanente de Auditoria sobre qual solução será indicada para a padronização dos sistemas de auditoria interna do Poder Judiciário. “(...) na edição de 2023 do Fórum Permanente de Auditoria do Poder Judiciário, foi apresentada solução informatizada para gestão de trabalhos de auditoria desenvolvida pela Controladoria-Geral da União, denominada E-aud. A solução de TIC apresentada despertou interesse dos Tribunais e para que sua utilização possa ocorrer de forma padronizada em âmbito nacional, a matéria passou a ser tratada no âmbito do Comitê de Governança e Coordenação do Sistema de Auditoria Interna do Poder Judiciário – SIAUD-Jud. 800 obteve-se a informação de que será solicitada à Presidência do CNJ a criação de grupo de trabalho para estudo e a celebração de termo de convênio com a CGU para disponibilização do software. (...) Dadas as circunstâncias, entende- se conveniente aguardar a continuidade das ações promovidas no âmbito do SIAUD-Jud quanto ao estudo, teste e possível uso futuro do sistema E-aud.”",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "9.2.2",
+     "unidadeNumero": "9.2",
+     "unidade": null,
+     "texto": "Processo PJe: 0003742-91.2022.2.00.0000 Relatório: 4833334 Data do relatório: 23/08/2022 Quantidade de determinações pendentes: 2 Unidade avaliada Determinação Medidas adotadas À Diretoria Executiva de Administração de Recursos Humanos (DEARHU) (i) No prazo de 60 dias, proceder ao levantamento de todos os valores, sob qualquer designação, que tenham sido instituídos ou majorados em favor de seus servidores e magistrados desde a vigência do Provimento Medidas adotadas para o cumprimento das determinações: - contidas nos itens \"i\" e \"ii\": foram cumpridas, tendo sido encaminhado ao CNJ o Oficio 38520-2023-Presidência- ASJUD em 03/08/2023. - contida no item “iii”: A relação dos servidores e magistrados inadimplentes, relativamente aos anos 2018 a 2022, 805 n. 64/2017, informando quais foram submetidos ao CNJ, indicando o processo, e neste mesmo prazo procedendo à sua publicação na Transparência, assim como de novas autorizações que venham se concedidas. ii) Em relação aos que não tenham sido submetidos, proceder imediatamente ao pedido de autorização dos itens relativos ao Provimento n. 64, informando os processos instaurados para este fim e se abstendo de instituir ou majorar quaisquer novos valores sem a devida autorização, sob pena de responsabilização individual. (iii) No prazo de 60 dias, notificar os inadimplentes com a obrigação de apresentação das declarações de bens e rendas, conferindo prazo máximo de 30 dias para a regularização. Após o transcurso, deverá promover a abertura de procedimento administrativo disciplinar respectivo aos que permanecerem irregulares, informando à Corregedoria Nacional de Justiça o número dos procedimentos disciplinares, assim como o nome dos servidores e magistrados irregulares, a matrícula e o cargo (cargo efetivo, comissionado assim como funções comissionadas ocupadas). correspondentes aos anos calendário 2017 a 2021, foi encaminhada à Corregedoria-Geral de Justiça para as providências determinadas. À Diretoria Executiva de Administração de (i) Que a Gerência de Saúde no Trabalho (GERSAT) seja - Quanto à recomendação “i”, esclarecemos que a Gerência de Saúde no Trabalho (GERSAT), embora esteja 806 Recursos Humanos (DEARHU) reposicionada no organograma em atendimento à Resolução CNJ n. 207/2015 e que seja disponibilizada ferramenta eletrônica especializada para a gestão dos prontuários médicos. (ii) Integral virtualização do acervo de documentos de pessoal, considerando a disponibilidade força de trabalho para a realização desta ação ou a opção de contratação de serviço especializado. (iii) Envidar esforços para apoiar a ação de qualificação da alimentação dos dados funcionais, em especial os que impactam na contagem do tempo de serviço, seja nos recursos de TIC e humanos, podendo estudar a possibilidade de uma ação concentrada para resolver o estoque de demandas atual. (iv) Revisão das TLPs, ao menos por amostragem, dos dados de lotação real das unidades e incluindo no cálculo o cargo de assessor de juiz. (v) Avaliação da conveniência e oportunidade quanto à descentralização do controle de frequência ou de sua retificação, removendo alta carga operacional da DEARHU para os gestores de unidades ou outras posições de liderança apropriados. posicionada no organograma deste Tribunal vinculada diretamente à Diretoria Executiva de Administração de Recursos Humanos (DEARHU), é superintendida por um Desembargador designado para colaborar com a Superintendência Administrativa e a Presidência da Casa, em reconhecimento à complexidade, especificidade e amplitude das atribuições e competências que lhes são inerentes. Por meio da Portaria n. 5648/PR/2022, publicada em 04/07/2022, foram designados magistrados para o exercício de Superintendências no Tribunal de Justiça do Estado de Minas Gerais, dentre essas, a Superintendência de Saúde, que representa uma alternativa de acesso direto da GERSAT à Presidência deste Tribunal. Quanto à disponibilização da ferramenta eletrônica especializada para a gestão dos prontuários de saúde, registramos que a solução informatizada unificada de gerenciamento de prontuários eletrônicos de saúde, incluindo serviço de implantação, treinamento, operação assistida, suporte técnico continuado, integração com sistemas do TJMG e serviço sob demanda para customização da ferramenta foi selecionada por pregão eletrônico ocorrido em 26/06/2023. A homologação do processo de escolha da empresa responsável pelo sistema foi publicada na edição de 13/07/2023 do Diário Judiciário eletrônico. Conforme cronograma, a previsão é de que a ferramenta esteja devidamente implantada neste Tribunal até o mês de dezembro/23. - Quanto à recomendação “ii”, no sentido de que a virtualização do acervo de documentos de pessoal deva ser integral, registramos que as pastas funcionais de magistrados e servidores encontram-se integralmente digitalizadas. - Quanto à recomendação “iii”, no sentido de envidar esforços para apoiar a ação de qualificação da alimentação dos dados funcionais, em especial os 807 que impactam na contagem do tempo de serviço, seja nos recursos de TIC e humanos, podendo estudar a possibilidade de uma ação concentrada para resolver o estoque de demandas atual, registramos que o sistema informatizado de Recursos Humanos está sendo aprimorado permanentemente, sendo objeto de tratativas por meio de iniciativa estratégica contemplada no \"Planejamento Estratégico 2021-2126\", intitulada de \"Modernização dos Sistemas Administrativos de Recursos Humanos\", que tem como objetivos \"promover a melhoria e modernização dos Sistemas Administrativos de Recursos Humanos no âmbito da DEARHU\". A expectativa é iniciar o desenvolvimento da funcionalidade – contagem de tempo de serviço ainda neste mês de novembro. - Quanto à recomendação “iv”, para que haja a revisão das TLPs, ao menos por amostragem, dos dados de lotação real das unidades e incluindo no cálculo o cargo de assessor de juiz, informamos que todos os esforços foram envidados pelas áreas técnicas envolvidas, tendo sido a matéria objeto de análise e tratativas junto ao SEI 0455845- 12.2023.8.13.0000, tendo-se concluído \"por inconveniente neste momento a acolhida da recomendação\", \"sem prejuízo de reexame do tema tão logo implementadas efetivamente as centrais de processamento eletrônico\" - Quanto à recomendação “v”, para a \"avaliação da conveniência e oportunidade da descentralização do controle de frequência ou de sua retificação, removendo alta carga operacional da DEARHU para os gestores de unidades ou outras posições de liderança apropriados\", resta-nos esclarecer que a gestão da frequência é descentralizada e contamos com sistema informatizado que permite a atuação direta dos gestores, observados os limites de sua competência. - contidas nos itens \"i\" e \"ii\": foram cumpridas, tendo sido encaminhado ao 808 CNJ o Oficio 38520-2023-Presidência- ASJUD em 03/08/2023. - contida no item “iii”: A relação dos servidores e magistrados inadimplentes, relativamente aos anos 2018 a 2022, correspondentes aos anos calendário 2017 a 2021, foi encaminhada à Corregedoria-Geral de Justiça para as providências determinadas.",
+     "mencionaCumprida": 2,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "9.3.2",
+     "unidadeNumero": "9.3",
+     "unidade": null,
+     "texto": "Processo PJe: 0003742-91.2022.2.00.0000 Relatório: 4833334 Data do relatório: 23/08/2022 Quantidade de determinações pendentes: 6 Unidade avaliada Determinação Medidas adotadas Diretoria Executiva de Gestão de Bens, Serviços e Patrimônio - DIRSEP (I) Priorização da implantação de plano anual de contratações, nos termos e prazos da Resolução CNJ n. 347/2020. No mesmo sentido, que se implante um acompanhamento do itinerário das licitações, mapeando-se as unidades que atuam no fluxo licitatório, estimando-se o tempo necessário para atuação de cada unidade neste fluxo, com acompanhamento entre estimado e desempenho real. O mesmo Grupo de Trabalho do TJMG (Resolução CNJ n. 347/2020 e da Lei Federal n. 14.133/2021), composto por servidores da DIRSEP, NUTEC e DIRFOR, capitaneado pela Assessora Técnica da Presidência, Tatiana Martins da Costa Camarão, SEI 0769699- 34.2022.8.13.0000, que elaborou e apresentou a minuta do mencionado ato normativo, também já submeteu à Alta Direção minutas de atos normativos relacionados às matérias a seguir listadas, estando os processos em fase de revisão final para posteriores publicações: • Plano de Contratações Anual (PCA); • Política de Gestão de Riscos das Contratações; • Política das Contratações Sustentáveis; • Política de Integridade das Contratações; • Política de Gestão e Controle de Estoque nas Contratações. Registre-se que a DIRSEP/GECOMP já realiza o mapeamento e monitoramento de seus processamentos. No período de novembro/2022 a outubro/2023, foram homologados 417 lotes distribuídos em 212 editais licitatórios, com a obtenção dos seguintes resultados: 819 • em 162 pregões: 39 dias corridos (22% melhor que a meta); • em 25 tomadas de preços: 50 dias corridos (17% melhor que a meta) e • em 25 concorrências: 86 dias corridos (27% melhor que a meta). Diretoria Executiva de Gestão de Bens, Serviços e Patrimônio - DIRSEP (ii) A partir do atendimento da recomendação antecedente, refinar a estimativa de finalização das licitações, identificando-se as dificuldades nos fluxos e visualização dos riscos. Busca-se auxiliar na tomada de decisões sobre priorização processual e percepção dos impactos de atrasos ou de inclusão de novos projetos sobre as fases subsequentes da licitação, até a efetiva contratação. No que concerne à recomendação supra, informamos que a GECOMP/COALI acompanha em tempo real, ativa e permanentemente todas as licitações em andamento do TJMG por meio de marcadores no SEI/TJMG e de planilha eletrônica (Excel), que contempla as seguintes informações de cada processo: número da Licitação, número do Processo SEI, objeto, modalidade licitatória, lotes, tipo de participação (ampla ou exclusiva para ME´s e EPP´s), empresas vencedoras, data da publicação do Edital, valor da disponibilidade orçamentária, valor homologado, tempo de tramitação da fase externa da licitação, data válida da publicação da homologação no DJe e valor e percentual de economia obtido. Diretoria Executiva de Gestão de Bens, Serviços e Patrimônio - DIRSEP (III) Que a gestão e a avaliação de riscos sejam conduzidas por unidades de governança e gestão, sempre possibilitada a participação da SECAUD desde que respeitados os limites técnicos da sua atuação por meio de avaliação ou consultoria, nos termos da Resolução CNJ n. 309/2020. Entende-se que a Recomendação envolve as atribuições da SEGOVE, conforme Portaria TJMG n. 6344/2023, que dispõe sobre a Política de Gestão de Riscos do Tribunal, devendo verificar junto a essa Secretaria as ações implementadas, desde então, quanto ao tema. Diretoria Executiva de Gestão de Bens, Serviços e Patrimônio - DIRSEP (IV) Priorização de implantação da gestão de riscos nas contratações e na gestão como um todo, observando-se a necessidade de alinhar a avaliação dos Já em relação à Governança das Contratações e à Política de Gestão de Riscos nas Contratações, a DIRSEP apresentou à Alta Administração, em outubro/2022, os resultados do projeto piloto de implantação do IMGC – Indicadores de Monitoramento de Gestão de 820 riscos e sua utilização concreta nos processos de tomada de decisão. Contratações, cuja metodologia permitirá ao Tribunal monitorar seus contratos administrativos sob diversos enfoques, além dos valores das contratações. Tal metodologia baseia-se na identificação de indicadores que caracterizam as contratações (ex.: valor, dados pessoais, abrangência da contratação, sustentabilidade, segurança física ou da informação, dentre outros), com a coleta, tratamento e disponibilização das informações de forma sistematizada, permitindo que a Administração do Tribunal possa definir os meios que entender mais adequados para que seus contratos possam ser monitorados por áreas específicas, como por exemplo, proteção de dados, segurança institucional, segurança da informação, estratégico-operacional, entre outros. O mencionado projeto piloto foi aprovado com consequente autorização para avanço nos trabalhos com vistas à extensão do IMGC para todas as contratações do Tribunal, o que ocorrerá até dezembro de 2023. Ressalte-se que estão em andamentos estudos para adoção da referida metodologia de monitoramento também para os processos de contratação, abrangendo licitações, dispensas e inexigibilidades. Nesse caso, serão propostos indicadores relacionados à forma de obtenção dos preços de referência, prazos de contratação, histórico da contratação, nível de complexidade do objeto, entre outros. Diretoria Executiva de Gestão de Bens, Serviços e Patrimônio - DIRSEP (V) Priorização da integração entre SISUP e SIAD, eliminando retrabalho e risco de erro de transcrição, assim como de disponibilização de ferramenta adequada para controle de inventário. Por fim, registre-se que, em 24/10/2023, foi realizada reunião para apresentação da última versão de propostas de funcionalidades mínimas, telas, recursos para a gestão de geração, recebimento, controle e apuração do inventário patrimonial por meio de utilização do Aplicativo Smartfone e SiadWeb e, 821 após análise da equipe da COPAT/GESUP, houve indicativo pelo prosseguimento/viabilidade da contratação da construção da ferramenta, ficando a SEPLAG/MG incumbida de encaminhar proposta comercial com detalhamento das horas e pontos de função necessários, razão pela qual estima- se a formalização do contrato para o primeiro trimestre de 2024. Diretoria Executiva de Gestão de Bens, Serviços e Patrimônio - DIRSEP (VI) Regularização das contratações, devendo prever as diretrizes de inclusão estabelecidas pelas Resoluções CNJ n. 307/2019 e 401/2021. No dia 12 de julho de 2023, reuniu- se o Grupo de Trabalho, na qual restou deliberado que os integrantes da DIRSEP deveriam elaborar parecer jurídico sobre o quantitativo de reserva de vagas de trabalho para pessoas egressos do sistema prisional pelas empresas prestadoras de serviços terceirizados, considerando a totalidade dos contratos de prestação de serviços continuados com dedicação exclusiva de mão- de-obra celebrados pelo TJMG e suas especificidades, propiciando maior segurança jurídica às autoridades competentes para decisão sobre a questão. Quanto à Resolução n.. 401/2021, que dispõe sobre o desenvolvimento de diretrizes de acessibilidade e inclusão de pessoas com deficiência nos órgãos do Poder Judiciário e de seus serviços auxiliares, e regulamenta o funcionamento de unidades de acessibilidade e inclusão, saliente-se que, atualmente, este Tribunal possui dois contratos exclusivos para prestação de serviços por pessoas com deficiência - PCD, como já acima asseverado: • 181/2021: Feneis - Federação Nacional de Educação e Integração dos Surdos; • 29/2023 - Instituto Mano Down 822",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "9.4.2",
+     "unidadeNumero": "9.4",
+     "unidade": null,
+     "texto": "Processo PJe: 0003742-91.2022.2.00.0000 Relatório: 4833334 Data do relatório: 23/08/2022 Quantidade de determinações pendentes: 3 Unidade avaliada Determinação Manifestação da unidade Secretaria de Governança e Gestão Estratégica (SEGOVE) (i) No momento em que autos são encaminhados ao 2º Grau, proceder à integral virtualização do processo, já se procedendo à substituição dos autos físicos e evitando-se a necessidade de materialização documento, no momento de retorno dos autos ao 1º Grau para cumprimento. Prazo: 90 dias Publicação da Portaria Conjunta n. 1381/PR/2022, que alterou a Portaria Conjunta da Presidência n. 485/2016, dispondo sobre o peticionamento eletrônico no sistema Processo Eletrônico da 2ª instância - JPe e expandindo o rol de classes para o processamento eletrônico. A digitalização dos processos físicos em 2ª Instância, que teve início com a Portaria Conjunta n. 1026/PR/2020, revogada pela Portaria Conjunta n. 1385/PR/2022, publicada no DJe de 05/09/22022, que instituiu o Projeto Virtualizar 5.0 no âmbito da Justiça Comum estadual de Primeira e Segunda Instâncias do Estado de Minas Gerais, estabelecendo, em seu artigo 7º, que: \"Art. 7º No período de execução do Projeto Virtualizar 5.0, os recursos físicos que aportarem no Tribunal de Justiça e forem encaminhados para digitalização serão conclusos ao relator em até 5 (cinco) dias úteis após a distribuição, não se aplicando a eles o disposto no art. 70 do Regimento Interno do Tribunal de Justiça do Estado de Minas Gerais - RITJMG.\" No mesmo sentido, a referida portaria regulamentou a digitalização de todo 832 acervo de processo judicial cível e criminal em tramitação e a inserção nos sistemas judiciais eletrônicos, conforme dispõe o §1º do artigo 2º: \"Art. 2º Constitui objeto do Projeto Virtualizar 5.0 a virtualização de todo o acervo de processos judiciais físicos cíveis e criminais, em tramitação ou paralisados por motivo legal, no âmbito da Justiça Comum estadual de Primeira e Segunda Instâncias do Estado de Minas Gerais. § 1º Os processos físicos, em tramitação, serão integralmente digitalizados para inserção nos sistemas Processo Eletrônico da 2ª Instância - JPe e Processo Judicial Eletrônico - PJe.\" Secretaria de Governança e Gestão Estratégica (SEGOVE) (iv) Elaborar formulário eletrônico ou sistema para atendimento das requisições e/ou reclamações apresentadas por parte dos titulares dos dados pessoais, bem como o fluxo de atendimento aos direitos dos titulares (art. 18. 19 e 20 da LGPD), requisições e/ou reclamações apresentadas, desde o seu ingresso até o fornecimento da respectiva resposta, com todas as atividades constantes na Resolução CNJ N. 363/2021. Prazo: 90 dias. O cumprimento dessa medida foi delegado pela Presidência ao CEGINP/SEGOVE, por meio do Despacho 10956720, exarado no Processo SEI n. 0701310- 94.2022.8.13.0000. Desse modo, o CEGINP, em parceria com outras áreas da Corte, conduziu a instituição do “Fale com o TJMG/LGPD”, como canal oficial de comunicação e interlocução com os titulares de dados pessoais (Portaria da Presidência n. 4.726/2020). O acesso ao formulário eletrônico do “Fale com o TJMG/LGPD” se dá pelo seguinte link: <https://falecomotjmg.tjmg.jus.br/login?ur l=lgpd>. A Comissão de Proteção de Dados Pessoais aprovou o fluxo de trabalho para atendimento das requisições dos titulares de dados, cujo fluxograma ilustrativo encontra-se divulgado no Portal do TJMG, link: 833 <https://www.tjmg.jus.br/portal- tjmg/acoes-e-programas/programa-de- protecao-de-dados-pessoais-do- tjmg.htm#.Y1roWnbMKUn>. Secretaria de Governança e Gestão Estratégica (SEGOVE) (ii) Criar estrutura de segurança desvinculada à área de TIC nos termos do Art. 21 da Resolução CNJ N. 396/2021. Prazo: 90 dias. Submetida a questão à Diretoria Executiva de Informática – DIRFOR, pelo evento 13408568, do processo SEI n. 0701310-94.2022.8.13.0000, foi sugerido que a criação da referida estrutura organizacional fosse abordada pela Presidência com o apoio da Secretaria de Governança e Gestão Estratégica - SEGOVE e do Gabinete de Segurança Institucional - GSI. Nessa perspectiva, diligências estão sendo empreendidas para a efetivação da medida, que ainda depende da reorganização de cargos do quadro de pessoal do TJMG.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "9.5.2",
+     "unidadeNumero": "9.5",
+     "unidade": null,
+     "texto": "Processo PJe: 0003742-91.2022.2.00.0000 Relatório: 4833334 Data do relatório: 23/08/2022 Quantidade de determinações pendentes: 2 Unidade avaliada Determinação Manifestação da unidade Diretoria Executiva de Finanças e Execução Orçamentária - DIRFIN Recomendação n. 1: não converter o superávit de arrecadação destinado ao FEPJ em orçamento de despesa se este novo montante não for compatível com a real expectativa de realização e liquidação no referido exercício Em relação à Recomendação n. 1, as medidas adotas ficaram a cargo da Diretoria Executiva de Finanças e Execução Orçamentária - DIRFIN, haja vista sua competência/atribuição normativa para tanto. Não foi apresentada nenhuma informação sobre essa recomendação. Contudo, como as recomendações não tem caráter de obrigatoriedade, não será reiterada a recomendação. Diretoria Executiva de Planejamento Orçamentário e Qualidade na Gestão Institucional - DEPLAG Recomendação n. 2: envidar esforços para disponibilizar ferramenta eletrônica que facilite o levantamento dos dados para composição das peças orçamentárias, substituindo as planilhas utilizadas, reduzindo riscos de transcrição, cálculo e automatizando rotinas Está em andamento a implantação do Projeto GFO – Gestão Financeira e Orçamentária, solução que contempla a gestão orçamentária, contábil e financeira, estando atualmente na etapa de revisão e aprovação do Estudo Técnico Preliminar – ETP, dos requisitos funcionais e técnicos, bem como de outros documentos que comporão o Termo de Referência/Edital. Nesse diapasão, destacamos que, dentre os requisitos funcionais delineados por esta DEPLAG, constam itens que tratam da possibilidade de realização do levantamento, validação e consolidação da programação orçamentária por meio de ferramenta tecnológica, aperfeiçoando a metodologia atualmente adotada, que envolve como sabemos a utilização de planilhas eletrônicas.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 1
+    },
+    {
+     "secao": "9.6.2",
+     "unidadeNumero": "9.6",
+     "unidade": null,
+     "texto": "Processo PJe: 0003742-91.2022.2.00.0000 Relatório: 4833334 Data do relatório: 23/08/2022 Quantidade de determinações pendentes: 5 Unidade avaliada Determinação/Recomendação Manifestação da unidade Diretoria Executiva de Engenharia e Gestão Predial (DENGEP) (i) Retificar a situação da DENGEP, adequando-se o organograma para refletir a disposição real da unidade e suas subdivisões. a DENGEP tomou as medidas para atender às determinações que constam no Relatório de Inspeção 2022 e que por meio da publicação da Resolução n. 1.017/2022 foram promovidas as alterações necessárias na estrutura organizacional da Diretoria Executiva de Engenharia e Gestão Predial – DENGEP Diretoria Executiva de Engenharia e Gestão Predial (DENGEP) (ii) Aplicar os critérios de pontuação às obras da capital, seja do 1º ou 2º Grau, sem prejuízo de que se estabeleça uma separação entre obras da capital e interior conforme disponibilidade orçamentária respectiva. Nesse sentido, que se faça constar do plano de no Sistema de Priorização de Obras a comarca de Belo Horizonte não foi ranqueada, por mais que tenham diversas intervenções para a capital dentro do Plano de Obras, com a justificativa de que a natureza particular por ser a capital, a cidade com mais população e a política de concentração de estrutura física aplicada nas comarcas do interior 844 obras o planejamento das obras e reformas de acessibilidade. não pode ser adotada para a capital devido as dimensões da cidade Diretoria Executiva de Engenharia e Gestão Predial (DENGEP) (iii) Que os processos de vistoria de terrenos passem a ser integralmente digitais e aqueles ainda em andamento sejam digitalizados. desde o mês de julho/2022 toda formalização dos procedimentos para vistoria e escolha de terreno destinados à construção acontece de forma digital, já os processos que estavam em tramitação e possuíam quantidade elevada de documentos produzidos tem previsão de serem digitalizados até o final do ano corrente Diretoria Executiva de Engenharia e Gestão Predial (DENGEP) (iv) Que o planejamento do orçamento de obras seja compatível com o real interesse e capacidade de contratação, fiscalização e liquidação de obras. para a elaboração do Planejamento de Obras existem dois momentos principais que buscam trazer maior assertividade a proposta, tendo no primeiro momento o critério de seguir o cronograma e prazos estipulados para cada contrato e para o segundo momento é feita uma análise de cada contrato para chegar o mais próximo do real propondo alterações e cortes, contudo existem fatos supervenientes que escapam do controle da DENGEP e acabam gerando impactos consideráveis na execução do planejamento, portanto, entende-se que o planejamento proposto vem sendo elaborado de modo compatível com a capacidade de contratação, fiscalização e liquidação das obras e que a variação entre o proposto e o executado ocorre principalmente em razão de situações não passíveis de serem previstas Diretoria Executiva de Engenharia e Gestão Predial (DENGEP) ( v) No prazo de 90 dias, prestar esclarecimento sobre a existência da prática de realização de despesas sem empenho prévio, encaminhando documentação que evidencie suas justificativas ou que demonstre não ser esta a prática do Tribunal. PP 0006078-68.2022.2.00.0000",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "9.7.2",
+     "unidadeNumero": "9.7",
+     "unidade": null,
+     "texto": "Não houve determinação ou recomendação ao GSI na última inspeção.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    }
+   ]
+  }
+ ]
+}

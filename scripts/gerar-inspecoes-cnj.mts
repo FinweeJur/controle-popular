@@ -75,6 +75,22 @@ const tjmg2026 = ler<{
   }[];
 }>("etl/betim/dados/cnj-inspecao-tjmg-2026.json");
 
+const pendencias = ler<{
+  documentos: {
+    ano: number;
+    url: string;
+    total: number;
+    pendencias: {
+      secao: string;
+      unidade: string | null;
+      texto: string;
+      mencionaCumprida: number;
+      mencionaNaoCumprida: number;
+      mencionaReiterada: number;
+    }[];
+  }[];
+}>("etl/betim/dados/cnj-pendencias-tjmg.json");
+
 /** Mesma rubrica determinística do ETL (`etl/betim/etl/apis/cnj_temas.py`).
  *  Repetida aqui só para rotular a linha; a fonte de verdade é o Python. */
 const TEMAS: [string, string, RegExp][] = [
@@ -154,6 +170,32 @@ for (const tipo of Object.keys(porTipo)) {
     linhas.filter((l) => l.tipo === tipo).map((l) => l.unidade),
   ).size;
 }
+
+/**
+ * As seções "Pendências da última inspeção" — o CNJ conferindo a si mesmo.
+ *
+ * ⚠️ NÃO EXPOMOS VEREDITO AGREGADO ("N cumpridas, M não cumpridas"). A contagem
+ * de palavras não serve: "cumprida" aparece dentro de "não cumprida", e um
+ * número desses em tela seria estatística inventada por regex. O que a tela
+ * mostra é o TEXTO, que é o que o CNJ efetivamente escreveu.
+ */
+const PENDENCIA_TRECHO_MAX = 900;
+
+const linhasPendencia = pendencias.documentos.flatMap((d) =>
+  d.pendencias
+    .map((p) => ({
+      ano: d.ano,
+      secao: p.secao,
+      unidade: p.unidade ?? "(não identificada)",
+      caracteres: p.texto.length,
+      trecho:
+        p.texto.length > PENDENCIA_TRECHO_MAX
+          ? p.texto.slice(0, PENDENCIA_TRECHO_MAX).trimEnd() + "…"
+          : p.texto,
+      url: d.url,
+    }))
+    .filter((p) => p.caracteres > 0),
+);
 
 const orgaos = catalogo.orgaos.map((o) => ({
   categoriaId: o.categoriaId,
@@ -295,6 +337,26 @@ export const ACHADOS_POR_TEMA: Record<string, number> = ${JSON.stringify(porTema
 export const ACHADOS_POR_TIPO_UNIDADE = ${JSON.stringify(porTipo, null, 1)} as const;
 
 export const ACHADOS_TJMG: AchadoInspecao[] = ${JSON.stringify(linhas, null, 1)};
+
+export interface PendenciaInspecao {
+  ano: number;
+  secao: string;
+  unidade: string;
+  caracteres: number;
+  trecho: string;
+  url: string;
+}
+
+/**
+ * "Pendências da última inspeção": o que o CNJ tinha determinado antes e foi
+ * cobrar de novo. Só 2022 e 2023 trazem seções assim nomeadas — os demais anos
+ * cobram a inspeção anterior de outras formas, ainda não extraídas. A série é
+ * de dois pontos, não de seis, e a tela diz isso.
+ */
+export const PENDENCIAS_TJMG: PendenciaInspecao[] = ${JSON.stringify(linhasPendencia, null, 1)};
+
+export const PENDENCIAS_POR_ANO = ${JSON.stringify(
+  Object.fromEntries(pendencias.documentos.map((d) => [d.ano, d.total])), null, 1)} as const;
 `;
 
 mkdirSync(dirname(DESTINO), { recursive: true });

@@ -6,6 +6,8 @@ import {
   ACHADOS_POR_TIPO_UNIDADE,
   COBERTURA_INSPECOES,
   ORGAOS_INSPECIONADOS,
+  PENDENCIAS_POR_ANO,
+  PENDENCIAS_TJMG,
   RELATORIOS_TJMG,
   TEMA_ROTULOS,
 } from "@/lib/judiciario/inspecoes-cnj";
@@ -258,6 +260,70 @@ export default function InspecoesPage() {
 
       {/* ═══ A TABELA COMPLETA (cliente) ═══ */}
       <TabelaAchados />
+
+      {/* ═══ O QUE NÃO MUDOU ═══ */}
+      <section aria-labelledby="pendencias" className="mt-14">
+        <h2 id="pendencias" className="font-display text-xl font-bold text-text">
+          O que não mudou de uma inspeção para a outra
+        </h2>
+        <p className="mt-2 max-w-3xl text-[.95em] leading-relaxed text-text-soft">
+          Esta é a parte mais dura do documento, e não é conclusão nossa: em cada unidade, o
+          relatório abre uma seção chamada{" "}
+          <strong className="text-text">&ldquo;Pendências da última inspeção&rdquo;</strong>, lista
+          o que a Corregedoria já tinha mandado fazer e registra o que continua por fazer. É o
+          órgão cobrando a si mesmo, por escrito.
+        </p>
+        <p className="mt-3 max-w-3xl text-[.92em] leading-relaxed text-text-soft">
+          São <strong className="text-text">{PENDENCIAS_POR_ANO[2023]} seções assim em 2023</strong>{" "}
+          e <strong className="text-text">{PENDENCIAS_POR_ANO[2022]} em 2022</strong>.{" "}
+          <strong className="text-text">Não publicamos aqui um placar</strong>{" "}
+          de
+          &ldquo;cumpridas&rdquo; contra &ldquo;não cumpridas&rdquo;: a palavra
+          &ldquo;cumprida&rdquo; aparece dentro de &ldquo;não cumprida&rdquo;, e contar por busca de
+          palavra produziria uma estatística inventada. O que está abaixo é o que o CNJ escreveu.
+        </p>
+
+        <ul className="mt-5 space-y-4">
+          {/* ⚠️ Ordenar por TAMANHO traz as piores para ler: as seções mais longas
+              são listas de número de processo ("(D.1) Supervisione os processos n.
+              1.0000.06.439109/7-005, …"), que ocupam milhares de caracteres e não
+              dizem nada a quem lê. O critério aqui é DENSIDADE DE PROSA — proporção
+              de letras sobre o total —, que sobe as seções em que a Corregedoria
+              efetivamente escreveu o que encontrou. */}
+          {PENDENCIAS_TJMG.filter((p) => p.caracteres > 700)
+            .map((p) => ({
+              p,
+              prosa: (p.trecho.replace(/[^A-Za-zÀ-ÿ ]/g, "").length / p.trecho.length),
+            }))
+            .sort((a, b) => b.prosa - a.prosa)
+            .map(({ p }) => p)
+            .slice(0, 6)
+            .map((p) => (
+              <li key={`${p.ano}-${p.secao}`} className="rounded-2xl border border-border p-4">
+                <p className="flex flex-wrap items-baseline gap-x-3 text-[.88em]">
+                  <span className="font-semibold tabular-nums text-text">{p.ano}</span>
+                  <span className="font-medium text-text">{p.unidade}</span>
+                  <span className="text-text-soft">§ {p.secao}</span>
+                </p>
+                <p className="mt-2 text-[.92em] leading-relaxed text-text-soft">{p.trecho}</p>
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block text-[.85em] text-primary underline underline-offset-2 hover:text-accent"
+                >
+                  Ler no relatório de {p.ano} (PDF do CNJ) ↗
+                </a>
+              </li>
+            ))}
+        </ul>
+
+        <p className="mt-4 max-w-3xl text-[.88em] leading-relaxed text-text-soft">
+          <strong className="text-text">A série tem dois pontos, não seis.</strong> Só os
+          relatórios de 2022 e 2023 trazem seções com esse nome. Os de 2012, 2017, 2019 e 2026
+          cobram a inspeção anterior de outras formas, e a extração desses ainda não está pronta.
+        </p>
+      </section>
 
       {/* ═══ OS OUTROS RELATÓRIOS DO TJMG ═══ */}
       <section aria-labelledby="serie-tjmg" className="mt-14">

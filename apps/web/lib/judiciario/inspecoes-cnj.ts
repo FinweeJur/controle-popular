@@ -2565,3 +2565,634 @@ export const ACHADOS_TJMG: AchadoInspecao[] = [
   "trecho": "Sem prejuízo das determinações supra, recomenda-se ao 5.º Tabelionato de Notas de Belo Horizonte/MG a adoção das seguintes medidas, voltadas ao aperfeiçoamento contínuo da atividade notarial e à plena conformidade com as normas aplicáveis:"
  }
 ];
+
+export interface PendenciaInspecao {
+  ano: number;
+  secao: string;
+  unidade: string;
+  caracteres: number;
+  trecho: string;
+  url: string;
+}
+
+/**
+ * "Pendências da última inspeção": o que o CNJ tinha determinado antes e foi
+ * cobrar de novo. Só 2022 e 2023 trazem seções assim nomeadas — os demais anos
+ * cobram a inspeção anterior de outras formas, ainda não extraídas. A série é
+ * de dois pontos, não de seis, e a tela diz isso.
+ */
+export const PENDENCIAS_TJMG: PendenciaInspecao[] = [
+ {
+  "ano": 2022,
+  "secao": "1.5",
+  "unidade": "PRESIDÊNCIA",
+  "caracteres": 351,
+  "trecho": "Na inspeção de 2019, a Presidência recebeu 4 (quatro) determinações e 35 (trinta e cinco) recomendações. Embora não constituam ações específicas, todas as determinações e recomendações foram a ela dirigidas. Contudo, em face da fase inicial em que se encontra a gestão, não foram prestadas as informações no período da inspeção. Num. 4833334 - Pág. 10",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "4.4",
+  "unidade": "3ª VICE-PRESIDÊNCIA",
+  "caracteres": 2084,
+  "trecho": "Determinações da última inspeção realizada em 2019: a) Desenvolvimento de mecanismo que permita a avaliação dos conciliadores e mediadores judiciais (art. 167, § 4º, do CPC); b) De mecanismos capazes de suprir a falta de serviço judiciário de conciliação e de mediação nas comarcas onde não há CEJUSC, valendo-se o TJMG dos permissivos legais (artigos 334, § 7º, do CPC e 46 da Lei n. 13.140/2015); c) Monitoramento do cumprimento do art. 334 do CPC por todas as unidades judiciárias e, na forma prevista na legislação de regência, por profissional regularmente capacitado, cadastrado e avaliado. Num. 4833334 - Pág. 41 Em relação ao primeiro ponto, está em elaboração formulário de avaliação próprio que possibilite coletar os dados dispostos no artigo 167, §3º, do CPC (“número de processos de que participou, o sucesso ou insucesso da atividade, a matéria sobre a qual versou a controvérsia”, etc.…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "5.4",
+  "unidade": "CORREGEDORIA-GERAL DA JUSTIÇA",
+  "caracteres": 868,
+  "trecho": "Na última inspeção houve recomendação para que fosse enviado à Assembleia Legislativa do Estado de Minas Gerais projeto de lei para alterar a forma de gestão do RECIVIL para que o próprio Tribunal a gerisse. Em atenção, o TJMG encaminhou a proposta de ato normativo que originou o projeto de Lei n. 1.931/2020, objetivando a alteração a Lei n. 15.424/2004 que dispõe sobre a fixação, a contagem, a cobrança e o pagamento de emolumentos relativos aos atos praticados pelos serviços notariais e de registro, o recolhimento da Taxa de Fiscalização Judiciária e a compensação dos atos sujeitos à gratuidade estabelecida em lei federal e dá outras providências. Ressalte-se que tal projeto ainda está em trâmite na ALMG e pode ser acompanhado pelo link: https://www.almg.gov.br/atividade_parlamentar/tramitacao_projetos/texto.html?a=2020&n=1 931&t=PL Num. 4833334 - Pág. 50",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "6.2.3",
+  "unidade": "GABINETE DA DESEMBARGADORA MARIA APARECIDA DE OLIVEIRA GROSSI ANDRADE",
+  "caracteres": 571,
+  "trecho": "Na inspeção realizada em 2017, o gabinete recebeu determinação para reduzir o prazo na apreciação das medidas liminares e a recomendação de distribuir os recursos aos servidores por matéria. Num. 4833334 - Pág. 66 A determinação foi atendida, de modo que atualmente as medidas liminares são priorizadas para análise imediatamente, com prazo aproximado de 24 horas para seu exame. A recomendação de divisão por matéria, porém, não foi implementada, considerando-se desejável que a assessoria possua desenvoltura em todas as matérias, em face do tamanho reduzido da equipe.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "6.17.3",
+  "unidade": "GABINETE DO DESEMBARGADOR OSVALDO OLIVEIRA ARAÚJO FIRMO",
+  "caracteres": 264,
+  "trecho": "Na última inspeção, tramitava na unidade 531 processos paralisados há mais de 100 dias, motivo pelo qual determinou-se a adoção de plano de trabalho para redução da quantidade. Como resultado, o número de processos fora do prazo diminuiu, mas ainda é considerável.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "6.21.3",
+  "unidade": "GABINETE DO DESEMBARGADOR VÍTOR INÁCIO PEIXOTO PARREIRA HENRIQUES",
+  "caracteres": 344,
+  "trecho": "Na última inspeção, havia 279 processos conclusos há mais de 100 dias, razão pela qual foram determinadas medidas de ajustes, entre elas envio de extrato processual dos feitos paralisados, das ações de improbidade em curso e julgamento prioritário destas. De acordo com informações colhidas na unidade, houve cumprimento do que foi determinado.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.3.3",
+  "unidade": "1ª UNIDADE JURISDICIONAL JUIZADO ESPECIAL DA FAZENDA PÚBLICA DE BELO HORIZONTE",
+  "caracteres": 87,
+  "trecho": "Não há determinação ou recomendação da última inspeção do Conselho Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.4.3",
+  "unidade": "8ª UNIDADE JURISDICIONAL DO JUIZADO ESPECIAL CÍVEL DE BELO HORIZONTE (FRAN. SALLES)",
+  "caracteres": 140,
+  "trecho": "Existem, apenas, determinações oriundas da Corregedoria logal, fruto de correição realizada neste ano, decerto que objeto de acompanhamento.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.10.3",
+  "unidade": "1ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS DE BELO HORIZONTE",
+  "caracteres": 1622,
+  "trecho": "Determinação/recomendação à Vara na última inspeção do Conselho Nacional de Justiça: AO JUIZ DE DIREITO I- Prazo de 30 dias: a) Regularizar 30% da quantidade de processos físicos paralisados há mais de 100 dias em Gabinete. b) Regularizar 30% da quantidade de processos eletrônicos paralisados há mais de 100 dias em Gabinete. II- Prazo de 60 dias: a) Regularizar outros 30% da quantidade de processos físicos paralisados há mais de 100 dias em Gabinete. b) Regularizar outros 30% da quantidade de processos eletrônicos paralisados há mais de 100 dias em Gabinete. III- Prazo de 90 dias: a) Regularizar o restante dos processos físicos paralisados há mais de 100 dias em Gabinete. Num. 4833334 - Pág. 222 b) Regularizar o restante dos processos eletrônicos paralisados há mais de 100 dias em Gabinete. À GERENTE DE SECRETARIA I- Prazo de 30 dias: a) Regularizar 30% da quantidade de processos físicos…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.11.3",
+  "unidade": "2ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS DE BELO HORIZONTE",
+  "caracteres": 94,
+  "trecho": "Não há determinação ou recomendação à Vara da última inspeção do Conselho Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.12.3",
+  "unidade": "1ª VARA DE EXECUÇÃO FISCAL MUNICIPAL DE BELO HORIZONTE",
+  "caracteres": 94,
+  "trecho": "Não há determinação ou recomendação à Vara da última inspeção do Conselho Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.13.3",
+  "unidade": "2ª VARA DE EXECUÇÃO FISCAL MUNICIPAL DE BELO HORIZONTE",
+  "caracteres": 118,
+  "trecho": "Não há determinação ou recomendação à Vara da última inspeção do Conselho Nacional de Justiça. Num. 4833334 - Pág. 234",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.14.3",
+  "unidade": "1ª VARA DE FAMÍLIA DE BELO HORIZONTE",
+  "caracteres": 137,
+  "trecho": "Não foi indicada a existência de inspeção anterior do CNJ, apenas da Corregedoria local, quando foram determinadas ações e regularizações",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.15.3",
+  "unidade": "2ª VARA DE FAMÍLIA DE BELO HORIZONTE",
+  "caracteres": 272,
+  "trecho": "Não foi indicada a existência de inspeção anterior do CNJ, apenas da Corregedoria local, quando foram determinadas ações e regularizações, as quais, de acordo com o informado, teriam sido cumpridas, especialmente, movimentações e baixas em processos físicos e eletrônicos.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.16.3",
+  "unidade": "11ª VARA DE FAMÍLIA DE BELO HORIZONTE",
+  "caracteres": 137,
+  "trecho": "Não foi indicada a existência de inspeção anterior do CNJ, apenas da Corregedoria local, quando foram determinadas ações e regularizações",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.17.3",
+  "unidade": "4ª VARA DE SUCESSÕES E AUSÊNCIAS DE BELO HORIZONTE",
+  "caracteres": 137,
+  "trecho": "Não foi indicada a existência de inspeção anterior do CNJ, apenas da Corregedoria local, quando foram determinadas ações e regularizações",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.20.3",
+  "unidade": "VARA DE REGISTROS PÚBLICOS DE BELO HORIZONTE",
+  "caracteres": 679,
+  "trecho": "Em relação à última inspeção do CNJ, foi determinado julgamento prioritário dos processos paralisados há mais de 100 dias (515 naquela ocasião); informar sobre plano de ação visando reduzir o acervo e aumentar a produtividade; informar sobre restauração de processos extraviados e cobrança de autos, mandados e precatórias com excesso de prazo; juntar todas as petições pendentes. Houve também recomendação para priorizar o julgamento mensal de um número de feitos superior ao da distribuição, com separação por matéria, de modo a aumentar a produtividade. De acordo com as declarações prestadas, não restam pendências relacionadas às determinações e recomendações então lançadas",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.23.3",
+  "unidade": "VARA INFRACIONAL DA INFÂNCIA E JUVENTUDE DE BELO HORIZONTE",
+  "caracteres": 2368,
+  "trecho": "Foram identificadas as seguintes pendências na última inspeção realizada pela Corregedoria Nacional de Justiça: a) Determinação de redução do acervo; - Medida adotada: A Gerente de Secretaria modificou o método de distribuição de tarefas, que outrora era divisão por dígitos. Com a implementação de divisão por tarefas, houve considerável redução no acervo, que na última inspeção era de 9.352 processos e no mês de maio/22 a Vara possui um acervo de 4.590 processos. Redução de 49,08% do acervo. b) Regularizar o procedimento de apuração de ato infracional; - Medida adotada: O adolescente após ser apreendido em flagrante é ouvido em audiência preliminar. A oitiva é realizada informalmente pelo membro do Ministério Público, na presença do Juiz e do seu Defensor. Cabe ressaltar que, segundo informado pela Vara, nunca houve a oitiva de vítimas e testemunhas neste ato, embora conste do último rel…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.26.3",
+  "unidade": "2ª VARA CÍVEL DE ITABIRA",
+  "caracteres": 162,
+  "trecho": "Num. 4833334 - Pág. 305 Não foi indicada a existência de inspeção anterior do CNJ, apenas da Corregedoria local, quando foram determinadas ações e regularizações.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.28.3",
+  "unidade": "2ª VARA CÍVEL DE OURO PRETO",
+  "caracteres": 873,
+  "trecho": "Na última inspeção realizada pelo Conselho Nacional de Justiça, constatou-se “distribuição acentuada de ações civis públicas e necessidade de priorização destas para que fossem minoradas, bem como solicitado empenho para finalização de processos mais antigos, sendo estes, em sua maioria, procedimentos de jurisdição voluntária, com entraves dos próprios herdeiros (inventário), bem como execuções fiscais pendentes por ausência de localização de bens”. A magistrada informa que a maioria das ACP’s se referia a casas tombadas sem alvará quando da realização de obras. A providência adotada foi alterar o acordo para a fase de execução, estando todos sentenciados, com acordo para regularização das obras, sob pena de demolição. Os processos demoram em função da necessidade de arquitetos para regularização, visto que, em sua maioria, os réus são pessoas hipossuficientes.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.29.4",
+  "unidade": "VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DE OURO PRETO",
+  "caracteres": 2241,
+  "trecho": "As determinações e recomendações decorrentes da inspeção realizada pelo Conselho Nacional de Justiça em 2017 foram, conforme relatado, cumpridas: a) providencie a apreciação de todos os feitos paralisados há mais de 100 dias, com julgamento prioritário dos processos de réus presos e daqueles conclusos há mais de 100 dias; Medida adotada: a relação de processos físicos paralisados há mais de cem dias está sendo feita mensalmente com extração de relatório e regularização dos autos que estão na secretaria. Com relação aos processos eletrônicos, em razão da virtualização do acervo físico, a regularização demanda mais tempo em razão da conferência dos eventos e dados criminais no momento da implantação no PJE. b) a regularização da juntada de petições, cobrança de mandados e precatórias com prazos excedidos; Medida adotada: com relação a juntada de petições, foi designado um estagiário para p…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.34.3",
+  "unidade": "1ª VARA CÍVEL DE SETE LAGOAS",
+  "caracteres": 324,
+  "trecho": "Em inspeção do CNJ, foi determinada a regularização do andamento processual na secretaria e gabinete (relatório constante no processo n. 0006964- Num. 4833334 - Pág. 356 43.2017.2.00.0000), cujo cumprimento foi acompanhado pelo Pedido de Providências CNJ n. 0006620-28.2018.2.00.0000 e SEI TJMG n. 0096100-53.2018.8.13.0000.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "7.34.3",
+  "unidade": "1ª VARA CÍVEL DE SETE LAGOAS",
+  "caracteres": 96,
+  "trecho": "Não há determinação ou recomendação à Vara referente a inspeção do Conselho Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2022,
+  "secao": "8.2",
+  "unidade": "PRECATÓRIOS",
+  "caracteres": 3639,
+  "trecho": "Medidas pendentes de cumprimento das determinações e recomendações da última inspeção do CNJ com as respectivas justificativas: - 3.4, item 17) priorizar o desenvolvimento e implantação de ferramenta eletrônica, denominada precatório eletrônico, contendo módulos para apresentação, expedição, gestão e pagamento de precatórios, podendo haver cooperação entre tribunais para implantação de outra solução tecnológica já existente, notadamente o sistema eletrônico do TRF 5° Região, que utiliza a plataforma PJe: Em razão da pandemia, foi feita a redução da equipe da DIRFOR, que migrou para a iniciativa privada. Houve também necessidade de deslocamento dos responsáveis pelo projeto para colaborar com o CNJ no desenvolvimento do SIDEJUD, razões pelas quais o projeto encontra-se no momento suspenso. Além disso, como há notícia do desenvolvimento pelo CNJ do processamento a nível nacional, optou-se…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "ano": 2023,
+  "secao": "1.4",
+  "unidade": "PRESIDÊNCIA",
+  "caracteres": 18685,
+  "trecho": "A Presidência do Tribunal de Justiça do Estado de Minas Gerais foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022. O relatório de inspeção se encontra sob o Id 4833334, do Processo Insp n. 0003742-91.2022.2.00.0000. No voto do Acórdão foi feita a seguinte determinação ao Gabinete (Id 4861783): (...) i) supervisione os processos n. 1.0000.06.439109/7-005, 1.000.21.200981/5-000, 1.0000.21.075409/9-000, 1.000.21.208320/8- 000, 1.0153.14.003056/7-003, 1.0000.22.016189/7-000, 1.0000.20.578839/1-000, 1.000.20.579757/4-001, 1.0000.12.035737/1- 000, 1.0000.13.0367773/3-001, 1.0000.13.036772/5-001, 1.0000.13.036771/7-001, 1.000013.083857/6-000, 1.0000.15.038064/0- 000, 1.0000.21.268860/0-001, 1.0000.21.268860/0-002, 1.0000.21.268860/0-003, 1.0000.21.268860/0-004, 1.0000.21.268860/0- 005, 1.0000.21.268860/0-006, informando a Correg…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "2.4",
+  "unidade": "1ª VICE-PRESIDÊNCIA",
+  "caracteres": 22845,
+  "trecho": "Na última inspeção realizada pela Corregedoria Nacional de Justiça foram dirigidas à 1ª Vice-Presidência as seguintes determinações e recomendações: 38 DETERMINAÇÕES (D.1) Supervisione os processos n. 1.0000.06.439109/7-005, 1.000.21.200981/5-000, 1.0000.21.075409/9-000, 1.000.21.208320/8- 000, 1.0153.14.003056/7-003,1.0000.22.016189/7-000, 1.0000.20.578839/1-000, 1.000.20.579757/4-001, 1.0000.12.035737/1- 000, 1.0000.13.0367773/3-001, 1.0000.13.036772/5-001, 1.0000.13.036771/7-001, 1.000013.083857/6-000, 1.0000.15.038064/0- 000, 1.0000.21.268860/0-001, 1.0000.21.268860/0-002, 1.0000.21.268860/0-003, 1.0000.21.268860/0-004, 1.0000.21.268860/0- 005, 1.0000.21.268860/0-006, informando a Corregedoria Nacional de Justiça do atendimento da determinação. [Ref. item 1.9, (i)] (D.2) Impulsione os processos administrativos disciplinares 1.0000.18.036548/8-005 e 1.0000.21.225959/2-001 e informar à…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "4.5",
+  "unidade": "3ª VICE-PRESIDÊNCIA",
+  "caracteres": 5338,
+  "trecho": "Na última inspeção realizada pela Corregedoria Nacional de Justiça, foram dirigidas à 3ª Vice-Presidência as seguintes determinações e recomendações: DETERMINAÇÕES À 3ª Vice-Presidência: 62 (i) Desenvolver mecanismo que permita a avaliação dos conciliadores e mediadores judiciais (art. 167, § 4º, do CPC), tal qual já recomendado em inspeção anterior, comunicando às providências adotadas e resultados obtidos à Corregedoria Nacional no prazo de 180 (cento e oitenta) dias. Prazo: 90 dias. (ii) Desenvolver ferramenta, junto à Corregedoria-Geral de Justiça, para efetivo monitoramento do cumprimento do art. 334 do CPC por todas as unidades judiciárias e, na forma prevista na legislação de regência, por profissional regularmente capacitado, cadastrado e avaliado, comunicando às providências adotadas à Corregedoria Nacional no prazo de 180 (cento de oitenta) dias. Prazo: 90 dias. RECOMENDAÇÃO À…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "5.4",
+  "unidade": "CORREGEDORIA-GERAL DA JUSTIÇA",
+  "caracteres": 7875,
+  "trecho": "As determinações/recomendações oriundas da última inspeção que se relacionam às demais unidades do TJMG vêm sendo acompanhadas por meio de Pedidos de Providências em trâmite no CNJ. Já no que se refere às recomendações endereçadas à própria Corregedoria-Geral do TJMG, vê-se que a primeira foi a de que aquele órgão censor desse continuidade ao acompanhamento do projeto de Lei 1.931/2020, “que altera a Lei 15.424/2004, que dispõe sobre a fixação, a contagem, a cobrança e o pagamento de emolumentos relativos aos atos praticados pelos serviços notariais e de registro, o recolhimento da Taxa de Fiscalização Judiciária e a compensação dos atos sujeitos à gratuidade estabelecida em lei federal e dá outras providências”. Tal proposta legislativa busca transferir, para o Tribunal Mineiro, a gestão do Fundo de Compensação pela prática de atos gratuitos por oficiais de registro civil e por registra…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.2.5",
+  "unidade": "GABINETE DO DESEMBARGADOR ANDRÉ LUIZ AMORIM SIQUEIRA",
+  "caracteres": 124,
+  "trecho": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.3.5",
+  "unidade": "GABINETE DO DESEMBARGADOR ANTONIO CARLOS DE OLIVEIRA BISPO",
+  "caracteres": 245,
+  "trecho": "Na última inspeção realizada pela Corregedoria Nacional de Justiça, houve a determinação de que a Unidade envidasse esforços para o efetivo acompanhamento das Metas Nacionais do Poder Judiciário, ante a verificação do aumento do acervo ajustado.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.5.5",
+  "unidade": "GABINETE DO DESEMBARGADOR CARLOS AUGUSTO DE BARROS LEVENHAGEN",
+  "caracteres": 124,
+  "trecho": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.6.4",
+  "unidade": "GABINETE DO DESEMBARGADOR CARLOS ROBERTO DE FARIA",
+  "caracteres": 72,
+  "trecho": "Não houve recomendações ou pendências na última inspeção da unidade. 132",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.7.4",
+  "unidade": "GABINETE DA DESEMBARGADORA DANIELA VILLANI BONACCORSI RODRIGUES",
+  "caracteres": 188,
+  "trecho": "O Gabinete da Desembargadora Daniela Villani Bonaccorsi Rodrigues não foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.8.4",
+  "unidade": "GABINETE DO DESEMBARGADOR DANTON SOARES MARTINS",
+  "caracteres": 172,
+  "trecho": "O Gabinete do Desembargador Danton Soares Martins não foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.9.4",
+  "unidade": "GABINETE DO DESEMBARGADOR EDUARDO BRUM VIEIRA CHAVES",
+  "caracteres": 1789,
+  "trecho": "O Gabinete do Desembargador Eduardo Brum Vieira Chaves foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022. O relatório consta do Processo de Inspeção n. 0003742- 91.2022.2.00.0000. Por meio do Acórdão de Id 4861783, constaram as seguintes determinações ao Gabinete: i) julgar os processos 1.0024.14.169809-2/001 e 1.0000.18.109348-5/000, os quais devem ser priorizados de acordo com a Meta 2/2022 e o segundo também quanto à Meta 4/2022, concluir as providências relativas à baixa em diligência e julgar o processo 1.0702.13.019592-9/001, julgar os processos 1.0000.21.228216-4/000, 1.0287.12.005413-8/004, 1.0443.11.002309-2/001, 1.0384.19.001985-9/001, 1.0071.21.000936- 2/001, 1.0518.21.001695-3/001, 1.0672.21.004976-9/001, 1.0024.19.048826-2/001, 1.0024.17.131370-3/001, 1.0134.19.001382- 8/001, 1.0024.12.053204-9/002, 1.0346.1…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.10.4",
+  "unidade": "GABINETE DO DESEMBARGADOR EDUARDO CÉSAR FORTUNA GRION",
+  "caracteres": 28,
+  "trecho": "Não houve inspeção anterior.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.12.5",
+  "unidade": "GABINETE DO DESEMBARGADOR FERNANDO VASCONCELOS LINS",
+  "caracteres": 262,
+  "trecho": "Na inspeção anterior realizada pela Corregedoria Nacional de Justiça, foram formuladas determinações relacionadas com o efetivo controle dos dados de produtividade do gabinete, especialmente os relacionados ao cumprimento das Metas Nacionais do Poder Judiciário.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.13.5",
+  "unidade": "GABINETE DO DESEMBARGADOR GILSON SOARES LEMES",
+  "caracteres": 111,
+  "trecho": "Não houve pendências verificadas a partir de inspeção anterior realizada pela Corregedoria Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.14.5",
+  "unidade": "GABINETE DO JUIZ DE DIREITO CONVOCADO HAROLDO ANDRÉ TOSCANO DE OLIVEIRA",
+  "caracteres": 124,
+  "trecho": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.15.5",
+  "unidade": "GABINETE DO DESEMBARGADOR JOEMILSON DONIZETTI LOPES",
+  "caracteres": 111,
+  "trecho": "Não houve pendências verificadas a partir de inspeção anterior realizada pela Corregedoria Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.16.5",
+  "unidade": "GABINETE DO DESEMBARGADOR JOSÉ AMÉRICO MARTINS DA COSTA",
+  "caracteres": 109,
+  "trecho": "Não houve pendências verificadas a partir da última inspeção realizada pela Corregedoria Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.17.4",
+  "unidade": "(não identificada)",
+  "caracteres": 208,
+  "trecho": "O gabinete foi objeto de inspeção em 2017, com a recomendação, à época, de implementar a especialização por matéria entre a equipe para aumento da produtividade; plano de ação devidamente seguido desde então.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.18.4",
+  "unidade": "(não identificada)",
+  "caracteres": 93,
+  "trecho": "O gabinete foi inspecionado em 2017 e todas as determinações e recomendações foram cumpridas.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.19.4",
+  "unidade": "GABINETE DA DESEMBARGADORA KÁRIN LILIANE DE LIMA EMMERICH E MENDONÇA",
+  "caracteres": 193,
+  "trecho": "O Gabinete da Desembargadora Kárin Liliane de Lima Emmerich e Mendonça não foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.20.4",
+  "unidade": "GABINETE DO DESEMBARGADOR KILDARE GONÇALVES CARVALHO",
+  "caracteres": 304,
+  "trecho": "O Gabinete foi inspecionado em 2019 e, à época, houve recomendação quanto à adequação processual alinhada aos parâmetros estabelecidos na tabela de processos unificada; a rotina foi implementada e eventuais incorreções passaram a ter o processo encaminhado aos setores competentes para regularização. 226",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.21.4",
+  "unidade": "GABINETE DA DESEMBARGADORA LILIAN MACIEL SANTOS",
+  "caracteres": 14,
+  "trecho": "Não se aplica.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.22.4",
+  "unidade": "GABINETE DO DESEMBARGADOR MARCELO GUIMARÃES RODRIGUES",
+  "caracteres": 68,
+  "trecho": "Não houve inspeção no ano anterior no Gabinete ora inspecionado. 243",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.24.5",
+  "unidade": "(não identificada)",
+  "caracteres": 532,
+  "trecho": "A partir da última inspeção realizada pela Corregedoria Nacional de Justiça, houve uma série de determinações dirigidas à Unidade, relacionadas ao julgamento de processos específicos que impactavam no descumprimento da Meta 2 do CNJ. Além disso, foi determinada a melhoria dos fluxos internos de triagem e gestão processual. Em conversa com a equipe de assessoria e com a Desembargadora, ficou claro que todas as determinações anteriores foram devidamente cumpridas, bem como que houve clara melhoria da gestão e triagem processual.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.25.4",
+  "unidade": "GABINETE DA DESEMBARGADORA MARIA DAS GRAÇAS ROCHA SANTOS",
+  "caracteres": 181,
+  "trecho": "O Gabinete da Desembargadora Maria das Graças Rocha Santos não foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.26.5",
+  "unidade": "GABINETE DA DESEMBARGADORA MARIA INÊS RODRIGUES DE SOUZA",
+  "caracteres": 124,
+  "trecho": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.27.4",
+  "unidade": "GABINETE DO DESEMBARGADOR NELSON MISSIAS DE MORAIS",
+  "caracteres": 175,
+  "trecho": "O Gabinete do Desembargador Nelson Missias de Morais não foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.28.4",
+  "unidade": "GABINETE DO DESEMBARGADOR OCTÁVIO DE ALMEIDA NEVES",
+  "caracteres": 1039,
+  "trecho": "Na inspeção do ano de 2022, houve determinação para que o Gabinete promovesse o efetivo julgamento dos processos que foram remetidos para pauta após permanecerem conclusos por mais de 90 dias (n. 1.0000.22.028220-6/001; 1.0000.22.062277-3/001; 1.0000.19.066071-2/002; 1.0000.21.079926-8/002; 1.0000.21.060971-5/001), bem como dos processos conclusos no gabinete há mais de 90 dias e que foram despachados para cumprimento de diligências (n. 1.0000.21.065543-7/001; 1.0000.18.095919-9/004; 1.0000.22.008002-2/001; 1.0000.22.060164-5/001; 1.0000.22.035107-6/001, devidamente cumpridas. Além disso, também houve recomendação para que fossem envidados esforços para julgamento dos processos visando ao cumprimento da Meta 1 e que se evitasse acumulação de processos conclusos, em relação às quais, houve informação 292 de que a Meta 1 fora atingida naquela oportunidade e, neste momento, estão em ajustes…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.29.4",
+  "unidade": "GABINETE DO DESEMBARGADOR PEDRO ALEIXO NETO",
+  "caracteres": 28,
+  "trecho": "Não houve inspeção anterior.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.30.4",
+  "unidade": "GABINETE DO DESEMBARGADOR PEDRO BERNARDES DE OLIVEIRA",
+  "caracteres": 274,
+  "trecho": "Na inspeção realizada no ano de 2022 houve recomendação para que o gabinete promovesse gestão junto à Secretaria para evitar a acumulação de processos paralisados por período superior a 100 dias, devidamente adotada, não havendo pendências para regularização nesta inspeção.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.31.4",
+  "unidade": "GABINETE DO DESEMBARGADOR RAIMUNDO MESSIAS JUNIOR",
+  "caracteres": 1000,
+  "trecho": "Na última inspeção realizada foi determinado: Priorizar o julgamento dos processos conclusos no gabinete há mais de 100 (cem) dias e comunicando seu cumprimento à Corregedoria Nacional no prazo de 90 dias, o que foi realizado conforme se verifica pelas informações fornecidas nos dados processuais. Promover o julgamento dos processos relacionados à Meta 4 comunicando seu cumprimento à Corregedoria Nacional no prazo de 60 dias. Priorizar a análise dos pleitos liminares que aguardam há mais de 30 dias; promover o efetivo julgamento dos processos que foram remetidos para pauta após aguardarem no gabinete por mais de 90 dias; promover o efetivo julgamento dos processos conclusos no gabinete há mais de 90 dias e que foram despachados para cumprimento de diligências. 312 Verifica-se que não há determinações ou recomendações pendentes, sendo que o referido procedimento já foi encerrado junto ao…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.32.5",
+  "unidade": "(não identificada)",
+  "caracteres": 124,
+  "trecho": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.33.5",
+  "unidade": "(não identificada)",
+  "caracteres": 124,
+  "trecho": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.34.4",
+  "unidade": "(não identificada)",
+  "caracteres": 169,
+  "trecho": "O Gabinete da Desembargadora Valéria Rodrigues não foi objeto da última inspeção realizada pela Corregedoria Nacional de Justiça, entre os dias 18 e 22 de julho de 2022.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.35.5",
+  "unidade": "GABINETE DO DESEMBARGADOR VITOR INÁCIO PEIXOTO PARREIRAS HENRIQUES",
+  "caracteres": 1619,
+  "trecho": "Na última inspeção realizada pela Corregedoria Nacional de Justiça, foram feitas as seguintes recomendações: i) estabelecimento de metas de produtividade para superação dos processos julgados sobre os distribuídos; ii) monitoramento mensal de processos novos e os julgados para fins de estabelecer outras estratégias necessárias ao cumprimento da Meta 1/2022; iii) classificação de processos por assunto, para que sejam julgados de forma célere, sobretudo os paralisados há mais de 100 dias; e iv) análise mais apurada dos processos com possibilidade de celebração de acordo entre as partes. A despeito da unidade relatar a adoção de determinadas providências para o atendimento das recomendações, foi informado que não foi possível atingir o resultado esperado, sob a justificativa de que a dinâmica e organização das sessões de julgamento da 7ª Câmara Cível do TJMG, que condiciona a inclusão de pr…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "6.36.5",
+  "unidade": "GABINETE DO DESEMBARGADOR WILSON ALMEIDA BENEVIDES",
+  "caracteres": 124,
+  "trecho": "Não houve determinações ou recomendações oriundas das inspeções anteriores realizadas pela Corregedoria Nacional de Justiça.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "7.9.4",
+  "unidade": "4ª VARA CRIMINAL DA COMARCA DE BELO HORIZONTE",
+  "caracteres": 184,
+  "trecho": "Em análise das determinações e medidas adotadas pela unidade judiciária, constata-se que alguns apontamentos foram atendidos, como a lista de processos paralisados há mais de 100 dias.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "7.13.4",
+  "unidade": "1ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS DE BELO HORIZONTE",
+  "caracteres": 948,
+  "trecho": "Trata-se da 3ª inspeção seguida do CNJ na unidade. Conforme consta no relatório de inspeção do CNJ de 2022 foi determinando à unidade no prazo de 45 dias julgar/decidir/despachar os processos conclusos há mais de 150 dias com atenção às prioridades legais; bem como apresentar, no prazo de 60 dias, plano de gestão que contemple o julgamento dos processos conclusos há mais de 100 dias. Segundo a unidade foi elaborado um Projeto de Gestão do Gabinete com os seguintes pontos relevantes: julgar mais processos que os distribuídos, julgar 449 processos mais antigos, tornar a atividade jurisdicional mais efetiva, impulsionar processos de execução, atribuir valor, confiança e celeridade ao serviço; priorizar julgamento de casos repetitivos; assegurara melhoria dos processos de trabalho/otimização; aumentar produtividade com qualidade, administrar o fluxo de processos digitais, aumentar a produtiv…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "7.16.4",
+  "unidade": "2ª VARA DE FAMÍLIA DA COMARCA DE BELO HORIZONTE",
+  "caracteres": 581,
+  "trecho": "A unidade judicial foi inspecionada em julho de 2022, ocasião que foram apontadas situações que ainda persistem, tais como processos aguardando devolução 485 de precatórias por prazo desarrazoado e processos sem movimentação há mais de 100 dias. Ademais, à época, foi determinado à Presidência a adoção de providências para mitigar a indisponibilidade recorrente do PJe. Do cenário atual, infere-se que eventuais medidas, se adotadas, não foram suficientes, haja vista as recorrentes indisponibilidades sistêmicas, noticiadas pelos servidores e presenciada pela equipe inspecional.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "7.18.4",
+  "unidade": "1ª VARA DE FEITOS DA FAZENDA PÚBLICA MUNICIPAL",
+  "caracteres": 1266,
+  "trecho": "A unidade, então denominada 1ª Vara de Execução Fiscal Municipal de Belo Horizonte foi inspecionada pela Corregedoria local do TJMG. A própria unidade judiciária apontou as seguintes determinações/recomendações: 1 - julgamento dos processos conclusos há mais de 100 dias; 2 - implementação de plano de ação proposto pelo magistrado, para reduzir acervo e aumentar a produtividade; 3 – publicação de despachos e decisões proferidas nos autos; 4 – cobrança de processos com cargas a advogados com prazos excedidos e de cartas precatórias com mais de 90 dias; 5 – priorizar o andamento das ações civis públicas, com informação individualizadas de cada uma das ações em trâmite na unidade; 6 – proceder ao julgamento mensal de número de ações superior aos feitos 509 distribuídos no mesmo período, visando a redução do acervo; 7 – separar ações por matéria, propiciando aumento de produtividade, viabiliz…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "7.21.4",
+  "unidade": "1ª VARA DE FEITOS TRIBUTÁRIOS DO MUNICÍPIO DE BELO HORIZONTE",
+  "caracteres": 548,
+  "trecho": "A unidade foi inspecionada pelo CNJ em 2022, foi determinado, no prazo de 45 dias, a movimentação dos processos paralisados há mais de 100 dias e a priorização da restauração dos autos n. 51275515120098130024 no mesmo prazo. Informou-se que processos paralisados há mais de 100 dias foram movimentados e ações de Restauração de Autos foram priorizadas. Em pesquisa ao PJe foi possível constatar que foi proferia sentença de homologação de restauração de autos no processo 5127551-51.2009.8.13.0024 em 2/11/23, ou seja, dias antes da atual inspeção.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "7.22.4",
+  "unidade": "(não identificada)",
+  "caracteres": 543,
+  "trecho": "A unidade foi inspecionada pelo CNJ em 2022, foi determinado, no prazo de 30 dias, a movimentação dos processos paralisados há mais de 100 dias, a priorização da restauração dos autos no prazo de 45 dias e adotar as providências necessárias para devolução dos processos com prazo de carga ao advogado excedido. Informou-se que todas as restaurações iniciadas até 2021 foram priorizadas e convertida na classe originária. Todos os processos em carga além do prazo legal foram diligenciados para devolução, bem como mandado de busca e apreensão.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "7.35.4",
+  "unidade": "2ª UNIDADE JURISDICIONAL DO JUIZADO ESPECIAL CRIMINAL DA COMARCA DE BELO HORIZONTE",
+  "caracteres": 184,
+  "trecho": "Em análise das determinações e medidas adotadas pela unidade judiciária, constata-se que alguns apontamentos foram atendidos, como a lista de processos paralisados há mais de 100 dias.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "7.44.4",
+  "unidade": "VARA DE EXECUÇÕES PENAIS DA COMARCA DE BELO HORIZONTE",
+  "caracteres": 230,
+  "trecho": "A última inspeção realizada na unidade ocorreu em julho/202. Naquela oportunidade, foram determinadas apenas cumprimento de diligências em processos e adequação do modelo do mandado de prisão, determinações cumpridas pela unidade.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "7.49.4",
+  "unidade": "(não identificada)",
+  "caracteres": 1144,
+  "trecho": "A unidade foi inspecionada em julho/2022, oportunidade em que foram feitas as seguintes recomendações/determinações: DETERMINAÇÕES […] À Vara: Priorizar o andamento/julgamento dos processos paralisados há mais de 100 dias. Prazo: 90 dias. 752 Julgar os processos conclusos há mais de 100 dias. Prazo de 90 dias. Estabelecer meios de identificação e controle de processos relativos às Metas do CNJ. Prazo: 60 dias. RECOMENDAÇÕES […] À Vara: Implementar plano de trabalho com vistas a cumprir as Metas do Conselho Nacional de Justiça. Instituir metodologia de trabalho com vistas a controlar o cumprimento das cartas precatórias e mandados expedidos. Instituir forma de identificação (tarjas/etiquetas) dos feitos com prioridade na tramitação. Conforme apurado na inspeção, apesar de inexistir processos conclusos há mais de 100(cem) dias, ainda há certa quantidade de processos paralisados em cartório…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "9.1.2",
+  "unidade": "(não identificada)",
+  "caracteres": 2450,
+  "trecho": "Processo PJe: 0003742-91.2022.2.00.0000 Relatório: 4833334 799 Data do relatório: 23/08/2022 Quantidade de determinações pendentes: 2 Unidade avaliada Determinação Medidas adotadas Secretaria de Auditoria Interna - SECAUD (ii) Alocar pessoal na SECAUD, assim que possível, em razão das dimensões do Tribunal, da quantidade de atribuições e da quantidade de documentos que devem ser analisados, ainda que com metodologia de amostragem, para a realização dos serviços de auditoria. Prazo: 90 dias. A determinação não foi plenamente atendida devido a déficits de pessoal, conforme informado pela unidade no questionário de inspeção: “Em termos práticos, a lotação de servidores no setor ainda não corresponde ao quadro ideal formalizado perante a COMOV. Entretanto, há multiplicidade de fatores relativos às dinâmicas de pessoal no âmbito deste TJMG e que o déficit de pessoal atinge toda a instituição,…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "9.2.2",
+  "unidade": "(não identificada)",
+  "caracteres": 7125,
+  "trecho": "Processo PJe: 0003742-91.2022.2.00.0000 Relatório: 4833334 Data do relatório: 23/08/2022 Quantidade de determinações pendentes: 2 Unidade avaliada Determinação Medidas adotadas À Diretoria Executiva de Administração de Recursos Humanos (DEARHU) (i) No prazo de 60 dias, proceder ao levantamento de todos os valores, sob qualquer designação, que tenham sido instituídos ou majorados em favor de seus servidores e magistrados desde a vigência do Provimento Medidas adotadas para o cumprimento das determinações: - contidas nos itens \"i\" e \"ii\": foram cumpridas, tendo sido encaminhado ao CNJ o Oficio 38520-2023-Presidência- ASJUD em 03/08/2023. - contida no item “iii”: A relação dos servidores e magistrados inadimplentes, relativamente aos anos 2018 a 2022, 805 n. 64/2017, informando quais foram submetidos ao CNJ, indicando o processo, e neste mesmo prazo procedendo à sua publicação na Transparên…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "9.3.2",
+  "unidade": "(não identificada)",
+  "caracteres": 7648,
+  "trecho": "Processo PJe: 0003742-91.2022.2.00.0000 Relatório: 4833334 Data do relatório: 23/08/2022 Quantidade de determinações pendentes: 6 Unidade avaliada Determinação Medidas adotadas Diretoria Executiva de Gestão de Bens, Serviços e Patrimônio - DIRSEP (I) Priorização da implantação de plano anual de contratações, nos termos e prazos da Resolução CNJ n. 347/2020. No mesmo sentido, que se implante um acompanhamento do itinerário das licitações, mapeando-se as unidades que atuam no fluxo licitatório, estimando-se o tempo necessário para atuação de cada unidade neste fluxo, com acompanhamento entre estimado e desempenho real. O mesmo Grupo de Trabalho do TJMG (Resolução CNJ n. 347/2020 e da Lei Federal n. 14.133/2021), composto por servidores da DIRSEP, NUTEC e DIRFOR, capitaneado pela Assessora Técnica da Presidência, Tatiana Martins da Costa Camarão, SEI 0769699- 34.2022.8.13.0000, que elaborou…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "9.4.2",
+  "unidade": "(não identificada)",
+  "caracteres": 4249,
+  "trecho": "Processo PJe: 0003742-91.2022.2.00.0000 Relatório: 4833334 Data do relatório: 23/08/2022 Quantidade de determinações pendentes: 3 Unidade avaliada Determinação Manifestação da unidade Secretaria de Governança e Gestão Estratégica (SEGOVE) (i) No momento em que autos são encaminhados ao 2º Grau, proceder à integral virtualização do processo, já se procedendo à substituição dos autos físicos e evitando-se a necessidade de materialização documento, no momento de retorno dos autos ao 1º Grau para cumprimento. Prazo: 90 dias Publicação da Portaria Conjunta n. 1381/PR/2022, que alterou a Portaria Conjunta da Presidência n. 485/2016, dispondo sobre o peticionamento eletrônico no sistema Processo Eletrônico da 2ª instância - JPe e expandindo o rol de classes para o processamento eletrônico. A digitalização dos processos físicos em 2ª Instância, que teve início com a Portaria Conjunta n. 1026/PR/…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "9.5.2",
+  "unidade": "(não identificada)",
+  "caracteres": 1893,
+  "trecho": "Processo PJe: 0003742-91.2022.2.00.0000 Relatório: 4833334 Data do relatório: 23/08/2022 Quantidade de determinações pendentes: 2 Unidade avaliada Determinação Manifestação da unidade Diretoria Executiva de Finanças e Execução Orçamentária - DIRFIN Recomendação n. 1: não converter o superávit de arrecadação destinado ao FEPJ em orçamento de despesa se este novo montante não for compatível com a real expectativa de realização e liquidação no referido exercício Em relação à Recomendação n. 1, as medidas adotas ficaram a cargo da Diretoria Executiva de Finanças e Execução Orçamentária - DIRFIN, haja vista sua competência/atribuição normativa para tanto. Não foi apresentada nenhuma informação sobre essa recomendação. Contudo, como as recomendações não tem caráter de obrigatoriedade, não será reiterada a recomendação. Diretoria Executiva de Planejamento Orçamentário e Qualidade na Gestão Inst…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "9.6.2",
+  "unidade": "(não identificada)",
+  "caracteres": 3279,
+  "trecho": "Processo PJe: 0003742-91.2022.2.00.0000 Relatório: 4833334 Data do relatório: 23/08/2022 Quantidade de determinações pendentes: 5 Unidade avaliada Determinação/Recomendação Manifestação da unidade Diretoria Executiva de Engenharia e Gestão Predial (DENGEP) (i) Retificar a situação da DENGEP, adequando-se o organograma para refletir a disposição real da unidade e suas subdivisões. a DENGEP tomou as medidas para atender às determinações que constam no Relatório de Inspeção 2022 e que por meio da publicação da Resolução n. 1.017/2022 foram promovidas as alterações necessárias na estrutura organizacional da Diretoria Executiva de Engenharia e Gestão Predial – DENGEP Diretoria Executiva de Engenharia e Gestão Predial (DENGEP) (ii) Aplicar os critérios de pontuação às obras da capital, seja do 1º ou 2º Grau, sem prejuízo de que se estabeleça uma separação entre obras da capital e interior conf…",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ },
+ {
+  "ano": 2023,
+  "secao": "9.7.2",
+  "unidade": "(não identificada)",
+  "caracteres": 65,
+  "trecho": "Não houve determinação ou recomendação ao GSI na última inspeção.",
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023"
+ }
+];
+
+export const PENDENCIAS_POR_ANO = {
+ "2022": 24,
+ "2023": 52
+} as const;
