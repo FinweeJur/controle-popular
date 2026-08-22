@@ -4,15 +4,20 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/TabelaEstatica";
 import ObjetoExpansivel from "@/app/[municipio]/components/ObjetoExpansivel";
 import type { ContratoRow, MotivoAlertaInfo } from "@/lib/betim/contratos";
+// Lógica pura do indício vem do módulo SEM import de banco — puxar de
+// `lib/betim/contratos` aqui colocaria a cadeia `lib/db/queries/*` no
+// bundle do cliente (regra registrada no cabeçalho deste arquivo).
+import { fornecedorCriadoNoAnoDoContrato } from "@/lib/betim/contratos-indicios";
 import Moeda from "@/app/components/Moeda";
 import { formatDateBR } from "@/lib/betim/format";
 import { contratoEstaAtivo } from "@/lib/betim/statusContrato";
 
 /**
  * Tabela de `/[municipio]/prefeitura/contratos` — mesmo mecanismo de
- * `camara/proposicoes` (ver o porquê em `dados/[arquivo]/route.ts`), com
- * os SETE filtros originais: busca, ano, status, "somente com alerta",
- * motivo do alerta, tema, faixa de valor. É a página com mais filtros do
+ * `camara/proposicoes` (ver o porquê em `dados/[arquivo]/route.ts`), com os
+ * NOVE filtros originais mais dois da Sprint 2: busca, ano, status, "somente
+ * com alerta", motivo do alerta, tema, faixa de valor, tipo de instrumento e
+ * o indício "fornecedor criado no mesmo ano". É a página com mais filtros do
  * território, e a razão de existir é justamente o filtro por alerta —
  * `filtrar`/`controles` (commit `af12538`, coordenador) é o que evita que
  * ela virasse só busca-texto.
@@ -47,9 +52,24 @@ function ColunaAlerta({
   contrato: LinhaContrato;
   motivoAlertaInfo: Record<string, MotivoAlertaInfo>;
 }) {
-  if (!contrato.alerta) return <span className="text-text-soft">—</span>;
+  const recemCriado = fornecedorCriadoNoAnoDoContrato(contrato);
+  if (!contrato.alerta && !recemCriado) return <span className="text-text-soft">—</span>;
   return (
     <ul className="flex min-w-[280px] flex-col gap-2">
+      {recemCriado && (
+        <li>
+          <span className="inline-flex w-fit items-center gap-1 rounded-full bg-accent/15 px-2.5 py-1 text-xs font-semibold text-accent">
+            · Fornecedor criado no mesmo ano
+          </span>
+          <p className="mt-1 max-w-[380px] text-sm leading-snug text-text-soft">
+            Sinal de atenção — não é violação em si: o CNPJ do fornecedor foi
+            registrado no mesmo ano deste contrato
+            {contrato.fornecedor_abertura ? ` (${contrato.fornecedor_abertura.split("-").reverse().join("/")})` : ""}.
+            Empresas novas podem contratar legalmente; o sinal só diz que não
+            havia histórico prévio para conferir.
+          </p>
+        </li>
+      )}
       {(contrato.motivos_alerta ?? []).map((m) => {
         const info = motivoAlertaInfo[m];
         const ehViolacao = info?.categoria === "violacao_legal";
@@ -104,6 +124,10 @@ export default function ListaContratos({
   const [tema, setTema] = useState("");
   const [valorMin, setValorMin] = useState("");
   const [valorMax, setValorMax] = useState("");
+  // Sprint 2: tipo de instrumento (PNCP `contratos.tipo`) e o indício
+  // "fornecedor criado no mesmo ano do contrato".
+  const [tipo, setTipo] = useState("");
+  const [somenteRecemCriado, setSomenteRecemCriado] = useState(false);
   const primeiraRenderizacao = useRef(true);
 
   useEffect(() => {
@@ -115,6 +139,8 @@ export default function ListaContratos({
     setTema(sp.get("tema") ?? "");
     setValorMin(sp.get("valor_min") ?? "");
     setValorMax(sp.get("valor_max") ?? "");
+    setTipo(sp.get("tipo") ?? "");
+    setSomenteRecemCriado(sp.get("recem") === "1");
   }, []);
 
   useEffect(() => {
@@ -130,9 +156,11 @@ export default function ListaContratos({
     tema ? sp.set("tema", tema) : sp.delete("tema");
     valorMin ? sp.set("valor_min", valorMin) : sp.delete("valor_min");
     valorMax ? sp.set("valor_max", valorMax) : sp.delete("valor_max");
+    tipo ? sp.set("tipo", tipo) : sp.delete("tipo");
+    somenteRecemCriado ? sp.set("recem", "1") : sp.delete("recem");
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
-  }, [ano, status, somenteAlerta, motivo, tema, valorMin, valorMax]);
+  }, [ano, status, somenteAlerta, motivo, tema, valorMin, valorMax, tipo, somenteRecemCriado]);
 
   // Um motivo específico já implica alerta=true, mesma regra de
   // `condicoesDeContratos` — `motivos_alerta` só tem item quando o alerta
@@ -157,6 +185,12 @@ export default function ListaContratos({
   if (alertaEfetivo) exportQs.set("alerta", "1");
   if (motivo) exportQs.set("motivo", motivo);
   if (tema) exportQs.set("tema", tema);
+  // Sprint 2: a faixa de valor e os dois filtros novos agora vão no CSV —
+  // o arquivo é o recorte da tela, então carrega os mesmos filtros dela.
+  if (valorMin) exportQs.set("valor_min", valorMin);
+  if (valorMax) exportQs.set("valor_max", valorMax);
+  if (tipo) exportQs.set("tipo", tipo);
+  if (somenteRecemCriado) exportQs.set("recem", "1");
   const exportHref = `/${municipioSlug}/api/contratos?${exportQs.toString()}`;
 
   const filtrar = useCallback(
@@ -171,13 +205,15 @@ export default function ListaContratos({
       if (alertaEfetivo && c.alerta !== true) return false;
       if (motivo && !(c.motivos_alerta ?? []).includes(motivo)) return false;
       if (tema && !(c.temas ?? []).includes(tema)) return false;
+      if (tipo && c.tipo !== tipo) return false;
+      if (somenteRecemCriado && !fornecedorCriadoNoAnoDoContrato(c)) return false;
       // `valor_global` nulo não entra em nenhuma ponta — mesmo motivo do
       // SQL: contrato sem valor publicado não é "barato" nem "caro".
       if (valorMin && !(c.valor_global != null && c.valor_global >= Number(valorMin))) return false;
       if (valorMax && !(c.valor_global != null && c.valor_global <= Number(valorMax))) return false;
       return true;
     },
-    [ano, status, alertaEfetivo, motivo, tema, valorMin, valorMax]
+    [ano, status, alertaEfetivo, motivo, tema, valorMin, valorMax, tipo, somenteRecemCriado]
   );
 
   const colunas: ColunaTabela<LinhaContrato>[] = [
@@ -225,6 +261,10 @@ export default function ListaContratos({
       numerica: true,
       formatar: (c) => (c.valor_global != null ? <Moeda value={Number(c.valor_global)} /> : "—"),
     },
+    // Órgão contratante — Sprint 2 (colunas pedidas: contrato, fornecedor,
+    // valor, objeto, órgão, data, link). Sem `formatar` o render padrão já
+    // mostra "—" para nulo e a coluna fica ordenável por texto sem acento.
+    { chave: "orgao_nome", rotulo: "Órgão" },
     {
       chave: "status",
       rotulo: "Status",
@@ -261,7 +301,7 @@ export default function ListaContratos({
       camposBusca={["objeto", "fornecedor_nome"]}
       vazio="Nenhum contrato encontrado no momento."
       filtrar={filtrar}
-      controles={() => (
+      controles={({ pronto, linhas }) => (
         <div className="flex flex-wrap items-end gap-3 rounded-2xl border border-border bg-surface p-4 shadow-sm">
           <div className="flex flex-col">
             <label htmlFor="f-ano" className="mb-1 text-xs font-medium text-text-soft">
@@ -301,6 +341,34 @@ export default function ListaContratos({
               inputMode="decimal"
               className="w-32 rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
             />
+          </div>
+          {/* Sprint 2: filtro por tipo de licitação/instrumento. As opções
+              vêm do DADO que já carregou (ctx.linhas), não de lista fixa —
+              filtro que devolve vazio sempre é pior que filtro nenhum. */}
+          <div className="flex flex-col">
+            <label htmlFor="f-tipo" className="mb-1 text-xs font-medium text-text-soft">
+              Tipo
+            </label>
+            <select
+              id="f-tipo"
+              value={tipo}
+              onChange={(e) => setTipo(e.target.value)}
+              className="w-52 rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
+            >
+              <option value="">Todos os tipos</option>
+              {[...new Set(linhas.map((l) => l.tipo).filter((t): t is string => Boolean(t)))]
+                .sort((a, b) => a.localeCompare(b, "pt-BR"))
+                .map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
+            </select>
+            {!pronto && (
+              <p className="mt-1 max-w-[208px] text-xs leading-snug text-text-soft">
+                As opções aparecem quando as linhas terminarem de carregar.
+              </p>
+            )}
           </div>
           <div className="flex flex-col">
             <label htmlFor="f-status" className="mb-1 text-xs font-medium text-text-soft">
@@ -363,7 +431,16 @@ export default function ListaContratos({
             />
             Somente com alerta
           </label>
-          {(ano || status || somenteAlerta || motivo || tema || valorMin || valorMax) && (
+          <label className="flex items-center gap-2 pb-2 text-sm text-text" title="CNPJ do fornecedor registrado no mesmo ano do contrato — indício, não violação">
+            <input
+              type="checkbox"
+              checked={somenteRecemCriado}
+              onChange={(e) => setSomenteRecemCriado(e.target.checked)}
+              className="h-4 w-4 rounded border-border accent-alert"
+            />
+            Fornecedor criado no mesmo ano
+          </label>
+          {(ano || status || somenteAlerta || motivo || tema || valorMin || valorMax || tipo || somenteRecemCriado) && (
             <button
               type="button"
               onClick={() => {
@@ -374,6 +451,8 @@ export default function ListaContratos({
                 setTema("");
                 setValorMin("");
                 setValorMax("");
+                setTipo("");
+                setSomenteRecemCriado(false);
               }}
               className="text-sm text-text-soft hover:underline"
             >
