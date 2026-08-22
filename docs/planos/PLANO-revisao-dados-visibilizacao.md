@@ -188,6 +188,30 @@ Resumo de uma cidade só:
 5. Implementar alertas iniciais: concentração, dispensa próxima do limite, empresa recém-criada.
 6. Adicionar CSV filtrado por tela.
 
+#### Status da Sprint 2 (2026-08-22, branch `contratos-fornecedores`)
+
+Itens 4-6 entregues: `/[municipio]/prefeitura/fornecedores/` nova, tela de
+contratos com cartões + gráfico anual + filtro por tipo + coluna de órgão,
+indício "fornecedor criado no mesmo ano" (calculado na consulta via
+`contratos-indicios.ts`, não persistido em `motivos_alerta`) e CSV filtrado
+nas duas telas. Pendências registradas:
+
+1. **Payload das rotas novas não medido** — a máquina da sprint não tem banco
+   (Neon HTTP 402); build e medição contra o teto de 25 MiB ficam para o
+   home-pc. Sem banco as telas renderizam o estado vazio declarado.
+2. **Indício de concentração sem badge visual** — `fornecedoresConcentradoNoAno`
+   (> 5 contratos/ano) está implementado e testado em
+   `lib/betim/fornecedores-puro.ts`, mas o ranking é acumulado de todos os
+   anos; o sinal só vale com recorte de ano. Virar UI exige índice por ano,
+   senão o filtro mentiria o valor total exibido.
+3. **ETL (`etl/alertas.py`) intocado** — os três indícios exigidos já existiam
+   como regras 1, 2 e 8; o de empresa recém-criada é calculado em tempo de
+   consulta e não entra no ETL. Persistir em `motivos_alerta` exige rodada de
+   ETL no home-pc.
+4. **`recem=1` fora do ramo JSON de `/api/contratos`** — só o CSV aceita;
+   motivo documentado no código (agregados de janela em SQL divergiriam do
+   conjunto filtrado).
+
 ### Sprint 3 — Território e empreendimentos
 
 7. Cruzar terras indígenas/quilombolas com mineração, barragens e licenciamento.
