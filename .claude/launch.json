@@ -2,6 +2,21 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "//": "Worktree home-orientacao (trilha do item 5 do plano unico, docs/ESTADO.md) -- porta propria, mesma regra dos outros worktrees.",
+      "name": "cp-home-orientacao-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3022"
+      ],
+      "port": 3022
+    },
+    {
       "//": "runtimeExecutable era um caminho absoluto de OUTRO usuario (C:\\Users\\teste\\...), entao esta config nao subia em nenhuma outra maquina. `npm` resolvido pelo PATH funciona nas duas.",
       "name": "controle-popular-web-dev",
       "runtimeExecutable": "npm",
