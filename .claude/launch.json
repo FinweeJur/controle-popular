@@ -420,6 +420,21 @@
         "3021"
       ],
       "port": 3021
+    },
+    {
+      "//": "Porta separada so para este worktree (contratos-fornecedores) -- telas de maiores contratos e maiores fornecedores por municipio (Sprint 2 do plano de revisao de dados). Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
+      "name": "cp-contratos-fornecedores-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3041"
+      ],
+      "port": 3041
     }
   ]
 }
