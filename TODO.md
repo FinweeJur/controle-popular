@@ -21,54 +21,23 @@
 
 ## Em curso
 
-- **Expansão: acordos, contratos e convênios de MG** — Blocos 0, A e quase todo
-  o B entregues, no worktree `.claude/worktrees/cp-acordos-mg` (branch
-  `cp-acordos-mg`, pushado). No ar: `/ambiental/tac` (com dashboard, 2 gráficos
-  e CSV), `/ambiental/convenios`, `/ambiental/decisoes-lai` (753 decisões da
-  CGE), `/ambiental/barragens/descaracterizacao` (45 barragens do MPMG).
-  · **entregue nesta rodada:** B1 destravado (o modelo do Power BI expõe 11
-  entidades, não 4), B2 (6 conjuntos do CKAN + SIAFI com 718 mil linhas),
-  B5, B6, o painel Sisema (582 mil autos de infração, R$ 11,48 bi aplicados) e
-  a **regra das cinco coisas** aplicada a 8 páginas.
-  · **em curso:** B4 (PNCP por arquivo) e B8 (DataJud por consulta ao vivo).
-  · **B7 está morto**, com medição: `buscarTac` responde 200 com 0 byte. Não é
-  pendência, é resultado — não reabrir sem a fonte voltar.
-  · armadilhas de cada fonte em `docs/FONTES.md` — ler antes de tocar.
-  · plano: `docs/planos/PLANO-EXPANSAO-ACORDOS-MG.md`
-
-- **Pedido de LAI à CGE-MG — redigido, falta protocolar.** O
-  `ft_convenio_metaetapa` do conjunto `convenios-saida` sai com **só o
-  cabeçalho**: 87 bytes comprimidos, 75 descomprimidos, 1 linha. No mesmo
-  conjunto e no mesmo minuto, um recurso irmão devolveu 784.802 linhas — o que
-  elimina a resposta "problema na sua conexão". Sem essa tabela dá para dizer
-  quanto um convênio custou e quanto demorou, **não** se ele entregou o que
-  prometeu.
-  · texto pronto: `Projetos/Controle Popular — Pedido LAI CGE-MG (metas de
-  convênio).md`, no vault
-  · depois de protocolar, registrar em `docs/LAI-PROTOCOLOS.json` — aí a CI
-  diária passa a vigiar o prazo sozinha
-
-- **Análise integrada do Paraopeba — ENTREGUE.** `/paraopeba/analise` põe os 16
-  eixos da auditoria AECOM contra a perícia da UFMG, os documentos das ATIs e a
-  voz da própria ATI (o texto que ela escreveu sobre o próprio estudo).
-  · **o que a página mede:** 1 único eixo tem as 3 fontes (Saúde humana e risco
-  ecológico); **12 dos 16 só têm a auditoria**; e 3 temas órfãos — assunto que
-  perícia e ATIs tratam e nenhum eixo cobre (plano-de-reparacao 10/106,
-  programas-de-compensacao 3/63, frentes-emergenciais 0/11).
-  · a página distingue **"a ponte não existe"** (7 eixos sem equivalente no
-  vocabulário) de **"a ponte existe e ninguém usou"** (5 eixos). Só o segundo é
-  pauta; juntar os dois inventaria lacuna.
-  · casamento notícia↔estudo em `estudo-e-noticia.ts`: 5 fortes, 1 médio, 7
-  nulos com motivo. **Casar por tema em comum é defeito**, não atalho.
-
-- **Síntese temática ainda NÃO inclui a perícia.** `SINTESE_AJRI` tem 16 eixos
-  escritos só dos 337 relatórios da AECOM; `sintese-pericia.ts` é peça separada.
-  · **não editar `sintese-ajri.ts` à mão** — é gerado por
-  `gerar-sintese-ajri.mts` a partir de um `.md` fora do repo, e é a voz da
-  auditoria. A fusão vai numa camada nova (`sintese-integrada.ts`), com as
-  vozes identificadas.
-  · resumo por documento hoje: AECOM **207/337**, perícia **7/7**, ATIs
-  **0/597**.
+- **Expansão ambiental de MG — MERGEADA na main** (PR #2, 2026-08-22). No ar:
+  `/ambiental/decisoes` (43.444 decisões, 9.554 negativas), `/ambiental/tac`,
+  `/ambiental/decisoes-lai`, `/ambiental/barragens/descaracterizacao`,
+  `/paraopeba/analise`, e a **regra das cinco coisas** em 8 páginas.
+  · **o que sobrou pendente, com motivo escrito:**
+  · **PNCP** — coletor pronto, API devolveu 504 por ~45 min em 21/08. O arquivo
+  tem `coletaPendente: true`. Retomar é só rodar `scripts/coletar-pncp-mg.mts`
+  quando a API voltar.
+  · **NACAB** — 48 publicações coletadas e **fora da biblioteca de propósito**:
+  apontam para o `.pdf` direto e a biblioteca aponta para a *página* da fonte
+  (`biblioteca.test.ts`). Falta a URL de página e uma data confiável.
+  · **B7 (TACs do MPMG) está morto**, com medição: `buscarTac` responde 200 com
+  0 byte. Não reabrir sem a fonte voltar.
+  · **Painel Sisema** — 3 dos 4 relatórios extraídos; falta o de educação
+  ambiental (`6db83fcd-58ec-4439-9e9e-dd83e9ba0b9a`).
+  · `/ambiental/licenciamento` e `/copam` têm as cinco coisas no código mas
+  renderizam vazio enquanto a Neon estiver em 402 — não é regressão.
 
 ## Esperando data
 
