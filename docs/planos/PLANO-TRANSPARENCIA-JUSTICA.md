@@ -10,8 +10,8 @@
 >
 > ⚠️ **E um veredito da sondagem já foi DERRUBADO no mesmo dia.** Ela reprovou
 > a frente correicional inteira depois de medir as páginas HTML do CNJ (270 KB
-> linkando regimento interno). O acervo existia noutra rota: **467 relatórios
-> de inspeção, ~2 GB, JSON puro, sem login** (§2, frente 0). Fica registrado
+> linkando regimento interno). O acervo existia noutra rota: **343 relatórios
+> de inspeção sobre 33 órgãos, ~1,8 GB, JSON puro, sem login** (§2, frente 0). Fica registrado
 > porque a lição é geral: **medir a página que fala do assunto não mede a
 > fonte.**
 
@@ -62,9 +62,9 @@ Coletor: `etl/betim/etl/apis/cnj_inspecoes.py`.
 
 | Medido em 22/08/2026 | |
 |---|---|
-| Categorias de órgão | **32** — os 27 TJs, mais TRFs, TRTs e TJMs |
-| Relatórios | **330** (o catálogo bruto da faixa varrida tem 467 arquivos) |
-| Volume | **~1,7 GB** |
+| Categorias de órgão | **33** — os 27 TJs, mais TRFs, TRTs e TJMs |
+| Relatórios | **343** — varredura de 2400 a 2950 (551 ids). ⚠️ Os ids **não são contíguos**: Roraima mora sozinho no 2796, a 118 do bloco. A contagem é **piso**. |
+| Volume | **~1,8 GB** |
 | Série | **2008 → 2026** |
 | Só do TJMG | **13 relatórios, 2012 → 2026, 65,6 MB** |
 
@@ -76,7 +76,9 @@ Coletor: `etl/betim/etl/apis/cnj_inspecoes.py`.
   assinado em 08/07/2026
 - **241 seções** de "Achados e Determinações"/"Recomendações" lidas, contra
   **247 que o sumário lista** (97,6%)
-- **140 com conteúdo**, 101 dizendo que não há achado
+- **140 com conteúdo**, 101 dizendo que não há achado (na tela ficam **123**: 17 seções
+  têm rótulo mas nenhum texto legível depois do parse, e publicá-las como achado
+  vazio seria afirmar o que não se leu)
 - **74 seções de achado com texto substantivo**, distribuídas em **100 unidades
   distintas**
 - Granularidade que ninguém publica: **gabinete por gabinete** (36
@@ -128,13 +130,18 @@ Três arquivos, nenhum login, nenhum PDF.
 |---|---|
 | `defensoria.mg.def.br/wp-json/api-unidades/search?s=` | 11.481 bytes, **129 unidades (128 comarcas em MG)**, uma chamada só, sem paginação |
 | `gerais.defensoria.mg.def.br/localizacao/.../municipio/<uuid>` | 81.758 bytes, **854 municípios**, 297 com `codigoComarcaTjMg` |
-| Pesquisa Nacional 2025 (XLSX, aba Comarcas) | 2,66 MB — **298 comarcas em MG, 120 atendidas**, 178 marcadas "NÃO" **com nome e população** |
-| IPEA 2013 (ZIP 315.063 bytes, CSV ISO-8859-1) | 295 comarcas, **105 com Defensoria** — fecha a série histórica |
+| Pesquisa Nacional 2025 (XLSX, aba Comarcas) | 2,66 MB — **298 comarcas em MG, 120 atendidas**, **176 "NÃO" e 2 "PARCIALMENTE"**, com nome e população |
+| IPEA 2013 (ZIP 315.063 bytes) | 295 comarcas, **105 com Defensoria** — fecha a série. ⚠️ O CSV é **CP850**, não ISO-8859-1: decodificar errado produz texto ilegível em silêncio |
 
-**Este é o denominador que faltava.** Com ele, "109 comarcas atendidas" deixa
-de parecer cobertura boa e vira **déficit de ~57%**. E a série mostra o ritmo:
-**13 anos para sair de 105 para 128 — ~1,8 comarca por ano.** No ritmo medido,
-cobrir as restantes levaria perto de um século.
+**Este é o denominador que faltava.** Contra as 298 comarcas, as 120 atendidas
+viram **déficit de 59%**. E a série mostra o ritmo: **105 em 2013 → 120 em
+2025, 15 comarcas em 12 anos.** No ritmo medido, cobrir as 178 restantes
+levaria mais de um século.
+
+⚠️ **As fontes divergem e as duas ficam gravadas:** a DPMG lista **129 unidades**
+hoje (128 comarcas mineiras + a sede em Brasília) e a Pesquisa Nacional marca
+**120 comarcas como atendidas**. São recortes diferentes — unidade física contra
+comarca atendida —, e escolher um e calar seria esconder a diferença.
 
 **Pergunta que passa a responder:** *"Tem Defensoria na minha comarca — e, se
 não tem, para onde eu vou e há quanto tempo estou esperando?"* Ninguém responde
@@ -469,12 +476,16 @@ liberar o meio-termo sem depender dele.
 | $ | JUSTA — orçamento da justiça por estado | ✅ **coletado e conferido** (21 estados, MG 2º em ambos os eixos) |
 | 0 | catálogo nacional de inspeções do CNJ | ✅ **coletado** — 32 órgãos, 330 relatórios, ~1,7 GB, 2008→2026 |
 | 0b | achados do relatório TJMG 2026 | ✅ **extraído e conferido** — 140 seções com conteúdo, 100 unidades, 0 CPF no dado |
-| 0c | demais 12 relatórios do TJMG (2012→2023) | 🔄 baixando — série histórica |
-| 0d | análise longitudinal: **o que NÃO mudou** e quais unidades reincidem | 🔄 é o produto desta rodada |
-| 0e | recorte de órgãos: **STJ, TST, TRT de MG e STF** | 🔄 decidido em 22/08 — os outros 27 TJs ficam fora por ora |
-| 1 | cobertura da Defensoria por comarca | ⬜ **próxima** — 4 fontes medidas, denominador resolvido (298) |
-| 2 | inspeções em presídios (CNIEP) | ⬜ 3 rotas JSON medidas; conteúdo da inspeção dá 404 |
-| 3 | congestionamento do TJMG (Justiça em Números) | ⬜ ZIP medido; falta raspar o link vigente |
+| 0c | demais 12 relatórios do TJMG (2012→2023) | ✅ **baixados** (13/13, 66 MB); extração parcial — ver 0f |
+| 0d | **o que NÃO mudou** | ✅ **publicado** — 52 seções de "Pendências da última inspeção" em 2023 e 24 em 2022, que é a conta do próprio CNJ |
+| 0e | recorte: **STJ, TST, TRT-3 e STF** | ✅ **medido** — só o TRT-3 tem acervo (18 atas, 1991→2024); STJ, TST e STF não têm inspeção externa |
+| 0f | extração dos anos 2012, 2017, 2019, 2022, 2023 | 🔄 **em conserto** — 5 layouts identificados, 3 ainda rendendo zero item |
+| P | página `/judiciario/inspecoes` | ✅ **no ar** — 123 seções, 98 unidades, as cinco coisas, link para a origem |
+| 1 | cobertura da Defensoria por comarca | ✅ **coletada** — 298 comarcas, 120 atendidas, 176 não; em 2013 eram 105 de 295. ⬜ falta a página |
+| 2 | inspeções em presídios (CNIEP) | ✅ **coletada** — 285 estabelecimentos e 2.253 inspeções em MG. ⬜ falta a página e o cruzamento "quais nunca foram inspecionados" |
+| 3 | congestionamento do TJMG (Justiça em Números) | ✅ **coletado** — série do TJMG. ⬜ falta a página |
+| 4 | atas de correição do TRT-3 | ✅ **18 atas baixadas** (1991→2024, 91 MB). ⬜ falta extrair e publicar |
+| 5 | RAINT do STF | ❌ **falhou** — WAF da AWS passou a responder 202 com corpo vazio após ~6 chamadas |
 | 4 | ouvidorias | ⏸️ opcional — só PDF, `fileId` opaco |
 | — | disciplinar como página | ❌ **reprovada** — vira matéria (§5) |
 | M | matéria das 3 lacunas | ⬜ pronta para escrever, tudo medido |
