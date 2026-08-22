@@ -1,5 +1,12 @@
-import { contratosPaginados, contratosParaExport, sancoesCeisPorCnpj, totaisDeContratos } from "@/lib/db/queries/betim";
+import {
+  contratosPaginados,
+  contratosParaExport,
+  contratosPorAno,
+  sancoesCeisPorCnpj,
+  totaisDeContratos,
+} from "@/lib/db/queries/betim";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
+import { fornecedorCriadoNoAnoDoContrato } from "./contratos-indicios";
 
 export const CONTRATOS_PAGE_SIZE = 25;
 const EXPORT_ROW_LIMIT = 5000;
@@ -39,6 +46,15 @@ export interface ContratoRow {
    *  contratos municipais (medido em 1.268/1.268, 2026-08-10). */
   link_fonte?: string | null;
   numero_contrato?: string | null;
+  /** Órgão contratante e tipo de instrumento (Sprint 2). Anuláveis na fonte. */
+  orgao_nome?: string | null;
+  categoria?: string | null;
+  tipo?: string | null;
+  /** Data de abertura do CNPJ do fornecedor (`fornecedores.data_abertura`),
+   *  quando o fornecedor está no cadastro — alimenta o indício
+   *  "empresa criada no mesmo ano do contrato" via
+   *  `fornecedorCriadoNoAnoDoContrato`. Nulo ≠ empresa velha: é "não sei". */
+  fornecedor_abertura?: string | null;
   /** Preenchido só quando `motivos_alerta` inclui a Regra 5 — ver `fetchContratos`. */
   sancoesCeis?: SancaoCeis[] | null;
 }
@@ -56,6 +72,16 @@ export interface ContratosFilters {
    *  FORA das duas pontas — ver `condicoesDeContratos`. */
   valorMin?: number;
   valorMax?: number;
+  /** Tipo de instrumento (`contratos.tipo`) — igualdade exata. */
+  tipo?: string;
+  /**
+   * Indício "empresa criada no mesmo ano do contrato": filtra linhas cujo
+   * CNPJ do fornecedor foi aberto no mesmo ano da assinatura. É filtro de
+   * INDÍCIO (heurística), não de violação — ver o rótulo na tela.
+   * Aplicado em JS sobre as linhas já trazidas (a comparação usa campo da
+   * tabela `fornecedores`, que chega junto na consulta).
+   */
+  recemCriado?: boolean;
   page?: number;
   /** Default `CONTRATOS_PAGE_SIZE`. `prefeitura/contratos` pede um valor
    *  bem maior pra buscar a cidade inteira de uma vez — ver
@@ -203,8 +229,14 @@ function filtrosParaQuery(filters: ContratosFilters) {
     q: sanitizeSearchTerm(filters.q),
     valorMin: filters.valorMin,
     valorMax: filters.valorMax,
+    tipo: filters.tipo,
   };
 }
+
+// A lógica do indício é PURA e mora em `contratos-indicios.ts` — módulo sem
+// import de banco, seguro pra componente de cliente. Reexportada aqui pra
+// quem consome este módulo no servidor (rota CSV aplica o filtro em JS).
+export { fornecedorCriadoNoAnoDoContrato } from "./contratos-indicios";
 
 /**
  * Uma página de `contratos` da cidade, mais o total de linhas, a soma de
@@ -312,10 +344,48 @@ export async function fetchContratosForExport(
       EXPORT_ROW_LIMIT
     );
     if (!data) return { rows: [], configured: false, ok: false };
-    return { rows: data as ContratoRow[], configured: true, ok: true };
+    let rows = data as ContratoRow[];
+    // Filtro de indício aplicado em JS: a comparação usa a data de abertura
+    // que já vem na linha (subconsulta em COLUNAS_CONTRATO), e não há
+    // condição SQL equivalente sem join extra no caminho da exportação.
+    if (filters.recemCriado) rows = rows.filter(fornecedorCriadoNoAnoDoContrato);
+    return { rows, configured: true, ok: true };
   } catch {
     return { rows: [], configured: true, ok: false };
   }
+}
+
+/**
+ * Cartões de topo de `prefeitura/contratos` — totais da cidade inteira,
+ * SEM filtro nenhum (mesma decisão de `prefeitura/cultura`: número de
+ * contexto do servidor, independente dos filtros interativos da tabela;
+ * nunca uma soma que "mente às vezes" conforme a busca textual).
+ */
+export async function resumoDeContratos(
+  idMunicipio: IdMunicipio
+): Promise<{ total: number; soma: number; totalAlertas: number; ok: boolean }> {
+  const totais = await totaisDeContratos(idMunicipio, {});
+  if (!totais) return { total: 0, soma: 0, totalAlertas: 0, ok: false };
+  return {
+    total: totais.total,
+    soma: totais.soma,
+    totalAlertas: totais.total_alertas,
+    ok: true,
+  };
+}
+
+/** Série ano a ano para o gráfico de topo — mesma fonte, mesmo degrade. */
+export async function serieContratosPorAno(
+  idMunicipio: IdMunicipio
+): Promise<{ ano: number | null; total: number; soma: number; comAlerta: number }[]> {
+  const linhas = await contratosPorAno(idMunicipio);
+  if (!linhas) return [];
+  return linhas.map((l) => ({
+    ano: l.ano,
+    total: l.total,
+    soma: l.soma,
+    comAlerta: l.com_alerta,
+  }));
 }
 
 function csvEscape(value: unknown): string {
@@ -326,7 +396,9 @@ function csvEscape(value: unknown): string {
   return str;
 }
 
-/** Serializes contract rows as CSV (UTF-8 BOM prefixed, so Excel opens it intact). */
+/** Serializes contract rows as CSV (UTF-8 BOM prefixed, so Excel opens it intact).
+ *  Sprint 2: tipo, órgão, ano e link da fonte entram no arquivo — o CSV é o
+ *  recorte da tela, então carrega as mesmas colunas que ela mostra. */
 export function contratosToCsv(rows: ContratoRow[]): string {
   const BOM = "﻿";
   const header = [
@@ -338,6 +410,10 @@ export function contratosToCsv(rows: ContratoRow[]): string {
     "alerta",
     "motivos_alerta",
     "fundamentacao_dos_motivos",
+    "tipo",
+    "orgao",
+    "ano",
+    "link_fonte",
   ].join(",");
   const lines = rows.map((row) =>
     [
@@ -354,6 +430,10 @@ export function contratosToCsv(rows: ContratoRow[]): string {
           .filter(Boolean)
           .join(" | ")
       ),
+      csvEscape(row.tipo),
+      csvEscape(row.orgao_nome),
+      csvEscape(row.ano),
+      csvEscape(row.link_fonte),
     ].join(",")
   );
   return BOM + [header, ...lines].join("\n") + "\n";
