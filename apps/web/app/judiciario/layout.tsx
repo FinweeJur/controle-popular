@@ -17,6 +17,7 @@ const NAV = [
   { href: "/tribunais", label: "Tribunais" },
   { href: "/vagas", label: "Vagas" },
   { href: "/indicacoes", label: "Indicações" },
+  { href: "/instituicoes", label: "Quem fiscaliza" },
   { href: "/inspecoes", label: "Inspeções" },
   { href: "/presidios", label: "Presídios" },
   { href: "/defensoria", label: "Defensoria" },

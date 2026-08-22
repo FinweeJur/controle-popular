@@ -292,8 +292,22 @@ export default function InspecoesPage() {
           <strong className="text-text">Por que nomeamos.</strong> São agentes públicos no
           exercício da função, o fato está num relatório público do Conselho Nacional de Justiça,
           e cada linha traz o link do documento. Descrever o achado sem dizer de quem ele é
-          protegeria o magistrado — não a pessoa cujo processo está parado. Se algum dos citados
-          quiser contraditar, o portal publica a resposta ao lado do achado.
+          protegeria o magistrado — não a pessoa cujo processo está parado.
+        </p>
+        <p className="mt-3 max-w-3xl text-[.88em] leading-relaxed text-text-soft">
+          Achou erro factual? O caminho, as regras e o limite do que este portal pode corrigir ou
+          remover estão em{" "}
+          <a href="/termos" className="text-primary underline underline-offset-2 hover:text-accent">
+            /termos
+          </a>{" "}
+          (seções 5 e 6). Para pedido que envolva dado pessoal, o canal reservado é{" "}
+          <a
+            href="mailto:contato@controlepopular.com.br"
+            className="text-primary underline underline-offset-2 hover:text-accent"
+          >
+            contato@controlepopular.com.br
+          </a>
+          .
         </p>
       </section>
 

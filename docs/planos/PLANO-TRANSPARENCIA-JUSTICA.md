@@ -294,7 +294,7 @@ como suspeitas até alguém abrir cada uma**.
 | MPM Pessoal | 977 bytes — 100% `<iframe>` do Power BI |
 | `paineis.cnj.jus.br` | 502 intermitente; quando responde, 6.190 bytes de shell QlikView |
 | `paineisanalytics.cnj.jus.br` | 1.375 bytes de bootstrap; dado por **WebSocket QIX** |
-| SISTAC / audiências de custódia | 3.428 bytes, **0 registros** |
+| ~~SISTAC / audiências de custódia~~ | ❌ **DERRUBADA em 22/08.** Os 3.428 bytes eram de um endpoint; o dado é publicado nos **Boletins de Audiência de Custódia** (n.1 fev/2024, n.2 mai/2024). Números de lá: **53,6%** dos presos em flagrante respondem por crime patrimonial ou de drogas, e **64,3% são pessoas negras** contra 35% brancas |
 | Qlik do SIC do TJMG | 3.830 bytes |
 | Tableau de correições do MPMG | 1.340 bytes, atrás de rota de hash |
 

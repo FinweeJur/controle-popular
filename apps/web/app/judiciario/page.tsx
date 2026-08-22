@@ -141,6 +141,12 @@ export default async function Home() {
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {[
             {
+              href: "/instituicoes",
+              titulo: "Quem fiscaliza a Justiça",
+              texto:
+                "Em que ponto do caminho do seu processo alguém de fora ainda olha — e onde a fiscalização externa acaba.",
+            },
+            {
               href: "/inspecoes",
               titulo: "O que o CNJ encontrou no TJMG",
               texto:
