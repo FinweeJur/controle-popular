@@ -2,6 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import TabelaEstatica, { type ColunaTabela } from "@/app/[municipio]/components/TabelaEstatica";
+// Link da zona: prefixa a cidade sozinho. `<a href>` cru com caminho
+// literal aqui seria o 404 de 2026-07-21 de novo (ver lib/betim/basePath).
+import Link from "@/lib/betim/link";
 // Módulo PURO de propósito: componente cliente não pode importar
 // `lib/betim/fornecedores`, que puxa a cadeia do banco (mesma regra dos
 // demais componentes desta pasta).
@@ -85,12 +88,12 @@ export default function ListaFornecedores({ base, municipioSlug }: ListaForneced
           {/* Detalhamento = a tela de contratos buscando pelo nome publicado
               na fonte. É o mesmo dado, linha a linha — nada de página nova
               com números recalculados que poderiam divergir. */}
-          <a
+          <Link
             href={`/prefeitura/contratos?q=${encodeURIComponent(f.razao_social ?? "")}`}
             className="w-fit text-[.8em] font-medium text-primary underline underline-offset-2"
           >
             Ver contratos deste fornecedor →
-          </a>
+          </Link>
         </div>
       ),
     },
