@@ -1,0 +1,2546 @@
+/**
+ * Relatórios de inspeção da Corregedoria Nacional de Justiça (CNJ).
+ * ARQUIVO GERADO por `scripts/gerar-inspecoes-cnj.mts` — não editar à mão.
+ *
+ * ═══ O QUE ESTE CATÁLOGO É ═══
+ *
+ * A cada inspeção num tribunal, a Corregedoria Nacional publica um relatório
+ * que descreve, unidade por unidade, o que a equipe encontrou — e cobra, na
+ * inspeção seguinte, o que determinou na anterior. São 343 relatórios sobre
+ * 33 órgãos, de 2008 a 2026.
+ *
+ * ⚠️ COBERTURA É PISO, NÃO TOTAL. Não existe rota de listagem de categorias no
+ * CNJ (`categories.getCategories` responde HTTP 500), então o universo foi
+ * descoberto varrendo ids de 2400 a 2950. E os ids **não são
+ * contíguos**: o TJ de Roraima mora sozinho no id 2796, a 118 do bloco
+ * alfabético dos demais. Pode haver órgão fora da faixa varrida.
+ *
+ * ⚠️ FORA DO ACERVO POR COMPETÊNCIA: não há inspeção da Corregedoria Nacional
+ * sobre STJ, TST ou STF — o Regulamento Geral descreve inspeção sobre órgãos
+ * de primeiro e segundo grau. Quem correiciona TRT é a Corregedoria-Geral da
+ * Justiça do Trabalho, órgão do TST. Ver `docs/judiciario/`.
+ *
+ * ⚠️ O PDF ORIGINAL NÃO É ESPELHADO por este projeto. Cada linha traz trecho
+ * de até 600 caracteres e o link permanente para o CNJ.
+ */
+
+export interface OrgaoInspecionado {
+  categoriaId: number;
+  slug: string;
+  titulo: string;
+  relatorios: number;
+  bytes: number;
+  anos: string[];
+}
+
+export interface RelatorioTjmg {
+  titulo: string;
+  publicadoEm: string;
+  megabytes: number;
+  url: string;
+}
+
+export interface AchadoInspecao {
+  ano: number;
+  secao: string;
+  unidade: string;
+  /** vara | juizado | gabinete | turma | serventia | orgao-central | outra */
+  tipo: string;
+  /** `null` quando o título não declara — nunca preenchido por default. */
+  comarca: string | null;
+  /** achados | recomendacoes */
+  tipoSecao: string;
+  itens: number;
+  caracteres: number;
+  temas: string[];
+  trecho: string;
+}
+
+export const TEMA_ROTULOS: Record<string, string> = {
+  "pessoa_presa": "Pessoa presa e execução penal",
+  "violencia_domestica": "Violência doméstica",
+  "infancia": "Infância e juventude",
+  "sistema": "Sistema processual e migração",
+  "prazo_e_acervo": "Prazo, acervo e congestionamento",
+  "pessoal": "Pessoal, lotação e estrutura",
+  "cartorio": "Gestão de cartório e secretaria",
+  "extrajudicial": "Serventias extrajudiciais",
+  "estatistica": "Estatística e transparência do próprio tribunal",
+  "precatorio": "Precatórios",
+  "conciliacao": "Conciliação e mediação",
+  "colegiado": "Funcionamento do colegiado",
+  "pericia_e_apoio": "Perícia e órgãos de apoio fora do tribunal"
+};
+
+export const COBERTURA_INSPECOES = {
+  extraidoEm: "2026-08-22",
+  totalOrgaos: 33,
+  totalRelatorios: 343,
+  totalBytes: 1812027923,
+  faixaDeIdsVarrida: {"de":2400,"ate":2950},
+  tjmg: {
+    relatorios: 13,
+    paginas2026: 1388,
+    processoCnj: "0000675-79.2026.2.00.0000",
+    portaria: "Portaria nº 3, de 02/02/2026",
+    assinadoEm: "2026-07-08",
+    url: "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/419313/relatorio-de-inspecao-ordinaria-tjmg-2026-2",
+    secoesNoSumario: 247,
+    secoesLidasNoCorpo: 241,
+    secoesComConteudo: 123,
+    secoesSemAchado: 101,
+    unidadesDistintas: 98,
+  },
+} as const;
+
+export const ORGAOS_INSPECIONADOS: OrgaoInspecionado[] = [
+ {
+  "categoriaId": 2650,
+  "slug": "tribunal-de-justica-do-estado-do-acre",
+  "titulo": "Tribunal de Justiça do Estado do Acre",
+  "relatorios": 10,
+  "bytes": 33628368,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2651,
+  "slug": "tribunal-de-justica-do-estado-de-alagoas",
+  "titulo": "Tribunal de Justiça do Estado de Alagoas",
+  "relatorios": 10,
+  "bytes": 23328839,
+  "anos": [
+   "2019",
+   "2021",
+   "2022",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2652,
+  "slug": "tribunal-regional-federal-da-1a-regiao",
+  "titulo": "Tribunal Regional Federal da 1ª Região",
+  "relatorios": 3,
+  "bytes": 7418279,
+  "anos": [
+   "2019",
+   "2020"
+  ]
+ },
+ {
+  "categoriaId": 2653,
+  "slug": "tribunal-de-justica-do-estado-do-amapa",
+  "titulo": "Tribunal de Justiça do Estado do Amapá",
+  "relatorios": 10,
+  "bytes": 34961036,
+  "anos": [
+   "2019",
+   "2021",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2654,
+  "slug": "tribunal-regional-do-trabalho-da-11a-regiao",
+  "titulo": "Tribunal Regional do Trabalho da 11ª Região",
+  "relatorios": 1,
+  "bytes": 194504,
+  "anos": [
+   "2019"
+  ]
+ },
+ {
+  "categoriaId": 2655,
+  "slug": "tribunal-de-justica-do-estado-do-amazonas",
+  "titulo": "Tribunal de Justiça do Estado do Amazonas",
+  "relatorios": 14,
+  "bytes": 81264214,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2024",
+   "2026"
+  ]
+ },
+ {
+  "categoriaId": 2656,
+  "slug": "tribunal-de-justica-do-estado-da-bahia",
+  "titulo": "Tribunal de Justiça do Estado da Bahia",
+  "relatorios": 22,
+  "bytes": 90295936,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2024",
+   "2026"
+  ]
+ },
+ {
+  "categoriaId": 2657,
+  "slug": "tribunal-de-justica-do-estado-do-ceara",
+  "titulo": "Tribunal de Justiça do Estado do Ceará",
+  "relatorios": 15,
+  "bytes": 123886991,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2024",
+   "2026"
+  ]
+ },
+ {
+  "categoriaId": 2658,
+  "slug": "tribunal-de-justica-do-distrito-federal-e-dos-territorios",
+  "titulo": "Tribunal de Justiça do Distrito Federal e dos Territórios",
+  "relatorios": 8,
+  "bytes": 29575670,
+  "anos": [
+   "2019",
+   "2021",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2659,
+  "slug": "tribunal-de-justica-do-estado-do-espirito-santo",
+  "titulo": "Tribunal de Justiça do Estado do Espírito Santo",
+  "relatorios": 11,
+  "bytes": 50673917,
+  "anos": [
+   "2019",
+   "2021",
+   "2022",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2660,
+  "slug": "tribunal-de-justica-do-estado-do-goias",
+  "titulo": "Tribunal de Justiça do Estado do Goiás",
+  "relatorios": 14,
+  "bytes": 85237863,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2661,
+  "slug": "tribunal-de-justica-do-estado-do-maranhao",
+  "titulo": "Tribunal de Justiça do Estado do Maranhão",
+  "relatorios": 10,
+  "bytes": 45524442,
+  "anos": [
+   "2019",
+   "2021",
+   "2022",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2662,
+  "slug": "tribunal-de-justica-do-estado-do-mato-grosso",
+  "titulo": "Tribunal de Justiça do Estado do Mato Grosso",
+  "relatorios": 11,
+  "bytes": 82135853,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2663,
+  "slug": "tribunal-de-justica-do-estado-do-mato-grosso-do-sul",
+  "titulo": "Tribunal de Justiça do Estado do Mato Grosso do Sul",
+  "relatorios": 11,
+  "bytes": 47390271,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2024",
+   "2026"
+  ]
+ },
+ {
+  "categoriaId": 2664,
+  "slug": "tribunal-de-justica-do-estado-de-minas-gerais",
+  "titulo": "Tribunal de Justiça do Estado de Minas Gerais",
+  "relatorios": 13,
+  "bytes": 65610740,
+  "anos": [
+   "2019",
+   "2021",
+   "2022",
+   "2024",
+   "2026"
+  ]
+ },
+ {
+  "categoriaId": 2665,
+  "slug": "tribunal-de-justica-do-estado-do-para",
+  "titulo": "Tribunal de Justiça do Estado do Pará",
+  "relatorios": 16,
+  "bytes": 50785619,
+  "anos": [
+   "2019",
+   "2021",
+   "2022",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2666,
+  "slug": "tribunal-de-justica-do-estado-da-paraiba",
+  "titulo": "Tribunal de Justiça do Estado da Paraíba",
+  "relatorios": 13,
+  "bytes": 40805113,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2667,
+  "slug": "tribunal-de-justica-do-estado-do-parana",
+  "titulo": "Tribunal de Justiça do Estado do Paraná",
+  "relatorios": 14,
+  "bytes": 66228736,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2668,
+  "slug": "tribunal-de-justica-do-estado-do-pernambuco",
+  "titulo": "Tribunal de Justiça do Estado do Pernambuco",
+  "relatorios": 12,
+  "bytes": 112403660,
+  "anos": [
+   "2019",
+   "2021",
+   "2023",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2669,
+  "slug": "tribunal-de-justica-do-estado-do-piaui",
+  "titulo": "Tribunal de Justiça do Estado do Piauí",
+  "relatorios": 13,
+  "bytes": 54527878,
+  "anos": [
+   "2019",
+   "2021",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2670,
+  "slug": "tribunal-de-justica-do-estado-do-rio-de-janeiro",
+  "titulo": "Tribunal de Justiça do Estado do Rio de Janeiro",
+  "relatorios": 10,
+  "bytes": 82962789,
+  "anos": [
+   "2019",
+   "2021",
+   "2022",
+   "2024"
+  ]
+ },
+ {
+  "categoriaId": 2671,
+  "slug": "tribunal-de-justica-do-estado-do-rio-grande-do-norte",
+  "titulo": "Tribunal de Justiça do Estado do Rio Grande do Norte",
+  "relatorios": 11,
+  "bytes": 113476517,
+  "anos": [
+   "2019",
+   "2021",
+   "2022",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2672,
+  "slug": "tribunal-de-justica-do-estado-do-rio-grande-do-sul",
+  "titulo": "Tribunal de Justiça do Estado do Rio Grande do Sul",
+  "relatorios": 12,
+  "bytes": 65061205,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2024",
+   "2026"
+  ]
+ },
+ {
+  "categoriaId": 2673,
+  "slug": "tribunal-de-justica-do-estado-de-rondonia",
+  "titulo": "Tribunal de Justiça do Estado de Rondônia",
+  "relatorios": 12,
+  "bytes": 48903176,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2024",
+   "2026"
+  ]
+ },
+ {
+  "categoriaId": 2674,
+  "slug": "tribunal-de-justica-do-estado-de-santa-catarina",
+  "titulo": "Tribunal de Justiça do Estado de Santa Catarina",
+  "relatorios": 14,
+  "bytes": 60454332,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2024",
+   "2026"
+  ]
+ },
+ {
+  "categoriaId": 2675,
+  "slug": "tribunal-de-justica-do-estado-de-sao-paulo",
+  "titulo": "Tribunal de Justiça do Estado de São Paulo",
+  "relatorios": 12,
+  "bytes": 117256735,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2024",
+   "2026"
+  ]
+ },
+ {
+  "categoriaId": 2676,
+  "slug": "tribunal-de-justica-do-estado-de-sergipe",
+  "titulo": "Tribunal de Justiça do Estado de Sergipe",
+  "relatorios": 12,
+  "bytes": 50394949,
+  "anos": [
+   "2019",
+   "2021",
+   "2022",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2677,
+  "slug": "tribunal-de-justica-do-estado-do-tocantins",
+  "titulo": "Tribunal de Justiça do Estado do Tocantins",
+  "relatorios": 12,
+  "bytes": 40039244,
+  "anos": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2024",
+   "2025"
+  ]
+ },
+ {
+  "categoriaId": 2678,
+  "slug": "tribunal-de-justica-militar-do-estado-do-rio-grande-do-sul",
+  "titulo": "Tribunal de Justiça Militar do Estado do Rio Grande do Sul",
+  "relatorios": 1,
+  "bytes": 47384,
+  "anos": [
+   "2019"
+  ]
+ },
+ {
+  "categoriaId": 2689,
+  "slug": "tribunal-regional-do-trabalho-da-7a-regiao",
+  "titulo": "Tribunal Regional do Trabalho da 7ª Região",
+  "relatorios": 1,
+  "bytes": 2263694,
+  "anos": [
+   "2019"
+  ]
+ },
+ {
+  "categoriaId": 2692,
+  "slug": "tribunal-regional-do-trabalho-da-13a-regiao",
+  "titulo": "Tribunal Regional do Trabalho da 13ª Região",
+  "relatorios": 1,
+  "bytes": 1659546,
+  "anos": [
+   "2019"
+  ]
+ },
+ {
+  "categoriaId": 2693,
+  "slug": "tribunal-regional-do-trabalho-da-14a-regiao",
+  "titulo": "Tribunal Regional do Trabalho da 14ª Região",
+  "relatorios": 1,
+  "bytes": 3304868,
+  "anos": [
+   "2019"
+  ]
+ },
+ {
+  "categoriaId": 2796,
+  "slug": "tribunal-de-justica-do-estado-de-roraima",
+  "titulo": "Tribunal de Justiça do Estado de Roraima",
+  "relatorios": 13,
+  "bytes": 100325555,
+  "anos": [
+   "2019",
+   "2021",
+   "2022",
+   "2024",
+   "2025"
+  ]
+ }
+];
+
+export const RELATORIOS_TJMG: RelatorioTjmg[] = [
+ {
+  "titulo": "Relatório de Inspeção Ordinária TJMG 2026",
+  "publicadoEm": "2026-07-09",
+  "megabytes": 15,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/419313/relatorio-de-inspecao-ordinaria-tjmg-2026-2"
+ },
+ {
+  "titulo": "Relatório de Inspeção - TJMG 2023",
+  "publicadoEm": "2024-02-14",
+  "megabytes": 12.8,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023-3"
+ },
+ {
+  "titulo": "Relatório de Inspeção TJMG - Julho_2022",
+  "publicadoEm": "2022-10-17",
+  "megabytes": 5.9,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "titulo": "Relatório de Inspeção TJMG - Extrajudicial - Junho_2021",
+  "publicadoEm": "2021-09-16",
+  "megabytes": 0.7,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/159213/relatorio-de-inspecao-tjmg-extrajudicial-junho_2021-2"
+ },
+ {
+  "titulo": "Auto Circunstanciado de Inspeção - TJMG - 2019",
+  "publicadoEm": "2019-09-30",
+  "megabytes": 4.4,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82554/auto-circunstanciado-de-inspecao-tjmg-2019"
+ },
+ {
+  "titulo": "3.TJMG-Relatorio de Inspecao-NUPEMEC-CEJUSC-2019",
+  "publicadoEm": "2019-09-30",
+  "megabytes": 0.2,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82550/3-tjmg-relatorio-de-inspecao-nupemec-cejusc-2019"
+ },
+ {
+  "titulo": "3.TJMG-Relatorio de Inspecao-EJEF-2019",
+  "publicadoEm": "2019-09-30",
+  "megabytes": 0.6,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82551/3-tjmg-relatorio-de-inspecao-ejef-2019"
+ },
+ {
+  "titulo": "Relatório de Inspeção - EJEF - TJMG - 2017",
+  "publicadoEm": "2019-09-30",
+  "megabytes": 1.4,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82549/relatorio-de-inspecao-ejef-tjmg-2017"
+ },
+ {
+  "titulo": "Relatorio_Unidades_Judiciais_TJMG_2017",
+  "publicadoEm": "2019-09-30",
+  "megabytes": 3.9,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82557/relatorio_unidades_judiciais_tjmg_2017"
+ },
+ {
+  "titulo": "Relatorio_Unidades_Adm_TJMG_2017",
+  "publicadoEm": "2019-09-30",
+  "megabytes": 0.4,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82555/relatorio_unidades_adm_tjmg_2017"
+ },
+ {
+  "titulo": "Relatorio_NUPEMEC_TJMG_2017",
+  "publicadoEm": "2019-09-30",
+  "megabytes": 15.1,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82558/relatorio_nupemec_tjmg_2017"
+ },
+ {
+  "titulo": "Relatorio_Inspecao_Sistema_Judiciais_Processuais_TJMG_2017",
+  "publicadoEm": "2019-09-30",
+  "megabytes": 3.9,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82556/relatorio_inspecao_sistema_judiciais_processuais_tjmg_2017"
+ },
+ {
+  "titulo": "Inspeção 2012",
+  "publicadoEm": "2019-09-30",
+  "megabytes": 1.3,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82553/inspecao-2012-2"
+ }
+];
+
+export const ACHADOS_POR_TEMA: Record<string, number> = {
+ "pessoa_presa": 26,
+ "violencia_domestica": 7,
+ "infancia": 5,
+ "prazo_e_acervo": 74,
+ "colegiado": 17,
+ "pessoal": 22,
+ "sistema": 35,
+ "estatistica": 31,
+ "pericia_e_apoio": 26,
+ "cartorio": 23,
+ "precatorio": 17,
+ "extrajudicial": 4
+};
+
+export const ACHADOS_POR_TIPO_UNIDADE = {
+ "orgao-central": {
+  "unidades": 2,
+  "secoes": 2,
+  "caracteres": 6514
+ },
+ "gabinete": {
+  "unidades": 21,
+  "secoes": 24,
+  "caracteres": 25539
+ },
+ "turma": {
+  "unidades": 1,
+  "secoes": 1,
+  "caracteres": 1431
+ },
+ "juizado": {
+  "unidades": 4,
+  "secoes": 4,
+  "caracteres": 16626
+ },
+ "vara": {
+  "unidades": 66,
+  "secoes": 88,
+  "caracteres": 160830
+ },
+ "outra": {
+  "unidades": 4,
+  "secoes": 4,
+  "caracteres": 11115
+ }
+} as const;
+
+export const ACHADOS_TJMG: AchadoInspecao[] = [
+ {
+  "ano": 2026,
+  "secao": "3.4",
+  "unidade": "CORREGEDORIA-GERAL DE JUSTIÇA",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 2,
+  "caracteres": 6085,
+  "temas": [
+   "pessoa_presa",
+   "violencia_domestica",
+   "infancia",
+   "prazo_e_acervo"
+  ],
+  "trecho": "No curso da inspeção realizada na Corregedoria-Geral de Justiça do Tribunal de Justiça de Minas Gerais, a partir dos questionamentos formulados por esta Corregedoria Nacional e das informações apresentadas pela unidade inspecionada, foi possível identificar um conjunto de situações que demandam acompanhamento mais próximo e estruturado, notadamente em razão da persistência de indicadores críticos de desempenho ou da ausência de informações atualizadas e suficientes quanto à superação de problemas anteriormente diagnosticados. Verificou-se, inicialmente, que determinadas unidades judiciais apre…"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.4.4",
+  "unidade": "GABINETE DO DESEMBARGADOR BRUNO TERRA DIAS",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 4,
+  "caracteres": 2202,
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Conforme noticiado, o gabinete inspecionado registrou a distribuição de 2.151 feitos no último ano, superando amplamente a capacidade de baixa definitiva, que foi de 1.470 processos, o que implica reconhecer o não atingimento da Meta Nacional 1 do CNJ, fato igualmente declinado pela unidade ao informar que o índice cumprido fora de apenas 86%. Nada obstante a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há prevalecer a compreensão de que as metas são compromissos anuais cujo objetivo é buscar o aperfeiçoamento da prestação jurisdicional, funcionando como um…"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.8.4",
+  "unidade": "GABINETE DO DESEMBARGADOR EDISON FEITAL LEITE",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 4,
+  "caracteres": 2751,
+  "temas": [
+   "pessoa_presa",
+   "violencia_domestica",
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Conforme noticiado, o gabinete inspecionado registrou a distribuição de 2.558 feitos no último ano, superando amplamente a capacidade de baixa definitiva, que foi de 1.199 processos, o que implica reconhecer o não atingimento da Meta Nacional 1 do CNJ, fato igualmente declinado pela unidade ao informar que o índice cumprido fora de apenas 80%. Sem embargo, houve ainda o descumprimento da Meta 8, relativa à violência doméstica, que atingiu apenas 83%. Nada obstante a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há que prevalecer a compreensão de que as metas…"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.9.4",
+  "unidade": "GABINETE DO DESEMBARGADOR EDUARDO MACHADO COSTA",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 4,
+  "caracteres": 2664,
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Conforme noticiado, a única meta nacional do CNJ com índice abaixo do esperado foi a Meta 1, com 92%, o que pode ser atribuído ao aumento súbito da distribuição citada. Em que pese isso, é dizer, a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há que prevalecer a compreensão de que as metas são compromissos anuais cujo objetivo é buscar o aperfeiçoamento da prestação jurisdicional, funcionando como um plano de gestão focado em resultados mensuráveis, visando dar mais agilidade, eficiência e transparência à Justiça. Elas são fundamentais para o trabalho de mo…"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.10.4",
+  "unidade": "GABINETE DO DESEMBARGADOR ENÉIAS XAVIER GOMES",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 2,
+  "caracteres": 1181,
+  "temas": [
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Conforme noticiado, o gabinete inspecionado registrou o não atingimento da Meta Nacional 1 do CNJ, atingindo um índice de apenas 87%. Nada obstante a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há que prevalecer a compreensão de que as metas são compromissos anuais cujo objetivo é buscar o aperfeiçoamento da prestação jurisdicional, funcionando como um plano de gestão focado em resultados mensuráveis, visando dar mais agilidade, eficiência e transparência à Justiça. Elas são fundamentais para o trabalho de monitoramento e correição, garantindo que as unida…"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.12.4",
+  "unidade": "GABINETE DO DESEMBARGADOR GENIL ANACLETO RODRIGUES FILHO",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 385,
+  "temas": [
+   "colegiado"
+  ],
+  "trecho": "Considerando que a Meta 1 ainda não foi atingida na 10ª Câmara Cível por situações alheias ao poder de impulso imediato da unidade, determina- se ao Gabinete do Desembargador Genil Anacleto Rodrigues Filho que, tão logo superados os obstáculos identificados, promova medidas voltadas ao seu cumprimento, apresentando informações à Corregedoria Nacional de Justiça, no prazo de 90 dias."
+ },
+ {
+  "ano": 2026,
+  "secao": "4.16.4",
+  "unidade": "GABINETE DA DESEMBARGADORA JAQUELINE CALÁBRIA ALBUQUERQUE",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 301,
+  "temas": [
+   "colegiado"
+  ],
+  "trecho": "Considerando que alguns integrantes da 10ª Câmara Cível têm comparecido às sessões por videoconferência a partir dos próprios gabinetes, determina-se à Presidência do TJMG que oficie aos membros daquele colegiado, a fim de que passem, imediatamente, a participar presencialmente das referidas sessões."
+ },
+ {
+  "ano": 2026,
+  "secao": "4.17.4",
+  "unidade": "GABINETES",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 4,
+  "caracteres": 2217,
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "O gabinete inspecionado registrou a distribuição de 2.495 feitos no último ano, superando amplamente a capacidade de baixa definitiva, que foi de 1.759 processos, o que implica reconhecer o não atingimento da Meta Nacional 1 do CNJ, fato igualmente declinado pela unidade ao informar que o índice cumprido fora de apenas 86%. Nada obstante a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há que prevalecer a compreensão de que as metas são compromissos anuais cujo objetivo é buscar o aperfeiçoamento da prestação jurisdicional, funcionando como um plano de gestão…"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.19.4",
+  "unidade": "GABINETES",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 296,
+  "temas": [
+   "colegiado"
+  ],
+  "trecho": "Considerando que alguns integrantes da 12ª Câmara Cível têm comparecido às sessões telepresenciais a partir dos próprios gabinetes, determina-se à Presidência do TJMG que oficie aos membros daquele colegiado, a fim de que passem, imediatamente, a participar presencialmente das referidas sessões."
+ },
+ {
+  "ano": 2026,
+  "secao": "4.19.5",
+  "unidade": "GABINETES",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 278,
+  "temas": [],
+  "trecho": "Diante do registro acerca das instabilidades recorrentes no sistema Themis (quedas e travamentos), recomenda-se à Presidência do TJMG que avalie a adoção de medidas estruturais para a estabilização do sistema, com vistas à continuidade e à eficiência das atividades judiciárias."
+ },
+ {
+  "ano": 2026,
+  "secao": "4.20.4",
+  "unidade": "GABINETE DO DESEMBARGADOR JOSÉ ARTHUR DE CARVALHO PEREIRA FILHO",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 87,
+  "temas": [],
+  "trecho": "Determina-se à Presidência do TJMG, a quem caberá a supervisão das tarefas, que oficie:"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.21.4",
+  "unidade": "GABINETE DO DESEMBARGADOR JOSÉ EUSTÁQUIO LUCAS PEREIRA",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 77,
+  "temas": [],
+  "trecho": "Não tendo sido apuradas irregularidades, não há determinações a serem feitas."
+ },
+ {
+  "ano": 2026,
+  "secao": "4.22.4",
+  "unidade": "GABINETE DO DESEMBARGADOR JÚLIO CÉSAR LORENS",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 4,
+  "caracteres": 2399,
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Os indicadores de produtividade dos últimos 12 meses revelam a distribuição de 2.698 feitos, com a realização de 1.727 julgamentos colegiados. Os julgamentos monocráticos somaram 66 decisões, resultando em um total de 1.735 processos baixados definitivamente do acervo no período, a implicar o desatendimento da Meta Nacional 1 do CNJ, que ficou em 68% do almejado. De igual forma o cumprimento da Meta 8 situa-se em 67%. Nada obstante a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há que prevalecer a compreensão de que as metas são compromissos anuais cujo obj…"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.23.4",
+  "unidade": "GABINETE DA DESEMBARGADORA LÍLIAN MACIEL SANTOS",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 77,
+  "temas": [],
+  "trecho": "Não tendo sido apuradas irregularidades, não há determinações a serem feitas."
+ },
+ {
+  "ano": 2026,
+  "secao": "4.24.4",
+  "unidade": "GABINETE DO DESEMBARGADOR MARCELO DE OLIVEIRA MILAGRES",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 289,
+  "temas": [
+   "colegiado"
+  ],
+  "trecho": "Considerando que alguns integrantes da 21ª Câmara Cível têm comparecido às sessões híbridas a partir dos próprios gabinetes, determina-se à Presidência do TJMG que oficie aos membros daquele colegiado, a fim de que passem, imediatamente, a participar presencialmente das referidas sessões."
+ },
+ {
+  "ano": 2026,
+  "secao": "4.25.4",
+  "unidade": "GABINETE DO DESEMBARGADOR MARCO ANTÔNIO DE MELO",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 635,
+  "temas": [
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Diante da existência de feitos conclusos há mais de 120 dias no Gabinete do Desembargador Marco Antônio de Melo, determina-se à Presidência do TJMG que oficie ao gabinete do magistrado, a fim de que, no prazo de 30 dias, a unidade elabore um plano de gestão do acervo que priorize o julgamento dos processos que se encontram nessa condição. Considerando que alguns integrantes da 6ª Câmara Criminal têm comparecido às sessões hibridas a partir dos próprios gabinetes, também se determina à Presidência do TJMG que oficie aos membros daquele colegiado, para que passem, imediatamente, a participar pre…"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.26.4",
+  "unidade": "GABINETE DA DESEMBARGADORA MARIA LÚCIA CABRAL CARUSO",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1184,
+  "temas": [
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Considerando que alguns integrantes da 12ª Câmara Cível têm comparecido às sessões híbridas a partir dos próprios gabinetes, determina-se à Presidência do TJMG que oficie aos membros daquele colegiado, a fim de que passem, imediatamente, a participar presencialmente das referidas sessões. Ademais, diante da existência de processos sobrestados na 16ª Câmara Cível que dependem de redistribuição ao sucessor, também se determina à Presidência daquela Corte que, no prazo de 30 dias, adote as providências necessárias para a regularização desses feitos (processos 1.0283.08.010047-4/008 e 1.0283.08.01…"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.27.4",
+  "unidade": "GABINETE DO DESEMBARGADOR OSVALDO OLIVEIRA ARAÚJO FIRMO",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 87,
+  "temas": [],
+  "trecho": "Determina-se à Presidência do TJMG, a quem caberá a supervisão das tarefas, que oficie:"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.28.4",
+  "unidade": "GABINETE DO DESEMBARGADOR PAULO DE TARSO TAMBURINI SOUZA",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 4,
+  "caracteres": 2307,
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "O gabinete inspecionado registrou o não atingimento da Meta Nacional 1 do CNJ, já que o índice foi cumprido em apenas 80%. Nada obstante a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há que prevalecer a compreensão de que as metas são compromissos anuais cujo objetivo é buscar o aperfeiçoamento da prestação jurisdicional, funcionando como um plano de gestão focado em resultados mensuráveis, visando dar mais agilidade, eficiência e transparência à Justiça. Elas são fundamentais para o trabalho de monitoramento e correição, garantindo que as unidades judiciá…"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.29.4",
+  "unidade": "GABINETE DO DESEMBARGADOR PAULO FERNANDO NAVES DE RESENDE",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2683,
+  "temas": [
+   "prazo_e_acervo",
+   "pessoal",
+   "colegiado"
+  ],
+  "trecho": "Considerando que o Desembargador Paulo Fernando Naves de Resende ainda não fixou residência em Belo Horizonte, sede do Tribunal de Justiça de Minas Gerais, determina-se à Presidência do TJMG que, no prazo de 30 dias, apure a situação residencial do referido magistrado e adote as providências cabíveis para assegurar o cumprimento da obrigação, com a devida cientificação da Corregedoria Nacional de Justiça acerca das medidas tomadas. Tendo em vista que o gabinete não dispõe de rotina própria de controle e acompanhamento dos processos em diligência na origem, dos sobrestados por pendência de julg…"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.31.4",
+  "unidade": "GABINETES",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1717,
+  "temas": [
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Considerando que o gabinete não mantém controle sistemático sobre os processos que estão no arquivo provisório, em diligência na origem, sobrestados por pendência de julgamento de temas repetitivos, IRDR ou repercussão geral, e que não há mecanismo de acompanhamento dos feitos de relatoria da Desembargadora com pedido de vista formulado por outro integrante da Câmara, determina-se à Presidência do TJMG que oficie ao Gabinete da Desembargadora Régia Ferreira de Lima, a fim de que, no prazo de 90 dias: I) adote mecanismo de controle e acompanhamento dos processos em arquivo provisório e em dilig…"
+ },
+ {
+  "ano": 2026,
+  "secao": "4.33.4",
+  "unidade": "GABINETE DO DESEMBARGADOR RONALDO CLARET DE MORAES",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 301,
+  "temas": [
+   "colegiado"
+  ],
+  "trecho": "Considerando que alguns integrantes da 10ª Câmara Cível têm comparecido às sessões por videoconferência a partir dos próprios gabinetes, determina-se à Presidência do TJMG que oficie aos membros daquele colegiado, a fim de que passem, imediatamente, a participar presencialmente das referidas sessões."
+ },
+ {
+  "ano": 2026,
+  "secao": "4.35.4",
+  "unidade": "GABINETE DA DESEMBARGADORA SANDRA ALVES DE SANTANA E FONSECA",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 77,
+  "temas": [],
+  "trecho": "Não tendo sido apuradas irregularidades, não há determinações a serem feitas."
+ },
+ {
+  "ano": 2026,
+  "secao": "4.37.4",
+  "unidade": "GABINETE DA DESEMBARGADORA SHIRLEY FENZI BERTÃO",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 289,
+  "temas": [
+   "colegiado"
+  ],
+  "trecho": "Considerando que alguns integrantes da 11ª Câmara Cível têm comparecido às sessões híbridas a partir dos próprios gabinetes, determina-se à Presidência do TJMG que oficie aos membros daquele colegiado, a fim de que passem, imediatamente, a participar presencialmente das referidas sessões."
+ },
+ {
+  "ano": 2026,
+  "secao": "4.40.4",
+  "unidade": "GABINETE DO DESEMBARGADOR WANDERLEY SALGADO DE PAIVA",
+  "tipo": "gabinete",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1055,
+  "temas": [
+   "prazo_e_acervo"
+  ],
+  "trecho": "Conforme relatado no item anterior, foi constatada a ausência de utilização da ferramenta de gestão \"Painel Tático\" no Gabinete do Desembargador Wanderley Paiva, o que demanda providências imediatas por parte da Presidência do TJMG no sentido de promover junto à Unidade a elaboração e execução de plano de gestão para o adequado conhecimento e utilização das ferramentas disponíveis para o adequado gerenciamento do acervo processual e controle das Metas Nacionais do Poder Judiciário. À vista disso, determina-se à Presidência do TJMG: Que, no prazo de 30 dias, adote providências no sentido de ela…"
+ },
+ {
+  "ano": 2026,
+  "secao": "5.1.4",
+  "unidade": "TURMA RECURSAL DE JURISDIÇÃO EXCLUSIVA DE BELO HORIZONTE, BETIM E CONTAGEM",
+  "tipo": "turma",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1431,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "estatistica"
+  ],
+  "trecho": "Achado 1: Constatou-se, na unidade jurisdicional inspecionada, situação que se reproduz nas demais unidades avaliadas, consistente em dificuldade sistêmica na obtenção e consolidação de dados estatísticos. Os sistemas informatizados não permitiam a extração integral dos dados solicitados pela equipe de inspeção do CNJ na data da inspeção, tampouco possibilitavam a recuperação dessas informações relativamente ao período pretérito de um ano. Na data da inspeção, o dado estatístico mais recente disponível correspondia a 28 de fevereiro de 2026, evidenciando defasagem temporal de aproximadamente u…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.1.4",
+  "unidade": "1º JUIZADO DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER",
+  "tipo": "juizado",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2931,
+  "temas": [
+   "pessoa_presa",
+   "violencia_domestica",
+   "prazo_e_acervo",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Durante a inspeção foi asseverado pelo juiz reiterados atrasos nas audiências de instrução e julgamento em razão de que, quando do início do ato, regularmente é solicitada pela defesa conversa reservada com o réu, oportunidade em que juiz, promotora e servidora deixam a sala de audiência para a conversa reservada, o que poderia ser feito pela defesa antes do início do ato. Tais atrasos impactam, inclusive, as vítimas que seguem aguardando no fórum a conclusão da referida conversa reservada. Diante disso, determina-se à Corregedoria-Geral de Justiça que, em conjunto com a unidade e em até 90 di…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.2.4",
+  "unidade": "1ª UNIDADE JURISDICIONAL DA FAZENDA PÚBLICA DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1754,
+  "temas": [
+   "prazo_e_acervo",
+   "estatistica"
+  ],
+  "trecho": "Achado 1: Constatou-se dificuldade sistêmica na obtenção e consolidação de dados estatísticos, situação que se reproduz nas demais unidades avaliadas. Os sistemas informatizados não permitiam a extração integral dos dados solicitados pela equipe de inspeção do CNJ na data da visita, tampouco possibilitavam a recuperação dessas informações relativamente ao período pretérito de um ano. Na data da inspeção, o dado estatístico mais recente disponível correspondia a 23/02/2026, evidenciando potencial defasagem em relação ao momento da coleta, o que pode comprometer a atualidade e a fidedignidade da…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.3.5",
+  "unidade": "1ª VARA CÍVEL DA COMARCA DE SETE LAGOAS",
+  "tipo": "vara",
+  "comarca": "SETE LAGOAS",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 552,
+  "temas": [
+   "prazo_e_acervo"
+  ],
+  "trecho": "À Corregedoria-Geral da Justiça do Estado de Minas Gerais (TJMG), para que: • Manutenção de Cooperação: Avalie a manutenção e a ampliação do regime de cooperação (Núcleo de Justiça 4.0 – Cível) destinado ao julgamento de processos represados na 1ª Vara Cível da Comarca de Sete Lagoas. À Presidência do Tribunal de Justiça do Estado de Minas Gerais (TJMG), para que: • Promova o impulsionamento do processo SEI nº 0103751- 92.2025.8.13.0000, o qual objetiva a readequação da competência das varas da Comarca de Sete Lagoas e a criação da 4ª Vara Cível."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.4.4",
+  "unidade": "1ª VARA CÍVEL DA INFÂNCIA E DA JUVENTUDE DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 695,
+  "temas": [
+   "infancia",
+   "prazo_e_acervo"
+  ],
+  "trecho": "Achado 1: Identificou-se um represamento de 522 processos paralisados há mais de 120 dias na secretaria. Determinação: À Corregedoria-Geral de Justiça, para que atue junto à 1ª Vara Cível da Infância e da Juventude de Belo Horizonte visando priorizar a tramitação e o julgamento dos processos paralisados há mais de 120 dias, com especial atenção aos feitos que possuem prioridade legal. A unidade deverá implementar uma rotina permanente de acompanhamento para prevenir novos atrasos e encaminhar à Corregedoria Nacional de Justiça, no prazo de 90 dias, um extrato atualizado do quantitativo de proc…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.5.4",
+  "unidade": "1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DA COMARCA DE NOVA LIMA",
+  "tipo": "vara",
+  "comarca": "NOVA LIMA",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 3432,
+  "temas": [
+   "infancia",
+   "prazo_e_acervo",
+   "cartorio"
+  ],
+  "trecho": "A análise dos dados e dos fluxos de trabalho da 1ª Vara Criminal e da Infância e da Juventude de Nova Lima revelou um conjunto de irregularidades e problemas de gestão que demandam intervenção corretiva urgente. 6.5.4.1.) Elevado número de processos paralisados: A existência, na data do preenchimento do formulário, de 638 processos paralisados na secretaria há mais de 120 dias e 144 processos conclusos com a magistrada pelo mesmo período configura um grave represamento do acervo, com impacto direto na razoável duração do processo. DETERMINA-SE à 1ª Vara Criminal e da Infância e Juventude da Co…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.5.5",
+  "unidade": "1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DA COMARCA DE NOVA LIMA",
+  "tipo": "vara",
+  "comarca": "NOVA LIMA",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 1360,
+  "temas": [
+   "infancia",
+   "prazo_e_acervo",
+   "pessoal",
+   "pericia_e_apoio"
+  ],
+  "trecho": "6.5.5.1.) À Presidência do Tribunal de Justiça de Minas Gerais que: i) Avalie a adequação do quadro de servidores da secretaria da 1ª Vara Criminal e da Infância e da Juventude de Nova Lima, considerando o impacto direto da carência de pessoal no cumprimento de normativas do CNJ e no represamento do acervo. ii) Promova articulação com o Poder Executivo estadual, especialmente com a Secretaria de Estado de Segurança Pública e a Chefia da Polícia Civil, para viabilizar maior celeridade na elaboração de laudos periciais, em especial nos exames de insanidade mental, cujos atrasos vêm impactando a…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.6.4",
+  "unidade": "1ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2906,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "Identificados 10 processos aguardando cumprimento de mandados há mais de 45 dias. Determinação: Desenvolver/aprimorar rotina de controle e acompanhamento dos mandados expedidos, especialmente daqueles expedidos há mais de 45 dias, a fim de evitar a demora injustificada do andamento processual, devendo-se encaminhar à Corregedoria Nacional de Justiça, no prazo de 90 dias, informações sobre as providências adotadas. Identificadas 35 cartas precatórias expedidas sem cumprimento há mais de 3 meses. Determinação: Desenvolver/aprimorar rotina de controle e acompanhamento das cartas precatórias exped…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.6.5",
+  "unidade": "1ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 1241,
+  "temas": [
+   "prazo_e_acervo",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Informado pela unidade que as restrições patrimoniais são atualmente realizadas e cadastradas manualmente. Recomendação: avaliar a implementação de mecanismos que permitam a automatização da efetivação e do cadastro das restrições patrimoniais, de modo a conferir maior celeridade e eficiência à prestação jurisdicional. Dificuldade na nomeação de peritos em face dos valores previstos para pagamento na tabela do TJMG. Recomendação: Instituir uma Central de Perícias para auxiliar na localização de profissionais habilitados à execução de perícias e/ou exames técnicos, bem como para contribuir com…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.7.4",
+  "unidade": "1ª VARA DE FAZENDA PÚBLICA E AUTARQUIAS DA COMARCA DE SETE LAGOAS",
+  "tipo": "vara",
+  "comarca": "SETE LAGOAS",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 928,
+  "temas": [
+   "sistema",
+   "estatistica"
+  ],
+  "trecho": "Achado 1: Constatou-se dificuldade sistêmica na obtenção e consolidação de dados estatísticos, situação que se reproduz nas demais unidades avaliadas na presente inspeção. Os sistemas informatizados não permitiram, no momento do preenchimento do formulário, a extração integral dos dados solicitados pela equipe de inspeção do CNJ relativos ao período pretérito de 12 meses. O Painel de Inspeção CNJ 2026 foi disponibilizado somente após o horário-limite de envio do formulário (18h do dia 23/02/2026), inviabilizando a conferência e eventual correção dos dados pela unidade. Ademais, a unidade encon…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.8.4",
+  "unidade": "1ª VARA DE FEITOS TRIBUTÁRIOS DO ESTADO",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2092,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "Identificadas 45 cartas precatórias expedidas sem cumprimento há mais de 3 meses. Determinação: desenvolver rotina de controle e acompanhamento das cartas precatórias expedidas, especialmente há mais de 3 meses, a fim de evitar a demora injustificada do andamento processual, devendo-se encaminhar à Corregedoria Nacional de Justiça, no prazo de 90 dias, informações sobre as providências adotadas. Dificuldade dos servidores quanto ao acesso às informações relativas a dados estatísticos da unidade, inclusive no que tange às metas nacionais e extração de determinadas funcionalidades dos sistemas p…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.8.5",
+  "unidade": "1ª VARA DE FEITOS TRIBUTÁRIOS DO ESTADO",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 1094,
+  "temas": [
+   "prazo_e_acervo",
+   "pessoal",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Dificuldade na nomeação de peritos em face dos valores previstos para pagamento na tabela do TJMG. Recomendação: instituir uma Central de Perícias para auxiliar na localização de profissionais habilitados à execução de perícias e/ou exames técnicos, bem como para contribuir com o agendamento das perícias, otimizando o trabalho, principalmente com a concentração dos eventuais exames técnicos. Informado pela unidade que as restrições patrimoniais são atualmente realizadas e cadastradas manualmente. Recomendação: avaliar a implementação de mecanismos que permitam a automatização da efetivação e d…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.9.4",
+  "unidade": "1ª VARA DE GARANTIAS DE BELO HORIZONTE/MG",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 8208,
+  "temas": [
+   "pessoa_presa",
+   "violencia_domestica",
+   "sistema",
+   "prazo_e_acervo",
+   "pessoal",
+   "cartorio",
+   "pericia_e_apoio"
+  ],
+  "trecho": "As audiências de custódia são realizadas pelo núcleo das garantias, no qual há dois juízes atuando, um no período matutino e outro no período vespertino. Foi apurado que, a exemplo dos autos 5020133- 58.2026.8.13.0024, após a prisão em flagrante, a pessoa presa é recolhida a presídio da comarca pela Polícia Penal e, somente no dia seguinte, é feita a condução até o núcleo das custódias para realização da audiência prevista na Resolução CNJ n. 213/2015. Na audiência de custódia, caso concedida a liberdade, é solto na oportunidade; caso concedida a liberdade com imposição de monitoramento eletrô…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.10.4",
+  "unidade": "1ª VARA DOS FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 3303,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "estatistica"
+  ],
+  "trecho": "Dificuldade dos servidores quanto ao acesso às informações relativas a dados estatísticos da unidade, inclusive no que tange às metas nacionais e extração de determinadas funcionalidades dos sistemas processuais. Determinação: empreender a realização de cursos, simpósios e workshops para capacitação dos servidores das unidades judiciais, no que tange à utilização do sistema Eproc, das ferramentas gerenciais, de estatísticas do Tribunal, inclusive no que tange ao cumprimento das metas nacionais, devendo- se encaminhar à Corregedoria Nacional de Justiça, no prazo de 90 dias, informações sobre as…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.10.5",
+  "unidade": "1ª VARA DOS FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 715,
+  "temas": [
+   "pericia_e_apoio"
+  ],
+  "trecho": "Dificuldade na nomeação de peritos em face dos valores previstos para pagamento na tabela do TJMG. Recomendação: instituir uma Central de Perícias para auxiliar na localização de profissionais habilitados à execução de perícias e/ou exames técnicos, bem como para contribuir com o agendamento das perícias, otimizando o trabalho, principalmente com a concentração dos eventuais exames técnicos. Informado pela unidade que as restrições patrimoniais são atualmente realizadas e cadastradas manualmente. Recomendação: avaliar a implementação de mecanismos que permitam a automatização da efetivação e d…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.11.4",
+  "unidade": "1ª VARA EMPRESARIAL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2184,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "pessoal",
+   "estatistica"
+  ],
+  "trecho": "À Corregedoria-Geral de Justiça do TJMG, para que atue junto à 1ª Vara Empresarial da Comarca de Belo Horizonte na elaboração e acompanhamento de plano de trabalho para o saneamento das seguintes pendências, encaminhando à Corregedoria Nacional de Justiça, no prazo de 90 dias, extrato atualizado: 1) Existência de 216 processos paralisados há mais de 120 dias: 144 em secretaria e 72 conclusos, sendo 52 com prioridade legal - Piorizar o andamento/julgamento dos processos paralisados há mais de 120 dias, especialmente aqueles que possuam prioridade legal, devendo-se implementar rotina de acompanh…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.12.4",
+  "unidade": "1ª VARA EMPRESARIAL, DE FAZENDA PÚBLICA E REGISTROS PÚBLICOS",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 3023,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "pessoal",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "À Corregedoria-Geral de Justiça do TJMG, para que atue junto à 1ª Vara Empresarial, de Fazenda Pública e Registros Públicos da Comarca de Contagem, na elaboração e acompanhamento de plano de trabalho para o saneamento das seguintes pendências, encaminhando à Corregedoria Nacional de Justiça, no prazo de 90 dias, extrato atualizado: 1) Existência de 106 processos paralisados em gabinete há mais de 120 dias, sendo 12 com prioridade legal - Priorizar o andamento/julgamento dos processos paralisados há mais de 120 dias, especialmente aqueles que possuam prioridade legal, devendo-se implementar rot…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.13.4",
+  "unidade": "1ª VARA ESPECIALIZADA EM CRIMES CONTRA A CRIANÇA E O ADOLESCENTE",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1343,
+  "temas": [
+   "cartorio"
+  ],
+  "trecho": "Considerando a ausência de servidores efetivos no gabinete, o que desprestigia a atividade-fim e compromete a segurança jurídica do serviço prestado, determina-se à Presidência e à Corregedoria do Tribunal de Justiça do Estado de Minas Gerais que elabore, em conjunto com a unidade, plano de aparelhamento do gabinete, com pelo menos 2 (dois) servidores efetivos, no prazo de 90 (noventa) dias, seja com a realização de novo concurso, seja com a nomeação de novos candidatos do certame então vigente, encaminhando à Corregedoria Nacional de Justiça o referido plano, ao término do prazo supracitado.…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.14.4",
+  "unidade": "VARAS",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 5834,
+  "temas": [
+   "pessoa_presa",
+   "sistema",
+   "extrajudicial",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Da análise aleatória dos processos do \"1º Sumariante\", foi obbservado nos autos n. 5202947-72.2025.8.13.0024 que, em razão de o réu apresentar indícios de transtorno mental, foi determinada em 8/10/2025 a instauração dos respectivos incidentes de insanidade mental. Apesar de preso e adotadas as providências de imediato pela serventia, a Diretora da “Seção de perícias no vivo”, vinculada ao IML – Polícia Civil de Minas Gerais, designou o dia 30/9/2026 para a realização da perícia, prazo que extrapola a razoabilidade em razão de tratar de processo de réu preso. Idêntica situação foi observada no…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.15.4",
+  "unidade": "2º JUIZADO DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER",
+  "tipo": "juizado",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 8819,
+  "temas": [
+   "pessoa_presa",
+   "violencia_domestica",
+   "prazo_e_acervo",
+   "cartorio",
+   "estatistica",
+   "pericia_e_apoio"
+  ],
+  "trecho": "À vista dos dados apresentados com relação aos processos distribuídos nos últimos 12(doze) meses, foi feita consulta ao B.I. disponibilizado pelo TJMG (QlikSense) à busca do número de ações penais distribuídas no referido período, sem sucesso, em razão da indisponibilidade de informações precisas a respeito de em quantos processos houve evolução de classe (de IP para ação penal). Solicitada tal informação à Chefia de Cartório, foi asseverado que também não a possuía. Somente após intervenção junto ao TJMG foi obtida a informação das 4(quatro) varas de violência doméstica da Capital, observando…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.16.4",
+  "unidade": "SEGUNDA UNIDADE DO JUIZADO ESPECIAL DA FAZENDA PÚBLICA",
+  "tipo": "juizado",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1070,
+  "temas": [
+   "sistema",
+   "estatistica"
+  ],
+  "trecho": "Achado 1: Constatou-se, na unidade jurisdicional inspecionada, situação que se reproduz nas demais unidades avaliadas, consistente em dificuldade sistêmica na obtenção e consolidação de dados estatísticos. Os sistemas informatizados não permitiam a extração integral dos dados solicitados pela equipe de inspeção do CNJ, tampouco possibilitavam a recuperação dessas informações relativamente ao período pretérito de um ano. Há divergências entre os dados apresentados no formulário e os verificados no sistema ClikSense, em razão de filtro incorreto (ano 2024 em vez de 2025), o que comprometeu a fid…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.17.4",
+  "unidade": "2ª VARA CÍVEL DA COMARCA DE CONTAGEM - MG",
+  "tipo": "vara",
+  "comarca": "CONTAGEM",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2301,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "pessoal",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "À Corregedoria-Geral de Justiça do TJMG, para que atue junto à 2ª Vara Cível da Comarca de Contagem, na elaboração e acompanhamento de plano de trabalho para o saneamento das seguintes pendências, encaminhando à Corregedoria Nacional de Justiça, no prazo de 90 dias, extrato atualizado: 1) Existência de 1.131 processos paralisados há mais de 120 dias: 21 em secretaria e 1.110 conclusos, sendo 211 com prioridade legal - Piorizar o andamento/julgamento dos processos paralisados há mais de 120 dias, especialmente aqueles que possuam prioridade legal, devendo-se implementar rotina de acompanhamento…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.19.4",
+  "unidade": "2ª VARA CÍVEL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2591,
+  "temas": [
+   "prazo_e_acervo",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Achado 1: Identificou-se um acervo de 113 processos aguardando designação de perícia e 448 aguardando finalização. Determinação: Determina-se à Presidência e à Corregedoria- Geral de Justiça do TJMG que, no prazo de 90 dias, elaborem e apresentem à Corregedoria Nacional de Justiça um plano de ação para sanar o represamento de 561 processos paralisados na fase pericial da 2ª Vara Cível de Belo Horizonte, sendo 113 aguardando designação e 448 pendentes de finalização. A medida deve enfrentar o gargalo gerado pela especialização em saúde suplementar e pela recorrente recusa de peritos em casos de…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.20.5",
+  "unidade": "2ª VARA CÍVEL DE BETIM",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 290,
+  "temas": [],
+  "trecho": "À Presidência do Tribunal de Justiça do Estado de Minas Gerais (TJMG), para que: Procedimento de Baixa Definitiva: Avalie a viabilidade da criação de estrutura própria e especializada para tratar das providências relacionadas à cobrança das custas processuais finais e à expedição da CNPDD."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.21.4",
+  "unidade": "2ª VARA CRIMINAL",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1348,
+  "temas": [
+   "cartorio"
+  ],
+  "trecho": "Considerando que a ausência de servidores efetivos no gabinete implica desprestígio à atividade-fim e compromete a segurança jurídica do serviço prestado, determina-se à Presidência e à Corregedoria do Tribunal de Justiça do Estado de Minas Gerais que elabore, em conjunto com a unidade, plano de aparelhamento do gabinete, com pelo menos 2 (dois) servidores efetivos, no prazo de 90 (noventa) dias, seja com a realização de novo concurso, seja com a nomeação de novos candidatos do certame então vigente, encaminhando à Corregedoria Nacional de Justiça o referido plano, ao término do prazo supracit…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.22.4",
+  "unidade": "2ª VARA CRIMINAL E EXECUÇÃO PENAL DA COMARCA DE NOVA LIMA",
+  "tipo": "vara",
+  "comarca": "NOVA LIMA",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 4207,
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo",
+   "precatorio",
+   "pericia_e_apoio"
+  ],
+  "trecho": "A inspeção revelou um conjunto de irregularidades e deficiências que comprometem severamente o funcionamento da unidade e a entrega da prestação jurisdicional. Esses problemas, se não forem abordados com urgência e eficácia, tendem a agravar o já crítico cenário da vara. 6.22.4.1.) Acervo Excessivo e Crescente: O acervo total de 6.862 processos para uma única magistrada, sobretudo como execução penal, é de difícil gestão, no tocante a qualidade e celeridade. O Índice de Atendimento à Demanda (IAD) de 92,5% comprova que o problema é estrutural e que o acervo continuará a crescer se nenhuma medi…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.22.5",
+  "unidade": "2ª VARA CRIMINAL E EXECUÇÃO PENAL DA COMARCA DE NOVA LIMA",
+  "tipo": "vara",
+  "comarca": "NOVA LIMA",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 594,
+  "temas": [
+   "pessoa_presa",
+   "sistema"
+  ],
+  "trecho": ". 6.22.5.1.) À 2ª Vara Criminal e de Execução Penal de Nova Lima, a instauração de uma análise interna para identificar as causas do significativo número de prescrições, com o desenvolvimento de fluxos de trabalho e alertas no sistema PJe para processos com risco de prescrição a curto e médio prazo. 6.22.5.2.) À Corregedoria-Geral de Justiça do Tribunal de Justiça de Minas Gerais que: i) Estude a possibilidade de inclusão da unidade na sistemática de Cooperação de outros magistrados para auxílio na prolação de sentenças criminais, em face do que consta no SEI nº 0039570-48.2026.813.0000;"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.23.4",
+  "unidade": "2ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS DA COMARCA DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2277,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "cartorio",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "Identificadas 64 cartas precatórias expedidas sem cumprimento há mais de 3 meses. Determinação: desenvolver rotina de controle e acompanhamento das cartas precatórias expedidas, especialmente há mais de 3 meses, a fim de evitar a demora injustificada do andamento processual, devendo-se encaminhar à Corregedoria Nacional de Justiça, no prazo de 90 dias, informações sobre as providências adotadas. Dificuldade dos servidores quanto ao acesso às informações relativas a dados estatísticos da unidade, inclusive no que tange às metas nacionais e extração de determinadas funcionalidades dos sistemas p…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.23.5",
+  "unidade": "2ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS DA COMARCA DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 717,
+  "temas": [
+   "pericia_e_apoio"
+  ],
+  "trecho": ". Informado pela unidade que as restrições patrimoniais são atualmente realizadas e cadastradas manualmente. Recomendação: avaliar a implementação de mecanismos que permitam a automatização da efetivação e do cadastro das restrições patrimoniais, de modo a conferir maior celeridade e eficiência à prestação jurisdicional. Dificuldade na nomeação de peritos em face dos valores previstos para pagamento na tabela do TJMG. Recomendação: instituir uma Central de Perícias para auxiliar na localização de profissionais habilitados à execução de perícias e/ou exames técnicos, bem como para contribuir co…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.24.4",
+  "unidade": "2ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS DE SETE LAGOAS",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2102,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "estatistica"
+  ],
+  "trecho": "Achado 1: Divergência metodológica nos dados estatísticos entre formulário da unidade e painel do CNJ. Constatou-se divergência entre os dados estatísticos declarados pela unidade no formulário de inspeção (preenchido em 23/02/2026, com base em extração direta do PJe no dia do preenchimento) e os dados disponibilizados pelo Painel de Inspeção CNJ (referência 24/03/2026). A situação reproduz-se em outras unidades do TJMG inspecionadas, evidenciando problema sistêmico de padronização metodológica na extração e consolidação de dados estatísticos, com possível comprometimento dos indicadores de pr…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.25.4",
+  "unidade": "2ª VARA DAS GARANTIAS DE BELO HORIZONTE/MG",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 6791,
+  "temas": [
+   "pessoa_presa",
+   "sistema",
+   "prazo_e_acervo",
+   "pessoal",
+   "cartorio",
+   "pericia_e_apoio"
+  ],
+  "trecho": "As audiências de custódia são realizadas pelo núcleo das garantias, no qual há dois juízes atuando, um no período matutino e outro no período vespertino. Assim com verificado na inspeção da 1ª Vara de Garantias, após a prisão em flagrante, a pessoa presa é recolhida a presídio da comarca pela Polícia Penal e, somente no dia seguinte, é feita a condução até o núcleo das custódias para realização da audiência prevista na Resolução CNJ n. 213/2015. Na audiência de custódia, caso concedida a liberdade, é solto na oportunidade; caso concedida a liberdade com imposição de monitoramento eletrônico, o…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.26.4",
+  "unidade": "2ª VARA DE FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1227,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo"
+  ],
+  "trecho": "Não cumprimento das Metas 1, 2, 4, 5 e 6. Determinação: Priorizar o cumprimento das Metas 1, 2, 4, 5 e 6 do CNJ, prestando informações atualizadas à Corregedoria Nacional de Justiça no prazo de 90 dias. Constatou-se inconsistência nos dados utilizados para identificação de processos paralisados há mais de 120 dias em secretaria, uma vez que a planilha extraída dos painéis da CGJ/MG indicava feitos sem movimentação, que, após verificação individualizada, não se enquadravam nessa condição, tratando-se, em sua maioria, de processos migrados para o sistema eproc, bem como feitos suspensos ou já ba…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.26.5",
+  "unidade": "2ª VARA DE FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 1464,
+  "temas": [
+   "prazo_e_acervo",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Dificuldade na nomeação de peritos em face dos valores previstos para pagamento na tabela do TJMG. Recomendação: Instituir uma Central de Perícias para auxiliar na localização de profissionais habilitados à execução de perícias e/ou exames técnicos, bem como para contribuir com o agendamento das perícias, otimizando o trabalho, principalmente com a concentração dos eventuais exames técnicos. Informado pela unidade que as restrições patrimoniais são atualmente realizadas e cadastradas manualmente. Recomendação: avaliar a implementação de mecanismos que permitam a automatização da efetivação e d…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.27.4",
+  "unidade": "2ª VARA DE FEITOS TRIBUTÁRIOS DO MUNICÍPIO DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1431,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "estatistica"
+  ],
+  "trecho": "Achado 1: Constatou-se, na unidade jurisdicional inspecionada, situação que se reproduz nas demais unidades avaliadas, consistente em dificuldade sistêmica na obtenção e consolidação de dados estatísticos. Os sistemas informatizados não permitiam a extração integral dos dados solicitados pela equipe de inspeção do CNJ na data da inspeção, tampouco possibilitavam a recuperação dessas informações relativamente ao período pretérito de um ano. Na data da inspeção, o dado estatístico mais recente disponível correspondia a 28 de fevereiro de 2026, evidenciando defasagem temporal de aproximadamente u…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.28.4",
+  "unidade": "COMARCA DE BELO HORIZONTE / 2ª VARA DE FEITOS TRIBUTÁRIOS DO ESTADO",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2324,
+  "temas": [
+   "prazo_e_acervo",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "Identificadas 31 cartas precatórias expedidas sem cumprimento há mais de 3 meses. Determinação: desenvolver rotina de controle e acompanhamento das cartas precatórias expedidas, especialmente há mais de 3 meses, a fim de evitar a demora injustificada do andamento processual, devendo-se encaminhar à Corregedoria Nacional de Justiça, no prazo de 90 dias, informações sobre as providências adotadas. Dificuldade dos servidores quanto ao acesso às informações relativas a dados estatísticos da unidade, inclusive no que tange às metas nacionais e extração de determinadas funcionalidades dos sistemas p…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.28.5",
+  "unidade": "COMARCA DE BELO HORIZONTE / 2ª VARA DE FEITOS TRIBUTÁRIOS DO ESTADO",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 320,
+  "temas": [],
+  "trecho": "Informado pela unidade que as restrições patrimoniais são atualmente realizadas e cadastradas manualmente. Recomendação: avaliar a implementação de mecanismos que permitam a automatização da efetivação e do cadastro das restrições patrimoniais, de modo a conferir maior celeridade e eficiência à prestação jurisdicional."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.30.4",
+  "unidade": "2ª VARA DE TÓXICOS, ORCRIM E LAVAGEM DE BENS E VALORES DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 687,
+  "temas": [
+   "pessoa_presa",
+   "cartorio"
+  ],
+  "trecho": "À 2ª Vara de Tóxicos, ORCRIM e Lavagem de Bens e Valores de Belo Horizonte, DETERMINA-SE que, no prazo de 90 dais: i) elabore um plano de ação específico para o tratamento dos processos mais antigos e daqueles com risco iminente de prescrição, estabelecendo um fluxo prioritário para impulsionar os feitos que dependem de diligências externas, como o cumprimento de mandados de prisão. Ii) em conjunto com a gestão da Central de Processamento Eletrônico (CPE Tóxicos), revise o fluxo de trabalho relativo à expedição de alvarás, a fim de identificar e sanar o gargalo que resultou no acúmulo de 103 p…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.30.5",
+  "unidade": "2ª VARA DE TÓXICOS, ORCRIM E LAVAGEM DE BENS E VALORES DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 626,
+  "temas": [
+   "prazo_e_acervo",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Diante do exposto, e com o objetivo de aprimorar a prestação jurisdicional, esta Corregedoria Nacional de Justiça expede as seguintes recomendações: 6.30.5.1.) À Presidência do Tribunal de Justiça de Minas Gerais e à Corregedoria-Geral de Justiça de Minas Gerais, para que promovam diálogos junto ao Poder Executivo do Estado de Minas Gerais, em especial à Secretaria de Estado de Justiça e Segurança Pública e ao Instituto de Criminalística, com o objetivo de buscar soluções para a crônica morosidade na realização dos exames de insanidade mental, problema que impacta severamente a duração razoáve…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.31.4",
+  "unidade": "2ª. VARA EMPRESARIAL DE BELO HORIZONTE/MG",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2779,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "pessoal",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "À Corregedoria-Geral de Justiça do TJMG, para que atue junto à 2ª Vara Empresarial da Comarca de Belo Horizonte na elaboração e acompanhamento de plano de trabalho para o saneamento das seguintes pendências, encaminhando à Corregedoria Nacional de Justiça, no prazo de 90 dias, extrato atualizado: 1) Existência de 149 processos paralisados em secretaria há mais de 120 dias - Piorizar o andamento/julgamento dos processos paralisados há mais de 120 dias, devendo-se implementar rotina de acompanhamento dos processos futuros; 2) Morosidade no andamento processual dos processos inspecionados por amo…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.32.4",
+  "unidade": "2ª VARA EMPRESARIAL, DE FAZENDA PÚBLICA E REGISTROS PÚBLICOS DE CONTAGEM",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 3245,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "pessoal",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "À Corregedoria-Geral de Justiça do TJMG, para que atue junto à 2ª Vara Empresarial, de Fazenda Pública e Registros Públicos da Comarca de Contagem, na elaboração e acompanhamento de plano de trabalho para o saneamento das seguintes pendências, encaminhando à Corregedoria Nacional de Justiça, no prazo de 90 dias, extrato atualizado: 1) Existência de 3.050 processos paralisados em secretaria há mais de 120 dias - Priorizar o andamento/julgamento dos processos paralisados há mais de 120 dias, devendo-se implementar rotina de acompanhamento dos processos futuros; 2) Morosidade no andamento process…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.33.4",
+  "unidade": "2ª VARA ESPECIALIZADA EM CRIMES CONTRA A CRIANÇA E O ADOLESCENTE",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1675,
+  "temas": [
+   "cartorio"
+  ],
+  "trecho": "Considerando a ausência de servidores efetivos no gabinete, o que implica desprestígio à atividade-fim e compromete a segurança jurídica do serviço prestado, determina-se à Presidência e à Corregedoria do Tribunal de Justiça do Estado de Minas Gerais que elabore, em conjunto com a unidade, plano de aparelhamento do gabinete, com pelo menos 2 (dois) servidores efetivos, no prazo de 90 (noventa) dias, seja com a realização de novo concurso, seja com a nomeação de novos candidatos do certame então vigente, encaminhando à Corregedoria Nacional de Justiça o referido plano, ao término do prazo supra…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.34.4",
+  "unidade": "3ª UNIDADE JURISDICIONAL DA FAZENDA PÚBLICA 43º JD",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1431,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "estatistica"
+  ],
+  "trecho": "Achado 1: Constatou-se, na unidade jurisdicional inspecionada, situação que se reproduz nas demais unidades avaliadas, consistente em dificuldade sistêmica na obtenção e consolidação de dados estatísticos. Os sistemas informatizados não permitiam a extração integral dos dados solicitados pela equipe de inspeção do CNJ na data da inspeção, tampouco possibilitavam a recuperação dessas informações relativamente ao período pretérito de um ano. Na data da inspeção, o dado estatístico mais recente disponível correspondia a 28 de fevereiro de 2026, evidenciando defasagem temporal de aproximadamente u…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.35.5",
+  "unidade": "3ª VARA CÍVEL DA COMARCA DE SETE LAGOAS",
+  "tipo": "vara",
+  "comarca": "SETE LAGOAS",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 957,
+  "temas": [
+   "prazo_e_acervo",
+   "pessoal"
+  ],
+  "trecho": "À Corregedoria-Geral da Justiça do Estado de Minas Gerais (TJMG), para que: • Manutenção de Cooperação: Avalie a manutenção e ampliação do regime de cooperação (Núcleo de Justiça 4.0 – Cível e Programa Pontualidade) para julgamento de processos represados na 3ª Vara Cível da Comarca de Sete Lagoas, considerando os resultados positivos já alcançados com o encaminhamento de aproximadamente 462 processos. À Presidência do Tribunal de Justiça do Estado de Minas Gerais (TJMG), para que: • Força de Trabalho: Avalie a viabilidade técnica e orçamentária para a adequação da força de trabalho da unidade…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.36.4",
+  "unidade": "3ª VARA CRIMINAL BETIM",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2528,
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo",
+   "cartorio"
+  ],
+  "trecho": "Com base na análise das informações coletadas e das observações realizadas, foram identificados os seguintes achados que demandam ação corretiva por parte da unidade e do Tribunal. 6.36.4.1.) Elevado número de processos paralisados na secretaria e ocorrência de prescrição. A inspeção constatou a existência de 624 processos sem movimentação há mais de 120 dias sob a responsabilidade da secretaria, excluídos os casos suspensos e sobrestados. Este número, correspondente a mais de 21% do acervo em tramitação efetiva, evidencia um grave ponto de estrangulamento no fluxo processual da unidade. DETER…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.36.5",
+  "unidade": "3ª VARA CRIMINAL BETIM",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 462,
+  "temas": [
+   "pessoa_presa",
+   "pericia_e_apoio"
+  ],
+  "trecho": "À Presidência do Tribunal de Justiça de Minas Gerais que: i) promova diálogos junto ao Poder Executivo do Estado de Minas Gerais, em especial à Secretaria de Estado de Segurança Pública e à Chefia da Polícia Civil, para buscar soluções que confiram celeridade à elaboração de laudos periciais, notadamente os exames de insanidade mental, cujo atraso sistêmico tem impactado negativamente a tramitação dos processos criminais e a manutenção de prisões cautelares."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.37.4",
+  "unidade": "3ª VARA CRIMINAL DA COMARCA DE BELO HORIZONTE - MG",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 770,
+  "temas": [
+   "pessoa_presa"
+  ],
+  "trecho": "Verifica-se que foi apresentado formulário da Correição Ordinária realizada em 27/03/2025, no qual consta no item 19, a existência do BEMP – Banco Estadual de Mandados de Prisão, que seria alimentado corretamente. Sendo assim, considerando a existência de Banco Nacional BNMP, pela Resolução CNJ nº 417/2021, é importante que Corregedoria Geral de Justiça do TJMG esclareça se todos os processos do BEMP Banco Estadual de Mandados de Prisão foram migrados/recadastrados. DETERMINA-SE à Corregedoria-Geral de Justiça que, realize estudos e apresente a esta Corregedoria Nacional, em noventa dias, rela…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.37.5",
+  "unidade": "3ª VARA CRIMINAL DA COMARCA DE BELO HORIZONTE - MG",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 1341,
+  "temas": [
+   "pessoal",
+   "estatistica",
+   "pericia_e_apoio"
+  ],
+  "trecho": "RECOMENDA-SE à Corregedoria-Geral de Justiça que: i) Realize estudos para a implantação de um plano de trabalho, de acordo com a realidade da unidade, se necessário com apoio de força tarefa, para se garantir um maior controle evitando-se prescrições. ii) Adote providências, junto à Magistra titular da unidade, para a implantação do Balcão Virtual na unidade inspecionada, alinhando-a plenamente ao Programa Justiça 4.0 e ampliando os canais de acesso à justiça. RECOMENDA-SE à Presidência do Tribunal de Justiça de Minas Gerais (TJMG) que: i) Buscar, em articulação com a Polícia Civil e outros ór…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.38.4",
+  "unidade": "3ª VARA CRIMINAL DA COMARCA DE CONTAGEM",
+  "tipo": "vara",
+  "comarca": "CONTAGEM",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1343,
+  "temas": [
+   "cartorio"
+  ],
+  "trecho": "Considerando a ausência de servidores efetivos no gabinete, o que desprestigia a atividade-fim e compromete a segurança jurídica do serviço prestado, determina-se à Presidência e à Corregedoria do Tribunal de Justiça do Estado de Minas Gerais que elabore, em conjunto com a unidade, plano de aparelhamento do gabinete, com pelo menos 2 (dois) servidores efetivos, no prazo de 90 (noventa) dias, seja com a realização de novo concurso, seja com a nomeação de novos candidatos do certame então vigente, encaminhando à Corregedoria Nacional de Justiça o referido plano, ao término do prazo supracitado.…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.39.4",
+  "unidade": "3ª VARA DOS FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1225,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "estatistica"
+  ],
+  "trecho": "Dificuldade dos servidores quanto ao acesso às informações relativas a dados estatísticos da unidade, inclusive no que tange às metas nacionais e extração de determinadas funcionalidades dos sistemas processuais. Determinação: empreender a realização de cursos, simpósios e workshops para capacitação dos servidores das unidades judiciais, no que tange à utilização do sistema Eproc, das ferramentas gerenciais, de estatísticas do Tribunal, inclusive no que tange ao cumprimento das metas nacionais, devendo- se encaminhar à Corregedoria Nacional de Justiça, no prazo de 90 dias, informações sobre as…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.39.5",
+  "unidade": "3ª VARA DOS FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 320,
+  "temas": [],
+  "trecho": "Informado pela unidade que as restrições patrimoniais são atualmente realizadas e cadastradas manualmente. Recomendação: avaliar a implementação de mecanismos que permitam a automatização da efetivação e do cadastro das restrições patrimoniais, de modo a conferir maior celeridade e eficiência à prestação jurisdicional."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.40.4",
+  "unidade": "3ª VARA EMPRESARIAL, DE FAZENDA PÚBLICA E REGISTROS PÚBLICOS",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 3005,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "pessoal",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "À Corregedoria-Geral de Justiça do TJMG, para que atue junto à 3ª Vara Empresarial, de Fazenda Pública e Registros Públicos da Comarca de Contagem, na elaboração e acompanhamento de plano de trabalho para o saneamento das seguintes pendências, encaminhando à Corregedoria Nacional de Justiça, no prazo de 90 dias, extrato atualizado: 1) Existência de 1.025 autos no PJe conclusos há mais de 120 dias, sendo 80 com prioridade legal - Priorizar o andamento/julgamento dos processos paralisados há mais de 120 dias, especialmente aqueles que possuam prioridade legal, devendo-se implementar rotina de ac…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.41.4",
+  "unidade": "3ª VARA FAZENDA PÚBLICA E AUTARQUIAS",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 3620,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "Verificou-se que a unidade realiza a revisão dos processos suspensos em intervalos anuais, especialmente nos casos de suspensão por IRDR ou em razão da necessidade de aguardar decisão em outro processo, o que pode retardar a retomada tempestiva do andamento processual após o levantamento da suspensão. Determinação: aprimorar o controle e o monitoramento dos processos suspensos, de modo que a verificação das suspensões ocorra em intervalos não superiores a 120 (cento e vinte) dias, possibilitando a identificação mais célere de eventual cessação do motivo suspensivo e a pronta remessa dos autos…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.41.5",
+  "unidade": "3ª VARA FAZENDA PÚBLICA E AUTARQUIAS",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 714,
+  "temas": [
+   "pericia_e_apoio"
+  ],
+  "trecho": "Informado pela unidade que as restrições patrimoniais são atualmente realizadas e cadastradas manualmente. Recomendação: avaliar a implementação de mecanismos que permitam a automatização da efetivação e do cadastro das restrições patrimoniais, de modo a conferir maior celeridade e eficiência à prestação jurisdicional. Dificuldade na nomeação de peritos em face dos valores previstos para pagamento na tabela do TJMG. Recomendação: instituir uma Central de Perícias para auxiliar na localização de profissionais habilitados à execução de perícias e/ou exames técnicos, bem como para contribuir com…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.42.4",
+  "unidade": "4º JUIZADO DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER",
+  "tipo": "juizado",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 3806,
+  "temas": [
+   "pessoa_presa",
+   "violencia_domestica",
+   "sistema",
+   "prazo_e_acervo",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Foi apurado que não há controle judicial dos processos que seguem em tramitação direta, os quais seguem por anos entre a delegacia de polícia e o Ministério Público sem medidas efetivas para a conclusão das investigações. A título de exemplo, nos I.P n. 0680944-98.2018.8.13.0024, em tramitação direta há tempos, há manifestação do MP de 30/7/2024 concedendo dilação de prazo de 90 dias para conclusão as investigações. Desde então, seguem os autos paralisados sem a conclusão das investigações, novo pedido de dilação de prazo ou manifestação do Parquet. No IP n.1279471- 67.2014.8.13.0024, instaura…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.43.5",
+  "unidade": "4ª VARA CÍVEL DA COMARCA DE CONTAGEM",
+  "tipo": "vara",
+  "comarca": "CONTAGEM",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 293,
+  "temas": [],
+  "trecho": "À Presidência do Tribunal de Justiça do Estado de Minas Gerais (TJMG), para que: a. Procedimento de Baixa Definitiva: Avalie a viabilidade da criação de estrutura própria e especializada para tratar das providências relacionadas à cobrança das custas processuais finais e à expedição da CNPDD."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.44.4",
+  "unidade": "4ª VARA CRIMINAL",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1343,
+  "temas": [
+   "cartorio"
+  ],
+  "trecho": "Considerando a ausência de servidores efetivos no gabinete, o que desprestigia a atividade-fim e compromete a segurança jurídica do serviço prestado, determina-se à Presidência e à Corregedoria do Tribunal de Justiça do Estado de Minas Gerais que elabore, em conjunto com a unidade, plano de aparelhamento do gabinete, com pelo menos 2 (dois) servidores efetivos, no prazo de 90 (noventa) dias, seja com a realização de novo concurso, seja com a nomeação de novos candidatos do certame então vigente, encaminhando à Corregedoria Nacional de Justiça o referido plano, ao término do prazo supracitado.…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.45.4",
+  "unidade": "4ª VARA DE FAZENDA PÚBLICA E AUTARQUIAS",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 3308,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "Dificuldade dos servidores quanto ao acesso às informações relativas a dados estatísticos da unidade, inclusive no que tange às metas nacionais e extração de determinadas funcionalidades dos sistemas processuais. Determinação: empreender a realização de cursos, simpósios e workshops para capacitação dos servidores das unidades judiciais, no que tange à utilização do sistema Eproc, das ferramentas gerenciais, de estatísticas do Tribunal, inclusive no que tange ao cumprimento das metas nacionais, devendo- se encaminhar à Corregedoria Nacional de Justiça, no prazo de 90 dias, informações sobre as…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.45.5",
+  "unidade": "4ª VARA DE FAZENDA PÚBLICA E AUTARQUIAS",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 1407,
+  "temas": [
+   "pessoal",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Informado pela unidade que as restrições patrimoniais são atualmente realizadas e cadastradas manualmente. Recomendação: avaliar a implementação de mecanismos que permitam a automatização da efetivação e do cadastro das restrições patrimoniais, de modo a conferir maior celeridade e eficiência à prestação jurisdicional. Consta que a unidade formalizou solicitações de reposição do quadro de servidores nos processos SEI nº 0120602-42.2022.8.13.0024, 0467431-71.2023.8.13.0024 e 0283496-66.2024.8.13.0000, os quais permanecem sem solução até o momento. Registra-se, ainda, pleito da magistrada pela e…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.46.4",
+  "unidade": "4ª VARA DE TÓXICOS, ORCRIM E LAVAGEM BENS E VALORES DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 49,
+  "temas": [],
+  "trecho": "Não foram previstas determinações para a unidade."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.46.5",
+  "unidade": "4ª VARA DE TÓXICOS, ORCRIM E LAVAGEM BENS E VALORES DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 1024,
+  "temas": [
+   "pessoa_presa",
+   "pericia_e_apoio"
+  ],
+  "trecho": "6.46.5.1.) À Presidência e à Corregedoria-Geral de Justiça do Tribunal de Justiça de Minas Gerais, para que: i) promovam gestões junto ao Poder Executivo do Estado de Minas Gerais, em especial à Secretaria de Estado de Segurança Pública e à Chefia da Polícia Civil, para buscar soluções que confiram celeridade à elaboração de laudos periciais, notadamente os exames de insanidade mental, cujo atraso sistêmico tem impactado negativamente a tramitação dos processos criminais e a manutenção de prisões cautelares. ii) Mantenha interlocução junto ao Poder Executivo do Estado de Minas Gerais, em espec…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.47.4",
+  "unidade": "5ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2797,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "cartorio",
+   "estatistica",
+   "precatorio",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Dificuldade dos servidores quanto ao acesso às informações relativas a dados estatísticos da unidade, inclusive no que tange às metas nacionais e extração de determinadas funcionalidades dos sistemas processuais. Determinação: empreender a realização de cursos, simpósios e workshops para capacitação dos servidores das unidades judiciais, no que tange à utilização do sistema Eproc, das ferramentas gerenciais, de estatísticas do Tribunal, inclusive no que tange ao cumprimento das metas nacionais, devendo- se encaminhar à Corregedoria Nacional de Justiça, no prazo de 90 dias, informações sobre as…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.47.5",
+  "unidade": "5ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 2559,
+  "temas": [
+   "pessoal",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Dificuldade na nomeação de peritos em face dos valores previstos para pagamento na tabela do TJMG. Recomendação: instituir uma Central de Perícias para auxiliar na localização de profissionais habilitados à execução de perícias e/ou exames técnicos, bem como para contribuir com o agendamento das perícias, otimizando o trabalho, principalmente com a concentração dos eventuais exames técnicos. Informado pela unidade que as restrições patrimoniais são atualmente realizadas e cadastradas manualmente. Recomendação: avaliar a implementação de mecanismos que permitam a automatização da efetivação e d…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.48.5",
+  "unidade": "5ª VARA DE FAMÍLIA DA COMARCA DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 367,
+  "temas": [
+   "prazo_e_acervo"
+  ],
+  "trecho": "À Presidência do Tribunal de Justiça do Estado de Minas Gerais (TJMG), para que: • Apoio Institucional: Avalie a viabilidade de oferta de cooperação (Núcleo de Justiça 4.0 ou instrumento equivalente) para julgamento de processos represados na 5ª Vara de Família da Comarca de Belo Horizonte, considerando o elevado número de processos conclusos e o déficit da Meta 1."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.49.4",
+  "unidade": "5ª VARA DE TÓXICOS, ORGANIZAÇÃO CRIMINOSA, LAV. DE BENS E VALORES",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 525,
+  "temas": [
+   "cartorio"
+  ],
+  "trecho": "DETERMINA-SE ao Juízo da 5ª Vara de Tóxicos, Organização Criminosa e Lavagem de Bens e Valores de Belo Horizonte, que, em articulação com a gestão da Central de Processamento Eletrônico (CPE Tóxicos), revise o fluxo de trabalho relativo à expedição de alvarás, a fim de identificar e sanar o gargalo que resultou no acúmulo de 127 processos pendentes de cumprimento, estabelecendo uma meta interna para a regularização da situação, apresentando informações atualizadas à Corregedoria Nacional de Justiça, no prazo de 90 dias."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.49.5",
+  "unidade": "5ª VARA DE TÓXICOS, ORGANIZAÇÃO CRIMINOSA, LAV. DE BENS E VALORES",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 678,
+  "temas": [
+   "prazo_e_acervo",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Diante do exposto, e com o objetivo de aprimorar a prestação jurisdicional e mitigar os riscos identificados, esta Corregedoria Nacional de Justiça expede as seguintes recomendações: 6.49.5.1.) À Presidência do Tribunal de Justiça de Minas Gerais e à Corregedoria-Geral de Justiça de Minas Gerais, para que promovam diálogos institucionais junto ao Poder Executivo do Estado de Minas Gerais, em especial à Secretaria de Estado de Justiça e Segurança Pública e à Chefia da Polícia Civil, com o objetivo de buscar soluções para a morosidade na realização dos exames de insanidade mental, problema estru…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.50.5",
+  "unidade": "6ª VARA CÍVEL DA COMARCA DE CONTAGEM",
+  "tipo": "vara",
+  "comarca": "CONTAGEM",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 667,
+  "temas": [
+   "prazo_e_acervo"
+  ],
+  "trecho": "À Corregedoria-Geral da Justiça do Estado de Minas Gerais (TJMG), para que: • Manutenção de Cooperação: Avalie a manutenção do regime de cooperação (PROJEF e Núcleo de Justiça 4.0) para julgamentos de processos represados na 6ª Vara Cível da Comarca de Contagem, considerando os resultados positivos já alcançados (227 sentenças pelo PROJEF e 121 sentenças pelo Núcleo 4.0). À Presidência do Tribunal de Justiça do Estado de Minas Gerais (TJMG), para que: • Procedimento de Baixa Definitiva: Avalie a viabilidade da criação de estrutura própria e especializada para tratar das providências relacionad…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.51.4",
+  "unidade": "7ª VARA CÍVEL DA COMARCA DE BELO HORIZONTE/MG",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2380,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "pessoal",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "À Corregedoria-Geral de Justiça do TJMG, para que atue junto à 7ª Vara Cível de Belo Horizonte na elaboração e acompanhamento de plano de trabalho para o saneamento das seguintes pendências, encaminhando à Corregedoria Nacional de Justiça, no prazo de 90 dias, extrato atualizado: 1) Existência de 30 processos no PJe paralisados há mais de 120 dias: 08 em secretaria e 22 conclusos, sendo 5 com prioridade legal - Piorizar o andamento/julgamento dos processos paralisados há mais de 120 dias, especialmente aqueles que possuam prioridade legal, devendo-se implementar rotina de acompanhamento dos pr…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.52.4",
+  "unidade": "8ª VARA CRIMINAL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 4627,
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo"
+  ],
+  "trecho": "6.52.4.1.) Controle de Prisões Provisórias A unidade possuia 90 presos provisórios (conforme dados do formulário) e 73, na data da visita. O controle da revisão obrigatória da necessidade de manutenção da prisão a cada 90 dias, conforme exigido pelo artigo 316, Parágrafo Único, do Código de Processo Penal, é realizado por meio de \"marcação de prioridade do próprio sistema e com etiquetas\". Este método, embora válido como um sinalizador, é insuficiente para um controle gerencial eficaz e proativo. Ele não oferece uma visão consolidada e de fácil verificação das datas-limite para cada custodiado…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.52.5",
+  "unidade": "8ª VARA CRIMINAL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 1004,
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo",
+   "cartorio",
+   "estatistica",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Ao Juízo da 8ª Vara Criminal de Belo Horizonte que, em coordenação com a Secretaria Unificada, avalie a implementação de uma rotina periódica (semestral ou anual) para a revisão dos processos suspensos com base no art. 366 do Código de Processo Penal, a fim de realizar novas consultas de endereços e verificar a existência de prisões em outros feitos, buscando retomar o curso das ações paralisadas. À Presidência e à Corregedoria-Geral de Justiça do Tribunal de Justiça de Minas Gerais que: i) Promovam gestões junto ao Poder Executivo do Estado de Minas Gerais e à chefia da Polícia Civil para bus…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.53.4",
+  "unidade": "9ª VARA CRIMINAL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 223,
+  "temas": [],
+  "trecho": "Com base na análise realizada, e considerando os objetivos de eficiência e celeridade da prestação jurisdicional, esta Corregedoria Nacional de Justiça identifica os seguintes achados e expede as consequentes determinações:"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.53.5",
+  "unidade": "9ª VARA CRIMINAL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 1311,
+  "temas": [
+   "pessoa_presa",
+   "cartorio",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Ao Juízo da 9ª Vara Criminal de Belo Horizonte que: i) institua, no prazo de 30 (trinta) dias, mecanismo, como planilha, para controle do prazo de duração de prisões a fim de garantir a efetivação do controle nonagesimal do art.316, PU, do CPP, não sendo suficiente o controle efetivado apenas pela CPE. ii) em coordenação com a Secretaria Unificada, avalie a implementação de uma rotina periódica (anual ou semestral) para a revisão dos processos suspensos com fundamento no art. 366 do Código de Processo Penal. Tal medida visa instar o Ministério Público a realizar novas pesquisas de endereço dos…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.54.4",
+  "unidade": "11ª VARA CÍVEL DA COMARCA DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1788,
+  "temas": [
+   "prazo_e_acervo",
+   "pessoal"
+  ],
+  "trecho": "Achado 1: Constatou-se a ausência de disponibilização de dados relacionados ao cumprimento parcial das metas nacionais do Poder Judiciário do ano de 2026 às unidades, o que acaba por inviabilizar a elaboração de plano de gestão voltado ao cumprimento das metas, além de revelar aparente descumprimento ao art. 11 da Resolução CNJ 325/2020, e à Resolução CNJ nº 221/2016. Determinação: À Corregedoria-Geral de Justiça do Tribunal de Justiça do estado de Minas Gerais, para que encaminhe à Corregedoria Nacional de Justiça, no prazo de 30 (trinta) dias, os resultados parciais das metas de 2026 relacio…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.55.4",
+  "unidade": "11ª VARA CRIMINAL DA COMARCA DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 4604,
+  "temas": [
+   "pessoa_presa",
+   "sistema",
+   "prazo_e_acervo",
+   "cartorio",
+   "extrajudicial"
+  ],
+  "trecho": "A pauta de audiência da unidade suplanta 12(doze) meses, com audiência mais distante designada para 4/5/2027. Tal situação decorre diretamente do fato de o juiz titular da unidade ter sido convocado para atuar em 2º grau e, desde então, apenas juízes convocados atuam em substituição legal, sem vínculo efetivo. Assim, determina-se à Corregedoria-Geral de Justiça que, em até 90(noventa) dias, elabore plano de trabalho em conjunto com a unidade, inclusive com instituição de pauta dupla ou mutirão, a fim de que a audiência mais distante seja designada em prazo não superior a um ano; devendo tal pl…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.56.4",
+  "unidade": "11ª VARA DE FAMÍLIA",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1227,
+  "temas": [
+   "sistema",
+   "pessoal",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "À Corregedoria-Geral de Justiça do TJMG, para que atue junto à 11ª Vara de Família da Comarca de Belo Horizonte, na elaboração e acompanhamento de plano de trabalho para o saneamento das seguintes pendências, encaminhando à Corregedoria Nacional de Justiça, no prazo de 90 dias, extrato atualizado: 1) Existência de 12 cartas precatórias aguardando cumprimento há mais de 3 meses - Desenvolver rotina de controle e acompanhamento do cumprimento das cartas precatórias, a fim de evitar a demora injustificada do andamento processual. À Presidência do Tribunal de Justiça do Estado de Minas Gerais e à…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.57.5",
+  "unidade": "18ª VARA CÍVEL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 278,
+  "temas": [
+   "pessoal"
+  ],
+  "trecho": "À Presidência do Tribunal de Justiça do Estado de Minas Gerais (TJMG), para que: • Expansão da I.A.: Avalie a possibilidade da concessão de acesso aos estagiários de graduação e pós-graduação da ferramenta \"Assistente TJMG\", conforme solicitações já protocolizadas pela unidade."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.58.4",
+  "unidade": "19ª VARA CÍVEL DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 870,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "pessoal",
+   "estatistica"
+  ],
+  "trecho": "À Presidência do Tribunal de Justiça do Estado de Minas Gerais e à Corregedoria-Geral de Justiça do TJMG, para que, no prazo de 90 dias, conjuntamente, desenvolvam solução voltada a: 1) Ausência de força de trabalho adequada - Adequar o quadro de colaboradores efetivos, com formação superior completa, para atuação no Gabinete do Juízo, preferencialmente com a nomeação de um novo assessor, a fim de garantir maior estabilidade e qualificação técnica ao setor; 2) Morosidade na reposição de estagiários - Promover a regularização e o preenchimento do quadro de estagiários do gabinete e da secretari…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.59.5",
+  "unidade": "24ª VARA CÍVEL DA COMARCA DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 308,
+  "temas": [],
+  "trecho": "À Corregedoria-Geral da Justiça do Estado de Minas Gerais (TJMG), para que: • Disseminação de Boas Práticas: Estimule a replicação do fluxo automatizado de agendamento de advogados e advogadas (via Google Agenda/Meet), implementado por esta unidade judiciária, para as demais varas do Estado de Minas Gerais."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.60.4",
+  "unidade": "28ª (VIGÉSIMA OITAVA) VARA CÍVEL",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2471,
+  "temas": [
+   "prazo_e_acervo"
+  ],
+  "trecho": "Achado: Constatou-se a ausência de disponibilização de dados relacionados ao cumprimento parcial das metas nacionais do Poder Judiciário do ano de 2026 às unidades, o que acaba por inviabilizar a elaboração de plano de gestão voltado ao cumprimento das metas, além de revelar aparente descumprimento ao art. 11 da Resolução CNJ 325/2020, e à Resolução CNJ nº 221/2016. Determinação: À Corregedoria-Geral de Justiça do Tribunal de Justiça do estado de Minas Gerais, para que encaminhe à Corregedoria Nacional de Justiça, no prazo de 30 (trinta) dias, os resultados parciais das metas de 2026 relaciona…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.61.4",
+  "unidade": "29ª VARA CÍVEL DA COMARCA DE BELO HORIZONTE/MG.",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 3225,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "pessoal",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "À Corregedoria-Geral de Justiça do TJMG, para que atue junto à 29ª Vara Cível de Belo Horizonte na elaboração e acompanhamento de plano de trabalho para o saneamento das seguintes pendências, encaminhando à Corregedoria Nacional de Justiça, no prazo de 90 dias, extrato atualizado: 1) Existência de 86 processos no PJe paralisados há mais de 120 dias: 10 em secretaria e 76 conclusos, sendo 33 com prioridade legal - Piorizar o andamento/julgamento dos processos paralisados há mais de 120 dias, especialmente aqueles que possuam prioridade legal, devendo-se implementar rotina de acompanhamento dos…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.62.4",
+  "unidade": "31ª VARA CIVEL DA COMARCA DE DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "DE BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 823,
+  "temas": [
+   "prazo_e_acervo"
+  ],
+  "trecho": "Achado 1: Constatou-se a ausência de disponibilização de dados relacionados ao cumprimento parcial das metas nacionais do Poder Judiciário do ano de 2026 às unidades, o que acaba por inviabilizar a elaboração de plano de gestão voltado ao cumprimento das metas, além de revelar aparente descumprimento ao art. 11 da Resolução CNJ 325/2020, e à Resolução CNJ nº 221/2016. Determinação: À Corregedoria-Geral de Justiça do Tribunal de Justiça do estado de Minas Gerais, para que encaminhe à Corregedoria Nacional de Justiça, no prazo de 30 (trinta) dias, os resultados parciais das metas de 2026 relacio…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.64.4",
+  "unidade": "CENTRAL DE CUMPRIMENTO DE SENTENÇA DAS VARAS DA FAZENDA PÚBLICA",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 918,
+  "temas": [
+   "estatistica"
+  ],
+  "trecho": "Achado 1: Constatou-se, na unidade jurisdicional inspecionada, situação que se reproduz nas demais unidades avaliadas, consistente em dificuldade sistêmica na obtenção e consolidação de dados estatísticos. Os sistemas informatizados não permitiam a extração integral dos dados solicitados pela equipe de inspeção do CNJ na data da inspeção, tampouco possibilitavam a recuperação dessas informações relativamente ao período pretérito de um ano. Na data da inspeção, o dado estatístico mais recente disponível correspondia a 28 de fevereiro de 2026, evidenciando defasagem temporal de aproximadamente u…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.66.4",
+  "unidade": "TRIBUNAL DO JÚRI PRESIDENTE DE BELO HORIZONTE",
+  "tipo": "outra",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 4124,
+  "temas": [
+   "prazo_e_acervo"
+  ],
+  "trecho": "Em razão do afastamento do 1º Presidente por questões de saúde, houve várias redesignações de sessões do júri – algumas por mais de 5(cinco) vezes –, conforme tabela que segue: Autos n. Qtd. de sessões redesignadas 1 2 3 4 5 6 7 8 9 10 11 12 13 14 is 16 17 18 19 20 21 22 23 24 25 26 27 28 29 1318940-81.2018.8.13.0024 1463948-84.2021.8.13.0024 2760507-20.2012.8.13.0024 0089290-19.2020.8.13.0024 0263145-73.2019.8.13.0024 0852264-32.2012.8.13.0024 1019948-40.2016.8.13.0024 0487078-62.2017.8.13.0024 0919580-91.2014.8.13.0024 2213319-25.2011.8.13.0024 7412803-04.2009.8.13.0024 0399688-30.2012.8.13.…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.67.4",
+  "unidade": "VARA AGRÁRIA E ACIDENTE DE TRABALHO DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2371,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo"
+  ],
+  "trecho": "Achado 1: Identificou-se um represamento de 202 processos paralisados há mais de 120 dias na secretaria, distribuídos entre os sistemas PJe (179) e Eproc (23). Determinação: À Corregedoria-Geral de Justiça, para que atue junto à Vara Agrária e Acidente de Trabalho de Belo Horizonte visando priorizar a tramitação e o julgamento dos processos paralisados há mais de 120 dias, com especial atenção aos feitos que possuem prioridade legal. A unidade deverá implementar uma rotina permanente de acompanhamento para prevenir novos atrasos e encaminhar à Corregedoria Nacional de Justiça, no prazo de 90 d…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.68.4",
+  "unidade": "VARA DA INFÂNCIA E DA JUVENTUDE DE CONTAGEM",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1971,
+  "temas": [
+   "prazo_e_acervo",
+   "cartorio"
+  ],
+  "trecho": "Considerando a ausência de servidores efetivos no gabinete, o que implica desprestígio à atividade-fim e compromete a segurança jurídica do serviço prestado, determina-se à Presidência e à Corregedoria do Tribunal de Justiça do Estado de Minas Gerais que elabore, em conjunto com a unidade, plano de aparelhamento do gabinete, com pelo menos 2 (dois) servidores efetivos, no prazo de 90 (noventa) dias, seja com a realização de novo concurso, seja com a nomeação de novos candidatos do certame então vigente, encaminhando à Corregedoria Nacional de Justiça o referido plano, ao término do prazo supra…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.69.4",
+  "unidade": "VARA DA INFÂNCIA E DA JUVENTUDE E DE EXECUÇÕES PENAIS/BETIM",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 291,
+  "temas": [
+   "cartorio"
+  ],
+  "trecho": "DETERMINA-SE à Presidência do TJMG que, observados os critérios e formalidades legais, verifique a possibilidade de publicação do edital de vaga de servidor existente no cartório, objetivando o seu provimento, apresentando informações à Corregedoria Nacional de Justiça, no prazo de 90 dias."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.69.5",
+  "unidade": "VARA DA INFÂNCIA E DA JUVENTUDE E DE EXECUÇÕES PENAIS/BETIM",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 1369,
+  "temas": [
+   "pessoa_presa",
+   "infancia",
+   "prazo_e_acervo",
+   "pessoal",
+   "pericia_e_apoio"
+  ],
+  "trecho": "Diante do diagnóstico apresentado, a Corregedoria Nacional de Justiça expede as seguintes recomendações: 6.69.5.1.) À Vara da Infância e da Juventude e de Execuções Penais de Betim, para que busque a manutenção das excelentes práticas de gestão de acervo e fluxo processual, mas com a elaboração de um plano de ação específico para elevar o índice de cumprimento da Meta 10 do CNJ aos 100%, em diálogo com a equipe da secretaria e do gabinete. 6.69.5.2) À Presidência do Tribunal de Justiça de Minas Gerais que: i) Em articulação com o Poder Executivo do Estado de Minas Gerais, adote providências ur…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.70.4",
+  "unidade": "VARA DE EXECUÇÕES PENAIS DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 10269,
+  "temas": [
+   "pessoa_presa",
+   "sistema",
+   "prazo_e_acervo",
+   "cartorio",
+   "extrajudicial"
+  ],
+  "trecho": "Apesar dos fluxos separados no SEEU, foi apurado que não há efetiva alocação em perfil próprio, havendo processos de execução de pena em regime aberto tramitando no meio “fechado e semiaberto” e vice-versa. A título de exemplo, no meio “fechado e semiaberto” há execuções de penas alternativas tramitando. Já no meio \"aberto\" há execuções de pena em regime fechado e semiaberto. Dessa forma, determina-se à Corregedoria-Geral de Justiça que, em até 90(noventa) dias, elabore plano de trabalho em conjunto com a unidade para que haja efetiva organização dos processos de execução de acordo com os perf…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.71.4",
+  "unidade": "VARA DE EXECUÇÕES PENAIS DE CONTAGEM",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1919,
+  "temas": [
+   "cartorio"
+  ],
+  "trecho": "Considerando a ausência de servidores efetivos no gabinete, mas apenas de pessoal com vínculo precário, o que desprestigia a atividade-fim e compromete a segurança jurídica do serviço prestado, determina-se à Presidência e à Corregedoria do Tribunal de Justiça do Estado de Minas Gerais que elabore, em conjunto com a unidade, plano de aparelhamento do gabinete, com pelo menos 2 (dois) servidores efetivos, no prazo de 90 (noventa) dias, seja com a realização de novo concurso, seja com a nomeação de novos candidatos do certame então vigente, encaminhando à Corregedoria Nacional de Justiça o refer…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.72.4",
+  "unidade": "VARA DE EXECUÇÕES PENAIS DE RIBEIRÃO DAS NEVES/MG",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 43,
+  "temas": [],
+  "trecho": "Não foram identificados achados relevantes."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.72.5",
+  "unidade": "VARA DE EXECUÇÕES PENAIS DE RIBEIRÃO DAS NEVES/MG",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 595,
+  "temas": [
+   "prazo_e_acervo"
+  ],
+  "trecho": "Considerando o expressivo acervo processual da Vara de Execuções Penais de Ribeirão das Neves, bem como a patente insuficiência de recursos humanos, determina-se ao Tribunal de Justiça local que, em 120 (cento e vinte) dias, promova estudos para: a) a criação de nova Vara de execuções penais na Comarca de Ribeirão das Neves; b) o aparelhamento da execução criminal na Comarca de Ribeirsão das Neves com novos servidores, se possível, mediante nomeação de aprovados no último concurso que se encontra vigente e; b) disponibilizar juiz cooperador todos os dias da semana para a Unidade Judicial."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.73.5",
+  "unidade": "VARA DE REGISTROS PÚBLICOS DE BELO HORIZONTE",
+  "tipo": "vara",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 3190,
+  "temas": [
+   "prazo_e_acervo"
+  ],
+  "trecho": "Achado 1: Constatou-se que a unidade enfrenta déficit estrutural em relação ao número de servidores do gabinete. Determinação: À Presidência do Tribunal de Justiça do estado de Minas Gerais e à Corregedoria-Geral de Justiça, para que, conjuntamente, realizem estudo voltado a avaliar a possibilidade de ampliar e redimensionar a distribuição de servidores para atividades jurídicas nos gabinetes, em observância aos parâmetros de equivalência da carga de trabalho constantes das diretrizes de que trata a Recomendação CNJ nº 149, de 30 de abril de 2024, e à transparência e racionalização da gestão d…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.74.4",
+  "unidade": "VARA DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER – CONTAGEM",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2108,
+  "temas": [
+   "violencia_domestica",
+   "prazo_e_acervo",
+   "cartorio"
+  ],
+  "trecho": "a. Considerando a ausência de servidores efetivos no gabinete, o que desprestigia a atividade-fim e compromete a segurança jurídica do serviço prestado, determina-se à Presidência e à Corregedoria do Tribunal de Justiça do Estado de Minas Gerais que elabore, em conjunto com a unidade, plano de aparelhamento do gabinete, com pelo menos 2 (dois) servidores efetivos, no prazo de 90 (noventa) dias, seja com a realização de novo concurso, seja com a nomeação de novos candidatos do certame então vigente, encaminhando à Corregedoria Nacional de Justiça o referido plano, ao término do prazo supracitad…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.74.5",
+  "unidade": "VARA DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER – CONTAGEM",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 212,
+  "temas": [],
+  "trecho": "Recomenda-se ao Tribunal Local que oficie a Secretaria de Segurança Pública do Estado de Minas Gerais, a fim de que seja disponibilizado meio eletrônico para que o formulário de risco seja preenchido pela vítima."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.75.5",
+  "unidade": "VARA EMPRESARIAL, DA FAZENDA PÚBLICA E AUTARQUIAS, REGISTROS PÚBL",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 513,
+  "temas": [
+   "prazo_e_acervo"
+  ],
+  "trecho": "À Presidência do Tribunal de Justiça do Estado de Minas Gerais (TJMG), para que: • Revisão do Quadro de Pessoal: Avalie a possibilidade de revisão do quadro paradigma da Vara Empresarial, da Fazenda Pública e Autarquias, Registros Públicos e Acidentes do Trabalho da Comarca de Betim, considerando as competências cumulativas em quatro matérias distintas, o expressivo acervo herdado e a condição de única vara com tal configuração no Estado, bem como adote medidas tendentes a prover a vaga atualmente existente."
+ },
+ {
+  "ano": 2026,
+  "secao": "6.76.4",
+  "unidade": "VARA FAZ PÚBLICA, EMP, REG PUB, AC. TRAB DE RIB DAS NEVES",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2790,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "estatistica",
+   "precatorio"
+  ],
+  "trecho": "Achado 1: Constatou-se, na unidade jurisdicional inspecionada, situação que se reproduz nas demais unidades avaliadas, consistente em dificuldade sistêmica na obtenção e consolidação de dados estatísticos. Os sistemas informatizados não permitiam a extração integral dos dados solicitados pela equipe de inspeção do CNJ na data da visita, tampouco possibilitavam a recuperação das informações relativas ao período pretérito de 12 meses. Na data da inspeção, o dado estatístico mais recente disponível no painel correspondia a 28 de fevereiro de 2026, evidenciando defasagem temporal de aproximadament…"
+ },
+ {
+  "ano": 2026,
+  "secao": "6.77.4",
+  "unidade": "VARA INFRACIONAL DA INFÂNCIA E JUVENTUDE",
+  "tipo": "vara",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1491,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "cartorio"
+  ],
+  "trecho": "Em que pese a regularidade da pauta de audiências, foi apurado que ainda há 571(quinhentos e setenta e um) processos aguardando pautar audiência na fila \"Audiência – (Re) Designar-Cancelar\". Da análise aleatória, foi possível observar que, parte dos processos já há data designada (havendo a necessidade apenas de regularização no PJE) e, outra parte, de fato ainda pende de designação de data para o ato. Sendo assim, determina-se à Corregedoria-Geral de Justiça que, em conjunto com a unidade, elabore plano de trabalho em até 90(noventa) dias, para correção da referida fila e/ou designação de dat…"
+ },
+ {
+  "ano": 2026,
+  "secao": "7.8",
+  "unidade": "PRECATÓRIOS",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 429,
+  "temas": [],
+  "trecho": "À Corregedoria que: • Elabore e disponibilize em portal com ampla divulgação interna e externa relação contendo todos os entes devedores do Estado de Minas Gerais, a respectiva legislação vigente sobre o teto de expedição de RPVs (com indicação do início da vigência) e o respectivo valor, apontando-se, ainda, aqueles que não possuem legislação vigente ou parâmetro não contemplado pelo artigo 100, §4º, da Constituição Federal."
+ },
+ {
+  "ano": 2026,
+  "secao": "10.5.12",
+  "unidade": "CARTÓRIO DO 5º ÓFÍCIO DE NOTAS DE BELO HORIZONTE - MINAS GERAIS",
+  "tipo": "outra",
+  "comarca": "BELO HORIZONTE",
+  "tipoSecao": "recomendacoes",
+  "itens": 1,
+  "caracteres": 239,
+  "temas": [
+   "extrajudicial"
+  ],
+  "trecho": "Sem prejuízo das determinações supra, recomenda-se ao 5.º Tabelionato de Notas de Belo Horizonte/MG a adoção das seguintes medidas, voltadas ao aperfeiçoamento contínuo da atividade notarial e à plena conformidade com as normas aplicáveis:"
+ }
+];
