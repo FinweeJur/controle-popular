@@ -256,3 +256,52 @@ Implementado em 21/08/2026: `apps/web/lib/judiciario/datajud.ts` (tipo + parser 
 **Dado pessoal.** A API não devolve nome nem CNPJ/CPF de parte (LGPD; a introspecção `_mapping` responde 403 — já registrado). Mesmo assim `sanitizarProcesso` varre todo campo de texto do processo por CPF válido por mod-11 antes de a rota devolver ao cliente — rede de segurança, não expectativa: é a mesma lição de "guarda que olha lista de campo suspeito falha" que já custou dois vazamentos reais neste repositório (ementa do IBAMA, nomes da Rouanet).
 
 **Status:** rota e lib prontas, com teste do parser sobre fixture escrita à mão (formato dos exemplos oficiais da wiki, nunca acervo real). Nenhuma tela do portal consome esta rota ainda — falta a página que a chama do lado do cliente.
+
+## Google Drive como repositório de documento público — as quatro armadilhas
+
+Coleta dos EIA/RIMA das audiências do SISEMA, fechada em 2026-08-22: **2.438 arquivos, 19,55 GB**. O Estado não hospeda o estudo — publica um link para a nuvem do empreendedor, e a maioria é Google Drive. Quatro armadilhas custaram horas cada, e nenhuma se anuncia.
+
+### 1. O id pode ser PASTA, e o Drive devolve 500
+
+183 itens (11% do corpus) davam HTTP 500 e pareciam instabilidade. Não eram: o id era de **pasta**, e `uc?export=download` responde 500 quando o alvo não é arquivo. Os nomes denunciavam ("Anexos", "Desenhos", "RIMA", "PCA"), mas o coletor pedia a mesma rota para todos.
+
+O mesmo id que dá 500 como arquivo devolve **200 e 465 KB** em `/drive/folders/<id>`. Retentar nunca ia resolver — o 500 aqui quer dizer "isto não é arquivo", não "tente de novo".
+
+**Resultado do conserto: 920 PDFs recuperados** que estavam dados como perdidos.
+
+O pareamento: a página traz `data-id="<id>"` (repetido ~3× por item) e, adiante, `aria-label="<nome> PDF …"`. Casa-se cada rótulo com o `data-id` mais próximo **antes** dele. Medido: 51 `data-id` e 17 rótulos → 17 pares corretos.
+
+### 2. O id pode ser GOOGLE DOCS, e aí não se baixa — se EXPORTA
+
+Depois de consertar a via de pasta, sobraram 52 itens com "listagem de pasta veio vazia". Não eram pastas vazias: **o id tinha 44 caracteres**, contra 33 de arquivo/pasta comum. Id de 44 é documento nativo do Google.
+
+As quatro rotas, medidas no mesmo id:
+
+| rota | resposta |
+|---|---|
+| `uc?export=download` | HTTP 500, 0 byte |
+| `/drive/folders/<id>` | HTTP 404 |
+| `/file/d/<id>/view` | 200, mas é HTML do visualizador |
+| `docs.google.com/document/d/<id>/export?format=pdf` | **200, 1,4 MB, `application/pdf`** |
+
+⚠️ **As três rotas erradas devolvem status DIFERENTES e nenhuma diz "use export".** Por isso a ordem de tentativa tem de estar escrita no código: arquivo → pasta → exportação. E validar o CORPO: o export responde 200 com HTML quando o documento é Sheets em vez de Docs.
+
+### 3. Pasta que exige LOGIN responde 200, com 272 KB e sem nenhum arquivo
+
+346 itens. A página vem completa, com "Fazer login" no meio do HTML e zero `data-id`. Sem conta, não há via anônima — e o export devolve 400, que **parece defeito nosso e não é**. Amostra de 8: 8 pediam login.
+
+### 4. `subprocess.run` com `capture_output` trava, e o `timeout=` NÃO salva
+
+O sintoma foi o pior possível: processo vivo, manifesto parado por horas, contador travado em 1.565/1.705 — parecia que a coleta tinha acabado.
+
+`faulthandler` mostrou o laço preso em `_wait_for_tstate_lock`: com cano capturado, `subprocess.run` espera a thread leitora terminar, **e essa espera ignora o `timeout=`**. No Windows, curl que herda um cano aberto segura o processo pai indefinidamente.
+
+**A correção é mandar a saída do curl para ARQUIVO** (sem thread, sem cano), e só então o `timeout=` volta a valer. Duas guardas, as duas necessárias: `-m` no curl e `timeout=` no Python.
+
+### Ainda: 200 com corpo vazio não é "HTTP 200"
+
+Registrar um 200-com-zero-byte como `"HTTP 200"` fazia o erro não casar com nenhuma via de recuperação, e o item rodava sem nunca fechar nem falhar de vez.
+
+### O que sobra é lacuna da FONTE, não do coletor
+
+Dos 1.705 itens do catálogo, os que nunca baixaram se explicam assim: **346 pastas com login**, **383 HTTP 500**, **100 links 404**. Amostra de 20 dos faltantes: **20 de 20 respondem 404** — o Estado publicou link para arquivo que não existe mais. É o mesmo achado dos 27% de EIA/RIMA que não abrem, medido de novo por outra via.
