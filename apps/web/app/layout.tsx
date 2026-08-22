@@ -17,15 +17,58 @@ import "./globals.css";
  * Antes da unificação, cada um dos três repos tinha o seu próprio
  * RootLayout com `<html>`; num app só, apenas a raiz pode declará-lo.
  */
+const BASE_URL = "https://controlepopular.com.br";
+const SITE_NAME = "Controle Popular";
+const DEFAULT_DESCRIPTION =
+  "Dados públicos sobre cidades, Congresso Nacional e Judiciário, reunidos e explicados. Portal independente, sem vínculo com nenhum órgão ou partido.";
+
 export const metadata: Metadata = {
-  title: "Controle Popular — Portal independente de transparência",
-  description:
-    "Dados públicos sobre cidades, Congresso Nacional e Judiciário, reunidos e explicados. Portal independente, sem vínculo com nenhum órgão ou partido.",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: `${SITE_NAME} — Portal independente de transparência`,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: DEFAULT_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: BASE_URL,
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: DEFAULT_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: DEFAULT_DESCRIPTION,
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 // O controle A−/A/A+ vive num atributo próprio (`data-fs`) porque o
 // next-themes só gerencia um. Ler o localStorage antes da pintura evita o
 // texto redimensionar na hidratação — mesmo truque do next-themes.
+const STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: BASE_URL,
+      description: DEFAULT_DESCRIPTION,
+      inLanguage: "pt-BR",
+    },
+    {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: BASE_URL,
+      sameAs: ["https://github.com/FinweeJur/controle-popular"],
+    },
+  ],
+};
+
 const FONT_SIZE_NO_FLASH_SCRIPT = `
 (function() {
   try {
@@ -58,6 +101,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
+        />
         <Script
           id="cp-font-size-no-flash"
           strategy="beforeInteractive"
