@@ -3192,6 +3192,72 @@ export const PENDENCIAS_TJMG: PendenciaInspecao[] = [
  }
 ];
 
+/**
+ * A série longitudinal: quantos itens o CNJ escreveu por ano.
+ *
+ * ⚠️ SÓ ENTRAM OS ANOS EM QUE A EXTRAÇÃO SE SUSTENTA. 2017 rende 2 unidades de
+ * 25 entradas de sumário (layout sem marcador de item), e 2026 tem extrator
+ * próprio. Publicar 2017 ao lado de 2023 desenharia uma "queda" que é defeito
+ * do nosso parser, não do TJMG — e ninguém olhando o gráfico saberia.
+ *
+ * ⚠️ E os anos não são igualmente comparáveis nem entre os que entraram: a
+ * rubrica de temas foi medida contra o vocabulário de 2026, e em 2012 ela
+ * deixa 32% dos achados sem tema contra 5% em 2023. O semTema existe
+ * para a tela poder dizer isso.
+ */
+export const SERIE_TJMG = [
+ {
+  "ano": 2012,
+  "layout": "L1",
+  "unidades": 60,
+  "itens": 194,
+  "itemVerificado": true,
+  "semTema": 0.317
+ },
+ {
+  "ano": 2019,
+  "layout": "L3",
+  "unidades": 9,
+  "itens": 59,
+  "itemVerificado": true,
+  "semTema": 0.333
+ },
+ {
+  "ano": 2022,
+  "layout": "L4",
+  "unidades": 57,
+  "itens": 565,
+  "itemVerificado": true,
+  "semTema": 0.105
+ },
+ {
+  "ano": 2023,
+  "layout": "L3",
+  "unidades": 60,
+  "itens": 521,
+  "itemVerificado": true,
+  "semTema": 0.05
+ }
+] as const;
+
+export const ANOS_FORA_DA_SERIE = [
+ {
+  "ano": 2017,
+  "arquivo": "tribunal-de-justica-do-estado-de-minas-g__Relatorio_Unidades_Adm_TJMG_2017.pdf",
+  "motivo": "So' 2 unidade(s) com item, de 6 aceitas e 25 entradas de sumario. O layout L2 nao tem marcador enumerado e o cabecalho nao ancora em nada -- a extracao deste documento nao esta resolvida."
+ },
+ {
+  "ano": 2017,
+  "arquivo": "tribunal-de-justica-do-estado-de-minas-g__Relatorio_Unidades_Judiciais_TJMG_2017.pdf",
+  "motivo": "So' 1 unidade(s) com item, de 1 aceitas e 124 entradas de sumario. O layout L2 nao tem marcador enumerado e o cabecalho nao ancora em nada -- a extracao deste documento nao esta resolvida."
+ },
+ {
+  "ano": 2026,
+  "arquivo": "tribunal-de-justica-do-estado-de-minas-g__Relatório_de_Inspeção_Ordinária_TJMG_2026.pdf",
+  "motivo": "O ramo generico de L5 rende 1.122 'unidades' aceitas (o sumario deste relatorio tem 1.155 entradas, quase todas subsecao) e so' 8 com item. Para 2026 vale o extrator dedicado, `cnj_inspecoes.py --achados`, que ancora nas secoes 'Achados e Determinacoes' e rende 123 secoes em 98 unidades. Nao somar os dois."
+ }
+] as const;
+
 export const PENDENCIAS_POR_ANO = {
  "2022": 24,
  "2023": 52

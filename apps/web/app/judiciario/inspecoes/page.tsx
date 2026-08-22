@@ -7,6 +7,7 @@ import {
   COBERTURA_INSPECOES,
   ORGAOS_INSPECIONADOS,
   PENDENCIAS_POR_ANO,
+  SERIE_TJMG,
   PENDENCIAS_TJMG,
   RELATORIOS_TJMG,
   TEMA_ROTULOS,
@@ -260,6 +261,78 @@ export default function InspecoesPage() {
 
       {/* ═══ A TABELA COMPLETA (cliente) ═══ */}
       <TabelaAchados />
+
+      {/* ═══ A SÉRIE ═══ */}
+      <section aria-labelledby="serie" className="mt-14">
+        <h2 id="serie" className="font-display text-xl font-bold text-text">
+          Quanto o CNJ escreveu, ano a ano
+        </h2>
+        <p className="mt-2 max-w-3xl text-[.95em] leading-relaxed text-text-soft">
+          Cada barra é o número de determinações e recomendações que a equipe registrou naquela
+          inspeção. Não é medida de qualidade do tribunal: uma inspeção que visita mais unidades
+          escreve mais, e o CNJ decide a cada vez onde entrar e quanto detalhar.
+        </p>
+
+        <ul className="mt-5 space-y-3">
+          {SERIE_TJMG.map((a) => (
+            <li key={a.ano} className="flex items-center gap-3 text-[.92em]">
+              <span className="w-12 shrink-0 tabular-nums font-semibold text-text">{a.ano}</span>
+              <span
+                className="h-5 rounded-sm bg-primary"
+                style={{
+                  width: `${Math.max(2, ((a.itens ?? 0) / Math.max(...SERIE_TJMG.map((x) => x.itens ?? 0))) * 100)}%`,
+                  maxWidth: "58%",
+                }}
+                aria-hidden="true"
+              />
+              <span className="tabular-nums text-text">{a.itens}</span>
+              <span className="text-text-soft">
+                itens em {a.unidades} unidades{" "}
+                {a.semTema !== null && a.semTema > 0.2 && (
+                  <span className="ml-2 text-[.9em]">
+                    · {Math.round(a.semTema * 100)}% sem tema reconhecido
+                  </span>
+                )}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-5 rounded-2xl border border-border bg-surface-2 p-5 text-[.9em] leading-relaxed text-text-soft">
+          <p>
+            <strong className="text-text">Faltam anos nesta série, e o motivo é nosso.</strong>{" "}
+            Três relatórios ficaram de fora porque a extração automática
+            não se sustenta neles — cada ano tem um formato diferente, e forçar produziria número
+            falso. Publicar 2017 ao lado de 2023 desenharia uma queda que seria defeito do nosso
+            programa, não do tribunal.
+          </p>
+          <ul className="mt-3 space-y-2">
+            <li>
+              <strong className="text-text">2017</strong> — os dois relatórios daquele ano
+              escrevem as determinações em prosa corrida, sem numerar item por item. Sem
+              numeração não há como o programa saber onde um termina e o outro começa, nem como
+              conferir se perdeu algum. Dos dois, saíram 3 unidades — de 149 que o sumário lista.
+            </li>
+            <li>
+              <strong className="text-text">2017 (Sistemas Judiciais)</strong> — o PDF é
+              digitalizado: 16 páginas de imagem, sem uma letra que uma máquina consiga ler.
+            </li>
+            <li>
+              <strong className="text-text">2026</strong> — está fora <em>desta</em> contagem, e
+              não do portal: por ter um formato próprio, ganhou leitura dedicada, que é a que
+              alimenta o resto desta página. Somar os dois contaria o mesmo relatório duas vezes.
+            </li>
+          </ul>
+          <p className="mt-3">
+            <strong className="text-text">
+              E os anos que entraram também não são igualmente comparáveis.
+            </strong>{" "}
+            A classificação por tema foi calibrada no vocabulário de 2026: em 2012 ela deixa 32%
+            dos achados sem tema, contra 5% em 2023. Não é que 2012 tratasse de outra coisa — é que
+            o CNJ escrevia com outras palavras.
+          </p>
+        </div>
+      </section>
 
       {/* ═══ O QUE NÃO MUDOU ═══ */}
       <section aria-labelledby="pendencias" className="mt-14">

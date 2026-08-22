@@ -39,9 +39,9 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, AQUI)
 
 from cnj_layouts import (  # noqa: E402
-    LayoutIndecidivel, chave_canonica, detectar_layout, itens_do_span, limpar,
-    pendencias, sequencia_quebrada, sha256_de, sumario, unidades,
-    RE_PROCESSO_CNJ)
+    LayoutIndecidivel, chave_canonica, detectar_layout, itens_do_span,
+    limpar_com_paginas, medir_offset, pendencias, sequencia_quebrada,
+    sha256_de, sumario, unidades, unidades_aceitas, RE_PROCESSO_CNJ)
 from cnj_temas import cobertura, temas_de  # noqa: E402
 from cnj_inspecoes import redigir_cpf  # noqa: E402
 
@@ -108,8 +108,11 @@ def extrair(caminho, tribunal="tjmg"):
     # T4: CPF redigido ANTES de qualquer coisa ser guardada.
     texto, n_cpf = redigir_cpf(bruto)
     paginas = [redigir_cpf(p)[0] for p in paginas]
-    corpo = limpar(paginas)
+    corpo, inicios = limpar_com_paginas(paginas)
     indice = sumario(paginas)
+    # ⚠️ Offset MEDIDO, nunca suposto: 2 em 2012, 1 em 2019, 0 em 2022. Errar
+    # por 1 faz T3 rejeitar tudo ou aceitar tudo.
+    offset = medir_offset(indice, inicios, corpo)
 
     try:
         layout, scores = detectar_layout(corpo)
@@ -123,7 +126,8 @@ def extrair(caminho, tribunal="tjmg"):
     ano, aviso_ano = ano_de(texto, caminho)
     proc = RE_PROCESSO_CNJ.search(texto)
 
-    uns = unidades(corpo, layout, indice)
+    candidatos = unidades(corpo, layout, indice)
+    uns = unidades_aceitas(corpo, layout, indice, inicios, offset)
     registros = []
     for k, (num, titulo, pos) in enumerate(uns):
         fim = uns[k + 1][2] if k + 1 < len(uns) else len(corpo)
@@ -158,6 +162,39 @@ def extrair(caminho, tribunal="tjmg"):
     faltando = sorted(cap_sumario - cap_corpo)
     quebradas = [r["secao"] for r in registros if r["sequenciaQuebrada"]]
 
+    # ─── o documento serve para a serie? diga, nao deixe adivinhar ───────
+    #
+    # ⚠️ Extracao fraca NAO PODE entrar na serie como se fosse igual as outras.
+    # Um ano que rende 1 unidade de 124 entradas de sumario, colocado no mesmo
+    # grafico que um ano que rende 75 de 81, produz uma "queda" que e' defeito
+    # do parser, nao do TJMG. E ninguem olhando o grafico saberia.
+    aceitas_frac = len(uns) / max(len(candidatos), 1)
+    confiavel, motivo = True, None
+    if layout == "L5":
+        confiavel = False
+        motivo = ("O ramo generico de L5 rende 1.122 'unidades' aceitas (o "
+                  "sumario deste relatorio tem 1.155 entradas, quase todas "
+                  "subsecao) e so' 8 com item. Para 2026 vale o extrator "
+                  "dedicado, `cnj_inspecoes.py --achados`, que ancora nas "
+                  "secoes 'Achados e Determinacoes' e rende 123 secoes em 98 "
+                  "unidades. Nao somar os dois.")
+    elif len(registros) < 5:
+        # ⚠️ O corte e' por unidade COM ITEM, nao por unidade aceita. Um
+        # documento pode aceitar 6 unidades e so' duas terem conteudo -- e' o
+        # caso dos dois relatorios de 2017 (L2), onde o rotulo de item nao tem
+        # marcador e o cabecalho nao ancora em nada. Contar as aceitas deixava
+        # 2017 entrar na serie representado por DUAS unidades, ao lado de anos
+        # com sessenta.
+        confiavel = False
+        motivo = ("So' %d unidade(s) com item, de %d aceitas e %d entradas de "
+                  "sumario. O layout L2 nao tem marcador enumerado e o "
+                  "cabecalho nao ancora em nada -- a extracao deste documento "
+                  "nao esta resolvida."
+                  % (len(registros), len(uns), len(indice)))
+    elif faltando:
+        motivo = ("Capitulos do sumario sem nenhuma unidade no corpo: %s. Nao "
+                  "invalida o ano, mas a cobertura e' parcial." % ", ".join(faltando))
+
     return {
         "arquivo": os.path.basename(caminho),
         "estado": "ok",
@@ -168,6 +205,12 @@ def extrair(caminho, tribunal="tjmg"):
         "avisoAno": aviso_ano,
         "processoCnj": proc.group(0) if proc else None,
         "layout": layout,
+        "offsetDePagina": offset,
+        "unidadesCandidatas": len(candidatos),
+        "unidadesAceitasPorT3": len(uns),
+        "fracaoAceitaPorT3": round(aceitas_frac, 3),
+        "confiavelParaSerie": confiavel,
+        "motivoDeRessalva": motivo,
         "scoresDeLayout": scores,
         "itemVerificado": layout not in SEM_VERIFICACAO_DE_ITEM,
         "granularidadeItem": "bloco" if layout == "L2" else "enumerado",
@@ -192,6 +235,8 @@ def serie(pasta, tribunal="tjmg"):
     # Reincidencia (b): chave canonica IDENTICA em anos diferentes.
     por_chave = {}
     for d in ok:
+        if not d.get("confiavelParaSerie"):
+            continue
         for r in d["registros"]:
             if r["chaveConfianca"] < 0.9:
                 continue  # chave fraca nao entra em afirmacao de reincidencia
@@ -201,8 +246,9 @@ def serie(pasta, tribunal="tjmg"):
          if len(v) > 1),
         key=lambda x: -len(x["anos"]))
 
+    confiaveis = [d for d in ok if d.get("confiavelParaSerie")]
     plana = [{"ano": d["ano"], "temas": r["temas"]}
-             for d in ok for r in d["registros"]]
+             for d in confiaveis for r in d["registros"]]
 
     return {
         "fonte": "Corregedoria Nacional de Justiça (CNJ) — relatórios de inspeção",
@@ -225,6 +271,10 @@ def serie(pasta, tribunal="tjmg"):
             "próprio CNJ faz a conta."
         ),
         "documentos": [{k: v for k, v in d.items() if k != "registros"} for d in docs],
+        "anosNaSerie": sorted({d["ano"] for d in confiaveis}),
+        "anosForaDaSerie": [
+            {"ano": d["ano"], "arquivo": d["arquivo"], "motivo": d.get("motivoDeRessalva")}
+            for d in ok if not d.get("confiavelParaSerie")],
         "reincidentesPorChave": reincidentes,
         "coberturaDaRubricaDeTemas": cobertura(plana),
         "registrosPorDocumento": {d["arquivo"]: d["registros"] for d in ok},

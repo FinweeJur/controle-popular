@@ -91,6 +91,21 @@ const pendencias = ler<{
   }[];
 }>("etl/betim/dados/cnj-pendencias-tjmg.json");
 
+const serie = ler<{
+  anosNaSerie: number[];
+  anosForaDaSerie: { ano: number; arquivo: string; motivo: string }[];
+  coberturaDaRubricaDeTemas: Record<string, { total: number; sem_tema: number; fracaoSemTema: number }>;
+  documentos: {
+    ano: number;
+    estado: string;
+    layout?: string;
+    unidadesComItem?: number;
+    itensTotais?: number;
+    confiavelParaSerie?: boolean;
+    itemVerificado?: boolean;
+  }[];
+}>("etl/betim/dados/cnj-serie-tjmg.json");
+
 /** Mesma rubrica determinística do ETL (`etl/betim/etl/apis/cnj_temas.py`).
  *  Repetida aqui só para rotular a linha; a fonte de verdade é o Python. */
 const TEMAS: [string, string, RegExp][] = [
@@ -354,6 +369,34 @@ export interface PendenciaInspecao {
  * de dois pontos, não de seis, e a tela diz isso.
  */
 export const PENDENCIAS_TJMG: PendenciaInspecao[] = ${JSON.stringify(linhasPendencia, null, 1)};
+
+/**
+ * A série longitudinal: quantos itens o CNJ escreveu por ano.
+ *
+ * ⚠️ SÓ ENTRAM OS ANOS EM QUE A EXTRAÇÃO SE SUSTENTA. 2017 rende 2 unidades de
+ * 25 entradas de sumário (layout sem marcador de item), e 2026 tem extrator
+ * próprio. Publicar 2017 ao lado de 2023 desenharia uma "queda" que é defeito
+ * do nosso parser, não do TJMG — e ninguém olhando o gráfico saberia.
+ *
+ * ⚠️ E os anos não são igualmente comparáveis nem entre os que entraram: a
+ * rubrica de temas foi medida contra o vocabulário de 2026, e em 2012 ela
+ * deixa 32% dos achados sem tema contra 5% em 2023. O semTema existe
+ * para a tela poder dizer isso.
+ */
+export const SERIE_TJMG = ${JSON.stringify(
+  serie.documentos
+    .filter((d) => d.confiavelParaSerie)
+    .map((d) => ({
+      ano: d.ano,
+      layout: d.layout,
+      unidades: d.unidadesComItem,
+      itens: d.itensTotais,
+      itemVerificado: d.itemVerificado,
+      semTema: serie.coberturaDaRubricaDeTemas[String(d.ano)]?.fracaoSemTema ?? null,
+    }))
+    .sort((a, b) => a.ano - b.ano), null, 1)} as const;
+
+export const ANOS_FORA_DA_SERIE = ${JSON.stringify(serie.anosForaDaSerie, null, 1)} as const;
 
 export const PENDENCIAS_POR_ANO = ${JSON.stringify(
   Object.fromEntries(pendencias.documentos.map((d) => [d.ano, d.total])), null, 1)} as const;
