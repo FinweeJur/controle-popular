@@ -5,7 +5,7 @@
 > **Última medição:** 2026-08-22
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [FONTES.md](../06-fontes/FONTES.md), [ESTADO.md](../02-estado/ESTADO.md), [TODO-PROXIMAS-RODADAS.md](TODO-PROXIMAS-RODADAS.md)
-> **Palavras-chave:** contratos publicos, fornecedores, alertas, territorios indigenas, quilombolas, legislacao municipal, transparencia ativa, auditoria, jornalismo de dados
+> **Palavras-chave:** contratos publicos, fornecedores, alertas, territorios indigenas, quilombolas, legislacao municipal, transparencia ativa, auditoria, jornalismo de dados, automacao, cron, home-pc, deploy
 
 ## Sumário
 
@@ -16,6 +16,7 @@
 - [Ponto de vista 3: Tribunal de Contas / Controladoria](#ponto-de-vista-3-tribunal-de-contas--controladoria)
 - [Propostas de telas e indicadores](#propostas-de-telas-e-indicadores)
 - [Entregáveis e ordem de execução](#entregáveis-e-ordem-de-execução)
+- [Automação de coleta e deploy no home PC](#automação-de-coleta-e-deploy-no-home-pc)
 - [Riscos e armadilhas](#riscos-e-armadilhas)
 - [Decisões registradas](#decisões-registradas)
 
@@ -204,6 +205,156 @@ Resumo de uma cidade só:
 13. Criar "Painel do cidadão" consolidando as telas acima.
 14. Escrever nota técnica com os primeiros achados.
 15. Divulgar para imprensa e órgãos de controle.
+
+## Automação de coleta e deploy no home PC
+
+### Objetivo
+
+Como são muitas bases e a publicação depende do `home-pc` (única máquina que consegue buildar com banco local), criar um script mestre que rode no home PC, atualize as fontes na periodicidade certa, valide, build e publique automaticamente.
+
+### Princípios
+
+- **Não rodar coleta pesada na CI do GitHub** — limites de rede, storage e política de uso honesto das fontes.
+- **Uma fonte por vez**, nunca todas em paralelo — evita saturar as APIs e facilita debug.
+- **Coleta vazia não sobrescreve dado bom** — regra já usada nos coletores.
+- **Build só se houver mudança real** — evita deploy vazio.
+- **Notificação de falha** — Telegram, e-mail ou log local visível.
+- **Credenciais fora do repo** — `.env.local` no home PC, nunca no Git.
+
+### Periodicidade sugerida por fonte
+
+| Fonte | Periodicidade | Justificativa |
+|---|---|---|
+| Radar de notícias do Paraopeba | diária | notícias têm curto prazo de utilidade |
+| PNCP (contratos) | 2× por semana | base muda com novas contratações |
+| ComunicaBR | semanal | dados municipais atualizados mensalmente, mas varia |
+| CFEM (ANM) | mensal | atraso natural de ~2 meses |
+| SIGMINE/ANM | mensal | zip diário, mas mudanças relevantes são mensais |
+| Licenciamento ambiental | semanal | status de processos muda com frequência |
+| Convênios federais (Transferegov) | semanal | atualizações frequentes de propostas |
+| Convênios MG (CKAN) | semanal | CGE publica com atualização diária, mas semanal é razoável |
+| Lei Rouanet / SALIC | mensal | projetos novos entram o tempo todo, mas não exige urgência |
+| Terras indígenas / quilombolas | trimestral | geometria muda pouco |
+| Barragens / ZAS | mensal | descaracterização e status evoluem |
+| Legislação federal (MMA) | mensal | normas novas surgem, mas não diariamente |
+| Diário oficial (quando ativo) | diária | atos oficiais têm prazo de publicidade |
+| Clima/INMET avisos ativos | diária | avisos têm validade curta |
+| AdaptaBrasil | trimestral | indicadores não mudam rápido |
+
+### Cronograma de coleta sugerido
+
+Distribuir as fontes ao longo da semana para não sobrecarregar o home PC nem as APIs.
+
+**Segunda-feira**
+- Manhã: Radar de notícias do Paraopeba
+- Tarde: PNCP (contratos)
+
+**Terça-feira**
+- Manhã: ComunicaBR
+- Tarde: Licenciamento ambiental + barragens/ZAS
+
+**Quarta-feira**
+- Manhã: Convênios federais (Transferegov)
+- Tarde: Convênios MG (CKAN)
+
+**Quinta-feira**
+- Manhã: CFEM + SIGMINE
+- Tarde: Lei Rouanet / SALIC
+
+**Sexta-feira**
+- Manhã: Legislação federal
+- Tarde: Territórios (terras indígenas, quilombolas)
+
+**Sábado**
+- Manhã: AdaptaBrasil
+- Tarde: Diário oficial (quando coletor estiver pronto)
+
+**Diário (todo dia, leve)**
+- INMET avisos ativos
+
+**Mensal (primeiro domingo)**
+- Revisão de todos os logs do mês
+- Checagem de links quebrados
+- Compactação e arquivamento de dados antigos
+
+### Pipeline do script mestre
+
+```bash
+#!/bin/bash
+# scripts/cron-home-pc.sh
+
+set -euo pipefail
+
+DATA=$(date +%Y-%m-%d)
+LOG_DIR="/var/log/controle-popular"
+LOG="$LOG_DIR/coleta-$DATA.log"
+REPO="/caminho/do/repo"
+
+cd "$REPO"
+
+git fetch origin
+git rebase origin/main
+
+# 1. Coleta da vez (passada como argumento)
+python "scripts/coletar-$1.py" >> "$LOG" 2>&1
+
+# 2. Validacao de dado pessoal
+python scripts/checar-dado-pessoal-em-dado.py --extra >> "$LOG" 2>&1
+
+# 3. Testes
+npm test >> "$LOG" 2>&1
+
+# 4. Build (só se houver mudanca)
+if git diff --quiet HEAD; then
+  echo "Nenhuma mudanca, build cancelado." >> "$LOG"
+  exit 0
+fi
+
+npm run build >> "$LOG" 2>&1
+
+# 5. Deploy
+npm run cf:deploy >> "$LOG" 2>&1
+
+# 6. Commit e push das atualizacoes de dado
+git add data/ etl/ apps/web/public/data/
+git commit -F ".git/mensagem-coleta-$DATA.txt"
+git push origin HEAD:main
+```
+
+### Agendamento
+
+No Windows, usar **Task Scheduler** chamando um `.bat` que roda o WSL/Git Bash; no Linux/WSL, usar `cron`:
+
+```cron
+# Segunda 06h — radar de noticias
+0 6 * * 1 /caminho/do/repo/scripts/cron-home-pc.sh radar-noticias
+# Segunda 14h — PNCP
+0 14 * * 1 /caminho/do/repo/scripts/cron-home-pc.sh pncp
+# Terça 06h — ComunicaBR
+0 6 * * 2 /caminho/do/repo/scripts/cron-home-pc.sh comunicabr
+# ... e assim por diante
+```
+
+### Segurança e resiliência
+
+- **Nunca rodar `--force` no push**.
+- **Pausa entre requisições** respeitada em cada coletor.
+- **User-Agent honesto** em todos.
+- **robots.txt** verificado; decisões documentadas.
+- Se um coletor falhar, o script continua com as próximas etapas? Não — `set -e` para na falha e notifica. A decisão é: falha de coleta não deve gerar deploy com dados antigos, mas também não deve quebrar toda a semana. Solução: cada coletor gera arquivo de status; o build só roda se o status for "OK" ou "vazio esperado".
+
+### Logging e monitoramento
+
+- Log diário rotacionado (mantém 30 dias).
+- Resumo por Telegram ao final: "Coleta PNCP: 1.247 contratos novos. Build: OK. Deploy: OK." ou "Falha em CFEM: ver log".
+- Dashboard simples no painel local mostrando última coleta bem-sucedida por fonte.
+
+### O que falta decidir
+
+- Qual máquina é o home-pc exato? (endereço, SO, se roda WSL)
+- Onde fica o Postgres local? (Docker, serviço nativo, Neon quando voltar)
+- Qual o canal de notificação? (Telegram já usado no canário)
+- Se o deploy continua sendo Cloudflare Workers ou se GitHub Pages vira secundário
 
 ## Riscos e armadilhas
 
