@@ -15,6 +15,7 @@ import {
   notInArray,
   or,
   sql,
+  type SQL,
 } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { num } from "@/lib/db/num";
@@ -1403,6 +1404,10 @@ function condicoesDeContratos(
     q?: string;
     valorMin?: number;
     valorMax?: number;
+    /** Tipo de contratação conforme a coluna `contratos.tipo` do PNCP
+     *  (ex.: "Contrato"). Igualdade exata: o valor vem de `<select>`
+     *  populado com os valores reais do dado, não de texto livre. */
+    tipo?: string;
   }
 ) {
   const cond = [eq(contratos.id_municipio, idMunicipio)];
@@ -1439,6 +1444,10 @@ function condicoesDeContratos(
    */
   if (f.valorMin !== undefined) cond.push(sql`${contratos.valor_global} >= ${f.valorMin}`);
   if (f.valorMax !== undefined) cond.push(sql`${contratos.valor_global} <= ${f.valorMax}`);
+  // Igualdade exata e só com valor presente: tipo vazio/nulo não casa filtro
+  // nenhum — contrato sem tipo publicado fica fora do recorte escolhido,
+  // mesma decisão da faixa de valor (NULL não é um valor).
+  if (f.tipo) cond.push(eq(contratos.tipo, f.tipo));
   return and(...cond);
 }
 
@@ -1456,12 +1465,28 @@ const COLUNAS_CONTRATO = {
   alerta: contratos.alerta,
   motivos_alerta: contratos.motivos_alerta,
   temas: contratos.temas,
+  // Órgão contratante e tipo — Sprint 2 do plano de revisão de dados
+  // (docs/planos/PLANO-revisao-dados-visibilizacao.md): a tela de maiores
+  // contratos precisa mostrar E filtrar por tipo, e o órgão entra como
+  // coluna. Ambos são anuláveis na fonte.
+  orgao_nome: contratos.orgao_nome,
+  categoria: contratos.categoria,
+  tipo: contratos.tipo,
   // A página do contrato no PNCP. Entrou em 2026-08-10, e não é enfeite: a
   // tela acusava ("contrato com alerta") sem oferecer como conferir, o que é
   // pedir confiança — o contrário do que este portal defende. Ver a migration
   // `0053_contratos_link_pncp.sql` e `etl/pncp/contratos.py::link_do_contrato`.
   link_fonte: contratos.link_fonte,
   numero_contrato: contratos.numero_contrato,
+  /**
+   * Data de abertura do CNPJ do fornecedor (tabela `fornecedores`), para o
+   * indício "empresa criada no mesmo ano do contrato". Subconsulta
+   * correlacionada por PK: uma ida indexada por linha, e o dado já chega
+   * pronto no índice estático — sem segunda consulta nem N+1 no build.
+   */
+  fornecedor_abertura: sql<
+    string | null
+  >`(select f.data_abertura::text from ${fornecedores} f where f.cnpj = ${contratos.fornecedor_cnpj})`,
 };
 
 /**
@@ -1482,6 +1507,9 @@ export async function contratosPaginados(
     motivo?: string;
     tema?: string;
     q?: string;
+    valorMin?: number;
+    valorMax?: number;
+    tipo?: string;
     pagina?: number;
     porPagina?: number;
   } = {}
@@ -1525,6 +1553,7 @@ export async function totaisDeContratos(
     q?: string;
     valorMin?: number;
     valorMax?: number;
+    tipo?: string;
   } = {}
 ) {
   const db = getDb();
@@ -1552,6 +1581,7 @@ export async function contratosParaExport(
     q?: string;
     valorMin?: number;
     valorMax?: number;
+    tipo?: string;
   },
   limite: number
 ) {
@@ -1562,6 +1592,89 @@ export async function contratosParaExport(
     .from(contratos)
     .where(condicoesDeContratos(idMunicipio, filtros))
     .orderBy(sql`${contratos.data_assinatura} desc nulls last`, asc(contratos.id))
+    .limit(limite);
+}
+
+/**
+ * Série anual de contratos do município: quantos e quanto por ano — o
+ * gráfico de topo de `prefeitura/contratos` (regra das cinco coisas,
+ * AGENTS.md). Agregado no banco; sem linha nenhuma devolve lista vazia.
+ */
+export async function contratosPorAno(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      ano: contratos.ano,
+      total: sql<number>`count(*)::int`,
+      soma: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
+      com_alerta: sql<number>`(count(*) filter (where ${contratos.alerta}))::int`,
+    })
+    .from(contratos)
+    .where(eq(contratos.id_municipio, idMunicipio))
+    .groupBy(contratos.ano)
+    .orderBy(sql`${contratos.ano} asc nulls last`);
+}
+
+/** Filtros do ranking de fornecedores. A faixa de valor é sobre o TOTAL
+ *  contratado do fornecedor (agregado, via HAVING), não sobre contratos
+ *  individuais — filtrar contrato a contrato mudaria a soma que a tela
+ *  exibe e a tabela diria outra coisa. */
+export interface FiltrosFornecedoresRanking {
+  ano?: number;
+  valorTotalMin?: number;
+  valorTotalMax?: number;
+}
+
+/**
+ * Ranking de fornecedores do município (Sprint 2): total contratado,
+ * número de contratos e número de órgãos distintos atendidos.
+ *
+ * Mesma chave de `maioresFornecedores`: CNPJ e, na falta dele, o nome —
+ * quando o mesmo CNPJ aparece com grafias diferentes, `min(fornecedor_nome)`
+ * escolhe uma vez e sempre a mesma, não "a primeira que apareceu".
+ *
+ * `data_abertura` vem da junção com `fornecedores` (tabela global por CNPJ)
+ * para o indício "empresa aberta durante o período dos contratos" — o
+ * cálculo do indício em si fica em TS puro (`lib/betim/fornecedores.ts`),
+ * testável sem banco.
+ */
+export async function fornecedoresRanking(
+  idMunicipio: IdMunicipio,
+  filtros: FiltrosFornecedoresRanking = {},
+  limite = 5000
+) {
+  const db = getDb();
+  if (!db) return null;
+  const chave = sql`coalesce(${contratos.fornecedor_cnpj}, ${contratos.fornecedor_nome}, 'Fornecedor não identificado')`;
+  const conds = [eq(contratos.id_municipio, idMunicipio)];
+  if (filtros.ano) conds.push(eq(contratos.ano, filtros.ano));
+  const tendo: SQL[] = [];
+  if (filtros.valorTotalMin !== undefined) {
+    tendo.push(sql`coalesce(sum(${contratos.valor_global}), 0) >= ${filtros.valorTotalMin}`);
+  }
+  if (filtros.valorTotalMax !== undefined) {
+    tendo.push(sql`coalesce(sum(${contratos.valor_global}), 0) <= ${filtros.valorTotalMax}`);
+  }
+  return db
+    .select({
+      chave: sql<string>`${chave}`,
+      razao_social: sql<string | null>`min(${contratos.fornecedor_nome})`,
+      cnpj: contratos.fornecedor_cnpj,
+      valor_total: sql<number>`coalesce(sum(${contratos.valor_global}), 0)::double precision`,
+      num_contratos: sql<number>`count(*)::int`,
+      num_orgaos: sql<number>`count(distinct ${contratos.orgao_nome})::int`,
+      ano_primeiro: sql<number | null>`min(${contratos.ano})::int`,
+      ano_ultimo: sql<number | null>`max(${contratos.ano})::int`,
+      tem_alerta: sql<boolean>`bool_or(coalesce(${contratos.alerta}, false))`,
+      data_abertura: sql<string | null>`max(${fornecedores.data_abertura}::text)`,
+    })
+    .from(contratos)
+    .leftJoin(fornecedores, eq(fornecedores.cnpj, contratos.fornecedor_cnpj))
+    .where(and(...conds))
+    .groupBy(chave, contratos.fornecedor_cnpj)
+    .having(tendo.length > 0 ? and(...tendo) : undefined)
+    .orderBy(sql`4 desc`, sql`1 asc`)
     .limit(limite);
 }
 
