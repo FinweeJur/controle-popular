@@ -18,6 +18,10 @@ const NAV = [
   { href: "/vagas", label: "Vagas" },
   { href: "/indicacoes", label: "Indicações" },
   { href: "/inspecoes", label: "Inspeções" },
+  { href: "/presidios", label: "Presídios" },
+  { href: "/defensoria", label: "Defensoria" },
+  { href: "/numeros", label: "Números" },
+  { href: "/correicoes-trabalhistas", label: "Trabalhista" },
   { href: "/metodologia", label: "Metodologia" },
 ];
 

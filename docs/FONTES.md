@@ -285,6 +285,69 @@ Medido em 2026-08-22. Coletor: `etl/betim/etl/apis/cnj_inspecoes.py`.
 
 **Fora do acervo, por competência:** não há inspeção da Corregedoria Nacional sobre **STJ, TST nem STF** — a varredura de 551 ids não achou categoria para nenhum deles, e o Regulamento Geral da Corregedoria Nacional descreve inspeção sobre órgãos jurisdicionais de **primeiro ou segundo grau**. **TRT-3 (MG) também não está lá**: quem correiciona TRT é a Corregedoria-Geral da Justiça do Trabalho, órgão do TST, e o produto chama-se **ata de correição**, publicada no TST/CSJT e na biblioteca digital DSpace do próprio TRT-3. Só quatro TRTs (7ª, 11ª, 13ª e 14ª) aparecem na biblioteca do CNJ, com um arquivo cada.
 
+## CNIEP / Geopresídios (CNJ) — inspeção judicial em presídio, e a separação que inverte a manchete
+
+Medido em 2026-08-22. `https://cniep.cnj.jus.br/api/geopresidios/{estabelecimentos,inspecoes,mapa}` — **JSON puro, sem login, sem token, sem captcha**, corpo inteiro numa requisição (2,49 MB / 20,49 MB / 2,78 MB). Brasil: 2.365 estabelecimentos e 20.298 inspeções; **MG: 285 estabelecimentos e 2.253 inspeções**, set/2025 a ago/2026, com tema pelos cinco eixos da Res. CNJ 593/2024.
+
+⚠️ **API não documentada.** O host foi descoberto por engenharia reversa: `geopresidios.cnj.jus.br/config.js` contém `window.__API_BASE__`. Pode mudar sem aviso — bater nela alguns dias seguidos antes de virar coletor de produção.
+
+⚠️ **O conteúdo da inspeção NÃO é público por esta via.** `/relatorio-inspecao/{id}` e `/respostas-formulario/{id}` respondem **404**. Publica-se **que** houve inspeção e **sobre qual tema**, nunca o achado — e a tela tem de dizer isso, senão o leitor conclui que não houve achado.
+
+🚨 **A separação por ramo é o achado, e sem ela o número acusa quem não deve.** No bolo, **56 de 285 (20%)** não receberam inspeção em 12 meses — sugere descaso generalizado. Separando por quem responde: **Justiça comum (TJMG) 217 unidades, 4 sem inspeção (2%)**; **Justiça Militar de MG 50 unidades, 34 sem (68%)**; **Superior Tribunal Militar 18 unidades, 18 sem (100%)**. A Justiça comum inspeciona quase tudo — a maioria com 11 inspeções em 12 meses — e o buraco inteiro está na Justiça Militar. **Publicar os 20% sem separar seria acusar exatamente quem está inspecionando.**
+
+⚠️ **E unidade militar prisional não é presídio:** é cela em batalhão, muitas vezes vazia. Comparar com penitenciária em número de inspeções é comparar coisas diferentes.
+
+⚠️ Detalhes de cobertura medidos: **165 dos 2.365 estabelecimentos nacionais não têm coordenada publicada** na rota `mapa`; e há **1 inspeção com data futura** no acervo — agendada, não realizada. Recortar por data de corte, senão o portal diz que a unidade foi visitada antes de a visita acontecer.
+
+## Defensoria Pública de MG — quatro fontes, e o denominador que nenhuma delas publica sozinha
+
+Medido em 2026-08-22. **A DPMG publica onde ela está; nunca publica onde ela não está.** O denominador vem de fora.
+
+| Fonte | Medido |
+|---|---|
+| `defensoria.mg.def.br/wp-json/api-unidades/search?s=` | 11.481 bytes, **129 unidades** (128 comarcas mineiras + a sede em Brasília), uma chamada |
+| `defensoria.mg.def.br/localizacao/service/localizacao/municipio/{uuid}` | 81.758 bytes, **854 municípios**, 297 com `codigoComarcaTjMg` |
+| Pesquisa Nacional da Defensoria 2025 (XLSX) | 2.659.449 bytes — **298 comarcas em MG: 120 SIM, 176 NÃO, 2 PARCIALMENTE**, com nome e população |
+| IPEA 2013 (ZIP, 315.063 bytes) | **295 comarcas, 105 com Defensoria** — fecha a série de 12 anos |
+
+⚠️ **O segundo endpoint NÃO é API anunciada** — foi achado lendo o bundle JS do tema WordPress (`main-B2qpQCFJ.js`). E a URL antiga (`gerais.defensoria.mg.def.br`) hoje é um sistema de login, não o endpoint de dados. Copiar o dado para o nosso banco; nunca depender dele em runtime.
+
+⚠️ **A planilha nacional só baixa com headers de navegador** — `curl` cru recebe **HTTP 406**.
+
+⚠️ **O CSV do IPEA é CP850, não ISO-8859-1.** Decodificar como Latin-1 produz texto ilegível (`PopulaÆo`) **em silêncio**, sem erro nenhum.
+
+⚠️ **AS FONTES DIVERGEM, E AS DUAS FICAM GRAVADAS:** 129 unidades físicas listadas hoje contra 120 comarcas declaradas atendidas. São recortes diferentes — unidade instalada × comarca atendida —, e escolher um e calar esconderia a diferença. **O ritmo é a segunda matéria: 105 comarcas em 2013 para 120 em 2025, quinze em doze anos.**
+
+## Justiça em Números (CNJ) — e a lacuna que ERA nossa, não do CNJ
+
+Medido em 2026-08-22. ZIP de 4.248.648 bytes, 3 CSVs em **ISO-8859-1** com separador `;`, arquivo principal de **1.596 linhas × 1.314 colunas**, série **2009–2025**, TJMG isolável em 17 linhas.
+
+⚠️ **A URL do ZIP muda a cada publicação** (o nome traz a data). O coletor raspa a página `base-de-dados/` para achar o link vigente — link fixo quebra na próxima atualização, e quebra em silêncio.
+
+🚨 **CORREÇÃO DE UMA AFIRMAÇÃO DESTE PROJETO.** Estava registrado aqui e no plano que *"tempo médio de tramitação por tribunal estadual não existe em dado aberto; só há `tptotst` para o TST"*. **Está errado.** A variável é **`tpbaixm`**, populada de **2015 a 2025** para o TJMG (**675,5 em 2025**; 771,3 em 2023; 721,1 em 2024).
+
+**Por que a busca anterior falhou:** o dicionário rotula a coluna apenas como **"TpBaix - Média"** — sem a palavra "tempo", sem "tramitação". Busca textual por essas palavras não acha; só acha quem procura pelo padrão `Tp*` mais sufixo (`m`, `md`, `dp`, `p`). **A lição vale além desta fonte: ausência de resultado numa busca por palavra não é ausência do dado — é ausência da palavra que quem procurou escolheu.**
+
+⚠️ **A unidade NÃO está declarada.** O dicionário não diz se é dia, mês ou outra coisa. 675,5 é compatível com dias corridos entre distribuição e baixa, mas isso é inferência — **não escrever "675 dias" como se fosse afirmação do CNJ**. E o mesmo prefixo `Tp` significa **"Total de Pessoal"** noutras variáveis do mesmo dicionário (`tpefet`, `tpaf`): casar por prefixo sem olhar o sufixo mistura duas famílias.
+
+⚠️ Irmãs medidas: `tpbaixmd` (mediana) e `tpbaixdp` (desvio) existem no dicionário e vêm **`nd` em todos os 17 anos** do TJMG. Cobertura de `tpbaixm`: vazia de 2009 a 2014.
+
+## Atas de correição do TRT-3 (Corregedoria-Geral da Justiça do Trabalho / TST)
+
+Medido em 2026-08-22. **18 atas, de 1991 a 2024**, ~91 MB, todas com magic `%PDF-` conferido.
+
+⚠️ **Quem correiciona TRT não é o CNJ** — é a CGJT, órgão do TST, e o produto chama-se **ata de correição**, não relatório de inspeção. Por isso procurar no CNJ, ou no site do próprio TRT-3, não acha nada.
+
+⚠️ **Não há rota de enumeração.** O acervo saiu de raspagem de **19 páginas de gestão** de Ministro Corregedor-Geral (`tst.jus.br/web/corregedoria/correicoes-anteriores`, 158.823 bytes) — não 17, como se supunha: 3 links não têm slug amigável e só resolvem por id. É **piso, não total**.
+
+⚠️ **Parser fixo quebra entre ciclos:** o layout muda por gestão (`table`/`span` aninhados em 2014–2018, `div class="grid-row"` no ciclo 2026). E a **região aparece numa célula separada do link do PDF** — parser que lê o texto da âncora pega o PDF errado **em silêncio** (o coletor detectou isso comparando duas rodadas de extração).
+
+⚠️ **URL de PDF não é previsível:** muda prefixo (http/https, com/sem www), pasta numérica e token de assinatura Liferay, único por arquivo. **Deduplicar por data da correição, não por nome de arquivo** — a ata de 2021 existe em duas cópias (TST e DSpace do TRT-3) e contá-las como duas infla o acervo em 20%.
+
+⚠️ **O DSpace do TRT-3 é armadilha por três vias:** guarda 1 das 18 atas e nem como item (a de 2021 é o bitstream `sequence=2` de um item chamado *"Informativo de Legislação n. 69"*); OAI-PMH e REST respondem **404 com a mesma página Cocoon de 67.151 bytes**; e a coleção chamada **"Atas"** (handle `11103/22543`), que tem RSS funcional e parece a via óbvia, guarda **atas de sessão de julgamento** — nome igual, conteúdo diferente.
+
+**Duas gestões passaram sem correicionar o TRT-3** (Vantuil Abdala 2001-2002, Almir Pazzianoto 1996-1998), confirmado por ausência real na tabela do TST, não por falha de parser. Próxima correição: **05 a 09/10/2026**, edital publicado, ata ainda inexistente.
+
 ## Google Drive como repositório de documento público — as quatro armadilhas
 
 Coleta dos EIA/RIMA das audiências do SISEMA, fechada em 2026-08-22: **2.438 arquivos, 19,55 GB**. O Estado não hospeda o estudo — publica um link para a nuvem do empreendedor, e a maioria é Google Drive. Quatro armadilhas custaram horas cada, e nenhuma se anuncia.
