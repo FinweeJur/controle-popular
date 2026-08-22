@@ -11,8 +11,9 @@ export async function generateStaticParams() {
 }
 
 export const generateMetadata = metadataDaCidade(
-  (c) => `Servidores — Prefeitura de ${c.nome} — ${nomePortal(c)}`,
-  (c) => `Servidores da Prefeitura de ${c.nome}: nome, cargo, lotação e vínculo. Dado público, com busca.`
+  (c) => `Servidores públicos de ${c.nome}: nome, cargo e lotação — ${nomePortal(c)}`,
+  (c) =>
+    `Lista de servidores da Prefeitura de ${c.nome}: nome, cargo, lotação e vínculo. Dado público com busca.`
 );
 
 interface ServidoresPageProps {

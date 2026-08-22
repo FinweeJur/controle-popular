@@ -12,8 +12,9 @@ export async function generateStaticParams() {
 }
 
 export const generateMetadata = metadataDaCidade(
-  (c) => `Licitações — Prefeitura | ${nomePortal(c)}`,
-  (c) => `Processos de licitação da Prefeitura de ${c.nome}, dados públicos via PNCP.`
+  (c) => `Licitações abertas da Prefeitura de ${c.nome} — ${nomePortal(c)}`,
+  (c) =>
+    `Processos de licitação da Prefeitura de ${c.nome}: editais, modalidades e situação. Dados públicos via PNCP.`
 );
 
 interface LicitacoesPageProps {
