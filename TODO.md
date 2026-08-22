@@ -39,36 +39,59 @@
   · `/ambiental/licenciamento` e `/copam` têm as cinco coisas no código mas
   renderizam vazio enquanto a Neon estiver em 402 — não é regressão.
 
-- **Diário oficial D1 (SIGPub) — coletor em construção, worktree `diario-oficial`.**
-  Itinga e Araçuaí já ganharam fonte própria (`0be50d9`); Diamantina é a única
-  confirmação limpa de SIGPub. Migration `0077` e `lib/diario/classificarAto.ts`
-  prontos. ⚠️ O mecanismo de busca tem duas versões conflitantes registradas:
-  `docs/_historico/diario-oficial-sigpub-mapeamento.md` (11/08) mediu que GET
-  simples falha e suspeitou de POST/token; o cabeçalho da migration `0077`
-  (16/08) diz "GET + CSRF `_token` ligado à sessão" como confirmado. Reconferir
-  ao vivo antes de escrever o coletor, não herdar nenhum dos dois relatos.
-  · plano: `docs/planos/diario-oficial-plano.md`
+- **As 4 trilhas paralelas de 22/08 — IMPLEMENTADAS EM BRANCH, nenhuma
+  mesclada nem publicada.** Rodaram simultâneas via workflow (4 agentes,
+  466 chamadas de ferramenta, 0 erro). Cada uma na própria branch (mesmo nome
+  do worktree), acima de `02e73d5`. **Falta uma sessão revisar e decidir
+  mesclar** — nenhuma foi rebasada contra o que a sessão da justiça publicar
+  daqui pra frente.
 
-- **Cabeçalho enxuto em Terras e Paraopeba — worktree `cabecalho-zonas`.**
-  Decisão de 22/08 (`docs/ESTADO.md` decisão 5): molde `congresso/layout.tsx`,
-  não o `Header.tsx` rico de Cidades. ⚠️ Paraopeba (9 subpáginas, nenhuma
-  full-screen) aceita `layout.tsx` de zona sem problema. Função Social da
-  Terra **não**: o comentário em `funcaosocialterra/page.tsx:324-332` registra
-  que um `layout.tsx` colaria também em `/mapa`, o globo 3D full-screen com HUD
-  nos 4 cantos — por isso essa zona nunca teve layout de zona. Ver
-  `docs/planos/REVISAO-UX-E-ONBOARDING.md` §5.
+  · **`diario-oficial`** (9 commits) — coletor `etl/betim/etl/camaras/sigpub.py`
+  + classificador portado pra Python (`etl/betim/etl/diario.py`, 70/70 contra
+  a mesma fixture do teste TS) + migration nova `0079` (ids de entidade).
+  ✅ O conflito dos dois relatos do mecanismo se resolveu: a migration `0077`
+  estava certa (GET + sessão + token CSRF reutilizável); o relato de 11/08
+  errava nome de campo e filtro, não mecanismo. ⚠️ Corrigiu a `0077` num
+  ponto: `pagina` nunca vem preenchida, só `edicao`. Medido ao vivo: **196
+  matérias da Prefeitura (id 905) + 11 da Câmara (id 21672) só em julho/2026**,
+  conferido contra o total que a própria fonte declara. **Achados que pedem
+  decisão:**
+  · classificador caiu em "outro" em 16% dos títulos reais (32/196) — bem
+  acima dos 4% da calibração original; duas causas já identificadas — chip
+  `task_f4a38f90` já registrado pra decidir.
+  · SIGPub de Diamantina tem matéria desde pelo menos **janeiro/2015** — quanto
+  de histórico coletar (só daqui pra frente, ou backfill) é decisão do dono,
+  não resolvida.
+  · migration `0079` nunca foi aplicada em banco nenhum; `_gravar_atos()`
+  existe mas nunca gravou uma linha real (sem `DATABASE_URL` neste worktree).
 
-- **Linha de orientação na home — worktree `home-orientacao`.** Decisão 8 de
-  22/08: uma linha acima do grid de 6 cards ("procurando sua cidade?"), sem
-  redesenho.
+  · **`cabecalho-zonas`** (9 commits) — Paraopeba ganhou `layout.tsx` de zona
+  de verdade (⚠️ tem **11 subpáginas**, não 9 como esta mesma entrada dizia
+  antes — corrigido pelo próprio agente, achado durante o trabalho, não
+  suposição). Terras **não** ganhou `layout.tsx` — ganhou um componente manual
+  (`Cabecalho.tsx`) importado nas 3 páginas, porque o `/mapa` (globo 3D com
+  HUD) colidiria. **O conflito com o HUD foi medido, não suposto**: o HUD roda
+  isolado dentro do `<iframe>` do globo, e um cabeçalho de portal mais alto só
+  encolhe a caixa do iframe — confirmado 9 painéis do HUD intactos, 12px de
+  margem, zero corte. De quebra corrigiu um `<main>` sem `id`/`tabIndex` em
+  `/paraopeba/pericia` (único das 12 rotas sem isso) e um bug real de sintaxe
+  JSX que quebrava aquela rota com 500 (achado rodando o servidor de verdade,
+  não só por `tsc`). `npm test`: 996 vitest + 141 globo, 0 falhas.
 
-- **Chatbot: prova de conceito (embeddings) — worktree `chatbot-poc`.**
-  Decisões 2-4 de 22/08: cérebro Maritaca (Sabiá)/DeepSeek, acervo = o que o
-  determinístico não cobre, ressalva de IA sempre visível. Vetorizador já
-  medido: Ollama local `nomic-embed-text`, 768 dim, mesmo tamanho do índice de
-  código existente. Escopo desta trilha: só chunk → vetor → busca por
-  similaridade sobre 1 documento real, com teste — sem chave de API nenhuma
-  (Maritaca/DeepSeek ficam para depois, quando houver credencial).
+  · **`home-orientacao`** (2 commits) — linha acima do grid, contraste medido
+  nos 3 temas (7,08:1 claro / 8,30:1 escuro / 21:1 alto-contraste — todos
+  acima do piso de 7:1).
+
+  · **`chatbot-poc`** (1 commit) — `apps/web/lib/assistente/embeddings/`
+  (Ollama local, chunking, similaridade de cosseno), testado ao vivo sobre
+  4 normas reais já no repo (`etl/betim/dados/legislacao-mma.json`, sobre a
+  barragem de Fundão): 3 de 4 perguntas acertaram o trecho certo por
+  similaridade; a 4ª ("qual norma foi revogada?") **não** acertou — achado
+  honesto, documentado no código, fora das asserções: busca semântica não
+  substitui casamento de palavra-chave. `npm test`: 1034 vitest + 141 globo,
+  0 falhas. **Achado de segurança relevante:** a guarda de dado pessoal
+  (`checar-dado-pessoal-em-dado.py`) não cobre `etl/betim/dados/` — só
+  `apps/web/data/` e `docs/dados/` — chip `task_dae5f906` já registrado.
 
 ## Esperando data
 
