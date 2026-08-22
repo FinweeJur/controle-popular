@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Cabecalho from "./Cabecalho";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import AvisoColetaEmCurso from "@/app/components/AvisoColetaEmCurso";
@@ -83,256 +84,262 @@ export default async function FuncaoSocialTerraPage() {
   const atosAreaProtegida = carregarAtosAreaProtegida();
 
   return (
-    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
-      <p className="text-[.8em] font-semibold tracking-wide text-text-soft uppercase">
-        {ZONA.etiqueta}
-      </p>
-      <h1 className="mt-2 font-display text-3xl font-bold sm:text-4xl">
-        {ZONA.titulo}
-      </h1>
-      <p className="mt-3 max-w-[62ch] text-text-soft">
-        Terra sem dono declarado não é terra sem função. O Cadastro Ambiental
-        Rural é declaratório: quem tem imóvel rural declara. O que sobra — área
-        que ninguém declarou — é o <strong>vazio cadastral</strong>, e é o
-        ponto de partida para perguntar de quem é aquela terra e o que se faz
-        dela. Mas o mapa desta frente não para mais no vazio cadastral: hoje
-        ele também mostra terra indígena, barragem, mineração, dinheiro
-        público e onde essas camadas se cruzam.
-      </p>
-
-      {/* A cobertura desta frente é MUITO desigual entre camadas, e a página
-          não dizia isso em nenhum lugar visível — quem lê "6.378 normas" não
-          tem como adivinhar que elas cobrem 6 municípios de 854. */}
-      <AvisoColetaEmCurso escopo="Nesta frente a cobertura varia muito de camada para camada: o vazio cadastral cobre duas regiões de estudo, a legislação municipal cobre 6 dos 854 municípios de Minas, e a mancha de inundação existe para 156 das 259 barragens." />
-
-      <div className="mt-5 flex flex-wrap gap-3">
-        <a
-          href="/funcaosocialterra/mapa"
-          className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-ink shadow-sm transition-colors hover:opacity-90"
-        >
-          Ver mapa completo (3D) →
-        </a>
-        <a
-          href="/funcaosocialterra/alertas"
-          className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-text shadow-sm transition-colors hover:border-primary"
-        >
-          Ver alertas, um por um →
-        </a>
-      </div>
-
-      <section className="mt-9">
-        <h2 className="font-display text-xl font-semibold">
-          O que o mapa mostra hoje
-        </h2>
-        <p className="mt-1 max-w-[62ch] text-sm text-text-soft">
-          Minas Gerais inteira nestas camadas — não só o Jequitinhonha do
-          vazio cadastral abaixo. Cada número é contado direto no GeoJSON
-          publicado, sem digitar.
+    <>
+      <Cabecalho />
+      <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
+        <p className="text-[.8em] font-semibold tracking-wide text-text-soft uppercase">
+          {ZONA.etiqueta}
         </p>
-        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <div className="rounded-xl border border-border bg-surface p-4 text-sm">
-            <p className="font-tabular text-xl font-bold text-text">
-              {formatNumberBR(resumoMapa.terrasIndigenas)}
-            </p>
-            <p className="text-text-soft">
-              terras indígenas da FUNAI, todas as fases (do &quot;em estudo&quot; ao
-              &quot;regularizada&quot; — o direito é o mesmo nas quatro).
-            </p>
-          </div>
-          <div className="rounded-xl border border-border bg-surface p-4 text-sm">
-            <p className="font-tabular text-xl font-bold text-text">
-              {formatNumberBR(resumoMapa.territoriosQuilombolas)}
-            </p>
-            <p className="text-text-soft">territórios quilombolas publicados.</p>
-          </div>
-          <div className="rounded-xl border border-border bg-surface p-4 text-sm">
-            <p className="font-tabular text-xl font-bold text-text">
-              {formatNumberBR(resumoMapa.barragensComManchaPublicada)}
-            </p>
-            <p className="text-text-soft">
-              barragens com mancha de inundação publicada pela FEAM — a área que
-              a água alcança se a barragem romper.
-            </p>
-          </div>
-          <div className="rounded-xl border border-border bg-surface p-4 text-sm">
-            <p className="font-tabular text-xl font-bold text-text">
-              {formatNumberBR(resumoMapa.sigmineOperacao)} +{" "}
-              {formatNumberBR(resumoMapa.sigmineInteresse)}
-            </p>
-            <p className="text-text-soft">
-              títulos minerários da ANM (SIGMINE): {formatNumberBR(resumoMapa.sigmineOperacao)}{" "}
-              em fase que autoriza extrair, {formatNumberBR(resumoMapa.sigmineInteresse)} são só
-              requerimento — as duas nunca somadas como &quot;mina&quot;.
-            </p>
-          </div>
-          <div className="rounded-xl border border-border bg-surface p-4 text-sm">
-            <p className="font-tabular text-xl font-bold text-text">
-              {formatNumberBR(resumoMapa.cfemMunicipios)}
-            </p>
-            <p className="text-text-soft">
-              municípios com royalty da mineração (CFEM) detalhado por substância e
-              empresa.
-            </p>
-          </div>
-          <div className="rounded-xl border border-border bg-surface p-4 text-sm">
-            <p className="font-tabular text-xl font-bold text-text">
-              {formatNumberBR(resumoMapa.cruzamentoDinheiroEmpresas)}
-            </p>
-            <p className="text-text-soft">
-              empresas cruzadas entre licença ambiental e dinheiro público recebido —
-              cobertura de 4 municípios (Araçuaí, Betim, Diamantina e Itinga), não o
-              estado inteiro.
-            </p>
-          </div>
-        </div>
+        <h1 className="mt-2 font-display text-3xl font-bold sm:text-4xl">
+          {ZONA.titulo}
+        </h1>
+        <p className="mt-3 max-w-[62ch] text-text-soft">
+          Terra sem dono declarado não é terra sem função. O Cadastro Ambiental
+          Rural é declaratório: quem tem imóvel rural declara. O que sobra — área
+          que ninguém declarou — é o <strong>vazio cadastral</strong>, e é o
+          ponto de partida para perguntar de quem é aquela terra e o que se faz
+          dela. Mas o mapa desta frente não para mais no vazio cadastral: hoje
+          ele também mostra terra indígena, barragem, mineração, dinheiro
+          público e onde essas camadas se cruzam.
+        </p>
 
-        <div className="mt-4 rounded-xl border border-dashed border-border bg-surface-2 p-4 text-sm text-text-soft">
-          <p>
-            <strong className="text-text">Alertas calculados por sobreposição de geometria:</strong>{" "}
-            {formatNumberBR(alertaOperacao.itens.length)} sobreposições entre território e lavra
-            já autorizada, {formatNumberBR(alertaInteresse.itens.length)} entre território e
-            requerimento minerário, e {formatNumberBR(atosAreaProtegida.totalNormas)} normas
-            municipais que criam ou alteram área protegida. Terra indígena atingida por mancha
-            de barragem: zero, medido numa varredura completa — não é ausência de checagem.
-            Território quilombola atingido por mancha de barragem:{" "}
-            {formatNumberBR(alertaQuilombolaMancha.qtdFeaturesEncontradas)} interseções, em{" "}
-            {formatNumberBR(alertaQuilombolaMancha.qtdTerritoriosAtingidos)} territórios.
-          </p>
+        {/* A cobertura desta frente é MUITO desigual entre camadas, e a página
+            não dizia isso em nenhum lugar visível — quem lê "6.378 normas" não
+            tem como adivinhar que elas cobrem 6 municípios de 854. */}
+        <AvisoColetaEmCurso escopo="Nesta frente a cobertura varia muito de camada para camada: o vazio cadastral cobre duas regiões de estudo, a legislação municipal cobre 6 dos 854 municípios de Minas, e a mancha de inundação existe para 156 das 259 barragens." />
+
+        <div className="mt-5 flex flex-wrap gap-3">
+          <a
+            href="/funcaosocialterra/mapa"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-ink shadow-sm transition-colors hover:opacity-90"
+          >
+            Ver mapa completo (3D) →
+          </a>
           <a
             href="/funcaosocialterra/alertas"
-            className="mt-2 inline-block font-medium text-primary underline underline-offset-2 hover:text-accent"
+            className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-text shadow-sm transition-colors hover:border-primary"
           >
-            Conferir cada alerta, com processo e link para a fonte →
+            Ver alertas, um por um →
           </a>
         </div>
-      </section>
 
-      {comDado.length === 0 ? (
-        <p className="mt-8 rounded-2xl border border-dashed border-border bg-surface-2 p-6 text-sm text-text-soft">
-          Nenhuma cidade tem levantamento publicado no momento.
-        </p>
-      ) : (
-        <>
-          <section className="mt-9">
-            <h2 className="font-display text-xl font-semibold">
-              Onde já foi levantado
-            </h2>
-            <p className="mt-1 text-sm text-text-soft">
-              {formatNumberBR(Math.round(totalHa))} hectares em{" "}
-              {comDado.length}{" "}
-              {comDado.length === 1 ? "cidade" : "cidades"} do Vale do
-              Jequitinhonha.
-            </p>
-
-            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {comDado.map(({ cidade, linhas }) => {
-                const l = linhas[0];
-                return (
-                  <a
-                    key={cidade.id_municipio}
-                    href={`/${cidade.slug}/terras`}
-                    className="rounded-2xl border border-border bg-surface p-5 shadow-sm transition-colors hover:border-primary"
-                  >
-                    <h3 className="font-display text-base font-semibold text-text">
-                      {cidade.nome}
-                    </h3>
-                    <p className="mt-2 font-tabular text-2xl font-bold text-text">
-                      {l.percentual.toFixed(1)}%
-                    </p>
-                    <p className="mt-1 text-xs text-text-soft">
-                      {formatNumberBR(Math.round(l.areaCandidataHa))} ha de{" "}
-                      {formatNumberBR(Math.round(l.areaUniversoHa))} ha ·{" "}
-                      {l.qtdPoligonos} polígonos
-                    </p>
-                    <p className="mt-3 text-[.8em] font-medium text-primary">
-                      Ver em {cidade.nome} →
-                    </p>
-                  </a>
-                );
-              })}
+        <section className="mt-9">
+          <h2 className="font-display text-xl font-semibold">
+            O que o mapa mostra hoje
+          </h2>
+          <p className="mt-1 max-w-[62ch] text-sm text-text-soft">
+            Minas Gerais inteira nestas camadas — não só o Jequitinhonha do
+            vazio cadastral abaixo. Cada número é contado direto no GeoJSON
+            publicado, sem digitar.
+          </p>
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="rounded-xl border border-border bg-surface p-4 text-sm">
+              <p className="font-tabular text-xl font-bold text-text">
+                {formatNumberBR(resumoMapa.terrasIndigenas)}
+              </p>
+              <p className="text-text-soft">
+                terras indígenas da FUNAI, todas as fases (do &quot;em estudo&quot; ao
+                &quot;regularizada&quot; — o direito é o mesmo nas quatro).
+              </p>
             </div>
-          </section>
+            <div className="rounded-xl border border-border bg-surface p-4 text-sm">
+              <p className="font-tabular text-xl font-bold text-text">
+                {formatNumberBR(resumoMapa.territoriosQuilombolas)}
+              </p>
+              <p className="text-text-soft">territórios quilombolas publicados.</p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface p-4 text-sm">
+              <p className="font-tabular text-xl font-bold text-text">
+                {formatNumberBR(resumoMapa.barragensComManchaPublicada)}
+              </p>
+              <p className="text-text-soft">
+                barragens com mancha de inundação publicada pela FEAM — a área que
+                a água alcança se a barragem romper.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface p-4 text-sm">
+              <p className="font-tabular text-xl font-bold text-text">
+                {formatNumberBR(resumoMapa.sigmineOperacao)} +{" "}
+                {formatNumberBR(resumoMapa.sigmineInteresse)}
+              </p>
+              <p className="text-text-soft">
+                títulos minerários da ANM (SIGMINE): {formatNumberBR(resumoMapa.sigmineOperacao)}{" "}
+                em fase que autoriza extrair, {formatNumberBR(resumoMapa.sigmineInteresse)} são só
+                requerimento — as duas nunca somadas como &quot;mina&quot;.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface p-4 text-sm">
+              <p className="font-tabular text-xl font-bold text-text">
+                {formatNumberBR(resumoMapa.cfemMunicipios)}
+              </p>
+              <p className="text-text-soft">
+                municípios com royalty da mineração (CFEM) detalhado por substância e
+                empresa.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface p-4 text-sm">
+              <p className="font-tabular text-xl font-bold text-text">
+                {formatNumberBR(resumoMapa.cruzamentoDinheiroEmpresas)}
+              </p>
+              <p className="text-text-soft">
+                empresas cruzadas entre licença ambiental e dinheiro público recebido —
+                cobertura de 4 municípios (Araçuaí, Betim, Diamantina e Itinga), não o
+                estado inteiro.
+              </p>
+            </div>
+          </div>
 
-          <TaxaDeErroTerras />
-
-          <section className="mt-8">
-            <h2 className="font-display text-xl font-semibold">
-              Como o número é calculado
-            </h2>
-            <ol className="mt-3 max-w-[62ch] list-decimal space-y-2 pl-5 text-sm text-text-soft">
-              <li>
-                Parte-se do limite do município, na malha oficial do IBGE. É
-                ele o denominador — a porcentagem é sobre o município inteiro,
-                não sobre um recorte escolhido.
-              </li>
-              <li>
-                Subtrai-se tudo o que foi declarado no CAR: cada imóvel rural
-                que alguém registrou.
-              </li>
-              <li>
-                Subtraem-se as classes de uso que não admitem destinação
-                fundiária — corpo d&apos;água, mancha urbana e afins.
-              </li>
-              <li>
-                O que sobra é o vazio cadastral. Cada polígono guarda a regra
-                exata que o produziu, e ela aparece na página da cidade.
-              </li>
-            </ol>
-            <p className="mt-4 max-w-[62ch] text-sm text-text-soft">
-              <strong className="text-text">
-                Vazio cadastral não é terra devoluta.
-              </strong>{" "}
-              Terra devoluta é categoria jurídica, decidida em processo. O que
-              está aqui é candidato a verificação — e a taxa de erro acima diz
-              com que frequência esse candidato não se confirma.
-            </p>
-          </section>
-
-          <section className="mt-8">
-            <h2 className="font-display text-xl font-semibold">
-              De onde vem o dado
-            </h2>
-            <p className="mt-2 max-w-[62ch] text-sm text-text-soft">
-              Cadastro Ambiental Rural (CAR/SICAR), malha municipal do IBGE,
-              cobertura do MapBiomas e as bases fundiárias do INCRA (SIGEF e
-              SNCI). O pipeline que produz as camadas é aberto e roda fora
-              deste portal.
+          <div className="mt-4 rounded-xl border border-dashed border-border bg-surface-2 p-4 text-sm text-text-soft">
+            <p>
+              <strong className="text-text">Alertas calculados por sobreposição de geometria:</strong>{" "}
+              {formatNumberBR(alertaOperacao.itens.length)} sobreposições entre território e lavra
+              já autorizada, {formatNumberBR(alertaInteresse.itens.length)} entre território e
+              requerimento minerário, e {formatNumberBR(atosAreaProtegida.totalNormas)} normas
+              municipais que criam ou alteram área protegida. Terra indígena atingida por mancha
+              de barragem: zero, medido numa varredura completa — não é ausência de checagem.
+              Território quilombola atingido por mancha de barragem:{" "}
+              {formatNumberBR(alertaQuilombolaMancha.qtdFeaturesEncontradas)} interseções, em{" "}
+              {formatNumberBR(alertaQuilombolaMancha.qtdTerritoriosAtingidos)} territórios.
             </p>
             <a
-              href="https://www.car.gov.br/publico/imoveis/index"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-block text-sm font-medium text-primary underline underline-offset-2"
+              href="/funcaosocialterra/alertas"
+              className="mt-2 inline-block font-medium text-primary underline underline-offset-2 hover:text-accent"
             >
-              Consultar o CAR na fonte oficial ↗
+              Conferir cada alerta, com processo e link para a fonte →
             </a>
-          </section>
-        </>
-      )}
+          </div>
+        </section>
 
-      {/* ⟲ 13/08, revisão de onboarding: faltava aqui — Cidades, Congresso
-          e Judiciário já mostravam a remissão cruzada na própria home; esta
-          frente e Paraopeba nunca ganharam. Agrava um problema maior desta
-          zona: ela não tem `layout.tsx` (ver o comentário abaixo), então
-          NENHUM link para as outras cinco frentes aparece até quem lê
-          rolar a página inteira até o rodapé — sem o cabeçalho fixo que
-          as outras quatro zonas têm. Ver `docs/REVISAO-UX-E-ONBOARDING.md`
-          para a decisão maior (dar um cabeçalho a esta zona), que fica
-          para o dono por mexer em layout, não em conteúdo. */}
-      <OutrasFrentes atual="terras" />
+        {comDado.length === 0 ? (
+          <p className="mt-8 rounded-2xl border border-dashed border-border bg-surface-2 p-6 text-sm text-text-soft">
+            Nenhuma cidade tem levantamento publicado no momento.
+          </p>
+        ) : (
+          <>
+            <section className="mt-9">
+              <h2 className="font-display text-xl font-semibold">
+                Onde já foi levantado
+              </h2>
+              <p className="mt-1 text-sm text-text-soft">
+                {formatNumberBR(Math.round(totalHa))} hectares em{" "}
+                {comDado.length}{" "}
+                {comDado.length === 1 ? "cidade" : "cidades"} do Vale do
+                Jequitinhonha.
+              </p>
 
-      {/* Rodapé padrão do portal, direto na página e não num `layout.tsx`.
-          Esta frente tem três rotas — este hub, `/mapa` e `/alertas` — e
-          `/mapa` é o globo 3D ocupando a tela inteira, com HUD nos quatro
-          cantos do canvas: rodapé embaixo dele seria ruído sobre uma tela
-          que já resolve a própria navegação e já tem link de volta para cá.
-          Um `layout.tsx` de zona colaria nas três (inclusive no globo). Ver
-          a nota em `mapa/page.tsx`, que registra a mesma decisão pelo outro
-          lado, e `alertas/page.tsx`, que segue o mesmo padrão manual de
-          cabeçalho/rodapé em vez de layout de zona. */}
-      <footer className="mt-16 border-t border-border pt-8 text-sm">
-        <FooterGlobal />
-      </footer>
-    </main>
+              <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                {comDado.map(({ cidade, linhas }) => {
+                  const l = linhas[0];
+                  return (
+                    <a
+                      key={cidade.id_municipio}
+                      href={`/${cidade.slug}/terras`}
+                      className="rounded-2xl border border-border bg-surface p-5 shadow-sm transition-colors hover:border-primary"
+                    >
+                      <h3 className="font-display text-base font-semibold text-text">
+                        {cidade.nome}
+                      </h3>
+                      <p className="mt-2 font-tabular text-2xl font-bold text-text">
+                        {l.percentual.toFixed(1)}%
+                      </p>
+                      <p className="mt-1 text-xs text-text-soft">
+                        {formatNumberBR(Math.round(l.areaCandidataHa))} ha de{" "}
+                        {formatNumberBR(Math.round(l.areaUniversoHa))} ha ·{" "}
+                        {l.qtdPoligonos} polígonos
+                      </p>
+                      <p className="mt-3 text-[.8em] font-medium text-primary">
+                        Ver em {cidade.nome} →
+                      </p>
+                    </a>
+                  );
+                })}
+              </div>
+            </section>
+
+            <TaxaDeErroTerras />
+
+            <section className="mt-8">
+              <h2 className="font-display text-xl font-semibold">
+                Como o número é calculado
+              </h2>
+              <ol className="mt-3 max-w-[62ch] list-decimal space-y-2 pl-5 text-sm text-text-soft">
+                <li>
+                  Parte-se do limite do município, na malha oficial do IBGE. É
+                  ele o denominador — a porcentagem é sobre o município inteiro,
+                  não sobre um recorte escolhido.
+                </li>
+                <li>
+                  Subtrai-se tudo o que foi declarado no CAR: cada imóvel rural
+                  que alguém registrou.
+                </li>
+                <li>
+                  Subtraem-se as classes de uso que não admitem destinação
+                  fundiária — corpo d&apos;água, mancha urbana e afins.
+                </li>
+                <li>
+                  O que sobra é o vazio cadastral. Cada polígono guarda a regra
+                  exata que o produziu, e ela aparece na página da cidade.
+                </li>
+              </ol>
+              <p className="mt-4 max-w-[62ch] text-sm text-text-soft">
+                <strong className="text-text">
+                  Vazio cadastral não é terra devoluta.
+                </strong>{" "}
+                Terra devoluta é categoria jurídica, decidida em processo. O que
+                está aqui é candidato a verificação — e a taxa de erro acima diz
+                com que frequência esse candidato não se confirma.
+              </p>
+            </section>
+
+            <section className="mt-8">
+              <h2 className="font-display text-xl font-semibold">
+                De onde vem o dado
+              </h2>
+              <p className="mt-2 max-w-[62ch] text-sm text-text-soft">
+                Cadastro Ambiental Rural (CAR/SICAR), malha municipal do IBGE,
+                cobertura do MapBiomas e as bases fundiárias do INCRA (SIGEF e
+                SNCI). O pipeline que produz as camadas é aberto e roda fora
+                deste portal.
+              </p>
+              <a
+                href="https://www.car.gov.br/publico/imoveis/index"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block text-sm font-medium text-primary underline underline-offset-2"
+              >
+                Consultar o CAR na fonte oficial ↗
+              </a>
+            </section>
+          </>
+        )}
+
+        {/* ⟲ 13/08, revisão de onboarding: faltava aqui — Cidades, Congresso
+            e Judiciário já mostravam a remissão cruzada na própria home;
+            esta frente e Paraopeba nunca tinham ganhado. Resolvido para o
+            RODAPÉ nesta mesma revisão (este componente).
+            ⟲ 22/08: o CABEÇALHO chegou também — `<Cabecalho />` no topo da
+            página, decisão do dono (`docs/ESTADO.md`, decisão 5). Não é
+            `layout.tsx` de zona: ver `Cabecalho.tsx` para o porquê (as três
+            rotas incluem `/mapa`, o globo 3D em tela cheia, e um layout de
+            zona colaria nele também). */}
+        <OutrasFrentes atual="terras" />
+
+        {/* Rodapé padrão do portal, direto na página e não num `layout.tsx`.
+            Esta frente tem três rotas — este hub, `/mapa` e `/alertas` — e
+            `/mapa` é o globo 3D ocupando a tela inteira, com HUD nos quatro
+            cantos do CANVAS (não da página — ver `Cabecalho.tsx` para a
+            distinção, que é o que permite esta zona ter cabeçalho sem
+            colidir com o HUD): rodapé embaixo dele seria ruído sobre uma
+            tela que já resolve a própria navegação e já tem link de volta
+            para cá. Um `layout.tsx` de zona colaria nas três (inclusive no
+            globo) tanto para o cabeçalho quanto para o rodapé — por isso os
+            dois são manuais, por página, nas três rotas desta zona. Ver a
+            nota em `mapa/page.tsx` e em `alertas/page.tsx`, que seguem o
+            mesmo padrão. */}
+        <footer className="mt-16 border-t border-border pt-8 text-sm">
+          <FooterGlobal />
+        </footer>
+      </main>
+    </>
   );
 }
