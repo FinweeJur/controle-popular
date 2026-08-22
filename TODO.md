@@ -95,6 +95,7 @@
   barragem de Fundão): 3 de 4 perguntas acertaram o trecho certo por
   similaridade; a 4ª ("qual norma foi revogada?") **não** acertou — achado
   honesto, documentado no código, fora das asserções: busca semântica não
+<<<<<<< HEAD
   substitui casamento de palavra-chave. **Achado de segurança relevante:** a
   guarda de dado pessoal (`checar-dado-pessoal-em-dado.py`) não cobre
   `etl/betim/dados/` — só `apps/web/data/` e `docs/dados/` — chip

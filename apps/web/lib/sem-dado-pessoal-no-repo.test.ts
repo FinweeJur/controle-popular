@@ -8,11 +8,11 @@ import path from "node:path";
  * ═══ POR QUE ESTE TESTE EXISTE ═══
  *
  * `sem-cpf-no-repo.test.ts` varre o que uma PESSOA escreveu à mão (código e
- * doc). O portal passou a ingerir acervo — JSON de fonte pública em
- * `apps/web/data/` e `docs/dados/` — e esse caminho ficou sem rede: a
- * varredura de 13/08/2026 que achou seis CPF reais em código acha de novo em
- * dado (registrado em `docs/FONTES-ROUANET-SALIC.md`: um CPF pego só porque
- * alguém abriu o arquivo à mão).
+ * doc). O portal passou a ingerir acervo — JSON de fonte pública nos
+ * diretórios listados em `DIRETORIOS_DADO` (topo do script abaixo) — e esse
+ * caminho ficou sem rede: a varredura de 13/08/2026 que achou seis CPF reais
+ * em código acha de novo em dado (registrado em `docs/FONTES-ROUANET-
+ * SALIC.md`: um CPF pego só porque alguém abriu o arquivo à mão).
  *
  * Este teste roda a rede de DADO — `scripts/checar-dado-pessoal-em-dado.py`,
  * o mesmo regex de CPF mod-11 de `sem-cpf-no-repo.test.ts` e de
@@ -39,7 +39,7 @@ const raiz = path.resolve(__dirname, "..", "..", "..");
 const script = path.join(raiz, "scripts", "checar-dado-pessoal-em-dado.py");
 
 describe.skipIf(!temPython())("nenhum CPF real em dado ingerido", () => {
-  test("varre os JSON de acervo e valida por mod-11", () => {
+  test("varre os JSON de acervo e valida por mod-11", { timeout: 30000 }, () => {
     let code = 0;
     try {
       execFileSync("python", [script], { cwd: raiz, encoding: "utf8" });
