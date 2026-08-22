@@ -1,5 +1,27 @@
 # Plano — transparência de MP, DP e Judiciário além do dinheiro
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [0. Como retomar](#0-como-retomar)
+- [1. O que já existe, e que este plano NÃO refaz](#1-o-que-já-existe-e-que-este-plano-não-refaz)
+- [2. As três frentes que valem construir (ordem de execução)](#2-as-três-frentes-que-valem-construir-ordem-de-execução)
+- [3. A parte financeira ganhou fonte nova: JUSTA ✅ *já coletada*](#3-a-parte-financeira-ganhou-fonte-nova-justa-já-coletada)
+- [4. O que a sondagem REPROVOU, com o motivo medido](#4-o-que-a-sondagem-reprovou-com-o-motivo-medido)
+- [5. As lacunas que são MATÉRIA — saem de graça, e valem mais que uma página](#5-as-lacunas-que-são-matéria-saem-de-graça-e-valem-mais-que-uma-página)
+- [6. e-SIC: o que o login destrava, e o que ele não destrava](#6-e-sic-o-que-o-login-destrava-e-o-que-ele-não-destrava)
+- [7. DataJud: a posição, e por que ela custa pouco](#7-datajud-a-posição-e-por-que-ela-custa-pouco)
+- [8. Princípios que decidem o que entra](#8-princípios-que-decidem-o-que-entra)
+- [9. Progresso](#9-progresso)
+- [Origem](#origem)
+
 > **Aberto em 2026-08-22.** A pergunta que originou: *"além da parte financeira
 > de MP, DP e TJ, o que podemos fazer sobre transparência?"*
 >

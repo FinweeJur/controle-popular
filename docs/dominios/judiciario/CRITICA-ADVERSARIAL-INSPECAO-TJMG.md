@@ -1,5 +1,26 @@
 # Crítica adversarial — o que não se sustenta
 
+> **Tipo:** DOMINIO
+> **Domínio:** judiciario
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [README.md](../../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** dominio, referencia
+
+## Sumário
+
+- [Propósito](#propósito)
+- [0. DEFEITO QUE ATINGE AS CINCO LEITURAS: o JSON de 2026 perde ~45% do relatório, e o que se perdeu é o melhor achado](#0-defeito-que-atinge-as-cinco-leituras-o-json-de-2026-perde-45-do-relatório-e-o-que-se-perdeu-é-o-melhor-achado)
+- [1. Citação que não existe, ou existe com outras palavras](#1-citação-que-não-existe-ou-existe-com-outras-palavras)
+- [2. Número que a fonte não sustenta](#2-número-que-a-fonte-não-sustenta)
+- [3. Achado atribuído à unidade errada](#3-achado-atribuído-à-unidade-errada)
+- [4. Ranking sem ressalva de viés, ou com ressalva decorativa](#4-ranking-sem-ressalva-de-viés-ou-com-ressalva-decorativa)
+- [5. Afirmação jurídica sem o ato, ou com o ato errado](#5-afirmação-jurídica-sem-o-ato-ou-com-o-ato-errado)
+- [6. Nome de pessoa física particular](#6-nome-de-pessoa-física-particular)
+- [7. Suavização ou dramatização](#7-suavização-ou-dramatização)
+- [8. Veredito por leitura](#8-veredito-por-leitura)
+- [Origem](#origem)
+
 Confer contra as fontes com scripts próprios (dumps em `C:\Users\teste\AppData\Local\Temp\claude\C--Users-teste-Documents-Obsidian-Vault\187c81cb-ff06-4c21-b502-414df83fc936\scratchpad\crit\`: `pend2022.txt`, `pend2023.txt`, `ach2026.txt`, `p2026.txt`, `p2023.txt`, `p2022.txt` — os três últimos extraídos dos PDFs originais com `pdftotext`).
 
 ---

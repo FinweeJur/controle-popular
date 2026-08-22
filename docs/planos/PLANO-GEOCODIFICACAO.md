@@ -1,5 +1,23 @@
 # Plano de geocodificação — dados do monitoramento da Vale e camadas novas
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [1. O que já existe (infra de mapa pronta)](#1-o-que-já-existe-infra-de-mapa-pronta)
+- [2. Método por camada do monitoramento da Vale](#2-método-por-camada-do-monitoramento-da-vale)
+- [3. Regras de geocodificação (as mesmas do resto do portal)](#3-regras-de-geocodificação-as-mesmas-do-resto-do-portal)
+- [4. Conferência manual necessária (o que a máquina não decide)](#4-conferência-manual-necessária-o-que-a-máquina-não-decide)
+- [5. Ordem de execução (quando §11 tiver dado)](#5-ordem-de-execução-quando-11-tiver-dado)
+- [6. O que NÃO está neste plano](#6-o-que-não-está-neste-plano)
+- [Origem](#origem)
+
 > Escrito em 2026-08-17, a pedido do dono ("plano de como geocodificar isso tudo
 > depois" — `docs/planos/TODO-PROXIMAS-RODADAS.md` §12). Este é o PLANO, não a
 > tela: a execução começa quando o monitoramento da Vale (§11) tiver dado

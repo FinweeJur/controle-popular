@@ -1,5 +1,24 @@
 # Contrato do extrator único — relatórios de inspeção CNJ/TJMG (2012–2026)
 
+> **Tipo:** DOMINIO
+> **Domínio:** judiciario
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [README.md](../../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** dominio, referencia
+
+## Sumário
+
+- [Propósito](#propósito)
+- [0. Premissa que governa o resto](#0-premissa-que-governa-o-resto)
+- [1. Taxonomia de layouts](#1-taxonomia-de-layouts)
+- [2. Contrato por layout](#2-contrato-por-layout)
+- [3. Como o extrator escolhe o ramo](#3-como-o-extrator-escolhe-o-ramo)
+- [4. A trava por layout](#4-a-trava-por-layout)
+- [5. Campo comum de saída](#5-campo-comum-de-saída)
+- [6. O que vai dar errado (do mais provável ao menos)](#6-o-que-vai-dar-errado-do-mais-provável-ao-menos)
+- [Origem](#origem)
+
 ## 0. Premissa que governa o resto
 
 O produto final não é "texto extraído". É uma tabela longitudinal onde a linha de 2012 e a linha de 2026 da **mesma vara** casam. Toda decisão abaixo é subordinada a isso: quando houver conflito entre "extrair mais itens" e "manter a chave de unidade confiável", a chave ganha. Item perdido é buraco visível; chave errada é conclusão falsa e silenciosa ("essa vara nunca reincidiu" quando ela reincidiu com outro nome).

@@ -1,5 +1,21 @@
 # Plano — índice estático como espinha dorsal, e o assistente em cima dele
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Parte 1 — Por que o índice estático deixa de ser detalhe da `/busca`](#parte-1-por-que-o-índice-estático-deixa-de-ser-detalhe-da-busca)
+- [Parte 2 — O que vai chegar, e como cada coisa entra no índice](#parte-2-o-que-vai-chegar-e-como-cada-coisa-entra-no-índice)
+- [Parte 3 — O assistente: sem modelo por padrão, com modelo quando precisar](#parte-3-o-assistente-sem-modelo-por-padrão-com-modelo-quando-precisar)
+- [Ordem sugerida](#ordem-sugerida)
+- [Origem](#origem)
+
 > Escrito em 15/08/2026, no dia em que o deploy travou por payload. Números
 > medidos contra o repositório nesta data; onde não medi, está dito.
 >

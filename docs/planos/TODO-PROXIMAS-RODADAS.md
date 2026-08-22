@@ -1,5 +1,22 @@
 # TODO — o que ficou para as próximas rodadas
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [🔴 Dívidas que precisam sair antes de crescer mais](#dívidas-que-precisam-sair-antes-de-crescer-mais)
+- [🟢 Resolvido em 13–17/08 (o histórico abaixo fica registrado)](#resolvido-em-131708-o-histórico-abaixo-fica-registrado)
+- [🟡 Pedidos do dono, registrados para não se perderem](#pedidos-do-dono-registrados-para-não-se-perderem)
+- [🟢 Planos já escritos, esperando execução](#planos-já-escritos-esperando-execução)
+- [🟠 Aberto pela rodada de 15/08 (biblioteca das ATIs)](#aberto-pela-rodada-de-1508-biblioteca-das-atis)
+- [Origem](#origem)
+
 > Escrito em 13/08/2026, no fim de um dia longo. Serve para a próxima sessão
 > (e para o outro PC) não redescobrirem nada do zero. Ordem: dívida primeiro,
 > feature depois.

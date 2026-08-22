@@ -1,3 +1,24 @@
+# O que o CNJ encontrou no Tribunal de Justiça de Minas Gerais
+
+> **Tipo:** DOMINIO
+> **Domínio:** judiciario
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** longa (> 15 min)
+> **Relacionados:** [README.md](../../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** judiciario, CNJ, TJMG, inspecao, corregedoria, resumo editorial
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Nota técnica](#nota-técnica)
+- [O que é esse documento](#o-que-é-esse-documento)
+
+## Propósito
+
+Se um juiz de Belo Horizonte mandar soltar você hoje, é provável que você durma mais uma noite na cadeia — e quem diz isso não somos nós: é o Conselho Nacional de Justiça, que contou "quase 500(quinhentos) presos" incluídos "mensalmente no sistema prisional desnecessariamente".
+
+## Nota técnica
+
 <!--
   RESUMO EDITORIAL do relatório de inspeção do CNJ no TJMG (2026).
 
@@ -17,10 +38,6 @@
 
   Nada aqui vai para tela sem revisão humana.
 -->
-
-# O que o CNJ encontrou no Tribunal de Justiça de Minas Gerais
-
-Se um juiz de Belo Horizonte mandar soltar você hoje, é provável que você durma mais uma noite na cadeia — e quem diz isso não somos nós: é o Conselho Nacional de Justiça, que contou "quase 500(quinhentos) presos" incluídos "mensalmente no sistema prisional desnecessariamente".
 
 ## O que é esse documento
 

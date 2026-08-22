@@ -1,5 +1,24 @@
 # Roteiro — retomada da Neon em 2026-09-01 (HTTP 402)
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Onde rodar](#onde-rodar)
+- [Passo 1 — migrations pendentes (schema)](#passo-1-migrations-pendentes-schema)
+- [Passo 2 — backfill do classificador de temas (atos_oficiais)](#passo-2-backfill-do-classificador-de-temas-atos-oficiais)
+- [Passo 3 — URLs do TJMG em `direito_critico_precedentes`](#passo-3-urls-do-tjmg-em-direito-critico-precedentes)
+- [Passo 4 — legislação federal (MMA + CNDH)](#passo-4-legislação-federal-mma-cndh)
+- [Passo 5 — varredura total dos links em banco (item 6 do TODO)](#passo-5-varredura-total-dos-links-em-banco-item-6-do-todo)
+- [Passo 6 — conferir que a Neon voltou de verdade](#passo-6-conferir-que-a-neon-voltou-de-verdade)
+- [Origem](#origem)
+
 > Escrito em 17/08/2026. A Neon voltou da cota gratuita em 01/09 e os passos
 > abaixo são o que ficou pendente enquanto ela esteve em 402. Ordem importa:
 > schema primeiro, dado depois, verificação por último. Tudo é idempotente

@@ -1,5 +1,32 @@
 # Plano de expansão do Controle Popular — acordos, contratos e convênios em MG
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Context](#context)
+- [0.1. O estado mora em disco *(vale, e continua valendo)*](#01-o-estado-mora-em-disco-vale-e-continua-valendo)
+- [0.2. `TODO.md` · ⚠️ CORRIGIDO — existe desde 20/08](#02-todomd-corrigido-existe-desde-2008)
+- [0.3. Não pisar no trabalho alheio *(regras válidas; números corrigidos)*](#03-não-pisar-no-trabalho-alheio-regras-válidas-números-corrigidos)
+- [0.4. Trabalho em lote roda no jcode](#04-trabalho-em-lote-roda-no-jcode)
+- [Entregues](#entregues)
+- [Correções de fato que a versão anterior errava](#correções-de-fato-que-a-versão-anterior-errava)
+- [Ainda por fazer](#ainda-por-fazer)
+- [O que reaproveitar](#o-que-reaproveitar)
+- [D1. Dois pedidos redigidos, **nenhum protocolado**](#d1-dois-pedidos-redigidos-nenhum-protocolado)
+- [D2. Decisões que travam planos inteiros](#d2-decisões-que-travam-planos-inteiros)
+- [D3. Fundir `ARQUITETURA.md` e `MAPA-APLICACAO.md`](#d3-fundir-arquiteturamd-e-mapa-aplicacaomd)
+- [Mapa de fontes](#mapa-de-fontes)
+- [Veredito da LAI de MG](#veredito-da-lai-de-mg)
+- [Verificação](#verificação)
+- [Origem](#origem)
+
 > **Revisado em 2026-08-21** contra o repo em `ebc42a1`, por auditoria linha a linha.
 > A versão de 20/08 tinha 12 afirmações falsas ou vencidas; as correções estão
 > aplicadas e sinalizadas com ⚠️ onde o texto anterior induzia a erro.

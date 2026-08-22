@@ -1,5 +1,28 @@
 # Publicar no GitHub Pages — o que funciona, o que quebra, o que decidir
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Resumo](#resumo)
+- [1. Como está montado](#1-como-está-montado)
+- [2. A convenção `*.din.ts`](#2-a-convenção-dints)
+- [3. O que ainda falta para o export fechar](#3-o-que-ainda-falta-para-o-export-fechar)
+- [4. As duas decisões que não são técnicas](#4-as-duas-decisões-que-não-são-técnicas)
+- [5. Limites do plano gratuito](#5-limites-do-plano-gratuito)
+- [6. Se o chat e os formulários tiverem de continuar existindo](#6-se-o-chat-e-os-formulários-tiverem-de-continuar-existindo)
+- [7. "E se o servidor for o meu PC?" — as três arquiteturas, 2026-08-09](#7-e-se-o-servidor-for-o-meu-pc-as-três-arquiteturas-2026-08-09)
+- [8. O que a primeira tentativa real de export revelou (2026-08-09)](#8-o-que-a-primeira-tentativa-real-de-export-revelou-2026-08-09)
+- [9. Com banco vivo: o que o §8.3 previu, e o que ele não viu (2026-08-09)](#9-com-banco-vivo-o-que-o-83-previu-e-o-que-ele-não-viu-2026-08-09)
+- [10. O export fechou. E o número que faltava diz que ele não cabe no Pages](#10-o-export-fechou-e-o-número-que-faltava-diz-que-ele-não-cabe-no-pages)
+- [Origem](#origem)
+
 > Verificado contra a documentação oficial em 2026-08-03 (Next.js 16.2.12,
 > `actions/configure-pages@v5`, GitHub Terms for Additional Products).
 > O alvo padrão do projeto continua sendo o Cloudflare Workers.

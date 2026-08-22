@@ -1,5 +1,22 @@
 # Classificação de completude — páginas com buraco (item 6, rodada 3)
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [1. Críticos para corrigir (código)](#1-críticos-para-corrigir-código)
+- [2. AUSENTE (44)](#2-ausente-44)
+- [3. NAO_VERIFICADO (18)](#3-nao-verificado-18)
+- [4. DESATUALIZADO (5)](#4-desatualizado-5)
+- [5. Decisões do dono necessárias](#5-decisões-do-dono-necessárias)
+- [Origem](#origem)
+
 Varredura de 2026-08-17 sobre as páginas públicas do portal, feita em
 `redeProtecao.ts` (rodadas 1 e 2), `actors.ts`/`atores.ts`, páginas
 `[municipio]/*`, `congresso/*`, `paraopeba/*`, rodapé e libs de dados.
