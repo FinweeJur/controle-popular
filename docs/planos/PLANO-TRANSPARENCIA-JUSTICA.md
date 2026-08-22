@@ -8,6 +8,19 @@
 > ~29 endpoints batidos. Todo número abaixo tem origem medida e data. O que
 > não foi medido está dito com todas as letras.
 >
+> 🚨 **CINCO AFIRMAÇÕES NEGATIVAS DESTE PLANO JÁ CAÍRAM, e todas pelo mesmo
+> motivo: foram medidas com `curl` contra página montada por JavaScript.**
+> Caíram: (1) "não há acervo de inspeção do CNJ" — há 343 relatórios; (2)
+> "tempo médio de tramitação não existe em dado aberto" — existe, é `tpbaixm`;
+> (3) "não há correição sobre o STF" — há, a Comissão de Ética publica desde
+> 2022; (4) "a Ouvidoria da DPMG esconde seus números" — ela foi criada em
+> março de 2025 e não tem histórico; (5) **"o CNJ parou de publicar o que
+> decidiu"** — publica, na Lista de sessões, até 19/08/2026.
+>
+> ⚠️ **REGRA QUE SAI DISSO: afirmação negativa sobre fonte só entra neste plano
+> depois de verificada em NAVEGADOR.** `curl` vê a casca de SPA e conclui
+> ausência; e ausência é a afirmação mais cara de errar, porque vira acusação.
+>
 > ⚠️ **E um veredito da sondagem já foi DERRUBADO no mesmo dia.** Ela reprovou
 > a frente correicional inteira depois de medir as páginas HTML do CNJ (270 KB
 > linkando regimento interno). O acervo existia noutra rota: **343 relatórios
@@ -329,21 +342,44 @@ obrigatória, o que derruba o custo/benefício sozinho.
 
 ## 5. As lacunas que são MATÉRIA — saem de graça, e valem mais que uma página
 
-### A principal: o CNJ publica o que vai julgar contra juízes e parou de publicar o que decidiu
+### 🚨 A matéria principal deste plano era FALSA. Verificada no navegador em 22/08/2026.
 
-O **"Boletim da Sessão"** — que o próprio CNJ descreve como o canal dos
-resultados das sessões de julgamento do Plenário — tem como **entrada mais
-recente a 9ª Sessão Ordinária de 09/05/2023**. Três anos e três meses atrás.
-Enquanto isso, **as pautas continuam saindo a cada quinzena** (a de 18/08/2026
-está no ar, com item de "Apuração — Infração Disciplinar — Desembargador").
+**O que estava escrito aqui:** *"O CNJ publica o que vai julgar contra juízes e parou de publicar o que decidiu"*, porque o **Boletim da Sessão** teria como entrada mais recente a 9ª Sessão Ordinária de **09/05/2023**.
 
-A página responde **200**, tem título certo e texto explicativo correto: **só se
-percebe lendo a data da última entrada.** É o caso-escola da regra da casa —
-validar o corpo, nunca o status.
+**Três erros, do menor para o maior:**
 
-Emparelhado com o recorte mineiro (§4), fecha: **não existe, em MG nem no país,
-lugar público onde se saiba o resultado de um processo disciplinar contra juiz
-ou promotor** — e o único canal criado para isso está abandonado desde 2023.
+1. **A data estava errada.** O boletim mais recente não é de 09/05/2023 — a busca do próprio site devolve o **Boletim da 10ª Sessão Ordinária de 20/06/2023**, que existe, abre e traz conteúdo (nele, a aposentadoria compulsória de três desembargadores do TRT-5 por assédio a relatoras).
+
+2. **O índice do Boletim é incompleto.** A página `/boletim-da-sessao/` lista até 23/05/2023 e **não lista o de 20/06/2023**, que a busca acha. Ou seja: nem o índice reflete o que o próprio site publicou.
+
+3. **E o principal: o CNJ NÃO parou de publicar o que decidiu.** Existe a página **Lista de sessões** (`cnj.jus.br/lista-de-sessoes/`), viva e corrente — sessões até **19/08/2026**, três dias antes desta verificação, com seletor de ano de **2015 a 2026**. Cada sessão abre em `lista-de-processos-da-sessao/?sessao=NNN` com uma tabela de **classe, número do processo, relator e SITUAÇÃO**. Na 12ª Sessão Ordinária de 18/08/2026: 80 linhas, entre elas **5 Reclamações Disciplinares e 2 Revisões Disciplinares**, com situação `Julgado`, `Adiado`, `Retirado de julgamento` e `Pedido de Vista`.
+
+**O que sobra de verdadeiro, e é bem menor:** o **Boletim da Sessão** — que era o produto *narrativo*, explicando em linguagem comum o que o Plenário decidiu — **foi descontinuado em meados de 2023**. Isso é perda de **acessibilidade**, não de **publicidade**: o resultado continua público, em forma de tabela e de acórdão no DJe.
+
+⚠️ **Como o erro aconteceu, porque o método importa mais que o caso:** a medição anterior bateu na página do Boletim, viu a data velha e concluiu sobre o CNJ. Mas o próprio Boletim de 2023 traz, no corpo, a frase *"Para consultar todas as sessões, acesse a página de Resultados das Sessões"* — o caminho estava escrito dentro do documento que eu li pela metade.
+
+**Publicar aquela matéria teria sido acusar o CNJ de esconder o que ele publica há onze anos sem interrupção.**
+
+---
+
+### E a frente disciplinar, que este plano deu como morta, NÃO está morta
+
+A `Lista de sessões` é fonte enumerável e estruturada, e responde exatamente o que o plano dizia não existir:
+
+| | |
+|---|---|
+| Rota | `cnj.jus.br/lista-de-processos-da-sessao/?sessao=NNN` |
+| Série | **2015 a 2026** (seletor de ano na página de índice) |
+| Por linha | classe, número do processo, relator, **situação** |
+| Classes de interesse | Reclamação Disciplinar, Revisão Disciplinar, Processo Administrativo Disciplinar, Pedido de Providências |
+| Atualidade | sessão de **19/08/2026** listada em 22/08/2026 |
+
+⚠️ **O que ela NÃO dá:** o teor da decisão. `Julgado` diz que foi julgado, não o que foi decidido — para isso é preciso o acórdão no DJe ou o processo no PJe. E a própria página avisa que os documentos ali são **propostas de voto**, que podem mudar durante a sessão. Publicar "situação" como se fosse "resultado" seria o mesmo tipo de erro que este bloco está corrigindo.
+
+⚠️ **E nomeia.** Reclamação Disciplinar traz número de processo e relator; o número leva ao nome do magistrado no PJe. A decisão editorial sobre exibir é a mesma já tomada para os gabinetes — mas aqui o objeto é acusação ainda não julgada, o que é diferente de meta não cumprida.
+
+
+---
 
 ### Duas menores, que também são matéria
 
@@ -364,11 +400,29 @@ nossa. **Não escrever "675 dias" como se fosse afirmação do CNJ.**
 dicionário de 1.314 variáveis prova pouco. Ausência de resultado numa busca
 textual não é ausência do dado — é ausência da palavra que eu escolhi.
 
-**(b) A Ouvidoria da DPMG não publica número nenhum** — 116.517 bytes na página
-institucional e 44.107 no espelho de transparência, com **zero ocorrência de
-"relatório" ou PDF** — enquanto a mesma DPMG publica **XLSX mensal de LAI desde
-2023**. Não é falta de capacidade técnica: ela sabe publicar planilha, só não
-publica quando o assunto é reclamação contra ela mesma.
+**(b) ~~A Ouvidoria da DPMG não publica número nenhum, e não é falta de
+capacidade técnica.~~ ❌ A MEDIÇÃO ESTAVA CERTA E A CONCLUSÃO ERA INJUSTA.**
+
+A medição continua de pé: **zero ocorrência de "relatório" ou PDF** na página da
+Ouvidoria. O que estava errado era a acusação colada nela — *"sabe publicar
+planilha, só não publica quando o assunto é reclamação contra ela mesma"*.
+
+**Verificado no navegador em 22/08/2026:** a **Ouvidoria-Geral da DPMG foi
+implementada em março de 2025**. O edital para formação da lista tríplice do
+cargo de ouvidor-geral saiu no Diário Oficial de **19/03/2025**, depois de
+aprovação do Conselho Superior. O órgão tem **cerca de 17 meses**.
+
+Não há série a publicar porque não há série ainda. Uma instituição que acabou de
+instalar a ouvidoria não está escondendo histórico — ela não tem histórico.
+
+**O que resta, e é legítimo:** registrar que a Ouvidoria existe desde 2025 e
+**acompanhar se ela passa a publicar**. Isso é pauta de vigilância, não
+denúncia — e a diferença entre as duas é exatamente o que a verificação salvou.
+
+⚠️ **A lição vale para o método, não só para este caso:** a medição estava
+correta e a conclusão era falsa. Zero relatório numa página pode significar
+omissão **ou** órgão recém-criado, e `curl` não distingue os dois. Foi preciso
+abrir o site num navegador e ler a notícia institucional para saber qual era.
 
 ⚠️ **E o gap é de prática, não de descumprimento:** nem a Res. CNJ 215/2015 nem
 a Res. CNMP 89/2012 exigem essa publicação. **Isso torna a matéria mais forte,
@@ -502,7 +556,9 @@ liberar o meio-termo sem depender dele.
 | 5 | RAINT do STF | ❌ **falhou** — WAF da AWS passou a responder 202 com corpo vazio após ~6 chamadas |
 | 4 | ouvidorias | ⏸️ opcional — só PDF, `fileId` opaco |
 | — | disciplinar como página | ❌ **reprovada** — vira matéria (§5) |
-| M | matéria das 3 lacunas | ⬜ pronta para escrever, tudo medido |
+| M | ~~matéria das 3 lacunas~~ | 🚨 **DUAS DAS TRÊS ERAM FALSAS** e foram corrigidas (§5). Sobra uma crítica menor: o Boletim narrativo do CNJ acabou em 2023 |
+| N | **Lista de sessões do CNJ** — a frente disciplinar que este plano deu como morta | ⬜ **fonte enumerável achada em 22/08**: `?sessao=NNN`, 2015→2026, com classe, processo, relator e situação. Reclamação e Revisão Disciplinar entre as classes |
+| V | **reverificar em navegador toda afirmação negativa restante** | ⬜ 5 já caíram; faltam os 9 painéis, o SISTAC, o MG-OUV e o `buscarTac` do MPMG |
 | L | pedidos de LAI pelo e-SIC | ⬜ 4 pedidos priorizados (§6) — ação humana |
 | C | notificar o CNJ sobre o DataJud | ⬜ um e-mail (§7) |
 | D | CPF exposto pelo CNJ | ✅ **decidido**: não publicar, não comunicar; só redigir na origem (§5) |
