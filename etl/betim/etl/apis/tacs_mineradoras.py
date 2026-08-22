@@ -8,17 +8,17 @@ testado contra fixture congelada (`_powerbi_dsr_test.py`).
 
 ═══ TRÊS RESSALVAS QUE VIAJAM COLADAS AO DADO ═══
 
-Estas não são notas de rodapé de implementação: **vão para a página do site**,
-junto do número, sempre. Cada uma foi medida em
+Estas não são notas de rodapé de implementação: **vão para a página do
+site**, junto do número, sempre. Cada uma foi medida em
 `fixtures/powerbi-modelsAndExploration.json` em 2026-08-20.
 
 1. **O dado está CONGELADO em 2026-05-05.** O próprio modelo declara
    `refreshSchedule.refreshEnabled: false` (e `isRefreshable: false`), com
    `lastRefreshTime` = `/Date(1777994106250)/` = 2026-05-05. **Não é dado ao
    vivo.** Apresentar como "situação atual dos TACs" seria mentira — o valor
-   executado de um projeto pode ter mudado desde então e o painel não saberia.
-   Toda linha gravada leva `dado_congelado_em`, para que a ressalva não possa
-   se separar do número na hora de renderizar.
+   executado de um projeto pode ter mudado desde então e o painel não
+   saberia. Toda linha gravada leva `_dado_congelado_em`, para que a
+   ressalva não possa se separar do número na hora de renderizar.
 
 2. **Foi publicado de uma "My workspace" pessoal**, não de workspace
    institucional: `ownerInfo.groupDisplayName == "My workspace"`. Isso não
@@ -27,9 +27,54 @@ junto do número, sempre. Cada uma foi medida em
    nessas condições some quando a conta muda de mão, e não há promessa
    institucional de continuidade. É informação relevante para quem cita.
 
-3. **O contrato do DSR não é documentado e pode mudar sem aviso.** Por isso a
-   fixture congelada e as guardas que quebram alto: se a Microsoft mudar o
-   formato, este coletor PARA, em vez de gravar tabela plausível e errada.
+3. **O contrato do DSR não é documentado e pode mudar sem aviso.** Por isso
+   a fixture congelada e as guardas que quebram alto: se a Microsoft mudar
+   o formato, este coletor PARA, em vez de gravar tabela plausível e
+   errada.
+
+═══ O MAPA DE ENTIDADES, E O ERRO QUE ELE JÁ CAUSOU ═══
+
+O modelo (`conceptualschema`, modelId 4465627) expõe **11 entidades**; só 4
+carregam dado de negócio, as outras 7 são calendário/data (`Calendario`,
+`DateTableTemplate_*`, `LocalDateTable_*`) — de sistema, não usáveis, e duas
+delas (`Calendario`, `LocalDateTable_*`) sequer decodificam: o `RT` diverge
+da última linha (sintoma de restart token que não serve para conferência
+nestas tabelas de sistema — não investigado além disso, e fora de escopo:
+não é dado).
+
+A primeira versão deste mapa pediu `Valor Transferido` dentro de
+`Contas x Projetos` e o endpoint devolveu HTTP 200 com `odata.error`
+(`CouldNotResolveSemanticQueryDefinition ... invalid Column reference`). A
+coluna EXISTE — só que em `Execução_Projetos_Completa`, não em
+`Contas x Projetos`. O erro nasceu de contar as propriedades do relatório
+inteiro (`entidades_from` em todos os visuais) em vez de por entidade: o
+mesmo nome de coluna aparece em quatro entidades diferentes, e só a
+consulta isolada por entidade revela a qual cada propriedade pertence.
+
+⚠️ **E o metadado ainda engana de uma segunda forma**: nomes como "Saldo
+Acumulado Ano Mais Recente", "Deposito 2022-2025" e
+"Percentual Execucao_Depositado" são `displayName` de **agregações**
+(`Measure`) calculadas nos visuais — pedi-los como `Column` (a forma mais
+natural de ler o schema) devolve HTTP 200 com `odata.error`, igual ao erro
+original. A lista abaixo foi confirmada **coluna a coluna contra o
+endpoint** (uma consulta por nome, janela 5): o que resolve como `Column`
+fica; agregação sai — refazemos a soma aqui a partir da coluna crua, em vez
+de fingir que existe campo para pedir.
+
+Também entrou a **quarta entidade**, que faltava no primeiro mapa: `soma`
+(`Soma Deposito_Execucao_Transferencia`) é o que fecha a conta entre o que
+foi depositado, comprometido e executado.
+
+**Verificado de novo, ao vivo, em 2026-08-21** (segunda sessão, endpoint
+consultado diretamente por `curl` — o socket do `requests` fica bloqueado
+nesta classe de sandbox, então a verificação rodou por fora do módulo): as
+4 consultas abaixo devolvem HTTP 200 sem `odata.error`, com contagem menor
+que a janela pedida nas 4 (848/2000, 69/500, 120/500, 120/500 — prova de
+tabela completa, não truncada). Os totais de `projetos` batem, ao centavo,
+com os medidos em 2026-08-20 (R$ 307.120.704,20 previstos / R$
+125.304.594,47 executados / 40,8%) — confirmação independente de que o
+painel está mesmo congelado, não que a verificação encontrou dado igual por
+acaso.
 
 ═══ O CLUSTER CERTO, MEDIDO AO VIVO ═══
 
@@ -43,11 +88,23 @@ certo mais o header `X-PowerBI-ResourceKey`.
 ═══ POR QUE `conferir` E NÃO "deu 200, tá bom" ═══
 
 Padrão do repositório (AGENTS.md): **API responde 200 e mente**. Aqui o modo
-específico é a JANELA: `DataReduction.Primary.Window.Count` limita as linhas,
-e uma resposta que enche a janela exatamente quase sempre significa que há
-mais dado do lado de lá. Aceitar isso como total é o erro que faz o site
-dizer "27 projetos" quando são 300. `_buscar_entidade` sobe a janela até a
-resposta vir MENOR que ela (prova de fim) e ergue se bater no teto sem provar.
+específico é a JANELA: `DataReduction.Primary.Window.Count` limita as
+linhas, e uma resposta que enche a janela exatamente quase sempre significa
+que há mais dado do lado de lá. Aceitar isso como total é o erro que faz o
+site dizer "27 projetos" quando são 300. `_buscar_entidade` sobe a janela
+até a resposta vir MENOR que ela (prova de fim) e ergue se bater no teto
+sem provar.
+
+═══ A ARMADILHA DE TIPO, E ONDE ELA É FECHADA ═══
+
+As colunas de valor vêm ora `number`, ora **string** com a precisão inteira
+do double (`"1923682.8800000001"`) — o Power BI faz isso quando o número
+não faz round-trip limpo em JSON. Normalizar isso é responsabilidade DESTE
+módulo, uma vez só, na entrada (`_normalizar_numero`, aplicada em
+`_linhas_com_ressalva`): quem grava a linha já grava número de verdade.
+Adiar a normalização para quem consome o JSON é o erro — dois consumidores
+diferentes decidiriam a conversão de formas diferentes, e somar sem
+converter concatena string; ordenar vai por caractere ("100" < "20").
 
 Uso:
 
@@ -59,6 +116,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -93,9 +151,10 @@ _SAIDA = "dados/tacs-mineradoras.json"
 # Nomes COM acento e espaço, exatamente como o modelo declara — vão crus no
 # JSON do pedido. "Normalizar" qualquer um deles devolve esqueleto vazio.
 ENTIDADES: dict[str, dict] = {
-    # ⟲ CORRIGIDO 20/08/2026 contra o metadado do relatório. A primeira versão
-    # desta tabela pediu `Valor Transferido` dentro de `Contas x Projetos`, e o
-    # endpoint devolveu HTTP 200 com `odata.error`
+    # ⟲ CORRIGIDO 20/08/2026 contra o metadado do relatório, e RECONFIRMADO
+    # ao vivo em 21/08/2026 (ver docstring do módulo). A primeira versão
+    # desta tabela pediu `Valor Transferido` dentro de `Contas x Projetos`,
+    # e o endpoint devolveu HTTP 200 com `odata.error`
     # (`CouldNotResolveSemanticQueryDefinition ... invalid Column reference`).
     # A coluna existe, mas em OUTRA entidade — o erro nasceu de contar as
     # propriedades do relatório inteiro em vez de por entidade.
@@ -232,6 +291,24 @@ def _buscar_entidade(sessao: requests.Session, chave: str, verboso: bool = True)
             print(f"{LOG} {chave}: janela cheia, subindo para {janela}.")
 
 
+# O DSR manda número como STRING quando o double não faz round-trip limpo em
+# JSON (medido: "1923682.8800000001", "371917.60000000003"). O padrão vem do
+# PRÓPRIO formato — dígitos, opcionalmente com UM ponto decimal e sinal — e
+# nunca casa com texto de verdade (nome de mineradora, status, relato): por
+# isso é seguro aplicar em toda coluna, sem lista de campos numéricos para
+# manter sincronizada com `ENTIDADES`.
+_RE_NUMERO_DSR = re.compile(r"^-?\d+(?:\.\d+)?$")
+
+
+def _normalizar_numero(v: object) -> object:
+    """Converte string numérica do DSR para número de verdade. Ver docstring
+    do módulo, §"a armadilha de tipo" — feito UMA VEZ aqui, na gravação, para
+    que somar não concatene e ordenar não vá por caractere."""
+    if isinstance(v, str) and _RE_NUMERO_DSR.match(v):
+        return int(v) if "." not in v else float(v)
+    return v
+
+
 def _linhas_com_ressalva(tabela, chave: str) -> list[dict]:
     """A ressalva de congelamento é gravada EM CADA LINHA, não só no
     cabeçalho do arquivo: cabeçalho se perde quando alguém copia a lista
@@ -239,7 +316,10 @@ def _linhas_com_ressalva(tabela, chave: str) -> list[dict]:
     prefixo = "e."
     saida = []
     for linha in tabela.linhas:
-        limpa = {(k[len(prefixo):] if k.startswith(prefixo) else k): v for k, v in linha.items()}
+        limpa = {
+            (k[len(prefixo):] if k.startswith(prefixo) else k): _normalizar_numero(v)
+            for k, v in linha.items()
+        }
         limpa["_entidade"] = chave
         limpa["_dado_congelado_em"] = DADO_CONGELADO_EM
         saida.append(limpa)

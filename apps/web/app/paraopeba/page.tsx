@@ -148,6 +148,18 @@ export default async function ParaopebaHome() {
       href: "/paraopeba/auditoria",
       linkTexto: "Ver a auditoria →",
     },
+    {
+      // Vem DEPOIS dos três acervos de documento de propósito: só faz sentido
+      // quando o leitor já sabe que existem vozes diferentes. É o único cartão
+      // que não abre um acervo — cruza os três e mostra onde eles NÃO se
+      // encontram.
+      titulo: "Análise integrada",
+      linha: "Os eixos da auditoria, cruzados com a perícia da UFMG e as assessorias",
+      texto:
+        "O que cada fonte diz sobre o mesmo eixo — e, principalmente, onde só uma delas falou. Um único eixo tem as três fontes; doze têm só a auditoria. É co-ocorrência temática, não causalidade: a auditoria e uma assessoria tratarem do mesmo assunto não quer dizer que uma respondeu à outra.",
+      href: "/paraopeba/analise",
+      linkTexto: "Ver a análise integrada →",
+    },
   ];
 
   // ⟲ 13/08, revisão de onboarding: era `<div>` — mesmo conserto aplicado

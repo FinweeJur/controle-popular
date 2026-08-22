@@ -18,8 +18,10 @@ import {
   unificarItens,
   type ClasseItemLegislacao,
   type EsferaLegislacao,
+  type ItemLegislacaoUnificada,
 } from "@/lib/ambiental/legislacao-unificada";
 import { RESOLVEDOR_NORMAS_LEG_BR, urnLexmlDaNorma } from "@/lib/ambiental/urn-lexml";
+import { ordenarPor, type Direcao, type TipoCampo } from "@/lib/tabela/ordenar";
 
 /**
  * Busca unificada de `/ambiental/legislacao` — legislação ambiental
@@ -134,6 +136,123 @@ const TEMAS_SEM_INSTRUMENTO_CRITICO = new Set(["especies"]);
 
 const PAGINA = 40;
 
+/**
+ * ═══ ORDENAÇÃO E CSV (regra do dono, 2026-08-21: "cinco coisas") ═══
+ *
+ * `ordenarPor` é a mesma função pura já testada em `lib/tabela/ordenar.test.ts`
+ * — nenhuma comparação nova nasce aqui. O obstáculo é que
+ * `ItemLegislacaoUnificada` é uma UNIÃO (`estadual`/`critica`/`precedente`,
+ * cada um com campos diferentes dentro de `.row`), e `ordenarPor` pede uma
+ * `chave: keyof T` de primeiro nível — por isso `paraChaveDeOrdenacao` empacota cada
+ * item num objeto com três campos síntese (`tipoOrdenacao`/`anoOrdenacao`/
+ * `esferaOrdenacao`) ANTES de chamar `ordenarPor`, e o resultado é
+ * desempacotado de volta. "Tipo" é a ordenação pedida por escrito pelo dono:
+ * para `estadual` é `row.tipo` (Lei, Decreto, Portaria…); para `critica`/
+ * `precedente`, que não têm esse campo, é o rótulo da própria classe
+ * (`CLASSE_LABEL`) — não inventa um "tipo" que a fonte não tem, agrupa pela
+ * única categoria que existe. "Ano" só existe em `estadual`; os outros dois
+ * ficam SEM valor, e `ordenarPor` já manda ausente pro fim nas duas direções
+ * (ver o cabeçalho de `lib/tabela/ordenar.ts`) — não aparecem misturados no
+ * meio da lista como se tivessem ano zero.
+ */
+type OrdemChave = "" | "tipo" | "ano" | "esfera";
+
+interface ItemComChaveDeOrdenacao {
+  item: ItemLegislacaoUnificada;
+  tipoOrdenacao: string;
+  anoOrdenacao: number | null;
+  esferaOrdenacao: string;
+}
+
+function tipoDoItem(item: ItemLegislacaoUnificada): string {
+  return item.classe === "estadual" ? item.row.tipo : CLASSE_LABEL[item.classe];
+}
+
+function paraChaveDeOrdenacao(itens: ItemLegislacaoUnificada[]): ItemComChaveDeOrdenacao[] {
+  return itens.map((item) => ({
+    item,
+    tipoOrdenacao: tipoDoItem(item),
+    anoOrdenacao: item.classe === "estadual" ? item.row.ano : null,
+    esferaOrdenacao: ESFERA_LABEL[item.esfera],
+  }));
+}
+
+/**
+ * O CSV segue o mesmo contrato de `TabelaDecisoes.tsx`
+ * (`/ambiental/decisoes-lai`): separador `;`, BOM UTF-8 na frente — sem ele o
+ * Excel brasileiro abre tudo numa coluna só e quebra acento. Exporta o que
+ * está FILTRADO e na ordem em que a tela mostra, nunca o corpus inteiro. As
+ * três classes viram linhas do MESMO formato — colunas que uma classe não
+ * preenche (ano/data/situação para crítica e precedente, órgão para
+ * crítica) ficam vazias, nunca inventadas.
+ */
+function csvEscape(valor: unknown): string {
+  const s = valor === null || valor === undefined ? "" : String(valor);
+  return /[";\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+}
+
+function linhaCsvDoItem(item: ItemLegislacaoUnificada): (string | number)[] {
+  const esfera = ESFERA_LABEL[item.esfera];
+  const classe = CLASSE_LABEL[item.classe];
+  const tipo = tipoDoItem(item);
+  const temas = item.row.temas.map((t) => TEMA_LABEL_UNIFICADO[t] ?? t).join("|");
+  if (item.classe === "estadual") {
+    const r = item.row;
+    return [
+      esfera,
+      classe,
+      FONTE_LABEL[r.fonte],
+      tipo,
+      r.numero ?? "",
+      r.ano ?? "",
+      r.data ?? "",
+      r.orgao ?? "",
+      r.situacao ?? "",
+      r.ementa ?? "",
+      temas,
+      r.linkPdf ?? "",
+    ];
+  }
+  if (item.classe === "critica") {
+    const r = item.row;
+    return [esfera, classe, "", tipo, r.numero ?? "", "", "", "", "", r.nomeCompleto, temas, r.linkOficial];
+  }
+  const r = item.row;
+  return [esfera, classe, "", tipo, r.referencia ?? "", "", "", r.tribunal, "", r.ementa, temas, r.linkOficial ?? ""];
+}
+
+function paraCsv(itens: ItemLegislacaoUnificada[]): string {
+  const BOM = "﻿";
+  const cabecalho = [
+    "esfera",
+    "classe",
+    "fonte",
+    "tipo",
+    "numero_ou_referencia",
+    "ano",
+    "data",
+    "orgao_ou_tribunal",
+    "situacao",
+    "ementa_ou_titulo",
+    "temas",
+    "link",
+  ].join(";");
+  const corpo = itens.map((item) => linhaCsvDoItem(item).map(csvEscape).join(";"));
+  return BOM + [cabecalho, ...corpo].join("\r\n") + "\r\n";
+}
+
+function baixarCsv(conteudo: string, nomeArquivo: string) {
+  const blob = new Blob([conteudo], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = nomeArquivo;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
 interface Props {
   /** Chega COMPACTADO, não como array de linhas — ver
    *  `lib/ambiental/payload-compacto.ts`. O corpus atravessa a fronteira
@@ -155,6 +274,8 @@ export default function BuscaLegislacaoUnificada({ corpus, criticas, precedentes
   const [ano, setAno] = useState<string>("");
   const [tema, setTema] = useState<string>("");
   const [visiveis, setVisiveis] = useState(PAGINA);
+  const [ordemChave, setOrdemChave] = useState<OrdemChave>("");
+  const [ordemDirecao, setOrdemDirecao] = useState<Direcao>("asc");
 
   const itens = useMemo(
     () => unificarItens(estaduais, criticas, precedentes),
@@ -207,8 +328,21 @@ export default function BuscaLegislacaoUnificada({ corpus, criticas, precedentes
     return base;
   }, [itens, termoNormalizado, esfera, classe, fonte, tema, ano]);
 
+  // Ordenação por coluna (regra do dono, 2026-08-21) — "" mantém a ordem que
+  // já vem de `unificarItens` (estaduais por data desc, depois críticas,
+  // depois precedentes). Aplicada DEPOIS do filtro — ordenar o corpus
+  // inteiro antes seria trabalho jogado fora.
+  const ordenados = useMemo(() => {
+    if (!ordemChave) return filtrados;
+    const chave =
+      ordemChave === "tipo" ? "tipoOrdenacao" : ordemChave === "ano" ? "anoOrdenacao" : "esferaOrdenacao";
+    const tipo: TipoCampo = ordemChave === "ano" ? "numero" : "texto";
+    const empacotados = paraChaveDeOrdenacao(filtrados);
+    return ordenarPor(empacotados, chave, ordemDirecao, tipo).map((e) => e.item);
+  }, [filtrados, ordemChave, ordemDirecao]);
+
   const temFiltro = Boolean(q || esfera || classe || fonte || ano || tema);
-  const visiveisAtuais = filtrados.slice(0, visiveis);
+  const visiveisAtuais = ordenados.slice(0, visiveis);
   const temaSemInstrumento = tema !== "" && TEMAS_SEM_INSTRUMENTO_CRITICO.has(tema) && filtrados.length === 0;
 
   function limpar() {
@@ -224,6 +358,11 @@ export default function BuscaLegislacaoUnificada({ corpus, criticas, precedentes
   function alternarTema(t: string) {
     setTema((atual) => (atual === t ? "" : t));
     setVisiveis(PAGINA);
+  }
+
+  function exportarCsv() {
+    const hoje = new Date().toISOString().slice(0, 10);
+    baixarCsv(paraCsv(ordenados), `legislacao-ambiental-mg-${hoje}.csv`);
   }
 
   return (
@@ -389,17 +528,55 @@ export default function BuscaLegislacaoUnificada({ corpus, criticas, precedentes
         </div>
       ) : (
         <>
-          <p className="mt-4 text-sm text-text-soft">
-            <strong className="font-tabular text-text">{formatNumberBR(filtrados.length)}</strong>{" "}
-            {filtrados.length === 1 ? "item encontrado" : "itens encontrados"}
-            {temFiltro ? " com este filtro" : ""} — de{" "}
-            <strong className="font-tabular text-text">{formatNumberBR(itens.length)}</strong> ao todo (
-            {formatNumberBR(estaduais.length)} normas ambientais de Minas e federais,{" "}
-            {formatNumberBR(criticas.length)} instrumentos nacionais/internacionais,{" "}
-            {formatNumberBR(precedentes.length)} precedentes).
-          </p>
+          <div className="mt-4 flex flex-wrap items-end justify-between gap-3">
+            <p className="text-sm text-text-soft" role="status">
+              <strong className="font-tabular text-text">{formatNumberBR(filtrados.length)}</strong>{" "}
+              {filtrados.length === 1 ? "item encontrado" : "itens encontrados"}
+              {temFiltro ? " com este filtro" : ""} — de{" "}
+              <strong className="font-tabular text-text">{formatNumberBR(itens.length)}</strong> ao todo (
+              {formatNumberBR(estaduais.length)} normas ambientais de Minas e federais,{" "}
+              {formatNumberBR(criticas.length)} instrumentos nacionais/internacionais,{" "}
+              {formatNumberBR(precedentes.length)} precedentes).
+            </p>
 
-          {filtrados.length === 0 ? (
+            <div className="flex flex-wrap items-end gap-3">
+              <label className="flex flex-col">
+                <span className="mb-1 text-xs font-medium text-text-soft">Ordenar por</span>
+                <select
+                  value={ordemChave}
+                  onChange={(e) => setOrdemChave(e.target.value as OrdemChave)}
+                  className="rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
+                >
+                  <option value="">Como veio da fonte</option>
+                  <option value="tipo">Tipo/classe</option>
+                  <option value="ano">Ano (só normas)</option>
+                  <option value="esfera">Esfera</option>
+                </select>
+              </label>
+              <button
+                type="button"
+                onClick={() => setOrdemDirecao((d) => (d === "asc" ? "desc" : "asc"))}
+                disabled={!ordemChave}
+                aria-label={
+                  ordemDirecao === "asc" ? "Ordem crescente — alternar para decrescente" : "Ordem decrescente — alternar para crescente"
+                }
+                title={ordemDirecao === "asc" ? "Ordem crescente" : "Ordem decrescente"}
+                className="rounded-lg border border-border bg-surface px-3 py-2 text-sm text-text disabled:opacity-40"
+              >
+                {ordemDirecao === "asc" ? "A→Z" : "Z→A"}
+              </button>
+              <button
+                type="button"
+                onClick={exportarCsv}
+                disabled={filtrados.length === 0}
+                className="rounded-lg border border-border bg-surface px-3 py-2 text-sm font-medium text-text hover:border-primary disabled:opacity-50"
+              >
+                Baixar CSV do filtrado ({formatNumberBR(filtrados.length)})
+              </button>
+            </div>
+          </div>
+
+          {ordenados.length === 0 ? (
             <div className="mt-4 rounded-2xl border border-dashed border-border bg-surface-2 p-6 text-sm text-text-soft">
               Nenhum item para esse filtro.
             </div>

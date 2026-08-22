@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "@/lib/ambiental/link";
 import { formatNumberBR } from "@/lib/betim/format";
+import BarrasValor from "@/app/[municipio]/components/charts/BarrasValor";
 import {
   contarLicenciamento,
+  contarLicenciamentoPorAno,
   listarMunicipiosComLicenciamento,
 } from "@/lib/db/queries/ambiental-licenciamento";
 import BuscaMunicipioLicenciamento from "./BuscaMunicipioLicenciamento";
+import RankingComOrdenacao from "./RankingComOrdenacao";
 import { metadataEditavel } from "@/lib/edicoes";
 
 export const metadata: Metadata = metadataEditavel("/ambiental/licenciamento", {
@@ -27,21 +30,57 @@ export const metadata: Metadata = metadataEditavel("/ambiental/licenciamento", {
  * inteiro no cliente sem o índice fatiado que `congresso/proposicoes`
  * precisa para 5.562 linhas/16 MiB); aqui, o filtro por MUNICÍPIO é a
  * busca abaixo.
+ *
+ * ═══ AS CINCO COISAS (regra do dono, 2026-08-21, `AGENTS.md`) ═══
+ *
+ * Cartões de topo (agregados de `contagem` + a lacuna de data), dois
+ * gráficos (por setor e por ano, `BarrasValor` — CSS puro, sem lib nova),
+ * ordenação por coluna nos dois gráficos (`RankingComOrdenacao`: ordem
+ * oficial vs. maior quantidade) e no buscador de município (nome vs.
+ * total), filtro real (nome do município, já existia) e CSV do que está
+ * filtrado na tela — tudo em `BuscaMunicipioLicenciamento.tsx`.
  */
 const SETOR_ORDEM = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
 export default async function LicenciamentoIndex() {
-  const [contagem, municipios] = await Promise.all([
+  const [contagem, municipios, porAnoData] = await Promise.all([
     contarLicenciamento(),
     listarMunicipiosComLicenciamento(),
+    contarLicenciamentoPorAno(),
   ]);
 
   const porSetor = [...contagem.porSetor].sort(
     (a, b) => SETOR_ORDEM.indexOf(a.letra) - SETOR_ORDEM.indexOf(b.letra)
   );
 
+  const setorRanking = porSetor.map((s) => ({
+    chave: s.letra,
+    rotulo: `${s.letra} — ${s.rotulo}`,
+    total: s.total,
+  }));
+  const classeRanking = contagem.porClasse.map((c) => ({
+    chave: String(c.classe ?? "sem-classe"),
+    rotulo: c.classe !== null ? `Classe ${c.classe}` : "Classe não informada pela fonte",
+    total: c.total,
+  }));
+  const setorTop = [...contagem.porSetor].sort((a, b) => b.total - a.total)[0];
+  const modalidadeTop = contagem.porModalidade[0];
+
+  const anoItens = porAnoData.porAno.map((a) => ({
+    label: String(a.ano),
+    valor: a.total,
+    titulo: `${a.ano}: ${formatNumberBR(a.total)} licenças emitidas`,
+  }));
+  if (porAnoData.semDataEmissao > 0) {
+    anoItens.push({
+      label: "Sem data de emissão na fonte",
+      valor: porAnoData.semDataEmissao,
+      titulo: `Sem data de emissão na fonte: ${formatNumberBR(porAnoData.semDataEmissao)} licenças`,
+    });
+  }
+
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
+    <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
       <header className="space-y-4">
         <p
           className="text-[.82em] font-semibold uppercase tracking-wide"
@@ -80,32 +119,105 @@ export default async function LicenciamentoIndex() {
 
       {contagem.total > 0 ? (
         <>
-          <section className="mt-10">
-            <h2 className="font-display text-xl font-semibold">Por setor oficial</h2>
-            <p className="mt-1 text-sm opacity-75">
+          {/* ═══ CARTÕES DE TOPO ═══ */}
+          <section aria-labelledby="numeros-licenciamento" className="mt-10">
+            <h2 id="numeros-licenciamento" className="sr-only">
+              O censo em números
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="rounded-xl border border-[var(--cp-border)] px-4 py-4">
+                <p className="text-[.78em] font-medium uppercase tracking-wide opacity-70">
+                  Licenças deferidas
+                </p>
+                <p className="mt-1 font-display text-2xl font-bold">
+                  {formatNumberBR(contagem.total)}
+                </p>
+              </div>
+              <div className="rounded-xl border border-[var(--cp-border)] px-4 py-4">
+                <p className="text-[.78em] font-medium uppercase tracking-wide opacity-70">
+                  Municípios alcançados
+                </p>
+                <p className="mt-1 font-display text-2xl font-bold">
+                  {formatNumberBR(municipios.length)}
+                </p>
+                <p className="mt-1 text-[.8em] opacity-70">de 853 em Minas Gerais</p>
+              </div>
+              {setorTop ? (
+                <div className="rounded-xl border border-[var(--cp-border)] px-4 py-4">
+                  <p className="text-[.78em] font-medium uppercase tracking-wide opacity-70">
+                    Setor com mais licenças
+                  </p>
+                  <p className="mt-1 font-display text-2xl font-bold">
+                    {formatNumberBR(setorTop.total)}
+                  </p>
+                  <p className="mt-1 text-[.8em] opacity-70">
+                    {setorTop.letra} — {setorTop.rotulo}
+                  </p>
+                </div>
+              ) : null}
+              <div className="rounded-xl border border-[var(--cp-border)] px-4 py-4">
+                <p className="text-[.78em] font-medium uppercase tracking-wide opacity-70">
+                  Sem data de emissão na fonte
+                </p>
+                <p className="mt-1 font-display text-2xl font-bold">
+                  {formatNumberBR(porAnoData.semDataEmissao)}
+                </p>
+                <p className="mt-1 text-[.8em] opacity-70">
+                  {((porAnoData.semDataEmissao / contagem.total) * 100).toFixed(1).replace(".", ",")}%
+                  do total — ficam fora do gráfico por ano
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ═══ GRÁFICO — por ano de emissão ═══ */}
+          <section aria-labelledby="por-ano-licenciamento" className="mt-10">
+            <h2 id="por-ano-licenciamento" className="font-display text-xl font-semibold">
+              Por ano de emissão
+            </h2>
+            <p className="mt-1 max-w-2xl text-sm opacity-75">
+              Quando cada licença foi emitida — não quando o empreendimento entrou em operação.
+              {porAnoData.semDataEmissao > 0
+                ? ` A fonte não registra data de emissão para ${formatNumberBR(porAnoData.semDataEmissao)} licenças; elas aparecem como barra própria, não somadas a nenhum ano.`
+                : ""}
+            </p>
+            <div className="mt-4">
+              {anoItens.length > 0 ? (
+                <BarrasValor itens={anoItens} formatValor={(v) => `${formatNumberBR(v)}`} />
+              ) : (
+                <p className="text-sm opacity-70">Nenhuma licença com data de emissão registrada.</p>
+              )}
+            </div>
+          </section>
+
+          {/* ═══ GRÁFICO — por setor oficial (com ordenação) ═══ */}
+          <section aria-labelledby="por-setor-licenciamento" className="mt-10">
+            <h2 id="por-setor-licenciamento" className="font-display text-xl font-semibold">
+              Por setor oficial
+            </h2>
+            <p className="mt-1 max-w-2xl text-sm opacity-75">
               A letra e o rótulo vêm da Deliberação Normativa Copam 217/2017 — o setor de cada
               licença, não uma classificação nossa.
             </p>
-            <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {porSetor.map((s) => (
-                <li
-                  key={s.letra}
-                  className="flex items-center justify-between gap-3 rounded-lg border border-[var(--cp-border)] px-4 py-2.5 text-sm"
-                >
-                  <span>
-                    <strong>{s.letra}</strong> — {s.rotulo}
-                  </span>
-                  <span className="shrink-0 font-tabular text-xs opacity-70">
-                    {formatNumberBR(s.total)}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-4">
+              <RankingComOrdenacao
+                itens={setorRanking}
+                rotuloOrdemNatural="Ordem oficial (A–H)"
+                rotuloUnidade="licenças"
+              />
+            </div>
           </section>
 
-          <section className="mt-8 grid gap-6 sm:grid-cols-2">
+          {/* ═══ POR MODALIDADE E POR CLASSE ═══ */}
+          <section className="mt-10 grid gap-8 sm:grid-cols-2">
             <div>
               <h2 className="font-display text-lg font-semibold">Por modalidade</h2>
+              {modalidadeTop ? (
+                <p className="mt-1 text-sm opacity-75">
+                  A mais comum é {modalidadeTop.modalidade.toLowerCase()}, com{" "}
+                  {formatNumberBR(modalidadeTop.total)} licenças.
+                </p>
+              ) : null}
               <ul className="mt-3 space-y-1.5 text-sm">
                 {contagem.porModalidade.map((m) => (
                   <li key={m.modalidade} className="flex items-center justify-between gap-3">
@@ -119,21 +231,16 @@ export default async function LicenciamentoIndex() {
             </div>
             <div>
               <h2 className="font-display text-lg font-semibold">Por classe</h2>
-              <ul className="mt-3 space-y-1.5 text-sm">
-                {contagem.porClasse.map((c) => (
-                  <li
-                    key={c.classe ?? "sem-classe"}
-                    className="flex items-center justify-between gap-3"
-                  >
-                    <span className="opacity-85">
-                      Classe {c.classe ?? "não informada"}
-                    </span>
-                    <span className="font-tabular text-xs opacity-70">
-                      {formatNumberBR(c.total)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              <p className="mt-1 text-sm opacity-75">
+                Classe de risco do empreendimento — quanto maior, mais rigoroso o licenciamento.
+              </p>
+              <div className="mt-3">
+                <RankingComOrdenacao
+                  itens={classeRanking}
+                  rotuloOrdemNatural="Classe (crescente)"
+                  rotuloUnidade="licenças"
+                />
+              </div>
             </div>
           </section>
 

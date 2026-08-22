@@ -21,37 +21,20 @@
 
 ## Em curso
 
-- **Perícia UFMG × Auditoria AECOM** — os 7 documentos do `node/582` estão todos
-  em `cruzado`; falta a síntese final. **4 marcados para revisão humana** e
-  entram na página com aviso.
-  · retomar: `python X:/DevCoder/_lote-ambiental/analise/estado.py` (ele imprime
-  o próximo comando)
-  · worktree: `.claude/worktrees/cp-ambiental-estudos` · plano:
-  `Projetos/Controle Popular — Perícia UFMG × Auditoria (Executable Plan).md`
-
-- **Expansão: acordos, contratos e convênios de MG** — Blocos 0, A e metade do
-  B entregues. No ar: `/ambiental/tac` (execução financeira dos TACs + cadastro
-  GTAC) e `/ambiental/convenios` (convênios ambientais estaduais + régua
-  federal do Transferegov).
-  · **próximo:** B6 (coletor das decisões da CGE — a sondagem já está feita, ver
-  abaixo), B7 (TACs do MPMG, exige OCR), B8 (DataJud TJMG).
-  · **B4 (PNCP) saiu da fila: não é "custo baixo", é bloqueado.** O coletor
-  existente (`etl/betim/etl/pncp/contratos.py`) grava via
-  `get_supabase_client()`, e a Neon está em 402 — ver "Esperando data".
-  · armadilhas de cada fonte já registradas em `docs/FONTES.md` — ler antes de
-  tocar em qualquer uma delas.
-  · worktree: nenhum (feito no checkout principal) · plano em
-  `docs/planos/PLANO-EXPANSAO-ACORDOS-MG.md` (movido para dentro do repo em
-  21/08, depois de a auditoria achar 12 afirmacoes vencidas nele)
-
-- **B6 — decisões de recurso da CGE: sondado, coletor por escrever.** 753
-  decisões (2020–2026), sem login e sem captcha, mas é WebForms: cada POST exige
-  o `__VIEWSTATE` de um GET anterior. Tabela por ano e tipo em `docs/FONTES.md`.
-  · **corrige o plano:** eu havia escrito que filtrar por *Provimento* daria "o
-  mapa das negativas indevidas". São **16 casos em 7 anos** — servem de exemplo,
-  não de base estatística. O que domina é *Não conhecimento* (265).
-  · antes de publicar qualquer total por tipo: em 2022–2025 a soma dos tipos não
-  fecha com o total do ano, e ninguém investigou por quê.
+- **Expansão: acordos, contratos e convênios de MG** — Blocos 0, A e quase todo
+  o B entregues, no worktree `.claude/worktrees/cp-acordos-mg` (branch
+  `cp-acordos-mg`, pushado). No ar: `/ambiental/tac` (com dashboard, 2 gráficos
+  e CSV), `/ambiental/convenios`, `/ambiental/decisoes-lai` (753 decisões da
+  CGE), `/ambiental/barragens/descaracterizacao` (45 barragens do MPMG).
+  · **entregue nesta rodada:** B1 destravado (o modelo do Power BI expõe 11
+  entidades, não 4), B2 (6 conjuntos do CKAN + SIAFI com 718 mil linhas),
+  B5, B6, o painel Sisema (582 mil autos de infração, R$ 11,48 bi aplicados) e
+  a **regra das cinco coisas** aplicada a 8 páginas.
+  · **em curso:** B4 (PNCP por arquivo) e B8 (DataJud por consulta ao vivo).
+  · **B7 está morto**, com medição: `buscarTac` responde 200 com 0 byte. Não é
+  pendência, é resultado — não reabrir sem a fonte voltar.
+  · armadilhas de cada fonte em `docs/FONTES.md` — ler antes de tocar.
+  · plano: `docs/planos/PLANO-EXPANSAO-ACORDOS-MG.md`
 
 - **Pedido de LAI à CGE-MG — redigido, falta protocolar.** O
   `ft_convenio_metaetapa` do conjunto `convenios-saida` sai com **só o
@@ -64,6 +47,28 @@
   convênio).md`, no vault
   · depois de protocolar, registrar em `docs/LAI-PROTOCOLOS.json` — aí a CI
   diária passa a vigiar o prazo sozinha
+
+- **Análise integrada do Paraopeba — ENTREGUE.** `/paraopeba/analise` põe os 16
+  eixos da auditoria AECOM contra a perícia da UFMG, os documentos das ATIs e a
+  voz da própria ATI (o texto que ela escreveu sobre o próprio estudo).
+  · **o que a página mede:** 1 único eixo tem as 3 fontes (Saúde humana e risco
+  ecológico); **12 dos 16 só têm a auditoria**; e 3 temas órfãos — assunto que
+  perícia e ATIs tratam e nenhum eixo cobre (plano-de-reparacao 10/106,
+  programas-de-compensacao 3/63, frentes-emergenciais 0/11).
+  · a página distingue **"a ponte não existe"** (7 eixos sem equivalente no
+  vocabulário) de **"a ponte existe e ninguém usou"** (5 eixos). Só o segundo é
+  pauta; juntar os dois inventaria lacuna.
+  · casamento notícia↔estudo em `estudo-e-noticia.ts`: 5 fortes, 1 médio, 7
+  nulos com motivo. **Casar por tema em comum é defeito**, não atalho.
+
+- **Síntese temática ainda NÃO inclui a perícia.** `SINTESE_AJRI` tem 16 eixos
+  escritos só dos 337 relatórios da AECOM; `sintese-pericia.ts` é peça separada.
+  · **não editar `sintese-ajri.ts` à mão** — é gerado por
+  `gerar-sintese-ajri.mts` a partir de um `.md` fora do repo, e é a voz da
+  auditoria. A fusão vai numa camada nova (`sintese-integrada.ts`), com as
+  vozes identificadas.
+  · resumo por documento hoje: AECOM **207/337**, perícia **7/7**, ATIs
+  **0/597**.
 
 ## Esperando data
 

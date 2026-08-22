@@ -75,6 +75,15 @@ de tipo (`2023L` = inteiro longo) — por isso a comparação normaliza os dois
 lados antes de confrontar, e trata divergência de TIPO como ruído do token,
 não como erro de dado.
 
+⚠️ **Nem toda resposta traz `RT`.** Medido em 2026-08-21, ao vivo: as
+entidades `Contas x Projetos`, `Empresas_valores Estado Consulta Geral` e
+`Soma Deposito_Execucao_Transferencia` respondem SEM `RT` (a conferência cai
+para `{"conferido": False, "motivo": "resposta sem RT ou sem linhas"}`, não
+para erro) — só `Execução_Projetos_Completa` trouxe `RT` na sondagem
+original. Ausência de `RT` não é falha de decodificação; é a testemunha
+independente que simplesmente não veio nesta consulta. `conferir()` não
+ergue por isso — quem chama decide se aceita `conferido: False`.
+
 Uso:
 
     from etl.apis._powerbi_dsr import decodificar_resposta, conferir
@@ -92,7 +101,7 @@ LOG = "[etl.apis._powerbi_dsr]"
 
 # A máscara de nulo vem como "Ø" (U+00D8). Alguns servidores mandam "null".
 # As duas grafias valem, mas nunca são SOMADAS: ver `_mascara_de_nulo`.
-_CHAVES_NULO = ("\u00d8", "null")
+_CHAVES_NULO = ("Ø", "null")
 
 # Um índice muito além do fim do dicionário quase certamente é um valor CRU
 # lido como índice (ex.: o ano 2022 contra um dicionário de 6 nomes). O corte
@@ -414,7 +423,9 @@ def conferir_contra_restart_token(tabela: Tabela) -> dict:
     O `RT` é gerado pelo servidor por um caminho DIFERENTE do `DM0`
     comprimido — é testemunha INDEPENDENTE de que as máscaras foram lidas
     certo. Uma inversão de `R` desloca a última linha e aparece aqui.
-    Devolve diagnóstico; ergue se divergir em valor."""
+    Devolve diagnóstico; ergue se divergir em valor. Nem toda resposta traz
+    `RT` (ver docstring do módulo) — ausência não é erro, só reduz o que dá
+    para confirmar."""
     if not tabela.restart_token or not tabela.linhas:
         return {"conferido": False, "motivo": "resposta sem RT ou sem linhas"}
     esperado = [_normalizar_rt(v) for v in tabela.restart_token]

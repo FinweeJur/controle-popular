@@ -7,6 +7,7 @@ import { formatNumberBR } from "@/lib/betim/format";
 import { contarReunioesCopam } from "@/lib/db/queries/copam";
 import { contarBarragensMg } from "@/lib/db/queries/barragens";
 import { contarLicenciamento } from "@/lib/db/queries/ambiental-licenciamento";
+import { COBERTURA_DECISOES_LICENCIAMENTO } from "@/lib/ambiental/decisoes-licenciamento";
 import { contarLegislacaoAmbiental } from "@/lib/db/queries/legislacao-ambiental";
 import { contarDireitoCritico } from "@/lib/db/queries/direito-critico";
 import { contarPatrimonioTombado } from "@/lib/db/queries/patrimonio-tombado";
@@ -71,6 +72,20 @@ export default async function AmbientalHome() {
       href: "/licenciamento",
       pronta: totalLicencas > 0,
       linkTexto: "Ver as licenças →",
+    },
+    {
+      // Vizinho de "Licenciamento" de propósito: é a mesma fila vista pelo
+      // outro lado. Aquela mostra quem RECEBEU licença; esta mostra a DECISÃO,
+      // e por isso mostra a recusa — que não existe num acervo de licenças
+      // concedidas.
+      titulo: "Decisões de licenciamento",
+      linha: `${formatNumberBR(COBERTURA_DECISOES_LICENCIAMENTO.total)} decisões, das quais ${formatNumberBR(COBERTURA_DECISOES_LICENCIAMENTO.totalNegativas)} negativas (${COBERTURA_DECISOES_LICENCIAMENTO.percentualNegativas}%)`,
+      texto:
+        "Indeferimento, arquivamento e cancelamento — as decisões que somem quando se olha só o acervo de licenças concedidas. As negativas vêm uma a uma, com município, atividade e classe; as deferidas vêm agregadas. Indeferimento não é irregularidade do empreendedor.",
+      fase: "F4",
+      href: "/decisoes",
+      pronta: true,
+      linkTexto: "Ver as decisões →",
     },
     {
       titulo: "Barragens",

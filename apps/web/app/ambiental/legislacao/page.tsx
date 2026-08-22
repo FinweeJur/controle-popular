@@ -70,7 +70,28 @@ export const metadata: Metadata = metadataEditavel("/ambiental/legislacao", {
  * assim aqui: `BuscaLegislacaoUnificada` nunca achata as três classes
  * (`estadual`/`critica`/`precedente`) num shape comum, só compartilha o
  * filtro de esfera/tema/busca.
+ *
+ * ═══ CARTÕES E GRÁFICO (regra do dono, 2026-08-21: "cinco coisas") ═══
+ *
+ * O gráfico pedido é "por ano de norma e por órgão emissor" — os dois só
+ * existem sobre `estaduais` (a tabela `ambiental_legislacao`, que apesar do
+ * nome da variável já inclui MMA/CNDH federais desde a migration 0073):
+ * `criticas` e `precedentes` não têm `ano` nem `orgao` na fonte, então
+ * entrar num "gráfico por ano" com eles inventaria um eixo que o dado não
+ * tem. Isso é dito na legenda de cada gráfico, não escondido.
+ *
+ * "Por ano" é uma janela dos últimos 12 anos com dado — não a série
+ * completa: o corpus tem norma de décadas atrás, e um gráfico com uma barra
+ * por ano desde o primeiro registro ficaria ilegível (e a pergunta que o
+ * leitor faz de um portal de transparência é "estão legislando mais agora",
+ * não a distribuição desde o século passado). O que fica de fora da janela
+ * soma numa barra "antes de {ano}" — nenhuma norma sai da CONTAGEM, só do
+ * desenho. "Por órgão" recorta aos 8 órgãos com mais normas, mesmo
+ * raciocínio, com "outros órgãos" no lugar de "antes de".
  */
+const JANELA_ANOS_GRAFICO = 12;
+const TOP_ORGAOS_GRAFICO = 8;
+
 export default async function LegislacaoAmbientalIndex() {
   const [estaduais, criticas, precedentes, contagemEstadual, coberturaEstadual] = await Promise.all([
     listarLegislacaoAmbiental(),
@@ -81,6 +102,57 @@ export default async function LegislacaoAmbientalIndex() {
   ]);
 
   const totalGeral = estaduais.length + criticas.length + precedentes.length;
+
+  // ═══ GRÁFICO 1 — por ano, janela dos últimos N anos com dado ═══
+  const anosPresentes = estaduais.map((l) => l.ano).filter((a): a is number => a !== null);
+  const anoMaisRecente = anosPresentes.length > 0 ? Math.max(...anosPresentes) : null;
+  const anoCorte = anoMaisRecente !== null ? anoMaisRecente - JANELA_ANOS_GRAFICO + 1 : null;
+  const contagemPorAno = new Map<number, number>();
+  let normasAntesDoCorte = 0;
+  let normasSemAno = 0;
+  for (const l of estaduais) {
+    if (l.ano === null) {
+      normasSemAno++;
+      continue;
+    }
+    if (anoCorte !== null && l.ano < anoCorte) {
+      normasAntesDoCorte++;
+      continue;
+    }
+    contagemPorAno.set(l.ano, (contagemPorAno.get(l.ano) ?? 0) + 1);
+  }
+  const serieAnos =
+    anoCorte !== null
+      ? Array.from({ length: JANELA_ANOS_GRAFICO }, (_, i) => anoCorte + i).map((ano) => ({
+          ano,
+          total: contagemPorAno.get(ano) ?? 0,
+        }))
+      : [];
+  const maxSerieAnos = Math.max(1, ...serieAnos.map((a) => a.total));
+
+  // ═══ GRÁFICO 2 — por órgão emissor, os que mais aparecem ═══
+  const contagemPorOrgao = new Map<string, number>();
+  let normasSemOrgao = 0;
+  for (const l of estaduais) {
+    const chave = l.orgao?.trim();
+    if (!chave) {
+      normasSemOrgao++;
+      continue;
+    }
+    contagemPorOrgao.set(chave, (contagemPorOrgao.get(chave) ?? 0) + 1);
+  }
+  const orgaosOrdenados = [...contagemPorOrgao.entries()].sort((a, b) => b[1] - a[1]);
+  const topOrgaos = orgaosOrdenados.slice(0, TOP_ORGAOS_GRAFICO);
+  const restoOrgaos = orgaosOrdenados.slice(TOP_ORGAOS_GRAFICO);
+  const outrosOrgaosTotal = restoOrgaos.reduce((t, [, n]) => t + n, 0);
+  const serieOrgaos: { rotulo: string; total: number }[] = topOrgaos.map(([orgao, total]) => ({
+    rotulo: orgao,
+    total,
+  }));
+  if (outrosOrgaosTotal > 0) {
+    serieOrgaos.push({ rotulo: `Outros ${restoOrgaos.length} órgãos`, total: outrosOrgaosTotal });
+  }
+  const maxSerieOrgaos = Math.max(1, ...serieOrgaos.map((o) => o.total));
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:py-16">
@@ -156,6 +228,222 @@ export default async function LegislacaoAmbientalIndex() {
           </p>
         )}
       </header>
+
+      {totalGeral > 0 && (
+        <>
+          {/* ═══ CARTÕES DE TOPO ═══ */}
+          <section aria-labelledby="numeros-legislacao" className="mt-10">
+            <h2 id="numeros-legislacao" className="font-display text-xl font-semibold">
+              O acervo em números
+            </h2>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="rounded-xl border border-border bg-surface px-4 py-4">
+                <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+                  Itens ao todo
+                </p>
+                <p className="mt-1 font-display text-2xl font-bold text-text">
+                  {formatNumberBR(totalGeral)}
+                </p>
+              </div>
+              <div className="rounded-xl border border-border bg-surface px-4 py-4">
+                <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+                  Normas estaduais de Minas
+                </p>
+                <p className="mt-1 font-display text-2xl font-bold text-text">
+                  {formatNumberBR(
+                    contagemEstadual.porFonte.almg + contagemEstadual.porFonte.semad + contagemEstadual.porFonte.siam
+                  )}
+                </p>
+                <p className="mt-1 text-[.86em] text-text-soft">ALMG, Semad e Siam</p>
+              </div>
+              <div className="rounded-xl border border-border bg-surface px-4 py-4">
+                <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+                  Normas federais
+                </p>
+                <p className="mt-1 font-display text-2xl font-bold text-text">
+                  {formatNumberBR(contagemEstadual.porFonte.mma + contagemEstadual.porFonte.cndh)}
+                </p>
+                <p className="mt-1 text-[.86em] text-text-soft">MMA/Conama e CNDH</p>
+              </div>
+              <div className="rounded-xl border border-border bg-surface px-4 py-4">
+                <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+                  Nacional/internacional curados
+                </p>
+                <p className="mt-1 font-display text-2xl font-bold text-text">
+                  {formatNumberBR(criticas.length)}
+                </p>
+              </div>
+              <div className="rounded-xl border border-border bg-surface px-4 py-4">
+                <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+                  Precedentes judiciais
+                </p>
+                <p className="mt-1 font-display text-2xl font-bold text-text">
+                  {formatNumberBR(precedentes.length)}
+                </p>
+              </div>
+              <div className="rounded-xl border border-border bg-surface px-4 py-4">
+                <p className="text-[.82em] font-medium uppercase tracking-wide text-text-soft">
+                  Com tema atribuído
+                </p>
+                <p className="mt-1 font-display text-2xl font-bold text-text">
+                  {coberturaEstadual.total > 0
+                    ? `${((100 * coberturaEstadual.comTema) / coberturaEstadual.total).toFixed(1).replace(".", ",")}%`
+                    : "—"}
+                </p>
+                <p className="mt-1 text-[.86em] text-text-soft">
+                  {formatNumberBR(coberturaEstadual.comTema)} de {formatNumberBR(coberturaEstadual.total)} normas
+                  coletadas em massa
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ═══ GRÁFICO — por ano e por órgão emissor (só as normas, que são
+              o único dos três acervos com esses dois campos) ═══ */}
+          <section aria-labelledby="grafico-legislacao" className="mt-10">
+            <h2 id="grafico-legislacao" className="font-display text-xl font-semibold">
+              Por ano e por órgão emissor
+            </h2>
+            <p className="mt-2 max-w-2xl text-[.92em] text-text-soft">
+              Cobre só as {formatNumberBR(estaduais.length)} normas (ALMG, Semad, Siam, MMA/Conama,
+              CNDH) — legislação nacional/internacional curada e precedentes não têm ano nem órgão
+              emissor na fonte, então não entram nestes dois gráficos.
+            </p>
+
+            {anoMaisRecente !== null && (
+              <figure className="mt-6">
+                <figcaption className="text-[.85em] font-semibold text-text">
+                  Por ano, {anoCorte}–{anoMaisRecente}
+                  {normasAntesDoCorte > 0 || normasSemAno > 0 ? (
+                    <span className="font-normal text-text-soft">
+                      {" "}
+                      ({formatNumberBR(normasAntesDoCorte)} anteriores a {anoCorte}
+                      {normasSemAno > 0 ? `, ${formatNumberBR(normasSemAno)} sem ano registrado` : ""} — fora da
+                      janela do desenho, dentro da contagem)
+                    </span>
+                  ) : null}
+                </figcaption>
+                <div className="sr-only">
+                  Gráfico de barras horizontais, uma por ano de {anoCorte} a {anoMaisRecente}, comprimento
+                  proporcional ao total de normas do ano.{" "}
+                  {serieAnos.map((a) => `${a.ano}: ${a.total} normas.`).join(" ")}
+                </div>
+                <div aria-hidden className="mt-3 space-y-1.5">
+                  {serieAnos.map((a) => (
+                    <div key={a.ano} className="flex items-center gap-3">
+                      <span className="w-12 shrink-0 text-right font-tabular text-[.82em] font-semibold text-text">
+                        {a.ano}
+                      </span>
+                      <div className="cp-ord-track h-3 flex-1 overflow-hidden">
+                        <div
+                          className="cp-ord-seg cp-ord-seg-1 h-full rounded-[3px]"
+                          style={{ width: `${(a.total / maxSerieAnos) * 100}%`, background: "var(--color-ord-1)" }}
+                          title={`${a.ano}: ${formatNumberBR(a.total)} normas`}
+                        />
+                      </div>
+                      <span className="w-12 shrink-0 font-tabular text-[.82em] text-text-soft">
+                        {formatNumberBR(a.total)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </figure>
+            )}
+
+            {serieOrgaos.length > 0 && (
+              <figure className="mt-8">
+                <figcaption className="text-[.85em] font-semibold text-text">
+                  Por órgão emissor
+                  {normasSemOrgao > 0 ? (
+                    <span className="font-normal text-text-soft">
+                      {" "}
+                      ({formatNumberBR(normasSemOrgao)} sem órgão registrado na fonte — fora do desenho,
+                      dentro da contagem)
+                    </span>
+                  ) : null}
+                </figcaption>
+                <div className="sr-only">
+                  Gráfico de barras horizontais, uma por órgão emissor, comprimento proporcional ao total
+                  de normas do órgão.{" "}
+                  {serieOrgaos.map((o) => `${o.rotulo}: ${o.total} normas.`).join(" ")}
+                </div>
+                <div aria-hidden className="mt-3 space-y-1.5">
+                  {serieOrgaos.map((o) => (
+                    <div key={o.rotulo} className="flex items-center gap-3">
+                      <span
+                        className="w-40 shrink-0 truncate text-right font-tabular text-[.82em] font-semibold text-text"
+                        title={o.rotulo}
+                      >
+                        {o.rotulo}
+                      </span>
+                      <div className="cp-ord-track h-3 flex-1 overflow-hidden">
+                        <div
+                          className="cp-ord-seg cp-ord-seg-1 h-full rounded-[3px]"
+                          style={{ width: `${(o.total / maxSerieOrgaos) * 100}%`, background: "var(--color-ord-1)" }}
+                          title={`${o.rotulo}: ${formatNumberBR(o.total)} normas`}
+                        />
+                      </div>
+                      <span className="w-12 shrink-0 font-tabular text-[.82em] text-text-soft">
+                        {formatNumberBR(o.total)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </figure>
+            )}
+
+            {/* Alternativa em tabela — os dois gráficos, por extenso. */}
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+              {serieAnos.length > 0 && (
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-[.85em]">
+                    <caption className="mb-2 text-left text-[.82em] text-text-soft">
+                      Tabela — alternativa em texto ao gráfico &quot;por ano&quot;.
+                    </caption>
+                    <thead>
+                      <tr className="border-b border-border text-left text-text">
+                        <th className="py-1.5 pr-3 font-medium">Ano</th>
+                        <th className="py-1.5 text-right font-medium">Normas</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-text-soft">
+                      {serieAnos.map((a) => (
+                        <tr key={a.ano} className="border-b border-border/60">
+                          <td className="py-1.5 pr-3 font-medium text-text">{a.ano}</td>
+                          <td className="py-1.5 text-right tabular-nums">{formatNumberBR(a.total)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {serieOrgaos.length > 0 && (
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-[.85em]">
+                    <caption className="mb-2 text-left text-[.82em] text-text-soft">
+                      Tabela — alternativa em texto ao gráfico &quot;por órgão emissor&quot;.
+                    </caption>
+                    <thead>
+                      <tr className="border-b border-border text-left text-text">
+                        <th className="py-1.5 pr-3 font-medium">Órgão</th>
+                        <th className="py-1.5 text-right font-medium">Normas</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-text-soft">
+                      {serieOrgaos.map((o) => (
+                        <tr key={o.rotulo} className="border-b border-border/60">
+                          <td className="py-1.5 pr-3 font-medium text-text">{o.rotulo}</td>
+                          <td className="py-1.5 text-right tabular-nums">{formatNumberBR(o.total)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          </section>
+        </>
+      )}
 
       <section className="mt-10">
         <BuscaLegislacaoUnificada corpus={compactar(estaduais)} criticas={criticas} precedentes={precedentes} />
