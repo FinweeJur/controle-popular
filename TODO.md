@@ -39,21 +39,36 @@
   · `/ambiental/licenciamento` e `/copam` têm as cinco coisas no código mas
   renderizam vazio enquanto a Neon estiver em 402 — não é regressão.
 
-- **Diário oficial D1 (SIGPub) — destravado em 22/08.** O corte de LGPD saiu:
-  nomeação e exoneração **entram**; CPF, endereço e dado de saúde de pessoa
-  física continuam fora (e as duas guardas automáticas barram de qualquer
-  jeito). Migration `0077` e `lib/diario/classificarAto.ts` já estão prontos.
-  · retomar: escrever o coletor SIGPub (Diamantina é a única confirmação limpa)
-  · plano: `docs/planos/diario-oficial-plano.md` · Itinga ganhou fonte:
-  `https://www.itinga.mg.gov.br/diario` (HTTP 200 medido em 22/08), falta
-  declarar em `apps/web/lib/db/cidades-do-build.ts`
+- **Diário oficial D1 (SIGPub) — coletor em construção, worktree `diario-oficial`.**
+  Itinga e Araçuaí já ganharam fonte própria (`0be50d9`); Diamantina é a única
+  confirmação limpa de SIGPub. Migration `0077` e `lib/diario/classificarAto.ts`
+  prontos. ⚠️ O mecanismo de busca tem duas versões conflitantes registradas:
+  `docs/_historico/diario-oficial-sigpub-mapeamento.md` (11/08) mediu que GET
+  simples falha e suspeitou de POST/token; o cabeçalho da migration `0077`
+  (16/08) diz "GET + CSRF `_token` ligado à sessão" como confirmado. Reconferir
+  ao vivo antes de escrever o coletor, não herdar nenhum dos dois relatos.
+  · plano: `docs/planos/diario-oficial-plano.md`
 
-- ⚠️ **ETL da FGV apagado sem commit no checkout principal.**
-  `etl/betim/etl/apis/__init__.py` e `fgv_paraopeba.py` estão como `D` no
-  `git status`, e `.github/workflows/etl-betim.yml:359` ainda chama o módulo —
-  commitar assim para a tela de Betim de atualizar. **Decidido em 22/08: o ETL
-  continua vivo**, então isto é restauração, não decisão.
-  · retomar: `git restore etl/betim/etl/apis/__init__.py etl/betim/etl/apis/fgv_paraopeba.py`
+- **Cabeçalho enxuto em Terras e Paraopeba — worktree `cabecalho-zonas`.**
+  Decisão de 22/08 (`docs/ESTADO.md` decisão 5): molde `congresso/layout.tsx`,
+  não o `Header.tsx` rico de Cidades. ⚠️ Paraopeba (9 subpáginas, nenhuma
+  full-screen) aceita `layout.tsx` de zona sem problema. Função Social da
+  Terra **não**: o comentário em `funcaosocialterra/page.tsx:324-332` registra
+  que um `layout.tsx` colaria também em `/mapa`, o globo 3D full-screen com HUD
+  nos 4 cantos — por isso essa zona nunca teve layout de zona. Ver
+  `docs/planos/REVISAO-UX-E-ONBOARDING.md` §5.
+
+- **Linha de orientação na home — worktree `home-orientacao`.** Decisão 8 de
+  22/08: uma linha acima do grid de 6 cards ("procurando sua cidade?"), sem
+  redesenho.
+
+- **Chatbot: prova de conceito (embeddings) — worktree `chatbot-poc`.**
+  Decisões 2-4 de 22/08: cérebro Maritaca (Sabiá)/DeepSeek, acervo = o que o
+  determinístico não cobre, ressalva de IA sempre visível. Vetorizador já
+  medido: Ollama local `nomic-embed-text`, 768 dim, mesmo tamanho do índice de
+  código existente. Escopo desta trilha: só chunk → vetor → busca por
+  similaridade sobre 1 documento real, com teste — sem chave de API nenhuma
+  (Maritaca/DeepSeek ficam para depois, quando houver credencial).
 
 ## Esperando data
 
