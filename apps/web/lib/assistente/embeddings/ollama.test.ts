@@ -90,30 +90,49 @@ if (!OLLAMA_DISPONIVEL) {
   console.warn(`[ollama.test.ts] Ollama local não respondeu em ${OLLAMA_BASE_URL} — pulando os testes contra o servidor real.`);
 }
 
+// 15s de folga acima dos ~5,5s medidos de modelo frio (mesmo número que
+// justifica o TIMEOUT_MS_PADRAO de 30s em ollama.ts) — sem isto, o padrão do
+// vitest (5s) mata a chamada real ANTES do timeout interno do próprio
+// cliente importar. Medido: falhou por timeout de teste (não de rede) numa
+// execução com o modelo descarregado da memória do Ollama.
+const TIMEOUT_TESTE_MS = 15_000;
+
 describe.skipIf(!OLLAMA_DISPONIVEL)("vetorizar/vetorizarLote — Ollama local real", () => {
-  test("vetorizar devolve um vetor não vazio de números finitos", async () => {
-    const vetor = await vetorizar("teste de conexão com o Ollama");
-    expect(Array.isArray(vetor)).toBe(true);
-    expect(vetor.length).toBeGreaterThan(0);
-    expect(vetor.every((x) => typeof x === "number" && Number.isFinite(x))).toBe(true);
-  });
+  test(
+    "vetorizar devolve um vetor não vazio de números finitos",
+    async () => {
+      const vetor = await vetorizar("teste de conexão com o Ollama");
+      expect(Array.isArray(vetor)).toBe(true);
+      expect(vetor.length).toBeGreaterThan(0);
+      expect(vetor.every((x) => typeof x === "number" && Number.isFinite(x))).toBe(true);
+    },
+    TIMEOUT_TESTE_MS
+  );
 
-  test("vetorizarLote devolve um vetor por texto, na mesma ordem, mesma dimensão", async () => {
-    const textos = ["primeiro texto sobre barragens", "segundo texto sobre educação municipal"];
-    const vetores = await vetorizarLote(textos);
-    expect(vetores).toHaveLength(2);
-    expect(vetores[0].length).toBe(vetores[1].length);
-  });
+  test(
+    "vetorizarLote devolve um vetor por texto, na mesma ordem, mesma dimensão",
+    async () => {
+      const textos = ["primeiro texto sobre barragens", "segundo texto sobre educação municipal"];
+      const vetores = await vetorizarLote(textos);
+      expect(vetores).toHaveLength(2);
+      expect(vetores[0].length).toBe(vetores[1].length);
+    },
+    TIMEOUT_TESTE_MS
+  );
 
-  test("vetorizarLote de N textos bate, posição a posição, com N chamadas individuais a vetorizar", async () => {
-    // Prova que o lote não embaralha ordem nem reaproveita o vetor errado —
-    // o próprio contrato que `vetorizarLote` valida em runtime (ver
-    // "contrato de ordem quebrado" acima), aqui contra o servidor de
-    // verdade em vez de um dublê.
-    const textos = ["laranja", "barragem de rejeito", "orçamento municipal"];
-    const [porLote, ...porUm] = await Promise.all([vetorizarLote(textos), ...textos.map((t) => vetorizar(t))]);
-    for (let i = 0; i < textos.length; i++) {
-      expect(porLote[i]).toEqual(porUm[i]);
-    }
-  });
+  test(
+    "vetorizarLote de N textos bate, posição a posição, com N chamadas individuais a vetorizar",
+    async () => {
+      // Prova que o lote não embaralha ordem nem reaproveita o vetor errado —
+      // o próprio contrato que `vetorizarLote` valida em runtime (ver
+      // "contrato de ordem quebrado" acima), aqui contra o servidor de
+      // verdade em vez de um dublê.
+      const textos = ["laranja", "barragem de rejeito", "orçamento municipal"];
+      const [porLote, ...porUm] = await Promise.all([vetorizarLote(textos), ...textos.map((t) => vetorizar(t))]);
+      for (let i = 0; i < textos.length; i++) {
+        expect(porLote[i]).toEqual(porUm[i]);
+      }
+    },
+    TIMEOUT_TESTE_MS
+  );
 });
