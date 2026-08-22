@@ -479,7 +479,9 @@ liberar o meio-termo sem depender dele.
 | 0c | demais 12 relatórios do TJMG (2012→2023) | ✅ **baixados** (13/13, 66 MB); extração parcial — ver 0f |
 | 0d | **o que NÃO mudou** | ✅ **publicado** — 52 seções de "Pendências da última inspeção" em 2023 e 24 em 2022, que é a conta do próprio CNJ |
 | 0e | recorte: **STJ, TST, TRT-3 e STF** | ✅ **medido** — só o TRT-3 tem acervo (18 atas, 1991→2024); STJ, TST e STF não têm inspeção externa |
-| 0f | extração dos anos 2012, 2017, 2019, 2022, 2023 | 🔄 **em conserto** — 5 layouts identificados, 3 ainda rendendo zero item |
+| 0f | extração dos anos 2012, 2019, 2022, 2023 | ✅ **feita** — 186 unidades, 1.339 itens. Destravada pela trava **T3** (a página que o sumário declara mata o falso-positivo) |
+| 0g | 2017 (os dois relatórios) | ❌ **não extraível hoje** — determinação em prosa, sem numerar item: 3 unidades de 149 do sumário. Precisa de outra abordagem, não de ajuste |
+| 0h | 2017 (Sistemas Judiciais) | ❌ **PDF digitalizado**, 16 páginas de imagem — precisa de OCR |
 | P | página `/judiciario/inspecoes` | ✅ **no ar** — 123 seções, 98 unidades, as cinco coisas, link para a origem |
 | 1 | cobertura da Defensoria por comarca | ✅ **coletada** — 298 comarcas, 120 atendidas, 176 não; em 2013 eram 105 de 295. ⬜ falta a página |
 | 2 | inspeções em presídios (CNIEP) | ✅ **coletada** — 285 estabelecimentos e 2.253 inspeções em MG. ⬜ falta a página e o cruzamento "quais nunca foram inspecionados" |
