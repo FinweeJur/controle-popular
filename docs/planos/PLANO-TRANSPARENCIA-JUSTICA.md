@@ -8,14 +8,14 @@
 > ~29 endpoints batidos. Todo número abaixo tem origem medida e data. O que
 > não foi medido está dito com todas as letras.
 >
-> 🚨 **CINCO AFIRMAÇÕES NEGATIVAS DESTE PLANO JÁ CAÍRAM, e todas pelo mesmo
+> 🚨 **OITO AFIRMAÇÕES NEGATIVAS DESTE PLANO JÁ CAÍRAM, e todas pelo mesmo
 > motivo: foram medidas com `curl` contra página montada por JavaScript.**
 > Caíram: (1) "não há acervo de inspeção do CNJ" — há 343 relatórios; (2)
 > "tempo médio de tramitação não existe em dado aberto" — existe, é `tpbaixm`;
 > (3) "não há correição sobre o STF" — há, a Comissão de Ética publica desde
 > 2022; (4) "a Ouvidoria da DPMG esconde seus números" — ela foi criada em
 > março de 2025 e não tem histórico; (5) **"o CNJ parou de publicar o que
-> decidiu"** — publica, na Lista de sessões, até 19/08/2026.
+> decidiu"** — publica, na Lista de sessões, até 19/08/2026; (6) "o painel do CNJ é casca" — está vivo e foi atualizado em 22/08 às 5h20; (7) "SISTAC: 0 registros" — o dado sai nos Boletins de Audiência de Custódia, com **64,3% de pessoas negras entre os presos em flagrante**; (8) "MG-OUV é shell com captcha" — o sistema de registro é, mas a Ouvidoria-Geral publica **11 relatórios anuais**.
 >
 > ⚠️ **REGRA QUE SAI DISSO: afirmação negativa sobre fonte só entra neste plano
 > depois de verificada em NAVEGADOR.** `curl` vê a casca de SPA e conclui
@@ -359,7 +359,7 @@ obrigatória, o que derruba o custo/benefício sozinho.
 | `dados.gov.br` | **401 até para metadado de catálogo** |
 | `dados.mj.gov.br` | conexão morta (000) |
 | **Defensômetro** | hospedado em **IP nu** (`146.190.172.119`), sem HTTPS e sem domínio — **não é fonte citável em produto público** |
-| MG-OUV | shell ZK de 9.908 bytes, com captcha e senha |
+| ~~MG-OUV~~ | ⚠️ **MEDIÇÃO CERTA, ALVO ERRADO.** Os 9.908 bytes são do sistema de REGISTRO de manifestação (que de fato tem captcha e senha). A **publicação** é outra: a Ouvidoria-Geral do Estado tem **11 relatórios anuais (2015–2025)** e relatórios trimestrais de manifestações. ⚠️ É o Executivo estadual, **não** a Ouvidoria da Defensoria nem a do TJMG — não fecha a lacuna da DPMG, mas é fonte real com série de 11 anos |
 
 ---
 
