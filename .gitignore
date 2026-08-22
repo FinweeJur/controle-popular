@@ -112,3 +112,13 @@ apps/web/.tmp-salic/
 # de fiscalização deu 290 MB, acima do limite de 100 MB do GitHub e três ordens
 # de grandeza acima do teto de 3 MiB gzip por rota do Worker.
 etl/betim/dados/sisema-fiscalizacao-barragens.json
+
+# Índice semântico do mesmo code-graph-rag, quando o Qdrant roda em arquivo em
+# vez de container (é o que acontece com o Docker parado). São 90 MB de vetores
+# de 768 dimensões do PRÓPRIO código deste repo — derivados, refazíveis com
+# `cgr start --update-graph`, e sem valor fora desta máquina. Ficou de fora
+# desta lista até 22/08 e apareceu como `??` no `git status` por um dia: num
+# repositório público, com a regra de commit por pathspec explícito existindo
+# justamente porque `git commit` sem caminho já levou o que não devia duas
+# vezes, 90 MB de índice à espreita é um susto barato de evitar.
+.qdrant_code_embeddings/
