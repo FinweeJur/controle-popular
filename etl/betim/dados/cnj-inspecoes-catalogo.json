@@ -1,0 +1,2880 @@
+{
+ "fonte": "Corregedoria Nacional de Justiça (CNJ) — biblioteca de relatórios de inspeção e correição",
+ "url": "https://www.cnj.jus.br/corregedoria/",
+ "extraidoEm": "2026-08-22",
+ "faixaDeIdsVarrida": {
+  "de": 2630,
+  "ate": 2700
+ },
+ "avisoCobertura": "Não existe rota de listagem de categorias no CNJ (task=categories.getCategories responde HTTP 500). O universo foi descoberto varrendo ids no intervalo acima. Pode haver categoria de órgão fora dele — a contagem é piso, não total.",
+ "avisoLink": "Só o permalink sem token entra aqui. A URL com `token=` que o navegador mostra rotaciona e morre.",
+ "orgaos": [
+  {
+   "categoriaId": 2650,
+   "orgao": "tribunal-de-justica-do-estado-do-acre",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Acre",
+   "relatorios": [
+    {
+     "id": 81408,
+     "titulo": "Inspeção 2012",
+     "extensao": "pdf",
+     "tamanhoBytes": 682198,
+     "publicadoEm": "2019-09-27 05:47:17",
+     "url": "https://www.cnj.jus.br/download/2650/tribunal-de-justica-do-estado-do-acre/81408/inspecao-2012"
+    },
+    {
+     "id": 81409,
+     "titulo": "Relatório de Inspeção - ESJUD - TJAC - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1037656,
+     "publicadoEm": "2019-09-27 05:47:17",
+     "url": "https://www.cnj.jus.br/download/2650/tribunal-de-justica-do-estado-do-acre/81409/relatorio-de-inspecao-esjud-tjac-2018"
+    },
+    {
+     "id": 81411,
+     "titulo": "Relatório de Inspeção - NUPEMEC - CEJUSC - TJAC - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 985198,
+     "publicadoEm": "2019-09-27 05:47:17",
+     "url": "https://www.cnj.jus.br/download/2650/tribunal-de-justica-do-estado-do-acre/81411/relatorio-de-inspecao-nupemec-cejusc-tjac-2018"
+    },
+    {
+     "id": 81410,
+     "titulo": "Relatorio_Unidades_Judiciais_TJAC_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 913142,
+     "publicadoEm": "2019-09-27 17:47:17",
+     "url": "https://www.cnj.jus.br/download/2650/tribunal-de-justica-do-estado-do-acre/81410/relatorio_unidades_judiciais_tjac_2018"
+    },
+    {
+     "id": 81412,
+     "titulo": "RelatorioINS_ Administrativo_TJAC_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 3705301,
+     "publicadoEm": "2019-09-27 17:47:17",
+     "url": "https://www.cnj.jus.br/download/2650/tribunal-de-justica-do-estado-do-acre/81412/relatorioins_-administrativo_tjac_2018"
+    },
+    {
+     "id": 103499,
+     "titulo": "Relatório Final - Inspeção TJAC - 2020",
+     "extensao": "pdf",
+     "tamanhoBytes": 6847311,
+     "publicadoEm": "2020-04-29 16:05:47",
+     "url": "https://www.cnj.jus.br/download/2650/tribunal-de-justica-do-estado-do-acre/103499/relatorio-final-inspecao-tjac-2020"
+    },
+    {
+     "id": 159228,
+     "titulo": "Relatório de Inspeção TJAC - Extrajudicial - Maio_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 619494,
+     "publicadoEm": "2021-09-16 16:04:29",
+     "url": "https://www.cnj.jus.br/download/2650/tribunal-de-justica-do-estado-do-acre/159228/relatorio-de-inspecao-tjac-extrajudicial-maio_2021-2"
+    },
+    {
+     "id": 193703,
+     "titulo": "Relatório de Inspeção TJAC - Abril 2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 4359987,
+     "publicadoEm": "2022-08-19 15:20:31",
+     "url": "https://www.cnj.jus.br/download/2650/tribunal-de-justica-do-estado-do-acre/193703/relatorio-de-inspecao-tjac-abril-2022-2"
+    },
+    {
+     "id": 317529,
+     "titulo": "Relatório de Inspeção -  TJAC -  2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 8342720,
+     "publicadoEm": "2024-03-01 10:59:56",
+     "url": "https://www.cnj.jus.br/download/2650/tribunal-de-justica-do-estado-do-acre/317529/relatorio-de-inspecao-tjac-2023-2"
+    },
+    {
+     "id": 393288,
+     "titulo": "Relatório de Inspeção Ordinária - TJAC 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 6135361,
+     "publicadoEm": "2025-10-27 18:49:40",
+     "url": "https://www.cnj.jus.br/download/2650/tribunal-de-justica-do-estado-do-acre/393288/relatorio-de-inspecao-ordinaria-tjac-2025-2"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2651,
+   "orgao": "tribunal-de-justica-do-estado-de-alagoas",
+   "orgaoTitulo": "Tribunal de Justiça do Estado de Alagoas",
+   "relatorios": [
+    {
+     "id": 388347,
+     "titulo": "Relatório de Inspeção Ordinária-TJAL-Portaria n.º 20, de 15 de abril de 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 4092399,
+     "publicadoEm": "2025-09-26 07:52:45",
+     "url": "https://www.cnj.jus.br/download/2651/tribunal-de-justica-do-estado-de-alagoas/388347/relatorio-de-inspecao-ordinaria-tjal-portaria-n-o-20-de-15-de-abril-de-2025-2"
+    },
+    {
+     "id": 317302,
+     "titulo": "Relatório de Inspeção - TJAL - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 8440281,
+     "publicadoEm": "2024-02-29 15:55:27",
+     "url": "https://www.cnj.jus.br/download/2651/tribunal-de-justica-do-estado-de-alagoas/317302/relatorio-de-inspecao-tjal-2023-2"
+    },
+    {
+     "id": 199012,
+     "titulo": "Relatório de Inspeção TJAL - Maio_2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 3099166,
+     "publicadoEm": "2022-10-17 15:01:53",
+     "url": "https://www.cnj.jus.br/download/2651/tribunal-de-justica-do-estado-de-alagoas/199012/relatorio-de-inspecao-tjal-maio_2022"
+    },
+    {
+     "id": 81426,
+     "titulo": "Relatório de Inspeção - Unidades judiciais - TJAL - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 757210,
+     "publicadoEm": "2019-09-27 05:55:12",
+     "url": "https://www.cnj.jus.br/download/2651/tribunal-de-justica-do-estado-de-alagoas/81426/relatorio-de-inspecao-unidades-judiciais-tjal-2018"
+    },
+    {
+     "id": 81425,
+     "titulo": "Relatório de Inspeção - ESMAL - TJAL - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 51674,
+     "publicadoEm": "2019-09-27 05:55:12",
+     "url": "https://www.cnj.jus.br/download/2651/tribunal-de-justica-do-estado-de-alagoas/81425/relatorio-de-inspecao-esmal-tjal-2018"
+    },
+    {
+     "id": 81427,
+     "titulo": "Relatorio_Nupemec_Cejusc_TJAL_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 426113,
+     "publicadoEm": "2019-09-27 17:55:12",
+     "url": "https://www.cnj.jus.br/download/2651/tribunal-de-justica-do-estado-de-alagoas/81427/relatorio_nupemec_cejusc_tjal_2018"
+    },
+    {
+     "id": 81429,
+     "titulo": "Auto Circunstanciado de Inspeção - Unidades Administrativas - TJAL - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 2926053,
+     "publicadoEm": "2019-09-27 05:55:12",
+     "url": "https://www.cnj.jus.br/download/2651/tribunal-de-justica-do-estado-de-alagoas/81429/auto-circunstanciado-de-inspecao-unidades-administrativas-tjal-2018"
+    },
+    {
+     "id": 81430,
+     "titulo": "Revisão da Inspeção 2011",
+     "extensao": "pdf",
+     "tamanhoBytes": 1981060,
+     "publicadoEm": "2019-09-27 05:55:12",
+     "url": "https://www.cnj.jus.br/download/2651/tribunal-de-justica-do-estado-de-alagoas/81430/revisao-da-inspecao-2011"
+    },
+    {
+     "id": 159225,
+     "titulo": "Relatório de Inspeção TJAL - Extrajudicial - Julho_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 687422,
+     "publicadoEm": "2021-09-16 16:03:09",
+     "url": "https://www.cnj.jus.br/download/2651/tribunal-de-justica-do-estado-de-alagoas/159225/relatorio-de-inspecao-tjal-extrajudicial-julho_2021-2"
+    },
+    {
+     "id": 81428,
+     "titulo": "Inspeção 2009",
+     "extensao": "pdf",
+     "tamanhoBytes": 867461,
+     "publicadoEm": "2019-09-27 05:55:12",
+     "url": "https://www.cnj.jus.br/download/2651/tribunal-de-justica-do-estado-de-alagoas/81428/inspecao-2009"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2652,
+   "orgao": "tribunal-regional-federal-da-1a-regiao",
+   "orgaoTitulo": "Tribunal Regional Federal da 1ª Região",
+   "relatorios": [
+    {
+     "id": 81405,
+     "titulo": "relatoriofinaltrf1.esse",
+     "extensao": "pdf",
+     "tamanhoBytes": 1220099,
+     "publicadoEm": "2019-09-27 17:42:44",
+     "url": "https://www.cnj.jus.br/download/2652/tribunal-regional-federal-da-1a-regiao/81405/relatoriofinaltrf1-esse"
+    },
+    {
+     "id": 101227,
+     "titulo": "Relatório Final - Inspeção TRF1-2020",
+     "extensao": "pdf",
+     "tamanhoBytes": 4543402,
+     "publicadoEm": "2020-03-31 16:45:09",
+     "url": "https://www.cnj.jus.br/download/2652/tribunal-regional-federal-da-1a-regiao/101227/relatorio-final-inspecao-trf1-2020"
+    },
+    {
+     "id": 81406,
+     "titulo": "Inspeção 2009 (Justiça Federal de Belo Horizonte)",
+     "extensao": "pdf",
+     "tamanhoBytes": 1654778,
+     "publicadoEm": "2019-09-27 05:42:44",
+     "url": "https://www.cnj.jus.br/download/2652/tribunal-regional-federal-da-1a-regiao/81406/inspecao-2009-justica-federal-de-belo-horizonte"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2653,
+   "orgao": "tribunal-de-justica-do-estado-do-amapa",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Amapá",
+   "relatorios": [
+    {
+     "id": 317309,
+     "titulo": "Relatório de Inspeção - TJAP - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 4537144,
+     "publicadoEm": "2024-02-29 16:07:24",
+     "url": "https://www.cnj.jus.br/download/2653/tribunal-de-justica-do-estado-do-amapa/317309/relatorio-de-inspecao-tjap-2023-2"
+    },
+    {
+     "id": 374884,
+     "titulo": "Relatório de inspeção TJAP - 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 3216157,
+     "publicadoEm": "2025-06-09 17:10:04",
+     "url": "https://www.cnj.jus.br/download/2653/tribunal-de-justica-do-estado-do-amapa/374884/relatorio-de-inspecao-tjap-2025"
+    },
+    {
+     "id": 156739,
+     "titulo": "Relatorio de Inspecao TJAP - Fevereiro_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 11054561,
+     "publicadoEm": "2021-08-27 16:19:32",
+     "url": "https://www.cnj.jus.br/download/2653/tribunal-de-justica-do-estado-do-amapa/156739/relatorio-de-inspecao-tjap-fevereiro_2021"
+    },
+    {
+     "id": 81439,
+     "titulo": "Relatório de Inspeção TJAP - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 900312,
+     "publicadoEm": "2019-09-27 05:58:06",
+     "url": "https://www.cnj.jus.br/download/2653/tribunal-de-justica-do-estado-do-amapa/81439/relatorio-de-inspecao-tjap-2018"
+    },
+    {
+     "id": 81441,
+     "titulo": "Relatorio de Inspecao TJAP",
+     "extensao": "pdf",
+     "tamanhoBytes": 1924828,
+     "publicadoEm": "2019-09-27 17:58:07",
+     "url": "https://www.cnj.jus.br/download/2653/tribunal-de-justica-do-estado-do-amapa/81441/relatorio-de-inspecao-tjap"
+    },
+    {
+     "id": 81436,
+     "titulo": "Relatorio_Unidades_Adm_TJAP_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 207898,
+     "publicadoEm": "2019-09-27 17:58:06",
+     "url": "https://www.cnj.jus.br/download/2653/tribunal-de-justica-do-estado-do-amapa/81436/relatorio_unidades_adm_tjap_2017"
+    },
+    {
+     "id": 81442,
+     "titulo": "Inspeção 2011",
+     "extensao": "pdf",
+     "tamanhoBytes": 5990493,
+     "publicadoEm": "2019-09-27 05:58:07",
+     "url": "https://www.cnj.jus.br/download/2653/tribunal-de-justica-do-estado-do-amapa/81442/inspecao-2011"
+    },
+    {
+     "id": 81440,
+     "titulo": "Correição - Tribunal de Justiça do Estado do Amapá - Relatório Preliminar - 2014",
+     "extensao": "pdf",
+     "tamanhoBytes": 2692975,
+     "publicadoEm": "2019-09-27 05:58:06",
+     "url": "https://www.cnj.jus.br/download/2653/tribunal-de-justica-do-estado-do-amapa/81440/correicao-tribunal-de-justica-do-estado-do-amapa-relatorio-preliminar-2014"
+    },
+    {
+     "id": 81437,
+     "titulo": "Auto Circunstanciado de Inspeção - Unidades Judiciais - TJAP - 2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 3592991,
+     "publicadoEm": "2019-09-27 05:58:06",
+     "url": "https://www.cnj.jus.br/download/2653/tribunal-de-justica-do-estado-do-amapa/81437/auto-circunstanciado-de-inspecao-unidades-judiciais-tjap-2017"
+    },
+    {
+     "id": 81438,
+     "titulo": "Auto Circunstanciado de Inspeção - Unidades Administrativas - TJAP - 2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 843677,
+     "publicadoEm": "2019-09-27 05:58:06",
+     "url": "https://www.cnj.jus.br/download/2653/tribunal-de-justica-do-estado-do-amapa/81438/auto-circunstanciado-de-inspecao-unidades-administrativas-tjap-2017"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2654,
+   "orgao": "tribunal-regional-do-trabalho-da-11a-regiao",
+   "orgaoTitulo": "Tribunal Regional do Trabalho da 11ª Região",
+   "relatorios": [
+    {
+     "id": 81400,
+     "titulo": "Correição Precatórios 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 194504,
+     "publicadoEm": "2019-09-27 05:40:04",
+     "url": "https://www.cnj.jus.br/download/2654/tribunal-regional-do-trabalho-da-11a-regiao/81400/correicao-precatorios-2013"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2655,
+   "orgao": "tribunal-de-justica-do-estado-do-amazonas",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Amazonas",
+   "relatorios": [
+    {
+     "id": 407557,
+     "titulo": "Relatório de Inspeção Ordinária TJAM - Portaria n. 46",
+     "extensao": "pdf",
+     "tamanhoBytes": 7481219,
+     "publicadoEm": "2026-03-17 13:19:02",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/407557/relatorio-de-inspecao-ordinaria-tjam-portaria-n-46-2"
+    },
+    {
+     "id": 317310,
+     "titulo": "Relatório de Inspeção - TJAM - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 44881130,
+     "publicadoEm": "2024-02-29 16:10:12",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/317310/relatorio-de-inspecao-tjam-2023-2"
+    },
+    {
+     "id": 199013,
+     "titulo": "Relatório de Inspeção TJAM - Maio_2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 6873028,
+     "publicadoEm": "2022-10-17 15:02:28",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/199013/relatorio-de-inspecao-tjam-maio_2022"
+    },
+    {
+     "id": 159220,
+     "titulo": "Relatório de Inspeção TJAM - Extrajudicial - Junho_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 581773,
+     "publicadoEm": "2021-09-16 16:01:34",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/159220/relatorio-de-inspecao-tjam-extrajudicial-junho_2021-2"
+    },
+    {
+     "id": 97427,
+     "titulo": "TJAM - Relatório de Inspeção 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 5212545,
+     "publicadoEm": "2020-02-12 12:54:59",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/97427/tjam-relatorio-de-inspecao-2019"
+    },
+    {
+     "id": 97426,
+     "titulo": "TJAM - ENFAM - Relatório de Inspeção 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 576424,
+     "publicadoEm": "2020-02-12 12:54:58",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/97426/tjam-enfam-relatorio-de-inspecao-2019"
+    },
+    {
+     "id": 81467,
+     "titulo": "Relatorio_Unidades_Adm_TJAM_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 280997,
+     "publicadoEm": "2019-09-27 18:02:10",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/81467/relatorio_unidades_adm_tjam_2017"
+    },
+    {
+     "id": 81462,
+     "titulo": "Inspecao_Informatica_TJAM_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 1457552,
+     "publicadoEm": "2019-09-27 18:02:10",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/81462/inspecao_informatica_tjam_2017"
+    },
+    {
+     "id": 81461,
+     "titulo": "relatorio_correi_area_judicial_am_2013_2014",
+     "extensao": "pdf",
+     "tamanhoBytes": 2560581,
+     "publicadoEm": "2019-09-27 18:02:10",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/81461/relatorio_correi_area_judicial_am_2013_2014"
+    },
+    {
+     "id": 81466,
+     "titulo": "Correição Precatórios 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 1950491,
+     "publicadoEm": "2019-09-27 06:02:10",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/81466/correicao-precatorios-2013-2"
+    },
+    {
+     "id": 81465,
+     "titulo": "Relatório de Inspeção - Sistemas Judiciais e Processuais - TJAM - 2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 1224815,
+     "publicadoEm": "2019-09-27 06:02:10",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/81465/relatorio-de-inspecao-sistemas-judiciais-e-processuais-tjam-2017"
+    },
+    {
+     "id": 81464,
+     "titulo": "Correição - Unidades Administrativas - 2013/2014",
+     "extensao": "pdf",
+     "tamanhoBytes": 2612521,
+     "publicadoEm": "2019-09-27 06:02:10",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/81464/correicao-unidades-administrativas-2013-2014"
+    },
+    {
+     "id": 81463,
+     "titulo": "Inspeção 2009",
+     "extensao": "pdf",
+     "tamanhoBytes": 1302662,
+     "publicadoEm": "2019-09-27 06:02:10",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/81463/inspecao-2009-2"
+    },
+    {
+     "id": 81460,
+     "titulo": "Revisão de Inspeção 2011",
+     "extensao": "pdf",
+     "tamanhoBytes": 4268476,
+     "publicadoEm": "2019-09-27 06:02:10",
+     "url": "https://www.cnj.jus.br/download/2655/tribunal-de-justica-do-estado-do-amazonas/81460/revisao-de-inspecao-2011"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2656,
+   "orgao": "tribunal-de-justica-do-estado-da-bahia",
+   "orgaoTitulo": "Tribunal de Justiça do Estado da Bahia",
+   "relatorios": [
+    {
+     "id": 419323,
+     "titulo": "Relatório de Inspeção Ordinária TJBA 2026",
+     "extensao": "pdf",
+     "tamanhoBytes": 10831641,
+     "publicadoEm": "2026-07-09 15:07:53",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/419323/relatorio-de-inspecao-ordinaria-tjba-2026-2"
+    },
+    {
+     "id": 340211,
+     "titulo": "Relatorio de Inspecao - TJBA - 2024",
+     "extensao": "pdf",
+     "tamanhoBytes": 14068636,
+     "publicadoEm": "2024-08-20 08:49:52",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/340211/relatorio-de-inspecao-tjba-2024-2"
+    },
+    {
+     "id": 316956,
+     "titulo": "Relatório de Inspeção - TJBA - 2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 8781773,
+     "publicadoEm": "2024-02-28 18:17:52",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/316956/relatorio-de-inspecao-tjba-2022"
+    },
+    {
+     "id": 159219,
+     "titulo": "Relatório de Inspeção TJBA - Extrajudicial - Maio_2021_",
+     "extensao": "pdf",
+     "tamanhoBytes": 766060,
+     "publicadoEm": "2021-09-16 15:59:57",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/159219/relatorio-de-inspecao-tjba-extrajudicial-maio_2021_-2"
+    },
+    {
+     "id": 99466,
+     "titulo": "TJBA - Relatório de Inspeção 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 6730349,
+     "publicadoEm": "2020-03-11 09:57:58",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/99466/tjba-relatorio-de-inspecao-2019"
+    },
+    {
+     "id": 81503,
+     "titulo": "Relatorio_Inspecao_Unidades_Adm_TJBA_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 8073982,
+     "publicadoEm": "2019-09-27 18:13:09",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81503/relatorio_inspecao_unidades_adm_tjba_2018"
+    },
+    {
+     "id": 81502,
+     "titulo": "Relatorio_Unidades_Judiciais_TJBA_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 3604355,
+     "publicadoEm": "2019-09-27 18:13:09",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81502/relatorio_unidades_judiciais_tjba_2018"
+    },
+    {
+     "id": 81500,
+     "titulo": "relatorio_preliminar_correicao_ba",
+     "extensao": "pdf",
+     "tamanhoBytes": 4300944,
+     "publicadoEm": "2019-09-27 18:13:09",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81500/relatorio_preliminar_correicao_ba"
+    },
+    {
+     "id": 81499,
+     "titulo": "Relatorio_Sistema_Processuais_Judiciais_TJBA_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 2537196,
+     "publicadoEm": "2019-09-27 18:13:09",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81499/relatorio_sistema_processuais_judiciais_tjba_2018"
+    },
+    {
+     "id": 81498,
+     "titulo": "Relatorio_Inspecao_ENFAM_TJBA_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 3690497,
+     "publicadoEm": "2019-09-27 18:13:08",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81498/relatorio_inspecao_enfam_tjba_2018"
+    },
+    {
+     "id": 81497,
+     "titulo": "relatorio_insp_ba_area_administrativa",
+     "extensao": "pdf",
+     "tamanhoBytes": 2404147,
+     "publicadoEm": "2019-09-27 18:13:08",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81497/relatorio_insp_ba_area_administrativa"
+    },
+    {
+     "id": 81496,
+     "titulo": "Relatorio_Inspecao_NUPEMEC_CEJUSC_TJBA_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 2181471,
+     "publicadoEm": "2019-09-27 18:13:08",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81496/relatorio_inspecao_nupemec_cejusc_tjba_2018"
+    },
+    {
+     "id": 81494,
+     "titulo": "relatorio_insp_ba_2010",
+     "extensao": "pdf",
+     "tamanhoBytes": 2085003,
+     "publicadoEm": "2019-09-27 18:13:08",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81494/relatorio_insp_ba_2010"
+    },
+    {
+     "id": 81493,
+     "titulo": "relatorio_insp_ba_segunda_revisao",
+     "extensao": "pdf",
+     "tamanhoBytes": 1983971,
+     "publicadoEm": "2019-09-27 18:13:08",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81493/relatorio_insp_ba_segunda_revisao"
+    },
+    {
+     "id": 81487,
+     "titulo": "correicao_precatorios_ba_2014",
+     "extensao": "pdf",
+     "tamanhoBytes": 201760,
+     "publicadoEm": "2019-09-27 18:13:07",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81487/correicao_precatorios_ba_2014"
+    },
+    {
+     "id": 81492,
+     "titulo": "relatorio_correi_unidade_adm_ba_2013_2014",
+     "extensao": "pdf",
+     "tamanhoBytes": 4195415,
+     "publicadoEm": "2019-09-27 18:13:07",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81492/relatorio_correi_unidade_adm_ba_2013_2014"
+    },
+    {
+     "id": 81491,
+     "titulo": "relatorio_correi_unidades_judiciais_ba_2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 1406309,
+     "publicadoEm": "2019-09-27 18:13:07",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81491/relatorio_correi_unidades_judiciais_ba_2013"
+    },
+    {
+     "id": 81490,
+     "titulo": "relatorio_insp_ba_area_judicial",
+     "extensao": "pdf",
+     "tamanhoBytes": 1749942,
+     "publicadoEm": "2019-09-27 18:13:07",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81490/relatorio_insp_ba_area_judicial"
+    },
+    {
+     "id": 81489,
+     "titulo": "relatorio_corricao_tjba_2014",
+     "extensao": "pdf",
+     "tamanhoBytes": 3047217,
+     "publicadoEm": "2019-09-27 18:13:07",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81489/relatorio_corricao_tjba_2014"
+    },
+    {
+     "id": 81488,
+     "titulo": "relatorio_correi_precat_ba",
+     "extensao": "pdf",
+     "tamanhoBytes": 379421,
+     "publicadoEm": "2019-09-27 18:13:07",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81488/relatorio_correi_precat_ba"
+    },
+    {
+     "id": 81501,
+     "titulo": "Inspeção 2008",
+     "extensao": "pdf",
+     "tamanhoBytes": 6040693,
+     "publicadoEm": "2019-09-27 06:13:09",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81501/inspecao-2008"
+    },
+    {
+     "id": 81495,
+     "titulo": "Segundo Relatório de Revisão da Inspeção - Para fins de retorno - 2010",
+     "extensao": "pdf",
+     "tamanhoBytes": 1235154,
+     "publicadoEm": "2019-09-27 06:13:08",
+     "url": "https://www.cnj.jus.br/download/2656/tribunal-de-justica-do-estado-da-bahia/81495/segundo-relatorio-de-revisao-da-inspecao-para-fins-de-retorno-2010"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2657,
+   "orgao": "tribunal-de-justica-do-estado-do-ceara",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Ceará",
+   "relatorios": [
+    {
+     "id": 81505,
+     "titulo": "Relatorio_ENFAM_TJCE_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1395706,
+     "publicadoEm": "2019-09-27 18:15:45",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/81505/relatorio_enfam_tjce_2018"
+    },
+    {
+     "id": 178502,
+     "titulo": "relatorio-correicao-varasexecucaopenal-tjce-corregedorianacional-08032022 (1)",
+     "extensao": "pdf",
+     "tamanhoBytes": 21555755,
+     "publicadoEm": "2022-03-21 14:36:04",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/178502/relatorio-correicao-varasexecucaopenal-tjce-corregedorianacional-08032022-1"
+    },
+    {
+     "id": 316955,
+     "titulo": "Relatório de Inspeção - TJCE - 2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 7523171,
+     "publicadoEm": "2024-02-28 18:17:07",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/316955/relatorio-de-inspecao-tjce-2022"
+    },
+    {
+     "id": 340217,
+     "titulo": "Relatorio de Inspecao - TJCE - 2024",
+     "extensao": "pdf",
+     "tamanhoBytes": 42956976,
+     "publicadoEm": "2024-08-20 08:54:46",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/340217/relatorio-de-inspecao-tjce-2024"
+    },
+    {
+     "id": 408378,
+     "titulo": "Relatório de Inspeção Ordinária-TJCE - Portaria 53 de 07 de outubro de 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 8139982,
+     "publicadoEm": "2026-03-24 10:05:50",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/408378/relatorio-de-inspecao-ordinaria-tjce-portaria-53-de-07-de-outubro-de-2025-2"
+    },
+    {
+     "id": 81509,
+     "titulo": "Relatorio_Inspecao_NUPEC_CEJUSC_TJCE_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 2050996,
+     "publicadoEm": "2019-09-27 18:15:46",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/81509/relatorio_inspecao_nupec_cejusc_tjce_2018"
+    },
+    {
+     "id": 159218,
+     "titulo": "Relatório de Inspeção TJCE - Extrajudicial - Julho_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 678336,
+     "publicadoEm": "2021-09-16 15:58:17",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/159218/relatorio-de-inspecao-tjce-extrajudicial-julho_2021-2"
+    },
+    {
+     "id": 81507,
+     "titulo": "Relatorio_Inspecao_Unidades_Jud_TJCE_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 4352929,
+     "publicadoEm": "2019-09-27 18:15:46",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/81507/relatorio_inspecao_unidades_jud_tjce_2018"
+    },
+    {
+     "id": 81510,
+     "titulo": "Relatorio_Unidades_Judiciais_TJCE_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 4311324,
+     "publicadoEm": "2019-09-27 18:15:46",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/81510/relatorio_unidades_judiciais_tjce_2018"
+    },
+    {
+     "id": 107493,
+     "titulo": "Relatório Final - Inspeção TJCE - 2020",
+     "extensao": "pdf",
+     "tamanhoBytes": 7847650,
+     "publicadoEm": "2020-06-02 21:31:23",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/107493/relatorio-final-inspec%cc%a7a%cc%83o-tjce-2020"
+    },
+    {
+     "id": 81512,
+     "titulo": "rel-ceara",
+     "extensao": "pdf",
+     "tamanhoBytes": 4523839,
+     "publicadoEm": "2019-09-27 18:15:47",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/81512/rel-ceara"
+    },
+    {
+     "id": 81504,
+     "titulo": "relat-ce",
+     "extensao": "pdf",
+     "tamanhoBytes": 445886,
+     "publicadoEm": "2019-09-27 18:15:45",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/81504/relat-ce"
+    },
+    {
+     "id": 81508,
+     "titulo": "relatorio_correi_precat_ce_retificado_2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 4972531,
+     "publicadoEm": "2019-09-27 18:15:46",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/81508/relatorio_correi_precat_ce_retificado_2013"
+    },
+    {
+     "id": 81506,
+     "titulo": "relatorio_inspecao_ce_2009",
+     "extensao": "pdf",
+     "tamanhoBytes": 812580,
+     "publicadoEm": "2019-09-27 18:15:46",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/81506/relatorio_inspecao_ce_2009"
+    },
+    {
+     "id": 81511,
+     "titulo": "relatrio reviso ceara.final",
+     "extensao": "pdf",
+     "tamanhoBytes": 12319330,
+     "publicadoEm": "2019-09-27 18:15:47",
+     "url": "https://www.cnj.jus.br/download/2657/tribunal-de-justica-do-estado-do-ceara/81511/relatrio-reviso-ceara-final"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2658,
+   "orgao": "tribunal-de-justica-do-distrito-federal-e-dos-territorios",
+   "orgaoTitulo": "Tribunal de Justiça do Distrito Federal e dos Territórios",
+   "relatorios": [
+    {
+     "id": 159217,
+     "titulo": "Relatório de Inspeção TJDFT - Extrajudicial - Março_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 647867,
+     "publicadoEm": "2021-09-16 15:56:40",
+     "url": "https://www.cnj.jus.br/download/2658/tribunal-de-justica-do-distrito-federal-e-dos-territorios/159217/relatorio-de-inspecao-tjdft-extrajudicial-marco_2021-2"
+    },
+    {
+     "id": 163434,
+     "titulo": "Relatório de Inspeção TJDFT - Agosto_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 4470305,
+     "publicadoEm": "2021-10-25 18:56:27",
+     "url": "https://www.cnj.jus.br/download/2658/tribunal-de-justica-do-distrito-federal-e-dos-territorios/163434/relatorio-de-inspecao-tjdft-agosto_2021"
+    },
+    {
+     "id": 317301,
+     "titulo": "Relatório de Inspeção TJDFT - 2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 11651518,
+     "publicadoEm": "2024-02-29 15:52:28",
+     "url": "https://www.cnj.jus.br/download/2658/tribunal-de-justica-do-distrito-federal-e-dos-territorios/317301/relatorio-de-inspecao-tjdft-2022"
+    },
+    {
+     "id": 370579,
+     "titulo": "Relatório consolidado - Inspeção - TJDFT - 2024",
+     "extensao": "pdf",
+     "tamanhoBytes": 9862765,
+     "publicadoEm": "2025-05-09 16:15:56",
+     "url": "https://www.cnj.jus.br/download/2658/tribunal-de-justica-do-distrito-federal-e-dos-territorios/370579/relatorio-consolidado-inspecao-tjdft-2024-2"
+    },
+    {
+     "id": 81515,
+     "titulo": "relatorio tjdft",
+     "extensao": "pdf",
+     "tamanhoBytes": 1824833,
+     "publicadoEm": "2019-09-27 18:16:21",
+     "url": "https://www.cnj.jus.br/download/2658/tribunal-de-justica-do-distrito-federal-e-dos-territorios/81515/relatorio-tjdft"
+    },
+    {
+     "id": 81514,
+     "titulo": "relatorio_inspeo_sistema_judiciais_TJDFT_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 204853,
+     "publicadoEm": "2019-09-27 18:16:21",
+     "url": "https://www.cnj.jus.br/download/2658/tribunal-de-justica-do-distrito-federal-e-dos-territorios/81514/relatorio_inspeo_sistema_judiciais_tjdft_2017"
+    },
+    {
+     "id": 81516,
+     "titulo": "relatorio_da__inspecao_tjdft_revisao_3004_com_indice",
+     "extensao": "pdf",
+     "tamanhoBytes": 512655,
+     "publicadoEm": "2019-09-27 18:16:21",
+     "url": "https://www.cnj.jus.br/download/2658/tribunal-de-justica-do-distrito-federal-e-dos-territorios/81516/relatorio_da__inspecao_tjdft_revisao_3004_com_indice"
+    },
+    {
+     "id": 81513,
+     "titulo": "auto_circunstanciado_inspeca_TJDFT_unidade_dministrativas_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 400874,
+     "publicadoEm": "2019-09-27 18:16:21",
+     "url": "https://www.cnj.jus.br/download/2658/tribunal-de-justica-do-distrito-federal-e-dos-territorios/81513/auto_circunstanciado_inspeca_tjdft_unidade_dministrativas_2017"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2659,
+   "orgao": "tribunal-de-justica-do-estado-do-espirito-santo",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Espírito Santo",
+   "relatorios": [
+    {
+     "id": 159216,
+     "titulo": "Relatório de Inspeção TJES - Extrajudicial - Março_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 648965,
+     "publicadoEm": "2021-09-16 15:53:37",
+     "url": "https://www.cnj.jus.br/download/2659/tribunal-de-justica-do-estado-do-espirito-santo/159216/relatorio-de-inspecao-tjes-extrajudicial-marco_2021-2"
+    },
+    {
+     "id": 171653,
+     "titulo": "Relatório de inspeção TJES - Setembro_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 13252773,
+     "publicadoEm": "2022-01-17 14:25:48",
+     "url": "https://www.cnj.jus.br/download/2659/tribunal-de-justica-do-estado-do-espirito-santo/171653/relatorio-de-inspecao-tjes-setembro_2021"
+    },
+    {
+     "id": 333385,
+     "titulo": "Relatório de Inspeção - TJES - 2024",
+     "extensao": "pdf",
+     "tamanhoBytes": 10119075,
+     "publicadoEm": "2024-06-14 19:18:20",
+     "url": "https://www.cnj.jus.br/download/2659/tribunal-de-justica-do-estado-do-espirito-santo/333385/relatorio-de-inspecao-tjes-2024"
+    },
+    {
+     "id": 395730,
+     "titulo": "Relatorio Inspeção Ordinária -TJES 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 4732037,
+     "publicadoEm": "2025-11-17 16:32:22",
+     "url": "https://www.cnj.jus.br/download/2659/tribunal-de-justica-do-estado-do-espirito-santo/395730/relatorio-inspecao-ordinaria-tjes-2025"
+    },
+    {
+     "id": 81523,
+     "titulo": "sumario_do_es",
+     "extensao": "pdf",
+     "tamanhoBytes": 1408003,
+     "publicadoEm": "2019-09-27 18:17:16",
+     "url": "https://www.cnj.jus.br/download/2659/tribunal-de-justica-do-estado-do-espirito-santo/81523/sumario_do_es"
+    },
+    {
+     "id": 81517,
+     "titulo": "relatorio de inspecao NUPEMEC-CEJUSC TJES-2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 170492,
+     "publicadoEm": "2019-09-27 18:17:15",
+     "url": "https://www.cnj.jus.br/download/2659/tribunal-de-justica-do-estado-do-espirito-santo/81517/relatorio-de-inspecao-nupemec-cejusc-tjes-2019"
+    },
+    {
+     "id": 81522,
+     "titulo": "relatorio de inspecao-tjes-2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 4697322,
+     "publicadoEm": "2019-09-27 18:17:16",
+     "url": "https://www.cnj.jus.br/download/2659/tribunal-de-justica-do-estado-do-espirito-santo/81522/relatorio-de-inspecao-tjes-2019"
+    },
+    {
+     "id": 81519,
+     "titulo": "relat1627-100013407171160",
+     "extensao": "pdf",
+     "tamanhoBytes": 1804371,
+     "publicadoEm": "2019-09-27 18:17:15",
+     "url": "https://www.cnj.jus.br/download/2659/tribunal-de-justica-do-estado-do-espirito-santo/81519/relat1627-100013407171160"
+    },
+    {
+     "id": 81521,
+     "titulo": "Relatrio de Informatica TJES",
+     "extensao": "pdf",
+     "tamanhoBytes": 4233712,
+     "publicadoEm": "2019-09-27 18:17:15",
+     "url": "https://www.cnj.jus.br/download/2659/tribunal-de-justica-do-estado-do-espirito-santo/81521/relatrio-de-informatica-tjes"
+    },
+    {
+     "id": 81520,
+     "titulo": "Relatorio_Unidade_Jud_TJES_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 8654634,
+     "publicadoEm": "2019-09-27 18:17:15",
+     "url": "https://www.cnj.jus.br/download/2659/tribunal-de-justica-do-estado-do-espirito-santo/81520/relatorio_unidade_jud_tjes_2017"
+    },
+    {
+     "id": 81518,
+     "titulo": "Relatori_ Unidades_Administrativas_TJES_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 952533,
+     "publicadoEm": "2019-09-27 18:17:15",
+     "url": "https://www.cnj.jus.br/download/2659/tribunal-de-justica-do-estado-do-espirito-santo/81518/relatori_-unidades_administrativas_tjes_2017"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2660,
+   "orgao": "tribunal-de-justica-do-estado-do-goias",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Goiás",
+   "relatorios": [
+    {
+     "id": 388957,
+     "titulo": "Relatório de inspeção ordinária - TJGO-Portaria nº 35 de 13 de junho de 2025 05 a 08 de agosto de 20",
+     "extensao": "pdf",
+     "tamanhoBytes": 8175469,
+     "publicadoEm": "2025-09-29 08:46:56",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/388957/relatorio-de-inspecao-ordinaria-tjgo-portaria-no-35-de-13-de-junho-de-2025-05-a-08-de-agosto-de-20"
+    },
+    {
+     "id": 318808,
+     "titulo": "Relatório de Inspeção - TJGO - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 11694753,
+     "publicadoEm": "2024-03-11 15:27:14",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/318808/relatorio-de-inspecao-tjgo-2023-2"
+    },
+    {
+     "id": 308013,
+     "titulo": "relatorio-de-correicao-extraordinaria-goias-v8-2023-08-18",
+     "extensao": "pdf",
+     "tamanhoBytes": 6826736,
+     "publicadoEm": "2024-02-20 10:42:21",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/308013/relatorio-de-correicao-extraordinaria-goias-v8-2023-08-18-2"
+    },
+    {
+     "id": 308012,
+     "titulo": "relatorio-de-inspecoes-goias-v4-29-08-2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 6898791,
+     "publicadoEm": "2024-02-20 10:42:21",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/308012/relatorio-de-inspecoes-goias-v4-29-08-2023-2"
+    },
+    {
+     "id": 199016,
+     "titulo": "Relatório de Inspeção TJGO - Junho_2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 3675117,
+     "publicadoEm": "2022-10-17 15:10:20",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/199016/relatorio-de-inspecao-tjgo-junho_2022"
+    },
+    {
+     "id": 159215,
+     "titulo": "Relatório de Inspeção TJGO - Extrajudicial - Abril_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 614281,
+     "publicadoEm": "2021-09-16 15:51:46",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/159215/relatorio-de-inspecao-tjgo-extrajudicial-abril_2021-2"
+    },
+    {
+     "id": 97429,
+     "titulo": "TJGO - Relatório de Inspeção 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 7155373,
+     "publicadoEm": "2020-02-12 13:04:04",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/97429/tjgo-relatorio-de-inspecao-2019"
+    },
+    {
+     "id": 81531,
+     "titulo": "Relatorios_Unidades_Judiciais_TJGO_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 9629161,
+     "publicadoEm": "2019-09-27 18:17:59",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/81531/relatorios_unidades_judiciais_tjgo_2018"
+    },
+    {
+     "id": 81530,
+     "titulo": "Relatorio_NUPEMEC_CEJUSC_TJGO_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 324051,
+     "publicadoEm": "2019-09-27 18:17:59",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/81530/relatorio_nupemec_cejusc_tjgo_2018"
+    },
+    {
+     "id": 81529,
+     "titulo": "Relatorio_Inspecao_Unidades_Adm_TJGO_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 212478,
+     "publicadoEm": "2019-09-27 18:17:59",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/81529/relatorio_inspecao_unidades_adm_tjgo_2018"
+    },
+    {
+     "id": 81528,
+     "titulo": "relatorio_insp_go",
+     "extensao": "pdf",
+     "tamanhoBytes": 14621164,
+     "publicadoEm": "2019-09-27 18:17:59",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/81528/relatorio_insp_go"
+    },
+    {
+     "id": 81527,
+     "titulo": "relatorio_insp_go",
+     "extensao": "pdf",
+     "tamanhoBytes": 14621164,
+     "publicadoEm": "2019-09-27 18:17:59",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/81527/relatorio_insp_go"
+    },
+    {
+     "id": 81526,
+     "titulo": "Inspecao_Informtica_TJGO_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 736604,
+     "publicadoEm": "2019-09-27 18:17:58",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/81526/inspecao_informtica_tjgo_2018"
+    },
+    {
+     "id": 81525,
+     "titulo": "Inspecao_ENFAM_TJGO_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 52721,
+     "publicadoEm": "2019-09-27 18:17:58",
+     "url": "https://www.cnj.jus.br/download/2660/tribunal-de-justica-do-estado-do-goias/81525/inspecao_enfam_tjgo_2018"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2661,
+   "orgao": "tribunal-de-justica-do-estado-do-maranhao",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Maranhão",
+   "relatorios": [
+    {
+     "id": 317311,
+     "titulo": "Relatório de Inspeção - TJMA - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 5950429,
+     "publicadoEm": "2024-02-29 16:13:27",
+     "url": "https://www.cnj.jus.br/download/2661/tribunal-de-justica-do-estado-do-maranhao/317311/relatorio-de-inspecao-tjma-2023-2"
+    },
+    {
+     "id": 374883,
+     "titulo": "Relatório Inspeção Ordinária TJMA - 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 6169521,
+     "publicadoEm": "2025-06-09 17:04:09",
+     "url": "https://www.cnj.jus.br/download/2661/tribunal-de-justica-do-estado-do-maranhao/374883/relatorio-inspecao-ordinaria-tjma-2025-2"
+    },
+    {
+     "id": 181821,
+     "titulo": "Relatório de Inspeção TJMA - Novembro_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 6207665,
+     "publicadoEm": "2022-04-19 14:58:47",
+     "url": "https://www.cnj.jus.br/download/2661/tribunal-de-justica-do-estado-do-maranhao/181821/relatorio-de-inspecao-tjma-novembro_2021-3"
+    },
+    {
+     "id": 159214,
+     "titulo": "Relatório de Inspeção TJMA - Extrajudicial - Abril_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 773072,
+     "publicadoEm": "2021-09-16 15:49:55",
+     "url": "https://www.cnj.jus.br/download/2661/tribunal-de-justica-do-estado-do-maranhao/159214/relatorio-de-inspecao-tjma-extrajudicial-abril_2021-2"
+    },
+    {
+     "id": 81536,
+     "titulo": "relatorio_insp_n02_maranhao",
+     "extensao": "pdf",
+     "tamanhoBytes": 8679511,
+     "publicadoEm": "2019-09-27 18:23:35",
+     "url": "https://www.cnj.jus.br/download/2661/tribunal-de-justica-do-estado-do-maranhao/81536/relatorio_insp_n02_maranhao"
+    },
+    {
+     "id": 81534,
+     "titulo": "correio_tjma_MARO_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 207930,
+     "publicadoEm": "2019-09-27 18:23:35",
+     "url": "https://www.cnj.jus.br/download/2661/tribunal-de-justica-do-estado-do-maranhao/81534/correio_tjma_maro_2017"
+    },
+    {
+     "id": 81533,
+     "titulo": "auto_circunstanciado_ inspeo_tjma_unidades_administrativas",
+     "extensao": "pdf",
+     "tamanhoBytes": 401266,
+     "publicadoEm": "2019-09-27 18:23:35",
+     "url": "https://www.cnj.jus.br/download/2661/tribunal-de-justica-do-estado-do-maranhao/81533/auto_circunstanciado_-inspeo_tjma_unidades_administrativas"
+    },
+    {
+     "id": 81537,
+     "titulo": "auto_circunstanciado_inspeo_tjma",
+     "extensao": "pdf",
+     "tamanhoBytes": 4286934,
+     "publicadoEm": "2019-09-27 18:23:35",
+     "url": "https://www.cnj.jus.br/download/2661/tribunal-de-justica-do-estado-do-maranhao/81537/auto_circunstanciado_inspeo_tjma"
+    },
+    {
+     "id": 81535,
+     "titulo": "TJMA - Relatorio Auto Circunstanciado de Inspecao no Tribunal de Maranhao - 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 4278263,
+     "publicadoEm": "2019-09-27 18:23:35",
+     "url": "https://www.cnj.jus.br/download/2661/tribunal-de-justica-do-estado-do-maranhao/81535/tjma-relatorio-auto-circunstanciado-de-inspecao-no-tribunal-de-maranhao-2019"
+    },
+    {
+     "id": 81538,
+     "titulo": "01rel-tj-ma",
+     "extensao": "pdf",
+     "tamanhoBytes": 8569851,
+     "publicadoEm": "2019-09-27 18:23:35",
+     "url": "https://www.cnj.jus.br/download/2661/tribunal-de-justica-do-estado-do-maranhao/81538/01rel-tj-ma"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2662,
+   "orgao": "tribunal-de-justica-do-estado-do-mato-grosso",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Mato Grosso",
+   "relatorios": [
+    {
+     "id": 388952,
+     "titulo": "Relatório de Inspeção Ordinária - TJMT - Portaria n.º 28, de 16 de maio de 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 7726842,
+     "publicadoEm": "2025-09-29 08:44:10",
+     "url": "https://www.cnj.jus.br/download/2662/tribunal-de-justica-do-estado-do-mato-grosso/388952/relatorio-de-inspecao-ordinaria-tjmt-portaria-n-o-28-de-16-de-maio-de-2025-2"
+    },
+    {
+     "id": 330007,
+     "titulo": "Relatório de Inspeção - TJMT - 2024",
+     "extensao": "pdf",
+     "tamanhoBytes": 13513056,
+     "publicadoEm": "2024-05-20 19:06:58",
+     "url": "https://www.cnj.jus.br/download/2662/tribunal-de-justica-do-estado-do-mato-grosso/330007/relatorio-de-inspecao-tjmt-2024-2"
+    },
+    {
+     "id": 305271,
+     "titulo": "Relatorio de Inspecao TJMT - 2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 22369010,
+     "publicadoEm": "2024-01-25 15:35:49",
+     "url": "https://www.cnj.jus.br/download/2662/tribunal-de-justica-do-estado-do-mato-grosso/305271/relatorio-de-inspecao-tjmt-2022-2"
+    },
+    {
+     "id": 159211,
+     "titulo": "Relatório de Inspeção TJMT - Extrajudicial - Maio_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 647181,
+     "publicadoEm": "2021-09-16 15:45:16",
+     "url": "https://www.cnj.jus.br/download/2662/tribunal-de-justica-do-estado-do-mato-grosso/159211/relatorio-de-inspecao-tjmt-extrajudicial-maio_2021-2"
+    },
+    {
+     "id": 97431,
+     "titulo": "TJMT - Relatório de Inspeção 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 10587641,
+     "publicadoEm": "2020-02-12 13:16:07",
+     "url": "https://www.cnj.jus.br/download/2662/tribunal-de-justica-do-estado-do-mato-grosso/97431/tjmt-relatorio-de-inspecao-2019"
+    },
+    {
+     "id": 81548,
+     "titulo": "Relatorio_NUPEMEC_CEJUSC_TJMT_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1110674,
+     "publicadoEm": "2019-09-27 18:29:42",
+     "url": "https://www.cnj.jus.br/download/2662/tribunal-de-justica-do-estado-do-mato-grosso/81548/relatorio_nupemec_cejusc_tjmt_2018"
+    },
+    {
+     "id": 81547,
+     "titulo": "Relatorio_Sistemas_Judiciais_Processuais_TJMT_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 2399430,
+     "publicadoEm": "2019-09-27 18:29:42",
+     "url": "https://www.cnj.jus.br/download/2662/tribunal-de-justica-do-estado-do-mato-grosso/81547/relatorio_sistemas_judiciais_processuais_tjmt_2018"
+    },
+    {
+     "id": 81546,
+     "titulo": "Relatorio_Inspecao_ENFAM_TJMT_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 3248452,
+     "publicadoEm": "2019-09-27 18:29:42",
+     "url": "https://www.cnj.jus.br/download/2662/tribunal-de-justica-do-estado-do-mato-grosso/81546/relatorio_inspecao_enfam_tjmt_2018"
+    },
+    {
+     "id": 81545,
+     "titulo": "Relatorio_Inspecao_Unidades_Adm_TJMT_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 5059471,
+     "publicadoEm": "2019-09-27 18:29:42",
+     "url": "https://www.cnj.jus.br/download/2662/tribunal-de-justica-do-estado-do-mato-grosso/81545/relatorio_inspecao_unidades_adm_tjmt_2018"
+    },
+    {
+     "id": 81549,
+     "titulo": "Revisão de Inspeção 2010",
+     "extensao": "pdf",
+     "tamanhoBytes": 14352946,
+     "publicadoEm": "2019-09-27 06:29:43",
+     "url": "https://www.cnj.jus.br/download/2662/tribunal-de-justica-do-estado-do-mato-grosso/81549/revisao-de-inspecao-2010"
+    },
+    {
+     "id": 81544,
+     "titulo": "Relatório de Inspeção - Unidades Judiciais - TJMT - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1121150,
+     "publicadoEm": "2019-09-27 06:29:42",
+     "url": "https://www.cnj.jus.br/download/2662/tribunal-de-justica-do-estado-do-mato-grosso/81544/relatorio-de-inspecao-unidades-judiciais-tjmt-2018"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2663,
+   "orgao": "tribunal-de-justica-do-estado-do-mato-grosso-do-sul",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Mato Grosso do Sul",
+   "relatorios": [
+    {
+     "id": 408379,
+     "titulo": "Relatório de Inspeção Ordinária-TJMS - Portaria 50 de 15 de setembro de 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 4389114,
+     "publicadoEm": "2026-03-24 10:06:10",
+     "url": "https://www.cnj.jus.br/download/2663/tribunal-de-justica-do-estado-do-mato-grosso-do-sul/408379/relatorio-de-inspecao-ordinaria-tjms-portaria-50-de-15-de-setembro-de-2025-2"
+    },
+    {
+     "id": 317312,
+     "titulo": "Relatório de Inspeção - TJMS - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 17832677,
+     "publicadoEm": "2024-02-29 16:15:35",
+     "url": "https://www.cnj.jus.br/download/2663/tribunal-de-justica-do-estado-do-mato-grosso-do-sul/317312/relatorio-de-inspecao-tjms-2023-2"
+    },
+    {
+     "id": 176577,
+     "titulo": "Relatório de Inspeção TJMS - Outubro_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 7934560,
+     "publicadoEm": "2022-03-03 13:55:59",
+     "url": "https://www.cnj.jus.br/download/2663/tribunal-de-justica-do-estado-do-mato-grosso-do-sul/176577/relatorio-de-inspecao-tjms-outubro_2021-2"
+    },
+    {
+     "id": 159212,
+     "titulo": "Relatório de Inspeção TJMS - Extrajudicial - Abril_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 759924,
+     "publicadoEm": "2021-09-16 15:46:50",
+     "url": "https://www.cnj.jus.br/download/2663/tribunal-de-justica-do-estado-do-mato-grosso-do-sul/159212/relatorio-de-inspecao-tjms-extrajudicial-abril_2021-2"
+    },
+    {
+     "id": 97430,
+     "titulo": "TJMS - Relatório de Inspeção 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 8489323,
+     "publicadoEm": "2020-02-12 13:11:05",
+     "url": "https://www.cnj.jus.br/download/2663/tribunal-de-justica-do-estado-do-mato-grosso-do-sul/97430/tjms-relatorio-de-inspecao-2019"
+    },
+    {
+     "id": 82545,
+     "titulo": "Auto Circunstanciado de Inspeção - Unidades Administrativas - TJMS - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 3040892,
+     "publicadoEm": "2019-09-30 12:09:16",
+     "url": "https://www.cnj.jus.br/download/2663/tribunal-de-justica-do-estado-do-mato-grosso-do-sul/82545/auto-circunstanciado-de-inspecao-unidades-administrativas-tjms-2018"
+    },
+    {
+     "id": 82544,
+     "titulo": "relatrio_ms.final.assinado",
+     "extensao": "pdf",
+     "tamanhoBytes": 1385372,
+     "publicadoEm": "2019-09-30 12:09:16",
+     "url": "https://www.cnj.jus.br/download/2663/tribunal-de-justica-do-estado-do-mato-grosso-do-sul/82544/relatrio_ms-final-assinado"
+    },
+    {
+     "id": 82543,
+     "titulo": "Inspecao_Informatica_TJMS_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1744230,
+     "publicadoEm": "2019-09-30 12:09:15",
+     "url": "https://www.cnj.jus.br/download/2663/tribunal-de-justica-do-estado-do-mato-grosso-do-sul/82543/inspecao_informatica_tjms_2018"
+    },
+    {
+     "id": 82542,
+     "titulo": "Relatório de Inspeção - NUPEMEC - CEJUSC - TJMS - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 310731,
+     "publicadoEm": "2019-09-30 12:09:15",
+     "url": "https://www.cnj.jus.br/download/2663/tribunal-de-justica-do-estado-do-mato-grosso-do-sul/82542/relatorio-de-inspecao-nupemec-cejusc-tjms-2018"
+    },
+    {
+     "id": 82541,
+     "titulo": "Relatório de Inspeção - EJUD - TJMS - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 118076,
+     "publicadoEm": "2019-09-30 12:09:15",
+     "url": "https://www.cnj.jus.br/download/2663/tribunal-de-justica-do-estado-do-mato-grosso-do-sul/82541/relatorio-de-inspecao-ejud-tjms-2018"
+    },
+    {
+     "id": 82535,
+     "titulo": "Inspeção 2010",
+     "extensao": "pdf",
+     "tamanhoBytes": 1385372,
+     "publicadoEm": "2019-09-30 12:03:41",
+     "url": "https://www.cnj.jus.br/download/2663/tribunal-de-justica-do-estado-do-mato-grosso-do-sul/82535/inspecao-2010"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2664,
+   "orgao": "tribunal-de-justica-do-estado-de-minas-gerais",
+   "orgaoTitulo": "Tribunal de Justiça do Estado de Minas Gerais",
+   "relatorios": [
+    {
+     "id": 419313,
+     "titulo": "Relatório de Inspeção Ordinária TJMG 2026",
+     "extensao": "pdf",
+     "tamanhoBytes": 14970417,
+     "publicadoEm": "2026-07-09 15:00:07",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/419313/relatorio-de-inspecao-ordinaria-tjmg-2026-2"
+    },
+    {
+     "id": 307481,
+     "titulo": "Relatório de Inspeção - TJMG 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 12838787,
+     "publicadoEm": "2024-02-14 15:22:50",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023-3"
+    },
+    {
+     "id": 199020,
+     "titulo": "Relatório de Inspeção TJMG - Julho_2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 5865679,
+     "publicadoEm": "2022-10-17 15:11:58",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+    },
+    {
+     "id": 159213,
+     "titulo": "Relatório de Inspeção TJMG - Extrajudicial - Junho_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 671671,
+     "publicadoEm": "2021-09-16 15:48:21",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/159213/relatorio-de-inspecao-tjmg-extrajudicial-junho_2021-2"
+    },
+    {
+     "id": 82554,
+     "titulo": "Auto Circunstanciado de Inspeção - TJMG - 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 4429304,
+     "publicadoEm": "2019-09-30 12:14:31",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82554/auto-circunstanciado-de-inspecao-tjmg-2019"
+    },
+    {
+     "id": 82550,
+     "titulo": "3.TJMG-Relatorio de Inspecao-NUPEMEC-CEJUSC-2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 241463,
+     "publicadoEm": "2019-09-30 12:14:30",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82550/3-tjmg-relatorio-de-inspecao-nupemec-cejusc-2019"
+    },
+    {
+     "id": 82551,
+     "titulo": "3.TJMG-Relatorio de Inspecao-EJEF-2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 602995,
+     "publicadoEm": "2019-09-30 12:14:31",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82551/3-tjmg-relatorio-de-inspecao-ejef-2019"
+    },
+    {
+     "id": 82549,
+     "titulo": "Relatório de Inspeção - EJEF - TJMG - 2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 1401671,
+     "publicadoEm": "2019-09-30 12:14:30",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82549/relatorio-de-inspecao-ejef-tjmg-2017"
+    },
+    {
+     "id": 82557,
+     "titulo": "Relatorio_Unidades_Judiciais_TJMG_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 3892728,
+     "publicadoEm": "2019-09-30 12:14:33",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82557/relatorio_unidades_judiciais_tjmg_2017"
+    },
+    {
+     "id": 82555,
+     "titulo": "Relatorio_Unidades_Adm_TJMG_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 358761,
+     "publicadoEm": "2019-09-30 12:14:32",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82555/relatorio_unidades_adm_tjmg_2017"
+    },
+    {
+     "id": 82558,
+     "titulo": "Relatorio_NUPEMEC_TJMG_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 15133361,
+     "publicadoEm": "2019-09-30 12:14:33",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82558/relatorio_nupemec_tjmg_2017"
+    },
+    {
+     "id": 82556,
+     "titulo": "Relatorio_Inspecao_Sistema_Judiciais_Processuais_TJMG_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 3894098,
+     "publicadoEm": "2019-09-30 12:14:32",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82556/relatorio_inspecao_sistema_judiciais_processuais_tjmg_2017"
+    },
+    {
+     "id": 82553,
+     "titulo": "Inspeção 2012",
+     "extensao": "pdf",
+     "tamanhoBytes": 1309805,
+     "publicadoEm": "2019-09-30 12:14:31",
+     "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82553/inspecao-2012-2"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2665,
+   "orgao": "tribunal-de-justica-do-estado-do-para",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Pará",
+   "relatorios": [
+    {
+     "id": 159210,
+     "titulo": "Relatório de Inspeção TJPA - Extrajudicial - Abril_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 772388,
+     "publicadoEm": "2021-09-16 15:43:28",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/159210/relatorio-de-inspecao-tjpa-extrajudicial-abril_2021-2"
+    },
+    {
+     "id": 198858,
+     "titulo": "Relatório de Inspeção TJPA - Abril_2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 8153534,
+     "publicadoEm": "2022-10-14 14:00:09",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/198858/relatorio-de-inspecao-tjpa-abril_2022-2"
+    },
+    {
+     "id": 317313,
+     "titulo": "Relatório de Inspeção - TJPA - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 11654708,
+     "publicadoEm": "2024-02-29 16:16:56",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/317313/relatorio-de-inspecao-tjpa-2023-2"
+    },
+    {
+     "id": 374886,
+     "titulo": "Relatorio Inspecao ordinária TJPA - 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 5921216,
+     "publicadoEm": "2025-06-09 17:11:07",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/374886/relatorio-inspecao-ordinaria-tjpa-2025"
+    },
+    {
+     "id": 82572,
+     "titulo": "relatrio_inspeo_sistemas_judiciais_processuais_tjpa_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 174459,
+     "publicadoEm": "2019-09-30 12:24:34",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/82572/relatrio_inspeo_sistemas_judiciais_processuais_tjpa_2017"
+    },
+    {
+     "id": 82577,
+     "titulo": "correio_xinguara_pa_2014",
+     "extensao": "pdf",
+     "tamanhoBytes": 2372643,
+     "publicadoEm": "2019-09-30 12:24:35",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/82577/correio_xinguara_pa_2014"
+    },
+    {
+     "id": 82576,
+     "titulo": "correicao_unidades_administrativas_pa_2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 1761784,
+     "publicadoEm": "2019-09-30 12:24:34",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/82576/correicao_unidades_administrativas_pa_2013"
+    },
+    {
+     "id": 82574,
+     "titulo": "correicao_pa_unidades_judiciais_ 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 1947791,
+     "publicadoEm": "2019-09-30 12:24:34",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/82574/correicao_pa_unidades_judiciais_-2013"
+    },
+    {
+     "id": 82575,
+     "titulo": "auto_circunstanciado_inspeo_tjpa_unidades_judiciais_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 3759749,
+     "publicadoEm": "2019-09-30 12:24:34",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/82575/auto_circunstanciado_inspeo_tjpa_unidades_judiciais_2017"
+    },
+    {
+     "id": 82573,
+     "titulo": "auto_circunstanciado_inspeo_tjpa_unidades_administrativas_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 511164,
+     "publicadoEm": "2019-09-30 12:24:34",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/82573/auto_circunstanciado_inspeo_tjpa_unidades_administrativas_2017"
+    },
+    {
+     "id": 82568,
+     "titulo": "Inspeção nas Varas de Execuções Penais - 2011",
+     "extensao": "pdf",
+     "tamanhoBytes": 1073350,
+     "publicadoEm": "2019-09-30 12:23:11",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/82568/inspecao-nas-varas-de-execucoes-penais-2011"
+    },
+    {
+     "id": 82567,
+     "titulo": "Inspeção dos Serviços Notariais e Registrais do Pará 2009",
+     "extensao": "pdf",
+     "tamanhoBytes": 1073350,
+     "publicadoEm": "2019-09-30 12:22:47",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/82567/inspecao-dos-servicos-notariais-e-registrais-do-para-2009"
+    },
+    {
+     "id": 82566,
+     "titulo": "Inspeção 2011",
+     "extensao": "pdf",
+     "tamanhoBytes": 1073350,
+     "publicadoEm": "2019-09-30 12:21:34",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/82566/inspecao-2011-2"
+    },
+    {
+     "id": 82570,
+     "titulo": "2.TJPA-Relatorio de Inspecao-Parecer_1642280-ENFAM-2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 2312025,
+     "publicadoEm": "2019-09-30 12:24:33",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/82570/2-tjpa-relatorio-de-inspecao-parecer_1642280-enfam-2019"
+    },
+    {
+     "id": 82569,
+     "titulo": "2.TJPA-Relatorio de Inspecao-NUPEMEC  CEJUSC-2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 835283,
+     "publicadoEm": "2019-09-30 12:24:32",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/82569/2-tjpa-relatorio-de-inspecao-nupemec-cejusc-2019"
+    },
+    {
+     "id": 82571,
+     "titulo": "2.TJPA-Relatorio de Inspecao-2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 7388825,
+     "publicadoEm": "2019-09-30 12:24:34",
+     "url": "https://www.cnj.jus.br/download/2665/tribunal-de-justica-do-estado-do-para/82571/2-tjpa-relatorio-de-inspecao-2019"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2666,
+   "orgao": "tribunal-de-justica-do-estado-da-paraiba",
+   "orgaoTitulo": "Tribunal de Justiça do Estado da Paraíba",
+   "relatorios": [
+    {
+     "id": 159201,
+     "titulo": "Relatório de Inspeção TJPB - Extrajudicial - Maio_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 712634,
+     "publicadoEm": "2021-09-16 15:16:12",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/159201/relatorio-de-inspecao-tjpb-extrajudicial-maio_2021-2"
+    },
+    {
+     "id": 199015,
+     "titulo": "Relatório de Inspeção TJPB - Junho_2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 6358488,
+     "publicadoEm": "2022-10-17 15:09:22",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/199015/relatorio-de-inspecao-tjpb-junho_2022"
+    },
+    {
+     "id": 334324,
+     "titulo": "Relatório de Inspeção - TJPB - 2024",
+     "extensao": "pdf",
+     "tamanhoBytes": 14901239,
+     "publicadoEm": "2024-06-24 19:19:43",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/334324/relatorio-de-inspecao-tjpb-2024"
+    },
+    {
+     "id": 393289,
+     "titulo": "Relatório de Inspeção Ordinária - TJPB 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 3494666,
+     "publicadoEm": "2025-10-27 18:50:33",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/393289/relatorio-de-inspecao-ordinaria-tjpb-2025-2"
+    },
+    {
+     "id": 82585,
+     "titulo": "sumarioparaiba",
+     "extensao": "pdf",
+     "tamanhoBytes": 1324555,
+     "publicadoEm": "2019-09-30 12:30:24",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/82585/sumarioparaiba"
+    },
+    {
+     "id": 82584,
+     "titulo": "relatorio_revisao_insp_pb_2012_rel_prelim",
+     "extensao": "pdf",
+     "tamanhoBytes": 473556,
+     "publicadoEm": "2019-09-30 12:30:24",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/82584/relatorio_revisao_insp_pb_2012_rel_prelim"
+    },
+    {
+     "id": 82582,
+     "titulo": "relatorio_insp_precatorios_pb_2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 2198435,
+     "publicadoEm": "2019-09-30 12:30:24",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/82582/relatorio_insp_precatorios_pb_2013"
+    },
+    {
+     "id": 111748,
+     "titulo": "TJPB - Relatório Final de Inspeção 2020",
+     "extensao": "pdf",
+     "tamanhoBytes": 7746285,
+     "publicadoEm": "2020-07-14 14:34:39",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/111748/tjpb-relatorio-final-de-inspecao-2020"
+    },
+    {
+     "id": 82586,
+     "titulo": "Relatorio_Unidades_Judiciais_TJPB_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 2589973,
+     "publicadoEm": "2019-09-30 12:30:25",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/82586/relatorio_unidades_judiciais_tjpb_2018"
+    },
+    {
+     "id": 82583,
+     "titulo": "Relatorio_Unidades_Adm_TJPB_2018 (1)",
+     "extensao": "pdf",
+     "tamanhoBytes": 217062,
+     "publicadoEm": "2019-09-30 12:30:24",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/82583/relatorio_unidades_adm_tjpb_2018-1"
+    },
+    {
+     "id": 82581,
+     "titulo": "Relatorio_Unidades_Adm_TJPB_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 217062,
+     "publicadoEm": "2019-09-30 12:30:23",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/82581/relatorio_unidades_adm_tjpb_2018"
+    },
+    {
+     "id": 82579,
+     "titulo": "Relatorio_Inspecao_ENFAM_TJPB_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 99194,
+     "publicadoEm": "2019-09-30 12:30:23",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/82579/relatorio_inspecao_enfam_tjpb_2018"
+    },
+    {
+     "id": 82580,
+     "titulo": "Inspeção 2009",
+     "extensao": "pdf",
+     "tamanhoBytes": 471964,
+     "publicadoEm": "2019-09-30 12:30:23",
+     "url": "https://www.cnj.jus.br/download/2666/tribunal-de-justica-do-estado-da-paraiba/82580/inspecao-2009-3"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2667,
+   "orgao": "tribunal-de-justica-do-estado-do-parana",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Paraná",
+   "relatorios": [
+    {
+     "id": 159189,
+     "titulo": "Relatório de Inspeção TJPR - Extrajudicial - Julho_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 689130,
+     "publicadoEm": "2021-09-16 14:35:17",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/159189/relatorio-de-inspecao-tjpr-extrajudicial-julho_2021-2"
+    },
+    {
+     "id": 199014,
+     "titulo": "Relatório de Inspeção TJPR - Maio_2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 7597605,
+     "publicadoEm": "2022-10-17 15:03:07",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/199014/relatorio-de-inspecao-tjpr-maio_2022"
+    },
+    {
+     "id": 326333,
+     "titulo": "Relatório de Inspeção - TJPR - 2024",
+     "extensao": "pdf",
+     "tamanhoBytes": 23105316,
+     "publicadoEm": "2024-04-29 14:27:47",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/326333/relatorio-de-inspecao-tjpr-2024"
+    },
+    {
+     "id": 388955,
+     "titulo": "Relatório Inspeção Ordinária-TJPR-Portaria n.º 15, de 07 de março de 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 6878306,
+     "publicadoEm": "2025-09-29 08:44:44",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/388955/relatorio-inspecao-ordinaria-tjpr-portaria-n-o-15-de-07-de-marco-de-2025-2"
+    },
+    {
+     "id": 117009,
+     "titulo": "TJPR - Relatório Final de Inspeção 2020",
+     "extensao": "pdf",
+     "tamanhoBytes": 10786345,
+     "publicadoEm": "2020-08-10 15:12:57",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/117009/tjpr-relatorio-final-de-inspecao-2020"
+    },
+    {
+     "id": 82594,
+     "titulo": "Revisão de Inspeção 2011",
+     "extensao": "pdf",
+     "tamanhoBytes": 1742922,
+     "publicadoEm": "2019-09-30 12:32:56",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/82594/revisao-de-inspecao-2011-2"
+    },
+    {
+     "id": 82596,
+     "titulo": "Relatório de Inspeção - Unidades Judiciais - TJPR - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 3080032,
+     "publicadoEm": "2019-09-30 12:32:57",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/82596/relatorio-de-inspecao-unidades-judiciais-tjpr-2018"
+    },
+    {
+     "id": 82595,
+     "titulo": "Relatório de Inspeção - TJPR - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 3010367,
+     "publicadoEm": "2019-09-30 12:32:57",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/82595/relatorio-de-inspecao-tjpr-2018"
+    },
+    {
+     "id": 82592,
+     "titulo": "Relatório de Inspeção - NUPEMEC - CEJUSC - TJPR - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 779944,
+     "publicadoEm": "2019-09-30 12:32:56",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/82592/relatorio-de-inspecao-nupemec-cejusc-tjpr-2018"
+    },
+    {
+     "id": 82593,
+     "titulo": "Inspeção 2009",
+     "extensao": "pdf",
+     "tamanhoBytes": 941482,
+     "publicadoEm": "2019-09-30 12:32:56",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/82593/inspecao-2009-4"
+    },
+    {
+     "id": 82588,
+     "titulo": "Correição Precatórios 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 414613,
+     "publicadoEm": "2019-09-30 12:32:55",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/82588/correicao-precatorios-2013-3"
+    },
+    {
+     "id": 82589,
+     "titulo": "Correição - Unidades Judiciais - 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 1674519,
+     "publicadoEm": "2019-09-30 12:32:55",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/82589/correicao-unidades-judiciais-2013"
+    },
+    {
+     "id": 82591,
+     "titulo": "Correição - Unidades Administrativas - 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 5405877,
+     "publicadoEm": "2019-09-30 12:32:56",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/82591/correicao-unidades-administrativas-2013"
+    },
+    {
+     "id": 82590,
+     "titulo": "Auto Circunstanciado de Inspeção - Unidades Administrativas - TJPR - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 122278,
+     "publicadoEm": "2019-09-30 12:32:56",
+     "url": "https://www.cnj.jus.br/download/2667/tribunal-de-justica-do-estado-do-parana/82590/auto-circunstanciado-de-inspecao-unidades-administrativas-tjpr-2018"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2668,
+   "orgao": "tribunal-de-justica-do-estado-do-pernambuco",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Pernambuco",
+   "relatorios": [
+    {
+     "id": 159191,
+     "titulo": "Relatório de Inspeção TJPE - Extrajudicial - Abril_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 648681,
+     "publicadoEm": "2021-09-16 14:38:51",
+     "url": "https://www.cnj.jus.br/download/2668/tribunal-de-justica-do-estado-do-pernambuco/159191/relatorio-de-inspecao-tjpe-extrajudicial-abril_2021-2"
+    },
+    {
+     "id": 266103,
+     "titulo": "Relatorio de Inspecoes-Pernambuco_V4_2023-03-06",
+     "extensao": "pdf",
+     "tamanhoBytes": 4376952,
+     "publicadoEm": "2023-03-30 13:52:42",
+     "url": "https://www.cnj.jus.br/download/2668/tribunal-de-justica-do-estado-do-pernambuco/266103/relatorio-de-inspecoes-pernambuco_v4_2023-03-06"
+    },
+    {
+     "id": 266104,
+     "titulo": "Relatorio_de_Correicao_Pernambuco_V4_2023-03-06",
+     "extensao": "pdf",
+     "tamanhoBytes": 4794042,
+     "publicadoEm": "2023-03-30 13:52:42",
+     "url": "https://www.cnj.jus.br/download/2668/tribunal-de-justica-do-estado-do-pernambuco/266104/relatorio_de_correicao_pernambuco_v4_2023-03-06"
+    },
+    {
+     "id": 317315,
+     "titulo": "Relatório de Inspeção - TJPE - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 6596253,
+     "publicadoEm": "2024-02-29 16:19:53",
+     "url": "https://www.cnj.jus.br/download/2668/tribunal-de-justica-do-estado-do-pernambuco/317315/relatorio-de-inspecao-tjpe-2023-2"
+    },
+    {
+     "id": 388956,
+     "titulo": "Relatório de Inspeção Ordinária - TJPE- Portaria n.º 5, de 14 de fevereiro de 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 10605532,
+     "publicadoEm": "2025-09-29 08:45:02",
+     "url": "https://www.cnj.jus.br/download/2668/tribunal-de-justica-do-estado-do-pernambuco/388956/relatorio-de-inspecao-ordinaria-tjpe-portaria-n-o-5-de-14-de-fevereiro-de-2025-2"
+    },
+    {
+     "id": 82661,
+     "titulo": "relatorio_insp_preliminar_area_adm_tjpe_2014",
+     "extensao": "pdf",
+     "tamanhoBytes": 1063166,
+     "publicadoEm": "2019-09-30 15:07:09",
+     "url": "https://www.cnj.jus.br/download/2668/tribunal-de-justica-do-estado-do-pernambuco/82661/relatorio_insp_preliminar_area_adm_tjpe_2014"
+    },
+    {
+     "id": 82658,
+     "titulo": "relatorio_de_inspecao_sistemas_judiciais_processuais_tjpe_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 2279158,
+     "publicadoEm": "2019-09-30 15:07:08",
+     "url": "https://www.cnj.jus.br/download/2668/tribunal-de-justica-do-estado-do-pernambuco/82658/relatorio_de_inspecao_sistemas_judiciais_processuais_tjpe_2017"
+    },
+    {
+     "id": 82660,
+     "titulo": "relatorio__pernambuco",
+     "extensao": "pdf",
+     "tamanhoBytes": 996316,
+     "publicadoEm": "2019-09-30 15:07:09",
+     "url": "https://www.cnj.jus.br/download/2668/tribunal-de-justica-do-estado-do-pernambuco/82660/relatorio__pernambuco"
+    },
+    {
+     "id": 82663,
+     "titulo": "auto_circunstanciado_inspecao_tjpe_unidades_administrativas_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 12589489,
+     "publicadoEm": "2019-09-30 15:07:10",
+     "url": "https://www.cnj.jus.br/download/2668/tribunal-de-justica-do-estado-do-pernambuco/82663/auto_circunstanciado_inspecao_tjpe_unidades_administrativas_2017"
+    },
+    {
+     "id": 82664,
+     "titulo": "auto_circunstanciado_inpecao_tjpe_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 62791035,
+     "publicadoEm": "2019-09-30 15:07:14",
+     "url": "https://www.cnj.jus.br/download/2668/tribunal-de-justica-do-estado-do-pernambuco/82664/auto_circunstanciado_inpecao_tjpe_2017"
+    },
+    {
+     "id": 82659,
+     "titulo": "Relatorio de Inspecao TJPE Nupemec Cejus 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 1425911,
+     "publicadoEm": "2019-09-30 15:07:08",
+     "url": "https://www.cnj.jus.br/download/2668/tribunal-de-justica-do-estado-do-pernambuco/82659/relatorio-de-inspecao-tjpe-nupemec-cejus-2019"
+    },
+    {
+     "id": 82662,
+     "titulo": "Inspeção 2009",
+     "extensao": "pdf",
+     "tamanhoBytes": 4237125,
+     "publicadoEm": "2019-09-30 03:07:10",
+     "url": "https://www.cnj.jus.br/download/2668/tribunal-de-justica-do-estado-do-pernambuco/82662/inspecao-2009-5"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2669,
+   "orgao": "tribunal-de-justica-do-estado-do-piaui",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Piauí",
+   "relatorios": [
+    {
+     "id": 159190,
+     "titulo": "Relatório de Inspeção TJPI - Extrajudicial - Abril_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 731351,
+     "publicadoEm": "2021-09-16 14:37:02",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/159190/relatorio-de-inspecao-tjpi-extrajudicial-abril_2021-2"
+    },
+    {
+     "id": 317319,
+     "titulo": "Relatório de Inspeção TJPI - 2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 4342470,
+     "publicadoEm": "2024-02-29 16:21:54",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/317319/relatorio-de-inspecao-tjpi-2022-2"
+    },
+    {
+     "id": 360692,
+     "titulo": "Relatório de Inspeção - TJPI -  PJe - 2024",
+     "extensao": "pdf",
+     "tamanhoBytes": 8196677,
+     "publicadoEm": "2025-02-13 14:35:24",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/360692/relatorio-de-inspecao-tjpi-pje-2024"
+    },
+    {
+     "id": 82675,
+     "titulo": "relatorio_correicao_unidades_administrativas_pi_2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 6466409,
+     "publicadoEm": "2019-09-30 15:14:46",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/82675/relatorio_correicao_unidades_administrativas_pi_2013"
+    },
+    {
+     "id": 82678,
+     "titulo": "Revisão de Inspeção nas Unidades Administrativas 2012",
+     "extensao": "pdf",
+     "tamanhoBytes": 5171808,
+     "publicadoEm": "2019-09-30 03:14:47",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/82678/revisao-de-inspecao-nas-unidades-administrativas-2012"
+    },
+    {
+     "id": 82680,
+     "titulo": "Revisão de Inspeção 2011",
+     "extensao": "pdf",
+     "tamanhoBytes": 13603530,
+     "publicadoEm": "2019-09-30 03:14:48",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/82680/revisao-de-inspecao-2011-3"
+    },
+    {
+     "id": 82673,
+     "titulo": "Relatorio de Inspecao TJPI",
+     "extensao": "pdf",
+     "tamanhoBytes": 1560956,
+     "publicadoEm": "2019-09-30 15:14:45",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/82673/relatorio-de-inspecao-tjpi"
+    },
+    {
+     "id": 82679,
+     "titulo": "Relatorio_Unidades_Jud_TJPI_2016",
+     "extensao": "pdf",
+     "tamanhoBytes": 5602713,
+     "publicadoEm": "2019-09-30 15:14:48",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/82679/relatorio_unidades_jud_tjpi_2016"
+    },
+    {
+     "id": 82681,
+     "titulo": "Relatorio_Unidades_Adm_TJPI_2016",
+     "extensao": "pdf",
+     "tamanhoBytes": 1076602,
+     "publicadoEm": "2019-09-30 15:14:48",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/82681/relatorio_unidades_adm_tjpi_2016"
+    },
+    {
+     "id": 82677,
+     "titulo": "Relatorio_Precatrios _TJPI_2016",
+     "extensao": "pdf",
+     "tamanhoBytes": 539311,
+     "publicadoEm": "2019-09-30 15:14:47",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/82677/relatorio_precatrios-_tjpi_2016"
+    },
+    {
+     "id": 82676,
+     "titulo": "Relatorio NUPEMEC-CEJUSC TJPI",
+     "extensao": "pdf",
+     "tamanhoBytes": 685606,
+     "publicadoEm": "2019-09-30 15:14:46",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/82676/relatorio-nupemec-cejusc-tjpi"
+    },
+    {
+     "id": 82674,
+     "titulo": "Inspeção 2009",
+     "extensao": "pdf",
+     "tamanhoBytes": 1709102,
+     "publicadoEm": "2019-09-30 03:14:45",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/82674/inspecao-2009-6"
+    },
+    {
+     "id": 82672,
+     "titulo": "Informatica_Relatorio_Vistoria_Tecnica_Sistema_Judicial _Processuais_THEMISE_TJPI-2016",
+     "extensao": "pdf",
+     "tamanhoBytes": 4841343,
+     "publicadoEm": "2019-09-30 15:14:44",
+     "url": "https://www.cnj.jus.br/download/2669/tribunal-de-justica-do-estado-do-piaui/82672/informatica_relatorio_vistoria_tecnica_sistema_judicial-_processuais_themise_tjpi-2016"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2670,
+   "orgao": "tribunal-de-justica-do-estado-do-rio-de-janeiro",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Rio de Janeiro",
+   "relatorios": [
+    {
+     "id": 159188,
+     "titulo": "Relatório de Inspeção TJRJ - Extrajudicial - Maio_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 840763,
+     "publicadoEm": "2021-09-16 14:32:18",
+     "url": "https://www.cnj.jus.br/download/2670/tribunal-de-justica-do-estado-do-rio-de-janeiro/159188/relatorio-de-inspecao-tjrj-extrajudicial-maio_2021-2"
+    },
+    {
+     "id": 317322,
+     "titulo": "Relatório de Inspeção - TJRJ - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 11126198,
+     "publicadoEm": "2024-02-29 16:25:25",
+     "url": "https://www.cnj.jus.br/download/2670/tribunal-de-justica-do-estado-do-rio-de-janeiro/317322/relatorio-de-inspecao-tjrj-2023"
+    },
+    {
+     "id": 317324,
+     "titulo": "Relatório de Inspeção - TJRJ - 2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 5589612,
+     "publicadoEm": "2024-02-29 16:29:04",
+     "url": "https://www.cnj.jus.br/download/2670/tribunal-de-justica-do-estado-do-rio-de-janeiro/317324/relatorio-de-inspecao-tjrj-2022-2"
+    },
+    {
+     "id": 82815,
+     "titulo": "Relatório de Inspeção - NUPEMEC - CEJUSC - TJRJ - 2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 450515,
+     "publicadoEm": "2019-09-30 05:29:41",
+     "url": "https://www.cnj.jus.br/download/2670/tribunal-de-justica-do-estado-do-rio-de-janeiro/82815/relatorio-de-inspecao-nupemec-cejusc-tjrj-2017"
+    },
+    {
+     "id": 177202,
+     "titulo": "Relatório de Inspeção - NUPEMEC - CEJUSC - TJRJ",
+     "extensao": "pdf",
+     "tamanhoBytes": 450515,
+     "publicadoEm": "2022-03-09 15:34:48",
+     "url": "https://www.cnj.jus.br/download/2670/tribunal-de-justica-do-estado-do-rio-de-janeiro/177202/relatorio-de-inspecao-nupemec-cejusc-tjrj"
+    },
+    {
+     "id": 82814,
+     "titulo": "Relatorio de Inspecao - NUPEMEC-CEJUSC - TJRJ 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 936682,
+     "publicadoEm": "2019-09-30 17:29:40",
+     "url": "https://www.cnj.jus.br/download/2670/tribunal-de-justica-do-estado-do-rio-de-janeiro/82814/relatorio-de-inspecao-nupemec-cejusc-tjrj-2019"
+    },
+    {
+     "id": 82818,
+     "titulo": "Inspeção 2012",
+     "extensao": "pdf",
+     "tamanhoBytes": 24894254,
+     "publicadoEm": "2019-09-30 05:29:42",
+     "url": "https://www.cnj.jus.br/download/2670/tribunal-de-justica-do-estado-do-rio-de-janeiro/82818/inspecao-2012-3"
+    },
+    {
+     "id": 177243,
+     "titulo": "Auto Circunsticiado - Unidades Judiciais - TJRJ - 2017-",
+     "extensao": "pdf",
+     "tamanhoBytes": 30718626,
+     "publicadoEm": "2022-03-09 17:51:54",
+     "url": "https://www.cnj.jus.br/download/2670/tribunal-de-justica-do-estado-do-rio-de-janeiro/177243/auto-circunsticiado-unidades-judiciais-tjrj-2017-2"
+    },
+    {
+     "id": 82816,
+     "titulo": "Auto Circunstanciado de Inspeção - Unidades Administrativas - TJRJ - 2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 397221,
+     "publicadoEm": "2019-09-30 05:29:41",
+     "url": "https://www.cnj.jus.br/download/2670/tribunal-de-justica-do-estado-do-rio-de-janeiro/82816/auto-circunstanciado-de-inspecao-unidades-administrativas-tjrj-2017"
+    },
+    {
+     "id": 82817,
+     "titulo": "Auto Circunstanciado de Inspecao no TJRJ 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 7558403,
+     "publicadoEm": "2019-09-30 17:29:41",
+     "url": "https://www.cnj.jus.br/download/2670/tribunal-de-justica-do-estado-do-rio-de-janeiro/82817/auto-circunstanciado-de-inspecao-no-tjrj-2019"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2671,
+   "orgao": "tribunal-de-justica-do-estado-do-rio-grande-do-norte",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Rio Grande do Norte",
+   "relatorios": [
+    {
+     "id": 317326,
+     "titulo": "Relatório de Inspeção - TJRN - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 8487849,
+     "publicadoEm": "2024-02-29 16:31:43",
+     "url": "https://www.cnj.jus.br/download/2671/tribunal-de-justica-do-estado-do-rio-grande-do-norte/317326/relatorio-de-inspecao-tjrn-2023-2"
+    },
+    {
+     "id": 377684,
+     "titulo": "Relatório Inspeção TJRN - 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 4233400,
+     "publicadoEm": "2025-07-02 15:00:46",
+     "url": "https://www.cnj.jus.br/download/2671/tribunal-de-justica-do-estado-do-rio-grande-do-norte/377684/relatorio-inspecao-tjrn-2025"
+    },
+    {
+     "id": 181822,
+     "titulo": "Relatório de inspeção TJRN - Setembro_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 7434960,
+     "publicadoEm": "2022-04-19 14:59:26",
+     "url": "https://www.cnj.jus.br/download/2671/tribunal-de-justica-do-estado-do-rio-grande-do-norte/181822/relatorio-de-inspecao-tjrn-setembro_2021-3"
+    },
+    {
+     "id": 159187,
+     "titulo": "Relatório de Inspeção TJRN - Extrajudicial - Março_2021_",
+     "extensao": "pdf",
+     "tamanhoBytes": 629999,
+     "publicadoEm": "2021-09-16 14:30:25",
+     "url": "https://www.cnj.jus.br/download/2671/tribunal-de-justica-do-estado-do-rio-grande-do-norte/159187/relatorio-de-inspecao-tjrn-extrajudicial-marco_2021_-2"
+    },
+    {
+     "id": 82825,
+     "titulo": "Revisão de Inspeção 2011",
+     "extensao": "pdf",
+     "tamanhoBytes": 6501393,
+     "publicadoEm": "2019-09-30 05:39:28",
+     "url": "https://www.cnj.jus.br/download/2671/tribunal-de-justica-do-estado-do-rio-grande-do-norte/82825/revisao-de-inspecao-2011-4"
+    },
+    {
+     "id": 82828,
+     "titulo": "Relatorio de Inspecao_TJRN",
+     "extensao": "pdf",
+     "tamanhoBytes": 2340979,
+     "publicadoEm": "2019-09-30 17:39:30",
+     "url": "https://www.cnj.jus.br/download/2671/tribunal-de-justica-do-estado-do-rio-grande-do-norte/82828/relatorio-de-inspecao_tjrn"
+    },
+    {
+     "id": 82829,
+     "titulo": "Relatorio_Unidades_Judiciais_TJRN_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 80543645,
+     "publicadoEm": "2019-09-30 17:39:32",
+     "url": "https://www.cnj.jus.br/download/2671/tribunal-de-justica-do-estado-do-rio-grande-do-norte/82829/relatorio_unidades_judiciais_tjrn_2017"
+    },
+    {
+     "id": 82823,
+     "titulo": "Relatorio_Unidades_Adm_TJRN_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 280108,
+     "publicadoEm": "2019-09-30 17:39:27",
+     "url": "https://www.cnj.jus.br/download/2671/tribunal-de-justica-do-estado-do-rio-grande-do-norte/82823/relatorio_unidades_adm_tjrn_2017"
+    },
+    {
+     "id": 82826,
+     "titulo": "Relatorio_Informatica_TJRN_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 1214867,
+     "publicadoEm": "2019-09-30 17:39:28",
+     "url": "https://www.cnj.jus.br/download/2671/tribunal-de-justica-do-estado-do-rio-grande-do-norte/82826/relatorio_informatica_tjrn_2017"
+    },
+    {
+     "id": 82824,
+     "titulo": "Relatorio NUPEMEC-CEJUSC TJRN",
+     "extensao": "pdf",
+     "tamanhoBytes": 1257745,
+     "publicadoEm": "2019-09-30 17:39:28",
+     "url": "https://www.cnj.jus.br/download/2671/tribunal-de-justica-do-estado-do-rio-grande-do-norte/82824/relatorio-nupemec-cejusc-tjrn"
+    },
+    {
+     "id": 82827,
+     "titulo": "Inspeção 2010",
+     "extensao": "pdf",
+     "tamanhoBytes": 551572,
+     "publicadoEm": "2019-09-30 05:39:29",
+     "url": "https://www.cnj.jus.br/download/2671/tribunal-de-justica-do-estado-do-rio-grande-do-norte/82827/inspecao-2010-2"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2672,
+   "orgao": "tribunal-de-justica-do-estado-do-rio-grande-do-sul",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Rio Grande do Sul",
+   "relatorios": [
+    {
+     "id": 419326,
+     "titulo": "Relatório de Inspeção Ordinária TJRS 2026",
+     "extensao": "pdf",
+     "tamanhoBytes": 10192776,
+     "publicadoEm": "2026-07-09 15:09:08",
+     "url": "https://www.cnj.jus.br/download/2672/tribunal-de-justica-do-estado-do-rio-grande-do-sul/419326/relatorio-de-inspecao-ordinaria-tjrs-2026-2"
+    },
+    {
+     "id": 317328,
+     "titulo": "Relatório de Inspeção - TJRS - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 16053984,
+     "publicadoEm": "2024-02-29 16:34:21",
+     "url": "https://www.cnj.jus.br/download/2672/tribunal-de-justica-do-estado-do-rio-grande-do-sul/317328/relatorio-de-inspecao-tjrs-2023-2"
+    },
+    {
+     "id": 198859,
+     "titulo": "Relatório de Inspeção TJRS - Abril_2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 4786971,
+     "publicadoEm": "2022-10-14 14:00:32",
+     "url": "https://www.cnj.jus.br/download/2672/tribunal-de-justica-do-estado-do-rio-grande-do-sul/198859/relatorio-de-inspecao-tjrs-abril_2022-2"
+    },
+    {
+     "id": 159173,
+     "titulo": "Relatório de Inspeção TJRS - Extrajudicial - Junho_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 560955,
+     "publicadoEm": "2021-09-16 13:20:09",
+     "url": "https://www.cnj.jus.br/download/2672/tribunal-de-justica-do-estado-do-rio-grande-do-sul/159173/relatorio-de-inspecao-tjrs-extrajudicial-junho_2021-2"
+    },
+    {
+     "id": 97433,
+     "titulo": "TJRS - ENFAM - Relatório de Inspeção 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 6161302,
+     "publicadoEm": "2020-02-12 13:32:39",
+     "url": "https://www.cnj.jus.br/download/2672/tribunal-de-justica-do-estado-do-rio-grande-do-sul/97433/tjrs-enfam-relatorio-de-inspecao-2019"
+    },
+    {
+     "id": 97432,
+     "titulo": "TJRS - Relatório de Inspeção 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 5027055,
+     "publicadoEm": "2020-02-12 13:32:37",
+     "url": "https://www.cnj.jus.br/download/2672/tribunal-de-justica-do-estado-do-rio-grande-do-sul/97432/tjrs-relatorio-de-inspecao-2019"
+    },
+    {
+     "id": 82841,
+     "titulo": "Relatorio_Unidades_Adm_TJRS_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 408885,
+     "publicadoEm": "2019-09-30 17:41:27",
+     "url": "https://www.cnj.jus.br/download/2672/tribunal-de-justica-do-estado-do-rio-grande-do-sul/82841/relatorio_unidades_adm_tjrs_2017"
+    },
+    {
+     "id": 82846,
+     "titulo": "Relatório de Inspeção - NUPEMEC - CEJUSC - 2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 10309197,
+     "publicadoEm": "2019-09-30 05:41:28",
+     "url": "https://www.cnj.jus.br/download/2672/tribunal-de-justica-do-estado-do-rio-grande-do-sul/82846/relatorio-de-inspecao-nupemec-cejusc-2017"
+    },
+    {
+     "id": 82845,
+     "titulo": "Auto Circunstanciado de Inspeção - Unidades Judiciais - TJRS - 2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 4740050,
+     "publicadoEm": "2019-09-30 05:41:28",
+     "url": "https://www.cnj.jus.br/download/2672/tribunal-de-justica-do-estado-do-rio-grande-do-sul/82845/auto-circunstanciado-de-inspecao-unidades-judiciais-tjrs-2017"
+    },
+    {
+     "id": 82843,
+     "titulo": "Relatório de Inspeção - Sistemas Judiciais e Processuais - TJRS - 2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 2521507,
+     "publicadoEm": "2019-09-30 05:41:27",
+     "url": "https://www.cnj.jus.br/download/2672/tribunal-de-justica-do-estado-do-rio-grande-do-sul/82843/relatorio-de-inspecao-sistemas-judiciais-e-processuais-tjrs-2017"
+    },
+    {
+     "id": 82842,
+     "titulo": "Relatório de Inspeção - CJUD - AJURIS - TJRS - 2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 690587,
+     "publicadoEm": "2019-09-30 05:41:27",
+     "url": "https://www.cnj.jus.br/download/2672/tribunal-de-justica-do-estado-do-rio-grande-do-sul/82842/relatorio-de-inspecao-cjud-ajuris-tjrs-2017"
+    },
+    {
+     "id": 82844,
+     "titulo": "Inspeção 2012",
+     "extensao": "pdf",
+     "tamanhoBytes": 3607936,
+     "publicadoEm": "2019-09-30 05:41:27",
+     "url": "https://www.cnj.jus.br/download/2672/tribunal-de-justica-do-estado-do-rio-grande-do-sul/82844/inspecao-2012-4"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2673,
+   "orgao": "tribunal-de-justica-do-estado-de-rondonia",
+   "orgaoTitulo": "Tribunal de Justiça do Estado de Rondônia",
+   "relatorios": [
+    {
+     "id": 419325,
+     "titulo": "Relatório de Inspeção Ordinária TJRO 2026",
+     "extensao": "pdf",
+     "tamanhoBytes": 7256765,
+     "publicadoEm": "2026-07-09 15:08:44",
+     "url": "https://www.cnj.jus.br/download/2673/tribunal-de-justica-do-estado-de-rondonia/419325/relatorio-de-inspecao-ordinaria-tjro-2026-2"
+    },
+    {
+     "id": 413244,
+     "titulo": "Relatorio Inspeção TJRO 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 7256765,
+     "publicadoEm": "2026-05-12 16:32:09",
+     "url": "https://www.cnj.jus.br/download/2673/tribunal-de-justica-do-estado-de-rondonia/413244/relatorio-inspecao-tjro-2025"
+    },
+    {
+     "id": 307111,
+     "titulo": "Relatório de Inspeção - TJRO - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 16641453,
+     "publicadoEm": "2024-02-08 15:47:13",
+     "url": "https://www.cnj.jus.br/download/2673/tribunal-de-justica-do-estado-de-rondonia/307111/relatorio-de-inspecao-tjro-2023-2"
+    },
+    {
+     "id": 199017,
+     "titulo": "Relatório de Inspeção TJRO - Junho_2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 2093851,
+     "publicadoEm": "2022-10-17 15:11:01",
+     "url": "https://www.cnj.jus.br/download/2673/tribunal-de-justica-do-estado-de-rondonia/199017/relatorio-de-inspecao-tjro-junho_2022"
+    },
+    {
+     "id": 159186,
+     "titulo": "Relatório de Inspeção TJRO - Extrajudicial - Junho_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 601562,
+     "publicadoEm": "2021-09-16 14:28:58",
+     "url": "https://www.cnj.jus.br/download/2673/tribunal-de-justica-do-estado-de-rondonia/159186/relatorio-de-inspecao-tjro-extrajudicial-junho_2021-2"
+    },
+    {
+     "id": 110216,
+     "titulo": "TJRO - Relatório Final Inspeção 2020",
+     "extensao": "pdf",
+     "tamanhoBytes": 7623907,
+     "publicadoEm": "2020-06-30 12:26:20",
+     "url": "https://www.cnj.jus.br/download/2673/tribunal-de-justica-do-estado-de-rondonia/110216/tjro-relatorio-final-inspecao-2020"
+    },
+    {
+     "id": 82858,
+     "titulo": "Relatório de Inspeção - Unidades Judiciais - TJRO - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1442341,
+     "publicadoEm": "2019-09-30 05:45:02",
+     "url": "https://www.cnj.jus.br/download/2673/tribunal-de-justica-do-estado-de-rondonia/82858/relatorio-de-inspecao-unidades-judiciais-tjro-2018"
+    },
+    {
+     "id": 82860,
+     "titulo": "Relatório de Inspeção - NUPEMEC - CEJUSC - TJRO - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1350569,
+     "publicadoEm": "2019-09-30 05:45:02",
+     "url": "https://www.cnj.jus.br/download/2673/tribunal-de-justica-do-estado-de-rondonia/82860/relatorio-de-inspecao-nupemec-cejusc-tjro-2018"
+    },
+    {
+     "id": 82861,
+     "titulo": "Relatório de Inspeção - ENFAM - TJRO - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1047443,
+     "publicadoEm": "2019-09-30 05:45:02",
+     "url": "https://www.cnj.jus.br/download/2673/tribunal-de-justica-do-estado-de-rondonia/82861/relatorio-de-inspecao-enfam-tjro-2018"
+    },
+    {
+     "id": 82859,
+     "titulo": "Auto Circunstanciado de Inspeção - Unidades Administrativas - TJRO - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1297491,
+     "publicadoEm": "2019-09-30 05:45:02",
+     "url": "https://www.cnj.jus.br/download/2673/tribunal-de-justica-do-estado-de-rondonia/82859/auto-circunstanciado-de-inspecao-unidades-administrativas-tjro-2018"
+    },
+    {
+     "id": 82856,
+     "titulo": "Correição Precatórios 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 357263,
+     "publicadoEm": "2019-09-30 05:45:02",
+     "url": "https://www.cnj.jus.br/download/2673/tribunal-de-justica-do-estado-de-rondonia/82856/correicao-precatorios-2013-4"
+    },
+    {
+     "id": 82857,
+     "titulo": "Inspeção 2012",
+     "extensao": "pdf",
+     "tamanhoBytes": 1933766,
+     "publicadoEm": "2019-09-30 05:45:02",
+     "url": "https://www.cnj.jus.br/download/2673/tribunal-de-justica-do-estado-de-rondonia/82857/inspecao-2012-5"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2674,
+   "orgao": "tribunal-de-justica-do-estado-de-santa-catarina",
+   "orgaoTitulo": "Tribunal de Justiça do Estado de Santa Catarina",
+   "relatorios": [
+    {
+     "id": 159171,
+     "titulo": "Relatório de Inspeção TJSC - Extrajudicial - Junho_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 573773,
+     "publicadoEm": "2021-09-16 13:18:30",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/159171/relatorio-de-inspecao-tjsc-extrajudicial-junho_2021-2"
+    },
+    {
+     "id": 198860,
+     "titulo": "Relatório de Inspeção TJSC - Março_2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 5806693,
+     "publicadoEm": "2022-10-14 14:00:56",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/198860/relatorio-de-inspecao-tjsc-marco_2022-2"
+    },
+    {
+     "id": 340212,
+     "titulo": "Relatorio de Inspecao - TJSC - 2024",
+     "extensao": "pdf",
+     "tamanhoBytes": 25091386,
+     "publicadoEm": "2024-08-20 08:50:21",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/340212/relatorio-de-inspecao-tjsc-2024-2"
+    },
+    {
+     "id": 407558,
+     "titulo": "Relatório de Inspeção Ordinária TJSC - Portaria n.48",
+     "extensao": "pdf",
+     "tamanhoBytes": 4380555,
+     "publicadoEm": "2026-03-17 13:19:48",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/407558/relatorio-de-inspecao-ordinaria-tjsc-portaria-n-48-2"
+    },
+    {
+     "id": 82995,
+     "titulo": "Relatorio_Inspecao_CEJUR_ESMESC_TJSC_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 143387,
+     "publicadoEm": "2019-10-01 10:02:26",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/82995/relatorio_inspecao_cejur_esmesc_tjsc_2018"
+    },
+    {
+     "id": 82996,
+     "titulo": "Correição Precatórios 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 288610,
+     "publicadoEm": "2019-10-01 10:02:26",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/82996/correicao-precatorios-2013-5"
+    },
+    {
+     "id": 82997,
+     "titulo": "Relatorio_Informatica_TJSC_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 97996,
+     "publicadoEm": "2019-10-01 10:02:26",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/82997/relatorio_informatica_tjsc_2018"
+    },
+    {
+     "id": 82998,
+     "titulo": "Inspeção 2013 - Área Judicial",
+     "extensao": "pdf",
+     "tamanhoBytes": 4041696,
+     "publicadoEm": "2019-10-01 10:02:26",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/82998/inspecao-2013-area-judicial"
+    },
+    {
+     "id": 82999,
+     "titulo": "relatorio_insp_sc_unidades_administrativas_2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 1632239,
+     "publicadoEm": "2019-10-01 10:02:26",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/82999/relatorio_insp_sc_unidades_administrativas_2013"
+    },
+    {
+     "id": 83000,
+     "titulo": "Relatorio_NUPEMEC_CEJUSC_TJSC_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 136684,
+     "publicadoEm": "2019-10-01 10:02:27",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/83000/relatorio_nupemec_cejusc_tjsc_2018"
+    },
+    {
+     "id": 83001,
+     "titulo": "Relatorio_Unidades_Judiciais_TJSC_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1747694,
+     "publicadoEm": "2019-10-01 10:02:27",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/83001/relatorio_unidades_judiciais_tjsc_2018"
+    },
+    {
+     "id": 83003,
+     "titulo": "Relatorio_Unidades_Adm_TJSC_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 250326,
+     "publicadoEm": "2019-10-01 10:02:27",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/83003/relatorio_unidades_adm_tjsc_2018"
+    },
+    {
+     "id": 83004,
+     "titulo": "Inspeção 2013 - Comarca de São José",
+     "extensao": "pdf",
+     "tamanhoBytes": 9546045,
+     "publicadoEm": "2019-10-01 10:02:27",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/83004/inspecao-2013-comarca-de-sao-jose"
+    },
+    {
+     "id": 110215,
+     "titulo": "TJSC - Relatório Final Inspeção 2020.docx",
+     "extensao": "pdf",
+     "tamanhoBytes": 6717248,
+     "publicadoEm": "2020-06-30 12:25:07",
+     "url": "https://www.cnj.jus.br/download/2674/tribunal-de-justica-do-estado-de-santa-catarina/110215/tjsc-relatorio-final-inspecao-2020-docx-2"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2675,
+   "orgao": "tribunal-de-justica-do-estado-de-sao-paulo",
+   "orgaoTitulo": "Tribunal de Justiça do Estado de São Paulo",
+   "relatorios": [
+    {
+     "id": 419314,
+     "titulo": "Relatório de Inspeção Ordinária TJSP 2026",
+     "extensao": "pdf",
+     "tamanhoBytes": 12736151,
+     "publicadoEm": "2026-07-09 15:02:55",
+     "url": "https://www.cnj.jus.br/download/2675/tribunal-de-justica-do-estado-de-sao-paulo/419314/relatorio-de-inspecao-ordinaria-tjsp-2026"
+    },
+    {
+     "id": 327523,
+     "titulo": "Relatório de Inspeção - TJSP - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 39782791,
+     "publicadoEm": "2024-05-07 09:18:07",
+     "url": "https://www.cnj.jus.br/download/2675/tribunal-de-justica-do-estado-de-sao-paulo/327523/relatorio-de-inspecao-tjsp-2023-2"
+    },
+    {
+     "id": 419315,
+     "titulo": "Relatório de Inspeção Ordinária TJSP 2026",
+     "extensao": "pdf",
+     "tamanhoBytes": 12736151,
+     "publicadoEm": "2026-07-09 15:02:55",
+     "url": "https://www.cnj.jus.br/download/2675/tribunal-de-justica-do-estado-de-sao-paulo/419315/relatorio-de-inspecao-ordinaria-tjsp-2026-2"
+    },
+    {
+     "id": 193704,
+     "titulo": "Relatório de Inspeção TJSP - Março 2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 5686155,
+     "publicadoEm": "2022-08-19 15:21:10",
+     "url": "https://www.cnj.jus.br/download/2675/tribunal-de-justica-do-estado-de-sao-paulo/193704/relatorio-de-inspecao-tjsp-marco-2022-2"
+    },
+    {
+     "id": 159169,
+     "titulo": "Relatório de Inspeção TJSP - Extrajudicial - Julho_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 636384,
+     "publicadoEm": "2021-09-16 13:15:43",
+     "url": "https://www.cnj.jus.br/download/2675/tribunal-de-justica-do-estado-de-sao-paulo/159169/relatorio-de-inspecao-tjsp-extrajudicial-julho_2021-2"
+    },
+    {
+     "id": 98263,
+     "titulo": "TJSP - Relatório de Inspeção 2019",
+     "extensao": "pdf",
+     "tamanhoBytes": 5797302,
+     "publicadoEm": "2020-02-21 10:13:28",
+     "url": "https://www.cnj.jus.br/download/2675/tribunal-de-justica-do-estado-de-sao-paulo/98263/tjsp-relatorio-de-inspecao-2019"
+    },
+    {
+     "id": 83013,
+     "titulo": "Relatório de Inspeção - EPM - TJSP - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1074105,
+     "publicadoEm": "2019-10-01 10:05:40",
+     "url": "https://www.cnj.jus.br/download/2675/tribunal-de-justica-do-estado-de-sao-paulo/83013/relatorio-de-inspecao-epm-tjsp-2018"
+    },
+    {
+     "id": 83014,
+     "titulo": "Relatório de Inspeção - Sistemas Judiciais e Processuais - TJSP - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 2241510,
+     "publicadoEm": "2019-10-01 10:05:41",
+     "url": "https://www.cnj.jus.br/download/2675/tribunal-de-justica-do-estado-de-sao-paulo/83014/relatorio-de-inspecao-sistemas-judiciais-e-processuais-tjsp-2018"
+    },
+    {
+     "id": 83016,
+     "titulo": "Relatorio_Unidades_Administrativas_TJSP_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 12641375,
+     "publicadoEm": "2019-10-01 10:05:43",
+     "url": "https://www.cnj.jus.br/download/2675/tribunal-de-justica-do-estado-de-sao-paulo/83016/relatorio_unidades_administrativas_tjsp_2018"
+    },
+    {
+     "id": 83017,
+     "titulo": "Auto Circunstanciado de Inspeção - Unidades Judiciais - TJSP - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 6206491,
+     "publicadoEm": "2019-10-01 10:05:43",
+     "url": "https://www.cnj.jus.br/download/2675/tribunal-de-justica-do-estado-de-sao-paulo/83017/auto-circunstanciado-de-inspecao-unidades-judiciais-tjsp-2018"
+    },
+    {
+     "id": 83012,
+     "titulo": "Relatorio_NUPEMEC_TJSP_2017",
+     "extensao": "pdf",
+     "tamanhoBytes": 419239,
+     "publicadoEm": "2019-10-01 10:05:40",
+     "url": "https://www.cnj.jus.br/download/2675/tribunal-de-justica-do-estado-de-sao-paulo/83012/relatorio_nupemec_tjsp_2017"
+    },
+    {
+     "id": 83015,
+     "titulo": "Inspeção 2012",
+     "extensao": "pdf",
+     "tamanhoBytes": 17299081,
+     "publicadoEm": "2019-10-01 10:05:42",
+     "url": "https://www.cnj.jus.br/download/2675/tribunal-de-justica-do-estado-de-sao-paulo/83015/inspecao-2012-6"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2676,
+   "orgao": "tribunal-de-justica-do-estado-de-sergipe",
+   "orgaoTitulo": "Tribunal de Justiça do Estado de Sergipe",
+   "relatorios": [
+    {
+     "id": 317305,
+     "titulo": "Relatório de Inspeção - TJSE - 2023",
+     "extensao": "pdf",
+     "tamanhoBytes": 4828788,
+     "publicadoEm": "2024-02-29 16:04:49",
+     "url": "https://www.cnj.jus.br/download/2676/tribunal-de-justica-do-estado-de-sergipe/317305/relatorio-de-inspecao-tjse-2023-2"
+    },
+    {
+     "id": 377688,
+     "titulo": "Relatório Inspecao TJSE - 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 5058291,
+     "publicadoEm": "2025-07-02 15:07:30",
+     "url": "https://www.cnj.jus.br/download/2676/tribunal-de-justica-do-estado-de-sergipe/377688/relatorio-inspecao-tjse-2025-2"
+    },
+    {
+     "id": 83193,
+     "titulo": "Relatório de Vistoria Técnica no Sistema Judicial SCP - TJSE - 2016",
+     "extensao": "pdf",
+     "tamanhoBytes": 1478594,
+     "publicadoEm": "2019-10-01 11:35:49",
+     "url": "https://www.cnj.jus.br/download/2676/tribunal-de-justica-do-estado-de-sergipe/83193/relatorio-de-vistoria-tecnica-no-sistema-judicial-scp-tjse-2016-3"
+    },
+    {
+     "id": 185612,
+     "titulo": "Relatório de Inspeção TJSE - Março_2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 4672353,
+     "publicadoEm": "2022-05-18 14:21:36",
+     "url": "https://www.cnj.jus.br/download/2676/tribunal-de-justica-do-estado-de-sergipe/185612/relatorio-de-inspecao-tjse-marco_2022"
+    },
+    {
+     "id": 159170,
+     "titulo": "Relatório de Inspeção TJSE - Extrajudicial - Julho_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 541425,
+     "publicadoEm": "2021-09-16 01:17:18",
+     "url": "https://www.cnj.jus.br/download/2676/tribunal-de-justica-do-estado-de-sergipe/159170/relatorio-de-inspecao-tjse-extrajudicial-julho_2021-2"
+    },
+    {
+     "id": 83194,
+     "titulo": "Relatorio de inspecao TJSE",
+     "extensao": "pdf",
+     "tamanhoBytes": 2083178,
+     "publicadoEm": "2019-10-01 11:35:49",
+     "url": "https://www.cnj.jus.br/download/2676/tribunal-de-justica-do-estado-de-sergipe/83194/relatorio-de-inspecao-tjse-2"
+    },
+    {
+     "id": 83199,
+     "titulo": "Relatorio NUPEMEC-CEJUSC TJSE",
+     "extensao": "pdf",
+     "tamanhoBytes": 2447491,
+     "publicadoEm": "2019-10-01 11:35:51",
+     "url": "https://www.cnj.jus.br/download/2676/tribunal-de-justica-do-estado-de-sergipe/83199/relatorio-nupemec-cejusc-tjse-2"
+    },
+    {
+     "id": 83195,
+     "titulo": "Inspeção - Área Administrativa - 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 1485018,
+     "publicadoEm": "2019-10-01 11:35:49",
+     "url": "https://www.cnj.jus.br/download/2676/tribunal-de-justica-do-estado-de-sergipe/83195/inspecao-area-administrativa-2013-2"
+    },
+    {
+     "id": 83198,
+     "titulo": "Inspeção - Unidades Judiciais - 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 11562596,
+     "publicadoEm": "2019-10-01 11:35:51",
+     "url": "https://www.cnj.jus.br/download/2676/tribunal-de-justica-do-estado-de-sergipe/83198/inspecao-unidades-judiciais-2013-2"
+    },
+    {
+     "id": 83196,
+     "titulo": "Correição Precatórios 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 1400944,
+     "publicadoEm": "2019-10-01 11:35:49",
+     "url": "https://www.cnj.jus.br/download/2676/tribunal-de-justica-do-estado-de-sergipe/83196/correicao-precatorios-2013-7"
+    },
+    {
+     "id": 83197,
+     "titulo": "Auto Circunstanciado de Inspeção no Tribunal de Justiça do Estado de Sergipe - 2016",
+     "extensao": "pdf",
+     "tamanhoBytes": 9731896,
+     "publicadoEm": "2019-10-01 11:35:51",
+     "url": "https://www.cnj.jus.br/download/2676/tribunal-de-justica-do-estado-de-sergipe/83197/auto-circunstanciado-de-inspecao-no-tribunal-de-justica-do-estado-de-sergipe-2016-2"
+    },
+    {
+     "id": 83200,
+     "titulo": "Auto Circunstanciado de Inspeção - Justiça Estadual de Sergipe - Unidades Administrativa - 2016",
+     "extensao": "pdf",
+     "tamanhoBytes": 5104375,
+     "publicadoEm": "2019-10-01 11:35:52",
+     "url": "https://www.cnj.jus.br/download/2676/tribunal-de-justica-do-estado-de-sergipe/83200/auto-circunstanciado-de-inspecao-justica-estadual-de-sergipe-unidades-administrativa-2016-2"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2677,
+   "orgao": "tribunal-de-justica-do-estado-do-tocantins",
+   "orgaoTitulo": "Tribunal de Justiça do Estado do Tocantins",
+   "relatorios": [
+    {
+     "id": 321631,
+     "titulo": "Relatório de Inspeção - TJTO - 2024",
+     "extensao": "pdf",
+     "tamanhoBytes": 8626782,
+     "publicadoEm": "2024-04-01 16:22:20",
+     "url": "https://www.cnj.jus.br/download/2677/tribunal-de-justica-do-estado-do-tocantins/321631/relatorio-de-inspecao-tjto-2024-2"
+    },
+    {
+     "id": 398070,
+     "titulo": "Relatório de Inspeção Ordinária TJTO - 2025",
+     "extensao": "pdf",
+     "tamanhoBytes": 3064827,
+     "publicadoEm": "2025-12-09 13:59:10",
+     "url": "https://www.cnj.jus.br/download/2677/tribunal-de-justica-do-estado-do-tocantins/398070/relatorio-de-inspecao-ordinaria-tjto-2025"
+    },
+    {
+     "id": 117008,
+     "titulo": "TJTO - Relatório Final de Inspeção 2020",
+     "extensao": "pdf",
+     "tamanhoBytes": 7361771,
+     "publicadoEm": "2020-08-10 15:11:43",
+     "url": "https://www.cnj.jus.br/download/2677/tribunal-de-justica-do-estado-do-tocantins/117008/tjto-relatorio-final-de-inspecao-2020"
+    },
+    {
+     "id": 83214,
+     "titulo": "Revisão de Inspeção 2011",
+     "extensao": "pdf",
+     "tamanhoBytes": 1945346,
+     "publicadoEm": "2019-10-01 11:41:46",
+     "url": "https://www.cnj.jus.br/download/2677/tribunal-de-justica-do-estado-do-tocantins/83214/revisao-de-inspecao-2011-5"
+    },
+    {
+     "id": 199019,
+     "titulo": "Relatório de Inspeção TJTO - Julho_2022",
+     "extensao": "pdf",
+     "tamanhoBytes": 6551208,
+     "publicadoEm": "2022-10-17 15:11:33",
+     "url": "https://www.cnj.jus.br/download/2677/tribunal-de-justica-do-estado-do-tocantins/199019/relatorio-de-inspecao-tjto-julho_2022"
+    },
+    {
+     "id": 159168,
+     "titulo": "Relatório de Inspeção TJTO - Extrajudicial - Maio_2021",
+     "extensao": "pdf",
+     "tamanhoBytes": 788381,
+     "publicadoEm": "2021-09-16 01:14:23",
+     "url": "https://www.cnj.jus.br/download/2677/tribunal-de-justica-do-estado-do-tocantins/159168/relatorio-de-inspecao-tjto-extrajudicial-maio_2021-2"
+    },
+    {
+     "id": 83213,
+     "titulo": "Relatório de Inspeção - NUPEMEC - CEJUSC - TJTO - 2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1889327,
+     "publicadoEm": "2019-10-01 11:41:46",
+     "url": "https://www.cnj.jus.br/download/2677/tribunal-de-justica-do-estado-do-tocantins/83213/relatorio-de-inspecao-nupemec-cejusc-tjto-2018"
+    },
+    {
+     "id": 83210,
+     "titulo": "Relatorio_Unidades_Judiciais_TJTO_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1138740,
+     "publicadoEm": "2019-10-01 11:41:45",
+     "url": "https://www.cnj.jus.br/download/2677/tribunal-de-justica-do-estado-do-tocantins/83210/relatorio_unidades_judiciais_tjto_2018"
+    },
+    {
+     "id": 83215,
+     "titulo": "Relatorio_Inspecao_Unidades_Adm_TJTO_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 2397439,
+     "publicadoEm": "2019-10-01 11:41:47",
+     "url": "https://www.cnj.jus.br/download/2677/tribunal-de-justica-do-estado-do-tocantins/83215/relatorio_inspecao_unidades_adm_tjto_2018"
+    },
+    {
+     "id": 83212,
+     "titulo": "Relatorio_Informatica_TJTO_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 956396,
+     "publicadoEm": "2019-10-01 11:41:46",
+     "url": "https://www.cnj.jus.br/download/2677/tribunal-de-justica-do-estado-do-tocantins/83212/relatorio_informatica_tjto_2018"
+    },
+    {
+     "id": 83211,
+     "titulo": "Relatorio_INSP_ESMAT_TJTO_2018",
+     "extensao": "pdf",
+     "tamanhoBytes": 1061896,
+     "publicadoEm": "2019-10-01 11:41:45",
+     "url": "https://www.cnj.jus.br/download/2677/tribunal-de-justica-do-estado-do-tocantins/83211/relatorio_insp_esmat_tjto_2018"
+    },
+    {
+     "id": 83216,
+     "titulo": "Inspeção 2009",
+     "extensao": "pdf",
+     "tamanhoBytes": 4257131,
+     "publicadoEm": "2019-10-01 11:41:47",
+     "url": "https://www.cnj.jus.br/download/2677/tribunal-de-justica-do-estado-do-tocantins/83216/inspecao-2009-7"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2678,
+   "orgao": "tribunal-de-justica-militar-do-estado-do-rio-grande-do-sul",
+   "orgaoTitulo": "Tribunal de Justiça Militar do Estado do Rio Grande do Sul",
+   "relatorios": [
+    {
+     "id": 83255,
+     "titulo": "Inspeção 2008",
+     "extensao": "pdf",
+     "tamanhoBytes": 47384,
+     "publicadoEm": "2019-10-01 11:48:15",
+     "url": "https://www.cnj.jus.br/download/2678/tribunal-de-justica-militar-do-estado-do-rio-grande-do-sul/83255/inspecao-2008-2"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2689,
+   "orgao": "tribunal-regional-do-trabalho-da-7a-regiao",
+   "orgaoTitulo": "Tribunal Regional do Trabalho da 7ª Região",
+   "relatorios": [
+    {
+     "id": 83256,
+     "titulo": "Correição Precatórios 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 2263694,
+     "publicadoEm": "2019-10-01 11:48:49",
+     "url": "https://www.cnj.jus.br/download/2689/tribunal-regional-do-trabalho-da-7a-regiao/83256/correicao-precatorios-2013-8"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2692,
+   "orgao": "tribunal-regional-do-trabalho-da-13a-regiao",
+   "orgaoTitulo": "Tribunal Regional do Trabalho da 13ª Região",
+   "relatorios": [
+    {
+     "id": 83257,
+     "titulo": "Correição Precatórios 2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 1659546,
+     "publicadoEm": "2019-10-01 11:50:01",
+     "url": "https://www.cnj.jus.br/download/2692/tribunal-regional-do-trabalho-da-13a-regiao/83257/correicao-precatorios-2013-9"
+    }
+   ]
+  },
+  {
+   "categoriaId": 2693,
+   "orgao": "tribunal-regional-do-trabalho-da-14a-regiao",
+   "orgaoTitulo": "Tribunal Regional do Trabalho da 14ª Região",
+   "relatorios": [
+    {
+     "id": 83258,
+     "titulo": "correicao_precatorio_trt14_2013",
+     "extensao": "pdf",
+     "tamanhoBytes": 3304868,
+     "publicadoEm": "2019-10-01 11:50:35",
+     "url": "https://www.cnj.jus.br/download/2693/tribunal-regional-do-trabalho-da-14a-regiao/83258/correicao_precatorio_trt14_2013"
+    }
+   ]
+  }
+ ],
+ "totalOrgaos": 32,
+ "totalRelatorios": 330,
+ "totalBytes": 1711702368
+}

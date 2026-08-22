@@ -7,6 +7,13 @@
 > foram medidas contra as fontes reais — 5 agentes, 295 chamadas de ferramenta,
 > ~29 endpoints batidos. Todo número abaixo tem origem medida e data. O que
 > não foi medido está dito com todas as letras.
+>
+> ⚠️ **E um veredito da sondagem já foi DERRUBADO no mesmo dia.** Ela reprovou
+> a frente correicional inteira depois de medir as páginas HTML do CNJ (270 KB
+> linkando regimento interno). O acervo existia noutra rota: **467 relatórios
+> de inspeção, ~2 GB, JSON puro, sem login** (§2, frente 0). Fica registrado
+> porque a lição é geral: **medir a página que fala do assunto não mede a
+> fonte.**
 
 ---
 
@@ -43,7 +50,75 @@ quem fica de fora.
 
 A sondagem mediu quatro frentes e reprovou uma inteira (a disciplinar, §4). O
 que sobrou vai na ordem abaixo, que é ordem de **valor por custo**, não de
-elegância.
+elegância. A frente 0 chegou depois da sondagem e passou na frente de todas.
+
+### 0ª — Relatórios de inspeção da Corregedoria Nacional ⭐⭐ *achado do dia* ✅ *já coletado*
+
+**É o que a sondagem tinha dado como inexistente.** O acervo não está nas
+páginas do CNJ sobre correições — está na biblioteca de documentos do WordPress
+(plugin WPFD), que responde **JSON puro, sem login, sem captcha**.
+
+Coletor: `etl/betim/etl/apis/cnj_inspecoes.py`.
+
+| Medido em 22/08/2026 | |
+|---|---|
+| Categorias de órgão | **32** — os 27 TJs, mais TRFs, TRTs e TJMs |
+| Relatórios | **330** (o catálogo bruto da faixa varrida tem 467 arquivos) |
+| Volume | **~1,7 GB** |
+| Série | **2008 → 2026** |
+| Só do TJMG | **13 relatórios, 2012 → 2026, 65,6 MB** |
+
+**O relatório do TJMG de 2026 já foi dissecado** (`cnj-inspecao-tjmg-2026.json`):
+
+- **1.388 páginas, 2,9 milhões de caracteres de texto real** — não é
+  digitalizado, é texto extraível
+- Processo CNJ **0000675-79.2026.2.00.0000**, Portaria nº 3 de 02/02/2026,
+  assinado em 08/07/2026
+- **241 seções** de "Achados e Determinações"/"Recomendações" lidas, contra
+  **247 que o sumário lista** (97,6%)
+- **140 com conteúdo**, 101 dizendo que não há achado
+- **74 seções de achado com texto substantivo**, distribuídas em **100 unidades
+  distintas**
+- Granularidade que ninguém publica: **gabinete por gabinete** (36
+  desembargadores nomeados) e **vara por vara** (76 varas), mais uma seção
+  inteira sobre **unidades prisionais** — que casa direto com a frente CNIEP
+
+**Exemplos do que está escrito lá dentro:** pautas de audiência marcadas para
+**2029**; gabinete com 2.151 feitos distribuídos contra 1.470 baixados,
+cumprindo **86% da Meta Nacional 1**; na Vara de Execuções Penais de BH,
+processos de regime aberto tramitando no fluxo "fechado e semiaberto" e
+vice-versa; e, na 1ª Vara de Garantias de BH, pessoa presa que **só é conduzida
+à audiência de custódia no dia seguinte**, e que, se obtém liberdade com
+monitoramento, **volta ao presídio e só é monitorada no dia posterior**.
+
+⚠️ **Três armadilhas medidas, e a terceira é grave:**
+
+1. **O `token` da URL de download rotaciona.** A URL copiada do navegador
+   (`...&token=56ae71a6...`) traz token diferente do que a API devolve minutos
+   depois (`...&token=89a9bcdb...`). O campo **`linkdownload` é permalink sem
+   token** — conferido, mesmo arquivo, 14.970.417 bytes. **Só ele entra no
+   dado.**
+2. **Não há rota de listagem de categorias** (`categories.getCategories` = HTTP
+   500). O universo se descobre varrendo id, e por isso o dado registra a faixa
+   varrida: contagem sem faixa mente por omissão.
+3. 🚨 **O CNJ publica CPF de pessoa física dentro do relatório.** Medido: **6
+   ocorrências válidas por dígito verificador** no TJMG 2026 — particulares
+   (compradores e vendedores de um lote, um delegatário com pendência fiscal),
+   na seção de serventias extrajudiciais. O coletor **redige na origem, por
+   mod-11 sobre o texto**, e o PDF original **não é espelhado**. Ver §5.
+
+⚠️ **E a capa do processo diz "Segredo de justiça? SIM"**, embora o CNJ sirva o
+arquivo publicamente na própria biblioteca. É contradição do órgão, não nossa —
+mas por isso o projeto publica **extrato estruturado com link para a origem**, e
+não cópia do PDF.
+
+**A trava que evitou erro grave:** no corpo, o cabeçalho de unidade quebra em
+várias linhas (às vezes uma palavra por linha). Casar por linha falhava em
+silêncio e a seção **herdava a unidade anterior — atribuindo o achado ao
+desembargador errado** (as seções 4.6.x saíam com o nome da desembargadora do
+4.5). A correção foi usar o **sumário do próprio documento** como índice, e o
+extrator **para** se o corpo render menos de 90% das seções que o sumário lista.
+É a mesma tática que pegou o pareamento errado no relatório do JUSTA (§3).
 
 ### 1ª — Cobertura da Defensoria por comarca ⭐ *a de melhor razão custo/valor*
 
@@ -196,7 +271,14 @@ muda entre republicações — os próprios nomes trazem `v2`/`v3`, sinal de
 **retificação silenciosa**. É o custo 10× da regra da casa, e entregaria pior a
 mesma métrica que o CSV do Justiça em Números já dá.
 
-### A frente disciplinar INTEIRA
+### A frente disciplinar — reprovada, mas com o limite exato
+
+⚠️ **Correção de 22/08/2026.** O veredito original desta seção era "a frente
+disciplinar INTEIRA está reprovada". **Está errado assim escrito.** O que se
+mede abaixo reprova a consulta a **processo disciplinar e seu resultado**. Não
+reprova a **atividade correicional**: os achados da Corregedoria Nacional
+existem, em texto, em 330 relatórios (§2, frente 0). O que segue vale só para o
+recorte disciplinar.
 
 | Fonte | Medido |
 |---|---|
@@ -272,6 +354,24 @@ publica quando o assunto é reclamação contra ela mesma.
 ⚠️ **E o gap é de prática, não de descumprimento:** nem a Res. CNJ 215/2015 nem
 a Res. CNMP 89/2012 exigem essa publicação. **Isso torna a matéria mais forte,
 não mais fraca** — e evita publicar acusação errada de ilegalidade.
+
+### 🚨 E uma que NÃO é matéria: é comunicação ao órgão
+
+**O CNJ publica CPF de pessoa física no relatório de inspeção do TJMG 2026.**
+Medido: **6 ocorrências válidas por dígito verificador**, de particulares — nome
+completo ao lado do CPF, em atos de cartório (compradores e vendedores de um
+lote; um delegatário com pendência fiscal). O arquivo está aberto na
+biblioteca pública do CNJ, sem login.
+
+**Isto não vira matéria antes de virar comunicação.** O caminho é o mesmo do
+`deletearquivo` da SEMAD, que já está em rascunho no projeto: comunicar ao órgão
+e dar prazo. Publicar antes disso aumenta a exposição das pessoas — que é
+exatamente o dano que se quer apontar.
+
+**O que o projeto faz enquanto isso:** redige na origem (mod-11 sobre o texto,
+nunca por rótulo da fonte), **não espelha o PDF**, e publica extrato com link
+para a origem. Ver [[flag_de_pessoa_fisica_mente]] e
+[[cpf_dentro_de_ementa_oficial]].
 
 ---
 
@@ -351,6 +451,16 @@ liberar o meio-termo sem depender dele.
    Defensoria em 1º e a Ouvidoria em 4º.
 5. **Regra das cinco coisas** (`AGENTS.md`): gráfico, cartões, CSV do filtrado,
    filtro e ordenação. Vale para toda página nova desta frente.
+6. **Medir a página que fala do assunto não mede a fonte.** Custou o veredito
+   errado da frente correicional: 270 KB de HTML institucional diziam "não há
+   nada", e o acervo de 2 GB estava a uma rota de distância. Antes de reprovar
+   uma frente, procurar a **biblioteca de arquivos** do site, não só a página
+   temática.
+7. **Todo PDF de layout exige um segundo olhar do próprio documento.** Sumário,
+   top-5, resumo executivo — qualquer recorte que o documento renderize por
+   conta própria vira gabarito, e o extrator **para** se divergir. Pegou erro
+   grave duas vezes no mesmo dia: cinco estados trocados no JUSTA (§3) e achado
+   atribuído ao desembargador errado no CNJ (§2).
 
 ---
 
@@ -360,6 +470,10 @@ liberar o meio-termo sem depender dele.
 |---|---|---|
 | S | sondagem das 4 frentes | ✅ **fechada em 22/08/2026** — ~29 endpoints medidos |
 | $ | JUSTA — orçamento da justiça por estado | ✅ **coletado e conferido** (21 estados, MG 2º em ambos os eixos) |
+| 0 | catálogo nacional de inspeções do CNJ | ✅ **coletado** — 32 órgãos, 330 relatórios, ~1,7 GB, 2008→2026 |
+| 0b | achados do relatório TJMG 2026 | ✅ **extraído e conferido** — 140 seções com conteúdo, 100 unidades, 0 CPF no dado |
+| 0c | demais 12 relatórios do TJMG (2012→2023) | ⬜ mesmo coletor, série histórica pronta para rodar |
+| 0d | os outros 31 órgãos | ⬜ decidir recorte: MG basta para o portal hoje |
 | 1 | cobertura da Defensoria por comarca | ⬜ **próxima** — 4 fontes medidas, denominador resolvido (298) |
 | 2 | inspeções em presídios (CNIEP) | ⬜ 3 rotas JSON medidas; conteúdo da inspeção dá 404 |
 | 3 | congestionamento do TJMG (Justiça em Números) | ⬜ ZIP medido; falta raspar o link vigente |
@@ -368,6 +482,7 @@ liberar o meio-termo sem depender dele.
 | M | matéria das 3 lacunas | ⬜ pronta para escrever, tudo medido |
 | L | pedidos de LAI pelo e-SIC | ⬜ 4 pedidos priorizados (§6) — ação humana |
 | C | notificar o CNJ sobre o DataJud | ⬜ um e-mail (§7) |
+| D | 🚨 comunicar ao CNJ o CPF exposto no relatório | ⬜ **antes de qualquer publicação sobre isso** (§5) |
 
 ---
 
