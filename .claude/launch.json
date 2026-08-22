@@ -5,175 +5,368 @@
       "//": "runtimeExecutable era um caminho absoluto de OUTRO usuario (C:\\Users\\teste\\...), entao esta config nao subia em nenhuma outra maquina. `npm` resolvido pelo PATH funciona nas duas.",
       "name": "controle-popular-web-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web"
+      ],
       "port": 3000
     },
     {
       "//": "Porta separada so para este worktree (cp-ambiental-copam) -- a 3000 pode ja estar ocupada por outro worktree rodando em paralelo, e anexar nela mostraria o codigo ERRADO sem aviso.",
       "name": "cp-ambiental-copam-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3901"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3901"
+      ],
       "port": 3901
     },
     {
       "//": "Porta separada so para este worktree (cp-vicio-legislativo).",
       "name": "cp-vicio-legislativo-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3902"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3902"
+      ],
       "port": 3902
     },
     {
       "//": "Porta separada so para este worktree (cp-ambiental-barragens-tela) -- mesmo motivo da config acima.",
       "name": "cp-ambiental-barragens-tela-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3903"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3903"
+      ],
       "port": 3903
     },
     {
       "//": "Porta separada so para este worktree (cp-ambiental-licenciamento) -- mesmo motivo da entrada acima: 3000 e 3901 podem estar ocupadas por outros worktrees em paralelo.",
       "name": "cp-ambiental-licenciamento-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3904"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3904"
+      ],
       "port": 3904
     },
     {
       "//": "Porta separada so para este worktree (cp-ambiental-legislacao) -- mesma razao da 3901 acima.",
       "name": "cp-ambiental-legislacao-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3905"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3905"
+      ],
       "port": 3905
     },
     {
       "//": "Porta separada so para este worktree (cp-temas-legislacao) -- mesma razao das entradas acima.",
       "name": "cp-temas-legislacao-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3906"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3906"
+      ],
       "port": 3906
     },
     {
       "//": "Porta separada so para este worktree (painel-lai) -- mesma razao das entradas acima.",
       "name": "painel-lai-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3907"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3907"
+      ],
       "port": 3907
     },
     {
       "//": "Porta separada so para este worktree (cp-rodape) -- mesma razao das entradas acima.",
       "name": "cp-rodape-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3908"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3908"
+      ],
       "port": 3908
     },
     {
       "//": "Porta separada so para este worktree (cp-denuncia-f23) -- mesma razao das entradas acima. `next dev`, nao `wrangler dev --local`: bug preexistente de '__name is not defined' quebra hidratacao sob wrangler local (nao e desta feature; producao esta limpa).",
       "name": "cp-denuncia-f23-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3909"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3909"
+      ],
       "port": 3909
     },
     {
       "//": "Porta separada so para este worktree (cp-paraopeba) -- mesma razao das entradas acima. Outra sessao ja tinha um dev server rodando neste worktree quando esta config foi criada; porta propria evita anexar no servidor errado.",
       "name": "cp-paraopeba-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3910"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3910"
+      ],
       "port": 3910
     },
     {
       "//": "Porta separada so para o worktree cp-legis-unificada. As duas frentes pediram 3910 e colidiram na mescla -- porta por worktree e o que impede uma sessao anexar no dev server da outra, que e falha silenciosa: o servidor responde, so que com o codigo errado.",
       "name": "cp-legis-unificada-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3911"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3911"
+      ],
       "port": 3911
     },
     {
       "//": "Porta separada so para este worktree (cp-ux, branch worktree/ux) -- revisao critica de onboarding/acessibilidade/design system, mesma razao das entradas acima.",
       "name": "cp-ux-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3912"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3912"
+      ],
       "port": 3912
     },
     {
       "//": "Porta separada so para este worktree (cp-termo-lgpd) -- termo de uso e origem dos dados. Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
       "name": "cp-termo-lgpd-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3024"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3024"
+      ],
       "port": 3024
     },
     {
       "//": "Porta separada so para este worktree (cp-normas-urn) -- mesma razao das entradas acima. Convivia com a entrada de cp-termo-lgpd num conflito de rebase em 15/08: as duas frentes acrescentaram no mesmo ponto do arquivo, e as duas devem existir -- nao ha disputa de porta nem de nome.",
       "name": "cp-normas-urn-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3026"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3026"
+      ],
       "port": 3026
     },
     {
       "//": "Porta separada so para este worktree (cp-assistente, assistente de navegacao do N8) -- mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
       "name": "cp-assistente-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3031"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3031"
+      ],
       "port": 3031
     },
     {
       "//": "Porta separada so para este worktree (cp-comunicabr-tela) -- mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
       "name": "cp-comunicabr-tela-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3030"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3030"
+      ],
       "port": 3030
     },
     {
       "//": "Porta separada so para este worktree (cp-ajri) -- catalogo da auditoria socioambiental independente do Acordo de Brumadinho. Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, e sem aviso nenhum.",
       "name": "cp-ajri-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3033"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3033"
+      ],
       "port": 3033
     },
     {
       "//": "Porta separada so para este worktree (cp-sp-educacao) -- mesma razao das entradas acima. Sem DATABASE_URL a rota /[municipio]/educacao cai em 'Nenhum dado disponivel' e o indice fatiado sai vazio (manifesto com total 0), entao o que se verifica nesta porta e a pagina viva e o contrato de vazio, nao o volume.",
       "name": "cp-sp-educacao-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3032"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3032"
+      ],
       "port": 3032
     },
     {
       "//": "Porta separada so para este worktree (cp-fontes-paraopeba, execucao do Acordo por municipio) -- mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso. Conflitou com cp-ajri e cp-sp-educacao no rebase de 15/08: as tres acrescentaram no mesmo ponto do arquivo, e as tres devem existir -- as portas 3032, 3033 e 3034 nao disputam nada.",
       "name": "cp-fontes-paraopeba-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3034"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3034"
+      ],
       "port": 3034
     },
     {
       "//": "Porta separada so para este worktree (cp-fichas-legiveis) -- a ficha em linguagem acessivel de cada documento da auditoria AJRI. Mesma razao das entradas acima, e aqui ela morde mais forte: o worktree cp-ajri (porta 3033) serve a MESMA rota /paraopeba/auditoria SEM a ficha, entao anexar na porta errada mostraria a pagina antiga com cara de resultado. Quarto conflito do dia neste arquivo, e a quarta vez que a resolucao e manter as duas entradas: 3034 e 3035 nao disputam nada.",
       "name": "cp-fichas-legiveis-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3035"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3035"
+      ],
       "port": 3035
     },
     {
       "//": "Porta separada so para este worktree (cp-legislacao-fatiado) -- mesma razao das entradas acima: anexar no dev server de outro checkout responde 200 com o codigo ERRADO, e sem aviso. Quinto conflito do dia neste arquivo, e a quinta vez que a resolucao e manter todas as entradas: 3034, 3035 e 3036 nao disputam nada. Sem DATABASE_URL a rota /[municipio]/camara/legislacao cai no ramo 'Nenhuma norma encontrada no momento' (a lista nem chega a montar) e /camara/legislacao/dados/manifesto.json responde o manifesto vazio, total 0. Nesta porta se verifica a pagina viva, a rota de dados de pe e o contrato de vazio -- nao o volume, que so um build com banco mede.",
       "name": "cp-legislacao-fatiado-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3036"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3036"
+      ],
       "port": 3036
     },
     {
       "//": "Porta separada so para este worktree (cp-degrada-estatico). E a UNICA entrada do arquivo que nao sobe o alvo Cloudflare: `dev-alvo-estatico.mjs` define PAGES_BASE_PATH=\"\", o que tira todas as rotas *.din.ts do build -- e e exatamente nesse alvo que o assistente precisa degradar com honestidade. O `npm run dev` das outras entradas nao reproduz o defeito, porque la as rotas existem. Quinto conflito do dia neste arquivo, e o primeiro em que manter as duas versoes NAO basta: esta entrada nasceu pedindo a 3033, que cp-ajri-dev ja ocupa. Manter as duas cruas criaria a colisao de porta que estas entradas existem para evitar -- entao ela foi movida para a 3039, a primeira livre acima das reservadas hoje (3036, 3037 e 3038).",
       "name": "cp-degrada-estatico-dev",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["apps/web/scripts/dev-alvo-estatico.mjs", "--port", "3039"],
+      "runtimeArgs": [
+        "apps/web/scripts/dev-alvo-estatico.mjs",
+        "--port",
+        "3039"
+      ],
       "port": 3039
     },
     {
       "//": "Porta separada so para este worktree (cp-judiciario-procedencia) -- correcao das afirmacoes de procedencia do eixo Judiciario. Mesma razao das entradas acima.",
       "name": "cp-judiciario-procedencia-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3028"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3028"
+      ],
       "port": 3028
     },
     {
       "//": "Porta separada so para este worktree (cp-repasse-853) -- repasse do Acordo de Brumadinho aos 853 municipios de MG, no bloco de /[municipio]/prefeitura. Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso. Detalhe proprio desta frente: o bloco so renderiza em cidade de Minas, entao /sp/prefeitura NAO deve mostra-lo -- ausencia ali e o comportamento certo, e nao prova de porta errada.",
       "name": "cp-repasse-853-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3038"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3038"
+      ],
       "port": 3038
     },
     {
@@ -182,6 +375,21 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3040"],
       "port": 3040
+    },
+    {
+      "//": "Porta separada so para este worktree (cp-ambiental-estudos) -- subpagina /ambiental/estudos com os EIA/RIMA e demais documentos do licenciamento, mais a camada de estudos no globo. Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso. Detalhe proprio desta frente: a verificacao do globo NAO usa esta porta -- o globo e asset estatico e exige porta nova a cada checagem, porque recarregar nao invalida modulo ES.",
+      "name": "cp-ambiental-estudos-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3021"
+      ],
+      "port": 3021
     }
   ]
 }

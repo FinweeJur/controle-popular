@@ -73,6 +73,18 @@ export const ROTULOS = {
   ementa: 'Ementa',
   endereco_extraido: 'Lugar citado na norma',
   confianca: 'Confiança da localização',
+  // Estudos de impacto em audiência pública (camada `estudos-ambientais`,
+  // 20/08/2026). `audiencias` e `estudos_enumeraveis` são números diferentes de
+  // propósito: a diferença entre eles é a medida de quanto do acervo o Estado
+  // publica como link que NÃO dá para abrir de forma automática (Dropbox, MEGA,
+  // site de consultoria).
+  audiencias: 'Audiências com EIA/RIMA',
+  estudos_enumeraveis: 'Arquivos de estudo que abrem',
+  eia: 'EIA (estudo de impacto)',
+  rima: 'RIMA (relatório de impacto)',
+  ultima_publicacao: 'Publicação mais recente',
+  link_estudos: 'Lista dos estudos',
+  link_fonte_oficial: 'Fonte oficial',
   link_fonte: 'Norma original',
   // Terras indígenas (FUNAI, `terras-indigenas`). `fase_ti` é o campo que
   // mais importa nesta ficha — ver a nota grande em VALORES sobre por que
@@ -430,6 +442,17 @@ export function formatarValor(chave, valor) {
   // Normas geolocalizadas: link para a fonte, confiança em português, data
   // no formato brasileiro. `link_fonte` sai como <a> -- as outras camadas
   // não têm campo de URL, então este é o primeiro caso desse tipo aqui.
+  // Mesma doutrina de `link_fonte` logo abaixo: valida o esquema antes de virar
+  // href, escapa antes de entrar no atributo, e quando a URL não passa mostra o
+  // texto cru em vez de link morto. O rótulo diz o DESTINO, nunca "clique aqui".
+  if ((chave === 'link_estudos' || chave === 'link_fonte_oficial') && valor) {
+    const destino = urlSegura(valor);
+    if (!destino) return escapar(valor);
+    const rotulo = chave === 'link_estudos'
+      ? 'Ver os estudos deste município ↗'
+      : 'Abrir a consulta de audiências da Semad ↗';
+    return `<a href="${escapar(destino)}" target="_blank" rel="noopener">${rotulo}</a>`;
+  }
   if (chave === 'link_fonte' && valor) {
     // A URL vem RASPADA de portal municipal: valida o esquema antes de virar
     // `href` e escapa antes de entrar no atributo. Sem as duas coisas, um
@@ -464,7 +487,7 @@ export function formatarValor(chave, valor) {
  * própria `formatarValor` escapou o que interpolou — é o que o ramo de
  * `link_fonte` faz.
  */
-const CHAVES_COM_HTML = new Set(['link_fonte']);
+const CHAVES_COM_HTML = new Set(['link_fonte', 'link_estudos', 'link_fonte_oficial']);
 
 /** Monta as linhas <tr> da ficha de uma área, já traduzidas. */
 export function linhasDaFicha(props) {

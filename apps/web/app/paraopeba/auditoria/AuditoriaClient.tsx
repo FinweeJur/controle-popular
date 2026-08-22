@@ -666,7 +666,10 @@ const VEREDITO_COR: Record<VereditoAjri, string> = {
  * ═══ O FIM DA FICHA APONTA PARA O QUE O PORTAL JÁ TEM ═══
  *
  * Mesmo tema, até 6 meses antes ou depois, no máximo 3 de cada acervo, os
- * mais próximos no tempo — a régua inteira está em
+ * mais próximos no tempo — COM UMA EXCEÇÃO declarada: os estudos da perícia
+ * da UFMG ligam por tema e ignoram a janela, porque estudo de perícia é
+ * referência permanente sobre o eixo, não notícia do momento da ficha (o
+ * porquê está no cabeçalho de `relacionados.ts`). A régua inteira está em
  * `lib/paraopeba/relacionados.ts`, sem modelo, com os números pinçados em
  * `relacionados.test.ts`. Ficha do mesmo catálogo abre com o código na
  * busca (`?q=`); notícia de ATI, instituição de justiça e imprensa abre na
@@ -678,7 +681,8 @@ function RelacionadosDaFicha({ doc }: { doc: DocumentoAuditoriaAjri }) {
     rel.mesmosTemas.length +
     rel.noticiasAti.length +
     rel.noticiasIj.length +
-    rel.noticiasImprensa.length;
+    rel.noticiasImprensa.length +
+    rel.estudosPericia.length;
 
   if (total === 0) return null;
 
@@ -701,6 +705,34 @@ function RelacionadosDaFicha({ doc }: { doc: DocumentoAuditoriaAjri }) {
                     {x.codigo}
                   </a>{" "}
                   · {formatDateBR(x.data)}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {rel.estudosPericia.length > 0 && (
+          <div>
+            <p className="font-medium text-text">
+              Perícia da UFMG ·{" "}
+              <a
+                href="/paraopeba/pericia"
+                className="font-normal text-primary underline underline-offset-2 hover:text-accent"
+              >
+                ver a página da perícia
+              </a>
+            </p>
+            <ul className="mt-1 space-y-1">
+              {rel.estudosPericia.map((e) => (
+                <li key={e.url}>
+                  <a
+                    href={e.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline underline-offset-2 hover:text-accent"
+                  >
+                    {decodeURIComponent(e.nomeArquivo).replace(/\.pdf$/i, "").replace(/_/g, " ")} ↗
+                  </a>
+                  {e.anoMes ? ` · ${e.anoMes}` : ""}
                 </li>
               ))}
             </ul>
