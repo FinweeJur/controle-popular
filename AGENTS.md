@@ -18,19 +18,25 @@ mesmo quando cada dado isolado está certo**.
 
 ## Por onde começar a ler
 
-`docs/` tem **8 documentos na raiz** (curadoria de 16/08) + `planos/` (o que
-está por fazer) + `_historico/` (entregue, só arqueologia). **Ninguém precisa
-ler tudo. Nunca.**
+`docs/` foi reorganizado em 2026-08-22. A entrada agora é `docs/README.md`;
+o template, as regras de escrita e a estrutura de pastas estao em
+`docs/GUIA-DE-DOCUMENTACAO.md`. **Ninguem precisa ler tudo. Nunca.**
 
 | Arquivo | Quando |
 |---|---|
-| **`docs/PRODUTO.md`** | sempre — é a porta: o que é o portal, frentes, regras editoriais |
-| `docs/ESTADO.md` | a fila viva, ranqueada por custo × benefício, e os bloqueios |
-| `docs/DESENVOLVIMENTO.md` | **antes do primeiro commit** — worktrees, commit, push |
-| `docs/FONTES.md` | mexer em fonte ou dado coletado |
-| `docs/ARQUITETURA.md` | mexer em rota, payload ou banco |
-| `docs/OPERACAO.md` | publicar, coletar, buildar |
-| `docs/EDICAO.md` | editar conteúdo sem código |
+| **`docs/01-produto/PRODUTO.md`** | sempre — é a porta: o que é o portal, frentes, regras editoriais |
+| `docs/02-estado/ESTADO.md` | a fila viva, ranqueada por custo × benefício, e os bloqueios |
+| `docs/03-desenvolvimento/DESENVOLVIMENTO.md` | **antes do primeiro commit** — worktrees, commit, push |
+| `docs/04-arquitetura/ARQUITETURA.md` | mexer em rota, payload ou banco |
+| `docs/05-operacao/OPERACAO.md` | publicar, coletar, buildar |
+| `docs/06-fontes/FONTES.md` | mexer em fonte ou dado coletado |
+| `docs/07-edicao/EDICAO.md` | editar conteúdo sem código |
+| `docs/planos/` | o que está por fazer |
+| `docs/historico/` | entregue ou superado, só arqueologia |
+
+Antes de criar ou mover documentacao, consulte `docs/GUIA-DE-DOCUMENTACAO.md`.
+A validacao local roda com `python scripts/validar-documentacao.py`; a CI
+roda o mesmo script em `.github/workflows/docs.yml`.
 
 ## Os dois tetos que mandam na arquitetura
 
@@ -222,7 +228,7 @@ apps/web/lib/         lógica pura + testes ao lado (padrão: <mod>.ts + <mod>.t
 apps/web/lib/db/      Drizzle: schema.ts e queries/ (Postgres)
 apps/web/data/        dado versionado, lido no build — compacte antes de commitar
 scripts/              coletores e rotinas (rotina-local.mts publica)
-docs/                 ver LEIA-PRIMEIRO.md
+docs/                 ver docs/README.md e docs/GUIA-DE-DOCUMENTACAO.md
 ```
 
 **Compactação de dado**: `apps/web/lib/comunicabr/arquivo.ts` e
