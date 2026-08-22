@@ -26,6 +26,8 @@ export const generateMetadata = metadataDaCidade(
 const TABS: { label: string; href: string | null }[] = [
   { label: "Visão geral", href: "/prefeitura" },
   { label: "Contratos", href: "/prefeitura/contratos" },
+  // Sprint 2 do plano de revisão de dados — ranking de fornecedores.
+  { label: "Fornecedores", href: "/prefeitura/fornecedores" },
   { label: "Licitações", href: "/prefeitura/licitacoes" },
   { label: "Cultura", href: "/prefeitura/cultura" },
   { label: "Servidores", href: "/prefeitura/servidores" },
@@ -227,6 +229,13 @@ export default async function PrefeituraHubPage({
                 titulo: `${item.nome}: ${formatCurrencyBRL(item.valor)} somando todos os contratos`,
               }))}
             />
+            <p className="mt-3 text-xs text-text-soft">
+              Os cinco primeiros do acumulado. Ranking completo com filtros,
+              CSV e indícios em{" "}
+              <Link href="/prefeitura/fornecedores" className="font-medium text-accent hover:underline">
+                Maiores fornecedores →
+              </Link>
+            </p>
           </DataCard>
         </div>
       )}
