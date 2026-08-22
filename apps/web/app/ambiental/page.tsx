@@ -11,6 +11,7 @@ import { COBERTURA_DECISOES_LICENCIAMENTO } from "@/lib/ambiental/decisoes-licen
 import { contarLegislacaoAmbiental } from "@/lib/db/queries/legislacao-ambiental";
 import { contarDireitoCritico } from "@/lib/db/queries/direito-critico";
 import { contarPatrimonioTombado } from "@/lib/db/queries/patrimonio-tombado";
+import { lerEstudos } from "@/lib/ambiental/estudos";
 
 /**
  * Home da zona /ambiental.
@@ -43,6 +44,7 @@ export default async function AmbientalHome() {
       contarPatrimonioTombado(),
     ]);
   const temBarragens = barragens.totalFeam > 0 || barragens.totalSnisb > 0;
+  const { resumo: resumoEstudos } = lerEstudos();
 
   const BLOCOS = [
     {
@@ -131,6 +133,19 @@ export default async function AmbientalHome() {
       href: "/patrimonio-cultural",
       pronta: totalPatrimonio > 0,
       linkTexto: "Ver o patrimônio tombado →",
+    },
+    {
+      titulo: "Estudos de impacto",
+      linha:
+        resumoEstudos.linhas > 0
+          ? `${formatNumberBR(resumoEstudos.audiencias)} audiências, ${formatNumberBR(resumoEstudos.linhas)} links de estudo coletados`
+          : "Audiências públicas de EIA/RIMA — coleta ainda não rodou",
+      texto:
+        "O Estado não hospeda o EIA/RIMA: publica um link para a nuvem do empreendedor. Aqui está a distribuição por repositório e o porquê disso importar — link de estudo que embasou licença já responde 404.",
+      fase: "F9",
+      href: "/estudos",
+      pronta: resumoEstudos.linhas > 0,
+      linkTexto: "Ver os estudos de impacto →",
     },
   ];
 

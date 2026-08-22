@@ -403,6 +403,30 @@ export const LAYER_REGISTRY = [
   // A amostra que está sendo conferida à mão (pipeline/checagem_g0.py). Nasce
   // desligada: é instrumento de trabalho, não resultado — quem abre o mapa pela
   // primeira vez não deve topar com ela achando que é mais uma camada de dado.
+  // Estudos de impacto em audiencia publica (SEMAD-MG, 20/08/2026).
+  //
+  // ⚠️ COR: O CÍRCULO DE MATIZ ACABOU, e isto é medição, não desculpa.
+  // Ocupadas hoje: 35 cores. A maior lacuna livre mede 17,3° (entre
+  // --layer-quilombolas 128,8° e --layer-sigmine-operacao 146,05°), o que dá
+  // 8,65° de separação — ABAIXO do piso de 11,6° que css/tokens/colors.css usa
+  // desde a leva de 30/07. As duas maiores lacunas do círculo (mid 2,55° e mid
+  // 340,85°) já foram consumidas pelas camadas de Brumadinho, e a de 326° é
+  // reservada a --fiction. Não existe matiz novo que passe no piso.
+  //
+  // Em vez de forçar um matiz que não passa, esta camada usa o padrão que o
+  // próprio repo já tem para camada IRMÃ: mesmo matiz, LUMINÂNCIA diferente —
+  // é o que --layer-vazio-curvelo (oklch 0.845) faz com --layer-vazio-bacia
+  // (oklch 0.754) no mesmo 293,5°. Aqui a irmã é --layer-embargos
+  // (oklch 0.754 0.139 223,5, "áreas embargadas por infração ambiental"), que
+  // está no MESMO grupo 'pistas' e no mesmo assunto: fiscalização ambiental.
+  // oklch(0.845 0.139 223,5) = #49dfff. A leitura fica: ciano escuro é a
+  // infração já lavrada, ciano claro é o processo que ainda está em decisão.
+  {
+    id: 'estudos-ambientais', label: 'Estudos de impacto em audiência pública',
+    hint: 'Onde há processo de licenciamento com EIA/RIMA aberto a audiência pública. Um ponto por município, com a contagem de audiências e quantos arquivos de estudo dá para abrir.',
+    aviso: 'O ponto fica no centro do município, não no empreendimento: só 15% dos processos em audiência têm coordenada publicada (medido — audiência acontece com o processo EM ANÁLISE, e a camada de licenças só traz o que já foi licenciado). E o Estado não hospeda o estudo: o link leva à nuvem do empreendedor (Drive, Dropbox, MEGA, site próprio), que pode sair do ar.',
+    color: 0x49dfff, /* oklch(0.845 0.139 223.5) — irmã clara de --layer-embargos, ver nota acima */ on: false, render: 'point', pointSize: 0.005, listavel: true,
+  },
   {
     // A amostra é dos municípios da bacia (Curvelo, Betim, Contagem, Sete
     // Lagoas, Pará de Minas, Congonhas... — conferido nos dados, não chutado):
@@ -1355,6 +1379,13 @@ export const CAMADAS = [
     hint: '797 áreas embargadas pela fiscalização ambiental de Minas no Jequitinhonha e no Mucuri, somando 4.105 hectares (41 km²). Supressão de vegetação responde por 642 delas. É a única camada do projeto em que o indício não é inferência sobre imagem: cada polígono é um auto de infração que o Estado lavrou.',
     aviso: 'Embargo não é decisão final — cabe defesa e recurso. E recai sobre a área da infração, não sobre o imóvel inteiro. Ausência de embargo aqui não quer dizer regularidade: pode ser só ausência de fiscalização. Nome e documento do autuado não são exibidos.',
     fontes: ['embargos-ambientais-vales'],
+  },
+  {
+    id: 'estudos-ambientais', assunto: 'pistas',
+    label: 'Estudos de impacto em audiência pública',
+    hint: 'Onde há processo de licenciamento com EIA/RIMA aberto a audiência pública. Um ponto por município, com a contagem de audiências e quantos arquivos de estudo dá para abrir.',
+    aviso: 'O ponto fica no centro do município, não no empreendimento — só 15% dos processos em audiência têm coordenada publicada. E o Estado não hospeda o estudo: o link leva à nuvem do empreendedor, que pode sair do ar.',
+    fontes: ['estudos-ambientais'],
   },
   {
     id: 'checagem-g0', assunto: 'pistas',

@@ -36,7 +36,9 @@ import assert from 'node:assert/strict';
 import {
   blocoDeCoordenadas,
   coordenadasDaArea,
+  formatarValor,
   ligarCopiar,
+  linhasDaFicha,
   textoParaPedido,
 } from './rotulos.js';
 
@@ -207,3 +209,40 @@ function domFalso(html) {
   }));
   return { raiz: { querySelectorAll: () => botoes }, ligados };
 }
+
+/* ───────────────────────────────────────────────────────────────────────────
+ * Hiperlink na ficha da camada `estudos-ambientais` (20/08/2026).
+ *
+ * O ramo existe porque a ficha do globo precisa LEVAR ao documento — pedido do
+ * dono: "que o mapa também integre o link pros EIA/RIMA com hiperlinks". E ele
+ * é testado porque emitir HTML dentro de uma tabela montada por interpolação é
+ * exatamente onde uma URL torta vira injeção: `link_estudos` está na lista
+ * branca `CHAVES_COM_HTML`, ou seja, o que ele devolve NÃO é escapado de novo
+ * por `linhasDaFicha`. Se `urlSegura` parar de barrar `javascript:`, é aqui que
+ * quebra — e não em produção.
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+test('link_estudos vira <a> com rótulo que diz o destino', () => {
+  const html = formatarValor('link_estudos', '/ambiental/estudos?municipio=Buritizeiro');
+  assert.match(html, /^<a href="[^"]*Buritizeiro"/);
+  assert.match(html, /Ver os estudos deste município ↗<\/a>$/);
+  assert.match(html, /rel="noopener"/);
+});
+
+test('link_fonte_oficial vira <a> apontando para a consulta da Semad', () => {
+  const html = formatarValor('link_fonte_oficial',
+    'https://sistemas.meioambiente.mg.gov.br/licenciamento/site/consulta-audiencia');
+  assert.match(html, /Abrir a consulta de audiências da Semad ↗/);
+});
+
+test('URL com esquema perigoso NÃO vira link — sai como texto', () => {
+  const html = formatarValor('link_estudos', 'javascript:alert(1)');
+  assert.ok(!html.includes('<a '), 'javascript: jamais pode virar href');
+  assert.match(html, /javascript/);
+});
+
+test('linhasDaFicha não escapa duas vezes as chaves de link novas', () => {
+  const html = linhasDaFicha({ link_estudos: '/ambiental/estudos?municipio=Betim' });
+  assert.ok(html.includes('<a href='), 'a lista branca CHAVES_COM_HTML tem de conter link_estudos');
+  assert.ok(!html.includes('&lt;a'), 'escapado duas vezes: o link apareceria como texto na tela');
+});
