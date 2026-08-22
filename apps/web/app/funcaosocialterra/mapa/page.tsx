@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Cabecalho from "../Cabecalho";
 import GloboIframe from "./GloboIframe";
 import { metadataEditavel } from "@/lib/edicoes";
 
@@ -9,12 +10,24 @@ import { metadataEditavel } from "@/lib/edicoes";
  * O globo é um app pronto e funcional (Three.js puro, sem build) que vivia
  * só em ambiente local, nunca publicado — ver a auditoria que trouxe os
  * arquivos para este portal. Ele já resolve o próprio layout interno (HUD
- * nos 4 cantos do canvas), então esta página só entra com o que ele não
- * tem: cabeçalho do portal e o link de volta ao hub da frente.
+ * nos 4 cantos do CANVAS), então esta página só entra com o que ele não
+ * tem: cabeçalho do portal e navegação para o resto da frente.
  *
- * Sem layout.tsx próprio: `/funcaosocialterra` (o hub) não tem um hoje, e
- * criar um layout de zona só para esta única rota adicionaria cabeçalho ao
- * hub também — mudança de comportamento fora do que foi pedido aqui.
+ * Sem layout.tsx próprio: continua valendo, e agora por mais um motivo. Até
+ * 22/08 a razão era só "criar layout de zona para esta única rota levaria
+ * cabeçalho ao hub também, fora do que foi pedido". Hoje o hub TEM
+ * cabeçalho (`<Cabecalho />`, decisão do dono em `docs/ESTADO.md`, decisão
+ * 5) — mas via componente manual, não `layout.tsx`, porque um layout.tsx
+ * de zona colaria nas três rotas por igual, inclusive nesta, e aqui ele
+ * envolveria `<GloboIframe>` também. `Cabecalho.tsx` explica por que isso é
+ * seguro mesmo assim: o HUD é `position: fixed` DENTRO do documento do
+ * `<iframe>`, não do documento do portal — o cabeçalho do portal, deste
+ * arquivo ou de um layout, nunca fica no mesmo viewport que o HUD.
+ * `layout.tsx` continua fora de cogitação aqui pela razão ORIGINAL: uma
+ * zona com só 3 rotas e navegação já resolvida manualmente nas 3 não ganha
+ * nada com a indireção de um layout — é mecanismo novo para um problema que
+ * o padrão manual já resolve (ver `outrasZonas()`/`lib/zonas.ts` sobre não
+ * reinventar).
  *
  * `?camada=X&idx=N` abre direto na ficha daquela feature (usado pelo link
  * "Ver no mapa" da página da norma) — ver `GloboIframe.tsx`.
@@ -34,24 +47,7 @@ export const dynamic = "force-static";
 export default function MapaTerrasPage() {
   return (
     <div className="flex h-dvh flex-col">
-      <header className="border-b border-border">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-4 px-4 py-3">
-          {/* <a> puro, não Link de zona: a raiz do domínio está fora de
-              /funcaosocialterra, e um wrapper de zona a prefixaria. */}
-          <a href="/" className="font-display text-lg font-bold text-text">
-            Controle Popular{" "}
-            <span className="opacity-60">· Função social da terra</span>
-          </a>
-          <div className="flex flex-1 flex-wrap items-center justify-end gap-2">
-            <a
-              href="/funcaosocialterra"
-              className="rounded-md border border-border px-2.5 py-1 text-xs font-medium text-text-soft hover:border-primary hover:text-text"
-            >
-              ← Voltar para função social da terra
-            </a>
-          </div>
-        </div>
-      </header>
+      <Cabecalho />
 
       {/* <main> em vez do <iframe> solto: dá um alvo semântico à página
           (antes não tinha nenhum), embora não haja texto para o botão
