@@ -190,6 +190,69 @@ export default function InspecoesPage() {
         </ul>
       </section>
 
+      {/* ═══ O QUE ESTÁ ESCRITO LÁ DENTRO ═══ */}
+      <section aria-labelledby="leitura" className="mt-12">
+        <h2 id="leitura" className="font-display text-xl font-bold text-text">
+          O que está escrito lá dentro
+        </h2>
+        <p className="mt-2 max-w-3xl text-[.95em] leading-relaxed text-text-soft">
+          Quatro achados do relatório de 2026, com as palavras do próprio CNJ. Não são os únicos
+          — são os que mexem com liberdade e com dinheiro de quem espera.
+        </p>
+
+        <div className="mt-5 space-y-5">
+          {[
+            {
+              titulo: "Quem é preso em flagrante em Belo Horizonte dorme mais uma noite preso",
+              corpo:
+                "Nas duas Varas de Garantias da capital, a pessoa presa só é conduzida à audiência de custódia no dia seguinte. Quando o juiz concede liberdade com tornozeleira, ela volta ao presídio — porque o monitoramento só é instalado no dia posterior. O CNJ calcula que isso atinge 46% dos presos em flagrante.",
+              citacao:
+                "quase 500(quinhentos) presos são incluídos mensalmente no sistema prisional desnecessariamente. A rotina é claramente contraproducente",
+            },
+            {
+              titulo: "Pedidos de fim de pena parados há anos",
+              corpo:
+                "Na Vara de Execuções Penais de Belo Horizonte, no regime aberto, o relatório registra 5.226 incidentes pendentes de decisão há mais de 90 dias — o mais antigo desde janeiro de 2018. Entre as pendências detalhadas há 1.544 pedidos de término de pena, 921 de progressão e 495 de livramento condicional.",
+              citacao: null,
+            },
+            {
+              titulo: "O CNJ mandou, e sete anos depois repete a mesma frase",
+              corpo:
+                "No capítulo de Precatórios, sob o título “Não cumprimento de determinações nas inspeções ano 2019, 2022 e 2023”, o relatório de 2026 registra que determinações de três inspeções anteriores continuam pendentes.",
+              citacao:
+                "passados sete anos desde a primeira inspeção, não foram adotadas providências efetivas pela Presidência do Tribunal de Justiça de Minas Gerais",
+            },
+            {
+              titulo: "O tribunal não conseguiu informar sobre si mesmo",
+              corpo:
+                "Num dos juizados de violência doméstica, a equipe de inspeção tentou descobrir quantas ações penais foram distribuídas no ano. O painel de dados do próprio TJMG não respondeu, e a chefia de cartório informou que também não tinha o número. A informação só apareceu depois de intervenção junto ao tribunal.",
+              citacao: null,
+            },
+          ].map((a) => (
+            <article key={a.titulo} className="rounded-2xl border border-border p-5">
+              <h3 className="font-display text-[1.05em] font-semibold text-text">{a.titulo}</h3>
+              <p className="mt-2 text-[.94em] leading-relaxed text-text-soft">{a.corpo}</p>
+              {a.citacao && (
+                <blockquote className="mt-3 border-l-2 border-primary pl-4 text-[.94em] leading-relaxed text-text">
+                  “{a.citacao}”
+                  <footer className="mt-1 text-[.85em] text-text-soft">
+                    — Relatório de Inspeção Ordinária no TJMG, CNJ, 2026
+                  </footer>
+                </blockquote>
+              )}
+            </article>
+          ))}
+        </div>
+
+        <p className="mt-4 max-w-3xl text-[.88em] leading-relaxed text-text-soft">
+          O relatório <strong className="text-text">nomeia</strong> os gabinetes com réu preso
+          esperando julgamento há mais de 60 dias e os que não atingiram a Meta 1 do CNJ. Esta
+          página não reproduz os nomes: o documento é público e está linkado, e atribuir
+          descumprimento a uma pessoa é decisão editorial, não consequência automática de ter o
+          dado.
+        </p>
+      </section>
+
       {/* ═══ GRÁFICO: temas ═══ */}
       <section aria-labelledby="temas-inspecao" className="mt-12">
         <h2 id="temas-inspecao" className="font-display text-xl font-bold text-text">
