@@ -347,10 +347,22 @@ ou promotor** — e o único canal criado para isso está abandonado desde 2023.
 
 ### Duas menores, que também são matéria
 
-**(a) Tempo médio de tramitação por tribunal estadual não existe em dado
-aberto.** O dicionário das 1.314 variáveis do Justiça em Números não tem a
-variável; só há `tptotst`, isolada, para o TST. **A pergunta mais óbvia que um
-cidadão faz sobre a Justiça é a única que o CNJ não publica em CSV.**
+**(a) ~~Tempo médio de tramitação por tribunal estadual não existe em dado
+aberto.~~ ❌ DERRUBADA EM 22/08/2026, e a correção vale mais que a matéria.**
+
+A variável **existe**: `tpbaixm`, populada de 2015 a 2025 para o TJMG
+(**675,5 em 2025**). A busca anterior falhou porque o dicionário do CNJ rotula
+a coluna apenas como **"TpBaix - Média"** — sem a palavra "tempo" e sem
+"tramitação". Procurar por palavra não acha; só acha quem procura pelo padrão
+`Tp*` + sufixo.
+
+⚠️ **E a unidade não está declarada.** O dicionário não diz se é dia, mês ou
+outra coisa. 675,5 é compatível com dias corridos, mas isso é inferência
+nossa. **Não escrever "675 dias" como se fosse afirmação do CNJ.**
+
+**A lição que sobra é melhor que a matéria perdida:** buscar por palavra num
+dicionário de 1.314 variáveis prova pouco. Ausência de resultado numa busca
+textual não é ausência do dado — é ausência da palavra que eu escolhi.
 
 **(b) A Ouvidoria da DPMG não publica número nenhum** — 116.517 bytes na página
 institucional e 44.107 no espelho de transparência, com **zero ocorrência de

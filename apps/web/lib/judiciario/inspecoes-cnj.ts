@@ -3690,6 +3690,203 @@ export const ANOS_FORA_DA_SERIE = [
  }
 ] as const;
 
+export interface GabineteNomeado {
+  titular: string;
+  secao: string;
+  tipoSecao: string;
+  temas: string[];
+  trecho: string;
+}
+
+export const GABINETES_NOMEADOS: GabineteNomeado[] = [
+ {
+  "titular": "BRUNO TERRA DIAS",
+  "secao": "4.4.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Conforme noticiado, o gabinete inspecionado registrou a distribuição de 2.151 feitos no último ano, superando amplamente a capacidade de baixa definitiva, que foi de 1.470 processos, o que implica reconhecer o não atingimento da Meta Nacional 1 do CNJ, fato igualmente declinado pela unidade ao informar que o índice cumprido fora de apenas 86%. Nada obstante a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há prevalecer a compreensão de que as metas são compromissos anuais cujo objetivo é buscar o aperfeiçoamento da prestação jurisdicional, funcionando como um…"
+ },
+ {
+  "titular": "EDISON FEITAL LEITE",
+  "secao": "4.8.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "pessoa_presa",
+   "violencia_domestica",
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Conforme noticiado, o gabinete inspecionado registrou a distribuição de 2.558 feitos no último ano, superando amplamente a capacidade de baixa definitiva, que foi de 1.199 processos, o que implica reconhecer o não atingimento da Meta Nacional 1 do CNJ, fato igualmente declinado pela unidade ao informar que o índice cumprido fora de apenas 80%. Sem embargo, houve ainda o descumprimento da Meta 8, relativa à violência doméstica, que atingiu apenas 83%. Nada obstante a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há que prevalecer a compreensão de que as metas…"
+ },
+ {
+  "titular": "EDUARDO MACHADO COSTA",
+  "secao": "4.9.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Conforme noticiado, a única meta nacional do CNJ com índice abaixo do esperado foi a Meta 1, com 92%, o que pode ser atribuído ao aumento súbito da distribuição citada. Em que pese isso, é dizer, a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há que prevalecer a compreensão de que as metas são compromissos anuais cujo objetivo é buscar o aperfeiçoamento da prestação jurisdicional, funcionando como um plano de gestão focado em resultados mensuráveis, visando dar mais agilidade, eficiência e transparência à Justiça. Elas são fundamentais para o trabalho de mo…"
+ },
+ {
+  "titular": "ENÉIAS XAVIER GOMES",
+  "secao": "4.10.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Conforme noticiado, o gabinete inspecionado registrou o não atingimento da Meta Nacional 1 do CNJ, atingindo um índice de apenas 87%. Nada obstante a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há que prevalecer a compreensão de que as metas são compromissos anuais cujo objetivo é buscar o aperfeiçoamento da prestação jurisdicional, funcionando como um plano de gestão focado em resultados mensuráveis, visando dar mais agilidade, eficiência e transparência à Justiça. Elas são fundamentais para o trabalho de monitoramento e correição, garantindo que as unida…"
+ },
+ {
+  "titular": "GENIL ANACLETO RODRIGUES FILHO",
+  "secao": "4.12.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "colegiado"
+  ],
+  "trecho": "Considerando que a Meta 1 ainda não foi atingida na 10ª Câmara Cível por situações alheias ao poder de impulso imediato da unidade, determina- se ao Gabinete do Desembargador Genil Anacleto Rodrigues Filho que, tão logo superados os obstáculos identificados, promova medidas voltadas ao seu cumprimento, apresentando informações à Corregedoria Nacional de Justiça, no prazo de 90 dias."
+ },
+ {
+  "titular": "JAQUELINE CALÁBRIA ALBUQUERQUE",
+  "secao": "4.16.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "colegiado"
+  ],
+  "trecho": "Considerando que alguns integrantes da 10ª Câmara Cível têm comparecido às sessões por videoconferência a partir dos próprios gabinetes, determina-se à Presidência do TJMG que oficie aos membros daquele colegiado, a fim de que passem, imediatamente, a participar presencialmente das referidas sessões."
+ },
+ {
+  "titular": "JOSÉ ARTHUR DE CARVALHO PEREIRA FILHO",
+  "secao": "4.20.4",
+  "tipoSecao": "achados",
+  "temas": [],
+  "trecho": "Determina-se à Presidência do TJMG, a quem caberá a supervisão das tarefas, que oficie:"
+ },
+ {
+  "titular": "JOSÉ EUSTÁQUIO LUCAS PEREIRA",
+  "secao": "4.21.4",
+  "tipoSecao": "achados",
+  "temas": [],
+  "trecho": "Não tendo sido apuradas irregularidades, não há determinações a serem feitas."
+ },
+ {
+  "titular": "JÚLIO CÉSAR LORENS",
+  "secao": "4.22.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Os indicadores de produtividade dos últimos 12 meses revelam a distribuição de 2.698 feitos, com a realização de 1.727 julgamentos colegiados. Os julgamentos monocráticos somaram 66 decisões, resultando em um total de 1.735 processos baixados definitivamente do acervo no período, a implicar o desatendimento da Meta Nacional 1 do CNJ, que ficou em 68% do almejado. De igual forma o cumprimento da Meta 8 situa-se em 67%. Nada obstante a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há que prevalecer a compreensão de que as metas são compromissos anuais cujo obj…"
+ },
+ {
+  "titular": "LÍLIAN MACIEL SANTOS",
+  "secao": "4.23.4",
+  "tipoSecao": "achados",
+  "temas": [],
+  "trecho": "Não tendo sido apuradas irregularidades, não há determinações a serem feitas."
+ },
+ {
+  "titular": "MARCELO DE OLIVEIRA MILAGRES",
+  "secao": "4.24.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "colegiado"
+  ],
+  "trecho": "Considerando que alguns integrantes da 21ª Câmara Cível têm comparecido às sessões híbridas a partir dos próprios gabinetes, determina-se à Presidência do TJMG que oficie aos membros daquele colegiado, a fim de que passem, imediatamente, a participar presencialmente das referidas sessões."
+ },
+ {
+  "titular": "MARCO ANTÔNIO DE MELO",
+  "secao": "4.25.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Diante da existência de feitos conclusos há mais de 120 dias no Gabinete do Desembargador Marco Antônio de Melo, determina-se à Presidência do TJMG que oficie ao gabinete do magistrado, a fim de que, no prazo de 30 dias, a unidade elabore um plano de gestão do acervo que priorize o julgamento dos processos que se encontram nessa condição. Considerando que alguns integrantes da 6ª Câmara Criminal têm comparecido às sessões hibridas a partir dos próprios gabinetes, também se determina à Presidência do TJMG que oficie aos membros daquele colegiado, para que passem, imediatamente, a participar pre…"
+ },
+ {
+  "titular": "MARIA LÚCIA CABRAL CARUSO",
+  "secao": "4.26.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "Considerando que alguns integrantes da 12ª Câmara Cível têm comparecido às sessões híbridas a partir dos próprios gabinetes, determina-se à Presidência do TJMG que oficie aos membros daquele colegiado, a fim de que passem, imediatamente, a participar presencialmente das referidas sessões. Ademais, diante da existência de processos sobrestados na 16ª Câmara Cível que dependem de redistribuição ao sucessor, também se determina à Presidência daquela Corte que, no prazo de 30 dias, adote as providências necessárias para a regularização desses feitos (processos 1.0283.08.010047-4/008 e 1.0283.08.01…"
+ },
+ {
+  "titular": "OSVALDO OLIVEIRA ARAÚJO FIRMO",
+  "secao": "4.27.4",
+  "tipoSecao": "achados",
+  "temas": [],
+  "trecho": "Determina-se à Presidência do TJMG, a quem caberá a supervisão das tarefas, que oficie:"
+ },
+ {
+  "titular": "PAULO DE TARSO TAMBURINI SOUZA",
+  "secao": "4.28.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "pessoa_presa",
+   "prazo_e_acervo",
+   "colegiado"
+  ],
+  "trecho": "O gabinete inspecionado registrou o não atingimento da Meta Nacional 1 do CNJ, já que o índice foi cumprido em apenas 80%. Nada obstante a mudança na competência da 9.ª Câmara Criminal possa realmente ter sido relevante, há que prevalecer a compreensão de que as metas são compromissos anuais cujo objetivo é buscar o aperfeiçoamento da prestação jurisdicional, funcionando como um plano de gestão focado em resultados mensuráveis, visando dar mais agilidade, eficiência e transparência à Justiça. Elas são fundamentais para o trabalho de monitoramento e correição, garantindo que as unidades judiciá…"
+ },
+ {
+  "titular": "PAULO FERNANDO NAVES DE RESENDE",
+  "secao": "4.29.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "prazo_e_acervo",
+   "pessoal",
+   "colegiado"
+  ],
+  "trecho": "Considerando que o Desembargador Paulo Fernando Naves de Resende ainda não fixou residência em Belo Horizonte, sede do Tribunal de Justiça de Minas Gerais, determina-se à Presidência do TJMG que, no prazo de 30 dias, apure a situação residencial do referido magistrado e adote as providências cabíveis para assegurar o cumprimento da obrigação, com a devida cientificação da Corregedoria Nacional de Justiça acerca das medidas tomadas. Tendo em vista que o gabinete não dispõe de rotina própria de controle e acompanhamento dos processos em diligência na origem, dos sobrestados por pendência de julg…"
+ },
+ {
+  "titular": "RONALDO CLARET DE MORAES",
+  "secao": "4.33.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "colegiado"
+  ],
+  "trecho": "Considerando que alguns integrantes da 10ª Câmara Cível têm comparecido às sessões por videoconferência a partir dos próprios gabinetes, determina-se à Presidência do TJMG que oficie aos membros daquele colegiado, a fim de que passem, imediatamente, a participar presencialmente das referidas sessões."
+ },
+ {
+  "titular": "SANDRA ALVES DE SANTANA E FONSECA",
+  "secao": "4.35.4",
+  "tipoSecao": "achados",
+  "temas": [],
+  "trecho": "Não tendo sido apuradas irregularidades, não há determinações a serem feitas."
+ },
+ {
+  "titular": "SHIRLEY FENZI BERTÃO",
+  "secao": "4.37.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "colegiado"
+  ],
+  "trecho": "Considerando que alguns integrantes da 11ª Câmara Cível têm comparecido às sessões híbridas a partir dos próprios gabinetes, determina-se à Presidência do TJMG que oficie aos membros daquele colegiado, a fim de que passem, imediatamente, a participar presencialmente das referidas sessões."
+ },
+ {
+  "titular": "WANDERLEY SALGADO DE PAIVA",
+  "secao": "4.40.4",
+  "tipoSecao": "achados",
+  "temas": [
+   "prazo_e_acervo"
+  ],
+  "trecho": "Conforme relatado no item anterior, foi constatada a ausência de utilização da ferramenta de gestão \"Painel Tático\" no Gabinete do Desembargador Wanderley Paiva, o que demanda providências imediatas por parte da Presidência do TJMG no sentido de promover junto à Unidade a elaboração e execução de plano de gestão para o adequado conhecimento e utilização das ferramentas disponíveis para o adequado gerenciamento do acervo processual e controle das Metas Nacionais do Poder Judiciário. À vista disso, determina-se à Presidência do TJMG: Que, no prazo de 30 dias, adote providências no sentido de ela…"
+ }
+];
+
 export const PENDENCIAS_POR_ANO = {
  "2022": 24,
  "2023": 52
