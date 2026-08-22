@@ -87,17 +87,17 @@ export const COBERTURA_INSPECOES = {
     relatorios: 13,
     anoMaisAntigo: 2012,
     anoMaisRecente: 2026,
-    secoesSemTextoLegivel: 17,
+    secoesSemTextoLegivel: 27,
     paginas2026: 1388,
     processoCnj: "0000675-79.2026.2.00.0000",
     portaria: "Portaria nº 3, de 02/02/2026",
     assinadoEm: "2026-07-08",
     url: "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/419313/relatorio-de-inspecao-ordinaria-tjmg-2026-2",
     secoesNoSumario: 247,
-    secoesLidasNoCorpo: 241,
-    secoesComConteudo: 123,
+    secoesLidasNoCorpo: 285,
+    secoesComConteudo: 157,
     secoesSemAchado: 101,
-    unidadesDistintas: 98,
+    unidadesDistintas: 113,
   },
 } as const;
 
@@ -649,22 +649,22 @@ export const ACHADOS_POR_TEMA: Record<string, number> = {
  "pessoa_presa": 26,
  "violencia_domestica": 7,
  "infancia": 5,
- "prazo_e_acervo": 74,
- "colegiado": 17,
- "pessoal": 22,
- "sistema": 35,
- "estatistica": 31,
+ "prazo_e_acervo": 75,
+ "colegiado": 18,
+ "pessoal": 25,
+ "sistema": 37,
+ "estatistica": 33,
  "pericia_e_apoio": 26,
  "cartorio": 23,
- "precatorio": 17,
- "extrajudicial": 4
+ "precatorio": 19,
+ "extrajudicial": 5
 };
 
 export const ACHADOS_POR_TIPO_UNIDADE = {
  "orgao-central": {
-  "unidades": 2,
-  "secoes": 2,
-  "caracteres": 6514
+  "unidades": 7,
+  "secoes": 14,
+  "caracteres": 38116
  },
  "gabinete": {
   "unidades": 21,
@@ -687,9 +687,14 @@ export const ACHADOS_POR_TIPO_UNIDADE = {
   "caracteres": 160830
  },
  "outra": {
-  "unidades": 4,
-  "secoes": 4,
-  "caracteres": 11115
+  "unidades": 13,
+  "secoes": 25,
+  "caracteres": 43253
+ },
+ "serventia": {
+  "unidades": 1,
+  "secoes": 1,
+  "caracteres": 182
  }
 } as const;
 
@@ -710,6 +715,18 @@ export const ACHADOS_TJMG: AchadoInspecao[] = [
    "prazo_e_acervo"
   ],
   "trecho": "No curso da inspeção realizada na Corregedoria-Geral de Justiça do Tribunal de Justiça de Minas Gerais, a partir dos questionamentos formulados por esta Corregedoria Nacional e das informações apresentadas pela unidade inspecionada, foi possível identificar um conjunto de situações que demandam acompanhamento mais próximo e estruturado, notadamente em razão da persistência de indicadores críticos de desempenho ou da ausência de informações atualizadas e suficientes quanto à superação de problemas anteriormente diagnosticados. Verificou-se, inicialmente, que determinadas unidades judiciais apre…"
+ },
+ {
+  "ano": 2026,
+  "secao": "3.6.18",
+  "unidade": "DIRETORIA EXECUTIVA DOS SERVIÇOS NOTARIAIS E DE REGISTRO",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "determinacoes",
+  "itens": 1,
+  "caracteres": 121,
+  "temas": [],
+  "trecho": "3.6.18.1 A Presidência e a Corregedoria-Geral de Justiça do Estado de Minas Gerais deverão, no prazo de 30 (trinta) dias:"
  },
  {
   "ano": 2026,
@@ -2540,6 +2557,38 @@ export const ACHADOS_TJMG: AchadoInspecao[] = [
  },
  {
   "ano": 2026,
+  "secao": "7.6",
+  "unidade": "PRECATÓRIOS",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 17900,
+  "temas": [
+   "sistema",
+   "prazo_e_acervo",
+   "pessoal",
+   "precatorio"
+  ],
+  "trecho": "• Não cumprimento de determinações nas inspeções ano 2019, 2022 e 2023 Após análise dos procedimentos atualmente adotados e das ferramentas eletrônicas disponíveis no setor, verificamos que, além das observações acima indicadas, diversas determinações constantes nos relatórios de inspeção de 2019, 2022 e 2023 permanecem pendentes de cumprimento. Em outras palavras, passados sete anos desde a primeira inspeção, não foram adotadas providências efetivas pela Presidência do Tribunal de Justiça de Minas Gerais, conforme relação apresentada a seguir: 1) priorizar o desenvolvimento e implantação de f…"
+ },
+ {
+  "ano": 2026,
+  "secao": "7.7",
+  "unidade": "PRECATÓRIOS",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "determinacoes",
+  "itens": 1,
+  "caracteres": 5597,
+  "temas": [
+   "pessoal",
+   "precatorio"
+  ],
+  "trecho": "Determina-se à Presidência do TJMG que, em 90 dias: • cumpra integralmente as determinações pendentes das inspeções 2019, 2022 e 2023 listadas no item próprio do relatório de inspeção; • estruture o quadro de servidores em atuação no Setor de Precatórios, especialmente nas tarefas que envolvam secretaria, cálculo e pagamento; Determina-se à Presidência do TJMG que determine à Central de Precatórios que, em 90 dias: • adote as providências necessárias para que os beneficiários, que não tenham decisões impeditivas (art. 32 da Res.303/2019), saquem/levantem a integralidade do que tem direito dos…"
+ },
+ {
+  "ano": 2026,
   "secao": "7.8",
   "unidade": "PRECATÓRIOS",
   "tipo": "orgao-central",
@@ -2549,6 +2598,389 @@ export const ACHADOS_TJMG: AchadoInspecao[] = [
   "caracteres": 429,
   "temas": [],
   "trecho": "À Corregedoria que: • Elabore e disponibilize em portal com ampla divulgação interna e externa relação contendo todos os entes devedores do Estado de Minas Gerais, a respectiva legislação vigente sobre o teto de expedição de RPVs (com indicação do início da vigência) e o respectivo valor, apontando-se, ainda, aqueles que não possuem legislação vigente ou parâmetro não contemplado pelo artigo 100, §4º, da Constituição Federal."
+ },
+ {
+  "ano": 2026,
+  "secao": "8.1.2.1",
+  "unidade": "SECRETARIA DE GOVERNANÇA E GESTÃO ESTRATÉGICA - SEGOVE",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 3017,
+  "temas": [
+   "estatistica"
+  ],
+  "trecho": "No que tange às atribuições da Secretaria de Governança e Gestão Estratégica, embora formalmente situada no mesmo nível hierárquico das demais Diretorias Executivas Administrativas do Tribunal, a inspeção identificou uma tendência acentuada de expansão de suas competências para além da natureza originária de governança e monitoramento estratégico. A unidade tem atuado em diversas frentes generalistas e abrangentes, funcionando materialmente como uma espécie de \"Diretoria-Geral/Secretaria-Geral\", assumindo a coordenação de fluxos que extrapolam sua missão regimental. Um fator que corrobora essa…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.1.2.3",
+  "unidade": "SECRETARIA DE GOVERNANÇA E GESTÃO ESTRATÉGICA - SEGOVE",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2347,
+  "temas": [],
+  "trecho": "A inspeção detalhada na configuração do sistema SEI do Tribunal revelou uma distorção técnica que compromete diretamente o princípio da publicidade administrativa. O ponto central dessa falha reside na configuração do parâmetro SEI_EXIBIR_ARVORE_RESTRITO_SEM_ACESSO, que define se a estrutura de metadados (como número, tipo de processo e interessados) permanece visível para unidades que não detêm o acesso direto ao conteúdo de processos restritos. No cenário atual, a parametrização adotada faz com que o nível de acesso \"Restrito\" se comporte, na prática, como \"Sigiloso\", gerando uma invisibilid…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.2.2.1",
+  "unidade": "SECRETARIA DE AUDITORIA INTERNA - SECAUD",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1018,
+  "temas": [],
+  "trecho": "Constatou-se que a força de trabalho é insuficiente para a adequada realização das atividades, resultando, por vezes, no prejuízo de trabalhos de auditoria, especialmente durante o período de prestação de contas anual e no atendimento de demandas do CNJ e do Tribunal de Contas do Estado. Nesse sentido, identificou-se uma grave carência quanto à especialização dos profissionais: a unidade conta com apenas um bacharel em Direito, um de Arquitetura, e nenhum especialista nas áreas de Tecnologia da Informação ou Engenharia. A insuficiência de pessoal e a falta de especialistas em áreas críticas pa…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.2.2.2",
+  "unidade": "SECRETARIA DE AUDITORIA INTERNA - SECAUD",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2503,
+  "temas": [],
+  "trecho": "Mensuração de Carga Horária De modo geral, verificou-se que o Plano Anual de Auditoria (PAA) ainda é confeccionado de modo muito incipiente, não demonstrando de modo evidente uma metodologia de planejamento baseada em riscos, nem a correlação entre os objetos auditados e os objetivos estratégicos do Tribunal ou metas do Poder Judiciário, em que pese a Portaria n. 5812/PR/2022 acertadamente estabelecer em seu Art. 9º, I, que o planejamento deve delimitar a definição da estratégia metodológica a ser adotada, bem como a estimativa dos recursos. Atualmente, a própria unidade fica responsável por e…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.2.2.3",
+  "unidade": "SECRETARIA DE AUDITORIA INTERNA - SECAUD",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1977,
+  "temas": [],
+  "trecho": "da Auditoria (Mandato e Recondução) Verificou-se que o Tribunal, embora adote materialmente o período de dois anos para a chefia da Auditoria Interna, ainda não promoveu a regulamentação formal do mandato e das regras de recondução em seus normativos internos. Constatou-se, também, que a primeira designação para o mandato de dois anos ocorreu somente em 2023, tendo o dirigente já sido reconduzido uma vez. Todavia, em razão da inexistência de regramento local, há um vácuo normativo quanto ao limite de reconduções permitidas, impossibilitando-se aferir, por exemplo, quantas vezes o gestor poderi…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.2.2.4",
+  "unidade": "SECRETARIA DE AUDITORIA INTERNA - SECAUD",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1644,
+  "temas": [],
+  "trecho": "Embora a Secretaria de Auditoria Interna tenha logrado êxito em afastar diversas atividades típicas de controle interno administrativo, identificou- se que a unidade ainda realiza a assinatura do Relatório de Gestão Fiscal (RGF). Tal prática caracteriza a assunção de responsabilidades gerenciais e a prática de atos decisórios que competem às instâncias de gestão, e não à auditoria. O modelo de governança estabelecido pelas Resoluções CNJ n. 308/2020 e n. 309/2020 consolida a Auditoria Interna estritamente como uma unidade de 3ª linha, segregando seus papéis das instâncias de gestão para mitiga…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.4.2.1.1",
+  "unidade": "CENTRO DE CONTROLE, TRANSPARÊNCIA E INTEGRIDADE (CECONTI)",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "determinacoes",
+  "itens": 1,
+  "caracteres": 558,
+  "temas": [],
+  "trecho": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, avalie a necessidade de reestruturação interna do Ceconti mediante a criação de subunidades ou a formalização de áreas de atuação especializadas para cada um de seus eixos temáticos, quais sejam: integridade, gestão de riscos, transparência, eventos e cooperação institucional, de modo a viabilizar a designação de força de trabalho dedicada ou, no mínimo, a definição clara de responsáveis por cada frente de atuação, com atribuições específicas, metas e indicadores de desempenho próprios."
+ },
+ {
+  "ano": 2026,
+  "secao": "8.6.2.1",
+  "unidade": "DIRETORIA EXECUTIVA DE ADMINISTRAÇÃO DE RECURSOS HUMANOS (DEARHU)",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 2322,
+  "temas": [],
+  "trecho": "A análise detalhada dos fluxos de trabalho da unidade revelou a necessidade de aprimoramento na gestão do serviço extraordinário. De acordo com o Art. 19 da Portaria-Conjunta n. 76/2006, a prestação desse serviço deve ser previamente autorizada pela Diretoria de Administração de Recursos Humanos, observando-se critérios e vedações específicas, como a proibição de horas extras para servidores em jornada reduzida. Verificou-se, contudo, que a unidade tem operado predominantemente como uma mera instância de recepção e protocolo, encaminhando pleitos à consideração do Juízo Auxiliar da Presidência…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.6.2.2",
+  "unidade": "DIRETORIA EXECUTIVA DE ADMINISTRAÇÃO DE RECURSOS HUMANOS (DEARHU)",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1557,
+  "temas": [],
+  "trecho": "No tocante aos mecanismos de controle interno e integridade, identificou-se uma lacuna crítica na prevenção do nepotismo no âmbito institucional. Verificou-se que os magistrados do Tribunal não realizam declaração de parentesco em nenhum estágio de sua vida funcional, inclusive no ingresso da carreira, ao passo que os servidores prestam tais informações apenas por ocasião da posse inicial ou em designações específicas para o exercício de cargos em comissão. A ausência de uma sistemática de atualização periódica para a totalidade dos membros e servidores revela uma fragilidade estrutural na gov…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.6.2.3",
+  "unidade": "DIRETORIA EXECUTIVA DE ADMINISTRAÇÃO DE RECURSOS HUMANOS (DEARHU)",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 647,
+  "temas": [],
+  "trecho": "Durante a análise dos procedimentos, constatou-se que o Tribunal adota as providências previstas no art. 1º, inciso II, da Recomendação CNJ nº 10/2013, facultando aos magistrados e servidores tanto a entrega da declaração anual de bens e rendas, quanto a autorização de acesso às declarações. Contudo, verificou-se um elevado número de inadimplentes com essa obrigação funcional. Nesse contexto, mais de mil servidores estão inadimplentes com as obrigações referentes a 2025. Tal situação além de fragilizar os mecanismos de controle de integridade e transparência, pode ensejar a responsabilização a…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.6.2.4",
+  "unidade": "DIRETORIA EXECUTIVA DE ADMINISTRAÇÃO DE RECURSOS HUMANOS (DEARHU)",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 605,
+  "temas": [],
+  "trecho": "Em função de inspeção anterior, verificou-se que o Tribunal procedeu acertadamente à atualização de rubricas de pagamento. Contudo, tal procedimento não foi institucionalizado de forma regular e periódica. Nesse sentido, a fim de se evitar que a mesma fragilidade possa ser constatada futuramente, com a possibilidade de causar prejuízos ao erário público, a instituição da medida de forma regular revela-se previdente e imperiosa. 8.6.2.4.1 Determinação: À Presidência do TJMG para que, no prazo de 90 dias, institua procedimento formal e periódico de verificação de atualização de rubricas de pagam…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.7.2.1",
+  "unidade": "GERÊNCIA DE ACOMPANHAMENTO DOS PROGRAMAS DE ESTÁGIO E RESIDÊNCIA JURÍDICA (GEPER)",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 6363,
+  "temas": [
+   "pessoal"
+  ],
+  "trecho": "Apesar da relevância conferida à Gerência de Acompanhamento dos Programas de Estágio, a unidade opera sob severo gargalo tecnológico. A dependência primordialmente do sistema SEI e de um módulo de RH (Sistema ES) que é limitado a registros funcionais impõe uma gestão demasiadamente baseada em controles paralelos via planilhas. Essa carência de parametrização impede que o sistema oficial processe regras de negócio essenciais, tais como o cálculo automático de disponibilidade e vacância de vagas vinculadas a gabinetes de Desembargadores, por exemplo, nos termos da Portaria Conjunta n. 400/2015.…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.8.2.1",
+  "unidade": "GERÊNCIA DA MAGISTRATURA",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 78,
+  "temas": [],
+  "trecho": "Não foram identificados achados na unidade, sem prejuízo de análise posterior."
+ },
+ {
+  "ano": 2026,
+  "secao": "8.9.2",
+  "unidade": "GERÊNCIA DE DESENVOLVIMENTO E ACOMPANHAMENTO DAS CARREIRAS (GEDAC)",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 61,
+  "temas": [],
+  "trecho": "na Gerência de Desenvolvimento e Acompanhamento das Carreiras"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.9.2.1",
+  "unidade": "GERÊNCIA DE DESENVOLVIMENTO E ACOMPANHAMENTO DAS CARREIRAS (GEDAC)",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 78,
+  "temas": [],
+  "trecho": "Não foram identificados achados na unidade, sem prejuízo de posterior análise."
+ },
+ {
+  "ano": 2026,
+  "secao": "8.10.2.3.1",
+  "unidade": "DIRETORIA-EXECUTIVA DE CONTRATAÇÕES - DIRCONT",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "determinacoes",
+  "itens": 1,
+  "caracteres": 1043,
+  "temas": [],
+  "trecho": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, adote as providências emergenciais necessárias para a correção dos valores divulgados no painel de acompanhamento das contratações que apresentem inconsistências com os montantes efetivamente pactuados nos instrumentos contratuais, com especial atenção ao exemplo identificado na contratação registrada sob o código 1220 (Contrato 268/2025), cujo valor deve ser retificado para R$ 1.005.681,00 (um milhão, cinco mil, seiscentos e oitenta e um reais), em conformidade com o constante no Processo SEI/TJMG nº 0272938-35.2024.8.13.0000…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.10.2.5.1",
+  "unidade": "DIRETORIA-EXECUTIVA DE CONTRATAÇÕES - DIRCONT",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "determinacoes",
+  "itens": 1,
+  "caracteres": 219,
+  "temas": [],
+  "trecho": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, providencie a instituição do Plano de Tratamento de Riscos do Macroprocesso de Contratações, nos termos dos arts. 5º e 30º da Resolução CNJ nº 347/2020."
+ },
+ {
+  "ano": 2026,
+  "secao": "8.10.2.6.1",
+  "unidade": "DIRETORIA-EXECUTIVA DE CONTRATAÇÕES - DIRCONT",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "determinacoes",
+  "itens": 1,
+  "caracteres": 1435,
+  "temas": [
+   "colegiado"
+  ],
+  "trecho": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, adote as providências necessárias para a revisão integral da concessão e utilização das quarenta e duas placas reservadas/de segurança existentes no âmbito do tribunal, de modo a adequar tais concessões aos parâmetros legais estabelecidos pelas Resoluções CNJ nº 83/2009 e nº 435/2021, eliminando-se o desvirtuamento da finalidade do instituto e assegurando que as placas especiais/de segurança sejam utilizadas exclusivamente para estritas razões de segurança pessoal de magistrados em situação de risco real ou potencial. Determina…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.11.2.1",
+  "unidade": "DIRETORIA EXECUTIVA DE FINANÇAS E EXECUÇÃO ORÇAMENTÁRIA",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 78,
+  "temas": [],
+  "trecho": "Não foram identificados achados na unidade, sem prejuízo de análise posterior."
+ },
+ {
+  "ano": 2026,
+  "secao": "8.12.2.1.1",
+  "unidade": "OUVIDORIA",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "determinacoes",
+  "itens": 1,
+  "caracteres": 376,
+  "temas": [],
+  "trecho": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, promova as alterações necessárias no organograma do Tribunal para que a Ouvidoria e outros órgãos autônomos sejam corretamente representados, de modo a refletir com fidelidade sua condição de órgãos independentes, integrantes da alta administração e não subordinados hierarquicamente a qualquer outra unidade."
+ },
+ {
+  "ano": 2026,
+  "secao": "8.12.2.2.1",
+  "unidade": "OUVIDORIA",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "determinacoes",
+  "itens": 1,
+  "caracteres": 422,
+  "temas": [],
+  "trecho": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, promova as providências necessárias à unificação ou à integração técnica do canal eletrônico \"Fale com o TJMG\" ao sistema da Ouvidoria, de modo que todas as manifestações cidadãs sejam centralizadas, monitoradas e tratadas sob a governança da Ouvidoria, com vistas à eliminação da sobreposição de canais e ao fortalecimento da transparência institucional."
+ },
+ {
+  "ano": 2026,
+  "secao": "8.12.2.3.1",
+  "unidade": "OUVIDORIA",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "determinacoes",
+  "itens": 1,
+  "caracteres": 484,
+  "temas": [],
+  "trecho": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, adote as providências necessárias para assegurar a implementação de sistema de gestão integrado para a Ouvidoria, contemplando o recebimento, o tratamento, o monitoramento e a resposta tempestiva a todas as manifestações cidadãs, independentemente do canal utilizado para o registro da demanda, com vistas à superação da atual dependência de processos manuais e ao fortalecimento da eficiência operacional da unidade."
+ },
+ {
+  "ano": 2026,
+  "secao": "8.12.2.4.1",
+  "unidade": "OUVIDORIA",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "determinacoes",
+  "itens": 1,
+  "caracteres": 1257,
+  "temas": [],
+  "trecho": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, promova as providências necessárias para a adequação da localização física da Ouvidoria às diretrizes estabelecidas na Resolução CNJ n. 432/2021, de modo a assegurar que a unidade funcione em local de fácil acesso e de pronto atendimento ao público externo, preferencialmente em área de recepção ou de visibilidade imediata, eliminando-se as barreiras físicas e conferindo efetividade ao direito de manifestação dos cidadãos usuários dos serviços judiciários. Deverá, no mesmo prazo, apresentar plano de ação para a adoção das provid…"
+ },
+ {
+  "ano": 2026,
+  "secao": "8.13.2.1",
+  "unidade": "DIRETORIA EXECUTIVA DE PLAN. ORÇAMENTÁRIO E QUALIDADE NA G. INST.- DEPLAG",
+  "tipo": "orgao-central",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 78,
+  "temas": [],
+  "trecho": "Não foram identificados achados na unidade, sem prejuízo de análise posterior."
+ },
+ {
+  "ano": 2026,
+  "secao": "8.15.2.2.1",
+  "unidade": "- CENTRO DE SUSTENTABILIDADE (CESUS)",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "determinacoes",
+  "itens": 1,
+  "caracteres": 1020,
+  "temas": [],
+  "trecho": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, adote as providências necessárias para a reestruturação da unidade responsável pela política de sustentabilidade, de modo a eliminar o acúmulo de funções atualmente verificado. Para tanto, deverá designar servidor específico para atuar na coordenação do Centro de Sustentabilidade (CESUS), desvinculando a gestão do CESUS da mesma pessoa que administra a Diretora de Logística e Transporte, de modo que cada unidade ou função seja exercida por gestores distintos, com dedicação exclusiva, preservando a segregação de funções. Determi…"
+ },
+ {
+  "ano": 2026,
+  "secao": "9.9.1",
+  "unidade": "TECNOLOGIA DA INFORMAÇÃO",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1909,
+  "temas": [],
+  "trecho": "9.9.1.1 Achado: A publicação de informações de TIC é uma forma de transparência e responsabilidade, permitindo que a sociedade e os cidadãos conheçam melhor o funcionamento do tribunal e a gestão de suas atividades. Recomendação: Promover a criação de um portal de TIC com informações de forma espontânea e sistemática de todos os dados públicos. 9.9.1.2 Achado: A atualização do Portal do TJMG é centralizada. Recomendação: Promover estudos para descentralização de publicação dos conteúdos ficando as áreas responsáveis pela atualização. 9.9.1.3 Achado: Ausência de Gratificação Permanente de Ativi…"
+ },
+ {
+  "ano": 2026,
+  "secao": "9.10.1",
+  "unidade": "TECNOLOGIA DA INFORMAÇÃO",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 1437,
+  "temas": [],
+  "trecho": "9.10.1.1 Achado: Déficit de pessoal especializado. Segundo o Guia da ENTIC-JUD, o referencial mínimo seria de 234 servidores efetivos, entretanto o Tribunal conta atualmente com apenas 205 servidores especializados de TIC, gerando uma lacuna de 29 cargos abaixo do referencial mínimo. Constatou-se também a perda de força de trabalho para outras carreiras públicas e privadas. Determinação: No prazo de 90 dias, apresentar plano de adequação da força de trabalho de TIC aos quantitativos mínimos estabelecidos pelo Guia da Estratégia Nacional de Tecnologia da Informação e Comunicação do Poder Judici…"
+ },
+ {
+  "ano": 2026,
+  "secao": "9.10.1.3",
+  "unidade": "TECNOLOGIA DA INFORMAÇÃO",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 860,
+  "temas": [],
+  "trecho": "gerenciamento de demandas de sistemas. Determinação: Instituir, no prazo de 90 dias, normativo específico que discipline o gerenciamento de demandas de sistemas, contemplando, no mínimo: a definição de fluxo formal de submissão, análise, aprovação e acompanhamento das demandas; os critérios objetivos para classificação, análise de impacto e priorização das demandas; e papéis e responsabilidades das áreas envolvidas. Determinação: Instituir, no prazo de 90 dias, fluxo de priorização das demandas, garantindo que as respectivas aprovações sejam realizadas pelo comitê de governança de TIC de forma…"
+ },
+ {
+  "ano": 2026,
+  "secao": "9.10.1.4",
+  "unidade": "TECNOLOGIA DA INFORMAÇÃO",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 528,
+  "temas": [],
+  "trecho": "periódicas do Processo de Desenvolvimento de Sistemas – PDSIS, comprometendo a capacitação das equipes e a padronização dos projetos de desenvolvimento e sustentação. Essa lacuna limita a maturidade do setor, prejudica o controle de qualidade e eleva os riscos operacionais, especialmente quanto à manutenibilidade e à continuidade dos sistemas. Determinação: Instituir, no prazo de 90 dias, a elaboração e publicação do PDSIS bem como garantir a aplicação do processo em todos os projetos e manutenções de sistemas do Tribunal."
+ },
+ {
+  "ano": 2026,
+  "secao": "9.10.1.5",
+  "unidade": "TECNOLOGIA DA INFORMAÇÃO",
+  "tipo": "outra",
+  "comarca": null,
+  "tipoSecao": "achados",
+  "itens": 1,
+  "caracteres": 4201,
+  "temas": [
+   "sistema",
+   "estatistica"
+  ],
+  "trecho": "desatualizado. Determinação: Promover, no prazo de 90 dias, a atualização e revisões periódicas do Catálogo de Soluções de TIC, assegurando que reflita fielmente os sistemas em produção, em desenvolvimento e descontinuados. 9.10.1.6 Achado: Plano de Transformação Digital não passou pela aprovação do Comitê de Governança de Tecnologia da Informação conforme previsto pelo Art. 15 da ENTIC-JUD. Determinação: Aprovar, no prazo de 90 dias, o Plano de Transformação Digital pelo Comitê de Governança de Tecnologia da Informação, conforme previsto pelo Art. 15 da ENTIC-JUD. 9.10.1.7 Achado: Ausência da…"
+ },
+ {
+  "ano": 2026,
+  "secao": "10.2.11",
+  "unidade": "CARTÓRIO DO 2º TABELIONATO DE NOTAS DE BETIM - MINAS GERAIS",
+  "tipo": "serventia",
+  "comarca": null,
+  "tipoSecao": "determinacoes",
+  "itens": 1,
+  "caracteres": 182,
+  "temas": [
+   "extrajudicial"
+  ],
+  "trecho": "A Corregedoria Geral de Justiça do Estado de Minas Gerais deverá providenciar para que a serventia inspecionada (2º Tabelionato de Notas de Betim - MG), no prazo de 30 (trinta) dias:"
  },
  {
   "ano": 2026,

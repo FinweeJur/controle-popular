@@ -9,8 +9,8 @@ e organograma. A conclusao ("nao ha achado consultavel") estava certa sobre
 aquelas paginas e ERRADA sobre o CNJ.
 
 O acervo existe, em outro lugar: a biblioteca de documentos do WordPress
-(plugin WPFD), que responde **JSON puro** e lista **467 relatorios, ~2 GB**,
-uma categoria por tribunal -- os 27 TJs, mais TRFs e TRTs.
+(plugin WPFD), que responde **JSON puro** e lista **343 relatorios sobre 33
+orgaos, ~1,8 GB** -- os 27 TJs, mais TRFs, TRTs e TJMs.
 
 Licao que vale fora daqui: **medir a pagina que fala do assunto nao mede a
 fonte.** O acervo estava a uma rota de distancia, sem login e sem captcha.
@@ -33,9 +33,10 @@ fonte.** O acervo estava a uma rota de distancia, sem login e sem captcha.
 ═══ E A ARMADILHA QUE NAO E' DA ROTA, E' DO CONTEUDO ═══
 
 ⚠️ **O CNJ publica CPF de pessoa fisica dentro do relatorio.** Medido no TJMG
-2026: **5 CPFs validos por digito verificador**, de particulares (compradores e
-vendedores de um lote, um delegatario com pendencia fiscal), na secao de
-serventias extrajudiciais. Nao e' hipotese: os numeros passam no mod-11.
+2026: **6 ocorrencias validas por digito verificador**, de particulares
+(compradores e vendedores de um lote, um delegatario com pendencia fiscal), na
+secao de serventias extrajudiciais. Nao e' hipotese: passam no mod-11. E o
+contrato do parser achou mais **11 crus** numa tabela de pessoal de 2017.
 
 Por isso a redacao acontece **na origem**, aqui, antes de qualquer arquivo ser
 gravado -- e por digito verificador sobre o texto, nunca por formato nem por
@@ -204,9 +205,34 @@ RE_RODAPE = re.compile(
     r"Número do documento: \d+", re.S)
 # Linha de sumario: termina em pontilhado + numero de pagina.
 RE_LINHA_SUMARIO = re.compile(r"^.*\.{3,}\s*\d+\s*$", re.M)
+# ⚠️ QUATRO VARIANTES, NAO UMA. A primeira versao so' casava
+# "Achados e Determinacoes" e "Recomendacoes" -- e perdia **72 secoes**,
+# ~45% do relatorio de 2026: os capitulos 7 (Precatorios), 8 (Unidades
+# Administrativas, 16 unidades incluindo a Ouvidoria) e parte do 9 (TI) usam
+# "Achados" e "Determinacoes" SEPARADOS, e as subsecoes do cap. 8 usam
+# "N.N.N Achado: <titulo>".
+#
+# Medido no corpo: "Achados e Determinacoes" 123, "Recomendacoes" 118,
+# "Achados" sozinho 4, "Determinacoes" sozinho 19, "N.N.N Achado:" 49.
+#
+# ⚠️ E o que se perdia nao era residuo. Era ISTO, em 7.6, sob o titulo
+# "Nao cumprimento de determinacoes nas inspecoes ano 2019, 2022 e 2023":
+#
+#   "passados sete anos desde a primeira inspecao, nao foram adotadas
+#    providencias efetivas pela Presidencia do Tribunal de Justica de MG"
+#
+# -- a cadeia 2019→2022→2023→2026 declarada pelo proprio CNJ, que e' a
+# resposta mais forte que este projeto tem para "o que nao mudou". Um parser
+# que perde 45% do documento **nao acusa nada**: ele so' devolve menos, e a
+# tela publica "101 secoes dizem que nao ha achado" como se fosse silencio do
+# orgao, quando parte e' cegueira nossa.
 RE_SECAO_ACHADO = re.compile(
     r"^[ \t]*(\d+(?:\.\d+)*)\.[ \t]*\n?[ \t]*"
-    r"(Achados[ \t\n]+e[ \t\n]+Determina[çc][õo]es|Recomenda[çc][õo]es)"
+    r"(Achados[ \t\n]+e[ \t\n]+Determina[çc][õo]es"
+    r"|Recomenda[çc][õo]es"
+    r"|Achados?"
+    r"|Determina[çc][õo]es"
+    r"|Achado[ \t]*:[^\n]{0,120})"
     r"[ \t]*$", re.M)
 RE_ITEM = re.compile(
     r"(?:^|[ \t])(ACHADO|DETERMINA[ÇC][ÃA]O|RECOMENDA[ÇC][ÃA]O)"
@@ -318,10 +344,17 @@ def achados_do_relatorio(caminho_pdf, meta):
                 "numero": int(mm.group(2)) if mm.group(2) else None,
                 "texto": re.sub(r"\s+", " ", corpo[mm.end():f]).strip(),
             })
+        rotulo = re.sub(r"\s+", " ", m.group(2)).strip()
+        if rotulo.lower().startswith("recomenda"):
+            tipo_secao = "recomendacoes"
+        elif rotulo.lower().startswith("determina"):
+            tipo_secao = "determinacoes"
+        else:
+            tipo_secao = "achados"
         registros.append({
             "secao": numero,
-            "tipoSecao": ("achados" if "Achado" in m.group(2)
-                          else "recomendacoes"),
+            "rotuloDaSecao": rotulo,
+            "tipoSecao": tipo_secao,
             "unidadeNumero": u_num,
             "unidade": u_tit,
             "itens": itens or [{"tipo": None, "numero": None,
@@ -337,6 +370,10 @@ def achados_do_relatorio(caminho_pdf, meta):
             "PARE: o sumario lista %d secoes de achados/recomendacoes e o corpo "
             "rendeu %d (%.0f%%). O parser esta perdendo secao em silencio."
             % (esperadas, achadas, 100.0 * achadas / max(esperadas, 1)))
+    # ⚠️ Ler MAIS que o sumario e' esperado e nao e' defeito: as subsecoes
+    # "N.N.N Achado: <titulo>" do capitulo 8 nao sao indexadas no sumario. A
+    # trava existe para pegar SUB-leitura, que era o defeito real -- 45% do
+    # documento invisivel.
 
     return {
         "secoesNoSumario": esperadas,

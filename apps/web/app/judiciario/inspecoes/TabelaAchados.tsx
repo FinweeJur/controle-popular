@@ -59,8 +59,13 @@ const ROTULO_TIPO: Record<string, string> = {
   outra: "Outra",
 };
 
+/** ⚠️ Três tipos, não dois. Os capítulos 7 (Precatórios), 8 (unidades
+ *  administrativas) e 9 (TI) usam "Achados" e "Determinações" em seções
+ *  SEPARADAS, e não a forma composta dos capítulos judiciais. Um parser que
+ *  só conhecia a forma composta perdia esses capítulos inteiros. */
 const ROTULO_SECAO: Record<string, string> = {
-  achados: "Achados e determinações",
+  achados: "Achados",
+  determinacoes: "Determinações",
   recomendacoes: "Recomendações",
 };
 
@@ -198,7 +203,7 @@ export default function TabelaAchados() {
           { rotulo: "Tipo de unidade", valor: tipo, set: setTipo, lista: listaTipos, rot: ROTULO_TIPO },
           { rotulo: "Comarca", valor: comarca, set: setComarca, lista: listaComarcas, rot: null },
           { rotulo: "Tema", valor: tema, set: setTema, lista: listaTemas, rot: TEMA_ROTULOS },
-          { rotulo: "Seção", valor: secao, set: setSecao, lista: ["achados", "recomendacoes"], rot: ROTULO_SECAO },
+          { rotulo: "Seção", valor: secao, set: setSecao, lista: ["achados", "determinacoes", "recomendacoes"], rot: ROTULO_SECAO },
         ].map((f) => (
           <label key={f.rotulo} className="flex flex-col gap-1 text-[.82em] text-text-soft">
             {f.rotulo}

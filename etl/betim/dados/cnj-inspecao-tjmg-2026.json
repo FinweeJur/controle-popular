@@ -1,6 +1,6 @@
 {
  "secoesNoSumario": 247,
- "secoesLidasNoCorpo": 241,
+ "secoesLidasNoCorpo": 285,
  "secoesSemUnidadeIdentificada": 0,
  "fonte": "Corregedoria Nacional de Justiça (CNJ)",
  "relatorio": {
@@ -17,10 +17,53 @@
  "avisoDadoPessoal": "6 CPF válido por dígito verificador foi encontrado no PDF original e REDIGIDO aqui. Os CPFs são de pessoas físicas (particulares em atos de cartório), publicados pelo próprio CNJ. O PDF original NÃO é espelhado por este projeto.",
  "avisoNominal": "As unidades incluem gabinetes identificados pelo nome do desembargador. São agentes públicos em função oficial, e o texto é de relatório público do CNJ — mas atribuir descumprimento de meta a pessoa nomeada é decisão editorial, não automática.",
  "secoesVazias": 101,
- "secoesComConteudo": 140,
+ "secoesComConteudo": 184,
  "achados": [
   {
+   "secao": "8.2.2.2",
+   "rotuloDaSecao": "Achado: Deficiência na Metodologia de Planejamento e Ausência",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.2",
+   "unidade": "SECRETARIA DE AUDITORIA INTERNA - SECAUD",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "secao": "8.2.2.3",
+   "rotuloDaSecao": "Achado: Ausência de Regulamentação Formal do Ciclo de Gestão",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.2",
+   "unidade": "SECRETARIA DE AUDITORIA INTERNA - SECAUD",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "secao": "8.6.2.2",
+   "rotuloDaSecao": "Achado: Declaração de Parentesco de Magistrados e Servidores",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.6",
+   "unidade": "DIRETORIA EXECUTIVA DE ADMINISTRAÇÃO DE RECURSOS HUMANOS (DEARHU)",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": ""
+    }
+   ]
+  },
+  {
    "secao": "3.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "3",
    "unidade": "CORREGEDORIA-GERAL DE JUSTIÇA",
@@ -38,7 +81,22 @@
    ]
   },
   {
+   "secao": "3.6.18",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "3.6",
+   "unidade": "DIRETORIA EXECUTIVA DOS SERVIÇOS NOTARIAIS E DE REGISTRO",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "3.6.18.1 A Presidência e a Corregedoria-Geral de Justiça do Estado de Minas Gerais deverão, no prazo de 30 (trinta) dias:"
+    }
+   ]
+  },
+  {
    "secao": "4.4.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.4",
    "unidade": "GABINETE DO DESEMBARGADOR BRUNO TERRA DIAS",
@@ -67,6 +125,7 @@
   },
   {
    "secao": "4.8.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.8",
    "unidade": "GABINETE DO DESEMBARGADOR EDISON FEITAL LEITE",
@@ -95,6 +154,7 @@
   },
   {
    "secao": "4.9.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.9",
    "unidade": "GABINETE DO DESEMBARGADOR EDUARDO MACHADO COSTA",
@@ -123,6 +183,7 @@
   },
   {
    "secao": "4.10.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.10",
    "unidade": "GABINETE DO DESEMBARGADOR ENÉIAS XAVIER GOMES",
@@ -141,6 +202,7 @@
   },
   {
    "secao": "4.12.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.12",
    "unidade": "GABINETE DO DESEMBARGADOR GENIL ANACLETO RODRIGUES FILHO",
@@ -154,6 +216,7 @@
   },
   {
    "secao": "4.16.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.16",
    "unidade": "GABINETE DA DESEMBARGADORA JAQUELINE CALÁBRIA ALBUQUERQUE",
@@ -167,6 +230,7 @@
   },
   {
    "secao": "4.17.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4",
    "unidade": "GABINETES",
@@ -195,6 +259,7 @@
   },
   {
    "secao": "4.19.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4",
    "unidade": "GABINETES",
@@ -208,6 +273,7 @@
   },
   {
    "secao": "4.19.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "4",
    "unidade": "GABINETES",
@@ -221,6 +287,7 @@
   },
   {
    "secao": "4.20.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.20",
    "unidade": "GABINETE DO DESEMBARGADOR JOSÉ ARTHUR DE CARVALHO PEREIRA FILHO",
@@ -234,6 +301,7 @@
   },
   {
    "secao": "4.21.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.21",
    "unidade": "GABINETE DO DESEMBARGADOR JOSÉ EUSTÁQUIO LUCAS PEREIRA",
@@ -247,6 +315,7 @@
   },
   {
    "secao": "4.22.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.22",
    "unidade": "GABINETE DO DESEMBARGADOR JÚLIO CÉSAR LORENS",
@@ -275,6 +344,7 @@
   },
   {
    "secao": "4.23.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.23",
    "unidade": "GABINETE DA DESEMBARGADORA LÍLIAN MACIEL SANTOS",
@@ -288,6 +358,7 @@
   },
   {
    "secao": "4.24.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.24",
    "unidade": "GABINETE DO DESEMBARGADOR MARCELO DE OLIVEIRA MILAGRES",
@@ -301,6 +372,7 @@
   },
   {
    "secao": "4.25.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.25",
    "unidade": "GABINETE DO DESEMBARGADOR MARCO ANTÔNIO DE MELO",
@@ -314,6 +386,7 @@
   },
   {
    "secao": "4.26.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.26",
    "unidade": "GABINETE DA DESEMBARGADORA MARIA LÚCIA CABRAL CARUSO",
@@ -327,6 +400,7 @@
   },
   {
    "secao": "4.27.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.27",
    "unidade": "GABINETE DO DESEMBARGADOR OSVALDO OLIVEIRA ARAÚJO FIRMO",
@@ -340,6 +414,7 @@
   },
   {
    "secao": "4.28.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.28",
    "unidade": "GABINETE DO DESEMBARGADOR PAULO DE TARSO TAMBURINI SOUZA",
@@ -368,6 +443,7 @@
   },
   {
    "secao": "4.29.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.29",
    "unidade": "GABINETE DO DESEMBARGADOR PAULO FERNANDO NAVES DE RESENDE",
@@ -381,6 +457,7 @@
   },
   {
    "secao": "4.31.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4",
    "unidade": "GABINETES",
@@ -394,6 +471,7 @@
   },
   {
    "secao": "4.33.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.33",
    "unidade": "GABINETE DO DESEMBARGADOR RONALDO CLARET DE MORAES",
@@ -407,6 +485,7 @@
   },
   {
    "secao": "4.35.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.35",
    "unidade": "GABINETE DA DESEMBARGADORA SANDRA ALVES DE SANTANA E FONSECA",
@@ -420,6 +499,7 @@
   },
   {
    "secao": "4.37.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.37",
    "unidade": "GABINETE DA DESEMBARGADORA SHIRLEY FENZI BERTÃO",
@@ -433,6 +513,7 @@
   },
   {
    "secao": "4.40.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "4.40",
    "unidade": "GABINETE DO DESEMBARGADOR WANDERLEY SALGADO DE PAIVA",
@@ -446,6 +527,7 @@
   },
   {
    "secao": "5.1.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "5.1",
    "unidade": "TURMA RECURSAL DE JURISDIÇÃO EXCLUSIVA DE BELO HORIZONTE, BETIM E CONTAGEM",
@@ -459,6 +541,7 @@
   },
   {
    "secao": "6.1.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.1",
    "unidade": "1º JUIZADO DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER",
@@ -472,6 +555,7 @@
   },
   {
    "secao": "6.2.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.2",
    "unidade": "1ª UNIDADE JURISDICIONAL DA FAZENDA PÚBLICA DE BELO HORIZONTE",
@@ -485,6 +569,7 @@
   },
   {
    "secao": "6.3.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.3",
    "unidade": "1ª VARA CÍVEL DA COMARCA DE SETE LAGOAS",
@@ -498,6 +583,7 @@
   },
   {
    "secao": "6.3.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.3",
    "unidade": "1ª VARA CÍVEL DA COMARCA DE SETE LAGOAS",
@@ -511,6 +597,7 @@
   },
   {
    "secao": "6.4.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.4",
    "unidade": "1ª VARA CÍVEL DA INFÂNCIA E DA JUVENTUDE DE BELO HORIZONTE",
@@ -524,6 +611,7 @@
   },
   {
    "secao": "6.4.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.4",
    "unidade": "1ª VARA CÍVEL DA INFÂNCIA E DA JUVENTUDE DE BELO HORIZONTE",
@@ -537,6 +625,7 @@
   },
   {
    "secao": "6.5.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.5",
    "unidade": "1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DA COMARCA DE NOVA LIMA",
@@ -550,6 +639,7 @@
   },
   {
    "secao": "6.5.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.5",
    "unidade": "1ª VARA CRIMINAL E DA INFÂNCIA E JUVENTUDE DA COMARCA DE NOVA LIMA",
@@ -563,6 +653,7 @@
   },
   {
    "secao": "6.6.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.6",
    "unidade": "1ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS",
@@ -576,6 +667,7 @@
   },
   {
    "secao": "6.6.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.6",
    "unidade": "1ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS",
@@ -589,6 +681,7 @@
   },
   {
    "secao": "6.7.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.7",
    "unidade": "1ª VARA DE FAZENDA PÚBLICA E AUTARQUIAS DA COMARCA DE SETE LAGOAS",
@@ -602,6 +695,7 @@
   },
   {
    "secao": "6.8.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.8",
    "unidade": "1ª VARA DE FEITOS TRIBUTÁRIOS DO ESTADO",
@@ -615,6 +709,7 @@
   },
   {
    "secao": "6.8.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.8",
    "unidade": "1ª VARA DE FEITOS TRIBUTÁRIOS DO ESTADO",
@@ -628,6 +723,7 @@
   },
   {
    "secao": "6.9.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.9",
    "unidade": "1ª VARA DE GARANTIAS DE BELO HORIZONTE/MG",
@@ -641,6 +737,7 @@
   },
   {
    "secao": "6.10.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.10",
    "unidade": "1ª VARA DOS FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
@@ -654,6 +751,7 @@
   },
   {
    "secao": "6.10.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.10",
    "unidade": "1ª VARA DOS FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
@@ -667,6 +765,7 @@
   },
   {
    "secao": "6.11.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.11",
    "unidade": "1ª VARA EMPRESARIAL DE BELO HORIZONTE",
@@ -680,6 +779,7 @@
   },
   {
    "secao": "6.12.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.12",
    "unidade": "1ª VARA EMPRESARIAL, DE FAZENDA PÚBLICA E REGISTROS PÚBLICOS",
@@ -693,6 +793,7 @@
   },
   {
    "secao": "6.13.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.13",
    "unidade": "1ª VARA ESPECIALIZADA EM CRIMES CONTRA A CRIANÇA E O ADOLESCENTE",
@@ -706,6 +807,7 @@
   },
   {
    "secao": "6.14.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6",
    "unidade": "VARAS",
@@ -719,6 +821,7 @@
   },
   {
    "secao": "6.15.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.15",
    "unidade": "2º JUIZADO DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER",
@@ -732,6 +835,7 @@
   },
   {
    "secao": "6.16.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.16",
    "unidade": "SEGUNDA UNIDADE DO JUIZADO ESPECIAL DA FAZENDA PÚBLICA",
@@ -745,6 +849,7 @@
   },
   {
    "secao": "6.17.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.17",
    "unidade": "2ª VARA CÍVEL DA COMARCA DE CONTAGEM - MG",
@@ -758,6 +863,7 @@
   },
   {
    "secao": "6.18.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.18",
    "unidade": "2ª VARA CÍVEL DA INFÂNCIA E DA JUVENTUDE",
@@ -771,6 +877,7 @@
   },
   {
    "secao": "6.18.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.18",
    "unidade": "2ª VARA CÍVEL DA INFÂNCIA E DA JUVENTUDE",
@@ -784,6 +891,7 @@
   },
   {
    "secao": "6.19.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.19",
    "unidade": "2ª VARA CÍVEL DE BELO HORIZONTE",
@@ -797,6 +905,7 @@
   },
   {
    "secao": "6.20.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.20",
    "unidade": "2ª VARA CÍVEL DE BETIM",
@@ -810,6 +919,7 @@
   },
   {
    "secao": "6.20.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.20",
    "unidade": "2ª VARA CÍVEL DE BETIM",
@@ -823,6 +933,7 @@
   },
   {
    "secao": "6.21.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.21",
    "unidade": "2ª VARA CRIMINAL",
@@ -836,6 +947,7 @@
   },
   {
    "secao": "6.22.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.22",
    "unidade": "2ª VARA CRIMINAL E EXECUÇÃO PENAL DA COMARCA DE NOVA LIMA",
@@ -849,6 +961,7 @@
   },
   {
    "secao": "6.22.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.22",
    "unidade": "2ª VARA CRIMINAL E EXECUÇÃO PENAL DA COMARCA DE NOVA LIMA",
@@ -862,6 +975,7 @@
   },
   {
    "secao": "6.23.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.23",
    "unidade": "2ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS DA COMARCA DE BELO HORIZONTE",
@@ -875,6 +989,7 @@
   },
   {
    "secao": "6.23.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.23",
    "unidade": "2ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS DA COMARCA DE BELO HORIZONTE",
@@ -888,6 +1003,7 @@
   },
   {
    "secao": "6.24.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.24",
    "unidade": "2ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS DE SETE LAGOAS",
@@ -901,6 +1017,7 @@
   },
   {
    "secao": "6.25.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.25",
    "unidade": "2ª VARA DAS GARANTIAS DE BELO HORIZONTE/MG",
@@ -914,6 +1031,7 @@
   },
   {
    "secao": "6.26.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.26",
    "unidade": "2ª VARA DE FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
@@ -927,6 +1045,7 @@
   },
   {
    "secao": "6.26.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.26",
    "unidade": "2ª VARA DE FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
@@ -940,6 +1059,7 @@
   },
   {
    "secao": "6.27.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.27",
    "unidade": "2ª VARA DE FEITOS TRIBUTÁRIOS DO MUNICÍPIO DE BELO HORIZONTE",
@@ -953,6 +1073,7 @@
   },
   {
    "secao": "6.28.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.28",
    "unidade": "COMARCA DE BELO HORIZONTE / 2ª VARA DE FEITOS TRIBUTÁRIOS DO ESTADO",
@@ -966,6 +1087,7 @@
   },
   {
    "secao": "6.28.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.28",
    "unidade": "COMARCA DE BELO HORIZONTE / 2ª VARA DE FEITOS TRIBUTÁRIOS DO ESTADO",
@@ -979,6 +1101,7 @@
   },
   {
    "secao": "6.29.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.29",
    "unidade": "2ª VARA DE SUCESSÕES E AUSÊNCIA DA COMARCA DE BELO HORIZONTE",
@@ -992,6 +1115,7 @@
   },
   {
    "secao": "6.30.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.30",
    "unidade": "2ª VARA DE TÓXICOS, ORCRIM E LAVAGEM DE BENS E VALORES DE BELO HORIZONTE",
@@ -1005,6 +1129,7 @@
   },
   {
    "secao": "6.30.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.30",
    "unidade": "2ª VARA DE TÓXICOS, ORCRIM E LAVAGEM DE BENS E VALORES DE BELO HORIZONTE",
@@ -1018,6 +1143,7 @@
   },
   {
    "secao": "6.31.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.31",
    "unidade": "2ª. VARA EMPRESARIAL DE BELO HORIZONTE/MG",
@@ -1031,6 +1157,7 @@
   },
   {
    "secao": "6.32.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.32",
    "unidade": "2ª VARA EMPRESARIAL, DE FAZENDA PÚBLICA E REGISTROS PÚBLICOS DE CONTAGEM",
@@ -1044,6 +1171,7 @@
   },
   {
    "secao": "6.33.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.33",
    "unidade": "2ª VARA ESPECIALIZADA EM CRIMES CONTRA A CRIANÇA E O ADOLESCENTE",
@@ -1057,6 +1185,7 @@
   },
   {
    "secao": "6.34.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.34",
    "unidade": "3ª UNIDADE JURISDICIONAL DA FAZENDA PÚBLICA 43º JD",
@@ -1070,6 +1199,7 @@
   },
   {
    "secao": "6.35.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.35",
    "unidade": "3ª VARA CÍVEL DA COMARCA DE SETE LAGOAS",
@@ -1083,6 +1213,7 @@
   },
   {
    "secao": "6.35.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.35",
    "unidade": "3ª VARA CÍVEL DA COMARCA DE SETE LAGOAS",
@@ -1096,6 +1227,7 @@
   },
   {
    "secao": "6.36.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.36",
    "unidade": "3ª VARA CRIMINAL BETIM",
@@ -1109,6 +1241,7 @@
   },
   {
    "secao": "6.36.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.36",
    "unidade": "3ª VARA CRIMINAL BETIM",
@@ -1122,6 +1255,7 @@
   },
   {
    "secao": "6.37.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.37",
    "unidade": "3ª VARA CRIMINAL DA COMARCA DE BELO HORIZONTE - MG",
@@ -1135,6 +1269,7 @@
   },
   {
    "secao": "6.37.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.37",
    "unidade": "3ª VARA CRIMINAL DA COMARCA DE BELO HORIZONTE - MG",
@@ -1148,6 +1283,7 @@
   },
   {
    "secao": "6.38.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.38",
    "unidade": "3ª VARA CRIMINAL DA COMARCA DE CONTAGEM",
@@ -1161,6 +1297,7 @@
   },
   {
    "secao": "6.39.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.39",
    "unidade": "3ª VARA DOS FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
@@ -1174,6 +1311,7 @@
   },
   {
    "secao": "6.39.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.39",
    "unidade": "3ª VARA DOS FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
@@ -1187,6 +1325,7 @@
   },
   {
    "secao": "6.40.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.40",
    "unidade": "3ª VARA EMPRESARIAL, DE FAZENDA PÚBLICA E REGISTROS PÚBLICOS",
@@ -1200,6 +1339,7 @@
   },
   {
    "secao": "6.41.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.41",
    "unidade": "3ª VARA FAZENDA PÚBLICA E AUTARQUIAS",
@@ -1213,6 +1353,7 @@
   },
   {
    "secao": "6.41.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.41",
    "unidade": "3ª VARA FAZENDA PÚBLICA E AUTARQUIAS",
@@ -1226,6 +1367,7 @@
   },
   {
    "secao": "6.42.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.42",
    "unidade": "4º JUIZADO DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER",
@@ -1239,6 +1381,7 @@
   },
   {
    "secao": "6.43.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.43",
    "unidade": "4ª VARA CÍVEL DA COMARCA DE CONTAGEM",
@@ -1252,6 +1395,7 @@
   },
   {
    "secao": "6.43.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.43",
    "unidade": "4ª VARA CÍVEL DA COMARCA DE CONTAGEM",
@@ -1265,6 +1409,7 @@
   },
   {
    "secao": "6.44.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.44",
    "unidade": "4ª VARA CRIMINAL",
@@ -1278,6 +1423,7 @@
   },
   {
    "secao": "6.45.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.45",
    "unidade": "4ª VARA DE FAZENDA PÚBLICA E AUTARQUIAS",
@@ -1291,6 +1437,7 @@
   },
   {
    "secao": "6.45.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.45",
    "unidade": "4ª VARA DE FAZENDA PÚBLICA E AUTARQUIAS",
@@ -1304,6 +1451,7 @@
   },
   {
    "secao": "6.46.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.46",
    "unidade": "4ª VARA DE TÓXICOS, ORCRIM E LAVAGEM BENS E VALORES DE BELO HORIZONTE",
@@ -1317,6 +1465,7 @@
   },
   {
    "secao": "6.46.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.46",
    "unidade": "4ª VARA DE TÓXICOS, ORCRIM E LAVAGEM BENS E VALORES DE BELO HORIZONTE",
@@ -1330,6 +1479,7 @@
   },
   {
    "secao": "6.47.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.47",
    "unidade": "5ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS",
@@ -1343,6 +1493,7 @@
   },
   {
    "secao": "6.47.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.47",
    "unidade": "5ª VARA DA FAZENDA PÚBLICA E AUTARQUIAS",
@@ -1356,6 +1507,7 @@
   },
   {
    "secao": "6.48.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.48",
    "unidade": "5ª VARA DE FAMÍLIA DA COMARCA DE BELO HORIZONTE",
@@ -1369,6 +1521,7 @@
   },
   {
    "secao": "6.48.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.48",
    "unidade": "5ª VARA DE FAMÍLIA DA COMARCA DE BELO HORIZONTE",
@@ -1382,6 +1535,7 @@
   },
   {
    "secao": "6.49.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.49",
    "unidade": "5ª VARA DE TÓXICOS, ORGANIZAÇÃO CRIMINOSA, LAV. DE BENS E VALORES",
@@ -1395,6 +1549,7 @@
   },
   {
    "secao": "6.49.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.49",
    "unidade": "5ª VARA DE TÓXICOS, ORGANIZAÇÃO CRIMINOSA, LAV. DE BENS E VALORES",
@@ -1408,6 +1563,7 @@
   },
   {
    "secao": "6.50.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.50",
    "unidade": "6ª VARA CÍVEL DA COMARCA DE CONTAGEM",
@@ -1421,6 +1577,7 @@
   },
   {
    "secao": "6.50.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.50",
    "unidade": "6ª VARA CÍVEL DA COMARCA DE CONTAGEM",
@@ -1434,6 +1591,7 @@
   },
   {
    "secao": "6.51.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.51",
    "unidade": "7ª VARA CÍVEL DA COMARCA DE BELO HORIZONTE/MG",
@@ -1447,6 +1605,7 @@
   },
   {
    "secao": "6.52.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.52",
    "unidade": "8ª VARA CRIMINAL DE BELO HORIZONTE",
@@ -1460,6 +1619,7 @@
   },
   {
    "secao": "6.52.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.52",
    "unidade": "8ª VARA CRIMINAL DE BELO HORIZONTE",
@@ -1473,6 +1633,7 @@
   },
   {
    "secao": "6.53.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.53",
    "unidade": "9ª VARA CRIMINAL DE BELO HORIZONTE",
@@ -1486,6 +1647,7 @@
   },
   {
    "secao": "6.53.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.53",
    "unidade": "9ª VARA CRIMINAL DE BELO HORIZONTE",
@@ -1499,6 +1661,7 @@
   },
   {
    "secao": "6.54.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.54",
    "unidade": "11ª VARA CÍVEL DA COMARCA DE BELO HORIZONTE",
@@ -1512,6 +1675,7 @@
   },
   {
    "secao": "6.55.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.55",
    "unidade": "11ª VARA CRIMINAL DA COMARCA DE BELO HORIZONTE",
@@ -1525,6 +1689,7 @@
   },
   {
    "secao": "6.56.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.56",
    "unidade": "11ª VARA DE FAMÍLIA",
@@ -1538,6 +1703,7 @@
   },
   {
    "secao": "6.57.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.57",
    "unidade": "18ª VARA CÍVEL DE BELO HORIZONTE",
@@ -1551,6 +1717,7 @@
   },
   {
    "secao": "6.57.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.57",
    "unidade": "18ª VARA CÍVEL DE BELO HORIZONTE",
@@ -1564,6 +1731,7 @@
   },
   {
    "secao": "6.58.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.58",
    "unidade": "19ª VARA CÍVEL DE BELO HORIZONTE",
@@ -1577,6 +1745,7 @@
   },
   {
    "secao": "6.59.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.59",
    "unidade": "24ª VARA CÍVEL DA COMARCA DE BELO HORIZONTE",
@@ -1590,6 +1759,7 @@
   },
   {
    "secao": "6.59.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.59",
    "unidade": "24ª VARA CÍVEL DA COMARCA DE BELO HORIZONTE",
@@ -1603,6 +1773,7 @@
   },
   {
    "secao": "6.60.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.60",
    "unidade": "28ª (VIGÉSIMA OITAVA) VARA CÍVEL",
@@ -1616,6 +1787,7 @@
   },
   {
    "secao": "6.61.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.61",
    "unidade": "29ª VARA CÍVEL DA COMARCA DE BELO HORIZONTE/MG.",
@@ -1629,6 +1801,7 @@
   },
   {
    "secao": "6.62.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.62",
    "unidade": "31ª VARA CIVEL DA COMARCA DE DE BELO HORIZONTE",
@@ -1642,6 +1815,7 @@
   },
   {
    "secao": "6.63.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.63",
    "unidade": "32ª VARA CÍVEL DA COMARCA DE BELO HORIZONTE",
@@ -1655,6 +1829,7 @@
   },
   {
    "secao": "6.62.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.62",
    "unidade": "31ª VARA CIVEL DA COMARCA DE DE BELO HORIZONTE",
@@ -1668,6 +1843,7 @@
   },
   {
    "secao": "6.64.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.64",
    "unidade": "CENTRAL DE CUMPRIMENTO DE SENTENÇA DAS VARAS DA FAZENDA PÚBLICA",
@@ -1681,6 +1857,7 @@
   },
   {
    "secao": "6.65.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.65",
    "unidade": "CENTRASE CÍVEL",
@@ -1694,6 +1871,7 @@
   },
   {
    "secao": "6.66.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.66",
    "unidade": "TRIBUNAL DO JÚRI PRESIDENTE DE BELO HORIZONTE",
@@ -1707,6 +1885,7 @@
   },
   {
    "secao": "6.67.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.67",
    "unidade": "VARA AGRÁRIA E ACIDENTE DE TRABALHO DE BELO HORIZONTE",
@@ -1720,6 +1899,7 @@
   },
   {
    "secao": "6.68.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.68",
    "unidade": "VARA DA INFÂNCIA E DA JUVENTUDE DE CONTAGEM",
@@ -1733,6 +1913,7 @@
   },
   {
    "secao": "6.69.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.69",
    "unidade": "VARA DA INFÂNCIA E DA JUVENTUDE E DE EXECUÇÕES PENAIS/BETIM",
@@ -1746,6 +1927,7 @@
   },
   {
    "secao": "6.69.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.69",
    "unidade": "VARA DA INFÂNCIA E DA JUVENTUDE E DE EXECUÇÕES PENAIS/BETIM",
@@ -1759,6 +1941,7 @@
   },
   {
    "secao": "6.70.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.70",
    "unidade": "VARA DE EXECUÇÕES PENAIS DE BELO HORIZONTE",
@@ -1772,6 +1955,7 @@
   },
   {
    "secao": "6.71.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.71",
    "unidade": "VARA DE EXECUÇÕES PENAIS DE CONTAGEM",
@@ -1785,6 +1969,7 @@
   },
   {
    "secao": "6.72.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.72",
    "unidade": "VARA DE EXECUÇÕES PENAIS DE RIBEIRÃO DAS NEVES/MG",
@@ -1798,6 +1983,7 @@
   },
   {
    "secao": "6.72.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.72",
    "unidade": "VARA DE EXECUÇÕES PENAIS DE RIBEIRÃO DAS NEVES/MG",
@@ -1811,6 +1997,7 @@
   },
   {
    "secao": "6.73.5",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.73",
    "unidade": "VARA DE REGISTROS PÚBLICOS DE BELO HORIZONTE",
@@ -1824,6 +2011,7 @@
   },
   {
    "secao": "6.74.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.74",
    "unidade": "VARA DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER – CONTAGEM",
@@ -1837,6 +2025,7 @@
   },
   {
    "secao": "6.74.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.74",
    "unidade": "VARA DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER – CONTAGEM",
@@ -1850,6 +2039,7 @@
   },
   {
    "secao": "6.75.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.75",
    "unidade": "VARA EMPRESARIAL, DA FAZENDA PÚBLICA E AUTARQUIAS, REGISTROS PÚBL",
@@ -1863,6 +2053,7 @@
   },
   {
    "secao": "6.75.5",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "6.75",
    "unidade": "VARA EMPRESARIAL, DA FAZENDA PÚBLICA E AUTARQUIAS, REGISTROS PÚBL",
@@ -1876,6 +2067,7 @@
   },
   {
    "secao": "6.76.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.76",
    "unidade": "VARA FAZ PÚBLICA, EMP, REG PUB, AC. TRAB DE RIB DAS NEVES",
@@ -1889,6 +2081,7 @@
   },
   {
    "secao": "6.77.4",
+   "rotuloDaSecao": "Achados e Determinações",
    "tipoSecao": "achados",
    "unidadeNumero": "6.77",
    "unidade": "VARA INFRACIONAL DA INFÂNCIA E JUVENTUDE",
@@ -1901,7 +2094,36 @@
    ]
   },
   {
+   "secao": "7.6",
+   "rotuloDaSecao": "Achados",
+   "tipoSecao": "achados",
+   "unidadeNumero": "7",
+   "unidade": "PRECATÓRIOS",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "• Não cumprimento de determinações nas inspeções ano 2019, 2022 e 2023 Após análise dos procedimentos atualmente adotados e das ferramentas eletrônicas disponíveis no setor, verificamos que, além das observações acima indicadas, diversas determinações constantes nos relatórios de inspeção de 2019, 2022 e 2023 permanecem pendentes de cumprimento. Em outras palavras, passados sete anos desde a primeira inspeção, não foram adotadas providências efetivas pela Presidência do Tribunal de Justiça de Minas Gerais, conforme relação apresentada a seguir: 1) priorizar o desenvolvimento e implantação de ferramenta eletrônica, denominada precatório eletrônico, contendo módulos para expedição, gestão e pagamento de precatórios, podendo haver cooperação entre tribunais para implantação de outra solução tecnológica já existente, notadamente o sistema eletrônico do TRF 5ª Região, que utiliza a plataforma PJE (determinação da inspeção 2019); 2) disponibilizar ao juízo da execução requisitante os valores não levantados pelos credores, após não atendida a intimação para fornecimento de conta bancária, evitando-se a paralisação do precatório por falta de indicação dos elementos para pagamento. O juiz da execução deve promover a intimação e pagamento do precatório diretamente ao beneficiário em tal hipótese (determinação da inspeção 2019); 3) implantar sistemas eletrônicos para (i) cadastramento, tramitação e controle dos precatórios, (ii) atualização de cálculos como forma de otimizar tempo e mão de obra (construção de sistemas próprios ou adoção de sistemas de outro tribunal mediante convênio) (determinação da inspeção 2022); 4) distribuir e repassar aos beneficiários a integralidade dos saldos existentes nas contas especiais (cronológica e acordo) (determinação da inspeção 2022); 5) providenciar a disponibilização de link na página de precatórios, zelando para manter, sempre, as informações atualizadas: a) acesso direto às listas cronológicas e preferenciais de cada ente/entidade devedora, considerando, além de uma lista geral, outra com, apenas, os precatórios não quitados (determinação da inspeção 2022); 6) destinar os recursos repassados pelos devedores mensalmente, cuidando para que entre o ingresso e a efetiva disponibilização ao credor o prazo não ultrapasse 30 dias (o ideal é que seja de 15 dias) (recomendação da inspeção 2022); 7) realizar, sempre que possível e previamente ao repasse dos recursos pelo ente devedor, os atos de saneamento do precatório, sua atualização, aferição de eventuais retenções, conta bancária para depósito e intimação das partes (recomendação da inspeção 2022). • Regularidade do CPF/CNPJ Na inspeção realizada no ano de 2023, foi determinado que o setor de precatórios passasse a exigir, nas novas requisições, a regularidade do CPF ou do CNPJ dos beneficiários. Em resposta, o setor informou que as medidas adotadas para o cumprimento da determinação incluem, na análise do ofício de precatório, a conferência dos dados dos beneficiários junto ao site da Receita Federal do Brasil. No caso de beneficiário falecido, o precatório é devolvido ao juízo da execução para que seja regularizado o polo ativo da demanda, sendo obrigatória a indicação do número do processo de espólio. Ressalte-se que a condição de “titular falecido” não constitui impedimento para a expedição do precatório (desde que com a indicação de “espólio”), tampouco há a obrigação de abertura de inventário judicial para expedição do precatório. Essa disciplina encontra respaldo no § 3º do art. 2º da Instrução Normativa nº 2172/2024. • Ofício precatório - OPE O sistema apresentado pelo TJMG como cumprimento da determinação anterior de expedição de ofício de precatório por meio eletrônico (OPE) — substituindo o encaminhamento físico ou diverso — apresenta uma limitação relevante: não dispõe de campo específico para o valor da SELIC. Essa ausência prejudica a completude das informações necessárias ao processamento dos precatórios, uma vez que o índice SELIC é elemento essencial para cálculos de atualização e controle financeiro. Ainda registramos que o ofício eletrônico não exige o preenchimento de campos obrigatórios como “Valor da Previdência” e “RRA – IRRF”, quando couber. Ressalte-se que tais informações constam expressamente como obrigatórias no art. 6º da Resolução nº 303 do CNJ. Foi constatado pela equipe de inspeção que, no checklist realizado pela ASPREC – Assessoria de Precatórios –, responsável pelo recebimento e gestão, não há exigência dessas informações, quando couber, no momento da conferência do precatório. Essa ausência compromete a completude e a padronização dos dados, fragiliza o controle e a conformidade normativa, além de gerar risco de inconsistências nos cálculos de atualização, dificultando a auditoria e prejudicando o processamento dos precatórios. • Valores nas contas de gestão Os relatórios das últimas inspeções registraram como pendente de distribuição, nas contas especiais, a importância de R$ 1.890.089.894,33 (julho de 2022). Posteriormente, em 2023, os saldos dessas mesmas contas — entre valores que aguardavam vinculação e aqueles já vinculados — aumentaram para R$ 1.931.874.941,42, superando o montante identificado na inspeção anterior. Na presente inspeção, realizada em 2026, o valor informado durante a inspeção é de R$ 2.619.358,218,32 (dois bilhões, seiscentos e dezenove milhões, trezentos e cinquenta e oito mil, duzentos e dezoito reais e trinta e dois centavos). Isto é, a situação não apenas persiste, mas se agrava, evidenciando a ausência de providências efetivas e demandando medidas urgentes por parte da Presidência do Tribunal de Justiça de Minas Gerais. Registra-se que, durante a inspeção, o Banco do Brasil – sistema DEPOX - informou a individualização de 882 contas, totalizando o montante de R$ 200.000.000,00 (duzentos milhões de reais). Com a conclusão do processo de individualização, será possível dar início aos pagamentos por meio de alvará eletrônico, encaminhando diretamente à instituição financeira responsável. Esse procedimento garante que os pagamentos sejam cumpridos em até 2 dias, substituindo a antiga forma de comunicação por e-mail, que demandava aproximadamente 30 dias para conclusão. • Multiplicidade de soluções tecnológicas A ausência de uma solução tecnológica definitiva — tanto na expedição dos ofícios precatórios quanto na implementação de módulos de cálculos — constitui fator muito agravante para o acúmulo verificado na gestão dos precatórios. Conquanto o setor esteja em processo de modernização e busque alternativas no mercado tecnológico, constatamos que as soluções adotadas até o momento são fragmentadas e pontuais, sem a necessária integração para que todo o fluxo de precatórios seja processado como em um único sistema. Atualmente, o setor de precatórios utiliza diferentes soluções para cada etapa: • OPE para expedição de ofícios eletrônicos; • SGP para elaboração da ordem cronológica; • NSC para cálculos (a partir de 01/12/2021); • Sistema em homologação para distribuição de recursos; • DEPOX para emissão de alvarás. Registra-se ainda que cálculos anteriores a 01/12/2021 continuam sendo elaborados em planilhas Excel (após esta data é calculado pelo sistema NSC). A multiplicidade de sistemas sem integração compromete eficiência, rastreabilidade e a transparência, além de aumentar o risco de inconsistências, erros de cálculo e falhas nos registros (cessão, penhora, amortização, compensação, entre outros). O ideal seria a adoção de um sistema centralizado, capaz de garantir maior eficiência administrativa, transparência, proteção dos dados sensíveis dos beneficiários e viabilizar auditorias mais eficazes. Essa solução integrada eliminaria retrabalho e asseguraria um fluxo contínuo em todas as etapas da gestão. Reconhecemos, contudo, a complexidade envolvida na implantação de um novo sistema. Nesse sentido, admite-se como alternativa viável a efetiva integração dos sistemas já existentes, contanto que devidamente homologados pelo setor de tecnologia. • Ordem cronológica – lista única - superpreferenciais Na página de precatórios, a lista pública de precatórios segue apenas a ordem cronológica geral, sem contemplar os casos de superpreferências (idosos, pessoas com doenças graves e deficientes). Apesar de o setor de precatórios realizar os cálculos e pagamentos desses casos prioritários, essa ordem diferenciada não aparece de forma transparente no portal, ficando restrita a controles internos, muitas vezes em planilhas Excel. Isso gera uma situação delicada: de um lado, há o cumprimento da lei (pagamento superpreferencial), mas, de outro, faltam publicidade e clareza para os credores acompanharem sua posição na fila. A ausência dessa informação pública pode dificultar a fiscalização social e levantar dúvidas sobre a lisura do processo. • Publicação ordem cronológica em PDF A equipe de inspeção, em consulta à página de precatórios, na seção “acesse a lista única cronológica e superpreferências – 2026 – março”, constatou a publicação com inconsistências na ordenação da lista. Como exemplo, identificou-se a classificação de precatório de natureza comum como superpreferencial por idade. Registramos que o CEPREC foi questionado e informou que providenciaria a retificação dos erros, com a publicação da ordem correta, ressaltando ainda a possibilidade de existirem outras falhas na ordenação. Destacamos, por fim, que a ordem cronológica apresentada corresponde a um arquivo em PDF gerado pelo setor de precatórios. • Central de Localização de Beneficiários É faculdade dos tribunais estabelecer critérios para a localização do beneficiário como medida cautelar prévia ao pagamento do precatório. Entretanto, a equipe de inspeção constatou que o Tribunal de Justiça - TJMG mantém um setor específico — a Central de Localização do Beneficiário (CLB) — com aproximadamente 3.000 processos aguardando a identificação da conta bancária dos beneficiários. A existência da CLB deve ser reconhecida como boa prática, porém sua aplicação ocorre de forma inadequada, uma vez que a localização deveria ser realizada antes da disponibilização financeira do precatório, e não posteriormente. Essa inversão compromete a efetividade da medida, gera atrasos e aumenta o risco de inconsistências na gestão dos pagamentos. • Saldo em conta de processos não levantados pelos beneficiários Embora a inspeção realizada em 2019 tenha determinado que os valores não levantados pelos credores fossem disponibilizados ao juízo da execução requisitante, após a não apresentação de conta bancária pelo beneficiário, verificou-se que essa determinação não foi cumprida. Durante a inspeção atual, o setor de precatórios informou que a medida gerou reclamações em razão das devoluções de valores, motivo pelo qual deixou de observar a determinação estabelecida em 2019. Como consequência, o saldo apresentado no questionário anterior à presente inspeção não incluiu os valores das contas judiciais de 1º grau, constando como zerado, justamente porque a determinação anterior não foi cumprida. • Status das situações dos precatórios na página do TJMG – “ordem cronológica” Em consulta à ordem cronológica publicada no site do TJMG, foi constatada a existência da opção de filtro “ocultar fechados”, utilizada pelo setor para indicar precatórios na ordem cronológica com alguma pendência de extinção. Verificou-se, ainda, a presença de diversos status atribuídos aos precatórios na lista disponível, tais como: abertos, abertos a pagar, abertos acordo, aberto desdobrado, aberto inicial, aberto parcelado, aberto reservado, aberto suspenso, fechado, quitado, entre outros. Registra-se que a situação dos precatórios deveria ser apresentada de forma simplificada, acompanhada de uma legenda padronizada, permitindo ao usuário compreender objetivamente o estágio do processo, sem necessidade de múltiplas interpretações. • Superpreferência por doença grave, idade e deficiência A equipe de inspeção, por amostragem, consultou o andamento do precatório nº 2040865-23-2025.8.13.0000. Constatamos que foi peticionado pagamento superpreferencial por doença grave em 26/07/2025 ainda pendente de expedição de alvará no momento da inspeção. Ainda, registramos que a equipe de inspeção constatou que o deferimento da superpreferência por doença grave ou deficiência não tem a prévia manifestação do devedor. A rigor do art. 9º, §3º, da Res. CNJ 303/2019, “Para os precatórios já expedidos, o pedido de superpreferência relativo à moléstia grave ou deficiência do requerente deve ser dirigido ao presidente do tribunal de origem do precatório, que decidirá, na forma do seu regimento interno, assegurando-se o contraditório”. Assim, o contraditório é obrigatório nestas duas situações. • Acordo direto A equipe de inspeção constatou que os acordos diretos realizados pelo Setor de Precatórios possuem variada duração quanto à vigência. Considerando que as entidades do regime especial quitam seus precatórios sob a forma de Planos anuais, podendo, na sua definição, estabelecer o interesse de quitar precatórios na forma de acordo direto, consoante regras específicas. A duração do acordo para além de prazo não razoável, sobretudo nas situações em que há acúmulo de saldos em conta, traz inúmeros impactos negativos, entre eles a restrição ao direito de ampla participação de todos os credores. Ilustrativamente, o Ato Convocatório do Município de Belo Horizonte acumula dois editais de inscrição, o primeiro do ano de 2024 e outro do ano de 2025. Registra-se que o primeiro edital de 2024 ainda tem pendências de cálculos e no segundo edital não tinham sido iniciados os cálculos dos inscritos. Além disso, a equipe de inspeção constatou que o Setor de Precatórios depende da atuação da Procuradoria para elaborar cálculos e propor o acordo. Com isto, verificou-se bastante atraso no processamento do acordo, com consequente acúmulo de saldo em conta. Vale lembrar, neste caso, que a responsabilidade pela elaboração dos cálculos/retenções é do Tribunal, não podendo ser delegada às partes. A situação de cálculos realizados pela Procuradoria se estende ao Estado de Minas Gerais. Estas constatações vão contra o posicionamento do CNJ que estabelece que o acordo direto deve zelar pela celeridade na tramitação e liberação dos recursos, sobretudo para garantir a disponibilização dos créditos em até 30 dias do aporte. • Obrigações acessórias na tributação A equipe de inspeção constatou que o Tribunal de Justiça de Minas Gerais realiza a retenção dos tributos na fonte. Contudo, não encaminha expediente à instituição financeira responsável pelos pagamentos (Banco do Brasil), a fim de que ela cumpra a obrigação acessória de envio das informações por meio da EFD-REINF Atualmente, os entes devedores estão encaminhando diretamente as informações à Receita Federal por meio da EFD-REINF. Registra-se que o setor de Precatórios não solicitou providências junto à instituição financeira para atendimento à COSIT n.º 271, desenvolvendo layout específico para a transmissão das retenções efetuadas, tampouco encaminha em seus alvarás informações para os entes devedores cumprirem as informações necessárias a transmissão do EFD-REINF. • Valor em contas de acordo do REGIME GERAL Durante a inspeção, foi constatado saldo de R$ 1.979.000,00 (um milhão, novecentos e setenta e nove mil reais) em contas de acordo de entes que atualmente se encontram no regime geral de pagamento de precatórios. O setor de precatórios informou que tais valores correspondem a resíduos acumulados ao longo do tempo, provenientes de devedores que, inicialmente, tinham a opção de acordo no regime especial, mas posteriormente migraram para o regime ordinário. Contudo, os saldos remanescentes desses acordos não foram transferidos para a conta de ordem cronológica, permanecendo paralisados. Essa situação evidencia falha na gestão dos recursos, uma vez que a não transferência compromete a correta destinação dos valores e gera distorções no fluxo de pagamento dos precatórios. • Metodologia de cálculos da Emenda 136/2025 A equipe de inspeção, em consulta ao sistema de cálculos – NSC, constatou que a metodologia prevista na Emenda Constitucional nº 136/2025 vem sendo aplicada pelo TJMG de forma “por período” e não “mensalmente”. Conforme dispõe o art. 2º do Provimento nº 207/2025 do CNJ, os cálculos não devem ser realizados apenas em períodos fechados (ex.: de janeiro a dezembro em um único índice), mas sim mensalmente, respeitando o inciso III do referido artigo (mesma dicção no art. 3º, § 1º, “c”). Esse procedimento assegura maior precisão e evita distorções, uma vez que os índices de inflação variam mês a mês. Ressalta-se que a aplicação incorreta da metodologia tende a reduzir o montante final recebido pelo credor, especialmente em períodos de inflação elevada. • Quadro de servidores em atuação no setor de precatórios Embora o setor de precatórios esteja envidando esforços para pagamentos de precatórios, esse resultado está sendo alcançado pela dedicação da equipe de trabalho, à míngua de soluções tecnológicas eficazes. Neste cenário, constata-se que o total de servidores efetivos e em atuação regular no Setor de Precatórios é bastante inferior ao conjunto de atividades do setor, de cálculo e de pagamento que precisam ser mobilizadas para atendimento do acervo de 60.000 processos. • Demandas não atendidas na DIRTEC – Diretoria de Tecnologia Registra-se que foram constatadas pela equipe de inspeção inúmeras demandas solicitadas no sistema JIRA à Diretoria de Tecnológica, com início de projetos de mais de 10 anos, sem atendimento. Todas as demandas para a conclusão dos módulos de ofício precatório, cálculos, ordem cronológica e outras funcionalidades visando conferir celeridade ao fluxo de precatórios e atendimento das inspeções anteriores do CNJ são de extrema urgência. Diante de tudo, propõem-se os seguintes direcionamentos:"
+    }
+   ]
+  },
+  {
+   "secao": "7.7",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "7",
+   "unidade": "PRECATÓRIOS",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Determina-se à Presidência do TJMG que, em 90 dias: • cumpra integralmente as determinações pendentes das inspeções 2019, 2022 e 2023 listadas no item próprio do relatório de inspeção; • estruture o quadro de servidores em atuação no Setor de Precatórios, especialmente nas tarefas que envolvam secretaria, cálculo e pagamento; Determina-se à Presidência do TJMG que determine à Central de Precatórios que, em 90 dias: • adote as providências necessárias para que os beneficiários, que não tenham decisões impeditivas (art. 32 da Res.303/2019), saquem/levantem a integralidade do que tem direito dos R$ 2.619.358,218,32 (dois bilhões, seiscentos e dezenove milhões, trezentos e cinquenta e oito mil, duzentos e dezoito reais e trinta e dois centavos); • assegure que a condição de beneficiário falecido não seja tratada como irregularidade do CPF, devendo ser reconhecido que o CPF do titular falecido não impede a expedição do precatório em nome do espólio; • promova a revisão integral do modelo de ofício precatório, compatibilizando-o às exigências mínimas do art. 6º da Resolução CNJ nº 303/2019, inclusive com campo específico para o valor da SELIC; • estabeleça rotina para que os valores sob reserva por impossibilidade de liberação de pagamento em razão de pendência do beneficiário (ausência de dados bancários, ausência de sucessão processual etc.) sejam gerenciados adequadamente nas hipóteses em que permaneçam à disposição da Central de Precatórios. Para tanto, admite-se a notificação do juízo da execução, na forma da Consulta CNJ nº 0008939-61.2021.2.00.0000, para que diligencie as medidas cabíveis e, havendo mora na resposta, seja notificada a Corregedoria para providências de seu cargo; • adeque a lista de ordem cronológica, a fim de que os credores superpreferenciais sejam devidamente identificados, com a indicação do respectivo crédito, conforme limite legal, com o saldo restante posicionado na ordem cronológica alimentícia; • Inicie a implantação de solução tecnológica única para todas as etapas de expedição, processamento e pagamento de precatórios, admitindo- se, alternativamente, que promova efetiva integração entre os sistemas, atualmente existentes e os que estão em esteira de desenvolvimento, para que, em qualquer hipótese, o fluxo de precatórios seja eficiente, seguro e a transparente, não ultrapassando, em qualquer opção, o prazo de 180 dias para conclusão dessa solução tecnológica; • adeque a lista de ordem cronológica, a fim de que a designação de situações seja simplificada, acompanhada de uma legenda padronizada, permitindo ao usuário compreender objetivamente o estágio do processo, sem necessidade de múltiplas interpretações; • promova a revisão da lista de superpreferências, excluindo- se aqueles beneficiários de créditos de natureza comum, inclusive, se for o caso, adotando as medidas de desmembramento dos precatórios nos casos não autorizados de mais de um beneficiário (art. 7º da Res. CNJ 303/2019); • estabeleça o contraditório antes da decisão quanto a pedidos de superpreferência por doença grave ou deficiência; • promova a revisão da sistemática dos acordos diretos, a fim de que: a) os cálculos sejam realizados diretamente pela Central de Precatórios e não pelas partes; b) zelem pela celeridade na liberação dos recursos; c) durem por prazo razoável, não se admitindo tempo superior a 01 (um) ano; d) preveja o valor estimado a ser disponibilizado no acordo, especialmente considerando a nova sistemática da EC 136/2025; e) dê integral cumprimento ao artigo 56 da Resolução CNJ nº 303/2019; • revise a metodologia de atuação da Central de Localização do Beneficiário, tornando-a mais eficiente, sobretudo para que atue de modo antecipado, nos casos em que, intimado o beneficiário para indicar dados bancários e transcorrido o prazo em branco, seja instada a CLB antes mesmo do momento de liberação do crédito; • adote a sistemática de provisionamento de recursos, a fim de que os valores disponíveis em conta possam ser individualizados, em respeito ao §30 do artigo 100 da Constituição Federal, introduzido pela EC 136/2025, nas hipóteses em que não seja possível a liberação imediata do crédito, por ausência de preparo do precatório; • cumpra integralmente as disposições do Provimento nº 207/2025 da Corregedoria Nacional, inclusive quanto à periodicidade mensal de verificação/aplicação da regra de atualização do crédito (art. 2º, III, e art. 3º, § 1º, “c”); • classifique corretamente no orçamento as parcelas previstas no § 20 do artigo 100 da Constituição Federal; • ajuste os procedimentos necessários à análise e tramitação célere dos pedidos de superpreferência, especialmente no caso daqueles fundamentados em doença grave; • promova a transferência dos recursos disponíveis na conta acordo para a conta cronológica, relativos a entes devedores que saíram do regime especial e não fizeram uso integral dos recursos destinados ao acordo direto oportunamente; Determina-se à Presidência do TJMG que determine à Diretoria Financeira: • ultime as diligências necessárias para cumprimento da Solução de Consulta COSIT nº 271/2024, a fim de que o Banco do Brasil assuma as obrigações relacionadas à transmissão das informações tributárias dos pagamentos de precatórios e RPVs; Determina-se à Presidência do TJMG que determine ao Departamento de Tecnologia que, em 90 dias: • Apresente plano de ação improrrogável para o atendimento de todas as demandas atualmente abertas pela Central de Precatórios, mas ainda não efetivamente atendidas cumprindo os cronogramas de implantação das soluções tecnológicas demandadas;"
+    }
+   ]
+  },
+  {
    "secao": "7.8",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "7",
    "unidade": "PRECATÓRIOS",
@@ -1914,7 +2136,358 @@
    ]
   },
   {
+   "secao": "8.1.2.1",
+   "rotuloDaSecao": "Achado: Indefinição do Ciclo de Gestão",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.1",
+   "unidade": "SECRETARIA DE GOVERNANÇA E GESTÃO ESTRATÉGICA - SEGOVE",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "No que tange às atribuições da Secretaria de Governança e Gestão Estratégica, embora formalmente situada no mesmo nível hierárquico das demais Diretorias Executivas Administrativas do Tribunal, a inspeção identificou uma tendência acentuada de expansão de suas competências para além da natureza originária de governança e monitoramento estratégico. A unidade tem atuado em diversas frentes generalistas e abrangentes, funcionando materialmente como uma espécie de \"Diretoria-Geral/Secretaria-Geral\", assumindo a coordenação de fluxos que extrapolam sua missão regimental. Um fator que corrobora essa percepção de centralidade privilegiada é a própria localização física da Secretaria, situada no mesmo andar e espaço ocupado pela Presidência do Tribunal. Esta disposição geográfica, distinta da conferida a todas as demais Diretorias Executivas, as quais estão espalhadas em diferentes prédios e localizações na cidade de Belo Horizonte-MG, estabelece uma proximidade que facilita o despacho direto com a Alta Administração, mas que, por outro lado, cria uma assimetria no tratamento e no acesso das demais unidades à cúpula diretiva. Essa natureza de \"Diretoria-Geral\" de fato, operando na ausência de uma estrutura formal com essa denominação, reflete-se na absorção de funções executivas típicas de gestão de pessoas. Exemplo disso é a recente incorporação da Gerência de Acompanhamento dos Programas de Estágio e Residência Jurídica (GEPER) e da Gerência de Desenvolvimento e Acompanhamento das Carreiras (GEDAC) ao portfólio da Secretaria, conforme já tratado anteriormente. Tal fenômeno reforça uma dispersão de competências que deveriam estar centralizadas em uma estrutura de gestão de pessoas robusta e autônoma, conforme as diretrizes da Resolução CNJ n. 240/2016. Outro exemplo de sensibilidade estratégica reside na organização do ciclo de gestão do Tribunal. Verificou-se que, embora as competências normativas sobre governança e gestão estratégica estejam atribuídas à SEGOVE, a execução material do planejamento — que engloba funções como a elaboração do Plano Plurianual (PPA), da Lei Orçamentária Anual (LOA), do Plano Estratégico e a efetiva realização das Reuniões de Análise Estratégica (RAEs) — é conduzida pela Diretoria Executiva de Planejamento Orçamentário e Qualidade na Gestão Institucional (DEPLAG). É importante ressaltar que as unidades se encontram alocadas em diretorias distintas e sob chefias e estruturas administrativas separadas. Essa organização, embora conte com a cooperação entre as equipes, resulta em uma fragmentação entre o centro de decisão estratégica (SEGOVE) e o centro de execução técnica e orçamentária (DEPLAG). Sob a ótica da governança moderna, a unificação técnica do planejamento e da estatística em uma estrutura única permitiria uma visão holística do Tribunal, garantindo que as metas estratégicas e o Prêmio de Qualidade estejam plenamente lastreados na realidade técnica da Corte, eliminando duplicidades e otimizando o suporte às decisões da Presidência."
+    }
+   ]
+  },
+  {
+   "secao": "8.1.2.3",
+   "rotuloDaSecao": "Achado: Parametrização de Processos Restritos no SEI",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.1",
+   "unidade": "SECRETARIA DE GOVERNANÇA E GESTÃO ESTRATÉGICA - SEGOVE",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "A inspeção detalhada na configuração do sistema SEI do Tribunal revelou uma distorção técnica que compromete diretamente o princípio da publicidade administrativa. O ponto central dessa falha reside na configuração do parâmetro SEI_EXIBIR_ARVORE_RESTRITO_SEM_ACESSO, que define se a estrutura de metadados (como número, tipo de processo e interessados) permanece visível para unidades que não detêm o acesso direto ao conteúdo de processos restritos. No cenário atual, a parametrização adotada faz com que o nível de acesso \"Restrito\" se comporte, na prática, como \"Sigiloso\", gerando uma invisibilidade administrativa indevida para a vasta maioria do corpo funcional e transformando a árvore de documentos em um ambiente de restrição informativa excessiva. Essa falta de visibilidade é evidenciada pela mensagem padrão de bloqueio — \"Unidade atual não possui acesso ao processo restrito\" — que surge em substituição a qualquer dado identificador do protocolo. O agravante técnico desse achado é que essa restrição não é absoluta por design, mas decorre de uma falha de padronização na gestão das unidades: apenas 14 unidades em todo o Tribunal possuem a função de \"Protocolo\" habilitada em suas configurações administrativas. Somente nesses setores específicos o sistema permite que o processo restrito seja visualizado conforme sua natureza — ou seja, com sua árvore de metadados exposta, mas com o conteúdo dos documentos preservado. Para o restante do Tribunal, o processo simplesmente torna-se indetectável nas consultas, o que contraria as diretrizes de transparência da Lei de Acesso à Informação (Lei n. 12.527/2011). As consequências dessa configuração inadequada do parâmetro e da ausência da função de protocolo na maioria das unidades extrapolam a mera dificuldade de navegação. Há um risco real de insegurança jurídica e duplicidade de esforços, pois, ao não localizarem um processo restrito já existente, as unidades administrativas podem instaurar novos protocolos sobre o mesmo objeto, gerando fragmentação da informação e retrabalho. Além disso, o ocultamento de metadados de processos que não são legalmente sigilosos impede a auditabilidade e o controle social, uma vez que o sigilo deve ser interpretado de forma estrita e aplicado apenas sobre o conteúdo sensível, jamais sobre a existência da tramitação administrativa em si."
+    }
+   ]
+  },
+  {
+   "secao": "8.2.2.1",
+   "rotuloDaSecao": "Achado: Déficit de Pessoal",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.2",
+   "unidade": "SECRETARIA DE AUDITORIA INTERNA - SECAUD",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Constatou-se que a força de trabalho é insuficiente para a adequada realização das atividades, resultando, por vezes, no prejuízo de trabalhos de auditoria, especialmente durante o período de prestação de contas anual e no atendimento de demandas do CNJ e do Tribunal de Contas do Estado. Nesse sentido, identificou-se uma grave carência quanto à especialização dos profissionais: a unidade conta com apenas um bacharel em Direito, um de Arquitetura, e nenhum especialista nas áreas de Tecnologia da Informação ou Engenharia. A insuficiência de pessoal e a falta de especialistas em áreas críticas para auditorias de obras e sistemas eletrônicos contrariam a Resolução CNJ n. 219/2016, que preconiza a distribuição proporcional e eficiente da força de trabalho. Ademais, a Resolução CNJ n. 308/2020 estabelece que os tribunais devem assegurar que a unidade de auditoria disponha de recursos humanos e materiais que garantam seu funcionamento adequado, compatível com a demanda dos trabalhos (Art. 3º, Parágrafo Único)."
+    }
+   ]
+  },
+  {
+   "secao": "8.2.2.2",
+   "rotuloDaSecao": "Achado: Deficiência na Metodologia de Planejamento e Ausência de",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.2",
+   "unidade": "SECRETARIA DE AUDITORIA INTERNA - SECAUD",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Mensuração de Carga Horária De modo geral, verificou-se que o Plano Anual de Auditoria (PAA) ainda é confeccionado de modo muito incipiente, não demonstrando de modo evidente uma metodologia de planejamento baseada em riscos, nem a correlação entre os objetos auditados e os objetivos estratégicos do Tribunal ou metas do Poder Judiciário, em que pese a Portaria n. 5812/PR/2022 acertadamente estabelecer em seu Art. 9º, I, que o planejamento deve delimitar a definição da estratégia metodológica a ser adotada, bem como a estimativa dos recursos. Atualmente, a própria unidade fica responsável por estabelecer as prioridades no planejamento de suas atividades, sem utilizar-se dos subsídios de mapeamento de riscos gerados pelo Centro de Controle, Transparência e Integridade (CECONTI) ─ unidade que seria equivalente à segunda linha, no modelo das 3 linhas ─ o que revela a existência de uma lacuna entre a coordenação de trabalhos que são intrinsicamente correlacionados, que, por conseguinte, pode implicar em duplicidade e/ou maior esforço pela auditoria durante a elaboração do PAA. Além disso, a falta de um planejamento baseado em riscos e o desalinhamento estratégico do PAA vão de encontro às diretrizes da Resolução CNJ n. 308/2020 e da Resolução CNJ n. 325/2020, as quais exigem a integração das atividades de auditoria ao planejamento estratégico institucional. Somado a isso, observou-se que o PAA não discrimina separadamente a carga horária destinada aos trabalhos de avaliação e aos de consultoria. Conforme preconiza o art. 38, parágrafo único da Resolução CNJ n.º 309/2020: Art. 38. O PAA deverá: [...] Parágrafo único. Ao considerar a aceitação de trabalhos de consultoria e a sua incorporação ao PAA, o responsável pela unidade de auditoria interna, deverá analisar se a quantidade de horas destinadas ao trabalho de consultoria se adequa a quantidade de horas planejadas para as auditorias. (grifou-se) Em que pese o Tribunal estabelecer em seu planejamento critérios como objetivo e prazo de realização de suas avaliações, verificou-se que o plano não distingue a carga horária estipulada para as atividades de avaliação e de consultoria. Nesse sentido, importa destacar que embora as duas atividades sejam típicas de auditoria interna, a verificação do cumprimento do preconizado pela Resolução CNJ resta prejudicada, uma vez que não é possível saber a quantificação exata estipulada para cada uma das atividades e, assim, verificar se a carga horária determinada foi respeitada."
+    }
+   ]
+  },
+  {
+   "secao": "8.2.2.3",
+   "rotuloDaSecao": "Achado: Ausência de Regulamentação Formal do Ciclo de Gestão",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.2",
+   "unidade": "SECRETARIA DE AUDITORIA INTERNA - SECAUD",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "da Auditoria (Mandato e Recondução) Verificou-se que o Tribunal, embora adote materialmente o período de dois anos para a chefia da Auditoria Interna, ainda não promoveu a regulamentação formal do mandato e das regras de recondução em seus normativos internos. Constatou-se, também, que a primeira designação para o mandato de dois anos ocorreu somente em 2023, tendo o dirigente já sido reconduzido uma vez. Todavia, em razão da inexistência de regramento local, há um vácuo normativo quanto ao limite de reconduções permitidas, impossibilitando-se aferir, por exemplo, quantas vezes o gestor poderia ser reconduzido ao cargo. Ressalte-se que o Tribunal já havia sido orientado, no âmbito do Pedido de Providências nº 0003742-91.2022.2.00.0000, a instituir o mandato nos termos da Resolução CNJ n. 308/2020, “sem prejuízo da oportuna regulamentação do tema”, fato que persiste e gera incerteza jurídica sobre o ciclo de gestão da terceira linha. A formalização do mandato e das regras de recondução em ato normativo próprio é uma medida de governança indispensável para a segurança jurídica e a impessoalidade da função correcional e avaliativa. A ausência de limites claros para a recondução cria um vácuo prejudicial que pode comprometer a independência técnica da unidade, uma vez que a permanência prolongada e sem critérios objetivos de alternância pode afetar a necessária imparcialidade do controle interno (enquanto unidade integrante do sistema e não realizadora de controle interno propriamente dito). A normatização interna é o instrumento que assegura a memória institucional, permitindo que as regras de sucessão sejam perenes e conhecidas, independentemente das mudanças na alta administração. Ao definir formalmente o prazo de dois anos e os limites para recondução, o Tribunal confere ao dirigente um status jurídico sólido e transparente, essencial para a higidez da governança e para a mitigação de riscos de ingerência administrativa sobre a terceira linha."
+    }
+   ]
+  },
+  {
+   "secao": "8.2.2.4",
+   "rotuloDaSecao": "Achado: Cogestão",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.2",
+   "unidade": "SECRETARIA DE AUDITORIA INTERNA - SECAUD",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Embora a Secretaria de Auditoria Interna tenha logrado êxito em afastar diversas atividades típicas de controle interno administrativo, identificou- se que a unidade ainda realiza a assinatura do Relatório de Gestão Fiscal (RGF). Tal prática caracteriza a assunção de responsabilidades gerenciais e a prática de atos decisórios que competem às instâncias de gestão, e não à auditoria. O modelo de governança estabelecido pelas Resoluções CNJ n. 308/2020 e n. 309/2020 consolida a Auditoria Interna estritamente como uma unidade de 3ª linha, segregando seus papéis das instâncias de gestão para mitigar o risco de autorrevisão. Desse modo, ressalta-se que, ainda que os órgãos do Poder Judiciário possuam autonomia para organizar suas unidades de gestão de riscos e controles internos de diversas formas (seja de maneira centralizada ou descentralizada), não há respaldo normativo para a transferência de deveres próprios de 1ª e 2º linhas à auditoria interna. Condicionar a unidade à validação de conteúdos em casos concretos ou à assinatura de relatórios operacionais — a exemplo do Relatório de Gestão Fiscal (RGF) — configura prática de cogestão, acarretando a quebra da objetividade e da independência necessária para avaliações posteriores. Nesse sentido, frise-se que o Acórdão TCU 1.745/2020 – Plenário assentou que pareceres da auditoria interna sobre atos de gestão configuram cogestão e reforçam a perda de independência para avaliações imparciais, ao passo que o Acórdão 1.299/2022 – Primeira Câmara sintetizou que a governança e a implementação de controles internos e de gestão de riscos são responsabilidade da alta administração."
+    }
+   ]
+  },
+  {
+   "secao": "8.4.2.1.1",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "8.4",
+   "unidade": "CENTRO DE CONTROLE, TRANSPARÊNCIA E INTEGRIDADE (CECONTI)",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, avalie a necessidade de reestruturação interna do Ceconti mediante a criação de subunidades ou a formalização de áreas de atuação especializadas para cada um de seus eixos temáticos, quais sejam: integridade, gestão de riscos, transparência, eventos e cooperação institucional, de modo a viabilizar a designação de força de trabalho dedicada ou, no mínimo, a definição clara de responsáveis por cada frente de atuação, com atribuições específicas, metas e indicadores de desempenho próprios."
+    }
+   ]
+  },
+  {
+   "secao": "8.6.2.1",
+   "rotuloDaSecao": "Achado: Serviço Extraordinário",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.6",
+   "unidade": "DIRETORIA EXECUTIVA DE ADMINISTRAÇÃO DE RECURSOS HUMANOS (DEARHU)",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "A análise detalhada dos fluxos de trabalho da unidade revelou a necessidade de aprimoramento na gestão do serviço extraordinário. De acordo com o Art. 19 da Portaria-Conjunta n. 76/2006, a prestação desse serviço deve ser previamente autorizada pela Diretoria de Administração de Recursos Humanos, observando-se critérios e vedações específicas, como a proibição de horas extras para servidores em jornada reduzida. Verificou-se, contudo, que a unidade tem operado predominantemente como uma mera instância de recepção e protocolo, encaminhando pleitos à consideração do Juízo Auxiliar da Presidência sem a devida instrução técnica ou atesto quanto à viabilidade legal do requerimento, conforme observado nos processos SEI n. 0043896- 51.2026.8.13.0000 e 0107191-68.2018.8.13.0024. No entanto, verificou-se que nos requerimentos referentes a deslocamentos a serviço (viagens a serviço), o registro é realizado diretamente pela Diretoria, ainda que o pleito não seja realizado previamente à efetiva realização do serviço, conforme verifica-se nos processos SEI: • 0269164-60.2025.8.13.0000; • 0278079-98.2025.8.13.0000; • 0277592-31.2025.8.13.0000; • 0277493-61.2025.8.13.0000; • 0277479-77.2025.8.13.0000; • 0238873-77.2025.8.13.0000 e • 0247104-93.2025.8.13.0000. Além disso, destaca-se que nesses casos não é instruída, juntamente aos pedidos de serviço extraordinário, qualquer documentação que comprove o efetivo deslocamento do servidor, evidenciando grave lacuna de transparência. Nesse sentido, essa dinâmica procedimental, ao não exarar pareceres conclusivos de forma sistêmica, pode dificultar o exercício pleno do controle administrativo e a regular gerência dos procedimentos internos, distanciando-se do aperfeiçoamento da gestão administrativa e da governança judiciária preconizados nos macrodesafios nacionais do Poder Judiciário. Ainda no tocante ao serviço extraordinário, constatou-se uma variação na matriz hierárquica de deliberação, com casos em que a autorização é realizada de forma direta pela própria Diretoria com mera ciência ao juízo auxiliar, a exemplo do processo SEI n. 0265419-72.2025.8.13.0000. Essa indefinição revela-se prejudicial, pois ao não definir com clareza as competências, obstaculiza-se a governança, favorece-se decisões casuísticas e esvazia-se a capacidade de monitoramento."
+    }
+   ]
+  },
+  {
+   "secao": "8.6.2.2",
+   "rotuloDaSecao": "Achado: Declaração de Parentesco de Magistrados e Servidores",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.6",
+   "unidade": "DIRETORIA EXECUTIVA DE ADMINISTRAÇÃO DE RECURSOS HUMANOS (DEARHU)",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "No tocante aos mecanismos de controle interno e integridade, identificou-se uma lacuna crítica na prevenção do nepotismo no âmbito institucional. Verificou-se que os magistrados do Tribunal não realizam declaração de parentesco em nenhum estágio de sua vida funcional, inclusive no ingresso da carreira, ao passo que os servidores prestam tais informações apenas por ocasião da posse inicial ou em designações específicas para o exercício de cargos em comissão. A ausência de uma sistemática de atualização periódica para a totalidade dos membros e servidores revela uma fragilidade estrutural na governança de pessoas, a qual deveria instituir mecanismos permanentes de monitoramento para assegurar a ética, a transparência e a redução de riscos administrativos. Essa omissão procedimental enfraquece os instrumentos ativos voltados à regular lisura dos processos e distancia o órgão dos atributos de valor de \"Integridade\" e \"Ética\" preconizados pela Estratégia Nacional do Poder Judiciário. Sob a ótica da Política Nacional de Gestão de Pessoas, a manutenção de registros funcionais sem a devida atualização periódica impede o pleno \"Aperfeiçoamento da Gestão de Pessoas\", macrodesafio que exige o favorecimento de relações de trabalho pautadas pela observância rigorosa da impessoalidade e da moralidade. Tal cenário compromete a capacidade de a alta administração acompanhar o desempenho da gestão com segurança jurídica, uma vez que a ausência de dados atualizados sobre vínculos familiares inviabiliza auditorias preventivas e o monitoramento eficaz."
+    }
+   ]
+  },
+  {
+   "secao": "8.6.2.3",
+   "rotuloDaSecao": "Achado: Declaração de Bens e Rendas",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.6",
+   "unidade": "DIRETORIA EXECUTIVA DE ADMINISTRAÇÃO DE RECURSOS HUMANOS (DEARHU)",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Durante a análise dos procedimentos, constatou-se que o Tribunal adota as providências previstas no art. 1º, inciso II, da Recomendação CNJ nº 10/2013, facultando aos magistrados e servidores tanto a entrega da declaração anual de bens e rendas, quanto a autorização de acesso às declarações. Contudo, verificou-se um elevado número de inadimplentes com essa obrigação funcional. Nesse contexto, mais de mil servidores estão inadimplentes com as obrigações referentes a 2025. Tal situação além de fragilizar os mecanismos de controle de integridade e transparência, pode ensejar a responsabilização administrativa, nos termos da Lei n. 8.429/1992."
+    }
+   ]
+  },
+  {
+   "secao": "8.6.2.4",
+   "rotuloDaSecao": "Achado: Atualização de Rubricas",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.6",
+   "unidade": "DIRETORIA EXECUTIVA DE ADMINISTRAÇÃO DE RECURSOS HUMANOS (DEARHU)",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Em função de inspeção anterior, verificou-se que o Tribunal procedeu acertadamente à atualização de rubricas de pagamento. Contudo, tal procedimento não foi institucionalizado de forma regular e periódica. Nesse sentido, a fim de se evitar que a mesma fragilidade possa ser constatada futuramente, com a possibilidade de causar prejuízos ao erário público, a instituição da medida de forma regular revela-se previdente e imperiosa. 8.6.2.4.1 Determinação: À Presidência do TJMG para que, no prazo de 90 dias, institua procedimento formal e periódico de verificação de atualização de rubricas de pagamento."
+    }
+   ]
+  },
+  {
+   "secao": "8.7.2.1",
+   "rotuloDaSecao": "Achado: Controle e Gerenciamento de Estágios",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.7",
+   "unidade": "GERÊNCIA DE ACOMPANHAMENTO DOS PROGRAMAS DE ESTÁGIO E RESIDÊNCIA JURÍDICA (GEPER)",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Apesar da relevância conferida à Gerência de Acompanhamento dos Programas de Estágio, a unidade opera sob severo gargalo tecnológico. A dependência primordialmente do sistema SEI e de um módulo de RH (Sistema ES) que é limitado a registros funcionais impõe uma gestão demasiadamente baseada em controles paralelos via planilhas. Essa carência de parametrização impede que o sistema oficial processe regras de negócio essenciais, tais como o cálculo automático de disponibilidade e vacância de vagas vinculadas a gabinetes de Desembargadores, por exemplo, nos termos da Portaria Conjunta n. 400/2015. O processo, por ser manual, introduz riscos elevados de erro humano e inconsistência de dados, podendo resultar em lotações indevidas que podem extrapolar os limites normativos vigentes, além do custo de elevado tempo para verificação da informação, tornando o processo excessivamente moroso. Considerando que o Tribunal gere um dos maiores contingentes de estagiários do país (cerca de 6.500 vagas), a ausência de um controle gerencial fidedigno obstaculiza a tomada de decisão estratégica em tempo real, podendo impedir o remanejamento ágil de força de trabalho para unidades com maior sobrecarga processual e afetando, indiretamente, a celeridade da prestação jurisdicional. Uma consequência grave dessa fragilidade sistêmica é a falha no fluxo de desligamento de estagiários. Verificou-se que as comunicações de rescisão, de responsabilidade dos supervisores nas comarcas, frequentemente não ocorrem no prazo imediato exigido pelo Art. 19, V, da Portaria Conjunta n. 297/2013. Essa intempestividade gera um impacto financeiro direto: o pagamento indevido de bolsas a estudantes que já não integram o quadro do Tribunal, conforme identificado por amostragem em diversos processos SEI: • 0251959-52.2024.8.13.0000; • 0071975-11.2024.8.13.0000; • 0052166-98.2025.8.13.0000; • 0024857-33.2025.8.13.0702; • 0088970-65.2025.8.13.0000; • 0089009-62.2025.8.13.0000; • 0089920-74.2025.8.13.0000; • 0089956-19.2025.8.13.0000; • 0059568-55.2025.8.13.0317; • 0008422-39.2025.8.13.0231; • 0032907-74.2025.8.13.0079; • 0003038-23.2025.8.13.0740. O prejuízo aos cofres públicos é agravado pelo custo operacional da própria máquina administrativa, que se vê compelida a instaurar processos morosos de ressarcimento para tentar reaver valores pagos indevidamente, além de ter que anular despesas que sequer deveriam ter sido liquidadas. A mobilização de múltiplas unidades para a recuperação desses recursos — muitas vezes frustrada pela impossibilidade de se localizar o ex-estagiário — revela que a inobservância de um procedimento simples de comunicação gera uma ineficiência em cadeia, expondo graves falhas na governança e na gestão de riscos operacionais do órgão. Este cenário de vulnerabilidade tende a se agravar com a implementação da Resolução n. 1.120/2025, que institui o Programa de Residência no TJMG. A nova normativa introduz variáveis de controle ainda mais complexas, como o limite improrrogável de 36 meses de permanência e a jornada específica de 30 horas semanais. Sem a modernização tecnológica e a automação de regras de negócio, a Gerência enfrentará um aumento exponencial da carga de trabalho manual, tornando a gestão do novo programa inviável. A manutenção de controles manuais para um volume tão vultoso de dados compromete não apenas a transparência, mas a própria auditabilidade dos processos, uma vez que tais ferramentas não possuem trilhas de auditoria seguras, expondo o Tribunal a riscos contínuos de irregularidades administrativas e prejuízos financeiros. Somado a isso, identificou-se outra lacuna crítica de governança no que tange aos estagiários: o Estagiário Cedido. O instituto permite que o Juiz Diretor do Foro solicite a disponibilização de estagiários dos Poderes Legislativo e Executivo municipais mediante acordos de cooperação. Por ser gerido de forma estritamente descentralizada pelas Diretorias de Foro, a Gerência de Acompanhamento dos Programas de Estágio (GEPER) não possui qualquer visibilidade sobre o quantitativo total desses colaboradores, tampouco exerce gerência técnica ou administrativa sobre eles. Essa opacidade fragmenta os dados da força de trabalho estadual, obstaculiza o planejamento e fragiliza os sistemas de controle interno, impedindo uma visão sistêmica da ocupação de vagas no órgão. A adoção desse modelo pelo TJMG ancora-se em uma recente e disruptiva mudança de entendimento do Tribunal de Contas do Estado de Minas Gerais (TCE-MG). Na Consulta n. 1164025/2024, a Corte de Contas mineira reviu seu posicionamento anterior (Consulta n. 1084592/2021) para admitir que entes municipais contratem estagiários e os cedam a órgãos estaduais ou federais. Nota-se, contudo, que esse entendimento figura como uma interpretação isolada e inovadora do TCE-MG, distanciando-se da posição de outros órgãos de controle, a exemplo do Tribunal de Contas do Estado do Paraná. No Acórdão n. 3540/18, a Corte paranaense reafirma a impossibilidade dessa cessão, destacando que a Lei Federal nº 11.788/2008 (Lei do Estágio) pressupõe uma relação tripartite indissociável entre o educando, a instituição de ensino e a parte concedente, inexistindo previsão legal para a figura de uma quarta parte cessionária. A cessão, portanto, inviabilizaria o cumprimento do Art. 9º, VII, da referida Lei, que exige o acompanhamento e a avaliação contínua do estágio pela parte concedente original. Mais do que uma questão de controle, o uso do instituto da cessão para estagiários representa um desvirtuamento da natureza educativa do estágio. Ao transpor para o estudante um instituto próprio de servidores públicos — voltado à cooperação técnica ou ocupação de cargos de confiança —, corre-se o risco de tratar o estágio como mera contratação de mão de obra para suprir carências funcionais, em desacordo com o propósito de preparação para o trabalho produtivo. Ressalte-se que o TJMG já dispõe de mecanismos regulares e parametrizados para o provimento de vagas, como os previstos na Portaria Conjunta n. 400/2015 e, futuramente, na Resolução nº 1.120/2025 (Programa de Residência). A coexistência de um fluxo paralelo de ingresso via \"cessão municipal\" e, ainda, à margem da supervisão da GEPER e dos critérios de lotação oficiais, compromete a integridade da política de pessoal do Tribunal e expõe a instituição a riscos."
+    }
+   ]
+  },
+  {
+   "secao": "8.8.2.1",
+   "rotuloDaSecao": "Achado:",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.8",
+   "unidade": "GERÊNCIA DA MAGISTRATURA",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Não foram identificados achados na unidade, sem prejuízo de análise posterior."
+    }
+   ]
+  },
+  {
+   "secao": "8.9.2",
+   "rotuloDaSecao": "Achados",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.9",
+   "unidade": "GERÊNCIA DE DESENVOLVIMENTO E ACOMPANHAMENTO DAS CARREIRAS (GEDAC)",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "na Gerência de Desenvolvimento e Acompanhamento das Carreiras"
+    }
+   ]
+  },
+  {
+   "secao": "8.9.2.1",
+   "rotuloDaSecao": "Achado:",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.9",
+   "unidade": "GERÊNCIA DE DESENVOLVIMENTO E ACOMPANHAMENTO DAS CARREIRAS (GEDAC)",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Não foram identificados achados na unidade, sem prejuízo de posterior análise."
+    }
+   ]
+  },
+  {
+   "secao": "8.10.2.3.1",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "8.10",
+   "unidade": "DIRETORIA-EXECUTIVA DE CONTRATAÇÕES - DIRCONT",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, adote as providências emergenciais necessárias para a correção dos valores divulgados no painel de acompanhamento das contratações que apresentem inconsistências com os montantes efetivamente pactuados nos instrumentos contratuais, com especial atenção ao exemplo identificado na contratação registrada sob o código 1220 (Contrato 268/2025), cujo valor deve ser retificado para R$ 1.005.681,00 (um milhão, cinco mil, seiscentos e oitenta e um reais), em conformidade com o constante no Processo SEI/TJMG nº 0272938-35.2024.8.13.0000 e no ID/SEI/TJMG n. 23877394. Determinação: À Presidência do TJMG para que, no prazo de 90 dias, implemente procedimento formal e sistemático de validação e conferência dos dados relativos aos contratos antes de sua disponibilização no portal da transparência, com a definição de responsabilidades, fluxos de aprovação, mecanismos de verificação da consistência entre os valores divulgados e os valores constantes dos instrumentos contratuais."
+    }
+   ]
+  },
+  {
+   "secao": "8.10.2.5.1",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "8.10",
+   "unidade": "DIRETORIA-EXECUTIVA DE CONTRATAÇÕES - DIRCONT",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, providencie a instituição do Plano de Tratamento de Riscos do Macroprocesso de Contratações, nos termos dos arts. 5º e 30º da Resolução CNJ nº 347/2020."
+    }
+   ]
+  },
+  {
+   "secao": "8.10.2.6.1",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "8.10",
+   "unidade": "DIRETORIA-EXECUTIVA DE CONTRATAÇÕES - DIRCONT",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, adote as providências necessárias para a revisão integral da concessão e utilização das quarenta e duas placas reservadas/de segurança existentes no âmbito do tribunal, de modo a adequar tais concessões aos parâmetros legais estabelecidos pelas Resoluções CNJ nº 83/2009 e nº 435/2021, eliminando-se o desvirtuamento da finalidade do instituto e assegurando que as placas especiais/de segurança sejam utilizadas exclusivamente para estritas razões de segurança pessoal de magistrados em situação de risco real ou potencial. Determinação: À Presidência do TJMG para que, no prazo de 90 dias, apresente fluxo formal e vinculante para a autorização do uso de placas reservadas/de segurança, incluindo, necessariamente, a avaliação de risco a ser promovida pelo órgão de segurança, assim como a concessão lastreada exclusivamente em decisão fundamentada do Presidente, do Tribunal Pleno ou do Órgão Especial, nos termos do parágrafo único do art. 16 da Resolução CNJ nº 83/2009, com a explicitação das estritas razões de segurança pessoal que justificam a medida excepcional e temporária. A decisão deverá indicar, expressamente, o prazo de vigência da autorização, o qual deverá ser compatível com a persistência da situação de risco identificada, vedada a concessão por prazo indeterminado ou a renovação automática sem nova análise de risco e nova decisão fundamentada."
+    }
+   ]
+  },
+  {
+   "secao": "8.11.2.1",
+   "rotuloDaSecao": "Achado:",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.11",
+   "unidade": "DIRETORIA EXECUTIVA DE FINANÇAS E EXECUÇÃO ORÇAMENTÁRIA",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Não foram identificados achados na unidade, sem prejuízo de análise posterior."
+    }
+   ]
+  },
+  {
+   "secao": "8.12.2.1.1",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "8.12",
+   "unidade": "OUVIDORIA",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, promova as alterações necessárias no organograma do Tribunal para que a Ouvidoria e outros órgãos autônomos sejam corretamente representados, de modo a refletir com fidelidade sua condição de órgãos independentes, integrantes da alta administração e não subordinados hierarquicamente a qualquer outra unidade."
+    }
+   ]
+  },
+  {
+   "secao": "8.12.2.2.1",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "8.12",
+   "unidade": "OUVIDORIA",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, promova as providências necessárias à unificação ou à integração técnica do canal eletrônico \"Fale com o TJMG\" ao sistema da Ouvidoria, de modo que todas as manifestações cidadãs sejam centralizadas, monitoradas e tratadas sob a governança da Ouvidoria, com vistas à eliminação da sobreposição de canais e ao fortalecimento da transparência institucional."
+    }
+   ]
+  },
+  {
+   "secao": "8.12.2.3.1",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "8.12",
+   "unidade": "OUVIDORIA",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, adote as providências necessárias para assegurar a implementação de sistema de gestão integrado para a Ouvidoria, contemplando o recebimento, o tratamento, o monitoramento e a resposta tempestiva a todas as manifestações cidadãs, independentemente do canal utilizado para o registro da demanda, com vistas à superação da atual dependência de processos manuais e ao fortalecimento da eficiência operacional da unidade."
+    }
+   ]
+  },
+  {
+   "secao": "8.12.2.4.1",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "8.12",
+   "unidade": "OUVIDORIA",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, promova as providências necessárias para a adequação da localização física da Ouvidoria às diretrizes estabelecidas na Resolução CNJ n. 432/2021, de modo a assegurar que a unidade funcione em local de fácil acesso e de pronto atendimento ao público externo, preferencialmente em área de recepção ou de visibilidade imediata, eliminando-se as barreiras físicas e conferindo efetividade ao direito de manifestação dos cidadãos usuários dos serviços judiciários. Deverá, no mesmo prazo, apresentar plano de ação para a adoção das providências, com análise das alternativas de realocação da Ouvidoria para espaço físico que atenda aos critérios de acessibilidade, considerando, prioritariamente, a instalação da unidade em local situado no nível térreo ou em andar de fácil acesso, com visibilidade imediata ao público externo, independentemente de deslocamentos internos complexos ou da necessidade de utilização de elevadores para acesso ao serviço. A análise deverá contemplar, ainda, a viabilidade de instalação de unidade de atendimento da Ouvidoria na Sede do Tribunal, atualmente desassistida, de modo a ampliar a capilaridade do serviço e a aproximar o cidadão do canal de manifestação."
+    }
+   ]
+  },
+  {
+   "secao": "8.13.2.1",
+   "rotuloDaSecao": "Achado:",
+   "tipoSecao": "achados",
+   "unidadeNumero": "8.13",
+   "unidade": "DIRETORIA EXECUTIVA DE PLAN. ORÇAMENTÁRIO E QUALIDADE NA G. INST.- DEPLAG",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Não foram identificados achados na unidade, sem prejuízo de análise posterior."
+    }
+   ]
+  },
+  {
+   "secao": "8.15.2.2.1",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "8.15",
+   "unidade": "- CENTRO DE SUSTENTABILIDADE (CESUS)",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "Determinação: À Presidência do TJMG para que, no prazo de 90 dias, adote as providências necessárias para a reestruturação da unidade responsável pela política de sustentabilidade, de modo a eliminar o acúmulo de funções atualmente verificado. Para tanto, deverá designar servidor específico para atuar na coordenação do Centro de Sustentabilidade (CESUS), desvinculando a gestão do CESUS da mesma pessoa que administra a Diretora de Logística e Transporte, de modo que cada unidade ou função seja exercida por gestores distintos, com dedicação exclusiva, preservando a segregação de funções. Determinação: À Presidência do TJMG para que, no prazo de 90 dias, adote as providências necessárias para criação de unidade administrativa específica para cuidar da política de acessibilidade, nos termos do art. 22, da Resolução CNJ n. 401/2021, com estrutura própria e servidores designados, responsável pelo planejamento, implementação, monitoramento e avaliação das ações de acessibilidade e inclusão no âmbito do tribunal."
+    }
+   ]
+  },
+  {
    "secao": "9.9",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "9",
    "unidade": "TECNOLOGIA DA INFORMAÇÃO",
@@ -1927,7 +2500,162 @@
    ]
   },
   {
+   "secao": "9.9.1",
+   "rotuloDaSecao": "Achados",
+   "tipoSecao": "achados",
+   "unidadeNumero": "9",
+   "unidade": "TECNOLOGIA DA INFORMAÇÃO",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "9.9.1.1 Achado: A publicação de informações de TIC é uma forma de transparência e responsabilidade, permitindo que a sociedade e os cidadãos conheçam melhor o funcionamento do tribunal e a gestão de suas atividades. Recomendação: Promover a criação de um portal de TIC com informações de forma espontânea e sistemática de todos os dados públicos. 9.9.1.2 Achado: A atualização do Portal do TJMG é centralizada. Recomendação: Promover estudos para descentralização de publicação dos conteúdos ficando as áreas responsáveis pela atualização. 9.9.1.3 Achado: Ausência de Gratificação Permanente de Atividade de Tecnologia da Informação e Comunicação (GAPTIC) e número reduzido de funções comissionadas (Atualmente só há função comissionada para os cargos de gerente e coordenador). Recomendação: Promover estudos para criação de gratificação específica para área de TIC, baseada em critérios de produtividade, ou ampliar o número de gratificações para a DIRTEC. 9.9.1.4 Achado: Em que pese haver plantão técnico para suporte a incidentes dos serviços de TIC pelos prestadores de serviço, regulados contratualmente, não se verificou uma regulamentação formal para o as atividades técnicas efetivamente prestadas pelo quadro efetivo do Tribunal em horários fora do expediente regulamentar. Nessas ocasiões, o atendimento a incidentes de informática, ainda que urgentes, depende da disponibilidade voluntária dos servidores do quadro, constituindo-se em uma prestação desses serviços sem as garantias legais de resposta tempestiva do quadro bem como das devidas compensações legais pela prestação de serviço fora do expediente de trabalho. Recomendação: Promover a regulamentação das atividades de plantão e/ou sobreaviso das equipes técnicas que atuam nos períodos fora de expediente normal, observando a necessidade de suporte ao processo judicial e demais serviços essenciais, nos termos da legislação aplicável."
+    }
+   ]
+  },
+  {
+   "secao": "9.10",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "9",
+   "unidade": "TECNOLOGIA DA INFORMAÇÃO",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "secao": "9.10.1",
+   "rotuloDaSecao": "Achados",
+   "tipoSecao": "achados",
+   "unidadeNumero": "9",
+   "unidade": "TECNOLOGIA DA INFORMAÇÃO",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "9.10.1.1 Achado: Déficit de pessoal especializado. Segundo o Guia da ENTIC-JUD, o referencial mínimo seria de 234 servidores efetivos, entretanto o Tribunal conta atualmente com apenas 205 servidores especializados de TIC, gerando uma lacuna de 29 cargos abaixo do referencial mínimo. Constatou-se também a perda de força de trabalho para outras carreiras públicas e privadas. Determinação: No prazo de 90 dias, apresentar plano de adequação da força de trabalho de TIC aos quantitativos mínimos estabelecidos pelo Guia da Estratégia Nacional de Tecnologia da Informação e Comunicação do Poder Judiciário de forma a cumprir o artigo 24 da Resolução 370/2021. Sugere-se a promover e realizar concursos públicos e/ou a convocação de eventuais candidatos aprovados em concursos vigentes, tornar efetiva a política de gestão de pessoas com vistas à retenção de talentos nas unidades de TIC, bem como avaliar a implantação da Gratificação de Atividades de Tecnologia da Informação, conforme consignada na Resolução CNJ n. 370/2021. 9.10.1.2 Achado: Integrantes administrativos dos contratos de TIC não são externos a DIRTEC. Determinação: Promover, no prazo de 90 (noventa) dias, a efetiva implementação da nova estrutura organizacional destinada às atividades administrativas de planejamento das contratações e de fiscalização de contratos de TIC, com a retirada dessas funções da DIRTEC, em conformidade com o ressaltado na última inspeção."
+    }
+   ]
+  },
+  {
+   "secao": "9.10.1.3",
+   "rotuloDaSecao": "Achado: Ausência de normativo específico para",
+   "tipoSecao": "achados",
+   "unidadeNumero": "9",
+   "unidade": "TECNOLOGIA DA INFORMAÇÃO",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "gerenciamento de demandas de sistemas. Determinação: Instituir, no prazo de 90 dias, normativo específico que discipline o gerenciamento de demandas de sistemas, contemplando, no mínimo: a definição de fluxo formal de submissão, análise, aprovação e acompanhamento das demandas; os critérios objetivos para classificação, análise de impacto e priorização das demandas; e papéis e responsabilidades das áreas envolvidas. Determinação: Instituir, no prazo de 90 dias, fluxo de priorização das demandas, garantindo que as respectivas aprovações sejam realizadas pelo comitê de governança de TIC de forma transparente, documentada e alinhada às diretrizes estratégicas institucionais, vedada a definição unilateral ou informal de prioridades de forma a assegurar decisão transparente, alinhada às diretrizes institucionais e aos objetivos estratégicos do Tribunal."
+    }
+   ]
+  },
+  {
+   "secao": "9.10.1.4",
+   "rotuloDaSecao": "Achado: Ausência de institucionalização e de revisões",
+   "tipoSecao": "achados",
+   "unidadeNumero": "9",
+   "unidade": "TECNOLOGIA DA INFORMAÇÃO",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "periódicas do Processo de Desenvolvimento de Sistemas – PDSIS, comprometendo a capacitação das equipes e a padronização dos projetos de desenvolvimento e sustentação. Essa lacuna limita a maturidade do setor, prejudica o controle de qualidade e eleva os riscos operacionais, especialmente quanto à manutenibilidade e à continuidade dos sistemas. Determinação: Instituir, no prazo de 90 dias, a elaboração e publicação do PDSIS bem como garantir a aplicação do processo em todos os projetos e manutenções de sistemas do Tribunal."
+    }
+   ]
+  },
+  {
+   "secao": "9.10.1.5",
+   "rotuloDaSecao": "Achado: Catálogo (Portfólio) de Soluções de TIC",
+   "tipoSecao": "achados",
+   "unidadeNumero": "9",
+   "unidade": "TECNOLOGIA DA INFORMAÇÃO",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "desatualizado. Determinação: Promover, no prazo de 90 dias, a atualização e revisões periódicas do Catálogo de Soluções de TIC, assegurando que reflita fielmente os sistemas em produção, em desenvolvimento e descontinuados. 9.10.1.6 Achado: Plano de Transformação Digital não passou pela aprovação do Comitê de Governança de Tecnologia da Informação conforme previsto pelo Art. 15 da ENTIC-JUD. Determinação: Aprovar, no prazo de 90 dias, o Plano de Transformação Digital pelo Comitê de Governança de Tecnologia da Informação, conforme previsto pelo Art. 15 da ENTIC-JUD. 9.10.1.7 Achado: Ausência da metodologia de OKRs (Objective Key Results) para o acompanhamento dos objetivos do PDTIC, conforme recomendado pela Estratégia Nacional de TIC. Determinação: Implementar, no prazo de 90 dias, o acompanhamento dos objetivos do PDTIC utilizando a metodologia OKR, conforme determinado pela Estratégia Nacional de TIC. 9.10.1.8 Achado: Ausência de publicação dos planos de TIC em conformidade com o disposto na Resolução CNJ nº 370/2021. Determinação: Promover, no prazo de 90 dias, a revisão, atualização e publicação dos planos de TIC em conformidade com o disposto na Resolução CNJ nº 370/2021, assegurando sua disponibilização tanto no portal institucional do Tribunal quanto no Repositório Nacional. 9.10.1.9 Achado: Ausência de reuniões e deliberações do Comitê de Governança de TIC. Determinação: Estabelecer, no prazo de 90 dias, o pleno funcionamento do CGTIC assegurando que as decisões e ações relativas à gestão e ao uso de TIC mantenham-se harmoniosas às necessidades institucionais e contribuam para o alcance das metas organizacionais; bem como fornecer as diretrizes essenciais para a gestão de temas e demandas de TI, promover o alinhamento das ações da DIRTEC às necessidades institucionais, conforme o art. 7º da Resolução CNJ nº 370/202. Determinação: Rever, no prazo de 90 dias, a composição do Comitê de Governança de TIC para que representantes de todas as áreas estratégicas do órgão possam participar e rever as atribuições. 9.10.1.10 Achado: A implantação e migração do sistema Eproc no TJMG encontra-se em atraso, com implementação parcial restrita ao 1º Grau na capital, mantendo-se a utilização simultânea de múltiplos sistemas judiciais eletrônicos. Determinação: Elaborar e apresentar, no prazo de 90 (noventa) dias, Plano de Ação detalhado para a implantação e migração do sistema Eproc, contemplando, no mínimo: • cronograma atualizado, com marcos, prazos e responsáveis, para a expansão do Eproc às comarcas do interior e ao 2º Grau; • medidas específicas para mitigar os impactos decorrentes da convivência simultânea de múltiplos sistemas judiciais eletrônicos (PJe, JPe, SIAP, Themis), inclusive quanto à padronização de fluxos de trabalho e à capacitação dos usuários no Eproc; • estratégias para tratar as limitações técnicas de migração, especialmente a inexistência de migrador para os sistemas do 2º Grau; e • governança do projeto, explicitando o papel do Comitê Gestor do Eproc e do Grupo Executivo na condução e no acompanhamento da execução. 9.10.1.11 Achado: A estrutura de Segurança da Informação ainda não está totalmente constituída de forma desvinculada da área de TIC, conforme exige o art. 21 da Resolução 396. Determinação: Constituir, no prazo de 90 dias, estrutura de segurança da informação subordinada diretamente à alta administração do órgão. 9.10.1.12 Achado: Inconsistências nas informações dos Painéis de BI. Determinação: Realizar, no prazo de 90 dias, estudos técnicos com vistas à definição e institucionalização de uma única unidade responsável pela estatística, padronização das regras de negócio e criação dos painéis de Business Intelligence, de forma a centralizar o tratamento, a padronização e a governança dos dados utilizados pelo Tribunal, mantida a GEDAD vinculada à DIRTEC. 9.10.1.13 Achado: Não foi criada rubrica específica para discriminar os recursos orçamentários destinados às ações estratégicas previstas pela resolução. Determinação: Criar e utilizar, no prazo de 90 dias, rubrica para destinação dos recursos orçamentários necessários à execução das ações estratégicas previstas pela ENSEC-PJ, inclusive capacitação;"
+    }
+   ]
+  },
+  {
+   "secao": "10.1.12",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "10.1",
+   "unidade": "1.º OFÍCIO DE REGISTRO DE IMÓVEIS DA COMARCA DE SETE LAGOAS/MG",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "secao": "10.2.11",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "10.2",
+   "unidade": "CARTÓRIO DO 2º TABELIONATO DE NOTAS DE BETIM - MINAS GERAIS",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": "A Corregedoria Geral de Justiça do Estado de Minas Gerais deverá providenciar para que a serventia inspecionada (2º Tabelionato de Notas de Betim - MG), no prazo de 30 (trinta) dias:"
+    }
+   ]
+  },
+  {
+   "secao": "10.3.12",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "10",
+   "unidade": "SERVENTIAS EXTRAJUDICIAIS",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "secao": "10.4.12",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "10.4",
+   "unidade": "3.º OFÍCIO DE NOTAS DA COMARCA DE BELO HORIZONTE/MG",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "secao": "10.5.11",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "10.5",
+   "unidade": "CARTÓRIO DO 5º ÓFÍCIO DE NOTAS DE BELO HORIZONTE - MINAS GERAIS",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": ""
+    }
+   ]
+  },
+  {
    "secao": "10.5.12",
+   "rotuloDaSecao": "Recomendações",
    "tipoSecao": "recomendacoes",
    "unidadeNumero": "10.5",
    "unidade": "CARTÓRIO DO 5º ÓFÍCIO DE NOTAS DE BELO HORIZONTE - MINAS GERAIS",
@@ -1936,6 +2664,34 @@
      "tipo": null,
      "numero": null,
      "texto": "Sem prejuízo das determinações supra, recomenda-se ao 5.º Tabelionato de Notas de Belo Horizonte/MG a adoção das seguintes medidas, voltadas ao aperfeiçoamento contínuo da atividade notarial e à plena conformidade com as normas aplicáveis:"
+    }
+   ]
+  },
+  {
+   "secao": "10.6.12",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "10.6",
+   "unidade": "OFÍCIO DO 9.º REGISTRO DE IMÓVEIS DA COMARCA DE BELO HORIZONTE/MG",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": ""
+    }
+   ]
+  },
+  {
+   "secao": "10.7.11",
+   "rotuloDaSecao": "Determinações",
+   "tipoSecao": "determinacoes",
+   "unidadeNumero": "10.7",
+   "unidade": "CARTÓRIO DE REGISTRO DE IMÓVEIS DE CONTAGEM - MINAS GERAIS",
+   "itens": [
+    {
+     "tipo": null,
+     "numero": null,
+     "texto": ""
     }
    ]
   }
