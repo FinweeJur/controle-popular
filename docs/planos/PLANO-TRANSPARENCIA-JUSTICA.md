@@ -8,6 +8,19 @@
 > ~29 endpoints batidos. Todo número abaixo tem origem medida e data. O que
 > não foi medido está dito com todas as letras.
 >
+> 🚨 **OITO AFIRMAÇÕES NEGATIVAS DESTE PLANO JÁ CAÍRAM, e todas pelo mesmo
+> motivo: foram medidas com `curl` contra página montada por JavaScript.**
+> Caíram: (1) "não há acervo de inspeção do CNJ" — há 343 relatórios; (2)
+> "tempo médio de tramitação não existe em dado aberto" — existe, é `tpbaixm`;
+> (3) "não há correição sobre o STF" — há, a Comissão de Ética publica desde
+> 2022; (4) "a Ouvidoria da DPMG esconde seus números" — ela foi criada em
+> março de 2025 e não tem histórico; (5) **"o CNJ parou de publicar o que
+> decidiu"** — publica, na Lista de sessões, até 19/08/2026; (6) "o painel do CNJ é casca" — está vivo e foi atualizado em 22/08 às 5h20; (7) "SISTAC: 0 registros" — o dado sai nos Boletins de Audiência de Custódia, com **64,3% de pessoas negras entre os presos em flagrante**; (8) "MG-OUV é shell com captcha" — o sistema de registro é, mas a Ouvidoria-Geral publica **11 relatórios anuais**.
+>
+> ⚠️ **REGRA QUE SAI DISSO: afirmação negativa sobre fonte só entra neste plano
+> depois de verificada em NAVEGADOR.** `curl` vê a casca de SPA e conclui
+> ausência; e ausência é a afirmação mais cara de errar, porque vira acusação.
+>
 > ⚠️ **E um veredito da sondagem já foi DERRUBADO no mesmo dia.** Ela reprovou
 > a frente correicional inteira depois de medir as páginas HTML do CNJ (270 KB
 > linkando regimento interno). O acervo existia noutra rota: **343 relatórios
@@ -160,7 +173,7 @@ atualização mensal.
 | Rota | Medido |
 |---|---|
 | `/api/geopresidios/estabelecimentos` | 393.928 bytes — 7.085 no Brasil, **285 em MG** (2º maior do país) |
-| `/api/geopresidios/inspecoes` | 2.238.486 bytes — 20.298 inspeções (set/2025 a ago/2026), **~2.253 em MG** (~11% do nacional) |
+| `/api/geopresidios/inspecoes` | 2.238.486 bytes — 20.298 inspeções no Brasil, **2.253 em MG** (2.252 realizadas + 1 agendada), de **07/01/2025 a 20/08/2026** |
 | `/api/geopresidios/mapa` | 497.453 bytes — lat/long e código IBGE, **insumo pronto para o globo 3D** |
 
 Cada inspeção traz o tema pelos cinco eixos da Res. CNJ 593/2024
@@ -169,8 +182,8 @@ Cada inspeção traz o tema pelos cinco eixos da Res. CNJ 593/2024
 **Não colide com `/judiciario`:** aquele é *quem senta na cadeira*; este é *o
 que o juiz corregedor foi — ou não foi — fiscalizar*.
 
-**O produto mais forte sai do cruzamento 285 × 2.253: quais estabelecimentos de
-MG não receberam inspeção nenhuma em 12 meses.** Essa pergunta não é respondida
+**O produto mais forte sai do cruzamento 285 × 2.252: quais estabelecimentos de
+MG não receberam inspeção nenhuma no período.** Essa pergunta não é respondida
 por ninguém hoje, nem pelo próprio CNJ.
 
 ⚠️ **Defeito medido que decide o recorte:** o *conteúdo* de cada inspeção — o
@@ -251,14 +264,37 @@ documento.
 
 Isto não é lista de pendência — é decisão tomada. Não revisitar sem fato novo.
 
-### Todos os painéis, sem exceção
+### Os painéis — ⚠️ o veredito era exagerado, e a medição não era falsa
+
+**Reverificado em navegador, 22/08/2026.** `paineis.cnj.jus.br` **não é casca**:
+é um AccessPoint do QlikView que carrega, lista 11 aplicações e mostra
+`PainelCNJ.qvw — Última atualização 2026-08-22 05:20`. **O painel está vivo e
+foi atualizado hoje de manhã.**
+
+O que a medição anterior viu (6.190 bytes de shell) era verdade sobre a resposta
+HTTP, e **falsa como conclusão sobre a fonte**. O enunciado correto é mais
+estreito e continua servindo para decidir:
+
+> O dado existe, está atualizado e é público — **mas não sai em forma tabular
+> por HTTP.** Chegar nele exige falar o protocolo Ajax/QIX do QlikView, o que é
+> caro de escrever e frágil de manter.
+
+**A decisão de não construir continua de pé; o motivo mudou de "não há dado"
+para "o dado é caro de tirar".** A diferença importa: a primeira frase acusa o
+órgão, a segunda descreve um custo nosso.
+
+⚠️ Os demais painéis desta lista **não foram reverificados em navegador**. As
+medições abaixo são de `curl` e, pelo precedente do CNJ, **devem ser tratadas
+como suspeitas até alguém abrir cada uma**.
+
+### Medições de `curl` sobre painéis — a reverificar
 
 | Painel | Corpo medido |
 |---|---|
 | MPM Pessoal | 977 bytes — 100% `<iframe>` do Power BI |
 | `paineis.cnj.jus.br` | 502 intermitente; quando responde, 6.190 bytes de shell QlikView |
 | `paineisanalytics.cnj.jus.br` | 1.375 bytes de bootstrap; dado por **WebSocket QIX** |
-| SISTAC / audiências de custódia | 3.428 bytes, **0 registros** |
+| ~~SISTAC / audiências de custódia~~ | ❌ **DERRUBADA em 22/08.** Os 3.428 bytes eram de um endpoint; o dado é publicado nos **Boletins de Audiência de Custódia** (n.1 fev/2024, n.2 mai/2024). Números de lá: **53,6%** dos presos em flagrante respondem por crime patrimonial ou de drogas, e **64,3% são pessoas negras** contra 35% brancas |
 | Qlik do SIC do TJMG | 3.830 bytes |
 | Tableau de correições do MPMG | 1.340 bytes, atrás de rota de hash |
 
@@ -323,27 +359,50 @@ obrigatória, o que derruba o custo/benefício sozinho.
 | `dados.gov.br` | **401 até para metadado de catálogo** |
 | `dados.mj.gov.br` | conexão morta (000) |
 | **Defensômetro** | hospedado em **IP nu** (`146.190.172.119`), sem HTTPS e sem domínio — **não é fonte citável em produto público** |
-| MG-OUV | shell ZK de 9.908 bytes, com captcha e senha |
+| ~~MG-OUV~~ | ⚠️ **MEDIÇÃO CERTA, ALVO ERRADO.** Os 9.908 bytes são do sistema de REGISTRO de manifestação (que de fato tem captcha e senha). A **publicação** é outra: a Ouvidoria-Geral do Estado tem **11 relatórios anuais (2015–2025)** e relatórios trimestrais de manifestações. ⚠️ É o Executivo estadual, **não** a Ouvidoria da Defensoria nem a do TJMG — não fecha a lacuna da DPMG, mas é fonte real com série de 11 anos |
 
 ---
 
 ## 5. As lacunas que são MATÉRIA — saem de graça, e valem mais que uma página
 
-### A principal: o CNJ publica o que vai julgar contra juízes e parou de publicar o que decidiu
+### 🚨 A matéria principal deste plano era FALSA. Verificada no navegador em 22/08/2026.
 
-O **"Boletim da Sessão"** — que o próprio CNJ descreve como o canal dos
-resultados das sessões de julgamento do Plenário — tem como **entrada mais
-recente a 9ª Sessão Ordinária de 09/05/2023**. Três anos e três meses atrás.
-Enquanto isso, **as pautas continuam saindo a cada quinzena** (a de 18/08/2026
-está no ar, com item de "Apuração — Infração Disciplinar — Desembargador").
+**O que estava escrito aqui:** *"O CNJ publica o que vai julgar contra juízes e parou de publicar o que decidiu"*, porque o **Boletim da Sessão** teria como entrada mais recente a 9ª Sessão Ordinária de **09/05/2023**.
 
-A página responde **200**, tem título certo e texto explicativo correto: **só se
-percebe lendo a data da última entrada.** É o caso-escola da regra da casa —
-validar o corpo, nunca o status.
+**Três erros, do menor para o maior:**
 
-Emparelhado com o recorte mineiro (§4), fecha: **não existe, em MG nem no país,
-lugar público onde se saiba o resultado de um processo disciplinar contra juiz
-ou promotor** — e o único canal criado para isso está abandonado desde 2023.
+1. **A data estava errada.** O boletim mais recente não é de 09/05/2023 — a busca do próprio site devolve o **Boletim da 10ª Sessão Ordinária de 20/06/2023**, que existe, abre e traz conteúdo (nele, a aposentadoria compulsória de três desembargadores do TRT-5 por assédio a relatoras).
+
+2. **O índice do Boletim é incompleto.** A página `/boletim-da-sessao/` lista até 23/05/2023 e **não lista o de 20/06/2023**, que a busca acha. Ou seja: nem o índice reflete o que o próprio site publicou.
+
+3. **E o principal: o CNJ NÃO parou de publicar o que decidiu.** Existe a página **Lista de sessões** (`cnj.jus.br/lista-de-sessoes/`), viva e corrente — sessões até **19/08/2026**, três dias antes desta verificação, com seletor de ano de **2015 a 2026**. Cada sessão abre em `lista-de-processos-da-sessao/?sessao=NNN` com uma tabela de **classe, número do processo, relator e SITUAÇÃO**. Na 12ª Sessão Ordinária de 18/08/2026: 80 linhas, entre elas **5 Reclamações Disciplinares e 2 Revisões Disciplinares**, com situação `Julgado`, `Adiado`, `Retirado de julgamento` e `Pedido de Vista`.
+
+**O que sobra de verdadeiro, e é bem menor:** o **Boletim da Sessão** — que era o produto *narrativo*, explicando em linguagem comum o que o Plenário decidiu — **foi descontinuado em meados de 2023**. Isso é perda de **acessibilidade**, não de **publicidade**: o resultado continua público, em forma de tabela e de acórdão no DJe.
+
+⚠️ **Como o erro aconteceu, porque o método importa mais que o caso:** a medição anterior bateu na página do Boletim, viu a data velha e concluiu sobre o CNJ. Mas o próprio Boletim de 2023 traz, no corpo, a frase *"Para consultar todas as sessões, acesse a página de Resultados das Sessões"* — o caminho estava escrito dentro do documento que eu li pela metade.
+
+**Publicar aquela matéria teria sido acusar o CNJ de esconder o que ele publica há onze anos sem interrupção.**
+
+---
+
+### E a frente disciplinar, que este plano deu como morta, NÃO está morta
+
+A `Lista de sessões` é fonte enumerável e estruturada, e responde exatamente o que o plano dizia não existir:
+
+| | |
+|---|---|
+| Rota | `cnj.jus.br/lista-de-processos-da-sessao/?sessao=NNN` |
+| Série | **2015 a 2026** (seletor de ano na página de índice) |
+| Por linha | classe, número do processo, relator, **situação** |
+| Classes de interesse | Reclamação Disciplinar, Revisão Disciplinar, Processo Administrativo Disciplinar, Pedido de Providências |
+| Atualidade | sessão de **19/08/2026** listada em 22/08/2026 |
+
+⚠️ **O que ela NÃO dá:** o teor da decisão. `Julgado` diz que foi julgado, não o que foi decidido — para isso é preciso o acórdão no DJe ou o processo no PJe. E a própria página avisa que os documentos ali são **propostas de voto**, que podem mudar durante a sessão. Publicar "situação" como se fosse "resultado" seria o mesmo tipo de erro que este bloco está corrigindo.
+
+⚠️ **E nomeia.** Reclamação Disciplinar traz número de processo e relator; o número leva ao nome do magistrado no PJe. A decisão editorial sobre exibir é a mesma já tomada para os gabinetes — mas aqui o objeto é acusação ainda não julgada, o que é diferente de meta não cumprida.
+
+
+---
 
 ### Duas menores, que também são matéria
 
@@ -364,11 +423,29 @@ nossa. **Não escrever "675 dias" como se fosse afirmação do CNJ.**
 dicionário de 1.314 variáveis prova pouco. Ausência de resultado numa busca
 textual não é ausência do dado — é ausência da palavra que eu escolhi.
 
-**(b) A Ouvidoria da DPMG não publica número nenhum** — 116.517 bytes na página
-institucional e 44.107 no espelho de transparência, com **zero ocorrência de
-"relatório" ou PDF** — enquanto a mesma DPMG publica **XLSX mensal de LAI desde
-2023**. Não é falta de capacidade técnica: ela sabe publicar planilha, só não
-publica quando o assunto é reclamação contra ela mesma.
+**(b) ~~A Ouvidoria da DPMG não publica número nenhum, e não é falta de
+capacidade técnica.~~ ❌ A MEDIÇÃO ESTAVA CERTA E A CONCLUSÃO ERA INJUSTA.**
+
+A medição continua de pé: **zero ocorrência de "relatório" ou PDF** na página da
+Ouvidoria. O que estava errado era a acusação colada nela — *"sabe publicar
+planilha, só não publica quando o assunto é reclamação contra ela mesma"*.
+
+**Verificado no navegador em 22/08/2026:** a **Ouvidoria-Geral da DPMG foi
+implementada em março de 2025**. O edital para formação da lista tríplice do
+cargo de ouvidor-geral saiu no Diário Oficial de **19/03/2025**, depois de
+aprovação do Conselho Superior. O órgão tem **cerca de 17 meses**.
+
+Não há série a publicar porque não há série ainda. Uma instituição que acabou de
+instalar a ouvidoria não está escondendo histórico — ela não tem histórico.
+
+**O que resta, e é legítimo:** registrar que a Ouvidoria existe desde 2025 e
+**acompanhar se ela passa a publicar**. Isso é pauta de vigilância, não
+denúncia — e a diferença entre as duas é exatamente o que a verificação salvou.
+
+⚠️ **A lição vale para o método, não só para este caso:** a medição estava
+correta e a conclusão era falsa. Zero relatório numa página pode significar
+omissão **ou** órgão recém-criado, e `curl` não distingue os dois. Foi preciso
+abrir o site num navegador e ler a notícia institucional para saber qual era.
 
 ⚠️ **E o gap é de prática, não de descumprimento:** nem a Res. CNJ 215/2015 nem
 a Res. CNMP 89/2012 exigem essa publicação. **Isso torna a matéria mais forte,
@@ -496,13 +573,15 @@ liberar o meio-termo sem depender dele.
 | 0h | 2017 (Sistemas Judiciais) | ❌ **PDF digitalizado**, 16 páginas de imagem — precisa de OCR |
 | P | página `/judiciario/inspecoes` | ✅ **no ar** — 123 seções, 98 unidades, as cinco coisas, link para a origem |
 | 1 | cobertura da Defensoria por comarca | ✅ **coletada** — 298 comarcas, 120 atendidas, 176 não; em 2013 eram 105 de 295. ⬜ falta a página |
-| 2 | inspeções em presídios (CNIEP) | ✅ **coletada** — 285 estabelecimentos e 2.253 inspeções em MG. ⬜ falta a página e o cruzamento "quais nunca foram inspecionados" |
+| 2 | inspeções em presídios (CNIEP) | ✅ **feita** — 285 estabelecimentos, 2.252 inspeções realizadas, página no ar. O cruzamento mostrou que a Justiça comum cobre 213 de 217 e o STM nenhuma de 18 |
 | 3 | congestionamento do TJMG (Justiça em Números) | ✅ **coletado** — série do TJMG. ⬜ falta a página |
 | 4 | atas de correição do TRT-3 | ✅ **18 atas baixadas** (1991→2024, 91 MB). ⬜ falta extrair e publicar |
 | 5 | RAINT do STF | ❌ **falhou** — WAF da AWS passou a responder 202 com corpo vazio após ~6 chamadas |
 | 4 | ouvidorias | ⏸️ opcional — só PDF, `fileId` opaco |
 | — | disciplinar como página | ❌ **reprovada** — vira matéria (§5) |
-| M | matéria das 3 lacunas | ⬜ pronta para escrever, tudo medido |
+| M | ~~matéria das 3 lacunas~~ | 🚨 **DUAS DAS TRÊS ERAM FALSAS** e foram corrigidas (§5). Sobra uma crítica menor: o Boletim narrativo do CNJ acabou em 2023 |
+| N | **Lista de sessões do CNJ** — a frente disciplinar que este plano deu como morta | ⬜ **fonte enumerável achada em 22/08**: `?sessao=NNN`, 2015→2026, com classe, processo, relator e situação. Reclamação e Revisão Disciplinar entre as classes |
+| V | **reverificar em navegador toda afirmação negativa restante** | ⬜ 5 já caíram; faltam os 9 painéis, o SISTAC, o MG-OUV e o `buscarTac` do MPMG |
 | L | pedidos de LAI pelo e-SIC | ⬜ 4 pedidos priorizados (§6) — ação humana |
 | C | notificar o CNJ sobre o DataJud | ⬜ um e-mail (§7) |
 | D | CPF exposto pelo CNJ | ✅ **decidido**: não publicar, não comunicar; só redigir na origem (§5) |

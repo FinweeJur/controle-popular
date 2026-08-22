@@ -884,6 +884,16 @@ export const LAYER_REGISTRY = [
     aviso: 'Isto mostra onde o acervo CITA, não onde o dano foi. Só 471 dos 7.107 documentos (6,6%) têm município identificado, então município ausente do mapa não é município não atingido — e "citar" não é "ser sobre". As contagens não se somam entre municípios: um documento que cita cinco cidades aparece nas cinco.',
     color: 0xf8b651, /* irmã mais clara de --caution, distinta do âmbar do interesse minerário */ on: false, render: 'fill', listavel: true,
   },
+  // Estabelecimentos penais de MG e as inspecoes judiciais que receberam.
+  // Fonte: CNIEP/Geopresidios do CNJ; a lista completa vive em
+  // /judiciario/presidios. A camada leva CONTA, nunca teor -- e aqui nem teor
+  // existe: as rotas de conteudo da inspecao respondem 404 no CNJ.
+  {
+    id: 'presidios-mg', label: 'Presídios e inspeções judiciais',
+    hint: '232 estabelecimentos penais de Minas com coordenada publicada, e quantas inspeções judiciais cada um recebeu desde 2025. A Justiça comum cobre 213 dos 217 que responde; o Superior Tribunal Militar não inspecionou nenhuma das 18 sob sua responsabilidade. Clique para ver o ramo, a natureza e a contagem.',
+    aviso: 'Nenhuma coordenada é levantamento em campo: 225 vêm de geocodificação do endereço e 7 são o centro do MUNICÍPIO. E faltam 53 dos 285 estabelecimentos, que não têm coordenada publicada — a falta NÃO é pareja entre ramos (só 1 das 50 unidades militares estaduais está no mapa), então o mapa exagera o peso do militar federal. Ausência de pino não é ausência de presídio.',
+    color: 0xcb80da, /* oklch matiz 290 — 13° do vizinho mais próximo e 37° de --fiction */ on: false, render: 'point', listavel: true,
+  },
   // --- Dinheiro público e mineração (13/08/2026) --------------------------
   //
   // docs/HANDOFF-CAMADA-DINHEIRO.md — entregue por outro agente, noutro
@@ -1327,6 +1337,15 @@ export const CAMADAS = [
     hint: '53 municípios citados nos documentos do processo judicial de Brumadinho, 1.149 menções. Brumadinho 192, São Joaquim de Bicas 81, Mário Campos 65.',
     aviso: 'Mostra onde o acervo CITA, não onde o dano foi: só 6,6% dos documentos têm município identificado, e as contagens não se somam entre municípios.',
     fontes: ['documentos-processo-municipios'],
+  },
+  {
+    // Cai em 'pistas' (Fiscalizacao e pistas) porque e' isso que ela mostra:
+    // onde o Judiciario foi fiscalizar, e onde nao foi.
+    id: 'presidios-mg', assunto: 'pistas',
+    label: 'Presídios e inspeções judiciais',
+    hint: '232 estabelecimentos penais de MG com coordenada, e quantas inspeções judiciais receberam desde 2025. O STM não inspecionou nenhuma das 18 sob sua responsabilidade.',
+    aviso: 'Coordenada geocodificada ou centro do município, nunca levantamento em campo. Faltam 53 dos 285, e a falta pende para o militar estadual — o mapa é recorte do que tem coordenada, não do que existe.',
+    fontes: ['presidios-mg'],
   },
   // Fica em `territorio-mineracao`, e NÃO num assunto `legislacao-ambiental`
   // novo como o handoff sugeria. Duas razões: uma seção de um item só é ruído

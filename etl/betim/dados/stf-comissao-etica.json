@@ -1,0 +1,137 @@
+{
+ "fonte": "Supremo Tribunal Federal — Transparência e Prestação de Contas, seção “Ações de Correição”",
+ "url": "https://portal.stf.jus.br/transparencia/",
+ "orgao": "Comissão de Ética do STF (Resolução STF 711/2020)",
+ "extraidoEm": "2026-08-22",
+ "oQueEh": "A Comissão de Ética é o órgão de correição interna do STF: apura desvio ético, processo administrativo disciplinar (PAD), processo administrativo de responsabilização (PAR) e sindicância. Publica relatório anual de atividades.",
+ "avisoNaoEhInspecao": "Isto NÃO é inspeção externa. A Corregedoria Nacional de Justiça não inspeciona tribunal superior — seu regulamento descreve inspeção sobre órgãos de primeiro e segundo grau. O que existe no STF é correição INTERNA, feita por comissão do próprio Tribunal. As duas coisas não se substituem e não se somam.",
+ "avisoObjeto": "O objeto é conduta de SERVIDOR, não atividade jurisdicional. Nenhum destes relatórios trata de fila, prazo ou processo parado.",
+ "avisoCaminho": "Os links vivem em accordions do Bootstrap na página de transparência. As páginas .asp respondem 200 com 62.711 bytes de casca idêntica entre si — sem navegador, um coletor conclui que não há fonte. Foi o que aconteceu na primeira tentativa.",
+ "relatorios": [
+  {
+   "ano": 2022,
+   "url": "https://cms.stf.jus.br/wp-content/uploads/2025/06/Atividades-da-Comissao-de-Etica-2022.pdf",
+   "bytes": 471483,
+   "paginas": 5,
+   "caracteres": 23696,
+   "semInstauracaoDeclarada": true,
+   "averiguacoesPreliminares": [
+    {
+     "processo": "003646/2022",
+     "desfecho": "ARQUIVAMENTO",
+     "trecho": "Motivo da instauração: apurar os fatos narrados nos autos do Processo 003646/2022. Conclusão: ARQUIVAMENTO - Não conheceu por não ser atribuição da Comissão de Ética Concluído 004613/2022 Motivo da instauração: apurar os fatos narrados nos autos do Processo 004613/2022. Conclusão: ARQUIVAMENTO -"
+    },
+    {
+     "processo": "004613/2022",
+     "desfecho": "ARQUIVAMENTO",
+     "trecho": "Motivo da instauração: apurar os fatos narrados nos autos do Processo 004613/2022. Conclusão: ARQUIVAMENTO - Nas averiguações preliminares a Comissão não encontrou indícios para instauração de processo ético. Nas reuniões de caráter preventivo sobre gestão ética, por Unidade, a Comissão destacou"
+    },
+    {
+     "processo": "006738/2022",
+     "desfecho": null,
+     "trecho": "Motivo da instauração: apurar os fatos narrados nos autos do Processo 006738/2022. Conclusão: ENCAMINHAMENTO AO FISCAL DO CONTRATO. Nas averiguações preliminares a Comissão constatou que todos os envolvidos (denunciante e denunciado) eram terceirizados. Os autos foram encaminhados ao Fiscal do Co"
+    },
+    {
+     "processo": "006925/2022",
+     "desfecho": "ARQUIVAMENTO",
+     "trecho": "Motivo da instauração: apurar os fatos narrados nos autos do Processo 004613/2022. Conclusão: ARQUIVAMENTO - Nas averiguações preliminares a Comissão não encontrou indícios para instauração de processo ético. Aparentemente falha de comunicação de todos os envolvidos. Nas reuniões de caráter prev"
+    },
+    {
+     "processo": "008618/2020",
+     "desfecho": null,
+     "trecho": "e matéria divulgada na intranet; g) as Unidades do STF são orientadas sobre as práticas de gestão da ética específicas das respectivas áreas; h) os desvios éticos impactam nos recrutamentos, promoções, bem assim na ocupação de cargos em comissão e de funções de confiança, conforme disposto no ar"
+    }
+   ]
+  },
+  {
+   "ano": 2023,
+   "url": "https://cms.stf.jus.br/wp-content/uploads/2025/06/Atividades-da-Comissao-de-Etica-2023.pdf",
+   "bytes": 444617,
+   "paginas": 4,
+   "caracteres": 16041,
+   "semInstauracaoDeclarada": true,
+   "averiguacoesPreliminares": [
+    {
+     "processo": "004180/2023",
+     "desfecho": "ENCAMINHAMENTO AO DIRETOR-GERAL",
+     "trecho": "Motivo da instauração: apurar os fatos narrados nos autos do Processo 004180/2023 Conclusão: ENCAMINHAMENTO AO DIRETOR-GERAL - A Comissão manifestou-se pela impossibilidade de celebração do contrato. Posterior pedido de reconsideração negado pela Comissão. Autos enviados ao Diretor- Geral para"
+    },
+    {
+     "processo": "002520/2023",
+     "desfecho": "ARQUIVAMENTO",
+     "trecho": "Motivo da instauração: apurar os fatos narrados nos autos do Processo 002520/2023 Conclusão: ARQUIVAMENTO - A Comissão entendeu que não havendo outras provas a apreciar, os fatos alegados e Condutas descritas, devidamente comprovados, não configuram infração aos compromissos e as vedações previs"
+    },
+    {
+     "processo": "006738/2022",
+     "desfecho": null,
+     "trecho": "Motivo da instauração: apurar os fatos narrados nos autos do Processo 006738/2022 Conclusão: ENCAMINHAMENTO AO FISCAL DO CONTRATO - Nas averiguações preliminares a Comissão constatou que todos os envolvidos (denunciante e denunciado) eram terceirizados. Os autos foram encaminhados ao Fiscal do"
+    }
+   ]
+  },
+  {
+   "ano": 2024,
+   "url": "https://cms.stf.jus.br/wp-content/uploads/2025/06/Atividades-da-Comissao-de-Etica-2024.pdf",
+   "bytes": 440249,
+   "paginas": 4,
+   "caracteres": 14977,
+   "semInstauracaoDeclarada": true,
+   "averiguacoesPreliminares": [
+    {
+     "processo": "005390/2022",
+     "desfecho": "TERMO DE AJUSTAMENTO",
+     "trecho": "A Comissão entendeu que não havendo outras provas a apreciar, os fatos alegados e condutas descritas, devidamente comprovados, não configuram infração aos compromissos e as vedações previstos no Código de Ética, devendo ser encerrado o feito e arquivado os autos. Concluído 1.3.2 Termo de"
+    }
+   ]
+  },
+  {
+   "ano": 2025,
+   "url": "https://cms.stf.jus.br/wp-content/uploads/2026/07/SEI_3311232_Relatorio-5.pdf",
+   "bytes": 113254,
+   "paginas": 14,
+   "caracteres": 35663,
+   "semInstauracaoDeclarada": false,
+   "averiguacoesPreliminares": [
+    {
+     "processo": "006562/2026",
+     "desfecho": null,
+     "trecho": "/ pg. 1 2.1 Eixo 1: Fundamentos da Ética, Integridade e Apuração de Condutas Instrutor: José Afonso Pires Ferreira Júnior Conteúdos abordados: · Princípios da ética pública e da administração pública; · Prazos administrativos; · Distinção entre infração ética e infração disciplinar; · Lei"
+    },
+    {
+     "processo": "008989/2025",
+     "desfecho": null,
+     "trecho": "); II – Processo de apuração preliminar de responsabilidade (Processo nº 011553/2025); III – Processo de consulta à Assessoria Jurídica (Processo nº 013874/2025); e IV – Processo de solicitação de informações sigilosas à Secretaria de Gestão de Pessoas – SGP (Processo nº 012082/2025). 3.1.2 Apuraç"
+    },
+    {
+     "processo": "011553/2025",
+     "desfecho": null,
+     "trecho": "); III – Processo de consulta à Assessoria Jurídica (Processo nº 013874/2025); e IV – Processo de solicitação de informações sigilosas à Secretaria de Gestão de Pessoas – SGP (Processo nº 012082/2025). 3.1.2 Apuração Preliminar - Objeto da Apuração A apuração teve por objeto denúncia anônima receb"
+    },
+    {
+     "processo": "013874/2025",
+     "desfecho": null,
+     "trecho": "); e IV – Processo de solicitação de informações sigilosas à Secretaria de Gestão de Pessoas – SGP (Processo nº 012082/2025). 3.1.2 Apuração Preliminar - Objeto da Apuração A apuração teve por objeto denúncia anônima recebida por meio da Ouvidoria/Fala.BR, apresentada em 18 e 23 de junho de 2025 p"
+    },
+    {
+     "processo": "012082/2025",
+     "desfecho": null,
+     "trecho": "). 3.1.2 Apuração Preliminar - Objeto da Apuração A apuração teve por objeto denúncia anônima recebida por meio da Ouvidoria/Fala.BR, apresentada em 18 e 23 de junho de 2025 por duas trabalhadoras terceirizadas, vinculadas à unidade gerenciada pelo servidor denunciado. As alegações indicavam, em l"
+    },
+    {
+     "processo": "013179/2025",
+     "desfecho": null,
+     "trecho": ", instaurado por iniciativa da Comissão de Ética. 3.2.2 Apuração Preliminar - Objeto da apuração A apuração teve por objeto denúncia recebida por meio da Ouvidoria/Fala.BR, apresentada em 04 de novembro de 2025, apresentada por servidora, que relatou situação envolvendo seu dependente, submetido"
+    },
+    {
+     "processo": "013610/2025",
+     "desfecho": null,
+     "trecho": ", instaurado por iniciativa da Comissão de Ética. Ademais, foi instruído o Processo SEI nº 002744/2026, com o objetivo de submeter à apreciação da Assessoria Jurídica consulta acerca da aplicabilidade do novo Código de Conduta Ética a fatos pretéritos, ocorridos sob a vigência do normativo anterior."
+    },
+    {
+     "processo": "002744/2026",
+     "desfecho": null,
+     "trecho": ", com o objetivo de submeter à apreciação da Assessoria Jurídica consulta acerca da aplicabilidade do novo Código de Conduta Ética a fatos pretéritos, ocorridos sob a vigência do normativo anterior. O referido questionamento encontra-se em análise pela Assessoria Jurídica. 3.3.2 Apuração Prelimina"
+    }
+   ]
+  }
+ ]
+}

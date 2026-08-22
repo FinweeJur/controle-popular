@@ -5,6 +5,7 @@ import {
   ACHADOS_POR_TEMA,
   ACHADOS_POR_TIPO_UNIDADE,
   COBERTURA_INSPECOES,
+  COBRANCAS_POR_INSPECAO,
   GABINETES_NOMEADOS,
   ORGAOS_INSPECIONADOS,
   PENDENCIAS_POR_ANO,
@@ -291,8 +292,22 @@ export default function InspecoesPage() {
           <strong className="text-text">Por que nomeamos.</strong> São agentes públicos no
           exercício da função, o fato está num relatório público do Conselho Nacional de Justiça,
           e cada linha traz o link do documento. Descrever o achado sem dizer de quem ele é
-          protegeria o magistrado — não a pessoa cujo processo está parado. Se algum dos citados
-          quiser contraditar, o portal publica a resposta ao lado do achado.
+          protegeria o magistrado — não a pessoa cujo processo está parado.
+        </p>
+        <p className="mt-3 max-w-3xl text-[.88em] leading-relaxed text-text-soft">
+          Achou erro factual? O caminho, as regras e o limite do que este portal pode corrigir ou
+          remover estão em{" "}
+          <a href="/termos" className="text-primary underline underline-offset-2 hover:text-accent">
+            /termos
+          </a>{" "}
+          (seções 5 e 6). Para pedido que envolva dado pessoal, o canal reservado é{" "}
+          <a
+            href="mailto:contato@controlepopular.com.br"
+            className="text-primary underline underline-offset-2 hover:text-accent"
+          >
+            contato@controlepopular.com.br
+          </a>
+          .
         </p>
       </section>
 
@@ -501,6 +516,38 @@ export default function InspecoesPage() {
               </li>
             ))}
         </ul>
+
+        <h3 className="mt-8 font-display text-lg font-semibold text-text">
+          Quantas vezes o CNJ voltou a cobrar a mesma coisa
+        </h3>
+        <ul className="mt-3 space-y-2">
+          {COBRANCAS_POR_INSPECAO.map((c) => (
+            <li key={c.ano} className="flex items-center gap-3 text-[.92em]">
+              <span className="w-12 shrink-0 tabular-nums font-semibold text-text">{c.ano}</span>
+              <span
+                className="h-4 rounded-sm bg-primary"
+                style={{
+                  width: `${Math.max(1, (c.cobrancas / 52) * 100)}%`,
+                  maxWidth: "55%",
+                }}
+                aria-hidden="true"
+              />
+              <span className="tabular-nums text-text">{c.cobrancas}</span>
+              <span className="text-text-soft">
+                {c.ano === 2012
+                  ? "— foi a primeira inspeção: não havia nada a cobrar"
+                  : "trechos cobrando determinação anterior"}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 max-w-3xl text-[.88em] leading-relaxed text-text-soft">
+          <strong className="text-text">Estes números não se comparam entre si sem cuidado.</strong>{" "}
+          Só 2022 e 2023 têm seções com o nome &ldquo;Pendências da última inspeção&rdquo;; 2019 e
+          2026 cobram sem esse nome — em 2026, sob o título &ldquo;Não cumprimento de determinações
+          nas inspeções ano 2019, 2022 e 2023&rdquo;. Contamos trechos de cobrança em cada
+          documento, e cada documento escreve de um jeito.
+        </p>
 
         <p className="mt-4 max-w-3xl text-[.88em] leading-relaxed text-text-soft">
           <strong className="text-text">A série tem dois pontos, não seis.</strong> Só os

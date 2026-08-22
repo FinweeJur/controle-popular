@@ -3887,6 +3887,43 @@ export const GABINETES_NOMEADOS: GabineteNomeado[] = [
  }
 ];
 
+/**
+ * Quantas vezes, em cada inspeção, o CNJ voltou a cobrar o que já tinha
+ * determinado antes.
+ *
+ * ⚠️ **2012 é ZERO por um motivo, não por falha.** Foi a primeira inspeção da
+ * Corregedoria Nacional no TJMG: não havia inspeção anterior a cobrar. Um
+ * gráfico que mostre 2012 = 0 ao lado de 2023 = 52 sem dizer isso sugere que o
+ * tribunal piorou muito — quando o que mudou foi a existência de histórico.
+ *
+ * ⚠️ Os anos usam vocabulário diferente: 2022 e 2023 têm seções nomeadas
+ * "Pendências da última inspeção"; 2019 e 2026 cobram sem esse nome (em 2026,
+ * sob o título "Não cumprimento de determinações nas inspeções ano 2019, 2022
+ * e 2023"). Os números não são medidos do mesmo jeito e a tela diz isso.
+ */
+export const COBRANCAS_POR_INSPECAO = [
+ {
+  "ano": 2012,
+  "cobrancas": 0
+ },
+ {
+  "ano": 2019,
+  "cobrancas": 3
+ },
+ {
+  "ano": 2022,
+  "cobrancas": 24
+ },
+ {
+  "ano": 2023,
+  "cobrancas": 52
+ },
+ {
+  "ano": 2026,
+  "cobrancas": 20
+ }
+] as const;
+
 export const PENDENCIAS_POR_ANO = {
  "2022": 24,
  "2023": 52
