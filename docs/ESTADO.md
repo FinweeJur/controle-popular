@@ -43,6 +43,8 @@ espalhadas pelos planos. **Não reabrir sem remensurar.**
 | 11 | **Protocolo da LAI do INCRA: o dono cuida do número** (prazo 28/08) | — |
 | 12 | **O ETL antigo da FGV continua vivo**, alinhado (User-Agent honesto + pausa de 1,5 s desde 17/08). Não aposentar por ora — é ele que alimenta a tela de Betim | encerra a dívida §3b do `TODO-PROXIMAS-RODADAS.md` |
 | 13 | **O código vai subir também para o Gitee, no futuro** — espelho, não mudança de casa: o GitHub continua sendo onde a CI roda (6 ETLs, as duas guardas de dado pessoal e o vigia de prazo de LAI). Sem data | item 29 |
+| 14 | **Backfill do diário oficial: desde janeiro/2020** ("penúltima gestão municipal"). Ainda não executado — precisa de banco, que a máquina de desenvolvimento não tem; e é coleta de horas, não de minutos, no ritmo pautado de 1,5 s/requisição | `docs/planos/diario-oficial-plano.md` |
+| 15 | **Proposta de estruturação sociológica/investigativa do diário** — 7 eixos além dos 7 tipos (encadear processo/contrato, dispensa/inexigibilidade como subtipo, buracos de numeração, concentração de fornecedor, subtipo de pessoal, ritmo temporal, comparação entre cidades). Registrada, nada implementado | `docs/planos/diario-oficial-plano.md`, seção "Proposta" |
 
 **Ainda em aberto** (não decididas hoje): licença da fonte *Icones do Brasil*
 (item 27); fusão `ARQUITETURA.md` × `MAPA-APLICACAO.md` (item 28); credenciamento
