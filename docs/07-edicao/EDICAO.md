@@ -1,5 +1,22 @@
 # Edição de conteúdo — como editar o portal sem quebrar nada
 
+> **Tipo:** EDICAO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** edicao, painel, conteudo, json, build, regras editoriais
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Onde editar sem código](#onde-editar-sem-código)
+- [Quando o painel não cobre: arquivos de dado](#quando-o-painel-não-cobre-arquivos-de-dado)
+- [Ciclo de verificação, antes de publicar](#ciclo-de-verificação-antes-de-publicar)
+- [Regras editoriais](#regras-editoriais)
+
+## Propósito
+
 Procedimento de edição do conteúdo publicado em controlepopular.com.br: o que dá para editar sem código, por onde, e o que rodar antes de publicar.
 
 ## Onde editar sem código

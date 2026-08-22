@@ -1,5 +1,23 @@
 # Controle Popular
 
+> **Tipo:** PRODUTO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** portal, frentes, regras editoriais, transparencia, cidades, congresso, judiciario, ambiental, paraopeba
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Quem lê, e o que isso exige](#quem-lê-e-o-que-isso-exige)
+- [As seis frentes](#as-seis-frentes)
+- [Principais features](#principais-features)
+- [Regras editoriais](#regras-editoriais)
+- [Números que importam](#números-que-importam)
+
+## Propósito
+
 Portal independente de transparência pública: reúne o dado oficial que já é público, mas vive espalhado por dezenas de sistemas, e o publica em uma tela só, por cidade e por tema, em português comum — no ar em controlepopular.com.br.
 
 ## Quem lê, e o que isso exige

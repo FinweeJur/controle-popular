@@ -1,5 +1,24 @@
 # Desenvolvimento — o fluxo de trabalho deste repositório
 
+> **Tipo:** DESENVOLVIMENTO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** worktree, commit, push, testes, typescript, ia, verificacao
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Multi-sessão: worktree próprio por sessão](#multi-sessão-worktree-próprio-por-sessão)
+- [Regras de commit](#regras-de-commit)
+- [Antes do push — checklist](#antes-do-push-checklist)
+- [Trabalhar com IA](#trabalhar-com-ia)
+- [Grafo de código (code-graph-rag)](#grafo-de-código-code-graph-rag)
+- [Verificação](#verificação)
+
+## Propósito
+
 Guia operacional: multi-sessão em worktrees, regras de commit, checagem antes do push, uso de IA e verificação. Regras gerais e armadilhas vivem no `AGENTS.md` — este documento remete a ele, não duplica.
 
 ## Multi-sessão: worktree próprio por sessão

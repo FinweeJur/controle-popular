@@ -1,5 +1,50 @@
 # Fontes de dados — referência operacional
 
+> **Tipo:** FONTE
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** longa (> 15 min)
+> **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Regras gerais de coleta](#regras-gerais-de-coleta)
+- [CNJ e JUMA — litígio e jurisprudência nacional](#cnj-e-juma-litígio-e-jurisprudência-nacional)
+- [Biblioteca das ATIs do Paraopeba](#biblioteca-das-atis-do-paraopeba)
+- [Auditoria AJRI (Brumadinho)](#auditoria-ajri-brumadinho)
+- [Lei Rouanet / SALIC — e os três jeitos que a API mente](#lei-rouanet-salic-e-os-três-jeitos-que-a-api-mente)
+- [Território e mineração](#território-e-mineração)
+- [Pró-Brumadinho (Governo de MG) e auditoria FGV](#pró-brumadinho-governo-de-mg-e-auditoria-fgv)
+- [Fluxo financeiro — dinheiro ligado ao mapa](#fluxo-financeiro-dinheiro-ligado-ao-mapa)
+- [Clima e risco — AdaptaBrasil e INMET](#clima-e-risco-adaptabrasil-e-inmet)
+- [Legislação federal e URN LexML](#legislação-federal-e-urn-lexml)
+- [ComunicaBR — coleta de MG](#comunicabr-coleta-de-mg)
+- [LAI — portais e protocolos](#lai-portais-e-protocolos)
+- [Decisões de recurso de LAI da CGE-MG — o único corpus de LAI de MG pesquisável](#decisões-de-recurso-de-lai-da-cge-mg-o-único-corpus-de-lai-de-mg-pesquisável)
+- [Diário oficial — mapeamento SIGPub (sem coleta)](#diário-oficial-mapeamento-sigpub-sem-coleta)
+- [Rede de proteção de MG](#rede-de-proteção-de-mg)
+- [Radar de notícias do Paraopeba](#radar-de-notícias-do-paraopeba)
+- [Dados abertos de MG (`dados.mg.gov.br`) — CKAN que funciona, com três armadilhas](#dados-abertos-de-mg-dadosmggovbr-ckan-que-funciona-com-três-armadilhas)
+- [Transferegov (ex-SICONV) — o federal publica o que o estadual não publica](#transferegov-ex-siconv-o-federal-publica-o-que-o-estadual-não-publica)
+- [GTAC — o cadastro de TACs ambientais de MG (e o 403 que engana)](#gtac-o-cadastro-de-tacs-ambientais-de-mg-e-o-403-que-engana)
+- [Microsistema de lacunas — cobertura declarada](#microsistema-de-lacunas-cobertura-declarada)
+- [Painel Sisema (Power BI público) — um MENU que esconde 4 painéis e 87 abas](#painel-sisema-power-bi-público-um-menu-que-esconde-4-painéis-e-87-abas)
+- [barragens.mpmg.mp.br — 45 barragens em descaracterização, uma por post](#barragensmpmgmpbr-45-barragens-em-descaracterização-uma-por-post)
+- [MPMG — `transparencia.mpmg.mp.br/buscarTac` está morto (B7)](#mpmg-transparenciampmgmpbrbuscartac-está-morto-b7)
+- [DataJud do CNJ (B8) — CONSULTA AO VIVO, nunca coleta](#datajud-do-cnj-b8-consulta-ao-vivo-nunca-coleta)
+- [Biblioteca de inspeções da Corregedoria Nacional (CNJ) — 330 relatórios onde a sondagem viu "nada"](#biblioteca-de-inspeções-da-corregedoria-nacional-cnj-330-relatórios-onde-a-sondagem-viu-nada)
+- [CNIEP / Geopresídios (CNJ) — inspeção judicial em presídio, e a separação que inverte a manchete](#cniep-geopresídios-cnj-inspeção-judicial-em-presídio-e-a-separação-que-inverte-a-manchete)
+- [Defensoria Pública de MG — quatro fontes, e o denominador que nenhuma delas publica sozinha](#defensoria-pública-de-mg-quatro-fontes-e-o-denominador-que-nenhuma-delas-publica-sozinha)
+- [Justiça em Números (CNJ) — e a lacuna que ERA nossa, não do CNJ](#justiça-em-números-cnj-e-a-lacuna-que-era-nossa-não-do-cnj)
+- [STF — a transparência que eu disse não existir, e existe em 78 seções](#stf-a-transparência-que-eu-disse-não-existir-e-existe-em-78-seções)
+- [Atas de correição do TRT-3 (Corregedoria-Geral da Justiça do Trabalho / TST)](#atas-de-correição-do-trt-3-corregedoria-geral-da-justiça-do-trabalho-tst)
+- [Google Drive como repositório de documento público — as quatro armadilhas](#google-drive-como-repositório-de-documento-público-as-quatro-armadilhas)
+- [Decisões registradas](#decisões-registradas)
+
+## Propósito
+
 Este documento consolida o levantamento, a classificação e o estado operacional de cada fonte de dados do portal, com as decisões de coleta e as armadilhas medidas em cada uma.
 
 ## Regras gerais de coleta

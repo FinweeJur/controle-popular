@@ -1,5 +1,22 @@
 # Créditos de mídia — fotos e fontes de ícones
 
+> **Tipo:** EDICAO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** curta (< 5 min)
+> **Relacionados:** [EDICAO.md](EDICAO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** creditos, fotos, fontes, icones, licenca, brasilcoms
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Fotografias — acervo Brasil com S (Lab 678)](#fotografias-acervo-brasil-com-s-lab-678)
+- [Fontes de ícones](#fontes-de-ícones)
+- [Origem dos arquivos](#origem-dos-arquivos)
+- [Origem](#origem)
+
+## Propósito
+
 Este documento registra a procedência, a licença e as decisões de uso de todo
 conteúdo de mídia (fotografia e fonte tipográfica) incorporado ao portal. A
 regra do projeto: nada de mídia sem fonte declarada — o mesmo padrão de
