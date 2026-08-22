@@ -160,7 +160,7 @@ atualização mensal.
 | Rota | Medido |
 |---|---|
 | `/api/geopresidios/estabelecimentos` | 393.928 bytes — 7.085 no Brasil, **285 em MG** (2º maior do país) |
-| `/api/geopresidios/inspecoes` | 2.238.486 bytes — 20.298 inspeções (set/2025 a ago/2026), **~2.253 em MG** (~11% do nacional) |
+| `/api/geopresidios/inspecoes` | 2.238.486 bytes — 20.298 inspeções no Brasil, **2.253 em MG** (2.252 realizadas + 1 agendada), de **07/01/2025 a 20/08/2026** |
 | `/api/geopresidios/mapa` | 497.453 bytes — lat/long e código IBGE, **insumo pronto para o globo 3D** |
 
 Cada inspeção traz o tema pelos cinco eixos da Res. CNJ 593/2024
@@ -169,8 +169,8 @@ Cada inspeção traz o tema pelos cinco eixos da Res. CNJ 593/2024
 **Não colide com `/judiciario`:** aquele é *quem senta na cadeira*; este é *o
 que o juiz corregedor foi — ou não foi — fiscalizar*.
 
-**O produto mais forte sai do cruzamento 285 × 2.253: quais estabelecimentos de
-MG não receberam inspeção nenhuma em 12 meses.** Essa pergunta não é respondida
+**O produto mais forte sai do cruzamento 285 × 2.252: quais estabelecimentos de
+MG não receberam inspeção nenhuma no período.** Essa pergunta não é respondida
 por ninguém hoje, nem pelo próprio CNJ.
 
 ⚠️ **Defeito medido que decide o recorte:** o *conteúdo* de cada inspeção — o
@@ -496,7 +496,7 @@ liberar o meio-termo sem depender dele.
 | 0h | 2017 (Sistemas Judiciais) | ❌ **PDF digitalizado**, 16 páginas de imagem — precisa de OCR |
 | P | página `/judiciario/inspecoes` | ✅ **no ar** — 123 seções, 98 unidades, as cinco coisas, link para a origem |
 | 1 | cobertura da Defensoria por comarca | ✅ **coletada** — 298 comarcas, 120 atendidas, 176 não; em 2013 eram 105 de 295. ⬜ falta a página |
-| 2 | inspeções em presídios (CNIEP) | ✅ **coletada** — 285 estabelecimentos e 2.253 inspeções em MG. ⬜ falta a página e o cruzamento "quais nunca foram inspecionados" |
+| 2 | inspeções em presídios (CNIEP) | ✅ **feita** — 285 estabelecimentos, 2.252 inspeções realizadas, página no ar. O cruzamento mostrou que a Justiça comum cobre 213 de 217 e o STM nenhuma de 18 |
 | 3 | congestionamento do TJMG (Justiça em Números) | ✅ **coletado** — série do TJMG. ⬜ falta a página |
 | 4 | atas de correição do TRT-3 | ✅ **18 atas baixadas** (1991→2024, 91 MB). ⬜ falta extrair e publicar |
 | 5 | RAINT do STF | ❌ **falhou** — WAF da AWS passou a responder 202 com corpo vazio após ~6 chamadas |

@@ -287,13 +287,15 @@ Medido em 2026-08-22. Coletor: `etl/betim/etl/apis/cnj_inspecoes.py`.
 
 ## CNIEP / Geopresídios (CNJ) — inspeção judicial em presídio, e a separação que inverte a manchete
 
-Medido em 2026-08-22. `https://cniep.cnj.jus.br/api/geopresidios/{estabelecimentos,inspecoes,mapa}` — **JSON puro, sem login, sem token, sem captcha**, corpo inteiro numa requisição (2,49 MB / 20,49 MB / 2,78 MB). Brasil: 2.365 estabelecimentos e 20.298 inspeções; **MG: 285 estabelecimentos e 2.253 inspeções**, set/2025 a ago/2026, com tema pelos cinco eixos da Res. CNJ 593/2024.
+Medido em 2026-08-22. `https://cniep.cnj.jus.br/api/geopresidios/{estabelecimentos,inspecoes,mapa}` — **JSON puro, sem login, sem token, sem captcha**, corpo inteiro numa requisição (2,49 MB / 20,49 MB / 2,78 MB). Brasil: 2.365 estabelecimentos e 20.298 inspeções; **MG: 285 estabelecimentos e 2.253 inspeções registradas**, das quais **2.252 já realizadas** (1 tem data futura — agendada, não realizada), com tema pelos cinco eixos da Res. CNJ 593/2024.
+
+⚠️ **O PERÍODO NÃO É DE 12 MESES, e a primeira versão deste registro errou nisso.** As inspeções realizadas vão de **07/01/2025 a 20/08/2026** — cerca de **19,5 meses**. Dizer "12 meses" faz a cobertura parecer mais intensa do que é e, pior, faz "sem inspeção em 12 meses" soar mais grave do que o dado sustenta. Quem pegou foi um agente que se recusou a escrever o número que eu tinha passado, porque contradizia o próprio módulo de dado.
 
 ⚠️ **API não documentada.** O host foi descoberto por engenharia reversa: `geopresidios.cnj.jus.br/config.js` contém `window.__API_BASE__`. Pode mudar sem aviso — bater nela alguns dias seguidos antes de virar coletor de produção.
 
 ⚠️ **O conteúdo da inspeção NÃO é público por esta via.** `/relatorio-inspecao/{id}` e `/respostas-formulario/{id}` respondem **404**. Publica-se **que** houve inspeção e **sobre qual tema**, nunca o achado — e a tela tem de dizer isso, senão o leitor conclui que não houve achado.
 
-🚨 **A separação por ramo é o achado, e sem ela o número acusa quem não deve.** No bolo, **56 de 285 (20%)** não receberam inspeção em 12 meses — sugere descaso generalizado. Separando por quem responde: **Justiça comum (TJMG) 217 unidades, 4 sem inspeção (2%)**; **Justiça Militar de MG 50 unidades, 34 sem (68%)**; **Superior Tribunal Militar 18 unidades, 18 sem (100%)**. A Justiça comum inspeciona quase tudo — a maioria com 11 inspeções em 12 meses — e o buraco inteiro está na Justiça Militar. **Publicar os 20% sem separar seria acusar exatamente quem está inspecionando.**
+🚨 **A separação por ramo é o achado, e sem ela o número acusa quem não deve.** No bolo, **56 de 285 (20%)** não receberam inspeção nenhuma no período — sugere descaso generalizado. Separando por quem responde: **Justiça comum (TJMG) 217 unidades, 4 sem inspeção (2%)**; **Justiça Militar de MG 50 unidades, 34 sem (68%)**; **Superior Tribunal Militar 18 unidades, 18 sem (100%)**. A Justiça comum inspeciona quase tudo — a maioria das unidades com 11 inspeções no período — e o buraco inteiro está na Justiça Militar. **Publicar os 20% sem separar seria acusar exatamente quem está inspecionando.**
 
 ⚠️ **E unidade militar prisional não é presídio:** é cela em batalhão, muitas vezes vazia. Comparar com penitenciária em número de inspeções é comparar coisas diferentes.
 
@@ -331,6 +333,44 @@ Medido em 2026-08-22. ZIP de 4.248.648 bytes, 3 CSVs em **ISO-8859-1** com separ
 ⚠️ **A unidade NÃO está declarada.** O dicionário não diz se é dia, mês ou outra coisa. 675,5 é compatível com dias corridos entre distribuição e baixa, mas isso é inferência — **não escrever "675 dias" como se fosse afirmação do CNJ**. E o mesmo prefixo `Tp` significa **"Total de Pessoal"** noutras variáveis do mesmo dicionário (`tpefet`, `tpaf`): casar por prefixo sem olhar o sufixo mistura duas famílias.
 
 ⚠️ Irmãs medidas: `tpbaixmd` (mediana) e `tpbaixdp` (desvio) existem no dicionário e vêm **`nd` em todos os 17 anos** do TJMG. Cobertura de `tpbaixm`: vazia de 2009 a 2014.
+
+## STF — a transparência que eu disse não existir, e existe em 78 seções
+
+Medido em 2026-08-22, **num navegador**. Registro escrito depois de este projeto errar **duas vezes** sobre a mesma fonte.
+
+🚨 **AS DUAS AFIRMAÇÕES ERRADAS, e por que elas passaram.**
+
+1. *"Não há correição sobre o STF."* — Meia verdade virada em conclusão. Não há inspeção **externa** (a Corregedoria Nacional não alcança tribunal superior), mas há **correição interna**: a **Comissão de Ética** (Res. STF 711/2020) apura desvio ético, PAD, PAR e sindicância, e **publica relatório anual**.
+2. *"O que existe é auditoria de contrato e conta, nao de vara e fila."* — Falso pela metade: além da auditoria interna, há Ouvidoria em números, relatórios da Ouvidoria, rol de informações classificadas, autoridade de monitoramento da LAI, dados diários de despesa, e as **Ações de Correição**.
+
+**Por que passou:** a primeira tentativa bateu no GraphQL do CMS e no `publicacao.asp`, tomou **HTTP 202 com corpo vazio** do WAF da AWS e concluiu que a fonte estava fechada. **A fonte não estava fechada — eu estava batendo na porta errada.** É a terceira vez no mesmo dia que "medir a página que fala do assunto" foi confundido com "medir a fonte".
+
+### A rota certa: navegador para achar, curl para baixar
+
+`https://portal.stf.jus.br/transparencia/` tem **78 seções** em accordions do Bootstrap (`.accordion-item`), colapsadas mas **presentes no DOM**.
+
+⚠️ **As páginas `.asp` do portal respondem 200 com 62.711 bytes de casca — byte-idênticas entre páginas diferentes.** O conteúdo é montado por JS. Sem navegador, `curl` vê a casca e conclui que não há nada. Foi exatamente o que aconteceu.
+
+⚠️ **Os PDFs baixam por `curl`, mas só com `-L`.** Sem seguir redirecionamento, o `http://` devolve **301 com 134 bytes de HTML** — e um coletor que só olha o status grava a página de redirecionamento com extensão `.pdf`.
+
+### O que a seção "Ações de Correição" entrega
+
+Relatórios anuais da Comissão de Ética, **2022 a 2025** (mais Planos de Trabalho 2021–2025). Coletor: `etl/betim/etl/apis/stf_transparencia.py`.
+
+| Ano | Páginas | Averiguações preliminares | Instaurou PAD ético? |
+|---|---|---|---|
+| 2022 | 5 | 5 | **não** — declarado no texto |
+| 2023 | 4 | 3 | **não** — declarado |
+| 2024 | 4 | 1 | **não** — declarado |
+| 2025 | 14 | 8 | o texto **não** traz a declaração |
+
+**O achado:** em 2022, 2023 e 2024 o STF declara, com a mesma frase, que *"no exercício não houve instauração de processo administrativo para apuração de desvios éticos"*. Só houve averiguação preliminar, e as conclusões medidas foram **arquivamento** ou encaminhamento ao Diretor-Geral. Em **2025** a declaração não aparece, e o relatório dobra de tamanho: descreve apuração preliminar sobre **denúncia anônima recebida pela Ouvidoria/Fala.BR, apresentada por duas trabalhadoras terceirizadas** contra servidor gestor da unidade.
+
+⚠️ **Isto NÃO substitui inspeção externa, e as duas não se somam.** O objeto aqui é **conduta de servidor**, não atividade jurisdicional: nenhum destes relatórios trata de fila, prazo ou processo parado. A afirmação que continua de pé é a mais estreita — *"não há inspeção externa sobre o STF"* —, e ela precisa vir com o objeto ao lado para não virar acusação vaga.
+
+⚠️ **Número de processo administrativo não é dado pessoal, mas leva a um.** Quem consulta o SEI com `NNNNNN/AAAA` chega ao nome do servidor investigado. O campo fica no dado (é o que permite conferir) e a decisão de exibir em tela é editorial — mesmo tratamento dado à pauta do CNJ.
+
+⚠️ **A URL do relatório de 2025 não segue o padrão dos outros** (`SEI_3311232_Relatorio-5.pdf` contra `Atividades-da-Comissao-de-Etica-AAAA.pdf`): adivinhar a URL do próximo ano a partir da anterior não funciona nesta fonte.
 
 ## Atas de correição do TRT-3 (Corregedoria-Geral da Justiça do Trabalho / TST)
 

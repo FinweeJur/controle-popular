@@ -156,7 +156,7 @@ export default async function Home() {
               href: "/presidios",
               titulo: "Quem fiscaliza a prisão",
               texto:
-                "285 estabelecimentos penais e 2.253 inspeções judiciais em 12 meses — e onde a fiscalização não chega.",
+                "285 estabelecimentos penais e 2.252 inspeções judiciais desde 2025 — e onde a fiscalização não chega.",
             },
             {
               href: "/numeros",

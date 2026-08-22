@@ -1,3 +1,17 @@
+> ⚠️ **CORREÇÃO DE 22/08/2026, POSTERIOR A ESTE DOCUMENTO.** A parte sobre o
+> STF está **incompleta e leva a conclusão errada**. Este relatório mediu o
+> GraphQL do CMS, tomou HTTP 202 do WAF da AWS e concluiu que só havia
+> auditoria de contas. **Há mais:** a página de Transparência do STF tem 78
+> seções, entre elas **"Ações de Correição"**, com os relatórios anuais da
+> Comissão de Ética (2022–2025) sobre desvio ético, PAD, PAR e sindicância.
+> O caminho era o navegador — as páginas `.asp` respondem 200 com 62.711 bytes
+> de casca idêntica. Ver `docs/FONTES.md`, seção do STF, e
+> `etl/betim/etl/apis/stf_transparencia.py`.
+>
+> O que continua de pé, e só isto: **não há inspeção EXTERNA sobre o STF**, e
+> o objeto da correição interna é conduta de servidor, não atividade
+> jurisdicional.
+
 # Sondagem de inspeção/correição — STJ, TST, TRT-3 (MG), STF
 
 Base de comparação já em casa: **CNJ / tribunais de Justiça — 32 órgãos, 330 relatórios, 1,7 GB, 2008–2026, JSON puro sem login.** Deste lote de quatro, nada chega perto disso. O total coletável aqui é **13 documentos**, por cerca de **42 requisições**, em duas rotas que não se parecem entre si nem com a do CNJ.
