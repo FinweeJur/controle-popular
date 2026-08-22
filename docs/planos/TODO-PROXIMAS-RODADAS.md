@@ -3,6 +3,12 @@
 > Escrito em 13/08/2026, no fim de um dia longo. Serve para a próxima sessão
 > (e para o outro PC) não redescobrirem nada do zero. Ordem: dívida primeiro,
 > feature depois.
+>
+> ⚠️ **Desde 22/08 este arquivo não é mais a fila.** O plano único — o que falta
+> fazer, em ordem, com as decisões do dono já tomadas — vive em
+> `docs/ESTADO.md`. Aqui ficam a **medição e a justificativa** de cada item
+> (por que a dívida existe, o que foi medido, o que deu errado antes), que é o
+> que não cabe numa fila. Item vivo daqui aparece lá com número.
 
 ## 🔴 Dívidas que precisam sair antes de crescer mais
 

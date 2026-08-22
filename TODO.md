@@ -39,6 +39,22 @@
   · `/ambiental/licenciamento` e `/copam` têm as cinco coisas no código mas
   renderizam vazio enquanto a Neon estiver em 402 — não é regressão.
 
+- **Diário oficial D1 (SIGPub) — destravado em 22/08.** O corte de LGPD saiu:
+  nomeação e exoneração **entram**; CPF, endereço e dado de saúde de pessoa
+  física continuam fora (e as duas guardas automáticas barram de qualquer
+  jeito). Migration `0077` e `lib/diario/classificarAto.ts` já estão prontos.
+  · retomar: escrever o coletor SIGPub (Diamantina é a única confirmação limpa)
+  · plano: `docs/planos/diario-oficial-plano.md` · Itinga ganhou fonte:
+  `https://www.itinga.mg.gov.br/diario` (HTTP 200 medido em 22/08), falta
+  declarar em `apps/web/lib/db/cidades-do-build.ts`
+
+- ⚠️ **ETL da FGV apagado sem commit no checkout principal.**
+  `etl/betim/etl/apis/__init__.py` e `fgv_paraopeba.py` estão como `D` no
+  `git status`, e `.github/workflows/etl-betim.yml:359` ainda chama o módulo —
+  commitar assim para a tela de Betim de atualizar. **Decidido em 22/08: o ETL
+  continua vivo**, então isto é restauração, não decisão.
+  · retomar: `git restore etl/betim/etl/apis/__init__.py etl/betim/etl/apis/fgv_paraopeba.py`
+
 ## Esperando data
 
 - **Neon volta em 2026-09-01** (HTTP 402 até lá; sem banco não há `next build`).
@@ -53,15 +69,15 @@
 
 ## Esperando decisão do dono
 
-Nada aqui avança sem resposta. Ver o Bloco D do plano da expansão.
+**12 decisões saíram em 22/08** e estão registradas em `docs/ESTADO.md`, que
+passou a ser o plano único — quem chega lê a fila de lá, não daqui. O que
+sobrou sem resposta:
 
-- **Chatbot / degrau 3 do assistente** — 3 decisões (região do cérebro, qual
-  acervo entra, ressalva de IA). Travam **dois** planos que descrevem a mesma
-  coisa: `docs/planos/PLANO-CHATBOT-IA.md` e o degrau 3 do
-  `PLANO-INDICE-ESTATICO-E-ASSISTENTE.md`.
-- **Corte de LGPD do diário oficial** — migration e classificador prontos; o
-  coletor não sai sem isso (`docs/planos/diario-oficial-plano.md`).
-- **Protocolar o pedido ao TCE-MG** — texto pronto e sem protocolo desde 07/08
-  (`Projetos/Controle Popular — Pedido Ouvidoria TCE-MG (dados abertos).md`).
-- **Cabeçalho de Terras e Paraopeba; hierarquia da home** —
-  `docs/planos/REVISAO-UX-E-ONBOARDING.md`.
+- **Licença da fonte *Icones do Brasil*** — 22 ícones já estão no repo
+  (`BrasilIcon.tsx`) com licença não verificada; uso público pede autorização
+  do autor ou troca de fonte.
+- **Fundir `docs/ARQUITETURA.md` e `docs/MAPA-APLICACAO.md`** — e qual caminho
+  sobrevive (quem sumir quebra `docs/LEIA-PRIMEIRO.md:27`).
+- **Credenciamento no Conecta gov.br** (CNPJ/CEP) — item 16 da fila.
+- **Resumo por modelo dos PDFs da AJRI** — decidir com os 10 primeiros PDFs
+  medidos, não antes.
