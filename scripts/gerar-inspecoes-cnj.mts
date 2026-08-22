@@ -212,6 +212,37 @@ const linhasPendencia = pendencias.documentos.flatMap((d) =>
     .filter((p) => p.caracteres > 0),
 );
 
+/**
+ * Os gabinetes de desembargador que o relatório NOMEIA, com o achado.
+ *
+ * ⚠️ NOMEAR AQUI É DECISÃO EDITORIAL TOMADA, não consequência automática de
+ * ter o dado. A justificativa: são agentes públicos em função oficial, o fato
+ * é de um relatório público do CNJ, e a alternativa — descrever o achado sem
+ * dizer de quem é — protegeria o agente e não a pessoa cujo processo está
+ * parado. O documento original está linkado em cada linha.
+ *
+ * ⚠️ O QUE NÃO SE FAZ: transformar isto em ranking de "pior desembargador". A
+ * equipe de inspeção escolheu quais gabinetes visitar, e um gabinete com
+ * achado registrado pode simplesmente ter sido olhado. A tela mostra a lista,
+ * não uma classificação.
+ *
+ * ⚠️ E NÃO SE INVENTA NÚMERO. Só 6 dos 24 achados de gabinete trazem
+ * distribuídos/baixados na mesma formulação; os demais dizem a mesma coisa com
+ * outras palavras. Em vez de forçar um parser frágil que erraria calado, cada
+ * linha carrega o TRECHO do próprio CNJ e o leitor lê o que está escrito.
+ */
+const RE_TITULAR = /^GABINETE\s+D[AO]\s+DESEMBARGADOR[A]?\.?\s+(.+)$/i;
+
+const gabinetes = linhas
+  .filter((l) => l.tipo === "gabinete")
+  .map((l) => {
+    const m = RE_TITULAR.exec(l.unidade.trim());
+    return { ...l, titular: m ? m[1].trim().replace(/\s+/g, " ") : null };
+  })
+  // "GABINETES" sozinho é o título do capítulo, não uma pessoa.
+  .filter((l) => l.titular && l.titular.length > 5)
+  .sort((a, b) => (a.titular ?? "").localeCompare(b.titular ?? "", "pt-BR"));
+
 const orgaos = catalogo.orgaos.map((o) => ({
   categoriaId: o.categoriaId,
   slug: o.orgao,
@@ -397,6 +428,23 @@ export const SERIE_TJMG = ${JSON.stringify(
     .sort((a, b) => a.ano - b.ano), null, 1)} as const;
 
 export const ANOS_FORA_DA_SERIE = ${JSON.stringify(serie.anosForaDaSerie, null, 1)} as const;
+
+export interface GabineteNomeado {
+  titular: string;
+  secao: string;
+  tipoSecao: string;
+  temas: string[];
+  trecho: string;
+}
+
+export const GABINETES_NOMEADOS: GabineteNomeado[] = ${JSON.stringify(
+  gabinetes.map((g) => ({
+    titular: g.titular as string,
+    secao: g.secao,
+    tipoSecao: g.tipoSecao,
+    temas: g.temas,
+    trecho: g.trecho,
+  })), null, 1)};
 
 export const PENDENCIAS_POR_ANO = ${JSON.stringify(
   Object.fromEntries(pendencias.documentos.map((d) => [d.ano, d.total])), null, 1)} as const;

@@ -5,6 +5,7 @@ import {
   ACHADOS_POR_TEMA,
   ACHADOS_POR_TIPO_UNIDADE,
   COBERTURA_INSPECOES,
+  GABINETES_NOMEADOS,
   ORGAOS_INSPECIONADOS,
   PENDENCIAS_POR_ANO,
   SERIE_TJMG,
@@ -244,12 +245,54 @@ export default function InspecoesPage() {
           ))}
         </div>
 
-        <p className="mt-4 max-w-3xl text-[.88em] leading-relaxed text-text-soft">
-          O relatório <strong className="text-text">nomeia</strong> os gabinetes com réu preso
-          esperando julgamento há mais de 60 dias e os que não atingiram a Meta 1 do CNJ. Esta
-          página não reproduz os nomes: o documento é público e está linkado, e atribuir
-          descumprimento a uma pessoa é decisão editorial, não consequência automática de ter o
-          dado.
+      </section>
+
+      {/* ═══ OS GABINETES NOMEADOS ═══ */}
+      <section aria-labelledby="gabinetes" className="mt-12">
+        <h2 id="gabinetes" className="font-display text-xl font-bold text-text">
+          Os {GABINETES_NOMEADOS.length} gabinetes que o relatório nomeia
+        </h2>
+        <p className="mt-2 max-w-3xl text-[.95em] leading-relaxed text-text-soft">
+          Em segunda instância, o processo fica no gabinete de um desembargador. O relatório
+          examina gabinete por gabinete e diz de quem é cada achado — quem não atingiu a Meta 1
+          do CNJ, quem tem réu preso esperando julgamento, quem acumula processo sem decisão.
+          Abaixo, com as palavras do próprio CNJ.
+        </p>
+        <p className="mt-3 max-w-3xl text-[.9em] leading-relaxed text-text-soft">
+          <strong className="text-text">Isto não é um ranking, e a diferença importa:</strong> a
+          equipe escolheu quais gabinetes visitar, então estar nesta lista significa ter sido
+          examinado — não significa ser o pior. Quem não aparece pode simplesmente não ter
+          recebido visita.
+        </p>
+
+        <ul className="mt-5 space-y-4">
+          {GABINETES_NOMEADOS.map((g) => (
+            <li key={`${g.titular}-${g.secao}`} className="rounded-2xl border border-border p-4">
+              <p className="flex flex-wrap items-baseline gap-x-3">
+                <span className="font-display text-[1.02em] font-semibold text-text">
+                  Desembargador(a) {g.titular}
+                </span>
+                <span className="text-[.85em] text-text-soft">§ {g.secao}</span>
+              </p>
+              <p className="mt-2 text-[.92em] leading-relaxed text-text-soft">{g.trecho}</p>
+              <a
+                href={C.tjmg.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-block text-[.85em] text-primary underline underline-offset-2 hover:text-accent"
+              >
+                Ler no relatório oficial do CNJ (PDF) ↗
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <p className="mt-5 max-w-3xl text-[.88em] leading-relaxed text-text-soft">
+          <strong className="text-text">Por que nomeamos.</strong> São agentes públicos no
+          exercício da função, o fato está num relatório público do Conselho Nacional de Justiça,
+          e cada linha traz o link do documento. Descrever o achado sem dizer de quem ele é
+          protegeria o magistrado — não a pessoa cujo processo está parado. Se algum dos citados
+          quiser contraditar, o portal publica a resposta ao lado do achado.
         </p>
       </section>
 
