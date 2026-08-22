@@ -264,7 +264,30 @@ documento.
 
 Isto não é lista de pendência — é decisão tomada. Não revisitar sem fato novo.
 
-### Todos os painéis, sem exceção
+### Os painéis — ⚠️ o veredito era exagerado, e a medição não era falsa
+
+**Reverificado em navegador, 22/08/2026.** `paineis.cnj.jus.br` **não é casca**:
+é um AccessPoint do QlikView que carrega, lista 11 aplicações e mostra
+`PainelCNJ.qvw — Última atualização 2026-08-22 05:20`. **O painel está vivo e
+foi atualizado hoje de manhã.**
+
+O que a medição anterior viu (6.190 bytes de shell) era verdade sobre a resposta
+HTTP, e **falsa como conclusão sobre a fonte**. O enunciado correto é mais
+estreito e continua servindo para decidir:
+
+> O dado existe, está atualizado e é público — **mas não sai em forma tabular
+> por HTTP.** Chegar nele exige falar o protocolo Ajax/QIX do QlikView, o que é
+> caro de escrever e frágil de manter.
+
+**A decisão de não construir continua de pé; o motivo mudou de "não há dado"
+para "o dado é caro de tirar".** A diferença importa: a primeira frase acusa o
+órgão, a segunda descreve um custo nosso.
+
+⚠️ Os demais painéis desta lista **não foram reverificados em navegador**. As
+medições abaixo são de `curl` e, pelo precedente do CNJ, **devem ser tratadas
+como suspeitas até alguém abrir cada uma**.
+
+### Medições de `curl` sobre painéis — a reverificar
 
 | Painel | Corpo medido |
 |---|---|
