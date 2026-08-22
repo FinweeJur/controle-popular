@@ -89,9 +89,7 @@
   similaridade; a 4ª ("qual norma foi revogada?") **não** acertou — achado
   honesto, documentado no código, fora das asserções: busca semântica não
   substitui casamento de palavra-chave. `npm test`: 1034 vitest + 141 globo,
-  0 falhas. **Achado de segurança relevante:** a guarda de dado pessoal
-  (`checar-dado-pessoal-em-dado.py`) não cobre `etl/betim/dados/` — só
-  `apps/web/data/` e `docs/dados/` — chip `task_dae5f906` já registrado.
+  0 falhas.
 
 ## Esperando data
 
