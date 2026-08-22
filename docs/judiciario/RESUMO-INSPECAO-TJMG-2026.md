@@ -82,9 +82,17 @@ Um dos motivos do travamento aparece nomeado: a morte do beneficiário vinha sen
 
 O capítulo da Ouvidoria traz um achado com título próprio: **"Ausência de Sistema de Ouvidoria"**. O CNJ aponta "a inexistência de um sistema próprio de ouvidoria para o recebimento e tratamento dos chamados"; reclamações por telefone são "registradas de forma rudimentar pelas telefonistas"; e, como existe um canal paralelo ("Fale com o TJMG") fora da governança da Ouvidoria, ela "perde a capacidade de informar ao usuário a localização exata de seu protocolo ou de cobrar providências dos setores competentes". Existe contrato de um sistema em andamento, com conclusão estimada para novembro de 2026.
 
-### Uma lacuna que medimos por fora do relatório
+### 🚨 Uma "lacuna" que medimos por fora do relatório — e que NÃO existe
 
-Isto não é achado do CNJ — é medição nossa, feita no site do próprio CNJ em agosto de 2026. O "Boletim da Sessão", canal oficial dos resultados de julgamento do Plenário (inclusive de processos disciplinares contra magistrados), tem **129 entradas, e a mais recente é a "8ª Sessão Ordinária do CNJ de 23/05/2023"**. Não há nada de 2024, 2025 ou 2026. Não é falta de assunto: a pauta de 18 de agosto de 2026 traz três itens do tipo "Apuração – Infração disciplinar – Desembargador". O Plenário segue julgando; o que parou foi a publicação do resultado.
+⚠️ **ESTE BLOCO ESTAVA ERRADO E FOI CORRIGIDO EM 22/08/2026, DEPOIS DE VERIFICAÇÃO NO NAVEGADOR. Não publicar a versão anterior.**
+
+O que estava escrito aqui: que o "Boletim da Sessão", canal dos resultados de julgamento do Plenário do CNJ, tinha parado em maio de 2023, e que *"o Plenário segue julgando; o que parou foi a publicação do resultado"*.
+
+**Falso.** O CNJ publica os resultados, sem interrupção, na página **Lista de sessões** — sessões até **19 de agosto de 2026**, com seletor de ano de 2015 a 2026. Cada sessão abre uma tabela com classe, número do processo, relator e situação. Na 12ª Sessão Ordinária de 18/08/2026 há 80 linhas, entre elas cinco Reclamações Disciplinares e duas Revisões Disciplinares, com situação "Julgado".
+
+**O que de fato acabou** foi o *Boletim* — o texto narrativo que explicava, em linguagem comum, o que o Plenário tinha decidido. O último é de junho de 2023. Isso é perda de **acessibilidade**: o resultado continua público, mas quem quiser entendê-lo precisa ler tabela e acórdão, não mais um resumo escrito para leigos.
+
+É uma crítica bem menor, e é a única que se sustenta.
 
 ## O que não mudou
 
