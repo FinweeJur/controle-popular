@@ -78,7 +78,29 @@ export default async function Hub() {
         </p>
       </header>
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Linha de orientação -- decisão do dono, 22/08 (decisão 8 de
+          `docs/ESTADO.md`; achado e redação candidata em
+          `docs/planos/REVISAO-UX-E-ONBOARDING.md` §7 "seis cards + um
+          banner"). Quem chega sem saber o nome de nenhuma das seis
+          frentes varre 6 blocos de texto denso antes de confirmar qual
+          é o certo -- o achado registrou duas saídas: redesenhar
+          hierarquia (destacar/reordenar card, fora de escopo aqui, é
+          decisão de identidade visual) ou uma linha simples acima do
+          grid, sem tocar nos cards. Esta é a segunda: orienta sem
+          decidir por quem lê ("é o seu", não "clique aqui"), e não
+          nomeia o card por título -- o card de Cidades não estampa a
+          palavra "Cidades" em lugar nenhum (`s.etiqueta` e `s.titulo`
+          dizem outra coisa), só a posição é estável. "Sua cidade" ecoa
+          de propósito o título desse card (`lib/zonas.ts`: "Para onde
+          vai o dinheiro da sua cidade"). Token e tamanho são os MESMOS
+          do parágrafo de abertura logo acima e da descrição de cada
+          card (`text-text-soft`, `.95em`) -- sem cor nova, sem alarde
+          visual, como o pedido exige. */}
+      <p className="mt-10 max-w-2xl text-[.95em] text-text-soft">
+        Procurando sua cidade? O primeiro card abaixo é o seu.
+      </p>
+
+      <div className="mt-3 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {SECOES.map((s) =>
           s.id === "cidades" ? (
             // O card de cidades não é UM link: é um cartão com N destinos.
