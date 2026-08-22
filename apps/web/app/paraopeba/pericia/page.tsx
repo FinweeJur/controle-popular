@@ -51,8 +51,13 @@ export default function PericiaPage() {
   const administrativos =
     (porSecao.chamada ?? 0) + (porSecao.processo ?? 0) + (porSecao.subprojeto ?? 0);
 
+  // `id`/`tabIndex` que faltavam aqui — achado ao verificar o cabeçalho novo
+  // da zona (22/08): as outras 10 rotas de /paraopeba já tinham os dois
+  // desde a revisão de 13/08 (skip-link "Pular para o conteúdo" e "Ouvir
+  // esta página" apontam para #conteudo-principal, definido em
+  // app/layout.tsx) — só esta página tinha ficado de fora.
   return (
-    <main className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
+    <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
         <a href="/paraopeba" className="hover:text-primary">
           Paraopeba
