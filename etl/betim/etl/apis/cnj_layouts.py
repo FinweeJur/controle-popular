@@ -82,12 +82,79 @@ def blocos_repetidos(paginas, piso_fracao=0.80, max_linhas=8):
 
 def limpar(paginas):
     """Corpo sem boilerplate, sem linha de sumario e sem numero de pagina solto."""
-    texto = "\n".join(paginas)
-    for b in blocos_repetidos(paginas):
-        texto = texto.replace(b, "\n")
-    texto = RE_LINHA_SUMARIO.sub("", texto)
-    texto = RE_NUM_PAG_SOLTO.sub("", texto)
-    return texto
+    return limpar_com_paginas(paginas)[0]
+
+
+def limpar_com_paginas(paginas):
+    """(corpo_limpo, inicios) -- `inicios[i]` e' o offset da pagina i no corpo.
+
+    ⚠️ Os offsets existem para a trava T3, que e' a mais barata e a mais
+    valiosa: o sumario declara a pagina de cada secao, e um falso-positivo (um
+    "5.111" que e' separador de milhar, um "6.739" que e' numero de lei) quase
+    nunca cai perto da pagina declarada. Sem T3, o regex de unidade rendia
+    **599 candidatos em 2019 e 2.408 em 2023** -- com ela, 26 e 88.
+
+    Por isso a limpeza acontece PAGINA A PAGINA: juntar tudo e limpar depois
+    perderia a fronteira, e sem fronteira nao ha como saber em que pagina um
+    casamento caiu.
+    """
+    lixo = blocos_repetidos(paginas)
+    limpas, inicios, acc = [], [], 0
+    for p in paginas:
+        for b in lixo:
+            p = p.replace(b, "\n")
+        p = RE_LINHA_SUMARIO.sub("", p)
+        p = RE_NUM_PAG_SOLTO.sub("", p)
+        inicios.append(acc)
+        limpas.append(p)
+        acc += len(p) + 1
+    return "\n".join(limpas), inicios
+
+
+def pagina_de(inicios, pos):
+    """Indice 0-based da pagina do PDF em que `pos` cai."""
+    lo, hi = 0, len(inicios) - 1
+    while lo < hi:
+        meio = (lo + hi + 1) // 2
+        if inicios[meio] <= pos:
+            lo = meio
+        else:
+            hi = meio - 1
+    return lo
+
+
+def medir_offset(indice, inicios, corpo, amostras=40):
+    """Diferenca entre a pagina IMPRESSA no sumario e o indice de pagina do PDF.
+
+    ⚠️ NAO SUPOR. Capa, folha de rosto e o proprio sumario deslocam, e o
+    deslocamento muda de documento para documento: medido 2 em 2012, 1 em 2019,
+    0 em 2022. Um agente reportou 0 para 2023 e o critico mediu 1 -- e offset
+    errado por 1 faz T3 rejeitar tudo ou aceitar tudo.
+
+    A medicao usa o proprio par (numero de secao -> pagina declarada): para
+    cada numero achado no corpo, a diferenca entre a pagina real e a declarada.
+    A moda vence.
+
+    ⚠️ TEM DE OLHAR **TODAS** AS OCORRENCIAS, NAO A PRIMEIRA. A primeira versao
+    usava `re.search` e pegava a estreia do numero no documento -- que costuma
+    ser uma citacao cruzada ou o resto do sumario, nao o cabecalho real. O
+    resultado foram offsets de **-200, -53 e -29**, e T3 passou a rejeitar tudo:
+    2012 caiu de 52 unidades para ZERO, sem erro nenhum. Zero unidade por
+    offset errado e' indistinguivel de zero unidade por documento vazio.
+
+    Cada (numero, ocorrencia) vota. O offset verdadeiro aparece uma vez por
+    cabecalho de verdade e domina; citacao cruzada espalha voto sem maioria.
+    """
+    diffs = Counter()
+    for num, (_titulo, pag) in list(indice.items())[:amostras]:
+        for m in re.finditer(r"(?m)^[ \t]*" + re.escape(num) + r"\.[ \t\n]", corpo):
+            diffs[pagina_de(inicios, m.start()) - pag] += 1
+    if not diffs:
+        return 0
+    melhor, votos = diffs.most_common(1)[0]
+    # Offset plausivel: capa + folha de rosto + sumario. Fora disso a medicao
+    # nao convergiu, e assumir 0 e' menos errado que assumir -200.
+    return melhor if -5 <= melhor <= 60 and votos >= 3 else 0
 
 
 def sumario(paginas, ate=None):
@@ -122,7 +189,11 @@ ITEM_L1 = re.compile(r"(?m)^[ \t]*([a-z])\)[ \t]")
 ITEM_L2 = re.compile(
     r"(?m)^[ \t]*(DETERMINA[ÇC][ÃA]O|RECOMENDA[ÇC][ÃA]O)[ \t]*:?[ \t]*$")
 ITEM_L3 = re.compile(r"(?m)^[ \t]*(\d{1,2})\)[ \t\n]")
-ITEM_L4 = re.compile(r"(?m)^[ \t]*\((x?[ivx]{1,6})\)[ \t\n]")
+# ⚠️ `x{0,3}(?:ix|iv|v?i{0,3})` casaria STRING VAZIA -- um "()" solto viraria
+# item. Em 2022 nao ha "()", entao dava 590 dos dois jeitos; noutro ano daria
+# item fantasma. Fechado com `i{1,3}` e a alternativa `v` explicita.
+ITEM_L4 = re.compile(
+    r"(?m)^[ \t]*\((x{0,3}(?:ix|iv|v?i{1,3}|v))\)[ \t]*\n?[ \t]*(?=[A-ZÀ-Ý])")
 ITEM_L5 = re.compile(
     r"(?:^|[ \t])(ACHADO|DETERMINA[ÇC][ÃA]O|RECOMENDA[ÇC][ÃA]O)"
     r"[ \t]*(\d+)?[ \t]*:", re.M)
@@ -175,59 +246,143 @@ def detectar_layout(corpo):
 
 # ────────────────────────────── unidades ───────────────────────────────────
 
-# Uma familia por layout. Cada uma devolve (numero, titulo_cru, posicao).
+# Uma ou mais familias por layout. Cada uma devolve (numero, titulo_cru, pos).
+#
+# ⚠️ UM LAYOUT PODE PRECISAR DE VARIAS FAMILIAS. Medido em 2012: a secao 2
+# (varas) ancora em "N.N.1. Ocorrencias", a secao 3 (areas administrativas)
+# embute "Ocorrencias no/na X" no proprio titulo, a 3.5.x nao tem ancora
+# nenhuma, e a secao 5 (cartorios) e' diferente de todas. Uma familia so'
+# cobria 61 das 77 unidades -- e as 16 perdidas eram DUAS SECOES INTEIRAS,
+# nao casos isolados.
 CAB_UNIDADE = {
-    # ⚠️ Em L1 o titulo so' e' confiavel quando ancorado pela subsecao
-    # "N.N.1. Ocorrencias" logo abaixo. Sem a ancora, "8.13.0017" (pedaco de
-    # numero de processo) vira "secao 8, item 13".
-    "L1": re.compile(
-        r"(?m)^[ \t]*(\d{1,2}\.\d{1,3})\.?[ \t]*\n?(.{2,220}?)"
-        r"\n[ \t]*\1\.1\.?[ \t]*\n?[ \t]*Ocorr[êe]ncias", re.S),
-    "L2": re.compile(r"(?m)^[ \t]*(\d{1,2}\.\d{1,3})[ \t]+(\S.{2,200})"),
-    "L3": re.compile(r"(?m)^[ \t]*(\d{1,2}(?:\.\d{1,3})?)\.[ \t]*\n?(\S.{2,200})"),
-    "L4": re.compile(r"(?m)^[ \t]*(\d{1,2}(?:\.\d{1,3})+)\.[ \t]*\n?(\S.{2,200})"),
-    "L5": re.compile(r"(?m)^[ \t]*(\d+(?:\.\d+)*)\.[ \t]*\n?[ \t]*(\S.{2,200})"),
+    "L1": [
+        # Varas e gabinetes: ancoradas pela subsecao "N.N.1. Ocorrencias".
+        # ⚠️ "Principais ocorrencias" (minusculo) tambem existe -- exigir so'
+        # a maiuscula perdia a unidade 2.46 em silencio.
+        re.compile(
+            r"(?ms)^[ \t]*(?P<num>\d{1,2}\.\d{1,3})\.?[ \t]*\n?(?P<titulo>.{2,220}?)"
+            r"\n[ \t]*(?P=num)\.1\.?[ \t]*\n?[ \t]*(?:Principais[ \t]+)?[Oo]corr[êe]ncias"),
+        # Areas administrativas: o titulo JA' e' "Ocorrencias no/na X" -- e as
+        # vezes so' "Ocorrencias", com o resto do nome existindo apenas no
+        # sumario (3.6).
+        re.compile(
+            r"(?m)^[ \t]*(?P<num>3\.\d{1,2})\.[ \t]*(?!\d)"
+            r"(?P<titulo>[Oo]corr[êe]ncias(?:[ \t]+(?:n[oa]s?|em|d[oa])[ \t]+[^\n]{0,160})?)"),
+        # Auditoria financeira (3.5.x): "N.N.N. Titulo" nu, sem ancora.
+        # ⚠️ O (?![ \t]*\d) e' essencial: sem ele "3.5.4" recasa 15 vezes, uma
+        # por subsecao-neta (3.5.4.2.1, 3.5.4.2.2, ...).
+        re.compile(
+            r"(?m)^[ \t]*(?P<num>3\.5\.\d)\.[ \t]*(?![ \t]*\d)\n?[ \t]*(?P<titulo>[^\n]{2,160})"),
+        # Cartorios extrajudiciais.
+        # ⚠️ (?!\d+\.) e nao (?!\d): titulo de cartorio COMECA com digito
+        # ("2º Oficio de Registro..."), e rejeitar todo digito derrubava 5 das
+        # 7 serventias.
+        re.compile(
+            r"(?m)^[ \t]*(?P<num>5\.\d{1,2})\.[ \t]{1,4}(?!\d+\.)(?P<titulo>[^\n]{2,160})"),
+    ],
+    "L2": [re.compile(r"(?m)^[ \t]*(?P<num>\d{1,2}\.\d{1,3})[ \t]+(?P<titulo>\S.{2,200})")],
+    # ⚠️ O `(?![0-9])` depois do ponto e' o que separa secao de numero: sem ele,
+    # "5.111" (milhar) e "Lei n. 6.739/79" viram cabecalho, e um deles abria um
+    # bloco falso que mandava 7 de 59 itens para a unidade errada.
+    "L3": [re.compile(
+        r"(?m)^[ \t]*(?P<num>\d{1,2}(?:\.\d{1,3})?)\.(?![0-9])[ \t]*\n?"
+        r"(?P<titulo>(?:[^a-zà-ÿ\n]{4,140}(?:\n(?![ \t]*\d{1,2}[.)])[^a-zà-ÿ\n]{2,140}){0,3})"
+        r"|Desembargador[a]?[ \t]+[^\n]{2,80}|Secretaria[ \t]+d[ao][ \t]+[^\n]{2,80}"
+        r"|Setor[ \t]+d[ao][ \t]+[^\n]{2,80})")],
+    # ⚠️ O lookahead de palavra-chave (GABINETE|VARA|...) e' o que faz 64/64 em
+    # 2022 sem um falso-positivo: o numero sozinho casaria com qualquer
+    # paragrafo numerado.
+    "L4": [re.compile(
+        r"(?m)^[ \t]*(?P<num>\d{1,2}\.\d{1,2})(?!\d)\.[ \t]{1,4}"
+        r"(?=(?:[^\n]*\n){0,9}?[^\n]{0,40}"
+        r"(?:GABINETE|VARA|UNIDADE|JUIZADO|CENTRAL|TRIBUNAL DO J[ÚU]RI|COMARCA))"
+        r"(?P<titulo>[^\n]{0,200})")],
+    "L5": [re.compile(r"(?m)^[ \t]*(?P<num>\d+(?:\.\d+)*)\.[ \t]*\n?[ \t]*(?P<titulo>\S.{2,200})")],
 }
 
 
-def unidades(corpo, layout, indice):
-    """(numero, titulo, posicao) de cada unidade, com o titulo JUNTADO.
+TOLERANCIA_PAGINA = 2
 
-    ⚠️ O TITULO QUEBRA EM ATE 3 LINHAS -- em 2012 (>=20 de 61), 2017, 2022
-    (`JULIANA CAMPOS HORTA\\nDE ANDRADE`), 2023, e palavra-por-palavra em 2026.
-    Titulo truncado gera chave truncada, a unidade parece NOVA a cada ano, e a
-    conclusao do projeto inteiro vira "nao ha reincidencia" -- com tudo o mais
-    verde. E' o erro mais caro possivel aqui.
 
-    Por isso: quando o sumario tem o numero, o titulo vem DELE (renderizacao
-    independente, sem quebra). So' cai para o corpo quando o sumario nao tem.
+def unidades_aceitas(corpo, layout, indice, inicios, offset):
+    """Unidades que sobrevivem a T3: numero no sumario E pagina batendo.
+
+    ⚠️ ESTA E' A TRAVA QUE TORNA O RESTO POSSIVEL. Sem ela, o regex de unidade
+    rendia 599 candidatos em 2019 (26 reais) e 2.408 em 2023 (88 reais) -- e o
+    excedente nao e' ruido inofensivo: cada falso-positivo ABRE UM BLOCO, e os
+    itens que vem depois sao atribuidos a ele em vez da unidade certa.
+
+    O titulo vem SEMPRE do sumario quando o numero existe la'. No corpo ele
+    quebra em ate' 3 linhas (as vezes uma palavra por linha), e titulo truncado
+    gera chave truncada -- a unidade parece nova a cada ano e a conclusao do
+    projeto vira "nao houve reincidencia", com todo o resto verde.
     """
-    saida = []
-    for m in CAB_UNIDADE[layout].finditer(corpo):
-        num = m.group(1).rstrip(".")
-        do_sumario = indice.get(num)
-        if do_sumario:
-            titulo = do_sumario[0]
-        else:
-            # Junta as linhas seguintes ate' a proxima numeracao/subsecao.
-            bruto = m.group(2)
-            bruto = re.split(r"\n[ \t]*\d{1,2}(?:\.\d{1,3})*\.?[ \t]", bruto)[0]
-            titulo = re.sub(r"\s+", " ", bruto).strip()
-        if len(titulo) < 3:
-            continue
-        saida.append((num, titulo, m.start()))
+    vistos, saida = set(), []
+    for familia in CAB_UNIDADE[layout]:
+        for m in familia.finditer(corpo):
+            num = m.group("num").rstrip(".")
+            if num in vistos:
+                continue
+            no_sumario = indice.get(num)
+            if not no_sumario:
+                continue
+            titulo, pag_declarada = no_sumario
+            if abs(pagina_de(inicios, m.start()) - offset - pag_declarada) > TOLERANCIA_PAGINA:
+                continue
+            if len(titulo) < 3:
+                continue
+            vistos.add(num)
+            saida.append((num, titulo, m.start()))
+    saida.sort(key=lambda x: x[2])
+    return saida
+
+
+def unidades(corpo, layout, indice):
+    """Candidatos SEM a trava T3. Uso solto/diagnostico apenas.
+
+    ⚠️ Producao usa `unidades_aceitas`. Esta funcao superconta de proposito --
+    e' com ela que se mede o quanto T3 esta filtrando.
+    """
+    vistos, saida = set(), []
+    for familia in CAB_UNIDADE[layout]:
+        for m in familia.finditer(corpo):
+            num = m.group("num").rstrip(".")
+            if num in vistos:
+                continue
+            vistos.add(num)
+            do_sumario = indice.get(num)
+            titulo = do_sumario[0] if do_sumario else re.sub(
+                r"\s+", " ", (m.groupdict().get("titulo") or "")).strip()
+            if len(titulo) >= 3:
+                saida.append((num, titulo, m.start()))
+    saida.sort(key=lambda x: x[2])
     return saida
 
 
 # ─────────────────────────── itens dentro do span ──────────────────────────
 
 CAB_ITEM = {
-    "L1": re.compile(r"(?m)^[ \t]*(DETERMINA[ÇC][ÕO]ES|RECOMENDA[ÇC][ÕO]ES"
-                     r"(?:[ \t]*/[ \t]*DETERMINA[ÇC][ÕO]ES)?):?[ \t]*$"),
-    "L3": re.compile(r"(?m)^[ \t]*(DETERMINA[ÇC][ÕO]ES|RECOMENDA[ÇC][ÕO]ES|"
-                     r"Determina[çc][õo]es e recomenda[çc][õo]es)[ \t]*:?[ \t]*$"),
-    "L4": re.compile(r"(?m)^[ \t]*(Determina[çc][õo]es e recomenda[çc][õo]es)"
-                     r"[ \t]*:?[ \t]*$"),
+    # ⚠️ A grafia SINGULAR existe e nao estava catalogada. Medido em 2012:
+    # "DETERMINAÇÕES:" 61x, mas tambem "DETERMINAÇÃO:" **13x** e
+    # "RECOMENDAÇÃO:" 3x. Sem elas, 16 blocos inteiros ficavam invisiveis --
+    # e um bloco invisivel nao gera erro, gera unidade "sem achado".
+    "L1": re.compile(
+        r"(?m)^[ \t]*(DETERMINA[ÇC][ÃAÕO]O?ES?|RECOMENDA[ÇC][ÃAÕO]O?ES?"
+        r"(?:[ \t]*/[ \t]*DETERMINA[ÇC][ÃAÕO]O?ES?)?)[ \t]*:?[ \t]*$"),
+    "L3": re.compile(
+        r"(?im)^[ \t]*(?:\d{1,2}(?:\.\d{1,3}){1,2}\.[ \t]*)?"
+        r"(DETERMINA[ÇC][ÕO]ES(?:[ \t]+E[ \t]+RECOMENDA[ÇC][ÕO]ES)?"
+        r"|RECOMENDA[ÇC][ÕO]ES(?:[ \t]+E[ \t]+DETERMINA[ÇC][ÕO]ES)?"
+        r"|DETERMINA[ÇC][ÃA]O|RECOMENDA[ÇC][ÃA]O)[ \t]*:?[ \t]*$"),
+    # ⚠️ 2022 NAO usa "Determinacoes e recomendacoes" na mesma linha -- medido:
+    # **ZERO** ocorrencias. Usa "DETERMINAÇÕES" e "RECOMENDAÇÕES" separados, com
+    # o destinatario na linha seguinte ("À Presidência:"), e ainda "Boas
+    # práticas". Procurar so' a forma composta rendia 0 item em 60 unidades
+    # aceitas -- o pior tipo de falha, porque a unidade aparece e vem vazia.
+    "L4": re.compile(
+        r"(?im)^[ \t]*(DETERMINA[ÇC](?:[ÃA]O|[ÕO]ES)"
+        r"|RECOMENDA[ÇC](?:[ÃA]O|[ÕO]ES)|Boas[ \t]+pr[áa]ticas)"
+        r"(?:[ \t]+a[osaà]{0,2}[ \t]+[^\n:]{2,40})?[ \t]*:?[ \t]*$"),
 }
 MARCA_ITEM = {"L1": ITEM_L1, "L3": ITEM_L3, "L4": ITEM_L4}
 # Sequencia esperada de cada marcador, para a trava de continuidade.
