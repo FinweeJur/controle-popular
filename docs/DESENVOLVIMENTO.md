@@ -118,7 +118,7 @@ print(cur.fetchall())
 PY
 ```
 
-**Snapshot em 20/08/2026** (repo inteiro, incl. `apps/web`, `etl/*`, `scripts/`): 781 módulos, 3.664 arquivos, 8.123 funções, 110 métodos, 30 classes; 15.051 chamadas de função e 2.891 imports resolvidos no grafo. Módulos mais centrais (mais importados por outros) são os utilitários de base: `lib/db/queries/municipios.ts` (111), `lib/betim/format.ts` (83), `lib/betim/staticParams.ts` (63), `lib/betim/cidade.ts` (56) — mexer neles tem raio de impacto amplo. Os mais acoplados (mais imports próprios) são scripts geradores: `scripts/paridade-betim.mts` (37 imports), `scripts/isolamento-cidades.mts` (32) — esperado, são scripts de ETL/build que amarram várias fontes.
+**Snapshot em 22/08/2026** (repo inteiro, incl. `apps/web`, `etl/*`, `scripts/`): 799 módulos, 3.684 arquivos, 8.412 funções, 110 métodos, 30 classes; 15.401 chamadas de função e 2.939 imports resolvidos no grafo — mais 4.064 embeddings semânticos (`nomic-embed-text` via Ollama local, Qdrant). Módulos mais centrais (mais importados por outros) continuam os utilitários de base: `lib/db/queries/municipios.ts` (111), `lib/betim/format.ts` (86), `lib/betim/staticParams.ts` (63), `lib/betim/cidade.ts` (56) — mexer neles tem raio de impacto amplo. Os mais acoplados (mais imports próprios) são scripts geradores: `scripts/paridade-betim.mts` (37 imports), `scripts/isolamento-cidades.mts` (32) — esperado, são scripts de ETL/build que amarram várias fontes.
 
 *(Número muda a cada reindexação — se for decidir com ele, rode `cgr start --update-graph` de novo antes.)*
 
