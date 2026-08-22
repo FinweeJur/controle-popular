@@ -75,6 +75,10 @@ const tjmg2026 = ler<{
   }[];
 }>("etl/betim/dados/cnj-inspecao-tjmg-2026.json");
 
+const cobrancas = ler<{
+  totais: { comparativoComExtraido: Record<string, number> };
+}>("etl/betim/dados/cnj-cobrancas-2012-2019-2026.json");
+
 const pendencias = ler<{
   documentos: {
     ano: number;
@@ -445,6 +449,25 @@ export const GABINETES_NOMEADOS: GabineteNomeado[] = ${JSON.stringify(
     temas: g.temas,
     trecho: g.trecho,
   })), null, 1)};
+
+/**
+ * Quantas vezes, em cada inspeção, o CNJ voltou a cobrar o que já tinha
+ * determinado antes.
+ *
+ * ⚠️ **2012 é ZERO por um motivo, não por falha.** Foi a primeira inspeção da
+ * Corregedoria Nacional no TJMG: não havia inspeção anterior a cobrar. Um
+ * gráfico que mostre 2012 = 0 ao lado de 2023 = 52 sem dizer isso sugere que o
+ * tribunal piorou muito — quando o que mudou foi a existência de histórico.
+ *
+ * ⚠️ Os anos usam vocabulário diferente: 2022 e 2023 têm seções nomeadas
+ * "Pendências da última inspeção"; 2019 e 2026 cobram sem esse nome (em 2026,
+ * sob o título "Não cumprimento de determinações nas inspeções ano 2019, 2022
+ * e 2023"). Os números não são medidos do mesmo jeito e a tela diz isso.
+ */
+export const COBRANCAS_POR_INSPECAO = ${JSON.stringify(
+  Object.entries(cobrancas.totais.comparativoComExtraido)
+    .map(([ano, n]) => ({ ano: Number(ano), cobrancas: n }))
+    .sort((a, b) => a.ano - b.ano), null, 1)} as const;
 
 export const PENDENCIAS_POR_ANO = ${JSON.stringify(
   Object.fromEntries(pendencias.documentos.map((d) => [d.ano, d.total])), null, 1)} as const;

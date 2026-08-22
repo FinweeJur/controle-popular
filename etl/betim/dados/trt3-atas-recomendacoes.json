@@ -1,0 +1,925 @@
+{
+ "fonte": "Corregedoria-Geral da Justiça do Trabalho (TST) — atas de correição no TRT da 3ª Região",
+ "extraidoEm": "2026-08-22",
+ "avisoVocabulario": "⚠️ Nesta corte só existe RECOMENDAÇÃO como item formal. “DETERMINAÇÕES” nunca aparece como cabeçalho de seção em nenhuma das dez atas com texto — só como palavra em prosa. Medido antes de escolher o que extrair: um extrator que procurasse determinação renderia zero e pareceria quebrado.",
+ "avisoDigitalizadas": "8 das 18 atas (1991, 1995, 1999, 2001, 2003, 2012, 2013, 2015) são PDF de imagem: 1 imagem por página, zero caractere. Elas NÃO trazem lista vazia — trazem `digitalizado: true`, porque “não li” e “não tinha” são coisas diferentes. Não há OCR instalado nesta máquina (tesseract, pytesseract, easyocr e paddleocr ausentes; `get_textpage_ocr` do PyMuPDF depende do binário do Tesseract).",
+ "avisoOcrEmbutido": "⚠️ A ata de 1992 é digitalização com camada de OCR INVISÍVEL embutida no próprio PDF — render mode “3 Tr” em 22/22 páginas, fonte glyphless “NotDefSpecial”, imagem de 2496×3507 cobrindo a página. O texto dela sai sujo e NÃO deve ser citado como transcrição fiel. As outras nove usam fontes reais.",
+ "avisoContagem": "O extrator original devolvia 171 itens. O divisor quebrava em “art.” seguido de numeral, partindo uma recomendação em duas ou três. Depois de juntar os fragmentos e descartar cabeçalho de subseção que virara item, são 163. 2006 tem texto e nenhuma recomendação — verificado: a numeração vai de “9. REGISTROS” a “13. AGRADECIMENTOS”.",
+ "totalAtas": 18,
+ "atasDigitalizadas": 8,
+ "totalRecomendacoes": 163,
+ "fragmentosJuntados": 5,
+ "cabecalhosDescartados": 3,
+ "atas": [
+  {
+   "ano": 1991,
+   "paginas": 8,
+   "digitalizado": true,
+   "ocrEmbutido": false,
+   "recomendacoes": [],
+   "totalRecomendacoes": 0
+  },
+  {
+   "ano": 1992,
+   "paginas": 22,
+   "digitalizado": false,
+   "ocrEmbutido": true,
+   "recomendacoes": [
+    {
+     "destinatario": null,
+     "itens": [
+      {
+       "texto": "1\") Uma, de caráter burocrático, que é a de ser adotado o carimbo de recebimento pela Assessoria Jurídica da Presidência, para permitir a determinação, pelo Corregedor Geral, do prazo acima mencionado;",
+       "tema": null
+      },
+      {
+       "texto": "2\") Outra quanto ao volume de processos /que telente enas duas T-1U16001 fls. PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO vem sendo julgado pelos Senhores Juizes, com grande sacrifício para todos eles e seus assessores, que é a de não perderem eles de vista a qualidade dos seus julgados, sem a qual o seu louvável esforço fica, em parte, comprometido.",
+       "tema": null
+      }
+     ]
+    }
+   ],
+   "totalRecomendacoes": 2
+  },
+  {
+   "ano": 1995,
+   "paginas": 4,
+   "digitalizado": true,
+   "ocrEmbutido": false,
+   "recomendacoes": [],
+   "totalRecomendacoes": 0
+  },
+  {
+   "ano": 1999,
+   "paginas": 14,
+   "digitalizado": true,
+   "ocrEmbutido": false,
+   "recomendacoes": [],
+   "totalRecomendacoes": 0
+  },
+  {
+   "ano": 2001,
+   "paginas": 11,
+   "digitalizado": true,
+   "ocrEmbutido": false,
+   "recomendacoes": [],
+   "totalRecomendacoes": 0
+  },
+  {
+   "ano": 2003,
+   "paginas": 25,
+   "digitalizado": true,
+   "ocrEmbutido": false,
+   "recomendacoes": [],
+   "totalRecomendacoes": 0
+  },
+  {
+   "ano": 2005,
+   "paginas": 6,
+   "digitalizado": false,
+   "ocrEmbutido": false,
+   "recomendacoes": [
+    {
+     "destinatario": null,
+     "itens": [
+      {
+       "texto": "1. que faça cumprir o disposto nos artigos 93, inciso VII, da Constituição Federal, e 658, alínea \"c\", da CLT, os quais impõem aos Juízes que residam na sede dos órgãos em que atuam;",
+       "tema": null
+      },
+      {
+       "texto": "2. em caráter eminentemente pedagógico, que proceda a uma avaliação rigorosa da participação de servidores e magistrados em palestras, encontros, seminários, congressos, cursos e solenidades diversas, às expensas do Erário, tendo em conta a sua utilidade para a atividade jurisdicional trabalhista;",
+       "tema": null
+      },
+      {
+       "texto": "3. que proceda à cobrança de aluguéis pelas instalações cedidas à associação e ao sindicato de servidores, bem como à Amatra III, e adote procedimentos para que essas entidades arquem com o pagamento de suas próprias despesas com tarifas públicas. E, finalmente, RECOMENDA ao Corregedor Regional:",
+       "tema": null
+      },
+      {
+       "texto": "1. que incentive os Juízes a fazerem uso do Sistema Bacen Jud; e 2. que oriente os Juízes a utilizar o critério da proporcionalidade, em caso de acordo celebrado antes do trânsito em julgado da decisão, estabelecendo como base de cálculo da contribuição previdenciária a proporção das parcelas de natureza salarial postuladas na inicial da reclamação trabalhista. As providências adotadas para o atendimento dessas recomendações deverão ser comunicadas à Corregedoria- Geral da Justiça do Trabalho em 30 dias, contados da publicação da ata desta Correição Ordinária.",
+       "tema": null
+      }
+     ]
+    }
+   ],
+   "totalRecomendacoes": 4
+  },
+  {
+   "ano": 2006,
+   "paginas": 8,
+   "digitalizado": false,
+   "ocrEmbutido": false,
+   "recomendacoes": [],
+   "totalRecomendacoes": 0
+  },
+  {
+   "ano": 2008,
+   "paginas": 76,
+   "digitalizado": false,
+   "ocrEmbutido": false,
+   "recomendacoes": [
+    {
+     "destinatario": "AO TRIBUNAL",
+     "itens": [
+      {
+       "texto": "1ª) no que se refere ao vitaliciamento de Juiz do Trabalho Substituto, recomenda-se: a) a abertura de processo administrativo individualizado concernente a cada Juiz do Trabalho substituto vitaliciando; b) haja maior acompanhamento da atuação do magistrado nos processos em fase de execução; e c) recomenda-se, ainda, o aprimoramento da Resolução Administrativa nº 128/2004, para que contemple também os seguintes critérios objetivos de avaliação: c1) para que se computem todas as decisões de mérito proferidas pelo Juiz em processo de cognição incidental à execução, mormente em: liquidação de sentença, embargos à execução, embargos de terceiro, embargos à arrematação e embargos à adjudicação; c2) para que se avalie se o magistrado vitaliciando profere sentenças líquidas em causas submetidas ao rito sumaríssimo; e c3) para que se tome em conta, no que tange à utilização do sistema BACEN JUD, se PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO o magistrado absteve-se, injustificadamente, de ordenar a transferência eletrônica de valores bloqueados;",
+       "tema": null
+      },
+      {
+       "texto": "2ª) no que tange especificamente ao Programa de Gestão Documental, recomenda-se que o Tribunal, em 30 (trinta) dias contados da leitura da ata, promova a atualização da Tabela de Temporalidade e Destinação de Documentos relativamente aos processos judiciais, a fim de possibilitar a eliminação de tais processos, sem pendências, após 15 (quinze) anos, contados da data do arquivamento dos autos, tendo em vista a ampliação da competência material da Justiça do Trabalho;",
+       "tema": null
+      },
+      {
+       "texto": "3ª) recomenda-se ao Tribunal a revisão do artigo 30, inciso I, parte final, do Regimento Interno, no que enseja ao Corregedor Regional realizar exclusivamente ―correição virtual‖, à distância, nas Varas do Trabalho, procedimento que se afigura impróprio e indesejável ao Ministro Corregedor-Geral, não apenas porque inconsistentes muitas das informações extraídas do sistema de dados, como também porque considera que nada substitui a presença física do Corregedor no órgão inspecionado, inclusive porque lhe cabe, essencialmente, examinar e aquilatar múltiplos outros aspectos concernentes à atuação do Juiz ou dos servidores estranhos ao sistema de dados;",
+       "tema": null
+      },
+      {
+       "texto": "4ª) recomenda-se, em caráter pedagógico e de exemplaridade, que os Juízes e Juízas do Tribunal, com o suporte de contadoria propiciado pela Presidência e inspirados na experiência estimulante da 18ª e da 20ª Regiões, passem a proferir sistematicamente decisões condenatórias líquidas nas causas submetidas ao rito sumaríssimo, sob pena de frustrarem-se os propósitos que animam a exigência análoga de sentença líquida, no caso;",
+       "tema": null
+      },
+      {
+       "texto": "5ª) recomenda-se ao Tribunal que, nas causas submetidas ao rito sumaríssimo, em recurso ordinário, não se lavre acórdão, tampouco se emita certidão afeiçoada a tal (com PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO fundamentação);",
+       "tema": null
+      },
+      {
+       "texto": "6ª) recomenda-se que o Tribunal e todos os seus Juízes, de primeiro e segundo graus, sob a imprescindível liderança da Presidência, concentrem o foco na impostergável necessidade de uma progressiva diminuição do número de processos em execução na Região, sugerindo-se como primeiras providências, sem prejuízo de outras, que se determine: a) a todas as Varas do Trabalho da Região que não o fazem, a realização, semanal, de audiências de conciliação em processos na fase de execução, computando-se tais atos no desempenho de cada Juiz, para todos os efeitos legais; e b) a revisão periódica dos feitos em execução que se encontrem em arquivo provisório, a fim de examinar a possibilidade de renovarem-se providências coercitivas, a exemplo de nova tentativa de bloqueio de numerário pelo sistema BACEN JUD, ou a utilização de novos aplicativos, como o INFOJUD, de que acaso ainda não se lançou mão;",
+       "tema": null
+      },
+      {
+       "texto": "7ª) a revisão da Resolução Administrativa nº 70/2007, a fim de que se sujeite a autorização do magistrado para residir fora da sede ao atendimento de requisitos objetivos, tais como: a) assiduidade do juiz na Vara do Trabalho; b) cumprimento dos prazos legais, mormente para sentenciar; c) demonstração objetiva e concreta de adoção de medidas tendentes à redução progressiva dos processos em fase de execução; e d) prolação de sentenças líquidas em processos submetidos ao rito sumaríssimo;",
+       "tema": null
+      },
+      {
+       "texto": "8ª) especificamente na área de informática, recomenda-se: a) a intensificação do uso da assinatura digital eletrônica pelos Juízes de 2º grau em todos os pronunciamentos decisórios, bem como a utilização dessa forma de assinatura pelos Juízes de 1º grau, tão-logo regularizado o cadastramento desses magistrados perante a autoridade certificadora; b) o treinamento intensivo dos servidores lotados nas Varas do Trabalho do interior, sobretudo em PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO relação ao aplicativo ―carta precatória eletrônica‖, não se descurando, todavia, em reforçar o ensino no que tange aos aplicativos ―sala de audiência —— aud‖ e ―cálculo rápido‖; e c) a fiscalização do efetivo uso da ferramenta ―sala de audiências —— aud‖ em todas as Varas do Trabalho da Região;",
+       "tema": null
+      },
+      {
+       "texto": "9ª) recomenda-se ao Tribunal a instituição do Juízo Auxiliar da Execução, conforme proposta da Corregedoria Regional já em trâmite na Corte, respeitado o princípio do juiz natural; trata-se de providência essencial na Região, na avaliação do Ministro Corregedor-Geral, a fim de mitigar o ainda elevado número de processos em fase de execução;",
+       "tema": null
+      },
+      {
+       "texto": "10ª) recomenda-se que o Tribunal postergue a implantação da reestruturação de funções na Corte, objeto da Resolução Administrativa nº 37/2008, até sobrevir o julgamento dos recursos administrativos interpostos junto ao Conselho Superior da Justiça do Trabalho;",
+       "tema": null
+      },
+      {
+       "texto": "11ª) recomenda-se que o Tribunal, em nova reestruturação de funções na Corte, contemple as Varas do Trabalho de maior movimentação processual, observado o número de processos nas fase de conhecimento e de execução, ao menos com uma função comissionada FC-6; na perspectiva do Ministro Corregedor-Geral, cuida-se de providência justa e essencial, a prevalecer a reestruturação de funções na Corte, objeto da Resolução Administrativa nº 37/2008, de modo a tornar mais atraente e estimulante a lotação de servidor em Vara do Trabalho, evitando-se a natural tendência de remoção para Gabinetes de Juízes da Corte, que pode desmantelar a organização e o planejamento da primeira instância.",
+       "tema": null
+      }
+     ]
+    },
+    {
+     "destinatario": "À PRESIDÊNCIA DO TRIBUNAL",
+     "itens": [
+      {
+       "texto": "1ª) no tocante ao Programa de Gestão Documental: a) em 30 (trinta) dias após a aprovação pelo Tribunal da nova Tabela de Temporalidade, determine a eliminação dos processos judiciais, caso aptos a PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO tanto; e b) em 30 (trinta) dias da leitura da ata, determine a eliminação dos documentos administrativos aptos a tanto;",
+       "tema": null
+      },
+      {
+       "texto": "2ª) recomenda-se à Presidência, em face do elevado índice de reclamações verbais nas Varas do Trabalho da Região, com virtual comprometimento do direito de defesa, que promova gestões urgentes: a) primeiro, junto aos sindicatos para o cumprimento do dever legal de prestação de assistência judiciária gratuita aos necessitados, orientando o Serviço de Distribuição para encaminhamento dos reclamantes aos sindicatos, onde houver; e b) sucessivamente, junto à Seção local da Ordem dos Advogados do Brasil, visando à celebração de convênio com o Tribunal para, sem prejuízo de franquear-se o exercício do jus postulandi e do direito à reclamação verbal na Justiça do Trabalho, também se propiciar ao interessado, devidamente esclarecido, mecanismo de outorga de assistência jurídica gratuita por advogado aos necessitados, ou mediante módicos honorários advocatícios;",
+       "tema": null
+      },
+      {
+       "texto": "3ª) recomenda-se que a Presidência, na medida do possível, reforce a estrutura da Diretoria de Cálculos Judiciais para também atender aos Juízes do Tribunal na tarefa de proferir decisões condenatórias líquidas em causas submetidas ao rito sumaríssimo;",
+       "tema": null
+      },
+      {
+       "texto": "4ª) recomenda-se à Presidência que igualmente propicie treinamento e capacitação em cálculos judiciais a servidores lotados em Varas do Trabalho para que possam coadjuvar os magistrados de primeira instância na quantificação dos valores líquidos das sentenças proferidas nas causas submetidas ao rito sumaríssimo;",
+       "tema": null
+      },
+      {
+       "texto": "5ª) no afã de finalizar a operacionalização do sistema INFOJUD, recomenda- se que a Presidência agilize a obtenção de certificado digital por todos os Juízes de 1º grau da Região, fixando-se o prazo de 30 (trinta) dias, a partir da leitura da ata, para encaminhar os documentos exigidos pela autoridade PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO certificadora, no caso a Caixa Econômica Federal;",
+       "tema": null
+      },
+      {
+       "texto": "6ª) dando continuidade a esforços já empreendidos na Corte, de forma louvável, na política de gestão ambiental, o Ministro Corregedor-Geral também recomenda à Presidência do Tribunal adotar as seguintes providências complementares: a) a impressão em frente e verso de documentos, quando possível; b) realização de processos licitatórios para compra de bens e materiais de consumo, levando em consideração o tripé básico da sustentabilidade: ambientalmente correto, socialmente justo e economicamente viável, conforme item ―d‖ da Recomendação nº 11/2007 do Conselho Nacional de Justiça; c) implantação do ―DIA DO DESCARTE‖, a fim de estimular as unidades a desfazerem-se de materiais sem uso ou serventia; assim, por exemplo, papéis inúteis, jornais antigos, cartuchos de tintas e toners são encaminhados para reciclagem; e d) a redução gradativa do consumo de água, mormente água potável ou mineral, adotando-se como norma, para evitar desperdício, servir apenas a metade de um copo, salvo quando se solicitar mais; e 7ª) recomenda-se finalmente à Presidência do Tribunal a utilização da ferramenta de informática denominada ―Tabela de Gestão‖, desenvolvida pelo Tribunal Regional do Trabalho da 9ª Região, de modo a racionalizar e modernizar a sua gestão institucional.",
+       "tema": null
+      }
+     ]
+    },
+    {
+     "destinatario": "À CORREGEDORIA REGIONAL",
+     "itens": [
+      {
+       "texto": "1ª) oriente os Juízes de 1ª instância, no prazo de 10 (dez) dias, contados da leitura da ata, no sentido de que: a) é imprescindível a emissão explícita de pronunciamento acerca da admissibilidade dos recursos ordinários e agravos de petição interpostos; b) para que profiram sentenças sempre líquidas nas causas submetidas ao rito sumaríssimo; c) para que cesse imediatamente a praxe de determinar-se a expedição PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO de carta precatória inquiritória antes de tomado o depoimento pessoal das partes; e d) recomenda-se ainda que o Corregedor Regional oriente os Juízes de 1ª instância no sentido de que, após a liquidação da sentença em que se apure crédito de valor inequivocamente superior ao do depósito recursal, haja imediata liberação deste em favor do credor, determinada de ofício ou a requerimento do interessado, condicionada à comprovação do valor efetivamente recebido, em prazo assinado, ordenando-se a seguir o prosseguimento da execução apenas pela diferença;",
+       "tema": null
+      },
+      {
+       "texto": "2ª) recomenda-se à Corregedoria Regional que oriente os servidores que atuam nas Varas do Trabalho, no prazo de 10 (dez) dias, contados da leitura da ata, no sentido de que: a) não disponibilizem às partes e advogados, na Internet, em hipótese nenhuma, o acesso a despachos, decisões interlocutórias e sentenças de que ainda não hajam sido intimados, ou de que, no caso de sentença, não sejam considerados intimados na forma da Súmula nº 197 do TST; e b) procedam à juntada das peças na ordem estritamente cronológica da prática dos atos processuais, evitando-se, em particular, que a peça inaugural dos autos de reclamação trabalhista seja documento diverso da petição da ação;",
+       "tema": null
+      },
+      {
+       "texto": "3ª) recomenda-se o aperfeiçoamento do Provimento nº 3/2006 da Corregedoria Regional, a fim de que se adotem critérios efetivamente objetivos na 3ª Região para a aferição do desempenho, produtividade e presteza no exercício da jurisdição no que tange ao magistrado inscrito à promoção, por merecimento, bem como para que, na aferição do desempenho do magistrado, igualmente se explicite que o Tribunal também considerará, para tanto: a) a prolação de sentenças líquidas em causas submetidas ao rito sumaríssimo; b) o acatamento às determinações da Corregedoria Regional e da Corregedoria- Geral da Justiça do Trabalho, inclusive a observância dos PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO respectivos provimentos; c) se o magistrado absteve-se, injustificadamente, de ordenar a transferência eletrônica de valores bloqueados mediante a utilização do sistema BACEN JUD; d) as audiências realizadas em processos na fase de execução, nos doze meses anteriores à inscrição à promoção; e e) relativas ao período do item anterior, as decisões de mérito proferidas pelo Juiz em processos incidentais à fase de execução, tais como em embargos do devedor, embargos de terceiro e liquidação de sentença não meramente homologatória de cálculo;",
+       "tema": null
+      },
+      {
+       "texto": "4ª) recomenda-se que o Corregedor Regional e o Corregedor Auxiliar, nas correições ordinárias realizadas nas Varas do Trabalho, pautem-se pelas seguintes diretrizes: a) concentrem o foco no exame dos autos, por amostragem, para averiguar, sobretudo, a conduta efetiva do Juiz na presidência dos processos e no cumprimento dos deveres do cargo, relegando a um segundo plano aspectos formais irrelevantes; b) recomenda-se, em particular, uma apuração atenta da efetiva e pessoal atuação do Juiz na fase de execução e registro em ata, especialmente no tocante: b1) à averiguação do exaurimento das iniciativas do Juiz objetivando tornar frutífera a execução, mediante o manejo de todas as ferramentas e convênios disponíveis para lograr obter bens passíveis de penhora; b2) examinem pautas e registrem obrigatoriamente em ata os dias da semana em que a Vara do Trabalho realiza audiências, bem assim o número de audiências e o intervalo entre uma e outra; e b3) se há inclusão de processos na fase de execução em pauta e, em caso afirmativo, em que quantidade semanal e mensal; c) recomenda- se que o Corregedor Regional apure e registre em ata o número de sentenças proferidas pelo Juiz Titular e pelo Juiz Auxiliar, se houver, inclusive em processos incidentais à execução, nos últimos 12 (doze) meses; d) após acesso ao PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO sistema BACEN JUD, necessariamente registre-se em ata a posição da Vara do Trabalho no tocante à existência, ou não, de virtuais pendências, no período da correição ordinária, notadamente no que concerne a valores bloqueados e não transferidos, ordenando, a seguir, se for o caso, as providências que a situação comporta; e) apure se há imediata liberação do depósito recursal em favor do credor, após a liquidação de sentença, recomendando sempre em ata tal providência, se for o caso; e f) apure e registre em ata se a Secretaria da Vara do Trabalho, em caso de interposição de recurso extraordinário e agravo de instrumento dirigido ao Supremo Tribunal Federal, preserva os autos do agravo de instrumento em recurso de revista até o julgamento do AIRE, adotando, se for o caso, as providências necessárias;",
+       "tema": null
+      },
+      {
+       "texto": "5ª) recomenda-se que o Corregedor Regional e o Corregedor Auxiliar persistam fiscalizando e coibindo, na forma do corretíssimo Ofício Circular TRT-SCR-3/04/2008, a praxe contra legem de alguns Juízes, na Região, que, em caso de conciliação, concedem prazo às partes para a discriminação das parcelas objeto de acordo judicial já homologado; e 6ª) no propósito de aprimorar os mecanismos de controle e fiscalização sobre os Juízes do Trabalho no que concerne à regular utilização do sistema BACEN JUD, recomenda-se que a Corregedoria Regional: a) ao menos uma vez a cada mês, emita relatório de fiscalização referente a cada uma das Varas do Trabalho da Região para apurar a regularidade na utilização do sistema BACEN JUD, notadamente para verificar a existência de valores bloqueados e não transferidos, adotando, se for o caso, as providências que a situação requer; b) promova o registro da ocorrência nos assentos funcionais do magistrado na hipótese de bloqueio efetivado no qual, injustificada e comprovadamente, o Juiz não tenha emitido ordem eletrônica de PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO transferência, em tempo razoável, constatada mediante instrução sumária, assegurada a audiência prévia do magistrado para esclarecimentos; e c) expeça orientação aos Juízes de primeira instância acerca da obrigatoriedade da transferência dos valores apreendidos por intermédio dos Sistemas BACEN JUD 1 ou BACEN JUD 2 para uma conta judicial de depósito, ou do seu imediato desbloqueio, sob pena de responsabilidade e registro nos assentos funcionais.",
+       "tema": null
+      }
+     ]
+    }
+   ],
+   "totalRecomendacoes": 22
+  },
+  {
+   "ano": 2009,
+   "paginas": 45,
+   "digitalizado": false,
+   "ocrEmbutido": false,
+   "recomendacoes": [
+    {
+     "destinatario": null,
+     "itens": [
+      {
+       "texto": "- proceda à uniformização da jurisprudência da Corte, tal como previsto no artigo 896, § 3º, da CLT;",
+       "tema": null
+      },
+      {
+       "texto": "- concentrem esforços na diminuição do elevado número de processos em execução na Região;",
+       "tema": null
+      },
+      {
+       "texto": "- que nos processos sujeitos ao rito sumaríssimo, não se lavre acórdão, passando o Tribunal a expedir certidões sintéticas, nos termos do artigo 895, § 1º, inciso IV, da CLT;",
+       "tema": null
+      },
+      {
+       "texto": "- sejam adotados procedimentos que imprimam maior celeridade e efetividade às execuções, a partir da adoção, no provimento jurisdicional, de parâmetros precisos de elaboração dos cálculos;",
+       "tema": null
+      },
+      {
+       "texto": "- passe a constar dos autos certidões identificando a data de entrada dos processos nos gabinetes dos Relatores. RECOMENDA, ainda, ao Corregedor- Regional, que determine ou recomende aos juízes de Primeiro Grau que: - na hipótese de desconsideração da personalidade jurídica da empresa executada, sejam intimados os sócios para que respondam pelo débito, consoante estabelecem os artigos 79 e 80, da Consolidação dos Provimentos da Corregedoria-Geral da Justiça do Trabalho;",
+       "tema": null
+      },
+      {
+       "texto": "- a presença do Juiz Auxiliar na Vara do Trabalho importe em acréscimo quantitativo em relação aos processos instruídos e julgados pelo Titular da Vara;",
+       "tema": null
+      },
+      {
+       "texto": "- seja estimulada a realização de audiências semanais em processos em fase de execução, nos termos do artigo 77, inciso II, da Consolidação dos Provimentos da Corregedoria-Geral da Justiça do Trabalho;",
+       "tema": null
+      },
+      {
+       "texto": "- em caso de execução provisória, que não procedam à utilização do sistema Bacen-Jud. 60. PODER JUDICIÁRIO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO COMUNICAÇÃO À CGJT. A Presidência do Tribunal Regional do Trabalho da 3ª Região deve informar à Corregedoria-Geral da Justiça do Trabalho, no prazo de 45 (quarenta e cinco) dias, a contar da publicação da presente ata, as providências adotadas sobre as recomendações.",
+       "tema": null
+      }
+     ]
+    }
+   ],
+   "totalRecomendacoes": 8
+  },
+  {
+   "ano": 2012,
+   "paginas": 42,
+   "digitalizado": true,
+   "ocrEmbutido": false,
+   "recomendacoes": [],
+   "totalRecomendacoes": 0
+  },
+  {
+   "ano": 2013,
+   "paginas": 45,
+   "digitalizado": true,
+   "ocrEmbutido": false,
+   "recomendacoes": [],
+   "totalRecomendacoes": 0
+  },
+  {
+   "ano": 2015,
+   "paginas": 57,
+   "digitalizado": true,
+   "ocrEmbutido": false,
+   "recomendacoes": [],
+   "totalRecomendacoes": 0
+  },
+  {
+   "ano": 2017,
+   "paginas": 81,
+   "digitalizado": false,
+   "ocrEmbutido": false,
+   "recomendacoes": [
+    {
+     "destinatario": "Presidência",
+     "itens": [
+      {
+       "texto": "Recomenda-se a edição de normatização interna no âmbito do Tribunal Regional da 3ª Região, no que se refere aos procedimentos a serem observados na tramitação dos Incidentes de Resolução de Demandas Repetitivas e dos Incidentes de Assunção de Competência, à luz da Lei nº 13.105/2015 e da Instrução Normativa nº 39/2016 do TST.",
+       "tema": null
+      }
+     ]
+    },
+    {
+     "destinatario": "Corregedoria Regional",
+     "itens": [
+      {
+       "texto": "Considerando-se o disposto nos artigos 93, inciso VII, da Constituição Federal e 35, inciso V, da Lei Orgânica da Magistratura Nacional - LOMAN, recomenda-se regularizar a situação dos magistrados que residem fora das respectivas comarcas, nos termos da Resolução nº 37/2007 do CNJ e do Provimento nº 02/2007 do TRT da 3ª Região.",
+       "tema": null
+      }
+     ]
+    }
+   ],
+   "totalRecomendacoes": 2
+  },
+  {
+   "ano": 2019,
+   "paginas": 857,
+   "digitalizado": false,
+   "ocrEmbutido": false,
+   "recomendacoes": [
+    {
+     "destinatario": "AO TRIBUNAL",
+     "itens": [
+      {
+       "texto": "1. Considerando que os artigos 9-A e 9-B da Resolução Administrativa n.º 21/2007 do TRT3, por meio da qual se instituiu e regulamentou a Central de Pesquisa Patrimonial, não atendem integralmente à normatização expedida pelo CSJT, recomenda-se a adoção das medidas necessárias ao debate e aprovação de ato normativo que adeque integralmente o regramento interno ao disposto na Resolução n.º 138/2014, com as alterações introduzidas por meio da edição da Resolução n.º 193/2017, ambas do CSJT;",
+       "tema": null
+      },
+      {
+       "texto": "2. Considerando que a Resolução 1ª VP n.º 1/2012, por meio da qual se normatizou a centralização de execuções no âmbito do TRT3, não regulamentou os procedimentos necessários para instauração do Regime Especial de Execução Forçada – REEF, recomenda-se a expedição de ato normativo regulamentando a padronização dos procedimentos para instauração do referido Regime, conforme Provimento n.º 1/2018 da Corregedoria-Geral da Justiça do Trabalho;",
+       "tema": null
+      },
+      {
+       "texto": "3. Considerando que o Ato Conjunto TST.CSJT.ENAMAT n.º 1, de 4 de março de 2013, ao prever a inclusão, pelos Tribunais Regionais do Trabalho, em seus orçamentos anuais, de ação específica para atender às necessidades das respectivas Escolas Judiciais, não faz alusão nem tampouco dá margem à possibilidade de complementação orçamentária mediante a utilização de recursos oriundos de parcerias e convênios, recomenda-se que promova, com a brevidade possível, a alteração do Regulamento da Escola Judicial, extirpando a previsão que autoriza a complementação de orçamento da EJUD3 com recursos oriundos de parcerias e convênios.",
+       "tema": null
+      }
+     ]
+    },
+    {
+     "destinatario": "À PRESIDÊNCIA",
+     "itens": [
+      {
+       "texto": "1. Considerando a necessidade de os juízes de plantão permanecerem nessa condição mesmo fora do horário previsto no artigo 3º, cabeça, da Resolução Conjunta GP/CR n.º 58/2016 e considerando, ainda, que a referida resolução permite que os servidores plantonistas optem pelo pagamento ou pela compensação das horas efetivamente trabalhadas durante o plantão, recomenda-se a alteração da Resolução Conjunta GP/CR n.º 58/2016, a fim de que passe a contemplar o regime de plantão na forma do disposto no artigo 4º da Resolução n.º 71/2009 do CNJ, bem como que seja vedada a possibilidade de substituição da folga compensatória por retribuição em pecúnia;",
+       "tema": null
+      },
+      {
+       "texto": "2. Considerando a necessidade de padronizar e controlar os critérios para o cadastramento e para a designação de peritos e órgãos técnicos ou científicos, recomenda-se a adoção de medidas necessárias à regulamentação, no âmbito do TRT3, dos requisitos e procedimentos para o cadastramento e designação de peritos e órgãos técnicos ou científicos, nos termos previstos na Resolução n.º 233/2016 do CNJ, com especial atenção à fixação de critério equitativo e objetivo para os casos de nomeação de peritos de confiança do Juízo, nos moldes do artigo 9º, § 2º, da referida resolução. Recomenda-se, ainda, a adoção de medidas necessárias à implementação, no âmbito do Tribunal, do Cadastro Eletrônico de Peritos e Órgãos Técnicos, destinado ao gerenciamento e à escolha de interessados em prestar serviços de perícia ou exame técnico nos processos judiciais, nos termos do disposto na Resolução n.º 233/2016 do CNJ, sem prejuízo da continuidade dos esforços para implementação do Cadastro Nacional de Peritos;",
+       "tema": null
+      },
+      {
+       "texto": "3. Considerando o teor da Resolução n.º 221/2016 do CNJ, recomenda-se a instituição, mediante devida previsão regimental, do Comitê de Gestão Participativa, inclusive com o aproveitamento, se for o caso, de estruturas administrativas assemelhadas já existentes, a critério do Tribunal;",
+       "tema": null
+      },
+      {
+       "texto": "4. Considerando que os dados constantes do relatório de “processos suspeitos” extraído do Sistema e-Gestão acarretam impacto na fidedignidade dos dados estatísticos, visto que indicam concomitância de movimentos ou sistemas para um mesmo processo, recomenda-se que se envidem esforços no sentido de promover a qualificação de magistrados e de servidores lotados nas Varas do Trabalho, bem como nos Gabinetes de Desembargadores, mediante cursos e outras atividades de treinamento, a fim de evitar a ocorrência de lançamentos equivocados e inconsistências nos movimentos processuais relativos aos Sistemas Legado e PJe;",
+       "tema": null
+      },
+      {
+       "texto": "5. Considerando o índice de sentenças líquidas proferidas no âmbito da 3ª Região, recomenda-se que se envidem esforços no sentido de incentivar os magistrados a prolatar sentenças e acórdãos líquidos (inclusive mediante uso do PJe-Calc), bem como de promover, na medida do possível, o fornecimento dos meios e ferramentas necessários ao incremento da celeridade e produtividade dos magistrados nos processos em fase de liquidação;",
+       "tema": null
+      },
+      {
+       "texto": "6. Considerando o índice de conciliação no ano de 2018 no âmbito do TRT3, que se manteve abaixo da média dos Tribunais do mesmo porte e do País no período, recomenda-se empreender esforços no sentido de sensibilizar os magistrados quanto à importância de que se busque a solução dos conflitos mediante métodos consensuais, objetivando a entrega da prestação jurisdicional de forma eficiente, a partir do empoderamento das partes, bem como a elevação dos índices de conciliação do Tribunal;",
+       "tema": null
+      },
+      {
+       "texto": "7. Considerando a necessidade de que sejam definidos critérios objetivos e de observância obrigatória para a escolha do coordenador dos CEJUSCs e de seus supervisores, nos termos do artigo 7º, cabeça, da Resolução n.º 174/16 do CSJT, bem como a redação atual do artigo 10, § 1º, da Resolução GP n.º 81/2017 do TRT3, que faculta a utilização de critério objetivo, ainda assim apenas para a escolha do supervisor do CEJUSC de primeiro grau, recomenda-se adequar a norma interna do Tribunal, de modo que preveja a utilização obrigatória de critérios objetivos para a designação do coordenador e dos supervisores dos CEJUSCs de primeiro e de segundo graus, assegurando-se a transparência do processo de escolha e permitindo aos magistrados postulantes ao cargo o conhecimento dos requisitos a serem preenchidos;",
+       "tema": null
+      },
+      {
+       "texto": "8. Considerando a designação de magistrado de primeira instância para atuar como supervisor no CEJUSC de segundo grau, bem como o disposto na Resolução nº 174/2016 do CSJT, que, ao disciplinar a designação do supervisor, define que o cargo deve ser ocupado por magistrado da ativa, o que pressupõe a observância da competência funcional para atuar nos feitos submetidos ao aludido órgão, recomenda-se estudar a viabilidade de que seja designado Desembargador para atuar regularmente como supervisor das audiências no âmbito do CEJUSC de segundo grau, admitindo-se, excepcionalmente, a designação de magistrado de primeira instância, desde que devidamente referendada pelo órgão competente do Tribunal;",
+       "tema": null
+      },
+      {
+       "texto": "9. Considerando que o artigo 6º, inciso I, da Resolução GP n.º 81/2017 do TRT3, ao disciplinar a competência do CEJUSC de segunda instância, admite sejam realizadas audiências de conciliação de processos “pendentes de julgamento perante o Tribunal Superior do Trabalho (TST)” e, em caráter excepcional, “em trâmite nas varas do trabalho”, bem como a existência de CEJUSC no âmbito da primeira instância, recomenda-se adequar a aludida norma interna quanto à definição das competências dos CEJUSCs, observando-se o grau de jurisdição a que esteja vinculado o feito, bem como o regramento previsto nos artigos 1º, § 2º, II, e 2º-B, cabeça e parágrafo único, do Ato Conjunto CSJT.GP.CGJT n.º 1/2018, com as alterações introduzidas pelo Ato Conjunto CSJT.GP.CGJT n.º 2/2019;",
+       "tema": null
+      },
+      {
+       "texto": "10. Considerando que em determinadas situações os feitos são encaminhados aos CEJUSCs, via sistema, sem qualquer registro, deixando à margem dos autos do processo a comprovação dos trâmites da rotina empregada, recomenda-se orientar as unidades jurisdicionais, bem como as Secretarias do Tribunal, para que registrem nos autos, por certidão ou despacho, a remessa dos autos ao CEJUSC, de modo a demonstrar a anuência da unidade jurisdicional de origem, em estrita observância ao princípio do devido processo legal;",
+       "tema": null
+      },
+      {
+       "texto": "11. Considerando o disposto no artigo 6º, § 1º, da Resolução n.º 174 do CSJT, que define ser indispensável a presença do advogado do reclamante nas audiências realizadas no âmbito do CEJUSC, bem como a regra prevista no artigo 7º, II, da Resolução GP n.º 81/2017, segundo a qual compete ao CEJUSC de primeiro grau realizar a audiência inicial nos casos de reclamações trabalhistas propostas mediante jus postulandi, recomenda-se adequar a norma interna do Tribunal, de modo que, nessas hipóteses, as audiências sejam realizadas nas Varas do Trabalho, diante da impossibilidade de que ocorram no âmbito do CEJUSC sem a presença do advogado do reclamante, nos termos da norma emanada do CSJT;",
+       "tema": null
+      },
+      {
+       "texto": "12. Considerando que o CEJUSC de segundo grau, em casos específicos em que uma das partes e seu advogado residem no interior do Estado, realiza audiência de conciliação com a presença física apenas da parte adversa e de seu advogado, mantendo-se durante a audiência contato com o representante da parte ausente, por telefone, para a realização das tratativas tendentes à celebração do acordo, bem como o fato de que o termo de conciliação lavrado na ausência de uma das partes e de seu advogado, e homologado sem a assinatura de pelo menos um deles, pode ensejar futuros questionamentos, comprometendo o intuito de resolver o litígio de forma célere e definitiva, recomenda-se não mais adotar a prática de homologar acordo sem a devida observância das formalidades necessárias ao inequívoco reconhecimento da manifestação de vontade das partes envolvidas no litígio, em atenção ao princípio da segurança jurídica;",
+       "tema": null
+      },
+      {
+       "texto": "13. Considerando a implementação do “Projeto Reunião Pública de Negociação Preparatória de Audiência de Conciliação/Mediação em Projeto de Administração de Justiça – RPNP/PACJ-E”, que visa otimizar os trabalhos realizados pelo CEJUSC de segundo grau e prevê a realização de reuniões entre as partes em locais indicados por escritórios de advocacia credenciados junto ao CEJUSC de segundo grau, bem como as diretrizes traçadas na Resolução n.º 174/16 do CSJT, que define o CEJUSC como importante ferramenta para estimular a criação de Centros de Conciliação no âmbito judicial, recomenda-se a não utilização de elementos de identificação institucional, especialmente a logomarca do Tribunal Regional e da Justiça do Trabalho nos aludidos eventos, que devem ter uso exclusivo e restrito às atividades conduzidas e sob a responsabilidade da Justiça do Trabalho, bem como a vedação da prática de credenciamento de escritórios de advocacia, porquanto possibilita a utilização, por entes particulares, da condição de credenciado ou parceiro como diferencial de sua atividade privada;",
+       "tema": null
+      },
+      {
+       "texto": "14. Considerando que, a despeito do incremento de 33% no número de Recursos de Revista despachados ao TST em 2018, ainda se observa no TRT3 um resíduo de 18.234 recursos pendentes de admissibilidade, recomenda-se a manutenção dos esforços no sentido de debelar o resíduo de Recursos de Revista pendentes de juízo de admissibilidade no Tribunal, inclusive mediante o aprimoramento das estratégias para estímulo à conciliação;",
+       "tema": null
+      },
+      {
+       "texto": "15. Considerando as inconsistências nos dados extraídos do Sistema e-Gestão em relação ao prazo médio para o juízo de admissibilidade dos Recursos de Revista, recomenda-se a observância da rotina de movimentação processual no Sistema PJe, com a imediata conclusão dos autos para a decisão de admissibilidade de Recurso de Revista, de modo a evitar etapas processuais não computadas nos resultados do Tribunal;",
+       "tema": null
+      },
+      {
+       "texto": "16. Considerando a ausência de reuniões periódicas do Comitê Gestor das Contas Especiais, bem como que o TRT3 não dispõe de informações próprias quanto aos valores depositados mensalmente pelos entes públicos vinculados ao regime especial, tampouco em relação aos repasses a cargo do TJMG, recomenda-se envidar esforços para estabelecer, em conjunto com o Tribunal de Justiça, agenda regular de reuniões do Comitê Gestor de Contas Especiais a que alude o artigo 8º, cabeça, da Resolução n.º 115/2010 do CNJ, bem como gestionar junto ao TJMG a fim de que sejam disponibilizadas as aludidas informações e, ato contínuo, adotado procedimento que permita monitorar a regularidade dos pagamentos efetuados pelos entes devedores e dos repasses a cargo do TJMG, de modo a desenvolver meios próprios para o acompanhamento da situação de cada ente público que apresenta precatório a pagar junto ao Tribunal Regional;",
+       "tema": null
+      },
+      {
+       "texto": "17. Considerando que o TRT3 não disponibiliza em seu sítio na internet informações relacionadas às RPVs estaduais e municipais, bem como que em relação às RPVs da União há apenas listagem por credor beneficiário, recomenda-se envidar esforços no sentido de desenvolver ferramentas que tornem acessível ao público em geral a consulta da dívida individualizada dos entes públicos federais, estaduais e municipais a ser paga por meio de RPVs, inclusive com o detalhamento dos dados respectivos;",
+       "tema": null
+      },
+      {
+       "texto": "18. Considerando que, atualmente, o TRT3 contabiliza o resíduo de 35.965 dias de férias de exercícios anteriores ainda não usufruídos, distribuídos entre a primeira e a segunda instâncias, recomenda-se a continuidade dos esforços até aqui envidados, no sentido de manter políticas internas que estimulem os magistrados a gozar integralmente as férias do período vigente, buscando, ainda, conciliá-las com a fruição de períodos anteriores, tudo com vistas a reduzir o relevante passivo atual de férias vencidas apurado na Região;",
+       "tema": null
+      },
+      {
+       "texto": "19. Considerando que, entre 30/11/2018 e 30/4/2019, houve um incremento da ordem de 244,44% no saldo global de processos conclusos aos Relatores há mais de 180 dias, passando de 54 para 186 processos nessas condições, recomenda-se não só a diminuição de tal resíduo, em prazo razoável, mas também que se evitem futuros acúmulos de processos com prazo vencido nos gabinetes dos Relatores;",
+       "tema": null
+      },
+      {
+       "texto": "20. Considerando a relevância de ações afirmativas relacionadas à valorização da diversidade e à promoção da igualdade de gênero, tal como preconiza a Resolução n.º 255/2018 do CNJ, recomenda-se a continuidade dos esforços no sentido de construir política permanente de promoção de igualdade de oportunidades, bem como a adoção de medidas concretas e efetivas que assegurem a sua implementação, inclusive mediante a adoção de medidas que viabilizem o acesso à formação, o estímulo à participação e o aproveitamento dos talentos das servidoras, com especial atenção às oportunidades nas Varas do Trabalho da 3ª Região;",
+       "tema": null
+      },
+      {
+       "texto": "21. Considerando que, não obstante o desenvolvimento de atividades de capacitação e o emprego de amplos recursos de acessibilidade no portal do TRT3 na internet, constatou-se o atendimento apenas parcial da Resolução n.º 230/2016 do CNJ no tocante à acessibilidade às instalações do Tribunal, recomenda-se o efetivo acompanhamento da execução de metas anuais por parte da Comissão Permanente de Acessibilidade e Inclusão, a fim de, na medida da disponibilidade orçamentária, promover as adequações pendentes nas instalações físicas do Tribunal, com especial atenção às unidades do interior do estado.",
+       "tema": null
+      }
+     ]
+    },
+    {
+     "destinatario": "CONJUNTAS À PRESIDÊNCIA E À CORREGEDORIA",
+     "itens": [
+      {
+       "texto": "1. Considerando as dificuldades detectadas para o pleno funcionamento da Central de Pesquisa Patrimonial no âmbito do TRT3, recomenda-se a realização de estudo a fim de identificar possíveis melhorias na Central de Pesquisa Patrimonial, notadamente no que se refere ao número e à qualificação de servidores, especialmente Oficiais de Justiça, à promoção de cursos voltados ao conhecimento e aprimoramento do uso seguro das ferramentas de pesquisa, à celebração de novos convênios voltados à pesquisa patrimonial e à racionalização de procedimentos que objetivem a efetividade da execução, estimulando a disseminação dos conhecimentos para os magistrados e servidores lotados nas Varas do Trabalho;",
+       "tema": null
+      },
+      {
+       "texto": "2. Considerando o entendimento exarado nos autos do Processo n.º CSJT-Cons-51-59.2018.5.90.0000, por meio do qual se fixou a tese de que, na contagem do prazo administrativo para verificação do atraso reiterado para prolação de sentenças, não deverão ser descontados os afastamentos dos magistrados, ressalvadas apenas as hipóteses ali elencadas, em rol exaustivo, recomenda-se alterar o critério até então adotado em relação aos afastamentos de magistrados para tratamento da saúde de pessoa da família, em estrita observância às situações excepcionais definidas pelo CSJT.",
+       "tema": null
+      }
+     ]
+    },
+    {
+     "destinatario": "À CORREGEDORIA REGIONAL",
+     "itens": [
+      {
+       "texto": "1. Considerando que a Resolução n.º 233/2016 do CNJ determina que o magistrado, na designação de perito, observe critério equitativo para a nomeação dos profissionais constantes da lista cadastrada junto ao Tribunal, recomenda-se dispensar especial atenção, durante a atividade correicional, ao integral atendimento às diretrizes fixadas na Resolução n.º 233/2016 do CNJ;",
+       "tema": null
+      },
+      {
+       "texto": "2. Considerando que, a despeito do notável incremento na produtividade do primeiro grau de jurisdição, com importante redução do acervo de processos pendentes de julgamento, o prazo médio de duração dos processos na fase de conhecimento apresenta-se em tendência de elastecimento, notadamente no que tange ao período compreendido entre a realização da primeira audiência e o encerramento da instrução, recomenda-se a intensificação dos esforços no sentido de obter a redução do tempo médio de tramitação processual nas Varas do Trabalho da 3ª Região, especialmente no que se refere ao prazo para o encerramento da instrução;",
+       "tema": null
+      },
+      {
+       "texto": "3. Considerando o elevado resíduo de execuções, recomenda- se sensibilizar magistrados e servidores para a importância do uso eficaz das ferramentas de pesquisa patrimonial como meio de assegurar a efetividade das execuções e, por consequência, incrementar a produtividade e propiciar a redução do número de execuções pendentes no âmbito do TRT da 3ª Região;",
+       "tema": null
+      },
+      {
+       "texto": "4. Considerando a informação de que significativa parcela das execuções encerradas encontra-se identificada como “outras extinções” e de que, dentre elas, constatou-se, por amostragem, a existência de sentenças que fizeram incidir a prescrição intercorrente, recomenda-se alertar os magistrados para os termos do artigo 2º da Instrução Normativa n.º 41/2018 do TST e da Recomendação n.º 3/2018 da Corregedoria-Geral da Justiça do Trabalho, de modo a garantir segurança jurídica aos jurisdicionados;",
+       "tema": null
+      },
+      {
+       "texto": "5. Considerando que não há unidade específica responsável pela fiscalização das rotinas adotadas pelas VTs para a expedição e processamento das RPVs, o que dificulta a padronização dos procedimentos, e visando ao controle efetivo, centralizado e permanente das práticas adotadas pelas diversas unidades jurisdicionais, recomenda-se adotar mecanismos de efetivo controle em relação à expedição e processamento das RPVs pelas VTs;",
+       "tema": null
+      },
+      {
+       "texto": "6. Considerando que, no âmbito do TRT3, os processos de competência da Corregedoria Regional tramitam em autos físicos, recomenda-se que implemente a sua tramitação eletrônica, valendo-se, inclusive, do compartilhamento de informações com as Corregedorias Regionais que já utilizam o PJe;",
+       "tema": null
+      },
+      {
+       "texto": "7. Considerando a existência, em 30/4/2019, de 4.339 processos distribuídos até 2015 sem prolação de sentença de conhecimento, recomenda-se intensificar os esforços conjuntos até aqui empreendidos com as unidades judiciárias de primeira instância, visando aperfeiçoar a celeridade na entrega da prestação jurisdicional e a pronta eliminação do resíduo de processos antigos;",
+       "tema": null
+      },
+      {
+       "texto": "8. Considerando os termos da comunicação recebida pela CGJT – referida no tópico 9.13 da parte descritiva da presente ata –, o histórico de denúncias anteriores sobre o mesmo tema, envolvendo o mesmo magistrado – já apuradas pela Corregedoria Regional – e a proximidade da realização de correição ordinária na Vara do Trabalho objeto da referida comunicação, recomenda-se a apuração dos fatos e, caso necessária, a adoção de medidas destinadas à implementação de melhorias na administração dos serviços na aludida unidade judiciária.",
+       "tema": null
+      }
+     ]
+    }
+   ],
+   "totalRecomendacoes": 34
+  },
+  {
+   "ano": 2021,
+   "paginas": 339,
+   "digitalizado": false,
+   "ocrEmbutido": false,
+   "recomendacoes": [
+    {
+     "destinatario": "À PRESIDÊNCIA",
+     "itens": [
+      {
+       "texto": "1) Considerando a diretriz recentemente emanada da Presidência do Conselho Superior da Justiça do Trabalho, no que se refere ao controle da movimentação processual dos Postos Avançados, recomenda-se a adoção de providências no PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO sentido da imediata observância da orientação constante do Ofício Circular CSTJ.GP.SG.SGPES N. 26/2021.",
+       "tema": null
+      },
+      {
+       "texto": "2) Considerando as inconsistências encontradas entre os dados administrativos informados e os extraídos no Sistema e-Gestão, recomenda-se a adoção de providências para que se mantenham atualizadas as bases de dados sobre a estrutura orgânica e de pessoal constantes do Sistema e-Gestão.",
+       "tema": null
+      },
+      {
+       "texto": "3) Considerando a existência de servidores lotados em gabinetes de desembargadores prestando serviços na modalidade de teletrabalho sem o devido registro na Diretoria de Gestão de Pessoas, recomenda-se que, ao final da pandemia, tal irregularidade seja sanada, mediante a formalização do teletrabalho perante a Administração.",
+       "tema": null
+      },
+      {
+       "texto": "4) Considerando a suspensão temporária da análise de novas solicitações para o teletrabalho e dos pedidos de renovação, recomenda-se que, após a cessação das medidas excepcionais decorrentes da pandemia, seja retomada a observância das Resoluções CNJ n. 227/2016 (com as alterações introduzidas pela Resolução CNJ n. 298/2019) e CSJT n. 151/2012.",
+       "tema": null
+      },
+      {
+       "texto": "5) Considerando que o Tribunal Regional não atendeu plenamente à Resolução CNJ n. 291/2019, recomenda-se que concretize o Plano de Segurança Orgânica, Proteção e Assistência a Magistrados em Situação de Risco e o implemente, com a brevidade possível.",
+       "tema": null
+      },
+      {
+       "texto": "6) Considerando que o Tribunal Regional ainda não instituiu o Núcleo de Inteligência, recomenda-se a adoção de providências no sentido da sua imediata criação, em atenção ao disposto no art. 12, II, da Resolução CNJ nº 291/2019.",
+       "tema": null
+      },
+      {
+       "texto": "7) Considerando que o Comitê Gestor do Sistema e-Gestão não realizou reuniões mensais em 2020, recomenda-se a observância do que dispõe o §2º do art. 174 da Consolidação dos Provimentos da Corregedoria-Geral da Justiça do Trabalho.",
+       "tema": null
+      },
+      {
+       "texto": "8) Considerando que o Tribunal Regional não atendeu integralmente as diretrizes relacionadas às políticas de Tecnologia da Informação, recomenda-se o pleno cumprimento pelo Tribunal Regional dos itens da Resolução CNJ n. 211 ainda não observados.",
+       "tema": null
+      },
+      {
+       "texto": "9) Considerando o disposto no artigo 4º Resolução CSJT nº 288/2021, que dispõe sobre a designação de magistrados coordenadores e supervisores para exercer as suas funções de forma exclusiva nos CEJUSCs-JT, recomenda-se adequar a Resolução GP n. 81/2017 no que tange à escolha dos magistrados coordenadores e supervisores dos CEJUSCs ao disposto no mencionado normativo. PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO",
+       "tema": null
+      },
+      {
+       "texto": "10) Considerando a recente publicação da Resolução CSJT n. 288/2021, com vigência a partir da sua publicação no DEJT, em 09/04/2021, que dispõe sobre a estruturação e os procedimentos dos CEJUSC-JT, recomenda-se envidar esforços para adequar a política conciliatória do Tribunal Regional ao disposto na referida resolução, inclusive em relação ao Pedido de Mediação Pré-Processual e a instituição de novos CEJUSCs conforme as diretrizes previstas no normativo a fim de expandir as atividades conciliatórias.",
+       "tema": "CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO"
+      },
+      {
+       "texto": "11) Considerando que o Tribunal Regional ainda não atingiu o índice de 100% dos processos no Sistema PJe, recomenda-se a manutenção dos esforços no sentido da migração plena da totalidade dos processos físicos para o Sistema PJe.",
+       "tema": null
+      },
+      {
+       "texto": "12) Considerando a existência de desembargadores com saldo de férias vencidas superior a 60 dias, prática que não se coaduna com o disposto na Resolução CSJT nº 253/2019, recomenda-se que solicite aos integrantes do Tribunal a apresentação de um cronograma de fruição dos períodos de férias vencidas, como também que condicione o deferimento do novo período de férias ao gozo integral dos períodos de férias vencidas.",
+       "tema": null
+      },
+      {
+       "texto": "13) Considerando a constatação de que alguns servidores do Tribunal ainda não dominam plenamente as funcionalidades do Sistema PJe, recomenda-se que se intensifiquem os treinamentos com cursos regulares de formação e aperfeiçoamento no manuseio desse sistema, com a brevidade que o caso impõe.",
+       "tema": null
+      },
+      {
+       "texto": "14) Considerando a variabilidade dos resultados da taxa de congestionamento líquida por Desembargador, recomenda-se que se realize uma avaliação das razões e dos motivos que impactam nos resultados, principalmente, no que se refere à gestão de pessoas e à gestão dos processos de trabalho.",
+       "tema": null
+      },
+      {
+       "texto": "15) Considerando que a Instrução Normativa GP/DG nº 9/2013 e a Portaria GP nº 14/2010 do Tribunal Regional do Trabalho da 3ª Região, não contemplam integralmente o regime de compensação de horário, recomenda-se o seu aprimoramento para prever a instituição de banco de horas, em consonância com a Resolução CSJT nº 204/2017. RECOMENDAÇÕES À",
+       "tema": null
+      },
+      {
+       "texto": "1ª VICE-PRESIDÊNCIA (FUNÇÃO DELEGADA) PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO",
+       "tema": "RECOMENDAÇÕES À"
+      },
+      {
+       "texto": "1) Considerando que existem 12.302 recursos de revista pendentes de juízo de admissibilidade pela Vice-Presidência do Tribunal em 2021, a representar o 5º maior resíduo do País, recomenda-se sejam envidados esforços voltados à redução do número de Recursos de Revista pendentes de juízo de admissibilidade.",
+       "tema": "CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO"
+      },
+      {
+       "texto": "2) Considerando a ausência da imediata informação de conclusão quando o processo é movimentado para o setor de admissibilidade de Recurso de Revista, o que descumpre recomendação anterior desta Corregedoria-Geral da Justiça do Trabalho, reitera-se a recomendação de se observar a adequada rotina de movimentação processual no Sistema PJe, com a informação de imediata conclusão para o exame da admissibilidade do Recurso de Revista, de modo a evitar etapas processuais não computadas nos resultados do Tribunal.",
+       "tema": null
+      },
+      {
+       "texto": "3) Considerando o baixo percentual de admissibilidade de recursos de revista nos períodos examinados, associada à alta taxa de reforma dos Agravos de Instrumento pelo TST, recomenda-se que o Tribunal Regional realize estudos voltados à revisão dos critérios atualmente adotados para a admissibilidade dos recursos de revista, no sentido de adequar os critérios de admissibilidade de Recursos de Revista à jurisprudência da Corte Superior. RECOMENDAÇÕES À",
+       "tema": null
+      },
+      {
+       "texto": "1) Considerando que os normativos internos do Tribunal não estão adaptados às diretrizes Resolução CNJ n° 303/2019 e que não são divulgados em seu portal eletrônico, recomenda-se: a) a adequação das normas internas à citada resolução, e b) a ampla divulgação dos normativos internos em área específica dos precatórios e RPVs no site do Tribunal.",
+       "tema": "(FUNÇÃO DELEGADA)"
+      },
+      {
+       "texto": "2) Considerando que o Núcleo de Precatórios do TRT3 não se encontra vinculado diretamente à 2ª Vice-Presidência do Tribunal, unidade responsável regimentalmente pelo processamento e pagamento de precatórios, recomenda-se a adoção das medidas necessárias para que o respectivo Núcleo fique à ela subordinado.",
+       "tema": null
+      },
+      {
+       "texto": "3) Considerando que o Tribunal informou que os precatórios apresentados até 1° de julho são atualizados por critérios genéricos antes da requisição ao ente público devedor, recomenda-se que todos os ofícios precatórios apresentados ao Regional PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO até 1° de julho sejam devidamente atualizados antes da comunicação ao ente devedor ou ao Tribunal de Justiça, em 20 de julho, nos termos do art. 15, §1°, I e III, da Resolução CNJ n° 303/2019.",
+       "tema": null
+      },
+      {
+       "texto": "4) Considerando que o Tribunal informou que os ofícios precatórios não são elaborados individualmente, por beneficiário, recomenda-se a adoção das medidas necessárias para que haja a expedição de ofícios precatórios de modo individualizado, nos termos do art. 7° da Resolução CNJ n° 303/2019.",
+       "tema": null
+      },
+      {
+       "texto": "5) Considerando que o Tribunal não inscreve os entes públicos inadimplentes no Banco Nacional de Devedores Trabalhistas, recomenda-se que o faça, nos exatos termos da Resolução Administrativa TST n° 1470, de 24 de agosto de 2011.",
+       "tema": null
+      },
+      {
+       "texto": "6) Considerando que a partir dos links de consulta do site do Tribunal são identificáveis os beneficiários de precatórios, o que põe em risco o direito à intimidade e, ainda, que informações como aportes financeiros das entidades e entes devedores, planos de pagamento, saldo das contas especiais, lista de ordem cronológica do regime especial, lista de pagamento superpreferencial e lista de pagamentos realizados não constam do portal, recomenda-se a adoção das medidas necessárias para que: a) não conste do sítio eletrônico do Tribunal qualquer informação que permita a identificação dos beneficiários dos precatórios e RPVs, de modo a resguardar a sua intimidade assegurada pelo art. 5°, X, da Constituição Federal, na forma do art. 12, §3°, da Resolução CNJ n° 303/2019; b) sejam disponibilizadas no site do Tribunal todas as informações faltantes, nos termos do art. 82 da Resolução CNJ n° 303/2019.",
+       "tema": null
+      },
+      {
+       "texto": "7) Considerando que o Tribunal não possui informações quanto aos valores pagos de parcelas superpreferenciais, recomenda-se a elaboração, com urgência, de uma lista das referidas parcelas, devendo constar valores a serem pagos e valores já quitados, reiterando a necessidade de sua devida publicação no portal eletrônico.",
+       "tema": null
+      },
+      {
+       "texto": "8) Considerando a quantidade e o valor expressivo dos precatórios vencidos, recomenda-se que se envidem esforços para a realização de audiências de conciliação e a concretização de acordos com os entes públicos inadimplentes, mormente no Regime Comum, de modo a se encontrar uma solução que possibilite a quitação desses precatórios em atraso.",
+       "tema": null
+      },
+      {
+       "texto": "9) Considerando as decisões dos PPs CNJ n° 0002405-38.2020.2.00.0000 e 0003200- 78.2019.2.00.0000, no sentido de que cabe exclusivamente ao TJMG receber os repasses dos entes submetidos ao regime especial, e a informação ora prestada pelo TRT3 de que o Município de Iguatama, embora inserido no regime especial de pagamento de precatórios, ainda transfere os valores devidos diretamente ao TRT3, o que viola as decisões referidas, o disposto no art. 101 do ADCT e o art. 55 PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO da Resolução CNJ nº 303/2019, recomenda-se que o Tribunal ajuste com o TJMG que o repasse dos recursos financeiros do Município de Iguatama seja feito perante aquele Tribunal de Justiça, informando a esta Corregedoria-Geral quanto a esta providência no prazo de 60 dias a contar desta data.",
+       "tema": null
+      },
+      {
+       "texto": "10) Considerando que no período entre 2019 e 2021 (até 28/2) foi realizada apenas uma reunião do Comitê Gestor das Contas Especiais; que o Tribunal não apresentou calendário de reuniões para o presente ano, reitera-se a recomendação da Correição havida em maio de 2019 para: a) definir, em conjunto com o Tribunal de Justiça, novo cronograma de reuniões periódicas do Comitê Gestor das Contas Especiais, com a sua efetiva retomada; e b) adotar procedimento que lhe permita ter meios próprios de acompanhar a situação de cada ente público que apresenta precatório a pagar no regime especial junto ao Tribunal de Justiça, de modo que o fluxo destas informações se dê de modo continuado.",
+       "tema": null
+      },
+      {
+       "texto": "11) Considerando as inconsistências dos dados extraídos a partir do sistema e-Gestão em relação aos precatórios e às RPVs, que se mostram diversos daqueles apurados pelo TRT3 a partir de seus sistemas de controle interno, recomenda-se a adoção das medidas necessárias para que haja efetivo controle e alinhamento estatístico entre os sistemas, especialmente o sistema GPrec e o e-Gestão, dentre elas a submissão de forma periódica dos usuários a cursos específicos quanto à correta alimentação de lançamento de dados no(s) sistema(s) para o adequado controle da movimentação dos precatórios e RPVs em sua completude. RECOMENDAÇÃO CONJUNTA À PRESIDÊNCIA E À CORREGEDORIA REGIONAL",
+       "tema": null
+      },
+      {
+       "texto": "1) Considerando que é prerrogativa do advogado o acesso ao magistrado e por ele ser recebido em seu gabinete (art. 7º, VIII, da Lei nº 8.906/94), bem assim a apuração de que há desembargadores e juízes de 1º grau do Tribunal Regional do Trabalho da 3ª Região que não estão atendendo advogados, recomenda-se à Presidência e à Corregedoria Regional a adoção de esforços no sentido de que haja o devido atendimento dos advogados, a qualquer momento, durante o expediente forense. Por conta do atual período de pandemia por COVID-19, recomenda-se que a audiência com o magistrado se realize mediante videoconferência, obedecendo a sua agenda, com estipulação de horário suficiente a prestigiar e garantir o diálogo PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO direto entre o magistrado e as partes ou seus patronos, na forma da Recomendação CNJ n.º 70/2020.",
+       "tema": "CORREGEDORIA REGIONAL"
+      }
+     ]
+    },
+    {
+     "destinatario": "À CORREGEDORIA REGIONAL",
+     "itens": [
+      {
+       "texto": "1) Considerando o não cumprimento do Índice de Processos Julgados (IPJ) e do Índice de Processos Antigos Julgados (IPA) em 2020, recomenda-se, portanto, a elevação dos esforços no sentido de aumentar o número de processos julgados, tendo em vista que ambas as metas permanecem na Estratégia Nacional do Poder Judiciário 2021-2026.",
+       "tema": null
+      },
+      {
+       "texto": "2) Considerando o baixo percentual de sentenças líquidas proferidas nos três anos analisados, reitera-se a recomendação anterior para que se envidem esforços no sentido de incentivar os magistrados a prolatar sentenças líquidas (inclusive mediante uso do PJe-Calc), bem como para promover, na medida do possível, o fornecimento dos meios e ferramentas necessários ao incremento da celeridade e produtividade dos magistrados nos processos em fase de liquidação.",
+       "tema": null
+      },
+      {
+       "texto": "3) Considerando que a média de resíduos na fase de execução vem aumentando, significativa e gradativamente, nos três anos analisados; e considerando, ainda, que os resultados exibidos demonstraram-se superiores quando comparados à média nacional, especialmente nos anos de 2020 e 2021, reitera-se a recomendação anterior para que se intensifiquem os esforços empreendidos junto às Varas do Trabalho, de modo a oferecer meios e ferramentas que promovam a diminuição do resíduo processual na fase de execução.",
+       "tema": null
+      },
+      {
+       "texto": "4) Considerando que o prazo médio na execução apresentou índices superiores quando comparado aos tribunais congêneres (em 2020) e à média no País (em 2019 e 2020), recomenda-se envidar esforços quanto à adoção de medidas necessárias para reduzir o prazo médio entre o início e o encerramento da execução.",
+       "tema": null
+      },
+      {
+       "texto": "5) Considerando o elevado número de processos que estão aguardando encerramento de instrução em algumas Varas do Trabalho, recomenda-se que se adotem providências no sentido de solicitar plano de ação aos juízes deste Tribunal, a fim de dar prosseguimento aos referidos processos.",
+       "tema": null
+      },
+      {
+       "texto": "6) Considerando a falta de controle do TRT3 quanto aos dados de RPVs do Estado e dos Municípios, reitera-se a recomendação da Correição havida em maio de 2019 PODER JUDICIÁRIO JUSTIÇA DO TRABALHO TRIBUNAL SUPERIOR DO TRABALHO CORREGEDORIA-GERAL DA JUSTIÇA DO TRABALHO para que que o Tribunal adote mecanismos de efetivo controle em relação à expedição e processamento das RPVs pelas Varas do Trabalho.",
+       "tema": null
+      },
+      {
+       "texto": "7) Considerando que o Provimento CR nº 2/2007 não estabelece critérios objetivos para a obtenção, pelo juiz titular de Vara do Trabalho, de autorização para residir fora da sede da respectiva jurisdição, recomenda-se a adequação do referido Provimento ao disposto no art. 19 da Consolidação dos Provimentos da Corregedoria-Geral da Justiça do Trabalho.",
+       "tema": null
+      },
+      {
+       "texto": "8) Considerando a existência de magistrados com saldo de férias vencidas superior a 60 dias, prática que não se coaduna com o disposto na Resolução CSJT nº 253/2019, recomenda-se que seja solicitado aos juízes de primeiro grau a apresentação de um cronograma de fruição dos períodos de férias vencidas, como também que condicione o deferimento do novo período de férias ao gozo integral dos períodos de férias vencidas.",
+       "tema": null
+      },
+      {
+       "texto": "9) Considerando a informação trazida em audiência pública pelos advogados de que há dificuldade na liberação de alvarás pela Caixa Econômica Federal, bem como a existência de decisão em Pedido de Providência no Tribunal Regional (PP- 176.17.2021.2.00.0503) determinando a liberação de alguns alvarás em semelhante situação relatada, recomenda-se à Corregedoria do Tribunal Regional que envide esforços a fim de solucionar o impasse. Determino que o Tribunal Regional do Trabalho informe nos autos do processo PJeCor TST – CorOrd 0000052-77.2020.2.00.0500, as medidas adotadas em relação ao cumprimento das Recomendações constantes na presente Correição Ordinária.",
+       "tema": null
+      }
+     ]
+    }
+   ],
+   "totalRecomendacoes": 40
+  },
+  {
+   "ano": 2022,
+   "paginas": 377,
+   "digitalizado": false,
+   "ocrEmbutido": false,
+   "recomendacoes": [
+    {
+     "destinatario": "AO TRIBUNAL",
+     "itens": [
+      {
+       "texto": "1) Considerando as divergências entre os quantitativos de pessoal apresentados pelo Tribunal e os que constam no e-Gestão, recomenda-se que o Comitê Gestor Regional do Sistema e-Gestão providencie a criação de um Grupo de Trabalho formado por representantes dos setores específicos nos quais a divergência estatística é presente, para que, revisando as rotinas diárias de trabalho, busque identificar os motivos das inconsistências e apresente as soluções para o problema, informando à CGJT, no prazo de 90 dias, o andamento da referida demanda.",
+       "tema": "ITEM 1 – ESTRUTURA JUDICIAL E ADMINISTRATIVA"
+      },
+      {
+       "texto": "2) Considerando que a Resolução CNJ nº 371/2021 revogou as disposições da Resolução CNJ nº 227/2016 que vedavam o teletrabalho para os servidores em estágio probatório e para aqueles que atuam como diretor, secretário, chefe de núcleo, chefe de gabinete de apoio e chefe de seção; e, tendo em vista que a IN CONJUNTA GP/GCR/GVCR nº 78/2022 prevê semelhantes vedações, recomenda-se que o Tribunal providencie a revisão da sua norma interna, a fim de contemplar em seu texto a possibilidade de teletrabalho para servidores que já tenham passado pelo primeiro ano de estágio probatório e para os que ocupem cargo de direção ou chefia, adequando-se, por conseguinte, ao disposto na Resolução CNJ nº 371/2021.",
+       "tema": null
+      },
+      {
+       "texto": "3) Considerando que o Tribunal ainda não instituiu o plano se segurança orgânica, proteção e assistência de juízes em situação de risco ou ameaçados, reitera-se a recomendação anterior no sentido de que o TRT3 providencie a concretização do referido plano de segurança, em atendimento à Resolução CNJ nº 435/2021.",
+       "tema": null
+      },
+      {
+       "texto": "4) Considerando que o Tribunal ainda não instituiu o núcleo de inteligência, reitera-se a recomendação anterior no sentido de que o TRT3 providencie a instituição da referida unidade, em atendimento à Resolução CNJ nº 435/2021.",
+       "tema": null
+      },
+      {
+       "texto": "5) Considerando que o Tribunal não possui circuito fechado de televisão (CFTV) para monitoramento eletrônico das instalações e áreas subjacentes, bem como ainda não instalou catracas nem equipamentos de raio X, recomenda-se que o Tribunal providencie a instalação desses equipamentos pendentes, a fim de se adequar ao disposto no art. 14, III, IV e V, da Resolução CNJ nº 435/2021, que determinam a adoção de tais medidas de segurança pelos tribunais.",
+       "tema": null
+      }
+     ]
+    },
+    {
+     "destinatario": "CONJUNTAS AO TRIBUNAL E À PRESIDÊNCIA",
+     "itens": [
+      {
+       "texto": "1) Considerando o disposto no § 2º do art. 174 da Consolidação dos Provimentos da Corregedoria-Geral da Justiça do Trabalho, que orienta sobre a necessidade da realização de reuniões mensais do Comitê Gestor Regional do Sistema e-Gestão, recomenda-se ao Tribunal Regional que retome a realização das reuniões nos moldes determinados na referida Consolidação dos Provimentos. Recomenda-se, ainda, que o Comitê identifique e trabalhe as causas das discrepâncias estatísticas encontradas no sistema e-Gestão e providencie a criação de um Grupo de Trabalho formado por representantes dos setores específicos nos quais a divergência estatística é presente, para que, revisando as rotinas diárias de trabalho, busque identificar os motivos das inconsistências e apresente as soluções para o problema, informando à CGJT, no prazo de 90 dias, o andamento da referida demanda.",
+       "tema": "ITEM 2 – TECNOLOGIA DA INFORMAÇÃO E COMUNICAÇÃO"
+      },
+      {
+       "texto": "2) Considerando a necessidade de se observarem as diretrizes relacionadas às políticas de Tecnologia da Informação, recomenda-se que o Tribunal Regional observe os itens da Resolução CNJ nº 370 que ainda não puderam ser cumpridos, de modo a promover a sua integral realização. ITEM 5 – CONCILIAÇÃO",
+       "tema": null
+      },
+      {
+       "texto": "3) Considerando que o art. 5° da Resolução CSJT n° 288/2021 dispõe que para a escolha do coordenador do NUPEMEC devem ser atendidos os requisitos das alíneas “a”, “b” e “c” do inciso IV do art. 4º da mesma Resolução, recomenda-se a revisão da Resolução GP n° 81/2017, a fim de contemplar em seu texto a previsão dos requisitos a serem cumpridos pelo interessado no aludido cargo.",
+       "tema": "ITEM 5 – CONCILIAÇÃO"
+      },
+      {
+       "texto": "4) Considerando que a Resolução GP n° 81/2017 não contém previsão a respeito do cargo de coordenador do CEJUSC de 2° Grau, e que efetivamente não há magistrado exercendo esse mister, recomenda-se a adequação da referida resolução, a fim de que nela haja previsão para a ocupação do referido cargo, devendo o Tribunal proceder à efetiva designação do desembargador coordenador do CEJUSC de 2° Grau, observado o disposto nos incisos V e VII do art. 4° da Resolução CSJT n° 288/2021.",
+       "tema": null
+      },
+      {
+       "texto": "5) Considerando que a Resolução GP n° 81/2017 não contém previsão acerca dos critérios para a escolha dos magistrados coordenadores e supervisores dos CEJUSCs de 1º e de 2° Graus, como exigido no art. 4°, incisos IV e V, da Resolução CSJT n° 288/2021, recomenda-se a adequação da norma interna do Tribunal ao disposto nos mencionados incisos.",
+       "tema": null
+      },
+      {
+       "texto": "6) Considerando que a Resolução Administrativa n° 81/2017 não contém disposição a respeito do período para designação dos cargos de coordenador e supervisor dos CEJUSCs de 1° e 2° Graus, como exigido no art. 4°, incisos VI e VII, da Resolução CSJT n° 288/2021, recomenda-se a adequação da norma interna do Tribunal ao disposto nos mencionados incisos.",
+       "tema": null
+      }
+     ]
+    },
+    {
+     "destinatario": "À PRESIDÊNCIA",
+     "itens": [
+      {
+       "texto": "1) Considerando o não cumprimento do Índice de Processos Julgados (IPJ) do 2º grau em 2021, reitera-se a recomendação no sentido da elevação dos esforços para aumentar o número de processos julgados, tendo em vista que a meta permanece na Estratégia Nacional do Poder Judiciário no ciclo de 2021-2026. ITEM 15 – QUESTIONÁRIO POR GABINETE",
+       "tema": "ITEM 3 – METAS JUDICIÁRIAS"
+      },
+      {
+       "texto": "2) Considerando que a Instrução Normativa GP/DG nº 9/2013 e a Portaria GP nº 14/2010 do TRT3 não contemplam integralmente o regime de compensação de horário, reitera-se a recomendação no sentido de aprimorá-las para prever a instituição de banco de horas, em consonância com a Resolução CSJT nº 204/2017. ITEM 16 – ÁREA ADMINISTRATIVA E CONTRATOS",
+       "tema": "ITEM 15 – QUESTIONÁRIO POR GABINETE"
+      },
+      {
+       "texto": "3) Considerando a existência de desembargadores com saldo de férias vencidas superior a 60 (sessenta) dias, prática que não se coaduna com a Resolução CSJT nº 253/2019, reitera-se a recomendação no sentido de reduzir o acúmulo de férias dos magistrados de segundo grau. RECOMENDAÇÕES À VICE-PRESIDÊNCIA (FUNÇÃO DELEGADA) ITEM 7 – RESPONSABILIDADE INSTITUCIONAL",
+       "tema": "ITEM 16 – ÁREA ADMINISTRATIVA E CONTRATOS"
+      },
+      {
+       "texto": "1) Considerando o baixo percentual de admissibilidade de recursos de revista nos períodos examinados, associado à alta taxa de reforma dos Agravos de Instrumento pelo TST, reitera-se a recomendação anterior de que o Tribunal Regional realize estudos voltados à revisão dos critérios atualmente adotados para a admissibilidade dos recursos de revista, a fim de adequar os critérios de admissibilidade de recursos de revista à jurisprudência da Corte Superior. ITEM 8 – PRECATÓRIOS E RPVs 2) Considerando que os pagamentos de precatórios ainda estão sendo realizados pelas varas do trabalho mediante repasses de valores pelo Tribunal, contrariando a decisão do CSJT nos autos do PP-2451-75.2020.5.90.0000, bem como os arts. 24, 50 e 55 da Resolução CSJT nº 314/2021, que estabelecem que o pagamento deverá ser feito pela presidência, i.e., o órgão gestor dos precatórios em 2º grau, e considerando também que o TRT3 não está autuando em autos apartados no 2º grau os ofícios precatórios na classe 1265 “Precatório”, bem como as requisições de pequeno valor federais na classe 1266 “Requisição de Pequeno Valor”, nos termos do art. 9º da Resolução CSJT nº 314/2021, recomenda-se: a) que os pagamentos dos créditos relacionados aos precatórios sejam realizados pela 2ª Vice-Presidência diretamente aos credores por meio de ordens eletrônicas de transferência nas contas bancárias indicadas por eles; b) que o Tribunal proceda a autuação em autos apartados no 2º grau dos ofícios precatórios, bem como as requisições de pequeno valor federais, nos termos do art. 9º, §§ 1º e 2º da Resolução CSJT nº 314/2021.",
+       "tema": "ITEM 7 – RESPONSABILIDADE INSTITUCIONAL"
+      },
+      {
+       "texto": "3) Considerando que nos termos das disposições expressas do art. 100, §§ 5º e 6º, da Constituição Federal, o Tribunal Regional tem a obrigação de requisitar todos os ofícios precatórios apresentados até 2 de abril, fato que não ocorreu em 2022, recomenda-se que referida requisição seja realizada sempre de maneira prioritária.",
+       "tema": null
+      },
+      {
+       "texto": "4) Considerando que o Tribunal ainda não disponibiliza no seu sítio eletrônico todas as informações referidas pelo art. 82 da Resolução CNJ n. 303/2019 e art. 61 da Resolução CSJT n. 314/2021, reitera-se a recomendação para que o Tribunal passe a disponibilizar tais informações, consoante destacado no item 8.5 da presente ata.",
+       "tema": null
+      },
+      {
+       "texto": "5) Considerando que o TRT3 não realiza a inscrição dos entes públicos do regime especial no BNDT, e as disposições dos art. 12, II, do ATO CGJT Nº 01/2022 e 45, caput, da Resolução CSJT nº 314/2021, que impõe a obrigatoriedade dos Tribunais Regionais do Trabalho de realizar a inscrição dos devedores com atraso nos repasses ao Tribunal de Justiça, independentemente da gestão do regime especial ser realizada pelas cortes estaduais, reitera-se a recomendação ao Tribunal que efetue a inscrição de todos os entes públicos integrantes do regime especial que se encontrem com repasses mensais em atraso no BNDT, a fim de atender ao comando das aludidas normas.",
+       "tema": null
+      },
+      {
+       "texto": "6) Considerando a existência de discrepâncias relevantes dos dados estatísticos relativos aos precatórios e RPVs apuradas entre as informações do Tribunal e as obtidas a partir do sistema e-Gestão, bem como a ausência de informações como as relacionadas aos pagamentos superpreferenciais, reitera-se a recomendação da Correição Ordinária anterior para que o Tribunal promova o alinhamento estatístico dos dados relativos aos precatórios e às RPV entre o sistema e-Gestão e os dados informados pelo Tribunal Regional. RECOMENDAÇÃO CONJUNTA À PRESIDÊNCIA E À CORREGEDORIA REGIONAL ITEM 11 – RELACIONAMENTO MPT E OAB",
+       "tema": null
+      },
+      {
+       "texto": "1) Considerando que a Portaria Conjunta GP/GCR/GVCR nº 95/2022 facultou aos magistrados a realização de audiências de forma telepresencial, semipresencial ou presencial, em flagrante afronta à LOMAN e aos normativos que regulam a matéria, recomenda-se ao TRT3 a adequação dos dispositivos de sua Portaria Conjunta GP/GCR/GVCR nº 95/2022, de modo a garantir que a audiência mista ou semipresencial seja realizada com a finalidade de garantir o acesso aos excluídos digitais, nos termos da Recomendação CNJ nº 101/2021, desde que evidenciado o agravamento dos casos de Covid-19, ou, caso mantida a prerrogativa do magistrado na sua realização, seja expressamente consignado que este deverá participar presencialmente, em conjunto com os servidores da unidade judiciária. Recomenda-se, ainda, que a Portaria estabeleça como regra a designação das audiências na modalidade presencial, de modo que o formato telepresencial apenas poderá ser adotado nas hipóteses disciplinadas nos normativos anteriormente mencionados ou em caso de requerimento das partes, observados os critérios de conveniência e oportunidade.",
+       "tema": "ITEM 11 – RELACIONAMENTO MPT E OAB"
+      }
+     ]
+    },
+    {
+     "destinatario": "À CORREGEDORIA REGIONAL",
+     "itens": [
+      {
+       "texto": "1) Considerando o não cumprimento do Índice de Processos Julgados (IPJ) pelo 2º grau em 2021, reitera-se a recomendação apenas no que concerne à segunda instância, no sentido da elevação dos esforços para aumentar o número de processos julgados, tendo em vista que a meta permanece na Estratégia Nacional do Poder Judiciário no ciclo de 2021-2026.",
+       "tema": "ITEM 3 – METAS JUDICIÁRIAS"
+      },
+      {
+       "texto": "2) Considerando o não cumprimento da Meta Nacional 2 pelo 1º grau, recomenda-se à Corregedoria Regional que atue perante os magistrados a fim de que estes aumentem o julgamento de processos antigos, garantindo aos jurisdicionados a duração razoável do processo. ITEM 4 – MOVIMENTAÇÃO PROCESSUAL",
+       "tema": null
+      },
+      {
+       "texto": "1) Considerando o baixo percentual de sentenças líquidas proferidas nos três anos analisados, reitera-se a recomendação da Correição Ordinária anterior para que se envidem esforços no sentido de incentivar os magistrados a prolatar sentenças líquidas (inclusive mediante uso do PJe-Calc), bem como para promover, na medida do possível, o fornecimento dos meios e ferramentas necessários ao incremento da celeridade e produtividade dos magistrados nos processos em fase de liquidação.",
+       "tema": "ITEM 4 – MOVIMENTAÇÃO PROCESSUAL"
+      },
+      {
+       "texto": "2) Considerando que o prazo médio entre o início e o encerramento da execução foi superior à média dos tribunais de mesmo porte (em 2020, 2021 e até março de 2022) e à média no país (em 2020 e 2021), reitera-se a recomendação da Correição Ordinária anterior no sentido de envidar esforços quanto à adoção de medidas necessárias para reduzir o aludido prazo médio. ITEM 9 – PRESIDÊNCIA, CORREGEDORIA E MAGISTRADOS",
+       "tema": null
+      },
+      {
+       "texto": "1) Considerando que há magistrados na 1ª instância com saldo de férias vencidas superior a 60 (sessenta) dias, prática que não se coaduna com a Resolução nº 253/2019 do CSJT, reitera-se a recomendação no sentido de que sejam adotadas medidas efetivas para a redução do passivo de férias.",
+       "tema": "ITEM 9 – PRESIDÊNCIA, CORREGEDORIA E MAGISTRADOS"
+      },
+      {
+       "texto": "2) Considerando que o Provimento CR nº 2/2007 não estabelece critérios objetivos para a obtenção, pelo juiz titular de Vara do Trabalho, de autorização para residir fora da sede da respectiva jurisdição, reitera-se a recomendação de que seja realizada a adequação do referido Provimento ao disposto no art. 19 da Consolidação dos Provimentos da Corregedoria-Geral da Justiça do Trabalho.",
+       "tema": null
+      },
+      {
+       "texto": "3) Considerando que, em consulta à base de dados do Sistema e-Gestão, constatou- se, em 31/03/2022, a existência de processos conclusos para prolação de sentença com prazos vencidos superiores a 90 dias corridos e que, na correição anterior, não constava nenhum processo nessa situação, recomenda-se à Corregedoria Regional que adote as providências necessárias para reduzir a quantidade de processos conclusos nessas condições. Determino, por fim, que o Tribunal Regional do Trabalho da 3ª Região informe nos autos do processo PJeCor TST – CorOrd 0000077-22.2022.2.00.0500, as medidas adotadas em relação ao cumprimento das Recomendações e observações específicas constantes na presente Correição Ordinária, no prazo de 90 (noventa) dias, para nova avaliação. 373",
+       "tema": null
+      }
+     ]
+    }
+   ],
+   "totalRecomendacoes": 27
+  },
+  {
+   "ano": 2024,
+   "paginas": 383,
+   "digitalizado": false,
+   "ocrEmbutido": false,
+   "recomendacoes": [
+    {
+     "destinatario": "AO TRIBUNAL",
+     "itens": [
+      {
+       "texto": "1. Considerando que a Instrução Normativa GP nº 6/2014, do Tribunal Regional do Trabalho da 3ª Região, não traz disciplinamento acerca da necessidade de serem observados os critérios de antiguidade e merecimento, alternadamente, no caso de convocação de juiz de 1º grau para substituição no Tribunal, a revelar desrespeito às diretrizes fixadas pelo Conselho Nacional de Justiça no julgamento do Procedimento de Controle Administrativo (PCA) nº 0005894-98.2011.2.00.0000, bem como não observa a recente Resolução CNJ nº 502/2023, que prevê a possibilidade de convocação de juízes de 1º grau para substituição nos Tribunais em decorrência de férias de desembargador por período igual ou superior a 20 (vinte) dias ou licença por motivos de saúde em período inferior a 30 (trinta) dias, além de ainda considerar, na avaliação das convocações, o critério de adequação da conduta ao Código de Ética da Magistratura Nacional, já revogado por meio da Resolução CNJ nº 426/2021, recomenda-se a revisão do normativo interno da Corte, a fim de se adequar às diretrizes emanadas do citado órgão de controle (ITEM 5 - MAGISTRADOS);",
+       "tema": null
+      },
+      {
+       "texto": "2. Considerando que o Regimento Interno do TRT3 (art. 75), em relação aos critérios utilizados para aferição do merecimento nas promoções e no acesso ao 2º grau, não se encontra alinhado às diretrizes fixadas pela Resolução CNJ nº 106/2010, com as alterações promovidas pelas Resoluções CNJ nº 426/2021, CNJ nº 507/2023 e ENAMAT nº 28/2022, recomenda-se a adoção de providências com vistas à revisão do citado normativo, dissipando as irregularidades apontadas nos itens 5.6 e 9.2 desta ata (ITEM 5 – MAGISTRADOS); RECOMENDAÇÃO CONJUNTA À PRESIDÊNCIA, À VICE-PRESIDÊNCIA E À CORREGEDORIA REGIONAL",
+       "tema": null
+      },
+      {
+       "texto": "3. Considerando que a Instrução Normativa Conjunta GP/GCR/GVCR nº 78/2022, com a redação dada pela Instrução Normativa Conjunta TRT3/GP/GCR/GVCR nº 96/2023, contempla diretriz flagrantemente contrária à decisão proferida pelo Conselho Nacional de Justiça nos autos do Procedimento de Controle Administrativo nº 0002260-11.2022.2.00.0000, recomenda-se que se promova, de imediato, a alteração do citado ato normativo, na parte em que posterga, ao término das autorizações já concedidas, a adequação das unidades administrativas ao percentual máximo de 30% (trinta por cento) de servidores, por unidade, autorizados a atuar em regime de teletrabalho (ITEM 2 – PRESIDÊNCIA); RECOMENDAÇÃO CONJUNTA À PRESIDÊNCIA E À CORREGEDORIA REGIONAL",
+       "tema": "RECOMENDAÇÃO CONJUNTA À PRESIDÊNCIA, À VICE-PRESIDÊNCIA E À CORREGEDORIA REGIONAL"
+      },
+      {
+       "texto": "4. Considerando que o juiz do trabalho substituto nominado no item 5.3 desta ata, que atua na condição de auxiliar fixo, possui residência fora da localidade em que sediada a unidade jurisdicional de atuação, sendo que a autorização anterior foi concedida à época em que o magistrado integrava o quadro de reserva técnica, circunstância diversa da sua atual lotação, recomenda-se a imediata regularização dessa situação, com posterior submissão do pleito, se ainda for de seu interesse, à apreciação do Tribunal Pleno, nos termos da Instrução Normativa Conjunta GP/GCR nº 1/2024 e do art. 17 da Consolidação dos Provimentos da Corregedoria-Geral da Justiça do Trabalho (ITEM 5 - MAGISTRADOS);",
+       "tema": "RECOMENDAÇÃO CONJUNTA À PRESIDÊNCIA E À CORREGEDORIA REGIONAL"
+      }
+     ]
+    },
+    {
+     "destinatario": "À PRESIDÊNCIA",
+     "itens": [
+      {
+       "texto": "5. Considerando que 9 (nove) Desembargadores do Tribunal ainda apresentam acúmulo injustificado de férias por período superior a 60 (sessenta) dias, em flagrante contrariedade ao disposto no art. 5º, caput, da Resolução CSJT nº 253/2019, recomenda-se a manutenção dos esforços empreendidos até então, enquanto não solucionado o problema, além do constante monitoramento das férias vencidas dos Desembargadores (ITEM 2 – PRESIDÊNCIA);",
+       "tema": null
+      },
+      {
+       "texto": "6. Considerando que 4 (quatro) Desembargadores apresentam processos com prazos expirados há mais de 90 (noventa dias), superando o limite fixado pelo CSJT no PCA nº 57-61.2021.5.90.0000, recomenda-se a continuidade dos esforços empreendidos no âmbito do 2º grau de jurisdição, a fim de garantir que esse resíduo seja debelado o mais rapidamente possível, sem prejuízo da adoção das providências previstas na Resolução CNJ nº 135/2011, se necessário (ITEM 4 – DESEMBARGADORES);",
+       "tema": null
+      },
+      {
+       "texto": "7. Considerando a ampliação do quadro de lotação da Secretaria de Precatórios, com a criação de mais 4 (quatro) vagas para servidores (art. 14 da Resolução GP nº 263/2022), porém ainda sem preenchimento, e que, em diversos momentos, o Tribunal justificou o descumprimento das normas de regência no particular devido ao déficit de servidores, recomenda-se seja estabelecida prioridade no preenchimento desses claros de lotação, sem prejuízo de, dentro da sua autonomia administrativa, promover o Tribunal novo redimensionamento do quadro, se assim entender adequado (ITEM 15 – PRECATÓRIOS E REQUISIÇÕES DE PEQUENO VALOR);",
+       "tema": null
+      },
+      {
+       "texto": "8. Considerando que o resultado da classificação de sistemas/serviços estratégicos define um critério objetivo de priorização, tanto para orientar investimentos na infraestrutura que os suportam, como para resolver incidentes e problemas que impactem a jurisdição, além de também contribuir para a formulação de Planos de Continuidade de Negócio mais sólidos e consistentes, recomenda- se que sejam envidados esforços para classificar os sistemas/serviços críticos/estratégicos, independentemente de o Tribunal desenvolver sistemas com recursos próprios ou por meio de empresas contratadas (ITEM 19 – TECNOLOGIA DA INFORMAÇÃO E COMUNICAÇÃO);",
+       "tema": null
+      },
+      {
+       "texto": "9. Considerando que alguns Desembargadores da Corte não atendem pessoalmente os advogados, seja presencialmente ou por meio de videoconferência, notadamente para entrega de memoriais, conforme relatado em audiência pública realizada com a advocacia local, recomenda-se à Presidência que procure sensibilizar tais magistrados acerca da importância de serem respeitadas as prerrogativas da advocacia (ITEM 21 – RELACIONAMENTO OAB);",
+       "tema": null
+      },
+      {
+       "texto": "10. Considerando o parcial atendimento da Resolução CNJ nº 401/2021, especialmente no tocante à falta de instalação de piso tátil direcional e de alerta e de sinalização sonora, visual e tátil na maioria de seus imóveis, recomenda-se a adoção das providências necessárias à contratação das estruturas de acessibilidade voltadas ao pleno acesso das pessoas com mobilidade reduzida a todas as unidades do TRT3 (ITEM 23 - POLÍTICAS AFIRMATIVAS); RECOMENDAÇÕES À",
+       "tema": null
+      },
+      {
+       "texto": "11. Considerando a existência 17.598 (dezessete mil quinhentos e noventa e oito) Recursos de Revista pendentes de juízo de admissibilidade em 31 de dezembro 2023, representando o 2º maior quantitativo do País, recomenda-se à 1ª Vice-Presidência do Tribunal que empenhe esforços voltados à redução do número de Recursos de Revista pendentes de juízo de admissibilidade (ITEM 12 – ADMISSIBILIDADE DO RECURSO DE REVISTA);",
+       "tema": "RECOMENDAÇÕES À 1ª VICE-PRESIDÊNCIA"
+      },
+      {
+       "texto": "12. Considerando que o Tribunal Regional registrou um elevado prazo médio para a prolação da decisão de admissibilidade dos Recursos de Revista nos anos de 2022 e 2023, tanto em relação ao prazo da chegada do processo no órgão competente até a decisão de admissibilidade, como no tocante ao prazo da conclusão até a admissibilidade, recomenda-se a concentração de esforços visando à redução do tempo médio de duração do processo na Secretaria de Recursos de Revista (ITEM 12 – ADMISSIBILIDADE DO RECURSO DE REVISTA); RECOMENDAÇÕES À",
+       "tema": null
+      },
+      {
+       "texto": "13. Considerando a reduzida quantidade de cursos voltados à efetividade da execução, recomenda-se a promoção de mais cursos relacionados a essa temática, bem assim o incentivo à participação de servidores e magistrados, visando à capacitação contínua nesse importante tema (ITEM 11 – EFETIVIDADE DA EXECUÇÃO);",
+       "tema": "RECOMENDAÇÕES À 2ª VICE-PRESIDÊNCIA"
+      },
+      {
+       "texto": "14. Considerando que o TRT3 não possui Juízo Auxiliar de Precatórios e que tampouco há magistrado auxiliando na gestão de Precatórios e RPVs, recomenda-se a instituição do Juízo Auxiliar de Conciliação de Precatórios e a convocação de magistrado para auxiliar na gestão de precatórios e RPVs, conforme Recomendação CNJ nº 39/2012 (art. 1º, I) e arts. 58 e 59 da Resolução CSJT nº 314/2021 (ITEM 15 – PRECATÓRIOS E REQUISIÇÕES DE PEQUENO VALOR);",
+       "tema": null
+      },
+      {
+       "texto": "15. Considerando a apuração de que o prazo para liberação de recursos para pagamento dos credores extrapola, em alguns casos, 60 (sessenta) dias, recomenda-se a efetiva redução desse prazo de pagamento, a fim de que haja completa adequação ao disposto nos arts. 24, § 2º, e 50, § 2º, da Resolução CSJT nº 314/2021 (ITEM 15 – PRECATÓRIOS E REQUISIÇÕES DE PEQUENO VALOR);",
+       "tema": null
+      },
+      {
+       "texto": "16. Considerando que no Precatório nº 01486/2019, a despeito de haver 2.961 (dois mil novecentos e sessenta e um) beneficiários/substituídos, o TRT3 conferiu tratamento ao crédito como se fosse único e titularizado pelo substituto processual, inclusive com o pagamento de valores diretamente a este último, recomenda-se: (a) individualizar todos os precatórios expedidos e ainda não quitados, com a consequente formação de lista de ordem cronológica, segundo os critérios vigentes; (b) devolver ao Juízo da Execução todas as requisições de pagamento de beneficiários com créditos inferiores àquele definido em lei como de pequeno valor, observados eventuais pagamentos realizados anteriormente, para satisfação desses créditos via expedição de RPV; (c) observar a regularidade da situação cadastral e processual de cada um dos beneficiários, consoante art. 18 da Resolução CSJT nº 314/2021; (d) averiguar os beneficiários que tenham créditos superpreferenciais a receber, procedendo ao seu pagamento na forma regulamentar; (e) pagar exclusivamente aos beneficiários, de modo direto, ou a seu procurador regularmente constituído, nos termos dos arts. 24, § 1º, e 50, § 1º, da Resolução CSJT nº 314/2021; e, (f) em tendo havido liberação de valores ao substituto processual, como no caso do Precatório nº 01486/2019 – processo nº 0001004-85.2010.5.03.0140, aferir o efetivo pagamento de cada beneficiário/substituído (ITEM 15 – PRECATÓRIOS E REQUISIÇÕES DE PEQUENO VALOR);",
+       "tema": null
+      },
+      {
+       "texto": "17. Considerando que a 2ª Vice-Presidência acolheu pedido de renúncia de valores excedentes ao teto das RPVs formulada por credor, e que procedeu ao pagamento das RPVs utilizando verba destinada ao pagamento de precatórios do regime especial, recomenda-se ao TRT3 que, em caso de renúncia de valores após a expedição do precatório, sejam observados os estritos termos do art. 16 da Resolução CSJT nº 314/2021, com o encaminhamento da renúncia para análise do Juízo da Execução, que, acolhendo-a, deverá promover o cancelamento do precatório e a expedição de RPV diretamente ao devedor (ITEM 15 – PRECATÓRIOS E REQUISIÇÕES DE PEQUENO VALOR);",
+       "tema": null
+      },
+      {
+       "texto": "18. Considerando que o ajuste encetado entre o TRT3 e o Município de Araguari – sujeito ao regime comum –, prevendo repasse mensal de valores, é insuficiente e tem implicado em crescimento exponencial da dívida do município, recomenda-se a adequação do ajuste aos termos do art. 36 da Resolução CSJT nº 314/2021, ou sua eventual denúncia (ITEM 15 – PRECATÓRIOS E REQUISIÇÕES DE PEQUENO VALOR);",
+       "tema": null
+      },
+      {
+       "texto": "19. Considerando que a análise das informações prestadas revelou baixa participação dos magistrados nos eventos promovidos pela Escola Judicial e que a média semestral de capacitação de 30 horas- aula recomendada pela ENAMAT não foi alcançada no período apurado, recomenda-se a adoção de medidas com o intuito de estimular a participação dos magistrados em eventos de capacitação, incluindo cursos promovidos por outras escolas judiciais, a fim de atender à recomendação da ENAMAT constante na Resolução nº 28/2022 (ITEM 18 – ESCOLA JUDICIAL);",
+       "tema": null
+      }
+     ]
+    },
+    {
+     "destinatario": "À CORREGEDORIA REGIONAL",
+     "itens": [
+      {
+       "texto": "20. Considerando que, em 4/2/2024, havia 23 (vinte e três) processos conclusos para prolação de sentença com prazos vencidos superiores a 60 (sessenta) dias, recomenda-se que sejam adotadas providências visando à pronta regularização dessas pendências processuais, à luz da disciplina contida na Resolução CNJ nº 135/2011 e no art. 31 da Consolidação dos Provimentos da Corregedoria-Geral da Justiça do Trabalho (ITEM 5 – MAGISTRADOS);",
+       "tema": null
+      },
+      {
+       "texto": "21. Considerando que não houve, no Núcleo de Pesquisa Patrimonial (NPP) e no Núcleo de Apoio às Execuções (NAE), audiências realizadas, acordos homologados, leilões e bloqueios de numerário em contas bancárias, nas 11ª e 12ª edições das Semanas de Execução Trabalhista, referentes aos anos de 2021 e 2022, e que durante a 13ª Semana Nacional de Execução Trabalhista, ocorrida em 2023, foram realizados apenas 1 (uma) audiência e 1 (um) acordo, recomenda-se a adoção das medidas necessárias com o intuito de promover maior envolvimento dos referidos setores nas Semanas de Execução e, com isso, possibilitar a concretização do direito judicialmente reconhecido (ITEM 11 – EFETIVIDADE DA EXECUÇÃO);",
+       "tema": null
+      },
+      {
+       "texto": "22. Considerando o elevado número de Requisições de Pequeno Valor em trâmite no 1º grau de jurisdição com registro de “vencidas”, o que provavelmente decorre da ausência de registro ou de registro incorreto no sistema, recomenda-se à Corregedoria Regional que oriente e fiscalize o correto lançamento das requisições pagas no sistema GPrec e apure as requisições efetivamente vencidas, orientando e fiscalizando a adoção das providências executórias pelas Varas do Trabalho para que, no prazo máximo de 30 (trinta) dias, a contar do seu vencimento, seja assegurado o pagamento ao beneficiário (ITEM 15 - PRECATÓRIOS E REQUISIÇÕES DE PEQUENO VALOR);",
+       "tema": null
+      },
+      {
+       "texto": "23. Considerando as inconsistências apontadas no item 16.1.4 desta ata, relativamente aos magistrados do 1º grau de jurisdição com autorização para teletrabalho, recomenda-se à Corregedoria Regional a imediata regularização dos respectivos processos administrativos autuados para tal finalidade, à luz do regramento contido na Resolução CNJ nº 343/2020 (ITEM 16 – RETORNO DAS ATIVIDADES PRESENCIAIS);",
+       "tema": null
+      },
+      {
+       "texto": "24. Considerando a enorme disparidade havida na marcação de audiências presenciais nas Varas do Trabalho da Capital, conforme anotado no item 16.1.3 desta ata, bem como os fatos relatados pela advocacia local em audiência pública, recomenda-se à Corregedoria Regional que promova os estudos necessários visando a melhor solução para a realização de audiências de instrução no formato presencial, levando-se em conta o interesse das partes litigantes e as condições precárias do edifício sede do fórum Trabalhista de Belo Horizonte (ITEM 16 – RETORNO DAS ATIVIDADES PRESENCIAIS); e 25. Considerando a baixa execução do Projeto Garimpo no âmbito do Tribunal, com valores efetivamente liberados aos beneficiários que correspondem a apenas 14,5% do montante apurado, relativos a processos arquivados até 14/2/2019, bem como o baixo valor recolhido em conta única, à disposição da Corregedoria Regional, em atenção ao Ato GCGJT nº 21/2022, referente ao tratamento dos processos em que não foi possível identificar os beneficiários dos créditos, recomenda-se a priorização e a concentração de esforços para dar efetividade às orientações contidas no Ato Conjunto CSJT.GP nº 1/2019 e no Ato GCGJT nº 21/2022, notadamente em razão do destacado alcance social desse Projeto (ITEM 17 - PROJETOS EM ANDAMENTO).",
+       "tema": null
+      }
+     ]
+    }
+   ],
+   "totalRecomendacoes": 24
+  }
+ ]
+}
