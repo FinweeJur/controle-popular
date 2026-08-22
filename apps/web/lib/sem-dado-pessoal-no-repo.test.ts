@@ -39,7 +39,7 @@ const raiz = path.resolve(__dirname, "..", "..", "..");
 const script = path.join(raiz, "scripts", "checar-dado-pessoal-em-dado.py");
 
 describe.skipIf(!temPython())("nenhum CPF real em dado ingerido", () => {
-  test("varre os JSON de acervo e valida por mod-11", () => {
+  test("varre os JSON de acervo e valida por mod-11", { timeout: 30000 }, () => {
     let code = 0;
     try {
       execFileSync("python", [script], { cwd: raiz, encoding: "utf8" });

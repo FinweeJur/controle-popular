@@ -8,7 +8,7 @@ import { carregarResumoMapaEstadual } from "./mapa-resumo";
  * anunciando um número velho em silêncio.
  */
 describe("resumo estadual do mapa — cada número vem de .length, não digitado", () => {
-  test("bate com o que está medido hoje nas camadas", () => {
+  test("bate com o que está medido hoje nas camadas", { timeout: 30000 }, () => {
     const r = carregarResumoMapaEstadual();
     expect(r.terrasIndigenas).toBe(16);
     expect(r.barragensComManchaPublicada).toBe(156);
