@@ -164,14 +164,37 @@ const orgaos = catalogo.orgaos.map((o) => ({
   anos: [...new Set(o.relatorios.map((r) => (r.publicadoEm || "").slice(0, 4)).filter(Boolean))].sort(),
 }));
 
+/**
+ * ⚠️ `created_time` DO CATÁLOGO É A DATA DE UPLOAD, NÃO A DA INSPEÇÃO.
+ *
+ * Medido: dez dos treze relatórios do TJMG têm `created_time` em **30/09/2019**
+ * — inclusive o de 2012 e os de 2017. Foi o dia em que o CNJ carregou o acervo
+ * antigo na biblioteca, não o dia em que a equipe entrou no tribunal. A
+ * primeira versão desta página publicou "13 relatórios de 2019 a 2026", que é
+ * falso e parecia perfeitamente plausível.
+ *
+ * O ano da inspeção vem do TÍTULO, que o CNJ escreve com o ano dentro
+ * ("Relatório de Inspeção - TJMG 2023", "Inspeção 2012"). Quando o título não
+ * tem ano, `anoInspecao` fica `null` e a tela mostra "—" — nunca cai para a
+ * data de upload, que reetiquetaria o documento.
+ */
+function anoDoTitulo(titulo: string): number | null {
+  const anos = [...titulo.matchAll(/\b(?:19|20)\d{2}\b/g)].map((m) => Number(m[0]));
+  const plausiveis = anos.filter((a) => a >= 2000 && a <= 2030);
+  return plausiveis.length ? Math.max(...plausiveis) : null;
+}
+
 const relatoriosTjmg = (catalogo.orgaos.find((o) => o.orgao.includes("minas-gerais"))?.relatorios ?? [])
   .map((r) => ({
     titulo: r.titulo,
-    publicadoEm: r.publicadoEm.slice(0, 10),
+    anoInspecao: anoDoTitulo(r.titulo),
+    carregadoEm: r.publicadoEm.slice(0, 10),
     megabytes: Math.round((r.tamanhoBytes / 1e6) * 10) / 10,
     url: r.url,
   }))
-  .sort((a, b) => b.publicadoEm.localeCompare(a.publicadoEm));
+  .sort((a, b) => (b.anoInspecao ?? 0) - (a.anoInspecao ?? 0));
+
+const anosTjmg = relatoriosTjmg.map((r) => r.anoInspecao).filter((a): a is number => a !== null);
 
 const ts = `/**
  * Relatórios de inspeção da Corregedoria Nacional de Justiça (CNJ).
@@ -210,7 +233,12 @@ export interface OrgaoInspecionado {
 
 export interface RelatorioTjmg {
   titulo: string;
-  publicadoEm: string;
+  /** Ano da INSPEÇÃO, lido do título. \`null\` quando o título não traz ano —
+   *  nunca preenchido com a data de upload, que é outra coisa. */
+  anoInspecao: number | null;
+  /** Data em que o CNJ carregou o arquivo na biblioteca. NÃO é a data da
+   *  inspeção: dez dos treze relatórios do TJMG trazem 2019-09-30 aqui. */
+  carregadoEm: string;
   megabytes: number;
   url: string;
 }
@@ -242,6 +270,9 @@ export const COBERTURA_INSPECOES = {
   faixaDeIdsVarrida: ${JSON.stringify(catalogo.faixaDeIdsVarrida)},
   tjmg: {
     relatorios: ${relatoriosTjmg.length},
+    anoMaisAntigo: ${Math.min(...anosTjmg)},
+    anoMaisRecente: ${Math.max(...anosTjmg)},
+    secoesSemTextoLegivel: ${tjmg2026.secoesComConteudo - linhas.length},
     paginas2026: ${tjmg2026.paginas},
     processoCnj: ${JSON.stringify(tjmg2026.relatorio.processoCnj)},
     portaria: ${JSON.stringify(tjmg2026.relatorio.portaria)},

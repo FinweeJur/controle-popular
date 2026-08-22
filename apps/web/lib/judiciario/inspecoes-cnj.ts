@@ -35,7 +35,12 @@ export interface OrgaoInspecionado {
 
 export interface RelatorioTjmg {
   titulo: string;
-  publicadoEm: string;
+  /** Ano da INSPEÇÃO, lido do título. `null` quando o título não traz ano —
+   *  nunca preenchido com a data de upload, que é outra coisa. */
+  anoInspecao: number | null;
+  /** Data em que o CNJ carregou o arquivo na biblioteca. NÃO é a data da
+   *  inspeção: dez dos treze relatórios do TJMG trazem 2019-09-30 aqui. */
+  carregadoEm: string;
   megabytes: number;
   url: string;
 }
@@ -80,6 +85,9 @@ export const COBERTURA_INSPECOES = {
   faixaDeIdsVarrida: {"de":2400,"ate":2950},
   tjmg: {
     relatorios: 13,
+    anoMaisAntigo: 2012,
+    anoMaisRecente: 2026,
+    secoesSemTextoLegivel: 17,
     paginas2026: 1388,
     processoCnj: "0000675-79.2026.2.00.0000",
     portaria: "Portaria nº 3, de 02/02/2026",
@@ -546,81 +554,94 @@ export const ORGAOS_INSPECIONADOS: OrgaoInspecionado[] = [
 export const RELATORIOS_TJMG: RelatorioTjmg[] = [
  {
   "titulo": "Relatório de Inspeção Ordinária TJMG 2026",
-  "publicadoEm": "2026-07-09",
+  "anoInspecao": 2026,
+  "carregadoEm": "2026-07-09",
   "megabytes": 15,
   "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/419313/relatorio-de-inspecao-ordinaria-tjmg-2026-2"
  },
  {
   "titulo": "Relatório de Inspeção - TJMG 2023",
-  "publicadoEm": "2024-02-14",
+  "anoInspecao": 2023,
+  "carregadoEm": "2024-02-14",
   "megabytes": 12.8,
   "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/307481/relatorio-de-inspecao-tjmg-2023-3"
  },
  {
-  "titulo": "Relatório de Inspeção TJMG - Julho_2022",
-  "publicadoEm": "2022-10-17",
-  "megabytes": 5.9,
-  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
- },
- {
-  "titulo": "Relatório de Inspeção TJMG - Extrajudicial - Junho_2021",
-  "publicadoEm": "2021-09-16",
-  "megabytes": 0.7,
-  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/159213/relatorio-de-inspecao-tjmg-extrajudicial-junho_2021-2"
- },
- {
   "titulo": "Auto Circunstanciado de Inspeção - TJMG - 2019",
-  "publicadoEm": "2019-09-30",
+  "anoInspecao": 2019,
+  "carregadoEm": "2019-09-30",
   "megabytes": 4.4,
   "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82554/auto-circunstanciado-de-inspecao-tjmg-2019"
  },
  {
   "titulo": "3.TJMG-Relatorio de Inspecao-NUPEMEC-CEJUSC-2019",
-  "publicadoEm": "2019-09-30",
+  "anoInspecao": 2019,
+  "carregadoEm": "2019-09-30",
   "megabytes": 0.2,
   "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82550/3-tjmg-relatorio-de-inspecao-nupemec-cejusc-2019"
  },
  {
   "titulo": "3.TJMG-Relatorio de Inspecao-EJEF-2019",
-  "publicadoEm": "2019-09-30",
+  "anoInspecao": 2019,
+  "carregadoEm": "2019-09-30",
   "megabytes": 0.6,
   "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82551/3-tjmg-relatorio-de-inspecao-ejef-2019"
  },
  {
   "titulo": "Relatório de Inspeção - EJEF - TJMG - 2017",
-  "publicadoEm": "2019-09-30",
+  "anoInspecao": 2017,
+  "carregadoEm": "2019-09-30",
   "megabytes": 1.4,
   "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82549/relatorio-de-inspecao-ejef-tjmg-2017"
  },
  {
+  "titulo": "Inspeção 2012",
+  "anoInspecao": 2012,
+  "carregadoEm": "2019-09-30",
+  "megabytes": 1.3,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82553/inspecao-2012-2"
+ },
+ {
+  "titulo": "Relatório de Inspeção TJMG - Julho_2022",
+  "anoInspecao": null,
+  "carregadoEm": "2022-10-17",
+  "megabytes": 5.9,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/199020/relatorio-de-inspecao-tjmg-julho_2022"
+ },
+ {
+  "titulo": "Relatório de Inspeção TJMG - Extrajudicial - Junho_2021",
+  "anoInspecao": null,
+  "carregadoEm": "2021-09-16",
+  "megabytes": 0.7,
+  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/159213/relatorio-de-inspecao-tjmg-extrajudicial-junho_2021-2"
+ },
+ {
   "titulo": "Relatorio_Unidades_Judiciais_TJMG_2017",
-  "publicadoEm": "2019-09-30",
+  "anoInspecao": null,
+  "carregadoEm": "2019-09-30",
   "megabytes": 3.9,
   "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82557/relatorio_unidades_judiciais_tjmg_2017"
  },
  {
   "titulo": "Relatorio_Unidades_Adm_TJMG_2017",
-  "publicadoEm": "2019-09-30",
+  "anoInspecao": null,
+  "carregadoEm": "2019-09-30",
   "megabytes": 0.4,
   "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82555/relatorio_unidades_adm_tjmg_2017"
  },
  {
   "titulo": "Relatorio_NUPEMEC_TJMG_2017",
-  "publicadoEm": "2019-09-30",
+  "anoInspecao": null,
+  "carregadoEm": "2019-09-30",
   "megabytes": 15.1,
   "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82558/relatorio_nupemec_tjmg_2017"
  },
  {
   "titulo": "Relatorio_Inspecao_Sistema_Judiciais_Processuais_TJMG_2017",
-  "publicadoEm": "2019-09-30",
+  "anoInspecao": null,
+  "carregadoEm": "2019-09-30",
   "megabytes": 3.9,
   "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82556/relatorio_inspecao_sistema_judiciais_processuais_tjmg_2017"
- },
- {
-  "titulo": "Inspeção 2012",
-  "publicadoEm": "2019-09-30",
-  "megabytes": 1.3,
-  "url": "https://www.cnj.jus.br/download/2664/tribunal-de-justica-do-estado-de-minas-gerais/82553/inspecao-2012-2"
  }
 ];
 

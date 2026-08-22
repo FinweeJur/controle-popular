@@ -114,7 +114,7 @@ export default function InspecoesPage() {
         <Cartao
           valor={String(RELATORIOS_TJMG.length)}
           rotulo="relatórios sobre o TJMG"
-          nota={`de ${RELATORIOS_TJMG[RELATORIOS_TJMG.length - 1]?.publicadoEm.slice(0, 4)} a ${RELATORIOS_TJMG[0]?.publicadoEm.slice(0, 4)}`}
+          nota={`inspeções de ${C.tjmg.anoMaisAntigo} a ${C.tjmg.anoMaisRecente}`}
         />
         <Cartao
           valor={String(C.tjmg.unidadesDistintas)}
@@ -267,11 +267,16 @@ export default function InspecoesPage() {
         <p className="mt-2 max-w-3xl text-[.92em] leading-relaxed text-text-soft">
           O CNJ cobra, na inspeção seguinte, o que determinou na anterior — por isso a série
           importa mais que qualquer relatório isolado. Todos são públicos e baixam sem cadastro.
+          O ano ao lado é o da <strong className="text-text">inspeção</strong>, lido do título do
+          documento: a data que o CNJ registra no acervo é a do dia em que ele subiu o arquivo, e
+          dez dos treze foram carregados de uma vez só, em 30/09/2019.
         </p>
         <ul className="mt-5 divide-y divide-border rounded-2xl border border-border">
           {RELATORIOS_TJMG.map((r) => (
             <li key={r.url} className="flex flex-wrap items-baseline gap-x-3 gap-y-1 px-4 py-3">
-              <span className="tabular-nums text-[.85em] text-text-soft">{r.publicadoEm}</span>
+              <span className="w-12 shrink-0 tabular-nums text-[.85em] font-semibold text-text">
+                {r.anoInspecao ?? "—"}
+              </span>
               <a
                 href={r.url}
                 target="_blank"

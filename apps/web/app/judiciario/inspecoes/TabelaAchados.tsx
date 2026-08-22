@@ -170,6 +170,13 @@ export default function TabelaAchados() {
         de caracteres, e este portal não hospeda cópia dele. O link do documento oficial está no
         fim de cada linha e no rodapé.
       </p>
+      <p className="mt-2 max-w-3xl text-[.88em] leading-relaxed text-text-soft">
+        A comarca aparece como <strong className="text-text">&mdash;</strong> quando o próprio
+        relatório não a declara no nome da unidade. É o caso de boa parte das varas: o capítulo que
+        as agrupa se chama apenas &ldquo;Varas&rdquo;. Muitas provavelmente são de Belo Horizonte, e
+        é justamente por isso que a coluna fica vazia &mdash; preencher por dedução trocaria o
+        documento pelo nosso palpite.
+      </p>
 
       {/* ═══ FILTROS ═══ */}
       <div className="mt-5 flex flex-wrap items-end gap-3">
