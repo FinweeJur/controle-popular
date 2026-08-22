@@ -127,7 +127,7 @@ export default function InspecoesPage() {
         <Cartao
           valor={String(C.tjmg.secoesComConteudo)}
           rotulo="seções com achado"
-          nota={`${C.tjmg.secoesSemAchado} seções dizem que não há achado`}
+          nota={`mais ${C.tjmg.secoesSemAchado} em que a equipe registrou não haver achado`}
         />
         <Cartao
           valor={formatNumberBR(C.totalRelatorios)}
@@ -171,10 +171,15 @@ export default function InspecoesPage() {
             documento não explica o critério de escolha.
           </li>
           <li>
-            <strong className="text-text">Foram lidas {C.tjmg.secoesLidasNoCorpo} das{" "}
-            {C.tjmg.secoesNoSumario} seções</strong> que o sumário do próprio relatório lista
-            ({Math.round((C.tjmg.secoesLidasNoCorpo / C.tjmg.secoesNoSumario) * 100)}%). O que
-            faltou está declarado, não escondido.
+            <strong className="text-text">
+              Foram lidas {C.tjmg.secoesLidasNoCorpo} seções
+            </strong>{" "}
+            — mais do que as {C.tjmg.secoesNoSumario} que o sumário lista, porque parte dos
+            achados das unidades administrativas fica em subseções que o sumário não indexa.
+            Uma primeira versão desta leitura perdia os capítulos de Precatórios, unidades
+            administrativas e tecnologia inteiros: <strong className="text-text">cerca de 45% do
+            relatório</strong>. Está corrigido, e o registro fica aqui porque um leitor tem
+            direito de saber que a conta já esteve errada.
           </li>
           <li>
             <strong className="text-text">Só o relatório de 2026 está aberto aqui.</strong> Os
