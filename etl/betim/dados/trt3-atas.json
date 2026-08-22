@@ -1,0 +1,240 @@
+{
+  "orgao_que_lavra": "Corregedoria-Geral da Justiça do Trabalho (CGJT/TST) -- NÃO é o CNJ",
+  "fonte": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (17 páginas de gestão, 1991-2024) + https://www.tst.jus.br/web/corregedoria/correicoes-atas (ciclo corrente)",
+  "objeto": "Atas de Correição Ordinária do TRT da 3ª Região (Minas Gerais)",
+  "metodo": "raspagem das 19 páginas de gestão de Corregedor-Geral listadas no índice (não 17 -- o índice devolve 19 links únicos de asset_publisher, incluindo 3 sem slug amigável); busca por padrão '3ª Região' + 'Belo Horizonte/MG' em tabela HTML (layout variou: table/span aninhados 2014-2018 vs grid-row 2026; região aparece em <td> separado do link do PDF, não no texto do link); deduplicação por período de correição, não por nome de arquivo",
+  "cobertura_da_varredura": "19 de 19 páginas de gestão do índice 'correicoes-anteriores' (1991-2024) + página do ciclo corrente 'correicoes-atas' (2024-2026, ainda sem ata do TRT-3 -- correição agendada 05 a 09/10/2026)",
+  "total_atas_encontradas": 18,
+  "piso_ou_total": "PISO -- cobre as 19 gestões listadas no índice oficial; não há garantia de que o índice em si seja exaustivo (o próprio TST pode ter reformulado o histórico antes de 1991)",
+  "gestoes_sem_correicao_no_trt3": [
+    {
+      "ministro": "Vantuil Abdala",
+      "periodo_gestao": "25/06/2001 a 10/04/2002",
+      "regioes_corrigidas": "12,16,22,19,20 -- sem 3"
+    },
+    {
+      "ministro": "Almir Pazzianoto Pinto",
+      "periodo_gestao": "02/08/1996 a 03/08/1998",
+      "regioes_corrigidas": "13,5,9,18 -- sem 3 (lista pode estar truncada na página)"
+    }
+  ],
+  "vao_maior_entre_duas_correicoes": "1471 dias (~4.0 anos), entre a correição de 1995 e a de 1999",
+  "atas": [
+    {
+      "ano": "1991",
+      "periodo_correicao": "24 a 28/6/1991",
+      "data_assinatura_dj": "8/7/1991",
+      "ministro_corregedor_geral": "José Ajuricaba da Costa e Silva",
+      "periodo_gestao_ministro": "06/02/1991 a 03/02/1993",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24695888/Ata+TRT-3+-+de++24+a+28.6.1991+-+Ministro+Jos%C3%A9+Ajuricaba+da+Costa+e+Silv.pdf/ec0cc059-c730-5efd-1128-89ece9eaa798",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_1991.pdf",
+      "bytes_medidos": 1930473,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g19)"
+    },
+    {
+      "ano": "1992",
+      "periodo_correicao": "3 a 7/8/1992",
+      "data_assinatura_dj": "18/8/1992",
+      "ministro_corregedor_geral": "José Ajuricaba da Costa e Silva",
+      "periodo_gestao_ministro": "06/02/1991 a 03/02/1993",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24695888/TRT+3+DE+3+a+07+de+agosto+de+1992.pdf/373ac1f7-ca81-5ca3-61f8-0c7aa8a5e12f",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_1992.pdf",
+      "bytes_medidos": 1542110,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g19)"
+    },
+    {
+      "ano": "1995",
+      "periodo_correicao": "3 a 6/4/1995",
+      "data_assinatura_dj": "14/6/1995",
+      "ministro_corregedor_geral": "Wagner Antônio Pimenta",
+      "periodo_gestao_ministro": "01/02/1995 a 01/08/1996",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24691610/TRT+-+3+-+3+a+6.4.1995+-+Ministro+Wagner+Pimenta.pdf/34f80319-1781-1fef-503c-b82bfaf1e9bb",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_1995.pdf",
+      "bytes_medidos": 4683372,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g18)"
+    },
+    {
+      "ano": "1999",
+      "periodo_correicao": "12 a 16/4/1999",
+      "data_assinatura_dj": "5/5/1999",
+      "ministro_corregedor_geral": "Ursulino Santos Filho",
+      "periodo_gestao_ministro": "03/08/1998 a 31/07/2000",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24691256/TRT+3%C2%AA+Regi%C3%A3o+-+Min.+Ursulino+Santos+-+12+a+16.4.1999.pdf/e5f41eac-1394-2047-56ed-a47695aaccc7",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_1999.pdf",
+      "bytes_medidos": 17232257,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g16)"
+    },
+    {
+      "ano": "2001",
+      "periodo_correicao": "2 a 5/4/2001",
+      "data_assinatura_dj": "26/10/2001",
+      "ministro_corregedor_geral": "Francisco Fausto Paula de Medeiros",
+      "periodo_gestao_ministro": "28/08/2000 a 25/06/2001",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24693440/TRT-3+-+2+a+5.4.2001+-+Min.+Francisco+Fausto.pdf/87d66fa6-c5cf-9e81-028f-b0a2be52dea4",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2001.pdf",
+      "bytes_medidos": 12599198,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g15)"
+    },
+    {
+      "ano": "2003",
+      "periodo_correicao": "10 a 14/11/2003",
+      "data_assinatura_dj": "6/4/2004",
+      "ministro_corregedor_geral": "Ronaldo Lopes Leal",
+      "periodo_gestao_ministro": "10/04/2002 a 13/04/2004",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24690567/TRT+3%C2%AA+-+10+a+14.11.2003+-+Ministro+Ronaldo+Lopes+Leal.pdf/c87541f6-15e7-3836-0086-ef5c93f59e02",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2003.pdf",
+      "bytes_medidos": 5296499,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g13)"
+    },
+    {
+      "ano": "2005",
+      "periodo_correicao": "26 a 30/9/2005",
+      "data_assinatura_dj": "14/11/2005",
+      "ministro_corregedor_geral": "Rider Nogueira de Brito",
+      "periodo_gestao_ministro": "13/04/2004 a 17/04/2006",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24689962/ATA03-09.pdf/6f2db8ca-725c-25c4-9edc-7a7b574d8666",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2005.pdf",
+      "bytes_medidos": 48045,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g12)"
+    },
+    {
+      "ano": "2006",
+      "periodo_correicao": "29/5 a 2/6/2006",
+      "data_assinatura_dj": "21/8/2006",
+      "ministro_corregedor_geral": "José Luciano de Castilho Pereira",
+      "periodo_gestao_ministro": "17/04/2006 a 04/01/2007",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24696316/ATA03-06.pdf/8b3673b2-6d57-86c4-2eeb-07c857e44450",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2006.pdf",
+      "bytes_medidos": 91658,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g11)"
+    },
+    {
+      "ano": "2008",
+      "periodo_correicao": "16 a 20/6/2008",
+      "data_assinatura_dj": "14/7/2008",
+      "ministro_corregedor_geral": "João Oreste Dalazen",
+      "periodo_gestao_ministro": "02/03/2007 a 02/03/2009",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24694983/ATA+03-06.pdf/3257a419-49e4-e091-e748-18f7e3c74d9e",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2008.pdf",
+      "bytes_medidos": 400750,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g10)"
+    },
+    {
+      "ano": "2009",
+      "periodo_correicao": "9 a 13/11/2009",
+      "data_assinatura_dj": "4/2/2010",
+      "ministro_corregedor_geral": "Carlos Alberto Reis de Paula",
+      "periodo_gestao_ministro": "02/03/2009 a 01/03/2011",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24692755/ATA03-11.pdf/50d037bc-e0ec-9f2d-6094-803c9acdc68e",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2009.pdf",
+      "bytes_medidos": 305899,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g09)"
+    },
+    {
+      "ano": "2012",
+      "periodo_correicao": "27/2 a 2/3/2012",
+      "data_assinatura_dj": "16/4/2012",
+      "ministro_corregedor_geral": "Antônio José Barros Levenhagen",
+      "periodo_gestao_ministro": "02/03/2011 a 04/03/2013",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24692018/TRT+3%C2%AA+Regi%C3%A3o+-+27.2+a+2.3.2012+-+Ministro+Barros+Levenhagen.pdf/a8244f4d-0b15-6bfd-a51c-854612219edf",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2012.pdf",
+      "bytes_medidos": 4010538,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g08)"
+    },
+    {
+      "ano": "2013",
+      "periodo_correicao": "01 a 05/07/2013",
+      "data_assinatura_dj": "10/07/2013",
+      "ministro_corregedor_geral": "Ives Gandra da Silva Martins Filho",
+      "periodo_gestao_ministro": "05/03/2013 a 26/02/2014",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24693778/Ata+de+Correi%C3%A7%C3%A3o+Ordin%C3%A1ria+TRT+-+3%C2%AA+Regi%C3%A3o.pdf/db3231bf-b261-06a0-cf1c-3aecd1eea847",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2013.pdf",
+      "bytes_medidos": 10668646,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g07)"
+    },
+    {
+      "ano": "2015",
+      "periodo_correicao": "9 a 13/2/2015",
+      "data_assinatura_dj": "23/2/2015",
+      "ministro_corregedor_geral": "João Batista Brito Pereira",
+      "periodo_gestao_ministro": "26/02/2014 a 25/02/2016",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24694365/Ata+TRT+3%C2%AA+Regi%C3%A3o.pdf/c32cff7a-b238-92e1-4634-225bd6ab7b76",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2015.pdf",
+      "bytes_medidos": 3820311,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g06)"
+    },
+    {
+      "ano": "2017",
+      "periodo_correicao": "15/05 a 19/05/2017",
+      "data_assinatura_dj": "26/05/2017",
+      "ministro_corregedor_geral": "Renato de Lacerda Paiva",
+      "periodo_gestao_ministro": "25/02/2016 a 26/02/2018",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24689367/Ata+TRT3.pdf/271e29c1-252c-a87f-c13b-b16c8ba179c0",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2017.pdf",
+      "bytes_medidos": 484780,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g05)"
+    },
+    {
+      "ano": "2019",
+      "periodo_correicao": "27 a 31/05/2019",
+      "data_assinatura_dj": "03/06/2019",
+      "ministro_corregedor_geral": "Lelio Bentes Corrêa",
+      "periodo_gestao_ministro": "18/02/2018 a 19/02/2020",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/24671606/15+-+ATA+TRT3.pdf/8854c2c7-c7c4-4d10-7191-fd45aa17c737",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2019.pdf",
+      "bytes_medidos": 7048697,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g04)"
+    },
+    {
+      "ano": "2021",
+      "periodo_correicao": "10 a 14/05/2021",
+      "data_assinatura_dj": "17/05/2021",
+      "ministro_corregedor_geral": "Aloysio Corrêa da Veiga",
+      "periodo_gestao_ministro": "20/02/2020 a 17/02/2022",
+      "url_pdf": "https://tst.jus.br/documents/24638414/25124389/1.+Ata+TRT3+assinada.pdf/b404540d-d615-ca3d-9569-62caea78895d?t=1621332897713",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2021.pdf",
+      "bytes_medidos": 2319365,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g03)"
+    },
+    {
+      "ano": "2022",
+      "periodo_correicao": "6 a 10/06/2022",
+      "data_assinatura_dj": "14/06/2022",
+      "ministro_corregedor_geral": "Guilherme Augusto Caputo Bastos",
+      "periodo_gestao_ministro": "16/02/2022 a 12/10/2022",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/30799401/Ata+TRT+da+3%C2%AA+Regi%C3%A3o.++Assinada.pdf/c33789fd-37ac-2292-1853-95acd0847ee3?t=1655501430597",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2022.pdf",
+      "bytes_medidos": 3323049,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g02)"
+    },
+    {
+      "ano": "2024",
+      "periodo_correicao": "5 a 9/2/2024",
+      "data_assinatura_dj": "19/2/2024",
+      "ministro_corregedor_geral": "Dora Maria da Costa",
+      "periodo_gestao_ministro": "13/10/2022 a 09/10/2024",
+      "url_pdf": "https://www.tst.jus.br/documents/24638414/31246729/Ata+TRT3.pdf/c34ac98a-89c9-af28-8b50-304cfe658960?t=1708113525770",
+      "arquivo_local": "ata_correicao_ordinaria_TRT3_2024.pdf",
+      "bytes_medidos": 18392330,
+      "magic_bytes_confirmado": "%PDF-",
+      "pagina_de_origem": "https://www.tst.jus.br/web/corregedoria/correicoes-anteriores (gestão g01)"
+    }
+  ]
+}
