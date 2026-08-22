@@ -35,10 +35,10 @@
  * incompleto, desistência, mudança de modalidade. A tela mostra a decisão como
  * o Estado a publicou; não afirma culpa.
  *
- * ⚠️ **Pessoa física não vai nominal.** 9.298 das 43.444 decisões têm titular
- * pessoa física (`eh_pessoa_fisica`). Para essas, o nome sai — fica o
- * município, a atividade e a decisão. Mesma regra já aplicada em
- * `/ambiental/licenciamento`.
+ * ⚠️ **Pessoa física não vai nominal — e a flag da fonte não basta.** 9.298 das
+ * 43.444 decisões têm `eh_pessoa_fisica`. Mas 20 negativas trazem CPF válido
+ * colado ao nome e vêm marcadas como CNPJ: a classificação da fonte erra. A
+ * redação é por dígito verificador sobre o texto, não pela flag.
  *
  * ⚠️ **264 decisões estão sem município resolvido** (de 839 municípios
  * distintos). Vão num balde próprio, contadas e declaradas — nunca somadas a
@@ -80,12 +80,54 @@ function ehPessoaFisica(d: Decisao): boolean {
   return d.eh_pessoa_fisica === true || String(d.eh_pessoa_fisica).toLowerCase() === "true";
 }
 
+/** Dígito verificador de CPF. Formato não basta: `000.000.000-00` tem forma de
+ *  CPF e não é ninguém; `04130157698` não tem pontuação e é uma pessoa real. */
+function cpfValido(bruto: string): boolean {
+  const c = bruto.replace(/\D/g, "");
+  if (c.length !== 11) return false;
+  // Onze dígitos iguais passam no mod-11 por acidente e não são CPF de
+  // ninguém — barrar antes de calcular.
+  if (c.split("").every((d) => d === c[0])) return false;
+  for (const n of [9, 10]) {
+    let soma = 0;
+    for (let i = 0; i < n; i++) soma += Number(c[i]) * (n + 1 - i);
+    const dv = ((soma * 10) % 11) % 10;
+    if (dv !== Number(c[n])) return false;
+  }
+  return true;
+}
+
+/**
+ * Redige CPF de dentro do texto, por CHECKSUM.
+ *
+ * ⚠️ **A flag `eh_pessoa_fisica` da fonte MENTE.** Medido em 21/08: 20 decisões
+ * negativas trazem CPF válido colado ao nome
+ * ("BEATRIZ APARECIDA ... 04130157698") e **todas as 20 vêm marcadas como
+ * `eh_pessoa_fisica: false` e `documento_classificacao: "cnpj"`.** Uma primeira
+ * versão deste script confiou na flag, publicou os 20 num repositório PÚBLICO,
+ * e só o teste `sem-cpf-no-repo.test.ts` pegou.
+ *
+ * Por isso a redação é por dígito verificador sobre TODO campo de texto, e não
+ * por classificação declarada. Quando há CPF no nome, o nome inteiro sai: o
+ * nome de pessoa física é dado pessoal por si só.
+ */
+function redigirTexto(v: string | null): string | null {
+  if (!v) return v;
+  const achados = v.match(/(?<!\d)\d{11}(?!\d)|\d{3}\.\d{3}\.\d{3}-\d{2}/g) ?? [];
+  return achados.some(cpfValido) ? null : v;
+}
+
 /** Pessoa física não vai nominal — nem no acervo publicado, nem no CSV. */
 function semNomeDePessoa(d: Decisao) {
+  const pf = ehPessoaFisica(d);
+  const nome = pf ? null : redigirTexto(d.nome_empreendimento);
   return {
     ...d,
-    nome_empreendimento: ehPessoaFisica(d) ? null : d.nome_empreendimento,
-    cnpj_raiz: ehPessoaFisica(d) ? null : d.cnpj_raiz,
+    // Se o nome caiu por conter CPF, a fonte classificou errado: marque isso
+    // no dado, em vez de deixar `eh_pessoa_fisica: false` mentindo no arquivo.
+    eh_pessoa_fisica: pf || (d.nome_empreendimento !== null && nome === null),
+    nome_empreendimento: nome,
+    cnpj_raiz: pf || nome === null ? null : d.cnpj_raiz,
   };
 }
 
