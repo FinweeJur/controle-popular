@@ -5,9 +5,11 @@
  * por regex — determinístico e auditável, no mesmo espírito de
  * `etl/betim/etl/temas.py`: "é edital porque o título contém LICITAÇÃO".
  *
- * Regras calibradas contra 70 títulos REAIS do diário oficial de Diamantina
+ * Regras calibradas contra 75 títulos REAIS do diário oficial de Diamantina
  * (Prefeitura e Câmara, via SIGPub/AMM-MG, julho de 2026 — extração em
- * 16/08/2026). A amostra inteira está fixada em `classificarAto.test.ts`;
+ * 16/08/2026, mais 5 títulos de 22/08/2026 que fecharam o gap de "outro"
+ * medido contra as 196 matérias reais de julho/2026, não só a amostra
+ * original de 70). A amostra inteira está fixada em `classificarAto.test.ts`;
  * quem muda uma regra tem que justificar contra ela.
  *
  * ═══ POR QUE "EDITAL" COBRE MAIS QUE EDITAL ═══
@@ -18,9 +20,10 @@
  *
  * Na prática do diário, `edital` é o balaio do processo de licitação
  * inteiro — aviso de licitação, credenciamento, dispensa, inexigibilidade,
- * chamamento público, homologação, adjudicação e impugnação são todos atos
- * de uma licitação, e o resumo do portal ("saíram 2 editais de licitação")
- * os conta juntos. Os rótulos em `ROTULOS_TIPO` dizem isso ao leitor.
+ * chamamento público, homologação, adjudicação, impugnação, ata de registro
+ * de preço e ratificação são todos atos de uma licitação, e o resumo do
+ * portal ("saíram 2 editais de licitação") os conta juntos. Os rótulos em
+ * `ROTULOS_TIPO` dizem isso ao leitor.
  *
  * ═══ A ORDEM DAS REGRAS É DECISÃO, NÃO ACASO ═══
  *
@@ -66,7 +69,7 @@ export const ROTULOS_TIPO: Record<TipoAto, string> = {
  */
 export const DESCRICAO_TIPO: Record<TipoAto, string> = {
   decreto: "Decreto municipal (norma do Executivo).",
-  edital: "Atos de licitação: aviso, credenciamento, dispensa, inexigibilidade, chamamento público, homologação, adjudicação, impugnação.",
+  edital: "Atos de licitação: aviso, credenciamento, dispensa, inexigibilidade, chamamento público, homologação, adjudicação, impugnação, registro de preço, ratificação.",
   contrato: "Contrato e termos aditivos de contrato (Prefeitura e Câmara).",
   convenio: "Convênio, termo de fomento e termo de colaboração (parcerias com repasse de recursos).",
   portaria: "Portaria municipal (decisão interna do Executivo).",
@@ -85,7 +88,22 @@ export function normalizarTituloAto(titulo: string): string {
 const TEM_FOMENTO_OU_COLABORACAO = /\b(FOMENTO|COLABORACAO)\b/;
 const TEM_CONVENIO = /\bCONVENIO\b/;
 
-/** Palavras que marcam o processo de licitação, em ordem de leitura. */
+/**
+ * Palavras que marcam o processo de licitação, em ordem de leitura.
+ *
+ * "REGISTRO DE PRECO" e "RATIFICACAO" entraram em 22/08/2026: medidas contra
+ * as 196 matérias reais de julho/2026 da Prefeitura de Diamantina (não só a
+ * amostra de 70 já calibrada), 32/196 (16%) caíam em "outro" — bem acima do
+ * ~4% da amostra original. As duas causas concretas, sem nenhuma das 9
+ * palavras de então: "EXTRATO: ATA DE REGISTRO DE PREÇO Nº 043/2026" (ata de
+ * registro de preços é instrumento de licitação, mas não contém "LICIT" nem
+ * nenhuma outra palavra do balaio) e "EXTRATO DO TERMO DE RATIFICAÇÃO"
+ * isolado — sem o "DE DISPENSA DE LICITAÇÃO" que o único exemplo anterior
+ * (na amostra de 70) sempre trazia junto. Juntas, as duas cobriam 21 das 32
+ * ocorrências de "outro" medidas (o resto — aquisição futura, cotação
+ * eletrônica, errata, análise de recurso — fica "outro" de propósito, cada
+ * um por um motivo próprio que não é lacuna de licitação).
+ */
 const PALAVRAS_DE_LICITACAO = [
   "LICIT",
   "EDITAL",
@@ -96,6 +114,8 @@ const PALAVRAS_DE_LICITACAO = [
   "HOMOLOGACAO",
   "ADJUDICACAO",
   "IMPUGNACAO",
+  "REGISTRO DE PRECO",
+  "RATIFICACAO",
 ];
 
 function temPalavraDeLicitacao(normalizado: string): boolean {
