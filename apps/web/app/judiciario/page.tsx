@@ -141,6 +141,12 @@ export default async function Home() {
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {[
             {
+              href: "/instituicoes",
+              titulo: "Quem fiscaliza a Justiça",
+              texto:
+                "Em que ponto do caminho do seu processo alguém de fora ainda olha — e onde a fiscalização externa acaba.",
+            },
+            {
               href: "/inspecoes",
               titulo: "O que o CNJ encontrou no TJMG",
               texto:
@@ -156,7 +162,7 @@ export default async function Home() {
               href: "/presidios",
               titulo: "Quem fiscaliza a prisão",
               texto:
-                "285 estabelecimentos penais e 2.253 inspeções judiciais em 12 meses — e onde a fiscalização não chega.",
+                "285 estabelecimentos penais e 2.252 inspeções judiciais desde 2025 — e onde a fiscalização não chega.",
             },
             {
               href: "/numeros",

@@ -1,0 +1,324 @@
+{
+ "geradoEm": "2026-08-22",
+ "objetivo": "Medir como os relatorios de inspecao do CNJ sobre o TJMG em 2012, 2019 e 2026 cobram (ou nao) o cumprimento das determinacoes/recomendacoes da inspecao anterior -- ja temos 2022 (24 ocorrencias) e 2023 (52) extraidos por secao literal 'Pendencias da ultima inspecao', que 2012/2019/2026 nao usam.",
+ "metodo": "Texto integral extraido pagina a pagina com PyMuPDF (fitz), sem rede (socket bloqueado nesta maquina). Varredura de 20+ padroes candidatos ('ultima inspecao', 'inspecao anterior', 'inspecao de 20NN', 'inspecao realizada em 20NN', 'inspecao passada', 'determinacao(oes) anterior(es)', 'reiterad-', 'nao cumprid-', 'pendente de cumprimento', 'ja determinado', 'permanece sem/pendente/em aberto', 'ainda nao foi', 'Pendencias da (ultima/inspecao) ...', 'em 20NN') sobre o texto INTEIRO de cada PDF (nao apenas secoes com nome fixo), agrupando acertos proximos (<600 caracteres) em blocos e lendo cada bloco manualmente com contexto de pagina para classificar. Cada acerto foi conferido no arquivo fonte (grep com numero de linha) antes de entrar no JSON -- nenhum numero de secao ou unidade foi presumido do titulo do PDF.",
+ "distincaoCobrancaVsMencao": "COBRANCA = trecho que identifica UMA determinacao/recomendacao especifica de uma inspecao anterior do CNJ e relata seu status de cumprimento (cumprida, nao cumprida, parcial, ou 'nao havia pendencias'), mesmo que em prosa corrida (sem cabecalho fixo tipo 'Pendencias da ultima inspecao'). MENCAO = referencia a uma inspecao anterior usada so como marco temporal/contextual ('desde a ultima inspecao, 142 entes...', '703 contratos desde a ultima inspecao'), sem apontar qual determinacao e se foi cumprida. Excluidos (nem cobranca nem mencao): pendencias de processos/mandados/cartas precatorias do dia a dia da vara, metas nacionais do CNJ correntes sem link a uma inspecao anterior, 'inspecao correcional'/'autoinspecao' (mecanismo da Corregedoria-Geral local, distinto da inspecao ordinaria do CNJ), e o 'Cumprdec' de cumprimento de resolucao (mecanismo processual proprio, nao e inspecao).",
+ "anos": {
+  "2012": {
+   "arquivo": "tribunal-de-justica-do-estado-de-minas-g__Inspeção_2012.pdf",
+   "totalPaginas": 170,
+   "totalCaracteresExtraidos": 445647,
+   "cobertura": "Texto das 170/170 paginas extraido e varrido por inteiro (nenhuma pagina pulada); todos os acertos dos 20+ padroes foram lidos manualmente.",
+   "totalCobrancas": 0,
+   "totalMencoes": 0,
+   "achado": "Nenhuma cobranca e nenhuma mencao a uma inspecao anterior do CNJ foi encontrada em nenhum lugar do documento. Todas as ocorrencias de 'anterior', 'ultima', 'reiterad-', 'permanece', 'nao cumprid-', 'pendente de cumprimento' e 'cumprida' (16 blocos apos agrupamento) sao sobre o historico de PROCESSOS individuais (ex.: 'o processo permanece sem movimentacao desde 2010') ou sobre determinacoes NOVAS desta propria inspecao -- nunca sobre uma inspecao do CNJ anterior a 2012. O relatorio se chama 'Inspecao Preventiva' e nao ha secao de acompanhamento de inspecao pregressa; tudo indica ser a primeira inspecao ordinaria/preventiva do CNJ nas unidades do TJMG cobertas neste auto.",
+   "cobrancas": [],
+   "mencoes": []
+  },
+  "2019": {
+   "arquivo": "tribunal-de-justica-do-estado-de-minas-g__Auto_Circunstanciado_de_Inspeção_-_TJMG_-_2019.pdf",
+   "totalPaginas": 310,
+   "totalCaracteresExtraidos": 598408,
+   "cobertura": "Texto das 310/310 paginas extraido e varrido por inteiro; 15 blocos de acerto apos agrupamento, todos lidos manualmente com pagina de origem conferida.",
+   "totalCobrancas": 3,
+   "totalMencoes": 2,
+   "achado": "2019 cobra a inspecao anterior (2017) de forma esparsa e em prosa, sem secao fixa por unidade: um cabecalho literal 'Pendências da inspeção anterior' (unico, para a Corregedoria-Geral) e duas cobrancas narrativas dentro de 'Gabinetes de Desembargadores' (7.4 e 7.5), ambas dizendo explicitamente que a determinacao da inspecao 2017 'ainda nao foi cumprida'/'nao cumprida'. O relatorio de 2019 e bem menor e cobre poucas unidades (Presidencia, 1a/3a Vice-Presidencia, Corregedoria, Secretaria das Camaras, 9 gabinetes de desembargador, atendimento ao publico) -- por isso o numero absoluto de cobrancas e baixo comparado a 2022/2023, que inspecionaram muito mais varas e comarcas.",
+   "cobrancas": [
+    {
+     "secao": "5 (Corregedoria-Geral da Justica) -- item sem numero, logo antes de 5.1 EXTRAJUDICIAL",
+     "unidade": "CORREGEDORIA-GERAL DA JUSTICA (area do NUPLAN)",
+     "pagina": 152,
+     "texto": "Pendências da inspeção anterior\nNão havia pendências a serem inspecionadas. Os PPs n. 0006614-21.2018.2.00.0000 e n. 0006637-64.2018.2.00.0000 estavam com o prazo em curso e os PPs n. 0006638-49.2018.2.00.0000 e n. 0006649-78.2018.2.00.0000 estavam com o trâmite suspenso.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0,
+     "observacao": "Unico cabecalho literal 'Pendências da inspeção anterior' em todo o relatorio de 2019 (grep confirma ocorrencia unica)."
+    },
+    {
+     "secao": "7.4 (Gabinetes de Desembargadores)",
+     "unidade": "Desembargador Vicente de Oliveira Silva",
+     "pagina": "231-232",
+     "texto": "Da inspeção passada decorreram as determinações que ensejaram o PP n. 0006593-45.2018.2.00.0000, relativo ao item 38, que previa: 'A instauração de pedido de providências para que, no prazo de 30 dias, o TJMG: encaminhe à Corregedoria Nacional de Justiça: (i) o extrato processual dos feitos paralisados há mais de 100 dias; (ii) julgamento prioritário dos processos conclusos há mais de 100 dias, com informação a esse respeito; e (iii) informações sobre plano de ação proposto pelo gabinete visando à redução do acervo e incremento da produtividade.' [...] Embora referido PP ainda conste em aberto e a determinação como não cumprida, observou-se uma grande evolução no trabalho desde a inspeção passada, com grande volume de produção de decisões e movimentação processual...",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.5 (Gabinetes de Desembargadores)",
+     "unidade": "Desembargador Antônio Carlos de Oliveira Bispo",
+     "pagina": "255-256",
+     "texto": "Aliás, importa ressaltar que esta situação não é nova, porque já tinha sido identificada na inspeção anterior, com a determinação de instauração de pedido de providências que deu origem ao PP n. 0006580-46.2018.2.00.0000, relativo ao item 25 do relatório final onde constava a determinação, para que, no prazo de 30 dias, o TJMG encaminhasse à Corregedoria Nacional de Justiça [...]. Observa-se que, a despeito do empenho, dedicação e presteza dos servidores [...] esta determinação anterior ainda não foi cumprida a contento, pois se observa que desde a inspeção passada não houve redução significativa do acervo, nem mesmo uma real mudança no contexto desta unidade.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 0
+    }
+   ],
+   "mencoes": [
+    {
+     "secao": "2 (Apresentação do Relatório de Inspeção)",
+     "unidade": "geral / metodologia",
+     "pagina": 6,
+     "texto": "O escopo da inspeção voltou-se à fiscalização do cumprimento das normas do CNJ, bem como das determinações e recomendações das inspeções anteriores e ainda pendentes de solução, à observância quanto à organização e metodologia de trabalho das unidades administrativas e judiciais...",
+     "porqueMencao": "Frase de metodologia geral do relatorio, nao aponta uma determinacao especifica nem seu status por unidade."
+    },
+    {
+     "secao": "3.2 (Setor de Precatórios)",
+     "unidade": "PRESIDÊNCIA / Setor de Precatórios (ASPREC)",
+     "pagina": 84,
+     "texto": "No momento da atual inspeção, constatou-se que, no regime especial, há 292 entes [...]. Ou seja, pode-se inferir que, desde a última inspeção (em 2017), 142 entes municipais conseguiram empreender esforços para se retirar do regime extraordinário instituído pela Emenda Constitucional n. 62/2009.",
+     "porqueMencao": "Usa 'ultima inspecao' so como marco temporal para uma estatistica; nao identifica qual determinacao da inspecao 2017 estaria em jogo nem se foi cumprida."
+    }
+   ]
+  },
+  "2026": {
+   "arquivo": "tribunal-de-justica-do-estado-de-minas-g__Relatório_de_Inspeção_Ordinária_TJMG_2026.pdf",
+   "totalPaginas": 1388,
+   "totalCaracteresExtraidos": 2935802,
+   "cobertura": "Texto das 1388/1388 paginas extraido e varrido por inteiro. Alem da varredura geral de padroes (126 acertos, agrupados em 104 blocos, todos lidos manualmente com pagina de origem conferida por grep+numero de linha), foram contados separadamente os cabecalhos fixos: 'Achados e Determinações' aparece 246x, 'Achados'/'Determinações' separados (o padrao que o extrator anterior perdia) somam mais 57 casos, e 'Análise da equipe de inspeção' aparece 168x -- ou seja, o documento tem ~470 subsecoes de achados/analise por unidade, e a varredura por palavra-chave (nao por titulo de secao) foi aplicada sobre o texto INTEIRO, cobrindo todas elas, nao so as que usam o titulo composto.",
+   "totalCobrancas": 20,
+   "totalMencoes": 4,
+   "achado": "2026 NÃO tem uma secao fixa 'Pendencias da ultima inspecao' repetida por unidade (diferente de 2022/2023). A cobranca aparece de tres formas distintas, todas em prosa dentro das subsecoes normais de cada unidade: (1) um cabecalho unico 'CUMPRIMENTO DE DETERMINAÇÕES ANTERIORES' (1.4.6, so para a Presidencia); (2) um campo de formulario 'Houve determinação da última inspeção' (7.2/7.2.1, so para Precatorios); (3) frases soltas dentro de 'Análise da equipe de inspeção' ou 'Achados e Determinações' de varas e diretorias administrativas especificas, sempre que a unidade tem historico documentado numa inspecao anterior -- a maioria das ~470 subsecoes de achados NAO menciona inspecao anterior nenhuma, porque a unidade nao tinha pendencia registrada ou porque o assunto e novo desta inspecao. O achado mais forte (citado na pista da tarefa) e o bloco 7.6 'Achados' de PRECATORIOS, que nomeia explicitamente tres inspecoes anteriores juntas (2019, 2022, 2023) e fala em 'sete anos' sem providencia efetiva -- e o unico lugar do relatorio de 2026 que faz esse tipo de acumulado multi-inspecao; todas as outras 19 cobrancas encontradas citam apenas UMA inspecao anterior (a mais recente, em geral 2023).",
+   "cobrancas": [
+    {
+     "secao": "1.4.6",
+     "unidade": "PRESIDÊNCIA",
+     "pagina": 55,
+     "texto": "1.4.6. CUMPRIMENTO DE DETERMINAÇÕES ANTERIORES\nA Presidência informou a existência de determinações oriundas da inspeção anterior da Corregedoria Nacional e apresentou medidas de cumprimento relacionadas ao aperfeiçoamento dos painéis de metas, capacitação de servidores, melhoria de controles cadastrais, indução ao cumprimento das Metas Nacionais e acompanhamento de gabinetes de segundo grau com passivos processuais. Consta, ainda, o encaminhamento de informações atualizadas à Corregedoria Nacional em fevereiro de 2026 [...]. Os elementos apresentados indicam postura colaborativa da unidade e aderência às determinações expedidas.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0,
+     "observacao": "Unico cabecalho literal 'CUMPRIMENTO DE DETERMINAÇÕES ANTERIORES' em todo o relatorio (grep = 1 ocorrencia)."
+    },
+    {
+     "secao": "4.19.3 (Análise da equipe de inspeção)",
+     "unidade": "GABINETE DO DESEMBARGADOR JOEMILSON DONIZETTI LOPES (12ª Câmara Cível)",
+     "pagina": 236,
+     "texto": "Dos dados apresentados e das informações colhidas das referidas ferramentas, constatou-se que a unidade vem dando cumprimento às Metas 1 (134%), 2 (110%), 4 (154%) e 6 (200%). O desempenho apurado guarda relação com medidas adotadas a partir da inspeção anterior, já que a assessoria informou ter promovido alterações na organização interna dos trabalhos para aprimorar os respectivos índices após determinação do CNJ.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "4.23.3 (Análise da equipe de inspeção)",
+     "unidade": "GABINETE DA DESEMBARGADORA LÍLIAN MACIEL SANTOS",
+     "pagina": 258,
+     "texto": "Embora houvesse determinações e recomendações oriundas da inspeção anterior, verifica-se que a Desembargadora promoveu consistente reformulação da gestão da unidade (adoção do método PDCA), demonstrando, nesta nova inspeção, eficiência, controle exemplar da distribuição, produtividade e observância de prazos...",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.26.4 (Achados e Determinações)",
+     "unidade": "2ª VARA DE FEITOS DA FAZENDA PÚBLICA MUNICIPAL DE BELO HORIZONTE",
+     "pagina": 591,
+     "texto": "Verifica-se que a unidade apresenta reduzido acervo ajustado e baixa distribuição mensal, em contexto de coexistência de três varas de mesma competência, cenário que já foi objeto de apontamento em inspeção anterior do CNJ, na qual se recomendou a realização de estudos para aferição da real necessidade de manutenção de todas as três unidades em funcionamento. Recomendação: Recomenda-se a realização de estudo técnico atualizado para avaliação da demanda processual...",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 1
+    },
+    {
+     "secao": "6.29.3 (Análise da equipe de inspeção)",
+     "unidade": "2ª VARA DE SUCESSÕES E AUSÊNCIA DA COMARCA DE BELO HORIZONTE",
+     "pagina": 622,
+     "texto": "Observou-se, ainda, uma franca melhora na gestão da serventia, com a redução efetiva do acervo total e a diminuição dos prazos processuais desde a última inspeção realizada. Tais avanços refletem o compromisso da unidade com a celeridade e a eficiência na prestação jurisdicional.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "6.53.3.3 / 6.53.3.4 / 6.53.4.1 (Análise da equipe de inspeção; Achados e Determinações)",
+     "unidade": "9ª VARA CRIMINAL DE BELO HORIZONTE",
+     "pagina": "822-825",
+     "texto": "O número de processos paralisados na secretaria há mais de 120 dias, que em 2023 alcançava o alarmante patamar de 1.848 feitos, foi drasticamente reduzido para apenas 128 [...]. Trata-se de uma redução de mais de 93%, que atende diretamente à Determinação nº 1 da inspeção anterior [...]. O controle das Metas Nacionais [...] agora é realizado de forma automatizada pelo sistema PJe [...], sanando outra irregularidade apontada em 2023. [...] Essa dilação excessiva, superior a um ano e meio, representa um grave gargalo no fluxo processual [...]. A Determinação nº 3 da inspeção de 2023, que ordenava a readequação da pauta, foi, portanto, cumprida apenas parcialmente.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 0,
+     "observacao": "Bloco misto: Determinacao no1 (2023) cumprida e outra irregularidade sanada; Determinacao no3 (2023) cumprida so parcialmente, gerando nova determinacao (6.53.4.1) desta inspecao."
+    },
+    {
+     "secao": "6.67.3 (Análise da equipe de inspeção)",
+     "unidade": "VARA AGRÁRIA E ACIDENTE DE TRABALHO DE BELO HORIZONTE",
+     "pagina": 940,
+     "texto": "Paralelamente, a unidade informou que, desde a inspeção de 2023, persiste a necessidade urgente de lotação de dois servidores efetivos, decorrente da remoção de um servidor e da iminência de aposentadoria de outro. Diante da ausência de providências até o momento, reforça-se a sugestão de nomeação imediata desses profissionais para evitar a sobrecarga da equipe atual...",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 1
+    },
+    {
+     "secao": "6.73.4 (Análise da equipe de inspeção)",
+     "unidade": "VARA DE REGISTROS PÚBLICOS DE BELO HORIZONTE",
+     "pagina": 983,
+     "texto": "Quanto às determinações da Corregedoria Nacional, a unidade cumpriu todas as orientações que estavam sob sua alçada direta. No entanto, pendências estruturais de responsabilidade da Presidência do Tribunal, como a reforma do ambiente de trabalho já sinalizada em inspeções passadas, permanecem sem execução.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 1,
+     "observacao": "A propria vara cumpriu o que cabia a ela; a pendencia estrutural (obra) e da Presidencia e permanece sem execucao desde inspecoes passadas (plural, nao datada)."
+    },
+    {
+     "secao": "7.2 / 7.2.1 (Informações qualitativas / formulário)",
+     "unidade": "PRECATÓRIOS (Presidência / ASPREC)",
+     "pagina": 1016,
+     "texto": "7.2. Informações qualitativas: Determinações/Recomendações da última inspeção -- sim/não: Houve determinação da última inspeção: X | Houve recomendação da última inspeção: X | Foram atendidas todas as determinações: (não) | Foram atendidas todas as recomendações: (não). 7.2.1. Informar as medidas adotadas em relação às determinações/recomendações ainda não cumpridas da última inspeção: 'Abrir um procedimento de controle para cada entidade do regime especial, no qual deverão ficar registrados todos os repasses e ausências, os precatórios alcançados por cada parcela e medidas adotadas em caso de eventual inadimplência: foram instaurados processos de controle [...]'",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 0,
+     "observacao": "Unico campo de formulario 'Houve determinação da última inspeção' em todo o relatorio (grep = 1 ocorrencia); e o unico item que se parece com a estrutura fixa de 2022/2023, mas so existe para Precatorios."
+    },
+    {
+     "secao": "7.6 (Achados) -- item 'Não cumprimento de determinações nas inspeções ano 2019, 2022 e 2023'",
+     "unidade": "PRECATÓRIOS (Presidência / ASPREC)",
+     "pagina": "1021-1022",
+     "texto": "Após análise dos procedimentos atualmente adotados e das ferramentas eletrônicas disponíveis no setor, verificamos que, além das observações acima indicadas, diversas determinações constantes nos relatórios de inspeção de 2019, 2022 e 2023 permanecem pendentes de cumprimento. Em outras palavras, passados sete anos desde a primeira inspeção, não foram adotadas providências efetivas pela Presidência do Tribunal de Justiça de Minas Gerais, conforme relação apresentada a seguir: 1) priorizar o desenvolvimento e implantação de ferramenta eletrônica [precatório eletrônico] (determinação da inspeção 2019); 2) disponibilizar ao juízo da execução requisitante os valores não levantados pelos credores... (determinação da inspeção 2019); 3) implantar sistemas eletrônicos para cadastramento/tramitação/controle e atualização de cálculos (determinação da inspeção 2022); 4) distribuir e repassar aos beneficiários a integralidade dos saldos existentes nas contas especiais (determinação da inspeção 2022); 5) disponibilizar link na página de precatórios com listas cronológicas atualizadas (determinação da inspeção 2022); 6) destinar os recursos repassados mensalmente em até 30 dias (recomendação da inspeção 2022); 7) realizar previamente os atos de saneamento do precatório (recomendação da inspeção 2022).",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 1,
+     "observacao": "Este e o trecho apontado na pista da tarefa. E o unico lugar do documento inteiro que nomeia explicitamente tres inspecoes anteriores (2019, 2022, 2023) juntas e as trata como uma divida acumulada de 7 anos."
+    },
+    {
+     "secao": "7.6 (Achados) -- item 'Regularidade do CPF/CNPJ'",
+     "unidade": "PRECATÓRIOS (Presidência / ASPREC)",
+     "pagina": 1022,
+     "texto": "Na inspeção realizada no ano de 2023, foi determinado que o setor de precatórios passasse a exigir, nas novas requisições, a regularidade do CPF ou do CNPJ dos beneficiários. Em resposta, o setor informou que as medidas adotadas para o cumprimento da determinação incluem, na análise do ofício de precatório, a conferência dos dados dos beneficiários junto ao site da Receita Federal do Brasil.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.6 (Achados) -- item 'Ofício precatório - OPE'",
+     "unidade": "PRECATÓRIOS (Presidência / ASPREC)",
+     "pagina": 1023,
+     "texto": "O sistema apresentado pelo TJMG como cumprimento da determinação anterior de expedição de ofício de precatório por meio eletrônico (OPE) — substituindo o encaminhamento físico ou diverso — apresenta uma limitação relevante: não dispõe de campo específico para o valor da SELIC [...]. Ainda registramos que o ofício eletrônico não exige o preenchimento de campos obrigatórios como 'Valor da Previdência' e 'RRA – IRRF'...",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.6 (Achados) -- item 'Valores nas contas de gestão'",
+     "unidade": "PRECATÓRIOS (Presidência / ASPREC)",
+     "pagina": "1023-1024",
+     "texto": "Os relatórios das últimas inspeções registraram como pendente de distribuição, nas contas especiais, a importância de R$ 1.890.089.894,33 (julho de 2022). Posteriormente, em 2023, os saldos dessas mesmas contas [...] aumentaram para R$ 1.931.874.941,42, superando o montante identificado na inspeção anterior. Na presente inspeção, realizada em 2026, o valor informado durante a inspeção é de R$ 2.619.358.218,32 [...]. Isto é, a situação não apenas persiste, mas se agrava, evidenciando a ausência de providências efetivas...",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 1
+    },
+    {
+     "secao": "7.6 (Achados) -- item 'Saldo em conta de processos não levantados pelos beneficiários'",
+     "unidade": "PRECATÓRIOS (Presidência / ASPREC)",
+     "pagina": 1027,
+     "texto": "Embora a inspeção realizada em 2019 tenha determinado que os valores não levantados pelos credores fossem disponibilizados ao juízo da execução requisitante, após a não apresentação de conta bancária pelo beneficiário, verificou-se que essa determinação não foi cumprida. Durante a inspeção atual, o setor de precatórios informou que a medida gerou reclamações [...], motivo pelo qual deixou de observar a determinação estabelecida em 2019 [...] justamente porque a determinação anterior não foi cumprida.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 0
+    },
+    {
+     "secao": "7.7 (Determinações)",
+     "unidade": "PRECATÓRIOS (Presidência / ASPREC)",
+     "pagina": 1031,
+     "texto": "Determina-se à Presidência do TJMG que, em 90 dias: cumpra integralmente as determinações pendentes das inspeções 2019, 2022 e 2023 listadas no item próprio do relatório...",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 1,
+     "observacao": "Determinacao final que fecha o bloco 7.6, cobrando formalmente o acumulado das tres inspecoes."
+    },
+    {
+     "secao": "8.6.2.4 (Achado: Atualização de Rubricas)",
+     "unidade": "DIRETORIA EXECUTIVA DE ADMINISTRAÇÃO DE RECURSOS HUMANOS (DIRERH)",
+     "pagina": "1068-1069",
+     "texto": "Em função de inspeção anterior, verificou-se que o Tribunal procedeu acertadamente à atualização de rubricas de pagamento. Contudo, tal procedimento não foi institucionalizado de forma regular e periódica.",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 0,
+     "observacao": "Cumprimento pontual reconhecido, mas sem institucionalizacao -- por isso gera nova determinacao (8.6.2.4.1)."
+    },
+    {
+     "secao": "8.13 (Dados funcionais e administrativos)",
+     "unidade": "DIRETORIA EXECUTIVA DE PLAN. ORÇAMENTÁRIO E QUALIDADE NA G. INST. (DEPLAG)",
+     "pagina": 1100,
+     "texto": "No contexto da gestão orçamentária [...] o TJMG apresentou, no exercício de 2025, percentual de gastos de pessoal de 5,35% da Receita Corrente Líquida (RCL) [...]. Tal situação já havia sido evidenciada na inspeção anterior, onde determinou-se que o Tribunal apresente informações detalhadas sobre as medidas preventivas adotadas para evitar o aumento dos gastos com pessoal. A Presidência [...] por meio do Despacho nº 17322911, de 22 de dezembro de 2023, instituiu um Grupo de Trabalho Técnico com a finalidade de monitorar, analisar e propor medidas...",
+     "mencionaCumprida": 1,
+     "mencionaNaoCumprida": 0,
+     "mencionaReiterada": 0,
+     "observacao": "Secao originalmente identificada por engano como Ouvidoria (8.12) por proximidade textual; conferida linha a linha e corrigida para 8.13 DEPLAG."
+    },
+    {
+     "secao": "9.1 (Dados Funcionais e Administrativos, dentro de '9. TECNOLOGIA DA INFORMAÇÃO')",
+     "unidade": "DIRETORIA DE TECNOLOGIA DA INFORMAÇÃO E COMUNICAÇÃO (DIRTEC)",
+     "pagina": 1116,
+     "texto": "Com base na fórmula constante do Guia da Estratégia Nacional de Tecnologia da Informação e Comunicação do Poder Judiciário (ENTIC-JUD), o quantitativo mínimo necessário de servidores especializados do quadro permanente é de 234 servidores, o que evidencia um déficit de 29 servidores. Em comparação ao cenário identificado na inspeção anterior, constata-se que não houve evolução no quadro.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 1
+    },
+    {
+     "secao": "9.3 (Orçamento e Contratações) / 9.10.1.2 (Achado + Determinação)",
+     "unidade": "DIRETORIA DE TECNOLOGIA DA INFORMAÇÃO E COMUNICAÇÃO (DIRTEC)",
+     "pagina": "1118 / 1125",
+     "texto": "Na última inspeção foi ressaltado a importância de que os integrantes administrativos do planejamento das contratações, bem como da fiscalização de contratos fiquem de fora da DIRTEC, pode-se constatar que a estrutura ainda permanece na diretoria. A gestora da unidade informou que foi criada a nova estrutura, porém não está operante. [9.10.1.2] Determinação: Promover, no prazo de 90 dias, a efetiva implementação da nova estrutura organizacional [...], com a retirada dessas funções da DIRTEC, em conformidade com o ressaltado na última inspeção.",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 1
+    },
+    {
+     "secao": "9.6 (Infraestrutura de TIC)",
+     "unidade": "DIRETORIA DE TECNOLOGIA DA INFORMAÇÃO E COMUNICAÇÃO (DIRTEC)",
+     "pagina": 1122,
+     "texto": "No que se refere à infraestrutura física de Data Center, o TJMG não dispõe atualmente de sala cofre, situação já apontada na última inspeção. Existe demanda formalizada para a adequação da estrutura, estando em desenvolvimento projeto de retrofit da sala...",
+     "mencionaCumprida": 0,
+     "mencionaNaoCumprida": 1,
+     "mencionaReiterada": 0
+    }
+   ],
+   "mencoes": [
+    {
+     "secao": "3.4 (Achados e Determinações) -- ACHADO 1",
+     "unidade": "CORREGEDORIA-GERAL DA JUSTIÇA",
+     "pagina": "82-83",
+     "texto": "[...] notadamente em razão da persistência de indicadores críticos de desempenho ou da ausência de informações atualizadas e suficientes quanto à superação de problemas anteriormente diagnosticados [...] embora haja registros de atuação correicional pretérita, as informações apresentadas não permitem afirmar, com segurança, a superação das deficiências apontadas...",
+     "porqueMencao": "Fala em 'problemas anteriormente diagnosticados' e 'atuacao correicional pretérita' de forma generica, sobre supervisao da Corregedoria-Geral (local) a varias unidades cronicamente criticas -- nao identifica uma determinacao especifica da inspecao CNJ anterior (2023) nem separa por unidade."
+    },
+    {
+     "secao": "7.5 (Análise da equipe de inspeção)",
+     "unidade": "PRECATÓRIOS (Presidência / ASPREC)",
+     "pagina": 1020,
+     "texto": "Registra-se que as atividades desenvolvidas pelo setor de precatórios revelaram avanços em comparação com a última inspeção realizada, com boas práticas institucionais, tais como: Migração para o sistema E-Proc e criação de automações processuais [...]",
+     "porqueMencao": "Introducao contextual/elogiosa antes do bloco de Achados (7.6); nao lista qual determinacao especifica foi ou nao cumprida -- isso vem so no 7.6, ja registrado como cobranca."
+    },
+    {
+     "secao": "9.7 (Segurança da Informação)",
+     "unidade": "DIRETORIA DE TECNOLOGIA DA INFORMAÇÃO E COMUNICAÇÃO (DIRTEC)",
+     "pagina": 1124,
+     "texto": "Do ponto de vista de ferramentas e ações operacionais, o TJMG conta com equipe e ferramental necessário para prover a proteção dos dados institucionais, com melhorias em relação a última inspeção.",
+     "porqueMencao": "Comentario breve e generico ('com melhorias'), sem identificar qual determinacao da inspecao anterior estava em jogo."
+    },
+    {
+     "secao": "8.7 (Gerência de Contratos -- GECONT)",
+     "unidade": "GERÊNCIA DE CONTRATOS (GECONT)",
+     "pagina": 1082,
+     "texto": "A Gerência de Contratos (GECONT) [...] formalizou 703 instrumentos contratuais e termos aditivos, além de 720 convênios desde a última inspeção.",
+     "porqueMencao": "'Desde a ultima inspecao' usado so como marco temporal para uma estatistica de volume de trabalho, sem referencia a nenhuma determinacao especifica."
+    }
+   ]
+  }
+ },
+ "totais": {
+  "cobrancas2012": 0,
+  "cobrancas2019": 3,
+  "cobrancas2026": 20,
+  "cobrancasTotal": 23,
+  "mencoesTotal": 6,
+  "comparativoComExtraido": {
+   "2022": 24,
+   "2023": 52,
+   "2012": 0,
+   "2019": 3,
+   "2026": 20
+  }
+ },
+ "lacunas": [
+  "2026 e o unico ano onde a classificacao cobranca/mencao exigiu leitura de prosa livre (nao ha titulo fixo repetido por unidade como em 2022/2023); os limites entre 'cobranca' e 'mencao' foram decididos caso a caso e um segundo leitor poderia discordar em 2-3 casos de fronteira (ex.: DIRERH 8.6.2.4, DEPLAG 8.13, Achado 1 da Corregedoria-Geral em 3.4).",
+  "Nao foi feita varredura exaustiva das ~470 subsecoes 'Achados e Determinações'/'Análise da equipe de inspeção' uma a uma -- a cobertura veio da varredura por palavra-chave sobre o texto inteiro, que capta qualquer mencao textual a inspecao anterior, mas poderia teoricamente perder um caso que evite todo o vocabulario testado (ex.: uma unidade que diga so 'em 2023 constatou-se X, agora resolvido' sem nenhuma das palavras-chave 'inspecao', 'anterior', 'ultima', 'reiterad-', 'cumprid-', 'pendente', 'permanece', 'ja determinado' por perto -- nao testado por amostragem adicional alem dos ~30 padroes ja cobertos).",
+  "As paginas citadas no campo 'pagina' sao as paginas do arquivo PDF (contagem PyMuPDF, pagina 1 = primeira pagina fisica), nao o campo 'Num. XXXXXXX - Pág. YYYY' que o proprio CNJ carimba no rodape (que e o numero de pagina do PROCESSO CNJ, nao do PDF) -- os dois divergem por cerca de 2 paginas no relatorio de 2026 porque o carimbo de assinatura eletronica ocupa parte do rodape de cada pagina.",
+  "2012 e 2019 tiveram cobertura de leitura manual de 100% dos blocos de acerto (14 e 15 blocos respectivamente); 2026 teve 104 blocos, todos lidos, mas o volume (1388 paginas) significa maior chance de erro humano de classificacao do que nos dois anos menores."
+ ],
+ "regraDaCasa_CPF": "Nenhum CPF aparece em nenhum dos textos coletados neste arquivo -- os trechos sao todos sobre determinacoes institucionais/administrativas (nao tabelas de pessoal), entao nao houve necessidade de redacao. Nomes de desembargadores/magistrados/servidores que aparecem (ex.: 'Desembargadora Lílian Maciel Santos', 'Marcelo Cândido da Costa') estao la porque atuam em funcao publica dentro de um relatorio oficial do CNJ, na mesma logica ja usada nos arquivos pendencias-2022.json e pendencias-2023.json existentes."
+}
