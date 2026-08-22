@@ -124,6 +124,65 @@ export default async function Home() {
         </Link>
       </section>
 
+      {/* ═══ A OUTRA METADE DO EIXO ═══
+          As três telas acima respondem QUEM OCUPA A CADEIRA. Estas quatro
+          respondem SE A INSTITUIÇÃO ESTÁ FUNCIONANDO — que é a pergunta de
+          quem tem processo parado, parente preso ou nenhum defensor na
+          comarca. Ficam num bloco próprio porque são de outra natureza:
+          composição contra fiscalização. */}
+      <section aria-labelledby="fiscalizacao" className="mt-2">
+        <h2 id="fiscalizacao" className="font-display text-lg font-semibold">
+          E se a instituição está funcionando
+        </h2>
+        <p className="mt-1 text-sm opacity-70">
+          Saber quem ocupa a cadeira é metade. A outra é o que acontece — ou não acontece — no
+          dia a dia do tribunal, da Defensoria e da prisão.
+        </p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          {[
+            {
+              href: "/inspecoes",
+              titulo: "O que o CNJ encontrou no TJMG",
+              texto:
+                "13 relatórios de inspeção, de 2012 a 2026, unidade por unidade — inclusive os gabinetes, com nome.",
+            },
+            {
+              href: "/defensoria",
+              titulo: "Tem Defensoria na sua comarca?",
+              texto:
+                "Das 298 comarcas de Minas, 176 não têm defensor público nenhum. Busque a sua.",
+            },
+            {
+              href: "/presidios",
+              titulo: "Quem fiscaliza a prisão",
+              texto:
+                "285 estabelecimentos penais e 2.253 inspeções judiciais em 12 meses — e onde a fiscalização não chega.",
+            },
+            {
+              href: "/numeros",
+              titulo: "Quanto demora um processo",
+              texto:
+                "De cada 10 processos que o TJMG tinha para resolver em 2025, 7 continuaram parados.",
+            },
+            {
+              href: "/correicoes-trabalhistas",
+              titulo: "A Justiça do Trabalho em Minas",
+              texto:
+                "18 atas de correição no TRT-3, de 1991 a 2024 — e quem as faz não é o CNJ.",
+            },
+          ].map((c) => (
+            <Link
+              key={c.href}
+              href={c.href}
+              className="rounded-lg border border-[var(--cp-border)] p-5 hover:border-[var(--cp-primary)]"
+            >
+              <h3 className="font-display text-lg font-semibold">{c.titulo}</h3>
+              <p className="mt-1 text-sm opacity-70">{c.texto}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="rounded-lg border border-[var(--cp-border)] p-5 text-sm">
         <p className="opacity-80">
           Quer entender como cada número é calculado — sem chute, sem opinião escondida?
