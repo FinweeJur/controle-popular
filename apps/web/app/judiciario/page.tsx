@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "@/lib/judiciario/link";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import FotoBrasilComS from "@/app/components/FotoBrasilComS";
@@ -5,6 +6,12 @@ import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import { listarTribunais, proximasVacancias, listarNomeacoes } from "@/lib/judiciario/tribunais";
 import { rotuloResultado } from "@/lib/judiciario/rotulos";
 import FonteRodape, { FONTE_SENADO, FONTE_REGUA } from "@/app/judiciario/components/FonteRodape";
+
+export const metadata: Metadata = {
+  title: "Judiciário brasileiro: ministros, indicações e próximas vagas — Controle Popular",
+  description:
+    "Acompanhe quem ocupa cada tribunal, quem indicou cada ministro, quando vaga cada cadeira e como o Judiciário é fiscalizado.",
+};
 
 const fmtData = (d: string | null) =>
   d ? new Date(d + "T00:00:00").toLocaleDateString("pt-BR") : "—";

@@ -1,4 +1,5 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
+import { metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import PainelAdmin from "./PainelAdmin";
 
 /**
@@ -29,6 +30,12 @@ import PainelAdmin from "./PainelAdmin";
 export async function generateStaticParams() {
   return paramsDasCidades();
 }
+
+export const generateMetadata = metadataDaCidade(
+  (c) => `Painel administrativo — ${nomePortal(c)}`,
+  () => "Painel interno de edição de conteúdo do portal.",
+  "/admin"
+);
 
 export default function AdminPage() {
   return <PainelAdmin />;
