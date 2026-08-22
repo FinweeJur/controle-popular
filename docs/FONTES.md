@@ -257,6 +257,34 @@ Implementado em 21/08/2026: `apps/web/lib/judiciario/datajud.ts` (tipo + parser 
 
 **Status:** rota e lib prontas, com teste do parser sobre fixture escrita à mão (formato dos exemplos oficiais da wiki, nunca acervo real). Nenhuma tela do portal consome esta rota ainda — falta a página que a chama do lado do cliente.
 
+## Biblioteca de inspeções da Corregedoria Nacional (CNJ) — 330 relatórios onde a sondagem viu "nada"
+
+Medido em 2026-08-22. Coletor: `etl/betim/etl/apis/cnj_inspecoes.py`.
+
+**A lição vem antes do endpoint: medir a página que fala do assunto não mede a fonte.** A sondagem de transparência da Justiça reprovou a frente correicional inteira depois de bater nas páginas institucionais do CNJ sobre inspeções e correições — 270 KB e 275 KB de HTML linkando **regimento interno e organograma**, zero achado consultável. O veredito estava certo sobre aquelas páginas e errado sobre o CNJ: o acervo mora na **biblioteca de documentos do WordPress** (plugin WPFD), a uma rota de distância, sem login e sem captcha.
+
+**A rota.** `GET https://www.cnj.jus.br/wp-admin/admin-ajax.php?juwpfisadmin=false&action=wpfd&task=files.getFiles&view=files&id=<categoriaId>` — devolve **JSON puro**, uma categoria por órgão. Medido: **33 categorias de órgão, 330 relatórios em PDF, ~1,7 GB, série de 2008 a 2026**. TJMG é `id=2664`, com 13 relatórios (2012→2026, 65,6 MB).
+
+**⚠️ Os ids NÃO são contíguos, e isso quase produziu um erro silencioso.** A primeira varredura cobriu 2630–2700, encontrou o bloco alfabético dos TJs em 2650–2678 e pareceu completa. **Não era:** o TJ de Roraima mora sozinho no **2796**, a 118 ids do bloco. Publicar "27 tribunais" faltando um não teria dado sinal nenhum. A faixa varrida hoje é 2400–2950 (551 ids) e fica **gravada no próprio dado**, porque contagem sem faixa mente por omissão — a contagem é piso, não total.
+
+**⚠️ Não há rota de listagem de categorias.** `task=categories.getCategories` responde **HTTP 500** ("Há um erro crítico no seu site"), `task=category.getCategories` responde `{"category":false}`, e `task=files.search` / `&search=` respondem `{"files":[]}` para qualquer termo — filtro que não existe, aceito e ignorado. O universo só se descobre varrendo id.
+
+**⚠️ O `token` da URL de download ROTACIONA.** A URL que um humano copia do navegador traz `&token=56ae71a6…&preview=1`; a mesma consulta à API, minutos depois, devolve `&token=89a9bcdb…`. Guardar essa URL é guardar link que morre. O campo **`linkdownload` do próprio JSON é permalink sem token** — `https://www.cnj.jus.br/download/<catId>/<slug-do-orgao>/<fileId>/<slug-do-arquivo>` — conferido byte a byte contra a URL com token: mesmo arquivo, 14.970.417 bytes. **Só o `linkdownload` entra no dado.**
+
+**⚠️ O CNJ publica CPF de pessoa física dentro do relatório.** No TJMG 2026, **6 ocorrências válidas por mod-11**, de particulares — nome completo ao lado do CPF, em atos de cartório (compradores e vendedores de um lote; um delegatário com pendências fiscais), na seção de serventias extrajudiciais. Não é hipótese nem falso positivo: passam no dígito verificador. **Decisão do projeto (22/08/2026): não publicar e não comunicar ao órgão** — fica só a salvaguarda técnica, e ela é tripla: redação na origem por mod-11 **sobre o texto** (nunca por rótulo de campo, que mente), **o PDF original não é espelhado**, e o que se publica é resumo próprio com link para a origem.
+
+**⚠️ A capa contradiz a publicação.** O cabeçalho PJe do relatório do TJMG 2026 diz **"Segredo de justiça? SIM"**, e mesmo assim o CNJ serve o arquivo aberto na própria biblioteca. É contradição do órgão, não nossa — e é mais um motivo para publicar extrato com link, nunca cópia.
+
+**O que o relatório do TJMG 2026 entrega.** 1.388 páginas, **2,9 milhões de caracteres de texto extraível** (não é digitalizado). Processo CNJ `0000675-79.2026.2.00.0000`, Portaria nº 3 de 02/02/2026, assinado em 08/07/2026. **241 seções** de "Achados e Determinações"/"Recomendações" lidas contra **247 que o sumário lista** (97,6%); **140 com conteúdo**, 101 dizendo que não há. Granularidade que ninguém publica: **36 gabinetes de desembargador nomeados**, **76 varas**, mais seção inteira sobre unidades prisionais.
+
+**⚠️ Só o relatório de 2026 usa "Achados e Determinações".** Medido nos 13 do TJMG: os demais anos marcam `DETERMINAÇÃO`/`RECOMENDAÇÃO` sem seção nomeada, e **`Relatorio_Inspecao_Sistema_Judiciais_Processuais_TJMG_2017.pdf` tem ZERO caractere** — é digitalizado, e sem OCR não há o que extrair. Um extrator escrito só contra 2026 devolveria vazio nos outros anos **sem erro nenhum**.
+
+**A trava obrigatória, e o erro que ela pegou.** No corpo, o cabeçalho de unidade **quebra em várias linhas** — às vezes uma palavra por linha (`4.6. / GABINETE / DO / DESEMBARGADOR / DELVAN / BARCELOS JUNIOR`). Casar título por linha falha em silêncio e a seção **herda a unidade anterior — atribuindo o achado ao desembargador errado** (medido: as seções 4.6.x saíam com o nome da desembargadora do 4.5). A correção é ancorar no **sumário do próprio documento** e **parar** se o corpo render menos de 90% das seções que o sumário lista. É a mesma tática que pegou o pareamento errado no relatório do JUSTA — todo PDF de layout precisa de um segundo olhar vindo do próprio documento.
+
+**⚠️ E "Não há." tem variantes.** `Não há achados dignos de registro que decorram da análise dos processos inspecionados.` e `Não há, no sentir da Equipe de Inspeção, recomendações a serem feitas…`. Casar só a forma literal contava 63 seções vazias; casando as variantes são **101**. A diferença não é cosmética: publicar "178 seções com achado" quando a maioria diz que não achou nada é deturpar o documento.
+
+**Fora do acervo, por competência:** não há inspeção da Corregedoria Nacional sobre **STJ, TST nem STF** — a varredura de 551 ids não achou categoria para nenhum deles, e o Regulamento Geral da Corregedoria Nacional descreve inspeção sobre órgãos jurisdicionais de **primeiro ou segundo grau**. **TRT-3 (MG) também não está lá**: quem correiciona TRT é a Corregedoria-Geral da Justiça do Trabalho, órgão do TST, e o produto chama-se **ata de correição**, publicada no TST/CSJT e na biblioteca digital DSpace do próprio TRT-3. Só quatro TRTs (7ª, 11ª, 13ª e 14ª) aparecem na biblioteca do CNJ, com um arquivo cada.
+
 ## Google Drive como repositório de documento público — as quatro armadilhas
 
 Coleta dos EIA/RIMA das audiências do SISEMA, fechada em 2026-08-22: **2.438 arquivos, 19,55 GB**. O Estado não hospeda o estudo — publica um link para a nuvem do empreendedor, e a maioria é Google Drive. Quatro armadilhas custaram horas cada, e nenhuma se anuncia.
