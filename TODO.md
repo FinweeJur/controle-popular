@@ -39,31 +39,38 @@
   · `/ambiental/licenciamento` e `/copam` têm as cinco coisas no código mas
   renderizam vazio enquanto a Neon estiver em 402 — não é regressão.
 
-- **As 4 trilhas paralelas de 22/08 — IMPLEMENTADAS EM BRANCH, nenhuma
-  mesclada nem publicada.** Rodaram simultâneas via workflow (4 agentes,
-  466 chamadas de ferramenta, 0 erro). Cada uma na própria branch (mesmo nome
-  do worktree), acima de `02e73d5`. **Falta uma sessão revisar e decidir
-  mesclar** — nenhuma foi rebasada contra o que a sessão da justiça publicar
-  daqui pra frente.
+- **As 4 trilhas paralelas de 22/08 — MESCLADAS em `main` (local, sem
+  push ainda).** Rodaram simultâneas via workflow (4 agentes, 466 chamadas de
+  ferramenta, 0 erro), cada uma na própria branch, depois mescladas uma a uma
+  com `git merge --no-ff` (dois conflitos, os dois no padrão já documentado
+  em `docs/DESENVOLVIMENTO.md` — `.gitignore`/`launch.json`: manter as duas
+  entradas; `docs/ESTADO.md`: reconciliado à mão, mantendo a versão mais
+  completa e atualizando o número para o real). `npm test` na `main`
+  mescladada achou 1 falha real (não de lógica): timeout do teste do Ollama
+  curto demais pro cold-start que o próprio `ollama.ts` já documentava —
+  corrigido (`92dd276`). **Estado final: 1036 vitest + 141 globo, 0 falhas;
+  `tsc --noEmit` limpo.**
 
-  · **`diario-oficial`** (9 commits) — coletor `etl/betim/etl/camaras/sigpub.py`
-  + classificador portado pra Python (`etl/betim/etl/diario.py`, 70/70 contra
-  a mesma fixture do teste TS) + migration nova `0079` (ids de entidade).
-  ✅ O conflito dos dois relatos do mecanismo se resolveu: a migration `0077`
-  estava certa (GET + sessão + token CSRF reutilizável); o relato de 11/08
-  errava nome de campo e filtro, não mecanismo. ⚠️ Corrigiu a `0077` num
-  ponto: `pagina` nunca vem preenchida, só `edicao`. Medido ao vivo: **196
-  matérias da Prefeitura (id 905) + 11 da Câmara (id 21672) só em julho/2026**,
-  conferido contra o total que a própria fonte declara. **Achados que pedem
-  decisão:**
-  · classificador caiu em "outro" em 16% dos títulos reais (32/196) — bem
-  acima dos 4% da calibração original; duas causas já identificadas — chip
-  `task_f4a38f90` já registrado pra decidir.
-  · SIGPub de Diamantina tem matéria desde pelo menos **janeiro/2015** — quanto
-  de histórico coletar (só daqui pra frente, ou backfill) é decisão do dono,
-  não resolvida.
-  · migration `0079` nunca foi aplicada em banco nenhum; `_gravar_atos()`
-  existe mas nunca gravou uma linha real (sem `DATABASE_URL` neste worktree).
+  · **`diario-oficial`** (5 commits, o último de um chip rodando em paralelo
+  — ver abaixo) — coletor `etl/betim/etl/camaras/sigpub.py` + classificador
+  portado pra Python. ✅ O conflito dos dois relatos do mecanismo se
+  resolveu: a migration `0077` estava certa (GET + sessão + token CSRF
+  reutilizável); o relato de 11/08 errava nome de campo e filtro, não
+  mecanismo. ⚠️ Corrigiu a `0077` num ponto: `pagina` nunca vem preenchida,
+  só `edicao`. Medido ao vivo: 196 matérias da Prefeitura (id 905) + 11 da
+  Câmara (id 21672) só em julho/2026. ✅ **Backfill decidido: desde
+  01/2020** ("penúltima gestão municipal") — ainda não executado (precisa de
+  banco; coleta de horas, não minutos). ✅ **Gap do classificador fechado
+  pelo chip `task_f4a38f90`**: "outro" caiu de 16% (32/196) para 5,6%
+  (11/196) — fixture cresceu para 75 títulos reais. **Pendência real:**
+  migration `0079` (ids de entidade) nunca aplicada em banco nenhum;
+  `_gravar_atos()` nunca gravou uma linha de verdade.
+  · **Proposta nova registrada**: `docs/planos/diario-oficial-plano.md`
+  ganhou uma seção inteira ("Proposta") sobre o que estruturar além dos 7
+  tipos — encadear processo/contrato pelos aditivos, dispensa/inexigibilidade
+  como subtipo, buracos na numeração sequencial, concentração de fornecedor,
+  subtipo de pessoal, ritmo temporal do mandato, comparação entre cidades —
+  com exemplo real de título para cada eixo. Nada implementado ainda.
 
   · **`cabecalho-zonas`** (9 commits) — Paraopeba ganhou `layout.tsx` de zona
   de verdade (⚠️ tem **11 subpáginas**, não 9 como esta mesma entrada dizia
@@ -76,7 +83,7 @@
   margem, zero corte. De quebra corrigiu um `<main>` sem `id`/`tabIndex` em
   `/paraopeba/pericia` (único das 12 rotas sem isso) e um bug real de sintaxe
   JSX que quebrava aquela rota com 500 (achado rodando o servidor de verdade,
-  não só por `tsc`). `npm test`: 996 vitest + 141 globo, 0 falhas.
+  não só por `tsc`).
 
   · **`home-orientacao`** (2 commits) — linha acima do grid, contraste medido
   nos 3 temas (7,08:1 claro / 8,30:1 escuro / 21:1 alto-contraste — todos
@@ -88,10 +95,16 @@
   barragem de Fundão): 3 de 4 perguntas acertaram o trecho certo por
   similaridade; a 4ª ("qual norma foi revogada?") **não** acertou — achado
   honesto, documentado no código, fora das asserções: busca semântica não
-  substitui casamento de palavra-chave. `npm test`: 1034 vitest + 141 globo,
-  0 falhas. **Achado de segurança relevante:** a guarda de dado pessoal
-  (`checar-dado-pessoal-em-dado.py`) não cobre `etl/betim/dados/` — só
-  `apps/web/data/` e `docs/dados/` — chip `task_dae5f906` já registrado.
+  substitui casamento de palavra-chave. **Achado de segurança relevante:** a
+  guarda de dado pessoal (`checar-dado-pessoal-em-dado.py`) não cobre
+  `etl/betim/dados/` — só `apps/web/data/` e `docs/dados/` — chip
+  `task_dae5f906` já rodando (1 commit até agora, numa branch própria,
+  `claude/strange-rosalind-9d4f9b`, ainda não revisada nem mesclada aqui).
+
+  · **Os dois chips continuam rodando em sessões independentes** — não fazem
+  parte deste merge. Quando terminarem: `task_f4a38f90` já mesclado (seu
+  commit ficou na própria branch `diario-oficial`, que subiu junto);
+  `task_dae5f906` segue em `claude/strange-rosalind-9d4f9b`, à parte.
 
 ## Esperando data
 
