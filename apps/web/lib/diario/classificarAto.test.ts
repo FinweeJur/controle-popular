@@ -7,14 +7,24 @@ import { classificarAto, normalizarTituloAto, type TipoAto } from "./classificar
 
 /**
  * Calibração contra títulos REAIS do diário oficial de Diamantina
- * (Prefeitura e Câmara, via SIGPub/AMM-MG; extração em 16/08/2026).
+ * (Prefeitura e Câmara, via SIGPub/AMM-MG; extração em 16/08/2026, mais 5
+ * títulos de 22/08/2026 — ver abaixo).
  *
- * Os 70 títulos de `fixtures/diamantina-70-titulos.json` foram lidos um a um
- * e rotulados à mão (coluna `esperado`). Quem muda uma regra do classificador
- * tem que passar nesta amostra inteira — é a mesma disciplina de
- * `etl/betim/etl/temas.py`, calibrado contra ementas reais.
+ * Os 70 títulos originais de `fixtures/diamantina-75-titulos.json` foram
+ * lidos um a um e rotulados à mão (coluna `esperado`). Quem muda uma regra do
+ * classificador tem que passar nesta amostra inteira — é a mesma disciplina
+ * de `etl/betim/etl/temas.py`, calibrado contra ementas reais.
  *
- * A fração que importa: 67 dos 70 (95,7%) recebem tipo ≠ `outro`. O pior modo
+ * Os outros 5 vieram de rodar `--sondar` contra as 196 matérias REAIS de
+ * julho/2026 (não só a amostra de 70): 32/196 (16%) caíam em "outro", bem
+ * acima do ~4% esperado. Duas causas cobriam 21 dessas 32: "ATA DE REGISTRO
+ * DE PREÇO" (instrumento de licitação, mas sem a palavra "LICIT") e "EXTRATO
+ * DO TERMO DE RATIFICAÇÃO" isolado, sem o "DE DISPENSA DE LICITAÇÃO" que o
+ * único exemplo anterior sempre trazia junto. `PALAVRAS_DE_LICITACAO` ganhou
+ * as duas, e estes 5 títulos provam a correção contra o texto real que
+ * motivou a mudança — não um título inventado para caber na regra.
+ *
+ * A fração que importa: 72 dos 75 (96%) recebem tipo ≠ `outro`. O pior modo
  * de falha do classificador é virar "outro" demais (o aviso do plano:
  * Diamantina ficou com 9% só nos temas; a regex não pode repetir isso).
  */
@@ -27,10 +37,10 @@ interface Amostra {
 }
 
 const AMOSTRA: Amostra[] = JSON.parse(
-  readFileSync(path.join(__dirname, "fixtures", "diamantina-70-titulos.json"), "utf-8")
+  readFileSync(path.join(__dirname, "fixtures", "diamantina-75-titulos.json"), "utf-8")
 ) as Amostra[];
 
-describe("amostra real de Diamantina — 70 títulos", () => {
+describe("amostra real de Diamantina — 75 títulos", () => {
   test("toda a amostra é classificada como esperado", () => {
     const erros: string[] = [];
     for (const a of AMOSTRA) {
@@ -56,6 +66,15 @@ describe("casos de borda das regras", () => {
 
   test("homologação de processo LICITATÓRIO é edital", () => {
     expect(classificarAto("TERMO DE HOMOLOGAÇÃO AO PROCESSO LICITATÓRIO 08/2026")).toBe("edital");
+  });
+
+  test("ata de registro de preço é edital mesmo sem nenhuma palavra de licitação", () => {
+    expect(classificarAto("EXTRATO: ATA DE REGISTRO DE PREÇO N° 043/2026")).toBe("edital");
+    expect(classificarAto("INTENÇÃO DE REGISTRO DE PREÇOS 015/2026")).toBe("edital");
+  });
+
+  test("termo de ratificação isolado é edital, sem precisar de 'DE DISPENSA DE LICITAÇÃO' junto", () => {
+    expect(classificarAto("EXTRATO DO TERMO DE RATIFICAÇÃO")).toBe("edital");
   });
 
   test("aditivo de convênio é convênio mesmo sem a palavra convênio", () => {

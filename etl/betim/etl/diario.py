@@ -23,7 +23,7 @@ classificar cada título seria uma dependência de runtime cruzada só para
 nove regras de regex — mais frágil que portar a lógica (curta, auditável) e
 CONFERIR a fidelidade do port contra a MESMA fixture de calibração que o
 teste TypeScript usa (`etl/diario_test.py`, que lê
-`apps/web/lib/diario/fixtures/diamantina-70-titulos.json` diretamente — não
+`apps/web/lib/diario/fixtures/diamantina-75-titulos.json` diretamente — não
 uma cópia, para as duas linguagens nunca divergirem sem que um teste acuse).
 
 ═══ A ORDEM DAS REGRAS É DECISÃO, NÃO ACASO (herdado do TS) ═══
@@ -64,6 +64,12 @@ ROTULOS_TIPO: dict[str, str] = {
 
 # Palavras que marcam o processo de licitação, em ordem de leitura — igual a
 # `PALAVRAS_DE_LICITACAO` em classificarAto.ts.
+#
+# "REGISTRO DE PRECO" e "RATIFICACAO" entraram em 22/08/2026: medidas contra
+# as 196 matérias reais de julho/2026 da Prefeitura de Diamantina (não só a
+# amostra de 70 já calibrada), 32/196 (16%) caíam em "outro" — bem acima do
+# ~4% da amostra original. Ver o mesmo comentário, com o número medido
+# completo, em `classificarAto.ts`.
 _PALAVRAS_DE_LICITACAO: tuple[str, ...] = (
     "LICIT",
     "EDITAL",
@@ -74,6 +80,8 @@ _PALAVRAS_DE_LICITACAO: tuple[str, ...] = (
     "HOMOLOGACAO",
     "ADJUDICACAO",
     "IMPUGNACAO",
+    "REGISTRO DE PRECO",
+    "RATIFICACAO",
 )
 
 # Palavras isoladas (não substring) — o TS usa `\bCONVENIO\b` e

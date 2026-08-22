@@ -1,7 +1,10 @@
-r"""etl.diario_test — calibração de `classificar_ato` contra os MESMOS 70
-títulos reais que `apps/web/lib/diario/classificarAto.test.ts` usa.
+r"""etl.diario_test — calibração de `classificar_ato` contra os MESMOS 75
+títulos reais que `apps/web/lib/diario/classificarAto.test.ts` usa (70 da
+calibração original de 16/08/2026 + 5 de 22/08/2026 que fecharam o gap de
+"outro" medido contra as 196 matérias reais de julho/2026 — ver
+`_PALAVRAS_DE_LICITACAO` em `etl/diario.py`).
 
-Lê `apps/web/lib/diario/fixtures/diamantina-70-titulos.json` DIRETO da
+Lê `apps/web/lib/diario/fixtures/diamantina-75-titulos.json` DIRETO da
 origem (não uma cópia): o port em `etl/diario.py` tem de bater com a
 calibração original título por título, e duplicar a fixture criaria duas
 fontes de verdade que podem divergir em silêncio na próxima vez que alguém
@@ -31,7 +34,7 @@ FIXTURE = (
     / "lib"
     / "diario"
     / "fixtures"
-    / "diamantina-70-titulos.json"
+    / "diamantina-75-titulos.json"
 )
 
 
@@ -61,10 +64,10 @@ def test_95_por_cento_ou_mais_recebe_tipo_distinto_de_outro():
     assert com_tipo / len(amostra) >= 0.95
 
 
-def test_fixture_tem_pelo_menos_70_titulos():
+def test_fixture_tem_pelo_menos_75_titulos():
     # Guarda contra fixture truncada por engano — a calibração citada no
-    # cabeçalho do classificador TS e no coletor SIGPub é "70 títulos".
-    assert len(_amostra()) >= 70
+    # cabeçalho do classificador TS e no coletor SIGPub é "75 títulos".
+    assert len(_amostra()) >= 75
 
 
 # ───────────────────────── casos de borda das regras ─────────────────────
@@ -77,6 +80,15 @@ def test_homologacao_de_contrato_e_contrato_nao_edital():
 
 def test_homologacao_de_processo_licitatorio_e_edital():
     assert classificar_ato("TERMO DE HOMOLOGAÇÃO AO PROCESSO LICITATÓRIO 08/2026") == "edital"
+
+
+def test_ata_de_registro_de_preco_e_edital_mesmo_sem_nenhuma_palavra_de_licitacao():
+    assert classificar_ato("EXTRATO: ATA DE REGISTRO DE PREÇO N° 043/2026") == "edital"
+    assert classificar_ato("INTENÇÃO DE REGISTRO DE PREÇOS 015/2026") == "edital"
+
+
+def test_termo_de_ratificacao_isolado_e_edital_sem_precisar_de_dispensa_de_licitacao_junto():
+    assert classificar_ato("EXTRATO DO TERMO DE RATIFICAÇÃO") == "edital"
 
 
 def test_aditivo_de_convenio_e_convenio_mesmo_sem_a_palavra_convenio():

@@ -57,7 +57,7 @@ duas entidades da cidade, uma de cada vez, sob o MESMO `id_municipio`.
    `_token` → 0 resultados; (c) GET com cookie válido mas token ERRADO/de
    outra sessão → 0 resultados; (d) GET com cookie + o `_token` extraído da
    MESMA resposta que deu o cookie → **10 matérias reais**, batendo palavra
-   por palavra com `apps/web/lib/diario/fixtures/diamantina-70-titulos.json`.
+   por palavra com `apps/web/lib/diario/fixtures/diamantina-75-titulos.json`.
    Nos quatro casos o servidor responde HTTP 200 e a MESMA string estática
    "NENHUMA MATÉRIA ENCONTRADA PARA ESTA DATA" (ver armadilha 3) — a falha é
    silenciosa, nunca um erro. E o token (d) foi **reutilizado com sucesso em

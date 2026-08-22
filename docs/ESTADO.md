@@ -53,7 +53,7 @@ no Conecta gov.br (item 16); resumo por modelo do AJRI (item 17).
 **Agora (destravado pelas decisões de 22/08):**
 
 1. ~~**Restaurar o ETL da FGV**~~ — ✅ **feito em 22/08** (`git restore`). Os dois arquivos estavam apagados no diretório de trabalho, sem commit e sem decisão, com `.github/workflows/etl-betim.yml:359` ainda chamando o módulo.
-2. **Diário oficial D1** — coletor SIGPub (Diamantina), com o corte da decisão 1. Migration `0077` e classificador (`lib/diario/classificarAto.ts`, 67/70 títulos reais) já estão prontos. **É o maior item destravado hoje.**
+2. **Diário oficial D1** — coletor SIGPub (Diamantina), com o corte da decisão 1. Migration `0077` e classificador (`lib/diario/classificarAto.ts`, 72/75 títulos reais) já estão prontos. **É o maior item destravado hoje.**
 3. ~~**Itinga no `diario_oficial`**~~ — ✅ **feito em 22/08** (`08998ea`), e a mesma passada achou um segundo erro: **Araçuaí apontava para `diariomunicipal.com.br/amm-mg`**, o portal da Associação Mineira de Municípios, e não para o diário da cidade — o mapeamento de 16/08 já media que só Diamantina bate limpo com SIGPub. Corrigido para `aracuai.mg.gov.br/diario-oficial-categorias` (HTTP 200 medido em 22/08). É a mesma família do crítico #2 de 17/08, sobrevivendo numa cidade que ninguém reconferiu.
 4. **Cabeçalho enxuto em Terras e Paraopeba** — a régua `outrasZonas()` já existe e está pronta para alimentar o que for escolhido; falta só o layout.
 5. **Linha de orientação na home** — uma linha de texto acima do grid, sem tocar nos 6 cards.
