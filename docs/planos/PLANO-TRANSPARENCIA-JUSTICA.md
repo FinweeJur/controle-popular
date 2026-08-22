@@ -3,9 +3,10 @@
 > **Aberto em 2026-08-22.** A pergunta que originou: *"além da parte financeira
 > de MP, DP e TJ, o que podemos fazer sobre transparência?"*
 >
-> **Estado:** sondagem em curso contra as fontes reais. Os números marcados
-> ⏳ ainda não foram medidos — **não citar em tela antes de medir.** Este
-> documento nasce declarando o que ainda não sabe, em vez de estimar.
+> **Estado em 2026-08-22, fim do dia: sondagem FECHADA.** As quatro frentes
+> foram medidas contra as fontes reais — 5 agentes, 295 chamadas de ferramenta,
+> ~29 endpoints batidos. Todo número abaixo tem origem medida e data. O que
+> não foi medido está dito com todas as letras.
 
 ---
 
@@ -17,6 +18,9 @@
 
 Trabalhar em worktree próprio. `git fetch` antes de descrever ou editar.
 
+⚠️ **O socket do Python é barrado nesta máquina** (`WinError 10013`): `requests`
+e `urllib` falham mesmo com a fonte no ar. Sondar e coletar com **`curl`**.
+
 ---
 
 ## 1. O que já existe, e que este plano NÃO refaz
@@ -24,7 +28,7 @@ Trabalhar em worktree próprio. `git fetch` antes de descrever ou editar.
 | Já no ar | O que cobre |
 |---|---|
 | `/judiciario` — indicações, vagas, tribunais | **Quem ocupa a cadeira**: composição, quinto constitucional, vaga livre |
-| Proxy do DataJud (`/api/datajud`) | **Consulta ao vivo** de processo. Não baixa, não guarda, não republica — cláusulas 3.8/3.9 da licença do CNJ |
+| Proxy do DataJud (`/api/datajud`) | **Consulta ao vivo** de processo. Não baixa, não guarda, não republica — ver §7 |
 | `/ambiental/decisoes-lai` — 753 decisões da CGE-MG | O único corpus de LAI de MG legível em texto |
 | Rede de proteção de MG (30 itens curados) | Onde a pessoa encontra Defensoria, MPMG, delegacia especializada |
 
@@ -35,101 +39,335 @@ quem fica de fora.
 
 ---
 
-## 2. As quatro frentes sondadas
+## 2. As três frentes que valem construir (ordem de execução)
 
-### A. Produtividade e acervo — *a prestação de contas mais básica, e a menos olhada*
+A sondagem mediu quatro frentes e reprovou uma inteira (a disciplinar, §4). O
+que sobrou vai na ordem abaixo, que é ordem de **valor por custo**, não de
+elegância.
 
-Fontes: Justiça em Números (CNJ), Módulo de Produtividade Mensal, painéis do
-CNJ, Metas Nacionais.
+### 1ª — Cobertura da Defensoria por comarca ⭐ *a de melhor razão custo/valor*
 
-**Pergunta que passa a responder:** quanto tempo um processo leva no TJMG,
-quanto acervo se acumula, e quantos casos cada magistrado carrega — comparável
-entre tribunais, e não só no PDF anual.
+Três arquivos, nenhum login, nenhum PDF.
 
-⏳ *Medindo:* há CSV/API ou só relatório em PDF; se o painel tem endpoint por
-trás; se o TJMG é isolável.
+| Fonte | Medido |
+|---|---|
+| `defensoria.mg.def.br/wp-json/api-unidades/search?s=` | 11.481 bytes, **129 unidades (128 comarcas em MG)**, uma chamada só, sem paginação |
+| `gerais.defensoria.mg.def.br/localizacao/.../municipio/<uuid>` | 81.758 bytes, **854 municípios**, 297 com `codigoComarcaTjMg` |
+| Pesquisa Nacional 2025 (XLSX, aba Comarcas) | 2,66 MB — **298 comarcas em MG, 120 atendidas**, 178 marcadas "NÃO" **com nome e população** |
+| IPEA 2013 (ZIP 315.063 bytes, CSV ISO-8859-1) | 295 comarcas, **105 com Defensoria** — fecha a série histórica |
 
-### B. Controle disciplinar — *o que acontece quando um juiz ou promotor erra*
+**Este é o denominador que faltava.** Com ele, "109 comarcas atendidas" deixa
+de parecer cobertura boa e vira **déficit de ~57%**. E a série mostra o ritmo:
+**13 anos para sair de 105 para 128 — ~1,8 comarca por ano.** No ritmo medido,
+cobrir as restantes levaria perto de um século.
 
-Fontes: Corregedoria Nacional de Justiça (PADs contra magistrados), CNMP
-(membros do MP), corregedorias do TJMG e do MPMG.
+**Pergunta que passa a responder:** *"Tem Defensoria na minha comarca — e, se
+não tem, para onde eu vou e há quanto tempo estou esperando?"* Ninguém responde
+isso hoje: a DPMG lista as 128 que tem e nunca diz quantas faltam.
 
-**Pergunta:** quantos processos disciplinares existem, quantos terminam em
-punição, e quanto demoram.
+⚠️ **Duas armadilhas medidas:** a planilha só baixa com headers de navegador
+(`curl` cru = **HTTP 406**); e os dois endpoints da DPMG foram achados no bundle
+JS (`main-B2qpQCFJ.js`), **não são API anunciada** — copiar o dado para o nosso
+banco, nunca depender deles em runtime.
 
-⚠️ **Dado pessoal decide o desenho aqui.** Processo disciplinar nomeia pessoa
-física. Medir o que existe é uma coisa; publicar nome é decisão editorial que
-vem depois, e a regra da casa é conservadora. Ver [[flag_de_pessoa_fisica_mente]].
+### 2ª — Inspeções judiciais em presídios (CNIEP / Geopresídios)
 
-### C. Ouvidoria e acesso à informação — *quanta gente reclama, do quê, e o órgão responde*
+**A única fonte viva e estruturada da sondagem inteira.** JSON puro, sem login,
+atualização mensal.
 
-Fontes: ouvidorias do TJMG, MPMG e DPMG; Ouvidoria Nacional de Justiça;
-Ouvidoria Nacional do CNMP; Resolução CNJ 215 e Resolução CNMP 89 (o que elas
-*obrigam* a publicar).
+| Rota | Medido |
+|---|---|
+| `/api/geopresidios/estabelecimentos` | 393.928 bytes — 7.085 no Brasil, **285 em MG** (2º maior do país) |
+| `/api/geopresidios/inspecoes` | 2.238.486 bytes — 20.298 inspeções (set/2025 a ago/2026), **~2.253 em MG** (~11% do nacional) |
+| `/api/geopresidios/mapa` | 497.453 bytes — lat/long e código IBGE, **insumo pronto para o globo 3D** |
 
-**Já medido, e é o gancho:** o e-SIC central da CGE-MG **exige login gov.br**;
-o RSS do TJMG e do MPMG **respondem 404**; a **DPMG nunca foi verificada** —
-está marcada como lacuna em `docs/FONTES.md` desde 13/08.
+Cada inspeção traz o tema pelos cinco eixos da Res. CNJ 593/2024
+(segurança/violência, saúde, habitabilidade, serviços, gerais), data e tribunal.
 
-**Pergunta:** o órgão cumpre a própria resolução de transparência?
+**Não colide com `/judiciario`:** aquele é *quem senta na cadeira*; este é *o
+que o juiz corregedor foi — ou não foi — fiscalizar*.
 
-### D. Porta de entrada — *o lado de quem PRECISA da justiça*
+**O produto mais forte sai do cruzamento 285 × 2.253: quais estabelecimentos de
+MG não receberam inspeção nenhuma em 12 meses.** Essa pergunta não é respondida
+por ninguém hoje, nem pelo próprio CNJ.
 
-Fontes: cobertura da Defensoria em MG (comarcas atendidas × total), Mapa da
-Defensoria (ANADEP/IPEA), audiências de custódia (SISTAC), BNMP.
+⚠️ **Defeito medido que decide o recorte:** o *conteúdo* de cada inspeção — o
+relato do que o juiz encontrou — dá **404** em `/relatorio-inspecao/{id}` e
+`/respostas-formulario/{id}`. Até decifrar a rota, publica-se **que** houve
+inspeção e **sobre qual tema**, nunca o achado. E é **API não documentada**:
+bater nela alguns dias seguidos antes de virar coletor de produção.
 
-**Já medido:** Defensoria em **109–110 comarcas**; unidade de Araçuaí cobre
-Itinga; Diamantina inaugurada em nov/2024.
+### 3ª — Congestionamento e acervo do TJMG (Justiça em Números)
 
-**O que falta é o denominador** — quantas comarcas MG tem no total. Sem ele,
-"109 comarcas atendidas" parece cobertura boa. Com ele, vira **déficit**.
+ZIP de 4.248.648 bytes, 3 CSVs em ISO-8859-1, separador `;`, arquivo principal
+de **1.596 linhas × 1.314 colunas**, série **2009–2025**, TJMG isolável em 17
+linhas.
 
-**É a frente mais alinhada ao portal:** as outras três falam de quem administra
-a justiça; esta fala de quem fica sem ela.
+**TJMG em 2025:** taxa de congestionamento `tc` = **0,7087**; **4.556.203
+processos pendentes** (`cp`); **1.922 casos novos por magistrado** (`cm`).
+
+Traduzido para o portal: *"o seu processo está atrás de 4,5 milhões"* e *"o TJMG
+piorou ou melhorou desde 2009"* — comparável a qualquer outro TJ, sem extrair
+número de PDF.
+
+⚠️ **A URL muda a cada atualização** (`...23-jun-2026.zip`): o coletor precisa
+raspar a página `base-de-dados/` para achar o link vigente. Meia hora de
+trabalho, não um dia.
 
 ---
 
-## 3. Princípios que decidem o que entra
+## 3. A parte financeira ganhou fonte nova: JUSTA ✅ *já coletada*
 
-1. **Fonte que só tem PDF ou painel sem dado por trás custa 10× mais e rende
-   menos.** Isso pesa no ranking, não é detalhe de implementação.
-2. **Lacuna é informação.** "O Estado não publica X" é matéria publicável, não
-   fracasso de coleta. Foi assim com os 27% de EIA/RIMA que não abrem e com o
-   `ft_convenio_metaetapa` que vem vazio.
-3. **Validar o corpo, nunca o status.** Nesta frente já apanhamos de API que
-   responde 200 e mente: catálogo inteiro quando o filtro não existe, 87 bytes
-   só de cabeçalho, e **200 com 0 byte** no `buscarTac` do MPMG.
-4. **O portal é para a pessoa atingida, não para o pesquisador.** Entre um
-   indicador elegante e uma resposta que a pessoa usa, ganha a segunda.
+Enquanto a sondagem rodava, o relatório **"Justiça e Orçamento nos Estados
+2026"** do [JUSTA](https://www.justa.org.br) foi dissecado e virou dado.
+Coletor: `etl/betim/etl/apis/justa_orcamento.py`. Saída:
+`etl/betim/dados/justa-orcamento-justica-2026.json` — **21 estados, 0 órfãos**.
+
+**O achado que interessa ao portal:**
+
+| | MG |
+|---|---|
+| Gasto com instituições de justiça (2024) | **R$ 12,3 bi — 2º do Brasil**, atrás só de SP (R$ 18,6 bi) |
+| Fatia do orçamento estadual | **11,5% — 2º do Brasil**, atrás só de RO (12,8%) |
+
+MG gasta **dois terços do que SP gasta** com uma receita muito menor — por isso
+é 2º em reais e 2º em proporção ao mesmo tempo. SP, o maior gastador absoluto,
+é o **20º em proporção (5,4%)**.
+
+⚠️ **Três ressalvas que vão para a tela, não para comentário de código:**
+
+1. **O dado é do JUSTA, não nosso.** Republicar exige citar a fonte e apontar
+   para o relatório original.
+2. **Seis estados não entram** (GO, MA, MS, PI, RR, SC) porque não forneceram
+   dados — e isso bate exatamente com o que o próprio relatório declara. A soma
+   dos 21 extraídos dá **R$ 87,7 bi**; o resumo executivo cita **R$ 93,2 bi**.
+   A diferença não foi investigada. **Não citar um número como se fosse o
+   outro.**
+3. **No DF, TJ e MP são financiados pela União** — só a Defensoria entra, e por
+   isso o DF aparece com 0,8%. Não é eficiência, é recorte.
+
+### A trava que salvou a tabela
+
+O PDF é **feito no Canva**: a ordem de leitura do texto não acompanha o desenho.
+A primeira regra de pareamento — *"a sigla mais próxima"* — **errou**, e errou
+de forma indetectável: casou RJ com 6,8% quando o certo é 11,0%. Nada no dado
+denunciaria; 6,8% é um percentual perfeitamente plausível.
+
+Quem pegou foi a **conferência contra a página 7**, que renderiza o top-5 por
+conta própria. O script **para** se divergir, antes de gravar. A regra certa é
+por **coluna** (mesmo *x*, sigla imediatamente acima), porque num gráfico de
+coluna o valor de um estado fica mais perto da sigla do **vizinho**.
+
+**Sem essa conferência, o arquivo teria sido gravado com aparência impecável e
+cinco estados trocados.** É o padrão a repetir em todo PDF de layout: extrair
+por coordenada **e** conferir contra um recorte independente do próprio
+documento.
+
+---
+
+## 4. O que a sondagem REPROVOU, com o motivo medido
+
+Isto não é lista de pendência — é decisão tomada. Não revisitar sem fato novo.
+
+### Todos os painéis, sem exceção
+
+| Painel | Corpo medido |
+|---|---|
+| MPM Pessoal | 977 bytes — 100% `<iframe>` do Power BI |
+| `paineis.cnj.jus.br` | 502 intermitente; quando responde, 6.190 bytes de shell QlikView |
+| `paineisanalytics.cnj.jus.br` | 1.375 bytes de bootstrap; dado por **WebSocket QIX** |
+| SISTAC / audiências de custódia | 3.428 bytes, **0 registros** |
+| Qlik do SIC do TJMG | 3.830 bytes |
+| Tableau de correições do MPMG | 1.340 bytes, atrás de rota de hash |
+
+**Nove endpoints, zero byte de dado tabular.** Raspar Qlik Sense por WebSocket
+custa mais manutenção do que todo o resto deste plano junto.
+
+### Domínios que não existem
+
+`dadosabertos.cnj.jus.br` — **NXDOMAIN confirmado em quatro nomes**
+(`dadosabertos`, `dados`, `opendata`, `estatisticas`). Não é "tentar depois": é
+endereço inexistente.
+
+### Metas Nacionais e demais PDFs anuais
+
+Só existe PDF (relatório 2025 = 1.937.554 bytes), um por ano, com layout que
+muda entre republicações — os próprios nomes trazem `v2`/`v3`, sinal de
+**retificação silenciosa**. É o custo 10× da regra da casa, e entregaria pior a
+mesma métrica que o CSV do Justiça em Números já dá.
+
+### A frente disciplinar INTEIRA
+
+| Fonte | Medido |
+|---|---|
+| Página de PAD do TJMG | 17.827 bytes — **2 PDFs, ambos manuais de como se defender**, zero processo consultável |
+| Corregedoria-Geral do MPMG | 13 itens de menu, **nenhum de consulta disciplinar**; "Área Restrita" é o item 13 |
+| Relatório de Correições do CNMP | 1.442.191 bytes de HTML com **0 `<tr>`, 0 iframe, 0 menção a MG** |
+| Inspeções/correições do CNJ | 270 KB e 275 KB linkando 4 PDFs — regimento interno e organograma |
+
+As duas únicas fontes com conteúdo real são **pauta de sessão** — agenda, não
+resultado. **Não construir.** Publicar como matéria (§5).
+
+⚠️ **E há decisão editorial embutida:** o **CNJ nomeia** o magistrado em itens
+não sigilosos (nome completo confirmado na pauta de 18/08/2026), enquanto o
+**CNMP anonimiza** o acusado e publica só o advogado. A regra da casa é
+conservadora — ver [[flag_de_pessoa_fisica_mente]].
+
+### Ouvidorias → rebaixadas a frente 4 opcional
+
+É o material **mais rico em PDF** que existe: MPMG tem 62 PDFs de 2011 a 2026
+(43.920 manifestações no 1º sem/2025, 34.105 reclamações, **74,3% anônimas**);
+TJMG tem 18 relatórios anuais (10.454 manifestações em 2024-25).
+
+Mas é PDF, os `fileId` do Lumis são **hashes opacos sem padrão**, e a pergunta
+que responde (*"quanta gente reclama do MP"*) é de pesquisador, não da pessoa
+atingida. Do lado do CNMP, **41 de 54 links (76%) devolvem 200 com 110 KB da
+home** em vez do PDF, por causa de acento no caminho — curadoria manual
+obrigatória, o que derruba o custo/benefício sozinho.
+
+### Fontes fechadas ou não citáveis
+
+| Fonte | Medido |
+|---|---|
+| Portal BNMP | **HTTP 403** para qualquer requisição não-navegador, antes do captcha |
+| Base dos Dados | exige conta |
+| `dados.gov.br` | **401 até para metadado de catálogo** |
+| `dados.mj.gov.br` | conexão morta (000) |
+| **Defensômetro** | hospedado em **IP nu** (`146.190.172.119`), sem HTTPS e sem domínio — **não é fonte citável em produto público** |
+| MG-OUV | shell ZK de 9.908 bytes, com captcha e senha |
+
+---
+
+## 5. As lacunas que são MATÉRIA — saem de graça, e valem mais que uma página
+
+### A principal: o CNJ publica o que vai julgar contra juízes e parou de publicar o que decidiu
+
+O **"Boletim da Sessão"** — que o próprio CNJ descreve como o canal dos
+resultados das sessões de julgamento do Plenário — tem como **entrada mais
+recente a 9ª Sessão Ordinária de 09/05/2023**. Três anos e três meses atrás.
+Enquanto isso, **as pautas continuam saindo a cada quinzena** (a de 18/08/2026
+está no ar, com item de "Apuração — Infração Disciplinar — Desembargador").
+
+A página responde **200**, tem título certo e texto explicativo correto: **só se
+percebe lendo a data da última entrada.** É o caso-escola da regra da casa —
+validar o corpo, nunca o status.
+
+Emparelhado com o recorte mineiro (§4), fecha: **não existe, em MG nem no país,
+lugar público onde se saiba o resultado de um processo disciplinar contra juiz
+ou promotor** — e o único canal criado para isso está abandonado desde 2023.
+
+### Duas menores, que também são matéria
+
+**(a) Tempo médio de tramitação por tribunal estadual não existe em dado
+aberto.** O dicionário das 1.314 variáveis do Justiça em Números não tem a
+variável; só há `tptotst`, isolada, para o TST. **A pergunta mais óbvia que um
+cidadão faz sobre a Justiça é a única que o CNJ não publica em CSV.**
+
+**(b) A Ouvidoria da DPMG não publica número nenhum** — 116.517 bytes na página
+institucional e 44.107 no espelho de transparência, com **zero ocorrência de
+"relatório" ou PDF** — enquanto a mesma DPMG publica **XLSX mensal de LAI desde
+2023**. Não é falta de capacidade técnica: ela sabe publicar planilha, só não
+publica quando o assunto é reclamação contra ela mesma.
+
+⚠️ **E o gap é de prática, não de descumprimento:** nem a Res. CNJ 215/2015 nem
+a Res. CNMP 89/2012 exigem essa publicação. **Isso torna a matéria mais forte,
+não mais fraca** — e evita publicar acusação errada de ilegalidade.
+
+---
+
+## 6. e-SIC: o que o login destrava, e o que ele não destrava
+
+**O usuário pode fazer o login gov.br.** Isso muda o status de uma fonte que
+estava marcada como barrada — mas muda menos do que parece, e a diferença
+importa.
+
+**Destrava:** o e-SIC central da **CGE-MG** cobre o **Executivo estadual**. Com
+login, dá para protocolar LAI e acompanhar resposta.
+
+⚠️ **NÃO destrava TJMG, MPMG nem DPMG.** Judiciário, Ministério Público e
+Defensoria têm **SIC próprio**, fora do e-SIC do Executivo — e o SIC do TJMG já
+foi medido nesta sondagem: **Qlik de 3.830 bytes**, ou seja, morto pela via
+automatizada. `[VERIFY]` antes de prometer qualquer coisa: confirmar o canal de
+protocolo de cada uma das três casas.
+
+**O que vale pedir, em ordem — e é pedido humano, não coletor:**
+
+| # | Pedido | Por que este |
+|---|---|---|
+| 1 | **DPMG** — nº de manifestações da Ouvidoria por ano e tipologia | §5(b): ela publica LAI em XLSX e não publica isto. O pedido testa se é omissão ou ausência |
+| 2 | **TJMG / MPMG** — nº de processos disciplinares abertos, concluídos e resultado, **agregado, sem nome** | §4: é o buraco central, e o recorte agregado já contorna a questão de dado pessoal |
+| 3 | **TJMG** — lista oficial de comarcas e quais têm Defensoria instalada | Confirma na fonte o denominador de 298 que hoje vem da planilha nacional |
+| 4 | **TJMG** — tempo médio de tramitação por comarca | §5(a): o CNJ não publica em CSV; o tribunal tem o número |
+
+**A resposta negativa é publicável.** "O órgão respondeu que não possui o dado"
+é informação, e é a mesma doutrina dos 27% de EIA/RIMA que não abrem e do
+`ft_convenio_metaetapa` que vem vazio.
+
+---
+
+## 7. DataJud: a posição, e por que ela custa pouco
+
+O pedido foi: *"o DataJud não pode virar acervo, mas podemos fazer um resumo das
+informações, citar a fonte original e publicar."*
+
+**Concordo com a intenção e discordo de uma premissa.** Resumo **é** obra
+derivada. As cláusulas **3.8/3.9** da licença do CNJ não vedam "acervo": vedam
+**distribuir derivado sem ciência ao CNJ**. Citar a fonte é obrigação
+independente — não é o que resolve a cláusula.
+
+**Onde está a linha, em concreto:**
+
+| Prática | Posição |
+|---|---|
+| Consulta ao vivo, nada persistido (o proxy de hoje) | ✅ segue como está |
+| Contagem agregada que não reconstitui o registro | 🟡 defensável, **mas ainda é derivado** — o correto é avisar |
+| Republicar registro processado, mesmo resumido | ❌ não |
+
+**A saída limpa é barata: notificar o CNJ.** É um e-mail, não um bloqueio — e já
+estava registrado como decisão pendente em `PLANO-EXPANSAO-ACORDOS-MG.md`.
+Feito isso, o item 🟡 vira ✅ e para de ser assunto.
+
+**Mas o achado que muda a conta é outro: para a história agregada, não
+precisamos do DataJud.** O **Justiça em Números** (§2, 3ª frente) entrega
+congestionamento, acervo e casos por magistrado — **dado aberto, sem cláusula
+de derivado, com série de 17 anos.** O DataJud, além de exigir chave (401 sem
+ela), é processo-a-processo: é a fonte errada para a pergunta agregada.
+
+**Recomendação:** manter o proxy ao vivo para consulta individual, construir a
+estatística sobre o Justiça em Números, e mandar a notificação ao CNJ para
+liberar o meio-termo sem depender dele.
+
+---
+
+## 8. Princípios que decidem o que entra
+
+1. **Fonte que só tem PDF ou painel sem dado por trás custa 10× e rende menos.**
+   Isso pesa no ranking. A sondagem confirmou: 9 painéis, 0 byte de tabela.
+2. **Lacuna é informação.** "O Estado não publica X" é matéria publicável (§5).
+3. **Validar o corpo, nunca o status.** Provado de novo três vezes: o Boletim do
+   CNJ (200, abandonado desde 2023), os 76% de links do CNMP que devolvem a home
+   com 200, e o `buscarTac` do MPMG com **200 e 0 byte**.
+4. **O portal é para a pessoa atingida, não para o pesquisador.** É o que põe a
+   Defensoria em 1º e a Ouvidoria em 4º.
 5. **Regra das cinco coisas** (`AGENTS.md`): gráfico, cartões, CSV do filtrado,
    filtro e ordenação. Vale para toda página nova desta frente.
 
 ---
 
-## 4. O que já se sabe que NÃO vai dar
-
-| Fonte | Estado medido |
-|---|---|
-| `transparencia.mpmg.mp.br/buscarTac` | **Morto**: HTTP 200 com **0 byte** em todo id, com e sem Referer. Não há rota de listagem — nunca houve |
-| RSS do TJMG e do MPMG | **404** — por isso ficaram fora do radar de notícias |
-| e-SIC central CGE-MG | **Exige login gov.br** — interação humana, não automatizável |
-| DataJud como acervo | A licença **veda redistribuir derivado**. O desenho é consulta ao vivo, e isso não muda |
-
----
-
-## 5. Progresso
+## 9. Progresso
 
 | # | frente | estado |
 |---|---|---|
-| S | sondagem das 4 frentes | ⏳ em curso |
-| A | produtividade e acervo | ⬜ aguarda sondagem |
-| B | controle disciplinar | ⬜ aguarda sondagem + decisão editorial sobre nome |
-| C | ouvidoria e LAI institucional | ⬜ aguarda sondagem (DPMG é a lacuna conhecida) |
-| D | porta de entrada / déficit da Defensoria | ⬜ aguarda o **denominador** de comarcas |
-
-**Ao fechar a sondagem:** substituir os ⏳ por número medido com data, escolher
-as 3 frentes que valem construir, e registrar em `docs/FONTES.md` o que foi
-medido — inclusive as fontes descartadas, com o motivo.
+| S | sondagem das 4 frentes | ✅ **fechada em 22/08/2026** — ~29 endpoints medidos |
+| $ | JUSTA — orçamento da justiça por estado | ✅ **coletado e conferido** (21 estados, MG 2º em ambos os eixos) |
+| 1 | cobertura da Defensoria por comarca | ⬜ **próxima** — 4 fontes medidas, denominador resolvido (298) |
+| 2 | inspeções em presídios (CNIEP) | ⬜ 3 rotas JSON medidas; conteúdo da inspeção dá 404 |
+| 3 | congestionamento do TJMG (Justiça em Números) | ⬜ ZIP medido; falta raspar o link vigente |
+| 4 | ouvidorias | ⏸️ opcional — só PDF, `fileId` opaco |
+| — | disciplinar como página | ❌ **reprovada** — vira matéria (§5) |
+| M | matéria das 3 lacunas | ⬜ pronta para escrever, tudo medido |
+| L | pedidos de LAI pelo e-SIC | ⬜ 4 pedidos priorizados (§6) — ação humana |
+| C | notificar o CNJ sobre o DataJud | ⬜ um e-mail (§7) |
 
 ---
 
