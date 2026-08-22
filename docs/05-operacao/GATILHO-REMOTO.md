@@ -1,5 +1,28 @@
 # Gatilho remoto — sincronizar e publicar de outra máquina
 
+> **Tipo:** OPERACAO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [OPERACAO.md](OPERACAO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** gatilho remoto, tailscale, telegram, sincronizacao, publicacao
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Os três arquivos](#os-três-arquivos)
+- [O que ele NUNCA faz sozinho](#o-que-ele-nunca-faz-sozinho)
+- [Modelo de segurança](#modelo-de-segurança)
+- [Configurar](#configurar)
+- [Acionar](#acionar)
+- [Checagem periódica (06:10 e 20:00)](#checagem-periódica-0610-e-2000)
+- [Painel de edição, acessível do tailnet inteiro](#painel-de-edição-acessível-do-tailnet-inteiro)
+- [Limitações conhecidas](#limitações-conhecidas)
+- [Decisões registradas](#decisões-registradas)
+- [Origem](#origem)
+
+## Propósito
+
 > Escrito em 2026-08-16. Fecha um buraco específico: `scripts/rotina-local.mts`
 > builda e publica o que **já está** no checkout do `home-pc`, mas não faz
 > nada de git — quem decide quando integrar commit novo (do

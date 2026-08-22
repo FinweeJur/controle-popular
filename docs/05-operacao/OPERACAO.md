@@ -1,5 +1,25 @@
 # OPERAÇÃO — coletar, construir e publicar o portal
 
+> **Tipo:** OPERACAO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** longa (> 15 min)
+> **Relacionados:** [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [GATILHO-REMOTO.md](GATILHO-REMOTO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** operacao, coleta, build, deploy, credenciais, rotina, home-pc
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Quem publica, e de onde](#quem-publica-e-de-onde)
+- [Ciclo de coleta](#ciclo-de-coleta)
+- [Publicar — passo a passo](#publicar-passo-a-passo)
+- [Credenciais](#credenciais)
+- [Payload de legislação](#payload-de-legislação)
+- [Incidentes que afetam a operação](#incidentes-que-afetam-a-operação)
+- [Decisões registradas](#decisões-registradas)
+
+## Propósito
+
 Este arquivo é o procedimento de operação do portal: quem publica, como coletar, como publicar, onde vivem as credenciais e o que já quebrou.
 
 ## Quem publica, e de onde

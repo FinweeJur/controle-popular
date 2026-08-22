@@ -1,5 +1,25 @@
 # ESTADO — o portal hoje, o que vem a seguir
 
+> **Tipo:** ESTADO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** longa (> 15 min)
+> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** estado, fila, bloqueios, divida tecnica, decisoes, plano unico, neon, build
+
+## Sumário
+
+- [Propósito](#propósito)
+- [No ar agora](#no-ar-agora)
+- [Decisões do dono — 22/08/2026](#decisões-do-dono-22082026)
+- [Plano único — ordem de execução](#plano-único-ordem-de-execução)
+- [Fila viva — ranqueada por custo × benefício](#fila-viva-ranqueada-por-custo-benefício)
+- [Bloqueios](#bloqueios)
+- [Dívida técnica registrada](#dívida-técnica-registrada)
+- [Rito de trabalho](#rito-de-trabalho)
+
+## Propósito
+
 Estado medido do portal controlepopular.com.br: o que está no ar, o que está bloqueado, o que vem a seguir, e as decisões que não podem ser reabertas sem remensurar. (medição em 16/08 — remeça antes de decidir com ele)
 
 > **Fila e decisões atualizadas em 22/08/2026.** A pedido do dono, este documento
