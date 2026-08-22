@@ -106,3 +106,9 @@ apps/web/.tmp-salic/
 .cgr-dir-mtimes.json
 .cgr-hash-cache.json
 .cgr-parser-fingerprint
+
+# Coleta bruta grande demais para o repo. O caminho é agregar
+# (`scripts/agregar-sisema-*.mts`) e versionar só o agregado: o bruto do painel
+# de fiscalização deu 290 MB, acima do limite de 100 MB do GitHub e três ordens
+# de grandeza acima do teto de 3 MiB gzip por rota do Worker.
+etl/betim/dados/sisema-fiscalizacao-barragens.json

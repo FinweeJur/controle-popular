@@ -10,14 +10,79 @@ import {
   filtrarPatrimonio,
   municipiosDistintos,
 } from "@/lib/ambiental/patrimonio-tombado";
+import { ordenarPor, type Direcao } from "@/lib/tabela/ordenar";
 
 /**
  * Busca de `/ambiental/patrimonio-cultural` — 153 bens tombados por Minas
  * Gerais (IEPHA-MG, migration `0072`). Mesmo padrão de filtro-no-cliente de
  * `BuscaLegislacaoUnificada.tsx` (corpus pequeno, sem `searchParams`).
+ *
+ * ═══ ORDENAÇÃO E CSV (2026-08-21, regra do dono: "cinco coisas") ═══
+ *
+ * `ordenarPor` é a mesma função pura testada em `lib/tabela/ordenar.test.ts`
+ * — nenhuma comparação nova é reimplementada aqui. "Categoria" é a ordenação
+ * por tipo pedida explicitamente pelo dono; as outras (município, denominação,
+ * processo/ano) existem porque uma lista com uma coluna só ordenável seria a
+ * mesma limitação que a regra veio corrigir.
+ *
+ * O CSV segue o mesmo contrato de `TabelaDecisoes.tsx`
+ * (`/ambiental/decisoes-lai`): separador `;`, BOM UTF-8 na frente (senão o
+ * Excel brasileiro abre tudo numa coluna só e quebra acento), e exporta
+ * `ordenados` — o que está FILTRADO e na ORDEM em que a tela mostra, nunca
+ * os 153 bens inteiros.
  */
 
 const CATEGORIA_ORDEM: CategoriaPatrimonioTombado[] = ["BI", "CP", "CH", "BM"];
+
+type OrdemChave = "" | "categoria" | "municipio" | "denominacao" | "processoAno";
+
+function csvEscape(valor: unknown): string {
+  const s = valor === null || valor === undefined ? "" : String(valor);
+  return /[";\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+}
+
+function paraCsv(linhas: PatrimonioTombadoRow[]): string {
+  const BOM = "﻿";
+  const cabecalho = [
+    "processo_ano",
+    "categoria",
+    "denominacao",
+    "denominacao_completa",
+    "classe_subclasse",
+    "municipio",
+    "distrito",
+    "ato_legal",
+    "livro_de_tombo",
+  ].join(";");
+  const corpo = linhas.map((r) =>
+    [
+      r.processoAno,
+      CATEGORIA_LABEL[r.categoria],
+      r.denominacao,
+      r.denominacaoCompleta,
+      r.classeSubclasse ?? "",
+      r.municipio,
+      r.distrito ?? "",
+      r.atoLegal ?? "",
+      r.livroDeTombo ?? "",
+    ]
+      .map(csvEscape)
+      .join(";"),
+  );
+  return BOM + [cabecalho, ...corpo].join("\r\n") + "\r\n";
+}
+
+function baixarCsv(conteudo: string, nomeArquivo: string) {
+  const blob = new Blob([conteudo], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = nomeArquivo;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
 
 interface Props {
   linhas: PatrimonioTombadoRow[];
@@ -27,6 +92,8 @@ export default function BuscaPatrimonioTombado({ linhas }: Props) {
   const [q, setQ] = useState("");
   const [categoria, setCategoria] = useState<CategoriaPatrimonioTombado | "">("");
   const [municipio, setMunicipio] = useState("");
+  const [ordemChave, setOrdemChave] = useState<OrdemChave>("");
+  const [ordemDirecao, setOrdemDirecao] = useState<Direcao>("asc");
 
   const municipios = useMemo(() => municipiosDistintos(linhas), [linhas]);
   const termoNormalizado = semAcento(q.trim());
@@ -36,6 +103,13 @@ export default function BuscaPatrimonioTombado({ linhas }: Props) {
     [linhas, termoNormalizado, categoria, municipio]
   );
 
+  // Ordenação por coluna (regra do dono, 2026-08-21) — "" mantém a ordem que
+  // já vem da fonte (município, decrescente — ver `listarPatrimonioTombado`).
+  const ordenados = useMemo(() => {
+    if (!ordemChave) return filtrados;
+    return ordenarPor(filtrados, ordemChave, ordemDirecao, "texto");
+  }, [filtrados, ordemChave, ordemDirecao]);
+
   const contagemCategoria = useMemo(() => contarPorCategoria(linhas), [linhas]);
   const temFiltro = Boolean(q || categoria || municipio);
 
@@ -43,6 +117,11 @@ export default function BuscaPatrimonioTombado({ linhas }: Props) {
     setQ("");
     setCategoria("");
     setMunicipio("");
+  }
+
+  function exportarCsv() {
+    const hoje = new Date().toISOString().slice(0, 10);
+    baixarCsv(paraCsv(ordenados), `patrimonio-cultural-tombado-mg-${hoje}.csv`);
   }
 
   return (
@@ -115,19 +194,56 @@ export default function BuscaPatrimonioTombado({ linhas }: Props) {
         ))}
       </div>
 
-      <p className="mt-4 text-sm text-text-soft">
-        <strong className="font-tabular text-text">{formatNumberBR(filtrados.length)}</strong>{" "}
-        {filtrados.length === 1 ? "bem encontrado" : "bens encontrados"}
-        {temFiltro ? " com este filtro" : ""} — de {formatNumberBR(linhas.length)} tombados ao todo.
-      </p>
+      <div className="mt-4 flex flex-wrap items-end justify-between gap-3">
+        <p className="text-sm text-text-soft" role="status">
+          <strong className="font-tabular text-text">{formatNumberBR(filtrados.length)}</strong>{" "}
+          {filtrados.length === 1 ? "bem encontrado" : "bens encontrados"}
+          {temFiltro ? " com este filtro" : ""} — de {formatNumberBR(linhas.length)} tombados ao todo.
+        </p>
 
-      {filtrados.length === 0 ? (
+        <div className="flex flex-wrap items-end gap-3">
+          <label className="flex flex-col">
+            <span className="mb-1 text-xs font-medium text-text-soft">Ordenar por</span>
+            <select
+              value={ordemChave}
+              onChange={(e) => setOrdemChave(e.target.value as OrdemChave)}
+              className="rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
+            >
+              <option value="">Como veio da fonte</option>
+              <option value="categoria">Categoria (tipo)</option>
+              <option value="municipio">Município</option>
+              <option value="denominacao">Denominação</option>
+              <option value="processoAno">Processo/ano</option>
+            </select>
+          </label>
+          <button
+            type="button"
+            onClick={() => setOrdemDirecao((d) => (d === "asc" ? "desc" : "asc"))}
+            disabled={!ordemChave}
+            aria-label={ordemDirecao === "asc" ? "Ordem crescente — alternar para decrescente" : "Ordem decrescente — alternar para crescente"}
+            title={ordemDirecao === "asc" ? "Ordem crescente" : "Ordem decrescente"}
+            className="rounded-lg border border-border bg-surface px-3 py-2 text-sm text-text disabled:opacity-40"
+          >
+            {ordemDirecao === "asc" ? "A→Z" : "Z→A"}
+          </button>
+          <button
+            type="button"
+            onClick={exportarCsv}
+            disabled={filtrados.length === 0}
+            className="rounded-lg border border-border bg-surface px-3 py-2 text-sm font-medium text-text hover:border-primary disabled:opacity-50"
+          >
+            Baixar CSV do filtrado ({formatNumberBR(filtrados.length)})
+          </button>
+        </div>
+      </div>
+
+      {ordenados.length === 0 ? (
         <div className="mt-4 rounded-2xl border border-dashed border-border bg-surface-2 p-6 text-sm text-text-soft">
           Nenhum bem para esse filtro.
         </div>
       ) : (
         <ul className="mt-4 flex flex-col gap-3">
-          {filtrados.map((r) => (
+          {ordenados.map((r) => (
             <li key={`${r.processoAno}-${r.denominacao}`} className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex flex-wrap items-center gap-2">

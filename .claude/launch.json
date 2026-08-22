@@ -370,6 +370,13 @@
       "port": 3038
     },
     {
+      "//": "Porta separada so para este worktree (cp-acordos-mg) -- dashboard/graficos/planilha de /ambiental/tac (TACs ambientais de mineradoras). Mesma razao das entradas acima.",
+      "name": "cp-acordos-mg-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "apps/web", "--", "--port", "3040"],
+      "port": 3040
+    },
+    {
       "//": "Porta separada so para este worktree (cp-ambiental-estudos) -- subpagina /ambiental/estudos com os EIA/RIMA e demais documentos do licenciamento, mais a camada de estudos no globo. Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso. Detalhe proprio desta frente: a verificacao do globo NAO usa esta porta -- o globo e asset estatico e exige porta nova a cada checagem, porque recarregar nao invalida modulo ES.",
       "name": "cp-ambiental-estudos-dev",
       "runtimeExecutable": "npm",

@@ -112,7 +112,7 @@ o mais barato que dá conta. Varrer e conferir é Haiku/Sonnet; só sintetizar �
 
 | Item | Commit | O que ficou de fora |
 |---|---|---|
-| **B1** TACs do painel | `32d7dec` — `/ambiental/tac` | ⚠️ `_tacs_contas.json` **continua falhado** (`CouldNotResolveSemanticQueryDefinition`, intocado desde 20/08); `_tacs_empresas.json` não foi transpilado |
+| **B1** TACs do painel | `32d7dec` + rodada 21/08 — `/ambiental/tac` com dashboard | ✅ **`_tacs_contas.json` DESTRAVADO** em 21/08: o modelo expoe **11 entidades**, nao 4, e a coluna pedida existia em outra. As 4 entidades saem agora (projetos 848, empresas 69, contas 120, soma 120), conferidas centavo a centavo contra o painel oficial. ~~⚠️ continua falhado~~ (`CouldNotResolveSemanticQueryDefinition`, intocado desde 20/08); `_tacs_empresas.json` não foi transpilado |
 | **B2** CKAN `dados.mg.gov.br` | `a31a5b3` — `/ambiental/convenios` | Os demais conjuntos (`dados-armazem-siafi-2026`, `contratos_vigentes`, `fiscais_contrato`, `empresas_sancionadas`, `portal_obras`, `portal_mariana`) **seguem sem coletor** |
 | **B3** Transferegov | `bfc6072` — 29.475 convênios de MG, R$ 27,98 bi, 49,2% desembolsado | — |
 | **B5** GTAC | `0cbe87a` — 2.002 TACs, 392 municípios, 2002–2026 | — |
@@ -149,32 +149,21 @@ zero para 99,8% dos convênios.
 
 ## Ainda por fazer
 
-**B6 — decisões de recurso da CGE.** Sondado (`ebc42a1`), coletor não escrito.
-**753 decisões (2020–2026).**
+**Atualizado em 2026-08-21, depois da rodada que fechou B1, B2, B5, B6 e a
+regra das cinco coisas.**
 
-⚠️ **A promessa anterior era falsa.** Estava escrito que filtrar por *Provimento*
-daria "o mapa de onde o Estado negou informação indevidamente". São **16 casos em
-sete anos** (2020 e 2022: zero) — servem de exemplo, nunca de base estatística. O
-que domina é *Não conhecimento* (265) e *Desprovimento* (126).
+**B7 — TACs do MPMG: MORTO, e isso e' resultado, nao pendencia.** Medido em
+21/08: `transparencia.mpmg.mp.br/buscarTac?idTac=N` responde **HTTP 200 com 0
+byte** para todo id testado (1, 50, 500), com e sem `Referer` do proprio
+dominio. Nao e' bloqueio nem 404 — e' resposta vazia com status de sucesso, a
+mesma familia de armadilha do `ft_convenio_metaetapa`. Nao ha rota de listagem
+(nunca houve, ver `docs/_historico/betim-ambiental-pecma-research.md:49`) e
+agora nem a de visualizacao responde. **Sem via, o OCR nao tem o que ler.**
+Reabrir so' se a fonte voltar.
 
-⚠️ **Não é busca full-text livre**: são três dropdowns — `ddlYear` (2020–2026),
-`ddlOrgao` (90 órgãos), `ddlTipoDecisao` (6 tipos). É WebForms: cada POST exige
-`__VIEWSTATE`/`__EVENTVALIDATION` de um GET anterior, e **zero resultado devolve
-"Nenhum resultado encontrado", não "Total: 0"**.
-
-**Antes de publicar qualquer total por tipo:** em 2022–2025 a soma dos tipos não
-fecha com o total do ano (2023: 99 de 204), enquanto 2020, 2021 e 2026 fecham.
-Não investigado.
-
-**B7 — TACs do MPMG.** Não iniciado. Formulário com download primeiro; os PDFs de
-`buscarTac?idTac=N` são imagem escaneada sem camada de texto e **exigem OCR**.
-
-**B8 — DataJud.** Não iniciado. ⚠️ **Não é "automatizar": é coletar sem
-publicar.** As cláusulas **3.8/3.9 da licença vedam distribuir derivado** sem
-ciência ao CNJ — a decisão pendente é notificar o CNJ ou fazer consulta ao vivo
-(recomendado). Já medido: TJMG **69.983 ACP**, ~6.011 com assunto ambiental;
-`_mapping` dá 403; paginar com `search_after`; e **copiar a chave do HTML bruto**
-(resumo por IA corrompeu a chave).
+**B4 e B8** — em curso nesta rodada. B4 destravado escrevendo coletor por
+ARQUIVO em vez de consertar o Python que grava no banco; B8 por consulta ao
+vivo, que e' o desenho que respeita as clausulas 3.8/3.9 da licenca do CNJ.
 
 ## O que reaproveitar
 

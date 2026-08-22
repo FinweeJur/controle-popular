@@ -1,0 +1,34 @@
+{
+ "coletadoEm": null,
+ "coletaPendente": true,
+ "motivoPendencia": "API do PNCP (pncp.gov.br/api/consulta) indisponível durante toda a sessão de coleta de 2026-08-21: HTTP 504 ou timeout em TODA tentativa, em /v1/contratos e /v1/contratacoes/publicacao, com CNPJs (SEMAD, FEAM, IEF) e janelas de data diferentes, ao longo de ~45 minutos de sondagem espaçada (curl direto, sem passar pelo coletor) -- padrão consistente com indisponibilidade da API, não erro de parâmetro. O coletor (scripts/coletar-pncp-mg.mts) tem trava de sanidade que aborta sem gravar quando as 4 combinações órgão-ano voltam vazias -- por isso este arquivo é um placeholder escrito à mão, não uma saída real do coletor. Rodar `npx tsx scripts/coletar-pncp-mg.mts` quando a API responder.",
+ "fonte": "https://pncp.gov.br/",
+ "via": "GET /api/consulta/v1/contratos (cnpjOrgao) + /api/consulta/v1/contratacoes/publicacao (codigoMunicipioIbge, filtrado por CNPJ) -- ver docstring de scripts/coletar-pncp-mg.mts",
+ "escopo": {
+  "orgaos": [
+   { "sigla": "SEMAD", "nome": "Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável", "cnpj": "00957404000178" },
+   { "sigla": "FEAM", "nome": "Fundação Estadual do Meio Ambiente", "cnpj": "25455858000171" },
+   { "sigla": "IEF", "nome": "Instituto Estadual de Florestas", "cnpj": "18746164000128" },
+   { "sigla": "IGAM", "nome": "Instituto Mineiro de Gestão das Águas", "cnpj": "17387481000132" }
+  ],
+  "contratos": "planejado: completo, 2021 até o ano corrente, dedupe por numeroControlePNCP -- ver coletor",
+  "licitacoes": "planejado: PARCIAL, só modalidade 6 (Pregão Eletrônico), só o ano corrente, varredura por Belo Horizonte (IBGE 3106200) filtrada aos 4 CNPJs -- ver coletor"
+ },
+ "contratosCombinacoesIncompletas": [],
+ "licitacoesPaginasVarridas": 0,
+ "licitacoesTetoAtingido": false,
+ "contratos": {
+  "total": 0,
+  "valorGlobalTotal": 0,
+  "periodoInicio": null,
+  "periodoFim": null,
+  "linhaCruaOmitida": false,
+  "linhas": [],
+  "porOrgaoEAno": []
+ },
+ "licitacoes": {
+  "total": 0,
+  "valorHomologadoOuEstimadoTotal": 0,
+  "porOrgao": []
+ }
+}
