@@ -1,5 +1,23 @@
 # Crítica adversarial — 5 ramos, regex rodados contra os PDFs
 
+> **Tipo:** DOMINIO
+> **Domínio:** judiciario
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [README.md](../../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** dominio, referencia
+
+## Sumário
+
+- [Propósito](#propósito)
+- [L1-2012 — **APROVADO COM RESSALVA**](#l1-2012-aprovado-com-ressalva)
+- [L3-2019 — **APROVADO COM RESSALVA** (itens perfeitos, âncora de unidade defeituosa)](#l3-2019-aprovado-com-ressalva-itens-perfeitos-âncora-de-unidade-defeituosa)
+- [L4-2022 — **APROVADO COM RESSALVA**](#l4-2022-aprovado-com-ressalva)
+- [L3-2023 — **REPROVADO**](#l3-2023-reprovado)
+- [L5-2026 — **REPROVADO**](#l5-2026-reprovado)
+- [Tabela final](#tabela-final)
+- [Origem](#origem)
+
 Todas as medições abaixo foram feitas rodando os regex propostos, literalmente, com PyMuPDF 1.28 / Python 3.11. Scripts em `C:\Users\teste\AppData\Local\Temp\claude\C--Users-teste-Documents-Obsidian-Vault\187c81cb-ff06-4c21-b502-414df83fc936\scratchpad\crit\`.
 
 Contagem de páginas confere nos 5: 170 / 310 / 445 / 910 / 1388.

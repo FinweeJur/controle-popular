@@ -1,5 +1,32 @@
 # Ambiental — F0 · Descoberta de fontes
 
+> **Tipo:** DOMINIO
+> **Domínio:** ambiental
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [README.md](../../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** dominio, referencia
+
+## Sumário
+
+- [Propósito](#propósito)
+- [1. A espinha dorsal — IDE-Sisema (WFS)](#1-a-espinha-dorsal-ide-sisema-wfs)
+- [2. SLA — a fila viva](#2-sla-a-fila-viva)
+- [3. Setores — a taxonomia é oficial, não nossa](#3-setores-a-taxonomia-é-oficial-não-nossa)
+- [4. Reuniões do COPAM — a dor nº 1](#4-reuniões-do-copam-a-dor-nº-1)
+- [5. Barragens](#5-barragens)
+- [6. Legislação](#6-legislação)
+- [7. Restrições do app que a F0 confirmou](#7-restrições-do-app-que-a-f0-confirmou)
+- [8. `[VERIFY]` que sobraram](#8-verify-que-sobraram)
+- [9. Resolvidos nesta F0 (2026-08-07)](#9-resolvidos-nesta-f0-2026-08-07)
+- [10. IBAMA — fiscalização ambiental federal ✅ VIÁVEL, coletor escrito](#10-ibama-fiscalização-ambiental-federal-viável-coletor-escrito)
+- [11. Barragens — o SNISB acrescenta o que FEAM/ANM não cobrem ✅ VIÁVEL, coletor escrito](#11-barragens-o-snisb-acrescenta-o-que-feamanm-não-cobrem-viável-coletor-escrito)
+- [12. IGAM/SEMAD-MG — água e outorga ⚠️ VIÁVEL, mas sem coletor (decisão pendente)](#12-igamsemad-mg-água-e-outorga-viável-mas-sem-coletor-decisão-pendente)
+- [13. Portal Ecosistemas — catálogo de serviços (achado ao vivo, 2026-08-09)](#13-portal-ecosistemas-catálogo-de-serviços-achado-ao-vivo-2026-08-09)
+- [14. COPAM — teste de viabilidade da extração de município ✅ VIÁVEL, método melhor do que o §4 previa](#14-copam-teste-de-viabilidade-da-extração-de-município-viável-método-melhor-do-que-o-4-previa)
+- [15. Onde o EIA/RIMA realmente está (sondado ao vivo em 2026-08-20)](#15-onde-o-eiarima-realmente-está-sondado-ao-vivo-em-2026-08-20)
+- [Origem](#origem)
+
 > Sondado ao vivo em **2026-08-07** (§1-9), **2026-08-09** (§10-13) e **2026-08-11**
 > (§14, teste de viabilidade da extração de município do COPAM). Tudo abaixo foi
 > verificado contra o serviço real; o que não foi está marcado **[VERIFY]** e nomeia

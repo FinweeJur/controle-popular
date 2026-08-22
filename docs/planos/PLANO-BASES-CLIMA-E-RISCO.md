@@ -1,5 +1,28 @@
 # Plano: bases de vulnerabilidade climática e risco
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Resposta curta](#resposta-curta)
+- [1. AdaptaBrasil (MCTI/INPE/RNP) — índice de risco climático por município](#1-adaptabrasil-mctiinpernp-índice-de-risco-climático-por-município)
+- [2. IBGE + CEMADEN — "População em áreas de risco no Brasil" (BATER)](#2-ibge-cemaden-população-em-áreas-de-risco-no-brasil-bater)
+- [3. CEMADEN — rede de pluviômetros em tempo real](#3-cemaden-rede-de-pluviômetros-em-tempo-real)
+- [4. INMET — avisos de risco meteorológico geolocalizados](#4-inmet-avisos-de-risco-meteorológico-geolocalizados)
+- [5. INPE — Programa Queimadas (foco de calor / risco de fogo)](#5-inpe-programa-queimadas-foco-de-calor-risco-de-fogo)
+- [6. MDR/SNIS + ANA/Atlas Esgotos — saneamento básico](#6-mdrsnis-anaatlas-esgotos-saneamento-básico)
+- [7. MapBiomas — cobertura e uso da terra por município](#7-mapbiomas-cobertura-e-uso-da-terra-por-município)
+- [8. PNUD — Atlas do Desenvolvimento Humano (ADH)](#8-pnud-atlas-do-desenvolvimento-humano-adh)
+- [Lacunas declaradas](#lacunas-declaradas)
+- [Ordem sugerida — maior ganho para quem vive no território, menor esforço](#ordem-sugerida-maior-ganho-para-quem-vive-no-território-menor-esforço)
+- [Origem](#origem)
+
 Pedido do dono: *"procure bases úteis para integração, como a de vulnerabilidade
 climática e me apresente COMO integrar."* Ele já decidiu que quer — este
 documento não pesa "vale a pena", só mostra o caminho: endpoint, esquema,

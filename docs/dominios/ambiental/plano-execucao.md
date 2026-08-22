@@ -1,5 +1,24 @@
 # Ambiental — plano de execução das quatro seções
 
+> **Tipo:** DOMINIO
+> **Domínio:** ambiental
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [README.md](../../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** dominio, referencia
+
+## Sumário
+
+- [Propósito](#propósito)
+- [O estado real, medido em 2026-08-10](#o-estado-real-medido-em-2026-08-10)
+- [Ordem, e por que esta](#ordem-e-por-que-esta)
+- [F5 · Barragens — completar o que já existe](#f5-barragens-completar-o-que-já-existe)
+- [F3 · COPAM — a pauta antes da decisão](#f3-copam-a-pauta-antes-da-decisão)
+- [F4 · Licenciamento — o volume](#f4-licenciamento-o-volume)
+- [F6 · Legislação](#f6-legislação)
+- [F7 · CETESB — o ambiental de São Paulo](#f7-cetesb-o-ambiental-de-são-paulo)
+- [Origem](#origem)
+
 > Escrito em 2026-08-10, a pedido do usuário. **A descoberta de fontes já foi
 > feita** e está em [`F0-discovery.md`](F0-discovery.md): endpoints testados
 > contra o serviço real, com data de verificação e licença. Este documento não

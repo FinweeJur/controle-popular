@@ -1,5 +1,25 @@
 # Runbook — provisionar uma cidade nova no eixo Cidades
 
+> **Tipo:** DOMINIO
+> **Domínio:** cidades
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [README.md](../../../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** dominio, referencia
+
+## Sumário
+
+- [Propósito](#propósito)
+- [O desenho: a rota nasce do banco, não de código](#o-desenho-a-rota-nasce-do-banco-não-de-código)
+- [Passo 1 — os dois números que já causaram bug real](#passo-1-os-dois-números-que-já-causaram-bug-real)
+- [Passo 2 — a migration de seed](#passo-2-a-migration-de-seed)
+- [Passo 3 — o coletor de câmara é por FORNECEDOR, não por cidade](#passo-3-o-coletor-de-câmara-é-por-fornecedor-não-por-cidade)
+- [Passo 4 — rodar o ETL, sempre por `--id-municipio`](#passo-4-rodar-o-etl-sempre-por---id-municipio)
+- [Passo 5 — `ativo` é a válvula, e o rebuild semanal publica sozinho](#passo-5-ativo-é-a-válvula-e-o-rebuild-semanal-publica-sozinho)
+- [Checklist resumido](#checklist-resumido)
+- [Relações](#relações)
+- [Origem](#origem)
+
 > Escrito em 2026-08-09, consolidando o que já estava espalhado nos comentários
 > de `supabase/betim/migrations/0027_seed_bh_sp.sql` e `0043_seed_vales_jequitinhonha.sql`
 > (a fonte real de cada decisão abaixo) e na guarda `etl/betim/scripts/conferir_defaults_de_cidade.py`.

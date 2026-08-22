@@ -1,5 +1,26 @@
 # Revisão de onboarding, acessibilidade e design system
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Resumo para quem só quer o veredito](#resumo-para-quem-só-quer-o-veredito)
+- [As quatro pistas do diário — todas já corrigidas antes desta revisão](#as-quatro-pistas-do-diário-todas-já-corrigidas-antes-desta-revisão)
+- [🔴 Achados críticos (corrigidos)](#achados-críticos-corrigidos)
+- [🟡 Achados médios (corrigidos ou parcialmente corrigidos)](#achados-médios-corrigidos-ou-parcialmente-corrigidos)
+- [🟢 Achados baixos / editoriais — decisão do dono](#achados-baixos-editoriais-decisão-do-dono)
+- [Vocabulário e siglas — auditoria dedicada](#vocabulário-e-siglas-auditoria-dedicada)
+- [Acessibilidade — o que mais foi testado](#acessibilidade-o-que-mais-foi-testado)
+- [Design system — o que aproveitar de Kokonut UI, Motion.dev e Bklit UI](#design-system-o-que-aproveitar-de-kokonut-ui-motiondev-e-bklit-ui)
+- [O que rodou, em cada commit](#o-que-rodou-em-cada-commit)
+- [Origem](#origem)
+
 > Escrita em 14/08/2026, atendendo aos itens 7 e 8 de
 > `docs/planos/TODO-PROXIMAS-RODADAS.md`. Pedido do dono, em duas partes: revisão
 > crítica de onboarding/acessibilidade/facilidade de uso, e o que dá para

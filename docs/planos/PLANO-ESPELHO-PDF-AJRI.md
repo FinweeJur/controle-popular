@@ -1,5 +1,28 @@
 # Fase 2 — espelho dos PDFs da auditoria socioambiental (AJRI)
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [O que já está no ar (fase 1) e por que ela é segura](#o-que-já-está-no-ar-fase-1-e-por-que-ela-é-segura)
+- [1. Os 467 PDFs não cabem no repositório nem no Worker](#1-os-467-pdfs-não-cabem-no-repositório-nem-no-worker)
+- [2. A marca d'água com nome e CPF — decisão do dono, e a consequência técnica](#2-a-marca-dágua-com-nome-e-cpf-decisão-do-dono-e-a-consequência-técnica)
+- [3. Cadência de sincronização](#3-cadência-de-sincronização)
+- [4. Ordem sugerida](#4-ordem-sugerida)
+- [5. O que este plano NÃO decide](#5-o-que-este-plano-não-decide)
+- [6.1. O que ficou de fora da ficha legível, e por que não foi preguiça](#61-o-que-ficou-de-fora-da-ficha-legível-e-por-que-não-foi-preguiça)
+- [6.2. A ordem é obrigatória, e cada passo tem um dono anterior](#62-a-ordem-é-obrigatória-e-cada-passo-tem-um-dono-anterior)
+- [6.3. Um resumo de modelo, publicado, é **o portal afirmando algo**](#63-um-resumo-de-modelo-publicado-é-o-portal-afirmando-algo)
+- [6.4. O custo real, e o que medir antes de assumir qualquer número](#64-o-custo-real-e-o-que-medir-antes-de-assumir-qualquer-número)
+- [6.5. Ordem sugerida da fase 3](#65-ordem-sugerida-da-fase-3)
+- [Origem](#origem)
+
 > Escrito em 2026-08-15, na sessão que publicou a **fase 1**: o catálogo dos
 > 467 documentos da auditoria independente (AECOM) em `/paraopeba/auditoria`,
 > com link canônico para a fonte oficial em cada registro e nenhum arquivo

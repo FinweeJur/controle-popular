@@ -1,5 +1,24 @@
 # Diário oficial — plano
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Por que isto vale mais do que parece](#por-que-isto-vale-mais-do-que-parece)
+- [A ordem sai da PLATAFORMA, não da cidade](#a-ordem-sai-da-plataforma-não-da-cidade)
+- [O que coletar, e o que NÃO coletar](#o-que-coletar-e-o-que-não-coletar)
+- [O resumo — e onde ele pode dar errado](#o-resumo-e-onde-ele-pode-dar-errado)
+- [Fases](#fases)
+- [O que medir para saber se funcionou](#o-que-medir-para-saber-se-funcionou)
+- [Proposta — o que estruturar além dos 7 tipos, pensando como TCE ou repórter](#proposta-o-que-estruturar-além-dos-7-tipos-pensando-como-tce-ou-repórter)
+- [Origem](#origem)
+
 > Escrito em 2026-08-10, a pedido do usuário: um resumo do que saiu de
 > importante no diário de cada prefeitura — decretos, editais, convênios,
 > contratos. **São Paulo fica por último**, por decisão dele.

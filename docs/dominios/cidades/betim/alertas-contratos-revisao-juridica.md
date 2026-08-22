@@ -1,5 +1,29 @@
 # Revisão crítica dos alertas de contrato — fundamentação jurídica
 
+> **Tipo:** DOMINIO
+> **Domínio:** cidades
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [README.md](../../../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** dominio, referencia
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Regra 1 — valor atípico pra categoria (`regra_1_valor_atipico_para_categoria`)](#regra-1-valor-atípico-pra-categoria-regra-1-valor-atipico-para-categoria)
+- [Regra 2 — dispensa próxima do limite (`regra_2_dispensa_proxima_limite`)](#regra-2-dispensa-próxima-do-limite-regra-2-dispensa-proxima-limite)
+- [Regra 3 — aditivos elevados (`regra_3_aditivos_elevados`) — **CORRIGIDA 2026-07-23**](#regra-3-aditivos-elevados-regra-3-aditivos-elevados-corrigida-2026-07-23)
+- [Regra 4 — capital social baixo (`regra_4_capital_social_baixo`)](#regra-4-capital-social-baixo-regra-4-capital-social-baixo)
+- [Regra 5 — fornecedor sancionado CEIS/CNEP (`regra_5_fornecedor_sancionado_ceis`) — **IMPLEMENTADA 2026-07-23**](#regra-5-fornecedor-sancionado-ceiscnep-regra-5-fornecedor-sancionado-ceis-implementada-2026-07-23)
+- [Regra 7 — situação cadastral irregular (`regra_7_situacao_cadastral_irregular`)](#regra-7-situação-cadastral-irregular-regra-7-situacao-cadastral-irregular)
+- [Regra 8 — muitos contratos em janela curta (`regra_8_muitos_contratos_janela_curta`)](#regra-8-muitos-contratos-em-janela-curta-regra-8-muitos-contratos-janela-curta)
+- [Regra 9 — grupo econômico com contratos relacionados (`regra_9_grupo_economico_contratos_relacionados`)](#regra-9-grupo-econômico-com-contratos-relacionados-regra-9-grupo-economico-contratos-relacionados)
+- [Regra 10 — mínimos constitucionais saúde/educação (log-only, não grava alerta) — **CORRIGIDA 2026-07-23**](#regra-10-mínimos-constitucionais-saúdeeducação-log-only-não-grava-alerta-corrigida-2026-07-23)
+- [Regra 6 — CNAE vs objeto (não implementada)](#regra-6-cnae-vs-objeto-não-implementada)
+- [Resumo executivo](#resumo-executivo)
+- [Próximos passos concretos gerados por esta revisão](#próximos-passos-concretos-gerados-por-esta-revisão)
+- [Origem](#origem)
+
 Pedido do usuário (2026-07-23): revisar as regras de `etl/alertas.py` contra
 jurisprudência real de TCU/TCE e a Lei 14.133/2021, não deixar os limiares
 como escolhas arbitrárias. Cada regra abaixo tem: o que o código faz hoje,

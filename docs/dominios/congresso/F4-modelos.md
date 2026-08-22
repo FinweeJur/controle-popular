@@ -1,5 +1,21 @@
 # Que modelo pode analisar — resultado medido
 
+> **Tipo:** DOMINIO
+> **Domínio:** congresso
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [README.md](../../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** dominio, referencia
+
+## Sumário
+
+- [Propósito](#propósito)
+- [Resultados](#resultados)
+- [O 8B local está REPROVADO para produção](#o-8b-local-está-reprovado-para-produção)
+- [Decisão (2026-07-23)](#decisão-2026-07-23)
+- [Antes de aprovar qualquer modelo novo](#antes-de-aprovar-qualquer-modelo-novo)
+- [Origem](#origem)
+
 Conjunto: `etl/benchmark/casos.json` — 30 PLs reais da Câmara, 10
 garantistas / 10 reducionistas / 10 técnicos, gabarito por julgamento
 humano sobre a ementa. Runner: `python -m etl.benchmark`.

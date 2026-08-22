@@ -1,5 +1,24 @@
 # F4 — Benchmark da rubrica
 
+> **Tipo:** DOMINIO
+> **Domínio:** congresso
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [README.md](../../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** dominio, referencia
+
+## Sumário
+
+- [Propósito](#propósito)
+- [1. A pergunta que motivou o teste](#1-a-pergunta-que-motivou-o-teste)
+- [2. O conjunto — `etl/benchmark/casos.json`](#2-o-conjunto-etlbenchmarkcasosjson)
+- [3. Resultado — Sonnet, 2026-07-22](#3-resultado-sonnet-2026-07-22)
+- [4. O único caso fora do gabarito — e por que ele não é um erro](#4-o-único-caso-fora-do-gabarito-e-por-que-ele-não-é-um-erro)
+- [5. Um bug encontrado — no verificador, não no modelo](#5-um-bug-encontrado-no-verificador-não-no-modelo)
+- [6. O que este teste NÃO responde](#6-o-que-este-teste-não-responde)
+- [7. Sinal secundário: magnitude do score diverge entre modelos](#7-sinal-secundário-magnitude-do-score-diverge-entre-modelos)
+- [Origem](#origem)
+
 Registro do teste que a F4 exige antes de qualquer UI de análise ser
 construída. Método, números e o que ficou em aberto.
 

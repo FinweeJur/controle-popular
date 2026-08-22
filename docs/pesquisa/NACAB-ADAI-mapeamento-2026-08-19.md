@@ -1,5 +1,21 @@
 # Mapeamento NACAB, ADAI e IBGP — 2026-08-19 (atualizado)
 
+> **Tipo:** PESQUISA
+> **Domínio:** paraopeba
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [README.md](../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** pesquisa, NACAB, ADAI, paraopeba, mapeamento
+
+## Sumário
+
+- [Propósito](#propósito)
+- [NACAB — o script `coletar-biblioteca-ati.py` está desatualizado](#nacab-o-script-coletar-biblioteca-atipy-está-desatualizado)
+- [ADAI — achado que muda `atores.ts`, não só a biblioteca](#adai-achado-que-muda-atorests-não-só-a-biblioteca)
+- [IBGP — RESOLVIDO: e a ATI da Regiao 1](#ibgp-resolvido-e-a-ati-da-regiao-1)
+- [Trabalho pendente (fica para a sessao de codigo, depois do lote)](#trabalho-pendente-fica-para-a-sessao-de-codigo-depois-do-lote)
+- [Origem](#origem)
+
 Pesquisa pedida pelo usuário para corrigir a biblioteca de ATIs. Não editei
 código nesta rodada — só mapeei. A implementação fica para depois do lote
 de resumos da auditoria AJRI, por decisão do usuário.

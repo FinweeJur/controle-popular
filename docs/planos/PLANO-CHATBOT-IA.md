@@ -1,5 +1,24 @@
 # Chatbot IA — plano (adaptação do template "Notebook LM do negócio")
 
+> **Tipo:** PLANO
+> **Domínio:** global
+> **Última medição:** 2026-08-22
+> **Leitura estimada:** media (5-15 min)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano, ativo, tarefa
+
+## Sumário
+
+- [Propósito](#propósito)
+- [O que é](#o-que-é)
+- [O ponto crítico: o portal JÁ tem assistente, e é determinístico](#o-ponto-crítico-o-portal-já-tem-assistente-e-é-determinístico)
+- [Adaptação crítica do template (o que muda do Leilões)](#adaptação-crítica-do-template-o-que-muda-do-leilões)
+- [As 4 camadas (adaptadas)](#as-4-camadas-adaptadas)
+- [Riscos (honestos, no contexto do portal)](#riscos-honestos-no-contexto-do-portal)
+- [Ordem de execução](#ordem-de-execução)
+- [Vitória esperada](#vitória-esperada)
+- [Origem](#origem)
+
 > Escrito em 2026-08-16, a pedido do dono: ele trouxe o **"Plano Final
 > Contextualizado — Chatbot IA pra Leilões.app"** e pediu para **adaptar
 > criticamente** pro Controle Popular e registrar no plano. O template é de
