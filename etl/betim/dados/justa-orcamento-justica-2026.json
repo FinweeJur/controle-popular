@@ -1,0 +1,124 @@
+{
+ "fonte": "JUSTA — Pesquisa Nacional Justiça e Orçamento nos Estados 2026",
+ "url": "https://www.justa.org.br/wp-content/uploads/2026/02/Relatorio-Justica-e-Orcamento_2026.pdf",
+ "anoDoDado": 2024,
+ "publicadoEm": "2026-02-19",
+ "extraidoEm": "2026-08-22",
+ "metodo": "pareamento por coordenada na página 5 do PDF (layout Canva)",
+ "avisoAutoria": "O dado é do JUSTA, não deste portal. Republicar exige citar a fonte e apontar para o relatório original.",
+ "avisoCobertura": "22 estados + DF. MA, MS, PI e RR não disponibilizaram informação; GO e SC não disponibilizaram de todas as instituições. No DF, TJ e MP são financiados pela União — só a Defensoria entra.",
+ "somaExtraida": 87.7,
+ "avisoSoma": "A soma dos 21 estados extraídos dá R$ 87,7 bi. O resumo executivo do relatório (p. 3) cita R$ 93,2 bi. A diferença não foi investigada — pode ser GO e SC, que entram no total do relatório com dado parcial e não aparecem no gráfico por estado. NÃO citar um número como se fosse o outro.",
+ "estados": [
+  {
+   "uf": "AC",
+   "gastoBilhoes": 0.8,
+   "percentualDoOrcamentoEstadual": 7.2
+  },
+  {
+   "uf": "AL",
+   "gastoBilhoes": 1.1,
+   "percentualDoOrcamentoEstadual": 5.9
+  },
+  {
+   "uf": "AM",
+   "gastoBilhoes": 2.0,
+   "percentualDoOrcamentoEstadual": 6.0
+  },
+  {
+   "uf": "AP",
+   "gastoBilhoes": 0.8,
+   "percentualDoOrcamentoEstadual": 8.6
+  },
+  {
+   "uf": "BA",
+   "gastoBilhoes": 4.8,
+   "percentualDoOrcamentoEstadual": 6.8
+  },
+  {
+   "uf": "CE",
+   "gastoBilhoes": 3.1,
+   "percentualDoOrcamentoEstadual": 7.7
+  },
+  {
+   "uf": "DF",
+   "gastoBilhoes": 0.3,
+   "percentualDoOrcamentoEstadual": 0.8
+  },
+  {
+   "uf": "ES",
+   "gastoBilhoes": 2.0,
+   "percentualDoOrcamentoEstadual": 7.2
+  },
+  {
+   "uf": "MG",
+   "gastoBilhoes": 12.3,
+   "percentualDoOrcamentoEstadual": 11.5
+  },
+  {
+   "uf": "MT",
+   "gastoBilhoes": 3.8,
+   "percentualDoOrcamentoEstadual": 10.4
+  },
+  {
+   "uf": "PA",
+   "gastoBilhoes": 3.8,
+   "percentualDoOrcamentoEstadual": 7.8
+  },
+  {
+   "uf": "PB",
+   "gastoBilhoes": 2.1,
+   "percentualDoOrcamentoEstadual": 10.5
+  },
+  {
+   "uf": "PE",
+   "gastoBilhoes": 3.4,
+   "percentualDoOrcamentoEstadual": 7.3
+  },
+  {
+   "uf": "PR",
+   "gastoBilhoes": 6.0,
+   "percentualDoOrcamentoEstadual": 8.7
+  },
+  {
+   "uf": "RJ",
+   "gastoBilhoes": 11.1,
+   "percentualDoOrcamentoEstadual": 11.0
+  },
+  {
+   "uf": "RN",
+   "gastoBilhoes": 1.7,
+   "percentualDoOrcamentoEstadual": 9.0
+  },
+  {
+   "uf": "RO",
+   "gastoBilhoes": 1.9,
+   "percentualDoOrcamentoEstadual": 12.8
+  },
+  {
+   "uf": "RS",
+   "gastoBilhoes": 5.6,
+   "percentualDoOrcamentoEstadual": 8.7
+  },
+  {
+   "uf": "SE",
+   "gastoBilhoes": 1.1,
+   "percentualDoOrcamentoEstadual": 7.5
+  },
+  {
+   "uf": "SP",
+   "gastoBilhoes": 18.6,
+   "percentualDoOrcamentoEstadual": 5.4
+  },
+  {
+   "uf": "TO",
+   "gastoBilhoes": 1.4,
+   "percentualDoOrcamentoEstadual": 8.3
+  }
+ ],
+ "orfaos": {
+  "valoresEmBilhoes": 0,
+  "percentuais": 0
+ },
+ "conferidoContra": "ranking da pagina 7 do proprio relatorio (top-5 de cada eixo)"
+}
