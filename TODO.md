@@ -48,6 +48,36 @@
   · depois de protocolar, registrar em `docs/LAI-PROTOCOLOS.json` — aí a CI
   diária passa a vigiar o prazo sozinha
 
+- **Análise integrada do Paraopeba — em curso, retomar por aqui.** O cruzamento
+  auditoria × ATIs × perícia. O que já está no branch `cp-acordos-mg`:
+  `temas-ati.ts` (mapa de tema-livre → `TemaAjri`, **238 dos 597** itens) e o
+  DataJud por consulta ao vivo.
+  · **próximo passo concreto:** estender `relacionados.ts` com `documentosAti`
+  usando `temas-ati.ts` — o cabeçalho do arquivo já previa essa fatia — e criar
+  `/paraopeba/analise` com os 16 eixos da AECOM contra as três fontes.
+  · **o achado que muda o desenho:** **13 das 46 notícias das ATIs já resumem
+  estudos**, escritas pela própria ATI (média de 316 caracteres). Usar o texto
+  delas, citado e com link, é melhor que resumo de máquina — a regra da casa diz
+  que resumo por modelo é *o portal afirmando algo*. Só usar modelo onde não há
+  voz da fonte.
+  · **casamento notícia→estudo tem de ser por evidência forte** (número medido
+  que aparece nos dois, título citado). Duas notícias do Guaicuy citam o
+  `63,5%` que também está no resumo da perícia — esse é o padrão. **Casar por
+  tema em comum é defeito**, não atalho.
+  · **NACAB está fora da biblioteca de propósito.** Os 48 apontam para o `.pdf`
+  direto e a biblioteca aponta para a *página* da fonte (`biblioteca.test.ts`).
+  Falta descobrir a URL de página e uma data confiável. Coletor pronto em
+  `scripts/coletar-biblioteca-nacab.mts`.
+
+- **Síntese temática ainda NÃO inclui a perícia.** `SINTESE_AJRI` tem 16 eixos
+  escritos só dos 337 relatórios da AECOM; `sintese-pericia.ts` é peça separada.
+  · **não editar `sintese-ajri.ts` à mão** — é gerado por
+  `gerar-sintese-ajri.mts` a partir de um `.md` fora do repo, e é a voz da
+  auditoria. A fusão vai numa camada nova (`sintese-integrada.ts`), com as
+  vozes identificadas.
+  · resumo por documento hoje: AECOM **207/337**, perícia **7/7**, ATIs
+  **0/597**.
+
 ## Esperando data
 
 - **Neon volta em 2026-09-01** (HTTP 402 até lá; sem banco não há `next build`).
