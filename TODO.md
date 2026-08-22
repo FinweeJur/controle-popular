@@ -48,26 +48,18 @@
   · depois de protocolar, registrar em `docs/LAI-PROTOCOLOS.json` — aí a CI
   diária passa a vigiar o prazo sozinha
 
-- **Análise integrada do Paraopeba — em curso, retomar por aqui.** O cruzamento
-  auditoria × ATIs × perícia. O que já está no branch `cp-acordos-mg`:
-  `temas-ati.ts` (mapa de tema-livre → `TemaAjri`, **238 dos 597** itens) e o
-  DataJud por consulta ao vivo.
-  · **próximo passo concreto:** estender `relacionados.ts` com `documentosAti`
-  usando `temas-ati.ts` — o cabeçalho do arquivo já previa essa fatia — e criar
-  `/paraopeba/analise` com os 16 eixos da AECOM contra as três fontes.
-  · **o achado que muda o desenho:** **13 das 46 notícias das ATIs já resumem
-  estudos**, escritas pela própria ATI (média de 316 caracteres). Usar o texto
-  delas, citado e com link, é melhor que resumo de máquina — a regra da casa diz
-  que resumo por modelo é *o portal afirmando algo*. Só usar modelo onde não há
-  voz da fonte.
-  · **casamento notícia→estudo tem de ser por evidência forte** (número medido
-  que aparece nos dois, título citado). Duas notícias do Guaicuy citam o
-  `63,5%` que também está no resumo da perícia — esse é o padrão. **Casar por
-  tema em comum é defeito**, não atalho.
-  · **NACAB está fora da biblioteca de propósito.** Os 48 apontam para o `.pdf`
-  direto e a biblioteca aponta para a *página* da fonte (`biblioteca.test.ts`).
-  Falta descobrir a URL de página e uma data confiável. Coletor pronto em
-  `scripts/coletar-biblioteca-nacab.mts`.
+- **Análise integrada do Paraopeba — ENTREGUE.** `/paraopeba/analise` põe os 16
+  eixos da auditoria AECOM contra a perícia da UFMG, os documentos das ATIs e a
+  voz da própria ATI (o texto que ela escreveu sobre o próprio estudo).
+  · **o que a página mede:** 1 único eixo tem as 3 fontes (Saúde humana e risco
+  ecológico); **12 dos 16 só têm a auditoria**; e 3 temas órfãos — assunto que
+  perícia e ATIs tratam e nenhum eixo cobre (plano-de-reparacao 10/106,
+  programas-de-compensacao 3/63, frentes-emergenciais 0/11).
+  · a página distingue **"a ponte não existe"** (7 eixos sem equivalente no
+  vocabulário) de **"a ponte existe e ninguém usou"** (5 eixos). Só o segundo é
+  pauta; juntar os dois inventaria lacuna.
+  · casamento notícia↔estudo em `estudo-e-noticia.ts`: 5 fortes, 1 médio, 7
+  nulos com motivo. **Casar por tema em comum é defeito**, não atalho.
 
 - **Síntese temática ainda NÃO inclui a perícia.** `SINTESE_AJRI` tem 16 eixos
   escritos só dos 337 relatórios da AECOM; `sintese-pericia.ts` é peça separada.
