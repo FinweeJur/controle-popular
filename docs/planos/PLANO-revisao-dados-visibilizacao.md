@@ -246,6 +246,44 @@ nas duas telas. Pendências registradas:
 11. Criar tela de legislação com status e link.
 12. Documentar lacunas para pedidos LAI futuros.
 
+#### Status da Sprint 4 (2026-08-22, branch `revisao-dados-sprint4`)
+
+Itens 10-11 **entregues**; item 12 parcialmente — cada status negativo na
+tela já carrega nota dizendo onde foi procurado/onde procurar (matéria-prima
+de pedido LAI). Tela `/[municipio]/legislacao` com os cinco instrumentos
+(Lei Orgânica, Plano Diretor, Zoneamento/Uso do Solo, Código Tributário,
+Código de Obras e Posturas), cartões por status e filtro. Dado versionado em
+`apps/web/lib/betim/legislacao/dados.ts`, sem tabela nova no banco.
+
+Regra editorial do levantamento: **só domínio oficial (.gov.br) entra como
+"Encontrado"** — agregadores privados podem aparecer nas notas como pista,
+nunca como link principal. Verificação feita em 2026-08-22 (`VERIFICADO_EM`),
+colada aos números da tela.
+
+Achados verificados: Betim LO (Prefeitura, 1990) e PD (DPURB, LC 07/2018
+compilada até LC 23/2024); BH LO (Transparência PBH) e PD/zoneamento (Lei
+11.181/2019 — o PDU incorporou as normas de uso do solo); Araçuaí PD, LC de
+uso do solo (008/2007) e Código Tributário (LC 006/2000), todos no portal de
+transparência.
+
+Pendências:
+
+1. **Bacia do Paraopeba não verificada** — os demais municípios da bacia
+   entram com tudo "Não verificado"; a tela já lida com isso honestamente.
+2. **Diamantina avançou na segunda rodada de verificação (mesmo dia)**: Lei
+   Orgânica (1990, PDF na Prefeitura) e Plano Diretor (LC nº 103, texto
+   vigente) agora "Encontrados"; restam zoneamento/tributário/obras com os
+   dois canais oficiais anotados. **Itinga segue sem documento localizado** —
+   site oficial confirmado (www.itinga.mg.gov.br) com repositório de
+   Documentos Públicos (/publicacao) e Portal da Transparência próprio;
+   nenhum PDF exposto diretamente, vale pedido LAI se a busca manual falhar.
+3. **Betim/BH: Código Tributário e Código de Obras/Posturas** ainda não
+   identificados (caminhos anotados nos itens).
+4. **Links podem sair do ar** — re-verificar `VERIFICADO_EM` quando tocar
+   aqui de novo; a nota de cada item sobrevive ao link quebrado.
+5. **Sem CSV nesta tela** (lista fixa de 5 linhas, fora da regra das cinco
+   coisas); se virar acervo grande, adotar `TabelaEstatica` + índice fatiado.
+
 ### Sprint 5 — Integração e comunicação
 
 13. Criar "Painel do cidadão" consolidando as telas acima.
