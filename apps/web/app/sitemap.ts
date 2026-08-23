@@ -115,6 +115,7 @@ const ROTAS_CIDADE: {
   { sufixo: "/postos-combustivel", changeFrequency: "daily" },
   { sufixo: "/prefeitura", changeFrequency: "weekly", priority: 0.7 },
   { sufixo: "/prefeitura/contratos", changeFrequency: "weekly" },
+  { sufixo: "/prefeitura/cultura", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/despesas", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/diarias", changeFrequency: "weekly" },
   { sufixo: "/prefeitura/licitacoes", changeFrequency: "weekly" },

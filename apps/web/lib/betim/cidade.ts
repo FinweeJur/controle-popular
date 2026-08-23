@@ -62,6 +62,8 @@ export async function cidadeDaRota(
  * Omiti-lo não quebra nada; apenas deixa a página fora do alcance da edição
  * manual, que é o comportamento certo para quem ainda não precisou dela.
  */
+const BASE_URL = "https://controlepopular.com.br";
+
 export function metadataDaCidade(
   titulo: (cidade: Cidade) => string,
   descricao: (cidade: Cidade) => string,
@@ -74,8 +76,34 @@ export function metadataDaCidade(
   }): Promise<Metadata> {
     const { municipio } = await params;
     const cidade = await cidadeDaRota(Promise.resolve({ municipio }));
-    const base = { title: titulo(cidade), description: descricao(cidade) };
+    const title = titulo(cidade);
+    const description = descricao(cidade);
+    const canonical = subrota === undefined ? `/${municipio}` : `/${municipio}${subrota}`;
+    const base: Metadata = {
+      title,
+      description,
+      metadataBase: new URL(BASE_URL),
+      openGraph: {
+        type: "website",
+        locale: "pt_BR",
+        url: canonical,
+        siteName: "Controle Popular",
+        title,
+        description,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+      },
+      alternates: {
+        canonical,
+      },
+    };
     if (subrota === undefined) return base;
-    return aplicarEdicao(`/${municipio}${subrota}`, base);
+    // `Metadata.title` é tipado como string | TemplateString | null | undefined,
+    // mas aqui sempre vem de uma função que retorna string. O cast preserva
+    // o contrato exigido por `aplicarEdicao` sem alterar o valor em runtime.
+    return aplicarEdicao(canonical, base as Metadata & { title: string });
   };
 }

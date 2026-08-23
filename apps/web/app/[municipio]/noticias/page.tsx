@@ -12,8 +12,9 @@ export async function generateStaticParams() {
 }
 
 export const generateMetadata = metadataDaCidade(
-  (c) => `Notícias — ${nomePortal(c)}`,
-  (c) => `Achados de investigação, explicadores e notas do ${nomePortal(c)} — texto próprio, sem redação terceirizada.`
+  (c) => `Notícias e investigações sobre ${c.nome} — ${nomePortal(c)}`,
+  (c) =>
+    `Achados de investigação, explicadores e notas sobre ${c.nome}-${c.uf}: dados públicos, poder público e transparência.`
 );
 
 export default async function NoticiasPage({

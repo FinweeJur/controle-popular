@@ -1,5 +1,6 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
+import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
 import PedidoLAI from "@/app/[municipio]/components/PedidoLAI";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import AreasAtuacao from "@/app/[municipio]/components/charts/AreasAtuacao";
@@ -18,8 +19,8 @@ export async function generateStaticParams() {
 }
 
 export const generateMetadata = metadataDaCidade(
-  (c) => `Contratos da Prefeitura — ${nomePortal(c)}`,
-  (c) => `Lista de contratos administrativos da Prefeitura de ${c.nome}, dados públicos via PNCP.`
+  (c) => `Contratos públicos de ${c.nome} — ${nomePortal(c)}`,
+  (c) => `Veja os contratos administrativos da Prefeitura de ${c.nome}: fornecedores, valores, alertas e links oficiais no Portal Nacional de Contratações Públicas (PNCP).`
 );
 
 interface ContratosPageProps {
@@ -48,9 +49,18 @@ export default async function ContratosPage({ params: rota }: ContratosPageProps
 
   const prefixoExport = process.env.PAGES_BASE_PATH ?? "";
   const baseDados = `${prefixoExport}/${cidade.slug}/prefeitura/contratos/dados`;
+  const baseUrl = `https://controlepopular.com.br/${cidade.slug}`;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8">
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: cidade.nome, item: `${baseUrl}/` },
+          { name: "Prefeitura", item: `${baseUrl}/prefeitura` },
+          { name: "Contratos", item: `${baseUrl}/prefeitura/contratos` },
+        ]}
+      />
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-8">
       <nav className="mb-4 text-[.82em] text-text-soft">
         <Link href="/" className="hover:text-primary">
           Início
@@ -164,5 +174,6 @@ export default async function ContratosPage({ params: rota }: ContratosPageProps
 
       <PedidoLAI orgao="prefeitura" />
     </div>
+    </>
   );
 }

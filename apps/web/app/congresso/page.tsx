@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "@/lib/congresso/link";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import FotoBrasilComS from "@/app/components/FotoBrasilComS";
@@ -10,6 +11,12 @@ import { totaisHome } from "@/lib/db/queries/congresso";
  * regra que vale em produção: fonte de dados ausente vira estado vazio
  * honesto, nunca erro.
  */
+export const metadata: Metadata = {
+  title: "O que o Congresso Nacional está decidindo — Controle Popular",
+  description:
+    "Monitoramento de projetos de lei federais: proposições, votações, bancadas e análise de direitos. Acompanhe o Congresso Nacional com dados oficiais.",
+};
+
 export default async function Home() {
   const { proposicoes: totalProposicoes, analises: totalAnalises } = await totaisHome();
 
