@@ -199,11 +199,10 @@ nas duas telas. Pendências registradas:
 1. **Payload das rotas novas não medido** — a máquina da sprint não tem banco
    (Neon HTTP 402); build e medição contra o teto de 25 MiB ficam para o
    home-pc. Sem banco as telas renderizam o estado vazio declarado.
-2. **Indício de concentração sem badge visual** — `fornecedoresConcentradoNoAno`
-   (> 5 contratos/ano) está implementado e testado em
-   `lib/betim/fornecedores-puro.ts`, mas o ranking é acumulado de todos os
-   anos; o sinal só vale com recorte de ano. Virar UI exige índice por ano,
-   senão o filtro mentiria o valor total exibido.
+2. ~~Indício de concentração sem badge visual~~ **RESOLVIDO na passada
+   `revisao-dados` (mesmo dia)**: a tela de contratos ganhou badge e filtro
+   "concentração no ano" — mesmo fornecedor com mais de N contratos assinados
+   NO MESMO ANO, contados no navegador sobre todas as linhas carregadas.
 3. **ETL (`etl/alertas.py`) intocado** — os três indícios exigidos já existiam
    como regras 1, 2 e 8; o de empresa recém-criada é calculado em tempo de
    consulta e não entra no ETL. Persistir em `motivos_alerta` exige rodada de
@@ -211,6 +210,29 @@ nas duas telas. Pendências registradas:
 4. **`recem=1` fora do ramo JSON de `/api/contratos`** — só o CSV aceita;
    motivo documentado no código (agregados de janela em SQL divergiriam do
    conjunto filtrado).
+
+#### Ajustes da passada `revisao-dados` (2026-08-22, decisão do dono)
+
+1. **Regra de dispensa próxima do limite, documentada**: alerta dispara quando
+   a contratação por dispensa atinge **90% do limite do art. 75 da Lei
+   14.133/2021 — R$ 400.000 para obras/serviços de engenharia e R$ 100.000
+   para bens/serviços comuns** (`LIMIAR_DISPENSA_*`, `PCT_LIMIAR_DISPENSA`
+   em `etl/betim/etl/alertas.py`). Os valores anteriores (100.000/50.000)
+   não eram os da lei e foram corrigidos; **a correção só chega ao banco com
+   rodada de ETL no home-pc** — até lá, os alertas já gravados seguem com o
+   critério antigo.
+2. **Concentração por ano, N=3 configurável**: constante
+   `INDICIO_CONCENTRACAO_CONTRATOS_NO_ANO = 3` em
+   `apps/web/lib/betim/contratos-indicios.ts`; estrito ("mais de N" — três
+   não acusam, quatro sim). Agrupa por CNPJ e, na falta, pelo nome publicado.
+   Sem CNPJ nem nome, a linha não gera indício (lacuna declarada, não
+   inferência).
+3. **Empresa recém-criada, lacuna explícita**: sem `data_abertura` do CNPJ,
+   nenhum indício é gerado e a tela não afirma idade nenhuma da empresa —
+   ausência de dado nunca vira sinal.
+4. **Pendência nova: `conc=1` fora do CSV de contratos** — o indício de
+   concentração é calculado sobre o conjunto carregado no navegador; a rota
+   CSV teria que reproduzir a mesma contagem server-side para não divergir.
 
 ### Sprint 3 — Território e empreendimentos
 
