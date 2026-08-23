@@ -1,97 +1,146 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { MessageCircle, X, Bot, Sparkles, ExternalLink } from "lucide-react";
-import Link from "@/lib/betim/link";
+import { useState, useEffect, useMemo } from "react";
+import {
+  MessageCircle,
+  X,
+  Bot,
+  Sparkles,
+  ExternalLink,
+  ChevronLeft,
+  Search,
+} from "lucide-react";
+import Link from "next/link";
+import {
+  FRENTES,
+  type SeuNonoFrente,
+  type SeuNonoCategoria,
+  type SeuNonoPergunta,
+} from "./SeuNonoData";
 
-interface PerguntaResposta {
-  pergunta: string;
-  resposta: string;
-  link?: { href: string; texto: string };
-}
-
-const RESPOSTAS_ESTATICAS: PerguntaResposta[] = [
-  {
-    pergunta: "O que é o Controle Popular?",
-    resposta:
-      "Portal independente de transparência que reúne dados públicos sobre cidades, Congresso Nacional, Judiciário e meio ambiente.",
-    link: { href: "/sobre", texto: "Sobre o portal" },
-  },
-  {
-    pergunta: "Como acompanhar minha cidade?",
-    resposta:
-      "Escolha sua cidade na home. Lá você encontra contratos, despesas, licitações, obras, servidores, diário oficial e leis municipais.",
-    link: { href: "/", texto: "Ir para a home" },
-  },
-  {
-    pergunta: "Como denunciar uma violação de direito?",
-    resposta:
-      "A seção Direitos em Movimento reúne onde buscar ajuda, como pedir informação e como denunciar.",
-    link: { href: "/direitos-em-movimento", texto: "Direitos em Movimento" },
-  },
-  {
-    pergunta: "Onde estão os dados ambientais?",
-    resposta:
-      "A frente Ambiental reúne licenciamentos, reuniões do COPAM, barragens, legislação e patrimônio cultural tombado.",
-    link: { href: "/ambiental", texto: "Ver Ambiental" },
-  },
-];
+type Nivel = "frentes" | "categorias" | "perguntas" | "resposta" | "ia";
 
 /**
  * Widget flutuante "Seu Nonô" — assistente do Controle Popular.
  *
- * Modo degradado (sem IA configurada): mostra respostas estáticas pré-curadas
- * com links para as páginas certas. Quando `AI_API_KEY` ou Ollama local estão
- * disponíveis, o modo IA (RAG) pode ser ativado.
+ * Funciona como uma escada de respostas pré-curadas:
+ * 1) escolha a frente (Cidades, Congresso, Judiciário, Ambiental, Paraopeba, Geral);
+ * 2) escolha o tema dentro da frente;
+ * 3) escolha a pergunta;
+ * 4) vê a resposta com link para a página certa.
+ *
+ * Só no último degrau oferecemos a IA (quando NEXT_PUBLIC_AI_API_KEY ou Ollama
+ * estiverem disponíveis). Enquanto não houver IA, o widget opera 100% no modo
+ * texto, sem depender de rede externa.
  *
  * Posicionado no canto inferior esquerdo, expansível, sem tomar a tela toda.
  */
 export function SeuNono() {
   const [aberto, setAberto] = useState(false);
-  const [iaDisponivel, setIaDisponivel] = useState<boolean | null>(null);
-  const [pergunta, setPergunta] = useState("");
-  const [resposta, setResposta] = useState<PerguntaResposta | null>(null);
+  const [iaDisponivel, setIaDisponivel] = useState<boolean>(false);
+
+  const [nivel, setNivel] = useState<Nivel>("frentes");
+  const [frente, setFrente] = useState<SeuNonoFrente | null>(null);
+  const [categoria, setCategoria] = useState<SeuNonoCategoria | null>(null);
+  const [resposta, setResposta] = useState<SeuNonoPergunta | null>(null);
+
+  const [perguntaLivre, setPerguntaLivre] = useState("");
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
+  const [respostaIa, setRespostaIa] = useState<string | null>(null);
 
   // Detecta se ha algum provedor de IA disponivel no ambiente.
   useEffect(() => {
     const temApiKey = Boolean(process.env.NEXT_PUBLIC_AI_API_KEY);
-    // Ollama só pode ser testado via server action/route; aqui assumimos false
-    // ate o backend confirmar. Em modo estatico, o widget opera no degradado.
     setIaDisponivel(temApiKey);
   }, []);
 
-  function responderEstatica(item: PerguntaResposta) {
-    setResposta(item);
-    setErro(null);
+  // Reseta a navegação ao fechar para recomeçar do topo na próxima abertura.
+  useEffect(() => {
+    if (!aberto) {
+      const timer = setTimeout(() => {
+        setNivel("frentes");
+        setFrente(null);
+        setCategoria(null);
+        setResposta(null);
+        setRespostaIa(null);
+        setErro(null);
+        setPerguntaLivre("");
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [aberto]);
+
+  const frenteAtual = useMemo(
+    () => FRENTES.find((f) => f.id === frente?.id) ?? null,
+    [frente]
+  );
+  const categoriaAtual = useMemo(
+    () => frenteAtual?.categorias.find((c) => c.id === categoria?.id) ?? null,
+    [frenteAtual, categoria]
+  );
+
+  function escolherFrente(f: SeuNonoFrente) {
+    setFrente(f);
+    setNivel("categorias");
   }
 
-  async function enviarPergunta(e: React.FormEvent) {
+  function escolherCategoria(c: SeuNonoCategoria) {
+    setCategoria(c);
+    setNivel("perguntas");
+  }
+
+  function escolherResposta(p: SeuNonoPergunta) {
+    setResposta(p);
+    setNivel("resposta");
+  }
+
+  function voltar() {
+    if (nivel === "resposta") {
+      setResposta(null);
+      setNivel("perguntas");
+    } else if (nivel === "perguntas") {
+      setCategoria(null);
+      setNivel("categorias");
+    } else if (nivel === "categorias") {
+      setFrente(null);
+      setNivel("frentes");
+    } else if (nivel === "ia") {
+      setErro(null);
+      setRespostaIa(null);
+      setNivel(categoria ? "perguntas" : frente ? "categorias" : "frentes");
+    }
+  }
+
+  function abrirIa() {
+    setNivel("ia");
+  }
+
+  async function enviarPerguntaLivre(e: React.FormEvent) {
     e.preventDefault();
-    if (!pergunta.trim()) return;
+    if (!perguntaLivre.trim()) return;
 
     setCarregando(true);
     setErro(null);
-    setResposta(null);
+    setRespostaIa(null);
 
     try {
       const resp = await fetch("/api/chatbot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pergunta }),
+        body: JSON.stringify({ pergunta: perguntaLivre }),
       });
       const dados = (await resp.json()) as { resposta?: string; erro?: string };
       if (!resp.ok || dados.erro) {
         setErro(dados.erro ?? "Não consegui responder agora.");
       } else {
-        setResposta({ pergunta, resposta: dados.resposta ?? "" });
+        setRespostaIa(dados.resposta ?? "");
       }
     } catch (e) {
       setErro(e instanceof Error ? e.message : "Erro de rede");
     } finally {
       setCarregando(false);
-      setPergunta("");
+      setPerguntaLivre("");
     }
   }
 
@@ -120,22 +169,70 @@ export function SeuNono() {
           </div>
 
           {/* Área de mensagens */}
-          <div className="max-h-[min(60vh,24rem)] overflow-y-auto px-4 py-3">
-            {!resposta && !erro && (
+          <div className="max-h-[min(60vh,28rem)] overflow-y-auto px-4 py-3">
+            {/* Nível 1: escolha da frente */}
+            {nivel === "frentes" && (
               <div className="space-y-3">
                 <p className="text-sm text-text-soft">
-                  Olá! Sou o <strong className="text-text">Seu Nonô</strong>, assistente do
-                  Controle Popular. Enquanto a IA não está configurada, posso te guiar por
-                  estas perguntas:
+                  Olá! Sou o <strong className="text-text">Seu Nonô</strong>. Escolha uma
+                  frente do portal para eu te guiar:
                 </p>
                 <ul className="space-y-2">
-                  {RESPOSTAS_ESTATICAS.map((item) => (
-                    <li key={item.pergunta}>
+                  {FRENTES.map((f) => (
+                    <li key={f.id}>
                       <button
-                        onClick={() => responderEstatica(item)}
-                        className="w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-left text-sm text-text hover:border-primary"
+                        onClick={() => escolherFrente(f)}
+                        className="flex w-full flex-col rounded-lg border border-border bg-surface-2 px-3 py-2 text-left hover:border-primary"
                       >
-                        {item.pergunta}
+                        <span className="text-sm font-medium text-text">{f.titulo}</span>
+                        <span className="text-xs text-text-soft">{f.descricao}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="border-t border-border pt-3">
+                  <p className="mb-2 text-xs text-text-soft">
+                    Não encontrou o que procura?
+                  </p>
+                  {iaDisponivel ? (
+                    <button
+                      onClick={abrirIa}
+                      className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-primary/50 bg-primary/5 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/10"
+                    >
+                      <Sparkles size={14} /> Perguntar à IA
+                    </button>
+                  ) : (
+                    <p className="rounded-lg border border-dashed border-border bg-surface-2 px-3 py-2 text-xs text-text-soft">
+                      A IA ainda não está configurada. Use os menus acima ou envie uma
+                      sugestão pelo GitHub.
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Nível 2: escolha do tema/categoria */}
+            {nivel === "categorias" && frenteAtual && (
+              <div className="space-y-3">
+                <button
+                  onClick={voltar}
+                  className="flex items-center gap-1 text-xs text-text-soft hover:text-primary"
+                >
+                  <ChevronLeft size={14} /> Voltar às frentes
+                </button>
+                <p className="text-sm text-text-soft">
+                  <strong className="text-text">{frenteAtual.titulo}</strong> — escolha um
+                  tema:
+                </p>
+                <ul className="space-y-2">
+                  {frenteAtual.categorias.map((c) => (
+                    <li key={c.id}>
+                      <button
+                        onClick={() => escolherCategoria(c)}
+                        className="w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-left text-sm font-medium text-text hover:border-primary"
+                      >
+                        {c.titulo}
                       </button>
                     </li>
                   ))}
@@ -143,8 +240,59 @@ export function SeuNono() {
               </div>
             )}
 
-            {resposta && (
+            {/* Nível 3: escolha da pergunta */}
+            {nivel === "perguntas" && frenteAtual && categoriaAtual && (
               <div className="space-y-3">
+                <button
+                  onClick={voltar}
+                  className="flex items-center gap-1 text-xs text-text-soft hover:text-primary"
+                >
+                  <ChevronLeft size={14} /> Voltar a {frenteAtual.titulo}
+                </button>
+                <p className="text-sm text-text-soft">
+                  <strong className="text-text">{categoriaAtual.titulo}</strong> — escolha
+                  uma pergunta:
+                </p>
+                <ul className="space-y-2">
+                  {categoriaAtual.perguntas.map((p) => (
+                    <li key={p.id}>
+                      <button
+                        onClick={() => escolherResposta(p)}
+                        className="w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-left text-sm text-text hover:border-primary"
+                      >
+                        {p.pergunta}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="border-t border-border pt-3">
+                  {iaDisponivel ? (
+                    <button
+                      onClick={abrirIa}
+                      className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-primary/50 bg-primary/5 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/10"
+                    >
+                      <Sparkles size={14} /> Sua pergunta não está na lista? Perguntar à IA
+                    </button>
+                  ) : (
+                    <p className="text-xs text-text-soft">
+                      Se sua pergunta não estiver na lista, a IA será ativada assim que
+                      houver uma chave de API configurada.
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Nível 4: resposta pré-curada */}
+            {nivel === "resposta" && resposta && (
+              <div className="space-y-3">
+                <button
+                  onClick={voltar}
+                  className="flex items-center gap-1 text-xs text-text-soft hover:text-primary"
+                >
+                  <ChevronLeft size={14} /> Voltar às perguntas
+                </button>
                 <div className="rounded-lg bg-primary/10 px-3 py-2 text-sm text-text">
                   <strong className="text-primary">Você:</strong> {resposta.pergunta}
                 </div>
@@ -159,50 +307,95 @@ export function SeuNono() {
                     </Link>
                   )}
                 </div>
-                <button
-                  onClick={() => setResposta(null)}
-                  className="text-xs text-text-soft hover:text-primary"
-                >
-                  ← Voltar às perguntas
-                </button>
               </div>
             )}
 
-            {erro && (
-              <div className="rounded-lg border border-alert/30 bg-alert/10 px-3 py-2 text-sm text-alert">
-                {erro}
-                <p className="mt-1 text-xs">
-                  Enquanto isso, escolha uma das perguntas sugeridas acima.
-                </p>
+            {/* Nível 5: pergunta livre (IA) */}
+            {nivel === "ia" && (
+              <div className="space-y-3">
+                <button
+                  onClick={voltar}
+                  className="flex items-center gap-1 text-xs text-text-soft hover:text-primary"
+                >
+                  <ChevronLeft size={14} /> Voltar
+                </button>
+
+                {!respostaIa && !erro && (
+                  <>
+                    <p className="text-sm text-text-soft">
+                      Descreva o que você quer saber. A IA tentará responder com base nos
+                      dados e documentação do portal.
+                    </p>
+                    <form onSubmit={enviarPerguntaLivre} className="flex gap-2">
+                      <input
+                        type="text"
+                        value={perguntaLivre}
+                        onChange={(e) => setPerguntaLivre(e.target.value)}
+                        placeholder="Ex: maiores contratos de Betim em 2025"
+                        className="flex-1 rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-primary"
+                        disabled={carregando}
+                      />
+                      <button
+                        type="submit"
+                        disabled={carregando || !perguntaLivre.trim()}
+                        className="rounded-lg bg-primary px-3 py-2 text-primary-ink hover:bg-primary/90 disabled:opacity-50"
+                      >
+                        <Sparkles size={16} />
+                      </button>
+                    </form>
+                  </>
+                )}
+
+                {carregando && (
+                  <p className="text-sm text-text-soft">Pensando...</p>
+                )}
+
+                {respostaIa && (
+                  <div className="space-y-3">
+                    <div className="rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-text">
+                      <p className="whitespace-pre-wrap">{respostaIa}</p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setRespostaIa(null);
+                        setErro(null);
+                      }}
+                      className="text-xs text-text-soft hover:text-primary"
+                    >
+                      ← Fazer outra pergunta
+                    </button>
+                  </div>
+                )}
+
+                {erro && (
+                  <div className="rounded-lg border border-alert/30 bg-alert/10 px-3 py-2 text-sm text-alert">
+                    {erro}
+                    <p className="mt-1 text-xs">
+                      Enquanto isso, tente usar os menus de respostas pré-curadas.
+                    </p>
+                  </div>
+                )}
               </div>
             )}
           </div>
 
-          {/* Rodapé com input de IA (se disponível) ou ressalva */}
+          {/* Rodapé */}
           <div className="border-t border-border bg-surface-2 px-4 py-2">
-            {iaDisponivel ? (
-              <form onSubmit={enviarPergunta} className="flex gap-2">
-                <input
-                  type="text"
-                  value={pergunta}
-                  onChange={(e) => setPergunta(e.target.value)}
-                  placeholder="Pergunte qualquer coisa..."
-                  className="flex-1 rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-primary"
-                  disabled={carregando}
-                />
-                <button
-                  type="submit"
-                  disabled={carregando || !pergunta.trim()}
-                  className="rounded-lg bg-primary px-3 py-2 text-primary-ink hover:bg-primary/90 disabled:opacity-50"
-                >
-                  <Sparkles size={16} />
-                </button>
-              </form>
-            ) : (
+            {nivel === "frentes" ? (
               <p className="text-[.7rem] text-text-soft">
-                Modo texto: a IA será ativada quando o portal tiver uma chave de API
-                configurada. Respostas automáticas são baseadas em páginas do site.
+                Modo texto: respostas baseadas nas páginas do site. IA disponível apenas
+                quando configurada.
               </p>
+            ) : (
+              <div className="flex items-center gap-2 text-[.7rem] text-text-soft">
+                <Search size={12} />
+                <span>
+                  {nivel === "categorias" && "Passo 2: tema"}
+                  {nivel === "perguntas" && "Passo 3: pergunta"}
+                  {nivel === "resposta" && "Resposta pré-curada"}
+                  {nivel === "ia" && "Pergunta livre com IA"}
+                </span>
+              </div>
             )}
           </div>
         </div>
