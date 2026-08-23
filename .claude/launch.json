@@ -435,6 +435,21 @@
         "3041"
       ],
       "port": 3041
+    },
+    {
+      "//": "Porta separada so para este worktree (revisao-dados) -- sprint 2 com indicio de concentracao por ano (N=3 configuravel), correcao dos limiares de dispensa do art. 75 e documentacao no plano. Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
+      "name": "cp-revisao-dados-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3042"
+      ],
+      "port": 3042
     }
   ]
 }
