@@ -480,6 +480,21 @@
         "3044"
       ],
       "port": 3044
+    },
+    {
+      "//": "Porta separada so para este worktree (painel-do-cidadao) -- /[municipio]/painel-do-cidadao consolidando sprints 2-4 (Sprint 5 do plano). Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
+      "name": "cp-painel-do-cidadao-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3045"
+      ],
+      "port": 3045
     }
   ]
 }
