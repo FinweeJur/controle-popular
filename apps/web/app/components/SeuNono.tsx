@@ -9,6 +9,9 @@ import {
   ExternalLink,
   ChevronLeft,
   Search,
+  Home,
+  Copy,
+  Check,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -48,6 +51,7 @@ export function SeuNono() {
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [respostaIa, setRespostaIa] = useState<string | null>(null);
+  const [copiado, setCopiado] = useState<string | null>(null);
 
   // Detecta se ha algum provedor de IA disponivel no ambiente.
   useEffect(() => {
@@ -116,6 +120,39 @@ export function SeuNono() {
     setNivel("ia");
   }
 
+  function voltarAoInicio() {
+    setNivel("frentes");
+    setFrente(null);
+    setCategoria(null);
+    setResposta(null);
+    setRespostaIa(null);
+    setErro(null);
+    setPerguntaLivre("");
+  }
+
+  function abrirPagina(href: string) {
+    if (typeof window === "undefined") return;
+    if (href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//")) {
+      window.open(href, "_blank", "noopener,noreferrer");
+    } else {
+      window.location.href = href;
+    }
+  }
+
+  async function copiarLink(href: string) {
+    if (typeof window === "undefined") return;
+    const url =
+      href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//")
+        ? href
+        : `${window.location.origin}${href}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   async function enviarPerguntaLivre(e: React.FormEvent) {
     e.preventDefault();
     if (!perguntaLivre.trim()) return;
@@ -159,13 +196,25 @@ export function SeuNono() {
                 </p>
               </div>
             </div>
-            <button
-              onClick={() => setAberto(false)}
-              className="rounded-full p-1 text-text-soft hover:bg-surface-2"
-              aria-label="Fechar chat"
-            >
-              <X size={18} />
-            </button>
+            <div className="flex items-center gap-1">
+              {nivel !== "frentes" && (
+                <button
+                  onClick={voltarAoInicio}
+                  className="rounded-full p-1 text-text-soft hover:bg-surface-2"
+                  aria-label="Voltar ao menu inicial"
+                  title="Voltar ao menu inicial"
+                >
+                  <Home size={18} />
+                </button>
+              )}
+              <button
+                onClick={() => setAberto(false)}
+                className="rounded-full p-1 text-text-soft hover:bg-surface-2"
+                aria-label="Fechar chat"
+              >
+                <X size={18} />
+              </button>
+            </div>
           </div>
 
           {/* Área de mensagens */}
@@ -298,13 +347,80 @@ export function SeuNono() {
                 </div>
                 <div className="rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-text">
                   <p className="whitespace-pre-wrap">{resposta.resposta}</p>
-                  {resposta.link && (
-                    <Link
-                      href={resposta.link.href}
-                      className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
-                    >
-                      {resposta.link.texto} <ExternalLink size={12} />
-                    </Link>
+                  {(resposta.link || (resposta.links && resposta.links.length > 0)) && (
+                    <ul className="mt-3 space-y-2">
+                      {resposta.link && (
+                        <li className="flex items-center justify-between gap-2 rounded-lg border border-border bg-surface px-2 py-1.5">
+                          <Link
+                            href={resposta.link.href}
+                            className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+                          >
+                            {resposta.link.texto} <ExternalLink size={12} />
+                          </Link>
+                          <div className="flex items-center gap-1">
+                            <button
+                              onClick={() => abrirPagina(resposta.link!.href)}
+                              className="rounded p-1 text-text-soft hover:bg-surface-2"
+                              aria-label={`Abrir ${resposta.link.texto}`}
+                              title="Abrir página"
+                            >
+                              <ExternalLink size={14} />
+                            </button>
+                            <button
+                              onClick={async () => {
+                                const ok = await copiarLink(resposta.link!.href);
+                                if (ok) {
+                                  setCopiado(resposta.link!.href);
+                                  setTimeout(() => setCopiado((atual) => (atual === resposta.link!.href ? null : atual)), 1500);
+                                }
+                              }}
+                              className="rounded p-1 text-text-soft hover:bg-surface-2"
+                              aria-label={`Copiar link de ${resposta.link.texto}`}
+                              title="Copiar link"
+                            >
+                              {copiado === resposta.link.href ? <Check size={14} className="text-primary" /> : <Copy size={14} />}
+                            </button>
+                          </div>
+                        </li>
+                      )}
+                      {resposta.links?.map((l) => (
+                        <li
+                          key={l.href}
+                          className="flex items-center justify-between gap-2 rounded-lg border border-border bg-surface px-2 py-1.5"
+                        >
+                          <Link
+                            href={l.href}
+                            className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+                          >
+                            {l.texto} <ExternalLink size={12} />
+                          </Link>
+                          <div className="flex items-center gap-1">
+                            <button
+                              onClick={() => abrirPagina(l.href)}
+                              className="rounded p-1 text-text-soft hover:bg-surface-2"
+                              aria-label={`Abrir ${l.texto}`}
+                              title="Abrir página"
+                            >
+                              <ExternalLink size={14} />
+                            </button>
+                            <button
+                              onClick={async () => {
+                                const ok = await copiarLink(l.href);
+                                if (ok) {
+                                  setCopiado(l.href);
+                                  setTimeout(() => setCopiado((atual) => (atual === l.href ? null : atual)), 1500);
+                                }
+                              }}
+                              className="rounded p-1 text-text-soft hover:bg-surface-2"
+                              aria-label={`Copiar link de ${l.texto}`}
+                              title="Copiar link"
+                            >
+                              {copiado === l.href ? <Check size={14} className="text-primary" /> : <Copy size={14} />}
+                            </button>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
                   )}
                 </div>
               </div>
