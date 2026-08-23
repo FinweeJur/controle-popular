@@ -1,20 +1,23 @@
 /**
- * Geracao de resposta por LLM local via Ollama — a metade "responder" do
- * pipeline de RAG do chatbot (ver decisoes 2-4 de `docs/ESTADO.md`,
- * 22/08/2026).
+ * Geracao de resposta por LLM para o pipeline de RAG do chatbot.
  *
- * Diferente de `lib/chat-comum.ts`, que chama API remota (DeepSeek/Maritaca),
- * este modulo e o laboratorio local (L4 do plano): roda no home-pc, sem
- * credencial, e serve para provar o conceito e para fallback quando a API
- * publica nao responde.
+ * Escolhe automaticamente o provedor:
+ * - Se `AI_API_KEY` estiver definido, chama API remota compativel com OpenAI
+ *   (DeepSeek/Maritaca/SiliconFlow/etc.), usando `AI_BASE_URL` e `AI_MODEL`.
+ * - Se nao houver chave, cai para Ollama local (laboratorio L4 do plano).
+ *
+ * Ver decisoes 2-4 de `docs/ESTADO.md`, 22/08/2026.
  *
  * A resposta E obrigada a citar as fontes do contexto. O prompt inclui a
- * regra explicitamente, e o parse das citacoes extrai os trechos usados.
+ * regra explicitamente.
  */
 
 import { OLLAMA_BASE_URL, OllamaIndisponivel, type OpcoesOllama } from "./ollama";
 
 const OLLAMA_CHAT_MODEL = process.env.OLLAMA_CHAT_MODEL || "qwen2.5:7b-instruct-q4_K_M";
+const AI_BASE_URL = process.env.AI_BASE_URL || "https://api.deepseek.com";
+const AI_MODEL = process.env.AI_MODEL || "deepseek-chat";
+const AI_API_KEY = process.env.AI_API_KEY || "";
 
 interface MensagemChat {
   role: "system" | "user" | "assistant";
@@ -24,6 +27,11 @@ interface MensagemChat {
 interface RespostaChatOllama {
   message?: { content?: string };
   error?: string;
+}
+
+interface RespostaChatApi {
+  choices?: { message?: { content?: string } }[];
+  error?: { message?: string };
 }
 
 export interface FonteRag {
@@ -57,10 +65,14 @@ function montarPromptUsuario(pergunta: string, fontes: FonteRag[]): string {
   return `CONTEXTO (dados do portal):\n${contexto}\n\nPERGUNTA: ${pergunta}\n\nResponda com base apenas no contexto. Ao final, liste as fontes usadas.`;
 }
 
-async function chamarApiChat(
-  mensagens: MensagemChat[],
-  opcoes: OpcoesOllama
-): Promise<string> {
+function montarMensagens(pergunta: string, fontes: FonteRag[]): MensagemChat[] {
+  return [
+    { role: "system", content: SYSTEM_PROMPT_RAG },
+    { role: "user", content: montarPromptUsuario(pergunta, fontes) },
+  ];
+}
+
+async function chamarOllama(mensagens: MensagemChat[], opcoes: OpcoesOllama): Promise<string> {
   const baseUrl = opcoes.baseUrl ?? OLLAMA_BASE_URL;
   const modelo = opcoes.modelo ?? OLLAMA_CHAT_MODEL;
   const timeoutMs = opcoes.timeoutMs ?? TIMEOUT_MS_PADRAO;
@@ -104,10 +116,50 @@ async function chamarApiChat(
   return conteudo;
 }
 
+async function chamarApiRemota(mensagens: MensagemChat[]): Promise<string> {
+  const baseUrl = AI_BASE_URL.replace(/\/$/, "");
+  const modelo = AI_MODEL;
+
+  let resp: Response;
+  try {
+    resp = await fetch(`${baseUrl}/chat/completions`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${AI_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: modelo,
+        messages: mensagens,
+        temperature: 0.2,
+      }),
+      signal: AbortSignal.timeout(TIMEOUT_MS_PADRAO),
+    });
+  } catch (e) {
+    const causa = e instanceof Error ? e.message : String(e);
+    throw new Error(`API remota nao respondeu em ${baseUrl} (${causa})`);
+  }
+
+  const dados = (await resp.json()) as RespostaChatApi;
+  if (dados.error?.message) {
+    throw new Error(`API remota: ${dados.error.message}`);
+  }
+  if (!resp.ok) {
+    throw new Error(`API remota respondeu HTTP ${resp.status} em ${baseUrl}/chat/completions`);
+  }
+
+  const conteudo = dados.choices?.[0]?.message?.content?.trim();
+  if (!conteudo) {
+    throw new Error("API remota respondeu 200 sem conteudo em choices[0].message.content");
+  }
+  return conteudo;
+}
+
 /**
  * Gera uma resposta a partir de uma pergunta e das fontes recuperadas por
- * similaridade. As fontes sao repassadas tal qual para o prompt — o modelo
- * nao tem acesso a nada fora delas.
+ * similaridade, usando Ollama local.
+ *
+ * Mantida para chamadas explicitas ao laboratorio local.
  */
 export async function gerarRespostaLocal(
   pergunta: string,
@@ -122,15 +174,50 @@ export async function gerarRespostaLocal(
     };
   }
 
-  const mensagens: MensagemChat[] = [
-    { role: "system", content: SYSTEM_PROMPT_RAG },
-    { role: "user", content: montarPromptUsuario(pergunta, fontes) },
-  ];
-
-  const resposta = await chamarApiChat(mensagens, opcoes);
+  const mensagens = montarMensagens(pergunta, fontes);
+  const resposta = await chamarOllama(mensagens, opcoes);
   return {
     resposta,
     fontes,
     modelo: opcoes.modelo ?? OLLAMA_CHAT_MODEL,
   };
+}
+
+/**
+ * Gera uma resposta a partir de uma pergunta e das fontes recuperadas por
+ * similaridade, usando API remota quando houver chave configurada.
+ */
+export async function gerarRespostaApi(pergunta: string, fontes: FonteRag[]): Promise<RespostaRag> {
+  if (fontes.length === 0) {
+    return {
+      resposta: "Nao encontrei dados diretamente ligados a sua pergunta no acervo indexado.",
+      fontes: [],
+      modelo: AI_MODEL,
+    };
+  }
+
+  const mensagens = montarMensagens(pergunta, fontes);
+  const resposta = await chamarApiRemota(mensagens);
+  return {
+    resposta,
+    fontes,
+    modelo: AI_MODEL,
+  };
+}
+
+/**
+ * Gera uma resposta a partir de uma pergunta e das fontes recuperadas por
+ * similaridade. Escolhe automaticamente o provedor:
+ * - API remota (DeepSeek/Maritaca/etc.) se `AI_API_KEY` estiver configurada.
+ * - Ollama local como fallback.
+ */
+export async function gerarRespostaRag(
+  pergunta: string,
+  fontes: FonteRag[],
+  opcoes: OpcoesOllama = {}
+): Promise<RespostaRag> {
+  if (AI_API_KEY) {
+    return gerarRespostaApi(pergunta, fontes);
+  }
+  return gerarRespostaLocal(pergunta, fontes, opcoes);
 }

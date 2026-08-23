@@ -1,23 +1,27 @@
 /**
- * Pipeline completo de RAG local: pergunta -> busca por similaridade ->
+ * Pipeline completo de RAG: pergunta -> busca por similaridade ->
  * geracao de resposta com citacao.
  *
- * Esta e a camada de orquestracao do laboratorio L4 do chatbot. Reutiliza
- * `demonstracao.ts` (indice de exemplo sobre normas federais ambientais),
- * `ollama.ts` (vetorizacao), `similaridade.ts` (ranking) e `geracao.ts`
- * (resposta por LLM local).
+ * Esta e a camada de orquestracao do chatbot. Reutiliza `demonstracao.ts`
+ * (indice de exemplo sobre normas federais ambientais), `ollama.ts`
+ * (vetorizacao), `similaridade.ts` (ranking) e `geracao.ts` (resposta por
+ * LLM local ou API remota).
  *
- * Como tudo depende do Ollama local, a funcao publica verifica disponibilidade
- * e retorna um erro amigavel quando o servidor nao esta de pe — a mesma
- * disciplina de `ollamaDisponivel()`.
+ * O provedor de geracao e escolhido automaticamente por `geracao.ts`:
+ * - API remota (DeepSeek/Maritaca/etc.) se `AI_API_KEY` estiver configurada.
+ * - Ollama local como fallback.
+ *
+ * Quando o fallback e Ollama, a funcao verifica disponibilidade e retorna um
+ * erro amigavel quando o servidor nao esta de pe.
  */
 
 import { indexarDocumentoDeExemplo, buscarMaisSimilar, type ResultadoRankeado } from "./demonstracao";
-import { gerarRespostaLocal, type RespostaRag, type FonteRag } from "./geracao";
+import { gerarRespostaRag, type RespostaRag, type FonteRag } from "./geracao";
 import { ollamaDisponivel, OllamaIndisponivel } from "./ollama";
 
 export type { RespostaRag, FonteRag };
 
+const AI_API_KEY = process.env.AI_API_KEY || "";
 const TOP_K_PADRAO = 3;
 
 interface OpcoesRag {
@@ -36,13 +40,14 @@ function converterFontes(resultados: ResultadoRankeado[]): FonteRag[] {
  *
  * Este e o prototipo do degrau 3 do assistente: quando a pergunta nao e
  * coberta pelos degraus 0-2 (navegacao, busca, composicao deterministica),
- * o RAG local tenta responder a partir de documentos indexados.
+ * o RAG tenta responder a partir de documentos indexados.
  */
 export async function responderComRag(
   pergunta: string,
   opcoes: OpcoesRag = {}
 ): Promise<RespostaRag> {
-  if (!(await ollamaDisponivel())) {
+  // Sem chave remota, precisamos do Ollama local para geracao e embeddings.
+  if (!AI_API_KEY && !(await ollamaDisponivel())) {
     throw new OllamaIndisponivel("Ollama nao esta disponivel em http://localhost:11434");
   }
 
@@ -52,7 +57,7 @@ export async function responderComRag(
   const melhores = ranking.slice(0, topK);
   const fontes = converterFontes(melhores);
 
-  return gerarRespostaLocal(pergunta, fontes, {
+  return gerarRespostaRag(pergunta, fontes, {
     modelo: opcoes.modeloChat,
   });
 }
