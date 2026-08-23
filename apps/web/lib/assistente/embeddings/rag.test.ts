@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from "vitest";
 import { responderComRag } from "./rag";
-import { gerarRespostaLocal } from "./geracao";
+import { gerarRespostaRag, gerarRespostaLocal, gerarRespostaApi } from "./geracao";
 import { ollamaDisponivel } from "./ollama";
 
 describe("responderComRag -- integracao com Ollama local", () => {
@@ -49,6 +49,34 @@ describe("responderComRag -- integracao com Ollama local", () => {
   );
 
   it(
+    "gerarRespostaRag escolhe Ollama local quando nao ha AI_API_KEY",
+    async () => {
+      if (!disponivel) {
+        console.log("Ollama indisponivel -- pulando teste de RAG");
+        return;
+      }
+
+      const fontes = [
+        {
+          indice: 0,
+          texto:
+            "Portaria MMA nº 8, de 6 de janeiro de 2016: institui o Grupo de Trabalho Interministerial para acompanhar as acoes de resposta ao rompimento da barragem de Fundao, em Mariana/MG.",
+          score: 0.95,
+        },
+      ];
+
+      const resposta = await gerarRespostaRag(
+        "Quem acompanhou as acoes apos o rompimento da barragem de Fundao?",
+        fontes
+      );
+
+      expect(resposta.resposta.length).toBeGreaterThan(20);
+      expect(resposta.fontes.length).toBe(1);
+    },
+    60_000
+  );
+
+  it(
     "retorna 'nao encontrei' quando nao ha fontes",
     async () => {
       if (!disponivel) {
@@ -80,4 +108,29 @@ describe("responderComRag -- integracao com Ollama local", () => {
     },
     180_000
   );
+
+  it("gerarRespostaApi requer AI_API_KEY (skipa quando nao configurada)", async () => {
+    if (!process.env.AI_API_KEY) {
+      console.log("AI_API_KEY nao configurada -- pulando teste de API remota");
+      return;
+    }
+
+    const fontes = [
+      {
+        indice: 0,
+        texto:
+          "Portaria MMA nº 8, de 6 de janeiro de 2016: institui o Grupo de Trabalho Interministerial para acompanhar as acoes de resposta ao rompimento da barragem de Fundao, em Mariana/MG.",
+        score: 0.95,
+      },
+    ];
+
+    const resposta = await gerarRespostaApi(
+      "Quem acompanhou as acoes apos o rompimento da barragem de Fundao?",
+      fontes
+    );
+
+    expect(resposta.resposta.length).toBeGreaterThan(20);
+    expect(resposta.fontes.length).toBe(1);
+    expect(resposta.modelo).toBe(process.env.AI_MODEL || "deepseek-chat");
+  });
 });
