@@ -290,6 +290,31 @@ Pendências:
 14. Escrever nota técnica com os primeiros achados.
 15. Divulgar para imprensa e órgãos de controle.
 
+#### Status da Sprint 5 (2026-08-22, branch `painel-do-cidadao`)
+
+Item 13 **entregue**: `/[municipio]/painel-do-cidadao` consolida dinheiro
+público (top 5 contratos por valor, top 5 fornecedores, três contagens de
+alerta com link direto para as variantes da tabela — `?conc=1`,
+`?motivo=regra_2_dispensa_proxima_limite`, `?recem=1`), território
+(sobreposições da Sprint 3 com área total), legislação (X de 5 encontrados,
+Sprint 4) e o card de empresa monitorada derivado de
+`municipiosPrioridade` do observatório (`lib/empresas/dados.ts`) — Sigma
+Lithium em Araçuaí/Itinga, Vale em Brumadinho/Betim/Sarzedo. Entrada no
+grid "explorar" da home de cada cidade. Sem banco, cada seção degrada para
+estado vazio honesto com link para a tela completa.
+
+Decisões registradas nesta sprint:
+
+1. **As contagens do painel reusam as MESMAS funções puras da tabela de
+   contratos** (`contratos-indicios.ts`) — painel e tela completa não podem
+   divergir; quando a regra mudar, muda nos dois lugares.
+2. **Acesso rápido só aponta rota existente**: `/obras` e `/servidores`
+   ainda NÃO têm página na zona Cidades, então não entraram no bloco (link
+   quebrado com cara de atalho seria pior que ausência). Quando ganharem
+   tela, entram na lista em `painel-do-cidadao/page.tsx`.
+3. Itens 14-15 (nota técnica e divulgação) seguem abertos — dependem de
+   build com banco no home-pc para os números sairem do estado vazio.
+
 ## Automação de coleta e deploy no home PC
 
 ### Objetivo
