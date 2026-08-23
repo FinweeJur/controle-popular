@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-08-22
+> **Última medição:** 2026-08-22 (atualizado em 2026-08-22 após merge de `seo-fundacao` e `revisao-dados`)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida tecnica, decisoes, plano unico, neon, build
@@ -81,6 +81,8 @@ no Conecta gov.br (item 16); resumo por modelo do AJRI (item 17).
 5. ~~**Linha de orientação na home**~~ — ✅ **implementado em 22/08**, branch `home-orientacao` (2 commits, não mesclada). Contraste medido nos 3 temas (7,08:1 / 8,30:1 / 21:1 — todos acima do piso de 7:1 do alto-contraste).
 6. **Chatbot, passo 1: fechar a peça que falta.** ⚠️ Medido em 22/08: **nem Maritaca nem DeepSeek publicam endpoint de embeddings** (a doc da Maritaca recomenda a DeepInfra; a do DeepSeek só documenta `chat/completions`). RAG precisa de embeddings antes de geração. Caminho de custo zero: vetorizar **local via Ollama**, que também mantém o texto na máquina até a varredura de dado pessoal passar. ✅ **Medido em 22/08:** `nomic-embed-text` devolve 768 dimensões, mesma dimensão do índice de código do `code-graph-rag`. ✅ **Prova de conceito implementada em 22/08**, branch `chatbot-poc` (1 commit, não mesclada): `apps/web/lib/assistente/embeddings/`, testado sobre 4 normas reais do repo — 3 de 4 perguntas acertaram por similaridade; a 4ª (busca por termo exato) não acertou, achado documentado no código. **Achado de segurança:** a guarda de dado pessoal não cobre `etl/betim/dados/` (chip `task_dae5f906`). Falta ainda: geração de resposta (Maritaca/DeepSeek — precisa de credencial que não existe) e citação obrigatória (decisão 4) ligadas por cima disto.
 7. **Protocolar TCE-MG e CGE-MG** — os dois textos estão prontos no vault (`C:\Users\teste\Documents\Obsidian Vault\Projetos\`), sem protocolo desde 07/08. Depois de enviar, registrar em `docs/LAI-PROTOCOLOS.json` — aí a CI diária vigia o prazo sozinha.
+8. ~~**SEO — visibilidade em buscadores**~~ — ✅ **integrado em 22/08** (`seo-fundacao`, 5 commits). `metadataBase`, Open Graph, Twitter Cards, JSON-LD (`WebSite` + `Organization`), sitemap atualizado, títulos/descriptions otimizados nas páginas principais de cidade, metadata adicionado em páginas sem, e `BreadcrumbJsonLd` na página de contratos. `tsc`, `validar-documentacao.py` e `npm test` verdes.
+9. ~~**Revisão de dados — Sprint 2 (contratos e fornecedores)**~~ — ✅ **integrado em 22/08** (`revisao-dados`, 5 commits). Limiares da dispensa corrigidos para os valores do art. 75 da Lei 14.133/2021, indicio de concentração por ano com N=3 configurável, badge e filtro `?conc=1` na tela de contratos, plano atualizado com pendências e lacunas declaradas. **Pendência real:** rodar ETL no `home-pc` para os novos limiares chegarem ao banco, e medir payload (Neon 402 nesta máquina).
 
 **Esperando data:**
 
