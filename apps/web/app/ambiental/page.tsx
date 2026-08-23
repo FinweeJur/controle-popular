@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "@/lib/ambiental/link";
 import { ZONAS } from "@/lib/zonas";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
@@ -32,6 +33,12 @@ import { lerEstudos } from "@/lib/ambiental/estudos";
  */
 
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
+
+export const metadata: Metadata = {
+  title: "Meio ambiente de Minas Gerais: COPAM, licenciamento e barragens — Controle Popular",
+  description:
+    "Dados ambientais de Minas Gerais: reuniões do COPAM, licenciamentos, barragens, legislação, patrimônio cultural e estudos de impacto ambiental.",
+};
 
 export default async function AmbientalHome() {
   const [{ reunioes, itens }, barragens, { total: totalLicencas }, legislacao, direitoCritico, totalPatrimonio] =
