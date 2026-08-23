@@ -2,7 +2,12 @@ import { describe, expect, test } from "vitest";
 import { contratosToCsv } from "./contratos";
 // Indício importado do módulo puro — testar a lógica não precisa da cadeia
 // de banco que `./contratos` carrega.
-import { fornecedorCriadoNoAnoDoContrato } from "./contratos-indicios";
+import {
+  INDICIO_CONCENTRACAO_CONTRATOS_NO_ANO,
+  contarContratosPorFornecedorAno,
+  fornecedorCriadoNoAnoDoContrato,
+  fornecedorExcedeContratosNoAno,
+} from "./contratos-indicios";
 import type { ContratoRow } from "./contratos";
 
 function contrato(over: Partial<ContratoRow>): ContratoRow {
@@ -61,5 +66,58 @@ describe("contratosToCsv", () => {
     expect(csv).toBe(
       "\ufefffornecedor,objeto,valor,status,data,alerta,motivos_alerta,fundamentacao_dos_motivos,tipo,orgao,ano,link_fonte\n"
     );
+  });
+});
+
+describe("contarContratosPorFornecedorAno + fornecedorExcedeContratosNoAno", () => {
+  const linha = (over: Partial<ContratoRow>): ContratoRow =>
+    contrato({ ano: 2025, fornecedor_cnpj: "11111111000111", fornecedor_nome: "Alfa LTDA", ...over });
+
+  test("conta por CNPJ+ano e ignora linha sem identificacao ou sem ano", () => {
+    const contagens = contarContratosPorFornecedorAno([
+      linha({}),
+      linha({}),
+      linha({ ano: 2024 }),
+      linha({ fornecedor_cnpj: null, fornecedor_nome: null }),
+      linha({ ano: null }),
+    ]);
+    expect(contagens.get("11111111000111|2025")).toBe(2);
+    expect(contagens.get("11111111000111|2024")).toBe(1);
+    expect(contagens.size).toBe(2);
+  });
+
+  test("sem CNPJ, agrupa pelo nome publicado", () => {
+    const contagens = contarContratosPorFornecedorAno([
+      linha({ fornecedor_cnpj: null }),
+      linha({ fornecedor_cnpj: null, fornecedor_nome: "ALFA ltda" }),
+    ]);
+    expect(contagens.size).toBe(2); // caixa diferente = grupo diferente (mesma chave do banco)
+  });
+
+  test("limiar e estrito: N contratos nao acusam, N+1 sim", () => {
+    const linhas = [
+      linha({}), linha({}), linha({}), // 3 no ano
+      linha({ ano: 2026 }), // outro ano, nao soma
+    ];
+    const contagens = contarContratosPorFornecedorAno(linhas);
+    expect(INDICIO_CONCENTRACAO_CONTRATOS_NO_ANO).toBe(3);
+    expect(fornecedorExcedeContratosNoAno(linhas[0], contagens)).toBe(false);
+    const quatro = [...linhas, linha({})];
+    const c4 = contarContratosPorFornecedorAno(quatro);
+    expect(fornecedorExcedeContratosNoAno(quatro[0], c4)).toBe(true);
+  });
+
+  test("limite configuravel muda o disparo sem tocar no dado", () => {
+    const contagens = contarContratosPorFornecedorAno([linha({}), linha({}), linha({})]);
+    expect(fornecedorExcedeContratosNoAno(linha({}), contagens, 2)).toBe(true);
+    expect(fornecedorExcedeContratosNoAno(linha({}), contagens, 3)).toBe(false);
+  });
+
+  test("cnpj igual junta grafias diferentes do nome; nome so quando falta cnpj", () => {
+    const contagens = contarContratosPorFornecedorAno([
+      linha({ fornecedor_nome: "Alfa LTDA" }),
+      linha({ fornecedor_nome: "alfa ltda" }),
+    ]);
+    expect(contagens.get("11111111000111|2025")).toBe(2);
   });
 });
