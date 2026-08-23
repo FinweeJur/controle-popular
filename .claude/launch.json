@@ -450,6 +450,21 @@
         "3042"
       ],
       "port": 3042
+    },
+    {
+      "//": "Porta separada so para este worktree (revisao-dados-sprint4) -- tela /[municipio]/legislacao com os cinco instrumentos municipais (Sprint 4 do plano). Mesma razao das entradas acima: anexar no dev server de outro worktree responde 200 com o codigo errado, sem aviso.",
+      "name": "cp-revisao-dados-sprint4-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/web",
+        "--",
+        "--port",
+        "3044"
+      ],
+      "port": 3044
     }
   ]
 }
