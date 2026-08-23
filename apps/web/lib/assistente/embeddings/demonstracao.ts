@@ -69,7 +69,21 @@ import { fatiarTexto, type OpcoesFatiamento, type Pedaco } from "./pedacos";
 import { vetorizar, vetorizarLote } from "./ollama";
 import { similaridadeCosseno } from "./similaridade";
 
-const CAMINHO_LEGISLACAO_MMA = path.resolve(process.cwd(), "..", "..", "etl", "betim", "dados", "legislacao-mma.json");
+// `process.cwd()` mediu errado em worktree (saiu em `.claude/` ao inves da raiz
+// do checkout). `import.meta.dirname` segue o arquivo, nao o processo — sobe
+// 5 niveis de `apps/web/lib/assistente/embeddings/` ate a raiz do repo.
+const CAMINHO_LEGISLACAO_MMA = path.resolve(
+  import.meta.dirname,
+  "..",
+  "..",
+  "..",
+  "..",
+  "..",
+  "etl",
+  "betim",
+  "dados",
+  "legislacao-mma.json"
+);
 
 /** Uma linha de `etl/betim/dados/legislacao-mma.json` — só os campos que
  *  este módulo lê (a linha real tem mais: `fonte`, `esfera`, `data`,
