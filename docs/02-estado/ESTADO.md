@@ -138,6 +138,7 @@ abaixo.
 | LAI INCRA — login humano | **2026-08-28** (prorrogação concedida) | acessar o Fala.BR, localizar o pedido e anotar o protocolo em `docs/LAI-PROTOCOLOS.json` — o dono cuida disso |
 | Índice estático pendente de Postgres local | — | banco local com as cargas novas (Rouanet, ComunicaBR por município, repasse) — quem mede índice precisa do banco |
 | GitBook com convite pendente | — | dono aceitar o convite para espelhar `docs/` |
+| **`AI_API_KEY` pendente e NUNCA vai para o repo** | — | chave do provedor de IA (Maritaca/DeepSeek, decisão nº 2 acima) fica só em `.env.local` no `home-pc`; o repo segue com `.env.example` documentando o nome da variável. Quem implementar o degrau 3 do assistente lê de variável de ambiente, nunca commita credencial (regra do AGENTS.md) |
 
 ## Dívida técnica registrada
 
