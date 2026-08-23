@@ -1,4 +1,5 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
+import Link from "@/lib/betim/link";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
@@ -80,6 +81,25 @@ export default async function TerrasPage({
       >
         Ver esta área no mapa (3D) →
       </a>
+
+      {/* Sprint 3 do plano de revisão de dados — a lente cidade sobre as
+        * camadas de alerta do globo. Link incondicional: a subpágina lida
+        * com "nada sobreposto" como conteúdo, não como erro. */}
+      <div className="mt-6 rounded-2xl border border-border bg-surface p-5 shadow-sm">
+        <h2 className="font-display text-base font-semibold text-text">
+          Territórios tradicionais × empreendimentos
+        </h2>
+        <p className="mt-1 max-w-[60ch] text-sm text-text-soft">
+          Onde terras indígenas e quilombolas de {cidade.nome} intersectam
+          processos mineiros (SIGMINE/ANM) e manchas de barragens
+          (FEAM/SNISB) — interseção exata em hectares, com fonte e mapa.
+        </p>
+        {/* `<a>` cru: rota da mesma zona, mas o bloco inteiro desta página já
+            usa âncoras puras por consistência com os links pro globo. */}
+        <Link href="/terras/cruzamentos" className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline">
+          Abrir cruzamentos deste município →
+        </Link>
+      </div>
 
       {linhas === null || linhas.length === 0 ? (
         <p className="mt-8 rounded-lg border border-[var(--cp-border)] p-5 opacity-80">
