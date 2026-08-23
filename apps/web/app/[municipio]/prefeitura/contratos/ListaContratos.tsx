@@ -7,7 +7,13 @@ import type { ContratoRow, MotivoAlertaInfo } from "@/lib/betim/contratos";
 // Lógica pura do indício vem do módulo SEM import de banco — puxar de
 // `lib/betim/contratos` aqui colocaria a cadeia `lib/db/queries/*` no
 // bundle do cliente (regra registrada no cabeçalho deste arquivo).
-import { fornecedorCriadoNoAnoDoContrato } from "@/lib/betim/contratos-indicios";
+import {
+  INDICIO_CONCENTRACAO_CONTRATOS_NO_ANO,
+  contarContratosPorFornecedorAno,
+  fornecedorCriadoNoAnoDoContrato,
+  fornecedorExcedeContratosNoAno,
+  quantosContratosNoAno,
+} from "@/lib/betim/contratos-indicios";
 import Moeda from "@/app/components/Moeda";
 import { formatDateBR } from "@/lib/betim/format";
 import { contratoEstaAtivo } from "@/lib/betim/statusContrato";
@@ -15,12 +21,14 @@ import { contratoEstaAtivo } from "@/lib/betim/statusContrato";
 /**
  * Tabela de `/[municipio]/prefeitura/contratos` — mesmo mecanismo de
  * `camara/proposicoes` (ver o porquê em `dados/[arquivo]/route.ts`), com os
- * NOVE filtros originais mais dois da Sprint 2: busca, ano, status, "somente
- * com alerta", motivo do alerta, tema, faixa de valor, tipo de instrumento e
- * o indício "fornecedor criado no mesmo ano". É a página com mais filtros do
- * território, e a razão de existir é justamente o filtro por alerta —
- * `filtrar`/`controles` (commit `af12538`, coordenador) é o que evita que
- * ela virasse só busca-texto.
+ * NOVE filtros estruturais mais os dois da Sprint 2 e o de concentração:
+ * busca, ano, status, "somente com alerta", motivo do alerta, tema, faixa
+ * de valor, tipo de instrumento, indício "fornecedor criado no mesmo ano"
+ * e indício "mais de N contratos do mesmo fornecedor no ano" (N=3 padrão,
+ * configurável em `INDICIO_CONCENTRACAO_CONTRATOS_NO_ANO`). É a página com
+ * mais filtros do território, e a razão de existir é justamente o filtro
+ * por alerta — `filtrar`/`controles` (commit `af12538`, coordenador) é o
+ * que evita que ela virasse só busca-texto.
  *
  * `filtrar` replica exatamente `condicoesDeContratos` em
  * `lib/db/queries/betim.ts`: igualdade em ano/status, `alerta === true`,
@@ -124,10 +132,11 @@ export default function ListaContratos({
   const [tema, setTema] = useState("");
   const [valorMin, setValorMin] = useState("");
   const [valorMax, setValorMax] = useState("");
-  // Sprint 2: tipo de instrumento (PNCP `contratos.tipo`) e o indício
-  // "fornecedor criado no mesmo ano do contrato".
+  // Sprint 2: tipo de instrumento (PNCP `contratos.tipo`) e os indícios
+  // "fornecedor criado no mesmo ano do contrato" e "concentração no ano".
   const [tipo, setTipo] = useState("");
   const [somenteRecemCriado, setSomenteRecemCriado] = useState(false);
+  const [somenteConcentrado, setSomenteConcentrado] = useState(false);
   const primeiraRenderizacao = useRef(true);
 
   useEffect(() => {
@@ -141,6 +150,7 @@ export default function ListaContratos({
     setValorMax(sp.get("valor_max") ?? "");
     setTipo(sp.get("tipo") ?? "");
     setSomenteRecemCriado(sp.get("recem") === "1");
+    setSomenteConcentrado(sp.get("conc") === "1");
   }, []);
 
   useEffect(() => {
@@ -158,9 +168,10 @@ export default function ListaContratos({
     valorMax ? sp.set("valor_max", valorMax) : sp.delete("valor_max");
     tipo ? sp.set("tipo", tipo) : sp.delete("tipo");
     somenteRecemCriado ? sp.set("recem", "1") : sp.delete("recem");
+    somenteConcentrado ? sp.set("conc", "1") : sp.delete("conc");
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
-  }, [ano, status, somenteAlerta, motivo, tema, valorMin, valorMax, tipo, somenteRecemCriado]);
+  }, [ano, status, somenteAlerta, motivo, tema, valorMin, valorMax, tipo, somenteRecemCriado, somenteConcentrado]);
 
   // Um motivo específico já implica alerta=true, mesma regra de
   // `condicoesDeContratos` — `motivos_alerta` só tem item quando o alerta
@@ -191,7 +202,24 @@ export default function ListaContratos({
   if (valorMax) exportQs.set("valor_max", valorMax);
   if (tipo) exportQs.set("tipo", tipo);
   if (somenteRecemCriado) exportQs.set("recem", "1");
+  // O indício de concentração é calculado no navegador sobre as linhas
+  // carregadas — a rota CSV não o reproduz (ver pendência no plano).
+  if (somenteConcentrado) exportQs.set("conc", "1");
   const exportHref = `/${municipioSlug}/api/contratos?${exportQs.toString()}`;
+
+  /**
+   * Contagem de contratos por fornecedor+ano, sobre TODAS as linhas que a
+   * tabela já carregou (não só a página visível nem o conjunto filtrado).
+   *
+   * O mapa mora num ref e é atualizado dentro do render de `TabelaEstatica`
+   * (o slot `controles` roda antes do `<tbody>` na mesma passada, então as
+   * células leem o mapa fresco). Estado React aqui forçaria re-render em
+   * cascata a cada fatia baixada. Durante o carregamento a contagem é
+   * PARCIAL — ela só cresce, então nunca gera falso positivo; pode gerar
+   * falso negativo até a última fatia chegar, o que o texto do badge não
+   * esconde ("X contratos" é o número real da fonte).
+   */
+  const contagensRef = useRef<Map<string, number>>(new Map());
 
   const filtrar = useCallback(
     (c: LinhaContrato) => {
@@ -207,20 +235,50 @@ export default function ListaContratos({
       if (tema && !(c.temas ?? []).includes(tema)) return false;
       if (tipo && c.tipo !== tipo) return false;
       if (somenteRecemCriado && !fornecedorCriadoNoAnoDoContrato(c)) return false;
+      if (
+        somenteConcentrado &&
+        !fornecedorExcedeContratosNoAno(c, contagensRef.current, INDICIO_CONCENTRACAO_CONTRATOS_NO_ANO)
+      ) {
+        return false;
+      }
       // `valor_global` nulo não entra em nenhuma ponta — mesmo motivo do
       // SQL: contrato sem valor publicado não é "barato" nem "caro".
       if (valorMin && !(c.valor_global != null && c.valor_global >= Number(valorMin))) return false;
       if (valorMax && !(c.valor_global != null && c.valor_global <= Number(valorMax))) return false;
       return true;
     },
-    [ano, status, alertaEfetivo, motivo, tema, valorMin, valorMax, tipo, somenteRecemCriado]
+    [ano, status, alertaEfetivo, motivo, tema, valorMin, valorMax, tipo, somenteRecemCriado, somenteConcentrado]
   );
 
   const colunas: ColunaTabela<LinhaContrato>[] = [
     {
       chave: "alerta",
       rotulo: "Alerta",
-      formatar: (c) => <ColunaAlerta contrato={c} motivoAlertaInfo={motivoAlertaInfo} />,
+      formatar: (c) => {
+        const qtdNoAno = quantosContratosNoAno(c, contagensRef.current);
+        const concentrado =
+          fornecedorExcedeContratosNoAno(c, contagensRef.current, INDICIO_CONCENTRACAO_CONTRATOS_NO_ANO);
+        return (
+          <div className="flex flex-col gap-2">
+            {concentrado && (
+              <div>
+                <span className="inline-flex w-fit items-center gap-1 rounded-full bg-accent/15 px-2.5 py-1 text-xs font-semibold text-accent">
+                  · Mais de {INDICIO_CONCENTRACAO_CONTRATOS_NO_ANO} contratos no mesmo ano
+                </span>
+                <p className="mt-1 max-w-[380px] text-sm leading-snug text-text-soft">
+                  Sinal de atenção — não é violação em si: este fornecedor
+                  recebeu {qtdNoAno} contratos assinados em {c.ano ?? "?"}.
+                  Somados, poderiam exigir licitação única — repartir pode ser
+                  um jeito de evitar a disputa (entendimento do TCU sobre
+                  fracionamento). Regra configurável, limiar{" "}
+                  {INDICIO_CONCENTRACAO_CONTRATOS_NO_ANO + 1}+ contratos.
+                </p>
+              </div>
+            )}
+            <ColunaAlerta contrato={c} motivoAlertaInfo={motivoAlertaInfo} />
+          </div>
+        );
+      },
     },
     { chave: "fornecedor_nome", rotulo: "Fornecedor", formatar: (c) => c.fornecedor_nome ?? "—" },
     {
@@ -301,7 +359,12 @@ export default function ListaContratos({
       camposBusca={["objeto", "fornecedor_nome"]}
       vazio="Nenhum contrato encontrado no momento."
       filtrar={filtrar}
-      controles={({ pronto, linhas }) => (
+      controles={({ pronto, linhas }) => {
+        // Atualiza o mapa de concentração ANTES do <tbody> renderizar na
+        // mesma passada (o slot controles vem antes da tabela no JSX do
+        // TabelaEstatica) — ver a nota junto à declaração do ref.
+        contagensRef.current = contarContratosPorFornecedorAno(linhas);
+        return (
         <div className="flex flex-wrap items-end gap-3 rounded-2xl border border-border bg-surface p-4 shadow-sm">
           <div className="flex flex-col">
             <label htmlFor="f-ano" className="mb-1 text-xs font-medium text-text-soft">
@@ -440,7 +503,28 @@ export default function ListaContratos({
             />
             Fornecedor criado no mesmo ano
           </label>
-          {(ano || status || somenteAlerta || motivo || tema || valorMin || valorMax || tipo || somenteRecemCriado) && (
+          <label
+            className="flex items-center gap-2 pb-2 text-sm text-text"
+            title={`Mesmo fornecedor com mais de ${INDICIO_CONCENTRACAO_CONTRATOS_NO_ANO} contratos assinados no mesmo ano — indício de fracionamento, não violação`}
+          >
+            <input
+              type="checkbox"
+              checked={somenteConcentrado}
+              onChange={(e) => setSomenteConcentrado(e.target.checked)}
+              className="h-4 w-4 rounded border-border accent-alert"
+            />
+            Concentração no ano
+          </label>
+          {(ano ||
+            status ||
+            somenteAlerta ||
+            motivo ||
+            tema ||
+            valorMin ||
+            valorMax ||
+            tipo ||
+            somenteRecemCriado ||
+            somenteConcentrado) && (
             <button
               type="button"
               onClick={() => {
@@ -453,6 +537,7 @@ export default function ListaContratos({
                 setValorMax("");
                 setTipo("");
                 setSomenteRecemCriado(false);
+                setSomenteConcentrado(false);
               }}
               className="text-sm text-text-soft hover:underline"
             >
@@ -460,7 +545,8 @@ export default function ListaContratos({
             </button>
           )}
         </div>
-      )}
+        );
+      }}
       />
     </div>
   );

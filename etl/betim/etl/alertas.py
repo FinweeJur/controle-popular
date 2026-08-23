@@ -44,11 +44,14 @@ each rule):
     "dispensa" when `licitacoes.modalidade_nome` for the matching
     `numero_controle_pncp` (or, failing that, `contratos.categoria`/
     `contratos.tipo`) contains "dispensa" case-insensitively, and uses the
-    two standard Lei 14.133/2021 Art. 75 thresholds as of this plan's
-    writing (R$ 100.000 for obras/serviços de engenharia, R$ 50.000 for
-    outros serviços/compras) as constants — those figures are subject to
-    periodic inflation adjustment by decree and should be verified/updated
-    periodically, not treated as permanently fixed.
+    Lei 14.133/2021 Art. 75 thresholds fixed by owner decision on
+    2026-08-22: R$ 400.000 for obras/serviços de engenharia and
+    R$ 100.000 for outros serviços/compras de bens e serviços comuns.
+    (Versão anterior usava R$ 100.000/R$ 50.000 — valores que NÃO são os
+    do art. 75; a troca foi feita na sprint "revisao-dados" e exige
+    rodada de ETL no home-pc para chegar ao banco.) The statute values
+    are not decree-adjusted, but the mapping objeto->engenharia é por
+    palavra-chave e pode errar o lado; revisar amostra periodicamente.
 
 Rule 11 (new, not in plan §8) closes a real blind spot found live in
 Rule 1: a contract gets a mean+2*stdev baseline only if its `categoria`/
@@ -98,10 +101,13 @@ MIN_AMOSTRA_BASELINE = 3                # need >=3 contracts to estimate a stdev
 PREFIXO_OBJETO_LEN = 40                 # fallback grouping key when categoria is empty
 
 # ── Rule 2: Lei 14.133/2021 Art. 75 direct-award (dispensa) thresholds ─────
-# [VERIFY periodically] these are the standard values as of this plan's
-# writing (2026-07-20) and are adjusted by decree from time to time.
-LIMIAR_DISPENSA_ENGENHARIA = 100_000.00
-LIMIAR_DISPENSA_OUTROS = 50_000.00
+# CORRIGIDO 2026-08-22 (decisão do dono, sprint revisao-dados): os valores
+# do art. 75 são R$ 400.000 para obras/serviços de engenharia e R$ 100.000
+# para bens/serviços comuns — a versão anterior (100.000/50.000) não eram
+# os valores da lei. O alerta dispara em >= 90% do limite (indício de
+# fracionamento). Exige rodada de ETL no home-pc para chegar ao banco.
+LIMIAR_DISPENSA_ENGENHARIA = 400_000.00
+LIMIAR_DISPENSA_OUTROS = 100_000.00
 PCT_LIMIAR_DISPENSA = 0.90
 _ENGENHARIA_KEYWORDS = ("obra", "engenharia", "reforma", "construç", "pavimenta", "edifica")
 
