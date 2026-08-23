@@ -85,15 +85,20 @@ confira a fonte"). Os dois convivem.
 
 ## Ordem de execução
 
-1. **Decisões do dono** (pré-requisito): (a) região do cérebro; (b) qual acervo
-   entra (contratos? normas? diário?); (c) ressalva de IA aceita no portal.
-2. **Provar conceito** (≈30 min): 1 documento público → chunk → vetor
-   (bge-m3) → pergunta → resposta com citação.
-3. **Definir acervo + varredura**: quais coleções, e a guarda de dado pessoal
-   antes da ingestão.
-4. **Worker porteiro + front** no padrão do portal (a11y, `prefers-reduced-motion`,
-   ressalva).
-5. **Publicar e testar com usuário real.**
+1. **Decisões do dono** ✅ (22/08/2026): (a) cerebro — Maritaca/Sabia, DeepSeek
+   como alternativa; (b) acervo = tudo que o assistente deterministico nao
+   cobrir; (c) ressalva de IA sempre visivel com citacao.
+2. **Provar conceito** ✅ (22/08/2026): pipeline local Ollama + nomic-embed-text
+   sobre 4 normas federais ambientais — 3/4 acertos por similaridade.
+3. **Laboratorio local (L4) em andamento**: geracao de resposta via Ollama
+   (`qwen2.5:7b-instruct-q4_K_M`), rota `/api/chatbot` para `next dev`,
+   componente `ChatbotIaLaboratorio` com ressalva e fontes. Funciona sem
+   credencial de API e sem banco (Neon 402).
+4. **Definir acervo + varredura**: expandir para contratos, diario, legislacao
+   municipal — com a guarda de dado pessoal antes da ingestao.
+5. **Worker porteiro + front** no padrao do portal (a11y, `prefers-reduced-motion`,
+   ressalva), integrado como degrau 3 do assistente.
+6. **Publicar e testar com usuario real.**
 
 ## Vitória esperada
 
