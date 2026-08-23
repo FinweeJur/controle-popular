@@ -8,6 +8,8 @@ export interface SeuNonoPergunta {
   pergunta: string;
   resposta: string;
   link?: SeuNonoLink;
+  /** Links extras para ações ou referências adicionais. */
+  links?: SeuNonoLink[];
 }
 
 export interface SeuNonoCategoria {
@@ -555,6 +557,108 @@ export const FRENTES: SeuNonoFrente[] = [
             resposta:
               "A Biblioteca reúne publicações acadêmicas e relatórios; o Clipping reúne notícias sobre o tema.",
             link: { href: "/paraopeba/biblioteca", texto: "Ver biblioteca" },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "direitos-em-movimento",
+    titulo: "Direitos em Movimento",
+    descricao: "Onde buscar ajuda, como denunciar, pedir informação e acompanhar os principais achados do portal.",
+    categorias: [
+      {
+        id: "sobre-direitos",
+        titulo: "Sobre",
+        perguntas: [
+          {
+            id: "o-que-e-direitos",
+            pergunta: "O que é Direitos em Movimento?",
+            resposta:
+              "É uma seção do portal que reúne orientações sobre acesso à informação, canais de denúncia e defesa de direitos, além de destacar achados do Controle Popular que merecem atenção da sociedade.",
+            link: { href: "/direitos-em-movimento", texto: "Ir para Direitos em Movimento" },
+          },
+          {
+            id: "como-acompanhar",
+            pergunta: "Como acompanhar os poderes públicos?",
+            resposta:
+              "Você pode usar os dados do portal para fiscalizar contratos, votações, licenciamentos e obras. A seção Direitos em Movimento mostra por onde começar.",
+            link: { href: "/direitos-em-movimento", texto: "Ver guia de acompanhamento" },
+          },
+        ],
+      },
+      {
+        id: "como-agir",
+        titulo: "Como agir",
+        perguntas: [
+          {
+            id: "pedir-informacao",
+            pergunta: "Como pedir informação à administração pública?",
+            resposta:
+              "Todo cidadão tem direito a informações públicas (LAI). A página explica como fazer um pedido, qual o prazo e o que fazer se receber resposta incompleta.",
+            link: { href: "/direitos-em-movimento/informacao", texto: "Guia de acesso à informação" },
+          },
+          {
+            id: "denunciar",
+            pergunta: "Onde denunciar irregularidades?",
+            resposta:
+              "A página de denúncia reúne canais como ouvidorias, Ministério Público, Controladorias, Tribunal de Contas e polícia, com orientação sobre quando usar cada um.",
+            link: { href: "/direitos-em-movimento/denuncia", texto: "Canais de denúncia" },
+          },
+          {
+            id: "buscar-ajuda",
+            pergunta: "Onde buscar ajuda para defender direitos?",
+            resposta:
+              "A seção Ajuda lista organizações, defensorias, procuradorias e movimentos sociais que podem apoiar cidadãos e comunidades.",
+            link: { href: "/direitos-em-movimento/ajuda", texto: "Quem pode ajudar" },
+          },
+        ],
+      },
+      {
+        id: "principais-achados",
+        titulo: "Principais achados",
+        perguntas: [
+          {
+            id: "achado-contratos-alerta",
+            pergunta: "Quais contratos estão em alerta?",
+            resposta:
+              "A tela de contratos de cada município mostra indícios de atenção: concentração de contratos com o mesmo fornecedor no ano, dispensa próxima do limite legal e fornecedor criado no mesmo ano do contrato. São sinais, não conclusões.",
+            link: { href: "/betim/prefeitura/contratos", texto: "Ver contratos em alerta" },
+            links: [
+              { href: "/betim/prefeitura/fornecedores", texto: "Ver fornecedores" },
+            ],
+          },
+          {
+            id: "achado-territorio",
+            pergunta: "Quais empreendimentos sobrepõem terras indígenas e quilombolas?",
+            resposta:
+              "A tela Terras cruza mineração, barragens e licenciamentos com territórios indígenas e quilombolas. As sobreposições são calculadas com interseção espacial exata; co-ocorrências no mesmo município são rotuladas separadamente.",
+            link: { href: "/betim/terras", texto: "Ver cruzamentos territoriais" },
+            links: [
+              { href: "/ambiental/barragens", texto: "Ver barragens" },
+              { href: "/ambiental/licenciamento", texto: "Ver licenciamentos" },
+            ],
+          },
+          {
+            id: "achado-mineracao-barragens",
+            pergunta: "Onde há mineração ou barragens perto de comunidades?",
+            resposta:
+              "A frente Ambiental e a tela Terras mostram processos minerários, manchas de barragens e licenciamentos próximos a cidades e territórios tradicionais.",
+            link: { href: "/ambiental/barragens", texto: "Ver barragens" },
+            links: [
+              { href: "/betim/terras", texto: "Ver mineração na cidade" },
+            ],
+          },
+          {
+            id: "achado-paraopeba",
+            pergunta: "O que o portal achou sobre o Acordo Paraopeba?",
+            resposta:
+              "O portal acompanha a execução do acordo de reparação do rompimento da barragem da Vale, incluindo repasses, obras, programas de auxílio e auditorias. Toda comparação traz ressalva metodológica.",
+            link: { href: "/paraopeba/execucao", texto: "Ver execução do acordo" },
+            links: [
+              { href: "/paraopeba/analise", texto: "Ver análises" },
+              { href: "/paraopeba/auditoria", texto: "Ver auditoria" },
+            ],
           },
         ],
       },
