@@ -41,6 +41,7 @@ import {
   GraduationCap,
   TrendingUp,
   Construction,
+  LayoutDashboard,
   type LucideIcon,
 } from "lucide-react";
 
@@ -186,6 +187,8 @@ async function getClima(idMunicipio: IdMunicipio): Promise<ClimaAtual | null> {
 const explorar = (
   cidade: Cidade
 ): { href: string; nome: string; desc: string; icon: LucideIcon; fonte?: string }[] => [
+  // Sprint 5 do plano de revisão de dados — o resumo em uma tela.
+  { href: "/painel-do-cidadao", nome: "Painel do cidadão", desc: "Dinheiro público, território e leis em uma tela", icon: LayoutDashboard },
   { href: "/prefeitura", nome: "Prefeitura", desc: "Contratos, despesas e fornecedores", icon: Landmark },
   { href: "/camara", nome: "Câmara Municipal", desc: "Vereadores e verbas indenizatórias", icon: Users },
   { href: "/zap", nome: `Zap ${cidade.nome}`, desc: "Cadastro de negócios no WhatsApp", icon: MessageCircle },
