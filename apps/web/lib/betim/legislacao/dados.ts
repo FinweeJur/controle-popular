@@ -60,9 +60,6 @@ export interface ItemLegislacao {
 /** Municípios prioritários definidos no plano (Sprint 4). */
 export const SLUGS_PRIORITARIOS = ["betim", "bh", "aracuai", "itinga", "diamantina"] as const;
 
-const NOTA_PADRAO_NAO_VERIFICADO =
-  "Ainda não verificado nesta sprint. Caminho provável: site da Prefeitura/Câmara do município, portal de legislação ou LexML (lexml.gov.br).";
-
 const DATASET: Record<string, ItemLegislacao[]> = {
   betim: [
     {
@@ -180,29 +177,38 @@ const DATASET: Record<string, ItemLegislacao[]> = {
   diamantina: [
     {
       chave: "lei_organica",
-      status: "nao_verificado",
-      nota:
-        "Procurar no portal de legislação da Prefeitura (diamantina.mg.gov.br/portal/leis_decretos, categoria 'Emenda à Lei Orgânica' indica o texto base) e na Câmara (cmdiamantina.mg.gov.br).",
+      status: "encontrado",
+      url: "https://www.diamantina.mg.gov.br/arquivos/lei-org--nica-do-munic--pio-de-diamantina_20020813.pdf",
+      ano: 1990,
+      fonteLabel:
+        "Prefeitura de Diamantina (página Gestão de Pessoas) — LO de 1990; emendas até a nº 37/2024 registradas na Câmara (cmdiamantina.mg.gov.br)",
     },
     {
       chave: "plano_diretor",
-      status: "nao_verificado",
-      nota: "Mesmo caminho: portal de legislação da Prefeitura de Diamantina e Câmara Municipal.",
+      status: "encontrado",
+      url: "https://www.diamantina.mg.gov.br/imgeditor/file/lei-complementar-n-103-plano-diretor-vigente_22015600.pdf",
+      fonteLabel:
+        "Prefeitura de Diamantina — LC nº 103, revisão do Plano Diretor vigente nos termos do Estatuto da Cidade (Lei federal 10.257/2001)",
+      // Ano da LC 103 não confirmado na verificação — melhor omitir que
+      // chutar (regra do número medido).
     },
     {
       chave: "zoneamento",
       status: "nao_verificado",
-      nota: "Idem — buscar por 'uso do solo'/'zoneamento' no portal de legislação da Prefeitura.",
+      nota:
+        "Procurar por 'uso do solo'/'zoneamento' no portal de legislação da Prefeitura (diamantina.mg.gov.br/portal/leis_decretos) e no sistema da Câmara (cmdiamantina.mg.gov.br/leis). O PD (LC 103) prevê lei complementar própria para uso e ocupação do solo urbano.",
     },
     {
       chave: "codigo_tributario",
       status: "nao_verificado",
-      nota: "Idem — buscar por 'código tributário' no portal de legislação da Prefeitura.",
+      nota:
+        "Procurar por 'código tributário' no portal da Prefeitura (diamantina.mg.gov.br/portal/leis_decretos) e no sistema da Câmara (cmdiamantina.mg.gov.br/leis).",
     },
     {
       chave: "codigo_obras_posturas",
       status: "nao_verificado",
-      nota: "Idem — buscar por 'código de obras'/'posturas' no portal de legislação da Prefeitura.",
+      nota:
+        "Procurar por 'código de obras'/'posturas' no portal da Prefeitura e no sistema da Câmara (cmdiamantina.mg.gov.br/leis).",
     },
   ],
   itinga: [
@@ -210,27 +216,31 @@ const DATASET: Record<string, ItemLegislacao[]> = {
       chave: "lei_organica",
       status: "nao_verificado",
       nota:
-        "Nenhuma URL oficial verificada nesta sprint para Itinga. Procurar site da Prefeitura/Câmara; não localizando, vale pedido LAI (o portal tem botão pronto nas telas da prefeitura).",
+        "Site oficial confirmado (www.itinga.mg.gov.br) com repositório de Documentos Públicos em /publicacao (busca por palavra-chave/categoria) e Portal da Transparência próprio (pmitinga.cidadesmg.com.br). Nenhum PDF da LO apareceu na busca desta sprint — usar os dois canais ou pedido LAI.",
     },
     {
       chave: "plano_diretor",
       status: "nao_verificado",
-      nota: NOTA_PADRAO_NAO_VERIFICADO,
+      nota:
+        "Procurar em www.itinga.mg.gov.br/publicacao (Documentos Públicos) e no Portal da Transparência pmitinga.cidadesmg.com.br — buscar 'plano diretor'.",
     },
     {
       chave: "zoneamento",
       status: "nao_verificado",
-      nota: NOTA_PADRAO_NAO_VERIFICADO,
+      nota:
+        "Mesmos canais: Documentos Públicos da Prefeitura e Portal da Transparência — buscar 'zoneamento'/'uso do solo'.",
     },
     {
       chave: "codigo_tributario",
       status: "nao_verificado",
-      nota: NOTA_PADRAO_NAO_VERIFICADO,
+      nota:
+        "Mesmos canais: Documentos Públicos da Prefeitura e Portal da Transparência — buscar 'código tributário'.",
     },
     {
       chave: "codigo_obras_posturas",
       status: "nao_verificado",
-      nota: NOTA_PADRAO_NAO_VERIFICADO,
+      nota:
+        "Mesmos canais: Documentos Públicos da Prefeitura e Portal da Transparência — buscar 'código de obras'/'posturas'.",
     },
   ],
 };

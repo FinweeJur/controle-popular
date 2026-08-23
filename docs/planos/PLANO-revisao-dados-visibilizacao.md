@@ -270,9 +270,13 @@ Pendências:
 
 1. **Bacia do Paraopeba não verificada** — os demais municípios da bacia
    entram com tudo "Não verificado"; a tela já lida com isso honestamente.
-2. **Itinga e Diamantina majoritariamente "Não verificado"** — Itinga sem
-   URL oficial localizada nesta sprint; Diamantina tem portal de legislação
-   próprio anotado como caminho.
+2. **Diamantina avançou na segunda rodada de verificação (mesmo dia)**: Lei
+   Orgânica (1990, PDF na Prefeitura) e Plano Diretor (LC nº 103, texto
+   vigente) agora "Encontrados"; restam zoneamento/tributário/obras com os
+   dois canais oficiais anotados. **Itinga segue sem documento localizado** —
+   site oficial confirmado (www.itinga.mg.gov.br) com repositório de
+   Documentos Públicos (/publicacao) e Portal da Transparência próprio;
+   nenhum PDF exposto diretamente, vale pedido LAI se a busca manual falhar.
 3. **Betim/BH: Código Tributário e Código de Obras/Posturas** ainda não
    identificados (caminhos anotados nos itens).
 4. **Links podem sair do ar** — re-verificar `VERIFICADO_EM` quando tocar
