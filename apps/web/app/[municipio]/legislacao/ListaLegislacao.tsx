@@ -63,7 +63,11 @@ export default function ListaLegislacao({ slug }: ListaLegislacaoProps) {
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    status ? sp.set("status", status) : sp.delete("status");
+    if (status) {
+      sp.set("status", status);
+    } else {
+      sp.delete("status");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [status]);

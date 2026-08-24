@@ -99,9 +99,21 @@ export default function ListaLicitacoes({ base, situacoesDisponiveis, modalidade
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    ano ? sp.set("ano", ano) : sp.delete("ano");
-    situacao ? sp.set("situacao", situacao) : sp.delete("situacao");
-    modalidade ? sp.set("modalidade", modalidade) : sp.delete("modalidade");
+    if (ano) {
+      sp.set("ano", ano);
+    } else {
+      sp.delete("ano");
+    }
+    if (situacao) {
+      sp.set("situacao", situacao);
+    } else {
+      sp.delete("situacao");
+    }
+    if (modalidade) {
+      sp.set("modalidade", modalidade);
+    } else {
+      sp.delete("modalidade");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [ano, situacao, modalidade]);

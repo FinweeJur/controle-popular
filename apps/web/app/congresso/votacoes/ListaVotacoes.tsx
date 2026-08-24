@@ -102,7 +102,11 @@ export default function ListaVotacoes({ base }: { base: string }) {
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    ano ? sp.set("ano", ano) : sp.delete("ano");
+    if (ano) {
+      sp.set("ano", ano);
+    } else {
+      sp.delete("ano");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [ano]);

@@ -52,9 +52,21 @@ export default function ListaFornecedores({ base, municipioSlug }: ListaForneced
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    valorMin ? sp.set("valor_min", valorMin) : sp.delete("valor_min");
-    somenteAlerta ? sp.set("alerta", "1") : sp.delete("alerta");
-    somenteAberturaRecente ? sp.set("recem", "1") : sp.delete("recem");
+    if (valorMin) {
+      sp.set("valor_min", valorMin);
+    } else {
+      sp.delete("valor_min");
+    }
+    if (somenteAlerta) {
+      sp.set("alerta", "1");
+    } else {
+      sp.delete("alerta");
+    }
+    if (somenteAberturaRecente) {
+      sp.set("recem", "1");
+    } else {
+      sp.delete("recem");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [valorMin, somenteAlerta, somenteAberturaRecente]);
