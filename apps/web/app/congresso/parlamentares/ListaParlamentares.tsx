@@ -162,7 +162,6 @@ function ParlamentaresConteudo({ parlamentares, filtro }: ListaProps & { filtro:
                   href={`/parlamentares/${p.id}`}
                   className="flex h-full items-center gap-3 rounded-lg border border-[var(--cp-border)] p-3 hover:border-[var(--cp-primary)]"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   {p.url_foto ? (
                     <img
                       src={p.url_foto}

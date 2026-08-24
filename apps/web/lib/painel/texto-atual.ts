@@ -56,7 +56,7 @@ function acharValor(bloco: string, campo: "title" | "description"): string | nul
  * Extrai o objeto base de `metadataEditavel("rota", { … })` de um arquivo.
  * Devolve null se o arquivo não contém a chamada ou o objeto não fecha.
  */
-function extrairBloco(conteudo: string, rota: string): string | null {
+function extrairBloco(conteudo: string, _rota: string): string | null {
   const re = /metadataEditavel\(\s*["'`]([^"'`]+)["'`]\s*,\s*\{/;
   const m = re.exec(conteudo);
   if (!m) return null;

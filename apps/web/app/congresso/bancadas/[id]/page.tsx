@@ -81,7 +81,6 @@ export default async function Bancada({ params }: { params: Params }) {
                 key={m.id}
                 className="flex items-center gap-3 rounded-md border border-[var(--cp-border)] p-2"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 {m.url_foto ? (
                   <img
                     src={m.url_foto}

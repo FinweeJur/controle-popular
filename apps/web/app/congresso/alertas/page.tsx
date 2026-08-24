@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { alertas, coberturaAnalise } from "@/lib/congresso/destaques";
 import AlertasLista, { AlertasListaCompleta } from "./AlertasLista";
-import { FiltroTema, Rodape, Vazio } from "./FiltroRodapeVazio";
+import { Rodape } from "./FiltroRodapeVazio";
 import { metadataEditavel } from "@/lib/edicoes";
 
 // ⟲ SAIU o `export { FiltroTema, Rodape, Vazio }` que ficava aqui. Ele existia

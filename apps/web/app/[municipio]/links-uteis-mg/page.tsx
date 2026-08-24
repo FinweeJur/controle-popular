@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Links Úteis do Estado — ${nomePortal(c)}`,
-  (c) => `Fontes oficiais de dados públicos de Minas Gerais, organizadas por tema — meio ambiente, contas públicas, segurança e dados abertos.`
+  () => `Fontes oficiais de dados públicos de Minas Gerais, organizadas por tema — meio ambiente, contas públicas, segurança e dados abertos.`
 );
 
 interface LinkItem {
