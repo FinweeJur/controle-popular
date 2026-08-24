@@ -85,6 +85,7 @@ export default function PainelAdmin() {
         setLoading(false);
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- 'caminho' na deps dispararia refetch em cascata a cada troca de aba; a rota ativa da montagem basta
     [authHeaders]
   );
 
