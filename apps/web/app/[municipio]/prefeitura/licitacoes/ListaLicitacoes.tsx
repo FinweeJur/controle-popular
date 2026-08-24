@@ -88,6 +88,7 @@ export default function ListaLicitacoes({ base, situacoesDisponiveis, modalidade
 
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setAno(sp.get("ano") ?? "");
     setSituacao(sp.get("situacao") ?? "");
     setModalidade(sp.get("modalidade") ?? "");

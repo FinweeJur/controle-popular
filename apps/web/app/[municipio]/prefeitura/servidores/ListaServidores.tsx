@@ -67,6 +67,7 @@ export default function ListaServidores({ base }: { base: string }) {
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
     const p = sp.get("perfil");
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setPerfil(p === "comissionados" || p === "alto_escalao" ? p : "");
     setOrgao(sp.get("orgao") ?? "");
   }, []);

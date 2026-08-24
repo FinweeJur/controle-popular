@@ -41,6 +41,7 @@ export default function ListaFornecedores({ base, municipioSlug }: ListaForneced
 
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setValorMin(sp.get("valor_min") ?? "");
     setSomenteAlerta(sp.get("alerta") === "1");
     setSomenteAberturaRecente(sp.get("recem") === "1");
