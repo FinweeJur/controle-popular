@@ -77,8 +77,16 @@ export default function ListaServidores({ base }: { base: string }) {
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    perfil ? sp.set("perfil", perfil) : sp.delete("perfil");
-    orgao ? sp.set("orgao", orgao) : sp.delete("orgao");
+    if (perfil) {
+      sp.set("perfil", perfil);
+    } else {
+      sp.delete("perfil");
+    }
+    if (orgao) {
+      sp.set("orgao", orgao);
+    } else {
+      sp.delete("orgao");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [perfil, orgao]);

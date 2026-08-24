@@ -43,7 +43,11 @@ export default function ListaCruzamentos({ base, municipioSlug }: ListaCruzament
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    tipo ? sp.set("tipo", tipo) : sp.delete("tipo");
+    if (tipo) {
+      sp.set("tipo", tipo);
+    } else {
+      sp.delete("tipo");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [tipo]);

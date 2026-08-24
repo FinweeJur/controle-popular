@@ -75,7 +75,11 @@ export default function ListaEscolas({ base }: { base: string }) {
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    rede ? sp.set("rede", rede) : sp.delete("rede");
+    if (rede) {
+      sp.set("rede", rede);
+    } else {
+      sp.delete("rede");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [rede]);

@@ -62,7 +62,11 @@ export default function ListaBonsExemplos({ base }: { base: string }) {
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    temaSlug ? sp.set("tema", temaSlug) : sp.delete("tema");
+    if (temaSlug) {
+      sp.set("tema", temaSlug);
+    } else {
+      sp.delete("tema");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [temaSlug]);

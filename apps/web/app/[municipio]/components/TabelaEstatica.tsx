@@ -151,9 +151,21 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    busca ? sp.set("q", busca) : sp.delete("q");
-    pagina > 1 ? sp.set("page", String(pagina)) : sp.delete("page");
-    ordem ? sp.set("ordem", `${ordem.chave}:${ordem.direcao}`) : sp.delete("ordem");
+    if (busca) {
+      sp.set("q", busca);
+    } else {
+      sp.delete("q");
+    }
+    if (pagina > 1) {
+      sp.set("page", String(pagina));
+    } else {
+      sp.delete("page");
+    }
+    if (ordem) {
+      sp.set("ordem", `${ordem.chave}:${ordem.direcao}`);
+    } else {
+      sp.delete("ordem");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [busca, pagina, ordem]);

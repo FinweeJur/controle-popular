@@ -211,15 +211,51 @@ export default function BuscaEstudos({ base }: { base: string }) {
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    municipio ? sp.set("municipio", municipio) : sp.delete("municipio");
-    unidadeRegional ? sp.set("regional", unidadeRegional) : sp.delete("regional");
-    classe ? sp.set("classe", classe) : sp.delete("classe");
-    classeEstudo ? sp.set("tipo", classeEstudo) : sp.delete("tipo");
-    repositorio ? sp.set("repositorio", repositorio) : sp.delete("repositorio");
-    ano ? sp.set("ano", ano) : sp.delete("ano");
-    modalidade ? sp.set("modalidade", modalidade) : sp.delete("modalidade");
-    somenteComArquivo ? sp.set("com_arquivo", "1") : sp.delete("com_arquivo");
-    somenteQuebrado ? sp.set("quebrado", "1") : sp.delete("quebrado");
+    if (municipio) {
+      sp.set("municipio", municipio);
+    } else {
+      sp.delete("municipio");
+    }
+    if (unidadeRegional) {
+      sp.set("regional", unidadeRegional);
+    } else {
+      sp.delete("regional");
+    }
+    if (classe) {
+      sp.set("classe", classe);
+    } else {
+      sp.delete("classe");
+    }
+    if (classeEstudo) {
+      sp.set("tipo", classeEstudo);
+    } else {
+      sp.delete("tipo");
+    }
+    if (repositorio) {
+      sp.set("repositorio", repositorio);
+    } else {
+      sp.delete("repositorio");
+    }
+    if (ano) {
+      sp.set("ano", ano);
+    } else {
+      sp.delete("ano");
+    }
+    if (modalidade) {
+      sp.set("modalidade", modalidade);
+    } else {
+      sp.delete("modalidade");
+    }
+    if (somenteComArquivo) {
+      sp.set("com_arquivo", "1");
+    } else {
+      sp.delete("com_arquivo");
+    }
+    if (somenteQuebrado) {
+      sp.set("quebrado", "1");
+    } else {
+      sp.delete("quebrado");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [municipio, unidadeRegional, classe, classeEstudo, repositorio, ano, modalidade, somenteComArquivo, somenteQuebrado]);
