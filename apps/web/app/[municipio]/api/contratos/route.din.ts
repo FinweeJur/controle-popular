@@ -56,7 +56,7 @@ export async function GET(
     return new Response(csv, {
       headers: {
         "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": 'attachment; filename="contratos-betim.csv"',
+        "Content-Disposition": `attachment; filename="contratos-${municipio}.csv"`,
       },
     });
   }

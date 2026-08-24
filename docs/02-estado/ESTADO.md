@@ -146,6 +146,8 @@ abaixo.
 
 As **duas compactações** (`apps/web/lib/comunicabr/arquivo.ts` × `apps/web/lib/estatico/compactar.ts`) **não são a mesma coisa**: uma é codec de estrutura aninhada com esqueleto nacional compartilhado (é o que faz 99 MiB caberem em 2,16 MB nos 853 municípios); a outra é genérica para tabela plana (Rouanet, 7,9 MB → 2,4 MB). **Decisão documentada: não unificar** — aplainar o ComunicaBR perde o ganho de ordem de grandeza, e enxertar aninhamento no genérico é complexidade para um único consumidor. Remeça antes de reabrir.
 
+**Auditoria de assets (2026-08-23, code-review-geral):** `public/` inteiro pesa **52,3 MB**, maior asset individual é `sigmine-interesse.geojson.gz` com **6,06 MB** — nada acima do aviso de 20 MiB, muito menos do teto de 25. As camadas cruas seguintes (`sigmine-operacao` 5,67, `vazio-cadastral-vales` 4,53, `unidades-conservacao` 3,13, `lotes-vagos-bh` 2,97) ficam **abaixo do limiar de ~8 MiB crus** que governa o uso de `comprimida: true` no registry do globo — decisão mantida: não comprimir abaixo dele. Os dois grandes JSONs fora das camadas (`risco-climatico` 2,78 MB, `comunicabr-31` 2,16 MB) já estão minificados.
+
 ## Rito de trabalho
 
 Quem quer trabalhar entra por **PRODUTO.md** (a porta) e lê **DESENVOLVIMENTO.md** antes do primeiro commit; **FONTES.md**, **ARQUITETURA.md**, **OPERACAO.md** e **EDICAO.md** cobrem fonte, tetos, operação e edição conforme a tarefa. Dúvida entre dois caminhos: o registro de decisão e a medição vêm antes da escolha.
