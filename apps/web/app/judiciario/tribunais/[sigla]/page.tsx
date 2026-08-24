@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "@/lib/judiciario/link";
 import { notFound } from "next/navigation";
 import {
   obterTribunal,

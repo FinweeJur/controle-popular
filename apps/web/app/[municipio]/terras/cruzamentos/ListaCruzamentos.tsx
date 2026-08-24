@@ -34,6 +34,7 @@ export default function ListaCruzamentos({ base, municipioSlug }: ListaCruzament
 
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setTipo(sp.get("tipo") ?? "");
   }, []);
 
@@ -43,7 +44,11 @@ export default function ListaCruzamentos({ base, municipioSlug }: ListaCruzament
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    tipo ? sp.set("tipo", tipo) : sp.delete("tipo");
+    if (tipo) {
+      sp.set("tipo", tipo);
+    } else {
+      sp.delete("tipo");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [tipo]);

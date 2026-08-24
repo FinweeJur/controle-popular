@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, sql } from "drizzle-orm";
+import { asc, desc, eq, sql } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { copam_pauta_itens, copam_reunioes } from "@/lib/db/schema";
 

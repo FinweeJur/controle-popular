@@ -136,6 +136,7 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
     const q = sp.get("q");
     const p = Number(sp.get("page"));
     const o = sp.get("ordem");
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     if (q) setBusca(q);
     if (p > 1) setPagina(p);
     if (o) {
@@ -151,9 +152,21 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    busca ? sp.set("q", busca) : sp.delete("q");
-    pagina > 1 ? sp.set("page", String(pagina)) : sp.delete("page");
-    ordem ? sp.set("ordem", `${ordem.chave}:${ordem.direcao}`) : sp.delete("ordem");
+    if (busca) {
+      sp.set("q", busca);
+    } else {
+      sp.delete("q");
+    }
+    if (pagina > 1) {
+      sp.set("page", String(pagina));
+    } else {
+      sp.delete("page");
+    }
+    if (ordem) {
+      sp.set("ordem", `${ordem.chave}:${ordem.direcao}`);
+    } else {
+      sp.delete("ordem");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [busca, pagina, ordem]);
@@ -234,6 +247,7 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
   // Filtro novo pode deixar menos páginas que a atual; sem isto o leitor cai
   // numa página vazia e conclui que o filtro não achou nada.
   useEffect(() => {
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setPagina(1);
   }, [filtrar]);
 

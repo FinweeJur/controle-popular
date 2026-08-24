@@ -43,6 +43,7 @@ export default function ListaProposicoes({
 
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setTipo(sp.get("tipo") ?? "");
     setSituacao(sp.get("situacao") ?? "");
     setAno(sp.get("ano") ?? "");
@@ -55,10 +56,26 @@ export default function ListaProposicoes({
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    tipo ? sp.set("tipo", tipo) : sp.delete("tipo");
-    situacao ? sp.set("situacao", situacao) : sp.delete("situacao");
-    ano ? sp.set("ano", ano) : sp.delete("ano");
-    tema ? sp.set("tema", tema) : sp.delete("tema");
+    if (tipo) {
+      sp.set("tipo", tipo);
+    } else {
+      sp.delete("tipo");
+    }
+    if (situacao) {
+      sp.set("situacao", situacao);
+    } else {
+      sp.delete("situacao");
+    }
+    if (ano) {
+      sp.set("ano", ano);
+    } else {
+      sp.delete("ano");
+    }
+    if (tema) {
+      sp.set("tema", tema);
+    } else {
+      sp.delete("tema");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [tipo, situacao, ano, tema]);

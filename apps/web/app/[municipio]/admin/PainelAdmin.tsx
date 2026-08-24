@@ -48,6 +48,7 @@ export default function PainelAdmin() {
   useEffect(() => {
     const saved = sessionStorage.getItem("cp-admin-token");
     if (saved) {
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
       setToken(saved);
       setTokenInput(saved);
     }
@@ -84,10 +85,12 @@ export default function PainelAdmin() {
         setLoading(false);
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- 'caminho' na deps dispararia refetch em cascata a cada troca de aba; a rota ativa da montagem basta
     [authHeaders]
   );
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- loadAll alimenta estados a partir do token restaurado; efeito intencional de sincronizacao com sessionStorage
     if (token) loadAll(token);
   }, [token, loadAll]);
 

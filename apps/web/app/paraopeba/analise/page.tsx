@@ -108,7 +108,7 @@ export default async function AnaliseIntegradaPage() {
             ocorrido, a auditoria mede o andamento da reparação.
           </li>
           <li>
-            <strong className="text-text">"Ponte não existe" ≠ "ninguém mais fala disso".</strong>{" "}
+            <strong className="text-text">&quot;Ponte não existe&quot; ≠ &quot;ninguém mais fala disso&quot;.</strong>{" "}
             {formatNumberBR(resumo.soAuditoriaSemPonte)} dos {formatNumberBR(resumo.totalEixos)} eixos
             não têm um tema equivalente no vocabulário fechado de 25 temas que a própria AECOM usa
             para marcar seus documentos — não é possível cruzá-los por tema, o que é diferente de
@@ -254,7 +254,7 @@ export default async function AnaliseIntegradaPage() {
         <p className="mt-2 max-w-2xl text-[.92em] leading-relaxed text-text-soft">
           O espelho da pergunta acima: {formatNumberBR(orfaos.length)} temas do vocabulário fechado
           da AECOM têm documento real de perícia e/ou de ATI, mas nenhum dos 16 eixos da síntese é
-          "sobre" eles especificamente — atravessam a síntese inteira sem virar um eixo próprio (ver
+          &quot;sobre&quot; eles especificamente — atravessam a síntese inteira sem virar um eixo próprio (ver
           o cabeçalho de <code className="rounded bg-surface-2 px-1 py-0.5 text-[.85em]">sintese-integrada.ts</code>).
         </p>
         {orfaos.length === 0 ? (

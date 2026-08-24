@@ -54,7 +54,7 @@ export const casasInCongresso = congresso.table("casas", {
 	url_site: text(),
 	ativo: boolean().default(true),
 	created_at: timestamp({ withTimezone: true, mode: 'string' }).defaultNow(),
-}, (table) => [
+}, () => [
 	check("casas_esfera_check", sql`esfera = ANY (ARRAY['federal'::text, 'estadual'::text, 'municipal'::text])`),
 ]);
 

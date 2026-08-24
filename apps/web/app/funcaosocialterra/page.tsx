@@ -11,7 +11,6 @@ import { formatNumberBR } from "@/lib/betim/format";
 import { carregarResumoMapaEstadual } from "@/lib/terras/mapa-resumo";
 import {
   carregarAlertasSigmine,
-  carregarAlertaTiMancha,
   carregarAlertaQuilombolaMancha,
   carregarAtosAreaProtegida,
 } from "@/lib/terras/alertas";
@@ -78,9 +77,7 @@ export default async function FuncaoSocialTerraPage() {
 
   const resumoMapa = carregarResumoMapaEstadual();
   const alertaOperacao = carregarAlertasSigmine("operacao");
-  const alertaInteresse = carregarAlertasSigmine("interesse");
-  const alertaTiMancha = carregarAlertaTiMancha();
-  const alertaQuilombolaMancha = carregarAlertaQuilombolaMancha();
+  const alertaInteresse = carregarAlertasSigmine("interesse");  const alertaQuilombolaMancha = carregarAlertaQuilombolaMancha();
   const atosAreaProtegida = carregarAtosAreaProtegida();
 
   return (

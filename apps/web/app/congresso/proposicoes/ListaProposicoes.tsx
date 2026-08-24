@@ -139,6 +139,7 @@ export default function ListaProposicoes({ base, temas }: ListaProposicoesProps)
   // no topo daquele arquivo).
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setTema(sp.get("tema") ?? undefined);
     setRotulo(sp.get("rotulo") ?? undefined);
     setAno(sp.get("ano") ?? "");
@@ -153,10 +154,26 @@ export default function ListaProposicoes({ base, temas }: ListaProposicoesProps)
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    tema ? sp.set("tema", tema) : sp.delete("tema");
-    rotulo ? sp.set("rotulo", rotulo) : sp.delete("rotulo");
-    ano ? sp.set("ano", ano) : sp.delete("ano");
-    soTramitando ? sp.delete("tramitando") : sp.set("tramitando", "0");
+    if (tema) {
+      sp.set("tema", tema);
+    } else {
+      sp.delete("tema");
+    }
+    if (rotulo) {
+      sp.set("rotulo", rotulo);
+    } else {
+      sp.delete("rotulo");
+    }
+    if (ano) {
+      sp.set("ano", ano);
+    } else {
+      sp.delete("ano");
+    }
+    if (soTramitando) {
+      sp.delete("tramitando");
+    } else {
+      sp.set("tramitando", "0");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [tema, rotulo, ano, soTramitando]);

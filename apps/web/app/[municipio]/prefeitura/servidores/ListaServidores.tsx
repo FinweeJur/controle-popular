@@ -67,6 +67,7 @@ export default function ListaServidores({ base }: { base: string }) {
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
     const p = sp.get("perfil");
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setPerfil(p === "comissionados" || p === "alto_escalao" ? p : "");
     setOrgao(sp.get("orgao") ?? "");
   }, []);
@@ -77,8 +78,16 @@ export default function ListaServidores({ base }: { base: string }) {
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    perfil ? sp.set("perfil", perfil) : sp.delete("perfil");
-    orgao ? sp.set("orgao", orgao) : sp.delete("orgao");
+    if (perfil) {
+      sp.set("perfil", perfil);
+    } else {
+      sp.delete("perfil");
+    }
+    if (orgao) {
+      sp.set("orgao", orgao);
+    } else {
+      sp.delete("orgao");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [perfil, orgao]);
