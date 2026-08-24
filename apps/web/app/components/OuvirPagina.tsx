@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 
 type Estado = "idle" | "falando" | "pausado";
@@ -112,6 +112,7 @@ export default function OuvirPagina() {
   useEffect(() => {
     if (!mounted) return;
     const ok = "speechSynthesis" in window;
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setSuportado(ok);
     if (!ok) return;
     window.speechSynthesis.cancel();

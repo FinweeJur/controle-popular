@@ -54,6 +54,7 @@ export default function ListaLegislacao({ slug }: ListaLegislacaoProps) {
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
     const s = sp.get("status");
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     if (s === "encontrado" || s === "nao_encontrado" || s === "nao_verificado") setStatus(s);
   }, []);
 
@@ -63,7 +64,11 @@ export default function ListaLegislacao({ slug }: ListaLegislacaoProps) {
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    status ? sp.set("status", status) : sp.delete("status");
+    if (status) {
+      sp.set("status", status);
+    } else {
+      sp.delete("status");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [status]);

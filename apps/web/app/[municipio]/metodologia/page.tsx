@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Metodologia dos alertas de contrato — ${nomePortal(c)}`,
-  (c) => `Como cada alerta de contrato é calculado, com a base legal ou jurisprudencial verificada — revisão feita contra TCU/TCE em 2026-07-23.`
+  () => `Como cada alerta de contrato é calculado, com a base legal ou jurisprudencial verificada — revisão feita contra TCU/TCE em 2026-07-23.`
 );
 
 const REGRAS_ORDENADAS = [
@@ -117,7 +117,7 @@ export default async function MetodologiaPage({
           agora é checado de verdade contra o Portal da Transparência. Uma
           ressalva importante ao ler esse alerta: nem toda sanção alcança
           qualquer município — algumas têm abrangência limitada à esfera de
-          quem aplicou a sanção. O campo "Abrangência" aparece sempre junto
+          quem aplicou a sanção. O campo &quot;Abrangência&quot; aparece sempre junto
           do alerta na tela de contratos, exatamente pra permitir essa
           checagem.
         </p>
@@ -126,7 +126,7 @@ export default async function MetodologiaPage({
             Mínimos constitucionais de saúde (15%) e educação (25%)
           </strong>{" "}
           são calculados corretamente (base de impostos e transferências
-          constitucionais, gasto no estágio "Liquidado") — mas não
+          constitucionais, gasto no estágio &quot;Liquidado&quot;) — mas não
           aparecem como alerta público porque não há nada pra alertar:{" "}
           {cidade.nome} cumpre os dois mínimos com folga em todos os anos com
           dado (2015-2024), entre 38-54% em saúde e 37-60% em educação.

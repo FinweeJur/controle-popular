@@ -53,6 +53,7 @@ export default function ListaBonsExemplos({ base }: { base: string }) {
 
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setTemaSlug(sp.get("tema") ?? undefined);
   }, []);
 
@@ -62,7 +63,11 @@ export default function ListaBonsExemplos({ base }: { base: string }) {
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    temaSlug ? sp.set("tema", temaSlug) : sp.delete("tema");
+    if (temaSlug) {
+      sp.set("tema", temaSlug);
+    } else {
+      sp.delete("tema");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [temaSlug]);

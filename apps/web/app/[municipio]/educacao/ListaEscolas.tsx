@@ -66,6 +66,7 @@ export default function ListaEscolas({ base }: { base: string }) {
   // `replaceState` — mesmo padrão de `ListaServidores.tsx`, e pelo mesmo
   // motivo (`useSearchParams()` reprova no `output: 'export'`).
   useEffect(() => {
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setRede(new URLSearchParams(window.location.search).get("rede") ?? "");
   }, []);
 
@@ -75,7 +76,11 @@ export default function ListaEscolas({ base }: { base: string }) {
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    rede ? sp.set("rede", rede) : sp.delete("rede");
+    if (rede) {
+      sp.set("rede", rede);
+    } else {
+      sp.delete("rede");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [rede]);

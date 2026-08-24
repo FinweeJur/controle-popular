@@ -54,7 +54,6 @@ export default function PaginaPonte({
 
   return (
     <>
-      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
       <meta httpEquiv="refresh" content={`0; url=${absoluto}`} />
       <link rel="canonical" href={absoluto} />
       <meta name="robots" content="noindex, follow" />

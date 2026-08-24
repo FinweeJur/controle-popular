@@ -157,6 +157,7 @@ function AuditoriaClient({ buscaInicial = "" }: { buscaInicial?: string }) {
   // sincroniza busca e volta a lista ao início — mesmo contrato de quem
   // chega de fora com `?q=` na URL.
   useEffect(() => {
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setBusca(buscaInicial);
     setVisiveis(POR_PAGINA);
   }, [buscaInicial]);

@@ -219,7 +219,6 @@ export default async function VereadorPage({ params }: VereadorPageProps) {
             * `alt=""` de propósito: o nome está escrito ao lado, em texto. Um
             * `alt` com o nome faria o leitor de tela repetir. */}
           <div className="flex flex-wrap items-center gap-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             {row.foto_url ? (
               <img
                 src={row.foto_url}

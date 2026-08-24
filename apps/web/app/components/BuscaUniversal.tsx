@@ -143,6 +143,7 @@ export default function BuscaUniversal({
     // não gasta uma requisição por tecla para descobrir de novo o que já se
     // sabe (e para de encher o console de 404).
     if (semRotas || q.length < MIN_CARACTERES) {
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
       setSugestoes([]);
       setPerguntas([]);
       if (estado.fase === "sugerindo") setEstado({ fase: "parado" });

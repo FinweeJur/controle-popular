@@ -242,6 +242,7 @@ export default function ListaLegislacao({
   // (`useSearchParams()` reprova no `output: 'export'`).
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setCategoria(sp.get("categoria") ?? "");
     setAno(sp.get("ano") ?? "");
     setTema(sp.get("tema") ?? "");
@@ -254,10 +255,26 @@ export default function ListaLegislacao({
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    categoria ? sp.set("categoria", categoria) : sp.delete("categoria");
-    ano ? sp.set("ano", ano) : sp.delete("ano");
-    tema ? sp.set("tema", tema) : sp.delete("tema");
-    direito ? sp.set("direito", direito) : sp.delete("direito");
+    if (categoria) {
+      sp.set("categoria", categoria);
+    } else {
+      sp.delete("categoria");
+    }
+    if (ano) {
+      sp.set("ano", ano);
+    } else {
+      sp.delete("ano");
+    }
+    if (tema) {
+      sp.set("tema", tema);
+    } else {
+      sp.delete("tema");
+    }
+    if (direito) {
+      sp.set("direito", direito);
+    } else {
+      sp.delete("direito");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [categoria, ano, tema, direito]);

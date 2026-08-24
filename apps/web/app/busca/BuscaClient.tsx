@@ -63,6 +63,7 @@ export default function BuscaClient({ cidades }: BuscaClientProps) {
   // Estado inicial vindo da URL, uma vez, depois da hidratação.
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setQ(sp.get("q") ?? "");
     setTema(sp.get("tema") ?? "");
     setMunicipio(sp.get("municipio") ?? "");

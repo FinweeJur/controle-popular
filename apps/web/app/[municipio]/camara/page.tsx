@@ -353,7 +353,6 @@ export default async function CamaraPage({
               {/* Ver a nota em `vereadores/[slug]/page.tsx`: a foto estava no
                 * banco e não aparecia em tela nenhuma. `<img>` cru porque o
                 * host é externo e o export estático não tem otimizador. */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               {v.foto_url ? (
                 <img
                   src={v.foto_url}

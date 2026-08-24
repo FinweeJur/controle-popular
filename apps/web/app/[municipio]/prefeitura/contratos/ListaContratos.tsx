@@ -141,6 +141,7 @@ export default function ListaContratos({
 
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setAno(sp.get("ano") ?? "");
     setStatus(sp.get("status") ?? "");
     setSomenteAlerta(sp.get("alerta") === "1");
@@ -159,16 +160,56 @@ export default function ListaContratos({
       return;
     }
     const sp = new URLSearchParams(window.location.search);
-    ano ? sp.set("ano", ano) : sp.delete("ano");
-    status ? sp.set("status", status) : sp.delete("status");
-    somenteAlerta ? sp.set("alerta", "1") : sp.delete("alerta");
-    motivo ? sp.set("motivo", motivo) : sp.delete("motivo");
-    tema ? sp.set("tema", tema) : sp.delete("tema");
-    valorMin ? sp.set("valor_min", valorMin) : sp.delete("valor_min");
-    valorMax ? sp.set("valor_max", valorMax) : sp.delete("valor_max");
-    tipo ? sp.set("tipo", tipo) : sp.delete("tipo");
-    somenteRecemCriado ? sp.set("recem", "1") : sp.delete("recem");
-    somenteConcentrado ? sp.set("conc", "1") : sp.delete("conc");
+    if (ano) {
+      sp.set("ano", ano);
+    } else {
+      sp.delete("ano");
+    }
+    if (status) {
+      sp.set("status", status);
+    } else {
+      sp.delete("status");
+    }
+    if (somenteAlerta) {
+      sp.set("alerta", "1");
+    } else {
+      sp.delete("alerta");
+    }
+    if (motivo) {
+      sp.set("motivo", motivo);
+    } else {
+      sp.delete("motivo");
+    }
+    if (tema) {
+      sp.set("tema", tema);
+    } else {
+      sp.delete("tema");
+    }
+    if (valorMin) {
+      sp.set("valor_min", valorMin);
+    } else {
+      sp.delete("valor_min");
+    }
+    if (valorMax) {
+      sp.set("valor_max", valorMax);
+    } else {
+      sp.delete("valor_max");
+    }
+    if (tipo) {
+      sp.set("tipo", tipo);
+    } else {
+      sp.delete("tipo");
+    }
+    if (somenteRecemCriado) {
+      sp.set("recem", "1");
+    } else {
+      sp.delete("recem");
+    }
+    if (somenteConcentrado) {
+      sp.set("conc", "1");
+    } else {
+      sp.delete("conc");
+    }
     const qs = sp.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
   }, [ano, status, somenteAlerta, motivo, tema, valorMin, valorMax, tipo, somenteRecemCriado, somenteConcentrado]);
