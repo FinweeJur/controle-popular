@@ -177,7 +177,10 @@ export default function TabelaReunioes({
     baixarCsv(paraCsv(filtradasEOrdenadas, situacaoRotulo), `copam-reunioes-${hoje}.csv`);
   }
 
-  function Cabecalho({
+  // Função de render (não componente): chamada direta evita recriar um
+  // tipo de componente a cada render e mantém as colunas estáveis na
+  // reconciliação.
+  function cabecalho({
     col,
     rotulo,
     alinhar = "left",
@@ -187,13 +190,17 @@ export default function TabelaReunioes({
     alinhar?: "left" | "right";
   }) {
     const ativo = coluna === col;
+    const ariaSort = ativo ? (direcao === "asc" ? "ascending" : "descending") : "none";
     return (
-      <th className={`py-2 pr-3 font-medium ${alinhar === "right" ? "text-right" : "text-left"}`}>
+      // aria-sort pertence ao <th>, não ao botão interno.
+      <th
+        className={`py-2 pr-3 font-medium ${alinhar === "right" ? "text-right" : "text-left"}`}
+        aria-sort={ariaSort}
+      >
         <button
           type="button"
           onClick={() => alternarOrdenacao(col)}
           className="inline-flex items-center gap-1 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-          aria-sort={ativo ? (direcao === "asc" ? "ascending" : "descending") : "none"}
         >
           {rotulo}
           <span aria-hidden className="text-[.75em] opacity-70">
@@ -318,10 +325,10 @@ export default function TabelaReunioes({
             <thead>
               <tr className="border-b border-border text-left text-text">
                 <th className="py-2 pr-3 font-medium">Reunião</th>
-                <Cabecalho col="data" rotulo="Data" />
-                <Cabecalho col="camaraTecnica" rotulo="Câmara técnica (tipo)" />
-                <Cabecalho col="situacao" rotulo="Situação" />
-                <Cabecalho col="qtdItensPauta" rotulo="Itens de pauta" alinhar="right" />
+                {cabecalho({ col: "data", rotulo: "Data" })}
+                {cabecalho({ col: "camaraTecnica", rotulo: "Câmara técnica (tipo)" })}
+                {cabecalho({ col: "situacao", rotulo: "Situação" })}
+                {cabecalho({ col: "qtdItensPauta", rotulo: "Itens de pauta", alinhar: "right" })}
               </tr>
             </thead>
             <tbody className="text-text-soft">
