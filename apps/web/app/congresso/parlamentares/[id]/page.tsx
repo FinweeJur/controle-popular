@@ -53,7 +53,6 @@ export default async function PerfilParlamentar({ params }: { params: Params }) 
       </nav>
 
       <header className="flex flex-wrap items-center gap-4">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         {p.url_foto ? (
           <img
             src={p.url_foto}

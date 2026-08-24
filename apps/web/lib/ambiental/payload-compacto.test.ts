@@ -42,7 +42,7 @@ describe("payload compacto da legislação ambiental", () => {
     ];
     // `chaveDedup` é o único campo que muda de natureza de propósito (vira id
     // de grupo), então é comparado à parte, logo abaixo.
-    const semChave = (l: LegislacaoAmbientalRow[]) => l.map(({ chaveDedup, ...r }) => r);
+    const semChave = (l: LegislacaoAmbientalRow[]) => l.map((linha) => { const r = { ...linha }; delete (r as { chaveDedup?: unknown }).chaveDedup; return r; });
     expect(semChave(expandir(compactar(original)))).toEqual(semChave(original));
   });
 

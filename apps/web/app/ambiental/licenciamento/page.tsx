@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "@/lib/ambiental/link";
 import { formatNumberBR } from "@/lib/betim/format";
 import BarrasValor from "@/app/[municipio]/components/charts/BarrasValor";
 import {

@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Metodologia dos alertas de contrato — ${nomePortal(c)}`,
-  (c) => `Como cada alerta de contrato é calculado, com a base legal ou jurisprudencial verificada — revisão feita contra TCU/TCE em 2026-07-23.`
+  () => `Como cada alerta de contrato é calculado, com a base legal ou jurisprudencial verificada — revisão feita contra TCU/TCE em 2026-07-23.`
 );
 
 const REGRAS_ORDENADAS = [

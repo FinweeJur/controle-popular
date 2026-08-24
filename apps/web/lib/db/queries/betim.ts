@@ -215,8 +215,7 @@ export async function ocorrenciasSeguranca(idMunicipio: IdMunicipio) {
  * e transformaria diretor de escola em secretário municipal aos olhos de quem
  * lê. Diretor de escola é chefia pedagógica, não cúpula de governo.
  */
-const PERFIS_SERVIDOR = ["comissionados", "alto_escalao"] as const;
-export type PerfilServidor = (typeof PERFIS_SERVIDOR)[number];
+export type PerfilServidor = "comissionados" | "alto_escalao";
 
 export async function listarServidores(
   idMunicipio: IdMunicipio,

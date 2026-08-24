@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import { neon } from "@neondatabase/serverless";
 import { comoIdMunicipio } from "../lib/db/queries/municipios.js";
-import * as q from "../lib/db/queries/betim.js";
 import * as qE from "../lib/db/queries/betim-escritas.js";
 import { getCaixaDisponivel } from "../lib/betim/caixa.js";
 import { getObras } from "../lib/betim/obras.js";
