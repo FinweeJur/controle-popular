@@ -135,7 +135,7 @@ export default async function BarragensPage({
             consultados.
           </p>
           <p className="mt-2 text-sm text-text-soft">
-            Isso não é o mesmo que "não existe barragem na cidade": os dois
+            Isso não é o mesmo que &quot;não existe barragem na cidade&quot;: os dois
             cadastros só listam barragens acima de porte definido em lei, e o
             SNISB casa município por nome, não por código do IBGE — uma grafia
             fora do previsto some da conta.
@@ -208,8 +208,8 @@ export default async function BarragensPage({
                 </p>
                 <p className="mt-2 text-xs text-text-soft">
                   A DCE (Declaração de Condição de Estabilidade) é entregue
-                  periodicamente por auditor externo. "Não atestada" e "não
-                  apresentou" são coisas diferentes: a primeira é um laudo que
+                  periodicamente por auditor externo. &quot;Não atestada&quot; e &quot;não
+                  apresentou&quot; são coisas diferentes: a primeira é um laudo que
                   não confirmou a estabilidade, a segunda é a ausência do laudo.
                 </p>
               </DataCard>
@@ -226,7 +226,7 @@ export default async function BarragensPage({
                 <p className="mt-2 text-xs text-text-soft">
                   O PAE é o documento que define o que fazer, e quem avisa quem,
                   se a barragem romper. A contagem inclui só as que declaram
-                  "não" no cadastro — campo em branco não entra aqui.
+                  &quot;não&quot; no cadastro — campo em branco não entra aqui.
                 </p>
               </DataCard>
             )}

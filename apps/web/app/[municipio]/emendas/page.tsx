@@ -128,14 +128,14 @@ export default async function EmendasPage({
         </p>
         <p className="mt-2">
           <strong className="font-semibold text-text">
-            Não é a mesma coisa que "emenda de um deputado".
+            Não é a mesma coisa que &quot;emenda de um deputado&quot;.
           </strong>{" "}
           A fonte não diz qual parlamentar indicou cada convênio — testamos, e
           pra {cidade.nome} esse dado veio praticamente vazio. O que esta página mostra
           é o dinheiro que de fato chegou, tenha vindo de emenda ou não.
         </p>
         <p className="mt-2">
-          "Valor combinado" é o total do acordo. "Liberado" é o que já foi
+          &quot;Valor combinado&quot; é o total do acordo. &quot;Liberado&quot; é o que já foi
           repassado até agora. A diferença costuma ser parcela que ainda não
           saiu — não é dinheiro perdido.
         </p>
