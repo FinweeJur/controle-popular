@@ -103,6 +103,7 @@ export default function ListaVotacoes({ base }: { base: string }) {
 
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setAno(sp.get("ano") ?? "");
   }, []);
 

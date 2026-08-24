@@ -242,6 +242,7 @@ export default function ListaLegislacao({
   // (`useSearchParams()` reprova no `output: 'export'`).
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setCategoria(sp.get("categoria") ?? "");
     setAno(sp.get("ano") ?? "");
     setTema(sp.get("tema") ?? "");

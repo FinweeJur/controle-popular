@@ -56,6 +56,7 @@ export function SeuNono() {
   // Detecta se ha algum provedor de IA disponivel no ambiente.
   useEffect(() => {
     const temApiKey = Boolean(process.env.NEXT_PUBLIC_AI_API_KEY);
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
     setIaDisponivel(temApiKey);
   }, []);
 
