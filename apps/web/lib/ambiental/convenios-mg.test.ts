@@ -1,10 +1,10 @@
 import { describe, expect, test } from "vitest";
 import {
   COBERTURA_CONVENIOS_AMBIENTAIS,
-  CONVENIOS_AMBIENTAIS_MG,
   CONVENIOS_AMBIENTAIS_POR_ANO,
   CONVENIOS_AMBIENTAIS_POR_ORGAO,
 } from "./convenios-mg";
+import { lerConveniosAmbientaisMg } from "./convenios-mg-dados";
 
 /**
  * `convenios-mg.ts` é GERADO por `scripts/coletar-convenios-ambientais-mg.mts`
@@ -21,7 +21,7 @@ describe("convênios dos órgãos ambientais de MG", () => {
     // educação. Se o filtro escapar, dinheiro que não é ambiental aparece numa
     // página de meio ambiente, o que é erro editorial, não só de dado.
     expect(COBERTURA_CONVENIOS_AMBIENTAIS.orgaos).toBe(4);
-    const nomes = new Set(CONVENIOS_AMBIENTAIS_MG.map((c) => c.orgao));
+    const nomes = new Set(lerConveniosAmbientaisMg().map((c) => c.orgao));
     expect(nomes.size).toBe(4);
     for (const n of nomes) {
       expect(n, `órgão fora do recorte ambiental: ${n}`).toMatch(
@@ -32,7 +32,7 @@ describe("convênios dos órgãos ambientais de MG", () => {
 
   test("prorrogação é `prazoAtual − prazoOriginal`, nunca negativa", () => {
     const DIA = 86_400_000;
-    for (const c of CONVENIOS_AMBIENTAIS_MG) {
+    for (const c of lerConveniosAmbientaisMg()) {
       expect(c.diasDeProrrogacao).toBeGreaterThanOrEqual(0);
       if (c.prazoOriginal && c.prazoAtual) {
         const esperado = Math.round(
@@ -48,7 +48,7 @@ describe("convênios dos órgãos ambientais de MG", () => {
     // `new Date("2016-12-03")` em UTC-3 vira 02/12 na renderização local. Já
     // mordeu em vigência de contrato neste repo, por isso o coletor monta a
     // data em UTC e serializa o dia direto.
-    for (const c of CONVENIOS_AMBIENTAIS_MG) {
+    for (const c of lerConveniosAmbientaisMg()) {
       for (const campo of ["prazoOriginal", "prazoAtual"] as const) {
         const v = c[campo];
         if (v !== null) expect(v, `${c.id}.${campo}`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
@@ -57,7 +57,7 @@ describe("convênios dos órgãos ambientais de MG", () => {
   });
 
   test("a cobertura literal bate com o array — nada digitado à mão", () => {
-    const A = CONVENIOS_AMBIENTAIS_MG;
+    const A = lerConveniosAmbientaisMg();
     const C = COBERTURA_CONVENIOS_AMBIENTAIS;
     expect(C.convenios).toBe(A.length);
     expect(C.valorTotal).toBeCloseTo(
@@ -74,7 +74,7 @@ describe("convênios dos órgãos ambientais de MG", () => {
   test("a mediana de prorrogação vem só dos prorrogados, não do total", () => {
     // Incluir os 455 que nunca foram prorrogados puxaria a mediana para 0 e
     // faria parecer que prorrogação é exceção rara — quando é quase metade.
-    const dias = CONVENIOS_AMBIENTAIS_MG.filter((c) => c.diasDeProrrogacao > 0)
+    const dias = lerConveniosAmbientaisMg().filter((c) => c.diasDeProrrogacao > 0)
       .map((c) => c.diasDeProrrogacao)
       .sort((a, b) => a - b);
     expect(COBERTURA_CONVENIOS_AMBIENTAIS.medianaDiasDeProrrogacao).toBe(
@@ -93,7 +93,7 @@ describe("convênios dos órgãos ambientais de MG", () => {
   });
 
   test("valores são finitos e não negativos", () => {
-    for (const c of CONVENIOS_AMBIENTAIS_MG) {
+    for (const c of lerConveniosAmbientaisMg()) {
       for (const campo of ["valorTotal", "valorConcedente", "valorContrapartida"] as const) {
         expect(Number.isFinite(c[campo]), `${c.id}.${campo}`).toBe(true);
         expect(c[campo]).toBeGreaterThanOrEqual(0);
@@ -117,7 +117,7 @@ describe("convênios dos órgãos ambientais de MG", () => {
   test("instrumento vazio é vazio, nunca o hífen que a fonte grava", () => {
     // Registros da base antiga trazem "-" em tp_instrumento. Publicar o hífen
     // faria a tela mostrar um tipo de instrumento chamado "-".
-    for (const c of CONVENIOS_AMBIENTAIS_MG) {
+    for (const c of lerConveniosAmbientaisMg()) {
       expect(c.instrumento).not.toBe("-");
     }
   });

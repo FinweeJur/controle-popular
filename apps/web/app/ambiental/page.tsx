@@ -12,7 +12,7 @@ import { COBERTURA_DECISOES_LICENCIAMENTO } from "@/lib/ambiental/decisoes-licen
 import { contarLegislacaoAmbiental } from "@/lib/db/queries/legislacao-ambiental";
 import { contarDireitoCritico } from "@/lib/db/queries/direito-critico";
 import { contarPatrimonioTombado } from "@/lib/db/queries/patrimonio-tombado";
-import { lerEstudos } from "@/lib/ambiental/estudos";
+import { lerEstudos } from "@/lib/ambiental/estudos-dados";
 
 /**
  * Home da zona /ambiental.

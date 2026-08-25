@@ -1,27 +1,58 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { DECISOES_CGE_MG, type DecisaoRecursoCgeMg } from "@/lib/ambiental/decisoes-cge";
+import { useEffect, useMemo, useState } from "react";
+import type { DecisaoRecursoCgeMg } from "@/lib/ambiental/decisoes-cge";
 import { formatNumberBR } from "@/lib/betim/format";
+
+/**
+ * As decisões saíram do bundle e viram asset estático
+ * (`public/data/decisoes-cge.json`) buscado uma vez por sessão �?" mesmo
+ * padrão de `AuditoriaClient.tsx`/`ConveniosClient.tsx`. Motivo: teto de
+ * 3 MiB gzip do Worker Free (10027). Antes de carregar, `null`.
+ */
+let decisoesCache: Promise<DecisaoRecursoCgeMg[]> | null = null;
+
+function buscarDecisoes(): Promise<DecisaoRecursoCgeMg[]> {
+  if (!decisoesCache) {
+    decisoesCache = fetch("/data/decisoes-cge.json").then(
+      (r) => r.json() as Promise<DecisaoRecursoCgeMg[]>
+    );
+  }
+  return decisoesCache;
+}
+
+function useDecisoesCgeMg(): DecisaoRecursoCgeMg[] | null {
+  const [decisoes, setDecisoes] = useState<DecisaoRecursoCgeMg[] | null>(null);
+  useEffect(() => {
+    let vivo = true;
+    buscarDecisoes().then((d) => {
+      if (vivo) setDecisoes(d);
+    });
+    return () => {
+      vivo = false;
+    };
+  }, []);
+  return decisoes;
+}
 
 /**
  * As 753 decisões, filtráveis, com exportação em CSV.
  *
- * ═══ POR QUE ESTE COMPONENTE É DE CLIENTE ═══
+ * �.��.��.� POR QUE ESTE COMPONENTE �? DE CLIENTE �.��.��.�
  *
  * `DECISOES_CGE_MG` é o array individual completo (753 registros). Página de
- * servidor não pode importá-lo — mesma regra e mesma divisão de
+ * servidor não pode importá-lo �?" mesma regra e mesma divisão de
  * `ConveniosClient.tsx` (`/ambiental/convenios`): o array vai para o chunk de
  * cliente, servido como asset estático (teto de 25 MiB), e nunca entra no
  * bundle do Worker (teto de 3 MiB gzip). Ver `docs/ARQUITETURA.md`.
  *
- * ═══ "TIPO" AQUI NÃO É O MESMO "TIPO" DO GRÁFICO ACIMA ═══
+ * �.��.��.� "TIPO" AQUI N�fO �? O MESMO "TIPO" DO GRÁFICO ACIMA �.��.��.�
  *
- * O gráfico e a tabela de `page.tsx` usam `DECISOES_CGE_POR_TIPO_ANO` — a
+ * O gráfico e a tabela de `page.tsx` usam `DECISOES_CGE_POR_TIPO_ANO` �?" a
  * contagem do filtro oficial `ddlTipoDecisao`. Aqui, por registro, o único
  * rótulo disponível é `tipoPasta`: o nome da pasta no link do PDF, presente
  * só na estrutura "antiga" (475 dos 753). `docs/FONTES.md` já mediu que os
- * dois às vezes DISCORDAM no mesmo ano — por isso o filtro abaixo nunca
+ * dois às vezes DISCORDAM no mesmo ano �?" por isso o filtro abaixo nunca
  * chama isso de "tipo oficial", e os registros sem pasta aparecem como "tipo
  * não registrado neste link", nunca escondidos.
  */
@@ -33,7 +64,7 @@ const SEM_TIPO = "__sem_tipo__";
 function normalizar(s: string): string {
   return s
     .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
+    .replace(/[�?-ͯ]/g, "")
     .toLowerCase()
     .trim();
 }
@@ -83,6 +114,7 @@ function baixarCsv(conteudo: string, nomeArquivo: string) {
 }
 
 export default function TabelaDecisoes() {
+  const decisoes = useDecisoesCgeMg();
   const [busca, setBusca] = useState("");
   const [ano, setAno] = useState<string>(TODOS);
   const [tipo, setTipo] = useState<string>(TODOS);
@@ -90,18 +122,18 @@ export default function TabelaDecisoes() {
   const [mostrando, setMostrando] = useState(POR_PAGINA);
 
   const anos = useMemo(
-    () => [...new Set(DECISOES_CGE_MG.map((d) => d.ano))].sort((a, b) => b - a),
-    [],
+    () => [...new Set((decisoes ?? []).map((d) => d.ano))].sort((a, b) => b - a),
+    [decisoes],
   );
   const tipos = useMemo(
     () =>
-      [...new Set(DECISOES_CGE_MG.map((d) => d.tipoPasta).filter((t): t is string => t !== null))].sort(),
-    [],
+      [...new Set((decisoes ?? []).map((d) => d.tipoPasta).filter((t): t is string => t !== null))].sort(),
+    [decisoes],
   );
 
   const filtradas = useMemo(() => {
     const termo = busca.trim() ? normalizar(busca.trim()) : "";
-    return DECISOES_CGE_MG.filter((d) => {
+    return (decisoes ?? []).filter((d) => {
       if (ano !== TODOS && String(d.ano) !== ano) return false;
       if (tipo === SEM_TIPO && d.tipoPasta !== null) return false;
       if (tipo !== TODOS && tipo !== SEM_TIPO && d.tipoPasta !== tipo) return false;
@@ -113,7 +145,7 @@ export default function TabelaDecisoes() {
         (d.seiId ? normalizar(d.seiId).includes(termo) : false)
       );
     });
-  }, [busca, ano, tipo, soQuebrados]);
+  }, [busca, ano, tipo, soQuebrados, decisoes]);
 
   const visiveis = filtradas.slice(0, mostrando);
 
@@ -210,7 +242,7 @@ export default function TabelaDecisoes() {
 
       {filtradas.length === 0 ? (
         <p className="mt-6 rounded-xl border border-border bg-surface px-4 py-6 text-center text-[.92em] text-text-soft">
-          Nenhuma decisão com esses filtros. Vazio aqui é resposta — não quer dizer que a busca
+          Nenhuma decisão com esses filtros. Vazio aqui é resposta �?" não quer dizer que a busca
           falhou.
         </p>
       ) : (

@@ -5,7 +5,7 @@ import {
   type DecisaoLicenciamentoBruta,
   type DecisaoLicenciamentoNegativa,
 } from "@/lib/ambiental/decisoes-licenciamento";
-import bruto from "../../../../../../../etl/betim/dados/decisoes-licenciamento-mg.json";
+import { carregarJsonEtl } from "@/lib/server-only/json-etl";
 
 /**
  * Índice estático fatiado das 9.554 negativas de licenciamento —
@@ -35,7 +35,10 @@ let cache: ArquivoIndice[] | null = null;
 
 function arquivos(): ArquivoIndice[] {
   if (!cache) {
-    const negativasBrutas = (bruto as { negativas: DecisaoLicenciamentoBruta[] }).negativas;
+    const bruto = carregarJsonEtl<{ negativas: DecisaoLicenciamentoBruta[] }>(
+      "decisoes-licenciamento-mg.json"
+    );
+    const negativasBrutas = bruto.negativas;
     const enxutas: DecisaoLicenciamentoNegativa[] = negativasBrutas.map(enxugarNegativa);
     if (enxutas.length < 9000) {
       // Mesma guarda de `agregar-decisoes-licenciamento.mts`: abortar o build

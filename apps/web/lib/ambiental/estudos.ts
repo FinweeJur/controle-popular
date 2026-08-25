@@ -1,5 +1,4 @@
 import { semAcento } from "@/lib/busca/normalizar";
-import dadosEstudos from "../../../../etl/betim/dados/ambiental-estudos.json";
 
 /**
  * Lógica PURA (sem React, sem banco, sem rede) de `/ambiental/estudos` —
@@ -105,7 +104,8 @@ export interface AudienciaEstudo {
   documentos: unknown[];
 }
 
-interface ResumoEstudos {
+/** Exportado para `estudos-dados.ts` (server-only) tipar o envelope lido. */
+export interface ResumoEstudos {
   audiencias: number;
   linhas: number;
   com_arquivo_enumeravel: number;
@@ -156,26 +156,10 @@ export const CLASSE_ESTUDO_LABEL: Record<string, string> = {
   outro: "Outro",
 };
 
-/** Devolve o conteúdo já tipado de `ambiental-estudos.json`. Função (não
- *  constante no topo do módulo) para o mesmo motivo de `lerEnvelope` em
- *  `lib/cultura/salic.ts`: o import do JSON é estático (`resolveJsonModule`,
- *  ver `tsconfig.json`), mas expor por função dá um único lugar para trocar
- *  a fonte no teste ou no futuro sem tocar em quem chama. */
-export function lerEstudos(): {
-  geradoEm: string;
-  fonte: string;
-  linhas: EstudoLinha[];
-  audiencias: AudienciaEstudo[];
-  resumo: ResumoEstudos;
-} {
-  return {
-    geradoEm: dadosEstudos.gerado_em,
-    fonte: dadosEstudos.fonte,
-    linhas: dadosEstudos.linhas as EstudoLinha[],
-    audiencias: dadosEstudos.audiencias as AudienciaEstudo[],
-    resumo: dadosEstudos.resumo as ResumoEstudos,
-  };
-}
+/** `lerEstudos()` mudou para `@/lib/ambiental/estudos-dados` (server-only):
+ *  o JSON de 4,9 MB estourava o teto de 3 MiB gzip do Worker (10027) e
+ *  contaminava o chunk cliente via `BuscaEstudos.tsx`. Tipos e lógica pura
+ *  continuam aqui. */
 
 /** Campo de filtro vazio/`undefined` não filtra nada — mesma convenção de
  *  `FiltroLegislacaoUnificada`. `texto` é O.R. contra vários campos; os
