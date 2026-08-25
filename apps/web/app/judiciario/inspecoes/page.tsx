@@ -5,15 +5,17 @@ import {
   ACHADOS_POR_TEMA,
   ACHADOS_POR_TIPO_UNIDADE,
   COBERTURA_INSPECOES,
-  COBRANCAS_POR_INSPECAO,
   GABINETES_NOMEADOS,
-  ORGAOS_INSPECIONADOS,
   PENDENCIAS_POR_ANO,
   SERIE_TJMG,
-  PENDENCIAS_TJMG,
-  RELATORIOS_TJMG,
   TEMA_ROTULOS,
 } from "@/lib/judiciario/inspecoes-cnj";
+import {
+  COBRANCAS_POR_INSPECAO,
+  ORGAOS_INSPECIONADOS,
+  PENDENCIAS_TJMG,
+  RELATORIOS_TJMG,
+} from "@/lib/judiciario/inspecoes-cnj-dados";
 import TabelaAchados from "./TabelaAchados";
 
 /**

@@ -1,14 +1,44 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { semAcento } from "@/lib/busca/normalizar";
 import { formatNumberBR } from "@/lib/betim/format";
 import { ordenarPor, type Direcao, type TipoCampo } from "@/lib/tabela/ordenar";
 import {
   COBERTURA_CNIEP,
-  ESTABELECIMENTOS_MG,
   type EstabelecimentoPenal,
 } from "@/lib/judiciario/presidios-cniep";
+
+/**
+ * Os estabelecimentos saíram do bundle e viram asset estático
+ * (`public/data/estabelecimentos-mg.json`) buscado uma vez por sessão —
+ * mesmo padrão de `ConveniosClient.tsx`. Motivo: teto de 3 MiB gzip do
+ * Worker Free (erro 10027, 2026-08-24). Antes de carregar, `null`.
+ */
+let presidiosCache: Promise<EstabelecimentoPenal[]> | null = null;
+
+function buscarPresidios(): Promise<EstabelecimentoPenal[]> {
+  if (!presidiosCache) {
+    presidiosCache = fetch("/data/estabelecimentos-mg.json").then(
+      (r) => r.json() as Promise<EstabelecimentoPenal[]>
+    );
+  }
+  return presidiosCache;
+}
+
+function useEstabelecimentosMg(): EstabelecimentoPenal[] | null {
+  const [lista, setLista] = useState<EstabelecimentoPenal[] | null>(null);
+  useEffect(() => {
+    let vivo = true;
+    buscarPresidios().then((d) => {
+      if (vivo) setLista(d);
+    });
+    return () => {
+      vivo = false;
+    };
+  }, []);
+  return lista;
+}
 
 /**
  * Os 285 estabelecimentos penais de Minas Gerais, um a um: filtra, ordena e
@@ -89,20 +119,21 @@ export default function TabelaPresidios() {
     { chave: "nome", direcao: "asc" },
   );
   const [mostrando, setMostrando] = useState(POR_PAGINA);
+  const presidios = useEstabelecimentosMg();
 
-  const listaRamos = useMemo(() => opcoesTexto(ESTABELECIMENTOS_MG.map((e) => e.ramo)), []);
+  const listaRamos = useMemo(() => opcoesTexto((presidios ?? []).map((e) => e.ramo)), [presidios]);
   const listaNaturezas = useMemo(
-    () => opcoesTexto(ESTABELECIMENTOS_MG.map((e) => e.natureza)),
+    () => opcoesTexto((presidios ?? []).map((e) => e.natureza)),
     [],
   );
   const listaInspecoes = useMemo(
-    () => opcoesNumericas(ESTABELECIMENTOS_MG.map((e) => e.inspecoes)),
+    () => opcoesNumericas((presidios ?? []).map((e) => e.inspecoes)),
     [],
   );
 
   const filtradas = useMemo(() => {
     const termo = semAcento(busca.trim().toLowerCase());
-    const base = ESTABELECIMENTOS_MG.filter((e) => {
+    const base = (presidios ?? []).filter((e) => {
       if (ramo && e.ramo !== ramo) return false;
       if (natureza && e.natureza !== natureza) return false;
       if (inspecoes && String(e.inspecoes) !== inspecoes) return false;
@@ -138,7 +169,7 @@ export default function TabelaPresidios() {
   return (
     <section aria-labelledby="tabela-presidios" className="mt-14">
       <h2 id="tabela-presidios" className="font-display text-xl font-bold text-text">
-        Os {formatNumberBR(ESTABELECIMENTOS_MG.length)} estabelecimentos, um a um
+        Os {formatNumberBR((presidios ?? []).length)} estabelecimentos, um a um
       </h2>
       <p className="mt-2 max-w-3xl text-[.92em] leading-relaxed text-text-soft">
         Cada linha é um estabelecimento penal cadastrado no Geopresídios do CNJ, com o número de
@@ -233,7 +264,7 @@ export default function TabelaPresidios() {
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <p className="text-[.9em] text-text-soft" aria-live="polite">
           <strong className="text-text">{formatNumberBR(filtradas.length)}</strong> de{" "}
-          {formatNumberBR(ESTABELECIMENTOS_MG.length)} estabelecimentos
+          {formatNumberBR((presidios ?? []).length)} estabelecimentos
         </p>
         <button
           type="button"

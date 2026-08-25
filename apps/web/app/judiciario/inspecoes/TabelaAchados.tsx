@@ -1,15 +1,45 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { semAcento } from "@/lib/busca/normalizar";
 import { formatNumberBR } from "@/lib/betim/format";
 import { ordenarPor, type Direcao, type TipoCampo } from "@/lib/tabela/ordenar";
 import {
-  ACHADOS_TJMG,
   TEMA_ROTULOS,
   COBERTURA_INSPECOES,
   type AchadoInspecao,
 } from "@/lib/judiciario/inspecoes-cnj";
+
+/**
+ * Os achados saíram do bundle e viram asset estático
+ * (`public/data/achados-tjmg.json`) buscado uma vez por sessão — mesmo
+ * padrão de `ConveniosClient.tsx`. Motivo: teto de 3 MiB gzip do Worker
+ * Free (erro 10027, 2026-08-24). Antes de carregar, `null`.
+ */
+let achadosCache: Promise<AchadoInspecao[]> | null = null;
+
+function buscarAchados(): Promise<AchadoInspecao[]> {
+  if (!achadosCache) {
+    achadosCache = fetch("/data/achados-tjmg.json")
+      .then((r) => r.json() as Promise<{ ACHADOS_TJMG: AchadoInspecao[] }>)
+      .then((d) => d.ACHADOS_TJMG);
+  }
+  return achadosCache;
+}
+
+function useAchadosTjmg(): AchadoInspecao[] | null {
+  const [achados, setAchados] = useState<AchadoInspecao[] | null>(null);
+  useEffect(() => {
+    let vivo = true;
+    buscarAchados().then((d) => {
+      if (vivo) setAchados(d);
+    });
+    return () => {
+      vivo = false;
+    };
+  }, []);
+  return achados;
+}
 
 /**
  * As seções com achado do relatório de inspeção do TJMG, uma a uma: filtra,
@@ -119,17 +149,18 @@ export default function TabelaAchados() {
     direcao: "desc",
   });
   const [mostrando, setMostrando] = useState(POR_PAGINA);
+  const achados = useAchadosTjmg();
 
-  const listaTipos = useMemo(() => opcoes(ACHADOS_TJMG.map((l) => l.tipo)), []);
-  const listaComarcas = useMemo(() => opcoes(ACHADOS_TJMG.map((l) => l.comarca)), []);
+  const listaTipos = useMemo(() => opcoes((achados ?? []).map((l) => l.tipo)), [achados]);
+  const listaComarcas = useMemo(() => opcoes((achados ?? []).map((l) => l.comarca)), [achados]);
   const listaTemas = useMemo(
-    () => opcoes(ACHADOS_TJMG.flatMap((l) => l.temas)),
-    [],
+    () => opcoes((achados ?? []).flatMap((l) => l.temas)),
+    [achados],
   );
 
   const filtradas = useMemo(() => {
     const termo = semAcento(busca.trim().toLowerCase());
-    const base = ACHADOS_TJMG.filter((l) => {
+    const base = (achados ?? []).filter((l) => {
       if (tipo && l.tipo !== tipo) return false;
       if (comarca && l.comarca !== comarca) return false;
       if (secao && l.tipoSecao !== secao) return false;
@@ -140,7 +171,7 @@ export default function TabelaAchados() {
     if (!ordem) return base;
     const def = COLUNAS.find((c) => c.chave === ordem.chave);
     return ordenarPor(base, ordem.chave, ordem.direcao, def?.tipo ?? "texto");
-  }, [busca, tipo, comarca, secao, tema, ordem]);
+  }, [busca, tipo, comarca, secao, tema, ordem, achados]);
 
   const visiveis = filtradas.slice(0, mostrando);
 
@@ -167,7 +198,7 @@ export default function TabelaAchados() {
   return (
     <section aria-labelledby="tabela-achados" className="mt-10">
       <h2 id="tabela-achados" className="font-display text-xl font-bold text-text">
-        As {formatNumberBR(ACHADOS_TJMG.length)} seções com achado, uma a uma
+        As {formatNumberBR((achados ?? []).length)} seções com achado, uma a uma
       </h2>
       <p className="mt-2 max-w-3xl text-[.92em] leading-relaxed text-text-soft">
         Cada linha é uma seção do relatório em que a equipe de inspeção registrou algo. O texto
@@ -239,7 +270,7 @@ export default function TabelaAchados() {
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <p className="text-[.9em] text-text-soft" aria-live="polite">
           <strong className="text-text">{formatNumberBR(filtradas.length)}</strong> de{" "}
-          {formatNumberBR(ACHADOS_TJMG.length)} seções
+          {formatNumberBR((achados ?? []).length)} seções
         </p>
         <button
           type="button"
