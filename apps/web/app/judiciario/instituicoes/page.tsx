@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { metadataEditavel } from "@/lib/edicoes";
-import { COBERTURA_INSPECOES, RELATORIOS_TJMG } from "@/lib/judiciario/inspecoes-cnj";
+import { COBERTURA_INSPECOES } from "@/lib/judiciario/inspecoes-cnj";
+import { RELATORIOS_TJMG } from "@/lib/judiciario/inspecoes-cnj-dados";
 import { COBERTURA_TRT3 } from "@/lib/judiciario/correicoes-trt3";
 import { COBERTURA_CNIEP } from "@/lib/judiciario/presidios-cniep";
 import { COBERTURA_DEFENSORIA } from "@/lib/judiciario/defensoria-mg";

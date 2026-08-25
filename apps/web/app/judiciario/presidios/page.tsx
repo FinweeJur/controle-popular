@@ -3,10 +3,13 @@ import { formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import {
   COBERTURA_CNIEP,
-  ESTABELECIMENTOS_MG,
   PRESIDIOS_POR_RAMO,
   TEMAS_INSPECAO,
 } from "@/lib/judiciario/presidios-cniep";
+import { lerEstabelecimentosMg } from "@/lib/judiciario/presidios-cniep-dados";
+
+/** Sinônimo — o dado agora vive no loader server-only. */
+const ESTABELECIMENTOS_MG = lerEstabelecimentosMg();
 import TabelaPresidios from "./TabelaPresidios";
 
 /**
