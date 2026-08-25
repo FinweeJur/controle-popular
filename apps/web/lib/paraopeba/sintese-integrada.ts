@@ -6,7 +6,10 @@ import {
 import { bibliotecaAti, type AtiBiblioteca, type ItemBiblioteca } from "./biblioteca";
 import { CASAMENTOS_ESTUDO_NOTICIA, type CasamentoEstudoNoticia, type DocumentoCasado } from "./estudo-e-noticia";
 import { ESTUDOS_PERICIA_COM_TEMA, RESULTADOS_PERICIA, type EstudoPericiaComTema } from "./pericia-ufmg";
-import { SINTESE_AJRI } from "./sintese-ajri";
+import { lerSinteseAjri } from "./sintese-ajri-dados";
+
+/** Sinônimo — dado agora no loader server-only. */
+const SINTESE_AJRI = lerSinteseAjri();
 import { temasAjriDoItemBiblioteca } from "./temas-ati";
 
 /**

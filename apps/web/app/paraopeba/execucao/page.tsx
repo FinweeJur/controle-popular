@@ -8,6 +8,8 @@ import {
   PROJETOS_EXECUCAO_FGV,
   PROJETOS_ESPECIAIS_FGV,
   STATUS_PROJETOS_FGV,
+} from "@/lib/paraopeba/execucao-fgv-dados";
+import {
   REFERENCIA_EXECUCAO_FGV,
   TOTAL_EXECUCAO_FGV,
 } from "@/lib/paraopeba/execucao-fgv";

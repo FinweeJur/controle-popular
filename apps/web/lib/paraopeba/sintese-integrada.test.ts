@@ -3,7 +3,10 @@ import { describe, expect, test } from "vitest";
 import { TEMA_AJRI_ORDEM } from "./auditoria-ajri";
 import { bibliotecaAti } from "./biblioteca";
 import { CASAMENTOS_ESTUDO_NOTICIA } from "./estudo-e-noticia";
-import { SINTESE_AJRI } from "./sintese-ajri";
+import { lerSinteseAjri } from "./sintese-ajri-dados";
+
+/** Sinônimo — dado agora no loader server-only. */
+const SINTESE_AJRI = lerSinteseAjri();
 import {
   EIXO_PARA_TEMA_AJRI,
   ESTUDO_AUSENTE_DO_ACERVO,

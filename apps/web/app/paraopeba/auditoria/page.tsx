@@ -11,7 +11,10 @@ import {
   TIPO_DOCUMENTO_AJRI_ORDEM,
 } from "@/lib/paraopeba/auditoria-ajri";
 import { COBERTURA_RESUMO_AJRI } from "@/lib/paraopeba/resumo-ajri";
-import { SINTESE_AJRI } from "@/lib/paraopeba/sintese-ajri";
+import { lerSinteseAjri } from "@/lib/paraopeba/sintese-ajri-dados";
+
+/** Sinônimo para os usos abaixo — o dado agora vive no loader server-only. */
+const SINTESE_AJRI = lerSinteseAjri();
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import AuditoriaClient from "./AuditoriaClient";
 import { metadataEditavel } from "@/lib/edicoes";
