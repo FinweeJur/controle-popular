@@ -72,8 +72,10 @@ import { similaridadeCosseno } from "./similaridade";
 // `process.cwd()` mediu errado em worktree (saiu em `.claude/` ao inves da raiz
 // do checkout). `import.meta.dirname` segue o arquivo, nao o processo — sobe
 // 5 niveis de `apps/web/lib/assistente/embeddings/` ate a raiz do repo.
+// NOTA: `import.meta.dirname` pode ser undefined durante `next build` (coleta
+// de paginas); usamos `process.cwd()` como fallback seguro.
 const CAMINHO_LEGISLACAO_MMA = path.resolve(
-  import.meta.dirname,
+  import.meta.dirname ?? process.cwd(),
   "..",
   "..",
   "..",
