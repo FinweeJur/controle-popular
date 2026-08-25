@@ -5,7 +5,7 @@ import {
   SECAO_PERICIA_ORDEM,
   type EstudoPericiaComTema,
   type SecaoPericia,
-} from "@/lib/paraopeba/pericia-ufmg";
+} from "@/lib/paraopeba/pericia-rotulos";
 
 /**
  * Navegação do acervo da perícia: busca por nome e filtro por seção.

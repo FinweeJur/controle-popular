@@ -1,12 +1,12 @@
 import { describe, expect, test } from "vitest";
 
 import {
-  AUDITORIA_AJRI,
   INSTRUMENTO_AJRI_ORDEM,
   TEMA_AJRI_LABEL,
   TEMA_AJRI_ORDEM,
   TIPO_DOCUMENTO_AJRI_ORDEM,
 } from "./auditoria-ajri";
+import { lerAuditoriaAjri } from "./auditoria-ajri-dados";
 import {
   GLOSA_DISCIPLINA_AJRI,
   GLOSA_INSTRUMENTO_AJRI,
@@ -18,6 +18,8 @@ import {
   numeroDoRelatorioAjri,
   periodoExaminadoAjri,
 } from "./ficha-legivel-ajri";
+
+const AUDITORIA_AJRI = lerAuditoriaAjri();
 
 /**
  * Contrato da ficha legível dos 467 documentos da auditoria (AJRI).

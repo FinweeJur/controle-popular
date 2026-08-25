@@ -19,7 +19,6 @@ import {
 import { COBERTURA_CLIPPING_ATI, CLIPPING_ATI } from "./clipping-ati";
 import { DOCUMENTOS_PROCESSO, COBERTURA_DOCUMENTOS_PROCESSO } from "./documentos";
 import {
-  AUDITORIA_AJRI,
   AUTOR_AUDITORIA_AJRI,
   COBERTURA_AUDITORIA_AJRI,
   FONTE_AUDITORIA_AJRI,
@@ -33,17 +32,17 @@ import {
   TIPO_DOCUMENTO_AJRI_ORDEM,
   urlDocumentoAjri,
 } from "./auditoria-ajri";
-import {
-  COBERTURA_EXECUCAO_FGV,
-  MUNICIPIOS_EXECUCAO_FGV,
-  STATUS_PROJETOS_FGV,
-} from "./execucao-fgv";
+import { lerAuditoriaAjri } from "./auditoria-ajri-dados";
+import { COBERTURA_EXECUCAO_FGV } from "./execucao-fgv";
+import { MUNICIPIOS_EXECUCAO_FGV, STATUS_PROJETOS_FGV } from "./execucao-fgv-dados";
 import {
   COBERTURA_RESUMO_AJRI,
-  RESUMO_AJRI,
   VEREDITO_AJRI_LABEL,
   type VereditoAjri,
 } from "./resumo-ajri";
+import { lerResumosAjri } from "./resumo-ajri-dados";
+
+const AUDITORIA_AJRI = lerAuditoriaAjri();
 
 /**
  * `clipping.ts`, `linha-do-tempo.ts`, `atores.ts` e `auxilio.ts` foram
@@ -524,21 +523,21 @@ describe("auditoria-ajri.ts — catálogo da auditoria independente (467 documen
  */
 describe("resumo-ajri.ts — resumos em linguagem comum (337 medidos)", () => {
   test("tem exatamente 337 resumos, e a cobertura literal bate com o catálogo", () => {
-    expect(Object.keys(RESUMO_AJRI).length).toBe(337);
-    expect(Object.keys(RESUMO_AJRI).length).toBe(COBERTURA_RESUMO_AJRI.total);
+    expect(Object.keys(lerResumosAjri()).length).toBe(337);
+    expect(Object.keys(lerResumosAjri()).length).toBe(COBERTURA_RESUMO_AJRI.total);
     expect(COBERTURA_RESUMO_AJRI.semResumo).toBe(AUDITORIA_AJRI.length - 337);
   });
 
   test("todo resumo existe no catálogo, e a chave é o código do documento", () => {
     const codigos = new Set(AUDITORIA_AJRI.map((d) => d.codigo));
-    for (const [chave, r] of Object.entries(RESUMO_AJRI)) {
+    for (const [chave, r] of Object.entries(lerResumosAjri())) {
       expect(codigos.has(chave), `resumo órfão: ${chave}`).toBe(true);
       expect(r.codigo, `chave ≠ codigo interno em ${chave}`).toBe(chave);
     }
   });
 
   test("veredito afirmado tem citação; não-declarado nunca tem", () => {
-    for (const r of Object.values(RESUMO_AJRI)) {
+    for (const r of Object.values(lerResumosAjri())) {
       const declarado = r.veredito !== "nao-declarado";
       expect(Boolean(r.citacao), `veredito ${r.veredito} de ${r.codigo} sem citação`).toBe(
         declarado
@@ -547,7 +546,7 @@ describe("resumo-ajri.ts — resumos em linguagem comum (337 medidos)", () => {
   });
 
   test("todo resumo tem de 3 a 6 blocos, cada um com título e texto", () => {
-    for (const r of Object.values(RESUMO_AJRI)) {
+    for (const r of Object.values(lerResumosAjri())) {
       expect(r.resumo.length, `${r.codigo} com ${r.resumo.length} blocos`).toBeGreaterThanOrEqual(3);
       expect(r.resumo.length, `${r.codigo} com ${r.resumo.length} blocos`).toBeLessThanOrEqual(6);
       for (const b of r.resumo) {
@@ -558,7 +557,7 @@ describe("resumo-ajri.ts — resumos em linguagem comum (337 medidos)", () => {
   });
 
   test("todo veredito usado tem rótulo, e todo rótulo tem documento", () => {
-    const usados = new Set(Object.values(RESUMO_AJRI).map((r) => r.veredito));
+    const usados = new Set(Object.values(lerResumosAjri()).map((r) => r.veredito));
     for (const v of usados) expect(VEREDITO_AJRI_LABEL[v], `rótulo órfão: ${v}`).toBeTruthy();
     for (const v of Object.keys(VEREDITO_AJRI_LABEL) as VereditoAjri[]) {
       expect(usados.has(v), `rótulo ${v} sem documento`).toBe(true);
@@ -566,7 +565,7 @@ describe("resumo-ajri.ts — resumos em linguagem comum (337 medidos)", () => {
   });
 
   test("periodo: `de` é sempre ISO; `ate` é ISO ou null (nunca o contrário)", () => {
-    for (const r of Object.values(RESUMO_AJRI)) {
+    for (const r of Object.values(lerResumosAjri())) {
       if (r.periodo === null) continue;
       expect(r.periodo.de, `${r.codigo}: de inválido`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       if (r.periodo.ate !== null) {
@@ -585,7 +584,7 @@ describe("resumo-ajri.ts — resumos em linguagem comum (337 medidos)", () => {
    * Medido em 20/08/2026: 2.091.557 bytes serializados (350 KiB em gzip).
    */
   test("o texto dos resumos fica entre 1,5 e 3,5 MiB — nem cortado, nem dobrado", () => {
-    const bytes = new TextEncoder().encode(JSON.stringify(RESUMO_AJRI)).length;
+    const bytes = new TextEncoder().encode(JSON.stringify(lerResumosAjri())).length;
     expect(bytes).toBeLessThan(3_500_000);
     expect(bytes).toBeGreaterThan(1_500_000);
   });
