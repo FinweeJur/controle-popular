@@ -1,9 +1,40 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { CONVENIOS_AMBIENTAIS_MG, type ConvenioAmbientalMg } from "@/lib/ambiental/convenios-mg";
+import { useEffect, useMemo, useState } from "react";
+import type { ConvenioAmbientalMg } from "@/lib/ambiental/convenios-mg";
 import { formatCurrencyCompactaBR, formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { semAcento } from "@/lib/busca/normalizar";
+
+/**
+ * A lista saiu do bundle e virou asset estático (`public/data/
+ * convenios-ambientais-mg.json`) buscado uma vez por sessão — mesmo padrão
+ * de `AuditoriaClient.tsx` com os resumos da AJRI. Motivo: teto de 3 MiB
+ * gzip do Worker Free (erro 10027, 2026-08-24). Antes de carregar, `null`.
+ */
+let conveniosCache: Promise<ConvenioAmbientalMg[]> | null = null;
+
+function buscarConvenios(): Promise<ConvenioAmbientalMg[]> {
+  if (!conveniosCache) {
+    conveniosCache = fetch("/data/convenios-ambientais-mg.json").then(
+      (r) => r.json() as Promise<ConvenioAmbientalMg[]>
+    );
+  }
+  return conveniosCache;
+}
+
+function useConveniosAmbientaisMg(): ConvenioAmbientalMg[] | null {
+  const [convenios, setConvenios] = useState<ConvenioAmbientalMg[] | null>(null);
+  useEffect(() => {
+    let vivo = true;
+    buscarConvenios().then((d) => {
+      if (vivo) setConvenios(d);
+    });
+    return () => {
+      vivo = false;
+    };
+  }, []);
+  return convenios;
+}
 
 /**
  * A lista dos 870 convênios, filtrável.
@@ -122,6 +153,7 @@ const HACHURA_PRORROGADOS =
   "repeating-linear-gradient(45deg, var(--color-ord-2) 0 3px, var(--color-surface) 3px 4px)";
 
 export default function ConveniosClient() {
+  const convenios = useConveniosAmbientaisMg();
   const [busca, setBusca] = useState("");
   const [orgao, setOrgao] = useState("");
   const [soProrrogados, setSoProrrogados] = useState(false);
@@ -129,13 +161,13 @@ export default function ConveniosClient() {
   const [mostrando, setMostrando] = useState(POR_PAGINA);
 
   const orgaos = useMemo(
-    () => [...new Set(CONVENIOS_AMBIENTAIS_MG.map((c) => c.orgao))].sort(),
-    [],
+    () => [...new Set((convenios ?? []).map((c) => c.orgao))].sort(),
+    [convenios],
   );
 
   const filtrados = useMemo(() => {
     const termo = semAcento(busca.trim().toLowerCase());
-    const lista = CONVENIOS_AMBIENTAIS_MG.filter((c) => {
+    const lista = (convenios ?? []).filter((c) => {
       if (orgao && c.orgao !== orgao) return false;
       if (soProrrogados && c.diasDeProrrogacao === 0) return false;
       if (!termo) return true;
@@ -152,7 +184,7 @@ export default function ConveniosClient() {
       ano: (a, b) => b.ano - a.ano,
     };
     return [...lista].sort(por[ordem]);
-  }, [busca, orgao, soProrrogados, ordem]);
+  }, [busca, orgao, soProrrogados, ordem, convenios]);
 
   const visiveis = filtrados.slice(0, mostrando);
 

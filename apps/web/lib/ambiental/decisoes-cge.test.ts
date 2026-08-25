@@ -1,9 +1,9 @@
 import { describe, expect, test } from "vitest";
 import {
   COBERTURA_DECISOES_CGE,
-  DECISOES_CGE_MG,
   DECISOES_CGE_POR_TIPO_ANO,
 } from "./decisoes-cge";
+import { lerDecisoesCgeMg } from "./decisoes-cge-dados";
 
 /**
  * `decisoes-cge.ts` é GERADO por `scripts/coletar-decisoes-cge-mg.mts` a
@@ -33,7 +33,7 @@ describe("decisões de recurso de LAI da CGE-MG", () => {
     // é indireto: se o coletor tivesse usado N como contagem de páginas (ou
     // ficado preso relendo a página 1), a contagem por ano bateria errado.
     for (const anoInfo of DECISOES_CGE_POR_TIPO_ANO) {
-      const doAno = DECISOES_CGE_MG.filter((d) => d.ano === anoInfo.ano);
+      const doAno = lerDecisoesCgeMg().filter((d) => d.ano === anoInfo.ano);
       expect(doAno.length, `ano ${anoInfo.ano}`).toBe(anoInfo.total);
     }
   });
@@ -78,15 +78,15 @@ describe("decisões de recurso de LAI da CGE-MG", () => {
     // orgaoSigla e tipoPasta vêm da MESMA detecção estrutural do link; um sem
     // o outro seria contraditório (a pasta ou tem os dois segmentos, ou não
     // tem nenhum).
-    for (const d of DECISOES_CGE_MG) {
+    for (const d of lerDecisoesCgeMg()) {
       if (d.orgaoSigla !== null) expect(d.tipoPasta, d.arquivo).not.toBeNull();
       if (d.tipoPasta !== null) expect(d.orgaoSigla, d.arquivo).not.toBeNull();
     }
-    const comPasta = DECISOES_CGE_MG.filter((d) => d.orgaoSigla !== null).length;
+    const comPasta = lerDecisoesCgeMg().filter((d) => d.orgaoSigla !== null).length;
     expect(comPasta).toBe(COBERTURA_DECISOES_CGE.registrosComOrgaoETipoNaPasta);
     // 2020, 2021 e 2026 são 100% estrutura antiga (medido); 2022-2025 são mistos.
     for (const ano of [2020, 2021, 2026]) {
-      const doAno = DECISOES_CGE_MG.filter((d) => d.ano === ano);
+      const doAno = lerDecisoesCgeMg().filter((d) => d.ano === ano);
       expect(doAno.every((d) => d.orgaoSigla !== null), `ano ${ano}`).toBe(true);
     }
   });
@@ -97,15 +97,15 @@ describe("decisões de recurso de LAI da CGE-MG", () => {
     // URLs da estrutura antiga devolveram HTTP 200. O sinal aqui é inferido
     // do padrão da URL, não verificado registro a registro — por isso o nome
     // do campo é "provavelmente", não "confirmado".
-    for (const d of DECISOES_CGE_MG) {
+    for (const d of lerDecisoesCgeMg()) {
       expect(d.linkProvavelmenteQuebrado, d.arquivo).toBe(d.url.includes("App_Data"));
     }
-    const quebrados = DECISOES_CGE_MG.filter((d) => d.linkProvavelmenteQuebrado).length;
+    const quebrados = lerDecisoesCgeMg().filter((d) => d.linkProvavelmenteQuebrado).length;
     expect(quebrados).toBe(COBERTURA_DECISOES_CGE.registrosComLinkProvavelmenteQuebrado);
     expect(quebrados).toBeGreaterThan(0);
     // A estrutura antiga nunca devolveu 404 na amostra — nenhum registro com
     // órgão/tipo na pasta deveria estar marcado como quebrado.
-    for (const d of DECISOES_CGE_MG) {
+    for (const d of lerDecisoesCgeMg()) {
       if (d.orgaoSigla !== null) expect(d.linkProvavelmenteQuebrado, d.arquivo).toBe(false);
     }
   });
@@ -115,7 +115,7 @@ describe("decisões de recurso de LAI da CGE-MG", () => {
     // raiz da aplicação (`/sistema/Downloads\...`). Testado ao vivo: SEM o
     // prefixo, até a estrutura antiga (que normalmente devolve 200) cai para
     // 404 direto.
-    for (const d of DECISOES_CGE_MG) {
+    for (const d of lerDecisoesCgeMg()) {
       expect(d.url.startsWith("https://www.acessoainformacao.mg.gov.br/sistema/"), d.arquivo).toBe(
         true,
       );
@@ -126,13 +126,13 @@ describe("decisões de recurso de LAI da CGE-MG", () => {
     // A fonte manda o separador do Windows (`\`) no atributo href — se o
     // coletor esquecesse de normalizar, o link ficaria tecnicamente inválido
     // como caminho de URL.
-    for (const d of DECISOES_CGE_MG) {
+    for (const d of lerDecisoesCgeMg()) {
       expect(d.url.includes("\\"), d.arquivo).toBe(false);
     }
   });
 
   test("seiId, quando presente, é só dígitos e vem do nome do arquivo", () => {
-    for (const d of DECISOES_CGE_MG) {
+    for (const d of lerDecisoesCgeMg()) {
       if (d.seiId !== null) {
         expect(d.seiId, d.arquivo).toMatch(/^\d+$/);
         expect(d.arquivo.startsWith(`SEI_${d.seiId}_`), d.arquivo).toBe(true);
@@ -141,7 +141,7 @@ describe("decisões de recurso de LAI da CGE-MG", () => {
   });
 
   test("a cobertura literal bate com o array e com o por-tipo-ano — nada digitado à mão", () => {
-    expect(COBERTURA_DECISOES_CGE.totalGeral).toBe(DECISOES_CGE_MG.length);
+    expect(COBERTURA_DECISOES_CGE.totalGeral).toBe(lerDecisoesCgeMg().length);
     expect(COBERTURA_DECISOES_CGE.totalGeral).toBe(
       DECISOES_CGE_POR_TIPO_ANO.reduce((t, a) => t + a.total, 0),
     );
@@ -151,10 +151,10 @@ describe("decisões de recurso de LAI da CGE-MG", () => {
     expect(COBERTURA_DECISOES_CGE.totalSemTipoOficial).toBe(
       COBERTURA_DECISOES_CGE.totalGeral - COBERTURA_DECISOES_CGE.totalComTipoOficial,
     );
-    expect(COBERTURA_DECISOES_CGE.anoInicial).toBe(Math.min(...DECISOES_CGE_MG.map((d) => d.ano)));
-    expect(COBERTURA_DECISOES_CGE.anoFinal).toBe(Math.max(...DECISOES_CGE_MG.map((d) => d.ano)));
+    expect(COBERTURA_DECISOES_CGE.anoInicial).toBe(Math.min(...lerDecisoesCgeMg().map((d) => d.ano)));
+    expect(COBERTURA_DECISOES_CGE.anoFinal).toBe(Math.max(...lerDecisoesCgeMg().map((d) => d.ano)));
     // 7 anos, 2020 a 2026, sem buraco.
-    const anos = new Set(DECISOES_CGE_MG.map((d) => d.ano));
+    const anos = new Set(lerDecisoesCgeMg().map((d) => d.ano));
     expect(anos.size).toBe(7);
   });
 
@@ -166,7 +166,7 @@ describe("decisões de recurso de LAI da CGE-MG", () => {
   });
 
   test("nenhum arquivo ou órgão vem vazio quando o campo não é null", () => {
-    for (const d of DECISOES_CGE_MG) {
+    for (const d of lerDecisoesCgeMg()) {
       expect(d.arquivo.length, JSON.stringify(d)).toBeGreaterThan(0);
       if (d.orgaoSigla !== null) expect(d.orgaoSigla.length).toBeGreaterThan(0);
       if (d.tipoPasta !== null) expect(d.tipoPasta.length).toBeGreaterThan(0);

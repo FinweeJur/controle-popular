@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { formatNumberBR } from "@/lib/betim/format";
-import { lerEstudos, REPOSITORIO_LABEL, CLASSE_ESTUDO_LABEL } from "@/lib/ambiental/estudos";
+import { lerEstudos } from "@/lib/ambiental/estudos-dados";
+import { REPOSITORIO_LABEL, CLASSE_ESTUDO_LABEL } from "@/lib/ambiental/estudos";
 import { metadataEditavel } from "@/lib/edicoes";
 import BuscaEstudos from "./BuscaEstudos";
 

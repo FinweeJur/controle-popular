@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { arquivosDoIndice, arquivosDeIndiceVazio, type ArquivoIndice } from "@/lib/estatico/emitir";
-import { lerEstudos } from "@/lib/ambiental/estudos";
+import { lerEstudos } from "@/lib/ambiental/estudos-dados";
 
 /**
  * Índice estático fatiado de `/ambiental/estudos` — `manifesto.json` +
