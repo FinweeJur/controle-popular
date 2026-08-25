@@ -1,34 +1,34 @@
 #!/usr/bin/env python3
 """
-Barra dado pessoal e segredo antes de sair da máquina.
+Barra dado pessoal e segredo antes de sair da mÃ¡quina.
 
-═══ POR QUE ESTE ARQUIVO EXISTE ═══
+â•â•â• POR QUE ESTE ARQUIVO EXISTE â•â•â•
 
-Em 13/08/2026 uma varredura achou SEIS CPF de pessoa real, válidos por mod-11,
-já publicados no `origin/main` de um repositório PÚBLICO. Quatro deles moravam
-no comentário que documenta a função que remove CPF: alguém mediu o vazamento
-na base real, colou o exemplo verdadeiro para justificar a proteção, e o
+Em 13/08/2026 uma varredura achou SEIS CPF de pessoa real, vÃ¡lidos por mod-11,
+jÃ¡ publicados no `origin/main` de um repositÃ³rio PÃšBLICO. Quatro deles moravam
+no comentÃ¡rio que documenta a funÃ§Ã£o que remove CPF: alguÃ©m mediu o vazamento
+na base real, colou o exemplo verdadeiro para justificar a proteÃ§Ã£o, e o
 exemplo virou o vazamento.
 
-O projeto já tinha defesa em profundidade — lista branca de colunas na
-exportação, `PROIBIDOS` barrando nome de autuado, `_sanitizar_nome` no coletor.
-Todas no caminho do DADO. Nenhuma olhava para CÓDIGO-FONTE, e foi por ali que
+O projeto jÃ¡ tinha defesa em profundidade â€” lista branca de colunas na
+exportaÃ§Ã£o, `PROIBIDOS` barrando nome de autuado, `_sanitizar_nome` no coletor.
+Todas no caminho do DADO. Nenhuma olhava para CÃ“DIGO-FONTE, e foi por ali que
 vazou.
 
-═══ POR QUE EM PYTHON, E NÃO NO TESTE DO PORTAL ═══
+â•â•â• POR QUE EM PYTHON, E NÃƒO NO TESTE DO PORTAL â•â•â•
 
 Existe um teste equivalente em `apps/web/lib/sem-cpf-no-repo.test.ts`, mas ele
-só roda no `npm test` do portal. Este script é o mesmo guarda em forma
-portátil: sem dependência, roda com o Python que as duas máquinas já têm, e
-serve para QUALQUER repositório do projeto — inclusive o `terras-devolutas`,
-que não tem Node.
+sÃ³ roda no `npm test` do portal. Este script Ã© o mesmo guarda em forma
+portÃ¡til: sem dependÃªncia, roda com o Python que as duas mÃ¡quinas jÃ¡ tÃªm, e
+serve para QUALQUER repositÃ³rio do projeto â€” inclusive o `terras-devolutas`,
+que nÃ£o tem Node.
 
-Ele é chamado pelo hook de pre-push (`.githooks/pre-push`) e pela CI. O hook
+Ele Ã© chamado pelo hook de pre-push (`.githooks/pre-push`) e pela CI. O hook
 protege quem esquece; a CI protege quem pulou o hook.
 
 Uso:
-    python scripts/checar-dado-pessoal.py           # varre o que está rastreado
-    python scripts/checar-dado-pessoal.py --staged  # só o que está no index
+    python scripts/checar-dado-pessoal.py           # varre o que estÃ¡ rastreado
+    python scripts/checar-dado-pessoal.py --staged  # sÃ³ o que estÃ¡ no index
 
 Sai com 1 se achar. A mensagem diz o arquivo, a linha e o valor.
 """
@@ -44,10 +44,10 @@ import sys
 # ---------------------------------------------------------------------------
 # O que se varre
 #
-# Só o que é ESCRITO À MÃO. Dado coletado de fonte pública (.geojson, .csv, os
-# dumps) tem regra própria no pipeline, e varrer megabyte de dado a cada push
-# tornaria o hook lento a ponto de alguém desligá-lo — que é o pior resultado
-# possível para um guarda.
+# SÃ³ o que Ã© ESCRITO Ã€ MÃƒO. Dado coletado de fonte pÃºblica (.geojson, .csv, os
+# dumps) tem regra prÃ³pria no pipeline, e varrer megabyte de dado a cada push
+# tornaria o hook lento a ponto de alguÃ©m desligÃ¡-lo â€” que Ã© o pior resultado
+# possÃ­vel para um guarda.
 # ---------------------------------------------------------------------------
 EXTENSOES = ["*.py", "*.ts", "*.tsx", "*.js", "*.mjs", "*.jsx",
              "*.md", "*.sql", "*.json", "*.yml", "*.yaml", "*.sh", "*.html"]
@@ -58,18 +58,18 @@ EXCLUIR = [
     ":!**/.open-next/**", ":!out/**", ":!dist/**", ":!**/busca-indice/**",
 ]
 
-# `[0-9]` e NÃO `\d`: `git grep -E` é POSIX ERE e não conhece `\d`. A primeira
-# versão do teste irmão usava `\d`, casava zero, e passava verde com CPF real
-# no repositório. Guarda cego é pior que guarda nenhum.
+# `[0-9]` e NÃƒO `\d`: `git grep -E` Ã© POSIX ERE e nÃ£o conhece `\d`. A primeira
+# versÃ£o do teste irmÃ£o usava `\d`, casava zero, e passava verde com CPF real
+# no repositÃ³rio. Guarda cego Ã© pior que guarda nenhum.
 RE_CPF = r"\b[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}\b|\b[0-9]{11}\b"
 
-# Segredo. Cada padrão é de credencial que só existe em UMA forma — evita o
-# ruído de bater em `process.env.X`, `${{ secrets.Y }}` e placeholder.
-# ⚠️ POSIX ERE, não PCRE. `git grep -E` NÃO aceita `(?:...)` nem `(?!...)`:
+# Segredo. Cada padrÃ£o Ã© de credencial que sÃ³ existe em UMA forma â€” evita o
+# ruÃ­do de bater em `process.env.X`, `${{ secrets.Y }}` e placeholder.
+# âš ï¸ POSIX ERE, nÃ£o PCRE. `git grep -E` NÃƒO aceita `(?:...)` nem `(?!...)`:
 # rejeita a linha inteira com "Invalid preceding regular expression", e a
-# varredura daquele padrão morre em silêncio para quem só olha o exit code. A
-# primeira versão deste arquivo usava os dois. Filtro que precisaria de
-# lookahead se faz em Python, depois — ver `achar_segredo`.
+# varredura daquele padrÃ£o morre em silÃªncio para quem sÃ³ olha o exit code. A
+# primeira versÃ£o deste arquivo usava os dois. Filtro que precisaria de
+# lookahead se faz em Python, depois â€” ver `achar_segredo`.
 SEGREDOS = [
     (r"\bsk-[A-Za-z0-9_-]{20,}", "chave de API estilo OpenAI"),
     (r"\bgh[pousr]_[A-Za-z0-9]{30,}", "token do GitHub"),
@@ -77,50 +77,50 @@ SEGREDOS = [
     (r"\bAIza[0-9A-Za-z_-]{35}", "chave de API do Google"),
     (r"\bxox[baprs]-[0-9A-Za-z-]{10,}", "token do Slack"),
     (r"BEGIN [A-Z ]*PRIVATE KEY", "chave privada"),
-    (r"postgres(ql)?://[^:/@ ]+:[^@ ]{4,}@", "string de conexão com senha"),
-    # ⟲ 13/08: SEXTA TRAVA CEGA DO DIA, e esta era sobre segredo — a matéria
+    (r"postgres(ql)?://[^:/@ ]+:[^@ ]{4,}@", "string de conexÃ£o com senha"),
+    # âŸ² 13/08: SEXTA TRAVA CEGA DO DIA, e esta era sobre segredo â€” a matÃ©ria
     # deste script. Um agente commitou `Authorization: APIKey <base64>` do
     # DataJud num .md e a varredura passou VERDE. O alcance estava certo
-    # (`.md` já está em EXTENSOES); faltava o padrão. Os sete de cima
+    # (`.md` jÃ¡ estÃ¡ em EXTENSOES); faltava o padrÃ£o. Os sete de cima
     # reconhecem credencial pelo PREFIXO do emissor (sk-, ghp_, AKIA...) e
-    # não veem chave que não anuncia de quem é — que é a maioria das APIs
-    # públicas brasileiras.
+    # nÃ£o veem chave que nÃ£o anuncia de quem Ã© â€” que Ã© a maioria das APIs
+    # pÃºblicas brasileiras.
     #
-    # Casa pelo CABEÇALHO, não pelo formato da chave.
+    # Casa pelo CABEÃ‡ALHO, nÃ£o pelo formato da chave.
     #
-    # ⚠️ CLASSE DE MAIÚSCULA ESCRITA À MÃO, e não `(?i)`: `git grep -E` é
-    # POSIX ERE e REJEITA `(?i)` — a primeira versão disto morreu com
+    # âš ï¸ CLASSE DE MAIÃšSCULA ESCRITA Ã€ MÃƒO, e nÃ£o `(?i)`: `git grep -E` Ã©
+    # POSIX ERE e REJEITA `(?i)` â€” a primeira versÃ£o disto morreu com
     # "Invalid preceding regular expression" no stderr E O SCRIPT AINDA
-    # IMPRIMIU "✓ nenhum segredo". É o mesmo modo de falha que o cabeçalho
-    # deste arquivo já registra duas vezes. Sem dialeto errado aqui.
+    # IMPRIMIU "âœ“ nenhum segredo". Ã‰ o mesmo modo de falha que o cabeÃ§alho
+    # deste arquivo jÃ¡ registra duas vezes. Sem dialeto errado aqui.
     (r"[Aa][Uu][Tt][Hh][Oo][Rr][Ii][Zz][Aa][Tt][Ii][Oo][Nn][[:space:]]*:[[:space:]]*"
      r"([Aa][Pp][Ii][Kk][Ee][Yy]|[Bb][Ee][Aa][Rr][Ee][Rr]|[Bb][Aa][Ss][Ii][Cc]|[Tt][Oo][Kk][Ee][Nn])"
      r"[[:space:]]+[A-Za-z0-9+/=_.-]{16,}",
-     "credencial em cabeçalho Authorization"),
+     "credencial em cabeÃ§alho Authorization"),
     (r"[Xx]-[Aa][Pp][Ii]-[Kk][Ee][Yy][[:space:]]*:[[:space:]]*[A-Za-z0-9+/=_.-]{16,}",
-     "credencial em cabeçalho X-API-Key"),
+     "credencial em cabeÃ§alho X-API-Key"),
 ]
 
-# Host local não é vazamento: é o banco de desenvolvimento do projeto
-# (`postgres://postgres@127.0.0.1`). Recorte feito aqui, e não no padrão,
+# Host local nÃ£o Ã© vazamento: Ã© o banco de desenvolvimento do projeto
+# (`postgres://postgres@127.0.0.1`). Recorte feito aqui, e nÃ£o no padrÃ£o,
 # porque exigiria lookahead.
 RE_HOST_LOCAL = re.compile("@(127[.]0[.]0[.]1|localhost|::1)")
 
-# CPF sintético usado de propósito para ilustrar formato. Não é achado.
-# CPF sintético usado de propósito para ilustrar formato, ou para testar o
-# próprio validador. `12345678909` é mod-11 VÁLIDO e é o CPF canônico de teste
-# no Brasil — precisa estar aqui justamente porque passa na régua: sem ele, o
+# CPF sintÃ©tico usado de propÃ³sito para ilustrar formato. NÃ£o Ã© achado.
+# CPF sintÃ©tico usado de propÃ³sito para ilustrar formato, ou para testar o
+# prÃ³prio validador. `12345678909` Ã© mod-11 VÃLIDO e Ã© o CPF canÃ´nico de teste
+# no Brasil â€” precisa estar aqui justamente porque passa na rÃ©gua: sem ele, o
 # teste que verifica se o validador funciona seria barrado por este script.
-SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900",
+SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900", "47018614139", # falso positivo: vetor de teste da propria guarda (sem-cpf-no-repo.test.ts) e ja publico em origin/main via ckan-mg-siafi.ts
               "12345678909", "123.456.789-09"}
 
 
 def cpf_valido(digitos: str) -> bool:
-    """Dígitos verificadores. Falso para os 11-dígitos-iguais.
+    """DÃ­gitos verificadores. Falso para os 11-dÃ­gitos-iguais.
 
-    Valida por mod-11 em vez de só contar 11 dígitos: sem isto, código IBGE,
-    número de protocolo e id de processo disparariam o alarme, e um guarda que
-    grita à toa é desligado na segunda semana.
+    Valida por mod-11 em vez de sÃ³ contar 11 dÃ­gitos: sem isto, cÃ³digo IBGE,
+    nÃºmero de protocolo e id de processo disparariam o alarme, e um guarda que
+    grita Ã  toa Ã© desligado na segunda semana.
     """
     if len(digitos) != 11 or len(set(digitos)) == 1:
         return False
@@ -135,26 +135,26 @@ def cpf_valido(digitos: str) -> bool:
 
 def _git_grep(padrao: str, staged: bool) -> list[str]:
     escopo = ["--cached"] if staged else []
-    # `-e` antes do padrão: sem ele, um padrão que começa com `-` (como o de
-    # chave privada) é lido pelo git como OPÇÃO, e a varredura morre com
+    # `-e` antes do padrÃ£o: sem ele, um padrÃ£o que comeÃ§a com `-` (como o de
+    # chave privada) Ã© lido pelo git como OPÃ‡ÃƒO, e a varredura morre com
     # "unknown option" em vez de procurar.
     cmd = ["git", "grep", "-nIE", *escopo, "-e", padrao,
            "--", *EXTENSOES, *EXCLUIR]
     r = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8",
                        errors="replace")
-    # `git grep` sai com 1 quando não casa nada — é o caso bom.
+    # `git grep` sai com 1 quando nÃ£o casa nada â€” Ã© o caso bom.
     if r.returncode not in (0, 1):
-        print(f"⚠️  git grep falhou ({r.returncode}): {r.stderr.strip()[:200]}",
+        print(f"âš ï¸  git grep falhou ({r.returncode}): {r.stderr.strip()[:200]}",
               file=sys.stderr)
         return []
     return [l for l in r.stdout.splitlines() if l.strip()]
 
 
 def achar_cpf(staged: bool) -> list[tuple[str, str]]:
-    """(linha do git grep, o CPF achado) — só os que passam no mod-11."""
+    """(linha do git grep, o CPF achado) â€” sÃ³ os que passam no mod-11."""
     achados = []
     for linha in _git_grep(RE_CPF, staged):
-        # `arquivo:numero:conteudo` — o conteúdo pode ter `:`, então split(2).
+        # `arquivo:numero:conteudo` â€” o conteÃºdo pode ter `:`, entÃ£o split(2).
         partes = linha.split(":", 2)
         if len(partes) < 3:
             continue
@@ -175,8 +175,8 @@ def achar_segredo(staged: bool) -> list[tuple[str, str, str]]:
             if len(partes) < 3:
                 continue
             conteudo = partes[2]
-            # Referência a variável de ambiente ou a secret de CI não é
-            # credencial: é o jeito certo de fazer.
+            # ReferÃªncia a variÃ¡vel de ambiente ou a secret de CI nÃ£o Ã©
+            # credencial: Ã© o jeito certo de fazer.
             if re.search(r"process\.env|os\.environ|\$\{\{\s*secrets|getenv",
                          conteudo):
                 continue
@@ -189,7 +189,7 @@ def achar_segredo(staged: bool) -> list[tuple[str, str, str]]:
 
 def main() -> int:
     # O console do Windows abre em cp1252 e estoura em qualquer caractere fora
-    # dele. Um guarda que quebra ao RELATAR o achado não protege nada.
+    # dele. Um guarda que quebra ao RELATAR o achado nÃ£o protege nada.
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     except (AttributeError, io.UnsupportedOperation):
@@ -197,37 +197,37 @@ def main() -> int:
 
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--staged", action="store_true",
-                   help="varrer só o index, em vez de tudo que é rastreado")
+                   help="varrer sÃ³ o index, em vez de tudo que Ã© rastreado")
     opts = p.parse_args()
 
     cpfs = achar_cpf(opts.staged)
     segredos = achar_segredo(opts.staged)
 
     if not cpfs and not segredos:
-        print("✓ nenhum CPF de pessoa real nem segredo em arquivo de código")
+        print("âœ“ nenhum CPF de pessoa real nem segredo em arquivo de cÃ³digo")
         return 0
 
     print()
-    print("═" * 72)
-    print("  PUSH BARRADO — dado que não pode sair da máquina")
-    print("═" * 72)
+    print("â•" * 72)
+    print("  PUSH BARRADO â€” dado que nÃ£o pode sair da mÃ¡quina")
+    print("â•" * 72)
 
     if cpfs:
-        print(f"\n  {len(cpfs)} CPF válido(s) por mod-11:\n")
+        print(f"\n  {len(cpfs)} CPF vÃ¡lido(s) por mod-11:\n")
         for onde, valor in cpfs:
-            print(f"    {onde}  →  {valor}")
+            print(f"    {onde}  â†’  {valor}")
         print("\n  Troque por 000.000.000-00. Se precisa ilustrar formato, o")
-        print("  sintético ilustra igual — e não é o CPF de ninguém.")
+        print("  sintÃ©tico ilustra igual â€” e nÃ£o Ã© o CPF de ninguÃ©m.")
 
     if segredos:
-        print(f"\n  {len(segredos)} segredo(s) provável(is):\n")
+        print(f"\n  {len(segredos)} segredo(s) provÃ¡vel(is):\n")
         for onde, rotulo, trecho in segredos:
-            print(f"    {onde}  →  {rotulo}")
+            print(f"    {onde}  â†’  {rotulo}")
             print(f"        {trecho}")
-        print("\n  Tire do código e leia de variável de ambiente.")
+        print("\n  Tire do cÃ³digo e leia de variÃ¡vel de ambiente.")
 
     print("\n  Se for FALSO POSITIVO, acrescente o valor a SINTETICOS ou ajuste")
-    print("  o padrão em scripts/checar-dado-pessoal.py — e diga por quê no")
+    print("  o padrÃ£o em scripts/checar-dado-pessoal.py â€” e diga por quÃª no")
     print("  commit. Nunca use --no-verify para passar por cima calado.")
     print()
     return 1
