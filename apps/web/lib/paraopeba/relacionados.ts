@@ -1,5 +1,4 @@
 import {
-  AUDITORIA_AJRI,
   type DocumentoAuditoriaAjri,
   type TemaAjri,
 } from "./auditoria-ajri";
@@ -130,18 +129,22 @@ export interface RelacionadosFicha {
   estudosPericia: EstudoPericiaComTema[];
 }
 
-export function relacionadosDaFicha(doc: DocumentoAuditoriaAjri): RelacionadosFicha {
+export function relacionadosDaFicha(
+  doc: DocumentoAuditoriaAjri,
+  acervo: DocumentoAuditoriaAjri[]
+): RelacionadosFicha {
   const pontes = doc.temas.map((t) => PONTE[t]);
   const temasAti = new Set(pontes.flatMap((p) => p.ati));
   const temasIj = new Set(pontes.flatMap((p) => p.ij));
   const tags = new Set(pontes.flatMap((p) => p.tags));
 
-  const mesmosTemas = AUDITORIA_AJRI.filter(
-    (d) =>
-      d.id !== doc.id &&
-      d.temas.some((t) => doc.temas.includes(t)) &&
-      diasEntre(d.data, doc.data) <= JANELA_RELACIONADOS_DIAS
-  )
+  const mesmosTemas = acervo
+    .filter(
+      (d) =>
+        d.id !== doc.id &&
+        d.temas.some((t) => doc.temas.includes(t)) &&
+        diasEntre(d.data, doc.data) <= JANELA_RELACIONADOS_DIAS
+    )
     .sort((a, b) => {
       const d = diasEntre(a.data, doc.data) - diasEntre(b.data, doc.data);
       if (d !== 0) return d;
