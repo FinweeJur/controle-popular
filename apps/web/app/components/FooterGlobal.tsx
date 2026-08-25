@@ -48,6 +48,7 @@ const LINKS_PORTAL = [
   // pedir informação, como denunciar). Mora aqui e não em "As cinco
   // frentes" acima porque NÃO é zona — ver a nota de arquitetura em
   // `lib/zonas.ts` e no bloco correspondente de `app/page.tsx`.
+  { label: "Índice do portal", href: "/indice" },
   { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
   { label: "Busca", href: "/busca" },
   { label: "Páginas mais vistas", href: "/dados/populares" },
