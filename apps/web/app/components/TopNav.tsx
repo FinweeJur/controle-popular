@@ -10,6 +10,131 @@ import FontSizeControl from "@/app/[municipio]/components/FontSizeControl";
 import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
 
 /**
+ * Cidades atendidas pelo eixo Cidades. Lista curta e estável — mantida aqui
+ * (não importada de `cidades-do-build.ts`) para não arrastar o JSON completo
+ * do build para o bundle client-side da navbar, que é carregada em todas as
+ * páginas.
+ */
+const CIDADES_MENU = [
+  { nome: "Betim", slug: "betim" },
+  { nome: "Belo Horizonte", slug: "bh" },
+  { nome: "Araçuaí", slug: "aracuai" },
+  { nome: "Diamantina", slug: "diamantina" },
+  { nome: "Itinga", slug: "itinga" },
+  { nome: "São Paulo", slug: "sp" },
+] as const;
+
+/**
+ * Estrutura do novo menu do portal: um índice expansível agrupado por frente,
+ * com as principais subpáginas de cada uma. A navegação funciona como a wiki
+ * do site: cada seção é um capítulo e os links são as páginas dentro dele.
+ *
+ * Todos os links são `<a href>` cru, NUNCA o `<Link>` de zona
+ * (`lib/link-zona.tsx`): este componente é global e um wrapper de zona
+ * prefixaria caminhos absolutos como `/congresso/proposicoes` com o segmento
+ * da zona atual, gerando 404s mudos. Ver o mesmo aviso em `FooterGlobal.tsx`.
+ */
+const SECOES_MENU = [
+  {
+    id: "cidades",
+    titulo: "Cidades",
+    href: "/betim",
+    links: CIDADES_MENU.map((c) => ({ label: c.nome, href: `/${c.slug}` })),
+  },
+  {
+    id: "congresso",
+    titulo: "Congresso",
+    href: "/congresso",
+    links: [
+      { label: "Proposições", href: "/congresso/proposicoes" },
+      { label: "Votações", href: "/congresso/votacoes" },
+      { label: "Comissões", href: "/congresso/comissoes" },
+      { label: "Bancadas", href: "/congresso/bancadas" },
+      { label: "Parlamentares", href: "/congresso/parlamentares" },
+      { label: "Agenda", href: "/congresso/agenda" },
+      { label: "Alertas", href: "/congresso/alertas" },
+      { label: "Bons exemplos", href: "/congresso/bons-exemplos" },
+      { label: "Metodologia", href: "/congresso/metodologia" },
+    ],
+  },
+  {
+    id: "judiciario",
+    titulo: "Judiciário",
+    href: "/judiciario",
+    links: [
+      { label: "Tribunais", href: "/judiciario/tribunais" },
+      { label: "Indicações", href: "/judiciario/indicacoes" },
+      { label: "Vagas", href: "/judiciario/vagas" },
+      { label: "Inspeções", href: "/judiciario/inspecoes" },
+      { label: "Correições trabalhistas", href: "/judiciario/correicoes-trabalhistas" },
+      { label: "Presídios", href: "/judiciario/presidios" },
+      { label: "Defensoria", href: "/judiciario/defensoria" },
+      { label: "Instituições", href: "/judiciario/instituicoes" },
+      { label: "Números", href: "/judiciario/numeros" },
+      { label: "Metodologia", href: "/judiciario/metodologia" },
+    ],
+  },
+  {
+    id: "ambiental",
+    titulo: "Meio ambiente",
+    href: "/ambiental",
+    links: [
+      { label: "COPAM", href: "/ambiental/copam" },
+      { label: "Licenciamento", href: "/ambiental/licenciamento" },
+      { label: "Barragens", href: "/ambiental/barragens" },
+      { label: "Legislação", href: "/ambiental/legislacao" },
+      { label: "Direito crítico", href: "/ambiental/direito-critico" },
+      { label: "Decisões", href: "/ambiental/decisoes" },
+      { label: "TAC", href: "/ambiental/tac" },
+      { label: "Patrimônio cultural", href: "/ambiental/patrimonio-cultural" },
+      { label: "Convênios", href: "/ambiental/convenios" },
+      { label: "Estudos", href: "/ambiental/estudos" },
+    ],
+  },
+  {
+    id: "paraopeba",
+    titulo: "Paraopeba",
+    href: "/paraopeba",
+    links: [
+      { label: "Entenda", href: "/paraopeba/entenda" },
+      { label: "Execução do Acordo", href: "/paraopeba/execucao" },
+      { label: "Auditoria", href: "/paraopeba/auditoria" },
+      { label: "Análise", href: "/paraopeba/analise" },
+      { label: "Perícia", href: "/paraopeba/pericia" },
+      { label: "Auxílio Emergencial", href: "/paraopeba/auxilio" },
+      { label: "Documentos", href: "/paraopeba/documentos" },
+      { label: "Biblioteca", href: "/paraopeba/biblioteca" },
+      { label: "Clipping", href: "/paraopeba/clipping" },
+      { label: "Linha do tempo", href: "/paraopeba/linha-do-tempo" },
+      { label: "Quem atua", href: "/paraopeba/quem-atua" },
+    ],
+  },
+  {
+    id: "terras",
+    titulo: "Terra e território",
+    href: "/funcaosocialterra",
+    links: [
+      { label: "Mapa 3D", href: "/funcaosocialterra/mapa" },
+      { label: "Alertas", href: "/funcaosocialterra/alertas" },
+    ],
+  },
+  {
+    id: "transversal",
+    titulo: "Transversal",
+    href: "/indice",
+    links: [
+      { label: "Índice do portal", href: "/indice" },
+      { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
+      { label: "Busca", href: "/busca" },
+      { label: "Dados populares", href: "/dados/populares" },
+      { label: "Governo federal nas cidades", href: "/dados/comunicabr" },
+      { label: "Sobre o projeto", href: "/sobre" },
+      { label: "Termos e origem dos dados", href: "/termos" },
+    ],
+  },
+] as const;
+
+/**
  * ═══ BARRA SUPERIOR GLOBAL (pedido do dono, 16/08/2026) ═══
  *
  * A navbar fixa de TODAS as páginas do portal. Antes dela, cada zona tinha
@@ -23,6 +148,14 @@ import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
  * controles de tema/tamanho/contraste também sobem pra cá (uma cópia só, em
  * vez de quatro). Com isso os headers de zona ficam só com a navegação da
  * própria zona e a faixa de busca.
+ *
+ * ═══ MENU EXPANSÍVEL POR FRENTE (wiki) ═══
+ *
+ * O botão do logo abre um painel de índice organizado em seções: Cidades,
+ * Congresso, Judiciário, Meio ambiente, Paraopeba, Terra e território, e
+ * Transversal. Cada seção lista as principais subpáginas, como um sumário de
+ * wiki. O objetivo é permitir que o leitor salte entre frentes e entre páginas
+ * de uma mesma frente sem voltar à home.
  *
  * ═══ POR QUE É CLIENT E COMO O MENU ABRE ═══
  *
@@ -93,71 +226,60 @@ export default function TopNav() {
           <nav
             id="menu-portal"
             aria-label="Menu do portal"
-            className={`absolute top-full left-0 z-50 mt-1 w-80 max-w-[calc(100vw-2rem)] rounded-2xl border border-border bg-surface p-2 shadow-lg ${
+            className={`absolute top-full left-0 z-50 mt-1 max-h-[calc(100vh-5rem)] w-[min(48rem,calc(100vw-1rem))] overflow-y-auto rounded-2xl border border-border bg-surface p-3 shadow-lg ${
               aberto ? "block" : "hidden"
-            } group-hover:block group-focus-within:block`}
+            } group-hover:block group-focus-within:block sm:p-4`}
           >
-            <ul className="space-y-0.5">
-              <li>
-                <Link
-                  href="/"
-                  onClick={fechar}
-                  className="flex items-center justify-between gap-2 rounded-lg px-3 py-2 font-medium text-text transition-colors duration-150 hover:bg-surface-2"
-                >
-                  <span>Início</span>
-                  <span className="text-[.8em] text-text-soft">home</span>
-                </Link>
-              </li>
-            </ul>
+            {/* Header: atalhos globais */}
+            <div className="mb-3 flex flex-wrap gap-2 border-b border-border pb-3 sm:mb-4 sm:pb-4">
+              <a
+                href="/"
+                onClick={fechar}
+                className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-text transition-colors duration-150 hover:bg-surface-2"
+              >
+                Início
+              </a>
+              <a
+                href="/indice"
+                onClick={fechar}
+                className="rounded-lg border border-primary/30 bg-primary/5 px-3 py-1.5 text-sm font-medium text-primary transition-colors duration-150 hover:bg-primary/10"
+              >
+                Índice do portal
+              </a>
+            </div>
 
-            <p className="mt-3 px-3 text-[.72em] font-semibold uppercase tracking-wide text-text-soft">
-              Frentes do portal
-            </p>
-            <ul className="mt-1 space-y-0.5">
-              {ZONAS_PUBLICADAS.map((z) => (
-                <li key={z.id}>
-                  <Link
-                    href={z.href}
-                    onClick={fechar}
-                    className="flex items-baseline justify-between gap-2 rounded-lg px-3 py-2 text-[.95em] font-medium text-text transition-colors duration-150 hover:bg-surface-2"
+            {/* Grade de seções por frente */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {SECOES_MENU.map((secao) => (
+                <section key={secao.id} aria-labelledby={`menu-${secao.id}`}>
+                  <h2
+                    id={`menu-${secao.id}`}
+                    className="mb-1.5 text-[.72em] font-semibold uppercase tracking-wide text-text-soft"
                   >
-                    <span>{z.nomeCurto}</span>
-                    <span className="text-[.78em] text-text-soft">{z.etiqueta}</span>
-                  </Link>
-                </li>
+                    <a
+                      href={secao.href}
+                      onClick={fechar}
+                      className="hover:text-primary focus-visible:outline-none focus-visible:underline"
+                    >
+                      {secao.titulo}
+                    </a>
+                  </h2>
+                  <ul className="space-y-0.5">
+                    {secao.links.map((link) => (
+                      <li key={link.href + link.label}>
+                        <a
+                          href={link.href}
+                          onClick={fechar}
+                          className="block rounded-md px-2 py-1 text-[.9em] text-text transition-colors duration-150 hover:bg-surface-2 hover:text-primary"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
               ))}
-            </ul>
-
-            <p className="mt-3 px-3 text-[.72em] font-semibold uppercase tracking-wide text-text-soft">
-              Páginas e funções
-            </p>
-            <ul className="mt-1 space-y-0.5">
-              <li>
-                <Link
-                  href="/direitos-em-movimento"
-                  onClick={fechar}
-                  className="flex items-center justify-between gap-2 rounded-lg px-3 py-2 text-[.95em] font-medium transition-colors duration-150 hover:bg-surface-2"
-                  style={{ color: "var(--cp-alert)" }}
-                >
-                  <span>Direitos em Movimento</span>
-                  <span aria-hidden="true" className="text-[.8em]">
-                    →
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/sobre"
-                  onClick={fechar}
-                  className="flex items-center justify-between gap-2 rounded-lg px-3 py-2 text-[.95em] font-medium text-text transition-colors duration-150 hover:bg-surface-2"
-                >
-                  <span>Sobre o projeto</span>
-                  <span aria-hidden="true" className="text-[.8em]">
-                    →
-                  </span>
-                </Link>
-              </li>
-            </ul>
+            </div>
           </nav>
         </div>
 
