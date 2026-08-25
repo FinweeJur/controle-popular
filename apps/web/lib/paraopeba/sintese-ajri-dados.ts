@@ -19,6 +19,11 @@ interface SinteseAjriObjeto {
 let cache: SinteseAjriObjeto | null = null;
 
 export function lerSinteseAjri(): SinteseAjriObjeto {
-  if (!cache) cache = carregarJsonEtl<SinteseAjriObjeto>("sintese-ajri-bundle.json");
+  if (!cache) {
+    const bruto = carregarJsonEtl<{ SINTESE_AJRI: SinteseAjriObjeto }>(
+      "sintese-ajri-bundle.json"
+    );
+    cache = bruto.SINTESE_AJRI;
+  }
   return cache;
 }
