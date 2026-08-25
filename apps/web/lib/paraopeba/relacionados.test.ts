@@ -20,8 +20,8 @@ import { ESTUDOS_PERICIA_COM_TEMA } from "./pericia-ufmg";
 describe("relacionados da ficha AJRI", () => {
   test("a régua é determinística: a mesma ficha devolve a mesma lista", () => {
     const doc = AUDITORIA_AJRI.find((d) => d.id === 1204)!;
-    const a = relacionadosDaFicha(doc);
-    const b = relacionadosDaFicha(doc);
+    const a = relacionadosDaFicha(doc, AUDITORIA_AJRI);
+    const b = relacionadosDaFicha(doc, AUDITORIA_AJRI);
     expect(a.mesmosTemas.map((x) => x.id)).toEqual(b.mesmosTemas.map((x) => x.id));
     expect(a.noticiasAti.map((x) => x.id)).toEqual(b.noticiasAti.map((x) => x.id));
     expect(a.noticiasIj.map((x) => x.id)).toEqual(b.noticiasIj.map((x) => x.id));
@@ -30,7 +30,7 @@ describe("relacionados da ficha AJRI", () => {
 
   test("nenhum acervo passa do teto de 3 por ficha", () => {
     for (const d of AUDITORIA_AJRI) {
-      const r = relacionadosDaFicha(d);
+      const r = relacionadosDaFicha(d, AUDITORIA_AJRI);
       expect(r.mesmosTemas.length).toBeLessThanOrEqual(MAX_ITENS_POR_ACERVO);
       expect(r.noticiasAti.length).toBeLessThanOrEqual(MAX_ITENS_POR_ACERVO);
       expect(r.noticiasIj.length).toBeLessThanOrEqual(MAX_ITENS_POR_ACERVO);
@@ -43,7 +43,7 @@ describe("relacionados da ficha AJRI", () => {
     let comQualquer = 0;
     let maxRel = 0;
     for (const d of AUDITORIA_AJRI) {
-      const r = relacionadosDaFicha(d);
+      const r = relacionadosDaFicha(d, AUDITORIA_AJRI);
       somas.mesmos += r.mesmosTemas.length;
       somas.ati += r.noticiasAti.length;
       somas.ij += r.noticiasIj.length;
@@ -60,7 +60,7 @@ describe("relacionados da ficha AJRI", () => {
 
   test("ficha 1204: as 3 fichas mais próximas do mesmo tema, sem notícias ligadas", () => {
     const doc = AUDITORIA_AJRI.find((d) => d.id === 1204)!;
-    const r = relacionadosDaFicha(doc);
+    const r = relacionadosDaFicha(doc, AUDITORIA_AJRI);
     // Sistema de abastecimento de água + segurança hídrica: a PONTE não liga
     // esses temas a nenhum tema de ATI/IJ nem a tag de imprensa — as 3 mais
     // próximas no tempo do catálogo vencem.
@@ -74,7 +74,7 @@ describe("relacionados da ficha AJRI", () => {
   test("ficha 1200 (segurança do alimento): a ATI ligada pela ponte ershre aparece", () => {
     const doc = AUDITORIA_AJRI.find((d) => d.temas.includes("seguranca-do-alimento"))!;
     expect(doc.id).toBe(1200);
-    const r = relacionadosDaFicha(doc);
+    const r = relacionadosDaFicha(doc, AUDITORIA_AJRI);
     expect(r.noticiasAti.map((n) => n.id)).toEqual(["er08"]);
     expect(r.noticiasIj).toHaveLength(0);
     expect(r.noticiasImprensa).toHaveLength(0);
@@ -82,7 +82,7 @@ describe("relacionados da ficha AJRI", () => {
 
   test("ficha 982 (14 temas): os 4 acervos chegam ao teto sem estourar", () => {
     const doc = AUDITORIA_AJRI.find((d) => d.id === 982)!;
-    const r = relacionadosDaFicha(doc);
+    const r = relacionadosDaFicha(doc, AUDITORIA_AJRI);
     expect(r.mesmosTemas).toHaveLength(3);
     expect(r.noticiasAti).toHaveLength(2);
     expect(r.noticiasIj).toHaveLength(3);
@@ -105,12 +105,12 @@ describe("estudos da perícia como relacionados", () => {
       ),
     );
     expect(antiga, "não há ficha anterior a 2021 nos eixos da perícia").toBeDefined();
-    expect(relacionadosDaFicha(antiga!).estudosPericia.length).toBeGreaterThan(0);
+    expect(relacionadosDaFicha(antiga!, AUDITORIA_AJRI).estudosPericia.length).toBeGreaterThan(0);
   });
 
   test("respeita o teto por acervo", () => {
     for (const doc of AUDITORIA_AJRI) {
-      expect(relacionadosDaFicha(doc).estudosPericia.length).toBeLessThanOrEqual(
+      expect(relacionadosDaFicha(doc, AUDITORIA_AJRI).estudosPericia.length).toBeLessThanOrEqual(
         MAX_ITENS_POR_ACERVO,
       );
     }
@@ -118,7 +118,7 @@ describe("estudos da perícia como relacionados", () => {
 
   test("todo estudo devolvido compartilha tema com a ficha — nunca por proximidade de texto", () => {
     for (const doc of AUDITORIA_AJRI.slice(0, 120)) {
-      for (const estudo of relacionadosDaFicha(doc).estudosPericia) {
+      for (const estudo of relacionadosDaFicha(doc, AUDITORIA_AJRI).estudosPericia) {
         expect(estudo.temas.some((t) => doc.temas.includes(t))).toBe(true);
       }
     }
@@ -126,11 +126,11 @@ describe("estudos da perícia como relacionados", () => {
 
   test("é estável entre chamadas — a lista não dança entre builds", () => {
     const doc = AUDITORIA_AJRI.find(
-      (d) => relacionadosDaFicha(d).estudosPericia.length > 1,
+      (d) => relacionadosDaFicha(d, AUDITORIA_AJRI).estudosPericia.length > 1,
     );
     expect(doc).toBeDefined();
-    expect(relacionadosDaFicha(doc!).estudosPericia.map((e) => e.url)).toEqual(
-      relacionadosDaFicha(doc!).estudosPericia.map((e) => e.url),
+    expect(relacionadosDaFicha(doc!, AUDITORIA_AJRI).estudosPericia.map((e) => e.url)).toEqual(
+      relacionadosDaFicha(doc!, AUDITORIA_AJRI).estudosPericia.map((e) => e.url),
     );
   });
 
@@ -139,7 +139,7 @@ describe("estudos da perícia como relacionados", () => {
       (d) => d.temas.length > 0 && d.temas.every((t) => t === "cronograma"),
     );
     if (semCobertura) {
-      expect(relacionadosDaFicha(semCobertura).estudosPericia).toEqual([]);
+      expect(relacionadosDaFicha(semCobertura, AUDITORIA_AJRI).estudosPericia).toEqual([]);
     }
   });
 });
@@ -172,7 +172,7 @@ describe("simetria entre perícia e auditoria", () => {
   test("nenhum eixo da perícia fica mudo: todo tema chega a alguma ficha", () => {
     const alcancados = new Set<string>();
     for (const doc of AUDITORIA_AJRI) {
-      for (const e of relacionadosDaFicha(doc).estudosPericia) {
+      for (const e of relacionadosDaFicha(doc, AUDITORIA_AJRI).estudosPericia) {
         for (const t of e.temas) alcancados.add(t);
       }
     }
@@ -196,7 +196,7 @@ describe("simetria entre perícia e auditoria", () => {
         d.temas.filter((t) => temasDaPericia.has(t)).length === 1,
     );
     expect(ficha, "não há ficha que toque a perícia só pelo plano de reparação").toBeDefined();
-    const nomes = relacionadosDaFicha(ficha!).estudosPericia.map((e) =>
+    const nomes = relacionadosDaFicha(ficha!, AUDITORIA_AJRI).estudosPericia.map((e) =>
       decodeURIComponent(e.nomeArquivo),
     );
     expect(nomes.some((n) => n.includes("RESUMO_DAS_APRESENTA"))).toBe(true);

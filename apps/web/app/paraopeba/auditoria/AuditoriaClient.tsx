@@ -3,7 +3,6 @@
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
-  AUDITORIA_AJRI,
   INSTRUMENTO_AJRI_LABEL,
   INSTRUMENTO_AJRI_ORDEM,
   PERIODO_AUDITORIA_AJRI,
@@ -22,11 +21,78 @@ import { INSTITUICAO_JUSTICA_LABEL } from "@/lib/paraopeba/clipping-ij";
 import { relacionadosDaFicha } from "@/lib/paraopeba/relacionados";
 import { fichaLegivelAjri } from "@/lib/paraopeba/ficha-legivel-ajri";
 import {
-  RESUMO_AJRI,
   VEREDITO_AJRI_LABEL,
   type ResumoAjri,
   type VereditoAjri,
 } from "@/lib/paraopeba/resumo-ajri";
+
+/**
+ * Os resumos NÃO moram mais num chunk importado: viraram asset estático
+ * (`public/data/resumo-ajri.json`) buscado uma vez por sessão e lido em Node
+ * pelo teste via `resumo-ajri-dados.ts`. Mesma lição do handoff de payload —
+ * dado grande fora do bundle, agora também fora do Worker (teto 3 MiB gzip,
+ * erro 10027 em 2026-08-24). Antes de carregar, `null`: a ficha nasce só com
+ * o catálogo e o resumo entra quando chegar — mesmo contrato visual de
+ * "ficha sem resumo" das 130 que não têm.
+ */
+let resumosCache: Promise<Record<string, ResumoAjri>> | null = null;
+
+function buscarResumosAjri(): Promise<Record<string, ResumoAjri>> {
+  if (!resumosCache) {
+    resumosCache = fetch("/data/resumo-ajri.json").then(
+      (r) => r.json() as Promise<Record<string, ResumoAjri>>
+    );
+  }
+  return resumosCache;
+}
+
+function useResumosAjri(): Record<string, ResumoAjri> | null {
+  const [resumos, setResumos] = useState<Record<string, ResumoAjri> | null>(null);
+  useEffect(() => {
+    let vivo = true;
+    buscarResumosAjri().then((d) => {
+      if (vivo) setResumos(d);
+    });
+    return () => {
+      vivo = false;
+    };
+  }, []);
+  return resumos;
+}
+
+/**
+ * O catálogo da auditoria AJRI NÃO mora mais num chunk importado: virou asset
+ * estático (`public/data/auditoria-ajri.json`) buscado uma vez por sessão e
+ * lido em Node pelo teste via `auditoria-ajri-dados.ts`. Mesma lição do handoff
+ * de payload — dado grande fora do bundle, agora também fora do Worker
+ * (teto 3 MiB gzip, erro 10027 em 2026-08-25). Antes de carregar, `null`: a
+ * lista nasce vazia e popula.
+ */
+let auditoriaCache: Promise<DocumentoAuditoriaAjri[]> | null = null;
+
+function buscarAuditoriaAjri(): Promise<DocumentoAuditoriaAjri[]> {
+  if (!auditoriaCache) {
+    auditoriaCache = fetch("/data/auditoria-ajri.json").then(
+      (r) => r.json() as Promise<DocumentoAuditoriaAjri[]>
+    );
+  }
+  return auditoriaCache;
+}
+
+function useAuditoriaAjri(): DocumentoAuditoriaAjri[] | null {
+  const [dados, setDados] = useState<DocumentoAuditoriaAjri[] | null>(null);
+  useEffect(() => {
+    let vivo = true;
+    buscarAuditoriaAjri().then((d) => {
+      if (vivo) setDados(d);
+    });
+    return () => {
+      vivo = false;
+    };
+  }, []);
+  return dados;
+}
+
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 
 /**
@@ -82,14 +148,20 @@ function dentroDoIntervalo(data: string, de: string, ate: string): boolean {
   return true;
 }
 
-/** Busca no que a ficha mostra: descrição, código, temas e resumo. */
-function casaBusca(termo: string, doc: DocumentoAuditoriaAjri): boolean {
+/** Busca no que a ficha mostra: descrição, código, temas e resumo. O resumo
+ *  só participa quando o asset já carregou (`resumos` não-nulo). */
+function casaBusca(
+  termo: string,
+  doc: DocumentoAuditoriaAjri,
+  resumos: Record<string, ResumoAjri> | null
+): boolean {
   const t = termo.toLowerCase().trim();
   if (!t) return true;
   if (doc.descricao.toLowerCase().includes(t)) return true;
   if (doc.codigo.toLowerCase().includes(t)) return true;
   if (doc.temas.some((tema) => TEMA_AJRI_LABEL[tema].toLowerCase().includes(t))) return true;
-  const resumo = RESUMO_AJRI[doc.codigo];
+  if (!resumos) return false;
+  const resumo = resumos[doc.codigo];
   if (!resumo) return false;
   if (resumo.objeto.toLowerCase().includes(t)) return true;
   if (
@@ -109,16 +181,20 @@ const FAIXA = {
   max: PERIODO_AUDITORIA_AJRI.ate,
 };
 
-/** Contagem por tema, medida uma vez — o `select` mostra o volume de cada um. */
-const TOTAL_POR_TEMA = TEMA_AJRI_ORDEM.reduce<Record<string, number>>((acc, tema) => {
-  acc[tema] = AUDITORIA_AJRI.filter((d) => d.temas.includes(tema)).length;
-  return acc;
-}, {});
+/** Contagem por tema a partir do acervo carregado — o `select` mostra o volume. */
+function totalPorTema(acervo: DocumentoAuditoriaAjri[]): Record<string, number> {
+  return TEMA_AJRI_ORDEM.reduce<Record<string, number>>((acc, tema) => {
+    acc[tema] = acervo.filter((d) => d.temas.includes(tema)).length;
+    return acc;
+  }, {});
+}
 
-const TOTAL_POR_INSTRUMENTO = INSTRUMENTO_AJRI_ORDEM.reduce<Record<string, number>>((acc, i) => {
-  acc[i] = AUDITORIA_AJRI.filter((d) => d.instrumento === i).length;
-  return acc;
-}, {});
+function totalPorInstrumento(acervo: DocumentoAuditoriaAjri[]): Record<string, number> {
+  return INSTRUMENTO_AJRI_ORDEM.reduce<Record<string, number>>((acc, i) => {
+    acc[i] = acervo.filter((d) => d.instrumento === i).length;
+    return acc;
+  }, {});
+}
 
 export default function AuditoriaClientEnvolto() {
   return (
@@ -141,6 +217,8 @@ function AuditoriaClientComQuery() {
 }
 
 function AuditoriaClient({ buscaInicial = "" }: { buscaInicial?: string }) {
+  const acervo = useAuditoriaAjri();
+  const resumos = useResumosAjri();
   const [busca, setBusca] = useState(buscaInicial);
   const [de, setDe] = useState("");
   const [ate, setAte] = useState("");
@@ -162,20 +240,27 @@ function AuditoriaClient({ buscaInicial = "" }: { buscaInicial?: string }) {
     setVisiveis(POR_PAGINA);
   }, [buscaInicial]);
 
+  const totais = useMemo(() => (acervo ? totalPorTema(acervo) : null), [acervo]);
+  const totalPorInstrumentoMemo = useMemo(
+    () => (acervo ? totalPorInstrumento(acervo) : null),
+    [acervo]
+  );
+
   const lista = useMemo(() => {
-    const filtrada = AUDITORIA_AJRI.filter(
+    if (!acervo) return [];
+    const filtrada = acervo.filter(
       (d) =>
         instrumentos.has(d.instrumento) &&
         tipos.has(d.tipo) &&
         (tema === "todos" || d.temas.includes(tema)) &&
         dentroDoIntervalo(d.data, de, ate) &&
-        casaBusca(busca, d)
+        casaBusca(busca, d, resumos)
     );
     const copia = [...filtrada];
     if (ordem === "recente") return copia.sort((a, b) => b.data.localeCompare(a.data));
     if (ordem === "antigo") return copia.sort((a, b) => a.data.localeCompare(b.data));
     return copia.sort((a, b) => a.codigo.localeCompare(b.codigo, "pt"));
-  }, [instrumentos, tipos, tema, de, ate, busca, ordem]);
+  }, [acervo, instrumentos, tipos, tema, de, ate, busca, ordem, resumos]);
 
   const filtroAtivo =
     busca !== "" ||
@@ -207,6 +292,20 @@ function AuditoriaClient({ buscaInicial = "" }: { buscaInicial?: string }) {
 
   const campo =
     "rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text focus:border-primary focus:outline-none";
+
+  if (!acervo) {
+    return (
+      <section className="mt-8" aria-labelledby="titulo-acervo">
+        <h2
+          id="titulo-acervo"
+          className="font-display text-[clamp(1.25em,2.6vw,1.6em)] leading-tight font-bold tracking-tight"
+        >
+          O acervo da auditoria
+        </h2>
+        <p className="mt-4 text-text-soft">Carregando acervo…</p>
+      </section>
+    );
+  }
 
   return (
     <section className="mt-8" aria-labelledby="titulo-acervo">
@@ -279,7 +378,7 @@ function AuditoriaClient({ buscaInicial = "" }: { buscaInicial?: string }) {
               <option value="todos">Todos os temas</option>
               {TEMA_AJRI_ORDEM.map((t) => (
                 <option key={t} value={t}>
-                  {TEMA_AJRI_LABEL[t]} ({formatNumberBR(TOTAL_POR_TEMA[t])})
+                  {TEMA_AJRI_LABEL[t]} ({formatNumberBR(totais?.[t] ?? 0)})
                 </option>
               ))}
             </select>
@@ -304,7 +403,7 @@ function AuditoriaClient({ buscaInicial = "" }: { buscaInicial?: string }) {
         <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
           <p aria-live="polite" className="text-sm text-text-soft">
             Exibindo <strong className="text-text">{formatNumberBR(lista.length)}</strong> de{" "}
-            {formatNumberBR(AUDITORIA_AJRI.length)} documentos
+            {formatNumberBR(acervo.length)} documentos
           </p>
           <button
             type="button"
@@ -332,7 +431,7 @@ function AuditoriaClient({ buscaInicial = "" }: { buscaInicial?: string }) {
             }}
           >
             {INSTRUMENTO_AJRI_LABEL[i]}{" "}
-            <span className="opacity-70">({formatNumberBR(TOTAL_POR_INSTRUMENTO[i])})</span>
+            <span className="opacity-70">({formatNumberBR(totalPorInstrumentoMemo?.[i] ?? 0)})</span>
           </BotaoAlternar>
         ))}
       </div>
@@ -354,7 +453,7 @@ function AuditoriaClient({ buscaInicial = "" }: { buscaInicial?: string }) {
 
       <ul className="mt-5 flex flex-col gap-3">
         {lista.slice(0, visiveis).map((d) => (
-          <Ficha key={d.id} doc={d} />
+          <Ficha key={d.id} doc={d} resumos={resumos} acervo={acervo} />
         ))}
       </ul>
 
@@ -420,7 +519,15 @@ function alternar<T>(atual: Set<T>, valor: T): Set<T> {
  * função pura sobre os metadados e tem contrato travado em
  * `lib/paraopeba/ficha-legivel-ajri.test.ts`.
  */
-function Ficha({ doc }: { doc: DocumentoAuditoriaAjri }) {
+function Ficha({
+  doc,
+  resumos,
+  acervo,
+}: {
+  doc: DocumentoAuditoriaAjri;
+  resumos: Record<string, ResumoAjri> | null;
+  acervo: DocumentoAuditoriaAjri[];
+}) {
   const legivel = fichaLegivelAjri(doc);
   return (
     <li className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
@@ -457,7 +564,7 @@ function Ficha({ doc }: { doc: DocumentoAuditoriaAjri }) {
 
       {/* O resumo é obra nova deste portal; a ficha separa as duas vozes — ver
           o cabeçalho do próprio componente ResumoDaFicha. */}
-      <ResumoDaFicha doc={doc} />
+      <ResumoDaFicha doc={doc} resumos={resumos} />
 
       <details className="mt-2.5">
         <summary className="cursor-pointer text-xs font-medium text-text-soft hover:text-text">
@@ -491,7 +598,7 @@ function Ficha({ doc }: { doc: DocumentoAuditoriaAjri }) {
         — o portal exige cadastro e gera o PDF na hora
       </span>
 
-      <RelacionadosDaFicha doc={doc} />
+      <RelacionadosDaFicha doc={doc} acervo={acervo} />
     </li>
   );
 }
@@ -524,8 +631,14 @@ function formatDataReuniaoBR(data: string): string {
   return formatDateBR(data);
 }
 
-function ResumoDaFicha({ doc }: { doc: DocumentoAuditoriaAjri }) {
-  const resumo = RESUMO_AJRI[doc.codigo];
+function ResumoDaFicha({
+  doc,
+  resumos,
+}: {
+  doc: DocumentoAuditoriaAjri;
+  resumos: Record<string, ResumoAjri> | null;
+}) {
+  const resumo = resumos?.[doc.codigo];
   if (!resumo) return null;
   return (
     <div className="mt-3 space-y-3 border-t border-border/60 pt-3">
@@ -676,8 +789,14 @@ const VEREDITO_COR: Record<VereditoAjri, string> = {
  * busca (`?q=`); notícia de ATI, instituição de justiça e imprensa abre na
  * fonte original — o portal nunca copia o conteúdo, só aponta.
  */
-function RelacionadosDaFicha({ doc }: { doc: DocumentoAuditoriaAjri }) {
-  const rel = useMemo(() => relacionadosDaFicha(doc), [doc]);
+function RelacionadosDaFicha({
+  doc,
+  acervo,
+}: {
+  doc: DocumentoAuditoriaAjri;
+  acervo: DocumentoAuditoriaAjri[];
+}) {
+  const rel = useMemo(() => relacionadosDaFicha(doc, acervo), [doc, acervo]);
   const total =
     rel.mesmosTemas.length +
     rel.noticiasAti.length +
