@@ -122,3 +122,8 @@ etl/betim/dados/sisema-fiscalizacao-barragens.json
 # justamente porque `git commit` sem caminho já levou o que não devia duas
 # vezes, 90 MB de índice à espreita é um susto barato de evitar.
 .qdrant_code_embeddings/
+
+# Offset de updates do Telegram usado pelo gatilho remoto (`scripts/gatilho-
+# remoto.mts`). É estado de runtime desta máquina; recriado automaticamente
+# quando o gatilho sobe e não tem valor em outro PC.
+scripts/.gatilho-offset
