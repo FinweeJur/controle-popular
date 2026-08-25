@@ -1,7 +1,9 @@
 import { describe, expect, test } from "vitest";
-import { AUDITORIA_AJRI } from "./auditoria-ajri";
+import { lerAuditoriaAjri } from "./auditoria-ajri-dados";
 import { relacionadosDaFicha, MAX_ITENS_POR_ACERVO } from "./relacionados";
 import { ESTUDOS_PERICIA_COM_TEMA } from "./pericia-ufmg";
+
+const AUDITORIA_AJRI = lerAuditoriaAjri();
 
 /**
  * A régua de relacionado é fixa (mesmo tema, até 180 dias, no máximo 3 por
