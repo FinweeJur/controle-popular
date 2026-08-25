@@ -1,5 +1,8 @@
 import { describe, expect, test } from "vitest";
-import { SINTESE_AJRI } from "./sintese-ajri";
+import { lerSinteseAjri } from "./sintese-ajri-dados";
+
+/** Sinônimo — dado agora no loader server-only. */
+const SINTESE_AJRI = lerSinteseAjri();
 
 const CODIGO = /\d{5}-ACM-[A-Z0-9-]{8,}/;
 /** A outra fonte que o gerador aceita — ver o cabeçalho de gerar-sintese-ajri.mts. */

@@ -12,8 +12,8 @@ import {
   MARCOS_PARAOPEBA,
   ATORES_REPARACAO,
   PAGAMENTOS_PARAOPEBA,
-  COBERTURA_DOCUMENTOS_PROCESSO,
 } from "@/lib/paraopeba";
+import { COBERTURA_DOCUMENTOS_PROCESSO } from "@/lib/paraopeba/documentos";
 // Fora do barril de propósito: `biblioteca.ts` lê disco com `node:fs`, e o
 // barril é importado por componente de cliente. Mesma razão de `radar.ts`.
 import { coberturaBiblioteca } from "@/lib/paraopeba/biblioteca";

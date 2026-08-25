@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import { COBERTURA_DOCUMENTOS_PROCESSO } from "@/lib/paraopeba";
+import { COBERTURA_DOCUMENTOS_PROCESSO } from "@/lib/paraopeba/documentos";
 import { formatNumberBR } from "@/lib/betim/format";
 import DocumentosClient from "./DocumentosClient";
 import { metadataEditavel } from "@/lib/edicoes";

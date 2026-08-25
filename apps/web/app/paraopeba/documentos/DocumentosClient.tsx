@@ -1,8 +1,41 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { DOCUMENTOS_PROCESSO, type DocumentoProcesso } from "@/lib/paraopeba";
+import { useEffect, useMemo, useState } from "react";
+import { type DocumentoProcesso } from "@/lib/paraopeba/documentos";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
+
+/**
+ * Os documentos NÃO moram mais num chunk importado: viraram asset estático
+ * (`public/data/documentos-paraopeba.json`) buscado uma vez por sessão e lido
+ * em Node pelo teste via `documentos-dados.ts`. Mesma lição do handoff de
+ * payload — dado grande fora do bundle, agora também fora do Worker (teto 3 MiB
+ * gzip, erro 10027 em 2026-08-25). Antes de carregar, `null`: a lista nasce
+ * vazia e popula.
+ */
+let documentosCache: Promise<DocumentoProcesso[]> | null = null;
+
+function buscarDocumentosProcesso(): Promise<DocumentoProcesso[]> {
+  if (!documentosCache) {
+    documentosCache = fetch("/data/documentos-paraopeba.json").then(
+      (r) => r.json() as Promise<DocumentoProcesso[]>
+    );
+  }
+  return documentosCache;
+}
+
+function useDocumentosProcesso(): DocumentoProcesso[] | null {
+  const [dados, setDados] = useState<DocumentoProcesso[] | null>(null);
+  useEffect(() => {
+    let vivo = true;
+    buscarDocumentosProcesso().then((d) => {
+      if (vivo) setDados(d);
+    });
+    return () => {
+      vivo = false;
+    };
+  }, []);
+  return dados;
+}
 
 /**
  * Filtro por município no cliente — mesmo padrão de `ClippingClient.tsx`:
@@ -12,30 +45,39 @@ import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
  */
 export default function DocumentosClient() {
   const [municipio, setMunicipio] = useState<string>("todos");
+  const documentos = useDocumentosProcesso();
 
   const municipiosComContagem = useMemo(() => {
+    if (!documentos) return [];
     const contagem = new Map<string, number>();
-    for (const d of DOCUMENTOS_PROCESSO) {
+    for (const d of documentos) {
       for (const m of d.municipios) {
         contagem.set(m.nome, (contagem.get(m.nome) ?? 0) + 1);
       }
     }
     return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
-  }, []);
+  }, [documentos]);
 
   const lista = useMemo(() => {
+    if (!documentos) return [];
     const base =
       municipio === "todos"
-        ? DOCUMENTOS_PROCESSO
-        : DOCUMENTOS_PROCESSO.filter((d) => d.municipios.some((m) => m.nome === municipio));
+        ? documentos
+        : documentos.filter((d) => d.municipios.some((m) => m.nome === municipio));
     return [...base].sort((a, b) => (b.data ?? "").localeCompare(a.data ?? ""));
-  }, [municipio]);
+  }, [municipio, documentos]);
 
   return (
     <section className="mt-8">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <h2 className="font-display text-lg font-semibold text-text">
-          {formatNumberBR(lista.length)} de {formatNumberBR(DOCUMENTOS_PROCESSO.length)} documentos
+          {documentos ? (
+            <>
+              {formatNumberBR(lista.length)} de {formatNumberBR(documentos.length)} documentos
+            </>
+          ) : (
+            "Carregando documentos..."
+          )}
         </h2>
         <div className="flex flex-col">
           <label htmlFor="municipio" className="mb-1 text-xs font-medium text-text-soft">

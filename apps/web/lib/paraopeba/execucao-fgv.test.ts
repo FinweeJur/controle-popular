@@ -4,9 +4,8 @@ import {
   PROJETOS_EXECUCAO_FGV,
   PROJETOS_ESPECIAIS_FGV,
   STATUS_PROJETOS_FGV,
-  REFERENCIA_EXECUCAO_FGV,
-  TOTAL_EXECUCAO_FGV,
-} from "./execucao-fgv";
+} from "./execucao-fgv-dados";
+import { REFERENCIA_EXECUCAO_FGV, TOTAL_EXECUCAO_FGV } from "./execucao-fgv";
 
 /**
  * `execucao-fgv.ts` é GERADO por `scripts/coletar-execucao-fgv.mts` a partir
