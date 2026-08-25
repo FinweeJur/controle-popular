@@ -1,5 +1,5 @@
 {
-  "gerado_em_utc": "2026-08-15T19:43:04.129Z",
+  "gerado_em_utc": "2026-08-24T21:51:37.502Z",
   "aviso": "Cada camada é uma foto da data em que foi gerada — nada aqui é ao vivo. O contorno das áreas derivadas é calculado por subtração de camadas públicas, não levantado em campo.",
   "fontes_automaticas": [
     {
@@ -213,6 +213,16 @@
       "servico": "IDE-Sisema (Semad-MG) — áreas embargadas por infração ambiental"
     },
     {
+      "camada": "estudos-ambientais",
+      "feicoes": 358,
+      "bytes": 152387,
+      "comprimido": false,
+      "sha256": "013e11604a604b5b75c6e641288c5fe040628e0c4f22ced456183045aa165a6e",
+      "mtime_utc": "2026-08-24T21:51:37.486Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
+    },
+    {
       "camada": "lotes-vagos-bh",
       "feicoes": 8525,
       "bytes": 3114001,
@@ -261,6 +271,16 @@
       "mtime_utc": "2026-08-11T14:55:52.409Z",
       "obtencao": "propria",
       "origem": "Levantamento em imprensa — ainda não coletado"
+    },
+    {
+      "camada": "presidios-mg",
+      "feicoes": 232,
+      "bytes": 87571,
+      "comprimido": false,
+      "sha256": "8e5303864ec57b71a161313f1a4eea74e68353311b5bcfd1d001dc8b226f802f",
+      "mtime_utc": "2026-08-24T21:51:37.502Z",
+      "obtencao": "nao_declarada",
+      "origem": "origem não declarada — acrescente esta camada a ORIGENS em scripts/gerar-proveniencia-globo.mjs"
     },
     {
       "camada": "sigmine-interesse",
@@ -422,6 +442,8 @@
   ],
   "lacuna_principal": "Não existe base aberta de terra devoluta reconhecida, nem camada de terras do Estado de Minas. Por isso o mapa mostra terra SEM CADASTRO, que é outra coisa: ausência de declaração no CAR não é ausência de dono.",
   "camadas_sem_origem_declarada": [
+    "estudos-ambientais",
+    "presidios-mg",
     "unidades-conservacao"
   ]
 }
