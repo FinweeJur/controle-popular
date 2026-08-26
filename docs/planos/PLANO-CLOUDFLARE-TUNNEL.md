@@ -1,8 +1,8 @@
 # PLANO — Cloudflare Tunnel como acesso remoto ao home-pc
 
-> **Tipo:** PLANO (contingência — executar só quando houver necessidade real)
+> **Tipo:** PLANO — **EXECUTADO em 26/08/2026** ✅
 > **Domínio:** global
-> **Criado:** 2026-08-25, na esteira do bloqueio de deploy (fila #30 do ESTADO.md)
+> **Criado:** 2026-08-25 · **Executado:** 2026-08-26 (ver "Desvios e aprendizados")
 > **Relacionados:** [GATILHO-REMOTO.md](../05-operacao/GATILHO-REMOTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [docs/planos/deploy-github-pages.md](deploy-github-pages.md)
 
 ## Sumário
@@ -107,3 +107,43 @@ Do lado de fora do tailnet (ex.: 4G do celular): abrir `painel.controlepopular.c
 autenticar por OTP de e-mail e ver o painel; disparar `/sincronizar` via
 `curl -H "Authorization: Bearer $GATILHO_TOKEN" https://gatilho.controlepopular.com.br/sincronizar`
 e receber a resposta assíncrona no Telegram.
+
+## Execução — 26/08/2026 ✅
+
+| Passo | Resultado |
+|---|---|
+| cloudflared instalado | `C:\DevCoder\tools\cloudflared.exe` (2026.8.2) — winget travou; download direto do GitHub com retomada |
+| Login | cert.pem JÁ existia (máquina já autorizada) — mas na conta da zona errada (ver desvios) |
+| Túnel criado | `controle-popular` (`e0d8ef85-e1c2-4958-b503-d7cc71556876`) |
+| config.yml | `C:\Users\Home\.cloudflared\config.yml`, ingress validado |
+| Access apps | gatilho + painel, e-mail do dono, OTP — **criadas pelo dono antes de rotear DNS** (gate respeitado) |
+| CNAMEs | criados na zona correta após re-login (desvio 1) |
+| Serviço Windows | Running/Automatic — exigiu `--config` explícito no binPath (desvio 2) |
+| Conexões edge | 2× ativas (`2xcnf01, 2xgig09`) |
+
+**Testes de borda:** `painel.*` → HTTP 302 para OTP ✅ · `gatilho.*` sem token →
+página *Sign in · Cloudflare Access* ✅ (Access intercepta antes do Bearer).
+Fluxo completo `/sincronizar` autenticado fica para a próxima janela de deploy
+(Worker está bloqueado por tamanho — fila #30 — e a árvore precisa limpa).
+
+### Desvios e aprendizados
+
+1. **Conta/zona do cert**: o `cert.pem` inicial era da conta cuja zona
+   `fozjuris.com.br` existe, então o primeiro `route dns` criou os CNAMEs
+   **dentro dessa zona** (`gatilho.controlepopular.com.br.fozjuris.com.br`) e
+   o hostname público não resolvia. Correção: novo `tunnel login` escolhendo a
+   conta dona de `controlepopular.com.br` → CNAMEs corretos.
+   **Pendência cosmética:** apagar o par de registros órfãos na zona
+   `fozjuris.com.br`.
+2. **Serviço sem ingress**: `service install` roda como LocalSystem e procura
+   config em `C:\Windows\System32\config\systemprofile\.cloudflared\` — subia
+   sem túnel nenhum. Correção: `sc config cloudflared binPath= "... --config
+   C:\Users\Home\.cloudflared\config.yml tunnel run"`.
+3. **Console visível recebeu Ctrl+C**: primeira tentativa de deixar o ouvinte
+   rodando via WMI abriu console na área de trabalho e morreu quando fechado.
+   Padrão adotado para processos longos do canário: `Start-Process -WindowStyle
+   Hidden` + stdin de `NUL`.
+4. **getUpdates em conflito**: três ouvintes duplicados disputando o mesmo bot
+   devolviam erro silencioso. Regra: matar toda a cadeia (cmd+npx+tsx+node)
+   antes de relançar — o contador de processos node conta a CADEIA inteira,
+   não ouvintes.
