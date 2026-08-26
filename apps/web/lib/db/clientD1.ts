@@ -2,6 +2,7 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import type { D1Database } from "@cloudflare/workers-types";
 import { drizzle } from "drizzle-orm/d1";
 import * as schemaD1 from "./schema.d1";
+import { D1HttpRest } from "./d1-http";
 
 /**
  * Acesso ao D1 — o banco das ESCRITAS AO VIVO (pageview, zap, clique,
@@ -36,22 +37,32 @@ interface EnvComD1 {
 export type DBEscritas = ReturnType<typeof drizzle<typeof schemaD1>>;
 
 /**
- * Conexão com o D1, ou `null` quando o binding `DB_ESCRITAS` não está
- * presente (dev local sem wrangler, ou downgrade de config).
+ * Conexão com o D1, em uma de duas formas:
  *
- * Sem memoização por módulo: diferente do Postgres HTTP (`getDb()`, que
- * memoiza uma URL fixa), o binding vem do contexto da REQUISIÇÃO atual
- * (`getCloudflareContext`), e cachear a primeira leitura prenderia todo
- * request seguinte ao binding resolvido no cold start do isolate.
+ * 1. Worker (padrão histórico): binding `DB_ESCRITAS` do contexto.
+ * 2. Home-pc como origem (2026-08-26): sem binding no runtime, usa
+ *    `D1HttpRest` via API HTTP quando `CLOUDFLARE_D1_API_TOKEN`,
+ *    `CLOUDFLARE_ACCOUNT_ID` e `CLOUDFLARE_D1_ID` estão definidos no
+ *    `.env.local`. Sem nada disso, devolve `null` — degrada, não quebra.
  */
 export async function getD1(): Promise<DBEscritas | null> {
   try {
     const { env } = await getCloudflareContext({ async: true });
     const binding = (env as EnvComD1).DB_ESCRITAS;
-    if (!binding) return null;
+    if (!binding) return getD1Http();
     return drizzle(binding, { schema: schemaD1 });
-  } catch (e) {
-    console.error("[getD1] falhou ao obter o binding DB_ESCRITAS; seguindo sem D1:", e);
-    return null;
+  } catch {
+    // Fora do runtime do Worker (next start/home-pc): getCloudflareContext lança.
+    return getD1Http();
   }
+}
+
+function getD1Http(): DBEscritas | null {
+  const token = process.env.CLOUDFLARE_D1_API_TOKEN;
+  const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
+  const databaseId = process.env.CLOUDFLARE_D1_ID;
+  if (!token || !accountId || !databaseId) return null;
+  return drizzle(new D1HttpRest(accountId, databaseId, token) as unknown as D1Database, {
+    schema: schemaD1,
+  });
 }
