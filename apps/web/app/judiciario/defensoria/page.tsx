@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
-import { COBERTURA_DEFENSORIA, COMARCAS_MG } from "@/lib/judiciario/defensoria-mg";
+import { COBERTURA_DEFENSORIA } from "@/lib/judiciario/defensoria-mg";
+import { lerComarcasMg } from "@/lib/judiciario/defensoria-mg-dados";
+
+/** Sinônimo — o dado agora vive no loader server-only. */
+const COMARCAS_MG = lerComarcasMg();
 import TabelaComarcas from "./TabelaComarcas";
 
 /**

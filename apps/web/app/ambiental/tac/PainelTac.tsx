@@ -1,10 +1,39 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Moeda from "@/app/components/Moeda";
 import { semAcento } from "@/lib/busca/normalizar";
 import { formatNumberBR } from "@/lib/betim/format";
-import { TAC_ACORDOS_PROJETOS, contratosParaCsv } from "@/lib/ambiental/tac-agregados";
+import { contratosParaCsv, type AcordoTacContrato } from "@/lib/ambiental/tac-agregados";
+
+/**
+ * Os 106 acordos saíram do bundle e viram asset estático
+ * (public/data/tac-projetos.json) — teto de 3 MiB gzip do Worker, erro 10027.
+ */
+let cacheAcordos: Promise<AcordoTacContrato[]> | null = null;
+
+function buscarAcordos(): Promise<AcordoTacContrato[]> {
+  if (!cacheAcordos) {
+    cacheAcordos = fetch("/data/tac-projetos.json")
+      .then((r) => r.json() as Promise<{ TAC_ACORDOS_PROJETOS: AcordoTacContrato[] }>)
+      .then((d) => d.TAC_ACORDOS_PROJETOS);
+  }
+  return cacheAcordos;
+}
+
+function useTacAcordos(): AcordoTacContrato[] {
+  const [lista, setLista] = useState<AcordoTacContrato[] | null>(null);
+  useEffect(() => {
+    let vivo = true;
+    buscarAcordos().then((d) => {
+      if (vivo) setLista(d);
+    });
+    return () => {
+      vivo = false;
+    };
+  }, []);
+  return lista ?? [];
+}
 
 /**
  * Os 106 contratos de TAC, buscáveis, filtráveis por mineradora/órgão/status/
@@ -55,6 +84,7 @@ const ROTULO_EXECUCAO: Record<string, string> = {
 };
 
 export default function PainelTac() {
+  const TAC_ACORDOS_PROJETOS = useTacAcordos();
   const [busca, setBusca] = useState("");
   const [mineradora, setMineradora] = useState(TODOS);
   const [orgao, setOrgao] = useState(TODOS);
@@ -281,7 +311,7 @@ export default function PainelTac() {
                     Transferido
                   </p>
                   <p className="mt-0.5 font-medium text-text">
-                    <Moeda value={c.transferido} />
+                    <Moeda value={c.transferido ?? 0} />
                   </p>
                 </div>
               </div>

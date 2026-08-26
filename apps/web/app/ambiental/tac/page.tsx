@@ -2,14 +2,18 @@ import type { Metadata } from "next";
 import Link from "@/lib/ambiental/link";
 import { formatCurrencyCompactaBR, formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import Moeda from "@/app/components/Moeda";
-import { COBERTURA_TAC_PROJETOS, TAC_POR_MINERADORA, TAC_POR_STATUS } from "@/lib/ambiental/tac-projetos";
+import {
+  COBERTURA_TAC_PROJETOS,
+  TAC_POR_MINERADORA,
+  TAC_POR_STATUS,
+} from "@/lib/ambiental/tac-projetos-dados";
 import { COBERTURA_TAC_GTAC } from "@/lib/ambiental/tac-gtac";
 import {
   COBERTURA_TAC_ACORDOS,
-  STATUS_ORDEM,
   TAC_ANO_ACORDOS,
   TAC_STATUS_POR_ORGAO,
-} from "@/lib/ambiental/tac-agregados";
+} from "@/lib/ambiental/tac-projetos-dados";
+import { STATUS_ORDEM } from "@/lib/ambiental/tac-agregados";
 import { metadataEditavel } from "@/lib/edicoes";
 import PainelTac from "./PainelTac";
 
