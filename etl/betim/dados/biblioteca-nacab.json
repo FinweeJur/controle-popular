@@ -1,0 +1,343 @@
+{
+  "coletado_em": "2026-08-26T17:38:19.056217+00:00",
+  "fonte": "https://nacab.org.br/projeto/paraopeba-estudos-e-publicacoes/",
+  "total": 48,
+  "publicacoes": [
+    {
+      "titulo": "Germinar 1",
+      "serie": "Germinar",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/06/germinar_1.pdf",
+      "nome_arquivo": "germinar_1.pdf",
+      "ano_mes_do_caminho": "2025-06"
+    },
+    {
+      "titulo": "Germinar 02",
+      "serie": "Germinar",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/06/germinar_02.pdf",
+      "nome_arquivo": "germinar_02.pdf",
+      "ano_mes_do_caminho": "2025-06"
+    },
+    {
+      "titulo": "Germinar 03",
+      "serie": "Germinar",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/06/germinar_03.pdf",
+      "nome_arquivo": "germinar_03.pdf",
+      "ano_mes_do_caminho": "2025-06"
+    },
+    {
+      "titulo": "Germinar 04 Jan 2025",
+      "serie": "Germinar",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/06/Germinar_04_JAN_2025.pdf",
+      "nome_arquivo": "Germinar_04_JAN_2025.pdf",
+      "ano_mes_do_caminho": "2025-06"
+    },
+    {
+      "titulo": "Germinar 05",
+      "serie": "Germinar",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/06/germinar-05.pdf",
+      "nome_arquivo": "germinar-05.pdf",
+      "ano_mes_do_caminho": "2025-06"
+    },
+    {
+      "titulo": "Germinar 06",
+      "serie": "Germinar",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/10/germinar_06.pdf",
+      "nome_arquivo": "germinar_06.pdf",
+      "ano_mes_do_caminho": "2025-10"
+    },
+    {
+      "titulo": "Germinar 07 Site",
+      "serie": "Germinar",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/12/germinar_07-site.pdf",
+      "nome_arquivo": "germinar_07-site.pdf",
+      "ano_mes_do_caminho": "2025-12"
+    },
+    {
+      "titulo": "Nec Jul 2025",
+      "serie": "Nacab em Campo",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/10/nec_jul_2025.pdf",
+      "nome_arquivo": "nec_jul_2025.pdf",
+      "ano_mes_do_caminho": "2025-10"
+    },
+    {
+      "titulo": "Nacab Em Campo Jan2025",
+      "serie": "Nacab em Campo",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/06/NACAB-EM-CAMPO_JAN2025.pdf",
+      "nome_arquivo": "NACAB-EM-CAMPO_JAN2025.pdf",
+      "ano_mes_do_caminho": "2025-06"
+    },
+    {
+      "titulo": "Nacab Em Campo Jul2024",
+      "serie": "Nacab em Campo",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/06/NACAB_EM_CAMPO_JUL2024.pdf",
+      "nome_arquivo": "NACAB_EM_CAMPO_JUL2024.pdf",
+      "ano_mes_do_caminho": "2025-06"
+    },
+    {
+      "titulo": "Nacab Em Campo Dez2023",
+      "serie": "Nacab em Campo",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/06/NACAB_EM_CAMPO_DEZ2023.pdf",
+      "nome_arquivo": "NACAB_EM_CAMPO_DEZ2023.pdf",
+      "ano_mes_do_caminho": "2025-06"
+    },
+    {
+      "titulo": "202307 Nacab Em Campo Semestre 1 Julho 2023",
+      "serie": "Nacab em Campo",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/07/202307_nacab_em_campo_semestre_1_julho_2023.pdf",
+      "nome_arquivo": "202307_nacab_em_campo_semestre_1_julho_2023.pdf",
+      "ano_mes_do_caminho": "2025-07"
+    },
+    {
+      "titulo": "Nec Janeiro2023 Web",
+      "serie": "Nacab em Campo",
+      "url": "https://nacab.org.br/wp-content/uploads/2023/02/NEC_JANEIRO2023_web.pdf",
+      "nome_arquivo": "NEC_JANEIRO2023_web.pdf",
+      "ano_mes_do_caminho": "2023-02"
+    },
+    {
+      "titulo": "20260304 Nec 2025 Web",
+      "serie": "Nacab em Campo",
+      "url": "https://nacab.org.br/wp-content/uploads/2026/04/20260304_nec_2025_web.pdf",
+      "nome_arquivo": "20260304_nec_2025_web.pdf",
+      "ano_mes_do_caminho": "2026-04"
+    },
+    {
+      "titulo": "Mobilizacao 1",
+      "serie": "Mobilização",
+      "url": "https://nacab.org.br/wp-content/uploads/2022/03/Mobilizacao-1.pdf",
+      "nome_arquivo": "Mobilizacao-1.pdf",
+      "ano_mes_do_caminho": "2022-03"
+    },
+    {
+      "titulo": "Mobilizacao 2",
+      "serie": "Mobilização",
+      "url": "https://nacab.org.br/wp-content/uploads/2022/05/Mobilizacao-2.pdf",
+      "nome_arquivo": "Mobilizacao-2.pdf",
+      "ano_mes_do_caminho": "2022-05"
+    },
+    {
+      "titulo": "Mobilizacao 3",
+      "serie": "Mobilização",
+      "url": "https://nacab.org.br/wp-content/uploads/2022/03/Mobilizacao-3.pdf",
+      "nome_arquivo": "Mobilizacao-3.pdf",
+      "ano_mes_do_caminho": "2022-03"
+    },
+    {
+      "titulo": "Mobilizacao 4",
+      "serie": "Mobilização",
+      "url": "https://nacab.org.br/wp-content/uploads/2022/03/Mobilizacao-4.pdf",
+      "nome_arquivo": "Mobilizacao-4.pdf",
+      "ano_mes_do_caminho": "2022-03"
+    },
+    {
+      "titulo": "Mobilizacao 5",
+      "serie": "Mobilização",
+      "url": "https://nacab.org.br/wp-content/uploads/2022/03/Mobilizacao-5.pdf",
+      "nome_arquivo": "Mobilizacao-5.pdf",
+      "ano_mes_do_caminho": "2022-03"
+    },
+    {
+      "titulo": "Boletim Mobilizacao 06 Ser Mulher Atingida",
+      "serie": "Mobilização",
+      "url": "https://nacab.org.br/wp-content/uploads/2022/03/Boletim-Mobilizacao-06-Ser-mulher-atingida.pdf",
+      "nome_arquivo": "Boletim-Mobilizacao-06-Ser-mulher-atingida.pdf",
+      "ano_mes_do_caminho": "2022-03"
+    },
+    {
+      "titulo": "Mobilizacao 07 1",
+      "serie": "Mobilização",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/09/mobilizacao_07-1.pdf",
+      "nome_arquivo": "mobilizacao_07-1.pdf",
+      "ano_mes_do_caminho": "2025-09"
+    },
+    {
+      "titulo": "Mobilizacao 008",
+      "serie": "Mobilização",
+      "url": "https://nacab.org.br/wp-content/uploads/2026/01/Mobilizacao-008.pdf",
+      "nome_arquivo": "Mobilizacao-008.pdf",
+      "ano_mes_do_caminho": "2026-01"
+    },
+    {
+      "titulo": "Reparacao 15 Pdf Site 1",
+      "serie": "Reparação",
+      "url": "https://nacab.org.br/wp-content/uploads/2026/07/Reparacao-15_PDF-site-1.pdf",
+      "nome_arquivo": "Reparacao-15_PDF-site-1.pdf",
+      "ano_mes_do_caminho": "2026-07"
+    },
+    {
+      "titulo": "Reparacao 14",
+      "serie": "Reparação",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/05/reparacao_14.pdf",
+      "nome_arquivo": "reparacao_14.pdf",
+      "ano_mes_do_caminho": "2025-05"
+    },
+    {
+      "titulo": "Reparacao 13 Digital",
+      "serie": "Reparação",
+      "url": "https://nacab.org.br/wp-content/uploads/2026/02/reparacao_13-DIGITAL.pdf",
+      "nome_arquivo": "reparacao_13-DIGITAL.pdf",
+      "ano_mes_do_caminho": "2026-02"
+    },
+    {
+      "titulo": "Reparacao 12 Site",
+      "serie": "Reparação",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/11/reparacao_12_site.pdf",
+      "nome_arquivo": "reparacao_12_site.pdf",
+      "ano_mes_do_caminho": "2025-11"
+    },
+    {
+      "titulo": "Reparacao 10 Web",
+      "serie": "Reparação",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/09/Reparacao_10_WEB.pdf",
+      "nome_arquivo": "Reparacao_10_WEB.pdf",
+      "ano_mes_do_caminho": "2025-09"
+    },
+    {
+      "titulo": "Reparacao 11Web",
+      "serie": "Reparação",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/05/reparacao_11web.pdf",
+      "nome_arquivo": "reparacao_11web.pdf",
+      "ano_mes_do_caminho": "2025-05"
+    },
+    {
+      "titulo": "Boletim 09 Web",
+      "serie": "Reparação",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/09/boletim_09_web.pdf",
+      "nome_arquivo": "boletim_09_web.pdf",
+      "ano_mes_do_caminho": "2025-09"
+    },
+    {
+      "titulo": "Reparacao 08 Web",
+      "serie": "Reparação",
+      "url": "https://nacab.org.br/wp-content/uploads/2023/05/REPARACAO_08_WEB.pdf",
+      "nome_arquivo": "REPARACAO_08_WEB.pdf",
+      "ano_mes_do_caminho": "2023-05"
+    },
+    {
+      "titulo": "Jornal Reparacao 07 Digital",
+      "serie": "Reparação",
+      "url": "https://nacab.org.br/wp-content/uploads/2022/12/Jornal-Reparacao_07_DIGITAL.pdf",
+      "nome_arquivo": "Jornal-Reparacao_07_DIGITAL.pdf",
+      "ano_mes_do_caminho": "2022-12"
+    },
+    {
+      "titulo": "Jornal Reparacao Edicao 06 1",
+      "serie": "Reparação",
+      "url": "https://nacab.org.br/wp-content/uploads/2022/08/Jornal-Reparacao-Edicao-06-1.pdf",
+      "nome_arquivo": "Jornal-Reparacao-Edicao-06-1.pdf",
+      "ano_mes_do_caminho": "2022-08"
+    },
+    {
+      "titulo": "Meta 17 Entrega 1",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2026/03/META-17-Entrega-1.pdf",
+      "nome_arquivo": "META-17-Entrega-1.pdf",
+      "ano_mes_do_caminho": "2026-03"
+    },
+    {
+      "titulo": "20260213 Lista De Projetos Ati R3 Paraopeba Nacab Versao Final 1",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2026/03/20260213_Lista-de-Projetos_ATI-R3-Paraopeba-NACAB-Versao-final-1.pdf",
+      "nome_arquivo": "20260213_Lista-de-Projetos_ATI-R3-Paraopeba-NACAB-Versao-final-1.pdf",
+      "ano_mes_do_caminho": "2026-03"
+    },
+    {
+      "titulo": "20251124 Nota Tecnica Estudo Sobre Assinatura Espectral",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/11/20251124_Nota-Tecnica-Estudo-sobre-Assinatura-Espectral.pdf",
+      "nome_arquivo": "20251124_Nota-Tecnica-Estudo-sobre-Assinatura-Espectral.pdf",
+      "ano_mes_do_caminho": "2025-11"
+    },
+    {
+      "titulo": "Relatorio Pesquisajurisprudencial 2023",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
+      "nome_arquivo": "Relatorio_PesquisaJurisprudencial_2023.pdf",
+      "ano_mes_do_caminho": "2025-07"
+    },
+    {
+      "titulo": "Pesquisa Mulheres Nacab",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/07/Pesquisa_Mulheres_NACAB.pdf",
+      "nome_arquivo": "Pesquisa_Mulheres_NACAB.pdf",
+      "ano_mes_do_caminho": "2025-07"
+    },
+    {
+      "titulo": "Cartilha Povos E Comunidades Tradicionais",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/07/Cartilha-Povos-e-Comunidades-Tradicionais.pdf",
+      "nome_arquivo": "Cartilha-Povos-e-Comunidades-Tradicionais.pdf",
+      "ano_mes_do_caminho": "2025-07"
+    },
+    {
+      "titulo": "Resultados Preliminares Das Coletas De Agua",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/09/Resultados-Preliminares-das-Coletas-de-Agua.pdf",
+      "nome_arquivo": "Resultados-Preliminares-das-Coletas-de-Agua.pdf",
+      "ano_mes_do_caminho": "2025-09"
+    },
+    {
+      "titulo": "20230706 Cartilha Ipe Amarelo V2",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/09/20230706_cartilha_ipe_amarelo_v2.pdf",
+      "nome_arquivo": "20230706_cartilha_ipe_amarelo_v2.pdf",
+      "ano_mes_do_caminho": "2025-09"
+    },
+    {
+      "titulo": "Nota Tecnica Ptr Versao Final1",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2025/10/Nota-tecnica-PTR-versao-Final1.pdf",
+      "nome_arquivo": "Nota-tecnica-PTR-versao-Final1.pdf",
+      "ano_mes_do_caminho": "2025-10"
+    },
+    {
+      "titulo": "Cartilha Aspectos Processuais Reparacao Individual",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2022/03/Cartilha_Aspectos_processuais_reparacao_individual.pdf",
+      "nome_arquivo": "Cartilha_Aspectos_processuais_reparacao_individual.pdf",
+      "ano_mes_do_caminho": "2022-03"
+    },
+    {
+      "titulo": "Tutorial Hidroweb Atir3 2023",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2023/01/Tutorial-Hidroweb_ATIR3_2023.pdf",
+      "nome_arquivo": "Tutorial-Hidroweb_ATIR3_2023.pdf",
+      "ano_mes_do_caminho": "2023-01"
+    },
+    {
+      "titulo": "Prescricao E Matriz De Danos No Caso Paraopeba E Tres Marias",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2021/12/Prescricao-e-Matriz-de-Danos-no-caso-Paraopeba-e-Tres-Marias.pdf",
+      "nome_arquivo": "Prescricao-e-Matriz-de-Danos-no-caso-Paraopeba-e-Tres-Marias.pdf",
+      "ano_mes_do_caminho": "2021-12"
+    },
+    {
+      "titulo": "Manifestacao Ctc Nacab",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2026/02/Manifestacao-CTC-Nacab.pdf",
+      "nome_arquivo": "Manifestacao-CTC-Nacab.pdf",
+      "ano_mes_do_caminho": "2026-02"
+    },
+    {
+      "titulo": "Notatecnica 02 2026",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2026/05/NotaTecnica_02-2026.pdf",
+      "nome_arquivo": "NotaTecnica_02-2026.pdf",
+      "ano_mes_do_caminho": "2026-05"
+    },
+    {
+      "titulo": "20260817 Relatorio Analitico Prt V2Corrigido",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2026/08/20260817_relatorio_analitico_prt_v2corrigido.pdf",
+      "nome_arquivo": "20260817_relatorio_analitico_prt_v2corrigido.pdf",
+      "ano_mes_do_caminho": "2026-08"
+    },
+    {
+      "titulo": "Nota Tecnica Finalistica 06 Suspensao Acoes Individuais",
+      "serie": "Estudos e Relatórios",
+      "url": "https://nacab.org.br/wp-content/uploads/2026/07/Nota-Tecnica-Finalistica-06-Suspensao-Acoes-Individuais.pdf",
+      "nome_arquivo": "Nota-Tecnica-Finalistica-06-Suspensao-Acoes-Individuais.pdf",
+      "ano_mes_do_caminho": "2026-07"
+    }
+  ]
+}

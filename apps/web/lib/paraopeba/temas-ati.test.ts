@@ -58,7 +58,7 @@ describe("ponte tema-livre-da-biblioteca -> TemaAjri", () => {
   });
 
   /**
-   * O número em si (238/645): medido em 2026-08-21 sobre o acervo publicado de
+   * O número em si (238/645): medido em 2026-08-26 sobre o acervo publicado de
    * verdade (597 AEDAS/Guaicuy com tema livre + 48 NACAB sem tema declarado,
    * que por isso não somam nada ao numerador). Ver o motivo de cada mapa no
    * cabeçalho de `temas-ati.ts`. Se este teste quebrar depois de uma coleta
@@ -66,19 +66,16 @@ describe("ponte tema-livre-da-biblioteca -> TemaAjri", () => {
    * aqui deliberadamente. Se quebrar sem nenhuma coleta nova, a REGRA de
    * mapeamento mudou, e é isso que este teste existe para pegar.
    */
-  test("cobertura travada: 238 dos 597 itens do acervo ganham ao menos um TemaAjri", async () => {
+  test("cobertura travada: 238 dos 645 itens do acervo ganham ao menos um TemaAjri", async () => {
     const cobertura = await coberturaTemasAti();
-    // ⟲ 597, não 645: os 48 do NACAB foram REVERTIDOS do acervo publicado em
-    // 21/08, porque apontavam direto para o `.pdf` — e a biblioteca aponta
-    // para a PÁGINA da fonte, nunca para o arquivo (regra travada em
-    // `biblioteca.test.ts`). O mapa de temas segue valendo para quando o
-    // NACAB entrar pela via certa; o que muda aqui é só o denominador.
-    expect(cobertura.total).toBe(597);
+    expect(cobertura.total).toBe(645);
     expect(cobertura.comTemaAjri).toBe(238);
   });
 
-  test("o acervo publicado ainda não tem NACAB — entra quando houver URL de página", async () => {
+  test("o acervo publicado agora tem 48 itens do NACAB", async () => {
     const itens = await bibliotecaAti();
-    expect(itens.filter((i) => i.ati === "nacab")).toEqual([]);
+    const nacab = itens.filter((i) => i.ati === "nacab");
+    expect(nacab.length).toBe(48);
+    expect(nacab.every((i) => i.temas.length === 0)).toBe(true);
   });
 });

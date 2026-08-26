@@ -26,13 +26,14 @@ describe("casamento estudo × notícia das ATIs", () => {
 
   /**
    * A trava pedida pela tarefa: "trave em teste o número de casamentos
-   * fortes — se cair, alguém afrouxou a régua". Medido em 21/08/2026: 5
-   * fortes (er05→Revista Cinco Anos, pj11→Resumo da perícia UFMG,
-   * ra02/ra04/ra05→Informes AECOM da biblioteca), 1 média (pj05→Dossiê
-   * Acesso à Justiça), 7 nulas (o resto — ver `motivo` de cada uma).
+   * fortes — se cair, alguém afrouxou a régua". Medido em 26/08/2026: 7
+   * fortes (er05→Revista Cinco Anos, pj08/in01→Relatório Pesquisa Jurisprudencial
+   * do NACAB, pj11→Resumo da perícia UFMG, ra02/ra04/ra05→Informes AECOM da
+   * biblioteca), 1 média (pj05→Dossiê Acesso à Justiça), 5 nulas (o resto —
+   * ver `motivo` de cada uma).
    */
-  test("casamentos fortes não caem abaixo de 5", () => {
-    expect(COBERTURA_CASAMENTO_ESTUDO.fortes).toBe(5);
+  test("casamentos fortes não caem abaixo de 7", () => {
+    expect(COBERTURA_CASAMENTO_ESTUDO.fortes).toBe(7);
   });
 
   test("toda notícia sem documento tem motivo escrito — null nunca é silencioso", () => {
@@ -93,11 +94,10 @@ describe("casamento estudo × notícia das ATIs", () => {
     expect(pj08?.noticia.url).toBe(in01?.noticia.url);
   });
 
-  test("nenhuma notícia do NACAB casa com a biblioteca — buraco do dado-fonte, não da busca", () => {
-    const nacab = CASAMENTOS_ESTUDO_NOTICIA.filter((c) => c.noticia.ati === "nacab");
-    expect(nacab.length).toBeGreaterThan(0);
-    for (const c of nacab) {
-      expect(c.documento, `${c.noticia.id}: NACAB não deveria casar com biblioteca-ati (zero itens de NACAB nela)`).toBeNull();
-    }
+  test("notícias do NACAB sobre pesquisa jurisprudencial casam com o relatório da biblioteca", () => {
+    const pj08 = CASAMENTOS_ESTUDO_NOTICIA.find((c) => c.noticia.id === "pj08");
+    const in01 = CASAMENTOS_ESTUDO_NOTICIA.find((c) => c.noticia.id === "in01");
+    expect(pj08?.documento?.id).toBe("nacab-relatorio-pesquisajurisprudencial-2023");
+    expect(in01?.documento?.id).toBe("nacab-relatorio-pesquisajurisprudencial-2023");
   });
 });

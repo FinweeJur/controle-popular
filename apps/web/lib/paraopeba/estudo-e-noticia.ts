@@ -155,6 +155,14 @@ const INFORME_AECOM_DEZ_2025: DocumentoCasado = {
   data: "2025-12-23",
 };
 
+const RELATORIO_PESQUISA_JURISPRUDENCIAL_NACAB: DocumentoCasado = {
+  fonte: "biblioteca-ati",
+  id: "nacab-relatorio-pesquisajurisprudencial-2023",
+  titulo: "Relatório — Pesquisa Jurisprudencial (2023)",
+  url: "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
+  data: "2023",
+};
+
 // ═══ Os 13 pares, na ordem em que aparecem em CLIPPING_ATI ═══
 
 const CASAMENTOS_BRUTOS: CasamentoBruto[] = [
@@ -208,7 +216,7 @@ const CASAMENTOS_BRUTOS: CasamentoBruto[] = [
     evidencia:
       '"Estudo científico do NACAB publicado na revista Remote Sensing Applications Society and Environment" — publicação científica externa, do NACAB.',
     motivo:
-      '`biblioteca-ati.json` promete 48 itens do NACAB nos metadados (`fontes[2].itens === 48`), mas o array `itens` (597 registros = 435 AEDAS + 162 Guaicuy, soma exata SEM o NACAB) não tem NENHUM item com `ati: "nacab"`. Os 48 itens prometidos nunca entraram no arquivo final — buraco do dado-fonte, fora do escopo desta tarefa. Nenhuma notícia do NACAB casa com a biblioteca enquanto isso não for corrigido.',
+      "A biblioteca-ati cataloga o material que o NACAB publica em seu próprio site (PDFs em nacab.org.br). Este estudo foi publicado num periódico científico externo (Remote Sensing Applications Society and Environment), não no acervo próprio da ATI — está fora do escopo desta biblioteca por definição, não por falha de busca.",
   },
   {
     noticiaId: "pj05",
@@ -219,12 +227,10 @@ const CASAMENTOS_BRUTOS: CasamentoBruto[] = [
   },
   {
     noticiaId: "pj08",
-    documento: null,
-    forca: "nula",
+    documento: RELATORIO_PESQUISA_JURISPRUDENCIAL_NACAB,
+    forca: "forte",
     evidencia:
-      '"Um estudo do NACAB com amostra representativa revelou que 80% das ações individuais tiveram resultados desfavoráveis" — mesma autoria (NACAB) e MESMA url da notícia in01 (nacab.org.br/justica-suspende-acoes-individuais-de-reparacao/), embora com data e resumo diferentes no clipping-fonte.',
-    motivo:
-      "Mesmo buraco de er08 — zero itens do NACAB na biblioteca. Nota à parte: pj08 e in01 apontam para a MESMA url em `clipping-ati.ts` — provável duplicidade de cadastro no painel-fonte original (`painel-paraopeba (V1).html`), não erro deste módulo.",
+      '"Um estudo do NACAB com amostra representativa revelou que 80% das ações individuais tiveram resultados desfavoráveis" (notícia, NACAB) — o "Relatório — Pesquisa Jurisprudencial (2023)" do NACAB (biblioteca) é o único documento da própria ATI com esse tema e bate com o ano/referência da pesquisa citada.',
   },
   {
     noticiaId: "pj11",
@@ -256,11 +262,10 @@ const CASAMENTOS_BRUTOS: CasamentoBruto[] = [
   },
   {
     noticiaId: "in01",
-    documento: null,
-    forca: "nula",
+    documento: RELATORIO_PESQUISA_JURISPRUDENCIAL_NACAB,
+    forca: "forte",
     evidencia:
-      '"Pesquisa jurisprudencial do NACAB com amostra representativa das ações individuais no TJMG revela que 80% dos processos tiveram resultado desfavorável" — MESMA url de pj08 (ver nota lá): nacab.org.br/justica-suspende-acoes-individuais-de-reparacao/.',
-    motivo: "Mesmo buraco de er08/pj08 — zero itens do NACAB na biblioteca.",
+      '"Pesquisa jurisprudencial do NACAB com amostra representativa das ações individuais no TJMG revela que 80% dos processos tiveram resultado desfavorável" (notícia, NACAB) — mesma pesquisa jurisprudencial relatada em pj08, com o mesmo documento da biblioteca: "Relatório — Pesquisa Jurisprudencial (2023)".',
   },
 ];
 

@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-08-15T17:13:11.790910+00:00",
+ "gerado_em": "2026-08-26T17:39:14.994Z",
  "fontes": [
   {
    "ati": "aedas",
@@ -20,9 +20,19 @@
    "metodo": "sitemap por tipo de post + página de cada item (tipos 'publicacao' e 'video' não estão na REST)",
    "id": "guaicuy",
    "itens": 162
+  },
+  {
+   "ati": "nacab",
+   "nome": "NACAB — Assessoria Técnica Independente da Região 3",
+   "site": "https://nacab.org.br/",
+   "regioes": "Região 3",
+   "licenca": "não declarada — nenhuma página de termos ou licença localizada nesta coleta; tratado como direitos reservados",
+   "metodo": "raspagem de https://nacab.org.br/projeto/paraopeba-estudos-e-publicacoes/ — a série de cada PDF é lida do <h2> imediatamente anterior ao link, por posição no documento (ver X:\\DevCoder\\_lote-ambiental\\coletar_nacab.py); sem REST nem sitemap dedicado, e sem página própria por item (por isso a URL de cada item aqui é o PDF)",
+   "id": "nacab",
+   "itens": 48
   }
  ],
- "ficou_de_fora": "ADAI (adaibrasil.org.br): 19 publicações, todas de Amazônia/Fundo Amazônia, zero com o programa 'paraopeba' — não tem documento desta bacia para catalogar. NACAB (Região 3): sem biblioteca própria publicada. Notícias das três ATIs: ficam fora desta biblioteca por decisão registrada em docs/FONTES-BIBLIOTECA-ATI.md.",
+ "ficou_de_fora": "ADAI (adaibrasil.org.br): 19 publicações, todas de Amazônia/Fundo Amazônia, zero com o programa 'paraopeba' — não tem documento desta bacia para catalogar. NACAB (Região 3): biblioteca de PDFs coletada (48 itens, 5 séries: Estudos e Relatórios, Reparação, Mobilização, Germinar, Nacab em Campo) — mas a página-fonte não declara data de publicação por item, só a pasta de upload (não confiável como data), então todo item do NACAB aqui tem `data: null`. Notícias das três ATIs: ficam fora desta biblioteca por decisão registrada em docs/FONTES-BIBLIOTECA-ATI.md.",
  "itens": [
   {
    "id": "aedas-41899",
@@ -10262,6 +10272,726 @@
    "url": "https://guaicuy.org.br/biblioteca/publicacoes/1o-boletim-saude/",
    "autoria": "AMICD",
    "origem": "Produção própria"
+  },
+  {
+   "id": "nacab-germinar-1",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Germinar nº 1",
+   "data": null,
+   "tipo": "Germinar",
+   "temas": [],
+   "colecoes": [
+    "Germinar"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/06/germinar_1.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-germinar-02",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Germinar nº 2",
+   "data": null,
+   "tipo": "Germinar",
+   "temas": [],
+   "colecoes": [
+    "Germinar"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/06/germinar_02.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-germinar-03",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Germinar nº 3",
+   "data": null,
+   "tipo": "Germinar",
+   "temas": [],
+   "colecoes": [
+    "Germinar"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/06/germinar_03.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-germinar-04-jan-2025",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Germinar nº 4",
+   "data": null,
+   "tipo": "Germinar",
+   "temas": [],
+   "colecoes": [
+    "Germinar"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/06/Germinar_04_JAN_2025.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-germinar-05",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Germinar nº 5",
+   "data": null,
+   "tipo": "Germinar",
+   "temas": [],
+   "colecoes": [
+    "Germinar"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/06/germinar-05.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-germinar-06",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Germinar nº 6",
+   "data": null,
+   "tipo": "Germinar",
+   "temas": [],
+   "colecoes": [
+    "Germinar"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/10/germinar_06.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-germinar-07-site",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Germinar nº 7",
+   "data": null,
+   "tipo": "Germinar",
+   "temas": [],
+   "colecoes": [
+    "Germinar"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/12/germinar_07-site.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-nec-jul-2025",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Nacab em Campo — julho de 2025",
+   "data": null,
+   "tipo": "Nacab em Campo",
+   "temas": [],
+   "colecoes": [
+    "Nacab em Campo"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/10/nec_jul_2025.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-nacab-em-campo-jan2025",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Nacab em Campo — janeiro de 2025",
+   "data": null,
+   "tipo": "Nacab em Campo",
+   "temas": [],
+   "colecoes": [
+    "Nacab em Campo"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/06/NACAB-EM-CAMPO_JAN2025.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-nacab-em-campo-jul2024",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Nacab em Campo — julho de 2024",
+   "data": null,
+   "tipo": "Nacab em Campo",
+   "temas": [],
+   "colecoes": [
+    "Nacab em Campo"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/06/NACAB_EM_CAMPO_JUL2024.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-nacab-em-campo-dez2023",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Nacab em Campo — dezembro de 2023",
+   "data": null,
+   "tipo": "Nacab em Campo",
+   "temas": [],
+   "colecoes": [
+    "Nacab em Campo"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/06/NACAB_EM_CAMPO_DEZ2023.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-202307-nacab-em-campo-semestre-1-julho-2023",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Nacab em Campo — 1º semestre de 2023",
+   "data": null,
+   "tipo": "Nacab em Campo",
+   "temas": [],
+   "colecoes": [
+    "Nacab em Campo"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/07/202307_nacab_em_campo_semestre_1_julho_2023.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-nec-janeiro2023-web",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Nacab em Campo — janeiro de 2023",
+   "data": null,
+   "tipo": "Nacab em Campo",
+   "temas": [],
+   "colecoes": [
+    "Nacab em Campo"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2023/02/NEC_JANEIRO2023_web.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-20260304-nec-2025-web",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Nacab em Campo — 2025",
+   "data": null,
+   "tipo": "Nacab em Campo",
+   "temas": [],
+   "colecoes": [
+    "Nacab em Campo"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2026/04/20260304_nec_2025_web.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-mobilizacao-1",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Mobilização nº 1",
+   "data": null,
+   "tipo": "Boletins",
+   "temas": [],
+   "colecoes": [
+    "Mobilização"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2022/03/Mobilizacao-1.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-mobilizacao-2",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Mobilização nº 2",
+   "data": null,
+   "tipo": "Boletins",
+   "temas": [],
+   "colecoes": [
+    "Mobilização"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2022/05/Mobilizacao-2.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-mobilizacao-3",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Mobilização nº 3",
+   "data": null,
+   "tipo": "Boletins",
+   "temas": [],
+   "colecoes": [
+    "Mobilização"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2022/03/Mobilizacao-3.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-mobilizacao-4",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Mobilização nº 4",
+   "data": null,
+   "tipo": "Boletins",
+   "temas": [],
+   "colecoes": [
+    "Mobilização"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2022/03/Mobilizacao-4.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-mobilizacao-5",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Mobilização nº 5",
+   "data": null,
+   "tipo": "Boletins",
+   "temas": [],
+   "colecoes": [
+    "Mobilização"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2022/03/Mobilizacao-5.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-boletim-mobilizacao-06-ser-mulher-atingida",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Mobilização nº 6 — Ser mulher atingida",
+   "data": null,
+   "tipo": "Boletins",
+   "temas": [],
+   "colecoes": [
+    "Mobilização"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2022/03/Boletim-Mobilizacao-06-Ser-mulher-atingida.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-mobilizacao-07-1",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Mobilização nº 7",
+   "data": null,
+   "tipo": "Boletins",
+   "temas": [],
+   "colecoes": [
+    "Mobilização"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/09/mobilizacao_07-1.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-mobilizacao-008",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Mobilização nº 8",
+   "data": null,
+   "tipo": "Boletins",
+   "temas": [],
+   "colecoes": [
+    "Mobilização"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2026/01/Mobilizacao-008.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-reparacao-15-pdf-site-1",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Jornal Reparação nº 15",
+   "data": null,
+   "tipo": "Jornal",
+   "temas": [],
+   "colecoes": [
+    "Reparação"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2026/07/Reparacao-15_PDF-site-1.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-reparacao-14",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Jornal Reparação nº 14",
+   "data": null,
+   "tipo": "Jornal",
+   "temas": [],
+   "colecoes": [
+    "Reparação"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/05/reparacao_14.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-reparacao-13-digital",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Jornal Reparação nº 13",
+   "data": null,
+   "tipo": "Jornal",
+   "temas": [],
+   "colecoes": [
+    "Reparação"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2026/02/reparacao_13-DIGITAL.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-reparacao-12-site",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Jornal Reparação nº 12",
+   "data": null,
+   "tipo": "Jornal",
+   "temas": [],
+   "colecoes": [
+    "Reparação"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/11/reparacao_12_site.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-reparacao-10-web",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Jornal Reparação nº 10",
+   "data": null,
+   "tipo": "Jornal",
+   "temas": [],
+   "colecoes": [
+    "Reparação"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/09/Reparacao_10_WEB.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-reparacao-11web",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Jornal Reparação nº 11",
+   "data": null,
+   "tipo": "Jornal",
+   "temas": [],
+   "colecoes": [
+    "Reparação"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/05/reparacao_11web.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-boletim-09-web",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Jornal Reparação nº 9",
+   "data": null,
+   "tipo": "Jornal",
+   "temas": [],
+   "colecoes": [
+    "Reparação"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/09/boletim_09_web.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-reparacao-08-web",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Jornal Reparação nº 8",
+   "data": null,
+   "tipo": "Jornal",
+   "temas": [],
+   "colecoes": [
+    "Reparação"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2023/05/REPARACAO_08_WEB.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-jornal-reparacao-07-digital",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Jornal Reparação nº 7",
+   "data": null,
+   "tipo": "Jornal",
+   "temas": [],
+   "colecoes": [
+    "Reparação"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2022/12/Jornal-Reparacao_07_DIGITAL.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-jornal-reparacao-edicao-06-1",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Jornal Reparação nº 6",
+   "data": null,
+   "tipo": "Jornal",
+   "temas": [],
+   "colecoes": [
+    "Reparação"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2022/08/Jornal-Reparacao-Edicao-06-1.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-meta-17-entrega-1",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Meta 17 — Entrega 1",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2026/03/META-17-Entrega-1.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-20260213-lista-de-projetos-ati-r3-paraopeba-nacab-versao-final-1",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Lista de Projetos — ATI R3 Paraopeba (NACAB)",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2026/03/20260213_Lista-de-Projetos_ATI-R3-Paraopeba-NACAB-Versao-final-1.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-20251124-nota-tecnica-estudo-sobre-assinatura-espectral",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Nota Técnica — Estudo sobre Assinatura Espectral",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/11/20251124_Nota-Tecnica-Estudo-sobre-Assinatura-Espectral.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-relatorio-pesquisajurisprudencial-2023",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Relatório — Pesquisa Jurisprudencial (2023)",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/07/Relatorio_PesquisaJurisprudencial_2023.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-pesquisa-mulheres-nacab",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Pesquisa Mulheres NACAB",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/07/Pesquisa_Mulheres_NACAB.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-cartilha-povos-e-comunidades-tradicionais",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Cartilha — Povos e Comunidades Tradicionais",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/07/Cartilha-Povos-e-Comunidades-Tradicionais.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-resultados-preliminares-das-coletas-de-agua",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Resultados Preliminares das Coletas de Água",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/09/Resultados-Preliminares-das-Coletas-de-Agua.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-20230706-cartilha-ipe-amarelo-v2",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Cartilha — Ipê Amarelo",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/09/20230706_cartilha_ipe_amarelo_v2.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-nota-tecnica-ptr-versao-final1",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Nota Técnica — PTR",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2025/10/Nota-tecnica-PTR-versao-Final1.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-cartilha-aspectos-processuais-reparacao-individual",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Cartilha — Aspectos Processuais da Reparação Individual",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2022/03/Cartilha_Aspectos_processuais_reparacao_individual.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-tutorial-hidroweb-atir3-2023",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Tutorial Hidroweb — ATI R3 (2023)",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2023/01/Tutorial-Hidroweb_ATIR3_2023.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-prescricao-e-matriz-de-danos-no-caso-paraopeba-e-tres-marias",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Prescrição e Matriz de Danos no Caso Paraopeba e Três Marias",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2021/12/Prescricao-e-Matriz-de-Danos-no-caso-Paraopeba-e-Tres-Marias.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-manifestacao-ctc-nacab",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Manifestação — CTC/NACAB",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2026/02/Manifestacao-CTC-Nacab.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-notatecnica-02-2026",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Nota Técnica nº 02/2026",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2026/05/NotaTecnica_02-2026.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-20260817-relatorio-analitico-prt-v2corrigido",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Relatório Analítico — PRT",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2026/08/20260817_relatorio_analitico_prt_v2corrigido.pdf",
+   "autoria": null,
+   "origem": null
+  },
+  {
+   "id": "nacab-nota-tecnica-finalistica-06-suspensao-acoes-individuais",
+   "ati": "nacab",
+   "fonte_id": "nacab",
+   "titulo": "Nota Técnica Finalística nº 6 — Suspensão de Ações Individuais",
+   "data": null,
+   "tipo": "Documentos Técnicos",
+   "temas": [],
+   "colecoes": [
+    "Estudos e Relatórios"
+   ],
+   "url": "https://nacab.org.br/wp-content/uploads/2026/07/Nota-Tecnica-Finalistica-06-Suspensao-Acoes-Individuais.pdf",
+   "autoria": null,
+   "origem": null
   }
  ]
 }
