@@ -1,14 +1,43 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { semAcento } from "@/lib/busca/normalizar";
 import { formatNumberBR } from "@/lib/betim/format";
 import { ordenarPor, type Direcao, type TipoCampo } from "@/lib/tabela/ordenar";
 import {
-  COMARCAS_MG,
   COBERTURA_DEFENSORIA,
   type ComarcaDefensoria,
 } from "@/lib/judiciario/defensoria-mg";
+
+/**
+ * As comarcas saíram do bundle e viram asset estático
+ * (public/data/comarcas-mg.json) buscado uma vez por sessão — mesmo padrão
+ * de ConveniosClient/TabelaPresidios. Teto de 3 MiB gzip do Worker (10027).
+ */
+let comarcasCache: Promise<ComarcaDefensoria[]> | null = null;
+
+function buscarComarcas(): Promise<ComarcaDefensoria[]> {
+  if (!comarcasCache) {
+    comarcasCache = fetch("/data/comarcas-mg.json").then(
+      (r) => r.json() as Promise<ComarcaDefensoria[]>
+    );
+  }
+  return comarcasCache;
+}
+
+function useComarcasMg(): ComarcaDefensoria[] {
+  const [lista, setLista] = useState<ComarcaDefensoria[]>([]);
+  useEffect(() => {
+    let vivo = true;
+    buscarComarcas().then((d) => {
+      if (vivo) setLista(d);
+    });
+    return () => {
+      vivo = false;
+    };
+  }, []);
+  return lista;
+}
 
 /**
  * As 298 comarcas de Minas Gerais, uma a uma: busca, filtra por atendida em
@@ -121,6 +150,7 @@ function opcoes<T extends string | null>(vals: T[]): string[] {
 }
 
 export default function TabelaComarcas() {
+  const COMARCAS_MG = useComarcasMg();
   const [busca, setBusca] = useState("");
   const [atendida, setAtendida] = useState(TODOS);
   const [ordem, setOrdem] = useState<{ chave: ChaveOrdenavel; direcao: Direcao } | null>({
@@ -129,7 +159,7 @@ export default function TabelaComarcas() {
   });
   const [mostrando, setMostrando] = useState(POR_PAGINA);
 
-  const listaAtendida = useMemo(() => opcoes(COMARCAS_MG.map((c) => c.atendida2025)), []);
+  const listaAtendida = useMemo(() => opcoes(COMARCAS_MG.map((c) => c.atendida2025)), [COMARCAS_MG]);
 
   const filtradas = useMemo(() => {
     const termo = semAcento(busca.trim().toLowerCase());

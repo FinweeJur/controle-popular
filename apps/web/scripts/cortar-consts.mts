@@ -16,7 +16,7 @@ const marcas = nomes
 for (const { n, i: bruto } of marcas) {
   if (bruto === -1) throw new Error(`não achei ${n}`);
   const i = texto.lastIndexOf("\n", bruto) + 1;
-  const re = /\r?\n\]( as const)?;\r?\n/g;
+  const re = /\r?\n\]( as const)?;\r?\n|\r?\n\);\r?\n/g;
   re.lastIndex = i;
   const m = re.exec(texto);
   if (!m) throw new Error(`fecho ] não achado para ${n}`);

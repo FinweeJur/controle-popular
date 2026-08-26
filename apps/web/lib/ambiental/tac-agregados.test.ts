@@ -1,14 +1,17 @@
 import { describe, expect, test } from "vitest";
-import { COBERTURA_TAC_PROJETOS, TAC_POR_ANO, TAC_POR_PROJETO } from "./tac-projetos";
+import { COBERTURA_TAC_PROJETOS } from "./tac-projetos-dados";
+import { TAC_POR_ANO, TAC_POR_PROJETO } from "./tac-projetos-dados";
 import {
-  COBERTURA_TAC_ACORDOS,
   STATUS_ORDEM,
-  TAC_ACORDOS_PROJETOS,
-  TAC_ANO_ACORDOS,
-  TAC_STATUS_POR_ORGAO,
   contratosParaCsv,
   type AcordoTacContrato,
 } from "./tac-agregados";
+import {
+  COBERTURA_TAC_ACORDOS,
+  TAC_ACORDOS_PROJETOS,
+  TAC_ANO_ACORDOS,
+  TAC_STATUS_POR_ORGAO,
+} from "./tac-projetos-dados";
 
 /**
  * `tac-agregados.ts` cruza `tac-projetos.ts` (entidade `projetos`) com a
@@ -44,7 +47,7 @@ describe("Agregados TAC (cruzamento projetos × empresas, SEMAD/MG)", () => {
     // Se uma chave de TAC_POR_PROJETO não achasse par no complemento, ela
     // cairia no valor-padrão `transferido: 0` e esta soma ficaria MENOR do
     // que o total medido no cruzamento com as 848 linhas ano-a-ano.
-    const soma = TAC_ACORDOS_PROJETOS.reduce((t, c) => t + c.transferido, 0);
+    const soma = TAC_ACORDOS_PROJETOS.reduce((t, c) => t + (c.transferido ?? 0), 0);
     expect(soma).toBeCloseTo(COBERTURA_TAC_ACORDOS.transferidoComCancelados, 2);
   });
 
