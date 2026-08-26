@@ -215,6 +215,24 @@ async function loopTelegram() {
           log(`Telegram: mensagem de chat_id não autorizado (${msg.chat.id}), ignorada`);
           continue;
         }
+        // Ponte do plugin opencode (canario-telegram.ts): /ok <id> e
+        // /negar <id> aprovam/negam pedidos de permissão remota. Grava na
+        // fila de respostas que o plugin consulta; não passa pelo mapa de
+        // COMANDOS de propósito.
+        const passthrough = /^\/(ok|negar) \S+/.exec(msg.text.trim());
+        if (passthrough) {
+          const dirPonte = path.join(RAIZ, ".opencode", "canario");
+          fs.mkdirSync(dirPonte, { recursive: true });
+          fs.appendFileSync(
+            path.join(dirPonte, "respostas.log"),
+            `${Date.now()}\t${msg.text.trim()}\n`
+          );
+          await telegramApi("sendMessage", {
+            chat_id: msg.chat.id,
+            text: "Anotado — o plugin do opencode lê isso em segundos.",
+          });
+          continue;
+        }
         const comando = COMANDOS[msg.text.trim()];
         if (!comando) {
           await telegramApi("sendMessage", {
