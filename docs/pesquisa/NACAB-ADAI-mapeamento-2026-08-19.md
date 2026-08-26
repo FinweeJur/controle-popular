@@ -120,8 +120,11 @@ seletor real.
    listadas. Decidir se ADAI SUBSTITUI uma ocupante anterior da Regiao 2 ou
    preenche vaga nova — muda o texto, nao so o dado.
 2. Corrigir `coletar-biblioteca-ati.py`:
-   - adicionar coletor de NACAB (raspagem tipo Elementor, titulo do nome do
-     arquivo, serie pelo `h2` mais proximo, data do path `uploads/AAAA/MM`);
+   - ✅ NACAB resolvido em 2026-08-26: `etl/betim/etl/apis/biblioteca_nacab.py`
+     coleta a pagina, gera `etl/betim/dados/biblioteca-nacab.json`, e
+     `scripts/coletar-biblioteca-nacab.mts` integra os 48 itens em
+     `biblioteca-ati.json` (com excecao documentada para URL de PDF, ja que a
+     fonte nao tem pagina de item).
    - adicionar coletor de IBGP (`/conexao/biblioteca` — texto ancora ja
      legivel, mais simples; confirmar HTML bruto antes de escrever);
    - adicionar coletor de ADAI, mas SO NOTICIAS do Paraopeba (nao a
