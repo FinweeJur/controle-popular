@@ -39,13 +39,22 @@ describe("biblioteca das ATIs", () => {
    * não copiar". Um link direto para `.pdf`/`.docx` faria a tela entregar o
    * arquivo sem passar pela fonte — que é quem responde por ele e pode
    * corrigi-lo — e valeria como redistribuição de obra sem licença declarada.
+   *
+   * Exceção documentada: o NACAB não publica uma página individual por item —
+   * sua biblioteca é uma única página de listagem com links diretos para os
+   * PDFs. Para essa fonte, a URL do arquivo é a única referência honesta; o
+   * portal continua não hospedando o arquivo, apenas linkando para ele.
    */
-  test("nenhum item aponta para o arquivo, só para a página da fonte", async () => {
+  test("nenhum item aponta para o arquivo, só para a página da fonte (exceto NACAB)", async () => {
     const itens = await bibliotecaAti();
-    const arquivos = itens.filter((i) =>
-      /\.(pdf|docx?|xlsx?|pptx?|zip)(\?|#|$)/i.test(i.url)
+    const arquivos = itens.filter(
+      (i) => i.ati !== "nacab" && /\.(pdf|docx?|xlsx?|pptx?|zip)(\?|#|$)/i.test(i.url)
     );
     expect(arquivos).toEqual([]);
+    // Garante que a exceção não esvaziou o NACAB por engano.
+    const nacab = itens.filter((i) => i.ati === "nacab");
+    expect(nacab.length).toBeGreaterThan(0);
+    expect(nacab.every((i) => i.url.startsWith("https://nacab.org.br/"))).toBe(true);
   });
 
   test("todo item aponta para o domínio da própria ATI, em https", async () => {
@@ -53,6 +62,7 @@ describe("biblioteca das ATIs", () => {
     const dominio: Record<string, string> = {
       aedas: "https://aedasmg.org/",
       guaicuy: "https://guaicuy.org.br/",
+      nacab: "https://nacab.org.br/",
     };
     const fora = itens.filter((i) => !i.url.startsWith(dominio[i.ati] ?? "\0"));
     expect(fora).toEqual([]);

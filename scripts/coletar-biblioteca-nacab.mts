@@ -81,7 +81,7 @@ import { fileURLToPath } from "node:url";
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
-const FONTE_BRUTA = "X:/DevCoder/_lote-ambiental/saida/nacab.json";
+const FONTE_BRUTA = resolve(RAIZ, "etl/betim/dados/biblioteca-nacab.json");
 const DESTINO = resolve(RAIZ, "apps/web/public/data/biblioteca-ati.json");
 
 const SO_CONFERIR = process.argv.includes("--conferir");
@@ -97,7 +97,6 @@ interface NacabBruto {
   coletado_em: string;
   fonte: string;
   total: number;
-  por_serie: Record<string, number>;
   publicacoes: PublicacaoNacabBruta[];
 }
 
@@ -284,12 +283,6 @@ function main() {
         `mas ${bruto.publicacoes.length} publicações no array`
     );
   }
-  for (const [serie, n] of Object.entries(bruto.por_serie)) {
-    const real = bruto.publicacoes.filter((p) => p.serie === serie).length;
-    if (real !== n) {
-      throw new Error(`nacab.json inconsistente: por_serie diz ${serie}=${n}, medido ${real}`);
-    }
-  }
 
   const itensNovos = bruto.publicacoes.map(transformar);
 
@@ -347,8 +340,12 @@ function main() {
     itens: [...itensPreservados, ...itensNovos],
   };
 
+  const porSerie = bruto.publicacoes.reduce<Record<string, number>>((acc, p) => {
+    acc[p.serie ?? "(sem serie)"] = (acc[p.serie ?? "(sem serie)"] ?? 0) + 1;
+    return acc;
+  }, {});
   console.log(`NACAB: ${itensNovos.length} itens (esperado 48)`);
-  for (const [serie, n] of Object.entries(bruto.por_serie)) {
+  for (const [serie, n] of Object.entries(porSerie)) {
     console.log(`   ${serie.padEnd(24)} ${n}`);
   }
   console.log(`total combinado: ${combinado.itens.length} (${itensPreservados.length} preservados + ${itensNovos.length} novos)`);
