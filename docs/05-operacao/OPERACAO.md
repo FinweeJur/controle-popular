@@ -27,12 +27,42 @@ Este arquivo é o procedimento de operação do portal: quem publica, como colet
 | | |
 |---|---|
 | Publica | **somente o home-pc** — é a única máquina com Postgres local |
+| Servidor de produção | `next start -p 3000` no home-pc, exposto por **Cloudflare Tunnel** (`controle-popular`, `e0d8ef85-e1c2-4958-b503-d7cc71556876`) |
+| Domínio | `controlepopular.com.br` e `www.controlepopular.com.br` apontam para o túnel (CNAME para `e0d8ef85-e1c2-4958-b503-d7cc71556876.cfargotunnel.com`) |
+| Worker Cloudflare | continua deployado como **fallback técnico**, mas sem custom domains ativas |
 | Banco | Postgres local em `127.0.0.1:5432` (dump restaurado); Neon em HTTP 402 até 01/09 |
+| D1 (escritas) | binding Worker OU fallback REST via `CLOUDFLARE_D1_API_TOKEN` (necessário no modo túnel) |
 | Tarefa do Windows | `Controle Popular - rotina diaria`, 06:00, `StartWhenAvailable`, teto 4 h |
 | Log | `logs/rotina-<carimbo>-<pid>.log` — a última linha diz `publicado.` ou `ABORTADO:` |
 | Conferir | `Get-ScheduledTaskInfo -TaskName 'Controle Popular - rotina diaria'` (resultado 0 = publicou) |
 
 Nesta máquina de desenvolvimento **não dá para buildar nem medir `.cache`**: não há banco, e a medida de tamanho de rota acontece no build. Se a tarefa depender disso, diga em vez de estimar.
+
+### Manter o site no ar (modo túnel)
+
+O `next start` é o processo de produção. Se ele cair, o site fica fora.
+
+```powershell
+# Verificar se está rodando
+Get-Process node | Where-Object { $_.CommandLine -match 'next start' }
+
+# Iniciar oculto (o comando padrão do handoff)
+Start-Process -FilePath "C:\DevCoder\controle-popular\apps\web\node_modules\.bin\next.cmd" `
+  -ArgumentList "start","-p","3000" `
+  -WorkingDirectory "C:\DevCoder\controle-popular\apps\web" `
+  -WindowStyle Hidden
+
+# Verificar túnel
+& 'C:\DevCoder\tools\cloudflared.exe' --config 'C:\Users\Home\.cloudflared\config.yml' tunnel info controle-popular
+
+# Reiniciar túnel (se mudar config.yml)
+& 'C:\DevCoder\tools\cloudflared.exe' --config 'C:\Users\Home\.cloudflared\config.yml' tunnel service restart
+```
+
+Regras:
+- **ATD (Bitdefender) desligado** durante operações longas (build, `next start`, deploy).
+- **NUNCA** use `Set-Content`/`Get-Content` do PowerShell 5.1 em arquivos TS/TSX — corrompe UTF-8.
+- Credenciais ficam em `.env.local`; token D1 é obrigatório para writes no modo túnel.
 
 ## Ciclo de coleta
 
@@ -88,9 +118,11 @@ Alvo alternativo, com gatilho **manual** e decisões em aberto — não é o cam
 
 | Onde | O quê |
 |---|---|
-| `apps/web/.env.local` | `DATABASE_URL` (localhost), `PAINEL_TOKEN` (painel de edição; fail-closed sem ele), `BETTER_AUTH_SECRET`, `RESEND_API_KEY` |
+| `apps/web/.env.local` | `DATABASE_URL` (localhost), `PAINEL_TOKEN` (painel de edição; fail-closed sem ele), `BETTER_AUTH_SECRET`, `RESEND_API_KEY`, `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_D1_ID`, `CLOUDFLARE_D1_API_TOKEN` (modo túnel) |
 | `etl/*/.env` | `DATABASE_URL` de cada ETL |
 | ambiente do wrangler | `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`, ou `wrangler login` |
+| `scripts/.env` | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` |
+| `C:\Users\Home\.cloudflared\e0d8ef85-e1c2-4958-b503-d7cc71556876.json` | tunnel credentials |
 
 Nunca commit: `.env.local`, `.env`, dumps, cookies, tokens, chaves. Regra imutável: na máquina de build, `DATABASE_URL` é 127.0.0.1, ponto — o egress da Neon (~0,4 GB por rodada num teto de 5 GB/mês) era queimado exatamente por essa leitura.
 

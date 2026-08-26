@@ -3,7 +3,8 @@
 > **Tipo:** PLANO — **EXECUTADO em 26/08/2026** ✅
 > **Domínio:** global
 > **Criado:** 2026-08-25 · **Executado:** 2026-08-26 (ver "Desvios e aprendizados")
-> **Relacionados:** [GATILHO-REMOTO.md](../05-operacao/GATILHO-REMOTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [docs/planos/deploy-github-pages.md](deploy-github-pages.md)
+> **Atualizado:** 2026-08-26 — fase 2 concluída: domínio principal no ar via túnel, `next start` como origin server
+> **Relacionados:** [GATILHO-REMOTO.md](../05-operacao/GATILHO-REMOTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [ESTADO.md](../02-estado/ESTADO.md), [docs/planos/deploy-github-pages.md](deploy-github-pages.md)
 
 ## Sumário
 
@@ -103,10 +104,13 @@ estado local além do serviço instalado.
 
 ## Critério de aceite
 
-Do lado de fora do tailnet (ex.: 4G do celular): abrir `painel.controlepopular.com.br`,
-autenticar por OTP de e-mail e ver o painel; disparar `/sincronizar` via
-`curl -H "Authorization: Bearer $GATILHO_TOKEN" https://gatilho.controlepopular.com.br/sincronizar`
-e receber a resposta assíncrona no Telegram.
+Do lado de fora do tailnet (ex.: 4G do celular):
+
+- [x] `https://controlepopular.com.br/` responde 200 servido pelo home-pc via túnel.
+- [ ] `https://controlepopular.com.br/betim/painel-do-cidadao` e outras rotas respondem 200 (bloqueado: custom domains do Worker ainda ativos).
+- [ ] `https://painel.controlepopular.com.br` autenticar por OTP de e-mail e ver o painel.
+- [ ] Disparar `/sincronizar` via `curl -H "Authorization: Bearer $GATILHO_TOKEN" https://gatilho.controlepopular.com.br/sincronizar` e receber a resposta assíncrona no Telegram.
+- [ ] POST `/api/pageview` escreve no D1 via REST fallback (precisa de `CLOUDFLARE_D1_API_TOKEN`).
 
 ## Execução — 26/08/2026 ✅
 
@@ -125,6 +129,25 @@ e receber a resposta assíncrona no Telegram.
 página *Sign in · Cloudflare Access* ✅ (Access intercepta antes do Bearer).
 Fluxo completo `/sincronizar` autenticado fica para a próxima janela de deploy
 (Worker está bloqueado por tamanho — fila #30 — e a árvore precisa limpa).
+
+## Fase 2 — domínio principal no ar via túnel (26/08/2026) ✅
+
+Após o Worker Free bater no teto de 3 MiB gzip (erro 10027) mesmo com ~2 MB de dado externalizado, o dono decidiu migrar a origem do tráfego público para o túnel. O Worker continua deployado como fallback técnico, mas sem custom domains ativas.
+
+| Passo | Resultado |
+|---|---|
+| `next start -p 3000` | rodando como processo hidden no home-pc (PID confirmado) |
+| Túnel | `controle-popular` conectado com 2 conexões edge ativas |
+| DNS | `controlepopular.com.br` e `www.controlepopular.com.br` roteados para o túnel |
+| Smoke local | `/`, `/betim/painel-do-cidadao`, `/paraopeba/auditoria` → HTTP 200, conteúdo não-vazio |
+| Smoke público parcial | `https://controlepopular.com.br/` → HTTP 200; subrotas ainda retornam 404 porque os custom domains do Worker ainda não foram removidos |
+
+### Próximas ações (dependem do dono)
+
+1. **Remover custom domains** `controlepopular.com.br` e `www.controlepopular.com.br` do Worker/Pages no dashboard.
+2. **Criar D1 API Token** (`Account > Cloudflare D1 > Edit`) e colar em `apps/web/.env.local` como `CLOUDFLARE_D1_API_TOKEN`.
+3. Reiniciar `next start` para carregar o token.
+4. Smoke público completo: `curl https://controlepopular.com.br/betim/painel-do-cidadao` e POST `/api/pageview`.
 
 ### Desvios e aprendizados
 

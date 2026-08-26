@@ -2,10 +2,10 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-08-22 (atualizado em 2026-08-22 após merge de `seo-fundacao` e `revisao-dados`)
+> **Última medição:** 2026-08-26 (atualizado após migração para Cloudflare Tunnel)
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** estado, fila, bloqueios, divida tecnica, decisoes, plano unico, neon, build
+> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** estado, fila, bloqueios, divida tecnica, decisoes, plano unico, neon, build, tunnel
 
 ## Sumário
 
@@ -29,6 +29,8 @@ Estado medido do portal controlepopular.com.br: o que está no ar, o que está b
 > Duplicar detalhe foi o que fez o plano da expansão envelhecer em um dia.
 
 ## No ar agora
+
+**Modo de publicação (a partir de 26/08/2026):** o site é servido por `next start` no `home-pc`, exposto à internet via **Cloudflare Tunnel** (`controle-popular`, `e0d8ef85-e1c2-4958-b503-d7cc71556876`). O Worker Cloudflare continua deployado, mas **sem custom domains** — ele só existe como fallback técnico. O domínio `controlepopular.com.br` (e `www`) aponta para o túnel, não mais para o Worker. Ver detalhes operacionais em [OPERACAO.md](../05-operacao/OPERACAO.md) e o histórico da decisão em [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md).
 
 Publicado em 15/08 (build no `home-pc`, deploy passou). Seis frentes:
 
@@ -129,16 +131,18 @@ abaixo.
 | 27 | Licença da fonte *Icones do Brasil* | ⛔ | **decisão do dono, ainda em aberto** — e já está no repositório: 22 ícones mapeados em `BrasilIcon.tsx`. Licença **não verificada** (fonttoolbox "Unknown", fonts2u "Personal use"); uso público pede autorização do autor ou troca de fonte. *Brasil Icons* (a outra) é donationware e está resolvida com crédito |
 | 28 | Fundir `ARQUITETURA.md` × `MAPA-APLICACAO.md` | ⛔ | **decisão do dono, ainda em aberto**: os dois abrem descrevendo stack e deploy, e o MAPA ainda se intitula "Leilões.app / controle-popular". Recomendado: sobrevive `ARQUITETURA.md` (é o que `AGENTS.md` manda ler), absorvendo o que o MAPA tem de único — quem sumir quebra os links de `docs/LEIA-PRIMEIRO.md:27`. Conferir na fusão uma terceira divergência: `AGENTS.md` diz `output: export`, ARQUITETURA e MAPA dizem que **não** é export, é OpenNext |
 | 29 | Espelhar o código no Gitee | 🟡 | **decidido em 22/08** (decisão 13), sem data. É **espelho**: a CI não se muda — os 6 ETLs, `dado-pessoal.yml` e `prazos-lai.yml` são GitHub Actions e reescrevê-los seria o custo real da migração. Medido em 22/08: o repositório é público no GitHub, então não há segredo a reavaliar antes de espelhar. **A confirmar antes de abrir conta:** o Gitee exige verificação de identidade e submete repositório novo a revisão antes de ficar público — regra de plataforma, não deste projeto, e não foi medida aqui |
-| 30 | Fechar os ~370-500 KiB gzip que faltam no Worker (rota Free) | 🟡 | **decisão do dono em 25/08 (via canário Telegram): seguir na rota Free**, sem plano pago. Já externalizados ~2 MB de dado em dez frentes (ver commits `760533c`, `59cc769`, `2762398`, `3120dab`). O que resta no handler é código de rota + runtime, não dado — próxima etapa é varredura sistemática por literais médios (10–40 KB) e avaliar se o pacote cliente do barril Paraopeba (`clipping*`, `atores`, `linha-do-tempo`, `auxilio`; ~226 KB raw) vira asset com fetch, como os outros. Alternativa declarada e rejeitada por ora: Workers Paid US$5/mês (limite sobe para 10 MiB) |
+| 30 | Publicar o portal após o bloqueio do Worker Free (erro 10027) | ✅ | **resolvido em 26/08 via Cloudflare Tunnel + `next start` no home-pc**. O Worker continua deployado sem custom domains; `controlepopular.com.br` e `www` apontam para o túnel. Pendências operacionais: dono remover custom domains do Worker e criar `CLOUDFLARE_D1_API_TOKEN` para escrita D1 via REST fallback (sem isso, `/api/pageview` e writes similares falham). Ver [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md) |
 | 31 | Canário Telegram com interação automática | ✅ | entregue em 25/08: `scripts/gatilho-remoto.mts` rodando como ouvinte permanente no `home-pc` (Telegram long-poll + HTTP só no tailnet), respondendo `/status` e `/sincronizar` (fail-closed com árvore suja); novos `scripts/avisar-telegram.mts` (enviar status do deploy) e `scripts/ler-updates-telegram.mts` (ler respostas do dono). Credenciais em `scripts/.env`, nunca versionadas |
 
 ## Bloqueios
 
 | Bloqueio | Até | O que desbloqueia |
 |---|---|---|
-| Neon em HTTP 402 | 01/09 | pagar/vencer o prazo — sem banco não há `next build` nesta máquina |
-| **Worker Free 3 MiB gzip (erro 10027)** | aberto | **publicar a versão de 22/08** — mesmo com ~2 MB de dado já externalizado (commits `59cc769`, `2762398`, `3120dab`, `760533c`), o handler segue ~370 KiB acima do teto; o resto é código das 4.852 rotas + runtime, não dado. Decisão do dono (25/08, via canário): seguir na rota Free — ver fila #30 |
-| Build e publicação só no `home-pc` | — | rodar a rotina local no `home-pc`; ou abrir OpenSSH nele (uma configuração, e publicar deixa de depender de quem está no teclado) |
+| Neon em HTTP 402 | 01/09 | pagar/vencer o prazo — sem banco não há `next build` nesta máquina. No modo túnel, o build continua no home-pc; a máquina de dev não builda |
+| **Worker Free 3 MiB gzip (erro 10027)** | ✅ resolvido em 26/08 | publicação migrou para **Cloudflare Tunnel + `next start` no home-pc**. O Worker continua deployado, mas sem custom domains; o domínio aponta para o túnel. Ver fila #30 e [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md) |
+| Build e publicação só no `home-pc` | — | no modo túnel, `next start` no home-pc é o servidor de produção; build e deploy do Worker são opcionais/fallback |
+| **D1 API Token para escrita via REST** | aguardando dono | criar token `Account > Cloudflare D1 > Edit` e colar em `apps/web/.env.local` como `CLOUDFLARE_D1_API_TOKEN`; sem isso, `/api/pageview` e outras writes no D1 falham no modo túnel |
+| Remoção de custom domains do Worker | aguardando dono | no dashboard Workers & Pages, remover `controlepopular.com.br` e `www.controlepopular.com.br` do Worker; enquanto existirem, o DNS pode continuar resolvendo para o Worker antigo em vez do túnel |
 | Rede bloqueada na máquina de dev (WinError 10013) | — | navegador do dono para sondagens (foi assim que as duas correções do ComunicaBR saíram) |
 | LAI INCRA — login humano | **2026-08-28** (prorrogação concedida) | acessar o Fala.BR, localizar o pedido e anotar o protocolo em `docs/LAI-PROTOCOLOS.json` — o dono cuida disso |
 | Índice estático pendente de Postgres local | — | banco local com as cargas novas (Rouanet, ComunicaBR por município, repasse) — quem mede índice precisa do banco |
