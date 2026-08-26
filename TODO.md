@@ -38,6 +38,9 @@
   ambiental (`6db83fcd-58ec-4439-9e9e-dd83e9ba0b9a`).
   · `/ambiental/licenciamento` e `/copam` têm as cinco coisas no código mas
   renderizam vazio enquanto a Neon estiver em 402 — não é regressão.
+  · **ComunicaBR indexado por município** — `gerar-indice-busca.mts` inclui
+  os indicadores publicados de cada cidade de MG; 5 cidades ativas do portal
+  ganharam documento no índice (26/08).
 
 - **As 4 trilhas paralelas de 22/08 — MESCLADAS em `main` (local, sem
   push ainda).** Rodaram simultâneas via workflow (4 agentes, 466 chamadas de
