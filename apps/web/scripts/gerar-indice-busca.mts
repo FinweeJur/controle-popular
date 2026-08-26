@@ -70,6 +70,7 @@
  *    — daí a ordem "unaccent primeiro" valer nos dois lados.
  */
 
+import { readFileSync } from "node:fs";
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -91,6 +92,8 @@ import {
 import { TIPO_PROPOSICAO_LABELS } from "../lib/betim/vereadores.js";
 import { arquivosDoIndice, arquivosDeIndiceVazio, type ArquivoIndice } from "../lib/estatico/emitir.js";
 import type { ManifestoFatias } from "../lib/estatico/fatiar.js";
+import { expandirArquivo, type ArquivoComunicaBR } from "../lib/comunicabr/arquivo.js";
+import type { ItemComunicaBR } from "../lib/comunicabr/indicadores.js";
 
 /** Ementa exibida/conferida por frase — texto INDEXADO (tsvector/formas) usa
  *  sempre a versão INTEIRA, não a truncada (ver `registrar` abaixo). */
@@ -131,6 +134,7 @@ async function main() {
 
   const cidades = await listarCidades();
   const slugPorMunicipio = new Map(cidades.map((c) => [c.id_municipio as string, c.slug]));
+  const slugPorCodigoComunica = new Map(cidades.map((c) => [c.id_municipio.slice(0, 6), c.slug]));
 
   const docs: Omit<DocumentoIndexado, "i">[] = [];
   const vocabEntradas: { docId: number; lexemas: string[] }[] = [];
@@ -379,6 +383,52 @@ async function main() {
     );
   }
 
+  // ─────────────────────────── comunicabr ───────────────────────────
+  const comunicaBrPath = path.resolve(AQUI, "../public/data/comunicabr-31.json");
+  let comunicaDocs = 0;
+  try {
+    const arquivoComunica = JSON.parse(readFileSync(comunicaBrPath, "utf8")) as ArquivoComunicaBR;
+    const municipiosComunica = expandirArquivo(arquivoComunica);
+    for (const m of municipiosComunica) {
+      const cod6 = String(m.codigoIbge).padStart(6, "0");
+      const slug = slugPorCodigoComunica.get(cod6);
+      if (!slug) {
+        municipiosSemSlug++;
+        continue;
+      }
+      const itensComValor: ItemComunicaBR[] = [];
+      for (const c of m.categorias) {
+        for (const i of c.itens) {
+          if (i.valor !== null) itensComValor.push(i);
+        }
+      }
+      if (itensComValor.length === 0) continue;
+      const texto = itensComValor
+        .map((i) => `${i.categoria} ${i.subindicador} ${i.titulo} ${i.fonte ?? ""}`)
+        .join(" ");
+      const nomeExibido = m.nomeIbge.replace(/\/[A-Z]{2}$/, "");
+      const fontes = [...new Set(itensComValor.map((i) => i.fonte).filter((f): f is string => Boolean(f)))].slice(0, 5);
+      const ementa = `${nomeExibido}: ${itensComValor.length} indicador(es) do governo federal publicado(s) — ${fontes.join(", ")}`;
+      const { rows } = await db.execute<{ tsv: string }>(sql`
+        select to_tsvector('portuguese', public.unaccent_immutable(${texto}))::text as tsv
+      `);
+      registrar(
+        {
+          t: `${nomeExibido} no ComunicaBR`,
+          e: truncarEmenta(ementa, LIMITE_EMENTA),
+          h: `/dados/comunicabr/${cod6}`,
+          f: "cidades",
+          m: slug,
+        },
+        texto,
+        rows[0]?.tsv ?? ""
+      );
+      comunicaDocs++;
+    }
+  } catch (e) {
+    console.warn("[gerar-indice-busca] ComunicaBR nao indexado:", (e as Error).message);
+  }
+
   // ─────────────────────────── formas (lote único) ───────────────────────────
   const listaSuperficies = [...superficies];
   type ParFormaRadical = { forma: string; radical: string | null };
@@ -425,7 +475,7 @@ async function main() {
 
   console.log("[gerar-indice-busca] indice gravado em", DIR_SAIDA);
   console.log(
-    `  docs: ${rDocs.linhas} (cidades ${porZona.cidades}, congresso ${porZona.congresso}, judiciario ${porZona.judiciario}) — ` +
+    `  docs: ${rDocs.linhas} (cidades ${porZona.cidades}${comunicaDocs ? ` incl. ${comunicaDocs} ComunicaBR` : ""}, congresso ${porZona.congresso}, judiciario ${porZona.judiciario}) — ` +
       `${rDocs.fatias} fatia(s), ${(rDocs.bytes / 1024).toFixed(0)} KB`
   );
   console.log(
