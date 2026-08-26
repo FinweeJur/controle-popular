@@ -141,8 +141,8 @@ abaixo.
 | Neon em HTTP 402 | 01/09 | pagar/vencer o prazo — sem banco não há `next build` nesta máquina. No modo túnel, o build continua no home-pc; a máquina de dev não builda |
 | **Worker Free 3 MiB gzip (erro 10027)** | ✅ resolvido em 26/08 | publicação migrou para **Cloudflare Tunnel + `next start` no home-pc**. O Worker continua deployado, mas sem custom domains; o domínio aponta para o túnel. Ver fila #30 e [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md) |
 | Build e publicação só no `home-pc` | — | no modo túnel, `next start` no home-pc é o servidor de produção; build e deploy do Worker são opcionais/fallback |
-| **D1 API Token para escrita via REST** | aguardando dono | criar token `Account > Cloudflare D1 > Edit` e colar em `apps/web/.env.local` como `CLOUDFLARE_D1_API_TOKEN`; sem isso, `/api/pageview` e outras writes no D1 falham no modo túnel |
-| Remoção de custom domains do Worker | aguardando dono | no dashboard Workers & Pages, remover `controlepopular.com.br` e `www.controlepopular.com.br` do Worker; enquanto existirem, o DNS pode continuar resolvendo para o Worker antigo em vez do túnel |
+| **D1 API Token para escrita via REST** | ✅ resolvido em 26/08 | token criado pelo dono e colado em `apps/web/.env.local`; POST `/api/pageview` grava no D1 via REST fallback e GET `/api/pageview` retorna ranking |
+| Remoção de custom domains do Worker | ✅ resolvido em 26/08 | custom domains removidos do dashboard; DNS aponta para o túnel `controle-popular` |
 | Rede bloqueada na máquina de dev (WinError 10013) | — | navegador do dono para sondagens (foi assim que as duas correções do ComunicaBR saíram) |
 | LAI INCRA — login humano | **2026-08-28** (prorrogação concedida) | acessar o Fala.BR, localizar o pedido e anotar o protocolo em `docs/LAI-PROTOCOLOS.json` — o dono cuida disso |
 | Índice estático pendente de Postgres local | — | banco local com as cargas novas (Rouanet, ComunicaBR por município, repasse) — quem mede índice precisa do banco |

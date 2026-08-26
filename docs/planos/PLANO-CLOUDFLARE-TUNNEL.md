@@ -107,10 +107,10 @@ estado local além do serviço instalado.
 Do lado de fora do tailnet (ex.: 4G do celular):
 
 - [x] `https://controlepopular.com.br/` responde 200 servido pelo home-pc via túnel.
-- [ ] `https://controlepopular.com.br/betim/painel-do-cidadao` e outras rotas respondem 200 (bloqueado: custom domains do Worker ainda ativos).
+- [x] `https://controlepopular.com.br/betim/painel-do-cidadao` e outras rotas respondem 200.
 - [ ] `https://painel.controlepopular.com.br` autenticar por OTP de e-mail e ver o painel.
 - [ ] Disparar `/sincronizar` via `curl -H "Authorization: Bearer $GATILHO_TOKEN" https://gatilho.controlepopular.com.br/sincronizar` e receber a resposta assíncrona no Telegram.
-- [ ] POST `/api/pageview` escreve no D1 via REST fallback (precisa de `CLOUDFLARE_D1_API_TOKEN`).
+- [x] POST `/api/pageview` escreve no D1 via REST fallback.
 
 ## Execução — 26/08/2026 ✅
 
@@ -140,14 +140,13 @@ Após o Worker Free bater no teto de 3 MiB gzip (erro 10027) mesmo com ~2 MB de 
 | Túnel | `controle-popular` conectado com 2 conexões edge ativas |
 | DNS | `controlepopular.com.br` e `www.controlepopular.com.br` roteados para o túnel |
 | Smoke local | `/`, `/betim/painel-do-cidadao`, `/paraopeba/auditoria` → HTTP 200, conteúdo não-vazio |
-| Smoke público parcial | `https://controlepopular.com.br/` → HTTP 200; subrotas ainda retornam 404 porque os custom domains do Worker ainda não foram removidos |
+| Smoke público completo | `/`, `/betim/painel-do-cidadao`, `/betim/prefeitura/contratos`, `/betim/legislacao`, `/betim/terras/cruzamentos`, `/empresas`, `/paraopeba/auditoria`, `/ambiental/convenios`, `/judiciario/inspecoes`, `/ambiental/decisoes-lai`, `/ambiental/tac`, `/assistente` → HTTP 200, conteúdo não-vazio |
+| Escrita D1 via REST | POST `/api/pageview?path=/` → `{"ok":true}`; GET `/api/pageview?limit=5` retorna ranking |
 
-### Próximas ações (dependem do dono)
+### Próximas ações
 
-1. **Remover custom domains** `controlepopular.com.br` e `www.controlepopular.com.br` do Worker/Pages no dashboard.
-2. **Criar D1 API Token** (`Account > Cloudflare D1 > Edit`) e colar em `apps/web/.env.local` como `CLOUDFLARE_D1_API_TOKEN`.
-3. Reiniciar `next start` para carregar o token.
-4. Smoke público completo: `curl https://controlepopular.com.br/betim/painel-do-cidadao` e POST `/api/pageview`.
+- Monitorar estabilidade do `next start` e do serviço `cloudflared`.
+- Quando o limite do Worker Free for resolvido (plano pago ou nova redução de bundle), reavaliar retorno ao deploy direto no Worker.
 
 ### Desvios e aprendizados
 
