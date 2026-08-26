@@ -111,7 +111,7 @@ RE_HOST_LOCAL = re.compile("@(127[.]0[.]0[.]1|localhost|::1)")
 # prÃ³prio validador. `12345678909` Ã© mod-11 VÃLIDO e Ã© o CPF canÃ´nico de teste
 # no Brasil â€” precisa estar aqui justamente porque passa na rÃ©gua: sem ele, o
 # teste que verifica se o validador funciona seria barrado por este script.
-SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900", "47018614139", # falso positivo: vetor de teste da propria guarda (sem-cpf-no-repo.test.ts) e ja publico em origin/main via ckan-mg-siafi.ts
+SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900", "47018614139", # falso positivo: agregado financeiro do SIAFI (R$ bi) capturado como inteiro pelo grep — dinheiro, nao CPF
               "12345678909", "123.456.789-09"}
 
 

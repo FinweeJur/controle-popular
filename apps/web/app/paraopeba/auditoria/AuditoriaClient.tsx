@@ -19,6 +19,43 @@ import {
 import { ATI_LABEL } from "@/lib/paraopeba/clipping-ati";
 import { INSTITUICAO_JUSTICA_LABEL } from "@/lib/paraopeba/clipping-ij";
 import { relacionadosDaFicha } from "@/lib/paraopeba/relacionados";
+import { type NoticiaAti } from "@/lib/paraopeba/clipping-ati";
+import { type NoticiaInstituicaoJustica } from "@/lib/paraopeba/clipping-ij";
+import { type EstudoPericiaComTema } from "@/lib/paraopeba/pericia-ufmg";
+import { type NoticiaClipping } from "@/lib/paraopeba/clipping";
+
+/** Assets dos acervos usados pelos "relacionados" — buscados uma vez. */
+let cacheAti: Promise<NoticiaAti[]> | null = null;
+let cacheIj: Promise<NoticiaInstituicaoJustica[]> | null = null;
+let cachePericia: Promise<EstudoPericiaComTema[]> | null = null;
+let cacheImprensa: Promise<NoticiaClipping[]> | null = null;
+
+async function baixarAcervo<T>(url: string, chave: string): Promise<T[]> {
+  const r = await fetch(url);
+  const j = (await r.json()) as Record<string, T[]>;
+  return j[chave];
+}
+
+function useAcervosExtras(): { ati: NoticiaAti[]; ij: NoticiaInstituicaoJustica[]; pericia: EstudoPericiaComTema[] ,
+
+  imprensa: NoticiaClipping[];
+} | null {
+  const [extras, setExtras] = useState<{ ati: NoticiaAti[]; ij: NoticiaInstituicaoJustica[]; pericia: EstudoPericiaComTema[]; imprensa: NoticiaClipping[] } | null>(null);
+  useEffect(() => {
+    let vivo = true;
+    if (!cacheAti) cacheAti = baixarAcervo("/data/clipping-ati.json", "CLIPPING_ATI");
+    if (!cacheIj) cacheIj = baixarAcervo("/data/clipping-ij.json", "CLIPPING_IJ");
+    if (!cachePericia) cachePericia = baixarAcervo("/data/estudos-pericia.json", "ACERVO_PERICIA");
+    if (!cacheImprensa) cacheImprensa = baixarAcervo("/data/clipping-paraopeba.json", "CLIPPING_PARAOPEBA");
+    Promise.all([cacheAti, cacheIj, cachePericia, cacheImprensa])
+      .then(([ati, ij, pericia, imprensa]) => {
+      if (vivo) setExtras({ ati, ij, pericia, imprensa });
+    })
+      .catch(() => {});
+    return () => { vivo = false; };
+  }, []);
+  return extras;
+}
 import { fichaLegivelAjri } from "@/lib/paraopeba/ficha-legivel-ajri";
 import {
   VEREDITO_AJRI_LABEL,
@@ -217,6 +254,7 @@ function AuditoriaClientComQuery() {
 }
 
 function AuditoriaClient({ buscaInicial = "" }: { buscaInicial?: string }) {
+  const extras = useAcervosExtras();
   const acervo = useAuditoriaAjri();
   const resumos = useResumosAjri();
   const [busca, setBusca] = useState(buscaInicial);
@@ -453,7 +491,7 @@ function AuditoriaClient({ buscaInicial = "" }: { buscaInicial?: string }) {
 
       <ul className="mt-5 flex flex-col gap-3">
         {lista.slice(0, visiveis).map((d) => (
-          <Ficha key={d.id} doc={d} resumos={resumos} acervo={acervo} />
+          <Ficha key={d.id} doc={d} resumos={resumos} acervo={acervo} extras={extras} />
         ))}
       </ul>
 
@@ -523,10 +561,12 @@ function Ficha({
   doc,
   resumos,
   acervo,
+  extras,
 }: {
   doc: DocumentoAuditoriaAjri;
   resumos: Record<string, ResumoAjri> | null;
   acervo: DocumentoAuditoriaAjri[];
+  extras: { ati: NoticiaAti[]; ij: NoticiaInstituicaoJustica[]; pericia: EstudoPericiaComTema[]; imprensa: NoticiaClipping[] } | null;
 }) {
   const legivel = fichaLegivelAjri(doc);
   return (
@@ -598,7 +638,7 @@ function Ficha({
         — o portal exige cadastro e gera o PDF na hora
       </span>
 
-      <RelacionadosDaFicha doc={doc} acervo={acervo} />
+      <RelacionadosDaFicha doc={doc} acervo={acervo} extras={extras} />
     </li>
   );
 }
@@ -792,11 +832,17 @@ const VEREDITO_COR: Record<VereditoAjri, string> = {
 function RelacionadosDaFicha({
   doc,
   acervo,
+  extras,
 }: {
   doc: DocumentoAuditoriaAjri;
   acervo: DocumentoAuditoriaAjri[];
+  extras: { ati: NoticiaAti[]; ij: NoticiaInstituicaoJustica[]; pericia: EstudoPericiaComTema[]; imprensa: NoticiaClipping[] } | null;
 }) {
-  const rel = useMemo(() => relacionadosDaFicha(doc, acervo), [doc, acervo]);
+  const rel = useMemo(
+    () => (extras ? relacionadosDaFicha(doc, acervo, extras) : null),
+    [doc, acervo, extras]
+  );
+  if (!rel) return null;
   const total =
     rel.mesmosTemas.length +
     rel.noticiasAti.length +

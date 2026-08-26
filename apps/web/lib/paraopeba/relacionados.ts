@@ -2,17 +2,13 @@ import {
   type DocumentoAuditoriaAjri,
   type TemaAjri,
 } from "./auditoria-ajri";
-import { CLIPPING_ATI, type NoticiaAti, type TemaAti } from "./clipping-ati";
+import { type NoticiaAti, type TemaAti } from "./clipping-ati";
 import {
-  CLIPPING_IJ,
   type NoticiaInstituicaoJustica,
   type TemaClippingIj,
 } from "./clipping-ij";
-import { CLIPPING_PARAOPEBA, type NoticiaClipping } from "./clipping";
-import {
-  ESTUDOS_PERICIA_COM_TEMA,
-  type EstudoPericiaComTema,
-} from "./pericia-ufmg";
+import { type NoticiaClipping } from "./clipping";
+import { type EstudoPericiaComTema } from "./pericia-ufmg";
 
 /**
  * Relacionados de uma ficha da auditoria AJRI — o fim da ficha aponta para
@@ -129,9 +125,17 @@ export interface RelacionadosFicha {
   estudosPericia: EstudoPericiaComTema[];
 }
 
+export interface AcervosExtras {
+  ati: NoticiaAti[];
+  ij: NoticiaInstituicaoJustica[];
+  imprensa: NoticiaClipping[];
+  pericia: EstudoPericiaComTema[];
+}
+
 export function relacionadosDaFicha(
   doc: DocumentoAuditoriaAjri,
-  acervo: DocumentoAuditoriaAjri[]
+  acervo: DocumentoAuditoriaAjri[],
+  acervos: AcervosExtras
 ): RelacionadosFicha {
   const pontes = doc.temas.map((t) => PONTE[t]);
   const temasAti = new Set(pontes.flatMap((p) => p.ati));
@@ -160,19 +164,19 @@ export function relacionadosDaFicha(
     return b.data.localeCompare(a.data);
   };
 
-  const noticiasAti = CLIPPING_ATI.filter(
+  const noticiasAti = acervos.ati.filter(
     (n) => temasAti.has(n.tema) && diasEntre(n.data, doc.data) <= JANELA_RELACIONADOS_DIAS
   )
     .sort((a, b) => sortNoticia(a, b, doc.data))
     .slice(0, MAX_ITENS_POR_ACERVO);
 
-  const noticiasIj = CLIPPING_IJ.filter(
+  const noticiasIj = acervos.ij.filter(
     (n) => temasIj.has(n.tema) && diasEntre(n.data, doc.data) <= JANELA_RELACIONADOS_DIAS
   )
     .sort((a, b) => sortNoticia(a, b, doc.data))
     .slice(0, MAX_ITENS_POR_ACERVO);
 
-  const noticiasImprensa = CLIPPING_PARAOPEBA.filter(
+  const noticiasImprensa = acervos.imprensa.filter(
     (n) =>
       n.tags.some((t) => tags.has(t.toLowerCase())) &&
       diasEntre(n.data, doc.data) <= JANELA_RELACIONADOS_DIAS
@@ -194,7 +198,7 @@ export function relacionadosDaFicha(
     subprojeto: 2,
     reuniao_com_partes: 3,
   };
-  const estudosPericia = ESTUDOS_PERICIA_COM_TEMA.filter((e) =>
+  const estudosPericia = acervos.pericia.filter((e) =>
     e.temas.some((t) => doc.temas.includes(t)),
   )
     .slice()

@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { lerAcervoPericia, lerResultadosPericia, lerResumoDoAcervo } from "@/lib/paraopeba/acervos-dados";
 import {
-  ACERVO_PERICIA,
-  RESULTADOS_PERICIA,
-  RESUMO_DO_ACERVO,
   SECAO_PERICIA_LABEL,
 } from "@/lib/paraopeba/pericia-ufmg";
+
+/** Sinônimos — o dado agora vive no loader server-only (acervos-dados). */
+const ACERVO_PERICIA = lerAcervoPericia();
+const RESULTADOS_PERICIA = lerResultadosPericia();
+const RESUMO_DO_ACERVO = lerResumoDoAcervo();
 import { TEMA_AJRI_LABEL } from "@/lib/paraopeba/auditoria-ajri";
 import { SINTESE_PERICIA } from "@/lib/paraopeba/sintese-pericia";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
