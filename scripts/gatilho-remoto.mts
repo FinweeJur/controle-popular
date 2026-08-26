@@ -219,7 +219,16 @@ async function loopTelegram() {
         // /negar <id> aprovam/negam pedidos de permissão remota. Grava na
         // fila de respostas que o plugin consulta; não passa pelo mapa de
         // COMANDOS de propósito.
-        const passthrough = /^\/(ok|negar) \S+/.exec(msg.text.trim());
+        // Normalização: minúsculas, sem menção a @bot, espaços colapsados.
+        // Motivo medido em 26/08: dono enviou /STATUS (caixa alta) e caiu no
+        // "não reconhecido" — match exato era frágil demais.
+        const textoNormalizado = msg.text
+          .trim()
+          .toLowerCase()
+          .replace(/@\w+/g, "")
+          .replace(/\s+/g, " ");
+        log(`Telegram: recebido ${JSON.stringify(msg.text)}`);
+        const passthrough = /^\/(ok|negar) \S+/.exec(textoNormalizado);
         if (passthrough) {
           const dirPonte = path.join(RAIZ, ".opencode", "canario");
           fs.mkdirSync(dirPonte, { recursive: true });
@@ -233,7 +242,9 @@ async function loopTelegram() {
           });
           continue;
         }
-        const comando = COMANDOS[msg.text.trim()];
+        // Comando = primeiro token ("/status pronto" casa /status); o resto
+        // é argumento opcional que cada handler ignora ou usa.
+        const comando = COMANDOS[textoNormalizado.split(" ")[0]];
         if (!comando) {
           await telegramApi("sendMessage", {
             chat_id: msg.chat.id,
