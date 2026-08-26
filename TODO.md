@@ -95,7 +95,6 @@
   barragem de Fundão): 3 de 4 perguntas acertaram o trecho certo por
   similaridade; a 4ª ("qual norma foi revogada?") **não** acertou — achado
   honesto, documentado no código, fora das asserções: busca semântica não
-<<<<<<< HEAD
   substitui casamento de palavra-chave. **Achado de segurança relevante:** a
   guarda de dado pessoal (`checar-dado-pessoal-em-dado.py`) não cobre
   `etl/betim/dados/` — só `apps/web/data/` e `docs/dados/` — chip
@@ -109,10 +108,11 @@
 
 ## Esperando data
 
-- **Neon volta em 2026-09-01** (HTTP 402 até lá; sem banco não há `next build`).
-  Trava: migrations 0071–0077, carga das 8.570 normas federais do MMA + 370 do
-  CNDH, auditoria dos 25.729 links, backfill de temas (100 de 10.317), **e o B4
-  (PNCP, contratos estaduais de MG)** — o coletor escreve no banco.
+- **Neon volta em 2026-09-01** (HTTP 402 até lá; sem banco não há `next build` na
+  máquina de dev). Trava: migrations 0071–0077, **carga das 8.570 normas federais
+  do MMA + 370 do CNDH (já feitas no Postgres local em 26/08)**, auditoria dos
+  25.729 links, backfill de temas (100 de 10.317), **e o B4 (PNCP, contratos
+  estaduais de MG)** — o coletor escreve no banco.
   · runbook pronto: `docs/planos/ROTEIRO-NEON-01-09.md`
 
 - **LAI INCRA — prazo 2026-08-28** (protocolado, prorrogado por 10 dias). O
