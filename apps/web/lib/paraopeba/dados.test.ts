@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import {
-  CLIPPING_PARAOPEBA,
+
   PERIODO_CLIPPING,
   TIPO_NOTICIA_LABEL,
   COBERTURA_CLIPPING,
@@ -9,14 +9,24 @@ import { MARCOS_PARAOPEBA, formatarDataMarco } from "./linha-do-tempo";
 import { ATORES_REPARACAO, CATEGORIA_ATOR_LABEL } from "./atores";
 import { PAGAMENTOS_PARAOPEBA, RESUMO_AUXILIO_PARAOPEBA } from "./auxilio";
 import {
-  CLIPPING_IJ,
+
   PERIODO_CLIPPING_IJ,
   INSTITUICAO_JUSTICA_LABEL,
   TEMA_CLIPPING_IJ_LABEL,
   TEMA_CLIPPING_IJ_ORDEM,
   COBERTURA_CLIPPING_IJ,
 } from "./clipping-ij";
-import { COBERTURA_CLIPPING_ATI, CLIPPING_ATI } from "./clipping-ati";
+import { COBERTURA_CLIPPING_ATI } from "./clipping-ati";
+import {
+  lerClippingParaopeba,
+  lerClippingAti,
+  lerClippingIj,
+} from "./acervos-dados";
+
+/** Sinônimos — o dado agora vive nos loaders server-only. */
+const CLIPPING_PARAOPEBA = lerClippingParaopeba();
+const CLIPPING_ATI = lerClippingAti();
+const CLIPPING_IJ = lerClippingIj();
 import { DOCUMENTOS_PROCESSO, COBERTURA_DOCUMENTOS_PROCESSO } from "./documentos";
 import {
   AUTOR_AUDITORIA_AJRI,

@@ -79,6 +79,9 @@ const SINTETICOS = new Set([
   "11111111111",
   "12345678900",
   "12345678909", "123.456.789-09",
+  // 47018614139: agregado financeiro do SIAFI (R$ bi) capturado como inteiro
+  // pelo grep — mod-11 passa por coincidência, mas é dinheiro, não CPF.
+  "47018614139",
 ]);
 
 describe("nenhum CPF real em arquivo versionado", () => {

@@ -56,39 +56,16 @@ const BRUTO = dadosPericia as unknown as {
 };
 
 /** O acervo inteiro, tipado. A página lista tudo; a ponte usa só o que tem tema. */
-export const ACERVO_PERICIA: EstudoPericiaComTema[] = BRUTO.documentos.map((d) => {
-  const doc: DocumentoPericiaUfmg = {
-    url: d.url,
-    nomeArquivo: d.nome_arquivo,
-    secao: d.secao as SecaoPericia,
-    citadoEm: d.citado_em,
-    anoMes: d.ano_mes_do_caminho,
-  };
-  return { ...doc, temas: temasDoDocumentoPericia(doc) };
-});
-
-/** Só os que ligam a algum eixo �?" é o que `relacionados.ts` consome. */
-export const ESTUDOS_PERICIA_COM_TEMA: EstudoPericiaComTema[] = ACERVO_PERICIA.filter(
-  (e) => e.temas.length > 0,
-);
-
-/** Os 7 documentos de resultado �?" o núcleo da página. */
-export const RESULTADOS_PERICIA: EstudoPericiaComTema[] = ACERVO_PERICIA.filter(
-  (e) => e.secao === "apresentacao_de_resultados",
-);
-
 /**
  * Os números que a página precisa dizer em voz alta. Vêm do dataset, não de
  * texto escrito à mão que envelhece sem ninguém notar.
  */
-export const RESUMO_DO_ACERVO = {
-  coletadoEm: BRUTO.coletado_em,
-  fonte: BRUTO.fonte,
-  total: BRUTO.total,
-  /** Varredura completa: a fila esvaziou. Se um dia isto vier > 0, o acervo é parcial. */
-  paginasNaFilaAoParar: BRUTO.paginas_na_fila_ao_parar,
-  porSecao: BRUTO.por_secao,
-  comTema: ESTUDOS_PERICIA_COM_TEMA.length,
-  resultados: RESULTADOS_PERICIA.length,
-} as const;
 
+
+
+/**
+ * ACERVO_PERICIA/ESTUDOS_PERICIA_COM_TEMA/RESULTADOS_PERICIA/RESUMO_DO_ACERVO
+ * saíram daqui em 2026-08-25 (teto de 3 MiB gzip do Worker, erro 10027):
+ * o JSON bruto agora é lido em build por pericia-ufmg-dados.ts (server-only)
+ * e servido como asset public/data/estudos-pericia.json para o cliente.
+ */

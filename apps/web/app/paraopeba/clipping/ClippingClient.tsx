@@ -1,22 +1,16 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import {
-  CLIPPING_PARAOPEBA,
-  TIPO_NOTICIA_LABEL,
+import { useEffect, useMemo, useState } from "react";
+import {  TIPO_NOTICIA_LABEL,
   type NoticiaClipping,
-  type TipoNoticia,
-  CLIPPING_ATI,
-  ATI_LABEL,
+  type TipoNoticia,  ATI_LABEL,
   ATI_REGIOES,
   TEMA_ATI_LABEL,
   TEMA_ATI_ORDEM,
   PERIODO_CLIPPING_ATI,
   type NoticiaAti,
   type SiglaAti,
-  type TemaAti,
-  CLIPPING_IJ,
-  INSTITUICAO_JUSTICA_LABEL,
+  type TemaAti,  INSTITUICAO_JUSTICA_LABEL,
   INSTITUICAO_JUSTICA_NOME,
   TEMA_CLIPPING_IJ_LABEL,
   TEMA_CLIPPING_IJ_ORDEM,
@@ -26,6 +20,34 @@ import {
   type TemaClippingIj,
 } from "@/lib/paraopeba";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
+
+/** Os três acervos saíram do bundle e viram assets estáticos buscados aqui
+ * (mesmo padrão dos resumos da AJRI). Teto de 3 MiB gzip do Worker, 10027. */
+let cacheParaopeba: Promise<NoticiaClipping[]> | null = null;
+let cacheAti: Promise<NoticiaAti[]> | null = null;
+let cacheIj: Promise<NoticiaInstituicaoJustica[]> | null = null;
+
+async function baixar<T>(url: string, chave: string): Promise<T[]> {
+  const r = await fetch(url);
+  const j = (await r.json()) as Record<string, T[]>;
+  return j[chave];
+}
+
+function useClippingParaopeba(): NoticiaClipping[] {
+  const [l, setL] = useState<NoticiaClipping[] | null>(null);
+  useEffect(() => { let vivo = true; if (!cacheParaopeba) cacheParaopeba = baixar("/data/clipping-paraopeba.json", "CLIPPING_PARAOPEBA"); cacheParaopeba.then((d) => { if (vivo) setL(d); }); return () => { vivo = false; }; }, []);
+  return l ?? [];
+}
+function useClippingAti(): NoticiaAti[] {
+  const [l, setL] = useState<NoticiaAti[] | null>(null);
+  useEffect(() => { let vivo = true; if (!cacheAti) cacheAti = baixar("/data/clipping-ati.json", "CLIPPING_ATI"); cacheAti.then((d) => { if (vivo) setL(d); }); return () => { vivo = false; }; }, []);
+  return l ?? [];
+}
+function useClippingIj(): NoticiaInstituicaoJustica[] {
+  const [l, setL] = useState<NoticiaInstituicaoJustica[] | null>(null);
+  useEffect(() => { let vivo = true; if (!cacheIj) cacheIj = baixar("/data/clipping-ij.json", "CLIPPING_IJ"); cacheIj.then((d) => { if (vivo) setL(d); }); return () => { vivo = false; }; }, []);
+  return l ?? [];
+}
 
 /**
  * `/paraopeba/clipping` — três acervos, três filtros, um componente.
@@ -105,6 +127,7 @@ export default function ClippingClient() {
 // ══════════════════════════════════════════════════════════════════════════
 
 function SecaoAti() {
+  const CLIPPING_ATI = useClippingAti();
   const [busca, setBusca] = useState("");
   const [de, setDe] = useState("");
   const [ate, setAte] = useState("");
@@ -312,6 +335,7 @@ function agruparPorFato(itens: NoticiaInstituicaoJustica[]): FatoIj[] {
 }
 
 function SecaoIj() {
+  const CLIPPING_IJ = useClippingIj();
   const [busca, setBusca] = useState("");
   const [de, setDe] = useState("");
   const [ate, setAte] = useState("");
@@ -546,6 +570,7 @@ function ItemIj({ fato }: { fato: FatoIj }) {
 // ══════════════════════════════════════════════════════════════════════════
 
 function SecaoClipping() {
+  const CLIPPING_PARAOPEBA = useClippingParaopeba();
   const [busca, setBusca] = useState("");
   const [de, setDe] = useState("");
   const [ate, setAte] = useState("");

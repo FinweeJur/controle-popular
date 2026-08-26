@@ -5,7 +5,15 @@ import {
 } from "./auditoria-ajri";
 import { bibliotecaAti, type AtiBiblioteca, type ItemBiblioteca } from "./biblioteca";
 import { CASAMENTOS_ESTUDO_NOTICIA, type CasamentoEstudoNoticia, type DocumentoCasado } from "./estudo-e-noticia";
-import { ESTUDOS_PERICIA_COM_TEMA, RESULTADOS_PERICIA, type EstudoPericiaComTema } from "./pericia-ufmg";
+import { type EstudoPericiaComTema } from "./pericia-ufmg";
+import {
+  lerEstudosPericiaComTema,
+  lerResultadosPericia,
+} from "./acervos-dados";
+
+/** Sinônimos — o dado agora vive no loader server-only. */
+const ESTUDOS_PERICIA_COM_TEMA = lerEstudosPericiaComTema();
+const RESULTADOS_PERICIA = lerResultadosPericia();
 import { lerSinteseAjri } from "./sintese-ajri-dados";
 
 /** Sinônimo — dado agora no loader server-only. */

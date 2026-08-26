@@ -1,4 +1,8 @@
-import { CLIPPING_ATI, type NoticiaAti } from "./clipping-ati";
+import { type NoticiaAti } from "./clipping-ati";
+import { lerClippingAti } from "./acervos-dados";
+
+/** Sinônimo — o dado agora vive no loader server-only. */
+const CLIPPING_ATI = lerClippingAti();
 
 /**
  * Casamento entre a notícia da ATI que RESUME um estudo e o documento do
