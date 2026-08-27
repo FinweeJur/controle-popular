@@ -28,6 +28,7 @@
     "cidades": "tsx --env-file-if-exists=.env.local scripts/gerar-cidades.mts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.984.0",
     "@neondatabase/serverless": "^1.0.0",
     "docx": "^9.5.1",
     "drizzle-orm": "^0.44.0",
