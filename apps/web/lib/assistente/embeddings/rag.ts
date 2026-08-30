@@ -18,10 +18,10 @@
 import { indexarDocumentoDeExemplo, buscarMaisSimilar, type ResultadoRankeado } from "./demonstracao";
 import { gerarRespostaRag, type RespostaRag, type FonteRag } from "./geracao";
 import { ollamaDisponivel, OllamaIndisponivel } from "./ollama";
+import { temChaveRemota } from "./provedores";
 
 export type { RespostaRag, FonteRag };
 
-const AI_API_KEY = process.env.AI_API_KEY || "";
 const TOP_K_PADRAO = 3;
 
 interface OpcoesRag {
@@ -47,7 +47,7 @@ export async function responderComRag(
   opcoes: OpcoesRag = {}
 ): Promise<RespostaRag> {
   // Sem chave remota, precisamos do Ollama local para geracao e embeddings.
-  if (!AI_API_KEY && !(await ollamaDisponivel())) {
+  if (!temChaveRemota() && !(await ollamaDisponivel())) {
     throw new OllamaIndisponivel("Ollama nao esta disponivel em http://localhost:11434");
   }
 

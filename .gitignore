@@ -148,3 +148,10 @@ etl/betim/dados-brutos/
 # Versionados ficam a spec (public/api/openapi.yaml) e o Swagger UI
 # vendorizado (public/api/docs/).
 apps/web/public/api/v1/
+
+# Escolha do provedor de IA ativo (degrau 3 do assistente): estado de maquina,
+# editado pelo painel de edicao (rota /api/painel/ia-config). As chaves ficam
+# no .env.local (nunca aqui); o arquivo so guarda "deepseek" ou "maritaca".
+# Um PC que nao tem o arquivo usa deepseek por padrao (ver lib/assistente/
+# embeddings/provedores.ts).
+apps/web/data/ia-config.json
