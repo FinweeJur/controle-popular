@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import type { Edicao } from "@/lib/edicoes";
 import type { EstadoDoRepo } from "@/lib/painel/git-estado";
@@ -84,6 +84,34 @@ export default function PainelClient({
   const [por, setPor] = useState("");
   const [motivo, setMotivo] = useState("");
   const [textoAtual, setTextoAtual] = useState<TextoAtual | null>(null);
+
+  /** Provedor de IA ativo no degrau 3 do assistente (degraus 0-2 nao usam modelo). */
+  type ConfigIa = {
+    provedorAtivo?: "deepseek" | "maritaca";
+    provedores?: { id: "deepseek" | "maritaca"; rotulo: string; modelo: string; chaveConfigurada: boolean }[];
+    erro?: string;
+  };
+  const [configIa, setConfigIa] = useState<ConfigIa | null>(null);
+  const [salvandoIa, setSalvandoIa] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- leitura inicial do estado da IA; efeito intencional disparado pelo token
+    if (!token) return;
+    let vivo = true;
+    fetch("/api/painel/ia-config", {
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    })
+      .then((r) => r.json())
+      .then((corpo: ConfigIa) => {
+        if (vivo) setConfigIa(corpo);
+      })
+      .catch(() => {
+        if (vivo) setConfigIa({ erro: "Nao foi possivel ler a configuracao de IA." });
+      });
+    return () => {
+      vivo = false;
+    };
+  }, [token]);
 
   /** Persiste o token no `localStorage` enquanto a pessoa digita. */
   function aoMudarToken(novo: string) {
@@ -170,6 +198,33 @@ export default function PainelClient({
       setTitulo("");
       setDescricao("");
       setAviso({ tipo: "ok", texto: "Edição removida — a página volta ao texto do código." });
+    }
+  }
+
+  /** Troca o provedor de IA ativo; o outro vira fallback automatico. */
+  async function salvarProvedorIa(provedor: "deepseek" | "maritaca") {
+    setSalvandoIa(true);
+    setAviso(null);
+    try {
+      const r = await fetch("/api/painel/ia-config", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ provedorAtivo: provedor }),
+      });
+      const corpo = (await r.json()) as ConfigIa;
+      if (!r.ok) {
+        setAviso({ tipo: "erro", texto: corpo.erro ?? "Falhou ao trocar o provedor." });
+        return;
+      }
+      setConfigIa(corpo);
+      setAviso({ tipo: "ok", texto: "Provedor ativo alterado — o outro fica de fallback automático." });
+    } catch (e) {
+      setAviso({ tipo: "erro", texto: `Erro de rede: ${(e as Error).message}` });
+    } finally {
+      setSalvandoIa(false);
     }
   }
 
@@ -487,6 +542,59 @@ export default function PainelClient({
           Sincronizar puxa os commits da main do GitHub para esta máquina — inclusive o resultado
           do último build (home-pc). Se houver divergência ou arquivo local modificado, ele recusa
           e avisa o que fazer no terminal.
+        </p>
+      </section>
+
+      <section className="mt-6 rounded-2xl border border-border bg-surface p-5 shadow-sm">
+        <h2 className="font-display text-base font-semibold text-text">IA do assistente (degrau 3)</h2>
+        <p className="mt-2 text-sm text-text-soft">
+          Os degraus 0–2 (navegação e respostas determinísticas) <strong className="text-text">não usam
+          modelo nenhum</strong> — seguem servidos localmente, sem custo. O degrau 3, acionado só quando os
+          anteriores devolvem vazio, usa o provedor ativo abaixo; se ele falhar, o outro responde como
+          fallback automático. As chaves ficam no <code className="text-text">.env.local</code> desta
+          máquina (<code>AI_API_KEY_DEEPSEEK</code> / <code>AI_API_KEY_MARITACA</code>) — aqui só se
+          escolhe a ordem.
+        </p>
+        {configIa?.erro ? (
+          <p className="mt-3 text-sm text-red-600">{configIa.erro}</p>
+        ) : null}
+        <div className="mt-4 flex flex-col gap-3">
+          {(configIa?.provedores ?? []).map((p) => (
+            <label
+              key={p.id}
+              className="flex items-center gap-3 rounded-xl border border-border bg-surface-2 p-3 text-sm"
+            >
+              <input
+                type="radio"
+                name="provedor-ia"
+                checked={configIa?.provedorAtivo === p.id}
+                onChange={() => salvarProvedorIa(p.id)}
+                disabled={salvandoIa}
+                className="accent-primary"
+              />
+              <span className="flex-1">
+                <strong className="text-text">{p.rotulo}</strong>{" "}
+                <span className="text-text-soft">· modelo {p.modelo}</span>
+              </span>
+              <span
+                className={`text-xs font-medium ${
+                  p.chaveConfigurada ? "text-emerald-700" : "text-alert"
+                }`}
+              >
+                {p.chaveConfigurada ? "chave configurada" : "chave AUSENTE no .env.local"}
+              </span>
+            </label>
+          ))}
+          {!configIa || (configIa.provedores ?? []).length === 0 ? (
+            <p className="text-xs text-text-soft">
+              Carregando configuração… (rota do painel — disponível com <code>PAINEL_LOCAL=1</code>)
+            </p>
+          ) : null}
+        </div>
+        <p className="mt-3 text-xs text-text-soft">
+          Trocar o provedor não exige rebuild — a configuração é lida a cada resposta. A vetorização
+          (embeddings) é separada e continua local/sem modelo: nenhum dos dois provedores publica
+          endpoint de embeddings.
         </p>
       </section>
 

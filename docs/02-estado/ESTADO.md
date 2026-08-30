@@ -184,6 +184,7 @@ Classificação dos 13 planos, feita em 22/08 junto com as decisões acima:
 
 | Plano | Classificação |
 |---|---|
+| `ROTEIRO-EXECUCAO-PENDENCIAS.md` | **ATIVO** — plano mestre de 30/08: fila ranqueada por custo, escopo expandido do monitoramento de empresas (Vale: CVM, site oficial, timeline com ações da B3, painel de notícias), IA degrau 3 com DeepSeek/Maritaca + fallback, e as regras de paralelização com agentes |
 | `PLANO-EXPANSAO-ACORDOS-MG.md` | **ATIVO** — Blocos 0, A e a maior parte do B entregues (PR #2, 22/08); B7 morto com medição; B4 no Bloco C (Neon); Bloco D respondido hoje |
 | `PLANO-TRANSPARENCIA-JUSTICA.md` | **ATIVO** — sondagem fechada em 22/08; as 3 frentes estão sendo executadas em sessão paralela |
 | `PLANO-CHATBOT-IA.md` | **ATIVO** — decisões 2–4 tomadas; falta o vetorizador (item 24) |
