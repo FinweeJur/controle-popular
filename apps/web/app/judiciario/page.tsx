@@ -178,6 +178,12 @@ export default async function Home() {
                 "De cada 10 processos que o TJMG tinha para resolver em 2025, 7 continuaram parados.",
             },
             {
+              href: "/sirenejud",
+              titulo: "Processos ambientais no Brasil",
+              texto:
+                "O recorte ambiental da base nacional do Judiciário (SIRENEJud/CNJ), por UF e por tribunal — e a data do arquivo, porque a atualização é irregular.",
+            },
+            {
               href: "/correicoes-trabalhistas",
               titulo: "A Justiça do Trabalho em Minas",
               texto:

@@ -269,6 +269,14 @@ const ORIGENS = {
     obtencao: 'derivada',
     origem: 'Contagem, sobre a malha municipal do IBGE, dos 471 documentos do processo de Brumadinho já publicados em /paraopeba/documentos que CITAM cada município (campo de local da Plataforma Brumadinho UFMG) — 6,6% do acervo de 7.107 documentos, e só contagem: nenhum resumo entra no mapa',
   },
+  // SIRENEJud (CNJ) — 30/08/2026. O `cod_ibge` do arquivo da fonte NÃO é o
+  // código IBGE (é o código da comarca do órgão julgador); o IBGE real foi
+  // casado por nome normalizado contra a malha municipal — ver a docstring
+  // de etl/betim/etl/apis/sirenejud_cnj.py.
+  'processos-ambientais-cnj': {
+    obtencao: 'automatica',
+    servico: 'SIRENEJud — CNJ/CNMP, arquivo em massa (parquet no S3 público do CNJ), agregado por comarca do órgão julgador e casado com a malha municipal do IBGE; só contagens, nomes de partes descartados na coleta',
+  },
 };
 
 /**

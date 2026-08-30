@@ -2,7 +2,7 @@
 
 > **Tipo:** INDICE
 > **Domínio:** global
-> **Última medição:** 2026-08-22
+> **Última medição:** 2026-08-30
 > **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [LEIA-PRIMEIRO.md](LEIA-PRIMEIRO.md), [GUIA-DE-DOCUMENTACAO.md](GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** índice, documentação, portal, frentes, planos, histórico, navegação
@@ -40,6 +40,7 @@ Servir como porta de entrada para toda a documentação do projeto. Quem chega e
 | Área | Documento | Caminho |
 |---|---|---|
 | Fontes e coleta | FONTES | [`06-fontes/FONTES.md`](06-fontes/FONTES.md) |
+| Catálogo dados.gov.br — uso e sugestões | DADOS-GOV-BR | [`06-fontes/DADOS-GOV-BR.md`](06-fontes/DADOS-GOV-BR.md) |
 | Arquitetura e payload | ARQUITETURA | [`04-arquitetura/ARQUITETURA.md`](04-arquitetura/ARQUITETURA.md) |
 | Mapa técnico detalhado | MAPA-APLICACAO | [`04-arquitetura/MAPA-APLICACAO.md`](04-arquitetura/MAPA-APLICACAO.md) |
 | Operação, build e deploy | OPERACAO | [`05-operacao/OPERACAO.md`](05-operacao/OPERACAO.md) |
