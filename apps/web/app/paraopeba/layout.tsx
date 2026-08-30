@@ -12,16 +12,15 @@ import Link from "@/lib/paraopeba/link";
  * porque esta zona cresceu SEM layout.tsx e cada página já resolveu sozinha
  * o que um layout normalmente resolveria:
  *
- * 1. SEM `<footer>` AQUI. As 12 rotas desta zona (o hub + as 11 subpáginas)
+ * 1. SEM `<footer>` AQUI. As 13 rotas desta zona (o hub + as 12 subpáginas)
  *    já renderizam `<FooterGlobal />` manualmente, dentro do próprio
- *    `<main>` de cada uma (confirmado: `grep -rl FooterGlobal app/paraopeba`
- *    lista as 12). Um `<footer>` neste layout duplicaria o rodapé em TODAS
+ *    `<main>` de cada uma. Um `<footer>` neste layout duplicaria o rodapé em TODAS
  *    elas. Consolidar é troca segura (mesma que /congresso já tem), mas
  *    mexer em 12 arquivos é escopo maior que "dar cabeçalho" — fica para
  *    quem pegar essa consolidação depois.
  * 2. `{children}` renderiza direto, SEM outro `<main id="conteudo-principal">`
  *    envolvendo. Diferente de /congresso (onde o `<main>` mora só no
- *    layout), aqui as 12 páginas JÁ têm o próprio `<main id="conteudo-
+ *    layout), aqui as 13 páginas JÁ têm o próprio `<main id="conteudo-
  *    principal" tabIndex={-1}>` (é o alvo do skip-link "Pular para o
  *    conteúdo" do layout raiz, WCAG 2.4.1 — ver `app/layout.tsx`). Envolver
  *    de novo geraria DOIS `<main>` aninhados e `id` duplicado — o
@@ -44,18 +43,21 @@ export const metadata: Metadata = {
 // todo o resto; os quatro acervos de documento (Documentos, Biblioteca,
 // Auditoria, Perícia) juntos, na ordem que o comentário de
 // `pericia/page.tsx` já usa para diferenciar quem fala em cada um; "Análise"
-// por último porque cruza os três acervos anteriores. `pericia` não tem
-// cartão no hub (só é linkada de dentro de `auditoria`), mas é rota de
-// primeiro nível como as outras dez — um cabeçalho existe para alcançar
-// TODA a zona, não só o que o hub decidiu destacar em cartão.
+// por último porque cruza os três acervos anteriores. `pericia` e `noticias`
+// (o painel de notícias sobre a Vale) não têm cartão no hub, mas são rotas de
+// primeiro nível como as outras — um cabeçalho existe para alcançar TODA a
+// zona, não só o que o hub decidiu destacar em cartão.
 const NAV = [
   { href: "/entenda", label: "Entenda" },
   { href: "/clipping", label: "Clipping" },
+  { href: "/noticias", label: "Notícias" },
   { href: "/linha-do-tempo", label: "Linha do tempo" },
   { href: "/quem-atua", label: "Quem atua" },
   { href: "/auxilio", label: "Auxílio" },
   { href: "/execucao", label: "Execução" },
   { href: "/documentos", label: "Documentos" },
+  { href: "/vale", label: "Ações da Vale" },
+  { href: "/vale/documentos", label: "Documentos CVM" },
   { href: "/biblioteca", label: "Biblioteca" },
   { href: "/auditoria", label: "Auditoria" },
   { href: "/pericia", label: "Perícia" },
