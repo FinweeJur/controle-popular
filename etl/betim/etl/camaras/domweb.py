@@ -452,6 +452,16 @@ def _fim_do_mes(ano: int, mes: int) -> date:
 
 
 if __name__ == "__main__":
+    # Console do Windows abre em cp1252 e engasga no --help/erros porque o
+    # docstring (este cabeçalho) tem caracteres fora dessa página (═, ⚠, …).
+    # Mesmo ajuste de `etl/diario_test.py`: reconfigure para UTF-8 com
+    # substituição, para o argparse imprimir a ajuda sem UnicodeEncodeError.
+    for fluxo in (sys.stdout, sys.stderr):
+        try:
+            fluxo.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[union-attr]
+        except (AttributeError, ValueError):
+            pass
+
     hoje = date.today()
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--id-municipio", default=ID_MUNICIPIO_DEFAULT)
