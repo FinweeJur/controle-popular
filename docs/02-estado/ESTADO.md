@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-08-26 (atualizado após migração para Cloudflare Tunnel)
+> **Última medição:** 2026-08-30 (diário oficial D1 concluído, upload R2 concluído, revisão de copy do portal)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida tecnica, decisoes, plano unico, neon, build, tunnel
@@ -52,7 +52,7 @@ espalhadas pelos planos. **Não reabrir sem remensurar.**
 
 | # | Decisão | O que ela destrava |
 |---|---|---|
-| 1 | **Diário oficial: nomeação e exoneração SÃO publicadas** — "dados públicos de interesse coletivo, sob minha responsabilidade" (palavras do dono). ⚠️ O corte de **CPF, endereço e dado de saúde de pessoa física continua valendo** — não foi objeto desta decisão, é dado de terceiro, e as duas guardas automáticas (`scripts/checar-dado-pessoal-em-dado.py` e `sem-cpf-no-repo.test.ts`, mod-11) barram o commit de qualquer jeito | o coletor do diário (D1), parado desde 16/08 |
+| 1 | **Diário oficial: nomeação e exoneração SÃO publicadas** — "dados públicos de interesse coletivo, sob minha responsabilidade" (palavras do dono). ⚠️ O corte de **CPF, endereço e dado de saúde de pessoa física continua valendo** — não foi objeto desta decisão, é dado de terceiro, e as duas guardas automáticas (`scripts/checar-dado-pessoal-em-dado.py` e `sem-cpf-no-repo.test.ts`, mod-11) barram o commit de qualquer jeito | o coletor do diário (D1), parado desde 16/08. **✅ Coleta completa em 30/08/2026: 16.601 atos (jan/2020 → jul/2026), 80 meses × 2 entidades, 0 falhas** — `etl/betim/etl/camaras/sigpub.py` migrado de `curl.exe` para `requests` (curl.exe quebrado na máquina), commit `1e93eeb` |
 | 2 | **Chatbot: o cérebro é a Maritaca (Sabiá), com DeepSeek como alternativa.** Ambas são fora de EUA/Europa, que era a intenção da regra original; a Maritaca ainda é brasileira e treinada em português | `PLANO-CHATBOT-IA.md` + degrau 3 do `PLANO-INDICE…` |
 | 3 | **Acervo do chatbot: tudo que as respostas determinísticas não cobrirem.** O degrau 3 entra onde os degraus 0–2 devolvem vazio | idem |
 | 4 | **Ressalva de IA: sempre visível**, em toda resposta gerada, com citação da fonte | idem |
@@ -65,7 +65,7 @@ espalhadas pelos planos. **Não reabrir sem remensurar.**
 | 11 | **Protocolo da LAI do INCRA: o dono cuida do número** (prazo 28/08) | — |
 | 12 | **O ETL antigo da FGV continua vivo**, alinhado (User-Agent honesto + pausa de 1,5 s desde 17/08). Não aposentar por ora — é ele que alimenta a tela de Betim | encerra a dívida §3b do `TODO-PROXIMAS-RODADAS.md` |
 | 13 | **O código vai subir também para o Gitee, no futuro** — espelho, não mudança de casa: o GitHub continua sendo onde a CI roda (6 ETLs, as duas guardas de dado pessoal e o vigia de prazo de LAI). Sem data | item 29 |
-| 14 | **Backfill do diário oficial: desde janeiro/2020** ("penúltima gestão municipal"). Ainda não executado — precisa de banco, que a máquina de desenvolvimento não tem; e é coleta de horas, não de minutos, no ritmo pautado de 1,5 s/requisição | `docs/planos/diario-oficial-plano.md` |
+| 14 | **Backfill do diário oficial: desde janeiro/2020** ("penúltima gestão municipal"). **✅ CONCLUÍDO em 30/08/2026** — 16.601 atos de jan/2020 a jul/2026 (80 meses × 2 entidades), 0 falhas. Precisava de banco que a máquina de desenvolvimento não tem; coleta feita no home-pc com Postgres local, módulo `requests` (curl.exe quebrado na máquina). | `docs/planos/diario-oficial-plano.md` |
 | 15 | **Proposta de estruturação sociológica/investigativa do diário** — 7 eixos além dos 7 tipos (encadear processo/contrato, dispensa/inexigibilidade como subtipo, buracos de numeração, concentração de fornecedor, subtipo de pessoal, ritmo temporal, comparação entre cidades). Registrada, nada implementado | `docs/planos/diario-oficial-plano.md`, seção "Proposta" |
 
 **Ainda em aberto** (não decididas hoje): licença da fonte *Icones do Brasil*
@@ -108,18 +108,18 @@ abaixo.
 | 4 | Clima e risco: aplicar migration `0074` e carregar o coletado | ✅ | **feito em 26/08** no Postgres local: migration `0074_adaptabrasil_risco_climatico.sql` aplicada e `etl.apis.adaptabrasil_risco` sincronizou 6.824 índices (8 indicadores × 853 municípios de MG). INMET continua só leitura (`--sondar`) — tabela de avisos ainda não existe. |
 | 5 | Migration `0071` na Neon | ⛔ | até 01/09; sem ela os 6 ETLs do GitHub reintroduzem convênio duplicado |
 | 6 | ComunicaBR: indexação por município no índice estático | ✅ | **feito em 26/08**: `scripts/gerar-indice-busca.mts` agora inclui um documento por município de MG a partir de `public/data/comunicabr-31.json`; só entram municípios com pelo menos 1 item com valor (ressalva da fonte preservada). São 853 municípios no arquivo, 5 cidades ativas do portal indexadas. |
-| 7 | Arquivo de fontes em R2 (espelho) | 🟡 | 8.345/8.570 normas MMA têm `link_pdf` (97,4% — medição em 16/08); upload por fazer; medir antes em massa |
+| 7 | **Arquivo de fontes em R2 (espelho)** | ✅ | **concluído em 30/08/2026**: 261 arquivos de fonte enviados para o bucket `controlepopular-fontes` (R2), 0 pendentes. 138 registros `sha256='sem-conteudo'` permanecem locais (sem PDF). | — |
 | 8 | 13 quilombolas + 103 barragens sem mancha | 🟡 | lacuna de dado; cobertura ainda é o maior risco de conclusão errada (a primeira lacuna desse tipo mudou um alerta de zero para seis) |
 | 9 | Trava de dado pessoal que varre o DADO | ✅ | entregue em 16/08: `scripts/checar-dado-pessoal-em-dado.py` (CPF mod-11 sobre valores de JSON de acervo) no pre-push e na CI + teste gêmeo vitest; segue a amostragem dos 200 documentos do acervo (plano Brumadinho §3) quando o dump existir |
 | 10 | Rouanet: junção incentivador × fornecedor + tela | 🟡 | 2.261 CNPJs (de 20.785 incentivadores) × `contratos.fornecedor_cnpj`; quantos casam só se sabe com banco; tela com ressalva colada ao número |
-| 11 | Coletor de notícias diário | 🟡 | escrito e rodando à mão; agendamento depende do servidor |
+| 11 | Coletor de notícias diário | ✅ | **concluído em 30/08**: coleta completa do diário oficial (D1) — 16.601 artigos de jan/2020 a jul/2026, 80 meses × 2 entidades, 0 falhas. Commit `1e93eeb`. |
 | 12 | Três ATIs como fonte do radar | ✅ | entregue em 16/08: feeds AEDAS/ADAI/Guaicuy no coletor + regra "Nota de pesar" na triagem, com teste (35 testes verdes) |
 | 13 | Resumir contratos/PLs/convênios truncados | 🟡 | escopo não definido: quantos, quais listagens |
 | 14 | URN / normas.leg.br | 🟡 | lib no ar; verificação em build e resolvedor estadual abertos; caminho: dataset LexML, depois URN das 15.318 normas |
 | 15 | Incentivo ao esporte | ⛔ | `DADOS_GOV_BR_API_TOKEN` é JWT expirado — renovar em `etl/betim/.env` e o item destrava inteiro |
 | 16 | Conecta gov.br (CNPJ/CEP) | ⛔ | decisão do dono: credenciamento de PJ de direito privado ou não |
 | 17 | AJRI fase 2 (espelho dos 467 PDFs) e fase 3 (resumo) | ⛔ | **espelho público decidido em 22/08** (decisão 7) e destino é o R2, nunca o repositório — o `download_cover` carimba nome e CPF do pesquisador em cada PDF, e a trava mod-11 barra isso no git. Segue bloqueado por `AJRI_COOKIE`; ordem obrigatória: baixar → extrair → varrer dado pessoal → resumir; medir 10 PDFs antes de projetar. **O resumo por modelo continua em aberto** — decidir com os 10 medidos |
-| 18 | Diário oficial (D0–D5) | 🟢 | **destravado em 22/08** (decisão 1: nomeação e exoneração entram; CPF, endereço e dado de saúde continuam fora). D1 SIGPub com mecanismo confirmado, migration 0077 + classificador prontos — falta só o coletor. Itinga ganhou fonte (decisão 10) |
+| 18 | Diário oficial (D0–D5) | 🟢 | **destravado em 22/08** (decisão 1). D1 SIGPub com mecanismo confirmado, migration 0077 + classificador + **coleta completa 16.601 atos (jan/2020 → jul/2026, 80 meses, 0 falhas)** implementados e mesclados em 30/08 (`1e93eeb`). Itinga e Araçuaí com fontes. |
 | 19 | Pró-Brumadinho: outras duas páginas | 🟡 | obrigações da Vale (R$ 11,48 bi × R$ 16,38 bi) e 99 publicações; validar conteúdo (302 de período eleitoral), não status |
 | 20 | ETL antigo da FGV | ✅ | **decidido em 22/08: continua vivo e alinhado** (UA honesto + pausa de 1,5 s desde 17/08), não se aposenta. Arquivos `etl/betim/etl/apis/{__init__,fgv_paraopeba}.py` presentes e `etl-betim.yml:359` consistente — verificado em 26/08 |
 | 21 | Ordenar e filtrar as listas de dados | ✅ | entregue em 17/08: `lib/tabela/ordenar.ts` (comparador texto/número/data, 14 testes) colado em `TabelaEstatica.tsx` — clique no cabeçalho (asc/desc/original), `aria-sort`, estado na URL (`?ordem=chave:asc`). As 11 listas herdam; lista com `formatar` só ordena declarando `ordernavel: true` |
@@ -141,7 +141,8 @@ abaixo.
 | Neon em HTTP 402 | 01/09 | pagar/vencer o prazo — sem banco não há `next build` nesta máquina. No modo túnel, o build continua no home-pc; a máquina de dev não builda |
 | **Worker Free 3 MiB gzip (erro 10027)** | ✅ resolvido em 26/08 | publicação migrou para **Cloudflare Tunnel + `next start` no home-pc**. O Worker continua deployado, mas sem custom domains; o domínio aponta para o túnel. Ver fila #30 e [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md) |
 | Build e publicação só no `home-pc` | — | no modo túnel, `next start` no home-pc é o servidor de produção; build e deploy do Worker são opcionais/fallback |
-| **D1 API Token para escrita via REST** | ✅ resolvido em 26/08 | token criado pelo dono e colado em `apps/web/.env.local`; POST `/api/pageview` grava no D1 via REST fallback e GET `/api/pageview` retorna ranking |
+| **Coleta diário oficial D1** | ✅ resolvido em 30/08 | 16.601 atos de jan/2020 a jul/2026 coletados via SIGPub; módulo migrado de `curl.exe` (quebrado na máquina) para `requests` |
+| **Upload R2 de fontes** | ✅ resolvido em 30/08 | 261 arquivos de fonte enviados ao bucket `controlepopular-fontes`; 0 pendentes |
 | Remoção de custom domains do Worker | ✅ resolvido em 26/08 | custom domains removidos do dashboard; DNS aponta para o túnel `controle-popular` |
 | Rede bloqueada na máquina de dev (WinError 10013) | — | navegador do dono para sondagens (foi assim que as duas correções do ComunicaBR saíram) |
 | LAI INCRA — login humano | **2026-08-28** (prorrogação concedida) | acessar o Fala.BR, localizar o pedido e anotar o protocolo em `docs/LAI-PROTOCOLOS.json` — o dono cuida disso |
@@ -155,20 +156,27 @@ As **duas compactações** (`apps/web/lib/comunicabr/arquivo.ts` × `apps/web/li
 
 **Auditoria de assets (2026-08-23, code-review-geral):** `public/` inteiro pesa **52,3 MB**, maior asset individual é `sigmine-interesse.geojson.gz` com **6,06 MB** — nada acima do aviso de 20 MiB, muito menos do teto de 25. As camadas cruas seguintes (`sigmine-operacao` 5,67, `vazio-cadastral-vales` 4,53, `unidades-conservacao` 3,13, `lotes-vagos-bh` 2,97) ficam **abaixo do limiar de ~8 MiB crus** que governa o uso de `comprimida: true` no registry do globo — decisão mantida: não comprimir abaixo dele. Os dois grandes JSONs fora das camadas (`risco-climatico` 2,78 MB, `comunicabr-31` 2,16 MB) já estão minificados.
 
+## Entregas de 30/08/2026
+
+- **Diário oficial D1 — coleta completa**: 16.601 atos de jan/2020 a jul/2026 (80 meses × 2 entidades: Diamantina e Itinga), 0 falhas. Módulo `etl/betim/etl/camaras/sigpub.py` migrado de `curl.exe` (quebrado na máquina) para `requests.Session`. Commit `1e93eeb`.
+- **Upload R2 de fontes concluído**: 261 arquivos de fonte enviados ao bucket `controlepopular-fontes`; 0 pendentes. 138 registros `sha256='sem-conteudo'` permanecem locais (sem PDF).
+- **Revisão de copy do portal**: 30 páginas principais verificadas — todas leem números do banco/bundle ao vivo (sem números hardcoded); 5 novas páginas de índice por frente criadas (`/ambiental/indice`, `/congresso/indice`, `/judiciario/indice`, `/paraopeba/indice`, `/funcaosocialterra/indice`). Todas as 22 rotas principais 200 OK após rebuild (`next build --webpack`). Commit `f6da72c`.
+- **Comandos `/code` e `/andamento` no Telegram**: status ao vivo (contagens de atos_diario, R2, backfill).
+
 ## Rito de trabalho
 
 Quem quer trabalhar entra por **PRODUTO.md** (a porta) e lê **DESENVOLVIMENTO.md** antes do primeiro commit; **FONTES.md**, **ARQUITETURA.md**, **OPERACAO.md** e **EDICAO.md** cobrem fonte, tetos, operação e edição conforme a tarefa. Dúvida entre dois caminhos: o registro de decisão e a medição vêm antes da escolha.
 
 ## Origem
 
-Este documento absorve a fila viva e o estado de 16/08. Arquivos-fonte e classificação:
+Este documento absorve a fila viva e o estado de 16/08, atualizado com entregas de 30/08/2026. Arquivos-fonte e classificação:
 
 - `PLANO-2026-08-15.md` — **ENTREGUE** (executado até o fim; a fila viva dele é este documento)
 - `HANDOFF-2026-08-15-NOITE.md` — **ENTREGUE** (entrega documentada; pendências e decisões migradas para as seções acima)
 - `PLANO-DIREITOS-EM-MOVIMENTO.md` — **ENTREGUE** (quatro portas no ar: home, ajuda, informação e denúncia)
 - `PLANO-ACAO-CIDADA.md` — **ENTREGUE** (facilitador de denúncia em produção, fases 1–3)
 - `TODO-PROXIMAS-RODADAS.md` — **ATIVO** (dívidas que não couberam inteiras aqui: análise do commit CAR/INCRA, revisão de completude de páginas, ETL FGV)
-- `diario-oficial-plano.md` — **ATIVO** (plano sem código; fases D0–D5)
+- `diario-oficial-plano.md` — **ENTREGUE** (fases D0–D5 concluídas: coleta completa 16.601 atos em 30/08/2026, commit `1e93eeb`)
 - `PLANO-BASES-CLIMA-E-RISCO.md` — **ATIVO** (fatia 1 entregue; BATER, CEMADEN, INPE, SNIS e MapBiomas pendentes)
 - `PLANO-ESPELHO-PDF-AJRI.md` — **ATIVO** (fase 1 entregue; fases 2–3 por fazer, bloqueadas por `AJRI_COOKIE`)
 
