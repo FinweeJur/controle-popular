@@ -44,8 +44,11 @@ test('CAMADAS reais: 39 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   // ⟲ 22/08/2026: 40 → 41. Entrou `presidios-mg` (CNIEP/Geopresídios do CNJ,
   // um ponto por estabelecimento penal com a contagem de inspeções judiciais),
   // no grupo 'judiciario'. Só entrou — nenhum id saiu.
+  // ⟲ 30/08/2026: 41 → 42. Entrou `processos-ambientais-cnj` (SIRENEJud/CNJ,
+  // um polígono por comarca com a contagem de processos ambientais), no grupo
+  // 'pistas', ao lado de presidios-mg. Só entrou — nenhum id saiu.
   assert.equal(
-    CAMADAS.length, 41,
+    CAMADAS.length, 42,
     // ⟲ 13/08/2026, mais tarde: subiu de 22 para 30 — as 8 camadas do
     // rompimento real da B1/Brumadinho (docs/PLANO-INTEGRACAO-BRUMADINHO.md,
     // seção 1.2), cada uma numa linha própria, sem irmã regional.
@@ -100,8 +103,8 @@ test('a reorganização de fato UNIFICOU: 43 fontes em 39 linhas, e as 4 que som
   // continua 4 — são as mesmas quatro irmãs regionais de sempre, listadas
   // abaixo. Se um dia a diferença mudar sem esta lista mudar junto, é porque
   // alguém partiu ou unificou conceito sem dizer.
-  assert.equal(LAYER_REGISTRY.length, 45, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 41, 'sentinela: o número de LINHAS mudou');
+  assert.equal(LAYER_REGISTRY.length, 46, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 42, 'sentinela: o número de LINHAS mudou');
 
   // ⟲ Fim do dia: `territorios-quilombolas` SAIU desta lista. Ela tinha 2
   // fontes, chegou a ter 3, e agora tem UMA só — as três foram unificadas.
@@ -170,6 +173,8 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     // Documentos do processo de Brumadinho, por município citado.
     'documentos-processo-municipios',
     'presidios-mg',
+    // Processos ambientais por comarca, SIRENEJud/CNJ (30/08/2026).
+    'processos-ambientais-cnj',
     // Fundo de imagem de satélite do globo (Esri World Imagery).
     'imagens-satelite',
     // Unidades de conservação de Minas, CNUC/MMA pelo GeoServer da INDE —

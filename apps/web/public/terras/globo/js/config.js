@@ -894,6 +894,17 @@ export const LAYER_REGISTRY = [
     aviso: 'Nenhuma coordenada é levantamento em campo: 225 vêm de geocodificação do endereço e 7 são o centro do MUNICÍPIO. E faltam 53 dos 285 estabelecimentos, que não têm coordenada publicada — a falta NÃO é pareja entre ramos (só 1 das 50 unidades militares estaduais está no mapa), então o mapa exagera o peso do militar federal. Ausência de pino não é ausência de presídio.',
     color: 0xcb80da, /* oklch matiz 290 — 13° do vizinho mais próximo e 37° de --fiction */ on: false, render: 'point', listavel: true,
   },
+  // Processos ambientais por comarca, do SIRENEJud (CNJ) — medido em
+  // 30/08/2026 sobre o arquivo em massa de 07/07/2025: 322.842 processos em
+  // MG, 298 comarcas. E' a Justiça VISTA PELO LADO DE DENTRO do territorio:
+  // onde o tema ambiental vira processo, nao onde o orgao foi fiscalizar
+  // (presidios-mg, logo acima).
+  {
+    id: 'processos-ambientais-cnj', label: 'Processos ambientais na Justiça (CNJ)',
+    hint: '298 comarcas de MG com processo ambiental na Justiça — 322.842 ao todo: Governador Valadares (108.612, o efeito Mariana), Belo Horizonte (51.442) e Ipatinga (5.798) lideram. Clique para ver situação, tempo médio e tribunal.',
+    aviso: 'O município pintado é onde o processo TRAMITA (comarca do órgão julgador), não onde o dano aconteceu — o local do dano só é registro obrigatório desde 2021. E o arquivo público do CNJ é de jul/2025, com atualização irregular: a contagem vale até lá.',
+    color: 0xa05fb0, /* irmã mais escura de presidios-mg (matiz 290) — mesmo tema Justiça, outro recorte */ on: false, render: 'fill', listavel: true,
+  },
   // --- Dinheiro público e mineração (13/08/2026) --------------------------
   //
   // docs/HANDOFF-CAMADA-DINHEIRO.md — entregue por outro agente, noutro
@@ -1346,6 +1357,15 @@ export const CAMADAS = [
     hint: '232 estabelecimentos penais de MG com coordenada, e quantas inspeções judiciais receberam desde 2025. O STM não inspecionou nenhuma das 18 sob sua responsabilidade.',
     aviso: 'Coordenada geocodificada ou centro do município, nunca levantamento em campo. Faltam 53 dos 285, e a falta pende para o militar estadual — o mapa é recorte do que tem coordenada, não do que existe.',
     fontes: ['presidios-mg'],
+  },
+  {
+    // Mesmo assunto de presidios-mg: o que o Judiciário faz, medido no
+    // território. Ali, a fiscalização; aqui, o processo ambiental em si.
+    id: 'processos-ambientais-cnj', assunto: 'pistas',
+    label: 'Processos ambientais na Justiça (CNJ)',
+    hint: '298 comarcas de MG, 322.842 processos ambientais (arquivo do CNJ de jul/2025). GV 108.612, BH 51.442, Ipatinga 5.798.',
+    aviso: 'Município é onde o processo tramita, não onde o dano foi. Arquivo do CNJ de jul/2025, atualização irregular.',
+    fontes: ['processos-ambientais-cnj'],
   },
   // Fica em `territorio-mineracao`, e NÃO num assunto `legislacao-ambiental`
   // novo como o handoff sugeria. Duas razões: uma seção de um item só é ruído
