@@ -322,3 +322,58 @@ continua bloqueada no corte de LGPD.
 - Nada disto desbloqueia a coleta em si — o corte de LGPD (nomeação/
   exoneração, CPF) continua sendo decisão do usuário, para qualquer uma das
   três fontes mapeadas aqui.
+## D3 — DOM-PBH (BH) medido ao vivo (30/08/2026)
+
+Continuação do mapeamento, agora para a fase D3 do plano: **Belo Horizonte**.
+Diferente do SIGPub (GET + sessão + CSRF), o DOM-PBH é uma **API REST
+pública, sem sessão nem CSRF**, em `https://api-dom.pbh.gov.br/api` — a base
+veio do `env.json` que a SPA do DOM-Web carrega em runtime
+(`dom-web.pbh.gov.br/env.json` → `VUE_APP_URL_API`). OpenAPI em
+`https://api-dom.pbh.gov.br/docs/api-docs.json`.
+
+Endpoints confirmados ao vivo (nenhum conteúdo de matéria foi interpretado —
+só estrutura e volumes, o mesmo limite das seções D0/D1):
+
+- **`GET /v1/edicoes/buscarpublicacaopordata?data=YYYY-MM-DD`** → `data:
+  [edicao]`. **Uma edição por dia útil, `data: []` em fins de semana**
+  (medido: domingo 24/08 → `[]`; 25–29/08 → 1 cada). **Data futura devolve
+  HTTP 400**, não `[]`. O mesmo dia pode ter **duas edições com o MESMO
+  `numero_edicao`**: P (principal) e S (suplemento) — medido em 06/08/2026
+  (ids 7737 S e 7736 P, ambos nº 7556).
+- **`GET /v1/edicoes/{edicao_id}/sumario`** → `data: [árvore]` — nós
+  `tipo: "O"` (órgãos) com `filhos`; folhas `tipo: "A"` são os ATOS, cada um
+  com `id`, `descricao` (título), `categoria.nome_categoria`,
+  `orgao.{sigla_orgao, nome_orgao}`, `documento_ato`. **A edição inteira vem
+  num único JSON, sem paginação** (o modo de falha silencioso do SIGPub não
+  se aplica aqui).
+- **`GET /v1/edicoes/atos/{ato_id}/publicado`** → `data: {titulo_ato,
+  conteudo_html, orgao, categoria}` — o corpo do ato em HTML.
+- **Link público estável** (o `link_fonte`): `https://dom-web.pbh.gov.br/
+  visualizacao/ato/{id}` — rota da SPA confirmada no bundle JS e 200 medido.
+- **`GET /v1/edicoes/atos/pesquisar`** exige `termo` e datas `Y-m-d H:i` —
+  não é o caminho da coleta (o sumário por edição é mais simples e completo).
+
+**Volumes medidos (agosto/2026, `--sondar` de `etl.camaras.domweb`):**
+
+| Métrica | Valor |
+|---|---:|
+| Atos no mês | **1.814** |
+| Dias com edição | 21 (01/08–29/08) |
+| Atos por edição (min–máx) | 4 (S de 06/08) – 107 (15/08) |
+| Com `edicao` preenchida | 1.814/1.814 (100%) |
+| Com `link_fonte` | 1.814/1.814 (100%) |
+
+**Gap de classificação medido:** 52% dos 1.814 atos caíram em `outro` com o
+classificador calibrado para Diamantina (5,6% lá). Causas: categorias
+administrativas do DOM-PBH fora dos 7 tipos (CONVOCAÇÃO, INTIMAÇÕES,
+NOTIFICAÇÃO, COMUNICADO, ATA, DESPACHO, PAUTA) e títulos mais curtos que os
+de Diamantina. `raw.categoria` preserva a categoria da fonte — material para
+decisão editorial futura, não forçada aqui.
+
+**Betim (D2) reconfirmado em 30/08/2026:** o portal expõe **PDF por edição**
+(`/portal/diario-oficial/ver/{id}` → download único; a busca AJAX
+`/portal/busca/realiza-pesquisa/` é do portal geral). Não há matérias em HTML
+estruturado — D2 exige parse de PDF, outro coletor. **Araçuaí/Iitinga**
+continuam como no D0 (CMS Joomla / Simple System com `listarDiario/`,
+endpoint de Itinga localizado na sondagem de hoje mas não interpretado).
+**São Paulo (D4)** permanece por último, como decidido.

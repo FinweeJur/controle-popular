@@ -74,6 +74,14 @@
   como subtipo, buracos na numeração sequencial, concentração de fornecedor,
   subtipo de pessoal, ritmo temporal do mandato, comparação entre cidades —
   com exemplo real de título para cada eixo. Nada implementado ainda.
+  · **Avanço D3/BH (30/08/2026)**: coletor `etl/betim/etl/camaras/domweb.py`
+  (API pública do DOM-PBH) + migration `0080_domweb_bh.sql` + testes
+  `domweb_test.py` (6/6). Medido ao vivo: **1.814 atos em agosto/2026, 21
+  dias com edição, 100% edicao/link_fonte**. ⚠️ Gap de classificação
+  declarado (52% `outro` — vocabulário do DOM-PBH ≠ Diamantina; ver
+  cabeçalho do módulo). ⏳ Gravação em banco nunca exercitada (sem
+  `DATABASE_URL`), mesma situação do D1. **D2/Betim reconfirmado como PDF por
+  edição** (sem matérias em HTML — pendência real, outro coletor).
 
   · **`cabecalho-zonas`** (9 commits) — Paraopeba ganhou `layout.tsx` de zona
   de verdade (⚠️ tem **11 subpáginas**, não 9 como esta mesma entrada dizia
