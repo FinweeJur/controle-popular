@@ -133,3 +133,9 @@ scripts/.gatilho-offset
 # acima: o caminho e agregar e versionar so o agregado
 # (etl/betim/dados/sirenejud-*.json).
 etl/betim/dados-brutos/
+
+# API publica estatica: gerada no prebuild por gerar-api-publica.mjs a partir
+# dos acervos ja versionados (mesmo regime do indice da /busca, acima).
+# Versionados ficam a spec (public/api/openapi.yaml) e o Swagger UI
+# vendorizado (public/api/docs/).
+apps/web/public/api/v1/
