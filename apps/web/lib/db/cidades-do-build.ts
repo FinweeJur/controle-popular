@@ -162,9 +162,11 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
           "20209557000144": "DIAMANTINA CAMARA MUNICIPAL",
           "97451751000166": "FUNDO MUNICIPAL DE PREVIDENCIA"
         },
+        "sigpub_entidade_camara": "21672",
         "estado_municipios_count": 853,
         "cnpjs_orgao_atualizado_em": "2026-08-09",
         "legislacao_municipal_host": "https://cmdiamantina.mg.gov.br/",
+        "sigpub_entidade_prefeitura": "905",
         "prefeitura_transparencia_host": "https://portaltransp.com.br",
         "prefeitura_transparencia_param": "pdmt",
         "prefeitura_transparencia_sistema": "portaltransp",

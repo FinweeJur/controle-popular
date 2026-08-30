@@ -167,6 +167,11 @@ function subirServidorHttp(ip: string) {
 const COMANDOS: Record<string, string> = {
   "/sincronizar": "sync",
   "/status": "status",
+  "/tunel": "tunel",
+  "/tunnel": "tunel",
+  "/reiniciar": "reiniciar",
+  "/restart": "reiniciar",
+  "/proximas": "proximas",
 };
 
 async function telegramApi(metodo: string, corpo: Record<string, unknown>) {
@@ -248,7 +253,7 @@ async function loopTelegram() {
         if (!comando) {
           await telegramApi("sendMessage", {
             chat_id: msg.chat.id,
-            text: `Comando não reconhecido. Uso: /sincronizar ou /status`,
+            text: `Comando não reconhecido. Uso: /sincronizar, /status, /tunel, /reiniciar, /proximas`,
           });
           continue;
         }
@@ -256,6 +261,57 @@ async function loopTelegram() {
           await telegramApi("sendMessage", {
             chat_id: msg.chat.id,
             text: emAndamento ? "sincronização em andamento" : "ocioso, pronto para /sincronizar",
+          });
+          continue;
+        }
+        if (comando === "tunel") {
+          let status = "desconhecido";
+          try {
+            const svc = execFileSync("sc.exe", ["query", "Cloudflared"], { encoding: "utf-8" });
+            status = svc.includes("RUNNING") ? " rodando" : " parado";
+          } catch { status = " não encontrado"; }
+          let nextStart = "parado";
+          try {
+            const ps = execFileSync("powershell", ["-Command", "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next start'} | Measure-Object | Select-Object -ExpandProperty Count"], { encoding: "utf-8" });
+            nextStart = ps.trim() === "0" ? "parado" : " rodando";
+          } catch { nextStart = "verificar manualmente"; }
+          await telegramApi("sendMessage", {
+            chat_id: msg.chat.id,
+            text: `Túnel (Cloudflared):${status}\nNext start (porta 3000):${nextStart}`,
+          });
+          continue;
+        }
+        if (comando === "reiniciar") {
+          await telegramApi("sendMessage", {
+            chat_id: msg.chat.id,
+            text: "reiniciando next start...",
+          });
+          try {
+            execFileSync("powershell", ["-Command", "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next start'} | Stop-Process -Force"], { encoding: "utf-8" });
+            execFileSync("powershell", ["-Command", "Start-Sleep -Seconds 2; Start-Process -FilePath 'cmd.exe' -ArgumentList '/c cd /d C:\\DevCoder\\controle-popular\\apps\\web && npx next start -p 3000' -WindowStyle Hidden"], { encoding: "utf-8", timeout: 15000 });
+            await telegramApi("sendMessage", {
+              chat_id: msg.chat.id,
+              text: "✅ next start reiniciado (porta 3000)",
+            });
+          } catch (e) {
+            await telegramApi("sendMessage", {
+              chat_id: msg.chat.id,
+              text: `❌ falha ao reiniciar: ${(e as Error).message.slice(0, 200)}`,
+            });
+          }
+          continue;
+        }
+        if (comando === "proximas") {
+          const pendencias = [
+            "1. CORS no R2 (dashboard → R2 →ucket → CORS)",
+            "2. Backfill completo: arquivar-fontes.mjs + enviar-fontes-r2.mjs",
+            "3. Bucket R2 público (já decidido)",
+            "4. Diário oficial D0–D5 (migrations 0077/0079)",
+            "5. LAI INCRA (prazo 28/08)",
+          ];
+          await telegramApi("sendMessage", {
+            chat_id: msg.chat.id,
+            text: `Próximas pendências:\n\n${pendencias.join("\n")}`,
           });
           continue;
         }
