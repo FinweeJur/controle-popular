@@ -2,7 +2,7 @@
 
 > **Tipo:** PRODUTO
 > **Domínio:** global
-> **Última medição:** 2026-08-22
+> **Última medição:** 2026-08-30
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** portal, frentes, regras editoriais, transparencia, cidades, congresso, judiciario, ambiental, paraopeba
@@ -43,10 +43,10 @@ Rotas principais por frente, confirmadas no código:
 
 - **Cidades** — `/[municipio]/prefeitura` (contratos, licitações, despesas), `/camara` (proposições, vereadores), `/saude`, `/educacao`, `/economia`, `/mineracao`, `/terras`, `/meio-ambiente`, `/noticias`, `/servicos`, `/metodologia`. Cobertura varia por cidade e a diferença é mostrada, nunca escondida.
 - **Congresso** — `/proposicoes`, `/parlamentares`, `/bancadas`, `/comissoes`, `/votacoes`, `/alertas`, `/bons-exemplos`, `/agenda`, `/metodologia`.
-- **Judiciário** — `/tribunais`, `/vagas`, `/indicacoes`, `/metodologia`.
+- **Judiciário** — `/tribunais`, `/vagas`, `/indicacoes`, `/sirenejud` (processos ambientais do Judiciário, Brasil por UF e tribunal), `/metodologia`.
 - **Função Social da Terra** — `/mapa` (o globo 3D), `/alertas`.
 - **Paraopeba** — `/clipping` (radar de imprensa), `/linha-do-tempo`, `/auxilio`, `/documentos` (documentos do processo judicial por município), `/auditoria`, `/quem-atua`, `/entenda`, `/biblioteca`, `/execucao`.
-- **Ambiental** — `/copam`, `/licenciamento`, `/barragens`, `/legislacao`, `/direito-critico`, `/patrimonio-cultural`.
+- **Ambiental** — `/copam`, `/licenciamento`, `/barragens`, `/legislacao`, `/direito-critico`, `/patrimonio-cultural`, `/judiciario` (processos ambientais por município de MG, SIRENEJud/CNJ).
 
 ## Principais features
 
@@ -59,6 +59,7 @@ Rotas principais por frente, confirmadas no código:
 | Busca e assistente | `/busca`, `/assistente` | Índice de texto sobre todo o acervo; o assistente navega para 241 destinos e não afirma nada — nenhum número é escrito por modelo de linguagem |
 | Painel de edição | `/[municipio]/admin` | Edição de conteúdo sem tocar em código |
 | Globo 3D | `/funcaosocialterra/mapa` | Dezenas de camadas geográficas, incluindo as oito do rompimento real de Brumadinho (SEMAD) e os documentos do processo por município |
+| API pública | `/api` (+ `/api/v1/`, `/api/openapi.yaml`) | Os agregados do portal em JSON aberto, sem chave, com Swagger UI; gerada no prebuild, contrato estável em `/api/v1/` |
 
 **Lacunas declaradas são conteúdo, não defeito escondido.** As principais hoje: votações nominais do Congresso e de câmaras municipais zeradas no banco, diário oficial não coletado em nenhuma cidade, 69 de 252 magistrados com data de nascimento levantada, camada de terras devolutas reconhecidas publicada vazia (o INCRA não publica a base — a ausência é o achado).
 

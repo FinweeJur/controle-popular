@@ -2,7 +2,7 @@
 
 > **Tipo:** FONTE
 > **Domínio:** global
-> **Última medição:** 2026-08-22
+> **Última medição:** 2026-08-30
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal
@@ -34,6 +34,7 @@
 - [barragens.mpmg.mp.br — 45 barragens em descaracterização, uma por post](#barragensmpmgmpbr-45-barragens-em-descaracterização-uma-por-post)
 - [MPMG — `transparencia.mpmg.mp.br/buscarTac` está morto (B7)](#mpmg-transparenciampmgmpbrbuscartac-está-morto-b7)
 - [DataJud do CNJ (B8) — CONSULTA AO VIVO, nunca coleta](#datajud-do-cnj-b8-consulta-ao-vivo-nunca-coleta)
+- [SIRENEJud (CNJ/CNMP) — o recorte ambiental do DataJud que PODE ser coletado](#sirenejud-cnjcnmp--o-recorte-ambiental-do-datajud-que-pode-ser-coletado)
 - [Biblioteca de inspeções da Corregedoria Nacional (CNJ) — 330 relatórios onde a sondagem viu "nada"](#biblioteca-de-inspeções-da-corregedoria-nacional-cnj-330-relatórios-onde-a-sondagem-viu-nada)
 - [CNIEP / Geopresídios (CNJ) — inspeção judicial em presídio, e a separação que inverte a manchete](#cniep-geopresídios-cnj-inspeção-judicial-em-presídio-e-a-separação-que-inverte-a-manchete)
 - [Defensoria Pública de MG — quatro fontes, e o denominador que nenhuma delas publica sozinha](#defensoria-pública-de-mg-quatro-fontes-e-o-denominador-que-nenhuma-delas-publica-sozinha)
@@ -301,6 +302,22 @@ Implementado em 21/08/2026: `apps/web/lib/judiciario/datajud.ts` (tipo + parser 
 **Dado pessoal.** A API não devolve nome nem CNPJ/CPF de parte (LGPD; a introspecção `_mapping` responde 403 — já registrado). Mesmo assim `sanitizarProcesso` varre todo campo de texto do processo por CPF válido por mod-11 antes de a rota devolver ao cliente — rede de segurança, não expectativa: é a mesma lição de "guarda que olha lista de campo suspeito falha" que já custou dois vazamentos reais neste repositório (ementa do IBAMA, nomes da Rouanet).
 
 **Status:** rota e lib prontas, com teste do parser sobre fixture escrita à mão (formato dos exemplos oficiais da wiki, nunca acervo real). Nenhuma tela do portal consome esta rota ainda — falta a página que a chama do lado do cliente.
+
+## SIRENEJud (CNJ/CNMP) — o recorte ambiental do DataJud que PODE ser coletado
+
+Medido em 2026-08-30. Coletor: `etl/betim/etl/apis/sirenejud_cnj.py`.
+
+O SIRENEJud (Painel Interativo Nacional de Dados Ambiental e Interinstitucional, Res. Conjunta CNJ/CNMP 8/2021) é o recorte ambiental e georreferenciado da mesma base-mãe do DataJud — mas com regime jurídico oposto: o CNJ publica o **arquivo em massa** para download direto em S3 público (`prd.s3.cnj.jus.br/sirenejud/`), sem chave e sem termo que vede derivado. É a resposta para a porta que as cláusulas 3.8/3.9 do DataJud fecham: em vez de consulta ao vivo, aqui se baixa, agrega e publica.
+
+**O arquivo.** `vw_sirenejud.parquet` (273 MB, ~1,46 milhão de processos ambientais, granularidade por processo com `cod_ibge` do município do órgão julgador, tribunal, grau, classe/assunto TPU, datas e tempo de tramitação). Há também CSV zstd (486 MB) e shapefiles das camadas ambientais do painel (77 MB, fase 2). Cobertura: STJ + 27 TJs + TRF1–TRF6 — **sem** Justiça do Trabalho, Eleitoral e Militar.
+
+**As quatro armadilhas medidas:**
+1. **Atualização irregular** — o arquivo público estava datado de **07/07/2025** (Last-Modified do HEAD) quando medido em 30/08/2026; a ABJ já documentou o download quebrado em 2022. A data do arquivo viaja no JSON e na tela.
+2. **Datas-sentinela** — `2400-01-01` é nulo, e há anos de ajuizamento absurdos (1904): contaminam série e média se não forem tratados (o coletor conta em `anos_anomalos` e exclui das séries).
+3. **Dado pessoal no arquivo** — colunas de partes (polo ativo/passivo) existem no parquet; o coletor **nem lê** essas colunas, e os agregados publicados trazem só contagens e tempos.
+4. **Município ≠ local do dano** — o `cod_ibge` é do órgão julgador; o local do dano só é registrado obrigatoriamente desde 2021 (Portaria Conjunta CNJ/CNMP 5/2021). A camada do globo e as páginas dizem isso com todas as letras.
+
+**Onde aparece:** `/ambiental/judiciario` (MG, município a município), `/judiciario/sirenejud` (Brasil por UF e tribunal), camada `processos-ambientais-cnj` no globo 3D, e os datasets `sirenejud-mg`/`sirenejud-brasil` da API pública (`/api`).
 
 ## Biblioteca de inspeções da Corregedoria Nacional (CNJ) — 330 relatórios onde a sondagem viu "nada"
 
