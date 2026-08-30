@@ -127,3 +127,9 @@ etl/betim/dados/sisema-fiscalizacao-barragens.json
 # remoto.mts`). É estado de runtime desta máquina; recriado automaticamente
 # quando o gatilho sobe e não tem valor em outro PC.
 scripts/.gatilho-offset
+
+# Bruto do SIRENEJud (CNJ): parquet de ~273 MB baixado por
+# etl/betim/etl/apis/sirenejud_cnj.py. Mesmo caso do sisema-fiscalizacao
+# acima: o caminho e agregar e versionar so o agregado
+# (etl/betim/dados/sirenejud-*.json).
+etl/betim/dados-brutos/
