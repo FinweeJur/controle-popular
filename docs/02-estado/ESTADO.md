@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-08-26 (atualizado após migração para Cloudflare Tunnel)
+> **Última medição:** 2026-08-30 (SIRENEJud, API pública v1, catálogo dados.gov.br)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida tecnica, decisoes, plano unico, neon, build, tunnel
@@ -38,12 +38,12 @@ Publicado em 15/08 (build no `home-pc`, deploy passou). Seis frentes:
 |---|---|
 | **Cidades** | seis municípios com contrato, licitação, diário de câmaras, rede de proteção, clima e defesa civil; índice fatiado em `[municipio]/camara/legislacao` |
 | **Congresso** | PLs e ofício ao Congresso com `.docx`/`.pdf` gerados no navegador; rubrica determinística |
-| **Judiciário** | grafo de jurisprudência com link de fonte; página de privacidade |
+| **Judiciário** | grafo de jurisprudência com link de fonte; página de privacidade; processos ambientais por UF e tribunal (SIRENEJud, `/judiciario/sirenejud`) |
 | **Função Social da Terra** | globo 3D com imagem de satélite por zoom e tooltip de 2 s; camadas de barragem, mineração, quilombolas; 4 camadas de alerta de sobreposição ligadas; faixa de 8 km × SIGMINE (1.899 processos que a interseção pura não vê); alerta quilombola × mancha com 6 sobreposições |
 | **Paraopeba** | auditoria AJRI com 467 fichas legíveis (sem modelo) e relacionados por tema+data; execução do Acordo (26 municípios, R$ 5,48 bi, 73,8% pago); repasse (1.214/1.214 linhas, R$ 1,65 bi); biblioteca das ATIs (597); clipping de ATIs (46) e IJs (59); radar de notícias; linha do tempo; ressalva `AvisoColetaEmCurso` em 5 páginas |
-| **Ambiental** | direito crítico (30 normas + 15 precedentes em 5 temas); legislação estadual (6.378 normas); microssistema com instrumento e precedente por tema |
+| **Ambiental** | direito crítico (30 normas + 15 precedentes em 5 temas); legislação estadual (6.378 normas); microssistema com instrumento e precedente por tema; processos ambientais por município de MG (SIRENEJud/CNJ, `/ambiental/judiciario`) |
 
-Transversais confirmados: **painel de edição web** (token, editar, publicar, sincronizar, último deploy); **termo LGPD** com canal de contato; **assistente** degraus 0 (navegação, 0,35 ms), 1 (busca no índice) e 2 (composição determinística) no ar; **Direitos em Movimento** com as quatro portas e o facilitador de denúncia (`.docx`/`.pdf` só no navegador, rascunho opt-in); **Rouanet** coletado e compactado no repo (7.206 projetos + 20.785 incentivadores de MG, 7,9 MB → 2,4 MB), tela adiada de propósito; **ComunicaBR** dos 853 municípios coletado (17fccf9, 61% dos itens vazios).
+Transversais confirmados: **painel de edição web** (token, editar, publicar, sincronizar, último deploy); **termo LGPD** com canal de contato; **assistente** degraus 0 (navegação, 0,35 ms), 1 (busca no índice) e 2 (composição determinística) no ar; **Direitos em Movimento** com as quatro portas e o facilitador de denúncia (`.docx`/`.pdf` só no navegador, rascunho opt-in); **Rouanet** coletado e compactado no repo (7.206 projetos + 20.785 incentivadores de MG, 7,9 MB → 2,4 MB), tela adiada de propósito; **ComunicaBR** dos 853 municípios coletado (17fccf9, 61% dos itens vazios); **API pública v1** (`/api`, Swagger UI + OpenAPI, 14 datasets estáticos gerados no prebuild — 30/08/2026).
 
 ## Decisões do dono — 22/08/2026
 
