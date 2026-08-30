@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { obterEmpresa } from "@/lib/empresas/dados";
 import { processosPorEmpresa } from "@/lib/empresas/sigmine";
 import { NOTICIAS_SIGMA_LITHIUM, NOTICIAS_VALE } from "@/lib/empresas/noticias";
+import { montarTimelineAmbiental } from "@/lib/correlacao/sigma";
+import { EVENTOS_AMBIENTAIS_SIGMA } from "@/lib/correlacao/sigma-dados";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -166,6 +168,66 @@ export default async function EmpresaPage({ params }: Props) {
           </ul>
         )}
       </section>
+
+      {slug === "sigma-lithium" && (
+        <section className="mb-10">
+          <h2 className="mb-4 font-display text-xl font-semibold text-text">
+            Eventos ambientais e impactos
+          </h2>
+          <p className="mb-4 text-sm text-text-soft">
+            Timeline de eventos regulatórios e ambientais que afetaram as
+            operações da Sigma Lithium no Vale do Jequitinhonha.
+          </p>
+          {(() => {
+            const timeline = montarTimelineAmbiental(
+              EVENTOS_AMBIENTAIS_SIGMA,
+              NOTICIAS_SIGMA_LITHIUM.map((n) => ({
+                titulo: n.titulo,
+                href: n.href,
+                data: n.data,
+                fonte: n.veiculo,
+                descricao: n.resumo,
+              }))
+            );
+            return timeline.length === 0 ? (
+              <p className="rounded-xl border border-dashed border-border bg-surface p-4 text-sm text-text-soft">
+                Nenhum evento registrado.
+              </p>
+            ) : (
+              <div className="space-y-3">
+                {timeline.map((item, i) => (
+                  <div
+                    key={`${item.data}-${i}`}
+                    className="flex gap-3 rounded-2xl border border-border bg-surface p-4"
+                  >
+                    <div
+                      className="mt-1 h-3 w-3 shrink-0 rounded-full"
+                      style={{ backgroundColor: item.cor }}
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs text-text-soft">
+                        {item.data} ·{" "}
+                        <span className="capitalize">{item.tipo}</span>
+                      </p>
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 block font-medium text-accent hover:underline"
+                      >
+                        {item.titulo}
+                      </a>
+                      <p className="mt-1 text-sm text-text-soft">
+                        {item.descricao}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            );
+          })()}
+        </section>
+      )}
 
       <section className="mb-10">
         <h2 className="mb-4 font-display text-xl font-semibold text-text">
