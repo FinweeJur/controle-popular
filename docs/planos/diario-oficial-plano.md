@@ -146,9 +146,27 @@ com diário indexado e buscável. Progresso (22/08/2026, branch `diario-oficial`
   não tem `DATABASE_URL`. Roda quando houver banco (`home-pc` ou Neon 01/09).
 
 **D2 — Betim.** Portal próprio. Betim é a cidade mais completa do portal e a
-que mais gente usa.
+que mais gente usa. ⚠️ **Medido em 30/08/2026:** o portal de Betim expõe o
+diário como **PDF por edição** (`/portal/diario-oficial/ver/{id}` → download
+único; a busca AJAX `/portal/busca/realiza-pesquisa/` é do portal geral). Não
+há matérias individuais em HTML estruturado — preencher `atos_diario` (uma
+linha por matéria) exigiria **parsear o PDF de cada edição**, outro tipo de
+coletor. Fica documentado como pendência real, não silêncio.
 
-**D3 — BH.** DOM-Web.
+**D3 — BH (DOM-Web).** ✅ **Coletor escrito e medido ao vivo (30/08/2026)** —
+`etl/betim/etl/camaras/domweb.py` + migration `0080_domweb_bh.sql` + testes
+(`domweb_test.py`). A API pública do DOM-PBH (`api-dom.pbh.gov.br`, sem
+sessão/CSRF) expõe **ato individual** por edição: `buscarpublicacaopordata`
+(1 edição/dia útil; P + S possíveis no mesmo dia) → `sumario/{edicao_id}` (a
+edição inteira, atômica — sem paginação) → atos com `descricao`, `orgao`,
+`categoria`, `conteudo_html`. **Medido:** 1.814 atos em agosto/2026, 21 dias
+com edição, 100% com edição e `link_fonte`
+(`dom-web.pbh.gov.br/visualizacao/ato/{id}`). ⚠️ **Gap de classificação
+declarado:** 52% caíram em `outro` (vocabulário do DOM-PBH ≠ Diamantina:
+categorias administrativas próprias + títulos curtos) — ver cabeçalho do
+módulo; `raw.categoria` preserva a categoria da fonte para decisão futura.
+⏳ **Gravação em banco**: nunca exercitada (máquina sem `DATABASE_URL`); roda
+quando houver banco (`home-pc` ou Neon 01/09), mesma situação do D1.
 
 **D4 — São Paulo.** Por último.
 
