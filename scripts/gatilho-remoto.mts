@@ -74,7 +74,7 @@ function log(msg: string) {
 
 // ─── Config: scripts/.env, parse manual (mesmo padrão de aplicar-migration-
 // local.mts — sem dependência nova só para ler três variáveis). ───────────
-function lerEnv(caminho: string): Record<string, string> {
+async function lerEnv(caminho: string): Promise<Record<string, string>> {
   const out: Record<string, string> = {};
   if (!fs.existsSync(caminho)) return out;
   for (const linha of fs.readFileSync(caminho, "utf-8").split("\n")) {
@@ -83,7 +83,7 @@ function lerEnv(caminho: string): Record<string, string> {
   }
   return out;
 }
-const ENV = lerEnv(path.join(RAIZ, "scripts", ".env"));
+const ENV = await lerEnv(path.join(RAIZ, "scripts", ".env"));
 
 const GATILHO_TOKEN = ENV.GATILHO_TOKEN || "";
 const TELEGRAM_BOT_TOKEN = ENV.TELEGRAM_BOT_TOKEN || "";
@@ -172,6 +172,8 @@ const COMANDOS: Record<string, string> = {
   "/reiniciar": "reiniciar",
   "/restart": "reiniciar",
   "/proximas": "proximas",
+  "/code": "code",
+  "/andamento": "andamento",
 };
 
 async function telegramApi(metodo: string, corpo: Record<string, unknown>) {
@@ -301,6 +303,22 @@ async function loopTelegram() {
           }
           continue;
         }
+        if (comando === "code") {
+          await telegramApi("sendMessage", {
+            chat_id: msg.chat.id,
+            text: await mensagemCode(),
+            parse_mode: "Markdown",
+          });
+          continue;
+        }
+        if (comando === "andamento") {
+          await telegramApi("sendMessage", {
+            chat_id: msg.chat.id,
+            text: await mensagemAndamento(),
+            parse_mode: "Markdown",
+          });
+          continue;
+        }
         if (comando === "proximas") {
           const pendencias = [
             "1. CORS no R2 (dashboard → R2 →ucket → CORS)",
@@ -331,8 +349,74 @@ async function loopTelegram() {
     }
   }
 }
-function esperar(ms: number) {
+async function esperar(ms: number) {
   return new Promise((r) => setTimeout(r, ms));
+}
+
+// ─── Status do projeto ao vivo (para /code e /andamento) ──────────────────
+
+async function statusBanco(): Promise<string> {
+  try {
+    const { Client } = await import("pg");
+    const c = new Client({ connectionString: ENV.DATABASE_URL.trim() });
+    await c.connect();
+    const a = await c.query("SELECT count(*) as n FROM atos_diario");
+    const b = await c.query("SELECT count(*) as n FROM arquivo_fontes WHERE sha256 IS NOT NULL AND sha256 <> 'sem-conteudo'");
+    const c2 = await c.query("SELECT count(*) as n FROM arquivo_fontes WHERE modo_armazenamento = 'r2'");
+    await c.end();
+    return `📄 atos_diario: ${a.rows[0].n}\n🗃️ fontes capturadas: ${b.rows[0].n}\n☁️ no R2: ${c2.rows[0].n}`;
+  } catch (e) {
+    return `banco: erro (${(e as Error).message.slice(0, 120)})`;
+  }
+}
+
+async function statusR2(): Promise<string> {
+  try {
+    const { S3Client, ListObjectsV2Command } = await import("@aws-sdk/client-s3");
+    const s3 = new S3Client({
+      endpoint: ENV.R2_ENDPOINT,
+      region: "auto",
+      credentials: { accessKeyId: ENV.R2_ACCESS_KEY_ID, secretAccessKey: ENV.R2_SECRET_ACCESS_KEY },
+    });
+    let total = 0;
+    let token: string | undefined;
+    do {
+      const r = await s3.send(new ListObjectsV2Command({ Bucket: ENV.R2_BUCKET_NAME, ContinuationToken: token }));
+      total += r.KeyCount ?? 0;
+      token = r.NextContinuationToken;
+    } while (token);
+    return `${total} objetos no bucket ${ENV.R2_BUCKET_NAME}`;
+  } catch (e) {
+    return `r2: erro (${(e as Error).message.slice(0, 120)})`;
+  }
+}
+
+async function mensagemCode(): Promise<string> {
+  const r2 = await statusR2();
+  const banco = await statusBanco();
+  return [
+    "🤖 */code — status do portal*",
+    "",
+    banco,
+    r2,
+    "",
+    "Backfill PDFs: em andamento (resumível após dedup)",
+    "Diário oficial: ✅ completo (16.601 atos)",
+    "",
+    "Próximo passo: upload R2 do restante + verificação do portal",
+  ].join("\n");
+}
+
+async function mensagemAndamento(): Promise<string> {
+  const etapa = [
+    "1️⃣ Coletor SIGPub via requests — ✅ commitado",
+    "2️⃣ Diário oficial (2020-01 a 2026-08) — ✅ 16.601 atos",
+    "3️⃣ Backfill PDFs (1.427 fontes) — 🔄 rodando em 2º plano",
+    "4️⃣ Upload R2 — 🔄 parcial (167+ objetos)",
+    "5️⃣ Portal/túnel — ✅ rodando (verificar páginas)",
+    "6️⃣ LAI INCRA (prazo 28/08) — ⏳ você",
+  ];
+  return ["📈 *Andamento do projeto*", "", ...etapa].join("\n");
 }
 
 // ─── Sobe os dois canais que tiverem config ───────────────────────────────
