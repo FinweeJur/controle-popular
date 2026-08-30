@@ -136,3 +136,15 @@ apps/web/_*.log
 apps/web/_run_*.bat
 apps/web/_run_coleta.py
 _run_gatilho.bat
+
+# Bruto do SIRENEJud (CNJ): parquet de ~273 MB baixado por
+# etl/betim/etl/apis/sirenejud_cnj.py. Mesmo caso do sisema-fiscalizacao
+# acima: o caminho e agregar e versionar so o agregado
+# (etl/betim/dados/sirenejud-*.json).
+etl/betim/dados-brutos/
+
+# API publica estatica: gerada no prebuild por gerar-api-publica.mjs a partir
+# dos acervos ja versionados (mesmo regime do indice da /busca, acima).
+# Versionados ficam a spec (public/api/openapi.yaml) e o Swagger UI
+# vendorizado (public/api/docs/).
+apps/web/public/api/v1/
