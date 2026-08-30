@@ -201,6 +201,8 @@ from etl.common import (
 )
 from etl.diario import classificar_ato
 
+import requests as _requests
+
 LOG = "[etl.camaras.sigpub]"
 
 # Valor de `municipios.fontes.diario_oficial_coletor` — não usado ainda por
@@ -233,9 +235,9 @@ class BloqueioSigpub(RuntimeError):
     contar como "0 matérias": ver armadilha 7 do cabeçalho do módulo."""
 
 
-# ────────────────────────── HTTP via curl.exe ─────────────────────────
-#
-# Armadilha 10 do cabeçalho: nunca `requests`/`httpx` direto nesta máquina.
+# ────────────────────────── HTTP via requests ─────────────────────────
+# Replacing curl.exe (broken on this machine as of 2026-08-27) with
+# requests.Session. Same cookie jar semantics via a requests.Session.
 
 
 class _RespostaCurl:
@@ -247,45 +249,16 @@ class _RespostaCurl:
         self.url_final = url_final
 
 
-def _curl_get_uma_vez(url: str, *, params: dict[str, str] | None, cookie_jar: Path) -> _RespostaCurl:
-    with tempfile.TemporaryDirectory() as tmp:
-        corpo_path = Path(tmp) / "corpo"
-        args = [
-            "curl.exe",
-            "-sS",
-            "-L",  # segue redirect (armadilha 6: /load/<hash> é 302)
-            "-A",
-            USER_AGENT,
-            "--max-time",
-            str(TIMEOUT),
-            "-b",
-            str(cookie_jar),
-            "-c",
-            str(cookie_jar),
-            "-o",
-            str(corpo_path),
-            "-w",
-            "%{http_code} %{url_effective}",
-        ]
-        if params:
-            args.append("-G")
-            for chave, valor in params.items():
-                args += ["--data-urlencode", f"{chave}={valor}"]
-        args.append(url)
-        resultado = subprocess.run(args, capture_output=True, text=True, timeout=TIMEOUT + 15)
-        if resultado.returncode != 0:
-            raise RuntimeError(
-                f"curl.exe saiu com código {resultado.returncode} em {url}: "
-                f"{resultado.stderr.strip()[:300]}"
-            )
-        saida = resultado.stdout.strip().split(" ", 1)
-        status = int(saida[0]) if saida and saida[0].isdigit() else 0
-        url_final = saida[1] if len(saida) > 1 else url
-        corpo = corpo_path.read_text(encoding="utf-8", errors="replace")
-        return _RespostaCurl(status=status, corpo=corpo, url_final=url_final)
+def _requests_get_uma_vez(url: str, *, params: dict[str, str] | None, session: _requests.Session) -> _RespostaCurl:
+    resp = session.get(url, params=params, timeout=TIMEOUT, allow_redirects=True)
+    try:
+        corpo = resp.text
+    except UnicodeDecodeError:
+        corpo = resp.content.decode("latin-1", errors="replace")
+    return _RespostaCurl(status=resp.status_code, corpo=corpo, url_final=str(resp.url))
 
 
-def _curl_get(url: str, *, params: dict[str, str] | None = None, cookie_jar: Path, tentativas: int = 3) -> _RespostaCurl:
+def _http_get(url: str, *, params: dict[str, str] | None = None, session: _requests.Session, tentativas: int = 3) -> _RespostaCurl:
     """Ponto ÚNICO de chamada HTTP deste módulo — TODA requisição passa por
     aqui, e é por isso que a pausa (armadilha 7 do cabeçalho) mora aqui, não
     espalhada pelos call sites: a primeira versão deste arquivo pausava só
@@ -293,16 +266,16 @@ def _curl_get(url: str, *, params: dict[str, str] | None = None, cookie_jar: Pat
     achou que a transição entre entidades e entre meses disparava duas
     requisições seguidas sem pausa nenhuma — seria fácil de repetir o erro
     se cada função lembrasse de pausar por conta própria. Centralizar aqui
-    torna a omissão impossível: quem chama `_curl_get` nunca precisa lembrar.
+    torna a omissão impossível: quem chama `_http_get` nunca precisa lembrar.
 
-    Retry só do que adianta repetir: falha de rede/timeout do próprio curl,
+    Retry só do que adianta repetir: falha de rede/timeout,
     não um HTTP de negócio (200 com "0 matérias" não é falha)."""
     time.sleep(PAUSA)
     ultimo: Exception | None = None
     for tentativa in range(tentativas):
         try:
-            return _curl_get_uma_vez(url, params=params, cookie_jar=cookie_jar)
-        except Exception as e:  # noqa: BLE001 — timeout, reset, curl ausente
+            return _requests_get_uma_vez(url, params=params, session=session)
+        except Exception as e:  # noqa: BLE001 — timeout, reset, connection error
             ultimo = e
             time.sleep(3.0 * (tentativa + 1))
     raise RuntimeError(f"GET {url} falhou após {tentativas} tentativa(s): {ultimo}")
@@ -410,11 +383,11 @@ def _extrair_detalhe(corpo: str) -> dict:
 # ───────────────────────────── sessão ──────────────────────────────
 
 
-def _iniciar_sessao(base_url: str, cookie_jar: Path) -> str:
+def _iniciar_sessao(base_url: str, session: _requests.Session) -> str:
     """Um GET a `<base_url>pesquisar` para pegar cookie de sessão + o token
     CSRF do formulário. Chamado UMA VEZ por rodada — armadilha 1: o token não
     é de uso único, serve para todas as buscas desta sessão."""
-    resp = _curl_get(urljoin(base_url, "pesquisar"), cookie_jar=cookie_jar)
+    resp = _http_get(urljoin(base_url, "pesquisar"), session=session)
     if resp.status != 200:
         raise RuntimeError(f"GET {base_url}pesquisar devolveu HTTP {resp.status} — sessão não iniciada.")
     token = _extrair_token(resp.corpo)
@@ -430,7 +403,7 @@ def _iniciar_sessao(base_url: str, cookie_jar: Path) -> str:
 
 
 def _buscar_pagina(
-    base_url: str, cookie_jar: Path, token: str, entidade_id: str, data_inicio: str, data_fim: str, pagina: int
+    base_url: str, session: _requests.Session, token: str, entidade_id: str, data_inicio: str, data_fim: str, pagina: int
 ) -> str:
     params = {
         "busca_avancada[entidadeUsuaria]": str(entidade_id),
@@ -440,14 +413,14 @@ def _buscar_pagina(
     }
     if pagina > 1:
         params["busca_avancada[page]"] = str(pagina)
-    resp = _curl_get(urljoin(base_url, "pesquisar"), params=params, cookie_jar=cookie_jar)
+    resp = _http_get(urljoin(base_url, "pesquisar"), params=params, session=session)
     if resp.status != 200:
         raise RuntimeError(f"GET pesquisar (pagina={pagina}) devolveu HTTP {resp.status}.")
     return resp.corpo
 
 
 def _buscar_mes(
-    base_url: str, cookie_jar: Path, token: str, entidade_id: str, ano: int, mes: int, rotulo_entidade: str
+    base_url: str, session: _requests.Session, token: str, entidade_id: str, ano: int, mes: int, rotulo_entidade: str
 ) -> list[dict]:
     """Todas as matérias de UMA entidade em UM mês fechado, paginando e
     conferindo contra o total que a própria página anuncia (mesma disciplina
@@ -465,7 +438,7 @@ def _buscar_mes(
     while True:
         # A pausa entre requisições mora em `_curl_get` (ponto único), não
         # aqui — ver o comentário lá sobre por que centralizar.
-        html = _buscar_pagina(base_url, cookie_jar, token, entidade_id, data_inicio, data_fim, pagina)
+        html = _buscar_pagina(base_url, session, token, entidade_id, data_inicio, data_fim, pagina)
         if primeira_pagina:
             total_declarado = _extrair_total_declarado(html)
             tem_tabela = 'id="datatable"' in html
@@ -545,8 +518,8 @@ def _montar_linha(id_municipio: str, base_url: str, linha_busca: dict, detalhe: 
     }
 
 
-def _buscar_detalhe_de_uma(base_url: str, cookie_jar: Path, hash_materia: str) -> dict:
-    resp = _curl_get(urljoin(base_url, f"load/{hash_materia}"), cookie_jar=cookie_jar)
+def _buscar_detalhe_de_uma(base_url: str, session: _requests.Session, hash_materia: str) -> dict:
+    resp = _http_get(urljoin(base_url, f"load/{hash_materia}"), session=session)
     if resp.status != 200:
         print(f"{LOG} AVISO: detalhe de {hash_materia} devolveu HTTP {resp.status} — edicao/texto ficam nulos.")
         return {"edicao": None, "pagina": None, "texto": None}
@@ -618,7 +591,7 @@ def _gravar_atos(client, linhas: list[dict]) -> None:
 
 def _coletar_entidade(
     base_url: str,
-    cookie_jar: Path,
+    session: _requests.Session,
     token: str,
     entidade_id: str,
     rotulo_entidade: str,
@@ -629,11 +602,11 @@ def _coletar_entidade(
 ) -> list[dict]:
     linhas_busca: list[dict] = []
     for ano, mes in _meses_entre(desde, ate):
-        linhas_busca.extend(_buscar_mes(base_url, cookie_jar, token, entidade_id, ano, mes, rotulo_entidade))
+        linhas_busca.extend(_buscar_mes(base_url, session, token, entidade_id, ano, mes, rotulo_entidade))
 
     linhas: list[dict] = []
     for linha_busca in linhas_busca:
-        detalhe = _buscar_detalhe_de_uma(base_url, cookie_jar, linha_busca["hash"]) if com_detalhe else None
+        detalhe = _buscar_detalhe_de_uma(base_url, session, linha_busca["hash"]) if com_detalhe else None
         linhas.append(_montar_linha(id_municipio, base_url, linha_busca, detalhe))
     return linhas
 
@@ -646,13 +619,13 @@ def _coletar_entidade(
 
 
 def sondar(base_url: str, entidade_id: str, rotulo_entidade: str, desde: tuple[int, int], ate: tuple[int, int], com_detalhe: bool) -> None:
-    with tempfile.TemporaryDirectory() as tmp:
-        cookie_jar = Path(tmp) / "cookies.txt"
-        token = _iniciar_sessao(base_url, cookie_jar)
-        print(f"{LOG} [sondar] sessão iniciada, token obtido ({len(token)} chars).")
-        linhas = _coletar_entidade(
-            base_url, cookie_jar, token, entidade_id, rotulo_entidade, "SONDAGEM-SEM-BANCO", desde, ate, com_detalhe
-        )
+    session = _requests.Session()
+    session.headers.update({"User-Agent": USER_AGENT})
+    token = _iniciar_sessao(base_url, session)
+    print(f"{LOG} [sondar] sessão iniciada, token obtido ({len(token)} chars).")
+    linhas = _coletar_entidade(
+        base_url, session, token, entidade_id, rotulo_entidade, "SONDAGEM-SEM-BANCO", desde, ate, com_detalhe
+    )
 
     if not linhas:
         print(f"{LOG} [sondar] {rotulo_entidade}: 0 matéria(s) no período — nada a resumir.")
@@ -699,18 +672,18 @@ def sync(
 
     client = get_supabase_client()
 
-    with tempfile.TemporaryDirectory() as tmp:
-        cookie_jar = Path(tmp) / "cookies.txt"
-        token = _iniciar_sessao(base_url, cookie_jar)
-        print(f"{LOG} sessão iniciada, token obtido.")
+    session = _requests.Session()
+    session.headers.update({"User-Agent": USER_AGENT})
+    token = _iniciar_sessao(base_url, session)
+    print(f"{LOG} sessão iniciada, token obtido.")
 
-        todas_as_linhas: list[dict] = []
-        for parte in sorted(partes_disponiveis):
-            entidade_id = entidades_config[parte]
-            linhas = _coletar_entidade(
-                base_url, cookie_jar, token, entidade_id, parte, id_municipio, desde, ate, com_detalhe
-            )
-            todas_as_linhas.extend(linhas)
+    todas_as_linhas: list[dict] = []
+    for parte in sorted(partes_disponiveis):
+        entidade_id = entidades_config[parte]
+        linhas = _coletar_entidade(
+            base_url, session, token, entidade_id, parte, id_municipio, desde, ate, com_detalhe
+        )
+        todas_as_linhas.extend(linhas)
 
     _gravar_atos(client, todas_as_linhas)
 
