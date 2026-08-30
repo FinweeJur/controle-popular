@@ -13,6 +13,7 @@ import { contarLegislacaoAmbiental } from "@/lib/db/queries/legislacao-ambiental
 import { contarDireitoCritico } from "@/lib/db/queries/direito-critico";
 import { contarPatrimonioTombado } from "@/lib/db/queries/patrimonio-tombado";
 import { lerEstudos } from "@/lib/ambiental/estudos-dados";
+import { carregarSirenejudMg } from "@/lib/ambiental/sirenejud-dados";
 
 /**
  * Home da zona /ambiental.
@@ -52,8 +53,21 @@ export default async function AmbientalHome() {
     ]);
   const temBarragens = barragens.totalFeam > 0 || barragens.totalSnisb > 0;
   const { resumo: resumoEstudos } = lerEstudos();
+  const sirenejud = carregarSirenejudMg();
 
   const BLOCOS = [
+    {
+      titulo: "Processos ambientais na Justiça",
+      linha: sirenejud
+        ? `${formatNumberBR(sirenejud.total_processos_mg)} processos em ${formatNumberBR(sirenejud.municipios_com_processos)} municípios — arquivo do CNJ de ${sirenejud.arquivo_modificado_em}`
+        : "SIRENEJud (CNJ) — coleta ainda não rodou",
+      texto:
+        "Quantos processos ambientais correm na Justiça, município a município, e quanto tempo levam — do painel do CNJ que recorta a base nacional do Judiciário. A data do arquivo viaja junto: a atualização do CNJ é irregular.",
+      fase: "F10",
+      href: "/judiciario",
+      pronta: sirenejud !== null,
+      linkTexto: "Ver município a município →",
+    },
     {
       titulo: "Reuniões do COPAM",
       linha:
