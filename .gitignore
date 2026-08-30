@@ -127,3 +127,12 @@ etl/betim/dados/sisema-fiscalizacao-barragens.json
 # remoto.mts`). É estado de runtime desta máquina; recriado automaticamente
 # quando o gatilho sobe e não tem valor em outro PC.
 scripts/.gatilho-offset
+
+# Artefatos de coleta/upload local (rodadas de backfill e coleta diario): 
+
+
+# Artefatos de rodadas de coleta/upload (logs locais, batches de maquina)
+apps/web/_*.log
+apps/web/_run_*.bat
+apps/web/_run_coleta.py
+_run_gatilho.bat

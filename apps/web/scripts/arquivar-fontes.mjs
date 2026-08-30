@@ -242,8 +242,20 @@ async function main() {
   const c = new Client({ connectionString: DATABASE_URL });
   await c.connect();
 
+  // Idempotência entre rodadas (ordem do universo é random() — sem isto,
+  // duas execuções duplicam linhas; já medido: 5 duplicatas por reelaboração):
+  //  1. Alvos com cópia já capturada (sha256 real) saem do universo.
+  //  2. Falhas antigas (sha256='sem-conteudo') são APAGADAS e regravadas —
+  //     retriga URLs que caíram por timeout/rede numa rodada anterior.
+  await c.query(`DELETE FROM arquivo_fontes WHERE sha256 = 'sem-conteudo'`);
+  const jaCapturadas = await c.query(
+    `SELECT DISTINCT url_original FROM arquivo_fontes WHERE sha256 IS NOT NULL AND sha256 <> 'sem-conteudo'`
+  );
+  const jaCapturadasSet = new Set(jaCapturadas.rows.map((r) => r.url_original));
+
   const universo = await coletarUniverso(c, { tabela, limite, deResultado });
-  console.log(`Capturando ${universo.length} URLs (amostra de medição)`);
+  const pendentes = universo.filter((u) => !jaCapturadasSet.has(u.url));
+  console.log(`Capturando ${pendentes.length} URLs de ${universo.length} (já capturadas: ${universo.length - pendentes.length})`);
 
   const resultados = [];
   let ok = 0;
@@ -251,8 +263,8 @@ async function main() {
   let totalBytes = 0;
   let comCpf = 0;
 
-  for (const [i, item] of universo.entries()) {
-    process.stdout.write(`  [${i + 1}/${universo.length}] ${item.url} ... `);
+  for (const [i, item] of pendentes.entries()) {
+    process.stdout.write(`  [${i + 1}/${pendentes.length}] ${item.url} ... `);
     const cap = await capturarUrl(item.url);
 
     if (!cap.ok) {
@@ -319,8 +331,8 @@ async function main() {
   await c.end();
 
   console.log("\n=== medição (para decidir a escala do acervo inteiro) ===");
-  console.log(`  tentativas:        ${universo.length}`);
-  console.log(`  sucesso:           ${ok} (${((ok / universo.length) * 100).toFixed(1)}%)`);
+  console.log(`  tentativas:        ${pendentes.length}`);
+  console.log(`  sucesso:           ${ok} (${((ok / pendentes.length) * 100).toFixed(1)}%)`);
   console.log(`  falha:             ${falhas}`);
   console.log(`  com CPF (barrado): ${comCpf}`);
   if (ok > 0) {

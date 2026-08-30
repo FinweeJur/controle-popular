@@ -1,0 +1,103 @@
+import type { Metadata } from "next";
+import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
+import { IndiceWiki } from "@/app/components/wiki";
+
+/**
+ * Indice da frente /ambiental.
+ *
+ * Padrao wiki: aponta para os topicos ja publicados da frente. Cada card
+ * descreve o destino e leva a pagina de conteudo real.
+ */
+
+const topicos: Topico[] = [
+  {
+    href: "/ambiental",
+    titulo: "Visao geral",
+    descricao: "Panorama ambiental de Minas Gerais: COPAM, licenciamento e barragens.",
+  },
+  {
+    href: "/ambiental/barragens",
+    titulo: "Barragens",
+    descricao: "Situacao e risco de barragens em Minas Gerais.",
+  },
+  {
+    href: "/ambiental/convenios",
+    titulo: "Convenios ambientais",
+    descricao: "Repasses e convenios relacionados ao meio ambiente.",
+  },
+  {
+    href: "/ambiental/copam",
+    titulo: "COPAM",
+    descricao: "Reunioes e decisoes do Conselho Estadual de Política Ambiental.",
+  },
+  {
+    href: "/ambiental/decisoes",
+    titulo: "Decisoes de licenciamento",
+    descricao: "Decisoes com cobertura declarada do licenciamento.",
+  },
+  {
+    href: "/ambiental/direito-critico",
+    titulo: "Direito critico",
+    descricao: "Analises e estudos juridicos sobre a agenda ambiental.",
+  },
+  {
+    href: "/ambiental/estudos",
+    titulo: "Estudos",
+    descricao: "Estudos de impacto ambiental e relatorios.",
+  },
+  {
+    href: "/ambiental/legislacao",
+    titulo: "Legislacao",
+    descricao: "Normas ambientais municipais, estaduais e federais.",
+  },
+  {
+    href: "/ambiental/licenciamento",
+    titulo: "Licenciamento",
+    descricao: "Processos de licenciamento ambiental por municipio.",
+  },
+  {
+    href: "/ambiental/patrimonio-cultural",
+    titulo: "Patrimonio cultural",
+    descricao: "Bens tombados e patrimonio cultural de Minas Gerais.",
+  },
+  {
+    href: "/ambiental/tac",
+    titulo: "Termos de ajustamento de conduta",
+    descricao: "TACs e compromissos ambientais firmados.",
+  },
+];
+
+export const metadata: Metadata = {
+  title: "Indice — Meio ambiente e mineracao — Controle Popular",
+  description:
+    "Navegue pelos dados ambientais de Minas Gerais: COPAM, licenciamento, barragens, legislacao, patrimonio cultural e estudos.",
+};
+
+export default function IndiceAmbiental() {
+  return (
+    <main
+      id="conteudo-principal"
+      tabIndex={-1}
+      className="mx-auto max-w-5xl px-4 py-8"
+    >
+      <header className="space-y-2">
+        <h1 className="font-display text-3xl font-bold">Indice — Meio ambiente</h1>
+        <p className="max-w-2xl text-text-soft">
+          Dados ambientais de Minas Gerais: licenciamento, barragens, COPAM,
+          legislacao, patrimonio cultural e estudos de impacto.
+        </p>
+      </header>
+
+      <IndiceWiki itens={[{ id: "topicos", titulo: "Topicos" }]} />
+
+      <section className="mt-10" id="topicos">
+        <h2 className="font-display text-xl font-semibold">Topicos</h2>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {topicos.map((topico) => (
+            <CartaoTopico key={topico.href} topico={topico} />
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
