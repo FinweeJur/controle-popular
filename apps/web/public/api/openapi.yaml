@@ -1,0 +1,114 @@
+openapi: 3.0.3
+info:
+  title: Controle Popular — API pública
+  version: 1.0.0
+  description: >-
+    Dados agregados do portal Controle Popular (controlepopular.com.br) em
+    JSON aberto, sem autenticação. Todo dataset declara fonte, data de medição
+    e ressalvas — a ressalva viaja no contrato. Contrato estável sob `/api/v1/`;
+    mudanças quebrantes viram `/api/v2/`.
+  license:
+    name: AGPL-3.0-or-later (código); dados públicos das fontes oficiais citadas em cada dataset
+  contact:
+    url: https://github.com/FinweeJur/controle-popular
+servers:
+  - url: https://controlepopular.com.br
+tags:
+  - name: Sistema
+    description: Status e catálogo da API
+  - name: Datasets
+    description: Acervos agregados por cidade e por tema
+paths:
+  /api/v1/status.json:
+    get:
+      tags: [Sistema]
+      summary: Status da API e lista de endpoints
+      description: Equivalente ao health check — devolve o timestamp do build e a lista completa de endpoints publicados.
+      operationId: status
+      responses:
+        "200":
+          description: API no ar
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, example: ok }
+                  versao: { type: string, example: v1 }
+                  gerado_em: { type: string, format: date-time }
+                  endpoints:
+                    type: array
+                    items: { type: string }
+  /api/v1/manifesto.json:
+    get:
+      tags: [Sistema]
+      summary: Catálogo de datasets
+      description: >-
+        Lista todos os datasets publicados, cada um com fonte, URL da fonte,
+        data de medição, tamanho, número de registros e ressalvas. É o ponto
+        de partida para descobrir o que existe.
+      operationId: manifesto
+      responses:
+        "200":
+          description: Catálogo de datasets
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Manifesto"
+  /api/v1/datasets/{id}.json:
+    get:
+      tags: [Datasets]
+      summary: Conteúdo de um dataset
+      description: >-
+        Devolve o dataset inteiro em JSON. Os ids disponíveis estão no
+        manifesto (`/api/v1/manifesto.json`). O formato interno de cada
+        dataset é o do acervo publicado pelo portal; datasets com `ressalvas`
+        não vazias devem ser lidos junto com elas.
+      operationId: dataset
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Identificador do dataset (ver manifesto)
+          schema:
+            type: string
+          example: sirenejud-mg
+      responses:
+        "200":
+          description: Conteúdo do dataset
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: Dataset inexistente — consulte o manifesto
+components:
+  schemas:
+    Manifesto:
+      type: object
+      properties:
+        versao: { type: string, example: v1 }
+        gerado_em: { type: string, format: date-time }
+        portal: { type: string }
+        documentacao: { type: string, example: /api }
+        spec_openapi: { type: string, example: /api/openapi.yaml }
+        licenca_codigo: { type: string }
+        datasets:
+          type: array
+          items:
+            $ref: "#/components/schemas/DatasetMeta"
+    DatasetMeta:
+      type: object
+      properties:
+        id: { type: string, example: sirenejud-mg }
+        titulo: { type: string }
+        descricao: { type: string }
+        fonte: { type: string, example: "SIRENEJud — CNJ/CNMP (Res. Conjunta 8/2021)" }
+        url_fonte: { type: string }
+        endpoint: { type: string, example: /api/v1/datasets/sirenejud-mg.json }
+        bytes: { type: integer }
+        registros: { type: integer, nullable: true }
+        medido_em: { type: string, nullable: true }
+        ressalvas:
+          type: array
+          items: { type: string }
