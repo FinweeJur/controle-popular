@@ -130,6 +130,32 @@ Total de **201 municípios estratégicos** mapeados:
 - **Sudeste (54 cidades)**: 4 Capitais + 50 Polos do Interior (ex: Campinas, Ribeirão Preto, Santos, São José dos Campos, Uberlândia, Juiz de Fora, Niterói, Campos dos Goytacazes, Volta Redonda, Serra, Linhares).
 - **Sul (38 cidades)**: 3 Capitais + 35 Polos do Interior (ex: Londrina, Maringá, Ponta Grossa, Cascavel, Joinville, Blumenau, Itajaí, Chapecó, Caxias do Sul, Pelotas, Santa Maria, Passo Fundo).
 
+### Status do inventário (medido em 2026-08-31)
+
+O **inventário dos 172 polos do interior agora existe** em
+`apps/web/data/polos-interior-ibge.json`, gerado por
+`scripts/gerar-polos-interior.cjs` — conferência **ao vivo na API do IBGE**
+(`/localidades/municipios`, 5.571 municípios): cada polo casa por nome
+normalizado + UF, e qualquer nome ambíguo ou não encontrado fica de fora e é
+reportado (a régua "código IBGE nunca digitado à mão" do runbook). O JSON
+traz `id_municipio` (7 dígitos), `uf`, `regiao` e `datasus_6dig` (trunca o
+dígito verificador).
+
+**O que falta para os seeds 0083-0087** (um por região), na ordem do runbook
+`runbook-cidade-nova.md`:
+1. **CNPJ da prefeitura e da câmara** conferidos ao vivo (PNCP/Interlegis) —
+   por polo. CNPJ errado é pior que ausente: faz o `etl.pncp.contratos`
+   coletar contrato de outro ente em silêncio.
+2. **Fornecedor da câmara** (SAPL? SysSolution? nenhum?) por polo, para o
+   `camara_sistema`/`camara_coletor` certo no `fontes`.
+3. `ativo = false` até o ETL rodar pelo menos uma vez; `fontes` com as
+   guardas de MG (`paraopeba`, `citrolandia`, `links_uteis_mg`,
+   `rotas_legadas`) em `false` para todo polo fora de MG.
+
+As 25 capitais já estão semeadas (migration `0082`, ex-`0061` — renumeração
+por colisão de número com `0061_servidores_itinga_diamantina.sql`); BH e SP
+existem desde o seed `0027`.
+
 ## Arquitetura de navegação e banco de dados
 
 - **Visão Integrada ("Tudo Junto")**:
