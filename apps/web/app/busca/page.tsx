@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import BuscaClient from "./BuscaClient";
 import { metadataEditavel } from "@/lib/edicoes";
+import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * Busca unificada — tema + palavra-chave + território — agrupada pelas três
@@ -79,6 +80,7 @@ export default async function BuscaPage() {
       </header>
 
       <BuscaClient cidades={cidades} />
+      <FooterGlobal />
     </main>
   );
 }

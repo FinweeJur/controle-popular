@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { formatNumberBR } from "@/lib/betim/format";
 import BarrasValor from "@/app/[municipio]/components/charts/BarrasValor";
+import FooterGlobal from "@/app/components/FooterGlobal";
 import {
   contarLicenciamento,
   contarLicenciamentoPorAno,
@@ -277,6 +278,7 @@ export default async function LicenciamentoIndex() {
           Semad publica.
         </p>
       </section>
+      <FooterGlobal />
     </div>
   );
 }

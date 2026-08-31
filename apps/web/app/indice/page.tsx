@@ -23,6 +23,7 @@ import novidades from "@/data/novidades.json";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki } from "@/app/components/wiki";
+import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * Hub global de indice do portal: `/indice`.
@@ -160,6 +161,7 @@ export default async function IndiceGlobal() {
           </div>
         </section>
       ))}
+      <FooterGlobal />
     </main>
   );
 }

@@ -743,3 +743,190 @@ export const FRENTES: SeuNonoFrente[] = [
     ],
   },
 ];
+
+/**
+ * Resumos de dados das páginas do portal. O SeuNonô usa estes textos para
+ * responder quando o usuário pergunta sobre dados específicos de uma página.
+ * Cada entrada contém o título da página, um resumo dos dados disponíveis,
+ * e links para acesso direto.
+ */
+export interface PaginaDados {
+  id: string;
+  titulo: string;
+  resumo: string;
+  dados: string[];
+  links: SeuNonoLink[];
+}
+
+export const PAGINAS_DADOS: PaginaDados[] = [
+  {
+    id: "betim-prefeitura",
+    titulo: "Betim — Prefeitura",
+    resumo: "Dados da prefeitura de Betim: contratos, despesas, licitações, servidores e obras públicas.",
+    dados: [
+      "Contratos públicos com valor, fornecedor e alertas de concentração",
+      "Despesas por função e subfunção orçamentária",
+      "Licitações abertas e seus editais",
+      "Fornecedores com valor total e número de contratos",
+      "Servidores públicos com vínculos e órgãos (respeitando LGPD)",
+      "Obras públicas com contratos e situação",
+    ],
+    links: [
+      { href: "/betim/prefeitura/contratos", texto: "Contratos" },
+      { href: "/betim/prefeitura/despesas", texto: "Despesas" },
+      { href: "/betim/prefeitura/fornecedores", texto: "Fornecedores" },
+      { href: "/betim/prefeitura/servidores", texto: "Servidores" },
+    ],
+  },
+  {
+    id: "betim-camara",
+    titulo: "Betim — Câmara",
+    resumo: "Dados da Câmara Municipal de Betim: vereadores, votações, legislação e proposições.",
+    dados: [
+      "Vereadores com dados de contato e histórico",
+      "Votações de matérias legislativas",
+      "Legislação municipal (leis, decretos)",
+      "Proposições em tramitação",
+    ],
+    links: [
+      { href: "/betim/vereadores", texto: "Vereadores" },
+      { href: "/betim/camara/votacoes", texto: "Votações" },
+      { href: "/betim/camara/legislacao", texto: "Legislação" },
+    ],
+  },
+  {
+    id: "diamantina",
+    titulo: "Diamantina",
+    resumo: "Dados de Diamantina-MG: Diário Oficial com 16.601 atos coletados, contratos, licitações e legislação.",
+    dados: [
+      "Diário Oficial: 16.601 atos de janeiro/2020 a julho/2026",
+      "Contratos públicos com valor e fornecedor",
+      "Licitações e editais",
+      "Legislação municipal",
+    ],
+    links: [
+      { href: "/diamantina/indice", texto: "Índice de Diamantina" },
+      { href: "/diamantina/diario-oficial", texto: "Diário Oficial" },
+    ],
+  },
+  {
+    id: "bh",
+    titulo: "Belo Horizonte",
+    resumo: "Dados de BH: Diário Oficial (coletor DOM-PBH pronto, aguarda DB), contratos, licitações.",
+    dados: [
+      "Diário Oficial: coletor escrito (1.814 atos em agosto/2026)",
+      "Contratos públicos",
+      "Licitações e editais",
+    ],
+    links: [
+      { href: "/bh/indice", texto: "Índice de BH" },
+    ],
+  },
+  {
+    id: "congresso",
+    titulo: "Congresso Nacional",
+    resumo: "Dados do Congresso: proposições, votações, comissões, bancadas e parlamentares.",
+    dados: [
+      "Proposições federais (PL, PLP, PEC) com tramitação",
+      "Votações nominais e simbólicas",
+      "Comissões permanentes e especiais",
+      "Bancadas e composição do Congresso",
+      "Parlamentares com dados de votação e presença",
+      "Alertas de projetos que afetam cidades",
+    ],
+    links: [
+      { href: "/congresso/proposicoes", texto: "Proposições" },
+      { href: "/congresso/votacoes", texto: "Votações" },
+      { href: "/congresso/bancadas", texto: "Bancadas" },
+      { href: "/congresso/alertas", texto: "Alertas" },
+    ],
+  },
+  {
+    id: "judiciario",
+    titulo: "Judiciário",
+    resumo: "Dados do Judiciário: tribunais, indicações, vagas, inspeções, presídios e SIRENEJud.",
+    dados: [
+      "Tribunais estaduais e federais de MG",
+      "Indicações de desembargadores e juízes",
+      "Vagas em tribunais",
+      "Inspeções em presídios",
+      "Defensoria Pública",
+      "SIRENEJud: processos ambientais do CNJ",
+    ],
+    links: [
+      { href: "/judiciario/tribunais", texto: "Tribunais" },
+      { href: "/judiciario/sirenejud", texto: "SIRENEJud" },
+      { href: "/judiciario/presidios", texto: "Presídios" },
+    ],
+  },
+  {
+    id: "ambiental",
+    titulo: "Meio ambiente",
+    resumo: "Dados ambientais: COPAM, licenciamento, barragens, legislação e TACs.",
+    dados: [
+      "COPAM: conselho estadual de meio ambiente",
+      "Licenciamento ambiental: 19.000+ empreendimentos em MG",
+      "Barragens: classificação de risco e monitoramento",
+      "Legislação ambiental estadual e federal",
+      "TACs (Termos de Ajustamento de Conduta)",
+      "Convênios e estudos ambientais",
+    ],
+    links: [
+      { href: "/ambiental/barragens", texto: "Barragens" },
+      { href: "/ambiental/licenciamento", texto: "Licenciamento" },
+      { href: "/ambiental/copam", texto: "COPAM" },
+    ],
+  },
+  {
+    id: "paraopeba",
+    titulo: "Paraopeba (Brumadinho)",
+    resumo: "Dados do rompimento da barragem de Brumadinho: reparação, acordo, auditoria, perícia e biblioteca.",
+    dados: [
+      "Acordo de Brumadinho: execução e metas",
+      "Auditoria independente AECOM: 467 documentos, 16 eixos",
+      "Perícia judicial UFMG: 7 documentos técnicos",
+      "ATIs: 645 documentos de assessorias técnicas",
+      "Auxílio emergencial: 434 beneficiários",
+      "Barragens SIGBM: 320 estruturas monitoradas",
+      "Cotações VALE3 e notícias da Vale",
+    ],
+    links: [
+      { href: "/paraopeba/entenda", texto: "Entenda o caso" },
+      { href: "/paraopeba/execucao", texto: "Execução do Acordo" },
+      { href: "/paraopeba/analise", texto: "Análise integrada" },
+      { href: "/paraopeba/biblioteca", texto: "Biblioteca ATI" },
+    ],
+  },
+  {
+    id: "terras",
+    titulo: "Terra e território",
+    resumo: "Dados territoriais: mapa 3D com camadas de mineração, CAR, processos ambientais e alertas.",
+    dados: [
+      "Mapa 3D interativo com camadas",
+      "Mineração: concessões e áreas exploradas",
+      "CAR (Cadastro Ambiental Rural)",
+      "Processos ambientais do CNJ (SIRENEJud)",
+      "Alertas territoriais",
+    ],
+    links: [
+      { href: "/funcaosocialterra/mapa", texto: "Mapa 3D" },
+      { href: "/funcaosocialterra/alertas", texto: "Alertas" },
+    ],
+  },
+  {
+    id: "direitos",
+    titulo: "Direitos em Movimento",
+    resumo: "Onde buscar ajuda, como se defender, canais de denúncia e proteção de direitos.",
+    dados: [
+      "Canais de denúncia por tipo de violação",
+      "Assistência jurídica e social",
+      "Proteção de direitos trabalhistas",
+      "Direitos de idosos, crianças e mulheres",
+      "Defesa do consumidor",
+    ],
+    links: [
+      { href: "/direitos-em-movimento/denuncia", texto: "Quero denunciar" },
+      { href: "/direitos-em-movimento/ajuda", texto: "Preciso de ajuda" },
+    ],
+  },
+];

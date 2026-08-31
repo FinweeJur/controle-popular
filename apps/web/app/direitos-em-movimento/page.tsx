@@ -6,6 +6,7 @@ import {
 import { REDE_ITENS, LAI_ESTADUAL, LAI_FEDERAL, NAO_VERIFICADO } from "@/lib/betim/redeProtecao";
 import { formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
+import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * `/direitos-em-movimento` — a PORTA, não uma seção nova para construir.
@@ -171,6 +172,7 @@ export default async function DireitosEmMovimentoHub() {
           governo ou partido.
         </p>
       </footer>
+      <FooterGlobal />
     </main>
   );
 }

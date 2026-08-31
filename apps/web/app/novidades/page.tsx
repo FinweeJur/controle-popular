@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sparkles } from "lucide-react";
 import novidades from "@/data/novidades.json";
+import FooterGlobal from "@/app/components/FooterGlobal";
 
 export const dynamic = "force-static";
 
@@ -107,6 +108,7 @@ export default function NovidadesPage() {
           );
         })}
       </ul>
+      <FooterGlobal />
     </main>
   );
 }
