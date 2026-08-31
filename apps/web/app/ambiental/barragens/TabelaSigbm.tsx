@@ -152,7 +152,20 @@ export default function TabelaSigbm() {
   const [situacao, setSituacao] = useState(TODOS);
   const [emergencia, setEmergencia] = useState(TODOS);
   const [risco, setRisco] = useState(TODOS);
+  const [tag, setTag] = useState(TODOS);
   const [ordem, setOrdem] = useState<Ordem | null>(null);
+
+  const opcoesTag = useMemo(() => {
+    const contagem = new Map<string, number>();
+    for (const b of BARRAGENS_SIGBM) {
+      for (const t of b.tags) {
+        contagem.set(t, (contagem.get(t) ?? 0) + 1);
+      }
+    }
+    return [...contagem.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt"))
+      .map(([t]) => t);
+  }, []);
 
   const municipios = useMemo(
     () => [...new Set(BARRAGENS_SIGBM.map((b) => b.municipio))].sort((x, y) => x.localeCompare(y, "pt-BR")),
@@ -171,6 +184,7 @@ export default function TabelaSigbm() {
       if (situacao !== TODOS && b.situacao !== situacao) return false;
       if (emergencia !== TODOS && b.nivel_emergencia !== emergencia) return false;
       if (risco !== TODOS && b.categoria_risco !== risco) return false;
+      if (tag !== TODOS && !b.tags.includes(tag)) return false;
       if (
         alvo &&
         !normalizar(b.nome).includes(alvo) &&
@@ -181,7 +195,7 @@ export default function TabelaSigbm() {
       }
       return true;
     });
-  }, [busca, municipio, empreendedor, situacao, emergencia, risco]);
+  }, [busca, municipio, empreendedor, situacao, emergencia, risco, tag]);
 
   const ordenadas = useMemo(() => {
     if (!ordem) return filtradas;
@@ -336,6 +350,21 @@ export default function TabelaSigbm() {
             ))}
           </select>
         </label>
+        <label>
+          <span className="block text-[.82em] font-medium opacity-70">Tag</span>
+          <select
+            value={tag}
+            onChange={(e) => setTag(e.target.value)}
+            className="mt-1 rounded-md border border-border bg-surface px-3 py-2 text-[.92em]"
+          >
+            <option value={TODOS}>Todas</option>
+            {opcoesTag.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
@@ -386,6 +415,12 @@ export default function TabelaSigbm() {
                   </th>
                 );
               })}
+              <th
+                scope="col"
+                className="whitespace-nowrap border-b border-border bg-surface px-3 py-2 text-left text-xs uppercase tracking-wide opacity-70"
+              >
+                Tags
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -401,6 +436,22 @@ export default function TabelaSigbm() {
                 <td className="px-3 py-2">{b.fase_descaracterizacao ?? "—"}</td>
                 <td className="whitespace-nowrap px-3 py-2">
                   {b.data_finalizacao_dce ? formatDateBR(b.data_finalizacao_dce) : "—"}
+                </td>
+                <td className="px-3 py-2">
+                  {b.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1">
+                      {b.tags.map((t) => (
+                        <button
+                          key={t}
+                          type="button"
+                          onClick={() => setTag(t)}
+                          className="rounded-full border border-border px-2 py-0.5 text-xs opacity-80 transition-colors hover:border-primary hover:opacity-100"
+                        >
+                          {t}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </td>
               </tr>
             ))}

@@ -2,6 +2,8 @@ import { asc, desc, eq, sql } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { num } from "@/lib/db/num";
 import { feam_barragens, ref_municipios_mg, snisb_barragens } from "@/lib/db/schema";
+import { extrairTagsDeCampos } from "@/lib/tags";
+import { REGRAS_TAGS_BARRAGENS } from "@/lib/ambiental/tags-barragens";
 
 /**
  * Queries ESTADUAIS da zona `/ambiental/barragens` — Minas Gerais inteira,
@@ -94,6 +96,7 @@ export interface BarragemFeamMg {
   nome: string;
   empreendedor: string | null;
   atividade: string | null;
+  finalidade: string | null;
   situacao: string | null;
   condicaoEstabilidade: string | null;
   metodoConstrutivo: string | null;
@@ -102,6 +105,8 @@ export interface BarragemFeamMg {
   nivelEmergencia: number | null;
   suspensao: string | null;
   alturaM: number | null;
+  /** Tags de assunto inferidas dos campos de texto da fonte. */
+  tags: string[];
 }
 
 /**
@@ -121,6 +126,7 @@ export async function listarBarragensFeamMg(): Promise<BarragemFeamMg[]> {
       nome: feam_barragens.nome,
       empreendedor: feam_barragens.empreendedor,
       atividade: feam_barragens.atividade,
+      finalidade: feam_barragens.finalidade,
       situacao: feam_barragens.situacao,
       condicaoEstabilidade: feam_barragens.condicao_estabilidade,
       metodoConstrutivo: feam_barragens.metodo_construtivo,
@@ -133,7 +139,22 @@ export async function listarBarragensFeamMg(): Promise<BarragemFeamMg[]> {
     .from(feam_barragens)
     .innerJoin(ref_municipios_mg, eq(feam_barragens.id_municipio, ref_municipios_mg.id_ibge))
     .orderBy(desc(feam_barragens.nivel_emergencia), asc(ref_municipios_mg.nome), asc(feam_barragens.nome));
-  return linhas;
+  return linhas.map((b) => ({
+    ...b,
+    tags: extrairTagsDeCampos(
+      [
+        b.nome,
+        b.atividade,
+        b.finalidade,
+        b.situacao,
+        b.condicaoEstabilidade,
+        b.metodoConstrutivo,
+        b.categoriaRisco,
+        b.danoPotencial,
+      ],
+      REGRAS_TAGS_BARRAGENS
+    ),
+  }));
 }
 
 export interface MunicipioComBarragens {

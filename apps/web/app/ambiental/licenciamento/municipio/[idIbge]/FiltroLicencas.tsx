@@ -25,20 +25,28 @@ export default function FiltroLicencas({ licencas }: { licencas: LicencaAmbienta
   const [setor, setSetor] = useState("");
   const [modalidade, setModalidade] = useState("");
   const [classe, setClasse] = useState("");
+  const [tag, setTag] = useState("");
 
   const opcoes = useMemo(() => {
     const setores = new Map<string, string>();
     const modalidades = new Set<string>();
     const classes = new Set<number>();
+    const contagemTag = new Map<string, number>();
     for (const l of licencas) {
       setores.set(l.setorLetra, l.setorRotulo);
       modalidades.add(l.modalidade);
       if (l.classe !== null) classes.add(l.classe);
+      for (const t of l.tags) {
+        contagemTag.set(t, (contagemTag.get(t) ?? 0) + 1);
+      }
     }
     return {
       setores: [...setores.entries()].sort(([a], [b]) => a.localeCompare(b)),
       modalidades: [...modalidades].sort(),
       classes: [...classes].sort((a, b) => a - b),
+      tags: [...contagemTag.entries()]
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt"))
+        .map(([t]) => t),
     };
   }, [licencas]);
 
@@ -47,11 +55,12 @@ export default function FiltroLicencas({ licencas }: { licencas: LicencaAmbienta
       if (setor && l.setorLetra !== setor) return false;
       if (modalidade && l.modalidade !== modalidade) return false;
       if (classe && String(l.classe) !== classe) return false;
+      if (tag && !l.tags.includes(tag)) return false;
       return true;
     });
-  }, [licencas, setor, modalidade, classe]);
+  }, [licencas, setor, modalidade, classe, tag]);
 
-  const filtroAtivo = Boolean(setor || modalidade || classe);
+  const filtroAtivo = Boolean(setor || modalidade || classe || tag);
 
   return (
     <div>
@@ -101,6 +110,21 @@ export default function FiltroLicencas({ licencas }: { licencas: LicencaAmbienta
             ))}
           </select>
         </label>
+        <label className="text-sm">
+          <span className="mr-2 opacity-75">Tag</span>
+          <select
+            value={tag}
+            onChange={(e) => setTag(e.target.value)}
+            className="rounded-md border border-[var(--cp-border)] bg-[var(--cp-surface)] px-3 py-1.5"
+          >
+            <option value="">Todas</option>
+            {opcoes.tags.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+        </label>
         {filtroAtivo && (
           <button
             type="button"
@@ -108,6 +132,7 @@ export default function FiltroLicencas({ licencas }: { licencas: LicencaAmbienta
               setSetor("");
               setModalidade("");
               setClasse("");
+              setTag("");
             }}
             className="text-sm underline"
           >
@@ -142,6 +167,21 @@ export default function FiltroLicencas({ licencas }: { licencas: LicencaAmbienta
               </div>
 
               <p className="mt-1 text-sm opacity-80">{l.atividadeDescricao ?? l.atividadeCodigo}</p>
+
+              {l.tags.length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {l.tags.map((t) => (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => setTag(t)}
+                      className="rounded-full border border-[var(--cp-border)] px-2 py-0.5 text-xs opacity-80 transition-colors hover:border-[var(--cp-tertiary)] hover:opacity-100"
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
+              )}
 
               <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs opacity-70">
                 <span>Modalidade: {l.modalidade}</span>
