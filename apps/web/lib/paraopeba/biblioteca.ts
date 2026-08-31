@@ -160,11 +160,16 @@ async function ler(): Promise<LidoBiblioteca> {
         if (!resp.ok) throw new Error(`ASSETS.fetch devolveu ${resp.status}`);
         texto = await resp.text();
       } catch {
-        // Fallback dev/teste: resolve a partir deste arquivo, não de process.cwd(),
-        // porque vitest roda da raiz do monorepo e o JSON mora em apps/web/public/data.
-        const esteArquivo = fileURLToPath(import.meta.url);
-        const caminho = path.join(esteArquivo, "..", "..", "..", "public", "data", ARQUIVO_BIBLIOTECA);
-        texto = readFileSync(caminho, "utf-8");
+        // Fallback dev/teste/build local: tenta ler de public/data
+        let caminho: string;
+        try {
+          const esteArquivo = fileURLToPath(import.meta.url);
+          caminho = path.resolve(path.dirname(esteArquivo), "..", "..", "..", "public", "data", ARQUIVO_BIBLIOTECA);
+          texto = readFileSync(caminho, "utf-8");
+        } catch {
+          caminho = path.resolve(process.cwd(), "public", "data", ARQUIVO_BIBLIOTECA);
+          texto = readFileSync(caminho, "utf-8");
+        }
       }
       bruto = JSON.parse(texto) as ArquivoBruto;
     } catch {
