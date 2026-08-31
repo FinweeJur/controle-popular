@@ -34,11 +34,13 @@ interface Props {
   itens: ItemBiblioteca[];
   tipos: string[];
   temas: string[];
+  macros: string[];
+  tags: string[];
   atis: AtiBiblioteca[];
   atiLabel: Record<AtiBiblioteca, string>;
 }
 
-export default function BibliotecaClient({ itens, tipos, temas, atis, atiLabel }: Props) {
+export default function BibliotecaClient({ itens, tipos, temas, macros, tags, atis, atiLabel }: Props) {
   const [busca, setBusca] = useState("");
   const [de, setDe] = useState("");
   const [ate, setAte] = useState("");
@@ -46,6 +48,8 @@ export default function BibliotecaClient({ itens, tipos, temas, atis, atiLabel }
   const [atisAtivas, setAtisAtivas] = useState<Set<AtiBiblioteca>>(new Set(atis));
   const [tipo, setTipo] = useState<string>("todos");
   const [tema, setTema] = useState<string>("todos");
+  const [macro, setMacro] = useState<string>("todos");
+  const [tag, setTag] = useState<string>("todos");
   const [visiveis, setVisiveis] = useState(LOTE);
 
   const faixa = useMemo(() => {
@@ -66,6 +70,8 @@ export default function BibliotecaClient({ itens, tipos, temas, atis, atiLabel }
       if (!atisAtivas.has(i.ati)) return false;
       if (tipo !== "todos" && i.tipo !== tipo) return false;
       if (tema !== "todos" && !i.temas.includes(tema)) return false;
+      if (macro !== "todos" && i.macro_categoria !== macro) return false;
+      if (tag !== "todos" && !i.tags.includes(tag)) return false;
       // Item sem data não some quando há filtro de período: sumir seria o
       // portal decidir que "não sei quando" é "fora do intervalo". Ele só é
       // excluído se a data existir e estiver fora.
@@ -75,6 +81,8 @@ export default function BibliotecaClient({ itens, tipos, temas, atis, atiLabel }
       return (
         i.titulo.toLowerCase().includes(termo) ||
         i.tipo.toLowerCase().includes(termo) ||
+        i.macro_categoria.toLowerCase().includes(termo) ||
+        i.tags.some((t) => t.toLowerCase().includes(termo)) ||
         (i.origem ?? "").toLowerCase().includes(termo) ||
         (i.autoria ?? "").toLowerCase().includes(termo) ||
         i.temas.some((t) => t.toLowerCase().includes(termo)) ||
@@ -89,11 +97,11 @@ export default function BibliotecaClient({ itens, tipos, temas, atis, atiLabel }
     }
     const sinal = ordem === "recente" ? -1 : 1;
     return copia.sort((a, b) => sinal * (a.data ?? "").localeCompare(b.data ?? ""));
-  }, [itens, atisAtivas, tipo, tema, de, ate, busca, ordem]);
+  }, [itens, atisAtivas, tipo, tema, macro, tag, de, ate, busca, ordem]);
 
   const filtroAtivo =
     busca !== "" || de !== "" || ate !== "" || ordem !== "recente" || tipo !== "todos" ||
-    tema !== "todos" || atisAtivas.size !== atis.length;
+    tema !== "todos" || macro !== "todos" || tag !== "todos" || atisAtivas.size !== atis.length;
 
   function limpar() {
     setBusca("");
@@ -103,6 +111,8 @@ export default function BibliotecaClient({ itens, tipos, temas, atis, atiLabel }
     setAtisAtivas(new Set(atis));
     setTipo("todos");
     setTema("todos");
+    setMacro("todos");
+    setTag("todos");
     setVisiveis(LOTE);
   }
 
@@ -228,6 +238,48 @@ export default function BibliotecaClient({ itens, tipos, temas, atis, atiLabel }
               ))}
             </select>
           </div>
+          <div className="flex min-w-[180px] flex-1 flex-col">
+            <label htmlFor="bib-macro" className="mb-1 text-xs font-medium text-text-soft">
+              Categoria
+            </label>
+            <select
+              id="bib-macro"
+              value={macro}
+              onChange={(e) => {
+                setMacro(e.target.value);
+                setVisiveis(LOTE);
+              }}
+              className={campo}
+            >
+              <option value="todos">Todas as categorias</option>
+              {macros.map((m) => (
+                <option key={m} value={m}>
+                  {m}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex min-w-[180px] flex-1 flex-col">
+            <label htmlFor="bib-tag" className="mb-1 text-xs font-medium text-text-soft">
+              Tag
+            </label>
+            <select
+              id="bib-tag"
+              value={tag}
+              onChange={(e) => {
+                setTag(e.target.value);
+                setVisiveis(LOTE);
+              }}
+              className={campo}
+            >
+              <option value="todos">Todas as tags</option>
+              {tags.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Filtrar por assessoria">
@@ -328,12 +380,23 @@ function ItemDaBiblioteca({
           clicáveis: as etiquetas filtram por ASSUNTO, e "Produção de parceiros"
           é uma afirmação sobre quem escreveu. */}
       <p className="mt-1 text-xs text-text-soft">
-        {item.data ? formatDateBR(item.data) : "sem data na fonte"} · {item.tipo}
+        {item.data ? formatDateBR(item.data) : "sem data na fonte"} · {item.macro_categoria}
         {item.origem ? ` · ${item.origem}` : ""}
         {item.autoria ? ` · ${item.autoria}` : ""}
       </p>
-      {(item.temas.length > 0 || item.colecoes.length > 0) && (
+      {(item.temas.length > 0 || item.colecoes.length > 0 || item.tags.length > 0) && (
         <div className="mt-2 flex flex-wrap gap-1.5">
+          {item.tags.map((t) => (
+            <button
+              key={`tag-${t}`}
+              type="button"
+              onClick={() => onTermo(t)}
+              aria-label={`Filtrar por tag: ${t}`}
+              className="cp-btn-anim rounded-full border border-border bg-surface px-2 py-0.5 text-[.72em] text-text-soft transition-colors hover:border-primary hover:text-primary"
+            >
+              {t}
+            </button>
+          ))}
           {[...item.temas, ...item.colecoes].map((t) => (
             <button
               key={t}

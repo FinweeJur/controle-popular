@@ -6,6 +6,8 @@ import {
   coberturaBiblioteca,
   ehItemBloqueadoPelaTriagem,
   fontesBiblioteca,
+  macrosDaBiblioteca,
+  tagsDaBiblioteca,
   temasDaBiblioteca,
   tiposDaBiblioteca,
 } from "./biblioteca";
@@ -113,5 +115,23 @@ describe("biblioteca das ATIs", () => {
     const itens = await bibliotecaAti();
     expect(tiposDaBiblioteca(itens).filter((t) => !t.trim())).toEqual([]);
     expect(temasDaBiblioteca(itens).filter((t) => !t.trim())).toEqual([]);
+    expect(macrosDaBiblioteca(itens).filter((m) => !m.trim())).toEqual([]);
+    expect(tagsDaBiblioteca(itens).filter((t) => !t.trim())).toEqual([]);
+  });
+
+  test("todo item tem macro-categoria e tags como array", async () => {
+    const itens = await bibliotecaAti();
+    expect(itens.every((i) => typeof i.macro_categoria === "string" && i.macro_categoria.trim() !== "")).toBe(true);
+    expect(itens.every((i) => Array.isArray(i.tags))).toBe(true);
+  });
+
+  test("macro-categorias e tags cobrem os vocabulários esperados", async () => {
+    const itens = await bibliotecaAti();
+    const macros = macrosDaBiblioteca(itens);
+    const tags = tagsDaBiblioteca(itens);
+    expect(macros.length).toBeGreaterThan(0);
+    expect(tags.length).toBeGreaterThan(0);
+    // Palavras-chave sensíveis não devem virar tag.
+    expect(tags.some((t) => /cpf|telefone|endereco|rg\b/i.test(t))).toBe(false);
   });
 });

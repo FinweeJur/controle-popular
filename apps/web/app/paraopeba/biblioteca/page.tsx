@@ -7,6 +7,8 @@ import {
   bibliotecaAti,
   coberturaBiblioteca,
   fontesBiblioteca,
+  macrosDaBiblioteca,
+  tagsDaBiblioteca,
   temasDaBiblioteca,
   tiposDaBiblioteca,
   type AtiBiblioteca,
@@ -47,6 +49,8 @@ export default async function BibliotecaPage() {
   ]);
   const tipos = tiposDaBiblioteca(itens);
   const temas = temasDaBiblioteca(itens);
+  const macros = macrosDaBiblioteca(itens);
+  const tags = tagsDaBiblioteca(itens);
   const semColeta = cobertura.geradoEm === "";
 
   const atis = [...new Set(itens.map((i) => i.ati))].sort() as AtiBiblioteca[];
@@ -120,6 +124,8 @@ export default async function BibliotecaPage() {
             itens={itens}
             tipos={tipos}
             temas={temas}
+            macros={macros}
+            tags={tags}
             atis={atis}
             atiLabel={ATI_BIBLIOTECA_LABEL}
           />
