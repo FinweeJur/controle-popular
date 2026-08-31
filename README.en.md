@@ -17,12 +17,18 @@ is information, not a hidden defect.
 
 | Front | Route | What it answers |
 |---|---|---|
-| Cities | `/betim`, `/bh`, `/sp`, `/aracuai`, `/diamantina`, `/itinga` | Where the city hall's money goes, and what the council votes on |
-| Congress | `/congresso` | Federal bills by topic, committee and party bloc |
-| Judiciary | `/judiciario` | Court composition, vacancies, CNJ inspections, environmental lawsuits (SIRENEJud) |
-| Social Function of Land | `/funcaosocialterra` (+ `/mapa`, `/alertas`) | How much of the territory has no declared rural property, on a 3D globe |
-| Paraopeba | `/paraopeba` | The Brumadinho reparation: press radar, timeline, case documents |
-| Environment | `/ambiental` | COPAM agenda, licensing, dams, legislation and cultural heritage of Minas Gerais |
+| Cities | `/[municipio]` (`/sp`, `/bh`, `/betim`, `/diamantina`, `/aracuai`, `/itinga`) | Contracts, tenders, **municipal official gazettes** with deterministic classification, federal transfers (ComunicaBR), and municipal finances |
+| Congress | `/congresso` | Federal bills by topic, committee, and Minas Gerais party blocs |
+| Judiciary | `/judiciario` | Court composition, vacancies, CNJ inspections, and environmental lawsuits (SIRENEJud) |
+| Social Function of Land | `/funcaosocialterra` (+ `/mapa`, `/alertas`) | CAR cadastral gap on 3D globe, indigenous lands, quilombola territories, and **387 Conservation Units (CNUC/MMA)** |
+| Paraopeba | `/paraopeba` | The Brumadinho reparation: FGV/AECOM audit, R$ 1.64B municipal transfers (853 cities), press radar, and timeline |
+| Environment & Corporations | `/ambiental` (+ `/paraopeba/vale`, `/ambiental/mariana`) | **Mariana Agreement (R$ 677M in MG)**, **Vale S.A. Observatory (B3/CVM)**, IBAMA federal licensing, TAC registry, and LAI/CGE rulings |
+
+## Architecture & Data Highlights
+
+- **The 5-Things Rule on Data-Heavy Pages:** Accessible inline SVG charts (no bulky chart libraries), summary macro cards, unaccented search, interactive filter chips (`TagChip`), and UTF-8 BOM `;` CSV exports.
+- **Algorithmic LGPD Privacy Guard:** Automatic personal CPF anonymization via **Mod-11** checksum verification before any open data persistence (100% LGPD compliant).
+- **Automated Collectors & Local Orchestration:** Proactive collector monitoring via Telegram Bot API (`scripts/rotina-coletas.mts`) and local container workflows with Podman (`changedetection.io` and `n8n`).
 
 ## Public API
 
