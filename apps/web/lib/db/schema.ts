@@ -3085,3 +3085,51 @@ export const ibama_embargos = pgTable("ibama_embargos", {
 		}).onDelete("cascade"),
 	unique("ibama_embargos_id_municipio_seq_tad_key").on(table.id_municipio, table.seq_tad),
 ]);
+
+export const atos_diario = pgTable("atos_diario", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	data_publicacao: date({ mode: "string" }).notNull(),
+	edicao: text(),
+	pagina: text(),
+	tipo: text().notNull(),
+	numero_ato: text(),
+	orgao: text(),
+	ementa: text(),
+	texto: text(),
+	link_fonte: text().notNull(),
+	chave_natural: text(),
+	raw: jsonb(),
+	coletado_em: timestamp({ withTimezone: true, mode: "string" }).defaultNow().notNull(),
+}, (table) => [
+	index("atos_diario_municipio_data_idx").using("btree", table.id_municipio.asc().nullsLast().op("timestamptz_ops"), table.data_publicacao.desc().nullsFirst().op("timestamptz_ops")),
+	foreignKey({
+		columns: [table.id_municipio],
+		foreignColumns: [municipios.id_municipio],
+		name: "atos_diario_id_municipio_fkey"
+	}).onDelete("cascade"),
+	unique("atos_diario_id_municipio_chave_natural_key").on(table.id_municipio, table.chave_natural),
+]);
+
+export const saude_internacoes_cid = pgTable("saude_internacoes_cid", {
+	id: uuid().defaultRandom().primaryKey().notNull(),
+	id_municipio: text().notNull(),
+	ano: integer().notNull(),
+	cid_codigo: text().notNull(),
+	capitulo: text(),
+	internacoes_total: integer().notNull().default(0),
+	obitos_total: integer().notNull().default(0),
+	dias_permanencia_total: numeric(),
+	valor_total: numeric(),
+	atualizado_em: date({ mode: "string" }).defaultNow(),
+	created_at: timestamp({ withTimezone: true, mode: "string" }).defaultNow(),
+	updated_at: timestamp({ withTimezone: true, mode: "string" }),
+}, (table) => [
+	foreignKey({
+			columns: [table.id_municipio],
+			foreignColumns: [municipios.id_municipio],
+			name: "saude_internacoes_cid_id_municipio_fkey"
+		}),
+	unique("saude_internacoes_cid_id_municipio_ano_cid_codigo_key").on(table.id_municipio, table.ano, table.cid_codigo),
+]);
+
