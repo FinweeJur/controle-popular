@@ -48,7 +48,7 @@ export async function responderComRag(
 ): Promise<RespostaRag> {
   // Sem chave remota, precisamos do Ollama local para geracao e embeddings.
   if (!temChaveRemota() && !(await ollamaDisponivel())) {
-    throw new OllamaIndisponivel("Ollama nao esta disponivel em http://localhost:11434");
+    throw new OllamaIndisponivel("Ollama nao esta disponivel em http://172.18.176.1:11434");
   }
 
   const topK = opcoes.topK ?? TOP_K_PADRAO;

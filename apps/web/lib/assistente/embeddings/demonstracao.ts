@@ -63,7 +63,7 @@
  * `..` bastam daqui: `apps/web` -> `apps` -> raiz do repo.
  */
 
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import path from "node:path";
 import { fatiarTexto, type OpcoesFatiamento, type Pedaco } from "./pedacos";
 import { vetorizar, vetorizarLote } from "./ollama";
@@ -74,18 +74,27 @@ import { similaridadeCosseno } from "./similaridade";
 // 5 niveis de `apps/web/lib/assistente/embeddings/` ate a raiz do repo.
 // NOTA: `import.meta.dirname` pode ser undefined durante `next build` (coleta
 // de paginas); usamos `process.cwd()` como fallback seguro.
-const CAMINHO_LEGISLACAO_MMA = path.resolve(
-  import.meta.dirname ?? process.cwd(),
-  "..",
-  "..",
-  "..",
-  "..",
-  "..",
-  "etl",
-  "betim",
-  "dados",
-  "legislacao-mma.json"
-);
+function encontrarRaizRepo(): string {
+  if (import.meta.dirname) {
+    return path.resolve(import.meta.dirname, "..", "..", "..", "..", "..");
+  }
+  let dir = process.cwd();
+  for (let i = 0; i < 10; i++) {
+    try {
+      const pkgPath = path.join(dir, "package.json");
+      if (existsSync(pkgPath)) {
+        const pkg = JSON.parse(readFileSync(pkgPath, "utf-8"));
+        if (pkg.name === "controle-popular") return dir;
+      }
+    } catch { /* ignora */ }
+    const pai = path.dirname(dir);
+    if (pai === dir) break;
+    dir = pai;
+  }
+  return process.cwd();
+}
+
+const CAMINHO_LEGISLACAO_MMA = path.resolve(encontrarRaizRepo(), "etl", "betim", "dados", "legislacao-mma.json");
 
 /** Uma linha de `etl/betim/dados/legislacao-mma.json` — só os campos que
  *  este módulo lê (a linha real tem mais: `fonte`, `esfera`, `data`,

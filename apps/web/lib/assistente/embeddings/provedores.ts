@@ -48,9 +48,9 @@ const DEFINICOES: Record<IdProvedor, { rotulo: string; baseUrl: string; modelo: 
     envKey: "AI_API_KEY_DEEPSEEK",
   },
   maritaca: {
-    rotulo: "Maritaca (Sabiá-3)",
-    baseUrl: "https://chat.maritaca.ai/v1",
-    modelo: "sabia-3",
+    rotulo: "Maritaca (Sabiá-4)",
+    baseUrl: "https://chat.maritaca.ai/api",
+    modelo: "sabia-4",
     envKey: "AI_API_KEY_MARITACA",
   },
 };

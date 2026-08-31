@@ -30,7 +30,7 @@ export async function POST(req: Request): Promise<Response> {
   } catch (e) {
     if (e instanceof OllamaIndisponivel) {
       return NextResponse.json(
-        { erro: "Ollama nao esta disponivel. Inicie o servidor local em http://localhost:11434." },
+        { erro: "Ollama nao esta disponivel. Inicie o servidor local em http://172.18.176.1:11434." },
         { status: 503 }
       );
     }

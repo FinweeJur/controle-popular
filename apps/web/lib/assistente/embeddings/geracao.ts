@@ -18,7 +18,7 @@
 import { OLLAMA_BASE_URL, OllamaIndisponivel, type OpcoesOllama } from "./ollama";
 import { listarProvedoresNaOrdem, temChaveRemota, type ProvedorIa } from "./provedores";
 
-const OLLAMA_CHAT_MODEL = process.env.OLLAMA_CHAT_MODEL || "qwen2.5:7b-instruct-q4_K_M";
+const OLLAMA_CHAT_MODEL = process.env.OLLAMA_CHAT_MODEL || "qwen2.5-coder:3b";
 
 interface MensagemChat {
   role: "system" | "user" | "assistant";
