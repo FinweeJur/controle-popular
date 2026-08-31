@@ -178,6 +178,7 @@ export default function TopNav() {
   const [menuAberto, setMenuAberto] = useState(false);
   const [hoverAberto, setHoverAberto] = useState(false);
   const caixaRef = useRef<HTMLDivElement>(null);
+  const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     function fecharFora(ev: PointerEvent) {
@@ -199,6 +200,25 @@ export default function TopNav() {
   function fechar() {
     setMenuAberto(false);
     setHoverAberto(false);
+    if (hoverTimer.current) {
+      clearTimeout(hoverTimer.current);
+      hoverTimer.current = null;
+    }
+  }
+
+  function onMouseEnter() {
+    if (hoverTimer.current) {
+      clearTimeout(hoverTimer.current);
+      hoverTimer.current = null;
+    }
+    setHoverAberto(true);
+  }
+
+  function onMouseLeave() {
+    hoverTimer.current = setTimeout(() => {
+      setHoverAberto(false);
+      hoverTimer.current = null;
+    }, 300);
   }
 
   return (
@@ -206,9 +226,9 @@ export default function TopNav() {
       <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-2.5 sm:px-8">
         <div
           ref={caixaRef}
-          className="group relative"
-          onMouseEnter={() => setHoverAberto(true)}
-          onMouseLeave={() => setHoverAberto(false)}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          className="relative"
         >
           <button
             type="button"
@@ -228,7 +248,7 @@ export default function TopNav() {
             aria-label="Menu do portal"
             className={`absolute top-full left-0 z-50 mt-1 max-h-[calc(100vh-5rem)] w-[min(48rem,calc(100vw-1rem))] overflow-y-auto rounded-2xl border border-border bg-surface p-3 shadow-lg ${
               aberto ? "block" : "hidden"
-            } group-hover:block group-focus-within:block sm:p-4`}
+            } sm:p-4`}
           >
             {/* Header: atalhos globais */}
             <div className="mb-3 flex flex-wrap gap-2 border-b border-border pb-3 sm:mb-4 sm:pb-4">

@@ -1,0 +1,79 @@
+[
+  {
+    "data": "2026-08-31",
+    "titulo": "Corrigido botao de temas e chatbot",
+    "descricao": "Voltamos para next start (producao) para corrigir CSP que bloqueava eval() do Turbopack, impedindo hidratacao dos componentes client-side.",
+    "frente": "operacao",
+    "link": null
+  },
+  {
+    "data": "2026-08-30",
+    "titulo": "Coleta completa do Diario Oficial de Diamantina",
+    "descricao": "16.601 atos coletados via SIGPub, de janeiro/2020 a julho/2026. Backfill completo sem falhas.",
+    "frente": "cidades",
+    "link": "/diamantina/indice"
+  },
+  {
+    "data": "2026-08-30",
+    "titulo": "Cruzamento preco x noticias (VALE3 + Sigma Lithium)",
+    "descricao": "Novo painel cruza cotacoes da VALE3 com noticias da Vale e eventos da Sigma Lithium.",
+    "frente": "paraopeba",
+    "link": "/paraopeba/vale"
+  },
+  {
+    "data": "2026-08-30",
+    "titulo": "Coletas Vale: SIGBM, CVM, cotacoes e noticias",
+    "descricao": "Dados atualizados de barragens (SIGBM), documentos CVM, cotacoes SGML/VALE3 e noticias da Vale.",
+    "frente": "paraopeba",
+    "link": "/paraopeba/vale"
+  },
+  {
+    "data": "2026-08-30",
+    "titulo": "Coletor DOM-PBH (Diario Oficial de BH) medido",
+    "descricao": "Coletor do Diario Oficial de Belo Horizonte escrito e medido: 1.814 atos em agosto/2026. Aguarda Neon para gravar no DB.",
+    "frente": "cidades",
+    "link": "/bh/indice"
+  },
+  {
+    "data": "2026-08-29",
+    "titulo": "SIRENEJud publicado com API publica",
+    "descricao": "Recorte ambiental do CNJ disponibilizado com API publica v1, Swagger UI e catalogo dados.gov.br.",
+    "frente": "judiciario",
+    "link": "/judiciario/sirenejud"
+  },
+  {
+    "data": "2026-08-29",
+    "titulo": "Processos ambientais no mapa 3D",
+    "descricao": "Camada processos-ambientais-cnj (SIRENEJud) adicionada ao globo 3D de Terras e territorio.",
+    "frente": "terras",
+    "link": "/funcaosocialterra/mapa"
+  },
+  {
+    "data": "2026-08-28",
+    "titulo": "Biblioteca NACAB integrada",
+    "descricao": "48 publicacoes da NACAB (Regiao 3 - Paraopeba) incorporadas a biblioteca de assessorias tecnicas independentes.",
+    "frente": "paraopeba",
+    "link": "/paraopeba/biblioteca"
+  },
+  {
+    "data": "2026-08-28",
+    "titulo": "Indices por frente criados",
+    "descricao": "Paginas de indice especificas para cada frente do portal (Cidades, Congresso, Judiciario, Ambiental, Paraopeba, Terras).",
+    "frente": "operacao",
+    "link": "/indice"
+  },
+  {
+    "data": "2026-08-28",
+    "titulo": "ComunicaBR indexado por municipio",
+    "descricao": "Indicadores do governo federal nas cidades agora aparecem no indice de busca estatico.",
+    "frente": "cidades",
+    "link": "/dados/comunicabr"
+  },
+  {
+    "data": "2026-08-27",
+    "titulo": "Modo tunel Cloudflare ativo",
+    "descricao": "controlepopular.com.br agora serve do PC local via Cloudflare Tunnel, com next start em producao.",
+    "frente": "operacao",
+    "link": "/sobre"
+  }
+]
