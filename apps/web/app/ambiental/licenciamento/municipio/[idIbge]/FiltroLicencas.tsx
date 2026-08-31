@@ -193,9 +193,30 @@ export default function FiltroLicencas({ licencas }: { licencas: LicencaAmbienta
               <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs opacity-70">
                 {l.dataEmissao && <span>Emitida em {formatDateBR(l.dataEmissao)}</span>}
                 {l.dataValidade && <span>Válida até {formatDateBR(l.dataValidade)}</span>}
+                {l.dataEmissao && l.dataValidade && (
+                  <span className="font-medium text-text-soft">
+                    Vigência: {Math.round((new Date(l.dataValidade).getTime() - new Date(l.dataEmissao).getTime()) / 86400000)} dias
+                  </span>
+                )}
                 {l.cnpjRaiz && <span className="font-tabular">CNPJ {formatCNPJRaiz(l.cnpjRaiz)}</span>}
                 <span className="opacity-60">{ROTULO_DOCUMENTO[l.documentoClassificacao]}</span>
               </div>
+
+              {l.link ? (
+                <p className="mt-2 text-xs">
+                  <a
+                    href={l.link}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="underline opacity-80 hover:opacity-100"
+                  >
+                    Ver na fonte (SEMAD) ↗
+                  </a>
+                  <span className="ml-2 opacity-50">
+                    — EIA/RIMA podem estar disponíveis na página original
+                  </span>
+                </p>
+              ) : null}
 
               {l.latitude !== null && l.longitude !== null ? (
                 <p className="mt-2 text-xs">

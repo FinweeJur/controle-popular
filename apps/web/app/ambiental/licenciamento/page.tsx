@@ -170,6 +170,20 @@ export default async function LicenciamentoIndex() {
             </div>
           </section>
 
+          {/* ═══ NOTA: SOBRE DEFERIDOS E INDEFERIDOS ═══ */}
+          <section className="mt-8 rounded-lg border border-dashed border-[var(--cp-border)] px-5 py-4">
+            <h2 className="font-display text-base font-semibold">
+              Por que só licenças deferidas?
+            </h2>
+            <p className="mt-2 max-w-2xl text-[.9em] text-text-soft">
+              A fonte pública (IDE-Sisema/SEMAD) registra apenas o histórico de licenças{" "}
+              <strong>deferidas</strong> — o status é sempre &quot;Concluído Deferido&quot;.
+              As licenças indeferidas ou em análise estão em outro sistema da SEMAD
+              (o SLA de licenciamento), que não é coletado aqui. Quando disponível,
+              esse segundo painel será adicionado.
+            </p>
+          </section>
+
           {/* ═══ GRÁFICO — por ano de emissão ═══ */}
           <section aria-labelledby="por-ano-licenciamento" className="mt-10">
             <h2 id="por-ano-licenciamento" className="font-display text-xl font-semibold">
@@ -265,6 +279,12 @@ export default async function LicenciamentoIndex() {
           empreendimentos licenciados, sem chave e sem login. É o registro do que já foi{" "}
           <strong>deferido</strong>: a fila ainda em análise vive em outro sistema da própria
           Semad, não coletado aqui.
+        </p>
+        <p className="mt-3 max-w-2xl text-[.95em] opacity-80">
+          <strong>EIA/RIMA.</strong> Cada licença tem um link para a página original no
+          portal da SEMAD, onde é possível acessar o Estudo de Impacto Ambiental (EIA)
+          e o Relatório de Impacto ao Meio Ambiente (RIMA) quando disponíveis. O link
+          aparece na lista detalhada de cada município.
         </p>
         <p className="mt-3 max-w-2xl text-[.95em] opacity-80">
           <strong>Privacidade.</strong> Quando o titular é pessoa física, este portal não publica
