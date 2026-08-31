@@ -17,12 +17,18 @@ defeito escondido.
 
 | Frente | Rota | O que responde |
 |---|---|---|
-| Cidades | `/betim`, `/bh`, `/sp`, `/aracuai`, `/diamantina`, `/itinga` | Para onde vai o dinheiro da prefeitura e o que a câmara vota |
-| Congresso | `/congresso` | Proposições federais por tema, comissão e bancada |
-| Judiciário | `/judiciario` | Composição dos tribunais, vacância, inspeções CNJ, processos ambientais (SIRENEJud) |
-| Função Social da Terra | `/funcaosocialterra` (+ `/mapa`, `/alertas`) | Quanto do território não tem imóvel declarado no CAR, no globo 3D |
-| Paraopeba | `/paraopeba` | A reparação de Brumadinho: clipping, linha do tempo, documentos do processo |
-| Ambiental | `/ambiental` | Pauta do COPAM, licenciamento, barragens, legislação e patrimônio cultural de MG |
+| Cidades | `/[municipio]` (`/sp`, `/bh`, `/betim`, `/diamantina`, `/aracuai`, `/itinga`) | Contratos, licitações, **diários oficiais municipais** com classificação temática determinística, repasses federais (ComunicaBR) e finanças |
+| Congresso | `/congresso` | Proposições federais por tema, comissão e bancada de Minas Gerais |
+| Judiciário | `/judiciario` | Composição dos tribunais, vacância, inspeções CNJ e processos ambientais (SIRENEJud) |
+| Função Social da Terra | `/funcaosocialterra` (+ `/mapa`, `/alertas`) | Vazio cadastral do CAR no globo 3D, terras indígenas, territórios quilombolas e **387 Unidades de Conservação (CNUC/MMA)** |
+| Paraopeba | `/paraopeba` | A reparação de Brumadinho: auditoria FGV/AECOM, repasse aos 853 municípios (R$ 1,64 bi), clipping e linha do tempo |
+| Ambiental & Empresas | `/ambiental` (+ `/paraopeba/vale`, `/ambiental/mariana`) | **Acordo de Mariana (R$ 677 mi em MG)**, **Observatório Vale S.A. (B3/CVM)**, licenças IBAMA, TACs do GTAC, decisões LAI/CGE e pauta do COPAM |
+
+## Destaques de Arquitetura e Dados
+
+- **Regra das 5 Coisas em Páginas com Muito Dado:** Gráfico SVG acessível (sem bibliotecas pesadas), cartões de topo com agregados, busca textual sem acento, filtros interativos (`TagChip`) e exportação em planilha CSV com BOM UTF-8 e separador `;`.
+- **Privacidade Rigorosa por Algoritmo:** Sanitização e anonimização automática de CPFs de pessoas físicas via cálculo **Mod-11** antes de qualquer persistência em dados abertos (100% de conformidade LGPD).
+- **Coletores Automatizados:** Esteira com monitoramento proativo via Bot Telegram (`scripts/rotina-coletas.mts`) e automações locais com Podman (`changedetection.io` e `n8n`).
 
 ## API pública
 
