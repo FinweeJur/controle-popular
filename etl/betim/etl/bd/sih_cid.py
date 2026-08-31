@@ -10,15 +10,21 @@ Mesmas convencoes do `etl.bd.sih_sim` (leia a docstring dele antes):
   IBGE de 7 devolve ZERO linhas em silencio (validado ao vivo em 2026-07-20).
   `_datasus_6` trunca o digito verificador.
 - A coluna de CID NAO e assumida: `_descobrir_coluna_cid` sonda
-  `SELECT * ... LIMIT 1` e escolhe entre os candidatos conhecidos
-  (`diagnostico_principal_cid10`, `diagnostico_principal`, `diag_princ`).
-  Se nenhum existir, ABORTA listando as colunas reais — a doutrina do repo
-  e "valide o conteudo, nunca o status" e falhe alto em vez de gravar vazio.
+  `SELECT * ... LIMIT 1` e escolhe entre os candidatos conhecidos.
+  Verificado ao vivo em 2026-08-31: a tabela divide o CID em
+  `cid_principal_categoria` ("J18") e `cid_principal_subcategoria`
+  ("J18.9") — nao existe `diagnostico_principal*`. Se nenhum candidato
+  existir, ABORTA listando as colunas reais — a doutrina do repo e
+  "valide o conteudo, nunca o status" e falhe alto em vez de gravar vazio.
 - Colunas de permanencia e valor sao opcionais: entram na agregacao so se
   a sondagem as encontrou; senao gravam nulo e um aviso e impresso.
 
-`cid_codigo` e normalizado no SQL (maiusculo, sem ponto: "J18.0" vira
-"J18") para casar com a taxonomia de vigilancia em `apps/web/lib/saude/cid.ts`.
+`cid_codigo` e a CATEGORIA CID-10 (3 primeiros caracteres, maiusculo):
+o DATASUS grava "J189" e "O800" (sem ponto) na subcategoria e "J18" na
+categoria, e o ranking por categoria e o que casa com a taxonomia de
+vigilancia em `apps/web/lib/saude/cid.ts`. O join de capitulo usa o codigo
+BRUTO (antes da normalizacao) porque `cid_10.subcategoria` tem linha tanto
+para subcategoria quanto para a categoria nua.
 
 Uso:
   python -m etl.bd.sih_cid --id-municipio 3106705
@@ -33,9 +39,14 @@ from etl.common import ID_MUNICIPIO_DEFAULT, get_supabase_client
 TABELA = "basedosdados.br_ms_sih.aihs_reduzidas"
 
 # Candidatas a coluna de diagnostico CID-10, na ordem de preferencia.
-# `diagnostico_principal_cid10` e o nome padronizado que outros clientes
-# dos dados BD usam; `diag_princ` e o nome do arquivo RD bruto do DATASUS.
+# Verificado ao vivo em 2026-08-31: `br_ms_sih.aihs_reduzidas` NAO tem
+# coluna `diagnostico_principal*` (nomes de outros clientes dos dados BD) —
+# o CID vem dividido em `cid_principal_categoria` ("J18") e
+# `cid_principal_subcategoria` ("J18.9"). As duas primeiras candidatas são
+# as reais; as demais ficam como defesa para o caso de a fonte mudar.
 COLUNAS_CID_CANDIDATAS = [
+    "cid_principal_categoria",
+    "cid_principal_subcategoria",
     "diagnostico_principal_cid10",
     "diagnostico_principal",
     "diag_princ",
@@ -44,7 +55,7 @@ COLUNA_MUNICIPIO = "id_municipio_paciente"
 COLUNA_DATA = "data_internacao"
 COLUNA_OBITO = "indicador_obito"
 COLUNA_PERMANENCIA = "quantidade_dias_permanencia"
-COLUNA_VALOR_CANDIDATAS = ["valor_total", "valor_aih"]
+COLUNA_VALOR_CANDIDATAS = ["valor_aih", "valor_total", "valor_serivco_hospitalar"]
 
 
 def _datasus_6(id_municipio: str) -> str:
@@ -75,6 +86,18 @@ def _descobrir_coluna_cid() -> tuple[str, set[str]]:
 
 
 def _montar_query(id_municipio: str, cid_col: str, colunas: set[str]) -> str:
+    # `cid_principal_categoria` fica nula em ~89% das linhas (medido ao vivo
+    # 2026-08-31, Betim 2024: 22.016 de 24.791) e `cid_principal_subcategoria`
+    # cobre o resto — as duas nunca são nulas juntas. COALESCE garante 100%
+    # de cobertura; a normalização (maiúsculo, sem ponto) funde "J18.9" e
+    # "J18" na mesma chave de categoria.
+    companheiras = [c for c in COLUNAS_CID_CANDIDATAS if c in colunas and c != cid_col]
+    if companheiras:
+        expr_cid = f"COALESCE(aih.{cid_col}, aih.{companheiras[0]})"
+        print(f"[etl.bd.sih_cid] usando COALESCE com {companheiras[0]} (cobertura de nulos)")
+    else:
+        expr_cid = f"aih.{cid_col}"
+
     permanencia = (
         f"SUM(aih.{COLUNA_PERMANENCIA})"
         if COLUNA_PERMANENCIA in colunas
@@ -94,7 +117,7 @@ def _montar_query(id_municipio: str, cid_col: str, colunas: set[str]) -> str:
     return f"""
 SELECT
   EXTRACT(YEAR FROM aih.{COLUNA_DATA}) AS ano,
-  UPPER(REPLACE(aih.{cid_col}, '.', '')) AS cid_codigo,
+  SUBSTR(UPPER(REPLACE({expr_cid}, '.', '')), 1, 3) AS cid_codigo,
   COALESCE(cid.descricao_capitulo, 'Nao classificado') AS capitulo,
   COUNT(*) AS internacoes_total,
   COALESCE(SUM(aih.{COLUNA_OBITO}), 0) AS obitos_total,
@@ -102,9 +125,9 @@ SELECT
   {valor} AS valor_total
 FROM `{TABELA}` aih
 LEFT JOIN `basedosdados.br_bd_diretorios_brasil.cid_10` cid
-  ON cid.subcategoria = aih.{cid_col}
+  ON cid.subcategoria = {expr_cid}
 WHERE aih.{COLUNA_MUNICIPIO} = '{_datasus_6(id_municipio)}'
-  AND aih.{cid_col} IS NOT NULL
+  AND {expr_cid} IS NOT NULL
 GROUP BY ano, cid_codigo, capitulo
 """
 
