@@ -292,24 +292,28 @@ async function loopTelegram() {
           } catch { status = " nÃ£o encontrado"; }
           let nextStart = "parado";
           try {
-            const ps = execFileSync("powershell", ["-Command", "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next dev'} | Measure-Object | Select-Object -ExpandProperty Count"], { encoding: "utf-8" });
+            const ps = execFileSync("powershell", ["-Command", "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next (dev|start)'} | Measure-Object | Select-Object -ExpandProperty Count"], { encoding: "utf-8" });
             nextStart = ps.trim() === "0" ? "parado" : " rodando";
           } catch { nextStart = "verificar manualmente"; }
           await telegramApi("sendMessage", {
             chat_id: msg.chat.id,
-            text: `TÃºnel (Cloudflared):${status}\nNext dev (porta 3000):${nextStart}`,
+            text: `Túnel (Cloudflared):${status}\nNext (porta 3000):${nextStart}`,
           });
           continue;
         }
         if (comando === "reiniciar") {
           await telegramApi("sendMessage", {
             chat_id: msg.chat.id,
-            text: "reiniciando next dev...",
+            text: "reiniciando next start (build + start)...",
           });
           try {
-            execFileSync("powershell", ["-Command", "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next dev'} | Stop-Process -Force"], { encoding: "utf-8" });
-            execFileSync("powershell", ["-Command", "Start-Sleep -Seconds 2; Start-Process -FilePath 'cmd.exe' -ArgumentList '/c cd /d C:\\DevCoder\\controle-popular\\apps\\web && npx next dev -p 3000' -WindowStyle Hidden"], { encoding: "utf-8", timeout: 15000 });
-            // Warmup em background: compila as 30 principais rotas
+            // Matar processos next dev/start anteriores
+            execFileSync("powershell", ["-Command", "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next (dev|start)'} | Stop-Process -Force"], { encoding: "utf-8" });
+            // Build de producao
+            execFileSync("powershell", ["-Command", "Start-Sleep -Seconds 2; & 'C:\\Users\\Home\\AppData\\Local\\hermes\\node\\node.exe' 'C:\\DevCoder\\controle-popular\\node_modules\\next\\dist\\bin\\next' build --webpack"], { encoding: "utf-8", timeout: 900000, cwd: "C:\\DevCoder\\controle-popular\\apps\\web" });
+            // Iniciar next start
+            execFileSync("powershell", ["-Command", "Start-Process -FilePath 'C:\\Users\\Home\\AppData\\Local\\hermes\\node\\node.exe' -ArgumentList 'C:\\DevCoder\\controle-popular\\node_modules\\next\\dist\\bin\\next','start','-p','3000' -WorkingDirectory 'C:\\DevCoder\\controle-popular\\apps\\web' -WindowStyle Hidden"], { encoding: "utf-8", timeout: 15000 });
+            // Warmup em background
             setTimeout(() => {
               try {
                 execFileSync("powershell", ["-Command", "Start-Sleep -Seconds 10; Start-Process -FilePath 'C:\\Users\\Home\\AppData\\Local\\hermes\\node\\node.exe' -ArgumentList 'C:\\DevCoder\\controle-popular\\node_modules\\tsx\\dist\\cli.mjs','C:\\DevCoder\\controle-popular\\scripts\\warmup-dev.mts','3000' -WindowStyle Hidden"], { encoding: "utf-8", timeout: 5000 });
@@ -317,12 +321,12 @@ async function loopTelegram() {
             }, 0);
             await telegramApi("sendMessage", {
               chat_id: msg.chat.id,
-              text: "âœ… next dev reiniciado (porta 3000)",
+              text: "✅ next start reiniciado (porta 3000)",
             });
           } catch (e) {
             await telegramApi("sendMessage", {
               chat_id: msg.chat.id,
-              text: `âŒ falha ao reiniciar: ${(e as Error).message.slice(0, 200)}`,
+              text: `❌ falha ao reiniciar: ${(e as Error).message.slice(0, 200)}`,
             });
           }
           continue;
