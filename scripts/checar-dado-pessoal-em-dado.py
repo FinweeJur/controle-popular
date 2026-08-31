@@ -67,6 +67,18 @@ pre-push) cai para mod-11 puro e imprime um aviso no stderr. Instale com:
 
     python -m pip install validate-docbr
 
+═══ ALTA CONFIANÇA (Presidio, M11) ═══
+
+`--alta-confianca` exige uma SEGUNDA implementação independente de extração —
+o framework rule-based do Microsoft Presidio — concordando com o candidato
+além do mod-11 e do validate-docbr. É o modo de varredura manual de varreduras
+(decisão registrada: sem engine de NLP, que baixaria en_core_web_lg de 400 MB;
+o PatternRecognizer casa os padrões de regex e o mod-11 caseiro filtra). Import
+opcional, como o do validate-docbr: sem a biblioteca, o modo avisa no stderr e
+segue com a régua atual. Instale com:
+
+    python -m pip install presidio-analyzer
+
 ═══ POR QUE EM PYTHON, E NÃO SÓ NO TESTE DO PORTAL ═══
 
 O script irmão é Python para rodar em QUALQUER repositório do projeto (inclusive
@@ -118,6 +130,48 @@ except ImportError:
     print("⚠️  validate-docbr não instalado — validação segue só no mod-11. "
           "Instale com: python -m pip install validate-docbr",
           file=sys.stderr)
+
+
+# ---------------------------------------------------------------------------
+# Presidio (M11, 31/08/2026): modo `--alta-confianca` usa uma SEGUNDA
+# implementação independente de extração — o framework rule-based do Microsoft
+# Presidio — para concordar com o candidato antes do alarme. Decisão medida:
+# o caminho com AnalyzerEngine baixaria en_core_web_lg (400 MB, modelo de ML);
+# o PatternRecognizer sozinho casa os padrões de regex e o mod-11 caseiro
+# filtra. Import opcional, como o validate-docbr: sem a biblioteca, a guarda
+# segue idêntica e o modo avisa no stderr.
+try:
+    from presidio_analyzer import PatternRecognizer, Pattern
+    _PRESIDIO = True
+except ImportError:
+    _PRESIDIO = False
+
+_RECONHECEDOR_PRESIDIO = None
+if _PRESIDIO:
+    _RECONHECEDOR_PRESIDIO = PatternRecognizer(
+        supported_entity="CPF_BR",
+        supported_language="pt",
+        patterns=[
+            Pattern(name="cpf_11", regex=r"\b[0-9]{11}\b", score=0.85),
+            Pattern(name="cpf_fmt",
+                    regex=r"\b[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}\b", score=0.9),
+        ],
+    )
+
+_AVISOU_PRESIDIO_AUSENTE = False
+
+
+def _presidio_achou(texto: str) -> set[str] | None:
+    """Dígitos que o Presidio casa E o mod-11 confirma; None sem a lib."""
+    if not _PRESIDIO or _RECONHECEDOR_PRESIDIO is None:
+        return None
+    achados = set()
+    for r in _RECONHECEDOR_PRESIDIO.analyze(texto, entities=["CPF_BR"],
+                                            nlp_artifacts=None):
+        digitos = re.sub(r"\D", "", texto[r.start:r.end])
+        if cpf_valido(digitos):
+            achados.add(digitos)
+    return achados
 
 
 # ---------------------------------------------------------------------------
@@ -195,24 +249,45 @@ def _cpf_confirmado(digitos: str) -> bool:
     return bool(CPF().validate(digitos))
 
 
-def _procurar_em_texto(texto: str, caminho: str) -> list[tuple[str, str]]:
+def _procurar_em_texto(texto: str, caminho: str,
+                       alta_confianca: bool = False) -> list[tuple[str, str]]:
     """(caminho dentro do JSON, valor) — só os que passam no mod-11.
 
     Com validate-docbr instalado, só os que passam no mod-11 E na confirmação
-    dele; sem a biblioteca, o mod-11 puro decide (ver _cpf_confirmado).
+    dele; sem a biblioteca, o mod-11 puro decide (ver _cpf_confirmado). Com
+    `--alta-confianca`, o candidato precisa também ser reconhecido pelo
+    Presidio (M11). O Presidio roda SÓ quando há candidato (é confirmação,
+    não pré-filtro — medido em 31/08: varrer todo texto com ele custa 290s,
+    contra ~60s da régua; no corpus limpo ele não roda nunca). Sem a
+    biblioteca, o modo avisa uma vez e segue com a régua atual — a guarda
+    nunca para por dependência opcional.
     """
-    achados = []
+    global _AVISOU_PRESIDIO_AUSENTE
+    candidatos = []
     for m in _RE_CPF.finditer(texto):
         valor = m.group(0)
         if valor in SINTETICOS:
             continue
         digitos = re.sub(r"\D", "", valor)
         if cpf_valido(digitos) and _cpf_confirmado(digitos):
-            achados.append((caminho, valor))
-    return achados
+            candidatos.append((caminho, valor, digitos))
+    if not candidatos:
+        return []
+    if alta_confianca:
+        presidio_achou = _presidio_achou(texto)
+        if presidio_achou is None:
+            if not _AVISOU_PRESIDIO_AUSENTE:
+                print("⚠️  --alta-confianca pedido mas Presidio não instalado — "
+                      "seguindo com a régua atual. Instale com: "
+                      "python -m pip install presidio-analyzer", file=sys.stderr)
+                _AVISOU_PRESIDIO_AUSENTE = True
+            return [(c, v) for c, v, _ in candidatos]
+        return [(c, v) for c, v, d in candidatos if d in presidio_achou]
+    return [(c, v) for c, v, _ in candidatos]
 
 
-def _varrer_valor(valor: object, caminho: str) -> list[tuple[str, str]]:
+def _varrer_valor(valor: object, caminho: str,
+                  alta_confianca: bool = False) -> list[tuple[str, str]]:
     """Caminha pela estrutura e varre só os valores escalares de texto.
 
     Não varre chave nem número — coordenada de geometria e id numérico não são
@@ -222,17 +297,17 @@ def _varrer_valor(valor: object, caminho: str) -> list[tuple[str, str]]:
     if isinstance(valor, dict):
         achados = []
         for chave, item in valor.items():
-            achados += _varrer_valor(item, f"{caminho}.{chave}")
+            achados += _varrer_valor(item, f"{caminho}.{chave}", alta_confianca)
         return achados
     if isinstance(valor, list):
         achados = []
         for i, item in enumerate(valor):
-            achados += _varrer_valor(item, f"{caminho}[{i}]")
+            achados += _varrer_valor(item, f"{caminho}[{i}]", alta_confianca)
         return achados
     if isinstance(valor, str):
-        return _procurar_em_texto(valor, caminho)
+        return _procurar_em_texto(valor, caminho, alta_confianca)
     if isinstance(valor, int):
-        return _procurar_em_texto(str(valor), caminho)
+        return _procurar_em_texto(str(valor), caminho, alta_confianca)
     return []
 
 
@@ -265,21 +340,23 @@ def _arquivos_em_escopo(staged: bool) -> list[str]:
     return sorted(set(arquivos))
 
 
-def _escanear_arquivo(caminho: str) -> list[tuple[str, str]]:
+def _escanear_arquivo(caminho: str,
+                      alta_confianca: bool = False) -> list[tuple[str, str]]:
     try:
         with open(caminho, encoding="utf-8") as f:
             dados = json.load(f)
     except (OSError, json.JSONDecodeError) as e:
         print(f"⚠️  não consegui ler {caminho}: {e}", file=sys.stderr)
         return []
-    return _varrer_valor(dados, "$")
+    return _varrer_valor(dados, "$", alta_confianca)
 
 
-def achar_cpf(arquivos: list[str]) -> list[tuple[str, str, str]]:
+def achar_cpf(arquivos: list[str],
+              alta_confianca: bool = False) -> list[tuple[str, str, str]]:
     """(arquivo, caminho dentro do JSON, o CPF achado)."""
     achados = []
     for arquivo in arquivos:
-        for onde, valor in _escanear_arquivo(arquivo):
+        for onde, valor in _escanear_arquivo(arquivo, alta_confianca):
             achados.append((arquivo, onde, valor))
     return achados
 
@@ -319,6 +396,18 @@ def self_test() -> int:
                  _cpf_confirmado("12345678909"))
         verifica("validador complementar rejeita IBGE 3106705",
                  not _cpf_confirmado("3106705"))
+
+    # 1c. O Presidio (M11) concorda com a régua nos dois sentidos — e só
+    #     quando instalado; o self-test não pode depender do pip do ambiente.
+    if _PRESIDIO:
+        verifica("presidio acha o sintético válido no texto",
+                 _presidio_achou("CPF 12345678909 anexo") == {"12345678909"},
+                 f"→ {_presidio_achou('CPF 12345678909 anexo')}")
+        verifica("presidio rejeita DV errado e sintético nulo",
+                 _presidio_achou("protocolo 12345678900 nada") == set() and
+                 _presidio_achou("000.000.000-00") == set())
+        verifica("presidio não dispara com IBGE curto",
+                 _presidio_achou("IBGE 3106705 cidade") == set())
 
     # 2. O scanner acha CPF válido em estrutura aninhada e informa o caminho.
     global SINTETICOS
@@ -368,6 +457,8 @@ def main() -> int:
                    help="varrer só o DADO no index, em vez de tudo")
     p.add_argument("--extra", action="append", default=[],
                    help="arquivo ou diretório JSON a varrer além do escopo padrão")
+    p.add_argument("--alta-confianca", action="store_true",
+                   help="exigir concordância do Presidio (M11) além do mod-11")
     p.add_argument("--self-test", action="store_true",
                    help="provar que a régua vê e não é cega, e sair")
     opts = p.parse_args()
@@ -387,7 +478,7 @@ def main() -> int:
         print("✓ nenhum arquivo de DADO no escopo")
         return 0
 
-    cpfs = achar_cpf(arquivos)
+    cpfs = achar_cpf(arquivos, opts.alta_confianca)
 
     if not cpfs:
         print(f"✓ nenhum CPF de pessoa real em dado ingerido "
