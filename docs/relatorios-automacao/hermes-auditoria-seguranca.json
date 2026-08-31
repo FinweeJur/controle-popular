@@ -1,0 +1,64 @@
+{
+  "geradoEm": "2026-08-31T17:55:46.991Z",
+  "agente": "Hermes Agent Security & Data Auditor",
+  "totalVerificacoes": 9,
+  "aprovados": 9,
+  "alertas": 0,
+  "falhas": 0,
+  "itens": [
+    {
+      "categoria": "seguranca",
+      "item": "CSP Report-Only",
+      "status": "APROVADO",
+      "detalhes": "CSP está configurado em modo Report-Only conforme política de observação."
+    },
+    {
+      "categoria": "seguranca",
+      "item": "Headers de Proteção Básica (HSTS/Nosniff/Frame)",
+      "status": "APROVADO",
+      "detalhes": "HSTS, X-Content-Type-Options e X-Frame-Options devidamente declarados."
+    },
+    {
+      "categoria": "seguranca",
+      "item": "Espelhamento public/_headers",
+      "status": "APROVADO",
+      "detalhes": "public/_headers configurado para garantir proteção nos Static Assets do Worker."
+    },
+    {
+      "categoria": "seguranca",
+      "item": "Varredura Estática de Segredos",
+      "status": "APROVADO",
+      "detalhes": "Nenhum token ou chave de credencial identificado nos arquivos críticos."
+    },
+    {
+      "categoria": "cloudflare",
+      "item": "Teto de 25 MiB do Cloudflare Workers",
+      "status": "APROVADO",
+      "detalhes": "Todos os 35 arquivos de dados em data/ e public/data/ estão dentro do limite."
+    },
+    {
+      "categoria": "privacidade",
+      "item": "Varredura Mod-11 de CPF nos Acervos",
+      "status": "APROVADO",
+      "detalhes": "Todos os arquivos de dados foram escaneados com ZERO CPFs de pessoas físicas encontrados."
+    },
+    {
+      "categoria": "qualidade_dados",
+      "item": "5 Regras de Qualidade: sigbm",
+      "status": "APROVADO",
+      "detalhes": "Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial."
+    },
+    {
+      "categoria": "qualidade_dados",
+      "item": "5 Regras de Qualidade: ibama",
+      "status": "APROVADO",
+      "detalhes": "Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial."
+    },
+    {
+      "categoria": "qualidade_dados",
+      "item": "5 Regras de Qualidade: decisoes-lai",
+      "status": "APROVADO",
+      "detalhes": "Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial."
+    }
+  ]
+}
