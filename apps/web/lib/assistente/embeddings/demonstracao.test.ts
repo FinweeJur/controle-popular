@@ -99,8 +99,10 @@ describe.skipIf(!OLLAMA_DISPONIVEL)("pipeline real: fatiar + vetorizar + buscar 
   let indice: Awaited<ReturnType<typeof indexarDocumentoDeExemplo>>;
 
   beforeAll(async () => {
+    // Margem generosa (31/08): o servidor remoto passou de 60s numa janela
+    // lenta — o mesmo motivo do ollama.test.ts/rag.test.ts.
     indice = await indexarDocumentoDeExemplo();
-  }, 30_000);
+  }, 90_000);
 
   test("o documento real foi indexado: um vetor por pedaço, mesma dimensão em todos", () => {
     expect(indice.pedacos.length).toBeGreaterThan(1); // >1: senão "qual pedaço vence" não diz nada
@@ -142,5 +144,5 @@ describe.skipIf(!OLLAMA_DISPONIVEL)("pipeline real: fatiar + vetorizar + buscar 
     // devolvesse, por exemplo, o produto interno cru sem normalizar.
     expect(vencedor.score).toBeGreaterThan(-1);
     expect(vencedor.score).toBeLessThanOrEqual(1);
-  }, 30_000);
+  }, 90_000);
 });

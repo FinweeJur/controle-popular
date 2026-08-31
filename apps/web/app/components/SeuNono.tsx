@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import {
   MessageCircle,
   X,
@@ -14,6 +14,8 @@ import {
   Check,
   Accessibility,
   Zap,
+  Maximize2,
+  Minimize2,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -26,6 +28,7 @@ import {
   type SeuNonoPergunta,
 } from "./SeuNonoData";
 import { obterSugestoesContextuais, type SugestaoContextual } from "@/lib/seo/contexto-pagina";
+import { RessalvaIa } from "./RessalvaIa";
 
 interface DadoResumido {
   total?: number;
@@ -33,6 +36,127 @@ interface DadoResumido {
   top?: { nome: string; valor?: number; total?: number }[];
   texto?: string;
   erro?: string;
+}
+
+/** Uma fonte da resposta IA, no formato do contrato v2 (Fase 1). */
+interface FonteIa {
+  indice: number;
+  titulo?: string;
+  url?: string;
+  rota?: string;
+  texto: string;
+  score: number;
+}
+
+/** Resposta IA completa — o widget guarda o detalhe para a ressalva e as fontes. */
+interface RespostaChatIa {
+  resposta: string;
+  modelo: string;
+  data: string;
+  ressalva: true;
+  verificacao?: "ok" | "parcial" | "falhou";
+  fontes: FonteIa[];
+  erro?: string;
+}
+
+/** Um turno da conversa IA — o histórico da tela cheia. */
+interface TurnoIa {
+  pergunta: string;
+  resposta: string;
+  modelo?: string;
+  data?: string;
+  verificacao?: "ok" | "parcial" | "falhou";
+  fontes: FonteIa[];
+}
+
+/** Resolve a URL da fonte: interna vira URL absoluta, externa fica como está. */
+function urlDaFonte(f: FonteIa): string {
+  const href = f.url ?? f.rota ?? "#";
+  if (href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//")) {
+    return href;
+  }
+  return typeof window !== "undefined" ? `${window.location.origin}${href}` : href;
+}
+
+/**
+ * Renderiza a resposta da IA trocando os marcadores [n] por chips clicáveis
+ * que abrem a fonte em aba nova — o padrão NotebookLM de citação inline.
+ * Marcador sem fonte correspondente vira texto puro (nunca link morto).
+ */
+function renderizarRespostaComCitacoes(
+  texto: string,
+  fontes: FonteIa[],
+  aoAbrir: (url: string) => void
+): React.ReactNode[] {
+  const partes = texto.split(/(\[\d+\])/g);
+  return partes.map((parte, i) => {
+    const m = parte.match(/^\[(\d+)\]$/);
+    if (!m) return <span key={i}>{parte}</span>;
+    const n = Number(m[1]);
+    const fonte = fontes.find((f) => f.indice === n);
+    if (!fonte) return <span key={i}>{parte}</span>;
+    const url = urlDaFonte(fonte);
+    return (
+      <button
+        key={i}
+        onClick={() => aoAbrir(url)}
+        title={`Abrir fonte ${n}: ${fonte.titulo ?? url}`}
+        aria-label={`Abrir fonte ${n}: ${fonte.titulo ?? url}`}
+        className="mx-0.5 inline-flex translate-y-[-1px] items-center rounded-md border border-primary/40 bg-primary/10 px-1.5 py-0 text-[.75rem] font-semibold leading-tight text-primary align-baseline hover:bg-primary/20"
+      >
+        {n}
+      </button>
+    );
+  });
+}
+
+/** Card de uma fonte no painel lateral — trecho, score e ações. */
+function CardFonte({
+  fonte,
+  copiado,
+  aoAbrir,
+  aoCopiar,
+}: {
+  fonte: FonteIa;
+  copiado: string | null;
+  aoAbrir: (url: string) => void;
+  aoCopiar: (url: string) => Promise<boolean>;
+}) {
+  const url = urlDaFonte(fonte);
+  return (
+    <li className="rounded-lg border border-border bg-surface-2 p-2.5">
+      <div className="flex items-start justify-between gap-2">
+        <p className="text-xs font-semibold text-text">
+          <span className="mr-1 rounded bg-primary/10 px-1 text-[.7rem] font-bold text-primary">
+            {fonte.indice}
+          </span>
+          {fonte.titulo ?? fonte.rota ?? "Fonte"}
+        </p>
+        <span className="shrink-0 text-[.65rem] text-text-soft">
+          {(fonte.score * 100).toFixed(0)}%
+        </span>
+      </div>
+      <p className="mt-1 line-clamp-3 text-[.7rem] leading-relaxed text-text-soft">
+        {fonte.texto}
+      </p>
+      <div className="mt-1.5 flex items-center gap-1">
+        <button
+          onClick={() => aoAbrir(url)}
+          className="inline-flex items-center gap-1 rounded-md border border-border bg-surface px-1.5 py-0.5 text-[.68rem] text-text-soft hover:border-primary hover:text-primary"
+        >
+          <ExternalLink size={11} /> Abrir
+        </button>
+        <button
+          onClick={() => void aoCopiar(url)}
+          className="inline-flex items-center gap-1 rounded-md border border-border bg-surface px-1.5 py-0.5 text-[.68rem] text-text-soft hover:border-primary hover:text-primary"
+          aria-label={`Copiar link da fonte ${fonte.indice}`}
+        >
+          {copiado === url ? <Check size={11} className="text-primary" /> : <Copy size={11} />}
+          {copiado === url ? "Copiado" : "Copiar"}
+        </button>
+      </div>
+    </li>
+  );
 }
 
 /** Mapeamento de rotas para o tipo de dado da API */
@@ -103,17 +227,21 @@ type ComandoAcessibilidade = {
  * 3) escolha a pergunta;
  * 4) vê a resposta com link para a página certa.
  *
- * Só no último degrau oferecemos a IA (quando NEXT_PUBLIC_AI_API_KEY ou Ollama
- * estiverem disponíveis). Enquanto não houver IA, o widget opera 100% no modo
- * texto, sem depender de rede externa.
+ * No último degrau, a IA (RAG sobre o acervo do portal, `/api/chatbot`)
+ * responde com citação `[n]` da fonte e ressalva visível. A IA é oferecida
+ * sempre — o backend degrada com honestidade se não houver provedor.
  *
- * Posicionado no canto inferior esquerdo, expansível, sem tomar a tela toda.
+ * Expansível para TELA CHEIA (padrão NotebookLM): botão de expandir no
+ * cabeçalho; em tela cheia, conversa com histórico à esquerda e painel de
+ * fontes à direita. Diálogo modal acessível (`role="dialog"`, Esc fecha,
+ * foco no input). Ver PLANO-SEU-NONO-NOTEBOOKLM.md.
  */
 export function SeuNono() {
   const [aberto, setAberto] = useState(false);
-  const [iaDisponivel, setIaDisponivel] = useState<boolean>(false);
+  const [telaCheia, setTelaCheia] = useState(false);
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
+  const inputIaRef = useRef<HTMLInputElement>(null);
 
   const [nivel, setNivel] = useState<Nivel>("frentes");
   const [frente, setFrente] = useState<SeuNonoFrente | null>(null);
@@ -124,6 +252,8 @@ export function SeuNono() {
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [respostaIa, setRespostaIa] = useState<string | null>(null);
+  const [detalheIa, setDetalheIa] = useState<RespostaChatIa | null>(null);
+  const [turnosIa, setTurnosIa] = useState<TurnoIa[]>([]);
   const [copiado, setCopiado] = useState<string | null>(null);
 
   const [mostrouBoasVindas, setMostrouBoasVindas] = useState(true);
@@ -140,13 +270,34 @@ export function SeuNono() {
   const [dadosResumidos, setDadosResumidos] = useState<DadoResumido | null>(null);
   const [carregandoDados, setCarregandoDados] = useState(false);
 
-  // Detecta se ha algum provedor de IA disponivel no ambiente.
+  // A IA do assistente não depende de chave de API do lado do cliente: o
+  // backend (provedores.ts/geracao.ts) decide entre API remota e Ollama
+  // local e degrada com honestidade. O widget oferece a IA sempre, e o erro
+  // honesto da rota aparece no nível "ia". (Correção do gate antigo, que
+  // lia NEXT_PUBLIC_AI_API_KEY — variável que o backend nunca usou.)
+
+  // Tela cheia: trava a rolagem do fundo e devolve o foco ao input da IA.
   useEffect(() => {
-    const temApiKey = Boolean(process.env.NEXT_PUBLIC_AI_API_KEY);
-    const jaViu = localStorage.getItem("cp_nono_seen") === "1";
-    setIaDisponivel(temApiKey);
-    setMostrouBoasVindas(jaViu);
-  }, []);
+    if (!telaCheia) return;
+    const anterior = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const focar = () => inputIaRef.current?.focus();
+    const timer = window.setTimeout(focar, 50);
+    return () => {
+      document.body.style.overflow = anterior;
+      window.clearTimeout(timer);
+    };
+  }, [telaCheia]);
+
+  // Esc fecha a tela cheia — contrato de diálogo modal do resto do portal.
+  useEffect(() => {
+    if (!telaCheia) return;
+    const aoTeclar = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setTelaCheia(false);
+    };
+    window.addEventListener("keydown", aoTeclar);
+    return () => window.removeEventListener("keydown", aoTeclar);
+  }, [telaCheia]);
 
   useEffect(() => {
     if (pathname) {
@@ -155,7 +306,15 @@ export function SeuNono() {
     }
   }, [pathname]);
 
+  // A nuvem de boas-vindas aparece uma vez por visitante (flag no localStorage).
+  useEffect(() => {
+    const jaViu = localStorage.getItem("cp_nono_seen") === "1";
+    setMostrouBoasVindas(jaViu);
+  }, []);
+
   // Reseta a navegação ao fechar para recomeçar do topo na próxima abertura.
+  // O histórico de turnos da IA (`turnosIa`) sobrevive na sessão — é a
+  // conversa que a tela cheia mostra.
   useEffect(() => {
     if (!aberto) {
       const timer = setTimeout(() => {
@@ -164,6 +323,7 @@ export function SeuNono() {
         setCategoria(null);
         setResposta(null);
         setRespostaIa(null);
+        setDetalheIa(null);
         setErro(null);
         setPerguntaLivre("");
         setRespostaComando(null);
@@ -367,6 +527,7 @@ export function SeuNono() {
     setCategoria(null);
     setResposta(null);
     setRespostaIa(null);
+    setDetalheIa(null);
     setErro(null);
     setPerguntaLivre("");
     setRespostaContexto(null);
@@ -381,8 +542,8 @@ export function SeuNono() {
     }
   }
 
-  async function copiarLink(href: string) {
-    if (typeof window === "undefined") return;
+  async function copiarLink(href: string): Promise<boolean> {
+    if (typeof window === "undefined") return false;
     const url =
       href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//")
         ? href
@@ -393,6 +554,13 @@ export function SeuNono() {
     } catch {
       return false;
     }
+  }
+
+  /** Abre a fonte da citação em aba nova — não navega a página do portal
+   *  (a tela cheia do assistente não pode se perder num redirecionamento). */
+  function abrirFonteEmAbaNova(url: string) {
+    if (typeof window === "undefined") return;
+    window.open(url, "_blank", "noopener,noreferrer");
   }
 
   async function enviarPerguntaLivre(e: React.FormEvent) {
@@ -420,11 +588,25 @@ export function SeuNono() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ pergunta: perguntaLivre }),
       });
-      const dados = (await resp.json()) as { resposta?: string; erro?: string };
+      const dados = (await resp.json()) as RespostaChatIa;
       if (!resp.ok || dados.erro) {
         setErro(dados.erro ?? "Não consegui responder agora.");
       } else {
-        setRespostaIa(dados.resposta ?? "");
+        const respostaTexto = dados.resposta ?? "";
+        setRespostaIa(respostaTexto);
+        setDetalheIa(dados);
+        // Histórico da conversa — a tela cheia mostra todos os turnos.
+        setTurnosIa((turnos) => [
+          ...turnos,
+          {
+            pergunta: perguntaLivre,
+            resposta: respostaTexto,
+            modelo: dados.modelo,
+            data: dados.data,
+            verificacao: dados.verificacao,
+            fontes: dados.fontes ?? [],
+          },
+        ]);
       }
     } catch (e) {
       setErro(e instanceof Error ? e.message : "Erro de rede");
@@ -437,7 +619,16 @@ export function SeuNono() {
   return (
     <div className="fixed bottom-4 left-4 z-50 flex flex-col items-start">
       {aberto && (
-        <div className="mb-3 w-[min(calc(100vw-2rem),24rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-lg">
+        <div
+          role={telaCheia ? "dialog" : undefined}
+          aria-modal={telaCheia ? true : undefined}
+          aria-label={telaCheia ? "Seu Nonô — assistente em tela cheia" : undefined}
+          className={
+            telaCheia
+              ? "fixed inset-0 z-[60] flex flex-col bg-surface"
+              : "mb-3 w-[min(calc(100vw-2rem),24rem)] overflow-hidden rounded-2xl border border-border bg-surface shadow-lg"
+          }
+        >
           {/* Cabeçalho */}
           <div className="flex items-center justify-between border-b border-border bg-primary/10 px-4 py-3">
             <div className="flex items-center gap-2">
@@ -445,7 +636,7 @@ export function SeuNono() {
               <div>
                 <p className="font-display text-sm font-semibold text-text">Seu Nonô</p>
                 <p className="text-[.7rem] text-text-soft">
-                  {iaDisponivel ? "Assistente com IA" : "Assistente — modo texto"}
+                  Assistente do portal — respostas com fonte
                 </p>
               </div>
             </div>
@@ -471,6 +662,14 @@ export function SeuNono() {
                 </button>
               )}
               <button
+                onClick={() => setTelaCheia((v) => !v)}
+                className="rounded-full p-1 text-text-soft hover:bg-surface-2"
+                aria-label={telaCheia ? "Recolher para o modo flutuante" : "Expandir para tela cheia"}
+                title={telaCheia ? "Recolher" : "Expandir"}
+              >
+                {telaCheia ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
+              </button>
+              <button
                 onClick={() => setAberto(false)}
                 className="rounded-full p-1 text-text-soft hover:bg-surface-2"
                 aria-label="Fechar chat"
@@ -480,8 +679,17 @@ export function SeuNono() {
             </div>
           </div>
 
-          {/* Área de mensagens */}
-          <div className="max-h-[min(60vh,28rem)] overflow-y-auto px-4 py-3">
+          {/* Área de mensagens — em tela cheia, conversa à esquerda e o
+              painel de fontes à direita (padrão NotebookLM); no widget,
+              a rolagem alta fica dentro do card. */}
+          <div className={telaCheia ? "flex min-h-0 flex-1 flex-col lg:flex-row" : undefined}>
+            <div
+              className={
+                telaCheia
+                  ? "min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-8"
+                  : "max-h-[min(60vh,28rem)] overflow-y-auto px-4 py-3"
+              }
+            >
             {/* Nível 1: escolha da frente */}
             {nivel === "frentes" && (
               <div className="space-y-3">
@@ -538,19 +746,16 @@ export function SeuNono() {
                   <p className="mb-2 text-xs text-text-soft">
                     Não encontrou o que procura?
                   </p>
-                  {iaDisponivel ? (
-                    <button
-                      onClick={abrirIa}
-                      className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-primary/50 bg-primary/5 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/10"
-                    >
-                      <Sparkles size={14} /> Perguntar à IA
-                    </button>
-                  ) : (
-                    <p className="rounded-lg border border-dashed border-border bg-surface-2 px-3 py-2 text-xs text-text-soft">
-                      A IA ainda não está configurada. Use os menus acima ou envie uma
-                      sugestão pelo GitHub.
-                    </p>
-                  )}
+                  <button
+                    onClick={abrirIa}
+                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-primary/50 bg-primary/5 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/10"
+                  >
+                    <Sparkles size={14} /> Perguntar à IA
+                  </button>
+                  <p className="mt-2 rounded-lg border border-dashed border-border bg-surface-2 px-3 py-2 text-xs text-text-soft">
+                    A IA responde com base nas páginas do portal e cita a fonte.
+                    Confira sempre antes de decidir.
+                  </p>
                 </div>
               </div>
             )}
@@ -664,19 +869,12 @@ export function SeuNono() {
                 </ul>
 
                 <div className="border-t border-border pt-3">
-                  {iaDisponivel ? (
-                    <button
-                      onClick={abrirIa}
-                      className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-primary/50 bg-primary/5 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/10"
-                    >
-                      <Sparkles size={14} /> Sua pergunta não está na lista? Perguntar à IA
-                    </button>
-                  ) : (
-                    <p className="text-xs text-text-soft">
-                      Se sua pergunta não estiver na lista, a IA será ativada assim que
-                      houver uma chave de API configurada.
-                    </p>
-                  )}
+                  <button
+                    onClick={abrirIa}
+                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-primary/50 bg-primary/5 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/10"
+                  >
+                    <Sparkles size={14} /> Sua pergunta não está na lista? Perguntar à IA
+                  </button>
                 </div>
               </div>
             )}
@@ -900,14 +1098,17 @@ export function SeuNono() {
                   <ChevronLeft size={14} /> Voltar
                 </button>
 
-                {!respostaIa && !erro && (
+                {/* A caixa de pergunta fica sempre visível na tela cheia —
+                    a conversa continua; no modo widget, só antes da resposta. */}
+                {((!respostaIa && !erro) || (telaCheia && !carregando)) && (
                   <>
                     <p className="text-sm text-text-soft">
-                      Descreva o que você quer saber. A IA tentará responder com base nos
-                      dados e documentação do portal.
+                      Descreva o que você quer saber. A IA responde com base nas páginas do
+                      portal e cita a fonte.
                     </p>
                     <form onSubmit={enviarPerguntaLivre} className="flex gap-2">
                       <input
+                        ref={inputIaRef}
                         type="text"
                         value={perguntaLivre}
                         onChange={(e) => setPerguntaLivre(e.target.value)}
@@ -941,18 +1142,144 @@ export function SeuNono() {
 
                 {respostaIa && (
                   <div className="space-y-3">
-                    <div className="rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-text">
-                      <p className="whitespace-pre-wrap">{respostaIa}</p>
-                    </div>
-                    <button
-                      onClick={() => {
-                        setRespostaIa(null);
-                        setErro(null);
-                      }}
-                      className="text-xs text-text-soft hover:text-primary"
-                    >
-                      ← Fazer outra pergunta
-                    </button>
+                    {telaCheia ? (
+                      <ul className="space-y-4">
+                        {turnosIa.map((turno, ti) => (
+                          <li key={ti} className="space-y-2">
+                            <div className="rounded-lg bg-primary/10 px-3 py-2 text-sm text-text">
+                              <strong className="text-primary">Você:</strong> {turno.pergunta}
+                            </div>
+                            <div className="rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-text">
+                              <p className="whitespace-pre-wrap">
+                                {renderizarRespostaComCitacoes(
+                                  turno.resposta,
+                                  turno.fontes,
+                                  abrirFonteEmAbaNova
+                                )}
+                              </p>
+                              {turno.fontes.length > 0 && (
+                                <ul className="mt-2 space-y-1 border-t border-border pt-2">
+                                  {turno.fontes.map((f) => (
+                                    <li
+                                      key={f.indice}
+                                      className="flex items-center justify-between gap-2 rounded-lg border border-border bg-surface px-2 py-1 text-xs"
+                                    >
+                                      <span className="truncate text-text-soft">
+                                        {f.indice}. {f.titulo ?? f.rota}
+                                      </span>
+                                      <span className="flex shrink-0 items-center gap-1">
+                                        <button
+                                          onClick={() => abrirFonteEmAbaNova(urlDaFonte(f))}
+                                          className="rounded p-0.5 text-text-soft hover:bg-surface-2"
+                                          aria-label={`Abrir fonte ${f.indice}`}
+                                        >
+                                          <ExternalLink size={12} />
+                                        </button>
+                                        <button
+                                          onClick={async () => {
+                                            const u = urlDaFonte(f);
+                                            const ok = await copiarLink(u);
+                                            if (ok) {
+                                              setCopiado(u);
+                                              setTimeout(() => setCopiado((atual) => (atual === u ? null : atual)), 1500);
+                                            }
+                                          }}
+                                          className="rounded p-0.5 text-text-soft hover:bg-surface-2"
+                                          aria-label={`Copiar link da fonte ${f.indice}`}
+                                        >
+                                          {copiado === urlDaFonte(f) ? (
+                                            <Check size={12} className="text-primary" />
+                                          ) : (
+                                            <Copy size={12} />
+                                          )}
+                                        </button>
+                                      </span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                              <div className="mt-2">
+                                <RessalvaIa
+                                  modelo={turno.modelo}
+                                  data={turno.data}
+                                  verificacao={turno.verificacao}
+                                />
+                              </div>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <div className="space-y-3">
+                        <div className="rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-text">
+                          <p className="whitespace-pre-wrap">
+                            {renderizarRespostaComCitacoes(
+                              respostaIa,
+                              detalheIa?.fontes ?? [],
+                              abrirFonteEmAbaNova
+                            )}
+                          </p>
+                          {detalheIa && detalheIa.fontes.length > 0 && (
+                            <ul className="mt-2 space-y-1 border-t border-border pt-2">
+                              {detalheIa.fontes.map((f) => (
+                                <li
+                                  key={f.indice}
+                                  className="flex items-center justify-between gap-2 rounded-lg border border-border bg-surface px-2 py-1 text-xs"
+                                >
+                                  <span className="truncate text-text-soft">
+                                    {f.indice}. {f.titulo ?? f.rota}
+                                  </span>
+                                  <span className="flex shrink-0 items-center gap-1">
+                                    <button
+                                      onClick={() => abrirFonteEmAbaNova(urlDaFonte(f))}
+                                      className="rounded p-0.5 text-text-soft hover:bg-surface-2"
+                                      aria-label={`Abrir fonte ${f.indice}`}
+                                    >
+                                      <ExternalLink size={12} />
+                                    </button>
+                                    <button
+                                      onClick={async () => {
+                                        const u = urlDaFonte(f);
+                                        const ok = await copiarLink(u);
+                                        if (ok) {
+                                          setCopiado(u);
+                                          setTimeout(() => setCopiado((atual) => (atual === u ? null : atual)), 1500);
+                                        }
+                                      }}
+                                      className="rounded p-0.5 text-text-soft hover:bg-surface-2"
+                                      aria-label={`Copiar link da fonte ${f.indice}`}
+                                    >
+                                      {copiado === urlDaFonte(f) ? (
+                                        <Check size={12} className="text-primary" />
+                                      ) : (
+                                        <Copy size={12} />
+                                      )}
+                                    </button>
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                          <div className="mt-2">
+                            <RessalvaIa
+                              modelo={detalheIa?.modelo}
+                              data={detalheIa?.data}
+                              verificacao={detalheIa?.verificacao}
+                            />
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => {
+                            setRespostaIa(null);
+                            setDetalheIa(null);
+                            setErro(null);
+                          }}
+                          className="text-xs text-text-soft hover:text-primary"
+                        >
+                          ← Fazer outra pergunta
+                        </button>
+                      </div>
+                    )}
                   </div>
                 )}
 
@@ -988,14 +1315,46 @@ export function SeuNono() {
                 )}
               </div>
             )}
+            </div>
+
+            {telaCheia && (
+              <aside
+                aria-label="Fontes desta resposta"
+                className="shrink-0 border-t border-border bg-surface-2 px-4 py-3 lg:w-80 lg:border-l lg:border-t-0"
+              >
+                <h2 className="font-display text-sm font-semibold text-text">
+                  Fontes desta resposta
+                </h2>
+                <p className="mt-0.5 text-xs text-text-soft">
+                  Páginas do portal usadas na resposta. Abra ou copie para conferir.
+                </p>
+                {(detalheIa?.fontes ?? []).length > 0 ? (
+                  <ul className="mt-2 space-y-2">
+                    {(detalheIa?.fontes ?? []).map((f) => (
+                      <CardFonte
+                        key={f.indice}
+                        fonte={f}
+                        copiado={copiado}
+                        aoAbrir={abrirFonteEmAbaNova}
+                        aoCopiar={copiarLink}
+                      />
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-2 text-xs text-text-soft">
+                    Faça uma pergunta à IA para ver aqui as fontes usadas na resposta.
+                  </p>
+                )}
+              </aside>
+            )}
           </div>
 
           {/* Rodapé */}
           <div className="border-t border-border bg-surface-2 px-4 py-2">
             {nivel === "frentes" ? (
               <p className="text-[.7rem] text-text-soft">
-                Modo texto: respostas baseadas nas páginas do site. IA disponível apenas
-                quando configurada.
+                Respostas prontas das páginas do site; a IA cita a fonte de cada
+                resposta. Confira sempre antes de decidir.
               </p>
             ) : (
               <div className="flex items-center gap-2 text-[.7rem] text-text-soft">

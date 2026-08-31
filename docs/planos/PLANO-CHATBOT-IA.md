@@ -90,15 +90,25 @@ confira a fonte"). Os dois convivem.
    cobrir; (c) ressalva de IA sempre visivel com citacao.
 2. **Provar conceito** ✅ (22/08/2026): pipeline local Ollama + nomic-embed-text
    sobre 4 normas federais ambientais — 3/4 acertos por similaridade.
-3. **Laboratorio local (L4) em andamento**: geracao de resposta via Ollama
-   (`qwen2.5:7b-instruct-q4_K_M`), rota `/api/chatbot` para `next dev`,
-   componente `ChatbotIaLaboratorio` com ressalva e fontes. Funciona sem
-   credencial de API e sem banco (Neon 402).
-4. **Definir acervo + varredura**: expandir para contratos, diario, legislacao
-   municipal — com a guarda de dado pessoal antes da ingestao.
-5. **Worker porteiro + front** no padrao do portal (a11y, `prefers-reduced-motion`,
-   ressalva), integrado como degrau 3 do assistente.
-6. **Publicar e testar com usuario real.**
+3. **Laboratorio local (L4)** ✅ **superado em 31/08** — ver o parágrafo
+   destacado abaixo; a rota `/assistente-ia-lab` continua, agora com o
+   contrato v2.
+4. **Definir acervo + varredura** ✅ **feito em 31/08**: acervo real em
+   código (`apps/web/lib/assistente/acervo.ts`, ~110 pedaços das 6 frentes);
+   a guarda de dado pessoal já cobre `etl/betim/dados` desde 22/08 (a nota
+   do AGENTS.md está defasada).
+5. **Worker porteiro + front** — detalhado e executado pelo plano do Seu
+   Nonô abaixo.
+6. **Publicar e testar com usuario real** — após build no home-pc.
+
+> **31/08/2026 — este plano foi DETALHADO e executado em fases por
+> [PLANO-SEU-NONO-NOTEBOOKLM.md](PLANO-SEU-NONO-NOTEBOOKLM.md):** Fases 0–4
+> implementadas (acervo real; contrato v2 com `url`/`rota` na fonte;
+> verificador determinístico de citação com abstenção e re-tentativa;
+> ressalva de IA sempre visível com data/modelo; tela cheia estilo
+> NotebookLM com histórico e painel de fontes; dataset de finetuning em
+> `etl/finetuning/dados-seu-nono.jsonl`). A Fase 5 (pgvector na Neon) tem
+> runbook próprio: [ROTEIRO-PGVECTOR-CHATBOT.md](ROTEIRO-PGVECTOR-CHATBOT.md).
 
 ## Vitória esperada
 

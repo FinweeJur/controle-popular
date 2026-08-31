@@ -57,6 +57,7 @@ Rotas principais por frente, confirmadas no código:
 | Alertas de contrato | páginas de contratos de Cidades | Duas categorias, nunca uma: violação legal (com dispositivo citado) e heurística (sinal de investigação, com a ressalva de que não é prova) |
 | Radar de notícias Paraopeba | `/paraopeba/clipping` | Itens dos últimos dias por fonte, com as fontes que vieram vazias declaradas |
 | Busca e assistente | `/busca`, `/assistente` | Índice de texto sobre todo o acervo; o assistente navega para 241 destinos e não afirma nada — nenhum número é escrito por modelo de linguagem |
+| Seu Nonô (assistente IA) | widget flutuante em todas as páginas, expansível a tela cheia | RAG sobre o acervo do portal: respostas com citação `[n]` clicável da fonte, painel de fontes com link, ressalva de IA sempre visível (data + modelo) e verificação determinística de citação — a IA só embrulha o dado que existe (ver `PLANO-SEU-NONO-NOTEBOOKLM.md`) |
 | Painel de edição | `/[municipio]/admin` | Edição de conteúdo sem tocar em código |
 | Globo 3D | `/funcaosocialterra/mapa` | Dezenas de camadas geográficas, incluindo as oito do rompimento real de Brumadinho (SEMAD) e os documentos do processo por município |
 | API pública | `/api` (+ `/api/v1/`, `/api/openapi.yaml`) | Os agregados do portal em JSON aberto, sem chave, com Swagger UI; gerada no prebuild, contrato estável em `/api/v1/` |

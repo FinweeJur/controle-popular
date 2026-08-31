@@ -39,37 +39,65 @@ export interface FonteRag {
   indice: number;
   texto: string;
   score: number;
+  /** Nome da página/fonte para a UI mostrar e para o prompt citar. */
+  titulo?: string;
+  /** URL da página para a citação [n] abrir/copiar. */
+  url?: string;
+  /** Rota do portal (mesma `url` quando a fonte é interna). */
+  rota?: string;
 }
 
 export interface RespostaRag {
   resposta: string;
   fontes: FonteRag[];
   modelo: string;
+  /** Data ISO da geração — a ressalva de IA leva data (regra editorial). */
+  data: string;
+  /** Sempre `true`: toda resposta IA declara o uso de IA (decisão 4, 22/08). */
+  ressalva: true;
+  /** Resultado do verificador determinístico de citação (Fase 1). */
+  verificacao?: "ok" | "parcial" | "falhou";
 }
 
 const TIMEOUT_MS_PADRAO = 60_000;
 
-const SYSTEM_PROMPT_RAG = `Voce e um assistente de um portal de transparencia. Responda SOMENTE com base no contexto fornecido abaixo.
+const SYSTEM_PROMPT_RAG = `Voce e o Seu Nono, assistente do portal Controle Popular (controlepopular.com.br), um portal civico independente de transparencia publica que republica dado oficial.
 
 Regras rigidas:
-- Nunca invente numeros, nomes, datas, valores ou dispositivos legais.
-- Se o contexto nao tiver a resposta, diga que nao encontrou esse dado no portal.
-- Cite a fonte no final da resposta, listando as fontes do contexto que voce usou.
+- Responda SOMENTE com base no CONTEXTO fornecido abaixo. Nunca invente numeros, nomes, datas, valores ou dispositivos legais.
+- Cite a fonte com marcador [n]: depois de cada afirmacao baseada numa fonte, escreva o numero dela entre colchetes. Ex.: "Betim gastou R$ 1,65 bilhao [1]".
+- Os marcadores [n] referem-se a lista numerada de fontes do CONTEXTO. Use apenas numeros que existam na lista, e nao repita marcador sem base.
+- Se o contexto nao tiver a resposta, diga que nao encontrou esse dado no portal e sugira a pagina de busca. Nao tente adivinhar.
 - Nao de opiniao politica nem aconselhamento juridico. Nao acuse ninguem.
-- A resposta deve ser curta, direta, em portugues do Brasil.`;
+- Nao ponha dois dados lado a lado se a conclusao nao estiver na fonte: insinuacao e dano mesmo quando cada dado isolado esta certo.
+- Quando usar um numero, diga de onde ele veio, com o marcador [n].
+- A resposta deve ser curta, direta, em portugues do Brasil.
+- Ao final, liste as fontes usadas, uma por linha, com o numero e o nome da pagina.`;
 
-function montarPromptUsuario(pergunta: string, fontes: FonteRag[]): string {
+function montarPromptUsuario(
+  pergunta: string,
+  fontes: FonteRag[],
+  instrucaoExtra?: string
+): string {
   const contexto = fontes
-    .map((f, i) => `[Fonte ${i + 1}] (relevancia: ${(f.score * 100).toFixed(1)}%)\n${f.texto}`)
+    .map((f, i) => {
+      const rotulo = f.titulo ? ` (${f.titulo})` : "";
+      return `[Fonte ${i + 1}]${rotulo} (relevancia: ${(f.score * 100).toFixed(1)}%)\n${f.texto}`;
+    })
     .join("\n\n");
 
-  return `CONTEXTO (dados do portal):\n${contexto}\n\nPERGUNTA: ${pergunta}\n\nResponda com base apenas no contexto. Ao final, liste as fontes usadas.`;
+  const extra = instrucaoExtra ? `\n\nINSTRUCAO ADICIONAL: ${instrucaoExtra}` : "";
+  return `CONTEXTO (dados do portal):\n${contexto}\n\nPERGUNTA: ${pergunta}\n\nResponda com base apenas no contexto. Use marcadores [n] para citar as fontes. Ao final, liste as fontes usadas.${extra}`;
 }
 
-function montarMensagens(pergunta: string, fontes: FonteRag[]): MensagemChat[] {
+function montarMensagens(
+  pergunta: string,
+  fontes: FonteRag[],
+  instrucaoExtra?: string
+): MensagemChat[] {
   return [
     { role: "system", content: SYSTEM_PROMPT_RAG },
-    { role: "user", content: montarPromptUsuario(pergunta, fontes) },
+    { role: "user", content: montarPromptUsuario(pergunta, fontes, instrucaoExtra) },
   ];
 }
 
@@ -178,6 +206,22 @@ async function chamarApiRemota(mensagens: MensagemChat[]): Promise<{ texto: stri
   throw new Error(`Todos os provedores remotos falharam: ${erros.join(" | ")}`);
 }
 
+/** Data ISO da geração, para a ressalva de IA. */
+function dataDeHoje(): string {
+  return new Date().toISOString().slice(0, 10);
+}
+
+/** Resposta honesta quando o RAG não achou fonte — sem modelo, sem inventar. */
+function respostaSemFontes(modelo: string): RespostaRag {
+  return {
+    resposta: "Nao encontrei dados diretamente ligados a sua pergunta no acervo indexado.",
+    fontes: [],
+    modelo,
+    data: dataDeHoje(),
+    ressalva: true,
+  };
+}
+
 /**
  * Gera uma resposta a partir de uma pergunta e das fontes recuperadas por
  * similaridade, usando Ollama local.
@@ -187,22 +231,20 @@ async function chamarApiRemota(mensagens: MensagemChat[]): Promise<{ texto: stri
 export async function gerarRespostaLocal(
   pergunta: string,
   fontes: FonteRag[],
-  opcoes: OpcoesOllama = {}
+  opcoes: OpcoesOllama & { instrucaoExtra?: string } = {}
 ): Promise<RespostaRag> {
   if (fontes.length === 0) {
-    return {
-      resposta: "Nao encontrei dados diretamente ligados a sua pergunta no acervo indexado.",
-      fontes: [],
-      modelo: opcoes.modelo ?? OLLAMA_CHAT_MODEL,
-    };
+    return respostaSemFontes(opcoes.modelo ?? OLLAMA_CHAT_MODEL);
   }
 
-  const mensagens = montarMensagens(pergunta, fontes);
+  const mensagens = montarMensagens(pergunta, fontes, opcoes.instrucaoExtra);
   const resposta = await chamarOllama(mensagens, opcoes);
   return {
     resposta,
     fontes,
     modelo: opcoes.modelo ?? OLLAMA_CHAT_MODEL,
+    data: dataDeHoje(),
+    ressalva: true,
   };
 }
 
@@ -211,21 +253,23 @@ export async function gerarRespostaLocal(
  * similaridade, usando API remota quando houver chave configurada.
  * Tenta o provedor ativo e, em falha, o fallback automatico.
  */
-export async function gerarRespostaApi(pergunta: string, fontes: FonteRag[]): Promise<RespostaRag> {
+export async function gerarRespostaApi(
+  pergunta: string,
+  fontes: FonteRag[],
+  instrucaoExtra?: string
+): Promise<RespostaRag> {
   if (fontes.length === 0) {
-    return {
-      resposta: "Nao encontrei dados diretamente ligados a sua pergunta no acervo indexado.",
-      fontes: [],
-      modelo: "sem-fontes",
-    };
+    return respostaSemFontes("sem-fontes");
   }
 
-  const mensagens = montarMensagens(pergunta, fontes);
+  const mensagens = montarMensagens(pergunta, fontes, instrucaoExtra);
   const { texto, rotulo } = await chamarApiRemota(mensagens);
   return {
     resposta: texto,
     fontes,
     modelo: rotulo,
+    data: dataDeHoje(),
+    ressalva: true,
   };
 }
 
@@ -239,10 +283,10 @@ export async function gerarRespostaApi(pergunta: string, fontes: FonteRag[]): Pr
 export async function gerarRespostaRag(
   pergunta: string,
   fontes: FonteRag[],
-  opcoes: OpcoesOllama = {}
+  opcoes: OpcoesOllama & { instrucaoExtra?: string } = {}
 ): Promise<RespostaRag> {
   if (temChaveRemota()) {
-    return gerarRespostaApi(pergunta, fontes);
+    return gerarRespostaApi(pergunta, fontes, opcoes.instrucaoExtra);
   }
   return gerarRespostaLocal(pergunta, fontes, opcoes);
 }
