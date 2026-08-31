@@ -7,7 +7,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * `/judiciario/sirenejud` — o recorte nacional dos processos ambientais do
- * Judiciário, por UF e por tribunal.
+ * Judiciário, por UF, por tribunal, por classe processual e por assunto.
  *
  * Complemento de `/judiciario/numeros`: o Justiça em Números e o SIRENEJud
  * nascem da MESMA base-mãe (o DataJud); a diferença é o recorte (aqui, só
@@ -20,7 +20,7 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 export const metadata: Metadata = metadataEditavel("/judiciario/sirenejud", {
   title: "Processos ambientais no Brasil (SIRENEJud) — Controle Popular · Judiciário",
   description:
-    "Processos ambientais do Judiciário por UF e por tribunal, do SIRENEJud (CNJ): contagens, pendentes e série anual.",
+    "Processos ambientais do Judiciário por UF, tribunal, classe processual e assunto, do SIRENEJud (CNJ): contagens, pendentes e série anual.",
 });
 
 export default function JudiciarioSirenejudPage() {
@@ -54,7 +54,7 @@ export default function JudiciarioSirenejudPage() {
           São <strong>{formatNumberBR(d.total_processos_br)} processos ambientais</strong>{" "}
           na base do SIRENEJud, o painel do CNJ que recorta da base nacional do
           Judiciário (a mesma do{" "}
-          <Link href="/numeros" className="underline">Justiça em Números</Link>) os
+          <Link href="/judiciario/numeros" className="underline">Justiça em Números</Link>) os
           processos de tema ambiental, com o município do órgão julgador.{" "}
           <strong>
             O arquivo público do CNJ é de {d.arquivo_modificado_em} e a atualização é
@@ -71,6 +71,27 @@ export default function JudiciarioSirenejudPage() {
           .
         </p>
       </header>
+
+      {/* Cards resumo */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="rounded-lg border border-border bg-surface p-4">
+          <p className="text-[.8em] text-text-soft">Total de processos</p>
+          <p className="font-display text-2xl font-bold">{formatNumberBR(d.total_processos_br)}</p>
+        </div>
+        <div className="rounded-lg border border-border bg-surface p-4">
+          <p className="text-[.8em] text-text-soft">Comarca com mais processos</p>
+          <p className="font-display text-2xl font-bold">{maiorUf?.uf}</p>
+          <p className="text-[.75em] text-text-soft">{formatNumberBR(maiorUf?.total ?? 0)} processos</p>
+        </div>
+        <div className="rounded-lg border border-border bg-surface p-4">
+          <p className="text-[.8em] text-text-soft">Anos com dados anômalos</p>
+          <p className="font-display text-2xl font-bold">{formatNumberBR(d.anos_anomalos)}</p>
+        </div>
+        <div className="rounded-lg border border-border bg-surface p-4">
+          <p className="text-[.8em] text-text-soft">UFs com processos</p>
+          <p className="font-display text-2xl font-bold">{d.por_uf.length}</p>
+        </div>
+      </div>
 
       <section aria-labelledby="por-uf">
         <h2 id="por-uf" className="font-display text-xl font-semibold">
@@ -132,31 +153,112 @@ export default function JudiciarioSirenejudPage() {
         </div>
       </section>
 
+      {d.top_classes_br.length > 0 && (
+        <section aria-labelledby="classes">
+          <h2 id="classes" className="font-display text-xl font-semibold">
+            Top 10 classes processuais
+          </h2>
+          <div className="mt-4 overflow-x-auto">
+            <table className="w-full text-[.95em]">
+              <thead>
+                <tr className="border-b border-[var(--cp-border)] text-left">
+                  <th className="py-2 pr-3">#</th>
+                  <th className="py-2 pr-3">Classe</th>
+                  <th className="py-2 text-right">Processos</th>
+                </tr>
+              </thead>
+              <tbody>
+                {d.top_classes_br.map(([classe, total], i) => (
+                  <tr key={classe} className="border-b border-[var(--cp-border)]/50">
+                    <td className="py-1.5 pr-3 text-text-soft">{i + 1}</td>
+                    <td className="py-1.5 pr-3 font-medium">{classe}</td>
+                    <td className="py-1.5 text-right">{formatNumberBR(total)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
+      {d.top_assuntos_br.length > 0 && (
+        <section aria-labelledby="assuntos">
+          <h2 id="assuntos" className="font-display text-xl font-semibold">
+            Top 10 assuntos
+          </h2>
+          <div className="mt-4 overflow-x-auto">
+            <table className="w-full text-[.95em]">
+              <thead>
+                <tr className="border-b border-[var(--cp-border)] text-left">
+                  <th className="py-2 pr-3">#</th>
+                  <th className="py-2 pr-3">Assunto</th>
+                  <th className="py-2 text-right">Processos</th>
+                </tr>
+              </thead>
+              <tbody>
+                {d.top_assuntos_br.map(([assunto, total], i) => (
+                  <tr key={assunto} className="border-b border-[var(--cp-border)]/50">
+                    <td className="py-1.5 pr-3 text-text-soft">{i + 1}</td>
+                    <td className="py-1.5 pr-3 font-medium">{assunto}</td>
+                    <td className="py-1.5 text-right">{formatNumberBR(total)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
       {anos.length > 0 && (
         <section aria-labelledby="serie">
           <h2 id="serie" className="font-display text-xl font-semibold">
             Ajuizamentos por ano
           </h2>
-          <table className="mt-4 text-[.95em]">
-            <thead>
-              <tr className="border-b border-[var(--cp-border)] text-left">
-                <th className="py-2 pr-4">Ano</th>
-                <th className="py-2 text-right">Processos</th>
-              </tr>
-            </thead>
-            <tbody>
-              {anos.map((ano) => (
-                <tr key={ano} className="border-b border-[var(--cp-border)]/50">
-                  <td className="py-1.5 pr-4">{ano}</td>
-                  <td className="py-1.5 text-right">
-                    {formatNumberBR(d.serie_anual_br[ano])}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {/* Gráfico de barras CSS */}
+          <div className="mt-4 space-y-1.5">
+            {anos.map((ano) => {
+              const val = d.serie_anual_br[ano];
+              const maxVal = Math.max(...anos.map((a) => d.serie_anual_br[a]));
+              const pct = maxVal > 0 ? (val / maxVal) * 100 : 0;
+              return (
+                <div key={ano} className="flex items-center gap-3 text-[.85em]">
+                  <span className="w-10 text-right text-text-soft">{ano}</span>
+                  <div className="flex-1 overflow-hidden rounded bg-border/30">
+                    <div
+                      className="h-4 rounded bg-primary/70"
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                  <span className="w-20 text-right font-tabular text-text-soft">
+                    {formatNumberBR(val)}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </section>
       )}
+
+      <section aria-labelledby="download" className="rounded-lg border border-border bg-surface p-5">
+        <h2 id="download" className="font-display text-base font-semibold">
+          Download dos dados
+        </h2>
+        <p className="mt-2 text-[.9em] text-text-soft">
+          Os agregados estão disponíveis na{" "}
+          <a href="/api" className="underline">API pública</a> (dataset{" "}
+          <code>sirenejud-brasil</code>). O arquivo em massa original do CNJ pesa
+          ~273 MB e pode ser baixado diretamente do{" "}
+          <a
+            href="https://prd.s3.cnj.jus.br/sirenejud/vw_sirenejud.parquet"
+            className="underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            S3 público do CNJ
+          </a>
+          .
+        </p>
+      </section>
 
       <section aria-labelledby="fonte" className="rounded-lg border border-[var(--cp-border)] p-5 text-sm">
         <h2 id="fonte" className="font-display text-base font-semibold">
@@ -170,11 +272,6 @@ export default function JudiciarioSirenejudPage() {
           {d.ressalvas.map((r) => (
             <li key={r}>{r}</li>
           ))}
-          <li>
-            Os agregados desta página também estão na{" "}
-            <a href="/api" className="underline">API pública</a> (dataset{" "}
-            <code>sirenejud-brasil</code>).
-          </li>
         </ul>
       </section>
       <FooterGlobal />
