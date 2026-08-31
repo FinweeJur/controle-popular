@@ -1,6 +1,8 @@
 import { asc, desc, eq, isNotNull, isNull, sql } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { ambiental_licenciamento, ref_municipios_mg } from "@/lib/db/schema";
+import { extrairTagsDeCampos } from "@/lib/tags";
+import { REGRAS_TAGS_LICENCIAMENTO } from "@/lib/ambiental/tags-licenciamento";
 
 /**
  * Queries de `/ambiental/licenciamento`.
@@ -37,6 +39,8 @@ export interface LicencaAmbiental {
   dataEmissao: string | null;
   dataValidade: string | null;
   link: string | null;
+  /** Tags de assunto inferidas dos campos de texto da fonte. */
+  tags: string[];
 }
 
 function paraLicenca(l: typeof ambiental_licenciamento.$inferSelect): LicencaAmbiental {
@@ -65,6 +69,18 @@ function paraLicenca(l: typeof ambiental_licenciamento.$inferSelect): LicencaAmb
     dataEmissao: l.data_emissao,
     dataValidade: l.data_validade,
     link: l.link,
+    tags: extrairTagsDeCampos(
+      [
+        l.setor_rotulo,
+        l.subsetor,
+        l.atividade_descricao,
+        l.modalidade,
+        l.fase_licenciamento,
+        l.situacao,
+        l.nome_empreendimento,
+      ],
+      REGRAS_TAGS_LICENCIAMENTO
+    ),
   };
 }
 

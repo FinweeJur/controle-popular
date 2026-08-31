@@ -28,6 +28,8 @@
  */
 
 import bruto from "../../data/barragens-sigbm.json";
+import { extrairTagsDeCampos } from "@/lib/tags";
+import { REGRAS_TAGS_BARRAGENS } from "./tags-barragens";
 
 export interface BarragemSigbm {
   id: string;
@@ -43,6 +45,8 @@ export interface BarragemSigbm {
   fase_descaracterizacao: string | null;
   /** ISO (aaaa-mm-dd) ou `null` — "Não se aplica"/"Não foi entregue" não viram data. */
   data_finalizacao_dce: string | null;
+  /** Tags de assunto inferidas dos campos de texto da fonte. */
+  tags: string[];
 }
 
 interface ArquivoSigbm {
@@ -62,7 +66,13 @@ const ARQUIVO = bruto as unknown as ArquivoSigbm;
  *  registros (~92 KiB) cabem no chunk de cliente — o teto que vale é o do
  *  Worker (3 MiB gzip), e é por isso que a página de servidor importa só
  *  `COBERTURA_SIGBM` abaixo, nunca este array. */
-export const BARRAGENS_SIGBM: BarragemSigbm[] = ARQUIVO.barragens;
+export const BARRAGENS_SIGBM: BarragemSigbm[] = ARQUIVO.barragens.map((b) => ({
+  ...b,
+  tags: extrairTagsDeCampos(
+    [b.nome, b.empreendedor, b.situacao, b.categoria_risco, b.dano_potencial],
+    REGRAS_TAGS_BARRAGENS
+  ),
+}));
 
 /** Vocabulário ORDINAL da fonte, na ordem em que a tela deve exibir —
  *  não é ordem alfabética, e comparar por texto erraria (ex.: "Alta" <

@@ -74,6 +74,19 @@ export default function TabelaFeam({ barragens }: { barragens: BarragemFeamMg[] 
   const [emergencia, setEmergencia] = useState<FiltroEmergencia>(TODOS);
   const [estabilidade, setEstabilidade] = useState<FiltroEstabilidade>(TODOS);
   const [risco, setRisco] = useState<FiltroRisco>(TODOS);
+  const [tag, setTag] = useState<string>(TODOS);
+
+  const opcoesTag = useMemo(() => {
+    const contagem = new Map<string, number>();
+    for (const b of barragens) {
+      for (const t of b.tags) {
+        contagem.set(t, (contagem.get(t) ?? 0) + 1);
+      }
+    }
+    return [...contagem.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt"))
+      .map(([t]) => t);
+  }, [barragens]);
 
   const emEmergencia = useMemo(() => barragens.filter((b) => (b.nivelEmergencia ?? 0) >= 1), [barragens]);
   const semEstabilidade = useMemo(
@@ -87,10 +100,11 @@ export default function TabelaFeam({ barragens }: { barragens: BarragemFeamMg[] 
       if (emergencia !== TODOS && String(b.nivelEmergencia ?? 0) !== emergencia) return false;
       if (estabilidade !== TODOS && b.condicaoEstabilidade !== estabilidade) return false;
       if (risco !== TODOS && b.categoriaRisco !== risco) return false;
+      if (tag !== TODOS && !b.tags.includes(tag)) return false;
       if (alvo && !normalizar(b.nome).includes(alvo) && !normalizar(b.municipio).includes(alvo)) return false;
       return true;
     });
-  }, [barragens, emergencia, estabilidade, risco, busca]);
+  }, [barragens, emergencia, estabilidade, risco, tag, busca]);
 
   const destaqueEmergenciaAtivo = emergencia === "1" || emergencia === "2" || emergencia === "3";
   function alternarDestaqueEmergencia() {
@@ -178,6 +192,22 @@ export default function TabelaFeam({ barragens }: { barragens: BarragemFeamMg[] 
         ))}
       </div>
 
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <span className="text-xs font-semibold uppercase tracking-wide opacity-60">Tag</span>
+        <select
+          value={tag}
+          onChange={(e) => setTag(e.target.value)}
+          className="rounded-md border border-[var(--cp-border)] bg-transparent px-2 py-1 text-xs"
+        >
+          <option value="todos">Todas</option>
+          {opcoesTag.map((t) => (
+            <option key={t} value={t}>
+              {t}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <p className="mt-4 text-xs opacity-60">
         {filtradas.length} de {barragens.length} barragens da FEAM.
       </p>
@@ -209,6 +239,20 @@ export default function TabelaFeam({ barragens }: { barragens: BarragemFeamMg[] 
                 {b.condicaoEstabilidade === "Atestada" ? <Etiqueta>estabilidade atestada</Etiqueta> : null}
                 {b.suspensao === "Sim" ? <Etiqueta alerta>operação suspensa</Etiqueta> : null}
               </p>
+              {b.tags.length > 0 && (
+                <p className="mt-2 flex flex-wrap gap-1.5">
+                  {b.tags.map((t) => (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => setTag(t)}
+                      className="rounded-full border border-[var(--cp-border)] px-2 py-0.5 text-xs opacity-80 transition-colors hover:border-[var(--cp-tertiary)] hover:opacity-100"
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </p>
+              )}
               <p className="mt-2 text-xs opacity-60">
                 {[
                   b.atividade,
