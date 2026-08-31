@@ -136,7 +136,7 @@ abaixo.
 | 32 | M7 — Coletor da frente Congresso via DadosAbertosBrasil | 🟢 | executando em 31/08: coletor Python com a lib (Câmara/Senado, UF=MG, redação de CPF na origem); ver [PLANO-M7-M11-CURADORIA-OSS.md](../planos/PLANO-M7-M11-CURADORIA-OSS.md) |
 | 33 | M8 — Rede de sócios via brasil.io (frente Empresas) | 🟢 | executando em 31/08: sócios da Vale com CPF mascarado e ressalva editorial; idem plano |
 | 34 | M11 — Presidio `--alta-confianca` na guarda | 🟡 | opcional, rule-only (sem modelos de ML), fallback como o validate-docbr; idem plano |
-| 35 | M9/M10 — changedetection.io e n8n em Podman | ⛔ | **bloqueado por infra**: nem Docker nem Podman instalados (medido 31/08); WSL2/Ubuntu presente; decisão do dono: containers = Podman, não Docker Desktop; idem plano |
+| 35 | M9/M10 — changedetection.io e n8n em Podman | ⛔ | **bloqueado por infra**: nem Docker nem Podman instalados (medido 31/08); WSL2/Ubuntu presente; decisão do dono: containers = Podman, não Docker Desktop; **handoff pronto em [HANDOFF-M9-M10-PODMAN.md](../planos/HANDOFF-M9-M10-PODMAN.md)** — instalação, watches, workflows espelhando as rotinas e validação de 3 dias |
 
 ## Bloqueios
 
