@@ -152,6 +152,9 @@ branches. Durante build/deploy na máquina que publica, **segure o push**.
 | **`cmd.exe` não expande `*`** | `npm` roda script por `cmd.exe /d /s /c`; glob em script de teste chega literal. Use diretório, não glob |
 | **Medir cor em HSL** | `css/tokens/colors.css` declara a paleta em **OKLCH**. Medir no espaço errado inverte a conclusão com toda a aparência de rigor |
 | **Contraste com transição congelada** | `globals.css` tem `transition: background .3s` no `body`; sem compositing, `getComputedStyle` devolve a cor velha. Injete `transition:none !important` antes de medir |
+| **`ENOTEMPTY` no `next build` (Windows)** | o webpack pode travar ao remover pastas intermediárias de `.next`. Limpe o cache antes (`cmd.exe /c "if exist apps\web\.next rmdir /s /q apps\web\.next"`) |
+| **Documentação fora do padrão de metadados** | a CI quebra se faltarem campos como `Tipo`, `Domínio`, `Última medição` ou `## Sumário`. Valide com `python scripts/validar-documentacao.py` antes de commitar |
+| **Contêineres locais = Podman no WSL2** | sempre usar Podman 5.x rootless no WSL2 (Ubuntu), nunca Docker Desktop com daemon pesado. Portas fixas: 5000 (changedetection) e 5678 (n8n) |
 
 ## 🧭 A regra editorial, que é a mais fácil de violar sem perceber
 
