@@ -22,6 +22,7 @@ import { lerGeoJSON } from "./camadas";
  */
 export interface ResumoMapaEstadual {
   terrasIndigenas: number;
+  unidadesConservacao: number;
   barragensComManchaPublicada: number;
   sigmineOperacao: number;
   sigmineInteresse: number;
@@ -33,6 +34,7 @@ export interface ResumoMapaEstadual {
 
 export function carregarResumoMapaEstadual(): ResumoMapaEstadual {
   const terrasIndigenas = lerGeoJSON<unknown>("terras-indigenas.geojson").features.length;
+  const unidadesConservacao = lerGeoJSON<unknown>("unidades-conservacao.geojson").features.length;
   const barragensComManchaPublicada = lerGeoJSON<unknown>(
     "mancha-inundacao-barragens.geojson.gz"
   ).features.length;
@@ -56,6 +58,7 @@ export function carregarResumoMapaEstadual(): ResumoMapaEstadual {
 
   return {
     terrasIndigenas,
+    unidadesConservacao,
     barragensComManchaPublicada,
     sigmineOperacao,
     sigmineInteresse,

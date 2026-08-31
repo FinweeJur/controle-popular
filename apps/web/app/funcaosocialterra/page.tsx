@@ -141,6 +141,15 @@ export default async function FuncaoSocialTerraPage() {
             </div>
             <div className="rounded-xl border border-border bg-surface p-4 text-sm">
               <p className="font-tabular text-xl font-bold text-text">
+                {formatNumberBR(resumoMapa.unidadesConservacao)}
+              </p>
+              <p className="text-text-soft">
+                unidades de conservação (CNUC/MMA): 198 estaduais, 111 federais e 78 municipais
+                (parques, APAs e RPPNs com limites oficiais).
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface p-4 text-sm">
+              <p className="font-tabular text-xl font-bold text-text">
                 {formatNumberBR(resumoMapa.territoriosQuilombolas)}
               </p>
               <p className="text-text-soft">territórios quilombolas publicados.</p>
