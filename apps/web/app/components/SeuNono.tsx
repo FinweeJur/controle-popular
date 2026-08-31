@@ -13,17 +13,79 @@ import {
   Copy,
   Check,
   Accessibility,
+  Zap,
 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
+import { formatNumberBR } from "@/lib/betim/format";
 import {
   FRENTES,
   type SeuNonoFrente,
   type SeuNonoCategoria,
   type SeuNonoPergunta,
 } from "./SeuNonoData";
+import { obterSugestoesContextuais, type SugestaoContextual } from "@/lib/seo/contexto-pagina";
 
-type Nivel = "frentes" | "categorias" | "perguntas" | "resposta" | "ia";
+interface DadoResumido {
+  total?: number;
+  valor?: string;
+  top?: { nome: string; valor?: number; total?: number }[];
+  texto?: string;
+  erro?: string;
+}
+
+/** Mapeamento de rotas para o tipo de dado da API */
+const ROTAS_DADOS: Record<string, string> = {
+  "/betim/prefeitura/contratos": "contratos",
+  "/betim/prefeitura/despesas": "despesas",
+  "/betim/prefeitura/licitacoes": "licitacoes",
+  "/ambiental/licenciamento": "licenciamento",
+};
+
+/** Ações rápidas por rota */
+interface AcaoRapida {
+  label: string;
+  icone: React.ReactNode;
+  acao: () => void;
+}
+
+function useAcoesRapidas(pathname: string | null): AcaoRapida[] {
+  return useMemo(() => {
+    if (!pathname) return [];
+    const acoes: AcaoRapida[] = [];
+
+    if (typeof window !== "undefined") {
+      acoes.push({
+        label: "Compartilhar",
+        icone: <ExternalLink size={14} />,
+        acao: async () => {
+          const url = window.location.href;
+          try {
+            await navigator.clipboard.writeText(url);
+          } catch {
+            window.open(url, "_blank");
+          }
+        },
+      });
+    }
+
+    if (pathname.includes("/contratos") || pathname.includes("/licitacoes")) {
+      acoes.push({
+        label: "Baixar dados",
+        icone: <ExternalLink size={14} />,
+        acao: () => {
+          const path = pathname.split("?")[0];
+          window.location.href = `${path}?download=csv`;
+        },
+      });
+    }
+
+    return acoes;
+  }, [pathname]);
+}
+
+type Nivel = "frentes" | "categorias" | "perguntas" | "resposta" | "resposta-contexto" | "busca" | "ia";
 
 type ComandoAcessibilidade = {
   comando: string[];
@@ -51,6 +113,7 @@ export function SeuNono() {
   const [aberto, setAberto] = useState(false);
   const [iaDisponivel, setIaDisponivel] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
+  const pathname = usePathname();
 
   const [nivel, setNivel] = useState<Nivel>("frentes");
   const [frente, setFrente] = useState<SeuNonoFrente | null>(null);
@@ -63,21 +126,34 @@ export function SeuNono() {
   const [respostaIa, setRespostaIa] = useState<string | null>(null);
   const [copiado, setCopiado] = useState<string | null>(null);
 
-  // Boas-vindas: popup que aparece uma vez quando o FAB é visível
   const [mostrouBoasVindas, setMostrouBoasVindas] = useState(true);
   const [dismissBoasVindas, setDismissBoasVindas] = useState(false);
 
-  // Comando de acessibilidade: resposta local sem chamada à IA
   const [respostaComando, setRespostaComando] = useState<string | null>(null);
+
+  const [sugestoesContextuais, setSugestoesContextuais] = useState<SugestaoContextual[]>([]);
+  const [respostaContexto, setRespostaContexto] = useState<SugestaoContextual | null>(null);
+
+  const [termoBusca, setTermoBusca] = useState("");
+  const [resultadosBusca, setResultadosBusca] = useState<{ pergunta: string; resposta: string; link?: string; linkTexto?: string; frente?: string }[]>([]);
+
+  const [dadosResumidos, setDadosResumidos] = useState<DadoResumido | null>(null);
+  const [carregandoDados, setCarregandoDados] = useState(false);
 
   // Detecta se ha algum provedor de IA disponivel no ambiente.
   useEffect(() => {
     const temApiKey = Boolean(process.env.NEXT_PUBLIC_AI_API_KEY);
     const jaViu = localStorage.getItem("cp_nono_seen") === "1";
-// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de localStorage
     setIaDisponivel(temApiKey);
     setMostrouBoasVindas(jaViu);
   }, []);
+
+  useEffect(() => {
+    if (pathname) {
+      const sugestoes = obterSugestoesContextuais(pathname);
+      setSugestoesContextuais(sugestoes);
+    }
+  }, [pathname]);
 
   // Reseta a navegação ao fechar para recomeçar do topo na próxima abertura.
   useEffect(() => {
@@ -91,6 +167,7 @@ export function SeuNono() {
         setErro(null);
         setPerguntaLivre("");
         setRespostaComando(null);
+        setRespostaContexto(null);
       }, 200);
       return () => clearTimeout(timer);
     }
@@ -201,10 +278,72 @@ export function SeuNono() {
     setNivel("resposta");
   }
 
+  function escolherSugestaoContexto(s: SugestaoContextual) {
+    setRespostaContexto(s);
+    setNivel("resposta-contexto");
+    setDadosResumidos(null);
+
+    const tipoDado = ROTAS_DADOS[s.link];
+    if (tipoDado) {
+      setCarregandoDados(true);
+      fetch(`/api/dados-resumidos?tipo=${tipoDado}`)
+        .then((r) => r.json())
+        .then((d) => {
+          if (!d.erro) setDadosResumidos(d);
+        })
+        .catch(() => {})
+        .finally(() => setCarregandoDados(false));
+    }
+  }
+
+  function buscarPerguntas(termo: string) {
+    setTermoBusca(termo);
+    if (!termo.trim()) {
+      setResultadosBusca([]);
+      return;
+    }
+
+    const lower = termo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const resultados: typeof resultadosBusca = [];
+
+    for (const frente of FRENTES) {
+      for (const cat of frente.categorias) {
+        for (const pergunta of cat.perguntas) {
+          const texto = pergunta.pergunta.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+          const resposta = pergunta.resposta.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+          if (texto.includes(lower) || resposta.includes(lower)) {
+            resultados.push({
+              pergunta: pergunta.pergunta,
+              resposta: pergunta.resposta,
+              link: pergunta.link?.href,
+              linkTexto: pergunta.link?.texto,
+              frente: frente.titulo,
+            });
+          }
+        }
+      }
+    }
+
+    setResultadosBusca(resultados.slice(0, 5));
+  }
+
+  function abrirBusca() {
+    setNivel("busca");
+    setTermoBusca("");
+    setResultadosBusca([]);
+  }
+
   function voltar() {
     if (nivel === "resposta") {
       setResposta(null);
       setNivel("perguntas");
+    } else if (nivel === "resposta-contexto") {
+      setRespostaContexto(null);
+      setNivel("frentes");
+    } else if (nivel === "busca") {
+      setTermoBusca("");
+      setResultadosBusca([]);
+      setNivel("frentes");
     } else if (nivel === "perguntas") {
       setCategoria(null);
       setNivel("categorias");
@@ -230,6 +369,7 @@ export function SeuNono() {
     setRespostaIa(null);
     setErro(null);
     setPerguntaLivre("");
+    setRespostaContexto(null);
   }
 
   function abrirPagina(href: string) {
@@ -310,6 +450,16 @@ export function SeuNono() {
               </div>
             </div>
             <div className="flex items-center gap-1">
+              {nivel !== "busca" && (
+                <button
+                  onClick={abrirBusca}
+                  className="rounded-full p-1 text-text-soft hover:bg-surface-2"
+                  aria-label="Buscar no assistente"
+                  title="Buscar"
+                >
+                  <Search size={18} />
+                </button>
+              )}
               {nivel !== "frentes" && (
                 <button
                   onClick={voltarAoInicio}
@@ -335,10 +485,41 @@ export function SeuNono() {
             {/* Nível 1: escolha da frente */}
             {nivel === "frentes" && (
               <div className="space-y-3">
-                <p className="text-sm text-text-soft">
-                  Olá! Sou o <strong className="text-text">Seu Nonô</strong>. Escolha uma
-                  frente do portal para eu te guiar:
-                </p>
+                {sugestoesContextuais.length > 0 ? (
+                  <>
+                    <p className="text-sm text-text-soft">
+                      Olá! Sou o <strong className="text-text">Seu Nonô</strong>. Vi que você
+                      está em <strong className="text-text">{pathname?.split("/").slice(1, 3).join("/") ?? "esta página"}</strong>.
+                      Posso te ajudar com:
+                    </p>
+                    <ul className="space-y-2">
+                      {sugestoesContextuais.map((s, i) => (
+                        <li key={i}>
+                          <button
+                            onClick={() => escolherSugestaoContexto(s)}
+                            className="flex w-full items-center gap-2 rounded-lg border border-border bg-surface-2 px-3 py-2 text-left hover:border-primary"
+                          >
+                            <Zap size={14} className="shrink-0 text-primary" />
+                            <span className="text-sm text-text">{s.pergunta}</span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="border-t border-border pt-3">
+                      <p className="mb-2 text-xs text-text-soft">
+                        Ou escolha uma frente do portal:
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-sm text-text-soft">
+                      Olá! Sou o <strong className="text-text">Seu Nonô</strong>. Escolha uma
+                      frente do portal para eu te guiar:
+                    </p>
+                  </>
+                )}
+
                 <ul className="space-y-2">
                   {FRENTES.map((f) => (
                     <li key={f.id}>
@@ -371,6 +552,60 @@ export function SeuNono() {
                     </p>
                   )}
                 </div>
+              </div>
+            )}
+
+            {/* Nível 0.5: busca */}
+            {nivel === "busca" && (
+              <div className="space-y-3">
+                <button
+                  onClick={voltar}
+                  className="flex items-center gap-1 text-xs text-text-soft hover:text-primary"
+                >
+                  <ChevronLeft size={14} /> Voltar ao início
+                </button>
+                <p className="text-sm text-text-soft">
+                  Busque por qualquer palavra-chave nas respostas do portal:
+                </p>
+                <div className="relative">
+                  <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-soft" />
+                  <input
+                    type="text"
+                    value={termoBusca}
+                    onChange={(e) => buscarPerguntas(e.target.value)}
+                    placeholder="Ex: contrato, barragem, licença, voto..."
+                    className="w-full rounded-lg border border-border bg-surface py-2 pl-9 pr-3 text-sm outline-none focus:border-primary"
+                    autoFocus
+                  />
+                </div>
+                {resultadosBusca.length > 0 && (
+                  <ul className="space-y-2">
+                    {resultadosBusca.map((r, i) => (
+                      <li key={i}>
+                        <button
+                          onClick={() => {
+                            setResposta({
+                              id: `busca-${i}`,
+                              pergunta: r.pergunta,
+                              resposta: r.resposta,
+                              link: r.link ? { href: r.link, texto: r.linkTexto ?? "Ver mais" } : undefined,
+                            });
+                            setNivel("resposta");
+                          }}
+                          className="w-full rounded-lg border border-border bg-surface-2 px-3 py-2 text-left hover:border-primary"
+                        >
+                          <p className="text-sm font-medium text-text">{r.pergunta}</p>
+                          <p className="mt-0.5 text-[.7rem] text-text-soft">{r.frente}</p>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {termoBusca && resultadosBusca.length === 0 && (
+                  <p className="rounded-lg border border-dashed border-border bg-surface-2 px-3 py-2 text-sm text-text-soft">
+                    Nenhum resultado para &quot;{termoBusca}&quot;. Tente outra palavra ou use a IA.
+                  </p>
+                )}
               </div>
             )}
 
@@ -539,6 +774,122 @@ export function SeuNono() {
               </div>
             )}
 
+            {/* Nível 4.5: resposta de sugestão contextual */}
+            {nivel === "resposta-contexto" && respostaContexto && (
+              <div className="space-y-3">
+                <button
+                  onClick={voltar}
+                  className="flex items-center gap-1 text-xs text-text-soft hover:text-primary"
+                >
+                  <ChevronLeft size={14} /> Voltar ao início
+                </button>
+                <div className="rounded-lg bg-primary/10 px-3 py-2 text-sm text-text">
+                  <strong className="text-primary">Você:</strong> {respostaContexto.pergunta}
+                </div>
+                <div className="rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-text">
+                  <p className="whitespace-pre-wrap">{respostaContexto.resposta}</p>
+
+                  {carregandoDados && (
+                    <p className="mt-2 text-xs text-text-soft">Carregando dados...</p>
+                  )}
+
+                  {dadosResumidos && !dadosResumidos.erro && (
+                    <div className="mt-3 rounded-lg border border-border bg-surface px-3 py-2">
+                      <p className="text-[.75em] font-medium uppercase tracking-wide text-text-soft">
+                        Dados atuais
+                      </p>
+                      {dadosResumidos.total !== undefined && (
+                        <p className="mt-1 font-display text-lg font-bold">
+                          {formatNumberBR(dadosResumidos.total)}
+                          <span className="ml-1 text-xs font-normal text-text-soft">
+                            {respostaContexto.link?.includes("contrato") ? "contratos" :
+                             respostaContexto.link?.includes("despesa") ? "despesas" :
+                             respostaContexto.link?.includes("licita") ? "licitações" :
+                             respostaContexto.link?.includes("licenci") ? "licenças" : "registros"}
+                          </span>
+                        </p>
+                      )}
+                      {dadosResumidos.valor && (
+                        <p className="text-sm text-text-soft">
+                          Valor total: <strong className="text-text">{dadosResumidos.valor}</strong>
+                        </p>
+                      )}
+                      {dadosResumidos.top && dadosResumidos.top.length > 0 && (
+                        <div className="mt-2">
+                          <p className="text-[.7em] text-text-soft">Top 3:</p>
+                          <ul className="mt-1 space-y-1">
+                            {dadosResumidos.top.map((t, i) => (
+                              <li key={i} className="flex justify-between text-xs">
+                                <span className="truncate text-text">{t.nome}</span>
+                                <span className="shrink-0 pl-2 font-tabular text-text-soft">
+                                  {t.valor
+                                    ? `R$ ${(t.valor / 1_000_000).toFixed(1)}M`
+                                    : t.total
+                                    ? `${t.total} contratos`
+                                    : ""}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {respostaContexto.link && (
+                    <ul className="mt-3 space-y-2">
+                      <li className="flex items-center justify-between gap-2 rounded-lg border border-border bg-surface px-2 py-1.5">
+                        <Link
+                          href={respostaContexto.link}
+                          className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+                        >
+                          {respostaContexto.linkTexto} <ExternalLink size={12} />
+                        </Link>
+                        <div className="flex items-center gap-1">
+                          <button
+                            onClick={() => abrirPagina(respostaContexto.link)}
+                            className="rounded p-1 text-text-soft hover:bg-surface-2"
+                            aria-label={`Abrir ${respostaContexto.linkTexto}`}
+                            title="Abrir página"
+                          >
+                            <ExternalLink size={14} />
+                          </button>
+                          <button
+                            onClick={async () => {
+                              const ok = await copiarLink(respostaContexto.link);
+                              if (ok) {
+                                setCopiado(respostaContexto.link);
+                                setTimeout(() => setCopiado((atual) => (atual === respostaContexto.link ? null : atual)), 1500);
+                              }
+                            }}
+                            className="rounded p-1 text-text-soft hover:bg-surface-2"
+                            aria-label={`Copiar link de ${respostaContexto.linkTexto}`}
+                            title="Copiar link"
+                          >
+                            {copiado === respostaContexto.link ? <Check size={14} className="text-primary" /> : <Copy size={14} />}
+                          </button>
+                        </div>
+                      </li>
+                    </ul>
+                  )}
+                </div>
+
+                {useAcoesRapidas(pathname).length > 0 && (
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {useAcoesRapidas(pathname).map((a, i) => (
+                      <button
+                        key={i}
+                        onClick={a.acao}
+                        className="flex items-center gap-1 rounded-lg border border-border bg-surface-2 px-2 py-1 text-xs text-text-soft hover:border-primary hover:text-primary"
+                      >
+                        {a.icone} {a.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* Nível 5: pergunta livre (IA) */}
             {nivel === "ia" && (
               <div className="space-y-3">
@@ -653,6 +1004,8 @@ export function SeuNono() {
                   {nivel === "categorias" && "Passo 2: tema"}
                   {nivel === "perguntas" && "Passo 3: pergunta"}
                   {nivel === "resposta" && "Resposta pré-curada"}
+                  {nivel === "resposta-contexto" && "Sugestão da página"}
+                  {nivel === "busca" && "Buscando..."}
                   {nivel === "ia" && "Pergunta livre com IA"}
                 </span>
               </div>
