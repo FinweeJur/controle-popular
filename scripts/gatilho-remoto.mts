@@ -309,6 +309,12 @@ async function loopTelegram() {
           try {
             execFileSync("powershell", ["-Command", "Get-Process node -ErrorAction SilentlyContinue | Where-Object {$_.CommandLine -match 'next dev'} | Stop-Process -Force"], { encoding: "utf-8" });
             execFileSync("powershell", ["-Command", "Start-Sleep -Seconds 2; Start-Process -FilePath 'cmd.exe' -ArgumentList '/c cd /d C:\\DevCoder\\controle-popular\\apps\\web && npx next dev -p 3000' -WindowStyle Hidden"], { encoding: "utf-8", timeout: 15000 });
+            // Warmup em background: compila as 30 principais rotas
+            setTimeout(() => {
+              try {
+                execFileSync("powershell", ["-Command", "Start-Sleep -Seconds 10; Start-Process -FilePath 'C:\\Users\\Home\\AppData\\Local\\hermes\\node\\node.exe' -ArgumentList 'C:\\DevCoder\\controle-popular\\node_modules\\tsx\\dist\\cli.mjs','C:\\DevCoder\\controle-popular\\scripts\\warmup-dev.mts','3000' -WindowStyle Hidden"], { encoding: "utf-8", timeout: 5000 });
+              } catch { /* warmup é best-effort */ }
+            }, 0);
             await telegramApi("sendMessage", {
               chat_id: msg.chat.id,
               text: "âœ… next dev reiniciado (porta 3000)",

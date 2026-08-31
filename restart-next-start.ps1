@@ -8,4 +8,10 @@ Start-Process -FilePath "C:\DevCoder\controle-popular\node_modules\.bin\next.cmd
   -ArgumentList "dev","-p","3000" `
   -WorkingDirectory "C:\DevCoder\controle-popular\apps\web" `
   -WindowStyle Hidden
-Write-Output 'next dev reiniciado'
+Write-Output 'next dev reiniciado — aguardando 10s para warmup...'
+Start-Sleep -Seconds 10
+Start-Process -FilePath "C:\Users\Home\AppData\Local\hermes\node\node.exe" `
+  -ArgumentList "C:\DevCoder\controle-popular\node_modules\tsx\dist\cli.mjs","C:\DevCoder\controle-popular\scripts\warmup-dev.mts","3000" `
+  -WorkingDirectory "C:\DevCoder\controle-popular\apps\web" `
+  -WindowStyle Hidden
+Write-Output 'warmup em background'
