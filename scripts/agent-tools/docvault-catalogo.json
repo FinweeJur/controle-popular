@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "cnj-relatorio-inspecao-ordinaria-tjmg-2026",
+    "nome": "Relatório de Inspeção Ordinária TJMG 2026",
+    "urlOrigem": "https://www.cnj.jus.br/download/5361/2026/419319/relatorio-de-inspecao-ordinaria-tjmg-2026",
+    "frente": "judiciario",
+    "rotaPortal": "/judiciario/inspecoes"
+  },
+  {
+    "slug": "cnj-relatorio-inspecao-ordinaria-tjba-2026",
+    "nome": "Relatório de Inspeção Ordinária TJBA 2026",
+    "urlOrigem": "https://www.cnj.jus.br/download/5361/2026/419318/relatorio-de-inspecao-ordinaria-tjba-2026",
+    "frente": "judiciario",
+    "rotaPortal": "/judiciario/inspecoes"
+  }
+]
