@@ -80,7 +80,7 @@ Detalhar a execução das melhorias M7–M11 da curadoria OSS (2016-08-31), em o
 - Alerta: webhook para o Telegram (canário já existente).
 - **Fora da CI**: serviço local do home-pc, nunca CI.
 
-**Estado:** 🟡 planejado, bloqueado por infra (Podman não instalado). Reavaliar quando o dono instalar o Podman.
+**Estado:** 🟡 planejado, bloqueado por infra (Podman não instalado). Reavaliar quando o dono instalar o Podman. **Ponto de retomada: [HANDOFF-M9-M10-PODMAN.md](HANDOFF-M9-M10-PODMAN.md)** — instalação, watches com URLs medidas, alerta Telegram, verificação.
 
 ## M10 — Migração do agendamento para n8n local
 
@@ -94,7 +94,7 @@ Detalhar a execução das melhorias M7–M11 da curadoria OSS (2016-08-31), em o
 - Os scripts PowerShell **não são apagados**: viram contingência documentada (rollback imediato).
 - Custo real da migração: reescrever a orquestração em JSON de workflow + manter `scripts/.env` fora do n8n (segredos ficam no n8n? decisão do dono).
 
-**Estado:** 🟡 planejado, bloqueado por infra (Podman). Prioridade abaixo do M9 (o agendamento atual funciona e é testado diariamente).
+**Estado:** 🟡 planejado, bloqueado por infra (Podman). Prioridade abaixo do M9 (o agendamento atual funciona e é testado diariamente). **Ponto de retomada: [HANDOFF-M9-M10-PODMAN.md](HANDOFF-M9-M10-PODMAN.md)** — workflows espelhando as rotinas, contingência e validação de 3 dias.
 
 ## M11 — Presidio no pipeline de privacidade
 
