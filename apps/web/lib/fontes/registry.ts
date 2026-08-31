@@ -109,7 +109,10 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     esfera: "federal",
     frente: "cidades",
     descricao: "Indicadores de programas federais (Bolsa Família, SUS, Minha Casa Minha Vida) nos 853 municípios de MG.",
-    urlOficial: "https://comunicabr.gov.br",
+    // URL migrada em 31/08/2026: comunicabr.gov.br não resolve DNS; a API vive
+    // em comunicabr.presidencia.gov.br (endpoint /api/v1/municipios/31 medido
+    // 200 em 31/08). A base /api/v1 responde 404, por isso a URL é o endpoint.
+    urlOficial: "https://comunicabr.presidencia.gov.br/api/v1/municipios/31",
     licenca: "dados-abertos-gov",
     frequenciaAtualizacao: "mensal",
     camada: "public-assets",
@@ -199,7 +202,9 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     esfera: "federal",
     frente: "judiciario",
     descricao: "Relatórios de correições e inspeções ordinárias e extraordinárias nos tribunais.",
-    urlOficial: "https://www.cnj.jus.br/corregedoriacnj/inspecoes-e-corricoes/",
+    // URL migrada em 31/08/2026: corregedoriacnj/inspecoes-e-corricoes devolve 404;
+    // a nova é inspecoes-correicoes (medida 200 em 31/08, via LinkMender).
+    urlOficial: "https://www.cnj.jus.br/inspecoes-correicoes/",
     licenca: "lei-acesso-informacao",
     frequenciaAtualizacao: "mensal",
     camada: "data-json",
@@ -215,6 +220,10 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     esfera: "federal",
     frente: "terras",
     descricao: "Polígonos geoespaciais oficiais das terras indígenas brasileiras em todas as fases de demarcação.",
+    // Medido em 31/08/2026: o GeoServer responde 200 via cliente .NET, mas o
+    // fetch do Node (undici) desta máquina é resetado no handshake TLS —
+    // peculiaridade de stack, não indisponibilidade da fonte. Sondagem do
+    // PicoClaw pode marcar FALHA aqui mesmo com a fonte viva.
     urlOficial: "https://geoserver.funai.gov.br",
     licenca: "dominio-publico",
     frequenciaAtualizacao: "mensal",
@@ -290,7 +299,9 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     esfera: "independente",
     frente: "paraopeba",
     descricao: "Catálogo dos 467 relatórios técnicos e notas da auditoria independente do Acordo.",
-    urlOficial: "https://ajri.aecom.com.br",
+    // URL migrada em 31/08/2026: ajri.aecom.com.br não resolve DNS; o portal
+    // atual é portal.auditoriasocioambiental.com.br (medido 200 em 31/08).
+    urlOficial: "https://portal.auditoriasocioambiental.com.br",
     licenca: "lei-acesso-informacao",
     frequenciaAtualizacao: "mensal",
     camada: "data-json",
@@ -412,7 +423,9 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     esfera: "estadual",
     frente: "empresas",
     descricao: "Processos minerários de lítio, licenciamento SIAM e linha do tempo de eventos ambientais em Araçuaí/Itinga.",
-    urlOficial: "https://app.anm.gov.br/SIGMINE/",
+    // URL migrada em 31/08/2026: app.anm.gov.br/SIGMINE devolve 404; o SIGMINE
+    // novo vive em geo.anm.gov.br (medido 200 em 31/08, via LinkMender).
+    urlOficial: "https://geo.anm.gov.br/",
     licenca: "dados-abertos-gov",
     frequenciaAtualizacao: "mensal",
     camada: "data-json",
