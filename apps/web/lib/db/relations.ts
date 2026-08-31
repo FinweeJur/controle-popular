@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm/relations";
-import { proposicoesInCongresso, analisesInCongresso, casasInCongresso, bancadasInCongresso, documentosInCongresso, analise_contestacoesInCongresso, analise_itensInCongresso, enviosInCongresso, parlamentaresInCongresso, orgaosInCongresso, tramitacoesInCongresso, votacoesInCongresso, monitoramentosInJudiciario, alertasInJudiciario, vagasInJudiciario, tribunaisInJudiciario, cadeirasInJudiciario, magistradosInJudiciario, mandatos_direcaoInJudiciario, documentosInJudiciario, enviosInJudiciario, nomeacoesInJudiciario, municipios, arboviroses, beneficios_sociais, bens_candidato, vereadores, classificados, caixa_disponivel, clima_cache, coleta_lixo, comercios_essenciais, atos_oficiais, anuncios, convenios_federais, despesas, contatos_uteis, doacoes_campanha, emendas, escolas, farmacias_plantao, comissoes, folha_pagamento, contratos, licitacoes, meio_ambiente, mortalidade, nota_transparencia, indicadores, noticias, obras, paraopeba_saldo_municipio, pautas_atas, pntp, paraopeba_iniciativas, grupos_economicos, newsletter_inscritos, receitas, saude_estabelecimentos, saude_internacoes, seguidores, seguranca_ocorrencias, servidores, fornecedores, socios, subsidios, telegram_inscritos, proposicoes, verbas_indenizatorias, postos_anp, processos_judiciais, producao_agropecuaria, zap_estabelecimentos, monitoramentosInCongresso, alertasInCongresso, ocupacoesInJudiciario, comissao_membros, votacoes_camara, diarias, analises, analise_itens, votos_camara, royalties_cfem, royalties_cfem_empresas, ibama_autos_infracao, ibama_embargos, ref_municipios_mg, snisb_barragens, cap_autos_infracao, feam_barragens, eventosInCongresso, presencas_plenarioInCongresso, atos_oficiais_geo, copam_reunioes, copam_pauta_itens, vicios_legislativosInCongresso, vicio_itensInCongresso, vicios_legislativos, vicio_itens, ambiental_licenciamento, bancada_membrosInCongresso, orgao_membrosInCongresso, votosInCongresso, proposicao_autoresInCongresso, proposicao_autoriaInCongresso, vazio_municipioInTerras, evento_pautaInCongresso } from "./schema";
+import { proposicoesInCongresso, analisesInCongresso, casasInCongresso, bancadasInCongresso, documentosInCongresso, analise_contestacoesInCongresso, analise_itensInCongresso, enviosInCongresso, parlamentaresInCongresso, orgaosInCongresso, tramitacoesInCongresso, votacoesInCongresso, monitoramentosInJudiciario, alertasInJudiciario, vagasInJudiciario, tribunaisInJudiciario, cadeirasInJudiciario, magistradosInJudiciario, mandatos_direcaoInJudiciario, documentosInJudiciario, enviosInJudiciario, nomeacoesInJudiciario, municipios, arboviroses, beneficios_sociais, bens_candidato, vereadores, classificados, caixa_disponivel, clima_cache, coleta_lixo, comercios_essenciais, atos_oficiais, anuncios, convenios_federais, despesas, contatos_uteis, doacoes_campanha, emendas, escolas, farmacias_plantao, comissoes, folha_pagamento, contratos, licitacoes, meio_ambiente, mortalidade, nota_transparencia, indicadores, noticias, obras, paraopeba_saldo_municipio, pautas_atas, pntp, paraopeba_iniciativas, grupos_economicos, newsletter_inscritos, receitas, saude_estabelecimentos, saude_internacoes, saude_internacoes_cid, seguidores, seguranca_ocorrencias, servidores, fornecedores, socios, subsidios, telegram_inscritos, proposicoes, verbas_indenizatorias, postos_anp, processos_judiciais, producao_agropecuaria, zap_estabelecimentos, monitoramentosInCongresso, alertasInCongresso, ocupacoesInJudiciario, comissao_membros, votacoes_camara, diarias, analises, analise_itens, votos_camara, royalties_cfem, royalties_cfem_empresas, ibama_autos_infracao, ibama_embargos, ref_municipios_mg, snisb_barragens, cap_autos_infracao, feam_barragens, eventosInCongresso, presencas_plenarioInCongresso, atos_oficiais_geo, copam_reunioes, copam_pauta_itens, vicios_legislativosInCongresso, vicio_itensInCongresso, vicios_legislativos, vicio_itens, ambiental_licenciamento, bancada_membrosInCongresso, orgao_membrosInCongresso, votosInCongresso, proposicao_autoresInCongresso, proposicao_autoriaInCongresso, vazio_municipioInTerras, evento_pautaInCongresso } from "./schema";
 
 export const analisesInCongressoRelations = relations(analisesInCongresso, ({one, many}) => ({
 	proposicoesInCongresso: one(proposicoesInCongresso, {
@@ -259,6 +259,7 @@ export const municipiosRelations = relations(municipios, ({many}) => ({
 	receitas: many(receitas),
 	saude_estabelecimentos: many(saude_estabelecimentos),
 	saude_internacoes: many(saude_internacoes),
+	saude_internacoes_cid: many(saude_internacoes_cid),
 	seguidores: many(seguidores),
 	seguranca_ocorrencias: many(seguranca_ocorrencias),
 	servidores: many(servidores),
@@ -556,6 +557,13 @@ export const saude_estabelecimentosRelations = relations(saude_estabelecimentos,
 export const saude_internacoesRelations = relations(saude_internacoes, ({one}) => ({
 	municipio: one(municipios, {
 		fields: [saude_internacoes.id_municipio],
+		references: [municipios.id_municipio]
+	}),
+}));
+
+export const saude_internacoes_cidRelations = relations(saude_internacoes_cid, ({one}) => ({
+	municipio: one(municipios, {
+		fields: [saude_internacoes_cid.id_municipio],
 		references: [municipios.id_municipio]
 	}),
 }));

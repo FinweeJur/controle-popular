@@ -63,6 +63,7 @@ import {
   royalties_cfem_empresas,
   saude_estabelecimentos,
   saude_internacoes,
+  saude_internacoes_cid,
   mortalidade,
   arboviroses,
   diarias,
@@ -1739,6 +1740,32 @@ export async function internacoesUrgenciaDesde(idMunicipio: IdMunicipio, anoMini
         eq(saude_internacoes.carater, "2"),
         gte(saude_internacoes.ano, anoMinimo)
       )
+    );
+}
+
+/** Ranking das internações por CID-10 (tabela `saude_internacoes_cid`,
+ * alimentada pelo coletor `etl/betim/etl/bd/sih_cid.py`). Ordenado do
+ * diagnóstico mais frequente para o menos, do ano mais recente para o
+ * mais antigo. */
+export async function rankingCidsMunicipio(idMunicipio: IdMunicipio) {
+  const db = getDb();
+  if (!db) return null;
+  return db
+    .select({
+      ano: saude_internacoes_cid.ano,
+      cid_codigo: saude_internacoes_cid.cid_codigo,
+      capitulo: saude_internacoes_cid.capitulo,
+      internacoes_total: saude_internacoes_cid.internacoes_total,
+      obitos_total: saude_internacoes_cid.obitos_total,
+      dias_permanencia_total: num(saude_internacoes_cid.dias_permanencia_total),
+      valor_total: num(saude_internacoes_cid.valor_total),
+    })
+    .from(saude_internacoes_cid)
+    .where(eq(saude_internacoes_cid.id_municipio, idMunicipio))
+    .orderBy(
+      desc(saude_internacoes_cid.ano),
+      desc(saude_internacoes_cid.internacoes_total),
+      asc(saude_internacoes_cid.cid_codigo)
     );
 }
 

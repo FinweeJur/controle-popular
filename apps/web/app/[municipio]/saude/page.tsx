@@ -3,6 +3,10 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import { getSaudeData, getSaudeTendencias, CARATER_LABELS } from "@/lib/betim/saude";
 import { formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { rankingCidsMunicipio } from "@/lib/db/queries/betim";
+import RankingCidTabela from "@/app/[municipio]/components/RankingCidTabela";
+import { enriquecerRegistroCid } from "@/lib/saude/cid";
+import type { CidRegistro } from "@/lib/saude/cid";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
 // reconhecido pelo Turbopack. Ver `lib/betim/staticParams.ts`.
@@ -36,11 +40,32 @@ export default async function SaudePage({
   params: Promise<{ municipio: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
-  const [data, tendencias] = await Promise.all([
+  const [data, tendencias, cids] = await Promise.all([
     getSaudeData(cidade.id_municipio),
     getSaudeTendencias(cidade.id_municipio),
+    rankingCidsMunicipio(cidade.id_municipio),
   ]);
   const internacaoRecente = data.internacoesPorAno[0];
+
+  // Ranking do ano mais recente com dado coletado (o coletor grava por
+  // ano; a query já ordena por ano desc e internações desc).
+  const anoMaisRecente = cids?.[0]?.ano ?? null;
+  const cidsRanking: CidRegistro[] = (cids ?? [])
+    .filter((c) => c.ano === anoMaisRecente)
+    .slice(0, 12)
+    .map((c) => {
+      const diasMedio =
+        c.dias_permanencia_total != null && (c.internacoes_total ?? 0) > 0
+          ? c.dias_permanencia_total / c.internacoes_total!
+          : 0;
+      return enriquecerRegistroCid(
+        c.cid_codigo,
+        c.internacoes_total ?? 0,
+        c.obitos_total ?? 0,
+        diasMedio,
+        c.valor_total ?? 0
+      );
+    });
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-14 sm:px-8">
@@ -56,19 +81,32 @@ export default async function SaudePage({
         <p className="mt-8 text-sm text-text-soft">Nenhum dado disponível no momento.</p>
       ) : (
         <div className="mt-8 flex flex-col gap-6">
-          {/* Ranking dos CIDs por internação — lacuna declarada até a coleta
-              do SIH-SUS por CID-10 rodar (ver etl/betim/etl/bd/sih_cid.py). */}
+          {/* Ranking dos CIDs por internação — sai da tabela
+              `saude_internacoes_cid`, alimentada pelo coletor
+              etl/betim/etl/bd/sih_cid.py. Sem dado coletado, lacuna. */}
           <section>
-            <DataCard
-              title="Ranking de diagnósticos por CID-10"
-              source={{ label: "SIH/DATASUS", url: "https://datasus.saude.gov.br/" }}
-            >
-              <p className="text-sm text-text-soft">
-                O detalhamento das internações por CID-10 ainda não foi coletado
-                para {cidade.nome}. Ele entra em um próximo ciclo de coleta do
-                SIH-SUS — o portal não estima número que não coletou.
-              </p>
-            </DataCard>
+            {cidsRanking.length > 0 ? (
+              <>
+                <RankingCidTabela cids={cidsRanking} municipioNome={cidade.nome} />
+                {anoMaisRecente ? (
+                  <p className="mt-2 text-xs text-text-soft">
+                    Ranking do ano {anoMaisRecente} — dados do SIH-SUS (DATASUS),
+                    internações de moradores de {cidade.nome}.
+                  </p>
+                ) : null}
+              </>
+            ) : (
+              <DataCard
+                title="Ranking de diagnósticos por CID-10"
+                source={{ label: "SIH/DATASUS", url: "https://datasus.saude.gov.br/" }}
+              >
+                <p className="text-sm text-text-soft">
+                  O detalhamento das internações por CID-10 ainda não foi coletado
+                  para {cidade.nome}. Ele entra em um próximo ciclo de coleta do
+                  SIH-SUS — o portal não estima número que não coletou.
+                </p>
+              </DataCard>
+            )}
           </section>
 
           <section className="grid gap-4 sm:grid-cols-2">
