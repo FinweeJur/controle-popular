@@ -220,6 +220,53 @@ const MATERIAS_FONTES: Array<{
       "DECRETO Nº 082, DE 10 DE AGOSTO DE 2026. Declara de utilidade pública municipal áreas destinadas à implantação do anexo de abastecimento comunitário de água.",
     linkOriginal: "https://itinga.mg.gov.br/diario-oficial",
   },
+
+  // ── São Paulo (Diário Oficial da Cidade de São Paulo - DOC-SP) ──
+  {
+    municipioSlug: "sp",
+    data: "2026-08-28",
+    edicao: "69.162",
+    orgao: "Secretaria Municipal de Infraestrutura Urbana e Obras - SIURB",
+    texto:
+      "EXTRATO DE CONTRATO Nº 045/SIURB/2026. Concorrência Internacional nº 004/2026. Contratada: CONSÓRCIO ENGENHARIA PAULISTA, CNPJ 33.000.167/0001-01. Objeto: Obras de canalização e controle de cheias na bacia do Córrego Aricanduva. Valor Total: R$ 54.800.000,00.",
+    linkOriginal: "https://diariooficial.prefeitura.sp.gov.br/",
+  },
+  {
+    municipioSlug: "sp",
+    data: "2026-08-26",
+    edicao: "69.160",
+    orgao: "Secretaria Municipal de Saúde - SMS",
+    texto:
+      "AVISO DE LICITAÇÃO - PREGÃO ELETRÔNICO Nº 112/SMS/2026. Processo SEI 6018.2026/0045123-8. Objeto: Registro de preços para fornecimento contínuo de medicamentos de atenção básica e insumos hospitalares. Valor Estimado: R$ 12.600.000,00.",
+    linkOriginal: "https://diariooficial.prefeitura.sp.gov.br/",
+  },
+  {
+    municipioSlug: "sp",
+    data: "2026-08-21",
+    edicao: "69.157",
+    orgao: "Gabinete do Prefeito",
+    texto:
+      "DECRETO Nº 63.710, DE 21 DE AGOSTO DE 2026. Regulamenta os instrumentos de intervenção urbana e incentivos fiscais para habitação de interesse social na Macroárea de Estruturação Metropolitana.",
+    linkOriginal: "https://diariooficial.prefeitura.sp.gov.br/",
+  },
+  {
+    municipioSlug: "sp",
+    data: "2026-08-18",
+    edicao: "69.154",
+    orgao: "Secretaria Municipal de Cultura - SMC",
+    texto:
+      "EXTRATO DE TERMO DE FOMENTO Nº 082/SMC/2026 - MROSC. Processo SEI 6025.2026/0012390-1. Organização Parceira: INSTITUTO CULTURAL PAULISTANO, CNPJ 00.360.305/0001-04. Objeto: Programa de fomento às artes cênicas e formação cultural nas periferias da Zona Leste. Valor Total: R$ 1.450.000,00.",
+    linkOriginal: "https://diariooficial.prefeitura.sp.gov.br/",
+  },
+  {
+    municipioSlug: "sp",
+    data: "2026-08-12",
+    edicao: "69.150",
+    orgao: "Secretaria Municipal de Educação - SME",
+    texto:
+      "EXTRATO DE ADITAMENTO AO CONTRATO Nº 091/SME/2025. Pregão Eletrônico 034/2025. Contratada: ALIMENTAÇÃO E NUTRICAO BRASIL LTDA, CNPJ 07.526.557/0001-00. Objeto: Prorrogação de vigência e suplementação de atendimento ao Programa de Alimentação Escolar. Valor Aditivo: R$ 8.900.000,00.",
+    linkOriginal: "https://diariooficial.prefeitura.sp.gov.br/",
+  },
 ];
 
 export function processarAtos(): Record<string, AtoProcessado[]> {
