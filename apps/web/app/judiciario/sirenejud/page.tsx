@@ -3,6 +3,7 @@ import Link from "@/lib/judiciario/link";
 import { formatNumberBR } from "@/lib/betim/format";
 import { carregarSirenejudBrasil } from "@/lib/judiciario/sirenejud-brasil";
 import { metadataEditavel } from "@/lib/edicoes";
+import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * `/judiciario/sirenejud` — o recorte nacional dos processos ambientais do
@@ -176,6 +177,7 @@ export default function JudiciarioSirenejudPage() {
           </li>
         </ul>
       </section>
+      <FooterGlobal />
     </div>
   );
 }

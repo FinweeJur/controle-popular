@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import Link from "@/lib/ambiental/link";
 import { COBERTURA_SIGBM } from "@/lib/ambiental/barragens-sigbm";
+import FooterGlobal from "@/app/components/FooterGlobal";
 import {
   contarBarragensMg,
   listarBarragensFeamMg,
@@ -237,6 +238,7 @@ export default async function BarragensIndex() {
           como as fontes oficiais publicam.
         </p>
       </section>
+      <FooterGlobal />
     </div>
   );
 }

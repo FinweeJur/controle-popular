@@ -6,6 +6,7 @@ import OuvirPagina from "@/app/components/OuvirPagina";
 import PageViewBeacon from "@/app/components/PageViewBeacon";
 import TopNav from "@/app/components/TopNav";
 import { SeuNono } from "@/app/components/SeuNono";
+import LoadingOverlay from "@/app/components/LoadingOverlay";
 import "./globals.css";
 
 /**
@@ -155,6 +156,10 @@ export default function RootLayout({
               visualizações precisa rodar em toda página das quatro zonas,
               não só nas que têm layout próprio. Ver `PageViewBeacon.tsx`. */}
           <PageViewBeacon />
+
+          {/* Overlay global de carregamento — spinner + contador de segundos
+              no canto inferior direito ao navegar entre páginas. */}
+          <LoadingOverlay />
 
           {/* Seu Nonô — assistente flutuante. Modo texto enquanto IA não está
               configurada; modo IA (RAG) quando houver chave de API. */}

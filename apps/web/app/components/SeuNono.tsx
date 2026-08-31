@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import {
   MessageCircle,
   X,
@@ -12,8 +12,10 @@ import {
   Home,
   Copy,
   Check,
+  Accessibility,
 } from "lucide-react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 import {
   FRENTES,
   type SeuNonoFrente,
@@ -22,6 +24,13 @@ import {
 } from "./SeuNonoData";
 
 type Nivel = "frentes" | "categorias" | "perguntas" | "resposta" | "ia";
+
+type ComandoAcessibilidade = {
+  comando: string[];
+  label: string;
+  acao: () => void;
+  icone: React.ReactNode;
+};
 
 /**
  * Widget flutuante "Seu Nonô" — assistente do Controle Popular.
@@ -41,6 +50,7 @@ type Nivel = "frentes" | "categorias" | "perguntas" | "resposta" | "ia";
 export function SeuNono() {
   const [aberto, setAberto] = useState(false);
   const [iaDisponivel, setIaDisponivel] = useState<boolean>(false);
+  const { theme, setTheme } = useTheme();
 
   const [nivel, setNivel] = useState<Nivel>("frentes");
   const [frente, setFrente] = useState<SeuNonoFrente | null>(null);
@@ -53,11 +63,20 @@ export function SeuNono() {
   const [respostaIa, setRespostaIa] = useState<string | null>(null);
   const [copiado, setCopiado] = useState<string | null>(null);
 
+  // Boas-vindas: popup que aparece uma vez quando o FAB é visível
+  const [mostrouBoasVindas, setMostrouBoasVindas] = useState(true);
+  const [dismissBoasVindas, setDismissBoasVindas] = useState(false);
+
+  // Comando de acessibilidade: resposta local sem chamada à IA
+  const [respostaComando, setRespostaComando] = useState<string | null>(null);
+
   // Detecta se ha algum provedor de IA disponivel no ambiente.
   useEffect(() => {
     const temApiKey = Boolean(process.env.NEXT_PUBLIC_AI_API_KEY);
-// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
+    const jaViu = localStorage.getItem("cp_nono_seen") === "1";
+// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de localStorage
     setIaDisponivel(temApiKey);
+    setMostrouBoasVindas(jaViu);
   }, []);
 
   // Reseta a navegação ao fechar para recomeçar do topo na próxima abertura.
@@ -71,10 +90,92 @@ export function SeuNono() {
         setRespostaIa(null);
         setErro(null);
         setPerguntaLivre("");
+        setRespostaComando(null);
       }, 200);
       return () => clearTimeout(timer);
     }
   }, [aberto]);
+
+  // ── Comandos de acessibilidade ──────────────────────────────────
+  const FS_STEPS = ["sm", "md", "lg", "xl"] as const;
+
+  const comandosAcessibilidade: ComandoAcessibilidade[] = useMemo(
+    () => [
+      {
+        comando: ["tema escuro", "dark", "modo escuro", "escuro"],
+        label: "Tema escuro",
+        acao: () => setTheme("dark"),
+        icone: <span className="text-base">🌙</span>,
+      },
+      {
+        comando: ["tema claro", "light", "modo claro", "claro"],
+        label: "Tema claro",
+        acao: () => setTheme("light"),
+        icone: <span className="text-base">☀️</span>,
+      },
+      {
+        comando: ["alto contraste", "contraste"],
+        label: "Alto contraste",
+        acao: () => setTheme("high-contrast"),
+        icone: <span className="text-base">◐</span>,
+      },
+      {
+        comando: ["aumentar texto", "texto maior", "aumentar fonte", "fonte maior", "maior"],
+        label: "Aumentar texto",
+        acao: () => {
+          const atual = document.documentElement.getAttribute("data-fs") || "md";
+          const idx = FS_STEPS.indexOf(atual as typeof FS_STEPS[number]);
+          const next = FS_STEPS[Math.min(idx + 1, FS_STEPS.length - 1)];
+          document.documentElement.setAttribute("data-fs", next);
+          localStorage.setItem("cp_fs", next);
+        },
+        icone: <span className="text-base">🔤</span>,
+      },
+      {
+        comando: ["diminuir texto", "texto menor", "diminuir fonte", "fonte menor", "menor"],
+        label: "Diminuir texto",
+        acao: () => {
+          const atual = document.documentElement.getAttribute("data-fs") || "md";
+          const idx = FS_STEPS.indexOf(atual as typeof FS_STEPS[number]);
+          const next = FS_STEPS[Math.max(idx - 1, 0)];
+          document.documentElement.setAttribute("data-fs", next);
+          localStorage.setItem("cp_fs", next);
+        },
+        icone: <span className="text-base">🔡</span>,
+      },
+      {
+        comando: ["cores daltônicas", "daltonismo", "acessibilidade visual", "cvd", "cores para daltônicos"],
+        label: "Cores para daltonismo",
+        acao: () => {
+          const atual = document.documentElement.getAttribute("data-cvd") === "on";
+          const proximo = !atual;
+          document.documentElement.setAttribute("data-cvd", proximo ? "on" : "off");
+          localStorage.setItem("cp_cvd", proximo ? "on" : "off");
+        },
+        icone: <span className="text-base">🎨</span>,
+      },
+    ],
+    [setTheme]
+  );
+
+  function detectarComandoAcessibilidade(texto: string): string | null {
+    const lower = texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    for (const cmd of comandosAcessibilidade) {
+      for (const palavra of cmd.comando) {
+        const pLower = palavra.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        if (lower.includes(pLower)) {
+          cmd.acao();
+          return `Pronto! ${cmd.label} ativado.`;
+        }
+      }
+    }
+    return null;
+  }
+
+  function dismissarBoasVindas() {
+    setDismissBoasVindas(true);
+    localStorage.setItem("cp_nono_seen", "1");
+  }
 
   const frenteAtual = useMemo(
     () => FRENTES.find((f) => f.id === frente?.id) ?? null,
@@ -158,9 +259,20 @@ export function SeuNono() {
     e.preventDefault();
     if (!perguntaLivre.trim()) return;
 
+    // Verifica se é comando de acessibilidade antes de enviar à IA
+    const cmdResposta = detectarComandoAcessibilidade(perguntaLivre);
+    if (cmdResposta) {
+      setRespostaComando(cmdResposta);
+      setRespostaIa(null);
+      setErro(null);
+      setPerguntaLivre("");
+      return;
+    }
+
     setCarregando(true);
     setErro(null);
     setRespostaIa(null);
+    setRespostaComando(null);
 
     try {
       const resp = await fetch("/api/chatbot", {
@@ -467,6 +579,15 @@ export function SeuNono() {
                   <p className="text-sm text-text-soft">Pensando...</p>
                 )}
 
+                {respostaComando && (
+                  <div className="rounded-lg border border-accent/30 bg-accent/10 px-3 py-2 text-sm text-accent">
+                    <p className="flex items-center gap-1.5">
+                      <Accessibility size={14} />
+                      {respostaComando}
+                    </p>
+                  </div>
+                )}
+
                 {respostaIa && (
                   <div className="space-y-3">
                     <div className="rounded-lg border border-border bg-surface-2 px-3 py-2 text-sm text-text">
@@ -490,6 +611,28 @@ export function SeuNono() {
                     <p className="mt-1 text-xs">
                       Enquanto isso, tente usar os menus de respostas pré-curadas.
                     </p>
+                  </div>
+                )}
+
+                {/* Comandos de acessibilidade disponíveis */}
+                {!respostaIa && !respostaComando && !erro && !carregando && (
+                  <div className="rounded-lg border border-dashed border-border bg-surface-2 px-3 py-2">
+                    <p className="mb-1.5 text-xs font-medium text-text-soft">
+                      Comandos de acessibilidade:
+                    </p>
+                    <div className="flex flex-wrap gap-1">
+                      {["tema escuro", "tema claro", "aumentar texto", "diminuir texto", "cores daltônicas"].map((cmd) => (
+                        <button
+                          key={cmd}
+                          onClick={() => {
+                            setPerguntaLivre(cmd);
+                          }}
+                          className="rounded-md border border-border bg-surface px-2 py-0.5 text-[.7rem] text-text-soft hover:border-primary hover:text-primary"
+                        >
+                          {cmd}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -518,10 +661,35 @@ export function SeuNono() {
         </div>
       )}
 
+      {/* Nuvem de boas-vindas — aparece uma vez quando o FAB é visível */}
+      {!aberto && !mostrouBoasVindas && !dismissBoasVindas && (
+        <div className="cp-painel-entra mb-3 w-64 rounded-2xl border border-border bg-surface p-4 shadow-lg">
+          <div className="flex items-start gap-2">
+            <Bot size={18} className="mt-0.5 shrink-0 text-primary" />
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-text">Oi! Eu sou o Seu Nonô.</p>
+              <p className="mt-1 text-xs leading-relaxed text-text-soft">
+                Clique aqui para tirar suas dúvidas sobre o portal. Posso te guiar
+                pelas frentes, responder perguntas e até mudar o tema ou o tamanho do texto.
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={dismissarBoasVindas}
+            className="mt-3 w-full rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary hover:bg-primary/20"
+          >
+            Entendi!
+          </button>
+        </div>
+      )}
+
       {/* Botão flutuante */}
       {!aberto && (
         <button
-          onClick={() => setAberto(true)}
+          onClick={() => {
+            setAberto(true);
+            if (!mostrouBoasVindas && !dismissBoasVindas) dismissarBoasVindas();
+          }}
           className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-ink shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
           aria-label="Abrir assistente Seu Nonô"
         >

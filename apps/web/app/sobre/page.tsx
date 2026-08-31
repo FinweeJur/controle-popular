@@ -3,6 +3,7 @@ import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import { obterEstatisticasPortal } from "@/lib/betim/estatisticas-portal";
 import { formatNumberBR } from "@/lib/betim/format";
+import FooterGlobal from "@/app/components/FooterGlobal";
 import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
 import { metadataEditavel } from "@/lib/edicoes";
 
@@ -488,6 +489,7 @@ export default async function SobrePage() {
           resto desta página.
         </p>
       </section>
+      <FooterGlobal />
     </main>
   );
 }
