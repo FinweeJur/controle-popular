@@ -77,6 +77,13 @@ export const FRENTES: SeuNonoFrente[] = [
             link: { href: "/betim/prefeitura/despesas", texto: "Ver despesas" },
           },
           {
+            id: "diario-oficial-municipal",
+            pergunta: "Onde consultar o Diário Oficial do município?",
+            resposta:
+              "A página de Diário Oficial (/prefeitura/diario) reúne extratos de contratos, editais de licitação, decretos e portarias categorizados com filtros por tipo, ano e exportação CSV.",
+            link: { href: "/betim/prefeitura/diario", texto: "Ver Diário Oficial" },
+          },
+          {
             id: "alertas-contratos",
             pergunta: "Como identificar contratos em alerta?",
             resposta:
@@ -430,6 +437,13 @@ export const FRENTES: SeuNonoFrente[] = [
         id: "decisoes-convenios",
         titulo: "Decisões e convênios",
         perguntas: [
+          {
+            id: "acordo-mariana",
+            pergunta: "Onde consultar o Acordo de Mariana (Rio Doce)?",
+            resposta:
+              "A página /ambiental/mariana detalha a execução orçamentária de R$ 677,4 milhões da repactuação em Minas Gerais, com filtros por anexo, gráfico de empenho e exportação CSV.",
+            link: { href: "/ambiental/mariana", texto: "Ver Acordo de Mariana" },
+          },
           {
             id: "decisoes",
             pergunta: "Onde ver decisões ambientais?",

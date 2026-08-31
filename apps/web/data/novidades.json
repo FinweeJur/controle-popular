@@ -1,6 +1,34 @@
 [
   {
     "data": "2026-08-31",
+    "titulo": "Diários Oficiais municipais com classificação determinística",
+    "descricao": "Atos, contratos, editais e decretos categorizados em SP, BH, Betim, Diamantina, Araçuaí e Itinga com anonimização Mod-11 de CPFs.",
+    "frente": "cidades",
+    "link": "/betim/prefeitura/diario"
+  },
+  {
+    "data": "2026-08-31",
+    "titulo": "Painel do Acordo de Mariana (Rio Doce)",
+    "descricao": "Publicada a execução de R$ 677,4 mi da repactuação em MG com filtros, gráfico SVG e download CSV.",
+    "frente": "ambiental",
+    "link": "/ambiental/mariana"
+  },
+  {
+    "data": "2026-08-31",
+    "titulo": "387 Unidades de Conservação no mapa e hub de Terras",
+    "descricao": "Integração das 387 UCs oficiais do CNUC/MMA detalhadas por esfera estadual, federal e municipal.",
+    "frente": "terras",
+    "link": "/funcaosocialterra"
+  },
+  {
+    "data": "2026-08-31",
+    "titulo": "Observatório Vale S.A. e cotações B3 históricas",
+    "descricao": "Monitoramento de 2.894 pregões históricos (2015-2026) cruzados com eventos da empresa e documentos CVM.",
+    "frente": "empresas",
+    "link": "/paraopeba/vale"
+  },
+  {
+    "data": "2026-08-31",
     "titulo": "Corrigido botao de temas e chatbot",
     "descricao": "Voltamos para next start (producao) para corrigir CSP que bloqueava eval() do Turbopack, impedindo hidratacao dos componentes client-side.",
     "frente": "operacao",
