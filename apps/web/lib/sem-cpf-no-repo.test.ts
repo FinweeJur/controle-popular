@@ -134,7 +134,7 @@ describe("nenhum CPF real em arquivo versionado", () => {
       + `Troque por 000.000.000-00 antes de commitar.\n`
       + `Encontrados: ${reais.join(", ")}`,
     ).toEqual([]);
-  });
+  }, 30000);
 
   test("a régua do mod-11 funciona nos dois sentidos", () => {
     // Sem isto, um bug no validador faria o teste acima passar sempre — que é

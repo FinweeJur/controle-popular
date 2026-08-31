@@ -1,0 +1,32 @@
+{
+  "versao": "1.0.0",
+  "descricao": "Configuração da esteira autônoma Colibri com PicoClaw e Hermes Agent via Ollama local",
+  "ollama": {
+    "host": "http://localhost:11434",
+    "timeoutSegundos": 60,
+    "modelos": {
+      "hermes": "hermes3:8b",
+      "hermesFallback": "qwen2.5-coder:7b",
+      "picoclaw": "qwen2.5-coder:1.5b",
+      "picoclawFallback": "llama3.2:3b"
+    }
+  },
+  "diretorios": {
+    "dados": "apps/web/data",
+    "dadosPublicos": "apps/web/public/data",
+    "relatorios": "docs/relatorios-automacao",
+    "rotas": "apps/web/app"
+  },
+  "seguranca": {
+    "limiteAssetMib": 25,
+    "limiteBundleGzipMib": 3,
+    "checarCpfMod11": true,
+    "auditarCsp": true,
+    "auditarSegredos": true
+  },
+  "fontes": {
+    "registryPath": "apps/web/lib/fontes/registry.ts",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular)",
+    "timeoutSondagemMs": 15000
+  }
+}

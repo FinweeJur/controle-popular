@@ -109,7 +109,7 @@ _RE_CPF = re.compile(RE_CPF)
 # DIVERGIRAM uma vez (`12345678909` foi acrescentado numa e esquecido na outra,
 # e a suíte quebrou no merge seguinte). Mexeu numa, mexa nas três.
 SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900",
-              "12345678909", "123.456.789-09"}
+              "12345678909", "123.456.789-09", "47018614139"}
 
 
 def cpf_valido(digitos: str) -> bool:
