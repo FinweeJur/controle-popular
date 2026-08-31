@@ -14,7 +14,7 @@ const PREVENCAO_DENGUE_URL = "https://www.gov.br/saude/pt-br/assuntos/saude-de-a
 
 export const generateMetadata = metadataDaCidade(
   (c) => `Saúde — ${c.nome} em Dados | ${nomePortal(c)}`,
-  (c) => `Internações hospitalares, arboviroses (dengue, zika, chikungunya) e principais causas de óbito em ${c.nome}-${c.uf}.`
+  (c) => `Internações hospitalares, arboviroses e principais causas de óbito em ${c.nome}-${c.uf}.`
 );
 
 const DOENCA_LABELS: Record<string, string> = {
@@ -48,14 +48,29 @@ export default async function SaudePage({
         Saúde em {cidade.nome}
       </h1>
       <p className="mt-2 max-w-[65ch] text-text-soft">
-        Internações hospitalares, arboviroses e principais causas de óbito
-        de moradores de {cidade.nome}, direto de bases oficiais do SUS.
+        Internações hospitalares, arboviroses e vigilância
+        epidemiológica de moradores de {cidade.nome}, direto de bases oficiais do SUS.
       </p>
 
       {!data.configured ? (
         <p className="mt-8 text-sm text-text-soft">Nenhum dado disponível no momento.</p>
       ) : (
         <div className="mt-8 flex flex-col gap-6">
+          {/* Ranking dos CIDs por internação — lacuna declarada até a coleta
+              do SIH-SUS por CID-10 rodar (ver etl/betim/etl/bd/sih_cid.py). */}
+          <section>
+            <DataCard
+              title="Ranking de diagnósticos por CID-10"
+              source={{ label: "SIH/DATASUS", url: "https://datasus.saude.gov.br/" }}
+            >
+              <p className="text-sm text-text-soft">
+                O detalhamento das internações por CID-10 ainda não foi coletado
+                para {cidade.nome}. Ele entra em um próximo ciclo de coleta do
+                SIH-SUS — o portal não estima número que não coletou.
+              </p>
+            </DataCard>
+          </section>
+
           <section className="grid gap-4 sm:grid-cols-2">
             <DataCard
               title="Rede de saúde cadastrada"
