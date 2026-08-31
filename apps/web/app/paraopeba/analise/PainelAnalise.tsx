@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { TEMA_AJRI_LABEL } from "@/lib/paraopeba/auditoria-ajri";
-import type { AtiBiblioteca } from "@/lib/paraopeba/biblioteca";
+import type { AtiBiblioteca, ItemBiblioteca } from "@/lib/paraopeba/biblioteca";
 import { temasAjriSaoInferidos } from "@/lib/paraopeba/temas-ati-utils";
 import type { EixoIntegrado } from "@/lib/paraopeba/sintese-integrada";
 
@@ -112,6 +112,12 @@ function tituloLegivelPericia(nomeArquivo: string): string {
 type FiltroCobertura = "todas" | "lacuna" | "tres-fontes" | "so-auditoria";
 type Ordenacao = "fontes-desc" | "fontes-asc" | "titulo" | "ati-desc" | "pericia-desc";
 
+function valoresUnicosOrdenados(itens: ItemBiblioteca[], extrair: (i: ItemBiblioteca) => string[]): string[] {
+  const set = new Set<string>();
+  for (const i of itens) for (const v of extrair(i)) set.add(v);
+  return [...set].sort((a, b) => a.localeCompare(b, "pt"));
+}
+
 const ORD_COR: Record<number, string> = {
   1: "var(--color-ord-1)",
   2: "var(--color-ord-3)",
@@ -129,18 +135,36 @@ export default function PainelAnalise({
   const [busca, setBusca] = useState("");
   const [cobertura, setCobertura] = useState<FiltroCobertura>("todas");
   const [ordenacao, setOrdenacao] = useState<Ordenacao>("fontes-asc");
+  const [macroAti, setMacroAti] = useState<string>("todas");
+  const [tagAti, setTagAti] = useState<string>("todas");
+
+  const todosDocsAti = useMemo(() => eixos.flatMap((e) => e.atis.documentos), [eixos]);
+  const macrosAti = useMemo(() => valoresUnicosOrdenados(todosDocsAti, (i) => [i.macro_categoria]), [todosDocsAti]);
+  const tagsAti = useMemo(() => valoresUnicosOrdenados(todosDocsAti, (i) => i.tags), [todosDocsAti]);
 
   const filtrados = useMemo(() => {
     const termo = busca.trim() ? normalizar(busca.trim()) : "";
-    let lista = eixos.filter((e) => {
-      if (cobertura === "lacuna" && e.cobertura.quaisFaltam.length === 0) return false;
-      if (cobertura === "tres-fontes" && e.cobertura.fontesQueFalam !== 3) return false;
-      if (cobertura === "so-auditoria" && e.cobertura.fontesQueFalam !== 1) return false;
-      if (!termo) return true;
-      return (
-        normalizar(e.titulo).includes(termo) || normalizar(e.auditoria.estadoGeral).includes(termo)
-      );
-    });
+    let lista = eixos
+      .map((e) => ({
+        ...e,
+        atis: {
+          ...e.atis,
+          documentos: e.atis.documentos.filter((d) => {
+            if (macroAti !== "todas" && d.macro_categoria !== macroAti) return false;
+            if (tagAti !== "todas" && !d.tags.includes(tagAti)) return false;
+            return true;
+          }),
+        },
+      }))
+      .filter((e) => {
+        if (cobertura === "lacuna" && e.cobertura.quaisFaltam.length === 0) return false;
+        if (cobertura === "tres-fontes" && e.cobertura.fontesQueFalam !== 3) return false;
+        if (cobertura === "so-auditoria" && e.cobertura.fontesQueFalam !== 1) return false;
+        if (!termo) return true;
+        return (
+          normalizar(e.titulo).includes(termo) || normalizar(e.auditoria.estadoGeral).includes(termo)
+        );
+      });
     lista = [...lista].sort((a, b) => {
       switch (ordenacao) {
         case "fontes-desc":
@@ -159,7 +183,7 @@ export default function PainelAnalise({
       }
     });
     return lista;
-  }, [eixos, busca, cobertura, ordenacao]);
+  }, [eixos, busca, cobertura, ordenacao, macroAti, tagAti]);
 
   function exportar() {
     const hoje = new Date().toISOString().slice(0, 10);
@@ -208,6 +232,51 @@ export default function PainelAnalise({
             <option value="titulo">Título do eixo, A–Z</option>
           </select>
         </label>
+      </div>
+
+      <div className="mt-3 flex flex-wrap items-end gap-3">
+        <label>
+          <span className="block text-[.82em] font-medium text-text-soft">Categoria do documento ATI</span>
+          <select
+            value={macroAti}
+            onChange={(e) => setMacroAti(e.target.value)}
+            className="mt-1 rounded-md border border-border bg-surface px-3 py-2 text-[.92em]"
+          >
+            <option value="todas">Todas</option>
+            {macrosAti.map((m) => (
+              <option key={m} value={m}>
+                {m}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <span className="block text-[.82em] font-medium text-text-soft">Tag do documento ATI</span>
+          <select
+            value={tagAti}
+            onChange={(e) => setTagAti(e.target.value)}
+            className="mt-1 rounded-md border border-border bg-surface px-3 py-2 text-[.92em]"
+          >
+            <option value="todas">Todas</option>
+            {tagsAti.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+        </label>
+        {(macroAti !== "todas" || tagAti !== "todas") && (
+          <button
+            type="button"
+            onClick={() => {
+              setMacroAti("todas");
+              setTagAti("todas");
+            }}
+            className="rounded-md border border-border bg-surface px-3 py-2 text-[.85em] font-medium text-text hover:border-primary"
+          >
+            Limpar filtros ATI
+          </button>
+        )}
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
