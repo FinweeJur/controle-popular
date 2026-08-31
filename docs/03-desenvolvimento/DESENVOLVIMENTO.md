@@ -101,10 +101,15 @@ Conflito no rebase: em `docs/` ou no arquivo de launch, quase sempre a resoluç�
 
 ## Trabalhar com IA
 
+- **`.gitignore` não protege contra leitura por IAs:** ferramentas como Claude Code, Cursor, Antigravity ou OpenCode varrem o disco local. O `.gitignore` evita commit, mas a IA lê o arquivo e envia o trecho na janela de contexto para a nuvem.
+- **Configurações de bloqueio obrigatórias:**
+  - Claude Code: regras `permissions.deny` em `.claude/settings.json`.
+  - Cursor / IDEs: bloqueio total em `.cursorignore`.
+- **Nunca cole nem leia segredos na conversa** — nem `DATABASE_URL`, nem nada de `.env*` ou `.dev.vars*`, com nenhum provedor (a jurisdição do provedor muda, o risco não).
+- **Sem dado pessoal em prompts:** ao utilizar modelos para resumir ou classificar normas, TACs ou atos oficiais, sanitize CPFs (mod-11) antes do envio.
 - **Pedidos pequenos.** Perguntas que apontam para o arquivo ("olhe `lib/link-zona.tsx`") custam menos tokens e devolvem mais precisão que "explique este projeto".
 - **Peça para confirmar no código.** Decisões não óbvias vivem como comentário no próprio código; a IA os lê junto. Resposta sem citação é suspeita.
 - **Nunca confie em status 200 de API.** A API responde 200 e mente: filtro inexistente devolve o catálogo inteiro, `sort` é ignorado em silêncio, código IBGE errado devolve esqueleto vazio com `nome_ibge: null`. **Valide o CONTEÚDO, nunca o status.**
-- **Nunca cole segredo na conversa** — nem `DATABASE_URL`, nem nada de `.env`, com nenhum provedor (a jurisdição do provedor muda, o risco não).
 - A regra editorial vale dobrado: dois dados verdadeiros lado a lado podem implicar um terceiro, falso. O número vem do dado; o modelo, se houver, só embrulha.
 
 ## Grafo de código (code-graph-rag)

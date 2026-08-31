@@ -65,6 +65,10 @@ export default async function LicitacoesPage({ params: rota }: LicitacoesPagePro
         contrato assinado.{" "}
         <Link href="/prefeitura/contratos" className="font-medium text-accent hover:underline">
           Ver contratos já firmados →
+        </Link>{" "}
+        ·{" "}
+        <Link href="/prefeitura/diario" className="font-medium text-accent hover:underline">
+          Ver editais no Diário Oficial →
         </Link>
       </p>
       <p className="mt-2 text-xs text-text-soft">

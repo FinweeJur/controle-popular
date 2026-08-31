@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
+import { semAcento } from "@/lib/busca/normalizar";
 import type { AtiBiblioteca, ItemBiblioteca } from "@/lib/paraopeba/biblioteca";
 
 /**
@@ -182,7 +183,7 @@ export default function BibliotecaClient({ itens, tipos, temas, macros, tags, at
   }
 
   const lista = useMemo(() => {
-    const termo = busca.toLowerCase().trim();
+    const termo = semAcento(busca.trim());
     const filtrada = itens.filter((i) => {
       if (!atisAtivas.has(i.ati)) return false;
       if (tipo !== "todos" && i.tipo !== tipo) return false;
@@ -196,14 +197,14 @@ export default function BibliotecaClient({ itens, tipos, temas, macros, tags, at
       if (i.data && ate && i.data > ate) return false;
       if (!termo) return true;
       return (
-        i.titulo.toLowerCase().includes(termo) ||
-        i.tipo.toLowerCase().includes(termo) ||
-        i.macro_categoria.toLowerCase().includes(termo) ||
-        i.tags.some((t) => t.toLowerCase().includes(termo)) ||
-        (i.origem ?? "").toLowerCase().includes(termo) ||
-        (i.autoria ?? "").toLowerCase().includes(termo) ||
-        i.temas.some((t) => t.toLowerCase().includes(termo)) ||
-        i.colecoes.some((c) => c.toLowerCase().includes(termo))
+        semAcento(i.titulo).includes(termo) ||
+        semAcento(i.tipo).includes(termo) ||
+        semAcento(i.macro_categoria).includes(termo) ||
+        i.tags.some((t) => semAcento(t).includes(termo)) ||
+        semAcento(i.origem ?? "").includes(termo) ||
+        semAcento(i.autoria ?? "").includes(termo) ||
+        i.temas.some((t) => semAcento(t).includes(termo)) ||
+        i.colecoes.some((c) => semAcento(c).includes(termo))
       );
     });
     const copia = [...filtrada];

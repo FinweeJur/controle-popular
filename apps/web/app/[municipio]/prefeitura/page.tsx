@@ -30,6 +30,7 @@ const TABS: { label: string; href: string | null }[] = [
   // Sprint 2 do plano de revisão de dados — ranking de fornecedores.
   { label: "Fornecedores", href: "/prefeitura/fornecedores" },
   { label: "Licitações", href: "/prefeitura/licitacoes" },
+  { label: "Diário Oficial", href: "/prefeitura/diario" },
   { label: "Cultura", href: "/prefeitura/cultura" },
   { label: "Servidores", href: "/prefeitura/servidores" },
   { label: "Despesas", href: "/prefeitura/despesas" },
@@ -130,20 +131,20 @@ export default async function PrefeituraHubPage({
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
+            <Link
+              href="/prefeitura/diario"
+              className="rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-primary-ink hover:bg-primary/90"
+            >
+              Consultar atos e editais →
+            </Link>
             <a
               href={cidade.fontes.diario_oficial}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-primary-ink hover:bg-primary/90"
-            >
-              Ver edições ↗
-            </a>
-          <Link
-              href="/camara/legislacao"
               className="rounded-full bg-surface-2 px-4 py-1.5 text-sm font-medium text-text hover:bg-surface-2/70"
             >
-              Leis e decretos
-            </Link>
+              Portal original ↗
+            </a>
           </div>
         </div>
       ) : null}

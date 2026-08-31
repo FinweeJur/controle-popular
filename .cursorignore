@@ -1,0 +1,17 @@
+# Bloqueio de arquivos confidenciais para IA (Cursor, Windsurf e agentes VSCode)
+# Impede que modelos de IA leiam ou incluam esses arquivos no contexto/chat.
+
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+*service-account*.json
+gcp.json
+*/gcp.json
+*.pem
+*.key
+*id_rsa*
+logs/
+apps/web/.arquivo-local/
+apps/web/scripts/_tmp-auditoria/
+etl/betim/analises_pendentes/

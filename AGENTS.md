@@ -132,6 +132,13 @@ git fetch origin && git rebase origin/main && git push origin HEAD:main
 **Ninguém integra o trabalho de ninguém.** Não existe coordenador que recolhe
 branches. Durante build/deploy na máquina que publica, **segure o push**.
 
+### 8. Agentes de IA e Privacidade (Zero-Secret & Deny Rules)
+
+- **`.gitignore` não protege contra leitura por IAs:** agentes (Claude Code, Antigravity, OpenCode, Cursor) varrem o disco local e enviam trechos na janela de contexto para a API do provedor.
+- **Nunca leia nem exiba arquivos de segredos** (`.env*`, `.dev.vars*`, `*service-account*.json`, `gcp*.json`, chaves `.pem`/`.key`). Mantenha as configurações de negação ativas (`.claude/settings.json`, `.cursorignore`).
+- **Nunca envie dado pessoal bruto (CPF) para prompts de IA:** scripts de enriquecimento via LLM devem sanitizar o texto antes do envio.
+- **Identidade e anonimato no Git:** em sessões que exigem privacidade, configure o Git local com o e-mail `noreply` do provedor.
+
 ## 🪤 Armadilhas que já custaram tempo
 
 | Armadilha | O que acontece |
