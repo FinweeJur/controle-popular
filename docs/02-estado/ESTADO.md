@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-08-30 (diário oficial D1 concluído, upload R2 concluído, revisão de copy do portal; SIRENEJud, API pública v1, catálogo dados.gov.br)
+> **Última medição:** 2026-08-31 (pipeline de automação commitado e publicado; Argus 158 rotas; LinkMender 97 URLs; DocVault no R2; PicoClaw 23/24 fontes)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida tecnica, decisoes, plano unico, neon, build, tunnel
@@ -162,6 +162,16 @@ As **duas compactações** (`apps/web/lib/comunicabr/arquivo.ts` × `apps/web/li
 - **Upload R2 de fontes concluído**: 261 arquivos de fonte enviados ao bucket `controlepopular-fontes`; 0 pendentes. 138 registros `sha256='sem-conteudo'` permanecem locais (sem PDF).
 - **Revisão de copy do portal**: 30 páginas principais verificadas — todas leem números do banco/bundle ao vivo (sem números hardcoded); 5 novas páginas de índice por frente criadas (`/ambiental/indice`, `/congresso/indice`, `/judiciario/indice`, `/paraopeba/indice`, `/funcaosocialterra/indice`). Todas as 22 rotas principais 200 OK após rebuild (`next build --webpack`). Commit `f6da72c`.
 - **Comandos `/code` e `/andamento` no Telegram**: status ao vivo (contagens de atos_diario, R2, backfill).
+
+## Entregas de 31/08/2026
+
+- **Pipeline de automação commitado e publicado** (baseline `42c87a0`, push `3cf961c..1ba0dd1`): registry tipado de fontes (`apps/web/lib/fontes/registry.ts`, 24 fontes), PicoClaw (hash de conteúdo, retry com backoff, histórico JSONL), Hermes, Colibri Bridge e as duas rotinas agendadas (`executar-rotina-madrugada.ps1` 03:30, `executar-rotina-manha.ps1` 05:30).
+- **M5 — Hermes sonda headers de produção**: HEAD em `controlepopular.com.br` mede os headers reais (CSP, HSTS, X-Frame-Options, X-Content-Type-Options — todos presentes, 13 aprovados / 0 alertas).
+- **Argus — verificador de páginas**: 158 rotas testadas em produção, 144 OK, 14 FALHA (404 em rotas ainda não publicadas no home-pc; 500 no bloco `/congresso` por consulta ao banco — Neon 402, reavaliar em 01/09).
+- **LinkMender — varredura de links**: 97 URLs testadas, 7 propostas de correção em `docs/relatorios-automacao/linkmender-propostas.md` (só propõe, nunca commita); 2 aplicadas (sidra PAM/PPM em `[municipio]/agro`), 1 descartada por qualidade (ANP proposta com 403).
+- **M4 — guarda de privacidade com validate-docbr**: `checar-dado-pessoal-em-dado.py` confirma mod-11 com a biblioteca (fallback seguro); trava `len == 11` antes do zero-padding do validate-docbr (IBGE de Betim viraria `00003106705` válido — falso positivo barrado); `SINTETICOS` das três guardas sincronizados.
+- **Triagem das fontes do PicoClaw**: 75% → 95,8% (23/24); CNJ inspeções, SIGMINE (geo.anm.gov.br), ComunicaBR (`comunicabr.presidencia.gov.br/api/v1/municipios/31`) e AJRI (`portal.auditoriasocioambiental.com.br`) com URLs corrigidas e medidas; funai documentado como quirk de TLS do Node desta máquina (fonte viva via .NET).
+- **DocVault — PDFs para R2**: catálogo manual + baixador com varredura de CPF fail-closed e upload para o bucket `controlepopular-fontes` (chave `docs/<slug>.pdf`); 2 relatórios de inspeção do CNJ (TJMG/TJBA 2026) baixados, varridos e enviados; nenhum PDF no repositório.
 
 ## Rito de trabalho
 

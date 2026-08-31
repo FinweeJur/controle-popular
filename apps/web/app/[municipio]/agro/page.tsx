@@ -68,7 +68,7 @@ export default async function AgroPage({
         {data.anoLavouras && (
           <DataCard
             title={`Lavouras — ${data.anoLavouras}`}
-            source={{ label: "IBGE (PAM) / Base dos Dados", url: "https://sidra.ibge.gov.br/pesquisa/pam" }}
+            source={{ label: "IBGE (PAM) / Base dos Dados", url: "https://sidra.ibge.gov.br/pesquisa/pam/tabelas" }}
           >
             <p className="font-tabular text-2xl font-bold text-text">
               <Moeda value={data.valorTotalLavouras} />
@@ -79,7 +79,7 @@ export default async function AgroPage({
         {data.anoRebanho && (
           <DataCard
             title={`Rebanhos — ${data.anoRebanho}`}
-            source={{ label: "IBGE (PPM) / Base dos Dados", url: "https://sidra.ibge.gov.br/pesquisa/ppm" }}
+            source={{ label: "IBGE (PPM) / Base dos Dados", url: "https://sidra.ibge.gov.br/pesquisa/ppm/quadros/brasil/2024" }}
           >
             <p className="font-tabular text-2xl font-bold text-text">
               {formatNumberBR(data.rebanhos.reduce((acc, r) => acc + r.quantidade, 0))}
