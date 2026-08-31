@@ -56,4 +56,5 @@ export const paginasDados = (cidade: {
   },
   { href: "/nota-transparencia", nome: `Nota ${cidade.nome}`, desc: "Ranking de transparência (PNTP)", icon: BadgeDollarSign },
   { href: "/grupos-economicos", nome: "Grupos econômicos", desc: "Fornecedores que dividem sócios", icon: Network },
+  { href: "/interesses", nome: "Teia de Interesses", desc: "Grafo de interesses e dossiê cidadão", icon: Network },
 ];

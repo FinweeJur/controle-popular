@@ -5,7 +5,9 @@ import FotoBrasilComS from "@/app/components/FotoBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import RankingVereadores from "@/app/[municipio]/components/charts/RankingVereadores";
+import IndiceRiscoDireitosCard from "@/app/[municipio]/components/IndiceRiscoDireitosCard";
 import { climaDaCidade, contatosUteis, listarIndicadores, resumoContratosAtivos } from "@/lib/db/queries/betim";
+import { indicadoresRiscoDireitos } from "@/lib/db/queries/risco-direitos";
 import {
   rotuloLegislatura,
   temFonte,
@@ -222,6 +224,7 @@ export default async function HomePage({
     atividadeRecente,
     noticias,
     obrasParaopeba,
+    riscoDireitos,
   ] = await Promise.all([
     getIndicadores(cidade.id_municipio),
     getContratosAtivosSummary(cidade.id_municipio),
@@ -233,10 +236,21 @@ export default async function HomePage({
     getAtividadeRecenteCamara(cidade.id_municipio),
     getNoticias(cidade.id_municipio),
     getObrasParaopebaMenosConcluidas(cidade.id_municipio, 5),
+    indicadoresRiscoDireitos(cidade.id_municipio, cidade),
   ]);
   const anuncioAtivo = anuncios[0] ?? null;
   const topRanking = ranking.rows.slice(0, 6);
   const ultimasNoticias = noticias.rows.slice(0, 3);
+
+  // O card do índice só existe com dado real em pelo menos uma dimensão —
+  // lacuna é informação, e um "Risco Baixo 12/100" sem dado seria número
+  // fabricado (régua editorial do AGENTS.md).
+  const temDadoRisco =
+    riscoDireitos !== null &&
+    (riscoDireitos.cobertura.saudeVida ||
+      riscoDireitos.cobertura.socioambientalClima ||
+      riscoDireitos.cobertura.integridadeErario ||
+      riscoDireitos.cobertura.opacidadePolitica);
 
   const populacao = indicadores["populacao"];
   const outrosIndicadores = INDICATOR_LABELS.slice(1);
@@ -460,6 +474,18 @@ export default async function HomePage({
             })}
           </div>
         </section>
+
+        {/* ÍNDICE DE RISCO A DIREITOS */}
+        {temDadoRisco && riscoDireitos ? (
+          <section>
+            <IndiceRiscoDireitosCard
+              indice={riscoDireitos.indice}
+              cobertura={riscoDireitos.cobertura}
+              municipioSlug={cidade.slug}
+              municipioNome={cidade.nome}
+            />
+          </section>
+        ) : null}
 
         {/* DOIS RESUMOS */}
         <section className="grid gap-5 sm:grid-cols-2">
