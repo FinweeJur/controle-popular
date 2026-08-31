@@ -22,11 +22,15 @@ Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] === INICIANDO ROTI
 Set-Location $RaizRepo
 
 # 1. Executa auditoria de segurança defensiva, headers e qualidade de dados
-Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 1/2. Executando Hermes Security Auditor..." | Tee-Object -FilePath $ArquivoLog -Append
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 1/3. Executando Hermes Security Auditor..." | Tee-Object -FilePath $ArquivoLog -Append
 npx tsx scripts/agent-tools/hermes-security-auditor.mts *>> $ArquivoLog
 
-# 2. Executa consolidação geral e geração de parecer no Colibri Bridge
-Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 2/2. Executando Colibri Bridge..." | Tee-Object -FilePath $ArquivoLog -Append
+# 2. Executa baixa e varredura de PDFs do catalogo via DocVault
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 2/3. Executando DocVault (PDFs -> R2)..." | Tee-Object -FilePath $ArquivoLog -Append
+npx tsx scripts/agent-tools/docvault-downloader.mts *>> $ArquivoLog
+
+# 3. Executa consolidação geral e geração de parecer no Colibri Bridge
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 3/3. Executando Colibri Bridge..." | Tee-Object -FilePath $ArquivoLog -Append
 npx tsx scripts/colibri-bridge.mts --tudo *>> $ArquivoLog
 
 Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] === ROTINA DA MANHÃ CONCLUÍDA ===" | Tee-Object -FilePath $ArquivoLog -Append

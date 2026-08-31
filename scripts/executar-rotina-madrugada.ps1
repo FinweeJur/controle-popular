@@ -22,15 +22,23 @@ Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] === INICIANDO ROTI
 Set-Location $RaizRepo
 
 # 1. Executa sondagem de integridade das fontes via PicoClaw
-Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 1/3. Executando PicoClaw Source Watcher..." | Tee-Object -FilePath $ArquivoLog -Append
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 1/5. Executando PicoClaw Source Watcher..." | Tee-Object -FilePath $ArquivoLog -Append
 npx tsx scripts/agent-tools/picoclaw-source-watcher.mts *>> $ArquivoLog
 
-# 2. Executa coletas automatizadas das fontes prioritárias
-Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 2/3. Executando rotina de coletas automatizadas..." | Tee-Object -FilePath $ArquivoLog -Append
+# 2. Executa verificacao de paginas do portal via Argus
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 2/5. Executando Argus Page Checker..." | Tee-Object -FilePath $ArquivoLog -Append
+npx tsx scripts/agent-tools/argus-page-checker.mts *>> $ArquivoLog
+
+# 3. Executa varredura de links externos via LinkMender (so propoe, nao commita)
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 3/5. Executando LinkMender Checker..." | Tee-Object -FilePath $ArquivoLog -Append
+npx tsx scripts/agent-tools/linkmender-checker.mts *>> $ArquivoLog
+
+# 4. Executa coletas automatizadas das fontes prioritárias
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 4/5. Executando rotina de coletas automatizadas..." | Tee-Object -FilePath $ArquivoLog -Append
 npx tsx scripts/rotina-coletas.mts --listar *>> $ArquivoLog
 
-# 3. Varredura obrigatória de privacidade (Mod-11 CPF)
-Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 3/3. Varredura de privacidade mod-11..." | Tee-Object -FilePath $ArquivoLog -Append
+# 5. Varredura obrigatória de privacidade (Mod-11 CPF)
+Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] 5/5. Varredura de privacidade mod-11..." | Tee-Object -FilePath $ArquivoLog -Append
 python scripts/checar-dado-pessoal-em-dado.py *>> $ArquivoLog
 
 Write-Output "[$((Get-Date).ToString('yyyy-MM-dd HH:mm:ss'))] === ROTINA DE MADRUGADA CONCLUÍDA ===" | Tee-Object -FilePath $ArquivoLog -Append
