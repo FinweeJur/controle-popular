@@ -129,12 +129,22 @@ async function main() {
   out.sort((a, b) => a.id_municipio.localeCompare(b.id_municipio));
   const porRegiao = {};
   for (const o of out) porRegiao[o.regiao] = (porRegiao[o.regiao] || 0) + 1;
+
+  // Contagem de municípios por UF (do mesmo catálogo conferido) — alimenta
+  // `fontes.estado_municipios_count` no seed, como nos seeds existentes.
+  const municipiosPorUf = {};
+  for (const m of catalogo) {
+    const uf = m.microrregiao?.mesorregiao?.UF?.sigla;
+    if (!uf) continue;
+    municipiosPorUf[uf] = (municipiosPorUf[uf] || 0) + 1;
+  }
   const payload = {
     gerado_em: "2026-08-31",
     fonte: "API IBGE /localidades/municipios (5571 municipios)",
     conferencia: "casa por nome normalizado + UF; ambiguidade ou ausencia = fora do inventario e reportado",
     total: out.length,
     por_regiao: porRegiao,
+    municipios_por_uf: municipiosPorUf,
     polos: out,
   };
   fs.writeFileSync(path.join(RAIZ, "apps", "web", "data", "polos-interior-ibge.json"), JSON.stringify(payload, null, 2));
