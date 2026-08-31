@@ -164,6 +164,20 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     camada: "banco",
     rotaPortal: "/congresso/parlamentares",
   },
+  "congresso-mg-parlamentares": {
+    slug: "congresso-mg-parlamentares",
+    nome: "Parlamentares de MG (Câmara/Senado via DadosAbertosBrasil)",
+    orgao: "Câmara dos Deputados / Senado Federal",
+    esfera: "federal",
+    frente: "congresso",
+    descricao: "Deputados e senadores de Minas Gerais com partido, situação e ficha (93 deputados + 3 senadores coletados em 31/08/2026; CPF redigido na origem).",
+    urlOficial: "https://dadosabertos.camara.leg.br",
+    licenca: "dados-abertos-gov",
+    frequenciaAtualizacao: "mensal",
+    camada: "data-json",
+    caminhoArquivo: "apps/web/data/congresso-mg.json",
+    rotaPortal: "/congresso/parlamentares",
+  },
 
   // ─── FRENTE: JUDICIÁRIO ─────────────────────────────────────────────────────
   "sirenejud-cnj": {

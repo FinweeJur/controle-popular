@@ -1,0 +1,678 @@
+{
+ "geradoEm": "2026-08-31T21:00:32.820992+00:00",
+ "fonte": "DadosAbertosBrasil (Camara/Senado)",
+ "legislatura": 57,
+ "deputados": [
+  {
+   "nome": "Ana Paula Leão",
+   "partido": "PP",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/107970"
+  },
+  {
+   "nome": "Ana Pimentel",
+   "partido": "PT",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220632"
+  },
+  {
+   "nome": "André Janones",
+   "partido": "REDE",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204515"
+  },
+  {
+   "nome": "André Janones",
+   "partido": "REDE",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204515"
+  },
+  {
+   "nome": "Aécio Neves",
+   "partido": "PSDB",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/74646"
+  },
+  {
+   "nome": "Bruno Farias",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/210989"
+  },
+  {
+   "nome": "Bruno Farias",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/210989"
+  },
+  {
+   "nome": "Célia Xakriabá",
+   "partido": "PSOL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/206018"
+  },
+  {
+   "nome": "Dandara",
+   "partido": "PT",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220629"
+  },
+  {
+   "nome": "Delegada Ione",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220625"
+  },
+  {
+   "nome": "Delegada Ione",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220625"
+  },
+  {
+   "nome": "Delegado Marcelo Freitas",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204512"
+  },
+  {
+   "nome": "Diego Andrade",
+   "partido": "PSD",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/160588"
+  },
+  {
+   "nome": "Dimas Fabiano",
+   "partido": "PP",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/160599"
+  },
+  {
+   "nome": "Domingos Sávio",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/160758"
+  },
+  {
+   "nome": "Dr. Frederico",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204518"
+  },
+  {
+   "nome": "Dr. Frederico",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204518"
+  },
+  {
+   "nome": "Dr. Frederico",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204518"
+  },
+  {
+   "nome": "Duarte Gonçalves Jr",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/227800"
+  },
+  {
+   "nome": "Duarte Gonçalves Jr",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/227800"
+  },
+  {
+   "nome": "Duarte Gonçalves Jr",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/227800"
+  },
+  {
+   "nome": "Duda Salabert",
+   "partido": "PSOL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220623"
+  },
+  {
+   "nome": "Duda Salabert",
+   "partido": "PSOL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220623"
+  },
+  {
+   "nome": "Délio Pinheiro",
+   "partido": "PDT",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/228272"
+  },
+  {
+   "nome": "Emidinho Madeira",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/161550"
+  },
+  {
+   "nome": "Eros Biondini",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/160640"
+  },
+  {
+   "nome": "Euclydes Pettersen",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204482"
+  },
+  {
+   "nome": "Euclydes Pettersen",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204482"
+  },
+  {
+   "nome": "Fabiano Cazeca",
+   "partido": "PRD",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/234388"
+  },
+  {
+   "nome": "Fabiano Cazeca",
+   "partido": "PRD",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/234388"
+  },
+  {
+   "nome": "Felipe Saliba",
+   "partido": "PRD",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/227370"
+  },
+  {
+   "nome": "Felipe Saliba",
+   "partido": "PRD",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/227370"
+  },
+  {
+   "nome": "Fred Costa",
+   "partido": "PRD",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204494"
+  },
+  {
+   "nome": "Fred Costa",
+   "partido": "PRD",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204494"
+  },
+  {
+   "nome": "Gilberto Abramo",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204491"
+  },
+  {
+   "nome": "Glaycon Franco",
+   "partido": "PSDB",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/236284"
+  },
+  {
+   "nome": "Glaycon Franco",
+   "partido": "PSDB",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/236284"
+  },
+  {
+   "nome": "Gláucia Santiago",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/229333"
+  },
+  {
+   "nome": "Greyce Elias",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/198197"
+  },
+  {
+   "nome": "Greyce Elias",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/198197"
+  },
+  {
+   "nome": "Hercílio Coelho Diniz",
+   "partido": "MDB",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204539"
+  },
+  {
+   "nome": "Igor Timo",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204508"
+  },
+  {
+   "nome": "Igor Timo",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204508"
+  },
+  {
+   "nome": "Igor Timo",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204508"
+  },
+  {
+   "nome": "Ilacir Bicalho",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/235620"
+  },
+  {
+   "nome": "Ilacir Bicalho",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/235620"
+  },
+  {
+   "nome": "Ilacir Bicalho",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/235620"
+  },
+  {
+   "nome": "Junio Amaral",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204520"
+  },
+  {
+   "nome": "Katia Dias",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/208297"
+  },
+  {
+   "nome": "Katia Dias",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/208297"
+  },
+  {
+   "nome": "Katia Dias",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/208297"
+  },
+  {
+   "nome": "Lafayette de Andrada",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/98057"
+  },
+  {
+   "nome": "Lafayette de Andrada",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/98057"
+  },
+  {
+   "nome": "Leonardo Monteiro",
+   "partido": "PT",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/74156"
+  },
+  {
+   "nome": "Lincoln Portela",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/74585"
+  },
+  {
+   "nome": "Luis Tibé",
+   "partido": "AVANTE",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/160510"
+  },
+  {
+   "nome": "Luiz Fernando Faria",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/141487"
+  },
+  {
+   "nome": "Luiz Fernando Faria",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/141487"
+  },
+  {
+   "nome": "Marcelo Álvaro Antônio",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/179000"
+  },
+  {
+   "nome": "Mauricio do Vôlei",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220628"
+  },
+  {
+   "nome": "Miguel Ângelo",
+   "partido": "PT",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/171786"
+  },
+  {
+   "nome": "Misael Varella",
+   "partido": "PSD",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/178895"
+  },
+  {
+   "nome": "Mário Heringer",
+   "partido": "PDT",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/74158"
+  },
+  {
+   "nome": "Nely Aquino",
+   "partido": "PODE",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220622"
+  },
+  {
+   "nome": "Newton Cardoso Jr",
+   "partido": "MDB",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/178896"
+  },
+  {
+   "nome": "Nikolas Ferreira",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/209787"
+  },
+  {
+   "nome": "Odair Cunha",
+   "partido": "PT",
+   "uf": "MG",
+   "situacao": "Vacância",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/74159"
+  },
+  {
+   "nome": "Padre João",
+   "partido": "PT",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/160556"
+  },
+  {
+   "nome": "Patrus Ananias",
+   "partido": "PT",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/74160"
+  },
+  {
+   "nome": "Paulo Abi-Ackel",
+   "partido": "PSDB",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/141516"
+  },
+  {
+   "nome": "Paulo Guedes",
+   "partido": "PT",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204492"
+  },
+  {
+   "nome": "Pedro Aihara",
+   "partido": "PP",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220630"
+  },
+  {
+   "nome": "Pedro Aihara",
+   "partido": "PP",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220630"
+  },
+  {
+   "nome": "Pedro Aihara",
+   "partido": "PP",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220630"
+  },
+  {
+   "nome": "Pinheirinho",
+   "partido": "PP",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204524"
+  },
+  {
+   "nome": "Rafael Simoes",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220626"
+  },
+  {
+   "nome": "Reginaldo Lopes",
+   "partido": "PT",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/74161"
+  },
+  {
+   "nome": "Rodrigo de Castro",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/141531"
+  },
+  {
+   "nome": "Rogério Correia",
+   "partido": "PT",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204480"
+  },
+  {
+   "nome": "Rosângela Reis",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220620"
+  },
+  {
+   "nome": "Samuel Viana",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220631"
+  },
+  {
+   "nome": "Samuel Viana",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220631"
+  },
+  {
+   "nome": "Samuel Viana",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/220631"
+  },
+  {
+   "nome": "Sergio Santos Rodrigues",
+   "partido": "PODE",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/77003"
+  },
+  {
+   "nome": "Stefano Aguiar",
+   "partido": "PSD",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/92776"
+  },
+  {
+   "nome": "Ulisses Guimarães",
+   "partido": "MDB",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/223398"
+  },
+  {
+   "nome": "Vavá",
+   "partido": "AVANTE",
+   "uf": "MG",
+   "situacao": "Suplência",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/235712"
+  },
+  {
+   "nome": "Weliton Prado",
+   "partido": "PSD",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/160518"
+  },
+  {
+   "nome": "Weliton Prado",
+   "partido": "PSD",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/160518"
+  },
+  {
+   "nome": "Weliton Prado",
+   "partido": "PSD",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/160518"
+  },
+  {
+   "nome": "Zé Silva",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/160632"
+  },
+  {
+   "nome": "Zé Silva",
+   "partido": "UNIÃO",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/160632"
+  },
+  {
+   "nome": "Zé Vitor",
+   "partido": "PL",
+   "uf": "MG",
+   "situacao": "Exercício",
+   "urlFicha": "https://dadosabertos.camara.leg.br/api/v2/deputados/204517"
+  }
+ ],
+ "senadores": [
+  {
+   "nome": "Carlos Viana",
+   "partido": "PSD",
+   "uf": "MG",
+   "situacao": "Titular"
+  },
+  {
+   "nome": "Cleitinho",
+   "partido": "REPUBLICANOS",
+   "uf": "MG",
+   "situacao": "Titular"
+  },
+  {
+   "nome": "Rodrigo Pacheco",
+   "partido": "PSB",
+   "uf": "MG",
+   "situacao": "Titular"
+  }
+ ]
+}
