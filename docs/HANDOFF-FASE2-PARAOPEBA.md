@@ -1,5 +1,20 @@
 # Fase 2 — Biblioteca Paraopeba: Classificação + Análise
 
+> **Tipo:** PLANO
+> **Domínio:** paraopeba
+> **Última medição:** 2026-08-31
+> **Leitura estimada:** média (5–15 min)
+> **Relacionados:** [docs/01-produto/PRODUTO.md](01-produto/PRODUTO.md), [docs/02-estado/ESTADO.md](02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** paraopeba, biblioteca, ati, brumadinho, classificacao, temas, auditoria
+
+## Sumário
+
+- [Contexto](#contexto)
+- [Problema 1: 210 itens sem temas](#problema-1-210-itens-sem-temas)
+- [Problema 2: Análise não conecta com biblioteca](#problema-2-análise-não-conecta-com-biblioteca)
+- [Problema 3: Perícia UFMG sub-aproveitada](#problema-3-perícia-ufmg-sub-aproveitada)
+- [Checklist de Entrega](#checklist-de-entrega)
+
 ## Contexto
 
 O portal tem 3 fontes sobre Brumadinho cruzadas na página `/paraopeba/analise`:

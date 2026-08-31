@@ -1,5 +1,21 @@
 # LinkMender — Propostas de Correcao de Links
 
+> **Tipo:** OPERACAO
+> **Domínio:** global
+> **Última medição:** 2026-08-31
+> **Leitura estimada:** média (5–15 min)
+> **Relacionados:** [docs/05-operacao/OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** linkmender, links, auditoria, automacao, integridade
+
+## Sumário
+
+- [Metadados](#metadados)
+- [Resumo](#resumo)
+- [Links quebrados e redirecionados](#links-quebrados-e-redirecionados)
+- [Propostas de Correção](#propostas-de-correção)
+
+## Metadados
+
 - Gerado em: 2026-08-31T19:36:28.391Z
 - Duracao total: 2.0 min
 - Pausa entre requisicoes: 400ms

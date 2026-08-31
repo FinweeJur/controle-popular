@@ -1,9 +1,11 @@
 # PLANO — Canário Telegram v2 (funções novas + integração opencode)
 
 > **Tipo:** PLANO
-> **Domínio:** global (operações)
-> **Criado:** 2026-08-25 · **Status:** em execução (F0 ✅, F3 ✅, F2 ✅ observação + aprovação remota opt-in)
+> **Domínio:** global
+> **Última medição:** 2026-08-31
+> **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [GATILHO-REMOTO.md](../05-operacao/GATILHO-REMOTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md)
+> **Palavras-chave:** canario, telegram, bot, monitoramento, operacao, alertas
 
 ## Sumário
 

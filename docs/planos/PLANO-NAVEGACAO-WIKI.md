@@ -7,7 +7,7 @@
 > **Relacionados:** [REVISAO-UX-E-ONBOARDING.md](REVISAO-UX-E-ONBOARDING.md), [PRODUTO.md](../01-produto/PRODUTO.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** wiki, navegacao, sumario, indice, links relacionados, fluxo, onboarding
 
-## Sumario
+## Sumário
 
 - [Proposito](#proposito)
 - [Resumo para quem so quer o veredito](#resumo-para-quem-so-quer-o-veredito)

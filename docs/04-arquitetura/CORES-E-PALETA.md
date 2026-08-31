@@ -1,5 +1,21 @@
 # Design System de Cores — Controle Popular
 
+> **Tipo:** ARQUITETURA
+> **Domínio:** global
+> **Última medição:** 2026-08-31
+> **Leitura estimada:** rápida (< 5 min)
+> **Relacionados:** [ARQUITETURA.md](ARQUITETURA.md), [PADRAO-VISUAL.md](PADRAO-VISUAL.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** cores, paleta, tokens, oklch, acessibilidade, daltonismo, cvd, alto contraste
+
+## Sumário
+
+- [Visão Geral](#visão-geral)
+- [Paleta Padrão (light / dark)](#paleta-padrão-light--dark)
+- [Paleta CVD (daltonismo)](#paleta-cvd-daltonismo)
+- [Paleta de Alto Contraste](#paleta-de-alto-contraste)
+- [Tokens de Superfície e Texto](#tokens-de-superfície-e-texto)
+- [Regras de Acessibilidade](#regras-de-acessibilidade)
+
 ## Visão Geral
 
 O Controle Popular usa um sistema de cores com **três camadas**: paleta padrão,
