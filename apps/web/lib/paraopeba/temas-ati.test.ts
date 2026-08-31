@@ -58,18 +58,21 @@ describe("ponte tema-livre-da-biblioteca -> TemaAjri", () => {
   });
 
   /**
-   * O número em si (238/645): medido em 2026-08-26 sobre o acervo publicado de
-   * verdade (597 AEDAS/Guaicuy com tema livre + 48 NACAB sem tema declarado,
-   * que por isso não somam nada ao numerador). Ver o motivo de cada mapa no
-   * cabeçalho de `temas-ati.ts`. Se este teste quebrar depois de uma coleta
-   * nova, o número mudou porque o ACERVO cresceu (esperado) — revise o valor
-   * aqui deliberadamente. Se quebrar sem nenhuma coleta nova, a REGRA de
-   * mapeamento mudou, e é isso que este teste existe para pegar.
+   * O número em si (270/645): medido em 2026-08-31 sobre o acervo publicado de
+   * verdade. 238 vêm de tema livre declarado pela fonte (AEDAS/Guaicuy) e 32
+   * vêm de inferência por palavra-chave no título (Guaicuy, NACAB e boletins
+   * da AEDAS sem tema declarado). Ver o motivo de cada mapa no cabeçalho de
+   * `temas-ati.ts` e as regras de inferência em
+   * `scripts/classificar-biblioteca-ati-sem-tema.py`. Se este teste quebrar
+   * depois de uma coleta nova, o número mudou porque o ACERVO cresceu
+   * (esperado) — revise o valor aqui deliberadamente. Se quebrar sem nenhuma
+   * coleta nova, a REGRA de mapeamento/inferência mudou, e é isso que este
+   * teste existe para pegar.
    */
-  test("cobertura travada: 238 dos 645 itens do acervo ganham ao menos um TemaAjri", async () => {
+  test("cobertura travada: 270 dos 645 itens do acervo ganham ao menos um TemaAjri", async () => {
     const cobertura = await coberturaTemasAti();
     expect(cobertura.total).toBe(645);
-    expect(cobertura.comTemaAjri).toBe(238);
+    expect(cobertura.comTemaAjri).toBe(270);
   });
 
   test("o acervo publicado agora tem 48 itens do NACAB", async () => {

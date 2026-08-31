@@ -1,8 +1,10 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
+import type { TemaAjri } from "./auditoria-ajri";
 import { ehTipoPessoal, precisaRedigirResumo } from "./triagem";
 
 /**
@@ -67,6 +69,13 @@ export interface ItemBiblioteca {
    * significa "a fonte não classificou", nunca "o portal não soube ler".
    */
   temas: string[];
+  /**
+   * Temas inferidos por regras de palavra-chave no título, quando a fonte não
+   * declara tema. Só existe para Guaicuy, NACAB e os boletins da AEDAS que
+   * chegam vazios. A UI deve rotular como inferido — o portal não atribui o
+   * mesmo peso de um tema declarado pela própria ATI.
+   */
+  temas_ajri_inferred?: TemaAjri[];
   /**
    * Origem declarada pela fonte: produção própria, produção de parceiros,
    * documento legal/público. Separada de `temas` de propósito — é uma
@@ -139,7 +148,10 @@ async function ler(): Promise<LidoBiblioteca> {
         if (!resp.ok) throw new Error(`ASSETS.fetch devolveu ${resp.status}`);
         texto = await resp.text();
       } catch {
-        const caminho = path.join(process.cwd(), "public", "data", ARQUIVO_BIBLIOTECA);
+        // Fallback dev/teste: resolve a partir deste arquivo, não de process.cwd(),
+        // porque vitest roda da raiz do monorepo e o JSON mora em apps/web/public/data.
+        const esteArquivo = fileURLToPath(import.meta.url);
+        const caminho = path.join(esteArquivo, "..", "..", "..", "public", "data", ARQUIVO_BIBLIOTECA);
         texto = readFileSync(caminho, "utf-8");
       }
       bruto = JSON.parse(texto) as ArquivoBruto;
