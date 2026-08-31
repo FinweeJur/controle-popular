@@ -36,7 +36,7 @@
 // REAL checada na mensagem de "pulando" em vez de cravar "localhost:11434"
 // à mão — que ficaria mentindo se alguém rodar com `OLLAMA_BASE_URL`
 // customizado (medido: aconteceu ao testar o próprio skip desta tarefa).
-export const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || "http://localhost:11434";
+export const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || "http://172.18.176.1:11434";
 const OLLAMA_EMBED_MODEL = process.env.OLLAMA_EMBED_MODEL || "nomic-embed-text";
 
 /** Generoso de propósito: a primeira chamada mede ~5,5 s com o modelo frio
