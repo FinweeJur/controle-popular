@@ -1,5 +1,17 @@
 # Parecer Consolidado de Automação e Auditoria — Colibri
 
+> **Tipo:** OPERACAO
+> **Domínio:** global
+> **Última medição:** 2026-08-31
+> **Leitura estimada:** rápida (< 5 min)
+> **Relacionados:** [docs/05-operacao/OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** colibri, auditoria, seguranca, picoclaw, hermes, automacao
+
+## Sumário
+
+- [Síntese Executiva](#1-síntese-executiva)
+- [Itens Verificados em Segurança e Integridade](#3-itens-verificados-em-segurança-e-integridade)
+
 **Data da Execução:** 31/08/2026, 14:55:46  
 **Agentes Envolvidos:** PicoClaw (Crawler/Watcher) & Hermes Agent (Defensive Security & Data Audit)  
 **Motor de Inferência:** Motor Determinístico Offline

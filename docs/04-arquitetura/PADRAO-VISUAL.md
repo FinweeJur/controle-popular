@@ -1,5 +1,19 @@
 # Padrão Visual — Controle Popular
 
+> **Tipo:** ARQUITETURA
+> **Domínio:** global
+> **Última medição:** 2026-08-31
+> **Leitura estimada:** rápida (< 5 min)
+> **Relacionados:** [ARQUITETURA.md](ARQUITETURA.md), [CORES-E-PALETA.md](CORES-E-PALETA.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** padrao visual, ui, ux, componentes, tabela estatica, graficos svg, acessibilidade
+
+## Sumário
+
+- [Regra de Ouro](#regra-de-ouro)
+- [Componentes Disponíveis](#componentes-disponíveis)
+- [Regras de Acessibilidade](#regras-de-acessibilidade)
+- [Checklist de Nova Página](#checklist-de-nova-página)
+
 ## Regra de Ouro
 
 **Tabelas/gráficos curtos/expansíveis → Texto explicativo → Lista ordenável/filtrável/pesquisável**

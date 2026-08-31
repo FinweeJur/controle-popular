@@ -1,10 +1,11 @@
 # PLANO — Cloudflare Tunnel como acesso remoto ao home-pc
 
-> **Tipo:** PLANO — **EXECUTADO em 26/08/2026** ✅
+> **Tipo:** PLANO
 > **Domínio:** global
-> **Criado:** 2026-08-25 · **Executado:** 2026-08-26 (ver "Desvios e aprendizados")
-> **Atualizado:** 2026-08-26 — fase 2 concluída: domínio principal no ar via túnel, `next start` como origin server
-> **Relacionados:** [GATILHO-REMOTO.md](../05-operacao/GATILHO-REMOTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [ESTADO.md](../02-estado/ESTADO.md), [docs/planos/deploy-github-pages.md](deploy-github-pages.md)
+> **Última medição:** 2026-08-31
+> **Leitura estimada:** média (5–15 min)
+> **Relacionados:** [GATILHO-REMOTO.md](../05-operacao/GATILHO-REMOTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [ESTADO.md](../02-estado/ESTADO.md)
+> **Palavras-chave:** cloudflare, tunnel, cloudflared, home-pc, deploy, infraestrutura
 
 ## Sumário
 
