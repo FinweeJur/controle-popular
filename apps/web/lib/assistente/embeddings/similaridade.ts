@@ -8,6 +8,18 @@
  * os dois vetores (1 = mesma direção, 0 = ortogonais, -1 = opostos),
  * ignorando o tamanho; distância euclidiana penalizaria dois vetores
  * semanticamente idênticos que só diferem em norma.
+ *
+ * ═══ O IRMÃO LEXICAL ═══
+ *
+ * `similaridadeLexical` é o lado BM25-leve do ranking híbrido do chatbot:
+ * sobreposição de tokens normalizados entre pergunta e pedaço. O índice
+ * BM25 de verdade (`public/busca-indice/**`) só existe quando o `home-pc`
+ * publica o build com Postgres — numa máquina de desenvolvimento o acervo
+ * do degrau 3 precisa de uma régua lexical AUTOCONTIDA. Jaccard sobre
+ * tokens (sem stopwords pt) não é BM25, mas cobre o caso que o cosseno
+ * perde: termo exato que o embedding espalha ("licenciamento" citado uma
+ * vez no pedaço mas diluído no vetor). Ver a decisão em
+ * `lib/assistente/acervo.ts` e o pipeline em `embeddings/rag.ts`.
  */
 
 /**
@@ -59,4 +71,45 @@ export function ranquearPorSimilaridade<T>(
   return candidatos
     .map((item) => ({ item, score: similaridadeCosseno(consulta, vetorDe(item)) }))
     .sort((x, y) => y.score - x.score);
+}
+
+// Stopwords do português — sem acento (o token já foi normalizado). A lista
+// é curta de propósito: só o que polui a sobreposição lexical sem carregar
+// significado ("de", "para", "que"); palavra curta demais cai pelo filtro
+// de tamanho, não pela lista.
+const STOPWORDS_PT = new Set([
+  "de", "da", "do", "das", "dos", "em", "e", "para", "por", "com", "que",
+  "como", "no", "na", "nos", "nas", "ao", "aos", "um", "uma", "uns", "umas",
+  "pelo", "pela", "pra", "pro", "se", "sobre", "entre", "ate", "mais",
+]);
+
+/**
+ * Tokens normalizados de um texto: minúsculo, sem acento, só letras e
+ * números, sem stopwords. A mesma régua de normalização usada pela busca do
+ * portal (`lib/busca/normalizar.ts`) — divergir dela aqui criaria um
+ * segundo dialeto de "mesma palavra" para o mesmo conteúdo.
+ */
+export function tokensDe(texto: string): string[] {
+  return texto
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .split(/[^a-z0-9]+/)
+    .filter((t) => t.length > 2 && !STOPWORDS_PT.has(t));
+}
+
+/**
+ * Similaridade lexical (Jaccard sobre tokens) entre dois textos — o
+ * complemento barato do cosseno no ranking híbrido. 0 = nenhum token em
+ * comum; 1 = os mesmos tokens. Texto sem tokens devolve 0, não erro.
+ */
+export function similaridadeLexical(a: string, b: string): number {
+  const ta = new Set(tokensDe(a));
+  const tb = new Set(tokensDe(b));
+  if (ta.size === 0 || tb.size === 0) return 0;
+  let intersecao = 0;
+  for (const t of ta) {
+    if (tb.has(t)) intersecao++;
+  }
+  return intersecao / (ta.size + tb.size - intersecao);
 }

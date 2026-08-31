@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from "vitest";
-import { responderComRag } from "./rag";
+import { responderComRag, esquecerIndiceAcervo } from "./rag";
 import { gerarRespostaRag, gerarRespostaLocal, gerarRespostaApi } from "./geracao";
 import { ollamaDisponivel } from "./ollama";
 
@@ -35,7 +35,11 @@ describe("responderComRag -- integracao com Ollama local", () => {
 
       const resposta = await gerarRespostaLocal(
         "Quem acompanhou as acoes apos o rompimento da barragem de Fundao?",
-        fontes
+        fontes,
+        // Timeout generoso de propósito: o Ollama remoto passou de 60 s com
+        // o modelo carregado (medido em 31/08) — ver TODO.md "timeout do
+        // teste do Ollama" (92dd276).
+        { timeoutMs: 180_000 }
       );
 
       expect(resposta.resposta.length).toBeGreaterThan(20);
@@ -45,7 +49,7 @@ describe("responderComRag -- integracao com Ollama local", () => {
       const textoBaixo = resposta.resposta.toLowerCase();
       expect(textoBaixo.includes("fundao") || textoBaixo.includes("grupo de trabalho")).toBe(true);
     },
-    60_000
+    240_000
   );
 
   it("gerarRespostaApi requer chave remota (skipa quando nenhuma configurada)", async () => {
@@ -92,13 +96,14 @@ describe("responderComRag -- integracao com Ollama local", () => {
 
       const resposta = await gerarRespostaRag(
         "Quem acompanhou as acoes apos o rompimento da barragem de Fundao?",
-        fontes
+        fontes,
+        { timeoutMs: 180_000 }
       );
 
       expect(resposta.resposta.length).toBeGreaterThan(20);
       expect(resposta.fontes.length).toBe(1);
     },
-    60_000
+    240_000
   );
 
   it(
@@ -118,19 +123,36 @@ describe("responderComRag -- integracao com Ollama local", () => {
   );
 
   it(
-    "responderComRag executa o pipeline completo sobre o documento de exemplo",
+    "responderComRag executa o pipeline completo sobre o acervo real do portal",
     async () => {
       if (!disponivel) {
         console.log("Ollama indisponivel -- pulando teste de RAG");
         return;
       }
-
-      const resposta = await responderComRag("O que aconteceu com a barragem de Fundao?");
+      // O acervo agora é o do portal (Fase 1): pergunta de cidade deve
+      // recuperar a página de contratos de Betim e citá-la. `timeoutMs` alto
+      // de propósito: o Ollama remoto passou de 60 s com o 3B carregado
+      // (medido em 31/08) — o pipeline não pode flakar por máquina lenta.
+      esquecerIndiceAcervo();
+      const resposta = await responderComRag(
+        "Quais sao os maiores contratos da prefeitura de Betim?",
+        { timeoutMs: 180_000 }
+      );
 
       expect(resposta.resposta.length).toBeGreaterThan(20);
       expect(resposta.fontes.length).toBeGreaterThan(0);
       expect(resposta.modelo).toBeTruthy();
+      expect(resposta.ressalva).toBe(true);
+      expect(resposta.data).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(resposta.verificacao).toMatch(/^(ok|parcial|falhou)$/);
+      // A fonte da resposta tem que apontar para a página de contratos.
+      expect(
+        resposta.fontes.some((f) => f.rota?.includes("/betim/prefeitura/contratos")),
+        `nenhuma fonte aponta para /betim/prefeitura/contratos: ${resposta.fontes
+          .map((f) => f.rota ?? f.titulo)
+          .join(" | ")}`
+      ).toBe(true);
     },
-    180_000
+    360_000
   );
 });

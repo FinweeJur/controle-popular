@@ -95,13 +95,19 @@ if (!OLLAMA_DISPONIVEL) {
 // vitest (5s) mata a chamada real ANTES do timeout interno do próprio
 // cliente importar. Medido: falhou por timeout de teste (não de rede) numa
 // execução com o modelo descarregado da memória do Ollama.
-const TIMEOUT_TESTE_MS = 15_000;
+//
+// 31/08: o servidor remoto passou de 60s com o modelo carregado (mesma
+// janela que derrubou o rag.test.ts) — subimos o timeout do TESTE e o do
+// CLIENTE nas chamadas reais, para a suíte não flakar por máquina lenta
+// (precedente: 92dd276, e o mesmo tratamento no rag.test.ts).
+const TIMEOUT_TESTE_MS = 90_000;
+const TIMEOUT_CLIENTE_MS = 60_000;
 
 describe.skipIf(!OLLAMA_DISPONIVEL)("vetorizar/vetorizarLote — Ollama local real", () => {
   test(
     "vetorizar devolve um vetor não vazio de números finitos",
     async () => {
-      const vetor = await vetorizar("teste de conexão com o Ollama");
+      const vetor = await vetorizar("teste de conexão com o Ollama", { timeoutMs: TIMEOUT_CLIENTE_MS });
       expect(Array.isArray(vetor)).toBe(true);
       expect(vetor.length).toBeGreaterThan(0);
       expect(vetor.every((x) => typeof x === "number" && Number.isFinite(x))).toBe(true);
@@ -113,7 +119,7 @@ describe.skipIf(!OLLAMA_DISPONIVEL)("vetorizar/vetorizarLote — Ollama local re
     "vetorizarLote devolve um vetor por texto, na mesma ordem, mesma dimensão",
     async () => {
       const textos = ["primeiro texto sobre barragens", "segundo texto sobre educação municipal"];
-      const vetores = await vetorizarLote(textos);
+      const vetores = await vetorizarLote(textos, { timeoutMs: TIMEOUT_CLIENTE_MS });
       expect(vetores).toHaveLength(2);
       expect(vetores[0].length).toBe(vetores[1].length);
     },
@@ -128,7 +134,11 @@ describe.skipIf(!OLLAMA_DISPONIVEL)("vetorizar/vetorizarLote — Ollama local re
       // "contrato de ordem quebrado" acima), aqui contra o servidor de
       // verdade em vez de um dublê.
       const textos = ["laranja", "barragem de rejeito", "orçamento municipal"];
-      const [porLote, ...porUm] = await Promise.all([vetorizarLote(textos), ...textos.map((t) => vetorizar(t))]);
+      const opcoes = { timeoutMs: TIMEOUT_CLIENTE_MS };
+      const [porLote, ...porUm] = await Promise.all([
+        vetorizarLote(textos, opcoes),
+        ...textos.map((t) => vetorizar(t, opcoes)),
+      ]);
       for (let i = 0; i < textos.length; i++) {
         expect(porLote[i]).toEqual(porUm[i]);
       }

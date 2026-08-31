@@ -29,8 +29,11 @@ export async function POST(req: Request): Promise<Response> {
     return NextResponse.json(resposta);
   } catch (e) {
     if (e instanceof OllamaIndisponivel) {
+      // Mensagem pública não expõe o endereço interno do servidor local:
+      // quem mantém o portal vê o detalhe no log; quem pergunta vê o
+      // caminho honesto (usar os menus de respostas prontas).
       return NextResponse.json(
-        { erro: "Ollama nao esta disponivel. Inicie o servidor local em http://172.18.176.1:11434." },
+        { erro: "A IA do assistente não está disponível agora. Use os menus de respostas prontas ou tente de novo em instantes." },
         { status: 503 }
       );
     }

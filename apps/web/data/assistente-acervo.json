@@ -1,0 +1,1625 @@
+{
+  "geradoEm": "2026-08-31",
+  "fontes": [
+    {
+      "id": "pergunta:cidades:encontrar-cidade",
+      "frente": "cidades",
+      "rota": "/",
+      "titulo": "Como encontrar dados da minha cidade?",
+      "fonteUrl": "/",
+      "texto": "Na página inicial há uma busca por município. Basta digitar o nome da cidade para acessar a página dela, com contratos, despesas, obras, legislação e mais.",
+      "links": [
+        {
+          "href": "/",
+          "texto": "Ir para a home"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:pagina-cidade",
+      "frente": "cidades",
+      "rota": "/betim",
+      "titulo": "O que tem na página da minha cidade?",
+      "fonteUrl": "/betim",
+      "texto": "Cada município tem um painel com dados da prefeitura, Câmara, território, meio ambiente, clima, educação, saúde, segurança e links úteis.",
+      "links": [
+        {
+          "href": "/betim",
+          "texto": "Ver exemplo de Betim"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:maiores-contratos",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/contratos",
+      "titulo": "Quais são os maiores contratos da prefeitura?",
+      "fonteUrl": "/betim/prefeitura/contratos",
+      "texto": "A tela de contratos lista todos os contratos públicos do município, com valor, fornecedor, objeto e alertas de atenção. Use os filtros para ver os de maior valor.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/contratos",
+          "texto": "Ver contratos"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:maiores-fornecedores",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/fornecedores",
+      "titulo": "Quem são os maiores fornecedores?",
+      "fonteUrl": "/betim/prefeitura/fornecedores",
+      "texto": "A página de fornecedores mostra quais empresas mais contrataram a prefeitura, com valor total, número de contratos e indícios de concentração.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/fornecedores",
+          "texto": "Ver fornecedores"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:despesas",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/despesas",
+      "titulo": "Onde ver despesas e licitações?",
+      "fonteUrl": "/betim/prefeitura/despesas",
+      "texto": "Despesas por função e subfunção estão em 'Despesas'; licitações abertas e seus editais estão em 'Licitações'.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/despesas",
+          "texto": "Ver despesas"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:alertas-contratos",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/contratos",
+      "titulo": "Como identificar contratos em alerta?",
+      "fonteUrl": "/betim/prefeitura/contratos",
+      "texto": "Contratos com indícios de atenção ganham badges na lista: concentração no ano, dispensa próxima do limite legal ou fornecedor criado no mesmo ano. Sempre são sinais, não conclusões.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/contratos",
+          "texto": "Ver contratos com alerta"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:obras",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/obras",
+      "titulo": "Onde ver obras da cidade?",
+      "fonteUrl": "/betim/prefeitura/obras",
+      "texto": "A seção Obras reúne contratos e dados sobre obras públicas do município, quando disponíveis nos dados abertos.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/obras",
+          "texto": "Ver obras"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:coleta-lixo",
+      "frente": "cidades",
+      "rota": "/betim/coleta-lixo",
+      "titulo": "Quando o lixo é coletado?",
+      "fonteUrl": "/betim/coleta-lixo",
+      "texto": "A página de coleta de lixo mostra os dias e horários por região do município, quando divulgados pela prefeitura.",
+      "links": [
+        {
+          "href": "/betim/coleta-lixo",
+          "texto": "Ver coleta de lixo"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:plantao-farmacias",
+      "frente": "cidades",
+      "rota": "/betim/plantao-farmacias",
+      "titulo": "Onde ver plantão de farmácias?",
+      "fonteUrl": "/betim/plantao-farmacias",
+      "texto": "A tela de plantão mostra as farmácias de plantão na cidade, com endereço e telefone quando publicados pela prefeitura.",
+      "links": [
+        {
+          "href": "/betim/plantao-farmacias",
+          "texto": "Ver farmácias de plantão"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:vereadores",
+      "frente": "cidades",
+      "rota": "/betim/vereadores",
+      "titulo": "Quem são os vereadores?",
+      "fonteUrl": "/betim/vereadores",
+      "texto": "A página de vereadores lista os parlamentares municipais, com dados de contato e histórico quando disponíveis.",
+      "links": [
+        {
+          "href": "/betim/vereadores",
+          "texto": "Ver vereadores"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:votacoes-camara",
+      "frente": "cidades",
+      "rota": "/betim/camara/votacoes",
+      "titulo": "O que a Câmara está votando?",
+      "fonteUrl": "/betim/camara/votacoes",
+      "texto": "A seção Votações da Câmara mostra matérias em votação ou já votadas, quando a Casa publica os dados de forma aberta.",
+      "links": [
+        {
+          "href": "/betim/camara/votacoes",
+          "texto": "Ver votações"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:servidores",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/servidores",
+      "titulo": "Onde ver servidores públicos?",
+      "fonteUrl": "/betim/prefeitura/servidores",
+      "texto": "A página de servidores reúne dados sobre vínculos da prefeitura, com filtros por órgão e cargo, respeitando a LGPD.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/servidores",
+          "texto": "Ver servidores"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:lei-organica",
+      "frente": "cidades",
+      "rota": "/betim/legislacao",
+      "titulo": "Onde está a Lei Orgânica do município?",
+      "fonteUrl": "/betim/legislacao",
+      "texto": "A seção Legislação da cidade reúne Lei Orgânica, Plano Diretor, Lei de Zoneamento e outras leis principais, com link para a fonte e status de verificação.",
+      "links": [
+        {
+          "href": "/betim/legislacao",
+          "texto": "Ver legislação municipal"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:leis-camara",
+      "frente": "cidades",
+      "rota": "/betim/camara/legislacao",
+      "titulo": "Onde ver leis aprovadas pela Câmara?",
+      "fonteUrl": "/betim/camara/legislacao",
+      "texto": "A página de legislação da Câmara lista leis, decretos e outras normas municipais, quando publicadas.",
+      "links": [
+        {
+          "href": "/betim/camara/legislacao",
+          "texto": "Ver leis da Câmara"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:mineracao-cidade",
+      "frente": "cidades",
+      "rota": "/betim/terras",
+      "titulo": "Tem mineração perto da minha cidade?",
+      "fonteUrl": "/betim/terras",
+      "texto": "A tela Terras mostra processos minerários, territórios tradicionais e sobreposições no município, quando houver dados espaciais disponíveis.",
+      "links": [
+        {
+          "href": "/betim/terras",
+          "texto": "Ver terras e mineração"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:meio-ambiente-cidade",
+      "frente": "cidades",
+      "rota": "/betim/meio-ambiente",
+      "titulo": "Como acompanhar o meio ambiente da cidade?",
+      "fonteUrl": "/betim/meio-ambiente",
+      "texto": "A seção Meio Ambiente do município traz autuações, barragens, licenciamentos e dados sobre a bacia do Paraopeba.",
+      "links": [
+        {
+          "href": "/betim/meio-ambiente",
+          "texto": "Ver meio ambiente"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:cidades:rede-protecao",
+      "frente": "cidades",
+      "rota": "/betim/rede-de-protecao",
+      "titulo": "Onde buscar ajuda na cidade?",
+      "fonteUrl": "/betim/rede-de-protecao",
+      "texto": "A Rede de Proteção reúne telefones e endereços de serviços de acolhimento, assistência social, saúde mental e direitos humanos.",
+      "links": [
+        {
+          "href": "/betim/rede-de-protecao",
+          "texto": "Ver rede de proteção"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:congresso:meus-parlamentares",
+      "frente": "congresso",
+      "rota": "/congresso/parlamentares",
+      "titulo": "Quem são os parlamentares do meu estado?",
+      "fonteUrl": "/congresso/parlamentares",
+      "texto": "A página de parlamentares permite buscar deputados federais e senadores por estado, partido ou nome.",
+      "links": [
+        {
+          "href": "/congresso/parlamentares",
+          "texto": "Ver parlamentares"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:congresso:bancadas",
+      "frente": "congresso",
+      "rota": "/congresso/bancadas",
+      "titulo": "Como ver as bancadas estaduais?",
+      "fonteUrl": "/congresso/bancadas",
+      "texto": "A seção Bancadas mostra a composição por estado, com indicadores de atuação quando disponíveis.",
+      "links": [
+        {
+          "href": "/congresso/bancadas",
+          "texto": "Ver bancadas"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:congresso:votacoes",
+      "frente": "congresso",
+      "rota": "/congresso/votacoes",
+      "titulo": "O que está sendo votado no Congresso?",
+      "fonteUrl": "/congresso/votacoes",
+      "texto": "A tela de votações lista as matérias mais recentes, com resultado nominal quando os dados são abertos.",
+      "links": [
+        {
+          "href": "/congresso/votacoes",
+          "texto": "Ver votações"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:congresso:proposicoes",
+      "frente": "congresso",
+      "rota": "/congresso/proposicoes",
+      "titulo": "Como acompanhar proposições?",
+      "fonteUrl": "/congresso/proposicoes",
+      "texto": "A página de proposições permite buscar projetos de lei, requerimentos e emendas por tema, autor ou número.",
+      "links": [
+        {
+          "href": "/congresso/proposicoes",
+          "texto": "Ver proposições"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:congresso:comissoes",
+      "frente": "congresso",
+      "rota": "/congresso/comissoes",
+      "titulo": "Quais comissões existem?",
+      "fonteUrl": "/congresso/comissoes",
+      "texto": "A seção Comissões lista as comissões permanentes e temporárias da Câmara e do Senado.",
+      "links": [
+        {
+          "href": "/congresso/comissoes",
+          "texto": "Ver comissões"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:congresso:agenda",
+      "frente": "congresso",
+      "rota": "/congresso/agenda",
+      "titulo": "Qual a agenda do Congresso?",
+      "fonteUrl": "/congresso/agenda",
+      "texto": "A agenda reúne sessões e reuniões previstas, com link para as transmissões quando disponíveis.",
+      "links": [
+        {
+          "href": "/congresso/agenda",
+          "texto": "Ver agenda"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:congresso:vicio-auditavel",
+      "frente": "congresso",
+      "rota": "/congresso/alertas",
+      "titulo": "O que é alerta de vício auditável?",
+      "fonteUrl": "/congresso/alertas",
+      "texto": "São indícios de irregularidade em emendas, convênios ou indicações, rotulados como 'ponto de atenção', nunca como conclusão.",
+      "links": [
+        {
+          "href": "/congresso/alertas",
+          "texto": "Ver alertas"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:congresso:bons-exemplos",
+      "frente": "congresso",
+      "rota": "/congresso/bons-exemplos",
+      "titulo": "Onde ver bons exemplos de atuação?",
+      "fonteUrl": "/congresso/bons-exemplos",
+      "texto": "A seção Bons Exemplos destaca votações ou proposições que ampliam transparência ou controle social.",
+      "links": [
+        {
+          "href": "/congresso/bons-exemplos",
+          "texto": "Ver bons exemplos"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:judiciario:tribunais-lista",
+      "frente": "judiciario",
+      "rota": "/judiciario/tribunais",
+      "titulo": "Quais tribunais estão no portal?",
+      "fonteUrl": "/judiciario/tribunais",
+      "texto": "A página de tribunais reúne informações institucionais e dados publicados pelos Tribunais Superiores e estaduais.",
+      "links": [
+        {
+          "href": "/judiciario/tribunais",
+          "texto": "Ver tribunais"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:judiciario:correicoes",
+      "frente": "judiciario",
+      "rota": "/judiciario/correicoes-trabalhistas",
+      "titulo": "O que são correições trabalhistas?",
+      "fonteUrl": "/judiciario/correicoes-trabalhistas",
+      "texto": "Correições são inspeções administrativas realizadas nos tribunais. A página reúne relatórios e recomendações publicadas.",
+      "links": [
+        {
+          "href": "/judiciario/correicoes-trabalhistas",
+          "texto": "Ver correições"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:judiciario:indicacoes",
+      "frente": "judiciario",
+      "rota": "/judiciario/indicacoes",
+      "titulo": "Como acompanhar indicações para tribunais?",
+      "fonteUrl": "/judiciario/indicacoes",
+      "texto": "A tela de indicações mostra nomes indicados para cargos de dirigentes e magistrados, com status de tramitação.",
+      "links": [
+        {
+          "href": "/judiciario/indicacoes",
+          "texto": "Ver indicações"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:judiciario:vagas",
+      "frente": "judiciario",
+      "rota": "/judiciario/vagas",
+      "titulo": "Onde ver vagas em tribunais?",
+      "fonteUrl": "/judiciario/vagas",
+      "texto": "A seção Vagas lista concursos e seleções públicas em andamento nos tribunais.",
+      "links": [
+        {
+          "href": "/judiciario/vagas",
+          "texto": "Ver vagas"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:judiciario:defensoria",
+      "frente": "judiciario",
+      "rota": "/judiciario/defensoria",
+      "titulo": "Onde ver dados sobre Defensoria Pública?",
+      "fonteUrl": "/judiciario/defensoria",
+      "texto": "A página da Defensoria reúne dados institucionais e indicadores de atendimento, quando publicados.",
+      "links": [
+        {
+          "href": "/judiciario/defensoria",
+          "texto": "Ver Defensoria"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:judiciario:presidios",
+      "frente": "judiciario",
+      "rota": "/judiciario/presidios",
+      "titulo": "Onde ver dados sobre presídios?",
+      "fonteUrl": "/judiciario/presidios",
+      "texto": "A seção Presídios traz dados sobre unidades prisionais, vagas e população carcerária.",
+      "links": [
+        {
+          "href": "/judiciario/presidios",
+          "texto": "Ver presídios"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:judiciario:inspecoes",
+      "frente": "judiciario",
+      "rota": "/judiciario/inspecoes",
+      "titulo": "Onde ver inspeções judiciais?",
+      "fonteUrl": "/judiciario/inspecoes",
+      "texto": "A página de inspeções reúne relatórios de inspeções em unidades do Judiciário e do sistema prisional.",
+      "links": [
+        {
+          "href": "/judiciario/inspecoes",
+          "texto": "Ver inspeções"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:ambiental:licenciamentos",
+      "frente": "ambiental",
+      "rota": "/ambiental/licenciamento",
+      "titulo": "Onde ver licenciamentos ambientais?",
+      "fonteUrl": "/ambiental/licenciamento",
+      "texto": "A tela de licenciamento lista processos ambientais por município, com status, órgão licenciador e empreendimento.",
+      "links": [
+        {
+          "href": "/ambiental/licenciamento",
+          "texto": "Ver licenciamentos"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:ambiental:copam",
+      "frente": "ambiental",
+      "rota": "/ambiental/copam",
+      "titulo": "O que é o COPAM?",
+      "fonteUrl": "/ambiental/copam",
+      "texto": "COPAM é o Conselho de Política Ambiental de Minas Gerais. A página reúne atas e reuniões do conselho.",
+      "links": [
+        {
+          "href": "/ambiental/copam",
+          "texto": "Ver COPAM"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:ambiental:barragens",
+      "frente": "ambiental",
+      "rota": "/ambiental/barragens",
+      "titulo": "Onde ver barragens por município?",
+      "fonteUrl": "/ambiental/barragens",
+      "texto": "A seção Barragens mostra dados de barragens, incluindo manchas de inundação e status de descaracterização.",
+      "links": [
+        {
+          "href": "/ambiental/barragens",
+          "texto": "Ver barragens"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:ambiental:descaracterizacao",
+      "frente": "ambiental",
+      "rota": "/ambiental/barragens/descaracterizacao",
+      "titulo": "O que é descaracterização de barragem?",
+      "fonteUrl": "/ambiental/barragens/descaracterizacao",
+      "texto": "É o processo de eliminar a condição de barragem de alto risco. A página mostra quais barragens estão nesse processo.",
+      "links": [
+        {
+          "href": "/ambiental/barragens/descaracterizacao",
+          "texto": "Ver descaracterização"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:ambiental:patrimonio-cultural",
+      "frente": "ambiental",
+      "rota": "/ambiental/patrimonio-cultural",
+      "titulo": "Onde ver patrimônio cultural tombado?",
+      "fonteUrl": "/ambiental/patrimonio-cultural",
+      "texto": "A página lista bens tombados no estado, com link para a fonte e dados sobre o tipo de tombamento.",
+      "links": [
+        {
+          "href": "/ambiental/patrimonio-cultural",
+          "texto": "Ver patrimônio cultural"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:ambiental:direito-critico",
+      "frente": "ambiental",
+      "rota": "/ambiental/direito-critico",
+      "titulo": "O que é Direito Crítico?",
+      "fonteUrl": "/ambiental/direito-critico",
+      "texto": "É uma seção com decisões e orientações sobre conflitos ambientais e territoriais, explicadas de forma acessível.",
+      "links": [
+        {
+          "href": "/ambiental/direito-critico",
+          "texto": "Ver Direito Crítico"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:ambiental:decisoes",
+      "frente": "ambiental",
+      "rota": "/ambiental/decisoes",
+      "titulo": "Onde ver decisões ambientais?",
+      "fonteUrl": "/ambiental/decisoes",
+      "texto": "A seção Decisões reúne decisões judiciais e administrativas sobre meio ambiente.",
+      "links": [
+        {
+          "href": "/ambiental/decisoes",
+          "texto": "Ver decisões"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:ambiental:decisoes-lai",
+      "frente": "ambiental",
+      "rota": "/ambiental/decisoes-lai",
+      "titulo": "O que são Decisões LAI?",
+      "fonteUrl": "/ambiental/decisoes-lai",
+      "texto": "São respostas a pedidos de acesso à informação sobre temas ambientais, publicadas como forma de ampliar transparência.",
+      "links": [
+        {
+          "href": "/ambiental/decisoes-lai",
+          "texto": "Ver decisões LAI"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:ambiental:convenios-ambiental",
+      "frente": "ambiental",
+      "rota": "/ambiental/convenios",
+      "titulo": "Onde ver convênios ambientais?",
+      "fonteUrl": "/ambiental/convenios",
+      "texto": "A página de convênios lista transferências e acordos relacionados a meio ambiente, saúde e assistência.",
+      "links": [
+        {
+          "href": "/ambiental/convenios",
+          "texto": "Ver convênios"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:ambiental:legislacao-ambiental",
+      "frente": "ambiental",
+      "rota": "/ambiental/legislacao",
+      "titulo": "Onde ver legislação ambiental?",
+      "fonteUrl": "/ambiental/legislacao",
+      "texto": "A seção Legislação reúne normas federais e estaduais sobre meio ambiente, com link para o texto original.",
+      "links": [
+        {
+          "href": "/ambiental/legislacao",
+          "texto": "Ver legislação ambiental"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:paraopeba:o-que-e",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/entenda",
+      "titulo": "O que é o acordo de reparação?",
+      "fonteUrl": "/paraopeba/entenda",
+      "texto": "É o acordo judicial que define as ações e recursos para reparar os danos do rompimento da barragem da Vale em Brumadinho.",
+      "links": [
+        {
+          "href": "/paraopeba/entenda",
+          "texto": "Entenda o acordo"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:paraopeba:quem-atua",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/quem-atua",
+      "titulo": "Quem atua na reparação?",
+      "fonteUrl": "/paraopeba/quem-atua",
+      "texto": "A página 'Quem atua' mostra os órgãos, instituições e entidades responsáveis por executar e fiscalizar o acordo.",
+      "links": [
+        {
+          "href": "/paraopeba/quem-atua",
+          "texto": "Ver quem atua"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:paraopeba:execucao",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/execucao",
+      "titulo": "Como acompanhar a execução do acordo?",
+      "fonteUrl": "/paraopeba/execucao",
+      "texto": "A tela Execução mostra indicadores e dados sobre o andamento das medidas previstas no acordo.",
+      "links": [
+        {
+          "href": "/paraopeba/execucao",
+          "texto": "Ver execução"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:paraopeba:linha-do-tempo",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/linha-do-tempo",
+      "titulo": "Qual a linha do tempo dos fatos?",
+      "fonteUrl": "/paraopeba/linha-do-tempo",
+      "texto": "A linha do tempo reúne os principais eventos desde o rompimento até os marcos mais recentes da reparação.",
+      "links": [
+        {
+          "href": "/paraopeba/linha-do-tempo",
+          "texto": "Ver linha do tempo"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:paraopeba:documentos",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/documentos",
+      "titulo": "Onde encontrar documentos oficiais?",
+      "fonteUrl": "/paraopeba/documentos",
+      "texto": "A biblioteca de documentos reúne textos do acordo, relatórios e decisões judiciais.",
+      "links": [
+        {
+          "href": "/paraopeba/documentos",
+          "texto": "Ver documentos"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:paraopeba:analise",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/analise",
+      "titulo": "Quais análises já foram publicadas?",
+      "fonteUrl": "/paraopeba/analise",
+      "texto": "A seção Análise reúne levantamentos do portal sobre execução, repasses e prioridades do acordo.",
+      "links": [
+        {
+          "href": "/paraopeba/analise",
+          "texto": "Ver análises"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:paraopeba:auditoria",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/auditoria",
+      "titulo": "Onde ver auditorias?",
+      "fonteUrl": "/paraopeba/auditoria",
+      "texto": "A página Auditoria mostra dados sobre fiscalização e controle dos recursos do acordo.",
+      "links": [
+        {
+          "href": "/paraopeba/auditoria",
+          "texto": "Ver auditoria"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:paraopeba:auxilio-pericia",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/auxilio",
+      "titulo": "Onde ver auxílio e perícia?",
+      "fonteUrl": "/paraopeba/auxilio",
+      "texto": "As páginas Auxílio e Perícia detalham os programas de auxílio financeiro emergencial e os laudos técnicos da reparação.",
+      "links": [
+        {
+          "href": "/paraopeba/auxilio",
+          "texto": "Ver auxílio"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:paraopeba:biblioteca",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/biblioteca",
+      "titulo": "Onde ver biblioteca e notícias?",
+      "fonteUrl": "/paraopeba/biblioteca",
+      "texto": "A Biblioteca reúne publicações acadêmicas e relatórios; o Clipping reúne notícias sobre o tema.",
+      "links": [
+        {
+          "href": "/paraopeba/biblioteca",
+          "texto": "Ver biblioteca"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:direitos-em-movimento:o-que-e-direitos",
+      "frente": "direitos-em-movimento",
+      "rota": "/direitos-em-movimento",
+      "titulo": "O que é Direitos em Movimento?",
+      "fonteUrl": "/direitos-em-movimento",
+      "texto": "É uma seção do portal que reúne orientações sobre acesso à informação, canais de denúncia e defesa de direitos, além de destacar achados do Controle Popular que merecem atenção da sociedade.",
+      "links": [
+        {
+          "href": "/direitos-em-movimento",
+          "texto": "Ir para Direitos em Movimento"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:direitos-em-movimento:como-acompanhar",
+      "frente": "direitos-em-movimento",
+      "rota": "/direitos-em-movimento",
+      "titulo": "Como acompanhar os poderes públicos?",
+      "fonteUrl": "/direitos-em-movimento",
+      "texto": "Você pode usar os dados do portal para fiscalizar contratos, votações, licenciamentos e obras. A seção Direitos em Movimento mostra por onde começar.",
+      "links": [
+        {
+          "href": "/direitos-em-movimento",
+          "texto": "Ver guia de acompanhamento"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:direitos-em-movimento:pedir-informacao",
+      "frente": "direitos-em-movimento",
+      "rota": "/direitos-em-movimento/informacao",
+      "titulo": "Como pedir informação à administração pública?",
+      "fonteUrl": "/direitos-em-movimento/informacao",
+      "texto": "Todo cidadão tem direito a informações públicas (LAI). A página explica como fazer um pedido, qual o prazo e o que fazer se receber resposta incompleta.",
+      "links": [
+        {
+          "href": "/direitos-em-movimento/informacao",
+          "texto": "Guia de acesso à informação"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:direitos-em-movimento:denunciar",
+      "frente": "direitos-em-movimento",
+      "rota": "/direitos-em-movimento/denuncia",
+      "titulo": "Onde denunciar irregularidades?",
+      "fonteUrl": "/direitos-em-movimento/denuncia",
+      "texto": "A página de denúncia reúne canais como ouvidorias, Ministério Público, Controladorias, Tribunal de Contas e polícia, com orientação sobre quando usar cada um.",
+      "links": [
+        {
+          "href": "/direitos-em-movimento/denuncia",
+          "texto": "Canais de denúncia"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:direitos-em-movimento:buscar-ajuda",
+      "frente": "direitos-em-movimento",
+      "rota": "/direitos-em-movimento/ajuda",
+      "titulo": "Onde buscar ajuda para defender direitos?",
+      "fonteUrl": "/direitos-em-movimento/ajuda",
+      "texto": "A seção Ajuda lista organizações, defensorias, procuradorias e movimentos sociais que podem apoiar cidadãos e comunidades.",
+      "links": [
+        {
+          "href": "/direitos-em-movimento/ajuda",
+          "texto": "Quem pode ajudar"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:direitos-em-movimento:achado-contratos-alerta",
+      "frente": "direitos-em-movimento",
+      "rota": "/betim/prefeitura/contratos",
+      "titulo": "Quais contratos estão em alerta?",
+      "fonteUrl": "/betim/prefeitura/contratos",
+      "texto": "A tela de contratos de cada município mostra indícios de atenção: concentração de contratos com o mesmo fornecedor no ano, dispensa próxima do limite legal e fornecedor criado no mesmo ano do contrato. São sinais, não conclusões.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/fornecedores",
+          "texto": "Ver fornecedores"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:direitos-em-movimento:achado-territorio",
+      "frente": "direitos-em-movimento",
+      "rota": "/betim/terras",
+      "titulo": "Quais empreendimentos sobrepõem terras indígenas e quilombolas?",
+      "fonteUrl": "/betim/terras",
+      "texto": "A tela Terras cruza mineração, barragens e licenciamentos com territórios indígenas e quilombolas. As sobreposições são calculadas com interseção espacial exata; co-ocorrências no mesmo município são rotuladas separadamente.",
+      "links": [
+        {
+          "href": "/ambiental/barragens",
+          "texto": "Ver barragens"
+        },
+        {
+          "href": "/ambiental/licenciamento",
+          "texto": "Ver licenciamentos"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:direitos-em-movimento:achado-mineracao-barragens",
+      "frente": "direitos-em-movimento",
+      "rota": "/ambiental/barragens",
+      "titulo": "Onde há mineração ou barragens perto de comunidades?",
+      "fonteUrl": "/ambiental/barragens",
+      "texto": "A frente Ambiental e a tela Terras mostram processos minerários, manchas de barragens e licenciamentos próximos a cidades e territórios tradicionais.",
+      "links": [
+        {
+          "href": "/betim/terras",
+          "texto": "Ver mineração na cidade"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:direitos-em-movimento:achado-paraopeba",
+      "frente": "direitos-em-movimento",
+      "rota": "/paraopeba/execucao",
+      "titulo": "O que o portal achou sobre o Acordo Paraopeba?",
+      "fonteUrl": "/paraopeba/execucao",
+      "texto": "O portal acompanha a execução do acordo de reparação do rompimento da barragem da Vale, incluindo repasses, obras, programas de auxílio e auditorias. Toda comparação traz ressalva metodológica.",
+      "links": [
+        {
+          "href": "/paraopeba/analise",
+          "texto": "Ver análises"
+        },
+        {
+          "href": "/paraopeba/auditoria",
+          "texto": "Ver auditoria"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:geral:o-que-e-portal",
+      "frente": "geral",
+      "rota": "/sobre",
+      "titulo": "O que é o Controle Popular?",
+      "fonteUrl": "/sobre",
+      "texto": "Portal independente de transparência que reúne dados públicos sobre cidades, Congresso Nacional, Judiciário e meio ambiente. Não tem vínculo com nenhum órgão ou partido.",
+      "links": [
+        {
+          "href": "/sobre",
+          "texto": "Sobre o portal"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:geral:como-usar",
+      "frente": "geral",
+      "rota": "/busca",
+      "titulo": "Como usar o portal?",
+      "fonteUrl": "/busca",
+      "texto": "Use a busca universal, navegue pelas frentes no menu superior ou escolha um município na home. Cada página traz filtros e explicações sobre os dados.",
+      "links": [
+        {
+          "href": "/busca",
+          "texto": "Buscar no portal"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:geral:dados-usuario",
+      "frente": "geral",
+      "rota": "/termos",
+      "titulo": "O que vocês fazem com meus dados?",
+      "fonteUrl": "/termos",
+      "texto": "O portal não coleta dados pessoais sem consentimento. Veja a política de privacidade para mais detalhes.",
+      "links": [
+        {
+          "href": "/termos",
+          "texto": "Ver termos e privacidade"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:geral:usar-dados",
+      "frente": "geral",
+      "rota": "/termos",
+      "titulo": "Posso usar os dados do portal?",
+      "fonteUrl": "/termos",
+      "texto": "Sim. Os dados são públicos e o código do portal é aberto. Cite a fonte original e leia os termos de uso.",
+      "links": [
+        {
+          "href": "/termos",
+          "texto": "Ver termos de uso"
+        }
+      ]
+    },
+    {
+      "id": "pergunta:geral:sugerir-dado",
+      "frente": "geral",
+      "rota": "https://github.com/FinweeJur/controle-popular",
+      "titulo": "Como sugerir uma base de dados?",
+      "fonteUrl": "https://github.com/FinweeJur/controle-popular",
+      "texto": "Envie sugestões pelo repositório público no GitHub ou pelos canais de contato do portal.",
+      "links": [
+        {
+          "href": "https://github.com/FinweeJur/controle-popular",
+          "texto": "GitHub do projeto"
+        }
+      ]
+    },
+    {
+      "id": "contexto:0:0",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/contratos",
+      "titulo": "Quais contratos estão em alerta?",
+      "fonteUrl": "/betim/prefeitura/contratos",
+      "texto": "Contratos com indícios de atenção ganham badges na lista: concentração no ano, dispensa próxima do limite legal ou fornecedor criado no mesmo ano. Sempre são sinais, não conclusões.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/contratos",
+          "texto": "Ver contratos com alerta"
+        }
+      ]
+    },
+    {
+      "id": "contexto:0:1",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/fornecedores",
+      "titulo": "Quem são os maiores fornecedores?",
+      "fonteUrl": "/betim/prefeitura/fornecedores",
+      "texto": "A página de fornecedores mostra quais empresas mais contrataram a prefeitura, com valor total, número de contratos e indícios de concentração.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/fornecedores",
+          "texto": "Ver fornecedores"
+        }
+      ]
+    },
+    {
+      "id": "contexto:0:2",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/contratos",
+      "titulo": "Como filtrar contratos por valor?",
+      "fonteUrl": "/betim/prefeitura/contratos",
+      "texto": "Use os filtros no topo da tabela para ordenar por valor, fornecedor ou objeto. Clique no cabeçalho da coluna para ordenar.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/contratos",
+          "texto": "Ver contratos"
+        }
+      ]
+    },
+    {
+      "id": "contexto:1:0",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/despesas",
+      "titulo": "O que são despesas por subfunção?",
+      "fonteUrl": "/betim/prefeitura/despesas",
+      "texto": "Subfunções são divisões da função orçamentária. Ex: 'Educação' tem subfunções como 'Ensino Médio', 'Ensino Superior'. Mostra para onde o dinheiro vai detalhadamente.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/despesas",
+          "texto": "Ver despesas"
+        }
+      ]
+    },
+    {
+      "id": "contexto:1:1",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/despesas",
+      "titulo": "Como ver despesas de um órgão específico?",
+      "fonteUrl": "/betim/prefeitura/despesas",
+      "texto": "Use o filtro de órgão na parte superior da página para selecionar o órgão desejado (ex: Secretaria de Educação, Secretaria de Saúde).",
+      "links": [
+        {
+          "href": "/betim/prefeitura/despesas",
+          "texto": "Ver despesas"
+        }
+      ]
+    },
+    {
+      "id": "contexto:2:0",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/fornecedores",
+      "titulo": "O que é concentração de fornecedores?",
+      "fonteUrl": "/betim/prefeitura/fornecedores",
+      "texto": "Quando uma única empresa concentra muitos contratos ou valores altos com a prefeitura. Pode ser legítimo (empresa grande) ou sinal de atenção. Verifique os alertas.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/fornecedores",
+          "texto": "Ver fornecedores"
+        }
+      ]
+    },
+    {
+      "id": "contexto:3:0",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/servidores",
+      "titulo": "Por que não vejo nomes de servidores?",
+      "fonteUrl": "/betim/prefeitura/servidores",
+      "texto": "O portal respeita a LGPD e não publica dados pessoais de servidores sem base legal. São mostrados vínculos, órgãos e cargos, mas não nomes completos.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/servidores",
+          "texto": "Ver servidores"
+        }
+      ]
+    },
+    {
+      "id": "contexto:4:0",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/obras",
+      "titulo": "Onde ver o andamento das obras?",
+      "fonteUrl": "/betim/prefeitura/obras",
+      "texto": "A página de obras lista contratos e dados sobre obras públicas do município, quando disponíveis nos dados abertos da prefeitura.",
+      "links": [
+        {
+          "href": "/betim/prefeitura/obras",
+          "texto": "Ver obras"
+        }
+      ]
+    },
+    {
+      "id": "contexto:5:0",
+      "frente": "cidades",
+      "rota": "/betim/camara/votacoes",
+      "titulo": "Como ver a votação dos vereadores?",
+      "fonteUrl": "/betim/camara/votacoes",
+      "texto": "A seção Votações da Câmara mostra matérias em votação ou já votadas, quando a Casa publica os dados de forma aberta.",
+      "links": [
+        {
+          "href": "/betim/camara/votacoes",
+          "texto": "Ver votações"
+        }
+      ]
+    },
+    {
+      "id": "contexto:6:0",
+      "frente": "cidades",
+      "rota": "/betim/coleta-lixo",
+      "titulo": "Quando o lixo é coletado na minha região?",
+      "fonteUrl": "/betim/coleta-lixo",
+      "texto": "A página de coleta de lixo mostra os dias e horários por região do município, quando divulgados pela prefeitura.",
+      "links": [
+        {
+          "href": "/betim/coleta-lixo",
+          "texto": "Ver coleta de lixo"
+        }
+      ]
+    },
+    {
+      "id": "contexto:7:0",
+      "frente": "congresso",
+      "rota": "/congresso/proposicoes",
+      "titulo": "Como buscar uma proposição específica?",
+      "fonteUrl": "/congresso/proposicoes",
+      "texto": "Use os filtros por tipo (PL, PLP, PEC), autor, tema ou número. A busca aceita termos em português.",
+      "links": [
+        {
+          "href": "/congresso/proposicoes",
+          "texto": "Ver proposições"
+        }
+      ]
+    },
+    {
+      "id": "contexto:7:1",
+      "frente": "congresso",
+      "rota": "/congresso/proposicoes",
+      "titulo": "O que significam os status de tramitação?",
+      "fonteUrl": "/congresso/proposicoes",
+      "texto": "Cada proposição tem um status: 'Em tramitação' (no Congresso), 'Arquivada' (sem movimentação), 'Transformada em Lei' (aprovada). Veja o glossário na página.",
+      "links": [
+        {
+          "href": "/congresso/proposicoes",
+          "texto": "Ver proposições"
+        }
+      ]
+    },
+    {
+      "id": "contexto:8:0",
+      "frente": "congresso",
+      "rota": "/congresso/votacoes",
+      "titulo": "Como ver o voto de um deputado?",
+      "fonteUrl": "/congresso/votacoes",
+      "texto": "Na página de votações, clique em uma votação nominal para ver a lista completa de votos dos deputados, com posição (Sim, Não, Abstenção).",
+      "links": [
+        {
+          "href": "/congresso/votacoes",
+          "texto": "Ver votações"
+        }
+      ]
+    },
+    {
+      "id": "contexto:9:0",
+      "frente": "congresso",
+      "rota": "/congresso/parlamentares",
+      "titulo": "Como filtrar parlamentares por partido?",
+      "fonteUrl": "/congresso/parlamentares",
+      "texto": "Use o filtro de partido na parte superior. Você também pode filtrar por estado ou busca por nome.",
+      "links": [
+        {
+          "href": "/congresso/parlamentares",
+          "texto": "Ver parlamentares"
+        }
+      ]
+    },
+    {
+      "id": "contexto:10:0",
+      "frente": "congresso",
+      "rota": "/congresso/bancadas",
+      "titulo": "O que são bancadas estaduais?",
+      "fonteUrl": "/congresso/bancadas",
+      "texto": "São agrupamentos de parlamentares do mesmo estado. A página mostra composição e indicadores de atuação por bancada.",
+      "links": [
+        {
+          "href": "/congresso/bancadas",
+          "texto": "Ver bancadas"
+        }
+      ]
+    },
+    {
+      "id": "contexto:11:0",
+      "frente": "congresso",
+      "rota": "/congresso/alertas",
+      "titulo": "O que é alerta de vício auditável?",
+      "fonteUrl": "/congresso/alertas",
+      "texto": "São indícios de irregularidade em emendas, convênios ou indicações, rotulados como 'ponto de atenção', nunca como conclusão.",
+      "links": [
+        {
+          "href": "/congresso/alertas",
+          "texto": "Ver alertas"
+        }
+      ]
+    },
+    {
+      "id": "contexto:12:0",
+      "frente": "judiciario",
+      "rota": "/judiciario/sirenejud",
+      "titulo": "O que é o SIRENEJud?",
+      "fonteUrl": "/judiciario/sirenejud",
+      "texto": "É o painel do CNJ que recorta da base nacional do Judiciário os processos de tema ambiental, com município do órgão julgador.",
+      "links": [
+        {
+          "href": "/judiciario/sirenejud",
+          "texto": "Ver SIRENEJud"
+        }
+      ]
+    },
+    {
+      "id": "contexto:12:1",
+      "frente": "judiciario",
+      "rota": "/judiciario/sirenejud",
+      "titulo": "Quantos processos ambientais existem no Brasil?",
+      "fonteUrl": "/judiciario/sirenejud",
+      "texto": "O SIRENEJud registra mais de 1,4 milhão de processos ambientais em todo o país, abrangendo todos os estados.",
+      "links": [
+        {
+          "href": "/judiciario/sirenejud",
+          "texto": "Ver números"
+        }
+      ]
+    },
+    {
+      "id": "contexto:12:2",
+      "frente": "judiciario",
+      "rota": "/judiciario/sirenejud",
+      "titulo": "Quais as classes processuais mais comuns?",
+      "fonteUrl": "/judiciario/sirenejud",
+      "texto": "As classes mais comuns incluem Mandado de Segurança, Ação Civil Pública e Habeas Corpus. Veja o top 10 na página.",
+      "links": [
+        {
+          "href": "/judiciario/sirenejud",
+          "texto": "Ver classes"
+        }
+      ]
+    },
+    {
+      "id": "contexto:13:0",
+      "frente": "judiciario",
+      "rota": "/judiciario/tribunais",
+      "titulo": "Quais tribunais estão no portal?",
+      "fonteUrl": "/judiciario/tribunais",
+      "texto": "A página de tribunais reúne informações institucionais e dados publicados pelos Tribunais Superiores e estaduais.",
+      "links": [
+        {
+          "href": "/judiciario/tribunais",
+          "texto": "Ver tribunais"
+        }
+      ]
+    },
+    {
+      "id": "contexto:14:0",
+      "frente": "judiciario",
+      "rota": "/judiciario/indicacoes",
+      "titulo": "Como acompanhar indicações para tribunais?",
+      "fonteUrl": "/judiciario/indicacoes",
+      "texto": "A tela de indicações mostra nomes indicados para cargos de dirigentes e magistrados, com status de tramitação.",
+      "links": [
+        {
+          "href": "/judiciario/indicacoes",
+          "texto": "Ver indicações"
+        }
+      ]
+    },
+    {
+      "id": "contexto:15:0",
+      "frente": "ambiental",
+      "rota": "/ambiental/licenciamento",
+      "titulo": "Por que só tem licenças deferidas?",
+      "fonteUrl": "/ambiental/licenciamento",
+      "texto": "A fonte pública (IDE-Sisema/SEMAD) registra apenas o histórico de licenças deferidas. As indeferidas ou em análise estão em outro sistema não coletado.",
+      "links": [
+        {
+          "href": "/ambiental/licenciamento",
+          "texto": "Ver licenciamentos"
+        }
+      ]
+    },
+    {
+      "id": "contexto:15:1",
+      "frente": "ambiental",
+      "rota": "/ambiental/licenciamento",
+      "titulo": "Onde ver o EIA/RIMA?",
+      "fonteUrl": "/ambiental/licenciamento",
+      "texto": "Cada licença tem um link para a página original no portal da SEMAD, onde é possível acessar o Estudo de Impacto Ambiental quando disponível.",
+      "links": [
+        {
+          "href": "/ambiental/licenciamento",
+          "texto": "Ver licenciamentos"
+        }
+      ]
+    },
+    {
+      "id": "contexto:15:2",
+      "frente": "ambiental",
+      "rota": "/ambiental/licenciamento",
+      "titulo": "Qual o setor com mais licenças?",
+      "fonteUrl": "/ambiental/licenciamento",
+      "texto": "Os setores de mineração e agropecuária concentram a maior parte das licenças em Minas Gerais.",
+      "links": [
+        {
+          "href": "/ambiental/licenciamento",
+          "texto": "Ver licenciamentos"
+        }
+      ]
+    },
+    {
+      "id": "contexto:16:0",
+      "frente": "ambiental",
+      "rota": "/ambiental/barragens",
+      "titulo": "O que é descaracterização de barragem?",
+      "fonteUrl": "/ambiental/barragens",
+      "texto": "É o processo de eliminar a condição de barragem de alto risco. A página mostra quais barragens estão nesse processo.",
+      "links": [
+        {
+          "href": "/ambiental/barragens",
+          "texto": "Ver barragens"
+        }
+      ]
+    },
+    {
+      "id": "contexto:16:1",
+      "frente": "ambiental",
+      "rota": "/ambiental/barragens",
+      "titulo": "Como ver barragens perto da minha cidade?",
+      "fonteUrl": "/ambiental/barragens",
+      "texto": "Use a busca por município na página de barragens para ver quais estruturas estão no território ou próximo.",
+      "links": [
+        {
+          "href": "/ambiental/barragens",
+          "texto": "Ver barragens"
+        }
+      ]
+    },
+    {
+      "id": "contexto:17:0",
+      "frente": "ambiental",
+      "rota": "/ambiental/copam",
+      "titulo": "O que é o COPAM?",
+      "fonteUrl": "/ambiental/copam",
+      "texto": "COPAM é o Conselho de Política Ambiental de Minas Gerais. A página reúne atas e reuniões do conselho.",
+      "links": [
+        {
+          "href": "/ambiental/copam",
+          "texto": "Ver COPAM"
+        }
+      ]
+    },
+    {
+      "id": "contexto:18:0",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/execucao",
+      "titulo": "Como está a execução do acordo?",
+      "fonteUrl": "/paraopeba/execucao",
+      "texto": "A tela Execução mostra indicadores e dados sobre o andamento das medidas previstas no acordo de reparação.",
+      "links": [
+        {
+          "href": "/paraopeba/execucao",
+          "texto": "Ver execução"
+        }
+      ]
+    },
+    {
+      "id": "contexto:18:1",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/execucao",
+      "titulo": "Quanto foi repassado até agora?",
+      "fonteUrl": "/paraopeba/execucao",
+      "texto": "Os repasses são atualizados conforme os dados públicos do acordo. Veja os valores na tela de execução.",
+      "links": [
+        {
+          "href": "/paraopeba/execucao",
+          "texto": "Ver repasses"
+        }
+      ]
+    },
+    {
+      "id": "contexto:19:0",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/analise",
+      "titulo": "Quais análises já foram publicadas?",
+      "fonteUrl": "/paraopeba/analise",
+      "texto": "A seção Análise reúne levantamentos do portal sobre execução, repasses e prioridades do acordo.",
+      "links": [
+        {
+          "href": "/paraopeba/analise",
+          "texto": "Ver análises"
+        }
+      ]
+    },
+    {
+      "id": "contexto:20:0",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/biblioteca",
+      "titulo": "O que são as ATIs?",
+      "fonteUrl": "/paraopeba/biblioteca",
+      "texto": "ATIs são Assessorias Técnicas Independentes, documentos técnicos que auxiliam na fiscalização do acordo.",
+      "links": [
+        {
+          "href": "/paraopeba/biblioteca",
+          "texto": "Ver biblioteca ATI"
+        }
+      ]
+    },
+    {
+      "id": "contexto:21:0",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/auditoria",
+      "titulo": "O que é a auditoria AECOM?",
+      "fonteUrl": "/paraopeba/auditoria",
+      "texto": "É a auditoria independente realizada pela AECOM com 467 documentos e 16 eixos de análise sobre a execução do acordo.",
+      "links": [
+        {
+          "href": "/paraopeba/auditoria",
+          "texto": "Ver auditoria"
+        }
+      ]
+    },
+    {
+      "id": "contexto:22:0",
+      "frente": "direitos-em-movimento",
+      "rota": "/direitos-em-movimento/denuncia",
+      "titulo": "Onde denunciar irregularidades?",
+      "fonteUrl": "/direitos-em-movimento/denuncia",
+      "texto": "A página de denúncia reúne canais como ouvidorias, Ministério Público, Controladorias, Tribunal de Contas e polícia.",
+      "links": [
+        {
+          "href": "/direitos-em-movimento/denuncia",
+          "texto": "Canais de denúncia"
+        }
+      ]
+    },
+    {
+      "id": "contexto:23:0",
+      "frente": "direitos-em-movimento",
+      "rota": "/direitos-em-movimento/informacao",
+      "titulo": "Como pedir informação à administração pública?",
+      "fonteUrl": "/direitos-em-movimento/informacao",
+      "texto": "Todo cidadão tem direito a informações públicas (LAI). A página explica como fazer um pedido, qual o prazo e o que fazer se receber resposta incompleta.",
+      "links": [
+        {
+          "href": "/direitos-em-movimento/informacao",
+          "texto": "Guia de acesso à informação"
+        }
+      ]
+    },
+    {
+      "id": "contexto:24:0",
+      "frente": "direitos-em-movimento",
+      "rota": "/direitos-em-movimento/ajuda",
+      "titulo": "Onde buscar ajuda para defender direitos?",
+      "fonteUrl": "/direitos-em-movimento/ajuda",
+      "texto": "A seção Ajuda lista organizações, defensorias, procuradorias e movimentos sociais que podem apoiar cidadãos e comunidades.",
+      "links": [
+        {
+          "href": "/direitos-em-movimento/ajuda",
+          "texto": "Quem pode ajudar"
+        }
+      ]
+    },
+    {
+      "id": "pagina:betim-prefeitura",
+      "frente": "cidades",
+      "rota": "/betim/prefeitura/contratos",
+      "titulo": "Betim — Prefeitura",
+      "fonteUrl": "/betim/prefeitura/contratos",
+      "texto": "Dados da prefeitura de Betim: contratos, despesas, licitações, servidores e obras públicas.\nContratos públicos com valor, fornecedor e alertas de concentração\nDespesas por função e subfunção orçamentária\nLicitações abertas e seus editais\nFornecedores com valor total e número de contratos\nServidores públicos com vínculos e órgãos (respeitando LGPD)\nObras públicas com contratos e situação",
+      "links": [
+        {
+          "href": "/betim/prefeitura/contratos",
+          "texto": "Contratos"
+        },
+        {
+          "href": "/betim/prefeitura/despesas",
+          "texto": "Despesas"
+        },
+        {
+          "href": "/betim/prefeitura/fornecedores",
+          "texto": "Fornecedores"
+        },
+        {
+          "href": "/betim/prefeitura/servidores",
+          "texto": "Servidores"
+        }
+      ]
+    },
+    {
+      "id": "pagina:betim-camara",
+      "frente": "cidades",
+      "rota": "/betim/vereadores",
+      "titulo": "Betim — Câmara",
+      "fonteUrl": "/betim/vereadores",
+      "texto": "Dados da Câmara Municipal de Betim: vereadores, votações, legislação e proposições.\nVereadores com dados de contato e histórico\nVotações de matérias legislativas\nLegislação municipal (leis, decretos)\nProposições em tramitação",
+      "links": [
+        {
+          "href": "/betim/vereadores",
+          "texto": "Vereadores"
+        },
+        {
+          "href": "/betim/camara/votacoes",
+          "texto": "Votações"
+        },
+        {
+          "href": "/betim/camara/legislacao",
+          "texto": "Legislação"
+        }
+      ]
+    },
+    {
+      "id": "pagina:diamantina",
+      "frente": "cidades",
+      "rota": "/diamantina/indice",
+      "titulo": "Diamantina",
+      "fonteUrl": "/diamantina/indice",
+      "texto": "Dados de Diamantina-MG: Diário Oficial com 16.601 atos coletados, contratos, licitações e legislação.\nDiário Oficial: 16.601 atos de janeiro/2020 a julho/2026\nContratos públicos com valor e fornecedor\nLicitações e editais\nLegislação municipal",
+      "links": [
+        {
+          "href": "/diamantina/indice",
+          "texto": "Índice de Diamantina"
+        },
+        {
+          "href": "/diamantina/diario-oficial",
+          "texto": "Diário Oficial"
+        }
+      ]
+    },
+    {
+      "id": "pagina:bh",
+      "frente": "cidades",
+      "rota": "/bh/indice",
+      "titulo": "Belo Horizonte",
+      "fonteUrl": "/bh/indice",
+      "texto": "Dados de BH: Diário Oficial (coletor DOM-PBH pronto, aguarda DB), contratos, licitações.\nDiário Oficial: coletor escrito (1.814 atos em agosto/2026)\nContratos públicos\nLicitações e editais",
+      "links": [
+        {
+          "href": "/bh/indice",
+          "texto": "Índice de BH"
+        }
+      ]
+    },
+    {
+      "id": "pagina:congresso",
+      "frente": "congresso",
+      "rota": "/congresso/proposicoes",
+      "titulo": "Congresso Nacional",
+      "fonteUrl": "/congresso/proposicoes",
+      "texto": "Dados do Congresso: proposições, votações, comissões, bancadas e parlamentares.\nProposições federais (PL, PLP, PEC) com tramitação\nVotações nominais e simbólicas\nComissões permanentes e especiais\nBancadas e composição do Congresso\nParlamentares com dados de votação e presença\nAlertas de projetos que afetam cidades",
+      "links": [
+        {
+          "href": "/congresso/proposicoes",
+          "texto": "Proposições"
+        },
+        {
+          "href": "/congresso/votacoes",
+          "texto": "Votações"
+        },
+        {
+          "href": "/congresso/bancadas",
+          "texto": "Bancadas"
+        },
+        {
+          "href": "/congresso/alertas",
+          "texto": "Alertas"
+        }
+      ]
+    },
+    {
+      "id": "pagina:judiciario",
+      "frente": "judiciario",
+      "rota": "/judiciario/tribunais",
+      "titulo": "Judiciário",
+      "fonteUrl": "/judiciario/tribunais",
+      "texto": "Dados do Judiciário: tribunais, indicações, vagas, inspeções, presídios e SIRENEJud.\nTribunais estaduais e federais de MG\nIndicações de desembargadores e juízes\nVagas em tribunais\nInspeções em presídios\nDefensoria Pública\nSIRENEJud: processos ambientais do CNJ",
+      "links": [
+        {
+          "href": "/judiciario/tribunais",
+          "texto": "Tribunais"
+        },
+        {
+          "href": "/judiciario/sirenejud",
+          "texto": "SIRENEJud"
+        },
+        {
+          "href": "/judiciario/presidios",
+          "texto": "Presídios"
+        }
+      ]
+    },
+    {
+      "id": "pagina:ambiental",
+      "frente": "ambiental",
+      "rota": "/ambiental/barragens",
+      "titulo": "Meio ambiente",
+      "fonteUrl": "/ambiental/barragens",
+      "texto": "Dados ambientais: COPAM, licenciamento, barragens, legislação e TACs.\nCOPAM: conselho estadual de meio ambiente\nLicenciamento ambiental: 19.000+ empreendimentos em MG\nBarragens: classificação de risco e monitoramento\nLegislação ambiental estadual e federal\nTACs (Termos de Ajustamento de Conduta)\nConvênios e estudos ambientais",
+      "links": [
+        {
+          "href": "/ambiental/barragens",
+          "texto": "Barragens"
+        },
+        {
+          "href": "/ambiental/licenciamento",
+          "texto": "Licenciamento"
+        },
+        {
+          "href": "/ambiental/copam",
+          "texto": "COPAM"
+        }
+      ]
+    },
+    {
+      "id": "pagina:paraopeba",
+      "frente": "paraopeba",
+      "rota": "/paraopeba/entenda",
+      "titulo": "Paraopeba (Brumadinho)",
+      "fonteUrl": "/paraopeba/entenda",
+      "texto": "Dados do rompimento da barragem de Brumadinho: reparação, acordo, auditoria, perícia e biblioteca.\nAcordo de Brumadinho: execução e metas\nAuditoria independente AECOM: 467 documentos, 16 eixos\nPerícia judicial UFMG: 7 documentos técnicos\nATIs: 645 documentos de assessorias técnicas\nAuxílio emergencial: 434 beneficiários\nBarragens SIGBM: 320 estruturas monitoradas\nCotações VALE3 e notícias da Vale",
+      "links": [
+        {
+          "href": "/paraopeba/entenda",
+          "texto": "Entenda o caso"
+        },
+        {
+          "href": "/paraopeba/execucao",
+          "texto": "Execução do Acordo"
+        },
+        {
+          "href": "/paraopeba/analise",
+          "texto": "Análise integrada"
+        },
+        {
+          "href": "/paraopeba/biblioteca",
+          "texto": "Biblioteca ATI"
+        }
+      ]
+    },
+    {
+      "id": "pagina:terras",
+      "frente": "funcaosocialterra",
+      "rota": "/funcaosocialterra/mapa",
+      "titulo": "Terra e território",
+      "fonteUrl": "/funcaosocialterra/mapa",
+      "texto": "Dados territoriais: mapa 3D com camadas de mineração, CAR, processos ambientais e alertas.\nMapa 3D interativo com camadas\nMineração: concessões e áreas exploradas\nCAR (Cadastro Ambiental Rural)\nProcessos ambientais do CNJ (SIRENEJud)\nAlertas territoriais",
+      "links": [
+        {
+          "href": "/funcaosocialterra/mapa",
+          "texto": "Mapa 3D"
+        },
+        {
+          "href": "/funcaosocialterra/alertas",
+          "texto": "Alertas"
+        }
+      ]
+    },
+    {
+      "id": "pagina:direitos",
+      "frente": "direitos-em-movimento",
+      "rota": "/direitos-em-movimento/denuncia",
+      "titulo": "Direitos em Movimento",
+      "fonteUrl": "/direitos-em-movimento/denuncia",
+      "texto": "Onde buscar ajuda, como se defender, canais de denúncia e proteção de direitos.\nCanais de denúncia por tipo de violação\nAssistência jurídica e social\nProteção de direitos trabalhistas\nDireitos de idosos, crianças e mulheres\nDefesa do consumidor",
+      "links": [
+        {
+          "href": "/direitos-em-movimento/denuncia",
+          "texto": "Quero denunciar"
+        },
+        {
+          "href": "/direitos-em-movimento/ajuda",
+          "texto": "Preciso de ajuda"
+        }
+      ]
+    }
+  ]
+}
