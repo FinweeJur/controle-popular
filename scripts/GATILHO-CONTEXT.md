@@ -20,7 +20,7 @@ Bot Telegram que funciona como interface remota do projeto `controle-popular`. A
 | `/sincronizar` | Git fetch + merge + push + build + deploy |
 | `/status` | Mostra se estÃ¡ ocioso ou sincronizando |
 | `/tunel` | Status do Cloudflared + Next.js (porta 3000) |
-| `/reiniciar` | Mata e reinicia `next dev` na porta 3000 |
+| `/reiniciar` | Mata, buildeja e reinicia `next start` na porta 3000 |
 | `/code` | Status: banco (atos_diario, fontes, R2) |
 | `/andamento` | Etapas do projeto (coletor, backfill, upload R2) |
 | `/proximas` | Lista de pendÃªncias |
