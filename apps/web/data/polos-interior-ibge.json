@@ -1,0 +1,1219 @@
+{
+  "gerado_em": "2026-08-31",
+  "fonte": "API IBGE /localidades/municipios (5571 municipios)",
+  "conferencia": "casa por nome normalizado + UF; ambiguidade ou ausencia = fora do inventario e reportado",
+  "total": 172,
+  "por_regiao": {
+    "Norte": 22,
+    "Nordeste": 45,
+    "Sudeste": 50,
+    "Sul": 35,
+    "Centro-Oeste": 20
+  },
+  "polos": [
+    {
+      "id_municipio": "1100049",
+      "nome": "Cacoal",
+      "uf": "RO",
+      "regiao": "Norte",
+      "datasus_6dig": "110004"
+    },
+    {
+      "id_municipio": "1100122",
+      "nome": "Ji-Paraná",
+      "uf": "RO",
+      "regiao": "Norte",
+      "datasus_6dig": "110012"
+    },
+    {
+      "id_municipio": "1100304",
+      "nome": "Vilhena",
+      "uf": "RO",
+      "regiao": "Norte",
+      "datasus_6dig": "110030"
+    },
+    {
+      "id_municipio": "1200203",
+      "nome": "Cruzeiro do Sul",
+      "uf": "AC",
+      "regiao": "Norte",
+      "datasus_6dig": "120020"
+    },
+    {
+      "id_municipio": "1301902",
+      "nome": "Itacoatiara",
+      "uf": "AM",
+      "regiao": "Norte",
+      "datasus_6dig": "130190"
+    },
+    {
+      "id_municipio": "1302504",
+      "nome": "Manacapuru",
+      "uf": "AM",
+      "regiao": "Norte",
+      "datasus_6dig": "130250"
+    },
+    {
+      "id_municipio": "1303403",
+      "nome": "Parintins",
+      "uf": "AM",
+      "regiao": "Norte",
+      "datasus_6dig": "130340"
+    },
+    {
+      "id_municipio": "1304203",
+      "nome": "Tefé",
+      "uf": "AM",
+      "regiao": "Norte",
+      "datasus_6dig": "130420"
+    },
+    {
+      "id_municipio": "1500107",
+      "nome": "Abaetetuba",
+      "uf": "PA",
+      "regiao": "Norte",
+      "datasus_6dig": "150010"
+    },
+    {
+      "id_municipio": "1500602",
+      "nome": "Altamira",
+      "uf": "PA",
+      "regiao": "Norte",
+      "datasus_6dig": "150060"
+    },
+    {
+      "id_municipio": "1500800",
+      "nome": "Ananindeua",
+      "uf": "PA",
+      "regiao": "Norte",
+      "datasus_6dig": "150080"
+    },
+    {
+      "id_municipio": "1502103",
+      "nome": "Cametá",
+      "uf": "PA",
+      "regiao": "Norte",
+      "datasus_6dig": "150210"
+    },
+    {
+      "id_municipio": "1502400",
+      "nome": "Castanhal",
+      "uf": "PA",
+      "regiao": "Norte",
+      "datasus_6dig": "150240"
+    },
+    {
+      "id_municipio": "1503606",
+      "nome": "Itaituba",
+      "uf": "PA",
+      "regiao": "Norte",
+      "datasus_6dig": "150360"
+    },
+    {
+      "id_municipio": "1504208",
+      "nome": "Marabá",
+      "uf": "PA",
+      "regiao": "Norte",
+      "datasus_6dig": "150420"
+    },
+    {
+      "id_municipio": "1505502",
+      "nome": "Paragominas",
+      "uf": "PA",
+      "regiao": "Norte",
+      "datasus_6dig": "150550"
+    },
+    {
+      "id_municipio": "1506138",
+      "nome": "Redenção",
+      "uf": "PA",
+      "regiao": "Norte",
+      "datasus_6dig": "150613"
+    },
+    {
+      "id_municipio": "1506807",
+      "nome": "Santarém",
+      "uf": "PA",
+      "regiao": "Norte",
+      "datasus_6dig": "150680"
+    },
+    {
+      "id_municipio": "1508100",
+      "nome": "Tucuruí",
+      "uf": "PA",
+      "regiao": "Norte",
+      "datasus_6dig": "150810"
+    },
+    {
+      "id_municipio": "1600600",
+      "nome": "Santana",
+      "uf": "AP",
+      "regiao": "Norte",
+      "datasus_6dig": "160060"
+    },
+    {
+      "id_municipio": "1702109",
+      "nome": "Araguaína",
+      "uf": "TO",
+      "regiao": "Norte",
+      "datasus_6dig": "170210"
+    },
+    {
+      "id_municipio": "1709500",
+      "nome": "Gurupi",
+      "uf": "TO",
+      "regiao": "Norte",
+      "datasus_6dig": "170950"
+    },
+    {
+      "id_municipio": "2105302",
+      "nome": "Imperatriz",
+      "uf": "MA",
+      "regiao": "Nordeste",
+      "datasus_6dig": "210530"
+    },
+    {
+      "id_municipio": "2203909",
+      "nome": "Floriano",
+      "uf": "PI",
+      "regiao": "Nordeste",
+      "datasus_6dig": "220390"
+    },
+    {
+      "id_municipio": "2207702",
+      "nome": "Parnaíba",
+      "uf": "PI",
+      "regiao": "Nordeste",
+      "datasus_6dig": "220770"
+    },
+    {
+      "id_municipio": "2208007",
+      "nome": "Picos",
+      "uf": "PI",
+      "regiao": "Nordeste",
+      "datasus_6dig": "220800"
+    },
+    {
+      "id_municipio": "2304103",
+      "nome": "Crateús",
+      "uf": "CE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "230410"
+    },
+    {
+      "id_municipio": "2304202",
+      "nome": "Crato",
+      "uf": "CE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "230420"
+    },
+    {
+      "id_municipio": "2305506",
+      "nome": "Iguatu",
+      "uf": "CE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "230550"
+    },
+    {
+      "id_municipio": "2307304",
+      "nome": "Juazeiro do Norte",
+      "uf": "CE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "230730"
+    },
+    {
+      "id_municipio": "2311306",
+      "nome": "Quixadá",
+      "uf": "CE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "231130"
+    },
+    {
+      "id_municipio": "2312908",
+      "nome": "Sobral",
+      "uf": "CE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "231290"
+    },
+    {
+      "id_municipio": "2402006",
+      "nome": "Caicó",
+      "uf": "RN",
+      "regiao": "Nordeste",
+      "datasus_6dig": "240200"
+    },
+    {
+      "id_municipio": "2402600",
+      "nome": "Ceará-Mirim",
+      "uf": "RN",
+      "regiao": "Nordeste",
+      "datasus_6dig": "240260"
+    },
+    {
+      "id_municipio": "2403103",
+      "nome": "Currais Novos",
+      "uf": "RN",
+      "regiao": "Nordeste",
+      "datasus_6dig": "240310"
+    },
+    {
+      "id_municipio": "2407104",
+      "nome": "Macaíba",
+      "uf": "RN",
+      "regiao": "Nordeste",
+      "datasus_6dig": "240710"
+    },
+    {
+      "id_municipio": "2408003",
+      "nome": "Mossoró",
+      "uf": "RN",
+      "regiao": "Nordeste",
+      "datasus_6dig": "240800"
+    },
+    {
+      "id_municipio": "2409407",
+      "nome": "Pau dos Ferros",
+      "uf": "RN",
+      "regiao": "Nordeste",
+      "datasus_6dig": "240940"
+    },
+    {
+      "id_municipio": "2503704",
+      "nome": "Cajazeiras",
+      "uf": "PB",
+      "regiao": "Nordeste",
+      "datasus_6dig": "250370"
+    },
+    {
+      "id_municipio": "2504009",
+      "nome": "Campina Grande",
+      "uf": "PB",
+      "regiao": "Nordeste",
+      "datasus_6dig": "250400"
+    },
+    {
+      "id_municipio": "2506301",
+      "nome": "Guarabira",
+      "uf": "PB",
+      "regiao": "Nordeste",
+      "datasus_6dig": "250630"
+    },
+    {
+      "id_municipio": "2510808",
+      "nome": "Patos",
+      "uf": "PB",
+      "regiao": "Nordeste",
+      "datasus_6dig": "251080"
+    },
+    {
+      "id_municipio": "2516201",
+      "nome": "Sousa",
+      "uf": "PB",
+      "regiao": "Nordeste",
+      "datasus_6dig": "251620"
+    },
+    {
+      "id_municipio": "2601102",
+      "nome": "Araripina",
+      "uf": "PE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "260110"
+    },
+    {
+      "id_municipio": "2604106",
+      "nome": "Caruaru",
+      "uf": "PE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "260410"
+    },
+    {
+      "id_municipio": "2606002",
+      "nome": "Garanhuns",
+      "uf": "PE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "260600"
+    },
+    {
+      "id_municipio": "2609907",
+      "nome": "Ouricuri",
+      "uf": "PE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "260990"
+    },
+    {
+      "id_municipio": "2610905",
+      "nome": "Pesqueira",
+      "uf": "PE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "261090"
+    },
+    {
+      "id_municipio": "2611101",
+      "nome": "Petrolina",
+      "uf": "PE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "261110"
+    },
+    {
+      "id_municipio": "2613909",
+      "nome": "Serra Talhada",
+      "uf": "PE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "261390"
+    },
+    {
+      "id_municipio": "2616407",
+      "nome": "Vitória de Santo Antão",
+      "uf": "PE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "261640"
+    },
+    {
+      "id_municipio": "2700300",
+      "nome": "Arapiraca",
+      "uf": "AL",
+      "regiao": "Nordeste",
+      "datasus_6dig": "270030"
+    },
+    {
+      "id_municipio": "2702306",
+      "nome": "Coruripe",
+      "uf": "AL",
+      "regiao": "Nordeste",
+      "datasus_6dig": "270230"
+    },
+    {
+      "id_municipio": "2706307",
+      "nome": "Palmeira dos Índios",
+      "uf": "AL",
+      "regiao": "Nordeste",
+      "datasus_6dig": "270630"
+    },
+    {
+      "id_municipio": "2709301",
+      "nome": "União dos Palmares",
+      "uf": "AL",
+      "regiao": "Nordeste",
+      "datasus_6dig": "270930"
+    },
+    {
+      "id_municipio": "2802908",
+      "nome": "Itabaiana",
+      "uf": "SE",
+      "regiao": "Nordeste",
+      "datasus_6dig": "280290"
+    },
+    {
+      "id_municipio": "2900702",
+      "nome": "Alagoinhas",
+      "uf": "BA",
+      "regiao": "Nordeste",
+      "datasus_6dig": "290070"
+    },
+    {
+      "id_municipio": "2903201",
+      "nome": "Barreiras",
+      "uf": "BA",
+      "regiao": "Nordeste",
+      "datasus_6dig": "290320"
+    },
+    {
+      "id_municipio": "2905701",
+      "nome": "Camaçari",
+      "uf": "BA",
+      "regiao": "Nordeste",
+      "datasus_6dig": "290570"
+    },
+    {
+      "id_municipio": "2910800",
+      "nome": "Feira de Santana",
+      "uf": "BA",
+      "regiao": "Nordeste",
+      "datasus_6dig": "291080"
+    },
+    {
+      "id_municipio": "2913606",
+      "nome": "Ilhéus",
+      "uf": "BA",
+      "regiao": "Nordeste",
+      "datasus_6dig": "291360"
+    },
+    {
+      "id_municipio": "2914802",
+      "nome": "Itabuna",
+      "uf": "BA",
+      "regiao": "Nordeste",
+      "datasus_6dig": "291480"
+    },
+    {
+      "id_municipio": "2918001",
+      "nome": "Jequié",
+      "uf": "BA",
+      "regiao": "Nordeste",
+      "datasus_6dig": "291800"
+    },
+    {
+      "id_municipio": "2918407",
+      "nome": "Juazeiro",
+      "uf": "BA",
+      "regiao": "Nordeste",
+      "datasus_6dig": "291840"
+    },
+    {
+      "id_municipio": "2919207",
+      "nome": "Lauro de Freitas",
+      "uf": "BA",
+      "regiao": "Nordeste",
+      "datasus_6dig": "291920"
+    },
+    {
+      "id_municipio": "2924009",
+      "nome": "Paulo Afonso",
+      "uf": "BA",
+      "regiao": "Nordeste",
+      "datasus_6dig": "292400"
+    },
+    {
+      "id_municipio": "2933307",
+      "nome": "Vitória da Conquista",
+      "uf": "BA",
+      "regiao": "Nordeste",
+      "datasus_6dig": "293330"
+    },
+    {
+      "id_municipio": "3104007",
+      "nome": "Araxá",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "310400"
+    },
+    {
+      "id_municipio": "3105608",
+      "nome": "Barbacena",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "310560"
+    },
+    {
+      "id_municipio": "3118601",
+      "nome": "Contagem",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "311860"
+    },
+    {
+      "id_municipio": "3122306",
+      "nome": "Divinópolis",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "312230"
+    },
+    {
+      "id_municipio": "3127701",
+      "nome": "Governador Valadares",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "312770"
+    },
+    {
+      "id_municipio": "3131307",
+      "nome": "Ipatinga",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "313130"
+    },
+    {
+      "id_municipio": "3136702",
+      "nome": "Juiz de Fora",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "313670"
+    },
+    {
+      "id_municipio": "3143302",
+      "nome": "Montes Claros",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "314330"
+    },
+    {
+      "id_municipio": "3147907",
+      "nome": "Passos",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "314790"
+    },
+    {
+      "id_municipio": "3148004",
+      "nome": "Patos de Minas",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "314800"
+    },
+    {
+      "id_municipio": "3151800",
+      "nome": "Poços de Caldas",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "315180"
+    },
+    {
+      "id_municipio": "3152501",
+      "nome": "Pouso Alegre",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "315250"
+    },
+    {
+      "id_municipio": "3167202",
+      "nome": "Sete Lagoas",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "316720"
+    },
+    {
+      "id_municipio": "3168606",
+      "nome": "Teófilo Otoni",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "316860"
+    },
+    {
+      "id_municipio": "3170107",
+      "nome": "Uberaba",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "317010"
+    },
+    {
+      "id_municipio": "3170206",
+      "nome": "Uberlândia",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "317020"
+    },
+    {
+      "id_municipio": "3170701",
+      "nome": "Varginha",
+      "uf": "MG",
+      "regiao": "Sudeste",
+      "datasus_6dig": "317070"
+    },
+    {
+      "id_municipio": "3203205",
+      "nome": "Linhares",
+      "uf": "ES",
+      "regiao": "Sudeste",
+      "datasus_6dig": "320320"
+    },
+    {
+      "id_municipio": "3205002",
+      "nome": "Serra",
+      "uf": "ES",
+      "regiao": "Sudeste",
+      "datasus_6dig": "320500"
+    },
+    {
+      "id_municipio": "3301009",
+      "nome": "Campos dos Goytacazes",
+      "uf": "RJ",
+      "regiao": "Sudeste",
+      "datasus_6dig": "330100"
+    },
+    {
+      "id_municipio": "3301702",
+      "nome": "Duque de Caxias",
+      "uf": "RJ",
+      "regiao": "Sudeste",
+      "datasus_6dig": "330170"
+    },
+    {
+      "id_municipio": "3302403",
+      "nome": "Macaé",
+      "uf": "RJ",
+      "regiao": "Sudeste",
+      "datasus_6dig": "330240"
+    },
+    {
+      "id_municipio": "3303302",
+      "nome": "Niterói",
+      "uf": "RJ",
+      "regiao": "Sudeste",
+      "datasus_6dig": "330330"
+    },
+    {
+      "id_municipio": "3303401",
+      "nome": "Nova Friburgo",
+      "uf": "RJ",
+      "regiao": "Sudeste",
+      "datasus_6dig": "330340"
+    },
+    {
+      "id_municipio": "3303906",
+      "nome": "Petrópolis",
+      "uf": "RJ",
+      "regiao": "Sudeste",
+      "datasus_6dig": "330390"
+    },
+    {
+      "id_municipio": "3304904",
+      "nome": "São Gonçalo",
+      "uf": "RJ",
+      "regiao": "Sudeste",
+      "datasus_6dig": "330490"
+    },
+    {
+      "id_municipio": "3306305",
+      "nome": "Volta Redonda",
+      "uf": "RJ",
+      "regiao": "Sudeste",
+      "datasus_6dig": "330630"
+    },
+    {
+      "id_municipio": "3503208",
+      "nome": "Araraquara",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "350320"
+    },
+    {
+      "id_municipio": "3506003",
+      "nome": "Bauru",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "350600"
+    },
+    {
+      "id_municipio": "3509502",
+      "nome": "Campinas",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "350950"
+    },
+    {
+      "id_municipio": "3510609",
+      "nome": "Carapicuíba",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "351060"
+    },
+    {
+      "id_municipio": "3513801",
+      "nome": "Diadema",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "351380"
+    },
+    {
+      "id_municipio": "3516200",
+      "nome": "Franca",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "351620"
+    },
+    {
+      "id_municipio": "3518800",
+      "nome": "Guarulhos",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "351880"
+    },
+    {
+      "id_municipio": "3525904",
+      "nome": "Jundiaí",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "352590"
+    },
+    {
+      "id_municipio": "3526902",
+      "nome": "Limeira",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "352690"
+    },
+    {
+      "id_municipio": "3529005",
+      "nome": "Marília",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "352900"
+    },
+    {
+      "id_municipio": "3529401",
+      "nome": "Mauá",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "352940"
+    },
+    {
+      "id_municipio": "3534401",
+      "nome": "Osasco",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "353440"
+    },
+    {
+      "id_municipio": "3538709",
+      "nome": "Piracicaba",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "353870"
+    },
+    {
+      "id_municipio": "3541406",
+      "nome": "Presidente Prudente",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "354140"
+    },
+    {
+      "id_municipio": "3543402",
+      "nome": "Ribeirão Preto",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "354340"
+    },
+    {
+      "id_municipio": "3547809",
+      "nome": "Santo André",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "354780"
+    },
+    {
+      "id_municipio": "3548500",
+      "nome": "Santos",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "354850"
+    },
+    {
+      "id_municipio": "3548708",
+      "nome": "São Bernardo do Campo",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "354870"
+    },
+    {
+      "id_municipio": "3548807",
+      "nome": "São Caetano do Sul",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "354880"
+    },
+    {
+      "id_municipio": "3549805",
+      "nome": "São José do Rio Preto",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "354980"
+    },
+    {
+      "id_municipio": "3549904",
+      "nome": "São José dos Campos",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "354990"
+    },
+    {
+      "id_municipio": "3552205",
+      "nome": "Sorocaba",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "355220"
+    },
+    {
+      "id_municipio": "3554102",
+      "nome": "Taubaté",
+      "uf": "SP",
+      "regiao": "Sudeste",
+      "datasus_6dig": "355410"
+    },
+    {
+      "id_municipio": "4101408",
+      "nome": "Apucarana",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "410140"
+    },
+    {
+      "id_municipio": "4101804",
+      "nome": "Araucária",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "410180"
+    },
+    {
+      "id_municipio": "4104303",
+      "nome": "Campo Mourão",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "410430"
+    },
+    {
+      "id_municipio": "4104808",
+      "nome": "Cascavel",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "410480"
+    },
+    {
+      "id_municipio": "4108304",
+      "nome": "Foz do Iguaçu",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "410830"
+    },
+    {
+      "id_municipio": "4109401",
+      "nome": "Guarapuava",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "410940"
+    },
+    {
+      "id_municipio": "4113700",
+      "nome": "Londrina",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "411370"
+    },
+    {
+      "id_municipio": "4115200",
+      "nome": "Maringá",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "411520"
+    },
+    {
+      "id_municipio": "4118402",
+      "nome": "Paranavaí",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "411840"
+    },
+    {
+      "id_municipio": "4119905",
+      "nome": "Ponta Grossa",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "411990"
+    },
+    {
+      "id_municipio": "4125506",
+      "nome": "São José dos Pinhais",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "412550"
+    },
+    {
+      "id_municipio": "4127700",
+      "nome": "Toledo",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "412770"
+    },
+    {
+      "id_municipio": "4128104",
+      "nome": "Umuarama",
+      "uf": "PR",
+      "regiao": "Sul",
+      "datasus_6dig": "412810"
+    },
+    {
+      "id_municipio": "4202008",
+      "nome": "Balneário Camboriú",
+      "uf": "SC",
+      "regiao": "Sul",
+      "datasus_6dig": "420200"
+    },
+    {
+      "id_municipio": "4202404",
+      "nome": "Blumenau",
+      "uf": "SC",
+      "regiao": "Sul",
+      "datasus_6dig": "420240"
+    },
+    {
+      "id_municipio": "4202909",
+      "nome": "Brusque",
+      "uf": "SC",
+      "regiao": "Sul",
+      "datasus_6dig": "420290"
+    },
+    {
+      "id_municipio": "4204202",
+      "nome": "Chapecó",
+      "uf": "SC",
+      "regiao": "Sul",
+      "datasus_6dig": "420420"
+    },
+    {
+      "id_municipio": "4204608",
+      "nome": "Criciúma",
+      "uf": "SC",
+      "regiao": "Sul",
+      "datasus_6dig": "420460"
+    },
+    {
+      "id_municipio": "4208203",
+      "nome": "Itajaí",
+      "uf": "SC",
+      "regiao": "Sul",
+      "datasus_6dig": "420820"
+    },
+    {
+      "id_municipio": "4208906",
+      "nome": "Jaraguá do Sul",
+      "uf": "SC",
+      "regiao": "Sul",
+      "datasus_6dig": "420890"
+    },
+    {
+      "id_municipio": "4209102",
+      "nome": "Joinville",
+      "uf": "SC",
+      "regiao": "Sul",
+      "datasus_6dig": "420910"
+    },
+    {
+      "id_municipio": "4209300",
+      "nome": "Lages",
+      "uf": "SC",
+      "regiao": "Sul",
+      "datasus_6dig": "420930"
+    },
+    {
+      "id_municipio": "4211900",
+      "nome": "Palhoça",
+      "uf": "SC",
+      "regiao": "Sul",
+      "datasus_6dig": "421190"
+    },
+    {
+      "id_municipio": "4216602",
+      "nome": "São José",
+      "uf": "SC",
+      "regiao": "Sul",
+      "datasus_6dig": "421660"
+    },
+    {
+      "id_municipio": "4218707",
+      "nome": "Tubarão",
+      "uf": "SC",
+      "regiao": "Sul",
+      "datasus_6dig": "421870"
+    },
+    {
+      "id_municipio": "4304606",
+      "nome": "Canoas",
+      "uf": "RS",
+      "regiao": "Sul",
+      "datasus_6dig": "430460"
+    },
+    {
+      "id_municipio": "4305108",
+      "nome": "Caxias do Sul",
+      "uf": "RS",
+      "regiao": "Sul",
+      "datasus_6dig": "430510"
+    },
+    {
+      "id_municipio": "4307005",
+      "nome": "Erechim",
+      "uf": "RS",
+      "regiao": "Sul",
+      "datasus_6dig": "430700"
+    },
+    {
+      "id_municipio": "4313409",
+      "nome": "Novo Hamburgo",
+      "uf": "RS",
+      "regiao": "Sul",
+      "datasus_6dig": "431340"
+    },
+    {
+      "id_municipio": "4314100",
+      "nome": "Passo Fundo",
+      "uf": "RS",
+      "regiao": "Sul",
+      "datasus_6dig": "431410"
+    },
+    {
+      "id_municipio": "4314407",
+      "nome": "Pelotas",
+      "uf": "RS",
+      "regiao": "Sul",
+      "datasus_6dig": "431440"
+    },
+    {
+      "id_municipio": "4315602",
+      "nome": "Rio Grande",
+      "uf": "RS",
+      "regiao": "Sul",
+      "datasus_6dig": "431560"
+    },
+    {
+      "id_municipio": "4316808",
+      "nome": "Santa Cruz do Sul",
+      "uf": "RS",
+      "regiao": "Sul",
+      "datasus_6dig": "431680"
+    },
+    {
+      "id_municipio": "4316907",
+      "nome": "Santa Maria",
+      "uf": "RS",
+      "regiao": "Sul",
+      "datasus_6dig": "431690"
+    },
+    {
+      "id_municipio": "4318705",
+      "nome": "São Leopoldo",
+      "uf": "RS",
+      "regiao": "Sul",
+      "datasus_6dig": "431870"
+    },
+    {
+      "id_municipio": "5003207",
+      "nome": "Corumbá",
+      "uf": "MS",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "500320"
+    },
+    {
+      "id_municipio": "5003702",
+      "nome": "Dourados",
+      "uf": "MS",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "500370"
+    },
+    {
+      "id_municipio": "5008305",
+      "nome": "Três Lagoas",
+      "uf": "MS",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "500830"
+    },
+    {
+      "id_municipio": "5102504",
+      "nome": "Cáceres",
+      "uf": "MT",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "510250"
+    },
+    {
+      "id_municipio": "5105259",
+      "nome": "Lucas do Rio Verde",
+      "uf": "MT",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "510525"
+    },
+    {
+      "id_municipio": "5107602",
+      "nome": "Rondonópolis",
+      "uf": "MT",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "510760"
+    },
+    {
+      "id_municipio": "5107909",
+      "nome": "Sinop",
+      "uf": "MT",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "510790"
+    },
+    {
+      "id_municipio": "5107958",
+      "nome": "Tangará da Serra",
+      "uf": "MT",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "510795"
+    },
+    {
+      "id_municipio": "5108402",
+      "nome": "Várzea Grande",
+      "uf": "MT",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "510840"
+    },
+    {
+      "id_municipio": "5200258",
+      "nome": "Águas Lindas de Goiás",
+      "uf": "GO",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "520025"
+    },
+    {
+      "id_municipio": "5201108",
+      "nome": "Anápolis",
+      "uf": "GO",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "520110"
+    },
+    {
+      "id_municipio": "5201405",
+      "nome": "Aparecida de Goiânia",
+      "uf": "GO",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "520140"
+    },
+    {
+      "id_municipio": "5205109",
+      "nome": "Catalão",
+      "uf": "GO",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "520510"
+    },
+    {
+      "id_municipio": "5208004",
+      "nome": "Formosa",
+      "uf": "GO",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "520800"
+    },
+    {
+      "id_municipio": "5211503",
+      "nome": "Itumbiara",
+      "uf": "GO",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "521150"
+    },
+    {
+      "id_municipio": "5211909",
+      "nome": "Jataí",
+      "uf": "GO",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "521190"
+    },
+    {
+      "id_municipio": "5212501",
+      "nome": "Luziânia",
+      "uf": "GO",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "521250"
+    },
+    {
+      "id_municipio": "5213103",
+      "nome": "Mineiros",
+      "uf": "GO",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "521310"
+    },
+    {
+      "id_municipio": "5218805",
+      "nome": "Rio Verde",
+      "uf": "GO",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "521880"
+    },
+    {
+      "id_municipio": "5221858",
+      "nome": "Valparaíso de Goiás",
+      "uf": "GO",
+      "regiao": "Centro-Oeste",
+      "datasus_6dig": "522185"
+    }
+  ]
+}
