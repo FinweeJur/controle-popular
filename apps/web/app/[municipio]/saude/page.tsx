@@ -5,6 +5,7 @@ import { formatNumberBR } from "@/lib/betim/format";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { rankingCidsMunicipio } from "@/lib/db/queries/betim";
 import RankingCidTabela from "@/app/[municipio]/components/RankingCidTabela";
+import GraficoInternacoesSvg from "@/app/[municipio]/components/GraficoInternacoesSvg";
 import { enriquecerRegistroCid } from "@/lib/saude/cid";
 import type { CidRegistro } from "@/lib/saude/cid";
 
@@ -108,6 +109,58 @@ export default async function SaudePage({
               </DataCard>
             )}
           </section>
+
+          {/* EVOLUÇÃO DAS INTERNAÇÕES — dado real de `saude_internacoes`
+              (coletor etl/betim/etl/bd/sih_sim.py). Gráfico SVG com a
+              tabela como alternativa em texto (regra do AGENTS.md). */}
+          {data.internacoesPorAno.length > 1 ? (
+            <section>
+              <DataCard
+                title="Evolução das internações de moradores"
+                source={{ label: "SIH/DATASUS", url: "https://datasus.saude.gov.br/" }}
+              >
+                <GraficoInternacoesSvg
+                  pontos={data.internacoesPorAno.map((i) => ({
+                    ano: i.ano,
+                    internacoes: i.qtdTotal,
+                    obitos: i.obitosTotal,
+                  }))}
+                />
+                <details className="mt-4 rounded-xl border border-border/60 bg-surface-2 p-3 text-xs text-text-soft">
+                  <summary className="cursor-pointer font-medium text-text">
+                    Ver os números em tabela
+                  </summary>
+                  <table className="mt-3 w-full text-left">
+                    <thead>
+                      <tr className="border-b border-border/60 text-text-soft">
+                        <th className="pb-1.5 font-medium">Ano</th>
+                        <th className="pb-1.5 text-right font-medium">Internações</th>
+                        <th className="pb-1.5 text-right font-medium">Óbitos</th>
+                        <th className="pb-1.5 text-right font-medium">Mortalidade</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border/40 font-tabular">
+                      {[...data.internacoesPorAno]
+                        .sort((a, b) => a.ano - b.ano)
+                        .map((i) => (
+                          <tr key={i.ano}>
+                            <td className="py-1.5 font-medium text-text">{i.ano}</td>
+                            <td className="py-1.5 text-right">{formatNumberBR(i.qtdTotal)}</td>
+                            <td className="py-1.5 text-right">{formatNumberBR(i.obitosTotal)}</td>
+                            <td className="py-1.5 text-right">
+                              {i.qtdTotal > 0
+                                ? ((i.obitosTotal / i.qtdTotal) * 100).toFixed(1).replace(".", ",")
+                                : "—"}
+                              %
+                            </td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </details>
+              </DataCard>
+            </section>
+          ) : null}
 
           <section className="grid gap-4 sm:grid-cols-2">
             <DataCard
