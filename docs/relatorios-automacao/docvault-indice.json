@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "cnj-relatorio-inspecao-ordinaria-tjba-2026",
+    "nome": "Relatório de Inspeção Ordinária TJBA 2026",
+    "urlOrigem": "https://www.cnj.jus.br/download/5361/2026/419318/relatorio-de-inspecao-ordinaria-tjba-2026",
+    "hash": "c1a9e6d8c2aee361df9284bd40f7c7cfe8aa4078504ca5c495cba51ff10e747e",
+    "dataDownload": "2026-08-31T20:19:42.528Z",
+    "status": "enviado",
+    "urlR2": "https://504b59b98e0d3238115c082989de3f66.r2.cloudflarestorage.com/controlepopular-fontes/docs/cnj-relatorio-inspecao-ordinaria-tjba-2026.pdf"
+  },
+  {
+    "slug": "cnj-relatorio-inspecao-ordinaria-tjmg-2026",
+    "nome": "Relatório de Inspeção Ordinária TJMG 2026",
+    "urlOrigem": "https://www.cnj.jus.br/download/5361/2026/419319/relatorio-de-inspecao-ordinaria-tjmg-2026",
+    "hash": "8132c39412490606291d262a76d678a2a542af703ec792200a55d0ef7867dd74",
+    "dataDownload": "2026-08-31T20:15:26.847Z",
+    "status": "enviado",
+    "urlR2": "https://504b59b98e0d3238115c082989de3f66.r2.cloudflarestorage.com/controlepopular-fontes/docs/cnj-relatorio-inspecao-ordinaria-tjmg-2026.pdf"
+  }
+]
