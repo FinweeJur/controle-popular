@@ -82,6 +82,10 @@ const SINTETICOS = new Set([
   // 47018614139: agregado financeiro do SIAFI (R$ bi) capturado como inteiro
   // pelo grep — mod-11 passa por coincidência, mas é dinheiro, não CPF.
   "47018614139",
+  // 00003106705: código IBGE de Betim com zeros à esquerda (artefato do
+  // validate-docbr citado em docstring da guarda Python) — mod-11 passa por
+  // coincidência, é município, não CPF.
+  "00003106705",
 ]);
 
 describe("nenhum CPF real em arquivo versionado", () => {

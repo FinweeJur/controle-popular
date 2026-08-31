@@ -49,8 +49,23 @@ CADA rodada precisa estar em DIRETORIOS_DADO, não só atrás de `--extra` — d
 contrário a proteção depende de alguém lembrar de digitar a flag toda vez.
 
 Só os VALORES de texto são varridos (não as chaves, não a estrutura), e só
-valores que seriam um CPF de verdade — mod-11. CNPJ (14 dígitos), código IBGE
-(7 dígitos) e id/protocolo de 11 dígitos que não passa no mod-11 não disparam.
+valores que seriam um CPF de verdade — mod-11 como régua base, confirmado
+pelo validate-docbr (M4, 31/08/2026; ver seção abaixo). CNPJ (14 dígitos),
+código IBGE (7 dígitos) e id/protocolo de 11 dígitos que não passa no mod-11
+não disparam.
+
+═══ VALIDAÇÃO COMPLEMENTAR (validate-docbr, M4) ═══
+
+O mod-11 caseiro continua sendo a régua BASE e o critério de dígito
+verificador — formato sozinho nunca basta. Desde a melhoria M4, todo
+candidato que passa no mod-11 é CONFIRMADO por
+`validate_docbr.CPF().validate()` antes de virar alarme: a mesma matemática
+de dígito verificador, mantida por quem cuida do formato de documento
+brasileiro, derruba falso positivo que sobrevive à conta caseira. O import é
+OPCIONAL de propósito — máquina sem a biblioteca (CI mínima, pip do hook de
+pre-push) cai para mod-11 puro e imprime um aviso no stderr. Instale com:
+
+    python -m pip install validate-docbr
 
 ═══ POR QUE EM PYTHON, E NÃO SÓ NO TESTE DO PORTAL ═══
 
@@ -81,6 +96,31 @@ import sys
 import tempfile
 
 # ---------------------------------------------------------------------------
+# Validador complementar (M4, 31/08/2026): validate-docbr (MIT,
+# github.com/alvarofpp/validate-docbr) confirma cada candidato que passou no
+# mod-11 caseiro antes de virar alarme — mesma matemática de dígito
+# verificador, mantida por quem cuida do formato no Brasil. O import é
+# OPCIONAL de propósito: sem a biblioteca, o script segue com mod-11 puro
+# (comportamento antigo) e avisa no stderr — aviso vai para o stderr para
+# não contaminar a saída contada por quem chama o script de outro processo.
+try:
+    from validate_docbr import CPF
+    _VALIDATE_DOCBR = True
+except ImportError:
+    _VALIDATE_DOCBR = False
+    # O main() reconfigureia o stdout no arranque, mas este aviso sai no
+    # import, antes — e o console do Windows abre em cp1252 e estoura no
+    # ⚠. Mesmo padrão do main(): um guarda que quebra ao RELATAR não protege.
+    try:
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, io.UnsupportedOperation):
+        pass
+    print("⚠️  validate-docbr não instalado — validação segue só no mod-11. "
+          "Instale com: python -m pip install validate-docbr",
+          file=sys.stderr)
+
+
+# ---------------------------------------------------------------------------
 # O que se varre.
 #
 # Só JSON de DADO. As EXTENSOES/EXCLUIR do script irmão (`checar-dado-
@@ -109,7 +149,11 @@ _RE_CPF = re.compile(RE_CPF)
 # DIVERGIRAM uma vez (`12345678909` foi acrescentado numa e esquecido na outra,
 # e a suíte quebrou no merge seguinte). Mexeu numa, mexa nas três.
 SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900",
-              "12345678909", "123.456.789-09", "47018614139"}
+              "12345678909", "123.456.789-09", "47018614139",
+              # falso positivo: IBGE de Betim com zeros à esquerda (artefato do
+              # validate-docbr citado no docstring de _cpf_confirmado) — passa no
+              # mod-11 por coincidência, é município, não CPF.
+              "00003106705"}
 
 
 def cpf_valido(digitos: str) -> bool:
@@ -130,14 +174,40 @@ def cpf_valido(digitos: str) -> bool:
     return dv(9) == int(digitos[9]) and dv(10) == int(digitos[10])
 
 
+def _cpf_confirmado(digitos: str) -> bool:
+    """validate-docbr confirma o mod-11 (M4).
+
+    mod-11 é a base e o ÚNICO critério quando a biblioteca não está
+    instalada. Com ela presente, o candidato só é reportado se passar nas
+    DUAS réguas — o que derruba falso positivo que sobrevive à conta
+    caseira. Não muda o destino de CPF real: a matemática é a mesma (dígito
+    verificador), então o que vale no mod-11 vale aqui também.
+
+    A trava de 11 dígitos ANTES da biblioteca não é redundância: o
+    validate-docbr completa com zeros à esquerda o que vier curto, e
+    "3106705" (IBGE de Betim) preenchido vira "00003106705", que passa na
+    conta — a régua caseira é quem mantém o contrato de 11 dígitos.
+    """
+    if not _VALIDATE_DOCBR:
+        return True
+    if len(digitos) != 11:
+        return False
+    return bool(CPF().validate(digitos))
+
+
 def _procurar_em_texto(texto: str, caminho: str) -> list[tuple[str, str]]:
-    """(caminho dentro do JSON, valor) — só os que passam no mod-11."""
+    """(caminho dentro do JSON, valor) — só os que passam no mod-11.
+
+    Com validate-docbr instalado, só os que passam no mod-11 E na confirmação
+    dele; sem a biblioteca, o mod-11 puro decide (ver _cpf_confirmado).
+    """
     achados = []
     for m in _RE_CPF.finditer(texto):
         valor = m.group(0)
         if valor in SINTETICOS:
             continue
-        if cpf_valido(re.sub(r"\D", "", valor)):
+        digitos = re.sub(r"\D", "", valor)
+        if cpf_valido(digitos) and _cpf_confirmado(digitos):
             achados.append((caminho, valor))
     return achados
 
@@ -240,6 +310,15 @@ def self_test() -> int:
     verifica("validador rejeita 11111111111", not cpf_valido("11111111111"))
     verifica("validador rejeita 12345678900", not cpf_valido("12345678900"))
     verifica("validador rejeita 3106705 (IBGE)", not cpf_valido("3106705"))
+
+    # 1b. O validador complementar (M4) concorda com a régua — e só quando a
+    #     biblioteca está instalada; sem ela, o mod-11 puro segue sendo o
+    #     critério (o self-test não pode depender do pip do ambiente).
+    if _VALIDATE_DOCBR:
+        verifica("validador complementar aceita 12345678909",
+                 _cpf_confirmado("12345678909"))
+        verifica("validador complementar rejeita IBGE 3106705",
+                 not _cpf_confirmado("3106705"))
 
     # 2. O scanner acha CPF válido em estrutura aninhada e informa o caminho.
     global SINTETICOS

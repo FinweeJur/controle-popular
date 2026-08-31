@@ -112,7 +112,8 @@ RE_HOST_LOCAL = re.compile("@(127[.]0[.]0[.]1|localhost|::1)")
 # no Brasil â€” precisa estar aqui justamente porque passa na rÃ©gua: sem ele, o
 # teste que verifica se o validador funciona seria barrado por este script.
 SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900", "47018614139", # falso positivo: agregado financeiro do SIAFI (R$ bi) capturado como inteiro pelo grep — dinheiro, nao CPF
-              "12345678909", "123.456.789-09"}
+              "12345678909", "123.456.789-09",
+              "00003106705"} # falso positivo: IBGE de Betim com zeros a esquerda (artefato do validate-docbr em docstring) — municipio, nao CPF
 
 
 def cpf_valido(digitos: str) -> bool:
