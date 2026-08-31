@@ -1,11 +1,11 @@
 {
-  "geradoEm": "2026-08-31T18:13:47.016Z",
+  "geradoEm": "2026-08-31T20:03:43.195Z",
   "agente": "PicoClaw Source Watcher",
   "versao": "2.0.0",
   "total": 24,
-  "online": 18,
-  "comFalha": 6,
-  "taxaDisponibilidade": "75.0%",
+  "online": 23,
+  "comFalha": 1,
+  "taxaDisponibilidade": "95.8%",
   "resultados": [
     {
       "slug": "pncp-contratos",
@@ -14,10 +14,10 @@
       "url": "https://pncp.gov.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 5371,
+      "tempoRespostaMs": 4360,
       "lastModified": null,
-      "contentLengthBytes": null,
-      "hashConteudo": "cceda16d2a5ed6e3"
+      "contentLengthBytes": 321700,
+      "hashConteudo": "32b904315c27f418"
     },
     {
       "slug": "sigpub-diario",
@@ -26,7 +26,7 @@
       "url": "https://www.diariomunicipal.com.br/amm-mg/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 3476,
+      "tempoRespostaMs": 970,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -38,7 +38,7 @@
       "url": "https://api-publica.transferegov.gestao.gov.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1974,
+      "tempoRespostaMs": 313,
       "lastModified": "Sun, 23 Aug 2026 14:53:40 GMT",
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -47,14 +47,13 @@
       "slug": "comunicabr-repasses",
       "nome": "ComunicaBR — Ações e Repasses do Governo Federal",
       "frente": "cidades",
-      "url": "https://comunicabr.gov.br",
-      "statusHttp": null,
-      "ok": false,
-      "tempoRespostaMs": 5590,
+      "url": "https://comunicabr.presidencia.gov.br/api/v1/municipios/31",
+      "statusHttp": 200,
+      "ok": true,
+      "tempoRespostaMs": 486,
       "lastModified": null,
       "contentLengthBytes": null,
-      "hashConteudo": null,
-      "erro": "fetch failed"
+      "hashConteudo": null
     },
     {
       "slug": "salic-rouanet",
@@ -63,7 +62,7 @@
       "url": "https://salic.cultura.gov.br",
       "statusHttp": 403,
       "ok": true,
-      "tempoRespostaMs": 276,
+      "tempoRespostaMs": 212,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null,
@@ -76,7 +75,7 @@
       "url": "https://dadosabertos.camara.leg.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 358,
+      "tempoRespostaMs": 224,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": "2ebd3de351cebd0d"
@@ -88,7 +87,7 @@
       "url": "https://legis.senado.leg.br/dadosabertos/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 949,
+      "tempoRespostaMs": 774,
       "lastModified": "Thu, 01 Jan 1970 00:00:01 GMT",
       "contentLengthBytes": 734,
       "hashConteudo": null
@@ -100,7 +99,7 @@
       "url": "https://www.cnj.jus.br/programas-e-acoes/sirenejud/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 854,
+      "tempoRespostaMs": 739,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -112,7 +111,7 @@
       "url": "https://datajud-wiki.cnj.jus.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1619,
+      "tempoRespostaMs": 1226,
       "lastModified": "Tue, 04 Aug 2026 19:57:23 GMT",
       "contentLengthBytes": null,
       "hashConteudo": "47cd456f88e780e7"
@@ -121,10 +120,10 @@
       "slug": "cnj-inspecoes",
       "nome": "Biblioteca de Inspeções da Corregedoria Nacional de Justiça",
       "frente": "judiciario",
-      "url": "https://www.cnj.jus.br/corregedoriacnj/inspecoes-e-corricoes/",
-      "statusHttp": 404,
-      "ok": false,
-      "tempoRespostaMs": 480,
+      "url": "https://www.cnj.jus.br/inspecoes-correicoes/",
+      "statusHttp": 200,
+      "ok": true,
+      "tempoRespostaMs": 541,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -136,7 +135,7 @@
       "url": "https://geoserver.funai.gov.br",
       "statusHttp": null,
       "ok": false,
-      "tempoRespostaMs": 19251,
+      "tempoRespostaMs": 17421,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null,
@@ -149,7 +148,7 @@
       "url": "https://certificacao.incra.gov.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 505,
+      "tempoRespostaMs": 257,
       "lastModified": "Wed, 25 Feb 2026 20:36:58 GMT",
       "contentLengthBytes": 689,
       "hashConteudo": "9e08ebf30ddb2bda"
@@ -161,7 +160,7 @@
       "url": "https://dadosabertos.anm.gov.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 320,
+      "tempoRespostaMs": 225,
       "lastModified": null,
       "contentLengthBytes": 480,
       "hashConteudo": null
@@ -173,36 +172,34 @@
       "url": "https://projetorioparaopeba.fgv.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 669,
-      "lastModified": "Fri, 31 Jul 2026 19:08:29 GMT",
+      "tempoRespostaMs": 1314,
+      "lastModified": "Mon, 31 Aug 2026 18:41:48 GMT",
       "contentLengthBytes": 100073,
-      "hashConteudo": "ba8de92761fe8c33"
+      "hashConteudo": "502c52319a049366"
     },
     {
       "slug": "repasse-brumadinho",
       "nome": "Repasse aos Municípios (Lei Estadual 23.830/2021)",
       "frente": "paraopeba",
       "url": "https://www.mg.gov.br/pro-brumadinho",
-      "statusHttp": null,
-      "ok": false,
-      "tempoRespostaMs": 29041,
-      "lastModified": null,
-      "contentLengthBytes": null,
-      "hashConteudo": null,
-      "erro": "This operation was aborted"
+      "statusHttp": 200,
+      "ok": true,
+      "tempoRespostaMs": 1444,
+      "lastModified": "Mon, 31 Aug 2026 20:03:29 GMT",
+      "contentLengthBytes": 93200,
+      "hashConteudo": "73ae8edc6f09e183"
     },
     {
       "slug": "auditoria-ajri",
       "nome": "Auditoria AJRI (AECOM / Brumadinho)",
       "frente": "paraopeba",
-      "url": "https://ajri.aecom.com.br",
-      "statusHttp": null,
-      "ok": false,
-      "tempoRespostaMs": 5490,
+      "url": "https://portal.auditoriasocioambiental.com.br",
+      "statusHttp": 200,
+      "ok": true,
+      "tempoRespostaMs": 573,
       "lastModified": null,
-      "contentLengthBytes": null,
-      "hashConteudo": null,
-      "erro": "fetch failed"
+      "contentLengthBytes": 0,
+      "hashConteudo": "0633aab69b56d867"
     },
     {
       "slug": "biblioteca-atis",
@@ -211,7 +208,7 @@
       "url": "https://www.aedasmg.org",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 2639,
+      "tempoRespostaMs": 457,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -223,7 +220,7 @@
       "url": "https://dadosabertos.anm.gov.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1635,
+      "tempoRespostaMs": 174,
       "lastModified": null,
       "contentLengthBytes": 480,
       "hashConteudo": null
@@ -235,7 +232,7 @@
       "url": "https://dados.gov.br/dados/conjuntos-dados/licencas-ambientais",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 3960,
+      "tempoRespostaMs": 255,
       "lastModified": "Tue, 21 Jul 2026 14:35:22 GMT",
       "contentLengthBytes": 9632,
       "hashConteudo": null
@@ -247,9 +244,9 @@
       "url": "http://acessoainformacao.mg.gov.br/sistema/site/busca_decisao.aspx",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 8090,
+      "tempoRespostaMs": 277,
       "lastModified": null,
-      "contentLengthBytes": 42689,
+      "contentLengthBytes": 42687,
       "hashConteudo": null
     },
     {
@@ -259,7 +256,7 @@
       "url": "https://ecosistemas.meioambiente.mg.gov.br/gtac/",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 26566,
+      "tempoRespostaMs": 280,
       "lastModified": null,
       "contentLengthBytes": null,
       "hashConteudo": "c0185d8d4ae24e9b"
@@ -271,7 +268,7 @@
       "url": "https://dados.mma.gov.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 2869,
+      "tempoRespostaMs": 685,
       "lastModified": null,
       "contentLengthBytes": 4272,
       "hashConteudo": null
@@ -283,7 +280,7 @@
       "url": "https://www.b3.com.br",
       "statusHttp": 200,
       "ok": true,
-      "tempoRespostaMs": 1915,
+      "tempoRespostaMs": 232,
       "lastModified": "Fri, 22 Sep 2017 21:22:49 GMT",
       "contentLengthBytes": null,
       "hashConteudo": null
@@ -292,13 +289,13 @@
       "slug": "sigma-lithium-observatorio",
       "nome": "Observatório Sigma Lithium (Vale do Jequitinhonha)",
       "frente": "empresas",
-      "url": "https://app.anm.gov.br/SIGMINE/",
-      "statusHttp": 404,
-      "ok": false,
-      "tempoRespostaMs": 1229,
-      "lastModified": null,
-      "contentLengthBytes": 1245,
-      "hashConteudo": null
+      "url": "https://geo.anm.gov.br/",
+      "statusHttp": 200,
+      "ok": true,
+      "tempoRespostaMs": 233,
+      "lastModified": "Mon, 15 Jul 2019 19:19:42 GMT",
+      "contentLengthBytes": 703,
+      "hashConteudo": "45f456012da0d091"
     }
   ]
 }
