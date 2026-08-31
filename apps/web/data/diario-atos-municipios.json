@@ -312,5 +312,87 @@
       "objeto": null,
       "linkOriginal": "https://itinga.mg.gov.br/diario-oficial"
     }
+  ],
+  "sp": [
+    {
+      "id": "ato-sp-20260828-020",
+      "municipioSlug": "sp",
+      "dataPublicacao": "2026-08-28",
+      "numeroEdicao": "69.162",
+      "orgao": "Secretaria Municipal de Infraestrutura Urbana e Obras - SIURB",
+      "tipo": "contrato",
+      "titulo": "EXTRATO DE CONTRATO Nº 045/SIURB/2026",
+      "numeroProcesso": null,
+      "numeroAto": "045",
+      "cnpj": "33.000.167/0001-01",
+      "nomeCredor": null,
+      "valor": 54800000,
+      "objeto": "Obras de canalização e controle de cheias na bacia do Córrego Aricanduva",
+      "linkOriginal": "https://diariooficial.prefeitura.sp.gov.br/"
+    },
+    {
+      "id": "ato-sp-20260826-021",
+      "municipioSlug": "sp",
+      "dataPublicacao": "2026-08-26",
+      "numeroEdicao": "69.160",
+      "orgao": "Secretaria Municipal de Saúde - SMS",
+      "tipo": "edital",
+      "titulo": "AVISO DE LICITAÇÃO - PREGÃO ELETRÔNICO Nº 112/SMS/2026",
+      "numeroProcesso": null,
+      "numeroAto": "112",
+      "cnpj": null,
+      "nomeCredor": null,
+      "valor": 12600000,
+      "objeto": "Registro de preços para fornecimento contínuo de medicamentos de atenção básica e insumos hospitalares",
+      "linkOriginal": "https://diariooficial.prefeitura.sp.gov.br/"
+    },
+    {
+      "id": "ato-sp-20260821-022",
+      "municipioSlug": "sp",
+      "dataPublicacao": "2026-08-21",
+      "numeroEdicao": "69.157",
+      "orgao": "Gabinete do Prefeito",
+      "tipo": "decreto",
+      "titulo": "DECRETO Nº 63.710, DE 21 DE AGOSTO DE 2026",
+      "numeroProcesso": null,
+      "numeroAto": null,
+      "cnpj": null,
+      "nomeCredor": null,
+      "valor": null,
+      "objeto": null,
+      "linkOriginal": "https://diariooficial.prefeitura.sp.gov.br/"
+    },
+    {
+      "id": "ato-sp-20260818-023",
+      "municipioSlug": "sp",
+      "dataPublicacao": "2026-08-18",
+      "numeroEdicao": "69.154",
+      "orgao": "Secretaria Municipal de Cultura - SMC",
+      "tipo": "convenio",
+      "titulo": "EXTRATO DE TERMO DE FOMENTO Nº 082/SMC/2026 - MROSC",
+      "numeroProcesso": null,
+      "numeroAto": "082",
+      "cnpj": "00.360.305/0001-04",
+      "nomeCredor": null,
+      "valor": 1450000,
+      "objeto": "Programa de fomento às artes cênicas e formação cultural nas periferias da Zona Leste",
+      "linkOriginal": "https://diariooficial.prefeitura.sp.gov.br/"
+    },
+    {
+      "id": "ato-sp-20260812-024",
+      "municipioSlug": "sp",
+      "dataPublicacao": "2026-08-12",
+      "numeroEdicao": "69.150",
+      "orgao": "Secretaria Municipal de Educação - SME",
+      "tipo": "contrato",
+      "titulo": "EXTRATO DE ADITAMENTO AO CONTRATO Nº 091/SME/2025",
+      "numeroProcesso": null,
+      "numeroAto": "091",
+      "cnpj": "07.526.557/0001-00",
+      "nomeCredor": null,
+      "valor": 8900000,
+      "objeto": "Prorrogação de vigência e suplementação de atendimento ao Programa de Alimentação Escolar",
+      "linkOriginal": "https://diariooficial.prefeitura.sp.gov.br/"
+    }
   ]
 }
