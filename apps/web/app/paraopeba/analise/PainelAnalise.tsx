@@ -6,6 +6,7 @@ import { TEMA_AJRI_LABEL } from "@/lib/paraopeba/auditoria-ajri";
 import type { AtiBiblioteca, ItemBiblioteca } from "@/lib/paraopeba/biblioteca";
 import { temasAjriSaoInferidos } from "@/lib/paraopeba/temas-ati-utils";
 import type { EixoIntegrado } from "@/lib/paraopeba/sintese-integrada";
+import { baixarCsv, type ColunaCsv } from "@/lib/tabela/csv";
 
 /**
  * `/paraopeba/analise` — a tabela dos 16 eixos, filtrável, ordenável e
@@ -49,49 +50,39 @@ function normalizar(s: string): string {
     .trim();
 }
 
-function csvEscape(valor: unknown): string {
-  const s = valor === null || valor === undefined ? "" : String(valor);
-  return /[";\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-}
-
-function paraCsv(linhas: EixoIntegrado[]): string {
-  const BOM = "﻿";
-  const cabecalho = [
-    "eixo",
-    "tem_tema_ajri",
-    "fontes_que_falam",
-    "documentos_pericia",
-    "documentos_ati",
-    "vozes_ati",
-    "quais_faltam",
-  ].join(";");
-  const corpo = linhas.map((e) =>
-    [
-      e.titulo,
-      e.cobertura.temTemaAjri ? "sim" : "nao",
-      e.cobertura.fontesQueFalam,
-      e.pericia.documentos.length,
-      e.atis.documentos.length,
-      e.vozAti.length,
-      e.cobertura.quaisFaltam.join(" | "),
-    ]
-      .map(csvEscape)
-      .join(";")
-  );
-  return BOM + [cabecalho, ...corpo].join("\r\n") + "\r\n";
-}
-
-function baixarCsv(conteudo: string, nomeArquivo: string) {
-  const blob = new Blob([conteudo], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = nomeArquivo;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-}
+const COLUNAS_CSV_PAINEL_ANALISE: ColunaCsv<EixoIntegrado>[] = [
+  { chave: "titulo", rotulo: "Eixo" },
+  {
+    chave: "cobertura",
+    rotulo: "Tem Tema AJRI",
+    formatar: (c) => (c.temTemaAjri ? "sim" : "nao"),
+  },
+  {
+    chave: "cobertura",
+    rotulo: "Fontes Que Falam",
+    formatar: (c) => c.fontesQueFalam,
+  },
+  {
+    chave: "pericia",
+    rotulo: "Documentos Perícia",
+    formatar: (p) => p.documentos.length,
+  },
+  {
+    chave: "atis",
+    rotulo: "Documentos ATI",
+    formatar: (a) => a.documentos.length,
+  },
+  {
+    chave: "vozAti",
+    rotulo: "Vozes ATI",
+    formatar: (v) => v.length,
+  },
+  {
+    chave: "cobertura",
+    rotulo: "Quais Faltam",
+    formatar: (c) => c.quaisFaltam.join(" | "),
+  },
+];
 
 /** "3_Apresentação_Ambiental_Claudia.pdf" -> "Apresentação Ambiental Claudia". */
 function tituloLegivelPericia(nomeArquivo: string): string {
@@ -187,7 +178,7 @@ export default function PainelAnalise({
 
   function exportar() {
     const hoje = new Date().toISOString().slice(0, 10);
-    baixarCsv(paraCsv(filtrados), `paraopeba-analise-integrada-${hoje}.csv`);
+    baixarCsv(COLUNAS_CSV_PAINEL_ANALISE, filtrados, `paraopeba-analise-integrada-${hoje}.csv`);
   }
 
   return (
