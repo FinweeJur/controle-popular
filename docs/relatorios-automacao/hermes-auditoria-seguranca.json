@@ -1,8 +1,8 @@
 {
-  "geradoEm": "2026-08-31T17:55:46.991Z",
+  "geradoEm": "2026-08-31T19:12:24.255Z",
   "agente": "Hermes Agent Security & Data Auditor",
-  "totalVerificacoes": 9,
-  "aprovados": 9,
+  "totalVerificacoes": 13,
+  "aprovados": 13,
   "alertas": 0,
   "falhas": 0,
   "itens": [
@@ -23,6 +23,30 @@
       "item": "Espelhamento public/_headers",
       "status": "APROVADO",
       "detalhes": "public/_headers configurado para garantir proteção nos Static Assets do Worker."
+    },
+    {
+      "categoria": "seguranca",
+      "item": "Produção: Content-Security-Policy",
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https://server.arcgisonline.com https://tile.openstreetmap.org; ..."
+    },
+    {
+      "categoria": "seguranca",
+      "item": "Produção: Strict-Transport-Security",
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: max-age=31536000; includeSubDomains"
+    },
+    {
+      "categoria": "seguranca",
+      "item": "Produção: X-Frame-Options",
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: SAMEORIGIN"
+    },
+    {
+      "categoria": "seguranca",
+      "item": "Produção: X-Content-Type-Options",
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: nosniff"
     },
     {
       "categoria": "seguranca",

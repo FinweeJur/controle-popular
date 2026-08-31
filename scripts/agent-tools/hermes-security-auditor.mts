@@ -97,6 +97,92 @@ export function auditarCspEHeaders(): ItemAuditoria[] {
   return itens;
 }
 
+function truncarValorHeader(valor: string | null, limite: number = 200): string {
+  if (!valor) return "(ausente)";
+  if (valor.length <= limite) return valor;
+  return `${valor.slice(0, limite)}...`;
+}
+
+export async function auditarHeadersProducao(): Promise<ItemAuditoria[]> {
+  const itens: ItemAuditoria[] = [];
+  const URL_PRODUCAO = "https://controlepopular.com.br";
+  const USER_AGENT_HERMES =
+    "ControlePopular/1.0 (+https://github.com/FinweeJur/controle-popular; auditoria de seguranca)";
+  const TIMEOUT_MS = 15_000;
+
+  const controle = new AbortController();
+  const timer = setTimeout(() => controle.abort(), TIMEOUT_MS);
+
+  let resposta: Response | null = null;
+  let erroSonda: unknown = null;
+
+  try {
+    resposta = await fetch(URL_PRODUCAO, {
+      method: "HEAD",
+      redirect: "follow",
+      signal: controle.signal,
+      headers: { "User-Agent": USER_AGENT_HERMES },
+    });
+  } catch (erro) {
+    try {
+      resposta = await fetch(URL_PRODUCAO, {
+        method: "GET",
+        redirect: "follow",
+        signal: controle.signal,
+        headers: { "User-Agent": USER_AGENT_HERMES, Range: "bytes=0-1024" },
+      });
+    } catch (erroFallback) {
+      erroSonda = erroFallback;
+    }
+  } finally {
+    clearTimeout(timer);
+  }
+
+  if (!resposta) {
+    itens.push({
+      categoria: "seguranca",
+      item: "Sondagem de Produção (headers reais)",
+      status: "ALERTA",
+      detalhes: `Não foi possível conectar a ${URL_PRODUCAO} nesta máquina para sondar os headers reais de produção (${
+        erroSonda instanceof Error ? erroSonda.message : String(erroSonda)
+      }). A auditoria de código local foi executada normalmente; reexecute de uma máquina com acesso à rede.`,
+    });
+    return itens;
+  }
+
+  resposta.body?.cancel();
+
+  const verificacoes: Array<{ nome: string; alternativa?: string }> = [
+    { nome: "Content-Security-Policy", alternativa: "Content-Security-Policy-Report-Only" },
+    { nome: "Strict-Transport-Security" },
+    { nome: "X-Frame-Options" },
+    { nome: "X-Content-Type-Options" },
+  ];
+
+  for (const v of verificacoes) {
+    const valor = resposta.headers.get(v.nome) ?? (v.alternativa ? resposta.headers.get(v.alternativa) : null);
+    if (valor) {
+      itens.push({
+        categoria: "seguranca",
+        item: `Produção: ${v.nome}`,
+        status: "APROVADO",
+        detalhes: `Header retornado por ${URL_PRODUCAO}: ${truncarValorHeader(valor)}`,
+      });
+    } else {
+      itens.push({
+        categoria: "seguranca",
+        item: `Produção: ${v.nome}`,
+        status: "ALERTA",
+        detalhes: `Header não retornado na sondagem real de ${URL_PRODUCAO}${
+          v.alternativa ? ` (nem ${v.alternativa})` : ""
+        }. Conferir a configuração de produção; no código local o header está declarado.`,
+      });
+    }
+  }
+
+  return itens;
+}
+
 export function auditarSegredosEVazamentos(): ItemAuditoria[] {
   const itens: ItemAuditoria[] = [];
 
@@ -287,6 +373,7 @@ export async function executarAuditoriaHermes(): Promise<{
 
   const itens: ItemAuditoria[] = [
     ...auditarCspEHeaders(),
+    ...(await auditarHeadersProducao()),
     ...auditarSegredosEVazamentos(),
     ...auditarLimitesCloudflare(),
     ...auditarPrivacidadeCpf(),
