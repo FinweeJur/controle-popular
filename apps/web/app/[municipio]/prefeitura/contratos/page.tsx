@@ -79,6 +79,10 @@ export default async function ContratosPage({ params: rota }: ContratosPageProps
         valor e fornecedor com link direto à fonte oficial.{" "}
         <Link href="/prefeitura/licitacoes" className="font-medium text-accent hover:underline">
           Ver processos de licitação em andamento →
+        </Link>{" "}
+        ·{" "}
+        <Link href="/prefeitura/diario" className="font-medium text-accent hover:underline">
+          Ver extratos no Diário Oficial →
         </Link>
       </p>
 

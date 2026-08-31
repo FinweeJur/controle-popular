@@ -1,0 +1,394 @@
+[
+  {
+    "id": "ato-01-contrato-medicamentos",
+    "tipo": "contrato",
+    "texto": "EXTRATO DE CONTRATO Nº 100/2026. Processo Licitatório 014/2025. Contratada: SAMED HOSPITALAR LTDA, CNPJ: 12.345.678/0001-95. Objeto: Aquisição de medicamentos e insumos hospitalares para a rede municipal de saúde. Valor Global: R$ 150.000,00.",
+    "esperado": {
+      "valoresMonetarios": [150000.0],
+      "valorPrincipal": 150000.0,
+      "cnpjs": ["12.345.678/0001-95"],
+      "numeroProcesso": "014/2025",
+      "numeroEdital": null,
+      "numeroContrato": "100/2026",
+      "objeto": "Aquisição de medicamentos e insumos hospitalares para a rede municipal de saúde"
+    }
+  },
+  {
+    "id": "ato-02-edital-pregao-eletronico",
+    "tipo": "edital",
+    "texto": "AVISO DE LICITAÇÃO - PREGÃO ELETRÔNICO Nº 08/2026. Processo Licitatório nº 025/2026. Objeto: Contratação de empresa especializada em serviços de limpeza urbana e coleta de resíduos sólidos. Valor Total Estimado: R$ 1.250.000,50.",
+    "esperado": {
+      "valoresMonetarios": [1250000.5],
+      "valorPrincipal": 1250000.5,
+      "cnpjs": [],
+      "numeroProcesso": "025/2026",
+      "numeroEdital": "08/2026",
+      "numeroContrato": null,
+      "objeto": "Contratação de empresa especializada em serviços de limpeza urbana e coleta de resíduos sólidos"
+    }
+  },
+  {
+    "id": "ato-03-termo-fomento-osc",
+    "tipo": "convenio",
+    "texto": "EXTRATO DO TERMO DE FOMENTO Nº 010/2026. Processo Administrativo nº 004/2026. Parceira: ASSOCIAÇÃO COMUNITÁRIA VIVER BEM, CNPJ 00.000.000/0001-91. Finalidade: Desenvolvimento de oficinas culturais para jovens e adolescentes. Valor Total: R$ 85.000,00.",
+    "esperado": {
+      "valoresMonetarios": [85000.0],
+      "valorPrincipal": 85000.0,
+      "cnpjs": ["00.000.000/0001-91"],
+      "numeroProcesso": "004/2026",
+      "numeroEdital": null,
+      "numeroContrato": "010/2026",
+      "objeto": "Desenvolvimento de oficinas culturais para jovens e adolescentes"
+    }
+  },
+  {
+    "id": "ato-04-aditivo-contrato-obras",
+    "tipo": "contrato",
+    "texto": "EXTRATO DO 2º TERMO ADITIVO AO CONTRATO Nº 019/2025. Contratada: CONSTRUTORA MINAS GERAIS S.A., CNPJ: 33.000.167/0001-01. Objeto: Prorrogação de prazo e acréscimo de valor para pavimentação asfáltica. Valor: R$ 420.350,00.",
+    "esperado": {
+      "valoresMonetarios": [420350.0],
+      "valorPrincipal": 420350.0,
+      "cnpjs": ["33.000.167/0001-01"],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": "019/2025",
+      "objeto": "Prorrogação de prazo e acréscimo de valor para pavimentação asfáltica"
+    }
+  },
+  {
+    "id": "ato-05-dispensa-licitacao-emergencial",
+    "tipo": "edital",
+    "texto": "TERMO DE RATIFICAÇÃO DE DISPENSA DE LICITAÇÃO Nº 06/2026. Processo Licitatório 008/2026. Favorecido: DISTRIBUIDORA DE ALIMENTOS LTDA, CNPJ: 07.526.557/0001-00. Objeto: Fornecimento emergencial de cestas básicas para famílias em situação de vulnerabilidade. Valor Global de R$ 98.400,00.",
+    "esperado": {
+      "valoresMonetarios": [98400.0],
+      "valorPrincipal": 98400.0,
+      "cnpjs": ["07.526.557/0001-00"],
+      "numeroProcesso": "008/2026",
+      "numeroEdital": "06/2026",
+      "numeroContrato": null,
+      "objeto": "Fornecimento emergencial de cestas básicas para famílias em situação de vulnerabilidade"
+    }
+  },
+  {
+    "id": "ato-06-convenio-repasse-estadual",
+    "tipo": "convenio",
+    "texto": "EXTRATO DE CONVÊNIO Nº 009/2026. Partícipes: Município de Diamantina e Caixa Econômica Federal, CNPJ: 00.360.305/0001-04. Cujo objeto é a execução de obras de saneamento básico e drenagem pluvial. Valor Total: R$ 3.500.000,00, sendo R$ 500.000,00 de contrapartida municipal.",
+    "esperado": {
+      "valoresMonetarios": [3500000.0, 500000.0],
+      "valorPrincipal": 3500000.0,
+      "cnpjs": ["00.360.305/0001-04"],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": "009/2026",
+      "objeto": "a execução de obras de saneamento básico e drenagem pluvial"
+    }
+  },
+  {
+    "id": "ato-07-decreto-abertura-credito",
+    "tipo": "decreto",
+    "texto": "DECRETO Nº 338, DE 30 DE JUNHO DE 2026. Abre crédito suplementar no valor de R$ 750.000,00 para reforço de dotações orçamentárias da Secretaria Municipal de Educação.",
+    "esperado": {
+      "valoresMonetarios": [750000.0],
+      "valorPrincipal": 750000.0,
+      "cnpjs": [],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": null,
+      "objeto": null
+    }
+  },
+  {
+    "id": "ato-08-portaria-comissao-licitacao",
+    "tipo": "portaria",
+    "texto": "PORTARIA SMS Nº 09, DE 27 DE MAIO DE 2026. Designa os membros da Comissão Permanente de Licitação para o exercício de 2026.",
+    "esperado": {
+      "valoresMonetarios": [],
+      "valorPrincipal": null,
+      "cnpjs": [],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": null,
+      "objeto": null
+    }
+  },
+  {
+    "id": "ato-09-ata-registro-precos",
+    "tipo": "edital",
+    "texto": "EXTRATO: ATA DE REGISTRO DE PREÇOS Nº 043/2026. Processo Licitatório 032/2026. Pregão Eletrônico 015/2026. Objeto: Registro de preços para eventual aquisição de materiais de escritório e papelaria. Detentor: PAPELARIA CENTRAL, CNPJ 12345678000195. Valor: R$ 45.890,20.",
+    "esperado": {
+      "valoresMonetarios": [45890.2],
+      "valorPrincipal": 45890.2,
+      "cnpjs": ["12.345.678/0001-95"],
+      "numeroProcesso": "032/2026",
+      "numeroEdital": "043/2026",
+      "numeroContrato": null,
+      "objeto": "Registro de preços para eventual aquisição de materiais de escritório e papelaria"
+    }
+  },
+  {
+    "id": "ato-10-termo-colaboracao-mrosc",
+    "tipo": "convenio",
+    "texto": "2º TERMO ADITIVO AO TERMO DE COLABORAÇÃO Nº 002/2025. Processo Administrativo nº 011/2025. Organização: INSTITUTO CRIAR, CNPJ 00.000.000/0001-91. Tendo por objeto o atendimento a crianças na primeira infância. Valor Global: R$ 210.000,00.",
+    "esperado": {
+      "valoresMonetarios": [210000.0],
+      "valorPrincipal": 210000.0,
+      "cnpjs": ["00.000.000/0001-91"],
+      "numeroProcesso": "011/2025",
+      "numeroEdital": null,
+      "numeroContrato": "002/2025",
+      "objeto": "o atendimento a crianças na primeira infância"
+    }
+  },
+  {
+    "id": "ato-11-homologacao-contrato-camara",
+    "tipo": "contrato",
+    "texto": "TERMO DE HOMOLOGAÇÃO AO CONTRATO Nº 08/2025. Contratada: TECNOLOGIA E SERVIÇOS LTDA, CNPJ: 33.000.167/0001-01. Objeto: Manutenção preventiva e corretiva de equipamentos de informática. Valor Total: R$ 64.000,00.",
+    "esperado": {
+      "valoresMonetarios": [64000.0],
+      "valorPrincipal": 64000.0,
+      "cnpjs": ["33.000.167/0001-01"],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": "08/2025",
+      "objeto": "Manutenção preventiva e corretiva de equipamentos de informática"
+    }
+  },
+  {
+    "id": "ato-12-inexigibilidade-capacitacao",
+    "tipo": "edital",
+    "texto": "AVISO DE INEXIGIBILIDADE DE LICITAÇÃO Nº 07/2025. Processo Licitatório nº 14/2025. Contratado: CENTRO DE ESTUDOS JURÍDICOS, CNPJ: 07.526.557/0001-00. Objeto: Curso de capacitação em licitações e contratos para servidores municipais. Valor: R$ 18.500,00.",
+    "esperado": {
+      "valoresMonetarios": [18500.0],
+      "valorPrincipal": 18500.0,
+      "cnpjs": ["07.526.557/0001-00"],
+      "numeroProcesso": "14/2025",
+      "numeroEdital": "07/2025",
+      "numeroContrato": null,
+      "objeto": "Curso de capacitação em licitações e contratos para servidores municipais"
+    }
+  },
+  {
+    "id": "ato-13-chamamento-publico-cultura",
+    "tipo": "edital",
+    "texto": "EDITAL DE CHAMAMENTO PÚBLICO Nº 012/2026. Processo nº 030/2026. Objeto: Seleção de projetos culturais para concessão de apoio financeiro através da Lei Paulo Gustavo. Valor Total: R$ 320.000,00.",
+    "esperado": {
+      "valoresMonetarios": [320000.0],
+      "valorPrincipal": 320000.0,
+      "cnpjs": [],
+      "numeroProcesso": "030/2026",
+      "numeroEdital": "012/2026",
+      "numeroContrato": null,
+      "objeto": "Seleção de projetos culturais para concessão de apoio financeiro através da Lei Paulo Gustavo"
+    }
+  },
+  {
+    "id": "ato-14-distrato-contratual",
+    "tipo": "contrato",
+    "texto": "TERMO DE DISTRATO AO CONTRATO Nº 045/2024. Processo Administrativo 088/2024. Contratada: ENGENHARIA LTDA, CNPJ 12.345.678/0001-95. Objeto: Rescisão amigável do contrato de reforma de praça pública.",
+    "esperado": {
+      "valoresMonetarios": [],
+      "valorPrincipal": null,
+      "cnpjs": ["12.345.678/0001-95"],
+      "numeroProcesso": "088/2024",
+      "numeroEdital": null,
+      "numeroContrato": "045/2024",
+      "objeto": "Rescisão amigável do contrato de reforma de praça pública"
+    }
+  },
+  {
+    "id": "ato-15-lei-orcamentaria-anual",
+    "tipo": "lei",
+    "texto": "LEI Nº 1.234, DE 05 DE MAIO DE 2026. Estima a receita e fixa a despesa do Município para o exercício financeiro de 2027 no valor global de R$ 180.000.000,00.",
+    "esperado": {
+      "valoresMonetarios": [180000000.0],
+      "valorPrincipal": 180000000.0,
+      "cnpjs": [],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": null,
+      "objeto": null
+    }
+  },
+  {
+    "id": "ato-16-lei-complementar-tributaria",
+    "tipo": "lei",
+    "texto": "LEI COMPLEMENTAR Nº 10/2026. Dispõe sobre o Código Tributário Municipal e concede isenção de IPTU para imóveis de interesse social.",
+    "esperado": {
+      "valoresMonetarios": [],
+      "valorPrincipal": null,
+      "cnpjs": [],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": null,
+      "objeto": null
+    }
+  },
+  {
+    "id": "ato-17-edital-concorrencia-ponte",
+    "tipo": "edital",
+    "texto": "EDITAL DE LICITAÇÃO - CONCORRÊNCIA Nº 01/2026. Processo Licitatório nº 018/2026. Objeto: Construção de ponte de concreto armado sobre o Rio Jequitinhonha. Valor Estimado: R$ 4.850.000,00.",
+    "esperado": {
+      "valoresMonetarios": [4850000.0],
+      "valorPrincipal": 4850000.0,
+      "cnpjs": [],
+      "numeroProcesso": "018/2026",
+      "numeroEdital": "01/2026",
+      "numeroContrato": null,
+      "objeto": "Construção de ponte de concreto armado sobre o Rio Jequitinhonha"
+    }
+  },
+  {
+    "id": "ato-18-portaria-nomeacao-servidor",
+    "tipo": "portaria",
+    "texto": "PORTARIA Nº 047, DE 28 DE MAIO DE 2026. Nomeia servidora pública municipal para o cargo comissionado de Assessora Técnica.",
+    "esperado": {
+      "valoresMonetarios": [],
+      "valorPrincipal": null,
+      "cnpjs": [],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": null,
+      "objeto": null
+    }
+  },
+  {
+    "id": "ato-19-aditivo-contrato-transporte",
+    "tipo": "contrato",
+    "texto": "EXTRATO DO 1º TERMO ADITIVO AO CONTRATO Nº 05/2026. Processo Licitatório 002/2026. Contratada: AUTO ÔNIBUS DIAMANTINA LTDA, CNPJ 33.000.167/0001-01. Objeto: Prestação de serviços de transporte escolar rural. Valor: R$ 560.000,00.",
+    "esperado": {
+      "valoresMonetarios": [560000.0],
+      "valorPrincipal": 560000.0,
+      "cnpjs": ["33.000.167/0001-01"],
+      "numeroProcesso": "002/2026",
+      "numeroEdital": null,
+      "numeroContrato": "05/2026",
+      "objeto": "Prestação de serviços de transporte escolar rural"
+    }
+  },
+  {
+    "id": "ato-20-acordo-cooperacao-ufvjm",
+    "tipo": "convenio",
+    "texto": "EXTRATO DE ACORDO DE COOPERAÇÃO TÉCNICA Nº 003/2026. Partícipes: Município de Diamantina e Universidade Federal dos Vales do Jequitinhonha e Mucuri - UFVJM, CNPJ: 00.360.305/0001-04. Objetivo: Desenvolvimento de pesquisas aplicadas em sustentabilidade hídrica.",
+    "esperado": {
+      "valoresMonetarios": [],
+      "valorPrincipal": null,
+      "cnpjs": ["00.360.305/0001-04"],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": "003/2026",
+      "objeto": "Desenvolvimento de pesquisas aplicadas em sustentabilidade hídrica"
+    }
+  },
+  {
+    "id": "ato-21-adjudicacao-pregao-merenda",
+    "tipo": "edital",
+    "texto": "TERMO DE ADJUDICAÇÃO E HOMOLOGAÇÃO AO PREGÃO ELETRÔNICO Nº 005/2026. Processo Licitatório 012/2026. Fornecedor: COOPERATIVA DE PRODUTORES RURAIS, CNPJ 07.526.557/0001-00. Objeto: Aquisição de gêneros alimentícios da agricultura familiar para merenda escolar. Valor Total Adjudicado: R$ 389.700,00.",
+    "esperado": {
+      "valoresMonetarios": [389700.0],
+      "valorPrincipal": 389700.0,
+      "cnpjs": ["07.526.557/0001-00"],
+      "numeroProcesso": "012/2026",
+      "numeroEdital": "005/2026",
+      "numeroContrato": null,
+      "objeto": "Aquisição de gêneros alimentícios da agricultura familiar para merenda escolar"
+    }
+  },
+  {
+    "id": "ato-22-contrato-locacao-imovel",
+    "tipo": "contrato",
+    "texto": "EXTRATO DE CONTRATO DE LOCAÇÃO Nº 012/2025. Processo Licitatório 014/2025 - Inexigibilidade nº 07/2025. Locatária: Câmara Municipal de Diamantina. Objeto: Locação de imóvel urbano destinado ao anexo administrativo. Valor Mensal de R$ 4.500,00 e Valor Global de R$ 54.000,00.",
+    "esperado": {
+      "valoresMonetarios": [4500.0, 54000.0],
+      "valorPrincipal": 54000.0,
+      "cnpjs": [],
+      "numeroProcesso": "014/2025",
+      "numeroEdital": null,
+      "numeroContrato": "012/2025",
+      "objeto": "Locação de imóvel urbano destinado ao anexo administrativo"
+    }
+  },
+  {
+    "id": "ato-23-decreto-situacao-emergencia",
+    "tipo": "decreto",
+    "texto": "DECRETO Nº 187, DE 31 DE MARÇO DE 2026. Declara situação de emergência nas áreas do município afetadas por fortes chuvas e inundações.",
+    "esperado": {
+      "valoresMonetarios": [],
+      "valorPrincipal": null,
+      "cnpjs": [],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": null,
+      "objeto": null
+    }
+  },
+  {
+    "id": "ato-24-tomada-precos-reforma-escola",
+    "tipo": "edital",
+    "texto": "AVISO DE LICITAÇÃO - TOMADA DE PREÇOS Nº 02/2026. Processo Licitatório 009/2026. Objeto: Contratação de empresa de engenharia para reforma geral da Escola Municipal São Geraldo. Valor Máximo Aceitável: R$ 680.000,00.",
+    "esperado": {
+      "valoresMonetarios": [680000.0],
+      "valorPrincipal": 680000.0,
+      "cnpjs": [],
+      "numeroProcesso": "009/2026",
+      "numeroEdital": "02/2026",
+      "numeroContrato": null,
+      "objeto": "Contratação de empresa de engenharia para reforma geral da Escola Municipal São Geraldo"
+    }
+  },
+  {
+    "id": "ato-25-termo-parceria-saude",
+    "tipo": "convenio",
+    "texto": "EXTRATO DE TERMO DE PARCERIA Nº 001/2026. OSCIP: INSTITUTO VIDA E SAÚDE, CNPJ 12.345.678/0001-95. Objeto: Gestão compartilhada de serviços de atenção básica à saúde. Valor Total: R$ 2.400.000,00.",
+    "esperado": {
+      "valoresMonetarios": [2400000.0],
+      "valorPrincipal": 2400000.0,
+      "cnpjs": ["12.345.678/0001-95"],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": "001/2026",
+      "objeto": "Gestão compartilhada de serviços de atenção básica à saúde"
+    }
+  },
+  {
+    "id": "ato-26-outro-ordem-servico",
+    "tipo": "outro",
+    "texto": "ORDEM DE SERVIÇO Nº 02/2026. Autoriza o início dos serviços de topografia no Bairro Palha.",
+    "esperado": {
+      "valoresMonetarios": [],
+      "valorPrincipal": null,
+      "cnpjs": [],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": null,
+      "objeto": null
+    }
+  },
+  {
+    "id": "ato-27-outro-resultado-recurso",
+    "tipo": "outro",
+    "texto": "RESULTADO DA ANÁLISE DE RECURSO ADMINISTRATIVO. Julga improcedente o recurso interposto pela empresa licitante.",
+    "esperado": {
+      "valoresMonetarios": [],
+      "valorPrincipal": null,
+      "cnpjs": [],
+      "numeroProcesso": null,
+      "numeroEdital": null,
+      "numeroContrato": null,
+      "objeto": null
+    }
+  },
+  {
+    "id": "ato-28-contrato-com-cnpj-desformatado",
+    "tipo": "contrato",
+    "texto": "CONTRATO Nº 044/2026. Processo nº 055/2026. Empresa contratada inscrita no CNPJ 00360305000104. Objeto: Prestação de serviços bancários e processamento da folha de pagamento dos servidores municipais. Valor Global: R$ 36.000,00.",
+    "esperado": {
+      "valoresMonetarios": [36000.0],
+      "valorPrincipal": 36000.0,
+      "cnpjs": ["00.360.305/0001-04"],
+      "numeroProcesso": "055/2026",
+      "numeroEdital": null,
+      "numeroContrato": "044/2026",
+      "objeto": "Prestação de serviços bancários e processamento da folha de pagamento dos servidores municipais"
+    }
+  }
+]

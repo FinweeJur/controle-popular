@@ -376,6 +376,41 @@ export default function ValePage() {
         dano do rompimento nem o andamento da reparação: é contexto de mercado, e nada mais.
       </p>
 
+      {/* Navegação integrada do monitoramento Vale no portal */}
+      <div className="mt-5 flex flex-wrap gap-2 border-b border-border pb-4">
+        <a
+          href="/paraopeba/vale"
+          aria-current="page"
+          className="rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary"
+        >
+          📈 Cotações B3
+        </a>
+        <a
+          href="/paraopeba/vale/documentos"
+          className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs text-text-soft transition-colors hover:border-primary hover:text-text"
+        >
+          📑 Documentos CVM (ITR, DFP, FRE)
+        </a>
+        <a
+          href="/paraopeba/noticias-vale"
+          className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs text-text-soft transition-colors hover:border-primary hover:text-text"
+        >
+          📰 Radar de Notícias
+        </a>
+        <a
+          href="/paraopeba/correlacao"
+          className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs text-text-soft transition-colors hover:border-primary hover:text-text"
+        >
+          ⚡ Preços × Notícias
+        </a>
+        <a
+          href="/paraopeba/linha-do-tempo"
+          className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs text-text-soft transition-colors hover:border-primary hover:text-text"
+        >
+          ⏳ Linha do Tempo da Reparação
+        </a>
+      </div>
+
       {/* A ressalva vem ANTES do primeiro número: "fechamento ajustado?" é a
           pergunta que muda a leitura de tudo o que vem depois. */}
       <div className="mt-6 rounded-2xl border border-alert/40 bg-surface-2 p-5">

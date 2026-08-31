@@ -3,30 +3,19 @@ import path from "node:path";
 
 import { describe, expect, test } from "vitest";
 
-import { classificarAto, normalizarTituloAto, type TipoAto } from "./classificarAto";
+import {
+  classificarAto,
+  DESCRICAO_TIPO,
+  normalizarTituloAto,
+  ROTULOS_TIPO,
+  type TipoAto,
+  TIPOS_ATO,
+} from "./classificarAto";
 
 /**
  * Calibração contra títulos REAIS do diário oficial de Diamantina
  * (Prefeitura e Câmara, via SIGPub/AMM-MG; extração em 16/08/2026, mais 5
- * títulos de 22/08/2026 — ver abaixo).
- *
- * Os 70 títulos originais de `fixtures/diamantina-75-titulos.json` foram
- * lidos um a um e rotulados à mão (coluna `esperado`). Quem muda uma regra do
- * classificador tem que passar nesta amostra inteira — é a mesma disciplina
- * de `etl/betim/etl/temas.py`, calibrado contra ementas reais.
- *
- * Os outros 5 vieram de rodar `--sondar` contra as 196 matérias REAIS de
- * julho/2026 (não só a amostra de 70): 32/196 (16%) caíam em "outro", bem
- * acima do ~4% esperado. Duas causas cobriam 21 dessas 32: "ATA DE REGISTRO
- * DE PREÇO" (instrumento de licitação, mas sem a palavra "LICIT") e "EXTRATO
- * DO TERMO DE RATIFICAÇÃO" isolado, sem o "DE DISPENSA DE LICITAÇÃO" que o
- * único exemplo anterior sempre trazia junto. `PALAVRAS_DE_LICITACAO` ganhou
- * as duas, e estes 5 títulos provam a correção contra o texto real que
- * motivou a mudança — não um título inventado para caber na regra.
- *
- * A fração que importa: 72 dos 75 (96%) recebem tipo ≠ `outro`. O pior modo
- * de falha do classificador é virar "outro" demais (o aviso do plano:
- * Diamantina ficou com 9% só nos temas; a regex não pode repetir isso).
+ * títulos de 22/08/2026).
  */
 
 interface Amostra {
@@ -56,9 +45,34 @@ describe("amostra real de Diamantina — 75 títulos", () => {
     const comTipo = AMOSTRA.filter((a) => classificarAto(a.titulo) !== "outro").length;
     expect(comTipo / AMOSTRA.length).toBeGreaterThanOrEqual(0.95);
   });
+
+  test("amostra tem pelo menos 75 títulos reais", () => {
+    expect(AMOSTRA.length).toBeGreaterThanOrEqual(75);
+  });
 });
 
-describe("casos de borda das regras", () => {
+describe("constantes e tipagem canônica", () => {
+  test("TIPOS_ATO contém exatamente os 7 tipos canônicos", () => {
+    expect(TIPOS_ATO).toEqual([
+      "decreto",
+      "edital",
+      "contrato",
+      "convenio",
+      "portaria",
+      "lei",
+      "outro",
+    ]);
+  });
+
+  test("ROTULOS_TIPO e DESCRICAO_TIPO cobrem todos os 7 tipos", () => {
+    for (const tipo of TIPOS_ATO) {
+      expect(ROTULOS_TIPO[tipo]).toBeDefined();
+      expect(DESCRICAO_TIPO[tipo]).toBeDefined();
+    }
+  });
+});
+
+describe("casos de borda das regras e precedência", () => {
   test("homologação de CONTRATO é contrato, não edital (ordem das regras)", () => {
     expect(classificarAto("TERMO DE HOMOLOGAÇÃO AO CONTRATO Nº 08/2025")).toBe("contrato");
     expect(classificarAto("EXTRATO DE CONTRATO AO PROCESSO LICITATÓRIO Nº 14/2025")).toBe("contrato");
@@ -80,6 +94,8 @@ describe("casos de borda das regras", () => {
   test("aditivo de convênio é convênio mesmo sem a palavra convênio", () => {
     expect(classificarAto("2º TERMO ADITIVO AO TERMO DE COLABORAÇÃO Nº 002/2025")).toBe("convenio");
     expect(classificarAto("TERMO DE FOMENTO Nº 010/2026")).toBe("convenio");
+    expect(classificarAto("ACORDO DE COOPERAÇÃO TÉCNICA Nº 003/2026")).toBe("convenio");
+    expect(classificarAto("TERMO DE PARCERIA Nº 001/2026")).toBe("convenio");
   });
 
   test("acento e caixa não importam", () => {
@@ -88,13 +104,20 @@ describe("casos de borda das regras", () => {
     expect(classificarAto("EXTRATO DO TERMO DE RATIFICAÇÃO DE DISPENSA DE LICITAÇÃO")).toBe("edital");
   });
 
-  test("lei é reconhecida no começo do título", () => {
+  test("lei é reconhecida no começo do título ou com limite de palavra", () => {
     expect(classificarAto("LEI Nº 1.234, DE 05 DE MAIO DE 2026.")).toBe("lei");
     expect(classificarAto("LEI COMPLEMENTAR Nº 10/2026")).toBe("lei");
+    expect(classificarAto("LEI ORDINÁRIA Nº 555/2026")).toBe("lei");
   });
 
   test("projeto de lei não vira lei por engano", () => {
     expect(classificarAto("PROJETO DE LEI Nº 05/2026")).toBe("outro");
+    expect(classificarAto("PROJETO DE LEI COMPLEMENTAR Nº 01/2026")).toBe("outro");
+  });
+
+  test("portaria com limites de palavra", () => {
+    expect(classificarAto("PORTARIA SMS Nº 09, DE 27 DE MAIO DE 2026.")).toBe("portaria");
+    expect(classificarAto("PORTARIA CONJUNTA Nº 02/2026")).toBe("portaria");
   });
 
   test("título sem pista nenhuma é outro", () => {
@@ -103,13 +126,39 @@ describe("casos de borda das regras", () => {
     expect(classificarAto("RESULTADO DA ANÁLISE DE RECURSO")).toBe("outro");
   });
 
-  test("título vazio é outro e nunca lança", () => {
+  test("título vazio ou nulo é outro e nunca lança", () => {
     expect(classificarAto("")).toBe("outro");
+    expect(classificarAto(null)).toBe("outro");
+    expect(classificarAto(undefined)).toBe("outro");
+  });
+});
+
+describe("fallback seguro por categoriaOriginal (ex: DOM-PBH)", () => {
+  test("quando título é genérico, categoriaOriginal define o tipo", () => {
+    expect(classificarAto("EXTRATO", "Licitações e Editais")).toBe("edital");
+    expect(classificarAto("CONVOCAÇÃO", "Portarias")).toBe("portaria");
+    expect(classificarAto("COMUNICADO", "Decretos do Executivo")).toBe("decreto");
+    expect(classificarAto("EXTRATO DE INSTRUMENTO", "Contratos")).toBe("contrato");
+    expect(classificarAto("RESULTADO", "Termos de Colaboração")).toBe("convenio");
+    expect(classificarAto("ATO NORMATIVO", "Leis Municipais")).toBe("lei");
+  });
+
+  test("quando título já tem tipo específico, categoriaOriginal não o sobrescreve", () => {
+    expect(classificarAto("DECRETO Nº 123", "Editais")).toBe("decreto");
+    expect(classificarAto("EXTRATO DE CONTRATO Nº 05", "Geral")).toBe("contrato");
+  });
+
+  test("categoriaOriginal nula ou vazia mantém 'outro' sem erro", () => {
+    expect(classificarAto("CONVOCAÇÃO GERAL", null)).toBe("outro");
+    expect(classificarAto("CONVOCAÇÃO GERAL", "")).toBe("outro");
   });
 });
 
 describe("normalizarTituloAto", () => {
   test("caixa alta e sem acento", () => {
     expect(normalizarTituloAto("Convênio de Colaboração")).toBe("CONVENIO DE COLABORACAO");
+    expect(normalizarTituloAto("Licitação & Preço")).toBe("LICITACAO & PRECO");
+    expect(normalizarTituloAto(null)).toBe("");
+    expect(normalizarTituloAto(undefined)).toBe("");
   });
 });

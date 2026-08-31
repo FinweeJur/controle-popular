@@ -168,6 +168,16 @@ export default async function AmbientalHome() {
       pronta: resumoEstudos.linhas > 0,
       linkTexto: "Ver os estudos de impacto →",
     },
+    {
+      titulo: "Acordo do Rio Doce (Mariana)",
+      linha: "R$ 677,4 mi empenhados em 40 iniciativas — execução e repactuação em MG",
+      texto:
+        "Execução financeira dos recursos do Acordo Judicial de Reparação do rompimento da barragem de Fundão (Samarco/Vale) executada pelo Governo de Minas Gerais.",
+      fase: "F11",
+      href: "/mariana",
+      pronta: true,
+      linkTexto: "Acompanhar execução do Rio Doce →",
+    },
   ];
 
   return (

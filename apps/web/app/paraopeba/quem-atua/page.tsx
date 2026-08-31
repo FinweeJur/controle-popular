@@ -151,7 +151,24 @@ export default function QuemAtuaPage() {
         })}
       </div>
 
-      <section className="mt-12 rounded-2xl border border-dashed border-border bg-surface-2 p-6 text-sm text-text-soft">
+      <section className="mt-8 rounded-2xl border border-border bg-surface p-6 text-sm text-text-soft">
+        <h2 className="font-display text-base font-semibold text-text">
+          Monitoramento da Vale (Empresa Responsável)
+        </h2>
+        <p className="mt-2">
+          Para acompanhar os dados de mercado, relatórios protocolados na CVM (ITR, DFP, FRE),
+          notícias e impacto financeiro da empresa causadora do desastre, acesse a página de{" "}
+          <a
+            href="/paraopeba/vale"
+            className="font-medium text-accent hover:underline"
+          >
+            Ações e Documentos da Vale na B3 ↗
+          </a>
+          .
+        </p>
+      </section>
+
+      <section className="mt-6 rounded-2xl border border-dashed border-border bg-surface-2 p-6 text-sm text-text-soft">
         <h2 className="font-display text-base font-semibold text-text">
           Precisa de ajuda concreta, não de um diretório do processo?
         </h2>

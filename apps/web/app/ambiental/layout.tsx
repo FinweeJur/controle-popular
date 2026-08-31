@@ -80,6 +80,12 @@ export default function AmbientalLayout({
             >
               Convênios →
             </Link>
+            <Link
+              href="/mariana"
+              className="rounded-md border border-[var(--cp-border)] px-2.5 py-1 text-xs font-medium hover:border-[var(--cp-tertiary)]"
+            >
+              Rio Doce (Mariana) →
+            </Link>
           </div>
         </div>
       </header>

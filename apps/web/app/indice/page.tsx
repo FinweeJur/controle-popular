@@ -85,6 +85,7 @@ export default async function IndiceGlobal() {
       titulo: "Por tema",
       topicos: [
         { href: "/busca", titulo: "Busca", descricao: "Procure por palavra, tema ou territorio.", cor: "var(--cp-accent)", badge: "Transversal", icon: <Search size={14} /> },
+        { href: "/paraopeba/biblioteca", titulo: "Biblioteca de Documentos", descricao: "Acervo de publicações das ATIs, perícia e órgãos ambientais.", cor: "var(--cp-secondary)", badge: "Paraopeba", icon: <BookOpen size={14} /> },
         { href: "/dados/populares", titulo: "Paginas mais vistas", descricao: "O que as pessoas mais consultam.", cor: "var(--cp-accent)", badge: "Transversal", icon: <BarChart3 size={14} /> },
         { href: "/dados/comunicabr", titulo: "Governo federal nas cidades", descricao: "Repasses e acoes da Uniao em Minas Gerais.", cor: "var(--cp-accent)", badge: "Transversal", icon: <Globe size={14} /> },
         { href: "/direitos-em-movimento", titulo: "Direitos em Movimento", descricao: "Onde buscar ajuda e como se defender.", cor: "var(--cp-alert)", badge: "Transversal", icon: <HeartHandshake size={14} /> },
@@ -99,8 +100,10 @@ export default async function IndiceGlobal() {
         { href: "/direitos-em-movimento/denuncia", titulo: "Quero denunciar", descricao: "Canais de denuncia e protecao.", cor: "var(--cp-alert)", badge: "Acao", icon: <Shield size={14} /> },
         { href: "/direitos-em-movimento/ajuda", titulo: "Preciso de ajuda", descricao: "Onde encontrar assistencia juridica e social.", cor: "var(--cp-alert)", badge: "Acao", icon: <HelpCircle size={14} /> },
         { href: "/paraopeba/entenda", titulo: "Quero entender Brumadinho", descricao: "Reparacao, auxilio e acompanhamento do Acordo.", cor: "var(--cp-secondary)", badge: "Acao", icon: <AlertTriangle size={14} /> },
+        { href: "/paraopeba/vale", titulo: "Quero dados da Vale", descricao: "Cotações na B3, documentos CVM e notícias da empresa.", cor: "var(--cp-secondary)", badge: "Acao", icon: <BarChart3 size={14} /> },
+        { href: "/ambiental/mariana", titulo: "Quero o Acordo de Mariana", descricao: "Execução de R$ 677 mi da repactuação do Rio Doce.", cor: "var(--cp-tertiary)", badge: "Acao", icon: <TreePine size={14} /> },
         { href: "/ambiental/barragens", titulo: "Moro perto de uma barragem", descricao: "Situacao e risco de barragens em Minas Gerais.", cor: "var(--cp-tertiary)", badge: "Acao", icon: <MapPin size={14} /> },
-        { href: "/funcaosocialterra/mapa", titulo: "Quero ver o territorio", descricao: "Globo 3D com camadas de mineracao, CAR e mais.", cor: "var(--cp-accent)", badge: "Acao", icon: <Map size={14} /> },
+        { href: "/funcaosocialterra/mapa", titulo: "Quero ver o territorio", descricao: "Globo 3D com camadas de mineracao, CAR, UCs e mais.", cor: "var(--cp-accent)", badge: "Acao", icon: <Map size={14} /> },
       ],
     },
   ];

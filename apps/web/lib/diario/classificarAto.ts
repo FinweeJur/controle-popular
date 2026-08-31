@@ -1,37 +1,26 @@
 /**
  * ═══ CLASSIFICADOR DE ATOS DO DIÁRIO OFICIAL ═══
  *
- * Dá o TIPO de uma matéria do diário oficial a partir do título (cabeçalho),
- * por regex — determinístico e auditável, no mesmo espírito de
- * `etl/betim/etl/temas.py`: "é edital porque o título contém LICITAÇÃO".
+ * Dá o TIPO de uma matéria do diário oficial a partir do título (cabeçalho)
+ * e, opcionalmente, da categoria original da fonte pública (fallback seguro),
+ * por regras determinísticas e auditáveis.
  *
- * Regras calibradas contra 75 títulos REAIS do diário oficial de Diamantina
- * (Prefeitura e Câmara, via SIGPub/AMM-MG, julho de 2026 — extração em
- * 16/08/2026, mais 5 títulos de 22/08/2026 que fecharam o gap de "outro"
- * medido contra as 196 matérias reais de julho/2026, não só a amostra
- * original de 70). A amostra inteira está fixada em `classificarAto.test.ts`;
- * quem muda uma regra tem que justificar contra ela.
- *
- * ═══ POR QUE "EDITAL" COBRE MAIS QUE EDITAL ═══
- *
- * A taxonomia é a do plano (`docs/planos/diario-oficial-plano.md`):
- *
+ * Taxonomia oficial fechada (7 tipos canônicos):
  *   decreto | portaria | edital | contrato | convenio | lei | outro
- *
- * Na prática do diário, `edital` é o balaio do processo de licitação
- * inteiro — aviso de licitação, credenciamento, dispensa, inexigibilidade,
- * chamamento público, homologação, adjudicação, impugnação, ata de registro
- * de preço e ratificação são todos atos de uma licitação, e o resumo do
- * portal ("saíram 2 editais de licitação") os conta juntos. Os rótulos em
- * `ROTULOS_TIPO` dizem isso ao leitor.
  *
  * ═══ A ORDEM DAS REGRAS É DECISÃO, NÃO ACASO ═══
  *
- * "EXTRATO DE CONTRATO AO PROCESSO LICITATÓRIO" contém os dois mundos
- * (CONTRATO e LICITAÇÃO): é CONTRATO, porque o ato publicado é o contrato.
- * "TERMO DE HOMOLOGAÇÃO AO CONTRATO" também. Por isso as regras de
- * convênio e contrato vêm ANTES do balaio de licitação — caso contrário
- * homologação de contrato viraria edital.
+ * Precedência estrita:
+ * 1. convenio  (CONVÊNIO, FOMENTO, COLABORAÇÃO, PARCERIA, ACORDO DE COOPERAÇÃO)
+ * 2. contrato  (CONTRATO, ADITIVO, DISTRATO, RESCISÃO CONTRATUAL)
+ * 3. lei       (LEI, LEI COMPLEMENTAR, LEI ORDINÁRIA — exceto PROJETO DE LEI)
+ * 4. decreto   (DECRETO)
+ * 5. portaria  (PORTARIA)
+ * 6. edital    (LICITAÇÃO, EDITAL, CREDENCIAMENTO, DISPENSA, INEXIGIBILIDADE,
+ *               CHAMAMENTO PÚBLICO, HOMOLOGAÇÃO, ADJUDICAÇÃO, IMPUGNAÇÃO,
+ *               REGISTRO DE PREÇOS, RATIFICAÇÃO, PREGÃO, CONCORRÊNCIA, etc.)
+ * 7. categoriaOriginal (fallback se o título for genérico, ex. DOM-PBH)
+ * 8. outro     (fallback final se nenhuma regra casar)
  */
 
 export type TipoAto =
@@ -43,8 +32,10 @@ export type TipoAto =
   | "lei"
   | "outro";
 
-/** Ordem de exibição no portal (a mais comentada primeiro, "outro" por último). */
-export const TIPOS_ATO: TipoAto[] = [
+/**
+ * Lista dos 7 tipos canônicos de ato do diário oficial.
+ */
+export const TIPOS_ATO: readonly TipoAto[] = [
   "decreto",
   "edital",
   "contrato",
@@ -52,7 +43,7 @@ export const TIPOS_ATO: TipoAto[] = [
   "portaria",
   "lei",
   "outro",
-];
+] as const;
 
 export const ROTULOS_TIPO: Record<TipoAto, string> = {
   decreto: "Decreto",
@@ -65,7 +56,7 @@ export const ROTULOS_TIPO: Record<TipoAto, string> = {
 };
 
 /**
- * O que cada tipo cobre — texto curto, para tooltip/legenda.
+ * O que cada tipo cobre — texto curto para tooltip/legenda/acessibilidade.
  */
 export const DESCRICAO_TIPO: Record<TipoAto, string> = {
   decreto: "Decreto municipal (norma do Executivo).",
@@ -73,84 +64,159 @@ export const DESCRICAO_TIPO: Record<TipoAto, string> = {
   contrato: "Contrato e termos aditivos de contrato (Prefeitura e Câmara).",
   convenio: "Convênio, termo de fomento e termo de colaboração (parcerias com repasse de recursos).",
   portaria: "Portaria municipal (decisão interna do Executivo).",
-  lei: "Lei municipal.",
+  lei: "Lei municipal (ordinária, complementar ou delegada).",
   outro: "Atos que não se encaixam nos tipos acima.",
 };
 
-/** Normaliza o título para a busca de padrão: caixa alta e sem acentos. */
-export function normalizarTituloAto(titulo: string): string {
-  return titulo
+/** Decodifica entidades HTML simples em texto puro. */
+function decodificarHtml(s: string): string {
+  return s
+    .replace(/&#([0-9]+);/g, (_, dec) => String.fromCharCode(Number(dec)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+    .replace(/&quot;/gi, '"')
+    .replace(/&amp;/gi, '&')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&ccedil;/gi, 'ç')
+    .replace(/&atilde;/gi, 'ã')
+    .replace(/&eacute;/gi, 'é');
+}
+
+/** Normaliza o texto para busca de padrão: caixa alta e sem acentos. */
+export function normalizarTituloAto(titulo: string | null | undefined): string {
+  if (!titulo) return "";
+  const semHtml = decodificarHtml(titulo);
+  return semHtml
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
+    .replace(/_/g, " ")
     .toUpperCase();
 }
 
-const TEM_FOMENTO_OU_COLABORACAO = /\b(FOMENTO|COLABORACAO)\b/;
-const TEM_CONVENIO = /\bCONVENIO\b/;
+const TEM_CONVENIO_PADRAO = /\b(CONVENIOS?|FOMENTO|COLABORACAO|COLABORACOES|PARCERIAS?|ACORDO DE COOPERACAO)\b/;
+const TEM_CONTRATO_PADRAO = /\b(CONTRATOS?|DISTRATOS?|RESCISAO CONTRATUAL)\b/;
 
-/**
- * Palavras que marcam o processo de licitação, em ordem de leitura.
- *
- * "REGISTRO DE PRECO" e "RATIFICACAO" entraram em 22/08/2026: medidas contra
- * as 196 matérias reais de julho/2026 da Prefeitura de Diamantina (não só a
- * amostra de 70 já calibrada), 32/196 (16%) caíam em "outro" — bem acima do
- * ~4% da amostra original. As duas causas concretas, sem nenhuma das 9
- * palavras de então: "EXTRATO: ATA DE REGISTRO DE PREÇO Nº 043/2026" (ata de
- * registro de preços é instrumento de licitação, mas não contém "LICIT" nem
- * nenhuma outra palavra do balaio) e "EXTRATO DO TERMO DE RATIFICAÇÃO"
- * isolado — sem o "DE DISPENSA DE LICITAÇÃO" que o único exemplo anterior
- * (na amostra de 70) sempre trazia junto. Juntas, as duas cobriam 21 das 32
- * ocorrências de "outro" medidas (o resto — aquisição futura, cotação
- * eletrônica, errata, análise de recurso — fica "outro" de propósito, cada
- * um por um motivo próprio que não é lacuna de licitação).
- */
-const PALAVRAS_DE_LICITACAO = [
-  "LICIT",
-  "EDITAL",
-  "CREDENCIAMENTO",
-  "DISPENSA",
-  "INEXIGIBILIDADE",
-  "CHAMAMENTO PUBLICO",
-  "HOMOLOGACAO",
-  "ADJUDICACAO",
-  "IMPUGNACAO",
-  "REGISTRO DE PRECO",
-  "RATIFICACAO",
+const TEM_LEI_INICIO = /^(?:LEIS?\b|LEI\s+(?:COMPLEMENTAR|MUNICIPAL|ESTADUAL|DELEGADA|ORDINARIA|ORGANICA)\b)/;
+const TEM_DECRETO_INICIO = /^(?:DECRETOS?\b|DECRETO\s+(?:MUNICIPAL|ESTADUAL|LEGISLATIVO|EXECUTIVO|REGULAMENTAR|NUMERADO|DE)\b)/;
+const TEM_PORTARIA_INICIO = /^(?:PORTARIAS?\b|PORTARIA\s+(?:SMS|SEMED|CONJUNTA|MUNICIPAL|DE)\b)/;
+
+const TEM_DISPENSA_RH = /\bDISPENSA\s+DE\s+(?:CARGO|SERVIDOR|FUNCAO|COMISSAO|EMPREGADO|PESSOAL)\b/;
+
+/** Padrões que identificam com precisão atos de licitação/edital. */
+const PADROES_LICITACAO: readonly RegExp[] = [
+  /\bLICITA(?:CAO|COES|TORI[AO]S?|NTES?|DOS?|R)\b/,
+  /\bEDITAIS?\b/,
+  /\bCREDENCIAMENTOS?\b/,
+  /\bCHAMAMENTOS?\s+PUBLICOS?\b|\bCHAMAMENTO\s+PUBLICO\b/,
+  /\bHOMOLOGA(?:CAO|COES)\b/,
+  /\bADJUDICA(?:CAO|COES)\b/,
+  /\bIMPUGNA(?:CAO|COES)\b/,
+  /\bREGISTRO\s+DE\s+PRECOS?\b/,
+  /\bRATIFICA(?:CAO|COES)\b/,
+  /\bPREG(?:AO|OES)\b/,
+  /\bCONCORRENCIAS?\b/,
+  /\bTOMADA\s+DE\s+PRECOS?\b/,
+  /\bCONVITES?\b/,
+  /\bCOTACAO\s+ELETRONICA\b/,
+  /\bLEIL(?:AO|OES)\b/,
+  /\bINEXIGIBILIDADES?\b/,
+  /\bDISPENSA\b/,
 ];
 
 function temPalavraDeLicitacao(normalizado: string): boolean {
-  return PALAVRAS_DE_LICITACAO.some((p) => normalizado.includes(p));
+  if (TEM_DISPENSA_RH.test(normalizado)) {
+    const semDispensa = normalizado.replace(TEM_DISPENSA_RH, "");
+    return PADROES_LICITACAO.some((re) => re.test(semDispensa));
+  }
+  return PADROES_LICITACAO.some((re) => re.test(normalizado));
 }
 
-/**
- * Classifica o tipo de um ato pelo título. Nunca lança: tudo que não bate
- * nas regras é `outro` — calar (outro) é melhor que errar o tipo.
- */
-export function classificarAto(titulo: string): TipoAto {
-  const n = normalizarTituloAto(titulo);
+const TEM_LEI_GERAL = /\bLEIS?\s+(?:COMPLEMENTAR\s+|MUNICIPAL\s+|ESTADUAL\s+|DELEGADA\s+|ORDINARIA\s+|ORGANICA\s+)?N[ºO°\.]?\s*[0-9]|\bLEIS\b|\bLEI\s+(?:COMPLEMENTAR|MUNICIPAL|ESTADUAL|DELEGADA|ORDINARIA|ORGANICA)\b/;
+const TEM_DECRETO_GERAL = /\bDECRETOS?\b/;
+const TEM_PORTARIA_GERAL = /\bPORTARIAS?\b/;
 
-  if (TEM_CONVENIO.test(n) || TEM_FOMENTO_OU_COLABORACAO.test(n)) {
+function casarTipoPorTexto(n: string): TipoAto {
+  if (!n) return "outro";
+
+  // 1. Convênios e Parcerias (precedência máxima: fomento, colaboração, parceria, convênio)
+  if (TEM_CONVENIO_PADRAO.test(n)) {
     return "convenio";
   }
 
-  if (n.includes("CONTRATO")) {
+  // 2. Contratos, Termos Aditivos e Distratos (precedência sobre editais e atos normativos)
+  if (TEM_CONTRATO_PADRAO.test(n)) {
     return "contrato";
   }
 
-  if (n.startsWith("LEI")) {
+  // 3. Atos normativos que iniciam explicitamente com o tipo (LEI, DECRETO, PORTARIA)
+  if (TEM_LEI_INICIO.test(n) && !n.includes("PROJETO DE LEI") && !n.startsWith("PROJETO DE")) {
     return "lei";
   }
-
-  if (n.startsWith("DECRETO")) {
+  if (TEM_DECRETO_INICIO.test(n) && !n.includes("PROJETO DE DECRETO") && !n.startsWith("PROJETO DE")) {
     return "decreto";
   }
-
-  if (n.startsWith("PORTARIA")) {
+  if (TEM_PORTARIA_INICIO.test(n) && !n.includes("PROJETO DE PORTARIA") && !n.startsWith("PROJETO DE")) {
     return "portaria";
   }
 
+  // 4. Editais e Licitações (precedência sobre citações acessórias de Leis ou Decretos no corpo do texto)
   if (temPalavraDeLicitacao(n)) {
     return "edital";
+  }
+
+  // 5. Atos normativos no corpo do título (quando não forem editais/licitações)
+  if (
+    (TEM_LEI_GERAL.test(n) || n.startsWith("LEI")) &&
+    !n.includes("PROJETO DE LEI") &&
+    !n.startsWith("PROJETO DE")
+  ) {
+    return "lei";
+  }
+  if (TEM_DECRETO_GERAL.test(n) && !n.includes("PROJETO DE DECRETO") && !n.startsWith("PROJETO DE")) {
+    return "decreto";
+  }
+  if (TEM_PORTARIA_GERAL.test(n) && !n.includes("PROJETO DE PORTARIA") && !n.startsWith("PROJETO DE")) {
+    return "portaria";
+  }
+
+  return "outro";
+}
+
+/**
+ * Classifica o tipo de um ato a partir do título (e opcionalmente da categoria original).
+ * Retorna sempre um dos 7 tipos canônicos de TipoAto. Nunca lança exceção.
+ *
+ * @param titulo Título ou cabeçalho do ato
+ * @param categoriaOriginal Categoria fornecida pelo sistema de origem (ex: DOM-PBH)
+ */
+export function classificarAto(
+  titulo: string | null | undefined,
+  categoriaOriginal?: string | null
+): TipoAto {
+  if (!titulo && !categoriaOriginal) return "outro";
+
+  // Se veio um texto com várias frases ou linhas, analisa primeiro o cabeçalho
+  const primeiroTrecho = titulo ? (titulo.split(/\r?\n|\.\s/)[0] ?? titulo) : "";
+  const nPrimeiro = normalizarTituloAto(primeiroTrecho);
+  const tipoPrimeiro = casarTipoPorTexto(nPrimeiro);
+  if (tipoPrimeiro !== "outro") {
+    return tipoPrimeiro;
+  }
+
+  const nTitulo = normalizarTituloAto(titulo);
+  const tipoTitulo = casarTipoPorTexto(nTitulo);
+
+  if (tipoTitulo !== "outro") {
+    return tipoTitulo;
+  }
+
+  // Fallback seguro se o título for genérico (ex: "EXTRATO", "CONVOCAÇÃO", etc.)
+  if (categoriaOriginal) {
+    const nCategoria = normalizarTituloAto(categoriaOriginal);
+    const tipoCategoria = casarTipoPorTexto(nCategoria);
+    if (tipoCategoria !== "outro") {
+      return tipoCategoria;
+    }
   }
 
   return "outro";
