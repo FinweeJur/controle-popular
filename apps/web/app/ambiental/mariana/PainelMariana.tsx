@@ -4,55 +4,22 @@ import { useMemo, useState } from "react";
 import { formatCurrencyCompactaBR, formatNumberBR } from "@/lib/betim/format";
 import { semAcento } from "@/lib/busca/normalizar";
 import { TagChip } from "@/app/components/TagChip";
+import { baixarCsv, type ColunaCsv } from "@/lib/tabela/csv";
 import type { RIO_DOCE_POR_INICIATIVA } from "@/lib/ambiental/ckan-mg-mariana";
 
 type Iniciativa = (typeof RIO_DOCE_POR_INICIATIVA)[number];
 
 type Ordem = "prometido" | "empenhado" | "pago" | "nome";
 
-function csvEscape(v: unknown): string {
-  const s = v === null || v === undefined ? "" : String(v);
-  return /[";\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-}
-
-function paraCsv(itens: readonly Iniciativa[]): string {
-  const BOM = "\uFEFF";
-  const cabecalho = [
-    "codigo",
-    "iniciativa",
-    "anexo",
-    "valorPrometido",
-    "valorEmpenhado",
-    "valorPagoFinanceiro",
-    "empenhos",
-  ].join(";");
-  const corpo = itens.map((i) =>
-    [
-      i.codigo,
-      i.iniciativa,
-      i.anexo,
-      i.valorPrometido,
-      i.valorEmpenhado,
-      i.valorPagoFinanceiro,
-      i.empenhos,
-    ]
-      .map(csvEscape)
-      .join(";")
-  );
-  return BOM + [cabecalho, ...corpo].join("\r\n") + "\r\n";
-}
-
-function baixarCsv(conteudo: string, nome: string) {
-  const blob = new Blob([conteudo], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = nome;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-}
+const COLUNAS_CSV_MARIANA: ColunaCsv<Iniciativa>[] = [
+  { chave: "codigo", rotulo: "Código" },
+  { chave: "iniciativa", rotulo: "Iniciativa" },
+  { chave: "anexo", rotulo: "Anexo" },
+  { chave: "valorPrometido", rotulo: "Valor Prometido (R$)" },
+  { chave: "valorEmpenhado", rotulo: "Valor Empenhado (R$)" },
+  { chave: "valorPagoFinanceiro", rotulo: "Valor Pago Financeiro (R$)" },
+  { chave: "empenhos", rotulo: "Quantidade de Empenhos" },
+];
 
 export default function PainelMariana({
   iniciativas,
@@ -89,7 +56,7 @@ export default function PainelMariana({
 
   function exportar() {
     const hoje = new Date().toISOString().slice(0, 10);
-    baixarCsv(paraCsv(filtrados), `acordo-rio-doce-iniciativas-${hoje}.csv`);
+    baixarCsv(COLUNAS_CSV_MARIANA, filtrados, `acordo-rio-doce-iniciativas-${hoje}.csv`);
   }
 
   return (
