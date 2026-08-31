@@ -64,6 +64,18 @@ export interface ItemBiblioteca {
   /** Rótulo do tipo, como a própria fonte o nomeia. */
   tipo: string;
   /**
+   * Macro-categoria enxuta derivada do `tipo` — formato do material, não
+   * assunto. Usada para filtrar a biblioteca sem expor o vocabulário cru das
+   * três fontes. Gerada por `scripts/classificar-biblioteca-ati-macro.py`.
+   */
+  macro_categoria: string;
+  /**
+   * Tags legíveis sobre o assunto do documento, extraídas do título por regras
+   * de palavra-chave. Independente de `temas` (declarado pela fonte) e de
+   * `temas_ajri_inferred` (ponte técnica para a análise integrada).
+   */
+  tags: string[];
+  /**
    * Temas/eixos declarados pela fonte. Vazio quando ela não classifica — é o
    * caso do Guaicuy, que não tem taxonomia temática na biblioteca. Vazio aqui
    * significa "a fonte não classificou", nunca "o portal não soube ler".
@@ -247,6 +259,20 @@ export function tiposDaBiblioteca(itens: ItemBiblioteca[]): string[] {
 export function temasDaBiblioteca(itens: ItemBiblioteca[]): string[] {
   const contagem = new Map<string, number>();
   for (const i of itens) for (const t of i.temas) contagem.set(t, (contagem.get(t) ?? 0) + 1);
+  return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt")).map(([t]) => t);
+}
+
+/** Macro-categorias presentes no acervo, em ordem de frequência medida. */
+export function macrosDaBiblioteca(itens: ItemBiblioteca[]): string[] {
+  const contagem = new Map<string, number>();
+  for (const i of itens) contagem.set(i.macro_categoria, (contagem.get(i.macro_categoria) ?? 0) + 1);
+  return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt")).map(([t]) => t);
+}
+
+/** Tags presentes no acervo, em ordem de frequência medida. */
+export function tagsDaBiblioteca(itens: ItemBiblioteca[]): string[] {
+  const contagem = new Map<string, number>();
+  for (const i of itens) for (const t of i.tags) contagem.set(t, (contagem.get(t) ?? 0) + 1);
   return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt")).map(([t]) => t);
 }
 

@@ -347,6 +347,16 @@ export default function PainelAnalise({
                               <span className="text-text-soft/80">
                                 — {atiLabel[item.ati]}
                                 {item.data ? `, ${formatDateBR(item.data)}` : ""}
+                                {item.macro_categoria && (
+                                  <span className="ml-2 rounded border border-border px-1.5 py-0.5 text-[.78em] text-text-soft/70">
+                                    {item.macro_categoria}
+                                  </span>
+                                )}
+                                {item.tags.length > 0 && (
+                                  <span className="ml-2 text-[.78em] text-text-soft/70">
+                                    {item.tags.join(" · ")}
+                                  </span>
+                                )}
                                 {temasAjriSaoInferidos(item) && (
                                   <span className="ml-2 rounded border border-border px-1.5 py-0.5 text-[.78em] text-text-soft/70">
                                     tema inferido
