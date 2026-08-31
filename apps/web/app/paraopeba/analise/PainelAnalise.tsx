@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { TEMA_AJRI_LABEL } from "@/lib/paraopeba/auditoria-ajri";
 import type { AtiBiblioteca } from "@/lib/paraopeba/biblioteca";
+import { temasAjriSaoInferidos } from "@/lib/paraopeba/temas-ati-utils";
 import type { EixoIntegrado } from "@/lib/paraopeba/sintese-integrada";
 
 /**
@@ -346,6 +347,11 @@ export default function PainelAnalise({
                               <span className="text-text-soft/80">
                                 — {atiLabel[item.ati]}
                                 {item.data ? `, ${formatDateBR(item.data)}` : ""}
+                                {temasAjriSaoInferidos(item) && (
+                                  <span className="ml-2 rounded border border-border px-1.5 py-0.5 text-[.78em] text-text-soft/70">
+                                    tema inferido
+                                  </span>
+                                )}
                               </span>
                             </li>
                           ))}

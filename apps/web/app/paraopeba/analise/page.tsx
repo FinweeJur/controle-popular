@@ -10,6 +10,12 @@ import {
   sinteseIntegrada,
   temasSemEixo,
 } from "@/lib/paraopeba/sintese-integrada";
+import { bibliotecaAti } from "@/lib/paraopeba/biblioteca";
+import {
+  temasAjriDoItemBiblioteca,
+  temasAjriSaoInferidos,
+} from "@/lib/paraopeba/temas-ati";
+import { TEMA_AJRI_LABEL } from "@/lib/paraopeba/auditoria-ajri";
 import PainelAnalise from "./PainelAnalise";
 
 /**
@@ -46,6 +52,10 @@ export default async function AnaliseIntegradaPage() {
   const eixos = await sinteseIntegrada();
   const resumo = resumoIntegrado(eixos);
   const orfaos = await temasSemEixo();
+  const itensAti = await bibliotecaAti();
+  const itensComTemaInferido = itensAti
+    .filter(temasAjriSaoInferidos)
+    .sort((a, b) => (a.data ?? "").localeCompare(b.data ?? ""));
 
   const idsComVoz = new Set(eixos.flatMap((e) => e.vozAti.map((c) => c.noticia.id)));
   const casamentosSemEixo = CASAMENTOS_ESTUDO_NOTICIA.filter(
@@ -347,6 +357,61 @@ export default async function AnaliseIntegradaPage() {
           <PainelAnalise eixos={eixos} atiLabel={ATI_BIBLIOTECA_LABEL} />
         </div>
       </section>
+
+      {/* ═══ ITENS COM TEMA INFERIDO — transparentes sobre o que a fonte nao disse ═══ */}
+      {itensComTemaInferido.length > 0 && (
+        <section aria-labelledby="inferidos-analise" className="mt-10">
+          <h2
+            id="inferidos-analise"
+            className="font-display text-xl font-bold tracking-tight text-text"
+          >
+            Itens da biblioteca com tema inferido
+          </h2>
+          <p className="mt-2 max-w-2xl text-[.92em] leading-relaxed text-text-soft">
+            {formatNumberBR(itensComTemaInferido.length)} itens da biblioteca não têm tema
+            declarado pela própria ATI. Eles foram classificados automaticamente por palavra-chave
+            no título — e por isso entram no cruzamento com menos peso do que um tema declarado.
+          </p>
+          <div className="mt-4 overflow-x-auto">
+            <table className="w-full min-w-[520px] border-collapse text-[.9em]">
+              <thead>
+                <tr className="border-b border-border text-left text-text">
+                  <th className="py-1.5 pr-3 font-medium">Título</th>
+                  <th className="py-1.5 pr-3 font-medium">ATI</th>
+                  <th className="py-1.5 pr-3 font-medium">Tema(s) inferido(s)</th>
+                  <th className="py-1.5 text-right font-medium">Data</th>
+                </tr>
+              </thead>
+              <tbody className="text-text-soft">
+                {itensComTemaInferido.map((item) => {
+                  const temas = temasAjriDoItemBiblioteca(item);
+                  return (
+                    <tr key={item.id} className="border-b border-border/60">
+                      <td className="py-1.5 pr-3">
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary underline underline-offset-2 hover:text-accent"
+                        >
+                          {item.titulo}
+                        </a>
+                      </td>
+                      <td className="py-1.5 pr-3">{ATI_BIBLIOTECA_LABEL[item.ati]}</td>
+                      <td className="py-1.5 pr-3">
+                        {temas.map((t) => TEMA_AJRI_LABEL[t]).join(", ")}
+                      </td>
+                      <td className="py-1.5 text-right tabular-nums">
+                        {item.data ? formatDateBR(item.data) : "—"}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
 
       <section
         aria-labelledby="fonte-analise"

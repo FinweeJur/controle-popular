@@ -161,19 +161,20 @@ describe("sinteseIntegrada()", () => {
 
   /**
    * Mesma medição: "Fornecimento e captação de água" — o problema mais
-   * grave do acervo segundo a própria auditoria — não tem nenhum documento
-   * de perícia nem de ATI cruzando por tema. É pauta, não bug: nem a
-   * perícia (que não produziu resultado sobre a obra de captação) nem a
-   * biblioteca das ATIs (cujos 26 temas livres não incluem nada equivalente
-   * a abastecimento de água) etiquetam algo que caia neste eixo.
+   * grave do acervo segundo a própria auditoria — não tem documento de
+   * perícia cruzando por tema. A biblioteca das ATIs tem um item inferido
+   * ("decisão sobre fornecimento de água") que cai aqui; por isso a contagem
+   * de fontes passou de 1 para 2. Continua sendo pauta para a perícia, não
+   * bug.
    */
-  test("'Fornecimento e captação de água' é coberto só pela auditoria", async () => {
+  test("'Fornecimento e captação de água' tem auditoria + ATI inferida, sem perícia", async () => {
     const eixos = await sinteseIntegrada();
     const eixo = eixos.find((e) => e.titulo === "Fornecimento e captação de água")!;
-    expect(eixo.cobertura.fontesQueFalam).toBe(1);
+    expect(eixo.cobertura.fontesQueFalam).toBe(2);
     expect(eixo.cobertura.temTemaAjri).toBe(true);
     expect(eixo.pericia.documentos).toEqual([]);
-    expect(eixo.atis.documentos).toEqual([]);
+    expect(eixo.atis.documentos.length).toBeGreaterThan(0);
+    expect(eixo.atis.documentos.every((d) => d.temas_ajri_inferred && d.temas_ajri_inferred.length > 0)).toBe(true);
   });
 
   test("'Buscas por vítimas' está só com a auditoria por falta de ponte, não por falta de dado nas outras fontes", async () => {

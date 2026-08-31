@@ -49,74 +49,41 @@
  * régua passou a mapear o que não devia — mudar o número travado exige
  * decisão deliberada no teste, não só rodar de novo.
  *
- * ═══ O NACAB NÃO ESTÁ NO DENOMINADOR ═══
- *
- * `scripts/coletar-biblioteca-nacab.mts` (mesma sessão) tentou acrescentar
- * os 48 itens do NACAB a `biblioteca-ati.json`, mas foi revertido: a fonte
- * do NACAB não tem página própria por publicação, só um link direto para o
- * PDF — o que quebra a regra "nunca o arquivo" que `biblioteca.test.ts`
- * trava para o acervo. Este mapa de temas não depende disso (o NACAB não
- * declara tema por item de qualquer forma; entraria com `temas: []` e não
- * mudaria o numerador), então a tabela e a função aqui já valem para quando
- * o NACAB entrar pela via certa — só o denominador de `coberturaTemasAti()`
- * muda nesse dia, de 597 para 645.
+ * Com a inferência por título (2026-08-31), o denominador passa a incluir o
+ * NACAB: 645 itens. Os inferidos são rotulados separadamente (`temas_ajri_inferred`)
+ * e NÃO entram no número travado de 238 — esse continua medindo só o que a
+ * fonte declarou por tema livre.
  */
 import type { TemaAjri } from "./auditoria-ajri";
 import { bibliotecaAti, type ItemBiblioteca } from "./biblioteca";
+import {
+  MAPA_TEMA_ATI_PARA_AJRI as MAPA_BASE,
+  temasAjriDoItemBiblioteca,
+  temasAjriSaoInferidos,
+} from "./temas-ati-utils";
+
+export { temasAjriDoItemBiblioteca, temasAjriSaoInferidos };
 
 /**
- * Tabela de equivalência, tema livre da biblioteca → `TemaAjri`. `[]` é uma
- * DECISÃO, não uma lacuna esquecida — ver o motivo ao lado de cada entrada.
- * As chaves são o texto exato observado em `ItemBiblioteca.temas` — 26
- * valores, medidos em 2026-08-21.
+ * Tabela completa, incluindo os 15 temas deliberadamente sem mapa. Re-exporta
+ * o mapa de `temas-ati-utils.ts` e acrescenta as entradas `[]` com a
+ * justificativa de cada uma — a documentação vive aqui, o runtime em utils.
  */
 export const MAPA_TEMA_ATI_PARA_AJRI: Record<string, TemaAjri[]> = {
   // ═══ mapeados — o tema livre e o eixo técnico são o mesmo assunto ═══
 
-  "Participação Informada": ["comunicacao-e-relacionamento"],
+  ...MAPA_BASE,
   // canal/processo de informar as pessoas atingidas ~ comunicação e relacionamento com atingidos.
-
-  "Espaços Participativos": ["comunicacao-e-relacionamento"],
   // mesmo eixo de "Participação Informada": espaço/canal de participação, não um assunto à parte.
-
-  "ANEXO I.2 e Auxílio Emergencial": ["programas-de-compensacao"],
   // Auxílio Emergencial é pagamento direto às famílias — o mesmo assunto que `relacionados.ts`
-  // já liga a `programas-de-compensacao` (ij: indenizacao/ptr_auxilio; tags: auxílio, pagamento).
-
-  "Auxílio Emergencial": ["programas-de-compensacao"],
-  // mesma razão do item acima, sem o prefixo do anexo.
-
-  "Liquidação Coletiva e Indenização": ["programas-de-compensacao"],
-  // indenização — mesmo eixo de pagamento/compensação que "Auxílio Emergencial".
-
-  "Indenizações e Transparência": ["programas-de-compensacao"],
-  // idem: o núcleo do rótulo é indenização.
-
-  "Demandas Emergenciais": ["frentes-emergenciais"],
-  // "demanda emergencial" da comunidade e "frente emergencial" da AECOM descrevem a mesma
-  // resposta de curto prazo ao rompimento.
-
-  "Saúde e ERSHRE": ["risco-saude-publica"],
-  // ERSHRE é o próprio nome do estudo que `risco-saude-publica` audita (ver sintese-ajri.ts,
-  // eixo "Saúde humana e risco ecológico").
-
-  "Saúde": ["risco-saude-publica"],
-  // mesmo eixo, sem o sufixo do estudo.
-
-  "Socioambiental Paraopeba": ["plano-de-reparacao"],
-  // MENOS CERTO que os anteriores — é o rótulo mais genérico do acervo (103 itens, o mais
-  // frequente). Mapeado para `plano-de-reparacao` por ser o eixo mais abrangente do lado
-  // AJRI (o plano cobre o conjunto da reparação socioambiental), não por casar um assunto
-  // técnico específico. Sinalizado aqui para quem revisar não tratar como certeza.
-
-  "Reparação Integral": ["plano-de-reparacao"],
-  // "Reparação Integral" é o nome do próprio Acordo (Acordo Judicial de Reparação Integral) —
-  // mesmo relaxamento de "Socioambiental Paraopeba": mapeia para o eixo mais abrangente do
-  // lado AJRI, não para um assunto técnico específico.
+  // já liga a `programas-de-compensacao`.
+  // "demanda emergencial" da comunidade e "frente emergencial" da AECOM descrevem a mesma resposta.
+  // ERSHRE é o próprio nome do estudo que `risco-saude-publica` audita.
+  // MENOS CERTO — rótulo mais genérico do acervo; mapeado para o eixo mais abrangente.
+  // "Reparação Integral" é o nome do próprio Acordo — mesmo relaxamento do item acima.
 
   // ═══ sem mapa — categoria de POPULAÇÃO, não de assunto ═══
   // (o mesmo documento pode tratar de qualquer eixo técnico; o rótulo diz QUEM, não SOBRE O QUÊ)
-
   "Povos e Comunidades Tradicionais": [],
   "Diversidade e Inclusão": [],
   "Marcadores Socias da Diferença": [],
@@ -127,58 +94,26 @@ export const MAPA_TEMA_ATI_PARA_AJRI: Record<string, TemaAjri[]> = {
   "Crianças e Adolescentes": [],
 
   // ═══ sem mapa — cláusula do Acordo, outro processo, ou rótulo genérico demais ═══
-
   "Anexo I.1": [],
-  // referência à cláusula do Acordo (governança do Anexo 1.1), não a um eixo temático — o
-  // mesmo documento pode tratar de qualquer assunto sob esse guarda-chuva contratual.
-
+  // referência à cláusula do Acordo (governança do Anexo 1.1), não a um eixo temático.
   "ANEXO I.3 e I.4": [],
-  // financia projetos heterogêneos de fortalecimento de serviço público nos 25 municípios
-  // (saúde, educação, saneamento...) — não há um único eixo técnico comum, diferente do
-  // Anexo I.2 (que é só auxílio emergencial, um assunto só).
-
+  // financia projetos heterogêneos — não há um único eixo técnico comum.
   "Gestão": [],
-  // rótulo administrativo genérico demais — pode ser gestão de qualquer processo.
-
+  // rótulo administrativo genérico demais.
   "Projetos Comunitários": [],
-  // mesmo problema de "ANEXO I.3 e I.4": financiamento que pode cobrir qualquer eixo técnico.
-
+  // financiamento que pode cobrir qualquer eixo técnico.
   "Conquistas das Pessoas Atingidas": [],
-  // rótulo narrativo ("uma vitória aconteceu"), não um assunto — pode ser sobre qualquer eixo.
-
+  // rótulo narrativo, não um assunto.
   "Estudos e Perícias UFMG": [],
-  // é a perícia judicial do CTC/UFMG — outra instituição, outro processo. `TemaAjri` modela
-  // só a auditoria AECOM; misturar os dois seria a mesma confusão entre acervo AECOM e
-  // resultado da perícia que `apps/web/AGENTS.md` já veta.
-
+  // é a perícia judicial do CTC/UFMG — outra instituição, outro processo.
   "Ciranda": [],
-  // nome de programa/projeto próprio, sem taxonomia declarada pela fonte — não há como saber
-  // o que ele cobre sem chutar.
+  // nome de programa/projeto próprio, sem taxonomia declarada pela fonte.
 };
 
 /**
- * `TemaAjri`s do item, deduplicados, na ordem em que aparecem em `item.temas`. Tema livre
- * fora de `MAPA_TEMA_ATI_PARA_AJRI` (nenhum hoje, mas a fonte pode publicar um novo) conta
- * como sem mapa — nunca lança erro, porque um dado que o portal não controla não pode
- * derrubar o build.
- */
-export function temasAjriDoItemBiblioteca(item: Pick<ItemBiblioteca, "temas">): TemaAjri[] {
-  const vistos = new Set<TemaAjri>();
-  const resultado: TemaAjri[] = [];
-  for (const temaLivre of item.temas) {
-    for (const temaAjri of MAPA_TEMA_ATI_PARA_AJRI[temaLivre] ?? []) {
-      if (!vistos.has(temaAjri)) {
-        vistos.add(temaAjri);
-        resultado.push(temaAjri);
-      }
-    }
-  }
-  return resultado;
-}
-
-/**
- * Quantos itens do acervo (de todas as ATIs) ganham pelo menos um `TemaAjri` por esta
- * tabela, contra o total publicado. Número travado em `temas-ati.test.ts` — ver cabeçalho.
+ * Quantos itens do acervo (de todas as ATIs) ganham pelo menos um `TemaAjri`
+ * por esta tabela, contra o total publicado. Número travado em
+ * `temas-ati.test.ts` — ver cabeçalho.
  */
 export async function coberturaTemasAti(): Promise<{ comTemaAjri: number; total: number }> {
   const itens = await bibliotecaAti();
