@@ -261,6 +261,17 @@ jobs:
         if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
         run: python -m etl.bd.sih_sim --id-municipio $ID_MUNICIPIO
 
+      # SIH por CID-10 (etl.bd.sih_cid) varre TODAS as cidades ativas de uma
+      # vez (`--todos-ativos`) — diferente dos irmãos acima, que recebem
+      # `--id-municipio`. Fica no bloco mensal junto do SIH/SIM: a tabela
+      # `saude_internacoes_cid` é 100% derivada do BigQuery, e o DATASUS
+      # revisa meses passados, então recoletar todo mês é o certo (mesma
+      # lógica documentada no CFEM/ANM do etl-mg-interior.yml). A migration
+      # 0081 já está aplicada no banco local.
+      - name: 'BD SIH — internações por CID-10, todas as cidades ativas (monthly)'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
+        run: python -m etl.bd.sih_cid --todos-ativos
+
       - name: 'BD SNIS — água/esgoto/resíduos (monthly)'
         if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 10 1 * *'
         run: python -m etl.bd.snis --id-municipio $ID_MUNICIPIO
