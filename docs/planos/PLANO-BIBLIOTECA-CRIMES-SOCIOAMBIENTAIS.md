@@ -151,12 +151,17 @@ cliente recebe o array por fetch de asset:
 
 - O arquivo `biblioteca-ati.json` e `lib/paraopeba/biblioteca.ts` **continuam
   como estão** (outras telas da frente dependem deles); o agregador da
-  biblioteca unificada lê o mesmo arquivo.
-- `/paraopeba/biblioteca/page.tsx` vira página-ponte: explica que a biblioteca
-  das assessorias agora é recorte da biblioteca unificada e aponta para
-  `/ambiental/crimes-socioambientais?desastre=brumadinho`.
-- Links internos que apontam para `/paraopeba/biblioteca` (home da frente,
-  índice) passam a apontar para a rota nova com o filtro do caso.
+  biblioteca unificada lê o mesmo arquivo — **a absorção é de dado
+  compartilhado, não de rota**.
+- `/paraopeba/biblioteca` **segue contentful** (decisão de 01/09/2026, após o
+  commit do remoto `74ef839` que ali indexou o acervo Pró-Brumadinho): é a
+  biblioteca da frente Paraopeba (ATIs + acervo oficial do Acordo de
+  Brumadinho). A biblioteca unificada em `/ambiental/crimes-socioambientais`
+  cobre os DOIS desastres e inclui o mesmo acervo ATI como fonte. Não há
+  duplicação de dado — as duas telas leem os mesmos arquivos.
+- Decisão do dono "abrir com o desastre em foco e ampliar clicando no outro"
+  vale para a biblioteca unificada (chips por caso); a página do Paraopeba
+  mantém o filtro por ATI/acervo que já tinha.
 
 ## Regras editoriais específicas
 
@@ -200,8 +205,8 @@ bloqueia: dado é de arquivo). Coletores fora da CI; rotina local ou
 
 ## Decisões registradas
 
-1. Biblioteca unificada absorve a das ATIs; `/paraopeba/biblioteca` vira
-   página-ponte com filtro do caso (dono, 31/08/2026).
+1. Biblioteca unificada absorve o DADO das ATIs; `/paraopeba/biblioteca` segue
+   contentful (ver seção "Absorção da rota") — absorção de dado, não de rota.
 2. Abertura da biblioteca mostra o desastre em foco; ampliar clicando na tag do
    outro caso (dono, 31/08/2026).
 3. ES + BA no escopo; BA por notícias na fase 1 (dono, 31/08/2026).
