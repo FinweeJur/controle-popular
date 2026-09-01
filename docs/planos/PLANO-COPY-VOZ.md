@@ -5,13 +5,14 @@
 > **Última medição:** 2026-09-02
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** copy, voz, rebranding, memoria historica, lutas populares, MAB, Movimento Brasil Popular, campo popular, home, frentes, indice, cidades, acessibilidade, SEO
+> **Palavras-chave:** copy, voz, rebranding, memoria historica, lutas populares, MAB, Movimento Brasil Popular, campo popular, literatura, Carolina Maria de Jesus, Itamar Vieira Junior, epigrafe, home, frentes, indice, cidades, acessibilidade, SEO
 
 ## Sumário
 
 - [Propósito](#propósito)
 - [Princípio de voz](#princípio-de-voz)
 - [Léxico do campo popular (MAB e MBP)](#léxico-do-campo-popular-mab-e-mbp)
+- [Epígrafes da literatura](#epígrafes-da-literatura)
 - [Mapa de sensibilidade](#mapa-de-sensibilidade)
 - [Mapa de princípios → capítulos](#mapa-de-princípios--capítulos)
 - [Home (`/`) — capítulos](#home----capítulos)
@@ -22,14 +23,15 @@
 
 ## Propósito
 
-Definir a voz do rebrand do portal: memória das lutas populares brasileiras contada com leveza — princípios, coragem, força, alegria e cultura — na gramática do campo popular (MAB e Movimento Brasil Popular), sem abrir mão de uma vírgula do rigor editorial do [AGENTS.md](/AGENTS.md). Este documento é a fonte única da copy nova; números aqui são **placeholders de binding** e devem vir de constantes medidas, nunca digitados à mão.
+Definir a voz do rebrand do portal: memória das lutas populares brasileiras contada com leveza — princípios, coragem, força, alegria e cultura — na gramática do campo popular (MAB e Movimento Brasil Popular) e com epígrafes da literatura brasileira, sem abrir mão de uma vírgula do rigor editorial do [AGENTS.md](/AGENTS.md). Este documento é a fonte única da copy nova; números aqui são **placeholders de binding** e devem vir de constantes medidas, nunca digitados à mão.
 
-A proposta amadureceu em quatro versões de tom, e as quatro ficam registradas porque a evolução é instrução:
+A proposta amadureceu em cinco versões de tom, e as cinco ficam registradas porque a evolução é instrução:
 
 1. **v1 — resistência e sarcasmo** — voltagem alta, sarcasmo contra o poder.
 2. **v2 — natural e leve** — humor só contra a burocracia; removidas as piadas sobre forca, execuções e a linha que trivializava a Revolta dos Malês.
 3. **v3 — memória com alegria** — o eixo emocional sai de "luta contra a repressão" para "princípio que ficou"; entram o bloco de memória por cidade e a âncora das Diretas Já.
-4. **v4 — léxico do campo popular (esta)** — a gramática do MAB e do MBP entra na copy: atingido como sujeito de direitos, "direito não é concessão", organização das maiorias, trabalho de base, controle popular. Ver a seção própria abaixo.
+4. **v4 — léxico do campo popular** — a gramática do MAB e do MBP: atingido como sujeito de direitos, "direito não é concessão", organização das maiorias, trabalho de base, controle popular.
+5. **v5 — epígrafes da literatura (esta)** — uma frase por capítulo, com autor, obra e ano: Itamar Vieira Junior e Carolina Maria de Jesus.
 
 ## Princípio de voz
 
@@ -50,7 +52,7 @@ Revisão feita em 02/09/2026 sobre notas, matérias e páginas institucionais do
 - **"Atingido não é vítima: é sujeito de direitos."** O MAB registra que os atingidos "deixaram de ser vistos apenas como pessoas com problemas e sim como sujeitos políticos que devem ser ouvidos e respeitados". É a base do capítulo Paraopeba.
 - **"Não é concessão: é direito."** Na nota sobre a continuidade do auxílio emergencial (mar/2026): "a manutenção do auxílio emergencial não é uma concessão da empresa, mas sim um direito das populações atingidas". Casa 1:1 com "Reparação não é favor. É dívida."
 - **"Controle popular"** — a palavra de ordem histórica do MAB é "água e energia com soberania, distribuição da riqueza e controle popular". O nome do portal não é acaso: o manifesto agora fecha com "o controle é popular".
-- **"Reparação integral"** — presente na PNAB (Lei 14.755/2023) e na campanha dos 7 anos de Brumadinho ("É tempo de avançar por reparação integral e soberania popular", jan/2026). É também linguagem da lei ambiental (art. 14 da Lei 6.938/81), o que a torna segura para o portal.
+- **"Reparação integral"** — presente na PNAB (Lei 14.755/2023) e na campanha dos 7 anos de Brumadinho (jan/2026). É também linguagem da lei ambiental (art. 14 da Lei 6.938/81), o que a torna segura para o portal.
 - **"Sem transparência e fiscalização independente, é impossível garantir que as medidas estejam sendo devidamente executadas"** — declaração do MAB reproduzida pela CUT. É, palavra por palavra, a razão de existir deste portal; entra como citação atribuída no capítulo Paraopeba.
 
 **Do MBP (brasilpopular.org), o que entra:**
@@ -67,6 +69,22 @@ Revisão feita em 02/09/2026 sobre notas, matérias e páginas institucionais do
 
 **Nota de checagem:** a contagem de mortes de Brumadinho difere entre fontes — o portal usa [270]; notas do MAB e da CUT usam 272. O número na tela segue a constante do portal; a divergência merece registro na metodologia da frente Paraopeba.
 
+## Epígrafes da literatura
+
+Uma frase por capítulo, sempre com **autor, obra e ano**, em itálico pequeno acima do kicker. A epígrafe é a voz atribuída da literatura — o portal a apresenta como citação, nunca como afirmação própria (mesma disciplina da régua editorial: quem fala é o autor, com nome e endereço).
+
+| Onde | Epígrafe | Autor · obra · ano |
+|---|---|---|
+| Hero / assinatura da home | "Quando eu não tenho o que comer, ao invés de eu xingar ou pensar em morte... eu escrevo." | Carolina Maria de Jesus · *Quarto de Despejo* · 1960 |
+| Cap. 1 · Cidades | "Eu classifico São Paulo assim: o Palácio é a sala de visita, a Prefeitura é a sala de jantar, a cidade é o jardim, e a favela é o quintal onde jogam os lixos." | Carolina Maria de Jesus · *Quarto de Despejo* · 1960 |
+| Cap. 2 · Congresso | "Quem inventou a fome são os que comem." | Carolina Maria de Jesus · *Quarto de Despejo* · 1960 |
+| Cap. 6 · Terras | "A vida humana é indissociável do território. E muitas pessoas estão privadas disso." | Itamar Vieira Junior · sobre *Salvar o Fogo* (TV Brasil, Trilha de Letras) · 2023 |
+| Cap. 4 · Ambiental | "Tudo que aprendi com os camponeses, quilombolas e trabalhadores rurais eu não trocaria por nenhum título acadêmico ou prêmio." | Itamar Vieira Junior · sobre *Torto Arado* (Agência Pública) · 2021 |
+| Cap. 7 · Ação cidadã | "Não é uma esperança passiva, que está só esperando que as coisas aconteçam. É uma esperança ativa." | Itamar Vieira Junior · Roda Viva · 15/02/2021 |
+| `/sobre` · manifesto | "Quando eu não tenho o que comer... eu escrevo." — e a ponte: *a gente também escreve — com número, fonte e data.* | Carolina Maria de Jesus · 1960 |
+
+**Ficou de fora, de propósito:** "De uns tempos pra cá passei a desconfiar que o Mal não vinha do coração daquela gente. O Mal foi plantado pelos senhores de terra" (*Salvar o Fogo*, 2023) — frase forte, mas aponta culpado genérico; na régua do portal, quem aponta culpado é o documento na tela, não a epígrafe.
+
 ## Mapa de sensibilidade
 
 | Tema | Regra |
@@ -76,22 +94,27 @@ Revisão feita em 02/09/2026 sobre notas, matérias e páginas institucionais do
 | Tiradentes e Vila Rica | Sem cenas de execução na copy. Ficam o gesto (perguntar pelo ouro) e o princípio (a conta é de quem paga) |
 | Contestado, Palmares, Balaiada | Contados como resistência e legado; sem detalhe de massacre ou cerco |
 | Diretas Já | Memória alegre por excelência. A derrota de 1984 é contada com a vitória de 1989, porque é o que sustenta a esperança factual |
+| Epígrafes | Voz atribuída da literatura, com autor, obra e ano; uma frase; nunca trecho que acuse grupo ou pessoa — quem aponta culpado é o documento na tela |
 
 ## Mapa de princípios → capítulos
 
 | Capítulo | Memória | Princípio que ficou |
 |---|---|---|
-| 1 · Cidades | Vila Rica, 1720 | **A conta é de quem paga** — a coragem de perguntar |
+| 1 · Cidades | Vila Rica, 1720 · Carolina (1960) | **A conta é de quem paga** — a coragem de perguntar |
 | 2 · Congresso | Malês, 1835 · Quebra-Quilos, 1874 | **A liberdade se organiza** — e a medida tem que ser de todos |
 | 3 · Judiciário | Inconfidência, 1789 · Chibata, 1910 | **Ninguém está acima da conta** |
-| 4 · Ambiental | Contestado, 1912–16 | **A terra é de quem nela vive** |
+| 4 · Ambiental | Contestado, 1912–16 · Itamar (2021) | **A terra é de quem nela vive** |
 | 5 · Paraopeba | Brumadinho, 2019 · MAB | **Atingido é sujeito de direitos** — e a reparação é integral |
-| 6 · Terras | Palmares · Balaiada | **Comunidade é força** |
-| 7 · Ação cidadã | Diretas Já, 1984 · MBP | **A alegria também enche praça** — e organizar as maiorias transforma |
+| 6 · Terras | Palmares · Balaiada · Itamar (2023) | **Comunidade é força** |
+| 7 · Ação cidadã | Diretas Já, 1984 · MBP · Itamar (2021) | **A alegria também enche praça** — esperança ativa |
 
 ## Home (`/`) — capítulos
 
 ### Hero
+
+**Epígrafe (assinatura, itálico pequeno):**
+
+> *"Quando eu não tenho o que comer, ao invés de eu xingar ou pensar em morte... eu escrevo."* — **Carolina Maria de Jesus**, *Quarto de Despejo*, 1960
 
 **Frase display:**
 
@@ -109,6 +132,8 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 ### Capítulo 01 — O dinheiro da cidade
 
+**Epígrafe:** *"Eu classifico São Paulo assim: o Palácio é a sala de visita, a Prefeitura é a sala de jantar, a cidade é o jardim, e a favela é o quintal onde jogam os lixos."* — **Carolina Maria de Jesus**, *Quarto de Despejo*, 1960
+
 **Kicker:** `CAPÍTULO 01 · PREFEITURA E CÂMARA`
 **Princípio (Tabular, acima do display):** `A CONTA É DE QUEM PAGA · VILA RICA, 1720`
 **Display:**
@@ -123,6 +148,8 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 **CTA:** `Abrir minha cidade →`
 
 ### Capítulo 02 — Seus direitos em plenário
+
+**Epígrafe:** *"Quem inventou a fome são os que comem."* — **Carolina Maria de Jesus**, *Quarto de Despejo*, 1960
 
 **Kicker:** `CAPÍTULO 02 · CONGRESSO NACIONAL`
 **Princípio:** `A LIBERDADE SE ORGANIZA · MALÊS, 1835`
@@ -158,6 +185,8 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 ### Capítulo 04 — O que decidem do seu ar
 
+**Epígrafe:** *"Tudo que aprendi com os camponeses, quilombolas e trabalhadores rurais eu não trocaria por nenhum título acadêmico ou prêmio."* — **Itamar Vieira Junior**, sobre *Torto Arado*, 2021
+
 **Kicker:** `CAPÍTULO 04 · MEIO AMBIENTE`
 **Princípio:** `A TERRA É DE QUEM NELA VIVE · CONTESTADO, 1912–16`
 **Display:**
@@ -190,9 +219,11 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 **Número protagonista:** `[R$ 5,48 bi] acompanhados mês a mês · [467] fichas de auditoria`
 **CTA:** `Acompanhar a execução →`
 
-**Guarda de tom:** zero humor neste capítulo. "Crime" não entra (regua contra insinuação) — o clipping da frente mostra quem usa a palavra; o portal mostra os fatos.
+**Guarda de tom:** zero humor neste capítulo. "Crime" não entra (régua contra insinuação) — o clipping da frente mostra quem usa a palavra; o portal mostra os fatos.
 
 ### Capítulo 06 — De quem é a terra
+
+**Epígrafe:** *"A vida humana é indissociável do território. E muitas pessoas estão privadas disso."* — **Itamar Vieira Junior**, sobre *Salvar o Fogo*, 2023
 
 **Kicker:** `CAPÍTULO 06 · TERRITÓRIO`
 **Princípio:** `COMUNIDADE É FORÇA · PALMARES · BALAIADA`
@@ -208,6 +239,8 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 **CTA:** `Abrir o mapa →`
 
 ### Capítulo 07 — A sua parte (Diretas + gramática do MBP)
+
+**Epígrafe:** *"Não é uma esperança passiva, que está só esperando que as coisas aconteçam. É uma esperança ativa."* — **Itamar Vieira Junior**, Roda Viva, 2021
 
 **Kicker:** `CAPÍTULO 07 · AÇÃO CIDADÃ`
 **Princípio:** `A ALEGRIA TAMBÉM ENCHE PRAÇA · DIRETAS JÁ, 1984`
@@ -231,7 +264,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 ### Manifesto final da home
 
-> **DE VILA RICA A SALVADOR, DO SERTÃO DO QUEBRA-QUILOS À SERRA DA BARRIGA, DAS SACADAS DE DIAMANTINA AO ANHANGABAÚ LOTADO: O POVO DESTE PAÍS SEMPRE PERGUNTOU, SEMPRE SE ORGANIZOU — E SEMPRE ACHOU UM JEITO DE CANTAR NO MEIO DO CAMINHO. A LUTA MUDOU DE ENDEREÇO: HOJE ELA TAMBÉM É PLANILHA, ATO CATALOGADO, OFÍCIO EM PDF. DIREITO NÃO É FAVOR, NÃO É CONCESSÃO, NÃO É PROMESSA. O POVO PERGUNTA. O NÚMERO NÃO MENTE. E O CONTROLE — O CONTROLE É POPULAR.**
+> **DE VILA RICA A SALVADOR, DO SERTÃO DO QUEBRA-QUILOS À SERRA DA BARRIGA, DAS SACADAS DE DIAMANTINA AO ANHANGABAÚ LOTADO: O POVO DESTE PAÍS SEMPRE PERGUNTOU, SEMPRE SE ORGANIZOU — E SEMPRE ACHOU UM JEITO DE CANTAR NO MEIO DO CAMINHO. CAROLINA ESCREVIA PARA ENGANAR A FOME; A GENTE ESCREVE COM NÚMERO, FONTE E DATA. DIREITO NÃO É FAVOR, NÃO É CONCESSÃO, NÃO É PROMESSA. O POVO PERGUNTA. O NÚMERO NÃO MENTE. E O CONTROLE — O CONTROLE É POPULAR.**
 
 **CTA final:** `Entrar pela sua cidade →` · `Ler o manifesto completo →`
 
@@ -242,7 +275,7 @@ Cartão-carimbo no painel da cidade (chrome, não é card de dado), com três li
 **São Paulo — `/sp`**
 
 > Em 1984, o Vale do Anhangabaú juntou mais de um milhão de pessoas de rosto pintado pedindo voto direto — a maior festa cívica do país.
-> Cidade que vive de encontro: feira, bixiga, periferia que dita ritmo pro Brasil inteiro.
+> Cidade que vive de encontro: feira, bixiga, periferia que dita ritmo pro Brasil inteiro. E foi na favela do Canindé que Carolina Maria de Jesus escreveu *Quarto de Despejo* — o diário de uma favelada traduzido no mundo inteiro.
 
 **Belo Horizonte — `/bh`**
 
@@ -271,8 +304,10 @@ Cartão-carimbo no painel da cidade (chrome, não é card de dado), com três li
 
 ## `/sobre` — manifesto longo
 
-O conteúdo rigoroso da página (IA declarada, metodologia, taxa de erro, lacunas) **permanece intocado**. A seção-manifesto, no tema CANDEIA:
+O conteúdo rigoroso da página (IA declarada, metodologia, taxa de erro, lacunas) **permanece intocado**. A seção-manifesto, no tema CANDEIA, abre com Carolina:
 
+> *"Quando eu não tenho o que comer, ao invés de eu xingar ou pensar em morte... eu escrevo."* — **Carolina Maria de Jesus**, *Quarto de Despejo*, 1960. A gente também escreve — com número, fonte e data.
+>
 > **A CANDEIA É O INSTRUMENTO DE QUEM NÃO ESPERA CLAREAR — E TAMBÉM ILUMINA FESTA.**
 >
 > **FISCALIZAR O PODER SEMPRE FOI HÁBITO POR AQUI: COM O BALAIO, COM O QUILO QUEBRADO NO CHÃO DA FEIRA, COM O QUILOMBO DE PÉ, COM A PRAÇA CHEIA DE ROSTO PINTADO. O QUE FALTAVA ERA A FERRAMENTA DO DIA A DIA — O CONTRATO LIDO, O VOTO CONTADO, A CADEIRA COM NOME, A REPARAÇÃO ACOMPANHADA MÊS A MÊS.**
@@ -297,6 +332,7 @@ O conteúdo rigoroso da página (IA declarada, metodologia, taxa de erro, lacuna
 2. **Zonas sem humor:** card de dado, ressalva colada ao número, estado de erro com fonte nomeada e o capítulo Paraopeba inteiro.
 3. **Memória histórica:** princípio e gesto, nunca cena de violência; todo fato com ano, nome ou lugar — o portal cobra procedência dos outros, e a copy cita a própria.
 4. **Léxico dos movimentos:** gramática sim, bandeira não. Slogan de campanha, caráter partidário e a palavra "crime" ficam fora; citação literal de movimento só com atribuição explícita.
-5. **Bloco das cidades:** cultura pode ser celebrada solta; marco histórico só com fonte local fechada.
-6. **Forma:** frase display ≤ 6 palavras (Clash Display); caps só em manifesto e carimbos; corpo em General Sans; número em Tabular.
-7. **A ladainha dos marquees só cresce com fato fechado** — luta ou festa documentada, com data consolidada.
+5. **Epígrafe:** voz atribuída da literatura — uma frase, com autor, obra e ano; nunca trecho que acuse grupo ou pessoa (quem aponta culpado é o documento na tela).
+6. **Bloco das cidades:** cultura pode ser celebrada solta; marco histórico só com fonte local fechada.
+7. **Forma:** frase display ≤ 6 palavras (Clash Display); caps só em manifesto e carimbos; corpo em General Sans; número em Tabular.
+8. **A ladainha dos marquees só cresce com fato fechado** — luta, festa ou obra documentada, com data consolidada.
