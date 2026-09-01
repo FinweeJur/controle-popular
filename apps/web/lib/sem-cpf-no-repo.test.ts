@@ -86,6 +86,12 @@ const SINTETICOS = new Set([
   // validate-docbr citado em docstring da guarda Python) — mod-11 passa por
   // coincidência, é município, não CPF.
   "00003106705",
+  // Fixtures do teste adversarial de extração de entidades do diário
+  // (`lib/diario/extrairEntidades.adversarial.test.ts`) — CPFs sintéticos
+  // válidos por mod-11, documentados como constantes de teste, não são de
+  // pessoa real.
+  "84351260645", "843.512.606-45",
+  "05982413615", "059.824.136-15",
 ]);
 
 describe("nenhum CPF real em arquivo versionado", () => {
