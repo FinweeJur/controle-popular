@@ -22,7 +22,7 @@ is information, not a hidden defect.
 | Judiciary | `/judiciario` | Court composition, vacancies, CNJ inspections, and environmental lawsuits (SIRENEJud) |
 | Social Function of Land | `/funcaosocialterra` (+ `/mapa`, `/alertas`) | CAR cadastral gap on 3D globe, indigenous lands, quilombola territories, and **387 Conservation Units (CNUC/MMA)** |
 | Paraopeba | `/paraopeba` | The Brumadinho reparation: FGV/AECOM audit, R$ 1.64B municipal transfers (853 cities), press radar, and timeline |
-| Environment & Corporations | `/ambiental` (+ `/paraopeba/vale`, `/ambiental/mariana`) | **Mariana Agreement (R$ 677M in MG)**, **Vale S.A. Observatory (B3/CVM)**, IBAMA federal licensing, TAC registry, and LAI/CGE rulings |
+| ONSA · National Social-Environmental Observatory | `/ambiental` (+ `/paraopeba/vale`, `/ambiental/mariana`) | **Mariana Agreement (R$ 677M in MG)**, **Vale S.A. Observatory (B3/CVM)**, nationwide dam registry (SIGBM/ANM), federal norms (MMA/CNDH), environmental lawsuits (SIRENEJud), IBAMA licensing, TAC registry, and LAI/CGE rulings |
 
 ## Architecture & Data Highlights
 
