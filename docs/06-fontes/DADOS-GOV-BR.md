@@ -85,7 +85,7 @@ Nota: a frente já se serve das fontes primárias (APIs da Câmara e do Senado),
 
 Notas: séries hidrológicas do Paraopeba saem melhor do **HidroWeb/ANA** (fonte primária). Dados da reparação (Fundação Renova, entidade privada) **não estão no catálogo** — seguem PDFs e painéis.
 
-### Ambiental
+### ONSA (Observatório Nacional Socioambiental)
 
 | Conjunto | Órgão | Formato | Encaixe |
 |---|---|---|---|
@@ -102,7 +102,7 @@ Nota: **MapBiomas** não está no catálogo — plataforma própria (mapbiomas.o
 
 Custo × benefício para as frentes atuais:
 
-1. **Barragens SIGBM/ANM** — nacional, CSV simples, completa o trio FEAM/SNISB já coletado e alimenta duas frentes (Ambiental e Paraopeba).
+1. **Barragens SIGBM/ANM** — nacional, CSV simples, completa o trio FEAM/SNISB já coletado e alimenta duas frentes (ONSA e Paraopeba).
 2. **Licenças do IBAMA** — fecha a lacuna "só licenciamento estadual" de `/ambiental/licenciamento`.
 3. **Julgamentos de autos do IBAMA** — dá desfecho aos autos já publicados; história completa autuação → julgamento.
 4. **Cadastro Nacional de Florestas Públicas/SFB** — camada nova de terras públicas no globo, direto na frente Função Social da Terra.

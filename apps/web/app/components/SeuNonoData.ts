@@ -459,6 +459,13 @@ export const FRENTES: SeuNonoFrente[] = [
             link: { href: "/ambiental/decisoes-lai", texto: "Ver decisões LAI" },
           },
           {
+            id: "sirenejud-processos",
+            pergunta: "Onde consultar processos ambientais do Judiciário (SIRENEJud/CNJ)?",
+            resposta:
+              "A página /ambiental/judiciario e a consulta federal /judiciario/sirenejud reúnem 322.842 processos ambientais com dados do CNJ, com filtros por município mineiro, tribunal, classe processual e exportação CSV.",
+            link: { href: "/ambiental/judiciario", texto: "Ver processos ambientais em MG" },
+          },
+          {
             id: "convenios-ambiental",
             pergunta: "Onde ver convênios ambientais?",
             resposta:
@@ -875,8 +882,8 @@ export const PAGINAS_DADOS: PaginaDados[] = [
   },
   {
     id: "ambiental",
-    titulo: "Meio ambiente",
-    resumo: "Dados ambientais: COPAM, licenciamento, barragens, legislação e TACs.",
+    titulo: "ONSA",
+    resumo: "Observatório Nacional Socioambiental: COPAM, licenciamento, barragens, legislação, Justiça, Mariana e a Vale.",
     dados: [
       "COPAM: conselho estadual de meio ambiente",
       "Licenciamento ambiental: 19.000+ empreendimentos em MG",

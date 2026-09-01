@@ -22,7 +22,7 @@ defeito escondido.
 | Judiciário | `/judiciario` | Composição dos tribunais, vacância, inspeções CNJ e processos ambientais (SIRENEJud) |
 | Função Social da Terra | `/funcaosocialterra` (+ `/mapa`, `/alertas`) | Vazio cadastral do CAR no globo 3D, terras indígenas, territórios quilombolas e **387 Unidades de Conservação (CNUC/MMA)** |
 | Paraopeba | `/paraopeba` | A reparação de Brumadinho: auditoria FGV/AECOM, repasse aos 853 municípios (R$ 1,64 bi), clipping e linha do tempo |
-| Ambiental & Empresas | `/ambiental` (+ `/paraopeba/vale`, `/ambiental/mariana`) | **Acordo de Mariana (R$ 677 mi em MG)**, **Observatório Vale S.A. (B3/CVM)**, licenças IBAMA, TACs do GTAC, decisões LAI/CGE e pauta do COPAM |
+| ONSA · Observatório Nacional Socioambiental | `/ambiental` (+ `/paraopeba/vale`, `/ambiental/mariana`) | **Acordo de Mariana (R$ 677 mi em MG)**, **Observatório Vale S.A. (B3/CVM)**, barragens do país (SIGBM/ANM), normas federais (MMA/CNDH), processos ambientais na Justiça (SIRENEJud), licenças IBAMA, TACs do GTAC, decisões LAI/CGE e pauta do COPAM |
 
 ## Destaques de Arquitetura e Dados
 

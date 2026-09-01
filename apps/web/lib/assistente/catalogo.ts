@@ -157,7 +157,7 @@ export const ROTAS_GERAIS: (EntradaCatalogo & { zona: ZonaId })[] = [
   { sufixo: "/judiciario/metodologia", titulo: "Metodologia do Judiciário", termos: ["metodologia do judiciario"], zona: "judiciario" },
   { sufixo: "/judiciario/sobre", titulo: "Sobre o Judiciário", termos: ["sobre o judiciario"], zona: "judiciario" },
 
-  { sufixo: "/ambiental", titulo: "Meio ambiente em Minas", termos: ["ambiental estadual", "meio ambiente minas", "minas gerais"], zona: "ambiental" },
+  { sufixo: "/ambiental", titulo: "ONSA", termos: ["onsa", "observatorio nacional socioambiental", "ambiental", "meio ambiente"], zona: "ambiental" },
   { sufixo: "/ambiental/licenciamento", titulo: "Licenciamento ambiental", termos: ["licenciamento", "licenca", "licencas"], zona: "ambiental" },
   { sufixo: "/ambiental/barragens", titulo: "Barragens de Minas", termos: ["barragem de minas", "barragens de minas"], zona: "ambiental" },
   { sufixo: "/ambiental/copam", titulo: "COPAM", termos: ["copam", "conselho de politica ambiental"], zona: "ambiental" },

@@ -9,7 +9,8 @@
 
 Portal cívico de transparência (**controlepopular.com.br**), monorepo Next.js 16
 com `output: export` para Cloudflare Workers. Seis frentes: Cidades, Congresso,
-Judiciário, Função Social da Terra, Paraopeba e Ambiental.
+Judiciário, Função Social da Terra, Paraopeba e ONSA (Observatório Nacional
+Socioambiental).
 
 **Não é um site comum.** É lido por quem está sob estresse — denúncia, remoção,
 barragem. Isso muda o padrão de qualidade em três pontos concretos:
