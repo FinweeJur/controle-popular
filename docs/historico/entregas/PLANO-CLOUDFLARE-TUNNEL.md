@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-08-31
 > **Leitura estimada:** média (5–15 min)
-> **Relacionados:** [GATILHO-REMOTO.md](../05-operacao/GATILHO-REMOTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [ESTADO.md](../02-estado/ESTADO.md)
+> **Relacionados:** [GATILHO-REMOTO.md](../../05-operacao/GATILHO-REMOTO.md), [OPERACAO.md](../../05-operacao/OPERACAO.md), [ESTADO.md](../../02-estado/ESTADO.md)
 > **Palavras-chave:** cloudflare, tunnel, cloudflared, home-pc, deploy, infraestrutura
 
 ## Sumário
