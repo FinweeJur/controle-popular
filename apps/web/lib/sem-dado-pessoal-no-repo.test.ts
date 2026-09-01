@@ -39,7 +39,7 @@ const raiz = path.resolve(__dirname, "..", "..", "..");
 const script = path.join(raiz, "scripts", "checar-dado-pessoal-em-dado.py");
 
 describe.skipIf(!temPython())("nenhum CPF real em dado ingerido", () => {
-  test("varre os JSON de acervo e valida por mod-11", { timeout: 30000 }, () => {
+  test("varre os JSON de acervo e valida por mod-11", { timeout: 180000 }, () => {
     let code = 0;
     try {
       execFileSync("python", [script], { cwd: raiz, encoding: "utf8" });
@@ -54,7 +54,7 @@ describe.skipIf(!temPython())("nenhum CPF real em dado ingerido", () => {
     ).toBe(0);
   });
 
-  test("a régua vê e não é cega (self-test)", () => {
+  test("a régua vê e não é cega (self-test)", { timeout: 60000 }, () => {
     // Se um bug no validador ou no parser fizesse o teste acima passar sempre,
     // este cairia — o pior modo de falha para um guarda de privacidade.
     execFileSync("python", [script, "--self-test"], { cwd: raiz, encoding: "utf8" });

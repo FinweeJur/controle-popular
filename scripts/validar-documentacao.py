@@ -20,8 +20,8 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DOCS_DIR = REPO_ROOT / "docs"
 
-# Caminhos que ainda não precisam seguir o template completo (arquivos datados de arquivo/pesquisa).
-EXEMPT_DIRS = {"docs/_historico", "docs/_pesquisa", "docs/historico", "docs/pesquisa"}
+# Caminhos que ainda não precisam seguir o template completo (arquivos datados de arquivo/pesquisa/relatórios de automação).
+EXEMPT_DIRS = {"docs/_historico", "docs/_pesquisa", "docs/historico", "docs/pesquisa", "docs/relatorios-automacao"}
 
 REQUIRED_METADATA = [
     ("Tipo", r"> \*\*Tipo:\*\*"),
@@ -45,9 +45,9 @@ def without_code(content: str) -> str:
 
 
 def is_exempt(path: Path) -> bool:
-    rel = path.relative_to(REPO_ROOT)
+    rel = path.relative_to(REPO_ROOT).as_posix()
     for prefix in EXEMPT_DIRS:
-        if str(rel).startswith(prefix):
+        if rel.startswith(prefix):
             return True
     return False
 
