@@ -1,9 +1,6 @@
 import { type NoticiaAti } from "./clipping-ati";
 import { lerClippingAti } from "./acervos-dados";
 
-/** Sinônimo — o dado agora vive no loader server-only. */
-const CLIPPING_ATI = lerClippingAti();
-
 /**
  * Casamento entre a notícia da ATI que RESUME um estudo e o documento do
  * acervo que ela está resumindo — Tarefa 1 do plano `cp-acordos-mg`.
@@ -269,8 +266,13 @@ const CASAMENTOS_BRUTOS: CasamentoBruto[] = [
   },
 ];
 
+function obterClippingAti(): NoticiaAti[] {
+  return lerClippingAti();
+}
+
 function noticiaPorId(id: string): NoticiaAti {
-  const encontrada = CLIPPING_ATI.find((n) => n.id === id);
+  const clipping = obterClippingAti();
+  const encontrada = clipping.find((n) => n.id === id);
   if (!encontrada) {
     throw new Error(
       `estudo-e-noticia: id "${id}" não existe mais em CLIPPING_ATI — casamento desatualizado.`
@@ -279,26 +281,55 @@ function noticiaPorId(id: string): NoticiaAti {
   return encontrada;
 }
 
-/**
- * Os 13 pares notícia-de-ATI × documento-do-acervo. Ordem: a mesma de
- * `CLIPPING_ATI` (pericias, ershre, ambiental, indenizacao).
- */
-export const CASAMENTOS_ESTUDO_NOTICIA: CasamentoEstudoNoticia[] = CASAMENTOS_BRUTOS.map((c) => ({
-  noticia: noticiaPorId(c.noticiaId),
-  documento: c.documento,
-  forca: c.forca,
-  evidencia: c.evidencia,
-  motivo: c.motivo,
-}));
+let casamentosCache: CasamentoEstudoNoticia[] | null = null;
+
+export function obterCasamentosEstudoNoticia(): CasamentoEstudoNoticia[] {
+  if (!casamentosCache) {
+    casamentosCache = CASAMENTOS_BRUTOS.map((c) => ({
+      noticia: noticiaPorId(c.noticiaId),
+      documento: c.documento,
+      forca: c.forca,
+      evidencia: c.evidencia,
+      motivo: c.motivo,
+    }));
+  }
+  return casamentosCache;
+}
 
 /**
- * Contagem medida — usar para rotular a tela, nunca digitar o número à mão.
- * `estudo-e-noticia.test.ts` trava `fortes` contra queda: é o número que diz
- * se alguém afrouxou a régua de evidência.
+ * Proxy compatível com o export de array anterior.
  */
-export const COBERTURA_CASAMENTO_ESTUDO = {
-  total: CASAMENTOS_ESTUDO_NOTICIA.length,
-  fortes: CASAMENTOS_ESTUDO_NOTICIA.filter((c) => c.forca === "forte").length,
-  medias: CASAMENTOS_ESTUDO_NOTICIA.filter((c) => c.forca === "media").length,
-  nulas: CASAMENTOS_ESTUDO_NOTICIA.filter((c) => c.forca === "nula").length,
-} as const;
+export const CASAMENTOS_ESTUDO_NOTICIA: CasamentoEstudoNoticia[] = new Proxy([] as CasamentoEstudoNoticia[], {
+  get(target, prop, receiver) {
+    const dados = obterCasamentosEstudoNoticia();
+    const val = Reflect.get(dados, prop, receiver);
+    if (typeof val === "function") {
+      return val.bind(dados);
+    }
+    return val;
+  },
+});
+
+export interface CoberturaCasamentoEstudo {
+  total: number;
+  fortes: number;
+  medias: number;
+  nulas: number;
+}
+
+export function obterCoberturaCasamentoEstudo(): CoberturaCasamentoEstudo {
+  const lista = obterCasamentosEstudoNoticia();
+  return {
+    total: lista.length,
+    fortes: lista.filter((c) => c.forca === "forte").length,
+    medias: lista.filter((c) => c.forca === "media").length,
+    nulas: lista.filter((c) => c.forca === "nula").length,
+  };
+}
+
+export const COBERTURA_CASAMENTO_ESTUDO: CoberturaCasamentoEstudo = new Proxy({} as CoberturaCasamentoEstudo, {
+  get(target, prop, receiver) {
+    const cob = obterCoberturaCasamentoEstudo();
+    return Reflect.get(cob, prop, receiver);
+  },
+});
