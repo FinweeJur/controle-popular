@@ -21,7 +21,7 @@ import { NextResponse } from "next/server";
  */
 
 const AI_BASE_URL = process.env.AI_BASE_URL || "https://api.deepseek.com";
-const AI_MODEL = process.env.AI_MODEL || "deepseek-chat";
+const AI_MODEL = process.env.AI_MODEL || "deepseek-v4-flash";
 const AI_API_KEY = process.env.AI_API_KEY || "";
 
 // Rate limit por IP, janela de 1 min. Em serverless o estado é por-instância,

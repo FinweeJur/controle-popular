@@ -87,8 +87,8 @@ export default function PainelClient({
 
   /** Provedor de IA ativo no degrau 3 do assistente (degraus 0-2 nao usam modelo). */
   type ConfigIa = {
-    provedorAtivo?: "deepseek" | "maritaca";
-    provedores?: { id: "deepseek" | "maritaca"; rotulo: string; modelo: string; chaveConfigurada: boolean }[];
+    provedorAtivo?: "deepseek" | "maritaca" | "ling";
+    provedores?: { id: "deepseek" | "maritaca" | "ling"; rotulo: string; modelo: string; chaveConfigurada: boolean }[];
     erro?: string;
   };
   const [configIa, setConfigIa] = useState<ConfigIa | null>(null);
@@ -202,7 +202,7 @@ export default function PainelClient({
   }
 
   /** Troca o provedor de IA ativo; o outro vira fallback automatico. */
-  async function salvarProvedorIa(provedor: "deepseek" | "maritaca") {
+  async function salvarProvedorIa(provedor: "deepseek" | "maritaca" | "ling") {
     setSalvandoIa(true);
     setAviso(null);
     try {
@@ -550,9 +550,9 @@ export default function PainelClient({
         <p className="mt-2 text-sm text-text-soft">
           Os degraus 0–2 (navegação e respostas determinísticas) <strong className="text-text">não usam
           modelo nenhum</strong> — seguem servidos localmente, sem custo. O degrau 3, acionado só quando os
-          anteriores devolvem vazio, usa o provedor ativo abaixo; se ele falhar, o outro responde como
-          fallback automático. As chaves ficam no <code className="text-text">.env.local</code> desta
-          máquina (<code>AI_API_KEY_DEEPSEEK</code> / <code>AI_API_KEY_MARITACA</code>) — aqui só se
+          anteriores devolvem vazio, usa o provedor ativo abaixo; se ele falhar, os demais respondem como
+          fallback automático na ordem DeepSeek → Maritaca → Ling. As chaves ficam no <code className="text-text">.env.local</code> desta
+          máquina (<code>AI_API_KEY_DEEPSEEK</code> / <code>AI_API_KEY_MARITACA</code> / <code>AI_API_KEY_LING</code>) — aqui só se
           escolhe a ordem.
         </p>
         {configIa?.erro ? (

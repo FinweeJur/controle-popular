@@ -191,7 +191,7 @@ async function chamarProvedor(mensagens: MensagemChat[], provedor: ProvedorIa): 
 async function chamarApiRemota(mensagens: MensagemChat[]): Promise<{ texto: string; rotulo: string }> {
   const provedores = listarProvedoresNaOrdem();
   if (provedores.length === 0) {
-    throw new Error("Nenhum provedor remoto configurado (AI_API_KEY_DEEPSEEK / AI_API_KEY_MARITACA vazias)");
+    throw new Error("Nenhum provedor remoto configurado (AI_API_KEY_DEEPSEEK / AI_API_KEY_MARITACA / AI_API_KEY_LING vazias)");
   }
 
   const erros: string[] = [];
