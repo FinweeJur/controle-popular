@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-09-01T14:14:45.793Z",
+  "geradoEm": "2026-09-01T15:39:58.842Z",
   "fontes": [
     {
       "id": "ati:aedas",
@@ -30,9 +30,15 @@
       "nome": "CBH-Doce - Comite da Bacia Hidrografica do Rio Doce",
       "licenca": "documentos publicos de orgao colegiado de recursos hidricos; tratado como publicos",
       "itens": 157
+    },
+    {
+      "id": "fundo-brasil",
+      "nome": "Fundo Brasil de Direitos Humanos — Programa Rio Doce e editais",
+      "licenca": "dados-abertos-gov; conteudo da fundacao publicado em dominio publico",
+      "itens": 16
     }
   ],
-  "ficouDeFora": "ADAI (adaibrasil.org.br): 19 publicações, todas de Amazônia/Fundo Amazônia, zero com o programa 'paraopeba' — não tem documento desta bacia para catalogar. NACAB (Região 3): biblioteca de PDFs coletada (48 itens, 5 séries: Estudos e Relatórios, Reparação, Mobilização, Germinar, Nacab em Campo) — mas a página-fonte não declara data de publicação por item, só a pasta de upload (não confiável como data), então todo item do NACAB aqui tem `data: null`. Notícias das três ATIs: ficam fora desta biblioteca por decisão registrada em docs/FONTES-BIBLIOTECA-ATI.md. Programas da AEDAS fora da bacia do Doce: Itatiaiucu (135) e Veredas Sol e Lares (132) nao entram por vinculo com a bacia nao confirmado. ATIs de Mariana sem REST publica confirmada (Caritas, CTA, programa Doce da ADAI) ficam para a proxima rodada. 9 itens sem data extraivel do titulo ficaram com data: null (lacuna declarada). O wp-json responde 401; coleta por pagina.",
+  "ficouDeFora": "ADAI (adaibrasil.org.br): 19 publicações, todas de Amazônia/Fundo Amazônia, zero com o programa 'paraopeba' — não tem documento desta bacia para catalogar. NACAB (Região 3): biblioteca de PDFs coletada (48 itens, 5 séries: Estudos e Relatórios, Reparação, Mobilização, Germinar, Nacab em Campo) — mas a página-fonte não declara data de publicação por item, só a pasta de upload (não confiável como data), então todo item do NACAB aqui tem `data: null`. Notícias das três ATIs: ficam fora desta biblioteca por decisão registrada em docs/FONTES-BIBLIOTECA-ATI.md. Programas da AEDAS fora da bacia do Doce: Itatiaiucu (135) e Veredas Sol e Lares (132) nao entram por vinculo com a bacia nao confirmado. ATIs de Mariana sem REST publica confirmada (Caritas, CTA, programa Doce da ADAI) ficam para a proxima rodada. 9 itens sem data extraivel do titulo ficaram com data: null (lacuna declarada). O wp-json responde 401; coleta por pagina. Coleta por pagina publica do WordPress (wp-json nao exposto). Itens sem data extraivel do titulo ficam com data: null (lacuna declarada). Resumo extraido do excerto da pagina de busca quando disponivel.",
   "itens": [
     {
       "id": "ati:aedas-41899",
@@ -17903,6 +17909,358 @@
       "url": "https://cbhdoce.org.br/wp-content/uploads/2018/05/Nota-Técnica-v.FINAL-ANEXOS-CONSOLIDADO.pdf",
       "fonteId": "cbh-doce",
       "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+    },
+    {
+      "id": "fundo-brasil:323910cf084e25",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Promoção e Defesa de Direitos Humanos na Bacia do Rio Doce – 2025",
+      "data": "2025-11-06",
+      "tipo": "edital",
+      "tipoOrigem": "edital",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "PARA TODOS VEREM: A imagem mostra em destaque centralizado os seguintes dizeres em letras garrafais verdes: Bacia do Rio Doce. No topo, Edital Promoção e Defesa de Direitos Humanos 2025. Ao fundo e centralizado, em tom preto e branco, há uma imagem de uma criança segurando um barco com mãos. A foto foi sobreposta ao […]",
+      "url": "https://www.fundobrasil.org.br/edital/promocao-e-defesa-de-direitos-humanos-na-bacia-do-rio-doce-2025/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:37.800906+00:00"
+    },
+    {
+      "id": "fundo-brasil:d85f906ead9721",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Fundo Brasil lança segundo edital para fortalecer a defesa de direitos humanos na Bacia do Rio Doce",
+      "data": "2025-11-06",
+      "tipo": "noticia",
+      "tipoOrigem": "noticia",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "O Fundo Brasil de Direitos Humanos lança nesta quarta-feira, 11, a segunda edição do edital Promoção e Defesa de Direitos Humanos na Bacia do Rio Doce – 2025. O apoio vai destinar até R$1 milhão em apoios financeiros a 20 grupos, coletivos e organizações da sociedade civil que atuam no enfrentamento de violações de direitos […]",
+      "url": "https://www.fundobrasil.org.br/noticia/fundo-brasil-lanca-segundo-edital-para-fortalecer-a-defesa-de-direitos-humanos-na-bacia-do-rio-doce/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:38.645203+00:00"
+    },
+    {
+      "id": "fundo-brasil:f668895ce88cab",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Assessorias Técnicas Independentes divulgam editais de contratação para trabalho junto à população atingida do rio Doce",
+      "data": "2023-04-01",
+      "tipo": "noticia",
+      "tipoOrigem": "noticia",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "O Fundo Brasil de Direitos Humanos, na qualidade de expert do Ministério Público Federal encarregado da Coordenação Metodológica das Assessorias Técnicas Independentes, informa que as entidades responsáveis por prestarem Assessoria Técnica à população atingida da bacia do rio Doce tornaram públicos seus editais de contratação de pessoal. Com o papel de assegurar às comunidades atingidas […]",
+      "url": "https://www.fundobrasil.org.br/noticia/assessorias-tecnicas-independentes-divulgam-editais-de-contratacao-para-trabalho-junto-a-populacao-atingida-do-rio-doce/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:38.657820+00:00"
+    },
+    {
+      "id": "fundo-brasil:ce7ff83270f529",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Caso rio Doce: Justiça mantém Coordenação Metodológica e determina abertura de chamamento público",
+      "data": "2023-01-06",
+      "tipo": "noticia",
+      "tipoOrigem": "noticia",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "Em decisão proferida em 25 de maio de 2023 no âmbito do Eixo Prioritário n° 10 (que trata de assuntos relacionado às Assessorias Técnicas Independentes- ATIs), a 4ª Vara Federal Cível e Agrária da SSJ de Belo Horizonte determinou a manutenção da atividade de Coordenação Metodológica, entendendo ser este um instrumento fundamental para a orientação […]",
+      "url": "https://www.fundobrasil.org.br/noticia/caso-rio-doce-justica-mantem-coordenacao-metodologica-e-determina-abertura-de-chamamento-publico/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:38.655350+00:00"
+    },
+    {
+      "id": "fundo-brasil:2d2675e79bca0b",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Justiça Federal garante condições para o início do trabalho das Assessorias Técnicas Independentes na bacia do rio Doce",
+      "data": "2022-01-12",
+      "tipo": "noticia",
+      "tipoOrigem": "noticia",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "Na quarta-feira (30), a 4ª Vara Federal Cível e Agrária da SSJ de Belo Horizonte acatou manifestação enviada pelas Instituições de Justiça em 18 de novembro sobre as condições necessárias para a realização das atividades das Assessorias Técnicas Independentes junto à população atingida. Segundo o juiz Michael Procópio Ribeiro Alves Avelar, “se as assessorias técnicas […]",
+      "url": "https://www.fundobrasil.org.br/noticia/justica-federal-garante-condicoes-para-o-inicio-do-trabalho-das-assessorias-tecnicas-independentes-na-bacia-do-rio-doce/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:38.659933+00:00"
+    },
+    {
+      "id": "fundo-brasil:ea7a035bcbb277",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Promoção e Defesa de Direitos Humanos na Bacia do Rio Doce",
+      "data": null,
+      "tipo": "edital",
+      "tipoOrigem": "edital",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "INSCRIÇÕES ENCERRADAS VEJA A LISTA DOS SELECIONADOS APRESENTAÇÃO O Fundo Brasil de Direitos Humanos convida grupos, coletivos e organizações da sociedade civil que atuam no enfrentamento a violações e na defesa de direitos humanos na Bacia do Rio Doce a apresentarem propostas para apoio ao seu trabalho no âmbito do Edital “Promoção e Defesa de […]",
+      "url": "https://www.fundobrasil.org.br/edital/promocao-e-defesa-de-direitos-humanos-na-bacia-do-rio-doce/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:37.802904+00:00"
+    },
+    {
+      "id": "fundo-brasil:21e65d1feb4f5f",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Promoção e Defesa de Direitos na Bacia do Rio Doce: conheça selecionados no edital",
+      "data": null,
+      "tipo": "noticia",
+      "tipoOrigem": "noticia",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "Vinte e uma organizações, sediadas em 13 diferentes municípios: o Fundo Brasil de Direitos Humanos divulga, na tarde desta sexta-feira (24), os grupos selecionados pelo Edital Promoção e Defesa dos Direitos Humanos na Bacia do Rio Doce – 2025. Cada proposta receberá até R$50 mil, que deverão financiar atividades ao longo dos próximos 12 […]",
+      "url": "https://www.fundobrasil.org.br/noticia/promocao-e-defesa-de-direitos-na-bacia-do-rio-doce-conheca-selecionados-no-edital/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:38.644202+00:00"
+    },
+    {
+      "id": "fundo-brasil:2fca5dbc4a0ac8",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Água, território, respeito: coletivos da Bacia do Rio Doce apresentam seus desafios na luta por direitos",
+      "data": null,
+      "tipo": "noticia",
+      "tipoOrigem": "noticia",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "Acesso à água, autonomia no território, manutenção da cultura e dos modos de vida, subsistência e respeito são alguns desafios definidores da vida das populações da Bacia do Rio Doce atualmente. Estes foram os temas de destaque em um encontro de trabalho promovido pelo Fundo Brasil, que reuniu lideranças de 17 organizações que foram selecionadas […]",
+      "url": "https://www.fundobrasil.org.br/noticia/agua-territorio-respeito-coletivos-da-bacia-do-rio-doce-apresentam-seus-desafios-na-luta-por-direitos/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:38.645203+00:00"
+    },
+    {
+      "id": "fundo-brasil:9492b3a515659d",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Edital Promoção e Defesa de Direitos na Bacia do Rio Doce: Fundo Brasil divulga a lista dos selecionados",
+      "data": null,
+      "tipo": "noticia",
+      "tipoOrigem": "noticia",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "O Fundo Brasil de Direitos Humanos divulga, nesta sexta-feira, 25, o resultado do edital Promoção e Defesa de Direitos Humanos na Bacia do Rio Doce. O objetivo deste apoio é de fortalecer os grupos e coletivos locais em sua luta no enfrentamento a violações e na defesa de direitos humanos na Bacia do Rio Doce […]",
+      "url": "https://www.fundobrasil.org.br/noticia/edital-promocao-e-defesa-de-direitos-na-bacia-do-rio-doce-fundo-brasil-divulga-a-lista-dos-selecionados/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:38.647204+00:00"
+    },
+    {
+      "id": "fundo-brasil:3d09bce2064bc9",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Prazo prorrogado: edital Promoção e Defesa dos Direitos Humanos na Bacia do Rio Doce recebe projetos até 9 de setembro",
+      "data": null,
+      "tipo": "noticia",
+      "tipoOrigem": "noticia",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "O Fundo Brasil de Direitos Humanos prorrogou excepcionalmente o prazo das inscrições de projetos no edital Promoção e Defesa de Direitos Humanos na Bacia do Rio Doce. O novo prazo vai até 09 de setembro às 18h (horário de Brasília). A prorrogação tem como objetivo garantir igualdade de condições no processo seletivo para todas organizações […]",
+      "url": "https://www.fundobrasil.org.br/noticia/prazo-prorrogado-edital-promocao-e-defesa-dos-direitos-humanos-na-bacia-do-rio-doce-recebe-projetos-ate-9-de-setembro/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:38.647796+00:00"
+    },
+    {
+      "id": "fundo-brasil:5dfe20debdd699",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Fundo Brasil lança edital para fortalecer a defesa de direitos na Bacia do Rio Doce",
+      "data": null,
+      "tipo": "noticia",
+      "tipoOrigem": "noticia",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "O Fundo Brasil de Direitos Humanos lança, nesta sexta-feira, 26, o edital Promoção e Defesa de Direitos Humanos na Bacia do Rio Doce. Serão apoiadas 20 propostas, com o valor de até R$ 40 mil cada. O total em doações é R$ 800 mil para fortalecer grupos, coletivos e organizações, que lutam contra retrocessos, garantindo […]",
+      "url": "https://www.fundobrasil.org.br/noticia/fundo-brasil-lanca-edital-para-fortalecer-a-defesa-de-direitos-na-bacia-do-rio-doce/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:38.650254+00:00"
+    },
+    {
+      "id": "fundo-brasil:d21bd2bd960a17",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Caso rio Doce: Decisão judicial sobre consolidação das Comissões de Atingidos e sua integração aos trabalhos com as Assessorias Técnicas Independentes",
+      "data": null,
+      "tipo": "noticia",
+      "tipoOrigem": "noticia",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "Em decisão judicial de 24 de maio de 2023 do Eixo Prioritário nº 7, que trata dos temas relacionados a cadastro e indenizações, a 4ª Vara Federal Cível e Agrária da Seção Judiciária de Minas Gerais determinou as medidas que devem ser tomadas para a consolidação das Comissões Locais de Atingidos e sua integração aos […]",
+      "url": "https://www.fundobrasil.org.br/noticia/caso-rio-doce-decisao-judicial-sobre-consolidacao-das-comissoes-de-atingidos-sua-integracao-aos-trabalhos-com-as-assessorias-tecnicas-independentes-2-2/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:38.651882+00:00"
+    },
+    {
+      "id": "fundo-brasil:ac4a1a6b637e49",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Programa Rio Doce: atualizações sobre custeio da participação de atingidos ouvintes no sistema CIF",
+      "data": null,
+      "tipo": "noticia",
+      "tipoOrigem": "noticia",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "O Fundo Brasil de Direitos Humanos, na condição de expert do Ministério Público Federal (MPF), atua desde setembro de 2019 no apoio à participação, excepcionalmente como ouvintes, da população atingida da bacia do rio Doce nas reuniões do Comitê Interfederativo (CIF) e de suas Câmaras Técnicas (CTs). O papel do Fundo Brasil tem sido receber […]",
+      "url": "https://www.fundobrasil.org.br/noticia/programa-rio-doce-atualizacoes-sobre-o-custeio-da-participacao-de-atingidos-ouvintes-no-sistema-cif/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:38.656347+00:00"
+    },
+    {
+      "id": "fundo-brasil:3431f8c3b94890",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Assessorias Técnicas Independentes iniciam procedimentos para instalação em territórios da bacia do rio Doce",
+      "data": null,
+      "tipo": "noticia",
+      "tipoOrigem": "noticia",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "O Fundo Brasil de Direitos Humanos, na qualidade de expert do Ministério Público Federal e Coordenador Metodológico das Assessorias Técnicas Independentes, informa que as Assessorias deram início à implementação das medidas necessárias para o seu funcionamento em 14 territórios atingidos da bacia do rio Doce (ver lista completa abaixo). Após decisões judiciais de 30 de […]",
+      "url": "https://www.fundobrasil.org.br/noticia/assessorias-tecnicas-independentes-iniciam-procedimentos-para-instalacao-em-territorios-da-bacia-do-rio-doce/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:38.658390+00:00"
+    },
+    {
+      "id": "fundo-brasil:d24a132b270475",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Associação Remanescente de Quilombo de Comunidade Tradicional de Povoação Rio Doce Foz",
+      "data": null,
+      "tipo": "projeto",
+      "tipoOrigem": "projeto",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "fundebrasil",
+        "sociedade civil",
+        "reparacao"
+      ],
+      "resumo": "",
+      "url": "https://www.fundobrasil.org.br/projeto/associacao-remanescente-de-quilombo-de-comunidade-tradicional-de-povoacao-rio-doce-foz/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:40.036940+00:00"
+    },
+    {
+      "id": "fundo-brasil:programa-rio-doce",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Programa Rio Doce — Fundo Brasil de Direitos Humanos",
+      "data": null,
+      "tipo": "programa",
+      "tipoOrigem": "programa",
+      "orgao": "Fundo Brasil de Direitos Humanos",
+      "esfera": "independente",
+      "uf": "BR",
+      "tags": [
+        "rio doce",
+        "programa",
+        "situacao socioambiental",
+        "reparacao"
+      ],
+      "resumo": "Programa institucional do Fundo Brasil voltado para a bacia do Rio Doce, area atingida pelo rompimento da barragem de Fundao (Mariana, 2015). Atuacao em defesa de direitos, financiamento a organizacoes da sociedade civil e editais publicos.",
+      "url": "https://www.fundobrasil.org.br/nosso-trabalho/apoio-a-sociedade-civil/programas-encerrados/programa-rio-doce/",
+      "fonteId": "fundo-brasil",
+      "coletadoEm": "2026-09-01T15:33:40.044945+00:00"
     }
   ]
 }

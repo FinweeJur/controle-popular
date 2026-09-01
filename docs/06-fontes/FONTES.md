@@ -82,9 +82,9 @@ Biblioteca única de documentos dos dois rompimentos, em `/ambiental/crimes-soci
 
 - **Agregador:** `scripts/agregar-biblioteca-desastres.mts` funde o acervo das ATIs do Paraopeba (`apps/web/public/data/biblioteca-ati.json`, 645 itens, `desastre: brumadinho`) com os arquivos por fonte em `etl/betim/dados/desastres/*.json` e grava `apps/web/public/data/biblioteca-desastres.json` + `COBERTURA_BIBLIOTECA_DESASTRES`. A triagem de dado pessoal roda aqui (`triagem.ts::ehItemBloqueado`), uma cópia só da regra.
 - **ATIs de Mariana (AEDAS Rio Doce):** `scripts/coletar-biblioteca-ati-mariana.py` — 118 itens (01/09/2026) dos programas do Rio Doce (Aimorés, Barra Longa, Conselheiro Pena, Médio Rio Doce, Resplendor-Itueta, Vale do Aço) via wp-json, dedup por id (o mesmo documento pertence a vários projetos). Ficam de fora: Itatiaiuçu e Veredas Sol e Lares (vínculo com a bacia não confirmado).
-- **Radar de notícias:** `scripts/coletar-noticias-desastres.py` — título, veículo, data, microresumo (snippet do próprio feed) e link; nunca o corpo. Buscas: atingidos Bahia (pedido do dono), Rio Doce ES, Mariana, Brumadinho. `desastre` inferido por termo de lugar; item sem vínculo fica `null`.
-- **Pró-Brumadinho (Governo de MG):** acervo de 129 documentos do Acordo Judicial de Brumadinho em `/paraopeba/biblioteca` (`montar-biblioteca-probrumadinho.py`), com micro-resumos gerados por IA **rotulados** — fora da biblioteca unificada por decisão (regra local: resumo só da fonte; ver `docs/FONTES-PRO-BRUMADINHO.md`).
-- **Pendentes de sondagem:** CIF (cif.org.br inacessível na sondagem de 01/09), MPF, órgãos de MG (SEMAD/IGAM/FEAM) e ES (IEMA tem seção "Desastre do Rio Doce" + "Biblioteca On-Line"), e as ATIs de Mariana sem REST pública confirmada (Cáritas, CTA, programa Doce da ADAI).
+- **CBH-Doce — Comitê da Bacia do Rio Doce:** `scripts/coletar-biblioteca-cbh-doce.py` — 157 itens (01/09/2026, delibera��es e mo��es normativas via p�gina p�blica WP).
+- **Fundo Brasil de Direitos Humanos:** `scripts/coletar-biblioteca-fundo-brasil.py` — 16 itens (01/09/2026) do programa "Programa Rio Doce" e editais de defesa de direitos humanos na bacia (ultimo edital 2025: 20 organizacoes, R$ 50.000 cada, total R$ 1.000.000,00). Coleta por paginas publicas do WordPress (cards `<a class="group bg-light">` com <h3>, <time> e <div class="text-black text-sm">).
+- **Pendentes de sondagem:** CIF (cif.org.br inacess�vel na sondagem de 01/09), MPF, �rg�os de MG (SEMAD/IGAM/FEAM) e ES (IEMA tem se��o "Desastre do Rio Doce" + "Biblioteca On-Line"), e as ATIs de Mariana sem REST p�blica confirmada (C�ritas, CTA, programa Doce da ADAI).
 
 ### Mapa amplo de fontes (pesquisa 01/09/2026)
 
@@ -102,7 +102,8 @@ Inventário dos repositórios documentais dos dois casos, com o que foi **medido
 | ATI: CTA — Centro de Tecnologia Alternativa | cta.org.br | ⛔ transporte falha daqui |
 | IEMA-ES — Biblioteca | servicos.iema.es.gov.br/biblioteca/ | 🟡 Sophia (ASP.NET legado, frames/sessão) — sondagem de navegador |
 | IEMA-ES — seção "Desastre do Rio Doce" | iema.es.gov.br (menu) | 🟡 URL exata a sondar |
-| CBH-Doce — Comitê da Bacia do Rio Doce | cbhdoce.org.br | a sondar |
+| CBH-Doce — Comitê da Bacia do Rio Doce | cbhdoce.org.br | ✅ coletado (157 itens, deliberações e moções) |
+| Fundo Brasil de Direitos Humanos | fundobrasil.org.br | ✅ coletado (16 itens — Programa Rio Doce e editais) |
 | MPF — caso Samarco/Fundão | mpf.mp.br | 🟡 a localizar a biblioteca do caso |
 | Governo de MG — empenhos do Acordo | já em `/ambiental/mariana` | ✅ (532 empenhos) |
 
