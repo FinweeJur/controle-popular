@@ -50,9 +50,9 @@ export async function POST(request: Request) {
   }
 
   const pedido = body.provedorAtivo;
-  if (pedido !== "deepseek" && pedido !== "maritaca") {
+  if (pedido !== "deepseek" && pedido !== "maritaca" && pedido !== "ling") {
     return NextResponse.json(
-      { erro: "provedorAtivo precisa ser 'deepseek' ou 'maritaca'." },
+      { erro: "provedorAtivo precisa ser 'deepseek', 'maritaca' ou 'ling'." },
       { status: 400 }
     );
   }
