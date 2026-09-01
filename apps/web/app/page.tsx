@@ -30,9 +30,12 @@ import FooterGlobal from "@/app/components/FooterGlobal";
  */
 
 export const metadata: Metadata = metadataEditavel("/", {
-  title: "Controle Popular — dados públicos que dá para usar",
+  // ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md): título na voz nova
+  // e descrição cobrindo as seis frentes — a antiga ainda listava só
+  // Betim, Congresso e Judiciário, herança de quando eram três sites.
+  title: "Controle Popular — o dinheiro é seu; a gente mostra para onde vai",
   description:
-    "Transparência do orçamento e dos contratos de Betim-MG, monitoramento do que o Congresso Nacional decide sobre direitos, e quem ocupa cada cadeira do Judiciário. Portal independente.",
+    "Informação oficial que sempre foi pública, reunida numa tela só: o dinheiro da sua cidade, o que o Congresso decide sobre seus direitos, quem ocupa cada cadeira do Judiciário, a terra, o ambiente e a reparação de Brumadinho. Todo número com fonte. Portal independente.",
 });
 
 // A cópia das frentes mora em `lib/zonas.ts`, porque o bloco de remissão no
@@ -61,13 +64,17 @@ export default async function Hub() {
       <header className="space-y-4">
         {/* O wordmark da marca ficou só na barra global (`TopNav.tsx`), acima
             desta página — aqui começa direto no título. */}
+        {/* ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md): a voz nova
+            entra primeiro no texto — a forma (scrollytelling em capítulos
+            com display gigante) fica para o sprint da home. */}
         <h1 className="font-display text-3xl font-bold sm:text-4xl">
-          Dados públicos que dá para usar
+          O dinheiro é seu. A gente mostra.
         </h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">
-          Informação oficial sobre dinheiro público e sobre as leis que mexem com a sua
-          vida, reunida e explicada. Portal independente, sem vínculo com nenhum governo,
-          câmara ou partido.
+          Informação oficial que sempre foi pública — só estava espalhada por dezenas de
+          sistemas, escrita em dialeto de edital. A gente juntou tudo numa tela, por cidade
+          e por tema, em português comum. Portal independente, sem vínculo com nenhum governo,
+          câmara ou partido — e cada número diz de onde saiu.
         </p>
         <p className="flex flex-wrap gap-x-4 gap-y-1 text-[.95em]">
           <a href="/busca" className="font-medium text-primary hover:underline">
@@ -140,7 +147,8 @@ export default async function Hub() {
           ) : (
           // <a> puro, não next/link: estes caminhos estão FORA do basePath
           // deste app (`/betim`), e o next/link prefixaria, gerando
-          // `/betim/congresso`. É a mesma classe de bug que já mordeu aqui.
+          // `/betim/congresso`. É a mesma classe de bug que os comentários
+          // do `next.config.ts` registram já ter acontecido três vezes.
           <a
             key={s.href}
             href={s.href}
@@ -260,6 +268,24 @@ export default async function Hub() {
           terra —, e a terceira acompanha se uma reparação já decidida na Justiça está
           sendo paga de verdade, mês a mês. São {contagemZonasPublicadas()} ao todo, e
           acompanhar só uma deixa boa parte da história de fora.
+        </p>
+      </section>
+
+      {/* MANIFESTO — ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md,
+          seção "Manifesto final"). Entra agora como texto corrido no
+          design atual; o tratamento em caps justificado, com a epígrafe
+          de Birri/Galeano e imagem full-bleed, é do sprint do
+          scrollytelling — não adiantar forma aqui. */}
+      <section className="mt-8 rounded-lg border border-border p-6">
+        <h2 className="font-display text-lg font-semibold">
+          O povo pergunta. O número não mente.
+        </h2>
+        <p className="mt-2 text-[.95em] text-text-soft">
+          De Vila Rica a Salvador, do sertão do Quebra-Quilos à Serra da Barriga, das
+          sacadas de Diamantina ao Anhangabaú lotado: o povo deste país sempre perguntou,
+          sempre se organizou — e sempre achou um jeito de cantar no meio do caminho.
+          Direito não é favor, não é concessão, não é promessa. E o dinheiro continua
+          sendo seu.
         </p>
       </section>
 
