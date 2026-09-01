@@ -51,8 +51,8 @@ import { ehTipoPessoal, precisaRedigirResumo } from "./triagem";
  * inteiro sai. Não há meio-termo quando o título é o único texto.
  */
 
-/** As quatro organizações medidas. Só as duas primeiras têm acervo aqui. */
-export type AtiBiblioteca = "aedas" | "guaicuy" | "nacab" | "adai";
+/** As organizações e fontes medidas. ATIs + portal Pró-Brumadinho (Gov MG). */
+export type AtiBiblioteca = "aedas" | "guaicuy" | "nacab" | "adai" | "probrumadinho";
 
 export interface ItemBiblioteca {
   id: string;
@@ -101,6 +101,18 @@ export interface ItemBiblioteca {
   url: string;
   /** Autoria declarada pela fonte. `null` = a fonte não declarou. */
   autoria: string | null;
+  /**
+   * Micro-resumo factual do documento. Opcional — o acervo das ATIs não tem
+   * resumo (a fonte não publica); o acervo Pró-Brumadinho pode ter resumo
+   * gerado por modelo de IA (rotulado em `resumo_origem`).
+   */
+  resumo?: string | null;
+  /**
+   * De onde veio o resumo: `"fonte"` se extraído da própria página do
+   * documento, `"modelo"` se gerado por IA. Quando `resumo` é `null` ou
+   * ausente, este campo também é ausente.
+   */
+  resumo_origem?: "fonte" | "modelo";
 }
 
 export interface FonteBiblioteca {
@@ -178,8 +190,15 @@ async function ler(): Promise<LidoBiblioteca> {
       return vazio;
     }
 
-    const barrados = bruto.itens.filter(ehItemBloqueadoPelaTriagem);
-    const publicaveis = bruto.itens.filter((i) => !ehItemBloqueadoPelaTriagem(i));
+    const itensNormalizados = (bruto.itens ?? []).map((i) => ({
+      ...i,
+      temas: Array.isArray(i.temas) ? i.temas : [],
+      colecoes: Array.isArray(i.colecoes) ? i.colecoes : [],
+      tags: Array.isArray(i.tags) ? i.tags : [],
+    }));
+
+    const barrados = itensNormalizados.filter(ehItemBloqueadoPelaTriagem);
+    const publicaveis = itensNormalizados.filter((i) => !ehItemBloqueadoPelaTriagem(i));
     const resultado: LidoBiblioteca = {
       dados: { ...bruto, itens: publicaveis },
       barrados,
@@ -245,12 +264,13 @@ export async function coberturaBiblioteca(): Promise<{
   };
 }
 
-/** Rótulo curto de cada ATI — mesmo vocabulário de `clipping-ati.ts`. */
+/** Rótulo curto de cada fonte — ATIs + portal Pró-Brumadinho (Gov MG). */
 export const ATI_BIBLIOTECA_LABEL: Record<AtiBiblioteca, string> = {
   aedas: "AEDAS",
   guaicuy: "Guaicuy",
   nacab: "NACAB",
   adai: "ADAI",
+  probrumadinho: "Governo de MG · Pró-Brumadinho",
 };
 
 /** Tipos presentes no acervo, em ordem de frequência medida. */
@@ -263,21 +283,27 @@ export function tiposDaBiblioteca(itens: ItemBiblioteca[]): string[] {
 /** Temas presentes no acervo, em ordem de frequência medida. */
 export function temasDaBiblioteca(itens: ItemBiblioteca[]): string[] {
   const contagem = new Map<string, number>();
-  for (const i of itens) for (const t of i.temas) contagem.set(t, (contagem.get(t) ?? 0) + 1);
+  for (const i of itens) {
+    for (const t of (i.temas ?? [])) contagem.set(t, (contagem.get(t) ?? 0) + 1);
+  }
   return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt")).map(([t]) => t);
 }
 
 /** Macro-categorias presentes no acervo, em ordem de frequência medida. */
 export function macrosDaBiblioteca(itens: ItemBiblioteca[]): string[] {
   const contagem = new Map<string, number>();
-  for (const i of itens) contagem.set(i.macro_categoria, (contagem.get(i.macro_categoria) ?? 0) + 1);
+  for (const i of itens) {
+    if (i.macro_categoria) contagem.set(i.macro_categoria, (contagem.get(i.macro_categoria) ?? 0) + 1);
+  }
   return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt")).map(([t]) => t);
 }
 
 /** Tags presentes no acervo, em ordem de frequência medida. */
 export function tagsDaBiblioteca(itens: ItemBiblioteca[]): string[] {
   const contagem = new Map<string, number>();
-  for (const i of itens) for (const t of i.tags) contagem.set(t, (contagem.get(t) ?? 0) + 1);
+  for (const i of itens) {
+    for (const t of (i.tags ?? [])) contagem.set(t, (contagem.get(t) ?? 0) + 1);
+  }
   return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt")).map(([t]) => t);
 }
 
