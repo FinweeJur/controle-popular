@@ -194,7 +194,7 @@ Este documento absorve a fila viva e o estado de 16/08, atualizado com entregas 
 - `HANDOFF-2026-08-15-NOITE.md` — **ENTREGUE** (entrega documentada; pendências e decisões migradas para as seções acima)
 - `PLANO-DIREITOS-EM-MOVIMENTO.md` — **ENTREGUE** (quatro portas no ar: home, ajuda, informação e denúncia)
 - `PLANO-ACAO-CIDADA.md` — **ENTREGUE** (facilitador de denúncia em produção, fases 1–3)
-- `TODO-PROXIMAS-RODADAS.md` — **ATIVO** (dívidas que não couberam inteiras aqui: análise do commit CAR/INCRA, revisão de completude de páginas, ETL FGV)
+- `TODO-PROXIMAS-RODADAS.md` — **ARQUIVADO** (01/09/2026) — medição e justificativa histórica; a fila viva está nas seções acima; arquivo em [historico/planos/TODO-PROXIMAS-RODADAS.md](../historico/planos/TODO-PROXIMAS-RODADAS.md)
 - `diario-oficial-plano.md` — **ENTREGUE** (fases D0–D5 concluídas: coleta completa 16.601 atos em 30/08/2026, commit `1e93eeb`)
 - `PLANO-BASES-CLIMA-E-RISCO.md` — **ATIVO** (fatia 1 entregue; BATER, CEMADEN, INPE, SNIS e MapBiomas pendentes)
 - `PLANO-ESPELHO-PDF-AJRI.md` — **ATIVO** (fase 1 entregue; fases 2–3 por fazer, bloqueadas por `AJRI_COOKIE`)
@@ -203,10 +203,10 @@ Classificação dos 13 planos, feita em 22/08 junto com as decisões acima:
 
 | Plano | Classificação |
 |---|---|
-| `ROTEIRO-EXECUCAO-PENDENCIAS.md` | **ATIVO** — plano mestre de 30/08: fila ranqueada por custo, escopo expandido do monitoramento de empresas (Vale: CVM, site oficial, timeline com ações da B3, painel de notícias), IA degrau 3 com DeepSeek/Maritaca + fallback, e as regras de paralelização com agentes |
+| `ROTEIRO-EXECUCAO-PENDENCIAS.md` | **ARQUIVADO** (01/09/2026) — plano mestre de 30/08; itens migrados para a Fila viva acima; arquivo em [historico/planos/ROTEIRO-EXECUCAO-PENDENCIAS.md](../historico/planos/ROTEIRO-EXECUCAO-PENDENCIAS.md) |
 | `PLANO-EXPANSAO-ACORDOS-MG.md` | **ATIVO** — Blocos 0, A e a maior parte do B entregues (PR #2, 22/08); B7 morto com medição; B4 no Bloco C (Neon); Bloco D respondido hoje |
 | `PLANO-TRANSPARENCIA-JUSTICA.md` | **ATIVO** — sondagem fechada em 22/08; as 3 frentes estão sendo executadas em sessão paralela |
-| `PLANO-CHATBOT-IA.md` | **ATIVO** — decisões 2–4 tomadas; Fases 0–4 do detalhamento entregues em 31/08 ([PLANO-SEU-NONO-NOTEBOOKLM.md](../planos/PLANO-SEU-NONO-NOTEBOOKLM.md)); falta Fase 5 (pgvector, pós-Neon) |
+| `PLANO-CHATBOT-IA.md` | **ARQUIVADO** (01/09/2026) — supersedido por [PLANO-SEU-NONO-NOTEBOOKLM.md](../planos/PLANO-SEU-NONO-NOTEBOOKLM.md); arquivo em [historico/planos/PLANO-CHATBOT-IA.md](../historico/planos/PLANO-CHATBOT-IA.md) |
 | `PLANO-SEU-NONO-NOTEBOOKLM.md` | **ATIVO** (31/08) — Fases 0–4 implementadas (acervo real, contrato v2, verificador de citação, ressalva, tela cheia, dataset de finetuning); Fase 5 com runbook |
 | `ROTEIRO-PGVECTOR-CHATBOT.md` | **RUNBOOK** (31/08) — executa quando a Neon voltar (01/09), junto do `ROTEIRO-NEON-01-09.md` |
 | `PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` | **PARCIAL** — Parte 1 e degraus 0–2 entregues (16/08); o degrau 3 é o mesmo trabalho do chatbot, não um segundo |

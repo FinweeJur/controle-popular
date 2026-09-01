@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-08-22
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [REVISAO-COMPLETUDE.md](../historico/procedimentos/REVISAO-COMPLETUDE.md) (rodada de 14/08), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** plano, ativo, tarefa
 
 ## Sumário

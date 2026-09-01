@@ -2,7 +2,7 @@
 
 > **Tipo:** OPERACAO
 > **Domínio:** global
-> **Última medição:** 2026-08-22
+> **Última medição:** 2026-09-01 (incidente de DNS do deploy registrado; site restaurado)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [GATILHO-REMOTO.md](GATILHO-REMOTO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** operacao, coleta, build, deploy, credenciais, rotina, home-pc
@@ -138,6 +138,7 @@ O teto continua valendo: 25 MiB por asset, 3 MiB gzip de bundle, 20.000 arquivos
 
 | Incidente | Efeito | Tratamento |
 |---|---|---|
+| DNS de `api.cloudflare.com` irresolvível (01/09/2026) | deploy aborta no upload de assets (2.649/4.891); site pode ficar 502 se o `next start` não estiver de pé | conferir rede/DNS antes de reexecutar a rotina; manter `next start -p 3000` como origin do túnel (`config.yml` do `controle-popular`) |
 | Asset 35,5 MiB (payload de coleção) | deploy trava no fim; site para no tempo | preflight de tamanho na rotina (aviso 20 MiB, teto 25 MiB) |
 | API responde 200 e mente | filtro ignorado, esqueleto com `nome_ibge: null` | valide o conteúdo, nunca o status |
 | Código IBGE 6 × 7 dígitos | 6 é o de 7 sem verificador (`3106705` = Betim; `3106200` = BH) | case por código, nunca por nome |

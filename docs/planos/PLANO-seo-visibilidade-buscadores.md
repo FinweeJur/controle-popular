@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-08-22
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [TODO-PROXIMAS-RODADAS.md](TODO-PROXIMAS-RODADAS.md)
+> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [TODO-PROXIMAS-RODADAS.md](../historico/planos/TODO-PROXIMAS-RODADAS.md)
 > **Palavras-chave:** SEO, Google, indexacao, sitemap, structured data, Core Web Vitals, palavras-chave locais, transparencia municipal, transparencia MG
 
 ## Sumário

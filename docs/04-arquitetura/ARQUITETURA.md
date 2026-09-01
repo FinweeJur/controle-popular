@@ -2,7 +2,7 @@
 
 > **Tipo:** ARQUITETURA
 > **Domínio:** global
-> **Última medição:** 2026-08-22
+> **Última medição:** 2026-09-01
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [FONTES.md](../06-fontes/FONTES.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** payload, bundle, Cloudflare Workers, OpenNext, Neon, Drizzle, D1, compactacao, indice estatico, assistente, teto de asset

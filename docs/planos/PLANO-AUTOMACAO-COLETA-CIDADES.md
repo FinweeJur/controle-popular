@@ -4,7 +4,7 @@
 > **Domínio:** cidades
 > **Última medição:** 2026-09-01
 > **Leitura estimada:** média (5-15 min)
-> **Relacionados:** [PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md](PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-M7-M11-CURADORIA-OSS.md](PLANO-M7-M11-CURADORIA-OSS.md), [HANDOFF-M9-M10-PODMAN.md](HANDOFF-M9-M10-PODMAN.md), [ROTEIRO-EXECUCAO-PENDENCIAS.md](ROTEIRO-EXECUCAO-PENDENCIAS.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md](PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-M7-M11-CURADORIA-OSS.md](PLANO-M7-M11-CURADORIA-OSS.md), [HANDOFF-M9-M10-PODMAN.md](HANDOFF-M9-M10-PODMAN.md), [ROTEIRO-EXECUCAO-PENDENCIAS.md](../historico/planos/ROTEIRO-EXECUCAO-PENDENCIAS.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** automacao, coleta, capitais, polos, interior, picoclaw, jcode, ollama, deepseek, fallback, enriquecimento, sapl, diario-oficial, cadencia, ibge
 
 ## Sumário
@@ -18,6 +18,7 @@
 - [Orquestração com jcode](#orquestração-com-jcode)
 - [Fallback Ollama → DeepSeek](#fallback-ollama-→-deepseek)
 - [Regras e salvaguardas](#regras-e-salvaguardas)
+- [Auditoria contra FONTES.md e o histórico](#auditoria-contra-fontesmd-e-o-histórico)
 - [Fases de execução](#fases-de-execução)
 - [Verificação](#verificação)
 - [Decisões registradas](#decisões-registradas)
@@ -190,14 +191,38 @@ a fonte, só preenche lacuna declarada.
 - **Fora da CI**: coleta e enriquecimento rodam no home-pc (banco local), não
   em GitHub Actions.
 
+## Auditoria contra FONTES.md e o histórico (2026-09-01)
+
+Revisão do plano contra `docs/06-fontes/FONTES.md`, `COMUNICABR-COLETA-MG.md`
+e o runbook de cidade nova. O desenho geral se mantém (reusa a esteira; papéis
+PicoClaw/jcode/Ollama/DeepSeek corretos), mas **sete lacunas concretas
+produziriam, sem correção, exatamente os erros que a documentação já mediu**:
+
+| # | Lacuna | Consequência medida na doc | Correção no plano |
+|---|---|---|---|
+| 1 | **Duas fontes de verdade** (catálogo estático × banco) | ETL lê a cidade do banco (`carregar_municipio(id)`); catálogo JSON envelheceria em silêncio | Banco é a fonte da verdade em runtime; o catálogo serve só para descoberta e seed do build. `coletar-cidade.mts` prefere o banco e usa o catálogo como fallback |
+| 2 | **Enriquecimento global, sem política por fonte** | CNDH/MMA são CC BY-ND (ementa copiada literal, **nunca resumida**); AJRI tem direitos reservados (link, nunca cópia/resumo); reportagem é obra de terceiro | `agente-enriquecimento.mts` tem política por fonte (opção de licença), não regra global. Fonte sem licença de resumo → só extração determinística |
+| 3 | **Validar status, não conteúdo** | ComunicaBR devolve 200 com `nome_ibge: null` p/ IBGE de 7; GTAC ignora `page`; SIGPub devolve vazio em range longo (paginou por mês); coleta vazia sobrescrevia arquivo bom | Todo coletor valida **conteúdo** (nome do município, contagem, hash) e coleta vazia nunca sobrescreve o arquivo bom (regra já da esteira) |
+| 4 | **Tier 0 "cobre 100%" sem as 26 UFs do ComunicaBR** | Só MG foi coletado (`--uf 31`, 10,5 min/UF); as 199 cidades fora de MG ficariam sem repasse federal | Fase 1 inclui rodar `coletar-comunicabr.mts` para as 27 UFs com retomada (checkpoint; ~4,6 h totais) antes de prometer cobertura nacional |
+| 5 | **SIRENEJud/SIH com cadência cega** | Arquivo SIRENEJud datado de 07/07/2025 (atualização irregular); tabela SIH é 100% derivada (rebuild é DELETE + `--todos-ativos`, nunca upsert) | Sincronização mensal **carimba a data do arquivo** na tela/dado; rebuild documentado no coletor |
+| 6 | **UA global "honesto" ignorando exceções medidas** | SIGMINE/ANM, CONAMA e planalto.gov.br só respondem a UA de navegador (403 sem ele) | Política de UA por fonte no registry/coletor, com as exceções registradas em FONTES.md |
+| 7 | **Novo ETL sem a guarda de cidade** | Bug real de 03/08: módulo com default `--uf MG --municipio BETIM` reetiquetou postos de outra cidade sem erro | Todo coletor novo passa em `python etl/betim/scripts/conferir_defaults_de_cidade.py`; `coletar-cidade.mts` só chama módulos por `--id-municipio` |
+
+Reforços que o runbook já exigia e o plano mantém: CNPJ conferido ao vivo nos
+**dois sentidos** (PNCP/Interlegis) antes de ativar polo; `ativo` é a válvula
+(medir o delta de páginas do build antes de `ativo = true`; nunca ativar cidade
+nova na semana de outra mudança grande); `camara_sistema` é rótulo de tela
+(PROLEGIS/SIL/SPLegis) e `camara_coletor` é chave de máquina (sapl/syssolution)
+— o catálogo carrega os dois, sem fundir.
+
 ## Fases de execução
 
 | Fase | Escopo | Bloqueio | Sai quando |
 |---|---|---|---|
-| **0** | Catálogo `cidades-estrategicas.json` + seeds `0083-0087` dos polos (CNPJ ao vivo, fornecedor da câmara) | runbook-cidade-nova | catálogo validado contra PNCP/Interlegis |
-| **1** | Tier 0 nacional em cadência mensal/semanal + fatias por cidade no build | Neon 01/09 destrava banco | fatia de 1 capital de teste |
+| **0** | Catálogo `cidades-estrategicas.json` (✅ gerado em 01/09, 199 cidades) + seeds `0083-0087` dos polos (CNPJ ao vivo, fornecedor da câmara) | runbook-cidade-nova | catálogo validado contra PNCP/Interlegis |
+| **1** | Tier 0 nacional em cadência mensal/semanal + **ComunicaBR das 27 UFs** (26 faltantes, ~4,6 h com retomada) + SIRENEJud/SIH com data do arquivo carimbada + fatias por cidade no build | Neon 01/09 destrava banco | fatia de 1 capital de teste |
 | **2** | Tier 1 por cidade: SAPL (Interlegis) + diários oficiais via `coletar-cidade.mts` | CNPJ/fornecedor da Fase 0 | 1 cidade piloto do interior (ex.: Campinas ou Uberlândia) |
-| **3** | `agente-enriquecimento.mts` (Ollama → DeepSeek) no pipeline | medição das 10 classificações | relatório de concordância |
+| **3** | `agente-enriquecimento.mts` (Ollama → DeepSeek) no pipeline, **com política de licença por fonte** (BY-ND nunca resume; AJRI link-only) | medição das 10 classificações | relatório de concordância |
 | **4** | PicoClaw `--cidade` + watches changedetection para portais JS + alerta <70% | — | relatório por cidade no status JSON |
 | **5** | Orquestração jcode semanal + workflows n8n versionados | validação de 3 dias das rotinas | n8n espelha os `.ps1` sem divergência |
 
@@ -229,6 +254,14 @@ pipeline).
   dado nem rotular chute como fonte.
 - **Um agente por arquivo de saída** — paralelização por região respeitando
   as regras 4-6 do AGENTS.md (worktree, pathspec, mensagem por arquivo).
+- **Banco é a fonte da verdade em runtime; o catálogo é só descoberta/build** —
+  `coletar-cidade.mts` lê `municipios` do banco (via `carregar_municipio`) e
+  usa o catálogo estático só como fallback; assim o JSON nunca diverge da rota.
+- **Enriquecimento tem política de licença por fonte** — resumo só onde a
+  licença permite; fonte sem licença de resumo recebe só extração determinística
+  com lacuna declarada.
+- **ComunicaBR nacional entra na Fase 1** — sem as 26 UFs restantes, "Tier 0
+  cobre 100%" é falso para as 199 cidades.
 - **Cadência Tier 1 semanal, Tier 0 mensal** — alinhada à cadência das fontes
   e às rotinas já agendadas; nada de coleta diária onde a fonte é mensal.
 

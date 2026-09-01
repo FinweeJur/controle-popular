@@ -67,20 +67,19 @@ Candidatos medidos em 01/09:
 
 Demais `planos/` ativos (bases clima/risco, geocodificação, transparência justiça, espelho PDF AJRI, expansão nacional, revisão dados, SEO, UX/onboarding, diagnóstico UX, Handoff M9/M10 Podman, canário/chatbot consolidado) ficam em `planos/`, mas com estado e data de medição atualizados.
 
-## Fase 1b — consolidar duplicados
+## Fase 1b — consolidar duplicados ✅ (01/09)
 
-- **Chatbot/assistente:** um único plano ativo (proposta: `planos/PLANO-ASSISTENTE-IA.md`) absorvendo `PLANO-CHATBOT-IA.md` + `PLANO-SEU-NONO-NOTEBOOKLM.md` + `PLANO-CANARIO-TELEGRAM.md`; os três vão para `historico/`.
-- **Completude:** fundir `planos/CLASSIFICACAO-COMPLETUDE.md` e `historico/procedimentos/REVISAO-COMPLETUDE.md` em um documento único; arquivar o outro com redirect.
+- **Chatbot/assistente:** `PLANO-CHATBOT-IA.md` (supersedido) e `PLANO-CANARIO-TELEGRAM.md` (entregue) arquivados em `historico/`; `PLANO-SEU-NONO-NOTEBOOKLM.md` vira o **único plano ativo** do assistente; `ROTEIRO-PGVECTOR-CHATBOT.md` segue como runbook da Fase 5. Links corrigidos no ESTADO e nos planos que referenciam os arquivados.
+- **Completude:** `CLASSIFICACAO-COMPLETUDE.md` (planos, rodada 3) e `REVISAO-COMPLETUDE.md` (historico, rodada de 14/08) agora se apontam mutuamente — uma autoridade só.
+- **Fila:** `TODO-PROXIMAS-RODADAS.md` e `ROTEIRO-EXECUCAO-PENDENCIAS.md` arquivados em `historico/planos/` com redirect; a fila viva mora no ESTADO.
 
-## Fase 2 — o que está desatualizado
+## Fase 2 — o que está desatualizado (parcial ✅)
 
-1. Re-medir e atualizar data + números dos docs com `Última medição: 2026-08-22` cujo conteúdo mudou: `GUIA-DE-DOCUMENTACAO.md`, `04-arquitetura/ARQUITETURA.md`, `05-operacao/OPERACAO.md`, `05-operacao/GATILHO-REMOTO.md`, `03-desenvolvimento/DESENVOLVIMENTO.md`, `LEIA-PRIMEIRO.md`, `07-edicao/EDICAO.md`.
-2. `docs/README.md` (índice mestre) refletir a estrutura real: incluir `relatorios-automacao/`, `dados/`, `dominios/` e o que foi movido.
-3. Atualizar `docs/02-estado/ESTADO.md` com:
-   - o incidente de 01/09 (deploy falhou às 14:46Z no upload de assets da Cloudflare — `fetch failed` / "Unable to resolve Cloudflare's API hostname"; 2.649 de 4.891 assets; log `logs/rotina-2026-09-01T13-40-20-24500.log` termina em `ABORTADO: o deploy falhou. O site continua com a versão anterior.`);
-   - estado do ar: site `controlepopular.com.br` respondendo 502 em 01/09 ~15h — servidor `next start -p 3000` e túnel `controle-popular` não estão rodando (só o túnel `sementeira` está ativo);
-   - a fila viva pós-consolidação (Fase 1).
-4. Conferir consistência do template aplicado em 01/09 (pass pode ter deixado cabeçalho incompleto em alguns arquivos).
+1. Re-medidos em 01/09: `GUIA-DE-DOCUMENTACAO.md` (estrutura do `historico/` + regra de arquivamento), `05-operacao/OPERACAO.md` (incidente de DNS no deploy), `04-arquitetura/ARQUITETURA.md` (nova seção de páginas modelo + data).
+2. `docs/README.md` (índice mestre) atualizado em 01/09.
+3. `docs/02-estado/ESTADO.md` com o incidente de 01/09 e a fila viva pós-consolidação.
+4. **Ainda pendente:** re-medir `LEIA-PRIMEIRO.md`, `03-desenvolvimento/DESENVOLVIMENTO.md`, `05-operacao/GATILHO-REMOTO.md`, `07-edicao/EDICAO.md` (conteúdo não mudou nesta rodada; só a data, sem re-medição honesta, não sobe).
+5. Conferir consistência do template aplicado em 01/09 (pass pode ter deixado cabeçalho incompleto em alguns arquivos).
 
 ## Fase 3 — índice mestre e validação
 

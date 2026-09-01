@@ -4,8 +4,10 @@
 > **Domínio:** global
 > **Última medição:** 2026-08-22
 > **Leitura estimada:** media (5-15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [ESTADO.md](../../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** plano, ativo, tarefa
+
+> 🔒 **ARQUIVADO em 01/09/2026** — medição e justificativa históricas; a fila viva está no [ESTADO.md](../../02-estado/ESTADO.md).
 
 ## Sumário
 
@@ -76,7 +78,7 @@ lá. Enquanto isso não rodar, aquele banco volta a duplicar convênio.
 SEMAD 2.232, ALMG 69). O portal publica 19.704 licenças ambientais e não tem a
 Resolução CONAMA que rege o licenciamento.
 
-Plano pronto em `docs/_historico/FONTES-CNJ-JUMA.md` (CSV do MMA, licença CC-BY
+Plano pronto em `../fontes/FONTES-CNJ-JUMA.md` (CSV do MMA, licença CC-BY
 confirmada, ~8,5 a 10,4 mil normas federais).
 
 > ✅ **coleta pronta em 17/08:** `etl/betim/dados/legislacao-mma.json`

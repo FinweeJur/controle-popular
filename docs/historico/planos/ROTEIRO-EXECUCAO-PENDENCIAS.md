@@ -4,8 +4,10 @@
 > **Domínio:** global
 > **Última medição:** 2026-08-30
 > **Leitura estimada:** média (5–15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [PLANO-CHATBOT-IA.md](PLANO-CHATBOT-IA.md), [TODO-PROXIMAS-RODADAS.md](TODO-PROXIMAS-RODADAS.md), [2026-08-30-ENTREGA-sirenejud-api-publica.md](../historico/entregas/2026-08-30-ENTREGA-sirenejud-api-publica.md)
+> **Relacionados:** [ESTADO.md](../../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [PLANO-CHATBOT-IA.md](PLANO-CHATBOT-IA.md), [TODO-PROXIMAS-RODADAS.md](TODO-PROXIMAS-RODADAS.md), [2026-08-30-ENTREGA-sirenejud-api-publica.md](../entregas/2026-08-30-ENTREGA-sirenejud-api-publica.md)
 > **Palavras-chave:** roteiro, pendências, vale, monitoramento, chatbot, IA, sirenejud, fila, execução
+
+> 🔒 **ARQUIVADO em 01/09/2026** — a fila viva e o estado de cada item estão no [ESTADO.md](../../02-estado/ESTADO.md); este arquivo fica como medição histórica de escopo.
 
 ## Sumário
 

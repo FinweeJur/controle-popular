@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-08-22
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [FONTES.md](../06-fontes/FONTES.md), [ESTADO.md](../02-estado/ESTADO.md), [TODO-PROXIMAS-RODADAS.md](TODO-PROXIMAS-RODADAS.md)
+> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [FONTES.md](../06-fontes/FONTES.md), [ESTADO.md](../02-estado/ESTADO.md), [TODO-PROXIMAS-RODADAS.md](../historico/planos/TODO-PROXIMAS-RODADAS.md)
 > **Palavras-chave:** contratos publicos, fornecedores, alertas, territorios indigenas, quilombolas, legislacao municipal, transparencia ativa, auditoria, jornalismo de dados, automacao, cron, home-pc, deploy
 
 ## Sumário
