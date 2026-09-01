@@ -137,6 +137,7 @@ abaixo.
 | 33 | M8 — Rede de sócios via brasil.io (frente Empresas) | 🟢 | executando em 31/08: sócios da Vale com CPF mascarado e ressalva editorial; idem plano |
 | 34 | M11 — Presidio `--alta-confianca` na guarda | 🟡 | opcional, rule-only (sem modelos de ML), fallback como o validate-docbr; idem plano |
 | 35 | M9/M10 — changedetection.io e n8n em Podman | ✅ | **entregue em 31/08**: Podman 5.7.0 instalado no WSL2 (Ubuntu), `changedetection.io` (porta 5000) e `n8n` (porta 5678) com volumes persistentes em execução |
+| 36 | Crimes socioambientais — biblioteca unificada (Mariana e Brumadinho) | 🟢 | **01/09**: rota `/ambiental/crimes-socioambientais` com 763 docs (645 ATIs Paraopeba + 118 AEDAS Rio Doce), radar de notícias e coletor AEDAS Mariana; pendente CIF/MPF/MG/ES. Plano: [PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md](../planos/PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md) |
 
 ## Bloqueios
 
