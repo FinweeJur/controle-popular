@@ -86,6 +86,38 @@ Biblioteca única de documentos dos dois rompimentos, em `/ambiental/crimes-soci
 - **Pró-Brumadinho (Governo de MG):** acervo de 129 documentos do Acordo Judicial de Brumadinho em `/paraopeba/biblioteca` (`montar-biblioteca-probrumadinho.py`), com micro-resumos gerados por IA **rotulados** — fora da biblioteca unificada por decisão (regra local: resumo só da fonte; ver `docs/FONTES-PRO-BRUMADINHO.md`).
 - **Pendentes de sondagem:** CIF (cif.org.br inacessível na sondagem de 01/09), MPF, órgãos de MG (SEMAD/IGAM/FEAM) e ES (IEMA tem seção "Desastre do Rio Doce" + "Biblioteca On-Line"), e as ATIs de Mariana sem REST pública confirmada (Cáritas, CTA, programa Doce da ADAI).
 
+### Mapa amplo de fontes (pesquisa 01/09/2026)
+
+Inventário dos repositórios documentais dos dois casos, com o que foi **medido** nesta máquina de dev (muitos exigem sondagem de navegador do dono ou rodada no home-pc — ver ESTADO.md "Rede bloqueada").
+
+**Mariana (Rio Doce, 2015):**
+
+| Fonte | Endereço | Acesso medido em 01/09/2026 |
+|---|---|---|
+| CIF — Comitê Interfederativo | cif.org.br | ⛔ transporte falha daqui (re-sondar no home-pc) |
+| Fundação Renova | renovabr.com | ⛔ transporte falha daqui |
+| ATIs: AEDAS Rio Doce | aedasmg.org (projetos Doce) | ✅ coletado (118 itens) — REST `wp/v2/documento?projeto=` |
+| ATI: ADAI (programa Doce) | adaibrasil.org.br | ⛔ sem REST pública do programa confirmada |
+| ATI: Cáritas | caritasbrasileira.org | ⛔ repositório a sondar |
+| ATI: CTA — Centro de Tecnologia Alternativa | cta.org.br | ⛔ transporte falha daqui |
+| IEMA-ES — Biblioteca | servicos.iema.es.gov.br/biblioteca/ | 🟡 Sophia (ASP.NET legado, frames/sessão) — sondagem de navegador |
+| IEMA-ES — seção "Desastre do Rio Doce" | iema.es.gov.br (menu) | 🟡 URL exata a sondar |
+| CBH-Doce — Comitê da Bacia do Rio Doce | cbhdoce.org.br | a sondar |
+| MPF — caso Samarco/Fundão | mpf.mp.br | 🟡 a localizar a biblioteca do caso |
+| Governo de MG — empenhos do Acordo | já em `/ambiental/mariana` | ✅ (532 empenhos) |
+
+**Brumadinho (Paraopeba, 2019):**
+
+| Fonte | Endereço | Acesso medido |
+|---|---|---|
+| ATIs Paraopeba (AEDAS/Guaicuy/NACAB) | — | ✅ coletado (645 itens) |
+| Pró-Brumadinho (Acordo Judicial, Governo MG) | — | ✅ coletado (129, no remoto) |
+| Auditoria AJRI/AECOM | — | ✅ (467) |
+| Perícia UFMG | — | ✅ (445) |
+| MPMG — 45 barragens em descaracterização | — | ✅ |
+| Acordo Rio Paraopeba (execução FGV) | — | ✅ |
+| MPF — caso Brumadinho | mpf.mp.br | 🟡 a localizar |
+
 ## Lei Rouanet / SALIC — e os três jeitos que a API mente
 
 API pública sem chave; medido: 7.206 projetos UF=MG (7.141 com `valor_aprovado` > 0; soma R$ 8,6 bi aprovado / R$ 1,9 bi captado), 333 municípios, 20.784 incentivadores domiciliados (2.263 PJ + 18.521 PF), chave de junção `cgccpf` (2.261 válidos). 29 projetos trazem outro valor no próprio campo UF — contar a divergência, nunca refiltrar.
