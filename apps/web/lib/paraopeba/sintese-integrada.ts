@@ -4,7 +4,12 @@ import {
   type TemaAjri,
 } from "./auditoria-ajri";
 import { bibliotecaAti, type AtiBiblioteca, type ItemBiblioteca } from "./biblioteca";
-import { CASAMENTOS_ESTUDO_NOTICIA, type CasamentoEstudoNoticia, type DocumentoCasado } from "./estudo-e-noticia";
+import {
+  CASAMENTOS_ESTUDO_NOTICIA,
+  obterCasamentosEstudoNoticia,
+  type CasamentoEstudoNoticia,
+  type DocumentoCasado,
+} from "./estudo-e-noticia";
 import { type EstudoPericiaComTema } from "./pericia-ufmg";
 import {
   lerEstudosPericiaComTema,
@@ -288,10 +293,11 @@ export async function sinteseIntegrada(): Promise<EixoIntegrado[]> {
         ? []
         : itensAti.filter((i) => temasAjriDoItemBiblioteca(i).some((t) => temaSet.has(t)));
 
+    const todosCasamentos = obterCasamentosEstudoNoticia();
     const vozAti =
       temasAjri.length === 0
         ? []
-        : CASAMENTOS_ESTUDO_NOTICIA.filter((c) => {
+        : todosCasamentos.filter((c) => {
             if (c.forca === "nula" || !c.documento) return false;
             return temasDoDocumentoCasado(c.documento, itensAti).some((t) => temaSet.has(t));
           });
@@ -366,7 +372,7 @@ export async function temasSemEixo(): Promise<TemaOrfao[]> {
  * digitado" vale para texto que já existe em outro módulo).
  */
 export function obterEstudoAusenteDoAcervo(): CasamentoEstudoNoticia {
-  const casamentos = CASAMENTOS_ESTUDO_NOTICIA;
+  const casamentos = obterCasamentosEstudoNoticia();
   const encontrado = casamentos.find((c) => c.noticia.id === "er04");
   if (!encontrado) {
     throw new Error(
