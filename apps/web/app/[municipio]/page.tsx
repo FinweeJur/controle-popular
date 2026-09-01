@@ -18,6 +18,7 @@ import Moeda from "@/app/components/Moeda";
 import { formatNumberBR } from "@/lib/betim/format";
 import { fetchAnunciosAtivos } from "@/lib/betim/anuncios";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { memoriaDaCidade } from "@/lib/memoria-cidades";
 import {
   getVereadores,
   getRankingVereadores,
@@ -255,6 +256,14 @@ export default async function HomePage({
   const populacao = indicadores["populacao"];
   const outrosIndicadores = INDICATOR_LABELS.slice(1);
 
+  // ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md): o bloco "Já aconteceu
+  // aqui" — a memória e a cultura da cidade ANTES dos números. O texto mora
+  // em `lib/memoria-cidades.ts`, mesma filosofia deste portal de copy em um
+  // lugar só; `memoria: null` lá significa "sem fonte local fechada" e o
+  // cartão renderiza só a cultura — cidade sem fonte confirmada nunca ganha
+  // marco inventado para enfeitar cartão.
+  const memoria = memoriaDaCidade(cidade.slug);
+
   return (
     <div>
       {/* HERO */}
@@ -353,6 +362,29 @@ export default async function HomePage({
       </div>
 
       <main className="mx-auto flex max-w-5xl flex-col gap-14 px-4 py-14 sm:px-8">
+        {/* JÁ ACONTECEU AQUI — ⟲ 02/09, copy v6: a cidade entra pela
+            memória e pela cultura, não pelo número. `memoria.memoria` só
+            renderiza com fonte local fechada (`lib/memoria-cidades.ts`);
+            a cultura renderiza sempre. */}
+        {memoria ? (
+          <section
+            aria-label="Memória e cultura da cidade"
+            className="rounded-2xl border border-border bg-surface p-6 shadow-sm"
+          >
+            <span className="text-[.82em] font-semibold tracking-wide text-primary uppercase">
+              Já aconteceu aqui
+            </span>
+            {memoria.memoria ? (
+              <p className="mt-2 text-[.98em] font-medium text-text">{memoria.memoria}</p>
+            ) : null}
+            <p className="mt-2 text-[.95em] text-text-soft">{memoria.cultura}</p>
+            <p className="mt-3 text-[.92em] text-text-soft">
+              A cidade que já fez história agora tem painel: contratos, diário
+              oficial e câmara, na tela.
+            </p>
+          </section>
+        ) : null}
+
         {/* INDICADORES (bento) */}
         <section>
           <h2 className="mb-5 font-display text-[1.7em] font-semibold tracking-tight">
