@@ -31,10 +31,11 @@ import BibliotecaDesastresClient from "./BibliotecaDesastresClient";
  *
  * ═══ LACUNA É INFORMAÇÃO ═══
  *
- * O acervo hoje vem das ATIs do Paraopeba (645 itens). Mariana ainda está sem
- * documento coletado (fontes pendentes: CIF, MPF, ATIs de Mariana, órgãos do
- * ES). A página diz isso com todas as letras — mostrar só o que tem valor faria
- * a cobertura parecer completa.
+ * O acervo vem das ATIs — 645 itens do Paraopeba (Brumadinho) e 118 da AEDAS
+ * na bacia do Rio Doce (Mariana). Ainda sem coleta: CIF, MPF, órgãos de MG e
+ * ES, e as demais ATIs de Mariana (Cáritas, CTA, programa Doce da ADAI). A
+ * página diz o que falta com todas as letras — mostrar só o que tem valor
+ * faria a cobertura parecer completa.
  *
  * ═══ SERVIDOR IMPORTA SÓ A COBERTURA ═══
  *
