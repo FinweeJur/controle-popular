@@ -66,8 +66,8 @@ Princípios que não se negociam (são o argumento do projeto):
 - [x] Botões de contato → `contato@controlepopular.com.br`.
 - [ ] Caixa de e-mail configurada e monitorada (responder em ≤ 48 h em qualquer
       disparo).
-- [ ] Uma página "para imprensa" no portal (`/imprensa` ou seção no `/sobre`) com:
-      o que é, números-chave com fonte, contato, logotipo. **Criar se não existir.**
+- [x] Página `/imprensa` no portal (criada em 01/09): o que é, números-chave com fonte, o que o portal não é, ganchos de pauta e contato. Faltou o logotipo — incluir quando existir.
+
 - [ ] Link único para divulgar: encurtador gratuito (bit.ly) ou o próprio domínio
       com UTM (`?utm_source=imprensa&utm_medium=email`).
 - [ ] Perfis públicos coerentes: GitHub (descrição dos repos), Instagram criado ou

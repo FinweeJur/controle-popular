@@ -79,6 +79,14 @@ Prioridade do dono sugerida (confirmar na hora de executar):
       (guardado como secret do GitHub, nunca no repositório) **ou** chave SSH do
       Gitee.
 
+## Estado da execução
+
+- **01/09/2026:** o workflow `mirror-gitee.yml` foi adicionado ao repositório
+  (e ao `sementeira`) — a Opção B está pronta, mas **inativa até os secrets
+  `GITEE_USERNAME`/`GITEE_TOKEN` existirem** (o workflow falha com mensagem
+  clara se eles faltarem). Faltam os passos 1–5 e 7–9 do checklist abaixo
+  (conta, identidade, repos no Gitee, secrets, primeiro espelho).
+
 ## Mecânica do espelho — duas opções
 
 ### Opção A — espelho manual (primeira vez, sempre funciona)

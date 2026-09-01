@@ -68,6 +68,10 @@ const LINKS_PORTAL = [
   // de 404 mudo que o arquivo de lá documenta ter acontecido três vezes.
   { label: "Termos e origem dos dados", href: "/termos" },
   { label: "Sobre o projeto", href: "/sobre" },
+  // Para jornalista que chega pelo rodapé: o portal fala de imprensa na raiz
+  // (`app/imprensa/page.tsx`), mesma regra de `/sobre` e `/termos` — assunto
+  // do portal inteiro não mora dentro de uma zona.
+  { label: "Imprensa", href: "/imprensa" },
 ];
 
 export default function FooterGlobal() {
