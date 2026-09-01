@@ -371,21 +371,29 @@ export async function temasSemEixo(): Promise<TemaOrfao[]> {
  * reescrever a evidência à mão (a mesma regra de "número medido, nunca
  * digitado" vale para texto que já existe em outro módulo).
  */
+let estudoAusenteCache: CasamentoEstudoNoticia | null = null;
+
 export function obterEstudoAusenteDoAcervo(): CasamentoEstudoNoticia {
-  const casamentos = obterCasamentosEstudoNoticia();
-  const encontrado = casamentos.find((c) => c.noticia.id === "er04");
-  if (!encontrado) {
-    throw new Error(
-      "sintese-integrada: notícia er04 não existe mais em CASAMENTOS_ESTUDO_NOTICIA — o achado de lacuna citado pela tarefa precisa de novo dono."
-    );
+  if (!estudoAusenteCache) {
+    const casamentos = obterCasamentosEstudoNoticia();
+    const encontrado = casamentos.find((c) => c.noticia.id === "er04");
+    if (!encontrado) {
+      throw new Error(
+        "sintese-integrada: notícia er04 não existe mais em CASAMENTOS_ESTUDO_NOTICIA — o achado de lacuna citado pela tarefa precisa de novo dono."
+      );
+    }
+    estudoAusenteCache = encontrado;
   }
-  return encontrado;
+  return estudoAusenteCache;
 }
 
 export const ESTUDO_AUSENTE_DO_ACERVO: CasamentoEstudoNoticia = new Proxy({} as CasamentoEstudoNoticia, {
   get(target, prop, receiver) {
     const obj = obterEstudoAusenteDoAcervo();
     return Reflect.get(obj, prop, receiver);
+  },
+  getPrototypeOf() {
+    return Object.prototype;
   },
 });
 
