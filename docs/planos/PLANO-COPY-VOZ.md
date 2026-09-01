@@ -35,7 +35,8 @@ A proposta amadureceu em sete versões de tom, e as sete ficam registradas porqu
 4. **v4 — léxico do campo popular** — a gramática do MAB e do MBP: atingido como sujeito de direitos, "direito não é concessão", organização das maiorias, trabalho de base, controle popular.
 5. **v5 — epígrafes da literatura** — Itamar Vieira Junior e Carolina Maria de Jesus, uma frase por capítulo, com autor, obra e ano.
 6. **v6 — Galeano, Guimarães Rosa e Conceição Evaristo** — a utopia de Birri/Galeano fecha o manifesto; a coragem de *Grande Sertão: Veredas* abre o capítulo do Judiciário; a escrevivência de Evaristo assina o capítulo do Congresso.
-7. **v7 — poemas do acervo do projeto e novo bloco de Guimarães Rosa (esta)** — três poemas do acervo (o catálogo de exemplos do povo, a "Herança" de Belo Horizonte e a saudação ao Vale do Jequitinhonha) e um lote de frases de *Grande Sertão: Veredas*, distribuídos pelas frentes com as mesmas réguas de sensibilidade.
+7. **v7 — poemas do acervo do projeto e novo bloco de Guimarães Rosa** — três poemas do acervo (o catálogo de exemplos do povo, a "Herança" de Belo Horizonte e a saudação ao Vale do Jequitinhonha) e um lote de frases de *Grande Sertão: Veredas*, distribuídos pelas frentes com as mesmas réguas de sensibilidade.
+   - **v7.1 — ajustes do dono na prévia (esta)** — Cap. 1 ganha a pergunta direta ("Perguntar pra onde o dinheiro vai"); Cap. 4 troca "fumação" por "destruição"; Itinga troca "birra e teimosia" pelo verso da "boa utopia".
 
 ## Princípio de voz
 
@@ -132,14 +133,15 @@ Versos selecionados e destino:
 
 **Poema 3 — "Passado e futuro" (Vale do Jequitinhonha)**
 
-> Passado e futuro, birra e teimosia para conquistar soberania, se unem a rebeldia contra paralisia e hipocrisia… Por isso saúdo hoje, com alegria e de forma risonha, esse povo que luta e sonha no Vale do Jequitinhonha.
+> Passado e futuro, birra e teimosia para conquistar soberania, se unem a rebeldia contra paralisia e hipocrisia… Construindo um novo dia, uma boa utopia… Por isso saúdo hoje, com alegria e de forma risonha, esse povo que luta e sonha no Vale do Jequitinhonha.
 
 Versos selecionados e destino:
 
 | Verso | Onde entra |
 |---|---|
-| "…esse povo que luta e sonha no Vale do Jequitinhonha." | **Cap. 6 · Terras** e **blocos de Araçuaí e Itinga** — a saudação vira a linha de cultura do Vale |
+| "…esse povo que luta e sonha no Vale do Jequitinhonha." | **Cap. 6 · Terras** e **bloco de Araçuaí** — a saudação vira a linha de cultura do Vale |
 | "Birra e teimosia para conquistar soberania." | **Cap. 6 · Terras** — verso-cunho acima do número protagonista |
+| "Construindo um novo dia, uma boa utopia." | **Bloco de Itinga** — v7.1, a pedido do dono: Itinga não cita "birra"; ganha o verso da construção e da utopia |
 
 **Guimarães Rosa — lote novo de *Grande Sertão: Veredas* (1956)**
 
@@ -166,7 +168,8 @@ Quadro-resumo da v7 (o que cada frente ganha de citação, somando literatura e 
 | Cap. 7 · Ação cidadã | Itamar, "esperança ativa" | Poema 1: "Exemplos não nos faltam. Nos falta tempo." · "mundo mais colorido" |
 | BH | Evaristo (já na v6) | Poema 2: Curral del Rey · catálogo de greves |
 | São Paulo | Carolina (Canindé) | Poema 1: verso de Carolina |
-| Araçuaí / Itinga | — | Poema 3: saudação ao Vale |
+| Araçuaí | — | Poema 3: saudação ao Vale |
+| Itinga | — | Poema 3: "construindo um novo dia, uma boa utopia" (v7.1) |
 
 ## Mapa de sensibilidade
 
@@ -220,13 +223,13 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 **Kicker:** `CAPÍTULO 01 · PREFEITURA E CÂMARA`
 **Princípio (Tabular, acima do display):** `A CONTA É DE QUEM PAGA · VILA RICA, 1720`
-**Display:**
+**Display (v7.1, a pedido do dono):**
 
-> **PERGUNTAR PARA ONDE VAI É DIREITO.**
+> **PERGUNTAR PRA ONDE O DINHEIRO VAI.**
 
 **Microensaio:**
 
-> Perguntar para onde vai o dinheiro público é um costume que Minas inventou cedo: em 1720, o povo de Vila Rica se levantou quando a Coroa quis controlar cada grama de ouro daqui. A coragem de perguntar ficou. Trezentos anos depois, a resposta vem em contrato, diário oficial e voto de vereador — na tela, em CSV, sem fila e sem protocolo. E vale o sonho do poema: uma cidade onde todos sejam tratados de igual pra igual, respeitada a diversidade em cada local — o igual-pra-igual começa quando a conta é de todos.
+> Perguntar pra onde o dinheiro vai é um costume que Minas inventou cedo: em 1720, o povo de Vila Rica se levantou quando a Coroa quis controlar cada grama de ouro daqui. A coragem de perguntar ficou. Trezentos anos depois, a resposta vem em contrato, diário oficial e voto de vereador — na tela, em CSV, sem fila e sem protocolo. E vale o sonho do poema: uma cidade onde todos sejam tratados de igual pra igual, respeitada a diversidade em cada local — o igual-pra-igual começa quando a conta é de todos.
 
 **Número protagonista:** `[13.177] contratos · [16.601] atos de diário catalogados`
 **CTA:** `Abrir minha cidade →`
@@ -279,9 +282,9 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 **Kicker:** `CAPÍTULO 04 · MEIO AMBIENTE`
 **Princípio:** `A TERRA É DE QUEM NELA VIVE · CONTESTADO, 1912–16`
-**Display:**
+**Display (v7.1, a pedido do dono):**
 
-> **A LICENÇA SAI. A FUMAÇÃO FICA.**
+> **A LICENÇA SAI. A DESTRUIÇÃO FICA.**
 
 **Microensaio:**
 
@@ -391,9 +394,9 @@ Cartão-carimbo no painel da cidade (chrome, não é card de dado), com três li
 
 > O Vale do Jequitinhonha molda barro e memória: as ceramistas daqui são reconhecidas mundo afora, e a festa do rosário segue de pé. É o povo que luta e sonha no Vale — e sonha risonho.
 
-**Itinga — `/itinga`** *(memória pendente — publica só a cultura; v7: ganha o verso do Vale)*
+**Itinga — `/itinga`** *(memória pendente — publica só a cultura; v7.1: ganha o verso da boa utopia, sem "birra")*
 
-> No coração do Vale, o rosário e a folia de reis seguem vivos — cultura que nunca pediu licença. Birra e teimosia, como diz o poema, para conquistar soberania.
+> No coração do Vale, o rosário e a folia de reis seguem vivos — cultura que nunca pediu licença. E o poema do Vale aponta o amanhã: construindo um novo dia, uma boa utopia.
 
 **Guarda editorial:** marco histórico só publica com fonte local fechada; na dúvida, fica só a linha de cultura. Nunca inventar marco para enfeitar cartão.
 
