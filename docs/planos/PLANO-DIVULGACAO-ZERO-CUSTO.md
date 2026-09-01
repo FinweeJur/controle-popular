@@ -76,6 +76,25 @@ Princípios que não se negociam (são o argumento do projeto):
       é um gancho de pauta para público técnico ("código aberto, espelhado em 2
       plataformas").
 
+### 3.1. Links prontos com UTM (copiar e colar)
+
+O domínio já é o link mais curto que existe; o UTM só diz de onde veio o
+visitante, para o log (DIVULGACAO-LOG.md) medir canal a canal. Usar estes
+links como estão — trocar `2026-09` quando a campanha mudar:
+
+| Canal | Link pronto |
+|---|---|
+| Imprensa (e-mail, modelo A) | `https://controlepopular.com.br/?utm_source=imprensa&utm_medium=email&utm_campaign=divulgacao-2026-09` |
+| Organizações (e-mail, modelo B) | `https://controlepopular.com.br/?utm_source=organizacoes&utm_medium=email&utm_campaign=divulgacao-2026-09` |
+| WhatsApp status/grupos | `https://controlepopular.com.br/?utm_source=whatsapp&utm_medium=mensagem&utm_campaign=divulgacao-2026-09` |
+| Instagram (bio e link dos posts) | `https://controlepopular.com.br/?utm_source=instagram&utm_medium=perfil&utm_campaign=divulgacao-2026-09` |
+| Fóruns (Reddit, DEV, HN) | `https://controlepopular.com.br/?utm_source=forum&utm_medium=post&utm_campaign=divulgacao-2026-09` |
+| GitHub (README, issues, comentários) | `https://controlepopular.com.br/?utm_source=github&utm_medium=readme&utm_campaign=divulgacao-2026-09` |
+| Matéria específica (ex.: Betim) | `https://controlepopular.com.br/betim/?utm_source=imprensa&utm_medium=email&utm_campaign=divulgacao-2026-09` |
+
+Se preferir link encurtado (bit.ly/rel.ly gratuito), encurtar o link com UTM
+depois de montado — nunca encurtar o domínio puro, senão o UTM se perde.
+
 ## 4. Imprensa — lista de veículos e a pauta
 
 ### 4.1. A pauta (o que oferecer)
