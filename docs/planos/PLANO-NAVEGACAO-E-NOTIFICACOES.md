@@ -77,7 +77,10 @@ Rota `/api/pedido-dados` (padrão das `route.din.ts`): valida (rate limit por
 IP, honeypot), gera o CSV na hora no padrão da tela (BOM UTF-8, `;`), envia via
 SMTP Umbler **no `next start` do home-pc** (o Worker free não fala SMTP — ver
 Riscos), notifica o dono no Telegram e não armazena e-mail (ou armazena com
-consentimento em D1 dedicado + rota de exclusão).
+consentimento em D1 dedicado + rota de exclusão). ✅ **Etapa 1 (01/09):** a
+rota já está no ar com validação (rate limit, honeypot, e-mail) e
+**notificação ao dono no Telegram**; a etapa 2 (anexo automático via SMTP)
+fica pendente de decisão.
 
 ## Contador público de envios/downloads — ✅ implementado em 01/09
 
@@ -94,9 +97,11 @@ consentimento em D1 dedicado + rota de exclusão).
 - **Honestidade da medida:** contador é de **clique** (pedido iniciado), não de
   e-mail enviado — no Tier 0 o envio acontece no cliente do visitante. A
   contagem de atendimentos reais é manual (registrar no `DIVULGACAO-LOG.md`).
-- **Falta ligar (próximo passo):** contar `download` nos botões de exportação
-  CSV (disparar beacon no clique do export) e nos links de PDF do acervo; e
-  `notificacao` nos cliques dos botões de inscrição.
+- **Downloads contados (01/09):** o CSV compartilhado (`lib/tabela/csv.ts`)
+  dispara beacon no clique, e um listener global (`BeaconDownloadsGlobal`, no
+  layout raiz) conta qualquer link `.pdf`/`.csv` clicado em qualquer página.
+- **Falta:** contar `notificacao` nos cliques dos botões de inscrição (precisa
+  de cliente para o onClick — pequeno componente a criar).
 
 ## Busca global na navbar — ✅ implementado em 01/09
 
@@ -162,7 +167,8 @@ sem sair para /busca: digita e vê os resultados no dropdown.
 - [x] Contador público funcional (tabela D1, rota, mostrador, beacon de pedido) — 01/09.
 - [x] Busca global na navbar com índice pré-carregado — 01/09.
 - [ ] Componente genérico `IndicePagina` (TOC de h2/h3) nos layouts de zona.
-- [ ] Beacon de `download` nos botões de exportação CSV e links de PDF.
+- [x] Beacon de `download` no CSV compartilhado e em links PDF/CSV (global) — 01/09.
+- [x] `/api/pedido-dados` (Tier 2, etapa 1): valida e notifica o dono no Telegram — 01/09.
 - [ ] Modelo de resposta testado em 1 pedido real.
 - [ ] (Opcional) Formulário Google (Tier 1).
 - [ ] (Opcional) `/api/pedido-dados` com SMTP automático (Tier 2).
