@@ -20,15 +20,25 @@ const cache = new Map<string, unknown>();
 export function carregarJsonEtl<T = unknown>(arquivo: string): T {
   const hit = cache.get(arquivo);
   if (hit !== undefined) return hit as T;
-  const caminho = path.resolve(process.cwd(), "..", "..", "etl", "betim", "dados", arquivo);
+  const caminho1 = path.resolve(process.cwd(), "..", "..", "etl", "betim", "dados", arquivo);
+  const caminho2 = path.resolve(process.cwd(), "etl", "betim", "dados", arquivo);
+  const caminho3 = path.resolve(process.cwd(), "apps", "web", "etl", "betim", "dados", arquivo);
   let bruto: string;
   try {
-    bruto = readFileSync(caminho, "utf-8");
-  } catch (erro) {
-    const causa = erro instanceof Error ? erro.message : String(erro);
-    throw new Error(
-      `json-etl: não consegui ler ${caminho} — rode o build a partir de apps/web ou gere o arquivo no coletor (${causa})`
-    );
+    bruto = readFileSync(caminho1, "utf-8");
+  } catch {
+    try {
+      bruto = readFileSync(caminho2, "utf-8");
+    } catch {
+      try {
+        bruto = readFileSync(caminho3, "utf-8");
+      } catch (erro) {
+        const causa = erro instanceof Error ? erro.message : String(erro);
+        throw new Error(
+          `json-etl: não consegui ler ${arquivo} em nenhum dos caminhos (${causa})`
+        );
+      }
+    }
   }
   const dado = JSON.parse(bruto) as T;
   cache.set(arquivo, dado);

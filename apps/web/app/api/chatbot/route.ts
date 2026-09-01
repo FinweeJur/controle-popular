@@ -3,6 +3,42 @@ import { responderComRag, type RespostaRag } from "@/lib/assistente/embeddings/r
 import { OllamaIndisponivel } from "@/lib/assistente/embeddings/ollama";
 
 /**
+ * Limitador de taxa em memória por IP (Token Bucket) para proteção anti-DoS.
+ * Permite até 15 perguntas por janela de 1 minuto por IP.
+ */
+interface RegistroLimite {
+  contagem: number;
+  resetEm: number;
+}
+const LIMITES_IP = new Map<string, RegistroLimite>();
+const LIMITE_MAX_POR_MINUTO = 15;
+const JANELA_MS = 60 * 1000;
+
+function verificarLimite(ip: string): boolean {
+  const agora = Date.now();
+  const registro = LIMITES_IP.get(ip);
+
+  // Limpeza de entradas expiradas para evitar vazamento de memória
+  if (LIMITES_IP.size > 1000) {
+    for (const [chave, val] of LIMITES_IP.entries()) {
+      if (agora > val.resetEm) LIMITES_IP.delete(chave);
+    }
+  }
+
+  if (!registro || agora > registro.resetEm) {
+    LIMITES_IP.set(ip, { contagem: 1, resetEm: agora + JANELA_MS });
+    return true;
+  }
+
+  if (registro.contagem >= LIMITE_MAX_POR_MINUTO) {
+    return false;
+  }
+
+  registro.contagem += 1;
+  return true;
+}
+
+/**
  * Endpoint de laboratorio do chatbot IA com RAG local.
  *
  * Esta rota so funciona em `next dev` ou em um servidor Node real — com
@@ -11,6 +47,19 @@ import { OllamaIndisponivel } from "@/lib/assistente/embeddings/ollama";
  * producao (Cloudflare Worker, serverless com Neon pgvector, etc.).
  */
 export async function POST(req: Request): Promise<Response> {
+  // Extrai IP cliente (via Cloudflare CF-Connecting-IP, X-Forwarded-For ou fallback)
+  const ip =
+    req.headers.get("cf-connecting-ip") ??
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    "127.0.0.1";
+
+  if (!verificarLimite(ip)) {
+    return NextResponse.json(
+      { erro: "Muitas perguntas enviadas em sequência. Por favor, aguarde 1 minuto antes de tentar novamente." },
+      { status: 429, headers: { "Retry-After": "60" } }
+    );
+  }
+
   let pergunta = "";
   try {
     const body = (await req.json()) as { pergunta?: string };

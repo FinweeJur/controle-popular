@@ -14,7 +14,7 @@ import { bibliotecaAti } from "@/lib/paraopeba/biblioteca";
 import {
   temasAjriDoItemBiblioteca,
   temasAjriSaoInferidos,
-} from "@/lib/paraopeba/temas-ati";
+} from "@/lib/paraopeba/temas-ati-utils";
 import { TEMA_AJRI_LABEL } from "@/lib/paraopeba/auditoria-ajri";
 import PainelAnalise from "./PainelAnalise";
 
