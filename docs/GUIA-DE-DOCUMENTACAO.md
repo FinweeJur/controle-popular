@@ -2,7 +2,7 @@
 
 > **Tipo:** GUIA
 > **Domínio:** global
-> **Última medição:** 2026-08-22
+> **Última medição:** 2026-09-01
 > **Leitura estimada:** média (5–15 min)
 > **Relacionados:** [README.md](README.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** documentação, template, sumário, metadados, links internos, nomenclatura, validação, manutenção
@@ -43,6 +43,11 @@ docs/
 ├── dominios/                    # Documentação específica por frente
 ├── planos/                      # Planos de trabalho ativos (não entregues)
 ├── historico/                   # Documentos entregues ou superados
+│   ├── entregas/                #   Planos/handoffs concluídos e datados
+│   ├── planos/                  #   Planos supersedidos ou arquivados (sem conclusão)
+│   ├── descobertas/             #   Descobertas, auditorias, diários
+│   ├── fontes/                  #   Fontes pesquisadas/medidas
+│   └── procedimentos/           #   Procedimentos superados
 └── pesquisa/                    # Rascunhos de pesquisa externa
 ```
 
@@ -129,6 +134,7 @@ Antes de criar um documento novo, pergunte se ele cabe num existente. Se não co
 - Quando um documento for movido para `historico/`, adicionar um `redirect` textual no novo local indicando o arquivo substituto.
 - Quando um número medido mudar, atualizar a data no cabeçalho.
 - Quando um plano for entregue, mover para `historico/entregas/` e atualizar `02-estado/ESTADO.md`.
+- Plano arquivado **sem conclusão** (supersedido ou abandonado) vai para `historico/planos/`; a entrega **concluída** vai para `historico/entregas/`. Em ambos os casos, adicionar o redirect no novo local e atualizar a classificação na tabela `Origem` do `ESTADO.md`.
 
 ## Revisão periódica
 

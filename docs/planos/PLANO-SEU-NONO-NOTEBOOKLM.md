@@ -4,7 +4,7 @@
 > **Domínio:** global
 > **Última medição:** 2026-08-31
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [PLANO-CHATBOT-IA.md](PLANO-CHATBOT-IA.md), [PRODUTO.md](../01-produto/PRODUTO.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [PLANO-CHATBOT-IA.md](../historico/planos/PLANO-CHATBOT-IA.md), [PRODUTO.md](../01-produto/PRODUTO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** chatbot, seu nono, notebooklm, rag, citacao, finetuning, ressalva, tela cheia, embeddings, pgvector, dado pessoal
 
 ## Sumário

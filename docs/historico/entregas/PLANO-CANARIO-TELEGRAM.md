@@ -4,8 +4,10 @@
 > **Domínio:** global
 > **Última medição:** 2026-08-31
 > **Leitura estimada:** média (5–15 min)
-> **Relacionados:** [GATILHO-REMOTO.md](../05-operacao/GATILHO-REMOTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md)
+> **Relacionados:** [GATILHO-REMOTO.md](../../05-operacao/GATILHO-REMOTO.md), [OPERACAO.md](../../05-operacao/OPERACAO.md)
 > **Palavras-chave:** canario, telegram, bot, monitoramento, operacao, alertas
+
+> 🔒 **ARQUIVADO em 01/09/2026** — entregue (ESTADO #31, 25/08): gatilho remoto com Telegram long-poll + `/status` e `/sincronizar`.
 
 ## Sumário
 
