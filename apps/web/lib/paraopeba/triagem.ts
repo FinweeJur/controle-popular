@@ -116,3 +116,20 @@ export function precisaRedigirResumo(doc: DocumentoParaTriagem): boolean {
     (ehTemaSaude(doc.temas) && RE_TIPO_CATCH_ALL.test(doc.tipo))
   );
 }
+
+/**
+ * `true` quando o item do acervo não pode ser publicado — nem em título.
+ *
+ * Composição das duas portas da régua, na ordem de `documentos.ts`:
+ * `ehTipoPessoal` remove o item inteiro; `precisaRedigirResumo` (que em
+ * acervo com resumo redigiria só o texto) aqui também veta o item, porque
+ * um acervo cujo único texto é o título não tem nada a redigir — ou o
+ * título é publicável, ou o item sai inteiro.
+ *
+ * É a função que o agregador da biblioteca unificada usa ao gerar o dado;
+ * `lib/paraopeba/biblioteca.ts` delega nela para não manter duas cópias da
+ * mesma regra.
+ */
+export function ehItemBloqueado(doc: DocumentoParaTriagem): boolean {
+  return ehTipoPessoal(doc.tipo) || precisaRedigirResumo(doc);
+}

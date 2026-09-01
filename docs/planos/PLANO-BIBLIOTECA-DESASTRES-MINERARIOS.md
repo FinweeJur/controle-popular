@@ -76,6 +76,15 @@ interface ItemDesastre {
   `esfera: "ati"` e funde com as demais fontes por `fonteId` — fusão idempotente,
   coleta vazia não sobrescreve o arquivo bom (padrão medido em
   `coletar-biblioteca-ati.py`).
+
+  ⚠️ **ATIs existem nos DOIS desastres.** O `biblioteca-ati.json` existente
+  cobre só o **programa Paraopeba** (AEDAS/Guaicuy/ADAI/NACAB na bacia do
+  Paraopeba = Brumadinho) — por isso o mapeamento para `desastre: "brumadinho"`
+  está correto. **Mariana tem as próprias ATIs** — Cáritas, CTA (Centro de
+  Tecnologia Alternativa) e também AEDAS/ADAI no programa do Rio Doce —, que
+  são **fonte nova** para a biblioteca com `desastre: "mariana"`. O coletor
+  delas grava `etl/betim/dados/desastres/ati-mariana.json` (schema normalizado),
+  que o agregador já consome sem mudança de código.
 - **Lacuna é informação:** o arquivo carrega `ficouDeFora` por fonte, exibido na
   tela — fonte que respondeu menos que o previsto é declaração, não silêncio.
 - **Resumo:** só metadescription/descrição publicada pela fonte. Nenhum resumo
@@ -106,6 +115,7 @@ metadado + link.
 | 3 | `coletar-biblioteca-mg.*` | SEMAD/IGAM/FEAM (relatórios, fiscalização) + CGE-MG (sem duplicar `/ambiental/decisoes-lai`) | ambos | estadual |
 | 4 | `coletar-biblioteca-es.*` | IEMA-ES, AGERH, MPES, TJES — bacia do Doce | mariana | estadual + justica |
 | 5 | `coletar-noticias-desastres.py` | Radar: título, fonte, data de publicação, microresumo (metadescription da matéria), link — padrão `coletar-noticias-paraopeba.py`, nunca o corpo. Buscas: "atingidos Bahia" (prioridade), Mariana, Brumadinho | ambos | imprensa |
+| 6 | `coletar-biblioteca-ati-mariana.*` | ATIs de Mariana — Cáritas, CTA, AEDAS/ADAI no programa do Rio Doce | mariana | ati |
 
 Registro obrigatório ao fim de cada coletor: slug no `REGISTRY_FONTES`
 (camada `public-assets`), entrada no `MAPA_SCRIPTS` do `rotina-coletas.mts`,
@@ -199,6 +209,9 @@ bloqueia: dado é de arquivo). Coletores fora da CI; rotina local ou
    (Lei 9.610/98, direitos reservados sem licença declarada).
 5. `desastre` é campo obrigatório do item — dois casos não se misturam sem
    rótulo.
+6. ATIs existem nos dois desastres: o acervo ATI existente é do programa
+   Paraopeba (Brumadinho); as ATIs de Mariana (Cáritas, CTA, AEDAS/ADAI no
+   Doce) são fonte nova com `desastre: "mariana"` (correção do dono, 01/09/2026).
 
 ## Origem
 
