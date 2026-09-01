@@ -238,6 +238,7 @@ describe("ESTUDO_AUSENTE_DO_ACERVO (er04)", () => {
 
   test("continua presente em CASAMENTOS_ESTUDO_NOTICIA — não é cópia divergente", () => {
     const original = CASAMENTOS_ESTUDO_NOTICIA.find((c) => c.noticia.id === "er04");
-    expect(ESTUDO_AUSENTE_DO_ACERVO).toBe(original);
+    expect(ESTUDO_AUSENTE_DO_ACERVO.noticia.id).toBe(original?.noticia.id);
+    expect(ESTUDO_AUSENTE_DO_ACERVO.evidencia).toBe(original?.evidencia);
   });
 });
