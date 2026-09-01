@@ -5,7 +5,13 @@ import {
   TIPO_NOTICIA_LABEL,
   COBERTURA_CLIPPING,
 } from "./clipping";
-import { MARCOS_PARAOPEBA, formatarDataMarco } from "./linha-do-tempo";
+import {
+  MARCOS_PARAOPEBA,
+  ROTULO_TIPO_MARCO,
+  formatarDataMarco,
+  tipoDeMarco,
+  type TipoMarco,
+} from "./linha-do-tempo";
 import { ATORES_REPARACAO, CATEGORIA_ATOR_LABEL } from "./atores";
 import { PAGAMENTOS_PARAOPEBA, RESUMO_AUXILIO_PARAOPEBA } from "./auxilio";
 import {
@@ -175,6 +181,40 @@ describe("formatarDataMarco — a forma da data avisa a precisão dela", () => {
     for (const m of MARCOS_PARAOPEBA) {
       expect(formatarDataMarco(m.data), `marco "${m.titulo}" sem rótulo`).not.toBe("—");
     }
+  });
+});
+
+describe("tipoDeMarco — a régua que agrupa a cor do painel em três tipos", () => {
+  test("verde (favorável aos atingidos) cai em 'favoravel'", () => {
+    expect(tipoDeMarco("#2D6A4F")).toBe("favoravel");
+    expect(tipoDeMarco("#3A6B10")).toBe("favoravel");
+  });
+
+  test("vermelho (desfavorável) cai em 'desfavoravel'", () => {
+    expect(tipoDeMarco("#9B1C1C")).toBe("desfavoravel");
+  });
+
+  test("azul e demais cores caem em 'neutro'", () => {
+    expect(tipoDeMarco("#1A5FA8")).toBe("neutro");
+    expect(tipoDeMarco("#8B5E00")).toBe("neutro");
+    expect(tipoDeMarco("#7C4DBC")).toBe("neutro");
+  });
+
+  test("a comparação ignora caixa — cor digitada diferente não quebra o filtro", () => {
+    expect(tipoDeMarco("#9b1c1c")).toBe("desfavoravel");
+    expect(tipoDeMarco(" #2d6a4f ")).toBe("favoravel");
+  });
+
+  test("toda cor usada por um marco real tem tipo e rótulo — nenhum marco fica sem grupo", () => {
+    const tipos: Record<TipoMarco, number> = { favoravel: 0, desfavoravel: 0, neutro: 0 };
+    for (const m of MARCOS_PARAOPEBA) {
+      const t = tipoDeMarco(m.cor);
+      tipos[t] += 1;
+      expect(ROTULO_TIPO_MARCO[t], `sem rótulo para ${t}`).toBeTruthy();
+    }
+    // Medido em 01/09/2026 contra os 23 marcos: 9 favoráveis, 7 desfavoráveis, 7 neutros.
+    // Se um marco novo nascer com cor fora da régua, este teste acusa antes da tela.
+    expect(tipos).toEqual({ favoravel: 9, desfavoravel: 7, neutro: 7 });
   });
 });
 
