@@ -5,7 +5,8 @@ import { metadataEditavel } from "@/lib/edicoes";
  * `/paraopeba/biblioteca` — página-PONTE.
  *
  * A biblioteca das assessorias técnicas foi absorvida pela biblioteca
- * unificada dos dois desastres (`/ambiental/desastres-minerarios`) em
+ * unificada dos dois crimes socioambientais
+ * (`/ambiental/crimes-socioambientais`) em
  * 01/09/2026 (decisão do dono: "absorver, e por padrão na abertura selecionar
  * os itens do tema"). Esta URL continua existindo — link já compartilhado e
  * indexado — só não serve mais conteúdo próprio: redireciona para a
@@ -30,7 +31,7 @@ import { metadataEditavel } from "@/lib/edicoes";
  * retido como referência de UI, sem rota servindo-o.
  */
 
-const DESTINO = "/ambiental/desastres-minerarios?desastre=brumadinho";
+const DESTINO = "/ambiental/crimes-socioambientais?desastre=brumadinho";
 
 export const metadata: Metadata = metadataEditavel("/paraopeba/biblioteca", {
   title: "Biblioteca das assessorias — Controle Popular",
@@ -52,7 +53,7 @@ export default function BibliotecaPonte() {
             href={DESTINO}
             className="font-medium text-primary underline underline-offset-2 hover:text-accent"
           >
-            biblioteca unificada dos desastres de Mariana e Brumadinho
+            biblioteca dos crimes socioambientais de Mariana e Brumadinho
           </a>
           , já aberta no caso Brumadinho. As publicações continuam todas lá, com busca, filtros e
           ordenação.
