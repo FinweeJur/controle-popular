@@ -99,8 +99,12 @@ export default function LinhaDoTempo() {
           <p className="text-sm text-text-soft">marcos do processo</p>
         </div>
         <div className="rounded-2xl border border-border bg-surface p-4">
+          {/* `anoPrimeiro`/`anoUltimo` já vêm como ano ("2019", "2026") — passar
+              por `formatarDataMarco` aqui devolveria "—", porque essa função só
+              aceita `YYYY-MM-DD` ou `YYYY-MM` (medido em 01/09/2026: o card
+              renderizava "— — —" no dev server). */}
           <p className="font-tabular text-2xl font-bold">
-            {formatarDataMarco(anoPrimeiro)} — {formatarDataMarco(anoUltimo)}
+            {anoPrimeiro} — {anoUltimo}
           </p>
           <p className="text-sm text-text-soft">período coberto</p>
         </div>
