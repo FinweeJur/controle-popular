@@ -40,9 +40,14 @@ import HeroNarrativeLazy from "@/app/components/HeroNarrativeLazy";
  */
 
 export const metadata: Metadata = metadataEditavel("/", {
-  title: "Controle Popular — portal do ONSA com dados públicos que dá para usar",
+  // ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md): título na voz nova
+  // e descrição cobrindo as seis frentes — a antiga ainda listava só
+  // Betim, Congresso e Judiciário, herança de quando eram três sites.
+  // ⟲ 03/09, cherry-pick sobre o hero: título/descrição da copy vencem;
+  // a frase ONSA+IA continua no <title> editável do painel se o dono quiser.
+  title: "Controle Popular — o dinheiro é seu; a gente mostra para onde vai",
   description:
-    "Com raízes na História e Geografia, o Controle Popular usa Inteligência Artificial para somar na busca por justiça socioambiental e fiscalização cidadã — gratuito e sem cadastro, por qualquer celular ou computador. Reúne contratos, convênios, licenciamentos ambientais, autorizações minerárias e de barragens, legislação ambiental e de direitos humanos, e o orçamento de prefeituras, do governo de Minas, do Congresso Brasileiro e das Instituições de Justiça.",
+    "Informação oficial que sempre foi pública, reunida numa tela só: o dinheiro da sua cidade, o que o Congresso decide sobre seus direitos, quem ocupa cada cadeira do Judiciário, a terra, o ambiente e a reparação de Brumadinho. Todo número com fonte. Portal independente.",
 });
 
 // A cópia das frentes mora em `lib/zonas.ts`, porque o bloco de remissão no
@@ -78,18 +83,17 @@ export default async function Hub() {
 
       <header className="space-y-4">
         {/* O wordmark da marca ficou só na barra global (`TopNav.tsx`), acima
-            desta página — e o `<h1>` da página agora vive dentro do hero
-            narrativo, logo acima deste bloco. */}
+            desta página — e o `<h1>` da página vive dentro do hero
+            narrativo, logo acima deste bloco. ⟲ 03/09, cherry-pick copy v6:
+            o parágrafo abaixo troca o institucional antigo pela voz nova
+            ("dialeto de edital"); o h1 novo tambem entrou, no hero. */}
         {/* EPÍGRAFE HERO — citação autorizada no PLANO-COPY-VOZ.md (hero/assinatura da home) */}
         <Epigrafe citacao={citacaoPorId("carolina-eu-escrevo")!} variante="inicio" className="max-w-2xl" />
-        {/* Segundo parágrafo de abertura da home — ficou de fora do hero
-            (subtítulo institucional curto) mas não saiu da página. */}
-        <p className="max-w-2xl text-[.98em] text-text-soft">
-          Reunimos dezenas de portais e dados públicos: milhares de contratos,
-          convênios, licenciamentos ambientais, pesquisas e autorizações minerárias
-          e de barragens, legislação ambiental e de direitos humanos unificada, e o
-          orçamento detalhado das prefeituras, do governo de Minas, do Congresso
-          Brasileiro e das Instituições de Justiça.
+        <p className="max-w-2xl text-[1.05em] text-text-soft">
+          Informação oficial que sempre foi pública — só estava espalhada por dezenas de
+          sistemas, escrita em dialeto de edital. A gente juntou tudo numa tela, por cidade
+          e por tema, em português comum. Portal independente, sem vínculo com nenhum governo,
+          câmara ou partido — e cada número diz de onde saiu.
         </p>
         <p className="flex flex-wrap gap-x-4 gap-y-1 text-[.95em]">
           <a href="/busca" className="font-medium text-primary hover:underline">
@@ -173,7 +177,8 @@ export default async function Hub() {
           ) : (
           // <a> puro, não next/link: estes caminhos estão FORA do basePath
           // deste app (`/betim`), e o next/link prefixaria, gerando
-          // `/betim/congresso`. É a mesma classe de bug que já mordeu aqui.
+          // `/betim/congresso`. É a mesma classe de bug que os comentários
+          // do `next.config.ts` registram já ter acontecido três vezes.
           <a
             key={s.href}
             href={s.href}
@@ -293,6 +298,24 @@ export default async function Hub() {
           terra —, e a terceira acompanha se uma reparação já decidida na Justiça está
           sendo paga de verdade, mês a mês. São {contagemZonasPublicadas()} ao todo, e
           acompanhar só uma deixa boa parte da história de fora.
+        </p>
+      </section>
+
+      {/* MANIFESTO — ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md,
+          seção "Manifesto final"). Entra agora como texto corrido no
+          design atual; o tratamento em caps justificado, com a epígrafe
+          de Birri/Galeano e imagem full-bleed, é do sprint do
+          scrollytelling — não adiantar forma aqui. */}
+      <section className="mt-8 rounded-lg border border-border p-6">
+        <h2 className="font-display text-lg font-semibold">
+          O povo pergunta. O número não mente.
+        </h2>
+        <p className="mt-2 text-[.95em] text-text-soft">
+          De Vila Rica a Salvador, do sertão do Quebra-Quilos à Serra da Barriga, das
+          sacadas de Diamantina ao Anhangabaú lotado: o povo deste país sempre perguntou,
+          sempre se organizou — e sempre achou um jeito de cantar no meio do caminho.
+          Direito não é favor, não é concessão, não é promessa. E o dinheiro continua
+          sendo seu.
         </p>
       </section>
 
