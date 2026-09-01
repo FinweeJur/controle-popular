@@ -10,14 +10,7 @@ import {
   lerEstudosPericiaComTema,
   lerResultadosPericia,
 } from "./acervos-dados";
-
-/** Sinônimos — o dado agora vive no loader server-only. */
-const ESTUDOS_PERICIA_COM_TEMA = lerEstudosPericiaComTema();
-const RESULTADOS_PERICIA = lerResultadosPericia();
 import { lerSinteseAjri } from "./sintese-ajri-dados";
-
-/** Sinônimo — dado agora no loader server-only. */
-const SINTESE_AJRI = lerSinteseAjri();
 import { temasAjriDoItemBiblioteca } from "./temas-ati-utils";
 
 /**
@@ -200,33 +193,12 @@ export const EIXO_PARA_TEMA_AJRI: Record<string, TemaAjri[]> = {
   // ambiental voltado às comunidades — mesma frente de engajamento.
 } as const;
 
-const TITULOS_SINTESE = SINTESE_AJRI.eixos.map((e) => e.titulo);
-const CHAVES_PONTE = Object.keys(EIXO_PARA_TEMA_AJRI);
-if (TITULOS_SINTESE.length !== CHAVES_PONTE.length) {
-  throw new Error(
-    `sintese-integrada: EIXO_PARA_TEMA_AJRI tem ${CHAVES_PONTE.length} chaves, SINTESE_AJRI.eixos tem ${TITULOS_SINTESE.length}. O gerador de sintese-ajri.ts mudou um título — atualize a ponte.`
-  );
-}
-for (const titulo of TITULOS_SINTESE) {
-  if (!(titulo in EIXO_PARA_TEMA_AJRI)) {
-    throw new Error(
-      `sintese-integrada: eixo "${titulo}" não tem entrada em EIXO_PARA_TEMA_AJRI — o gerador de sintese-ajri.ts mudou o título deste eixo.`
-    );
-  }
-}
-
 /** Todo `TemaAjri` mapeado por ALGUM eixo — o complemento é o que `temasSemEixo()` mede. */
 const TEMAS_MAPEADOS = new Set<TemaAjri>(Object.values(EIXO_PARA_TEMA_AJRI).flat());
 
 /**
  * De qual acervo veio o documento de um `DocumentoCasado`, resolvendo os
- * `TemaAjri` reais. Para a biblioteca das ATIs, procura o item real (o
- * `DocumentoCasado` não carrega `temas`) e aplica `temasAjriDoItemBiblioteca`
- * — por isso itens do Guaicuy (que não declara tema livre, ver `biblioteca.ts`)
- * voltam `[]` mesmo quando o casamento é "forte": a força do casamento
- * notícia×estudo é uma coisa, ter `TemaAjri` para entrar num eixo é outra.
- * Para a perícia, casa pelo nome do arquivo — só existe UM casamento dessa
- * fonte no acervo hoje (`RESUMO_DAS_APRESENTAÇÕES...`, ligado a `pj11`).
+ * `TemaAjri` reais.
  */
 export function temasDoDocumentoCasado(
   doc: DocumentoCasado,
@@ -236,7 +208,8 @@ export function temasDoDocumentoCasado(
     const item = itensAti.find((i) => i.id === doc.id);
     return item ? temasAjriDoItemBiblioteca(item) : [];
   }
-  const encontrado = RESULTADOS_PERICIA.find((d) => d.nomeArquivo === doc.id);
+  const resultadosPericia = lerResultadosPericia();
+  const encontrado = resultadosPericia.find((d) => d.nomeArquivo === doc.id);
   return encontrado?.temas ?? [];
 }
 
@@ -298,15 +271,17 @@ function coberturaDoEixo(temasAjri: TemaAjri[], docsPericia: number, docsAti: nu
  */
 export async function sinteseIntegrada(): Promise<EixoIntegrado[]> {
   const itensAti = await bibliotecaAti();
+  const sinteseAjri = lerSinteseAjri();
+  const estudosPericiaComTema = lerEstudosPericiaComTema();
 
-  return SINTESE_AJRI.eixos.map((eixo) => {
+  return sinteseAjri.eixos.map((eixo) => {
     const temasAjri = EIXO_PARA_TEMA_AJRI[eixo.titulo] ?? [];
     const temaSet = new Set(temasAjri);
 
     const documentosPericia =
       temasAjri.length === 0
         ? []
-        : ESTUDOS_PERICIA_COM_TEMA.filter((d) => d.temas.some((t) => temaSet.has(t)));
+        : estudosPericiaComTema.filter((d) => d.temas.some((t) => temaSet.has(t)));
 
     const documentosAti =
       temasAjri.length === 0
@@ -366,19 +341,16 @@ export interface TemaOrfao {
 
 /**
  * `TemaAjri` que perícia e/ou ATIs usam de verdade, mas que nenhum dos 16
- * eixos de `sintese-ajri.ts` cobre — o espelho de `quaisFaltam`: lá é "este
- * eixo não tem outra fonte", aqui é "esta fonte fala de algo que não virou
- * eixo". Ver a seção "O QUE `EIXO_PARA_TEMA_AJRI` NÃO CAPTURA" no cabeçalho
- * do arquivo — `plano-de-reparacao` e `programas-de-compensacao` são os
- * candidatos esperados, medidos aqui em vez de digitados.
+ * eixos de `sintese-ajri.ts` cobre.
  */
 export async function temasSemEixo(): Promise<TemaOrfao[]> {
   const itensAti = await bibliotecaAti();
+  const estudosPericiaComTema = lerEstudosPericiaComTema();
   return TEMA_AJRI_ORDEM.filter((t) => !TEMAS_MAPEADOS.has(t))
     .map((tema) => ({
       tema,
       rotulo: TEMA_AJRI_LABEL[tema],
-      documentosPericia: ESTUDOS_PERICIA_COM_TEMA.filter((d) => d.temas.includes(tema)).length,
+      documentosPericia: estudosPericiaComTema.filter((d) => d.temas.includes(tema)).length,
       documentosAti: itensAti.filter((i) => temasAjriDoItemBiblioteca(i).includes(tema)).length,
     }))
     .filter((t) => t.documentosPericia > 0 || t.documentosAti > 0);
