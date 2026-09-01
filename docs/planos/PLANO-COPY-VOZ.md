@@ -5,7 +5,7 @@
 > **Última medição:** 2026-09-02
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** copy, voz, rebranding, memoria historica, lutas populares, MAB, Movimento Brasil Popular, campo popular, literatura, Carolina Maria de Jesus, Itamar Vieira Junior, Eduardo Galeano, Guimaraes Rosa, Conceicao Evaristo, epigrafe, home, frentes, indice, cidades, acessibilidade, SEO
+> **Palavras-chave:** copy, voz, rebranding, memoria historica, lutas populares, MAB, Movimento Brasil Popular, campo popular, literatura, Carolina Maria de Jesus, Itamar Vieira Junior, Eduardo Galeano, Guimaraes Rosa, Conceicao Evaristo, poema, epigrafe, home, frentes, indice, cidades, acessibilidade, SEO
 
 ## Sumário
 
@@ -13,6 +13,8 @@
 - [Princípio de voz](#princípio-de-voz)
 - [Léxico do campo popular (MAB e MBP)](#léxico-do-campo-popular-mab-e-mbp)
 - [Epígrafes da literatura](#epígrafes-da-literatura)
+- [Poemas do acervo do projeto (v7)](#poemas-do-acervo-do-projeto-v7)
+- [Distribuição das citações novas por frente](#distribuição-das-citações-novas-por-frente)
 - [Mapa de sensibilidade](#mapa-de-sensibilidade)
 - [Mapa de princípios → capítulos](#mapa-de-princípios--capítulos)
 - [Home (`/`) — capítulos](#home----capítulos)
@@ -23,16 +25,17 @@
 
 ## Propósito
 
-Definir a voz do rebrand do portal: memória das lutas populares brasileiras contada com leveza — princípios, coragem, força, alegria e cultura — na gramática do campo popular (MAB e Movimento Brasil Popular) e com epígrafes da literatura, sem abrir mão de uma vírgula do rigor editorial do [AGENTS.md](/AGENTS.md). Este documento é a fonte única da copy nova; números aqui são **placeholders de binding** e devem vir de constantes medidas, nunca digitados à mão.
+Definir a voz do rebrand do portal: memória das lutas populares brasileiras contada com leveza — princípios, coragem, força, alegria e cultura — na gramática do campo popular (MAB e Movimento Brasil Popular), com epígrafes da literatura e poemas do acervo do projeto, sem abrir mão de uma vírgula do rigor editorial do [AGENTS.md](/AGENTS.md). Este documento é a fonte única da copy nova; números aqui são **placeholders de binding** e devem vir de constantes medidas, nunca digitados à mão.
 
-A proposta amadureceu em seis versões de tom, e as seis ficam registradas porque a evolução é instrução:
+A proposta amadureceu em sete versões de tom, e as sete ficam registradas porque a evolução é instrução:
 
 1. **v1 — resistência e sarcasmo** — voltagem alta, sarcasmo contra o poder.
 2. **v2 — natural e leve** — humor só contra a burocracia; removidas as piadas sobre forca, execuções e a linha que trivializava a Revolta dos Malês.
 3. **v3 — memória com alegria** — o eixo emocional sai de "luta contra a repressão" para "princípio que ficou"; entram o bloco de memória por cidade e a âncora das Diretas Já.
 4. **v4 — léxico do campo popular** — a gramática do MAB e do MBP: atingido como sujeito de direitos, "direito não é concessão", organização das maiorias, trabalho de base, controle popular.
 5. **v5 — epígrafes da literatura** — Itamar Vieira Junior e Carolina Maria de Jesus, uma frase por capítulo, com autor, obra e ano.
-6. **v6 — Galeano, Guimarães Rosa e Conceição Evaristo (esta)** — a utopia de Birri/Galeano fecha o manifesto; a coragem de *Grande Sertão: Veredas* abre o capítulo do Judiciário; a escrevivência de Evaristo assina o capítulo do Congresso.
+6. **v6 — Galeano, Guimarães Rosa e Conceição Evaristo** — a utopia de Birri/Galeano fecha o manifesto; a coragem de *Grande Sertão: Veredas* abre o capítulo do Judiciário; a escrevivência de Evaristo assina o capítulo do Congresso.
+7. **v7 — poemas do acervo do projeto e novo bloco de Guimarães Rosa (esta)** — três poemas do acervo (o catálogo de exemplos do povo, a "Herança" de Belo Horizonte e a saudação ao Vale do Jequitinhonha) e um lote de frases de *Grande Sertão: Veredas*, distribuídos pelas frentes com as mesmas réguas de sensibilidade.
 
 ## Princípio de voz
 
@@ -91,28 +94,103 @@ Uma frase por capítulo, sempre com **autor, obra e ano**, em itálico pequeno a
 
 **Ficou de fora, de propósito:** "De uns tempos pra cá passei a desconfiar que o Mal não vinha do coração daquela gente. O Mal foi plantado pelos senhores de terra" (*Salvar o Fogo*, 2023) — frase forte, mas aponta culpado genérico; na régua do portal, quem aponta culpado é o documento na tela, não a epígrafe.
 
+## Poemas do acervo do projeto (v7)
+
+Em 02/09/2026 o dono entregou **três poemas do acervo do projeto** e um lote novo de frases de *Grande Sertão: Veredas* para entrar na copy, divididos entre as frentes. Os poemas são voz do próprio portal (autoria do acervo), o que muda a régua: não precisam de atribuição externa, mas precisam de **seleção** — porque são textos de ato, e o portal não é ato. A regra de corte é a mesma de sempre:
+
+- **Entram:** os catálogos de exemplos, a memória com nome e data, a alegria, a cultura, o "igual pra igual".
+- **Ficam fora:** os versos de inimigos e explosão ("a futura queda de nossos inimigos", "antes que tudo acabe numa grande explosão", "antes que os capitalistas avancem") — registro de confronto partidário, fora do tom de um portal que qualquer vereador, de qualquer partido, precisa poder usar. O poema inteiro vive no acervo; a vitrine cita os versos que cabem num portal de dados.
+- **Nomes assassinados** (Marielle Franco, Mãe Bernadete, Nego Bispo) só entram em registro de memória reverente — no manifesto e no capítulo de ação cidadã, nunca perto de humor.
+
+**Poema 1 — o catálogo de exemplos ("Exemplos não nos faltam. Nos falta tempo.")**
+
+> Somos mais numerosos que os grãos de areia do deserto, mais numerosos que as estrelas no céu… Pra cada árvore militante que cai, faz brotar novas sementes… Exemplos não nos faltam. Nos falta tempo… Viva Maria Firmina, Maria Quitéria, viva Antonieta de Barros. Vivam as lutadoras e lutadores do povo — vivem eternos em nossos corações!
+
+Versos selecionados e destino:
+
+| Verso | Onde entra |
+|---|---|
+| "Exemplos não nos faltam. Nos falta tempo." | **Cap. 7 · Ação cidadã** — o verso vira o fecho do microensaio: exemplos não faltam, e o portal existe para devolver tempo |
+| "Somos mais numerosos que os grãos de areia do deserto…" | **Manifesto final da home** — abertura da estrofe final, antes de "o controle é popular" |
+| "É Luís Gama que ousou se ensinar a sonhar, a criar poesia e libertar os seus." | **Cap. 3 · Judiciário** — o advogado que libertou pela lei é a memória exata da frente que vigia a lei |
+| "Esperança Garcia (…) merecendo o título de primeira advogada do Brasil." | **Cap. 3 · Judiciário** — mesma linha de memória: a petição dela é antepassada do ofício em PDF |
+| "É Lélia Gonzalez (…) pra mostrar que o conhecimento pode ser de todos." | **Cap. 2 · Congresso** — casa com a escrevivência de Evaristo: escrever e saber são de quem lê |
+| "É Carolina Maria de Jesus que aprendeu a ler pra ensinar seus camaradas." | **Bloco da cidade de São Paulo** — reforço da linha do Canindé |
+| "…vamos lembrando daqueles que fizeram desse mundo algo mais colorido, que faz valer a pena a vida." | **Cap. 7 · Ação cidadã** — registro de memória alegre |
+
+**Poema 2 — "Herança" (Belo Horizonte)**
+
+> Essa história começou muito antes do 1º de maio ser dia dos trabalhadores… Pois se quando foi Curral del Rey, já teve resistência, e esse grito ecoa, pra dizer que ainda estamos aqui… Até que um dia seja banal o povo em luta, no mando da capital, e assim fazer carnaval, uma cidade onde todos sejam tratados de igual pra igual.
+
+Versos selecionados e destino:
+
+| Verso | Onde entra |
+|---|---|
+| "Pois se quando foi Curral del Rey, já teve resistência, e esse grito ecoa, pra dizer que ainda estamos aqui." | **Bloco da cidade de BH** — a memória mais antiga da cidade, antes das Diretas |
+| "…a grande greve da CEMIG em 2015, a dos professores do quem-luta-educa de 2011, os petroleiros em 95, os metalúrgicos de 68." | **Bloco da cidade de BH** — catálogo operário com anos, a régua de "fato com data" aplicada ao poema |
+| "…uma cidade onde todos sejam tratados de igual pra igual, respeitada a diversidade em cada local." | **Cap. 1 · Cidades** — o fecho do microensaio: a conta pública é o instrumento do igual-pra-igual |
+
+**Poema 3 — "Passado e futuro" (Vale do Jequitinhonha)**
+
+> Passado e futuro, birra e teimosia para conquistar soberania, se unem a rebeldia contra paralisia e hipocrisia… Por isso saúdo hoje, com alegria e de forma risonha, esse povo que luta e sonha no Vale do Jequitinhonha.
+
+Versos selecionados e destino:
+
+| Verso | Onde entra |
+|---|---|
+| "…esse povo que luta e sonha no Vale do Jequitinhonha." | **Cap. 6 · Terras** e **blocos de Araçuaí e Itinga** — a saudação vira a linha de cultura do Vale |
+| "Birra e teimosia para conquistar soberania." | **Cap. 6 · Terras** — verso-cunho acima do número protagonista |
+
+**Guimarães Rosa — lote novo de *Grande Sertão: Veredas* (1956)**
+
+| Frase | Onde entra |
+|---|---|
+| "Uma coisa é pôr ideias arranjadas, outra é lidar com país de pessoas, de carne e sangue, de mil-e-tantas misérias…" | **Cap. 2 · Congresso** — epígrafe-gêmea da régua: classificar projeto de lei é exatamente lidar com carne e sangue |
+| "Sertão é onde manda quem é forte, com as astúcias." | **Cap. 4 · Ambiental** — a frase que o mapa desmente: quem manda tem nome, ata e licença |
+| "O mais importante e bonito, do mundo, é isto: que as pessoas não estão sempre iguais, ainda não foram terminadas — mas que elas vão sempre mudando. Afinam ou desafinam. Verdade maior." | **Home, seção "Por que mais de um portal"** — a esperança factual: instituição também afina |
+| "Viver é muito perigoso…" | **Reserva** — bela, mas o registro de perigo não conversa com nenhuma frente sem pesar o clima; fica no acervo |
+
+## Distribuição das citações novas por frente
+
+Quadro-resumo da v7 (o que cada frente ganha de citação, somando literatura e acervo):
+
+| Frente | Epígrafe literária | Verso do acervo |
+|---|---|---|
+| Home / manifesto | Carolina (hero) · Birri/Galeano (fecho) · GSR "pessoas não estão sempre iguais" ("Por que mais de um portal") | "Somos mais numerosos que os grãos de areia do deserto…" |
+| Cap. 1 · Cidades | Carolina, *Quarto de Despejo* | Poema 2: "igual pra igual, respeitada a diversidade em cada local" |
+| Cap. 2 · Congresso | Evaristo, *Becos da Memória* · GSR "ideias arranjadas × carne e sangue" | Poema 1: verso de Lélia Gonzalez |
+| Cap. 3 · Judiciário | GSR "O que a vida quer da gente é coragem" | Poema 1: Luís Gama e Esperança Garcia |
+| Cap. 4 · Ambiental | Itamar, *Torto Arado* · GSR "sertão é onde manda quem é forte, com as astúcias" | — |
+| Cap. 5 · Paraopeba | nenhuma (guarda de tom) — só a citação atribuída do MAB | — |
+| Cap. 6 · Terras | Itamar, *Salvar o Fogo* | Poema 3: "birra e teimosia", "o povo que luta e sonha no Vale do Jequitinhonha" |
+| Cap. 7 · Ação cidadã | Itamar, "esperança ativa" | Poema 1: "Exemplos não nos faltam. Nos falta tempo." · "mundo mais colorido" |
+| BH | Evaristo (já na v6) | Poema 2: Curral del Rey · catálogo de greves |
+| São Paulo | Carolina (Canindé) | Poema 1: verso de Carolina |
+| Araçuaí / Itinga | — | Poema 3: saudação ao Vale |
+
 ## Mapa de sensibilidade
 
 | Tema | Regra |
 |---|---|
 | Malês e escravidão | A luta é tratada com reverência: organização, coragem, dignidade. Humor nunca toca a condição de escravizado; nenhuma piada de comparação de dificuldade |
-| Brumadinho / Paraopeba | Zero humor, zero metáfora histórica e **zero epígrafe literária** — o único texto citado é o do MAB, com atribuição. Registro de memória e cobrança na gramática do movimento: atingido é sujeito de direitos; reparação é direito, não concessão |
+| Brumadinho / Paraopeba | Zero humor, zero metáfora histórica e **zero epígrafe literária ou verso de poema** — o único texto citado é o do MAB, com atribuição. Registro de memória e cobrança na gramática do movimento: atingido é sujeito de direitos; reparação é direito, não concessão |
 | Tiradentes e Vila Rica | Sem cenas de execução na copy. Ficam o gesto (perguntar pelo ouro) e o princípio (a conta é de quem paga) |
 | Contestado, Palmares, Balaiada | Contados como resistência e legado; sem detalhe de massacre ou cerco |
 | Diretas Já | Memória alegre por excelência. A derrota de 1984 é contada com a vitória de 1989, porque é o que sustenta a esperança factual |
 | Epígrafes | Voz atribuída da literatura, com autor, obra e ano; uma frase; nunca trecho que acuse grupo ou pessoa — quem aponta culpado é o documento na tela |
+| Poemas do acervo (v7) | Seleção, nunca poema inteiro: entram memória com nome e data, alegria e cultura; ficam fora os versos de inimigos, explosão e confronto partidário. Nomes assassinados só em registro reverente, longe de humor |
 
 ## Mapa de princípios → capítulos
 
 | Capítulo | Memória | Princípio que ficou |
 |---|---|---|
-| 1 · Cidades | Vila Rica, 1720 · Carolina (1960) | **A conta é de quem paga** — a coragem de perguntar |
-| 2 · Congresso | Malês, 1835 · Quebra-Quilos, 1874 · Evaristo (2006) | **A liberdade se organiza** — e a voz que incomoda o sono injusto |
-| 3 · Judiciário | Inconfidência, 1789 · Chibata, 1910 · Guimarães Rosa (1956) | **Ninguém está acima da conta** — e vigiar pede coragem |
-| 4 · Ambiental | Contestado, 1912–16 · Itamar (2021) | **A terra é de quem nela vive** |
+| 1 · Cidades | Vila Rica, 1720 · Carolina (1960) · "Herança" (BH) | **A conta é de quem paga** — a coragem de perguntar |
+| 2 · Congresso | Malês, 1835 · Quebra-Quilos, 1874 · Evaristo (2006) · GSR · Lélia Gonzalez | **A liberdade se organiza** — e a voz que incomoda o sono injusto |
+| 3 · Judiciário | Inconfidência, 1789 · Chibata, 1910 · Luís Gama · Esperança Garcia · GSR (1956) | **Ninguém está acima da conta** — e vigiar pede coragem |
+| 4 · Ambiental | Contestado, 1912–16 · Itamar (2021) · GSR | **A terra é de quem nela vive** |
 | 5 · Paraopeba | Brumadinho, 2019 · MAB | **Atingido é sujeito de direitos** — e a reparação é integral |
-| 6 · Terras | Palmares · Balaiada · Itamar (2023) | **Comunidade é força** |
-| 7 · Ação cidadã | Diretas Já, 1984 · MBP · Itamar (2021) · Birri/Galeano (1994) | **A alegria também enche praça** — esperança ativa, utopia que faz caminhar |
+| 6 · Terras | Palmares · Balaiada · Itamar (2023) · Poema do Vale | **Comunidade é força** |
+| 7 · Ação cidadã | Diretas Já, 1984 · MBP · Itamar (2021) · Birri/Galeano (1994) · Poema 1 | **A alegria também enche praça** — esperança ativa, utopia que faz caminhar |
 
 ## Home (`/`) — capítulos
 
@@ -148,7 +226,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 **Microensaio:**
 
-> Perguntar para onde vai o dinheiro público é um costume que Minas inventou cedo: em 1720, o povo de Vila Rica se levantou quando a Coroa quis controlar cada grama de ouro daqui. A coragem de perguntar ficou. Trezentos anos depois, a resposta vem em contrato, diário oficial e voto de vereador — na tela, em CSV, sem fila e sem protocolo.
+> Perguntar para onde vai o dinheiro público é um costume que Minas inventou cedo: em 1720, o povo de Vila Rica se levantou quando a Coroa quis controlar cada grama de ouro daqui. A coragem de perguntar ficou. Trezentos anos depois, a resposta vem em contrato, diário oficial e voto de vereador — na tela, em CSV, sem fila e sem protocolo. E vale o sonho do poema: uma cidade onde todos sejam tratados de igual pra igual, respeitada a diversidade em cada local — o igual-pra-igual começa quando a conta é de todos.
 
 **Número protagonista:** `[13.177] contratos · [16.601] atos de diário catalogados`
 **CTA:** `Abrir minha cidade →`
@@ -156,6 +234,8 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 ### Capítulo 02 — Seus direitos em plenário
 
 **Epígrafe:** *"A nossa escrevivência não pode ser lida como história de ninar os da casa-grande, mas sim para incomodá-los em seus sonhos injustos."* — **Conceição Evaristo**, *Becos da Memória*, 2006
+
+**Epígrafe-gêmea (v7):** *"Uma coisa é pôr ideias arranjadas, outra é lidar com país de pessoas, de carne e sangue, de mil-e-tantas misérias."* — **João Guimarães Rosa**, *Grande Sertão: Veredas*, 1956
 
 **Kicker:** `CAPÍTULO 02 · CONGRESSO NACIONAL`
 **Princípio:** `A LIBERDADE SE ORGANIZA · MALÊS, 1835`
@@ -165,7 +245,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 **Microensaio:**
 
-> Na madrugada de 25 de janeiro de 1835, os Malês mostraram a Salvador — e ao país inteiro — do que é capaz um povo organizado. A força deles virou lição: ninguém conquista direito sozinho, a gente conquista junto. Hoje, cada projeto que mexe com a sua vida aparece aqui classificado por direito ampliado ou restringido, e o ofício para pressionar quem decide sai pronto em PDF — a escrevivência em versão cívica: escrever para incomodar o sono injusto, com dispositivo legal e data. Organização continua sendo o caminho — só que agora cabe no bolso.
+> Na madrugada de 25 de janeiro de 1835, os Malês mostraram a Salvador — e ao país inteiro — do que é capaz um povo organizado. A força deles virou lição: ninguém conquista direito sozinho, a gente conquista junto. Hoje, cada projeto que mexe com a sua vida aparece aqui classificado por direito ampliado ou restringido, e o ofício para pressionar quem decide sai pronto em PDF — a escrevivência em versão cívica: escrever para incomodar o sono injusto, com dispositivo legal e data. Lélia Gonzalez dizia que o conhecimento pode ser de todos, especialmente de quem sofre a opressão na pele; a régua pública desta frente é isso em versão de lei: saber o que tramita é de todos. Organização continua sendo o caminho — só que agora cabe no bolso.
 
 **Número protagonista:** `[5.562] proposições acompanhadas · classificação com régua pública`
 **CTA:** `Escrever para quem decide →`
@@ -186,7 +266,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 **Microensaio:**
 
-> Minas carrega na bandeira a frase dos inconfidentes: liberdade, ainda que tardia. E, em 1910, os marinheiros da Revolta da Chibata provaram que coragem não é privilégio de patentes — Guimarães Rosa, mineiro de Cordisburgo, já sabia: o que a vida quer da gente é coragem. A lição dos dois é a mesma: instituição forte é a que aceita olhar de fora. Aqui, cada cadeira tem nome, quem indicou e a data em que vaga — calculada por lei, não por boato.
+> Minas carrega na bandeira a frase dos inconfidentes: liberdade, ainda que tardia. E a lei como libertação tem sobrenome brasileiro: Luís Gama ousou se ensinar a ler, fez poesia e libertou os seus no tribunal; Esperança Garcia, escravizada no Piauí, escreveu a petição que lhe rendeu o título de primeira advogada do Brasil. Em 1910, os marinheiros da Revolta da Chibata provaram que coragem não é privilégio de patentes — Guimarães Rosa, mineiro de Cordisburgo, já sabia: o que a vida quer da gente é coragem. A lição dos três é a mesma: instituição forte é a que aceita olhar de fora. Aqui, cada cadeira tem nome, quem indicou e a data em que vaga — calculada por lei, não por boato.
 
 **Número protagonista:** `[7] tribunais · [252] magistrados · aposentadoria aos 75, por lei`
 **CTA:** `Ver quem ocupa cada cadeira →`
@@ -194,6 +274,8 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 ### Capítulo 04 — O que decidem do seu ar
 
 **Epígrafe:** *"Tudo que aprendi com os camponeses, quilombolas e trabalhadores rurais eu não trocaria por nenhum título acadêmico ou prêmio."* — **Itamar Vieira Junior**, sobre *Torto Arado*, 2021
+
+**Epígrafe-gêmea (v7):** *"Sertão é onde manda quem é forte, com as astúcias."* — **João Guimarães Rosa**, *Grande Sertão: Veredas*, 1956
 
 **Kicker:** `CAPÍTULO 04 · MEIO AMBIENTE`
 **Princípio:** `A TERRA É DE QUEM NELA VIVE · CONTESTADO, 1912–16`
@@ -203,7 +285,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 **Microensaio:**
 
-> No Contestado, quem vivia da terra defendeu o direito de continuar nela. O pertencimento venceu o esquecimento: a história daqueles caboclos segue contada até hoje. A pergunta continua de pé — só que agora a decisão tem ata, data e nome de conselheiro: [454] reuniões do COPAM catalogadas, [19.704] licenças por classe de risco e as barragens no mapa. Decisão pública, a gente lê em público — e direito não entra em balanço.
+> No Contestado, quem vivia da terra defendeu o direito de continuar nela. O pertencimento venceu o esquecimento: a história daqueles caboclos segue contada até hoje. Guimarães Rosa descreveu o sertão como o lugar "onde manda quem é forte, com as astúcias" — este capítulo existe para o retrato envelhecer: quem autoriza tem nome, ata e data. A pergunta continua de pé — só que agora a decisão tem ata, data e nome de conselheiro: [454] reuniões do COPAM catalogadas, [19.704] licenças por classe de risco e as barragens no mapa. Decisão pública, a gente lê em público — e direito não entra em balanço.
 
 **Número protagonista:** `[454] reuniões · [19.704] licenças · [909] barragens`
 **CTA:** `Ver a pauta do COPAM →`
@@ -227,11 +309,13 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 **Número protagonista:** `[R$ 5,48 bi] acompanhados mês a mês · [467] fichas de auditoria`
 **CTA:** `Acompanhar a execução →`
 
-**Guarda de tom:** zero humor, zero epígrafe literária neste capítulo. "Crime" não entra (régua contra insinuação) — o clipping da frente mostra quem usa a palavra; o portal mostra os fatos.
+**Guarda de tom:** zero humor, zero epígrafe literária e zero verso de poema neste capítulo. "Crime" não entra (régua contra insinuação) — o clipping da frente mostra quem usa a palavra; o portal mostra os fatos.
 
 ### Capítulo 06 — De quem é a terra
 
 **Epígrafe:** *"A vida humana é indissociável do território. E muitas pessoas estão privadas disso."* — **Itamar Vieira Junior**, sobre *Salvar o Fogo*, 2023
+
+**Verso-cunho (v7, acervo do projeto):** *"Birra e teimosia para conquistar soberania."* — Poema "Passado e futuro"
 
 **Kicker:** `CAPÍTULO 06 · TERRITÓRIO`
 **Princípio:** `COMUNIDADE É FORÇA · PALMARES · BALAIADA`
@@ -241,7 +325,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 **Microensaio:**
 
-> Palmares viveu livre por quase um século — o quilombo que virou símbolo de que comunidade organizada é força que dura. Na Balaiada, vaqueiros, lavradores e ex-escravizados provaram o mesmo no Maranhão. Essa força continua de pé: o mapa mostra [27] territórios quilombolas, a mancha de barragem, a mineração de verdade separada do requerimento de gabinete — e o vazio cadastral com a taxa de erro ao lado, porque régua honesta mostra o próprio deslize.
+> Palmares viveu livre por quase um século — o quilombo que virou símbolo de que comunidade organizada é força que dura. Na Balaiada, vaqueiros, lavradores e ex-escravizados provaram o mesmo no Maranhão. E o poema do Vale saúda o mesmo povo, com alegria e de forma risonha: o que luta e sonha no Jequitinhonha. Essa força continua de pé: o mapa mostra [27] territórios quilombolas, a mancha de barragem, a mineração de verdade separada do requerimento de gabinete — e o vazio cadastral com a taxa de erro ao lado, porque régua honesta mostra o próprio deslize.
 
 **Número protagonista:** `[27] territórios quilombolas · [54 mil+] poligonais · vazio cadastral: taxa de erro [30]% ao lado do número`
 **CTA:** `Abrir o mapa →`
@@ -258,7 +342,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 **Microensaio:**
 
-> Em 1984, o Brasil encheu as praças de verde, amarelo e rosto pintado para pedir o voto direto — a maior festa cívica da nossa história. A emenda não passou naquela noite, mas o voto chegou cinco anos depois, porque maioria organizada transforma. A lição ficou: quando o povo comparece, o caminho abre. O trabalho de base continua — agora com planilha pública: que lei protege o seu caso, onde buscar ajuda, como pedir informação e como denunciar. Quatro portas, um endereço — e nem precisa sair de casa.
+> Em 1984, o Brasil encheu as praças de verde, amarelo e rosto pintado para pedir o voto direto — a maior festa cívica da nossa história. A emenda não passou naquela noite, mas o voto chegou cinco anos depois, porque maioria organizada transforma. A lição ficou: quando o povo comparece, o caminho abre. O trabalho de base continua — agora com planilha pública: que lei protege o seu caso, onde buscar ajuda, como pedir informação e como denunciar. Quatro portas, um endereço — e nem precisa sair de casa. Diz o poema: exemplos não nos faltam, nos falta tempo. Esta frente existe para devolver um pouco dele.
 
 **CTA:** `Agir →`
 
@@ -269,12 +353,13 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 3. `✦ VESPERATA ✦ CONGADO ✦ CLUBE DA ESQUINA ✦ O POVO CANTA ✦ O POVO CONTA ✦`
 4. `✦ DIREITO NÃO É FAVOR ✦ REPARAÇÃO É DÍVIDA ✦ CONTROLE É POPULAR ✦`
 5. `✦ TODO NÚMERO TEM FONTE ✦ TODA LACUNA TEM NOME ✦`
+6. `✦ EXEMPLOS NÃO NOS FALTAM ✦ NOS FALTA TEMPO ✦` *(v7, verso do acervo)*
 
 ### Manifesto final da home
 
 **Epígrafe de fecho:** *"Para que serve a utopia? Serve para isso: para caminhar."* — **Fernando Birri**, recolhido por **Eduardo Galeano** em *As Palavras Andantes*, 1994
 
-> **DE VILA RICA A SALVADOR, DO SERTÃO DO QUEBRA-QUILOS À SERRA DA BARRIGA, DAS SACADAS DE DIAMANTINA AO ANHANGABAÚ LOTADO: O POVO DESTE PAÍS SEMPRE PERGUNTOU, SEMPRE SE ORGANIZOU — E SEMPRE ACHOU UM JEITO DE CANTAR NO MEIO DO CAMINHO. CAROLINA ESCREVIA PARA ENGANAR A FOME; A GENTE ESCREVE COM NÚMERO, FONTE E DATA. DIREITO NÃO É FAVOR, NÃO É CONCESSÃO, NÃO É PROMESSA. O POVO PERGUNTA. O NÚMERO NÃO MENTE. E O CONTROLE — O CONTROLE É POPULAR.**
+> **SOMOS MAIS NUMEROSOS QUE OS GRÃOS DE AREIA DO DESERTO. DE VILA RICA A SALVADOR, DO SERTÃO DO QUEBRA-QUILOS À SERRA DA BARRIGA, DAS SACADAS DE DIAMANTINA AO ANHANGABAÚ LOTADO: O POVO DESTE PAÍS SEMPRE PERGUNTOU, SEMPRE SE ORGANIZOU — E SEMPRE ACHOU UM JEITO DE CANTAR NO MEIO DO CAMINHO. CAROLINA ESCREVIA PARA ENGANAR A FOME; A GENTE ESCREVE COM NÚMERO, FONTE E DATA. DIREITO NÃO É FAVOR, NÃO É CONCESSÃO, NÃO É PROMESSA. O POVO PERGUNTA. O NÚMERO NÃO MENTE. E O CONTROLE — O CONTROLE É POPULAR.**
 
 **CTA final:** `Entrar pela sua cidade →` · `Ler o manifesto completo →`
 
@@ -285,12 +370,12 @@ Cartão-carimbo no painel da cidade (chrome, não é card de dado), com três li
 **São Paulo — `/sp`**
 
 > Em 1984, o Vale do Anhangabaú juntou mais de um milhão de pessoas de rosto pintado pedindo voto direto — a maior festa cívica do país.
-> Cidade que vive de encontro: feira, bixiga, periferia que dita ritmo pro Brasil inteiro. E foi na favela do Canindé que Carolina Maria de Jesus escreveu *Quarto de Despejo* — o diário de uma favelada traduzido no mundo inteiro.
+> Cidade que vive de encontro: feira, bixiga, periferia que dita ritmo pro Brasil inteiro. E foi na favela do Canindé que Carolina Maria de Jesus escreveu *Quarto de Despejo* — aprendeu a ler para ensinar seus camaradas, e o diário de uma favelada rodou o mundo inteiro.
 
-**Belo Horizonte — `/bh`**
+**Belo Horizonte — `/bh`** *(v7: ganha os versos de "Herança")*
 
-> Em 1984, a Praça da Estação encheu de gente pedindo o voto direto — BH entrou na frente das Diretas.
-> E uns anos antes, o Clube da Esquina tinha ensinado o país inteiro a cantar Minas. BH também é a cidade onde Conceição Evaristo cresceu — a escrevivência também é mineira.
+> Quando ainda era Curral del Rey, já teve resistência — e o grito ecoa até hoje: a greve da CEMIG em 2015, a dos professores em 2011, os metalúrgicos de 68. Em 1984, a Praça da Estação encheu de gente pedindo o voto direto.
+> E o Clube da Esquina ensinou o país inteiro a cantar Minas. BH também é a cidade onde Conceição Evaristo cresceu — a escrevivência também é mineira. Até que um dia seja banal: o povo, no mando da capital, de igual pra igual.
 
 **Diamantina — `/diamantina`**
 
@@ -302,13 +387,13 @@ Cartão-carimbo no painel da cidade (chrome, não é card de dado), com três li
 > Candidata à linha de memória, quando fechar fonte no padrão do repo: **"Betim também é bacia do Paraopeba — a reparação passa por aqui"** (Santa Izabel, distrito às margens do rio, com famílias atingidas reportadas pelo Brasil de Fato em 24/01/2025).
 > No fim do dia, o congado e a festa do rosário lembram que força também é festa.
 
-**Araçuaí — `/aracuai`** *(memória pendente — publica só a cultura)*
+**Araçuaí — `/aracuai`** *(memória pendente — publica só a cultura; v7: ganha o verso do Vale)*
 
-> O Vale do Jequitinhonha molda barro e memória: as ceramistas daqui são reconhecidas mundo afora, e a festa do rosário segue de pé.
+> O Vale do Jequitinhonha molda barro e memória: as ceramistas daqui são reconhecidas mundo afora, e a festa do rosário segue de pé. É o povo que luta e sonha no Vale — e sonha risonho.
 
-**Itinga — `/itinga`** *(memória pendente — publica só a cultura)*
+**Itinga — `/itinga`** *(memória pendente — publica só a cultura; v7: ganha o verso do Vale)*
 
-> No coração do Vale, o rosário e a folia de reis seguem vivos — cultura que nunca pediu licença.
+> No coração do Vale, o rosário e a folia de reis seguem vivos — cultura que nunca pediu licença. Birra e teimosia, como diz o poema, para conquistar soberania.
 
 **Guarda editorial:** marco histórico só publica com fonte local fechada; na dúvida, fica só a linha de cultura. Nunca inventar marco para enfeitar cartão.
 
@@ -349,10 +434,11 @@ O conteúdo rigoroso da página (IA declarada, metodologia, taxa de erro, lacuna
 ## Réguas de aplicação
 
 1. **Números entre colchetes** são placeholders de binding: ligar a constantes medidas com data (`COBERTURA_*`, `TAXA_ERRO_G0`, contagens do banco), nunca digitar à mão.
-2. **Zonas sem humor:** card de dado, ressalva colada ao número, estado de erro com fonte nomeada e o capítulo Paraopeba inteiro (que também não recebe epígrafe literária).
+2. **Zonas sem humor:** card de dado, ressalva colada ao número, estado de erro com fonte nomeada e o capítulo Paraopeba inteiro (que também não recebe epígrafe literária nem verso de poema).
 3. **Memória histórica:** princípio e gesto, nunca cena de violência; todo fato com ano, nome ou lugar — o portal cobra procedência dos outros, e a copy cita a própria.
 4. **Léxico dos movimentos:** gramática sim, bandeira não. Slogan de campanha, caráter partidário e a palavra "crime" ficam fora; citação literal de movimento só com atribuição explícita.
 5. **Epígrafe:** voz atribuída da literatura — uma frase, com autor, obra e ano, e atribuição verificada (o caso Birri/Galeano é o exemplo-canônico); nunca trecho que acuse grupo ou pessoa.
-6. **Bloco das cidades:** cultura pode ser celebrada solta; marco histórico só com fonte local fechada.
-7. **Forma:** frase display ≤ 6 palavras (Clash Display); caps só em manifesto e carimbos; corpo em General Sans; número em Tabular.
-8. **A ladainha dos marquees só cresce com fato fechado** — luta, festa ou obra documentada, com data consolidada.
+6. **Poemas do acervo (v7):** citar por verso selecionado, nunca o poema inteiro na vitrine; ficam fora os versos de inimigos, explosão e confronto partidário; nomes assassinados só em registro reverente.
+7. **Bloco das cidades:** cultura pode ser celebrada solta; marco histórico só com fonte local fechada.
+8. **Forma:** frase display ≤ 6 palavras (Clash Display); caps só em manifesto e carimbos; corpo em General Sans; número em Tabular.
+9. **A ladainha dos marquees só cresce com fato fechado** — luta, festa ou obra documentada, com data consolidada.
