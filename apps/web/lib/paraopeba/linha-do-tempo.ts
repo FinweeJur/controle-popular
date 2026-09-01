@@ -52,6 +52,32 @@ export interface MarcoParaopeba {
   cor: string;
 }
 
+/**
+ * Leitura editorial de uma cor do painel-fonte, em três tipos:
+ * `favoravel` (verde — favorável aos atingidos), `desfavoravel` (vermelho)
+ * e `neutro` (azul e demais — procedimental/neutro). A régua vive aqui, num
+ * lugar só, para o filtro e o gráfico da página nunca discordarem da
+ * legenda. Cor é o veio original do painel; o tipo é só a régua que agrupa
+ * o veio para quem precisa de uma contagem (cartões, gráfico, CSV).
+ */
+export type TipoMarco = "favoravel" | "desfavoravel" | "neutro";
+
+const CORE_FAVORAVEL = new Set(["#2D6A4F", "#3A6B10"]);
+const CORE_DESFAVORAVEL = new Set(["#9B1C1C"]);
+
+export function tipoDeMarco(cor: string): TipoMarco {
+  const normalizada = cor.trim().toUpperCase();
+  if (CORE_FAVORAVEL.has(normalizada)) return "favoravel";
+  if (CORE_DESFAVORAVEL.has(normalizada)) return "desfavoravel";
+  return "neutro";
+}
+
+export const ROTULO_TIPO_MARCO: Record<TipoMarco, string> = {
+  favoravel: "Favorável aos atingidos",
+  desfavoravel: "Desfavorável aos atingidos",
+  neutro: "Neutro / procedimental",
+};
+
 const MES_POR_EXTENSO = [
   "janeiro",
   "fevereiro",

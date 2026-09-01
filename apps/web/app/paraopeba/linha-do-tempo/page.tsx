@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import { MARCOS_PARAOPEBA, formatarDataMarco } from "@/lib/paraopeba";
+import { MARCOS_PARAOPEBA } from "@/lib/paraopeba";
 import { metadataEditavel } from "@/lib/edicoes";
+import LinhaDoTempo from "./LinhaDoTempo";
 
 /**
  * A data sai por `formatarDataMarco`, NÃO por `formatDateBR`: desde 15/08/2026
  * três marcos guardam mês sem dia (`2020-01`), porque a fonte não tem o dia e
  * inventar um daria cara de fato a um palpite. `formatDateBR` devolveria "—"
  * para eles. Ver o cabeçalho de `lib/paraopeba/linha-do-tempo.ts`.
+ *
+ * ⟲ 01/09/2026: a lista virou componente de cliente (`LinhaDoTempo.tsx`) com
+ * a régua das 5 coisas (AGENTS.md): cartões de topo, gráfico SVG, filtro por
+ * tipo de leitura, ordenação e CSV. A contagem do parágrafo abaixo continua
+ * vindo da constante — quem mexer nos marcos tem de mexer aqui e no teste.
  */
 export const metadata: Metadata = metadataEditavel("/paraopeba/linha-do-tempo", {
   title: "Linha do tempo — Paraopeba | Controle Popular",
@@ -43,30 +49,7 @@ export default function LinhaDoTempoPage() {
         aparência de fato que as datas cheias têm.
       </p>
 
-      <ol className="mt-8 flex flex-col gap-0">
-        {MARCOS_PARAOPEBA.map((m, i) => (
-          <li key={`${m.data}-${i}`} className="relative flex gap-4 pb-8 last:pb-0">
-            {i < MARCOS_PARAOPEBA.length - 1 && (
-              <span
-                aria-hidden="true"
-                className="absolute top-3 left-[7px] h-full w-0.5 bg-border"
-              />
-            )}
-            <span
-              aria-hidden="true"
-              className="relative z-10 mt-1.5 h-4 w-4 shrink-0 rounded-full border-2 border-surface"
-              style={{ backgroundColor: m.cor }}
-            />
-            <div className="rounded-2xl border border-border bg-surface p-4 shadow-sm">
-              <p className="font-tabular text-xs font-semibold text-text-soft">
-                {formatarDataMarco(m.data)}
-              </p>
-              <p className="mt-0.5 font-display text-base font-semibold text-text">{m.titulo}</p>
-              <p className="mt-1 text-sm text-text-soft">{m.descricao}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
+      <LinhaDoTempo />
 
       <footer className="mt-16 border-t border-border pt-8 text-sm">
         <FooterGlobal />
