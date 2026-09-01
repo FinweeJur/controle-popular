@@ -142,7 +142,7 @@ const extensoesDoPainel = painelLocalLigado ? ["local.tsx", "local.ts"] : [];
  */
 const CSP_REPORT_ONLY = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com",
   // ⟲ `api.fontshare.com` entrou depois: a revisao abriu o mapa com o console
   // e viu violacao de style-src A CADA CARREGAMENTO, vinda de
   // `public/terras/globo/css/tokens/fonts.css`, que importa as fontes
@@ -155,7 +155,7 @@ const CSP_REPORT_ONLY = [
   // Mesmo caso do style-src acima: os arquivos woff/woff2/ttf vem do CDN do
   // Fontshare, num host DIFERENTE do CSS que os importa.
   "font-src 'self' https://cdn.fontshare.com",
-  "connect-src 'self'",
+  "connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com",
   "frame-src 'self'",
   "frame-ancestors 'self'",
   "object-src 'none'",
@@ -233,21 +233,22 @@ const nextConfig: NextConfig = {
    * entrar. Ver `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`.
    */
   outputFileTracingExcludes: {
+    "**/*": [
+      "public/data/**/*",
+      "etl/betim/dados/**/*",
+      "public/terras/globo/dados/**/*",
+      "public/data/biblioteca-ati.json",
+      "public/data/biblioteca-pro-brumadinho.json",
+      "public/data/comunicabr-31.json",
+      "public/data/repasse-brumadinho-mg.json",
+      "public/data/risco-climatico.json",
+      "public/data/vale3-cotacoes.csv",
+    ],
     "/dados/comunicabr": ["public/data/comunicabr-31.json"],
     "/dados/comunicabr/[codigo]": ["public/data/comunicabr-31.json"],
-    // Mesmo mecanismo das exclusões acima. `outputFileTracingExcludes` é a
-    // ÚNICA coisa que realmente tira o arquivo do bundle: o `@vercel/nft`
-    // segue o `readFileSync` do fallback (dentro do catch, atrás do
-    // `if (env.ASSETS)`) e embute o JSON de qualquer jeito — medido em
-    // 16/08/2026: mover `comunicabr-31.json` de `data/` para `public/data/`
-    // não mudou nada (3.074,71 → 3.074,74 KiB gzip). Ver
-    // `docs/HANDOFF-PAYLOAD-LEGISLACAO.md` e o comentário acima.
-    //
-    // Cada rota que importa um módulo com `readFileSync` precisa da exclusão
-    // do arquivo que ele lê; sem isso, o arquivo fica no bundle do Worker
-    // mesmo sendo servido por `env.ASSETS.fetch()` em runtime.
     "/paraopeba": ["public/data/biblioteca-ati.json"],
-    "/paraopeba/biblioteca": ["public/data/biblioteca-ati.json"],
+    "/paraopeba/analise": ["public/data/**/*", "etl/betim/dados/**/*"],
+    "/paraopeba/biblioteca": ["public/data/biblioteca-ati.json", "public/data/biblioteca-pro-brumadinho.json"],
     "/paraopeba/vale": ["public/data/vale3-cotacoes.csv"],
     "/[municipio]/prefeitura": ["public/data/repasse-brumadinho-mg.json"],
     "/[municipio]/clima": ["public/data/risco-climatico.json"],
