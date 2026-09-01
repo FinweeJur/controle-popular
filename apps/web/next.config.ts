@@ -262,7 +262,7 @@ const nextConfig: NextConfig = {
     // Asset buscado pelo cliente na biblioteca unificada de desastres — sem
     // `readFileSync` no runtime hoje, mas o tracer embutiria de qualquer jeito
     // se um fallback de servidor aparecer (mesmo mecanismo das linhas acima).
-    "/ambiental/desastres-minerarios": ["public/data/biblioteca-desastres.json"],
+    "/ambiental/crimes-socioambientais": ["public/data/biblioteca-desastres.json"],
   },
   experimental: {
     /**
