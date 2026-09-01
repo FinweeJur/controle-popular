@@ -203,7 +203,9 @@ Não é app de governo nem tem vínculo com prefeitura — é um projeto indepen
 e o código é aberto (AGPL) com método auditável: https://controlepopular.com.br/sobre
 
 Se fizer sentido, posso enviar um release curto, os números com fonte em planilha
-ou um roteiro de matéria pronto. Contato: contato@controlepopular.com.br.
+ou um roteiro de matéria pronto. Release pronto para anexar:
+  [RELEASE-DIVULGACAO-2026-09.md](RELEASE-DIVULGACAO-2026-09.md).
+  Contato: contato@controlepopular.com.br.
 
 Abraço,
 [nome]
