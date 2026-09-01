@@ -52,18 +52,18 @@ Candidatos medidos em 01/09:
 
 | Arquivo | Motivo | Destino |
 |---|---|---|
-| `planos/deploy-github-pages.md` | legado explícito no OPERACAO ("não é o caminho de publicação") | `historico/planos/` |
-| `planos/PLANO-NAVEGACAO-WIKI.md` | superado pela estrutura numerada do GUIA | `historico/planos/` |
-| `planos/PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` | índice estático entregue (commit da /busca) | `historico/entregas/` |
-| `planos/PLANO-EXPANSAO-ACORDOS-MG.md` | marcado "Bloco 0 ENTREGUE"; só o que falta vai para ESTADO | `historico/entregas/` |
-| `planos/PLANO-M7-M11-CURADORIA-OSS.md` | fila M1–M6 entregue; atualizar estado antes de arquivar | `historico/entregas/` |
-| `planos/PLANO-CLOUDFLARE-TUNNEL.md` | túnel implementado (config.yml e credenciais existem) | `historico/entregas/` |
+| `planos/deploy-github-pages.md` | ⚠️ **FICA em planos/**: ~26 arquivos de código comentam seções dele (§1, §3, §7, §8, §9) como referência de arquitetura de build; mover quebraria as citações | manter, só reclassificar o status para "contingência/referência" no ESTADO |
+| `planos/PLANO-NAVEGACAO-WIKI.md` | superado pela estrutura numerada do GUIA | ✅ movido → `historico/planos/` (01/09) |
+| `planos/PLANO-INDICE-ESTATICO-E-ASSISTENTE.md` | **PARCIAL** no ESTADO (degrau 3 = trabalho do chatbot) | manter em `planos/` |
+| `planos/PLANO-EXPANSAO-ACORDOS-MG.md` | marcado "Bloco 0 ENTREGUE"; só o que falta vai para ESTADO | conferir estado; arquivar se concluído |
+| `planos/PLANO-M7-M11-CURADORIA-OSS.md` | fila M1–M6 entregue, M7–M11 em curso (ESTADO) | manter em `planos/` até M11 fechar |
+| `planos/PLANO-CLOUDFLARE-TUNNEL.md` | túnel implementado (config.yml e credenciais existem) | ✅ movido → `historico/entregas/` (01/09); links corrigidos no ESTADO |
 | `planos/PLANO-PGVECTOR-CHATBOT.md` | runbook de fase pós-Neon; reclassificar após ROTEIRO-NEON | `historico/` (se executado) |
 | `planos/diario-oficial-plano.md` | conferir se o diário oficial foi publicado | `historico/` (se entregue) |
-| `HANDOFF-FASE2-PARAOPEBA.md` (raiz docs) | fora do padrão da raiz; conferir estado | `historico/entregas/` ou `planos/` |
+| `HANDOFF-FASE2-PARAOPEBA.md` (raiz docs) | fora do padrão da raiz; fase 2 entregue | ✅ movido → `historico/entregas/` (01/09) |
 | `planos/ROTEIRO-EXECUCAO-PENDENCIAS.md` | fila consolidada deve viver no ESTADO | fundir em ESTADO e arquivar |
 | `planos/TODO-PROXIMAS-RODADAS.md` | dívidas vivem no ESTADO | fundir em ESTADO e arquivar |
-| `planos/ROTEIRO-NEON-01-09.md` | data de validade 01/09; executar e arquivar com resultado | `historico/entregas/` |
+| `planos/ROTEIRO-NEON-01-09.md` | data de validade 01/09; executar e arquivar com resultado | `historico/entregas/` após executar |
 
 Demais `planos/` ativos (bases clima/risco, geocodificação, transparência justiça, espelho PDF AJRI, expansão nacional, revisão dados, SEO, UX/onboarding, diagnóstico UX, Handoff M9/M10 Podman, canário/chatbot consolidado) ficam em `planos/`, mas com estado e data de medição atualizados.
 
