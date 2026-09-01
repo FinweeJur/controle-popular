@@ -32,6 +32,38 @@ export default async function Home() {
           lei e uma análise de quais direitos ela amplia ou restringe — sempre com o
           dispositivo legal que fundamenta a leitura.
         </p>
+        {/* ⟲ 02/09, copy v7.1 (docs/planos/PLANO-COPY-VOZ.md): as
+            epígrafes da frente entram no hub — a escrevivência de
+            Conceição Evaristo e a lição do Riobaldo de Guimarães Rosa —
+            e a memória dos Malês (Salvador, 1835) vira o princípio da
+            frente: a liberdade se organiza. Nenhum número mexido. */}
+        <blockquote
+          className="max-w-2xl space-y-3 border-l-2 pl-4 text-sm opacity-80"
+          style={{ borderColor: "var(--cp-accent)" }}
+        >
+          <p>
+            “A nossa escrevivência não pode ser lida como história de ninar os da
+            casa-grande, mas sim para incomodá-los em seus sonhos injustos.”
+            <br />
+            <cite className="not-italic opacity-70">
+              — Conceição Evaristo · Becos da Memória · 2006
+            </cite>
+          </p>
+          <p>
+            “Uma coisa é pôr ideias arranjadas, outra é lidar com país de pessoas, de
+            carne e sangue, de mil-e-tantas misérias.”
+            <br />
+            <cite className="not-italic opacity-70">
+              — João Guimarães Rosa · Grande Sertão: Veredas · 1956
+            </cite>
+          </p>
+        </blockquote>
+        <p className="max-w-2xl text-sm opacity-70">
+          Na madrugada de 25 de janeiro de 1835, os Malês mostraram a Salvador — e ao
+          país inteiro — do que é capaz um povo organizado. A lição ficou: ninguém
+          conquista direito sozinho. Organização continua sendo o caminho — só que
+          agora cabe no bolso.
+        </p>
         <div className="flex flex-wrap gap-3">
           <Link
             href="/proposicoes"

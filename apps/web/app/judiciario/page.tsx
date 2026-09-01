@@ -53,6 +53,30 @@ export default async function Home() {
           quem indicou cada ministro e quando cada um deles vai completar 75 anos — a idade
           em que a lei obriga todo magistrado a se aposentar.
         </p>
+        {/* ⟲ 02/09, copy v7.1 (docs/planos/PLANO-COPY-VOZ.md): a epígrafe
+            da frente — o que a vida quer da gente é coragem — e a memória
+            de quem usou a lei como libertação: Luís Gama, Esperança
+            Garcia, a Revolta da Chibata. Nenhum número mexido. */}
+        <blockquote
+          className="max-w-2xl border-l-2 pl-4 text-sm opacity-80"
+          style={{ borderColor: "var(--cp-secondary)" }}
+        >
+          <p>
+            “O que a vida quer da gente é coragem.”
+            <br />
+            <cite className="not-italic opacity-70">
+              — João Guimarães Rosa · Grande Sertão: Veredas · 1956
+            </cite>
+          </p>
+        </blockquote>
+        <p className="max-w-2xl text-sm opacity-70">
+          A lei como libertação tem sobrenome brasileiro: Luís Gama ousou se ensinar a ler,
+          fez poesia e libertou os seus no tribunal; Esperança Garcia, escravizada no
+          Piauí, escreveu a petição que lhe rendeu o título de primeira advogada do
+          Brasil; e em 1910 os marinheiros da Revolta da Chibata provaram que coragem não
+          é privilégio de patentes. A lição dos três é a mesma: instituição forte é a que
+          aceita olhar de fora.
+        </p>
         <p className="max-w-2xl text-sm opacity-70">
           Nenhum número desta página é opinião ou estimativa: todos vêm direto de fontes
           oficiais — o Senado Federal e os próprios tribunais —, creditadas no rodapé de cada
