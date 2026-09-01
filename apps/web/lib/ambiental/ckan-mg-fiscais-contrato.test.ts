@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import {
   COBERTURA_FISCAIS_CONTRATO,
-  FISCAIS_CONTRATO_MG,
+  lerFiscaisContratoMg,
   FISCAIS_CONTRATO_POR_ANO,
   FISCAIS_CONTRATO_POR_SITUACAO,
 } from "./ckan-mg-fiscais-contrato";
@@ -30,6 +30,8 @@ const PADRAO_CPF = /\b\d{3}\.?\d{3}\.?\d{3}-?\d{2}\b|\b\d{11}\b/g;
  * corpo do texto — achado que nenhuma sondagem anterior tinha citado.
  */
 describe("fiscais e gestores de contratos do Estado, 2022–2026", () => {
+  const FISCAIS_CONTRATO_MG = lerFiscaisContratoMg();
+
   test("16.922 contratos nos cinco anos, medido em 21/08/2026", () => {
     expect(FISCAIS_CONTRATO_MG.length).toBe(16922);
     expect(COBERTURA_FISCAIS_CONTRATO.contratos).toBe(16922);

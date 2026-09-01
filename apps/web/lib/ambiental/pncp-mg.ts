@@ -1,4 +1,4 @@
-import dados from "../../../../etl/betim/dados/pncp-mg.json";
+import { carregarJsonEtl } from "@/lib/server-only/json-etl";
 
 /**
  * Contratos e licitações do PNCP para os quatro órgãos ambientais do Estado
@@ -58,22 +58,23 @@ export interface ContratoPncpMg {
   objeto: string | null;
   fornecedorCnpjCpf: string | null;
   fornecedorNome: string | null;
-  valorInicial: number | null;
+  modalidade: string | null;
+  situacao: string | null;
   valorGlobal: number | null;
   dataAssinatura: string | null;
-  vigenciaInicio: string | null;
-  vigenciaFim: string | null;
-  link: string | null;
+  dataInicioVigencia: string | null;
+  dataFimVigencia: string | null;
+  linkPncp: string;
 }
 
 export interface AgregadoOrgaoAno {
-  orgao: string;
-  ano: number | "sem-ano";
+  orgaoSigla: string;
+  ano: number;
   quantidade: number;
   valorTotal: number;
 }
 
-interface PncpMgJson {
+export interface PncpMgJson {
   coletadoEm: string | null;
   coletaPendente: boolean;
   motivoPendencia: string | null;
@@ -103,43 +104,75 @@ interface PncpMgJson {
   };
 }
 
-const DADOS = dados as PncpMgJson;
+function getDados(): PncpMgJson {
+  try {
+    return carregarJsonEtl<PncpMgJson>("pncp-mg.json");
+  } catch {
+    return {
+      coletadoEm: null,
+      coletaPendente: true,
+      motivoPendencia: "API do PNCP indisponível",
+      fonte: "https://pncp.gov.br/",
+      via: "",
+      escopo: {
+        orgaos: [
+          { sigla: "SEMAD", nome: "Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável", cnpj: "00957404000178" },
+          { sigla: "FEAM", nome: "Fundação Estadual do Meio Ambiente", cnpj: "25455858000171" },
+          { sigla: "IEF", nome: "Instituto Estadual de Florestas", cnpj: "18746164000128" },
+          { sigla: "IGAM", nome: "Instituto Mineiro de Gestão das Águas", cnpj: "17387481000132" },
+        ],
+        contratos: "planejado: completo, 2021 até o ano corrente",
+        licitacoes: "planejado: PARCIAL, só modalidade 6 (Pregão Eletrônico)",
+      },
+      contratosCombinacoesIncompletas: [],
+      licitacoesPaginasVarridas: 0,
+      licitacoesTetoAtingido: false,
+      contratos: { total: 0, valorGlobalTotal: 0, periodoInicio: null, periodoFim: null, linhaCruaOmitida: false, linhas: [], porOrgaoEAno: [] },
+      licitacoes: { total: 0, valorHomologadoOuEstimadoTotal: 0, porOrgao: [] },
+    };
+  }
+}
+
+const DADOS_PNCP = getDados();
+
+export function lerPncpMgContratos(): ContratoPncpMg[] {
+  return DADOS_PNCP.contratos.linhas;
+}
 
 /** Vazio quando `linhaCruaOmitida` é `true` (passou de 2.000 contratos
  *  dedupe) OU quando a coleta ainda está pendente — checar as duas flags em
  *  `COBERTURA_PNCP_MG` antes de tratar "vazio" como "sem contrato nenhum". */
-export const PNCP_MG_CONTRATOS: ContratoPncpMg[] = DADOS.contratos.linhas;
+export const PNCP_MG_CONTRATOS: ContratoPncpMg[] = DADOS_PNCP.contratos.linhas;
 
-export const PNCP_MG_CONTRATOS_POR_ORGAO_E_ANO: AgregadoOrgaoAno[] = DADOS.contratos.porOrgaoEAno;
+export const PNCP_MG_CONTRATOS_POR_ORGAO_E_ANO: AgregadoOrgaoAno[] = DADOS_PNCP.contratos.porOrgaoEAno;
 
-/** Amostra parcial — ver docstring. Nunca "o total de licitações". */
-export const PNCP_MG_LICITACOES_POR_ORGAO: AgregadoOrgaoAno[] = DADOS.licitacoes.porOrgao;
+export const PNCP_MG_LICITACOES_POR_ORGAO: AgregadoOrgaoAno[] = DADOS_PNCP.licitacoes.porOrgao;
 
-export const ORGAOS_AMBIENTAIS_PNCP_MG: OrgaoAmbientalPncpMg[] = DADOS.escopo.orgaos;
+export const ORGAOS_AMBIENTAIS_PNCP_MG: OrgaoAmbientalPncpMg[] = DADOS_PNCP.escopo.orgaos;
 
 /** Importe ISTO em página de servidor, nunca `PNCP_MG_CONTRATOS` direto
  *  (regra de payload — `docs/AGENTS.md`). */
 export const COBERTURA_PNCP_MG = {
-  coletadoEm: DADOS.coletadoEm,
-  coletaPendente: DADOS.coletaPendente,
-  motivoPendencia: DADOS.motivoPendencia,
-  fonte: DADOS.fonte,
-  escopoContratos: DADOS.escopo.contratos,
-  escopoLicitacoes: DADOS.escopo.licitacoes,
-  combinacoesIncompletas: DADOS.contratosCombinacoesIncompletas,
+  coletadoEm: DADOS_PNCP.coletadoEm,
+  coletaPendente: DADOS_PNCP.coletaPendente,
+  motivoPendencia: DADOS_PNCP.motivoPendencia,
+  fonte: DADOS_PNCP.fonte,
+  escopoContratos: DADOS_PNCP.escopo.contratos,
+  escopoLicitacoes: DADOS_PNCP.escopo.licitacoes,
+  combinacoesIncompletas: DADOS_PNCP.contratosCombinacoesIncompletas,
   contratos: {
-    total: DADOS.contratos.total,
-    valorGlobalTotal: DADOS.contratos.valorGlobalTotal,
-    periodoInicio: DADOS.contratos.periodoInicio,
-    periodoFim: DADOS.contratos.periodoFim,
-    linhaCruaOmitida: DADOS.contratos.linhaCruaOmitida,
+    total: DADOS_PNCP.contratos.total,
+    valorGlobalTotal: DADOS_PNCP.contratos.valorGlobalTotal,
+    periodoInicio: DADOS_PNCP.contratos.periodoInicio,
+    periodoFim: DADOS_PNCP.contratos.periodoFim,
+    linhaCruaOmitida: DADOS_PNCP.contratos.linhaCruaOmitida,
   },
   licitacoes: {
     /** Total ACHADO na fatia varrida (modalidade 6, ano corrente, BH) — não
      *  o total real de licitações dos 4 órgãos. Ver docstring. */
-    total: DADOS.licitacoes.total,
-    valorHomologadoOuEstimadoTotal: DADOS.licitacoes.valorHomologadoOuEstimadoTotal,
-    paginasVarridas: DADOS.licitacoesPaginasVarridas,
-    tetoAtingido: DADOS.licitacoesTetoAtingido,
+    total: DADOS_PNCP.licitacoes.total,
+    valorHomologadoOuEstimadoTotal: DADOS_PNCP.licitacoes.valorHomologadoOuEstimadoTotal,
+    paginasVarridas: DADOS_PNCP.licitacoesPaginasVarridas,
+    tetoAtingido: DADOS_PNCP.licitacoesTetoAtingido,
   },
 } as const;

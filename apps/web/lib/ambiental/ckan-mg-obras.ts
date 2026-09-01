@@ -1,4 +1,4 @@
-import dados from "../../../../etl/betim/dados/ckan-mg-obras.json";
+import { carregarJsonEtl } from "@/lib/server-only/json-etl";
 /**
  * Contratos de obra rodoviária do DER-MG (Departamento de Estradas de
  * Rodagem do Estado de Minas Gerais). ARQUIVO GERADO — não editar à mão.
@@ -69,7 +69,13 @@ export interface ContratoObraMg {
   percentualExecucao: number;
 }
 
-export const CONTRATOS_OBRAS_MG: ContratoObraMg[] = dados as ContratoObraMg[];
+export function lerContratosObrasMg(): ContratoObraMg[] {
+  try {
+    return carregarJsonEtl<ContratoObraMg[]>("ckan-mg-obras.json");
+  } catch {
+    return [];
+  }
+}
 
 /** Importe ISTO em página de servidor, nunca o array (regra de payload). */
 export const COBERTURA_CONTRATOS_OBRAS = {

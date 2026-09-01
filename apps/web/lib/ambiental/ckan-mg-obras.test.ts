@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { COBERTURA_CONTRATOS_OBRAS, CONTRATOS_OBRAS_MG, OBRAS_POR_MODALIDADE, OBRAS_POR_SITUACAO } from "./ckan-mg-obras";
+import { COBERTURA_CONTRATOS_OBRAS, lerContratosObrasMg, OBRAS_POR_MODALIDADE, OBRAS_POR_SITUACAO } from "./ckan-mg-obras";
 
 /**
  * `ckan-mg-obras.ts` é GERADO por `scripts/coletar-ckan-mg.mts --conjunto=obras`
@@ -12,6 +12,8 @@ import { COBERTURA_CONTRATOS_OBRAS, CONTRATOS_OBRAS_MG, OBRAS_POR_MODALIDADE, OB
  * continuar batendo se alguém rodar o coletor de novo.
  */
 describe("contratos de obra rodoviária do DER-MG", () => {
+  const CONTRATOS_OBRAS_MG = lerContratosObrasMg();
+
   test("644 contratos medidos em 21/08/2026", () => {
     expect(CONTRATOS_OBRAS_MG.length).toBe(644);
     expect(COBERTURA_CONTRATOS_OBRAS.contratos).toBe(644);
