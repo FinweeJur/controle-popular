@@ -16,6 +16,13 @@
  * NENHUM texto aqui diz quantas frentes existem. A contagem sai de
  * `ZONAS_PUBLICADAS.length` nas telas — quando o /ambiental publicar, não
  * há uma frase "as três frentes" para alguém esquecer de corrigir.
+ *
+ * ⟲ 02/09/2026, copy v6 (docs/planos/PLANO-COPY-VOZ.md): os títulos e
+ * descrições das seis frentes ganharam a voz nova — princípio na frente,
+ * memória do campo popular, gramática do MAB no Paraopeba. O que NÃO
+ * mudou, de propósito: nenhum número foi inventado ou arredondado para
+ * caber na frase (a taxa de erro de terras continua vindo de
+ * `TAXA_ERRO_G0`), e o Paraopeba segue sem humor nenhum.
  */
 
 // De `taxa-erro-g0.ts` e NÃO de `betim/terras.ts`, que reexporta a mesma
@@ -81,10 +88,12 @@ export const ZONAS: Zona[] = [
     etiqueta: "Municipal · Prefeituras e Câmaras",
     nomeCurto: "Cidades",
     titulo: "Para onde vai o dinheiro da sua cidade",
+    // ⟲ 02/09, copy v6: a frase ganha o princípio do capítulo 1 da home —
+    // "a conta é de quem paga". Nenhum número foi mexido.
     descricao:
-      "Contratos, fornecedores, orçamento, obras e a atuação de cada vereador — com os serviços do dia a dia reunidos no mesmo lugar.",
+      "Contratos, fornecedores, orçamento, obras e a atuação de cada vereador — a conta de quem paga, aberta na tela, com os serviços do dia a dia reunidos no mesmo lugar.",
     resumo:
-      "Para onde vai o dinheiro da cidade: contratos, orçamento, obras e a atuação de cada vereador.",
+      "A conta de quem paga, aberta: contratos, orçamento, obras e a atuação de cada vereador da sua cidade.",
     itens: [
       "Contratos e licitações com alertas de risco",
       "Ranking de atuação de cada vereador",
@@ -99,7 +108,9 @@ export const ZONAS: Zona[] = [
     href: "/congresso",
     etiqueta: "Federal · Congresso Nacional",
     nomeCurto: "Congresso",
-    titulo: "O que o Congresso decide sobre seus direitos",
+    // ⟲ 02/09, copy v6: o título vira princípio — o direito muda no papel
+    // antes de mudar na vida, e é por isso que se vigia a tramitação.
+    titulo: "O que decidem sobre seus direitos — antes de você sentir",
     descricao:
       "Projetos de lei federais por tema, comissão e bancada, com uma análise fundamentada de quais direitos cada proposta amplia ou restringe — e o ofício pronto para você se manifestar.",
     resumo:
@@ -119,8 +130,10 @@ export const ZONAS: Zona[] = [
     etiqueta: "Judiciário · Tribunais superiores",
     nomeCurto: "Judiciário",
     titulo: "Quem ocupa, quem indicou, quando vaga",
+    // ⟲ 02/09, copy v6: o fecho ganha a voz do capítulo 3 — ninguém está
+    // acima da conta, e a data de aposentadoria é conta de lei.
     descricao:
-      "O único Poder cujos membros ninguém elege. Composição de cada tribunal, quem indicou cada ministro, e a data em que cada um é obrigado a se aposentar — calculada, não estimada.",
+      "O único Poder cujos membros ninguém elege. Composição de cada tribunal, quem indicou cada ministro, e a data em que cada um é obrigado a se aposentar — calculada por lei, não por boato.",
     resumo:
       "O único Poder que ninguém elege: quem ocupa cada cadeira, quem indicou e quando vaga.",
     itens: [
@@ -146,9 +159,12 @@ export const ZONAS: Zona[] = [
     // de barragens (SIGBM/ANM), as 8.940 normas federais do MMA/CNDH, os
     // processos ambientais do Judiciário (SIRENEJud/CNJ), o Acordo do Rio
     // Doce (Mariana) e o Observatório Vale (B3/CVM).
+    // ⟲ 03/09, cherry-pick copy v6 por cima do ONSA: a etiqueta e o nome
+    // curto ficam (a copy v6 nasceu antes do renomeio e não os conhecia);
+    // o título ganha os três verbos de responsabilidade, colados no nome.
     etiqueta: "ONSA · Observatório Nacional Socioambiental",
     nomeCurto: "ONSA",
-    titulo: "ONSA — o Observatório Nacional Socioambiental",
+    titulo: "ONSA — quem autoriza, quem licencia, quem responde",
     // CÓPIA CORTADA PARA O QUE EXISTE, ao publicar a zona em 2026-08-09;
     // ATUALIZADA em 2026-08-11 conforme cada fase ganhou tela e dado real
     // (F3 COPAM, F4 licenciamento, F5 barragens, F6 legislação — as quatro
@@ -234,8 +250,12 @@ export const ZONAS: Zona[] = [
     // promete o estado no rótulo e entrega três cidades no texto. Agora as
     // duas metades estão ditas: o que é estadual como estadual, e o vazio
     // cadastral como o recorte de três cidades que ele é.
+    // ⟲ 02/09, copy v6: só a abertura ganhou voz ("o que o papel registra
+    // e o que ele deixa de fora" — a terra é de quem nela vive, o papel nem
+    // sempre sabe). O miolo com os números e o binding de TAXA_ERRO_G0
+    // continuam intocados.
     descricao:
-      `Mapa 3D do território de Minas Gerais: terras indígenas, a área que a água alcança se uma barragem rompe, e o que é mina em operação separado do que é só requerimento no papel. E o vazio cadastral — quanto do território de Araçuaí, Diamantina e Itinga não tem imóvel rural declarado no Cadastro Ambiental Rural, estimativa com taxa de erro medida (${TAXA_ERRO_G0.taxaPct.toLocaleString("pt-BR", { minimumFractionDigits: 0 })}% da amostra checada a olho não se confirmou) publicada ao lado do número.`,
+      `Mapa 3D do território de Minas Gerais — o que o papel registra e o que ele deixa de fora: terras indígenas, a área que a água alcança se uma barragem rompe, e o que é mina em operação separado do que é só requerimento no papel. E o vazio cadastral — quanto do território de Araçuaí, Diamantina e Itinga não tem imóvel rural declarado no Cadastro Ambiental Rural, estimativa com taxa de erro medida (${TAXA_ERRO_G0.taxaPct.toLocaleString("pt-BR", { minimumFractionDigits: 0 })}% da amostra checada a olho não se confirmou) publicada ao lado do número.`,
     resumo:
       "Mapa 3D de Minas Gerais — terra indígena, barragem e mineração no estado inteiro; o vazio cadastral, com a taxa de erro ao lado, em três cidades do Jequitinhonha.",
     itens: [
@@ -260,8 +280,14 @@ export const ZONAS: Zona[] = [
     etiqueta: "Reparação · Rompimento da barragem em Brumadinho",
     nomeCurto: "Paraopeba",
     titulo: "A reparação de Brumadinho, acompanhada mês a mês",
+    // ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md): a descrição ganha
+    // a gramática do MAB — atingido é sujeito de direitos que cobra, e
+    // reparação não é concessão, é dívida. Registro sóbrio mantido: sem
+    // humor, sem metáfora, sem epígrafe literária, e "rompimento" onde a
+    // régua editorial manda (insinuação é dano). Os números do acervo
+    // (270 mortes, abr/2024) seguem os já medidos no portal.
     descricao:
-      "Acompanhamento da reparação pelo rompimento da barragem da Vale em Brumadinho (25/01/2019, 270 mortes): clipping de imprensa desde abril de 2024, linha do tempo do processo, os órgãos e organizações que atuam na reparação — a maioria sem entrada em nenhum outro lugar do portal — e o auxílio emergencial pago mês a mês, com os documentos do processo judicial que citam cada município da bacia.",
+      "Quem é atingido por barragem não é vítima que espera: é sujeito de direitos que cobra. Este painel existe para essa cobrança — a reparação pelo rompimento da barragem da Vale em Brumadinho (25/01/2019, 270 mortes) acompanhada com documento: clipping de imprensa desde abril de 2024, linha do tempo do processo, os órgãos e organizações que atuam na reparação — a maioria sem entrada em nenhum outro lugar do portal — e o auxílio emergencial pago mês a mês, com os documentos do processo judicial que citam cada município da bacia. Reparação não é concessão: é dívida — e dívida se cobra com documento.",
     resumo:
       "Clipping, linha do tempo, quem atua na reparação e o auxílio emergencial pago mês a mês — o rompimento da barragem da Vale em Brumadinho, acompanhado.",
     itens: [
