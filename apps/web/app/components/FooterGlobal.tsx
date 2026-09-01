@@ -1,5 +1,10 @@
 import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 
+// Ações do rodapé padrão (PLANO-NAVEGACAO-E-NOTIFICACOES.md): pedido de
+// dados por e-mail e mostrador público do contador de envios/downloads.
+import PedirDadosEmail from "@/app/components/PedirDadosEmail";
+import ContadorPublico from "@/app/components/ContadorPublico";
+
 /**
  * Rodapé padrão do portal — os links principais do site, no fim de toda
  * página, nas quatro zonas.
@@ -74,6 +79,14 @@ const LINKS_PORTAL = [
   { label: "Imprensa", href: "/imprensa" },
 ];
 
+// Inscrição em novidades por e-mail (Tier 0, double opt-in: o visitante
+// envia o pedido e o dono confirma antes de incluir em qualquer lista).
+const MAILTO_NOVIDADES = `mailto:contato@controlepopular.com.br?subject=
+  ${encodeURIComponent("Quero receber novidades \u2014 Controle Popular")}
+  &body=${encodeURIComponent(
+    "Ol\u00e1,\n\nQuero receber novidades do portal (novas p\u00e1ginas, dados e corre\u00e7\u00f5es).\nMeu nome:\nE-mail para envio:\n\nAutorizo o uso deste e-mail apenas para novidades do portal. (LGPD)"
+  )}`;
+
 export default function FooterGlobal() {
   return (
     <div className="mt-8 border-t border-border pt-6 text-[.85em]">
@@ -113,6 +126,33 @@ export default function FooterGlobal() {
             ))}
           </ul>
         </div>
+      </div>
+      <div className="mt-4 border-t border-border pt-4 text-[.85em]">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <PedirDadosEmail />
+          <a
+            href="https://t.me/ControlePopularBOT"
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-1.5 font-medium text-primary hover:text-accent"
+            aria-label="Receber notificações no Telegram"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2 15 22l-4-9-9-4 20-7z"></path></svg>
+            Receber no Telegram
+          </a>
+          <a
+            href={MAILTO_NOVIDADES}
+            className="inline-flex items-center gap-1.5 font-medium text-primary hover:text-accent"
+            aria-label="Receber novidades por e-mail"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"></path></svg>
+            Receber novidades por e-mail
+          </a>
+        </div>
+        <p className="mt-1 text-text-soft">
+          Receba o resumo, os dados em CSV ou o PDF desta página no seu e-mail. Sem cadastro; notificação só com o seu ok (LGPD).
+        </p>
+        <ContadorPublico />
       </div>
     </div>
   );

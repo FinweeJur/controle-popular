@@ -5,6 +5,7 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 
 import { ZONAS_PUBLICADAS } from "@/lib/zonas";
+import BuscaGlobal from "@/app/components/BuscaGlobal";
 import CvdToggle from "@/app/components/CvdToggle";
 import FontSizeControl from "@/app/[municipio]/components/FontSizeControl";
 import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
@@ -302,6 +303,7 @@ export default function TopNav() {
             </div>
           </nav>
         </div>
+        <BuscaGlobal />
 
         <div className="ml-auto flex flex-wrap items-center gap-2">
           <Link

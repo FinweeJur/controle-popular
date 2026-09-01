@@ -55,6 +55,18 @@ export const page_views = sqliteTable(
   ]
 );
 
+export const contadores = sqliteTable(
+  "contadores",
+  {
+    // tipo: "pedido" | "download" | "notificacao" — contador público
+    // de envios/pedidos de dados e inscrições (PLANO-NAVEGACAO-E-NOTIFICACOES.md).
+    // Sem coluna de IP/e-mail: contador é agregado, não cadastro.
+    tipo: text().primaryKey().notNull(),
+    contagem: integer().notNull().default(0),
+    atualizado_em: text().notNull(),
+  }
+);
+
 export const zap_estabelecimentos = sqliteTable(
   "zap_estabelecimentos",
   {
