@@ -2,9 +2,9 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-08-31 (pipeline de automação commitado e publicado; Argus 158 rotas; LinkMender 97 URLs; DocVault no R2; PicoClaw 23/24 fontes)
+> **Última medição:** 2026-09-01 (incidente de deploy registrado abaixo; site restaurado 15:37 local; Argus 158 rotas; PicoClaw 92% das fontes)
 > **Leitura estimada:** longa (> 15 min)
-> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-CLOUDFLARE-TUNNEL.md](../historico/entregas/PLANO-CLOUDFLARE-TUNNEL.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida tecnica, decisoes, plano unico, neon, build, tunnel
 
 ## Sumário
@@ -30,7 +30,9 @@ Estado medido do portal controlepopular.com.br: o que está no ar, o que está b
 
 ## No ar agora
 
-**Modo de publicação (a partir de 26/08/2026):** o site é servido por `next start` no `home-pc`, exposto à internet via **Cloudflare Tunnel** (`controle-popular`, `e0d8ef85-e1c2-4958-b503-d7cc71556876`). O Worker Cloudflare continua deployado, mas **sem custom domains** — ele só existe como fallback técnico. O domínio `controlepopular.com.br` (e `www`) aponta para o túnel, não mais para o Worker. Ver detalhes operacionais em [OPERACAO.md](../05-operacao/OPERACAO.md) e o histórico da decisão em [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md).
+**Modo de publicação (a partir de 26/08/2026):** o site é servido por `next start` no `home-pc`, exposto à internet via **Cloudflare Tunnel** (`controle-popular`, `e0d8ef85-e1c2-4958-b503-d7cc71556876`). O Worker Cloudflare continua deployado, mas **sem custom domains** — ele só existe como fallback técnico. O domínio `controlepopular.com.br` (e `www`) aponta para o túnel, não mais para o Worker. Ver detalhes operacionais em [OPERACAO.md](../05-operacao/OPERACAO.md) e o histórico da decisão em [PLANO-CLOUDFLARE-TUNNEL.md](../historico/entregas/PLANO-CLOUDFLARE-TUNNEL.md).
+
+**Incidente 01/09/2026 — deploy falhou, site ficou fora, restaurado.** A rotina de deploy (`logs/rotina-2026-09-01T13-40-20-24500.log`) quebrou no upload de assets da Cloudflare: `fetch failed` / "Unable to resolve Cloudflare's API hostname" (rede/DNS para `api.cloudflare.com`), 2.649 de 4.891 assets, e o log termina em `ABORTADO: o deploy falhou. O site continua com a versão anterior.` O `next start -p 3000` não estava de pé, então o site ficou em 502 pelo túnel; restaurado em 01/09 ~15:37 local (HTTP 200 na home). A causa raiz do deploy (resolução de DNS para api.cloudflare.com) segue **em aberto** — reexecutar a rotina com `--forcar-deploy` depois de conferir rede.
 
 Publicado em 15/08 (build no `home-pc`, deploy passou). Seis frentes:
 
@@ -131,7 +133,7 @@ abaixo.
 | 27 | Licença da fonte *Icones do Brasil* | ⛔ | **decisão do dono, ainda em aberto** — e já está no repositório: 22 ícones mapeados em `BrasilIcon.tsx`. Licença **não verificada** (fonttoolbox "Unknown", fonts2u "Personal use"); uso público pede autorização do autor ou troca de fonte. *Brasil Icons* (a outra) é donationware e está resolvida com crédito |
 | 28 | Fundir `ARQUITETURA.md` × `MAPA-APLICACAO.md` | ⛔ | **decisão do dono, ainda em aberto**: os dois abrem descrevendo stack e deploy, e o MAPA ainda se intitula "Leilões.app / controle-popular". Recomendado: sobrevive `ARQUITETURA.md` (é o que `AGENTS.md` manda ler), absorvendo o que o MAPA tem de único — quem sumir quebra os links de `docs/LEIA-PRIMEIRO.md:27`. Conferir na fusão uma terceira divergência: `AGENTS.md` diz `output: export`, ARQUITETURA e MAPA dizem que **não** é export, é OpenNext |
 | 29 | Espelhar o código no Gitee | 🟡 | **decidido em 22/08** (decisão 13), sem data. É **espelho**: a CI não se muda — os 6 ETLs, `dado-pessoal.yml` e `prazos-lai.yml` são GitHub Actions e reescrevê-los seria o custo real da migração. Medido em 22/08: o repositório é público no GitHub, então não há segredo a reavaliar antes de espelhar. **A confirmar antes de abrir conta:** o Gitee exige verificação de identidade e submete repositório novo a revisão antes de ficar público — regra de plataforma, não deste projeto, e não foi medida aqui |
-| 30 | Publicar o portal após o bloqueio do Worker Free (erro 10027) | ✅ | **resolvido em 26/08 via Cloudflare Tunnel + `next start` no home-pc**. O Worker continua deployado sem custom domains; `controlepopular.com.br` e `www` apontam para o túnel. Pendências operacionais: dono remover custom domains do Worker e criar `CLOUDFLARE_D1_API_TOKEN` para escrita D1 via REST fallback (sem isso, `/api/pageview` e writes similares falham). Ver [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md) |
+| 30 | Publicar o portal após o bloqueio do Worker Free (erro 10027) | ✅ | **resolvido em 26/08 via Cloudflare Tunnel + `next start` no home-pc**. O Worker continua deployado sem custom domains; `controlepopular.com.br` e `www` apontam para o túnel. Pendências operacionais: dono remover custom domains do Worker e criar `CLOUDFLARE_D1_API_TOKEN` para escrita D1 via REST fallback (sem isso, `/api/pageview` e writes similares falham). Ver [PLANO-CLOUDFLARE-TUNNEL.md](../historico/entregas/PLANO-CLOUDFLARE-TUNNEL.md) |
 | 31 | Canário Telegram com interação automática | ✅ | entregue em 25/08: `scripts/gatilho-remoto.mts` rodando como ouvinte permanente no `home-pc` (Telegram long-poll + HTTP só no tailnet), respondendo `/status` e `/sincronizar` (fail-closed com árvore suja); novos `scripts/avisar-telegram.mts` (enviar status do deploy) e `scripts/ler-updates-telegram.mts` (ler respostas do dono). Credenciais em `scripts/.env`, nunca versionadas |
 | 32 | M7 — Coletor da frente Congresso via DadosAbertosBrasil | 🟢 | executando em 31/08: coletor Python com a lib (Câmara/Senado, UF=MG, redação de CPF na origem); ver [PLANO-M7-M11-CURADORIA-OSS.md](../planos/PLANO-M7-M11-CURADORIA-OSS.md) |
 | 33 | M8 — Rede de sócios via brasil.io (frente Empresas) | ✅ | **entregue**: `scripts/coletar-socios-brasilio.mts` executado com token; gerado `apps/web/data/socios-vale.json` com 6 diretores/presidente, CPF mascarado, ressalva e 0 CPFs em varredura mod-11 |
@@ -143,7 +145,7 @@ abaixo.
 | Bloqueio | Até | O que desbloqueia |
 |---|---|---|
 | Neon em HTTP 402 | 01/09 | pagar/vencer o prazo — sem banco não há `next build` nesta máquina. No modo túnel, o build continua no home-pc; a máquina de dev não builda |
-| **Worker Free 3 MiB gzip (erro 10027)** | ✅ resolvido em 26/08 | publicação migrou para **Cloudflare Tunnel + `next start` no home-pc**. O Worker continua deployado, mas sem custom domains; o domínio aponta para o túnel. Ver fila #30 e [PLANO-CLOUDFLARE-TUNNEL.md](../planos/PLANO-CLOUDFLARE-TUNNEL.md) |
+| **Worker Free 3 MiB gzip (erro 10027)** | ✅ resolvido em 26/08 | publicação migrou para **Cloudflare Tunnel + `next start` no home-pc**. O Worker continua deployado, mas sem custom domains; o domínio aponta para o túnel. Ver fila #30 e [PLANO-CLOUDFLARE-TUNNEL.md](../historico/entregas/PLANO-CLOUDFLARE-TUNNEL.md) |
 | Build e publicação só no `home-pc` | — | no modo túnel, `next start` no home-pc é o servidor de produção; build e deploy do Worker são opcionais/fallback |
 | **Coleta diário oficial D1** | ✅ resolvido em 30/08 | 16.601 atos de jan/2020 a jul/2026 coletados via SIGPub; módulo migrado de `curl.exe` (quebrado na máquina) para `requests` |
 | **Upload R2 de fontes** | ✅ resolvido em 30/08 | 261 arquivos de fonte enviados ao bucket `controlepopular-fontes`; 0 pendentes |
