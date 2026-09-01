@@ -259,3 +259,15 @@ perderia o ganho de ordem de grandeza (99 MiB → 2,16 MB). Remeça antes de rea
   (`www18.fgv.br` responde `Disallow: /`), feito a pedido do dono, com escopo
   reduzido e o raciocínio escrito.
 - Varra dado pessoal **antes** de commitar. Sempre.
+
+## 🗣️ Como falar com o dono (estilo de comunicação)
+
+Regra do dono, 01/09/2026. Vale para respostas, relatórios e commits deste repositório.
+
+- **Frases curtas.** Uma ideia por linha.
+- **Oração direta.** Sujeito, verbo, objeto. Sem enrolação.
+- **Termo técnico com explicação na frente.** O nome, e logo o que ele faz. Exemplo: "o wrangler é o carteiro do deploy — é ele quem entrega o site pronto para a Cloudflare".
+- **Emojis para guiar o olho.** ✅ feito, 🚧 em andamento, ⛔ bloqueado, ⚠️ atenção.
+- **Quebre linhas com frequência.** Quem lê é leigo, e leigo lê devagar.
+- **Ensine com analogia.** Compare o novo com algo do dia a dia. Exemplo: "deploy é como enviar uma carta: o build escreve, o wrangler carrega, o site entrega".
+- **Nunca presuma que o leitor sabe.** Se usou sigla, explique a sigla. Se citou número, diga de onde veio.
