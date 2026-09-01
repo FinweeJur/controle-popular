@@ -5,7 +5,7 @@
 > **Última medição:** 2026-09-02
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** copy, voz, rebranding, memoria historica, lutas populares, MAB, Movimento Brasil Popular, campo popular, literatura, Carolina Maria de Jesus, Itamar Vieira Junior, epigrafe, home, frentes, indice, cidades, acessibilidade, SEO
+> **Palavras-chave:** copy, voz, rebranding, memoria historica, lutas populares, MAB, Movimento Brasil Popular, campo popular, literatura, Carolina Maria de Jesus, Itamar Vieira Junior, Eduardo Galeano, Guimaraes Rosa, Conceicao Evaristo, epigrafe, home, frentes, indice, cidades, acessibilidade, SEO
 
 ## Sumário
 
@@ -23,15 +23,16 @@
 
 ## Propósito
 
-Definir a voz do rebrand do portal: memória das lutas populares brasileiras contada com leveza — princípios, coragem, força, alegria e cultura — na gramática do campo popular (MAB e Movimento Brasil Popular) e com epígrafes da literatura brasileira, sem abrir mão de uma vírgula do rigor editorial do [AGENTS.md](/AGENTS.md). Este documento é a fonte única da copy nova; números aqui são **placeholders de binding** e devem vir de constantes medidas, nunca digitados à mão.
+Definir a voz do rebrand do portal: memória das lutas populares brasileiras contada com leveza — princípios, coragem, força, alegria e cultura — na gramática do campo popular (MAB e Movimento Brasil Popular) e com epígrafes da literatura, sem abrir mão de uma vírgula do rigor editorial do [AGENTS.md](/AGENTS.md). Este documento é a fonte única da copy nova; números aqui são **placeholders de binding** e devem vir de constantes medidas, nunca digitados à mão.
 
-A proposta amadureceu em cinco versões de tom, e as cinco ficam registradas porque a evolução é instrução:
+A proposta amadureceu em seis versões de tom, e as seis ficam registradas porque a evolução é instrução:
 
 1. **v1 — resistência e sarcasmo** — voltagem alta, sarcasmo contra o poder.
 2. **v2 — natural e leve** — humor só contra a burocracia; removidas as piadas sobre forca, execuções e a linha que trivializava a Revolta dos Malês.
 3. **v3 — memória com alegria** — o eixo emocional sai de "luta contra a repressão" para "princípio que ficou"; entram o bloco de memória por cidade e a âncora das Diretas Já.
 4. **v4 — léxico do campo popular** — a gramática do MAB e do MBP: atingido como sujeito de direitos, "direito não é concessão", organização das maiorias, trabalho de base, controle popular.
-5. **v5 — epígrafes da literatura (esta)** — uma frase por capítulo, com autor, obra e ano: Itamar Vieira Junior e Carolina Maria de Jesus.
+5. **v5 — epígrafes da literatura** — Itamar Vieira Junior e Carolina Maria de Jesus, uma frase por capítulo, com autor, obra e ano.
+6. **v6 — Galeano, Guimarães Rosa e Conceição Evaristo (esta)** — a utopia de Birri/Galeano fecha o manifesto; a coragem de *Grande Sertão: Veredas* abre o capítulo do Judiciário; a escrevivência de Evaristo assina o capítulo do Congresso.
 
 ## Princípio de voz
 
@@ -71,17 +72,22 @@ Revisão feita em 02/09/2026 sobre notas, matérias e páginas institucionais do
 
 ## Epígrafes da literatura
 
-Uma frase por capítulo, sempre com **autor, obra e ano**, em itálico pequeno acima do kicker. A epígrafe é a voz atribuída da literatura — o portal a apresenta como citação, nunca como afirmação própria (mesma disciplina da régua editorial: quem fala é o autor, com nome e endereço).
+Uma frase por capítulo, sempre com **autor, obra e ano**, em itálico pequeno acima do kicker. A epígrafe é a voz atribuída da literatura — o portal a apresenta como citação, nunca como afirmação própria. E a atribuição segue a mesma régua dos dados: quem disse, onde, quando — foi assim que a frase da utopia ganhou os dois nomes (é de Fernando Birri, recolhida e popularizada por Eduardo Galeano em *As Palavras Andantes*, 1994; citar só "Galeano" seria o equivalente literário de número sem fonte).
 
 | Onde | Epígrafe | Autor · obra · ano |
 |---|---|---|
 | Hero / assinatura da home | "Quando eu não tenho o que comer, ao invés de eu xingar ou pensar em morte... eu escrevo." | Carolina Maria de Jesus · *Quarto de Despejo* · 1960 |
 | Cap. 1 · Cidades | "Eu classifico São Paulo assim: o Palácio é a sala de visita, a Prefeitura é a sala de jantar, a cidade é o jardim, e a favela é o quintal onde jogam os lixos." | Carolina Maria de Jesus · *Quarto de Despejo* · 1960 |
-| Cap. 2 · Congresso | "Quem inventou a fome são os que comem." | Carolina Maria de Jesus · *Quarto de Despejo* · 1960 |
-| Cap. 6 · Terras | "A vida humana é indissociável do território. E muitas pessoas estão privadas disso." | Itamar Vieira Junior · sobre *Salvar o Fogo* (TV Brasil, Trilha de Letras) · 2023 |
+| Cap. 2 · Congresso | "A nossa escrevivência não pode ser lida como história de ninar os da casa-grande, mas sim para incomodá-los em seus sonhos injustos." | Conceição Evaristo · *Becos da Memória* · 2006 |
+| Cap. 3 · Judiciário | "O que a vida quer da gente é coragem." | João Guimarães Rosa · *Grande Sertão: Veredas* · 1956 |
 | Cap. 4 · Ambiental | "Tudo que aprendi com os camponeses, quilombolas e trabalhadores rurais eu não trocaria por nenhum título acadêmico ou prêmio." | Itamar Vieira Junior · sobre *Torto Arado* (Agência Pública) · 2021 |
+| Cap. 6 · Terras | "A vida humana é indissociável do território. E muitas pessoas estão privadas disso." | Itamar Vieira Junior · sobre *Salvar o Fogo* (TV Brasil, Trilha de Letras) · 2023 |
 | Cap. 7 · Ação cidadã | "Não é uma esperança passiva, que está só esperando que as coisas aconteçam. É uma esperança ativa." | Itamar Vieira Junior · Roda Viva · 15/02/2021 |
-| `/sobre` · manifesto | "Quando eu não tenho o que comer... eu escrevo." — e a ponte: *a gente também escreve — com número, fonte e data.* | Carolina Maria de Jesus · 1960 |
+| Manifesto final | "Para que serve a utopia? Serve para isso: para caminhar." | Fernando Birri, recolhido por Eduardo Galeano · *As Palavras Andantes* · 1994 |
+| `/sobre` · abertura | "Quando eu não tenho o que comer... eu escrevo." — e a ponte: *a gente também escreve — com número, fonte e data.* | Carolina Maria de Jesus · 1960 |
+| `/sobre` · travessia | "O real não está na saída nem na chegada: ele se dispõe para a gente é no meio da travessia." | João Guimarães Rosa · *Grande Sertão: Veredas* · 1956 |
+| `/sobre` · fecho | "O importante não é ser o primeiro ou primeira, o importante é abrir caminhos." | Conceição Evaristo · Roda Viva · 2019 |
+| Reserva (Cap. 1/2) | "Quem inventou a fome são os que comem." | Carolina Maria de Jesus · *Quarto de Despejo* · 1960 |
 
 **Ficou de fora, de propósito:** "De uns tempos pra cá passei a desconfiar que o Mal não vinha do coração daquela gente. O Mal foi plantado pelos senhores de terra" (*Salvar o Fogo*, 2023) — frase forte, mas aponta culpado genérico; na régua do portal, quem aponta culpado é o documento na tela, não a epígrafe.
 
@@ -90,7 +96,7 @@ Uma frase por capítulo, sempre com **autor, obra e ano**, em itálico pequeno a
 | Tema | Regra |
 |---|---|
 | Malês e escravidão | A luta é tratada com reverência: organização, coragem, dignidade. Humor nunca toca a condição de escravizado; nenhuma piada de comparação de dificuldade |
-| Brumadinho / Paraopeba | Zero humor, zero metáfora histórica. Registro de memória e cobrança na gramática do MAB: atingido é sujeito de direitos; reparação é direito, não concessão. "Crime" fica de fora (ver léxico) |
+| Brumadinho / Paraopeba | Zero humor, zero metáfora histórica e **zero epígrafe literária** — o único texto citado é o do MAB, com atribuição. Registro de memória e cobrança na gramática do movimento: atingido é sujeito de direitos; reparação é direito, não concessão |
 | Tiradentes e Vila Rica | Sem cenas de execução na copy. Ficam o gesto (perguntar pelo ouro) e o princípio (a conta é de quem paga) |
 | Contestado, Palmares, Balaiada | Contados como resistência e legado; sem detalhe de massacre ou cerco |
 | Diretas Já | Memória alegre por excelência. A derrota de 1984 é contada com a vitória de 1989, porque é o que sustenta a esperança factual |
@@ -101,12 +107,12 @@ Uma frase por capítulo, sempre com **autor, obra e ano**, em itálico pequeno a
 | Capítulo | Memória | Princípio que ficou |
 |---|---|---|
 | 1 · Cidades | Vila Rica, 1720 · Carolina (1960) | **A conta é de quem paga** — a coragem de perguntar |
-| 2 · Congresso | Malês, 1835 · Quebra-Quilos, 1874 | **A liberdade se organiza** — e a medida tem que ser de todos |
-| 3 · Judiciário | Inconfidência, 1789 · Chibata, 1910 | **Ninguém está acima da conta** |
+| 2 · Congresso | Malês, 1835 · Quebra-Quilos, 1874 · Evaristo (2006) | **A liberdade se organiza** — e a voz que incomoda o sono injusto |
+| 3 · Judiciário | Inconfidência, 1789 · Chibata, 1910 · Guimarães Rosa (1956) | **Ninguém está acima da conta** — e vigiar pede coragem |
 | 4 · Ambiental | Contestado, 1912–16 · Itamar (2021) | **A terra é de quem nela vive** |
 | 5 · Paraopeba | Brumadinho, 2019 · MAB | **Atingido é sujeito de direitos** — e a reparação é integral |
 | 6 · Terras | Palmares · Balaiada · Itamar (2023) | **Comunidade é força** |
-| 7 · Ação cidadã | Diretas Já, 1984 · MBP · Itamar (2021) | **A alegria também enche praça** — esperança ativa |
+| 7 · Ação cidadã | Diretas Já, 1984 · MBP · Itamar (2021) · Birri/Galeano (1994) | **A alegria também enche praça** — esperança ativa, utopia que faz caminhar |
 
 ## Home (`/`) — capítulos
 
@@ -149,7 +155,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 ### Capítulo 02 — Seus direitos em plenário
 
-**Epígrafe:** *"Quem inventou a fome são os que comem."* — **Carolina Maria de Jesus**, *Quarto de Despejo*, 1960
+**Epígrafe:** *"A nossa escrevivência não pode ser lida como história de ninar os da casa-grande, mas sim para incomodá-los em seus sonhos injustos."* — **Conceição Evaristo**, *Becos da Memória*, 2006
 
 **Kicker:** `CAPÍTULO 02 · CONGRESSO NACIONAL`
 **Princípio:** `A LIBERDADE SE ORGANIZA · MALÊS, 1835`
@@ -159,7 +165,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 **Microensaio:**
 
-> Na madrugada de 25 de janeiro de 1835, os Malês mostraram a Salvador — e ao país inteiro — do que é capaz um povo organizado. A força deles virou lição: ninguém conquista direito sozinho, a gente conquista junto. Hoje, cada projeto que mexe com a sua vida aparece aqui classificado por direito ampliado ou restringido, e o ofício para pressionar quem decide sai pronto em PDF. Organização continua sendo o caminho — só que agora cabe no bolso.
+> Na madrugada de 25 de janeiro de 1835, os Malês mostraram a Salvador — e ao país inteiro — do que é capaz um povo organizado. A força deles virou lição: ninguém conquista direito sozinho, a gente conquista junto. Hoje, cada projeto que mexe com a sua vida aparece aqui classificado por direito ampliado ou restringido, e o ofício para pressionar quem decide sai pronto em PDF — a escrevivência em versão cívica: escrever para incomodar o sono injusto, com dispositivo legal e data. Organização continua sendo o caminho — só que agora cabe no bolso.
 
 **Número protagonista:** `[5.562] proposições acompanhadas · classificação com régua pública`
 **CTA:** `Escrever para quem decide →`
@@ -170,6 +176,8 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 ### Capítulo 03 — O poder que ninguém elege
 
+**Epígrafe:** *"O que a vida quer da gente é coragem."* — **João Guimarães Rosa**, *Grande Sertão: Veredas*, 1956
+
 **Kicker:** `CAPÍTULO 03 · TRIBUNAIS`
 **Princípio:** `NINGUÉM ESTÁ ACIMA DA CONTA · 1789–1910`
 **Display:**
@@ -178,7 +186,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 **Microensaio:**
 
-> Minas carrega na bandeira a frase dos inconfidentes: liberdade, ainda que tardia. E, em 1910, os marinheiros da Revolta da Chibata provaram que coragem não é privilégio de patentes. A lição dos dois é a mesma: instituição forte é a que aceita olhar de fora. Aqui, cada cadeira tem nome, quem indicou e a data em que vaga — calculada por lei, não por boato.
+> Minas carrega na bandeira a frase dos inconfidentes: liberdade, ainda que tardia. E, em 1910, os marinheiros da Revolta da Chibata provaram que coragem não é privilégio de patentes — Guimarães Rosa, mineiro de Cordisburgo, já sabia: o que a vida quer da gente é coragem. A lição dos dois é a mesma: instituição forte é a que aceita olhar de fora. Aqui, cada cadeira tem nome, quem indicou e a data em que vaga — calculada por lei, não por boato.
 
 **Número protagonista:** `[7] tribunais · [252] magistrados · aposentadoria aos 75, por lei`
 **CTA:** `Ver quem ocupa cada cadeira →`
@@ -219,7 +227,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 **Número protagonista:** `[R$ 5,48 bi] acompanhados mês a mês · [467] fichas de auditoria`
 **CTA:** `Acompanhar a execução →`
 
-**Guarda de tom:** zero humor neste capítulo. "Crime" não entra (régua contra insinuação) — o clipping da frente mostra quem usa a palavra; o portal mostra os fatos.
+**Guarda de tom:** zero humor, zero epígrafe literária neste capítulo. "Crime" não entra (régua contra insinuação) — o clipping da frente mostra quem usa a palavra; o portal mostra os fatos.
 
 ### Capítulo 06 — De quem é a terra
 
@@ -264,6 +272,8 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚ
 
 ### Manifesto final da home
 
+**Epígrafe de fecho:** *"Para que serve a utopia? Serve para isso: para caminhar."* — **Fernando Birri**, recolhido por **Eduardo Galeano** em *As Palavras Andantes*, 1994
+
 > **DE VILA RICA A SALVADOR, DO SERTÃO DO QUEBRA-QUILOS À SERRA DA BARRIGA, DAS SACADAS DE DIAMANTINA AO ANHANGABAÚ LOTADO: O POVO DESTE PAÍS SEMPRE PERGUNTOU, SEMPRE SE ORGANIZOU — E SEMPRE ACHOU UM JEITO DE CANTAR NO MEIO DO CAMINHO. CAROLINA ESCREVIA PARA ENGANAR A FOME; A GENTE ESCREVE COM NÚMERO, FONTE E DATA. DIREITO NÃO É FAVOR, NÃO É CONCESSÃO, NÃO É PROMESSA. O POVO PERGUNTA. O NÚMERO NÃO MENTE. E O CONTROLE — O CONTROLE É POPULAR.**
 
 **CTA final:** `Entrar pela sua cidade →` · `Ler o manifesto completo →`
@@ -280,7 +290,7 @@ Cartão-carimbo no painel da cidade (chrome, não é card de dado), com três li
 **Belo Horizonte — `/bh`**
 
 > Em 1984, a Praça da Estação encheu de gente pedindo o voto direto — BH entrou na frente das Diretas.
-> E uns anos antes, o Clube da Esquina tinha ensinado o país inteiro a cantar Minas.
+> E uns anos antes, o Clube da Esquina tinha ensinado o país inteiro a cantar Minas. BH também é a cidade onde Conceição Evaristo cresceu — a escrevivência também é mineira.
 
 **Diamantina — `/diamantina`**
 
@@ -304,15 +314,25 @@ Cartão-carimbo no painel da cidade (chrome, não é card de dado), com três li
 
 ## `/sobre` — manifesto longo
 
-O conteúdo rigoroso da página (IA declarada, metodologia, taxa de erro, lacunas) **permanece intocado**. A seção-manifesto, no tema CANDEIA, abre com Carolina:
+O conteúdo rigoroso da página (IA declarada, metodologia, taxa de erro, lacunas) **permanece intocado**. A seção-manifesto, no tema CANDEIA:
+
+**Abertura, com Carolina:**
 
 > *"Quando eu não tenho o que comer, ao invés de eu xingar ou pensar em morte... eu escrevo."* — **Carolina Maria de Jesus**, *Quarto de Despejo*, 1960. A gente também escreve — com número, fonte e data.
->
+
+**Manifesto:**
+
 > **A CANDEIA É O INSTRUMENTO DE QUEM NÃO ESPERA CLAREAR — E TAMBÉM ILUMINA FESTA.**
 >
 > **FISCALIZAR O PODER SEMPRE FOI HÁBITO POR AQUI: COM O BALAIO, COM O QUILO QUEBRADO NO CHÃO DA FEIRA, COM O QUILOMBO DE PÉ, COM A PRAÇA CHEIA DE ROSTO PINTADO. O QUE FALTAVA ERA A FERRAMENTA DO DIA A DIA — O CONTRATO LIDO, O VOTO CONTADO, A CADEIRA COM NOME, A REPARAÇÃO ACOMPANHADA MÊS A MÊS.**
 >
 > **A GENTE NÃO PEDE CONFIANÇA. A GENTE MOSTRA A FONTE. TODO NÚMERO TEM PROCEDÊNCIA, TODA ESTIMATIVA MOSTRA O ERRO, TODA LACUNA TEM NOME. E QUANDO A GENTE ERRAR, A CORREÇÃO FICA NA PÁGINA.**
+
+**Travessia e fecho:**
+
+> *"O real não está na saída nem na chegada: ele se dispõe para a gente é no meio da travessia."* — **João Guimarães Rosa**, *Grande Sertão: Veredas*, 1956. Este portal é travessia: não chegou, não vai chegar tão cedo — e por isso mostra o caminho.
+>
+> *"O importante não é ser o primeiro ou primeira, o importante é abrir caminhos."* — **Conceição Evaristo**, Roda Viva, 2019.
 >
 > **ORGANIZAÇÃO É O CAMINHO. A FONTE É A PROVA. FAÇA PARTE DA FISCALIZAÇÃO. O DINHEIRO É SEU.**
 
@@ -329,10 +349,10 @@ O conteúdo rigoroso da página (IA declarada, metodologia, taxa de erro, lacuna
 ## Réguas de aplicação
 
 1. **Números entre colchetes** são placeholders de binding: ligar a constantes medidas com data (`COBERTURA_*`, `TAXA_ERRO_G0`, contagens do banco), nunca digitar à mão.
-2. **Zonas sem humor:** card de dado, ressalva colada ao número, estado de erro com fonte nomeada e o capítulo Paraopeba inteiro.
+2. **Zonas sem humor:** card de dado, ressalva colada ao número, estado de erro com fonte nomeada e o capítulo Paraopeba inteiro (que também não recebe epígrafe literária).
 3. **Memória histórica:** princípio e gesto, nunca cena de violência; todo fato com ano, nome ou lugar — o portal cobra procedência dos outros, e a copy cita a própria.
 4. **Léxico dos movimentos:** gramática sim, bandeira não. Slogan de campanha, caráter partidário e a palavra "crime" ficam fora; citação literal de movimento só com atribuição explícita.
-5. **Epígrafe:** voz atribuída da literatura — uma frase, com autor, obra e ano; nunca trecho que acuse grupo ou pessoa (quem aponta culpado é o documento na tela).
+5. **Epígrafe:** voz atribuída da literatura — uma frase, com autor, obra e ano, e atribuição verificada (o caso Birri/Galeano é o exemplo-canônico); nunca trecho que acuse grupo ou pessoa.
 6. **Bloco das cidades:** cultura pode ser celebrada solta; marco histórico só com fonte local fechada.
 7. **Forma:** frase display ≤ 6 palavras (Clash Display); caps só em manifesto e carimbos; corpo em General Sans; número em Tabular.
 8. **A ladainha dos marquees só cresce com fato fechado** — luta, festa ou obra documentada, com data consolidada.
