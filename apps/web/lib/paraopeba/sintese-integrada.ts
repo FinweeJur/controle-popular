@@ -365,15 +365,23 @@ export async function temasSemEixo(): Promise<TemaOrfao[]> {
  * reescrever a evidência à mão (a mesma regra de "número medido, nunca
  * digitado" vale para texto que já existe em outro módulo).
  */
-export const ESTUDO_AUSENTE_DO_ACERVO: CasamentoEstudoNoticia = (() => {
-  const encontrado = CASAMENTOS_ESTUDO_NOTICIA.find((c) => c.noticia.id === "er04");
+export function obterEstudoAusenteDoAcervo(): CasamentoEstudoNoticia {
+  const casamentos = CASAMENTOS_ESTUDO_NOTICIA;
+  const encontrado = casamentos.find((c) => c.noticia.id === "er04");
   if (!encontrado) {
     throw new Error(
       "sintese-integrada: notícia er04 não existe mais em CASAMENTOS_ESTUDO_NOTICIA — o achado de lacuna citado pela tarefa precisa de novo dono."
     );
   }
   return encontrado;
-})();
+}
+
+export const ESTUDO_AUSENTE_DO_ACERVO: CasamentoEstudoNoticia = new Proxy({} as CasamentoEstudoNoticia, {
+  get(target, prop, receiver) {
+    const obj = obterEstudoAusenteDoAcervo();
+    return Reflect.get(obj, prop, receiver);
+  },
+});
 
 // Só o TIPO sai daqui, nunca `ATI_BIBLIOTECA_LABEL` nem qualquer outro valor
 // de `biblioteca.ts`: aquele módulo usa `node:fs`, e um re-export de VALOR

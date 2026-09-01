@@ -3,7 +3,10 @@ import FooterGlobal from "@/app/components/FooterGlobal";
 import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import { ATI_BIBLIOTECA_LABEL } from "@/lib/paraopeba/biblioteca";
-import { CASAMENTOS_ESTUDO_NOTICIA } from "@/lib/paraopeba/estudo-e-noticia";
+import {
+  CASAMENTOS_ESTUDO_NOTICIA,
+  obterCasamentosEstudoNoticia,
+} from "@/lib/paraopeba/estudo-e-noticia";
 import {
   ESTUDO_AUSENTE_DO_ACERVO,
   resumoIntegrado,
@@ -53,12 +56,14 @@ export default async function AnaliseIntegradaPage() {
   const resumo = resumoIntegrado(eixos);
   const orfaos = await temasSemEixo();
   const itensAti = await bibliotecaAti();
+  const estudoAusente = obterEstudoAusenteDoAcervo();
   const itensComTemaInferido = itensAti
     .filter(temasAjriSaoInferidos)
     .sort((a, b) => (a.data ?? "").localeCompare(b.data ?? ""));
 
   const idsComVoz = new Set(eixos.flatMap((e) => e.vozAti.map((c) => c.noticia.id)));
-  const casamentosSemEixo = CASAMENTOS_ESTUDO_NOTICIA.filter(
+  const todosCasamentos = obterCasamentosEstudoNoticia();
+  const casamentosSemEixo = todosCasamentos.filter(
     (c) => c.forca !== "nula" && !idsComVoz.has(c.noticia.id)
   );
 
@@ -301,21 +306,21 @@ export default async function AnaliseIntegradaPage() {
         <div className="mt-4 rounded-2xl border border-border bg-surface-2 p-5 text-[.92em] leading-relaxed text-text-soft">
           <p>
             <a
-              href={ESTUDO_AUSENTE_DO_ACERVO.noticia.url}
+              href={estudoAusente.noticia.url}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-primary underline underline-offset-2 hover:text-accent"
             >
-              {ESTUDO_AUSENTE_DO_ACERVO.noticia.titulo}
+              {estudoAusente.noticia.titulo}
             </a>{" "}
             <span className="text-text-soft/80">
-              ({ESTUDO_AUSENTE_DO_ACERVO.noticia.fonte}, {formatDateBR(ESTUDO_AUSENTE_DO_ACERVO.noticia.data)})
+              ({estudoAusente.noticia.fonte}, {formatDateBR(estudoAusente.noticia.data)})
             </span>
           </p>
-          <p className="mt-2">{ESTUDO_AUSENTE_DO_ACERVO.evidencia}</p>
+          <p className="mt-2">{estudoAusente.evidencia}</p>
           <p className="mt-2">
             <strong className="text-text">Por que não casa com nenhum documento:</strong>{" "}
-            {ESTUDO_AUSENTE_DO_ACERVO.motivo}
+            {estudoAusente.motivo}
           </p>
           <p className="mt-3 text-[.86em] text-text-soft/80">
             Achado por lacuna, não por casamento — este é o único caso do cruzamento notícia×estudo em
