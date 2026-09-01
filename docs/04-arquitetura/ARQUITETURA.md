@@ -19,6 +19,7 @@
 - [Mapa de rotas](#mapa-de-rotas)
 - [Banco de dados](#banco-de-dados)
 - [Índice estático e assistente](#índice-estático-e-assistente)
+- [Páginas modelo e perfis automáticos](#páginas-modelo-e-perfis-automáticos)
 - [Radar Paraopeba](#radar-paraopeba)
 - [Painel de edição](#painel-de-edição)
 - [Código IBGE](#código-ibge)
@@ -199,7 +200,19 @@ O assistente é uma escada de quatro degraus, e cada degrau só é acionado quan
 - **Catálogo** (`lib/assistente/catalogo.ts`): 241 destinos como **constante de módulo** importada pelo cliente, nunca como prop — cabe em ~2,4 KiB gzip (medição em 16/08).
 - **Navegação** (`navegacao.ts`): `interpretar()` devolve candidatos (máx. 8), nunca um palpite único; vazio é resposta. Sem rede, sem banco.
 - **Documentos** (`documentos.ts`): o degrau 1 carrega o índice sob demanda, **uma vez por sessão**, e interrompe de verdade (`AbortController`).
-- **Degrau 3**: mora em rota `*.din.ts`, chave em secret do Worker (nunca no cliente); o prompt recebe só o trecho do índice recuperado, nunca o acervo.
+## Páginas modelo e perfis automáticos
+
+Toda página gerada automaticamente (seja de acervo geral ou de perfil/detalhamento dinâmico como empresas, contratos, vereadores, proposições ou editais) **DEVE obrigatoriamente incluir**:
+
+1. **Sumário & Índice da Página (TOC)**: Bloco no topo com hiperlinks âncora navegáveis para cada seção.
+2. **Notícias e Alertas Relacionados**: Bloco com o clipping recente de matérias do radar diário ligadas ao objeto/entidade.
+3. **Páginas Relacionadas e Botões de Navegação**: Links responsivos (`← Item Anterior` e `Próximo Item →`) permitindo folhar todo o acervo.
+4. **Footer Design Institucional**: Rodapé padrão padronizado com selo de transparência passiva (`<PedidoLAI />`) e garantia editorial.
+5. **Garantia Editorial**: Isenção explícita de acusação e citação transparente da origem oficial dos dados (CVM, SEC EDGAR, US Census, ANM, PNCP).
+
+Templates de prompt para agendamento dos agentes offline:
+- Modelo A (Acervo Geral): `scripts/prompts/template-agente-modelo.md`
+- Modelo B (Perfil / Detalhamento Dinâmico): `scripts/prompts/template-agente-detalhamento.md`
 
 ## Radar Paraopeba
 
