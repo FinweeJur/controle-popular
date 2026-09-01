@@ -38,9 +38,9 @@ que cada trilha precisa para começar. Atualizar este arquivo a cada entrega.
 | 5 | Backfill PDFs → subir novos aprovados ao R2 | médio (rodeiro) | rede | rodando 30/08 |
 | 6 | SIRENEJud fase 2 — integrações do catálogo dados.gov.br | médio | token (feito) | §3 |
 | 7 | Incentivo ao esporte | médio | token (feito) | ESTADO #15 |
-| 8 | Pró-Brumadinho: outras duas páginas | médio | nenhum | ESTADO #19 |
-| 9 | URN / normas.leg.br | médio | nenhum | ESTADO #14 |
-| 10 | Monitoramento de empresas (Vale) | alto | escopo no §2 | §2 |
+| 8 | Pró-Brumadinho: outras duas páginas | médio | nenhum | ✅ **entregue**: biblioteca pró-brumadinho (129 docs) + `/paraopeba/noticias` |
+| 9 | URN / normas.leg.br | médio | nenhum | ✅ **validado**: URN LexML em `lib/ambiental/urn-lexml.ts` (24 testes) |
+| 10 | Monitoramento de empresas (Vale) | alto | escopo no §2 | ✅ **entregue**: `/paraopeba/vale` (B3/VALE3) + `/vale/documentos` (CVM) + `/paraopeba/noticias` |
 | 11 | 01/09 — runbook da Neon | alto | data | §5 |
 | 12 | SIRENEJud shapefiles (77 MB, geometria do dano) | alto | nenhum | §3 |
 | 13 | Gitee espelho | baixo (adm) | decisão de quando | ESTADO #29 |

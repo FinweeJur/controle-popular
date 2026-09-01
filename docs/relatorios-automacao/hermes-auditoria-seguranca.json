@@ -1,9 +1,9 @@
 {
-  "geradoEm": "2026-08-31T19:12:24.255Z",
+  "geradoEm": "2026-09-01T08:43:22.247Z",
   "agente": "Hermes Agent Security & Data Auditor",
   "totalVerificacoes": 13,
-  "aprovados": 13,
-  "alertas": 0,
+  "aprovados": 10,
+  "alertas": 3,
   "falhas": 0,
   "itens": [
     {
@@ -27,14 +27,14 @@
     {
       "categoria": "seguranca",
       "item": "Produção: Content-Security-Policy",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https://server.arcgisonline.com https://tile.openstreetmap.org; ..."
+      "status": "ALERTA",
+      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br (nem Content-Security-Policy-Report-Only). Conferir a configuração de produção; no código local o header está declarado."
     },
     {
       "categoria": "seguranca",
       "item": "Produção: Strict-Transport-Security",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: max-age=31536000; includeSubDomains"
+      "status": "ALERTA",
+      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
     },
     {
       "categoria": "seguranca",
@@ -45,8 +45,8 @@
     {
       "categoria": "seguranca",
       "item": "Produção: X-Content-Type-Options",
-      "status": "APROVADO",
-      "detalhes": "Header retornado por https://controlepopular.com.br: nosniff"
+      "status": "ALERTA",
+      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
     },
     {
       "categoria": "seguranca",
@@ -58,7 +58,7 @@
       "categoria": "cloudflare",
       "item": "Teto de 25 MiB do Cloudflare Workers",
       "status": "APROVADO",
-      "detalhes": "Todos os 35 arquivos de dados em data/ e public/data/ estão dentro do limite."
+      "detalhes": "Todos os 39 arquivos de dados em data/ e public/data/ estão dentro do limite."
     },
     {
       "categoria": "privacidade",

@@ -19,8 +19,8 @@
 - [Passo 6 — conferir que a Neon voltou de verdade](#passo-6-conferir-que-a-neon-voltou-de-verdade)
 - [Origem](#origem)
 
-> Escrito em 17/08/2026. A Neon voltou da cota gratuita em 01/09 e os passos
-> abaixo são o que ficou pendente enquanto ela esteve em 402. Ordem importa:
+> Escrito em 17/08/2026. Com a virada da cota da Neon em 01/09, os passos
+> abaixo devem ser executados no `home-pc` para atualizar o banco que esteve em 402. Ordem importa:
 > schema primeiro, dado depois, verificação por último. Tudo é idempotente
 > (`if not exists`, `on conflict`) — reaplicar é seguro, mas não pula passo.
 
