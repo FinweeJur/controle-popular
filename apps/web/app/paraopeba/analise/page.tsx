@@ -9,6 +9,7 @@ import {
 } from "@/lib/paraopeba/estudo-e-noticia";
 import {
   ESTUDO_AUSENTE_DO_ACERVO,
+  obterEstudoAusenteDoAcervo,
   resumoIntegrado,
   sinteseIntegrada,
   temasSemEixo,
