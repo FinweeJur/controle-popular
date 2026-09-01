@@ -77,7 +77,8 @@ export default async function FuncaoSocialTerraPage() {
 
   const resumoMapa = carregarResumoMapaEstadual();
   const alertaOperacao = carregarAlertasSigmine("operacao");
-  const alertaInteresse = carregarAlertasSigmine("interesse");  const alertaQuilombolaMancha = carregarAlertaQuilombolaMancha();
+  const alertaInteresse = carregarAlertasSigmine("interesse");
+  const alertaQuilombolaMancha = carregarAlertaQuilombolaMancha();
   const atosAreaProtegida = carregarAtosAreaProtegida();
 
   return (
@@ -98,6 +99,39 @@ export default async function FuncaoSocialTerraPage() {
           dela. Mas o mapa desta frente não para mais no vazio cadastral: hoje
           ele também mostra terra indígena, barragem, mineração, dinheiro
           público e onde essas camadas se cruzam.
+        </p>
+
+        {/* ⟲ 02/09, copy v7.1 (docs/planos/PLANO-COPY-VOZ.md): as
+            epígrafes da frente — Itamar Vieira Junior sobre território e
+            vida, e a saudação risonha do poema "Passado e futuro", do
+            acervo do projeto — mais a memória de Palmares e da Balaiada
+            como princípio: comunidade organizada é força que dura.
+            Nenhum número mexido. */}
+        <blockquote
+          className="mt-4 max-w-[62ch] space-y-3 border-l-2 pl-4 text-sm text-text-soft"
+          style={{ borderColor: ZONA.cor }}
+        >
+          <p>
+            “A vida humana é indissociável do território. E muitas pessoas estão privadas
+            disso.”
+            <br />
+            <cite className="not-italic opacity-70">
+              — Itamar Vieira Junior · sobre Salvar o Fogo · 2023
+            </cite>
+          </p>
+          <p>
+            “Por isso saúdo hoje, com alegria e de forma risonha, esse povo que luta e
+            sonha no Vale do Jequitinhonha.”
+            <br />
+            <cite className="not-italic opacity-70">
+              — Poema “Passado e futuro” · acervo do projeto
+            </cite>
+          </p>
+        </blockquote>
+        <p className="mt-3 max-w-[62ch] text-sm text-text-soft">
+          Palmares viveu livre por quase um século; na Balaiada, vaqueiros, lavradores e
+          ex-escravizados provaram o mesmo no Maranhão: comunidade organizada é força
+          que dura.
         </p>
 
         {/* A cobertura desta frente é MUITO desigual entre camadas, e a página

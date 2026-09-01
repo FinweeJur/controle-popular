@@ -179,6 +179,24 @@ export default async function ParaopebaHome() {
         <h1 className="font-display text-3xl font-bold sm:text-4xl">{ZONA.titulo}</h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">{ZONA.descricao}</p>
 
+        {/* ⟲ 02/09, copy v7.1 (docs/planos/PLANO-COPY-VOZ.md): a ÚNICA
+            citação desta frente — atribuída ao MAB. Registro de cuidado
+            mantido: sem epígrafe literária, sem verso de poema, sem
+            humor, e "rompimento" onde a régua editorial manda. */}
+        <blockquote
+          className="max-w-2xl border-l-2 pl-4 text-sm text-text-soft"
+          style={{ borderColor: ZONA.cor }}
+        >
+          <p>
+            “Sem transparência e fiscalização independente, é impossível garantir que as
+            medidas estejam sendo devidamente executadas.”
+            <br />
+            <cite className="not-italic opacity-70">
+              — MAB, sobre a reparação de Brumadinho
+            </cite>
+          </p>
+        </blockquote>
+
         {/* Esta frente é a que mais depende de acervo de terceiro (7.107
             documentos do processo, dos quais 471 têm município identificado),
             e a que mais corre risco de ser lida como retrato completo. */}

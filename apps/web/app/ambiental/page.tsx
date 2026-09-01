@@ -202,6 +202,37 @@ export default async function AmbientalHome() {
         <h1 className="font-display text-3xl font-bold sm:text-4xl">{ZONA.titulo}</h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">{ZONA.descricao}</p>
 
+        {/* ⟲ 02/09, copy v7.1 (docs/planos/PLANO-COPY-VOZ.md): as
+            epígrafes da frente — Itamar Vieira Junior sobre o que o campo
+            ensina, e o sertão de Guimarães Rosa "onde manda quem é forte,
+            com as astúcias" — mais a memória do Contestado como princípio:
+            a terra é de quem nela vive. Nenhum número mexido. */}
+        <blockquote
+          className="max-w-2xl space-y-3 border-l-2 pl-4 text-sm text-text-soft"
+          style={{ borderColor: ZONA.cor }}
+        >
+          <p>
+            “Tudo que aprendi com os camponeses, quilombolas e trabalhadores rurais eu
+            não trocaria por nenhum título acadêmico ou prêmio.”
+            <br />
+            <cite className="not-italic opacity-70">
+              — Itamar Vieira Junior · sobre Torto Arado · 2021
+            </cite>
+          </p>
+          <p>
+            “Sertão é onde manda quem é forte, com as astúcias.”
+            <br />
+            <cite className="not-italic opacity-70">
+              — João Guimarães Rosa · Grande Sertão: Veredas · 1956
+            </cite>
+          </p>
+        </blockquote>
+        <p className="max-w-2xl text-sm text-text-soft">
+          No Contestado (1912–16), quem vivia da terra defendeu o direito de continuar
+          nela — e o pertencimento venceu o esquecimento. Esta frente existe para a
+          astúcia envelhecer: quem autoriza tem nome, ata e data.
+        </p>
+
         <p
           className="max-w-2xl rounded-lg border px-4 py-3 text-[.95em]"
           style={{ borderColor: ZONA.cor }}
