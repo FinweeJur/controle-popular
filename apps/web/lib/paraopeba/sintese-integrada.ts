@@ -18,7 +18,7 @@ import { lerSinteseAjri } from "./sintese-ajri-dados";
 
 /** Sinônimo — dado agora no loader server-only. */
 const SINTESE_AJRI = lerSinteseAjri();
-import { temasAjriDoItemBiblioteca } from "./temas-ati";
+import { temasAjriDoItemBiblioteca } from "./temas-ati-utils";
 
 /**
  * A análise integrada de `/paraopeba/analise` — cruza os 16 eixos temáticos

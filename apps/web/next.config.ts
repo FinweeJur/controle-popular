@@ -170,7 +170,7 @@ const CSP_REPORT_ONLY = [
  * herdar o padrão do navegador.
  */
 const SECURITY_HEADERS = [
-  { key: "Content-Security-Policy-Report-Only", value: CSP_REPORT_ONLY },
+  { key: "Content-Security-Policy", value: CSP_REPORT_ONLY },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
@@ -248,6 +248,7 @@ const nextConfig: NextConfig = {
     // mesmo sendo servido por `env.ASSETS.fetch()` em runtime.
     "/paraopeba": ["public/data/biblioteca-ati.json"],
     "/paraopeba/biblioteca": ["public/data/biblioteca-ati.json"],
+    "/paraopeba/vale": ["public/data/vale3-cotacoes.csv"],
     "/[municipio]/prefeitura": ["public/data/repasse-brumadinho-mg.json"],
     "/[municipio]/clima": ["public/data/risco-climatico.json"],
   },
