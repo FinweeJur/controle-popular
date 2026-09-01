@@ -123,11 +123,14 @@ sem sair para /busca: digita e vê os resultados no dropdown.
 
 ## Botões de notificação (Telegram e e-mail) — ✅ no rodapé em 01/09
 
-- **Telegram:** link para `t.me/ControlePopularBOT` ("Receber no Telegram").
-  Hoje abre o chat com o bot; para o bot **enviar** novidades a quem pedir,
-  falta (a) criar canal/lista de inscritos e (b) o gatilho do home-pc
-  (`gatilho-remoto.mts`) broadcast para os inscritos — decisão do dono + item
-  de implementação.
+- **Telegram — decisão do dono (01/09):** inscrição PÚBLICA via /comecar no
+  privado do bot (qualquer pessoa entra/sai da lista; /parar sai). O bot
+  envia novidades para os inscritos quando o dono manda **/divulgar** no
+  chat do bot ou roda `scripts/divulgar-telegram.mts "mensagem"`.
+  **Comandos de edição (/sincronizar, /status, /tunel, /reiniciar, /ok,
+  /negar, /divulgar, /inscritos) continuam SÓ do chat do criador** — a
+  gate do gatilho nunca abre o público para edição. Lista em
+  `scripts/inscritos.json` (gitignored).
 - **E-mail:** "Receber novidades por e-mail" abre `mailto` pré-preenchido
   (double opt-in: o dono confirma antes de incluir em qualquer lista).
 - Ambas as inscrições, quando existirem de verdade, incrementam o contador
@@ -172,7 +175,7 @@ sem sair para /busca: digita e vê os resultados no dropdown.
 - [ ] Modelo de resposta testado em 1 pedido real.
 - [ ] (Opcional) Formulário Google (Tier 1).
 - [ ] (Opcional) `/api/pedido-dados` com SMTP automático (Tier 2).
-- [ ] (Opcional) Canal/lista de inscritos no Telegram + broadcast do gatilho.
+- [x] Inscrição pública no Telegram (/comecar) + broadcast (/divulgar e scripts/divulgar-telegram.mts); edição só do criador — 01/09.
 
 ## Modelo de resposta pronto
 
