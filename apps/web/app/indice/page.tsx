@@ -31,6 +31,10 @@ import FooterGlobal from "@/app/components/FooterGlobal";
  * Entrada do formato wiki. Aponta para as frentes, cidades, temas
  * transversais e situacoes praticas. Cada card descreve o destino e leva
  * a uma pagina de indice ou de conteudo.
+ *
+ * ⟲ 02/09/2026, copy v6 (docs/planos/PLANO-COPY-VOZ.md): título,
+ * descrição e cabeçalho na voz nova — o índice é "o mapa", e cada porta
+ * leva ao número com a fonte ao lado. Estrutura e cards intactos.
  */
 
 const ICONES_FRENTE: Record<string, React.ReactNode> = {
@@ -43,9 +47,9 @@ const ICONES_FRENTE: Record<string, React.ReactNode> = {
 };
 
 export const metadata: Metadata = {
-  title: "Indice — Controle Popular",
+  title: "Índice — Controle Popular",
   description:
-    "Navegue por todas as frentes, cidades e temas do Controle Popular. Dados publicos reunidos e explicados.",
+    "Todas as frentes, cidades e temas do Controle Popular num mapa só — dado público com fonte, organizado do seu jeito de procurar.",
 };
 
 export default async function IndiceGlobal() {
@@ -117,10 +121,11 @@ export default async function IndiceGlobal() {
       className="mx-auto max-w-5xl px-4 py-8"
     >
       <header className="space-y-2">
-        <h1 className="font-display text-3xl font-bold">Indice do Controle Popular</h1>
+        <h1 className="font-display text-3xl font-bold">Índice do Controle Popular</h1>
         <p className="max-w-2xl text-text-soft">
-          Dados publicos sobre cidades, Congresso, Judiciario, meio ambiente e reparacao de
-          Brumadinho. Escolha por frente, cidade, tema ou situacao.
+          Tudo o que o portal vigia, organizado do seu jeito: por frente, por cidade, por
+          tema ou pelo momento em que você está. Escolha uma porta — todas levam ao número
+          com a fonte ao lado.
         </p>
       </header>
 
