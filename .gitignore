@@ -129,8 +129,6 @@ etl/betim/dados/sisema-fiscalizacao-barragens.json
 scripts/.gatilho-offset
 
 # Artefatos de coleta/upload local (rodadas de backfill e coleta diario): 
-
-
 # Artefatos de rodadas de coleta/upload (logs locais, batches de maquina)
 apps/web/_*.log
 apps/web/_run_*.bat
@@ -155,3 +153,20 @@ apps/web/public/api/v1/
 # Um PC que nao tem o arquivo usa deepseek por padrao (ver lib/assistente/
 # embeddings/provedores.ts).
 apps/web/data/ia-config.json
+
+# ── Adições de 01/09/2026 (organização de docs / higiene de git) ──────────
+
+# Saída bruta de coleta/ETL fora de apps/web (logs de máquina, não fonte)
+apps/logs/*.log
+docs/relatorios-automacao/logs/
+
+# Artefatos temporários de uma rodada — nunca fonte
+_tmp-*
+_tmp_*
+apps/web/_tmp-vale-page.html
+apps/web/.wrangler-dist/
+
+# Estado local de agentes (colibri/enxame e worktrees de sessão)
+.agents/
+.claude/manha/
+.claude/worktrees/
