@@ -79,6 +79,9 @@ export function baixarCsv<T extends Record<string, any>>(
   nomeArquivo: string
 ): void {
   if (typeof window === "undefined" || typeof document === "undefined") return;
+  // Contador público de downloads (PLANO-NAVEGACAO-E-NOTIFICACOES.md):
+  // beacon fogo-e-esqueça; falha não impede o download.
+  fetch("/api/contador?tipo=download", { method: "POST", keepalive: true }).catch(() => {});
 
   const conteudo = formatarCsv(colunas, linhas);
   const blob = new Blob([conteudo], { type: "text/csv;charset=utf-8;" });
