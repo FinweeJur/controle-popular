@@ -26,7 +26,7 @@
 ## Propósito
 
 Definir como automatizar a coleta de dados das cidades estratégicas do portal
-(27 capitais + 172 polos do interior = 201 municípios) reusando a esteira que
+(27 capitais + 172 polos do interior = 199 municípios) reusando a esteira que
 já existe, em vez de criar um orquestrador novo: **PicoClaw** monitora a saúde
 das fontes, **jcode** orquestra as rodadas e paraleliza por região, **Ollama**
 local faz o enriquecimento sem mandar dado para fora, e **DeepSeek** é o
@@ -39,7 +39,7 @@ agendadas (`rotina-local.mts`, `rotina-coletas.mts`, rotinas PowerShell e n8n).
 |---|---:|---|---|
 | Capitais + DF | 27 | semeadas (migration `0082`) | `PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md` |
 | Polos do interior | 172 | inventário pronto; seeds `0083-0087` pendentes | `apps/web/data/polos-interior-ibge.json` (gerado por `scripts/gerar-polos-interior.cjs` ao vivo da API do IBGE) |
-| **Total** | **201** | — | — |
+| **Total** | **199** | — | — |
 
 O que falta para os seeds dos polos, na ordem do
 [runbook-cidade-nova.md](../dominios/cidades/betim/runbook-cidade-nova.md):
@@ -73,7 +73,7 @@ proposta para a coleta automática:
 
 | Tier | Fontes | Escopo | Cadência proposta | Mecanismo |
 |---|---|---|---|---|
-| **0 — Federal (lote nacional)** | ComunicaBR, PNCP, Siconfi, Transferegov, SIGBM/ANM, SIRENEJud/CNJ, DATASUS/SIH | 1 sync nacional cobre as 201 cidades | mensal (ComunicaBR, SIRENEJud, SIH) / semanal (PNCP, Transferegov) | `rotina-local.mts` lê `etl-*.yml` (já é assim); fatias por cidade geradas no build |
+| **0 — Federal (lote nacional)** | ComunicaBR, PNCP, Siconfi, Transferegov, SIGBM/ANM, SIRENEJud/CNJ, DATASUS/SIH | 1 sync nacional cobre as 199 cidades | mensal (ComunicaBR, SIRENEJud, SIH) / semanal (PNCP, Transferegov) | `rotina-local.mts` lê `etl-*.yml` (já é assim); fatias por cidade geradas no build |
 | **1 — Padrão aberto por cidade** | Diários oficiais (SIGPub AMM-MG, DOM-PBH, órgão oficial), SAPL/Interlegis (>1.800 câmaras), CKAN de capitais | por cidade | diário (diários) / semanal (SAPL, CKAN) | coletores existentes (`sigpub.py`, `domweb.py`) + `coletar-cidade.mts` novo |
 | **2 — Fornecedores ERP** | Betha, Sonner/WebISS, Fiorilli, Aspec, IPM/Thema, SysSolution | 1 conector atende dezenas de cidades | semanal/mensal | conector por fornecedor, alimentado pelo `cidades-estrategicas.json` |
 | **3 — Customizado** | Portais legados, PDF escaneado | por cidade | — | **Degradação graciosa**: `camara_proposicoes: false` + lacuna declarada, nunca scraping ad-hoc |
@@ -112,7 +112,7 @@ por máquina rotulado com data e modelo (regra editorial do AGENTS.md).
 
 ## Componentes novos
 
-1. **`apps/web/data/cidades-estrategicas.json`** — catálogo das 201 cidades:
+1. **`apps/web/data/cidades-estrategicas.json`** — catálogo das 199 cidades:
    `id_municipio` (7 dígitos), `uf`, `regiao`, `datasus_6dig`, CNPJ de
    prefeitura e câmara, `camara_sistema`/`camara_coletor`, URLs de diário e
    SAPL. Derivado de `polos-interior-ibge.json` + seeds `0082-0087` + confere
