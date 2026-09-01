@@ -72,10 +72,10 @@ function paraCsv(itens: ItemBiblioteca[]): string {
       i.ati,
       i.titulo,
       i.data ?? "",
-      i.macro_categoria,
-      i.tags.join(" | "),
+      i.macro_categoria ?? "",
+      (i.tags ?? []).join(" | "),
       i.tipo,
-      i.temas.join(" | "),
+      (i.temas ?? []).join(" | "),
       i.origem ?? "",
       i.autoria ?? "",
       i.url,
@@ -171,11 +171,11 @@ export default function BibliotecaClient({ itens, tipos, temas, macros, tags, at
    * por "Saúde e ERSHRE" some com o Guaicuy inteiro e a tela dá a entender que
    * ele não publicou nada sobre o assunto — quando ele só não etiqueta.
    */
-  const comTema = useMemo(() => itens.filter((i) => i.temas.length > 0).length, [itens]);
+  const comTema = useMemo(() => itens.filter((i) => (i.temas?.length ?? 0) > 0).length, [itens]);
 
   const contagemMacro = useMemo(() => contar(itens.map((i) => i.macro_categoria)), [itens]);
-  const contagemTag = useMemo(() => contar(itens.flatMap((i) => i.tags)), [itens]);
-  const comTag = useMemo(() => itens.filter((i) => i.tags.length > 0).length, [itens]);
+  const contagemTag = useMemo(() => contar(itens.flatMap((i) => i.tags ?? [])), [itens]);
+  const comTag = useMemo(() => itens.filter((i) => (i.tags?.length ?? 0) > 0).length, [itens]);
 
   function exportarCsv() {
     const hoje = new Date().toISOString().slice(0, 10);
@@ -187,9 +187,9 @@ export default function BibliotecaClient({ itens, tipos, temas, macros, tags, at
     const filtrada = itens.filter((i) => {
       if (!atisAtivas.has(i.ati)) return false;
       if (tipo !== "todos" && i.tipo !== tipo) return false;
-      if (tema !== "todos" && !i.temas.includes(tema)) return false;
+      if (tema !== "todos" && !(i.temas ?? []).includes(tema)) return false;
       if (macro !== "todos" && i.macro_categoria !== macro) return false;
-      if (tag !== "todos" && !i.tags.includes(tag)) return false;
+      if (tag !== "todos" && !(i.tags ?? []).includes(tag)) return false;
       // Item sem data não some quando há filtro de período: sumir seria o
       // portal decidir que "não sei quando" é "fora do intervalo". Ele só é
       // excluído se a data existir e estiver fora.
@@ -198,13 +198,12 @@ export default function BibliotecaClient({ itens, tipos, temas, macros, tags, at
       if (!termo) return true;
       return (
         semAcento(i.titulo).includes(termo) ||
-        semAcento(i.tipo).includes(termo) ||
-        semAcento(i.macro_categoria).includes(termo) ||
-        i.tags.some((t) => semAcento(t).includes(termo)) ||
-        semAcento(i.origem ?? "").includes(termo) ||
-        semAcento(i.autoria ?? "").includes(termo) ||
-        i.temas.some((t) => semAcento(t).includes(termo)) ||
-        i.colecoes.some((c) => semAcento(c).includes(termo))
+        (i.resumo && semAcento(i.resumo).includes(termo)) ||
+        (i.autoria && semAcento(i.autoria).includes(termo)) ||
+        (i.macro_categoria && semAcento(i.macro_categoria).includes(termo)) ||
+        (i.temas ?? []).some((t) => semAcento(t).includes(termo)) ||
+        (i.tags ?? []).some((t) => semAcento(t).includes(termo)) ||
+        (i.colecoes ?? []).some((c) => semAcento(c).includes(termo))
       );
     });
     const copia = [...filtrada];
@@ -562,9 +561,9 @@ function ItemDaBiblioteca({
         {item.origem ? ` · ${item.origem}` : ""}
         {item.autoria ? ` · ${item.autoria}` : ""}
       </p>
-      {(item.temas.length > 0 || item.colecoes.length > 0 || item.tags.length > 0) && (
+      {((item.temas?.length ?? 0) > 0 || (item.colecoes?.length ?? 0) > 0 || (item.tags?.length ?? 0) > 0) && (
         <div className="mt-2 flex flex-wrap gap-1.5">
-          {item.tags.map((t) => (
+          {(item.tags ?? []).map((t) => (
             <button
               key={`tag-${t}`}
               type="button"
@@ -575,7 +574,7 @@ function ItemDaBiblioteca({
               {t}
             </button>
           ))}
-          {[...item.temas, ...item.colecoes].map((t) => (
+          {[...(item.temas ?? []), ...(item.colecoes ?? [])].map((t) => (
             <button
               key={t}
               type="button"
