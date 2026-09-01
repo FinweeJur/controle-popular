@@ -4,11 +4,9 @@ import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import { metadataEditavel } from "@/lib/edicoes";
 import { ATI_BIBLIOTECA_LABEL } from "@/lib/paraopeba/biblioteca";
 import {
-  CASAMENTOS_ESTUDO_NOTICIA,
   obterCasamentosEstudoNoticia,
 } from "@/lib/paraopeba/estudo-e-noticia";
 import {
-  ESTUDO_AUSENTE_DO_ACERVO,
   obterEstudoAusenteDoAcervo,
   resumoIntegrado,
   sinteseIntegrada,
