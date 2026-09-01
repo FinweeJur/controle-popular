@@ -139,13 +139,23 @@ export const ZONAS: Zona[] = [
   {
     id: "ambiental",
     href: "/ambiental",
-    etiqueta: "Estadual · Meio ambiente em Minas Gerais",
-    nomeCurto: "Meio ambiente",
-    titulo: "Quem decide o que pode ser feito com o meio ambiente daqui",
+    // ⟲ 01/09/2026, A PEDIDO DO DONO: a frente passou a se chamar
+    // **ONSA — Observatório Nacional Socioambiental**. A rota não muda
+    // (`/ambiental` continua); muda a identidade pública, porque a frente
+    // deixou de ser só o meio ambiente de Minas: entrou o cadastro nacional
+    // de barragens (SIGBM/ANM), as 8.940 normas federais do MMA/CNDH, os
+    // processos ambientais do Judiciário (SIRENEJud/CNJ), o Acordo do Rio
+    // Doce (Mariana) e o Observatório Vale (B3/CVM).
+    etiqueta: "ONSA · Observatório Nacional Socioambiental",
+    nomeCurto: "ONSA",
+    titulo: "ONSA — o Observatório Nacional Socioambiental",
     // CÓPIA CORTADA PARA O QUE EXISTE, ao publicar a zona em 2026-08-09;
     // ATUALIZADA em 2026-08-11 conforme cada fase ganhou tela e dado real
     // (F3 COPAM, F4 licenciamento, F5 barragens, F6 legislação — as quatro
     // no ar no mesmo dia, migrations 0058/0064/0057+0049+0051/0065).
+    // ATUALIZADA em 01/09/2026 com a identidade ONSA: o acervo federal
+    // (MMA/CNDH) e o cadastro nacional de barragens entraram, e o texto
+    // passou a dizer isso em vez de anunciar só Minas.
     // Mesma disciplina de sempre: cortar pro que existe, atualizar quando
     // deixa de ser promessa.
     //
@@ -165,20 +175,23 @@ export const ZONAS: Zona[] = [
     //    critico` é a tela que responde "que lei protege isto", e ficava
     //    invisível no cartão que é o texto mais lido do portal.
     //
-    // O que NÃO mudou, de propósito: nenhum número aqui é promessa, e a
-    // legislação federal continua FORA — são 6.378 normas e todas estaduais.
-    // Enquanto o acervo do MMA não entrar, o texto não pode sugerir que a
-    // lei federal está aqui.
+    // Nenhum número aqui é promessa: os totais saem do censo das fontes e
+    // são conferidos no banco (454 reuniões do COPAM, 19.704 licenças, 6.378
+    // normas estaduais, 8.940 federais do MMA/CNDH, 909 barragens do
+    // SIGBM/ANM e ~1,46 milhão de processos ambientais do SIRENEJud/CNJ).
+    // Quem mexer num total tem de conferir o outro lado — a disciplina de
+    // sempre.
     descricao:
-      "Cinco coisas decidem o que pode ser feito com o ambiente de uma cidade, e todas ficam em lugares diferentes: o COPAM, que aprova ou barra empreendimento em reunião pública; a licença ambiental já concedida; a situação das barragens; a legislação estadual; e o que os tribunais já decidiram sobre rios, terra indígena, quilombola e comunidade tradicional. Aqui elas estão no mesmo lugar — 454 reuniões do COPAM, 19.704 licenças, 6.378 normas ambientais de Minas e 45 instrumentos e precedentes por tema de direito protegido.",
+      "Um observatório nacional do que a sociedade decide — e do que as empresas respondem — quando o assunto é ambiente. Em Minas, a pauta do COPAM (454 reuniões, item a item), as 19.704 licenças por município, setor e classe de risco, e as 6.378 normas estaduais. Do país inteiro, as 909 barragens do cadastro da ANM, as 8.940 normas federais do MMA e do CNDH e os processos ambientais que correm na Justiça (SIRENEJud/CNJ). E, em observação, os dois maiores desastres ambientais do país: o Acordo do Rio Doce (Mariana) e a Vale S.A. (B3/CVM).",
     resumo:
-      "COPAM, licença ambiental, barragem, legislação de Minas e precedente judicial por tema de direito — o que decide o ambiente da cidade, num lugar só.",
+      "Do COPAM às barragens do país inteiro, das normas de Minas às federais, da Justiça ao Rio Doce — o que decide o ambiente, num observatório só.",
     itens: [
       "COPAM: pauta de cada reunião, item a item, por município",
       "19.704 licenças ambientais, por município, setor e classe de risco",
-      "Barragens: FEAM e SNISB lado a lado, nunca somadas",
-      "6.378 normas ambientais de Minas, de três fontes que não conversam",
-      "Lei e precedente por tema: rios, indígena, quilombola, comunidade tradicional",
+      "909 barragens do cadastro nacional (SIGBM/ANM) e as de Minas, nunca somadas",
+      "6.378 normas de Minas e 8.940 federais (MMA/CNDH), numa busca só",
+      "Processos ambientais na Justiça, município a município (SIRENEJud/CNJ)",
+      "Mariana e a Vale: os dois maiores desastres, em observação",
     ],
     cor: "var(--cp-tertiary)",
     publicada: true,

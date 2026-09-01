@@ -37,7 +37,7 @@ O leitor está sob estresse — denúncia, remoção, barragem. Três consequên
 | Judiciário | `/judiciario` | Composição dos sete tribunais, vacância por idade e indicações do Senado |
 | Função Social da Terra | `/funcaosocialterra` (+ `/mapa`, `/alertas`) | Quanto do território não tem imóvel declarado no CAR, no globo 3D |
 | Paraopeba | `/paraopeba` | A reparação de Brumadinho: clipping, linha do tempo, auxílio, documentos do processo |
-| Ambiental | `/ambiental` | Pauta do COPAM, licenciamento, barragens, legislação e patrimônio cultural de MG |
+| ONSA | `/ambiental` | Observatório Nacional Socioambiental: pauta do COPAM, licenciamento, barragens do país, legislação, processos na Justiça, Mariana e a Vale |
 
 Rotas principais por frente, confirmadas no código:
 
@@ -46,7 +46,7 @@ Rotas principais por frente, confirmadas no código:
 - **Judiciário** — `/tribunais`, `/vagas`, `/indicacoes`, `/sirenejud` (processos ambientais do Judiciário, Brasil por UF e tribunal), `/metodologia`.
 - **Função Social da Terra** — `/mapa` (o globo 3D), `/alertas`.
 - **Paraopeba** — `/clipping` (radar de imprensa), `/linha-do-tempo`, `/auxilio`, `/documentos` (documentos do processo judicial por município), `/auditoria`, `/quem-atua`, `/entenda`, `/biblioteca`, `/execucao`.
-- **Ambiental** — `/copam`, `/licenciamento`, `/barragens`, `/legislacao`, `/direito-critico`, `/patrimonio-cultural`, `/judiciario` (processos ambientais por município de MG, SIRENEJud/CNJ).
+- **ONSA (Observatório Nacional Socioambiental)** — `/copam`, `/licenciamento`, `/barragens`, `/legislacao`, `/direito-critico`, `/patrimonio-cultural`, `/mariana` (Acordo do Rio Doce), `/judiciario` (processos ambientais por município de MG, SIRENEJud/CNJ) e `/paraopeba/vale` (Observatório Vale, B3/CVM).
 
 ## Principais features
 

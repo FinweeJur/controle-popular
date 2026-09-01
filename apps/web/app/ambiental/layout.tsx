@@ -24,9 +24,9 @@ import FooterGlobal from "@/app/components/FooterGlobal";
  * cidade nascer com slug "ambiental", o teste falha antes do build.
  */
 export const metadata: Metadata = {
-  title: "Controle Popular — Ambiental · O que o COPAM vai decidir",
+  title: "Controle Popular — ONSA · Observatório Nacional Socioambiental",
   description:
-    "Pauta das reuniões do COPAM antes de acontecerem, licenciamento ambiental de Minas Gerais por município, empresa e setor, situação das barragens e legislação ambiental federal e estadual. Portal independente.",
+    "Pauta das reuniões do COPAM, licenciamento ambiental de Minas Gerais por município, situação das barragens do país, legislação ambiental federal e estadual, o Acordo do Rio Doce e a Vale. Portal independente.",
 };
 
 export default function AmbientalLayout({
@@ -41,7 +41,7 @@ export default function AmbientalLayout({
               layout raiz). Aqui fica só o nome da zona como <a> cru: o <Link>
               da zona prefixaria e geraria /ambiental/ambiental. */}
           <a href="/ambiental" className="font-display text-lg font-bold">
-            Ambiental
+            ONSA
           </a>
           <div className="flex flex-1 flex-wrap items-center justify-end gap-2">
             <Link

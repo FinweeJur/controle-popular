@@ -36,9 +36,9 @@ import { carregarSirenejudMg } from "@/lib/ambiental/sirenejud-dados";
 const ZONA = ZONAS.find((z) => z.id === "ambiental")!;
 
 export const metadata: Metadata = {
-  title: "Meio ambiente de Minas Gerais: COPAM, licenciamento e barragens — Controle Popular",
+  title: "ONSA — Observatório Nacional Socioambiental — Controle Popular",
   description:
-    "Dados ambientais de Minas Gerais: reuniões do COPAM, licenciamentos, barragens, legislação, patrimônio cultural e estudos de impacto ambiental.",
+    "O Observatório Nacional Socioambiental: COPAM e licenciamento de Minas, barragens do país inteiro, normas federais, processos ambientais na Justiça, o Acordo do Rio Doce e a Vale.",
 };
 
 export default async function AmbientalHome() {

@@ -13,7 +13,7 @@ const topicos: Topico[] = [
   {
     href: "/ambiental",
     titulo: "Visao geral",
-    descricao: "Panorama ambiental de Minas Gerais: COPAM, licenciamento e barragens.",
+    descricao: "Panorama do Observatório Nacional Socioambiental: COPAM, licenciamento, barragens, Justiça, Mariana e a Vale.",
   },
   {
     href: "/ambiental/barragens",
@@ -68,9 +68,9 @@ const topicos: Topico[] = [
 ];
 
 export const metadata: Metadata = {
-  title: "Indice — Meio ambiente e mineracao — Controle Popular",
+  title: "Indice — ONSA · Observatório Nacional Socioambiental — Controle Popular",
   description:
-    "Navegue pelos dados ambientais de Minas Gerais: COPAM, licenciamento, barragens, legislacao, patrimonio cultural e estudos.",
+    "Navegue pelo Observatório Nacional Socioambiental: COPAM, licenciamento, barragens, legislacao, patrimonio cultural, estudos, Mariana e a Vale.",
 };
 
 export default function IndiceAmbiental() {
@@ -81,10 +81,10 @@ export default function IndiceAmbiental() {
       className="mx-auto max-w-5xl px-4 py-8"
     >
       <header className="space-y-2">
-        <h1 className="font-display text-3xl font-bold">Indice — Meio ambiente</h1>
+        <h1 className="font-display text-3xl font-bold">Indice — ONSA</h1>
         <p className="max-w-2xl text-text-soft">
-          Dados ambientais de Minas Gerais: licenciamento, barragens, COPAM,
-          legislacao, patrimonio cultural e estudos de impacto.
+          Observatório Nacional Socioambiental: licenciamento, barragens, COPAM,
+          legislacao, patrimonio cultural, estudos, Mariana e a Vale.
         </p>
       </header>
 

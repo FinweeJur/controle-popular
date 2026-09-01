@@ -76,7 +76,7 @@ const SECOES_MENU = [
   },
   {
     id: "ambiental",
-    titulo: "Meio ambiente",
+    titulo: "ONSA",
     href: "/ambiental",
     links: [
       { label: "COPAM", href: "/ambiental/copam" },
@@ -89,6 +89,7 @@ const SECOES_MENU = [
       { label: "Patrimônio cultural", href: "/ambiental/patrimonio-cultural" },
       { label: "Convênios", href: "/ambiental/convenios" },
       { label: "Estudos", href: "/ambiental/estudos" },
+      { label: "Rio Doce (Mariana)", href: "/ambiental/mariana" },
     ],
   },
   {
