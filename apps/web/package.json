@@ -18,14 +18,14 @@
     "lint": "eslint",
     "//test": "Duas suites, dois executores, e nao e por gosto: `lib/` e TypeScript e roda no vitest; o globo 3D e ES modules puros servidos como estatico de `public/`, sem build, e seus testes usam `node:test`. O `include` do vitest.config.ts e `lib/**/*.test.ts`, entao os testes do globo NAO eram executados por ninguem — 300+ linhas passando por nunca terem rodado, entre elas as que garantem que a exportacao nao vaza dado pessoal e nao solta camada ficticia num arquivo. `npm test` agora roda as duas.",
     "test": "npm run test:lib && npm run test:globo",
-    "test:lib": "vitest run",
+    "test:lib": "node scripts/testar-lib.mjs",
     "//test:globo": "O alvo e o diretorio `js/` inteiro, e nao globs por subpasta, por dois motivos. (1) Portabilidade: no Windows o npm executa todo script por `cmd.exe /d /s /c`, e o cmd NAO expande `*`. O node recebia a string literal e abortava com \"Could not find ...\\ui\\*.test.mjs\", deixando `npm test` — o gate obrigatorio de docs/worktrees.md — vermelho em checkout limpo da main. Em bash o mesmo comando passava, entao o defeito nunca esteve nos testes. Node 21+ resolve glob sozinho no `--test`; aqui o Node e 20.19, e diretorio e a forma portatil: o runner varre recursivo e roda so o que casa com o padrao de nome de teste. (2) Cobertura: o alvo era so `js/ui`, e em 13/08 um teste novo em `js/data/mesorregioes.test.mjs` nasceu fora do alcance dele — exatamente o caso descrito em `//test` acima, suite verde que ninguem executa. Alargar para `js/data` remendou aquele caso; a raiz encerra a serie, porque `js/core` e `js/layers` cairiam na mesma armadilha. Nada saiu de cobertura: os mesmos 8 arquivos, 121 testes. Um deles guarda a tabela que separa Vale do Jequitinhonha de Vale do Mucuri: divergir da origem em pipeline/regioes.py sem ninguem notar poe area na regiao errada, e com cara de certeza. ATUALIZADO em 16/08: nesta maquina (Node 22.23.0, Windows) `node --test <diretorio>` tenta requerir o diretorio como modulo em vez de varre-lo -- MODULE_NOT_FOUND. O glob como STRING funciona nas duas versoes de Node porque quem resolve o padrao e a propria engine do --test, nao o shell; o diretorio bare so funcionava no Node 20.19 do outro PC.",
     "//test:globo-2026-08-20": "FIM DA SERIE descrita acima. O glob-como-string da atualizacao de 16/08 foi escrito numa maquina com Node 22 e quebra no Node 20.19 desta aqui ('Could not find ...\\**\\*.test.mjs'), porque resolucao de glob no --test so existe a partir do Node 21. Resultado: `npm test`, o gate obrigatorio, ficou VERMELHO em checkout limpo da main e os testes do globo nao rodavam -- a falha vem depois do test:lib, que passa, entao passava batido. A descoberta agora e feita em JS por scripts/testar-globo.mjs (readdirSync recursivo a partir de js/), que se comporta igual em toda versao de Node e em todo shell, e falha de proposito se achar zero arquivo. Medido em 2026-08-20: 137 testes verdes (a doc ainda dizia 121).",
     "test:globo": "node scripts/testar-globo.mjs",
     "cf:build": "opennextjs-cloudflare build",
     "//cf:preview": "populateCache NAO eh opcional: sem ele o dir cdn-cgi/_next_cache nao existe nos assets, e toda rota SSG sob segmento dinamico com dynamicParams=false devolve 404/NoFallbackError. `build` sozinho nao popula.",
     "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare populateCache local && opennextjs-cloudflare preview",
-    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare populateCache remote && opennextjs-cloudflare deploy",
+    "cf:deploy": "opennextjs-cloudflare populateCache remote && opennextjs-cloudflare deploy",
     "//cidades": "Congela a lista de cidades ativas do Postgres num modulo do bundle. Entra no prebuild porque e a PRIMEIRA consulta de toda rota de cidade e o Worker nao alcanca o Postgres da maquina de build -- sem isso as dez rotas .din.ts de cidade respondem 500 antes de tocar em qualquer dado. Ver o cabecalho de scripts/gerar-cidades.mts.",
     "cidades": "tsx --env-file-if-exists=.env.local scripts/gerar-cidades.mts"
   },
@@ -57,7 +57,8 @@
     "tailwindcss": "^4",
     "tsx": "^4.23.1",
     "typescript": "^5",
-    "vitest": "^4.1.10",
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11",
     "wrangler": "^4.125.0"
   }
 }
