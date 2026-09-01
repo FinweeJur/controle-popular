@@ -13,6 +13,7 @@
 - [Regras gerais de coleta](#regras-gerais-de-coleta)
 - [CNJ e JUMA — litígio e jurisprudência nacional](#cnj-e-juma-litígio-e-jurisprudência-nacional)
 - [Biblioteca das ATIs do Paraopeba](#biblioteca-das-atis-do-paraopeba)
+- [Crimes socioambientais — biblioteca unificada (Mariana e Brumadinho)](#crimes-socioambientais-biblioteca-unificada-mariana-e-brumadinho)
 - [Auditoria AJRI (Brumadinho)](#auditoria-ajri-brumadinho)
 - [Lei Rouanet / SALIC — e os três jeitos que a API mente](#lei-rouanet-salic-e-os-três-jeitos-que-a-api-mente)
 - [Território e mineração](#território-e-mineração)
@@ -74,6 +75,16 @@ Este documento consolida o levantamento, a classificação e o estado operaciona
 ## Auditoria AJRI (Brumadinho)
 
 Portal Rails autenticado por cookie Devise (sem API; 401/403 = renove o cookie). Acervo: 467 documentos (391 Relatórios + 76 Notas Técnicas), 28/02/2019–31/07/2026, autor AECOM, 7 instrumentos jurídicos, 27 facetas de tema reduzidas a 25 (duas duplicatas sujas — normalizar por slug). Rate mínimo 2 s; PDF gerado sob demanda com marca-d'água (timeout 180). **A marca-d'água contém nome e CPF do solicitante: não publicar os 467 PDFs** — publicar catálogo + link é compatível com os Termos; espelho integral só em acesso restrito a pesquisadores.
+
+## Crimes socioambientais — biblioteca unificada (Mariana e Brumadinho)
+
+Biblioteca única de documentos dos dois rompimentos, em `/ambiental/crimes-socioambientais`. **Metadado + link, nunca o arquivo** (Lei 9.610/98) — mesma regra das ATIs. `desastre` é campo obrigatório do item; os dois casos nunca se misturam sem rótulo (regra da insinuação).
+
+- **Agregador:** `scripts/agregar-biblioteca-desastres.mts` funde o acervo das ATIs do Paraopeba (`apps/web/public/data/biblioteca-ati.json`, 645 itens, `desastre: brumadinho`) com os arquivos por fonte em `etl/betim/dados/desastres/*.json` e grava `apps/web/public/data/biblioteca-desastres.json` + `COBERTURA_BIBLIOTECA_DESASTRES`. A triagem de dado pessoal roda aqui (`triagem.ts::ehItemBloqueado`), uma cópia só da regra.
+- **ATIs de Mariana (AEDAS Rio Doce):** `scripts/coletar-biblioteca-ati-mariana.py` — 118 itens (01/09/2026) dos programas do Rio Doce (Aimorés, Barra Longa, Conselheiro Pena, Médio Rio Doce, Resplendor-Itueta, Vale do Aço) via wp-json, dedup por id (o mesmo documento pertence a vários projetos). Ficam de fora: Itatiaiuçu e Veredas Sol e Lares (vínculo com a bacia não confirmado).
+- **Radar de notícias:** `scripts/coletar-noticias-desastres.py` — título, veículo, data, microresumo (snippet do próprio feed) e link; nunca o corpo. Buscas: atingidos Bahia (pedido do dono), Rio Doce ES, Mariana, Brumadinho. `desastre` inferido por termo de lugar; item sem vínculo fica `null`.
+- **Pró-Brumadinho (Governo de MG):** acervo de 129 documentos do Acordo Judicial de Brumadinho em `/paraopeba/biblioteca` (`montar-biblioteca-probrumadinho.py`), com micro-resumos gerados por IA **rotulados** — fora da biblioteca unificada por decisão (regra local: resumo só da fonte; ver `docs/FONTES-PRO-BRUMADINHO.md`).
+- **Pendentes de sondagem:** CIF (cif.org.br inacessível na sondagem de 01/09), MPF, órgãos de MG (SEMAD/IGAM/FEAM) e ES (IEMA tem seção "Desastre do Rio Doce" + "Biblioteca On-Line"), e as ATIs de Mariana sem REST pública confirmada (Cáritas, CTA, programa Doce da ADAI).
 
 ## Lei Rouanet / SALIC — e os três jeitos que a API mente
 
