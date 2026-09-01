@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-09-01T11:17:28.241Z",
+  "geradoEm": "2026-09-01T14:14:45.793Z",
   "fontes": [
     {
       "id": "ati:aedas",
@@ -24,9 +24,15 @@
       "nome": "AEDAS - Assessoria Tecnica Independente - Bacia do Rio Doce (Mariana)",
       "licenca": "nao declarada - tratado como direitos reservados (Lei 9.610/98)",
       "itens": 118
+    },
+    {
+      "id": "cbh-doce",
+      "nome": "CBH-Doce - Comite da Bacia Hidrografica do Rio Doce",
+      "licenca": "documentos publicos de orgao colegiado de recursos hidricos; tratado como publicos",
+      "itens": 157
     }
   ],
-  "ficouDeFora": "ADAI (adaibrasil.org.br): 19 publicações, todas de Amazônia/Fundo Amazônia, zero com o programa 'paraopeba' — não tem documento desta bacia para catalogar. NACAB (Região 3): biblioteca de PDFs coletada (48 itens, 5 séries: Estudos e Relatórios, Reparação, Mobilização, Germinar, Nacab em Campo) — mas a página-fonte não declara data de publicação por item, só a pasta de upload (não confiável como data), então todo item do NACAB aqui tem `data: null`. Notícias das três ATIs: ficam fora desta biblioteca por decisão registrada em docs/FONTES-BIBLIOTECA-ATI.md. Programas da AEDAS fora da bacia do Doce: Itatiaiucu (135) e Veredas Sol e Lares (132) nao entram por vinculo com a bacia nao confirmado. ATIs de Mariana sem REST publica confirmada (Caritas, CTA, programa Doce da ADAI) ficam para a proxima rodada.",
+  "ficouDeFora": "ADAI (adaibrasil.org.br): 19 publicações, todas de Amazônia/Fundo Amazônia, zero com o programa 'paraopeba' — não tem documento desta bacia para catalogar. NACAB (Região 3): biblioteca de PDFs coletada (48 itens, 5 séries: Estudos e Relatórios, Reparação, Mobilização, Germinar, Nacab em Campo) — mas a página-fonte não declara data de publicação por item, só a pasta de upload (não confiável como data), então todo item do NACAB aqui tem `data: null`. Notícias das três ATIs: ficam fora desta biblioteca por decisão registrada em docs/FONTES-BIBLIOTECA-ATI.md. Programas da AEDAS fora da bacia do Doce: Itatiaiucu (135) e Veredas Sol e Lares (132) nao entram por vinculo com a bacia nao confirmado. ATIs de Mariana sem REST publica confirmada (Caritas, CTA, programa Doce da ADAI) ficam para a proxima rodada. 9 itens sem data extraivel do titulo ficaram com data: null (lacuna declarada). O wp-json responde 401; coleta por pagina.",
   "itens": [
     {
       "id": "ati:aedas-41899",
@@ -14914,6 +14920,2989 @@
       "url": "https://aedasmg.org/documento/caminhada-em-governador-valadares-por-indenizacao-justa-ja/",
       "fonteId": "ati-aedas-mariana",
       "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+    },
+    {
+      "id": "cbh-doce:12f847c0e97e",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº136, 23 de julho de 2026",
+      "data": "2026-07-23",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2026/08/DN-136_2026-Patrocinio-ao-ENCOB-2026-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.597271+00:00"
+    },
+    {
+      "id": "cbh-doce:cad41bda937c",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 135, de 02 de junho de 2026",
+      "data": "2026-06-02",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2026/06/DN-135_2026-Apoio-a-Semana-do-Fazendeiro-VF_-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.597271+00:00"
+    },
+    {
+      "id": "cbh-doce:b1070a9c57b7",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 134, de 02 de junho de 2026",
+      "data": "2026-06-02",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2026/06/DN-134_2026-CT_Instrumentos-de-Gestao-CBH-Doce_VF-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.597271+00:00"
+    },
+    {
+      "id": "cbh-doce:72e61d67efb3",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 133, de 9 de dezembro de 2025",
+      "data": "2025-12-09",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2026/01/DN-133_2025-Normas-e-Procedimentos-para-o-Processo-Eleitoral-2026-2030-OK.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:0ae3932423e6",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 132, de 9 de dezembro de 2025",
+      "data": "2025-12-09",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/12/DN-132_2025-Calendario-de-Reunioes-CBH-Doce-Exercicio-de-2026.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:a3355717cda1",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa, nº 131, de 9 de dezembro de 2025",
+      "data": "2025-12-09",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/12/DN-131_2025-PAP-2026-2030-ASSINADA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:dde29d20879d",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 130, de 9 de dezembro de 2025",
+      "data": "2025-12-09",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/12/DN-REFERENDADA-CBH-DOCE-130_2025-Alteracao_Minuta-CG-ANA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:84f50278e239",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 129, de 30 de outubro de 2025",
+      "data": "2025-10-30",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/12/DN-129_2025-Estabelece-Comissao-Eleitoral-2026-2030-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:afc0be8c6165",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 128, de 30 de outubro de 2025",
+      "data": "2025-10-30",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/11/DN-128_2025-Aprova-Minuta-CG-ANA-2026_2030-ASSINADO-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:395811178908",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 127, de 10 de março de 2025",
+      "data": "2025-03-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/03/DN-127_2025-Aprova-Prorrogacao-da-Delegacao-da-AGEVAP-CNRH-VF-ASSINADO.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:88430e7d7b1a",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 126, de 10 de dezembro de 2024",
+      "data": "2024-12-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DN-126_2024-Remanejamento-Rubrica-PAP-2024_2025.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:1daf1c5e4cf5",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 125, de 10 de dezembro de 2024",
+      "data": "2024-12-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DN-125_2024-Calendario-de-Reunioes-CBH-Doce-Exercicio-de-2025.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:41db1c2b8fbc",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 124, de 10 de dezembro de 2024",
+      "data": "2024-12-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-124_2024-Revisao-DN-Diretrizes-CTS-Doce_.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:70e1ae9eed0d",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº123, de 10 de dezembro de 2024",
+      "data": "2024-12-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-123_2024-REFERENDADA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:55d04a9b85df",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 122, de 10 de dezembro de 2024",
+      "data": "2024-12-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-122_2024-REFERENDADA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:80ec0e9a5d40",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº121, de 10 de dezembro de 2024",
+      "data": "2024-12-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-121_2024-REFERENDADA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:5951cf2bf387",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 120, de 10 de dezembro de 2024",
+      "data": "2024-12-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-120_2024-REFERENDADA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+    },
+    {
+      "id": "cbh-doce:6abd20aa3153",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 119, de 10 de dezembro de 2024",
+      "data": "2024-12-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-119_2024-REFERENDADA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+    },
+    {
+      "id": "cbh-doce:2228733861e8",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 118, de 20 de agosto de 2024",
+      "data": "2024-08-20",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2024/08/DELIBERACAO-NORMATIVA-CBH-DOCE-118_2024-VF-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+    },
+    {
+      "id": "cbh-doce:27bb047d7945",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 117, de 20 de março de 2024",
+      "data": "2024-03-20",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2024/05/DN-117_2023-Editais-de-Chamamento-Doce.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+    },
+    {
+      "id": "cbh-doce:5f4b0d00b908",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 115, de 21 de dezembro de 2023",
+      "data": "2023-12-21",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2024/01/DN-115_2023-PAP-2024-2025_CBH-Doce_21_12_2023_assinado-2-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+    },
+    {
+      "id": "cbh-doce:72c01973cf2b",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº114, de 31 de outubro de 2023",
+      "data": "2023-10-31",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2024/01/DN-114_2023-Alteracao-da-CTCI-CBH-Doce-DELIBERADA-2.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+    },
+    {
+      "id": "cbh-doce:503fc71ebd6f",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 112, de 31 de outubro de 2023",
+      "data": "2023-10-31",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2023/11/DN-112_2023-Aditivo-ao-CG-ANA-no-034-2020-REFERENDADA-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+    },
+    {
+      "id": "cbh-doce:c12fa0239409",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº111, de 31 de outubro de 2023",
+      "data": "2023-10-31",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2023/11/DN-111_2023-Renovacao-Escola-de-Projetos-REFERENDADA-Copiar-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+    },
+    {
+      "id": "cbh-doce:14ccd190eb1a",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH- Doce nº 110, de 31 de outubro de 2023",
+      "data": "2023-10-31",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2023/11/DN-110_2023-Custeio-Taxi-Senisi-FNCBHs-REFERENDADA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+    },
+    {
+      "id": "cbh-doce:9e03c0d7d98a",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº113, de 18 de agosto de 2023",
+      "data": "2023-08-18",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2024/01/DN113-2023_PIRH_ENQ-CBH-Doce-18-08-2023-3.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+    },
+    {
+      "id": "cbh-doce:40483f340891",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 109, de 14 de dezembro de 2022",
+      "data": "2022-12-14",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2022/12/DN-109_2022-Calendario-de-Reunioes-2021-CBH-Doce.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+    },
+    {
+      "id": "cbh-doce:c5053b1402fe",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 108, de 30 de setembro de 2022",
+      "data": "2022-09-30",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2022/10/DN-108_SET_2022-Aprova-TDR-P31.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+    },
+    {
+      "id": "cbh-doce:16da2267b9a8",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce n° 106, de 23 de junho de 2022",
+      "data": "2022-06-23",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2022/07/DN-106_JUN_2022-Aprova-minuta-do-Edital-de-Perdas.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+    },
+    {
+      "id": "cbh-doce:d9c904afb9fc",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce n° 105, de 23 de junho de 2022",
+      "data": "2022-06-23",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2022/07/DN-105_JUN_2022-Cria-o-GT-Sistema-de-Alerta-e-P31.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+    },
+    {
+      "id": "cbh-doce:39ab6626c331",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH-DOCE nº 104, de 17 de fevereiro de 2022",
+      "data": "2022-02-17",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2022/08/DN_104_APROVADA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+    },
+    {
+      "id": "cbh-doce:fe327813cab6",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce n° 103, de 17 de fevereiro de 2022",
+      "data": "2022-02-17",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2022/02/DN-103_FEV2021-Normas-e-Procedimentos-para-o-Processo-Eleitoral-2022-2026-2.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+    },
+    {
+      "id": "cbh-doce:28d111483609",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce n° 102, de 14 de dezembro de 2021",
+      "data": "2021-12-14",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2022/02/DN-102_2021-Criacao-da-Comissao-Eleitoral-CBH-Doce-ATUALIZADO.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+    },
+    {
+      "id": "cbh-doce:50cd6315bf6e",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce n° 101, de 14 de dezembro de 2021",
+      "data": "2021-12-14",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2021/12/DN-101_2021-Calendario-de-Reunioes-2021-CBH-Doce.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+    },
+    {
+      "id": "cbh-doce:65f69db17666",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce n° 99, de 14 de dezembro de 2021",
+      "data": "2021-12-14",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2022/01/DN-99_2021-Aprova-novo-R.I-CBH-Doce.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:219904a9e91f",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce n° 98, de 28 de outubro de 2021",
+      "data": "2021-10-28",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2021/11/DN-98_2021-Contratacao-Cadastro-Reserva-Escola-de-Projetos-.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:de873e7d2c91",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 97, de 28 de outubro de 2021",
+      "data": "2021-10-28",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2021/11/DN-97_2021-Definicao-de-Cenarios-para-a-execucao-da-iniciativa-Rio-Vivo-CBH-Doce.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:6fa9d47ce9d0",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 96, de 15 de julho de 2021",
+      "data": "2021-07-15",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2021/07/DN-96_2021-Criacao-de-Grupo-de-Trabalho-para-Revisao-do-RI-VF.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:7a8270a5b768",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 95, de 15 de julho de 2021",
+      "data": "2021-07-15",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2021/07/DN-95_2021-Prorrogacao-do-Mandato-VF.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:4413e005e8b5",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 94, de 15 de julho de 2021",
+      "data": "2021-07-15",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2021/07/DN-94_2021-Transferencia-de-Recursos-CBH-Doce-REFERENDADA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:83fb4a5c034a",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 93, de 13 de maio de 2021",
+      "data": "2021-05-13",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2021/05/DN-93_2021-Atualizacao-dos-valores-de-cobranca-na-Bacia-do-Rio-Doce-.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:bf5c53942aec",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 92, de 04 de março de 2021",
+      "data": "2021-03-04",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2021/04/DN-92_2021-Cria-o-Grupo-de-Trabalho-para-revisão-da-cobrança-REFERENDADA-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:33ac8664e4d6",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 91, de 10 de dezembro de 2020",
+      "data": "2020-12-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2021/01/DN-91_2020-Autorização-para-transferência-direta-de-recurso-e-bens-IBIO-x-AGEVAP.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:52bb505b0103",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 90, de 10 de dezembro de 2020",
+      "data": "2020-12-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2021/01/PAP-Consolidado-DN_ANEXO-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:47230d71548a",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa Ad Referendum CBH Doce nº 89, de 13 de novembro de 2020",
+      "data": "2020-11-13",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-89-Retificação-PAP-2016-2020-COMPLETA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:1663ead59327",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 88, de 10 de novembro de 2020",
+      "data": "2020-11-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-88-Cria-e-Compõe-o-Grupo-de-Acompanhento-do-Contrato-de-Gestão.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:906733172502",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 87, de 10 de novembro de 2020",
+      "data": "2020-11-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-87_2020-Cria-o-GT-para-a-elaboração-do-PAP-2021-2025-Recursos-da-União-REFERENDADA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:1716042de159",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 86, de 10 de novembro de 2020",
+      "data": "2020-11-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-86_AGOSTO_2020-Aprova-Minuta-de-CG-ANA-x-AGEVAP-REFERENDADA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+    },
+    {
+      "id": "cbh-doce:95ddb8a15e2f",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 85, de 10 de novembro de 2020",
+      "data": "2020-11-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-85_JULHO_2020-Adesão-ao-Protocolo-Observatório-das-Águas-REFERENDADA.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+    },
+    {
+      "id": "cbh-doce:772c0ae463a9",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce n° 84, de 23 de julho de 2020",
+      "data": "2020-07-23",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2020/07/DN-84_JULHO_2020-Realização-de-Plenária-Virtual-CBH-Doce-COVID-19-Referendada.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+    },
+    {
+      "id": "cbh-doce:0aba6810e73e",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 83, de 23 de julho de 2020",
+      "data": "2020-07-23",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2020/07/DN-83_ABRIL_2020-Indicação-AGEVAP-CNRH-Referendada-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+    },
+    {
+      "id": "cbh-doce:4357a13417e6",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa Ad Referendum CBH Doce nº 83, de 15 de abril de 2020.",
+      "data": "2020-04-15",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2020/04/DN-83_ABRIL_2020-Indicação-AGEVAP-CNRH-ad-referendum.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+    },
+    {
+      "id": "cbh-doce:186a16c849c6",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce n° 82, de 10 de dezembro de 2019",
+      "data": "2019-12-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2022/05/DN-82_DEZ2019-Cria-o-Grupo-de-Revisao-do-PIRH.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+    },
+    {
+      "id": "cbh-doce:76c3401fbc44",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH – Doce n° 81, de 10 de dezembro de 2019",
+      "data": "2019-12-10",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2019/12/DN-081_DEZ-2019-Atualização-PAP-Doce-2020-com-ANEXO.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+    },
+    {
+      "id": "cbh-doce:dd4447a97d47",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH – Doce ad referendum n° 80/2019, de 29 de novembro de 2019",
+      "data": "2019-11-29",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2019/12/DN-80_OUT2019-Aprova-Errata-01-Edital-Nova-Agencia-ad-referendum.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+    },
+    {
+      "id": "cbh-doce:5b0efadf2861",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 79, de 31 de outubro de 2019",
+      "data": "2019-10-31",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2019/11/DN-79_OUT2019-Aprova-Edital-Nova-Agencia.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+    },
+    {
+      "id": "cbh-doce:1f646e8c8963",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 78, de 31 de outubro de 2019",
+      "data": "2019-10-31",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2024/03/DN-78_OUT2019-ATUALIZADA-em-28-02-2024_assinado-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+    },
+    {
+      "id": "cbh-doce:8361c0258783",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 77, de 20 de agosto de 2019",
+      "data": "2019-08-20",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2019/08/DN-77_AGO2019-Normas-e-Procedimentos-para-eleição-diretoria-executiva-2019-2021.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+    },
+    {
+      "id": "cbh-doce:eb4b62c9b6d5",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa ad Referendum CBH Doce nº 76, de 06 de maio de 2019",
+      "data": "2019-05-06",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2019/07/DN-76_MAI2019-ad-referendum-Aprova-Estudo-de-Convergência-Fundação-Renova.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+    },
+    {
+      "id": "cbh-doce:654e6b662510",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 75, de 16 de abril de 2019",
+      "data": "2019-04-16",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2019/04/Deliberação-75-Aprova-TDR-para-revisão-PIRH-e-enquadramento.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+    },
+    {
+      "id": "cbh-doce:835966a6f998",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 74, de 06 de dezembro de 2018",
+      "data": "2018-12-06",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2018/12/Deliberação-74-Antecipação-de-Recursos-P-61-CBH-Doce.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+    },
+    {
+      "id": "cbh-doce:3271ab1075a2",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 73, de 06 de dezembro de 2018",
+      "data": "2018-12-06",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2018/12/Deliberação-73-Define-interpretação-para-o-conceito-de-diária-previsto-da-DN-68_2018.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+    },
+    {
+      "id": "cbh-doce:e86863d05a7c",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 72, de 05 de setembro de 2018",
+      "data": "2018-09-05",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2018/09/Deliberação-72-Estabelece-Normas-e-Procedimentos-para-o-Processo-Eleitoral-Complementar-2017-2021.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+    },
+    {
+      "id": "cbh-doce:c154092cf2ef",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 71, de 21 de agosto de 2018",
+      "data": "2018-08-21",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2018/11/Deliberação-71-Aprova-Proposta-de-SGIRS-Doce.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+    },
+    {
+      "id": "cbh-doce:7de267812af8",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 70, de 12 de junho de 2018",
+      "data": "2018-06-12",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2018/07/Deliberação-70-Comissão-Eleitoral-para-processo-complementar-2017-2021.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+    },
+    {
+      "id": "cbh-doce:74d525879e85",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 69, de 12 de junho de 2018",
+      "data": "2018-06-12",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2018/07/Deliberação-69-Mecanismos-e-Valores-de-Cobrança-2018.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+    },
+    {
+      "id": "cbh-doce:40bdbc75ecaa",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Moção CBH Doce nº 01 de 12 de junho de 2018",
+      "data": "2018-06-12",
+      "tipo": "Moção",
+      "tipoOrigem": "Moção",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://www.cbhdoce.org.br/wp-content/uploads/2019/10/Moção-nº-01_2018-Cobrança-no-ES-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+    },
+    {
+      "id": "cbh-doce:213ee00a87a9",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 68, de 25 de abril de 2018",
+      "data": "2018-04-25",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2018/04/Deliberação-68-Define-normas-para-gastos-no-programa-P61.2-e-revoga-a-DN-nº-55.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+    },
+    {
+      "id": "cbh-doce:a890283b268f",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação ad referendum CBH-doce nº 67, de 31 de agosto de 2017",
+      "data": "2017-08-31",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Delibera%C3%A7%C3%A3o-67-Estabelece-Normas-e-Procedimentos-para-o-Processo-Eleitoral-2017-2021.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+    },
+    {
+      "id": "cbh-doce:a06a9ab04eb2",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 66, de 15 de agosto de 2017",
+      "data": "2017-08-15",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-66-Indica-representante-Conselho-Curador-Fundação-Renova_vf.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+    },
+    {
+      "id": "cbh-doce:fdccb19004f7",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 65, de 15 de agosto de 2017",
+      "data": "2017-08-15",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-65-CBH-Doce-Comissão-Eleitoral-2017-2021_vf.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+    },
+    {
+      "id": "cbh-doce:ae7d6749d77a",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 64, de 15 de agosto de 2017",
+      "data": "2017-08-15",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2018/08/Deliberação-64-Define-normas-para-participação-no-ENCOB.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+    },
+    {
+      "id": "cbh-doce:4637bbcda248",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Nº 63, de 15 de agosto de 2017",
+      "data": "2017-08-15",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-63-Processo-Eleitoral-CBH-Doce-2013-2017_vf.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+    },
+    {
+      "id": "cbh-doce:e0c1004aa37a",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação CBH Doce Nº 62, de 15 de agosto de 2017",
+      "data": "2017-08-15",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-62-Atribuições-da-Diretoria-Colegiada-do-CBH-Doce-Revoga-DN-40.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+    },
+    {
+      "id": "cbh-doce:0deea64d93cf",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação CBH Doce Nº 61, de 15 de agosto de 2017",
+      "data": "2017-08-15",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-61-Institui-CTI_CBH-Doce-Revoga-DN-29-e-17.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+    },
+    {
+      "id": "cbh-doce:0c1f8f947d06",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Nº 60, de 12 de junho de 2017",
+      "data": "2017-06-12",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-60-Aprova-terceiro-termo-aditivo-ANA-IBIO.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+    },
+    {
+      "id": "cbh-doce:61123f42cbba",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Nº 59, de 24 de março de 2017",
+      "data": "2017-03-24",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-59-Aprova-indicação-de-areas-nascentes-TTAC.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+    },
+    {
+      "id": "cbh-doce:eaea3b96dbe3",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Nº 58, de 24 de março de 2017",
+      "data": "2017-03-24",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-58-Indica-representantes-Conselho-Consultivo-da-Renova_vfinal.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+    },
+    {
+      "id": "cbh-doce:d043e588aa1b",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 55, de 24 de março DE 2017",
+      "data": "2017-03-24",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-55-Define-normas-para-gastos-no-programa-P61.2_vf.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+    },
+    {
+      "id": "cbh-doce:deea4e1fd9b6",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação ad referendum Nº 57, de 20 de dezembro de 2016",
+      "data": "2016-12-20",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-57-ad-referendum-Aprova-terceiro-termo-aditivo-ANA-IBIO.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+    },
+    {
+      "id": "cbh-doce:941d8a0d3a31",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação ad referendum Nº 56, de 21 de novembro de 2016",
+      "data": "2016-11-21",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-56-ad-referendum-Antecipaçao-de-recursos-P61.2-ANA-CBH-Santo-Antonio.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+    },
+    {
+      "id": "cbh-doce:7ba9ec8eb85f",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação ad referendum Nº 54, de 28 de outubro DE 2016",
+      "data": "2016-10-28",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-54-ad-referendum-Antecipaçao-de-recursos-P61.2-ANA-CBH-Suaçuí.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+    },
+    {
+      "id": "cbh-doce:9fedb1516260",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação ad referendum Nº 53, de 28 de outubro de 2016",
+      "data": "2016-10-28",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-53-ad-referendum-Antecipaçao-de-recursos-P61.2-ANA-CBH-Piranga.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+    },
+    {
+      "id": "cbh-doce:0b9532e5c003",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 52, de 14 de outubro de 2016",
+      "data": "2016-10-14",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-52-Realocação-de-recursos-P61.2-ANA-CBH-Doce.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+    },
+    {
+      "id": "cbh-doce:5930c3fbca0e",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Anexo Deliberação Normativa CBH-doce Nº 52, de 14 de outubro de 2016",
+      "data": "2016-10-14",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-52_Anexo_PAP_Doce_2016_2020_Alteração_Deliberação_48_2015-COMPLETO.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+    },
+    {
+      "id": "cbh-doce:7e264d5000eb",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa ad referendum CBH Doce Nº 51 de 16 de junho de 2016",
+      "data": "2016-06-16",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-051-Ad-Referendum-Aprova-Realocação-do-PAP.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+    },
+    {
+      "id": "cbh-doce:d4f9d73a1efe",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Anexo Deliberação Normativa ad referendum CBH Doce Nº 51 de 16 de junho de 2016",
+      "data": "2016-06-16",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-51_Anexo_PAP_Doce_2016_2020_Alteração_Deliberação_48_2015-COMPLETO.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+    },
+    {
+      "id": "cbh-doce:28c9e80cbd59",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 50 de 14 de abril de 2016",
+      "data": "2016-04-14",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-50-Define-normas-para-participação-no-ENCOB.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+    },
+    {
+      "id": "cbh-doce:7523c2d5ac4c",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 49 de 05 de fevereiro de 2016",
+      "data": "2016-02-05",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-49-Aprova-prorrogação-do-mandato-da-Diretoria-Executiva-2014-2016.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+    },
+    {
+      "id": "cbh-doce:20bfc243a3c6",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação ad referendum CBH Doce Nº 48, de 01 de dezembro de 2015",
+      "data": "2015-12-01",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-48-Institui-o-Plano-de-Aplicação-Plurianual-2016-2020.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+    },
+    {
+      "id": "cbh-doce:772626828ab1",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Anexo I – Deliberação ad referendum CBH Doce Nº 48, de 01 de dezembro de 2015",
+      "data": "2015-12-01",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-XX_Anexos_I_II_e_III_PAP_Doce_2016_2020_V4_Colegiada_30_11_15.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+    },
+    {
+      "id": "cbh-doce:fe7a4f30c020",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 47, de 20 de novembro de 2015",
+      "data": "2015-11-20",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-47-Aprova-segundo-termo-aditivo-ANA-IBIO-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+    },
+    {
+      "id": "cbh-doce:f6c2be0a6049",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 46, de 25 de junho de 2015",
+      "data": "2015-06-25",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2019/09/DN-46_JUN2015-Aprova-indicação-IBIO-como-delegatária.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+    },
+    {
+      "id": "cbh-doce:e717bd0d6fa5",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação AD Referendum Nº 45, de 18 de março de 2015",
+      "data": "2015-03-18",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-AD-Referendum-Nº-45-de-18-de-março-de-2015.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+    },
+    {
+      "id": "cbh-doce:873bb4df068f",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa Nº 44, de 18 de dezembro de 2014",
+      "data": "2014-12-18",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/DELIBERAÇÃO-Nº-44-CTGEC.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+    },
+    {
+      "id": "cbh-doce:2fe9408dcf0d",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 43, de 14 de agosto de 2014",
+      "data": "2014-08-14",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-43-Designa-Membros-do-Grupo-de-Acompanhamento-do-CG-72_2011.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+    },
+    {
+      "id": "cbh-doce:7db50f337897",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 42, de 14 de agosto de 2014",
+      "data": "2014-08-14",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-42-Altera-PAP-Doce-2012-a-2015-Final.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+    },
+    {
+      "id": "cbh-doce:a1bd0d2f267f",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 41, de 03 de abril de 2014",
+      "data": "2014-04-03",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-nº41-Mandato-Diretoria-CBH-Doce.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+    },
+    {
+      "id": "cbh-doce:2ceab98528ca",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 40, de 03 de abril de 2014",
+      "data": "2014-04-03",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-40-Atribuições-da-Diretoria-Colegiada.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+    },
+    {
+      "id": "cbh-doce:b199980479c3",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 39, de 17 de fevereiro de 2014",
+      "data": "2014-02-17",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-39-Normas-e-procedimentos-processo-complementar.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+    },
+    {
+      "id": "cbh-doce:4f84e3476db9",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH-doce Nº 38, de 06 de fevereiro de 2014",
+      "data": "2014-02-06",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-38_2014-GT-Processo-Complementar1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+    },
+    {
+      "id": "cbh-doce:09cdfd4a8fe0",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação ad referendum CBH Doce 37, de 19 de dezembro de 2013",
+      "data": "2013-12-19",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-37-Prorrogação-do-Mandato-2009-2013.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+    },
+    {
+      "id": "cbh-doce:6c20e4da1d56",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 36, de 25 de julho de 2013",
+      "data": "2013-07-25",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-36-CBH-Doce-Processo-Eleitoral-2013-2017.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+    },
+    {
+      "id": "cbh-doce:62f0140b5655",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 35, de 25 de julho de 2013",
+      "data": "2013-07-25",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-35-Estabelece-Normas-e-Procedimentos-para-o-Processo-Eleitoral-2013-2017.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+    },
+    {
+      "id": "cbh-doce:1c6f02f9c229",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 34, de 13 de dezembro de 2012",
+      "data": "2012-12-13",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-34-Designa-Membros-do-Grupo-de-Acompanhamento-do-CG-72_2011-CBH-Doce-13_12_12.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+    },
+    {
+      "id": "cbh-doce:d874cad579af",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 33, de 13 de Dezembro de 2012",
+      "data": "2012-12-13",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Delibera%C3%A7%C3%A3o-33-Grupo-de-Acompanhamento-do-CG-72_2011-CBH-Doce-13_12_12.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+    },
+    {
+      "id": "cbh-doce:fa1775823468",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Moção CBH Doce Nº 01, de 13 de dezembro de 2012",
+      "data": "2012-12-13",
+      "tipo": "Moção",
+      "tipoOrigem": "Moção",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://www.cbhdoce.org.br/wp-content/uploads/2014/09/Moção-001_2012.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+    },
+    {
+      "id": "cbh-doce:12f303ba111c",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 32, de 26 de Abril de 2012",
+      "data": "2012-04-26",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_32_Institui.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+    },
+    {
+      "id": "cbh-doce:08712450442b",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 31, de 24 de agosto de 2011",
+      "data": "2011-08-24",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_031.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+    },
+    {
+      "id": "cbh-doce:58da8e1c8a1b",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 30, de 24 de agosto de 2011",
+      "data": "2011-08-24",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_030.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+    },
+    {
+      "id": "cbh-doce:d8f16d2268a6",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 29, de 31 de março de 2011",
+      "data": "2011-03-31",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_029.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+    },
+    {
+      "id": "cbh-doce:030c0588eef2",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 28, de 31 de março de 2011",
+      "data": "2011-03-31",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_028.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+    },
+    {
+      "id": "cbh-doce:18d5cde0be3b",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 27, de 31 de março de 2011",
+      "data": "2011-03-31",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_027.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+    },
+    {
+      "id": "cbh-doce:1eec5d3f5933",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 27, de 31 de março de 2011 – Anexo",
+      "data": "2011-03-31",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_027_anexo.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+    },
+    {
+      "id": "cbh-doce:d58f519264e3",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 26, de 31 de março de 2011",
+      "data": "2011-03-31",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_026.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+    },
+    {
+      "id": "cbh-doce:133218e45d71",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Moção CBH Doce Nº 001, de 31 de março de 2011",
+      "data": "2011-03-31",
+      "tipo": "Moção",
+      "tipoOrigem": "Moção",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_001_2011.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+    },
+    {
+      "id": "cbh-doce:bb633788b6d5",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 24, de 14 de julho de 2010",
+      "data": "2010-07-14",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_024.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+    },
+    {
+      "id": "cbh-doce:26bfc3b609be",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 23, de 25 de junho de 2009",
+      "data": "2009-06-25",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_023.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+    },
+    {
+      "id": "cbh-doce:c53bfaa4f491",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 22, de 25 de junho de 2009",
+      "data": "2009-06-25",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_022.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+    },
+    {
+      "id": "cbh-doce:30d52b73fec1",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 21, de 25 de junho de 2009",
+      "data": "2009-06-25",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_021.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+    },
+    {
+      "id": "cbh-doce:efc19d019bdc",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 20, de 23 de outubro de 2008",
+      "data": "2008-10-23",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_020.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+    },
+    {
+      "id": "cbh-doce:7e9b7c3d0ab1",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 19, de 23 de outubro de 2008",
+      "data": "2008-10-23",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_019.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+    },
+    {
+      "id": "cbh-doce:33fda6e07e09",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Moção CBH Doce Nº 005, de 29 de março de 2007",
+      "data": "2007-03-29",
+      "tipo": "Moção",
+      "tipoOrigem": "Moção",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_005.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+    },
+    {
+      "id": "cbh-doce:33321b0fc16f",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Moção CBH Doce Nº 004, de 29 de março de 2007",
+      "data": "2007-03-29",
+      "tipo": "Moção",
+      "tipoOrigem": "Moção",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_004.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+    },
+    {
+      "id": "cbh-doce:d064bba1307b",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Moção CBH Doce Nº 003, de 29 de março de 2007",
+      "data": "2007-03-29",
+      "tipo": "Moção",
+      "tipoOrigem": "Moção",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_003.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+    },
+    {
+      "id": "cbh-doce:0a3bdc3d22a5",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Moção CBH Doce Nº 002, de 29 de março de 2007",
+      "data": "2007-03-29",
+      "tipo": "Moção",
+      "tipoOrigem": "Moção",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_002.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+    },
+    {
+      "id": "cbh-doce:8696878fde68",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Moção CBH Doce Nº 001, de 29 de março de 2007",
+      "data": "2007-03-29",
+      "tipo": "Moção",
+      "tipoOrigem": "Moção",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_001.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+    },
+    {
+      "id": "cbh-doce:37c01573383b",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Moção CBH Doce Nº 002, de 30 de março de 2006",
+      "data": "2006-03-30",
+      "tipo": "Moção",
+      "tipoOrigem": "Moção",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_002-2006.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:38.158587+00:00"
+    },
+    {
+      "id": "cbh-doce:73c7b6c67280",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 18, de 27 de dezembro de 2005",
+      "data": "2005-12-27",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_018.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+    },
+    {
+      "id": "cbh-doce:fb6a6de32006",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 18, de 27 de dezembro de 2005 – Anexo",
+      "data": "2005-12-27",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2019/09/DN-18_DEZ2005-ad-referendum-Aprova-TDR-Final-ANEXO.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+    },
+    {
+      "id": "cbh-doce:e4014cc1144a",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 17, de 13 de dezembro de 2005",
+      "data": "2005-12-13",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_017.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+    },
+    {
+      "id": "cbh-doce:2dc8cb2a4cc9",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 16, de 04 de outubro de 2005",
+      "data": "2005-10-04",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_016.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+    },
+    {
+      "id": "cbh-doce:d6a98f2e2c8e",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 15, de 25 de agosto de 2005",
+      "data": "2005-08-25",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_015.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+    },
+    {
+      "id": "cbh-doce:f02b953ef047",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 14, de 18 de agosto de 2005",
+      "data": "2005-08-18",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_014.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+    },
+    {
+      "id": "cbh-doce:2d9df05a0f74",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 13, de 09 de abril de 2005",
+      "data": "2005-04-09",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_013.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+    },
+    {
+      "id": "cbh-doce:db1daf8e3556",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 12, de 15 de dezembro de 2004",
+      "data": "2004-12-15",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_012.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+    },
+    {
+      "id": "cbh-doce:cf25af4ebc61",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 11, de 19 de outubro de 2004",
+      "data": "2004-10-19",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_011.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+    },
+    {
+      "id": "cbh-doce:480d15d3b33f",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 10, de 05 de outubro de 2004",
+      "data": "2004-10-05",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_010.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+    },
+    {
+      "id": "cbh-doce:7fe0be585a63",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 9, de 02 de setembro de 2004",
+      "data": "2004-09-02",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_009.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+    },
+    {
+      "id": "cbh-doce:108fdcdc329d",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 8, de 05 de agosto de 2004",
+      "data": "2004-08-05",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_008.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+    },
+    {
+      "id": "cbh-doce:81906ac74a50",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 7, de 05 de agosto de 2004",
+      "data": "2004-08-05",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_007.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+    },
+    {
+      "id": "cbh-doce:a1197bc961de",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 6 de 05 de agosto de 2004",
+      "data": "2004-08-05",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_006.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+    },
+    {
+      "id": "cbh-doce:05e3037f1890",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Moção CBH Doce Nº 01, de 05 de agosto de 2004",
+      "data": "2004-08-05",
+      "tipo": "Moção",
+      "tipoOrigem": "Moção",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_001-2004.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:38.158587+00:00"
+    },
+    {
+      "id": "cbh-doce:53259e5018c6",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 5, de 16 de abril de 2004",
+      "data": "2004-04-16",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_005.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+    },
+    {
+      "id": "cbh-doce:374ddbc45dde",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 4, de 16 de abril de 2004",
+      "data": "2004-04-16",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_004.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+    },
+    {
+      "id": "cbh-doce:33e970efe285",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 3, de 16 de abril de 2004",
+      "data": "2004-04-16",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_003.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+    },
+    {
+      "id": "cbh-doce:fe937ebd83e9",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 2, de 24 de outubro de 2003",
+      "data": "2003-10-24",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_002.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+    },
+    {
+      "id": "cbh-doce:61dee1972bd0",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce Nº 1, de 24 de outubro de 2003",
+      "data": "2003-10-24",
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_001.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+    },
+    {
+      "id": "cbh-doce:207a43de9e68",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "- 2021",
+      "data": null,
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://www.cbhdoce.org.br/wp-content/uploads/2024/01/Relacao-de-Termos-de-Colaboracao-Tecnica-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.597271+00:00"
+    },
+    {
+      "id": "cbh-doce:ed4970414475",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa nº 116, de 21 dedezembro de 2023",
+      "data": null,
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2024/01/8-DN-116_2023-Calendario-de-Reunioes-CBH-Doce-Exercicio-de-2024-ASSINADO.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+    },
+    {
+      "id": "cbh-doce:bd0a785a988a",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 107, de 23 junho de 2022",
+      "data": null,
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2022/10/DN-DOCE-107_JUN_2022-Aprova-processo-licitatorio-Produtora.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+    },
+    {
+      "id": "cbh-doce:c961c77aaf58",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Deliberação Normativa CBH Doce nº 100, de 14 dezembro de 2021",
+      "data": null,
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2022/08/DN_100_2021_APROVADA-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+    },
+    {
+      "id": "cbh-doce:de0a9d7cd291",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Anexo Deliberação Normativa CBH Doce n° 99 – Regimento Interno CBH Doce",
+      "data": null,
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2022/01/Regimento-Interno-CBH-Doce-Consolidado-Dez_2021-VIGENTE-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+    },
+    {
+      "id": "cbh-doce:14ccecdf96a6",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Anexo DN nº 80/2019 – ERRATA nº 01 – Edital de Seleção de Entidade Delegatária",
+      "data": null,
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2019/11/ERRATA-01-Edital-01_2019.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+    },
+    {
+      "id": "cbh-doce:bc862a0df347",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Anexo DN nº 79/2019 – Edital de Seleção de Entidade Delegatária",
+      "data": null,
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2019/11/Edital-Seleção-AGB-Plenária-CBH-Doce-31_10_2019.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+    },
+    {
+      "id": "cbh-doce:9e302df5e5a1",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Anexo – Deliberação Normativa nº 71/2018 -Sistema de Gerenciamento Integrado de Resíduos Sólidos na Bacia Hidrográfica do rio Doce",
+      "data": null,
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2018/11/Proposta-GT-Residuos-21.08.18-Versão-final-1.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+    },
+    {
+      "id": "cbh-doce:aa96bf25e4a0",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "ANEXO – Deliberação nº 59/2017 – NOTA TÉCNICA Nº 01/2017/IBIO",
+      "data": null,
+      "tipo": "Deliberação Normativa",
+      "tipoOrigem": "Deliberação Normativa",
+      "orgao": "CBH-Doce",
+      "esfera": "estadual",
+      "uf": "BR",
+      "tags": [
+        "bacia do rio doce"
+      ],
+      "resumo": null,
+      "url": "https://cbhdoce.org.br/wp-content/uploads/2018/05/Nota-Técnica-v.FINAL-ANEXOS-CONSOLIDADO.pdf",
+      "fonteId": "cbh-doce",
+      "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
     }
   ]
 }
