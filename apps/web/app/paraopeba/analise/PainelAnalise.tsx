@@ -103,9 +103,13 @@ function tituloLegivelPericia(nomeArquivo: string): string {
 type FiltroCobertura = "todas" | "lacuna" | "tres-fontes" | "so-auditoria";
 type Ordenacao = "fontes-desc" | "fontes-asc" | "titulo" | "ati-desc" | "pericia-desc";
 
-function valoresUnicosOrdenados(itens: ItemBiblioteca[], extrair: (i: ItemBiblioteca) => string[]): string[] {
+function valoresUnicosOrdenados(itens: ItemBiblioteca[], extrair: (i: ItemBiblioteca) => (string | undefined)[]): string[] {
   const set = new Set<string>();
-  for (const i of itens) for (const v of extrair(i)) set.add(v);
+  for (const i of itens) {
+    for (const v of extrair(i)) {
+      if (v) set.add(v);
+    }
+  }
   return [...set].sort((a, b) => a.localeCompare(b, "pt"));
 }
 
@@ -131,7 +135,7 @@ export default function PainelAnalise({
 
   const todosDocsAti = useMemo(() => eixos.flatMap((e) => e.atis.documentos), [eixos]);
   const macrosAti = useMemo(() => valoresUnicosOrdenados(todosDocsAti, (i) => [i.macro_categoria]), [todosDocsAti]);
-  const tagsAti = useMemo(() => valoresUnicosOrdenados(todosDocsAti, (i) => i.tags), [todosDocsAti]);
+  const tagsAti = useMemo(() => valoresUnicosOrdenados(todosDocsAti, (i) => i.tags ?? []), [todosDocsAti]);
 
   const filtrados = useMemo(() => {
     const termo = busca.trim() ? normalizar(busca.trim()) : "";
@@ -142,7 +146,7 @@ export default function PainelAnalise({
           ...e.atis,
           documentos: e.atis.documentos.filter((d) => {
             if (macroAti !== "todas" && d.macro_categoria !== macroAti) return false;
-            if (tagAti !== "todas" && !d.tags.includes(tagAti)) return false;
+            if (tagAti !== "todas" && !(d.tags ?? []).includes(tagAti)) return false;
             return true;
           }),
         },
@@ -412,7 +416,7 @@ export default function PainelAnalise({
                                     {item.macro_categoria}
                                   </span>
                                 )}
-                                {item.tags.length > 0 && (
+                                {(item.tags?.length ?? 0) > 0 && (
                                   <span className="ml-2 text-[.78em] text-text-soft/70">
                                     {item.tags.join(" · ")}
                                   </span>
