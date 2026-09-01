@@ -138,6 +138,7 @@ abaixo.
 | 34 | M11 — Presidio `--alta-confianca` na guarda | 🟡 | opcional, rule-only (sem modelos de ML), fallback como o validate-docbr; idem plano |
 | 35 | M9/M10 — changedetection.io e n8n em Podman | ✅ | **entregue em 31/08**: Podman 5.7.0 instalado no WSL2 (Ubuntu), `changedetection.io` (porta 5000) e `n8n` (porta 5678) com volumes persistentes em execução |
 | 36 | Crimes socioambientais — biblioteca unificada (Mariana e Brumadinho) | 🟢 | **01/09**: rota `/ambiental/crimes-socioambientais` com 763 docs (645 ATIs Paraopeba + 118 AEDAS Rio Doce), radar de notícias e coletor AEDAS Mariana; pendente CIF/MPF/MG/ES. Plano: [PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md](../planos/PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md) |
+| 37 | **Build quebrado por teste órfão** — `apps/web/lib/betim/diario.adversarial.test.ts` (d88f334, 31/08) importa `./diario` (fetchAtosDiario/fetchResumoDiario/fetchSerieDiarioPorAno) e a rota `prefeitura/diario/dados/[arquivo]/route`, que **nunca existiram em nenhum branch** (medido 01/09: `git log --all` sem rastro). O tsconfig de `apps/web` inclui `.test.ts` e o `next build` falha em erro de tipo → o próximo build no home-pc quebra. Fix: apagar o teste até a implementação fatiada existir, ou criar os módulos | `next build` no home-pc |
 
 ## Bloqueios
 
@@ -214,3 +215,4 @@ Classificação dos 13 planos, feita em 22/08 junto com as decisões acima:
 | `PLANO-GEOCODIFICACAO.md` | **ESPERANDO DADO** — plano escrito em 17/08; executa quando o monitoramento da Vale (item 22) tiver coleta |
 | `ROTEIRO-NEON-01-09.md` | **RUNBOOK** — executa em 01/09. ⚠️ O cabeçalho está escrito no passado ("a Neon voltou… em 01/09") e ainda não rodou; corrigir o tempo verbal antes que alguém leia como feito |
 | `deploy-github-pages.md` | **CONTINGÊNCIA, não fila** — o Cloudflare já serve o portal e o repositório é público (medido em 22/08); nada a executar (decisão 9) |
+
