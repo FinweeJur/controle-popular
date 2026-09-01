@@ -138,7 +138,7 @@ abaixo.
 | 34 | M11 — Presidio `--alta-confianca` na guarda | 🟡 | opcional, rule-only (sem modelos de ML), fallback como o validate-docbr; idem plano |
 | 35 | M9/M10 — changedetection.io e n8n em Podman | ✅ | **entregue em 31/08**: Podman 5.7.0 instalado no WSL2 (Ubuntu), `changedetection.io` (porta 5000) e `n8n` (porta 5678) com volumes persistentes em execução |
 | 36 | Crimes socioambientais — biblioteca unificada (Mariana e Brumadinho) | 🟢 | **01/09**: rota `/ambiental/crimes-socioambientais` com 936 docs (645 ATIs Paraopeba + 118 AEDAS Rio Doce + 157 CBH-Doce + 16 Fundo Brasil), radar de notícias e coletores AEDAS Mariana, CBH-Doce e Fundo Brasil; pendente CIF/MPF/MG/ES e novas fontes (ANATER, Sec-Geral, signatarios da repactuacao). Plano: [PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md](../planos/PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md) |
-| 37 | **Build quebrado por teste órfão** — `apps/web/lib/betim/diario.adversarial.test.ts` (d88f334, 31/08) importa `./diario` (fetchAtosDiario/fetchResumoDiario/fetchSerieDiarioPorAno) e a rota `prefeitura/diario/dados/[arquivo]/route`, que **nunca existiram em nenhum branch** (medido 01/09: `git log --all` sem rastro). O tsconfig de `apps/web` inclui `.test.ts` e o `next build` falha em erro de tipo → o próximo build no home-pc quebra. Fix: apagar o teste até a implementação fatiada existir, ou criar os módulos | `next build` no home-pc |
+| 37 | Build destravado | ✅ | **resolvido em 01/09** (`f50cc23`): o teste órfão `diario.adversarial.test.ts` (que referenciava módulos que nunca existiram em nenhum branch e quebrava o `next build`) foi removido. Rebuild de produção validado no home-pc (compilou, ~4.880 páginas). |
 
 ## Bloqueios
 
