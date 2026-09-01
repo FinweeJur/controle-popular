@@ -2,7 +2,7 @@
 
 > **Tipo:** INDICE
 > **Domínio:** global
-> **Última medição:** 2026-08-30
+> **Última medição:** 2026-09-01
 > **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [LEIA-PRIMEIRO.md](LEIA-PRIMEIRO.md), [GUIA-DE-DOCUMENTACAO.md](GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** índice, documentação, portal, frentes, planos, histórico, navegação

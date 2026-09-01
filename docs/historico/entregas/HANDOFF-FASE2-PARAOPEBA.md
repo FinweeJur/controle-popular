@@ -4,7 +4,7 @@
 > **Domínio:** paraopeba
 > **Última medição:** 2026-08-31
 > **Leitura estimada:** média (5–15 min)
-> **Relacionados:** [docs/01-produto/PRODUTO.md](01-produto/PRODUTO.md), [docs/02-estado/ESTADO.md](02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
+> **Relacionados:** [PRODUTO.md](../../01-produto/PRODUTO.md), [ESTADO.md](../../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** paraopeba, biblioteca, ati, brumadinho, classificacao, temas, auditoria
 
 ## Sumário
