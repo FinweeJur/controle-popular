@@ -13,6 +13,11 @@ import {
   tiposDaBiblioteca,
   type AtiBiblioteca,
 } from "@/lib/paraopeba/biblioteca";
+import {
+  bibliotecaProBrumadinho,
+  coberturaProBrumadinho,
+  fontesProBrumadinho,
+} from "@/lib/paraopeba/biblioteca-probrumadinho";
 import BibliotecaClient from "./BibliotecaClient";
 import { metadataEditavel } from "@/lib/edicoes";
 
@@ -36,16 +41,19 @@ import { metadataEditavel } from "@/lib/edicoes";
  * conta o array já triado.
  */
 export const metadata: Metadata = metadataEditavel("/paraopeba/biblioteca", {
-  title: "Biblioteca das assessorias — Paraopeba | Controle Popular",
+  title: "Biblioteca do Paraopeba — Controle Popular",
   description:
-    "Cartilhas, boletins, jornais, produtos do plano de trabalho, documentos técnicos e vídeos publicados pelas assessorias técnicas independentes da bacia do Paraopeba — com link para a fonte original de cada item.",
+    "Publicações das assessorias técnicas independentes da bacia do Paraopeba e documentos oficiais do Acordo Judicial de Reparação (portal Pró-Brumadinho, Governo de MG) — com link para a fonte original de cada item.",
 });
 
 export default async function BibliotecaPage() {
-  const [itens, cobertura, fontes] = await Promise.all([
+  const [itens, cobertura, fontes, itensPB, coberturaPB, fontesPB] = await Promise.all([
     bibliotecaAti(),
     coberturaBiblioteca(),
     fontesBiblioteca(),
+    bibliotecaProBrumadinho(),
+    coberturaProBrumadinho(),
+    fontesProBrumadinho(),
   ]);
   const tipos = tiposDaBiblioteca(itens);
   const temas = temasDaBiblioteca(itens);
@@ -54,6 +62,13 @@ export default async function BibliotecaPage() {
   const semColeta = cobertura.geradoEm === "";
 
   const atis = [...new Set(itens.map((i) => i.ati))].sort() as AtiBiblioteca[];
+
+  const tiposPB = tiposDaBiblioteca(itensPB);
+  const temasPB = temasDaBiblioteca(itensPB);
+  const macrosPB = macrosDaBiblioteca(itensPB);
+  const tagsPB = tagsDaBiblioteca(itensPB);
+  const atisPB = [...new Set(itensPB.map((i) => i.ati))].sort() as AtiBiblioteca[];
+  const temPB = itensPB.length > 0;
 
   return (
     <main id="conteudo-principal" tabIndex={-1} className="mx-auto max-w-4xl px-4 py-10 sm:px-8">
@@ -174,6 +189,113 @@ export default async function BibliotecaPage() {
             </p>
           </section>
         </>
+      )}
+
+      {/* ═══ ACERVO PRÓ-BRUMADINHO (GOVERNO DE MG) ═══ */}
+      {temPB && (
+        <section className="mt-14 border-t border-border pt-8" aria-labelledby="titulo-acordo">
+          <h2
+            id="titulo-acordo"
+            className="font-display text-[clamp(1.4em,3.2vw,1.9em)] leading-tight font-bold tracking-tight"
+          >
+            Documentos oficiais do Acordo
+          </h2>
+          <p className="mt-2 max-w-2xl text-[1.02em] text-text-soft">
+            <strong className="text-text">
+              {formatNumberBR(coberturaPB.publicados)} documentos
+            </strong>{" "}
+            do portal{" "}
+            <a
+              href="https://www.mg.gov.br/pro-brumadinho"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-primary underline underline-offset-2 hover:text-accent"
+            >
+              Pró-Brumadinho (Governo de MG) ↗
+            </a>
+            {coberturaPB.periodo.de && coberturaPB.periodo.ate
+              ? `, de ${coberturaPB.periodo.de.slice(0, 4)} a ${coberturaPB.periodo.ate.slice(0, 4)}`
+              : ""}
+            {" — "}legislação, deliberações do Comitê Gestor, termos, prestações de contas,
+            relatórios ambientais e artigos acadêmicos.
+          </p>
+
+          <div className="mt-5 rounded-2xl border border-border bg-surface-2 p-5 text-sm text-text-soft">
+            <p>
+              <strong className="text-text">Autoria diferente.</strong> O acervo acima é das
+              assessorias técnicas independentes; este é do{" "}
+              <strong className="text-text">Governo de MG e dos órgãos compromitentes</strong> do
+              Acordo Judicial. Autoria, finalidade e destinatário são diferentes — por isso aparecem
+              em seções separadas.
+            </p>
+            <p className="mt-3">
+              <strong className="text-text">Resumos gerados por IA.</strong> Quando um item traz
+              resumo, ele foi gerado por modelo de inteligência artificial a partir do texto
+              extraído do PDF oficial, com mascaramento prévio de dado pessoal. O texto oficial é
+              o documento no link.{" "}
+              {coberturaPB.comResumo < coberturaPB.publicados && (
+                <>
+                  {formatNumberBR(coberturaPB.publicados - coberturaPB.comResumo)} itens não têm
+                  resumo — o texto do PDF não pôde ser extraído (documento escaneado ou planilha).
+                </>
+              )}
+            </p>
+          </div>
+
+          <BibliotecaClient
+            itens={itensPB}
+            tipos={tiposPB}
+            temas={temasPB}
+            macros={macrosPB}
+            tags={tagsPB}
+            atis={atisPB}
+            atiLabel={ATI_BIBLIOTECA_LABEL}
+          />
+
+          <section className="mt-10 border-t border-border pt-6" aria-labelledby="titulo-fontes-pb">
+            <h3
+              id="titulo-fontes-pb"
+              className="font-display text-[clamp(1em,2vw,1.25em)] font-bold tracking-tight"
+            >
+              Fonte e método
+            </h3>
+            <ul className="mt-4 flex flex-col gap-3">
+              {fontesPB.map((f) => (
+                <li key={f.id} className="rounded-2xl border border-border bg-surface p-5 text-sm">
+                  <p className="font-display font-semibold text-text">
+                    {f.nome}{" "}
+                    <span className="font-normal text-text-soft">
+                      — {formatNumberBR(f.itens)} itens
+                    </span>
+                  </p>
+                  <p className="mt-1 text-xs text-text-soft">{f.regioes}</p>
+                  <p className="mt-2 text-text-soft">
+                    <strong className="text-text">Licença:</strong> {f.licenca}
+                  </p>
+                  <p className="mt-1 text-text-soft">
+                    <strong className="text-text">Coleta:</strong> {f.metodo}
+                  </p>
+                  <a
+                    href={f.site}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-block text-xs font-medium text-primary underline underline-offset-2 hover:text-accent"
+                  >
+                    {f.site} ↗
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 rounded-2xl border border-border bg-surface-2 p-5 text-sm text-text-soft">
+              <strong className="text-text">Fora do acervo:</strong>{" "}
+              {coberturaPB.ficouDeFora}
+            </p>
+            <p className="mt-3 text-xs text-text-soft">
+              Coleta de {formatDateBR(coberturaPB.geradoEm.slice(0, 10))}. O acervo não se
+              atualiza sozinho: ele muda quando o coletor roda e o site é reconstruído.
+            </p>
+          </section>
+        </section>
       )}
 
       <footer className="mt-16 border-t border-border pt-8 text-sm">

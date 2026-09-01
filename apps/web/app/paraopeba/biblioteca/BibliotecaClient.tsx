@@ -561,6 +561,16 @@ function ItemDaBiblioteca({
         {item.origem ? ` · ${item.origem}` : ""}
         {item.autoria ? ` · ${item.autoria}` : ""}
       </p>
+      {item.resumo && item.resumo.trim().length > 0 && (
+        <p className="mt-2 text-sm text-text-soft">
+          {item.resumo}
+          {item.resumo_origem === "modelo" && (
+            <span className="ml-2 inline-block rounded bg-surface-2 px-1.5 py-0.5 text-[.65em] font-medium text-text-soft">
+              resumo gerado por IA
+            </span>
+          )}
+        </p>
+      )}
       {((item.temas?.length ?? 0) > 0 || (item.colecoes?.length ?? 0) > 0 || (item.tags?.length ?? 0) > 0) && (
         <div className="mt-2 flex flex-wrap gap-1.5">
           {(item.tags ?? []).map((t) => (
