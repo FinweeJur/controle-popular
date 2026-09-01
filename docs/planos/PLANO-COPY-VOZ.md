@@ -5,12 +5,13 @@
 > **Última medição:** 2026-09-02
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [GUIA-DE-DOCUMENTACAO.md](../GUIA-DE-DOCUMENTACAO.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** copy, voz, rebranding, memoria historica, lutas populares, home, frentes, indice, cidades, acessibilidade, SEO
+> **Palavras-chave:** copy, voz, rebranding, memoria historica, lutas populares, MAB, Movimento Brasil Popular, campo popular, home, frentes, indice, cidades, acessibilidade, SEO
 
 ## Sumário
 
 - [Propósito](#propósito)
 - [Princípio de voz](#princípio-de-voz)
+- [Léxico do campo popular (MAB e MBP)](#léxico-do-campo-popular-mab-e-mbp)
 - [Mapa de sensibilidade](#mapa-de-sensibilidade)
 - [Mapa de princípios → capítulos](#mapa-de-princípios--capítulos)
 - [Home (`/`) — capítulos](#home----capítulos)
@@ -21,13 +22,14 @@
 
 ## Propósito
 
-Definir a voz do rebrand do portal: memória das lutas populares brasileiras contada com leveza — princípios, coragem, força, alegria e cultura — sem abrir mão de uma vírgula do rigor editorial do [AGENTS.md](/AGENTS.md). Este documento é a fonte única da copy nova; números aqui são **placeholders de binding** e devem vir de constantes medidas, nunca digitados à mão.
+Definir a voz do rebrand do portal: memória das lutas populares brasileiras contada com leveza — princípios, coragem, força, alegria e cultura — na gramática do campo popular (MAB e Movimento Brasil Popular), sem abrir mão de uma vírgula do rigor editorial do [AGENTS.md](/AGENTS.md). Este documento é a fonte única da copy nova; números aqui são **placeholders de binding** e devem vir de constantes medidas, nunca digitados à mão.
 
-A proposta amadureceu em três versões de tom, e as três ficam registradas porque a evolução é instrução:
+A proposta amadureceu em quatro versões de tom, e as quatro ficam registradas porque a evolução é instrução:
 
 1. **v1 — resistência e sarcasmo** — voltagem alta, sarcasmo contra o poder.
-2. **v2 — natural e leve** — humor só contra a burocracia (edital, comissão sem nome); removidas as piadas sobre forca, execuções e a linha que trivializava a Revolta dos Malês.
-3. **v3 — memória com alegria (esta)** — o eixo emocional sai de "luta contra a repressão" para "princípio que ficou"; entram o bloco de memória por cidade e a âncora das Diretas Já no capítulo de ação cidadã.
+2. **v2 — natural e leve** — humor só contra a burocracia; removidas as piadas sobre forca, execuções e a linha que trivializava a Revolta dos Malês.
+3. **v3 — memória com alegria** — o eixo emocional sai de "luta contra a repressão" para "princípio que ficou"; entram o bloco de memória por cidade e a âncora das Diretas Já.
+4. **v4 — léxico do campo popular (esta)** — a gramática do MAB e do MBP entra na copy: atingido como sujeito de direitos, "direito não é concessão", organização das maiorias, trabalho de base, controle popular. Ver a seção própria abaixo.
 
 ## Princípio de voz
 
@@ -39,21 +41,43 @@ Trilhos que não se cruzam, herdados do rebrand e do AGENTS.md:
 2. **Humor só sobre burocracia abstrata** — dialeto de edital, comissão que ninguém conhece pelo nome, requerimento de gabinete. Nunca sobre pessoas, grupos, empresas, lutas ou vítimas. Insinuação é dano, inclusive na voz.
 3. **Toda referência histórica termina em ferramenta real** — a estrutura mental de cada capítulo é *"o povo sempre fez assim → você tem isto aqui"*.
 
-## Mapa de sensibilidade
+## Léxico do campo popular (MAB e MBP)
 
-Decisões tomadas na revisão de tom, para consulta de quem editar a copy no futuro:
+Revisão feita em 02/09/2026 sobre notas, matérias e páginas institucionais dos dois movimentos (mab.org.br e brasilpopular.org). O que se importa é a **gramática** — como o campo popular nomeia dignidade, organização e direito —, não as bandeiras de campanha.
+
+**Do MAB (mab.org.br), o que entra:**
+
+- **"Atingido não é vítima: é sujeito de direitos."** O MAB registra que os atingidos "deixaram de ser vistos apenas como pessoas com problemas e sim como sujeitos políticos que devem ser ouvidos e respeitados". É a base do capítulo Paraopeba.
+- **"Não é concessão: é direito."** Na nota sobre a continuidade do auxílio emergencial (mar/2026): "a manutenção do auxílio emergencial não é uma concessão da empresa, mas sim um direito das populações atingidas". Casa 1:1 com "Reparação não é favor. É dívida."
+- **"Controle popular"** — a palavra de ordem histórica do MAB é "água e energia com soberania, distribuição da riqueza e controle popular". O nome do portal não é acaso: o manifesto agora fecha com "o controle é popular".
+- **"Reparação integral"** — presente na PNAB (Lei 14.755/2023) e na campanha dos 7 anos de Brumadinho ("É tempo de avançar por reparação integral e soberania popular", jan/2026). É também linguagem da lei ambiental (art. 14 da Lei 6.938/81), o que a torna segura para o portal.
+- **"Sem transparência e fiscalização independente, é impossível garantir que as medidas estejam sendo devidamente executadas"** — declaração do MAB reproduzida pela CUT. É, palavra por palavra, a razão de existir deste portal; entra como citação atribuída no capítulo Paraopeba.
+
+**Do MBP (brasilpopular.org), o que entra:**
+
+- **"A luta do povo é o nosso lugar"** — vira eco no capítulo de ação cidadã: a luta do povo ganhou um endereço novo.
+- **"Organizar as maiorias para transformar o país"** e o repertório de construção: **trabalho de base, exemplo pedagógico, combinação das formas de luta**. A copy traduz: "o trabalho de base continua — agora com planilha pública".
+- **"As transformações serão obra de milhões que lutam"** — alimenta o manifesto final.
+
+**O que deliberadamente NÃO entra, e por quê:**
+
+- **Slogans de campanha** ("Água e energia não são mercadorias!", palavras de ordem de ato) — o portal é independente, sem vínculo com governo, câmara, partido ou movimento; importar palavra de ordem faria a vitrine parecer filiada. A gramática entra; a bandeira, não.
+- **A palavra "crime" para Brumadinho** — MAB e CUT caracterizam o rompimento como "crime da Vale". A régua editorial do repo proíbe o portal de afirmar o que a fonte não sustenta em tela; a copy mantém "rompimento" com os fatos documentados. Quem quiser a caracterização do MAB a encontra no clipping da própria frente — o portal mostra, não conclui.
+- **Registro partidário e de conjuntura** (nomes de governantes, "classe trabalhadora" como vocativo) — fora do tom de um portal que qualquer vereador, de qualquer partido, precisa poder usar.
+
+**Nota de checagem:** a contagem de mortes de Brumadinho difere entre fontes — o portal usa [270]; notas do MAB e da CUT usam 272. O número na tela segue a constante do portal; a divergência merece registro na metodologia da frente Paraopeba.
+
+## Mapa de sensibilidade
 
 | Tema | Regra |
 |---|---|
-| Malês e escravidão | A luta é tratada com reverência: organização, coragem, dignidade. Humor nunca toca a condição de escravizado; nenhuma piada de comparação de dificuldade ("era mais difícil") |
-| Brumadinho / Paraopeba | Zero humor, zero metáfora histórica, zero recurso retórico sobre as mortes. Registro de memória e cuidado; a esperança é a memória funcionando como instrumento |
+| Malês e escravidão | A luta é tratada com reverência: organização, coragem, dignidade. Humor nunca toca a condição de escravizado; nenhuma piada de comparação de dificuldade |
+| Brumadinho / Paraopeba | Zero humor, zero metáfora histórica. Registro de memória e cobrança na gramática do MAB: atingido é sujeito de direitos; reparação é direito, não concessão. "Crime" fica de fora (ver léxico) |
 | Tiradentes e Vila Rica | Sem cenas de execução na copy. Ficam o gesto (perguntar pelo ouro) e o princípio (a conta é de quem paga) |
 | Contestado, Palmares, Balaiada | Contados como resistência e legado; sem detalhe de massacre ou cerco |
-| Diretas Já | Memória alegre por excelência — praça cheia, rosto pintado. A derrota de 1984 é contada com a vitória de 1989, porque é o que sustenta a esperança factual |
+| Diretas Já | Memória alegre por excelência. A derrota de 1984 é contada com a vitória de 1989, porque é o que sustenta a esperança factual |
 
 ## Mapa de princípios → capítulos
-
-Cada capítulo da home carrega um **princípio em destaque** — uma linha curta que resume o que a memória deixou:
 
 | Capítulo | Memória | Princípio que ficou |
 |---|---|---|
@@ -61,9 +85,9 @@ Cada capítulo da home carrega um **princípio em destaque** — uma linha curta
 | 2 · Congresso | Malês, 1835 · Quebra-Quilos, 1874 | **A liberdade se organiza** — e a medida tem que ser de todos |
 | 3 · Judiciário | Inconfidência, 1789 · Chibata, 1910 | **Ninguém está acima da conta** |
 | 4 · Ambiental | Contestado, 1912–16 | **A terra é de quem nela vive** |
-| 5 · Paraopeba | Brumadinho, 2019 | **A memória não prescreve** |
+| 5 · Paraopeba | Brumadinho, 2019 · MAB | **Atingido é sujeito de direitos** — e a reparação é integral |
 | 6 · Terras | Palmares · Balaiada | **Comunidade é força** |
-| 7 · Ação cidadã | Diretas Já, 1984 | **A alegria também enche praça** |
+| 7 · Ação cidadã | Diretas Já, 1984 · MBP | **A alegria também enche praça** — e organizar as maiorias transforma |
 
 ## Home (`/`) — capítulos
 
@@ -73,7 +97,7 @@ Cada capítulo da home carrega um **princípio em destaque** — uma linha curta
 
 > **O DINHEIRO É SEU. A GENTE MOSTRA.**
 
-Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **TRANSPARÊNCIA SEM JURIDICQUÊS.**
+Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **CONTROLE POPULAR É O NÚMERO NA MÃO DO POVO.**
 
 **Subhead:**
 
@@ -108,7 +132,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **TRANSPARÊNCIA SEM JURIDI
 
 **Microensaio:**
 
-> Na madrugada de 25 de janeiro de 1835, os Malês mostraram a Salvador — e ao país inteiro — do que é capaz um povo organizado. A força deles virou lição: direito se conquista junto. Hoje, cada projeto que mexe com a sua vida aparece aqui classificado por direito ampliado ou restringido, e o ofício para pressionar quem decide sai pronto em PDF. Organização continua sendo o caminho — só que agora cabe no bolso.
+> Na madrugada de 25 de janeiro de 1835, os Malês mostraram a Salvador — e ao país inteiro — do que é capaz um povo organizado. A força deles virou lição: ninguém conquista direito sozinho, a gente conquista junto. Hoje, cada projeto que mexe com a sua vida aparece aqui classificado por direito ampliado ou restringido, e o ofício para pressionar quem decide sai pronto em PDF. Organização continua sendo o caminho — só que agora cabe no bolso.
 
 **Número protagonista:** `[5.562] proposições acompanhadas · classificação com régua pública`
 **CTA:** `Escrever para quem decide →`
@@ -138,31 +162,35 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **TRANSPARÊNCIA SEM JURIDI
 **Princípio:** `A TERRA É DE QUEM NELA VIVE · CONTESTADO, 1912–16`
 **Display:**
 
-> **A LICENÇA SAI. A FUMAÇA FICA.**
+> **A LICENÇA SAI. A FUMAÇÃO FICA.**
 
 **Microensaio:**
 
-> No Contestado, quem vivia da terra defendeu o direito de continuar nela. O pertencimento venceu o esquecimento: a história daqueles caboclos segue contada até hoje. A pergunta continua de pé — só que agora a decisão tem ata, data e nome de conselheiro: [454] reuniões do COPAM catalogadas, [19.704] licenças por classe de risco e as barragens no mapa. Decisão pública, a gente lê em público.
+> No Contestado, quem vivia da terra defendeu o direito de continuar nela. O pertencimento venceu o esquecimento: a história daqueles caboclos segue contada até hoje. A pergunta continua de pé — só que agora a decisão tem ata, data e nome de conselheiro: [454] reuniões do COPAM catalogadas, [19.704] licenças por classe de risco e as barragens no mapa. Decisão pública, a gente lê em público — e direito não entra em balanço.
 
 **Número protagonista:** `[454] reuniões · [19.704] licenças · [909] barragens`
 **CTA:** `Ver a pauta do COPAM →`
 
-### Capítulo 05 — Brumadinho (registro de cuidado)
+### Capítulo 05 — Brumadinho (gramática do MAB, registro de cuidado)
 
 **Kicker:** `CAPÍTULO 05 · REPARAÇÃO`
-**Princípio:** `A MEMÓRIA NÃO PRESCREVE · 25/01/2019`
+**Princípio:** `ATINGIDO É SUJEITO DE DIREITOS · 25/01/2019`
 **Display:**
 
 > **REPARAÇÃO NÃO É FAVOR. É DÍVIDA.**
 
 **Microensaio:**
 
-> Em 25 de janeiro de 2019, o rompimento da barragem em Brumadinho tirou [270] vidas. Cuidar da memória delas também se faz com número: o acordo de reparação movimenta [R$ 5,48 bilhões] em [26] municípios, e cada mês pago — ou não pago — fica registrado aqui, com documento. Porque o que se acompanha de perto não se deixa esquecer.
+> Quem é atingido por barragem não é vítima que espera: é sujeito de direitos que cobra. Em 25 de janeiro de 2019, o rompimento da barragem em Brumadinho tirou [270] vidas e marcou [26] municípios da bacia do Paraopeba. Desde então, a reparação virou lei — a Política Nacional de Direitos das Populações Atingidas por Barragens é de 2023 — e virou também cobrança organizada, mês a mês. Este capítulo é a parte da cobrança que cabe numa tela: o que o acordo pagou, o que atrasou, o que ainda falta, com documento e data. Reparação não é concessão: é direito — e direito se acompanha de perto para não virar esquecimento.
+
+**Citação de apoio (com atribuição):**
+
+> "Sem transparência e fiscalização independente, é impossível garantir que as medidas estejam sendo devidamente executadas." — MAB, sobre a reparação de Brumadinho
 
 **Número protagonista:** `[R$ 5,48 bi] acompanhados mês a mês · [467] fichas de auditoria`
 **CTA:** `Acompanhar a execução →`
 
-**Guarda de tom:** zero humor neste capítulo. A esperança aqui é a memória funcionando — nada além.
+**Guarda de tom:** zero humor neste capítulo. "Crime" não entra (regua contra insinuação) — o clipping da frente mostra quem usa a palavra; o portal mostra os fatos.
 
 ### Capítulo 06 — De quem é a terra
 
@@ -179,7 +207,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **TRANSPARÊNCIA SEM JURIDI
 **Número protagonista:** `[27] territórios quilombolas · [54 mil+] poligonais · vazio cadastral: taxa de erro [30]% ao lado do número`
 **CTA:** `Abrir o mapa →`
 
-### Capítulo 07 — A sua parte
+### Capítulo 07 — A sua parte (Diretas + gramática do MBP)
 
 **Kicker:** `CAPÍTULO 07 · AÇÃO CIDADÃ`
 **Princípio:** `A ALEGRIA TAMBÉM ENCHE PRAÇA · DIRETAS JÁ, 1984`
@@ -189,7 +217,7 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **TRANSPARÊNCIA SEM JURIDI
 
 **Microensaio:**
 
-> Em 1984, o Brasil encheu as praças de verde, amarelo e rosto pintado para pedir o voto direto — a maior festa cívica da nossa história. A emenda não passou naquela noite, mas o voto direto chegou cinco anos depois. Ficou a lição: quando o povo comparece, o caminho abre. Aqui o comparecimento é diário: que lei protege o seu caso, onde buscar ajuda, como pedir informação e como denunciar. Quatro portas, um endereço — e nem precisa sair de casa.
+> Em 1984, o Brasil encheu as praças de verde, amarelo e rosto pintado para pedir o voto direto — a maior festa cívica da nossa história. A emenda não passou naquela noite, mas o voto chegou cinco anos depois, porque maioria organizada transforma. A lição ficou: quando o povo comparece, o caminho abre. O trabalho de base continua — agora com planilha pública: que lei protege o seu caso, onde buscar ajuda, como pedir informação e como denunciar. Quatro portas, um endereço — e nem precisa sair de casa.
 
 **CTA:** `Agir →`
 
@@ -198,11 +226,12 @@ Alternativas: **PERGUNTAR SEMPRE FOI DE GRAÇA.** · **TRANSPARÊNCIA SEM JURIDI
 1. `✦ FISCALIZA ✦ OLHO VIVO ✦ O DINHEIRO É SEU ✦`
 2. `✦ PALMARES ✦ BALAIADA ✦ MALÊS ✦ QUEBRA-QUILOS ✦ DIRETAS ✦ VOCÊ ✦`
 3. `✦ VESPERATA ✦ CONGADO ✦ CLUBE DA ESQUINA ✦ O POVO CANTA ✦ O POVO CONTA ✦`
-4. `✦ TODO NÚMERO TEM FONTE ✦ TODA LACUNA TEM NOME ✦`
+4. `✦ DIREITO NÃO É FAVOR ✦ REPARAÇÃO É DÍVIDA ✦ CONTROLE É POPULAR ✦`
+5. `✦ TODO NÚMERO TEM FONTE ✦ TODA LACUNA TEM NOME ✦`
 
 ### Manifesto final da home
 
-> **DE VILA RICA A SALVADOR, DO SERTÃO DO QUEBRA-QUILOS À SERRA DA BARRIGA, DAS SACADAS DE DIAMANTINA AO ANHANGABAÚ LOTADO: O POVO DESTE PAÍS SEMPRE PERGUNTOU, SEMPRE ORGANIZOU — E SEMPRE ACHOU UM JEITO DE CANTAR NO MEIO DO CAMINHO. A PERGUNTA CONTINUA. A FESTA TAMBÉM. O POVO PERGUNTA. O NÚMERO NÃO MENTE. E O DINHEIRO CONTINUA SENDO SEU.**
+> **DE VILA RICA A SALVADOR, DO SERTÃO DO QUEBRA-QUILOS À SERRA DA BARRIGA, DAS SACADAS DE DIAMANTINA AO ANHANGABAÚ LOTADO: O POVO DESTE PAÍS SEMPRE PERGUNTOU, SEMPRE SE ORGANIZOU — E SEMPRE ACHOU UM JEITO DE CANTAR NO MEIO DO CAMINHO. A LUTA MUDOU DE ENDEREÇO: HOJE ELA TAMBÉM É PLANILHA, ATO CATALOGADO, OFÍCIO EM PDF. DIREITO NÃO É FAVOR, NÃO É CONCESSÃO, NÃO É PROMESSA. O POVO PERGUNTA. O NÚMERO NÃO MENTE. E O CONTROLE — O CONTROLE É POPULAR.**
 
 **CTA final:** `Entrar pela sua cidade →` · `Ler o manifesto completo →`
 
@@ -227,18 +256,16 @@ Cartão-carimbo no painel da cidade (chrome, não é card de dado), com três li
 
 **Betim — `/betim`** *(memória pendente de fonte local — publica só a cultura)*
 
-> Cidade forjada por metalúrgicas e metalúrgicos: gerações de organização do trabalho que fizeram de Betim um nome forte de Minas.
-> E no fim do dia, o congado e a festa do rosário lembram que força também é festa.
+> Candidata à linha de memória, quando fechar fonte no padrão do repo: **"Betim também é bacia do Paraopeba — a reparação passa por aqui"** (Santa Izabel, distrito às margens do rio, com famílias atingidas reportadas pelo Brasil de Fato em 24/01/2025).
+> No fim do dia, o congado e a festa do rosário lembram que força também é festa.
 
-**Araçuaí — `/aracuai`**
+**Araçuaí — `/aracuai`** *(memória pendente — publica só a cultura)*
 
-> O Vale do Jequitinhonha molda barro e memória: as ceramistas daqui são reconhecidas mundo afora.
-> A festa do rosário e as comunidades do Vale guardam uma história que segue viva — e visível no mapa do portal.
+> O Vale do Jequitinhonha molda barro e memória: as ceramistas daqui são reconhecidas mundo afora, e a festa do rosário segue de pé.
 
-**Itinga — `/itinga`** *(memória pendente de fonte local — publica só a cultura)*
+**Itinga — `/itinga`** *(memória pendente — publica só a cultura)*
 
-> No coração do Vale, Itinga guarda a tradição do rosário e da folia de reis — cultura que nunca pediu licença.
-> Terra de gente que segura a memória com as próprias mãos.
+> No coração do Vale, o rosário e a folia de reis seguem vivos — cultura que nunca pediu licença.
 
 **Guarda editorial:** marco histórico só publica com fonte local fechada; na dúvida, fica só a linha de cultura. Nunca inventar marco para enfeitar cartão.
 
@@ -252,7 +279,7 @@ O conteúdo rigoroso da página (IA declarada, metodologia, taxa de erro, lacuna
 >
 > **A GENTE NÃO PEDE CONFIANÇA. A GENTE MOSTRA A FONTE. TODO NÚMERO TEM PROCEDÊNCIA, TODA ESTIMATIVA MOSTRA O ERRO, TODA LACUNA TEM NOME. E QUANDO A GENTE ERRAR, A CORREÇÃO FICA NA PÁGINA.**
 >
-> **FAÇA PARTE DA FISCALIZAÇÃO. O DINHEIRO É SEU.**
+> **ORGANIZAÇÃO É O CAMINHO. A FONTE É A PROVA. FAÇA PARTE DA FISCALIZAÇÃO. O DINHEIRO É SEU.**
 
 ## Microcopy de estado
 
@@ -269,6 +296,7 @@ O conteúdo rigoroso da página (IA declarada, metodologia, taxa de erro, lacuna
 1. **Números entre colchetes** são placeholders de binding: ligar a constantes medidas com data (`COBERTURA_*`, `TAXA_ERRO_G0`, contagens do banco), nunca digitar à mão.
 2. **Zonas sem humor:** card de dado, ressalva colada ao número, estado de erro com fonte nomeada e o capítulo Paraopeba inteiro.
 3. **Memória histórica:** princípio e gesto, nunca cena de violência; todo fato com ano, nome ou lugar — o portal cobra procedência dos outros, e a copy cita a própria.
-4. **Bloco das cidades:** cultura pode ser celebrada solta; marco histórico só com fonte local fechada.
-5. **Forma:** frase display ≤ 6 palavras (Clash Display); caps só em manifesto e carimbos; corpo em General Sans; número em Tabular.
-6. **A ladainha dos marquees só cresce com fato fechado** — luta ou festa documentada, com data consolidada.
+4. **Léxico dos movimentos:** gramática sim, bandeira não. Slogan de campanha, caráter partidário e a palavra "crime" ficam fora; citação literal de movimento só com atribuição explícita.
+5. **Bloco das cidades:** cultura pode ser celebrada solta; marco histórico só com fonte local fechada.
+6. **Forma:** frase display ≤ 6 palavras (Clash Display); caps só em manifesto e carimbos; corpo em General Sans; número em Tabular.
+7. **A ladainha dos marquees só cresce com fato fechado** — luta ou festa documentada, com data consolidada.
