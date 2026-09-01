@@ -15,6 +15,8 @@
 - [Coletores da fase 1](#coletores-da-fase-1)
 - [A página /ambiental/crimes-socioambientais](#a-página-ambientalcrimes-socioambientais)
 - [Absorção da rota /paraopeba/biblioteca](#absorção-da-rota-paraopebabiblioteca)
+- [Expansão — novas fontes e páginas do ecossistema (01/09/2026)](#expansão-novas-fontes-e-páginas-do-ecossistema-01092026)
+- [Entregas finais — espelho, mapa de links, resumo e análise integrada](#entregas-finais-espelho-mapa-de-links-resumo-e-análise-integrada)
 - [Regras editoriais específicas](#regras-editoriais-específicas)
 - [Fases de execução](#fases-de-execução)
 - [Verificação](#verificação)
@@ -162,6 +164,46 @@ cliente recebe o array por fetch de asset:
 - Decisão do dono "abrir com o desastre em foco e ampliar clicando no outro"
   vale para a biblioteca unificada (chips por caso); a página do Paraopeba
   mantém o filtro por ATI/acervo que já tinha.
+
+## Expansão — novas fontes e páginas do ecossistema (01/09/2026)
+
+Escopo pedido pelo dono em 01/09/2026, após a biblioteca unificada no ar.
+
+### Novas fontes a pesquisar e coletar
+
+| Fonte | Endereço | Alcance medido 01/09 | O que procurar |
+|---|---|---|---|
+| Fundo Brasil de Direitos Humanos | fundobrasil.org.br | 200 (robots ok) | projetos/relatórios financiados ligados ao Rio Doce |
+| ANATER | anater.org.br | 200 (sem robots) | assistência técnica rural no âmbito da reparação |
+| Secretaria-Geral da Presidência | gov.br/secretariageral | 200 | papel na repactuação, documentos assinados |
+| Signatários da repactuação | — | pesquisa | União (ministérios), MG, ES, MPF, Defensorias, Samarco, Vale, BHP, CIF — quem assinou e onde publica |
+
+### Páginas novas do ecossistema
+
+Cada uma segue o padrão das cinco coisas (gráfico, cartões, CSV, filtro,
+ordenação) + fonte declarada por número + regra da insinuação:
+
+1. **BHP** — joint venture 50% da Samarco; ações na Inglaterra; documentos.
+2. **Samarco** — operadora da barragem do Fundão; acordos e documentos.
+3. **Fundação Renova** — entidade criada pós-desastre; execução da reparação.
+4. **Responsabilidade de cada ministério segundo a repactuação** — tabela com
+   ministério → responsabilidade prevista, com fonte de cada linha; nunca
+   inferência sem documento.
+5. **Ações internacionais (Inglaterra)** — corte inglesa, BHP Group UK.
+6. **Ações no STF e STJ** — processos principais, decisões, repercussão.
+
+## Entregas finais — espelho, mapa de links, resumo e análise integrada
+
+1. **Baixar todos os documentos que der** — espelho via DocVault → R2
+   (`controlepopular-fontes`), fora do repo, com varredura de CPF fail-closed;
+   nunca PDF no repositório.
+2. **Mapa de links** com resumo e fonte — a base da página de documentos; cada
+   link com o resumo da própria fonte (ou sem resumo, declarado).
+3. **Resumo final** — o estado da reparação de cada caso, com números vindos do
+   dado e lacunas declaradas.
+4. **Análise integrada** — cruzamento das vozes (empresas × governos × justiça
+   × atingidos), sem conclusão forçada: co-ocorrência não é causalidade (mesmo
+   cuidado de `/paraopeba/analise`).
 
 ## Regras editoriais específicas
 
