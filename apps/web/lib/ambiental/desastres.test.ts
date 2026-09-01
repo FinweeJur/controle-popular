@@ -65,17 +65,24 @@ describe("biblioteca unificada de desastres", () => {
 
   /**
    * "Linkar, não copiar". Um link direto para PDF faria a tela redistribuir
-   * obra de terceiro sem licença declarada. Exceção herdada do acervo das
-   * ATIs: o NACAB não publica página individual por item — sua biblioteca é
-   * uma listagem com links diretos aos PDFs, e lá a URL do arquivo é a única
-   * referência honesta (o portal continua não hospedando o arquivo).
+   * obra de terceiro sem licença declarada. Exceções herdadas: o NACAB não
+   * publica página individual por item — sua biblioteca é uma listagem com
+   * links diretos aos PDFs; o CBH-Doce idem (listagem de deliberações, sem
+   * página por item). Nos dois, a URL do arquivo no servidor da fonte é a
+   * única referência honesta (o portal continua não hospedando o arquivo).
    */
-  test("nenhum item aponta para o arquivo, só para a página (exceto NACAB)", () => {
+  test("nenhum item aponta para o arquivo, só para a página (exceto NACAB e CBH-Doce)", () => {
     const dados = ler();
+    const excecoes = (i: ItemDesastre) =>
+      (i.fonteId === "biblioteca-atis" && i.orgao === "NACAB") || i.fonteId === "cbh-doce";
     const arquivos = dados.itens.filter(
-      (i) => !(i.fonteId === "biblioteca-atis" && i.orgao === "NACAB") && /\.(pdf|docx?|xlsx?|pptx?|zip)(\?|#|$)/i.test(i.url)
+      (i) => !excecoes(i) && /\.(pdf|docx?|xlsx?|pptx?|zip)(\?|#|$)/i.test(i.url)
     );
     expect(arquivos).toEqual([]);
+    // Garante que a exceção não esvaziou o CBH-Doce por engano.
+    const cbh = dados.itens.filter((i) => i.fonteId === "cbh-doce");
+    expect(cbh.length).toBeGreaterThan(0);
+    expect(cbh.every((i) => i.url.startsWith("https://") && i.url.includes("cbhdoce.org.br"))).toBe(true);
   });
 
   test("a triagem rodou e nada que ela aponta foi publicado", () => {
