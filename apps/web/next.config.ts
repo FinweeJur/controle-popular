@@ -233,16 +233,23 @@ const nextConfig: NextConfig = {
    * entrar. Ver `docs/HANDOFF-PAYLOAD-LEGISLACAO.md`.
    */
   outputFileTracingExcludes: {
+    "*": [
+      "public/data/**/*",
+      "etl/betim/dados/**/*",
+      "public/terras/globo/dados/**/*",
+      "node_modules/@neondatabase/**/*",
+      "node_modules/docx/**/*",
+      "node_modules/pdf-lib/**/*",
+    ],
     "**/*": [
       "public/data/**/*",
       "etl/betim/dados/**/*",
       "public/terras/globo/dados/**/*",
-      "public/data/biblioteca-ati.json",
-      "public/data/biblioteca-pro-brumadinho.json",
-      "public/data/comunicabr-31.json",
-      "public/data/repasse-brumadinho-mg.json",
-      "public/data/risco-climatico.json",
-      "public/data/vale3-cotacoes.csv",
+    ],
+    "/api/*": [
+      "public/data/**/*",
+      "etl/betim/dados/**/*",
+      "public/terras/globo/dados/**/*",
     ],
     "/dados/comunicabr": ["public/data/comunicabr-31.json"],
     "/dados/comunicabr/[codigo]": ["public/data/comunicabr-31.json"],
