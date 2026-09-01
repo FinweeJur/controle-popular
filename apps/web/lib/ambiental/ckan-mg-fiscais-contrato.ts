@@ -1,4 +1,4 @@
-import dados from "../../../../etl/betim/dados/ckan-mg-fiscais-contrato.json";
+import { carregarJsonEtl } from "@/lib/server-only/json-etl";
 /**
  * Fiscais e gestores de contratos administrativos do Poder Executivo de Minas
  * Gerais, 2022–2026. ARQUIVO GERADO — não editar à mão.
@@ -64,7 +64,13 @@ export interface FiscalContratoMg {
   valorAtual: number;
 }
 
-export const FISCAIS_CONTRATO_MG: FiscalContratoMg[] = dados as FiscalContratoMg[];
+export function lerFiscaisContratoMg(): FiscalContratoMg[] {
+  try {
+    return carregarJsonEtl<FiscalContratoMg[]>("ckan-mg-fiscais-contrato.json");
+  } catch {
+    return [];
+  }
+}
 
 /** Importe ISTO em página de servidor, nunca o array (regra de payload). */
 export const COBERTURA_FISCAIS_CONTRATO = {

@@ -1,4 +1,4 @@
-import dados from "../../../../etl/betim/dados/ckan-mg-mariana.json";
+import { carregarJsonEtl } from "@/lib/server-only/json-etl";
 /**
  * Empenhos do Acordo Judicial de Reparação do Vale do Rio Doce (rompimento da
  * barragem de Fundão, Samarco/Vale, em Mariana — 2015), na parte executada
@@ -45,7 +45,13 @@ export interface EmpenhoAcordoRioDoce {
   valorPagoFinanceiro: number;
 }
 
-export const EMPENHOS_ACORDO_RIO_DOCE: EmpenhoAcordoRioDoce[] = dados as EmpenhoAcordoRioDoce[];
+export function lerEmpenhosAcordoRioDoce(): EmpenhoAcordoRioDoce[] {
+  try {
+    return carregarJsonEtl<EmpenhoAcordoRioDoce[]>("ckan-mg-mariana.json");
+  } catch {
+    return [];
+  }
+}
 
 /** Importe ISTO em página de servidor, nunca o array (regra de payload). */
 export const COBERTURA_ACORDO_RIO_DOCE = {

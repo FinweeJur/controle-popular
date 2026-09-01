@@ -1,4 +1,4 @@
-import dados from "../../../../etl/betim/dados/ckan-mg-ipsemg.json";
+import { carregarJsonEtl } from "@/lib/server-only/json-etl";
 /**
  * Contratos vigentes de prestadores de saúde credenciados ao IPSEMG (Instituto
  * de Previdência dos Servidores do Estado de Minas Gerais — assistência à
@@ -54,7 +54,13 @@ export interface ContratoIpsemgMg {
   fimVigencia: string | null;
 }
 
-export const CONTRATOS_VIGENTES_IPSEMG: ContratoIpsemgMg[] = dados as ContratoIpsemgMg[];
+export function lerContratosIpsemgMg(): ContratoIpsemgMg[] {
+  try {
+    return carregarJsonEtl<ContratoIpsemgMg[]>("ckan-mg-ipsemg.json");
+  } catch {
+    return [];
+  }
+}
 
 export const COBERTURA_CONTRATOS_VIGENTES_IPSEMG = {
   contratos: 6699,

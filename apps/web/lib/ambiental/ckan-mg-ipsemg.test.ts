@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import {
   COBERTURA_CONTRATOS_VIGENTES_IPSEMG,
-  CONTRATOS_VIGENTES_IPSEMG,
+  lerContratosIpsemgMg,
   IPSEMG_POR_RAMO_ATIVIDADE,
   IPSEMG_POR_REGIAO_ASSISTENCIAL,
 } from "./ckan-mg-ipsemg";
@@ -17,6 +17,8 @@ import {
  * isso (`redigirTextoLivre` no coletor) precisa continuar pegando.
  */
 describe("contratos vigentes do IPSEMG", () => {
+  const CONTRATOS_VIGENTES_IPSEMG = lerContratosIpsemgMg();
+
   test("6.699 contratos medidos em 21/08/2026 — número grande, cravado com data", () => {
     expect(CONTRATOS_VIGENTES_IPSEMG.length).toBe(6699);
     expect(COBERTURA_CONTRATOS_VIGENTES_IPSEMG.contratos).toBe(6699);

@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import {
   COBERTURA_ACORDO_RIO_DOCE,
-  EMPENHOS_ACORDO_RIO_DOCE,
+  lerEmpenhosAcordoRioDoce,
   RIO_DOCE_POR_ANO,
   RIO_DOCE_POR_INICIATIVA,
   RIO_DOCE_POR_ORGAO,
@@ -17,6 +17,8 @@ import {
  * `execucao-fgv.test.ts`.
  */
 describe("empenhos do Acordo Judicial de Reparação do Vale do Rio Doce", () => {
+  const EMPENHOS_ACORDO_RIO_DOCE = lerEmpenhosAcordoRioDoce();
+
   test("nenhum CPF sobrevive no campo documento — só CNPJ ou null (medido 21/08/2026: 37 CPF em 532 empenhos)", () => {
     for (const e of EMPENHOS_ACORDO_RIO_DOCE) {
       if (e.documento !== null) {
