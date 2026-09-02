@@ -18,6 +18,7 @@
 - [Parte 6 — Priorização por Esforço](#parte-6--priorização-por-esforço)
 - [Parte 7 — Riscos Editoriais e Ressalvas](#parte-7--riscos-editoriais-e-ressalvas)
 - [Parte 8 — Critérios de Aceite](#parte-8--critérios-de-aceite)
+- [Próxima Expansão — Conselhos Sociais e Canais de Ação Cidadã](#próxima-expansão--conselhos-sociais-e-canais-de-ação-cidadã)
 
 ---
 
@@ -668,3 +669,24 @@ Os critérios abaixo devem ser testados em linguagem de usuário e validados em 
 5. **Acessibilidade e Desempenho Arquitetural:**
    - *Cenário:* O painel sanfona é acessado por teclado (Tab, Enter, Espaço, Esc) e inspecionado quanto ao peso de payload.
    - *Critério:* O painel abre e fecha por teclado com foco gerenciado e suporte a leitores de tela (`aria-expanded`). O bundle de JavaScript gerado para a rota não ultrapassa o limite de 3 MiB gzip e não utiliza bibliotecas pesadas de gráficos externos (usando apenas SVG nativo).
+
+---
+
+## 🏛️ Próxima Expansão — Conselhos Sociais e Canais de Ação Cidadã
+
+O controle popular direto ganha força através dos conselhos de direitos, instâncias fundamentais de fiscalização e participação comunitária.
+Na próxima fase, o portal integrará o mapeamento e monitoramento ativo dos seguintes colegiados:
+
+### 👥 Conselhos Mapeados no Eixo Cidadão
+1. **Povos e Comunidades Tradicionais (PCTs):** quilombolas, indígenas, geraizeiros, vazanteiros e pescadores artesanais.
+2. **Direitos Humanos:** defesa de defensores socioambientais, memória, enfrentamento à violência e combate à discriminação.
+3. **Pessoa Idosa:** proteção social, garantia de convivência comunitária, saúde integral e acessibilidade.
+4. **Criança e Adolescente (CMDCA e Conselhos Tutelares):** proteção integral, combate à evasão escolar e ao trabalho infantil.
+5. **Defesa Social e Segurança Comunitária:** mediação de conflitos possessórios e segurança pública preventiva.
+
+### 📱 Dados que Serão Levantados e Exibidos
+- **Contatos Oficiais:** telefones institucionais, e-mails de ouvidoria/presidência e secretarias executivas.
+- **Endereço e Espaço Físico:** local de acolhimento ao público e de realização de reuniões plenárias abertas.
+- **Transparência de Atos:** links para atas, pautas, calendários e resoluções publicadas.
+- **Canais Digitais:** redes sociais ativas e canais de denúncia cidadã.
+- **Análise Cruzada:** correlação entre as decisões e pareceres dos conselhos e o orçamento executado pelas prefeituras e governos estaduais.
