@@ -75,6 +75,24 @@ Plugar a sidebar sanfona em `/diamantina`:
 4. `npm test` e `tsc` verdes; sem dependência nova no cliente. 🧪
 5. Nenhuma ponte aponta para rota 404 (link check). 🔗
 
+
+## 🚧 Progresso real (atualizado 18:05)
+
+A outra sessão (Antigravity) já implementou no main local:
+- ✅ `a24c081` — schema (lugares/dialogos), PainelDialogo, BlocoPovoGente,
+  rotas Nossos Rios/Serras/Territórios, Diamantina × Biribiri (17 arquivos).
+- ✅ `a5273fe` — expansão de diálogos para 6 cidades + capitais do Sudeste.
+- ✅ `b897dcd` — subfrentes **Nossos Animais** e **Nossa Gente** com destaque
+  na home do ONSA.
+
+⚠️ Commits ainda **não publicados no GitHub** (aguardando decisão do dono:
+quem publica).
+
+Pendências que seguem para mim/agente:
+1. Rodar `npm test` completo e `tsc` (verificação independente em curso).
+2. Link check das pontes (nenhuma rota 404).
+3. Publicar a Onda 1 no GitHub após aval.
+
 ## 📦 Depois da Onda 1
 
 - Onda 2 (voz e poesia): hub `/ambiental/nossos`, `BlocoPovoGente`,
