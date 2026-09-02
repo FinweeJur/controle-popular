@@ -31,6 +31,8 @@
 | 8 | **Controle Popular é o portal virtual criado com IA do ONSA** (Observatório Nacional Socioambiental). Entra no rebranding → `POSICIONAMENTO-ONSA-CONTROLE-POPULAR.md`. |
 | 9 | **Não esperar o retorno do dono:** seguir trabalhando e mandando avanços; considerar mensagens novas imediatamente. |
 | 10 | Em aberto: reconciliar o `main` local (ahead 14 / behind 30) com o GitHub — depende de aval (pergunta 3). |
+| 11 | **Modelo a usar daqui em diante: `ling 1t`** (comando `/model ling 1t` no jcode, provider `ling-1t` no config). Próximos commits: modelo no trailer como "jcode - ling 1t". |
+| 12 | **Git resolvido via WSL:** git do Windows ficou preso globalmente (outra sessão ativa). O git do WSL funciona; commits `a50e5d1`/`089f030` (intro Seu Nonô Alceu Dispor, script delegar-gemini, wrapper gh) já pushados ao GitHub via WSL + worktree limpo. Wrapper: `scripts/gh-credential-wsl.sh`. |
 
 ## 🗺️ Estado do repo (medido na sessão)
 
