@@ -7,6 +7,9 @@ import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import DataCard from "@/app/[municipio]/components/DataCard";
 import RankingVereadores from "@/app/[municipio]/components/charts/RankingVereadores";
 import IndiceRiscoDireitosCard from "@/app/[municipio]/components/IndiceRiscoDireitosCard";
+import { conselhosPorMunicipio } from "@/lib/conselhos/catalogo";
+import { obterPanoramaJudicial } from "@/lib/judiciario/jurisprudencia-clima-barragens";
+import { relatoriosPorMunicipio } from "@/lib/direitos-humanos/relatorios";
 import { climaDaCidade, contatosUteis, listarIndicadores, resumoContratosAtivos } from "@/lib/db/queries/betim";
 import { indicadoresRiscoDireitos } from "@/lib/db/queries/risco-direitos";
 import {
@@ -256,6 +259,10 @@ export default async function HomePage({
   const populacao = indicadores["populacao"];
   const outrosIndicadores = INDICATOR_LABELS.slice(1);
 
+  const conselhosLocais = conselhosPorMunicipio(cidade.nome);
+  const panoramaJudicial = obterPanoramaJudicial(cidade.nome, cidade.id_municipio);
+  const relatoriosLocais = relatoriosPorMunicipio(cidade.nome);
+
   return (
     <div>
       {/* HERO */}
@@ -495,6 +502,122 @@ export default async function HomePage({
             />
           </section>
         ) : null}
+
+        {/* CONTROLE SOCIAL, BACIAS E DIREITOS HUMANOS */}
+        <section className="rounded-2xl border border-border bg-surface-2 p-6 shadow-sm">
+          <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-border pb-4">
+            <div>
+              <span className="text-[.82em] font-bold uppercase tracking-wider text-primary">
+                Controle Cidadão & Território
+              </span>
+              <h2 className="mt-1 font-display text-xl font-bold">
+                Conselhos, Justiça Ambiental e Direitos Humanos em {cidade.nome}
+              </h2>
+            </div>
+            <a
+              href="/ambiental"
+              className="text-xs font-semibold text-primary hover:underline"
+            >
+              Explorar ONSA Meio Ambiente →
+            </a>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-3">
+            {/* CARD 1: CONSELHOS */}
+            <div className="flex flex-col justify-between rounded-xl border border-border bg-surface-1 p-4 shadow-sm">
+              <div>
+                <span className="text-xs font-bold uppercase text-teal-600 dark:text-teal-400">
+                  Participação Social
+                </span>
+                <h3 className="mt-1 font-display text-base font-semibold">
+                  Conselhos & Colegiados
+                </h3>
+                {conselhosLocais.length > 0 ? (
+                  <ul className="mt-2 space-y-1 text-xs text-text-soft">
+                    {conselhosLocais.slice(0, 3).map((c) => (
+                      <li key={c.id}>• <strong>{c.sigla}:</strong> {c.nome.slice(0, 42)}...</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-2 text-xs text-text-soft">
+                    Comitês de bacia hidrográfica, CODEMA e conselhos de controle social atuantes no município.
+                  </p>
+                )}
+              </div>
+              <a
+                href="/ambiental/conselhos"
+                className="mt-4 inline-block text-xs font-semibold text-teal-600 hover:underline dark:text-teal-400"
+              >
+                Ver conselhos e contatos oficiais →
+              </a>
+            </div>
+
+            {/* CARD 2: LITÍGIOS & CLIMA */}
+            <div className="flex flex-col justify-between rounded-xl border border-border bg-surface-1 p-4 shadow-sm">
+              <div>
+                <span className="text-xs font-bold uppercase text-indigo-600 dark:text-indigo-400">
+                  Judiciário Ambiental
+                </span>
+                <h3 className="mt-1 font-display text-base font-semibold">
+                  Processos & Litígios Climáticos
+                </h3>
+                {panoramaJudicial.sirenejudProcessos ? (
+                  <div className="mt-2 text-xs text-text-soft">
+                    <p>
+                      <strong>{formatNumberBR(panoramaJudicial.sirenejudProcessos.total)}</strong> processos ambientais no CNJ (comarca {cidade.nome}).
+                    </p>
+                    <p className="mt-1">
+                      {panoramaJudicial.acoesClimaticasJuma.length > 0
+                        ? `${panoramaJudicial.acoesClimaticasJuma.length} ação(ões) climática(s) do Portal Juma citam a cidade.`
+                        : "Teses de barragens e jurisprudência aplicável ao município."}
+                    </p>
+                  </div>
+                ) : (
+                  <p className="mt-2 text-xs text-text-soft">
+                    Acompanhamento de processos ambientais no SIRENEJud (CNJ) e litígios climáticos estratégicos.
+                  </p>
+                )}
+              </div>
+              <a
+                href="/ambiental/litigios-climaticos"
+                className="mt-4 inline-block text-xs font-semibold text-indigo-600 hover:underline dark:text-indigo-400"
+              >
+                Ver litígios climáticos e teses do TJMG →
+              </a>
+            </div>
+
+            {/* CARD 3: DIREITOS HUMANOS */}
+            <div className="flex flex-col justify-between rounded-xl border border-border bg-surface-1 p-4 shadow-sm">
+              <div>
+                <span className="text-xs font-bold uppercase text-blue-600 dark:text-blue-400">
+                  Proteção & Recomendações
+                </span>
+                <h3 className="mt-1 font-display text-base font-semibold">
+                  Relatórios CIDH, ONU & CNDH
+                </h3>
+                {relatoriosLocais.length > 0 ? (
+                  <ul className="mt-2 space-y-1 text-xs text-text-soft">
+                    {relatoriosLocais.slice(0, 2).map((r) => (
+                      <li key={r.id}>
+                        • <strong>{r.orgao}:</strong> {r.titulo.slice(0, 45)}...
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-2 text-xs text-text-soft">
+                    Relatórios oficiais sobre PIDESCA, povos indígenas, quilombos e desastres socioambientais no Brasil.
+                  </p>
+                )}
+              </div>
+              <a
+                href="/ambiental/direitos-humanos"
+                className="mt-4 inline-block text-xs font-semibold text-blue-600 hover:underline dark:text-blue-400"
+              >
+                Acessar relatórios e recomendações →
+              </a>
+            </div>
+          </div>
+        </section>
 
         {/* DOIS RESUMOS */}
         <section className="grid gap-5 sm:grid-cols-2">
