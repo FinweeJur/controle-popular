@@ -25,8 +25,12 @@
 | 2 | **ONSA = página de Meio Ambiente.** As subfrentes Nossos (rios, serras, animais, territórios, gente) moram **dentro do ONSA**, com tags `natureza` e `ecossistema`. |
 | 3 | Modelo desta sessão: **jcode - deepseek v4 flash**. Nos próximos commits, incluir modelo no trailer da mensagem. |
 | 4 | Status periódico no Telegram **a cada ~15 minutos**. |
-| 5 | Prompt do Gemini foi enviado; **deu erro na 1ª tentativa** (texto picado) — reenviado como **arquivo .md**; dono está rodando no Gemini e dará retorno. |
-| 6 | Em aberto (perguntas 1–3 enviadas no Telegram): onde exatamente nascem as frentes Nossos (recomendado: subfrentes do ONSA — parcialmente respondido pela decisão 2), qual imagem é o avatar do Seu Nonô (recomendado: `Gemini_Generated_Image_54tagj54tagj54ta.jfif`), e se posso reconciliar o `main` local (ahead 14 / behind 30) com o GitHub. |
+| 5 | Prompt do Gemini foi enviado; **deu erro na 1ª tentativa** (texto picado) — reenviado como **arquivo .md**; dono rodou no Gemini. **Retorno integrado** em `PLANO-NOSSOS-PAINEIS-SANFONA.md` (commit `4824927`, outra sessão/Antigravity): schema TS, contratos JSON, wireframes ASCII, bloco "E nosso povo?". |
+| 6 | **Avatar do Seu Nonô = imagem do Gemini** (`Gemini_Generated_Image_54tagj54tagj54ta.jfif` da pasta Kimi). ✅ |
+| 7 | **Tom do Seu Nonô:** mineiro animado + **ironia leve contra o poder** (empresário, latifundiário, deputado/senador conservador); respeito total com vítima, povo e luta. → `SEU-NONO-GOLDEN-SET-VOZ.md`. |
+| 8 | **Controle Popular é o portal virtual criado com IA do ONSA** (Observatório Nacional Socioambiental). Entra no rebranding → `POSICIONAMENTO-ONSA-CONTROLE-POPULAR.md`. |
+| 9 | **Não esperar o retorno do dono:** seguir trabalhando e mandando avanços; considerar mensagens novas imediatamente. |
+| 10 | Em aberto: reconciliar o `main` local (ahead 14 / behind 30) com o GitHub — depende de aval (pergunta 3). |
 
 ## 🗺️ Estado do repo (medido na sessão)
 
