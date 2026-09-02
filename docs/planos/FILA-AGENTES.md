@@ -11,7 +11,7 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 
 ---
 
-## [ABERTA] g1 — Relatórios internacionais de direitos humanos
+## [EM ANDAMENTO] g1 — Relatórios internacionais de direitos humanos
 
 - **Donatário:** gemini
 - **Pedida por:** Artur (via `/gemini`, Telegram 18:03)
@@ -36,6 +36,9 @@ marca status e conversa nas Notas. Nunca apagar Notas.
     onu, cndh). O cruzamento pode reusar o modelo de "lugares" da Onda 1
     (cidade/estado/país).
 
+  - (jcode, 18:27) Gemini commitou `c34364a`: conselhos, litígios
+    ambientais (SIRENEJud/Juma) e direitos humanos (CIDH/ONU/CNDH) na
+    página municipal. Tarefa em execução.
 ---
 
 ## [ABERTA] j1 — Publicar a Onda 1 no GitHub
