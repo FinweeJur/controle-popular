@@ -20,6 +20,10 @@ publicação — só parecer de qualidade.
 Test Files: 2 passed | Tests: 11 passed
 ```
 
+### ✅ tsc --noEmit
+
+`npx tsc --noEmit` rodou **sem erros** (exit 0, 14:29). ✅
+
 ## 🟢 O que está bom
 
 1. **`lib/dialogos.ts` + `lib/lugares.ts`** — schema segue o plano: razão
