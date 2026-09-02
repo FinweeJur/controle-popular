@@ -63,6 +63,7 @@ export interface RegistroLugar {
  * Catálogo central de lugares e territórios.
  */
 export const LUGARES_CATALOGO: RegistroLugar[] = [
+  // RIOS
   {
     id: "rio-paraopeba",
     nome: "Rio Paraopeba",
@@ -84,12 +85,12 @@ export const LUGARES_CATALOGO: RegistroLugar[] = [
     tags: ["natureza", "ecossistema", "reparacao-historica", "calha-fluvial"],
     biomas: ["Mata Atlântica"],
     baciasHidrograficas: ["Bacia do Rio Doce"],
-    municipiosIbge: ["3140001", "3127701", "3131307", "3154306"],
+    municipiosIbge: ["3140001", "3127701", "3131307", "3154306", "3203205", "3201506"],
     temMineracao: true,
     temQuilombo: true,
     subfrenteOnsa: "nossos-rios",
     resumoVozCidada:
-      "Berço da bacia leste mineira, impactado pelo desastre de Mariana em 2015 e hoje centro da repactuação judicial federal na 4ª Vara de Belo Horizonte.",
+      "Berço da bacia leste mineira e capixaba, impactado pelo desastre de Mariana em 2015 e hoje centro da repactuação judicial federal na 4ª Vara de Belo Horizonte.",
   },
   {
     id: "rio-das-velhas",
@@ -119,6 +120,78 @@ export const LUGARES_CATALOGO: RegistroLugar[] = [
     resumoVozCidada:
       "Rio de vida e resistência do semiárido, cuja bacia abriga a cultura da cerâmica e enfrenta hoje a corrida minerária da exploração de lítio.",
   },
+  {
+    id: "rio-sao-francisco",
+    nome: "Rio São Francisco (Alto e Médio)",
+    tipo: "rio",
+    tags: ["natureza", "ecossistema", "integracao-nacional", "velho-chico", "semiarido"],
+    biomas: ["Cerrado", "Caatinga"],
+    baciasHidrograficas: ["Bacia do Rio São Francisco"],
+    municipiosIbge: ["3143302", "3151203", "3135209"],
+    temMineracao: false,
+    temQuilombo: true,
+    subfrenteOnsa: "nossos-rios",
+    resumoVozCidada:
+      "Artéria viva que atravessa Minas Gerais rumo ao Nordeste, sustentando a irrigação, a pesca tradicional e o abastecimento de cidades do Norte de Minas.",
+  },
+  {
+    id: "rio-tiete",
+    nome: "Rios Tietê, Pinheiros & Represas",
+    tipo: "rio",
+    tags: ["natureza", "ecossistema", "bacia-alto-tiete", "mananciais-urbanos"],
+    biomas: ["Mata Atlântica"],
+    baciasHidrograficas: ["Bacia do Alto Tietê"],
+    municipiosIbge: ["3550308", "3548708", "3547809", "3518800"],
+    temMineracao: false,
+    temQuilombo: false,
+    subfrenteOnsa: "nossos-rios",
+    resumoVozCidada:
+      "Eixo hidrográfico metropolitano que inclui as represas Billings e Guarapiranga e o Sistema Cantareira, responsáveis pelo abastecimento de mais de 20 milhões de pessoas.",
+  },
+  {
+    id: "rio-guandu",
+    nome: "Rio Guandu & Baía de Guanabara",
+    tipo: "rio",
+    tags: ["natureza", "ecossistema", "abastecimento-metropolitano", "seguranca-hidrica"],
+    biomas: ["Mata Atlântica"],
+    baciasHidrograficas: ["Bacia da Baía de Guanabara e Guandu"],
+    municipiosIbge: ["3304557", "3303500", "3301702"],
+    temMineracao: false,
+    temQuilombo: true,
+    subfrenteOnsa: "nossos-rios",
+    resumoVozCidada:
+      "Principal manancial de captação de água potável para a Região Metropolitana do Rio de Janeiro e bacia hidrográfica costeira sob constantes metas de despoluição.",
+  },
+  {
+    id: "rio-paraiba-do-sul",
+    nome: "Bacia do Rio Paraíba do Sul",
+    tipo: "rio",
+    tags: ["natureza", "ecossistema", "sudeste-integrado", "abastecimento-industrial"],
+    biomas: ["Mata Atlântica"],
+    baciasHidrograficas: ["Bacia do Rio Paraíba do Sul"],
+    municipiosIbge: ["3136702", "3304557"],
+    temMineracao: false,
+    temQuilombo: true,
+    subfrenteOnsa: "nossos-rios",
+    resumoVozCidada:
+      "Bacia estratégica que integra a Zona da Mata Mineira com o Rio de Janeiro e São Paulo, abastecendo indústrias e cidades de médio e grande porte.",
+  },
+  {
+    id: "rio-araguari",
+    nome: "Rio Araguari & Bacia do Paranaíba",
+    tipo: "rio",
+    tags: ["natureza", "ecossistema", "triangulo-mineiro", "cerrado-produtivo"],
+    biomas: ["Cerrado"],
+    baciasHidrograficas: ["Bacia do Rio Paranaíba"],
+    municipiosIbge: ["3170206", "3103504"],
+    temMineracao: false,
+    temQuilombo: false,
+    subfrenteOnsa: "nossos-rios",
+    resumoVozCidada:
+      "Canal hidroelétrico e de irrigação essencial do Triângulo Mineiro, garantindo a sustentabilidade da agricultura irrigada e o abastecimento de Uberlândia.",
+  },
+
+  // SERRAS
   {
     id: "serra-do-espinhaco",
     nome: "Serra do Espinhaço",
@@ -160,7 +233,7 @@ export const LUGARES_CATALOGO: RegistroLugar[] = [
     tags: ["natureza", "ecossistema", "patrimonio-cultural-religioso", "monumento-natural"],
     biomas: ["Mata Atlântica", "Cerrado"],
     baciasHidrograficas: ["Bacia do Rio São Francisco", "Bacia do Rio das Velhas"],
-    municipiosIbge: ["3109907", "3156700"],
+    municipiosIbge: ["3109907", "3156700", "3106200"],
     unidadesConservacao: ["Monumento Natural Estadual da Serra da Piedade"],
     temMineracao: true,
     temQuilombo: false,
@@ -168,6 +241,37 @@ export const LUGARES_CATALOGO: RegistroLugar[] = [
     resumoVozCidada:
       "Pico histórico e sagrado na transição do Quadrilátero Ferrífero, tombado pelo IPHAN e IEPHA, com contínuos litígios sobre mineração em seu entorno.",
   },
+  {
+    id: "serra-da-moeda",
+    nome: "Serra da Moeda",
+    tipo: "serra",
+    tags: ["natureza", "ecossistema", "sinclinal-moeda", "aguas-minerais", "patrimonio-geologico"],
+    biomas: ["Cerrado", "Mata Atlântica"],
+    baciasHidrograficas: ["Bacia do Rio Paraopeba", "Bacia do Rio das Velhas"],
+    municipiosIbge: ["3109006", "3142809", "3131901"],
+    unidadesConservacao: ["Monumento Natural Estadual da Serra da Moeda"],
+    temMineracao: true,
+    temQuilombo: true,
+    subfrenteOnsa: "nossas-serras",
+    resumoVozCidada:
+      "Maciço de relevo ferruginoso e recarga hídrica entre Brumadinho e Moeda, ameaçado por empreendimentos de extração mineral e especulação imobiliária.",
+  },
+  {
+    id: "serra-da-cantareira",
+    nome: "Serra da Cantareira & Cinturão Verde",
+    tipo: "serra",
+    tags: ["natureza", "ecossistema", "parque-estadual", "reserva-da-biosfera", "cinturao-verde"],
+    biomas: ["Mata Atlântica"],
+    municipiosIbge: ["3550308", "3518800"],
+    unidadesConservacao: ["Parque Estadual da Cantareira", "APA Sistema Cantareira"],
+    temMineracao: false,
+    temQuilombo: false,
+    subfrenteOnsa: "nossas-serras",
+    resumoVozCidada:
+      "Uma das maiores florestas tropicais nativas em área urbana do mundo, reguladora microclimática e protetora das águas que abastecem a metrópole paulistana.",
+  },
+
+  // TERRITÓRIOS
   {
     id: "vale-do-jequitinhonha",
     nome: "Vale do Jequitinhonha",

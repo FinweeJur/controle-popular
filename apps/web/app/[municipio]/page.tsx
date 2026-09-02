@@ -358,6 +358,7 @@ export default async function HomePage({
         <PainelDialogo
           origemRota={`/${cidade.slug}`}
           origemTitulo={cidade.nome}
+          codigoIbge={cidade.id_municipio}
           abertoInicialmente={cidade.slug === "diamantina"}
         />
 

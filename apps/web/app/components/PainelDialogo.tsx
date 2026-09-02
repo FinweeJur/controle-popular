@@ -8,6 +8,7 @@ import CartaoPonteSanfona from "./CartaoPonteSanfona";
 interface PainelDialogoProps {
   origemRota: string;
   origemTitulo?: string;
+  codigoIbge?: string;
   pontes?: PonteEntreFrentes[];
   abertoInicialmente?: boolean;
 }
@@ -15,13 +16,14 @@ interface PainelDialogoProps {
 export default function PainelDialogo({
   origemRota,
   origemTitulo,
+  codigoIbge,
   pontes: pontesProps,
   abertoInicialmente = false,
 }: PainelDialogoProps) {
   const [expandido, setExpandido] = useState(abertoInicialmente);
 
-  const pontes = pontesProps ?? obterDialogosPorRota(origemRota);
-  const topico = obterTopicoDialogo(origemRota) ?? "Temas interligados por aqui";
+  const pontes = pontesProps ?? obterDialogosPorRota(origemRota, codigoIbge, origemTitulo);
+  const topico = obterTopicoDialogo(origemRota, origemTitulo);
 
   // Fechar com ESC para acessibilidade
   useEffect(() => {
