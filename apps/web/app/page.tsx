@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
+import { FILA_EXPANSAO } from "@/lib/cidades-estrategicas";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
 
@@ -33,7 +34,8 @@ export const metadata: Metadata = metadataEditavel("/", {
   // ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md): título na voz nova
   // e descrição cobrindo as seis frentes — a antiga ainda listava só
   // Betim, Congresso e Judiciário, herança de quando eram três sites.
-  title: "Controle Popular — o dinheiro é seu; a gente mostra para onde vai",
+  // ⟲ 02/09, a pedido do dono: "o dinheiro é NOSSO".
+  title: "Controle Popular — o dinheiro é nosso; a gente mostra para onde vai",
   description:
     "Informação oficial que sempre foi pública, reunida numa tela só: o dinheiro da sua cidade, o que o Congresso decide sobre seus direitos, quem ocupa cada cadeira do Judiciário, a terra, o ambiente e a reparação de Brumadinho. Todo número com fonte. Portal independente.",
 });
@@ -66,9 +68,11 @@ export default async function Hub() {
             desta página — aqui começa direto no título. */}
         {/* ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md): a voz nova
             entra primeiro no texto — a forma (scrollytelling em capítulos
-            com display gigante) fica para o sprint da home. */}
+            com display gigante) fica para o sprint da home.
+            ⟲ 02/09, a pedido do dono: a headline passa de "seu" para
+            "nosso" — o dinheiro é de quem lê e de quem escreve também. */}
         <h1 className="font-display text-3xl font-bold sm:text-4xl">
-          O dinheiro é seu. A gente mostra.
+          O dinheiro é nosso. A gente mostra.
         </h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">
           Informação oficial que sempre foi pública — só estava espalhada por dezenas de
@@ -180,6 +184,25 @@ export default async function Hub() {
         )}
       </div>
 
+      {/* ⟲ 02/09, auditoria dos 40 commits: `data/cidades-estrategicas.json`
+          (199 cidades mapeadas, com fonte de câmara e prefeitura anotada)
+          não tinha tela nenhuma. O capítulo mostra a fila com os números
+          vindos do arquivo (`lib/cidades-estrategicas.ts`) e a lacuna com
+          todas as letras: fila mapeada NÃO é cobertura. */}
+      <section className="mt-8 rounded-lg border border-border p-6">
+        <h2 className="font-display text-lg font-semibold">Para onde o portal cresce</h2>
+        <p className="mt-2 text-[.95em] text-text-soft">
+          A fila está mapeada: <strong className="text-text">{FILA_EXPANSAO.total} cidades</strong>{" "}
+          — {FILA_EXPANSAO.capitais} capitais e {FILA_EXPANSAO.polos} polos do interior,
+          conferidas no IBGE, com a fonte da câmara e da prefeitura anotada cidade a cidade
+          ({FILA_EXPANSAO.comCamaraMapeada} já têm câmara identificada;{" "}
+          {FILA_EXPANSAO.comDadosAbertos}, portal de dados abertos). Hoje o portal tem tela em{" "}
+          <strong className="text-text">{cidades.length} cidades</strong>. Mapa não é
+          cobertura: cada cidade só entra no ar quando o dado dela estiver coletado — sem
+          promessa de data, sem número inventado.
+        </p>
+      </section>
+
       {/* ═══ DIREITOS EM MOVIMENTO — BLOCO PRÓPRIO, NÃO É UMA FRENTE ═══
           Decisão do dono (13/08): NÃO entra em `ZONAS`/`SECOES` acima. As
           frentes são EIXOS DE PODER — lugares onde alguém decide sobre a
@@ -275,7 +298,9 @@ export default async function Hub() {
           seção "Manifesto final"). Entra agora como texto corrido no
           design atual; o tratamento em caps justificado, com a epígrafe
           de Birri/Galeano e imagem full-bleed, é do sprint do
-          scrollytelling — não adiantar forma aqui. */}
+          scrollytelling — não adiantar forma aqui.
+          ⟲ 02/09, a pedido do dono: "seu" → "nosso", na mesma voz da
+          headline. */}
       <section className="mt-8 rounded-lg border border-border p-6">
         <h2 className="font-display text-lg font-semibold">
           O povo pergunta. O número não mente.
@@ -285,7 +310,7 @@ export default async function Hub() {
           sacadas de Diamantina ao Anhangabaú lotado: o povo deste país sempre perguntou,
           sempre se organizou — e sempre achou um jeito de cantar no meio do caminho.
           Direito não é favor, não é concessão, não é promessa. E o dinheiro continua
-          sendo seu.
+          sendo nosso.
         </p>
       </section>
 
