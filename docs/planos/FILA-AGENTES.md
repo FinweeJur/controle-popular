@@ -72,7 +72,7 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 
 ---
 
-## [ABERTA] j1 — Publicar a Onda 1 no GitHub
+## [CONCLUÍDA] j1 — Publicar a Onda 1 no GitHub
 
 - **Donatário:** jcode
 - **Pedida por:** Artur (via `/jcode`, Telegram 18:07)
@@ -80,7 +80,7 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 - **Tarefa:** publicar no GitHub os commits locais da Onda 1 implementados
   pela outra sessão (`a24c081` e seguintes: schema lugares/dialogos,
   PainelDialogo, rotas Nossos, subfrentes Animais/Gente).
-- **Status:** aberta
+- **Status:** concluída
 - **Critério de pronto:** origin/main com os commits; testes e tsc verdes
   antes do push.
 - **Notas:**
@@ -89,6 +89,7 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 
 ---
 
+  - (jcode, 20:07) Onda 1 publicada no GitHub via g2 (merge 35d16e5 + commits).
 ## [CONCLUÍDA] g2 — Revisar e publicar a Onda 1
 
 - **Donatário:** gemini
@@ -127,3 +128,68 @@ marca status e conversa nas Notas. Nunca apagar Notas.
   fontes pendentes (BATER, CEMADEN, INPE, SNIS, MapBiomas).
 - **Status:** aberta
 - **Critério de pronto:** fontes integradas e publicadas.
+---
+
+## [ABERTA] g6 — Geocodificar dados da Vale (plano geo)
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 20:32)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/PLANO-GEOCODIFICACAO.md e executar a
+  geocodificação dos dados do monitoramento da Vale quando houver dado.
+- **Status:** aberta
+
+---
+
+## [ABERTA] g7 — Navegação e notificações
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 20:32)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/PLANO-NAVEGACAO-E-NOTIFICACOES.md;
+  implementar pendências (beacon downloads já existe; ver etapas restantes).
+- **Status:** aberta
+
+---
+
+## [ABERTA] g8 — Revisão UX e onboarding
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 20:32)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/REVISAO-UX-E-ONBOARDING.md; verificar
+  pendências de acessibilidade e onboarding restantes.
+- **Status:** aberta
+
+---
+
+## [ABERTA] g9 — Biblioteca crimes socioambientais
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 20:35)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md; implementar pendências da biblioteca (936+ docs, CBH-Doce, Fundo Brasil).
+- **Status:** aberta
+- **Critério de pronto:** pendências implementadas e publicadas.
+
+---
+
+## [ABERTA] g10 — Expansão acordos MG
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 20:35)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/PLANO-EXPANSAO-ACORDOS-MG.md; implementar pendências dos acordos de MG.
+- **Status:** aberta
+- **Critério de pronto:** pendências implementadas e publicadas.
+
+---
+
+## [ABERTA] g11 — Transparência Justiça
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 20:35)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/PLANO-TRANSPARENCIA-JUSTICA.md; implementar pendências (MPMG, MPF, DPMG, DPU, TRT-3, TCE-MG).
+- **Status:** aberta
+- **Critério de pronto:** pendências implementadas e publicadas.
