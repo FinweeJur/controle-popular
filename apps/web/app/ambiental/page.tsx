@@ -62,9 +62,39 @@ export default async function AmbientalHome() {
       texto:
         "Acompanhe as bacias dos nossos rios, a proteção das serras, a conservação da fauna silvestre, a luta pelo território e o bloco 'E nosso povo?' / 'E nossa gente?' que conecta o meio ambiente a saúde, trabalho, moradia e cultura.",
       fase: "DESTAQUE",
-      href: "/nossos",
+      href: "/ambiental/nossos",
       pronta: true,
       linkTexto: "Explorar a Coleção Nossos →",
+    },
+    {
+      titulo: "Litigância Climática e Conflitos nos Tribunais",
+      linha: "Ações do JUMA + 322 mil processos do SIRENEJud (CNJ) + teses do TJMG sobre barragens",
+      texto:
+        "O raio-x dos conflitos ambientais nos tribunais: da repactuação de Mariana e Serra do Taquaril ao Fundo Clima no STF, com as teses consolidadas de indenização aos atingidos.",
+      fase: "NOVO",
+      href: "/ambiental/litigios-climaticos",
+      pronta: true,
+      linkTexto: "Ver litígios climáticos e teses →",
+    },
+    {
+      titulo: "Conselhos Sociais, Bacias e Meio Ambiente",
+      linha: "Comitês do São Francisco, Doce, Velhas, Paraopeba, CODEMAs e conselhos de direitos",
+      texto:
+        "Canais de fiscalização e deliberação popular: contatos institucionais, calendários de reuniões públicas, atas e canais de denúncia cidadã.",
+      fase: "NOVO",
+      href: "/ambiental/conselhos",
+      pronta: true,
+      linkTexto: "Acessar conselhos e comitês →",
+    },
+    {
+      titulo: "Relatórios de Direitos Humanos (CIDH, ONU e CNDH)",
+      linha: "CIDH (OEA), REDESCA (PIDESCA), ONU e CNDH cruzados por município",
+      texto:
+        "Recomendações e relatórios oficiais sobre mineração, empresas e direitos humanos, povos indígenas, comunidades quilombolas e combate à tortura.",
+      fase: "NOVO",
+      href: "/ambiental/direitos-humanos",
+      pronta: true,
+      linkTexto: "Consultar relatórios oficiais →",
     },
     {
       titulo: "Processos ambientais na Justiça",
