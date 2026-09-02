@@ -42,11 +42,19 @@
 
 ## ⏭️ Próximos passos
 
-1. Receber retorno do **Gemini** e consolidar no plano (schema, componentes, wireframes).
-2. Responder às perguntas 1–3 do dono quando ele retornar no Telegram.
-3. Escolher o **avatar do Seu Nonô** e aplicar (micro-etapa A4 do plano).
-4. Executar micro-etapas A1–A5 (fundação barata) quando o dono aprovar.
+1. ~~Receber retorno do Gemini~~ — **integrado** no plano (commit `4824927`) e **revisado** (`REVISAO-PLANO-GEMINI.md`). ✅
+2. Dono decidir: ONSA abraça Terras? Bloco chama "E o social?" ou "E nosso povo?" → destrava Onda 1.
+3. ~~Escolher avatar do Seu Nonô~~ — **decidido**: imagem do Gemini; **aplicado** no widget (commit `b9942e0`). ✅
+4. Executar **Onda 1** (schema, PainelDialogo, piloto Diamantina×Biribiri) — runbook em `ROTEIRO-EXECUCAO-ONDA1.md`; aguarda decisões 1–2.
 5. Rodar sanitização Etapa 1 (`.gitattributes` + renormalização) com aval do dono.
+
+## 📦 Entregas extras da sessão (docs em `docs/planos/`)
+
+- `SEU-NONO-GOLDEN-SET-VOZ.md` — 10 respostas mineiras + tom irreverente leve contra o poder. 🎙️
+- `MAPA-POEMAS-SUBFRENTES.md` — distribuição dos poemas pelas subfrentes Nossos, nenhum cortado. 📖
+- `POSICIONAMENTO-ONSA-CONTROLE-POPULAR.md` — Controle Popular = portal com IA do ONSA + missão oficial do dono. 🏛️
+- `REVISAO-PLANO-GEMINI.md` — nota sobre o retorno Gemini integrado. 🔍
+- `ROTEIRO-EXECUCAO-ONDA1.md` — runbook da fundação barata. 🏗️
 
 ## 🔒 Regras lembradas
 
