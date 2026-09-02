@@ -160,3 +160,36 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 - **Tarefa:** revisar docs/planos/REVISAO-UX-E-ONBOARDING.md; verificar
   pendências de acessibilidade e onboarding restantes.
 - **Status:** aberta
+
+---
+
+## [ABERTA] g9 — Biblioteca crimes socioambientais
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 20:35)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/PLANO-BIBLIOTECA-CRIMES-SOCIOAMBIENTAIS.md; implementar pendências da biblioteca (936+ docs, CBH-Doce, Fundo Brasil).
+- **Status:** aberta
+- **Critério de pronto:** pendências implementadas e publicadas.
+
+---
+
+## [ABERTA] g10 — Expansão acordos MG
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 20:35)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/PLANO-EXPANSAO-ACORDOS-MG.md; implementar pendências dos acordos de MG.
+- **Status:** aberta
+- **Critério de pronto:** pendências implementadas e publicadas.
+
+---
+
+## [ABERTA] g11 — Transparência Justiça
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 20:35)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/PLANO-TRANSPARENCIA-JUSTICA.md; implementar pendências (MPMG, MPF, DPMG, DPU, TRT-3, TCE-MG).
+- **Status:** aberta
+- **Critério de pronto:** pendências implementadas e publicadas.
