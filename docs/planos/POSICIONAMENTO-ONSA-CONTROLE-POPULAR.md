@@ -13,11 +13,19 @@ Socioambiental — ONSA.**
 
 O portal não é uma ferramenta solta: é a **vitrine digital do ONSA**. 🏛️
 
-Isso entra no **rebranding** e vale para:
-- Home e sobre; 🏠
+## 📖 Missão oficial (texto do dono, 02/09/2026)
+
+> "Com raízes na História e na Geografia, este portal se utiliza da tecnologia
+> da Inteligência Artificial para somar na busca por **justiça socioambiental**
+> e **fiscalização cidadã** — acessível pela internet, **gratuitamente e sem
+> cadastro**, por qualquer celular ou computador." — **Artur**, dono do projeto
+
+Esse texto é a **espinha dorsal do rebranding** e deve aparecer em:
+- `/sobre` (manifesto longo); 📄
+- Home (versão curta no manifesto final); 🏠
 - Rodapé e créditos; 🦶
-- Redes sociais e divulgação; 📣
 - Assinatura do Seu Nonô ("criado com IA do ONSA"). 🤖
+- Material de divulgação. 📣
 
 ## ✍️ Frases de posicionamento (rascunho)
 
