@@ -2,9 +2,7 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import {
-  MessageCircle,
   X,
-  Bot,
   Sparkles,
   ExternalLink,
   ChevronLeft,
@@ -29,6 +27,21 @@ import {
 } from "./SeuNonoData";
 import { obterSugestoesContextuais, type SugestaoContextual } from "@/lib/seo/contexto-pagina";
 import { RessalvaIa } from "./RessalvaIa";
+
+/** Avatar do Seu Nonô — imagem oficial (avatar.webp) com fallback de cor. */
+function AvatarSeuNono({ size = 20, className = "" }: { size?: number; className?: string }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/seunono/avatar.webp"
+      alt="Seu Nonô"
+      width={size}
+      height={size}
+      className={`shrink-0 rounded-full object-cover ${className}`}
+      style={{ width: size, height: size }}
+    />
+  );
+}
 
 interface DadoResumido {
   total?: number;
@@ -632,7 +645,7 @@ export function SeuNono() {
           {/* Cabeçalho */}
           <div className="flex items-center justify-between border-b border-border bg-primary/10 px-4 py-3">
             <div className="flex items-center gap-2">
-              <Bot size={20} className="text-primary" />
+              <AvatarSeuNono size={22} className="text-primary" />
               <div>
                 <p className="font-display text-sm font-semibold text-text">Seu Nonô</p>
                 <p className="text-[.7rem] text-text-soft">
@@ -1377,7 +1390,7 @@ export function SeuNono() {
       {!aberto && !mostrouBoasVindas && !dismissBoasVindas && (
         <div className="cp-painel-entra mb-3 w-64 rounded-2xl border border-border bg-surface p-4 shadow-lg">
           <div className="flex items-start gap-2">
-            <Bot size={18} className="mt-0.5 shrink-0 text-primary" />
+            <AvatarSeuNono size={20} className="mt-0.5 shrink-0 text-primary" />
             <div className="flex-1">
               <p className="text-sm font-semibold text-text">Oi! Eu sou o Seu Nonô.</p>
               <p className="mt-1 text-xs leading-relaxed text-text-soft">
@@ -1402,10 +1415,10 @@ export function SeuNono() {
             setAberto(true);
             if (!mostrouBoasVindas && !dismissBoasVindas) dismissarBoasVindas();
           }}
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-ink shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-primary-ink/20 bg-primary shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
           aria-label="Abrir assistente Seu Nonô"
         >
-          <MessageCircle size={28} />
+          <AvatarSeuNono size={44} className="h-full w-full" />
         </button>
       )}
     </div>
