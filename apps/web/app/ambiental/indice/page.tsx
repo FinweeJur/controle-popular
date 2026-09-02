@@ -7,6 +7,12 @@ import { IndiceWiki } from "@/app/components/wiki";
  *
  * Padrao wiki: aponta para os topicos ja publicados da frente. Cada card
  * descreve o destino e leva a pagina de conteudo real.
+ *
+ * ⟲ 02/09, auditoria dos 40 commits: faltavam aqui `/ambiental/mariana`
+ * (painel da repactuacao do Rio Doce) e `/ambiental/crimes-socioambientais`
+ * (biblioteca unificada Mariana + Brumadinho) — as duas telas ja estavam
+ * linkadas na home da frente, mas o indice e o menu global nao tinham
+ * acompanhado.
  */
 
 const topicos: Topico[] = [
@@ -29,6 +35,11 @@ const topicos: Topico[] = [
     href: "/ambiental/copam",
     titulo: "COPAM",
     descricao: "Reunioes e decisoes do Conselho Estadual de Política Ambiental.",
+  },
+  {
+    href: "/ambiental/crimes-socioambientais",
+    titulo: "Crimes socioambientais",
+    descricao: "Biblioteca dos documentos de Mariana e Brumadinho, com radar de noticias.",
   },
   {
     href: "/ambiental/decisoes",
@@ -54,6 +65,11 @@ const topicos: Topico[] = [
     href: "/ambiental/licenciamento",
     titulo: "Licenciamento",
     descricao: "Processos de licenciamento ambiental por municipio.",
+  },
+  {
+    href: "/ambiental/mariana",
+    titulo: "Acordo do Rio Doce (Mariana)",
+    descricao: "Execucao da repactuacao em MG, iniciativa a iniciativa.",
   },
   {
     href: "/ambiental/patrimonio-cultural",

@@ -2,6 +2,15 @@ import type { Metadata } from "next";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki } from "@/app/components/wiki";
 
+/**
+ * Indice da frente /paraopeba.
+ *
+ * ⟲ 02/09, auditoria dos 40 commits: faltava `/paraopeba/vale` — o
+ * observatorio da Vale (cotacoes B3, documentos CVM, noticias) ja tinha
+ * entrada no indice global e no arquivo de novidades, mas nao no indice
+ * da propria frente nem no menu global.
+ */
+
 const topicos: Topico[] = [
   {
     href: "/paraopeba",
@@ -62,6 +71,11 @@ const topicos: Topico[] = [
     href: "/paraopeba/quem-atua",
     titulo: "Quem atua",
     descricao: "Entidades envolvidas na reparacao.",
+  },
+  {
+    href: "/paraopeba/vale",
+    titulo: "Observatorio Vale",
+    descricao: "Cotacoes na B3, documentos CVM e noticias da empresa.",
   },
 ];
 
