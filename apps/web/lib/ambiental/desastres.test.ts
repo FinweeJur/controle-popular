@@ -95,16 +95,13 @@ describe("biblioteca unificada de desastres", () => {
   });
 
   test("resumo só existe quando publicado pela fonte — nunca gerado", () => {
-    // O acervo das ATIs não publica resumo; qualquer resumo presente teria
-    // sido escrito pelo portal. Fontes futuras podem publicar excerpt — o
-    // teste garante que o campo está ligado à origem e nunca a um gerador.
+    // Fontes como Fundo Brasil publicam excerto oficial da página de busca.
+    // O teste garante que o campo, quando presente, vem de fonte autorizada.
     const dados = ler();
     for (const i of dados.itens) {
-      if (i.resumo !== null && i.resumo !== undefined) {
-        // A regra de ouro: se um dia houver resumo, ele precisa ter sido
-        // coletado da fonte. Hoje nenhuma fonte o publica — então não pode
-        // haver resumo nenhum.
-        expect(i.resumo, `item ${i.id} com resumo não originado da fonte`).toBeNull();
+      if (i.resumo) {
+        expect(typeof i.resumo).toBe("string");
+        expect(i.fonteId).toBe("fundo-brasil");
       }
     }
   });
