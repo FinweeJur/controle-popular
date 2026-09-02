@@ -4,6 +4,7 @@ import { ZONAS } from "@/lib/zonas";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
 import FotoBrasilComS from "@/app/components/FotoBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
+import NaImprensa from "@/app/components/NaImprensa";
 import { formatNumberBR } from "@/lib/betim/format";
 import { contarReunioesCopam } from "@/lib/db/queries/copam";
 import { contarBarragensMg } from "@/lib/db/queries/barragens";
@@ -14,6 +15,7 @@ import { contarDireitoCritico } from "@/lib/db/queries/direito-critico";
 import { contarPatrimonioTombado } from "@/lib/db/queries/patrimonio-tombado";
 import { lerEstudos } from "@/lib/ambiental/estudos-dados";
 import { carregarSirenejudMg } from "@/lib/ambiental/sirenejud-dados";
+import { NOTICIAS_DESASTRES } from "@/lib/ambiental/desastres-noticias";
 
 /**
  * Home da zona /ambiental.
@@ -293,6 +295,18 @@ export default async function AmbientalHome() {
           );
         })}
       </div>
+
+      {/* ⟲ 02/09, auditoria dos 40 commits: o radar de notícias existia só
+          no fim de /crimes-socioambientais — a faixa traz as 3 mais
+          recentes para o hub. Varredura automática, sem curadoria; radar
+          vazio não rende faixa (ver `NaImprensa.tsx`). */}
+      <NaImprensa
+        itens={NOTICIAS_DESASTRES.slice(0, 3)}
+        hrefRadar="/ambiental/crimes-socioambientais"
+        rotuloRadar="Ver o radar completo"
+        contexto="Varredura automática de feeds públicos — título, veículo, data e link, nunca o texto da matéria. Inclui o acompanhamento do reconhecimento de atingidos no Espírito Santo e na Bahia. O passo seguinte é sempre o documento oficial, que é o que a biblioteca dos crimes socioambientais reúne."
+        cor={ZONA.cor}
+      />
 
       <section className="mt-12 border-t border-border pt-8">
         <h2 className="font-display text-xl font-semibold">De onde vem o dado</h2>

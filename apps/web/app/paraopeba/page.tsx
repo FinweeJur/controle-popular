@@ -4,8 +4,9 @@ import OutrasFrentes from "@/app/components/OutrasFrentes";
 import FotoBrasilComS from "@/app/components/FotoBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import AvisoColetaEmCurso from "@/app/components/AvisoColetaEmCurso";
+import NaImprensa from "@/app/components/NaImprensa";
 import { ZONAS } from "@/lib/zonas";
-import { formatNumberBR } from "@/lib/betim/format";
+import { formatDateBR, formatNumberBR } from "@/lib/betim/format";
 import {
   COBERTURA_CLIPPING,
   PERIODO_CLIPPING,
@@ -17,6 +18,9 @@ import { COBERTURA_DOCUMENTOS_PROCESSO } from "@/lib/paraopeba/documentos";
 // Fora do barril de propósito: `biblioteca.ts` lê disco com `node:fs`, e o
 // barril é importado por componente de cliente. Mesma razão de `radar.ts`.
 import { coberturaBiblioteca } from "@/lib/paraopeba/biblioteca";
+// Mesma razão de `biblioteca.ts`: `radar.ts` lê disco, e esta rota é
+// servidor — nada disso vai para o payload de cliente.
+import { carregarRadarParaopeba } from "@/lib/paraopeba/radar";
 // Também fora do barril, por outra razão: o acervo da auditoria tem 336 KiB, e
 // pô-lo em `@/lib/paraopeba` levaria esse peso a toda tela que importa o
 // barril. A página usa só as CONTAGENS (`COBERTURA_AUDITORIA_AJRI`), e esta
@@ -59,6 +63,7 @@ const ZONA = ZONAS.find((z) => z.id === "paraopeba")!;
 
 export default async function ParaopebaHome() {
   const cob = await coberturaBiblioteca();
+  const radar = carregarRadarParaopeba();
   const tiposDeAtor = new Set(ATORES_REPARACAO.map((a) => a.categoria));
   // 455 linhas de status descrevem 234 projetos — um projeto que alcança 25
   // cidades aparece 25 vezes. O cartão mostra o distinto, nunca o `length`
@@ -229,6 +234,18 @@ export default async function ParaopebaHome() {
           </a>
         ))}
       </div>
+
+      {/* ⟲ 02/09, auditoria dos 40 commits: o radar do clipping só aparecia
+          no fim de /paraopeba/clipping. A faixa traz as 3 mais recentes —
+          registro sóbrio, sem curadoria, com o carimbo da coleta. Radar
+          vazio não rende faixa (ver `NaImprensa.tsx`). */}
+      <NaImprensa
+        itens={radar.itens.slice(0, 3)}
+        hrefRadar="/paraopeba/clipping"
+        rotuloRadar="Ver o radar completo no clipping"
+        contexto={`Varredura automática de feeds públicos, sem curadoria — coleta de ${formatDateBR(radar.gerado_em.slice(0, 10))}. Título, veículo, data e link, nunca o texto da matéria.`}
+        cor={ZONA.cor}
+      />
 
       <section className="mt-12 border-t border-border pt-8">
         <h2 className="font-display text-xl font-semibold">De onde vem o dado</h2>
