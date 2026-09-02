@@ -735,12 +735,14 @@ export function SeuNono() {
                 ) : (
                   <>
                     <p className="text-sm text-text-soft">
-                      Sou o <strong className="text-text">Seu Nonô</strong>, chatbot do portal
-                      digital Controle Popular do <strong className="text-text">ONSA</strong>.
+                      Sou o <strong className="text-text">Seu Nonô Alceu Dispor</strong>, chatbot do portal digital <strong className="text-text">Controle Popular do ONSA</strong> — Observatório Nacional Socioambiental, em controlepopular.com.br.</p>
+                    <p className="mt-2 text-xs leading-relaxed text-text-soft">
                       Com raízes na História e na Geografia, o portal usa Inteligência
                       Artificial para somar na busca por justiça socioambiental e
                       fiscalização cidadã — gratuito, sem cadastro, de qualquer celular
-                      ou computador. Escolha uma frente para eu te guiar:
+                      ou computador. Reunimos dezenas de portais e dados públicos:
+                      contratos, convênios, licenciamentos, mineração, barragens,
+                      legislação e orçamento. Escolha uma frente para eu te guiar:
                     </p>
                   </>
                 )}
