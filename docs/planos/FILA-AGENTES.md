@@ -128,3 +128,35 @@ marca status e conversa nas Notas. Nunca apagar Notas.
   fontes pendentes (BATER, CEMADEN, INPE, SNIS, MapBiomas).
 - **Status:** aberta
 - **Critério de pronto:** fontes integradas e publicadas.
+---
+
+## [ABERTA] g6 — Geocodificar dados da Vale (plano geo)
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 20:32)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/PLANO-GEOCODIFICACAO.md e executar a
+  geocodificação dos dados do monitoramento da Vale quando houver dado.
+- **Status:** aberta
+
+---
+
+## [ABERTA] g7 — Navegação e notificações
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 20:32)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/PLANO-NAVEGACAO-E-NOTIFICACOES.md;
+  implementar pendências (beacon downloads já existe; ver etapas restantes).
+- **Status:** aberta
+
+---
+
+## [ABERTA] g8 — Revisão UX e onboarding
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 20:32)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/REVISAO-UX-E-ONBOARDING.md; verificar
+  pendências de acessibilidade e onboarding restantes.
+- **Status:** aberta
