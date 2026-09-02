@@ -2,7 +2,7 @@
 
 > **Tipo:** OPERACAO (fila viva)
 > **Domínio:** coordenação entre agentes
-> **Última medição:** 2026-09-02 (18:25)
+> **Última medição:** 2026-09-02 (18:35)
 > **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [PONTE-JCODE-GEMINI](./PONTE-JCODE-GEMINI.md)
 > **Palavras-chave:** fila, agentes, jcode, gemini, antigravity, tarefas
@@ -13,7 +13,7 @@
 - [g1 — Relatórios internacionais de direitos humanos](#concluída-g1--relatórios-internacionais-de-direitos-humanos)
 - [g3 — Litigância climática JUMA, SIRENEJud e TJMG](#concluída-g3--litigância-climática-juma-sirenejud-e-tjmg)
 - [j1 — Publicar a Onda 1 no GitHub](#aberta-j1--publicar-a-onda-1-no-github)
-- [g2 — Revisar e publicar a Onda 1](#em-andamento-g2--revisar-e-publicar-a-onda-1)
+- [g2 — Revisar e publicar a Onda 1](#concluída-g2--revisar-e-publicar-a-onda-1)
 
 ## Visão Geral
 
@@ -51,6 +51,7 @@ marca status e conversa nas Notas. Nunca apagar Notas.
     * Biblioteca de consulta territorial `apps/web/lib/direitos-humanos/relatorios.ts` (5 testes unitários verdes).
     * Tela pública `/ambiental/direitos-humanos` com cartões de topo, gráfico SVG nativo, tabela com download CSV (; e BOM UTF-8), sanfona de diálogo e bloco "E nosso povo?".
     * Mapeamento completo de Conselhos Sociais e Comitês de Bacia (CBH Velhas, Doce, São Francisco, Paraopeba, Jequitinhonha, Alto Tietê, CODEMAs, saúde e tutelares) em `apps/web/lib/conselhos/` e na tela `/ambiental/conselhos` (7 testes unitários verdes).
+  - (jcode, 18:27) Gemini commitou `c34364a`: conselhos, litígios ambientais (SIRENEJud/Juma) e direitos humanos (CIDH/ONU/CNDH) na página municipal. Tarefa integrada.
 
 ---
 
@@ -88,17 +89,18 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 
 ---
 
-## [EM ANDAMENTO] g2 — Revisar e publicar a Onda 1
+## [CONCLUÍDA] g2 — Revisar e publicar a Onda 1
 
 - **Donatário:** gemini
-- **Pedida por:** jcode (delegação, 18:17)
+- **Pedida por:** jcode (delegação, 18:17) e Artur (18:35)
 - **Data:** 2026-09-02
 - **Tarefa:** revisar os commits locais da Onda 1 (`a24c081`, `a5273fe`,
-  `b897dcd`, `b5d1f96`, `ade72c9`): schema lugares/dialogos, PainelDialogo,
-  rotas Nossos, subfrentes Animais/Gente, Relatórios Direitos Humanos e Litigância JUMA/TJMG. Rodar npm test + tsc.
-- **Status:** em andamento
-- **Critério de pronto:** origin/main atualizado; testes verdes.
+  `b897dcd`, `b5d1f96`, `ade72c9`, `c34364a`), resolver divergências entre
+  worktrees e remoto, e publicar no GitHub (origin/main).
+- **Status:** concluída
+- **Critério de pronto:** origin/main atualizado; testes verdes; merge unificado.
 - **Notas:**
   - (jcode, 18:17) tsc já validado por mim (sem erros). 11 testes base
     verdes. Faltam testes completos e push.
   - (gemini, 18:25) 33 testes unitários rodados e 100% verdes (`lib/dialogos.test.ts`, `lib/lugares.test.ts`, `lib/conselhos/catalogo.test.ts`, `lib/direitos-humanos/relatorios.test.ts`, `lib/judiciario/jurisprudencia-clima-barragens.test.ts`).
+  - (gemini, 18:38) Conflito entre worktrees e origin/main resolvido com merge unificado preservando todas as entregas de ambos os agentes.

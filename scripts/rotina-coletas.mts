@@ -115,6 +115,18 @@ const MAPA_SCRIPTS: Record<string, { tipo: "ts" | "py"; comando: string }> = {
     tipo: "py",
     comando: "scripts/coletar-biblioteca-ati.py",
   },
+  "biblioteca-atis-mariana": {
+    tipo: "py",
+    comando: "scripts/coletar-biblioteca-ati-mariana.py",
+  },
+  "fundo-brasil": {
+    tipo: "py",
+    comando: "scripts/coletar-biblioteca-fundo-brasil.py",
+  },
+  "noticias-desastres": {
+    tipo: "py",
+    comando: "scripts/coletar-noticias-desastres.py",
+  },
   "cnj-inspecoes": {
     tipo: "ts",
     comando: "scripts/gerar-inspecoes-cnj.mts",

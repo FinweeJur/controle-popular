@@ -1,0 +1,151 @@
+{
+ "gerado_em": "2026-09-01T10:56:39.570632+00:00",
+ "janela_dias": 30,
+ "buscas": [
+  {
+   "id": "atingidos-bahia",
+   "tema": "Atingidos — Bahia"
+  },
+  {
+   "id": "rio-doce-es",
+   "tema": "Rio Doce — Espírito Santo"
+  },
+  {
+   "id": "mariana",
+   "tema": "Mariana — 2015"
+  },
+  {
+   "id": "brumadinho",
+   "tema": "Brumadinho — 2019"
+  }
+ ],
+ "lacuna_conhecida": "Noticia diz que algo foi noticiado, na data em que foi - nao e fato oficial. O vinculo de uma noticia ao caso Mariana ou Brumadinho e inferido por termo de lugar no titulo; item sem vinculo claro fica sem rotulo de desastre em vez de chutar.",
+ "itens": [
+  {
+   "titulo": "Lama no Rio Doce: programa vai destinar R$ 1 bilhão a mulheres atingidas no ES e em MG - agazeta.com.br",
+   "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOUzRIU1kteEo4TktoUTl5a2NyNzE4RkphVmJDT0lqaFY3SkV6Mzh4dUpjNEFkZ3ZfWDRnSUNIaUtfRllQeFRFNzcxYnVsN0NuU3B1cUJheDVOb3VtaHdEOTJ3ZzJoNmlleTNQUUhaVEFuV1FnUldtYl85UjFHX3lJRl9QaGl0OTRIcmRVMVMzNUNJc1ota1VsMGxNQjhHZGlKMnplaFlURXZzODJrMlNrYmZaQmlTRnZpdU9sYkFiNUdQN3dqdUFj?oc=5",
+   "veiculo": "agazeta.com.br",
+   "resumo": "Lama no Rio Doce: programa vai destinar R$ 1 bilhão a mulheres atingidas no ES e em MG agazeta.com.br",
+   "tema": "Rio Doce — Espírito Santo",
+   "desastre": "mariana",
+   "data": "2026-08-25T22:18:00+00:00"
+  },
+  {
+   "titulo": "Mariana e mais 18 municípios aderem ao acordo de reparação do Rio Doce - CNN Brasil",
+   "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxON3lnWEJSeHpoNGtoYnF0NEd2Q3FNR2RpVmF2RnV6cjRubWtGMHh1WGdsbU5sWXZvb2laVm5uNWNkdXNrSjdSSXBaOF9iSUlLZkdRcklDc0ZhRGR5N1JxZHZ3ZmxNWHRPTV9lREJ6NEdNaU02TWVPWDBpTDB3eEllQUtlNlNMVlBqTXlTLW8zMDRlLTlkZFV2d3hYWFVpaHVZa1VUQU1EZjF3QQ?oc=5",
+   "veiculo": "CNN Brasil",
+   "resumo": "Mariana e mais 18 municípios aderem ao acordo de reparação do Rio Doce CNN Brasil",
+   "tema": "Mariana — 2015",
+   "desastre": "mariana",
+   "data": "2026-08-21T07:00:00+00:00"
+  },
+  {
+   "titulo": "Tragédia de Mariana: novo acordo de reparação ganha adesão de mais 19 municípios - Jornal Bairros Net",
+   "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPcnlqbXZYMDdpY08zODRnRnNsMHVwS1ltMUkwV3pSQVViS1U0MlhobXBxQ1lHVHNZUkNVNTkzWEg3RGNELVFBa25RMXQtNUEyQ2xPS1NlVkprWXFZRGFzcXNPR0NwV1doYjR0TFFnbUU5VUFDSUlodU5sX0ZLNEhyaF9OZEJrMDM3Y19SZTBFMXR0WjhqeDRhVzJZMG9wNm5oekt1Qjl0eTVWYkhNc0pvcE5fTmV0WGV6MzljSUY5QlJjWHNud2lHdktjbw?oc=5",
+   "veiculo": "Jornal Bairros Net",
+   "resumo": "Tragédia de Mariana: novo acordo de reparação ganha adesão de mais 19 municípios Jornal Bairros Net",
+   "tema": "Mariana — 2015",
+   "desastre": "mariana",
+   "data": "2026-08-21T03:14:17+00:00"
+  },
+  {
+   "titulo": "Mariana adere a acordo por rompimento da barragem de Fundão e vai receber R$ 2,4 bilhões - G1",
+   "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQaUxMTFlVVkJ3YmZIZ1RoLXR2bUExZlgtS0VhdnBHRGZ0WUJjTjRfZVJGVnZRLU50MVpfd1JfWkE5ZjFhQ0xjdXMyd0c0bTczY1ZnRDV3cUFlZUVfelBNTlBJOHpJVkIxWk1yWlpjRWdBaDNHbUl5bkU3QWJrUG1VUkI5ekszZXAtU0dVUTZNd21rY0lBQ1pBX1c1NGgwbXNOTC1FYld4cDNwRmZBMFNUVzY3S3E3a2k2aG9ERmw3T0NwQVRLM0tmWEl2OHUtaUpDSmR0cEJ0MUZsR21SenhjdWx30gHwAUFVX3lxTFBZVkNIUTd3bFBDWUt6Zk40Ry1kVk5BVWlkaU12bGFDT3RWSTNHeEtiVHFqS0RWZlBybE5XM0JsMGpiS21qb3hyaHdkVUw5a3NhOXMtRy1wWmZfSUJvRVUwMDJFdi1lNkQ2N18ySHpCTVlfLWxHQTRVLUxFWWlxN2lfa2tHRGFiZ2J0R19pQ001cG5hYXgwSlBIcEloX3VPRU1XNTFiUjhfLTFnQ0s4MXRJbE9vS3l1YmNsN3lXaGJtbW5peTFEaHlvZlJCRXZFd3IzYVJ3QjJ0bGFNUzVSTnhyVWVycWxkaHBMd19lVmlkZQ?oc=5",
+   "veiculo": "G1",
+   "resumo": "Mariana adere a acordo por rompimento da barragem de Fundão e vai receber R$ 2,4 bilhões G1",
+   "tema": "Mariana — 2015",
+   "desastre": "mariana",
+   "data": "2026-08-20T07:00:00+00:00"
+  },
+  {
+   "titulo": "Reparação Brumadinho | Projetos de Segurança Hídrica - Anexo II.3 - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOYTkwVHV4UmEyS3RlOGtCTXFsS0xsZV9rWXBQOHE5YWw2ZGVBZGdzajRUN0EtREZ0Q3NDckFqSHN0ai1aN1BnaTFUbzdtUFQ4ODFjLUVtajhBbHRwVERtRHZHUElrNC1RbTFFN2oyRDM4Vi1OWnVfbTF6TzR6WWVjYTRSQWRYWi1uUTlIZUtUZDJXYjRHRXdpSXZ2VnBpV1hESW9Wa0FKWQ?oc=5",
+   "veiculo": "Portal MG",
+   "resumo": "Reparação Brumadinho | Projetos de Segurança Hídrica - Anexo II.3 Portal MG",
+   "tema": "Brumadinho — 2019",
+   "desastre": "brumadinho",
+   "data": "2026-08-19T17:57:00+00:00"
+  },
+  {
+   "titulo": "Reparação Brumadinho: Consulta Popular para Povos e Comunidades Tradicionais da região atingida - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNWE9zRk5MX1Q1QlpkUHBfRi1pS0Rrbk1ER0VUdzFzRUJHT1lDXzNiY05IZFlROG4zNlFuenMtMEl4UnR2a1dFVWFBR0d3Z0haUTgtZGRKYnlBRmFGSVh4emV5b2JXTFlzTkttWjJzdXJDWG9Zd3BkQlZHX28yZkhONlRRdXNqejFoa0loNWtaOFRIVGxPMmZkTmhJZmIxdVg3NHBFTWZnSUJpa3EtWTRwdTd4ckFtRmpBaXA1NDZRZzNjSzRrYWtuNWpFbHRLU2RiNVgtSUVR?oc=5",
+   "veiculo": "Portal MG",
+   "resumo": "Reparação Brumadinho: Consulta Popular para Povos e Comunidades Tradicionais da região atingida Portal MG",
+   "tema": "Brumadinho — 2019",
+   "desastre": "brumadinho",
+   "data": "2026-08-13T07:00:00+00:00"
+  },
+  {
+   "titulo": "Entenda o Acordo Judicial para reparação ao rompimento em Brumadinho - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNeUx3enJ1WHBOZ19wYkVVcEd6RGN5bnlrTW9oWmZ4M3doUFBBeGF2VXh2TjZCRGFoSVBOaHc4NklYRTY0ZnlIaWdEZnI0YWRFN2ZfSFFsWlVrdDhXTUttQ0RZOTlIM3NIQjZGNHR5RnlLSmNpdm5MajZtLUU0NDl1ZTVKNUhrVWM0b1JSbDdWSml3YzZqN2NEMFpSamxTX01WLV9zVDgtajdVa1dDa0hJ?oc=5",
+   "veiculo": "Portal MG",
+   "resumo": "Entenda o Acordo Judicial para reparação ao rompimento em Brumadinho Portal MG",
+   "tema": "Brumadinho — 2019",
+   "desastre": "brumadinho",
+   "data": "2026-08-11T07:00:00+00:00"
+  },
+  {
+   "titulo": "Reparação Brumadinho | Projetos de fortalecimento dos serviços públicos para Brumadinho - Anexo I.4 - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNaVA4VXlxY2cxVnlQdUlSX3JxTUR1V0ladTRRX2J0TF84TFJkS3o1S09vZzRBb3EyTlpPMXVlNy1uSlFPazNRM05MQWNBV0RKZmVlMzN3ZlRzSjFHMUZlWWI4RkNadjFyZjdFN0tZTXNkSllHX29OWFplaVZ1Z3RyTUt1bU5xQ2U2ZmR4MlBGSkdlUnkxLWdKQ09ycjZKX2JDT29DRmJfWU53LWNacGI5aDNUd2ZRdw?oc=5",
+   "veiculo": "Portal MG",
+   "resumo": "Reparação Brumadinho | Projetos de fortalecimento dos serviços públicos para Brumadinho - Anexo I.4 Portal MG",
+   "tema": "Brumadinho — 2019",
+   "desastre": "brumadinho",
+   "data": "2026-08-11T07:00:00+00:00"
+  },
+  {
+   "titulo": "Reparação Brumadinho | Recuperação Socioambiental - Anexo II.1 - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQWHRaVG1RWGEwQ09YR2xxcjBhSmNQV1c2LXdfV0g5ZW9PaHFpWndvX3puX0dQOG0yQ3hIVVQ4aGJ1elA4STRWZ1dYWDZyVnZTT01iM3pzZEt5aG83encycDVjR3ZQMDdfQlFyVWtOUWtOZVEyOVBmZTVkazFlaGtIRUw2cndZMlNOS2lUWXd3dFVVVW1EN2hwd2tNeUVId3VRbDI4?oc=5",
+   "veiculo": "Portal MG",
+   "resumo": "Reparação Brumadinho | Recuperação Socioambiental - Anexo II.1 Portal MG",
+   "tema": "Brumadinho — 2019",
+   "desastre": "brumadinho",
+   "data": "2026-08-07T07:00:00+00:00"
+  },
+  {
+   "titulo": "Reparação Brumadinho | Plano de Recuperação Socioambiental (VERSÃO PRELIMINAR) - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNblZDWFBwcDZxc3g4Tlg0T2dPcDFJWnQ0ZGZVWW5ZOGpOcHNtUjd1VW5MSmc0S0NsNEpPTXk5OFF3UkEzSmRRVlF0RnRYUHBSY0Nqb21tOGtmQzJrcUgxQzBVOERTajdEeElZMnVLazFfNFBFNUZHb1FDRmlGMjhwb2xBdU1RdktPbVVDQW4wbVJ0aE9OX2dnazBsQ0lMYmwwVVhSRDNiU2ZFUmwyNXRmaEh6Z20zTVlxc0E?oc=5",
+   "veiculo": "Portal MG",
+   "resumo": "Reparação Brumadinho | Plano de Recuperação Socioambiental (VERSÃO PRELIMINAR) Portal MG",
+   "tema": "Brumadinho — 2019",
+   "desastre": "brumadinho",
+   "data": "2026-08-07T07:00:00+00:00"
+  },
+  {
+   "titulo": "Reparação Brumadinho | Monitoramento da qualidade da água para consumo humano - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPUXdXZlAwT3RoSDdKblg1YXp5eHd3d0dXZG1zeW9xRElxQVZmY2pxS1BYdFNUY01ydzhCNk9LaG5pbkR0RTlWZ1JNRDZGX1JqajBtdDR0UzVTMEc5bXRwcUFGTjRmQWw1YnI2eng4REpuckUzOGN4WXMxc1RuRE5PNlhYWGFPZnMwdVE4NFBPLVYwX2V3UTNjVHRXcGVkZXZfcVVnVzh0aDNLanZuX0gtZVh0WTFYVlRnMU9F?oc=5",
+   "veiculo": "Portal MG",
+   "resumo": "Reparação Brumadinho | Monitoramento da qualidade da água para consumo humano Portal MG",
+   "tema": "Brumadinho — 2019",
+   "desastre": "brumadinho",
+   "data": "2026-08-07T07:00:00+00:00"
+  },
+  {
+   "titulo": "Reparação Brumadinho | Compensação socioambiental dos danos já conhecidos - Anexo II.2 - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQeHFnSEJJVS1faU9SZTRheGRMeHhadU1QLXE0bDFpbE8zd1JlM0VwX2hmWlJfejRaQUZPNWxlSDA2eG9YX2MtYXFPX1pyLU9TakMyR1dyQ25YamlDUVV0NDNwcTVJeWg4bmpaWWEtMS1XcDFvVTNlV1phR1JzR09mdUN4NDJfb25uTkhFR3JKOWhYVUY5emtNcVJ2MndXVnNZZjViNTFlM1UtT2QzR09PazlyZHFXVWpsRlJxbjRJWUwyTVU?oc=5",
+   "veiculo": "Portal MG",
+   "resumo": "Reparação Brumadinho | Compensação socioambiental dos danos já conhecidos - Anexo II.2 Portal MG",
+   "tema": "Brumadinho — 2019",
+   "desastre": "brumadinho",
+   "data": "2026-08-07T07:00:00+00:00"
+  },
+  {
+   "titulo": "Compromitentes do Acordo Judicial de Reparação ao rompimento em Brumadinho - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPQWk4Y2pnazBwMlhBdjRQb1lvVVVJd2tPMHAxXzVDWXNsSERCUzlLX09VSTFobTA1cUYybENEc2hfOVVlMUVBRnlpZzcyMmlGY2tDc1ZQMTQ5Wnd5NnkyemlkY2JhNmhZUVZPQTR3T2dmQkN1dzlPT2Y4VkFPMEdEZ2I0UVN1cGE3NjU3aFpfcTNfYy16enlWQTBjTmw1R29MMUVnMW84NmtWdWctam0wY211dDBkcWtiSVE?oc=5",
+   "veiculo": "Portal MG",
+   "resumo": "Compromitentes do Acordo Judicial de Reparação ao rompimento em Brumadinho Portal MG",
+   "tema": "Brumadinho — 2019",
+   "desastre": "brumadinho",
+   "data": "2026-08-07T07:00:00+00:00"
+  },
+  {
+   "titulo": "Consulta Popular, Reparação Brumadinho: Saiba tudo sobre o processo consultivo na região atingida da bacia do Paraopeba - Portal MG",
+   "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOeUNPRW1MOGpxbXdNc0ZpRkd2SkRRX0NCazQ4bTZXYTFhc0Q4cDNvTWJFMGlMbDdkcTlCUjBiTVIyWk5LS016ZWhndTdfb2JrMW0wcm84S0d0YXUwYWRKdHRPc2hqd0pvdUo3dHlOczN6ZUprZ1lIQ1k3bGNUeFh6MEZabW1JWkpsMXd5VDEwSHJIS2txZHFFbW91c2Y3SDlTQjRnZDdHdjJqM1hfZi1rMm1mZEN3NHNoTjFOaHlORnM3a1o4ZWRON293akVfMVZyVmVxVnFMY0xGb2VyUVd2OHpMdE9OSEpDb24xU3NyblhqMlU?oc=5",
+   "veiculo": "Portal MG",
+   "resumo": "Consulta Popular, Reparação Brumadinho: Saiba tudo sobre o processo consultivo na região atingida da bacia do Paraopeba Portal MG",
+   "tema": "Brumadinho — 2019",
+   "desastre": "brumadinho",
+   "data": "2026-08-07T07:00:00+00:00"
+  }
+ ]
+}

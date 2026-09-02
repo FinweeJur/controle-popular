@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import { metadataEditavel } from "@/lib/edicoes";
+import FooterGlobal from "@/app/components/FooterGlobal";
 
 /**
  * Home da marca Controle Popular, na raiz do domínio.
@@ -278,6 +279,7 @@ export default async function Hub() {
           ministro segue a mesma disciplina, publicada na seção do Judiciário.
         </p>
       </footer>
+      <FooterGlobal />
     </main>
   );
 }

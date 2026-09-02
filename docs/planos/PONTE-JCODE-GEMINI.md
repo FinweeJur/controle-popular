@@ -15,7 +15,6 @@
 - [Como o dono usa](#como-o-dono-usa)
 - [Primeira tarefa na fila](#primeira-tarefa-na-fila)
 - [Limites honestos](#limites-honestos)
-
 ## 🎯 Objetivo
 
 Permitir que o **jcode** (deepseek v4 flash) e o **Gemini/Antigravity**

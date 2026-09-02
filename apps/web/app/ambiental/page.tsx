@@ -218,6 +218,16 @@ export default async function AmbientalHome() {
       pronta: true,
       linkTexto: "Acompanhar execução do Rio Doce →",
     },
+    {
+      titulo: "Crimes socioambientais — Mariana e Brumadinho",
+      linha: "Os documentos dos dois casos numa tela só",
+      texto:
+        "Decisão, laudo, resolução, termo e relatório publicados por órgãos federais, estaduais, instituições de justiça e assessorias técnicas sobre os dois rompimentos — com busca, filtros e ordenação. Mariana e Brumadinho são casos diferentes e aparecem separados.",
+      fase: "F12",
+      href: "/crimes-socioambientais",
+      pronta: true,
+      linkTexto: "Ver a biblioteca dos crimes socioambientais →",
+    },
   ];
 
   return (
