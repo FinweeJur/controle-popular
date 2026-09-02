@@ -4,7 +4,7 @@
 > **Domínio:** operação do projeto
 > **Última medição:** 2026-09-02
 > **Leitura estimada:** média (5–15 min)
-> **Relacionados:** [RETROSPECTIVA-2026-09](../planos/Kimi_Agent_Retrospectiva%20do%20Projeto/repo-controle-popular/docs/historico/RETROSPECTIVA-2026-09.md), [DESENVOLVIMENTO](../03-desenvolvimento/DESENVOLVIMENTO.md), [AGENTS](/AGENTS.md), [ESTADO](../02-estado/ESTADO.md)
+> **Relacionados:** [DESENVOLVIMENTO](../03-desenvolvimento/DESENVOLVIMENTO.md), [AGENTS](/AGENTS.md), [ESTADO](../02-estado/ESTADO.md), [PLANO-NOSSOS-PAINEIS-SANFONA](./PLANO-NOSSOS-PAINEIS-SANFONA.md)
 > **Palavras-chave:** sanitizacao, worktree, branch, limpeza, organizacao, git, divida tecnica, rotina
 
 ## 🩺 Diagnóstico (medido em 02/09/2026)
