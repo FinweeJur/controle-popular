@@ -47,7 +47,8 @@ Integração dos Conselhos Sociais (PCTs, Direitos Humanos, Idoso, Criança/Adol
 🧪 <b>Testes e Commits:</b>
 16 testes unitários verdes (<code>lib/dialogos.test.ts</code> e <code>lib/lugares.test.ts</code>). Commits realizados com sucesso com pathspec explícito e sem conflitos.`;
 
-const texto = process.argv.slice(2).join(" ").trim() || mensagemPadrao;
+const textoBruto = process.argv.slice(2).join(" ").trim() || mensagemPadrao;
+const texto = textoBruto.replace(/<br\s*\/?>/gi, "\n");
 
 async function enviar() {
   const url = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
