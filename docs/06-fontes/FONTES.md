@@ -13,6 +13,7 @@
 - [Regras gerais de coleta](#regras-gerais-de-coleta)
 - [CNJ e JUMA — litígio e jurisprudência nacional](#cnj-e-juma-litígio-e-jurisprudência-nacional)
 - [Biblioteca das ATIs do Paraopeba](#biblioteca-das-atis-do-paraopeba)
+- [Crimes socioambientais — biblioteca unificada (Mariana e Brumadinho)](#crimes-socioambientais-biblioteca-unificada-mariana-e-brumadinho)
 - [Auditoria AJRI (Brumadinho)](#auditoria-ajri-brumadinho)
 - [Lei Rouanet / SALIC — e os três jeitos que a API mente](#lei-rouanet-salic-e-os-três-jeitos-que-a-api-mente)
 - [Território e mineração](#território-e-mineração)
@@ -74,6 +75,49 @@ Este documento consolida o levantamento, a classificação e o estado operaciona
 ## Auditoria AJRI (Brumadinho)
 
 Portal Rails autenticado por cookie Devise (sem API; 401/403 = renove o cookie). Acervo: 467 documentos (391 Relatórios + 76 Notas Técnicas), 28/02/2019–31/07/2026, autor AECOM, 7 instrumentos jurídicos, 27 facetas de tema reduzidas a 25 (duas duplicatas sujas — normalizar por slug). Rate mínimo 2 s; PDF gerado sob demanda com marca-d'água (timeout 180). **A marca-d'água contém nome e CPF do solicitante: não publicar os 467 PDFs** — publicar catálogo + link é compatível com os Termos; espelho integral só em acesso restrito a pesquisadores.
+
+## Crimes socioambientais — biblioteca unificada (Mariana e Brumadinho)
+
+Biblioteca única de documentos dos dois rompimentos, em `/ambiental/crimes-socioambientais`. **Metadado + link, nunca o arquivo** (Lei 9.610/98) — mesma regra das ATIs. `desastre` é campo obrigatório do item; os dois casos nunca se misturam sem rótulo (regra da insinuação).
+
+- **Agregador:** `scripts/agregar-biblioteca-desastres.mts` funde o acervo das ATIs do Paraopeba (`apps/web/public/data/biblioteca-ati.json`, 645 itens, `desastre: brumadinho`) com os arquivos por fonte em `etl/betim/dados/desastres/*.json` e grava `apps/web/public/data/biblioteca-desastres.json` + `COBERTURA_BIBLIOTECA_DESASTRES`. A triagem de dado pessoal roda aqui (`triagem.ts::ehItemBloqueado`), uma cópia só da regra.
+- **ATIs de Mariana (AEDAS Rio Doce):** `scripts/coletar-biblioteca-ati-mariana.py` — 118 itens (01/09/2026) dos programas do Rio Doce (Aimorés, Barra Longa, Conselheiro Pena, Médio Rio Doce, Resplendor-Itueta, Vale do Aço) via wp-json, dedup por id (o mesmo documento pertence a vários projetos). Ficam de fora: Itatiaiuçu e Veredas Sol e Lares (vínculo com a bacia não confirmado).
+- **CBH-Doce — Comitê da Bacia do Rio Doce:** `scripts/coletar-biblioteca-cbh-doce.py` — 157 itens (01/09/2026, delibera��es e mo��es normativas via p�gina p�blica WP).
+- **Fundo Brasil de Direitos Humanos:** `scripts/coletar-biblioteca-fundo-brasil.py` — 16 itens (01/09/2026) do programa "Programa Rio Doce" e editais de defesa de direitos humanos na bacia (ultimo edital 2025: 20 organizacoes, R$ 50.000 cada, total R$ 1.000.000,00). Coleta por paginas publicas do WordPress (cards `<a class="group bg-light">` com <h3>, <time> e <div class="text-black text-sm">).
+- **Pendentes de sondagem:** CIF (cif.org.br inacess�vel na sondagem de 01/09), MPF, �rg�os de MG (SEMAD/IGAM/FEAM) e ES (IEMA tem se��o "Desastre do Rio Doce" + "Biblioteca On-Line"), e as ATIs de Mariana sem REST p�blica confirmada (C�ritas, CTA, programa Doce da ADAI).
+
+### Mapa amplo de fontes (pesquisa 01/09/2026)
+
+Inventário dos repositórios documentais dos dois casos, com o que foi **medido** nesta máquina de dev (muitos exigem sondagem de navegador do dono ou rodada no home-pc — ver ESTADO.md "Rede bloqueada").
+
+**Mariana (Rio Doce, 2015):**
+
+| Fonte | Endereço | Acesso medido em 01/09/2026 |
+|---|---|---|
+| CIF — Comitê Interfederativo | cif.org.br | ⛔ transporte falha daqui (re-sondar no home-pc) |
+| Fundação Renova | renovabr.com | ⛔ transporte falha daqui |
+| ATIs: AEDAS Rio Doce | aedasmg.org (projetos Doce) | ✅ coletado (118 itens) — REST `wp/v2/documento?projeto=` |
+| ATI: ADAI (programa Doce) | adaibrasil.org.br | ⛔ sem REST pública do programa confirmada |
+| ATI: Cáritas | caritasbrasileira.org | ⛔ repositório a sondar |
+| ATI: CTA — Centro de Tecnologia Alternativa | cta.org.br | ⛔ transporte falha daqui |
+| IEMA-ES — Biblioteca | servicos.iema.es.gov.br/biblioteca/ | 🟡 Sophia (ASP.NET legado, frames/sessão) — sondagem de navegador |
+| IEMA-ES — seção "Desastre do Rio Doce" | iema.es.gov.br (menu) | 🟡 URL exata a sondar |
+| CBH-Doce — Comitê da Bacia do Rio Doce | cbhdoce.org.br | ✅ coletado (157 itens, deliberações e moções) |
+| Fundo Brasil de Direitos Humanos | fundobrasil.org.br | ✅ coletado (16 itens — Programa Rio Doce e editais) |
+| MPF — caso Samarco/Fundão | mpf.mp.br | 🟡 a localizar a biblioteca do caso |
+| Governo de MG — empenhos do Acordo | já em `/ambiental/mariana` | ✅ (532 empenhos) |
+
+**Brumadinho (Paraopeba, 2019):**
+
+| Fonte | Endereço | Acesso medido |
+|---|---|---|
+| ATIs Paraopeba (AEDAS/Guaicuy/NACAB) | — | ✅ coletado (645 itens) |
+| Pró-Brumadinho (Acordo Judicial, Governo MG) | — | ✅ coletado (129, no remoto) |
+| Auditoria AJRI/AECOM | — | ✅ (467) |
+| Perícia UFMG | — | ✅ (445) |
+| MPMG — 45 barragens em descaracterização | — | ✅ |
+| Acordo Rio Paraopeba (execução FGV) | — | ✅ |
+| MPF — caso Brumadinho | mpf.mp.br | 🟡 a localizar |
 
 ## Lei Rouanet / SALIC — e os três jeitos que a API mente
 

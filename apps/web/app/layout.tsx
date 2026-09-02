@@ -7,6 +7,8 @@ import PageViewBeacon from "@/app/components/PageViewBeacon";
 import TopNav from "@/app/components/TopNav";
 import { SeuNono } from "@/app/components/SeuNono";
 import { BackToTop } from "@/app/components/BackToTop";
+import IndicePagina from "@/app/components/IndicePagina";
+import BeaconDownloadsGlobal from "@/app/components/BeaconDownloadsGlobal";
 import LoadingOverlay from "@/app/components/LoadingOverlay";
 import "./globals.css";
 
@@ -164,6 +166,8 @@ export default function RootLayout({
 
           {/* Botão acessível para retornar ao topo da página em rolagens longas */}
           <BackToTop />
+        <IndicePagina />
+        <BeaconDownloadsGlobal />
           {/* Seu Nonô — assistente flutuante. Modo texto enquanto IA não está
               configurada; modo IA (RAG) quando houver chave de API. */}
           <SeuNono />

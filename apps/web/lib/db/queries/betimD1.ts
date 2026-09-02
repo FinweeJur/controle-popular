@@ -1,6 +1,6 @@
 import { and, asc, desc, eq, gte, inArray, like, sql } from "drizzle-orm";
 import { getD1 } from "@/lib/db/clientD1";
-import { anuncios, classificados, page_views, zap_estabelecimentos } from "@/lib/db/schema.d1";
+import { anuncios, classificados, contadores, page_views, zap_estabelecimentos } from "@/lib/db/schema.d1";
 import type { IdMunicipio } from "@/lib/db/queries/municipios";
 
 /**
@@ -44,6 +44,30 @@ export async function rankingPageViews(limite: number): Promise<LinhaPageViewD1[
     .from(page_views)
     .orderBy(desc(page_views.contagem))
     .limit(limite);
+}
+
+export async function incrementarContador(tipo: string) {
+  const db = await getD1();
+  if (!db) return null;
+  const agora = new Date().toISOString();
+  await db
+    .insert(contadores)
+    .values({ tipo, contagem: 1, atualizado_em: agora })
+    .onConflictDoUpdate({
+      target: contadores.tipo,
+      set: { contagem: sql`${contadores.contagem} + 1`, atualizado_em: agora },
+    });
+  return true;
+}
+
+export type LinhaContadorD1 = { tipo: string; contagem: number };
+
+export async function totaisContadores(): Promise<LinhaContadorD1[] | null> {
+  const db = await getD1();
+  if (!db) return null;
+  return db
+    .select({ tipo: contadores.tipo, contagem: contadores.contagem })
+    .from(contadores);
 }
 
 export async function inserirZapEstabelecimentoD1(

@@ -336,7 +336,7 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     camada: "public-assets",
     caminhoArquivo: "apps/web/public/data/biblioteca-ati.json",
     constanteCobertura: "COBERTURA_BIBLIOTECA_ATI",
-    rotaPortal: "/paraopeba/biblioteca",
+    rotaPortal: "/ambiental/crimes-socioambientais",
   },
 
   // ─── FRENTE: AMBIENTAL ──────────────────────────────────────────────────────
@@ -413,6 +413,79 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     camada: "banco",
     rotaPortal: "/ambiental/legislacao",
   },
+
+  // ─── FRENTE: AMBIENTAL — CRIMES SOCIOAMBIENTAIS (Mariana e Brumadinho) ───
+  "biblioteca-desastres": {
+    slug: "biblioteca-desastres",
+    nome: "Biblioteca unificada dos crimes socioambientais (Mariana e Brumadinho)",
+    orgao: "ATIs, órgãos federais, estaduais e instituições de justiça",
+    esfera: "independente",
+    frente: "ambiental",
+    descricao:
+      "Catálogo + link de documentos públicos dos dois rompimentos, fundido por scripts/agregar-biblioteca-desastres.mts a partir do acervo das ATIs e dos arquivos por fonte em etl/betim/dados/desastres.",
+    urlOficial: "https://controlepopular.com.br/ambiental/crimes-socioambientais",
+    licenca: "lei-acesso-informacao",
+    frequenciaAtualizacao: "semanal",
+    camada: "public-assets",
+    caminhoArquivo: "apps/web/public/data/biblioteca-desastres.json",
+    constanteCobertura: "COBERTURA_BIBLIOTECA_DESASTRES",
+    rotaPortal: "/ambiental/crimes-socioambientais",
+    ressalvaEditorial:
+      "Mariana (2015) e Brumadinho (2019) são casos diferentes — responsáveis, bacias e processos distintos. Todo item traz desastre; nenhum agregado mistura os dois sem rótulo.",
+  },
+  "biblioteca-atis-mariana": {
+    slug: "biblioteca-atis-mariana",
+    nome: "ATIs de Mariana — AEDAS na bacia do Rio Doce",
+    orgao: "AEDAS",
+    esfera: "independente",
+    frente: "ambiental",
+    descricao:
+      "Publicações das assessorias técnicas independentes nos programas do Rio Doce (Aimorés, Barra Longa, Conselheiro Pena, Médio Rio Doce, Resplendor-Itueta, Vale do Aço), coletadas por scripts/coletar-biblioteca-ati-mariana.py.",
+    urlOficial: "https://aedasmg.org/",
+    licenca: "cc-by-nd",
+    frequenciaAtualizacao: "semanal",
+    camada: "public-assets",
+    caminhoArquivo: "apps/web/public/data/biblioteca-desastres.json",
+    constanteCobertura: "COBERTURA_BIBLIOTECA_DESASTRES",
+    rotaPortal: "/ambiental/crimes-socioambientais",
+    ressalvaEditorial:
+      "Metadado + link, nunca o arquivo (Lei 9.610/98, direitos reservados sem licença declarada). Sem resumo: a fonte não publica excerpt.",
+  },
+   "noticias-desastres": {
+     slug: "noticias-desastres",
+     nome: "Radar de notícias dos crimes socioambientais",
+     orgao: "Imprensa e agregador Google Notícias",
+     esfera: "independente",
+     frente: "ambiental",
+     descricao:
+       "Radar diário (título, veículo, data, microresumo, link) sobre Mariana, Brumadinho, o reconhecimento de atingidos no ES e na Bahia e a bacia do Rio Doce. Nunca o corpo da matéria.",
+     urlOficial: "https://news.google.com/",
+     licenca: "dados-abertos-gov",
+     frequenciaAtualizacao: "diaria",
+     camada: "data-json",
+     caminhoArquivo: "apps/web/data/noticias-desastres.json",
+     rotaPortal: "/ambiental/crimes-socioambientais",
+     ressalvaEditorial:
+       "Notícia diz que algo foi noticiado, na data em que foi — não é fato oficial. Item sem vínculo claro de lugar com um dos casos fica sem rótulo de desastre.",
+   },
+   "fundo-brasil": {
+     slug: "fundo-brasil",
+     nome: "Fundo Brasil de Direitos Humanos — Programa Rio Doce e editais",
+     orgao: "Fundo Brasil de Direitos Humanos",
+     esfera: "independente",
+     frente: "ambiental",
+     descricao:
+       "Metadado de editais e do programa institucional 'Programa Rio Doce' do Fundo Brasil (financiamento a sociedade civil na bacia do Rio Doce, area atingida por Mariana). Ultimo edital: 2025 — 20 organizacoes, R$ 50.000 cada, total R$ 1.000.000,00.",
+     urlOficial: "https://www.fundobrasil.org.br",
+     licenca: "dados-abertos-gov",
+     frequenciaAtualizacao: "anual",
+     camada: "public-assets",
+     caminhoArquivo: "apps/web/public/data/biblioteca-desastres.json",
+     constanteCobertura: "COBERTURA_BIBLIOTECA_DESASTRES",
+     rotaPortal: "/ambiental/crimes-socioambientais",
+     ressalvaEditorial:
+       "Mariana (2015) e Brumadinho (2019) sao casos diferentes. Metadado + link, nunca o arquivo. Editais publicados pela propria fundao; o portal registra apenas a referencia.",
+   },
 
   // ─── FRENTE: EMPRESAS ───────────────────────────────────────────────────────
   "vale-b3-cvm": {

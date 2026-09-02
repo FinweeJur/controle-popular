@@ -113,7 +113,9 @@ RE_HOST_LOCAL = re.compile("@(127[.]0[.]0[.]1|localhost|::1)")
 # teste que verifica se o validador funciona seria barrado por este script.
 SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900", "47018614139", # falso positivo: agregado financeiro do SIAFI (R$ bi) capturado como inteiro pelo grep — dinheiro, nao CPF
               "12345678909", "123.456.789-09",
-              "00003106705"} # falso positivo: IBGE de Betim com zeros a esquerda (artefato do validate-docbr em docstring) — municipio, nao CPF
+              "00003106705", # falso positivo: IBGE de Betim com zeros a esquerda (artefato do validate-docbr em docstring) — municipio, nao CPF
+              # fixtures do teste adversarial de extracao do diario (lib/diario/extrairEntidades.adversarial.test.ts): CPFs sinteticos validos por mod-11, constantes de teste, nao pessoa real
+              "84351260645", "843.512.606-45", "05982413615", "059.824.136-15"}
 
 
 def cpf_valido(digitos: str) -> bool:

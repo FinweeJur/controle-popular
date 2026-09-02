@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 import type { TemaAjri } from "./auditoria-ajri";
-import { ehTipoPessoal, precisaRedigirResumo } from "./triagem";
+import { ehItemBloqueado } from "./triagem";
 
 /**
  * Biblioteca das Assessorias Técnicas Independentes do Paraopeba — o que as
@@ -217,10 +217,11 @@ async function ler(): Promise<LidoBiblioteca> {
  * o TÍTULO disparar a régua de dado pessoal (CPF válido, iniciais de vítima,
  * contato pessoal). `resumo: null` porque este acervo não tem resumo — a
  * régua então avalia só o título, que é exatamente o que existe para avaliar.
+ *
+ * Delega em `triagem.ts::ehItemBloqueado` (uma cópia só da regra).
  */
 export function ehItemBloqueadoPelaTriagem(item: ItemBiblioteca): boolean {
-  if (ehTipoPessoal(item.tipo)) return true;
-  return precisaRedigirResumo({
+  return ehItemBloqueado({
     tipo: item.tipo,
     titulo: item.titulo,
     resumo: null,

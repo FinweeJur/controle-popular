@@ -207,7 +207,11 @@ SINTETICOS = {"00000000000", "000.000.000-00", "11111111111", "12345678900",
               # falso positivo: IBGE de Betim com zeros à esquerda (artefato do
               # validate-docbr citado no docstring de _cpf_confirmado) — passa no
               # mod-11 por coincidência, é município, não CPF.
-              "00003106705"}
+              "00003106705",
+              # fixtures do teste adversarial de extração do diário
+              # (lib/diario/extrairEntidades.adversarial.test.ts): CPFs sintéticos
+              # válidos por mod-11, constantes de teste, não pessoa real.
+              "84351260645", "843.512.606-45", "05982413615", "059.824.136-15"}
 
 
 def cpf_valido(digitos: str) -> bool:
