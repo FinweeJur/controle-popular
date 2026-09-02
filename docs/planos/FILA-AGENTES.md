@@ -72,7 +72,7 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 
 ---
 
-## [ABERTA] j1 — Publicar a Onda 1 no GitHub
+## [CONCLUÍDA] j1 — Publicar a Onda 1 no GitHub
 
 - **Donatário:** jcode
 - **Pedida por:** Artur (via `/jcode`, Telegram 18:07)
@@ -80,7 +80,7 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 - **Tarefa:** publicar no GitHub os commits locais da Onda 1 implementados
   pela outra sessão (`a24c081` e seguintes: schema lugares/dialogos,
   PainelDialogo, rotas Nossos, subfrentes Animais/Gente).
-- **Status:** aberta
+- **Status:** concluída
 - **Critério de pronto:** origin/main com os commits; testes e tsc verdes
   antes do push.
 - **Notas:**
@@ -89,6 +89,7 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 
 ---
 
+  - (jcode, 20:07) Onda 1 publicada no GitHub via g2 (merge 35d16e5 + commits).
 ## [CONCLUÍDA] g2 — Revisar e publicar a Onda 1
 
 - **Donatário:** gemini
