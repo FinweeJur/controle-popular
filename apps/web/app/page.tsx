@@ -29,9 +29,9 @@ import { metadataEditavel } from "@/lib/edicoes";
  */
 
 export const metadata: Metadata = metadataEditavel("/", {
-  title: "Controle Popular — dados públicos que dá para usar",
+  title: "Controle Popular — portal do ONSA com dados públicos que dá para usar",
   description:
-    "Transparência do orçamento e dos contratos de Betim-MG, monitoramento do que o Congresso Nacional decide sobre direitos, e quem ocupa cada cadeira do Judiciário. Portal independente.",
+    "Com raízes na História e Geografia, o Controle Popular usa Inteligência Artificial para somar na busca por justiça socioambiental e fiscalização cidadã — gratuito e sem cadastro, por qualquer celular ou computador. Reúne contratos, convênios, licenciamentos ambientais, autorizações minerárias e de barragens, legislação ambiental e de direitos humanos, e o orçamento de prefeituras, do governo de Minas, do Congresso Brasileiro e das Instituições de Justiça.",
 });
 
 // A cópia das frentes mora em `lib/zonas.ts`, porque o bloco de remissão no
@@ -64,9 +64,17 @@ export default async function Hub() {
           Dados públicos que dá para usar
         </h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">
-          Informação oficial sobre dinheiro público e sobre as leis que mexem com a sua
-          vida, reunida e explicada. Portal independente, sem vínculo com nenhum governo,
-          câmara ou partido.
+          Com raízes na História e na Geografia, o Controle Popular usa Inteligência
+          Artificial para somar na busca por justiça socioambiental e fiscalização
+          cidadã — gratuita e sem cadastro, de qualquer celular ou computador. É o
+          portal virtual criado com IA do Observatório Nacional Socioambiental (ONSA).
+        </p>
+        <p className="max-w-2xl text-[.98em] text-text-soft">
+          Reunimos dezenas de portais e dados públicos: milhares de contratos,
+          convênios, licenciamentos ambientais, pesquisas e autorizações minerárias
+          e de barragens, legislação ambiental e de direitos humanos unificada, e o
+          orçamento detalhado das prefeituras, do governo de Minas, do Congresso
+          Brasileiro e das Instituições de Justiça.
         </p>
         <p className="flex flex-wrap gap-x-4 gap-y-1 text-[.95em]">
           <a href="/busca" className="font-medium text-primary hover:underline">
