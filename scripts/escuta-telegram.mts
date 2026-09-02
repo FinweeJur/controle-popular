@@ -64,11 +64,18 @@ async function main() {
   }
   let offset = lerOffset();
   console.log("👂 Escuta Telegram iniciada. Offset inicial:", offset ?? "(nenhum)");
+  let desdeUltimoBatimento = Date.now();
+  const BATIMENTO_MS = 20_000; // a cada ~20s, respira para o watchdog
 
   // Loop infinito: getUpdates curto, grava, agradece.
   // Retorna ao loop mesmo em erro de rede (backoff pequeno).
   for (;;) {
     try {
+      // Batimento cardíaco: avisa que segue vivo sem floodar.
+      if (Date.now() - desdeUltimoBatimento >= BATIMENTO_MS) {
+        console.log("💓 escuta-telegram: vivo, aguardando mensagens");
+        desdeUltimoBatimento = Date.now();
+      }
       const corpo: Record<string, unknown> = {
         timeout: 25,
         limit: 20,
