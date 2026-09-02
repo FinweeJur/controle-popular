@@ -17,6 +17,12 @@
  * do acervo do próprio projeto; nenhum fato novo foi inventado para
  * enfeitar cartão.
  *
+ * ⟲ 02/09, A PEDIDO DO DONO — "as cidades estão repetindo o rosário":
+ * a festa do rosário aparecia em TRÊS cartões (Betim, Araçuaí e
+ * Itinga), lida em sequência virava ladainha. Agora o rosário fica só
+ * em Itinga; Betim ganha o congado com chão de fábrica, Araçuaí ganha
+ * a viola ao lado das ceramistas. Cada cidade fala com a própria voz.
+ *
  * MESMA FILOSOFIA DO `zonas.ts`: copy em UM lugar, lida por qualquer
  * página. Duplicar o texto em cada `[municipio]` garantiria deriva — a
  * correção de um fato histórico teria de ser feita em seis arquivos, e
@@ -33,6 +39,9 @@
  *   CEMIG 2015 / professores 2011 / metalúrgicos 68; Clube da Esquina;
  *   Conceição Evaristo cresceu em BH): fato consolidado.
  * - Diamantina (Estrada Real, Chica da Silva, JK, vesperatas): fato
+ *   consolidado.
+ * - Betim (cidade industrial, congado): fato consolidado.
+ * - Araçuaí (ceramistas do Vale) e Itinga (folia de reis): fato
  *   consolidado.
  * - Betim, Araçuaí e Itinga: `memoria: null` até fechar fonte local
  *   no padrão do repo. A candidata de Betim — "Betim também é bacia
@@ -73,17 +82,21 @@ const MEMORIA_CIDADES: Record<string, MemoriaCidade> = {
   },
   betim: {
     // PENDENTE de fonte local fechada — ver cabeçalho deste arquivo.
+    // ⟲ 02/09: saiu a festa do rosário (ficou só em Itinga); entra o
+    // chão de fábrica ao lado do congado — as duas metades da cidade.
     memoria: null,
     cultura:
-      "No fim do dia, o congado e a festa do rosário lembram que força também é festa.",
+      "Cidade de chão de fábrica e de fé: o turno apita, o congado bate tambor — força de trabalho que também é festa.",
   },
   aracuai: {
     // PENDENTE de fonte local fechada — ver cabeçalho deste arquivo.
     // ⟲ 02/09, v7.1: a saudação risonha do poema "Passado e futuro"
     // (acervo do projeto) fecha a linha de cultura.
+    // ⟲ 02/09: saiu a festa do rosário (ficou só em Itinga); entra a
+    // viola ao lado das ceramistas — o barro e a corda do Vale.
     memoria: null,
     cultura:
-      "O Vale do Jequitinhonha molda barro e memória: as ceramistas daqui são reconhecidas mundo afora, e a festa do rosário segue de pé. É o povo que luta e sonha no Vale — e sonha risonho.",
+      "Aqui o barro vira gente: as ceramistas do Vale são reconhecidas mundo afora, e a viola segue afinada nas praças. É o povo que luta e sonha no Vale — e sonha risonho.",
   },
   itinga: {
     // PENDENTE de fonte local fechada — ver cabeçalho deste arquivo.
@@ -91,6 +104,8 @@ const MEMORIA_CIDADES: Record<string, MemoriaCidade> = {
     // o trecho do poema do Vale é "construindo um novo dia, uma boa
     // utopia". ("Birra e teimosia" segue no plano só como verso-cunho
     // do capítulo Terras.)
+    // ⟲ 02/09: o rosário mora AQUI agora — era refrão de três
+    // cartões, virou voz de uma cidade só.
     memoria: null,
     cultura:
       "No coração do Vale, o rosário e a folia de reis seguem vivos — cultura que nunca pediu licença. E o poema do Vale aponta o amanhã: construindo um novo dia, uma boa utopia.",
