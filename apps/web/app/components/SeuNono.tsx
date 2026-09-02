@@ -735,8 +735,12 @@ export function SeuNono() {
                 ) : (
                   <>
                     <p className="text-sm text-text-soft">
-                      Olá! Sou o <strong className="text-text">Seu Nonô</strong>. Escolha uma
-                      frente do portal para eu te guiar:
+                      Sou o <strong className="text-text">Seu Nonô</strong>, chatbot do portal
+                      digital Controle Popular do <strong className="text-text">ONSA</strong>.
+                      Com raízes na História e na Geografia, o portal usa Inteligência
+                      Artificial para somar na busca por justiça socioambiental e
+                      fiscalização cidadã — gratuito, sem cadastro, de qualquer celular
+                      ou computador. Escolha uma frente para eu te guiar:
                     </p>
                   </>
                 )}
@@ -1392,7 +1396,7 @@ export function SeuNono() {
           <div className="flex items-start gap-2">
             <AvatarSeuNono size={20} className="mt-0.5 shrink-0 text-primary" />
             <div className="flex-1">
-              <p className="text-sm font-semibold text-text">Oi! Eu sou o Seu Nonô.</p>
+              <p className="text-sm font-semibold text-text">Oi! Sou o Seu Nonô, do portal Controle Popular do ONSA.</p>
               <p className="mt-1 text-xs leading-relaxed text-text-soft">
                 Clique aqui para tirar suas dúvidas sobre o portal. Posso te guiar
                 pelas frentes, responder perguntas e até mudar o tema ou o tamanho do texto.
