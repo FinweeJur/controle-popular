@@ -45,7 +45,7 @@ Além disso, o **ONSA** passa a abrigar formalmente a dimensão de **terras e te
 - **Nossos Territórios** (terras indígenas, quilombos, cerrados e vales);
 - **Nossa Gente** (impactos sociais, trabalho tradicional, cultura e saúde comunitária).
 
-Todas as páginas socioambientais passam a terminar com o bloco obrigatório **"E o social?"** e recebem as etiquetas fixas `natureza` e `ecossistema`.
+Todas as páginas socioambientais passam a terminar com o bloco obrigatório **"E nosso povo?"** (variando com **"E nossa gente?"**) e recebem as etiquetas fixas `natureza` e `ecossistema`.
 
 ---
 
@@ -330,10 +330,10 @@ export interface RegistroLugar {
 - **Número Protagonista com Fonte:** card de topo com o indicador mais urgente do local (ex.: extensão em km, outorgas emitidas, área preservada em hectares).
 - **Gráfico Nativo SVG:** barras ou evolução temporal gerados via SVG puro sem biblioteca externa.
 - **Tabela de Atos Oficiais:** lista filtrada por situação, órgão e ano, com botão de download CSV (separador `;` e BOM UTF-8).
-- **Bloco "E o social?":** o fechamento da página, correlacionando o estado biofísico da natureza com a saúde, renda, moradia e cultura das pessoas locais.
+- **Bloco "E nosso povo?" / "E nossa gente?":** o fechamento da página, correlacionando o estado biofísico da natureza com a saúde, renda, moradia e cultura das pessoas locais.
 - **Espaço Reservado de Voz:** marcador editorial para epígrafe ou verso da equipe interna.
 
-#### 3. Bloco "E o social?"
+#### 3. Bloco "E nosso povo?" (variando com "E nossa gente?")
 - Focado nos determinantes sociais de saúde e vida:
   - **Água e Saúde Pública:** internações por doenças de veiculação hídrica ou respiratória no SIH-SUS.
   - **Trabalho e Subsistência:** registros de pescadores artesanais, agricultores familiares ou perda de renda pelo fechamento de atrativos naturais.
@@ -496,7 +496,7 @@ interface CartaoPonteSanfonaProps {
 |  +--------------------+---------------------+-----------------+------------+ |   [Ver na frente ->]   | |
 |                                                                              |                        | |
 |  --------------------------------------------------------------------------- | > CIDADES DA BACIA     | |
-|  👥 E O SOCIAL? — COMO A CONDIÇÃO DO RIO AFETA A NOSSA GENTE                 |   16 municípios no     | |
+|  👥 E NOSSO POVO? (OU E NOSSA GENTE?) — O IMPACTO DO RIO NA VIDA DAS PESSOAS  |   16 municípios no     | |
 |                                                                              |   entorno do rio.      | |
 |  +-------------------------+ +-------------------------+ +-----------------+ |   Razão: Gestão urbana | |
 |  | 🩺 ÁGUA E SAÚDE         | | 🎣 TRABALHO E RENDA     | | 🏡 MORADIA      | |   e captação de água.  | |
@@ -596,7 +596,7 @@ Onda 3: Escala e Automatização (Expansão estrutural)
 - **Objetivo:** Dar cara, alma e afeto comunitário às páginas socioambientais, ancorando a denúncia na realidade de quem vive no local.
 - **Micro-etapas:**
   1. **Hub `/ambiental/nossos`:** Tela de acolhimento com os 5 cards (Rios, Serras, Animais, Territórios e Gente). (Esforço: **Médio** | Valor: **Alto**)
-  2. **Componente `BlocoSocial` ("E o social?"):** Módulo padronizado de cruzamento biofísico × vida real (saúde, renda, moradia, cultura). (Esforço: **Médio** | Valor: **Altíssimo**)
+  2. **Componente `BlocoPovoGente` ("E nosso povo?" / "E nossa gente?"):** Módulo padronizado de cruzamento biofísico × vida real (saúde, renda, moradia, cultura). (Esforço: **Médio** | Valor: **Altíssimo**)
   3. **Páginas Piloto da Coleção "Nossos":**
      - Rio Paraopeba (`/ambiental/nossos-rios/rio-paraopeba`)
      - Serra do Espinhaço (`/ambiental/nossas-serras/serra-do-espinhaco`)
@@ -653,9 +653,9 @@ Os critérios abaixo devem ser testados em linguagem de usuário e validados em 
    - *Cenário:* Um usuário na página de Diamantina (`/diamantina`) clica no gatilho do Parque do Biribiri na sidebar sanfona.
    - *Critério:* No primeiro clique a gaveta expande revelando a ponte; no segundo clique ele é transportado para a rota ecológica do Biribiri no ONSA ou para o Projeto de Lei no Congresso.
 
-2. **Presença Universal do Bloco "E o Social?":**
+2. **Presença Universal do Bloco "E nosso povo?" / "E nossa gente?":**
    - *Cenário:* Qualquer página das subfrentes "Nossos" (Rios, Serras, Animais, Territórios e Gente) é carregada no navegador.
-   - *Critério:* A página exibe obrigatoriamente, antes do rodapé, a seção `"E o social?"` contendo dados explícitos de saúde, moradia, trabalho ou cultura, sem campos vazios não rotulados.
+   - *Critério:* A página exibe obrigatoriamente, antes do rodapé, a seção `"E nosso povo?"` (ou `"E nossa gente?"`) contendo dados explícitos de saúde, moradia, trabalho ou cultura, sem campos vazios não rotulados.
 
 3. **Garantia Anti-Insinuação com Ressalva Visível:**
    - *Cenário:* O usuário inspeciona qualquer cartão de diálogo inter-frentes no painel lateral.
