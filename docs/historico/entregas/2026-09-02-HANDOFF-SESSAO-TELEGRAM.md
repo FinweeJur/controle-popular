@@ -55,6 +55,10 @@
 - `POSICIONAMENTO-ONSA-CONTROLE-POPULAR.md` — Controle Popular = portal com IA do ONSA + missão oficial do dono. 🏛️
 - `REVISAO-PLANO-GEMINI.md` — nota sobre o retorno Gemini integrado. 🔍
 - `ROTEIRO-EXECUCAO-ONDA1.md` — runbook da fundação barata. 🏗️
+- `PLANO-DIVULGACAO-ONSA.md` — plano de mídia com a missão do ONSA. 📣
+- Home atualizada com a missão (commit `cd12236`). 🏠
+- Introdução do Seu Nonô com identidade ONSA no widget (commit `8d4ed91`). 🤖
+
 
 ## 🔒 Regras lembradas
 
