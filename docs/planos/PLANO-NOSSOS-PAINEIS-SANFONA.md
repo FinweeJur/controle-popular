@@ -4,7 +4,8 @@
 > **Domínio:** global
 > **Última medição:** 2026-09-02
 > **Leitura estimada:** média (5–15 min)
-> **Relacionados:** [RETROSPECTIVA-2026-09](../planos/Kimi_Agent_Retrospectiva%20do%20Projeto/repo-controle-popular/docs/historico/RETROSPECTIVA-2026-09.md), [PLANO-COPY-VOZ](../planos/Kimi_Agent_Retrospectiva%20do%20Projeto/repo-controle-popular/docs/planos/PLANO-COPY-VOZ.md), [PLANO-EXPANSAO-SUBFRENTES](../planos/Kimi_Agent_Retrospectiva%20do%20Projeto/repo-controle-popular/docs/planos/PLANO-EXPANSAO-SUBFRENTES.md), [PLANO-SEU-NONO-NOTEBOOKLM](./PLANO-SEU-NONO-NOTEBOOKLM.md), [PRODUTO](../01-produto/PRODUTO.md), [AGENTS](/AGENTS.md)
+> **Relacionados:** [PLANO-SEU-NONO-NOTEBOOKLM](./PLANO-SEU-NONO-NOTEBOOKLM.md), [PRODUTO](../01-produto/PRODUTO.md), [AGENTS](/AGENTS.md), [PROPOSICAO-SANITIZACAO-REPO](./PROPOSICAO-SANITIZACAO-REPO.md), [PROMPT-GEMINI-ESTRUTURA](./PROMPT-GEMINI-ESTRUTURA.md)
+> **Fonte local da retrospectiva:** `docs/planos/Kimi_Agent_Retrospectiva do Projeto/` (pasta local, ainda não versionada — ver sanitização)
 > **Palavras-chave:** nossos rios, nossas serras, animais, territorios, nossa gente, paineis, sanfona, sidebar, dialogo entre frentes, interdisciplinar, seu nono, avatar, voz mineira, poemas
 
 ## ✅ O que este plano resolve
@@ -134,7 +135,7 @@ Que conhece o país e senta do seu lado pra olhar a tela junto. 🪑
 - Termina com ferramenta: "apertou, achou, ó aqui o trem". 🛠️
 - Fala a língua do dado: número com fonte, do mesmo jeito do portal. 🔢
 
-**Fonte da persona:** [PLANO-COPY-VOZ](../planos/Kimi_Agent_Retrospectiva%20do%20Projeto/repo-controle-popular/docs/planos/PLANO-COPY-VOZ.md), capítulo "Princípio de voz". 🎙️
+**Fonte da persona:** plano de voz da retrospectiva local (pasta `Kimi_Agent_Retrospectiva do Projeto`, ainda não versionada), capítulo "Princípio de voz". 🎙️
 
 ## 🧵 Poemas: distribuição (nenhum cortado)
 
