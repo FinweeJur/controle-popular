@@ -1,6 +1,7 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import PainelDialogo from "@/app/components/PainelDialogo";
 import FotoBrasilComS from "@/app/components/FotoBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import DataCard from "@/app/[municipio]/components/DataCard";
@@ -353,6 +354,13 @@ export default async function HomePage({
       </div>
 
       <main className="mx-auto flex max-w-5xl flex-col gap-14 px-4 py-14 sm:px-8">
+        {/* DIÁLOGO ENTRE FRENTES (Painéis-sanfona) */}
+        <PainelDialogo
+          origemRota={`/${cidade.slug}`}
+          origemTitulo={cidade.nome}
+          abertoInicialmente={cidade.slug === "diamantina"}
+        />
+
         {/* INDICADORES (bento) */}
         <section>
           <h2 className="mb-5 font-display text-[1.7em] font-semibold tracking-tight">
