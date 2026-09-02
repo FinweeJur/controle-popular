@@ -57,6 +57,16 @@ export default async function AmbientalHome() {
 
   const BLOCOS = [
     {
+      titulo: "Coleção Nossos: Rios, Serras, Animais, Territórios e Gente",
+      linha: "5 frentes integradas: rios, serras, fauna silvestre, territórios tradicionais e impacto humano",
+      texto:
+        "Acompanhe as bacias dos nossos rios, a proteção das serras, a conservação da fauna silvestre, a luta pelo território e o bloco 'E nosso povo?' / 'E nossa gente?' que conecta o meio ambiente a saúde, trabalho, moradia e cultura.",
+      fase: "DESTAQUE",
+      href: "/nossos",
+      pronta: true,
+      linkTexto: "Explorar a Coleção Nossos →",
+    },
+    {
       titulo: "Processos ambientais na Justiça",
       linha: sirenejud
         ? `${formatNumberBR(sirenejud.total_processos_mg)} processos em ${formatNumberBR(sirenejud.municipios_com_processos)} municípios — arquivo do CNJ de ${sirenejud.arquivo_modificado_em}`
