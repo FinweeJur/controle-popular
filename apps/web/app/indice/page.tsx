@@ -35,6 +35,10 @@ import FooterGlobal from "@/app/components/FooterGlobal";
  * ⟲ 02/09/2026, copy v6 (docs/planos/PLANO-COPY-VOZ.md): título,
  * descrição e cabeçalho na voz nova — o índice é "o mapa", e cada porta
  * leva ao número com a fonte ao lado. Estrutura e cards intactos.
+ *
+ * ⟲ 02/09/2026, auditoria dos 40 commits: `/imprensa` e `/novidades`
+ * entram em "Por tema" — existiam só no rodapé global e no "ver tudo"
+ * da seção de novidades, respectivamente.
  */
 
 const ICONES_FRENTE: Record<string, React.ReactNode> = {
@@ -93,6 +97,8 @@ export default async function IndiceGlobal() {
         { href: "/dados/populares", titulo: "Paginas mais vistas", descricao: "O que as pessoas mais consultam.", cor: "var(--cp-accent)", badge: "Transversal", icon: <BarChart3 size={14} /> },
         { href: "/dados/comunicabr", titulo: "Governo federal nas cidades", descricao: "Repasses e acoes da Uniao em Minas Gerais.", cor: "var(--cp-accent)", badge: "Transversal", icon: <Globe size={14} /> },
         { href: "/direitos-em-movimento", titulo: "Direitos em Movimento", descricao: "Onde buscar ajuda e como se defender.", cor: "var(--cp-alert)", badge: "Transversal", icon: <HeartHandshake size={14} /> },
+        { href: "/novidades", titulo: "Novidades", descricao: "O que mudou no portal, data a data.", cor: "var(--cp-primary)", badge: "Portal", icon: <Sparkles size={14} /> },
+        { href: "/imprensa", titulo: "Imprensa", descricao: "Kit de imprensa e contato para a midia.", cor: "var(--cp-primary)", badge: "Portal", icon: <FileText size={14} /> },
         { href: "/sobre", titulo: "Sobre", descricao: "O que e, de onde vem os dados e quem somos.", cor: "var(--cp-primary)", badge: "Portal", icon: <BookOpen size={14} /> },
         { href: "/termos", titulo: "Termos e origem dos dados", descricao: "Licenca, fontes e limitacoes.", cor: "var(--cp-primary)", badge: "Portal", icon: <FileText size={14} /> },
       ],

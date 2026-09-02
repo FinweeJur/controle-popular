@@ -1,5 +1,26 @@
 [
   {
+    "data": "2026-09-02",
+    "titulo": "199 cidades na fila de expansão",
+    "descricao": "27 capitais e 172 polos do interior conferidos no IBGE, com fonte de câmara e prefeitura mapeada — é o mapa de onde o portal pode chegar. Hoje 6 cidades têm tela.",
+    "frente": "cidades",
+    "link": null
+  },
+  {
+    "data": "2026-09-02",
+    "titulo": "Página de imprensa no ar",
+    "descricao": "Kit de imprensa do portal: o que é, os números públicos e o contato direto para pauta.",
+    "frente": "portal",
+    "link": "/imprensa"
+  },
+  {
+    "data": "2026-09-01",
+    "titulo": "Biblioteca de Mariana e Brumadinho com 936 documentos",
+    "descricao": "Os dois crimes socioambientais numa biblioteca só, com busca, filtros e radar de notícias — incluindo o reconhecimento de atingidos no ES e na Bahia.",
+    "frente": "ambiental",
+    "link": "/ambiental/crimes-socioambientais"
+  },
+  {
     "data": "2026-08-31",
     "titulo": "Diários Oficiais municipais com classificação determinística",
     "descricao": "Atos, contratos, editais e decretos categorizados em SP, BH, Betim, Diamantina, Araçuaí e Itinga com anonimização Mod-11 de CPFs.",
@@ -86,7 +107,7 @@
   {
     "data": "2026-08-28",
     "titulo": "Indices por frente criados",
-    "descricao": "Paginas de indice especificas para cada frente do portal (Cidades, Congresso, Judiciario, Ambiental, Paraopeba, Terras).",
+    "descricao": "Paginas de indice especificas para cada frente do portal (Cidades, Congresso, Judiciário, Ambiental, Paraopeba, Terras).",
     "frente": "operacao",
     "link": "/indice"
   },
