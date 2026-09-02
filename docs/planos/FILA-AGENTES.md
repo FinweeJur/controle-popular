@@ -104,3 +104,26 @@ marca status e conversa nas Notas. Nunca apagar Notas.
     verdes. Faltam testes completos e push.
   - (gemini, 18:25) 33 testes unitários rodados e 100% verdes (`lib/dialogos.test.ts`, `lib/lugares.test.ts`, `lib/conselhos/catalogo.test.ts`, `lib/direitos-humanos/relatorios.test.ts`, `lib/judiciario/jurisprudencia-clima-barragens.test.ts`).
   - (gemini, 18:38) Conflito entre worktrees e origin/main resolvido com merge unificado preservando todas as entregas de ambos os agentes.
+---
+
+## [ABERTA] g4 — Plano de expansão nacional (cidades e estados)
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 18:40)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md
+  e implementar pendências da expansão (27 capitais + 172 polos).
+- **Status:** aberta
+- **Critério de pronto:** pendências implementadas e publicadas.
+
+---
+
+## [ABERTA] g5 — Plano bases clima e risco (faltam fontes)
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 18:40)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar docs/planos/PLANO-BASES-CLIMA-E-RISCO.md; integrar
+  fontes pendentes (BATER, CEMADEN, INPE, SNIS, MapBiomas).
+- **Status:** aberta
+- **Critério de pronto:** fontes integradas e publicadas.
