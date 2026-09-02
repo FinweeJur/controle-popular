@@ -46,6 +46,8 @@ apps/web/public/busca-indice/
 # ruido e faria o marcador de contagem de paginas de um PC valer como
 # referencia no outro.
 logs/
+scripts/.*-telegram-offset
+scripts/.*offset
 
 # Fila de analise garantista: prompts gerados a partir do banco e as respostas
 # do modelo. Sao artefato de trabalho, nao fonte -- o resultado validado vive em
