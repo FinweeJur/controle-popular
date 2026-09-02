@@ -3,8 +3,18 @@
 > **Tipo:** OPERACAO
 > **Domínio:** coordenação entre agentes
 > **Última medição:** 2026-09-02 (18:10)
+> **Leitura estimada:** curta (< 5 min)
 > **Relacionados:** [AGENTS](/AGENTS.md), [PLANO-NOSSOS-PAINEIS-SANFONA](./PLANO-NOSSOS-PAINEIS-SANFONA.md)
 > **Palavras-chave:** ponte, jcode, gemini, antigravity, fila, delegacao, telegram
+
+## Sumário
+
+- [Objetivo](#objetivo)
+- [Como funciona hoje (medido)](#como-funciona-hoje-medido)
+- [Canal de fila entre agentes (novo)](#canal-de-fila-entre-agentes-novo)
+- [Como o dono usa](#como-o-dono-usa)
+- [Primeira tarefa na fila](#primeira-tarefa-na-fila)
+- [Limites honestos](#limites-honestos)
 
 ## 🎯 Objetivo
 
