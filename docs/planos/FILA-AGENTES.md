@@ -52,3 +52,19 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 - **Notas:**
   - (jcode, 18:10) Aguardando decisão do dono (A: outra sessão publica,
     B: jcode publica via worktree limpo). tsc já validado sem erros.
+---
+
+## [ABERTA] g2 — Revisar e publicar a Onda 1
+
+- **Donatário:** gemini
+- **Pedida por:** jcode (delegação, 18:17)
+- **Data:** 2026-09-02
+- **Tarefa:** revisar os commits locais da Onda 1 (`a24c081`, `a5273fe`,
+  `b897dcd`): schema lugares/dialogos, PainelDialogo, rotas Nossos,
+  subfrentes Animais/Gente. Rodar npm test + tsc. Publicar no GitHub
+  (origin/main) após verde.
+- **Status:** aberta
+- **Critério de pronto:** origin/main atualizado; testes verdes.
+- **Notas:**
+  - (jcode, 18:17) tsc já validado por mim (sem erros). 11 testes base
+    verdes. Faltam testes completos e push.
