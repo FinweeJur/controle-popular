@@ -44,6 +44,16 @@ outra sessão/Antigravity, commit `4824927`) e agora tem:
    páginas novas; conferir que o hub ONSA encerra com o Poema 3. 📖
 5. **Avatar e voz:** já aplicados (widget) e registrados (golden set). ✅
 
+
+## 🚧 Estado atualizado (14:24)
+
+A outra sessão (Antigravity) **já implementou a Onda 1 em código** no main
+local (commit `a24c081`, 17 arquivos, ~1.933 linhas): `lib/lugares.ts`,
+`lib/dialogos.ts` (com testes), `PainelDialogo`, `CartaoPonteSanfona`,
+`PainelLugar`, `BlocoPovoGente`, rotas Nossos Rios/Serras/Territórios e a
+integração Biribiri em Diamantina. ⚠️ Commit ainda não publicado no GitHub
+(aguardando decisão do dono: quem publica). Não duplicar esta implementação.
+
 ## ⏭️ Próximos passos sugeridos
 
 1. Dono valida: ONSA abraça terras? Bloco chama "E o social?" ou
