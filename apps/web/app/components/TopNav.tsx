@@ -34,6 +34,11 @@ const CIDADES_MENU = [
  * (`lib/link-zona.tsx`): este componente é global e um wrapper de zona
  * prefixaria caminhos absolutos como `/congresso/proposicoes` com o segmento
  * da zona atual, gerando 404s mudos. Ver o mesmo aviso em `FooterGlobal.tsx`.
+ *
+ * ⟲ 02/09, auditoria dos 40 commits: o menu não tinha acompanhado as telas
+ * novas — `/ambiental/mariana`, `/ambiental/crimes-socioambientais`,
+ * `/paraopeba/vale`, `/novidades` e `/imprensa` só eram alcançáveis pelo
+ * hub da frente ou pelo rodapé. Entram aqui nas seções de cada frente.
  */
 const SECOES_MENU = [
   {
@@ -90,6 +95,8 @@ const SECOES_MENU = [
       { label: "Patrimônio cultural", href: "/ambiental/patrimonio-cultural" },
       { label: "Convênios", href: "/ambiental/convenios" },
       { label: "Estudos", href: "/ambiental/estudos" },
+      { label: "Acordo do Rio Doce", href: "/ambiental/mariana" },
+      { label: "Crimes socioambientais", href: "/ambiental/crimes-socioambientais" },
     ],
   },
   {
@@ -108,6 +115,7 @@ const SECOES_MENU = [
       { label: "Clipping", href: "/paraopeba/clipping" },
       { label: "Linha do tempo", href: "/paraopeba/linha-do-tempo" },
       { label: "Quem atua", href: "/paraopeba/quem-atua" },
+      { label: "Observatório Vale", href: "/paraopeba/vale" },
     ],
   },
   {
@@ -125,11 +133,13 @@ const SECOES_MENU = [
     href: "/indice",
     links: [
       { label: "Índice do portal", href: "/indice" },
+      { label: "Novidades", href: "/novidades" },
       { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
       { label: "Busca", href: "/busca" },
       { label: "Dados populares", href: "/dados/populares" },
       { label: "Governo federal nas cidades", href: "/dados/comunicabr" },
       { label: "Sobre o projeto", href: "/sobre" },
+      { label: "Imprensa", href: "/imprensa" },
       { label: "Termos e origem dos dados", href: "/termos" },
     ],
   },
