@@ -315,7 +315,7 @@ export const ATORES_REPARACAO: AtorReparacao[] = [
     "categoria": "pub",
     "papelNoPainel": "Advocacia-Geral da União",
     "nome": "AGU — Advocacia-Geral da União",
-    "atuacao": "Em 7 de maio de 2026, o setor de Contencioso da AGU manifestou-se na ADPF 1314 pedindo ao STF que rejeite a ação do Ibram e reconhecendo a aplicabilidade da PNAB a danos em curso. Em 14 de maio, a Consultoria-Geral da União, a pedido da Presidência, enviou posição oposta — defendendo irretroatividade absoluta da PNAB — criando divergência interna no governo.",
+    "atuacao": "Em 7 de maio de 2026, o setor de Contencioso da AGU manifestou-se na ADPF 1314 pedindo ao STF que rejeite a ação do Ibram e reconhecendo a aplicabilidade da PNAB a danos em curso. Em 14 de maio, a própria AGU — pela sua Consultoria-Geral, em nome da Presidência da República — enviou posição oposta, defendendo irretroatividade absoluta da PNAB, criando divergência interna no governo.",
     "contatos": [
       {
         "tipo": "web",
@@ -329,7 +329,7 @@ export const ATORES_REPARACAO: AtorReparacao[] = [
     "categoria": "pub",
     "papelNoPainel": "Presidência da República",
     "nome": "Presidência da República",
-    "atuacao": "Em 2023, vetou o trecho da PNAB que autorizava sua aplicação a casos ocorridos antes da lei. Em maio de 2026, a Consultoria-Geral da União, a pedido da Presidência, defendeu essa irretroatividade no STF (ADPF 1314), contrariando o setor de Contencioso da própria AGU.",
+    "atuacao": "Em 2023, vetou o trecho da PNAB que autorizava sua aplicação a casos ocorridos antes da lei. Em maio de 2026, a AGU — pela sua Consultoria-Geral, em nome da Presidência — defendeu essa irretroatividade no STF (ADPF 1314), contrariando o setor de Contencioso da própria AGU.",
     "contatos": [
       {
         "tipo": "web",
