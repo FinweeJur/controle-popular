@@ -10,6 +10,7 @@ import IndiceRiscoDireitosCard from "@/app/[municipio]/components/IndiceRiscoDir
 import { conselhosPorMunicipio } from "@/lib/conselhos/catalogo";
 import { obterPanoramaJudicial } from "@/lib/judiciario/jurisprudencia-clima-barragens";
 import { relatoriosPorMunicipio } from "@/lib/direitos-humanos/relatorios";
+import { obterRiscoPorIbge } from "@/lib/clima/bases-risco";
 import { climaDaCidade, contatosUteis, listarIndicadores, resumoContratosAtivos } from "@/lib/db/queries/betim";
 import { indicadoresRiscoDireitos } from "@/lib/db/queries/risco-direitos";
 import {
@@ -262,6 +263,7 @@ export default async function HomePage({
   const conselhosLocais = conselhosPorMunicipio(cidade.nome);
   const panoramaJudicial = obterPanoramaJudicial(cidade.nome, cidade.id_municipio);
   const relatoriosLocais = relatoriosPorMunicipio(cidade.nome);
+  const dadosRiscoLocal = obterRiscoPorIbge(cidade.id_municipio);
 
   return (
     <div>
@@ -522,7 +524,7 @@ export default async function HomePage({
             </a>
           </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
             {/* CARD 1: CONSELHOS */}
             <div className="flex flex-col justify-between rounded-xl border border-border bg-surface-1 p-4 shadow-sm">
               <div>
@@ -535,7 +537,7 @@ export default async function HomePage({
                 {conselhosLocais.length > 0 ? (
                   <ul className="mt-2 space-y-1 text-xs text-text-soft">
                     {conselhosLocais.slice(0, 3).map((c) => (
-                      <li key={c.id}>• <strong>{c.sigla}:</strong> {c.nome.slice(0, 42)}...</li>
+                      <li key={c.id}>• <strong>{c.sigla}:</strong> {c.nome.slice(0, 36)}...</li>
                     ))}
                   </ul>
                 ) : (
@@ -548,7 +550,7 @@ export default async function HomePage({
                 href="/ambiental/conselhos"
                 className="mt-4 inline-block text-xs font-semibold text-teal-600 hover:underline dark:text-teal-400"
               >
-                Ver conselhos e contatos oficiais →
+                Ver conselhos oficiais →
               </a>
             </div>
 
@@ -559,7 +561,7 @@ export default async function HomePage({
                   Judiciário Ambiental
                 </span>
                 <h3 className="mt-1 font-display text-base font-semibold">
-                  Processos & Litígios Climáticos
+                  Litígios Climáticos
                 </h3>
                 {panoramaJudicial.sirenejudProcessos ? (
                   <div className="mt-2 text-xs text-text-soft">
@@ -582,7 +584,7 @@ export default async function HomePage({
                 href="/ambiental/litigios-climaticos"
                 className="mt-4 inline-block text-xs font-semibold text-indigo-600 hover:underline dark:text-indigo-400"
               >
-                Ver litígios climáticos e teses do TJMG →
+                Ver litígios climáticos →
               </a>
             </div>
 
@@ -590,16 +592,16 @@ export default async function HomePage({
             <div className="flex flex-col justify-between rounded-xl border border-border bg-surface-1 p-4 shadow-sm">
               <div>
                 <span className="text-xs font-bold uppercase text-blue-600 dark:text-blue-400">
-                  Proteção & Recomendações
+                  Proteção & Relatórios
                 </span>
                 <h3 className="mt-1 font-display text-base font-semibold">
-                  Relatórios CIDH, ONU & CNDH
+                  CIDH, ONU & CNDH
                 </h3>
                 {relatoriosLocais.length > 0 ? (
                   <ul className="mt-2 space-y-1 text-xs text-text-soft">
                     {relatoriosLocais.slice(0, 2).map((r) => (
                       <li key={r.id}>
-                        • <strong>{r.orgao}:</strong> {r.titulo.slice(0, 45)}...
+                        • <strong>{r.orgao}:</strong> {r.titulo.slice(0, 36)}...
                       </li>
                     ))}
                   </ul>
@@ -613,7 +615,39 @@ export default async function HomePage({
                 href="/ambiental/direitos-humanos"
                 className="mt-4 inline-block text-xs font-semibold text-blue-600 hover:underline dark:text-blue-400"
               >
-                Acessar relatórios e recomendações →
+                Ver relatórios oficiais →
+              </a>
+            </div>
+
+            {/* CARD 4: VULNERABILIDADE & RISCO (BATER) */}
+            <div className="flex flex-col justify-between rounded-xl border border-border bg-surface-1 p-4 shadow-sm">
+              <div>
+                <span className="text-xs font-bold uppercase text-amber-600 dark:text-amber-400">
+                  Vulnerabilidade & Risco
+                </span>
+                <h3 className="mt-1 font-display text-base font-semibold">
+                  População em Risco
+                </h3>
+                {dadosRiscoLocal ? (
+                  <div className="mt-2 text-xs text-text-soft">
+                    <p>
+                      <strong>{dadosRiscoLocal.populacao_area_risco.toLocaleString("pt-BR")}</strong> pessoas ({dadosRiscoLocal.percentual_populacao_risco}% da cidade) expostas pelo BATER/IBGE.
+                    </p>
+                    <p className="mt-1 text-[11px] text-muted">
+                      {dadosRiscoLocal.estacoes_cemaden} pluviômetros do CEMADEN monitorando chuvas.
+                    </p>
+                  </div>
+                ) : (
+                  <p className="mt-2 text-xs text-text-soft">
+                    Mapeamento federal de áreas suscetíveis a deslizamentos e enxurradas (BATER/CEMADEN).
+                  </p>
+                )}
+              </div>
+              <a
+                href="/ambiental/clima-risco"
+                className="mt-4 inline-block text-xs font-semibold text-amber-600 hover:underline dark:text-amber-400"
+              >
+                Ver bases de risco e clima →
               </a>
             </div>
           </div>
