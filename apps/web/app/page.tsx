@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import { metadataEditavel } from "@/lib/edicoes";
@@ -8,15 +7,12 @@ import { Epigrafe } from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
 
 // Hero narrativo (Fase 1 do plano de identidade visual —
-// `docs/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`). `ssr: false`
-// porque ele é animação de cliente (GSAP + parallax de mouse): nenhuma
-// outra rota deve pagar o custo dele, e a home é server component. O
-// componente é seção, não overlay — o conteúdo da home segue intacto
+// `docs/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`). O wrapper
+// client `HeroNarrativeLazy` existe porque `ssr: false` no `next/dynamic`
+// não é permitido dentro de server component — Next 16 rejeita no build.
+// O componente é seção, não overlay — o conteúdo da home segue intacto
 // abaixo, e o CTA dele é âncora real para `#frentes`.
-const HeroNarrative = dynamic(
-  () => import("@/app/components/HeroNarrative"),
-  { ssr: false },
-);
+import HeroNarrativeLazy from "@/app/components/HeroNarrativeLazy";
 
 /**
  * Home da marca Controle Popular, na raiz do domínio.
@@ -78,7 +74,7 @@ export default async function Hub() {
           públicos que dá para usar" e o mesmo texto institucional, sem
           número inventado. Tudo o que existia aqui continua abaixo,
           intacto. */}
-      <HeroNarrative />
+      <HeroNarrativeLazy />
 
       <header className="space-y-4">
         {/* O wordmark da marca ficou só na barra global (`TopNav.tsx`), acima
