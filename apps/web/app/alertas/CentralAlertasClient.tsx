@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   Bell,
   Send,
@@ -15,17 +16,24 @@ import {
   Landmark,
   CloudRain,
   Scale,
+  PhoneCall,
+  Leaf,
+  Layers,
 } from "lucide-react";
 
-interface CentralAlertasProps {
-  municipioInicial?: string;
-  temaInicial?: string;
-}
+export type TipoAssuntoAlerta =
+  | "contrato"
+  | "pl"
+  | "convenio"
+  | "clima"
+  | "reparacao"
+  | "licenciamento"
+  | "contato"
+  | "resumo_pagina";
 
-export default function CentralAlertasClient({
-  municipioInicial = "",
-  temaInicial = "todos",
-}: CentralAlertasProps) {
+function CentralAlertasInner() {
+  const searchParams = useSearchParams();
+
   const [abaAtiva, setAbaAtiva] = useState<"inscricao" | "planejador" | "temas">(
     "inscricao"
   );
@@ -33,19 +41,20 @@ export default function CentralAlertasClient({
   // Estados da Inscrição
   const [canalTelegram, setCanalTelegram] = useState(true);
   const [canalEmail, setCanalEmail] = useState(true);
-  const [municipioAlerta, setMunicipioAlerta] = useState(municipioInicial);
+  const [municipioAlerta, setMunicipioAlerta] = useState("");
   const [temasSelecionados, setTemasSelecionados] = useState<string[]>([
     "pl",
     "contratos",
     "convenios",
     "clima",
     "justica",
+    "licenciamento",
+    "contatos",
   ]);
 
-  // Estados do Planejador de Disparo (WhatsApp / Telegram)
-  const [tipoMensagem, setTipoMensagem] = useState<
-    "contrato" | "pl" | "convenio" | "clima" | "reparacao"
-  >("contrato");
+  // Estados do Planejador de Disparo (WhatsApp / Telegram / Mailing)
+  const [tipoMensagem, setTipoMensagem] =
+    useState<TipoAssuntoAlerta>("contrato");
   const [cidadeMensagem, setCidadeMensagem] = useState("Betim, MG");
   const [tituloFato, setTituloFato] = useState(
     "Contrato emergencial sem licitação no valor de R$ 4,8 milhões"
@@ -57,7 +66,30 @@ export default function CentralAlertasClient({
   const [detalheExtra, setDetalheExtra] = useState(
     "Empresa vencedora foi aberta há menos de 6 meses segundo a Receita Federal."
   );
+  const [telefonesMensagem, setTelefonesMensagem] = useState("");
   const [copiado, setCopiado] = useState(false);
+
+  // Se a página for aberta com parâmetros de URL (vindos de outra página do portal)
+  useEffect(() => {
+    const pTipo = searchParams.get("tipo") as TipoAssuntoAlerta | null;
+    const pTitulo = searchParams.get("titulo");
+    const pOrgao = searchParams.get("orgao");
+    const pNum = searchParams.get("num");
+    const pLink = searchParams.get("link");
+    const pResumo = searchParams.get("resumo");
+    const pTelefones = searchParams.get("tel");
+
+    if (pTipo || pTitulo || pLink) {
+      setAbaAtiva("planejador");
+      if (pTipo) setTipoMensagem(pTipo);
+      if (pTitulo) setTituloFato(pTitulo);
+      if (pOrgao) setCidadeMensagem(pOrgao);
+      if (pNum) setNumeroReferencia(pNum);
+      if (pLink) setLinkPortal(pLink);
+      if (pResumo) setDetalheExtra(pResumo);
+      if (pTelefones) setTelefonesMensagem(pTelefones);
+    }
+  }, [searchParams]);
 
   // Alternância de temas na inscrição
   const toggleTema = (tema: string) => {
@@ -66,30 +98,58 @@ export default function CentralAlertasClient({
     );
   };
 
+  // Carregar modelos rápidos pré-definidos
+  const aplicarModelo = (modelo: {
+    tipo: TipoAssuntoAlerta;
+    orgao: string;
+    titulo: string;
+    num: string;
+    link: string;
+    detalhes: string;
+    telefones?: string;
+  }) => {
+    setTipoMensagem(modelo.tipo);
+    setCidadeMensagem(modelo.orgao);
+    setTituloFato(modelo.titulo);
+    setNumeroReferencia(modelo.num);
+    setLinkPortal(modelo.link);
+    setDetalheExtra(modelo.detalhes);
+    setTelefonesMensagem(modelo.telefones || "");
+  };
+
   // Gerador de mensagem para WhatsApp / Redes
   const gerarTextoWhatsApp = () => {
-    const emojis = {
-      contrato: "🚨 *ALERTA DE CONTRATO PÚBLICO*",
+    const emojis: Record<TipoAssuntoAlerta, string> = {
+      contrato: "💼 *ALERTA DE CONTRATO PÚBLICO*",
       pl: "📜 *ALERTA LEGISLATIVO — CÂMARA / CONGRESSO*",
       convenio: "🤝 *ALERTA DE REPASSE & CONVÊNIO*",
       clima: "🌧️ *AVISO DE RISCO SOCIOAMBIENTAL*",
       reparacao: "⚖️ *ACOMPANHAMENTO DE REPARAÇÃO*",
+      licenciamento: "🌿 *ALERTA DE LICENCIAMENTO AMBIENTAL*",
+      contato: "📞 *CANAL INSTITUCIONAL & CONTATOS ÚTEIS*",
+      resumo_pagina: "📊 *DADOS PÚBLICOS & FISCALIZAÇÃO CIDADÃ*",
     };
 
-    const cabecalho = emojis[tipoMensagem];
+    const cabecalho = emojis[tipoMensagem] || "🔔 *ALERTA CIDADÃO*";
 
-    return `${cabecalho}
-📍 *Território:* ${cidadeMensagem}
+    let texto = `${cabecalho}
+📍 *Território / Órgão:* ${cidadeMensagem}
 📌 *Assunto:* ${tituloFato}
 🔢 *Identificação Oficial:* ${numeroReferencia}
 
 🔎 *Detalhes para fiscalização:*
-${detalheExtra}
+${detalheExtra}`;
 
-🔗 *Confira o documento e os dados oficiais no portal:*
+    if (telefonesMensagem) {
+      texto += `\n\n📞 *Telefones e Contatos para Acionar:*\n${telefonesMensagem}`;
+    }
+
+    texto += `\n\n🔗 *Confira a comprovação completa com dados oficiais:*
 ${linkPortal}
 
 _Fonte: Dados públicos oficiais organizados pelo portal independente Controle Popular (controlepopular.com.br). Compartilhe com quem precisa saber!_`;
+
+    return texto;
   };
 
   const textoGerado = gerarTextoWhatsApp();
@@ -277,10 +337,22 @@ E-mail: `);
                     desc: "Transferências federais (Transferegov), emendas e Siconfi.",
                   },
                   {
+                    id: "licenciamento",
+                    icon: Leaf,
+                    label: "Licenciamento & COPAM",
+                    desc: "Processos de mineração, audiências públicas e EIA/RIMA.",
+                  },
+                  {
                     id: "clima",
                     icon: CloudRain,
                     label: "Clima, Risco & Chuvas",
                     desc: "Alertas do INMET, pluviômetros CEMADEN e barragens.",
+                  },
+                  {
+                    id: "contatos",
+                    icon: PhoneCall,
+                    label: "Contatos de Instituições",
+                    desc: "Ouvidorias, Defensoria, MPMG, CODEMAs e canais de denúncia.",
                   },
                   {
                     id: "justica",
@@ -290,7 +362,7 @@ E-mail: `);
                   },
                   {
                     id: "novidades",
-                    icon: Bell,
+                    icon: Layers,
                     label: "Dados Novos no Portal",
                     desc: "Avisos quando novas bases ou páginas municipais forem ao ar.",
                   },
@@ -361,159 +433,274 @@ E-mail: `);
 
       {/* ABA 2: PLANEJADOR DE DISPARO (WHATSAPP, TELEGRAM, REDES) */}
       {abaAtiva === "planejador" && (
-        <div className="grid gap-6 lg:grid-cols-2">
-          {/* COLUNA ESQUERDA: FORMULÁRIO DO FATO */}
-          <div className="space-y-4 rounded-xl border border-border bg-surface p-6 shadow-sm">
-            <h3 className="font-display text-lg font-bold text-foreground">
-              Compositor de Disparo Cidadão
-            </h3>
-            <p className="text-xs text-muted">
-              Crie mensagens estruturadas para WhatsApp, grupos comunitários e
-              listas de transmissão com provas e links oficiais do portal.
-            </p>
-
-            <div>
-              <label className="text-xs font-semibold text-muted uppercase">
-                Tipo do Assunto
-              </label>
-              <select
-                value={tipoMensagem}
-                onChange={(e) => setTipoMensagem(e.target.value as any)}
-                className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
+        <div className="space-y-6">
+          {/* CHIPS DE MODELOS RÁPIDOS */}
+          <div className="rounded-xl border border-border bg-surface-2/70 p-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-muted">
+              Modelos Prontos para Uso Rápido:
+            </span>
+            <div className="mt-2 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() =>
+                  aplicarModelo({
+                    tipo: "contrato",
+                    orgao: "Betim, MG",
+                    titulo: "Contrato emergencial sem licitação de R$ 4,8 milhões",
+                    num: "Dispensa nº 42/2026",
+                    link: "https://controlepopular.com.br/betim/prefeitura/contratos",
+                    detalhes: "Empresa vencedora foi aberta há menos de 6 meses segundo a Receita Federal.",
+                  })
+                }
+                className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-foreground hover:border-primary"
               >
-                <option value="contrato">💼 Contrato / Licitação Pública</option>
-                <option value="pl">📜 Projeto de Lei / Votação</option>
-                <option value="convenio">🤝 Convênio / Repasse de Recursos</option>
-                <option value="clima">🌧️ Alerta Socioambiental / Clima</option>
-                <option value="reparacao">⚖️ Acordo de Reparação / Indenização</option>
-              </select>
-            </div>
+                💼 Contrato Suspeito
+              </button>
 
-            <div>
-              <label className="text-xs font-semibold text-muted uppercase">
-                Município ou Região
-              </label>
-              <input
-                type="text"
-                value={cidadeMensagem}
-                onChange={(e) => setCidadeMensagem(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
-              />
-            </div>
+              <button
+                type="button"
+                onClick={() =>
+                  aplicarModelo({
+                    tipo: "licenciamento",
+                    orgao: "Conceição do Mato Dentro, MG",
+                    titulo: "Pauta de Licença de Operação — Complexo Minas-Rio",
+                    num: "Processo COPAM nº 0842/2026",
+                    link: "https://controlepopular.com.br/ambiental/licenciamento",
+                    detalhes: "Reunião de julgamento marcada para a próxima terça-feira com alto potencial de impacto hídrico.",
+                  })
+                }
+                className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-foreground hover:border-primary"
+              >
+                🌿 Licença Ambiental / COPAM
+              </button>
 
-            <div>
-              <label className="text-xs font-semibold text-muted uppercase">
-                Resumo do Fato (O que aconteceu?)
-              </label>
-              <input
-                type="text"
-                value={tituloFato}
-                onChange={(e) => setTituloFato(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
-              />
-            </div>
+              <button
+                type="button"
+                onClick={() =>
+                  aplicarModelo({
+                    tipo: "contato",
+                    orgao: "Minas Gerais e Bacias Hidrográficas",
+                    titulo: "Canais Oficiais de Denúncia e Defesa Comunitária",
+                    num: "Disque Denúncia 181 / Ouvidoria MPMG",
+                    link: "https://controlepopular.com.br/ambiental/conselhos",
+                    detalhes: "Utilize estes canais para denunciar desmatamento, loteamentos irregulares e contaminação de nascentes.",
+                    telefones: "• Disque Denúncia MG: 181\n• Ouvidoria MPMG: 127 / (31) 3330-8100\n• Defensoria Pública DPMG: 129\n• Polícia Ambiental: 190",
+                  })
+                }
+                className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-foreground hover:border-primary"
+              >
+                📞 Contatos de Denúncia
+              </button>
 
-            <div>
-              <label className="text-xs font-semibold text-muted uppercase">
-                Número do Processo / Contrato / PL
-              </label>
-              <input
-                type="text"
-                value={numeroReferencia}
-                onChange={(e) => setNumeroReferencia(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
-              />
-            </div>
+              <button
+                type="button"
+                onClick={() =>
+                  aplicarModelo({
+                    tipo: "clima",
+                    orgao: "Ribeirão das Neves, MG",
+                    titulo: "Alerta de Chuvas Intensas em Encostas Mapeadas",
+                    num: "Aviso INMET Laranja / BATER CEMADEN",
+                    link: "https://controlepopular.com.br/ambiental/clima-risco",
+                    detalhes: "60,5% da população reside em áreas de risco geo-hidrológico segundo o IBGE. Fique atento a trincas e encostas.",
+                    telefones: "• Defesa Civil Municipal: 199\n• Corpo de Bombeiros: 193",
+                  })
+                }
+                className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-foreground hover:border-primary"
+              >
+                🌧️ Alerta de Chuva & Encosta
+              </button>
 
-            <div>
-              <label className="text-xs font-semibold text-muted uppercase">
-                Link da Página no Controle Popular
-              </label>
-              <input
-                type="text"
-                value={linkPortal}
-                onChange={(e) => setLinkPortal(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
-              />
-            </div>
-
-            <div>
-              <label className="text-xs font-semibold text-muted uppercase">
-                Detalhes de Apoio / Observação Cidadã
-              </label>
-              <textarea
-                rows={3}
-                value={detalheExtra}
-                onChange={(e) => setDetalheExtra(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
-              />
+              <button
+                type="button"
+                onClick={() =>
+                  aplicarModelo({
+                    tipo: "pl",
+                    orgao: "Câmara Municipal",
+                    titulo: "Votação de Regime de Urgência de Projeto com Impacto Social",
+                    num: "Projeto de Lei nº 88/2026",
+                    link: "https://controlepopular.com.br/camara/proposicoes",
+                    detalhes: "Proposição entra na ordem do dia da próxima sessão ordinária.",
+                  })
+                }
+                className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-foreground hover:border-primary"
+              >
+                📜 Projeto de Lei em Votação
+              </button>
             </div>
           </div>
 
-          {/* COLUNA DIREITA: PREVIEW DO WHATSAPP E BOTÕES DE DISPARO */}
-          <div className="flex flex-col justify-between rounded-xl border border-border bg-surface p-6 shadow-sm">
-            <div>
-              <div className="flex items-center justify-between border-b border-border pb-3">
-                <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-600">
-                  <MessageSquare className="h-4 w-4" />
-                  Prévia da Mensagem (WhatsApp / Telegram)
-                </span>
-                <button
-                  onClick={copiarTexto}
-                  className="flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
+          <div className="grid gap-6 lg:grid-cols-2">
+            {/* COLUNA ESQUERDA: FORMULÁRIO DO FATO */}
+            <div className="space-y-4 rounded-xl border border-border bg-surface p-6 shadow-sm">
+              <h3 className="font-display text-lg font-bold text-foreground">
+                Compositor de Disparo Cidadão
+              </h3>
+              <p className="text-xs text-muted">
+                Crie mensagens estruturadas para WhatsApp, grupos comunitários e
+                listas de transmissão com provas e links oficiais do portal.
+              </p>
+
+              <div>
+                <label className="text-xs font-semibold text-muted uppercase">
+                  Tipo do Assunto
+                </label>
+                <select
+                  value={tipoMensagem}
+                  onChange={(e) =>
+                    setTipoMensagem(e.target.value as TipoAssuntoAlerta)
+                  }
+                  className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
                 >
-                  {copiado ? (
-                    <>
-                      <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
-                      <span>Copiado!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="h-3.5 w-3.5" />
-                      <span>Copiar Texto</span>
-                    </>
-                  )}
-                </button>
+                  <option value="contrato">💼 Contrato / Licitação Pública</option>
+                  <option value="licenciamento">🌿 Licenciamento Ambiental / COPAM</option>
+                  <option value="contato">📞 Contatos de Instituição / Denúncia</option>
+                  <option value="pl">📜 Projeto de Lei / Votação</option>
+                  <option value="convenio">🤝 Convênio / Repasse de Recursos</option>
+                  <option value="clima">🌧️ Alerta Socioambiental / Clima</option>
+                  <option value="reparacao">⚖️ Acordo de Reparação / Indenização</option>
+                  <option value="resumo_pagina">📊 Resumo Geral de Dados da Página</option>
+                </select>
               </div>
 
-              {/* TELA DE SIMULAÇÃO WHATSAPP */}
-              <div className="mt-4 rounded-xl border border-border bg-[#efeae2] p-4 text-sm text-gray-900 shadow-inner dark:bg-zinc-900 dark:text-zinc-100">
-                <pre className="font-sans whitespace-pre-wrap leading-relaxed text-xs sm:text-sm">
-                  {textoGerado}
-                </pre>
+              <div>
+                <label className="text-xs font-semibold text-muted uppercase">
+                  Município ou Órgão Responsável
+                </label>
+                <input
+                  type="text"
+                  value={cidadeMensagem}
+                  onChange={(e) => setCidadeMensagem(e.target.value)}
+                  className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-muted uppercase">
+                  Resumo do Fato (O que aconteceu?)
+                </label>
+                <input
+                  type="text"
+                  value={tituloFato}
+                  onChange={(e) => setTituloFato(e.target.value)}
+                  className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-muted uppercase">
+                  Número do Processo / Contrato / Referência
+                </label>
+                <input
+                  type="text"
+                  value={numeroReferencia}
+                  onChange={(e) => setNumeroReferencia(e.target.value)}
+                  className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-muted uppercase">
+                  Link da Página no Controle Popular
+                </label>
+                <input
+                  type="text"
+                  value={linkPortal}
+                  onChange={(e) => setLinkPortal(e.target.value)}
+                  className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-muted uppercase">
+                  Detalhes de Apoio / Observação Cidadã
+                </label>
+                <textarea
+                  rows={3}
+                  value={detalheExtra}
+                  onChange={(e) => setDetalheExtra(e.target.value)}
+                  className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-muted uppercase">
+                  Telefones / Contatos Úteis (Opcional)
+                </label>
+                <textarea
+                  rows={2}
+                  placeholder="Ex: • Defesa Civil: 199&#10;• Ouvidoria MPMG: 127"
+                  value={telefonesMensagem}
+                  onChange={(e) => setTelefonesMensagem(e.target.value)}
+                  className="mt-1 w-full rounded-lg border border-border bg-surface py-2 px-3 text-sm text-foreground focus:border-primary focus:outline-none"
+                />
               </div>
             </div>
 
-            {/* AÇÕES DE DISPARO IMEDIATO */}
-            <div className="mt-6 space-y-3 pt-4 border-t border-border">
-              <a
-                href={linkWhatsApp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-bold text-white shadow transition-transform hover:scale-[1.01] active:scale-[0.99]"
-              >
-                <MessageSquare className="h-4 w-4" />
-                <span>Disparar / Compartilhar no WhatsApp</span>
-              </a>
+            {/* COLUNA DIREITA: PREVIEW DO WHATSAPP E BOTÕES DE DISPARO */}
+            <div className="flex flex-col justify-between rounded-xl border border-border bg-surface p-6 shadow-sm">
+              <div>
+                <div className="flex items-center justify-between border-b border-border pb-3">
+                  <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-600">
+                    <MessageSquare className="h-4 w-4" />
+                    Prévia da Mensagem (WhatsApp / Telegram)
+                  </span>
+                  <button
+                    onClick={copiarTexto}
+                    className="flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
+                  >
+                    {copiado ? (
+                      <>
+                        <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
+                        <span>Copiado!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="h-3.5 w-3.5" />
+                        <span>Copiar Texto</span>
+                      </>
+                    )}
+                  </button>
+                </div>
 
-              <div className="flex gap-3">
+                {/* TELA DE SIMULAÇÃO WHATSAPP */}
+                <div className="mt-4 rounded-xl border border-border bg-[#efeae2] p-4 text-sm text-gray-900 shadow-inner dark:bg-zinc-900 dark:text-zinc-100">
+                  <pre className="font-sans whitespace-pre-wrap leading-relaxed text-xs sm:text-sm">
+                    {textoGerado}
+                  </pre>
+                </div>
+              </div>
+
+              {/* AÇÕES DE DISPARO IMEDIATO */}
+              <div className="mt-6 space-y-3 pt-4 border-t border-border">
                 <a
-                  href={linkTelegramShare}
+                  href={linkWhatsApp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#229ED9] px-4 py-2.5 text-xs font-semibold text-white transition-opacity hover:opacity-90"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-bold text-white shadow transition-transform hover:scale-[1.01] active:scale-[0.99]"
                 >
-                  <Send className="h-3.5 w-3.5" />
-                  <span>Enviar no Telegram</span>
+                  <MessageSquare className="h-4 w-4" />
+                  <span>Disparar / Compartilhar no WhatsApp</span>
                 </a>
 
-                <button
-                  onClick={copiarTexto}
-                  className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-surface-2 px-4 py-2.5 text-xs font-semibold text-foreground transition-colors hover:bg-surface"
-                >
-                  <Copy className="h-3.5 w-3.5 text-muted" />
-                  <span>{copiado ? "Copiado!" : "Copiar para Mailing"}</span>
-                </button>
+                <div className="flex gap-3">
+                  <a
+                    href={linkTelegramShare}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#229ED9] px-4 py-2.5 text-xs font-semibold text-white transition-opacity hover:opacity-90"
+                  >
+                    <Send className="h-3.5 w-3.5" />
+                    <span>Enviar no Telegram</span>
+                  </a>
+
+                  <button
+                    onClick={copiarTexto}
+                    className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-surface-2 px-4 py-2.5 text-xs font-semibold text-foreground transition-colors hover:bg-surface"
+                  >
+                    <Copy className="h-3.5 w-3.5 text-muted" />
+                    <span>{copiado ? "Copiado!" : "Copiar para Mailing"}</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -529,6 +716,18 @@ E-mail: `);
               orgaos: "PNCP, Diários Oficiais e Tribunais de Contas",
               descricao: "Monitoramento de termos de dispensa, inexigibilidade, licitações homologadas e contratos com valores superiores à média histórica.",
               frequencia: "Diária (após publicação nos diários)",
+            },
+            {
+              titulo: "Licenciamento & COPAM",
+              orgaos: "SEMAD, COPAM, FEAM e IEF-MG",
+              descricao: "Avisos de licenças prévias, de instalação e de operação, audiências públicas e processos de mineração em pauta.",
+              frequencia: "Semanal / Conforme pauta publicada",
+            },
+            {
+              titulo: "Contatos de Instituições & Denúncias",
+              orgaos: "Conselhos de Bacia, CODEMAs, Defensoria, MPMG e Disque 181",
+              descricao: "Catálogo de telefones, e-mails, ouvidorias e canais oficiais para registrar denúncias de dano ambiental ou irregularidade pública.",
+              frequencia: "Permanente",
             },
             {
               titulo: "Projetos de Lei & Votações",
@@ -582,5 +781,19 @@ E-mail: `);
         </div>
       )}
     </div>
+  );
+}
+
+export default function CentralAlertasClient() {
+  return (
+    <Suspense
+      fallback={
+        <div className="rounded-xl border border-border bg-surface p-8 text-center text-sm text-muted">
+          Carregando Central de Alertas e Notificações...
+        </div>
+      }
+    >
+      <CentralAlertasInner />
+    </Suspense>
   );
 }

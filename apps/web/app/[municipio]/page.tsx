@@ -5,6 +5,7 @@ import PainelDialogo from "@/app/components/PainelDialogo";
 import FotoBrasilComS from "@/app/components/FotoBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import DataCard from "@/app/[municipio]/components/DataCard";
+import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 import RankingVereadores from "@/app/[municipio]/components/charts/RankingVereadores";
 import IndiceRiscoDireitosCard from "@/app/[municipio]/components/IndiceRiscoDireitosCard";
 import { conselhosPorMunicipio } from "@/lib/conselhos/catalogo";
@@ -516,12 +517,23 @@ export default async function HomePage({
                 Conselhos, Justiça Ambiental e Direitos Humanos em {cidade.nome}
               </h2>
             </div>
-            <a
-              href="/ambiental"
-              className="text-xs font-semibold text-primary hover:underline"
-            >
-              Explorar ONSA Meio Ambiente →
-            </a>
+            <div className="flex flex-wrap items-center gap-2">
+              <BotaoAlertaContextual
+                tipo="resumo_pagina"
+                titulo={`Painel Territorial e Socioambiental de ${cidade.nome}`}
+                orgaoTerritorio={`${cidade.nome}, ${cidade.uf ?? "MG"}`}
+                identificador={`Código IBGE: ${cidade.id_ibge}`}
+                link={`https://controlepopular.com.br/${cidade.slug}`}
+                resumo={`Indicadores consolidados de participação popular, ações ambientais no CNJ, monitoramento de risco CEMADEN e direitos humanos em ${cidade.nome}.`}
+                rotulo={`Alertas de ${cidade.nome}`}
+              />
+              <a
+                href="/ambiental"
+                className="text-xs font-semibold text-primary hover:underline"
+              >
+                Explorar ONSA Meio Ambiente →
+              </a>
+            </div>
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -937,9 +949,23 @@ export default async function HomePage({
 
         {/* CONTATOS ÚTEIS */}
         <section>
-          <h2 className="mb-5 font-display text-[1.7em] font-semibold tracking-tight">
-            Contatos úteis
-          </h2>
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+            <h2 className="font-display text-[1.7em] font-semibold tracking-tight">
+              Contatos úteis
+            </h2>
+            {contatos.length > 0 && (
+              <BotaoAlertaContextual
+                tipo="contato"
+                titulo={`Contatos Úteis e Telefones Oficiais de ${cidade.nome}`}
+                orgaoTerritorio={`${cidade.nome}, ${cidade.uf ?? "MG"}`}
+                identificador={`Órgãos Oficiais de ${cidade.nome}`}
+                link={`https://controlepopular.com.br/${cidade.slug}`}
+                resumo={`Telefones e canais de atendimento da Prefeitura, Câmara e serviços públicos de ${cidade.nome}.`}
+                telefones={contatos.filter((c) => !!c.telefone).map((c) => `${c.nome}: ${c.telefone}`)}
+                rotulo="Divulgar Telefones Úteis"
+              />
+            )}
+          </div>
           {contatos.length > 0 ? (
             <div className="flex flex-wrap gap-3">
               {contatos.map((c) => (

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { listarRelatorios } from "@/lib/direitos-humanos/relatorios";
 import PainelDialogo from "@/app/components/PainelDialogo";
 import BlocoPovoGente from "@/app/ambiental/components/BlocoPovoGente";
+import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 
 export const metadata = {
   title: "Relatórios de Direitos Humanos — CIDH, ONU e CNDH | ONSA",
@@ -116,22 +117,33 @@ export default function PaginaDireitosHumanos() {
 
       {/* TABELA DE RELATÓRIOS */}
       <section aria-label="Lista de relatórios de direitos humanos" className="mb-12">
-        <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mb-6 flex flex-col justify-between gap-4 border-b border-border pb-4 sm:flex-row sm:items-center">
           <div>
             <h2 className="font-display text-xl font-bold text-foreground">
-              Acervo de Documentos Oficiais
+              Documentos Temáticos e Missões Oficiais
             </h2>
             <p className="text-xs text-muted">
-              Documentos na íntegra com link oficial e resumo acessível para a cidadania.
+              Recomendações e relatórios vinculantes sobre o Brasil e comunidades atingidas.
             </p>
           </div>
-          <a
-            href={`data:text/csv;charset=utf-8,${encodeURIComponent(gerarCsv())}`}
-            download="relatorios-direitos-humanos-onsa.csv"
-            className="inline-flex items-center gap-1.5 self-start rounded-xl border border-border bg-surface-1 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm hover:bg-surface-3 transition-colors sm:self-auto"
-          >
-            📥 Baixar Planilha (CSV)
-          </a>
+          <div className="flex flex-wrap items-center gap-2">
+            <BotaoAlertaContextual
+              tipo="resumo_pagina"
+              titulo="Acervo de Relatórios de Direitos Humanos (CIDH, ONU e CNDH)"
+              orgaoTerritorio="Brasil / Minas Gerais"
+              identificador="ONSA / Controle Popular"
+              link="https://controlepopular.com.br/ambiental/direitos-humanos"
+              resumo="Catálogo de relatórios e recomendações internacionais sobre violações de direitos humanos em desastres da mineração e povos tradicionais."
+              rotulo="Divulgar Acervo de Direitos Humanos"
+            />
+            <a
+              href={`data:text/csv;charset=utf-8,${encodeURIComponent(gerarCsv())}`}
+              download="relatorios-direitos-humanos-onsa.csv"
+              className="inline-flex items-center gap-1.5 self-start rounded-xl border border-border bg-surface-1 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm hover:bg-surface-3 transition-colors sm:self-auto"
+            >
+              📥 Baixar Planilha (CSV)
+            </a>
+          </div>
         </div>
 
         <div className="flex flex-col gap-6">
@@ -142,20 +154,27 @@ export default function PaginaDireitosHumanos() {
             >
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3">
                 <div className="flex items-center gap-2">
-                  <span className="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-semibold text-primary">
+                  <span className="rounded-md bg-blue-100 px-2 py-0.5 text-xs font-bold text-blue-800 dark:bg-blue-950/60 dark:text-blue-300">
                     {r.orgao}
                   </span>
-                  <span className="text-xs text-muted">Ano {r.ano}</span>
+                  <span className="text-xs text-muted font-medium">{r.ano}</span>
+                  <span className="rounded bg-surface-3 px-2 py-0.5 text-[11px] text-muted">
+                    {r.tema}
+                  </span>
                 </div>
-                <div className="flex flex-wrap gap-1 text-xs text-muted">
-                  {r.municipios.slice(0, 3).map((m) => (
-                    <span key={m} className="rounded bg-surface-3 px-2 py-0.5">
-                      📍 {m}
-                    </span>
-                  ))}
-                  {r.municipios.length > 3 ? (
-                    <span className="text-[11px] text-muted self-center">+{r.municipios.length - 3} cidades</span>
-                  ) : null}
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-semibold text-primary">
+                    {r.esfera.toUpperCase()}
+                  </span>
+                  <BotaoAlertaContextual
+                    tipo="resumo_pagina"
+                    titulo={`${r.orgao} (${r.ano}): ${r.titulo}`}
+                    orgaoTerritorio={r.municipios.length > 0 ? r.municipios.join(", ") : (r.estados.length > 0 ? r.estados.join(", ") : "Brasil")}
+                    identificador={`Relatório Oficial ${r.orgao} — ${r.ano}`}
+                    link={r.linkOficial}
+                    resumo={r.resumoCidadao}
+                    variante="icone"
+                  />
                 </div>
               </div>
 
