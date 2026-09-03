@@ -2,6 +2,7 @@ import Link from "next/link";
 import { listarConselhos, contagemConselhosPorCategoria } from "@/lib/conselhos/catalogo";
 import PainelDialogo from "@/app/components/PainelDialogo";
 import BlocoPovoGente from "@/app/ambiental/components/BlocoPovoGente";
+import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 
 export const metadata = {
   title: "Conselhos Sociais, Bacias e Meio Ambiente | ONSA",
@@ -118,22 +119,33 @@ export default function PaginaConselhosSociais() {
 
       {/* TABELA DE CONSELHOS E CANAIS */}
       <section aria-label="Lista de conselhos" className="mb-12">
-        <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mb-6 flex flex-col justify-between gap-4 border-b border-border pb-4 sm:flex-row sm:items-center">
           <div>
             <h2 className="font-display text-xl font-bold text-foreground">
-              Colegiados e Formas de Contato Cidadão
+              Catálogo de Instâncias e Canais de Fiscalização
             </h2>
             <p className="text-xs text-muted">
-              Descubra quem participa, o que o órgão fiscaliza e onde enviar manifestações ou pedidos.
+              Conselhos com atribuição legal de deliberação, denúncia e fiscalização popular.
             </p>
           </div>
-          <a
-            href={`data:text/csv;charset=utf-8,${encodeURIComponent(gerarCsv())}`}
-            download="conselhos-sociais-bacias-onsa.csv"
-            className="inline-flex items-center gap-1.5 self-start rounded-xl border border-border bg-surface-1 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm hover:bg-surface-3 transition-colors sm:self-auto"
-          >
-            📥 Baixar Planilha (CSV)
-          </a>
+          <div className="flex flex-wrap items-center gap-2">
+            <BotaoAlertaContextual
+              tipo="contato"
+              titulo="Catálogo Completo de Conselhos e Canais de Denúncia"
+              orgaoTerritorio="Minas Gerais e Bacias Hidrográficas"
+              identificador="ONSA / Controle Popular"
+              link="https://controlepopular.com.br/ambiental/conselhos"
+              resumo="Lista oficial de CODEMAs, Comitês de Bacia Hidrográfica, Ouvidorias e Disque Denúncia 181 para fiscalização cidadã."
+              rotulo="Divulgar Contatos de Denúncia"
+            />
+            <a
+              href={`data:text/csv;charset=utf-8,${encodeURIComponent(gerarCsv())}`}
+              download="conselhos-sociais-bacias-onsa.csv"
+              className="inline-flex items-center gap-1.5 self-start rounded-xl border border-border bg-surface-1 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm hover:bg-surface-3 transition-colors sm:self-auto"
+            >
+              📥 Baixar Planilha (CSV)
+            </a>
+          </div>
         </div>
 
         <div className="flex flex-col gap-6">
@@ -151,11 +163,24 @@ export default function PaginaConselhosSociais() {
                     {c.esfera.toUpperCase()} {c.uf ? `• ${c.uf}` : ""} {c.municipioNome ? `• ${c.municipioNome}` : ""}
                   </span>
                 </div>
-                {c.baciaHidrografica ? (
-                  <span className="rounded bg-surface-3 px-2 py-0.5 text-xs text-muted">
-                    🌊 {c.baciaHidrografica}
-                  </span>
-                ) : null}
+                <div className="flex items-center gap-2">
+                  {c.baciaHidrografica ? (
+                    <span className="rounded bg-surface-3 px-2 py-0.5 text-xs text-muted">
+                      🌊 {c.baciaHidrografica}
+                    </span>
+                  ) : null}
+                  <BotaoAlertaContextual
+                    tipo="contato"
+                    titulo={`Contato Oficial: ${c.nome} (${c.sigla})`}
+                    orgaoTerritorio={`${c.esfera.toUpperCase()} ${c.municipioNome ? `— ${c.municipioNome}` : (c.uf ? `— ${c.uf}` : "")}`}
+                    identificador={`Sigla: ${c.sigla} | Bacia: ${c.baciaHidrografica ?? "Estadual/Nacional"}`}
+                    link="https://controlepopular.com.br/ambiental/conselhos"
+                    resumo={c.descricaoPapel}
+                    telefones={c.contatos.telefone ? [c.contatos.telefone] : (c.contatos.canalDenuncia ? [c.contatos.canalDenuncia] : undefined)}
+                    emails={c.contatos.email ? [c.contatos.email] : undefined}
+                    variante="icone"
+                  />
+                </div>
               </div>
 
               <h3 className="mt-3 font-display text-lg font-bold text-foreground">

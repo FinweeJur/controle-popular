@@ -7,6 +7,7 @@ import {
 import TabelaRiscoClient from "./TabelaRiscoClient";
 import PainelDialogo from "@/app/components/PainelDialogo";
 import BlocoPovoGente from "@/app/ambiental/components/BlocoPovoGente";
+import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 
 export const metadata = {
   title: "Bases de Clima e Risco — BATER, CEMADEN, INMET, INPE, SNIS | ONSA",
@@ -53,10 +54,23 @@ export default function PaginaBasesClimaRisco() {
           Bases de Vulnerabilidade Climática e Risco
         </h1>
         <p className="mt-3 text-base text-muted sm:text-lg">
-          Cruzamento dos dados de população exposta em áreas de risco (BATER), rede telemétrica
-          de pluviômetros do CEMADEN, avisos meteorológicos do INMET, focos de calor do INPE e
-          indicadores de saneamento básico do MDR/SNIS.
+          Cruzamento oficial de risco geo-hidrológico (deslizamentos e inundações),
+          estações meteorológicas, alertas severos do INMET e cobertura de esgotamento
+          sanitário para a prevenção de desastres e salvaguarda das comunidades.
         </p>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          <BotaoAlertaContextual
+            tipo="clima"
+            titulo="Alertas de Chuva, Risco Geológico e Monitoramento CEMADEN"
+            orgaoTerritorio="Minas Gerais e Bacias Hidrográficas"
+            identificador="ONSA / CEMADEN / INMET"
+            link="https://controlepopular.com.br/ambiental/clima-risco"
+            resumo="1,37 milhão de mineiros residem em áreas de risco geo-hidrológico mapeadas pelo IBGE/CEMADEN. Fique atento a alertas de encostas e transbordamento."
+            telefones={["Defesa Civil: 199", "Corpo de Bombeiros: 193", "Disque Denúncia: 181"]}
+            rotulo="Disparar Alerta de Risco Climático"
+          />
+        </div>
 
         {/* EPÍGRAFE EDITORIAL */}
         <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
