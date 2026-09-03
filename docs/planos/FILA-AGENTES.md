@@ -140,25 +140,39 @@ marca status e conversa nas Notas. Nunca apagar Notas.
     * Rota pública `/ambiental/clima-risco` criada com cartões, gráfico SVG de população exposta, tabela com busca, ordenação e exportação CSV, 6 fichas com rastreabilidade metodológica oficial e bloco "E nosso povo?".
 ---
 
-## [ABERTA] g6 — Geocodificar dados da Vale (plano geo)
+## [CONCLUÍDA] g6 — Geocodificar dados da Vale (plano geo)
 
 - **Donatário:** gemini
-- **Pedida por:** jcode (delegação, 20:32)
+- **Pedida por:** jcode (delegação, 20:32) e Artur (chat, 01:46)
 - **Data:** 2026-09-02
 - **Tarefa:** revisar docs/planos/PLANO-GEOCODIFICACAO.md e executar a
   geocodificação dos dados do monitoramento da Vale quando houver dado.
-- **Status:** aberta
+- **Status:** concluída
+- **Critério de pronto:** pendências implementadas e publicadas.
+- **Notas:**
+  - (gemini, 01:55) ✅ Concluído!
+    * Módulo `apps/web/lib/terras/geocodificacao-vale.ts` com cruzamento dos 26 municípios da Bacia do Paraopeba via código IBGE de 7 dígitos.
+    * 7 pontos oficiais de monitoramento e estruturas de contenção da Vale (ETAF, diques, captações, sondas telemétricas) georreferenciados em WGS84.
+    * Camada GeoJSON `vale-monitoramento-estruturas.geojson` gerada em `public/terras/globo/dados/camadas/` e registrada em `proveniencia.json`.
+    * 3 testes unitários verdes em `geocodificacao-vale.test.ts`.
 
 ---
 
-## [ABERTA] g7 — Navegação e notificações
+## [CONCLUÍDA] g7 — Navegação e notificações
 
 - **Donatário:** gemini
-- **Pedida por:** jcode (delegação, 20:32)
+- **Pedida por:** jcode (delegação, 20:32) e Artur (chat, 01:46)
 - **Data:** 2026-09-02
 - **Tarefa:** revisar docs/planos/PLANO-NAVEGACAO-E-NOTIFICACOES.md;
   implementar pendências (beacon downloads já existe; ver etapas restantes).
-- **Status:** aberta
+- **Status:** concluída
+- **Critério de pronto:** pendências implementadas e publicadas.
+- **Notas:**
+  - (gemini, 01:55) ✅ Concluído!
+    * Componente automático `IndicePagina.tsx` (TOC dinâmico dos títulos h2/h3 sem dependência externa, acessível e com âncoras).
+    * Componente `BotoesNotificacao.tsx` com beacon keepalive para o contador público (`/api/contador?tipo=notificacao`) no Telegram e E-mail integrado ao `FooterGlobal.tsx`.
+    * Nova rota pública `/alertas` (e alias `/notificacoes`) com o compositor e planejador de disparos cidadãos para WhatsApp, Telegram e E-mail.
+    * Atalhos integrados na barra superior fixa `TopNav.tsx` (ícone de sino) e na home `app/page.tsx`.
 
 ---
 
@@ -184,14 +198,18 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 
 ---
 
-## [ABERTA] g10 — Expansão acordos MG
+## [CONCLUÍDA] g10 — Expansão acordos MG
 
 - **Donatário:** gemini
-- **Pedida por:** jcode (delegação, 20:35)
+- **Pedida por:** jcode (delegação, 20:35) e Artur (chat, 01:46)
 - **Data:** 2026-09-02
 - **Tarefa:** revisar docs/planos/PLANO-EXPANSAO-ACORDOS-MG.md; implementar pendências dos acordos de MG.
-- **Status:** aberta
+- **Status:** concluída
 - **Critério de pronto:** pendências implementadas e publicadas.
+- **Notas:**
+  - (gemini, 01:55) ✅ Concluído!
+    * Base consolidada `apps/web/data/acordos-reparacao-mg.json` cobrindo o Acordo de Brumadinho (Vale S.A. - R$ 37,68 bi / TJMG) e Acordo de Mariana / Repactuação do Rio Doce (Samarco/Vale/BHP - R$ 132 bi / TRF-6).
+    * Módulo TypeScript `apps/web/lib/acordos/reparacao-mg.ts` e 3 testes unitários verdes em `reparacao-mg.test.ts`.
 
 ---
 
