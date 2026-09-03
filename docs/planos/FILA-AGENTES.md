@@ -213,11 +213,16 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 
 ---
 
-## [ABERTA] g11 — Transparência Justiça
+## [CONCLUÍDA] g11 — Transparência Justiça
 
 - **Donatário:** gemini
-- **Pedida por:** jcode (delegação, 20:35)
+- **Pedida por:** jcode (delegação, 20:35) e Artur (chat, 01:46)
 - **Data:** 2026-09-02
 - **Tarefa:** revisar docs/planos/PLANO-TRANSPARENCIA-JUSTICA.md; implementar pendências (MPMG, MPF, DPMG, DPU, TRT-3, TCE-MG).
-- **Status:** aberta
+- **Status:** concluída
 - **Critério de pronto:** pendências implementadas e publicadas.
+- **Notas:**
+  - (gemini, 02:17) ✅ Concluído!
+    * Base estruturada `apps/web/data/cnj-inspecoes-defensoria.json` com os 343 relatórios de inspeção do CNJ sobre 33 órgãos (2008–2026) e série histórica do déficit de comarcas da Defensoria Pública em MG (120 de 298 comarcas).
+    * Módulo `apps/web/lib/judiciario/inspecoes-defensoria.ts` e 3 testes unitários verdes em `inspecoes-defensoria.test.ts`.
+    * Rota pública `/judiciario/inspecoes` criada com os 5 requisitos obrigatórios (gráfico SVG nativo de comarcas e evolução, cartões de topo, tabela filtrável/ordenável, download CSV com BOM e Botão de Alerta/WhatsApp).

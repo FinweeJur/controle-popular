@@ -1,0 +1,118 @@
+{
+  "gerado_em": "2026-09-03",
+  "fonte_inspecoes": "Corregedoria Nacional de Justiça (CNJ) — Biblioteca Pública de Relatórios de Inspeção (Portaria CNJ 03/2026)",
+  "fonte_defensoria": "DPMG (API de Unidades) e Pesquisa Nacional da Defensoria Pública (2025)",
+  "totais": {
+    "total_relatorios_cnj": 343,
+    "orgaos_correcionados": 33,
+    "anos_cobertura_inicio": 2008,
+    "anos_cobertura_fim": 2026,
+    "total_comarcas_mg": 298,
+    "comarcas_com_defensoria_mg": 120,
+    "deficit_comarcas_mg_percentual": 59.7,
+    "achados_substantivos_tjmg_2026": 74
+  },
+  "orgaos_inspecionados": [
+    {
+      "orgao": "TJMG",
+      "nome": "Tribunal de Justiça de Minas Gerais",
+      "tipo": "Justiça Estadual",
+      "uf": "MG",
+      "total_relatorios": 13,
+      "ultimo_relatorio_ano": 2026,
+      "processo_ultimo_relatorio": "0000675-79.2026.2.00.0000",
+      "paginas_ultimo_relatorio": 1388,
+      "achados_destaque": [
+        "Metas Nacionais: Gabinetes de 2ª instância com taxa de cumprimento abaixo de 90% e acúmulo de recursos sem julgamento.",
+        "Execuções Penais e Garantias: Presos em flagrante conduzidos à audiência de custódia com atraso superior a 24 horas.",
+        "Pautas de Audiência: Varas cíveis com marcação de audiências de instrução para prazos longínquos (2028-2029).",
+        "Serventias Extrajudiciais: Pendências de fiscalização e repasse de taxas de atos cartorários em comarcas do interior."
+      ]
+    },
+    {
+      "orgao": "TJSP",
+      "nome": "Tribunal de Justiça de São Paulo",
+      "tipo": "Justiça Estadual",
+      "uf": "SP",
+      "total_relatorios": 18,
+      "ultimo_relatorio_ano": 2025,
+      "processo_ultimo_relatorio": "0004512-32.2025.2.00.0000",
+      "paginas_ultimo_relatorio": 1120,
+      "achados_destaque": [
+        "Digitalização e acervo físico: Unidades com processos físicos paralisados sem plano de migração para o e-SAJ.",
+        "Precatórios: Atraso crônico na expedição e conciliação de pagamentos prioritários pelo DEPRE."
+      ]
+    },
+    {
+      "orgao": "TJRJ",
+      "nome": "Tribunal de Justiça do Rio de Janeiro",
+      "tipo": "Justiça Estadual",
+      "uf": "RJ",
+      "total_relatorios": 15,
+      "ultimo_relatorio_ano": 2025,
+      "processo_ultimo_relatorio": "0003890-11.2025.2.00.0000",
+      "paginas_ultimo_relatorio": 940,
+      "achados_destaque": [
+        "Varas de Família e Órfãos: Sobrecarga estrutural e carência de assistentes sociais e psicólogos forenses."
+      ]
+    },
+    {
+      "orgao": "TRF-6",
+      "nome": "Tribunal Regional Federal da 6ª Região",
+      "tipo": "Justiça Federal",
+      "uf": "MG",
+      "total_relatorios": 4,
+      "ultimo_relatorio_ano": 2026,
+      "processo_ultimo_relatorio": "0000120-45.2026.2.00.0000",
+      "paginas_ultimo_relatorio": 680,
+      "achados_destaque": [
+        "Instalação e infraestrutura: Carência de servidores efetivos herdada do desmembramento do TRF-1.",
+        "Litígios de Mineração: Tramitação de grandes acordos ambientais (Rio Doce e Brumadinho) sem vara especializada permanente."
+      ]
+    },
+    {
+      "orgao": "TRF-1",
+      "nome": "Tribunal Regional Federal da 1ª Região",
+      "tipo": "Justiça Federal",
+      "uf": "DF",
+      "total_relatorios": 16,
+      "ultimo_relatorio_ano": 2025,
+      "processo_ultimo_relatorio": "0005110-88.2025.2.00.0000",
+      "paginas_ultimo_relatorio": 1050,
+      "achados_destaque": [
+        "Jurisdição Territorial: Dificuldade de cobertura física e teletrabalho excessivo em subseções judiciais da Amazônia Legal."
+      ]
+    },
+    {
+      "orgao": "TRT-3",
+      "nome": "Tribunal Regional do Trabalho da 3ª Região",
+      "tipo": "Justiça do Trabalho",
+      "uf": "MG",
+      "total_relatorios": 11,
+      "ultimo_relatorio_ano": 2025,
+      "processo_ultimo_relatorio": "0002104-90.2025.2.00.0000",
+      "paginas_ultimo_relatorio": 510,
+      "achados_destaque": [
+        "Conciliação Trabalhista: Cumprimento satisfatório da Meta 3, com recomendação para redução do prazo de perícias insalubridade."
+      ]
+    }
+  ],
+  "defensoria_mg_comarcas": {
+    "total_comarcas": 298,
+    "atendidas_presencialmente": 120,
+    "nao_atendidas": 176,
+    "atendidas_parcialmente": 2,
+    "evolucao_historica": [
+      { "ano": 2013, "comarcas_atendidas": 105, "percentual": 35.5, "fonte": "Diagnóstico IPEA" },
+      { "ano": 2018, "comarcas_atendidas": 112, "percentual": 37.8, "fonte": "IV Diagnóstico DPU/Ministério da Justiça" },
+      { "ano": 2025, "comarcas_atendidas": 120, "percentual": 40.3, "fonte": "Pesquisa Nacional da Defensoria Pública 2025" }
+    ],
+    "comarcas_desassistidas_destaque": [
+      { "comarca": "Águas Formosas", "populacao": 19200, "regiao": "Vales do Mucuri", "polo_proximo": "Teófilo Otoni" },
+      { "comarca": "Ervália", "populacao": 18500, "regiao": "Zona da Mata", "polo_proximo": "Viçosa" },
+      { "comarca": "Resende Costa", "populacao": 11400, "regiao": "Campo das Vertentes", "polo_proximo": "São João del-Rei" },
+      { "comarca": "Rio Pardo de Minas", "populacao": 31200, "regiao": "Norte de Minas", "polo_proximo": "Salinas" },
+      { "comarca": "Ferros", "populacao": 10200, "regiao": "Rio Doce", "polo_proximo": "Itabira" }
+    ]
+  }
+}
