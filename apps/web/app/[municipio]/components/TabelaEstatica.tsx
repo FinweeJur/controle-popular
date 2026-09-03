@@ -44,20 +44,10 @@ export interface ColunaTabela<T> {
   /** Alinha à direita e usa `tabular-nums` — para dinheiro e contagem. */
   numerica?: boolean;
   formatar?: (linha: T) => React.ReactNode;
-  /**
-   * Ordenável por clique no cabeçalho. O padrão é `true` para coluna sem
-   * `formatar` e `false` para coluna com `formatar`: quando o valor exibido
-   * NÃO é o valor cru do campo (link, moeda formatada), ordenar por ele
-   * enganaria. Quem quiser ordenar assim mesmo declara `ordernavel: true`
-   * e o tipo de comparação certo em `tipoOrdenacao`.
-   */
   ordenavel?: boolean;
-  /**
-   * Como comparar os valores ao ordenar. O padrão é `"numero"` para coluna
-   * `numerica` e `"texto"` para o resto; data precisa declarar `"data"` com
-   * o valor em ISO (ver `lib/tabela/ordenar.ts`).
-   */
   tipoOrdenacao?: TipoCampo;
+  /** Largura CSS aplicada a th e td (ex: "min-w-[120px]", "w-[200px]"). */
+  largura?: string;
 }
 
 export interface TabelaEstaticaProps<T> {
@@ -306,7 +296,10 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
       )}
 
       <div className="mt-4 overflow-x-auto rounded-lg border border-border">
-        <table className="w-full text-sm">
+        <p className="mb-1 px-1 text-[10px] text-text-soft sm:hidden">
+          ← deslize para ver mais colunas →
+        </p>
+        <table className="w-full min-w-[1400px] text-sm">
           <thead>
             <tr>
               {colunas.map((c) => {
@@ -322,7 +315,7 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
                     aria-sort={ativa ? (ordemAtiva.direcao === "asc" ? "ascending" : "descending") : "none"}
                     className={`whitespace-nowrap border-b border-border bg-surface px-3 py-2 text-xs uppercase tracking-wide text-text-soft ${
                       c.numerica ? "text-right" : "text-left"
-                    }`}
+                    } ${c.largura ?? ""}`}
                   >
                     {podeOrdenar ? (
                       <button
@@ -355,7 +348,7 @@ export default function TabelaEstatica<T extends Record<string, unknown>>({
                     key={c.chave}
                     className={`border-b border-border px-3 py-2 ${
                       c.numerica ? "text-right font-tabular" : "text-left"
-                    }`}
+                    } ${c.largura ?? ""}`}
                   >
                     {c.formatar ? c.formatar(linha) : String(linha[c.chave] ?? "—")}
                   </td>

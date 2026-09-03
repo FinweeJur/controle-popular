@@ -15,7 +15,7 @@ import {
 } from "@/lib/ambiental/tac-projetos-dados";
 import { STATUS_ORDEM } from "@/lib/ambiental/tac-agregados";
 import { metadataEditavel } from "@/lib/edicoes";
-import PainelTac from "./PainelTac";
+import FiltroTAC from "./FiltroTAC";
 
 /**
  * `/ambiental/tac` — o dinheiro dos Termos de Ajustamento de Conduta
@@ -524,8 +524,8 @@ export default function TacAmbientalPage() {
       </section>
 
       {/* ═══ CONTRATO A CONTRATO ═══
-          `<PainelTac />` é componente de CLIENTE — busca, filtro por
-          mineradora/órgão/status/execução e CSV. Ver o cabeçalho dele para o
+          `<FiltroTAC />` é componente de CLIENTE — busca, filtro por tags,
+          status, ordenação e verificação da fonte. Ver o cabeçalho dele para o
           porquê da divisão servidor/cliente. */}
       <section aria-labelledby="contratos" className="mt-10">
         <h2 id="contratos" className="font-display text-xl font-bold tracking-tight text-text">
@@ -533,11 +533,12 @@ export default function TacAmbientalPage() {
         </h2>
         <p className="mt-2 max-w-3xl text-[.92em] leading-relaxed text-text-soft">
           Onde a fonte escreveu um relato da situação, ele está aqui transcrito sem edição — o
-          texto é dela, não deste portal. &ldquo;Execução&rdquo; é quem toca o projeto: a própria
-          mineradora ou o Estado, com o dinheiro que a mineradora depositou.
+          texto é dele, não deste portal. &ldquo;Execução&rdquo; é quem toca o projeto: a própria
+          mineradora ou o Estado, com o dinheiro que a mineradora depositou. Cada contrato
+          mostra onde foi executado e permite verificar a fonte original.
         </p>
         <div className="mt-4">
-          <PainelTac />
+          <FiltroTAC />
         </div>
       </section>
 

@@ -13,6 +13,8 @@ import {
   contarPorTema,
   ESFERA_LABEL,
   filtrarItens,
+  ordenarPorHierarquia,
+  rotuloHierarquia,
   TEMA_LABEL_UNIFICADO,
   TEMA_ORDEM_UNIFICADO,
   unificarItens,
@@ -154,8 +156,20 @@ const PAGINA = 40;
  * ficam SEM valor, e `ordenarPor` já manda ausente pro fim nas duas direções
  * (ver o cabeçalho de `lib/tabela/ordenar.ts`) — não aparecem misturados no
  * meio da lista como se tivessem ano zero.
+ *
+ * ═══ O DEFAULT AGORA É A HIERARQUIA (regra do dono, 03/09/2026) ═══
+ *
+ * O estado `""` do seletor — antes "Como veio da fonte" — passou a aplicar a
+ * ordenação hierárquica (`ordenarPorHierarquia` da lib, pura e testada):
+ * esfera (internacional → nacional → estadual → municipal), depois banda do
+ * tipo (Constituição → … → Portaria), depois data desc dentro da banda. Era
+ * o remédio para o sort "Tipo/classe" alfabético, em que 5.595 portarias
+ * engoliam leis e decretos. A ordem original da fonte continua alcançável,
+ * agora como opção explícita (`"fonte"`). O botão de direção (A→Z) fica
+ * desabilitado no default e em "fonte": a hierarquia é ordem de pirâmide,
+ * não alfabeto.
  */
-type OrdemChave = "" | "tipo" | "ano" | "esfera";
+type OrdemChave = "" | "fonte" | "tipo" | "ano" | "esfera";
 
 interface ItemComChaveDeOrdenacao {
   item: ItemLegislacaoUnificada;
@@ -328,12 +342,15 @@ export default function BuscaLegislacaoUnificada({ corpus, criticas, precedentes
     return base;
   }, [itens, termoNormalizado, esfera, classe, fonte, tema, ano]);
 
-  // Ordenação por coluna (regra do dono, 2026-08-21) — "" mantém a ordem que
-  // já vem de `unificarItens` (estaduais por data desc, depois críticas,
-  // depois precedentes). Aplicada DEPOIS do filtro — ordenar o corpus
-  // inteiro antes seria trabalho jogado fora.
+  // Ordenação — "" é o DEFAULT hierárquico (regra do dono, 03/09/2026):
+  // esfera → banda do tipo → data desc, tudo em `ordenarPorHierarquia`
+  // (pura, testada na lib). "fonte" mantém a ordem que vem de
+  // `unificarItens` (estaduais por data desc, depois críticas, depois
+  // precedentes). As demais aplicam `ordenarPor` DEPOIS do filtro — ordenar
+  // o corpus inteiro antes seria trabalho jogado fora.
   const ordenados = useMemo(() => {
-    if (!ordemChave) return filtrados;
+    if (!ordemChave) return ordenarPorHierarquia(filtrados);
+    if (ordemChave === "fonte") return filtrados;
     const chave =
       ordemChave === "tipo" ? "tipoOrdenacao" : ordemChave === "ano" ? "anoOrdenacao" : "esferaOrdenacao";
     const tipo: TipoCampo = ordemChave === "ano" ? "numero" : "texto";
@@ -547,7 +564,8 @@ export default function BuscaLegislacaoUnificada({ corpus, criticas, precedentes
                   onChange={(e) => setOrdemChave(e.target.value as OrdemChave)}
                   className="rounded-lg border border-border bg-bg px-3 py-1.5 text-sm text-text"
                 >
-                  <option value="">Como veio da fonte</option>
+                  <option value="">Hierarquia (Constituição → Portaria)</option>
+                  <option value="fonte">Como veio da fonte</option>
                   <option value="tipo">Tipo/classe</option>
                   <option value="ano">Ano (só normas)</option>
                   <option value="esfera">Esfera</option>
@@ -556,7 +574,7 @@ export default function BuscaLegislacaoUnificada({ corpus, criticas, precedentes
               <button
                 type="button"
                 onClick={() => setOrdemDirecao((d) => (d === "asc" ? "desc" : "asc"))}
-                disabled={!ordemChave}
+                disabled={!ordemChave || ordemChave === "fonte"}
                 aria-label={
                   ordemDirecao === "asc" ? "Ordem crescente — alternar para decrescente" : "Ordem decrescente — alternar para crescente"
                 }
@@ -704,8 +722,18 @@ function CardEstadual({
             {FONTE_LABEL[l.fonte]}
           </span>
           <EsferaBadge esfera={esfera} />
-          <span className="rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-text-soft">
-            {l.tipo}
+          {/* Classe hierárquica da norma ("Lei", "Decreto", "Portaria"…),
+              derivada de `l.tipo` por `rotuloHierarquia` — o tipo cru segue
+              no título da linha abaixo e no tooltip da pílula. Span simples
+              de propósito, não TagChip: TagChip é chip de FILTRO (hover,
+              "Filtrar por", aria-pressed); esta pílula é classificação
+              estática, igual aos selos ao lado. Tipo que não casa com classe
+              nenhuma aparece cru — nunca se inventa classe. */}
+          <span
+            title={l.tipo}
+            className="rounded-full bg-surface-2 px-2.5 py-1 text-xs font-medium text-text-soft"
+          >
+            {rotuloHierarquia(l.tipo) ?? l.tipo}
           </span>
           <SituacaoBadge situacao={l.situacao} />
         </div>

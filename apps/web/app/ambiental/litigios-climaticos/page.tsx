@@ -5,7 +5,8 @@ import {
 } from "@/lib/judiciario/jurisprudencia-clima-barragens";
 import { carregarSirenejudMg } from "@/lib/ambiental/sirenejud-dados";
 import PainelDialogo from "@/app/components/PainelDialogo";
-import BlocoPovoGente from "@/app/ambiental/components/BlocoPovoGente";
+import { Epigrafe } from "@/app/components/Epigrafe";
+import { citacaoPorId } from "@/lib/citacoes";
 
 export const metadata = {
   title: "Litigância Climática e Conflitos Ambientais — JUMA, SIRENEJud e TJMG | ONSA",
@@ -64,10 +65,10 @@ export default function PaginaLitigiosClimaticos() {
           do TJMG e TRF-6 sobre reparação de barragens e direitos dos atingidos.
         </p>
 
-        {/* EPÍGRAFE EDITORIAL */}
-        <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
-          [Espaço para epígrafe/verso da equipe editorial sobre o peso da toga, a força da lei e o clamor das margens dos rios]
-        </div>
+        {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (Cap. 3 · Judiciário) */}
+        <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
+          "O que a vida quer da gente é coragem." — João Guimarães Rosa, Grande Sertão: Veredas, 1956
+        </p>
       </header>
 
       {/* CARTÕES DE TOPO */}
@@ -223,11 +224,22 @@ export default function PaginaLitigiosClimaticos() {
         origemTitulo="Litigância Climática e Barragens"
       />
 
-      {/* BLOCO OBRIGATÓRIO: E NOSSO POVO? */}
-      <BlocoPovoGente
-        variacao="povo"
-        territorioNome="as famílias em litígio e comunidades atingidas por barragens"
-      />
+      {/* BLOCO: E NOSSO POVO? */}
+      <section className="mt-14 rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-sm">
+        <span className="text-[0.75rem] font-bold uppercase tracking-wider text-primary">
+          Impacto Social &amp; Vida Real
+        </span>
+        <h2 className="mt-1 font-display text-[1.6rem] font-semibold tracking-tight text-text">
+          E nosso povo?
+        </h2>
+        <p className="mt-3 text-[0.95rem] text-text-soft leading-relaxed max-w-3xl">
+          As famílias em litígio e comunidades atingidas por barragens enfrentam o peso
+          judicial e social das disputas por reparação e dignidade.
+        </p>
+      </section>
+
+      {/* FECHO — citação autorizada */}
+      <Epigrafe citacao={citacaoPorId("evaristo-medo-coragem")!} variante="fecho" />
     </div>
   );
 }

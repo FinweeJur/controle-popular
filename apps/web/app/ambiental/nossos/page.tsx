@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { LUGARES_CATALOGO } from "@/lib/lugares";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import { Epigrafe } from "@/app/components/Epigrafe";
+import { citacaoPorId } from "@/lib/citacoes";
 
 export const metadata: Metadata = {
   title: "Nossos Rios, Serras, Territórios e Gente — ONSA · Controle Popular",
@@ -51,10 +53,10 @@ export default function HubNossosPage() {
           O meio ambiente não é uma abstração de gabinete: é o rio que sacia a sede, a serra que guarda as nascentes, o cerrado que alimenta a biodiversidade e as pessoas que vivem e trabalham no território.
         </p>
 
-        {/* Espaço reservado para epígrafe/verso da equipe editorial */}
-        <div className="mt-4 rounded-lg border-l-2 border-primary/50 bg-surface-2/40 px-4 py-2.5 text-xs italic text-text-soft">
-          [Espaço para epígrafe/verso da equipe editorial]
-        </div>
+        {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (manifesto final, Birri/Galeano) */}
+        <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
+          "Para que serve a utopia? Serve para isso: para caminhar." — Fernando Birri, recolhido por Eduardo Galeano em As Palavras Andantes, 1994
+        </p>
       </header>
 
       {/* AS 5 SUBFRENTES */}
@@ -152,7 +154,7 @@ export default function HubNossosPage() {
               </p>
             </div>
             <div className="mt-5 pt-3 border-t border-border">
-              <span className="text-xs font-medium text-text-soft">Em estruturação na Coleção Nossos</span>
+              <span className="text-xs font-medium text-text-soft">Nova frente da Coleção Nossos</span>
             </div>
           </div>
 
@@ -173,6 +175,56 @@ export default function HubNossosPage() {
           </div>
         </div>
       </section>
+
+      {/* ECOSSISTEMA ONSA — frentes de dado por trás da Coleção Nossos */}
+      <section className="mt-12 border-t border-border pt-8">
+        <h2 className="font-display text-xl font-bold text-text">O ecossistema em uma página</h2>
+        <p className="mt-2 max-w-3xl text-sm text-text-soft leading-relaxed">
+          Rios, serras, territórios e gente são a cara da Coleção Nossos; o dado que sustenta essa fiscalização mora nas frentes técnicas do ONSA — as mesmas que alimentam as pontes entre frentes desta coleção.
+        </p>
+
+        <details className="group mt-5 rounded-2xl border border-border bg-surface-2 px-5 py-4">
+          <summary className="cursor-pointer list-none font-display text-base font-semibold text-text">
+            <span className="mr-2 inline-block text-xs text-primary transition-transform duration-200 group-open:rotate-180">▼</span>
+            Onde o dado mora
+          </summary>
+          <p className="mt-3 text-sm text-text-soft">
+            Cada frente abaixo é um motor de dado público — estadual ou federal — coletado pelo ONSA e cruzado com os lugares desta coleção.
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-xl border border-border bg-surface p-4">
+              <div className="flex flex-wrap items-center gap-1.5">
+                <Link href="/ambiental/nossos-territorios" className="rounded-md bg-orange-100 px-2.5 py-0.5 text-[0.75rem] font-semibold uppercase tracking-wider text-orange-800 transition-colors hover:bg-orange-200 dark:bg-orange-950 dark:text-orange-200 dark:hover:bg-orange-900">Terras e território</Link>
+                <Link href="/funcaosocialterra" className="rounded-md bg-orange-100 px-2.5 py-0.5 text-[0.75rem] font-semibold uppercase tracking-wider text-orange-800 transition-colors hover:bg-orange-200 dark:bg-orange-950 dark:text-orange-200 dark:hover:bg-orange-900">CAR por município</Link>
+              </div>
+              <p className="mt-2 text-xs leading-relaxed text-text-soft">Territórios tradicionais unificados ao dado fundiário do CAR, município por município.</p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface p-4">
+              <Link href="/ambiental/barragens" className="rounded-md bg-teal-100 px-2.5 py-0.5 text-[0.75rem] font-semibold uppercase tracking-wider text-teal-800 transition-colors hover:bg-teal-200 dark:bg-teal-950 dark:text-teal-200 dark:hover:bg-teal-900">Barragens</Link>
+              <p className="mt-2 text-xs leading-relaxed text-text-soft">FEAM, SNISB e SIGBM/ANM lado a lado, com nível de emergência e categoria de risco.</p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface p-4">
+              <Link href="/ambiental/licenciamento" className="rounded-md bg-teal-100 px-2.5 py-0.5 text-[0.75rem] font-semibold uppercase tracking-wider text-teal-800 transition-colors hover:bg-teal-200 dark:bg-teal-950 dark:text-teal-200 dark:hover:bg-teal-900">Licenciamento</Link>
+              <p className="mt-2 text-xs leading-relaxed text-text-soft">Toda licença ambiental deferida pela Semad, por município, setor e classe.</p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface p-4">
+              <Link href="/ambiental/copam" className="rounded-md bg-teal-100 px-2.5 py-0.5 text-[0.75rem] font-semibold uppercase tracking-wider text-teal-800 transition-colors hover:bg-teal-200 dark:bg-teal-950 dark:text-teal-200 dark:hover:bg-teal-900">COPAM</Link>
+              <p className="mt-2 text-xs leading-relaxed text-text-soft">A pauta de cada reunião do conselho estadual, item a item, com o resultado da deliberação.</p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface p-4">
+              <Link href="/ambiental/estudos" className="rounded-md bg-teal-100 px-2.5 py-0.5 text-[0.75rem] font-semibold uppercase tracking-wider text-teal-800 transition-colors hover:bg-teal-200 dark:bg-teal-950 dark:text-teal-200 dark:hover:bg-teal-900">Estudos e perícias</Link>
+              <p className="mt-2 text-xs leading-relaxed text-text-soft">EIA/RIMA de audiências públicas, com o link de origem e guarda de cópia.</p>
+            </div>
+            <div className="rounded-xl border border-border bg-surface p-4">
+              <Link href="/ambiental/legislacao" className="rounded-md bg-teal-100 px-2.5 py-0.5 text-[0.75rem] font-semibold uppercase tracking-wider text-teal-800 transition-colors hover:bg-teal-200 dark:bg-teal-950 dark:text-teal-200 dark:hover:bg-teal-900">Legislação</Link>
+              <p className="mt-2 text-xs leading-relaxed text-text-soft">As normas ambientais aplicáveis, organizadas para consulta rápida.</p>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      {/* FECHO — citação autorizada */}
+      <Epigrafe citacao={citacaoPorId("carolina-mundo-modificar")!} variante="fecho" />
 
       <OutrasFrentes atual="ambiental" />
     </main>

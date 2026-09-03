@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { sql } from "drizzle-orm";
 import { formatNumberBR } from "@/lib/betim/format";
 import { getDb } from "@/lib/db/client";
@@ -451,6 +452,19 @@ export default async function CopamIndex() {
           decisão como o Copam publica, com link para o PDF oficial de cada reunião.
         </p>
       </section>
+
+      {/* PONTE HUMANA — ecossistema ONSA / Coleção Nossos */}
+      <details className="group mt-12 border-t border-[var(--cp-border)] pt-6">
+        <summary className="cursor-pointer list-none text-sm font-semibold opacity-90">
+          <span className="mr-1.5 inline-block text-xs opacity-70 transition-transform duration-200 group-open:rotate-180">▼</span>
+          Nossa terra, nossa gente
+        </summary>
+        <p className="mt-2 max-w-2xl text-[.9em] text-text-soft">
+          Por trás de cada item de pauta há um município e gente que vive do território — veja o lado humano na{" "}
+          <Link href="/ambiental/nossos" className="underline">Coleção Nossos</Link> e no bloco{" "}
+          <Link href="/ambiental/nossa-gente" className="underline">&quot;E nossa gente?&quot;</Link>.
+        </p>
+      </details>
     </div>
   );
 }

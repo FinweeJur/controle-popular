@@ -1,7 +1,7 @@
 /**
  * SERVER-ONLY: os 870 convênios ambientais de MG, lidos de
  * `public/data/convenios-ambientais-mg.json` — o mesmo asset que o cliente
- * busca via `fetch` em `ConveniosClient.tsx`. Separação motivada pelo teto
+ * busca via `fetch` em `FiltroConvenios.tsx`. Separação motivada pelo teto
  * de 3 MiB gzip do Worker Free (ver nota em `convenios-mg.ts`).
  */
 import { readFileSync } from "node:fs";

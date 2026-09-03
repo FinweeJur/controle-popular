@@ -100,7 +100,9 @@
       "valor_destinado_atualizado": 2056602508,
       "empenhos_autorizados": 1785446707,
       "projetos_em_execucao": 48,
-      "situacao_predominante": "Obras em andamento e transferências ativas"
+      "situacao_predominante": "Obras em andamento e transferências ativas",
+      "tags": ["infraestrutura-viaria", "transferencia-renda", "meio-ambiente"],
+      "micro_resumo": "Brumadinho recebeu R$ 2,1 bilhões do acordo da Vale para 48 projetos incluindo obras de infraestrutura, transferência de renda e reparação socioambiental na calha do Rio Paraopeba."
     },
     {
       "id_municipio": "3106705",
@@ -111,7 +113,9 @@
       "valor_destinado_atualizado": 356963985,
       "empenhos_autorizados": 323514934,
       "projetos_em_execucao": 18,
-      "situacao_predominante": "Ampliação hospitalar e pontes rodoferroviárias"
+      "situacao_predominante": "Ampliação hospitalar e pontes rodoferroviárias",
+      "tags": ["saude", "mobilidade", "infraestrutura-viaria"],
+      "micro_resumo": "Betim recebeu R$ 357 milhões para 18 projetos incluindo ampliação hospitalar e construção de pontes rodoferroviárias na bacia do Paraopeba."
     },
     {
       "id_municipio": "3162922",
@@ -122,7 +126,9 @@
       "valor_destinado_atualizado": 228547920,
       "empenhos_autorizados": 208939755,
       "projetos_em_execucao": 14,
-      "situacao_predominante": "Drenagem urbana e pavimentação rural"
+      "situacao_predominante": "Drenagem urbana e pavimentação rural",
+      "tags": ["drenagem-urbana", "infraestrutura-viaria"],
+      "micro_resumo": "São Joaquim de Bicas recebeu R$ 229 milhões para 14 projetos de drenagem urbana e pavimentação rural na bacia do Paraopeba."
     },
     {
       "id_municipio": "3124104",
@@ -133,7 +139,9 @@
       "valor_destinado_atualizado": 176616865,
       "empenhos_autorizados": 167217550,
       "projetos_em_execucao": 16,
-      "situacao_predominante": "Arco viário da MG-060 e centros de saúde"
+      "situacao_predominante": "Arco viário da MG-060 e centros de saúde",
+      "tags": ["infraestrutura-viaria", "saude"],
+      "micro_resumo": "Esmeraldas recebeu R$ 177 milhões para 16 projetos incluindo o arco viário da MG-060 e construção de centros de saúde."
     },
     {
       "id_municipio": "3136652",
@@ -144,7 +152,9 @@
       "valor_destinado_atualizado": 173746156,
       "empenhos_autorizados": 154886086,
       "projetos_em_execucao": 12,
-      "situacao_predominante": "Manutenção viária e fortalecimento do SUS"
+      "situacao_predominante": "Manutenção viária e fortalecimento do SUS",
+      "tags": ["infraestrutura-viaria", "saude"],
+      "micro_resumo": "Juatuba recebeu R$ 174 milhões para 12 projetos de manutenção viária e fortalecimento do SUS na bacia do Paraopeba."
     },
     {
       "id_municipio": "3140001",
@@ -155,7 +165,9 @@
       "valor_destinado_atualizado": 1850000000,
       "empenhos_autorizados": 1420000000,
       "projetos_em_execucao": 22,
-      "situacao_predominante": "Reassentamentos de Bento Rodrigues/Paracatu e saneamento"
+      "situacao_predominante": "Reassentamentos de Bento Rodrigues/Paracatu e saneamento",
+      "tags": ["reassentamento", "saneamento", "povos-tradicionais"],
+      "micro_resumo": "Mariana recebeu R$ 1,85 bilhão do acordo Rio Doce para 22 projetos incluindo reassentamentos de Bento Rodrigues e Paracatu e saneamento básico."
     },
     {
       "id_municipio": "3127701",
@@ -166,7 +178,9 @@
       "valor_destinado_atualizado": 920000000,
       "empenhos_autorizados": 610000000,
       "projetos_em_execucao": 15,
-      "situacao_predominante": "Nova captação de água no Rio Suaçuí e saneamento"
+      "situacao_predominante": "Nova captação de água no Rio Suaçuí e saneamento",
+      "tags": ["agua", "saneamento", "seguranca-hidrica"],
+      "micro_resumo": "Governador Valadares recebeu R$ 920 milhões para 15 projetos incluindo nova captação de água no Rio Suaçuí e saneamento básico."
     },
     {
       "id_municipio": "3105608",
@@ -177,7 +191,9 @@
       "valor_destinado_atualizado": 340000000,
       "empenhos_autorizados": 280000000,
       "projetos_em_execucao": 9,
-      "situacao_predominante": "Reconstrução do centro histórico e recuperação ambiental"
+      "situacao_predominante": "Reconstrução do centro histórico e recuperação ambiental",
+      "tags": ["cultura-patrimonio", "meio-ambiente"],
+      "micro_resumo": "Barra Longa recebeu R$ 340 milhões para 9 projetos incluindo reconstrução do centro histórico e recuperação ambiental no Rio do Carmo."
     }
   ]
 }

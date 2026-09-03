@@ -40,6 +40,8 @@ export interface MunicipioReparacao {
   empenhos_autorizados: number;
   projetos_em_execucao: number;
   situacao_predominante: string;
+  tags?: string[];
+  micro_resumo?: string;
 }
 
 export interface CatalogoAcordosReparacao {

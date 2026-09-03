@@ -327,6 +327,13 @@ const nextConfig: NextConfig = {
               destination: "/:municipio/camara/legislacao",
               permanent: true,
             },
+            // IBGE codes → slugs: URLs like `/3106200` redirect to `/bh`.
+            { source: "/3103405", destination: "/aracuai", permanent: true },
+            { source: "/3106200", destination: "/bh", permanent: true },
+            { source: "/3106705", destination: "/betim", permanent: true },
+            { source: "/3121605", destination: "/diamantina", permanent: true },
+            { source: "/3134004", destination: "/itinga", permanent: true },
+            { source: "/3550308", destination: "/sp", permanent: true },
           ];
         },
       }),

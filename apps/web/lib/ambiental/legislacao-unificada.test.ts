@@ -5,6 +5,10 @@ import {
   esferaDaLegislacao,
   esferaDaNatureza,
   filtrarItens,
+  ordenarPorHierarquia,
+  PESO_ESFERA,
+  pesoHierarquia,
+  rotuloHierarquia,
   TEMA_LABEL_UNIFICADO,
   TEMA_ORDEM_UNIFICADO,
   textoBuscaDoItem,
@@ -245,5 +249,117 @@ describe("textoBuscaDoItem", () => {
   it("precedente usa tribunal/titulo/ementa/tags", () => {
     const texto = textoBuscaDoItem(unificarItens([], [], [precedente()])[0]);
     expect(texto).toContain("STF");
+  });
+});
+
+describe("hierarquia — peso e rótulo do tipo", () => {
+  it("peso 1 a 7 nas bandas da pirâmide, sem acento e sem caixa", () => {
+    expect(pesoHierarquia("CONSTITUICAO FEDERAL")).toBe(1);
+    expect(pesoHierarquia("Emenda Constitucional nº 95")).toBe(1);
+    expect(pesoHierarquia("LEI COMPLEMENTAR 140/2011")).toBe(2);
+    expect(pesoHierarquia("LCP 97")).toBe(2);
+    expect(pesoHierarquia("LEI 9.605/1998")).toBe(3);
+    expect(pesoHierarquia("Lei Delegada 10")).toBe(3);
+    expect(pesoHierarquia("DECRETO 6.040/2007")).toBe(4);
+    expect(pesoHierarquia("DECRETO LEI 2.848")).toBe(4);
+    expect(pesoHierarquia("MEDIDA PROVISÓRIA 890/2019")).toBe(4);
+    expect(pesoHierarquia("MPV 900")).toBe(4);
+    expect(pesoHierarquia("EMC 95")).toBe(4);
+    expect(pesoHierarquia("DECRETO NÃO NUMERADO 1")).toBe(5);
+    expect(pesoHierarquia("RESOLUÇÃO CONAMA 430/2011")).toBe(5);
+    expect(pesoHierarquia("PORTARIA IBAMA 123")).toBe(6);
+    expect(pesoHierarquia("Portaria Semad 52/2021")).toBe(6);
+    expect(pesoHierarquia("INSTRUÇÃO NORMATIVA MMA 1/2020")).toBe(6);
+    expect(pesoHierarquia("IN 5")).toBe(6);
+    expect(pesoHierarquia("RECOMENDAÇÃO CNDH 1")).toBe(7);
+    expect(pesoHierarquia("NOTA TÉCNICA 3")).toBe(7);
+  });
+
+  it("prefixo mais longo vence: LEI COMPLEMENTAR não cai na banda de LEI", () => {
+    expect(pesoHierarquia("LEI COMPLEMENTAR 140/2011")).toBe(2);
+    expect(pesoHierarquia("DECRETO NAO NUMERADO 2")).toBe(5);
+    expect(pesoHierarquia("DECRETO 2")).toBe(4);
+  });
+
+  it("tipo sem prefixo conhecido (e vazio) cai na banda de outros (7)", () => {
+    expect(pesoHierarquia("CIRCULAR 1")).toBe(7);
+    expect(pesoHierarquia("")).toBe(7);
+  });
+
+  it("rótulo devolve a classe para a pílula, null quando não casa", () => {
+    expect(rotuloHierarquia("PORTARIA IBAMA 123")).toBe("Portaria");
+    expect(rotuloHierarquia("MEDIDA PROVISORIA 890")).toBe("Medida provisória");
+    expect(rotuloHierarquia("RESOLUÇÃO CONAMA 430")).toBe("Resolução");
+    expect(rotuloHierarquia("EMC 95")).toBe("Emenda constitucional");
+    expect(rotuloHierarquia("CIRCULAR 1")).toBeNull();
+  });
+});
+
+describe("esferaPeso / hierarquia no item unificado", () => {
+  it("estadual carrega o peso da esfera e a banda do tipo", () => {
+    const [item] = unificarItens([estadual({ tipo: "PORTARIA SEMAD", esfera: "estadual" })], [], []);
+    expect(item.esferaPeso).toBe(PESO_ESFERA.estadual);
+    expect(item.hierarquia).toBe(6);
+  });
+
+  it("MMA nacional pesa 2; crítica internacional pesa 1; crítica/precedente ficam na banda 7", () => {
+    const [mma, criticaInt, precedenteNac] = unificarItens(
+      [estadual({ fonte: "mma", esfera: "nacional", tipo: "RESOLUÇÃO CONAMA 430" })],
+      [critica({ natureza: "internacional" })],
+      [precedente({ natureza: "nacional" })]
+    );
+    expect(mma.esferaPeso).toBe(PESO_ESFERA.nacional);
+    expect(mma.hierarquia).toBe(5);
+    expect(criticaInt.esferaPeso).toBe(PESO_ESFERA.internacional);
+    expect(criticaInt.hierarquia).toBe(7);
+    expect(precedenteNac.esferaPeso).toBe(PESO_ESFERA.nacional);
+    expect(precedenteNac.hierarquia).toBe(7);
+  });
+});
+
+describe("ordenarPorHierarquia", () => {
+  it("esfera primeiro, depois banda do tipo, depois data desc na banda", () => {
+    const itens = unificarItens(
+      [
+        estadual({ tipo: "PORTARIA SEMAD", data: "2022-01-01", chaveDedup: "p" }),
+        estadual({ tipo: "LEI", data: "2001-01-01", chaveDedup: "l1" }),
+        estadual({ tipo: "LEI", data: "2020-01-01", chaveDedup: "l2" }),
+      ],
+      [critica()], // nacional, banda 7
+      [precedente({ natureza: "internacional" })] // internacional, banda 7
+    );
+    const ordem = ordenarPorHierarquia(itens).map((i) =>
+      i.classe === "estadual" ? i.row.chaveDedup : i.classe
+    );
+    expect(ordem).toEqual(["precedente", "critica", "l2", "l1", "p"]);
+  });
+
+  it("sem data completa, o ano é o fallback; sem nenhum, vai pro fim da banda", () => {
+    const itens = unificarItens(
+      [
+        estadual({ tipo: "LEI", data: null, ano: 1999, chaveDedup: "a" }),
+        estadual({ tipo: "LEI", data: "2005-06-01", chaveDedup: "b" }),
+        estadual({ tipo: "LEI", data: null, ano: null, chaveDedup: "c" }),
+      ],
+      [],
+      []
+    );
+    const ordem = ordenarPorHierarquia(itens).map((i) =>
+      i.classe === "estadual" ? i.row.chaveDedup : ""
+    );
+    expect(ordem).toEqual(["b", "a", "c"]);
+  });
+
+  it("crítica e precedente, sem tipo nem data, preservam a ordem curada da fonte", () => {
+    const itens = unificarItens(
+      [],
+      [critica({ idFonte: 1 }), critica({ idFonte: 2 })],
+      [precedente({ idFonte: 3 })]
+    );
+    expect(ordenarPorHierarquia(itens).map((i) => i.chave)).toEqual([
+      "critica-1",
+      "critica-2",
+      "precedente-3",
+    ]);
   });
 });

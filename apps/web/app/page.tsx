@@ -3,6 +3,8 @@ import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { Epigrafe } from "@/app/components/Epigrafe";
+import { citacaoPorId } from "@/lib/citacoes";
 
 /**
  * Home da marca Controle Popular, na raiz do domínio.
@@ -77,6 +79,8 @@ export default async function Hub() {
           orçamento detalhado das prefeituras, do governo de Minas, do Congresso
           Brasileiro e das Instituições de Justiça.
         </p>
+        {/* EPÍGRAFE HERO — citação autorizada no PLANO-COPY-VOZ.md (hero/assinatura da home) */}
+        <Epigrafe citacao={citacaoPorId("carolina-eu-escrevo")!} variante="inicio" className="max-w-2xl" />
         <p className="flex flex-wrap gap-x-4 gap-y-1 text-[.95em]">
           <a href="/busca" className="font-medium text-primary hover:underline">
             Busca por tema, palavra-chave e território →
