@@ -706,12 +706,22 @@ export function SeuNono() {
             {/* Nível 1: escolha da frente */}
             {nivel === "frentes" && (
               <div className="space-y-3">
-                {sugestoesContextuais.length > 0 ? (
-                  <>
-                    <p className="text-sm text-text-soft">
-                      Olá! Sou o <strong className="text-text">Seu Nonô</strong>. Vi que você
-                      está em <strong className="text-text">{pathname?.split("/").slice(1, 3).join("/") ?? "esta página"}</strong>.
-                      Posso te ajudar com:
+                <div className="rounded-xl border border-primary/20 bg-primary/5 p-3 text-left">
+                  <p className="text-sm font-semibold text-text">
+                    Sou Seu Nonô Alceu Dispor. Sou o Chatbot do portal digital Controle Popular do ONSA — Observatório Nacional Socioambiental localizado em controlepopular.com.br
+                  </p>
+                  <p className="mt-2 text-xs leading-relaxed text-text-soft">
+                    Com raízes na História e Geografia esse portal se utiliza da tecnologia da Inteligência Artificial pra somar na busca por justiça socioambiental e fiscalização cidadã acessível pela internet gratuitamente e sem cadastro por qualquer celular ou computador.
+                  </p>
+                  <p className="mt-1.5 text-xs leading-relaxed text-text-soft">
+                    Reunindo dezenas de portais e dados públicos, estamos cobrindo milhares de contratos, convênios, licenciamentos ambientais, pesquisas e autorizações minerárias e de barragens, legislação ambiental e de direitos humanos unificada e o orçamento detalhado das prefeituras, governo de Minas, Congresso Brasileiro e Instituições de Justiça.
+                  </p>
+                </div>
+
+                {sugestoesContextuais.length > 0 && (
+                  <div className="border-t border-border pt-2">
+                    <p className="mb-2 text-xs font-medium text-text">
+                      Sugestões para {pathname?.split("/").slice(1, 3).join("/") ?? "esta página"}:
                     </p>
                     <ul className="space-y-2">
                       {sugestoesContextuais.map((s, i) => (
@@ -726,26 +736,14 @@ export function SeuNono() {
                         </li>
                       ))}
                     </ul>
-                    <div className="border-t border-border pt-3">
-                      <p className="mb-2 text-xs text-text-soft">
-                        Ou escolha uma frente do portal:
-                      </p>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <p className="text-sm text-text-soft">
-                      Sou o <strong className="text-text">Seu Nonô Alceu Dispor</strong>, chatbot do portal digital <strong className="text-text">Controle Popular do ONSA</strong> — Observatório Nacional Socioambiental, em controlepopular.com.br.</p>
-                    <p className="mt-2 text-xs leading-relaxed text-text-soft">
-                      Com raízes na História e na Geografia, o portal usa Inteligência
-                      Artificial para somar na busca por justiça socioambiental e
-                      fiscalização cidadã — gratuito, sem cadastro, de qualquer celular
-                      ou computador. Reunimos dezenas de portais e dados públicos:
-                      contratos, convênios, licenciamentos, mineração, barragens,
-                      legislação e orçamento. Escolha uma frente para eu te guiar:
-                    </p>
-                  </>
+                  </div>
                 )}
+
+                <div className="border-t border-border pt-2">
+                  <p className="mb-2 text-xs font-medium text-text">
+                    Ou navegue pelas frentes do portal:
+                  </p>
+                </div>
 
                 <ul className="space-y-2">
                   {FRENTES.map((f) => (
