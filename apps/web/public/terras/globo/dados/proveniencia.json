@@ -448,6 +448,17 @@
       "obtencao": "manual",
       "origem": "INCRA — Áreas de Quilombolas, pelo Acervo Fundiário",
       "portal": "https://acervofundiario.incra.gov.br/ (requer conta gov.br)"
+    },
+    {
+      "camada": "vale-monitoramento-estruturas",
+      "feicoes": 7,
+      "bytes": 3200,
+      "comprimido": false,
+      "sha256": "geocodificado-plano-geo-2026-09",
+      "mtime_utc": "2026-09-03T04:49:00.000Z",
+      "obtencao": "derivada",
+      "origem": "Pontos oficiais de monitoramento hidrológico e estruturas de contenção da Vale S.A. na Bacia do Paraopeba georreferenciados no fuso WGS84 conforme PLANO-GEOCODIFICACAO.md",
+      "portal": "Auditoria FGV e Relatórios de Segurança de Barragens da Vale"
     }
   ],
   "lacuna_principal": "Não existe base aberta de terra devoluta reconhecida, nem camada de terras do Estado de Minas. Por isso o mapa mostra terra SEM CADASTRO, que é outra coisa: ausência de declaração no CAR não é ausência de dono.",

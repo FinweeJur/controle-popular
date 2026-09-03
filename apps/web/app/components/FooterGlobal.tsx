@@ -4,6 +4,7 @@ import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 // dados por e-mail e mostrador público do contador de envios/downloads.
 import PedirDadosEmail from "@/app/components/PedirDadosEmail";
 import ContadorPublico from "@/app/components/ContadorPublico";
+import BotoesNotificacao from "@/app/components/BotoesNotificacao";
 
 /**
  * Rodapé padrão do portal — os links principais do site, no fim de toda
@@ -130,23 +131,12 @@ export default function FooterGlobal() {
       <div className="mt-4 border-t border-border pt-4 text-[.85em]">
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <PedirDadosEmail />
+          <BotoesNotificacao />
           <a
-            href="https://t.me/ControlePopularBOT"
-            target="_blank"
-            rel="noopener"
+            href="/alertas"
             className="inline-flex items-center gap-1.5 font-medium text-primary hover:text-accent"
-            aria-label="Receber notificações no Telegram"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2 15 22l-4-9-9-4 20-7z"></path></svg>
-            Receber no Telegram
-          </a>
-          <a
-            href={MAILTO_NOVIDADES}
-            className="inline-flex items-center gap-1.5 font-medium text-primary hover:text-accent"
-            aria-label="Receber novidades por e-mail"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"></path></svg>
-            Receber novidades por e-mail
+            🔔 Central de Alertas e WhatsApp
           </a>
         </div>
         <p className="mt-1 text-text-soft">

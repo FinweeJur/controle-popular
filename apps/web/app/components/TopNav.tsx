@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Menu } from "lucide-react";
+import { Menu, Bell } from "lucide-react";
 import Link from "next/link";
 
 import { ZONAS_PUBLICADAS } from "@/lib/zonas";
@@ -126,6 +126,7 @@ const SECOES_MENU = [
     href: "/indice",
     links: [
       { label: "Índice do portal", href: "/indice" },
+      { label: "Alertas e Notificações", href: "/alertas" },
       { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
       { label: "Busca", href: "/busca" },
       { label: "Dados populares", href: "/dados/populares" },
@@ -307,6 +308,14 @@ export default function TopNav() {
         <BuscaGlobal />
 
         <div className="ml-auto flex flex-wrap items-center gap-2">
+          <Link
+            href="/alertas"
+            className="cp-btn-anim flex items-center gap-1 rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
+            aria-label="Central de Alertas e Notificações"
+          >
+            <Bell size={13} aria-hidden="true" className="text-primary" />
+            <span className="hidden sm:inline">Alertas</span>
+          </Link>
           <Link
             href="/busca"
             className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"

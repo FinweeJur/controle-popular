@@ -1,0 +1,124 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-44.1205, -20.1214]
+      },
+      "properties": {
+        "id": "VALE-EST-01",
+        "nome": "Cortina de Estacas Pranchas — Córrego do Feijão",
+        "tipo": "Estrutura de Contenção",
+        "municipio": "Brumadinho",
+        "id_municipio": "3109006",
+        "situacao": "Operacional",
+        "descricao": "Retenção mecânica de sedimentos remanescentes no vale do Córrego do Feijão.",
+        "fonte": "Auditoria FGV e Monitoramento Vale S.A."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-44.1242, -20.1287]
+      },
+      "properties": {
+        "id": "VALE-EST-02",
+        "nome": "Dique 1 — B1 Córrego do Feijão",
+        "tipo": "Dique de Sedimentos",
+        "municipio": "Brumadinho",
+        "id_municipio": "3109006",
+        "situacao": "Operacional",
+        "descricao": "Contenção intermediária para estabilização de encosta e rejeitos carreados.",
+        "fonte": "Auditoria FGV e Monitoramento Vale S.A."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-44.1561, -20.1432]
+      },
+      "properties": {
+        "id": "VALE-ETA-01",
+        "nome": "Estação de Tratamento de Água Fluvial (ETAF) — Alberto Flores",
+        "tipo": "Tratamento de Água",
+        "municipio": "Brumadinho",
+        "id_municipio": "3109006",
+        "situacao": "Operacional",
+        "descricao": "Desassoreamento e clarificação da água do Rio Paraopeba.",
+        "fonte": "Auditoria FGV e Monitoramento Vale S.A."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-44.1804, -20.1102]
+      },
+      "properties": {
+        "id": "VALE-CAP-01",
+        "nome": "Nova Captação Subterrânea do Rio Manso / Paraopeba",
+        "tipo": "Segurança Hídrica",
+        "municipio": "Brumadinho",
+        "id_municipio": "3109006",
+        "situacao": "Concluída",
+        "descricao": "Sistema alternativo de adução para o abastecimento da Região Metropolitana de BH.",
+        "fonte": "Auditoria FGV e Monitoramento Vale S.A."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-44.3418, -19.9511]
+      },
+      "properties": {
+        "id": "VALE-MON-01",
+        "nome": "Ponto Telemétrico PM-01 (Juatuba)",
+        "tipo": "Estação de Qualidade da Água",
+        "municipio": "Juatuba",
+        "id_municipio": "3136652",
+        "situacao": "Ativo",
+        "descricao": "Sonda multiparâmetros contínua de turbidez, oxigênio dissolvido e metais.",
+        "fonte": "Auditoria FGV e Monitoramento Vale S.A."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-44.2711, -20.0489]
+      },
+      "properties": {
+        "id": "VALE-MON-02",
+        "nome": "Ponto Telemétrico PM-02 (São Joaquim de Bicas)",
+        "tipo": "Estação de Qualidade da Água",
+        "municipio": "São Joaquim de Bicas",
+        "id_municipio": "3162922",
+        "situacao": "Ativo",
+        "descricao": "Monitoramento de qualidade e vazão a jusante da confluência do Córrego Ferro-Carvão.",
+        "fonte": "Auditoria FGV e Monitoramento Vale S.A."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-44.1678, -19.9123]
+      },
+      "properties": {
+        "id": "VALE-MON-03",
+        "nome": "Ponto Telemétrico PM-03 (Betim — Represa de Várzea das Flores)",
+        "tipo": "Estação Hidrológica",
+        "municipio": "Betim",
+        "id_municipio": "3106705",
+        "situacao": "Ativo",
+        "descricao": "Monitoramento de proteção do manancial da RMBH.",
+        "fonte": "Auditoria FGV e Monitoramento Vale S.A."
+      }
+    }
+  ]
+}

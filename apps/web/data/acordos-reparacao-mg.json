@@ -1,0 +1,183 @@
+{
+  "gerado_em": "2026-09-03",
+  "fonte": "Acordos Judiciais Homologados no TJMG (Brumadinho - 2ª Vara Fazenda Pública) e TRF-6 (Repactuação Rio Doce)",
+  "totais_consolidados": {
+    "total_acordos_reparacao_reais": 169680000000,
+    "acordo_brumadinho_vale_reais": 37680000000,
+    "acordo_rio_doce_samarco_vale_bhp_reais": 132000000000,
+    "municipios_beneficiados_mg": 68,
+    "projetos_mapeados": 142
+  },
+  "acordos": [
+    {
+      "id": "acordo-brumadinho",
+      "nome": "Acordo Judicial de Reparação Integral — Brumadinho (Vale S.A.)",
+      "data_homologacao": "2021-02-04",
+      "tribunal": "TJMG — 2ª Vara da Fazenda Pública e Autarquias",
+      "compromissarios": ["Vale S.A."],
+      "orgaos_publicos": ["Governo de Minas Gerais", "MPMG", "DPMG", "MPF"],
+      "auditora_independente": "Fundação Getulio Vargas (FGV)",
+      "valor_total_nominal": 37680000000,
+      "valor_atualizado_ipca": 43850000000,
+      "anexos": [
+        {
+          "anexo": "Anexo I.1",
+          "titulo": "Programa de Transferência de Renda (PTR)",
+          "valor_original": 4400000000,
+          "finalidade": "Manutenção da subsistência de famílias atingidas na calha do Paraopeba gerido pela FGV."
+        },
+        {
+          "anexo": "Anexo I.2",
+          "titulo": "Reparação Socioambiental e Despoluição",
+          "valor_original": 6550000000,
+          "finalidade": "Tratamento de águas, contenção de sedimentos, recuperação de matas ciliares e fauna."
+        },
+        {
+          "anexo": "Anexo I.3",
+          "titulo": "Projetos para a Bacia do Paraopeba (25 Municípios)",
+          "valor_original": 2500000000,
+          "finalidade": "Demandas prioritárias eleitas pelas comunidades atingidas fora de Brumadinho."
+        },
+        {
+          "anexo": "Anexo I.4",
+          "titulo": "Projetos Específicos para Brumadinho",
+          "valor_original": 1500000000,
+          "finalidade": "Requalificação urbana, saúde coletiva, novas pontes e fomento agropecuário."
+        },
+        {
+          "anexo": "Anexo II",
+          "titulo": "Segurança Hídrica e Mobilidade Regional",
+          "valor_original": 4950000000,
+          "finalidade": "Captação no Rio das Velhas, adutoras e Rodoanel Metropolitano de Belo Horizonte."
+        },
+        {
+          "anexo": "Anexo III",
+          "titulo": "Fortalecimento dos Serviços Públicos de MG",
+          "valor_original": 4370000000,
+          "finalidade": "Hospitais regionais, estradas estaduais e equipamentos para Bombeiros e Defesa Civil."
+        }
+      ]
+    },
+    {
+      "id": "acordo-rio-doce",
+      "nome": "Acordo de Repactuação da Bacia do Rio Doce — Mariana (Samarco / Vale / BHP)",
+      "data_homologacao": "2024-10-25",
+      "tribunal": "TRF-6 e Tribunal de Justiça de Minas Gerais",
+      "compromissarios": ["Samarco Mineração S.A.", "Vale S.A.", "BHP Billiton Brasil Ltda."],
+      "orgaos_publicos": ["Governo Federal", "Governo de Minas Gerais", "Governo do Espírito Santo", "MPF", "MPMG", "MPES", "DPMG", "DPES"],
+      "auditora_independente": "Comitês Técnicos e Perícia Federal",
+      "valor_total_nominal": 132000000000,
+      "valor_atualizado_ipca": 132000000000,
+      "anexos": [
+        {
+          "anexo": "Eixo Poder Público",
+          "titulo": "Recursos Novos Transferidos à União, MG e ES",
+          "valor_original": 100000000000,
+          "finalidade": "Saneamento básico em todos os municípios da bacia, recuperação de nascentes e infraestrutura."
+        },
+        {
+          "anexo": "Eixo Obrigação de Fazer",
+          "titulo": "Remediação e Retirada de Rejeitos pelas Mineradoras",
+          "valor_original": 32000000000,
+          "finalidade": "Descaracterização de barragens, indenizações do sistema novel e assentamentos definitivos de Bento Rodrigues e Paracatu."
+        },
+        {
+          "anexo": "Eixo Fundo Indígena e Quilombola",
+          "titulo": "Fundo de Saúde e Reparação dos Povos Originários",
+          "valor_original": 8000000000,
+          "finalidade": "Apoio continuado aos povos Krenak, Tupiniquim, Guarani e comunidades quilombolas da bacia."
+        }
+      ]
+    }
+  ],
+  "municipios_destaque_reparacao": [
+    {
+      "id_municipio": "3109006",
+      "nome": "Brumadinho",
+      "acordo": "Brumadinho (Vale)",
+      "bacia": "Rio Paraopeba",
+      "valor_destinado_nominal": 1500000000,
+      "valor_destinado_atualizado": 2056602508,
+      "empenhos_autorizados": 1785446707,
+      "projetos_em_execucao": 48,
+      "situacao_predominante": "Obras em andamento e transferências ativas"
+    },
+    {
+      "id_municipio": "3106705",
+      "nome": "Betim",
+      "acordo": "Brumadinho (Vale)",
+      "bacia": "Rio Paraopeba",
+      "valor_destinado_nominal": 260354626,
+      "valor_destinado_atualizado": 356963985,
+      "empenhos_autorizados": 323514934,
+      "projetos_em_execucao": 18,
+      "situacao_predominante": "Ampliação hospitalar e pontes rodoferroviárias"
+    },
+    {
+      "id_municipio": "3162922",
+      "nome": "São Joaquim de Bicas",
+      "acordo": "Brumadinho (Vale)",
+      "bacia": "Rio Paraopeba",
+      "valor_destinado_nominal": 166693310,
+      "valor_destinado_atualizado": 228547920,
+      "empenhos_autorizados": 208939755,
+      "projetos_em_execucao": 14,
+      "situacao_predominante": "Drenagem urbana e pavimentação rural"
+    },
+    {
+      "id_municipio": "3124104",
+      "nome": "Esmeraldas",
+      "acordo": "Brumadinho (Vale)",
+      "bacia": "Rio Paraopeba",
+      "valor_destinado_nominal": 128816967,
+      "valor_destinado_atualizado": 176616865,
+      "empenhos_autorizados": 167217550,
+      "projetos_em_execucao": 16,
+      "situacao_predominante": "Arco viário da MG-060 e centros de saúde"
+    },
+    {
+      "id_municipio": "3136652",
+      "nome": "Juatuba",
+      "acordo": "Brumadinho (Vale)",
+      "bacia": "Rio Paraopeba",
+      "valor_destinado_nominal": 126723191,
+      "valor_destinado_atualizado": 173746156,
+      "empenhos_autorizados": 154886086,
+      "projetos_em_execucao": 12,
+      "situacao_predominante": "Manutenção viária e fortalecimento do SUS"
+    },
+    {
+      "id_municipio": "3140001",
+      "nome": "Mariana",
+      "acordo": "Rio Doce (Samarco/Vale/BHP)",
+      "bacia": "Rio Doce",
+      "valor_destinado_nominal": 1850000000,
+      "valor_destinado_atualizado": 1850000000,
+      "empenhos_autorizados": 1420000000,
+      "projetos_em_execucao": 22,
+      "situacao_predominante": "Reassentamentos de Bento Rodrigues/Paracatu e saneamento"
+    },
+    {
+      "id_municipio": "3127701",
+      "nome": "Governador Valadares",
+      "acordo": "Rio Doce (Samarco/Vale/BHP)",
+      "bacia": "Rio Doce",
+      "valor_destinado_nominal": 920000000,
+      "valor_destinado_atualizado": 920000000,
+      "empenhos_autorizados": 610000000,
+      "projetos_em_execucao": 15,
+      "situacao_predominante": "Nova captação de água no Rio Suaçuí e saneamento"
+    },
+    {
+      "id_municipio": "3105608",
+      "nome": "Barra Longa",
+      "acordo": "Rio Doce (Samarco/Vale/BHP)",
+      "bacia": "Rio Doce (Rio do Carmo)",
+      "valor_destinado_nominal": 340000000,
+      "valor_destinado_atualizado": 340000000,
+      "empenhos_autorizados": 280000000,
+      "projetos_em_execucao": 9,
+      "situacao_predominante": "Reconstrução do centro histórico e recuperação ambiental"
+    }
+  ]
+}

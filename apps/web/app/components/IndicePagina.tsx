@@ -1,128 +1,132 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import { List, ChevronDown } from "lucide-react";
 
-/**
- * Índice de página genérico (TOC) — pedido do dono: "toda página tem índice".
- *
- * Componente client montado no LAYOUT RAIZ: em qualquer página, ele procura os
- * `h2`/`h3` dentro do `<main>` e monta âncoras sozinho — sem tocar em nenhuma
- * das ~4.800 páginas. Esconde-se quando a página tem menos de 2 títulos
- * (home, 404, telas de API), para não virar ruído.
- *
- * Interação: botão flutuante "Índice" (canto inferior direito, mesmo padrão
- * do `BackToTop`); abre um painel com os títulos; clique rola suave até a
- * seção. Acessível: `aria-expanded`, Escape e clique fora fecham.
- */
-
-interface ItemIndice {
+export interface SecaoIndice {
   id: string;
   titulo: string;
   nivel: 2 | 3;
 }
 
-function slugificar(texto: string): string {
-  return (
-    texto
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9\s-]/g, "")
-      .trim()
-      .replace(/\s+/g, "-")
-  );
+interface Props {
+  seletorConteudo?: string;
+  titulo?: string;
 }
 
-export default function IndicePagina() {
-  const [itens, setItens] = useState<ItemIndice[]>([]);
-  const [aberto, setAberto] = useState(false);
+export default function IndicePagina({
+  seletorConteudo = "main",
+  titulo = "Sumário desta página",
+}: Props) {
+  const [secoes, setSecoes] = useState<SecaoIndice[]>([]);
+  const [secaoAtiva, setSecaoAtiva] = useState<string>("");
+  const [aberto, setAberto] = useState(true);
 
   useEffect(() => {
-    const main =
-      document.querySelector("main[id]") ?? document.querySelector("main");
-    if (!main) return;
+    // Busca todos os H2 e H3 dentro do conteúdo principal
+    const container = document.querySelector(seletorConteudo);
+    if (!container) return;
 
-    const vistos = new Set<string>();
-    const achados: ItemIndice[] = [];
-    for (const el of Array.from(main.querySelectorAll("h2, h3"))) {
-      // Ignora títulos dentro de nav/details/footer/aside (menus, acordeões).
-      if (el.closest("nav, details, footer, aside")) continue;
-      const nivel = el.tagName === "H2" ? 2 : 3;
-      const texto = (el.textContent ?? "").trim();
-      if (!texto) continue;
-      let id = el.id || slugificar(texto) || `secao-${achados.length}`;
-      if (vistos.has(id)) id = `${id}-${achados.length}`;
-      vistos.add(id);
-      el.id = id;
-      achados.push({ id, titulo: texto, nivel });
-    }
-    setItens(achados);
-  }, []);
+    const headings = Array.from(
+      container.querySelectorAll("h2, h3")
+    ) as HTMLElement[];
 
-  const visivel = useMemo(() => itens.length >= 2, [itens]);
+    const itens: SecaoIndice[] = [];
 
-  useEffect(() => {
-    if (!aberto) return;
-    function fecharEsc(ev: KeyboardEvent) {
-      if (ev.key === "Escape") setAberto(false);
-    }
-    function fecharFora(ev: PointerEvent) {
-      const alvo = ev.target as Node;
-      if (!document.querySelector("[data-indice-pagina]")?.contains(alvo)) {
-        setAberto(false);
+    headings.forEach((heading, idx) => {
+      // Ignora headings do próprio índice ou modais
+      if (heading.closest("[aria-label='Sumário desta página']")) return;
+      if (heading.closest("header") && idx === 0) return;
+
+      const texto = heading.textContent?.trim() || "";
+      if (!texto) return;
+
+      let id = heading.id;
+      if (!id) {
+        id = texto
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-|-$/g, "");
+        if (!id) id = `secao-${idx}`;
+        heading.id = id;
       }
-    }
-    document.addEventListener("keydown", fecharEsc);
-    document.addEventListener("pointerdown", fecharFora);
-    return () => {
-      document.removeEventListener("keydown", fecharEsc);
-      document.removeEventListener("pointerdown", fecharFora);
-    };
-  }, [aberto]);
 
-  if (!visivel) return null;
+      itens.push({
+        id,
+        titulo: texto,
+        nivel: heading.tagName.toLowerCase() === "h3" ? 3 : 2,
+      });
+    });
 
-  function rolar(id: string) {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    setAberto(false);
-  }
+    setSecoes(itens);
+
+    // Observador para destacar seção visível
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setSecaoAtiva(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-20% 0px -70% 0px" }
+    );
+
+    headings.forEach((h) => observer.observe(h));
+
+    return () => observer.disconnect();
+  }, [seletorConteudo]);
+
+  if (secoes.length < 2) return null;
 
   return (
-    <div data-indice-pagina className="fixed right-4 bottom-4 z-40">
-      <button
-        type="button"
-        onClick={() => setAberto((a) => !a)}
-        aria-expanded={aberto}
-        aria-controls="indice-pagina-painel"
-        className="flex cursor-pointer items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-semibold text-text shadow-lg transition-colors hover:bg-surface-2"
-      >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M4 6h16M4 12h16M4 18h10"></path>
-        </svg>
-        Índice da página
-      </button>
-      {aberto && (
-        <div
-          id="indice-pagina-painel"
-          className="absolute right-0 bottom-full mb-2 max-h-[60vh] w-64 overflow-y-auto rounded-2xl border border-border bg-surface p-2 shadow-lg"
+    <nav
+      aria-label={titulo}
+      className="my-6 rounded-xl border border-border bg-surface-2/60 p-4 transition-all"
+    >
+      <div className="flex items-center justify-between">
+        <button
+          type="button"
+          onClick={() => setAberto(!aberto)}
+          className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted hover:text-foreground focus:outline-none"
+          aria-expanded={aberto}
         >
-          <ul className="space-y-0.5">
-            {itens.map((item) => (
-              <li key={item.id}>
-                <button
-                  type="button"
-                  onClick={() => rolar(item.id)}
-                  className={`block w-full cursor-pointer rounded-lg px-2 py-1.5 text-left hover:bg-surface-2 ${
-                    item.nivel === 3 ? "pl-5 text-[.82em] text-text-soft" : "text-sm font-medium text-text"
+          <List className="h-4 w-4 text-primary" />
+          <span>{titulo} ({secoes.length})</span>
+          <ChevronDown
+            className={`h-3.5 w-3.5 transition-transform ${
+              aberto ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+      </div>
+
+      {aberto && (
+        <ol className="mt-3 space-y-1.5 border-t border-border pt-3 text-sm">
+          {secoes.map((s) => {
+            const isAtivo = secaoAtiva === s.id;
+            return (
+              <li
+                key={s.id}
+                className={`${s.nivel === 3 ? "pl-4 text-xs" : "text-sm"}`}
+              >
+                <a
+                  href={`#${s.id}`}
+                  className={`inline-block transition-colors hover:text-primary ${
+                    isAtivo
+                      ? "font-semibold text-primary underline underline-offset-4"
+                      : "text-muted"
                   }`}
                 >
-                  {item.titulo}
-                </button>
+                  {s.titulo}
+                </a>
               </li>
-            ))}
-          </ul>
-        </div>
+            );
+          })}
+        </ol>
       )}
-    </div>
+    </nav>
   );
 }
