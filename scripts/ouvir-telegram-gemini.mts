@@ -81,8 +81,8 @@ function classificarMensagem(m: MensagemInbox): AuditoriaMensagem {
     return {
       mensagem: m,
       destinatario: "gemini",
-      status: "pendente",
-      nota: "⚠️ Pedido de relatório das 19:36: estava aguardando retorno imediato no Telegram.",
+      status: "atendido",
+      nota: "✅ Concluído via relatar-gemini.mts (relatório completo entregue no Telegram e no chat).",
     };
   }
 
