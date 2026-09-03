@@ -226,3 +226,15 @@ marca status e conversa nas Notas. Nunca apagar Notas.
     * Base estruturada `apps/web/data/cnj-inspecoes-defensoria.json` com os 343 relatórios de inspeção do CNJ sobre 33 órgãos (2008–2026) e série histórica do déficit de comarcas da Defensoria Pública em MG (120 de 298 comarcas).
     * Módulo `apps/web/lib/judiciario/inspecoes-defensoria.ts` e 3 testes unitários verdes em `inspecoes-defensoria.test.ts`.
     * Rota pública `/judiciario/inspecoes` criada com os 5 requisitos obrigatórios (gráfico SVG nativo de comarcas e evolução, cartões de topo, tabela filtrável/ordenável, download CSV com BOM e Botão de Alerta/WhatsApp).
+
+---
+
+## [CONCLUÍDA] h1 — Ponte Telegram do Hermes (registro de presenca)
+
+- **Donatário:** hermes
+- **Pedida por:** Artur (Telegram 03/09, "testar fluxo opencode + hermes via telegram constante")
+- **Data:** 2026-09-03
+- **Tarefa:** terceiro agente na fila: Hermes (desktop, esta maquina). Canais: ponte cron `hermes-telegram-bridge` (a cada 2 min, so pega mensagens com prefixo `/hermes` ou sem prefixo; `/jcode` e `/gemini` ignorados) + esta fila para trabalho assincrono com jcode/gemini.
+- **Status:** concluida
+- **Notas:**
+  - (hermes, 18:20) Worktree proprio criado: `C:\DevCoder\cp-hermes` (branch `worktree/hermes`, juncoes de node_modules feitas, padrao AGENTS.md regra 4). Cron da ponte criado com offset proprio (`scripts/.hermes-telegram-offset` na pasta do Hermes, nao conflita com gatilho/jcode/gemini). Site foi medido FORA DO AR em 03/09 17:52 (HTTP 502; `next start` :3000 caido apos build de hoje falhar em `apps/web/app/[municipio]/page.tsx:525` — `id_ibge` nao existe no tipo `Cidade`, hero-narrativo). Avisa quando subir, que atualizo aqui.
