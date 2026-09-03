@@ -65,6 +65,21 @@ const topicos: Topico[] = [
     titulo: "Termos de ajustamento de conduta",
     descricao: "TACs e compromissos ambientais firmados.",
   },
+  {
+    href: "/ambiental/conselhos",
+    titulo: "Conselhos e comitês de bacia",
+    descricao: "Comitês de bacias hidrográficas, CODEMAs e conselhos de direitos.",
+  },
+  {
+    href: "/ambiental/direitos-humanos",
+    titulo: "Relatórios de direitos humanos",
+    descricao: "Compêndio oficial da CIDH, ONU e CNDH cruzados por município.",
+  },
+  {
+    href: "/ambiental/clima-risco",
+    titulo: "Bases de clima e risco",
+    descricao: "População em áreas de risco (BATER), pluviômetros CEMADEN, INMET e saneamento SNIS.",
+  },
 ];
 
 export const metadata: Metadata = {

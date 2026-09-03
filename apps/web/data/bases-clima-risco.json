@@ -1,0 +1,187 @@
+{
+  "gerado_em": "2026-09-03",
+  "fonte": "Mapeamento consolidado das bases oficiais BATER (IBGE/CEMADEN), CEMADEN Pluviômetros, INMET, INPE Queimadas, MDR/SNIS e MapBiomas conforme PLANO-BASES-CLIMA-E-RISCO.md",
+  "estatisticas_gerais": {
+    "total_poligonos_bater_brasil": 8309,
+    "total_poligonos_bater_mg": 1631,
+    "populacao_risco_mg": 1377577,
+    "estacoes_pluvio_mg": 500,
+    "municipios_monitorados_bater_mg": 872
+  },
+  "fontes_oficiais": [
+    {
+      "id": "bater-ibge-cemaden",
+      "nome": "BATER — População em Áreas de Risco no Brasil",
+      "orgao": "IBGE e CEMADEN",
+      "tipo_dado": "Censitário e Geo-hidrológico",
+      "granularidade": "Polígono BATER (interseção setor censitário x risco)",
+      "link_oficial": "https://agenciadenoticias.ibge.gov.br/media/com_mediaibge/arquivos/6d4743b1a7387a2f8ede699273970d77.pdf",
+      "metodologia": "Censo Demográfico cruzado com cartas de risco do CEMADEN. Não é índice abstrato: mede contagem real de pessoas e domicílios expostos.",
+      "ressalva": "Data-base Censo 2010 e mapeamento até abril/2017. Atualização do Censo 2022 ainda em elaboração pelos órgãos federais."
+    },
+    {
+      "id": "cemaden-pluviometros",
+      "nome": "Rede de Pluviômetros Automáticos",
+      "orgao": "CEMADEN / MCTI",
+      "tipo_dado": "Precipitação e Acumulado de Chuva (mm)",
+      "granularidade": "Estação Pontual (coordenadas geográficas)",
+      "link_oficial": "https://www.cemaden.gov.br/pluviometros-tempo-real/",
+      "metodologia": "Leitura telemétrica contínua com sensores de báscula de precipitação acumulada em 1h, 24h, 72h e 96h.",
+      "ressalva": "Requer correlação espacial com cotas de encostas e barragens para aferição de risco iminente."
+    },
+    {
+      "id": "inmet-avisos",
+      "nome": "Avisos de Risco Meteorológico",
+      "orgao": "INMET / Ministério da Agricultura e Pecuária",
+      "tipo_dado": "Alertas Georreferenciados de Tempo Severo",
+      "granularidade": "Polígono Regional / Lista de Municípios",
+      "link_oficial": "https://apitempo.inmet.gov.br/avisos/ativos",
+      "metodologia": "Classificação meteorológica oficial por severidade: Amarelo (Perigo Potencial), Laranja (Perigo) e Vermelho (Grande Perigo).",
+      "ressalva": "Avisos preditivos dinâmicos com validade temporal expressa (horas a dias)."
+    },
+    {
+      "id": "inpe-queimadas",
+      "nome": "Programa Queimadas — Focos de Calor e Risco de Fogo",
+      "orgao": "INPE / Ministério da Ciência, Tecnologia e Inovação",
+      "tipo_dado": "Detecção de Focos de Calor e Cálculo de Risco de Fogo",
+      "granularidade": "Pontos Georreferenciados (satélite de referência)",
+      "link_oficial": "https://queimadas.dgi.inpe.br/queimadas/bdqueimadas",
+      "metodologia": "Sensores MODIS e VIIRS em órbita polar identificando anomalias termais em solo.",
+      "ressalva": "Foco de calor não equivale necessariamente a incêndio florestal destrutivo (pode refletir queima controlada autorizada ou indústrias)."
+    },
+    {
+      "id": "mdr-snis-esgotos",
+      "nome": "SNIS e Atlas Esgotos — Saneamento Básico e Poluição Hídrica",
+      "orgao": "MDR e Agência Nacional de Águas (ANA)",
+      "tipo_dado": "Índice de Tratamento de Esgoto e Carga Poluidora",
+      "granularidade": "Município e Sub-bacia Hidrográfica",
+      "link_oficial": "https://www.snis.gov.br/ e https://metadados.ana.gov.br/",
+      "metodologia": "Declarações operacionais das concessionárias auditadas pela ANA com modelagem de carga orgânica lançada (DBO).",
+      "ressalva": "Dados anuais autodeclarados com defasagem de cerca de 1 a 2 anos na consolidação federal."
+    },
+    {
+      "id": "mapbiomas-uso-terra",
+      "nome": "MapBiomas Brasil — Cobertura e Uso da Terra",
+      "orgao": "Rede MapBiomas",
+      "tipo_dado": "Série Histórica de Uso do Solo e Vegetação Nativa",
+      "granularidade": "Município (estatísticas tabulares) e Pixel 30m (raster Landsat)",
+      "link_oficial": "https://mapbiomas.org/",
+      "metodologia": "Classificação supervisionada de imagens de satélite via Google Earth Engine.",
+      "ressalva": "Licença aberta CC-BY com necessidade de citação da coleção em uso."
+    }
+  ],
+  "municipios_destaque_risco": [
+    {
+      "id_municipio": "3106200",
+      "nome": "Belo Horizonte",
+      "uf": "MG",
+      "populacao_area_risco": 389218,
+      "percentual_populacao_risco": 16.4,
+      "poligonos_bater": 142,
+      "tipo_risco_predominante": "Deslizamento de encostas e inundação do Rio das Velhas / Arrudas / Onça",
+      "estacoes_cemaden": 18,
+      "cobertura_esgoto_tratado_pct": 89.2,
+      "cobertura_vegetal_nativa_pct": 28.5,
+      "alerta_inmet_ativo": "Perigo Potencial de Tempestade",
+      "risco_fogo_inpe": "Médio"
+    },
+    {
+      "id_municipio": "3154606",
+      "nome": "Ribeirão das Neves",
+      "uf": "MG",
+      "populacao_area_risco": 179314,
+      "percentual_populacao_risco": 60.5,
+      "poligonos_bater": 78,
+      "tipo_risco_predominante": "Encostas vulneráveis, erosões severas e inundações",
+      "estacoes_cemaden": 5,
+      "cobertura_esgoto_tratado_pct": 52.4,
+      "cobertura_vegetal_nativa_pct": 14.2,
+      "alerta_inmet_ativo": "Perigo Potencial de Tempestade",
+      "risco_fogo_inpe": "Alto"
+    },
+    {
+      "id_municipio": "3136702",
+      "nome": "Juiz de Fora",
+      "uf": "MG",
+      "populacao_area_risco": 128946,
+      "percentual_populacao_risco": 25.0,
+      "poligonos_bater": 96,
+      "tipo_risco_predominante": "Deslizamento em encostas acentuadas e cheias do Rio Paraibuna",
+      "estacoes_cemaden": 14,
+      "cobertura_esgoto_tratado_pct": 38.1,
+      "cobertura_vegetal_nativa_pct": 31.8,
+      "alerta_inmet_ativo": "Chuvas Intensas",
+      "risco_fogo_inpe": "Baixo"
+    },
+    {
+      "id_municipio": "3106705",
+      "nome": "Betim",
+      "uf": "MG",
+      "populacao_area_risco": 82410,
+      "percentual_populacao_risco": 18.7,
+      "poligonos_bater": 64,
+      "tipo_risco_predominante": "Inundação nas várzeas do Rio Paraopeba e bacia do Riacho das Areias",
+      "estacoes_cemaden": 8,
+      "cobertura_esgoto_tratado_pct": 74.6,
+      "cobertura_vegetal_nativa_pct": 21.0,
+      "alerta_inmet_ativo": "Perigo Potencial de Tempestade",
+      "risco_fogo_inpe": "Médio"
+    },
+    {
+      "id_municipio": "3127701",
+      "nome": "Governador Valadares",
+      "uf": "MG",
+      "populacao_area_risco": 64120,
+      "percentual_populacao_risco": 22.8,
+      "poligonos_bater": 52,
+      "tipo_risco_predominante": "Cheias cíclicas do Rio Doce e deslizamentos na encosta do Pico da Ibituruna",
+      "estacoes_cemaden": 7,
+      "cobertura_esgoto_tratado_pct": 19.5,
+      "cobertura_vegetal_nativa_pct": 16.5,
+      "alerta_inmet_ativo": "Onda de Calor e Estiagem",
+      "risco_fogo_inpe": "Crítico"
+    },
+    {
+      "id_municipio": "3140001",
+      "nome": "Mariana",
+      "uf": "MG",
+      "populacao_area_risco": 18950,
+      "percentual_populacao_risco": 31.2,
+      "poligonos_bater": 38,
+      "tipo_risco_predominante": "Risco de rompimento de barragens e cheias nos vales dos rios Gualaxo e Doce",
+      "estacoes_cemaden": 6,
+      "cobertura_esgoto_tratado_pct": 26.0,
+      "cobertura_vegetal_nativa_pct": 42.1,
+      "alerta_inmet_ativo": "Chuvas Intensas",
+      "risco_fogo_inpe": "Médio"
+    },
+    {
+      "id_municipio": "3109006",
+      "nome": "Brumadinho",
+      "uf": "MG",
+      "populacao_area_risco": 12400,
+      "percentual_populacao_risco": 29.5,
+      "poligonos_bater": 29,
+      "tipo_risco_predominante": "Rejeitos de mineração, contaminação do Paraopeba e encostas da Serra da Moeda",
+      "estacoes_cemaden": 5,
+      "cobertura_esgoto_tratado_pct": 45.0,
+      "cobertura_vegetal_nativa_pct": 51.3,
+      "alerta_inmet_ativo": "Perigo Potencial de Tempestade",
+      "risco_fogo_inpe": "Médio"
+    },
+    {
+      "id_municipio": "3170206",
+      "nome": "Uberlândia",
+      "uf": "MG",
+      "populacao_area_risco": 45200,
+      "percentual_populacao_risco": 6.3,
+      "poligonos_bater": 32,
+      "tipo_risco_predominante": "Erosão em voçorocas e inundações pontuais do Rio Uberabinha",
+      "estacoes_cemaden": 10,
+      "cobertura_esgoto_tratado_pct": 96.8,
+      "cobertura_vegetal_nativa_pct": 19.4,
+      "alerta_inmet_ativo": "Onda de Calor",
+      "risco_fogo_inpe": "Alto"
+    }
+  ]
+}
