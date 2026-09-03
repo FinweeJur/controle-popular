@@ -118,7 +118,7 @@ export const PERGUNTAS_PARAOPEBA: Pergunta[] = [
   },
   {
     "pergunta": "Por que a AGU tem duas posições diferentes?",
-    "resposta": "Em 7 de maio de 2026, o setor de Contencioso da AGU defendeu a manutenção do NAE, reconhecendo a aplicabilidade da PNAB a danos em curso. Em 14 de maio, a Consultoria-Geral da União, a pedido da Presidência da República, enviou posição contrária, defendendo a irretroatividade absoluta da PNAB — em linha com o veto de Lula à lei em 2023. A contradição gerou insegurança jurídica e repercussão nacional."
+    "resposta": "Em 7 de maio de 2026, o setor de Contencioso da AGU defendeu a manutenção do NAE, reconhecendo a aplicabilidade da PNAB a danos em curso. Em 14 de maio, a AGU — pela sua Consultoria-Geral, em nome da Presidência da República — enviou posição contrária, defendendo a irretroatividade absoluta da PNAB, em linha com o veto de 2023. A contradição gerou insegurança jurídica e repercussão nacional."
   },
   {
     "pergunta": "Quanto foi pago no total pela Vale desde o rompimento?",
