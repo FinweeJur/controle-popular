@@ -6,6 +6,8 @@ import { formatNumberBR } from "@/lib/betim/format";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
 import { metadataEditavel } from "@/lib/edicoes";
+import { Epigrafe } from "@/app/components/Epigrafe";
+import { citacaoPorId } from "@/lib/citacoes";
 
 /**
  * `/sobre` — a apresentação do Controle Popular, na RAIZ do domínio.
@@ -64,8 +66,15 @@ export default async function SobrePage() {
           Um portal independente de transparência pública. Ele não produz informação nova:
           reúne o que órgãos públicos já publicam — espalhado por dezenas de sistemas, em
           linguagem administrativa — e apresenta em um só endereço, organizado por cidade e
-          por tema, em português comum.
+          por tema, em português comum. Criado em agosto de 2026, com apoio de inteligência
+          artificial em revisão permanente.
         </p>
+        {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (/sobre · abertura) */}
+        <Epigrafe
+          citacao={citacaoPorId("carolina-eu-escrevo")!}
+          variante="inicio"
+          className="max-w-2xl"
+        />
       </header>
 
       {/* ═══ 1. O QUE É ═══ */}
@@ -137,17 +146,16 @@ export default async function SobrePage() {
           rankings de alerta e de bom exemplo, mesmo continuando publicado ao lado do rótulo.
         </p>
         <p className="text-text-soft">
-          Isso já falhou em público, e a correção ficou na própria página em vez de sumir no
-          histórico do código. Até 13/08/2026, a página de{" "}
+          A atribuição de tema da legislação é o exemplo do padrão que este projeto adota
+          consigo mesmo: até 13/08/2026, a página de{" "}
           <a href="/ambiental/legislacao" className="text-primary hover:text-accent">
             legislação e precedentes por tema de direito
           </a>{" "}
-          afirmava que a atribuição de tema de cada lei e precedente &ldquo;veio de leitura
-          humana&rdquo;. Não veio — veio de leitura assistida por IA, registrada linha a linha
-          com o trecho que sustenta cada tema. A página hoje diz o que é, mantém o que
-          continua verdadeiro (é reexecutável e auditável item a item pelo trecho citado) e
-          declara que está em revisão. Quem cobra procedência dos outros deve o mesmo padrão
-          sobre si — e isso inclui dizer em público que errou.
+          chamava a atribuição de tema de &ldquo;leitura humana&rdquo;; hoje a página diz o
+          que é — leitura assistida por IA, registrada linha a linha com o trecho que
+          sustenta cada tema — e declara que está em revisão. Quem cobra procedência dos
+          outros deve o mesmo padrão sobre si: dizer de onde cada coisa vem, na própria
+          tela em que aparece.
         </p>
         <p className="text-[.9em] text-text-soft">
           Nenhum número do portal é <em>escrito</em> por modelo de linguagem: o assistente de
@@ -170,8 +178,8 @@ export default async function SobrePage() {
           O portal se organiza em {contagemZonasPublicadas()} frentes, chamadas internamente de <em>zonas</em>. A
           descrição de cada uma vive num arquivo único —{" "}
           <code className="font-mono text-[.85em]">lib/zonas.ts</code> — lido tanto pela home
-          quanto pelo rodapé de cada zona, para que o mesmo texto não precise ser corrigido em
-          quatro telas quando algo muda.
+          quanto pelo rodapé de cada zona, para que o mesmo texto exista num lugar só quando
+          algo muda.
         </p>
 
         <div className="space-y-4">
@@ -369,7 +377,7 @@ export default async function SobrePage() {
                   100
                 ).toLocaleString("pt-BR", { maximumFractionDigits: 1 })}
                 % do universo combinado das três origens. A predominância de rótulos
-                &ldquo;neutro&rdquo; entre os analisados não é falha: boa parte da produção
+                &ldquo;neutro&rdquo; entre os analisados tem explicação direta: boa parte da produção
                 legislativa municipal é denominação de rua e ato administrativo, e a instrução
                 do modelo manda devolver lista vazia nesses casos em vez de forçar uma
                 classificação que não existe.
@@ -380,7 +388,7 @@ export default async function SobrePage() {
 
         <div className="space-y-3">
           <h3 className="font-display text-lg font-semibold">
-            A análise de vício legislativo — em construção
+            A análise de vício legislativo
           </h3>
           <p className="text-text-soft">
             Pergunta diferente da anterior: não <em>o que a norma faz com os direitos</em>, mas{" "}
@@ -430,7 +438,8 @@ export default async function SobrePage() {
             que o site só muda quando alguém reconstrói, o que roda numa rotina agendada
             (coleta → build → trava de contagem de páginas → publicação), que recusa publicar
             se a contagem de páginas cair abaixo de um piso ou encolher demais em relação à
-            publicação anterior — o sinal de que algo saiu errado na coleta, não no build.
+            publicação anterior — o sinal de que a coleta precisa de revisão antes de virar
+            número na tela.
           </p>
         </div>
 
@@ -488,6 +497,10 @@ export default async function SobrePage() {
           Declarar a lacuna é conteúdo; disfarçá-la é defeito. É a mesma régua que rege todo o
           resto desta página.
         </p>
+        {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (/sobre · travessia) */}
+        <Epigrafe citacao={citacaoPorId("rosa-travessia")!} variante="inicio" />
+        {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (/sobre · fecho) */}
+        <Epigrafe citacao={citacaoPorId("evaristo-abrir-caminhos")!} variante="inicio" />
       </section>
       <FooterGlobal />
     </main>

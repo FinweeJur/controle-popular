@@ -106,67 +106,71 @@ function CelulaDocumento({ linha }: { linha: LinhaEstudo }) {
 }
 
 const COLUNAS: ColunaTabela<LinhaEstudo>[] = [
+  { chave: "classe", rotulo: "Classe", numerica: true, largura: "w-[60px]" },
+  {
+    chave: "classe_estudo_rotulo",
+    rotulo: "Tipo",
+    formatar: (l) => l.classe_estudo_rotulo || CLASSE_ESTUDO_LABEL[l.classe_estudo ?? ""] || "—",
+    largura: "w-[80px]",
+  },
+  { chave: "municipio", rotulo: "Município", largura: "w-[120px]" },
+  {
+    chave: "data_publicacao_iso",
+    rotulo: "Publicação",
+    ordenavel: true,
+    tipoOrdenacao: "data",
+    formatar: (l) => (l.data_publicacao_iso ? formatDateBR(l.data_publicacao_iso) : l.data_publicacao || "—"),
+    largura: "w-[100px]",
+  },
+  { chave: "empreendimento", rotulo: "Empreendimento" },
   {
     chave: "nome_arquivo",
     rotulo: "Documento",
     formatar: (l) => <CelulaDocumento linha={l} />,
   },
-  {
-    chave: "classe_estudo_rotulo",
-    rotulo: "Tipo",
-    formatar: (l) => l.classe_estudo_rotulo || CLASSE_ESTUDO_LABEL[l.classe_estudo ?? ""] || "—",
-  },
-  { chave: "empreendimento", rotulo: "Empreendimento" },
-  { chave: "municipio", rotulo: "Município" },
-  { chave: "classe", rotulo: "Classe", numerica: true },
   { chave: "modalidade", rotulo: "Modalidade" },
-  { chave: "unidade_regional", rotulo: "Unidade regional" },
   {
-    // `chave` aponta para o campo ISO, não para `data_publicacao` (dd/mm/aaaa)
-    // — `TabelaEstatica` ordena lendo `linha[chave]` direto e passando por
-    // `Date.parse`, que NÃO entende dd/mm/aaaa (`Date.parse("25/08/2018")` é
-    // `NaN`). Ordenar pela chave errada faria a coluna parecer ordenável e
-    // devolver sempre a mesma ordem — o erro que `dataParaOrdenacao` em
-    // `lib/ambiental/estudos.ts` já documenta.
-    chave: "data_publicacao_iso",
-    rotulo: "Publicação",
-    ordenavel: true,
-    tipoOrdenacao: "data",
-    // `formatDateBR` só entende ISO; sem `_iso` (data que a fonte gravou fora
-    // do formato dd/mm/aaaa esperado), mostra o texto cru em vez de "—" —
-    // dado que existe não devia sumir por causa de um parser mais rígido.
-    formatar: (l) => (l.data_publicacao_iso ? formatDateBR(l.data_publicacao_iso) : l.data_publicacao || "—"),
+    chave: "unidade_regional",
+    rotulo: "Un. Regional",
+    formatar: (l) => {
+      const texto = l.unidade_regional || "—";
+      const curto = texto.replace(/^Unidade Regional de /, "UR ").replace(/^Unidade Regional do /, "UR ");
+      return <span className="block max-w-[180px] truncate" title={texto}>{curto}</span>;
+    },
   },
   {
     chave: "data_limite_iso",
-    rotulo: "Prazo para pedir audiência",
+    rotulo: "Prazo audiência",
     ordenavel: true,
     tipoOrdenacao: "data",
     formatar: (l) => (l.data_limite_iso ? formatDateBR(l.data_limite_iso) : l.data_limite || "—"),
+    largura: "w-[110px]",
   },
   {
     chave: "repositorio_rotulo",
-    rotulo: "Onde está o arquivo",
+    rotulo: "Arquivo",
     formatar: (l) => (
       <span className="whitespace-nowrap">
         {l.repositorio_rotulo || REPOSITORIO_LABEL[l.repositorio] || "—"}
       </span>
     ),
+    largura: "w-[100px]",
   },
   {
     chave: "link_ficha",
-    rotulo: "Ficha do processo",
+    rotulo: "Ficha",
     ordenavel: false,
     formatar: (l) => (
       <a
         href={l.link_ficha}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-primary underline underline-offset-2"
+        className="text-primary underline underline-offset-2 whitespace-nowrap"
       >
-        Ver ficha oficial do processo ↗
+        Ficha ↗
       </a>
     ),
+    largura: "w-[70px]",
   },
 ];
 

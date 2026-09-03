@@ -94,10 +94,10 @@ export default function PainelLugar({
           {lugar.resumoVozCidada}
         </p>
 
-        {/* Espaço reservado para epígrafe/verso da equipe editorial */}
-        <div className="mt-4 rounded-lg border-l-2 border-primary/50 bg-surface-2/40 px-4 py-2.5 text-xs italic text-text-soft">
-          [Espaço para epígrafe/verso da equipe editorial]
-        </div>
+        {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (Cap. 6 · Terras, Salvar o Fogo) */}
+        <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
+          "A vida humana é indissociável do território. E muitas pessoas estão privadas disso." — Itamar Vieira Junior, sobre Salvar o Fogo, 2023
+        </p>
       </header>
 
       {/* CARTOES DE TOPO & GRÁFICO NATIVO SVG */}

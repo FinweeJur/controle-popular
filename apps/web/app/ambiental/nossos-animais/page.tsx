@@ -1,6 +1,5 @@
 import Link from "next/link";
 import PainelDialogo from "@/app/components/PainelDialogo";
-import BlocoPovoGente from "@/app/ambiental/components/BlocoPovoGente";
 
 interface EspecieFauna {
   id: string;
@@ -119,10 +118,10 @@ export default function PaginaNossosAnimais() {
           conectividade entre unidades de conservação e bacias hidrográficas.
         </p>
 
-        {/* EPÍGRAFE EDITORIAL */}
-        <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
-          [Espaço para epígrafe/verso da equipe editorial sobre a liberdade das aves e a proteção das matas]
-        </div>
+        {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (lote Grande Sertão: Veredas, Cap. 4) */}
+        <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
+          "Sertão é onde manda quem é forte, com as astúcias." — João Guimarães Rosa, Grande Sertão: Veredas, 1956
+        </p>
       </header>
 
       {/* CARTÕES DE STATUS DE TOPO */}
@@ -239,11 +238,20 @@ export default function PaginaNossosAnimais() {
         origemTitulo="Fauna e Corredores Ecológicos"
       />
 
-      {/* BLOCO OBRIGATÓRIO: E NOSSA GENTE? */}
-      <BlocoPovoGente
-        variacao="gente"
-        territorioNome="as áreas de convivência com a fauna silvestre"
-      />
+      {/* BLOCO: E NOSSA GENTE? */}
+      <section className="mt-14 rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-sm">
+        <span className="text-[0.75rem] font-bold uppercase tracking-wider text-primary">
+          Impacto Social &amp; Vida Real
+        </span>
+        <h2 className="mt-1 font-display text-[1.6rem] font-semibold tracking-tight text-text">
+          E nossa gente?
+        </h2>
+        <p className="mt-3 text-[0.95rem] text-text-soft leading-relaxed max-w-3xl">
+          As áreas de convivência com a fauna silvestre são territórios onde pessoas e animais
+          compartilham o mesmo espaço, exigindo políticas de proteção da biodiversidade e das
+          comunidades locais.
+        </p>
+      </section>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import PainelDialogo from "@/app/components/PainelDialogo";
-import BlocoPovoGente from "@/app/ambiental/components/BlocoPovoGente";
+import { Epigrafe } from "@/app/components/Epigrafe";
+import { citacaoPorId } from "@/lib/citacoes";
 
 interface ComunidadeGrupo {
   id: string;
@@ -119,10 +120,10 @@ export default function PaginaNossaGente() {
           Aqui monitoramos comunidades tradicionais, pescadores e populações atingidas.
         </p>
 
-        {/* EPÍGRAFE EDITORIAL */}
-        <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
-          [Espaço para epígrafe/verso da equipe editorial sobre a dignidade do trabalho das mãos e o canto das águas]
-        </div>
+        {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (Cap. 4 · Ambiental, Torto Arado) */}
+        <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
+          "Tudo que aprendi com os camponeses, quilombolas e trabalhadores rurais eu não trocaria por nenhum título acadêmico ou prêmio." — Itamar Vieira Junior, sobre Torto Arado, 2021
+        </p>
       </header>
 
       {/* CARTÕES DE STATUS DE TOPO */}
@@ -231,11 +232,22 @@ export default function PaginaNossaGente() {
         origemTitulo="Povos Tradicionais e Atingidos"
       />
 
-      {/* BLOCO OBRIGATÓRIO: E NOSSO POVO? */}
-      <BlocoPovoGente
-        variacao="povo"
-        territorioNome="as comunidades tradicionais e atingidos"
-      />
+      {/* BLOCO: E NOSSO POVO? */}
+      <section className="mt-14 rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-sm">
+        <span className="text-[0.75rem] font-bold uppercase tracking-wider text-primary">
+          Impacto Social &amp; Vida Real
+        </span>
+        <h2 className="mt-1 font-display text-[1.6rem] font-semibold tracking-tight text-text">
+          E nosso povo?
+        </h2>
+        <p className="mt-3 text-[0.95rem] text-text-soft leading-relaxed max-w-3xl">
+          As comunidades tradicionais e atingidos são o coração deste observatório: povos que
+          resistem, mantêm saberes ancestrais e lutam por justiça territorial e reparação integral.
+        </p>
+      </section>
+
+      {/* BALÃO — citação autorizada (versos selecionados de "Eu-mulher", regra do PLANO-COPY-VOZ: poema por versos escolhidos) */}
+      <Epigrafe citacao={citacaoPorId("evaristo-eu-mulher")!} variante="balao" className="mx-auto mt-8 max-w-md" />
     </div>
   );
 }

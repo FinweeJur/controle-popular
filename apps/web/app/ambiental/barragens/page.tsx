@@ -238,6 +238,19 @@ export default async function BarragensIndex() {
           como as fontes oficiais publicam.
         </p>
       </section>
+
+      {/* PONTE HUMANA — ecossistema ONSA / Coleção Nossos */}
+      <details className="group mt-12 border-t border-[var(--cp-border)] pt-6">
+        <summary className="cursor-pointer list-none text-sm font-semibold opacity-90">
+          <span className="mr-1.5 inline-block text-xs opacity-70 transition-transform duration-200 group-open:rotate-180">▼</span>
+          Nossa terra, nossa gente
+        </summary>
+        <p className="mt-2 max-w-2xl text-[.9em] opacity-80">
+          Por trás de cada barragem cadastrada há gente que vive a jusante — veja o rio e o território pelo lado humano na{" "}
+          <Link href="/ambiental/nossos" className="underline">Coleção Nossos</Link> e no bloco{" "}
+          <Link href="/ambiental/nossa-gente" className="underline">&quot;E nossa gente?&quot;</Link>.
+        </p>
+      </details>
       <FooterGlobal />
     </div>
   );

@@ -207,6 +207,22 @@ export async function slugsDasCidades(): Promise<string[]> {
  * só (ver `npm run prebuild`, que é o que impede essa cache de atravessar
  * builds).
  */
+/**
+ * Mapeamento de código IBGE → slug de URL.
+ *
+ * Usado pelo middleware para redirecionar `/3106200` → `/bh`, entre outros.
+ * Programaticamente consumido por funções que recebem o código IBGE de uma
+ * fonte externa (API do IBGE, planilha, etc.) e precisam do slug sem banco.
+ */
+export const IBGE_PARA_SLUG: Record<string, string> = {
+  "3103405": "aracuai",
+  "3106200": "bh",
+  "3106705": "betim",
+  "3121605": "diamantina",
+  "3134004": "itinga",
+  "3550308": "sp",
+};
+
 export async function obterCidadePorId(
   idMunicipio: IdMunicipio
 ): Promise<Cidade | null> {

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { listarRelatorios } from "@/lib/direitos-humanos/relatorios";
 import PainelDialogo from "@/app/components/PainelDialogo";
-import BlocoPovoGente from "@/app/ambiental/components/BlocoPovoGente";
 import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
+import { Epigrafe } from "@/app/components/Epigrafe";
+import { citacaoPorId } from "@/lib/citacoes";
+import FiltroDH from "./FiltroDH";
 
 export const metadata = {
   title: "Relatórios de Direitos Humanos — CIDH, ONU e CNDH | ONSA",
@@ -57,10 +59,10 @@ export default function PaginaDireitosHumanos() {
           bacias hidrográficas e conflitos socioambientais brasileiros.
         </p>
 
-        {/* EPÍGRAFE EDITORIAL */}
-        <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
-          [Espaço para epígrafe/verso da equipe editorial sobre a dignidade inviolável e o clamor da justiça dos povos]
-        </div>
+        {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (Cap. 2 · Evaristo, Becos da Memória) */}
+        <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
+          "A nossa escrevivência não pode ser lida como história de ninar os da casa-grande, mas sim para incomodá-los em seus sonhos injustos." — Conceição Evaristo, Becos da Memória, 2006
+        </p>
       </header>
 
       {/* CARTÕES DE TOPO */}
@@ -146,72 +148,7 @@ export default function PaginaDireitosHumanos() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
-          {relatorios.map((r) => (
-            <article
-              key={r.id}
-              className="rounded-2xl border border-border bg-surface-2 p-6 shadow-sm hover:border-primary/50 transition-colors"
-            >
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3">
-                <div className="flex items-center gap-2">
-                  <span className="rounded-md bg-blue-100 px-2 py-0.5 text-xs font-bold text-blue-800 dark:bg-blue-950/60 dark:text-blue-300">
-                    {r.orgao}
-                  </span>
-                  <span className="text-xs text-muted font-medium">{r.ano}</span>
-                  <span className="rounded bg-surface-3 px-2 py-0.5 text-[11px] text-muted">
-                    {r.tema}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold text-primary">
-                    {r.esfera.toUpperCase()}
-                  </span>
-                  <BotaoAlertaContextual
-                    tipo="resumo_pagina"
-                    titulo={`${r.orgao} (${r.ano}): ${r.titulo}`}
-                    orgaoTerritorio={r.municipios.length > 0 ? r.municipios.join(", ") : (r.estados.length > 0 ? r.estados.join(", ") : "Brasil")}
-                    identificador={`Relatório Oficial ${r.orgao} — ${r.ano}`}
-                    link={r.linkOficial}
-                    resumo={r.resumoCidadao}
-                    variante="icone"
-                  />
-                </div>
-              </div>
-
-              <h3 className="mt-3 font-display text-lg font-bold text-foreground">
-                {r.titulo}
-              </h3>
-              <p className="mt-2 text-sm text-muted">
-                {r.resumoCidadao}
-              </p>
-
-              <div className="mt-4 rounded-xl bg-surface-1 p-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-foreground">
-                  Recomendações Chave ao Estado:
-                </span>
-                <ul className="mt-2 list-inside list-disc space-y-1 text-xs text-muted">
-                  {r.recomendacoesChave.map((rec, i) => (
-                    <li key={i}>{rec}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-4 flex items-center justify-between pt-2">
-                <span className="text-xs text-muted">
-                  Estados: {r.estados.join(", ")} | {r.esfera.replace("_", " ")}
-                </span>
-                <a
-                  href={r.linkOficial}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-semibold text-primary hover:underline"
-                >
-                  Abrir documento oficial ↗
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
+        <FiltroDH relatorios={relatorios} />
       </section>
 
       {/* DIÁLOGO ENTRE FRENTES */}
@@ -220,11 +157,22 @@ export default function PaginaDireitosHumanos() {
         origemTitulo="Relatórios de Direitos Humanos"
       />
 
-      {/* BLOCO OBRIGATÓRIO: E NOSSO POVO? */}
-      <BlocoPovoGente
-        variacao="povo"
-        territorioNome="as populações em situação de vulnerabilidade e atingidas por violações"
-      />
+      {/* BLOCO: E NOSSO POVO? */}
+      <section className="mt-14 rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-sm">
+        <span className="text-[0.75rem] font-bold uppercase tracking-wider text-primary">
+          Impacto Social &amp; Vida Real
+        </span>
+        <h2 className="mt-1 font-display text-[1.6rem] font-semibold tracking-tight text-text">
+          E nosso povo?
+        </h2>
+        <p className="mt-3 text-[0.95rem] text-text-soft leading-relaxed max-w-3xl">
+          As populações em situação de vulnerabilidade e atingidas por violações demandam
+          proteção integral e o cumprimento dos direitos humanos fundamentais.
+        </p>
+      </section>
+
+      {/* BALÃO — citação autorizada */}
+      <Epigrafe citacao={citacaoPorId("carolina-escrevo-miseria")!} variante="balao" className="mx-auto mt-8 max-w-xl" />
     </div>
   );
 }

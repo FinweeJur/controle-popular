@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { formatNumberBR } from "@/lib/betim/format";
 import { lerEstudos } from "@/lib/ambiental/estudos-dados";
 import { REPOSITORIO_LABEL, CLASSE_ESTUDO_LABEL } from "@/lib/ambiental/estudos";
@@ -165,9 +166,22 @@ export default function EstudosIndex() {
             página oficial de audiências públicas da Semad ↗
           </a>
           . A coleta é uma foto periódica, não tempo real — audiências novas e links trocados
-          pelo empreendedor podem não estar refletidos aqui até a próxima rodada.
+          pelo empreendedor           podem não estar refletidos aqui até a próxima rodada.
         </p>
       </section>
+
+      {/* PONTE HUMANA — ecossistema ONSA / Coleção Nossos */}
+      <details className="group mt-12 border-t border-[var(--cp-border)] pt-6">
+        <summary className="cursor-pointer list-none text-sm font-semibold opacity-90">
+          <span className="mr-1.5 inline-block text-xs opacity-70 transition-transform duration-200 group-open:rotate-180">▼</span>
+          Nossa terra, nossa gente
+        </summary>
+        <p className="mt-2 max-w-2xl text-[.9em] text-text-soft">
+          Por trás de cada estudo técnico há um território e gente que vive dele — veja o lado humano na{" "}
+          <Link href="/ambiental/nossos" className="underline">Coleção Nossos</Link> e no bloco{" "}
+          <Link href="/ambiental/nossa-gente" className="underline">&quot;E nossa gente?&quot;</Link>.
+        </p>
+      </details>
     </div>
   );
 }

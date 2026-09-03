@@ -9,7 +9,7 @@ import {
 } from "@/lib/ambiental/convenios-mg";
 import { COBERTURA_CONVENIOS_FEDERAIS_MG } from "@/lib/ambiental/convenios-federais-mg";
 import { metadataEditavel } from "@/lib/edicoes";
-import ConveniosClient from "./ConveniosClient";
+import FiltroConvenios from "./FiltroConvenios";
 
 /**
  * `/ambiental/convenios` — os convênios de saída dos quatro órgãos ambientais
@@ -19,7 +19,7 @@ import ConveniosClient from "./ConveniosClient";
  *
  * Só as constantes de cobertura e os dois agregados (por órgão, por ano), que
  * somam poucos KiB. O array de 870 convênios (~930 KiB, 59% deles no campo
- * `objetivo`) fica em `ConveniosClient.tsx`, que é componente de cliente — ver
+ * `objetivo`) fica em `FiltroConvenios.tsx`, que é componente de cliente — ver
  * o cabeçalho de lá. Trocar isso derruba o deploy pelo teto do Worker.
  *
  * ═══ POR QUE O NÚMERO ESTADUAL APARECE AO LADO ═══
@@ -266,10 +266,12 @@ export default function ConveniosAmbientaisPage() {
           Convênio a convênio
         </h2>
         <p className="mt-2 text-[.92em] leading-relaxed text-text-soft">
-          O objetivo de cada convênio é texto da fonte, transcrito sem edição.
+          O objetivo de cada convênio é texto da fonte, transcrito sem edição. As tags e o resumo
+          de execução são inferidos do nome e objetivo; quando a fonte publicar dados de execução,
+          eles aparecerão aqui.
         </p>
         <div className="mt-4">
-          <ConveniosClient />
+          <FiltroConvenios />
         </div>
       </section>
 

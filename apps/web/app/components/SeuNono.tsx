@@ -283,6 +283,8 @@ export function SeuNono() {
   const [dadosResumidos, setDadosResumidos] = useState<DadoResumido | null>(null);
   const [carregandoDados, setCarregandoDados] = useState(false);
 
+  const acoesRapidas = useAcoesRapidas(pathname);
+
   // A IA do assistente não depende de chave de API do lado do cliente: o
   // backend (provedores.ts/geracao.ts) decide entre API remota e Ollama
   // local e degrada com honestidade. O widget oferece a IA sempre, e o erro
@@ -1089,9 +1091,9 @@ export function SeuNono() {
                   )}
                 </div>
 
-                {useAcoesRapidas(pathname).length > 0 && (
+                {acoesRapidas.length > 0 && (
                   <div className="flex flex-wrap gap-2 pt-2">
-                    {useAcoesRapidas(pathname).map((a, i) => (
+                    {acoesRapidas.map((a, i) => (
                       <button
                         key={i}
                         onClick={a.acao}

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { listarConselhos, contagemConselhosPorCategoria } from "@/lib/conselhos/catalogo";
 import PainelDialogo from "@/app/components/PainelDialogo";
-import BlocoPovoGente from "@/app/ambiental/components/BlocoPovoGente";
 import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
+import { Epigrafe } from "@/app/components/Epigrafe";
+import { citacaoPorId } from "@/lib/citacoes";
+import FiltroConselhos from "./FiltroConselhos";
 
 export const metadata = {
   title: "Conselhos Sociais, Bacias e Meio Ambiente | ONSA",
@@ -57,10 +59,10 @@ export default function PaginaConselhosSociais() {
           de meio ambiente (CODEMAs), conselhos tutelares, saúde e colegiados de povos tradicionais.
         </p>
 
-        {/* EPÍGRAFE EDITORIAL */}
-        <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
-          [Espaço para epígrafe/verso da equipe editorial sobre a força da roda de conversa, da assembleia popular e da vigília comunitária]
-        </div>
+        {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (Cap. 7 · Ação cidadã) */}
+        <p className="mt-4 border-l-2 border-primary/40 pl-4 text-sm italic text-text-soft">
+          "Não é uma esperança passiva, que está só esperando que as coisas aconteçam. É uma esperança ativa." — Itamar Vieira Junior, Roda Viva, 2021
+        </p>
       </header>
 
       {/* CARTÕES DE TOPO */}
@@ -148,84 +150,7 @@ export default function PaginaConselhosSociais() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
-          {conselhos.map((c) => (
-            <article
-              key={c.id}
-              className="rounded-2xl border border-border bg-surface-2 p-6 shadow-sm hover:border-teal-500/50 transition-colors"
-            >
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3">
-                <div className="flex items-center gap-2">
-                  <span className="rounded-md bg-teal-100 px-2 py-0.5 text-xs font-bold text-teal-800 dark:bg-teal-950/60 dark:text-teal-300">
-                    {c.sigla}
-                  </span>
-                  <span className="text-xs text-muted font-medium">
-                    {c.esfera.toUpperCase()} {c.uf ? `• ${c.uf}` : ""} {c.municipioNome ? `• ${c.municipioNome}` : ""}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  {c.baciaHidrografica ? (
-                    <span className="rounded bg-surface-3 px-2 py-0.5 text-xs text-muted">
-                      🌊 {c.baciaHidrografica}
-                    </span>
-                  ) : null}
-                  <BotaoAlertaContextual
-                    tipo="contato"
-                    titulo={`Contato Oficial: ${c.nome} (${c.sigla})`}
-                    orgaoTerritorio={`${c.esfera.toUpperCase()} ${c.municipioNome ? `— ${c.municipioNome}` : (c.uf ? `— ${c.uf}` : "")}`}
-                    identificador={`Sigla: ${c.sigla} | Bacia: ${c.baciaHidrografica ?? "Estadual/Nacional"}`}
-                    link="https://controlepopular.com.br/ambiental/conselhos"
-                    resumo={c.descricaoPapel}
-                    telefones={c.contatos.telefone ? [c.contatos.telefone] : (c.contatos.canalDenuncia ? [c.contatos.canalDenuncia] : undefined)}
-                    emails={c.contatos.email ? [c.contatos.email] : undefined}
-                    variante="icone"
-                  />
-                </div>
-              </div>
-
-              <h3 className="mt-3 font-display text-lg font-bold text-foreground">
-                {c.nome}
-              </h3>
-              <p className="mt-2 text-sm text-muted">
-                {c.descricaoPapel}
-              </p>
-
-              <div className="mt-4 rounded-xl bg-surface-1 p-3 text-xs">
-                <span className="font-semibold text-foreground">Quem participa: </span>
-                <span className="text-muted">{c.quemParticipa}</span>
-              </div>
-
-              <div className="mt-4 grid grid-cols-1 gap-2 pt-2 text-xs sm:grid-cols-2">
-                {c.contatos.telefone ? (
-                  <div className="text-muted">
-                    📞 <span className="font-medium text-foreground">{c.contatos.telefone}</span>
-                  </div>
-                ) : null}
-                {c.contatos.email ? (
-                  <div className="text-muted">
-                    ✉️ <a href={`mailto:${c.contatos.email}`} className="text-primary hover:underline">{c.contatos.email}</a>
-                  </div>
-                ) : null}
-                {c.contatos.siteOficial ? (
-                  <div className="text-muted">
-                    🌐 <a href={c.contatos.siteOficial} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Portal oficial ↗</a>
-                  </div>
-                ) : null}
-                {c.contatos.canalDenuncia ? (
-                  <div className="text-muted">
-                    🚨 <span className="font-medium text-foreground">{c.contatos.canalDenuncia}</span>
-                  </div>
-                ) : null}
-              </div>
-
-              {c.contatos.reunioesPublicas ? (
-                <p className="mt-3 text-[11px] text-muted italic border-t border-border pt-2">
-                  🗓️ Reuniões: {c.contatos.reunioesPublicas}
-                </p>
-              ) : null}
-            </article>
-          ))}
-        </div>
+        <FiltroConselhos conselhos={conselhos} />
       </section>
 
       {/* DIÁLOGO ENTRE FRENTES */}
@@ -234,11 +159,22 @@ export default function PaginaConselhosSociais() {
         origemTitulo="Conselhos Sociais e Bacias"
       />
 
-      {/* BLOCO OBRIGATÓRIO: E NOSSO POVO? */}
-      <BlocoPovoGente
-        variacao="povo"
-        territorioNome="as instâncias de decisão popular e os comitês de bacia"
-      />
+      {/* BLOCO: E NOSSO POVO? */}
+      <section className="mt-14 rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-sm">
+        <span className="text-[0.75rem] font-bold uppercase tracking-wider text-primary">
+          Impacto Social & Vida Real
+        </span>
+        <h2 className="mt-1 font-display text-[1.6rem] font-semibold tracking-tight text-text">
+          E nosso povo?
+        </h2>
+        <p className="mt-3 text-[0.95rem] text-text-soft leading-relaxed max-w-3xl">
+          As instâncias de decisão popular e os comitês de bacia são espaços onde a sociedade
+          civil pode influenciar diretamente as políticas públicas ambientais e hídricas.
+        </p>
+      </section>
+
+      {/* FECHO — citação autorizada */}
+      <Epigrafe citacao={citacaoPorId("evaristo-risco-viver")!} variante="fecho" />
     </div>
   );
 }

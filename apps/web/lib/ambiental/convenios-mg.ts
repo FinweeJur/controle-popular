@@ -40,14 +40,25 @@ export interface ConvenioAmbientalMg {
   prazoOriginal: string | null;
   /** Data-limite vigente hoje. */
   prazoAtual: string | null;
-  /** `prazoAtual �^' prazoOriginal` em dias. 0 = nunca prorrogado. */
+  /** `prazoAtual – prazoOriginal` em dias. 0 = nunca prorrogado. */
   diasDeProrrogacao: number;
+
+  /** Tags de assunto extraídas do nome/objetivo. */
+  tags?: string[];
+  /** Resumo curto do estado de execução do convênio. */
+  resumo_execucao?: string;
+  /** Percentual de execução (0-100), quando disponível na fonte. */
+  percentual_execucao?: number;
+  /** Situação descritiva da execução (ex.: "Em execução", "Concluído"). */
+  situacao_execucao?: string;
+  /** Esfera administrativa: federal, estadual ou municipal. */
+  esfera?: string;
 }
 
 /**
  * 2026-08-25: a lista (870 convenios, ~930 KiB) saiu daqui e virou
  * public/data/convenios-ambientais-mg.json - asset estatico buscado pelo
- * cliente (ConveniosClient.tsx) e lido em Node via convenios-mg-dados.ts
+ * cliente (FiltroConvenios.tsx) e lido em Node via convenios-mg-dados.ts
  * (testes). Motivo no cabecalho de lib/server-only/json-etl.ts: teto de
  * 3 MiB gzip do Worker Free (erro 10027 em 2026-08-24).
  */
