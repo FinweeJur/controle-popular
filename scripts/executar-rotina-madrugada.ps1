@@ -1,4 +1,4 @@
-# ==============================================================================
+﻿# ==============================================================================
 # Execução da Rotina de Madrugada — PicoClaw (Sondagem e Atualização de Fontes)
 # ==============================================================================
 # Executa de madrugada (03:30 AM) com prioridade de processo reduzida (BelowNormal)

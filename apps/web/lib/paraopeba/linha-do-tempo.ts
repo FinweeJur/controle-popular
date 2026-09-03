@@ -219,7 +219,7 @@ export const MARCOS_PARAOPEBA: MarcoParaopeba[] = [
   {
     "data": "2026-05-14",
     "titulo": "Divergência na AGU",
-    "descricao": "Consultoria-Geral da União, a pedido da Presidência, envia ao STF posição contrária ao NAE, gerando contradição interna no governo",
+    "descricao": "AGU, pela sua Consultoria-Geral e em nome da Presidência da República, envia ao STF posição contrária ao NAE, gerando contradição interna no governo",
     "cor": "#9B1C1C"
   },
   {
