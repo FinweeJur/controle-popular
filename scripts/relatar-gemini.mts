@@ -30,48 +30,54 @@ if (!TOKEN || !DONO) {
   process.exit(1);
 }
 
-const mensagemPadrao = `🤖 <b>[Gemini] Relatório de Avanço: Frentes "Nossos", Sanfonas e Cidades</b>
-
-✅ <b>Expansão de Cidades e Territórios Concluída:</b>
-• <b>6 Cidades Iniciais 100% Curadas:</b> Diamantina (Biribiri/Concessão), Betim (Paraopeba/Indústria), BH (Rio das Velhas/Serras/Tribunais), Araçuaí (Lítio/Emendas), Itinga (Cerâmica/Tradição) e São Paulo (Cantareira/Billings/Bancada Federal).
-• <b>Capitais Foco Sudeste:</b> Rio de Janeiro (Sistema Guandu/Tijuca/Baía) e Vitória (Foz do Rio Doce/Manguezais/Portos).
-• <b>Polos Estratégicos do Interior:</b> Brumadinho, Mariana, Governador Valadares, Ouro Preto, Montes Claros, Uberlândia e Juiz de Fora.
-• <b>Motor Universal Automático:</b> Implementado <code>gerarPontesAutomaticas()</code> que cruza o código IBGE de qualquer um dos 853 municípios de MG com rios, serras e bancada do Congresso.
-
-👥 <b>Bloco "E nosso povo?" / "E nossa gente?":</b>
-Componente ativo conectando preservação ambiental a saúde (SUS), trabalho/renda (pesca/artesanato), moradia e cultura.
-
-🏛️ <b>Próximo Passo Mapeado no Plano:</b>
-Integração dos Conselhos Sociais (PCTs, Direitos Humanos, Idoso, Criança/Adolescente e Defesa Social) com canais de denúncia, contatos e atas.
-
-🧪 <b>Testes e Commits:</b>
-16 testes unitários verdes (<code>lib/dialogos.test.ts</code> e <code>lib/lugares.test.ts</code>). Commits realizados com sucesso com pathspec explícito e sem conflitos.`;
-
-const textoBruto = process.argv.slice(2).join(" ").trim() || mensagemPadrao;
+const textoBruto = process.argv.slice(2).join(" ").trim();
 const texto = textoBruto.replace(/<br\s*\/?>/gi, "\n");
 
 async function enviar() {
   const url = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: DONO,
-      text: texto,
-      parse_mode: "HTML",
-    }),
-  });
+  
+  // Tenta com HTML primeiro
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      signal: AbortSignal.timeout(12000),
+      body: JSON.stringify({
+        chat_id: DONO,
+        text: texto,
+        parse_mode: "HTML",
+      }),
+    });
 
-  if (res.ok) {
-    console.log("✅ Relatório do Gemini enviado com sucesso para o Telegram!");
-  } else {
+    if (res.ok) {
+      console.log("✅ Relatório do Gemini enviado com sucesso para o Telegram!");
+      return;
+    }
+
     const erro = await res.text();
+    // Se falhar por entidade HTML, tenta envio como texto simples
+    if (erro.includes("can't parse entities")) {
+      const textoSemHtml = texto.replace(/<[^>]*>/g, "");
+      const res2 = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        signal: AbortSignal.timeout(12000),
+        body: JSON.stringify({
+          chat_id: DONO,
+          text: textoSemHtml,
+        }),
+      });
+      if (res2.ok) {
+        console.log("✅ Relatório do Gemini enviado (fallback texto puro)!");
+        return;
+      }
+    }
     console.error(`❌ Erro HTTP ${res.status}: ${erro}`);
+    process.exit(1);
+  } catch (e) {
+    console.error("❌ Falha de conexão ou timeout:", (e as Error).message);
     process.exit(1);
   }
 }
 
-enviar().catch((e) => {
-  console.error("❌ Falha:", e);
-  process.exit(1);
-});
+enviar();
