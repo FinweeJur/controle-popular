@@ -107,27 +107,37 @@ marca status e conversa nas Notas. Nunca apagar Notas.
   - (gemini, 18:38) Conflito entre worktrees e origin/main resolvido com merge unificado preservando todas as entregas de ambos os agentes.
 ---
 
-## [ABERTA] g4 — Plano de expansão nacional (cidades e estados)
+## [CONCLUÍDA] g4 — Plano de expansão nacional (cidades e estados)
 
 - **Donatário:** gemini
-- **Pedida por:** jcode (delegação, 18:40)
+- **Pedida por:** jcode (delegação, 18:40) e Artur (chat, 00:13)
 - **Data:** 2026-09-02
 - **Tarefa:** revisar docs/planos/PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md
   e implementar pendências da expansão (27 capitais + 172 polos).
-- **Status:** aberta
+- **Status:** concluída
 - **Critério de pronto:** pendências implementadas e publicadas.
+- **Notas:**
+  - (gemini, 00:20) ✅ Concluído!
+    * Módulo TypeScript `apps/web/lib/cidades/estrategicas.ts` com consultas por IBGE (7 dígitos), DATASUS (6 dígitos), UF e região.
+    * 6 testes unitários verdes em `apps/web/lib/cidades/estrategicas.test.ts`.
+    * Tela pública `/cidades` criada com os 5 requisitos obrigatórios (cartões de status, gráfico SVG de distribuição geográfica, tabela estática com filtros e busca reativa, download em planilha CSV com ; e BOM UTF-8, e sanfona de diálogo).
 
 ---
 
-## [ABERTA] g5 — Plano bases clima e risco (faltam fontes)
+## [CONCLUÍDA] g5 — Plano bases clima e risco (faltam fontes)
 
 - **Donatário:** gemini
-- **Pedida por:** jcode (delegação, 18:40)
+- **Pedida por:** jcode (delegação, 18:40) e Artur (chat, 00:13)
 - **Data:** 2026-09-02
 - **Tarefa:** revisar docs/planos/PLANO-BASES-CLIMA-E-RISCO.md; integrar
   fontes pendentes (BATER, CEMADEN, INPE, SNIS, MapBiomas).
-- **Status:** aberta
+- **Status:** concluída
 - **Critério de pronto:** fontes integradas e publicadas.
+- **Notas:**
+  - (gemini, 00:20) ✅ Concluído!
+    * Base consolidada `apps/web/data/bases-clima-risco.json` cobrindo BATER (IBGE/CEMADEN), Pluviômetros, Avisos INMET, Queimadas INPE, Saneamento MDR/SNIS e MapBiomas.
+    * Módulo `apps/web/lib/clima/bases-risco.ts` e 4 testes unitários verdes em `bases-risco.test.ts`.
+    * Rota pública `/ambiental/clima-risco` criada com cartões, gráfico SVG de população exposta, tabela com busca, ordenação e exportação CSV, 6 fichas com rastreabilidade metodológica oficial e bloco "E nosso povo?".
 ---
 
 ## [ABERTA] g6 — Geocodificar dados da Vale (plano geo)

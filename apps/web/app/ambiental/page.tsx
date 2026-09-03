@@ -97,6 +97,16 @@ export default async function AmbientalHome() {
       linkTexto: "Consultar relatórios oficiais →",
     },
     {
+      titulo: "Bases de Vulnerabilidade Climática e Risco",
+      linha: "BATER (IBGE/CEMADEN), Pluviômetros, Avisos INMET, Queimadas e Saneamento SNIS",
+      texto:
+        "População exposta em áreas de risco de desastre geo-hidrológico, monitoramento de chuvas em tempo real, focos de calor e saneamento por município.",
+      fase: "NOVO",
+      href: "/ambiental/clima-risco",
+      pronta: true,
+      linkTexto: "Consultar bases de risco e clima →",
+    },
+    {
       titulo: "Processos ambientais na Justiça",
       linha: sirenejud
         ? `${formatNumberBR(sirenejud.total_processos_mg)} processos em ${formatNumberBR(sirenejud.municipios_com_processos)} municípios — arquivo do CNJ de ${sirenejud.arquivo_modificado_em}`

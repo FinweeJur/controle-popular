@@ -81,6 +81,9 @@ export default async function Hub() {
           <a href="/busca" className="font-medium text-primary hover:underline">
             Busca por tema, palavra-chave e território →
           </a>
+          <a href="/cidades" className="font-medium text-primary hover:underline">
+            199 Cidades Estratégicas (Capitais & Polos) →
+          </a>
           <a href="/dados/populares" className="font-medium text-primary hover:underline">
             Páginas mais vistas →
           </a>
