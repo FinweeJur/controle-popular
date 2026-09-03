@@ -1,10 +1,22 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import { Epigrafe } from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
+
+// Hero narrativo (Fase 1 do plano de identidade visual —
+// `docs/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`). `ssr: false`
+// porque ele é animação de cliente (GSAP + parallax de mouse): nenhuma
+// outra rota deve pagar o custo dele, e a home é server component. O
+// componente é seção, não overlay — o conteúdo da home segue intacto
+// abaixo, e o CTA dele é âncora real para `#frentes`.
+const HeroNarrative = dynamic(
+  () => import("@/app/components/HeroNarrative"),
+  { ssr: false },
+);
 
 /**
  * Home da marca Controle Popular, na raiz do domínio.
@@ -60,18 +72,22 @@ export default async function Hub() {
       tabIndex={-1}
       className="mx-auto max-w-4xl px-4 py-12 sm:py-16"
     >
+      {/* ═══ HERO NARRATIVO — primeira seção da home (plano de identidade
+          visual, Fase 1). Título e parágrafo de abertura MUDARAM PARA
+          DENTRO dele (requisito 8/9 do plano): é o mesmo `<h1>` "Dados
+          públicos que dá para usar" e o mesmo texto institucional, sem
+          número inventado. Tudo o que existia aqui continua abaixo,
+          intacto. */}
+      <HeroNarrative />
+
       <header className="space-y-4">
         {/* O wordmark da marca ficou só na barra global (`TopNav.tsx`), acima
-            desta página — aqui começa direto no título. */}
-        <h1 className="font-display text-3xl font-bold sm:text-4xl">
-          Dados públicos que dá para usar
-        </h1>
-        <p className="max-w-2xl text-[1.05em] text-text-soft">
-          Com raízes na História e na Geografia, o Controle Popular usa Inteligência
-          Artificial para somar na busca por justiça socioambiental e fiscalização
-          cidadã — gratuita e sem cadastro, de qualquer celular ou computador. É o
-          portal virtual criado com IA do Observatório Nacional Socioambiental (ONSA).
-        </p>
+            desta página — e o `<h1>` da página agora vive dentro do hero
+            narrativo, logo acima deste bloco. */}
+        {/* EPÍGRAFE HERO — citação autorizada no PLANO-COPY-VOZ.md (hero/assinatura da home) */}
+        <Epigrafe citacao={citacaoPorId("carolina-eu-escrevo")!} variante="inicio" className="max-w-2xl" />
+        {/* Segundo parágrafo de abertura da home — ficou de fora do hero
+            (subtítulo institucional curto) mas não saiu da página. */}
         <p className="max-w-2xl text-[.98em] text-text-soft">
           Reunimos dezenas de portais e dados públicos: milhares de contratos,
           convênios, licenciamentos ambientais, pesquisas e autorizações minerárias
@@ -79,8 +95,6 @@ export default async function Hub() {
           orçamento detalhado das prefeituras, do governo de Minas, do Congresso
           Brasileiro e das Instituições de Justiça.
         </p>
-        {/* EPÍGRAFE HERO — citação autorizada no PLANO-COPY-VOZ.md (hero/assinatura da home) */}
-        <Epigrafe citacao={citacaoPorId("carolina-eu-escrevo")!} variante="inicio" className="max-w-2xl" />
         <p className="flex flex-wrap gap-x-4 gap-y-1 text-[.95em]">
           <a href="/busca" className="font-medium text-primary hover:underline">
             Busca por tema, palavra-chave e território →
@@ -119,7 +133,12 @@ export default async function Hub() {
         Procurando sua cidade? O primeiro card abaixo é o seu.
       </p>
 
-      <div className="mt-3 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {/* `id="frentes"`: alvo da âncora real do hero narrativo ("Conhecer
+          as frentes"). `scroll-margin-top` para não colar no topo. */}
+      <div
+        id="frentes"
+        className="mt-3 grid scroll-mt-20 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+      >
         {SECOES.map((s) =>
           s.id === "cidades" ? (
             // O card de cidades não é UM link: é um cartão com N destinos.

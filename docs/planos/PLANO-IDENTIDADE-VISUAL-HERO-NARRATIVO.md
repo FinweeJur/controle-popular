@@ -222,6 +222,7 @@ nada do resto justifica tocar no portal.
 | Parallax de mouse | 4 camadas com velocidade visivelmente diferente (ratio ≥ 1,5x entre adjacentes) | Inspecionar `transform` com o mouse parado em pontos distintos |
 | Retorno suave | Ao sair do container, camadas voltam com easing (0,4s+) | Observação visual |
 | Mobile | Sem parallax de mouse; conteúdo ainda revela no scroll | Emulador de celular no DevTools |
+| FPS | ≥ 55 FPS desktop / ≥ 45 FPS celular intermediário (critério da fonte resposta 2 §6) | Chrome DevTools → Performance, rolagem pelo hero |
 | Home intacta | Frentes, cidades, busca e rodapé continuam acessíveis abaixo do hero | Contagem de links/âncoras antes e depois |
 
 ### Acessibilidade
@@ -282,6 +283,34 @@ Para considerar **"atingido o objetivo"**:
   abaixo, com um clique a menos de distância do que hoje.
 - **resposta.md e resposta (1).md são cópias idênticas** — usar uma só como
   referência; a outra é redundância de download.
+
+## Verificação contra as fontes (2026-09-03, pós-Fase 1)
+
+Conferência das três `resposta*.md` contra este plano e contra o código
+portado (`lib/hero-narrativo.ts`, `HeroNarrative.tsx`), com as divergências
+e como foram resolvidas:
+
+| # | Nas fontes | Neste plano / no código | Resolução |
+|---|---|---|---|
+| 1 | Protótipo usa fatores 8/16/24/32 px (resposta 3) — razão 32/24 = **1,33x** entre as duas últimas camadas, violando o PRÓPRIO critério das fontes (razão ≥ 1,5x, resposta 2 §3.1/§6.1) | Critério do plano (≥ 1,5x) prevaleceu; `FATORES_BASE` usa **36/27** na fauna (36/24 = 1,5x exato), testado em `hero-narrativo.test.ts` | Plano vence — as fontes são internamente inconsistentes; o critério objetivo foi mantido e os números ajustados |
+| 2 | Amplitude máxima "±15px foreground a ±40px background" (resposta 2 §3.1) — inconsistente com as velocidades do protótipo (conteúdo a 24px > 15px) | Critério de amplitude **descartado**; permanece só a razão entre camadas | Plano vence — impossível satisfazer os dois critérios das fontes ao mesmo tempo |
+| 3 | Tipografia nova: Canela, Athelas, Chivo, Permanent Marker, Rubik Mono One (resposta 1 §2.2) | **Descartada silenciosamente** — decisão agora explícita: o portal NÃO carrega fonte nova; títulos usam `font-display` existente, textos usam `Inter` já no bundle | Plano vence — novas fontes custam LCP na página mais visitada; identidade vem de módulos e motion, não de fonte |
+| 4 | Logo-mosaico animado + favicon do módulo central (resposta 1 §4) | **Fora do roadmap** — não virou fase. Registro: fica como candidata a fase futura; o wordmark atual (`TopNav`) permanece | Descopo consciente — branding novo sem hero validado seria investir antes de medir |
+| 5 | FPS ≥ 55 desktop / ≥ 45 mobile (resposta 2 §6) | **Adicionado** à tabela de validação abaixo | Fonte vence — métrica objetiva que faltava |
+| 6 | Variáveis de cor hardcoded no protótipo (`--bulcao-blue: #2A5CAA` etc., injeção global) | Sobrescritas: tokens do portal (`--cp-primary/accent/tertiary`) + `--color-glow` por tema; SVG com `currentColor` | Plano vence — protótipo não podia vazar CSS global no design system medido |
+| 7 | `cerrado-panorama.jpg` como fundo da primeira dobra (resposta 3) | Banido: gradiente + SVG inline; fotos só abaixo da dobra, `next/image` preguiçoso | Plano vence — LCP do leitor sob estresse |
+| 8 | `pin: true` comentado no protótipo | Sem pin na home | Plano vence — não prender quem quer dado |
+| 9 | Biblioteca expandida: 6 fauna + BulcaoTriangle/Square + padrões Folia de Reis/Festa Junina (resposta 2 §2.1) | Fase 3 dimensiona fauna extra + fotos; padrões festivos ficam **implícitos na Fase 2** (variação por tema) | Parcialmente refletido — festivo explícito só quando houver página de frente que o justifique |
+| 10 | Generalizar parallax para n camadas + sectionTimelines por seção (resposta 2 §2.2) | `FATORES_BASE` é lista data-driven (5ª camada entra sem tocar no hook); **timelines multi-seção fora do escopo** — a narrativa de scroll é do hero só; o resto da home é dado primeiro | Escopo consciente — resposta 2 descreve um site-zine inteiro; o plano recorta o zine para a dobra da home |
+| 11 | Sons Xeno-canto CC BY-NC (resposta 3) | Fase 4 (opcional) já restringe a CC0; **NC explicitamente excluído** pela regra de licença do checklist | Plano vence — portal é AGPL e não pode amarrar uso não-comercial |
+
+### Estado das fases
+
+- [x] Fase 0 — `gsap` instalado; `tsc --noEmit` verde; 32 testes da suíte-chave verdes (03/09/2026)
+- [x] Fase 1 — `HeroNarrative.tsx` + `HeroNarrativePatterns.tsx` + `lib/hero-narrativo.ts` (12 testes) + `--color-glow` por tema; home intacta abaixo do hero; `ssr: false` (03/09/2026)
+- [ ] Fase 2 — variação temática por zona/município
+- [ ] Fase 3 — fauna expandida + fotos CC0
+- [ ] Fase 4 — som ambiente (opcional)
 
 ## Origem / Histórico
 

@@ -30,6 +30,10 @@
   --cp-border: #e2e8f0;
   --cp-alert: #c0392b;
   --cp-focus: #12467b;
+  /* Glow neon do hero narrativo (plano de identidade visual, Fase 1).
+     Ã‰ o ÃšNICO valor da proposta BulcÃ£o/neon fora dos tokens medidos â€” e
+     Ã© estritamente decorativo (sombra, nunca canal de informaÃ§Ã£o). */
+  --cp-glow: rgba(18, 70, 123, 0.22);
   --cp-bw: 1px;
   --cp-tscale: 1;
 
@@ -78,6 +82,7 @@
   --cp-border: #26303f;
   --cp-alert: #e5736a;
   --cp-focus: #4a90d9;
+  --cp-glow: rgba(255, 32, 197, 0.28);
 
   /* Dark steps are SELECTED, not an automatic flip of the light ramp:
      re-stepped brighter against #141c2b so every step clears 3:1, while
@@ -136,6 +141,8 @@
   --cp-alert: #990000; /* 8,92:1 sobre a surface (texto E fundo) */
   --cp-focus: #806a00; /* 5,28:1 sobre a surface â€” WCAG 1.4.11 pede 3:1 */
   --cp-bw: 2px;
+  /* Alto contraste nÃ£o tem glow: decorativo nenhum sobrevive aqui. */
+  --cp-glow: transparent;
 
   /* High-contrast keeps the same navy->olive tier order but pushes every
      step to >=7:1 on white, so the ramp reads as maximum contrast rather
@@ -226,6 +233,7 @@
   --color-border: var(--cp-border);
   --color-alert: var(--cp-alert);
   --color-focus: var(--cp-focus);
+  --color-glow: var(--cp-glow);
 
   --color-ord-1: var(--cp-ord-1);
   --color-ord-2: var(--cp-ord-2);
@@ -570,5 +578,172 @@ body {
      cheia e estÃ¡tica em vez de varrendo. */
   .cp-varredura::after {
     width: 100%;
+  }
+}
+
+/* --- Hero narrativo (home) — Fase 1 do plano de identidade visual
+   (`docs/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`). O estado
+   AQUI é o estado estático: tudo visível, sem opacity 0 — as animações
+   só entram via GSAP depois da classe `hero-pronto`, então se o JS
+   falhar o título real já está na tela. Cores 100% dos tokens do tema. */
+
+.hero-narrativo {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: min(88vh, 46rem);
+  padding: 4rem 1.5rem;
+  margin: -3rem -1rem 2.5rem; /* compensa o py/px do <main> da home */
+}
+
+/* Camada 1 — gradiente terroso + onda serra (SVG inline, sem bitmap:
+   decisão de LCP do plano — quem chega pode estar denunciando algo). */
+.hero-fundo {
+  position: absolute;
+  inset: -3rem;
+  z-index: 0;
+  will-change: transform;
+}
+.hero-fundo-gradiente {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    var(--cp-bg) 0%,
+    color-mix(in srgb, var(--cp-primary) 14%, var(--cp-bg)) 55%,
+    color-mix(in srgb, var(--cp-tertiary) 26%, var(--cp-bg)) 100%
+  );
+}
+.hero-onda {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5rem;
+  color: var(--cp-primary);
+}
+
+/* Camada 2 — azulejaria Athos Bulcão. Some no alto contraste (o
+   componente nem a renderiza, via `modulosPorTema`). */
+.hero-padrao-camada {
+  position: absolute;
+  z-index: 1;
+  top: 14%;
+  right: 6%;
+  display: flex;
+  gap: 1.25rem;
+  will-change: transform;
+}
+.hero-modulo {
+  display: inline-block;
+  width: 5.5rem;
+  height: 5.5rem;
+}
+.hero-modulo:nth-child(2) {
+  transform: rotate(24deg) scale(0.8) translateY(2.5rem);
+}
+.hero-modulo:nth-child(3) {
+  transform: rotate(-14deg) scale(0.65) translateY(-1.5rem);
+}
+
+/* Camada 3 — conteúdo real. */
+.hero-conteudo {
+  position: relative;
+  z-index: 3;
+  max-width: 42rem;
+  will-change: transform;
+}
+.hero-titulo {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--cp-text);
+}
+.hero-palavra {
+  display: inline-block;
+  margin-right: 0.24em;
+}
+.hero-sublinhado {
+  display: block;
+  width: 8rem; /* largura FINAL no CSS — o GSAP só reconstitui o gesto */
+  height: 3px;
+  margin-top: 0.6rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--cp-primary), var(--cp-accent));
+}
+.hero-subtitulo {
+  margin-top: 1.4rem;
+  max-width: 38rem;
+  color: var(--cp-text-soft);
+  font-size: 1.05em;
+}
+.hero-cta {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75em 2em;
+  border-radius: 999px;
+  border: var(--cp-bw) solid var(--cp-primary);
+  background: var(--cp-primary);
+  color: var(--cp-primary-ink);
+  font-weight: 600;
+  /* Glow é puramente decorativo e some no alto contraste (--cp-glow). */
+  box-shadow: 0 8px 28px 2px var(--hero-glow, var(--cp-glow));
+  transition:
+    transform 0.22s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.22s;
+}
+.hero-cta:hover,
+.hero-cta:focus-visible {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 36px 4px var(--hero-glow, var(--cp-glow));
+}
+
+/* Camada 4 — fauna geométrica (ilustrativa, com aria-label no SVG). */
+.hero-fauna {
+  position: absolute;
+  z-index: 2;
+  right: 8%;
+  bottom: 12%;
+  width: 9rem;
+  will-change: transform;
+  filter: drop-shadow(0 8px 24px var(--hero-glow, var(--cp-glow)));
+}
+.hero-fauna-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Alto contraste: sem glow, sem sombra decorativa — só forma e texto. */
+[data-theme="high-contrast"] .hero-fauna,
+[data-theme="high-contrast"] .hero-cta {
+  filter: none;
+  box-shadow: none;
+}
+
+/* Mobile (pointer: coarse, telas estreitas): sem fauna, sem azulejaria
+   flutuante — o conteúdo respira e a história segue pelo scroll. */
+@media (max-width: 768px) {
+  .hero-narrativo {
+    min-height: 62vh;
+    padding: 3rem 1rem;
+    margin: -2.5rem -0.5rem 2rem;
+  }
+  .hero-padrao-camada,
+  .hero-fauna {
+    display: none;
+  }
+}
+
+/* Reduced-motion é lei: nada transita, nada anima (o GSAP também nem
+   inicia — é a 2ª barreira, esta é a de CSS). */
+@media (prefers-reduced-motion: reduce) {
+  .hero-narrativo *,
+  .hero-narrativo {
+    animation: none !important;
+    transition: none !important;
   }
 }
