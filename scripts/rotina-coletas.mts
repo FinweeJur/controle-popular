@@ -135,6 +135,25 @@ const MAPA_SCRIPTS: Record<string, { tipo: "ts" | "py"; comando: string }> = {
     tipo: "ts",
     comando: "scripts/coletar-vale-monitoramento.mts",
   },
+  // ── Ligados em 04/09 pelo plano COLETA-MELHORIAS-2026-09 (acao 1 e 4):
+  // os quatro coletores que existiam SAIDOS da agenda. O wrapper de diario
+  // roda sigpub (Diamantina) e domweb (BH) por cidade; o --seco do wrapper
+  // so mostra o encaixe, nunca chama o sync — o gravar de verdade pede
+  // DATABASE_URL, que o cwd etl/betim resolve pelo .env local.
+  "pncp-contratos": {
+    tipo: "ts",
+    comando: "scripts/coletar-pncp-mg.mts",
+  },
+  "noticias-paraopeba": {
+    tipo: "py",
+    comando: "scripts/coletar-noticias-paraopeba.py",
+  },
+  "diario-oficial-municipios": {
+    tipo: "ts",
+    comando: "scripts/coletar-diario-municipios.mts",
+  },
+  // DataJud (t18 acao 2) NAO entrou: nao existe coletor no repo — o que ha
+  // e o watcher que sonda URL errada. Isso se resolve no watcher, nao aqui.
 };
 
 function executarPasso(slug: string, seco = false): boolean {

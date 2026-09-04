@@ -85,6 +85,36 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     camada: "banco",
     rotaPortal: "/[municipio]/camara/legislacao",
   },
+  "dom-pbh": {
+    slug: "dom-pbh",
+    nome: "Diário Oficial do Município de Belo Horizonte (DOM-PBH)",
+    orgao: "Prefeitura de Belo Horizonte",
+    esfera: "municipal",
+    frente: "cidades",
+    descricao: "Atos oficiais de BH via API pública do DOM (api-dom.pbh.gov.br).",
+    urlOficial: "https://api-dom.pbh.gov.br/",
+    licenca: "lei-acesso-informacao",
+    frequenciaAtualizacao: "diaria",
+    camada: "banco",
+    rotaPortal: "/bh/camara/legislacao",
+  },
+  // O agendamento real dos dois diários acima mora num coletor-agenda único
+  // (roda sigpub Diamantina + domweb BH por cidade). `sigpub-diario` e
+  // `dom-pbh` ficam como fontes mapeadas sem script próprio; quem executa é
+  // este slug, ligado na madrugada desde 04/09 (plano COLETA-MELHORIAS).
+  "diario-oficial-municipios": {
+    slug: "diario-oficial-municipios",
+    nome: "Diários oficiais municipais (agenda SIGPub + DOM-PBH)",
+    orgao: "AMM-MG e PBH",
+    esfera: "municipal",
+    frente: "cidades",
+    descricao: "Agenda diária dos coletores etl.camaras.sigpub (Diamantina) e etl.camaras.domweb (BH).",
+    urlOficial: "https://www.diariomunicipal.com.br/amm-mg/",
+    licenca: "lei-acesso-informacao",
+    frequenciaAtualizacao: "diaria",
+    camada: "banco",
+    rotaPortal: "/[municipio]/camara/legislacao",
+  },
   "transferegov-convenios": {
     slug: "transferegov-convenios",
     nome: "Transferegov / Convênios Federais",
