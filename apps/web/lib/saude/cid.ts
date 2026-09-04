@@ -7,6 +7,10 @@ export interface CidRegistro {
   codigo: string;
   capitulo: string;
   descricao: string;
+  /** Nome popular da doença, quando mapeado (ver NOMES_POPULARES_CID). */
+  nomePopular?: string;
+  /** Nome técnico/correto da medicina, quando mapeado ou vindo da fonte. */
+  nomeTecnico?: string;
   internacoes: number;
   obitos: number;
   taxaMortalidade: number; // percentual
@@ -107,6 +111,48 @@ export const CIDS_MONITORAMENTO_AMBIENTAL: Record<string, {
 };
 
 /**
+ * Dicionário local de nomes populares de CIDs mais frequentes no ranking
+ * de internações (medido em Betim, 03/09: O80, O82, Z30, S82, S52, P96,
+ * I64, I21, A49, A41, J21, N18 apareciam como "Diagnóstico CID-10 X" na
+ * tabela porque a fonte (SIH-SUS agregado) não traz descrição).
+ *
+ * `popular` = como a pessoa fala da doença; `tecnico` = nome correto da
+ * medicina (OMS/DATASUS, 4ª revisão em português). A formatação final é
+ * sempre "Popular (Técnico, CID-10 X)" — o dono pediu nome popular na
+ * tabela e o técnico ao passar o mouse/clicar (o `title` da célula).
+ *
+ * A chave é a categoria de 3 caracteres; subcategorias com sufixo (ex:
+ * "I648", "S824") herdam o nome da categoria via `buscarNomePopular`.
+ */
+export const NOMES_POPULARES_CID: Record<string, { popular: string; tecnico: string }> = {
+  O80: { popular: "Parto normal", tecnico: "Parto espontâneo com apresentação cefálica (vértex)" },
+  O82: { popular: "Parto cesárea", tecnico: "Parto por cesariana" },
+  Z30: { popular: "Planejamento familiar", tecnico: "Intervenção médica para controle de fecundidade" },
+  S82: { popular: "Quebra da perna", tecnico: "Fratura da perna, exceto tornozelo" },
+  S52: { popular: "Quebra do cotovelo ou do antebraço", tecnico: "Fratura do cotovelo e do antebraço (úmero distal, rádio e ulna)" },
+  P96: { popular: "Complicação de recém-nascido", tecnico: "Certas afecções originadas no período perinatal" },
+  I64: { popular: "Derrame", tecnico: "Acidente vascular cerebral (AVC), não especificado como hemorrágico ou isquêmico" },
+  I21: { popular: "Ataque cardíaco", tecnico: "Infarto agudo do miocárdio" },
+  A49: { popular: "Infecção por bactéria", tecnico: "Infecção bacteriana, sítio não especificado" },
+  A41: { popular: "Infecção generalizada", tecnico: "Sepse, não especificada" },
+  J21: { popular: "Bronquiolite", tecnico: "Bronquiolite aguda" },
+  N18: { popular: "Problema crônico nos rins", tecnico: "Doença renal crônica" },
+  A09: { popular: "Diarreia infecciosa", tecnico: "Diarreia e gastroenterite de origem infecciosa presumível" },
+  J18: { popular: "Pneumonia", tecnico: "Pneumonia por microrganismo não especificado" },
+  J45: { popular: "Crise de asma", tecnico: "Asma" },
+};
+
+/** Busca o nome popular pela categoria de 3 caracteres (herda de subcategoria). */
+function buscarNomePopular(cid: string): { popular: string; tecnico: string } | null {
+  return NOMES_POPULARES_CID[cid] ?? NOMES_POPULARES_CID[cid.slice(0, 3)] ?? null;
+}
+
+/** Descrição no formato pedido pelo dono: "Popular (Técnico, CID-10 X)". */
+function formatarDescricaoCid(popular: string, tecnico: string, codigo: string): string {
+  return `${popular} (${tecnico}, CID-10 ${codigo})`;
+}
+
+/**
  * Retorna os CIDs mais frequentes e seus cruzamentos ambientais para o município.
  */
 export function enriquecerRegistroCid(
@@ -118,15 +164,24 @@ export function enriquecerRegistroCid(
 ): CidRegistro {
   const limpo = codigo.trim().toUpperCase().replace(".", "");
   const base = CIDS_MONITORAMENTO_AMBIENTAL[limpo];
+  const nome = buscarNomePopular(limpo);
 
   const capitulo = base?.capitulo ?? inferirCapituloCid(limpo);
-  const descricao = base?.descricao ?? `Diagnóstico CID-10 ${limpo}`;
+  // Prioridade: nome popular + técnico (dicionário local), mesmo quando a
+  // descrição já vem da fonte — o dono quer SEMPRE o nome popular na tabela.
+  // Sem mapeamento popular, mantém a descrição da fonte; só no último caso
+  // a linha vira o genérico "Diagnóstico CID-10 X".
+  const descricao = nome
+    ? formatarDescricaoCid(nome.popular, base?.descricao ?? nome.tecnico, limpo)
+    : base?.descricao ?? `Diagnóstico CID-10 ${limpo}`;
   const taxaMortalidade = internacoes > 0 ? (obitos / internacoes) * 100 : 0;
 
   return {
     codigo: limpo,
     capitulo,
     descricao,
+    nomePopular: nome?.popular,
+    nomeTecnico: base?.descricao ?? nome?.tecnico,
     internacoes,
     obitos,
     taxaMortalidade: Number(taxaMortalidade.toFixed(2)),

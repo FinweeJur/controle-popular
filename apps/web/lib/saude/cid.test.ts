@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { enriquecerRegistroCid, CIDS_MONITORAMENTO_AMBIENTAL } from "./cid";
+import { enriquecerRegistroCid, CIDS_MONITORAMENTO_AMBIENTAL, NOMES_POPULARES_CID } from "./cid";
 
 describe("Módulo de CIDs e Vigilância Ambiental", () => {
   it("enriquece CID com correlação ambiental de saneamento (A09)", () => {
