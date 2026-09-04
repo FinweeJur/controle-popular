@@ -4,6 +4,7 @@ import { listarCidades } from "@/lib/db/queries/municipios";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import Marquee from "@/app/components/Marquee";
+import SanfonaFrentes from "@/app/components/SanfonaFrentes";
 
 // Hero narrativo (Fase 1 do plano de identidade visual —
 // `docs/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`). O wrapper
@@ -111,6 +112,13 @@ export default async function Hub() {
           </a>
         </p>
       </header>
+
+      {/* Sanfona das frentes (etapa 4 PLANO-TEMA-PEQUI, previa v7.1):
+          escolha rapida — um painel por vez, rotacao 4,5s, pausa em
+          hover/foco, setas do teclado navegam, reduced-motion so manual.
+          O grid de seis cards continua abaixo para quem quer tudo de
+          uma vez: a sanfona nao substitui, apresenta. */}
+      <SanfonaFrentes />
 
       {/* Linha de orientação -- decisão do dono, 22/08 (decisão 8 de
           `docs/ESTADO.md`; achado e redação candidata em

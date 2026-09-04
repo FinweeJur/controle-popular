@@ -872,3 +872,126 @@ body {
   display: block;
   margin-top: 0.35rem;
 }
+
+/* ── Etapa 4 do PLANO-TEMA-PEQUI: sanfona das frentes (previa v7.1) ──
+   Os paineis usam os tokens do tema (nunca hex da previa). A barra de
+   progresso do botao ativo (4,5s) e o relogio visual do ciclo — TEMPO_MS
+   em SanfonaFrentes.tsx e a duracao daqui andam juntos, medidos. */
+.kicker-pequi {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--cp-primary);
+  margin-bottom: 1.2rem;
+}
+.snf-root {
+  margin-top: 2.5rem;
+}
+.snf-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+.snf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--cp-text-soft);
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: 999px;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+.snf-btn:hover {
+  color: var(--cp-text);
+  transform: translateY(-1px);
+}
+.snf-btn svg {
+  width: 13px;
+  height: 13px;
+  color: var(--cp-primary);
+}
+.snf-btn.ativo {
+  color: var(--cp-text);
+  border-color: var(--cp-primary);
+}
+/* barra de progresso do ciclo — o tempo vive aqui, nao no JS */
+.snf-btn.ativo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--cp-primary);
+  transform-origin: left;
+  animation: snfbar 4.5s linear forwards;
+}
+@keyframes snfbar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.snf-panel {
+  border: 1px solid var(--cp-border);
+  border-radius: 14px;
+  background: var(--cp-surface);
+  padding: 1.3rem 1.4rem;
+  animation: snffade 0.45s ease both;
+}
+.snf-panel.sober {
+  border-color: #3a332c;
+}
+@keyframes snffade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.snf-titulo {
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+.snf-resumo {
+  color: var(--cp-text-soft);
+  font-size: 0.92rem;
+  max-width: 36rem;
+}
+.snf-link {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: var(--cp-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+.snf-link:hover {
+  text-decoration: underline;
+}
+.snf-panel.sober .snf-link,
+.snf-btn.sober svg {
+  color: var(--cp-text-soft);
+}
+@media (prefers-reduced-motion: reduce) {
+  .snf-btn.ativo::after {
+    animation: none;
+  }
+  .snf-panel {
+    animation: none;
+  }
+}
