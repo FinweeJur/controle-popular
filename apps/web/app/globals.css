@@ -4,7 +4,7 @@
    next-themes sets data-theme="light"|"dark"|"pequi"|"high-contrast" and
    data-fs="sm"|"md"|"lg"|"xl" directly on <html> -- both are read here.
    O variante `dark` cobre tambem o tema pequi: os 22 arquivos que escrevem
-   `dark:` a maao ganham o fundo quente de graca, sem reescrever um por um
+   `dark:` a mao ganham o fundo quente de graca, sem reescrever um por um
    (decisao 04/09, PLANO-TEMA-PEQUI etapa 1). */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, [data-theme="pequi"], [data-theme="pequi"] *));
 @custom-variant high-contrast (&:where([data-theme="high-contrast"], [data-theme="high-contrast"] *));
@@ -104,13 +104,13 @@
   --cp-chart-grid: #26303f;
 }
 
-/* Tema PEQUI (rebrand 04/09, preview v7.1) — padrao do portal desde entao.
+/* Tema PEQUI (rebrand 04/09, preview v7.1) — padrão do portal desde então.
    Fundo quase-preto quente, creme, laranja-pequi e amarelo-candeia.
    Contraste medido 04/09 (WCAG, sobre surface #171310): texto 15,49:1;
    texto-soft 8,13:1; primary-pequi 6,25:1; candeia 9,51:1; solid-ink
    tinta-escura sobre pequi 6,52:1; secondary 6,79:1; tertiary 8,46:1;
-   alert 6,15:1; rampa ordinal 4,56–10,34:1 (piso 3,11). Border #2E2620 e
-   decorativa (nao canal de informacao — mesma politica do dark). Glow:
+   alert 6,15:1; rampa ordinal 4,56–10,34:1 (piso 3,11). Border #2E2620 é
+   decorativa (não canal de informação — mesma política do dark). Glow:
    laranja da marca, estritamente decorativo, como no tema claro. */
 [data-theme="pequi"] {
   --cp-bg: #0d0b08;
@@ -122,19 +122,17 @@
   --cp-primary-ink: #140d06;
   --cp-accent: #e4b33c; /* amarelo-candeia — os versos */
   --cp-accent-ink: #1a1408;
-  --cp-secondary: #a78bfa;  /* 6,79:1 — herdado do dark, remedido aqui */
+  --cp-secondary: #a78bfa;  /* 6,79:1 — herdado do dark, reme aqui */
   --cp-secondary-ink: #0d0618;
   --cp-tertiary: #e0a458;   /* 8,46:1 */
   --cp-tertiary-ink: #1a1206;
   --cp-border: #2e2620;
   --cp-alert: #e5736a;      /* 6,15:1 */
-  --cp-focus: #e4b33c;      /* 9,51:1 — anel de foco bem visivel no quente */
+  --cp-focus: #e4b33c;      /* 9,51:1 — anel de foco bem visível no quente */
   --cp-glow: rgba(242, 112, 29, 0.22);
 
-  /* Rampa ordinal: os quatro steps do dark clareiam 0,1–0,2 ponto contra a
-     surface quente e seguem todos acima de 3:1 (medido acima). Ordem
-     relativa preservada — nao e flip automatico, e a mesma politica do
-     dark. */
+  /* Rampa ordinal: os quatro steps do dark passam contra a surface quente
+     (medido acima). Ordem relativa preservada — não é flip automático. */
   --cp-ord-1: #84b4ec;
   --cp-ord-2: #2183cc;
   --cp-ord-3: #0fa085;
@@ -242,8 +240,8 @@
 
 /* Pequi no modo daltônico: candeia (#e4b33c) e pequi (#f2701d) colidem em
    protanopia/deuteranopia — troca-se o acento pelo azul e o alerta pelo
-   laranja-avermelhado do escuro, que já são medidos contra surface escura e
-   passam aqui tambem (surface do pequi #171310 e quase a do dark #141c2b). */
+   laranja-avermelhado do escuro, medidos de novo contra a surface quente
+   (#171310) em vez de herdar sem conferir. */
 [data-theme="pequi"][data-cvd="on"] {
   --cp-accent: #3987e5; /* 5,08:1 sobre #171310 */
   --cp-accent-ink: #06111f;
@@ -637,11 +635,11 @@ body {
   }
 }
 
-/* --- Hero narrativo (home) � Fase 1 do plano de identidade visual
+/* --- Hero narrativo (home) — Fase 1 do plano de identidade visual
    (`docs/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`). O estado
-   AQUI � o estado est�tico: tudo vis�vel, sem opacity 0 � as anima��es
-   s� entram via GSAP depois da classe `hero-pronto`, ent�o se o JS
-   falhar o t�tulo real j� est� na tela. Cores 100% dos tokens do tema. */
+   AQUI é o estado estático: tudo visível, sem opacity 0 — as animações
+   só entram via GSAP depois da classe `hero-pronto`, então se o JS
+   falhar o título real já está na tela. Cores 100% dos tokens do tema. */
 
 .hero-narrativo {
   position: relative;
@@ -653,8 +651,8 @@ body {
   margin: -3rem -1rem 2.5rem; /* compensa o py/px do <main> da home */
 }
 
-/* Camada 1 � gradiente terroso + onda serra (SVG inline, sem bitmap:
-   decis�o de LCP do plano � quem chega pode estar denunciando algo). */
+/* Camada 1 — gradiente terroso + onda serra (SVG inline, sem bitmap:
+   decisão de LCP do plano — quem chega pode estar denunciando algo). */
 .hero-fundo {
   position: absolute;
   inset: -3rem;
@@ -680,7 +678,7 @@ body {
   color: var(--cp-primary);
 }
 
-/* Camada 2 � azulejaria Athos Bulc�o. Some no alto contraste (o
+/* Camada 2 — azulejaria Athos Bulcão. Some no alto contraste (o
    componente nem a renderiza, via `modulosPorTema`). */
 .hero-padrao-camada {
   position: absolute;
@@ -703,7 +701,7 @@ body {
   transform: rotate(-14deg) scale(0.65) translateY(-1.5rem);
 }
 
-/* Camada 3 � conte�do real. */
+/* Camada 3 — conteúdo real. */
 .hero-conteudo {
   position: relative;
   z-index: 3;
@@ -724,7 +722,7 @@ body {
 }
 .hero-sublinhado {
   display: block;
-  width: 8rem; /* largura FINAL no CSS � o GSAP s� reconstitui o gesto */
+  width: 8rem; /* largura FINAL no CSS — o GSAP só reconstitui o gesto */
   height: 3px;
   margin-top: 0.6rem;
   border-radius: 2px;
@@ -745,7 +743,7 @@ body {
   background: var(--cp-primary);
   color: var(--cp-primary-ink);
   font-weight: 600;
-  /* Glow � puramente decorativo e some no alto contraste (--cp-glow). */
+  /* Glow é puramente decorativo e some no alto contraste (--cp-glow). */
   box-shadow: 0 8px 28px 2px var(--hero-glow, var(--cp-glow));
   transition:
     transform 0.22s cubic-bezier(0.25, 0.8, 0.25, 1),
@@ -757,7 +755,7 @@ body {
   box-shadow: 0 12px 36px 4px var(--hero-glow, var(--cp-glow));
 }
 
-/* Camada 4 � fauna geom�trica (ilustrativa, com aria-label no SVG). */
+/* Camada 4 — fauna geométrica (ilustrativa, com aria-label no SVG). */
 .hero-fauna {
   position: absolute;
   z-index: 2;
@@ -773,7 +771,7 @@ body {
   height: auto;
 }
 
-/* Alto contraste: sem glow, sem sombra decorativa � s� forma e texto. */
+/* Alto contraste: sem glow, sem sombra decorativa — só forma e texto. */
 [data-theme="high-contrast"] .hero-fauna,
 [data-theme="high-contrast"] .hero-cta {
   filter: none;
@@ -781,7 +779,7 @@ body {
 }
 
 /* Mobile (pointer: coarse, telas estreitas): sem fauna, sem azulejaria
-   flutuante � o conte�do respira e a hist�ria segue pelo scroll. */
+   flutuante — o conteúdo respira e a história segue pelo scroll. */
 @media (max-width: 768px) {
   .hero-narrativo {
     min-height: 62vh;
@@ -794,8 +792,8 @@ body {
   }
 }
 
-/* Reduced-motion � lei: nada transita, nada anima (o GSAP tamb�m nem
-   inicia � � a 2� barreira, esta � a de CSS). */
+/* Reduced-motion é lei: nada transita, nada anima (o GSAP também nem
+   inicia — é a 2ª barreira, esta é a de CSS). */
 @media (prefers-reduced-motion: reduce) {
   .hero-narrativo *,
   .hero-narrativo {
