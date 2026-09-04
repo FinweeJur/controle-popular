@@ -10,11 +10,11 @@ interface Props {
 
 export default function RankingCidTabela({ cids, municipioNome }: Props) {
   function baixarCsv() {
-    const cabecalho = "Código CID;Capítulo;Diagnóstico;Internações;Óbitos;Taxa Mortalidade (%);Permanência Média (dias);Custo Total (R$);Fator de Correlação Ambiental\n";
+    const cabecalho = "Código CID;Capítulo;Diagnóstico;Nome popular;Nome técnico;Internações;Óbitos;Taxa Mortalidade (%);Permanência Média (dias);Custo Total (R$);Fator de Correlação Ambiental\n";
     const linhas = cids
       .map(
         (c) =>
-          `"${c.codigo}";"${c.capitulo}";"${c.descricao}";${c.internacoes};${c.obitos};${c.taxaMortalidade.toFixed(2)};${c.diasPermanenciaMedia.toFixed(1)};${c.custoTotalReais.toFixed(2)};"${c.correlacaoAmbiental?.rotulo ?? "Geral"}"`
+          `"${c.codigo}";"${c.capitulo}";"${c.descricao}";"${c.nomePopular ?? ""}";"${c.nomeTecnico ?? ""}";${c.internacoes};${c.obitos};${c.taxaMortalidade.toFixed(2)};${c.diasPermanenciaMedia.toFixed(1)};${c.custoTotalReais.toFixed(2)};"${c.correlacaoAmbiental?.rotulo ?? "Geral"}"`
       )
       .join("\n");
 
