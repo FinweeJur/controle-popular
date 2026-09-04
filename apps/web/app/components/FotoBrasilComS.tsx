@@ -90,16 +90,15 @@ export default function FotoBrasilComS({
       />
       {creditar ? (
         <figcaption className="mt-1.5 text-[.78em] text-text-soft">
-          Foto:{" "}
+          Créditos:{" "}
           <a
             href={paginaDaFoto(id)}
             target="_blank"
             rel="noreferrer noopener"
             className="underline hover:text-primary"
           >
-            Brasil com S — Lab 678
-          </a>{" "}
-          · reprodução sem corte, conforme termos do acervo
+            Brasil com S
+          </a>
         </figcaption>
       ) : null}
     </figure>
