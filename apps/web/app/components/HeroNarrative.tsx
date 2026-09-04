@@ -40,10 +40,14 @@ gsap.registerPlugin(ScrollTrigger);
 export default function HeroNarrative() {
   const containerRef = useRef<HTMLElement | null>(null);
   const { resolvedTheme } = useTheme();
+  // pequi e fundo escuro: mesmo comportamento do dark (glow, decoracao).
+  // As cores vem dos tokens [data-theme="pequi"], nao daqui.
   const tema: TemaPortal =
-    resolvedTheme === "dark" || resolvedTheme === "high-contrast"
-      ? resolvedTheme
-      : "light";
+    resolvedTheme === "dark" || resolvedTheme === "pequi"
+      ? "dark"
+      : resolvedTheme === "high-contrast"
+        ? "high-contrast"
+        : "light";
 
   // A partir de `true` é seguro deixar o GSAP tocar nos elementos — os
   // estilos animados só entram depois desta flag (classe `hero-pronto`).

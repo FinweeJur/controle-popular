@@ -126,8 +126,8 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col antialiased">
         <ThemeProvider
           attribute="data-theme"
-          defaultTheme="light"
-          themes={["light", "dark", "high-contrast"]}
+          defaultTheme="pequi"
+          themes={["pequi", "light", "dark", "high-contrast"]}
         >
           {/* ⟲ 13/08, revisão de onboarding: WCAG 2.4.1 (Bypass Blocks).
               Precisa ser o PRIMEIRO elemento focável do `<body>` — antes
