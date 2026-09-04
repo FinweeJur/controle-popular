@@ -135,7 +135,7 @@ function SecaoAti() {
   const [atisAtivas, setAtisAtivas] = useState<Set<SiglaAti>>(new Set(TODAS_AS_ATIS));
   const [tema, setTema] = useState<TemaAti | "todos">("todos");
 
-  const faixa = useMemo(() => faixaDeDatas(CLIPPING_ATI.map((n) => n.data)), []);
+  const faixa = useMemo(() => faixaDeDatas(CLIPPING_ATI.map((n) => n.data)), [CLIPPING_ATI]);
 
   const lista = useMemo(() => {
     const filtrada = CLIPPING_ATI.filter(
@@ -146,7 +146,7 @@ function SecaoAti() {
         casaBusca(busca, [n.titulo, n.resumo, n.fonte], n.tags)
     );
     return ordenar(filtrada, ordem, (n) => ATI_LABEL[n.ati]);
-  }, [atisAtivas, tema, de, ate, busca, ordem]);
+  }, [CLIPPING_ATI, atisAtivas, tema, de, ate, busca, ordem]);
 
   /**
    * Agrupa por tema como o painel-fonte agrupava — a ordenação escolhida
@@ -343,7 +343,7 @@ function SecaoIj() {
   const [ijsAtivas, setIjsAtivas] = useState<Set<SiglaInstituicaoJustica>>(new Set(TODAS_AS_IJS));
   const [tema, setTema] = useState<TemaClippingIj | "todos">("todos");
 
-  const faixa = useMemo(() => faixaDeDatas(CLIPPING_IJ.map((n) => n.data)), []);
+  const faixa = useMemo(() => faixaDeDatas(CLIPPING_IJ.map((n) => n.data)), [CLIPPING_IJ]);
 
   const lista = useMemo(() => {
     const filtrada = CLIPPING_IJ.filter(
@@ -355,7 +355,7 @@ function SecaoIj() {
         casaBusca(busca, [n.titulo, n.resumo, n.fonte], [])
     );
     return ordenar(filtrada, ordem, (n) => INSTITUICAO_JUSTICA_LABEL[n.instituicao]);
-  }, [ijsAtivas, tema, de, ate, busca, ordem]);
+  }, [CLIPPING_IJ, ijsAtivas, tema, de, ate, busca, ordem]);
 
   const grupos = useMemo(
     () =>
@@ -389,7 +389,7 @@ function SecaoIj() {
     []
   );
   /** Fatos distintos de verdade, ignorando o eixo — o número da prosa. */
-  const totalDeFatos = useMemo(() => agruparPorFato(CLIPPING_IJ).length, []);
+  const totalDeFatos = useMemo(() => agruparPorFato(CLIPPING_IJ).length, [CLIPPING_IJ]);
 
   const filtroAtivo =
     busca !== "" || de !== "" || ate !== "" || ordem !== "recente" || tema !== "todos" ||
@@ -577,7 +577,7 @@ function SecaoClipping() {
   const [ordem, setOrdem] = useState<Ordem>("recente");
   const [tiposAtivos, setTiposAtivos] = useState<Set<TipoNoticia>>(new Set(TODOS_OS_TIPOS));
 
-  const faixa = useMemo(() => faixaDeDatas(CLIPPING_PARAOPEBA.map((n) => n.data)), []);
+  const faixa = useMemo(() => faixaDeDatas(CLIPPING_PARAOPEBA.map((n) => n.data)), [CLIPPING_PARAOPEBA]);
 
   const lista = useMemo(() => {
     const filtrada = CLIPPING_PARAOPEBA.filter(
@@ -587,7 +587,7 @@ function SecaoClipping() {
         casaBusca(busca, [n.titulo, n.resumo, n.portal], n.tags)
     );
     return ordenar(filtrada, ordem, (n) => n.portal);
-  }, [tiposAtivos, de, ate, busca, ordem]);
+  }, [CLIPPING_PARAOPEBA, tiposAtivos, de, ate, busca, ordem]);
 
   const filtroAtivo =
     busca !== "" || de !== "" || ate !== "" || ordem !== "recente" ||
