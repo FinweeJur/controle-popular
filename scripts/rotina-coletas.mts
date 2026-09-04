@@ -255,7 +255,9 @@ function publicarDadosColetados(escopo: string): boolean {
     console.log(`❌ git add dos dados falhou: ${add.stderr}`);
     return false;
   }
-  const commit = spawnSync("git", ["commit", "-F", arqMsg], { cwd: RAIZ, encoding: "utf-8" });
+  // --only com os caminhos: nunca um `git commit` solto, que pegaria o
+  // staging de outra sessao (regra 5 da casa, vale ate para rotina).
+  const commit = spawnSync("git", ["commit", "-F", arqMsg, "--", ...caminhosDado], { cwd: RAIZ, encoding: "utf-8" });
   if (commit.status !== 0) {
     console.log(`❌ git commit dos dados falhou: ${(commit.stdout + commit.stderr).slice(0, 400)}`);
     return false;
