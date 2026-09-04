@@ -5,6 +5,15 @@
 > **Última medição:** 2026-09-02
 > **Relacionados:** [PLANO-NOSSOS-PAINEIS-SANFONA](./PLANO-NOSSOS-PAINEIS-SANFONA.md), [SEU-NONO-GOLDEN-SET-VOZ](./SEU-NONO-GOLDEN-SET-VOZ.md), [AGENTS](/AGENTS.md)
 > **Palavras-chave:** poemas, poesia, distribuicao, acervo, subfrentes, nossos, epigrafe, verso
+> **Leitura estimada:** média (5–15 min)
+
+## Sumário
+
+- [🎯 Regra do dono](#regra-do-dono)
+- [📖 Poemas do acervo (fonte: retrospectiva local do Kimi)](#poemas-do-acervo-fonte-retrospectiva-local-do-kimi)
+- [🗺️ Distribuição nas subfrentes "Nossos" (novas casas)](#distribuicao-nas-subfrentes-nossos-novas-casas)
+- [📏 Réguas do mapa](#reguas-do-mapa)
+- [⏭️ Próximo passo](#proximo-passo)
 
 ## 🎯 Regra do dono
 

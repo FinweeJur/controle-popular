@@ -5,6 +5,16 @@
 > **Última medição:** 2026-09-02
 > **Relacionados:** [PLANO-NOSSOS-PAINEIS-SANFONA](./PLANO-NOSSOS-PAINEIS-SANFONA.md), [REVISAO-PLANO-GEMINI](./REVISAO-PLANO-GEMINI.md), [AGENTS](/AGENTS.md)
 > **Palavras-chave:** runbook, onda 1, schema, lugares, dialogos, painel, diamantina, biribiri
+> **Leitura estimada:** média (5–15 min)
+
+## Sumário
+
+- [🎯 Objetivo](#objetivo)
+- [⛔ Pré-requisitos (decisões do dono)](#pre-requisitos-decisoes-do-dono)
+- [🪜 Passos da Onda 1 (na ordem)](#passos-da-onda-1-na-ordem)
+- [✅ Critérios de aceite da Onda 1](#criterios-de-aceite-da-onda-1)
+- [🚧 Progresso real (atualizado 18:05)](#progresso-real-atualizado-1805)
+- [📦 Depois da Onda 1](#depois-da-onda-1)
 
 ## 🎯 Objetivo
 

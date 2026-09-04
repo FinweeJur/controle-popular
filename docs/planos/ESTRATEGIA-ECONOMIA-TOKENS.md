@@ -5,6 +5,15 @@
 > **Última medição:** 2026-09-02 (18:16)
 > **Relacionados:** [PONTE-JCODE-GEMINI](./PONTE-JCODE-GEMINI.md), [FILA-AGENTES](./FILA-AGENTES.md)
 > **Palavras-chave:** tokens, economia, caveman, jcode, gemini, delegacao
+> **Leitura estimada:** curta (≤ 5 min)
+
+## Sumário
+
+- [🎯 Papéis](#papeis)
+- [✂️ Regras Caveman (economia máxima)](#regras-caveman-economia-maxima)
+- [🗂️ Estado em 4 palavras (padrão)](#estado-em-4-palavras-padrao)
+- [📣 Fluxo de comando](#fluxo-de-comando)
+- [⏭️ Ação imediata](#acao-imediata)
 
 ## 🎯 Papéis
 

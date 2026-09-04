@@ -1,3 +1,9 @@
+> **Tipo:** PROMPT
+> **Domínio:** global
+> **Última medição:** 2026-09-02
+> **Leitura estimada:** média (5–15 min)
+> **Relacionados:** [README dos planos](../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** prompt delegacao gemini, documentacao
 PROMPT DE DELEGAÇÃO PARA O GEMINI/ANTIGRAVITY — 02/09/2026, 18:47
 
 CONTEXTO
@@ -112,4 +118,7 @@ PRAZO/TOM
 
 - Trabalhe em lote, com calma, sem pressa de commitar: valide antes.
 - Se encontrar conflito de merge que não sabe resolver, pare e registre na
-  fila em vez de forçar.
+  fila em vez de forçar.## Sumário
+
+
+

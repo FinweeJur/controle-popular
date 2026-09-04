@@ -18,6 +18,18 @@
 >    (largura total) ou num balão ao lado do conteúdo. Máx. 2 por página.
 > 5. Régua de sensibilidade: Brumadinho/Paraopeba **não recebe** epígrafe
 >    literária — só texto do MAB, com atribuição.
+> **Tipo:** CONTRATO-EDITORIAL
+> **Domínio:** global
+> **Última medição:** 2026-09-03
+> **Leitura estimada:** média (5–15 min)
+> **Relacionados:** [README dos planos](../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** citacoes autorizadas, documentacao
+
+## Sumário
+
+- [Lote aprovado pelo dono (03/09/2026)](#lote-aprovado-pelo-dono-03092026)
+- [Distribuição atual no portal](#distribuicao-atual-no-portal)
+- [Reservas (não aplicadas, prontas para uso)](#reservas-nao-aplicadas-prontas-para-uso)
 
 ## Lote aprovado pelo dono (03/09/2026)
 

@@ -5,6 +5,17 @@
 > **Última medição:** 2026-09-02
 > **Relacionados:** [POSICIONAMENTO-ONSA-CONTROLE-POPULAR](./POSICIONAMENTO-ONSA-CONTROLE-POPULAR.md), [PRODUTO](../01-produto/PRODUTO.md), [AGENTS](/AGENTS.md)
 > **Palavras-chave:** divulgacao, midia, release, onsA, missao, imprensa, redes
+> **Leitura estimada:** curta (≤ 5 min)
+
+## Sumário
+
+- [🎯 Missão oficial (texto do dono, 02/09/2026)](#missao-oficial-texto-do-dono-02092026)
+- [🏛️ Posicionamento](#posicionamento)
+- [📣 Canais (custo zero)](#canais-custo-zero)
+- [🗂️ Peças a produzir](#pecas-a-produzir)
+- [🪜 Micro-etapas (do menor ao maior custo)](#micro-etapas-do-menor-ao-maior-custo)
+- [📏 Réguas](#reguas)
+- [⏭️ Próximo passo](#proximo-passo)
 
 ## 🎯 Missão oficial (texto do dono, 02/09/2026)
 

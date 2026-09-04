@@ -5,6 +5,16 @@
 > **Data:** 2026-09-02 (14:27)
 > **Relacionados:** [REVISAO-PLANO-GEMINI](./REVISAO-PLANO-GEMINI.md), [ROTEIRO-EXECUCAO-ONDA1](./ROTEIRO-EXECUCAO-ONDA1.md), [AGENTS](/AGENTS.md)
 > **Palavras-chave:** revisao, codigo, onda 1, paineldialogo, bloco povo gente, lugares, dialogos, testes
+> **Última medição:** 2026-09-02
+> **Leitura estimada:** curta (≤ 5 min)
+
+## Sumário
+
+- [✅ Escopo](#escopo)
+- [🧪 Testes (rodados por mim)](#testes-rodados-por-mim)
+- [🟢 O que está bom](#o-que-esta-bom)
+- [🟡 Pontos de atenção (sugestões, não bloqueios)](#pontos-de-atencao-sugestoes-nao-bloqueios)
+- [⏭️ Recomendação](#recomendacao)
 
 ## ✅ Escopo
 
