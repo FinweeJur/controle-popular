@@ -5,6 +5,16 @@
 > **Data:** 2026-09-02
 > **Relacionados:** [PLANO-NOSSOS-PAINEIS-SANFONA](./PLANO-NOSSOS-PAINEIS-SANFONA.md), [MAPA-POEMAS-SUBFRENTES](./MAPA-POEMAS-SUBFRENTES.md), [SEU-NONO-GOLDEN-SET-VOZ](./SEU-NONO-GOLDEN-SET-VOZ.md)
 > **Palavras-chave:** revisao, plano, schema, pontes, wireframe, componentes, bloco social
+> **Última medição:** 2026-09-02
+> **Leitura estimada:** curta (≤ 5 min)
+
+## Sumário
+
+- [✅ O que foi revisado](#o-que-foi-revisado)
+- [🟢 Pontos fortes](#pontos-fortes)
+- [🟡 Pontos de atenção (para a próxima rodada)](#pontos-de-atencao-para-a-proxima-rodada)
+- [🚧 Estado atualizado (14:24)](#estado-atualizado-1424)
+- [⏭️ Próximos passos sugeridos](#proximos-passos-sugeridos)
 
 ## ✅ O que foi revisado
 

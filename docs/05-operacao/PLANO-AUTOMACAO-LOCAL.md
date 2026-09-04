@@ -1,20 +1,11 @@
----
-Tipo: Procedimento
-Domínio: Operação
-Última medição: 2026-09-03
-Leitura estimada: 3 min
-Relacionados:
-  - docs/05-operacao/OPERACAO.md
-  - docs/04-arquitetura/ARQUITETURA.md
-Palavras-chave:
-  - automação
-  - ollama
-  - rotinas
-  - guardião
-  - boletim
----
-
 # Plano de Automação Local com LLM (Ollama, PicoClaw, Guardião e Boletim)
+
+> **Tipo:** PLANO
+> **Domínio:** 05-operacao
+> **Última medição:** 2026-09-03
+> **Leitura estimada:** curta (≤ 5 min)
+> **Relacionados:** [README dos planos](../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** plano automacao local, documentacao
 
 ## Sumário
 

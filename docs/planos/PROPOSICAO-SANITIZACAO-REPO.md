@@ -7,6 +7,15 @@
 > **Relacionados:** [DESENVOLVIMENTO](../03-desenvolvimento/DESENVOLVIMENTO.md), [AGENTS](/AGENTS.md), [ESTADO](../02-estado/ESTADO.md), [PLANO-NOSSOS-PAINEIS-SANFONA](./PLANO-NOSSOS-PAINEIS-SANFONA.md)
 > **Palavras-chave:** sanitizacao, worktree, branch, limpeza, organizacao, git, divida tecnica, rotina
 
+## Sumário
+
+- [🩺 Diagnóstico (medido em 02/09/2026)](#diagnostico-medido-em-02092026)
+- [🎯 Estado-alvo (daqui a 1 mês)](#estado-alvo-daqui-a-1-mes)
+- [🪜 Plano por custo (do menor ao maior)](#plano-por-custo-do-menor-ao-maior)
+- [🧭 Regras de ouro](#regras-de-ouro)
+- [✅ Critérios de aceite da sanitização](#criterios-de-aceite-da-sanitizacao)
+- [⏭️ Próximos passos sugeridos](#proximos-passos-sugeridos)
+
 ## 🩺 Diagnóstico (medido em 02/09/2026)
 
 O repositório **cresceu muito rápido**. 🚀

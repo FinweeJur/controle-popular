@@ -4,6 +4,12 @@
 > cole no Gemini/Antigravity. Substitua o que estiver entre {chaves} se quiser.
 > Este prompt só contém temas de estrutura, dados públicos e UX. Nada de dado
 > pessoal, LAI, denúncia ou segredo — isso fica fora do Gemini.
+> **Tipo:** PROMPT
+> **Domínio:** global
+> **Última medição:** 2026-09-02
+> **Leitura estimada:** média (5–15 min)
+> **Relacionados:** [README dos planos](../README.md), [AGENTS.md](/AGENTS.md)
+> **Palavras-chave:** prompt gemini estrutura, documentacao
 
 PROMPT
 
@@ -119,4 +125,7 @@ REGRAS
 - Não invente citação literária nem poema. Voz literária e poemas ficam a
   cargo da equipe interna; sugira apenas ONDE uma epígrafe ou verso poderia
   caber, com espaço reservado.
-- Formato final: markdown limpo, pronto para virar um documento de plano.
+- Formato final: markdown limpo, pronto para virar um documento de plano.## Sumário
+
+
+

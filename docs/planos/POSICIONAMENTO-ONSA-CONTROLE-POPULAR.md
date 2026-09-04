@@ -5,6 +5,15 @@
 > **Última medição:** 2026-09-02
 > **Relacionados:** [PLANO-NOSSOS-PAINEIS-SANFONA](./PLANO-NOSSOS-PAINEIS-SANFONA.md), [PRODUTO](../01-produto/PRODUTO.md), [AGENTS](/AGENTS.md)
 > **Palavras-chave:** onsA, observatorio nacional socioambiental, controle popular, portal, rebranding, posicionamento, ia
+> **Leitura estimada:** curta (≤ 5 min)
+
+## Sumário
+
+- [🧭 Decisão do dono (02/09/2026)](#decisao-do-dono-02092026)
+- [📖 Missão oficial (texto do dono, 02/09/2026)](#missao-oficial-texto-do-dono-02092026)
+- [✍️ Frases de posicionamento (rascunho)](#frases-de-posicionamento-rascunho)
+- [🗺️ O que muda no plano](#o-que-muda-no-plano)
+- [⏭️ Próximo passo](#proximo-passo)
 
 ## 🧭 Decisão do dono (02/09/2026)
 
