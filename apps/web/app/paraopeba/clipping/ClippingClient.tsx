@@ -1,16 +1,19 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import {  TIPO_NOTICIA_LABEL,
+import {
+  TIPO_NOTICIA_LABEL,
   type NoticiaClipping,
-  type TipoNoticia,  ATI_LABEL,
+  type TipoNoticia,
+  ATI_LABEL,
   ATI_REGIOES,
   TEMA_ATI_LABEL,
   TEMA_ATI_ORDEM,
   PERIODO_CLIPPING_ATI,
   type NoticiaAti,
   type SiglaAti,
-  type TemaAti,  INSTITUICAO_JUSTICA_LABEL,
+  type TemaAti,
+  INSTITUICAO_JUSTICA_LABEL,
   INSTITUICAO_JUSTICA_NOME,
   TEMA_CLIPPING_IJ_LABEL,
   TEMA_CLIPPING_IJ_ORDEM,
@@ -386,7 +389,7 @@ function SecaoIj() {
         (soma, t) => soma + agruparPorFato(CLIPPING_IJ.filter((n) => n.tema === t)).length,
         0
       ),
-    []
+    [CLIPPING_IJ]
   );
   /** Fatos distintos de verdade, ignorando o eixo — o número da prosa. */
   const totalDeFatos = useMemo(() => agruparPorFato(CLIPPING_IJ).length, [CLIPPING_IJ]);
