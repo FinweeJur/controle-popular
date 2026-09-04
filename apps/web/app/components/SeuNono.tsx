@@ -360,6 +360,12 @@ export function SeuNono() {
         icone: <span className="text-base">🌙</span>,
       },
       {
+        comando: ["tema pequi", "pequi", "tema padrao", "padrao"],
+        label: "Tema pequi (padrão)",
+        acao: () => setTheme("pequi"),
+        icone: <span className="text-base">🌰</span>,
+      },
+      {
         comando: ["tema claro", "light", "modo claro", "claro"],
         label: "Tema claro",
         acao: () => setTheme("light"),

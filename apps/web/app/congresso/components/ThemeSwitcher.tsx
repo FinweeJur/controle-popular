@@ -4,6 +4,7 @@ import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
 
 const THEMES = [
+  { value: "pequi", label: "Pequi" },
   { value: "light", label: "Claro" },
   { value: "dark", label: "Escuro" },
   { value: "high-contrast", label: "Alto contraste" },
