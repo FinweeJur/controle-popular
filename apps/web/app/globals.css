@@ -800,4 +800,75 @@ body {
     animation: none !important;
     transition: none !important;
   }
+  .cp-marquee-trilho {
+    animation: none;
+  }
+}
+
+/* ── Etapa 3 do PLANO-TEMA-PEQUI: grão de papel, fita marquee, epígrafe ── */
+
+/* Textura de grão (prévia v7.1): SVG feTurbulence inline, opacidade 0,05 —
+   papel, não plástico. pointer-events:none e z-index 30: fica ABAIXO da
+   TopNav (z 40) e de modais, mas sobre o conteúdo. Decorativa de verdade:
+   nenhuma informação passa por ela. Só nos temas escuros (pequi/dark) —
+   no claro ela é invisible demais para valer o custo de pintura. */
+[data-theme="pequi"] body::after,
+[data-theme="dark"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Fita marquee (prévia v7.1): CSS puro, sem biblioteca — o trilho é o texto
+   repetido 2x dentro do próprio span, e translateX(-50%) fecha exatamente um
+   ciclo. aria-hidden no componente: slogan de marca, não dado.
+   A prévia mexia margin-left via JS; -50% num trilho 2x é o mesmo movimento
+   sem frame de JavaScript. */
+.cp-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--cp-border);
+  padding: 0.55rem 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  color: var(--cp-primary);
+}
+.cp-marquee--alt {
+  color: var(--cp-text-soft);
+  border-top: 1px solid var(--cp-border);
+  border-bottom: none;
+}
+.cp-marquee-trilho {
+  display: inline-block;
+  animation: cp-mq 32s linear infinite;
+}
+@keyframes cp-mq {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Epígrafe do hero (prévia v7.1): itálico creme sobre barra da cor da marca.
+   Autor, obra e ano aparecem na tela — regra editorial da casa. */
+.hero-epigrafe {
+  font-style: italic;
+  color: var(--cp-text-soft);
+  font-size: 0.95rem;
+  margin-bottom: 1.6rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--cp-primary);
+  max-width: 38rem;
+}
+.hero-epigrafe cite {
+  font-style: normal;
+  font-size: 0.8rem;
+  color: var(--cp-primary);
+  font-weight: 600;
+  display: block;
+  margin-top: 0.35rem;
 }

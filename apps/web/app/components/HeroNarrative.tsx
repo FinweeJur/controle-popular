@@ -15,6 +15,7 @@ import {
   modulosPorTema,
   type TemaPortal,
 } from "@/lib/hero-narrativo";
+import { citacaoPorId } from "@/lib/citacoes";
 
 /**
  * Hero narrativo da home — Fase 1 do plano de identidade visual
@@ -53,6 +54,10 @@ export default function HeroNarrative() {
   // estilos animados só entram depois desta flag (classe `hero-pronto`).
   const [pronto, setPronto] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  // A epigrafe do hero vem da unica fonte de verdade das citacoes (nunca
+  // digitada no componente); undefined em build sem a biblioteca nao quebra
+  // o hero — so nao mostra a faixa.
+  const citacaoHero = citacaoPorId("carolina-eu-escrevo");
   const [pointerCoarse, setPointerCoarse] = useState(false);
 
   // ── Preferências do usuário (media queries, lidas uma vez + listeners)
@@ -228,6 +233,19 @@ export default function HeroNarrative() {
 
       {/* ── Camada 3: conteúdo real — título, subtítulo e CTA âncora */}
       <div className="hero-conteudo" data-camada-hero data-indice-camada={2}>
+        {/* Epigrafe do hero (previa v7.1, etapa 3 PLANO-TEMA-PEQUI):
+            o texto vem de CITACOES_AUTORIZADAS (id carolina-eu-escrevo) —
+            nunca digitado à mão. Autor, obra e ano na tela (regra editorial).
+            A fita de baixo no mesmo bloco substitui a Epigrafe que a home
+            renderiza no header desde a copia v6: mesma citação, um lugar só. */}
+        {citacaoHero && (
+          <p className="hero-epigrafe">
+            “{citacaoHero.texto}”
+            <cite>
+              — {citacaoHero.autor} · {citacaoHero.obra} · {citacaoHero.ano}
+            </cite>
+          </p>
+        )}
         {/* Título REAL, visível por padrão: o split-text é só um <span>
             por palavra, sem opacity 0 — se o JS falhar, o texto está lá. */}
         <h1 className="hero-titulo">

@@ -3,8 +3,7 @@ import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import { Epigrafe } from "@/app/components/Epigrafe";
-import { citacaoPorId } from "@/lib/citacoes";
+import Marquee from "@/app/components/Marquee";
 
 // Hero narrativo (Fase 1 do plano de identidade visual —
 // `docs/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`). O wrapper
@@ -79,6 +78,10 @@ export default async function Hub() {
           públicos que dá para usar" e o mesmo texto institucional, sem
           número inventado. Tudo o que existia aqui continua abaixo,
           intacto. */}
+      {/* Fita da marca (etapa 3 PLANO-TEMA-PEQUI): slogan, nao dado —
+          aria-hidden no componente. Substitui a Epigrafe que morava no
+          header: a citacao da Carolina agora e uma so, dentro do hero. */}
+      <Marquee frase="✦ FISCALIZA ✦ OLHO VIVO ✦ O DINHEIRO É SEU ✦" />
       <HeroNarrativeLazy />
 
       <header className="space-y-4">
@@ -87,8 +90,6 @@ export default async function Hub() {
             narrativo, logo acima deste bloco. ⟲ 03/09, cherry-pick copy v6:
             o parágrafo abaixo troca o institucional antigo pela voz nova
             ("dialeto de edital"); o h1 novo tambem entrou, no hero. */}
-        {/* EPÍGRAFE HERO — citação autorizada no PLANO-COPY-VOZ.md (hero/assinatura da home) */}
-        <Epigrafe citacao={citacaoPorId("carolina-eu-escrevo")!} variante="inicio" className="max-w-2xl" />
         <p className="max-w-2xl text-[1.05em] text-text-soft">
           Informação oficial que sempre foi pública — só estava espalhada por dezenas de
           sistemas, escrita em dialeto de edital. A gente juntou tudo numa tela, por cidade
