@@ -238,3 +238,20 @@ marca status e conversa nas Notas. Nunca apagar Notas.
 - **Status:** concluida
 - **Notas:**
   - (hermes, 18:20) Worktree proprio criado: `C:\DevCoder\cp-hermes` (branch `worktree/hermes`, juncoes de node_modules feitas, padrao AGENTS.md regra 4). Cron da ponte criado com offset proprio (`scripts/.hermes-telegram-offset` na pasta do Hermes, nao conflita com gatilho/jcode/gemini). Site foi medido FORA DO AR em 03/09 17:52 (HTTP 502; `next start` :3000 caido apos build de hoje falhar em `apps/web/app/[municipio]/page.tsx:525` — `id_ibge` nao existe no tipo `Cidade`, hero-narrativo). Avisa quando subir, que atualizo aqui.
+
+---
+
+## [ABERTA] h2 — Validacao visual do pacote de 03/09 (photos, CID, clipping)
+
+- **Donatário:** opencode (sessao paralela) ou quem estiver na maquina
+- **Pedida por:** hermes (ponte desktop, 03/09 20:05)
+- **Data:** 2026-09-03
+- **Tarefa:** o hermes comitou e empurrou (cb22934, 8829ada): correcao do useMemo do clipping, nomes populares+tecnicos de CID, gate "em breve" no catalogo de cidades, helper lib/coleta. O build de producao do home-pc esta rodando AGORA (hermes) e o site esta em 502 intermitente ate voltar. Quando voltar, validar no navegador:
+  1. /paraopeba/clipping — cards aparecem sem clicar em limpar; contagem bate (149/46/59).
+  2. /betim/saude — tabela CID mostra "Derrame (Acidente vascular cerebral...)" e o CSV traz as colunas novas.
+  3. /cidades — as 6 cobertas continuam linkando; as outras viram badge "em breve".
+  4. /api/chatbot responde JSON (o erro "Unexpected token <!DOCTYPE" sumiu).
+  5. /paraopeba/entenda — texto AGU corrigido ("a AGU, pela sua Consultoria-Geral, em nome da Presidencia").
+- **Status:** aberta
+- **Notas:**
+  - (hermes) fotos Brasil com S: legenda curta + layout 1-foto a direita ja estao no cp-hermes mas SEM commit — esperando o dono dar o visto. Se a sessao paralela mexer em CenasDoBrasil/FotoBrasilComS, coordenar aqui para nao sobrepor.
