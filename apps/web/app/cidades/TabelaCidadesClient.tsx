@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Download, Search, Filter } from "lucide-react";
 import type { CidadeEstrategica, RegiaoBrasil, TipoCidade } from "@/lib/cidades/estrategicas";
+import { slugCobertoPorIbge } from "@/lib/cidades/cobertas";
 
 interface Props {
   cidades: CidadeEstrategica[];
@@ -56,10 +57,15 @@ export default function TabelaCidadesClient({ cidades }: Props) {
   const baixarCsv = () => {
     const cabecalho = "Nome;UF;Região;Tipo;Código IBGE;Código DATASUS;Portal\n";
     const linhas = cidadesFiltradas
-      .map(
-        (c) =>
-          `"${c.nome}";"${c.uf}";"${c.regiao}";"${c.tipo === "capital" ? "Capital" : "Polo do Interior"}";"${c.id_municipio}";"${c.datasus_6dig}";"controlepopular.com.br/${c.slug ?? c.id_municipio}"`
-      )
+      .map((c) => {
+        // Sem página publicada não existe URL: o CSV diz "em breve" em vez
+        // de prometer um /<código-ibge> que dá 404 (medido em 03/09).
+        const slug = slugCobertoPorIbge(c.id_municipio) ?? c.slug;
+        const portal = slug
+          ? `controlepopular.com.br/${slug}`
+          : "em breve";
+        return `"${c.nome}";"${c.uf}";"${c.regiao}";"${c.tipo === "capital" ? "Capital" : "Polo do Interior"}";"${c.id_municipio}";"${c.datasus_6dig}";"${portal}"`;
+      })
       .join("\n");
 
     const conteudo = "\uFEFF" + cabecalho + linhas;
@@ -207,12 +213,30 @@ export default function TabelaCidadesClient({ cidades }: Props) {
                     {c.datasus_6dig}
                   </td>
                   <td className="px-4 py-3 text-right">
-                    <Link
-                      href={`/${c.slug ?? c.id_municipio}`}
-                      className="text-xs font-semibold text-primary hover:underline"
-                    >
-                      Acessar →
-                    </Link>
+                    {(() => {
+                      // O href era `/${c.slug ?? c.id_municipio}` — para as
+                      // ~193 cidades do catálogo sem página, isso montava
+                      // /2900702 e dava 404 (medido em 03/09: o redirect
+                      // IBGE→slug do next.config só existe para as 6 do
+                      // build). Gate: só linka quem tem página publicada;
+                      // o resto vira badge "em breve".
+                      const slug = slugCobertoPorIbge(c.id_municipio) ?? c.slug;
+                      return slug ? (
+                        <Link
+                          href={`/${slug}`}
+                          className="text-xs font-semibold text-primary hover:underline"
+                        >
+                          Acessar →
+                        </Link>
+                      ) : (
+                        <span
+                          className="inline-block rounded-full bg-surface-2 border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted"
+                          title={`${c.nome}-${c.uf} ainda não tem página no portal — cobertura planejada.`}
+                        >
+                          Em breve
+                        </span>
+                      );
+                    })()}
                   </td>
                 </tr>
               ))
