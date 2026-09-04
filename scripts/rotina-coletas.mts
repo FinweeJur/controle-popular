@@ -209,6 +209,79 @@ function executarPasso(slug: string, seco = false): boolean {
   return sucesso;
 }
 
+/**
+ * Publica o que a rodada coletou (pedido do dono, 04/09).
+ *
+ * ═══ POR QUE ═══
+ * A coleta de madrugada escrevia em apps/web/data e parava ali: o
+ * autodeploy das 05:50 abortava com "arvore suja" (ele se recusa, com
+ * razao, a mexer em mudanca nao commitada de outra sessao). Resultado:
+ * dado novo so chegava ao site quando alguem commitava a mao. Este
+ * fechamento commita e pusha SO os diretorios de dado — nunca codigo,
+ * nunca docs, nunca o resto da arvore.
+ *
+ * ═══ PORTAO ═══
+ * A varredura de dado pessoal (CPF mod-11) roda ANTES e este so e
+ * chamado quando ela passou. Dado que falha na varredura fica na
+ * arvore para humanos olharem — nao vai para repositorio publico.
+ */
+function publicarDadosColetados(escopo: string): boolean {
+  const caminhosDado = ["apps/web/data", "apps/web/public/data"];
+  const sujoDado = spawnSync("git", ["status", "--porcelain", "--", ...caminhosDado], {
+    cwd: RAIZ,
+    encoding: "utf-8",
+  });
+  const alterados = (sujoDado.stdout ?? "").trim();
+  if (!alterados) {
+    console.log("\n📦 Sem dado novo para publicar (nada alterado em apps/web/data*).");
+    return true;
+  }
+  console.log(`\n📦 Publicando dado coletado (${alterados.split("\n").length} arquivos):`);
+  console.log(alterados);
+
+  const msg = [
+    `dados(${escopo}): coleta automatizada de ${new Date().toISOString().slice(0, 10)}`,
+    "",
+    "Commitado pela rotina de coleta apos varredura de dado pessoal (mod-11)",
+    "ter passado. Arquivos: apps/web/data e apps/web/public/data apenas.",
+    "",
+    "Co-Authored-By: Hermes <agent@controlepopular.com.br>",
+  ].join("\n");
+  const arqMsg = path.join(RAIZ, ".git", "MENSAGEM-DADO-ROTINA.txt");
+  fs.writeFileSync(arqMsg, msg, "utf-8");
+
+  const add = spawnSync("git", ["add", "--", ...caminhosDado], { cwd: RAIZ, encoding: "utf-8" });
+  if (add.status !== 0) {
+    console.log(`❌ git add dos dados falhou: ${add.stderr}`);
+    return false;
+  }
+  const commit = spawnSync("git", ["commit", "-F", arqMsg], { cwd: RAIZ, encoding: "utf-8" });
+  if (commit.status !== 0) {
+    console.log(`❌ git commit dos dados falhou: ${(commit.stdout + commit.stderr).slice(0, 400)}`);
+    return false;
+  }
+  // Push com rebase: a main e compartilhada, e a esteira das 05:50 espera
+  // encontrar o commit dela aqui. Fora do ar, o proximo deploy pega.
+  for (let tentativa = 1; tentativa <= 4; tentativa++) {
+    const fetch = spawnSync("git", ["fetch", "origin", "--quiet"], { cwd: RAIZ, encoding: "utf-8" });
+    if (fetch.status === 0) {
+      spawnSync("git", ["rebase", "origin/main"], { cwd: RAIZ, encoding: "utf-8" });
+    }
+    const push = spawnSync("git", ["push", "origin", "HEAD:main"], { cwd: RAIZ, encoding: "utf-8" });
+    if (push.status === 0) {
+      console.log(`✅ Dado publicado no GitHub (tentativa ${tentativa}).`);
+      return true;
+    }
+    console.log(`⚠️ push falhou (tentativa ${tentativa}/4): ${(push.stderr ?? "").slice(0, 160)}`);
+    spawnSync("git", ["rebase", "--abort"], { cwd: RAIZ, encoding: "utf-8" }); // limpa estado, se rebase empacou
+    // backoff sincrono e portavel: Atomics.wait bloqueia a thread sem
+    // depender de binario `sleep` (que nao existe no Windows fora do bash).
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, tentativa * 30_000);
+  }
+  console.log("⚠️ Dado commitado localmente, mas push falhou 4x — a rede esta fora. O proximo autodeploy ou uma rodada manual publica.");
+  return false;
+}
+
 function varrerDadoPessoal(): boolean {
   console.log("\n🔒 Executando varredura de dados pessoais (mod-11) nos acervos...");
   const scriptVarredura = path.join(RAIZ, "scripts", "checar-dado-pessoal-em-dado.py");
@@ -252,6 +325,9 @@ function main() {
     const slug = args[idxFonte + 1];
     const ok = executarPasso(slug, seco);
     const safe = ok ? varrerDadoPessoal() : false;
+    // Portao: publica dado coletado so depois da varredura CPF passar, e
+    // nunca em modo-seco (que por definicao nao gravou nada novo).
+    if (safe && !seco) publicarDadosColetados(slug);
     const duracao = Math.round((Date.now() - inicioRodada) / 1000);
     notificarTelegram(formatarMensagemTelegram(slug, ok ? 1 : 0, ok ? 0 : 1, safe, duracao));
     process.exit(ok ? 0 : 1);
@@ -271,6 +347,7 @@ function main() {
       }
     }
     const safe = varrerDadoPessoal();
+    if (safe && !seco) publicarDadosColetados(`frente:${frente}`);
     const duracao = Math.round((Date.now() - inicioRodada) / 1000);
     console.log(`\nFinalizado com ${erros} erro(s).`);
     notificarTelegram(formatarMensagemTelegram(`frente:${frente}`, sucesso, erros, safe, duracao));
@@ -287,6 +364,7 @@ function main() {
       if (ok) sucesso++; else erros++;
     }
     const safe = varrerDadoPessoal();
+    if (safe && !seco) publicarDadosColetados("tudo");
     const duracao = Math.round((Date.now() - inicioRodada) / 1000);
     console.log(`\nRodada concluída. Falhas de coleta: ${erros}. Varredura de dados pessoais: ${safe ? "OK" : "FALHOU"}.`);
     notificarTelegram(formatarMensagemTelegram("tudo", sucesso, erros, safe, duracao));
