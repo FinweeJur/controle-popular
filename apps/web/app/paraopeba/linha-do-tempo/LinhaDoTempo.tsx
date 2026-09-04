@@ -56,6 +56,8 @@ function baixarCsv(linhas: MarcoParaopeba[]) {
 export default function LinhaDoTempo() {
   const [filtro, setFiltro] = useState<Filtro>("todos");
   const [recentePrimeiro, setRecentePrimeiro] = useState(false);
+  const [anoHover, setAnoHover] = useState<string | null>(null);
+  const [marcoHover, setMarcoHover] = useState<number | null>(null);
 
   const visiveis = useMemo(() => {
     const lista = filtro === "todos" ? MARCOS_PARAOPEBA : MARCOS_PARAOPEBA.filter((m) => tipoDeMarco(m.cor) === filtro);
@@ -126,7 +128,13 @@ export default function LinhaDoTempo() {
       <section aria-label="Marcos por ano">
         <div className="flex items-center justify-between gap-3">
           <h2 className="font-display text-lg font-semibold">Marcos por ano</h2>
-          <p className="text-xs text-text-soft">Barras empilhadas: {ROTULO_TIPO_MARCO.favoravel} · {ROTULO_TIPO_MARCO.desfavoravel} · {ROTULO_TIPO_MARCO.neutro}</p>
+          {anoHover ? (
+            <span className="rounded-full bg-primary/15 px-3 py-0.5 text-xs font-semibold text-primary">
+              Ano {anoHover}: {porAno.find(([a]) => a === anoHover)?.[1].favoravel || 0} favoráveis · {porAno.find(([a]) => a === anoHover)?.[1].desfavoravel || 0} desfavoráveis · {porAno.find(([a]) => a === anoHover)?.[1].neutro || 0} neutros
+            </span>
+          ) : (
+            <p className="text-xs text-text-soft">Passe o mouse na barra para detalhar: {ROTULO_TIPO_MARCO.favoravel} · {ROTULO_TIPO_MARCO.desfavoravel} · {ROTULO_TIPO_MARCO.neutro}</p>
+          )}
         </div>
         <svg
           viewBox={`0 0 ${LARGURA} ${ALTURA}`}
@@ -143,15 +151,34 @@ export default function LinhaDoTempo() {
             const yFav = TOPO + BARRA_MAX - hFav;
             const yDes = yFav - hDes;
             const yNeu = yDes - hNeu;
+            const isHovered = anoHover === ano;
             return (
-              <g key={ano}>
+              <g
+                key={ano}
+                onMouseEnter={() => setAnoHover(ano)}
+                onMouseLeave={() => setAnoHover(null)}
+                className="cursor-pointer transition-transform duration-150"
+                style={{ opacity: anoHover && !isHovered ? 0.45 : 1 }}
+              >
                 <rect x={x - 14} y={yNeu} width={28} height={hNeu} fill={COR_TIPO.neutro} rx={2} />
                 <rect x={x - 14} y={yDes} width={28} height={hDes} fill={COR_TIPO.desfavoravel} rx={2} />
                 <rect x={x - 14} y={yFav} width={28} height={hFav} fill={COR_TIPO.favoravel} rx={2} />
-                <text x={x} y={TOPO + BARRA_MAX + 12} textAnchor="middle" fontSize="11" className="fill-text-soft">
+                <text
+                  x={x}
+                  y={TOPO + BARRA_MAX + 12}
+                  textAnchor="middle"
+                  fontSize="11"
+                  className={isHovered ? "fill-primary font-bold" : "fill-text-soft"}
+                >
                   {ano}
                 </text>
-                <text x={x} y={total === 0 ? TOPO + 8 : yNeu - 4} textAnchor="middle" fontSize="10" className="fill-text-soft">
+                <text
+                  x={x}
+                  y={total === 0 ? TOPO + 8 : yNeu - 4}
+                  textAnchor="middle"
+                  fontSize="10"
+                  className={isHovered ? "fill-primary font-bold" : "fill-text-soft"}
+                >
                   {total}
                 </text>
               </g>
@@ -222,21 +249,39 @@ export default function LinhaDoTempo() {
       <ol className="flex flex-col gap-0">
         {visiveis.map((m, i) => {
           const tipo = tipoDeMarco(m.cor);
+          const valorEncontrado = m.descricao.match(/(R\$\s*[\d,.]+(?:\s*(?:bi|mi|milhões|bilhões|mil))?|\b\d+%\b)/i)?.[0];
+          const isHovered = marcoHover === i;
           return (
-            <li key={`${m.data}-${i}`} className="relative flex gap-4 pb-8 last:pb-0">
+            <li
+              key={`${m.data}-${i}`}
+              className="relative flex gap-4 pb-8 last:pb-0"
+              onMouseEnter={() => setMarcoHover(i)}
+              onMouseLeave={() => setMarcoHover(null)}
+            >
               {i < visiveis.length - 1 && (
                 <span aria-hidden="true" className="absolute top-3 left-[7px] h-full w-0.5 bg-border" />
               )}
               <span
                 aria-hidden="true"
-                className="relative z-10 mt-1.5 h-4 w-4 shrink-0 rounded-full border-2 border-surface"
+                className={`relative z-10 mt-1.5 h-4 w-4 shrink-0 rounded-full border-2 border-surface transition-transform ${isHovered ? "scale-125" : ""}`}
                 style={{ backgroundColor: m.cor }}
               />
-              <div className="rounded-2xl border border-border bg-surface p-4 shadow-sm">
+              <div
+                className={`flex-1 rounded-2xl border p-4 shadow-sm transition-all duration-200 ${
+                  isHovered ? "border-primary ring-1 ring-primary/30 bg-surface shadow-md" : "border-border bg-surface"
+                }`}
+              >
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <p className="font-tabular text-xs font-semibold text-text-soft">
-                    {formatarDataMarco(m.data)}
-                  </p>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <p className="font-tabular text-xs font-semibold text-text-soft">
+                      📅 {formatarDataMarco(m.data)}
+                    </p>
+                    {valorEncontrado && (
+                      <span className="rounded-md bg-primary/10 px-2 py-0.5 font-tabular text-[0.75rem] font-bold text-primary">
+                        💰 {valorEncontrado}
+                      </span>
+                    )}
+                  </div>
                   <p className="text-[.7em] font-semibold uppercase tracking-wide" style={{ color: COR_TIPO[tipo] }}>
                     {ROTULO_TIPO_MARCO[tipo]}
                   </p>

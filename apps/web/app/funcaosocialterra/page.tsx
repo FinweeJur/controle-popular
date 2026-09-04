@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Cabecalho from "./Cabecalho";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
 import AvisoColetaEmCurso from "@/app/components/AvisoColetaEmCurso";
 import TaxaDeErroTerras from "@/app/[municipio]/components/TaxaDeErroTerras";
 import { ZONAS } from "@/lib/zonas";
@@ -328,6 +329,9 @@ export default async function FuncaoSocialTerraPage() {
             `layout.tsx` de zona: ver `Cabecalho.tsx` para o porquê (as três
             rotas incluem `/mapa`, o globo 3D em tela cheia, e um layout de
             zona colaria nele também). */}
+        {/* Passarela de Legislação e Projetos de Lei */}
+        <PassarelaLegislativa tema="terras" />
+
         <OutrasFrentes atual="terras" />
 
         {/* Rodapé padrão do portal, direto na página e não num `layout.tsx`.

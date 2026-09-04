@@ -3,6 +3,7 @@ import { formatNumberBR } from "@/lib/betim/format";
 import { listarPatrimonioTombado, type CategoriaPatrimonioTombado } from "@/lib/db/queries/patrimonio-tombado";
 import { CATEGORIA_LABEL, contarPorCategoria } from "@/lib/ambiental/patrimonio-tombado";
 import BuscaPatrimonioTombado from "./BuscaPatrimonioTombado";
+import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
 import Link from "@/lib/ambiental/link";
 import { metadataEditavel } from "@/lib/edicoes";
 
@@ -319,6 +320,9 @@ export default async function PatrimonioCulturalIndex() {
       <section className="mt-10">
         <BuscaPatrimonioTombado linhas={linhas} />
       </section>
+
+      {/* Passarela de Legislação e Projetos de Lei */}
+      <PassarelaLegislativa tema="patrimonio" />
 
       <section className="mt-12 border-t border-border pt-8">
         <h2 className="font-display text-xl font-semibold">De onde vem o dado</h2>

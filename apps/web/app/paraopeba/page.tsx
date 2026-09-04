@@ -4,6 +4,7 @@ import OutrasFrentes from "@/app/components/OutrasFrentes";
 import FotoBrasilComS from "@/app/components/FotoBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import AvisoColetaEmCurso from "@/app/components/AvisoColetaEmCurso";
+import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
 import { ZONAS } from "@/lib/zonas";
 import { formatNumberBR } from "@/lib/betim/format";
 import {
@@ -211,6 +212,9 @@ export default async function ParaopebaHome() {
           </a>
         ))}
       </div>
+
+      {/* Passarela de Legislação e Projetos de Lei */}
+      <PassarelaLegislativa tema="paraopeba" />
 
       <section className="mt-12 border-t border-border pt-8">
         <h2 className="font-display text-xl font-semibold">De onde vem o dado</h2>

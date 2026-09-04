@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "@/lib/ambiental/link";
 import { ZONAS } from "@/lib/zonas";
 import OutrasFrentes from "@/app/components/OutrasFrentes";
+import PassarelaLegislativa from "@/app/components/PassarelaLegislativa";
 import FotoBrasilComS from "@/app/components/FotoBrasilComS";
 import CenasDoBrasil from "@/app/components/CenasDoBrasil";
 import { formatNumberBR } from "@/lib/betim/format";
@@ -312,6 +313,9 @@ export default async function AmbientalHome() {
           );
         })}
       </div>
+
+      {/* Passarela de Legislação e Projetos de Lei */}
+      <PassarelaLegislativa tema="ambiental" />
 
       <section className="mt-12 border-t border-border pt-8">
         <h2 className="font-display text-xl font-semibold">De onde vem o dado</h2>
