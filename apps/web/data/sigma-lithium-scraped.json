@@ -1,0 +1,710 @@
+{
+  "scrape_date": "2026-09-06",
+  "source_url": "https://sigmalithiumcorp.com",
+  "note": "Correct site is sigmalithiumcorp.com (NOT sigmalithium.com which is a different UK company)",
+  "company": {
+    "name": "Sigma Lithium Corporation",
+    "ticker": {
+      "NASDAQ": "SGML",
+      "TSXV": "SGML",
+      "B3": "SGML"
+    },
+    "sector": "Mining / Lithium",
+    "location": "Vale do Jequitinhonha, Minas Gerais, Brazil",
+    "operation_name": "Grota do Cirilo",
+    "product": "High Purity Green Lithium Concentrate",
+    "quintuple_zero": "Zero coal power, zero tailings dams, zero use of potable water, zero hazardous chemicals, zero accidents",
+    "registered_office": "181 Bay Street, Suite 4400, Toronto, Ontario, M5J 2T3, Canada",
+    "contact_phone": "+55 11 2985 0089",
+    "contact_email": "contact@sigmalithium.com.br",
+    "website_corporate": "https://sigmalithiumcorp.com",
+    "website_ir": "https://ir.sigmalithiumcorp.com",
+    "social_media": {
+      "linkedin": "https://www.linkedin.com/company/sigma-lithium-resources/",
+      "twitter": "https://twitter.com/SigmaLithium",
+      "instagram": "https://www.instagram.com/sigmalithium/",
+      "youtube": "https://www.youtube.com/@sigmalithiumresources9649"
+    },
+    "management": {
+      "ceo": "Ana Cabral (Co-Chairperson and CEO)",
+      "cfo": "Felipe Peres",
+      "vp_operations": "Keith Prentice",
+      "vp_commercial": "Catarina Noci",
+      "vp_legal": "Bruno Tamassia",
+      "vp_institutional": "Ligia Pinto",
+      "vp_investor_relations": "Anna Hartley",
+      "vp_international_relations": "Daniel Abdo",
+      "vp_hse_community": "Alexandre Matos",
+      "vp_business_development": "Marina Bernardini"
+    },
+    "board_of_directors": [
+      "Ana Cabral (Co-Chairperson and CEO)",
+      "Marcelo Paiva (Co-Chairperson and Director)",
+      "Alexandre Rodrigues Cabral (Corporate Director)",
+      "Junaid Jafar (Corporate Director)",
+      "Kátia Abreu (Corporate Director)",
+      "Vicente Lobo (Senior Advisor)",
+      "Maria José Salum (Senior Advisor)"
+    ]
+  },
+  "operations_summary": {
+    "description": "100% wholly owned Grota do Cirilo operation, fully integrated hard-rock lithium mining and industrial beneficiation complex",
+    "state": "Minas Gerais, Brazil",
+    "phase1_capacity_tpa": 270000,
+    "phase2_capacity_tpa": 520000,
+    "phase3_capacity_tpa": 770000,
+    "resources": {
+      "measured_and_indicated_mt": 93.2,
+      "measured_indicated_inferred_mt": 106.9,
+      "average_grade_lio2_pct": 1.4
+    },
+    "reserves": {
+      "proven_and_probable_mt": 76.4,
+      "average_grade_lio2_pct": 1.29
+    },
+    "mining_operation": "Two-pit mining operation (North Pit and South Pit) near industrial site",
+    "plant_components": [
+      "Three-stage crushing circuit",
+      "Dense media separation plant",
+      "Water reclamation / dry-stacking unit"
+    ],
+    "sustainability_metrics": {
+      "renewable_electricity_pct": 100,
+      "water_recycling_pct": 100,
+      "zero_tailings_dams": true,
+      "zero_hazardous_chemicals": true,
+      "female_senior_management_pct": 50,
+      "regional_workforce_pct": 85,
+      "direct_jobs": 1700,
+      "indirect_jobs_estimated": 18000,
+      "days_without_lti": "1000+"
+    }
+  },
+  "timeline": [
+    {
+      "year": 2012,
+      "title": "Initial Investment",
+      "description": "Sigma Lithium's founder acquires Sigma Lithium, alongside the Brazilian refractory products maker Magnesita. Mineral exploration starts at Grota do Cirilo."
+    },
+    {
+      "year": 2015,
+      "title": "Private Equity",
+      "description": "A10 Invest makes a first investment. The first stage of mineral exploration is completed."
+    },
+    {
+      "year": 2017,
+      "title": "Follow-on Investment",
+      "description": "Convertible bond offering. Auditing mineral mining exploration results."
+    },
+    {
+      "year": 2018,
+      "title": "Demonstration Plant start-up",
+      "description": "Equity Offering I (IPO and listing on the TSX-V). NI 43-101 resource report filed. Pilot plant start-up."
+    },
+    {
+      "year": 2019,
+      "title": "DFS and Offtake",
+      "description": "Second NI 43-101 resource report filed tripling M&I Resources to 46mt. NI 43-101 Definitive Feasibility Study for Phase 1. Environmental licenses for construction and installation of commercial production plant. Sigma as a case study at COP-25."
+    },
+    {
+      "year": 2020,
+      "title": "Equity Funded & Acceleration",
+      "description": "Equity Offering II. Project Finance Term Sheet for Phase 1. Decision to accelerate Phase 2."
+    },
+    {
+      "year": 2021,
+      "title": "Construction Commences",
+      "description": "Equity Offering III. Preliminary Economic Assessment for Phase 2. ESG board committee implementation. Sigma Lithium listed on Nasdaq. Equity Offering IV (including BlackRock). Grota do Cirilo construction begins."
+    },
+    {
+      "year": 2022,
+      "title": "Phase 1 Construction & Commissioning",
+      "description": "Phase 1 and 2 Technical Report. Successfully commissioned the first module of the Phase 1 production plant (the Cleantech Plant), on schedule and within budget. Project expansion: mineral reserves increased by 63%. Financing: Sigma secures US$100 million debt financing."
+    },
+    {
+      "year": 2023,
+      "title": "Commercial Operations Begin",
+      "description": "Concluded crusher and plant commissioning by May 2023. First commercial production by August and operations sustained nameplate capacity for month of December. First shipment of lithium concentrate departs Brazil in July 2023, with five total shipments made during the year."
+    },
+    {
+      "year": 2024,
+      "title": "Phase 2 Commences Construction",
+      "description": "Board of Directors approves construction of Phase 2 expansion. Earthworks begins for expansion to add 250,000t of capacity at the Grota do Cirilo operations."
+    },
+    {
+      "year": 2025,
+      "title": "Phase 2 Advancement and Mining Restructuring",
+      "description": "Phase 2 earthworks completed. Restructured mining operations to increase capacity and improve efficiency. Updated NI 43-101 Technical Report: mineral resource estimate of 107Mt at 1.4% Li2O."
+    }
+  ],
+  "news_releases": [
+    {
+      "date": "2023-04-27",
+      "title": "Sigma lithium trucks green lithium and tailings to vitoria port in preparation of 15,000 tonne shipment of each product in may",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2023/04/2023-04-27-SGML-Press-Release-Initial-Trucking.pdf",
+      "type": "press_release"
+    },
+    {
+      "date": "2023-04-17",
+      "title": "Sigma Lithium initiates production of green lithium: zero tailings and low carbon",
+      "url": "https://sigmalithiumresources.gcs-web.com/static-files/ffba44f2-8d64-430e-b1e1-636117c29ad3",
+      "type": "press_release"
+    },
+    {
+      "date": "2023-04-10",
+      "title": "Sigma Lithium awarded the environmental operating license with unanimous approval and scales up social initiatives; first production on schedule to commence in april 2023",
+      "url": "https://sigmalithiumresources.gcs-web.com/static-files/ece98a70-6dda-4bea-8a7c-ca4b750e8815",
+      "type": "press_release"
+    },
+    {
+      "date": "2023-04-10",
+      "title": "Sigma Lithium announces delay in filing annual continuous disclosure documents due to move toward commercial production and sap implementation; filing expected before the end of april",
+      "url": "https://sigmalithiumresources.gcs-web.com/static-files/dec512ee-38c7-4bf0-a989-9a98ed8e0bc6",
+      "type": "press_release"
+    }
+  ],
+  "technical_reports": [
+    {
+      "title": "Updated NI 43-101 Report (Jan 2025)",
+      "url": "https://www.sedarplus.ca/csa-party/records/document.html?id=c9dd215159545240c9da5d76ada15218a48c3f94cdbbfc78d1b32ec3a236b25d",
+      "type": "technical_report"
+    },
+    {
+      "title": "EIA Sigma Barreiro",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2024/11/EIA-Sigma-Barreiro.pdf",
+      "type": "environmental_impact_assessment"
+    },
+    {
+      "title": "RIMA Sigma Barreiro",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2024/11/RIMA-Sigma-Barreiro.pdf",
+      "type": "environmental_impact_report"
+    },
+    {
+      "title": "RIMA Sigma Ampliação Xuxa",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2024/11/RIMA-Sigma-Ampliacao-Xuxa.pdf",
+      "type": "environmental_impact_report"
+    },
+    {
+      "title": "EIA Sigma Ampliação Xuxa",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2024/11/EIA-Sigma-Ampliacao-Xuxa.pdf",
+      "type": "environmental_impact_assessment"
+    },
+    {
+      "title": "PCA - Plano de Controle Ambiental",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2024/12/PCA-Plano-de-Controle-Ambiental.pdf",
+      "type": "environmental_control_plan"
+    },
+    {
+      "title": "Environmental Impact Report (RIMA - Relatório de Impacto Ambiental) - Nezinho do Chicão",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2023/08/Texto_Publicacao_Licenca_NDC.pdf",
+      "type": "environmental_impact_report"
+    },
+    {
+      "title": "Public Hearing Call - April 9 & 10, 2025",
+      "url": "https://sigmalithiumcorp.com/audiencia_publica_abril2025/",
+      "type": "public_hearing"
+    }
+  ],
+  "esg_documents": [
+    {
+      "title": "Forced Labour Report",
+      "url": "https://sigmalithiumcorp.com/forced-labour-report-sigma-lithium-signed/",
+      "type": "esg_report"
+    },
+    {
+      "title": "Code of Conduct / Codigo de Conduta (Sigma Mineração)",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2024/03/Sigma-Mineracao_Codigo-de-Conduta_final.pdf",
+      "type": "governance_document"
+    },
+    {
+      "title": "Code of Conduct for Suppliers / Codigo de Conduta para Fornecedores",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2024/03/Sigma-Mineracao_Codigo-de-Conduta-Fornecedores_final.pdf",
+      "type": "governance_document"
+    },
+    {
+      "title": "Human Rights Policy / Politica de Direitos Humanos",
+      "url": "https://sigmalithiumcorp.com/politica-de-direitos-humanos/",
+      "type": "governance_document"
+    },
+    {
+      "title": "2024 Board Diversity Disclosure Matrix",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2024/10/2024-Board-Diversity-Disclosure-Matrix.pdf",
+      "type": "governance_document"
+    },
+    {
+      "title": "2023 Board Diversity Disclosure Matrix",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2024/10/2023-Board-Diversity-Disclosure-Matrix.pdf",
+      "type": "governance_document"
+    },
+    {
+      "title": "Board of Directors Mandate",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2023/05/Board-of-Directors-Mandate.pdf",
+      "type": "governance_document"
+    },
+    {
+      "title": "Chair of the Board of Directors Position Description",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2023/05/Chair-of-the-Board-of-Directors-Position-Description.pdf",
+      "type": "governance_document"
+    },
+    {
+      "title": "Chief Executive Officer Position Description",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2023/05/Chief-Executive-Officer-Position-Description.pdf",
+      "type": "governance_document"
+    },
+    {
+      "title": "Audit, Finance and Risk Committee Charter",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2025/12/SGML-2025-Audit-Finance-and-Risk-Committee-Charter.pdf",
+      "type": "governance_document"
+    },
+    {
+      "title": "Timely Disclosure Confidentiality and Insider Trading Policy",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2023/05/Timely-Disclosure-Confidentiality-and-Insider-Trading-Policy.pdf",
+      "type": "governance_document"
+    },
+    {
+      "title": "Whistleblower Policy",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2023/05/Whistleblower-Policy.pdf",
+      "type": "governance_document"
+    },
+    {
+      "title": "Clawback Policy",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2024/11/SGML-Clawback-Policy.pdf",
+      "type": "governance_document"
+    },
+    {
+      "title": "Statement of Differences",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2023/05/Statement-of-Differences.pdf",
+      "type": "governance_document"
+    },
+    {
+      "title": "Code of Business Conduct and Ethics",
+      "url": "https://sigmalithiumcorp.com/wp-content/uploads/2024/03/SGML-2021-Code-of-Business-Conduct-and-Ethics.pdf",
+      "type": "governance_document"
+    }
+  ],
+  "presentations": [
+    {
+      "year": 2026,
+      "quarter": "Q2",
+      "title": "Second Quarter 2026 Earnings Release Presentation",
+      "date": "Aug 2026",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/08/Sigma-260814-2Q26-Earnings-Presentation_.pdf",
+      "type": "earnings_presentation"
+    },
+    {
+      "year": 2026,
+      "title": "JP Morgan Natural Resources Conference Presentation",
+      "date": "Jun 2026",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/06/Sigma-2606-JPM-Conference-Presentation-23-Jun-2026.pdf",
+      "type": "conference_presentation"
+    },
+    {
+      "year": 2026,
+      "title": "Non-Deal Roadshow",
+      "date": "Jun 2026",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/08/Sigma-2606-NDR-Presentation.pdf",
+      "type": "investor_presentation"
+    },
+    {
+      "year": 2026,
+      "quarter": "Q1",
+      "title": "First Quarter 2026 Earnings Release Presentation",
+      "date": "May 2026",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/05/Sigma-2605-1Q26-Earnings-Presentation.pdf",
+      "type": "earnings_presentation"
+    },
+    {
+      "year": 2025,
+      "quarter": "Q4",
+      "title": "Fourth Quarter 2025 Earnings Release Presentation",
+      "date": "Mar 2026",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/03/Sigma-2603-4Q25-Earnings-Presentation.pdf",
+      "type": "earnings_presentation"
+    },
+    {
+      "year": 2026,
+      "title": "BMO Global Metals Mining & Critical Minerals Conference Presentation",
+      "date": "Feb 2026",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/02/Sigma_2602_BMO_Stage_Presentation_.pdf",
+      "type": "conference_presentation"
+    },
+    {
+      "year": 2026,
+      "title": "Update Presentation",
+      "date": "Feb 2026",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/02/Sigma_2602_Update_Presentation_.pdf",
+      "type": "investor_presentation"
+    },
+    {
+      "year": 2025,
+      "title": "Sigma Lithium Corporate Presentation",
+      "date": "Dec 2025",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/12/Sigma-2512-Institutional-Presentation-19-Dec-2025.pdf",
+      "type": "corporate_presentation"
+    },
+    {
+      "year": 2025,
+      "title": "BofA Virtual Critical Minerals Conference Presentation",
+      "date": "Nov 2025",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/12/Sigma-2511-BofA-Conference-Presentation.pdf",
+      "type": "conference_presentation"
+    },
+    {
+      "year": 2025,
+      "quarter": "Q3",
+      "title": "Third Quarter 2025 Earnings Release Presentation",
+      "date": "Nov 2025",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/Sigma-2511-3Q25-Earnings-Call-Presentation.pdf",
+      "type": "earnings_presentation"
+    },
+    {
+      "year": 2025,
+      "title": "Strategy for 2H 2025 and 2026 (Presentation)",
+      "date": "Sep 2025",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/Sigma-2509-Strategy-Presentation-26-Sep-2025.pdf",
+      "type": "strategy_presentation"
+    },
+    {
+      "year": 2025,
+      "quarter": "Q2",
+      "title": "Second Quarter 2025 Earnings Release Presentation",
+      "date": "Aug 2025",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/SGML-2Q25-Earnings-Presentation-VFinal_2.pdf",
+      "type": "earnings_presentation"
+    },
+    {
+      "year": 2025,
+      "title": "BofA Virtual Storage Conference",
+      "date": "Jun 2025",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/04/Sigma-2506-BofA-Virtual-Storage-Conference-Presentation-12-June-2025.pdf",
+      "type": "conference_presentation"
+    },
+    {
+      "year": 2025,
+      "quarter": "Q1",
+      "title": "First Quarter 2025 Earnings Release Presentation",
+      "date": "May 2025",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/SGML-1Q25-Earnings-Presentation_Final.pdf",
+      "type": "earnings_presentation"
+    },
+    {
+      "year": 2025,
+      "title": "BTG Santiago Group Lunch",
+      "date": "Apr 2025",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/04/Sigma-2504-BTG-Santiago-Group-Lunch-Presentation-12Apr25.pdf",
+      "type": "investor_presentation"
+    },
+    {
+      "year": 2025,
+      "title": "BMO Non-Deal Roadshow",
+      "date": "Apr 2025",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/04/Sigma-2504-BMO-Non-Deal-Roadshow-Presentation-7-8-Apr-25.pdf",
+      "type": "investor_presentation"
+    },
+    {
+      "year": 2025,
+      "title": "BMO Global Metals Mining & Critical Minerals Conference Presentation",
+      "date": "Feb 2025",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/04/Sigma-2502-BMO-Conference-Presentation-25-Feb-2025.pdf",
+      "type": "conference_presentation"
+    }
+  ],
+  "annual_reports": [
+    {
+      "year": 2026,
+      "title": "AGM Management Information Circular",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/06/Sigma-2026-AGM-NOM-Management-Information.pdf",
+      "type": "annual_report"
+    },
+    {
+      "year": 2025,
+      "title": "Full Year Financial Statements",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/03/FS4Q2025-29Mar26-v18_-19h40-_-FINAL1.pdf",
+      "type": "financial_statements"
+    },
+    {
+      "year": 2025,
+      "title": "AIF - Annual Information Form",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/04/AIF_YE_2025.pdf",
+      "type": "annual_information_form"
+    },
+    {
+      "year": 2025,
+      "title": "Management Discussion and Analysis",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/03/MDA-4Q25-FINAL.pdf",
+      "type": "mda"
+    },
+    {
+      "year": 2025,
+      "title": "Management Information Circular - AGM",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/Sigma-Lithium-Corporation-Management-Information-Circular-AGM-FY-2024-v6-FINAL-CLEAN2-1.pdf",
+      "type": "management_circular"
+    },
+    {
+      "year": 2025,
+      "title": "ESTMA Report",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2026/05/Sigma-ESTMA-Report-2025.pdf",
+      "type": "estma_report"
+    },
+    {
+      "year": 2025,
+      "title": "Technical Report NI 43-101",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/Sigma-NI-43-101-MASTERVERSION-v30.03.25-23h43.pdf",
+      "type": "technical_report"
+    },
+    {
+      "year": 2024,
+      "title": "Full Year Financial Statements",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/SGML-FS-4Q2024_final.pdf",
+      "type": "financial_statements"
+    },
+    {
+      "year": 2024,
+      "title": "AIF - Annual Information Form",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/AIF-YE-2024_FINAL.pdf",
+      "type": "annual_information_form"
+    },
+    {
+      "year": 2024,
+      "title": "Management Discussion and Analysis",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/4Q24_MDA_final.pdf",
+      "type": "mda"
+    },
+    {
+      "year": 2024,
+      "title": "Management Information Circular - AGM",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2024/06/Sigma_Lithium_Corporation_-_MIC_June_14_-_FINAL_WITH_ALL_SCHEDULES_v4.pdf",
+      "type": "management_circular"
+    },
+    {
+      "year": 2024,
+      "title": "ESTMA Report",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/ESTMA-Reporting-2024-v2.pdf",
+      "type": "estma_report"
+    },
+    {
+      "year": 2024,
+      "title": "Technical Report NI 43-101",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2024/03/Sigma-Lithium-NI-43-101-March-2024-vFinal-19.03.pdf",
+      "type": "technical_report"
+    },
+    {
+      "year": 2024,
+      "title": "PFIC Statement",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/PFIC-Statement-Sigma-2024-signed.pdf",
+      "type": "tax_document"
+    },
+    {
+      "year": 2023,
+      "title": "Full Year Financial Statements",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2024/05/YE-2023-Final-FS.pdf",
+      "type": "financial_statements"
+    },
+    {
+      "year": 2023,
+      "title": "AIF - Annual Information Form",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2024/05/YE-2023-Final-AIF.pdf",
+      "type": "annual_information_form"
+    },
+    {
+      "year": 2023,
+      "title": "Management Discussion and Analysis",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2024/05/YE-2023-Final-MDA.pdf",
+      "type": "mda"
+    },
+    {
+      "year": 2023,
+      "title": "Management Information Circular - AGM",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/08/2023-06-AGM-Management-Information-Circular.pdf",
+      "type": "management_circular"
+    },
+    {
+      "year": 2023,
+      "title": "ESTMA Report",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2024/10/ESTMA-Reporting-2023-v2.pdf",
+      "type": "estma_report"
+    },
+    {
+      "year": 2023,
+      "title": "PFIC Statement",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/PFIC-Statement-Sigma-2023-signed.pdf",
+      "type": "tax_document"
+    },
+    {
+      "year": 2022,
+      "title": "Full Year Financial Statements",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/09/YE22-FS.pdf",
+      "type": "financial_statements"
+    },
+    {
+      "year": 2022,
+      "title": "AIF - Annual Information Form",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/12/SGML-2022-Q4-AIF.pdf",
+      "type": "annual_information_form"
+    },
+    {
+      "year": 2022,
+      "title": "Management Discussion and Analysis",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/09/YE22-MDA.pdf",
+      "type": "mda"
+    },
+    {
+      "year": 2022,
+      "title": "Management Information Circular - AGM",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/08/Sigma-2022-MIC-Final-v2.pdf",
+      "type": "management_circular"
+    },
+    {
+      "year": 2022,
+      "title": "ESTMA Report",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2024/10/ESTMA-Reporting-2022-v2.pdf",
+      "type": "estma_report"
+    },
+    {
+      "year": 2021,
+      "title": "Full Year Financial Statements",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/08/SGML-FS-YE-2021-4-1-2022-FINAL.pdf",
+      "type": "financial_statements"
+    },
+    {
+      "year": 2021,
+      "title": "AIF - Annual Information Form",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/08/SGML-AIF-2021-FINAL.pdf",
+      "type": "annual_information_form"
+    },
+    {
+      "year": 2021,
+      "title": "Management Discussion and Analysis",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/08/SGML-MDA-YE-2021-4-1-2022-FINAL.pdf",
+      "type": "mda"
+    },
+    {
+      "year": 2021,
+      "title": "ESTMA Report",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2024/10/ESTMA-Reporting-2021-v2.pdf",
+      "type": "estma_report"
+    },
+    {
+      "year": 2020,
+      "title": "Full Year Financial Statements",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/08/Sigma-FS-YE-2020-Final.pdf",
+      "type": "financial_statements"
+    },
+    {
+      "year": 2020,
+      "title": "AIF - Annual Information Form (Amended and Restated)",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/08/SGML-AIF-2020-Amended-and-Restated-Final.pdf",
+      "type": "annual_information_form"
+    },
+    {
+      "year": 2020,
+      "title": "Management Discussion and Analysis",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/08/Sigma-YE-2020-MDA-Final.pdf",
+      "type": "mda"
+    },
+    {
+      "year": 2019,
+      "title": "Full Year Financial Statements",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2025/11/Sigma-Financial-Report-200515-FY19.pdf",
+      "type": "financial_statements"
+    },
+    {
+      "year": 2019,
+      "title": "Management Discussion and Analysis",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/08/Sigma-Financial-Report-200515-FY19-MDA-1.pdf",
+      "type": "mda"
+    },
+    {
+      "year": 2018,
+      "title": "Full Year Financial Statements",
+      "url": "https://ir.sigmalithiumcorp.com/wp-content/uploads/2023/08/Sigma-Lithium-Full-Year-2018-Financial-Statements.pdf",
+      "type": "financial_statements"
+    }
+  ],
+  "esg_initiatives": [
+    {
+      "name": "Fundo Dona de Mim Microcredit Program",
+      "description": "Microcredit program for female entrepreneurs in the Jequitinhonha Valley region, in partnership with Grupo Mulheres do Brasil. 730 female entrepreneurs enrolled with plans to expand to 10,000. Loans of R$2,000 per person with mentorship programs.",
+      "url": "https://sigmalithiumcorp.com/social/"
+    },
+    {
+      "name": "Zero Drought Program",
+      "description": "Construction of rainwater capture structures in the local municipalities of Araçuaí and Itinga to support small-scale farmers during drought periods.",
+      "url": "https://sigmalithiumcorp.com/social/"
+    },
+    {
+      "name": "Homecoming Employment Program (Volta ao Lar)",
+      "description": "Program to bring back qualified workforce that migrated out of the region. Approximately 85% of workforce is comprised of Vale do Jequitinhonha region locals.",
+      "url": "https://sigmalithiumcorp.com/social/"
+    },
+    {
+      "name": "Water for All Program",
+      "description": "Provides drinking water to households through partnership with municipalities of Araçuaí and Itinga, donating water tanks and funding water deliveries by truck.",
+      "url": "https://sigmalithiumcorp.com/social/"
+    },
+    {
+      "name": "Education that Transforms Program",
+      "description": "Education initiatives for children, adolescents and adults. Renovation and expansion of three municipal public schools. Post-basic education courses, environmental awareness classes, cultural and sports education.",
+      "url": "https://sigmalithiumcorp.com/social/"
+    },
+    {
+      "name": "Reforestation Program",
+      "description": "Compensates for emissions that cannot be avoided through tree replanting and recovery from degraded areas.",
+      "url": "https://sigmalithiumcorp.com/environmental/"
+    },
+    {
+      "name": "Mining Technician Training Program",
+      "description": "Partnership with Federal University of Vales do Jequitinhonha e Mucuri (Campus Janauba) and Federal Institute of Education of Araçuaí to create the first mining technician preparation program in the region.",
+      "url": "https://sigmalithiumcorp.com/social/"
+    }
+  ],
+  "media_gallery_categories": [
+    {
+      "name": "Cleantech Plant",
+      "url": "https://sigmalithiumcorp.com/media-gallery/greentech-plant/"
+    },
+    {
+      "name": "Core and Concentrate",
+      "url": "https://sigmalithiumcorp.com/media-gallery/core-and-concentrate/"
+    },
+    {
+      "name": "Phase 1 Mine",
+      "url": "https://sigmalithiumcorp.com/media-gallery/phase-1-mine/"
+    },
+    {
+      "name": "Zero Hunger Action",
+      "url": "https://sigmalithiumcorp.com/media-gallery/childcare-centers-initiative/"
+    },
+    {
+      "name": "Microcredit Program",
+      "url": "https://sigmalithiumcorp.com/media-gallery/microcredit-program/"
+    },
+    {
+      "name": "Reforestation Programs",
+      "url": "https://sigmalithiumcorp.com/media-gallery/reforestation-programs/"
+    },
+    {
+      "name": "Piaui Seasonal Creek Preservation",
+      "url": "https://sigmalithiumcorp.com/media-gallery/piaui-seasonal-creek-preservation/"
+    },
+    {
+      "name": "NASDAQ Listing",
+      "url": "https://sigmalithiumcorp.com/media-gallery/nasdaq-listing/"
+    },
+    {
+      "name": "Employment Programs",
+      "url": "https://sigmalithiumcorp.com/media-gallery/employment-programs/"
+    }
+  ],
+  "totals": {
+    "news_releases": 4,
+    "technical_reports": 8,
+    "esg_documents": 15,
+    "presentations": 17,
+    "annual_reports": 36,
+    "esg_initiatives": 7,
+    "media_gallery_categories": 9,
+    "timeline_entries": 11,
+    "total_items_scraped": 107
+  }
+}

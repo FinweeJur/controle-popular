@@ -248,6 +248,9 @@ export default function TopNav() {
               controlepopular<span className="text-primary">.br</span>
             </span>
           </button>
+          <p className="hidden whitespace-nowrap text-[0.6em] tracking-wide text-text-soft sm:block">
+            O dinheiro é nosso — olho vivo — fiscaliza — coração sem medo
+          </p>
 
           <nav
             id="menu-portal"
