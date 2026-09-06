@@ -78,7 +78,7 @@ export default async function SobrePage() {
         </p>
         {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (/sobre · abertura) */}
         <Epigrafe
-          citacao={citacaoPorId("carolina-eu-escrevo")!}
+          citacao={citacaoPorId("carolina-mundo-modificar")!}
           variante="inicio"
           className="max-w-2xl"
         />

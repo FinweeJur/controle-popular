@@ -85,7 +85,7 @@ export default async function Hub() {
       {/* Fita da marca (etapa 3 PLANO-TEMA-PEQUI): slogan, nao dado —
           aria-hidden no componente. Substitui a Epigrafe que morava no
           header: a citacao da Carolina agora e uma so, dentro do hero. */}
-      <Marquee frase="✦ FISCALIZA ✦ OLHO VIVO ✦ O DINHEIRO É SEU ✦" />
+      <Marquee frase="O dinheiro é nosso ✦ fiscalize ✦ olho vivo ✦ coração sem medo ✦ o território é nosso ✦" />
       <HeroNarrativeLazy />
 
       <header className="space-y-4">

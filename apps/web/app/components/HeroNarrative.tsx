@@ -57,7 +57,7 @@ export default function HeroNarrative() {
   // A epigrafe do hero vem da unica fonte de verdade das citacoes (nunca
   // digitada no componente); undefined em build sem a biblioteca nao quebra
   // o hero — so nao mostra a faixa.
-  const citacaoHero = citacaoPorId("carolina-eu-escrevo");
+  const citacaoHero = citacaoPorId("carolina-mundo-modificar");
   const [pointerCoarse, setPointerCoarse] = useState(false);
 
   // ── Preferências do usuário (media queries, lidas uma vez + listeners)
