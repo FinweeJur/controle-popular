@@ -2,10 +2,10 @@
 
 > **Tipo:** PLANO
 > **Domínio:** ambiental/paraopeba
-> **Última medição:** 2026-08-31
+> **Última medição:** 2026-09-05
 > **Leitura estimada:** média (5-15 min)
 > **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [FONTES.md](../06-fontes/FONTES.md), [ARQUITETURA.md](../04-arquitetura/ARQUITETURA.md), [PRODUTO.md](../01-produto/PRODUTO.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** biblioteca, desastres, mariana, brumadinho, paraopeba, doce, atis, documentos, filtros, busca, coletores, noticias, atingidos, bahia, espirito santo
+> **Palavras-chave:** biblioteca, desastres, mariana, brumadinho, paraopeba, doce, itatiaucu, jequitinhonha, atis, documentos, filtros, busca, coletores, noticias, atingidos, bahia, espirito santo, mpmg, mpf, dpmg, dpu, notas tecnicas
 
 ## Sumário
 
@@ -58,7 +58,7 @@ Item normalizado do acervo:
 interface ItemDesastre {
   id: string;                  // fonteId + slug
   desastre: "mariana" | "brumadinho";
-  bacia: "doce" | "paraopeba";
+  bacia: "doce" | "paraopeba" | "itatiaucu" | "jequitinhonha" | "sao_francisco" | "velhas" | "para" | "verde_grande" | "mucuri" | "paracatu" | "geral";
   titulo: string;
   data: string | null;         // ISO yyyy-mm-dd; null = a fonte não publicou
   tipo: string;                // rótulo do tipo como a fonte o nomeia
@@ -110,14 +110,18 @@ pausa 1–2 s por host, 429/503 param a coleta, validar **conteúdo** nunca só
 status, `--seco`, trava de CPF no serializado antes de gravar, saída de
 metadado + link.
 
-| # | Coletor | Fontes-alvo | Desastre | Esfera |
-|---|---|---|---|---|
-| 1 | `coletar-biblioteca-cif-mariana.*` | CIF (Comitê Interfederativo) do Acordo de Mariana — resoluções e documentos | mariana | federal (tripartite) |
-| 2 | `coletar-documentos-mpf.*` | MPF — casos Samarco/Fundão e Brumadinho | ambos | justica |
-| 3 | `coletar-biblioteca-mg.*` | SEMAD/IGAM/FEAM (relatórios, fiscalização) + CGE-MG (sem duplicar `/ambiental/decisoes-lai`) | ambos | estadual |
-| 4 | `coletar-biblioteca-es.*` | IEMA-ES, AGERH, MPES, TJES — bacia do Doce | mariana | estadual + justica |
-| 5 | `coletar-noticias-desastres.py` | Radar: título, fonte, data de publicação, microresumo (metadescription da matéria), link — padrão `coletar-noticias-paraopeba.py`, nunca o corpo. Buscas: "atingidos Bahia" (prioridade), Mariana, Brumadinho | ambos | imprensa |
-| 6 | `coletar-biblioteca-ati-mariana.*` | ATIs de Mariana — Cáritas, CTA, AEDAS/ADAI no programa do Rio Doce | mariana | ati |
+| # | Coletor | Fontes-alvo | Desastre | Bacias | Esfera |
+|---|---|---|---|---|---|
+| 1 | `coletar-biblioteca-cif-mariana.*` | CIF (Comitê Interfederativo) do Acordo de Mariana — resoluções e documentos | mariana | Rio Doce | federal (tripartite) |
+| 2 | `coletar-documentos-mpf.*` | MPF — casos Samarco/Fundão e Brumadinho | ambos | Rio Doce, Paraopeba | justica |
+| 3 | `coletar-biblioteca-mg.*` | SEMAD/IGAM/FEAM (relatórios, fiscalização) + CGE-MG (sem duplicar `/ambiental/decisoes-lai`) | ambos | Rio Doce, Paraopeba, Jequitinhonha | estadual |
+| 4 | `coletar-biblioteca-es.*` | IEMA-ES, AGERH, MPES, TJES — bacia do Doce | mariana | Rio Doce | estadual + justica |
+| 5 | `coletar-noticias-desastres.py` | Radar: título, fonte, data de publicação, microresumo (metadescription da matéria), link — padrão `coletar-noticias-paraopeba.py`, nunca o corpo. Buscas: "atingidos Bahia" (prioridade), Mariana, Brumadinho | ambos | todas | imprensa |
+| 6 | `coletar-biblioteca-ati-mariana.*` | ATIs de Mariana — Cáritas, CTA, AEDAS/ADAI no programa do Rio Doce | mariana | Rio Doce | ati |
+| 7 | `coletar-mpmg-notas-tecnicas.*` | MPMG — Coordenadorias Rio Doce (Coerdoce), Paraopeba e Jequitinhonha/Mucuri: Informações Técnico-Jurídicas (ITJs), notas técnicas, inquéritos civis | ambos | Rio Doce, Paraopeba, Itatiauçu, Jequitinhonha | estadual (justica) |
+| 8 | `coletar-mpf-notas-tecnicas.*` | MPF — Grandes Casos (Samarco), Procuradoria em MG, 2ª CCR: acordos, pareceres, laudos, notas técnicas sobre operação Rejeito e condutas | ambos | Rio Doce, Paraopeba, Jequitinhonha | federal (justica) |
+| 9 | `coletar-dpu-comite-rio-doce.*` | DPU — Comitê Temático Rio Doce/Brumadinho: notas técnicas sobre atingidos, habitação, renda, saúde | ambos | Rio Doce, Paraopeba | federal |
+| 10 | `coletar-dpmg-notas-tecnicas.*` | DPMG — Defensoria Pública de MG: atuação em comitês do Acordo, notas sobre atingidos em Mariana e Brumadinho | ambos | Rio Doce, Paraopeba | estadual |
 
 Registro obrigatório ao fim de cada coletor: slug no `REGISTRY_FONTES`
 (camada `public-assets`), entrada no `MAPA_SCRIPTS` do `rotina-coletas.mts`,
@@ -165,9 +169,30 @@ cliente recebe o array por fetch de asset:
   vale para a biblioteca unificada (chips por caso); a página do Paraopeba
   mantém o filtro por ATI/acervo que já tinha.
 
-## Expansão — novas fontes e páginas do ecossistema (01/09/2026)
+## Expansão — novas fontes e páginas do ecossistema (01/09/2026 + 05/09/2026)
 
-Escopo pedido pelo dono em 01/09/2026, após a biblioteca unificada no ar.
+Escopo pedido pelo dono em 01/09/2026, ampliado em 05/09/2026 com notas técnicas de órgãos ministeriais e defensorias.
+
+### Fontes judiciais e ministeriais (adição 05/09/2026)
+
+As notas técnicas do MPMG, MPF, DPU e DPMG são o documento mais denso sobre o que
+realmente aconteceu nas bacias — laudos, pareceres, requisições de investigação,
+acusação técnica. São o contrapeso às notas das empresas.
+
+| Órgão | URL principal | Bacias cobertas | O que procurar | Prioridade |
+|---|---|---|---|---|
+| **MPMG — Coerdoce** | `mpmg.mp.br/portal/menu/comunicacao/noticias/` | Rio Doce, Paraopeba | Informações Técnico-Jurídicas (ITJs), inquéritos civis, relatórios de fiscalização | P1 |
+| **MPMG — Coordenadoria Jequitinhonha** | `mpmg.mp.br/` | Jequitinhonha | Inquéritos civis, notas sobre mineração na bacia | P2 |
+| **MPMG — Coordenadoria Paraopeba** | `mpmg.mp.br/` | Paraopeba, Itatiauçu | Articulação com CBH Paraopeba, notas sobre saneamento e rejeitos | P2 |
+| **MPF — Grandes Casos** | `mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos` | Rio Doce | Acordos, pareceres, laudos do Instituto Lactec, operação Rejeito | P1 |
+| **MPF — Procuradoria em MG** | `mpf.mp.br/o-mpf/unidades/pr-mg/noticias` | Rio Doce, Jequitinhonha | Notícias com links para PDFs, operações de combate ao crime ambiental | P2 |
+| **DPU — Comitê Temático** | `direitoshumanos.dpu.def.br/comite-tematico-especializado-rio-doce-brumadinho/` | Rio Doce, Paraopeba | Notas técnicas sobre atingidos, habitação, renda, saúde | P1 |
+| **DPMG** | `defensoria.mg.def.br/` | Rio Doce, Paraopeba, Jequitinhonha | Atuação em comitês do Acordo, notas sobre atingidos | P2 |
+| **CIF/IBAMA** | `ibama.gov.br/cif/notas-tecnicas/` + `monitoramentoriodoce.org/documentos/` | Rio Doce | Notas técnicas ambientais do GTA-PMQQS (80+ NTs), dados quantitativos | P1 |
+
+**Lacunas mapeadas:**
+- **Itatiauçu** — sem fonte específica. Coberta indiretamente pela Coordenadoria do Paraopeba no MPMG e pelo CBH Paraopeba.
+- **Jequitinhonha (trecho BA)** — MPBA com atuação incipiente. MPF em MG cobre melhor o trecho mineiro.
 
 ### Novas fontes a pesquisar e coletar
 
@@ -191,6 +216,72 @@ ordenação) + fonte declarada por número + regra da insinuação:
    inferência sem documento.
 5. **Ações internacionais (Inglaterra)** — corte inglesa, BHP Group UK.
 6. **Ações no STF e STJ** — processos principais, decisões, repercussão.
+7. **Vale do Jequitinhonha — lítio** — mineração de lítio (Sigma Lithium, CBL,
+   Atlas Lithium) e impactos em quilombolas e comunidades tradicionais.
+8. **Quadrilátero Ferrífero** — Mina Apolo (Vale) vs. Parque Serra do Gandarela,
+   Operação Rejeito (PF, 2025), Serra do Rola-Moça.
+9. **Vale do Aço** — impactos acumulados da mineração e desindustrialização.
+
+### Expansão regional — outras regiões de MG (adição 05/09/2026)
+
+A biblioteca original cobria Rio Doce e Paraopeba. Expansão para regiões com
+conflitos socioambientais relevantes em MG:
+
+| Região | Bacia | Conflito principal | Órgãos | Prioridade |
+|---|---|---|---|---|
+| **Alto/Médio São Francisco** | São Francisco | Conflitos quilombola/vazanteiro vs. agronegócio e UCs (Parque Mata Seca, Verde Grande) | IBAMA, INCRA, IEF, MPF, MAB | Alta |
+| **Alto/Médio Velhas** | Rio das Velhas | Poluição crônica por esgoto (Classe 4, 30 km entre Sabará e Ribeirão da Mata). Mineração vs. mananciais | IGAM, FEAM, COPAM, Copasa | Alta |
+| **Alto Pará** | Rio Pará | Conflito hídrico: outorga >30% em trechos. Mineração vs. abastecimento | IGAM, CBH-SF2, FEAM | Alta |
+| **Verde Grande** | Rio Verde Grande | Conflito hídrico >126%. Garimpo ilegal | IGAM, FEAM, IBAMA, PF | Alta |
+| **Noroeste (Paracatu/Urucuia)** | Paracatu, Urucuia | Maior volume outorgado (~140 m³/s). Agronegócio vs. segurança hídrica | IGAM, CBH-SF7/SF8, CPRM | Alta |
+| **Quadrilátero Ferrífero** | Velhas/Doce | Mina Apolo vs. Gandarela. Operação Rejeito. Rola-Moça | SEMAD, FEAM, IEF, ICMBio, IBAMA, PF, MPMG | Crítica |
+| **Vale do Aço** | Rio Doce | Impactos acumulados do rompimento de Fundão. Contaminação por metais pesados e microplásticos | SEMAD, IEF, FEAM, IBAMA, MPF, MPMG | Alta |
+| **Nordeste (Conceição do Mato Dentro)** | Doce | Mineroduto Minas-Rio (Anglo American) vs. quilombolas. Fragmentação ilegal do licenciamento | IBAMA, FEAM, IEF, MPF | Alta |
+| **Norte (garimpo ilegal)** | São Francisco | Operação Nascentes Livres (2026): garimpo de quartzo em Vargem Grande do Rio Pardo | ICMBio, PF, IBAMA, SEMAD | Alta |
+| **Sul (garimpo ilegal)** | Mortes/Grande | Operação Protetor dos Biomas (2026): garimpo clandestino em 9 municípios | PF, PMMG, IBAMA, ANM | Alta |
+| **Mucuri (fronteira MG/BA)** | Mucuri | Conflito quilombola PCH Mucuri: Comunidade Marques vs. Queiroz Galvão | FEAM, IBAMA, INCRA, MPF | Média-Alta |
+
+**Órgãos estaduais relevantes:** SEMAD, IGAM, FEAM, IEF, CODEMIG, CPRM, COPAM, CERH-MG.
+
+### Expansão nacional — casos de escala nacional (adição 05/09/2026)
+
+Além de Mariana e Brumadinho, a biblioteca deve cobrir casos com repercussão
+nacional e internacional:
+
+| Caso | Ano | Local | Tipo | Fontes principais | Relevância |
+|---|---|---|---|---|---|
+| **Barragem de Fundão** | 2015 | Mariana/MG | Ruptura de barragem | MPF, Fundação Renova, STF, High Court Londres | Caso emblemático: 19 mortos, 40 mi m³ de rejeitos. Acordo R$ 170 bi (2024). 620 mil reclamantes em Londres |
+| **Barragem B1 Córrego do Feijão** | 2019 | Brumadinho/MG | Ruptura de barragem | MPF, MPMG, STJ, SEC (EUA) | 272 mortos. Acordo R$ 37,68 bi. Vale pagou US$ 55,9 mi à SEC por fraude ESG |
+| **Mina Pingo d'Água** | 2024 | Brumadinho/MG | Vazamento em barragem | ANM, MPMG, Defesa Civil MG | Padrão recorrente de falhas na mesma região |
+| **Xikrin do Cateté vs. Vale** | 2025 | Pará | Contaminação indígena | MPF/PA, UFPA | 99,7% dos indígenas contaminados. Ação civil pública |
+| **APA do Tapajós** | 2024-2025 | Pará | Mineração ilegal em UC | MPF, IBAMA, ICMBio | 828 PLGs irregulares. Caso paradigmático |
+| **Extremo Sul da BA** | 2025-2026 | Mucuri/BA | Reparação Mariana | TJ-BA, MPF | 5 municípios processam Vale/BHP/Samarco por R$ 780 mi |
+| **BHP na Justiça Inglesa** | 2018-2026 | Londres | Ação coletiva transnacional | High Court, Pogust Goodhead | 620 mil reclamantes, R$ 250 bi. Maior ação coletiva ambiental da história britânica |
+| **Vale na SEC (EUA)** | 2022-2023 | Nova York | Securities fraud | SEC | US$ 55,9 mi. Manipulação de dados laboratoriais |
+| **Vale em Amsterdã** | Em curso | Holanda | Ação coletiva | Tribunal de Amsterdã | Inclui municípios brasileiros (Mucuri/BA) |
+
+**Fontes nacionais:** MPF Grandes Casos, MPF 4ª CCR, CGU, TCU, IBAMA, ANM, STF/STJ.
+
+### Ações coletivas das instituições de justiça (adição 05/09/2026)
+
+Mapeamento de ações coletivas relevantes para a biblioteca:
+
+| Órgão | Tipo | Caso/Tema | Ano | Status |
+|---|---|---|---|---|
+| **MPF/MG** | ACP | Repasse de multas ambientais ao Funcap (Fundão + Brumadinho) | 2025 | Em andamento |
+| **MPMG** | TAC | Usiminas — redução de poluição por pó-preto em Ipatinga | 2016-2022 | Vigente |
+| **MPMG** | TAC | Gerdau — R$ 27 mi para reparação em 5 municípios | 2024 | Vigente |
+| **MPMG** | ACP | Sigma Lithium — impactos socioambientais em Araçuaí/Itinga | 2025 | Em andamento |
+| **DPU** | Ação Coletiva | Comitê Temático Rio Doce/Brumadinho — atenção a atingidos | 2020-presente | Em atuação |
+| **DPU** | Ação Itinerante | Brumadinho — adesão ao acordo de indenização | 2025 | Em andamento |
+| **MPF/ES + MPES** | Medida Cautelar | Samarco — monitoramento da onda de lama no Rio Doce | 2015 | Decisão liminar |
+| **MPBA** | Programa FPI | Fiscalização Preventiva na Bacia do São Francisco | 2024 | Vigente |
+| **STF** | Tema 1.194 | Indenização por danos ambientais: obrigação não prescreve | 2025 | Julgado |
+| **STJ** | Tema 707 | Responsabilidade por rompimento de barragem: risco integral | 2023 | Trânsito em julgado |
+| **STJ** | Tema 1.204 | Obrigações propter rem: comprador responde por dano ambiental | 2023 | Trânsito em julgado |
+| **STJ** | Tema 681 | Risco integral em dano ambiental | 2023 | Trânsito em julgado |
+| **STJ** | Tema 438 | Responsabilidade objetiva: culpa de terceiro não exclui | 2022 | Trânsito em julgado |
+| **STJ** | Jurisprudência 257 | Dano moral coletivo é presumido; proteção urbana e rural | 2025 | Publicado |
 
 ## Entregas finais — espelho, mapa de links, resumo e análise integrada
 
@@ -221,11 +312,22 @@ ordenação) + fonte declarada por número + regra da insinuação:
 
 - **Fase 0:** schema + agregador + página com absorção dos 597 itens das ATIs +
   coletor #5 (notícias) → primeira versão no ar, sem coletores novos.
-- **Fase 1:** coletores 1–4, um a um (descoberta de endpoint → cabeçalho-doc →
+- **Fase 1:** coletores 1–6, um a um (descoberta de endpoint → cabeçalho-doc →
   `--seco` → gravação → varredura de dado pessoal → commit por pathspec).
+- **Fase 1.5 (adição 05/09/2026):** coletores 7–10 (notas técnicas de órgãos
+  ministeriais e defensorias) — MPMG, MPF, DPU, DPMG. Prioridade: MPMG Coerdoce
+  (P1, mais produtivo), MPF Grandes Casos (P1, acervo rico), DPU Comitê Temático
+  (P1, foco em atingidos). DPMG e MPF Procuradoria em MG como P2.
 - **Fase 2:** `REGISTRY_FONTES`, `FONTES.md`, `ESTADO.md` atualizados.
-- **Fase 3 (futuro):** BA documental (INEMA/MPBA/TJBA), Renova/Fundação Renova,
-  ANM, CGU/TCU, Defensorias, comitês de bacia do Doce.
+- **Fase 2.5 (adição 05/09/2026):** expansão regional MG — coletores para
+  Quadrilátero Ferrífero (Mina Apolo, Operação Rejeito), Vale do Aço, Jequitinhonha
+  (lítio), São Francisco (quilombos), Rio das Velhas (poluição), garimpo ilegal.
+  Prioridade: Quadrilátero Ferrífero (crítica) e Vale do Aço (alta).
+- **Fase 3:** expansão nacional — casos Fundão, Brumadinho, Pingo d'Água, Xikrin,
+  Tapajós, BA Sul. Ações internacionais (BHP Londres, Vale SEC, Vale Amsterdã).
+  Temas repetitivos STJ (707, 1.204, 681, 438) e repercussão geral STF (1.194).
+- **Fase 4 (futuro):** BA documental (INEMA/MPBA/TJBA), Renova/Fundação Renova,
+  ANM, CGU/TCU, Defensorias, comitês de bacia do Doce. Análise integrada.
 
 ## Verificação
 
@@ -244,6 +346,16 @@ bloqueia: dado é de arquivo). Coletores fora da CI; rotina local ou
 - Volumetria: medir com `--seco` antes de decidir asset vs. índice fatiado.
 - CIF (cif.org.br) estava inacessível na sondagem de 31/08/2026 — o coletor 1
   precisa de re-sondagem antes de escrever o cabeçalho-doc.
+- **MPMG:** URLs de PDFs seguem padrão `mpmg.mp.br/data/files/.../*.pdf` — pode
+  mudar sem aviso. Usar HEAD antes de baixar.
+- **MPF:** Grandes Casos tem página dedicada, mas PDFs podem estar em links
+  embutidos em HTML — parsing cuidadoso, não download direto.
+- **DPU:** Comitê Temático é relativamente novo (2020); pode ter poucos documentos
+  publicados. Medir com `--seco` antes de projetar.
+- **Itatiauçu:** sem fonte específica mapeada. Coberta indiretamente pelo MPMG
+  Coordenadoria do Paraopeba — pode ter lacuna documental.
+- **Jequitinhonha (trecho BA):** MPBA com atuação incipiente. O coletor cobre
+  só o trecho mineiro (MPF/MG e MPMG Jequitinhonha).
 
 ## Decisões registradas
 
@@ -259,6 +371,25 @@ bloqueia: dado é de arquivo). Coletores fora da CI; rotina local ou
 6. ATIs existem nos dois desastres: o acervo ATI existente é do programa
    Paraopeba (Brumadinho); as ATIs de Mariana (Cáritas, CTA, AEDAS/ADAI no
    Doce) são fonte nova com `desastre: "mariana"` (correção do dono, 01/09/2026).
+7. **Notas técnicas ministeriais e de defensorias entram na Fase 1.5** (dono,
+   05/09/2026): MPMG (Coerdoce, Paraopeba, Jequitinhonha), MPF (Grandes Casos,
+   Procuradoria em MG), DPU (Comitê Temático), DPMG. Bacias: Rio Doce, Paraopeba,
+   Itatiauçu, Jequitinhonha. Prioridade P1: MPMG Coerdoce, MPF Grandes Casos,
+   DPU Comitê Temático.
+8. **Itatiauçu coberta indiretamente** pelo MPMG Coordenadoria do Paraopeba e
+   pelo CBH Paraopeba — não há fonte específica mapeada.
+9. **Expansão regional MG** (dono, 05/09/2026): além de Rio Doce e Paraopeba,
+   cobrir Quadrilátero Ferrífero (Mina Apolo, Operação Rejeito), Vale do Aço,
+   Jequitinhonha (lítio), São Francisco (quilombos), Rio das Velhas (poluição),
+   garimpo ilegal no Norte e Sul de MG. 11 regiões mapeadas.
+10. **Expansão nacional** (dono, 05/09/2026): cobrir casos de escala nacional —
+    Fundão (2015), Brumadinho (2019), Pingo d'Água (2024), Xikrin do Cateté,
+    APA Tapajós, Extremo Sul da BA. Ações internacionais: BHP Londres, Vale
+    SEC/EUA, Vale Amsterdã.
+11. **Ações coletivas das instituições de justiça** (dono, 05/09/2026): mapear
+    ACPs, TACs, medidas cautelares do MPF, MPMG, DPU, DPMG, MPES, MPBA. Temas
+    repetitivos do STJ (707, 1.204, 681, 438) e repercussão geral do STF (1.194).
+    Status: Trânsito em julgado, vigente ou em andamento.
 
 ## Origem
 

@@ -10,8 +10,8 @@ import * as path from "node:path";
 
 export interface ItemDocumentoDesastre {
   id: string;
-  desastre: "mariana" | "brumadinho";
-  bacia: "doce" | "paraopeba";
+  desastre: "mariana" | "brumadinho" | "nacional" | "outro";
+  bacia: "doce" | "paraopeba" | "itatiaucu" | "jequitinhonha" | "sao_francisco" | "velhas" | "para" | "verde_grande" | "mucuri" | "paracatu" | "geral";
   titulo: string;
   data: string | null;
   tipo: string;
@@ -22,6 +22,12 @@ export interface ItemDocumentoDesastre {
   resumo: string | null;
   url: string;
   fonteId: string;
+  coletadoEm?: string;
+  caso_nacional?: string;
+  regiao_mg?: string;
+  acao_coletiva?: boolean;
+  instituicao_justica?: string;
+  classificavel: boolean;
 }
 
 interface ItemFonte {
@@ -54,9 +60,15 @@ export interface CatalogoBibliotecaDesastres {
   totais: {
     brumadinho_paraopeba: number;
     mariana_rio_doce: number;
+    nacional: number;
+    regioes_mg: Record<string, number>;
     esferas: Record<string, number>;
     ufs: Record<string, number>;
+    acoes_coletivas: number;
+    instituicoes_justica: Record<string, number>;
   };
+  regioes_disponiveis: string[];
+  tipos_disponiveis: string[];
   documentos: ItemDocumentoDesastre[];
 }
 
@@ -76,10 +88,12 @@ function resolverCaminhoJson(): string {
 }
 
 function converterItem(item: ItemFonte): ItemDocumentoDesastre {
+  const desastre = (item.desastre as ItemDocumentoDesastre["desastre"]) ?? "outro";
+  const bacia = (item.bacia as ItemDocumentoDesastre["bacia"]) ?? "geral";
   return {
     id: item.id,
-    desastre: item.desastre as "mariana" | "brumadinho",
-    bacia: item.bacia as "doce" | "paraopeba",
+    desastre,
+    bacia,
     titulo: item.titulo,
     data: item.data,
     tipo: item.tipo,
@@ -90,6 +104,12 @@ function converterItem(item: ItemFonte): ItemDocumentoDesastre {
     resumo: item.resumo,
     url: item.url,
     fonteId: item.fonteId,
+    coletadoEm: item.coletadoEm,
+    caso_nacional: item.caso_nacional,
+    regiao_mg: item.regiao_mg,
+    acao_coletiva: item.acao_coletiva ?? false,
+    instituicao_justica: item.instituicao_justica,
+    classificavel: true,
   };
 }
 
@@ -108,22 +128,38 @@ export function carregarBibliotecaDesastres(): CatalogoBibliotecaDesastres {
 
   const brumadinho_paraopeba = documentos.filter((d) => d.desastre === "brumadinho").length;
   const mariana_rio_doce = documentos.filter((d) => d.desastre === "mariana").length;
+  const nacional = documentos.filter((d) => d.desastre === "nacional").length;
 
   const esferas: Record<string, number> = {};
   const ufs: Record<string, number> = {};
+  const regioes_mg: Record<string, number> = {};
+  const instituicoes_justica: Record<string, number> = {};
+  let acoes_coletivas = 0;
   for (const doc of documentos) {
     esferas[doc.esfera] = (esferas[doc.esfera] || 0) + 1;
     ufs[doc.uf] = (ufs[doc.uf] || 0) + 1;
+    if (doc.regiao_mg) regioes_mg[doc.regiao_mg] = (regioes_mg[doc.regiao_mg] || 0) + 1;
+    if (doc.instituicao_justica) instituicoes_justica[doc.instituicao_justica] = (instituicoes_justica[doc.instituicao_justica] || 0) + 1;
+    if (doc.acao_coletiva) acoes_coletivas++;
   }
+
+  const regioes_disponiveis = [...new Set(documentos.map((d) => d.bacia).filter(Boolean))].sort();
+  const tipos_disponiveis = [...new Set(documentos.map((d) => d.tipo).filter(Boolean))].sort();
 
   cacheBiblioteca = {
     total_documentos: documentos.length,
     totais: {
       brumadinho_paraopeba,
       mariana_rio_doce,
+      nacional,
+      regioes_mg,
       esferas,
       ufs,
+      acoes_coletivas,
+      instituicoes_justica,
     },
+    regioes_disponiveis,
+    tipos_disponiveis,
     documentos,
   };
 
@@ -138,6 +174,22 @@ export function obterEstatisticasBiblioteca() {
   return carregarBibliotecaDesastres().totais;
 }
 
-export function filtrarDocumentosPorDesastre(desastre: "mariana" | "brumadinho"): ItemDocumentoDesastre[] {
+export function filtrarDocumentosPorDesastre(desastre: ItemDocumentoDesastre["desastre"]): ItemDocumentoDesastre[] {
   return listarDocumentosDesastres().filter((d) => d.desastre === desastre);
+}
+
+export function filtrarDocumentosPorRegiao(regiao: string): ItemDocumentoDesastre[] {
+  return listarDocumentosDesastres().filter((d) => d.bacia === regiao || d.regiao_mg === regiao);
+}
+
+export function filtrarDocumentosPorAcaoColetiva(): ItemDocumentoDesastre[] {
+  return listarDocumentosDesastres().filter((d) => d.acao_coletiva);
+}
+
+export function obterRegioesDisponiveis(): string[] {
+  return carregarBibliotecaDesastres().regioes_disponiveis;
+}
+
+export function obterTiposDisponiveis(): string[] {
+  return carregarBibliotecaDesastres().tipos_disponiveis;
 }

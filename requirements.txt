@@ -1,0 +1,22 @@
+# Dependências Python dos coletores e ETLs do Controle Popular.
+# Não é um projeto pip — é um manifesto para quem clonar o repo e quiser
+# rodar os scripts. Instale com: pip install -r requirements.txt
+
+# ETLs BigQuery (etl/bd/*)
+google-cloud-bigquery>=3.0
+google-auth>=2.0
+pandas>=2.0
+
+# ETLs API (etl/apis/*)
+requests>=2.28
+tenacity>=8.0
+
+# ETLs xlsx (etl/apis/sinesp_vde.py)
+openpyxl>=3.1
+
+# Coletor Congresso MG (scripts/coletar-congresso-mg.py)
+DadosAbertosBrasil>=2.1
+
+# ETLs gerais
+python-dotenv>=1.0
+psycopg[binary]>=3.1
