@@ -553,7 +553,7 @@ export default async function HomePage({
                 tipo="resumo_pagina"
                 titulo={`Painel Territorial e Socioambiental de ${cidade.nome}`}
                 orgaoTerritorio={`${cidade.nome}, ${cidade.uf ?? "MG"}`}
-                identificador={`Código IBGE: ${cidade.id_ibge}`}
+                identificador={`Código IBGE: ${cidade.id_municipio}`}
                 link={`https://controlepopular.com.br/${cidade.slug}`}
                 resumo={`Indicadores consolidados de participação popular, ações ambientais no CNJ, monitoramento de risco CEMADEN e direitos humanos em ${cidade.nome}.`}
                 rotulo={`Alertas de ${cidade.nome}`}

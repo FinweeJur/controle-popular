@@ -16,9 +16,6 @@ import json
 import os
 from datetime import datetime, timezone
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
-from etl.common import PgAPIError, upsert_com_colunas_opcionais
-
 import requests
 
 USER_AGENT = "ControlePopular/1.0 (coletor; contato: controlepopular@controlepopular.com.br)"

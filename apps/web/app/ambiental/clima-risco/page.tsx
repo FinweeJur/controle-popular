@@ -6,7 +6,7 @@ import {
 } from "@/lib/clima/bases-risco";
 import TabelaRiscoClient from "./TabelaRiscoClient";
 import PainelDialogo from "@/app/components/PainelDialogo";
-import BlocoPovoGente from "@/app/ambiental/components/BlocoPovoGente";
+import BlocoPovoGente, { type DadosImpactoPovoGente } from "@/app/ambiental/components/BlocoPovoGente";
 import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 
 export const metadata = {
@@ -21,6 +21,32 @@ export default function PaginaBasesClimaRisco() {
   const macro = obterEstatisticasMacroRisco();
 
   const maxPop = Math.max(...municipios.map((m) => m.populacao_area_risco));
+
+  const dadosImpactoPovoGente: DadosImpactoPovoGente = {
+    lugarNome: "Minas Gerais e Bacias Hidrográficas",
+    resumoImpacto:
+      "Vulnerabilidade climática não é estatística abstrata: são pessoas reais expostas a deslizamentos em encostas, enchentes em várzeas e seca severa no semiárido mineiro.",
+    saude: {
+      indicador: "Doenças de Veiculação Hídrica & Leptospirose",
+      descricao: "Aumento de internações e contaminações após episódios de cheias e inundações.",
+      fonte: "DATASUS / SIVEP-Gripe / CIEVS-MG",
+    },
+    trabalhoERenda: {
+      atividadePrincipal: "Agricultura Familiar, Pesca & Comércio de Várzea",
+      vulnerabilidade: "Perdas de safras por estiagem prolongada e destruição de pequenos comércios por inundações.",
+      fonte: "Emater-MG / IBGE",
+    },
+    moradia: {
+      situacao: "Encostas Íngremes & Fundos de Vale",
+      familiasRisco: "Mais de 440 mil pessoas em setores censitários de alto e muito alto risco em MG.",
+      fonte: "IBGE / CEMADEN (BATER)",
+    },
+    cultura: {
+      manifestacao: "Tradições Ribeirinhas & Modos de Vida do Cerrado",
+      ameacaOuPotencia: "Comunidades tradicionais que mantêm saberes ancestrais de manejo sustentável e convivência com as águas.",
+      fonte: "ONSA / IEPHA-MG",
+    },
+  };
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
@@ -207,10 +233,7 @@ export default function PaginaBasesClimaRisco() {
       </section>
 
       {/* 5. BLOCO "E NOSSO POVO?" */}
-      <BlocoPovoGente
-        frente="ambiental"
-        nomeTerritorio="Minas Gerais e Bacias Hidrográficas"
-      />
+      <BlocoPovoGente dados={dadosImpactoPovoGente} />
 
       {/* 6. SANFONA DE DIÁLOGO */}
       <section className="mb-8">

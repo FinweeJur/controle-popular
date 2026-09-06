@@ -5,6 +5,8 @@ import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import Marquee from "@/app/components/Marquee";
 import SanfonaFrentes from "@/app/components/SanfonaFrentes";
+import Epigrafe from "@/app/components/Epigrafe";
+import { citacaoPorId } from "@/lib/citacoes";
 
 // Hero narrativo (Fase 1 do plano de identidade visual —
 // `docs/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`). O wrapper
@@ -60,6 +62,7 @@ const SECOES = ZONAS_PUBLICADAS;
 
 export default async function Hub() {
   const cidades = await listarCidades();
+  const citacaoBirri = citacaoPorId("birri-utopia");
   return (
     // ⟲ 13/08, revisão de onboarding: era `<div>`, e `OuvirPagina.tsx` só
     // lê `document.querySelector("main")` — sem a tag, o botão "Ouvir esta
@@ -311,15 +314,13 @@ export default async function Hub() {
       </section>
 
       {/* MANIFESTO — ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md,
-          seção "Manifesto final"). Entra agora como texto corrido no
-          design atual; o tratamento em caps justificado, com a epígrafe
-          de Birri/Galeano e imagem full-bleed, é do sprint do
-          scrollytelling — não adiantar forma aqui. */}
-      <section className="mt-8 rounded-lg border border-border p-6">
+          seção "Manifesto final"). */}
+      <section className="mt-8 rounded-lg border border-border p-6 space-y-4">
+        {citacaoBirri && <Epigrafe citacao={citacaoBirri} variante="inicio" />}
         <h2 className="font-display text-lg font-semibold">
           O povo pergunta. O número não mente.
         </h2>
-        <p className="mt-2 text-[.95em] text-text-soft">
+        <p className="text-[.95em] text-text-soft leading-relaxed">
           De Vila Rica a Salvador, do sertão do Quebra-Quilos à Serra da Barriga, das
           sacadas de Diamantina ao Anhangabaú lotado: o povo deste país sempre perguntou,
           sempre se organizou — e sempre achou um jeito de cantar no meio do caminho.

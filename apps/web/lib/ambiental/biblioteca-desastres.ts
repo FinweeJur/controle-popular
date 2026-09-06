@@ -46,6 +46,10 @@ interface ItemFonte {
   url: string;
   fonteId: string;
   coletadoEm?: string;
+  caso_nacional?: string;
+  regiao_mg?: string;
+  acao_coletiva?: boolean;
+  instituicao_justica?: string;
 }
 
 interface DadosBiblioteca {

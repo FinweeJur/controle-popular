@@ -9,7 +9,7 @@
  */
 
 export const COBERTURA_BIBLIOTECA_DESASTRES = {
-  medidoEm: "2026-09-01",
+  medidoEm: "2026-09-06",
   total: 936,
   barradosPelaTriagem: 0,
   ficouDeFora: "ADAI (adaibrasil.org.br): 19 publicações, todas de Amazônia/Fundo Amazônia, zero com o programa 'paraopeba' — não tem documento desta bacia para catalogar. NACAB (Região 3): biblioteca de PDFs coletada (48 itens, 5 séries: Estudos e Relatórios, Reparação, Mobilização, Germinar, Nacab em Campo) — mas a página-fonte não declara data de publicação por item, só a pasta de upload (não confiável como data), então todo item do NACAB aqui tem `data: null`. Notícias das três ATIs: ficam fora desta biblioteca por decisão registrada em docs/FONTES-BIBLIOTECA-ATI.md. Programas da AEDAS fora da bacia do Doce: Itatiaiucu (135) e Veredas Sol e Lares (132) nao entram por vinculo com a bacia nao confirmado. ATIs de Mariana sem REST publica confirmada (Caritas, CTA, programa Doce da ADAI) ficam para a proxima rodada. 9 itens sem data extraivel do titulo ficaram com data: null (lacuna declarada). O wp-json responde 401; coleta por pagina. Coleta por pagina publica do WordPress (wp-json nao exposto). Itens sem data extraivel do titulo ficam com data: null (lacuna declarada). Resumo extraido do excerto da pagina de busca quando disponivel.",
