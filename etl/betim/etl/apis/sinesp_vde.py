@@ -174,9 +174,9 @@ def sync(dados_dir: str | None = None) -> None:
     Parâmetros:
     - dados_dir: pasta com os xlsx. Padrão: etl/betim/dados/temp/.
     """
-    from etl.common import get_supabase_client
+    from etl.betim.etl.common import get_supabase_client
 
-    raiz = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    raiz = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
     if dados_dir is None:
         dados_dir = os.path.join(raiz, "etl", "betim", "dados", "temp")
 
@@ -234,6 +234,73 @@ def sync(dados_dir: str | None = None) -> None:
     )
 
 
+def sync_json(dados_dir: str | None = None) -> None:
+    """Gera JSON dos dados SINESP VDE sem banco de dados."""
+    from datetime import datetime, timezone
+    import json
+
+    raiz = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
+    if dados_dir is None:
+        dados_dir = os.path.join(raiz, "etl", "betim", "dados", "temp")
+
+    mapeamento = _carregar_mapeamento(raiz)
+    print(f"[etl.apis.sinesp_vde] mapeamento: {len(mapeamento)} municipios")
+
+    arquivos = sorted(
+        f for f in os.listdir(dados_dir) if f.startswith("BancoVDE") and f.endswith(".xlsx")
+    )
+    if not arquivos:
+        print("[etl.apis.sinesp_vde] nenhum BancoVDE*.xlsx encontrado em", dados_dir)
+        return
+
+    todos_itens = []
+    total_gravado = 0
+    total_sem_map = 0
+
+    for arquivo in arquivos:
+        caminho = os.path.join(dados_dir, arquivo)
+        print(f"[etl.apis.sinesp_vde] lendo {arquivo}...")
+        rows = _ler_xlsx(caminho)
+        print(f"[etl.apis.sinesp_vde] {arquivo}: {len(rows)} linhas MG")
+
+        gravaveis, sem_map = _preparar_rows(rows, mapeamento)
+        if sem_map:
+            nomes_unicos = sorted(set(r["municipio_original"] for r in sem_map))
+            print(
+                f"[etl.apis.sinesp_vde] {arquivo}: {len(sem_map)} linhas "
+                f"sem mapeamento ({len(nomes_unicos)} municipios): "
+                f"{nomes_unicos[:5]}"
+            )
+            total_sem_map += len(sem_map)
+
+        if not gravaveis:
+            print(f"[etl.apis.sinesp_vde] {arquivo}: nada para gravar")
+            continue
+
+        for g in gravaveis:
+            g["arquivo_origem"] = arquivo
+            todos_itens.append(g)
+
+        total_gravado += len(gravaveis)
+        print(f"[etl.apis.sinesp_vde] {arquivo}: {len(gravaveis)} registros preparados")
+
+    caminho_json = os.path.join(raiz, "apps", "web", "data", "sinesp-vde.json")
+    os.makedirs(os.path.dirname(caminho_json), exist_ok=True)
+    with open(caminho_json, "w", encoding="utf-8") as f:
+        json.dump({
+            "fonte": "sinesp-vde",
+            "itens": todos_itens,
+            "geradoEm": datetime.now(timezone.utc).isoformat(),
+            "totalRegistros": total_gravado,
+            "totalSemMapeamento": total_sem_map,
+        }, f, ensure_ascii=False, indent=2)
+
+    print(
+        f"[etl.apis.sinesp_vde] TOTAL: {total_gravado} registros, "
+        f"{total_sem_map} sem mapeamento → {caminho_json}"
+    )
+
+
 if __name__ == "__main__":
     import argparse
 
@@ -243,9 +310,17 @@ if __name__ == "__main__":
         default=None,
         help="Pasta com os xlsx (padrão: etl/betim/dados/temp/)",
     )
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Gerar JSON sem banco de dados",
+    )
     args = parser.parse_args()
     try:
-        sync(args.dados_dir)
+        if args.json:
+            sync_json(args.dados_dir)
+        else:
+            sync(args.dados_dir)
     except Exception as e:
         print(f"[etl.apis.sinesp_vde] ERRO: {e}", file=sys.stderr)
         sys.exit(1)
