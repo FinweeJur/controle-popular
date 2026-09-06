@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-09-06T03:07:19.625Z",
+  "geradoEm": "2026-09-06T15:59:35.172960+00:00",
   "fontes": [
     {
       "id": "ati:aedas",
@@ -36,6 +36,12 @@
       "nome": "Fundo Brasil de Direitos Humanos — Programa Rio Doce e editais",
       "licenca": "dados-abertos-gov; conteudo da fundacao publicado em dominio publico",
       "itens": 16
+    },
+    {
+      "id": "mpmg-nucard",
+      "nome": "MPMG - NUCARD",
+      "licenca": "Lei 9.610/98",
+      "itens": 8
     }
   ],
   "ficouDeFora": "ADAI (adaibrasil.org.br): 19 publicações, todas de Amazônia/Fundo Amazônia, zero com o programa 'paraopeba' — não tem documento desta bacia para catalogar. NACAB (Região 3): biblioteca de PDFs coletada (48 itens, 5 séries: Estudos e Relatórios, Reparação, Mobilização, Germinar, Nacab em Campo) — mas a página-fonte não declara data de publicação por item, só a pasta de upload (não confiável como data), então todo item do NACAB aqui tem `data: null`. Notícias das três ATIs: ficam fora desta biblioteca por decisão registrada em docs/FONTES-BIBLIOTECA-ATI.md. Programas da AEDAS fora da bacia do Doce: Itatiaiucu (135) e Veredas Sol e Lares (132) nao entram por vinculo com a bacia nao confirmado. ATIs de Mariana sem REST publica confirmada (Caritas, CTA, programa Doce da ADAI) ficam para a proxima rodada. 9 itens sem data extraivel do titulo ficaram com data: null (lacuna declarada). O wp-json responde 401; coleta por pagina. Coleta por pagina publica do WordPress (wp-json nao exposto). Itens sem data extraivel do titulo ficam com data: null (lacuna declarada). Resumo extraido do excerto da pagina de busca quando disponivel.",
@@ -18261,6 +18267,187 @@
       "url": "https://www.fundobrasil.org.br/nosso-trabalho/apoio-a-sociedade-civil/programas-encerrados/programa-rio-doce/",
       "fonteId": "fundo-brasil",
       "coletadoEm": "2026-09-01T15:33:40.044945+00:00"
+    },
+    {
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Resolução PGJ nº 6/2025 - Criação do NUCARD",
+      "data": "2025-02-06",
+      "tipo": "Resolução",
+      "orgao": "Procuradoria-Geral de Justiça do MPMG",
+      "esfera": "estadual",
+      "uf": "MG",
+      "tags": [
+        "mpmg",
+        "nucard",
+        "resolução",
+        "estrutura"
+      ],
+      "resumo": "Cria o Núcleo de Acompanhamento de Reparações por Desastres (NUCARD) para coordenar e supervisionar a atuação institucional voltada à reparação integral dos danos socioambientais causados pelos desastres de Mariana (2015) e Brumadinho (2019).",
+      "url": "https://www.mpmg.mp.br/portal/menu/areas-de-atuacao/reparacao-por-desastres/",
+      "fonteId": "mpmg-nucard",
+      "coletadoEm": "2026-09-06T14:23:57.412748+00:00",
+      "regiao_mg": "Rio Doce",
+      "classificavel": true
+    },
+    {
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "NUCARD - Acompanhamento dos Acordos de Reparação - Mariana",
+      "data": "2025-02-06",
+      "tipo": "Acompanhamento",
+      "orgao": "MPMG - NUCARD",
+      "esfera": "estadual",
+      "uf": "MG",
+      "tags": [
+        "mpmg",
+        "nucard",
+        "mariana",
+        "samarco",
+        "fundão",
+        "acordo"
+      ],
+      "resumo": "Acompanhamento do cumprimento dos acordos de reparação relativos ao desastre de Mariana (2015), envolvendo Samarco, Vale e BHP. Monitoramento de obrigações pactuadas com as comunidades atingidas.",
+      "url": "https://www.mpmg.mp.br/portal/menu/areas-de-atuacao/reparacao-por-desastres/",
+      "fonteId": "mpmg-nucard",
+      "coletadoEm": "2026-09-06T14:23:57.412748+00:00",
+      "regiao_mg": "Rio Doce",
+      "classificavel": true
+    },
+    {
+      "desastre": "brumadinho",
+      "bacia": "paraopeba",
+      "titulo": "NUCARD - Acompanhamento dos Acordos de Reparação - Brumadinho",
+      "data": "2025-02-06",
+      "tipo": "Acompanhamento",
+      "orgao": "MPMG - NUCARD",
+      "esfera": "estadual",
+      "uf": "MG",
+      "tags": [
+        "mpmg",
+        "nucard",
+        "brumadinho",
+        "vale",
+        "paraopeba",
+        "acordo"
+      ],
+      "resumo": "Acompanhamento do cumprimento dos acordos de reparação relativos ao desastre de Brumadinho (2019), envolvendo Vale S.A. Monitoramento de obrigações pactuadas com as comunidades atingidas.",
+      "url": "https://www.mpmg.mp.br/portal/menu/areas-de-atuacao/reparacao-por-desastres/",
+      "fonteId": "mpmg-nucard",
+      "coletadoEm": "2026-09-06T14:23:57.412748+00:00",
+      "regiao_mg": "Paraopeba",
+      "classificavel": true
+    },
+    {
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Atuação do MPMG na Reparação por Desastres - Visão Geral",
+      "data": "2025-02-06",
+      "tipo": "Publicação",
+      "orgao": "MPMG",
+      "esfera": "estadual",
+      "uf": "MG",
+      "tags": [
+        "mpmg",
+        "nucard",
+        "reparação",
+        "desastres",
+        "visão-geral"
+      ],
+      "resumo": "O MPMG, atento à sua missão constitucional de defesa da ordem jurídica, do regime democrático e dos interesses sociais e individuais indisponíveis, instituiu o NUCARD para assegurar a efetividade dos acordos celebrados com as empresas responsáveis.",
+      "url": "https://www.mpmg.mp.br/portal/menu/areas-de-atuacao/reparacao-por-desastres/",
+      "fonteId": "mpmg-nucard",
+      "coletadoEm": "2026-09-06T14:23:57.412748+00:00",
+      "regiao_mg": "MG",
+      "classificavel": true
+    },
+    {
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Coordenação e Supervisão da Atuação Institucional - Reparações",
+      "data": "2025-02-06",
+      "tipo": "Acompanhamento",
+      "orgao": "MPMG - NUCARD",
+      "esfera": "estadual",
+      "uf": "MG",
+      "tags": [
+        "mpmg",
+        "nucard",
+        "coordenação",
+        "supervisão"
+      ],
+      "resumo": "O NUCARD coordena e supervisiona a atuação institucional voltada à reparação integral dos danos socioambientais, articulando-se com Órgãos de execução, Centros de Apoio Operacional e Coordenadorias Temáticas.",
+      "url": "https://www.mpmg.mp.br/portal/menu/areas-de-atuacao/reparacao-por-desastres/",
+      "fonteId": "mpmg-nucard",
+      "coletadoEm": "2026-09-06T14:23:57.412748+00:00",
+      "regiao_mg": "MG",
+      "classificavel": true
+    },
+    {
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Monitoramento das Obrigações Pactuadas - Acordos de Reparação",
+      "data": "2025-02-06",
+      "tipo": "Acompanhamento",
+      "orgao": "MPMG - NUCARD",
+      "esfera": "estadual",
+      "uf": "MG",
+      "tags": [
+        "mpmg",
+        "nucard",
+        "monitoramento",
+        "obrigações"
+      ],
+      "resumo": "Atividades do NUCARD incluem monitoramento das obrigações pactuadas, interlocução com as comunidades atingidas, promoção de ações resolutivas e proposição de medidas administrativas e judiciais.",
+      "url": "https://www.mpmg.mp.br/portal/menu/areas-de-atuacao/reparacao-por-desastres/",
+      "fonteId": "mpmg-nucard",
+      "coletadoEm": "2026-09-06T14:23:57.412748+00:00",
+      "regiao_mg": "MG",
+      "classificavel": true
+    },
+    {
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Integração entre Setores do MPMG - Reparações por Desastres",
+      "data": "2025-02-06",
+      "tipo": "Acompanhamento",
+      "orgao": "MPMG - NUCARD",
+      "esfera": "estadual",
+      "uf": "MG",
+      "tags": [
+        "mpmg",
+        "nucard",
+        "integração",
+        "setores"
+      ],
+      "resumo": "O NUCARD promove a integração entre os diversos setores do MPMG e garante a transparência e a participação social no acompanhamento das ações de reparação.",
+      "url": "https://www.mpmg.mp.br/portal/menu/areas-de-atuacao/reparacao-por-desastres/",
+      "fonteId": "mpmg-nucard",
+      "coletadoEm": "2026-09-06T14:23:57.412748+00:00",
+      "regiao_mg": "MG",
+      "classificavel": true
+    },
+    {
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Justiça Socioambiental e Prevenção - Compromisso Institucional",
+      "data": "2025-02-06",
+      "tipo": "Publicação",
+      "orgao": "MPMG",
+      "esfera": "estadual",
+      "uf": "MG",
+      "tags": [
+        "mpmg",
+        "nucard",
+        "justiça-socioambiental",
+        "prevenção"
+      ],
+      "resumo": "Com o NUCARD, o MPMG reafirma seu compromisso com a justiça socioambiental, a defesa dos direitos das populações atingidas, a responsabilização dos causadores dos danos e a construção de soluções estruturantes para não repetição de tragédias.",
+      "url": "https://www.mpmg.mp.br/portal/menu/areas-de-atuacao/reparacao-por-desastres/",
+      "fonteId": "mpmg-nucard",
+      "coletadoEm": "2026-09-06T14:23:57.412748+00:00",
+      "regiao_mg": "MG",
+      "classificavel": true
     }
   ]
 }
