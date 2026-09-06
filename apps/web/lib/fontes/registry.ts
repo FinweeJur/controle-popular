@@ -690,6 +690,21 @@ export const REGISTRY_FONTES: Record<string, FonteDef> = {
     rotaPortal: "/ambiental/crimes-socioambientais",
     ressalvaEditorial: "Status: Trânsito em julgado, vigente ou em andamento. Ações coletivas são o portal afirmando algo — rotular como gerado por máquina se aplicável.",
   },
+  "sinesp-vde": {
+    slug: "sinesp-vde",
+    nome: "SINESP VDE — Vítimas de Eventos Delituosos",
+    orgao: "Sistema Integrado de Informações de Segurança Pública (SINESP/SPCS)",
+    esfera: "estadual",
+    frente: "ambiental",
+    descricao: "Ocorrências criminais de Minas Gerais via PowerBI (572.272 registros, 853 municípios, 2022-2026).",
+    urlOficial: "https://www.sinesp.mg.gov.br",
+    licenca: "dados-abertos-gov",
+    frequenciaAtualizacao: "mensal",
+    camada: "data-json",
+    caminhoArquivo: "apps/web/data/sinesp-vde.json",
+    rotaPortal: "/ambiental/crimes-socioambientais",
+    ressalvaEditorial: "Fonte via PowerBI (download manual). Dados de 2022-2026 com 99% de match no mapeamento IBGE.",
+  },
 };
 
 /** Retorna a definição de uma fonte por seu slug único. */
