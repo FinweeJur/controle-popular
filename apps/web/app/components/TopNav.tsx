@@ -236,17 +236,20 @@ export default function TopNav() {
           onMouseLeave={onMouseLeave}
           className="relative"
         >
+          <Link
+            href="/"
+            className="font-display text-[1.05em] font-bold tracking-tight text-text transition-colors duration-150 hover:text-primary"
+          >
+            controlepopular<span className="text-primary">.br</span>
+          </Link>
           <button
             type="button"
             onClick={() => setMenuAberto((a) => !a)}
             aria-expanded={aberto}
             aria-controls="menu-portal"
-            className="flex cursor-pointer items-center gap-2 rounded-lg border border-transparent px-2 py-1 font-display text-[1.05em] font-bold tracking-tight text-text transition-colors duration-150 hover:border-border hover:bg-surface-2"
+            className="flex cursor-pointer items-center rounded-lg border border-transparent px-1.5 py-1 transition-colors duration-150 hover:border-border hover:bg-surface-2"
           >
             <Menu size={18} strokeWidth={2.5} aria-hidden="true" />
-            <span>
-              controlepopular<span className="text-primary">.br</span>
-            </span>
           </button>
           <p className="hidden whitespace-nowrap text-[0.6em] tracking-wide text-text-soft sm:block">
             O dinheiro é nosso — olho vivo — fiscaliza — coração sem medo

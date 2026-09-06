@@ -63,11 +63,18 @@ export default async function SobrePage() {
           O que é o Controle Popular
         </h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">
-          Um portal independente de transparência pública. Ele não produz informação nova:
-          reúne o que órgãos públicos já publicam — espalhado por dezenas de sistemas, em
-          linguagem administrativa — e apresenta em um só endereço, organizado por cidade e
-          por tema, em português comum. Criado em agosto de 2026, com apoio de inteligência
-          artificial em revisão permanente.
+          Sou Seu Nonô, do portal Controle Popular do ONSA — Observatório Nacional
+          Socioambiental. Com raízes na História e Geografia, esse portal se utiliza da
+          tecnologia da Inteligência Artificial pra somar na busca por justiça
+          socioambiental e fiscalização cidadã, acessível pela internet, gratuitamente
+          e sem cadastro, por qualquer celular ou computador.
+        </p>
+        <p className="max-w-2xl text-[1.05em] text-text-soft">
+          Reunindo dezenas de portais e dados públicos, estamos cobrindo milhares de
+          contratos, convênios, licenciamentos ambientais, pesquisas e autorizações
+          minerárias e de barragens, legislação ambiental e de direitos humanos
+          unificada, e o orçamento detalhado das prefeituras, governo de Minas,
+          Congresso Brasileiro e Instituições de Justiça.
         </p>
         {/* EPÍGRAFE EDITORIAL — citação autorizada no PLANO-COPY-VOZ.md (/sobre · abertura) */}
         <Epigrafe
