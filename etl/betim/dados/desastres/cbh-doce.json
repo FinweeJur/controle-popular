@@ -2,7 +2,7 @@
  "fonte": "cbh-doce",
  "nome": "CBH-Doce - Comite da Bacia Hidrografica do Rio Doce",
  "licenca": "documentos publicos de orgao colegiado de recursos hidricos; tratado como publicos",
- "geradoEm": "2026-09-01T14:14:38.159587+00:00",
+ "geradoEm": "2026-09-07T17:46:43.291610+00:00",
  "ficouDeFora": "9 itens sem data extraivel do titulo ficaram com data: null (lacuna declarada). O wp-json responde 401; coleta por pagina.",
  "itens": [
   {
@@ -22,7 +22,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2026/08/DN-136_2026-Patrocinio-ao-ENCOB-2026-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.597271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:cad41bda937c",
@@ -41,7 +41,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2026/06/DN-135_2026-Apoio-a-Semana-do-Fazendeiro-VF_-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.597271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:b1070a9c57b7",
@@ -60,7 +60,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2026/06/DN-134_2026-CT_Instrumentos-de-Gestao-CBH-Doce_VF-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.597271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:72e61d67efb3",
@@ -79,7 +79,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2026/01/DN-133_2025-Normas-e-Procedimentos-para-o-Processo-Eleitoral-2026-2030-OK.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:0ae3932423e6",
@@ -98,7 +98,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/12/DN-132_2025-Calendario-de-Reunioes-CBH-Doce-Exercicio-de-2026.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:a3355717cda1",
@@ -117,7 +117,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/12/DN-131_2025-PAP-2026-2030-ASSINADA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:dde29d20879d",
@@ -136,7 +136,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/12/DN-REFERENDADA-CBH-DOCE-130_2025-Alteracao_Minuta-CG-ANA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:84f50278e239",
@@ -155,7 +155,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/12/DN-129_2025-Estabelece-Comissao-Eleitoral-2026-2030-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:afc0be8c6165",
@@ -174,7 +174,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/11/DN-128_2025-Aprova-Minuta-CG-ANA-2026_2030-ASSINADO-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:395811178908",
@@ -193,7 +193,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/03/DN-127_2025-Aprova-Prorrogacao-da-Delegacao-da-AGEVAP-CNRH-VF-ASSINADO.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:88430e7d7b1a",
@@ -212,7 +212,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DN-126_2024-Remanejamento-Rubrica-PAP-2024_2025.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:1daf1c5e4cf5",
@@ -231,7 +231,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DN-125_2024-Calendario-de-Reunioes-CBH-Doce-Exercicio-de-2025.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:41db1c2b8fbc",
@@ -250,7 +250,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-124_2024-Revisao-DN-Diretrizes-CTS-Doce_.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.395414+00:00"
   },
   {
    "id": "cbh-doce:70e1ae9eed0d",
@@ -269,7 +269,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-123_2024-REFERENDADA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:55d04a9b85df",
@@ -288,7 +288,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-122_2024-REFERENDADA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:80ec0e9a5d40",
@@ -307,7 +307,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-121_2024-REFERENDADA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:5951cf2bf387",
@@ -326,7 +326,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-120_2024-REFERENDADA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.598271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:6abd20aa3153",
@@ -345,7 +345,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2025/01/DELIBERACAO-NORMATIVA-CBH-DOCE-119_2024-REFERENDADA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:2228733861e8",
@@ -364,7 +364,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2024/08/DELIBERACAO-NORMATIVA-CBH-DOCE-118_2024-VF-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:27bb047d7945",
@@ -383,7 +383,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2024/05/DN-117_2023-Editais-de-Chamamento-Doce.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:5f4b0d00b908",
@@ -402,7 +402,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2024/01/DN-115_2023-PAP-2024-2025_CBH-Doce_21_12_2023_assinado-2-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:72c01973cf2b",
@@ -421,7 +421,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2024/01/DN-114_2023-Alteracao-da-CTCI-CBH-Doce-DELIBERADA-2.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:503fc71ebd6f",
@@ -440,7 +440,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2023/11/DN-112_2023-Aditivo-ao-CG-ANA-no-034-2020-REFERENDADA-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:c12fa0239409",
@@ -459,7 +459,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2023/11/DN-111_2023-Renovacao-Escola-de-Projetos-REFERENDADA-Copiar-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:14ccd190eb1a",
@@ -478,7 +478,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2023/11/DN-110_2023-Custeio-Taxi-Senisi-FNCBHs-REFERENDADA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:9e03c0d7d98a",
@@ -497,7 +497,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2024/01/DN113-2023_PIRH_ENQ-CBH-Doce-18-08-2023-3.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:40483f340891",
@@ -516,7 +516,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2022/12/DN-109_2022-Calendario-de-Reunioes-2021-CBH-Doce.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:c5053b1402fe",
@@ -535,7 +535,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2022/10/DN-108_SET_2022-Aprova-TDR-P31.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:16da2267b9a8",
@@ -554,7 +554,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2022/07/DN-106_JUN_2022-Aprova-minuta-do-Edital-de-Perdas.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:d9c904afb9fc",
@@ -573,7 +573,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2022/07/DN-105_JUN_2022-Cria-o-GT-Sistema-de-Alerta-e-P31.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:39ab6626c331",
@@ -592,7 +592,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2022/08/DN_104_APROVADA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:fe327813cab6",
@@ -611,7 +611,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2022/02/DN-103_FEV2021-Normas-e-Procedimentos-para-o-Processo-Eleitoral-2022-2026-2.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:28d111483609",
@@ -630,7 +630,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2022/02/DN-102_2021-Criacao-da-Comissao-Eleitoral-CBH-Doce-ATUALIZADO.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:50cd6315bf6e",
@@ -649,7 +649,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2021/12/DN-101_2021-Calendario-de-Reunioes-2021-CBH-Doce.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:65f69db17666",
@@ -668,7 +668,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2022/01/DN-99_2021-Aprova-novo-R.I-CBH-Doce.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:219904a9e91f",
@@ -687,7 +687,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2021/11/DN-98_2021-Contratacao-Cadastro-Reserva-Escola-de-Projetos-.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:de873e7d2c91",
@@ -706,7 +706,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2021/11/DN-97_2021-Definicao-de-Cenarios-para-a-execucao-da-iniciativa-Rio-Vivo-CBH-Doce.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:6fa9d47ce9d0",
@@ -725,7 +725,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2021/07/DN-96_2021-Criacao-de-Grupo-de-Trabalho-para-Revisao-do-RI-VF.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:7a8270a5b768",
@@ -744,7 +744,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2021/07/DN-95_2021-Prorrogacao-do-Mandato-VF.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:4413e005e8b5",
@@ -763,7 +763,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2021/07/DN-94_2021-Transferencia-de-Recursos-CBH-Doce-REFERENDADA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:83fb4a5c034a",
@@ -782,7 +782,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2021/05/DN-93_2021-Atualizacao-dos-valores-de-cobranca-na-Bacia-do-Rio-Doce-.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:bf5c53942aec",
@@ -801,7 +801,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2021/04/DN-92_2021-Cria-o-Grupo-de-Trabalho-para-revisão-da-cobrança-REFERENDADA-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:33ac8664e4d6",
@@ -820,7 +820,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2021/01/DN-91_2020-Autorização-para-transferência-direta-de-recurso-e-bens-IBIO-x-AGEVAP.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:52bb505b0103",
@@ -839,7 +839,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2021/01/PAP-Consolidado-DN_ANEXO-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:47230d71548a",
@@ -858,7 +858,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-89-Retificação-PAP-2016-2020-COMPLETA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:1663ead59327",
@@ -877,7 +877,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-88-Cria-e-Compõe-o-Grupo-de-Acompanhento-do-Contrato-de-Gestão.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:906733172502",
@@ -896,7 +896,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-87_2020-Cria-o-GT-para-a-elaboração-do-PAP-2021-2025-Recursos-da-União-REFERENDADA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:1716042de159",
@@ -915,7 +915,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-86_AGOSTO_2020-Aprova-Minuta-de-CG-ANA-x-AGEVAP-REFERENDADA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:95ddb8a15e2f",
@@ -934,7 +934,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2020/11/DN-85_JULHO_2020-Adesão-ao-Protocolo-Observatório-das-Águas-REFERENDADA.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:772c0ae463a9",
@@ -953,7 +953,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2020/07/DN-84_JULHO_2020-Realização-de-Plenária-Virtual-CBH-Doce-COVID-19-Referendada.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:0aba6810e73e",
@@ -972,7 +972,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2020/07/DN-83_ABRIL_2020-Indicação-AGEVAP-CNRH-Referendada-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:4357a13417e6",
@@ -991,7 +991,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2020/04/DN-83_ABRIL_2020-Indicação-AGEVAP-CNRH-ad-referendum.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:186a16c849c6",
@@ -1010,7 +1010,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2022/05/DN-82_DEZ2019-Cria-o-Grupo-de-Revisao-do-PIRH.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:76c3401fbc44",
@@ -1029,7 +1029,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2019/12/DN-081_DEZ-2019-Atualização-PAP-Doce-2020-com-ANEXO.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:dd4447a97d47",
@@ -1048,7 +1048,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2019/12/DN-80_OUT2019-Aprova-Errata-01-Edital-Nova-Agencia-ad-referendum.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:5b0efadf2861",
@@ -1067,7 +1067,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2019/11/DN-79_OUT2019-Aprova-Edital-Nova-Agencia.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:1f646e8c8963",
@@ -1086,7 +1086,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2024/03/DN-78_OUT2019-ATUALIZADA-em-28-02-2024_assinado-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:8361c0258783",
@@ -1105,7 +1105,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2019/08/DN-77_AGO2019-Normas-e-Procedimentos-para-eleição-diretoria-executiva-2019-2021.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:eb4b62c9b6d5",
@@ -1124,7 +1124,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2019/07/DN-76_MAI2019-ad-referendum-Aprova-Estudo-de-Convergência-Fundação-Renova.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:654e6b662510",
@@ -1143,7 +1143,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2019/04/Deliberação-75-Aprova-TDR-para-revisão-PIRH-e-enquadramento.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:835966a6f998",
@@ -1162,7 +1162,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2018/12/Deliberação-74-Antecipação-de-Recursos-P-61-CBH-Doce.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:3271ab1075a2",
@@ -1181,7 +1181,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2018/12/Deliberação-73-Define-interpretação-para-o-conceito-de-diária-previsto-da-DN-68_2018.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:e86863d05a7c",
@@ -1200,7 +1200,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2018/09/Deliberação-72-Estabelece-Normas-e-Procedimentos-para-o-Processo-Eleitoral-Complementar-2017-2021.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:c154092cf2ef",
@@ -1219,7 +1219,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2018/11/Deliberação-71-Aprova-Proposta-de-SGIRS-Doce.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:7de267812af8",
@@ -1238,7 +1238,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2018/07/Deliberação-70-Comissão-Eleitoral-para-processo-complementar-2017-2021.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:74d525879e85",
@@ -1257,7 +1257,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2018/07/Deliberação-69-Mecanismos-e-Valores-de-Cobrança-2018.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:40bdbc75ecaa",
@@ -1276,7 +1276,7 @@
    "resumo": null,
    "url": "https://www.cbhdoce.org.br/wp-content/uploads/2019/10/Moção-nº-01_2018-Cobrança-no-ES-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+   "coletadoEm": "2026-09-07T17:46:43.291610+00:00"
   },
   {
    "id": "cbh-doce:213ee00a87a9",
@@ -1295,7 +1295,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2018/04/Deliberação-68-Define-normas-para-gastos-no-programa-P61.2-e-revoga-a-DN-nº-55.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:a890283b268f",
@@ -1314,7 +1314,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Delibera%C3%A7%C3%A3o-67-Estabelece-Normas-e-Procedimentos-para-o-Processo-Eleitoral-2017-2021.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:a06a9ab04eb2",
@@ -1333,7 +1333,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-66-Indica-representante-Conselho-Curador-Fundação-Renova_vf.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:fdccb19004f7",
@@ -1352,7 +1352,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-65-CBH-Doce-Comissão-Eleitoral-2017-2021_vf.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:ae7d6749d77a",
@@ -1371,7 +1371,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2018/08/Deliberação-64-Define-normas-para-participação-no-ENCOB.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:4637bbcda248",
@@ -1390,7 +1390,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-63-Processo-Eleitoral-CBH-Doce-2013-2017_vf.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:e0c1004aa37a",
@@ -1409,7 +1409,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-62-Atribuições-da-Diretoria-Colegiada-do-CBH-Doce-Revoga-DN-40.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:0deea64d93cf",
@@ -1428,7 +1428,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-61-Institui-CTI_CBH-Doce-Revoga-DN-29-e-17.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:0c1f8f947d06",
@@ -1447,7 +1447,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-60-Aprova-terceiro-termo-aditivo-ANA-IBIO.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:61123f42cbba",
@@ -1466,7 +1466,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-59-Aprova-indicação-de-areas-nascentes-TTAC.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.604271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:eaea3b96dbe3",
@@ -1485,7 +1485,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-58-Indica-representantes-Conselho-Consultivo-da-Renova_vfinal.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:d043e588aa1b",
@@ -1504,7 +1504,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-55-Define-normas-para-gastos-no-programa-P61.2_vf.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:deea4e1fd9b6",
@@ -1523,7 +1523,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-57-ad-referendum-Aprova-terceiro-termo-aditivo-ANA-IBIO.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:941d8a0d3a31",
@@ -1542,7 +1542,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-56-ad-referendum-Antecipaçao-de-recursos-P61.2-ANA-CBH-Santo-Antonio.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:7ba9ec8eb85f",
@@ -1561,7 +1561,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-54-ad-referendum-Antecipaçao-de-recursos-P61.2-ANA-CBH-Suaçuí.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:9fedb1516260",
@@ -1580,7 +1580,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-53-ad-referendum-Antecipaçao-de-recursos-P61.2-ANA-CBH-Piranga.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:0b9532e5c003",
@@ -1599,7 +1599,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-52-Realocação-de-recursos-P61.2-ANA-CBH-Doce.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:5930c3fbca0e",
@@ -1618,7 +1618,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-52_Anexo_PAP_Doce_2016_2020_Alteração_Deliberação_48_2015-COMPLETO.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:7e264d5000eb",
@@ -1637,7 +1637,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-051-Ad-Referendum-Aprova-Realocação-do-PAP.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:d4f9d73a1efe",
@@ -1656,7 +1656,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-51_Anexo_PAP_Doce_2016_2020_Alteração_Deliberação_48_2015-COMPLETO.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:28c9e80cbd59",
@@ -1675,7 +1675,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-50-Define-normas-para-participação-no-ENCOB.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:7523c2d5ac4c",
@@ -1694,7 +1694,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2016/12/Deliberação-49-Aprova-prorrogação-do-mandato-da-Diretoria-Executiva-2014-2016.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:20bfc243a3c6",
@@ -1713,7 +1713,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-48-Institui-o-Plano-de-Aplicação-Plurianual-2016-2020.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:772626828ab1",
@@ -1732,7 +1732,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-XX_Anexos_I_II_e_III_PAP_Doce_2016_2020_V4_Colegiada_30_11_15.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:fe7a4f30c020",
@@ -1751,7 +1751,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-47-Aprova-segundo-termo-aditivo-ANA-IBIO-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:f6c2be0a6049",
@@ -1770,7 +1770,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2019/09/DN-46_JUN2015-Aprova-indicação-IBIO-como-delegatária.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:e717bd0d6fa5",
@@ -1789,7 +1789,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-AD-Referendum-Nº-45-de-18-de-março-de-2015.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:873bb4df068f",
@@ -1808,7 +1808,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/DELIBERAÇÃO-Nº-44-CTGEC.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:2fe9408dcf0d",
@@ -1827,7 +1827,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-43-Designa-Membros-do-Grupo-de-Acompanhamento-do-CG-72_2011.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:7db50f337897",
@@ -1846,7 +1846,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-42-Altera-PAP-Doce-2012-a-2015-Final.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:a1bd0d2f267f",
@@ -1865,7 +1865,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-nº41-Mandato-Diretoria-CBH-Doce.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.606271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:2ceab98528ca",
@@ -1884,7 +1884,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-40-Atribuições-da-Diretoria-Colegiada.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:b199980479c3",
@@ -1903,7 +1903,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-39-Normas-e-procedimentos-processo-complementar.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:4f84e3476db9",
@@ -1922,7 +1922,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-38_2014-GT-Processo-Complementar1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:09cdfd4a8fe0",
@@ -1941,7 +1941,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-37-Prorrogação-do-Mandato-2009-2013.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:6c20e4da1d56",
@@ -1960,7 +1960,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-36-CBH-Doce-Processo-Eleitoral-2013-2017.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:62f0140b5655",
@@ -1979,7 +1979,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-35-Estabelece-Normas-e-Procedimentos-para-o-Processo-Eleitoral-2013-2017.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:1c6f02f9c229",
@@ -1998,7 +1998,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Deliberação-34-Designa-Membros-do-Grupo-de-Acompanhamento-do-CG-72_2011-CBH-Doce-13_12_12.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:d874cad579af",
@@ -2017,7 +2017,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2014/09/Delibera%C3%A7%C3%A3o-33-Grupo-de-Acompanhamento-do-CG-72_2011-CBH-Doce-13_12_12.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:fa1775823468",
@@ -2036,7 +2036,7 @@
    "resumo": null,
    "url": "https://www.cbhdoce.org.br/wp-content/uploads/2014/09/Moção-001_2012.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+   "coletadoEm": "2026-09-07T17:46:43.291610+00:00"
   },
   {
    "id": "cbh-doce:12f303ba111c",
@@ -2055,7 +2055,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_32_Institui.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:08712450442b",
@@ -2074,7 +2074,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_031.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:58da8e1c8a1b",
@@ -2093,7 +2093,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_030.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.607271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:d8f16d2268a6",
@@ -2112,7 +2112,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_029.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:030c0588eef2",
@@ -2131,7 +2131,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_028.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.399411+00:00"
   },
   {
    "id": "cbh-doce:18d5cde0be3b",
@@ -2150,7 +2150,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_027.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:1eec5d3f5933",
@@ -2169,7 +2169,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_027_anexo.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:d58f519264e3",
@@ -2188,7 +2188,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_026.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:133218e45d71",
@@ -2207,7 +2207,7 @@
    "resumo": null,
    "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_001_2011.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+   "coletadoEm": "2026-09-07T17:46:43.291610+00:00"
   },
   {
    "id": "cbh-doce:bb633788b6d5",
@@ -2226,7 +2226,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_024.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:26bfc3b609be",
@@ -2245,7 +2245,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_023.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:c53bfaa4f491",
@@ -2264,7 +2264,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_022.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:30d52b73fec1",
@@ -2283,7 +2283,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_021.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:efc19d019bdc",
@@ -2302,7 +2302,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_020.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.608271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:7e9b7c3d0ab1",
@@ -2321,7 +2321,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_019.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:33fda6e07e09",
@@ -2340,7 +2340,7 @@
    "resumo": null,
    "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_005.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+   "coletadoEm": "2026-09-07T17:46:43.291610+00:00"
   },
   {
    "id": "cbh-doce:33321b0fc16f",
@@ -2359,7 +2359,7 @@
    "resumo": null,
    "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_004.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+   "coletadoEm": "2026-09-07T17:46:43.291610+00:00"
   },
   {
    "id": "cbh-doce:d064bba1307b",
@@ -2378,7 +2378,7 @@
    "resumo": null,
    "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_003.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+   "coletadoEm": "2026-09-07T17:46:43.291610+00:00"
   },
   {
    "id": "cbh-doce:0a3bdc3d22a5",
@@ -2397,7 +2397,7 @@
    "resumo": null,
    "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_002.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+   "coletadoEm": "2026-09-07T17:46:43.291610+00:00"
   },
   {
    "id": "cbh-doce:8696878fde68",
@@ -2416,7 +2416,7 @@
    "resumo": null,
    "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_001.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:38.157585+00:00"
+   "coletadoEm": "2026-09-07T17:46:43.291610+00:00"
   },
   {
    "id": "cbh-doce:37c01573383b",
@@ -2435,7 +2435,7 @@
    "resumo": null,
    "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_002-2006.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:38.158587+00:00"
+   "coletadoEm": "2026-09-07T17:46:43.291610+00:00"
   },
   {
    "id": "cbh-doce:73c7b6c67280",
@@ -2454,7 +2454,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_018.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:fb6a6de32006",
@@ -2473,7 +2473,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2019/09/DN-18_DEZ2005-ad-referendum-Aprova-TDR-Final-ANEXO.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:e4014cc1144a",
@@ -2492,7 +2492,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_017.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:2dc8cb2a4cc9",
@@ -2511,7 +2511,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_016.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:d6a98f2e2c8e",
@@ -2530,7 +2530,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_015.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:f02b953ef047",
@@ -2549,7 +2549,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_014.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:2d9df05a0f74",
@@ -2568,7 +2568,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_013.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:db1daf8e3556",
@@ -2587,7 +2587,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_012.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:cf25af4ebc61",
@@ -2606,7 +2606,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_011.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:480d15d3b33f",
@@ -2625,7 +2625,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_010.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.609272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:7fe0be585a63",
@@ -2644,7 +2644,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_009.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:108fdcdc329d",
@@ -2663,7 +2663,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_008.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:81906ac74a50",
@@ -2682,7 +2682,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_007.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:a1197bc961de",
@@ -2701,7 +2701,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_006.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:05e3037f1890",
@@ -2720,7 +2720,7 @@
    "resumo": null,
    "url": "https://www.cbhdoce.org.br//wp-content/uploads/2014/09/Mocao_N_001-2004.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:38.158587+00:00"
+   "coletadoEm": "2026-09-07T17:46:43.291610+00:00"
   },
   {
    "id": "cbh-doce:53259e5018c6",
@@ -2739,7 +2739,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_005.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:374ddbc45dde",
@@ -2758,7 +2758,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_004.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:33e970efe285",
@@ -2777,7 +2777,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_003.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:fe937ebd83e9",
@@ -2796,7 +2796,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_002.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:61dee1972bd0",
@@ -2815,7 +2815,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br//wp-content/uploads/2014/09/Deliberacao_N_001.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.610271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.400411+00:00"
   },
   {
    "id": "cbh-doce:207a43de9e68",
@@ -2834,7 +2834,7 @@
    "resumo": null,
    "url": "https://www.cbhdoce.org.br/wp-content/uploads/2024/01/Relacao-de-Termos-de-Colaboracao-Tecnica-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.597271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.394411+00:00"
   },
   {
    "id": "cbh-doce:ed4970414475",
@@ -2853,7 +2853,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2024/01/8-DN-116_2023-Calendario-de-Reunioes-CBH-Doce-Exercicio-de-2024-ASSINADO.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.599270+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:bd0a785a988a",
@@ -2872,7 +2872,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2022/10/DN-DOCE-107_JUN_2022-Aprova-processo-licitatorio-Produtora.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.396412+00:00"
   },
   {
    "id": "cbh-doce:c961c77aaf58",
@@ -2891,7 +2891,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2022/08/DN_100_2021_APROVADA-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.600271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:de0a9d7cd291",
@@ -2910,7 +2910,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2022/01/Regimento-Interno-CBH-Doce-Consolidado-Dez_2021-VIGENTE-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.601271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:14ccecdf96a6",
@@ -2929,7 +2929,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2019/11/ERRATA-01-Edital-01_2019.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.397411+00:00"
   },
   {
    "id": "cbh-doce:bc862a0df347",
@@ -2948,7 +2948,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2019/11/Edital-Seleção-AGB-Plenária-CBH-Doce-31_10_2019.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.602271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:9e302df5e5a1",
@@ -2967,7 +2967,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2018/11/Proposta-GT-Residuos-21.08.18-Versão-final-1.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.603271+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   },
   {
    "id": "cbh-doce:aa96bf25e4a0",
@@ -2986,7 +2986,7 @@
    "resumo": null,
    "url": "https://cbhdoce.org.br/wp-content/uploads/2018/05/Nota-Técnica-v.FINAL-ANEXOS-CONSOLIDADO.pdf",
    "fonteId": "cbh-doce",
-   "coletadoEm": "2026-09-01T14:14:37.605272+00:00"
+   "coletadoEm": "2026-09-07T17:46:42.398411+00:00"
   }
  ]
 }

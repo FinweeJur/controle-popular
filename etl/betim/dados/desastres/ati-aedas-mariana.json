@@ -2,7 +2,7 @@
  "fonte": "ati-aedas-mariana",
  "nome": "AEDAS - Assessoria Tecnica Independente - Bacia do Rio Doce (Mariana)",
  "licenca": "nao declarada - tratado como direitos reservados (Lei 9.610/98)",
- "geradoEm": "2026-09-01T11:17:15.434093+00:00",
+ "geradoEm": "2026-09-07T17:46:40.948432+00:00",
  "ficouDeFora": "Programas da AEDAS fora da bacia do Doce: Itatiaiucu (135) e Veredas Sol e Lares (132) nao entram por vinculo com a bacia nao confirmado. ATIs de Mariana sem REST publica confirmada (Caritas, CTA, programa Doce da ADAI) ficam para a proxima rodada.",
  "itens": [
   {
@@ -24,7 +24,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-54-direitos-humanos-e-a-politica-nacional-de-direitos-das-populacoes-atingidas/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:12.816748+00:00"
+   "coletadoEm": "2026-09-07T17:46:37.818009+00:00"
   },
   {
    "id": "aedas-mariana:43247",
@@ -46,7 +46,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/10-edicao-jornal-territorios-estrategias-coletivas-impulsionam-a-reparacao-nas-comunidades-atingidas/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:12.816748+00:00"
+   "coletadoEm": "2026-09-07T17:46:37.818009+00:00"
   },
   {
    "id": "aedas-mariana:43238",
@@ -65,7 +65,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-53-acompanhamento-das-acoes-de-silagem-no-ambito-da-reparacao-da-bacia-do-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:12.816748+00:00"
+   "coletadoEm": "2026-09-07T17:46:37.818009+00:00"
   },
   {
    "id": "aedas-mariana:43281",
@@ -85,7 +85,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-52-rio-doce-participativo-e-a-chamada-publica-de-projetos-estruturantes/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:12.816748+00:00"
+   "coletadoEm": "2026-09-07T17:46:37.818009+00:00"
   },
   {
    "id": "aedas-mariana:43166",
@@ -102,7 +102,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-50-especial-50-memorias-de-lutas-e-vivencias-parte-2/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:43139",
@@ -121,7 +121,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-50-especial-50-memorias-de-lutas-e-vivencias/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42998",
@@ -140,7 +140,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/associacoes-comunitarias-e-o-anexo-6-guia-popular-sobre-regularizacao-de-associacoes-e-participacao-em-projetos-comunitarios-do-fundo-de-participacao-social/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42989",
@@ -159,7 +159,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-49-o-trabalho-da-aedas-no-apoio-as-comunidades-atingidas-para-o-edital-rio-doce-participativo/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42976",
@@ -178,7 +178,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-ep-48-turno-de-dialogo-aberto-amplia-voz-das-comunidades-atingidas-em-atividade-em-ipatinga/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42928",
@@ -197,7 +197,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/edital-rio-doce-participativo-com-linguagem-acessivel/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42791",
@@ -216,7 +216,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-47-programa-para-mulheres-abre-consulta-publica-sobre-termo-de-referencia-para-contratacao-de-entidade-de-apoio-tecnico/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42788",
@@ -233,7 +233,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-46-comissoes-do-medio-rio-doce-assessoradas-pela-aedas-realizam-assembleias-territoriais/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42770",
@@ -252,7 +252,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/09-edicao-jornal-territorios-quando-as-comunidades-se-movimentam-a-reparacao-se-movimenta/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42701",
@@ -271,7 +271,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-45-entenda-a-busca-pela-regulamentacao-da-politica-nacional-dos-direitos-das-populacoes-atingidas-por-barragens-pnab/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:12.816748+00:00"
+   "coletadoEm": "2026-09-07T17:46:37.818009+00:00"
   },
   {
    "id": "aedas-mariana:42624",
@@ -288,7 +288,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-44-pessoas-atingidas-da-bacia-dorio-doce-podem-acessar-informes-de-rendimentos-de-2025-pelo-portal-do-usuario/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42598",
@@ -307,7 +307,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-43-programa-especial-de-saude-do-rio-doce-inaugura-escritorio-em-governador-valadares/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42531",
@@ -326,7 +326,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-42-cfps-discute-projetos-comunitarios-e-acompanhamento-da-execucao-do-novo-acordo-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42445",
@@ -345,7 +345,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-41-retomada-economica-e-tema-de-apresentacoes-e-dialogos-entre-governo-federal-e-comunidades-atingidas/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42401",
@@ -364,7 +364,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/participacao-social-cfps-bacia-do-rio-doce-e-litoral-norte-capixaba-fundo-de-participacao-social/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42388",
@@ -383,7 +383,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-ed-40-gaas-debatem-fundo-de-participacao-social-e-projetos-comunitarios-nos-territorios-atingidos/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42319",
@@ -400,7 +400,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-39-caravana-do-mds-sobre-profort-suas-informa-a-populacao-prazo-para-entrega-do-relatorio-de-exercicio-da-atividade-pesqueira-prorrogado/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42284",
@@ -417,7 +417,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/08-edicao-jornal-territorios-organizacao-popular-atingidosas-na-consolidacao-de-direitos-e-conquistas/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42279",
@@ -436,7 +436,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-38-projetos-comunitarios-na-reparacao-da-bacia-do-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:41928",
@@ -455,7 +455,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-ed-37-participacao-informada-a-ferramenta-do-povo-protagonista-da-reparacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:41555",
@@ -474,7 +474,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-35-analise-das-demandas-comuns-de-saude-das-regioes-do-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:41552",
@@ -493,7 +493,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/analise-das-demandas-comuns-de-saude-das-regioes-do-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:41509",
@@ -510,7 +510,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/anexo-6-do-acordo-de-repactuacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:13.055486+00:00"
+   "coletadoEm": "2026-09-07T17:46:38.255708+00:00"
   },
   {
    "id": "aedas-mariana:41508",
@@ -527,7 +527,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/cartilha-tcle/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:13.055486+00:00"
+   "coletadoEm": "2026-09-07T17:46:38.255708+00:00"
   },
   {
    "id": "aedas-mariana:33594",
@@ -544,7 +544,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/novo-acordo-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:33595",
@@ -561,7 +561,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/funai-estatuto-do-indio/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:33596",
@@ -578,7 +578,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/lei-estadual-sobre-povos-e-comunidades-tradicionais/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.915690+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:33597",
@@ -595,7 +595,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/lei-peab/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:33598",
@@ -612,7 +612,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/lei-pnab/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:33599",
@@ -629,7 +629,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/cartilha-organizacoes-comunitarias-e-da-sociedade-civil/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:33579",
@@ -648,7 +648,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-34-pessoas-atingidas-tomam-posse-na-imps-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:33546",
@@ -674,7 +674,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/07-edicao-jornal-territorios-10-anos-pessoas-atingidas-relembram-historias-de-luta-e-esperanca/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:33593",
@@ -693,7 +693,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/10-anos-de-luta-essa-historia-nao-se-rompe/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:33578",
@@ -712,7 +712,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-32-pessoas-atingidas-tomam-posse-no-conselho-federal-de-participacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:33577",
@@ -732,7 +732,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-31-organizacoes-populares-associacoes-e-cooperativas/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:42433",
@@ -752,7 +752,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/projetos-comunitarios-construindo-a-reparacao-coletiva/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.299771+00:00"
   },
   {
    "id": "aedas-mariana:33587",
@@ -771,7 +771,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/para-a-repactuacao-justica-mobilizacao-das-pessoas-atingidas-cobra-acordo-de-repactuacao-justo/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33576",
@@ -791,7 +791,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-30-programa-para-mulheres-ressarcimento-da-previdencia-de-pescadores-artesanais/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33545",
@@ -810,7 +810,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/06-edicao-jornal-territorios-programa-de-transferencia-de-renda-comeca-a-ser-executado-na-bacia-do-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33575",
@@ -830,7 +830,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-29-atendimentos-individuais-ptr-ministerio-da-saude-visita-quilombos/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33574",
@@ -849,7 +849,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-28-conselho-federal-de-participacao-social-tem-eleitosas-definidosas/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33573",
@@ -868,7 +868,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-27-o-cadunico-no-processo-de-reparacao-seis-meses-do-novo-acordo/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33600",
@@ -888,7 +888,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/folder-cadunico-sua-porta-de-entrada-para-beneficios-sociais-e-reparacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33544",
@@ -909,7 +909,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/05-edicao-jornal-territorios-participacao-popular-e-projetos-comunitarios-na-busca-por-reparacao-integral/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33572",
@@ -930,7 +930,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-26-pid-prorrogado-caravana-especial-de-saude-e-comissoes-territoriais/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33571",
@@ -950,7 +950,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-25-camaras-e-conselhos-municipais-de-saude-portaria-31-ief-e-propesca/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33601",
@@ -967,7 +967,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/orientacoes-sobre-o-conselho-municipal-de-saude-e-conferencia-municipal-de-saude/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33570",
@@ -987,7 +987,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-24-prazos-e-informacoes-para-adesao-ao-pid-atingidos-falam-sobre-gaas/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33602",
@@ -1004,7 +1004,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/cartilha-eixos-tematicos/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33603",
@@ -1023,7 +1023,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/indenizacoes-individuais-sap-e-pid/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33569",
@@ -1042,7 +1042,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-23-abril-indigena-ipcts-no-novo-acordo-de-reparacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33568",
@@ -1062,7 +1062,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-22-sistema-agro-e-pesca-e-programa-de-indenizacao-definitiva-pid/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33567",
@@ -1081,7 +1081,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-21-reivindicacoes-de-comunidades-atingidas-durante-a-caravana-do-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33543",
@@ -1100,7 +1100,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/04-edicao-jornal-territorios-a-luta-das-mulheres-atingidas-pela-reparacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33566",
@@ -1119,7 +1119,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-20-14-de-marco-dia-internacional-de-luta-contra-as-barragens/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33565",
@@ -1138,7 +1138,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-19-a-participacao-social-no-novo-acordo-de-reparacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33564",
@@ -1158,7 +1158,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-18-o-direito-a-assessoria-tecnica-na-bacia-do-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33542",
@@ -1177,7 +1177,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/03-edicao-jornal-territorios-programa-de-transferencia-de-renda-sera-implementado-em-territorios-atingidos-nas-modalidades-ptr-rural-e-ptr-pesca/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33592",
@@ -1196,7 +1196,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-04-como-ficam-as-indenizacoes/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33591",
@@ -1215,7 +1215,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-03-questoes-sobre-cadastros-da-reparacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33590",
@@ -1234,7 +1234,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-02-cadastro-nacional-de-agricultura-familiar/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33589",
@@ -1253,7 +1253,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/medio-rio-doce-tira-duvidas-01-cadastro-nacional-de-agricultura-familiar/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33588",
@@ -1272,7 +1272,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/informacao-e-direito-ptr-rural-e-pesca-previstos-no-acordo-de-reparacao-da-bacia-do-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33563",
@@ -1291,7 +1291,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/estacao-rio-doce-edicao-17-cadastro-nacional-da-agricultura-familiar-no-contexto-da-reparacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33562",
@@ -1311,45 +1311,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-16-enchentes-e-dados-de-espacos-participativos-da-aedas/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
-  },
-  {
-   "id": "aedas-mariana:33621",
-   "desastre": "mariana",
-   "bacia": "doce",
-   "titulo": "Plano de Trabalho Território 7 – Resplendor e Itueta",
-   "data": "2025-01-01",
-   "tipo": "Sem classificacao",
-   "tipoOrigem": "Sem classificacao",
-   "orgao": "AEDAS",
-   "esfera": "ati",
-   "uf": "MG",
-   "tags": [
-    "Plano de Trabalho"
-   ],
-   "resumo": null,
-   "url": "https://aedasmg.org/documento/plano-de-trabalho-territorio-7-resplendor-e-itueta/",
-   "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
-  },
-  {
-   "id": "aedas-mariana:33622",
-   "desastre": "mariana",
-   "bacia": "doce",
-   "titulo": "Plano de Trabalho Território 8 – Aimorés",
-   "data": "2025-01-01",
-   "tipo": "Sem classificacao",
-   "tipoOrigem": "Sem classificacao",
-   "orgao": "AEDAS",
-   "esfera": "ati",
-   "uf": "MG",
-   "tags": [
-    "Plano de Trabalho"
-   ],
-   "resumo": null,
-   "url": "https://aedasmg.org/documento/plano-de-trabalho-territorio-8-aimores/",
-   "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33625",
@@ -1368,7 +1330,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/declaracao-de-igualdade-salarial-e-relatorio-de-criterios-remuneratorios-aedas-1o-semestre-2/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33626",
@@ -1387,7 +1349,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/declaracao-de-igualdade-salarial-e-relatorio-de-criterios-remuneratorios-aedas-2o-semestre-2/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33615",
@@ -1406,7 +1368,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/contrato-de-gestao-territorio-3-vale-do-aco/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33616",
@@ -1425,7 +1387,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/contrato-de-gestao-territorio-6-conselheiro-pena/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33617",
@@ -1444,7 +1406,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/contrato-de-gestao-territorio-7-resplendor-e-itueta/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33618",
@@ -1463,7 +1425,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/contrato-de-gestao-territorio-8-aimores/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33619",
@@ -1482,7 +1444,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/plano-de-trabalho-territorio-3-vale-do-aco/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33620",
@@ -1501,7 +1463,45 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/plano-de-trabalho-territorio-6-conselheiro-pena/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.916687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
+  },
+  {
+   "id": "aedas-mariana:33621",
+   "desastre": "mariana",
+   "bacia": "doce",
+   "titulo": "Plano de Trabalho Território 7 – Resplendor e Itueta",
+   "data": "2025-01-01",
+   "tipo": "Sem classificacao",
+   "tipoOrigem": "Sem classificacao",
+   "orgao": "AEDAS",
+   "esfera": "ati",
+   "uf": "MG",
+   "tags": [
+    "Plano de Trabalho"
+   ],
+   "resumo": null,
+   "url": "https://aedasmg.org/documento/plano-de-trabalho-territorio-7-resplendor-e-itueta/",
+   "fonteId": "ati-aedas-mariana",
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
+  },
+  {
+   "id": "aedas-mariana:33622",
+   "desastre": "mariana",
+   "bacia": "doce",
+   "titulo": "Plano de Trabalho Território 8 – Aimorés",
+   "data": "2025-01-01",
+   "tipo": "Sem classificacao",
+   "tipoOrigem": "Sem classificacao",
+   "orgao": "AEDAS",
+   "esfera": "ati",
+   "uf": "MG",
+   "tags": [
+    "Plano de Trabalho"
+   ],
+   "resumo": null,
+   "url": "https://aedasmg.org/documento/plano-de-trabalho-territorio-8-aimores/",
+   "fonteId": "ati-aedas-mariana",
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33561",
@@ -1520,7 +1520,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-15-entenda-sobre-o-caf-e-rgp/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33604",
@@ -1539,7 +1539,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/indenizacoes-individuais-anexo-2/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33605",
@@ -1558,7 +1558,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/livreto-programa-de-transferencia-de-renda-ptr-anexo-4/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33606",
@@ -1577,7 +1577,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/caderno-tira-duvidas-agm-modulo-01/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33560",
@@ -1594,7 +1594,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-14-aedas-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33583",
@@ -1613,7 +1613,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/grupo-de-atingidos-e-atingidas-gaa-a-forca-popular-na-conquista-de-direitos/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33559",
@@ -1632,7 +1632,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-ed-13-principais-duvidas-sobre-indenizacoes-individuais-na-repactuacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33541",
@@ -1658,7 +1658,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/02-edicao-jornal-territorios-povo-em-luta-rio-de-esperanca-9-anos-em-busca-de-justica/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:41681",
@@ -1677,7 +1677,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-12-seminario-mulheres-e-reparacao-e-acordo-de-repactuacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.300771+00:00"
   },
   {
    "id": "aedas-mariana:33540",
@@ -1696,7 +1696,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/01-edicao-tematica-do-jornal-territorios-controle-social-e-o-papel-da-assessoria-tecnica-independente-ati/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33558",
@@ -1715,7 +1715,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/especial-ciranda-historias-e-direitos-das-criancas-do-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33557",
@@ -1732,7 +1732,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-11-aedas-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33556",
@@ -1749,7 +1749,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-10-registro-familiar-e-prestacao-de-contas/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33586",
@@ -1768,7 +1768,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/para-a-repactuacao-participacao-pessoas-atingidas-do-medio-rio-doce-cobram-por-transparencia/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33585",
@@ -1787,7 +1787,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/de-vozes-a-acoes-pessoas-atingidas-na-consolidacao-do-sistema-de-governanca-da-bacia-do-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33539",
@@ -1807,7 +1807,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/01-edicao-do-jornal-territorios-mobilizacao-social-na-garantia-de-direitos/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33555",
@@ -1824,7 +1824,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-09-aedas-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33554",
@@ -1843,7 +1843,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-08-povos-e-comunidades-tradicionais-no-sistema-de-governanca/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33607",
@@ -1862,7 +1862,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/protocolo-de-consulta-previa-e-informada-da-comunidade-ucho-betlharo-puri/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33553",
@@ -1879,7 +1879,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-07-aedas-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33584",
@@ -1898,7 +1898,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/dotapa-muum-puriuma-moemlitonema-pury-sobreviventes-do-vale/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33552",
@@ -1915,7 +1915,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-06-aedas-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33551",
@@ -1932,7 +1932,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-05-aedas-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33550",
@@ -1949,7 +1949,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-04-aedas-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33623",
@@ -1968,7 +1968,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/declaracao-de-igualdade-salarial-e-relatorio-de-criterios-remuneratorios-aedas-1o-semestre/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33624",
@@ -1987,7 +1987,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/declaracao-de-igualdade-salarial-e-relatorio-de-criterios-remuneratorios-aedas-2o-semestre/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33549",
@@ -2004,7 +2004,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-03-aedas-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33548",
@@ -2021,7 +2021,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-02-aedas-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33547",
@@ -2040,7 +2040,75 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/programa-estacao-rio-doce-edicao-01-aedas-medio-rio-doce/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
+  },
+  {
+   "id": "aedas-mariana:33611",
+   "desastre": "mariana",
+   "bacia": "doce",
+   "titulo": "Cartilha 4 – Reparação pelas Mãos dos Atingidos e Atingidas: Fundo Popular para Projetos Comunitários",
+   "data": "2023-11-05",
+   "tipo": "Cartilhas",
+   "tipoOrigem": "Cartilhas",
+   "orgao": "AEDAS",
+   "esfera": "ati",
+   "uf": "MG",
+   "tags": [],
+   "resumo": null,
+   "url": "https://aedasmg.org/documento/cartilha-4-reparacao-pelas-maos-dos-atingidos-e-atingidas-fundo-popular-para-projetos-comunitarios/",
+   "fonteId": "ati-aedas-mariana",
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
+  },
+  {
+   "id": "aedas-mariana:33612",
+   "desastre": "mariana",
+   "bacia": "doce",
+   "titulo": "Cartilha 5 – Auxílio Financeiro Emergencial (AFE) para Todas as Pessoas!",
+   "data": "2023-11-05",
+   "tipo": "Cartilhas",
+   "tipoOrigem": "Cartilhas",
+   "orgao": "AEDAS",
+   "esfera": "ati",
+   "uf": "MG",
+   "tags": [],
+   "resumo": null,
+   "url": "https://aedasmg.org/documento/cartilha-5-auxilio-financeiro-emergencial-afe-para-todas-as-pessoas/",
+   "fonteId": "ati-aedas-mariana",
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
+  },
+  {
+   "id": "aedas-mariana:33613",
+   "desastre": "mariana",
+   "bacia": "doce",
+   "titulo": "Cartilha 6 – Fundo de Reparação para as Vítimas das Enchentes de Rejeitos",
+   "data": "2023-11-05",
+   "tipo": "Cartilhas",
+   "tipoOrigem": "Cartilhas",
+   "orgao": "AEDAS",
+   "esfera": "ati",
+   "uf": "MG",
+   "tags": [],
+   "resumo": null,
+   "url": "https://aedasmg.org/documento/cartilha-6-fundo-de-reparacao-para-as-vitimas-das-enchentes-de-rejeitos/",
+   "fonteId": "ati-aedas-mariana",
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
+  },
+  {
+   "id": "aedas-mariana:33614",
+   "desastre": "mariana",
+   "bacia": "doce",
+   "titulo": "Cartilha 7 – Indenização Justa, Já!",
+   "data": "2023-11-05",
+   "tipo": "Cartilhas",
+   "tipoOrigem": "Cartilhas",
+   "orgao": "AEDAS",
+   "esfera": "ati",
+   "uf": "MG",
+   "tags": [],
+   "resumo": null,
+   "url": "https://aedasmg.org/documento/cartilha-7-indenizacao-justa-ja/",
+   "fonteId": "ati-aedas-mariana",
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33582",
@@ -2059,7 +2127,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/08-anos-de-luta-na-bacia-do-rio-doce-povo-atingido-segue-em-busca-de-direitos-e-participacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33608",
@@ -2076,7 +2144,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/cartilha-1-proposta-de-direito-a-participacao-informada-e-governanca-popular-do-acordo-de-repactuacao/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33609",
@@ -2093,7 +2161,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/cartilha-2-ninguem-fica-pra-tras-uma-repactuacao-para-todos-e-todas/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33610",
@@ -2110,75 +2178,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/cartilha-3-rio-doce-sem-fome-programa-de-transferencia-de-renda/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
-  },
-  {
-   "id": "aedas-mariana:33611",
-   "desastre": "mariana",
-   "bacia": "doce",
-   "titulo": "Cartilha 4 – Reparação pelas Mãos dos Atingidos e Atingidas: Fundo Popular para Projetos Comunitários",
-   "data": "2023-11-05",
-   "tipo": "Cartilhas",
-   "tipoOrigem": "Cartilhas",
-   "orgao": "AEDAS",
-   "esfera": "ati",
-   "uf": "MG",
-   "tags": [],
-   "resumo": null,
-   "url": "https://aedasmg.org/documento/cartilha-4-reparacao-pelas-maos-dos-atingidos-e-atingidas-fundo-popular-para-projetos-comunitarios/",
-   "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
-  },
-  {
-   "id": "aedas-mariana:33612",
-   "desastre": "mariana",
-   "bacia": "doce",
-   "titulo": "Cartilha 5 – Auxílio Financeiro Emergencial (AFE) para Todas as Pessoas!",
-   "data": "2023-11-05",
-   "tipo": "Cartilhas",
-   "tipoOrigem": "Cartilhas",
-   "orgao": "AEDAS",
-   "esfera": "ati",
-   "uf": "MG",
-   "tags": [],
-   "resumo": null,
-   "url": "https://aedasmg.org/documento/cartilha-5-auxilio-financeiro-emergencial-afe-para-todas-as-pessoas/",
-   "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
-  },
-  {
-   "id": "aedas-mariana:33613",
-   "desastre": "mariana",
-   "bacia": "doce",
-   "titulo": "Cartilha 6 – Fundo de Reparação para as Vítimas das Enchentes de Rejeitos",
-   "data": "2023-11-05",
-   "tipo": "Cartilhas",
-   "tipoOrigem": "Cartilhas",
-   "orgao": "AEDAS",
-   "esfera": "ati",
-   "uf": "MG",
-   "tags": [],
-   "resumo": null,
-   "url": "https://aedasmg.org/documento/cartilha-6-fundo-de-reparacao-para-as-vitimas-das-enchentes-de-rejeitos/",
-   "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
-  },
-  {
-   "id": "aedas-mariana:33614",
-   "desastre": "mariana",
-   "bacia": "doce",
-   "titulo": "Cartilha 7 – Indenização Justa, Já!",
-   "data": "2023-11-05",
-   "tipo": "Cartilhas",
-   "tipoOrigem": "Cartilhas",
-   "orgao": "AEDAS",
-   "esfera": "ati",
-   "uf": "MG",
-   "tags": [],
-   "resumo": null,
-   "url": "https://aedasmg.org/documento/cartilha-7-indenizacao-justa-ja/",
-   "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33581",
@@ -2197,7 +2197,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/aedas-assessora-atingidos-e-atingidas-em-jornada-de-lutas-rumo-a-brasilia/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   },
   {
    "id": "aedas-mariana:33580",
@@ -2216,7 +2216,7 @@
    "resumo": null,
    "url": "https://aedasmg.org/documento/caminhada-em-governador-valadares-por-indenizacao-justa-ja/",
    "fonteId": "ati-aedas-mariana",
-   "coletadoEm": "2026-09-01T11:17:14.917687+00:00"
+   "coletadoEm": "2026-09-07T17:46:40.301770+00:00"
   }
  ]
 }
