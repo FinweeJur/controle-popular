@@ -1,60 +1,58 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { EMPRESAS } from "@/lib/empresas/dados";
+import { listarTodasEntidades } from "@/lib/empresas/entidades-dados";
+import EmpresasClient from "./EmpresasClient";
 
 export const metadata: Metadata = {
-  title: "Observatório de Empresas — Controle Popular",
+  title: "Observatório de Grandes Empresas & Fundos de Investimento — Controle Popular",
   description:
-    "Acompanhamento de empresas com impacto territorial e social em Minas Gerais: Sigma Lithium, Vale e outras mineradoras sob vigilência pública.",
+    "Monitoramento cívico das 130 maiores empresas e fundos atuantes no Brasil: ações na B3 e NYSE, transparência, ESG, direitos humanos, licenciamentos ambientais, contratos no PNCP e TACs.",
 };
 
 export default function EmpresasIndexPage() {
+  const entidades = listarTodasEntidades();
+
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:py-16">
-      <nav className="mb-6 text-sm text-text-soft">
-        <Link href="/" className="hover:text-primary">
+    <div className="mx-auto max-w-7xl px-4 py-10 sm:py-14 sm:px-6 lg:px-8 space-y-8">
+      {/* Navegação e Trilha */}
+      <nav aria-label="Trilha de navegação" className="text-xs text-muted">
+        <Link href="/" className="hover:text-primary transition">
           Início
         </Link>{" "}
-        · <span className="text-text">Empresas monitoradas</span>
+        ·{" "}
+        <Link href="/estado-e-economia" className="hover:text-primary transition">
+          Estado & Economia
+        </Link>{" "}
+        · <span className="text-foreground font-semibold">Grandes Empresas & Fundos</span>
       </nav>
 
-      <header className="mb-10 space-y-4">
-        <h1 className="font-display text-3xl font-bold text-text sm:text-4xl">
-          Observatório de Empresas
+      {/* Cabeçalho do Observatório */}
+      <header className="space-y-3">
+        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-semibold text-muted">
+          <span>🏛️ Setores Estratégicos & Mercado de Capitais</span>
+        </div>
+        <h1 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+          Observatório de Grandes Empresas & Fundos
         </h1>
-        <p className="text-text-soft">
-          Empresas com impacto territorial, ambiental e social que estão sendo
-          acompanhadas pelo Controle Popular. Cada página reúne processos
-          minerários, notícias, licenciamentos e contratos públicos quando
-          disponíveis.
+        <p className="max-w-4xl text-sm sm:text-base text-muted leading-relaxed">
+          Acompanhamento cívico e vigilância cidadã sobre as 130 maiores corporações e fundos de investimento atuantes no Brasil.
+          Cruze cotações na B3 e NYSE com licenciamentos ambientais da FEAM e IBAMA, processos minerários na ANM, 
+          contratos públicos no PNCP, auditorias do Tribunal de Contas e TACs do Ministério Público.
         </p>
       </header>
 
-      <ul className="space-y-4">
-        {EMPRESAS.map((empresa) => (
-          <li key={empresa.slug}>
-            <Link
-              href={`/empresas/${empresa.slug}`}
-              className="block rounded-2xl border border-border bg-surface p-5 shadow-sm transition hover:border-primary"
-            >
-              <h2 className="font-display text-xl font-semibold text-text">
-                {empresa.nomeCurto}
-              </h2>
-              <p className="mt-2 text-sm text-text-soft">{empresa.descricao}</p>
-              <p className="mt-3 text-xs text-text-soft">
-                Municípios de interesse:{" "}
-                <span className="text-text">{empresa.municipiosPrioridade.join(", ")}</span>
-              </p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {/* Painel Interativo com Gráficos, Filtros e Tabela */}
+      <EmpresasClient entidades={entidades} />
 
-      <footer className="mt-12 border-t border-border pt-6 text-sm text-text-soft">
+      {/* Rodapé Metodológico */}
+      <footer className="border-t border-border pt-6 text-xs text-muted space-y-2">
         <p>
-          Dados de processos minerários extraídos do SIGMINE/ANM. Notícias são
-          curadas a partir de fontes públicas. A ausência de informação é
-          declarada, nunca escondida.
+          <strong>Fontes Oficiais:</strong> Comissão de Valores Mobiliários (CVM), Portal Nacional de Contratações Públicas (PNCP), 
+          Sistema de Gestão de Segurança de Barragens (SIGBM/ANM), FEAM-MG, IBAMA, SEC (EUA) e Ministérios Públicos (MPMG e MPF).
+        </p>
+        <p>
+          O Controle Popular não emite recomendações de investimento. O foco é a fiscalização do cumprimento da legislação brasileira,
+          dos direitos humanos, da sustentabilidade ambiental e da destinação de recursos públicos.
         </p>
       </footer>
     </div>

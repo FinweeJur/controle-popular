@@ -1,0 +1,50 @@
+{
+ "geradoEm": "2026-09-01T14:39:35.119Z",
+ "fonte": "brasil.io (socios-brasil)",
+ "raizCNPJ": "33.592.510/0001-54",
+ "ressalvaEditorial": "Socio registrado na Receita Federal nao significa gestao atual nem responsabilidade por dano. Juncao e ponto de partida para investigar, nao achado.",
+ "socios": [
+  {
+   "nome": "ALEXANDRE GOMES PEREIRA",
+   "tipoPessoa": "Pessoa Física",
+   "qualificacao": "Diretor",
+   "dataEntrada": null,
+   "cpfCnpjMascarado": "***732957**"
+  },
+  {
+   "nome": "CARLOS HENRIQUE SENNA MEDEIROS",
+   "tipoPessoa": "Pessoa Física",
+   "qualificacao": "Diretor",
+   "dataEntrada": null,
+   "cpfCnpjMascarado": "***556228**"
+  },
+  {
+   "nome": "EDUARDO DE SALLES BARTOLOMEO",
+   "tipoPessoa": "Pessoa Física",
+   "qualificacao": "Presidente",
+   "dataEntrada": null,
+   "cpfCnpjMascarado": "***567307**"
+  },
+  {
+   "nome": "LUCIANO SIANI PIRES",
+   "tipoPessoa": "Pessoa Física",
+   "qualificacao": "Diretor",
+   "dataEntrada": null,
+   "cpfCnpjMascarado": "***907897**"
+  },
+  {
+   "nome": "LUIZ EDUARDO FROES DO AMARAL OSORIO",
+   "tipoPessoa": "Pessoa Física",
+   "qualificacao": "Diretor",
+   "dataEntrada": null,
+   "cpfCnpjMascarado": "***000007**"
+  },
+  {
+   "nome": "MARCELLO MAGISTRINI SPINELLI",
+   "tipoPessoa": "Pessoa Física",
+   "qualificacao": "Diretor",
+   "dataEntrada": null,
+   "cpfCnpjMascarado": "***378918**"
+  }
+ ]
+}

@@ -60,6 +60,12 @@ async function enviarTelegram(texto: string) {
 }
 
 async function main() {
+  const customMsg = process.argv.slice(2).join(" ").trim();
+  if (customMsg) {
+    await enviarTelegram(customMsg);
+    return;
+  }
+
   const agora = new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" });
 
   let msg = `📊 <b>Controle Popular — Relatório de Andamento</b>\n`;

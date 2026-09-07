@@ -31,6 +31,7 @@ import {
   Code2,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { ZONAS_PUBLICADAS } from "@/lib/zonas";
 import BuscaGlobal from "@/app/components/BuscaGlobal";
@@ -113,7 +114,8 @@ const SECOES_MENU = [
       { label: "Orçamento & Receitas de MG", href: "/estado-e-economia/orcamento", icone: BarChart3 },
       { label: "Compras Públicas & PNCP", href: "/noticias/estado-e-economia-pncp-compras", icone: ShoppingBag },
       { label: "Congresso Nacional & CEAP", href: "/congresso", icone: Landmark },
-      { label: "Judiciário & Instituições", href: "/judiciario/instituicoes", icone: Scale },
+      { label: "Quem fiscaliza a Justiça", href: "/judiciario/instituicoes", icone: Scale },
+      { label: "Fichas TJMG, MPMG e DPMG", href: "/judiciario/instituicoes#fichas-instituicoes", icone: Building2 },
       { label: "Grandes Empresas & Fundos", href: "/empresas", icone: Building2 },
       { label: "Repasses Federais ComunicaBR", href: "/dados/comunicabr", icone: MapPin },
     ],
@@ -233,13 +235,23 @@ export default function TopNav() {
           ref={caixaRef}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          className="relative"
+          className="relative flex items-center gap-2"
         >
           <Link
             href="/"
-            className="font-display text-[0.92em] sm:text-[1em] font-bold tracking-tight text-text transition-colors duration-150 hover:text-primary"
+            className="flex items-center gap-2 font-display text-[0.88em] sm:text-[0.96em] font-bold tracking-tight text-text transition-colors duration-150 hover:text-primary"
           >
-            controlepopular<span className="text-primary">.com.br</span>
+            <Image
+              src="/marca/emblema.webp"
+              alt="Emblema Controle Popular"
+              width={26}
+              height={26}
+              className="h-6.5 w-6.5 rounded-full object-cover border border-border/80 shadow-2xs shrink-0"
+              priority
+            />
+            <span>
+              controlepopular<span className="text-primary">.com.br</span>
+            </span>
           </Link>
           <button
             type="button"

@@ -319,6 +319,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     item("/funcaosocialterra", { changeFrequency: "monthly", priority: 0.6 }),
     item("/funcaosocialterra/mapa", { changeFrequency: "monthly", priority: 0.6 }),
     item("/dados/comunicabr", { changeFrequency: "monthly", priority: 0.6 }),
+    item("/empresas", { changeFrequency: "weekly", priority: 0.8 }),
   ];
 
   const cidades = await listarCidades();

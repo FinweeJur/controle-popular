@@ -1,0 +1,3902 @@
+[
+  {
+    "slug": "vale-s-a",
+    "nome": "Vale S.A.",
+    "tipo": "empresa_nacional",
+    "setor": "mineracao",
+    "cnpj": "33592510000154",
+    "ticker": "VALE3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de mineracao no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Vale%20S.A.",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "csn-mineracao",
+    "nome": "CSN Mineração",
+    "tipo": "empresa_nacional",
+    "setor": "mineracao",
+    "cnpj": "08902291000115",
+    "ticker": "CMIN3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de mineracao no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=CSN%20Minera%C3%A7%C3%A3o",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "samarco-mineracao",
+    "nome": "Samarco Mineração",
+    "tipo": "empresa_nacional",
+    "setor": "mineracao",
+    "cnpj": "17469701000177",
+    "ticker": "SAMARCO",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de mineracao no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Samarco%20Minera%C3%A7%C3%A3o",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "cbmm",
+    "nome": "CBMM",
+    "tipo": "empresa_nacional",
+    "setor": "mineracao",
+    "cnpj": "42116954000104",
+    "ticker": "CBMM",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de mineracao no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=CBMM",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "kinross-brasil-mineracao",
+    "nome": "Kinross Brasil Mineração",
+    "tipo": "empresa_nacional",
+    "setor": "mineracao",
+    "cnpj": "19409895000179",
+    "ticker": "KINROSS",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de mineracao no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Kinross%20Brasil%20Minera%C3%A7%C3%A3o",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "anglo-american-brasil",
+    "nome": "Anglo American Brasil",
+    "tipo": "empresa_nacional",
+    "setor": "mineracao",
+    "cnpj": "60394747000108",
+    "ticker": "ANGLO",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de mineracao no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Anglo%20American%20Brasil",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "usiminas",
+    "nome": "Usiminas",
+    "tipo": "empresa_nacional",
+    "setor": "mineracao",
+    "cnpj": "60872502000157",
+    "ticker": "USIM5",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de mineracao no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Usiminas",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "gerdau-s-a",
+    "nome": "Gerdau S.A.",
+    "tipo": "empresa_nacional",
+    "setor": "mineracao",
+    "cnpj": "33611500000119",
+    "ticker": "GGBR4",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de mineracao no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Gerdau%20S.A.",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "mineracao-rio-do-norte-mrn",
+    "nome": "Mineração Rio do Norte (MRN)",
+    "tipo": "empresa_nacional",
+    "setor": "mineracao",
+    "cnpj": "10986566000130",
+    "ticker": "MRN",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de mineracao no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Minera%C3%A7%C3%A3o%20Rio%20do%20Norte%20(MRN)",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "jaguar-mining",
+    "nome": "Jaguar Mining",
+    "tipo": "empresa_nacional",
+    "setor": "mineracao",
+    "cnpj": "05391296000103",
+    "ticker": "JAG",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de mineracao no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Jaguar%20Mining",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "petrobras",
+    "nome": "Petrobras",
+    "tipo": "empresa_nacional",
+    "setor": "energia",
+    "cnpj": "33000167000101",
+    "ticker": "PETR4",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de energia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Petrobras",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "eletrobras",
+    "nome": "Eletrobras",
+    "tipo": "empresa_nacional",
+    "setor": "energia",
+    "cnpj": "00001180000126",
+    "ticker": "ELET3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de energia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Eletrobras",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "cpfl-energia",
+    "nome": "CPFL Energia",
+    "tipo": "empresa_nacional",
+    "setor": "energia",
+    "cnpj": "02429144000193",
+    "ticker": "CPFE3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de energia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=CPFL%20Energia",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "neoenergia",
+    "nome": "Neoenergia",
+    "tipo": "empresa_nacional",
+    "setor": "energia",
+    "cnpj": "01083200000118",
+    "ticker": "NEOE3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de energia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Neoenergia",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "cemig",
+    "nome": "CEMIG",
+    "tipo": "empresa_nacional",
+    "setor": "energia",
+    "cnpj": "17155730000164",
+    "ticker": "CMIG4",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de energia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=CEMIG",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "copel",
+    "nome": "Copel",
+    "tipo": "empresa_nacional",
+    "setor": "energia",
+    "cnpj": "76483817000120",
+    "ticker": "CPLE6",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de energia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Copel",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "engie-brasil",
+    "nome": "Engie Brasil",
+    "tipo": "empresa_nacional",
+    "setor": "energia",
+    "cnpj": "02474103000119",
+    "ticker": "EGIE3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de energia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Engie%20Brasil",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "equinor-brasil",
+    "nome": "Equinor Brasil",
+    "tipo": "empresa_nacional",
+    "setor": "energia",
+    "cnpj": "04229643000100",
+    "ticker": "EQUINOR",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de energia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Equinor%20Brasil",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "shell-brasil",
+    "nome": "Shell Brasil",
+    "tipo": "empresa_nacional",
+    "setor": "energia",
+    "cnpj": "33453598000123",
+    "ticker": "SHELL",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de energia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Shell%20Brasil",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "vibra-energia",
+    "nome": "Vibra Energia",
+    "tipo": "empresa_nacional",
+    "setor": "energia",
+    "cnpj": "02502844000166",
+    "ticker": "VBBR3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de energia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Vibra%20Energia",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "sabesp",
+    "nome": "Sabesp",
+    "tipo": "empresa_nacional",
+    "setor": "agua_saneamento",
+    "cnpj": "43776517000180",
+    "ticker": "SBSP3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de agua saneamento no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Sabesp",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "copasa-mg",
+    "nome": "Copasa MG",
+    "tipo": "empresa_nacional",
+    "setor": "agua_saneamento",
+    "cnpj": "17281106000103",
+    "ticker": "CSMG3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de agua saneamento no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Copasa%20MG",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "sanepar",
+    "nome": "Sanepar",
+    "tipo": "empresa_nacional",
+    "setor": "agua_saneamento",
+    "cnpj": "76487032000125",
+    "ticker": "SAPR11",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de agua saneamento no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Sanepar",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "corsan",
+    "nome": "Corsan",
+    "tipo": "empresa_nacional",
+    "setor": "agua_saneamento",
+    "cnpj": "92802784000190",
+    "ticker": "CORSAN",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de agua saneamento no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Corsan",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "aegea-saneamento",
+    "nome": "Aegea Saneamento",
+    "tipo": "empresa_nacional",
+    "setor": "agua_saneamento",
+    "cnpj": "08849775000184",
+    "ticker": "AEGEA",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de agua saneamento no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Aegea%20Saneamento",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "brk-ambiental",
+    "nome": "BRK Ambiental",
+    "tipo": "empresa_nacional",
+    "setor": "agua_saneamento",
+    "cnpj": "08862590000107",
+    "ticker": "BRK",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de agua saneamento no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=BRK%20Ambiental",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "embasa",
+    "nome": "Embasa",
+    "tipo": "empresa_nacional",
+    "setor": "agua_saneamento",
+    "cnpj": "13504675000110",
+    "ticker": "EMBASA",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de agua saneamento no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Embasa",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "cedae",
+    "nome": "Cedae",
+    "tipo": "empresa_nacional",
+    "setor": "agua_saneamento",
+    "cnpj": "33352394000104",
+    "ticker": "CEDAE",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de agua saneamento no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Cedae",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "saneago",
+    "nome": "Saneago",
+    "tipo": "empresa_nacional",
+    "setor": "agua_saneamento",
+    "cnpj": "01616929000102",
+    "ticker": "SANEAGO",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de agua saneamento no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Saneago",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "igua-saneamento",
+    "nome": "Iguá Saneamento",
+    "tipo": "empresa_nacional",
+    "setor": "agua_saneamento",
+    "cnpj": "27756123000100",
+    "ticker": "IGUA",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de agua saneamento no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Igu%C3%A1%20Saneamento",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "mrv-engenharia",
+    "nome": "MRV Engenharia",
+    "tipo": "empresa_nacional",
+    "setor": "construcao_civil",
+    "cnpj": "08343492000120",
+    "ticker": "MRVE3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de construcao civil no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=MRV%20Engenharia",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "cyrela",
+    "nome": "Cyrela",
+    "tipo": "empresa_nacional",
+    "setor": "construcao_civil",
+    "cnpj": "73178600000118",
+    "ticker": "CYRE3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de construcao civil no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Cyrela",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "construtora-tenda",
+    "nome": "Construtora Tenda",
+    "tipo": "empresa_nacional",
+    "setor": "construcao_civil",
+    "cnpj": "71476516000135",
+    "ticker": "TEND3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de construcao civil no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Construtora%20Tenda",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "direcional-engenharia",
+    "nome": "Direcional Engenharia",
+    "tipo": "empresa_nacional",
+    "setor": "construcao_civil",
+    "cnpj": "16614075000100",
+    "ticker": "DIRR3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de construcao civil no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Direcional%20Engenharia",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "cury-construtora",
+    "nome": "Cury Construtora",
+    "tipo": "empresa_nacional",
+    "setor": "construcao_civil",
+    "cnpj": "08907836000140",
+    "ticker": "CURY3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de construcao civil no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Cury%20Construtora",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "moura-dubeux",
+    "nome": "Moura Dubeux",
+    "tipo": "empresa_nacional",
+    "setor": "construcao_civil",
+    "cnpj": "07584107000120",
+    "ticker": "MDNE3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de construcao civil no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Moura%20Dubeux",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "andrade-gutierrez",
+    "nome": "Andrade Gutierrez",
+    "tipo": "empresa_nacional",
+    "setor": "construcao_civil",
+    "cnpj": "17262213000194",
+    "ticker": "ANDRADE",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de construcao civil no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Andrade%20Gutierrez",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "camargo-correa-mover",
+    "nome": "Camargo Corrêa (Mover)",
+    "tipo": "empresa_nacional",
+    "setor": "construcao_civil",
+    "cnpj": "61522512000102",
+    "ticker": "MOVER",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de construcao civil no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Camargo%20Corr%C3%AAa%20(Mover)",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "novonor-odebrecht",
+    "nome": "Novonor (Odebrecht)",
+    "tipo": "empresa_nacional",
+    "setor": "construcao_civil",
+    "cnpj": "15102288000182",
+    "ticker": "NOVONOR",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de construcao civil no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Novonor%20(Odebrecht)",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "eztec",
+    "nome": "Eztec",
+    "tipo": "empresa_nacional",
+    "setor": "construcao_civil",
+    "cnpj": "08312229000173",
+    "ticker": "EZTC3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de construcao civil no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Eztec",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "weg-s-a",
+    "nome": "WEG S.A.",
+    "tipo": "empresa_nacional",
+    "setor": "tecnologia",
+    "cnpj": "84429695000111",
+    "ticker": "WEGE3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de tecnologia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=WEG%20S.A.",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "totvs",
+    "nome": "TOTVS",
+    "tipo": "empresa_nacional",
+    "setor": "tecnologia",
+    "cnpj": "53113791000122",
+    "ticker": "TOTS3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de tecnologia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=TOTVS",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "locaweb-lwsa",
+    "nome": "Locaweb (LWSA)",
+    "tipo": "empresa_nacional",
+    "setor": "tecnologia",
+    "cnpj": "02351877000152",
+    "ticker": "LWSA3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de tecnologia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Locaweb%20(LWSA)",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "stefanini",
+    "nome": "Stefanini",
+    "tipo": "empresa_nacional",
+    "setor": "tecnologia",
+    "cnpj": "58069360000170",
+    "ticker": "STEFANINI",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de tecnologia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Stefanini",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "ci-t",
+    "nome": "CI&T",
+    "tipo": "empresa_nacional",
+    "setor": "tecnologia",
+    "cnpj": "01031307000195",
+    "ticker": "CINT",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de tecnologia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=CI%26T",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "positivo-tecnologia",
+    "nome": "Positivo Tecnologia",
+    "tipo": "empresa_nacional",
+    "setor": "tecnologia",
+    "cnpj": "81243735000148",
+    "ticker": "POSI3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de tecnologia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Positivo%20Tecnologia",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "intelbras",
+    "nome": "Intelbras",
+    "tipo": "empresa_nacional",
+    "setor": "tecnologia",
+    "cnpj": "82901000000127",
+    "ticker": "INTB3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de tecnologia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Intelbras",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "mercado-livre-brasil",
+    "nome": "Mercado Livre Brasil",
+    "tipo": "empresa_nacional",
+    "setor": "tecnologia",
+    "cnpj": "03007331000141",
+    "ticker": "MELI",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de tecnologia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Mercado%20Livre%20Brasil",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "nubank-nu-pagamentos",
+    "nome": "Nubank (Nu Pagamentos)",
+    "tipo": "empresa_nacional",
+    "setor": "tecnologia",
+    "cnpj": "18284403000151",
+    "ticker": "ROXO34",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de tecnologia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Nubank%20(Nu%20Pagamentos)",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "vtex",
+    "nome": "VTEX",
+    "tipo": "empresa_nacional",
+    "setor": "tecnologia",
+    "cnpj": "05314972000170",
+    "ticker": "VTEX",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de tecnologia no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=VTEX",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "embraer-s-a",
+    "nome": "Embraer S.A.",
+    "tipo": "empresa_nacional",
+    "setor": "defesa_aeroespacial",
+    "cnpj": "07689002000189",
+    "ticker": "EMBR3",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de defesa aeroespacial no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Embraer%20S.A.",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "avibras-industria-aeroespacial",
+    "nome": "Avibras Indústria Aeroespacial",
+    "tipo": "empresa_nacional",
+    "setor": "defesa_aeroespacial",
+    "cnpj": "60882592000165",
+    "ticker": "AVIBRAS",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de defesa aeroespacial no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Avibras%20Ind%C3%BAstria%20Aeroespacial",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "helibras",
+    "nome": "Helibras",
+    "tipo": "empresa_nacional",
+    "setor": "defesa_aeroespacial",
+    "cnpj": "20364022000110",
+    "ticker": "HELIBRAS",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de defesa aeroespacial no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Helibras",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "companhia-brasileira-de-cartuchos-cbc",
+    "nome": "Companhia Brasileira de Cartuchos (CBC)",
+    "tipo": "empresa_nacional",
+    "setor": "defesa_aeroespacial",
+    "cnpj": "57709230000188",
+    "ticker": "CBC",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de defesa aeroespacial no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Companhia%20Brasileira%20de%20Cartuchos%20(CBC)",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "taurus-armas",
+    "nome": "Taurus Armas",
+    "tipo": "empresa_nacional",
+    "setor": "defesa_aeroespacial",
+    "cnpj": "92781335000102",
+    "ticker": "TASA4",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de defesa aeroespacial no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Taurus%20Armas",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "mac-jee-defesa",
+    "nome": "Mac Jee Defesa",
+    "tipo": "empresa_nacional",
+    "setor": "defesa_aeroespacial",
+    "cnpj": "17242194000100",
+    "ticker": "MACJEE",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de defesa aeroespacial no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Mac%20Jee%20Defesa",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "akaer-engenharia",
+    "nome": "Akaer Engenharia",
+    "tipo": "empresa_nacional",
+    "setor": "defesa_aeroespacial",
+    "cnpj": "67530517000140",
+    "ticker": "AKAER",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de defesa aeroespacial no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Akaer%20Engenharia",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "siatt-inteligencia",
+    "nome": "SIATT Inteligência",
+    "tipo": "empresa_nacional",
+    "setor": "defesa_aeroespacial",
+    "cnpj": "22830881000190",
+    "ticker": "SIATT",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de defesa aeroespacial no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=SIATT%20Intelig%C3%AAncia",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "kryptus-seguranca-da-informacao",
+    "nome": "Kryptus Segurança da Informação",
+    "tipo": "empresa_nacional",
+    "setor": "defesa_aeroespacial",
+    "cnpj": "05739818000120",
+    "ticker": "KRYPTUS",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de defesa aeroespacial no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=Kryptus%20Seguran%C3%A7a%20da%20Informa%C3%A7%C3%A3o",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "ael-sistemas",
+    "nome": "AEL Sistemas",
+    "tipo": "empresa_nacional",
+    "setor": "defesa_aeroespacial",
+    "cnpj": "92770288000100",
+    "ticker": "AEL",
+    "valorMercadoEstimado": "Sob consulta no CVM DFP 2025",
+    "investimentoBrasil": "Atuação direta no setor de defesa aeroespacial no território brasileiro",
+    "interessesDeclarados": [
+      "Licenciamento ambiental",
+      "Contratos públicos",
+      "Concessões governamentais"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Conselho de Administração",
+        "cargo": "Governança Corporativa CVM"
+      },
+      {
+        "nome": "Diretoria Executiva",
+        "cargo": "Gestão Operacional"
+      }
+    ],
+    "contatos": {
+      "endereco": "Brasil",
+      "site": "https://www.google.com/search?q=AEL%20Sistemas",
+      "ri": "https://dados.cvm.gov.br/"
+    }
+  },
+  {
+    "slug": "blackrock-inc",
+    "nome": "BlackRock, Inc.",
+    "tipo": "fundo_eua",
+    "setor": "fundos_investimento",
+    "cik": "0001364742",
+    "ticker": "BLK",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Investimentos via participações acionárias (13-F/SEC) e fundos de participação no Brasil",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001364742",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "the-vanguard-group-inc",
+    "nome": "The Vanguard Group, Inc.",
+    "tipo": "fundo_eua",
+    "setor": "fundos_investimento",
+    "cik": "0000102909",
+    "ticker": "VANGUARD",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Investimentos via participações acionárias (13-F/SEC) e fundos de participação no Brasil",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000102909",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "state-street-corporation",
+    "nome": "State Street Corporation",
+    "tipo": "fundo_eua",
+    "setor": "fundos_investimento",
+    "cik": "0000093496",
+    "ticker": "STT",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Investimentos via participações acionárias (13-F/SEC) e fundos de participação no Brasil",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000093496",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "fidelity-investments-fmr-llc",
+    "nome": "Fidelity Investments (FMR LLC)",
+    "tipo": "fundo_eua",
+    "setor": "fundos_investimento",
+    "cik": "0000315066",
+    "ticker": "FIDELITY",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Investimentos via participações acionárias (13-F/SEC) e fundos de participação no Brasil",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000315066",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "capital-group-companies",
+    "nome": "Capital Group Companies",
+    "tipo": "fundo_eua",
+    "setor": "fundos_investimento",
+    "cik": "0000018349",
+    "ticker": "CAPITAL",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Investimentos via participações acionárias (13-F/SEC) e fundos de participação no Brasil",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000018349",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "jpmorgan-chase-co-asset-mgmt",
+    "nome": "JPMorgan Chase & Co. (Asset Mgmt)",
+    "tipo": "fundo_eua",
+    "setor": "fundos_investimento",
+    "cik": "0000019617",
+    "ticker": "JPM",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Investimentos via participações acionárias (13-F/SEC) e fundos de participação no Brasil",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000019617",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "morgan-stanley-investment-mgmt",
+    "nome": "Morgan Stanley Investment Mgmt",
+    "tipo": "fundo_eua",
+    "setor": "fundos_investimento",
+    "cik": "0000895421",
+    "ticker": "MS",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Investimentos via participações acionárias (13-F/SEC) e fundos de participação no Brasil",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000895421",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "bank-of-america-merrill-lynch",
+    "nome": "Bank of America / Merrill Lynch",
+    "tipo": "fundo_eua",
+    "setor": "fundos_investimento",
+    "cik": "0000070858",
+    "ticker": "BAC",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Investimentos via participações acionárias (13-F/SEC) e fundos de participação no Brasil",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000070858",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "goldman-sachs-group-inc",
+    "nome": "Goldman Sachs Group, Inc.",
+    "tipo": "fundo_eua",
+    "setor": "fundos_investimento",
+    "cik": "0000886982",
+    "ticker": "GS",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Investimentos via participações acionárias (13-F/SEC) e fundos de participação no Brasil",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000886982",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "citigroup-inc",
+    "nome": "Citigroup Inc.",
+    "tipo": "fundo_eua",
+    "setor": "fundos_investimento",
+    "cik": "0000831001",
+    "ticker": "C",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Investimentos via participações acionárias (13-F/SEC) e fundos de participação no Brasil",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000831001",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "freeport-mcmoran-inc",
+    "nome": "Freeport-McMoRan Inc.",
+    "tipo": "empresa_eua",
+    "setor": "mineracao",
+    "cik": "0000831259",
+    "ticker": "FCX",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000831259",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "newmont-corporation",
+    "nome": "Newmont Corporation",
+    "tipo": "empresa_eua",
+    "setor": "mineracao",
+    "cik": "0001164727",
+    "ticker": "NEM",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001164727",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "alcoa-corporation",
+    "nome": "Alcoa Corporation",
+    "tipo": "empresa_eua",
+    "setor": "mineracao",
+    "cik": "0001675149",
+    "ticker": "AA",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001675149",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "southern-copper-corporation",
+    "nome": "Southern Copper Corporation",
+    "tipo": "empresa_eua",
+    "setor": "mineracao",
+    "cik": "0001001490",
+    "ticker": "SCCO",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001001490",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "cleveland-cliffs-inc",
+    "nome": "Cleveland-Cliffs Inc.",
+    "tipo": "empresa_eua",
+    "setor": "mineracao",
+    "cik": "0000764065",
+    "ticker": "CLF",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000764065",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "albemarle-corporation-litio",
+    "nome": "Albemarle Corporation (Lítio)",
+    "tipo": "empresa_eua",
+    "setor": "mineracao",
+    "cik": "0000915779",
+    "ticker": "ALB",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000915779",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "peabody-energy-corporation",
+    "nome": "Peabody Energy Corporation",
+    "tipo": "empresa_eua",
+    "setor": "mineracao",
+    "cik": "0001064728",
+    "ticker": "BTU",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001064728",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "coeur-mining-inc",
+    "nome": "Coeur Mining, Inc.",
+    "tipo": "empresa_eua",
+    "setor": "mineracao",
+    "cik": "0000215376",
+    "ticker": "CDE",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000215376",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "hecla-mining-company",
+    "nome": "Hecla Mining Company",
+    "tipo": "empresa_eua",
+    "setor": "mineracao",
+    "cik": "0000046941",
+    "ticker": "HL",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000046941",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "compass-minerals-international",
+    "nome": "Compass Minerals International",
+    "tipo": "empresa_eua",
+    "setor": "mineracao",
+    "cik": "0001262945",
+    "ticker": "CMP",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001262945",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "exxonmobil-corporation",
+    "nome": "ExxonMobil Corporation",
+    "tipo": "empresa_eua",
+    "setor": "energia",
+    "cik": "0000034088",
+    "ticker": "XOM",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000034088",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "chevron-corporation",
+    "nome": "Chevron Corporation",
+    "tipo": "empresa_eua",
+    "setor": "energia",
+    "cik": "0000093410",
+    "ticker": "CVX",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000093410",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "conocophillips",
+    "nome": "ConocoPhillips",
+    "tipo": "empresa_eua",
+    "setor": "energia",
+    "cik": "0001163165",
+    "ticker": "COP",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001163165",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "eog-resources-inc",
+    "nome": "EOG Resources, Inc.",
+    "tipo": "empresa_eua",
+    "setor": "energia",
+    "cik": "0000821189",
+    "ticker": "EOG",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000821189",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "schlumberger-limited-slb",
+    "nome": "Schlumberger Limited (SLB)",
+    "tipo": "empresa_eua",
+    "setor": "energia",
+    "cik": "0000087347",
+    "ticker": "SLB",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000087347",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "halliburton-company",
+    "nome": "Halliburton Company",
+    "tipo": "empresa_eua",
+    "setor": "energia",
+    "cik": "0000045012",
+    "ticker": "HAL",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000045012",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "baker-hughes-company",
+    "nome": "Baker Hughes Company",
+    "tipo": "empresa_eua",
+    "setor": "energia",
+    "cik": "0001701795",
+    "ticker": "BKR",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001701795",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "occidental-petroleum-oxy",
+    "nome": "Occidental Petroleum (OXY)",
+    "tipo": "empresa_eua",
+    "setor": "energia",
+    "cik": "0000797468",
+    "ticker": "OXY",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000797468",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "nextera-energy-inc",
+    "nome": "NextEra Energy, Inc.",
+    "tipo": "empresa_eua",
+    "setor": "energia",
+    "cik": "0000753308",
+    "ticker": "NEE",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000753308",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "marathon-petroleum-corp",
+    "nome": "Marathon Petroleum Corp",
+    "tipo": "empresa_eua",
+    "setor": "energia",
+    "cik": "0001510295",
+    "ticker": "MPC",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001510295",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "american-water-works-co",
+    "nome": "American Water Works Co.",
+    "tipo": "empresa_eua",
+    "setor": "agua_saneamento",
+    "cik": "0001410884",
+    "ticker": "AWK",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001410884",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "xylem-inc-tecnologia-de-agua",
+    "nome": "Xylem Inc. (Tecnologia de Água)",
+    "tipo": "empresa_eua",
+    "setor": "agua_saneamento",
+    "cik": "0001524472",
+    "ticker": "XYL",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001524472",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "essential-utilities-inc",
+    "nome": "Essential Utilities, Inc.",
+    "tipo": "empresa_eua",
+    "setor": "agua_saneamento",
+    "cik": "0000007890",
+    "ticker": "WTRG",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000007890",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "ecolab-inc-tratamento-de-agua",
+    "nome": "Ecolab Inc. (Tratamento de Água)",
+    "tipo": "empresa_eua",
+    "setor": "agua_saneamento",
+    "cik": "0000031418",
+    "ticker": "ECL",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000031418",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "middlesex-water-company",
+    "nome": "Middlesex Water Company",
+    "tipo": "empresa_eua",
+    "setor": "agua_saneamento",
+    "cik": "0000066004",
+    "ticker": "MSEX",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000066004",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "california-water-service-group",
+    "nome": "California Water Service Group",
+    "tipo": "empresa_eua",
+    "setor": "agua_saneamento",
+    "cik": "0001035201",
+    "ticker": "CWT",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001035201",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "american-states-water-co",
+    "nome": "American States Water Co.",
+    "tipo": "empresa_eua",
+    "setor": "agua_saneamento",
+    "cik": "0001056903",
+    "ticker": "AWR",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001056903",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "sjw-group",
+    "nome": "SJW Group",
+    "tipo": "empresa_eua",
+    "setor": "agua_saneamento",
+    "cik": "0000766869",
+    "ticker": "SJW",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000766869",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "york-water-company",
+    "nome": "York Water Company",
+    "tipo": "empresa_eua",
+    "setor": "agua_saneamento",
+    "cik": "0001089895",
+    "ticker": "YORW",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001089895",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "badger-meter-medicao-de-agua",
+    "nome": "Badger Meter (Medição de Água)",
+    "tipo": "empresa_eua",
+    "setor": "agua_saneamento",
+    "cik": "0000009092",
+    "ticker": "BMI",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000009092",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "caterpillar-inc",
+    "nome": "Caterpillar Inc.",
+    "tipo": "empresa_eua",
+    "setor": "construcao_civil",
+    "cik": "0000018230",
+    "ticker": "CAT",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000018230",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "d-r-horton-inc",
+    "nome": "D.R. Horton, Inc.",
+    "tipo": "empresa_eua",
+    "setor": "construcao_civil",
+    "cik": "0000882184",
+    "ticker": "DHI",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000882184",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "lennar-corporation",
+    "nome": "Lennar Corporation",
+    "tipo": "empresa_eua",
+    "setor": "construcao_civil",
+    "cik": "0000920760",
+    "ticker": "LEN",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000920760",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "aecom-infraestrutura",
+    "nome": "AECOM (Infraestrutura)",
+    "tipo": "empresa_eua",
+    "setor": "construcao_civil",
+    "cik": "0000868857",
+    "ticker": "ACM",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000868857",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "fluor-corporation",
+    "nome": "Fluor Corporation",
+    "tipo": "empresa_eua",
+    "setor": "construcao_civil",
+    "cik": "0001125259",
+    "ticker": "FLR",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001125259",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "jacobs-solutions-inc",
+    "nome": "Jacobs Solutions Inc.",
+    "tipo": "empresa_eua",
+    "setor": "construcao_civil",
+    "cik": "000052988",
+    "ticker": "J",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=000052988",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "vulcan-materials-company",
+    "nome": "Vulcan Materials Company",
+    "tipo": "empresa_eua",
+    "setor": "construcao_civil",
+    "cik": "0001396009",
+    "ticker": "VMC",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001396009",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "martin-marietta-materials",
+    "nome": "Martin Marietta Materials",
+    "tipo": "empresa_eua",
+    "setor": "construcao_civil",
+    "cik": "0000916076",
+    "ticker": "MLM",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000916076",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "pultegroup-inc",
+    "nome": "PulteGroup, Inc.",
+    "tipo": "empresa_eua",
+    "setor": "construcao_civil",
+    "cik": "0000838358",
+    "ticker": "PHM",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000838358",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "toll-brothers-inc",
+    "nome": "Toll Brothers, Inc.",
+    "tipo": "empresa_eua",
+    "setor": "construcao_civil",
+    "cik": "0000795551",
+    "ticker": "TOL",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000795551",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "microsoft-corporation",
+    "nome": "Microsoft Corporation",
+    "tipo": "empresa_eua",
+    "setor": "tecnologia",
+    "cik": "0000789019",
+    "ticker": "MSFT",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000789019",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "apple-inc",
+    "nome": "Apple Inc.",
+    "tipo": "empresa_eua",
+    "setor": "tecnologia",
+    "cik": "0000320193",
+    "ticker": "AAPL",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000320193",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "nvidia-corporation",
+    "nome": "NVIDIA Corporation",
+    "tipo": "empresa_eua",
+    "setor": "tecnologia",
+    "cik": "0001045810",
+    "ticker": "NVDA",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001045810",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "alphabet-inc-google",
+    "nome": "Alphabet Inc. (Google)",
+    "tipo": "empresa_eua",
+    "setor": "tecnologia",
+    "cik": "0001652044",
+    "ticker": "GOOGL",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001652044",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "amazon-com-inc",
+    "nome": "Amazon.com, Inc.",
+    "tipo": "empresa_eua",
+    "setor": "tecnologia",
+    "cik": "0001018724",
+    "ticker": "AMZN",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001018724",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "meta-platforms-inc",
+    "nome": "Meta Platforms, Inc.",
+    "tipo": "empresa_eua",
+    "setor": "tecnologia",
+    "cik": "0001326801",
+    "ticker": "META",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001326801",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "broadcom-inc",
+    "nome": "Broadcom Inc.",
+    "tipo": "empresa_eua",
+    "setor": "tecnologia",
+    "cik": "0001730168",
+    "ticker": "AVGO",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001730168",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "oracle-corporation",
+    "nome": "Oracle Corporation",
+    "tipo": "empresa_eua",
+    "setor": "tecnologia",
+    "cik": "0001341439",
+    "ticker": "ORCL",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001341439",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "cisco-systems-inc",
+    "nome": "Cisco Systems, Inc.",
+    "tipo": "empresa_eua",
+    "setor": "tecnologia",
+    "cik": "0000858877",
+    "ticker": "CSCO",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000858877",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "international-business-machines-ibm",
+    "nome": "International Business Machines (IBM)",
+    "tipo": "empresa_eua",
+    "setor": "tecnologia",
+    "cik": "0000051143",
+    "ticker": "IBM",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000051143",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "lockheed-martin-corporation",
+    "nome": "Lockheed Martin Corporation",
+    "tipo": "empresa_eua",
+    "setor": "defesa_aeroespacial",
+    "cik": "0000936468",
+    "ticker": "LMT",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000936468",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "rtx-corporation-raytheon",
+    "nome": "RTX Corporation (Raytheon)",
+    "tipo": "empresa_eua",
+    "setor": "defesa_aeroespacial",
+    "cik": "0000101829",
+    "ticker": "RTX",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000101829",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "the-boeing-company",
+    "nome": "The Boeing Company",
+    "tipo": "empresa_eua",
+    "setor": "defesa_aeroespacial",
+    "cik": "0000012927",
+    "ticker": "BA",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000012927",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "northrop-grumman-corp",
+    "nome": "Northrop Grumman Corp.",
+    "tipo": "empresa_eua",
+    "setor": "defesa_aeroespacial",
+    "cik": "0001133421",
+    "ticker": "NOC",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001133421",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "general-dynamics-corp",
+    "nome": "General Dynamics Corp.",
+    "tipo": "empresa_eua",
+    "setor": "defesa_aeroespacial",
+    "cik": "0000040533",
+    "ticker": "GD",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000040533",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "l3harris-technologies",
+    "nome": "L3Harris Technologies",
+    "tipo": "empresa_eua",
+    "setor": "defesa_aeroespacial",
+    "cik": "0000042888",
+    "ticker": "LHX",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000042888",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "transdigm-group-inc",
+    "nome": "TransDigm Group Inc.",
+    "tipo": "empresa_eua",
+    "setor": "defesa_aeroespacial",
+    "cik": "0001360334",
+    "ticker": "TDG",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001360334",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "huntington-ingalls-industries",
+    "nome": "Huntington Ingalls Industries",
+    "tipo": "empresa_eua",
+    "setor": "defesa_aeroespacial",
+    "cik": "0001501585",
+    "ticker": "HII",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0001501585",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "textron-inc",
+    "nome": "Textron Inc.",
+    "tipo": "empresa_eua",
+    "setor": "defesa_aeroespacial",
+    "cik": "0000217346",
+    "ticker": "TXT",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000217346",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  },
+  {
+    "slug": "curtiss-wright-corp",
+    "nome": "Curtiss-Wright Corp.",
+    "tipo": "empresa_eua",
+    "setor": "defesa_aeroespacial",
+    "cik": "0000026324",
+    "ticker": "CW",
+    "valorMercadoEstimado": "Consultado via SEC EDGAR",
+    "investimentoBrasil": "Operação e exportações/importações com o mercado brasileiro",
+    "interessesDeclarados": [
+      "Comércio Exterior (US Census)",
+      "Mercado de Capitais B3/NYSE",
+      "Concessões e Parcerias"
+    ],
+    "diretoresESocios": [
+      {
+        "nome": "Board of Directors",
+        "cargo": "SEC EDGAR Governance"
+      },
+      {
+        "nome": "Chief Executive Officer (CEO)",
+        "cargo": "Diretoria Executiva EUA"
+      }
+    ],
+    "contatos": {
+      "endereco": "United States",
+      "site": "https://www.sec.gov/edgar/browse/?CIK=0000026324",
+      "ri": "https://www.sec.gov/edgar"
+    }
+  }
+]
