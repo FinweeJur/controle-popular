@@ -36,6 +36,8 @@ export interface CapaFrenteProps {
   resumo: string;
   /** Altura do bloco (default: 420px mobile, 480px desktop) */
   alturaMinima?: string;
+  /** Layout visual: padrão (alinhado na base) ou home (poemas no topo esquerdo, texto no canto inferior direito) */
+  layout?: "padrao" | "home";
   /** Classe extra para sobrescrever o container */
   className?: string;
 }
@@ -49,6 +51,7 @@ export default function CapaFrente({
   epigrafes,
   resumo,
   alturaMinima,
+  layout = "padrao",
   className = "",
 }: CapaFrenteProps) {
   const listaEpigrafes: EpigrafeItem[] = epigrafes
@@ -73,34 +76,24 @@ export default function CapaFrente({
         style={{ margin: 0 }}
       />
 
-      {/* Overlay sutil — preserva o brilho, a cor e a vivacidade da foto */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.18) 50%, rgba(0,0,0,0.42) 100%)",
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Texto sobreposto com contorno preto nítido e caixa de leitura translúcida */}
-      <div className="relative z-10 mx-auto flex min-h-[420px] max-w-4xl flex-col justify-end px-4 py-8 sm:px-8 md:min-h-[480px] md:py-12">
-        <div className="rounded-2xl border border-black/20 bg-black/35 p-5 backdrop-blur-[3px] shadow-2xl sm:p-7 md:max-w-3xl">
-          {/* Epígrafes literárias — com contorno preto e sombra */}
+      {/* Texto sobreposto com contorno preto direto sobre a fotografia — sem sobreposição nem vidro fosco */}
+      {layout === "home" ? (
+        <div className="relative z-10 mx-auto flex min-h-[460px] max-w-4xl flex-col justify-between px-4 py-6 sm:px-8 md:min-h-[520px] md:py-8">
+          {/* TOPO: Epígrafes literárias focadas no canto superior esquerdo */}
           {listaEpigrafes.length > 0 && (
-            <div className="mb-3.5 space-y-2 border-b border-white/15 pb-3">
+            <div className="max-w-sm sm:max-w-md text-left space-y-2">
               {listaEpigrafes.map((ep, i) => (
                 <p
                   key={i}
-                  className="text-xs sm:text-sm italic leading-relaxed text-white font-medium"
+                  className="text-xs sm:text-[13px] italic leading-relaxed text-white font-medium"
                   style={{
                     textShadow:
-                      "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 4px rgba(0,0,0,0.9)",
+                      "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 5px rgba(0,0,0,0.95)",
                   }}
                 >
                   &ldquo;{ep.texto}&rdquo;
                   {ep.atribuicao && (
-                    <span className="ml-1.5 not-italic font-semibold text-[#f2701d]">
+                    <span className="block mt-0.5 not-italic text-white/95 text-[11px] sm:text-xs">
                       — {ep.atribuicao}
                     </span>
                   )}
@@ -109,30 +102,81 @@ export default function CapaFrente({
             </div>
           )}
 
-          {/* Título — bold, com contorno preto (-webkit-text-stroke) e sombra nítida */}
-          <h1
-            className="font-display text-[clamp(1.6em,4vw,2.4em)] font-black leading-tight tracking-tight text-white"
-            style={{
-              WebkitTextStroke: "1px #000000",
-              textShadow:
-                "-1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000, 0 3px 6px rgba(0,0,0,0.95)",
-            }}
-          >
-            {titulo}
-          </h1>
+          {/* BASE: Título e resumo focados no canto inferior direito para liberar a imagem (lobo-guará e ipê) */}
+          <div className="mt-auto flex flex-col items-start sm:items-end text-left sm:text-right ml-auto max-w-md sm:max-w-lg">
+            <h1
+              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-5xl md:text-6xl drop-shadow-md"
+              style={{
+                WebkitTextStroke: "1px #000",
+                textShadow:
+                  "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 3px 8px rgba(0,0,0,0.95)",
+              }}
+            >
+              {titulo}
+            </h1>
 
-          {/* Micro resumo — corpo nítido com contorno e contraste perfeito */}
-          <p
-            className="mt-2.5 text-[0.92em] font-medium leading-relaxed text-white/95 md:text-[1em]"
-            style={{
-              textShadow:
-                "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 4px rgba(0,0,0,0.9)",
-            }}
-          >
-            {resumo}
-          </p>
+            <p
+              className="mt-2 text-xs sm:text-sm leading-relaxed text-white font-medium"
+              style={{
+                textShadow:
+                  "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 5px rgba(0,0,0,0.95)",
+              }}
+            >
+              {resumo}
+            </p>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="relative z-10 mx-auto flex min-h-[420px] max-w-4xl flex-col justify-end px-4 py-8 sm:px-8 md:min-h-[480px] md:py-12">
+          <div className="p-2 sm:p-4 md:max-w-3xl">
+            {/* Epígrafes literárias — com contorno preto e sombra nítida */}
+            {listaEpigrafes.length > 0 && (
+              <div className="mb-3 space-y-1.5">
+                {listaEpigrafes.map((ep, i) => (
+                  <p
+                    key={i}
+                    className="text-xs sm:text-sm italic leading-relaxed text-white font-medium"
+                    style={{
+                      textShadow:
+                        "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 4px rgba(0,0,0,0.9)",
+                    }}
+                  >
+                    &ldquo;{ep.texto}&rdquo;
+                    {ep.atribuicao && (
+                      <span className="ml-1.5 not-italic text-white/90 text-[11px] sm:text-xs">
+                        — {ep.atribuicao}
+                      </span>
+                    )}
+                  </p>
+                ))}
+              </div>
+            )}
+
+            {/* H1 Principal com contorno preto nítido */}
+            <h1
+              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-5xl md:text-6xl drop-shadow-md"
+              style={{
+                WebkitTextStroke: "1px #000",
+                textShadow:
+                  "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 3px 8px rgba(0,0,0,0.95)",
+              }}
+            >
+              {titulo}
+            </h1>
+
+            {/* Micro resumo da frente */}
+            <p
+              className="mt-2.5 max-w-2xl text-xs sm:text-sm leading-relaxed text-white font-medium"
+              style={{
+                textShadow:
+                  "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 4px rgba(0,0,0,0.9)",
+              }}
+            >
+              {resumo}
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

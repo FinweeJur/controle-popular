@@ -317,7 +317,9 @@ export function SeuNono() {
   useEffect(() => {
     if (pathname) {
       const sugestoes = obterSugestoesContextuais(pathname);
-      setSugestoesContextuais(sugestoes);
+      const rotaLimpa = pathname.replace(/\/$/, "");
+      const filtradas = sugestoes.filter((s) => s.link.replace(/\/$/, "") !== rotaLimpa);
+      setSugestoesContextuais(filtradas);
     }
   }, [pathname]);
 
@@ -584,12 +586,12 @@ export function SeuNono() {
     window.open(url, "_blank", "noopener,noreferrer");
   }
 
-  async function enviarPerguntaLivre(e: React.FormEvent) {
-    e.preventDefault();
-    if (!perguntaLivre.trim()) return;
+  async function executarPerguntaIa(texto: string) {
+    const trimmed = texto.trim();
+    if (!trimmed) return;
 
     // Verifica se é comando de acessibilidade antes de enviar à IA
-    const cmdResposta = detectarComandoAcessibilidade(perguntaLivre);
+    const cmdResposta = detectarComandoAcessibilidade(trimmed);
     if (cmdResposta) {
       setRespostaComando(cmdResposta);
       setRespostaIa(null);
@@ -602,12 +604,17 @@ export function SeuNono() {
     setErro(null);
     setRespostaIa(null);
     setRespostaComando(null);
+    setNivel("ia");
 
     try {
       const resp = await fetch("/api/chatbot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pergunta: perguntaLivre }),
+        body: JSON.stringify({
+          pergunta: trimmed,
+          pathname: pathname ?? "",
+          titulo: typeof document !== "undefined" ? document.title : "",
+        }),
       });
       const dados = (await resp.json()) as RespostaChatIa;
       if (!resp.ok || dados.erro) {
@@ -620,7 +627,7 @@ export function SeuNono() {
         setTurnosIa((turnos) => [
           ...turnos,
           {
-            pergunta: perguntaLivre,
+            pergunta: trimmed,
             resposta: respostaTexto,
             modelo: dados.modelo,
             data: dados.data,
@@ -635,6 +642,27 @@ export function SeuNono() {
       setCarregando(false);
       setPerguntaLivre("");
     }
+  }
+
+  // Listener para abertura remota a partir de botões na Home e tabelas
+  useEffect(() => {
+    const handleAbrir = (e: Event) => {
+      const detail = (e as CustomEvent<{ pergunta?: string }>).detail;
+      setAberto(true);
+      if (detail?.pergunta) {
+        const p = detail.pergunta.trim();
+        setPerguntaLivre(p);
+        executarPerguntaIa(p);
+      }
+    };
+    window.addEventListener("abrir-seu-nono", handleAbrir);
+    return () => window.removeEventListener("abrir-seu-nono", handleAbrir);
+  }, [pathname]);
+
+  async function enviarPerguntaLivre(e: React.FormEvent) {
+    e.preventDefault();
+    if (!perguntaLivre.trim()) return;
+    await executarPerguntaIa(perguntaLivre);
   }
 
   return (
@@ -714,15 +742,12 @@ export function SeuNono() {
             {/* Nível 1: escolha da frente */}
             {nivel === "frentes" && (
               <div className="space-y-3">
-                <div className="rounded-xl border border-primary/20 bg-primary/5 p-3 text-left">
-                  <p className="text-sm font-semibold text-text">
-                    Sou Seu Nonô Alceu Dispor. Sou o Chatbot do portal digital Controle Popular do ONSA — Observatório Nacional Socioambiental localizado em controlepopular.com.br
+                <div className="rounded-xl border border-primary/20 bg-primary/5 p-2.5 text-left">
+                  <p className="text-xs font-semibold text-text">
+                    Olá! Sou o Seu Nonô, assistente cívico do Controle Popular.
                   </p>
-                  <p className="mt-2 text-xs leading-relaxed text-text-soft">
-                    Com raízes na História e Geografia esse portal se utiliza da tecnologia da Inteligência Artificial pra somar na busca por justiça socioambiental e fiscalização cidadã acessível pela internet gratuitamente e sem cadastro por qualquer celular ou computador.
-                  </p>
-                  <p className="mt-1.5 text-xs leading-relaxed text-text-soft">
-                    Reunindo dezenas de portais e dados públicos, estamos cobrindo milhares de contratos, convênios, licenciamentos ambientais, pesquisas e autorizações minerárias e de barragens, legislação ambiental e de direitos humanos unificada e o orçamento detalhado das prefeituras, governo de Minas, Congresso Brasileiro e Instituições de Justiça.
+                  <p className="mt-0.5 text-[0.75rem] leading-relaxed text-text-soft">
+                    Ajudo a fiscalizar orçamentos, contratos, acordos e barragens com dados oficiais e sem cadastro. Escolha um tema abaixo ou digite sua pergunta:
                   </p>
                 </div>
 
@@ -749,7 +774,7 @@ export function SeuNono() {
 
                 <div className="border-t border-border pt-2">
                   <p className="mb-2 text-xs font-medium text-text">
-                    Ou navegue pelas frentes do portal:
+                    Ou navegue pelos 3 eixos e áreas do portal:
                   </p>
                 </div>
 

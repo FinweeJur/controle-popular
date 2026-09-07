@@ -81,10 +81,10 @@ describe("montarAcervo -- pedaços conhecidos das três fontes", () => {
 
   it("resposta pré-curada de SeuNonoData com link vira pedaço com a rota", () => {
     const acervo = montarAcervo();
-    const f = achar(acervo, "pergunta:cidades:maiores-contratos");
-    expect(f.rota).toBe("/betim/prefeitura/contratos");
-    expect(f.frente).toBe("cidades");
-    expect(f.texto.toLowerCase()).toContain("contratos");
+    const f = achar(acervo, "pergunta:direitos:emprego-caged");
+    expect(f.rota).toBe("/direitos-em-movimento/trabalho-e-renda");
+    expect(f.frente).toBe("direitos");
+    expect(f.texto.toLowerCase()).toContain("caged");
   });
 
   it("sugestão contextual vira pedaço com a frente derivada da rota", () => {

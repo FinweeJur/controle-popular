@@ -5,6 +5,7 @@ import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
 import CapaFrente from "@/app/components/CapaFrente";
 import SanfonaFrentes from "@/app/components/SanfonaFrentes";
+import CartaoChatbotHome from "@/app/components/CartaoChatbotHome";
 import Epigrafe from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
 
@@ -68,11 +69,12 @@ export default async function Hub() {
         imagem="capas/home-page.webp"
         alt="Capa do Controle Popular — Observatório Nacional Socioambiental"
         titulo="CONTROLE POPULAR"
+        layout="home"
         epigrafes={[
           {
             texto:
-              "Ela deita sementes para morrerem ou brotarem. Ela semeia sonhos na esperança de ver germinar sobrevivência. (...) Acreditar num mundo mais justo, que talvez não desponte pleno nesta geração ou na seguinte, mas que algum dia desabrochará, assim como tudo o que é semeado.",
-            atribuicao: "Itamar Vieira Junior, Coração sem medo, 2025",
+              "Ela deita sementes para morrerem ou brotarem. Ela semeia sonhos na esperança de ver germinar sobrevivência.",
+            atribuicao: "Itamar Vieira Junior, Coração Sem Medo, 2025",
           },
           {
             texto: "O que a vida quer da gente é coragem.",
@@ -196,6 +198,9 @@ export default async function Hub() {
           O grid de seis cards continua abaixo para quem quer tudo de
           uma vez: a sanfona nao substitui, apresenta. */}
       <SanfonaFrentes />
+
+      {/* ═══ CARTÃO INTERATIVO DO SEU NONÔ — IA CIDADÃ COM ATALHOS DIRETOS ═══ */}
+      <CartaoChatbotHome />
 
       {/* Linha de orientação -- decisão do dono, 22/08 (decisão 8 de
           `docs/ESTADO.md`; achado e redação candidata em

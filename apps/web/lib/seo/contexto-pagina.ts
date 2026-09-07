@@ -12,7 +12,8 @@ export interface ContextoPagina {
 
 /**
  * Mapeamento de rotas do portal para sugestões contextuais do Seu Nonô.
- * Cada rota pode ter um padrão (regex parcial) e sugestões específicas.
+ * Cada rota mapeia perguntas que apontam para OUTRAS páginas correlatas,
+ * garantindo que o assistente nunca sugira a mesma página onde o leitor já está.
  */
 export const CONTEXTOS: ContextoPagina[] = [
   // ─── BETIM ───
@@ -20,25 +21,25 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/betim/prefeitura/contratos",
     sugestoes: [
       {
-        pergunta: "Quais contratos estão em alerta?",
+        pergunta: "Quem são os maiores fornecedores da prefeitura?",
         resposta:
-          "Contratos com indícios de atenção ganham badges na lista: concentração no ano, dispensa próxima do limite legal ou fornecedor criado no mesmo ano. Sempre são sinais, não conclusões.",
-        link: "/betim/prefeitura/contratos",
-        linkTexto: "Ver contratos com alerta",
-      },
-      {
-        pergunta: "Quem são os maiores fornecedores?",
-        resposta:
-          "A página de fornecedores mostra quais empresas mais contrataram a prefeitura, com valor total, número de contratos e indícios de concentração.",
+          "A página de fornecedores mostra quais empresas mais faturaram com a prefeitura, o número de contratos e alertas de concentração de mercado.",
         link: "/betim/prefeitura/fornecedores",
-        linkTexto: "Ver fornecedores",
+        linkTexto: "Ver maiores fornecedores",
       },
       {
-        pergunta: "Como filtrar contratos por valor?",
+        pergunta: "Onde ver as despesas orçamentárias de Betim?",
         resposta:
-          "Use os filtros no topo da tabela para ordenar por valor, fornecedor ou objeto. Clique no cabeçalho da coluna para ordenar.",
-        link: "/betim/prefeitura/contratos",
-        linkTexto: "Ver contratos",
+          "Consulte o demonstrativo das despesas por função e subfunção (saúde, educação, saneamento) para ver onde o orçamento municipal é executado.",
+        link: "/betim/prefeitura/despesas",
+        linkTexto: "Ver despesas orçamentárias",
+      },
+      {
+        pergunta: "Como consultar extratos de contratos no Diário Oficial?",
+        resposta:
+          "O Diário Oficial de Betim reúne decretos, portarias e extratos contratuais na íntegra com busca e filtros por ano.",
+        link: "/betim/prefeitura/diario",
+        linkTexto: "Consultar Diário Oficial",
       },
     ],
   },
@@ -46,18 +47,25 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/betim/prefeitura/despesas",
     sugestoes: [
       {
-        pergunta: "O que são despesas por subfunção?",
+        pergunta: "Quais contratos foram firmados para essas despesas?",
         resposta:
-          "Subfunções são divisões da função orçamentária. Ex: 'Educação' tem subfunções como 'Ensino Médio', 'Ensino Superior'. Mostra para onde o dinheiro vai detalhadamente.",
-        link: "/betim/prefeitura/despesas",
-        linkTexto: "Ver despesas",
+          "A lista de contratos detalha valores, fornecedores e alertas de concentração nas áreas de saúde, educação e obras.",
+        link: "/betim/prefeitura/contratos",
+        linkTexto: "Ver contratos de Betim",
       },
       {
-        pergunta: "Como ver despesas de um órgão específico?",
+        pergunta: "Quem recebe a maior parte desses pagamentos?",
         resposta:
-          "Use o filtro de órgão na parte superior da página para selecionar o órgão desejado (ex: Secretaria de Educação, Secretaria de Saúde).",
-        link: "/betim/prefeitura/despesas",
-        linkTexto: "Ver despesas",
+          "Consulte o ranking das empresas que mais receberam recursos públicos municipais em Betim.",
+        link: "/betim/prefeitura/fornecedores",
+        linkTexto: "Ranking de fornecedores",
+      },
+      {
+        pergunta: "Quanto Betim recebe de transferências federais?",
+        resposta:
+          "O painel ComunicaBR detalha transferências da União para saúde, SUS, Bolsa Família e Fundeb em Betim.",
+        link: "/dados/comunicabr",
+        linkTexto: "Transferências federais ComunicaBR",
       },
     ],
   },
@@ -65,11 +73,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/betim/prefeitura/fornecedores",
     sugestoes: [
       {
-        pergunta: "O que é concentração de fornecedores?",
+        pergunta: "Quais contratos foram emitidos para esses fornecedores?",
         resposta:
-          "Quando uma única empresa concentra muitos contratos ou valores altos com a prefeitura. Pode ser legítimo (empresa grande) ou sinal de atenção. Verifique os alertas.",
-        link: "/betim/prefeitura/fornecedores",
-        linkTexto: "Ver fornecedores",
+          "A página de contratos lista cada contratação individual com vigência, valor e indícios de alerta.",
+        link: "/betim/prefeitura/contratos",
+        linkTexto: "Ver contratos públicos",
+      },
+      {
+        pergunta: "Qual o valor total de compras da prefeitura?",
+        resposta:
+          "Veja a execução financeira de cada órgão e secretaria na página de despesas públicas municipais.",
+        link: "/betim/prefeitura/despesas",
+        linkTexto: "Ver despesas da prefeitura",
       },
     ],
   },
@@ -77,11 +92,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/betim/prefeitura/servidores",
     sugestoes: [
       {
-        pergunta: "Por que não vejo nomes de servidores?",
+        pergunta: "Quanto o município gasta com folha de pagamento?",
         resposta:
-          "O portal respeita a LGPD e não publica dados pessoais de servidores sem base legal. São mostrados vínculos, órgãos e cargos, mas não nomes completos.",
-        link: "/betim/prefeitura/servidores",
-        linkTexto: "Ver servidores",
+          "A composição das despesas públicas municipais detalha gastos com pessoal e encargos por secretaria.",
+        link: "/betim/prefeitura/despesas",
+        linkTexto: "Ver despesas com pessoal",
+      },
+      {
+        pergunta: "Como estão as contratações e empregos formais na cidade?",
+        resposta:
+          "O Eixo Direitos em Movimento monitora admissões do CAGED e geração de renda em Betim.",
+        link: "/direitos-em-movimento/trabalho-e-renda",
+        linkTexto: "Painel de Trabalho e Renda",
       },
     ],
   },
@@ -89,11 +111,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/betim/prefeitura/obras",
     sugestoes: [
       {
-        pergunta: "Onde ver o andamento das obras?",
+        pergunta: "Quais os contratos e valores das empreiteiras dessas obras?",
         resposta:
-          "A página de obras lista contratos e dados sobre obras públicas do município, quando disponíveis nos dados abertos da prefeitura.",
-        link: "/betim/prefeitura/obras",
-        linkTexto: "Ver obras",
+          "A página de contratos lista as licitações de engenharia, reformas de escolas e postos de saúde.",
+        link: "/betim/prefeitura/contratos",
+        linkTexto: "Ver contratos de obras",
+      },
+      {
+        pergunta: "Betim recebe recursos do Acordo de Brumadinho para obras?",
+        resposta:
+          "O painel do Paraopeba monitora as obras de macrodrenagem e saneamento financiadas com a cota municipal do acordo.",
+        link: "/paraopeba",
+        linkTexto: "Reparação em Betim / Paraopeba",
       },
     ],
   },
@@ -101,11 +130,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/betim/vereadores",
     sugestoes: [
       {
-        pergunta: "Como ver a votação dos vereadores?",
+        pergunta: "Como os vereadores votaram nas matérias legislativas?",
         resposta:
-          "A seção Votações da Câmara mostra matérias em votação ou já votadas, quando a Casa publica os dados de forma aberta.",
+          "Acompanhe as atas e registros de votações nominais da Câmara Municipal de Betim.",
         link: "/betim/camara/votacoes",
-        linkTexto: "Ver votações",
+        linkTexto: "Votações da Câmara",
+      },
+      {
+        pergunta: "Quais leis municipais foram aprovadas recentemente?",
+        resposta:
+          "Consulte o acervo legislativo municipal com leis ordinárias, complementares e decretos.",
+        link: "/betim/camara/legislacao",
+        linkTexto: "Legislação Municipal",
       },
     ],
   },
@@ -113,11 +149,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/betim/coleta-lixo",
     sugestoes: [
       {
-        pergunta: "Quando o lixo é coletado na minha região?",
+        pergunta: "Qual empresa faz a coleta de lixo e qual o valor do contrato?",
         resposta:
-          "A página de coleta de lixo mostra os dias e horários por região do município, quando divulgados pela prefeitura.",
-        link: "/betim/coleta-lixo",
-        linkTexto: "Ver coleta de lixo",
+          "A lista de contratos públicos traz os valores e vigências dos serviços de limpeza urbana e destinação de resíduos.",
+        link: "/betim/prefeitura/contratos",
+        linkTexto: "Ver contratos de limpeza",
+      },
+      {
+        pergunta: "Onde consultar licenças ambientais de aterros e destinação?",
+        resposta:
+          "O ONSA monitora os processos de licenciamento ambiental de empreendimentos de resíduos sólidos em MG.",
+        link: "/ambiental/licenciamento",
+        linkTexto: "Licenciamento ONSA",
       },
     ],
   },
@@ -127,18 +170,25 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/congresso/proposicoes",
     sugestoes: [
       {
-        pergunta: "Como buscar uma proposição específica?",
+        pergunta: "Como os parlamentares votaram nessas propostas?",
         resposta:
-          "Use os filtros por tipo (PL, PLP, PEC), autor, tema ou número. A busca aceita termos em português.",
-        link: "/congresso/proposicoes",
-        linkTexto: "Ver proposições",
+          "A página de votações traz o voto nominal de cada deputado e senador nas matérias deliberadas em plenário.",
+        link: "/congresso/votacoes",
+        linkTexto: "Ver votações nominais",
       },
       {
-        pergunta: "O que significam os status de tramitação?",
+        pergunta: "Quais deputados tiveram mais gastos com a cota parlamentar (CEAP)?",
         resposta:
-          "Cada proposição tem um status: 'Em tramitação' (no Congresso), 'Arquivada' (sem movimentação), 'Transformada em Lei' (aprovada). Veja o glossário na página.",
-        link: "/congresso/proposicoes",
-        linkTexto: "Ver proposições",
+          "Consulte o perfil dos congressistas com declarações de gastos, presença em comissões e atuação legislativa.",
+        link: "/congresso/parlamentares",
+        linkTexto: "Gastos dos parlamentares",
+      },
+      {
+        pergunta: "Quais bancadas concentram mais alertas?",
+        resposta:
+          "Acompanhe a distribuição partidária e regional das emendas e projetos de interesse da cidadania.",
+        link: "/congresso/bancadas",
+        linkTexto: "Ver bancadas",
       },
     ],
   },
@@ -146,11 +196,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/congresso/votacoes",
     sugestoes: [
       {
-        pergunta: "Como ver o voto de um deputado?",
+        pergunta: "Quais projetos de lei (PLs e PECs) estão tramitando?",
         resposta:
-          "Na página de votações, clique em uma votação nominal para ver a lista completa de votos dos deputados, com posição (Sim, Não, Abstenção).",
-        link: "/congresso/votacoes",
-        linkTexto: "Ver votações",
+          "Consulte o catálogo de proposições federais com status de tramitação, relatores e impacto nas cidades.",
+        link: "/congresso/proposicoes",
+        linkTexto: "Ver proposições",
+      },
+      {
+        pergunta: "Como atuam as bancadas estaduais no Congresso?",
+        resposta:
+          "Veja como cada bancada se posiciona e como as emendas orçamentárias afetam os municípios.",
+        link: "/congresso/bancadas",
+        linkTexto: "Bancadas estaduais",
       },
     ],
   },
@@ -158,11 +215,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/congresso/parlamentares",
     sugestoes: [
       {
-        pergunta: "Como filtrar parlamentares por partido?",
+        pergunta: "Como os deputados votam nas pautas de meio ambiente e direitos?",
         resposta:
-          "Use o filtro de partido na parte superior. Você também pode filtrar por estado ou busca por nome.",
-        link: "/congresso/parlamentares",
-        linkTexto: "Ver parlamentares",
+          "O painel de votações nominais registra cada voto em plenário para você fiscalizar a atuação de cada eleito.",
+        link: "/congresso/votacoes",
+        linkTexto: "Ver votações nominais",
+      },
+      {
+        pergunta: "Quais alertas de fiscalização cidadã foram registrados?",
+        resposta:
+          "Pontos de atenção e indícios em convênios e emendas de bancada para acompanhamento social.",
+        link: "/congresso/alertas",
+        linkTexto: "Ver alertas do Congresso",
       },
     ],
   },
@@ -170,11 +234,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/congresso/bancadas",
     sugestoes: [
       {
-        pergunta: "O que são bancadas estaduais?",
+        pergunta: "Quem são os parlamentares de cada bancada?",
         resposta:
-          "São agrupamentos de parlamentares do mesmo estado. A página mostra composição e indicadores de atuação por bancada.",
-        link: "/congresso/bancadas",
-        linkTexto: "Ver bancadas",
+          "Acesse a lista completa de deputados e senadores com contatos, presenças e gastos.",
+        link: "/congresso/parlamentares",
+        linkTexto: "Ver parlamentares",
+      },
+      {
+        pergunta: "Quais projetos prioritários das bancadas estão em pauta?",
+        resposta:
+          "Explore os projetos de lei e emendas constitucionais sob análise nas comissões e no plenário.",
+        link: "/congresso/proposicoes",
+        linkTexto: "Ver projetos em pauta",
       },
     ],
   },
@@ -182,11 +253,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/congresso/alertas",
     sugestoes: [
       {
-        pergunta: "O que é alerta de vício auditável?",
+        pergunta: "Onde ver matérias investigativas completas sobre gastos públicos?",
         resposta:
-          "São indícios de irregularidade em emendas, convênios ou indicações, rotulados como 'ponto de atenção', nunca como conclusão.",
-        link: "/congresso/alertas",
-        linkTexto: "Ver alertas",
+          "Nossas reportagens cruzam dados do PNCP, emendas parlamentares e convênios municipais.",
+        link: "/noticias",
+        linkTexto: "Ver investigações jornalísticas",
+      },
+      {
+        pergunta: "Quais parlamentares assinam essas propostas?",
+        resposta:
+          "Verifique a autoria e os votos nas matérias legislativas monitoradas.",
+        link: "/congresso/votacoes",
+        linkTexto: "Ver votações",
       },
     ],
   },
@@ -196,25 +274,25 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/judiciario/sirenejud",
     sugestoes: [
       {
-        pergunta: "O que é o SIRENEJud?",
+        pergunta: "Qual o orçamento dos órgãos do Sistema de Justiça em MG?",
         resposta:
-          "É o painel do CNJ que recorta da base nacional do Judiciário os processos de tema ambiental, com município do órgão julgador.",
-        link: "/judiciario/sirenejud",
-        linkTexto: "Ver SIRENEJud",
+          "O TJMG recebe R$ 14,96 bi e o MPMG R$ 4,09 bi, enquanto a DPMG tem déficit de 176 comarcas.",
+        link: "/judiciario/instituicoes",
+        linkTexto: "Fichas TJMG, MPMG e DPMG",
       },
       {
-        pergunta: "Quantos processos ambientais existem no Brasil?",
+        pergunta: "Onde consultar as ações de crimes socioambientais e TACs?",
         resposta:
-          "O SIRENEJud registra mais de 1,4 milhão de processos ambientais em todo o país, abrangendo todos os estados.",
-        link: "/judiciario/sirenejud",
-        linkTexto: "Ver números",
+          "A Biblioteca de Crimes Socioambientais reúne 936 laudos periciais e termos de ajustamento de conduta.",
+        link: "/ambiental/crimes-socioambientais",
+        linkTexto: "Biblioteca de Crimes Socioambientais",
       },
       {
-        pergunta: "Quais as classes processuais mais comuns?",
+        pergunta: "Como fiscalizar grandes mineradoras rés em processos ambientais?",
         resposta:
-          "As classes mais comuns incluem Mandado de Segurança, Ação Civil Pública e Habeas Corpus. Veja o top 10 na página.",
-        link: "/judiciario/sirenejud",
-        linkTexto: "Ver classes",
+          "Consulte o painel de grandes mineradoras, cotações da Vale e sócios de fundos globais.",
+        link: "/empresas",
+        linkTexto: "Painel de Grandes Empresas",
       },
     ],
   },
@@ -222,11 +300,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/judiciario/tribunais",
     sugestoes: [
       {
-        pergunta: "Quais tribunais estão no portal?",
+        pergunta: "Quanto o TJMG e o MPMG gastam com folha e verbas indenizatórias?",
         resposta:
-          "A página de tribunais reúne informações institucionais e dados publicados pelos Tribunais Superiores e estaduais.",
-        link: "/judiciario/tribunais",
-        linkTexto: "Ver tribunais",
+          "As fichas analíticas mostram R$ 1,85 bi em indenizações no TJMG e a disparidade com a Defensoria Pública.",
+        link: "/judiciario/instituicoes",
+        linkTexto: "Gastos da Justiça MG",
+      },
+      {
+        pergunta: "Onde ver os processos ambientais no SIRENEJud?",
+        resposta:
+          "O painel do CNJ georreferencia ações ambientais e crimes contra a flora e fauna em todo o país.",
+        link: "/judiciario/sirenejud",
+        linkTexto: "Painel SIRENEJud",
       },
     ],
   },
@@ -234,11 +319,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/judiciario/indicacoes",
     sugestoes: [
       {
-        pergunta: "Como acompanhar indicações para tribunais?",
+        pergunta: "Quem fiscaliza a atuação dos magistrados e tribunais?",
         resposta:
-          "A tela de indicações mostra nomes indicados para cargos de dirigentes e magistrados, com status de tramitação.",
-        link: "/judiciario/indicacoes",
-        linkTexto: "Ver indicações",
+          "Conheça o papel do CNJ, do CNMP e as atribuições dos órgãos de corregedoria do Sistema de Justiça.",
+        link: "/judiciario/instituicoes",
+        linkTexto: "Fiscalização da Justiça",
+      },
+      {
+        pergunta: "Onde acompanhar as ações civis públicas ambientais?",
+        resposta:
+          "Veja os processos judiciais em trâmite no TJMG, TRF-6 e Superior Tribunal de Justiça.",
+        link: "/judiciario/sirenejud",
+        linkTexto: "Processos no SIRENEJud",
       },
     ],
   },
@@ -248,25 +340,25 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/ambiental/licenciamento",
     sugestoes: [
       {
-        pergunta: "Por que só tem licenças deferidas?",
+        pergunta: "Onde ver as decisões e atas do COPAM?",
         resposta:
-          "A fonte pública (IDE-Sisema/SEMAD) registra apenas o histórico de licenças deferidas. As indeferidas ou em análise estão em outro sistema não coletado.",
-        link: "/ambiental/licenciamento",
-        linkTexto: "Ver licenciamentos",
+          "O Conselho Estadual de Política Ambiental (COPAM) delibera sobre licenças prévias, de instalação e operação em MG.",
+        link: "/ambiental/copam",
+        linkTexto: "Ver pauta do COPAM",
       },
       {
-        pergunta: "Onde ver o EIA/RIMA?",
+        pergunta: "Quais barragens de mineração estão em processo de descaracterização?",
         resposta:
-          "Cada licença tem um link para a página original no portal da SEMAD, onde é possível acessar o Estudo de Impacto Ambiental quando disponível.",
-        link: "/ambiental/licenciamento",
-        linkTexto: "Ver licenciamentos",
+          "Consulte as 23 barragens a montante monitoradas pela Lei 'Mar de Lama Nunca Mais' e pelo SIGBM.",
+        link: "/ambiental/barragens/descaracterizacao",
+        linkTexto: "Descaracterização de Barragens",
       },
       {
-        pergunta: "Qual o setor com mais licenças?",
+        pergunta: "Onde consultar os TACs firmados por mineradoras e órgãos públicos?",
         resposta:
-          "Os setores de mineração e agropecuária concentram a maior parte das licenças em Minas Gerais.",
-        link: "/ambiental/licenciamento",
-        linkTexto: "Ver licenciamentos",
+          "O acervo de TACs reúne termos de ajustamento de conduta firmados pelo MPMG, IBAMA e FEAM.",
+        link: "/ambiental/tac",
+        linkTexto: "Consultar TACs ambientais",
       },
     ],
   },
@@ -274,18 +366,25 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/ambiental/barragens",
     sugestoes: [
       {
-        pergunta: "O que é descaracterização de barragem?",
+        pergunta: "Como está o cumprimento dos prazos da descaracterização?",
         resposta:
-          "É o processo de eliminar a condição de barragem de alto risco. A página mostra quais barragens estão nesse processo.",
-        link: "/ambiental/barragens",
-        linkTexto: "Ver barragens",
+          "Acompanhe o cronograma das barragens com risco nível 3 e o status das obras de contenção da Vale e outras mineradoras.",
+        link: "/ambiental/barragens/descaracterizacao",
+        linkTexto: "Painel de Descaracterização",
       },
       {
-        pergunta: "Como ver barragens perto da minha cidade?",
+        pergunta: "Onde ver os laudos técnicos dos rompimentos de Brumadinho e Mariana?",
         resposta:
-          "Use a busca por município na página de barragens para ver quais estruturas estão no território ou próximo.",
-        link: "/ambiental/barragens",
-        linkTexto: "Ver barragens",
+          "A Biblioteca de Crimes Socioambientais reúne laudos da UFMG, FGV, AECOM e Fiocruz.",
+        link: "/ambiental/crimes-socioambientais",
+        linkTexto: "Biblioteca de Crimes Socioambientais",
+      },
+      {
+        pergunta: "Como anda o Acordo Judicial de Brumadinho no Paraopeba?",
+        resposta:
+          "Acompanhe os repasses de R$ 5,48 bi aos 26 municípios atingidos e a execução de obras públicas.",
+        link: "/paraopeba",
+        linkTexto: "Observatório do Paraopeba",
       },
     ],
   },
@@ -293,11 +392,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/ambiental/copam",
     sugestoes: [
       {
-        pergunta: "O que é o COPAM?",
+        pergunta: "Quais empreendimentos têm processos de licenciamento em curso?",
         resposta:
-          "COPAM é o Conselho de Política Ambiental de Minas Gerais. A página reúne atas e reuniões do conselho.",
-        link: "/ambiental/copam",
-        linkTexto: "Ver COPAM",
+          "Acesse a base de 19 mil licenças deferidas e em tramitação na SEMAD/Sisema.",
+        link: "/ambiental/licenciamento",
+        linkTexto: "Licenciamento ONSA",
+      },
+      {
+        pergunta: "Onde ver termos de ajustamento de conduta (TACs) em MG?",
+        resposta:
+          "Consulte obrigações e compromissos firmados perante o Ministério Público Estadual.",
+        link: "/ambiental/tac",
+        linkTexto: "Termos de Ajustamento de Conduta",
       },
     ],
   },
@@ -307,18 +413,25 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/paraopeba/execucao",
     sugestoes: [
       {
-        pergunta: "Como está a execução do acordo?",
+        pergunta: "Onde ver a análise integrada das perícias da UFMG e das ATIs?",
         resposta:
-          "A tela Execução mostra indicadores e dados sobre o andamento das medidas previstas no acordo de reparação.",
-        link: "/paraopeba/execucao",
-        linkTexto: "Ver execução",
+          "A página de análise integrada cruza os 16 eixos da auditoria AECOM com os laudos da UFMG e das comunidades.",
+        link: "/paraopeba/analise",
+        linkTexto: "Análise Integrada Paraopeba",
       },
       {
-        pergunta: "Quanto foi repassado até agora?",
+        pergunta: "Onde acessar a Biblioteca Unificada de Crimes de Barragens?",
         resposta:
-          "Os repasses são atualizados conforme os dados públicos do acordo. Veja os valores na tela de execução.",
-        link: "/paraopeba/execucao",
-        linkTexto: "Ver repasses",
+          "Consulte mais de 930 laudos, relatórios epidemiológicos da Fiocruz e planos comunitários.",
+        link: "/ambiental/crimes-socioambientais",
+        linkTexto: "Biblioteca de Crimes Socioambientais",
+      },
+      {
+        pergunta: "Como comparar a reparação de Brumadinho com a do Rio Doce?",
+        resposta:
+          "Veja a repactuação de R$ 171 bi de Mariana e como os recursos são distribuídos entre os estados.",
+        link: "/ambiental/mariana",
+        linkTexto: "Repactuação do Rio Doce",
       },
     ],
   },
@@ -326,49 +439,79 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/paraopeba/analise",
     sugestoes: [
       {
-        pergunta: "Quais análises já foram publicadas?",
+        pergunta: "Qual o valor já executado nos 26 municípios atingidos?",
         resposta:
-          "A seção Análise reúne levantamentos do portal sobre execução, repasses e prioridades do acordo.",
+          "Consulte a execução orçamentária detalhada da cota municipal do acordo de R$ 37,7 bi.",
+        link: "/paraopeba/execucao",
+        linkTexto: "Execução do Acordo de Brumadinho",
+      },
+      {
+        pergunta: "Onde consultar o acervo de relatórios técnicos das ATIs?",
+        resposta:
+          "A Biblioteca das ATIs reúne mais de 640 documentos elaborados por AEDAS, Guaicuy, NACAB e ADAI.",
+        link: "/ambiental/crimes-socioambientais",
+        linkTexto: "Acervo de Crimes Socioambientais",
+      },
+      {
+        pergunta: "Quem são os acionistas globais da mineradora Vale?",
+        resposta:
+          "Acompanhe o monitoramento de grandes empresas, fundos internacionais (BlackRock, Previ) e lucros.",
+        link: "/empresas",
+        linkTexto: "Painel de Grandes Empresas",
+      },
+    ],
+  },
+  {
+    padrao: "^/paraopeba",
+    sugestoes: [
+      {
+        pergunta: "Onde ver a análise integrada de auditoria, perícia e ATIs?",
+        resposta:
+          "O cruzamento dos 16 eixos técnicos da AECOM com os laudos da UFMG e assessorias comunitárias.",
         link: "/paraopeba/analise",
-        linkTexto: "Ver análises",
+        linkTexto: "Ver Análise Integrada",
       },
-    ],
-  },
-  {
-    padrao: "^/paraopeba/biblioteca",
-    sugestoes: [
       {
-        pergunta: "O que são as ATIs?",
+        pergunta: "Quanto cada município do Paraopeba já recebeu do Acordo?",
         resposta:
-          "ATIs são Assessorias Técnicas Independentes, documentos técnicos que auxiliam na fiscalização do acordo.",
-        link: "/paraopeba/biblioteca",
-        linkTexto: "Ver biblioteca ATI",
+          "Tabela completa de execução financeira e obras municipais financiadas pela reparação.",
+        link: "/paraopeba/execucao",
+        linkTexto: "Execução por Município",
       },
-    ],
-  },
-  {
-    padrao: "^/paraopeba/auditoria",
-    sugestoes: [
       {
-        pergunta: "O que é a auditoria AECOM?",
+        pergunta: "Como anda a repactuação da Bacia do Rio Doce (Mariana)?",
         resposta:
-          "É a auditoria independente realizada pela AECOM com 467 documentos e 16 eixos de análise sobre a execução do acordo.",
-        link: "/paraopeba/auditoria",
-        linkTexto: "Ver auditoria",
+          "Acompanhe os repasses do novo acordo de Mariana aos municípios atingidos de MG e ES.",
+        link: "/ambiental/mariana",
+        linkTexto: "Painel de Mariana / Rio Doce",
       },
     ],
   },
 
-  // ─── DIREITOS ───
+  // ─── DIREITOS EM MOVIMENTO ───
   {
     padrao: "^/direitos-em-movimento/denuncia",
     sugestoes: [
       {
-        pergunta: "Onde denunciar irregularidades?",
+        pergunta: "Onde buscar orientação jurídica e defensoria pública?",
         resposta:
-          "A página de denúncia reúne canais como ouvidorias, Ministério Público, Controladorias, Tribunal de Contas e polícia.",
-        link: "/direitos-em-movimento/denuncia",
-        linkTexto: "Canais de denúncia",
+          "A seção de ajuda lista serviços gratuitos de apoio jurídico, defensorias e entidades comunitárias.",
+        link: "/direitos-em-movimento/ajuda",
+        linkTexto: "Buscar Ajuda Jurídica",
+      },
+      {
+        pergunta: "Como protocolar um pedido de Lei de Acesso à Informação (LAI)?",
+        resposta:
+          "Passo a passo cidadão para pedir dados a prefeituras, órgãos estaduais e federais.",
+        link: "/direitos-em-movimento/informacao",
+        linkTexto: "Guia de Acesso à Informação",
+      },
+      {
+        pergunta: "Qual lei protege a minha comunidade?",
+        resposta:
+          "Consulte o catálogo de legislação de direitos sociais, proteção socioambiental e patrimônio.",
+        link: "/ambiental/legislacao",
+        linkTexto: "Legislação e Direitos",
       },
     ],
   },
@@ -376,11 +519,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/direitos-em-movimento/informacao",
     sugestoes: [
       {
-        pergunta: "Como pedir informação à administração pública?",
+        pergunta: "O que fazer se a prefeitura negar ou omitir a resposta de LAI?",
         resposta:
-          "Todo cidadão tem direito a informações públicas (LAI). A página explica como fazer um pedido, qual o prazo e o que fazer se receber resposta incompleta.",
-        link: "/direitos-em-movimento/informacao",
-        linkTexto: "Guia de acesso à informação",
+          "Veja como recorrer administrativamente e acionar os canais de controle e ouvidorias públicas.",
+        link: "/direitos-em-movimento/denuncia",
+        linkTexto: "Canais de Denúncia",
+      },
+      {
+        pergunta: "Onde encontrar entidades que auxiliam no controle social?",
+        resposta:
+          "Conheça movimentos, coletivos e assessorias comunitárias que atuam na defesa dos direitos locais.",
+        link: "/direitos-em-movimento/ajuda",
+        linkTexto: "Rede de Ajuda e Defesa",
       },
     ],
   },
@@ -388,11 +538,18 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/direitos-em-movimento/ajuda",
     sugestoes: [
       {
-        pergunta: "Onde buscar ajuda para defender direitos?",
+        pergunta: "Como fazer denúncias de desvio de verbas ou dano ambiental?",
         resposta:
-          "A seção Ajuda lista organizações, defensorias, procuradorias e movimentos sociais que podem apoiar cidadãos e comunidades.",
-        link: "/direitos-em-movimento/ajuda",
-        linkTexto: "Quem pode ajudar",
+          "Acesse formulários e contatos de ouvidorias do Ministério Público e tribunais de contas.",
+        link: "/direitos-em-movimento/denuncia",
+        linkTexto: "Quero Fazer Denúncia",
+      },
+      {
+        pergunta: "Como solicitar documentos oficiais que não estão disponíveis?",
+        resposta:
+          "Utilize o modelo de pedido de informação com fundamentação jurídica da Lei 12.527.",
+        link: "/direitos-em-movimento/informacao",
+        linkTexto: "Fazer Pedido de LAI",
       },
     ],
   },
@@ -402,44 +559,229 @@ export const CONTEXTOS: ContextoPagina[] = [
     padrao: "^/noticias",
     sugestoes: [
       {
-        pergunta: "De onde vêm os dados das matérias do portal?",
+        pergunta: "Como funciona a metodologia de checagem do ONSA?",
         resposta:
-          "Todas as reportagens do ONSA se baseiam em dados oficiais abertos: PNCP, IBAMA, ANM, Receita Federal, SIGBM e Diários Oficiais.",
-        link: "/noticias",
-        linkTexto: "Ver notícias e relatórios",
-      },
-      {
-        pergunta: "Como são feitas as investigações do ONSA?",
-        resposta:
-          "As matérias cruzam contratos, processos e emendas. O texto é estruturado com auxílio de inteligência artificial e validado pela metodologia cívica do ONSA.",
+          "Nenhuma insinuação sem prova: toda reportagem cita a fonte primária oficial, o número e a data.",
         link: "/sobre",
-        linkTexto: "Conhecer a metodologia",
+        linkTexto: "Sobre o Controle Popular",
       },
       {
-        pergunta: "Como citar as reportagens em trabalhos acadêmicos?",
+        pergunta: "Onde consultar o acervo pericial dos crimes de barragens?",
         resposta:
-          "Cada matéria conta com caixa de citação científica em formatos ABNT e BibTeX, com link permanente e data de acesso.",
-        link: "/noticias",
-        linkTexto: "Ver matérias",
+          "Acesse os laudos técnicos, termos de compromisso e planos de saúde das bacias atingidas.",
+        link: "/ambiental/crimes-socioambientais",
+        linkTexto: "Biblioteca Socioambiental",
       },
       {
-        pergunta: "Como checar os dados de uma reportagem?",
+        pergunta: "Onde ver a arrecadação de ICMS e o orçamento estadual de MG?",
         resposta:
-          "Toda reportagem traz a caixa 'Recomendação para verificar' com o passo a passo e o link oficial do órgão público responsável.",
+          "Consulte o painel de receitas tributárias de Minas Gerais (R$ 81,5 bi de ICMS) e despesas obrigatórias.",
+        link: "/estado-e-economia/orcamento",
+        linkTexto: "Orçamento de Minas Gerais",
+      },
+    ],
+  },
+
+  // ─── MARIANA & BACIA DO RIO DOCE ───
+  {
+    padrao: "^/ambiental/mariana",
+    sugestoes: [
+      {
+        pergunta: "Como comparar o acordo do Rio Doce com o do Paraopeba (Brumadinho)?",
+        resposta:
+          "Consulte a execução financeira de R$ 5,48 bi aos municípios do Paraopeba e auditorias da FGV e AECOM.",
+        link: "/paraopeba",
+        linkTexto: "Observatório do Paraopeba",
+      },
+      {
+        pergunta: "Onde consultar os laudos periciais e ações judiciais de Mariana?",
+        resposta:
+          "A Biblioteca Unificada reúne os TACs do Rio Doce, pareceres epidemiológicos e ações civis públicas.",
+        link: "/ambiental/crimes-socioambientais",
+        linkTexto: "Biblioteca de Crimes Socioambientais",
+      },
+      {
+        pergunta: "Qual o status de descaracterização de barragens a montante em MG?",
+        resposta:
+          "Acompanhe as 23 barragens que precisam ser descaracterizadas e as sanções da Lei Mar de Lama Nunca Mais.",
+        link: "/ambiental/barragens/descaracterizacao",
+        linkTexto: "Descaracterização de Barragens",
+      },
+    ],
+  },
+
+  // ─── CRIMES SOCIOAMBIENTAIS ───
+  {
+    padrao: "^/ambiental/crimes-socioambientais",
+    sugestoes: [
+      {
+        pergunta: "Onde ver a análise integrada das 3 vozes (auditoria, perícia e ATIs)?",
+        resposta:
+          "A página cruza os 16 eixos da AECOM com a perícia da UFMG e o que as comunidades atingidas publicaram.",
+        link: "/paraopeba/analise",
+        linkTexto: "Análise Integrada Paraopeba",
+      },
+      {
+        pergunta: "Como acompanhar a execução dos repasses do Acordo de Brumadinho?",
+        resposta:
+          "Acesse a cota dos 26 municípios atingidos do Paraopeba com status de projetos e pagamentos.",
+        link: "/paraopeba/execucao",
+        linkTexto: "Execução do Acordo",
+      },
+      {
+        pergunta: "Como fiscalizar o novo acordo de R$ 171 bilhões de Mariana?",
+        resposta:
+          "Consulte o painel de Mariana com o cronograma de repasses municipais e execução de obras em MG.",
+        link: "/ambiental/mariana",
+        linkTexto: "Acordo de Mariana (Rio Doce)",
+      },
+    ],
+  },
+
+  // ─── INSTITUIÇÕES DE JUSTIÇA (TJMG, MPMG, DPMG, ETC.) ───
+  {
+    padrao: "^/judiciario/instituicoes",
+    sugestoes: [
+      {
+        pergunta: "Onde consultar as ações civis públicas ambientais no Judiciário?",
+        resposta:
+          "O SIRENEJud (CNJ) georreferencia processos de desmatamento, mineração e danos ambientais.",
+        link: "/judiciario/sirenejud",
+        linkTexto: "Painel SIRENEJud",
+      },
+      {
+        pergunta: "Qual o impacto do orçamento da Justiça nas contas de MG?",
+        resposta:
+          "Veja o comparativo entre a arrecadação de impostos (ICMS e IPVA) e os repasses obrigatórios aos poderes.",
+        link: "/estado-e-economia/orcamento",
+        linkTexto: "Orçamento e Receitas de MG",
+      },
+      {
+        pergunta: "Onde ver as notícias investigativas sobre gastos dos tribunais?",
+        resposta:
+          "Reportagens detalham orçamentos de R$ 14,9 bi no TJMG e disparidade histórica com a Defensoria Pública.",
         link: "/noticias",
-        linkTexto: "Explorar relatórios",
+        linkTexto: "Investigações Noticiosas",
+      },
+    ],
+  },
+
+  // ─── 199 CIDADES ESTRATÉGICAS ───
+  {
+    padrao: "^/cidades",
+    sugestoes: [
+      {
+        pergunta: "Quanto meu município recebe de repasses federais da União?",
+        resposta:
+          "O ComunicaBR detalha transferências do Bolsa Família, SUS, Fundeb e BPC para os 853 municípios mineiros.",
+        link: "/dados/comunicabr",
+        linkTexto: "ComunicaBR — Repasses Federais",
+      },
+      {
+        pergunta: "Como navegar no mapa 3D de sobreposições territoriais?",
+        resposta:
+          "O Globo 3D cruza terras indígenas, quilombolas, concessões minerárias e unidades de conservação.",
+        link: "/funcaosocialterra",
+        linkTexto: "Globo 3D de Terras",
+      },
+      {
+        pergunta: "Onde ver relatórios de compras públicas do PNCP?",
+        resposta:
+          "Investigações com dados abertos sobre contratos e compras municipais nas cidades de Minas.",
+        link: "/noticias",
+        linkTexto: "Notícias e Relatórios",
+      },
+    ],
+  },
+
+  // ─── TECNOLOGIA & IA LIVRE ───
+  {
+    padrao: "^/tecnologia",
+    sugestoes: [
+      {
+        pergunta: "Como o portal protege a privacidade e segue a LGPD?",
+        resposta:
+          "O Controle Popular não armazena dados de navegação, é 100% público e gratuito, sem necessidade de cadastro.",
+        link: "/sobre",
+        linkTexto: "Privacidade e Princípios",
+      },
+      {
+        pergunta: "Onde acessar os canais de fiscalização cidadã?",
+        resposta:
+          "Acesse guias passo a passo para requisições de Lei de Acesso à Informação e denúncias.",
+        link: "/direitos-em-movimento",
+        linkTexto: "Direitos em Movimento",
+      },
+    ],
+  },
+
+  // ─── TERRA E TERRITÓRIOS ───
+  {
+    padrao: "^/terra-e-territorios|^/funcaosocialterra",
+    sugestoes: [
+      {
+        pergunta: "Onde acompanhar a reparação da Bacia do Paraopeba (Brumadinho)?",
+        resposta:
+          "Acompanhe o monitoramento do Acordo de R$ 37,7 bi, perícia da UFMG e a auditoria independente AECOM.",
+        link: "/paraopeba",
+        linkTexto: "Observatório do Paraopeba",
+      },
+      {
+        pergunta: "Como fiscalizar as 199 cidades estratégicas do Brasil?",
+        resposta:
+          "Consulte os perfis municipais com indicadores de leitos SUS, qualidade escolar IDEB e finanças públicas.",
+        link: "/cidades",
+        linkTexto: "199 Cidades Estratégicas",
+      },
+      {
+        pergunta: "Onde consultar o acervo de crimes e desastres de barragens?",
+        resposta:
+          "A Biblioteca Unificada reúne 936 laudos periciais, TACs e relatórios de saúde comunitária.",
+        link: "/ambiental/crimes-socioambientais",
+        linkTexto: "Biblioteca de Crimes Socioambientais",
+      },
+    ],
+  },
+
+  // ─── ESTADO E ECONOMIA ───
+  {
+    padrao: "^/estado-e-economia",
+    sugestoes: [
+      {
+        pergunta: "Como fiscalizar as grandes mineradoras e seus acionistas?",
+        resposta:
+          "O portal mapeia os maiores fundos de investimento globais da Vale (BlackRock, Capital Group, Previ) e processos.",
+        link: "/empresas",
+        linkTexto: "Painel de Grandes Empresas",
+      },
+      {
+        pergunta: "Quanto a União transfere aos 853 municípios de Minas Gerais?",
+        resposta:
+          "Consulte R$ 139 bilhões em transferências federais do ComunicaBR por município mineiro.",
+        link: "/dados/comunicabr",
+        linkTexto: "ComunicaBR — Repasses Federais",
+      },
+      {
+        pergunta: "Quem fiscaliza os tribunais e o orçamento da Justiça em MG?",
+        resposta:
+          "Fichas completas do TJMG (R$ 14,9 bi), MPMG (R$ 4,09 bi) e Defensoria Pública (R$ 1,10 bi).",
+        link: "/judiciario/instituicoes",
+        linkTexto: "Orçamento da Justiça MG",
       },
     ],
   },
 ];
 
 /**
- * Retorna sugestões contextuais para uma rota específica.
+ * Retorna sugestões contextuais para uma rota específica,
+ * garantindo que NENHUMA sugestão aponte para a própria página onde o leitor já está.
  */
 export function obterSugestoesContextuais(rota: string): SugestaoContextual[] {
+  const rotaLimpa = rota.replace(/\/$/, "");
   for (const ctx of CONTEXTOS) {
     if (new RegExp(ctx.padrao).test(rota)) {
-      return ctx.sugestoes;
+      const filtradas = ctx.sugestoes.filter((s) => s.link.replace(/\/$/, "") !== rotaLimpa);
+      if (filtradas.length > 0) return filtradas;
     }
   }
   return [];

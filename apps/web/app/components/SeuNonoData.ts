@@ -27,771 +27,408 @@ export interface SeuNonoFrente {
 
 export const FRENTES: SeuNonoFrente[] = [
   {
-    id: "cidades",
-    titulo: "Cidades",
-    descricao: "Acompanhe prefeituras, Câmaras, contratos, obras e serviços do seu município.",
+    id: "direitos",
+    titulo: "Eixo 1 — Direitos em Movimento",
+    descricao: "Trabalho e renda, saúde pública (SUS), educação (IDEB), moradia e canais populares de denúncia.",
     categorias: [
       {
-        id: "minha-cidade",
-        titulo: "Acompanhar minha cidade",
+        id: "trabalho-e-renda",
+        titulo: "Trabalho e Renda",
         perguntas: [
           {
-            id: "encontrar-cidade",
-            pergunta: "Como encontrar dados da minha cidade?",
+            id: "emprego-caged",
+            pergunta: "Como consultar contratações e demissões no CAGED?",
             resposta:
-              "Na página inicial há uma busca por município. Basta digitar o nome da cidade para acessar a página dela, com contratos, despesas, obras, legislação e mais.",
-            link: { href: "/", texto: "Ir para a home" },
+              "O painel de Trabalho e Renda monitora admissões e desligamentos do CAGED por município, demonstrando o saldo formal de vagas.",
+            link: { href: "/direitos-em-movimento/trabalho-e-renda", texto: "Painel de Trabalho e Renda" },
           },
           {
-            id: "pagina-cidade",
-            pergunta: "O que tem na página da minha cidade?",
+            id: "renda-local",
+            pergunta: "Qual o impacto dos contratos públicos na renda do trabalhador?",
             resposta:
-              "Cada município tem um painel com dados da prefeitura, Câmara, território, meio ambiente, clima, educação, saúde, segurança e links úteis.",
+              "Cruzamos contratos e compras públicas com postos de trabalho gerados, avaliando o efeito multiplicador da economia local.",
+            link: { href: "/direitos-em-movimento/trabalho-e-renda", texto: "Ver análise de renda" },
+          },
+        ],
+      },
+      {
+        id: "saude-publica",
+        titulo: "Saúde Pública & SUS",
+        perguntas: [
+          {
+            id: "leitos-sus",
+            pergunta: "Como saber a quantidade de leitos do SUS na minha cidade?",
+            resposta:
+              "O portal monitora o Cadastro Nacional de Estabelecimentos de Saúde (CNES) e a razão de leitos por habitante em comparação com os parâmetros da OMS.",
+            link: { href: "/direitos-em-movimento/saude-publica", texto: "Painel de Saúde Pública" },
+          },
+          {
+            id: "hospitais-atendimento",
+            pergunta: "Onde consultar a capacidade hospitalar e estabelecimentos CNES?",
+            resposta:
+              "Consulte postos de saúde, UPAs e hospitais municipais com dados oficiais do DataSUS.",
+            link: { href: "/direitos-em-movimento/saude-publica", texto: "Ver hospitais e leitos" },
+          },
+        ],
+      },
+      {
+        id: "educacao",
+        titulo: "Educação & Escolas",
+        perguntas: [
+          {
+            id: "ideb-escolas",
+            pergunta: "O que é o IDEB e como ver a nota da minha cidade?",
+            resposta:
+              "O IDEB avalia o fluxo escolar e o aprendizado em português e matemática apurado pelo INEP para os anos iniciais e finais do ensino fundamental.",
+            link: { href: "/direitos-em-movimento/educacao", texto: "Painel de Educação" },
+          },
+          {
+            id: "infraestrutura-escolar",
+            pergunta: "Como verificar a infraestrutura das escolas municipais?",
+            resposta:
+              "Dados do Censo Escolar revelam a presença de bibliotecas, quadras, laboratórios e saneamento nas escolas da rede pública.",
+            link: { href: "/direitos-em-movimento/educacao", texto: "Infraestrutura Escolar" },
+          },
+        ],
+      },
+      {
+        id: "moradia",
+        titulo: "Moradia & Habitação",
+        perguntas: [
+          {
+            id: "deficit-habitacional",
+            pergunta: "Como é medido o déficit habitacional urbano?",
+            resposta:
+              "O cálculo envolve coabitação familiar, ônus excessivo com aluguel e habitações precárias mapeadas pelo IBGE e Fundação João Pinheiro.",
+            link: { href: "/direitos-em-movimento/moradia", texto: "Painel de Moradia" },
+          },
+          {
+            id: "prevencao-remocoes",
+            pergunta: "O que fazer diante do risco de remoção forçada?",
+            resposta:
+              "Conheça as diretrizes da Comissão de Conflitos Fundiários e como acionar a Defensoria Pública especializada.",
+            link: { href: "/direitos-em-movimento/ajuda", texto: "Orientação e Ajuda" },
+          },
+        ],
+      },
+      {
+        id: "acesso-a-justica",
+        titulo: "Acesso à Justiça & Denúncias",
+        perguntas: [
+          {
+            id: "onde-buscar-ajuda",
+            pergunta: "Onde buscar orientação jurídica e defensoria pública?",
+            resposta:
+              "O guia de ajuda lista defensorias, ouvidorias públicas e entidades da sociedade civil que prestam assistência jurídica gratuita.",
+            link: { href: "/direitos-em-movimento/ajuda", texto: "Quem pode ajudar" },
+          },
+          {
+            id: "fazer-denuncia",
+            pergunta: "Como fazer uma denúncia popular com segurança?",
+            resposta:
+              "A página de denúncias reúne canais do Ministério Público, Tribunais de Contas e controladorias públicas.",
+            link: { href: "/direitos-em-movimento/denuncia", texto: "Canais de Denúncia" },
+          },
+          {
+            id: "pedir-lai",
+            pergunta: "Como fazer um pedido de Lei de Acesso à Informação (LAI)?",
+            resposta:
+              "Veja o passo a passo para solicitar documentos e planilhas a prefeituras e órgãos públicos municipais e estaduais.",
+            link: { href: "/direitos-em-movimento/informacao", texto: "Guia de Pedidos LAI" },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "terra",
+    titulo: "Eixo 2 — Terra e Territórios",
+    descricao: "199 cidades estratégicas, bacias do Rio Doce e Paraopeba, ONSA, mineração e terras tradicionais.",
+    categorias: [
+      {
+        id: "cidades-estrategicas",
+        titulo: "199 Cidades Estratégicas",
+        perguntas: [
+          {
+            id: "rede-199-cidades",
+            pergunta: "O que são as 199 Cidades Estratégicas?",
+            resposta:
+              "É a rede de fiscalização cidadã do portal que monitora as 27 capitais e 172 polos regionais do interior do Brasil com contratos, saúde e educação.",
+            link: { href: "/cidades", texto: "Explorar as 199 Cidades" },
+          },
+          {
+            id: "cidades-mg",
+            pergunta: "Quais cidades de Minas têm páginas completas?",
+            resposta:
+              "Belo Horizonte, Betim, Araçuaí, Diamantina e Itinga contam com dados de orçamentos, contratos e Diários Oficiais.",
             link: { href: "/betim", texto: "Ver exemplo de Betim" },
+            links: [
+              { href: "/bh", texto: "Belo Horizonte" },
+              { href: "/aracuai", texto: "Araçuaí" },
+              { href: "/itinga", texto: "Itinga" },
+              { href: "/diamantina", texto: "Diamantina" },
+            ],
           },
         ],
       },
       {
-        id: "dinheiro",
-        titulo: "Dinheiro público",
+        id: "paraopeba-brumadinho",
+        titulo: "Bacia do Paraopeba & Brumadinho",
         perguntas: [
           {
-            id: "maiores-contratos",
-            pergunta: "Quais são os maiores contratos da prefeitura?",
+            id: "acordo-paraopeba",
+            pergunta: "Como está a execução do Acordo Judicial de Brumadinho?",
             resposta:
-              "A tela de contratos lista todos os contratos públicos do município, com valor, fornecedor, objeto e alertas de atenção. Use os filtros para ver os de maior valor.",
-            link: { href: "/betim/prefeitura/contratos", texto: "Ver contratos" },
+              "O Acordo Global de R$ 37,7 bilhões prevê R$ 5,48 bi para os 26 municípios atingidos do Paraopeba. Acompanhe a execução e as obras em andamento.",
+            link: { href: "/paraopeba/execucao", texto: "Execução por Município" },
           },
           {
-            id: "maiores-fornecedores",
-            pergunta: "Quem são os maiores fornecedores?",
+            id: "analise-integrada-paraopeba",
+            pergunta: "O que é a análise integrada de auditoria, perícia e ATIs?",
             resposta:
-              "A página de fornecedores mostra quais empresas mais contrataram a prefeitura, com valor total, número de contratos e indícios de concentração.",
-            link: { href: "/betim/prefeitura/fornecedores", texto: "Ver fornecedores" },
+              "Cruzamento entre os 16 eixos da auditoria independente AECOM, os laudos da UFMG e os estudos das comunidades atingidas.",
+            link: { href: "/paraopeba/analise", texto: "Análise Integrada" },
           },
           {
-            id: "despesas",
-            pergunta: "Onde ver despesas e licitações?",
+            id: "biblioteca-ati",
+            pergunta: "Onde ver relatórios das Assessorias Técnicas Independentes (ATIs)?",
             resposta:
-              "Despesas por função e subfunção estão em 'Despesas'; licitações abertas e seus editais estão em 'Licitações'.",
-            link: { href: "/betim/prefeitura/despesas", texto: "Ver despesas" },
-          },
-          {
-            id: "diario-oficial-municipal",
-            pergunta: "Onde consultar o Diário Oficial do município?",
-            resposta:
-              "A página de Diário Oficial (/prefeitura/diario) reúne extratos de contratos, editais de licitação, decretos e portarias categorizados com filtros por tipo, ano e exportação CSV.",
-            link: { href: "/betim/prefeitura/diario", texto: "Ver Diário Oficial" },
-          },
-          {
-            id: "alertas-contratos",
-            pergunta: "Como identificar contratos em alerta?",
-            resposta:
-              "Contratos com indícios de atenção ganham badges na lista: concentração no ano, dispensa próxima do limite legal ou fornecedor criado no mesmo ano. Sempre são sinais, não conclusões.",
-            link: { href: "/betim/prefeitura/contratos", texto: "Ver contratos com alerta" },
+              "A Biblioteca reúne mais de 640 documentos produzidos por AEDAS, Guaicuy, NACAB e ADAI.",
+            link: { href: "/ambiental/crimes-socioambientais", texto: "Biblioteca Socioambiental" },
           },
         ],
       },
       {
-        id: "obras-servicos",
-        titulo: "Obras e serviços",
+        id: "rio-doce-mariana",
+        titulo: "Bacia do Rio Doce & Mariana",
         perguntas: [
           {
-            id: "obras",
-            pergunta: "Onde ver obras da cidade?",
+            id: "repactuacao-mariana",
+            pergunta: "O que prevê a repactuação de Mariana de R$ 171 bilhões?",
             resposta:
-              "A seção Obras reúne contratos e dados sobre obras públicas do município, quando disponíveis nos dados abertos.",
-            link: { href: "/betim/prefeitura/obras", texto: "Ver obras" },
+              "O novo acordo judicial de 2024 prevê R$ 100 bilhões em dinheiro novo para saúde pública, saneamento e indenizações no Rio Doce.",
+            link: { href: "/ambiental/mariana", texto: "Painel do Rio Doce / Mariana" },
           },
           {
-            id: "coleta-lixo",
-            pergunta: "Quando o lixo é coletado?",
+            id: "repasses-municipios-doce",
+            pergunta: "Quanto cada município atingido do Rio Doce recebe?",
             resposta:
-              "A página de coleta de lixo mostra os dias e horários por região do município, quando divulgados pela prefeitura.",
-            link: { href: "/betim/coleta-lixo", texto: "Ver coleta de lixo" },
-          },
-          {
-            id: "plantao-farmacias",
-            pergunta: "Onde ver plantão de farmácias?",
-            resposta:
-              "A tela de plantão mostra as farmácias de plantão na cidade, com endereço e telefone quando publicados pela prefeitura.",
-            link: { href: "/betim/plantao-farmacias", texto: "Ver farmácias de plantão" },
+              "Consulte a tabela de repasses diretos aos municípios de Minas Gerais e do Espírito Santo afetados pelo desastre da Samarco/Vale.",
+            link: { href: "/ambiental/mariana", texto: "Repasses Municipais Mariana" },
           },
         ],
       },
       {
-        id: "pessoas-instituicoes",
-        titulo: "Pessoas e instituições",
+        id: "meio-ambiente-onsa",
+        titulo: "Meio Ambiente (ONSA)",
         perguntas: [
           {
-            id: "vereadores",
-            pergunta: "Quem são os vereadores?",
+            id: "licenciamento-ambiental",
+            pergunta: "Onde consultar processos de licenciamento ambiental em MG?",
             resposta:
-              "A página de vereadores lista os parlamentares municipais, com dados de contato e histórico quando disponíveis.",
-            link: { href: "/betim/vereadores", texto: "Ver vereadores" },
+              "O painel do ONSA reúne mais de 19 mil empreendimentos com licenças prévias, de instalação e operação aprovadas pela SEMAD.",
+            link: { href: "/ambiental/licenciamento", texto: "Licenciamento ONSA" },
           },
           {
-            id: "votacoes-camara",
-            pergunta: "O que a Câmara está votando?",
+            id: "descaracterizacao-barragens",
+            pergunta: "Qual o status de descaracterização de barragens em MG?",
             resposta:
-              "A seção Votações da Câmara mostra matérias em votação ou já votadas, quando a Casa publica os dados de forma aberta.",
-            link: { href: "/betim/camara/votacoes", texto: "Ver votações" },
+              "Monitoramento das 23 barragens a montante sob exigência da Lei 'Mar de Lama Nunca Mais' e dados do SIGBM.",
+            link: { href: "/ambiental/barragens/descaracterizacao", texto: "Descaracterização de Barragens" },
           },
           {
-            id: "servidores",
-            pergunta: "Onde ver servidores públicos?",
+            id: "copam-decisoes",
+            pergunta: "O que é o COPAM e onde ver suas reuniões?",
             resposta:
-              "A página de servidores reúne dados sobre vínculos da prefeitura, com filtros por órgão e cargo, respeitando a LGPD.",
-            link: { href: "/betim/prefeitura/servidores", texto: "Ver servidores" },
+              "O Conselho Estadual de Política Ambiental delibera sobre pedidos de licença em Minas Gerais. Veja atas e processos pautados.",
+            link: { href: "/ambiental/copam", texto: "Pautas do COPAM" },
           },
         ],
       },
       {
-        id: "legislacao",
-        titulo: "Legislação municipal",
+        id: "terras-funcao-social",
+        titulo: "Terras Tradicionais & Função Social",
         perguntas: [
           {
-            id: "lei-organica",
-            pergunta: "Onde está a Lei Orgânica do município?",
+            id: "globo-3d-terras",
+            pergunta: "Como funciona o Globo 3D de sobreposições territoriais?",
             resposta:
-              "A seção Legislação da cidade reúne Lei Orgânica, Plano Diretor, Lei de Zoneamento e outras leis principais, com link para a fonte e status de verificação.",
-            link: { href: "/betim/legislacao", texto: "Ver legislação municipal" },
+              "Visualização tridimensional que sobrepõe Unidades de Conservação, terras indígenas, quilombolas e requerimentos minerários.",
+            link: { href: "/funcaosocialterra/mapa", texto: "Abrir Globo 3D" },
           },
           {
-            id: "leis-camara",
-            pergunta: "Onde ver leis aprovadas pela Câmara?",
+            id: "vazio-cadastral",
+            pergunta: "O que é vazio cadastral e como fiscalizar o CAR?",
             resposta:
-              "A página de legislação da Câmara lista leis, decretos e outras normas municipais, quando publicadas.",
-            link: { href: "/betim/camara/legislacao", texto: "Ver leis da Câmara" },
-          },
-        ],
-      },
-      {
-        id: "territorio",
-        titulo: "Território e meio ambiente",
-        perguntas: [
-          {
-            id: "mineracao-cidade",
-            pergunta: "Tem mineração perto da minha cidade?",
-            resposta:
-              "A tela Terras mostra processos minerários, territórios tradicionais e sobreposições no município, quando houver dados espaciais disponíveis.",
-            link: { href: "/betim/terras", texto: "Ver terras e mineração" },
-          },
-          {
-            id: "meio-ambiente-cidade",
-            pergunta: "Como acompanhar o meio ambiente da cidade?",
-            resposta:
-              "A seção Meio Ambiente do município traz autuações, barragens, licenciamentos e dados sobre a bacia do Paraopeba.",
-            link: { href: "/betim/meio-ambiente", texto: "Ver meio ambiente" },
-          },
-        ],
-      },
-      {
-        id: "protecao-social",
-        titulo: "Proteção social",
-        perguntas: [
-          {
-            id: "rede-protecao",
-            pergunta: "Onde buscar ajuda na cidade?",
-            resposta:
-              "A Rede de Proteção reúne telefones e endereços de serviços de acolhimento, assistência social, saúde mental e direitos humanos.",
-            link: { href: "/betim/rede-de-protecao", texto: "Ver rede de proteção" },
+              "Áreas sem cadastro ambiental rural que podem indicar terras devolutas ou sobreposições indevidas sobre o patrimônio público.",
+            link: { href: "/funcaosocialterra", texto: "Metodologia Fundiária" },
           },
         ],
       },
     ],
   },
   {
-    id: "congresso",
-    titulo: "Congresso Nacional",
-    descricao: "Acompanhe parlamentares, votações, proposições, comissões e alertas na Câmara e no Senado.",
+    id: "estado",
+    titulo: "Eixo 3 — Estado e Economia",
+    descricao: "Orçamento de MG, PNCP, grandes mineradoras (Vale), Judiciário (TJMG/MPMG) e Congresso Nacional.",
     categorias: [
       {
-        id: "parlamentares",
-        titulo: "Parlamentares",
+        id: "orcamento-e-compras",
+        titulo: "Orçamento & Compras Públicas",
         perguntas: [
           {
-            id: "meus-parlamentares",
-            pergunta: "Quem são os parlamentares do meu estado?",
+            id: "orcamento-mg",
+            pergunta: "Onde consultar a arrecadação de ICMS e o orçamento de Minas Gerais?",
             resposta:
-              "A página de parlamentares permite buscar deputados federais e senadores por estado, partido ou nome.",
-            link: { href: "/congresso/parlamentares", texto: "Ver parlamentares" },
+              "O painel de finanças públicas monitora as receitas tributárias do Estado (R$ 81,5 bi de ICMS, R$ 9,8 bi de IPVA) e suas destinações.",
+            link: { href: "/estado-e-economia/orcamento", texto: "Orçamento de MG" },
           },
           {
-            id: "bancadas",
-            pergunta: "Como ver as bancadas estaduais?",
+            id: "pncp-compras",
+            pergunta: "Como fiscalizar compras públicas municipais pelo PNCP?",
             resposta:
-              "A seção Bancadas mostra a composição por estado, com indicadores de atuação quando disponíveis.",
-            link: { href: "/congresso/bancadas", texto: "Ver bancadas" },
+              "Reportagens investigativas analisam editais, dispensas de licitação e contratos de cidades de médio e pequeno porte.",
+            link: { href: "/noticias/estado-e-economia-pncp-compras", texto: "Auditoria do PNCP" },
           },
         ],
       },
       {
-        id: "votacoes-proposicoes",
-        titulo: "Votações e proposições",
+        id: "empresas-mineradoras",
+        titulo: "Grandes Empresas & Mineradoras",
         perguntas: [
           {
-            id: "votacoes",
-            pergunta: "O que está sendo votado no Congresso?",
+            id: "vale-acionistas",
+            pergunta: "Quem são os maiores acionistas globais da Vale?",
             resposta:
-              "A tela de votações lista as matérias mais recentes, com resultado nominal quando os dados são abertos.",
-            link: { href: "/congresso/votacoes", texto: "Ver votações" },
+              "O portal monitora fundos soberanos e gestoras globais (BlackRock, Capital Group, Previ), distribuição de dividendos e processos.",
+            link: { href: "/empresas", texto: "Painel de Grandes Empresas" },
           },
           {
-            id: "proposicoes",
-            pergunta: "Como acompanhar proposições?",
+            id: "cfem-royalties",
+            pergunta: "O que é CFEM e quanto as mineradoras pagam às cidades?",
             resposta:
-              "A página de proposições permite buscar projetos de lei, requerimentos e emendas por tema, autor ou número.",
-            link: { href: "/congresso/proposicoes", texto: "Ver proposições" },
+              "A Compensação Financeira pela Exploração de Recursos Minerais (royalties da mineração) é mapeada nos municípios mineradores.",
+            link: { href: "/noticias/itinga-transparencia-repasses-litio", texto: "Royalties de Mineração" },
           },
         ],
       },
       {
-        id: "comissoes-agenda",
-        titulo: "Comissões e agenda",
+        id: "sistema-de-justica",
+        titulo: "Sistema de Justiça (TJMG, MPMG, DPMG)",
         perguntas: [
           {
-            id: "comissoes",
-            pergunta: "Quais comissões existem?",
+            id: "orcamento-justica",
+            pergunta: "Quanto custa o Judiciário de Minas Gerais?",
             resposta:
-              "A seção Comissões lista as comissões permanentes e temporárias da Câmara e do Senado.",
-            link: { href: "/congresso/comissoes", texto: "Ver comissões" },
+              "O TJMG consome R$ 14,96 bilhões e o MPMG R$ 4,09 bilhões anuais, com grande parcela em verbas indenizatórias e benefícios.",
+            link: { href: "/judiciario/instituicoes", texto: "Fichas da Justiça MG" },
           },
           {
-            id: "agenda",
-            pergunta: "Qual a agenda do Congresso?",
+            id: "defensoria-deficit",
+            pergunta: "Por que a Defensoria Pública está ausente de 176 comarcas?",
             resposta:
-              "A agenda reúne sessões e reuniões previstas, com link para as transmissões quando disponíveis.",
-            link: { href: "/congresso/agenda", texto: "Ver agenda" },
-          },
-        ],
-      },
-      {
-        id: "alertas-congresso",
-        titulo: "Alertas e bons exemplos",
-        perguntas: [
-          {
-            id: "vicio-auditavel",
-            pergunta: "O que é alerta de vício auditável?",
-            resposta:
-              "São indícios de irregularidade em emendas, convênios ou indicações, rotulados como 'ponto de atenção', nunca como conclusão.",
-            link: { href: "/congresso/alertas", texto: "Ver alertas" },
-          },
-          {
-            id: "bons-exemplos",
-            pergunta: "Onde ver bons exemplos de atuação?",
-            resposta:
-              "A seção Bons Exemplos destaca votações ou proposições que ampliam transparência ou controle social.",
-            link: { href: "/congresso/bons-exemplos", texto: "Ver bons exemplos" },
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "judiciario",
-    titulo: "Judiciário",
-    descricao: "Dados sobre tribunais, correições, indicações, vagas, defensoria e presídios.",
-    categorias: [
-      {
-        id: "tribunais",
-        titulo: "Tribunais",
-        perguntas: [
-          {
-            id: "tribunais-lista",
-            pergunta: "Quais tribunais estão no portal?",
-            resposta:
-              "A página de tribunais reúne informações institucionais e dados publicados pelos Tribunais Superiores e estaduais.",
-            link: { href: "/judiciario/tribunais", texto: "Ver tribunais" },
-          },
-          {
-            id: "correicoes",
-            pergunta: "O que são correições trabalhistas?",
-            resposta:
-              "Correições são inspeções administrativas realizadas nos tribunais. A página reúne relatórios e recomendações publicadas.",
-            link: { href: "/judiciario/correicoes-trabalhistas", texto: "Ver correições" },
-          },
-        ],
-      },
-      {
-        id: "indicacoes-vagas",
-        titulo: "Indicações e vagas",
-        perguntas: [
-          {
-            id: "indicacoes",
-            pergunta: "Como acompanhar indicações para tribunais?",
-            resposta:
-              "A tela de indicações mostra nomes indicados para cargos de dirigentes e magistrados, com status de tramitação.",
-            link: { href: "/judiciario/indicacoes", texto: "Ver indicações" },
-          },
-          {
-            id: "vagas",
-            pergunta: "Onde ver vagas em tribunais?",
-            resposta:
-              "A seção Vagas lista concursos e seleções públicas em andamento nos tribunais.",
-            link: { href: "/judiciario/vagas", texto: "Ver vagas" },
-          },
-        ],
-      },
-      {
-        id: "defensoria-presidios",
-        titulo: "Defensoria e presídios",
-        perguntas: [
-          {
-            id: "defensoria",
-            pergunta: "Onde ver dados sobre Defensoria Pública?",
-            resposta:
-              "A página da Defensoria reúne dados institucionais e indicadores de atendimento, quando publicados.",
-            link: { href: "/judiciario/defensoria", texto: "Ver Defensoria" },
-          },
-          {
-            id: "presidios",
-            pergunta: "Onde ver dados sobre presídios?",
-            resposta:
-              "A seção Presídios traz dados sobre unidades prisionais, vagas e população carcerária.",
-            link: { href: "/judiciario/presidios", texto: "Ver presídios" },
-          },
-        ],
-      },
-      {
-        id: "inspecoes",
-        titulo: "Inspeções",
-        perguntas: [
-          {
-            id: "inspecoes",
-            pergunta: "Onde ver inspeções judiciais?",
-            resposta:
-              "A página de inspeções reúne relatórios de inspeções em unidades do Judiciário e do sistema prisional.",
-            link: { href: "/judiciario/inspecoes", texto: "Ver inspeções" },
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "ambiental",
-    titulo: "Ambiental",
-    descricao: "Licenciamento, barragens, patrimônio cultural, decisões e legislação ambiental.",
-    categorias: [
-      {
-        id: "licenciamento",
-        titulo: "Licenciamento",
-        perguntas: [
-          {
-            id: "licenciamentos",
-            pergunta: "Onde ver licenciamentos ambientais?",
-            resposta:
-              "A tela de licenciamento lista processos ambientais por município, com status, órgão licenciador e empreendimento.",
-            link: { href: "/ambiental/licenciamento", texto: "Ver licenciamentos" },
-          },
-          {
-            id: "copam",
-            pergunta: "O que é o COPAM?",
-            resposta:
-              "COPAM é o Conselho de Política Ambiental de Minas Gerais. A página reúne atas e reuniões do conselho.",
-            link: { href: "/ambiental/copam", texto: "Ver COPAM" },
-          },
-        ],
-      },
-      {
-        id: "barragens",
-        titulo: "Barragens",
-        perguntas: [
-          {
-            id: "barragens",
-            pergunta: "Onde ver barragens por município?",
-            resposta:
-              "A seção Barragens mostra dados de barragens, incluindo manchas de inundação e status de descaracterização.",
-            link: { href: "/ambiental/barragens", texto: "Ver barragens" },
-          },
-          {
-            id: "descaracterizacao",
-            pergunta: "O que é descaracterização de barragem?",
-            resposta:
-              "É o processo de eliminar a condição de barragem de alto risco. A página mostra quais barragens estão nesse processo.",
-            link: { href: "/ambiental/barragens/descaracterizacao", texto: "Ver descaracterização" },
-          },
-        ],
-      },
-      {
-        id: "patrimonio-direitos",
-        titulo: "Patrimônio e direitos",
-        perguntas: [
-          {
-            id: "patrimonio-cultural",
-            pergunta: "Onde ver patrimônio cultural tombado?",
-            resposta:
-              "A página lista bens tombados no estado, com link para a fonte e dados sobre o tipo de tombamento.",
-            link: { href: "/ambiental/patrimonio-cultural", texto: "Ver patrimônio cultural" },
-          },
-          {
-            id: "direito-critico",
-            pergunta: "O que é Direito Crítico?",
-            resposta:
-              "É uma seção com decisões e orientações sobre conflitos ambientais e territoriais, explicadas de forma acessível.",
-            link: { href: "/ambiental/direito-critico", texto: "Ver Direito Crítico" },
-          },
-        ],
-      },
-      {
-        id: "decisoes-convenios",
-        titulo: "Decisões e convênios",
-        perguntas: [
-          {
-            id: "acordo-mariana",
-            pergunta: "Onde consultar o Acordo de Mariana (Rio Doce)?",
-            resposta:
-              "A página /ambiental/mariana detalha a execução orçamentária de R$ 677,4 milhões da repactuação em Minas Gerais, com filtros por anexo, gráfico de empenho e exportação CSV.",
-            link: { href: "/ambiental/mariana", texto: "Ver Acordo de Mariana" },
-          },
-          {
-            id: "decisoes",
-            pergunta: "Onde ver decisões ambientais?",
-            resposta:
-              "A seção Decisões reúne decisões judiciais e administrativas sobre meio ambiente.",
-            link: { href: "/ambiental/decisoes", texto: "Ver decisões" },
-          },
-          {
-            id: "decisoes-lai",
-            pergunta: "O que são Decisões LAI?",
-            resposta:
-              "São respostas a pedidos de acesso à informação sobre temas ambientais, publicadas como forma de ampliar transparência.",
-            link: { href: "/ambiental/decisoes-lai", texto: "Ver decisões LAI" },
+              "Com orçamento 14 vezes menor que o Tribunal de Justiça, a DPMG não dispõe de defensores suficientes para atender a população carente em todo o estado.",
+            link: { href: "/judiciario/instituicoes/dpmg", texto: "Déficit da Defensoria" },
           },
           {
             id: "sirenejud-processos",
-            pergunta: "Onde consultar processos ambientais do Judiciário (SIRENEJud/CNJ)?",
+            pergunta: "O que é o painel SIRENEJud de processos ambientais?",
             resposta:
-              "A página /ambiental/judiciario e a consulta federal /judiciario/sirenejud reúnem 322.842 processos ambientais com dados do CNJ, com filtros por município mineiro, tribunal, classe processual e exportação CSV.",
-            link: { href: "/ambiental/judiciario", texto: "Ver processos ambientais em MG" },
-          },
-          {
-            id: "convenios-ambiental",
-            pergunta: "Onde ver convênios ambientais?",
-            resposta:
-              "A página de convênios lista transferências e acordos relacionados a meio ambiente, saúde e assistência.",
-            link: { href: "/ambiental/convenios", texto: "Ver convênios" },
+              "Banco de dados do CNJ com georreferenciamento de crimes ambientais e ações civis públicas em todo o território nacional.",
+            link: { href: "/judiciario/sirenejud", texto: "SIRENEJud do CNJ" },
           },
         ],
       },
       {
-        id: "legislacao-ambiental",
-        titulo: "Legislação",
+        id: "congresso-nacional",
+        titulo: "Congresso Nacional & Bancadas",
         perguntas: [
           {
-            id: "legislacao-ambiental",
-            pergunta: "Onde ver legislação ambiental?",
+            id: "gastos-ceap",
+            pergunta: "Como fiscalizar os gastos dos deputados com a CEAP?",
             resposta:
-              "A seção Legislação reúne normas federais e estaduais sobre meio ambiente, com link para o texto original.",
-            link: { href: "/ambiental/legislacao", texto: "Ver legislação ambiental" },
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "paraopeba",
-    titulo: "Paraopeba",
-    descricao: "Acompanhamento do acordo de reparação do rompimento da barragem da Vale.",
-    categorias: [
-      {
-        id: "entenda",
-        titulo: "Entenda o acordo",
-        perguntas: [
-          {
-            id: "o-que-e",
-            pergunta: "O que é o acordo de reparação?",
-            resposta:
-              "É o acordo judicial que define as ações e recursos para reparar os danos do rompimento da barragem da Vale em Brumadinho.",
-            link: { href: "/paraopeba/entenda", texto: "Entenda o acordo" },
+              "Consulte reembolsos de passagens, alimentação e combustível declarados na Cota para Exercício da Atividade Parlamentar.",
+            link: { href: "/congresso/parlamentares", texto: "Gastos dos Congressistas" },
           },
           {
-            id: "quem-atua",
-            pergunta: "Quem atua na reparação?",
+            id: "votacoes-bancadas",
+            pergunta: "Onde ver as votações nominais dos parlamentares?",
             resposta:
-              "A página 'Quem atua' mostra os órgãos, instituições e entidades responsáveis por executar e fiscalizar o acordo.",
-            link: { href: "/paraopeba/quem-atua", texto: "Ver quem atua" },
+              "Acompanhe o voto de cada deputado em matérias de orçamento, saúde, educação e meio ambiente.",
+            link: { href: "/congresso/votacoes", texto: "Votações Nominais" },
           },
         ],
       },
       {
-        id: "acompanhar",
-        titulo: "Acompanhar",
+        id: "comunicabr-repasses",
+        titulo: "Repasses Federais (ComunicaBR)",
         perguntas: [
           {
-            id: "execucao",
-            pergunta: "Como acompanhar a execução do acordo?",
+            id: "repasses-853-municipios",
+            pergunta: "Quanto o governo federal repassa aos 853 municípios de MG?",
             resposta:
-              "A tela Execução mostra indicadores e dados sobre o andamento das medidas previstas no acordo.",
-            link: { href: "/paraopeba/execucao", texto: "Ver execução" },
-          },
-          {
-            id: "linha-do-tempo",
-            pergunta: "Qual a linha do tempo dos fatos?",
-            resposta:
-              "A linha do tempo reúne os principais eventos desde o rompimento até os marcos mais recentes da reparação.",
-            link: { href: "/paraopeba/linha-do-tempo", texto: "Ver linha do tempo" },
-          },
-          {
-            id: "documentos",
-            pergunta: "Onde encontrar documentos oficiais?",
-            resposta:
-              "A biblioteca de documentos reúne textos do acordo, relatórios e decisões judiciais.",
-            link: { href: "/paraopeba/documentos", texto: "Ver documentos" },
-          },
-        ],
-      },
-      {
-        id: "analises",
-        titulo: "Análises",
-        perguntas: [
-          {
-            id: "analise",
-            pergunta: "Quais análises já foram publicadas?",
-            resposta:
-              "A seção Análise reúne levantamentos do portal sobre execução, repasses e prioridades do acordo.",
-            link: { href: "/paraopeba/analise", texto: "Ver análises" },
-          },
-          {
-            id: "auditoria",
-            pergunta: "Onde ver auditorias?",
-            resposta:
-              "A página Auditoria mostra dados sobre fiscalização e controle dos recursos do acordo.",
-            link: { href: "/paraopeba/auditoria", texto: "Ver auditoria" },
-          },
-          {
-            id: "auxilio-pericia",
-            pergunta: "Onde ver auxílio e perícia?",
-            resposta:
-              "As páginas Auxílio e Perícia detalham os programas de auxílio financeiro emergencial e os laudos técnicos da reparação.",
-            link: { href: "/paraopeba/auxilio", texto: "Ver auxílio" },
-          },
-        ],
-      },
-      {
-        id: "biblioteca-clipping",
-        titulo: "Biblioteca e clipping",
-        perguntas: [
-          {
-            id: "biblioteca",
-            pergunta: "Onde ver biblioteca e notícias?",
-            resposta:
-              "A Biblioteca reúne publicações acadêmicas e relatórios; o Clipping reúne notícias sobre o tema.",
-            link: { href: "/paraopeba/biblioteca", texto: "Ver biblioteca" },
+              "O painel ComunicaBR mapeia R$ 139 bilhões em transferências da União para Bolsa Família, SUS, Fundeb e BPC em cada cidade mineira.",
+            link: { href: "/dados/comunicabr", texto: "ComunicaBR — Repasses Federais" },
           },
         ],
       },
     ],
   },
   {
-    id: "direitos-em-movimento",
-    titulo: "Direitos em Movimento",
-    descricao: "Onde buscar ajuda, como denunciar, pedir informação e acompanhar os principais achados do portal.",
+    id: "central",
+    titulo: "Central ONSA & Notícias",
+    descricao: "Investigações jornalísticas com dados abertos, Biblioteca de Crimes Socioambientais e acessibilidade.",
     categorias: [
       {
-        id: "sobre-direitos",
-        titulo: "Sobre",
+        id: "noticias-relatorios",
+        titulo: "Notícias & Relatórios Cívicos",
         perguntas: [
           {
-            id: "o-que-e-direitos",
-            pergunta: "O que é Direitos em Movimento?",
+            id: "reportagens-onsa",
+            pergunta: "Onde ver as reportagens investigativas do portal?",
             resposta:
-              "É uma seção do portal que reúne orientações sobre acesso à informação, canais de denúncia e defesa de direitos, além de destacar achados do Controle Popular que merecem atenção da sociedade.",
-            link: { href: "/direitos-em-movimento", texto: "Ir para Direitos em Movimento" },
+              "O portal publica matérias aprofundadas com auditoria de compras públicas, royalties de mineração e acordos de barragens.",
+            link: { href: "/noticias", texto: "Ver notícias e relatórios" },
           },
           {
-            id: "como-acompanhar",
-            pergunta: "Como acompanhar os poderes públicos?",
+            id: "verificar-fontes",
+            pergunta: "Como checar as fontes oficiais de cada matéria?",
             resposta:
-              "Você pode usar os dados do portal para fiscalizar contratos, votações, licenciamentos e obras. A seção Direitos em Movimento mostra por onde começar.",
-            link: { href: "/direitos-em-movimento", texto: "Ver guia de acompanhamento" },
+              "Cada matéria traz a caixa 'Recomendação para verificar' com links diretos para portais de transparência, PNCP e Diários Oficiais.",
+            link: { href: "/noticias", texto: "Explorar reportagens" },
           },
         ],
       },
       {
-        id: "como-agir",
-        titulo: "Como agir",
+        id: "biblioteca-crimes",
+        titulo: "Biblioteca de Crimes Socioambientais",
         perguntas: [
           {
-            id: "pedir-informacao",
-            pergunta: "Como pedir informação à administração pública?",
+            id: "acervo-936-docs",
+            pergunta: "O que tem na Biblioteca Unificada de Crimes de Barragens?",
             resposta:
-              "Todo cidadão tem direito a informações públicas (LAI). A página explica como fazer um pedido, qual o prazo e o que fazer se receber resposta incompleta.",
-            link: { href: "/direitos-em-movimento/informacao", texto: "Guia de acesso à informação" },
-          },
-          {
-            id: "denunciar",
-            pergunta: "Onde denunciar irregularidades?",
-            resposta:
-              "A página de denúncia reúne canais como ouvidorias, Ministério Público, Controladorias, Tribunal de Contas e polícia, com orientação sobre quando usar cada um.",
-            link: { href: "/direitos-em-movimento/denuncia", texto: "Canais de denúncia" },
-          },
-          {
-            id: "buscar-ajuda",
-            pergunta: "Onde buscar ajuda para defender direitos?",
-            resposta:
-              "A seção Ajuda lista organizações, defensorias, procuradorias e movimentos sociais que podem apoiar cidadãos e comunidades.",
-            link: { href: "/direitos-em-movimento/ajuda", texto: "Quem pode ajudar" },
+              "Mais de 930 laudos periciais, termos de ajustamento de conduta, auditorias da FGV e relatórios da Fiocruz sobre Mariana e Brumadinho.",
+            link: { href: "/ambiental/crimes-socioambientais", texto: "Biblioteca de Crimes Socioambientais" },
           },
         ],
       },
       {
-        id: "principais-achados",
-        titulo: "Principais achados",
+        id: "acessibilidade-sobre",
+        titulo: "Acessibilidade & Sobre o Portal",
         perguntas: [
           {
-            id: "achado-contratos-alerta",
-            pergunta: "Quais contratos estão em alerta?",
+            id: "comandos-voz-acessibilidade",
+            pergunta: "Quais comandos de acessibilidade posso usar com o Seu Nonô?",
             resposta:
-              "A tela de contratos de cada município mostra indícios de atenção: concentração de contratos com o mesmo fornecedor no ano, dispensa próxima do limite legal e fornecedor criado no mesmo ano do contrato. São sinais, não conclusões.",
-            link: { href: "/betim/prefeitura/contratos", texto: "Ver contratos em alerta" },
-            links: [
-              { href: "/betim/prefeitura/fornecedores", texto: "Ver fornecedores" },
-            ],
+              "Digite ou fale: 'tema escuro', 'tema claro', 'tema pequi', 'alto contraste', 'aumentar texto', 'diminuir texto' ou 'cores daltônicas'.",
+            link: { href: "/sobre", texto: "Recursos de Acessibilidade" },
           },
           {
-            id: "achado-territorio",
-            pergunta: "Quais empreendimentos sobrepõem terras indígenas e quilombolas?",
+            id: "codigo-aberto-licenca",
+            pergunta: "O portal tem código aberto?",
             resposta:
-              "A tela Terras cruza mineração, barragens e licenciamentos com territórios indígenas e quilombolas. As sobreposições são calculadas com interseção espacial exata; co-ocorrências no mesmo município são rotuladas separadamente.",
-            link: { href: "/betim/terras", texto: "Ver cruzamentos territoriais" },
-            links: [
-              { href: "/ambiental/barragens", texto: "Ver barragens" },
-              { href: "/ambiental/licenciamento", texto: "Ver licenciamentos" },
-            ],
-          },
-          {
-            id: "achado-mineracao-barragens",
-            pergunta: "Onde há mineração ou barragens perto de comunidades?",
-            resposta:
-              "A frente Ambiental e a tela Terras mostram processos minerários, manchas de barragens e licenciamentos próximos a cidades e territórios tradicionais.",
-            link: { href: "/ambiental/barragens", texto: "Ver barragens" },
-            links: [
-              { href: "/betim/terras", texto: "Ver mineração na cidade" },
-            ],
-          },
-          {
-            id: "achado-paraopeba",
-            pergunta: "O que o portal achou sobre o Acordo Paraopeba?",
-            resposta:
-              "O portal acompanha a execução do acordo de reparação do rompimento da barragem da Vale, incluindo repasses, obras, programas de auxílio e auditorias. Toda comparação traz ressalva metodológica.",
-            link: { href: "/paraopeba/execucao", texto: "Ver execução do acordo" },
-            links: [
-              { href: "/paraopeba/analise", texto: "Ver análises" },
-              { href: "/paraopeba/auditoria", texto: "Ver auditoria" },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "geral",
-    titulo: "Geral",
-    descricao: "Informações sobre o portal, acessibilidade, privacidade e busca.",
-    categorias: [
-      {
-        id: "sobre",
-        titulo: "Sobre o portal",
-        perguntas: [
-          {
-            id: "o-que-e-portal",
-            pergunta: "O que é o Controle Popular?",
-            resposta:
-              "Portal independente de transparência que reúne dados públicos sobre cidades, Congresso Nacional, Judiciário e meio ambiente. Não tem vínculo com nenhum órgão ou partido.",
-            link: { href: "/sobre", texto: "Sobre o portal" },
-          },
-          {
-            id: "como-usar",
-            pergunta: "Como usar o portal?",
-            resposta:
-              "Use a busca universal, navegue pelas frentes no menu superior ou escolha um município na home. Cada página traz filtros e explicações sobre os dados.",
-            link: { href: "/busca", texto: "Buscar no portal" },
-          },
-        ],
-      },
-      {
-        id: "acessibilidade",
-        titulo: "Acessibilidade",
-        perguntas: [
-          {
-            id: "tamanho-fonte",
-            pergunta: "Como aumentar o tamanho da letra?",
-            resposta:
-              "Na barra superior há controles para aumentar ou diminuir o tamanho da fonte (A− / A / A+), além de tema claro, escuro e alto contraste.",
-          },
-          {
-            id: "ouvir-pagina",
-            pergunta: "Como ouvir a página?",
-            resposta:
-              "O botão 'Ouvir página' no canto inferior direito lê o conteúdo principal em voz alta, respeitando o leitor de tela.",
-          },
-          {
-            id: "tema-contraste",
-            pergunta: "Como mudar o tema ou contraste?",
-            resposta:
-              "No canto superior direito da barra global você encontra o seletor de tema (claro/escuro/alto contraste) e o modo seguro para daltônicos.",
-          },
-        ],
-      },
-      {
-        id: "privacidade-dados",
-        titulo: "Privacidade e dados",
-        perguntas: [
-          {
-            id: "dados-usuario",
-            pergunta: "O que vocês fazem com meus dados?",
-            resposta:
-              "O portal não coleta dados pessoais sem consentimento. Veja a política de privacidade para mais detalhes.",
-            link: { href: "/termos", texto: "Ver termos e privacidade" },
-          },
-          {
-            id: "usar-dados",
-            pergunta: "Posso usar os dados do portal?",
-            resposta:
-              "Sim. Os dados são públicos e o código do portal é aberto. Cite a fonte original e leia os termos de uso.",
-            link: { href: "/termos", texto: "Ver termos de uso" },
-          },
-          {
-            id: "sugerir-dado",
-            pergunta: "Como sugerir uma base de dados?",
-            resposta:
-              "Envie sugestões pelo repositório público no GitHub ou pelos canais de contato do portal.",
-            link: { href: "https://github.com/FinweeJur/controle-popular", texto: "GitHub do projeto" },
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "noticias",
-    titulo: "Notícias & Relatórios",
-    descricao: "Investigações cívicas, relatórios socioambientais do ONSA e auditoria de dados públicos.",
-    categorias: [
-      {
-        id: "investigacoes-onsa",
-        titulo: "Investigações e Dados Públicos",
-        perguntas: [
-          {
-            id: "o-que-sao-noticias",
-            pergunta: "O que são as matérias de Notícias & Relatórios?",
-            resposta:
-              "São 13 reportagens técnicas do ONSA - Observatório Nacional Socioambiental, cruzando compras públicas, mineração, Diários Oficiais e orçamento.",
-            link: { href: "/noticias", texto: "Ver todas as notícias" },
-          },
-          {
-            id: "como-verificar-materias",
-            pergunta: "Como conferir os números de uma matéria?",
-            resposta:
-              "Cada matéria traz a caixa 'Recomendação para verificar' com passo a passo e hiperlinks diretos para os portais oficiais dos órgãos públicos.",
-            link: { href: "/noticias", texto: "Ir para notícias" },
-          },
-          {
-            id: "como-citar-artigos",
-            pergunta: "Como citar as investigações em trabalhos acadêmicos?",
-            resposta:
-              "Todas as reportagens têm caixa de citação científica nos formatos ABNT e BibTeX com metadados para Google Acadêmico e Dublin Core.",
-            link: { href: "/noticias", texto: "Consultar matérias" },
+              "Sim. Todo o código e os coletores são públicos e auditáveis, construídos para o fortalecimento da cidadania e da transparência pública.",
+            link: { href: "/sobre", texto: "Sobre o Controle Popular" },
           },
         ],
       },
@@ -799,12 +436,6 @@ export const FRENTES: SeuNonoFrente[] = [
   },
 ];
 
-/**
- * Resumos de dados das páginas do portal. O SeuNonô usa estes textos para
- * responder quando o usuário pergunta sobre dados específicos de uma página.
- * Cada entrada contém o título da página, um resumo dos dados disponíveis,
- * e links para acesso direto.
- */
 export interface PaginaDados {
   id: string;
   titulo: string;

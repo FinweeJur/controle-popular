@@ -94,15 +94,11 @@ describe("biblioteca unificada de desastres", () => {
     expect(COBERTURA_BIBLIOTECA_DESASTRES.barradosPelaTriagem).toBeGreaterThanOrEqual(0);
   });
 
-  test("resumo só existe quando publicado pela fonte — nunca gerado", () => {
-    // Fontes como Fundo Brasil publicam excerto oficial da página de busca.
-    // O teste garante que o campo, quando presente, vem de fonte autorizada.
+  test("micro resumo informativo e conciso presente em todos os documentos", () => {
     const dados = ler();
     for (const i of dados.itens) {
-      if (i.resumo) {
-        expect(typeof i.resumo).toBe("string");
-        expect(i.fonteId).toBe("fundo-brasil");
-      }
+      expect(typeof i.resumo).toBe("string");
+      expect(i.resumo?.trim().length).toBeGreaterThan(10);
     }
   });
 
