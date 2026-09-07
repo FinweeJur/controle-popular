@@ -3,6 +3,8 @@
 > **Tipo:** PLANO
 > **Domínio:** empresas
 > **Data:** 2026-09-07
+> **Última medição:** 2026-09-07
+> **Leitura estimada:** média (5–15 min)
 > **Prioridade:** alta (decisão do dono, item da fila)
 > **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [PRODUTO.md](../01-produto/PRODUTO.md), [PLANO-SEU-NONO-NOTEBOOKLM.md](PLANO-SEU-NONO-NOTEBOOKLM.md)
 > **Palavras-chave:** scraping, ESG, Vale, documentos, empresas, paraopeba, rio doce, seu-nono, sabia-7b
