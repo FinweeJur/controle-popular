@@ -52,27 +52,27 @@ export const NOTICIAS_SIGMA_LITHIUM: NoticiaMonitoramento[] = [
 export const NOTICIAS_VALE: NoticiaMonitoramento[] = [
   {
     data: "2026-09-07",
-    titulo: "Risco socioambiental significativo: barragens Forquilha III e Sul Superior em nível 3 de emergência",
+    titulo: "Risco socioambiental significativo: barragens Forquilha III e Sul Superior em nível 3 de emergência (Análise IA — Seu Nono Sabia 7B)",
     veiculo: "Seu Nono Sabia (Análise IA)",
-    href: "/paraopeba/vale",
+    href: "https://www.vale.com/dams",
     resumo:
-      "A Vale S.A. enfrenta desafios significativos em ESG. Barragens Forquilha III e Sul Superior em nível 3 de emergência. Acordo Brumadinho de R$ 37,68 bilhões com 73,8% pagos em 26 municípios da Bacia do Paraopeba.",
+      "A Vale S.A. enfrenta desafios significativos em ESG. Barragens Forquilha III e Sul Superior em nível 3 de emergência. Acordo Brumadinho de R$ 37,68 bilhões com 73,8% pagos em 26 municípios da Bacia do Paraopeba. Fonte: análise automática do Seu Nono Sabia 7B via Ollama sobre dados do portal ESG da Vale (vale.com/dams).",
   },
   {
     data: "2026-09-07",
-    titulo: "Compromissos ambientais: 100% energia renovável no Brasil, meta de redução de 70% de emissões até 2030",
+    titulo: "Compromissos ambientais declarados: 100% energia renovável no Brasil, meta de redução de 70% de emissões até 2030 (Análise IA — Seu Nono Sabia 7B)",
     veiculo: "Seu Nono Sabia (Análise IA)",
-    href: "/empresas/vale",
+    href: "https://www.vale.com/environment",
     resumo:
-      "Vale mantém 100% de energia renovável no Brasil desde 2023. Meta de neutralidade carbono até 2050. Compromissos com biodiversidade e parques protegidos (Amazon Bio Park, Reserva Natural, Botanical Parks).",
+      "Vale mantém 100% de energia renovável no Brasil desde 2023. Meta de neutralidade carbono até 2050. Compromissos com biodiversidade e parques protegidos (Amazon Bio Park, Reserva Natural, Botanical Parks). Fonte: análise automática do Seu Nono Sabia 7B via Ollama sobre dados do portal ambiental da Vale.",
   },
   {
     data: "2026-09-07",
-    titulo: "45 barragens a montante em MG: 21 concluídas, 24 pendentes de descaracterização até 2035",
+    titulo: "45 barragens a montante em MG: 21 concluídas, 24 pendentes de descaracterização até 2035 (Análise IA — Seu Nono Sabia 7B)",
     veiculo: "Seu Nono Sabia (Análise IA)",
-    href: "/ambiental/barragens",
+    href: "https://www.vale.com/dams",
     resumo:
-      "Programa de Descaracterização de Barragens A Montante da Vale: 21 estruturas concluídas e 24 pendentes. SIGBM/ANM monitora 45 barragens em Minas Gerais.",
+      "Programa de Descaracterização de Barragens A Montante da Vale: 21 estruturas concluídas e 24 pendentes. SIGBM/ANM monitora 45 barragens em Minas Gerais. Fonte: análise automática do Seu Nono Sabia 7B via Ollama sobre dados do portal ESG da Vale.",
   },
 ];
 
