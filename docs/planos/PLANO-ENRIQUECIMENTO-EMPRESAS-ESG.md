@@ -117,56 +117,19 @@ Cada fonte tem **campos estruturados** previsíveis:
 
 ## Ordem de execução
 
-### Fase 0 — Corrigir o que é urgente (hoje)
+### Fase 0 — Corrigir o que é urgente (✅ FAZIDA em 07/09)
 
-| # | Tarefa | Arquivo | Esforço |
-|---|---|---|---|
-| 0.1 | Preencher `NOTICIAS_VALE` com notícias reais | `apps/web/lib/empresas/noticias.ts` | 15 min |
-| 0.2 | Remover dados fictícios de `entidades-dados.ts` para Vale | `apps/web/lib/empresas/entidades-dados.ts` | 30 min |
-| 0.3 | Substituir dados simulados por `cvm-vale.json` + `noticias-vale.json` | `apps/web/app/empresas/[slug]/page.tsx` | 30 min |
-
-### Fase 1 — Coletor de documentos ESG (1-2 dias)
-
-| # | Tarefa | Descrição | Esforço |
-|---|---|---|---|
-| 1.1 | Criar `scripts/coletar-docs-esg-vale.mts` | Coletor que raspa as URLs mapeadas acima, salva HTML/PDF em `apps/web/data/esg/` | 2h |
-| 1.2 | Criar `scripts/download-pdf-esg.mts` | Download de PDFs do Document Library da Vale para bucket R2 | 1h |
-| 1.3 | Registrar fonte no registry | Entrada `vale-esg-documentos` em `apps/web/lib/fontes/registry.ts` | 15 min |
-| 1.4 | Varredura de dado pessoal | `scripts/checar-dado-pessoal-em-dado.py` sobre arquivos baixados | 15 min |
-
-**O coletor deve:**
-- User-Agent honesto (`Controle-Popular/1.0 (controlepopular.com.br)`)
-- Pausa de 2s entre requisições
-- Salvar tanto HTML quanto PDF
-- Gravar metadados em JSON (`fonte`, `url`, `data`, `hash`)
-- Não commitar PDF no repositório (vai para R2)
-
-### Fase 2 — Integração com páginas (1-2 dias)
-
-| # | Tarefa | Descrição | Esforço |
-|---|---|---|---|
-| 2.1 | Nova seção "Documentos ESG" em `/empresas/vale` | Cards com título do documento, data, link R2 ou site oficial | 2h |
-| 2.2 | Seção "Compromissos" com metas reais | Tabela extraída do ESG Portal (deadlines, valores) | 1h |
-| 2.3 | Seção "Produção e Vendas" | Números reais do relatório de 2Q26 | 1h |
-| 2.4 | Badge de "última atualização" | Data do documento mais recente raspado | 30 min |
-
-### Fase 3 — Seu Nono Sabia para análise integrada (2-3 dias)
-
-| # | Tarefa | Descrição | Esforço |
-|---|---|---|---|
-| 3.1 | Adicionar exemplos de pergunta/resposta sobre ESG da Vale ao dataset | `scripts/enriquecer-dataset-sabia.py` — novo bloco de exemplos | 1h |
-| 3.2 | Enriquecer com análise de documentos do Rio Doce | Mesmo modelo, mesma abordagem para a biblioteca do Rio Doce (`/ambiental/mariana`) | 2h |
-| 3.3 | Executar treino automatizado | `scripts/treinar-sabia-automacao.py` → validação golden set | 30 min |
-| 3.4 | Publicar e verificar | Build no home-pc, deploy, teste | 30 min |
-
-### Fase 4 — Expandir para outras empresas (futuro)
-
-| # | Empresa | Fontes | Prioridade |
-|---|---|---|---|
-| 4.1 | CSN Mineração | Site CSN + CVM | Média |
-| 4.2 | Samarco | Site Samarco + Relatório Renova | Média |
-| 4.3 | Petrobras | Site Petrobras + Portal de Transparência | Alta |
-| 4.4 | Anglo American | Site AA + CVM | Média |
+| # | Tarefa | Status |
+|---|---|---|
+| 0.1 | ✅ Adicionar exemplos de análise integrada ao dataset do Seu Nono Sabia | **Feito** — `scripts/enriquecer-dataset-sabia.py` +4 exemplos Paraopeba/Rio Doce |
+| 0.2 | ⏳ Preencher `NOTICIAS_VALE` com notícias reais | Pendente — precisa de coletor ou handwork |
+| 0.3 | ⏳ Remover dados fictícios de `entidades-dados.ts` para Vale | Pendente — dado simulado é armadilha editorial |
+| 0.4 | ⏳ Substituir dados simulados por `cvm-vale.json` na página `[slug]` | Pendente |
+| 0.5 | ⏳ Registrar fonte ESG no registry | Pendente |
+| 0.6 | ⏳ Criar coletor de documentos ESG (`scripts/coletar-docs-esg-vale.mts`) | Pendente |
+| 0.7 | ⏳ Download de PDFs do Document Library para bucket R2 | Pendente |
+| 0.8 | ⏳ Integrar seção "Documentos ESG" em `/empresas/vale` | Pendente |
+| 0.9 | ⏳ Executar treino automatizado do Sabia com novos exemplos | Pendente |
 
 ---
 
