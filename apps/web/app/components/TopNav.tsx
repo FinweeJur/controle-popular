@@ -111,6 +111,8 @@ const SECOES_MENU = [
     badgeClasse: "bg-sky-500/10 text-sky-500 border-sky-500/30",
     links: [
       { label: "Visão Geral do Eixo", href: "/estado-e-economia", icone: Landmark },
+      { label: "Governos: Prometeu? Cumpriu?", href: "/governo", icone: Landmark },
+      { label: "Recomendações CNJ & CNMP", href: "/judiciario/recomendacoes", icone: Scale },
       { label: "Orçamento & Receitas de MG", href: "/estado-e-economia/orcamento", icone: BarChart3 },
       { label: "Compras Públicas & PNCP", href: "/noticias/estado-e-economia-pncp-compras", icone: ShoppingBag },
       { label: "Congresso Nacional & CEAP", href: "/congresso", icone: Landmark },

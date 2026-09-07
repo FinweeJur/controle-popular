@@ -148,6 +148,12 @@ export default async function Home() {
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {[
             {
+              href: "/recomendacoes",
+              titulo: "Recomendações do CNJ e CNMP",
+              texto:
+                "Catálogo traduzido em microresumos leigos: o que os corregedores mandaram corrigir em tribunais e promotorias.",
+            },
+            {
               href: "/instituicoes",
               titulo: "Quem fiscaliza a Justiça",
               texto:

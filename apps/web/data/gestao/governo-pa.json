@@ -1,0 +1,116 @@
+{
+  "ente": "PA",
+  "slug": "pa",
+  "nome_ente": "Pará",
+  "esfera": "estadual",
+  "gestor": "Helder Barbalho",
+  "cargo": "Governador do Estado",
+  "partido": "MDB",
+  "coligacao": "Pra Seguir em Frente",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/140001605512",
+  "plano_pdf_hash_sha256": "9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b",
+  "plano_registrado_em": "2022-08-10",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "pa-001",
+      "mandato_id": "pa-2023-2026",
+      "tema": "Cidadania e Paz",
+      "orgao_alvo": "Secretaria de Articulação da Cidadania (Seac)",
+      "trecho_verbatim": "Expandir o programa Usinas da Paz para todas as 12 Regiões de Integração do Pará, totalizando 40 novas unidades.",
+      "plano_pagina": 15,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pa-001-1",
+          "tipo": "obra",
+          "titulo": "Construção de 28 novas Usinas da Paz no interior e Região Metropolitana",
+          "url": "https://agenciapara.com.br/",
+          "data_publicacao": "2024-05-12",
+          "orgao_emissor": "Sedop / Seac",
+          "valor_reais": 380000000.00
+        }
+      ]
+    },
+    {
+      "id": "pa-002",
+      "mandato_id": "pa-2023-2026",
+      "tema": "Meio Ambiente e Bioeconomia",
+      "orgao_alvo": "Secretaria de Estado de Meio Ambiente e Sustentabilidade (Semas-PA)",
+      "trecho_verbatim": "Implementar o Sistema Estadual de Rastreabilidade da Cadeia da Carne e consolidar o Plano Estadual de Bioeconomia.",
+      "plano_pagina": 21,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pa-002-1",
+          "tipo": "decreto",
+          "titulo": "Decreto Estadual nº 3.542/2023 - Programa de Integridade e Rastreabilidade da Pecuária Bovina",
+          "url": "https://www.semas.pa.gov.br/",
+          "data_publicacao": "2023-12-04",
+          "orgao_emissor": "Semas-PA"
+        }
+      ]
+    },
+    {
+      "id": "pa-003",
+      "mandato_id": "pa-2023-2026",
+      "tema": "Infraestrutura Urbana",
+      "orgao_alvo": "Secretaria de Estado de Obras Públicas (Sedop)",
+      "trecho_verbatim": "Executar as obras do Parque da Cidade e do Porto Futuro II, estruturando Belém como capital da Amazônia sustentável.",
+      "plano_pagina": 29,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pa-003-1",
+          "tipo": "obra",
+          "titulo": "Obras do Parque da Cidade (antigo Aeroporto Brigadeiro Protásio) para a COP30",
+          "url": "https://www.sedop.pa.gov.br/",
+          "data_publicacao": "2024-04-18",
+          "orgao_emissor": "Sedop-PA",
+          "valor_reais": 420000000.00
+        }
+      ]
+    },
+    {
+      "id": "pa-004",
+      "mandato_id": "pa-2023-2026",
+      "tema": "Saúde Regional",
+      "orgao_alvo": "Secretaria de Estado de Saúde Pública (Sespa)",
+      "trecho_verbatim": "Implantar policlínicas regionais e ambulatórios médicos de especialidades em Capanema, Santarém e Altamira.",
+      "plano_pagina": 33,
+      "status": "concluida",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pa-004-1",
+          "tipo": "obra",
+          "titulo": "Entrega e funcionamento da Policlínica do Baixo Amazonas em Santarém",
+          "url": "https://www.saude.pa.gov.br/",
+          "data_publicacao": "2023-09-28",
+          "orgao_emissor": "Sespa",
+          "valor_reais": 45000000.00
+        }
+      ]
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-pa-001",
+      "tema": "Clima e Diplomacia",
+      "orgao": "Comitê Estadual da COP30",
+      "titulo": "Obras de macrodrenagem da Bacia da Estrada Nova e saneamento para a COP30",
+      "descricao": "Conjunto de obras de saneamento em canais urbanos de Belém articuladas com financiamento federal e do NDB.",
+      "url": "https://agenciapara.com.br/",
+      "data": "2024-01-15",
+      "tipo": "obra",
+      "valor_reais": 1300000000.00
+    }
+  ]
+}

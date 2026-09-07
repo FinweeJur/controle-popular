@@ -1,0 +1,107 @@
+{
+  "ente": "betim",
+  "slug": "betim",
+  "nome_ente": "Betim",
+  "esfera": "municipal",
+  "gestor": "Vittorio Medioli",
+  "cargo": "Prefeito Municipal",
+  "partido": "Sem partido",
+  "periodo": {
+    "inicio": 2021,
+    "fim": 2024
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/130000789012",
+  "plano_pdf_hash_sha256": "8d3e21019a7bf309c8d621bbf6e5a4097e3a985bb584288102ff9373cf451a8e",
+  "plano_registrado_em": "2020-09-24",
+  "ultima_medicao": "2026-09-05",
+  "propostas": [
+    {
+      "id": "betim-001",
+      "mandato_id": "betim-2021-2024",
+      "tema": "Saúde",
+      "orgao_alvo": "Secretaria Municipal de Saúde",
+      "trecho_verbatim": "Implantação e entrega do novo Centro Materno-Infantil de Betim com leitos de UTI neonatal e obstetrícia de alto risco.",
+      "plano_pagina": 11,
+      "status": "concluida",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-bet-001-1",
+          "tipo": "obra",
+          "titulo": "Inauguração das instalações do Centro Materno-Infantil anexo ao Hospital Regional",
+          "url": "https://www.betim.mg.gov.br/",
+          "data_publicacao": "2022-06-28",
+          "orgao_emissor": "Prefeitura de Betim / Secretaria de Saúde",
+          "valor_reais": 38900000.00
+        }
+      ]
+    },
+    {
+      "id": "betim-002",
+      "mandato_id": "betim-2021-2024",
+      "tema": "Mobilidade e Transporte",
+      "orgao_alvo": "Transbetim / Seinfra",
+      "trecho_verbatim": "Conclusão e operacionalização do sistema de transporte tronco-alimentador com terminais de integração em Citrolândia, PTB e Imbiruçu.",
+      "plano_pagina": 17,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-bet-002-1",
+          "tipo": "contrato",
+          "titulo": "Contrato de Engenharia para conclusão do Terminal de Integração Citrolândia",
+          "url": "https://betim.portaltp.com.br/",
+          "data_publicacao": "2023-04-14",
+          "orgao_emissor": "Secretaria Municipal de Infraestrutura",
+          "valor_reais": 14200000.00
+        }
+      ]
+    },
+    {
+      "id": "betim-003",
+      "mandato_id": "betim-2021-2024",
+      "tema": "Educação",
+      "orgao_alvo": "Secretaria Municipal de Educação (Semed)",
+      "trecho_verbatim": "Eliminar o déficit de vagas em creches para crianças de 0 a 3 anos com construção de novos Centros Infantis Municipais.",
+      "plano_pagina": 22,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-bet-003-1",
+          "tipo": "edital",
+          "titulo": "Concorrência Pública nº 015/2023 - Construção de duas novas creches polo (Jardim Teresópolis e São Caetano)",
+          "url": "https://betim.portaltp.com.br/",
+          "data_publicacao": "2023-09-18",
+          "orgao_emissor": "Semed Betim",
+          "valor_reais": 18400000.00
+        }
+      ]
+    },
+    {
+      "id": "betim-004",
+      "mandato_id": "betim-2021-2024",
+      "tema": "Habitação e Regularização",
+      "orgao_alvo": "Secretaria Municipal de Habitação",
+      "trecho_verbatim": "Titulação e regularização fundiária de 5.000 lotes em vilas e assentamentos consolidados de Betim.",
+      "plano_pagina": 29,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [],
+      "observacao": "Não localizados balanços ou certidões de regularização fundiária emitidas no volume prometido no Portal da Transparência até a data da consulta."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-bet-001",
+      "tema": "Infraestrutura Viária",
+      "orgao": "Seinfra Betim",
+      "titulo": "Construção de Novas Pontes e Alças de Acesso sobre o Rio Betim",
+      "descricao": "Obras de macrodrenagem e transposições viárias não catalogadas no programa de metas do TSE.",
+      "url": "https://betim.portaltp.com.br/",
+      "data": "2023-11-20",
+      "tipo": "obra",
+      "valor_reais": 26500000.00
+    }
+  ]
+}

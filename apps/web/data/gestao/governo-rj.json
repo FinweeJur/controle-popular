@@ -1,0 +1,108 @@
+{
+  "ente": "RJ",
+  "slug": "rj",
+  "nome_ente": "Rio de Janeiro",
+  "esfera": "estadual",
+  "gestor": "Cláudio Castro",
+  "cargo": "Governador do Estado",
+  "partido": "PL",
+  "coligacao": "Rio Unido e Mais Forte",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/190001601245",
+  "plano_pdf_hash_sha256": "4c8b2190dc1cbcf60655adbb10d9f4e3c988eecc89495146c8eb5ebfca07de44",
+  "plano_registrado_em": "2022-08-12",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "rj-001",
+      "mandato_id": "rj-2023-2026",
+      "tema": "Saúde",
+      "orgao_alvo": "Secretaria de Estado de Saúde (SES-RJ)",
+      "trecho_verbatim": "Reabertura de leitos de terapia intensiva pediátrica e conclusão das obras do Hospital do Olho e Hospital do Câncer da Baixada Fluminense.",
+      "plano_pagina": 16,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-rj-001-1",
+          "tipo": "obra",
+          "titulo": "Obras de reforma e reestruturação do Hospital Estadual de Oncologia da Baixada",
+          "url": "https://www.rj.gov.br/saude",
+          "data_publicacao": "2023-11-14",
+          "orgao_emissor": "SES-RJ / Emop",
+          "valor_reais": 89400000.00
+        }
+      ]
+    },
+    {
+      "id": "rj-002",
+      "mandato_id": "rj-2023-2026",
+      "tema": "Saneamento",
+      "orgao_alvo": "Secretaria de Estado do Ambiente e Sustentabilidade (Seas)",
+      "trecho_verbatim": "Fiscalizar o cumprimento das metas contratuais dos concessionários da Cedae com investimento obrigatório de R$ 30 bilhões na Baixada e Leste Metropolitano.",
+      "plano_pagina": 21,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-rj-002-1",
+          "tipo": "contrato",
+          "titulo": "Relatório Anual de Fiscalização da Agenersa: R$ 4,8 bilhões investidos em redes de esgoto nos blocos 1 e 4",
+          "url": "https://www.agenersa.rj.gov.br/",
+          "data_publicacao": "2024-04-10",
+          "orgao_emissor": "Agenersa",
+          "valor_reais": 4800000000.00
+        }
+      ]
+    },
+    {
+      "id": "rj-003",
+      "mandato_id": "rj-2023-2026",
+      "tema": "Transporte Ferroviário",
+      "orgao_alvo": "Secretaria de Estado de Transporte e Mobilidade Urbana (Setram)",
+      "trecho_verbatim": "Recuperar a regularidade e segurança do sistema de trens da SuperVia e modernizar as estações dos ramais Japeri e Santa Cruz.",
+      "plano_pagina": 28,
+      "status": "anunciada",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-rj-003-1",
+          "tipo": "decreto",
+          "titulo": "Termo de Ajustamento de Conduta e Acordo Preliminar de Transição da Concessão dos Trens Metropolitanos",
+          "url": "https://www.rj.gov.br/transporte",
+          "data_publicacao": "2024-02-28",
+          "orgao_emissor": "Governo do Estado do Rio de Janeiro"
+        }
+      ],
+      "observacao": "Assinado termo de transição após pedido de recuperação judicial da concessionária; nova licitação em modelagem."
+    },
+    {
+      "id": "rj-004",
+      "mandato_id": "rj-2023-2026",
+      "tema": "Segurança Cidadã",
+      "orgao_alvo": "Secretaria de Estado de Polícia Militar (SEPM)",
+      "trecho_verbatim": "Instalar unidades do programa Cidade Integrada com oferta de serviços públicos e urbanização em 15 comunidades da capital.",
+      "plano_pagina": 34,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "O programa foi iniciado nas favelas do Jacarezinho e Muzema em 2022, mas a expansão física para as 15 comunidades planejadas não teve editais localizados."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-rj-001",
+      "tema": "Prevenção a Desastres",
+      "orgao": "Defesa Civil / Seas",
+      "titulo": "Obras de contenção de encostas e drenagem em Petrópolis pós-chuvas de 2022",
+      "descricao": "Conjunto de obras de contenção na Serra Fluminense executadas fora da peça eleitoral original.",
+      "url": "https://www.rj.gov.br/obras",
+      "data": "2023-08-15",
+      "tipo": "obra",
+      "valor_reais": 450000000.00
+    }
+  ]
+}

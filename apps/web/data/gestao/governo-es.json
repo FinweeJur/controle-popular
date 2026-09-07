@@ -1,0 +1,115 @@
+{
+  "ente": "ES",
+  "slug": "es",
+  "nome_ente": "Espírito Santo",
+  "esfera": "estadual",
+  "gestor": "Renato Casagrande",
+  "cargo": "Governador do Estado",
+  "partido": "PSB",
+  "coligacao": "Juntos por um Espírito Santo Maior",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/080001608930",
+  "plano_pdf_hash_sha256": "1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f",
+  "plano_registrado_em": "2022-08-11",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "es-001",
+      "mandato_id": "es-2023-2026",
+      "tema": "Mobilidade e Infraestrutura",
+      "orgao_alvo": "Secretaria de Mobilidade e Infraestrutura (Semobi)",
+      "trecho_verbatim": "Concluir a ampliação da Terceira Ponte com a sexta faixa de rolamento e a implantação da Ciclovia da Vida ligando Vitória a Vila Velha.",
+      "plano_pagina": 12,
+      "status": "concluida",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-es-001-1",
+          "tipo": "obra",
+          "titulo": "Inauguração da ampliação da Terceira Ponte e da Ciclovia da Vida",
+          "url": "https://semobi.es.gov.br/",
+          "data_publicacao": "2023-08-27",
+          "orgao_emissor": "Governo do ES / Semobi",
+          "valor_reais": 192000000.00
+        }
+      ]
+    },
+    {
+      "id": "es-002",
+      "mandato_id": "es-2023-2026",
+      "tema": "Segurança Pública",
+      "orgao_alvo": "Secretaria da Segurança Pública e Defesa Social (Sesp)",
+      "trecho_verbatim": "Fortalecer o Programa Estado Presente em Defesa da Vida, reduzindo os homicídios para a menor taxa histórica do Espírito Santo.",
+      "plano_pagina": 18,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-es-002-1",
+          "tipo": "noticia",
+          "titulo": "Relatório Semestral Sesp: Queda de 14,2% nos homicídios dolosos no primeiro semestre de 2024",
+          "url": "https://sesp.es.gov.br/",
+          "data_publicacao": "2024-07-02",
+          "orgao_emissor": "Observatório da Segurança Pública do ES"
+        }
+      ]
+    },
+    {
+      "id": "es-003",
+      "mandato_id": "es-2023-2026",
+      "tema": "Educação",
+      "orgao_alvo": "Secretaria da Educação (Sedu)",
+      "trecho_verbatim": "Atingir 180 escolas da rede estadual funcionando no modelo de tempo integral (Escola Viva) até 2026.",
+      "plano_pagina": 24,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-es-003-1",
+          "tipo": "diario_oficial",
+          "titulo": "Portaria Sedu nº 140/2023 - Conversão de 32 novas escolas estaduais para tempo integral",
+          "url": "https://dio.es.gov.br/",
+          "data_publicacao": "2023-12-20",
+          "orgao_emissor": "Sedu-ES"
+        }
+      ]
+    },
+    {
+      "id": "es-004",
+      "mandato_id": "es-2023-2026",
+      "tema": "Saúde",
+      "orgao_alvo": "Secretaria da Saúde (Sesa)",
+      "trecho_verbatim": "Construir e colocar em operação o novo Hospital Geral de Cariacica para desafogar a rede metropolitana.",
+      "plano_pagina": 29,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-es-004-1",
+          "tipo": "obra",
+          "titulo": "Execução das obras físicas do Hospital Geral de Cariacica (80% executado)",
+          "url": "https://iop.es.gov.br/",
+          "data_publicacao": "2024-06-18",
+          "orgao_emissor": "Instituto de Obras Públicas do ES (Iopes)",
+          "valor_reais": 218000000.00
+        }
+      ]
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-es-001",
+      "tema": "Socorro Climático",
+      "orgao": "Defesa Civil / Sesp",
+      "titulo": "Reconstrução de Mimoso do Sul e cidades do Sul do ES atingidas por enchentes em 2024",
+      "descricao": "Linhas de crédito extraordinárias, limpeza urbana e pontes metálicas emergenciais.",
+      "url": "https://www.es.gov.br/",
+      "data": "2024-03-25",
+      "tipo": "decreto",
+      "valor_reais": 140000000.00
+    }
+  ]
+}

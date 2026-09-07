@@ -33,13 +33,19 @@ export default function PaginaInspecoesJudiciario() {
 
       {/* CABEÇALHO */}
       <header className="mb-8">
-        <div className="mb-3 flex flex-wrap gap-2">
+        <div className="mb-3 flex flex-wrap items-center gap-2">
           <span className="rounded-full bg-primary/10 px-3 py-0.5 text-xs font-semibold text-primary">
             Corregedoria Nacional (CNJ)
           </span>
           <span className="rounded-full bg-emerald-100 px-3 py-0.5 text-xs font-semibold text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
             Defensoria Pública (DPMG)
           </span>
+          <Link
+            href="/judiciario/recomendacoes"
+            className="rounded-full bg-indigo-50 border border-indigo-200 px-3 py-0.5 text-xs font-semibold text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-950/60 dark:border-indigo-800 dark:text-indigo-300 transition-colors"
+          >
+            📋 Recomendações CNJ & CNMP ↗
+          </Link>
           <span className="rounded-full bg-surface-2 border border-border px-3 py-0.5 text-xs text-muted">
             343 Relatórios Oficiais
           </span>

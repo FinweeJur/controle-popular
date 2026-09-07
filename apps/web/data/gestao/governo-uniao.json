@@ -1,0 +1,160 @@
+{
+  "ente": "uniao",
+  "slug": "uniao",
+  "nome_ente": "Governo Federal (União)",
+  "esfera": "federal",
+  "gestor": "Luiz Inácio Lula da Silva",
+  "cargo": "Presidente da República",
+  "partido": "PT",
+  "coligacao": "Brasil da Esperança",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/280001607822",
+  "plano_pdf_hash_sha256": "c88f1190bc1cbcf60655adbb10d9f4e3c988eecc89495146c8eb5ebfca07de67",
+  "plano_registrado_em": "2022-08-15",
+  "ultima_medicao": "2026-09-05",
+  "propostas": [
+    {
+      "id": "br-001",
+      "mandato_id": "uniao-2023-2026",
+      "tema": "Saúde",
+      "orgao_alvo": "Ministério da Saúde",
+      "trecho_verbatim": "Retomar o Programa Farmácia Popular do Brasil, assegurando medicamentos gratuitos para diabetes, hipertensão e asma, e ampliando para a saúde da mulher.",
+      "plano_pagina": 8,
+      "status": "concluida",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-br-001-1",
+          "tipo": "decreto",
+          "titulo": "Decreto nº 11.555/2023 - Recriação e expansão do Farmácia Popular do Brasil",
+          "url": "https://www.in.gov.br/",
+          "data_publicacao": "2023-06-07",
+          "orgao_emissor": "Presidência da República / Ministério da Saúde"
+        },
+        {
+          "id": "ev-br-001-2",
+          "tipo": "orcamento",
+          "titulo": "Execução orçamentária SIOP Ação 20YS - Medicamentos Gratuitos Farmácia Popular",
+          "url": "https://siop.planejamento.gov.br/",
+          "data_publicacao": "2024-12-31",
+          "orgao_emissor": "Ministério da Saúde",
+          "valor_reais": 3100000000.00
+        }
+      ]
+    },
+    {
+      "id": "br-002",
+      "mandato_id": "uniao-2023-2026",
+      "tema": "Infraestrutura",
+      "orgao_alvo": "Ministério dos Transportes / MGI",
+      "trecho_verbatim": "Retomar as obras públicas paralisadas em todo o território nacional, em especial creches, escolas, postos de saúde e rodovias federais estruturantes.",
+      "plano_pagina": 12,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-br-002-1",
+          "tipo": "lei",
+          "titulo": "Lei nº 14.719/2023 - Pacto Nacional pela Retomada de Obras Inacabadas",
+          "url": "https://www.in.gov.br/",
+          "data_publicacao": "2023-11-01",
+          "orgao_emissor": "Congresso Nacional"
+        },
+        {
+          "id": "ev-br-002-2",
+          "tipo": "obra",
+          "titulo": "Painel ObrasGov.br: 3.820 obras escolares e de saúde com repactuação física iniciada",
+          "url": "https://api-publica.obrasgov.gestao.gov.br/obras/docs",
+          "data_publicacao": "2024-05-20",
+          "orgao_emissor": "Ministério da Gestão e da Inovação em Serviços Públicos",
+          "valor_reais": 4120000000.00
+        }
+      ]
+    },
+    {
+      "id": "br-003",
+      "mandato_id": "uniao-2023-2026",
+      "tema": "Meio Ambiente e Clima",
+      "orgao_alvo": "Ministério do Meio Ambiente e Mudança do Clima (MMA)",
+      "trecho_verbatim": "Compromisso com o desmatamento zero na Amazônia e transição ecológica justa, com fortalecimento dos órgãos fiscalizadores federais (Ibama e ICMBio).",
+      "plano_pagina": 16,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-br-003-1",
+          "tipo": "decreto",
+          "titulo": "Decreto nº 11.547/2023 - Reativação do PPCDAm (Plano de Prevenção e Controle do Desmatamento)",
+          "url": "https://www.in.gov.br/",
+          "data_publicacao": "2023-06-05",
+          "orgao_emissor": "MMA / Presidência da República"
+        },
+        {
+          "id": "ev-br-003-2",
+          "tipo": "noticia",
+          "titulo": "Queda consolidada de 45% nos alertas de desmatamento pelo sistema DETER/INPE",
+          "url": "https://terrabrasilis.dpi.inpe.br/",
+          "data_publicacao": "2024-08-01",
+          "orgao_emissor": "INPE / MCTI"
+        }
+      ]
+    },
+    {
+      "id": "br-004",
+      "mandato_id": "uniao-2023-2026",
+      "tema": "Tributação",
+      "orgao_alvo": "Ministério da Fazenda",
+      "trecho_verbatim": "Isentar do Imposto de Renda das Pessoas Físicas quem ganha até cinco salários mínimos.",
+      "plano_pagina": 6,
+      "status": "anunciada",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-br-004-1",
+          "tipo": "lei",
+          "titulo": "Lei nº 14.663/2023 e Medida Provisória nº 1.206/2024 - Isenção até R$ 2.824,00 (dois salários mínimos)",
+          "url": "https://www.in.gov.br/",
+          "data_publicacao": "2024-02-06",
+          "orgao_emissor": "Ministério da Fazenda / Presidência"
+        }
+      ],
+      "observacao": "A isenção foi elevada para 2 salários mínimos; a faixa de 5 salários mínimos anunciada ainda não foi protocolada como projeto de lei complementar até a última medição."
+    },
+    {
+      "id": "br-005",
+      "mandato_id": "uniao-2023-2026",
+      "tema": "Trabalho",
+      "orgao_alvo": "Ministério do Trabalho e Emprego",
+      "trecho_verbatim": "Regulamentação do trabalho intermediado por plataformas digitais e aplicativos garantindo proteção previdenciária e piso remuneratório.",
+      "plano_pagina": 9,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-br-005-1",
+          "tipo": "edital",
+          "titulo": "Projeto de Lei Complementar nº 12/2024 - Regulamentação do transporte de passageiros em app",
+          "url": "https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2422534",
+          "data_publicacao": "2024-03-04",
+          "orgao_emissor": "Poder Executivo Federal"
+        }
+      ]
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-br-001",
+      "tema": "Assistência e Emergência",
+      "orgao": "Ministério da Reconstrução / MIDR",
+      "titulo": "Socorro e Reconstrução do Rio Grande do Sul (Enchentes de 2024)",
+      "descricao": "Medida Provisória e plano emergencial de crédito, auxílio reconstrução e reestruturação de diques e pontes.",
+      "url": "https://www.portaltransparencia.gov.br/",
+      "data": "2024-05-10",
+      "tipo": "lei",
+      "valor_reais": 62500000000.00
+    }
+  ]
+}

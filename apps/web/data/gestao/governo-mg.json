@@ -1,0 +1,146 @@
+{
+  "ente": "MG",
+  "slug": "mg",
+  "nome_ente": "Minas Gerais",
+  "esfera": "estadual",
+  "gestor": "Romeu Zema",
+  "cargo": "Governador do Estado",
+  "partido": "NOVO",
+  "coligacao": "Minas nos Trilhos",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/130001602410",
+  "plano_pdf_hash_sha256": "4b61c944d47d6e5d8a9e70198e3fb3d052a970e70a7b469956d43e5c9f13c6f2",
+  "plano_registrado_em": "2022-08-15",
+  "ultima_medicao": "2026-09-05",
+  "propostas": [
+    {
+      "id": "mg-001",
+      "mandato_id": "mg-2023-2026",
+      "tema": "Saúde",
+      "orgao_alvo": "Secretaria de Estado de Saúde (SES-MG)",
+      "trecho_verbatim": "Concluir e colocar em funcionamento os Hospitais Regionais inacabados no Estado, priorizando os polos de Divinópolis, Sete Lagoas e Teófilo Otoni.",
+      "plano_pagina": 14,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-mg-001-1",
+          "tipo": "obra",
+          "titulo": "Retomada das obras do Hospital Regional de Teófilo Otoni no SISOP",
+          "url": "https://dadosabertos.tce.mg.gov.br/dataset/obras-publicas",
+          "data_publicacao": "2023-05-18",
+          "orgao_emissor": "Secretaria de Estado de Infraestrutura, Mobilidade e Parcerias (Seinfra-MG)",
+          "valor_reais": 109400000.00
+        },
+        {
+          "id": "ev-mg-001-2",
+          "tipo": "contrato",
+          "titulo": "Contrato Seinfra 042/2023 - Execução remanescente de engenharia civil",
+          "url": "https://dados.mg.gov.br/dataset/despesa",
+          "data_publicacao": "2023-08-22",
+          "orgao_emissor": "SES-MG",
+          "valor_reais": 48300000.00
+        }
+      ]
+    },
+    {
+      "id": "mg-002",
+      "mandato_id": "mg-2023-2026",
+      "tema": "Educação",
+      "orgao_alvo": "Secretaria de Estado de Educação (SEE-MG)",
+      "trecho_verbatim": "Expandir a oferta do Ensino Médio em Tempo Integral (EMTI), alcançando no mínimo 100 mil novas matrículas até 2026.",
+      "plano_pagina": 18,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-mg-002-1",
+          "tipo": "diario_oficial",
+          "titulo": "Resolução SEE nº 4.812/2023 - Dispõe sobre o credenciamento de 112 novas unidades polo de EMTI",
+          "url": "https://jornalminasgerais.mg.gov.br/",
+          "data_publicacao": "2023-11-28",
+          "orgao_emissor": "SEE-MG"
+        },
+        {
+          "id": "ev-mg-002-2",
+          "tipo": "orcamento",
+          "titulo": "Execução orçamentária do Programa EMTI na Transparência MG (exercício 2024)",
+          "url": "https://dados.mg.gov.br/dataset/despesa",
+          "data_publicacao": "2024-12-31",
+          "orgao_emissor": "SEE-MG",
+          "valor_reais": 342100000.00
+        }
+      ]
+    },
+    {
+      "id": "mg-003",
+      "mandato_id": "mg-2023-2026",
+      "tema": "Infraestrutura",
+      "orgao_alvo": "Secretaria de Estado de Infraestrutura e Mobilidade (Seinfra-MG)",
+      "trecho_verbatim": "Pavimentação e recuperação funcional de rodovias estaduais integrantes do Provias, com foco nos corredores do Norte e Vale do Jequitinhonha.",
+      "plano_pagina": 25,
+      "status": "concluida",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-mg-003-1",
+          "tipo": "obra",
+          "titulo": "Entrega de pavimentação do trecho MG-402 Pintópolis-Urucuia (Provias)",
+          "url": "https://www.der.mg.gov.br/",
+          "data_publicacao": "2024-06-15",
+          "orgao_emissor": "DER-MG / Seinfra",
+          "valor_reais": 68500000.00
+        }
+      ]
+    },
+    {
+      "id": "mg-004",
+      "mandato_id": "mg-2023-2026",
+      "tema": "Segurança Pública",
+      "orgao_alvo": "Secretaria de Estado de Justiça e Segurança Pública (Sejusp-MG)",
+      "trecho_verbatim": "Implantar centros integrados de monitoramento por câmeras e inteligência analítica em todos os municípios-polo acima de 100 mil habitantes.",
+      "plano_pagina": 31,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [],
+      "observacao": "Não localizados editais ou convênios específicos de expansão centralizada para todas as cidades-polo até a última checagem oficial no PNCP e CGE."
+    },
+    {
+      "id": "mg-005",
+      "mandato_id": "mg-2023-2026",
+      "tema": "Saneamento",
+      "orgao_alvo": "Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável (Semad-MG)",
+      "trecho_verbatim": "Universalizar o tratamento de esgoto nas sedes municipais da bacia do Rio das Velhas e Rio Paraopeba até o fim do mandato.",
+      "plano_pagina": 39,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-mg-005-1",
+          "tipo": "convenio",
+          "titulo": "Acordo Judicial de Reparação Integral Brumadinho - Termo de Execução ETEs Bacia Paraopeba",
+          "url": "https://www.mg.gov.br/pro-brumadinho",
+          "data_publicacao": "2023-09-12",
+          "orgao_emissor": "Copasa / Semad",
+          "valor_reais": 185000000.00
+        }
+      ]
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-mg-001",
+      "tema": "Mineração e Meio Ambiente",
+      "orgao": "Semad / CGE",
+      "titulo": "Auditoria e repactuação das barragens a montante e termo do Rio Doce",
+      "descricao": "Processo de mediação e termo aditivo de repactuação Mariana/Rio Doce junto ao TRF6 e AGU.",
+      "url": "https://dados.mg.gov.br/dataset/despesa",
+      "data": "2024-10-25",
+      "tipo": "decreto",
+      "valor_reais": 132000000000.00
+    }
+  ]
+}

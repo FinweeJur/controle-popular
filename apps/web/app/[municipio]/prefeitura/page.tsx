@@ -26,6 +26,7 @@ export const generateMetadata = metadataDaCidade(
 // kept in the type for whichever sub-page hasn't shipped yet.
 const TABS: { label: string; href: string | null }[] = [
   { label: "Visão geral", href: "/prefeitura" },
+  { label: "Plano de Governo", href: "/gestao" },
   { label: "Contratos", href: "/prefeitura/contratos" },
   // Sprint 2 do plano de revisão de dados — ranking de fornecedores.
   { label: "Fornecedores", href: "/prefeitura/fornecedores" },

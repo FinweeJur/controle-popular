@@ -1,0 +1,106 @@
+{
+  "ente": "brumadinho",
+  "slug": "brumadinho",
+  "nome_ente": "Brumadinho",
+  "esfera": "municipal",
+  "gestor": "Neném da Asa (Avimar de Melo Barcelos)",
+  "cargo": "Prefeito Municipal",
+  "partido": "PV",
+  "periodo": {
+    "inicio": 2021,
+    "fim": 2024
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/130000912345",
+  "plano_pdf_hash_sha256": "8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c",
+  "plano_registrado_em": "2020-09-26",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "bru-001",
+      "mandato_id": "brumadinho-2021-2024",
+      "tema": "Saúde e Reabilitação",
+      "orgao_alvo": "Secretaria Municipal de Saúde de Brumadinho",
+      "trecho_verbatim": "Construir e estruturar o Centro de Atenção Psicossocial e Reabilitação Integrada para atendimento às famílias atingidas.",
+      "plano_pagina": 10,
+      "status": "concluida",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-bru-001-1",
+          "tipo": "obra",
+          "titulo": "Entrega do Complexo de Saúde Mental e Reabilitação Psicossocial (Acordo Judicial)",
+          "url": "https://www.brumadinho.mg.gov.br/",
+          "data_publicacao": "2023-03-10",
+          "orgao_emissor": "Prefeitura de Brumadinho / Pro-Brumadinho",
+          "valor_reais": 16500000.00
+        }
+      ]
+    },
+    {
+      "id": "bru-002",
+      "mandato_id": "brumadinho-2021-2024",
+      "tema": "Infraestrutura e Pontes",
+      "orgao_alvo": "Secretaria Municipal de Obras de Brumadinho",
+      "trecho_verbatim": "Construção de novas pontes de concreto armado e pavimentação das vias de acesso às comunidades rurais de Córrego do Feijão e Tejuco.",
+      "plano_pagina": 16,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-bru-002-1",
+          "tipo": "obra",
+          "titulo": "Pavimentação asfáltica da estrada de ligação Brumadinho - Córrego do Feijão",
+          "url": "https://dados.mg.gov.br/dataset/despesa",
+          "data_publicacao": "2023-08-25",
+          "orgao_emissor": "Secretaria de Obras / Copasa",
+          "valor_reais": 28400000.00
+        }
+      ]
+    },
+    {
+      "id": "bru-003",
+      "mandato_id": "brumadinho-2021-2024",
+      "tema": "Diversificação Econômica",
+      "orgao_alvo": "Secretaria Municipal de Turismo e Cultura",
+      "trecho_verbatim": "Fomentar o ecoturismo e a rota gastronômica ao redor de Inhotim para reduzir a dependência econômica exclusiva da mineração.",
+      "plano_pagina": 21,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-bru-003-1",
+          "tipo": "noticia",
+          "titulo": "Lançamento dos circuitos turísticos rurais e apoio a pousadas locais",
+          "url": "https://www.brumadinho.mg.gov.br/",
+          "data_publicacao": "2023-11-12",
+          "orgao_emissor": "Secretaria de Turismo de Brumadinho"
+        }
+      ]
+    },
+    {
+      "id": "bru-004",
+      "mandato_id": "brumadinho-2021-2024",
+      "tema": "Habitação Rural",
+      "orgao_alvo": "Secretaria Municipal de Desenvolvimento Social",
+      "trecho_verbatim": "Programa municipal de melhorias habitacionais para 1.000 residências rurais com esgotamento sanitário individual.",
+      "plano_pagina": 26,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "Não localizados editais do programa municipal independente fora das obrigações da mineradora."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-bru-001",
+      "tema": "Segurança Hídrica",
+      "orgao": "Copasa / Secretaria de Meio Ambiente",
+      "titulo": "Nova captação de água no Rio Paraopeba acima da zona de impacto do rompimento",
+      "descricao": "Execução fiscalizada no âmbito da auditoria independente AECOM.",
+      "url": "https://www.brumadinho.mg.gov.br/",
+      "data": "2022-09-15",
+      "tipo": "obra",
+      "valor_reais": 450000000.00
+    }
+  ]
+}

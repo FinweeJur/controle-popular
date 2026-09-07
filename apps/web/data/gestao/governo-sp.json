@@ -1,0 +1,128 @@
+{
+  "ente": "SP",
+  "slug": "sp",
+  "nome_ente": "São Paulo",
+  "esfera": "estadual",
+  "gestor": "Tarcísio de Freitas",
+  "cargo": "Governador do Estado",
+  "partido": "Republicanos",
+  "coligacao": "São Paulo Pode Mais",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/250001614210",
+  "plano_pdf_hash_sha256": "5f3a9812e9af42c98d61248fb654097e3a985bb584288102ff9373cf451a998c",
+  "plano_registrado_em": "2022-08-14",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "sp-001",
+      "mandato_id": "sp-2023-2026",
+      "tema": "Transportes e Ferrovias",
+      "orgao_alvo": "Secretaria de Parcerias em Investimentos (SPI)",
+      "trecho_verbatim": "Viabilizar a implantação do Trem Intercidades (TIC) ligando a Região Metropolitana de São Paulo a Campinas, Vale do Paraíba e Sorocaba.",
+      "plano_pagina": 14,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-sp-001-1",
+          "tipo": "contrato",
+          "titulo": "Leilão e assinatura do contrato de concessão do Trem Intercidades SP-Campinas (Eixo Norte)",
+          "url": "https://www.parceriaseminvestimentos.sp.gov.br/",
+          "data_publicacao": "2024-05-29",
+          "orgao_emissor": "Secretaria de Parcerias em Investimentos / CPTM",
+          "valor_reais": 14200000000.00
+        }
+      ]
+    },
+    {
+      "id": "sp-002",
+      "mandato_id": "sp-2023-2026",
+      "tema": "Saneamento e Meio Ambiente",
+      "orgao_alvo": "Secretaria de Meio Ambiente, Infraestrutura e Logística (Semil)",
+      "trecho_verbatim": "Acelerar as obras de despoluição dos rios Tietê e Pinheiros e universalizar o saneamento básico até 2029.",
+      "plano_pagina": 22,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-sp-002-1",
+          "tipo": "contrato",
+          "titulo": "Novo contrato de concessão da Sabesp com metas antecipadas de universalização para 2029",
+          "url": "https://semil.sp.gov.br/",
+          "data_publicacao": "2024-07-23",
+          "orgao_emissor": "Governo do Estado de SP / Semil",
+          "valor_reais": 68000000000.00
+        }
+      ]
+    },
+    {
+      "id": "sp-003",
+      "mandato_id": "sp-2023-2026",
+      "tema": "Educação",
+      "orgao_alvo": "Secretaria da Educação do Estado de São Paulo (Seduc-SP)",
+      "trecho_verbatim": "Expandir o ensino profissionalizante e técnico integrado ao Ensino Médio, atingindo 400 mil estudantes formados com dupla titulação.",
+      "plano_pagina": 19,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-sp-003-1",
+          "tipo": "diario_oficial",
+          "titulo": "Resolução Seduc nº 74/2023 - Expansão dos itinerários de formação técnica no Novo Ensino Médio",
+          "url": "https://www.imprensaoficial.com.br/",
+          "data_publicacao": "2023-10-18",
+          "orgao_emissor": "Seduc-SP"
+        }
+      ]
+    },
+    {
+      "id": "sp-004",
+      "mandato_id": "sp-2023-2026",
+      "tema": "Gestão e Urbanismo",
+      "orgao_alvo": "Secretaria de Governo e Relações Institucionais",
+      "trecho_verbatim": "Transferir a sede administrativa do Governo do Estado do Palácio dos Bandeirantes para o Centro Histórico da capital (Campos Elíseos).",
+      "plano_pagina": 31,
+      "status": "anunciada",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-sp-004-1",
+          "tipo": "edital",
+          "titulo": "Concurso público de projetos de arquitetura para a nova sede administrativa nos Campos Elíseos",
+          "url": "https://www.saopaulo.sp.gov.br/",
+          "data_publicacao": "2024-03-27",
+          "orgao_emissor": "Governo de SP / IAB-SP"
+        }
+      ],
+      "observacao": "Concurso realizado e projeto vencedor homologado; contratação executiva da obra física ainda pendente."
+    },
+    {
+      "id": "sp-005",
+      "mandato_id": "sp-2023-2026",
+      "tema": "Segurança Pública",
+      "orgao_alvo": "Secretaria da Segurança Pública (SSP-SP)",
+      "trecho_verbatim": "Implementar plano habitacional exclusivo para policiais civis e militares com subsídio estadual e moradia digna.",
+      "plano_pagina": 27,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "Não localizados editais com cota exclusiva de subsídio habitacional entregues no volume prometido até a data da verificação."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-sp-001",
+      "tema": "Defesa Civil e Habitação",
+      "orgao": "CDHU / Defesa Civil",
+      "titulo": "Reconstrução e Vilas de Passagem no Litoral Norte (Tragédia de São Sebastião de 2023)",
+      "descricao": "Entrega de mais de 700 apartamentos definitivos em Maresias e Baleia Verde após os deslizamentos.",
+      "url": "https://www.cdhu.sp.gov.br/",
+      "data": "2024-02-19",
+      "tipo": "obra",
+      "valor_reais": 260000000.00
+    }
+  ]
+}

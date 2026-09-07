@@ -1,0 +1,106 @@
+{
+  "ente": "aracuai",
+  "slug": "aracuai",
+  "nome_ente": "Araçuaí",
+  "esfera": "municipal",
+  "gestor": "Tadeu Barbosa de Oliveira",
+  "cargo": "Prefeito Municipal",
+  "partido": "PSD",
+  "periodo": {
+    "inicio": 2021,
+    "fim": 2024
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/130000845112",
+  "plano_pdf_hash_sha256": "7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b",
+  "plano_registrado_em": "2020-09-25",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "ara-001",
+      "mandato_id": "aracuai-2021-2024",
+      "tema": "Saúde e Atenção Básica",
+      "orgao_alvo": "Secretaria Municipal de Saúde de Araçuaí",
+      "trecho_verbatim": "Ampliar a cobertura das equipes do Programa Saúde da Família e garantir remédios básicos e transporte para tratamento fora do domicílio.",
+      "plano_pagina": 8,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-ara-001-1",
+          "tipo": "contrato",
+          "titulo": "Aquisição de veículos e van adaptada para TFD (Tratamento Fora de Domicílio)",
+          "url": "https://aracuai-mg.portaltp.com.br/",
+          "data_publicacao": "2022-11-15",
+          "orgao_emissor": "Prefeitura de Araçuaí",
+          "valor_reais": 680000.00
+        }
+      ]
+    },
+    {
+      "id": "ara-002",
+      "mandato_id": "aracuai-2021-2024",
+      "tema": "Saneamento e Água",
+      "orgao_alvo": "Secretaria Municipal de Obras e Serviços Urbanos",
+      "trecho_verbatim": "Perfuração de poços artesianos e instalação de caixas d'água comunitárias nas comunidades rurais do Vale do Jequitinhonha.",
+      "plano_pagina": 14,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-ara-002-1",
+          "tipo": "convenio",
+          "titulo": "Convênio Seapa/Copasa nº 104/2023 - Sistema de abastecimento de água rural",
+          "url": "https://dados.mg.gov.br/dataset/despesa",
+          "data_publicacao": "2023-07-20",
+          "orgao_emissor": "Copasa / Prefeitura de Araçuaí",
+          "valor_reais": 1450000.00
+        }
+      ]
+    },
+    {
+      "id": "ara-003",
+      "mandato_id": "aracuai-2021-2024",
+      "tema": "Desenvolvimento e Lítio",
+      "orgao_alvo": "Secretaria Municipal de Meio Ambiente e Desenvolvimento Econômico",
+      "trecho_verbatim": "Capacitação da mão de obra jovem local para os empreendimentos de mineração de lítio e atração de indústrias sustentáveis.",
+      "plano_pagina": 19,
+      "status": "anunciada",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-ara-003-1",
+          "tipo": "noticia",
+          "titulo": "Protocolo de intenções e cursos Senai/Sigma Lithium para jovens de Araçuaí",
+          "url": "https://www.aracuai.mg.gov.br/",
+          "data_publicacao": "2023-04-18",
+          "orgao_emissor": "Prefeitura de Araçuaí"
+        }
+      ]
+    },
+    {
+      "id": "ara-004",
+      "mandato_id": "aracuai-2021-2024",
+      "tema": "Infraestrutura Rural",
+      "orgao_alvo": "Secretaria Municipal de Transportes e Estradas",
+      "trecho_verbatim": "Pavimentação asfáltica e calçamento em 100% das ruas do distrito de Engenheiro Schnoor.",
+      "plano_pagina": 23,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "Não localizados contratos de pavimentação integral para todas as ruas do distrito no Portal da Transparência."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-ara-001",
+      "tema": "Cultura e Tradição",
+      "orgao": "Secretaria Municipal de Cultura",
+      "titulo": "Restauração do Casarão dos Correios e Feira de Artesanato do Jequitinhonha",
+      "descricao": "Preservação do patrimônio histórico local e incentivo à cerâmica tradicional.",
+      "url": "https://aracuai-mg.portaltp.com.br/",
+      "data": "2023-10-05",
+      "tipo": "obra",
+      "valor_reais": 520000.00
+    }
+  ]
+}

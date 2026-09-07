@@ -1,0 +1,116 @@
+{
+  "ente": "DF",
+  "slug": "df",
+  "nome_ente": "Distrito Federal",
+  "esfera": "estadual",
+  "gestor": "Ibaneis Rocha",
+  "cargo": "Governador do Distrito Federal",
+  "partido": "MDB",
+  "coligacao": "Pra Fazer Muito Mais",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/070001604499",
+  "plano_pdf_hash_sha256": "3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e",
+  "plano_registrado_em": "2022-08-15",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "df-001",
+      "mandato_id": "df-2023-2026",
+      "tema": "Mobilidade e Transporte",
+      "orgao_alvo": "Secretaria de Transporte e Mobilidade (Semob-DF)",
+      "trecho_verbatim": "Conclusão do Túnel de Taguatinga e expansão da Linha 1 do Metrô-DF com novas estações em Samambaia e Ceilândia.",
+      "plano_pagina": 11,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-df-001-1",
+          "tipo": "obra",
+          "titulo": "Inauguração oficial do Túnel Rei Pelé (Túnel de Taguatinga)",
+          "url": "https://www.agenciabrasilia.df.gov.br/",
+          "data_publicacao": "2023-06-05",
+          "orgao_emissor": "SODF / Governo do DF",
+          "valor_reais": 275000000.00
+        },
+        {
+          "id": "ev-df-001-2",
+          "tipo": "contrato",
+          "titulo": "Licitação e assinatura do contrato de expansão de 3,6 km do Metrô Samambaia",
+          "url": "https://www.metro.df.gov.br/",
+          "data_publicacao": "2024-03-12",
+          "orgao_emissor": "Companhia do Metropolitano do DF",
+          "valor_reais": 319000000.00
+        }
+      ]
+    },
+    {
+      "id": "df-002",
+      "mandato_id": "df-2023-2026",
+      "tema": "Saúde",
+      "orgao_alvo": "Secretaria de Saúde do Distrito Federal (SES-DF)",
+      "trecho_verbatim": "Construir e inaugurar os novos Hospitais Regionais de São Sebastião, Recanto das Emas e do Guará.",
+      "plano_pagina": 17,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-df-002-1",
+          "tipo": "edital",
+          "titulo": "Edital de Licitação Novacap nº 08/2023 - Obras do Hospital Clínico Ortopédico do Guará",
+          "url": "https://www.novacap.df.gov.br/",
+          "data_publicacao": "2023-11-20",
+          "orgao_emissor": "Novacap / SES-DF",
+          "valor_reais": 204000000.00
+        }
+      ]
+    },
+    {
+      "id": "df-003",
+      "mandato_id": "df-2023-2026",
+      "tema": "Habitação e Regularização",
+      "orgao_alvo": "Companhia de Desenvolvimento Habitacional do DF (Codhab)",
+      "trecho_verbatim": "Titulação de 50.000 escrituras de regularização fundiária e entrega de novos conjuntos habitacionais em São Sebastião e Sol Nascente.",
+      "plano_pagina": 23,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-df-003-1",
+          "tipo": "noticia",
+          "titulo": "Entrega de 18.000 escrituras e regularização de quadras no Sol Nascente/Pôr do Sol",
+          "url": "https://www.codhab.df.gov.br/",
+          "data_publicacao": "2024-05-30",
+          "orgao_emissor": "Codhab-DF"
+        }
+      ]
+    },
+    {
+      "id": "df-004",
+      "mandato_id": "df-2023-2026",
+      "tema": "Educação",
+      "orgao_alvo": "Secretaria de Estado de Educação (SEEDF)",
+      "trecho_verbatim": "Universalizar a pré-escola para crianças de 4 e 5 anos e construir 40 novas creches públicas.",
+      "plano_pagina": 30,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "Fila de espera para creches permanece acima de 12 mil crianças; ritmo de novas construções abaixo da meta proporcional anual."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-df-001",
+      "tema": "Segurança e Proteção Institucional",
+      "orgao": "Secretaria de Segurança Pública (SSP-DF)",
+      "titulo": "Plano de Proteção e Reestruturação dos Poderes da República pós-8 de janeiro de 2023",
+      "descricao": "Criação de novos protocolos de contenção, compra de blindados e centro integrado de comando na Esplanada.",
+      "url": "https://www.ssp.df.gov.br/",
+      "data": "2023-04-10",
+      "tipo": "decreto",
+      "valor_reais": 82000000.00
+    }
+  ]
+}

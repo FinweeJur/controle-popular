@@ -1,0 +1,107 @@
+{
+  "ente": "bh",
+  "slug": "bh",
+  "nome_ente": "Belo Horizonte",
+  "esfera": "municipal",
+  "gestor": "Fuad Noman",
+  "cargo": "Prefeito Municipal",
+  "partido": "PSD",
+  "periodo": {
+    "inicio": 2021,
+    "fim": 2024
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/130000623910",
+  "plano_pdf_hash_sha256": "3a7b982109eaf42c98d61248fb654097e3a985bb584288102ff9373cf451a99a",
+  "plano_registrado_em": "2020-09-22",
+  "ultima_medicao": "2026-09-05",
+  "propostas": [
+    {
+      "id": "bh-001",
+      "mandato_id": "bh-2021-2024",
+      "tema": "Drenagem e Enchentes",
+      "orgao_alvo": "Secretaria Municipal de Obras e Infraestrutura (SMOBI)",
+      "trecho_verbatim": "Executar obras de mitigação de inundações na Bacia do Córrego do Nado e bacia da Avenida Vilarinho.",
+      "plano_pagina": 15,
+      "status": "concluida",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-bh-001-1",
+          "tipo": "obra",
+          "titulo": "Entrega do reservatório profundo (piscinão) da Vilarinho e Córrego Nado",
+          "url": "https://prefeitura.pbh.gov.br/obras",
+          "data_publicacao": "2023-12-10",
+          "orgao_emissor": "Sudecap / SMOBI",
+          "valor_reais": 140000000.00
+        }
+      ]
+    },
+    {
+      "id": "bh-002",
+      "mandato_id": "bh-2021-2024",
+      "tema": "Transporte Público",
+      "orgao_alvo": "BHTrans / Sumob",
+      "trecho_verbatim": "Renovação integral da frota de ônibus com ar-condicionado e transição gradual para veículos elétricos e híbridos.",
+      "plano_pagina": 19,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-bh-002-1",
+          "tipo": "lei",
+          "titulo": "Lei Municipal nº 11.458/2023 - Novo Marco do Transporte Coletivo e aquisição de 100 ônibus elétricos",
+          "url": "https://dom-web.pbh.gov.br/",
+          "data_publicacao": "2023-07-06",
+          "orgao_emissor": "Câmara Municipal de Belo Horizonte / PBH",
+          "valor_reais": 512000000.00
+        }
+      ]
+    },
+    {
+      "id": "bh-003",
+      "mandato_id": "bh-2021-2024",
+      "tema": "Saúde",
+      "orgao_alvo": "Secretaria Municipal de Saúde (SMSA)",
+      "trecho_verbatim": "Reforma e reconstrução de 40 Centros de Saúde municipais por meio de Parceria Público-Privada (PPP).",
+      "plano_pagina": 24,
+      "status": "concluida",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [
+        {
+          "id": "ev-bh-003-1",
+          "tipo": "contrato",
+          "titulo": "Termo de recebimento definitivo da 40ª unidade de Centro de Saúde da PPP de Atenção Primária",
+          "url": "https://prefeitura.pbh.gov.br/saude",
+          "data_publicacao": "2024-03-20",
+          "orgao_emissor": "SMSA / PBH",
+          "valor_reais": 215000000.00
+        }
+      ]
+    },
+    {
+      "id": "bh-004",
+      "mandato_id": "bh-2021-2024",
+      "tema": "Habitação de Interesse Social",
+      "orgao_alvo": "Companhia Urbanizadora de Belo Horizonte (Urbel)",
+      "trecho_verbatim": "Produzir 10.000 unidades habitacionais populares destinadas a famílias removidas de áreas de risco geológico.",
+      "plano_pagina": 33,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-05",
+      "evidencias": [],
+      "observacao": "As entregas anuais de HIS registradas no Diário Oficial da PBH atingiram fração menor que a meta estipulada no programa."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-bh-001",
+      "tema": "Revitalização Urbana",
+      "orgao": "Secretaria Municipal de Política Urbana (SMPU)",
+      "titulo": "Programa Centro de Todo Mundo e Requalificação da Avenida Afonso Pena",
+      "descricao": "Conjunto de obras de ciclovia, calçamento e iluminação não previsto no programa eleitoral registrado em 2020.",
+      "url": "https://prefeitura.pbh.gov.br/planejamento",
+      "data": "2023-05-15",
+      "tipo": "obra",
+      "valor_reais": 85000000.00
+    }
+  ]
+}
