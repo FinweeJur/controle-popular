@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { obterLugar, LUGARES_CATALOGO } from "@/lib/lugares";
 import PainelLugar from "@/app/ambiental/components/PainelLugar";
+import { obterDadosRio } from "@/lib/ambiental/nossos-rios-dados";
 import type { DadosImpactoPovoGente } from "@/app/ambiental/components/BlocoPovoGente";
 
 export function generateStaticParams() {
@@ -36,43 +37,36 @@ export default async function RioPage({
     notFound();
   }
 
-  // Dados reais ou de referência pública para os rios
-  const impactoPovoGente: DadosImpactoPovoGente = {
+  const dadosRio = obterDadosRio(slug);
+
+  const fallbackImpacto: DadosImpactoPovoGente = {
     lugarNome: lugar.nome,
     saude: {
       indicador: "Qualidade da Água & Abastecimento",
-      descricao:
-        slug === "rio-paraopeba"
-          ? "Monitoramento contínuo de poços artesianos e turbidez em 11 estações ao longo da calha."
-          : "Captação para saneamento urbano e controle de patógenos de veiculação hídrica.",
-      fonte: "IGAM / COPASA (2026)",
+      descricao: "Captação para saneamento urbano e controle contínuo de qualidade pelo órgão ambiental.",
+      fonte: "IGAM / ANA (2026)",
     },
     trabalhoERenda: {
       atividadePrincipal: "Pesca Artesanal & Agricultura Familiar",
-      vulnerabilidade:
-        slug === "rio-paraopeba"
-          ? "Colônias de pescadores em processo de indenização e reestruturação produtiva."
-          : "Irrigação de pequenas lavouras de vazante e hortas comunitárias dependentes do leito.",
-      fonte: "Emater-MG / Colônias de Pescadores",
+      vulnerabilidade: "Comunidades tradicionais de pescadores e pequenos produtores de vazante.",
+      fonte: "Emater / Colônias de Pesca",
     },
     moradia: {
       situacao: "Comunidades Ribeirinhas & Áreas de Várzea",
-      familiasRisco:
-        "Famílias residentes em cotas de cheia e monitoradas por planos de contingência da Defesa Civil.",
-      fonte: "Defesa Civil Estadual / Prefeituras",
+      familiasRisco: "Famílias residentes em cotas de cheia e monitoradas por planos de contingência.",
+      fonte: "Defesa Civil / Prefeituras",
     },
     cultura: {
       manifestacao: "Cultura das Águas & Tradições Ribeirinhas",
-      ameacaOuPotencia:
-        "Celebrações religiosas tradicionais, festas de Nossa Senhora do Rosário e canoagem secular.",
-      fonte: "IEPHA-MG",
+      ameacaOuPotencia: "Celebrações religiosas tradicionais, festas populares e memória ribeirinha.",
+      fonte: "IPHAN / IEPHA",
     },
   };
 
-  const numeroProtagonista = {
-    valor: slug === "rio-paraopeba" ? "510 km" : "[ligar à fonte]",
-    rotulo: "Extensão total da calha fluvial monitorada por órgãos públicos",
-    fonte: "IGAM / Comitê de Bacia Hidrográfica",
+  const numeroProtagonista = dadosRio?.numeroProtagonista ?? {
+    valor: "Monitorado",
+    rotulo: "Calha fluvial monitorada por órgãos públicos estaduais e federais",
+    fonte: "ANA / Comitê de Bacia Hidrográfica",
     dataReferencia: "2026",
   };
 
@@ -80,7 +74,9 @@ export default async function RioPage({
     <PainelLugar
       lugar={lugar}
       numeroProtagonista={numeroProtagonista}
-      impactoPovoGente={impactoPovoGente}
+      dadosGrafico={dadosRio?.dadosGrafico}
+      impactoPovoGente={dadosRio?.impactoPovoGente ?? fallbackImpacto}
+      itensTabela={dadosRio?.itensTabela}
       variacaoPovoGente="povo"
     />
   );

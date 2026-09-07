@@ -42,7 +42,7 @@ export interface FonteDef {
   slug: string;
   nome: string;
   orgao: string;
-  esfera: "federal" | "estadual" | "municipal" | "independente";
+  esfera: "federal" | "estadual" | "municipal" | "independente" | "internacional";
   frente: FrenteSlug;
   descricao: string;
   urlOficial: string;

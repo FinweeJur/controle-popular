@@ -17,11 +17,13 @@ import {
   AlertTriangle,
   Scale,
   Sparkles,
+  Download,
 } from "lucide-react";
 import { listarTodasEntidades, obterEntidadePorSlug } from "@/lib/empresas/entidades-dados";
 import { obterEmpresa, EMPRESAS } from "@/lib/empresas/dados";
 import { processosPorEmpresa } from "@/lib/empresas/sigmine";
 import { NOTICIAS_SIGMA_LITHIUM, NOTICIAS_VALE } from "@/lib/empresas/noticias";
+import { listarDocumentosPorEmpresa } from "@/lib/empresas/empresas-documentos";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -75,6 +77,12 @@ export default async function EmpresaPage({ params }: Props) {
 
   // Notícias
   const noticias = slug === "sigma-lithium" ? NOTICIAS_SIGMA_LITHIUM : slug === "vale" || slug === "vale-s-a" ? NOTICIAS_VALE : [];
+
+  // Documentos no acervo R2
+  let documentos = listarDocumentosPorEmpresa(slug);
+  if (documentos.length === 0 && entidade?.slug) {
+    documentos = listarDocumentosPorEmpresa(entidade.slug);
+  }
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:py-14 sm:px-6 lg:px-8 space-y-10">
@@ -265,6 +273,71 @@ export default async function EmpresaPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ═══ DOCUMENTOS PÚBLICOS, RELATÓRIOS ESG E PRESTAÇÃO DE CONTAS ═══ */}
+      {documentos.length > 0 && (
+        <section aria-labelledby="secao-documentos" className="rounded-2xl border border-border bg-surface p-5 sm:p-6 shadow-xs space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-border">
+            <div className="flex items-center gap-2">
+              <FileText size={18} className="text-primary" />
+              <h2 id="secao-documentos" className="font-display text-lg font-bold text-foreground">
+                Documentos Oficiais, Relatórios ESG & Prestação de Contas ({documentos.length})
+              </h2>
+            </div>
+            <Link
+              href="/empresas/documentos"
+              className="text-xs font-semibold text-primary hover:underline"
+            >
+              Ver todos os 520 documentos do acervo →
+            </Link>
+          </div>
+
+          <p className="text-xs text-muted">
+            Relatórios auditados arquivados com espelho redundante no Cloudflare R2 e link direto para os registros da CVM, SEC ou canal oficial de Relações com Investidores:
+          </p>
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 text-xs">
+            {documentos.map((doc) => (
+              <div key={doc.id} className="rounded-xl border border-border/70 bg-surface-2 p-3.5 space-y-2 flex flex-col justify-between">
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="rounded-full bg-primary/10 text-primary px-2 py-0.5 text-[10px] font-bold">
+                      {doc.tipoDocumentoRotulo}
+                    </span>
+                    <span className="font-mono text-[11px] text-muted font-bold">{doc.ano}</span>
+                  </div>
+                  <h3 className="font-bold text-foreground text-xs">{doc.titulo}</h3>
+                  <p className="text-muted text-[11px] leading-relaxed line-clamp-3">{doc.microResumo}</p>
+                </div>
+
+                <div className="pt-2 border-t border-border/60 flex items-center justify-between text-[11px]">
+                  <span className="font-mono text-muted">{doc.tamanhoFormatado}</span>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href={doc.urlR2}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-semibold text-primary hover:underline"
+                    >
+                      <span>Espelho R2</span>
+                      <Download size={11} />
+                    </a>
+                    <a
+                      href={doc.urlOficial}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-muted hover:text-foreground hover:underline"
+                    >
+                      <span>Oficial</span>
+                      <ExternalLink size={10} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ═══ 4. LICENCIAMENTOS, PROCESSOS MINERÁRIOS & CONTRATOS ═══ */}
       <section aria-labelledby="secao-licencas" className="rounded-2xl border border-border bg-surface p-5 sm:p-6 shadow-xs space-y-4">

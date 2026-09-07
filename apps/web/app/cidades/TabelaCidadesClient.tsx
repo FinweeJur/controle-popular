@@ -58,12 +58,10 @@ export default function TabelaCidadesClient({ cidades }: Props) {
     const cabecalho = "Nome;UF;Região;Tipo;Código IBGE;Código DATASUS;Portal\n";
     const linhas = cidadesFiltradas
       .map((c) => {
-        // Sem página publicada não existe URL: o CSV diz "em breve" em vez
-        // de prometer um /<código-ibge> que dá 404 (medido em 03/09).
-        const slug = slugCobertoPorIbge(c.id_municipio) ?? c.slug;
-        const portal = slug
-          ? `controlepopular.com.br/${slug}`
-          : "em breve";
+        const slugPiloto = slugCobertoPorIbge(c.id_municipio);
+        const portal = slugPiloto
+          ? `controlepopular.com.br/${slugPiloto}`
+          : `controlepopular.com.br/terra-e-territorios/cidades/${c.slug ?? c.id_municipio}`;
         return `"${c.nome}";"${c.uf}";"${c.regiao}";"${c.tipo === "capital" ? "Capital" : "Polo do Interior"}";"${c.id_municipio}";"${c.datasus_6dig}";"${portal}"`;
       })
       .join("\n");
@@ -214,27 +212,17 @@ export default function TabelaCidadesClient({ cidades }: Props) {
                   </td>
                   <td className="px-4 py-3 text-right">
                     {(() => {
-                      // O href era `/${c.slug ?? c.id_municipio}` — para as
-                      // ~193 cidades do catálogo sem página, isso montava
-                      // /2900702 e dava 404 (medido em 03/09: o redirect
-                      // IBGE→slug do next.config só existe para as 6 do
-                      // build). Gate: só linka quem tem página publicada;
-                      // o resto vira badge "em breve".
-                      const slug = slugCobertoPorIbge(c.id_municipio) ?? c.slug;
-                      return slug ? (
+                      const slugPiloto = slugCobertoPorIbge(c.id_municipio);
+                      const destino = slugPiloto
+                        ? `/${slugPiloto}`
+                        : `/terra-e-territorios/cidades/${c.slug ?? c.id_municipio}`;
+                      return (
                         <Link
-                          href={`/${slug}`}
-                          className="text-xs font-semibold text-primary hover:underline"
+                          href={destino}
+                          className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
                         >
                           Acessar →
                         </Link>
-                      ) : (
-                        <span
-                          className="inline-block rounded-full bg-surface-2 border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted"
-                          title={`${c.nome}-${c.uf} ainda não tem página no portal — cobertura planejada.`}
-                        >
-                          Em breve
-                        </span>
                       );
                     })()}
                   </td>

@@ -88,6 +88,18 @@ export function obterCidadePorIbge(idMunicipio: string): CidadeEstrategica | und
   );
 }
 
+/** Localiza município por slug ou por código IBGE (7 ou 6 dígitos). */
+export function obterCidadePorSlugOuId(slugOuId: string): CidadeEstrategica | undefined {
+  const termo = slugOuId.trim().toLowerCase();
+  const cidades = listarCidadesEstrategicas();
+  return cidades.find(
+    (c) =>
+      (c.slug && c.slug.toLowerCase() === termo) ||
+      c.id_municipio === termo ||
+      c.datasus_6dig === termo
+  );
+}
+
 /** Retorna apenas as 27 capitais estaduais/DF. */
 export function listarCapitais(): CidadeEstrategica[] {
   return listarCidadesEstrategicas().filter((c) => c.tipo === "capital");

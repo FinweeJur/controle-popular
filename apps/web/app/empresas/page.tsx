@@ -39,6 +39,15 @@ export default function EmpresasIndexPage() {
           Cruze cotações na B3 e NYSE com licenciamentos ambientais da FEAM e IBAMA, processos minerários na ANM, 
           contratos públicos no PNCP, auditorias do Tribunal de Contas e TACs do Ministério Público.
         </p>
+        <div className="pt-2">
+          <Link
+            href="/empresas/documentos"
+            className="inline-flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/10 px-4 py-2 text-xs sm:text-sm font-semibold text-primary hover:bg-primary/20 transition shadow-2xs"
+          >
+            <span>📚 Acessar Biblioteca de Relatórios ESG & Financeiros (520 documentos)</span>
+            <span>→</span>
+          </Link>
+        </div>
       </header>
 
       {/* Painel Interativo com Gráficos, Filtros e Tabela */}
