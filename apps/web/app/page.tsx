@@ -68,10 +68,60 @@ export default async function Hub() {
         imagem="capas/home-page.webp"
         alt="Capa do Controle Popular — Observatório Nacional Socioambiental"
         titulo="CONTROLE POPULAR"
-        epigrafe="O que a vida quer da gente é coragem."
-        atribuicao="João Guimarães Rosa, Grande Sertão: Veredas, 1956"
+        epigrafes={[
+          {
+            texto:
+              "Ela deita sementes para morrerem ou brotarem. Ela semeia sonhos na esperança de ver germinar sobrevivência. (...) Acreditar num mundo mais justo, que talvez não desponte pleno nesta geração ou na seguinte, mas que algum dia desabrochará, assim como tudo o que é semeado.",
+            atribuicao: "Itamar Vieira Junior, Coração sem medo, 2025",
+          },
+          {
+            texto: "O que a vida quer da gente é coragem.",
+            atribuicao: "João Guimarães Rosa, Grande Sertão: Veredas, 1956",
+          },
+        ]}
         resumo="Portal virtual do ONSA — Observatório Nacional Socioambiental. Com raízes na História e Geografia, esse portal se utiliza da tecnologia da Inteligência Artificial (IA) pra somar na busca por justiça socioambiental e fiscalização cidadã, acessível pela internet, gratuitamente e sem cadastro por qualquer celular ou computador."
       />
+
+      {/* ═══ RESUMO DE DADOS GERAIS (PAINEL DE IMPACTO POPULAR) ═══ */}
+      <section aria-label="Painel de dados gerais monitorados" className="my-8 rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-xs">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:divide-x sm:divide-border">
+          <div className="text-center sm:text-left sm:pr-4">
+            <p className="font-mono text-xs font-semibold tracking-widest text-muted uppercase">
+              MONITORADOS AGORA
+            </p>
+            <p className="mt-2 font-mono text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
+              R$ 251 bi
+            </p>
+            <p className="mt-1 text-xs text-muted">
+              Soma pública: Rio Doce (R$ 171 bi) + Brumadinho (R$ 37,7 bi) + Justiça MG (R$ 20,1 bi) + cidades monitoradas (R$ 22,7 bi)
+            </p>
+          </div>
+
+          <div className="text-center sm:text-left sm:px-6">
+            <p className="font-mono text-xs font-semibold tracking-widest text-muted uppercase">
+              CIDADES NO RADAR
+            </p>
+            <p className="mt-2 font-mono text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
+              199
+            </p>
+            <p className="mt-1 text-xs text-muted">
+              27 capitais e 172 polos estratégicos mapeados em todo o Brasil
+            </p>
+          </div>
+
+          <div className="text-center sm:text-left sm:pl-6">
+            <p className="font-mono text-xs font-semibold tracking-widest text-muted uppercase">
+              PROPOSIÇÕES FICHADAS
+            </p>
+            <p className="mt-2 font-mono text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
+              1.389
+            </p>
+            <p className="mt-1 text-xs text-muted">
+              Projetos de lei e atos oficiais analisados com régua de direitos humanos
+            </p>
+          </div>
+        </div>
+      </section>
 
       <header className="space-y-4">
         {/* O wordmark da marca ficou só na barra global (`TopNav.tsx`), acima
@@ -94,6 +144,50 @@ export default async function Hub() {
             Páginas mais vistas →
           </a>
         </p>
+
+        {/* ═══ OS 3 EIXOS TEMÁTICOS (REFORMULAÇÃO ARQUITETURAL) ═══ */}
+        <div className="mt-6 rounded-2xl border border-border bg-surface p-4 sm:p-5 shadow-xs">
+          <div className="flex items-center justify-between gap-2 mb-3">
+            <span className="text-xs font-bold uppercase tracking-wider text-muted">
+              Navegação por Eixos Temáticos
+            </span>
+            <span className="rounded-full bg-surface-2 px-2.5 py-0.5 text-[10px] font-semibold text-muted border border-border">
+              3 Eixos • 18 Subfrentes
+            </span>
+          </div>
+          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-3">
+            <a
+              href="/direitos-em-movimento"
+              className="flex items-center gap-2.5 rounded-xl border border-border bg-surface-2/40 p-3 text-xs font-semibold text-foreground transition-all hover:border-primary/40 hover:bg-surface-2"
+            >
+              <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-direitos, #c0392b)' }} />
+              <div>
+                <div className="font-bold text-foreground">1. Direitos em Movimento</div>
+                <div className="text-[10px] font-normal text-muted">Trabalho, Saúde, Educação, Moradia</div>
+              </div>
+            </a>
+            <a
+              href="/terra-e-territorios"
+              className="flex items-center gap-2.5 rounded-xl border border-border bg-surface-2/40 p-3 text-xs font-semibold text-foreground transition-all hover:border-emerald-500/40 hover:bg-surface-2"
+            >
+              <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-terra, #1b6348)' }} />
+              <div>
+                <div className="font-bold text-foreground">2. Terra e Territórios</div>
+                <div className="text-[10px] font-normal text-muted">199 Cidades, Rios, Serras, Biomas</div>
+              </div>
+            </a>
+            <a
+              href="/estado-e-economia"
+              className="flex items-center gap-2.5 rounded-xl border border-border bg-surface-2/40 p-3 text-xs font-semibold text-foreground transition-all hover:border-blue-500/40 hover:bg-surface-2"
+            >
+              <span className="h-3 w-3 shrink-0 rounded-full" style={{ backgroundColor: 'var(--cp-eixo-estado, #1e3a8a)' }} />
+              <div>
+                <div className="font-bold text-foreground">3. Estado e Economia</div>
+                <div className="text-[10px] font-normal text-muted">Orçamento, Judiciário, Empresas</div>
+              </div>
+            </a>
+          </div>
+        </div>
       </header>
 
       {/* Sanfona das frentes (etapa 4 PLANO-TEMA-PEQUI, previa v7.1):
@@ -150,6 +244,15 @@ export default async function Hub() {
               <h2 className="mt-2 font-display text-xl font-semibold">{s.titulo}</h2>
               <p className="mt-2 text-[.95em] text-text-soft">{s.descricao}</p>
               <ul className="mt-4 flex flex-col gap-2">
+                <li>
+                  <a
+                    href="/cidades"
+                    className="flex items-baseline justify-between gap-2 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-[.95em] font-bold text-primary transition-colors hover:bg-primary/20"
+                  >
+                    <span>Ver todas as 199 Cidades Estratégicas (Capitais & Polos)</span>
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </li>
                 {cidades.map((c) => (
                   <li key={c.slug}>
                     <a

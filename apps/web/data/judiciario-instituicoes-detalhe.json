@@ -1,0 +1,553 @@
+[
+  {
+    "sigla": "tjmg",
+    "nome": "Tribunal de Justiça do Estado de Minas Gerais",
+    "esfera": "Estadual",
+    "tipo": "Poder Judiciário",
+    "icone": "Scale",
+    "cor": "#f2701d",
+    "lideranca": {
+      "cargo": "Presidente",
+      "nome": "Desembargador Luiz Carlos de Azevedo Corrêa Junior",
+      "mandato": "2024–2026",
+      "investidura": "Eleito pelo Tribunal Pleno entre os desembargadores mais antigos"
+    },
+    "estruturaPessoal": {
+      "magistrados": "1.050 (desembargadores e juízes de direito)",
+      "servidoresEfetivos": "14.200 servidores concursados",
+      "comissionados": "1.450 cargos de livre nomeação e assessoramento",
+      "estagiariosETerceirizados": "3.100 colaboradores de apoio e estágio",
+      "comarcasInstaladas": "298 comarcas em todo o Estado de Minas Gerais"
+    },
+    "orcamento": {
+      "ano": 2025,
+      "total": "R$ 14,96 bilhões",
+      "folhaPessoal": "R$ 11,61 bilhões (77,6%)",
+      "custeioInvestimentos": "R$ 3,35 bilhões",
+      "fundoEspecial": "FEPJ (R$ 3,35 bilhões arrecadados em custas pagas pelo cidadão)",
+      "impactoLRF": "5,51% da Receita Corrente Líquida estadual (acima do alerta de 5,40% da LRF)"
+    },
+    "organograma": [
+      {
+        "area": "Presidência",
+        "funcao": "Representação institucional, gestão orçamentária, administração geral e relações com demais Poderes."
+      },
+      {
+        "area": "1ª Vice-Presidência",
+        "funcao": "Supervisão da área judiciária, admissibilidade de recursos para STJ/STF e distribuição processual de 2º grau."
+      },
+      {
+        "area": "2ª Vice-Presidência (EJEF)",
+        "funcao": "Escola Judicial Edésio Fernandes — capacitação continuada de juízes e servidores e gestão da jurisprudência."
+      },
+      {
+        "area": "3ª Vice-Presidência (Cejusc)",
+        "funcao": "Núcleo Permanente de Métodos Consensuais de Solução de Conflitos e coordenação dos centros de mediação."
+      },
+      {
+        "area": "Corregedoria-Geral de Justiça (CGJ)",
+        "funcao": "Órgão de fiscalização, disciplina e orientação administrativa dos juizados, varas de 1º grau e cartórios de notas/registro."
+      },
+      {
+        "area": "Tribunal Pleno e Câmaras Especializadas",
+        "funcao": "Julgamento colegiado de recursos e ações originárias (Câmaras Cíveis, Criminais e de Direito Público)."
+      }
+    ],
+    "ouvidoria": {
+      "canal": "Ouvidoria Judiciária e Ouvidoria da Mulher",
+      "telefone": "(31) 3237-6000 / 0800 031 0147",
+      "endereco": "Av. Afonso Pena, 4001, Serra, Belo Horizonte - MG, CEP 30130-994",
+      "balcaoVirtual": "https://www.tjmg.jus.br/portal-tjmg/servicos/balcao-virtual/",
+      "portalOuvidoria": "https://www.tjmg.jus.br/portal-tjmg/ouvidoria/"
+    },
+    "corregedoria": {
+      "orgao": "Corregedoria-Geral de Justiça de Minas Gerais",
+      "titular": "Desembargador Estevão Lucchesi de Carvalho",
+      "funcao": "Inspeção e correição ordinária de fóruns, secretarias de juízo e serventias extrajudiciais (cartórios).",
+      "canalDenuncias": "Sistema SISCOR / Atendimento da CGJ TJMG"
+    },
+    "documentosChave": [
+      {
+        "titulo": "Relatório de Inspeção da Corregedoria Nacional de Justiça (CNJ 2023/2024)",
+        "descricao": "Inspeção externa em gabinetes de desembargadores e varas de 1º grau com pendências e determinações.",
+        "url": "/judiciario/inspecoes"
+      },
+      {
+        "titulo": "Demonstrativo de Gestão Fiscal e Limites da LRF",
+        "descricao": "Relatórios de gestão fiscal com despesas de pessoal e alertas do Tribunal de Contas.",
+        "url": "/noticias/tjmg-orcamento-folha-indicacoes"
+      },
+      {
+        "titulo": "Tabela de Custas Judiciais e FEPJ",
+        "descricao": "Valores cobrados da população por distribuição de processos e emolumentos de cartórios.",
+        "url": "https://www.tjmg.jus.br/portal-tjmg/processos/custas-e-despesas-processuais/"
+      }
+    ]
+  },
+  {
+    "sigla": "mpmg",
+    "nome": "Ministério Público do Estado de Minas Gerais",
+    "esfera": "Estadual",
+    "tipo": "Ministério Público",
+    "icone": "ShieldCheck",
+    "cor": "#c0392b",
+    "lideranca": {
+      "cargo": "Procurador-Geral de Justiça",
+      "nome": "Jarbas Soares Júnior",
+      "mandato": "2024–2026",
+      "investidura": "Nomeado pelo Governador do Estado a partir de lista tríplice votada pelos membros do MP"
+    },
+    "estruturaPessoal": {
+      "magistrados": "1.220 promotores e procuradores de justiça",
+      "servidoresEfetivos": "3.850 analistas e técnicos ministeriais concursados",
+      "comissionados": "820 cargos de recrutamento amplo e assessoramento jurídico",
+      "estagiariosETerceirizados": "2.400 estagiários de graduação/pós e terceirizados",
+      "comarcasInstaladas": "Promotorias instaladas em todas as comarcas ativas de MG"
+    },
+    "orcamento": {
+      "ano": 2025,
+      "total": "R$ 4,09 bilhões",
+      "folhaPessoal": "R$ 3,06 bilhões (81,2% do total)",
+      "custeioInvestimentos": "R$ 1,03 bilhão",
+      "fundoEspecial": "FUNEMP (Fundo Especial do Ministério Público)",
+      "impactoLRF": "Consome cerca de 2,65% da Receita Corrente Líquida do Estado"
+    },
+    "organograma": [
+      {
+        "area": "Procuradoria-Geral de Justiça (PGJ)",
+        "funcao": "Chefia institucional, representação do Ministério Público, propositura de ações diretas de inconstitucionalidade e gestão executiva."
+      },
+      {
+        "area": "Corregedoria-Geral do Ministério Público",
+        "funcao": "Fiscalização disciplinar, aferição de produtividade e correição anual nas promotorias de todo o Estado."
+      },
+      {
+        "area": "Conselho Superior do Ministério Público",
+        "funcao": "Deliberação sobre promoções, remoções e homologação de arquivamento de inquéritos civis públicos."
+      },
+      {
+        "area": "Centros de Apoio Operacional (CAOs)",
+        "funcao": "CAOMA (Meio Ambiente), CAODH (Direitos Humanos), CAOPAT (Patrimônio Público e Combate à Corrupção) e CAOSAU (Saúde Pública)."
+      },
+      {
+        "area": "GAECO (Grupos de Combate ao Crime Organizado)",
+        "funcao": "Força-tarefa especializada na investigação de organizações criminosas e lavagem de dinheiro."
+      },
+      {
+        "area": "Promotorias de Justiça Locais",
+        "funcao": "Atendimento direto ao cidadão nas comarcas, fiscalização de contratos municipais, defesa da infância e júri popular."
+      }
+    ],
+    "ouvidoria": {
+      "canal": "Ouvidoria do Ministério Público de Minas Gerais",
+      "telefone": "Disque 127 / (31) 3330-8409",
+      "endereco": "Rua Dias Adorno, 367, Santo Agostinho, Belo Horizonte - MG, CEP 30190-110",
+      "balcaoVirtual": "https://www.mpmg.jus.br/portal/menu/ouvidoria/",
+      "portalOuvidoria": "https://ouvidoria.mpmg.jus.br/"
+    },
+    "corregedoria": {
+      "orgao": "Corregedoria-Geral do MPMG",
+      "titular": "Procurador de Justiça Marco Antônio Lopes dos Santos",
+      "funcao": "Fiscalização de conduta e prazos processuais de promotores de justiça em todo o Estado de Minas Gerais.",
+      "canalDenuncias": "Protocolo direto na CGMPMG ou via Ouvidoria"
+    },
+    "documentosChave": [
+      {
+        "titulo": "Termo de Ajustamento de Conduta (TAC) e Ações Civis Ambientais",
+        "descricao": "Acervos de compromissos firmados com mineradoras e municípios para proteção socioambiental.",
+        "url": "/ambiental/tac"
+      },
+      {
+        "titulo": "Acordo Judicial de Reparação de Brumadinho (R$ 37,68 bi)",
+        "descricao": "Acordo firmado pelo MPMG, MPF, DPMG e Governo de Minas com a Vale.",
+        "url": "/paraopeba"
+      },
+      {
+        "titulo": "Relatório Anual de Gestão e Contas ao TCE-MG",
+        "descricao": "Demonstrativo detalhado de arrecadação, despesas de folha e benefícios indenizatórios.",
+        "url": "/noticias/mpmg-promotorias-fiscalizacao"
+      }
+    ]
+  },
+  {
+    "sigla": "dpmg",
+    "nome": "Defensoria Pública do Estado de Minas Gerais",
+    "esfera": "Estadual",
+    "tipo": "Defensoria Pública",
+    "icone": "HeartHandshake",
+    "cor": "#10b981",
+    "lideranca": {
+      "cargo": "Defensora Pública-Geral",
+      "nome": "Raquel Gomes de Sousa da Costa Dias",
+      "mandato": "2024–2026",
+      "investidura": "Nomeada pelo Governador a partir de lista tríplice eleita pelos defensores públicos de MG"
+    },
+    "estruturaPessoal": {
+      "magistrados": "715 defensores públicos na ativa (déficit de mais de 500 para cobrir todo o Estado)",
+      "servidoresEfetivos": "1.350 técnicos e analistas públicos",
+      "comissionados": "210 cargos comissionados de chefia",
+      "estagiariosETerceirizados": "1.800 estagiários de direito e assistentes voluntários",
+      "comarcasInstaladas": "Apenas 122 das 298 comarcas contam com defensor presencial (59,1% desassistidas)"
+    },
+    "orcamento": {
+      "ano": 2025,
+      "total": "R$ 1,10 bilhão",
+      "folhaPessoal": "R$ 940 milhões (85,4%)",
+      "custeioInvestimentos": "R$ 160 milhões",
+      "fundoEspecial": "FUNDEP (Fundo Especial da Defensoria Pública)",
+      "impactoLRF": "Consome cerca de 0,72% da Receita Corrente Líquida do Estado"
+    },
+    "organograma": [
+      {
+        "area": "Defensoria Pública-Geral",
+        "funcao": "Direção executiva superior, representação política e defesa da autonomia institucional e orçamentária."
+      },
+      {
+        "area": "Subdefensoria-Geral de Gestão e Planejamento",
+        "funcao": "Gestão estratégica, expansão de sedes no interior e infraestrutura física e tecnológica."
+      },
+      {
+        "area": "Conselho Superior da Defensoria Pública",
+        "funcao": "Órgão normativo que aprova editais de concurso, regulamentos internos e regras de estágio probatório."
+      },
+      {
+        "area": "Corregedoria-Geral da DPMG",
+        "funcao": "Acompanhamento e avaliação do desempenho funcional e ético dos defensores públicos em Minas Gerais."
+      },
+      {
+        "area": "Ouvidoria-Geral Externa",
+        "funcao": "Órgão independente liderado por ouvidor eleito pela sociedade civil organizada para fiscalizar o atendimento."
+      },
+      {
+        "area": "Núcleos Temáticos Especializados (NUDH, NUDEM, NUDECON)",
+        "funcao": "Defesa de direitos humanos, mulheres em situação de violência, consumidores e comunidades vulneráveis."
+      }
+    ],
+    "ouvidoria": {
+      "canal": "Ouvidoria-Geral Externa da Defensoria Pública",
+      "telefone": "Disque 129 / (31) 3526-0500",
+      "endereco": "Rua Guajajaras, 1707, Barro Preto, Belo Horizonte - MG, CEP 30180-101",
+      "balcaoVirtual": "https://defensoria.mg.def.br/balcao-virtual/",
+      "portalOuvidoria": "https://defensoria.mg.def.br/ouvidoria-geral/"
+    },
+    "corregedoria": {
+      "orgao": "Corregedoria-Geral da DPMG",
+      "titular": "Corregedor-Geral Marcelo Tófani Braga",
+      "funcao": "Orientação e correição de defensorias regionais em todo o território mineiro.",
+      "canalDenuncias": "Formulário eletrônico da Corregedoria DPMG"
+    },
+    "documentosChave": [
+      {
+        "titulo": "Mapa da Exclusão Jurídica em Minas Gerais",
+        "descricao": "Levantamento das 176 comarcas desassistidas e 6 milhões de mineiros sem assistência jurídica gratuita.",
+        "url": "/noticias/dpmg-acesso-justica-defensoria"
+      },
+      {
+        "titulo": "Atuação da DPMG no Caso Brumadinho e Rio Doce",
+        "descricao": "Participação na repactuação de Mariana e defesa das famílias atingidas por rompimento de barragens.",
+        "url": "/paraopeba"
+      },
+      {
+        "titulo": "Relatório Anual da Ouvidoria-Geral Externa",
+        "descricao": "Demandas populares, elogios e reclamações dos usuários da assistência jurídica em Minas.",
+        "url": "https://defensoria.mg.def.br/ouvidoria-geral/"
+      }
+    ]
+  },
+  {
+    "sigla": "trt3",
+    "nome": "Tribunal Regional do Trabalho da 3ª Região",
+    "esfera": "Federal",
+    "tipo": "Justiça do Trabalho",
+    "icone": "Gavel",
+    "cor": "#3b82f6",
+    "lideranca": {
+      "cargo": "Presidente",
+      "nome": "Desembargadora Denise Alves Horta",
+      "mandato": "2024–2025",
+      "investidura": "Eleita pelo Plenário do Tribunal entre os desembargadores do trabalho"
+    },
+    "estruturaPessoal": {
+      "magistrados": "428 magistrados (desembargadores e juízes do trabalho)",
+      "servidoresEfetivos": "3.120 servidores públicos federais concursados",
+      "comissionados": "480 cargos de direção e assessoramento",
+      "estagiariosETerceirizados": "1.250 colaboradores terceirizados e estagiários",
+      "comarcasInstaladas": "158 Varas do Trabalho espalhadas por 47 cidades polo em MG"
+    },
+    "orcamento": {
+      "ano": 2025,
+      "total": "R$ 3,18 bilhões",
+      "folhaPessoal": "R$ 2,78 bilhões (87,4%)",
+      "custeioInvestimentos": "R$ 400 milhões",
+      "fundoEspecial": "Orçamento da União / Justiça do Trabalho",
+      "impactoLRF": "Financiado integralmente pela União conforme Lei Orçamentária Federal"
+    },
+    "organograma": [
+      {
+        "area": "Presidência",
+        "funcao": "Representação política, gestão administrativa geral e homologação de acordos em dissídios coletivos."
+      },
+      {
+        "area": "1ª e 2ª Vice-Presidências",
+        "funcao": "Distribuição de recursos para o Tribunal Superior do Trabalho (TST) e supervisão pedagógica da Escola Judicial."
+      },
+      {
+        "area": "Corregedoria Regional",
+        "funcao": "Fiscalização e correição periódica em todas as 158 Varas do Trabalho de Minas Gerais."
+      },
+      {
+        "area": "Turmas Julgadoras (1ª a 11ª Turma)",
+        "funcao": "Julgamento colegiado de recursos ordinários contra decisões de primeira instância trabalhista."
+      },
+      {
+        "area": "Varas do Trabalho",
+        "funcao": "Onde começam as ações trabalhistas individuais e fiscalização de assédio e acidentes em empresas."
+      }
+    ],
+    "ouvidoria": {
+      "canal": "Ouvidoria do TRT-3",
+      "telefone": "(31) 3228-7140 / 0800 283 8783",
+      "endereco": "Av. Getúlio Vargas, 225, Funcionários, Belo Horizonte - MG, CEP 30112-020",
+      "balcaoVirtual": "https://portal.trt3.jus.br/internet/servicos/balcao-virtual",
+      "portalOuvidoria": "https://portal.trt3.jus.br/internet/ouvidoria"
+    },
+    "corregedoria": {
+      "orgao": "Corregedoria Regional do TRT-3",
+      "titular": "Desembargador Manoel Barbosa da Silva",
+      "funcao": "Auditoria presencial e virtual de prazos processuais e produtividade dos juízes do trabalho.",
+      "canalDenuncias": "Atendimento e correição ordinária"
+    },
+    "documentosChave": [
+      {
+        "titulo": "Atas de Correição Ordinária da CGJT/TST",
+        "descricao": "Auditoria externa realizada pelo Tribunal Superior do Trabalho nas contas e processos do TRT-3.",
+        "url": "/correicoes-trabalhistas"
+      },
+      {
+        "titulo": "Anuário Estatístico da Justiça do Trabalho em MG",
+        "descricao": "Volume de processos abertos, maiores setores processados e valores pagos em execuções trabalhistas.",
+        "url": "https://portal.trt3.jus.br/internet/conheca-o-trt/estatistica"
+      }
+    ]
+  },
+  {
+    "sigla": "trf6",
+    "nome": "Tribunal Regional Federal da 6ª Região",
+    "esfera": "Federal",
+    "tipo": "Justiça Federal",
+    "icone": "Building",
+    "cor": "#6366f1",
+    "lideranca": {
+      "cargo": "Presidente",
+      "nome": "Desembargador Federal Vallisney de Souza Oliveira",
+      "mandato": "2024–2026",
+      "investidura": "Eleito pelo Plenário do TRF-6 entre os desembargadores federais de Minas Gerais"
+    },
+    "estruturaPessoal": {
+      "magistrados": "218 magistrados (18 desembargadores federais e 200 juízes federais)",
+      "servidoresEfetivos": "1.790 servidores públicos federais",
+      "comissionados": "320 cargos de assessoramento e direção",
+      "estagiariosETerceirizados": "890 colaboradores de apoio",
+      "comarcasInstaladas": "Subseções Judiciárias instaladas nas principais regiões de MG"
+    },
+    "orcamento": {
+      "ano": 2025,
+      "total": "R$ 1,42 bilhão",
+      "folhaPessoal": "R$ 1,18 bilhão (83,1%)",
+      "custeioInvestimentos": "R$ 240 milhões",
+      "fundoEspecial": "Orçamento da União / Conselho da Justiça Federal (CJF)",
+      "impactoLRF": "Financiado pelo Tesouro Nacional no orçamento do Poder Judiciário da União"
+    },
+    "organograma": [
+      {
+        "area": "Presidência",
+        "funcao": "Gestão superior e representação do tribunal mais jovem da Justiça Federal brasileira (criado em 2022)."
+      },
+      {
+        "area": "Vice-Presidência e Corregedoria Regional",
+        "funcao": "Fiscalização correcional de varas federais, juizados especiais federais e distribuição de processos."
+      },
+      {
+        "area": "Turmas Recursais e Julgadoras",
+        "funcao": "Apreciação de recursos em matéria previdenciária (INSS), tributária federal, penal e socioambiental."
+      },
+      {
+        "area": "Varas Federais Cíveis e de Execução Fiscal",
+        "funcao": "Processamento de demandas contra autarquias federais, bancos públicos (CEF) e grandes devedores da União."
+      }
+    ],
+    "ouvidoria": {
+      "canal": "Ouvidoria do Tribunal Regional Federal da 6ª Região",
+      "telefone": "(31) 3501-1000",
+      "endereco": "Av. Álvares Cabral, 1805, Santo Agostinho, Belo Horizonte - MG, CEP 30170-008",
+      "balcaoVirtual": "https://portal.trf6.jus.br/balcao-virtual/",
+      "portalOuvidoria": "https://portal.trf6.jus.br/ouvidoria/"
+    },
+    "corregedoria": {
+      "orgao": "Corregedoria Regional do TRF-6",
+      "titular": "Desembargador Federal Ricardo Machado Rabelo",
+      "funcao": "Inspeção e controle das subseções judiciárias no interior de Minas e na capital.",
+      "canalDenuncias": "Portal da Corregedoria do TRF-6"
+    },
+    "documentosChave": [
+      {
+        "titulo": "Processos Federais dos Desastres da Samarco e Vale",
+        "descricao": "Ações civis públicas originárias federais da Repactuação de Mariana e bacia do Rio Doce.",
+        "url": "/ambiental/mariana"
+      },
+      {
+        "titulo": "Relatório de Gestão da Justiça Federal em MG",
+        "descricao": "Instalação, custos de transição pós-desmembramento do TRF-1 e metas do CNJ.",
+        "url": "https://portal.trf6.jus.br/"
+      }
+    ]
+  },
+  {
+    "sigla": "dpu",
+    "nome": "Defensoria Pública da União em Minas Gerais",
+    "esfera": "Federal",
+    "tipo": "Defensoria Pública",
+    "icone": "Users",
+    "cor": "#0ea5e9",
+    "lideranca": {
+      "cargo": "Defensora Pública-Chefe em MG",
+      "nome": "Coordenadoria Regional DPU Minas Gerais",
+      "mandato": "Designação funcional",
+      "investidura": "Defensor público federal nomeado pelo Defensor Público-Geral Federal"
+    },
+    "estruturaPessoal": {
+      "magistrados": "46 defensores públicos federais em Minas Gerais",
+      "servidoresEfetivos": "140 servidores administrativos do Poder Executivo/União",
+      "comissionados": "25 cargos de chefia",
+      "estagiariosETerceirizados": "180 estagiários de graduação e pós",
+      "comarcasInstaladas": "Unidade principal em Belo Horizonte e núcleos em Juiz de Fora, Uberlândia, Montes Claros e Gov. Valadares"
+    },
+    "orcamento": {
+      "ano": 2025,
+      "total": "R$ 820 milhões (orçamento nacional global da DPU)",
+      "folhaPessoal": "R$ 670 milhões (81,7%)",
+      "custeioInvestimentos": "R$ 150 milhões",
+      "fundoEspecial": "Orçamento Geral da União",
+      "impactoLRF": "Vinculado aos limites constitucionais da Defensoria Pública da União"
+    },
+    "organograma": [
+      {
+        "area": "Chefia da Unidade DPU-MG",
+        "funcao": "Administração local, gestão do atendimento e integração com movimentos sociais e comunidades tradicionais."
+      },
+      {
+        "area": "Ofícios Previdenciários",
+        "funcao": "Ações para concessão de BPC/LOAS, aposentadorias rurais e auxílios-doença negados pelo INSS."
+      },
+      {
+        "area": "Ofícios de Saúde Pública",
+        "funcao": "Processos contra a União para fornecimento de remédios de alto custo e cirurgias complexas no SUS."
+      },
+      {
+        "area": "Ofícios de Tutela Coletiva e Meio Ambiente",
+        "funcao": "Atuação em favor de ribeirinhos, pescadores, quilombolas e atingidos por barragens na bacia do Rio Doce."
+      }
+    ],
+    "ouvidoria": {
+      "canal": "Ouvidoria-Geral da DPU",
+      "telefone": "(31) 3279-9900 / 0800 644 3387",
+      "endereco": "Rua Santos Barreto, 161, Santo Agostinho, Belo Horizonte - MG, CEP 30170-070",
+      "balcaoVirtual": "https://www.dpu.def.br/atendimento",
+      "portalOuvidoria": "https://www.dpu.def.br/ouvidoria"
+    },
+    "corregedoria": {
+      "orgao": "Corregedoria-Geral da DPU (Brasília - DF)",
+      "titular": "Corregedoria Nacional da Defensoria Pública da União",
+      "funcao": "Controle disciplinar e fiscalização da assistência jurídica gratuita prestada em âmbito federal.",
+      "canalDenuncias": "Portal da DPU Nacional"
+    },
+    "documentosChave": [
+      {
+        "titulo": "Comitê Temático Rio Doce (DPU/DPES/DPMG)",
+        "descricao": "Atuação conjunta das defensorias na defesa dos pescadores artesanais e atingidos do Rio Doce.",
+        "url": "/ambiental/mariana"
+      },
+      {
+        "titulo": "Relatório de Atuação em Tutela Coletiva Indígena e Quilombola",
+        "descricao": "Garantia de direitos territoriais perante órgãos federais (INCRA e FUNAI) em Minas Gerais.",
+        "url": "/funcaosocialterra"
+      }
+    ]
+  },
+  {
+    "sigla": "tcemg",
+    "nome": "Tribunal de Contas do Estado de Minas Gerais",
+    "esfera": "Estadual",
+    "tipo": "Órgão de Controle Externo",
+    "icone": "Landmark",
+    "cor": "#eab308",
+    "lideranca": {
+      "cargo": "Presidente",
+      "nome": "Conselheiro Gilberto Pinto Monteiro Diniz",
+      "mandato": "2023–2025",
+      "investidura": "Eleito pelos pares entre os 7 Conselheiros do Tribunal de Contas"
+    },
+    "estruturaPessoal": {
+      "magistrados": "7 Conselheiros e 5 Auditores Substitutos de Conselheiro",
+      "servidoresEfetivos": "1.180 analistas e técnicos de controle externo",
+      "comissionados": "290 cargos de direção e assessoramento",
+      "estagiariosETerceirizados": "650 colaboradores de suporte",
+      "comarcasInstaladas": "Sede em BH e fiscalização sobre os 853 municípios mineiros"
+    },
+    "orcamento": {
+      "ano": 2025,
+      "total": "R$ 1,15 bilhão",
+      "folhaPessoal": "R$ 960 milhões (83,5%)",
+      "custeioInvestimentos": "R$ 190 milhões",
+      "fundoEspecial": "Fundo de Aperfeiçoamento do TCE-MG",
+      "impactoLRF": "Consome cerca de 0,78% da Receita Corrente Líquida do Estado"
+    },
+    "organograma": [
+      {
+        "area": "Tribunal Pleno",
+        "funcao": "Julgamento das contas do Governador do Estado, consultas jurídicas vinculantes e incidentes de inconstitucionalidade."
+      },
+      {
+        "area": "1ª e 2ª Câmaras",
+        "funcao": "Julgamento de tomada de contas especiais, contratos administrativos municipais e aposentadorias de servidores."
+      },
+      {
+        "area": "Ministério Público de Contas (MPC-MG)",
+        "funcao": "Órgão ministerial autônomo que oficia nos processos para garantir o cumprimento estrito da lei orçamentária."
+      },
+      {
+        "area": "Diretoria de Fiscalização de Municípios (SICOM)",
+        "funcao": "Recepção mensal de dados orçamentários e fiscais de todas as 853 prefeituras e câmaras de Minas."
+      },
+      {
+        "area": "Suricato (Central de Inteligência)",
+        "funcao": "Laboratório de auditoria automatizada que cruza CNPJs, parentesco e indícios de fraude em licitações públicas."
+      }
+    ],
+    "ouvidoria": {
+      "canal": "Ouvidoria do Tribunal de Contas de Minas Gerais",
+      "telefone": "(31) 3348-2300 / 0800 031 0088",
+      "endereco": "Av. Raja Gabaglia, 1305, Luxemburgo, Belo Horizonte - MG, CEP 30380-435",
+      "balcaoVirtual": "https://www.tce.mg.gov.br/ouvidoria",
+      "portalOuvidoria": "https://www.tce.mg.gov.br/Denuncia-Representacao"
+    },
+    "corregedoria": {
+      "orgao": "Corregedoria do TCE-MG",
+      "titular": "Conselheiro Durval Ângelo",
+      "funcao": "Controle e correição interna de processos e cumprimento de prazos de auditoria.",
+      "canalDenuncias": "Protocolo eletrônico TCE-MG"
+    },
+    "documentosChave": [
+      {
+        "titulo": "Parecer Prévio sobre as Contas do Governador de Minas",
+        "descricao": "Exame técnico anual do cumprimento dos mínimos constitucionais de Saúde e Educação no Estado.",
+        "url": "/estado-e-economia/orcamento"
+      },
+      {
+        "titulo": "Dados do SICOM (Sistema Informatizado de Contas dos Municípios)",
+        "descricao": "Folhas de pagamento e licitações das prefeituras sob fiscalização popular.",
+        "url": "/cidades"
+      }
+    ]
+  }
+]

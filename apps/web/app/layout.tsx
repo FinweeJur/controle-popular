@@ -96,16 +96,33 @@ const CVD_NO_FLASH_SCRIPT = `
 })();
 `;
 
+// Script síncrono para garantir carregamento instantâneo do tema Pequi:
+// lê localStorage ou assume 'pequi', evitando qualquer flash de tema claro.
+const THEME_NO_FLASH_SCRIPT = `
+(function() {
+  try {
+    var th = localStorage.getItem('theme') || 'pequi';
+    document.documentElement.setAttribute('data-theme', th);
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="pt-BR"
+      data-theme="pequi"
       className={`h-full ${clashDisplay.variable} ${generalSans.variable} ${tabular.variable}`}
       suppressHydrationWarning
     >
       <head>
+        <Script
+          id="cp-theme-no-flash"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: THEME_NO_FLASH_SCRIPT }}
+        />
         <Script
           id="structured-data"
           type="application/ld+json"
@@ -127,7 +144,8 @@ export default function RootLayout({
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="pequi"
-          themes={["pequi", "light", "dark", "high-contrast"]}
+          enableSystem={false}
+          themes={["pequi", "light", "dark", "high-contrast", "cerrado", "mata-atlantica"]}
         >
           {/* ⟲ 13/08, revisão de onboarding: WCAG 2.4.1 (Bypass Blocks).
               Precisa ser o PRIMEIRO elemento focável do `<body>` — antes

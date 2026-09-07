@@ -1,7 +1,35 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Menu, Bell, Newspaper } from "lucide-react";
+import {
+  Menu,
+  Bell,
+  Newspaper,
+  HeartHandshake,
+  Globe,
+  Landmark,
+  Compass,
+  Activity,
+  GraduationCap,
+  Briefcase,
+  ShieldCheck,
+  HelpCircle,
+  FileQuestion,
+  Send,
+  MapPin,
+  Waves,
+  Mountain,
+  AlertTriangle,
+  Scale,
+  ShoppingBag,
+  Building2,
+  BarChart3,
+  Cpu,
+  List,
+  Search,
+  Info,
+  Code2,
+} from "lucide-react";
 import Link from "next/link";
 
 import { ZONAS_PUBLICADAS } from "@/lib/zonas";
@@ -12,10 +40,7 @@ import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
 import Marquee from "@/app/components/Marquee";
 
 /**
- * Cidades atendidas pelo eixo Cidades. Lista curta e estável — mantida aqui
- * (não importada de `cidades-do-build.ts`) para não arrastar o JSON completo
- * do build para o bundle client-side da navbar, que é carregada em todas as
- * páginas.
+ * Cidades atendidas pelo eixo Cidades. Lista curta e estável.
  */
 const CIDADES_MENU = [
   { nome: "Betim", slug: "betim" },
@@ -27,121 +52,89 @@ const CIDADES_MENU = [
 ] as const;
 
 /**
- * Estrutura do novo menu do portal: um índice expansível agrupado por frente,
- * com as principais subpáginas de cada uma. A navegação funciona como a wiki
- * do site: cada seção é um capítulo e os links são as páginas dentro dele.
- *
- * Todos os links são `<a href>` cru, NUNCA o `<Link>` de zona
- * (`lib/link-zona.tsx`): este componente é global e um wrapper de zona
- * prefixaria caminhos absolutos como `/congresso/proposicoes` com o segmento
- * da zona atual, gerando 404s mudos. Ver o mesmo aviso em `FooterGlobal.tsx`.
+ * Estrutura do menu do portal organizada nos 3 Grandes Eixos Temáticos e Central:
+ * - Eixo 1: Direitos em Movimento (vermelho/coral)
+ * - Eixo 2: Terra e Territórios (verde/esmeralda)
+ * - Eixo 3: Estado e Economia (azul/celeste)
+ * - Central: Notícias, Tecnologia e Ferramentas ONSA (laranja pequi)
  */
 const SECOES_MENU = [
   {
-    id: "cidades",
-    titulo: "Cidades",
-    href: "/cidades",
+    id: "direitos",
+    badge: "EIXO 1",
+    titulo: "Direitos em Movimento",
+    href: "/direitos-em-movimento",
+    icone: HeartHandshake,
+    cor: "var(--cp-eixo-direitos)",
+    corClasse: "text-alert hover:text-alert",
+    badgeClasse: "bg-alert/10 text-alert border-alert/30",
     links: [
-      { label: "Todas as Cidades (199 Polos)", href: "/cidades" },
-      ...CIDADES_MENU.map((c) => ({ label: c.nome, href: `/${c.slug}` })),
+      { label: "Visão Geral do Eixo", href: "/direitos-em-movimento", icone: HeartHandshake },
+      { label: "Saúde Pública & SUS", href: "/direitos-em-movimento/saude-publica", icone: Activity },
+      { label: "Educação & Escolas (IDEB)", href: "/direitos-em-movimento/educacao", icone: GraduationCap },
+      { label: "Trabalho & Emprego (CAGED)", href: "/direitos-em-movimento/trabalho-e-renda", icone: Briefcase },
+      { label: "Que Lei Protege Isso", href: "/ambiental/legislacao", icone: ShieldCheck },
+      { label: "Onde Buscar Ajuda", href: "/direitos-em-movimento/ajuda", icone: HelpCircle },
+      { label: "Pedir Informação (LAI)", href: "/direitos-em-movimento/informacao", icone: FileQuestion },
+      { label: "Canal de Denúncia Local", href: "/direitos-em-movimento/denuncia", icone: Send },
     ],
   },
   {
-    id: "congresso",
-    titulo: "Congresso",
-    href: "/congresso",
+    id: "terra",
+    badge: "EIXO 2",
+    titulo: "Terra e Territórios",
+    href: "/terra-e-territorios",
+    icone: Globe,
+    cor: "var(--cp-eixo-terra)",
+    corClasse: "text-emerald-500 hover:text-emerald-400",
+    badgeClasse: "bg-emerald-500/10 text-emerald-500 border-emerald-500/30",
     links: [
-      { label: "Proposições", href: "/congresso/proposicoes" },
-      { label: "Votações", href: "/congresso/votacoes" },
-      { label: "Comissões", href: "/congresso/comissoes" },
-      { label: "Bancadas", href: "/congresso/bancadas" },
-      { label: "Parlamentares", href: "/congresso/parlamentares" },
-      { label: "Agenda", href: "/congresso/agenda" },
-      { label: "Alertas", href: "/congresso/alertas" },
-      { label: "Bons exemplos", href: "/congresso/bons-exemplos" },
-      { label: "Metodologia", href: "/congresso/metodologia" },
+      { label: "Visão Geral do Eixo", href: "/terra-e-territorios", icone: Globe },
+      { label: "199 Cidades Estratégicas", href: "/cidades", icone: MapPin },
+      { label: "Nossos Rios (Doce/Paraopeba)", href: "/terra-e-territorios/nossos-rios", icone: Waves },
+      { label: "Nossas Serras & Mineração", href: "/terra-e-territorios/nossas-serras", icone: Mountain },
+      { label: "Descaracterização Barragens", href: "/ambiental/barragens/descaracterizacao", icone: AlertTriangle },
+      { label: "Repactuação Rio Doce", href: "/ambiental/mariana", icone: Waves },
+      { label: "Reparação Paraopeba", href: "/paraopeba", icone: ShieldCheck },
+      { label: "Função Social & Globo 3D", href: "/funcaosocialterra", icone: Globe },
     ],
   },
   {
-    id: "judiciario",
-    titulo: "Judiciário",
-    href: "/judiciario",
+    id: "estado",
+    badge: "EIXO 3",
+    titulo: "Estado e Economia",
+    href: "/estado-e-economia",
+    icone: Landmark,
+    cor: "var(--cp-eixo-estado)",
+    corClasse: "text-sky-500 hover:text-sky-400",
+    badgeClasse: "bg-sky-500/10 text-sky-500 border-sky-500/30",
     links: [
-      { label: "Tribunais", href: "/judiciario/tribunais" },
-      { label: "Indicações", href: "/judiciario/indicacoes" },
-      { label: "Vagas", href: "/judiciario/vagas" },
-      { label: "Inspeções", href: "/judiciario/inspecoes" },
-      { label: "Correições trabalhistas", href: "/judiciario/correicoes-trabalhistas" },
-      { label: "Presídios", href: "/judiciario/presidios" },
-      { label: "Defensoria", href: "/judiciario/defensoria" },
-      { label: "Instituições", href: "/judiciario/instituicoes" },
-      { label: "Números", href: "/judiciario/numeros" },
-      { label: "Metodologia", href: "/judiciario/metodologia" },
-    ],
-  },
-  {
-    id: "ambiental",
-    titulo: "ONSA",
-    href: "/ambiental",
-    links: [
-      { label: "COPAM", href: "/ambiental/copam" },
-      { label: "Licenciamento", href: "/ambiental/licenciamento" },
-      { label: "Barragens", href: "/ambiental/barragens" },
-      { label: "Legislação", href: "/ambiental/legislacao" },
-      { label: "Direito crítico", href: "/ambiental/direito-critico" },
-      { label: "Decisões", href: "/ambiental/decisoes" },
-      { label: "TAC", href: "/ambiental/tac" },
-      { label: "Patrimônio cultural", href: "/ambiental/patrimonio-cultural" },
-      { label: "Convênios", href: "/ambiental/convenios" },
-      { label: "Crimes socioambientais", href: "/ambiental/crimes-socioambientais" },
-      { label: "Clima e risco", href: "/ambiental/clima-risco" },
-      { label: "Conselhos e bacias", href: "/ambiental/conselhos" },
-      { label: "Direitos humanos", href: "/ambiental/direitos-humanos" },
-      { label: "Rio Doce (Mariana)", href: "/ambiental/mariana" },
-    ],
-  },
-  {
-    id: "paraopeba",
-    titulo: "Paraopeba",
-    href: "/paraopeba",
-    links: [
-      { label: "Entenda", href: "/paraopeba/entenda" },
-      { label: "Execução do Acordo", href: "/paraopeba/execucao" },
-      { label: "Auditoria", href: "/paraopeba/auditoria" },
-      { label: "Análise", href: "/paraopeba/analise" },
-      { label: "Perícia", href: "/paraopeba/pericia" },
-      { label: "Auxílio Emergencial", href: "/paraopeba/auxilio" },
-      { label: "Documentos", href: "/paraopeba/documentos" },
-      { label: "Biblioteca", href: "/paraopeba/biblioteca" },
-      { label: "Clipping", href: "/paraopeba/clipping" },
-      { label: "Linha do tempo", href: "/paraopeba/linha-do-tempo" },
-      { label: "Quem atua", href: "/paraopeba/quem-atua" },
-    ],
-  },
-  {
-    id: "terras",
-    titulo: "Terra e território",
-    href: "/funcaosocialterra",
-    links: [
-      { label: "Mapa 3D", href: "/funcaosocialterra/mapa" },
-      { label: "Alertas", href: "/funcaosocialterra/alertas" },
+      { label: "Visão Geral do Eixo", href: "/estado-e-economia", icone: Landmark },
+      { label: "Orçamento & Receitas de MG", href: "/estado-e-economia/orcamento", icone: BarChart3 },
+      { label: "Compras Públicas & PNCP", href: "/noticias/estado-e-economia-pncp-compras", icone: ShoppingBag },
+      { label: "Congresso Nacional & CEAP", href: "/congresso", icone: Landmark },
+      { label: "Judiciário & Instituições", href: "/judiciario/instituicoes", icone: Scale },
+      { label: "Grandes Empresas & Fundos", href: "/empresas", icone: Building2 },
+      { label: "Repasses Federais ComunicaBR", href: "/dados/comunicabr", icone: MapPin },
     ],
   },
   {
     id: "transversal",
-    titulo: "Transversal",
+    badge: "ONSA",
+    titulo: "Central & Ferramentas",
     href: "/indice",
+    icone: Compass,
+    cor: "var(--cp-primary)",
+    corClasse: "text-primary hover:text-primary",
+    badgeClasse: "bg-primary/10 text-primary border-primary/30",
     links: [
-      { label: "Índice do portal", href: "/indice" },
-      { label: "Notícias & Relatórios", href: "/noticias" },
-      { label: "Alertas e Notificações", href: "/alertas" },
-      { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
-      { label: "Tecnologia & IA Livre", href: "/tecnologia" },
-      { label: "Busca", href: "/busca" },
-      { label: "Dados populares", href: "/dados/populares" },
-      { label: "Governo federal nas cidades", href: "/dados/comunicabr" },
-      { label: "Sobre o projeto", href: "/sobre" },
-      { label: "Termos e origem dos dados", href: "/termos" },
+      { label: "Central de Notícias", href: "/noticias", icone: Newspaper },
+      { label: "Tecnologia & IA Livre", href: "/tecnologia", icone: Cpu },
+      { label: "Alertas & Notificações", href: "/alertas", icone: Bell },
+      { label: "Índice Geral do Portal", href: "/indice", icone: List },
+      { label: "Busca Global no Acervo", href: "/busca", icone: Search },
+      { label: "Sobre o ONSA & Método", href: "/sobre", icone: Info },
+      { label: "API Pública Aberta (v1)", href: "/api", icone: Code2 },
     ],
   },
 ] as const;
@@ -261,56 +254,80 @@ export default function TopNav() {
           <nav
             id="menu-portal"
             aria-label="Menu do portal"
-            className={`absolute top-full left-0 z-50 mt-1 max-h-[calc(100vh-5rem)] w-[min(48rem,calc(100vw-1rem))] overflow-y-auto rounded-2xl border border-border bg-surface p-3 shadow-lg ${
+            className={`absolute top-full left-0 z-50 mt-1 max-h-[calc(100vh-5rem)] w-[min(58rem,calc(100vw-1rem))] overflow-y-auto rounded-2xl border border-border bg-surface p-3 shadow-xl ${
               aberto ? "block" : "hidden"
-            } sm:p-4`}
+            } sm:p-5`}
           >
             {/* Header: atalhos globais */}
-            <div className="mb-3 flex flex-wrap gap-2 border-b border-border pb-3 sm:mb-4 sm:pb-4">
-              <a
-                href="/"
-                onClick={fechar}
-                className="rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-text transition-colors duration-150 hover:bg-surface-2"
-              >
-                Início
-              </a>
-              <a
-                href="/indice"
-                onClick={fechar}
-                className="rounded-lg border border-primary/30 bg-primary/5 px-3 py-1.5 text-sm font-medium text-primary transition-colors duration-150 hover:bg-primary/10"
-              >
-                Índice do portal
-              </a>
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3 sm:mb-4 sm:pb-4">
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href="/"
+                  onClick={fechar}
+                  className="rounded-lg border border-border px-3 py-1.5 text-xs font-semibold text-text transition-colors duration-150 hover:bg-surface-2"
+                >
+                  Início
+                </a>
+                <a
+                  href="/indice"
+                  onClick={fechar}
+                  className="rounded-lg border border-primary/40 bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
+                >
+                  Índice Geral do Portal
+                </a>
+              </div>
+              <span className="text-[0.72em] font-medium text-text-soft">
+                Navegação por Eixos Temáticos e Central
+              </span>
             </div>
 
-            {/* Grade de seções por frente */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Grade de seções pelos 3 Eixos Temáticos + Central */}
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {SECOES_MENU.map((secao) => (
-                <section key={secao.id} aria-labelledby={`menu-${secao.id}`}>
+                <section
+                  key={secao.id}
+                  aria-labelledby={`menu-${secao.id}`}
+                  className="flex flex-col rounded-xl border border-border/70 bg-surface-2/40 p-3 transition-colors hover:border-border hover:bg-surface-2/70"
+                >
+                  <div className="mb-1.5 flex items-center justify-between">
+                    <span
+                      className={`inline-block rounded px-1.5 py-0.5 text-[0.62em] font-bold uppercase tracking-wider border ${secao.badgeClasse}`}
+                    >
+                      {secao.badge}
+                    </span>
+                  </div>
                   <h2
                     id={`menu-${secao.id}`}
-                    className="mb-1.5 text-[.72em] font-semibold uppercase tracking-wide text-text-soft"
+                    className="mb-2 text-[0.84em] font-bold tracking-tight"
                   >
                     <a
                       href={secao.href}
                       onClick={fechar}
-                      className="hover:text-primary focus-visible:outline-none focus-visible:underline"
+                      className="flex items-center gap-1.5 hover:opacity-80 focus-visible:outline-none focus-visible:underline"
+                      style={{ color: secao.cor }}
                     >
-                      {secao.titulo}
+                      <secao.icone size={14} className="shrink-0" aria-hidden="true" />
+                      <span>{secao.titulo} →</span>
                     </a>
                   </h2>
-                  <ul className="space-y-0.5">
-                    {secao.links.map((link) => (
-                      <li key={link.href + link.label}>
-                        <a
-                          href={link.href}
-                          onClick={fechar}
-                          className="block rounded-md px-2 py-1 text-[.9em] text-text transition-colors duration-150 hover:bg-surface-2 hover:text-primary"
-                        >
-                          {link.label}
-                        </a>
-                      </li>
-                    ))}
+                  <ul className="space-y-0.5 border-t border-border/40 pt-2">
+                    {secao.links.map((link) => {
+                      const IconeLink = link.icone;
+                      return (
+                        <li key={link.href + link.label}>
+                          <a
+                            href={link.href}
+                            onClick={fechar}
+                            className="flex items-center gap-1.5 rounded-md px-1.5 py-1 text-[0.78em] leading-snug text-text transition-colors duration-150 hover:bg-surface hover:text-primary"
+                          >
+                            {IconeLink && (
+                              <IconeLink size={12} className="shrink-0 text-text-soft opacity-80" aria-hidden="true" />
+                            )}
+                            <span className="truncate">{link.label}</span>
+                          </a>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </section>
               ))}
