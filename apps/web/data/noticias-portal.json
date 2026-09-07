@@ -1,0 +1,1137 @@
+[
+  {
+    "slug": "terra-e-territorios-199-cidades",
+    "titulo": "Panorama das 199 cidades: população, barragens e terras sob vigilância",
+    "subtitulo": "O portal acompanha 27 capitais e 172 cidades polo do interior do Brasil com dados do IBGE, da saúde e da mineração.",
+    "resumo": "Levantamento descritivo reúne indicadores de moradores, rios e barragens nas 199 cidades estratégicas que compõem o plano de monitoramento do portal.",
+    "categoria": "Relatório Técnico",
+    "frente": "terra",
+    "subfrente": "Cidades Estratégicas & Território",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T18:00:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 6,
+    "palavrasChave": [
+      "ibge-cidades",
+      "barragens-anm",
+      "sigbm",
+      "municipios-brasil",
+      "terras-indigenas",
+      "datasus"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Panorama das 199 cidades: população, barragens e terras sob vigilância. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/terra-e-territorios-199-cidades>.",
+    "citacaoBibtex": "@article{onsa2026cidades,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Panorama das 199 cidades: população, barragens e terras sob vigilância},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/terra-e-territorios-199-cidades}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "IBGE Cidades 2026",
+        "url": "https://cidades.ibge.gov.br"
+      },
+      {
+        "nome": "SIGBM / Agência Nacional de Mineração (ANM)",
+        "url": "https://app.anm.gov.br/sigbm"
+      },
+      {
+        "nome": "DATASUS / Ministério da Saúde",
+        "url": "https://datasus.saude.gov.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Cidades Monitoradas",
+        "valor": "199"
+      },
+      {
+        "rotulo": "Barragens no SIGBM",
+        "valor": "942"
+      },
+      {
+        "rotulo": "Áreas Tradicionais Mapeadas",
+        "valor": "414"
+      },
+      {
+        "rotulo": "Bacias Hidrográficas",
+        "valor": "8"
+      }
+    ],
+    "recomendacaoVerificar": "Abra a página de [Cidades Estratégicas](/cidades) no portal. Baixe a planilha em formato CSV com todos os dados. Para conferir uma barragem, entre no [site do SIGBM](https://app.anm.gov.br/sigbm) e busque pelo nome da sua cidade.",
+    "paragrafos": [
+      "O Controle Popular organizou uma lista com 199 cidades brasileiras na página de [Cidades Estratégicas](/cidades). O grupo inclui as 27 capitais e 172 cidades polo do interior do país. O portal usa o código oficial do IBGE - o Instituto Brasileiro de Geografia e Estatística, órgão federal que conta os moradores - e o código do DATASUS - o departamento de informática do Sistema Único de Saúde.",
+      "O cruzamento com o [SIGBM](https://app.anm.gov.br/sigbm) - o Sistema Integrado de Gestão de Segurança de Barragens de Mineração mantido pela ANM - localizou 942 barragens de minério cadastradas no país. Desse conjunto, 29 estruturas foram construídas pelo método a montante - modelo em que o dique se apoia sobre o próprio rejeito e que a legislação federal proibiu após os desastres de Mariana e Brumadinho. O monitoramento dessas estruturas fica na página de [Barragens de Minas Gerais](/ambiental/barragens).",
+      "O levantamento também demarcou 414 territórios quilombolas e terras indígenas reconhecidas pela Fundação Nacional dos Povos Indígenas. É possível examinar os limites no [Globo 3D de Terras](/funcaosocialterra/mapa). A ferramenta calcula a distância física entre cada povo tradicional e os processos de concessão mineral abertos na ANM - a Agência Nacional de Mineração.",
+      "Todas as informações dessas 199 cidades estão disponíveis para consulta aberta na rota [/cidades](/cidades). Qualquer cidadão pode filtrar os dados por estado ou baixar a tabela completa em formato de planilha para auditoria livre."
+    ]
+  },
+  {
+    "slug": "estado-e-economia-pncp-compras",
+    "titulo": "Arrecadação e compras públicas: raio-x de R$ 123 bilhões em receitas e gastos oficiais",
+    "subtitulo": "Minas Gerais arrecadou R$ 123,6 bilhões em 2024 e o portal rastreia contratos, repasses da União e o peso do sistema de justiça no orçamento estadual.",
+    "resumo": "Análise fiscal e orçamentária detalha o crescimento da receita mineira, o comportamento do ICMS e IPVA, e o volume de contratações públicas catalogadas no PNCP.",
+    "categoria": "Relatório Técnico",
+    "frente": "estado",
+    "subfrente": "Orçamento Público & Contratações",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T18:15:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 6,
+    "palavrasChave": [
+      "arrecadacao-mg",
+      "icms-mg",
+      "ipva-mg",
+      "pncp",
+      "orcamento-mg",
+      "receita-corrente-liquida"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Arrecadação e compras públicas: raio-x de R$ 123 bilhões em receitas e gastos oficiais. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/estado-e-economia-pncp-compras>.",
+    "citacaoBibtex": "@article{onsa2026estadopncp,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Arrecadação e compras públicas: raio-x de R$ 123 bilhões em receitas e gastos oficiais},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/estado-e-economia-pncp-compras}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Balanço Geral do Estado / SEF-MG",
+        "url": "https://www.fazenda.mg.gov.br"
+      },
+      {
+        "nome": "PNCP - Portal Nacional de Contratações Públicas",
+        "url": "https://pncp.gov.br"
+      },
+      {
+        "nome": "Assembleia Legislativa de Minas Gerais (ALMG)",
+        "url": "https://almg.gov.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Arrecadação Estadual 2024",
+        "valor": "R$ 123,6 bi"
+      },
+      {
+        "rotulo": "Arrecadação ICMS 2024",
+        "valor": "R$ 81,5 bi"
+      },
+      {
+        "rotulo": "Receita Corrente Líquida",
+        "valor": "R$ 103,4 bi"
+      },
+      {
+        "rotulo": "Custo do Sistema de Justiça",
+        "valor": "11,5% do total"
+      }
+    ],
+    "recomendacaoVerificar": "Consulte o Balanço Orçamentário no [site da Fazenda de Minas Gerais](https://www.fazenda.mg.gov.br) e acerte os valores no [Painel de Estado e Economia](/estado-e-economia). Para conferir licitações de compras municipais, pesquise o CNPJ no [PNCP](https://pncp.gov.br).",
+    "paragrafos": [
+      "Os registros oficiais da Fazenda de Minas Gerais mostram que a arrecadação orçamentária do estado somou R$ 123,6 bilhões no exercício de 2024. Esse resultado representa um avanço nominal de 11,6% em relação aos R$ 110,8 bilhões arrecadados em 2023. As informações constam no Balanço Geral do Estado e podem ser examinadas no [Painel de Estado e Economia](/estado-e-economia).",
+      "O ICMS - o Imposto sobre Circulação de Mercadorias e Serviços, que é o principal tributo recolhido pelos cofres mineiros - somou R$ 81,53 bilhões em 2024, apresentando crescimento de 13,2%. A divisão dos setores econômicos aponta que a indústria de transformação respondeu por 50,91% do tributo recolhido, o setor de comércio por 32,12% e os serviços por 16,38%. Já o IPVA - o tributo pago sobre veículos automotores - gerou R$ 10,6 bilhões. Por regra constitucional, 40% desse valor fica no Tesouro estadual, 40% é transferido para a prefeitura do município onde o veículo foi emplacado e 20% é repassado para o Fundeb - o fundo nacional que sustenta a educação básica.",
+      "As transferências correntes enviadas pela União ao governo mineiro alcançaram R$ 25,8 bilhões em 2024, equivalendo a 17,12% da receita corrente bruta. A RCL - a Receita Corrente Líquida do estado, medida que serve de base oficial para calcular o limite com despesas de pessoal na LRF - a Lei de Responsabilidade Fiscal - encerrou 2024 em R$ 103,47 bilhões.",
+      "Do lado dos gastos públicos, levantamentos consolidados apontam que as instituições que formam o sistema de justiça de Minas Gerais - o TJMG, o Ministério Público e a Defensoria Pública - custaram R$ 12,3 bilhões no último ano. Esse montante absorve 11,5% de toda a despesa do estado, tornando o custo judiciário mineiro o segundo maior do país em números absolutos e em proporção do orçamento público.",
+      "No âmbito das aquisições de bens e serviços, o portal monitora as compras lançadas no [PNCP](https://pncp.gov.br) - o Portal Nacional de Contratações Públicas criado pela Lei 14.133. O sistema reúne contratos e editais de dezenas de órgãos públicos, apontando alertas de concentração de fornecedores e contratos firmados por dispensa de licitação."
+    ]
+  },
+  {
+    "slug": "congresso-nacional-direitos-votacoes",
+    "titulo": "Congresso Nacional: votações, bancadas e o impacto dos projetos nas cidades",
+    "subtitulo": "Acompanhamento do Legislativo federal classifica propostas em tramitação e relaciona votos nominais aos direitos civis e sociais.",
+    "resumo": "Análise das votações na Câmara dos Deputados e no Senado Federal monitora como as decisões dos parlamentares afetam o orçamento dos municípios e as políticas públicas.",
+    "categoria": "Investigação Cívica",
+    "frente": "congresso",
+    "subfrente": "Processo Legislativo & Direitos",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T18:30:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 5,
+    "palavrasChave": [
+      "camara-deputados",
+      "senado-federal",
+      "votacoes-nominais",
+      "bancadas-parlamentares",
+      "emendas-parlamentares"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Congresso Nacional: votações, bancadas e o impacto dos projetos nas cidades. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/congresso-nacional-direitos-votacoes>.",
+    "citacaoBibtex": "@article{onsa2026congresso,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Congresso Nacional: votações, bancadas e o impacto dos projetos nas cidades},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/congresso-nacional-direitos-votacoes}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Dados Abertos da Câmara dos Deputados",
+        "url": "https://dadosabertos.camara.leg.br"
+      },
+      {
+        "nome": "Dados Abertos do Senado Federal",
+        "url": "https://legis.senado.leg.br/dadosabertos"
+      },
+      {
+        "nome": "Portal da Transparência da União",
+        "url": "https://portaldatransparencia.gov.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Parlamentares Ativos",
+        "valor": "593"
+      },
+      {
+        "rotulo": "Proposições Monitoradas",
+        "valor": "5.500+"
+      },
+      {
+        "rotulo": "Bancadas Catalogadas",
+        "valor": "24"
+      },
+      {
+        "rotulo": "Emendas Mapeadas",
+        "valor": "R$ 48 bi"
+      }
+    ],
+    "recomendacaoVerificar": "Acesse a seção do [Congresso Nacional](/congresso) no portal. Pesquise pelo nome ou partido do parlamentar do seu estado para examinar como votou em projetos de lei sobre tributos e meio ambiente.",
+    "paragrafos": [
+      "O Controle Popular reúne os registros de votações e presença dos 513 deputados federais e 81 senadores que exercem mandato no Congresso Nacional. A base de dados é extraída diretamente dos portais de dados abertos da Câmara e do Senado, permitindo que a população verifique os atos dos seus representantes na página do [Congresso Nacional](/congresso).",
+      "O monitoramento cataloga mais de 5.500 proposições em tramitação, identificando projetos de lei ordinária, propostas de emenda constitucional e medidas provisórias. O sistema classifica as propostas de acordo com a área atingida, como orçamento municipal, proteção ambiental, direitos trabalhistas e segurança pública.",
+      "Outro eixo central da investigação acompanha a destinação das emendas parlamentares - verbas do orçamento federal que deputados e senadores enviam diretamente para prefeituras e governos de estado. O volume dessas emendas ultrapassou R$ 48 bilhões nas peças orçamentárias recentes, tornando o recurso uma peça decisiva nas finanças locais.",
+      "O cidadão pode utilizar o portal para gerar modelos de ofício e mensagens de cobrança aos parlamentares, cobrando posicionamento público sobre votações estratégicas. O caminho para consulta de bancadas e partidos está aberto na rota [/congresso/bancadas](/congresso/bancadas)."
+    ]
+  },
+  {
+    "slug": "judiciario-transparencia-tribunais",
+    "titulo": "Tribunais em Minas Gerais: vagas, indicações e o mapa do Judiciário estadual",
+    "subtitulo": "Painel do Judiciário cruza calendários de aposentadorias de desembargadores e dados de inspeção em estabelecimentos prisionais.",
+    "resumo": "Levantamento descritivo analisa a composição dos tribunais, os processos de nomeação para a segunda instância e as condições das unidades de detenção.",
+    "categoria": "Relatório Técnico",
+    "frente": "judiciario",
+    "subfrente": "Composição & Fiscalização",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T18:45:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 5,
+    "palavrasChave": [
+      "judiciario-mg",
+      "tribunal-de-justica",
+      "aposentadorias-desembargadores",
+      "inspecoes-prisionais",
+      "sirenejud"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Tribunais em Minas Gerais: vagas, indicações e o mapa do Judiciário estadual. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/judiciario-transparencia-tribunais>.",
+    "citacaoBibtex": "@article{onsa2026judiciariotribunais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Tribunais em Minas Gerais: vagas, indicações e o mapa do Judiciário estadual},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/judiciario-transparencia-tribunais}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Conselho Nacional de Justiça (CNJ)",
+        "url": "https://www.cnj.jus.br"
+      },
+      {
+        "nome": "Tribunal de Justiça de Minas Gerais (TJMG)",
+        "url": "https://www.tjmg.jus.br"
+      },
+      {
+        "nome": "SIRENEJud / CNJ",
+        "url": "https://paineis.cnj.jus.br/portal/apps/opsdashboard/index.html#/sirenejud"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Tribunais Monitorados",
+        "valor": "7"
+      },
+      {
+        "rotulo": "Desembargadores Mapeados",
+        "valor": "140+"
+      },
+      {
+        "rotulo": "Presídios Inspecionados",
+        "valor": "180"
+      },
+      {
+        "rotulo": "Processos no SIRENEJud",
+        "valor": "12.400"
+      }
+    ],
+    "recomendacaoVerificar": "Consulte a rota do [Judiciário](/judiciario) no portal. Abra o painel de [Tribunais](/judiciario/tribunais) para conferir a data prevista para aposentadoria de desembargadores e as regras de preenchimento pelo Quinto Constitucional.",
+    "paragrafos": [
+      "O Controle Popular organiza as informações de estrutura e ocupação de cargos do Poder Judiciário mineiro na página de [Judiciário](/judiciario). O levantamento abrange o Tribunal de Justiça de Minas Gerais e tribunais com atuação federal, como o Tribunal Regional Federal da 6ª Região e o Tribunal Regional do Trabalho.",
+      "A ferramenta monitora o calendário legal de vacâncias na magistratura, calculado a partir da idade limite de 75 anos estabelecida para a aposentadoria compulsória. O objetivo é permitir que a sociedade civil organizada acompanhe a abertura de vagas para desembargador antes das indicações políticas e das listas tríplices formadas pelo Quinto Constitucional - a regra que reserva uma em cada cinco vagas para advogados e membros do Ministério Público.",
+      "O sistema também integra relatórios de inspeção do CNJ - o Conselho Nacional de Justiça - realizados em mais de 180 estabelecimentos prisionais e centros de detenção do estado. Os relatórios descrevem taxas de ocupação, número de vagas e autos de interdição nas comarcas.",
+      "Na frente socioambiental, o portal consome o painel SIRENEJud do CNJ, que identifica mais de 12.400 processos judiciais sobre desmatamento, poluição e regularização territorial em Minas Gerais, correlacionando as decisões aos municípios afetados."
+    ]
+  },
+  {
+    "slug": "tjmg-orcamento-folha-indicacoes",
+    "titulo": "TJMG: proposta de R$ 14,9 bilhões na LOA 2025 e gastos de pessoal consom 5,5% da receita de Minas",
+    "subtitulo": "Tribunal de Justiça concentra o segundo maior gasto do país; despesa com pessoal atinge R$ 5,7 bilhões e fundo próprio reserva R$ 3,35 bilhões para obras e custeio.",
+    "resumo": "Detalhamento das contas do Poder Judiciário estadual analisa o peso da folha de magistrados e servidores sobre a Receita Corrente Líquida e o papel do FEPJ.",
+    "categoria": "Investigação Cívica",
+    "frente": "judiciario",
+    "subfrente": "Tribunal de Justiça de MG",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T19:00:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 6,
+    "palavrasChave": [
+      "tjmg",
+      "orcamento-tjmg",
+      "loa-2025-mg",
+      "folha-de-pagamento-tjmg",
+      "fepj",
+      "lrf-limite-pessoal"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. TJMG: proposta de R$ 14,9 bilhões na LOA 2025 e gastos de pessoal consom 5,5% da receita de Minas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/tjmg-orcamento-folha-indicacoes>.",
+    "citacaoBibtex": "@article{onsa2026tjmg,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {TJMG: proposta de R$ 14,9 bilhões na LOA 2025 e gastos de pessoal consom 5,5% da receita de Minas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/tjmg-orcamento-folha-indicacoes}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Tribunal de Justiça de Minas Gerais (TJMG)",
+        "url": "https://www.tjmg.jus.br"
+      },
+      {
+        "nome": "Assembleia Legislativa de Minas Gerais (Lei 25.124/2024)",
+        "url": "https://almg.gov.br"
+      },
+      {
+        "nome": "Relatório de Gestão Fiscal / SEF-MG",
+        "url": "https://www.fazenda.mg.gov.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Proposta Orçamentária 2025",
+        "valor": "R$ 14,96 bi"
+      },
+      {
+        "rotulo": "Despesa com Pessoal",
+        "valor": "R$ 11,61 bi"
+      },
+      {
+        "rotulo": "Fundo Especial (FEPJ)",
+        "valor": "R$ 3,35 bi"
+      },
+      {
+        "rotulo": "Consumo da RCL (LRF)",
+        "valor": "5,51%"
+      }
+    ],
+    "recomendacaoVerificar": "Abra os relatórios de execução orçamentária no [Portal da Transparência do TJMG](https://transparencia.tjmg.jus.br) e o texto da LOA (Lei Estadual 25.124/2024) na [ALMG](https://almg.gov.br). Compare os limites da folha de pagamento na página de [Tribunais](/judiciario/tribunais).",
+    "paragrafos": [
+      "A proposta orçamentária aprovada pelo Órgão Especial do Tribunal de Justiça de Minas Gerais para o exercício financeiro da LOA 2025 - a Lei Orçamentária Anual instituída pela Lei Estadual nº 25.124/2024 - alcançou o montante de R$ 14,96 bilhões. O valor posiciona o Judiciário mineiro no centro dos debates sobre o equilíbrio das contas públicas estaduais, que projetam déficit fiscal de mais de R$ 7 bilhões.",
+      "A maior fatia do orçamento está alocada na Unidade Orçamentária 1031 (Tribunal de Justiça), que destinou R$ 11,61 bilhões para despesas com pessoal e encargos sociais, abrangendo juízes, desembargadores, servidores da ativa, aposentados, pensionistas e precatórios judiciais. Conforme o RGF - o Relatório de Gestão Fiscal apurado no fechamento do último exercício, a DTP - a Despesa Total com Pessoal líquida do TJMG atingiu R$ 5.706.217.630,25 (R$ 5,71 bilhões).",
+      "Esse volume de despesa líquida com folha comprometeu 5,51% de toda a RCL - a Receita Corrente Líquida do estado de Minas Gerais (que totalizou R$ 103,47 bilhões). O patamar acendeu luz amarela nas contas públicas: o tribunal ultrapassou o Limite de Alerta previsto na LRF - a Lei de Responsabilidade Fiscal, que é de 5,40%, e encostou no Limite Prudencial fixado em 5,70%. O teto máximo legal para o Judiciário estadual é de 6,00%.",
+      "Além da folha, a segunda grande caixa do tribunal é a Unidade Orçamentária 4031, correspondente ao FEPJ - o Fundo Especial do Poder Judiciário, que recebeu dotação de R$ 3,35 bilhões. Esse fundo não depende de repasses do Tesouro: ele é arrecadado diretamente das taxas judiciárias, emolumentos e custas processuais recolhidas de quem move ações nos fóruns. É desse fundo que saem os recursos para erguer novos edifícios de fóruns, reformar varas e pagar contratos milionários de tecnologia da informação.",
+      "Estudos comparativos mostram que Minas Gerais destina o equivalente a 11,5% de toda a despesa orçamentária do estado para o seu sistema de justiça, configurando o segundo maior gasto absoluto e proporcional entre todas as unidades da federação."
+    ]
+  },
+  {
+    "slug": "dpmg-acesso-justica-defensoria",
+    "titulo": "DPMG: Defensoria opera com orçamento de R$ 1,1 bilhão e 176 comarcas não têm defensor em Minas",
+    "subtitulo": "Para cada R$ 1 que a Defensoria recebe, Judiciário e Ministério Público juntos absorvem R$ 17; seis milhões de mineiros vivem sem assistência jurídica gratuita presencial.",
+    "resumo": "Levantamento estatístico revela o tamanho da desigualdade orçamentária do sistema de justiça mineiro e aponta que seriam necessários mais de 140 anos para universalizar a Defensoria no ritmo atual.",
+    "categoria": "Investigação Cívica",
+    "frente": "judiciario",
+    "subfrente": "Defensoria Pública de MG",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T19:15:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 6,
+    "palavrasChave": [
+      "dpmg",
+      "defensoria-publica-mg",
+      "orcamento-dpmg",
+      "acesso-a-justica",
+      "comarcas-sem-defensor",
+      "deficit-defensores"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. DPMG: Defensoria opera com orçamento de R$ 1,1 bilhão e 176 comarcas não têm defensor em Minas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/dpmg-acesso-justica-defensoria>.",
+    "citacaoBibtex": "@article{onsa2026dpmg,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {DPMG: Defensoria opera com orçamento de R$ 1,1 bilhão e 176 comarcas não têm defensor em Minas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/dpmg-acesso-justica-defensoria}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Defensoria Pública do Estado de Minas Gerais (DPMG)",
+        "url": "https://defensoria.mg.def.br"
+      },
+      {
+        "nome": "Pesquisa Nacional da Defensoria Pública 2025/2026",
+        "url": "https://anadep.org.br"
+      },
+      {
+        "nome": "Assembleia Legislativa de Minas Gerais (LOA)",
+        "url": "https://almg.gov.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Orçamento LOA 2025",
+        "valor": "R$ 1,10 bi"
+      },
+      {
+        "rotulo": "Comarcas Atendidas",
+        "valor": "120 de 298 (40%)"
+      },
+      {
+        "rotulo": "Comarcas sem Defensor",
+        "valor": "176 (59,1%)"
+      },
+      {
+        "rotulo": "Cidadãos sem Acesso",
+        "valor": "6.090.773"
+      }
+    ],
+    "recomendacaoVerificar": "Consulte o mapa de comarcas da Defensoria na seção de [Direitos e Ajuda](/direitos-em-movimento/ajuda). Para checar se a sua cidade tem atendimento da DPMG, busque o endereço da unidade no [portal da DPMG](https://defensoria.mg.def.br).",
+    "paragrafos": [
+      "A Defensoria Pública do Estado de Minas Gerais - a instituição prevista na Constituição para garantir defesa jurídica gratuita a quem não pode pagar advogado particular - recebeu dotação orçamentária de R$ 1,104 bilhão na LOA 2025 (com previsão de R$ 1,211 bilhão para 2026). Embora o valor represente um avanço em relação a anos anteriores, o montante expõe uma disparidade extrema em relação às outras carreiras jurídicas do estado.",
+      "A comparação orçamentária direta mostra que o Tribunal de Justiça de Minas Gerais dispõe de R$ 14,96 bilhões - um volume 13,5 vezes maior que o da Defensoria. Já o Ministério Público estadual tem R$ 4,09 bilhões - valor 3,7 vezes superior. Na prática das contas públicas mineiras, para cada R$ 1,00 que a Defensoria Pública recebe para atender quem vive em situação de vulnerabilidade, o Judiciário e o Ministério Público juntos absorvem cerca de R$ 17,20.",
+      "Essa restrição de recursos reflete-se na cobertura física do território. Das 298 comarcas existentes em Minas Gerais, a Defensoria Pública possui atendimento presencial instalado em apenas 120 comarcas (40,3% do total). Outras 176 comarcas - correspondendo a 59,1% dos polos judiciais do estado - não contam com nenhum defensor público residente. Exatamente 6.090.773 mineiros vivem em cidades onde não há assistência judiciária gratuita presencial do estado.",
+      "O quadro atual de pessoal conta com aproximadamente 672 defensores públicos na ativa. A ADEP-MG - a Associação das Defensoras e Defensores Públicos de Minas Gerais - calcula que seriam necessários mais de 1.200 profissionais para suprir a demanda de todas as varas judiciais, evidenciando um déficit que beira 500 profissionais.",
+      "O ritmo de expansão histórica tem sido lento: entre o Censo de 2013 (que registrava 105 comarcas atendidas) e o levantamento nacional de 2025 (com 120 comarcas), a instituição expandiu apenas 15 comarcas em 12 anos - uma média de 1,25 comarca por ano. Nesse ritmo, o estado levaria mais de 140 anos para garantir atendimento da Defensoria em todas as comarcas mineiras."
+    ]
+  },
+  {
+    "slug": "mpmg-promotorias-fiscalizacao",
+    "titulo": "MPMG: orçamento de R$ 4 bilhões concentra 81% em pessoal e verbas indenizatórias geram debate",
+    "subtitulo": "Procuradoria-Geral de Justiça opera com mais de R$ 3 bilhões voltados a salários e benefícios; auxílio-saúde e pagamentos acumulados atingem o centro das atenções fiscais.",
+    "resumo": "Análise orçamentária do Ministério Público de Minas Gerais examina despesas de custeio, limites da Lei de Responsabilidade Fiscal e o impacto dos penduricalhos na folha.",
+    "categoria": "Investigação Cívica",
+    "frente": "judiciario",
+    "subfrente": "Ministério Público de MG",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T19:30:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 6,
+    "palavrasChave": [
+      "mpmg",
+      "orcamento-mpmg",
+      "folha-mpmg",
+      "verbas-indenizatorias",
+      "auxilio-saude-mpmg",
+      "lrf-promotorias"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. MPMG: orçamento de R$ 4 bilhões concentra 81% em pessoal e verbas indenizatórias geram debate. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/mpmg-promotorias-fiscalizacao>.",
+    "citacaoBibtex": "@article{onsa2026mpmg,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {MPMG: orçamento de R$ 4 bilhões concentra 81% em pessoal e verbas indenizatórias geram debate},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/mpmg-promotorias-fiscalizacao}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Ministério Público de Minas Gerais (MPMG)",
+        "url": "https://www.mpmg.mp.br"
+      },
+      {
+        "nome": "Assembleia Legislativa de Minas Gerais (ALMG)",
+        "url": "https://almg.gov.br"
+      },
+      {
+        "nome": "Conselho Nacional do Ministério Público (CNMP)",
+        "url": "https://www.cnmp.mp.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Orçamento LOA 2025",
+        "valor": "R$ 4,09 bi"
+      },
+      {
+        "rotulo": "Orçamento LOA 2026",
+        "valor": "R$ 4,57 bi"
+      },
+      {
+        "rotulo": "Parcela da Folha",
+        "valor": "81,2%"
+      },
+      {
+        "rotulo": "Auxílio-Saúde Estimado",
+        "valor": "R$ 4,8 mi/mês"
+      }
+    ],
+    "recomendacaoVerificar": "Consulte o demonstrativo da folha e das verbas indenizatórias no [Portal da Transparência do MPMG](https://transparencia.mpmg.mp.br). Veja a execução orçamentária do órgão no [site da ALMG](https://almg.gov.br).",
+    "paragrafos": [
+      "O Ministério Público de Minas Gerais - órgão encarregado de defender a ordem jurídica, o patrimônio público e os direitos sociais dos cidadãos - teve seu orçamento anual fixado em R$ 4,088 bilhões pela Lei Orçamentária Anual de 2025 (Lei Estadual nº 25.124/2024), com projeção orçamentária de R$ 4,571 bilhões para 2026.",
+      "O exame da estrutura da despesa na Procuradoria-Geral de Justiça revela que 81,20% dos recursos são comprometidos com 'Pessoal e Encargos Sociais', consumindo mais de R$ 3,06 bilhões exclusivamente com a remuneração de promotores, procuradores e servidores. Os outros 18,8% (cerca de R$ 700 a 800 milhões) cobrem as despesas correntes de custeio, locação de imóveis, veículos, tecnologia e serviços administrativos.",
+      "Nos últimos exercícios, a remuneração no MPMG ganhou repercussão devido ao impacto de parcelas indenizatórias que não entram no cômputo do teto salarial constitucional. Entre esses benefícios está o auxílio-saúde institucional, com impacto estimado de até R$ 4,8 milhões por mês para um universo de 1.150 integrantes da carreira, além da VTAC - a Parcela de Valorização por Tempo de Antiguidade na Carreira, recebida por cerca de 96% dos membros da instituição.",
+      "Levantamentos em folhas de pagamento do primeiro semestre de 2026 apontaram contracheques pontuais com rendimentos líquidos superiores a R$ 300 mil em um único mês para promotores e procuradores, decorrentes de indenizações acumuladas de licenças-prêmio e férias não usufruídas. A prática levou o STF - o Supremo Tribunal Federal - a impor balizas mais rígidas sobre o efeito cascata de verbas retroativas.",
+      "Pela Lei de Responsabilidade Fiscal, o Ministério Público tem como teto limite 2,00% da Receita Corrente Líquida do estado. Acompanhar a prestação de contas do órgão é essencial para assegurar que a instituição mantenha sua capacidade de fiscalização com transparência e respeito à legalidade fiscal."
+    ]
+  },
+  {
+    "slug": "vale-reparacao-cotacoes-brumadinho",
+    "titulo": "Vale S.A.: acompanhamento do Acordo de Brumadinho e a execução de R$ 37 bilhões",
+    "subtitulo": "Monitoramento independente analisa a liberação dos recursos da reparação, o auxílio emergencial e os relatórios da mineradora na B3 e CVM.",
+    "resumo": "Investigação cívica detalha a situação das 26 cidades atingidas na Bacia do Rio Paraopeba, as metas do acordo judicial e os dados econômicos da empresa.",
+    "categoria": "Investigação Cívica",
+    "frente": "paraopeba",
+    "subfrente": "Brumadinho & Governança Corporativa",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T19:45:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 6,
+    "palavrasChave": [
+      "vale-sa",
+      "brumadinho",
+      "acordo-judicial",
+      "bacia-do-paraopeba",
+      "aecom-auditoria",
+      "cvm"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Vale S.A.: acompanhamento do Acordo de Brumadinho e a execução de R$ 37 bilhões. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/vale-reparacao-cotacoes-brumadinho>.",
+    "citacaoBibtex": "@article{onsa2026valebrumadinho,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Vale S.A.: acompanhamento do Acordo de Brumadinho e a execução de R$ 37 bilhões},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/vale-reparacao-cotacoes-brumadinho}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Comitê Pró-Brumadinho / SEPLAG-MG",
+        "url": "https://www.mg.gov.br/pro-brumadinho"
+      },
+      {
+        "nome": "Auditoria Independente AECOM",
+        "url": "https://www.aecom.com"
+      },
+      {
+        "nome": "CVM - Comissão de Valores Mobiliários",
+        "url": "https://www.gov.br/cvm"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Valor Global do Acordo",
+        "valor": "R$ 37,68 bi"
+      },
+      {
+        "rotulo": "Municípios da Bacia",
+        "valor": "26 cidades"
+      },
+      {
+        "rotulo": "Documentos da AECOM",
+        "valor": "467 relatórios"
+      },
+      {
+        "rotulo": "Acervo das ATIs",
+        "valor": "645 estudos"
+      }
+    ],
+    "recomendacaoVerificar": "Acesse a seção [Paraopeba](/paraopeba) no portal e confira o painel de [Execução do Acordo](/paraopeba/execucao). Para ver os documentos arquivados pela auditoria, explore a [Biblioteca de Documentos](/paraopeba/biblioteca).",
+    "paragrafos": [
+      "O rompimento da barragem B1 da mina Córrego do Feijão, ocorrido em janeiro de 2019 em Brumadinho, resultou na morte de 272 pessoas e na destruição de ecossistemas da Bacia do Rio Paraopeba. O caso gerou o Acordo Judicial de Reparação Integral, firmado em fevereiro de 2021 no valor nominal de R$ 37,68 bilhões entre a Vale S.A., o governo estadual e órgãos de justiça.",
+      "O Controle Popular dedica uma frente exclusiva ao caso na rota [Paraopeba](/paraopeba). O portal reúne e indexa 467 relatórios elaborados pela auditoria externa independente da empresa AECOM, cobrindo 16 eixos temáticos como recuperação ambiental, abastecimento de água, saneamento, obras de mobilidade e saúde mental dos atingidos.",
+      "Outro pilar da investigação reúne 645 publicações e notas técnicas produzidas pelas ATIs - as Assessorias Técnicas Independentes que orientam as comunidades de atingidos nos 26 municípios banhados pelo Paraopeba. O acervo completo está catalogado na [Biblioteca](/paraopeba/biblioteca).",
+      "Além da dimensão socioambiental, o portal disponibiliza a cotação histórica e comunicados arquivados pela mineradora na CVM - a Comissão de Valores Mobiliários na página [Vale](/paraopeba/vale). O objetivo é garantir que os dados financeiros da multinacional e o cumprimento das obrigações judiciais permaneçam acessíveis ao público que sofreu o impacto direto da tragédia."
+    ]
+  },
+  {
+    "slug": "sigma-lithium-jequitinhonha-mineracao",
+    "titulo": "Sigma Lithium e o Vale do Lítio: royalties da mineração e os dados do Jequitinhonha",
+    "subtitulo": "Extração mineral no semiárido mineiro atrai atenção internacional, enquanto municípios como Araçuaí e Itinga cobram infraestrutura e transparência.",
+    "resumo": "Relatório especial analisa a concessão mineral da Sigma Lithium no Vale do Jequitinhonha, a arrecadação da CFEM e a fiscalização de contratos nos municípios minerados.",
+    "categoria": "Investigação Cívica",
+    "frente": "ambiental",
+    "subfrente": "Mineração & Transição Energética",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T20:00:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 6,
+    "palavrasChave": [
+      "sigma-lithium",
+      "vale-do-litio",
+      "jequitinhonha",
+      "cfem-mineracao",
+      "itinga",
+      "aracuai"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Sigma Lithium e o Vale do Lítio: royalties da mineração e os dados do Jequitinhonha. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/sigma-lithium-jequitinhonha-mineracao>.",
+    "citacaoBibtex": "@article{onsa2026sigmalithium,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Sigma Lithium e o Vale do Lítio: royalties da mineração e os dados do Jequitinhonha},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/sigma-lithium-jequitinhonha-mineracao}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Agência Nacional de Mineração (ANM) / CFEM",
+        "url": "https://dados.gov.br/dados/conjuntos-dados/sistema-arrecadacao-cfem"
+      },
+      {
+        "nome": "Sistema de Licenciamento Ambiental (SLA/SEMAD)",
+        "url": "https://sistemas.meioambiente.mg.gov.br/licenciamento"
+      },
+      {
+        "nome": "Prefeitura Municipal de Itinga",
+        "url": "https://itinga.mg.gov.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Arrecadação CFEM no Polo",
+        "valor": "R$ 45 mi+"
+      },
+      {
+        "rotulo": "Processos na ANM",
+        "valor": "112"
+      },
+      {
+        "rotulo": "Municípios Impactados",
+        "valor": "Itinga e Araçuaí"
+      },
+      {
+        "rotulo": "Outorgas Hídricas",
+        "valor": "Bacia do Jequitinhonha"
+      }
+    ],
+    "recomendacaoVerificar": "Confira os dados locais nas páginas de [Itinga](/itinga) e [Araçuaí](/aracuai). No [site da ANM](https://app.anm.gov.br), consulte a arrecadação da CFEM para saber quanto o município recebeu de royalties no mês passado.",
+    "paragrafos": [
+      "A instalação de projetos de extração de lítio em rocha dura pela empresa Sigma Lithium no Vale do Jequitinhonha transformou a economia dos municípios mineiros de Itinga e Araçuaí. O mineral é matéria-prima estratégica para a fabricação de baterias de veículos elétricos e equipamentos de tecnologia.",
+      "Com a atividade em operação, as prefeituras da região passaram a receber volumes substanciais da CFEM - a Compensação Financeira pela Exploração de Recursos Minerais, o royalty obrigatório pago pelas mineradoras aos municípios produtores e afetados. Em Itinga, a receita da CFEM saltou de patamares residuais para dezenas de milhões de reais ao ano, alterando o orçamento municipal.",
+      "O Controle Popular monitora os contratos públicos e licitações abertas pelas prefeituras para verificar se o aumento da receita de royalties tem sido revertido em obras essenciais de saneamento, abastecimento de água potável no semiárido e fortalecimento das escolas locais. Os dados locais podem ser consultados nas páginas dedicadas de [Itinga](/itinga) e [Araçuaí](/aracuai).",
+      "Do ponto de vista ambiental, o ONSA acompanha as condicionantes dos processos de licenciamento na SEMAD - a Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável de Minas Gerais -, com atenção especial ao uso de outorgas de água do Rio Jequitinhonha e à preservação da vegetação de transição entre o Cerrado e a Caatinga."
+    ]
+  },
+  {
+    "slug": "meio-ambiente-barragens-licenciamento-mg",
+    "titulo": "Meio ambiente em Minas: 19 mil licenças, monitoramento do COPAM e TACs do IBAMA",
+    "subtitulo": "Acervo ambiental reúne processos de licenciamento estadual, atas de reuniões do conselho ambiental e compromissos firmados por mineradoras.",
+    "resumo": "Panorama descritivo compila indicadores de licenças ativas, deliberações de órgãos colegiados e termos de ajustamento de conduta na gestão ambiental de Minas Gerais.",
+    "categoria": "Relatório Técnico",
+    "frente": "ambiental",
+    "subfrente": "Licenciamento & Governança Ambiental",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T20:15:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 6,
+    "palavrasChave": [
+      "licenciamento-ambiental-mg",
+      "copam-mg",
+      "semad-mg",
+      "tac-ibama",
+      "conselhos-ambientais"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Meio ambiente em Minas: 19 mil licenças, monitoramento do COPAM e TACs do IBAMA. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/meio-ambiente-barragens-licenciamento-mg>.",
+    "citacaoBibtex": "@article{onsa2026ambiental,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Meio ambiente em Minas: 19 mil licenças, monitoramento do COPAM e TACs do IBAMA},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/meio-ambiente-barragens-licenciamento-mg}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Sistema Integrado de Informações Ambientais (SIAM/SEMAD)",
+        "url": "https://www.meioambiente.mg.gov.br"
+      },
+      {
+        "nome": "COPAM - Conselho Estadual de Política Ambiental",
+        "url": "https://www.meioambiente.mg.gov.br/copam"
+      },
+      {
+        "nome": "IBAMA - Instituto Brasileiro do Meio Ambiente",
+        "url": "https://www.gov.br/ibama"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Processos de Licenciamento",
+        "valor": "19.000+"
+      },
+      {
+        "rotulo": "TACs do IBAMA Mapeados",
+        "valor": "84"
+      },
+      {
+        "rotulo": "Unidades Regionais (URAs)",
+        "valor": "10 polos"
+      },
+      {
+        "rotulo": "Convênios Ambientais",
+        "valor": "142"
+      }
+    ],
+    "recomendacaoVerificar": "Acesse a seção [Meio Ambiente](/ambiental) no portal e confira a página de [Licenciamento](/ambiental/licenciamento). Pesquise pelo nome do empreendimento ou município para ver a classe da licença e a situação do processo.",
+    "paragrafos": [
+      "A frente ambiental do portal reúne mais de 19 mil registros de licenciamento de empreendimentos industriais, minerários e agropecuários em Minas Gerais. Os dados procedem do SIAM - o Sistema Integrado de Informações Ambientais mantido pela SEMAD, a secretaria estadual de meio ambiente.",
+      "As decisões mais complexas sobre outorgas e autorizações de funcionamento passam pelas câmaras técnicas do COPAM - o Conselho Estadual de Política Ambiental, órgão colegiado que reúne representantes do poder público, entidades industriais e organizações não governamentais. O portal organiza as pautas de julgamento para facilitar a consulta da sociedade antes das votações.",
+      "Outro conjunto relevante abrange os TACs - Termos de Ajustamento de Conduta firmados pelo IBAMA - o Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis - com empresas e infratores ambientais. A lista completa de compromissos está na página [Termos de Ajustamento de Conduta](/ambiental/tac).",
+      "Cada processo catalogado traz a indicação da fase em que se encontra (Licença Prévia, de Instalação ou de Operação) e o link para o processo eletrônico do órgão público competente. O portal atua como um catálogo aberto para que moradores e pesquisadores conheçam o impacto das atividades econômicas em suas bacias hidrográficas."
+    ]
+  },
+  {
+    "slug": "betim-contratos-compras-publicas",
+    "titulo": "Betim: contratos públicos somam R$ 1,2 bilhão e portal alerta para concentração de fornecedores",
+    "subtitulo": "Auditoria de compras públicas na segunda maior economia de Minas detalha contratações da prefeitura, dispensas de licitação e repasses da saúde.",
+    "resumo": "Análise técnica dos contratos do município de Betim identifica empresas com grande volume de contratação e explica como a população pode auditar cada edital.",
+    "categoria": "Investigação Cívica",
+    "frente": "cidades",
+    "subfrente": "Betim — Gestão Municipal",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T20:30:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 6,
+    "palavrasChave": [
+      "betim",
+      "contratos-betim",
+      "prefeitura-de-betim",
+      "transparencia-municipal",
+      "licitacoes-betim",
+      "fornecedores-publicos"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Betim: contratos públicos somam R$ 1,2 bilhão e portal alerta para concentração de fornecedores. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/betim-contratos-compras-publicas>.",
+    "citacaoBibtex": "@article{onsa2026betimcontratos,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Betim: contratos públicos somam R$ 1,2 bilhão e portal alerta para concentração de fornecedores},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/betim-contratos-compras-publicas}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Portal da Transparência de Betim",
+        "url": "http://servicos.betim.mg.gov.br/transparencia/"
+      },
+      {
+        "nome": "PNCP - Portal Nacional de Contratações Públicas",
+        "url": "https://pncp.gov.br"
+      },
+      {
+        "nome": "Diário Oficial do Município de Betim",
+        "url": "https://www.betim.mg.gov.br/portal/diario-oficial/"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Contratos Catalogados",
+        "valor": "1.268"
+      },
+      {
+        "rotulo": "Valor Global dos Contratos",
+        "valor": "R$ 1,2 bi"
+      },
+      {
+        "rotulo": "Fornecedores Mapeados",
+        "valor": "480+"
+      },
+      {
+        "rotulo": "Atos do Diário Oficial",
+        "valor": "16.601"
+      }
+    ],
+    "recomendacaoVerificar": "Acesse a página de [Contratos de Betim](/betim/prefeitura/contratos). Use o filtro para ordenar pelo maior valor ou procure pelo nome da empresa fornecedora. Para ver as atas da Câmara de Vereadores, visite [Câmara de Betim](/betim/camara).",
+    "paragrafos": [
+      "O município de Betim, na Região Metropolitana de Belo Horizonte, abriga um dos maiores polos industriais e de refino de petróleo da América Latina. O Controle Popular mantém o acompanhamento integral das finanças da prefeitura, catalogando mais de 1.200 contratos públicos que ultrapassam R$ 1,2 bilhão em empenhos.",
+      "A ferramenta de fiscalização do portal analisa as contratações públicas e calcula indicadores objetivos de atenção na página de [Contratos](/betim/prefeitura/contratos). O sistema destaca contratos com dispensa de licitação e fornecedores que concentram grande fatia das compras em secretarias como Saúde e Obras Públicas.",
+      "Na página de [Fornecedores de Betim](/betim/prefeitura/fornecedores), o morador pode visualizar quais pessoas jurídicas mais receberam pagamentos da administração municipal nos últimos anos, com a discriminação dos números de empenho e dos objetos contratados.",
+      "O portal também arquivou 16.601 edições e publicações do Diário Oficial do Município na página do [Diário Oficial](/betim/prefeitura/diario). A ferramenta classifica os atos por categorias automáticas, facilitando a busca de decretos municipais, exonerações e nomeações de cargos comissionados."
+    ]
+  },
+  {
+    "slug": "itinga-transparencia-repasses-litio",
+    "titulo": "Itinga: royalties da mineração de lítio multiplicam receitas e exigem controle social",
+    "subtitulo": "Município do Alto Jequitinhonha registra salto histórico na arrecadação da CFEM e portal monitora aplicação em saneamento e escolas.",
+    "resumo": "Estudo descritivo aborda a chegada de grandes mineradoras em Itinga, o impacto dos recursos nos cofres públicos e os canais de fiscalização cidadã.",
+    "categoria": "Investigação Cívica",
+    "frente": "cidades",
+    "subfrente": "Itinga — Vale do Jequitinhonha",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T20:45:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 5,
+    "palavrasChave": [
+      "itinga",
+      "litio-itinga",
+      "cfem-itinga",
+      "royalties-mineracao",
+      "jequitinhonha-transparencia"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Itinga: royalties da mineração de lítio multiplicam receitas e exigem controle social. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/itinga-transparencia-repasses-litio>.",
+    "citacaoBibtex": "@article{onsa2026itinga,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Itinga: royalties da mineração de lítio multiplicam receitas e exigem controle social},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/itinga-transparencia-repasses-litio}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Prefeitura Municipal de Itinga",
+        "url": "https://itinga.mg.gov.br"
+      },
+      {
+        "nome": "Portal da Transparência de Itinga",
+        "url": "https://itinga-mg.portaltp.com.br"
+      },
+      {
+        "nome": "ANM - Sistema de Arrecadação da CFEM",
+        "url": "https://sistemas.anm.gov.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "População Estimada",
+        "valor": "14.400 hab."
+      },
+      {
+        "rotulo": "Aumento de Receita",
+        "valor": "Multiplicada por 3"
+      },
+      {
+        "rotulo": "Contratos no PNCP",
+        "valor": "148"
+      },
+      {
+        "rotulo": "Concessões de Lítio",
+        "valor": "Polígonos Ativos"
+      }
+    ],
+    "recomendacaoVerificar": "Entre na página de [Itinga](/itinga) no portal. Confira as despesas e contratos municipais no [Portal de Transparência de Itinga](https://itinga-mg.portaltp.com.br) e compare os repasses da CFEM com as obras públicas em andamento.",
+    "paragrafos": [
+      "Itinga é um município mineiro situado na porção média do Vale do Jequitinhonha, tradicionalmente marcado por baixos índices de desenvolvimento humano e períodos de seca severa. Nos últimos quatro anos, a cidade virou o epicentro da exploração de espodumênio - a rocha da qual se extrai o lítio.",
+      "A expansão da atividade gerou uma transformação fiscal expressiva: a prefeitura passou a receber parcelas vultosas da CFEM - a compensação financeira pela exploração de minérios. Os recursos injetados multiplicaram a capacidade orçamentária do município em relação aos anos anteriores à instalação dos complexos de mineração.",
+      "O Controle Popular estruturou a página de [Itinga](/itinga) para que os moradores locais possam acompanhar a destinação de cada centavo. A página lista contratos de obras civis, compras de materiais escolares e gastos em saúde pública cadastrados no PNCP e no portal de transparência municipal.",
+      "O desafio para a cidadania é garantir que os recursos extraordinários da mineração sejam aplicados em infraestrutura de longo prazo - como redes de tratamento de água, asfaltamento de estradas rurais e hospitais -, evitando que o encerramento do ciclo mineral deixe a cidade desprovida de patrimônio público consolidado."
+    ]
+  },
+  {
+    "slug": "aracuai-contratos-desenvolvimento-vale",
+    "titulo": "Araçuaí: polo econômico do Médio Jequitinhonha reúne contratos públicos e novas demandas",
+    "subtitulo": "Cidade referência da região enfrenta desafios com o crescimento populacional, atração de empresas e necessidade de fiscalização cívica.",
+    "resumo": "Análise descritiva dos contratos e da estrutura administrativa de Araçuaí examina gastos públicos e a participação cidadã na câmara e na prefeitura.",
+    "categoria": "Investigação Cívica",
+    "frente": "cidades",
+    "subfrente": "Araçuaí — Polo Regional",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T21:00:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 5,
+    "palavrasChave": [
+      "aracuai",
+      "contratos-aracuai",
+      "sapl-aracuai",
+      "jequitinhonha-polo",
+      "camara-aracuai"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Araçuaí: polo econômico do Médio Jequitinhonha reúne contratos públicos e novas demandas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/aracuai-contratos-desenvolvimento-vale>.",
+    "citacaoBibtex": "@article{onsa2026aracuai,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Araçuaí: polo econômico do Médio Jequitinhonha reúne contratos públicos e novas demandas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/aracuai-contratos-desenvolvimento-vale}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Prefeitura Municipal de Araçuaí",
+        "url": "https://www.aracuai.mg.gov.br"
+      },
+      {
+        "nome": "Câmara Municipal de Araçuaí / SAPL",
+        "url": "https://sapl.aracuai.mg.leg.br"
+      },
+      {
+        "nome": "Portal de Transparência de Araçuaí",
+        "url": "https://aracuai-mg.portaltp.com.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "População Censo 2022",
+        "valor": "34.297 hab."
+      },
+      {
+        "rotulo": "Contratos Catalogados",
+        "valor": "210"
+      },
+      {
+        "rotulo": "Vereadores Monitorados",
+        "valor": "13 vereadores"
+      },
+      {
+        "rotulo": "Diário da AMM-MG",
+        "valor": "Edições Ativas"
+      }
+    ],
+    "recomendacaoVerificar": "Acesse a página de [Araçuaí](/aracuai) no portal. Para acompanhar as leis municipais e votações dos vereadores, consulte o [SAPL da Câmara de Araçuaí](https://sapl.aracuai.mg.leg.br).",
+    "paragrafos": [
+      "Araçuaí funciona como centro comercial, educacional e de serviços de saúde para uma rede de mais de dez municípios do Vale do Jequitinhonha. Com a expansão dos empreendimentos minerais no território vizinho, a cidade recebeu contingentes de novos trabalhadores e empresas prestadoras de serviço.",
+      "O Controle Popular monitora os contratos da administração municipal e as despesas empenhadas nas secretarias de Educação e Saúde na rota dedicada de [Araçuaí](/aracuai). A página reúne compras lançadas no sistema Portaltp e no sistema de apoio legislativo da Câmara de Vereadores.",
+      "Por meio do SAPL - o Sistema de Apoio ao Processo Legislativo -, o cidadão pode verificar quais projetos de lei foram propostos pelos 13 vereadores do município, as matérias votadas em plenário e os requerimentos de informações enviados à prefeitura.",
+      "O portal reforça a necessidade de a população acompanhar as audiências públicas do orçamento municipal e participar dos conselhos de saúde e de assistência social, assegurando que os recursos públicos sejam destinados com transparência e prioridade para as comunidades tradicionais e periferias da cidade."
+    ]
+  },
+  {
+    "slug": "mariana-repactuacao-rio-doce-recursos",
+    "titulo": "Repactuação de Mariana fixa R$ 171 bilhões para o Rio Doce e R$ 677 milhões empenhados em Minas",
+    "subtitulo": "Acordo judicial com Samarco, Vale e BHP fecha repactuação histórica após dez anos do colapso; portal audita ritmo de liberação e recursos travados.",
+    "resumo": "Auditoria financeira da repactuação da Bacia do Rio Doce analisa os compromissos das mineradoras, os R$ 2,9 bilhões em caixa no Estado e os R$ 338 milhões efetivamente pagos.",
+    "categoria": "Investigação Cívica",
+    "frente": "ambiental",
+    "subfrente": "Mariana e Bacia do Rio Doce",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T21:30:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 7,
+    "palavrasChave": [
+      "acordo-mariana",
+      "repactuacao-rio-doce",
+      "samarco-vale-bhp",
+      "ckan-mg-mariana",
+      "reparacao-ambiental",
+      "atingidos-mariana"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Repactuação de Mariana fixa R$ 171 bilhões para o Rio Doce e R$ 677 milhões empenhados em Minas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/mariana-repactuacao-rio-doce-recursos>.",
+    "citacaoBibtex": "@article{onsa2026mariana,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Repactuação de Mariana fixa R$ 171 bilhões para o Rio Doce e R$ 677 milhões empenhados em Minas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/mariana-repactuacao-rio-doce-recursos}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Dados Abertos CKAN-MG / Repactuação do Rio Doce",
+        "url": "https://dados.mg.gov.br"
+      },
+      {
+        "nome": "Tribunal Regional Federal da 6ª Região (TRF-6)",
+        "url": "https://www.trf6.jus.br"
+      },
+      {
+        "nome": "Comitê Interfederativo (CIF)",
+        "url": "https://www.ibama.gov.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Valor Global do Acordo",
+        "valor": "R$ 171 bi"
+      },
+      {
+        "rotulo": "Em Caixa no Estado de MG",
+        "valor": "R$ 2,98 bi"
+      },
+      {
+        "rotulo": "Total Empenhado em MG",
+        "valor": "R$ 677,4 mi"
+      },
+      {
+        "rotulo": "Total Efetivamente Pago",
+        "valor": "R$ 338,5 mi (50%)"
+      }
+    ],
+    "recomendacaoVerificar": "Acesse a página do [Acordo de Mariana](/ambiental/mariana) no portal. Baixe os microdados de empenhos do CKAN-MG e confira se a iniciativa prevista para o seu município atingido já teve ordem de pagamento emitida.",
+    "paragrafos": [
+      "O rompimento da barragem de Fundão da mineradora Samarco (controlada pela Vale e pela multinacional BHP Billiton), ocorrido em 5 de novembro de 2015 em Mariana, despejou 39 milhões de metros cúbicos de rejeito na Bacia do Rio Doce, matando 19 pessoas e devastando 670 quilômetros de curso d'água até a foz no Espírito Santo. Quase dez anos após o crime socioambiental, a repactuação homologada no TRF-6 - o Tribunal Regional Federal da 6ª Região - fixou um montante global estimado em R$ 171 bilhões.",
+      "Desse total, R$ 100 bilhões constituem novos recursos que as mineradoras devem repassar diretamente aos entes públicos (União e governos de Minas Gerais e do Espírito Santo) ao longo de 20 anos para obras de saneamento, infraestrutura e restauração de nascentes. Outros R$ 32 bilhões correspondem a obrigações de fazer que continuam a cargo das mineradoras - incluindo a descaracterização definitiva da barragem de Germano e os reassentamentos dos distritos de Bento Rodrigues e Paracatu de Baixo. O acordo reservou ainda R$ 8 bilhões para o Fundo de Saúde e Reparação dos Povos Originários, destinado aos povos Krenak, Tupiniquim, Guarani e comunidades tradicionais quilombolas.",
+      "O Controle Popular estruturou o monitoramento da execução orçamentária dos recursos que já entraram no caixa do estado na página [Acordo de Mariana](/ambiental/mariana). Os dados oficiais da plataforma CKAN-MG mostram que o governo de Minas Gerais já arrecadou R$ 2.977.206.554,43 (R$ 2,98 bilhões) em depósitos judiciais e parcelas das mineradoras. Desse volume em caixa, o estado empenhou R$ 677.426.719,25 em 532 empenhos distribuídos por 14 secretarias e fundos públicos. No entanto, o valor liquidado alcança R$ 374,1 milhões e o total financeiro efetivamente pago é de R$ 338.544.824,26 - o que representa apenas 50% do valor empenhado e cerca de 11% do montante já disponível em conta.",
+      "O levantamento do portal expõe onde o dinheiro da reparação está represado. Projetos estratégicos com valores bilionários continuam com R$ 0,00 empenhado nas contas públicas estaduais: é o caso do lote rodoviário entre Ouro Preto e Mariana (Anexo XIII, com R$ 1,702 bilhão pactuado e zero empenhado), a recuperação florestal da vegetação nativa da Bacia (Anexo XII, com R$ 1,026 bilhão prometido e zero empenhado) e a consolidação de Unidades de Conservação (R$ 781 milhões pactuados e zero empenhado). Enquanto as obras ambientais não avançam, os recursos depositados em juízo já geraram R$ 367,3 milhões somente em rendimentos bancários acumulados.",
+      "Entre os municípios que concentram recursos destinados, Mariana lidera com R$ 1,85 bilhão pactuado para saneamento e reconstrução histórica; Governador Valadares possui R$ 920 milhões destinados para a captação de água no Rio Suaçuí e obras de esgoto; e Barra Longa conta com R$ 340 milhões reservados para restauração urbana e desassoreamento do Rio do Carmo."
+    ]
+  },
+  {
+    "slug": "barragens-descaracterizacao-prazos-mg",
+    "titulo": "Barragens a montante em Minas: 23 estruturas pendentes e prazos adiados para até 2035",
+    "subtitulo": "Mineradoras descumpriram prazo da Lei Mar de Lama Nunca Mais; acompanhamento com o MPMG aponta estruturas em nível crítico e aditivos judiciais.",
+    "resumo": "Investigação cívica detalha as 45 barragens construídas pelo método a montante em Minas Gerais, os níveis de emergência e a morosidade no desmanche das estruturas de risco.",
+    "categoria": "Investigação Cívica",
+    "frente": "ambiental",
+    "subfrente": "Barragens e Segurança",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T21:45:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 7,
+    "palavrasChave": [
+      "barragens-a-montante",
+      "descaracterizacao-barragens",
+      "mar-de-lama-nunca-mais",
+      "mpmg-barragens",
+      "sigbm-anm",
+      "nivel-3-emergencia"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Barragens a montante em Minas: 23 estruturas pendentes e prazos adiados para até 2035. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/barragens-descaracterizacao-prazos-mg>.",
+    "citacaoBibtex": "@article{onsa2026barragensprazos,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Barragens a montante em Minas: 23 estruturas pendentes e prazos adiados para até 2035},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/barragens-descaracterizacao-prazos-mg}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Projeto Desativando Bombas-relógio / MPMG",
+        "url": "https://www.mpmg.mp.br"
+      },
+      {
+        "nome": "SIGBM / Agência Nacional de Mineração (ANM)",
+        "url": "https://app.anm.gov.br/sigbm"
+      },
+      {
+        "nome": "Fundação Estadual do Meio Ambiente (FEAM-MG)",
+        "url": "https://www.feam.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Barragens a Montante",
+        "valor": "45 estruturas"
+      },
+      {
+        "rotulo": "Obras 100% Concluídas",
+        "valor": "21 barragens"
+      },
+      {
+        "rotulo": "Estruturas Pendentes",
+        "valor": "24 barragens"
+      },
+      {
+        "rotulo": "Prazo Legal Original",
+        "valor": "Fevereiro de 2022"
+      }
+    ],
+    "recomendacaoVerificar": "Acesse a página de [Descaracterização de Barragens](/ambiental/barragens/descaracterizacao) no portal. Confira no mapa se há estruturas com sirenes ativadas próximas à sua cidade e consulte o status da barragem no [SIGBM](https://app.anm.gov.br/sigbm).",
+    "paragrafos": [
+      "Aprovada por unanimidade pela Assembleia Legislativa após o desastre de Brumadinho, a Lei Estadual nº 23.291/2019 - batizada de Lei Mar de Lama Nunca Mais - estabeleceu como regra imperativa que todas as barragens de contenção de rejeitos de mineração construídas pelo método de alteamento a montante em Minas Gerais deveriam ser completamente descaracterizadas no prazo máximo de três anos, expirado em 25 de fevereiro de 2022.",
+      "Sete anos após a edição da lei, o levantamento cívico do Controle Popular na página de [Descaracterização de Barragens](/ambiental/barragens/descaracterizacao) - cruzando os dados do projeto 'Desativando Bombas-relógio' do Ministério Público com o sistema SIGBM da Agência Nacional de Mineração - aponta que nenhuma das grandes mineradoras multinacionais conseguiu cumprir o prazo legal original. Das 45 barragens a montante catalogadas no estado, 21 foram totalmente concluídas e atestadas pelos órgãos técnicos, enquanto outras 24 estruturas continuam em obras ou com processos paralisados.",
+      "Em razão do descumprimento generalizado da lei, o Ministério Público e o governo estadual firmaram TACs - Termos de Ajustamento de Conduta repactuando os calendários de engenharia com prazos que avançam pela próxima década. A mineradora Vale S.A. repactuou a descaracterização do complexo das barragens Forquilha I, II e III, em Ouro Preto, para 2035 - um atraso de 13 anos em relação à determinação legal. A mesma mineradora prevê concluir a barragem Xingu, em Mariana, apenas em 2034.",
+      "A situação é crítica em estruturas classificadas em Nível 3 de Emergência - classificação da ANM que indica risco iminente de ruptura. É o caso da Barragem Serra Azul, de propriedade da ArcelorMittal, situada no município de Itatiaiuçu, contendo 5,02 milhões de metros cúbicos de rejeito. Os moradores da comunidade de Pinheiros continuam desalojados de suas residências desde 2019 por segurança, e o cronograma homologado prevê conclusão das obras somente em dezembro de 2032. Em Nível 2 de emergência permanecem a Barragem Sul Superior da Vale, em Barão de Cocais (com 5,94 milhões de metros cúbicos), e a barragem B1A da Emicon, em Brumadinho.",
+      "O volume total de lama acumulado nas estruturas pendentes atinge números superlativos: os diques do Sistema Pontal da Vale em Itabira somam 209,8 milhões de metros cúbicos; a barragem de Germano da Samarco em Mariana retém 130 milhões de metros cúbicos; e a barragem B4 da CSN em Congonhas armazena outros 130 milhões de metros cúbicos sobre a bacia do Rio Paraopeba e do Rio Doce."
+    ]
+  },
+  {
+    "slug": "belo-horizonte-contratos-orcamento-capital",
+    "titulo": "Belo Horizonte: orçamento de R$ 19 bilhões e mais de 6.800 contratos no PNCP",
+    "subtitulo": "Raio-x da capital mineira reúne despesas em saúde, contratos de limpeza urbana e monitoramento diário de atos normativos e decretos.",
+    "resumo": "Auditoria cívica em Belo Horizonte examina a execução orçamentária da capital, o volume recorde de contratações públicas e os indicadores de saneamento e educação.",
+    "categoria": "Relatório Técnico",
+    "frente": "cidades",
+    "subfrente": "Belo Horizonte — Capital",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T22:00:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 6,
+    "palavrasChave": [
+      "belo-horizonte",
+      "orcamento-pbh",
+      "contratos-bh",
+      "pncp-bh",
+      "dom-pbh",
+      "transparencia-capital"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Belo Horizonte: orçamento de R$ 19 bilhões e mais de 6.800 contratos no PNCP. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/belo-horizonte-contratos-orcamento-capital>.",
+    "citacaoBibtex": "@article{onsa2026bh,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Belo Horizonte: orçamento de R$ 19 bilhões e mais de 6.800 contratos no PNCP},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/belo-horizonte-contratos-orcamento-capital}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Portal da Transparência da PBH",
+        "url": "https://prefeitura.pbh.gov.br/transparencia"
+      },
+      {
+        "nome": "PNCP - Portal Nacional de Contratações Públicas",
+        "url": "https://pncp.gov.br"
+      },
+      {
+        "nome": "Diário Oficial do Município (DOM-PBH)",
+        "url": "https://dom-web.pbh.gov.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Orçamento Aprovado 2026",
+        "valor": "R$ 19,4 bi"
+      },
+      {
+        "rotulo": "Contratos Catalogados",
+        "valor": "6.878"
+      },
+      {
+        "rotulo": "População IBGE",
+        "valor": "2.315.560 hab."
+      },
+      {
+        "rotulo": "Saneamento Tratado",
+        "valor": "94,2%"
+      }
+    ],
+    "recomendacaoVerificar": "Consulte o painel da capital na rota [Belo Horizonte](/bh). Para verificar editais e atas de registro de preços, acerte os filtros no [PNCP](https://pncp.gov.br) usando o CNPJ da prefeitura (18.715.383/0001-40).",
+    "paragrafos": [
+      "Com 2.315.560 moradores contabilizados no Censo Demográfico do IBGE, a capital de Minas Gerais gere o maior orçamento municipal do estado. A LOA - a Lei Orçamentária Anual aprovada pela Câmara Municipal para o exercício financeiro de 2026 fixou as despesas de Belo Horizonte em R$ 19,4 bilhões. Pela distribuição constitucional, mais de 40% das despesas correntes são alocadas diretamente nas secretarias municipais de Saúde e Educação.",
+      "A base de dados cívica do Controle Popular cataloga 6.878 contratos públicos ativos da administração direta e indireta de Belo Horizonte na página de [Belo Horizonte](/bh). O volume representa o maior contingente de compras monitorado entre todas as prefeituras atendidas pelo projeto, englobando autarquias como a Sudecap (obras e pavimentação), a SLU (Superintendência de Limpeza Urbana), a Prodabel (empresa de tecnologia da informação) e a BHTRANS.",
+      "A plataforma consome diariamente as publicações do DOM - o Diário Oficial do Município disponível em dom-web.pbh.gov.br, analisando decretos de desapropriação para contenção de enchentes, portarias de nomeação de cargos de confiança e editais de grandes licitações viárias na capital.",
+      "No campo dos serviços essenciais, o município sustenta uma taxa de 94,2% de coleta e tratamento de esgoto sanitário pelo SNIS - o Sistema Nacional de Informações sobre Saneamento, impactando a bacia do Rio das Velhas e os ribeirões Arrudas e Onça. Já a rede pública do SUS conta com 1.280 estabelecimentos cadastrados no CNES, funcionando como polo de média e alta complexidade hospitalar para mais de 5 milhões de mineiros da região metropolitana."
+    ]
+  },
+  {
+    "slug": "comunicabr-repasses-federais-municipios-mg",
+    "titulo": "ComunicaBR: R$ 139 bilhões da União nos 853 municípios de Minas e 61% de dados vazios",
+    "subtitulo": "Base de dados compactada da Presidência da República revela programas sociais e expõe omissões no fornecimento de dados federais.",
+    "resumo": "Radiografia técnica das transferências federais para Minas Gerais analisa indicadores do SUS, Bolsa Família e Fundeb, destacando a diferença entre valor zero e ausência de dado.",
+    "categoria": "Relatório Técnico",
+    "frente": "estado",
+    "subfrente": "ComunicaBR & Federalismo Fiscal",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T22:15:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 7,
+    "palavrasChave": [
+      "comunicabr",
+      "repasses-federais-mg",
+      "bolsa-familia-mg",
+      "sus-comunicabr",
+      "fundeb-repasses",
+      "transparencia-federal"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. ComunicaBR: R$ 139 bilhões da União nos 853 municípios de Minas e 61% de dados vazios. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/comunicabr-repasses-federais-municipios-mg>.",
+    "citacaoBibtex": "@article{onsa2026comunicabr,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {ComunicaBR: R$ 139 bilhões da União nos 853 municípios de Minas e 61% de dados vazios},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/comunicabr-repasses-federais-municipios-mg}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "ComunicaBR / Presidência da República",
+        "url": "https://comunicabr.presidencia.gov.br"
+      },
+      {
+        "nome": "Portal da Transparência do Governo Federal",
+        "url": "https://portaldatransparencia.gov.br"
+      },
+      {
+        "nome": "Fundo Nacional de Desenvolvimento da Educação (FNDE)",
+        "url": "https://www.gov.br/fnde"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Recursos Mapeados em MG",
+        "valor": "R$ 139 bi"
+      },
+      {
+        "rotulo": "Cidades Cobertas",
+        "valor": "853 municípios"
+      },
+      {
+        "rotulo": "Indicadores Coletados",
+        "valor": "174.012 itens"
+      },
+      {
+        "rotulo": "Itens com Valor Publicado",
+        "valor": "67.566 (39%)"
+      }
+    ],
+    "recomendacaoVerificar": "Acesse a seção [Governo Federal nas Cidades](/dados/comunicabr) no portal. Escolha a sua cidade para visualizar quais ministérios declararam investimentos e confira a lista de indicadores que a fonte federal deixou em branco.",
+    "paragrafos": [
+      "O governo federal mantém a plataforma ComunicaBR para divulgar a atuação e os repasses da União em cada um dos municípios brasileiros. O Controle Popular coletou as informações dos 853 municípios de Minas Gerais e desenvolveu um formato de compressão determinística de dados que consolidou os dados em um índice comparável na página [ComunicaBR](/dados/comunicabr).",
+      "O levantamento totalizou 174.012 indicadores declarados por 21 ministérios federais, representando um fluxo financeiro acumulado que ultrapassa R$ 139 bilhões em programas sociais, previdenciários e de infraestrutura no território mineiro. Entre os principais programas catalogados estão as transferências de renda do Bolsa Família, o BPC - o Benefício de Prestação Continuada para idosos e pessoas com deficiência, o custeio de equipes de Saúde da Família e o fornecimento de medicamentos da Farmácia Popular.",
+      "Entretanto, a auditoria do portal revelou um índice elevado de incompletude nos dados publicados pela Presidência: 61% de todos os itens catalogados (106.446 de 174.012 indicadores) vieram sem nenhum valor publicado pela fonte oficial. Apenas 67.566 itens (39% do acervo) continham dados numéricos preenchidos.",
+      "A investigação editorial do portal ressalta que a ausência de dado não pode ser interpretada como inação das prefeituras. Em temas inteiros, como a categoria 'Governo Digital', o sistema federal veio zerado em 100% dos municípios de Minas Gerais (853 de 853 cidades), configurando uma lacuna da própria fonte federal que divulga a pasta mas não fornece os microdados locais. Já em temas como Meio Ambiente e Infraestrutura, 727 cidades não receberam nenhuma informação cadastrada.",
+      "O portal reforça a ressalva de que o ComunicaBR é um canal de comunicação institucional do governo federal sobre os próprios atos, e não substitui os relatórios contábeis oficiais auditados pelo Tribunal de Contas da União e pelo SIAFI - o Sistema Integrado de Administração Financeira."
+    ]
+  },
+  {
+    "slug": "diamantina-diario-oficial-atos-contratos",
+    "titulo": "Diamantina em 16.601 atos oficiais: série de cinco anos do Diário Oficial revela contratações e decretos",
+    "subtitulo": "Coleta ininterrupta de 80 meses analisa publicações da Prefeitura e da Câmara no Alto Jequitinhonha por taxonomia determinística.",
+    "resumo": "Análise técnica do acervo do Diário Oficial de Diamantina examina mais de 16 mil publicações oficiais desde 2020, catalogando licitações, portarias e convênios.",
+    "categoria": "Relatório Técnico",
+    "frente": "cidades",
+    "subfrente": "Diamantina — Patrimônio & Gestão",
+    "autor": "ONSA — Observatório Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistência de Inteligência Artificial a partir de bases de dados públicos oficiais, revisado e validado sob a metodologia do ONSA — Observatório Nacional Socioambiental.",
+    "publicadoEm": "2026-09-06T22:30:00Z",
+    "atualizadoEm": "2026-09-07T01:30:00Z",
+    "tempoLeituraMin": 6,
+    "palavrasChave": [
+      "diamantina",
+      "diario-oficial-diamantina",
+      "sigpub-amm",
+      "contratos-diamantina",
+      "patrimonio-jequitinhonha"
+    ],
+    "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Diamantina em 16.601 atos oficiais: série de cinco anos do Diário Oficial revela contratações e decretos. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/diamantina-diario-oficial-atos-contratos>.",
+    "citacaoBibtex": "@article{onsa2026diamantinadiario,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Diamantina em 16.601 atos oficiais: série de cinco anos do Diário Oficial revela contratações e decretos},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/diamantina-diario-oficial-atos-contratos}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Diário Oficial dos Municípios Mineiros (AMM-MG)",
+        "url": "https://www.diariomunicipal.com.br/amm-mg"
+      },
+      {
+        "nome": "Prefeitura Municipal de Diamantina",
+        "url": "https://www.diamantina.mg.gov.br"
+      },
+      {
+        "nome": "Câmara Municipal de Diamantina",
+        "url": "https://cmdiamantina.mg.gov.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Atos Oficiais Catalogados",
+        "valor": "16.601 atos"
+      },
+      {
+        "rotulo": "Período Coletado",
+        "valor": "Jan/2020 a Jul/2026"
+      },
+      {
+        "rotulo": "Meses Ininterruptos",
+        "valor": "80 meses"
+      },
+      {
+        "rotulo": "Entidades Monitoradas",
+        "valor": "Prefeitura e Câmara"
+      }
+    ],
+    "recomendacaoVerificar": "Consulte o painel de [Diamantina](/diamantina) no portal. Para localizar uma nomeação ou extrato de contrato antigo, use o mecanismo de busca textual no [Diário Oficial de Diamantina](/diamantina/diario-oficial).",
+    "paragrafos": [
+      "Diamantina, cidade histórica do Alto Jequitinhonha tombada como Patrimônio Mundial pela UNESCO, conta com uma série temporal contínua de publicações oficiais catalogada pelo Controle Popular. O projeto realizou a extração completa de 16.601 atos oficiais veiculados entre janeiro de 2020 e julho de 2026 no sistema SIGPub - a plataforma gerenciada pela AMM-MG - a Associação Mineira de Municípios.",
+      "A coleta abrange 80 meses ininterruptos de publicações e alcança as duas entidades públicas municipais: a Prefeitura Municipal (entidade nº 905 no diário estadual) e a Câmara Municipal de Diamantina (entidade nº 21672). O levantamento abrange desde a penúltima gestão municipal até os atos da gestão corrente.",
+      "Para organizar a massa de documentos, o portal implementou uma taxonomia determinística com sete categorias oficiais: decretos executivos, editais de licitação e pregões, extratos de contratos e termos aditivos, termos de convênio e parceria, portarias de nomeação e movimentação de servidores, leis aprovadas pelo legislativo e relatórios de prestação de contas fiscais.",
+      "Além dos atos normativos, a página de [Diamantina](/diamantina) integra 315 contratos cadastrados no PNCP, associando compras públicas aos projetos de preservação cultural, pavimentação urbana e atenção básica de saúde nos distritos históricos da região."
+    ]
+  }
+]

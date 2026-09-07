@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Menu, Bell } from "lucide-react";
+import { Menu, Bell, Newspaper } from "lucide-react";
 import Link from "next/link";
 
 import { ZONAS_PUBLICADAS } from "@/lib/zonas";
@@ -9,6 +9,7 @@ import BuscaGlobal from "@/app/components/BuscaGlobal";
 import CvdToggle from "@/app/components/CvdToggle";
 import FontSizeControl from "@/app/[municipio]/components/FontSizeControl";
 import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
+import Marquee from "@/app/components/Marquee";
 
 /**
  * Cidades atendidas pelo eixo Cidades. Lista curta e estável — mantida aqui
@@ -39,8 +40,11 @@ const SECOES_MENU = [
   {
     id: "cidades",
     titulo: "Cidades",
-    href: "/betim",
-    links: CIDADES_MENU.map((c) => ({ label: c.nome, href: `/${c.slug}` })),
+    href: "/cidades",
+    links: [
+      { label: "Todas as Cidades (199 Polos)", href: "/cidades" },
+      ...CIDADES_MENU.map((c) => ({ label: c.nome, href: `/${c.slug}` })),
+    ],
   },
   {
     id: "congresso",
@@ -129,8 +133,10 @@ const SECOES_MENU = [
     href: "/indice",
     links: [
       { label: "Índice do portal", href: "/indice" },
+      { label: "Notícias & Relatórios", href: "/noticias" },
       { label: "Alertas e Notificações", href: "/alertas" },
       { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
+      { label: "Tecnologia & IA Livre", href: "/tecnologia" },
       { label: "Busca", href: "/busca" },
       { label: "Dados populares", href: "/dados/populares" },
       { label: "Governo federal nas cidades", href: "/dados/comunicabr" },
@@ -238,9 +244,9 @@ export default function TopNav() {
         >
           <Link
             href="/"
-            className="font-display text-[1.05em] font-bold tracking-tight text-text transition-colors duration-150 hover:text-primary"
+            className="font-display text-[0.92em] sm:text-[1em] font-bold tracking-tight text-text transition-colors duration-150 hover:text-primary"
           >
-            controlepopular<span className="text-primary">.br</span>
+            controlepopular<span className="text-primary">.com.br</span>
           </Link>
           <button
             type="button"
@@ -251,9 +257,6 @@ export default function TopNav() {
           >
             <Menu size={18} strokeWidth={2.5} aria-hidden="true" />
           </button>
-          <p className="hidden whitespace-nowrap text-[0.6em] tracking-wide text-text-soft sm:block">
-            O dinheiro é nosso — olho vivo — fiscaliza — coração sem medo
-          </p>
 
           <nav
             id="menu-portal"
@@ -318,6 +321,14 @@ export default function TopNav() {
 
         <div className="ml-auto flex flex-wrap items-center gap-2">
           <Link
+            href="/noticias"
+            className="cp-btn-anim flex items-center gap-1.5 rounded-md border border-primary/40 bg-primary/10 px-2.5 py-1 text-[.8em] font-semibold text-primary transition-colors duration-150 hover:bg-primary/20"
+            aria-label="Notícias e Relatórios de Dados Públicos"
+          >
+            <Newspaper size={13} aria-hidden="true" />
+            <span>Notícias</span>
+          </Link>
+          <Link
             href="/alertas"
             className="cp-btn-anim flex items-center gap-1 rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
             aria-label="Central de Alertas e Notificações"
@@ -336,6 +347,7 @@ export default function TopNav() {
           <FontSizeControl />
         </div>
       </div>
+      <Marquee frase="✦ FISCALIZA ✦ OLHO ABERTO ✦ O DINHEIRO É NOSSO ✦ TERRITÓRIO COMO ESPERANÇA ✦ NOSSA NATUREZA ✦ NOSSOS MISTÉRIOS ✦ CORAÇÃO SEM MEDO" />
     </header>
   );
 }

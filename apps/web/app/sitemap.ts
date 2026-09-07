@@ -8,6 +8,7 @@ import { listarIdsDeParlamentares } from "@/lib/congresso/parlamentares";
 import { listarProposicoes } from "@/lib/congresso/proposicoes";
 import { listarTribunais } from "@/lib/judiciario/tribunais";
 import { TRIBUNAIS } from "@/lib/judiciario/regras";
+import { listarNoticiasPortal } from "@/lib/noticias/portal";
 
 /**
  * Domínio de produção: `apps/web/wrangler.jsonc` liga `controlepopular.com.br`
@@ -275,10 +276,28 @@ async function rotasDoJudiciario(): Promise<MetadataRoute.Sitemap> {
   return urls;
 }
 
+function rotasDeNoticias(): MetadataRoute.Sitemap {
+  const noticias = listarNoticiasPortal();
+  const urls: MetadataRoute.Sitemap = [
+    item("/noticias", { changeFrequency: "daily", priority: 0.8 }),
+  ];
+  for (const n of noticias) {
+    urls.push(
+      item(`/noticias/${n.slug}`, {
+        lastModified: paraData(n.publicadoEm),
+        changeFrequency: "weekly",
+        priority: 0.8,
+      })
+    );
+  }
+  return urls;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const urls: MetadataRoute.Sitemap = [
     item("/", { changeFrequency: "daily", priority: 1.0 }),
     item("/busca", { changeFrequency: "weekly", priority: 0.6 }),
+    item("/tecnologia", { changeFrequency: "weekly", priority: 0.7 }),
     // Só o índice, não as 853 fichas de cidade: elas mudam juntas, na mesma
     // coleta, e listá-las aqui inflaria o sitemap em 853 linhas para repetir a
     // mesma `lastModified` do build. O índice linka todas.
@@ -296,6 +315,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   urls.push(...(await rotasDoCongresso()));
   urls.push(...(await rotasDoJudiciario()));
+  urls.push(...rotasDeNoticias());
 
   return urls;
 }

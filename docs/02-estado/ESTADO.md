@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-09-01 (incidente de deploy registrado abaixo; site restaurado 15:37 local; Argus 158 rotas; PicoClaw 92% das fontes)
+> **Última medição:** 2026-09-07 (Hub de Notícias com 18 investigações do ONSA, SEO acadêmico ABNT/BibTeX, detalhamento fiscal TJMG/MPMG/DPMG, plano de destilação Sabiá 7B para Seu Nonô/Ollama)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-CLOUDFLARE-TUNNEL.md](../historico/entregas/PLANO-CLOUDFLARE-TUNNEL.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida tecnica, decisoes, plano unico, neon, build, tunnel
@@ -45,7 +45,7 @@ Publicado em 15/08 (build no `home-pc`, deploy passou). Seis frentes:
 | **Paraopeba** | auditoria AJRI com 467 fichas legíveis (sem modelo) e relacionados por tema+data; execução do Acordo (26 municípios, R$ 5,48 bi, 73,8% pago); repasse (1.214/1.214 linhas, R$ 1,65 bi); biblioteca das ATIs (597); clipping de ATIs (46) e IJs (59); radar de notícias; linha do tempo; ressalva `AvisoColetaEmCurso` em 5 páginas |
 | **ONSA (Observatório Nacional Socioambiental)** | direito crítico (30 normas + 15 precedentes em 5 temas); legislação estadual (6.378 normas) e federal (8.940 MMA/CNDH); barragens do país (SIGBM/ANM); processos ambientais por município de MG (SIRENEJud/CNJ, `/ambiental/judiciario`); Acordo do Rio Doce (`/ambiental/mariana`) e Observatório Vale (`/paraopeba/vale`) |
 
-Transversais confirmados: **painel de edição web** (token, editar, publicar, sincronizar, último deploy); **termo LGPD** com canal de contato; **assistente** degraus 0 (navegação, 0,35 ms), 1 (busca no índice) e 2 (composição determinística) no ar; **Direitos em Movimento** com as quatro portas e o facilitador de denúncia (`.docx`/`.pdf` só no navegador, rascunho opt-in); **Rouanet** coletado e compactado no repo (7.206 projetos + 20.785 incentivadores de MG, 7,9 MB → 2,4 MB), tela adiada de propósito; **ComunicaBR** dos 853 municípios coletado (17fccf9, 61% dos itens vazios); **API pública v1** (`/api`, Swagger UI + OpenAPI, 14 datasets estáticos gerados no prebuild — 30/08/2026).
+Transversais confirmados: **painel de edição web** (token, editar, publicar, sincronizar, último deploy); **termo LGPD** com canal de contato; **assistente** degraus 0 (navegação, 0,35 ms), 1 (busca no índice) e 2 (composição determinística) no ar; **Direitos em Movimento** com as quatro portas e o facilitador de denúncia (`.docx`/`.pdf` só no navegador, rascunho opt-in); **Rouanet** coletado e compactado no repo (7.206 projetos + 20.785 incentivadores de MG, 7,9 MB → 2,4 MB), tela adiada de propósito; **ComunicaBR** dos 853 municípios coletado (17fccf9, 61% dos itens vazios); **API pública v1** (`/api`, Swagger UI + OpenAPI, 14 datasets estáticos gerados no prebuild — 30/08/2026); **Notícias & Relatórios Técnicos** (`/noticias`, 18 matérias aprofundadas com SEO acadêmico ABNT/BibTeX, Schema.org e Dublin Core — 07/09/2026); **Plano de Destilação Sabiá 7B** (`docs/planos/PLANO-DISTILACAO-SABIA-7B-SEU-NONO.md`, fine-tuning para Seu Nonô no Ollama — 07/09/2026).
 
 ## Decisões do dono — 22/08/2026
 
@@ -217,4 +217,6 @@ Classificação dos 13 planos, feita em 22/08 junto com as decisões acima:
 | `PLANO-GEOCODIFICACAO.md` | **ESPERANDO DADO** — plano escrito em 17/08; executa quando o monitoramento da Vale (item 22) tiver coleta |
 | `ROTEIRO-NEON-01-09.md` | **RUNBOOK** — executa em 01/09. ⚠️ O cabeçalho está escrito no passado ("a Neon voltou… em 01/09") e ainda não rodou; corrigir o tempo verbal antes que alguém leia como feito |
 | `deploy-github-pages.md` | **CONTINGÊNCIA, não fila** — o Cloudflare já serve o portal e o repositório é público (medido em 22/08); nada a executar (decisão 9) |
+| `PLANO-DATA-OCEAN-INTEGRACAO.md` | **ENTREGUE** (06/09/2026) — 3 eixos temáticos, 199 cidades estratégicas, 18 subfrentes e integração de dados |
+| `PLANO-TECNOLOGIA-IA-E-EDUCACAO-POPULAR.md` | **ENTREGUE** (06/09/2026) — rota `/tecnologia`, oficinas de IA local-first e catálogo Floresta de Apps / AppLivre |
 

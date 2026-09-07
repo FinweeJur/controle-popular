@@ -396,6 +396,41 @@ export const CONTEXTOS: ContextoPagina[] = [
       },
     ],
   },
+
+  // ─── NOTÍCIAS & RELATÓRIOS ───
+  {
+    padrao: "^/noticias",
+    sugestoes: [
+      {
+        pergunta: "De onde vêm os dados das matérias do portal?",
+        resposta:
+          "Todas as reportagens do ONSA se baseiam em dados oficiais abertos: PNCP, IBAMA, ANM, Receita Federal, SIGBM e Diários Oficiais.",
+        link: "/noticias",
+        linkTexto: "Ver notícias e relatórios",
+      },
+      {
+        pergunta: "Como são feitas as investigações do ONSA?",
+        resposta:
+          "As matérias cruzam contratos, processos e emendas. O texto é estruturado com auxílio de inteligência artificial e validado pela metodologia cívica do ONSA.",
+        link: "/sobre",
+        linkTexto: "Conhecer a metodologia",
+      },
+      {
+        pergunta: "Como citar as reportagens em trabalhos acadêmicos?",
+        resposta:
+          "Cada matéria conta com caixa de citação científica em formatos ABNT e BibTeX, com link permanente e data de acesso.",
+        link: "/noticias",
+        linkTexto: "Ver matérias",
+      },
+      {
+        pergunta: "Como checar os dados de uma reportagem?",
+        resposta:
+          "Toda reportagem traz a caixa 'Recomendação para verificar' com o passo a passo e o link oficial do órgão público responsável.",
+        link: "/noticias",
+        linkTexto: "Explorar relatórios",
+      },
+    ],
+  },
 ];
 
 /**

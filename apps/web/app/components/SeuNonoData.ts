@@ -763,6 +763,40 @@ export const FRENTES: SeuNonoFrente[] = [
       },
     ],
   },
+  {
+    id: "noticias",
+    titulo: "Notícias & Relatórios",
+    descricao: "Investigações cívicas, relatórios socioambientais do ONSA e auditoria de dados públicos.",
+    categorias: [
+      {
+        id: "investigacoes-onsa",
+        titulo: "Investigações e Dados Públicos",
+        perguntas: [
+          {
+            id: "o-que-sao-noticias",
+            pergunta: "O que são as matérias de Notícias & Relatórios?",
+            resposta:
+              "São 13 reportagens técnicas do ONSA - Observatório Nacional Socioambiental, cruzando compras públicas, mineração, Diários Oficiais e orçamento.",
+            link: { href: "/noticias", texto: "Ver todas as notícias" },
+          },
+          {
+            id: "como-verificar-materias",
+            pergunta: "Como conferir os números de uma matéria?",
+            resposta:
+              "Cada matéria traz a caixa 'Recomendação para verificar' com passo a passo e hiperlinks diretos para os portais oficiais dos órgãos públicos.",
+            link: { href: "/noticias", texto: "Ir para notícias" },
+          },
+          {
+            id: "como-citar-artigos",
+            pergunta: "Como citar as investigações em trabalhos acadêmicos?",
+            resposta:
+              "Todas as reportagens têm caixa de citação científica nos formatos ABNT e BibTeX com metadados para Google Acadêmico e Dublin Core.",
+            link: { href: "/noticias", texto: "Consultar matérias" },
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 /**
@@ -948,6 +982,22 @@ export const PAGINAS_DADOS: PaginaDados[] = [
     links: [
       { href: "/direitos-em-movimento/denuncia", texto: "Quero denunciar" },
       { href: "/direitos-em-movimento/ajuda", texto: "Preciso de ajuda" },
+    ],
+  },
+  {
+    id: "noticias",
+    titulo: "Notícias & Relatórios",
+    resumo: "Investigações cívicas, auditoria de compras públicas e monitoramento socioambiental do ONSA.",
+    dados: [
+      "13 reportagens investigativas cobrindo todas as frentes do portal",
+      "Cruzamento do PNCP, SIGBM, ANM, IBAMA e Diários Oficiais",
+      "Auditoria de contratos de Betim, Araçuaí e Itinga",
+      "Rastreamento de royalties da mineração (CFEM) e projetos de lítio",
+      "Caixa de citação científica em formatos ABNT e BibTeX",
+      "Seção 'Recomendação para verificar' com links de fontes oficiais",
+    ],
+    links: [
+      { href: "/noticias", texto: "Ver notícias e relatórios" },
     ],
   },
 ];

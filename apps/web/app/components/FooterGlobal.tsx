@@ -1,6 +1,5 @@
 import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
-
-// Ações do rodapé padrão (PLANO-NAVEGACAO-E-NOTIFICACOES.md): pedido de
+// Ações do rodapé padrão do portal: pedido de
 // dados por e-mail e mostrador público do contador de envios/downloads.
 import PedirDadosEmail from "@/app/components/PedirDadosEmail";
 import ContadorPublico from "@/app/components/ContadorPublico";
@@ -55,7 +54,9 @@ const LINKS_PORTAL = [
   // frentes" acima porque NÃO é zona — ver a nota de arquitetura em
   // `lib/zonas.ts` e no bloco correspondente de `app/page.tsx`.
   { label: "Índice do portal", href: "/indice" },
+  { label: "Notícias & Relatórios", href: "/noticias" },
   { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
+  { label: "Tecnologia & IA Livre", href: "/tecnologia" },
   { label: "Busca", href: "/busca" },
   { label: "Páginas mais vistas", href: "/dados/populares" },
   // Rótulo pela MATÉRIA, não pela sigla: "ComunicaBR" não diz nada a quem

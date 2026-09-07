@@ -16,11 +16,14 @@ import {
   HelpCircle,
   AlertTriangle,
   MapPin,
+  Cpu,
+  Newspaper,
 } from "lucide-react";
 import { Sparkles } from "lucide-react";
 import { ZONAS_PUBLICADAS } from "@/lib/zonas";
 import novidades from "@/data/novidades.json";
 import { listarCidades } from "@/lib/db/queries/municipios";
+import CapaFrente from "@/app/components/CapaFrente";
 import CartaoTopico, { type Topico } from "@/app/components/wiki/CartaoTopico";
 import { IndiceWiki } from "@/app/components/wiki";
 import FooterGlobal from "@/app/components/FooterGlobal";
@@ -93,6 +96,8 @@ export default async function IndiceGlobal() {
         { href: "/dados/populares", titulo: "Paginas mais vistas", descricao: "O que as pessoas mais consultam.", cor: "var(--cp-accent)", badge: "Transversal", icon: <BarChart3 size={14} /> },
         { href: "/dados/comunicabr", titulo: "Governo federal nas cidades", descricao: "Repasses e acoes da Uniao em Minas Gerais.", cor: "var(--cp-accent)", badge: "Transversal", icon: <Globe size={14} /> },
         { href: "/direitos-em-movimento", titulo: "Direitos em Movimento", descricao: "Onde buscar ajuda e como se defender.", cor: "var(--cp-alert)", badge: "Transversal", icon: <HeartHandshake size={14} /> },
+        { href: "/tecnologia", titulo: "Tecnologia & IA Livre", descricao: "Oficinas práticas de IA, catálogo open source e ferramentas livres.", cor: "var(--cp-primary)", badge: "Educação", icon: <Cpu size={14} /> },
+        { href: "/noticias", titulo: "Notícias & Relatórios", descricao: "Estudos técnicos, dados públicos e investigações cívicas do ONSA.", cor: "var(--cp-primary)", badge: "Jornalismo", icon: <Newspaper size={14} /> },
         { href: "/sobre", titulo: "Sobre", descricao: "O que e, de onde vem os dados e quem somos.", cor: "var(--cp-primary)", badge: "Portal", icon: <BookOpen size={14} /> },
         { href: "/termos", titulo: "Termos e origem dos dados", descricao: "Licenca, fontes e limitacoes.", cor: "var(--cp-primary)", badge: "Portal", icon: <FileText size={14} /> },
       ],
@@ -120,6 +125,15 @@ export default async function IndiceGlobal() {
       tabIndex={-1}
       className="mx-auto max-w-5xl px-4 py-8"
     >
+      <CapaFrente
+        imagem="capas/home-page.webp"
+        alt="Capa do Controle Popular — índice geral do portal"
+        titulo="CONTROLE POPULAR"
+        epigrafe=""
+        atribuicao=""
+        resumo="Seis frentes, um portal, o número na sua tela. Escolha uma porta — todas levam ao dado com a fonte ao lado."
+        className="mb-10 -mx-4 sm:-mx-8"
+      />
       <header className="space-y-2">
         <h1 className="font-display text-3xl font-bold">Índice do Controle Popular</h1>
         <p className="max-w-2xl text-text-soft">
