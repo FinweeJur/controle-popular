@@ -17,23 +17,33 @@ import torch
 from datasets import load_dataset
 from trl import SFTTrainer
 from transformers import TrainingArguments
+from transformers import BitsAndBytesConfig
 
 # 1. Configuracao Unsloth
 from unsloth import FastLanguageModel
 
 MAX_SEQ_LENGTH = 2048
 DTYPE = None # Auto deteta (Float16 ou Bfloat16)
-LOAD_IN_4BIT = True # QLoRA 4-bit para caber em qualquer GPU (T4, RTX 3060, etc.)
+LOAD_IN_4BIT = False # 4-bit nao suporta CPU offload
+LOAD_IN_8BIT = True  # 8-bit suporta CPU offload
 
 # Modelo Base recomendado: Sabiá-7B ou Llama-3.1-8B-Instruct
-MODEL_NAME = "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit" # Ou "QuantFactory/sabia-7b-GGUF"
+MODEL_NAME = "unsloth/Meta-Llama-3.1-8B-Instruct" # Original sem quantizacao previa
 
 print(">>> 1/5 Carregando modelo base...")
+bnb_config = BitsAndBytesConfig(
+    load_in_8bit=LOAD_IN_8BIT,
+    llm_int8_enable_fp32_cpu_offload=True,
+    llm_int8_has_fp16_weight=False,
+)
+
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name=MODEL_NAME,
     max_seq_length=MAX_SEQ_LENGTH,
     dtype=DTYPE,
-    load_in_4bit=LOAD_IN_4BIT,
+    quantization_config=bnb_config,
+    device_map="auto",
+    max_memory={0: "3.5GB", "cpu": "16GB"},
 )
 
 print(">>> 2/5 Configurando adaptadores LoRA...")
@@ -65,14 +75,12 @@ def formatar_prompt(exemplos):
 dataset = dataset.map(formatar_prompt, batched=True)
 
 print(">>> 4/5 Iniciando treinamento (3 epocas)...")
+
+def formatting_func(exemplo):
+    return exemplo["text"]
+
 trainer = SFTTrainer(
     model=model,
-    tokenizer=tokenizer,
-    train_dataset=dataset,
-    dataset_text_field="text",
-    max_seq_length=MAX_SEQ_LENGTH,
-    dataset_num_proc=2,
-    packing=False,
     args=TrainingArguments(
         per_device_train_batch_size=2,
         gradient_accumulation_steps=4,
@@ -88,6 +96,9 @@ trainer = SFTTrainer(
         seed=3407,
         output_dir="outputs_seu_nono",
     ),
+    train_dataset=dataset,
+    processing_class=tokenizer,
+    formatting_func=formatting_func,
 )
 
 trainer.train()
