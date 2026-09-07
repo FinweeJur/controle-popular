@@ -3,18 +3,10 @@ import { ZONAS_PUBLICADAS, contagemZonasPublicadas } from "@/lib/zonas";
 import { listarCidades } from "@/lib/db/queries/municipios";
 import { metadataEditavel } from "@/lib/edicoes";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import Marquee from "@/app/components/Marquee";
+import CapaFrente from "@/app/components/CapaFrente";
 import SanfonaFrentes from "@/app/components/SanfonaFrentes";
 import Epigrafe from "@/app/components/Epigrafe";
 import { citacaoPorId } from "@/lib/citacoes";
-
-// Hero narrativo (Fase 1 do plano de identidade visual —
-// `docs/planos/PLANO-IDENTIDADE-VISUAL-HERO-NARRATIVO.md`). O wrapper
-// client `HeroNarrativeLazy` existe porque `ssr: false` no `next/dynamic`
-// não é permitido dentro de server component — Next 16 rejeita no build.
-// O componente é seção, não overlay — o conteúdo da home segue intacto
-// abaixo, e o CTA dele é âncora real para `#frentes`.
-import HeroNarrativeLazy from "@/app/components/HeroNarrativeLazy";
 
 /**
  * Home da marca Controle Popular, na raiz do domínio.
@@ -42,14 +34,9 @@ import HeroNarrativeLazy from "@/app/components/HeroNarrativeLazy";
  */
 
 export const metadata: Metadata = metadataEditavel("/", {
-  // ⟲ 02/09, copy v6 (docs/planos/PLANO-COPY-VOZ.md): título na voz nova
-  // e descrição cobrindo as seis frentes — a antiga ainda listava só
-  // Betim, Congresso e Judiciário, herança de quando eram três sites.
-  // ⟲ 03/09, cherry-pick sobre o hero: título/descrição da copy vencem;
-  // a frase ONSA+IA continua no <title> editável do painel se o dono quiser.
-  title: "Controle Popular — o dinheiro é seu; a gente mostra para onde vai",
+  title: "Controle Popular — Observatório Nacional Socioambiental (ONSA)",
   description:
-    "Informação oficial que sempre foi pública, reunida numa tela só: o dinheiro da sua cidade, o que o Congresso decide sobre seus direitos, quem ocupa cada cadeira do Judiciário, a terra, o ambiente e a reparação de Brumadinho. Todo número com fonte. Portal independente.",
+    "Portal virtual do ONSA — Observatório Nacional Socioambiental. Com raízes na História e Geografia, esse portal se utiliza da tecnologia da Inteligência Artificial (IA) pra somar na busca por justiça socioambiental e fiscalização cidadã, acessível pela internet, gratuitamente e sem cadastro por qualquer celular ou computador.",
 });
 
 // A cópia das frentes mora em `lib/zonas.ts`, porque o bloco de remissão no
@@ -76,29 +63,22 @@ export default async function Hub() {
       tabIndex={-1}
       className="mx-auto max-w-4xl px-4 py-12 sm:py-16"
     >
-      {/* ═══ HERO NARRATIVO — primeira seção da home (plano de identidade
-          visual, Fase 1). Título e parágrafo de abertura MUDARAM PARA
-          DENTRO dele (requisito 8/9 do plano): é o mesmo `<h1>` "Dados
-          públicos que dá para usar" e o mesmo texto institucional, sem
-          número inventado. Tudo o que existia aqui continua abaixo,
-          intacto. */}
-      {/* Fita da marca (etapa 3 PLANO-TEMA-PEQUI): slogan, nao dado —
-          aria-hidden no componente. Substitui a Epigrafe que morava no
-          header: a citacao da Carolina agora e uma so, dentro do hero. */}
-      <Marquee frase="O dinheiro é nosso ✦ fiscalize ✦ olho vivo ✦ coração sem medo ✦ o território é nosso ✦" />
-      <HeroNarrativeLazy />
+      {/* ═══ CAPA HOME — foto com overlay + texto (rebrand visual) */}
+      <CapaFrente
+        imagem="capas/home-page.webp"
+        alt="Capa do Controle Popular — Observatório Nacional Socioambiental"
+        titulo="CONTROLE POPULAR"
+        epigrafe="O que a vida quer da gente é coragem."
+        atribuicao="João Guimarães Rosa, Grande Sertão: Veredas, 1956"
+        resumo="Portal virtual do ONSA — Observatório Nacional Socioambiental. Com raízes na História e Geografia, esse portal se utiliza da tecnologia da Inteligência Artificial (IA) pra somar na busca por justiça socioambiental e fiscalização cidadã, acessível pela internet, gratuitamente e sem cadastro por qualquer celular ou computador."
+      />
 
       <header className="space-y-4">
         {/* O wordmark da marca ficou só na barra global (`TopNav.tsx`), acima
             desta página — e o `<h1>` da página vive dentro do hero
-            narrativo, logo acima deste bloco. ⟲ 03/09, cherry-pick copy v6:
-            o parágrafo abaixo troca o institucional antigo pela voz nova
-            ("dialeto de edital"); o h1 novo tambem entrou, no hero. */}
+            narrativo, logo acima deste bloco. */}
         <p className="max-w-2xl text-[1.05em] text-text-soft">
-          Informação oficial que sempre foi pública — só estava espalhada por dezenas de
-          sistemas, escrita em dialeto de edital. A gente juntou tudo numa tela, por cidade
-          e por tema, em português comum. Portal independente, sem vínculo com nenhum governo,
-          câmara ou partido — e cada número diz de onde saiu.
+          Reunindo dezenas de portais e dados públicos, estamos cobrindo milhares de contratos, convênios, licenciamentos ambientais, pesquisas e autorizações minerárias e de barragens, legislação ambiental e de direitos humanos unificada, e o orçamento detalhado das prefeituras, governo de Minas, Congresso Brasileiro e Instituições de Justiça.
         </p>
         <p className="flex flex-wrap gap-x-4 gap-y-1 text-[.95em]">
           <a href="/busca" className="font-medium text-primary hover:underline">
