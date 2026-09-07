@@ -273,6 +273,11 @@ async function rotasDoJudiciario(): Promise<MetadataRoute.Sitemap> {
     urls.push(item(`/judiciario/tribunais/${sigla}`, { changeFrequency: "monthly", priority: 0.5 }));
   }
 
+  const orgaosJustica = ["tjmg", "mpmg", "dpmg", "trt3", "trf6", "dpu", "tcemg"];
+  for (const orgao of orgaosJustica) {
+    urls.push(item(`/judiciario/instituicoes/${orgao}`, { changeFrequency: "weekly", priority: 0.7 }));
+  }
+
   return urls;
 }
 
@@ -297,16 +302,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const urls: MetadataRoute.Sitemap = [
     item("/", { changeFrequency: "daily", priority: 1.0 }),
     item("/busca", { changeFrequency: "weekly", priority: 0.6 }),
+    item("/cidades", { changeFrequency: "weekly", priority: 0.8 }),
     item("/tecnologia", { changeFrequency: "weekly", priority: 0.7 }),
-    // Só o índice, não as 853 fichas de cidade: elas mudam juntas, na mesma
-    // coleta, e listá-las aqui inflaria o sitemap em 853 linhas para repetir a
-    // mesma `lastModified` do build. O índice linka todas.
-    item("/dados/comunicabr", { changeFrequency: "monthly", priority: 0.6 }),
-    item("/ambiental", { changeFrequency: "weekly", priority: 0.7 }),
+    item("/sobre", { changeFrequency: "yearly", priority: 0.4 }),
+    item("/imprensa", { changeFrequency: "monthly", priority: 0.5 }),
+    item("/indice", { changeFrequency: "weekly", priority: 0.6 }),
+    item("/direitos-em-movimento", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/estado-e-economia", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/terra-e-territorios", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/ambiental", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/ambiental/mariana", { changeFrequency: "weekly", priority: 0.8 }),
     item("/ambiental/tac", { changeFrequency: "monthly", priority: 0.6 }),
     item("/ambiental/convenios", { changeFrequency: "monthly", priority: 0.6 }),
+    item("/paraopeba", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/paraopeba/execucao", { changeFrequency: "weekly", priority: 0.8 }),
     item("/funcaosocialterra", { changeFrequency: "monthly", priority: 0.6 }),
     item("/funcaosocialterra/mapa", { changeFrequency: "monthly", priority: 0.6 }),
+    item("/dados/comunicabr", { changeFrequency: "monthly", priority: 0.6 }),
   ];
 
   const cidades = await listarCidades();

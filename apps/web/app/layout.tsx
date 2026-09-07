@@ -25,12 +25,12 @@ import "./globals.css";
 const BASE_URL = "https://controlepopular.com.br";
 const SITE_NAME = "Controle Popular";
 const DEFAULT_DESCRIPTION =
-  "Dados públicos sobre cidades, Congresso Nacional e Judiciário, reunidos e explicados. Portal independente, sem vínculo com nenhum órgão ou partido.";
+  "Mais de R$ 251 bilhões monitorados em dados públicos: 199 cidades estratégicas, acordos de Mariana e Brumadinho, 7 órgãos de Justiça de MG e diários oficiais com fontes e código aberto.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: `${SITE_NAME} — Portal independente de transparência`,
+    default: `${SITE_NAME} — Portal Independente de Fiscalização Cidadã`,
     template: `%s — ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
@@ -39,13 +39,22 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: BASE_URL,
     siteName: SITE_NAME,
-    title: SITE_NAME,
+    title: `${SITE_NAME} — Portal Independente de Fiscalização Cidadã`,
     description: DEFAULT_DESCRIPTION,
+    images: [
+      {
+        url: "/capas/home-page.webp",
+        width: 1200,
+        height: 630,
+        alt: "Controle Popular — R$ 251 bilhões em recursos públicos fiscalizados",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_NAME,
+    title: `${SITE_NAME} — Portal Independente de Fiscalização Cidadã`,
     description: DEFAULT_DESCRIPTION,
+    images: ["/capas/home-page.webp"],
   },
   alternates: {
     canonical: "/",
@@ -64,12 +73,21 @@ const STRUCTURED_DATA = {
       url: BASE_URL,
       description: DEFAULT_DESCRIPTION,
       inLanguage: "pt-BR",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${BASE_URL}/busca?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
     {
       "@type": "Organization",
       name: SITE_NAME,
       url: BASE_URL,
-      sameAs: ["https://github.com/FinweeJur/controle-popular"],
+      logo: `${BASE_URL}/capas/home-page.webp`,
+      sameAs: ["https://github.com/melkepinho/controle-popular"],
     },
   ],
 };

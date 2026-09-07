@@ -172,3 +172,6 @@ apps/web/.wrangler-dist/
 .agents/
 .claude/manha/
 .claude/worktrees/
+
+# Pacotes e arquivos compactados de trabalho
+*.zip

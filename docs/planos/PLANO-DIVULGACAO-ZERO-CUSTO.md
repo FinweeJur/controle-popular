@@ -97,25 +97,18 @@ depois de montado — nunca encurtar o domínio puro, senão o UTM se perde.
 
 ## 4. Imprensa — lista de veículos e a pauta
 
-### 4.1. A pauta (o que oferecer)
+#### 4.1. A pauta (o que oferecer)
 
-> **Assunto:** "Portal independente cruza diários oficiais, Congresso, Judiciário
-> e reparação de Brumadinho — cada número com fonte, estimativa com taxa de erro"
+> **Assunto:** "Portal independente reúne R$ 251 bilhões em dados públicos, 199 cidades, tribunais de MG e Mariana/Brumadinho — com fonte em cada número"
 
 Ganchos prontos para regionalizar:
 
-- **Betim / cidades**: 16.601 atos de diário oficial de jan/2020 a jul/2026
-  classificados por tema; contratos com alerta de risco.
-- **Brumadinho/Paraopeba**: execução do Acordo (26 municípios, R$ 5,48 bi, 73,8%
-  pago), repasse de R$ 1,65 bi, auditoria AJRI cruzada com a perícia da UFMG,
-  Observatório Vale (B3/CVM).
-- **Mariana**: acordo de R$ 677 mi destinado a MG, sob o mesmo portal.
-- **Congresso**: PLs classificados por direito (garantista × reducionista) com o
-  dispositivo citado e ofício pronto para enviar.
-- **Judiciário**: calendário de aposentadorias/nomeações por tribunal, para
-  incidência popular antes da nomeação.
-- **Função social da terra**: vazio cadastral do CAR em 3 cidades com taxa de
-  erro; 387 UCs no mapa 3D.
+- **R$ 251 bilhões sob fiscalização popular**: Mariana (R$ 171 bi repactuado), Brumadinho (R$ 37,7 bi do acordo global), transferências federais do ComunicaBR (R$ 139 bi nos 853 municípios de MG), orçamento de Belo Horizonte (R$ 19,4 bi) e Justiça de MG (mais de R$ 20 bi).
+- **199 cidades estratégicas monitoradas**: painel nacional com contratos do PNCP, diários oficiais, compras emergenciais e dados fiscais.
+- **Transparência da Justiça em MG (7 instituições)**: fichas detalhadas de TJMG (R$ 14,9 bi), MPMG (R$ 4,09 bi), DPMG (R$ 1,1 bi), TRT-3, TRF-6, DPU e TCE-MG, com abertura de gastos em diárias, alimentação, penduricalhos indenizatórios e terceirizados.
+- **Central de Notícias & Relatórios Acadêmicos**: 18 matérias aprofundadas com citação pronta em normas ABNT e BibTeX para universitários e pesquisadores.
+- **Reparação socioambiental**: execução mês a mês de Brumadinho (26 municípios, R$ 5,48 bi, 73,8% pago) e Mariana (R$ 677 mi para MG), com 597 documentos de assessorias técnicas (ATIs) e dados de barragens da ANM.
+- **Tecnologia Livre & Seu Nonô**: assistente cívico inteligente com modelo nacional aberto (Sabiá 7B) e Kit Guias AppLivre (`applivre.pages.dev`).
 
 ### 4.2. Lista de contatos (verificar e-mail vigente antes de enviar)
 
@@ -178,34 +171,24 @@ Ganchos prontos para regionalizar:
 
 ### 5.1. Modelo A — imprensa (curto, pauta pronta)
 
-**Assunto:** Portal independente cruza diário oficial, Congresso, Judiciário e a
-reparação de Brumadinho — fonte em cada número
+**Assunto:** Portal independente reúne R$ 251 bilhões em dados públicos, 199 cidades e tribunais de MG — fonte em cada número
 
 Olá [Nome],
 
-Sou [nome], crio o portal independente **controlepopular.com.br** — dado público
-que já existe espalhado por dezenas de sistemas, reunido numa tela só, em
-português comum, com a fonte oficial ao lado de cada número e a taxa de erro
-publicada quando o número é estimativa.
+Sou [nome], integro o projeto independente **controlepopular.com.br** — uma plataforma cidadã que reúne mais de **R$ 251 bilhões** em dados públicos oficiais que estavam dispersos em dezenas de sistemas governamentais, apresentados em linguagem comum com a fonte ao lado de cada número.
 
-Três ganchos prontos para [nome do veículo]:
+Quatro ganchos de pauta prontos para o [nome do veículo]:
 
-1. **Betim e região:** 16.601 atos de diário oficial de jan/2020 a jul/2026
-   classificados por tema (fonte: sigpub + Câmara) — dá para achar concentração
-   de fornecedor e contrato com alerta de risco em segundos.
-2. **Brumadinho/Paraopeba:** execução do Acordo — 26 municípios, R$ 5,48 bi,
-   73,8% pago — e o repasse de R$ 1,65 bi, com os documentos do processo que
-   citam cada município da bacia: https://controlepopular.com.br/paraopeba
-3. **Mariana:** o acordo de R$ 677 mi para MG com a mesma régua:
-   https://controlepopular.com.br/ambiental
+1. **Raio-x dos Tribunais de MG (7 órgãos):** apuração detalhada dos orçamentos de TJMG (R$ 14,9 bi), MPMG (R$ 4,09 bi) e DPMG (R$ 1,1 bi), com abertura de gastos em diárias, verbas de alimentação, penduricalhos indenizatórios e empresas terceirizadas: https://controlepopular.com.br/judiciario/instituicoes/tjmg
+2. **Reparação de Desastres (Mariana e Brumadinho):** o Acordo de Mariana (R$ 171 bi repactuado, R$ 677 mi em MG) e o Acordo de Brumadinho (R$ 37,7 bi total, R$ 5,48 bi nos 26 municípios), cruzando relatórios de 597 ATIs e perícia da UFMG: https://controlepopular.com.br/ambiental/mariana e https://controlepopular.com.br/paraopeba/execucao
+3. **199 Cidades & ComunicaBR:** contratos públicos (PNCP), diários oficiais minerados (16.601 atos em Betim) e R$ 139 bi em transferências federais para os 853 municípios de MG: https://controlepopular.com.br/cidades
+4. **Central de Notícias com Citação ABNT:** 18 reportagens investigativas completas, com metadados científicos e citação acadêmica em um clique: https://controlepopular.com.br/noticias
 
-Não é app de governo nem tem vínculo com prefeitura — é um projeto independente,
-e o código é aberto (AGPL) com método auditável: https://controlepopular.com.br/sobre
+Não é aplicativo governamental nem tem vínculo partidário — o código é aberto (AGPL) com metodologia 100% auditável: https://controlepopular.com.br/sobre
 
-Se fizer sentido, posso enviar um release curto, os números com fonte em planilha
-ou um roteiro de matéria pronto. Release pronto para anexar:
+Se fizer sentido, envio release completo, planilhas com as fontes ou roteiro de entrevista. Release pronto anexo:
   [RELEASE-DIVULGACAO-2026-09.md](RELEASE-DIVULGACAO-2026-09.md).
-  Contato: contato@controlepopular.com.br.
+  Contato direto: contato@controlepopular.com.br.
 
 Abraço,
 [nome]
@@ -256,94 +239,79 @@ print/figura da tela.
 
 ### 6.1. Status (story) — roteiro de 7 dias
 
-Dia 1 (texto): "Você sabe o que sua prefeitura compra? Agora dá pra ver com a
-fonte ao lado do número: controlepopular.com.br"
-Dia 2 (imagem): print da tela de contratos de Betim com seta para a fonte.
-Dia 3 (texto): "16.601 atos de diário oficial de Betim classificados por tema.
-De janeiro de 2020 até hoje. De graça."
-Dia 4 (imagem): card "R$ 5,48 bi — o que o acordo de Brumadinho pagou até hoje
-(73,8%). Acompanhe mês a mês."
-Dia 5 (texto): "Um projeto de lei que mexe com seus direitos: dá pra saber em
-1 minuto se ele amplia ou restringe — e enviar o ofício pronto."
-Dia 6 (imagem): card "Quem vai julgar seus direitos já está sendo escolhido.
-Calendário de vagas nos tribunais: controlepopular.com.br/judiciario"
-Dia 7 (texto): "Tudo de graça, sem cadastro, sem vínculo com governo. Espalhe."
+Dia 1 (texto): "Você sabe para onde vão os R$ 251 bilhões do dinheiro público? Agora dá para fiscalizar com a fonte oficial ao lado: controlepopular.com.br"
+Dia 2 (imagem): print da tela de Cidades (199 municípios e R$ 139 bi do ComunicaBR em MG) com link.
+Dia 3 (texto): "Quanto custa o Judiciário de MG? Diárias, alimentação e penduricalhos do TJMG, MPMG e Defensoria abertos ao público: controlepopular.com.br/judiciario"
+Dia 4 (imagem): card "R$ 171 bi em Mariana e R$ 37,7 bi em Brumadinho: acompanhe os acordos socioambientais mês a mês com documentos oficiais."
+Dia 5 (texto): "18 reportagens investigativas completas com citação ABNT pronta para trabalhos de faculdade e pesquisas: controlepopular.com.br/noticias"
+Dia 6 (imagem): card "Tire dúvidas sobre leis e orçamentos com o Seu Nonô, nosso assistente com IA livre e acolhimento mineiro."
+Dia 7 (texto): "Tudo 100% gratuito, sem cadastro e com código aberto. A transparência pertence ao povo. Espalhe."
 
 ### 6.2. Grupos — mensagens permitidas (nunca diário)
 
-- Grupos de bairro/associação (Betim, Brumadinho, região): mensagem 1x/semana,
-  modelo D + link.
-- Grupos de jornalistas: só quando houver pauta nova (release curto, modelo A).
-- Grupos de estudos/movimentos: modelo B.
+- Grupos de bairro/associação (Minas Gerais, bacias do Rio Doce e Paraopeba): mensagem 1x/semana, modelo D + link.
+- Grupos de jornalistas e pesquisadores: release curto e ganchos de pauta (modelo A).
+- Grupos de movimentos sociais e estudantes: modelo B e matérias acadêmicas.
 
-### 6.3. Mensagem para grupos de moradores (pronta)
+### 6.3. Mensagem para grupos de moradores e comunidades (pronta)
 
-"Pessoal, achei uma ferramenta gratuita que mostra o que a prefeitura compra,
-com a fonte oficial do lado de cada número. Pra quem quer fiscalizar de verdade,
-sem depender de ninguém: https://controlepopular.com.br/betim
-Não é site de governo. É feito por cidadão. Quem quiser, eu explico como usar."
+"Pessoal, conheçam o Controle Popular, uma ferramenta independente e gratuita que reúne mais de R$ 251 bilhões em recursos públicos, 199 cidades, acordos de Mariana e Brumadinho e gastos dos tribunais de MG, com o link do documento oficial do lado de cada número.
+Dá pra tirar dúvidas com o Seu Nonô, nosso assistente com inteligência artificial livre.
+Não tem vínculo com governo nem partido: https://controlepopular.com.br
+Quem quiser ajuda para consultar sua cidade ou direitos, é só chamar!"
 
 ## 7. Instagram
 
 ### 7.1. Formato e identidade
 
-- Nome: @controlepopular (confirmar disponibilidade) ou @florestadeapps.
-- Bio: "Transparência pública com fonte em cada número. Independente, gratuito,
-  código aberto. MG → Brasil."
-- Link na bio: hub (sementeiraprojetos.com.br) ou a página /sobre com UTM.
-- Artes: Canva gratuito, identidade do portal (paleta tokens.css), fonte legível.
-  Nada de foto de terceiro sem licença — usar prints do próprio portal.
+- Nome: @controlepopular ou @florestadeapps.
+- Bio: "Transparência cívica com prova documental. R$ 251 bi monitorados • 199 cidades • MG → Brasil. Código aberto."
+- Link na bio: `https://controlepopular.com.br/?utm_source=instagram&utm_medium=bio`
+- Artes: Canva gratuito, paleta oficial (tokens de cor pequi/verde), tipografia nítida e prints reais da plataforma.
 
 ### 7.2. Calendário 30 dias (3 posts/semana + 2 stories/dia)
 
 | Semana | Post 1 (carrossel) | Post 2 (reels) | Post 3 (carrossel) |
 |---|---|---|---|
-| 1 | "O que sua prefeitura compra" (4 telas) | Vídeo 60s "tour de 1 minuto" | "Lacuna é informação" (princípio) |
-| 2 | "Diário oficial: 16.601 atos" (3 telas) | Reels "como achar um contrato suspeito" | "O que o Congresso faz com seus direitos" |
-| 3 | "Brumadinho: R$ 5,48 bi" (4 telas) | Reels "ofício pronto em 1 minuto" | "Quem vai julgar você" (Judiciário) |
-| 4 | "Terra: vazio cadastral + taxa de erro" (3 telas) | Reels "mapa 3D da terra pública" | "API aberta" (técnico) |
+| 1 | "R$ 251 bilhões: o que o portal fiscaliza" (4 telas) | Vídeo 60s "Tour de 1 minuto pelo portal" | "199 Cidades: contratos e compras públicas" |
+| 2 | "Raio-x da Justiça em MG: salários e diárias" (4 telas) | Reels "Como achar contratos suspeitos" | "18 Investigações com citação ABNT" |
+| 3 | "Mariana (R$ 171 bi) e Brumadinho (R$ 37,7 bi)" (4 telas) | Reels "Ofício pronto ao deputado em 1 minuto" | "Seu Nonô: IA brasileira sem vigilância" |
+| 4 | "Kit Guias AppLivre: IA para o povo" (3 telas) | Reels "Mapa 3D da terra e barragens" | "Código aberto e API pública" |
 
 ### 7.3. Legendas prontas
 
-**Carrossel 1 (o que sua prefeitura compra):**
-"📌 Você sabe o que sua prefeitura compra?
-A resposta sempre foi pública — espalhada em sistemas que ninguém sabe que
-existem. O Controle Popular junta tudo numa tela só, em português comum:
-✅ contratos e licitações
-✅ diário oficial classificado por tema
-✅ repasses federais e finanças
-Cada número tem a fonte oficial do lado. Estimativa? A taxa de erro aparece
-junto. Lacuna? A tela diz que é lacuna.
-Gratuito, sem cadastro, sem vínculo com governo.
-👉 Deslize e veja o que dá pra achar em 1 minuto.
-#transparencia #dadosabertos #controlepopular #minasgerais #betim"
-
-**Reels 1 (tour de 1 minuto)** — roteiro no §8.
+**Carrossel 1 (R$ 251 bilhões sob a lupa popular):**
+"📌 Para onde vai o dinheiro público?
+São mais de R$ 251 bilhões em recursos do povo brasileiro agora reunidos numa única tela, em português simples e com link para a fonte oficial ao lado:
+✅ 199 cidades monitoradas em contratos e diários oficiais
+✅ R$ 171 bi da repactuação de Mariana e R$ 37,7 bi de Brumadinho
+✅ Orçamento de 7 órgãos de Justiça de MG e gastos da cúpula
+✅ 18 matérias jornalísticas com citação acadêmica em ABNT
+Sem cadastro, sem mensalidades, sem vínculo com governos.
+👉 Deslize para o lado e veja como fiscalizar sua cidade e seus direitos em 1 minuto.
+Link na bio: controlepopular.com.br
+#transparencia #dadosabertos #controlepopular #minasgerais #direitoshumanos #fiscalizacaocidada"
 
 ### 7.4. Hashtags (mix pequeno, repetível)
 
-#transparencia #dadosabertos #controlepopular #minasgerais #betim #brumadinho
-#diretos #congresso #judiciario #tecnologia #opensource #lgpd
+#transparencia #dadosabertos #controlepopular #minasgerais #mariana #brumadinho
+#direitoshumanos #congresso #judiciario #tecnologia #opensource #applivre #lgpd
 
 ## 8. Roteiro de vídeo (60–90 s — Reels/TikTok/Shorts/YouTube)
 
-**Formato:** vertical 9:16, celular, capa com título. **Custo:** zero (prints do
-portal + narração própria; edição em CapCut gratuito).
+**Formato:** vertical 9:16, celular, capa com título contrastado. **Custo:** zero (gravação de tela do portal + narração em voz natural; edição em CapCut gratuito).
 
 | Tempo | Cena / imagem | Fala (off ou locução) |
 |---|---|---|
-| 0–3 s | Capa: "O que sua prefeitura compra?" (fundo do portal) | — (texto na tela) |
-| 3–12 s | Print da home, dedo rolando os cards | "Todo contrato público já era seu. O problema nunca foi o dado — foi achar ele." |
-| 12–22 s | Print da tela de contratos (Betim), zoom no número e na fonte | "Aqui, cada número tem a fonte oficial do lado. Vê esse alerta? É contrato com risco calculado." |
-| 22–32 s | Print do diário oficial classificado | "O diário oficial da cidade, classificado por tema. 16.601 atos de 2020 até hoje." |
-| 32–42 s | Print do Congresso (análise garantista) | "Um projeto de lei que mexe com seus direitos? Em 1 minuto você vê se ele amplia ou restringe — e o ofício sai pronto." |
-| 42–52 s | Print do Judiciário (calendário de vagas) | "Quem vai julgar seus direitos já está sendo escolhido. Aqui você vê antes, não depois." |
-| 52–62 s | Print do Paraopeba (R$ 5,48 bi) | "E a reparação de Brumadinho? Acompanhada mês a mês, com o documento do processo que cita sua cidade." |
-| 62–72 s | Print da API / do /sobre | "De graça. Sem cadastro. Sem vínculo com governo. E o código é aberto — dá até pra conferir o método." |
-| 72–85 s | Capa final com link | "Controle Popular. O número que é seu, com a fonte do lado. Link na bio." |
+| 0–5 s | Capa com zoom na Home: "Para onde vão R$ 251 bilhões do dinheiro público?" | "Você sabe como o dinheiro público é gasto na sua cidade e no seu Estado? A resposta sempre foi pública, mas ficava escondida." |
+| 5–18 s | Navegação fluida pela Home, mostrando o cartão de R$ 251 bi e os 3 Eixos | "O Controle Popular junta mais de 251 bilhões de reais numa tela só. E a regra é rígida: cada número tem a fonte oficial do lado." |
+| 18–32 s | Zoom na tela das 7 Instituições de Justiça (TJMG, MPMG, DPMG) mostrando diárias e alimentação | "Quer saber quanto os tribunais gastam em diárias, alimentação e terceirizados? Está tudo aberto e comparado." |
+| 32–45 s | Transição para os painéis de Mariana (R$ 171 bi) e Brumadinho (R$ 37,7 bi) | "Os acordos de Mariana e Brumadinho são acompanhados mês a mês, documento por documento, para o atingido não ser enganado." |
+| 45–60 s | Abertura do assistente Seu Nonô na tela respondendo uma dúvida em linguagem mineira acolhedora | "E se você tiver dúvida sobre uma lei ou contrato, o Seu Nonô explica tudo na hora com inteligência artificial brasileira e livre." |
+| 60–75 s | Demonstração da Central de Notícias com o botão copiador de citação ABNT e BibTeX | "Para quem estuda ou faz pesquisa, são 18 matérias completas com citação acadêmica pronta em um clique." |
+| 75–90 s | Tela final com o endereço `controlepopular.com.br` e logo AppLivre | "Tudo de graça, sem cadastro e 100% código aberto. Acesse agora: controlepopular.com.br. O link tá na bio!" |
 
-**Legenda do vídeo:** o texto do carrossel 1 + "Se você quer fiscalizar de
-verdade, comece por aqui: controlepopular.com.br".
+**Legenda do vídeo:** o texto do carrossel 1 + "Comece a fiscalizar agora mesmo: controlepopular.com.br".
 
 **Variação 30 s (para WhatsApp/Status):** cenas 1, 3, 5, 7 e final.
 
