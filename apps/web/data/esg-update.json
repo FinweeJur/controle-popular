@@ -1,0 +1,27 @@
+{
+  "atualizacao": "2026-09-07T13:57:00Z",
+  "fonte": "Seu Nono Sabia (Ollama llama3.2:3b)",
+  "analises": [
+    {
+      "fonte": "vale-esg-home",
+      "titulo": "Portal ESG da Vale",
+      "resumo": "A Vale enfrenta desafios significativos em ESG. Barragens Forquilha III e Sul Superior em nível 3 de emergência. Acordo Brumadinho de R$ 37,68 bilhões com 73,8% pagos. Compromissos declarados incluem metas ambientais, sociais e de governança.",
+      "analise_completa": "A Vale S.A. enfrenta desafios significativos em termos de ESG (Sustentabilidade, Social e Governança). Algumas preocupações incluem: Barragens: A empresa opera várias barragens, incluindo a Forquilha III e Sul Superior, que alcançaram níveis 3 de emergência. Isso sugere problemas significativos com segurança e gestão de riscos. Acordo Brumadinho: O acordo de R$ 37,68 bilhões relacionado ao desastre ambiental em Brumadinho é um passo importante para a empresa reconstruir a confiança. Pagamento: 73,8% do valor acordado foram pagos.",
+      "modelo": "llama3.2:3b"
+    },
+    {
+      "fonte": "vale-environment",
+      "titulo": "Dados Ambientais da Vale",
+      "resumo": "Biodiversidade com parques e reservas protegidas. Emissões de GHG com meta de redução de 70% até 2030 vs 2005. Neutralidade carbono até 2050. 100% energia renovável no Brasil desde 2023.",
+      "analise_completa": "A Vale S.A. é uma empresa líder no setor de mineração do Brasil. Biodiversidade: compromisso com preservação e minimização de impacto ambiental. Emissões de GHG: meta de reduzir emissões de 70% até 2030 em comparação com níveis de 2005. Metas de descarbonização: objetivo de alcançar neutralidade carbono em operações até 2050.",
+      "modelo": "llama3.2:3b"
+    },
+    {
+      "fonte": "vale-esg-dams",
+      "titulo": "Riscos Socioambientais da Vale",
+      "resumo": "Instabilidade das barragens Forquilha III e Sul Superior em nível 3 de emergência. Risco de deslizamentos e inundações afetando 26 municípios da Bacia do Paraopeba. Impacto na vida de milhares de pessoas.",
+      "analise_completa": "O risco socioambiental da Vale S.A. é significativo devido à instabilidade das barragens Forquilha III e Sul Superior, que podem causar deslizamentos de terra e inundações em áreas urbanas e rurais, afetando 26 municípios da Bacia do Paraopeba e impactando a vida de milhares de pessoas.",
+      "modelo": "llama3.2:3b"
+    }
+  ]
+}
