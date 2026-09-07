@@ -25,6 +25,7 @@ import {
   Scale,
   ExternalLink,
   Landmark,
+  FileSpreadsheet,
 } from 'lucide-react';
 import { listarFichasPorMunicipio } from '@/lib/eixos/fichas';
 import { calcularCruzamentosMunicipais } from '@/lib/cruzamentos/correlacionador';
@@ -335,6 +336,100 @@ export default async function PaginaIndividualCidade({ params }: Props) {
           </div>
         </section>
       )}
+
+      {/* ═══ CONTRATOS ADMINISTRATIVOS, LICITAÇÕES & CONVÊNIOS PÚBLICOS ═══ */}
+      <section aria-labelledby="secao-contratos-convenios" className="mb-8 rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-xs space-y-5">
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-border">
+          <div className="flex items-center gap-2">
+            <Scale size={20} className="text-primary" />
+            <h2 id="secao-contratos-convenios" className="font-display text-lg font-bold text-foreground">
+              Contratos Públicos, Licitações & Convênios — {cidade.nome}
+            </h2>
+          </div>
+          <span className="text-xs text-muted">Bases: PNCP, Transferegov e ComunicaBR</span>
+        </div>
+
+        <p className="text-xs sm:text-sm text-muted leading-relaxed">
+          Fiscalização cívica sobre as compras públicas municipais regidas pela Lei 14.133/2021 (Nova Lei de Licitações) e sobre os convênios federais e estaduais repassados para {cidade.nome}:
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          {/* Card 1: Contratos e Licitações no PNCP */}
+          <div className="rounded-xl border border-border/70 bg-surface-2 p-4 space-y-3 flex flex-col justify-between">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5 font-bold text-foreground">
+                  <FileSpreadsheet size={16} className="text-primary" />
+                  <span>Contratações da Prefeitura (PNCP)</span>
+                </div>
+                <span className="rounded bg-primary/10 text-primary px-2 py-0.5 text-[10px] font-bold font-mono">
+                  Lei 14.133/2021
+                </span>
+              </div>
+              <p className="text-muted leading-relaxed">
+                Acompanhe editais, atas de registro de preços, dispensas, inexigibilidades e contratos administrativos celebrados pela Prefeitura Municipal.
+              </p>
+              <div className="text-[11px] font-mono text-muted">
+                CNPJ Prefeitura: <strong className="text-foreground">{dadosCompletos?.cnpj_prefeitura || cidade.cnpj_prefeitura || 'Em consulta'}</strong>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-border/60 flex flex-wrap gap-2">
+              {temPainelProfundo ? (
+                <Link
+                  href={`/${cidade.slug}/prefeitura/contratos`}
+                  className="inline-flex items-center gap-1 font-semibold text-xs text-primary hover:underline"
+                >
+                  <span>Ver Painel com Alertas de Contratos de {cidade.nome} →</span>
+                </Link>
+              ) : (
+                <a
+                  href={`https://pncp.gov.br/app/contratos?cnpj=${(dadosCompletos?.cnpj_prefeitura || cidade.cnpj_prefeitura || '').replace(/\D/g, '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-semibold text-xs text-primary hover:underline"
+                >
+                  <span>Consultar Contratos no PNCP Oficial</span>
+                  <ExternalLink size={12} />
+                </a>
+              )}
+            </div>
+          </div>
+
+          {/* Card 2: Convênios e Repasses Federais (Transferegov / SICONV) */}
+          <div className="rounded-xl border border-border/70 bg-surface-2 p-4 space-y-3 flex flex-col justify-between">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5 font-bold text-foreground">
+                  <Landmark size={16} className="text-emerald-600 dark:text-emerald-400" />
+                  <span>Convênios & Repasses da União</span>
+                </div>
+                <span className="rounded bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 px-2 py-0.5 text-[10px] font-bold font-mono">
+                  Transferegov
+                </span>
+              </div>
+              <p className="text-muted leading-relaxed">
+                Instrumentos de repasse voluntário, emendas parlamentares e transferências constitucionais destinadas a obras, saúde, saneamento e infraestrutura.
+              </p>
+              <div className="text-[11px] font-mono text-muted">
+                Repasses Estimados: <strong className="text-emerald-600 dark:text-emerald-400">R$ {dadosCompletos?.repasses_federais_anuais_mi.toFixed(1)} mi / ano</strong>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-border/60 flex flex-wrap gap-2">
+              <a
+                href={`https://portaldatransparencia.gov.br/convenios/consulta?codigoIbge=${cidade.id_municipio}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 font-semibold text-xs text-emerald-700 dark:text-emerald-400 hover:underline"
+              >
+                <span>Consultar Convênios no Portal da Transparência</span>
+                <ExternalLink size={12} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* COMPONENTE EDUCATIVO DATA OCEAN: OS 3 CRUZAMENTOS LEIGOS */}
       <CruzamentosEducativos
