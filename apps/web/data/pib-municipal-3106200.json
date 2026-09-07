@@ -1,0 +1,66 @@
+{
+  "fonte": "ibge-sidra-t5938",
+  "municipio": "3106200",
+  "tabela": 5938,
+  "unidade": "Mil Reais",
+  "total_anos": 10,
+  "pib": [
+    {
+      "ano": 2014,
+      "pib_total": 87248918.0,
+      "impostos_liquidos": 11786907.0,
+      "valor_adicionado_bruto": 75462010.0
+    },
+    {
+      "ano": 2015,
+      "pib_total": 87309968.0,
+      "impostos_liquidos": 12115491.0,
+      "valor_adicionado_bruto": 75194477.0
+    },
+    {
+      "ano": 2016,
+      "pib_total": 88397461.0,
+      "impostos_liquidos": 12497445.0,
+      "valor_adicionado_bruto": 75900015.0
+    },
+    {
+      "ano": 2017,
+      "pib_total": 88971069.0,
+      "impostos_liquidos": 12545296.0,
+      "valor_adicionado_bruto": 76425773.0
+    },
+    {
+      "ano": 2018,
+      "pib_total": 92133758.0,
+      "impostos_liquidos": 13083233.0,
+      "valor_adicionado_bruto": 79050524.0
+    },
+    {
+      "ano": 2019,
+      "pib_total": 97198017.0,
+      "impostos_liquidos": 13446831.0,
+      "valor_adicionado_bruto": 83751186.0
+    },
+    {
+      "ano": 2020,
+      "pib_total": 97563224.0,
+      "impostos_liquidos": 11887619.0,
+      "valor_adicionado_bruto": 85675605.0
+    },
+    {
+      "ano": 2021,
+      "pib_total": 105920859.0,
+      "impostos_liquidos": 13756940.0,
+      "valor_adicionado_bruto": 92163918.0
+    },
+    {
+      "ano": 2022,
+      "pib_total": 115381698.0
+    },
+    {
+      "ano": 2023,
+      "pib_total": 130197671.0
+    }
+  ],
+  "coletadoEm": "2026-09-07T23:26:44.146063+00:00"
+}

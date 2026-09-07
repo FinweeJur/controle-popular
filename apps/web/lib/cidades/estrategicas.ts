@@ -159,3 +159,107 @@ export function obterEstatisticasExpansao(): {
     distribuicaoRegiao: cat.por_regiao,
   };
 }
+
+export interface PibAno {
+  ano: number;
+  pib_total: number;
+  impostos_liquidos?: number;
+  valor_adicionado_bruto?: number;
+}
+
+export interface PibMunicipal {
+  fonte: string;
+  municipio: string;
+  total_anos: number;
+  pib: PibAno[];
+}
+
+export function obterPibMunicipal(idMunicipio: string): PibMunicipal | null {
+  const caminhos = [
+    path.resolve(process.cwd(), "data", `pib-municipal-${idMunicipio}.json`),
+    path.resolve(process.cwd(), "apps", "web", "data", `pib-municipal-${idMunicipio}.json`),
+  ];
+  for (const c of caminhos) {
+    if (fs.existsSync(c)) {
+      try {
+        return JSON.parse(fs.readFileSync(c, "utf-8")) as PibMunicipal;
+      } catch {
+        return null;
+      }
+    }
+  }
+  return null;
+}
+
+export interface CidadeCompleta {
+  id_municipio: string;
+  datasus_6dig: string;
+  nome: string;
+  uf: string;
+  regiao: RegiaoBrasil;
+  tipo: TipoCidade;
+  slug: string;
+  populacao: number;
+  pib_mais_recente_bi: number;
+  pib_per_capita_reais: number;
+  repasses_federais_anuais_mi: number;
+  saude_estabelecimentos: number;
+  escolas_total: number;
+  cnpj_prefeitura: string;
+  cnpj_camara: string;
+  prefeitura_host: string;
+  camara_host: string;
+  camara_sistema: string;
+  diario_oficial: string;
+  lat: number | null;
+  lng: number | null;
+  serie_pib: PibAno[];
+}
+
+let cacheCidadesCompletas: Record<string, CidadeCompleta> | null = null;
+
+export function obterBancoCidadesCompletas(): Record<string, CidadeCompleta> {
+  if (cacheCidadesCompletas) return cacheCidadesCompletas;
+
+  const caminhos = [
+    path.resolve(process.cwd(), "data", "cidades-dados-completos.json"),
+    path.resolve(process.cwd(), "apps", "web", "data", "cidades-dados-completos.json"),
+    path.resolve(__dirname, "..", "..", "data", "cidades-dados-completos.json"),
+  ];
+
+  for (const c of caminhos) {
+    if (fs.existsSync(c)) {
+      try {
+        const raw = fs.readFileSync(c, "utf-8");
+        const parsed = JSON.parse(raw);
+        cacheCidadesCompletas = parsed.cidades as Record<string, CidadeCompleta>;
+        return cacheCidadesCompletas;
+      } catch {
+        // segue para proximo caminho
+      }
+    }
+  }
+  return {};
+}
+
+export function obterDadosCompletosCidade(slugOuId: string): CidadeCompleta | null {
+  const banco = obterBancoCidadesCompletas();
+  const termo = slugOuId.trim().toLowerCase();
+
+  for (const [ibge, c] of Object.entries(banco)) {
+    if (
+      ibge === termo ||
+      c.datasus_6dig === termo ||
+      (c.slug && c.slug.toLowerCase() === termo) ||
+      c.nome.toLowerCase() === termo
+    ) {
+      return c;
+    }
+  }
+  return null;
+}
+
+export function listarTodasCidadesCompletas(): CidadeCompleta[] {
+  const banco = obterBancoCidadesCompletas();
+  return Object.values(banco);
+}

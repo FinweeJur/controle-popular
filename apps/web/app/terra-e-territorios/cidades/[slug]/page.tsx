@@ -9,7 +9,23 @@ import CruzamentosEducativos from '@/app/components/eixos/CruzamentosEducativos'
 import {
   listarCidadesEstrategicas,
   obterCidadePorSlugOuId,
+  obterPibMunicipal,
+  obterDadosCompletosCidade,
 } from '@/lib/cidades/estrategicas';
+import {
+  TrendingUp,
+  BarChart3,
+  Building2,
+  MapPin,
+  Users,
+  HeartPulse,
+  GraduationCap,
+  DollarSign,
+  ShieldCheck,
+  Scale,
+  ExternalLink,
+  Landmark,
+} from 'lucide-react';
 import { listarFichasPorMunicipio } from '@/lib/eixos/fichas';
 import { calcularCruzamentosMunicipais } from '@/lib/cruzamentos/correlacionador';
 import DocumentosRelacionados from '@/app/components/DocumentosRelacionados';
@@ -55,12 +71,27 @@ export default async function PaginaIndividualCidade({ params }: Props) {
   const cidadesProfundas = ['betim', 'bh', 'sp', 'aracuai', 'diamantina', 'itinga'];
   const temPainelProfundo = cidade.slug && cidadesProfundas.includes(cidade.slug.toLowerCase());
 
+  // Dados consolidados completos da cidade (PIB, Saúde, Educação, Repasses, Geografia)
+  const dadosCompletos = obterDadosCompletosCidade(slug) || obterDadosCompletosCidade(cidade.id_municipio);
+
+  // Dados de PIB Municipal (IBGE SIDRA)
+  const pibData = dadosCompletos?.serie_pib && dadosCompletos.serie_pib.length > 0
+    ? {
+        fonte: "ibge-sidra-t5938",
+        municipio: cidade.id_municipio,
+        total_anos: dadosCompletos.serie_pib.length,
+        pib: dadosCompletos.serie_pib,
+      }
+    : obterPibMunicipal(cidade.id_municipio);
+
+  const populacaoReal = dadosCompletos?.populacao ?? (cidade.tipo === 'capital' ? 1200000 : 150000);
+
   // Calcula cruzamentos leigos do Data Ocean para a cidade
   const cruzamentos = calcularCruzamentosMunicipais({
     codIbge7: cidade.id_municipio,
     nome: cidade.nome,
     uf: cidade.uf,
-    populacao: cidade.tipo === 'capital' ? 1200000 : 150000,
+    populacao: populacaoReal,
   });
 
   return (
@@ -98,6 +129,68 @@ export default async function PaginaIndividualCidade({ params }: Props) {
           Polo municipal integrante da rede de 199 cidades estratégicas com fiscalização de saúde, educação e gastos públicos.
         </p>
 
+        {/* ═══ 5 CARTÕES DE INDICADORES PRINCIPAIS ═══ */}
+        {dadosCompletos && (
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-5 sm:gap-4 mt-6">
+            <div className="rounded-xl border border-border bg-surface-2 p-3.5 space-y-1">
+              <div className="flex items-center gap-1.5 text-xs text-muted font-semibold">
+                <DollarSign size={14} className="text-primary" />
+                <span>PIB Municipal</span>
+              </div>
+              <div className="text-lg sm:text-xl font-bold font-mono text-foreground">
+                R$ {dadosCompletos.pib_mais_recente_bi.toFixed(1)} bi
+              </div>
+              <p className="text-[10px] text-muted">
+                R$ {dadosCompletos.pib_per_capita_reais.toLocaleString('pt-BR')} / hab
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-surface-2 p-3.5 space-y-1">
+              <div className="flex items-center gap-1.5 text-xs text-muted font-semibold">
+                <Users size={14} className="text-blue-600 dark:text-blue-400" />
+                <span>População</span>
+              </div>
+              <div className="text-lg sm:text-xl font-bold font-mono text-foreground">
+                {dadosCompletos.populacao.toLocaleString('pt-BR')}
+              </div>
+              <p className="text-[10px] text-muted">Censo 2022 oficial</p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-surface-2 p-3.5 space-y-1">
+              <div className="flex items-center gap-1.5 text-xs text-muted font-semibold">
+                <HeartPulse size={14} className="text-rose-600 dark:text-rose-400" />
+                <span>Rede de Saúde</span>
+              </div>
+              <div className="text-lg sm:text-xl font-bold font-mono text-foreground">
+                {dadosCompletos.saude_estabelecimentos}
+              </div>
+              <p className="text-[10px] text-muted">Unidades CNES/SUS</p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-surface-2 p-3.5 space-y-1">
+              <div className="flex items-center gap-1.5 text-xs text-muted font-semibold">
+                <GraduationCap size={14} className="text-amber-600 dark:text-amber-400" />
+                <span>Educação</span>
+              </div>
+              <div className="text-lg sm:text-xl font-bold font-mono text-foreground">
+                {dadosCompletos.escolas_total}
+              </div>
+              <p className="text-[10px] text-muted">Escolas registradas</p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-surface-2 p-3.5 space-y-1 col-span-2 sm:col-span-1">
+              <div className="flex items-center gap-1.5 text-xs text-muted font-semibold">
+                <Landmark size={14} className="text-emerald-600 dark:text-emerald-400" />
+                <span>Repasses da União</span>
+              </div>
+              <div className="text-lg sm:text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400">
+                R$ {dadosCompletos.repasses_federais_anuais_mi.toFixed(1)} mi
+              </div>
+              <p className="text-[10px] text-muted">ComunicaBR / anual</p>
+            </div>
+          </div>
+        )}
+
         {/* ALERTA DE PAINEL PROFUNDO (SE FOR UMA DAS 6 CIDADES PILOTO) */}
         {temPainelProfundo && (
           <div className="mt-6 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
@@ -123,11 +216,11 @@ export default async function PaginaIndividualCidade({ params }: Props) {
           <div className="rounded-xl bg-surface-2 p-3.5">
             <span className="text-muted block mb-1 font-semibold">Prefeitura Municipal:</span>
             <span className="text-foreground block font-mono">
-              CNPJ: {cidade.cnpj_prefeitura ?? 'Sob apuração cadastral'}
+              CNPJ: {dadosCompletos?.cnpj_prefeitura || cidade.cnpj_prefeitura || 'Sob apuração cadastral'}
             </span>
-            {cidade.prefeitura_host && (
+            {(dadosCompletos?.prefeitura_host || cidade.prefeitura_host) && (
               <a
-                href={cidade.prefeitura_host}
+                href={dadosCompletos?.prefeitura_host || cidade.prefeitura_host!}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-1 text-primary hover:underline block truncate"
@@ -140,11 +233,11 @@ export default async function PaginaIndividualCidade({ params }: Props) {
           <div className="rounded-xl bg-surface-2 p-3.5">
             <span className="text-muted block mb-1 font-semibold">Câmara de Vereadores:</span>
             <span className="text-foreground block font-mono">
-              CNPJ: {cidade.cnpj_camara ?? 'Sob apuração cadastral'}
+              CNPJ: {dadosCompletos?.cnpj_camara || cidade.cnpj_camara || 'Sob apuração cadastral'}
             </span>
-            {cidade.camara_host && (
+            {(dadosCompletos?.camara_host || cidade.camara_host) && (
               <a
-                href={cidade.camara_host}
+                href={dadosCompletos?.camara_host || cidade.camara_host!}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-1 text-primary hover:underline block truncate"
@@ -156,9 +249,9 @@ export default async function PaginaIndividualCidade({ params }: Props) {
 
           <div className="rounded-xl bg-surface-2 p-3.5">
             <span className="text-muted block mb-1 font-semibold">Diário Oficial do Município:</span>
-            {cidade.diario_oficial ? (
+            {(dadosCompletos?.diario_oficial || cidade.diario_oficial) ? (
               <a
-                href={cidade.diario_oficial}
+                href={dadosCompletos?.diario_oficial || cidade.diario_oficial!}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline block truncate font-medium"
@@ -169,11 +262,79 @@ export default async function PaginaIndividualCidade({ params }: Props) {
               <span className="text-muted block">Coleta em expansão</span>
             )}
             <span className="text-muted block mt-1">
-              Sistema Legislativo: {cidade.camara_sistema ?? 'Padrão'}
+              Sistema Legislativo: {dadosCompletos?.camara_sistema || cidade.camara_sistema || 'Padrão'}
             </span>
           </div>
         </div>
       </section>
+
+      {/* EVOLUÇÃO ECONÔMICA & PIB MUNICIPAL (IBGE SIDRA) */}
+      {pibData && pibData.pib.length > 0 && (
+        <section aria-labelledby="secao-pib" className="mb-8 rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-xs space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-border">
+            <div className="flex items-center gap-2">
+              <TrendingUp size={20} className="text-primary" />
+              <h2 id="secao-pib" className="font-display text-lg font-bold text-foreground">
+                Evolução do PIB a Preços Correntes — {cidade.nome} ({pibData.pib[0]?.ano}–{pibData.pib[pibData.pib.length - 1]?.ano})
+              </h2>
+            </div>
+            <span className="text-xs font-mono text-muted">Fonte: IBGE SIDRA (Tabela 5938)</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            <div className="rounded-xl bg-surface-2 p-3.5 space-y-1">
+              <span className="text-muted block">PIB Mais Recente ({pibData.pib[pibData.pib.length - 1]?.ano})</span>
+              <div className="text-xl font-bold font-mono text-foreground">
+                R$ {(pibData.pib[pibData.pib.length - 1].pib_total / 1000000).toFixed(2)} bi
+              </div>
+              <span className="text-[11px] text-muted">A preços correntes</span>
+            </div>
+            <div className="rounded-xl bg-surface-2 p-3.5 space-y-1">
+              <span className="text-muted block">Crescimento na Década</span>
+              <div className="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400">
+                +{(
+                  ((pibData.pib[pibData.pib.length - 1].pib_total - pibData.pib[0].pib_total) /
+                    pibData.pib[0].pib_total) *
+                  100
+                ).toFixed(1)}%
+              </div>
+              <span className="text-[11px] text-muted">Variação nominal ({pibData.pib[0].ano} a {pibData.pib[pibData.pib.length - 1].ano})</span>
+            </div>
+            <div className="rounded-xl bg-surface-2 p-3.5 space-y-1">
+              <span className="text-muted block">Série Histórica Coletada</span>
+              <div className="text-xl font-bold font-mono text-foreground">
+                {pibData.pib.length} anos
+              </div>
+              <span className="text-[11px] text-muted">Auditoria SIDRA completa</span>
+            </div>
+          </div>
+
+          {/* Gráfico de Barras SVG Inline */}
+          <div className="pt-2">
+            <div className="h-44 w-full flex items-end gap-2 sm:gap-3 pt-6 pb-2 px-2 bg-surface-2/60 rounded-xl border border-border/60">
+              {(() => {
+                const maxPib = Math.max(...pibData.pib.map((p) => p.pib_total));
+                return pibData.pib.map((p) => {
+                  const alturaPct = (p.pib_total / maxPib) * 100;
+                  return (
+                    <div key={p.ano} className="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                      <span className="text-[10px] font-mono text-muted group-hover:text-foreground transition opacity-0 group-hover:opacity-100">
+                        R${(p.pib_total / 1000000).toFixed(1)}b
+                      </span>
+                      <div
+                        style={{ height: `${alturaPct}%` }}
+                        className="w-full max-w-[36px] bg-primary/80 hover:bg-primary rounded-t transition-all"
+                        title={`${p.ano}: R$ ${(p.pib_total / 1000).toFixed(0)} milhões`}
+                      />
+                      <span className="text-[10px] font-mono text-muted mt-1">{p.ano}</span>
+                    </div>
+                  );
+                });
+              })()}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* COMPONENTE EDUCATIVO DATA OCEAN: OS 3 CRUZAMENTOS LEIGOS */}
       <CruzamentosEducativos
