@@ -1,0 +1,20 @@
+[
+  {
+    "fonte": "vale-esg-home",
+    "categoria": "overview",
+    "analise": "A Vale S.A. enfrenta desafios significativos em termos de ESG (Sustentabilidade, Social e Governança). Algumas preocupações incluem:\n\n- **Barragens**: A empresa opera várias barragens, incluindo a Forquilha III e Sul Superior, que alcançaram níveis 3 de emergência. Isso sugere problemas significativos com segurança e gestão de riscos.\n\n- **Acordo Brumadinho**: O acordo de R$ 37,68 bilhões relacionado ao desastre ambiental em Brumadinho é um passo importante para a empresa reconstruir a confiança. No entanto, ainda há muito trabalho a ser feito para garantir que as promessas sejam cumpridas.\n\n- **Pagamento**: 73,8% do valor acordado foram pagos, o que é um bom começo, mas ainda há uma grande parte pend",
+    "modelo": "llama3.2:3b"
+  },
+  {
+    "fonte": "vale-environment",
+    "categoria": "environment",
+    "analise": "A Vale S.A. é uma empresa líder no setor de mineração do Brasil, com operações em várias regiões do país. Aqui estão algumas análises sobre os dados ambientais da empresa:\n\n**Biodiversidade:**\nA Vale S.A. tem compromisso com a preservação da biodiversidade e trabalha para minimizar o impacto das suas atividades na natureza.\n\n**Emissões de GHG:**\nAs emissões de gases de efeito estufa (GHG) são um dos principais desafios ambientais enfrentados pela Vale S.A. A empresa tem como meta reduzir suas emissões de 70% até 2030, em comparação com os níveis de 2005.\n\n**Metas de descarbonização:**\nA Vale S.A. tem como objetivo alcançar a neutralidade carbonica em suas operações até 2050, através da implementação de tecn",
+    "modelo": "llama3.2:3b"
+  },
+  {
+    "fonte": "vale-esg-dams",
+    "categoria": "environment",
+    "analise": "O risco socioambiental da Vale S.A. é significativo devido à instabilidade das barragens Forquilha III e Sul Superior, que podem causar deslizamentos de terra e inundações em áreas urbanas e rurais, afetando 26 municipios da Bacia do Paraopeba e impactando a vida de milhares de pessoas.",
+    "modelo": "llama3.2:3b"
+  }
+]

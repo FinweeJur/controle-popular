@@ -1,0 +1,29 @@
+[
+  {
+    "id": "vale-esg-climate-pdf",
+    "url": "https://vale.com/documents/44618/387477/POL0012-G_Mud_Clim_i.pdf/4d00aad8-96a3-bf85-a1e1-12f95f66f30d?version=3.1&t=1764891755125&download=false",
+    "filename": "apps\\web\\data\\esg\\Politica_Mudancas_Climaticas_Vale.pdf.pdf",
+    "size_bytes": 391829,
+    "sha256": "760d9237c2c365e2f756d6e768e0387a97f379f0df58f98bd403770da491c072",
+    "downloaded_at": "2026-09-07T17:42:28.355126+00:00",
+    "status": "ok"
+  },
+  {
+    "id": "vale-esg-ghg-pdf",
+    "url": "https://vale.com/documents/44618/5301309/Vale+SA-07-04-2025-CORPORATE-14-30.pdf/dc5bd57b-2247-553e-33dc-b926b87f77b0?version=1.5&t=1773256616146&download=false&_gl=1*1lcko0d*_gcl_au*ODQ3MDIwODguMTc4MTE5ODkxMA..*_ga*NjQ4MzM3MDE0LjE3ODExOTg5MTA.*_ga_BNK5C1QYMC*czE3ODI4NDA1OTYkbzQ3JGcxJHQxNzgyODQzMDMyJGo1NiRsMCRoODYwMzc1NjQx",
+    "filename": "apps\\web\\data\\esg\\Vale_SA_CDP_Relatorio_Corporativo_2025.pdf.pdf",
+    "size_bytes": 2774915,
+    "sha256": "1486d11c4f3eb7d4fad584ae4da448fe7a3d4719d259382d4002a1cff0e4b333",
+    "downloaded_at": "2026-09-07T17:42:36.969179+00:00",
+    "status": "ok"
+  },
+  {
+    "id": "vale-natureza-pdf",
+    "url": "https://vale.com/documents/44618/436238/VALE_Vale%26Natureza.pdf/fb444623-c6cd-bd1b-497e-b1b4832fda78?version=1.2&t=1773172120332&download=false&_gl=1*1h5u8rh*_gcl_au*ODQ3MDIwODguMTc4MTE5ODkxMA..*_ga*NjQ4MzM3MDE0LjE3ODExOTg5MTA.*_ga_BNK5C1QYMC*czE3ODI4NDA1OTYkbzQ3JGcxJHQxNzgyODQzMDMyJGo1NiRsMCRoODYwMzc1NjQx",
+    "filename": "apps\\web\\data\\esg\\Vale_Vale_Natureza_2024.pdf.pdf",
+    "size_bytes": 22086706,
+    "sha256": "7e63400f05e59ccba31399c20d821efd2cf4b50abb13660da784d557099af9c3",
+    "downloaded_at": "2026-09-07T17:43:21.360505+00:00",
+    "status": "ok"
+  }
+]
