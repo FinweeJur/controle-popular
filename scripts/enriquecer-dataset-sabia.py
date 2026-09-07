@@ -395,6 +395,51 @@ NOVOS_EXEMPLOS = [
         ),
         "frente": "empresas"
     },
+    # ═══ ANÁLISE INTEGRADA PARAOPEBA + RIO DOCE (SEU NONO SABIÁ) ═══
+    {
+        "instruction": "qual a situacao do acordo de mariana e quanto ja foi pago?",
+        "input": "Fonte oficial: Repactuação Bacia do Rio Doce / Fundação Renova / Governo Federal",
+        "output": (
+            "O acordo de repactuação da Bacia do Rio Doce, firmado em 2024, tem valor global de R$ 171 bilhões.\\n\\n"
+            "Deste total, R$ 100 bilhões são recursos novos a serem pagos ao longo de 20 anos pelo Governo Federal, Minas Gerais e Espírito Santo.\\n"
+            "A Fundação Renova já executou R$ 38 bilhões em ações de reparação.\\n"
+            "O Estado de Minas Gerais recebeu R$ 677 milhões em repasses para execução de obras, com R$ 1,5 bilhão destinado aos 827 municípios fora da bacia.\\n\\n"
+            "Acompanhe a execução em /ambiental/mariana e o calendário de pagamento em /paraopeba."
+        ),
+        "frente": "paraopeba"
+    },
+    {
+        "instruction": "quanto a vale tem de processos ambientais e o que diz o sigmine?",
+        "input": "Fonte oficial: ANM - Agência Nacional de Mineração / SIGBM",
+        "output": (
+            "A Vale S.A. (VALE3) é acompanhada pelo SIGMINE/ANM, que registra seus processos minerários em todo o território nacional.\\n\\n"
+            "Entre as estruturas mais críticas estão as barragens em processo de descaracterização: Forquilha III (Ouro Preto), B3/B4 (Nova Lima) e Sul Superior (Barão de Cocais), todas sob vigilância da ANM.\\n\\n"
+            "O sistema SIGBM/ANM acompanha 45 barragens a montante em Minas Gerais, das quais 21 foram concluídas e 24 permanecem pendentes de descaracterização até 2035.\\n\\n"
+            "Consulte o monitoramento em /ambiental/barragens e /paraopeba/vale."
+        ),
+        "frente": "ambiental"
+    },
+    {
+        "instruction": "o que é a fundação renova e quanto ela já gastou?",
+        "input": "Fonte oficial: Fundação Renova / Termo de Ajustamento de Conduta",
+        "output": (
+            "A Fundação Renova é a entidade criada pela Vale, Samarco e BHP Billiton para executar o acordo de reparação dos danos causados pelo rompimento da barragem de Fundão, em Mariana (2015).\\n\\n"
+            "Até 2026, a Fundação já executou aproximadamente R$ 38 bilhões em ações de recuperação ambiental, sociocultural e econômica na Bacia do Rio Doce.\\n\\n"
+            "Os principais eixos de atuação são: supressão de rejeitos, recuperação de áreas degradadas, apoio às comunidades ribeirinhas e reconstrução de infraestrutura. Acompanhe os relatórios em /ambiental/mariana."
+        ),
+        "frente": "paraopeba"
+    },
+    {
+        "instruction": "qual a diferenca entre o acordo de brumadinho e o de mariana?",
+        "input": "Fonte oficial: Acordo Judicial Brumadinho / Repactuação Rio Doce / Governo Federal",
+        "output": (
+            "São dois acordos distintos para dois eventos diferentes.\\n\\n"
+            "**Brumadinho (2019)**: O rompimento da barragem Córrego do Feijão, em Brumadinho (MG). O acordo judicial prevê R$ 37,68 bilhões de reparação, com 73,8% já pagos em 26 municípios da Bacia do Paraopeba. A Vale é a única responsável. R$ 5,48 bilhões foram destinados diretamente aos municípios atingidos.\\n\\n"
+            "**Mariana (2015)**: O rompimento da barragem Fundão, em Mariana (MG). A repactuação tem valor de R$ 171 bilhões (R$ 100 bi novos + R$ 38 bi executados + R$ 32 bi obrigações futuras). Responsáveis: Vale, Samarco e BHP Billiton.\\n\\n"
+            "Ambos os acordos são acompanhados pelo portal em /paraopeba e /ambiental/mariana."
+        ),
+        "frente": "paraopeba"
+    },
 ]
 
 def main():
