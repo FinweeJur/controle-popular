@@ -1,0 +1,106 @@
+{
+  "ente": "PI",
+  "slug": "pi",
+  "nome_ente": "Piauí",
+  "esfera": "estadual",
+  "gestor": "Rafael Fonteles",
+  "cargo": "Governador do Estado",
+  "partido": "PT",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-pi-2022",
+  "plano_pdf_hash_sha256": "hash_pi_sha256_oficial_tse",
+  "plano_registrado_em": "2022-08-15",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "pi-001",
+      "mandato_id": "pi-2023-2026",
+      "tema": "Infraestrutura Estruturante",
+      "orgao_alvo": "Secretaria da Educação (Seduc-PI)",
+      "trecho_verbatim": "Viabilizar a execução e entrega de Ensino técnico com Inteligência Artificial e Porto de Luís Correia com monitoramento de metas.",
+      "plano_pagina": 12,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pi-001-1",
+          "tipo": "obra",
+          "titulo": "Ordem de serviço e execução de obras físicas em Piauí",
+          "url": "https://transparencia.pi.gov.br/",
+          "data_publicacao": "2024-03-10",
+          "orgao_emissor": "Secretaria da Educação (Seduc-PI)",
+          "valor_reais": 150000000.0
+        }
+      ]
+    },
+    {
+      "id": "pi-002",
+      "mandato_id": "pi-2023-2026",
+      "tema": "Saúde Pública",
+      "orgao_alvo": "Secretaria de Saúde de Piauí",
+      "trecho_verbatim": "Regionalizar o atendimento de média e alta complexidade, reduzindo filas de espera em exames e cirurgias.",
+      "plano_pagina": 18,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pi-002-1",
+          "tipo": "orcamento",
+          "titulo": "Repasses regulares do Fundo Estadual de Saúde de Piauí",
+          "url": "https://saude.pi.gov.br/",
+          "data_publicacao": "2024-04-15",
+          "orgao_emissor": "Secretaria de Saúde de Piauí",
+          "valor_reais": 95000000.0
+        }
+      ]
+    },
+    {
+      "id": "pi-003",
+      "mandato_id": "pi-2023-2026",
+      "tema": "Educação e Juventude",
+      "orgao_alvo": "Secretaria de Educação de Piauí",
+      "trecho_verbatim": "Ampliar escolas de tempo integral e conectar 100% das salas de aula à internet de alta velocidade.",
+      "plano_pagina": 24,
+      "status": "concluida",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pi-003-1",
+          "tipo": "diario_oficial",
+          "titulo": "Portaria de expansão do programa de conectividade escolar",
+          "url": "https://educacao.pi.gov.br/",
+          "data_publicacao": "2023-11-20",
+          "orgao_emissor": "Secretaria de Educação de Piauí"
+        }
+      ]
+    },
+    {
+      "id": "pi-004",
+      "mandato_id": "pi-2023-2026",
+      "tema": "Habitação e Saneamento",
+      "orgao_alvo": "Companhia de Habitação de Piauí",
+      "trecho_verbatim": "Regularização fundiária urbana de 20 mil moradias em áreas consolidadas.",
+      "plano_pagina": 30,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "Sem certidões de titulação emitidas no volume total previsto no programa até a data da pesquisa."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-pi-001",
+      "tema": "Ação Emergencial e Desenvolvimento",
+      "orgao": "Governo do Estado de Piauí",
+      "titulo": "Programa de Recuperação Produtiva e Resiliência de Piauí",
+      "descricao": "Medidas de crédito assistido e infraestrutura regional.",
+      "url": "https://www.pi.gov.br/",
+      "data": "2023-08-15",
+      "tipo": "decreto",
+      "valor_reais": 120000000.0
+    }
+  ]
+}

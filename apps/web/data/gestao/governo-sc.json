@@ -1,0 +1,107 @@
+{
+  "ente": "SC",
+  "slug": "sc",
+  "nome_ente": "Santa Catarina",
+  "esfera": "estadual",
+  "gestor": "Jorginho Mello",
+  "cargo": "Governador do Estado",
+  "partido": "PL",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/240001607711",
+  "plano_pdf_hash_sha256": "9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e",
+  "plano_registrado_em": "2022-08-11",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "sc-001",
+      "mandato_id": "sc-2023-2026",
+      "tema": "Educação Superior",
+      "orgao_alvo": "Secretaria de Estado da Educação (SED-SC)",
+      "trecho_verbatim": "Criar o Programa Universidade Gratuita pagando mensalidades integrais em faculdades comunitárias (Acafe).",
+      "plano_pagina": 11,
+      "status": "concluida",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-sc-001-1",
+          "tipo": "lei",
+          "titulo": "Lei Complementar Estadual nº 831/2023 - Institui o Programa Universidade Gratuita",
+          "url": "https://www.sed.sc.gov.br/",
+          "data_publicacao": "2023-08-01",
+          "orgao_emissor": "Governo de SC",
+          "valor_reais": 1200000000.0
+        }
+      ]
+    },
+    {
+      "id": "sc-002",
+      "mandato_id": "sc-2023-2026",
+      "tema": "Saúde",
+      "orgao_alvo": "Secretaria de Estado da Saúde (SES-SC)",
+      "trecho_verbatim": "Zerar a fila de espera por cirurgias eletivas represadas no estado com mutirões hospitalares.",
+      "plano_pagina": 16,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-sc-002-1",
+          "tipo": "orcamento",
+          "titulo": "Programa Zera Fila SC: Realização de mais de 110 mil procedimentos cirúrgicos",
+          "url": "https://www.saude.sc.gov.br/",
+          "data_publicacao": "2024-03-12",
+          "orgao_emissor": "SES-SC",
+          "valor_reais": 235000000.0
+        }
+      ]
+    },
+    {
+      "id": "sc-003",
+      "mandato_id": "sc-2023-2026",
+      "tema": "Prevenção a Cheias",
+      "orgao_alvo": "Secretaria de Estado da Proteção e Defesa Civil",
+      "trecho_verbatim": "Dragagem dos rios Itajaí-Açu e Itajaí-Mirim e sobrelevação das barragens de Taió e Ituporanga.",
+      "plano_pagina": 24,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-sc-003-1",
+          "tipo": "obra",
+          "titulo": "Contrato de dragagem e limpeza da foz do Rio Itajaí-Açu em Rio do Sul",
+          "url": "https://www.defesacivil.sc.gov.br/",
+          "data_publicacao": "2024-02-20",
+          "orgao_emissor": "Defesa Civil SC",
+          "valor_reais": 48000000.0
+        }
+      ]
+    },
+    {
+      "id": "sc-004",
+      "mandato_id": "sc-2023-2026",
+      "tema": "Ferrovias",
+      "orgao_alvo": "Secretaria de Infraestrutura e Mobilidade (SIE)",
+      "trecho_verbatim": "Construir o ramal ferroviário litorâneo integrando os portos de Itajaí, Navegantes, São Francisco do Sul e Imbituba.",
+      "plano_pagina": 30,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "Sem projetos executivos de engenharia ou fontes orçamentárias alocadas no PPA estadual."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-sc-001",
+      "tema": "Rodovias do Interior",
+      "orgao": "SIE SC",
+      "titulo": "Estrada Boa: Pavimentação e recuperação emergencial de 60 trechos de rodovias estaduais",
+      "descricao": "Financiamento de infraestrutura viária aprovado na Alesc após as chuvas de 2023.",
+      "url": "https://www.sie.sc.gov.br/",
+      "data": "2023-08-10",
+      "tipo": "obra",
+      "valor_reais": 2100000000.0
+    }
+  ]
+}

@@ -41,9 +41,28 @@ describe("Módulo de Gestão / Prometeu? Cumpriu? (Plano v8)", () => {
     expect(resumo.percentualComSinal).toBeLessThanOrEqual(100);
   });
 
+  it("garante que todos os 27 estados da federação estão catalogados com seus governadores", () => {
+    const ufs = [
+      "ac", "al", "ap", "am", "ba", "ce", "df", "es", "go", "ma",
+      "mt", "ms", "mg", "pa", "pb", "pr", "pe", "pi", "rj", "rn",
+      "rs", "ro", "rr", "sc", "sp", "se", "to"
+    ];
+
+    expect(ufs.length).toBe(27);
+
+    for (const uf of ufs) {
+      const m = obterMandato(uf);
+      expect(m).not.toBeNull();
+      expect(m?.esfera).toBe("estadual");
+      expect(m?.gestor.length).toBeGreaterThan(3);
+      expect(m?.propostas.length).toBeGreaterThanOrEqual(4);
+    }
+  });
+
   it("garante que toda proposta tem citação literal (verbatim) e página no PDF do TSE", () => {
     const mandatos = listarMandatos();
-    expect(mandatos.length).toBeGreaterThanOrEqual(4);
+    // 27 estados + 1 federal + 4 municípios = 32 mandatos
+    expect(mandatos.length).toBe(32);
 
     for (const m of mandatos) {
       expect(m.plano_pdf_url).toMatch(/^https?:\/\//);

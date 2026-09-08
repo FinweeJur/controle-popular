@@ -98,3 +98,36 @@ export interface ResumoStatusGestao {
   totalForaDoPlano: number;
   percentualComSinal: number; // % que tem sinal público (anunciada, em andamento, concluída)
 }
+
+export type RegiaoBrasil = "Sudeste" | "Sul" | "Nordeste" | "Centro-Oeste" | "Norte";
+
+export const REGIAO_POR_UF: Record<string, RegiaoBrasil> = {
+  SP: "Sudeste",
+  RJ: "Sudeste",
+  MG: "Sudeste",
+  ES: "Sudeste",
+  RS: "Sul",
+  PR: "Sul",
+  SC: "Sul",
+  BA: "Nordeste",
+  PE: "Nordeste",
+  CE: "Nordeste",
+  MA: "Nordeste",
+  PB: "Nordeste",
+  RN: "Nordeste",
+  AL: "Nordeste",
+  PI: "Nordeste",
+  SE: "Nordeste",
+  DF: "Centro-Oeste",
+  GO: "Centro-Oeste",
+  MT: "Centro-Oeste",
+  MS: "Centro-Oeste",
+  PA: "Norte",
+  AM: "Norte",
+  RO: "Norte",
+  TO: "Norte",
+  AC: "Norte",
+  AP: "Norte",
+  RR: "Norte",
+};
+

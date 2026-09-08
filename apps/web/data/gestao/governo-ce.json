@@ -1,0 +1,106 @@
+{
+  "ente": "CE",
+  "slug": "ce",
+  "nome_ente": "Ceará",
+  "esfera": "estadual",
+  "gestor": "Elmano de Freitas",
+  "cargo": "Governador do Estado",
+  "partido": "PT",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/060001606544",
+  "plano_pdf_hash_sha256": "2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b",
+  "plano_registrado_em": "2022-08-14",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "ce-001",
+      "mandato_id": "ce-2023-2026",
+      "tema": "Educação em Tempo Integral",
+      "orgao_alvo": "Secretaria da Educação (Seduc-CE)",
+      "trecho_verbatim": "Universalizar o Ensino Médio em Tempo Integral para 100% das escolas públicas estaduais até 2026.",
+      "plano_pagina": 12,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-ce-001-1",
+          "tipo": "diario_oficial",
+          "titulo": "Portaria Seduc nº 042/2024 - 75% da rede estadual convertida para tempo integral (EEMTIs e EEEPs)",
+          "url": "https://www.seduc.ce.gov.br/",
+          "data_publicacao": "2024-02-05",
+          "orgao_emissor": "Seduc-CE"
+        }
+      ]
+    },
+    {
+      "id": "ce-002",
+      "mandato_id": "ce-2023-2026",
+      "tema": "Transição Energética",
+      "orgao_alvo": "Secretaria do Desenvolvimento Econômico (SDE-CE)",
+      "trecho_verbatim": "Consolidar o Hub de Hidrogênio Verde no Complexo do Pecém com pré-contratos de exportação para a Europa.",
+      "plano_pagina": 19,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-ce-002-1",
+          "tipo": "contrato",
+          "titulo": "Assinatura do pré-contrato de investimento para primeira planta industrial de H2V no Pecém",
+          "url": "https://www.complexodopecem.com.br/",
+          "data_publicacao": "2023-11-10",
+          "orgao_emissor": "Complexo do Pecém / SDE",
+          "valor_reais": 6800000000.0
+        }
+      ]
+    },
+    {
+      "id": "ce-003",
+      "mandato_id": "ce-2023-2026",
+      "tema": "Saúde",
+      "orgao_alvo": "Secretaria da Saúde do Ceará (Sesa)",
+      "trecho_verbatim": "Construir o novo Hospital Universitário do Ceará (Huce) com 650 leitos de alta complexidade em Fortaleza.",
+      "plano_pagina": 25,
+      "status": "concluida",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-ce-003-1",
+          "tipo": "obra",
+          "titulo": "Entrega das instalações físicas do Hospital Universitário do Ceará",
+          "url": "https://www.saude.ce.gov.br/",
+          "data_publicacao": "2024-01-25",
+          "orgao_emissor": "SOP-CE / Sesa",
+          "valor_reais": 320000000.0
+        }
+      ]
+    },
+    {
+      "id": "ce-004",
+      "mandato_id": "ce-2023-2026",
+      "tema": "Segurança",
+      "orgao_alvo": "Secretaria da Segurança Pública e Defesa Social (SSPDS)",
+      "trecho_verbatim": "Instalar unidades integradas de comando em todas as 14 Áreas Integradas de Segurança no interior.",
+      "plano_pagina": 31,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "Faltam entregas comprovadas de novas centrais integradas em cidades do Sertão Central e Inhamuns."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-ce-001",
+      "tema": "Combate à Fome",
+      "orgao": "Secretaria da Proteção Social",
+      "titulo": "Programa Ceará Sem Fome e Rede de Cozinhas Comunitárias",
+      "descricao": "Fornecimento de mais de 100 mil refeições diárias para famílias em situação de extrema vulnerabilidade.",
+      "url": "https://cearasemfome.ce.gov.br/",
+      "data": "2023-06-16",
+      "tipo": "lei",
+      "valor_reais": 184000000.0
+    }
+  ]
+}

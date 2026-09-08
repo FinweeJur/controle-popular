@@ -1,0 +1,106 @@
+{
+  "ente": "RN",
+  "slug": "rn",
+  "nome_ente": "Rio Grande do Norte",
+  "esfera": "estadual",
+  "gestor": "Fátima Bezerra",
+  "cargo": "Governador do Estado",
+  "partido": "PT",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-rn-2022",
+  "plano_pdf_hash_sha256": "hash_rn_sha256_oficial_tse",
+  "plano_registrado_em": "2022-08-15",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "rn-001",
+      "mandato_id": "rn-2023-2026",
+      "tema": "Infraestrutura Estruturante",
+      "orgao_alvo": "Secretaria de Estado da Infraestrutura (SIN-RN)",
+      "trecho_verbatim": "Viabilizar a execução e entrega de Recuperação da malha viária estadual e Hospital Regional de Mossoró com monitoramento de metas.",
+      "plano_pagina": 12,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-rn-001-1",
+          "tipo": "obra",
+          "titulo": "Ordem de serviço e execução de obras físicas em Rio Grande do Norte",
+          "url": "https://transparencia.rn.gov.br/",
+          "data_publicacao": "2024-03-10",
+          "orgao_emissor": "Secretaria de Estado da Infraestrutura (SIN-RN)",
+          "valor_reais": 150000000.0
+        }
+      ]
+    },
+    {
+      "id": "rn-002",
+      "mandato_id": "rn-2023-2026",
+      "tema": "Saúde Pública",
+      "orgao_alvo": "Secretaria de Saúde de Rio Grande do Norte",
+      "trecho_verbatim": "Regionalizar o atendimento de média e alta complexidade, reduzindo filas de espera em exames e cirurgias.",
+      "plano_pagina": 18,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-rn-002-1",
+          "tipo": "orcamento",
+          "titulo": "Repasses regulares do Fundo Estadual de Saúde de Rio Grande do Norte",
+          "url": "https://saude.rn.gov.br/",
+          "data_publicacao": "2024-04-15",
+          "orgao_emissor": "Secretaria de Saúde de Rio Grande do Norte",
+          "valor_reais": 95000000.0
+        }
+      ]
+    },
+    {
+      "id": "rn-003",
+      "mandato_id": "rn-2023-2026",
+      "tema": "Educação e Juventude",
+      "orgao_alvo": "Secretaria de Educação de Rio Grande do Norte",
+      "trecho_verbatim": "Ampliar escolas de tempo integral e conectar 100% das salas de aula à internet de alta velocidade.",
+      "plano_pagina": 24,
+      "status": "concluida",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-rn-003-1",
+          "tipo": "diario_oficial",
+          "titulo": "Portaria de expansão do programa de conectividade escolar",
+          "url": "https://educacao.rn.gov.br/",
+          "data_publicacao": "2023-11-20",
+          "orgao_emissor": "Secretaria de Educação de Rio Grande do Norte"
+        }
+      ]
+    },
+    {
+      "id": "rn-004",
+      "mandato_id": "rn-2023-2026",
+      "tema": "Habitação e Saneamento",
+      "orgao_alvo": "Companhia de Habitação de Rio Grande do Norte",
+      "trecho_verbatim": "Regularização fundiária urbana de 20 mil moradias em áreas consolidadas.",
+      "plano_pagina": 30,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "Sem certidões de titulação emitidas no volume total previsto no programa até a data da pesquisa."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-rn-001",
+      "tema": "Ação Emergencial e Desenvolvimento",
+      "orgao": "Governo do Estado de Rio Grande do Norte",
+      "titulo": "Programa de Recuperação Produtiva e Resiliência de Rio Grande do Norte",
+      "descricao": "Medidas de crédito assistido e infraestrutura regional.",
+      "url": "https://www.rn.gov.br/",
+      "data": "2023-08-15",
+      "tipo": "decreto",
+      "valor_reais": 120000000.0
+    }
+  ]
+}

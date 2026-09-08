@@ -1,0 +1,107 @@
+{
+  "ente": "BA",
+  "slug": "ba",
+  "nome_ente": "Bahia",
+  "esfera": "estadual",
+  "gestor": "Jerônimo Rodrigues",
+  "cargo": "Governador do Estado",
+  "partido": "PT",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/050001601999",
+  "plano_pdf_hash_sha256": "0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f",
+  "plano_registrado_em": "2022-08-14",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "ba-001",
+      "mandato_id": "ba-2023-2026",
+      "tema": "Infraestrutura Viária",
+      "orgao_alvo": "Secretaria de Infraestrutura (Seinfra-BA)",
+      "trecho_verbatim": "Executar as obras do Sistema Viário Oeste e Ponte Salvador-Ilha de Itaparica.",
+      "plano_pagina": 15,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-ba-001-1",
+          "tipo": "obra",
+          "titulo": "Sondagem em águas profundas na Baía de Todos-os-Santos para a Ponte Salvador-Itaparica",
+          "url": "https://www.pontesalvadoritaparica.ba.gov.br/",
+          "data_publicacao": "2024-02-15",
+          "orgao_emissor": "Consórcio Ponte / Seinfra-BA",
+          "valor_reais": 9000000000.0
+        }
+      ]
+    },
+    {
+      "id": "ba-002",
+      "mandato_id": "ba-2023-2026",
+      "tema": "Transporte Urbano",
+      "orgao_alvo": "Secretaria de Desenvolvimento Urbano (Sedur)",
+      "trecho_verbatim": "Implantar o VLT de Salvador e Região Metropolitana ligando a Ilha de São João a Piatã.",
+      "plano_pagina": 21,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-ba-002-1",
+          "tipo": "contrato",
+          "titulo": "Assinatura das ordens de serviço dos três lotes do VLT de Salvador",
+          "url": "https://www.sedur.ba.gov.br/",
+          "data_publicacao": "2024-06-25",
+          "orgao_emissor": "CTB / Sedur",
+          "valor_reais": 4000000000.0
+        }
+      ]
+    },
+    {
+      "id": "ba-003",
+      "mandato_id": "ba-2023-2026",
+      "tema": "Educação em Tempo Integral",
+      "orgao_alvo": "Secretaria da Educação (SEC-BA)",
+      "trecho_verbatim": "Entregar 200 novas escolas de tempo integral com quadras cobertas, piscinas e teatro no interior da Bahia.",
+      "plano_pagina": 27,
+      "status": "concluida",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-ba-003-1",
+          "tipo": "obra",
+          "titulo": "Inauguração da 100ª nova escola de tempo integral polo (Complexo Amélia Rodrigues)",
+          "url": "https://www.educacao.ba.gov.br/",
+          "data_publicacao": "2024-04-18",
+          "orgao_emissor": "SEC-BA / Conder",
+          "valor_reais": 750000000.0
+        }
+      ]
+    },
+    {
+      "id": "ba-004",
+      "mandato_id": "ba-2023-2026",
+      "tema": "Segurança no Campo",
+      "orgao_alvo": "Secretaria da Segurança Pública (SSP-BA)",
+      "trecho_verbatim": "Criar 10 companhias independentes especializadas em policiamento rural e mediação de conflitos agrários.",
+      "plano_pagina": 33,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "Não localizados decretos de criação e lotação efetiva de todas as companhias rurais previstas."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-ba-001",
+      "tema": "Indústria Verde",
+      "orgao": "Secretaria de Desenvolvimento Econômico (SDE)",
+      "titulo": "Implantação do Complexo Fabril da BYD em Camaçari (Veículos Elétricos)",
+      "descricao": "Atração de investimentos globais para o antigo polo automobilístico de Camaçari.",
+      "url": "https://www.sde.ba.gov.br/",
+      "data": "2023-10-09",
+      "tipo": "decreto",
+      "valor_reais": 3000000000.0
+    }
+  ]
+}

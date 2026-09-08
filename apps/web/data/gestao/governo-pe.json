@@ -1,0 +1,107 @@
+{
+  "ente": "PE",
+  "slug": "pe",
+  "nome_ente": "Pernambuco",
+  "esfera": "estadual",
+  "gestor": "Raquel Lyra",
+  "cargo": "Governadora do Estado",
+  "partido": "PSDB",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/170001602233",
+  "plano_pdf_hash_sha256": "1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a",
+  "plano_registrado_em": "2022-08-13",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "pe-001",
+      "mandato_id": "pe-2023-2026",
+      "tema": "Segurança Pública",
+      "orgao_alvo": "Secretaria de Defesa Social (SDS-PE)",
+      "trecho_verbatim": "Lançar o Programa Juntos pela Segurança, substituindo o Pacto pela Vida com foco em redução de feminicídios e letalidade.",
+      "plano_pagina": 13,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pe-001-1",
+          "tipo": "decreto",
+          "titulo": "Decreto Estadual nº 55.700/2023 - Institui o Programa Juntos pela Segurança",
+          "url": "https://www.sds.pe.gov.br/",
+          "data_publicacao": "2023-11-27",
+          "orgao_emissor": "Governo de PE",
+          "valor_reais": 1000000000.0
+        }
+      ]
+    },
+    {
+      "id": "pe-002",
+      "mandato_id": "pe-2023-2026",
+      "tema": "Segurança Hídrica",
+      "orgao_alvo": "Secretaria de Recursos Hídricos e Saneamento",
+      "trecho_verbatim": "Acelerar a conclusão das etapas 1 e 2 da Adutora do Agreste para levar água da transposição a 68 municípios.",
+      "plano_pagina": 20,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pe-002-1",
+          "tipo": "obra",
+          "titulo": "Retomada das obras de assentamento da Adutora do Agreste em Caruaru e Toritama",
+          "url": "https://www.compesa.com.br/",
+          "data_publicacao": "2024-03-22",
+          "orgao_emissor": "Compesa",
+          "valor_reais": 412000000.0
+        }
+      ]
+    },
+    {
+      "id": "pe-003",
+      "mandato_id": "pe-2023-2026",
+      "tema": "Saúde Hospitalar",
+      "orgao_alvo": "Secretaria Estadual de Saúde (SES-PE)",
+      "trecho_verbatim": "Reestruturação e reforma integral das emergências do Hospital da Restauração e Hospital Getúlio Vargas no Recife.",
+      "plano_pagina": 26,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pe-003-1",
+          "tipo": "contrato",
+          "titulo": "Obras de reforma do trauma e hemodinâmica do Hospital da Restauração",
+          "url": "https://portal.saude.pe.gov.br/",
+          "data_publicacao": "2023-10-14",
+          "orgao_emissor": "SES-PE",
+          "valor_reais": 68000000.0
+        }
+      ]
+    },
+    {
+      "id": "pe-004",
+      "mandato_id": "pe-2023-2026",
+      "tema": "Primeira Infância",
+      "orgao_alvo": "Secretaria de Educação e Esportes (SEE-PE)",
+      "trecho_verbatim": "Construir 60 mil vagas em creches municipais em regime de cooperação financeira estado-municípios.",
+      "plano_pagina": 32,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "O programa estadual de cofinanciamento de creches não atingiu repasses para a escala de 60 mil vagas planejadas."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-pe-001",
+      "tema": "Rodovias do Sertão",
+      "orgao": "Seinfra PE",
+      "titulo": "Programa Estrada da Produção: Requalificação da malha rodoviária do Sertão do Araripe",
+      "descricao": "Pavimentação emergencial para escoamento da produção gesseira e agrícola.",
+      "url": "https://www.pe.gov.br/",
+      "data": "2024-01-20",
+      "tipo": "obra",
+      "valor_reais": 900000000.0
+    }
+  ]
+}

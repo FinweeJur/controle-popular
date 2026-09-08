@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
-import { listarMandatos, calcularResumoGestao } from "@/lib/gestao/dados";
+import { listarMandatos } from "@/lib/gestao/dados";
+import PainelGovernoHubClient from "./PainelGovernoHubClient";
 
 export const metadata: Metadata = {
   title: "Governos e Planos de Campanha — Prometeu? Cumpriu? | Controle Popular",
@@ -29,70 +29,8 @@ export default function HubGovernoPage() {
           </p>
         </div>
 
-        {/* ═══ CARTÕES DE GOVERNOS MONITORADOS ═══ */}
-        <section aria-labelledby="governos-monitorados" className="space-y-4">
-          <h2 id="governos-monitorados" className="text-lg font-bold text-text">
-            Executivos Monitorados
-          </h2>
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {mandatos.map((m) => {
-              const resumo = calcularResumoGestao(m);
-              const linkGoverno =
-                m.esfera === "municipal"
-                  ? `/${m.slug}/gestao`
-                  : `/governo/${m.slug}`;
-
-              return (
-                <Link
-                  key={m.ente}
-                  href={linkGoverno}
-                  className="group block rounded-2xl border border-border bg-surface-1 p-6 shadow-sm transition-all hover:border-primary/50 hover:shadow-md"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="rounded-full bg-surface-2 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-text-soft">
-                      {m.esfera === "federal" ? "Federal" : m.esfera === "estadual" ? "Estadual" : "Municipal"}
-                    </span>
-                    <span className="text-xs text-text-soft">
-                      {m.periodo.inicio}–{m.periodo.fim}
-                    </span>
-                  </div>
-
-                  <h3 className="mt-3 text-xl font-bold text-text group-hover:text-primary transition-colors">
-                    {m.nome_ente}
-                  </h3>
-                  <p className="text-xs text-text-soft">
-                    {m.cargo}: <strong>{m.gestor}</strong> {m.partido ? `(${m.partido})` : ""}
-                  </p>
-
-                  <div className="mt-4 grid grid-cols-3 gap-2 border-t border-border pt-4 text-center">
-                    <div>
-                      <div className="text-xl font-bold text-text">{resumo.totalPropostas}</div>
-                      <div className="text-[11px] text-text-soft">Propostas</div>
-                    </div>
-                    <div>
-                      <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
-                        {resumo.porStatus.concluida}
-                      </div>
-                      <div className="text-[11px] text-text-soft">Entregues</div>
-                    </div>
-                    <div>
-                      <div className="text-xl font-bold text-blue-600 dark:text-blue-400">
-                        {resumo.porStatus.em_andamento + resumo.porStatus.anunciada}
-                      </div>
-                      <div className="text-[11px] text-text-soft">Em execução</div>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 flex items-center justify-between text-xs font-semibold text-primary">
-                    <span>Ver prestação de contas completa</span>
-                    <span className="transition-transform group-hover:translate-x-1">→</span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
+        {/* ═══ PAINEL INTERATIVO COM GRÁFICOS, FILTROS, ORDENAÇÃO E CSV ═══ */}
+        <PainelGovernoHubClient mandatos={mandatos} />
 
         {/* ═══ TRANSPARÊNCIA METODOLÓGICA ═══ */}
         <section className="mt-12 rounded-2xl border border-border bg-surface-1 p-6 text-xs text-text-soft">

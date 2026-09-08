@@ -6,16 +6,12 @@ import PainelGestaoClient from "../components/PainelGestaoClient";
 import { obterMandato } from "@/lib/gestao/dados";
 
 export async function generateStaticParams() {
-  return [
-    { uf: "mg" },
-    { uf: "sp" },
-    { uf: "rj" },
-    { uf: "es" },
-    { uf: "pa" },
-    { uf: "df" },
-    { uf: "uniao" },
-    { uf: "federal" },
+  const ufs = [
+    "ac", "al", "ap", "am", "ba", "ce", "df", "es", "go", "ma",
+    "mt", "ms", "mg", "pa", "pb", "pr", "pe", "pi", "rj", "rn",
+    "rs", "ro", "rr", "sc", "sp", "se", "to", "uniao", "federal",
   ];
+  return ufs.map((uf) => ({ uf }));
 }
 
 export async function generateMetadata({

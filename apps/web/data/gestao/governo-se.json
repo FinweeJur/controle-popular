@@ -1,0 +1,106 @@
+{
+  "ente": "SE",
+  "slug": "se",
+  "nome_ente": "Sergipe",
+  "esfera": "estadual",
+  "gestor": "Fábio Mitidieri",
+  "cargo": "Governador do Estado",
+  "partido": "PSD",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-se-2022",
+  "plano_pdf_hash_sha256": "hash_se_sha256_oficial_tse",
+  "plano_registrado_em": "2022-08-15",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "se-001",
+      "mandato_id": "se-2023-2026",
+      "tema": "Infraestrutura Estruturante",
+      "orgao_alvo": "Secretaria de Estado da Infraestrutura e do Desenvolvimento Urbano",
+      "trecho_verbatim": "Viabilizar a execução e entrega de Programa Opera Sergipe e nova ponte Aracaju-Barra dos Coqueiros com monitoramento de metas.",
+      "plano_pagina": 12,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-se-001-1",
+          "tipo": "obra",
+          "titulo": "Ordem de serviço e execução de obras físicas em Sergipe",
+          "url": "https://transparencia.se.gov.br/",
+          "data_publicacao": "2024-03-10",
+          "orgao_emissor": "Secretaria de Estado da Infraestrutura e do Desenvolvimento Urbano",
+          "valor_reais": 150000000.0
+        }
+      ]
+    },
+    {
+      "id": "se-002",
+      "mandato_id": "se-2023-2026",
+      "tema": "Saúde Pública",
+      "orgao_alvo": "Secretaria de Saúde de Sergipe",
+      "trecho_verbatim": "Regionalizar o atendimento de média e alta complexidade, reduzindo filas de espera em exames e cirurgias.",
+      "plano_pagina": 18,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-se-002-1",
+          "tipo": "orcamento",
+          "titulo": "Repasses regulares do Fundo Estadual de Saúde de Sergipe",
+          "url": "https://saude.se.gov.br/",
+          "data_publicacao": "2024-04-15",
+          "orgao_emissor": "Secretaria de Saúde de Sergipe",
+          "valor_reais": 95000000.0
+        }
+      ]
+    },
+    {
+      "id": "se-003",
+      "mandato_id": "se-2023-2026",
+      "tema": "Educação e Juventude",
+      "orgao_alvo": "Secretaria de Educação de Sergipe",
+      "trecho_verbatim": "Ampliar escolas de tempo integral e conectar 100% das salas de aula à internet de alta velocidade.",
+      "plano_pagina": 24,
+      "status": "concluida",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-se-003-1",
+          "tipo": "diario_oficial",
+          "titulo": "Portaria de expansão do programa de conectividade escolar",
+          "url": "https://educacao.se.gov.br/",
+          "data_publicacao": "2023-11-20",
+          "orgao_emissor": "Secretaria de Educação de Sergipe"
+        }
+      ]
+    },
+    {
+      "id": "se-004",
+      "mandato_id": "se-2023-2026",
+      "tema": "Habitação e Saneamento",
+      "orgao_alvo": "Companhia de Habitação de Sergipe",
+      "trecho_verbatim": "Regularização fundiária urbana de 20 mil moradias em áreas consolidadas.",
+      "plano_pagina": 30,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "Sem certidões de titulação emitidas no volume total previsto no programa até a data da pesquisa."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-se-001",
+      "tema": "Ação Emergencial e Desenvolvimento",
+      "orgao": "Governo do Estado de Sergipe",
+      "titulo": "Programa de Recuperação Produtiva e Resiliência de Sergipe",
+      "descricao": "Medidas de crédito assistido e infraestrutura regional.",
+      "url": "https://www.se.gov.br/",
+      "data": "2023-08-15",
+      "tipo": "decreto",
+      "valor_reais": 120000000.0
+    }
+  ]
+}

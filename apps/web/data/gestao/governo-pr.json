@@ -1,0 +1,106 @@
+{
+  "ente": "PR",
+  "slug": "pr",
+  "nome_ente": "Paraná",
+  "esfera": "estadual",
+  "gestor": "Ratinho Júnior",
+  "cargo": "Governador do Estado",
+  "partido": "PSD",
+  "periodo": {
+    "inicio": 2023,
+    "fim": 2026
+  },
+  "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/160001609988",
+  "plano_pdf_hash_sha256": "8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d",
+  "plano_registrado_em": "2022-08-12",
+  "ultima_medicao": "2026-09-06",
+  "propostas": [
+    {
+      "id": "pr-001",
+      "mandato_id": "pr-2023-2026",
+      "tema": "Infraestrutura Litoral",
+      "orgao_alvo": "Secretaria de Infraestrutura e Logística (Seil)",
+      "trecho_verbatim": "Construir a Ponte de Guaratuba ligando Matinhos a Guaratuba, eliminando a dependência histórica de balsa.",
+      "plano_pagina": 12,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pr-001-1",
+          "tipo": "obra",
+          "titulo": "Execução das obras da Ponte de Guaratuba e acessos viários (DER-PR)",
+          "url": "https://www.der.pr.gov.br/",
+          "data_publicacao": "2024-03-15",
+          "orgao_emissor": "DER-PR / Seil",
+          "valor_reais": 386900000.0
+        }
+      ]
+    },
+    {
+      "id": "pr-002",
+      "mandato_id": "pr-2023-2026",
+      "tema": "Educação",
+      "orgao_alvo": "Secretaria de Estado da Educação (Seed-PR)",
+      "trecho_verbatim": "Expandir para 400 colégios o modelo Cívico-Militar e ofertar aulas de programação para 100% dos alunos do fundamental II.",
+      "plano_pagina": 18,
+      "status": "concluida",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pr-002-1",
+          "tipo": "diario_oficial",
+          "titulo": "Resolução Seed nº 1.050/2023 - Homologação de 312 unidades no programa Cívico-Militar",
+          "url": "https://www.educacao.pr.gov.br/",
+          "data_publicacao": "2023-12-18",
+          "orgao_emissor": "Seed-PR"
+        }
+      ]
+    },
+    {
+      "id": "pr-003",
+      "mandato_id": "pr-2023-2026",
+      "tema": "Agronegócio",
+      "orgao_alvo": "Secretaria da Agricultura e do Abastecimento (Seab)",
+      "trecho_verbatim": "Subsidiar juros para modernização de pequenas propriedades com o Banco do Agricultor Paranaense.",
+      "plano_pagina": 25,
+      "status": "em_andamento",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [
+        {
+          "id": "ev-pr-003-1",
+          "tipo": "orcamento",
+          "titulo": "Liberação de R$ 850 milhões em crédito equalizado pelo Banco do Agricultor",
+          "url": "https://www.seab.pr.gov.br/",
+          "data_publicacao": "2024-05-20",
+          "orgao_emissor": "Seab / Fomento Paraná",
+          "valor_reais": 850000000.0
+        }
+      ]
+    },
+    {
+      "id": "pr-004",
+      "mandato_id": "pr-2023-2026",
+      "tema": "Habitação Rural",
+      "orgao_alvo": "Companhia de Habitação do Paraná (Cohapar)",
+      "trecho_verbatim": "Erguer 10 mil casas populares rurais sem custo para famílias agricultoras de baixa renda.",
+      "plano_pagina": 31,
+      "status": "sem_sinal",
+      "status_medido_em": "2026-09-06",
+      "evidencias": [],
+      "observacao": "Entregas anuais da Cohapar na zona rural ficaram abaixo de 1.500 unidades até a última medição."
+    }
+  ],
+  "iniciativas_fora_do_plano": [
+    {
+      "id": "inf-pr-001",
+      "tema": "Rodovias Federais Integradas",
+      "orgao": "Seil / ANTT",
+      "titulo": "Novo Anel de Concessões Rodoviárias dos Lotes 1 e 2 (Pedágio com desconto em leilão)",
+      "descricao": "Modelagem e licitação na B3 em parceria com o Governo Federal.",
+      "url": "https://www.infraestrutura.pr.gov.br/",
+      "data": "2023-09-29",
+      "tipo": "contrato",
+      "valor_reais": 30000000000.0
+    }
+  ]
+}

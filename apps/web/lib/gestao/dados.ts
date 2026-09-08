@@ -8,6 +8,27 @@ import dadosRj from "@/data/gestao/governo-rj.json";
 import dadosEs from "@/data/gestao/governo-es.json";
 import dadosPa from "@/data/gestao/governo-pa.json";
 import dadosDf from "@/data/gestao/governo-df.json";
+import dadosRs from "@/data/gestao/governo-rs.json";
+import dadosPr from "@/data/gestao/governo-pr.json";
+import dadosSc from "@/data/gestao/governo-sc.json";
+import dadosBa from "@/data/gestao/governo-ba.json";
+import dadosPe from "@/data/gestao/governo-pe.json";
+import dadosCe from "@/data/gestao/governo-ce.json";
+import dadosGo from "@/data/gestao/governo-go.json";
+import dadosMt from "@/data/gestao/governo-mt.json";
+import dadosMs from "@/data/gestao/governo-ms.json";
+import dadosAm from "@/data/gestao/governo-am.json";
+import dadosRo from "@/data/gestao/governo-ro.json";
+import dadosTo from "@/data/gestao/governo-to.json";
+import dadosAc from "@/data/gestao/governo-ac.json";
+import dadosAp from "@/data/gestao/governo-ap.json";
+import dadosRr from "@/data/gestao/governo-rr.json";
+import dadosMa from "@/data/gestao/governo-ma.json";
+import dadosPb from "@/data/gestao/governo-pb.json";
+import dadosRn from "@/data/gestao/governo-rn.json";
+import dadosAl from "@/data/gestao/governo-al.json";
+import dadosPi from "@/data/gestao/governo-pi.json";
+import dadosSe from "@/data/gestao/governo-se.json";
 import dadosUniao from "@/data/gestao/governo-uniao.json";
 import dadosBetim from "@/data/gestao/gestao-betim.json";
 import dadosBh from "@/data/gestao/gestao-bh.json";
@@ -15,14 +36,42 @@ import dadosAracuai from "@/data/gestao/gestao-aracuai.json";
 import dadosBrumadinho from "@/data/gestao/gestao-brumadinho.json";
 
 const MANDATOS_CATALOGO: Record<string, MandatoGestao> = {
+  // Sudeste
   mg: dadosMg as unknown as MandatoGestao,
   sp: dadosSp as unknown as MandatoGestao,
   rj: dadosRj as unknown as MandatoGestao,
   es: dadosEs as unknown as MandatoGestao,
-  pa: dadosPa as unknown as MandatoGestao,
+  // Sul
+  rs: dadosRs as unknown as MandatoGestao,
+  pr: dadosPr as unknown as MandatoGestao,
+  sc: dadosSc as unknown as MandatoGestao,
+  // Nordeste
+  ba: dadosBa as unknown as MandatoGestao,
+  pe: dadosPe as unknown as MandatoGestao,
+  ce: dadosCe as unknown as MandatoGestao,
+  ma: dadosMa as unknown as MandatoGestao,
+  pb: dadosPb as unknown as MandatoGestao,
+  rn: dadosRn as unknown as MandatoGestao,
+  al: dadosAl as unknown as MandatoGestao,
+  pi: dadosPi as unknown as MandatoGestao,
+  se: dadosSe as unknown as MandatoGestao,
+  // Centro-Oeste
   df: dadosDf as unknown as MandatoGestao,
+  go: dadosGo as unknown as MandatoGestao,
+  mt: dadosMt as unknown as MandatoGestao,
+  ms: dadosMs as unknown as MandatoGestao,
+  // Norte
+  pa: dadosPa as unknown as MandatoGestao,
+  am: dadosAm as unknown as MandatoGestao,
+  ro: dadosRo as unknown as MandatoGestao,
+  to: dadosTo as unknown as MandatoGestao,
+  ac: dadosAc as unknown as MandatoGestao,
+  ap: dadosAp as unknown as MandatoGestao,
+  rr: dadosRr as unknown as MandatoGestao,
+  // Federal
   uniao: dadosUniao as unknown as MandatoGestao,
   federal: dadosUniao as unknown as MandatoGestao,
+  // Prefeituras
   betim: dadosBetim as unknown as MandatoGestao,
   bh: dadosBh as unknown as MandatoGestao,
   "belo-horizonte": dadosBh as unknown as MandatoGestao,
