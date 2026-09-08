@@ -1,0 +1,184 @@
+[
+  {
+    "id": "ficha-bh-saude-sus",
+    "slug": "capacidade-hospitalar-bh",
+    "eixo": "direitos",
+    "subfrente": "saude-publica",
+    "titulo": "Capacidade Instalada e Leitos do SUS em Belo Horizonte",
+    "resumo": "Levantamento da rede hospitalar pública e conveniada da capital mineira, com cálculo de leitos por habitante e tempo médio de internação.",
+    "conteudo": "Belo Horizonte conta com uma rede referenciada para mais de 5 milhões de pessoas na Região Metropolitana. A relação leito/habitante atinge patamares acima da média estadual, mas a concentração de atendimentos de alta complexidade pressiona a atenção primária nas Unidades Básicas de Saúde.",
+    "dataPublicacao": "2026-08-15T10:00:00.000Z",
+    "fontes": [
+      { "nome": "DataSUS - Cadastro Nacional de Estabelecimentos de Saúde (CNES)", "orgao": "Ministério da Saúde" },
+      { "nome": "SIH-SUS - Sistema de Informações Hospitalares", "orgao": "DataSUS" }
+    ],
+    "indicadores": [
+      {
+        "chave": "leitos_por_mil_hab",
+        "nome": "Leitos SUS por mil habitantes",
+        "valor": 2.45,
+        "unidade": "leitos/mil hab",
+        "fonte": "CNES/DataSUS",
+        "anoReferencia": 2026,
+        "explicacaoLeiga": "Média recomendada pela OMS é de 2,5 a 3,0 leitos por mil habitantes."
+      },
+      {
+        "chave": "estabelecimentos_saude",
+        "nome": "Total de Estabelecimentos CNES",
+        "valor": 1280,
+        "unidade": "unidades",
+        "fonte": "CNES",
+        "anoReferencia": 2026
+      }
+    ],
+    "cidadesRelacionadas": ["3106200"],
+    "tags": ["saude", "sus", "cnes", "leitos", "hospitais", "belo-horizonte", "orcamento"],
+    "nivel": "municipal"
+  },
+  {
+    "id": "ficha-bh-educacao-ideb",
+    "slug": "ideb-infraestrutura-escolar-bh",
+    "eixo": "direitos",
+    "subfrente": "educacao",
+    "titulo": "Qualidade da Educação Básica e Infraestrutura Escolar em Belo Horizonte",
+    "resumo": "Análise da nota do IDEB em correlação com a presença de bibliotecas, quadras e laboratórios nas escolas municipais de BH.",
+    "conteudo": "A rede municipal de ensino fundamental em BH apresenta evolução consistente no IDEB, embora escolas em áreas de maior vulnerabilidade socioeconômica demandem reforço pedagógico e retenção de docentes.",
+    "dataPublicacao": "2026-08-20T14:00:00.000Z",
+    "fontes": [
+      { "nome": "INEP - Censo Escolar", "orgao": "MEC" },
+      { "nome": "INEP - Índice de Desenvolvimento da Educação Básica (IDEB)", "orgao": "MEC" }
+    ],
+    "indicadores": [
+      {
+        "chave": "ideb_anos_iniciais",
+        "nome": "IDEB Anos Iniciais",
+        "valor": 6.1,
+        "fonte": "INEP",
+        "anoReferencia": 2024
+      }
+    ],
+    "cidadesRelacionadas": ["3106200"],
+    "tags": ["educacao", "ideb", "inep", "escolas", "belo-horizonte", "orcamento"],
+    "nivel": "municipal"
+  },
+  {
+    "id": "ficha-bh-orcamento-execucao",
+    "slug": "orcamento-e-execucao-bh",
+    "eixo": "estado",
+    "subfrente": "orcamento",
+    "titulo": "Orçamento Público e Execução Financeira de Belo Horizonte",
+    "resumo": "Demonstrativo da arrecadação própria (ISS/IPTU) versus transferências do Estado e da União na capital mineira.",
+    "conteudo": "Belo Horizonte possui um dos maiores orçamentos municipais do país. Mais de 40% das despesas correntes são alocadas em saúde e educação, superando os mínimos constitucionais.",
+    "dataPublicacao": "2026-08-18T11:30:00.000Z",
+    "fontes": [
+      { "nome": "Portal da Transparência de Belo Horizonte", "orgao": "Prefeitura de Belo Horizonte" },
+      { "nome": "SICONFI - Tesouro Nacional", "orgao": "Ministério da Fazenda" }
+    ],
+    "indicadores": [
+      {
+        "chave": "orcamento_total_anual",
+        "nome": "Orçamento Aprovado 2026",
+        "valor": "R$ 19,4 bilhões",
+        "fonte": "LOA BH",
+        "anoReferencia": 2026
+      }
+    ],
+    "cidadesRelacionadas": ["3106200"],
+    "tags": ["orcamento", "financas", "receitas", "gastos", "saude", "educacao", "belo-horizonte"],
+    "nivel": "municipal"
+  },
+  {
+    "id": "ficha-bh-meio-ambiente-velhas",
+    "slug": "bacia-rio-das-velhas-bh",
+    "eixo": "terra",
+    "subfrente": "nossos-rios",
+    "titulo": "Monitoramento Ambiental da Bacia do Rio das Velhas em Belo Horizonte",
+    "resumo": "Indicadores de saneamento básico, lançamento de efluentes e áreas de preservação permanente nos afluentes urbanos.",
+    "conteudo": "Os ribeirões Arrudas e Onça drenam a maior parte da capital em direção ao Rio das Velhas. Apesar dos avanços no tratamento de esgoto, pontos de extravasamento pluvial continuam exigindo fiscalização.",
+    "dataPublicacao": "2026-08-25T09:00:00.000Z",
+    "fontes": [
+      { "nome": "Instituto Mineiro de Gestão das Águas (IGAM)", "orgao": "SEMAD-MG" },
+      { "nome": "Comitê da Bacia Hidrográfica do Rio das Velhas", "orgao": "CBH Velhas" }
+    ],
+    "indicadores": [
+      {
+        "chave": "indice_tratamento_esgoto",
+        "nome": "Índice de Tratamento de Esgoto",
+        "valor": "94,2%",
+        "fonte": "SNIS",
+        "anoReferencia": 2024
+      }
+    ],
+    "cidadesRelacionadas": ["3106200"],
+    "tags": ["meio-ambiente", "rios", "saneamento", "belo-horizonte", "bacias", "onsa"],
+    "nivel": "municipal"
+  },
+  {
+    "id": "ficha-betim-saude-cnes",
+    "slug": "rede-hospitalar-betim",
+    "eixo": "direitos",
+    "subfrente": "saude-publica",
+    "titulo": "Rede Hospitalar e Complexo de Saúde de Betim",
+    "resumo": "Capacidade instalada do Hospital Regional de Betim e cobertura da atenção básica em polo industrial de grande porte.",
+    "conteudo": "Betim abriga um dos mais ativos hospitais públicos de trauma da RMBH. A integração com contratos de fornecimento e compras públicas de insumos é detalhada nesta ficha.",
+    "dataPublicacao": "2026-08-28T16:00:00.000Z",
+    "fontes": [
+      { "nome": "CNES - Ministério da Saúde", "orgao": "DataSUS" },
+      { "nome": "Secretaria Municipal de Saúde de Betim", "orgao": "Prefeitura de Betim" }
+    ],
+    "indicadores": [
+      {
+        "chave": "leitos_hospital_regional",
+        "nome": "Leitos Ativos Hospital Regional",
+        "valor": 340,
+        "unidade": "leitos",
+        "fonte": "CNES",
+        "anoReferencia": 2026
+      }
+    ],
+    "cidadesRelacionadas": ["3106705"],
+    "tags": ["saude", "sus", "cnes", "leitos", "betim", "contratos"],
+    "nivel": "municipal"
+  },
+  {
+    "id": "ficha-betim-paraopeba-obras",
+    "slug": "reparacao-paraopeba-betim",
+    "eixo": "terra",
+    "subfrente": "nossos-rios",
+    "titulo": "Reparação e Obras da Bacia do Paraopeba em Betim",
+    "resumo": "Acompanhamento do repasse municipal do Acordo Judicial de Brumadinho e execução de obras de macrodrenagem.",
+    "conteudo": "Betim recebeu recursos da cota de reparação municipal do Acordo de Brumadinho. Esta ficha monitora a aplicação dos repasses em infraestrutura de contenção de enchentes e abastecimento.",
+    "dataPublicacao": "2026-08-30T10:00:00.000Z",
+    "fontes": [
+      { "nome": "Auditoria Socioambiental Independente (AECOM/AJRI)", "orgao": "Justiça Federal" },
+      { "nome": "Comitê Pró-Brumadinho", "orgao": "Governo de Minas Gerais" }
+    ],
+    "cidadesRelacionadas": ["3106705"],
+    "tags": ["paraopeba", "reparacao", "acordo-judicial", "betim", "rios", "obras"],
+    "nivel": "municipal"
+  },
+  {
+    "id": "ficha-sirenejud-processos-mg",
+    "slug": "processos-ambientais-sirenejud-mg",
+    "eixo": "estado",
+    "subfrente": "judiciario",
+    "titulo": "Painel de Ações Ambientais no Judiciário (SIRENEJud/CNJ)",
+    "resumo": "Mapeamento das ações civis públicas, crimes ambientais e execuções de TACs em trâmite no TJMG e TRF-6.",
+    "conteudo": "O Sistema de Informações Georreferenciadas do Poder Judiciário (SIRENEJud) rastreia processos ambientais com polígonos sobrepostos a áreas de conservação e terras públicas.",
+    "dataPublicacao": "2026-08-31T08:00:00.000Z",
+    "fontes": [
+      { "nome": "SIRENEJud - Conselho Nacional de Justiça", "orgao": "CNJ" }
+    ],
+    "indicadores": [
+      {
+        "chave": "acoes_ambientais_ativas",
+        "nome": "Ações Ambientais Ativas em MG",
+        "valor": 1420,
+        "fonte": "CNJ/SIRENEJud",
+        "anoReferencia": 2026
+      }
+    ],
+    "tags": ["judiciario", "sirenejud", "cnj", "processos", "meio-ambiente", "minas-gerais"],
+    "nivel": "estadual"
+  }
+]

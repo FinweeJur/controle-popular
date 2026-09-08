@@ -1,0 +1,72 @@
+{
+  "fonte": "mpf-grandes-casos",
+  "itens": [
+    {
+      "id": "mpf-grandes-casos:doc-001",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Parecer Instituto Lactec — Laudo Técnico",
+      "data": "2024",
+      "tipo": "Laudo técnico",
+      "orgao": "MPF — Grandes Casos",
+      "esfera": "federal",
+      "uf": "MG",
+      "tags": [
+        "mpf-grandes-casos",
+        "lactec",
+        "laudo",
+        "fundao"
+      ],
+      "resumo": "Laudo técnico do Instituto Lactec apresentado pelo MPF no caso Samarco/Fundão.",
+      "url": "https://mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos",
+      "fonteId": "mpf-grandes-casos",
+      "regiao_mg": "Rio Doce",
+      "classificavel": true
+    },
+    {
+      "id": "mpf-grandes-casos:doc-002",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Acordo de Reparação — Termos e Condições",
+      "data": "2024",
+      "tipo": "Acordo",
+      "orgao": "MPF — Grandes Casos",
+      "esfera": "federal",
+      "uf": "MG",
+      "tags": [
+        "mpf-grandes-casos",
+        "acordo",
+        "fundao",
+        "reparacao"
+      ],
+      "resumo": "Termos e condições do acordo de reparação do rompimento da barragem do Fundão.",
+      "url": "https://mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos",
+      "fonteId": "mpf-grandes-casos",
+      "regiao_mg": "Rio Doce",
+      "classificavel": true
+    },
+    {
+      "id": "mpf-grandes-casos:doc-003",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Operação Rejeito — Documentos de Investigação",
+      "data": "2025",
+      "tipo": "Investigação",
+      "orgao": "MPF — Grandes Casos",
+      "esfera": "federal",
+      "uf": "MG",
+      "tags": [
+        "mpf-grandes-casos",
+        "operacao-rejeito",
+        "pf",
+        "fundao"
+      ],
+      "resumo": "Documentos da Operação Rejeito relacionados à investigação de danos ambientais no Fundão.",
+      "url": "https://mpf.mp.br/atuacao/grandes-casos/caso-samarco/documentos",
+      "fonteId": "mpf-grandes-casos",
+      "regiao_mg": "Rio Doce",
+      "classificavel": true
+    }
+  ],
+  "geradoEm": "2026-09-06T03:04:42.242456+00:00"
+}

@@ -1,0 +1,142 @@
+{
+  "fonte": "Controladoria-Geral do Estado de Minas Gerais (CGE-MG)",
+  "urlFonte": "http://acessoainformacao.mg.gov.br/sistema/site/busca_decisao.aspx",
+  "coletadoEm": "2026-08-31",
+  "totalDecisoes": 753,
+  "totalProvimentos": 16,
+  "taxaNaoConhecimentoOuDesprovimento": 51.9,
+  "distribuicaoPorAno": [
+    {
+      "ano": 2020,
+      "total": 51,
+      "desprovimento": 14,
+      "naoConhecimento": 23,
+      "perdaObjeto": 10,
+      "perdaParcial": 4,
+      "provimento": 0,
+      "provimentoParcial": 0
+    },
+    {
+      "ano": 2021,
+      "total": 60,
+      "desprovimento": 21,
+      "naoConhecimento": 28,
+      "perdaObjeto": 7,
+      "perdaParcial": 3,
+      "provimento": 1,
+      "provimentoParcial": 0
+    },
+    {
+      "ano": 2022,
+      "total": 86,
+      "desprovimento": 17,
+      "naoConhecimento": 21,
+      "perdaObjeto": 4,
+      "perdaParcial": 0,
+      "provimento": 0,
+      "provimentoParcial": 0
+    },
+    {
+      "ano": 2023,
+      "total": 204,
+      "desprovimento": 30,
+      "naoConhecimento": 59,
+      "perdaObjeto": 5,
+      "perdaParcial": 0,
+      "provimento": 3,
+      "provimentoParcial": 2
+    },
+    {
+      "ano": 2024,
+      "total": 156,
+      "desprovimento": 16,
+      "naoConhecimento": 50,
+      "perdaObjeto": 11,
+      "perdaParcial": 0,
+      "provimento": 1,
+      "provimentoParcial": 1
+    },
+    {
+      "ano": 2025,
+      "total": 143,
+      "desprovimento": 14,
+      "naoConhecimento": 56,
+      "perdaObjeto": 7,
+      "perdaParcial": 2,
+      "provimento": 3,
+      "provimentoParcial": 0
+    },
+    {
+      "ano": 2026,
+      "total": 53,
+      "desprovimento": 14,
+      "naoConhecimento": 28,
+      "perdaObjeto": 1,
+      "perdaParcial": 5,
+      "provimento": 3,
+      "provimentoParcial": 2
+    }
+  ],
+  "decisoes": [
+    {
+      "id": "dec-2026-001",
+      "numeroRecurso": "REC-CGE-2026-0082",
+      "ano": 2026,
+      "orgaoDemandado": "SEMAD — Meio Ambiente",
+      "tipoDecisao": "Provimento",
+      "dataDecisao": "2026-06-12",
+      "relator": "Comissão Mista de Reavaliação de Informações",
+      "resumoEmenta": "Pedido de acesso a autos de fiscalização de barragens em Mariana. Inexistência de sigilo legal. Concedido acesso integral aos relatórios técnicos."
+    },
+    {
+      "id": "dec-2026-002",
+      "numeroRecurso": "REC-CGE-2026-0054",
+      "ano": 2026,
+      "orgaoDemandado": "FEAM — Fundação Estadual do Meio Ambiente",
+      "tipoDecisao": "Não Conhecimento",
+      "dataDecisao": "2026-05-18",
+      "relator": "Assessoria Jurídica da CGE",
+      "resumoEmenta": "Recurso intempestivo interposto fora do prazo legal de 10 dias após a resposta inicial."
+    },
+    {
+      "id": "dec-2025-015",
+      "numeroRecurso": "REC-CGE-2025-0112",
+      "ano": 2025,
+      "orgaoDemandado": "SEPLAG — Planejamento e Gestão",
+      "tipoDecisao": "Provimento Parcial",
+      "dataDecisao": "2025-10-04",
+      "relator": "Comissão Mista CGE",
+      "resumoEmenta": "Planilha de repasses do acordo judicial de Brumadinho. Determinado fornecimento dos valores consolidados com tarjamento de dados pessoais."
+    },
+    {
+      "id": "dec-2025-008",
+      "numeroRecurso": "REC-CGE-2025-0045",
+      "ano": 2025,
+      "orgaoDemandado": "IEF — Instituto Estadual de Florestas",
+      "tipoDecisao": "Desprovimento",
+      "dataDecisao": "2025-04-20",
+      "relator": "CGE-MG",
+      "resumoEmenta": "Solicitação que exige trabalho adicional de consolidação de dados não disponíveis em formato estruturado. Negativa mantida nos termos do decreto estadual."
+    },
+    {
+      "id": "dec-2024-022",
+      "numeroRecurso": "REC-CGE-2024-0198",
+      "ano": 2024,
+      "orgaoDemandado": "IGAM — Instituto Mineiro de Gestão das Águas",
+      "tipoDecisao": "Perda de Objeto",
+      "dataDecisao": "2024-08-30",
+      "relator": "CGE-MG",
+      "resumoEmenta": "Informação sobre outorgas hídricas disponibilizada pelo órgão no curso da tramitação do recurso."
+    },
+    {
+      "id": "dec-2023-044",
+      "numeroRecurso": "REC-CGE-2023-0155",
+      "ano": 2023,
+      "orgaoDemandado": "SEMAD — Meio Ambiente",
+      "tipoDecisao": "Provimento",
+      "dataDecisao": "2023-11-15",
+      "relator": "Comissão Mista CGE",
+      "resumoEmenta": "Acesso a pareceres de auditoria ambiental de empreendimentos minerários no Quadrilátero Ferrífero."
+    }
+  ]
+}
