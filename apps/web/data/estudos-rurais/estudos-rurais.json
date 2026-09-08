@@ -1,0 +1,659 @@
+{
+  "schema": 1,
+  "coletadoEm": "2026-09-08T15:48:27.943Z",
+  "maquina": "Home-PC",
+  "exemplo": false,
+  "contagens": {
+    "itens": 60,
+    "porTipo": {
+      "noticia": 60,
+      "artigo": 0,
+      "evento": 0,
+      "publicacao": 0
+    }
+  },
+  "fontes": [
+    {
+      "id": "news-estudos-rurais",
+      "titulo": "Google News — estudos rurais no Jequitinhonha e Mucuri",
+      "url": "https://news.google.com/rss/search?q=%22estudos%20rurais%22%20Jequitinhonha%20OR%20Mucuri%20OR%20Diamantina&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "metodo": "RSS de busca do Google News (título, link, data e resumo da própria fonte)",
+      "itens": 5
+    },
+    {
+      "id": "news-agricultura-familiar",
+      "titulo": "Google News — agricultura familiar no Jequitinhonha",
+      "url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "metodo": "RSS de busca do Google News (título, link, data e resumo da própria fonte)",
+      "itens": 53
+    },
+    {
+      "id": "news-ppger",
+      "titulo": "Google News — PPGER / UFVJM",
+      "url": "https://news.google.com/rss/search?q=PPGER%20OR%20%22Estudos%20Rurais%22%20UFVJM&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "metodo": "RSS de busca do Google News (título, link, data e resumo da própria fonte)",
+      "itens": 2
+    },
+    {
+      "id": "site-ufvjm-ica",
+      "titulo": "Feed do ICA/UFVJM, filtrado por palavras-chave de estudos rurais",
+      "url": "https://site.ufvjm.edu.br/ica/feed/",
+      "metodo": "RSS do WordPress do ICA; post entra só se título ou resumo casar com a lista de palavras-chave",
+      "itens": 1
+    },
+    {
+      "id": "repositorio-ufvjm",
+      "titulo": "Repositório institucional UFVJM — dissertações do PPGER",
+      "url": "https://repositorio.ufvjm.edu.br/collections/69a0a0d2-d9f0-4e08-a825-1265f156f608",
+      "metodo": "API REST do DSpace 7",
+      "itens": 0,
+      "observacao": "BLOQUEADO nesta rodada: API devolve text/html (SPA) em https://repositorio.ufvjm.edu.br/server/oai/request?verb=ListRecords&metadataPrefix=oai_dc"
+    }
+  ],
+  "lacunas": [
+    "Publicações (dissertações do PPGER): a API REST do DSpace do repositório UFVJM devolve a SPA HTML em todas as rotas testadas (status 200, Content-Type text/html) — não é possível coletar de máquina comum. Rodada fica para o home-pc (captura com navegador); enquanto isso não há dissertação nesta página.",
+    "Eventos: nenhum coletado nesta rodada — sem fonte estruturada de eventos do PPGER na web aberta (o sistema sgppg.com.br/ppg/ppger/31/ existe, mas exigiria varredura própria; registrado para rodada futura)."
+  ],
+  "itens": [
+    {
+      "id": "news-google-com-rss-articles-cbmi1afbvv95cuxns3froxh2tw9yqkfqa2u0vtbuml83emfkvtv2tjfmcgjwqurzujdpnk93efoyvc01b19qmxrjelz",
+      "titulo": "Feira de Mineiridades reúne artesanato, cultura e agricultura familiar no Ponteio a partir de 17 de agosto - BHAZ",
+      "tipo": "noticia",
+      "fonte": "BHAZ",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-08-17",
+      "resumo": "Feira de Mineiridades reúne artesanato, cultura e agricultura familiar no Ponteio a partir de 17 de agosto &nbsp;&nbsp; BHAZ",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNS3FrOXh2TW9YQkFqa2U0VTBuMl83emFKVTV2TjFmcGJWQURzUjdpNk93eFoyVC01b19QMXRjelZTVk9CazNRbl9DY2s2bmNHejhtVENyRmhJOVVIOXpFRGM1QjRwSHJ1aU93ZmZ3WDA3R3JiempMX1huUF9sYkFSOHNSdXNFSVZjbU1kQUhnc1FhU0NDX2xjVGJhOFNwenhSUkxidmw0X2tSRXg1V2cxNk12Z1ZyQXFISjcyU0FxT3ZIa3RQX0huV3FXelNqSHZ1NlQ5dw?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmisafbvv95cuxqq0p4mutzwun4adjynv9kq1lmdk9tr25scxpnunliatlym3qxovatthdndjexuupuuvbnsjzhrxn",
+      "titulo": "Laticínio em Acauã impulsiona cadeia do leite no Vale do Jequitinhonha - Gazeta de Araçuaí",
+      "tipo": "noticia",
+      "fonte": "Gazeta de Araçuaí",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-07-29",
+      "resumo": "Laticínio em Acauã impulsiona cadeia do leite no Vale do Jequitinhonha &nbsp;&nbsp; Gazeta de Araçuaí",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQQ0p4MUtZWUN4aDJyNV9KQ1lmdk9TR25ScXpnUnliaTlYM3QxOVAtTHdNdjExUUpUUVBNSjZhRXNPS2xjd2JVZ1NkLV9PSlhoY3VTLWwzZkEzMmVDWDVpNWswMFphMHlKcFNCNkZCTzMxcTZsTy1fLWZSMjM1dzgyNnc5R05XblV0VGFfaVhCbm9kOWN4OG0yRmJsc002eFlERlZpdFgtR2F6dnpLUzU3YQ?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi0afbvv95cuxpqxb1bvvvbzzkodvktu9xcwvmn3j1mkdrs0uxx3pwa3ppdmravmvbze56ujdqx044ejhjmzlnd0j",
+      "titulo": "Ministério do Esporte prorroga parceria com agricultores familiares do Baixo Jequitinhonha - O TEMPO",
+      "tipo": "noticia",
+      "fonte": "O TEMPO",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-07-27",
+      "resumo": "Ministério do Esporte prorroga parceria com agricultores familiares do Baixo Jequitinhonha &nbsp;&nbsp; O TEMPO",
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPQXB1bVVvbzZKODVkTU9XcWVMN3J1MkdrS0UxX3pwa3ppdmRaVmVBZE56UjdQX044ejhjMzlNd0JQQXlHRFl2anF0cDdwOWhvTHZ6QjVvLWZ6SjdZX1BGR2tRbTNYcjdhZWxDejdRYmRidUhiZ1BDdV9xNDU1SnBfRjBiRFc1MjJ6aGI2SDBVZGtMSVNNT1Bud09qdWVGY0xtcWtXVHk4Y2NfbFItUWt6ajd4THdKemZuckEwaXlyZGZKQlg5SF9VOG5ER1haa2ty0gHWAUFVX3lxTE83aDdCWkcxb1ZndWRPSDVGUV9ySFNablJCLUkxYk9yeVF3eGt3aTBDRUYtREpvalY0cDdaNXlESnNQSlpzZ0xWVXdzR3hMTFRLLUxNR3hHaEU0TURJME5mOU42bVlHdUhHZ3d5dkZqbmZ0enBYU3F3alVPLTNFMlR4TERmcmg2NmlkYm1FTmFZRUtETnJIVzhZZWRBLWtZa0xlNjVsVF9MUno0QlVtMjlYSjFWb3ROZ0pMdEhabjM4c1duUEVwTFJxYm91dDhtbHJHX0QwN2c?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmioafbvv95cuxobwnha2rlc3axbhjaodzqc2hhyv9hukhfmtyzbzzztlzqqnpic3zwrtfztwfksv9tr1yxshnsrwf",
+      "titulo": "Novo laticínio impulsiona cadeia do leite no Vale do Jequitinhonha - Diário do Comércio",
+      "tipo": "noticia",
+      "fonte": "Diário do Comércio",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-07-26",
+      "resumo": "Novo laticínio impulsiona cadeia do leite no Vale do Jequitinhonha &nbsp;&nbsp; Diário do Comércio",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxObWNHa2RLc3AxbHJaODZQc2hhYV9HUkhFMTYzbzZZTlZQQnpIc3ZwRTFZTWFkSV9TR1YxSHNSRWFYLVNLN2wtSHk5YUZIWFVaVFZHMjRfUWFxOUlOLWdEaUlRcFUtLV9vSHNrcGp2dGs2WmRzcnd3MlRFSUVBeDBKQmVjMXZ4UW5pUTlLTUdxX2M4WUpQTTE3R0R1aWF5bjh1?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi0gfbvv95cuxpvjv6zevxahdqd0kxovzgd2tpam1jdhvadufamvvsofpjujrkv1l6zuxmuhhhdfoxdtn5wdhxr0n",
+      "titulo": "Minas entrega 156 títulos de propriedade rural em Jequitinhonha, após 34 anos de espera - Agência Minas",
+      "tipo": "noticia",
+      "fonte": "Agência Minas",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-06-27",
+      "resumo": "Minas entrega 156 títulos de propriedade rural em Jequitinhonha, após 34 anos de espera &nbsp;&nbsp; Agência Minas",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPVjV6ZEVXaHdqd0kxOVZGd2tpam1JdHVadUFaMVVSOFpjUjRKV1l6ZUxMUHhhdFoxdTN5WDhXR0NWQWo5UDVoYUh1NVZFdjFWS2FHc3d0SW4zRkNoT0tZSjBvQ2JZZTlEM1BTelF2M29sTmoweEV5VnhuNVNCb2NCYUI4Z21sempwTGxYWmZmR01OVHR0Ml90Y0RjWEFOQ3ItTHRDQTR1OE1PWnk2Uk4xY0w2MUNyS3FqLWU5TjZUTkRabnN2bkt2ZE5xb1R2bFVhdFE?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiygfbvv95cuxnng5irujicxiysmz1edvgmetgadnvxzb4akfqnnzwvgtmbky1wgvotmhllunrddfnewditi1wazm",
+      "titulo": "São João de Andaraí tem início com grande participação popular e valorização da cultura regional - Se Liga Chapada",
+      "tipo": "noticia",
+      "fonte": "Se Liga Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-06-22",
+      "resumo": "São João de Andaraí tem início com grande participação popular e valorização da cultura regional &nbsp;&nbsp; Se Liga Chapada",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNNG5IRUJicXIySmZ1eDVGMEtGaDNVXzB4akFQNnZWVGtMbkY1WGVoTmhlLUNrdDFneWdiTi1WazM5cWR4dGZVTmg4Wk5xUXNmZVdVWnEzRXdvaTNseGoyLU5kZ2ZvVkZXdExxY1JEa2cwX0s1T1k1ZkdEdjV5dk9LVU1WSU0xRllabHJ3WFAyVkFNLTFUcG1LQUhUWEZyYWJKcnU2Y0o1ZThCODZZMVVKSklXN2xHSXpkbGN3ZTJqWTFFMFUxNmpNamJB?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiuwfbvv95cuxnq2fftxjit3fmevnvwnrhzdjtx29xcg8xvl96tk91egfnmtbqae5iai0wny16qzqtt1levkzuwji",
+      "titulo": "Cooperativa amplia renda de agricultores familiares na Chapada Diamantina - canalrural.com.br",
+      "tipo": "noticia",
+      "fonte": "canalrural.com.br",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-05-25",
+      "resumo": "Cooperativa amplia renda de agricultores familiares na Chapada Diamantina &nbsp;&nbsp; canalrural.com.br",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNQ2FfTXJIT3FmeVNVWnRHZDJtX29xcG8xVl96Tk91eGFnMTBQaE5iai0wNy16QzQtT1lEVkZuWjIzLTdRSVlDa1hlNk1oSDBWNk4zYkptTm5VTmtGTXM3cXM2SFpxVGZRMFVNNnJJUkdrMTBXVHJGOHBYMnFkSkZGeEdnNmNRNEgySW1abzFiYXNubUZ4VFBwZzlJc3NMeFFycUhFVUJLZmdhZm5ZZ3RiWTBaYkktMzhkdmdR?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiowfbvv95cuxpbhhscnn1unlmcxvya0twwtv2uxnnbxv1avzpoefnlvdwsgtvsdzhdlphenrvv3lwbznzcfpwwfz",
+      "titulo": "Cooperativa de Mucugê impulsiona renda e turismo com frutas vermelhas - boca.com.br",
+      "tipo": "noticia",
+      "fonte": "boca.com.br",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-05-25",
+      "resumo": "Cooperativa de Mucugê impulsiona renda e turismo com frutas vermelhas &nbsp;&nbsp; boca.com.br",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPbHhScnN1UnlmcXVya0twWTV2UXNNbXV1aVZPOEFNLVdwSGtVSDZhdlpHenRVV3lWbzNzcFpWWFZxWGlRNmtGQVVlTzVmeWtlLTNtQTA4alB4cW5yMWhkX3hTQzRGM3czampreC1YVFZCd2ZLYm5rXzN0T3ZMaThpUC1NV2hIZ0ZHVXdqLUsxNEJTQkhFNW9wajdyd2UwdlhIb1h3?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi8gfbvv95cuxqalrvc2hjbu0zmwlgd0yzohzjcwntu3jibhfjqwpnqtzuz1lxcnlnqtm5qtjlnfpundnssfhprlh",
+      "titulo": "Unidade de frutas vermelhas em Mucugê amplia produção, atrai novos cooperados e fortalece renda da agricultura familiar - Jornal Grande Bahia",
+      "tipo": "noticia",
+      "fonte": "Jornal Grande Bahia",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-05-24",
+      "resumo": "Unidade de frutas vermelhas em Mucugê amplia produção, atrai novos cooperados e fortalece renda da agricultura familiar &nbsp;&nbsp; Jornal Grande Bahia",
+      "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxQalRVc2hjbU0zMWlGd0YzOHZjcWNTU3JibHFjQWpNQTZUZ1lXcnlNQTM5QTJlNFpuNDNsSFhPRlhJQmRZZHJKVTB0aGo1dTRPTGtjOG80X0JqYllreEdVRnZUWWhBLXBqMm0tMHZJSnNuamV5ejJ4RFdZdHFza1BvU1VDNDBpbkszLVdiQkxVVmI3RnEtMnBGd21sMG9scjhXYzYtRk92OTNTWjZOaDNSNzh2ME0xY294cFAxTEVZZndGUVNUUWhadmIxeVpaTHV1czJDQUNOYmUxc3F1NlhrWFRfbF85eHpkZ09veGF0Wm1xUQ?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi0afbvv95cuxnmdlaaxnrzlblb1phd1ptdy03alprvgh6wf93qnzidmruq3f3uvzmuvrywnn0qzv1eg1ivenfazd",
+      "titulo": "VICE-GOVERNADOR PARTICIPA DO IX ENCONTRO DOS PRODUTORES RURAIS DE BARRA DA ESTIVA E REGIÃO - - Bahia Economica",
+      "tipo": "noticia",
+      "fonte": "- Bahia Economica",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-04-19",
+      "resumo": "VICE-GOVERNADOR PARTICIPA DO IX ENCONTRO DOS PRODUTORES RURAIS DE BARRA DA ESTIVA E REGIÃO &nbsp;&nbsp; - Bahia Economica",
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNMDlaaXNrZlBlb1pHd1pTdy03alpRVGh6WF93QnZidmRuQ3F3UVZmUVRYWnN0QzV1eG1iVENfazdmZnFKaGtvRkl2dC1SMGFOMlhoRHd2RG5BY0hMNXJfazlGa1UxZGxtVEhkRk03cnc4N2hVSXFQS2tzd1hKb2xJLVZ6dHdGZmhZMFJ1T1VzWUNBdl9fUU1HTnFzM0haTVJ4SnQ0S3l5WnNKUDFCOGU0akJyY0NsSDY5V3FGZW9oTThNMHhTT2lnMF9WbUc2XzFw?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi-gfbvv95cuxqd1fvbwq5mwtbnkvscvfoqm9svutsdk16u1fivfhfzflwms1frc0wdhrdx2zrz0xnltv3z0nrm2l",
+      "titulo": "GIPAG realiza capacitação sobre uso da ferramenta Parsifal para revisões sistemáticas da literatura - UFSM",
+      "tipo": "noticia",
+      "fonte": "UFSM",
+      "fonte_url": "https://news.google.com/rss/search?q=%22estudos%20rurais%22%20Jequitinhonha%20OR%20Mucuri%20OR%20Diamantina&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-03-26",
+      "resumo": "GIPAG realiza capacitação sobre uso da ferramenta Parsifal para revisões sistemáticas da literatura &nbsp;&nbsp; UFSM",
+      "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQd1FvbWQ5MWtBNkVscVFoQm9sVUtSdk16U1FIVFhFZFlwMS1fRC0wdHRDX2ZRZ0xNLTV3Z0NrM2lzd3RIT091Q3I1dnJleUx6NzVOZU9TNzhNTDdWZVhDWEl3aC1UNHQtM0pqSGZCZ0txVDVzQzBTUWkzOTZaVHZvQVp3c1czZExuMHZqZE9GS0l4c3lhUXZMREYwWjlwZFZWaXQtbUpUaThLaE03OTdTUW1Ic0dzYVh1R2REVjNrRDdaRkJTUkhnLXlnaHdKRjZPcktZU3U0YnlnUGl4UkFaVjNSdHo3UFJURWt1TV9tNktrYlNpM1VwVlNB?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi-gfbvv95cuxonu5oewixak1anem5cwhdu1bxvthodmy2ovhoewnmr0vsrjjcbxb3rjnlsfhtdjlmnjbvbzvnmnk",
+      "titulo": "Governo da Bahia implanta 16 cozinhas comunitárias no Piemonte da Diamantina e amplia renda de mulheres da agricultura familiar - Jornal Grande Bahia",
+      "tipo": "noticia",
+      "fonte": "Jornal Grande Bahia",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-03-14",
+      "resumo": "Governo da Bahia implanta 16 cozinhas comunitárias no Piemonte da Diamantina e amplia renda de mulheres da agricultura familiar &nbsp;&nbsp; Jornal Grande Bahia",
+      "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxONU5OeWIxak1aNEM5cWhDU1BxVThOdmY2OVhoeWNMR0VSRjJCbXB3RjNlSFhtdjlmNjBvbzVnMnktQllwVUJWd2VwVkhVbEQ4aUV1WFlrR0Q2WTFOWm0yQkd0LUQySHhydkNuVFNkVnNoQVRNc3Ewbm1nYWJzeVBzcWZwZE14MlJ6b01uNmZpTTl4RkpqN21FRDd2VU9NVmNvMWgyX0dIcUl6WjFTOC0yeUZBNFBESUlFbUtSamR6cmp5MG5tbElLVm9kY3hvWGkzZTd1YWdtZFZ0TmNidTNHemYycEpLQ1lXT1hqMV9wcTRQai11R3lNM2F0Q2ppUQ?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmipgfbvv95cuxnoxfzefzhdm1ynw1syjnrvhr1zgiznencb0zpmeo4ueflme9ftznoqnpuntgws3k4vezprwforzd",
+      "titulo": "Crédito nas mãos das mulheres muda a dinâmica da agricultura familiar em Minas Gerais - Diário do Comércio",
+      "tipo": "noticia",
+      "fonte": "Diário do Comércio",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-03-08",
+      "resumo": "Crédito nas mãos das mulheres muda a dinâmica da agricultura familiar em Minas Gerais &nbsp;&nbsp; Diário do Comércio",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNOXFZeFZHdm1YNW1SYjNRVHR1ZGIzNENCb0ZpMEo4UEFLME9FTzNOQnpuNTgwS3k4VEZPRWFORzdyUHlQb0JQNDFXVmMwVy0xbzN5NzdNcUpGRjhoNDRnWVQxVzZVbGUzRTU2SFEybUJMX0stc1kySGxHQm9HUm9xTkZXOF9mQ0Rha3FWMm1qX3h0c1ExUlczS00yWnkwS19YMlJ3blB3?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiqafbvv95cuxqngrknjbeoefjyxd1cghtrfjlunhtajvxcvjqtmhsxzy4akjis2nmcv9tz1rnewj5zgrwudvftvb",
+      "titulo": "Chapada Diamantina conquista direito ao cultivo de Cannabis medicinal - A TARDE",
+      "tipo": "noticia",
+      "fonte": "A TARDE",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-03-03",
+      "resumo": "Chapada Diamantina conquista direito ao cultivo de Cannabis medicinal &nbsp;&nbsp; A TARDE",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQNGRkNjBEOEFJYXd1cGhTRFJLUnhTajVXcVJQTmhSXzY4akJiS2NmcV9tZ1RNeWJ5ZGRwUDVfTVBRV0dFV0pjNGdDNGtlRE1UcVIzbldkVUtvbXVVbl9pZXkxMjNSa0hiUk45NTI0VV9tVExIMXNvUFg0TXJqT29HbDE2ODFpcmR3VlRkNXlkVm8wMkd0OEpiMnNLVHMzNVdPQllNVFhQY1DSAbABQVVfeXFMT2JFX3IwdlQ3TUVuZ1JKZ3lRR3Q1NXM3MFVfdnFUZS1EX2F0UUJlS2hRV2xvS3VCT2tUX2x3dFpld0x1ZUh4aEJmc2lLQUFTU0VxOUt6ZjFNc2k1V09fT2xLNklYN2pHcXdFRFBaU2MwTUYyVGhaMjluR3dOTDgtN2JVVWMyS0ZPR3RPN0JZcldBUWtwNG5fQVVDQjNmSDlPbG9icGpKbzVraC1QZ25tVG4?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi7afbvv95cuxnzhbhlxnrm0jjbk1zwfv6wwffm283wkvdzdzidfqtuupzdhrzqkv0svj1dm1xa2j4bwfhemf6dw8",
+      "titulo": "Epamig desenvolve projeto para expandir o cultivo de arroz de terras altas no Jequitinhonha e no Norte de Minas - Diário do Comércio",
+      "tipo": "noticia",
+      "fonte": "Diário do Comércio",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2026-02-26",
+      "resumo": "Epamig desenvolve projeto para expandir o cultivo de arroz de terras altas no Jequitinhonha e no Norte de Minas &nbsp;&nbsp; Diário do Comércio",
+      "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxNZHBhLXNRM0Jjbk1zWFV6WWFfM283WkVDZDZIdFQtUUpzdHRzQkV0SVJ1dm1Xa2J4bWFhemF6dW81VDc3LXE1YWg1T2l2VGZaX2hxZVI4WFRtQ3pxdnJ3YU8xQUM3YVNTdjFtcmtIY1U0dHZ3VE9ZbUtsNjRUdG12NTBDMWNCWXBscktGeW5xd2x5QXhQVVRzZnBmZnVfYlRXcGVGSGhaV2w0b2RDX0VnbXJnVl93dDYzU01MZ1JIUGNkLVQzejdvQWt3Nk01X1FVRkFKRGRXdWhGU3JBbUhWWE11QWluLVlyNEg5ag?oc=5"
+    },
+    {
+      "id": "site-ufvjm-edu-br-ica-2026-02-19-dia-de-campo-do-projeto-fazenda-escola-fortalece-integracao-entre-universidade-sociedad",
+      "titulo": "Dia de Campo do Projeto Fazenda Escola fortalece integração entre universidade, sociedade, poder público e setor produtivo em Unaí",
+      "tipo": "noticia",
+      "fonte": "UFVJM — Instituto de Ciências Agrárias (ICA)",
+      "fonte_url": "https://site.ufvjm.edu.br/ica/feed/",
+      "data": "2026-02-19",
+      "resumo": "A Universidade Federal dos Vales do Jequitinhonha e Mucuri (UFVJM), por meio do Instituto de Ciências Agrárias (ICA), realizou o 1º Dia de Campo do Projeto Fazenda Escola na Fazenda Experimental Santa Paula (FESP), em Unaí-MG. O evento representou uma importante entrega … Continue reading &#8594;",
+      "url": "https://site.ufvjm.edu.br/ica/2026/02/19/dia-de-campo-do-projeto-fazenda-escola-fortalece-integracao-entre-universidade-sociedade-poder-publico-e-setor-produtivo-em-unai/"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiywfbvv95cuxnqlpkbnraae9actdevdztn0gxakczb0znwdmxdjlsmufosgzxqji3rfdxz011zv9vrjfmq3zrqux",
+      "titulo": "#Chapada: Comunidade Payayá brilha na 16ª Feira Baiana da Agricultura Familiar em Salvador - Jornal da Chapada",
+      "tipo": "noticia",
+      "fonte": "Jornal da Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2025-12-06",
+      "resumo": "#Chapada: Comunidade Payayá brilha na 16ª Feira Baiana da Agricultura Familiar em Salvador &nbsp;&nbsp; Jornal da Chapada",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNQlpkbnRaaE9acTdEVDZTN0gxakczb0ZNWDMxdjlsMUFOSGZXQjI3RFdxZ011ZV9VRjFMQ3ZrQUxoQ09vbTNfT1ZoUGZCRlpwUVZReDhvVXc5WjR5UWI3NWNVeklSQ191ZVR6YWtBeGtOOGlUWXlZVzFGYlNfbmdrc2JhMXo5QlQ3WmthT3J3clVseUhyWjI2WFlQUGY2aFd2cmJNb3FJTTlfc19pWm5JQmIyX0tReTJXQjVkcG85Q3Rib0RWd2taMFpYb9IB0AFBVV95cUxPbFdNTFFFbF9ZdWdDczFFODJGMUdHSzFIZnRKSXlhYkJOMnJnSmhET3FybTNEdUtVdlNWM2ZkZjZNalFHNzhFdUhHbHZ0d0JzUW1UdkJkYTlIaDg2dVFkTVBMNmtFOXFZNGhFaTdyN0dya3cxS2R4VVdOQVVYbUt0ZmRKNUZ2UnRqTEdBVGUxSm5MbzNFQVVkY2dadHNkRHRBRl9kQ1gtbnJERHdydkg5cWtwSy02aFp6RjlGd2pCN2s0cmZzLU1hUjUyY3lEUE4w?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmizafbvv95cuxntzrgedlosfp2dg1zak9fr19eugromks1cnrpendxc3lqdlfjsgz5lxbhakzzaenwwluxvwtad3j",
+      "titulo": "MEL DA AGRICULTURA FAMILIAR CONQUISTA PALADARES E FORTALECE COMUNIDADES RURAIS DA BAHIA - - Bahia Economica",
+      "tipo": "noticia",
+      "fonte": "- Bahia Economica",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2025-08-25",
+      "resumo": "MEL DA AGRICULTURA FAMILIAR CONQUISTA PALADARES E FORTALECE COMUNIDADES RURAIS DA BAHIA &nbsp;&nbsp; - Bahia Economica",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNTzRGeDloSFp2dG1Zak9fR19EUGRoMks1cnRPendXc3lqdlFjSGZ5LXBHakZzaENwWlUxVWtad3JoVjZCcHc4Tm9xYXlOX25RbTh6ekRHekRta1o4MnZwbXFlTWROUXRNX0dLdjFpUl9xSmpHZVE2WU81enFrZW1UTEZYbHFrOGtYdnI4bnpVYS1na2FDTXBFUjZRc2tjRUhHdE1lX1JITFBjbXR3cnlkT3l0S01PUUI0RG5Nb3NtcE5rTkg4blV4QVdDb1E?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmilgfbvv95cuxqmf9xz3hnv0nxuhk3wvz0utvlwmtsuwu1uk5lbes4ehltvetyaurscfnjd1zfzmttskrtxzj0nu5",
+      "titulo": "NOTA | Entidades repudiam homenagem à mineradora Sigma Lithium - mab.org.br",
+      "tipo": "noticia",
+      "fonte": "mab.org.br",
+      "fonte_url": "https://news.google.com/rss/search?q=%22estudos%20rurais%22%20Jequitinhonha%20OR%20Mucuri%20OR%20Diamantina&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2025-08-21",
+      "resumo": "NOTA | Entidades repudiam homenagem à mineradora Sigma Lithium &nbsp;&nbsp; mab.org.br",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQMF9XZ3hnV0NXUHk3WVZ0UTVlWmtsUWU1Uk5LbEs4eHltVEtyaURscFNJd1ZfZmttSkRtXzJ0NU5jNjFLWm5sN2RjVHQ1Q0V3ZTV1UjVwTTNfeHZ1SUx0a3hrWnV2ZzJYZmpibmU1WktSRDQ3UHBfNkMxSXN1TkYzNEhCRXUtQ3h5OEptQkUzVFFlX3dvd3c?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiygfbvv95cuxnb0t4nlp1avzrbgnpnfzycnlqy2jhmkpmzgzjb1zsmu82agnjyklid1lpu1l4azjeoutjafdhel9",
+      "titulo": "Nova unidade de beneficiamento amplia produção de frutas vermelhas na Chapada Diamantina - Jornal Grande Bahia",
+      "tipo": "noticia",
+      "fonte": "Jornal Grande Bahia",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2025-08-17",
+      "resumo": "Nova unidade de beneficiamento amplia produção de frutas vermelhas na Chapada Diamantina &nbsp;&nbsp; Jornal Grande Bahia",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNb0t4Nlp1aVZrbGNpNFZYcnlqY2JHMkpMZGZjb1ZsMU82aGNjYklid1lPU1l4azJEOUtjaFdhel9OLWNSMmFQLXhRWlp3a2dua3RudWstenRDeW82S1FWWnN3YU5ZeF90b0U3MHFXS3I3ZkJQSV9QWXpEblNUQVJOSGFxTzhyRVBlRThMUEFuTEREenptdUZJWDFBb2V5V3F3ZEx4UGs3V0U5SWxlcUhTcGlHQnViNlF5dEp0eHZGU1RSM1YzZGRBMXdR?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmivwfbvv95cuxnd0j1t3fzwgl4qxfmellsx2z4ctrvtuhtnk5ad2rmouduagd0r1fnejg4q19dbvzin3jfc19wu2u",
+      "titulo": "Nova unidade de beneficiamento impulsiona produção de frutas vermelhas na Chapada Diamantina - ba.gov.br",
+      "tipo": "noticia",
+      "fonte": "ba.gov.br",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2025-08-15",
+      "resumo": "Nova unidade de beneficiamento impulsiona produção de frutas vermelhas na Chapada Diamantina &nbsp;&nbsp; ba.gov.br",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNd0J1T3FZWGl4QXFMellSX2Z4cTRvTUhTNk5ad2RmOUdUaGd0R1Fnejg4Q19DbVZiN3Jfc19WU2U1cXBDN3pNMVFQc1AwU0lDNUl2V1FvblRSNUNIVEtaY295ZGhxbXd1VXNZaVZUcFlxUWRHRDFRQkM5andFQ2N1cnF5UnNkZFc2bXZDaVZXRC13aU53RUJkTlJDUHZHMGxEc1RNb3VrQ21yUFJPaGZmaldkQzZZQmdxQ0ZvQVMxZw?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi3afbvv95cuxplvjiys11x3jnyjg3tugwmzzhuy05ajnhq2dgyvfbutrfzdf5cthet3dlckfkblvmnm16dy1jbei",
+      "titulo": "Governo da Bahia inaugura Colégio de Tempo Integral em Mucugê e anuncia R$ 27,2 milhões em investimentos - Jornal Grande Bahia",
+      "tipo": "noticia",
+      "fonte": "Jornal Grande Bahia",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2025-08-15",
+      "resumo": "Governo da Bahia inaugura Colégio de Tempo Integral em Mucugê e anuncia R$ 27,2 milhões em investimentos &nbsp;&nbsp; Jornal Grande Bahia",
+      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPLVJiYS11X3JnYjg3TUgwMzZhUy05ajNHQ2dGYVFBUTRFZDF5cThET3dlckFKblVmNm16dy1JbEIwc19VZXNaOHhjWW1iSFcyMHpjZWw1Vm5Vd2xINUdoZ3JXQTBNZnZKTEs3cTFHdHFqNXpVQmJDeDBsN0lDaF9qcGh4MEdIeGJpZTZEQ1RQLXZwRUxGeExLb1dlLTRCUWN0V2hkZTZoUkZydEVwbTNQUG5HQmVQTjJvMzNUbjhxSFFyejdsc0xKRVFEY0xydmdkV0RYR0xQbUFfbHQ2?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi3wfbvv95cuxqtdfmwxhvegrfq1dcu0pszdlubzhgt2v6ugeyouveou44mdljtw5itwjjvja3ewg0m1v5wuthbfz",
+      "titulo": "Feira Livre de Souto Soares recebe nova estrutura e fortalece agricultura familiar na Chapada Diamantina - Jornal Grande Bahia",
+      "tipo": "noticia",
+      "fonte": "Jornal Grande Bahia",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2025-07-12",
+      "resumo": "Feira Livre de Souto Soares recebe nova estrutura e fortalece agricultura familiar na Chapada Diamantina &nbsp;&nbsp; Jornal Grande Bahia",
+      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQTDFmWXhveGRfQ1dCU0psZDlUbzhGT2V6UGEyOUVEOU44MDlJTW5iTWJJVjA3eWg0M1V5WUthbFZja29ZUm8tMmVuX3d1TGQwUWhtb0xwX2p6TG1VVTRlNmt1bmtKNlMxbmFWdjYyMVpYR1EyYm9BdVFGTHpwUzhzQzEtYXBJbTVnOXk5SHpZQ0c4SS1hMW52Z1JKdHNhTWFrMUp2ODM4Q3BrRm9xQ1owdlE5MnlfVTlUbUFPY2g1bWFnRGpEbVdjVldVOTQ5UmpUU0NwNDl2aU9TT3o3SkRJ?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmisgfbvv95cuxnrewyavbrse8yagpvz2hsrvb3ogjhwu9kuwd1ukjmmf9iylnywwttddzws25junnln2zmsxrrm1v",
+      "titulo": "Andaraí brilha com São João “pé de serra” e protagonismo da agricultura familiar - Se Liga Chapada",
+      "tipo": "noticia",
+      "fonte": "Se Liga Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2025-06-18",
+      "resumo": "Andaraí brilha com São João “pé de serra” e protagonismo da agricultura familiar &nbsp;&nbsp; Se Liga Chapada",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNREwyaVBrSE8yaGpvZ2hsRVB3OGJHWU9KUWd1UkJMMF9IYlNyWWttdDZwS25jUnNlN2ZmSXRRM1VCOWNHTG5Zb0t2RHZKbHFFdTJ2SVlScHhQYUhaMGx6NFF5ZXVndEZGZlZEckVaOU1yclZRekpqUlpOOXU4a2JibHZxQlhuRDRHVWtyV1FFTlRYZGFRMmx6XzRRWWx5R1hsTGlEeXNrYUlVZl9RNG5DdUJ3?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiggjbvv95cuxnbvhewnrat0u2znm3yvprc0lwqxcxrtjvuwlocmxubdfoutjpmjfrrw85vwwwvxb6sfh2xzrmlvj",
+      "titulo": "Raízes do Vale alcança mais de 260 famílias atendidas e mais de 100 hectares destinados à agricultura familiar no Vale do Jequitinhonha - ESG Inside",
+      "tipo": "noticia",
+      "fonte": "ESG Inside",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2025-05-29",
+      "resumo": "Raízes do Vale alcança mais de 260 famílias atendidas e mais de 100 hectares destinados à agricultura familiar no Vale do Jequitinhonha &nbsp;&nbsp; ESG Inside",
+      "url": "https://news.google.com/rss/articles/CBMiggJBVV95cUxNbVhEWnRaT0U2ZnM3YVprc0lwQXcxRTJvUWlocmxubDFoUTJpMjFRRW85VWwwVXB6SFh2XzRMLVJJVjdLUE5PaFh6SjZzdTNSTzMzSmZ3blVQVmQyTC01bk9zdV90OGtWWDRmYW1OV0RoODB5S2VVRGRxSE9NakFRR0poSURKYmpKM21HV0FyUTRxLTdLdVRCTTlfLThNTjNxVnU2ZVVJMGZ0TXNxd2dVNi1nZHZMVWNkd1ZDcTBTaGdMRHlSVHlVX2dwSUhsbHg5X083OVJMQ2lfdFY5LUxFZUdvZmI1ZllkVGVzS3VwV3M5ZE9XbDBGVUZEOVV3VTFuWXc?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi5gfbvv95cuxqqupuslp1ehk1r3pvew5brwo4bgniqu1kcgnssvvzz2tly3lnatvmz2tqdezhbhljv0lroefsb2f",
+      "titulo": "Agroindústrias familiares impulsionam economia e fortalecem comunidades quilombolas no Piemonte da Diamantina - Jornal Grande Bahia",
+      "tipo": "noticia",
+      "fonte": "Jornal Grande Bahia",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2025-05-10",
+      "resumo": "Agroindústrias familiares impulsionam economia e fortalecem comunidades quilombolas no Piemonte da Diamantina &nbsp;&nbsp; Jornal Grande Bahia",
+      "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQQUpUSlp1eHk1R3pveW5BRWo4bGNiQU1KcGNSSVVzZ2tLY3lNaTVMZ2tqdEZHbHljV0lROEFsb2FKV09rUnFFMzFBLVVxTE5KY1hUMXhoY1JCSFNzV3ZMcUc0SG93aFlMRkQtWXdJbXZjYV9jcXk2YjFGV2RDWnNFWVpUT0MzV1FGcHhXT1VjUENQZzM4dzBnVDhYYkNKTWVjWldQczc3SnFDa0Q2NUFuejBtaGNzS25LNlAtdVdhYlA0N2ZDZms0RmZOZlkyWG55Rml6NlQ1c2x3R0lEcTl4Y2JxcDRUZw?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmijwjbvv95cuxqckrtruvuqndpbvncbhk1tfnxewnbduq3dwler0lczgjfngxruvvaeko2melncndfedn5cdnrzwj",
+      "titulo": "Inscrições para cursos de pós-graduação, mestrado e doutorado da UFVJM terminam nesta sexta-feira (9); são mais de 200 vagas - G1",
+      "tipo": "noticia",
+      "fonte": "G1",
+      "fonte_url": "https://news.google.com/rss/search?q=%22estudos%20rurais%22%20Jequitinhonha%20OR%20Mucuri%20OR%20Diamantina&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2025-05-07",
+      "resumo": "Inscrições para cursos de pós-graduação, mestrado e doutorado da UFVJM terminam nesta sexta-feira (9); são mais de 200 vagas &nbsp;&nbsp; G1",
+      "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxQckRTRUVUQndpbVNCbHk1TFNxeWNBdUQ3dWlER0lCZGJFNGxRUVVaeko2MElncndFeDN5cDNrZWJhQzBBaHllYUJ5b2hCTGtBV0kyblRYQTE4UVRiVlJIWVJJWUo1aGgwTHJsWXNyTXRqbmFPSWZlSmpqLXhZNkRZREZkbW0tNlNKdUJ0LXpxbkpoTEw5T1UzbU9rSERjanJnc09FWkNmREVvdWRIWDcwdlMwdXFHUEdsQ3BtdURpc2RUbGZYa3ozLW9jd1lrZVdOWk9ZNlB4ZUd5cjRoZmFPSFliSnBlTTZRY3VZSkJWcmptcUdQZnpxaXB3aExqLTlBNXRMYTM2YXVwYnFwQ3B30gGeAkFVX3lxTFAwYk9JZ2hGVk1qUl9JaWZDeWVyYkpjcF9XT040OTNNYlFJOW1JSktHSmFVandwT1podDFxam03dk83MlBUWFZURTMxNzRsc1FSd1VLbGRpR0RKOFpkUXlBSzFsaE1jNkJZX3hteDc1WHNwS3loYTFUUlNMM1NWUjl3SjA1cE8tNHNPckJXNjB2QVVDX2w3YVhmQWd5RGx5T0dZYXE3WTJXcFpKQzJVUFNNMG9ZNHRpMHFUY08ySXVGSXd1UHFJb2xnY1YwTE9lTHBSTmxtN09nUnNTelhIZHl0NF9Ua3ZWcElhdWhhc1BXRkNxQjEtM01XRFg5Q2ZBRXdvdUVzVGZtOFBnOWs0UHpnM0tzYmhmaEk4VHhvSWc?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiowfbvv95cuxnb0rjbu0tsdi4s3awbff6dzuzce9tognxcvvvcxdtr3rwr3exyjrnwkhpuwnzwnpwlulsn1fbbmc",
+      "titulo": "Feira Agroecológica da Chapada Diamantina agora é semanal em Seabra - Se Liga Chapada",
+      "tipo": "noticia",
+      "fonte": "Se Liga Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2025-02-19",
+      "resumo": "Feira Agroecológica da Chapada Diamantina agora é semanal em Seabra &nbsp;&nbsp; Se Liga Chapada",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNb0RjbU0tSDI4S3AwbFF6dzUzcE9TOGNXcVVVcXdTR3RWR3ExYjRNWkhPUWNzWnpwLUlsN1FBbmc4bVhudENoV1I5TVNTSzhRWS1heERSb2RQSGxkS3VJbVJsR2FKZlhHZlhFOXZma25QWlEzZHJoc3QzTXhIOF9ubHREc3NwWnh0Q1FDb0l0MkdidzVEV2Y1VUxWZ1FfTmQxTGdz?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi0wfbvv95cuxprxlsv1jubux3axfkc2xkzdl0t2hzu3htrdvyvzjwcvfcren5yjq0uvzwzkhfy3jhykzqrkzpahu",
+      "titulo": "Quilombolas do Médio Jequitinhonha realizam 1ª colheita de alho livre de vírus - A Embrapa",
+      "tipo": "noticia",
+      "fonte": "A Embrapa",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2024-10-31",
+      "resumo": "Quilombolas do Médio Jequitinhonha realizam 1ª colheita de alho livre de vírus &nbsp;&nbsp; A Embrapa",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPRXlsV1JubUx3aXFKc2xKZDl0T2hzU3hTRDVYVzJWcVFCREN5YjQ0UVZwZkhFY3JhYkZqRkZpaHU3X0ZiWnpxS0w2ZmQ5TnFNQWRwZWdEd2I3TmQ1RDBDMWh0UEJDbUg5YzhubFBlU2hYOGZUaDd0bURMT0JLZk5vN3JnSDctU25zU252V1J2QXpUOW5NT1hxOEplS3pKWmtnTFhVUUQxOXpUZE9HWDl1VHNDMWZ4QV9ZNS1oS09BTjZtNUFrdjZsekdpVE9PZTVnQ3kw?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi1wfbvv95cuxotzbbbmhmuvpcei01mxvnztzzmtbhvlh5vzzjawnhamzvn3fvz3jgskrqzmzbyupmvwdicevvzjd",
+      "titulo": "Proalminas incentiva e resgata cultivo do algodão na agricultura familiar do Jequitinhonha - Agência Minas",
+      "tipo": "noticia",
+      "fonte": "Agência Minas",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2024-08-08",
+      "resumo": "Proalminas incentiva e resgata cultivo do algodão na agricultura familiar do Jequitinhonha &nbsp;&nbsp; Agência Minas",
+      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOTzBBbmhMUVpCei01MXVNZTZZMTBHVlh5VzZJaWNhamZvN3FvZ3JGSkRQZmZBYUpMVWdicEVVZjdpTUtKbGNwN2ZscS1GaVMzeE0zNml3Q0NfNlhkY3YxQ0V1SGdDRFZoUWxfTFVCdFc2TmtyaldiVnNWd1pDTzJBenI1YkFTelJDWTVhTnpuWU94MlNFTExqRTd6RjRlTEI4SmM5STVldXB0dmVtZU85UDRIdm9oOXBlN01QY3lSbW4yMHlKb0haRHJvOERSamppekJsQTlLZw?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmisgfbvv95cuxoqzzhakdlu3zvcgrrbknixy11buxhdkngluwwqk1suxm0b0hxnwt2avzny245qlp6smfmrgdzzwj",
+      "titulo": "Movimentos Sociais lançam Carta Aberta pela abertura do Instituto Federal no Quilombo Minas Novas no Vale do Jequitinhonha (MG) - mab.org.br",
+      "tipo": "noticia",
+      "fonte": "mab.org.br",
+      "fonte_url": "https://news.google.com/rss/search?q=%22estudos%20rurais%22%20Jequitinhonha%20OR%20Mucuri%20OR%20Diamantina&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2024-05-16",
+      "resumo": "Movimentos Sociais lançam Carta Aberta pela abertura do Instituto Federal no Quilombo Minas Novas no Vale do Jequitinhonha (MG) &nbsp;&nbsp; mab.org.br",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOQzZHakdlU3ZvcGRRbkNIXy11bUxHdkNGLUwwQk1sUXM0b0hxNWt2aVZnY245Qlp6SmFMRGdZZWJBVVYycmEzTDZPNE9hT0RiODRqa3FXemotMFdvRHVHZk1oVDdnZUhMRjlLeVRJRGJCRUdaMEhzOFhucXc4a2p3WkZjU2xzZURpMnpoSHZxYnZhMmNqeExyeGZ3T2M4U3NDNHFhZUh5bXpwYzVOZXc3dGxR?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi7wfbvv95cuxnnmcxwuthq0jivldswfk3r1lwngzfouvhzdz3nklhaddqt2vmreprd0eylxn5wljptgxtdktrmg5",
+      "titulo": "Aperam BioEnergia lidera iniciativas sustentáveis no Vale do Jequitinhonha - FIEMG",
+      "tipo": "noticia",
+      "fonte": "FIEMG",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2024-05-06",
+      "resumo": "Aperam BioEnergia lidera iniciativas sustentáveis no Vale do Jequitinhonha &nbsp;&nbsp; FIEMG",
+      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNNmcxWUthQ0JIVldsWFk3R1lwNGZfOUVHZDZ3NklHaDdQT2VmREpRd0EyLXN5WlJpTGxTdktrMG5vOERhQ2ZVRlRsNFljOTZwbi1pUkh3R1lLSVlfUURRNXllV3Z3WEtVcUVkUUpfemNuc3E1a2ZRWGE3bFRkMWdaRV9XNmZRRlljc0IwdVZVNExQM0czd3ZZb3U4Q01BdUNjaHFqZEVEWGRFYkw5YlMtRnZZWmp4SmRyMVlHUlA3T3NsNWdHTjhWM3pYUlZOLUM1RjJ2c0ZibTdsbUktc2Fnb3g3Vmd3bV9sWUdYblpPaw?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmioafbvv95cuxnqu5zzejpywlsourbvutoclhbnjrhvwjovmzjmhdidfcxnkzpwc1gmeduverbvhr5ow1kcutzuwx",
+      "titulo": "Dilemas e lutas de camponeses impactados pela monocultura do eucalipto - Diplomatique",
+      "tipo": "noticia",
+      "fonte": "Diplomatique",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2023-09-15",
+      "resumo": "Dilemas e lutas de camponeses impactados pela monocultura do eucalipto &nbsp;&nbsp; Diplomatique",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNQU5zZEJpYWlSOURBVUtoclhBNjRhVWJoVmZJMHdIdFcxNkZPWC1GMEdUVERBVHR5OW1KcUtzUWxTSEthVGlManVwQ0tjVTVJV2Z5N3FxME1hTllXX205UE9PLUdXLTRMTkxLbVpxSHRYb1BYZElsbldqOW9oNkdmQXU2Ui0zMkliVHV6UHZMU2xEczBvRU9qc3NCY2VsLURT?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiigfbvv95cuxpm2xiwld6y1hsuhcywhbhuhvvdw5flwvxsvy1nkjjsfduttbldvh2z0tzq2frm05zb1bmodlwamn",
+      "titulo": "Inscrições abertas para mestrado e doutorado da UFVJM - InfoEducação",
+      "tipo": "noticia",
+      "fonte": "InfoEducação",
+      "fonte_url": "https://news.google.com/rss/search?q=PPGER%20OR%20%22Estudos%20Rurais%22%20UFVJM&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2023-05-04",
+      "resumo": "Inscrições abertas para mestrado e doutorado da UFVJM &nbsp;&nbsp; InfoEducação",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPM2xiWld6Y1hsUHcyWHBHUHVvdW5fLWVxSVY1NkJjSFdUTTBldVh2Z0tzQ2FRM05Zb1BMODlwamNEdERKNUtGczByTzZjb04tX19VUlpMLWFkWGE4VlVmY250ZWxoOHpsLXVXN3J3Um91OFJrNkZ2SW91X1JRVlFvZEx6MTFJZ2JkZ3c?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi6afbvv95cuxpuhrodlzwes1hwfnizkxnn291thzrwwnhevb5ohk1wwg4whpkrnjza3hlunf6ovhfymnnwlzpwi1",
+      "titulo": "#Chapada: Morro do Chapéu se prepara para receber a maior Feira Agropecuária e da Agricultura Familiar da região - Jornal da Chapada",
+      "tipo": "noticia",
+      "fonte": "Jornal da Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2023-04-26",
+      "resumo": "#Chapada: Morro do Chapéu se prepara para receber a maior Feira Agropecuária e da Agricultura Familiar da região &nbsp;&nbsp; Jornal da Chapada",
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPUHROdlZweS1HWFNiZkxnN291THZrWWNHeVB5OHk1WWg4WHpkRnJZa3hlUnF6OVhFYmNnWlZPWi1hcTByY0d1ZGpZYkpoOXNha3VXYzQtcXY1ekRJcUYydDVmZFNvU3QzNzI4Zk5yY0NOQldxc3dlRmtCd1dBeGltTldKM3BPOFhmLUI4ZnJZUElYd0xvdzBQa21VeWswbjhMX0ZDeXloMnA3QXlxdVpaNF9zSDZHM1RpcGYzYkk5SjcwOFc0T1F1OWFoUm02c3I5MnRwUklVMHU3TF9FMUd4YmJwMWo4QlZN0gHuAUFVX3lxTE1Tdm41ZUQzbGZXY1UzWXpRejRxeVFlS2V4dThhbVZKZW00bU1PQm1SVTBva2Jrbi1MN2dqVHNVUGtvMlIzMWZoSHRwQkhIT0kyWXVrSUhsSEdoRDZwWUNQLVkwRHpLMi1SVVh3ZWJreXUyRzJWa0tMcUZNN2dWX09fcE5xbGRMLU51cldsS2M3OHBLejdGRWQtb3pWdm5YRXpTWnpBbGtoSWFNRnNtVHMtSWdSdGltbXYxc3gtengyYU8ycDdPS2dUUGpNT3hadm9rODh2eXdEZXFlTG9rZFhHTGNoNUlRTlpIVHIyY1E?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmigajbvv95cuxpsdlar2xmym1saty0sdhht2xwlwncvhjvaln1uuhxvlprz3nfqm5qbta0mwlxcupmn1z6ndh0rwj",
+      "titulo": "#Chapada: Feira Agropecuária e de Agricultura Familiar de Morro do Chapéu movimenta cerca de R$ 6 milhões em três dias de exposição - Jornal da Chapada",
+      "tipo": "noticia",
+      "fonte": "Jornal da Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2022-05-05",
+      "resumo": "#Chapada: Feira Agropecuária e de Agricultura Familiar de Morro do Chapéu movimenta cerca de R$ 6 milhões em três dias de exposição &nbsp;&nbsp; Jornal da Chapada",
+      "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxPSDlaR2xMYm1saTY0SDhhT2xWLWNCVHJvalN1UUhxVlprZ3NFQm5QbTA0MWlxcUpmN1Z6NDh0RWJCNFFGOUtjZFN3c01FM1R4RHh2RjNtelZvYkZ5UENjcWQwZ3NwZjkxZjJtYkNGSGFiM3BzcndmYWQ2RG9hSlNiaHRMTnZOY0NuOXFTa3BpZmV5QUsxR0ljbW82aDdNaVl1QnVaQ01WX3BCRzY2QnZfVlpOMnphemJsS09ZSDliSktzdlhjOEpESUdyZEVDZFJNT3VWR0d2S0U1TEpINHZ1NGtjOUc1VW9LakhPZ1R0Z2FSaFlsaTBZT2hwQlIyUFdV0gGGAkFVX3lxTE54YmUwSmxpMm4xd2d0MEdqdFlUMjdoN0RUek1SenVaazI2cGpZM0lxQVFTRzN3NWhKREphVFd5X2NKUXZzMWxYSnA4NXhXRmlOWjRVSFk1TUF3eXl0d1NqYWhQWFY3dnd6aWZCSXl5QmNhRk9XRGRhMjZaTDJ3TElUM3FFNnZBV1FCeEladXNpRmNTc1Q5eXhmN0t1Vjd2YjBDZHl2SDN4Q1ZUMks3Y3JQMHlkcXo4SnY4eElaOGZuaDlpM0tjWUNNX1JQOE1MTnREMl9GRHJDUDVrTU5Cd3Z4Q3p6amNzWXpieHdDMlJqd0lyeXpzb2VKOXNCbFBzSTB5WWdhTVE?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi8afbvv95cuxouflarddptkd5nwjewvbvuwvidgxtb2lbnf9gyktuclnsudkzvmrdcxk4sw5ymkrumvhjrgk5vwj",
+      "titulo": "Pandemia dificultou comércio agrícola e impactou saúde e assistência social no Jequitinhonha, indica pesquisa do ICA/UFMG - Aconteceu no Vale",
+      "tipo": "noticia",
+      "fonte": "Aconteceu no Vale",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2021-11-20",
+      "resumo": "Pandemia dificultou comércio agrícola e impactou saúde e assistência social no Jequitinhonha, indica pesquisa do ICA/UFMG &nbsp;&nbsp; Aconteceu no Vale",
+      "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxOUFlaRDdpTkd5NWJEWVBVUWVidGxTb2lBNF9GYktuclNsUDkzVmRDcXk4SW5yMkRUMVhjRGk5VWJFV1N3azN0SFZ5U3YwMHNXbGRnUnFHenc1Ql9jdnVSYl9DVTViM3dSbTJRdFkxY1BQVlJxMFdVd2h5MzZSMXdIZGx3bkNDUXpVVVFkRFdIQmZkMnRhbHVTbC1VS2NUYWVkUllRLXNFQl9OVUxvYkcwYnRKdlRxd2dRX0NxdDQtNlM3TG9NZDJPSHlYOHMzaVZHcWVSbUstV1FlSF9DY3ZtOEVPYlFBWjdZTWZBUjBlTGrSAfYBQVVfeXFMT2lNLW9xRjR2MHg3anJFdUxPbDJORm9YVHZ1ZDliR0VWMDlsOW4tc296WVVlUVNZcUZPOE5EbnAzY0FOcGpPcUNUNWNFZExURHhpdVhOaDlUSkgxd2ZyOXZEVkVhWTFLV0dSUDdubFFfLTI2SmhWZElNOEM2Q1NoNTFnbVZxemJlVmNIVTNsdnl5eV9PeW5ZdWx1NlZSQTlBSUlZN20xOEkySlctbEV1Y09mbklpQ0h3M0R4dWt1bDJDVUNLUTVkSTR2TklvWGhvbm5Ba2N5ZFZKOWJiQXpFek12c0xMOUhUUWdsNnRnNmROTTdFMlhB?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi3gfbvv95cuxqatjsn3dinly2vhrnbmewb1lbv1nvqzlwovrpq3m5us04vkhpd0xmztzlbv9ycnc1bmtxn1bvnmr",
+      "titulo": "#Chapada: Governo estadual vai reformar mercado municipal em Pintadas para reforçar agricultura familiar - Jornal da Chapada",
+      "tipo": "noticia",
+      "fonte": "Jornal da Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2021-10-29",
+      "resumo": "#Chapada: Governo estadual vai reformar mercado municipal em Pintadas para reforçar agricultura familiar &nbsp;&nbsp; Jornal da Chapada",
+      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQaTJsN3diNlY2VHRNbmEwb1lBV1NVQzlWOVRpQ3M5US04VkhPd0xMZTZLbV9ycnc1bmtxN1BvNmRrOVJTdlRXU1JiUFVYS0hQZHpnTEJScGtod0RnTUtldVRkVEM4bzg2Q1lzVzNHWW1qLXhvMUxvMmZTZlZZLXB1bF9RQ2RUSXpFM2FVM0VzV3dWSWJSdHJPY0tJWXVOUXpRYml6OGswbWJfYkpJTnlrYlhlNmk0bmQyN3lWM1FkaFNpRW05ZGFUcmxibTNqUDBENHV4Z0dXRjdpM2w5bkHSAeMBQVVfeXFMT29MN2p1WU1wVnI1a2ZTN056VkNFSk1FcnJHVmFWdlVMSnBOalluc3NRZFlBbGtJdVhfRTBzVlNTRHNZRFRqZWNyOEZSNDVVdGhnQU83cUhpTXRDeVhEZzhpR3BSWDludGJZc1RVTTIwTm5kUFV4bWw1RWgzTjcwcnh6WFd0Z3QtR2N3b01ObFRxdlhtTnp5clpmMEdsZ2piZ3liVFdWam5nZ1diNEJWam1RQmxndHBBOGdFSUJUcHNIbWhMV1FWZWZla1N5cjVLMThqZU1SQjFQanNLRGQ1d0hHS2s?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiekfvx3lxtfayc2ddcmfdee9evkc5ukfmtuj1m3zkujdbmk9uakhor1djnhmwzdbpddu1stlbxzj6c21lvtfuemu",
+      "titulo": "UFVJM abre seleção para professores substitutos - PEBSP",
+      "tipo": "noticia",
+      "fonte": "PEBSP",
+      "fonte_url": "https://news.google.com/rss/search?q=%22estudos%20rurais%22%20Jequitinhonha%20OR%20Mucuri%20OR%20Diamantina&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2021-09-03",
+      "resumo": "UFVJM abre seleção para professores substitutos &nbsp;&nbsp; PEBSP",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFAyc2dDcmFDeE9EVkc5UkFMTUJ1M3ZkUjdBMk9UakhOR1dJNHMwZDBPdDU1STlBXzJ6c21lVTFuemU2U21kUDEyQmpkOEdteVVqV3VHbHF1Ulp5WGJNYS1ORlQ5b3dQV0ROZ3NHN29ydkNtQW8xUUh5RnJ3?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi3wfbvv95cuxonwhdq0zlszmwu0jmtmlkamhhv3vyqtbknhpxrmpvufhgdfjhlw9wmfitb3pxugtpc1b2d0ttzmh",
+      "titulo": "Gestão da Peterfrut integrada a agricultura familiar da Bahia é destacada pelo vice-governador João Leão - Jornal Grande Bahia",
+      "tipo": "noticia",
+      "fonte": "Jornal Grande Bahia",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2021-07-01",
+      "resumo": "Gestão da Peterfrut integrada a agricultura familiar da Bahia é destacada pelo vice-governador João Leão &nbsp;&nbsp; Jornal Grande Bahia",
+      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxONWhDQ0ZLSzMwU0JMTmlKamhHV3VYQTBKNHpxRmpVUFhGdFJHLW9WMFItb3pXUGtPc1B2d0tTZmhBakNuOVJBdzVxSVhHajZCenVHM01fREo2eHI5UkFzYTh2U2N5aW1Xd0J2MEJKcFdnUWh5ekszeVpmOS0yc0d1U2htNlNhUU5NMkljbUZtVXJVaFJKMUdQdDk3Y3hkZlRMUkQtdWlQNGE0eDNaMmh5OUZaTHRLLWJTRi1OQWlNbVU5Z010TW05VDNsYU03alZqeDVld2x3TFp5SHJNRzdV?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmixgfbvv95cuxoazzsbw8ynwjlwg9rww1fvdjxbdnxqtrodg83wepnbe5fs2fwvg1cuvziqzvpvklja2taoffvbtl",
+      "titulo": "Feira Livre de Minas Novas (MG): lugar de geração de renda e promoção da cultura e da agricultura familiar - Mídia NINJA",
+      "tipo": "noticia",
+      "fonte": "Mídia NINJA",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2021-05-07",
+      "resumo": "Feira Livre de Minas Novas (MG): lugar de geração de renda e promoção da cultura e da agricultura familiar &nbsp;&nbsp; Mídia NINJA",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOazZSbW8yNWJlWG9rWW1FVDJxbDNXQTRodG83WEpnbE5FS2FWVG1CUVZIQzVpVklJa2taOFFVbTl3Qkptc3B1ZUNZWUFMZ01HcE5KWm1rNkxIb2pDUDRmMmVWUHNaSWx2RVJ0ZTVaajItVk5BOGdwQy1jNzFoVm9YampWdWh1bU5TSzRwMkpTbzM5bGEzUS04LXBCcHNsYjctN3NfbUVtT19ncFMxdElRb09fbkdFUjZWTTJGUldmRjBGOWxvZ2c?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi8afbvv95cuxovtdnc2xtbxnjbvphd1bgekxut00tthdfnjvkwgm3nxhfwkpndffwb0lzshrgwgoysvbuzgdun2h",
+      "titulo": "Agricultura familiar da Bahia comemora Dia Mundial do Café com inovações, qualidade do produto e renda para o agricultor - Jornal Grande Bahia",
+      "tipo": "noticia",
+      "fonte": "Jornal Grande Bahia",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2021-04-14",
+      "resumo": "Agricultura familiar da Bahia comemora Dia Mundial do Café com inovações, qualidade do produto e renda para o agricultor &nbsp;&nbsp; Jornal Grande Bahia",
+      "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxOVTdNc2xtbXNJbVpHd1BGekxuT00tTHdfNjVKWGM3NXhfWkpndFFwb0lZSHRGWGoySVBuZGduN2h6R0VuV1NzU0NpSFF3amRoUFRHX2hBTTJmLW1yR0twUjJBX1UtcFVUYnpsOU5VSXo4MmpvLUU0cHJidzVBMXJTMEJQa19zbjVsaWMxNzc2X3Vrb1pCaFZNTDlFLWdWR1FESVlmRWcyWXd0b2RPX1BGNnZkRWNEcVB1aDg0Mm1jZWZzUVFNUGwta2g4b0RpTkg5NTJIX3pvX2NiYjBTNVRIbk1MVF9TVlRCUVVOMzVMWlA?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmihgfbvv95cuxqd0jxculgrgvbwvjrckfldhnbtdz1vlbhnzrdexvhmxdmshpsc1lzbwvnbhrkvnhjqxfdmhhtmet",
+      "titulo": "Produtor do Vale do Jequitinhonha investe em fruticultura irrigada com apoio da Emater-MG e Anater - Emater-MG",
+      "tipo": "noticia",
+      "fonte": "Emater-MG",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2021-03-29",
+      "resumo": "Produtor do Vale do Jequitinhonha investe em fruticultura irrigada com apoio da Emater-MG e Anater &nbsp;&nbsp; Emater-MG",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQd0JxcUlGRGVBWVJRckFLdHNBTDZ1VlBhNzRDeXVHMXdmSHpsc1lzbWVnbHRkVnhJQXFDMHhtMEtiYWhtcndoQXR6VXQ1SGQxU29lVmhpSXZDMEFEUElDSW9PNDZjYmwyTFFyRHhoUFZSMUp1X1E5Yy00cjZLTGw4dTB1c3dGZw?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi5gfbvv95cuxptuxhdu1jrznkmdbxm3awbgxiazllvxzna2zrmetwbjlwvunjtvzmdwu0x04zcdbpyzvicwg0z1v",
+      "titulo": "#Chapada: Parceria entre Cesol e Loja Maná Naturais promove produtos da agricultura familiar em Piatã e região - Jornal da Chapada",
+      "tipo": "noticia",
+      "fonte": "Jornal da Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2021-03-11",
+      "resumo": "#Chapada: Parceria entre Cesol e Loja Maná Naturais promove produtos da agricultura familiar em Piatã e região &nbsp;&nbsp; Jornal da Chapada",
+      "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPTUxHdU1jRzNKMDBXM3AwbGxiazllVXZNa2ZRMEtWbjlwVUNjTVZMdWU0X04zcDBpYzVicWg0Z1VwSEdDYTQ0bFdmNHlaV2o2SURFS0lSSE4wbE52Y0wycllaUG9kTEx4UWNYSFZaRVVtOWZhQXAtWHd2Z282eXZOa2NvNmE1UTlYUEpRa21VY01YUGcwSVJ2UHYtZDdjNnVDdGlSS05BaGJ0TndLdW8zS0VrdzJVVUhMVXhIc09CWi1XcG5XV0NEcXRXbGpxRm12LTJDeU1BQW9UMFRWU2RnRTNWdlEyQdIB6wFBVV95cUxPWEVzOEJuZW51cGVTOVJiVEZKMlAzVmQyeDlsMzhTRzZlZXVaZGsybWdqSGhRWTc3YldjXzhFbVJZV01ndzBEbzFGeWQtY2dNMXlTcXdwcFJmUUJoLWpPc080amNXVFlUdVNUckpSZ083UTA0M0REb0NnUUIyQWN4MVFJbERDUjNmclViaTJZZVcwRllXcWFPaEJ1ZHdraHZCY0p6dmt4VlNjREg2YzBHSDYwQmxKUVNWd0twWGtPLUtLTTZ4Rjh1TTFRdldDWDdMMzQ2MmU2MnZwQlNkamNGQTJXZ0gzb2ZXbm5z?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmingfbvv95cuxqqunzwfvuau1ymkc2akfwvku5akuydm9rrvpkwvbyq2jptvhyqms0v0taqkx3ofhomkdhswrfexb",
+      "titulo": "Café bom da Bahia é o que vem da agricultura familiar - Blog da Feira",
+      "tipo": "noticia",
+      "fonte": "Blog da Feira",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2020-07-23",
+      "resumo": "Café bom da Bahia é o que vem da agricultura familiar &nbsp;&nbsp; Blog da Feira",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQQUNZWFVUaU1YMkc2akFwVkU5akUydm9RRVpKWVBYQ2JpTVhyQms0V0taQkx3OFhOMkdHSWRFeXBFdzNfOUNkdjVhUVEwcElBbmJGRUl5bjdJRTh6N2M1cTRxWXFUTmN1X1ZJalRNNHVHai1sOHh5NG1PdE5iLTNKRFAyLW9hbk1MYUhvbjlacUpqZXJDYkZSaFpaSElhQQ?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiqgfbvv95cuxqtkhfwenlb1r6ndrft3r2ttlla1kyeupdmjc4xzdyvuy3d0n1q1psvgputtfgyna5yk1dogfgr3r",
+      "titulo": "Quilombolas comercializam cestas da agricultura familiar - Agência Minas",
+      "tipo": "noticia",
+      "fonte": "Agência Minas",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2020-05-14",
+      "resumo": "Quilombolas comercializam cestas da agricultura familiar &nbsp;&nbsp; Agência Minas",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQTkhFWENlb1R6NDRfT3R2TTlla1kyeUpDMjc4XzdyVUY3d0N1Q1pSVGpUTTFGYnA5Yk1DOGFGR3RoT1pGekQwUjkyRmhOR29CLS1yd0RTVThFN2VhNGhmeHFrY3NramNaNmRfaVliYVRpVHNmYjEySno3OW84aUd4ZE44bjBjNng0WnJENlJ1SnJIOFNNejlIdk9ndTE0R3FFNXh4RXB4YThsQQ?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmixafbvv95cuxnt2k3nejguzf6two3zhexnlbfcwtsy1brtxzvtxywzwq5zfp4bdbbvmdsmudtq1hlyvjmyvruz1b",
+      "titulo": "#Seabra: Feira Agroecológica da Chapada Diamantina terá edições em abril, maio e junho - Jornal da Chapada",
+      "tipo": "noticia",
+      "fonte": "Jornal da Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2020-03-16",
+      "resumo": "#Seabra: Feira Agroecológica da Chapada Diamantina terá edições em abril, maio e junho &nbsp;&nbsp; Jornal da Chapada",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNT2k3NEJGUzF6TWo3ZHExNlBfcWtSY1BrTXZvTXYwZWQ5ZFp4bDBBVmdSMUdTQ1hlYVJMYVRuZ1BZa0cwSmZaLW9WMG9mQ1pRT3VWUEZhMFV1X1FoRVBhVDVtMVcwMkNyS1pNSFNvc2Y3SVVPU0JzLVR4OWx6WEYzWXViV2xWdVFKd3pfcy11b2wzS1FCWGxnaHVITEN4YzRhakNBODlFNEFXTWFhTlgwemtHVWh3QWplY0o5Mm9kZ1lib3pG0gHKAUFVX3lxTE1ZT3JyYVU3QlpxX2JzSWc5TDNMcDc0eDZ1ZlA5QVJFU3hDUlNDUVQ0YXB0X1pjb1dERzVfNmtpVkppYVg5Um5CU192bzVFbEI0QzNYSGxnaTE0ZEZIcXRSOWhha1B0aWE2WENBWTBackRQd2g4TlM5NGJmNWFZc2JjZ1g3TVZHTHBuY2loaS1jMnNRQlNpdGJQeWY3Y2tNM3RKNWdPa2txUmxLTUNsVGRBaHFaa2FhdVJWaVl1TWIyMWx6cGUzNzEyNUE?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi2wfbvv95cuxosvbumdfelw5yev9undcwy1dhynuxstzpyxjftnfwzfdrmejom09znkkzum82vmhlrfc0vznpvwj",
+      "titulo": "Chapada: Feira da Agricultura Familiar é realizada semanalmente a partir de setembro em Nova Redenção - Jornal da Chapada",
+      "tipo": "noticia",
+      "fonte": "Jornal da Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2019-12-16",
+      "resumo": "Chapada: Feira da Agricultura Familiar é realizada semanalmente a partir de setembro em Nova Redenção &nbsp;&nbsp; Jornal da Chapada",
+      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOSVBUMDFELW5yeV9uNDcwY1dhYnUxSTZpYXJfTnFWZFdRMEJoM09ZNkkzUm82VmhlRFc0VzNpVWJJMHZwVjhjQmxoVnpZZWh2Wk8zWmR4UUk2anF3NzQxTHcwZnJwZmVHbGNKajhPM2J6ajVZRjJFLW53LWdmQk1RSlkwZXpRQlFTMDllaE43a3AzZmlXZnN5VXcxZ2JJZk5za2RWSEtLSnRSdHpPendHTEFYUTNuYXNfZmVVS1RuN29BRFZkX3FmcVlJeHU0T2trZFAzamlWS01XNVXSAeABQVVfeXFMTnp1TG5OMjNRWGxDeEdUQVMxaC1sNm53VnhUZFpvcGJrbjhieXJwOVlFQUxhWkw2UjFiejFCMUNEQUh5b2MtTnJPUndjTXcxam5BX0pFbS14QkdQTnNoNy0wckNJcGd6NUE4ZjVzQ0pxRDEyRE1FSmFUVndMNXA2VDNUVTBPcWI1Uk1oUGNUcHM1eU0yWkhIRVd2ZS1ZRldrOWcyVmxJSlZMRzY1OThQRlF6djQ3U19tSTZEeXY3MkVrN3p2Z29uRm9GcG1MNnFoakZUSkV2Uzc1ak5fRGd0Ykg?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi3wfbvv95cuxpy0tpswher2ptdhfxnkfnmujszwv4nmviq0pubjjxu2u3emjudkjmee5vnzriowzwelzvcvd5s3l",
+      "titulo": "Chapada: Iguarias de jaca da região são opções para veganos na Feira da Agricultura Familiar em Salvador - Jornal da Chapada",
+      "tipo": "noticia",
+      "fonte": "Jornal da Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2019-12-02",
+      "resumo": "Chapada: Iguarias de jaca da região são opções para veganos na Feira da Agricultura Familiar em Salvador &nbsp;&nbsp; Jornal da Chapada",
+      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPY0tPSWhER2pTdHFxNkFnMUJsZWV4NmViQ0pUbjJxU2U3emJUdkJMeE5vNzRiOWZwelZvcVd5S3l1UXIydkJZdERyNnlmd203UHhLVUFEbjR0OXVPaURZb21WelJ1bVZTWEdSNkQ3Nk5vLUJ4WGc1UGx2NzJuTDhJM3U4dmVmYXl2TndWR254WWtpbjdDQVBEZTVLZkZNd3hZVU42cC1sNUk5MnpEUkRna2NaVk8xNU8wWS0yUGVKWUdMdnVmTHdUc3BGTjBEMFA2NGxWbDVpdmFoOXhRbk0w0gHkAUFVX3lxTE1Ca2RmczFESkZuQWNxUkZvc2QxcloxdGMzOUpoMUc0aHNGTndocldlUFY0eVBuWHNwc3QySmx6RlhjN2FPYUx6czNCall5YkktcEtHMG9EX3dNQ3d1TXFhcE95OExhZ2pCbC1hbXM1aDNWbzJacDF1cFhiZFdXY2w3Y3ZpaWEzaFhpbkVwVHRFSnNlbWJxdVRPOGYxVzN6QUtCZlR0bDM4bkowRkgyRktCMmZnMUZuYnVON3BmQklTUlJsWXJubUIzNlhmSUpVdnZPU2lzOEIxNmMzQVJHa3huOFRUSA?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiiafbvv95cuxqnjvoz3q3bxn6bld0ne8xymrpteu2ngfpzznstexszepsmvnjnvbbohhxwtgyvmj6ngnsz1u2tfr",
+      "titulo": "Vale do Jequitinhonha, uma terra em desenvolvimento - mab.org.br",
+      "tipo": "noticia",
+      "fonte": "mab.org.br",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2019-08-09",
+      "resumo": "Vale do Jequitinhonha, uma terra em desenvolvimento &nbsp;&nbsp; mab.org.br",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQNjVOZ3Q3bXN6bld0NE8xYmRPTEU2NGFPZzNsTExSZEpSMVNjNVBBOHhxWTgyVmJ6NGNSZ1U2TFREd0FhbmJIYXA3SXFab3Rwbjd2WF80ZHhva2RKdW15UVpuaWZwSW5JUU1LcEFYWXdob2xUMi1wSjE3dkRSN0FHQk9zQ3hSek0x?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi1wfbvv95cuxqaxdla3fidmdsrjlutffrmjrmegrhagl0bfk3me5er3hba1vacnjuzjvbseh3v3zotkzprwxiql9",
+      "titulo": "Equipe do Governo do Estado busca alianças produtivas para agricultura familiar em Morro do Chapéu - Jornal Grande Bahia",
+      "tipo": "noticia",
+      "fonte": "Jornal Grande Bahia",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2019-07-09",
+      "resumo": "Equipe do Governo do Estado busca alianças produtivas para agricultura familiar em Morro do Chapéu &nbsp;&nbsp; Jornal Grande Bahia",
+      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQaXdla3FIdmdSRjluTFFRMjRmeGRHaGl0bFk3ME5ER3hBa1VacnJUZjVBSEh3V3ZoTkZpRWxiQl9Wai1ubVc4SVg3YUZBU251WHEteS0tLW16NkxNeFRkOGdVdVVJNHVHeHlQNk0zNWY2ckFoY0hNcWFrSGJhZjRWYkktZFdQUFI0NjZtcXFOaTBqdlM2RzBhbU5waURXZlRxR3JmajdBdGZiYlJiUkM3R1RvOEZ1cV9jTGhib0ZLSnBodDI0RVo0Nm9oNXBxSFdicXJUZ0M1bw?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmipwfbvv95cuxqogzcuzm2nux4num1axh1bgjpthzsvkhsvuttbudibfzytm9moejpvkpvzxliaff0y0dhdwjrru9",
+      "titulo": "Café produzido em Piatã conquista Selo da Agricultura Familiar - Jornal Grande Bahia",
+      "tipo": "noticia",
+      "fonte": "Jornal Grande Bahia",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2019-05-05",
+      "resumo": "Café produzido em Piatã conquista Selo da Agricultura Familiar &nbsp;&nbsp; Jornal Grande Bahia",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQOGZCUzM2NUx4NUM1aXh1bGJPTHZsVkhsVUtTbUdIbFZyTm9mOEJpVkpVZXliaFF0Y0dHdWJrRU9IZXZfaFlrWld5VXJmOE1MM3J2WmJhNDRjWXBRN3poQnR2bEV3YkVnZWJvM0pnVF9waWdYTTZGTGVLTUxxWkxxMGZJTVdwRTZNS0w1QTdsa0JSeFpVNmI1MFRrNVNZblMxb1ZlbzExOA?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmimwfbvv95cuxouxlurgdzvkzlq1nhq3pdbmdveevvdluymkuyuzrxd1rndzqtwfnnevntdvjkuk03bghdx2v1eum",
+      "titulo": "Agricultura Familiar: a base econômica do Vale do Jequitinhonha - UFMG",
+      "tipo": "noticia",
+      "fonte": "UFMG",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2018-09-11",
+      "resumo": "Agricultura Familiar: a base econômica do Vale do Jequitinhonha &nbsp;&nbsp; UFMG",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOUXluRGdZVkZLQ1NHQ3pDbmdveEVvdlUyMkUyUzRxd1RndzQtWFNneVNtdVJKUk03bGhDX2V1eUMwaldyMUlKam1PMEVuTU95R2hnLVpMUEU1MlprSGRIVU5NSjIwWVRxaF9jQmJQQU9tUFlVSTBkdWhMcExSQjlTbnNpVXJvcV9heENjeGJTMGdfU2xUSWVjRlhmMA?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmirwfbvv95cuxndgd4umuxrmfclum2vxfdugdiefvpslfnzko4wmozbmtndvflvldhue5emxvetvhglui4a2pwuzd",
+      "titulo": "MST comercializa seis toneladas de alimentos em Itaberaba, na Chapada Diamantina - mst.org.br",
+      "tipo": "noticia",
+      "fonte": "mst.org.br",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2017-08-23",
+      "resumo": "MST comercializa seis toneladas de alimentos em Itaberaba, na Chapada Diamantina &nbsp;&nbsp; mst.org.br",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNdGd4UmUxRmFCLUM2VXFDUGdIeFVpSlFNZko4WmozbmtndVFlVldHUE5EMXVETVhGLUI4a2pWUzdGQzFjZC1PaXpfanBSQ0JSM3VNYVQ2emZ5NjlMaG9fajBtNkJaVjc2VEk2VExhZVdRMFp1dnR1aGY5b0x2M0k5T0FTeGMyOFBoVTRfRDdrNmpEQk9ndlJMVnBOSWtPX1RVM1FiWF9VUEV6cHdCVW9Z?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiqwfbvv95cuxoowdwu3dic3q0n0plcwqtrzrhx3pky2ntbgzrzurlb3frse5lv0leuv9yq214m09wahbrb0zxn3n",
+      "titulo": "MST leva alimentos saudáveis à 1º Feira da Agricultura Familiar de Itaberaba - mst.org.br",
+      "tipo": "noticia",
+      "fonte": "mst.org.br",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2017-08-17",
+      "resumo": "MST leva alimentos saudáveis à 1º Feira da Agricultura Familiar de Itaberaba &nbsp;&nbsp; mst.org.br",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOOWdWU3dic3Q0N0pLcWQtRzRhX3pKY2NtbGZrZURLb3FrSE5lV0lEUV9yQ214M09waHBRb0ZXN3NHOUhFcUZNUzFNb25DOHQ2SVhzem9MVzhCVW5USEV5bHNsU0NLcG5HdE90ejZNVHhDZWJ0UTlKU1EwdVZleEFyMEExd0t6bmN3eXJtbUFRZlM1T2pCZnB1a3BOVk4yRGd2WjRmWVFhcGMydDg?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiqwfbvv95cuxnempgrkjjznhqywlvwg0zlwhqavewohb6zhjybw9cuwfkx29jqzi3sddgrg1od1rgdwn2vfy0mmf",
+      "titulo": "Licores da agricultura familiar da Bahia abastecem festas juninas - Jornal Grande Bahia",
+      "tipo": "noticia",
+      "fonte": "Jornal Grande Bahia",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2017-06-19",
+      "resumo": "Licores da agricultura familiar da Bahia abastecem festas juninas &nbsp;&nbsp; Jornal Grande Bahia",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNempGRkJjZnhQYWlvWG0zLWhqaVEwOHB6ZHJYbW9CUWFKX29jQzI3SDdGRG1Od1RGdWN2VFY0MmFaU1R2VWZJRVlVQmM4UzZwakhDVTVXazhnYURELUt3bVM0QXNzVnlnLUw2WkdqdHBzeTdia3IxNVZ3dUJvb0ZTdUlDdm1MODdWZk4zRm9tYmlQMmM0NzNGeHhpR3NDRi1TQ2lIRHhyZHZLODA?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiywfbvv95cuxprvn2bxf3blpyt2lsb2dxy1jwuev5t2jhvzg0dk1cntfwzmmtbwpymhlvlvrut0jvvgjtu25wzxz",
+      "titulo": "Chapada: Feira de Agricultura Familiar e Economia Solidária reúne expositores em Jacobina - Jornal da Chapada",
+      "tipo": "noticia",
+      "fonte": "Jornal da Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2016-12-16",
+      "resumo": "Chapada: Feira de Agricultura Familiar e Economia Solidária reúne expositores em Jacobina &nbsp;&nbsp; Jornal da Chapada",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPRVN2bXF3blpyT2lSb2dxY1JWUEV5T2JHVzg0dk1CNTFwZmMtbWpYMHlvLVRUT0JVVGJtU25wZXZZRUo0NEdaLXc5NHNYclRtR2YtTnlUWmxxTU1FUS1ZVThqQUxNMTE3d0ZUU3h2dTNhOW1TYUJWLUUwb1pOd0xzU2dkbi1mVVd5M1lrcGtlNWs2aUNIcktsUTFHRElzSm90Z2JQR2diYXdtWkI1VVE2blNjTFVUaTJ5VlkzWXdfM3BDblB4MDdhSzRsb9IB0AFBVV95cUxOZ1paM0QxUVFuT09vWllwRVB1YU1yM3ZfNTM2RFFBak9WLXhCZURQbUg1Q3NLY2xOd2lwckYtekFULUMzYkdSRWd4dGlGWDNPRjU5MXdDWkhELVZWTWFGUWpKS2ZLX1VrRlE4aWxFVXBDY25Mbl9WbE9YcDYtMUxUbm8tQjNmSzJIRVhGYjFrVXV5MTdNMzBHbjU0SnVaQWRHVTFzUGJ1YWNwSlZodjRzaTFpY1dFWDlzU2ZTWjRvTmFMTmtwTDdPSlYyM2xNSFJQ?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi2gfbvv95cuxnuzdttxnxduv1ejbryvu5ntutuk9jmwjncmjrzwnndhprrezwdxqxbvdovdnqykoxrwlus2hvtc1",
+      "titulo": "Morangos da Chapada Diamantina mostram sucesso da produção agrícola da região em feira agropecuária - Jornal da Chapada",
+      "tipo": "noticia",
+      "fonte": "Jornal da Chapada",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2016-12-01",
+      "resumo": "Morangos da Chapada Diamantina mostram sucesso da produção agrícola da região em feira agropecuária &nbsp;&nbsp; Jornal da Chapada",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNUzdtTXNxdUV1ejBRYVU5NTUtUk9jMWJNcmJrZWNNdHprREZWdXQxbVdoVDNQYkoxRWluS2hVTC1nRld3OGxKVVZEOHJuQzNsRC1nbHdiRGpNM3AyWlVtbFNMNFczVjBkQWxwZEJ4TTJIbWlzLU9nNUJUcXM2bm9abHNFbHV5cUd2Y2VkZTRYNUhtUXczelY1RWw5NnAxS3ZGZUlha2E0SnFjUTN0WGdvMkY4eUhISHIweUY4c0N6aVpGeXhWaENaUnpuT3FGMGU3SEU2MkkwWEhrUdIB3wFBVV95cUxNd2ZJNHp3WUhHbnJUZDNvZm5NbkZBNklnMndCSjd3bWtwZlZVZjFVQzNsNV9VaGlJSEtyVzhfakI3M05KWFE2czdmcl9VaXU5dDFSNHlEdTNRenNNY2Y3bmRCeTY5MEhQa0lULTBVR3kyR3JlZXdnMlpsWHFpZmNqZUdaMml6czU4cS02UUhpaF9qNG5fb0xhRVhzY0tBZXYzV3Y3MWQzMVNMMTR5NkV2MTh0VWtLbHZGUm5wWTFNc3QyMEw1TUkyX0pLelRPdHJfcnh1SU9YSEhqOEtPVHJj?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmi-wfbvv95cuxpmi1jcedpelm4vzkxzfppn2t0zmpzd3i1vjrmeg1bzwfas3nitwxicgrkuxlid0fiujzzy2t4nvl",
+      "titulo": "Produção de uva surge como alternativa de renda no Vale do Jequitinhonha - Emater-MG",
+      "tipo": "noticia",
+      "fonte": "Emater-MG",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2015-06-09",
+      "resumo": "Produção de uva surge como alternativa de renda no Vale do Jequitinhonha &nbsp;&nbsp; Emater-MG",
+      "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxPMi1JcEdpelM4VzkxZFpPN2t0ZmpZd3I1VjRmeG1BZWFaS3NiTWxicGRkUXlid0FIUjZzY2t4NVloREVfcEhqdEhYVVNRRVBnQ2JqTDN3ZWFSM1RqR1ZMWk9teVNXazNfSHVnMmNqU2VtU1VKRUVVZlg3aFhGYU5ZajdSSzV5cVl0RFY1b2MwM05ueFpLOWVVWGhyaVNmZEtHU0g2TWJGNzM2ZzlEMmE2QldNSDBBV3loSWU0dlRaaEluejBoaE1Uc2dtbFN0aEZ1ZWdsVXB2Wm5HTWlHTzB4RUhaLTdiOGdmcngzMEFSZHV5cjZubFpyRTJhdw?oc=5"
+    },
+    {
+      "id": "news-google-com-rss-articles-cbmiowfbvv95cuxnsdi4vvzub1dfdnu5qnnzzg1lnndnqzhhm1dxyvdxb21mdmveadzqwe51amvfnlpxevvmmnlveer",
+      "titulo": "MG: Vale do Jequitinhonha conhece tecnologias para agroenergia - Revista Cultivar",
+      "tipo": "noticia",
+      "fonte": "Revista Cultivar",
+      "fonte_url": "https://news.google.com/rss/search?q=%22agricultura%20familiar%22%20(Jequitinhonha%20OR%20Diamantina%20OR%20%22vales%20do%20Jequitinhonha%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "data": "2009-05-15",
+      "resumo": "MG: Vale do Jequitinhonha conhece tecnologias para agroenergia &nbsp;&nbsp; Revista Cultivar",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNSDI4VVZub1dFdnU5QnNZZG1lNndnQzhHM1dXYVdxb21mdmVEaDZQWE51amVfNlpxeVVmMnlVeERYOGlGVDNUYXloZVBlLTJBODR4ODFzSW9SSlpVdk5hRzlEUjlZcGxNa01xZ2NTZGtxX3N1SW8yNmZKZ1RpQTZnRjhSaWtNOUpDQ1ZVQTNsQXNmcDhacnNySEY2QzBjXzdUa3Rv?oc=5"
+    }
+  ]
+}

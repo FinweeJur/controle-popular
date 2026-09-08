@@ -1133,5 +1133,210 @@
       "Para organizar a massa de documentos, o portal implementou uma taxonomia determinística com sete categorias oficiais: decretos executivos, editais de licitação e pregões, extratos de contratos e termos aditivos, termos de convênio e parceria, portarias de nomeação e movimentação de servidores, leis aprovadas pelo legislativo e relatórios de prestação de contas fiscais.",
       "Além dos atos normativos, a página de [Diamantina](/diamantina) integra 315 contratos cadastrados no PNCP, associando compras públicas aos projetos de preservação cultural, pavimentação urbana e atenção básica de saúde nos distritos históricos da região."
     ]
+  },
+  {
+    "slug": "tarifa-social-energia-agua-como-acessar",
+    "titulo": "Tarifa social de energia e agua: veja como pedir o desconto em cada estado",
+    "subtitulo": "Tutorial completo por distribuidora com telefones, sites e criterios de elegibilidade do Cadastro Unico.",
+    "resumo": "Mais de 10 milhoes de familias tem direito a desconto de ate 65% na conta de luz e agua, mas nao sabem como pedir. O Controle Popular reune o passo a passo por distribuidora, os telefones e os links oficiais de cada estado.",
+    "categoria": "Explicador",
+    "frente": "estado",
+    "subfrente": "Direitos Sociais e Tarifas",
+    "autor": "ONSA - Observatorio Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistencia de Inteligencia Artificial a partir de bases de dados publicos oficiais, revisado e validado sob a metodologia do ONSA - Observatorio Nacional Socioambiental.",
+    "publicadoEm": "2026-09-08T16:00:00Z",
+    "atualizadoEm": "2026-09-08T16:00:00Z",
+    "tempoLeituraMin": 8,
+    "palavrasChave": [
+      "tarifa-social-energia",
+      "tarifa-social-agua",
+      "cadastro-unico",
+      "cemig",
+      "enel",
+      "cpfl",
+      "light",
+      "equatorial",
+      "copasa",
+      "desconto-conta-luz",
+      "desconto-conta-agua",
+      "baixa-renda"
+    ],
+    "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Tarifa social de energia e agua: veja como pedir o desconto em cada estado. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/tarifa-social-energia-agua-como-acessar>.",
+    "citacaoBibtex": "@article{onsa2026tarifasocial,\n  author = {{ONSA - Observatorio Nacional Socioambiental}},\n  title = {Tarifa social de energia e agua: veja como pedir o desconto em cada estado},\n  journal = {Controle Popular - Observatorio Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/tarifa-social-energia-agua-como-acessar}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "ANEEL - Agencia Nacional de Energia Eletrica (Tarifa Social)",
+        "url": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social"
+      },
+      {
+        "nome": "CEMIG - Central de Atendimento",
+        "url": "https://www.cemig.com.br/atendimento/tarifa-social/"
+      },
+      {
+        "nome": "ANATEL - Consumidor.gov.br",
+        "url": "https://www.consumidor.gov.br"
+      },
+      {
+        "nome": "Ministerio do Desenvolvimento Social - CadUnico",
+        "url": "https://www.gov.br/mds/pt-br/acoes-e-programas/cadastro-unico"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Familias com direito",
+        "valor": "mais de 10 milhoes"
+      },
+      {
+        "rotulo": "Desconto maximo na luz",
+        "valor": "ate 65%"
+      },
+      {
+        "rotulo": "Desconto maximo na agua",
+        "valor": "ate 50% (varia por concessionaria)"
+      },
+      {
+        "rotulo": "Estados com tarifa social de agua",
+        "valor": "26 estados + DF"
+      }
+    ],
+    "recomendacaoVerificar": "Consulte a [Central de Canais LAI](/direitos-em-movimento/informacao) do portal para encontrar o telefone e o site de ouvidoria da distribuidora da sua cidade.",
+    "paragrafos": [
+      "A Tarifa Social de Energia Eletrica (TSEE) e o programa de desconto na conta de agua sao direitos garantidos por lei para familias de baixa renda inscritas no Cadastro Unico (CadUnico) do governo federal. Mesmo assim, levantamento da ANEEL aponta que mais de 10 milhoes de familias eleg?veis ainda nao recebem o beneficio por desconhecer o processo de cadastro.",
+      "O primeiro passo e o mesmo para energia e agua: estar inscrito no CadUnico. A inscricao e feita gratuitamente no CRAS (Centro de Referencia de Assistencia Social) mais proximo, com RG, CPF e comprovante de renda de todos os moradores do imovel. Familias com renda per capita de ate R$ 218 (meio salario minimo de 2024) tem prioridade.",
+      "Para a energia eletrica, apos a inscricao no CadUnico, o desconto e automatico: a distribuidora consulta a base do governo mensalmente. Se o desconto nao aparecer na proxima fatura, ligue para a central da sua distribuidora: CEMIG (MG): 116; ENEL SP: 0800 722 0120; ENEL RJ: 0800 028 0120; CPFL: 0800 010 1010; Light (RJ): 0800 721 1222; Equatorial (varios estados): 0800 086 0196; Energisa: 0800 722 7272; Neoenergia/Coelba (BA): 116. O portal centralizou esses contatos em uma unica pagina: [Central de Canais LAI](/direitos-em-movimento/informacao).",
+      "Para a agua e saneamento, o procedimento varia por concessionaria. Em Minas Gerais, a COPASA tem o programa 'Conta Solidaria': o morador leva o comprovante de inscricao no CadUnico a qualquer agencia da COPASA ou liga para o 115. Em Sao Paulo, a Sabesp aplica desconto automatico para beneficiarios do CadUnico. No Rio de Janeiro, a Cedae e a Aguas do Rio pedem um formulario no site ou presencialmente. As concessionarias do Norte e Nordeste (Corsan, Compesa, Cagece) seguem o mesmo modelo do CadUnico, com atendimento pelo 0800 de cada uma.",
+      "Quem ja recebe Bolsa Familia automaticamente esta inscrito no CadUnico e tem direito ao desconto de luz. O que pode impedir o beneficio e o CPF desatualizado na conta de energia, o imovel estar no nome de outra pessoa ou a concessionaria local ainda nao ter integrado o sistema. Nesse caso, va a uma agencia com o comprovante do CadUnico e peca o ajuste manualmente.",
+      "Para verificar se voce esta no CadUnico, acesse o aplicativo 'Meu CadUnico' (Android e iOS) ou ligue para o CRAS. O historico de contas e o desconto aplicado ficam disponiveis no site ou app da distribuidora. O Controle Popular mantem a lista atualizada de telefones, e-mails e enderecos de todas as distribuidoras e concessionarias de agua em [/direitos-em-movimento/informacao](/direitos-em-movimento/informacao)."
+    ]
+  },
+  {
+    "slug": "judiciario-varas-gabinetes-como-acessar",
+    "titulo": "Como falar com a Justica: varas, gabinetes e balcoes de atendimento em Minas Gerais",
+    "subtitulo": "O portal mapeia 298 comarcas do TJMG com telefones, e-mails e enderecos para atendimento ao cidadao.",
+    "resumo": "O Controle Popular publica o primeiro mapa completo das comarcas e varas do TJMG com dados de contato verificados: telefone, e-mail e endereco de 298 comarcas distribuidas nos 853 municipios de Minas Gerais.",
+    "categoria": "Explicador",
+    "frente": "judiciario",
+    "subfrente": "Acesso a Justica",
+    "autor": "ONSA - Observatorio Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistencia de Inteligencia Artificial a partir de bases de dados publicos oficiais, revisado e validado sob a metodologia do ONSA - Observatorio Nacional Socioambiental.",
+    "publicadoEm": "2026-09-08T16:30:00Z",
+    "atualizadoEm": "2026-09-08T16:30:00Z",
+    "tempoLeituraMin": 5,
+    "palavrasChave": [
+      "tjmg",
+      "comarcas-mg",
+      "varas-mg",
+      "judiciario-mg",
+      "acesso-justica",
+      "balcao-virtual",
+      "gabinetes-mg"
+    ],
+    "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Como falar com a Justica: varas, gabinetes e balcoes de atendimento em Minas Gerais. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/judiciario-varas-gabinetes-como-acessar>.",
+    "citacaoBibtex": "@article{onsa2026judiciariovaras,\n  author = {{ONSA - Observatorio Nacional Socioambiental}},\n  title = {Como falar com a Justica: varas, gabinetes e balcoes de atendimento em Minas Gerais},\n  journal = {Controle Popular - Observatorio Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/judiciario-varas-gabinetes-como-acessar}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "TJMG - Tribunal de Justica de Minas Gerais",
+        "url": "https://www.tjmg.jus.br"
+      },
+      {
+        "nome": "CNJ - Conselho Nacional de Justica",
+        "url": "https://www.cnj.jus.br"
+      },
+      {
+        "nome": "Defensoria Publica de MG (DPMG)",
+        "url": "https://defensoria.mg.def.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Comarcas mapeadas",
+        "valor": "298 comarcas"
+      },
+      {
+        "rotulo": "Municipios cobertos",
+        "valor": "853 municipios de MG"
+      },
+      {
+        "rotulo": "Dados de contato verificados",
+        "valor": "telefone, e-mail e endereco"
+      },
+      {
+        "rotulo": "Orcamento TJMG (LOA 2025)",
+        "valor": "R$ 14,9 bilhoes"
+      }
+    ],
+    "recomendacaoVerificar": "Acesse o painel completo em [/judiciario/contatos](/judiciario/contatos). Para assistencia juridica gratuita, consulte a [DPMG](/judiciario/instituicoes#dpmg).",
+    "paragrafos": [
+      "O Tribunal de Justica de Minas Gerais (TJMG) e o maior tribunal estadual do Brasil em numero de processos. Com um orcamento de R$ 14,9 bilhoes proposto na LOA 2025, atende os 853 municipios mineiros por meio de 298 comarcas distribuidas em todo o estado. O Controle Popular publica agora o mapa completo dessas comarcas com dados de contato verificados.",
+      "Para o cidadao que precisa protocolar uma peticao, agendar uma audiencia ou consultar um processo, o caminho mais rapido e o Balcao Virtual do TJMG (balcaovirtual.tjmg.jus.br), disponivel 24 horas. No balcao virtual e possivel consultar processos, autenticar documentos e agendar atendimento presencial sem sair de casa.",
+      "Quem nao tem acesso a internet ou precisa de orientacao juridica gratuita deve procurar a Defensoria Publica de Minas Gerais (DPMG). A Defensoria opera em comarcas proprias e em salas de atendimento dentro dos foruns. O telefone nacional da Defensoria e o 129 (gratuito). Em Belo Horizonte, o atendimento presencial fica na Av. Raja Gabaglia, 1.292, Luxemburgo.",
+      "O Controle Popular identificou que 176 comarcas de Minas Gerais nao tem defensor publico lotado. Nessas cidades, o atendimento e feito por defensores itinerantes ou por convenio com a OAB local. A lista completa das comarcas sem defensor e o mapa de cobertura estao na pagina [Fichas TJMG, MPMG e DPMG](/judiciario/instituicoes#fichas-instituicoes).",
+      "Para processos que envolvem trabalho, o caminho e o TRT da 3a Regiao (MG) com sede em Belo Horizonte. Para causas federais ? INSS, Receita Federal, IBAMA ? a Justica Federal de Minas tem varas em BH, Juiz de Fora, Uberlandia, Uberaba, Montes Claros, Governador Valadares e Pocos de Caldas. Todos os contatos estao reunidos em [/judiciario/contatos](/judiciario/contatos)."
+    ]
+  },
+  {
+    "slug": "lai-acesso-informacao-13-anos-como-pedir",
+    "titulo": "LAI completa 13 anos: como qualquer pessoa pode pedir informacao a qualquer orgao publico",
+    "subtitulo": "Prazos, gratuidade, recursos e os canais de todas as esferas: federal, estadual e municipal.",
+    "resumo": "A Lei de Acesso a Informacao (LAI) garante desde 2011 o direito de qualquer pessoa receber documentos, contratos e dados de orgaos publicos sem custo e sem precisar explicar o motivo. O Controle Popular explica como funciona e reune os canais de 445 entidades.",
+    "categoria": "Explicador",
+    "frente": "estado",
+    "subfrente": "Acesso a Informacao",
+    "autor": "ONSA - Observatorio Nacional Socioambiental",
+    "declaracaoIa": "Texto elaborado com assistencia de Inteligencia Artificial a partir de bases de dados publicos oficiais, revisado e validado sob a metodologia do ONSA - Observatorio Nacional Socioambiental.",
+    "publicadoEm": "2026-09-08T17:00:00Z",
+    "atualizadoEm": "2026-09-08T17:00:00Z",
+    "tempoLeituraMin": 6,
+    "palavrasChave": [
+      "lai",
+      "lei-de-acesso-a-informacao",
+      "e-sic",
+      "fala-br",
+      "ouvidoria",
+      "transparencia-publica",
+      "pedido-informacao"
+    ],
+    "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. LAI completa 13 anos: como qualquer pessoa pode pedir informacao a qualquer orgao publico. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/lai-acesso-informacao-13-anos-como-pedir>.",
+    "citacaoBibtex": "@article{onsa2026lai13anos,\n  author = {{ONSA - Observatorio Nacional Socioambiental}},\n  title = {LAI completa 13 anos: como qualquer pessoa pode pedir informacao a qualquer orgao publico},\n  journal = {Controle Popular - Observatorio Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/lai-acesso-informacao-13-anos-como-pedir}\n}",
+    "fontesOficiais": [
+      {
+        "nome": "Fala.BR - Plataforma Federal de Ouvidorias (CGU)",
+        "url": "https://falabr.cgu.gov.br"
+      },
+      {
+        "nome": "CGU - Lei de Acesso a Informacao",
+        "url": "https://www.gov.br/cgu/pt-br/assuntos/transparencia-publica/lai"
+      },
+      {
+        "nome": "OGE-MG - Sistema LAI Estadual de Minas Gerais",
+        "url": "https://www.ouvidoriageral.mg.gov.br"
+      }
+    ],
+    "metricas": [
+      {
+        "rotulo": "Prazo de resposta (federal)",
+        "valor": "20 dias (prorrogavel por mais 10)"
+      },
+      {
+        "rotulo": "Custo do pedido",
+        "valor": "Gratuito (salvo reproducao fisica)"
+      },
+      {
+        "rotulo": "Entidades com canal LAI mapeadas",
+        "valor": "445"
+      },
+      {
+        "rotulo": "Recurso em caso de negativa",
+        "valor": "ate 3 instancias + CGU + CMRI"
+      }
+    ],
+    "recomendacaoVerificar": "Consulte o guia pratico e os 445 canais de acesso em [/direitos-em-movimento/informacao](/direitos-em-movimento/informacao).",
+    "paragrafos": [
+      "A Lei n. 12.527/2011 ? conhecida como Lei de Acesso a Informacao (LAI) ? garante a qualquer pessoa, brasileira ou estrangeira, o direito de solicitar documentos, contratos, salarios, atas e dados de qualquer orgao da administracao publica federal, estadual ou municipal. O pedido e gratuito, pode ser feito pela internet ou pessoalmente, e o orgao tem 20 dias para responder.",
+      "Para orgaos federais ? IBAMA, INSS, Receita Federal, Ministerios ? o canal e o Fala.BR (falabr.cgu.gov.br), plataforma unificada da CGU. O cadastro e feito com CPF e o pedido nao precisa de justificativa. Em Minas Gerais, a CGE-MG e a OGE-MG operam o sistema estadual, acessivel em ouvidoriageral.mg.gov.br. Para prefeituras, cada municipio tem um e-SIC proprio, cujos links estao reunidos pelo Controle Popular em [/direitos-em-movimento/informacao](/direitos-em-movimento/informacao).",
+      "Se o orgao negar o pedido, o cidadao pode recorrer em ate tres instancias internas. Se a negativa persistir, pode acionar a CGU (para orgaos federais) ou o Tribunal de Contas e o Ministerio Publico (para orgaos estaduais e municipais). A CMRI (Comissao Mista de Reavaliacao de Informacoes) e a instancia final para informacoes classificadas como secretas.",
+      "O Controle Popular mapeou 445 entidades com canais LAI verificados: 199 prefeituras municipais das cidades estrategicas do portal, 199 camaras municipais, 21 orgaos federais e estaduais e concessoes de agua, luz e telefone. Todos com e-mail, telefone, horario e link do e-SIC. O acervo e filtrado por estado, categoria e nome do orgao e pode ser baixado em planilha CSV.",
+      "Uma dica pratica: ao fazer o pedido, seja especifico. Em vez de 'quero ver os contratos da prefeitura', escreva 'solicitacao das notas de empenho dos contratos de limpeza publica firmados entre janeiro de 2023 e dezembro de 2024, com razao social do fornecedor e valor'. Quanto mais preciso o pedido, mais rapida e completa a resposta. O Controle Popular mantem um guia com modelos de pedido na pagina [Central de Canais LAI](/direitos-em-movimento/informacao)."
+    ]
   }
 ]
