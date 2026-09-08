@@ -3,7 +3,7 @@
 """
 treinar_seu_nono_unsloth.py
 
-Treinamento QLoRA do Seu Nono 7B via Unsloth e exportacao direta para GGUF Q4_K_M.
+Treinamento QLoRA do Seu Nono 7B (Sabiá-7B) via Unsloth e exportacao direta para GGUF Q4_K_M.
 Pode ser executado no Google Colab (GPU T4 gratuita) ou em qualquer maquina com GPU Nvidia (>= 6GB VRAM).
 
 Tempo de execucao estimado:
@@ -17,33 +17,23 @@ import torch
 from datasets import load_dataset
 from trl import SFTTrainer
 from transformers import TrainingArguments
-from transformers import BitsAndBytesConfig
 
 # 1. Configuracao Unsloth
 from unsloth import FastLanguageModel
 
 MAX_SEQ_LENGTH = 2048
 DTYPE = None # Auto deteta (Float16 ou Bfloat16)
-LOAD_IN_4BIT = False # 4-bit nao suporta CPU offload
-LOAD_IN_8BIT = True  # 8-bit suporta CPU offload
+LOAD_IN_4BIT = True  # QLoRA 4-bit para caber em GPU 4GB VRAM
 
-# Modelo Base recomendado: Sabiá-7B ou Llama-3.1-8B-Instruct
-MODEL_NAME = "unsloth/Meta-Llama-3.1-8B-Instruct" # Original sem quantizacao previa
+# Modelo Base: Sabiá-7B (Maritaca AI)
+MODEL_NAME = "maritaca-ai/sabia-7b"
 
 print(">>> 1/5 Carregando modelo base...")
-bnb_config = BitsAndBytesConfig(
-    load_in_8bit=LOAD_IN_8BIT,
-    llm_int8_enable_fp32_cpu_offload=True,
-    llm_int8_has_fp16_weight=False,
-)
-
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name=MODEL_NAME,
     max_seq_length=MAX_SEQ_LENGTH,
     dtype=DTYPE,
-    quantization_config=bnb_config,
-    device_map="auto",
-    max_memory={0: "3.5GB", "cpu": "16GB"},
+    load_in_4bit=LOAD_IN_4BIT,
 )
 
 print(">>> 2/5 Configurando adaptadores LoRA...")
@@ -59,7 +49,7 @@ model = FastLanguageModel.get_peft_model(
 )
 
 print(">>> 3/5 Carregando dataset civico...")
-DATASET_PATH = "dataset-seu-nono-v1.jsonl"
+DATASET_PATH = "dataset-seu-nono-v1-expanded.jsonl"
 if not os.path.exists(DATASET_PATH):
     raise FileNotFoundError(f"Coloque o arquivo {DATASET_PATH} na mesma pasta deste script!")
 
