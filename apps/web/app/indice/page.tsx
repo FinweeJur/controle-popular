@@ -18,8 +18,9 @@ import {
   MapPin,
   Cpu,
   Newspaper,
+  Users,
+  Sparkles,
 } from "lucide-react";
-import { Sparkles } from "lucide-react";
 import { ZONAS_PUBLICADAS } from "@/lib/zonas";
 import novidades from "@/data/novidades.json";
 import { listarCidades } from "@/lib/db/queries/municipios";
@@ -96,6 +97,8 @@ export default async function IndiceGlobal() {
         { href: "/dados/populares", titulo: "Paginas mais vistas", descricao: "O que as pessoas mais consultam.", cor: "var(--cp-accent)", badge: "Transversal", icon: <BarChart3 size={14} /> },
         { href: "/dados/comunicabr", titulo: "Governo federal nas cidades", descricao: "Repasses e acoes da Uniao em Minas Gerais.", cor: "var(--cp-accent)", badge: "Transversal", icon: <Globe size={14} /> },
         { href: "/direitos-em-movimento", titulo: "Direitos em Movimento", descricao: "Onde buscar ajuda e como se defender.", cor: "var(--cp-alert)", badge: "Transversal", icon: <HeartHandshake size={14} /> },
+        { href: "/direitos-em-movimento/informacao", titulo: "Canais de Informação (LAI)", descricao: "445 canais oficiais de prefeituras, câmaras, órgãos federais e concessionárias de luz e água.", cor: "var(--cp-alert)", badge: "Cidadania", icon: <FileText size={14} /> },
+        { href: "/direitos-em-movimento/conselhos", titulo: "Conselhos de Direitos & Colegiados", descricao: "710 conselhos de saúde (CMS/CES), meio ambiente (CODEMA), direitos humanos, tutelares e mulheres.", cor: "var(--cp-alert)", badge: "Controle Social", icon: <Users size={14} /> },
         { href: "/tecnologia", titulo: "Tecnologia & IA Livre", descricao: "Oficinas práticas de IA, catálogo open source e ferramentas livres.", cor: "var(--cp-primary)", badge: "Educação", icon: <Cpu size={14} /> },
         { href: "/noticias", titulo: "Notícias & Relatórios", descricao: "Estudos técnicos, dados públicos e investigações cívicas do ONSA.", cor: "var(--cp-primary)", badge: "Jornalismo", icon: <Newspaper size={14} /> },
         { href: "/governo", titulo: "Governo: Prometeu? Cumpriu?", descricao: "Acompanhamento das promessas e metas dos 27 governos estaduais, capitais e polos.", cor: "var(--cp-secondary)", badge: "Gestão", icon: <Landmark size={14} /> },
@@ -115,6 +118,8 @@ export default async function IndiceGlobal() {
       topicos: [
         { href: "/direitos-em-movimento/denuncia", titulo: "Quero denunciar", descricao: "Canais de denuncia e protecao.", cor: "var(--cp-alert)", badge: "Acao", icon: <Shield size={14} /> },
         { href: "/direitos-em-movimento/ajuda", titulo: "Preciso de ajuda", descricao: "Onde encontrar assistencia juridica e social.", cor: "var(--cp-alert)", badge: "Acao", icon: <HelpCircle size={14} /> },
+        { href: "/noticias/tarifa-social-energia-agua-como-acessar", titulo: "Quero desconto na conta de luz e água", descricao: "Veja o passo a passo da Tarifa Social por estado e distribuidora.", cor: "var(--cp-primary)", badge: "Acao", icon: <Sparkles size={14} /> },
+        { href: "/direitos-em-movimento/conselhos", titulo: "Quero participar do conselho da minha cidade", descricao: "Reuniões e contatos de CMS, CODEMA, Tutelares e Direitos Humanos.", cor: "var(--cp-alert)", badge: "Acao", icon: <Users size={14} /> },
         { href: "/judiciario/contatos", titulo: "Preciso falar com a Vara ou Fórum", descricao: "Contatos com DDD, e-mails, endereços com CEP e balcão virtual das 298 comarcas de MG e polos do país.", cor: "var(--cp-secondary)", badge: "Acao", icon: <Scale size={14} /> },
         { href: "/governo", titulo: "Quero checar se o governo cumpriu", descricao: "Painel comparativo de promessas de campanha versus entregas reais.", cor: "var(--cp-primary)", badge: "Acao", icon: <Landmark size={14} /> },
         { href: "/cidades", titulo: "Quero dados da minha cidade", descricao: "Painel mestre com 199 cidades estratégicas do Brasil com SUS, PIB e contratos.", cor: "var(--cp-tertiary)", badge: "Acao", icon: <MapPin size={14} /> },

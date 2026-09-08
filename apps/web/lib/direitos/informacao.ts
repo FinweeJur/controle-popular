@@ -52,6 +52,18 @@ export function obterCanaisPorUf(uf: string): CanalInformacao[] {
 }
 
 /**
+ * Retorna canais associados a um município específico (por código IBGE ou nome).
+ */
+export function obterCanaisPorMunicipio(codigoOuNome: string): CanalInformacao[] {
+  const norm = codigoOuNome.toLowerCase().trim();
+  return (catalogo.canais || []).filter((c) => {
+    if (c.codigoIbge === codigoOuNome) return true;
+    if (c.cidade && c.cidade.toLowerCase() === norm) return true;
+    return false;
+  });
+}
+
+/**
  * Busca canais por correspondência em nome, cidade, responsável ou descrição.
  */
 export function buscarCanais(termo: string): CanalInformacao[] {

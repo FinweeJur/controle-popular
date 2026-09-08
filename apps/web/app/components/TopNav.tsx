@@ -31,6 +31,7 @@ import {
   Code2,
   BookOpen,
   PhoneCall,
+  Users,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -78,6 +79,7 @@ const SECOES_MENU = [
       { label: "Educação & Escolas (IDEB)", href: "/direitos-em-movimento/educacao", icone: GraduationCap },
       { label: "Trabalho & Emprego (CAGED)", href: "/direitos-em-movimento/trabalho-e-renda", icone: Briefcase },
       { label: "Que Lei Protege Isso", href: "/ambiental/legislacao", icone: ShieldCheck },
+      { label: "Conselhos de Direitos", href: "/direitos-em-movimento/conselhos", icone: Users },
       { label: "Onde Buscar Ajuda", href: "/direitos-em-movimento/ajuda", icone: HelpCircle },
       { label: "Pedir Informação (LAI)", href: "/direitos-em-movimento/informacao", icone: FileQuestion },
       { label: "Canal de Denúncia Local", href: "/direitos-em-movimento/denuncia", icone: Send },

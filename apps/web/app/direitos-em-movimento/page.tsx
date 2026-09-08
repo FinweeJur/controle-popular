@@ -108,6 +108,14 @@ export default async function DireitosEmMovimentoHub() {
           cta="Ver os canais →"
         />
         <PortaCard
+          etiqueta="Democracia direta e controle social"
+          titulo="Conselhos de Direitos & Colegiados"
+          descricao="Onde a população fiscaliza: conselhos de saúde (CMS/CES), meio ambiente (CODEMA), direitos humanos, tutelares e comitês de bacia das 27 UFs e 199 cidades estratégicas."
+          numero="710 conselhos e colegiados mapeados"
+          href="/direitos-em-movimento/conselhos"
+          cta="Ver conselhos →"
+        />
+        <PortaCard
           etiqueta="Passo a passo guiado"
           titulo="Como denunciar"
           descricao="Nove perguntas curtas, não um formulário em branco: o que aconteceu, quando, quem esteve envolvido, que prova reunir e para onde mandar. O documento (.docx) nasce no seu navegador e nunca é enviado a nenhum servidor."

@@ -3,8 +3,9 @@ import type {
   CategoriaConselho,
   EsferaConselho,
 } from "./tipos";
+import conselhosExpandidosJson from "@/data/conselhos-direitos.json";
 
-export const CONSELHOS_CATALOGO: RegistroConselho[] = [
+const CONSELHOS_BASE: RegistroConselho[] = [
   // ==========================================
   // COMITÊS DE BACIAS HIDROGRÁFICAS
   // ==========================================
@@ -548,6 +549,11 @@ export const CONSELHOS_CATALOGO: RegistroConselho[] = [
     },
     tags: ["patrimonio-cultural", "diamantina", "unesco", "cultura-popular"],
   },
+];
+
+export const CONSELHOS_CATALOGO: RegistroConselho[] = [
+  ...CONSELHOS_BASE,
+  ...(conselhosExpandidosJson as unknown as RegistroConselho[]),
 ];
 
 /**

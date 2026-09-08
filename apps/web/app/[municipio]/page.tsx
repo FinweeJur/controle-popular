@@ -9,6 +9,7 @@ import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 import RankingVereadores from "@/app/[municipio]/components/charts/RankingVereadores";
 import IndiceRiscoDireitosCard from "@/app/[municipio]/components/IndiceRiscoDireitosCard";
 import { conselhosPorMunicipio } from "@/lib/conselhos/catalogo";
+import { obterCanaisPorMunicipio } from "@/lib/direitos/informacao";
 import { obterPanoramaJudicial } from "@/lib/judiciario/jurisprudencia-clima-barragens";
 import { relatoriosPorMunicipio } from "@/lib/direitos-humanos/relatorios";
 import { obterRiscoPorIbge } from "@/lib/clima/bases-risco";
@@ -173,13 +174,35 @@ interface ContatoUtil {
   categoria: string | null;
 }
 
-async function getContatosUteis(idMunicipio: IdMunicipio): Promise<ContatoUtil[]> {
+async function getContatosUteis(idMunicipio: IdMunicipio, nomeCidade?: string): Promise<ContatoUtil[]> {
   try {
     const data = await contatosUteis(idMunicipio);
-    return (data ?? []) as ContatoUtil[];
+    if (data && data.length > 0) return data as ContatoUtil[];
   } catch {
-    return [];
+    // Fallback estático para o catálogo nacional LAI
   }
+
+  const canaisLocais = obterCanaisPorMunicipio(String(idMunicipio));
+  if (canaisLocais.length > 0) {
+    return canaisLocais.map((c) => ({
+      nome: `${c.sigla || c.nome} (${c.responsavel.cargo || "Atendimento"})`,
+      telefone: c.telefone || null,
+      categoria: c.categoria,
+    }));
+  }
+
+  if (nomeCidade) {
+    const porNome = obterCanaisPorMunicipio(nomeCidade);
+    if (porNome.length > 0) {
+      return porNome.map((c) => ({
+        nome: `${c.sigla || c.nome} (${c.responsavel.cargo || "Atendimento"})`,
+        telefone: c.telefone || null,
+        categoria: c.categoria,
+      }));
+    }
+  }
+
+  return [];
 }
 
 async function getClima(idMunicipio: IdMunicipio): Promise<ClimaAtual | null> {
@@ -235,7 +258,7 @@ export default async function HomePage({
   ] = await Promise.all([
     getIndicadores(cidade.id_municipio),
     getContratosAtivosSummary(cidade.id_municipio),
-    getContatosUteis(cidade.id_municipio),
+    getContatosUteis(cidade.id_municipio, cidade.nome),
     getClima(cidade.id_municipio),
     fetchAnunciosAtivos(cidade.id_municipio),
     getVereadores(cidade.id_municipio),

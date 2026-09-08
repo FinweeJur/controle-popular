@@ -113,28 +113,42 @@ export const FRENTES: SeuNonoFrente[] = [
       },
       {
         id: "acesso-a-justica",
-        titulo: "Acesso à Justiça & Denúncias",
+        titulo: "Acesso à Informação, Conselhos & Denúncias",
         perguntas: [
           {
-            id: "onde-buscar-ajuda",
-            pergunta: "Onde buscar orientação jurídica e defensoria pública?",
+            id: "pedir-lai",
+            pergunta: "Como fazer um pedido de Lei de Acesso à Informação (LAI)?",
             resposta:
-              "O guia de ajuda lista defensorias, ouvidorias públicas e entidades da sociedade civil que prestam assistência jurídica gratuita.",
+              "A Central de Canais LAI reúne 445 entidades: prefeituras, câmaras, órgãos federais e concessionárias de água, energia e telecomunicações com e-mail, telefone, e-SIC e modelo de pedido.",
+            link: { href: "/direitos-em-movimento/informacao", texto: "Central de Canais LAI (445 entidades)" },
+          },
+          {
+            id: "tarifa-social",
+            pergunta: "Como pedir desconto de até 65% na conta de energia e água?",
+            resposta:
+              "Famílias inscritas no Cadastro Único (CadÚnico) têm direito à Tarifa Social de Energia (CEMIG, Enel, CPFL, Light, Equatorial) e desconto na água (COPASA, Sabesp, Cedae). Veja tutorial por estado.",
+            link: { href: "/noticias/tarifa-social-energia-agua-como-acessar", texto: "Tutorial Tarifa Social" },
+          },
+          {
+            id: "conselhos-direitos",
+            pergunta: "Como encontrar o Conselho de Saúde, Meio Ambiente ou Tutelar da minha cidade?",
+            resposta:
+              "O portal mapeia 710 conselhos participativos (CMS, CES, CODEMA, CEDH, CMDM e Tutelares) das 27 UFs e 199 cidades estratégicas com datas de reunião, contatos e canais.",
+            link: { href: "/direitos-em-movimento/conselhos", texto: "Conselhos de Direitos & Colegiados" },
+          },
+          {
+            id: "onde-buscar-ajuda",
+            pergunta: "Onde buscar orientação jurídica e defensoria pública gratuita?",
+            resposta:
+              "O guia de ajuda lista defensorias, ouvidorias públicas e entidades da sociedade civil que prestam assistência jurídica gratuita em todo o país.",
             link: { href: "/direitos-em-movimento/ajuda", texto: "Quem pode ajudar" },
           },
           {
             id: "fazer-denuncia",
             pergunta: "Como fazer uma denúncia popular com segurança?",
             resposta:
-              "A página de denúncias reúne canais do Ministério Público, Tribunais de Contas e controladorias públicas.",
+              "A página de denúncias reúne gerador passo a passo de representação (.docx local) e canais do Ministério Público, Tribunais de Contas e controladorias.",
             link: { href: "/direitos-em-movimento/denuncia", texto: "Canais de Denúncia" },
-          },
-          {
-            id: "pedir-lai",
-            pergunta: "Como fazer um pedido de Lei de Acesso à Informação (LAI)?",
-            resposta:
-              "Veja o passo a passo para solicitar documentos e planilhas a prefeituras e órgãos públicos municipais e estaduais.",
-            link: { href: "/direitos-em-movimento/informacao", texto: "Guia de Pedidos LAI" },
           },
         ],
       },
@@ -329,6 +343,20 @@ export const FRENTES: SeuNonoFrente[] = [
             resposta:
               "Com orçamento 14 vezes menor que o Tribunal de Justiça, a DPMG não dispõe de defensores suficientes para atender a população carente em todo o estado.",
             link: { href: "/judiciario/instituicoes/dpmg", texto: "Déficit da Defensoria" },
+          },
+          {
+            id: "varas-e-gabinetes",
+            pergunta: "Como falar diretamente com uma Vara, Fórum ou Balcão Virtual da Justiça?",
+            resposta:
+              "O Guia de Varas e Gabinetes mapeia 990 unidades e 298 comarcas de Minas Gerais com telefones com DDD, e-mails institucionais, juízes titulares, endereços com CEP e link do Balcão Virtual.",
+            link: { href: "/judiciario/contatos", texto: "Guia de Varas, Gabinetes e Balcão Virtual" },
+          },
+          {
+            id: "instituicoes-27-estados",
+            pergunta: "Onde consultar o orçamento e cúpula dos Tribunais e MPs dos 27 estados?",
+            resposta:
+              "O painel de Instituições de Justiça cobre Tribunais de Justiça (TJs), Ministérios Públicos (MPs) e Defensorias Públicas de todos os 27 estados brasileiros com orçamentos e organogramas.",
+            link: { href: "/judiciario/instituicoes", texto: "Painel das Instituições dos 27 Estados" },
           },
           {
             id: "sirenejud-processos",
