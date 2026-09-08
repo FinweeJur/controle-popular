@@ -49,7 +49,7 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
           "26201996000197": "CAMARA MUNICIPAL DE ARACUAI"
         },
         "estado_municipios_count": 853,
-        "cnpjs_orgao_atualizado_em": "2026-08-09",
+        "cnpjs_orgao_atualizado_em": "2026-09-03",
         "legislacao_municipal_host": "https://sapl.aracuai.mg.leg.br/",
         "prefeitura_transparencia_host": "https://aracuai-mg.portaltp.com.br/",
         "prefeitura_transparencia_sistema": "portaltp"
@@ -164,7 +164,7 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
         },
         "sigpub_entidade_camara": "21672",
         "estado_municipios_count": 853,
-        "cnpjs_orgao_atualizado_em": "2026-08-09",
+        "cnpjs_orgao_atualizado_em": "2026-09-03",
         "legislacao_municipal_host": "https://cmdiamantina.mg.gov.br/",
         "sigpub_entidade_prefeitura": "905",
         "prefeitura_transparencia_host": "https://portaltransp.com.br",
@@ -215,7 +215,7 @@ const LINHAS: (Omit<Cidade, "id_municipio"> & { id_municipio: string })[] =
           "26222059000118": "ITINGA CAMARA MUNICIPAL"
         },
         "estado_municipios_count": 853,
-        "cnpjs_orgao_atualizado_em": "2026-08-09",
+        "cnpjs_orgao_atualizado_em": "2026-09-03",
         "prefeitura_transparencia_host": "https://cidadesmg.com.br/portaltransparencia",
         "camara_simplesystem_categorias": {
           "LEIS": 581,

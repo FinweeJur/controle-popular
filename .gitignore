@@ -178,3 +178,18 @@ apps/web/.wrangler-dist/
 
 # Pacotes e arquivos compactados de trabalho
 *.zip
+
+# Capturas HTML cruas da coleta ESG da Vale (processadas nos JSONs de analise;
+# artefato de coleta, nao fonte)
+apps/web/data/esg/vale-*.html
+
+# Capturas de tela e acervo de documentos locais (artefato de maquina)
+screenshots/
+acervo-documentos/
+
+# Pagina e rota locais de painel (nao importadas; artefato desta maquina)
+apps/web/app/\[municipio\]/admin/page.local.tsx
+apps/web/app/api/painel/chat-operacoes/route.local.ts
+
+# XLSX brutos de trabalho (SINESP/VDE)
+etl/betim/dados/temp/
