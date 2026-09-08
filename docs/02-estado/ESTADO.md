@@ -2,7 +2,7 @@
 
 > **Tipo:** ESTADO
 > **Domínio:** global
-> **Última medição:** 2026-09-07 (Tema Pequi padrão sem flash, TopNav 3 Eixos com cores/ícones, Fichas das 7 Instituições de Justiça, Hiperlinks nas 199 Cidades, Home R$ 251 bi, Treino Sabiá 7B concluído com 100% no Golden Set, Neon verificado)
+> **Última medição:** 2026-09-08 (sanitização do git concluída com 4 commits temáticos; página Estudos Rurais com 60 itens coletados; Relatório Técnico Geral com 206 rotas/9 frentes/42 fontes; LinkMender v2 com 58 testes e camada de correção no prebuild; build de produção validado no home-pc)
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [PRODUTO.md](../01-produto/PRODUTO.md), [DESENVOLVIMENTO.md](../03-desenvolvimento/DESENVOLVIMENTO.md), [OPERACAO.md](../05-operacao/OPERACAO.md), [PLANO-CLOUDFLARE-TUNNEL.md](../historico/entregas/PLANO-CLOUDFLARE-TUNNEL.md), [AGENTS.md](/AGENTS.md)
 > **Palavras-chave:** estado, fila, bloqueios, divida tecnica, decisoes, plano unico, neon, build, tunnel
@@ -146,7 +146,7 @@ abaixo.
 
 | Bloqueio | Até | O que desbloqueia |
 |---|---|---|
-| Neon em HTTP 402 | 01/09 | pagar/vencer o prazo — sem banco não há `next build` nesta máquina. No modo túnel, o build continua no home-pc; a máquina de dev não builda |
+| Neon sem `DATABASE_URL` nesta máquina | — | cota de egress do plano free estourou por causa dos builds (`apps/web/scripts/orcamento-egress.mts` raciona 85% build / 15% tráfego). Dono reativa o projeto no console Neon e fornece a connection string; aí roda `docs/planos/ROTEIRO-NEON-01-09.md` (atualizado em 08/09 para migrations 0071–0087). CI (ETLs) e Fase 5 do chatbot (pgvector) desbloqueiam com isso |
 | **Worker Free 3 MiB gzip (erro 10027)** | ✅ resolvido em 26/08 | publicação migrou para **Cloudflare Tunnel + `next start` no home-pc**. O Worker continua deployado, mas sem custom domains; o domínio aponta para o túnel. Ver fila #30 e [PLANO-CLOUDFLARE-TUNNEL.md](../historico/entregas/PLANO-CLOUDFLARE-TUNNEL.md) |
 | Build e publicação só no `home-pc` | — | no modo túnel, `next start` no home-pc é o servidor de produção; build e deploy do Worker são opcionais/fallback |
 | **Coleta diário oficial D1** | ✅ resolvido em 30/08 | 16.601 atos de jan/2020 a jul/2026 coletados via SIGPub; módulo migrado de `curl.exe` (quebrado na máquina) para `requests` |
@@ -183,6 +183,14 @@ As **duas compactações** (`apps/web/lib/comunicabr/arquivo.ts` × `apps/web/li
 - **M7 — coletor de parlamentares de MG**: `scripts/coletar-congresso-mg.py` com `DadosAbertosBrasil` (93 deputados + 3 senadores; `apps/web/data/congresso-mg.json`, 17 KB; CPF redigido na origem com abort se sobreviver); entrada `congresso-mg-parlamentares` no registry.
 - **M8 — coletor de sócios via brasil.io**: `scripts/coletar-socios-brasilio.mts` pronto e fail-closed, mas **a API exige token** (medido em 31/08: 401 sem `Authorization: Token`) — `socios-vale.json` fica pendente de `BRASILIO_API_TOKEN` em `scripts/.env`.
 - **M11 — guarda com Presidio**: `--alta-confianca` no `checar-dado-pessoal-em-dado.py` exige concordância do Presidio rule-only (sem modelo de ML — medido: `AnalyzerEngine` baixaria `en_core_web_lg` de 400 MB); Presidio roda só quando há candidato (290s → 28s); fallback idêntico ao atual sem a biblioteca.
+
+## Entregas de 08/09/2026
+
+- **Sanitização do git concluída** (plano `PROPOSICAO-SANITIZACAO-REPO.md`, Etapa 1): 4 commits temáticos (código UI `af904a23`, dado `af2f5586`, ETL `03aa2c66`, docs `56329ba5`), lixo de sessão apagado (22 `tmp_*.json`, 14 `commit-msg*.txt`), `.gitignore` com artefatos de máquina (HTML cru da Vale, screenshots, xlsx de trabalho, páginas `.local`), dado novo varrido por mod-11 (0 CPF real). `git status` limpo; 1.502 testes vitest + 141 globo + `tsc` verdes. Worktrees antigos em `C:\DevCoder\*` (b1, ambiental, busca, territorio, copy) pendentes de avaliação do dono.
+- **Página Estudos Rurais** (`/estudos-rurais`, commit `78719402`): 60 notícias coletadas nesta máquina (Google News RSS + feed ICA/UFVJM), gráfico SVG, cartões, CSV BOM UTF-8, filtro e ordenação; 13 testes. PPGER corrigido no plano: é o programa de **Estudos Rurais** da UFVJM. Lacuna: dissertações do DSpace (API responde 200 com SPA HTML) ficam para rodada no home-pc.
+- **Relatório Técnico Geral do site** (`docs/relatorios-automacao/relatorio-tecnico-geral.md`, commit `74568099`): gerador `scripts/gerar-relatorio-tecnico.mts` varre rotas/fontes/eixos na hora. Medido: **206 rotas, 9 frentes, 42 fontes, 3 eixos / 18 subfrentes**. Lacunas declaradas (17 rotas sem descrição extraível; 100 rotas de banco sem medição sem Neon).
+- **LinkMender v2** (commit `66f3e5fa`): verificar TODOS os links validando conteúdo (não só 200); link falho → 3 websearch com palavras-chave distintas; confirmação por 5 critérios (domínio oficial/R2, tipo igual, corpo confere, título similar jaccard ≥ 0,35, vivo-2xx); correção é **camada** (`apps/web/data/link-correcoes.json`) validada no prebuild e aplicada na geração — o dado versionado nunca é reescrito. 58 testes com fetch mockado. Primeira rodada real no home-pc: `npx tsx scripts/agent-tools/linkmender-v2.mts`.
+- **Trabalho novo desta máquina é o home-pc de publicação** — build e `next start` acontecem aqui. As duas `DATABASE_URL` (`apps/web/.env.local` e `scripts/.env`) apontam para o Postgres local (`127.0.0.1/controle_popular`); a string da Neon não está em `.env` nenhum da máquina — pendente do dono reativar no console e fornecer a URL para o runbook da Neon.
 
 ## Rito de trabalho
 
