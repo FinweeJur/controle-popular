@@ -6,7 +6,7 @@
 > **Leitura estimada:** media (5-15 min)
 > **Relacionados:** [ESTADO.md](../02-estado/ESTADO.md), [AGENTS.md](/AGENTS.md), [ROTEIRO-PGVECTOR-CHATBOT.md](ROTEIRO-PGVECTOR-CHATBOT.md)
 > **Palavras-chave:** neon, postgres, migrations, runbook, build, egress
-> **Status:** ATUALIZADO 08/09 — migrations 0071–0087; produção já roda no Postgres local do home-pc; Neon volta como banco da CI (ETLs) e do pgvector
+> **Status:** ✅ EXECUTADO em 08/09/2026 — Neon de volta com 87 migrations + cargas mínimas (124,4 MB de ~500 do plano free)
 
 ## Sumário
 
@@ -109,6 +109,23 @@ select count(*), count(distinct (codigo, exercicio)) from convenios_federais
 where id_municipio = '3106705';
 ```
 
+## ✅ O que foi executado em 08/09 (com os achados)
+
+1. **Zerado** o dado defasado (351 MB de agosto) — `drop schema public cascade`
+2. **87 migrations aplicadas** (0001–0087). Dois obstáculos, ambos resolvidos:
+   - a role `service_role` (padrão Supabase) não existia na Neon — criada junto com `anon` e `authenticated`, todas `nologin`
+   - a `0002_rls` cita `storage.buckets` (Supabase Storage) — stub mínimo criado (buckets + objects); mídia real vai para o R2
+3. **Cargas mínimas concluídas** (124,4 MB): legislação federal 8.940 (MMA 8.570 + CNDH 370, todas com tema), atos_oficiais 10.344, atos_diario 16.601, direito crítico 15, SNISB 2.240, FEAM 249, AdaptaBrasil 6.824, municípios 210 + referências (das seeds)
+4. **Classificadores rodaram** contra a Neon (temas ambientais e de atos)
+5. **Links TJMG corrigidos** (id 6/7/8) na Neon E no local (o conserto de 13/08 só tinha ido ao seed)
+
+### Achados que valem registro
+
+- ⚠️ **O endpoint `-pooler` da Neon zera o `search_path` a cada sessão** (`source: session`, `''`). Sincronização e scripts com SQL não-qualificado devem usar o **endpoint direto** (mesma URL sem `-pooler.`). O `ALTER ROLE neondb_owner IN DATABASE neondb SET search_path = public` colou no direto.
+- `carregar-legislacao-federal.mts` ganhou a válvula `--permitir-nuvem` (opt-in explícito; a trava local continua sendo o padrão).
+
 ## Origem
 
 Escrito em 17/08/2026 para a virada da cota de 01/09. Atualizado em 08/09: migrations 0071-0087, producao ja no Postgres local, foco da Neon em CI e pgvector, sincronizacao local -> Neon pelo pg_dump.
+
+Escrito em 17/08/2026 para a virada da cota de 01/09. Atualizado e EXECUTADO em 08/09: 87 migrations, cargas minimas (124,4 MB), classificadores, links TJMG; quirk do pooler documentado.

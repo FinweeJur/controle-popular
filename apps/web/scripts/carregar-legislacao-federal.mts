@@ -34,8 +34,13 @@ import path from "node:path";
 import { Pool } from "pg";
 
 const arquivo = process.argv[2];
+const permitirNuvem = process.argv.includes("--permitir-nuvem");
 if (!arquivo) {
-  console.error("uso: tsx scripts/carregar-legislacao-federal.mts <arquivo.json>");
+  console.error("uso: tsx scripts/carregar-legislacao-federal.mts <arquivo.json> [--permitir-nuvem]");
+  console.error("  --permitir-nuvem: grava no banco remoto da DATABASE_URL do ambiente em vez");
+  console.error("  de recusar. Opt-in de propósito — desde 08/09 a Neon é o banco da CI (os ETLs");
+  console.error("  do GitHub escrevem nela) e a carga é de uma vez só, orçada em");
+  console.error("  apps/web/scripts/orcamento-egress.mts. Builds continuam no Postgres local.");
   process.exit(1);
 }
 
@@ -48,7 +53,7 @@ if (!url) {
   console.error("DATABASE_URL ausente (nem no ambiente nem em apps/web/.env.local)");
   process.exit(1);
 }
-if (!/^(127\.0\.0\.1|localhost)$/.test(new URL(url).hostname)) {
+if (!permitirNuvem && !/^(127\.0\.0\.1|localhost)$/.test(new URL(url).hostname)) {
   console.error(
     `recusa: DATABASE_URL não é local (host=${new URL(url).hostname}).\n` +
       "Este script só grava no Postgres da própria máquina — a Neon está em cota."
