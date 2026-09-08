@@ -2,10 +2,10 @@
 
 > **Tipo:** FONTE
 > **Domínio:** global
-> **Última medição:** 2026-08-30
+> **Última medição:** 2026-09-08
 > **Leitura estimada:** longa (> 15 min)
 > **Relacionados:** [OPERACAO.md](../05-operacao/OPERACAO.md), [AGENTS.md](/AGENTS.md)
-> **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal
+> **Palavras-chave:** fontes, coleta, CNJ, DataJud, PNCP, IBAMA, LAI, dado pessoal, Anatel, telefonia, SMP, ERB
 
 ## Sumário
 
@@ -43,6 +43,7 @@
 - [STF — a transparência que eu disse não existir, e existe em 78 seções](#stf-a-transparência-que-eu-disse-não-existir-e-existe-em-78-seções)
 - [Atas de correição do TRT-3 (Corregedoria-Geral da Justiça do Trabalho / TST)](#atas-de-correição-do-trt-3-corregedoria-geral-da-justiça-do-trabalho-tst)
 - [Google Drive como repositório de documento público — as quatro armadilhas](#google-drive-como-repositório-de-documento-público-as-quatro-armadilhas)
+- [Anatel — Sistema Mosaico / Telefonia Móvel (SMP)](#anatel--sistema-mosaico--telefonia-móvel-smp)
 - [Decisões registradas](#decisões-registradas)
 
 ## Propósito
@@ -543,3 +544,36 @@ Registrar um 200-com-zero-byte como `"HTTP 200"` fazia o erro não casar com nen
 ### O que sobra é lacuna da FONTE, não do coletor
 
 Dos 1.705 itens do catálogo, os que nunca baixaram se explicam assim: **346 pastas com login**, **383 HTTP 500**, **100 links 404**. Amostra de 20 dos faltantes: **20 de 20 respondem 404** — o Estado publicou link para arquivo que não existe mais. É o mesmo achado dos 27% de EIA/RIMA que não abrem, medido de novo por outra via.
+
+## Anatel — Sistema Mosaico / Telefonia Móvel (SMP)
+
+Medido em 2026-09-08. Acervo oficial de licenciamento de estações transmissoras de radiocomunicação do Serviço Móvel Pessoal (SMP) da Anatel.
+
+### Origem e extração dos dados
+
+- **Fonte primária:** Agência Nacional de Telecomunicações (Anatel), Sistema Mosaico / Dados Abertos.
+- **Rota de extração:** `https://sistemas.anatel.gov.br/se/public/view/b/export_licenciamento.php?uf=MG`.
+- **Comportamento medido:** O catálogo CKAN em `sistemas.anatel.gov.br/anatel-dados-abertos` retornou `HTTP 423 Locked` e a API do `dados.gov.br` passou a exigir autenticação prévia via bearer token. A extração direta pelo endpoint público do Mosaico entrega o dump CSV completo de Minas Gerais sem fricção (arquivo ZIP de 20,1 MB).
+
+### Volume e agregação espacial
+
+- **Linhas brutas (MG):** 1.074.536 registros de radiofrequência e azimutes de antena.
+- **Filtro de serviço:** 235.205 registros de estações ativas de SMP (Serviço Móvel Pessoal — código de serviço 010).
+- **Torres físicas consolidadas:** 12.782 localizações de ERBs (Estações Rádio-Base) em MG após agrupamento por latitude/longitude (`TIM`: 4.344; `Vivo`: 4.299; `Claro`: 3.466; `Algar`: 633; `Outras`: 40).
+- **Regiões prioritárias:** 3.104 torres localizadas nos 102 municípios prioritários (74 nos Vales do Jequitinhonha e Mucuri + 28 na Bacia do Paraopeba e RMBH).
+
+### Camadas publicadas no Globo 3D
+
+1. `torres-celular-prioritarias` (Pontos GeoJSON, 905 KB): ERBs das regiões prioritárias com atributos de operadoras e tecnologias (2G, 3G, 4G, 5G).
+2. `torres-celular-mg` (Pontos GeoJSON, 3,63 MB): todas as 12.782 ERBs do estado de Minas Gerais.
+3. `cobertura-telefonia-prioritarias` (Polígonos GeoJSON, 1,39 MB): manchas estimadas de sinal celular baseadas no raio efetivo de cobertura das estações ativas.
+4. `cobertura-telefonia-mg` (Polígonos GeoJSON comprimidos, 0,88 MB `.geojson.gz`): cobertura de todo o estado de Minas Gerais, servida comprimida via Gzip level 9 e descompactada no cliente pelo navegador via `DecompressionStream('gzip')` (respeitando o teto de 25 MiB do Cloudflare Workers).
+
+### Auditoria de privacidade e regras éticas
+
+- **Varredura de CPF:** Passou por `scripts/checar-dado-pessoal-em-dado.py --extra` com 0 ocorrências de dados sensíveis ou pessoais.
+- **Ressalva editorial:** As manchas de cobertura representam raios teóricos de alcance de sinal a partir da posição e tecnologia das estações rádio-base licenciadas na Anatel; topografia acidentada e áreas de sombra locais podem atenuar o sinal real em campo.
+
+## Decisões registradas
+
+- **2026-09-08:** Cobertura de telefonia móvel publicada em duas opções complementares (torres pontuais e manchas poligonais), priorizando Vales do Jequitinhonha/Mucuri e Bacia do Paraopeba antes do estado completo de Minas Gerais. Polígono estadual comprimido em gzip (`.geojson.gz`) para manter o asset bem abaixo do teto de 25 MiB da Cloudflare.

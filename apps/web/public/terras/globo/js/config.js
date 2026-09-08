@@ -291,6 +291,7 @@ export const ASSUNTOS = [
   { id: 'brumadinho', titulo: 'Rompimento de Brumadinho (2019)' },
   { id: 'dinheiro', titulo: 'Dinheiro público e mineração' },
   { id: 'cidade',        titulo: 'Cidade e imóveis urbanos' },
+  { id: 'telefonia',     titulo: 'Telefonia móvel e conectividade' },
   { id: 'pistas',        titulo: 'Fiscalização e pistas' },
   { id: 'referencia',    titulo: 'Referência do mapa' },
 ];
@@ -1002,6 +1003,30 @@ export const LAYER_REGISTRY = [
     aviso: 'Cobre só 3 dos 854 municípios de Minas Gerais. Betim e Itinga têm zero normas deste tipo, medido — não é lacuna de coleta. Nos outros 846, ausência aqui quer dizer que a legislação ainda não foi coletada, não que não exista norma. A classificação de cada norma (cria/altera área × só administrativo) foi feita lendo a ementa inteira à mão.',
     color: 0xacb947, /* oklch(0.754 0.139 115.4) — ver a nota acima */ on: false, render: 'point', pointSize: 0.005, listavel: true,
   },
+  // --- Infraestrutura e Telecomunicações (Anatel / SMP) --------------------
+  {
+    id: 'torres-celular-prioritarias', label: 'Torres de celular — regiões prioritárias',
+    hint: '3.104 torres de telefonia móvel da Anatel (SMP) nos Vales do Jequitinhonha e Mucuri e na Bacia do Paraopeba. Operadoras Vivo, Claro, TIM e Algar, com tecnologia 2G a 5G.',
+    color: 0x00e5ff, on: false, render: 'point', pointSize: 0.005, listavel: true,
+    regioes: ['bacia', 'jequitinhonha', 'mucuri'],
+  },
+  {
+    id: 'torres-celular-mg', label: 'Torres de celular — Minas Gerais',
+    hint: '12.782 torres de telefonia móvel cadastradas na Anatel (SMP) em todo o estado de Minas Gerais. Localização exata, operadora, geração máxima e altura.',
+    color: 0x00d2ff, on: false, render: 'point', pointSize: 0.005, listavel: true,
+  },
+  {
+    id: 'cobertura-telefonia-prioritarias', label: 'Mancha de cobertura — regiões prioritárias',
+    hint: 'Área estimada de alcance do sinal móvel nas regiões prioritárias (Vales e Bacia do Paraopeba). Revela onde há sinal e onde ficam os desertos de conexão.',
+    color: 0x38bdf8, on: false, render: 'fill', listavel: true,
+    regioes: ['bacia', 'jequitinhonha', 'mucuri'],
+  },
+  {
+    id: 'cobertura-telefonia-mg', label: 'Mancha de cobertura — Minas Gerais',
+    hint: 'Alcance estimado da cobertura de telefonia celular em todo o território mineiro. Modelo de propagação por geração (2G a 5G) e altura de transmissão.',
+    color: 0x0284c7, on: false, render: 'fill', listavel: true,
+    comprimida: true,
+  },
   // Camada dinâmica custom (Fase G3): satélites dos sensores do projeto em
   // órbita SGP4 real (TLE CelesTrak). Não vem do endpoint /camadas — a
   // factory fica em layers/satelites.js e é registrada no main.js.
@@ -1439,6 +1464,31 @@ export const CAMADAS = [
     hint: 'Terreno vazio, prédio abandonado e lugar fechado que apareceram em notícia. É pista para conferir, não cadastro. Ainda não coletadas.',
     aviso: 'Cada ponto marca o que a reportagem descreveu, na data dela. Notícia não é documento de propriedade, e situação de imóvel muda.',
     fontes: ['pesquisa-noticias'],
+  },
+  // --- Telefonia móvel e conectividade (Anatel) ---------------------------
+  {
+    id: 'torres-celular-prioritarias', assunto: 'telefonia',
+    label: 'Torres de celular — regiões prioritárias',
+    hint: '3.104 antenas e torres físicas de telefonia celular nos Vales do Jequitinhonha e Mucuri e na Bacia do Paraopeba. Operadoras TIM, Vivo, Claro e Algar.',
+    fontes: ['torres-celular-prioritarias'],
+  },
+  {
+    id: 'torres-celular-mg', assunto: 'telefonia',
+    label: 'Torres de celular — Minas Gerais inteira',
+    hint: '12.782 torres de telefonia móvel da Anatel (SMP) nos 853 municípios de Minas Gerais. Localização exata, operadora, geração máxima (2G a 5G) e altura.',
+    fontes: ['torres-celular-mg'],
+  },
+  {
+    id: 'cobertura-telefonia-prioritarias', assunto: 'telefonia',
+    label: 'Mancha de cobertura — regiões prioritárias',
+    hint: 'Alcance estimado do sinal de telefonia nas regiões de estudo. Permite ver quais assentamentos, quilombos e áreas rurais estão sem sinal.',
+    fontes: ['cobertura-telefonia-prioritarias'],
+  },
+  {
+    id: 'cobertura-telefonia-mg', assunto: 'telefonia',
+    label: 'Mancha de cobertura — Minas Gerais inteira',
+    hint: 'Área estimada de cobertura móvel em todo o estado de Minas Gerais, calculada a partir das especificações de antena e tecnologia de cada torre.',
+    fontes: ['cobertura-telefonia-mg'],
   },
   {
     id: 'municipios-mg', assunto: 'referencia',

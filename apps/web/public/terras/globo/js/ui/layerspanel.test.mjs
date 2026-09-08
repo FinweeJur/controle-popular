@@ -35,7 +35,7 @@ import {
   ASSUNTOS, CAMADAS, CAMADAS_RESOLVIDAS, CAMADA_POR_FONTE, LAYER_REGISTRY,
 } from '../config.js';
 
-test('CAMADAS reais: 39 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
+test('CAMADAS reais: 46 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', () => {
   const grupos = agruparPorAssunto(CAMADAS_RESOLVIDAS, ASSUNTOS);
 
   // ⟲ 20/08/2026: 39 → 40. Entrou `estudos-ambientais` (audiências públicas de
@@ -47,8 +47,10 @@ test('CAMADAS reais: 39 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   // ⟲ 30/08/2026: 41 → 42. Entrou `processos-ambientais-cnj` (SIRENEJud/CNJ,
   // um polígono por comarca com a contagem de processos ambientais), no grupo
   // 'pistas', ao lado de presidios-mg. Só entrou — nenhum id saiu.
+  // ⟲ 08/09/2026: 42 → 46. Entraram as 4 camadas de telefonia celular (Anatel,
+  // SMP): torres e mancha de cobertura para regiões prioritárias e MG todo.
   assert.equal(
-    CAMADAS.length, 42,
+    CAMADAS.length, 46,
     // ⟲ 13/08/2026, mais tarde: subiu de 22 para 30 — as 8 camadas do
     // rompimento real da B1/Brumadinho (docs/PLANO-INTEGRACAO-BRUMADINHO.md,
     // seção 1.2), cada uma numa linha própria, sem irmã regional.
@@ -70,7 +72,7 @@ test('CAMADAS reais: 39 linhas, nenhuma perdida, grupos na ordem de ASSUNTOS', (
   // (ZAS, mancha, minas) e só então o episódio. Ver o comentário em config.js.
   assert.deepEqual(
     grupos.map((g) => g.id),
-    ['sem-cadastro', 'terra-publica', 'territorio-mineracao', 'brumadinho', 'dinheiro', 'cidade', 'pistas', 'referencia'],
+    ['sem-cadastro', 'terra-publica', 'territorio-mineracao', 'brumadinho', 'dinheiro', 'cidade', 'telefonia', 'pistas', 'referencia'],
   );
 
   // Checagem cruzada 1:1 contra o registro, não só a contagem.
@@ -103,8 +105,8 @@ test('a reorganização de fato UNIFICOU: 43 fontes em 39 linhas, e as 4 que som
   // continua 4 — são as mesmas quatro irmãs regionais de sempre, listadas
   // abaixo. Se um dia a diferença mudar sem esta lista mudar junto, é porque
   // alguém partiu ou unificou conceito sem dizer.
-  assert.equal(LAYER_REGISTRY.length, 46, 'sentinela: o número de FONTES mudou');
-  assert.equal(CAMADAS.length, 42, 'sentinela: o número de LINHAS mudou');
+  assert.equal(LAYER_REGISTRY.length, 50, 'sentinela: o número de FONTES mudou');
+  assert.equal(CAMADAS.length, 46, 'sentinela: o número de LINHAS mudou');
 
   // ⟲ Fim do dia: `territorios-quilombolas` SAIU desta lista. Ela tinha 2
   // fontes, chegou a ter 3, e agora tem UMA só — as três foram unificadas.
@@ -180,6 +182,9 @@ test('CONTRATO PÚBLICO: todo id de fonte sobreviveu, e cada um pertence a uma s
     // Unidades de conservação de Minas, CNUC/MMA pelo GeoServer da INDE —
     // ver scripts/ingerir_cnuc_unidades_conservacao.py.
     'unidades-conservacao',
+    // Telefonia móvel e conectividade (Anatel, SMP).
+    'torres-celular-prioritarias', 'torres-celular-mg',
+    'cobertura-telefonia-prioritarias', 'cobertura-telefonia-mg',
   ];
 
   const existentes = LAYER_REGISTRY.map((f) => f.id).sort();

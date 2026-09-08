@@ -268,6 +268,10 @@ const ICONE_POR_CAMADA = {
   'checagem-g0': 'list-checks',
   'pesquisa-noticias': 'newspaper',
   'municipios-mg': 'map',
+  'torres-celular-prioritarias': 'radio',
+  'torres-celular-mg': 'radio',
+  'cobertura-telefonia-prioritarias': 'waves',
+  'cobertura-telefonia-mg': 'waves',
   'satelites-orbita': 'satellite',
 };
 
