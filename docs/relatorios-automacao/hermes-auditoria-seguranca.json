@@ -1,10 +1,10 @@
 {
-  "geradoEm": "2026-09-01T08:43:22.247Z",
+  "geradoEm": "2026-09-08T08:32:08.774Z",
   "agente": "Hermes Agent Security & Data Auditor",
-  "totalVerificacoes": 13,
-  "aprovados": 10,
-  "alertas": 3,
-  "falhas": 0,
+  "totalVerificacoes": 14,
+  "aprovados": 11,
+  "alertas": 1,
+  "falhas": 2,
   "itens": [
     {
       "categoria": "seguranca",
@@ -27,14 +27,14 @@
     {
       "categoria": "seguranca",
       "item": "Produção: Content-Security-Policy",
-      "status": "ALERTA",
-      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br (nem Content-Security-Policy-Report-Only). Conferir a configuração de produção; no código local o header está declarado."
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; img-src 'self' data: https://server.arcgisonlin..."
     },
     {
       "categoria": "seguranca",
       "item": "Produção: Strict-Transport-Security",
-      "status": "ALERTA",
-      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: max-age=31536000; includeSubDomains"
     },
     {
       "categoria": "seguranca",
@@ -45,8 +45,8 @@
     {
       "categoria": "seguranca",
       "item": "Produção: X-Content-Type-Options",
-      "status": "ALERTA",
-      "detalhes": "Header não retornado na sondagem real de https://controlepopular.com.br. Conferir a configuração de produção; no código local o header está declarado."
+      "status": "APROVADO",
+      "detalhes": "Header retornado por https://controlepopular.com.br: nosniff"
     },
     {
       "categoria": "seguranca",
@@ -56,9 +56,15 @@
     },
     {
       "categoria": "cloudflare",
-      "item": "Teto de 25 MiB do Cloudflare Workers",
-      "status": "APROVADO",
-      "detalhes": "Todos os 39 arquivos de dados em data/ e public/data/ estão dentro do limite."
+      "item": "Limite de 25 MiB: cnes-mg.json",
+      "status": "FALHA",
+      "detalhes": "Arquivo possui 81.01 MiB, excedendo o teto do Cloudflare."
+    },
+    {
+      "categoria": "cloudflare",
+      "item": "Limite de 25 MiB: sinesp-vde.json",
+      "status": "FALHA",
+      "detalhes": "Arquivo possui 71.85 MiB, excedendo o teto do Cloudflare."
     },
     {
       "categoria": "privacidade",
@@ -81,8 +87,8 @@
     {
       "categoria": "qualidade_dados",
       "item": "5 Regras de Qualidade: decisoes-lai",
-      "status": "APROVADO",
-      "detalhes": "Página atende às regras: Gráfico SVG inline, Cartões de Topo, e Ressalva Editorial."
+      "status": "ALERTA",
+      "detalhes": "Possível ausência de Gráfico SVG ou Cartões de Topo na página."
     }
   ]
 }
