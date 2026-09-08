@@ -8,6 +8,8 @@ const THEMES = [
   { value: "light", label: "Claro" },
   { value: "dark", label: "Escuro" },
   { value: "high-contrast", label: "Alto contraste" },
+  { value: "cerrado", label: "Cerrado" },
+  { value: "mata-atlantica", label: "Mata Atlântica" },
 ] as const;
 
 const emptySubscribe = () => () => {};
