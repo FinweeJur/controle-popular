@@ -5,6 +5,8 @@ import { RELATORIOS_TJMG } from "@/lib/judiciario/inspecoes-cnj-dados";
 import { COBERTURA_TRT3 } from "@/lib/judiciario/correicoes-trt3";
 import { COBERTURA_CNIEP } from "@/lib/judiciario/presidios-cniep";
 import { COBERTURA_DEFENSORIA } from "@/lib/judiciario/defensoria-mg";
+import instituicoesData from "@/data/judiciario-instituicoes-detalhe.json";
+import DiretorioInstituicoesClient from "./DiretorioInstituicoesClient";
 
 /**
  * `/judiciario/instituicoes` — quem fiscaliza cada instituição de justiça, e
@@ -183,106 +185,19 @@ export default function InstituicoesPage() {
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3">
           <div>
             <h2 id="fichas-instituicoes" className="font-display text-xl font-bold tracking-tight text-text">
-              Fichas Analíticas por Órgão (Orçamento, Liderança e Ouvidoria)
+              Diretório Nacional de Instituições de Justiça (27 Estados e União)
             </h2>
             <p className="mt-1 text-xs text-text-soft">
-              Organograma funcional, despesa com pessoal, limites fiscais e canais de atendimento direto ao cidadão.
+              Painéis analíticos completos dos Tribunais de Justiça, Ministérios Públicos e Defensorias de todo o Brasil com orçamento, liderança, organograma e atos auditados.
             </p>
           </div>
           <span className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
-            7 Órgãos Analisados
+            {instituicoesData.length} Órgãos Monitorados
           </span>
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              sigla: "tjmg",
-              nome: "Tribunal de Justiça de MG",
-              tipo: "Justiça Estadual (1º e 2º Grau)",
-              lider: "Des. Luiz Carlos Corrêa Junior",
-              orcamento: "R$ 14,96 bi",
-              cor: "#f2701d",
-            },
-            {
-              sigla: "mpmg",
-              nome: "Ministério Público de MG",
-              tipo: "Promotorias e Procuradorias",
-              lider: "PGJ Jarbas Soares Júnior",
-              orcamento: "R$ 4,09 bi",
-              cor: "#c0392b",
-            },
-            {
-              sigla: "dpmg",
-              nome: "Defensoria Pública de MG",
-              tipo: "Assistência Jurídica Gratuita",
-              lider: "DPG Raquel Gomes da Costa Dias",
-              orcamento: "R$ 1,10 bi",
-              cor: "#10b981",
-            },
-            {
-              sigla: "trt3",
-              nome: "Tribunal Regional do Trabalho",
-              tipo: "Justiça do Trabalho (TRT-3)",
-              lider: "Des. Denise Alves Horta",
-              orcamento: "R$ 3,18 bi",
-              cor: "#3b82f6",
-            },
-            {
-              sigla: "trf6",
-              nome: "Tribunal Regional Federal",
-              tipo: "Justiça Federal (TRF-6)",
-              lider: "Des. Fed. Vallisney de Souza",
-              orcamento: "R$ 1,42 bi",
-              cor: "#6366f1",
-            },
-            {
-              sigla: "dpu",
-              nome: "Defensoria Pública da União",
-              tipo: "Assistência Federal em MG",
-              lider: "Chefia Regional DPU-MG",
-              orcamento: "R$ 820 mi (Nac.)",
-              cor: "#0ea5e9",
-            },
-            {
-              sigla: "tcemg",
-              nome: "Tribunal de Contas de MG",
-              tipo: "Controle Externo das Contas",
-              lider: "Cons. Gilberto Diniz",
-              orcamento: "R$ 1,15 bi",
-              cor: "#eab308",
-            },
-          ].map((inst) => (
-            <a
-              key={inst.sigla}
-              href={`/judiciario/instituicoes/${inst.sigla}`}
-              className="group flex flex-col justify-between rounded-2xl border border-border bg-surface p-5 transition-all duration-150 hover:border-primary/60 hover:shadow-md hover:bg-surface-2/40"
-            >
-              <div>
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-black uppercase tracking-wider text-text-soft group-hover:text-primary">
-                    {inst.sigla.toUpperCase()}
-                  </span>
-                  <span className="rounded-full px-2 py-0.5 font-mono text-[0.72em] font-bold" style={{ backgroundColor: `${inst.cor}20`, color: inst.cor }}>
-                    {inst.orcamento}
-                  </span>
-                </div>
-                <h3 className="mt-2 font-display text-base font-bold text-text group-hover:text-primary">
-                  {inst.nome}
-                </h3>
-                <p className="mt-0.5 text-xs text-text-soft">{inst.tipo}</p>
-                <div className="mt-3 border-t border-border/50 pt-2 text-xs">
-                  <span className="text-text-soft">Liderança: </span>
-                  <span className="font-semibold text-text">{inst.lider}</span>
-                </div>
-              </div>
-
-              <div className="mt-4 flex items-center justify-between border-t border-border/40 pt-2 text-xs font-bold text-primary">
-                <span>Ver organograma & ouvidoria</span>
-                <span className="transition-transform duration-150 group-hover:translate-x-1">→</span>
-              </div>
-            </a>
-          ))}
+        <div className="mt-6">
+          <DiretorioInstituicoesClient instituicoes={instituicoesData as any} />
         </div>
       </section>
 

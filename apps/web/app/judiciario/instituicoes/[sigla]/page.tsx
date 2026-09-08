@@ -18,6 +18,7 @@ import {
   Compass,
 } from "lucide-react";
 import instituicoesData from "@/data/judiciario-instituicoes-detalhe.json";
+import TabelaInstituicaoClient from "./TabelaInstituicaoClient";
 
 interface Props {
   params: Promise<{ sigla: string }>;
@@ -303,55 +304,69 @@ export default async function InstituicaoPage({ params }: Props) {
       </div>
 
       {/* Documentos-Chave */}
-      <section aria-labelledby="secao-documentos" className="mt-6 rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-xs">
-        <div className="flex items-center gap-2">
-          <FileText size={18} className="text-primary" aria-hidden="true" />
-          <h2 id="secao-documentos" className="font-display text-xl font-bold text-text">
-            Documentos-Chave & Acesso Oficial
-          </h2>
-        </div>
-        <p className="mt-1 text-xs text-text-soft">
-          Atos, relatórios correcionais e demonstrativos públicos auditados pelo portal.
-        </p>
+      {inst.documentosChave && inst.documentosChave.length > 0 && (
+        <section aria-labelledby="secao-documentos" className="mt-6 rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-xs">
+          <div className="flex items-center gap-2">
+            <FileText size={18} className="text-primary" aria-hidden="true" />
+            <h2 id="secao-documentos" className="font-display text-xl font-bold text-text">
+              Documentos-Chave & Acesso Oficial
+            </h2>
+          </div>
+          <p className="mt-1 text-xs text-text-soft">
+            Atos, relatórios correcionais e demonstrativos públicos auditados pelo portal.
+          </p>
 
-        <div className="mt-4 space-y-3">
-          {inst.documentosChave.map((doc, idx) => (
-            <div
-              key={idx}
-              className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 rounded-xl border border-border/60 bg-surface-2/30 p-4"
-            >
-              <div>
-                <h3 className="font-bold text-sm text-text">{doc.titulo}</h3>
-                <p className="mt-0.5 text-xs text-text-soft">{doc.descricao}</p>
-              </div>
-              <a
-                href={doc.url}
-                target={doc.url.startsWith("http") ? "_blank" : undefined}
-                rel={doc.url.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-semibold text-text transition-colors hover:border-primary hover:text-primary"
+          <div className="mt-4 space-y-3">
+            {inst.documentosChave.map((doc, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 rounded-xl border border-border/60 bg-surface-2/30 p-4"
               >
-                Acessar Documento →
-              </a>
-            </div>
-          ))}
-        </div>
-      </section>
+                <div>
+                  <h3 className="font-bold text-sm text-text">{doc.titulo}</h3>
+                  <p className="mt-0.5 text-xs text-text-soft">{doc.descricao}</p>
+                </div>
+                <a
+                  href={doc.url}
+                  target={doc.url.startsWith("http") ? "_blank" : undefined}
+                  rel={doc.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-semibold text-text transition-colors hover:border-primary hover:text-primary"
+                >
+                  Acessar Documento →
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Painel Interativo de Atos e Notícias Monitorados (5 elementos do AGENTS.md) */}
+      <TabelaInstituicaoClient instituicao={inst as any} />
 
       {/* Navegação entre as instituições irmãs */}
-      <nav aria-label="Outras instituições do Sistema de Justiça" className="mt-10 border-t border-border pt-6">
-        <p className="text-xs font-semibold uppercase tracking-wider text-text-soft">
-          Outras Instituições de Justiça Monitoradas
-        </p>
-        <div className="mt-3 flex flex-wrap gap-2">
+      <nav aria-label="Outras instituições do Sistema de Justiça" className="mt-12 border-t border-border pt-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <p className="text-xs font-semibold uppercase tracking-wider text-text-soft">
+            {inst.uf ? `Outras Instituições em ${inst.uf} e na Região ${inst.regiao || ""}` : "Instituições do Sistema de Justiça"}
+          </p>
+          <Link
+            href="/judiciario/instituicoes"
+            className="text-xs font-semibold text-primary hover:underline"
+          >
+            Ver Mapa Completo dos 27 Estados →
+          </Link>
+        </div>
+        <div className="mt-4 flex flex-wrap gap-2">
           {instituicoesData
-            .filter((i) => i.sigla !== inst.sigla)
+            .filter((i) => i.sigla !== inst.sigla && (i.uf === inst.uf || (i.regiao && i.regiao === inst.regiao)))
+            .slice(0, 16)
             .map((i) => (
               <Link
                 key={i.sigla}
                 href={`/judiciario/instituicoes/${i.sigla}`}
                 className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-semibold text-text transition-colors hover:border-primary hover:text-primary"
               >
-                {i.sigla.toUpperCase()}
+                {i.sigla.toUpperCase()} {i.uf ? `(${i.uf})` : ""}
               </Link>
             ))}
         </div>

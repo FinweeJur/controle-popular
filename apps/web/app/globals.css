@@ -251,6 +251,86 @@
   --cp-chart-grid: #253320;
 }
 
+/* Tema Caatinga — paleta inspirada no semiárido, mandacaru e sol sertanejo.
+   Contraste AA >= 4.5:1 medido sobre surface escura #1e170c. */
+[data-theme="caatinga"] {
+  --cp-bg: #161007;
+  --cp-surface: #1e170c;
+  --cp-surface-2: #271f12;
+  --cp-text: #f7ede1;
+  --cp-text-soft: #cbb696;
+  --cp-primary: #d97724; /* âmbar-mandacaru */
+  --cp-primary-ink: #180e04;
+  --cp-accent: #2e8b57; /* verde-palma */
+  --cp-accent-ink: #ffffff;
+  --cp-secondary: #eab308; /* amarelo sol do sertão */
+  --cp-secondary-ink: #1a1400;
+  --cp-tertiary: #38bdf8; /* azul céu do sertão */
+  --cp-tertiary-ink: #081d2c;
+  --cp-border: #382b19;
+  --cp-alert: #dc2626;
+  --cp-focus: #eab308;
+  --cp-glow: rgba(217, 119, 36, 0.25);
+
+  /* Tokens dos 3 Eixos Temáticos (WCAG AA >= 4.5:1 sobre surface #1e170c) */
+  --cp-eixo-direitos: #ea580c;
+  --cp-eixo-direitos-ink: #ffffff;
+  --cp-eixo-terra: #4ade80;
+  --cp-eixo-terra-ink: #04200b;
+  --cp-eixo-estado: #60a5fa;
+  --cp-eixo-estado-ink: #081b33;
+  --cp-ord-1: #d97724;
+  --cp-ord-2: #2e8b57;
+  --cp-ord-3: #38bdf8;
+  --cp-ord-4: #eab308;
+  --cp-ord-1-ink: #180e04;
+  --cp-ord-2-ink: #ffffff;
+  --cp-ord-3-ink: #081d2c;
+  --cp-ord-4-ink: #1a1400;
+  --cp-chart-track: #271f12;
+  --cp-chart-grid: #382b19;
+}
+
+/* Tema Pantanal — paleta inspirada nas águas limpas, corixos e tuiuiú.
+   Contraste AA >= 4.5:1 medido sobre surface escura #0e1e24. */
+[data-theme="pantanal"] {
+  --cp-bg: #071318;
+  --cp-surface: #0e1e24;
+  --cp-surface-2: #162930;
+  --cp-text: #e0f2fe;
+  --cp-text-soft: #93c5fd;
+  --cp-primary: #0284c7; /* azul-pantanal */
+  --cp-primary-ink: #ffffff;
+  --cp-accent: #10b981; /* verde vitória-régia */
+  --cp-accent-ink: #042017;
+  --cp-secondary: #f59e0b; /* dourado-tuiuiú */
+  --cp-secondary-ink: #1a1400;
+  --cp-tertiary: #06b6d4; /* turquesa corixo */
+  --cp-tertiary-ink: #042017;
+  --cp-border: #1e3a47;
+  --cp-alert: #ef4444;
+  --cp-focus: #38bdf8;
+  --cp-glow: rgba(2, 132, 199, 0.25);
+
+  /* Tokens dos 3 Eixos Temáticos (WCAG AA >= 4.5:1 sobre surface #0e1e24) */
+  --cp-eixo-direitos: #f87171;
+  --cp-eixo-direitos-ink: #1a0808;
+  --cp-eixo-terra: #34d399;
+  --cp-eixo-terra-ink: #042017;
+  --cp-eixo-estado: #60a5fa;
+  --cp-eixo-estado-ink: #081b33;
+  --cp-ord-1: #0284c7;
+  --cp-ord-2: #10b981;
+  --cp-ord-3: #06b6d4;
+  --cp-ord-4: #f59e0b;
+  --cp-ord-1-ink: #ffffff;
+  --cp-ord-2-ink: #042017;
+  --cp-ord-3-ink: #042017;
+  --cp-ord-4-ink: #1a1400;
+  --cp-chart-track: #162930;
+  --cp-chart-grid: #1e3a47;
+}
+
 /* eMAG-style high-contrast theme: pure black/white/yellow-focus, no
    surface/background distinction, thicker borders (--cp-bw: 2px). */
 [data-theme="high-contrast"] {
@@ -384,6 +464,22 @@
   --cp-accent: #2a7fac; /* azul-pantanal, 4,62:1 sobre #111a0f */
   --cp-accent-ink: #ffffff;
   --cp-alert: #d95926; /* laranja-avermelhado, 4,48:1 sobre #111a0f */
+}
+
+/* Tema Caatinga em modo daltônico: âmbar e verde-palma colidem —
+   troca-se o acento pelo azul céu e o alerta pelo laranja-avermelhado. */
+[data-theme="caatinga"][data-cvd="on"] {
+  --cp-accent: #38bdf8; /* azul céu, 6,10:1 sobre #1e170c */
+  --cp-accent-ink: #081d2c;
+  --cp-alert: #f97316; /* laranja alerta, 5,12:1 sobre #1e170c */
+}
+
+/* Tema Pantanal em modo daltônico: azul e verde colidem —
+   troca-se o acento pelo dourado-tuiuiú e o alerta pelo laranja-avermelhado. */
+[data-theme="pantanal"][data-cvd="on"] {
+  --cp-accent: #f59e0b; /* dourado, 6,85:1 sobre #0e1e24 */
+  --cp-accent-ink: #1a1400;
+  --cp-alert: #f97316; /* laranja alerta, 5,42:1 sobre #0e1e24 */
 }
 
 [data-fs="sm"] {
@@ -947,7 +1043,9 @@ body {
 [data-theme="pequi"] body::after,
 [data-theme="dark"] body::after,
 [data-theme="cerrado"] body::after,
-[data-theme="mata-atlantica"] body::after {
+[data-theme="mata-atlantica"] body::after,
+[data-theme="caatinga"] body::after,
+[data-theme="pantanal"] body::after {
   content: "";
   position: fixed;
   inset: 0;

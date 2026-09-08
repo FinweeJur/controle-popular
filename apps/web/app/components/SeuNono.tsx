@@ -374,6 +374,30 @@ export function SeuNono() {
         icone: <span className="text-base">☀️</span>,
       },
       {
+        comando: ["tema cerrado", "cerrado"],
+        label: "Tema cerrado",
+        acao: () => setTheme("cerrado"),
+        icone: <span className="text-base">🌾</span>,
+      },
+      {
+        comando: ["tema mata atlantica", "mata atlantica", "floresta"],
+        label: "Tema mata atlântica",
+        acao: () => setTheme("mata-atlantica"),
+        icone: <span className="text-base">🌿</span>,
+      },
+      {
+        comando: ["tema caatinga", "caatinga", "sertao"],
+        label: "Tema caatinga",
+        acao: () => setTheme("caatinga"),
+        icone: <span className="text-base">🌵</span>,
+      },
+      {
+        comando: ["tema pantanal", "pantanal", "aguas"],
+        label: "Tema pantanal",
+        acao: () => setTheme("pantanal"),
+        icone: <span className="text-base">💧</span>,
+      },
+      {
         comando: ["alto contraste", "contraste"],
         label: "Alto contraste",
         acao: () => setTheme("high-contrast"),

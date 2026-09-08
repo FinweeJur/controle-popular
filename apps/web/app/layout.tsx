@@ -175,7 +175,7 @@ export default function RootLayout({
           attribute="data-theme"
           defaultTheme="pequi"
           enableSystem={false}
-          themes={["pequi", "light", "dark", "high-contrast", "cerrado", "mata-atlantica"]}
+          themes={["pequi", "light", "dark", "high-contrast", "cerrado", "mata-atlantica", "caatinga", "pantanal"]}
         >
           {/* ⟲ 13/08, revisão de onboarding: WCAG 2.4.1 (Bypass Blocks).
               Precisa ser o PRIMEIRO elemento focável do `<body>` — antes
