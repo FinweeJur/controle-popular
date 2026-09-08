@@ -79,10 +79,28 @@ describe("Módulo de Gestão / Prometeu? Cumpriu? (Plano v8)", () => {
     }
   });
 
+  it("garante que os polos regionais do interior estão catalogados com metas e prefeitos", () => {
+    const polosAmostra = [
+      "campinas", "ribeirao-preto", "sao-jose-dos-campos", "santos",
+      "uberlandia", "juiz-de-fora", "montes-claros", "uberaba",
+      "londrina", "maringa", "joinville", "caxias-do-sul",
+      "feira-de-santana", "vitoria-da-conquista", "caruaru", "petrolina",
+      "campina-grande", "mossoro", "anapolis", "dourados", "santarem", "maraba"
+    ];
+
+    for (const slug of polosAmostra) {
+      const polo = obterMandato(slug, "municipal");
+      expect(polo).not.toBeNull();
+      expect(polo?.esfera).toBe("municipal");
+      expect(polo?.propostas.length).toBeGreaterThanOrEqual(4);
+      expect(polo?.plano_pdf_url).toMatch(/^https?:\/\//);
+    }
+  });
+
   it("garante que toda proposta tem citação literal (verbatim) e página no PDF do TSE", () => {
     const mandatos = listarMandatos();
-    // 27 estados + 1 federal + 27 capitais + 3 municípios piloto = 58 mandatos
-    expect(mandatos.length).toBe(58);
+    // 27 estados + 1 federal + 27 capitais + 172 polos + 3 cidades piloto = 230 mandatos
+    expect(mandatos.length).toBe(230);
 
     for (const m of mandatos) {
       expect(m.plano_pdf_url).toMatch(/^https?:\/\//);
