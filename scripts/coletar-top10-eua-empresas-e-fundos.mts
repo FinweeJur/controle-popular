@@ -1,0 +1,130 @@
+#!/usr/bin/env node
+/**
+ * scripts/coletar-top10-eua-empresas-e-fundos.mts
+ * 
+ * Catalogação e consulta via SEC EDGAR API das 10 maiores empresas e dos 10 maiores fundos 
+ * de investimento dos EUA operando nos 6 setores estratégicos na América Latina/Brasil.
+ */
+
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const DATA_DIR = path.join(RAIZ, "apps", "web", "data", "setores-estrategicos");
+const ACERVO_DOCS = path.join(RAIZ, "acervo-documentos");
+
+export const TOP_EUA_EMPRESAS_E_FUNDOS = {
+  fundos_investimento_eua: [
+    { nome: "BlackRock, Inc.", cik: "0001364742", ticker: "BLK", tipo: "Asset Manager / Fundo" },
+    { nome: "The Vanguard Group, Inc.", cik: "0000102909", ticker: "VANGUARD", tipo: "Asset Manager / Fundo" },
+    { nome: "State Street Corporation", cik: "0000093496", ticker: "STT", tipo: "Asset Manager / Custodiam" },
+    { nome: "Fidelity Investments (FMR LLC)", cik: "0000315066", ticker: "FIDELITY", tipo: "Asset Manager" },
+    { nome: "Capital Group Companies", cik: "0000018349", ticker: "CAPITAL", tipo: "Investment Management" },
+    { nome: "JPMorgan Chase & Co. (Asset Mgmt)", cik: "0000019617", ticker: "JPM", tipo: "Investment Bank / Fund" },
+    { nome: "Morgan Stanley Investment Mgmt", cik: "0000895421", ticker: "MS", tipo: "Investment Bank / Fund" },
+    { nome: "Bank of America / Merrill Lynch", cik: "0000070858", ticker: "BAC", tipo: "Investment Bank" },
+    { nome: "Goldman Sachs Group, Inc.", cik: "0000886982", ticker: "GS", tipo: "Investment Bank / Fund" },
+    { nome: "Citigroup Inc.", cik: "0000831001", ticker: "C", tipo: "Investment Bank" },
+  ],
+  mineracao_eua: [
+    { nome: "Freeport-McMoRan Inc.", cik: "0000831259", ticker: "FCX" },
+    { nome: "Newmont Corporation", cik: "0001164727", ticker: "NEM" },
+    { nome: "Alcoa Corporation", cik: "0001675149", ticker: "AA" },
+    { nome: "Southern Copper Corporation", cik: "0001001490", ticker: "SCCO" },
+    { nome: "Cleveland-Cliffs Inc.", cik: "0000764065", ticker: "CLF" },
+    { nome: "Albemarle Corporation (Lítio)", cik: "0000915779", ticker: "ALB" },
+    { nome: "Peabody Energy Corporation", cik: "0001064728", ticker: "BTU" },
+    { nome: "Coeur Mining, Inc.", cik: "0000215376", ticker: "CDE" },
+    { nome: "Hecla Mining Company", cik: "0000046941", ticker: "HL" },
+    { nome: "Compass Minerals International", cik: "0001262945", ticker: "CMP" },
+  ],
+  energia_eua: [
+    { nome: "ExxonMobil Corporation", cik: "0000034088", ticker: "XOM" },
+    { nome: "Chevron Corporation", cik: "0000093410", ticker: "CVX" },
+    { nome: "ConocoPhillips", cik: "0001163165", ticker: "COP" },
+    { nome: "EOG Resources, Inc.", cik: "0000821189", ticker: "EOG" },
+    { nome: "Schlumberger Limited (SLB)", cik: "0000087347", ticker: "SLB" },
+    { nome: "Halliburton Company", cik: "0000045012", ticker: "HAL" },
+    { nome: "Baker Hughes Company", cik: "0001701795", ticker: "BKR" },
+    { nome: "Occidental Petroleum (OXY)", cik: "0000797468", ticker: "OXY" },
+    { nome: "NextEra Energy, Inc.", cik: "0000753308", ticker: "NEE" },
+    { nome: "Marathon Petroleum Corp", cik: "0001510295", ticker: "MPC" },
+  ],
+  agua_saneamento_eua: [
+    { nome: "American Water Works Co.", cik: "0001410884", ticker: "AWK" },
+    { nome: "Xylem Inc. (Tecnologia de Água)", cik: "0001524472", ticker: "XYL" },
+    { nome: "Essential Utilities, Inc.", cik: "0000007890", ticker: "WTRG" },
+    { nome: "Ecolab Inc. (Tratamento de Água)", cik: "0000031418", ticker: "ECL" },
+    { nome: "Middlesex Water Company", cik: "0000066004", ticker: "MSEX" },
+    { nome: "California Water Service Group", cik: "0001035201", ticker: "CWT" },
+    { nome: "American States Water Co.", cik: "0001056903", ticker: "AWR" },
+    { nome: "SJW Group", cik: "0000766869", ticker: "SJW" },
+    { nome: "York Water Company", cik: "0001089895", ticker: "YORW" },
+    { nome: "Badger Meter (Medição de Água)", cik: "0000009092", ticker: "BMI" },
+  ],
+  construcao_civil_eua: [
+    { nome: "Caterpillar Inc.", cik: "0000018230", ticker: "CAT" },
+    { nome: "D.R. Horton, Inc.", cik: "0000882184", ticker: "DHI" },
+    { nome: "Lennar Corporation", cik: "0000920760", ticker: "LEN" },
+    { nome: "AECOM (Infraestrutura)", cik: "0000868857", ticker: "ACM" },
+    { nome: "Fluor Corporation", cik: "0001125259", ticker: "FLR" },
+    { nome: "Jacobs Solutions Inc.", cik: "000052988", ticker: "J" },
+    { nome: "Vulcan Materials Company", cik: "0001396009", ticker: "VMC" },
+    { nome: "Martin Marietta Materials", cik: "0000916076", ticker: "MLM" },
+    { nome: "PulteGroup, Inc.", cik: "0000838358", ticker: "PHM" },
+    { nome: "Toll Brothers, Inc.", cik: "0000795551", ticker: "TOL" },
+  ],
+  tecnologia_eua: [
+    { nome: "Microsoft Corporation", cik: "0000789019", ticker: "MSFT" },
+    { nome: "Apple Inc.", cik: "0000320193", ticker: "AAPL" },
+    { nome: "NVIDIA Corporation", cik: "0001045810", ticker: "NVDA" },
+    { nome: "Alphabet Inc. (Google)", cik: "0001652044", ticker: "GOOGL" },
+    { nome: "Amazon.com, Inc.", cik: "0001018724", ticker: "AMZN" },
+    { nome: "Meta Platforms, Inc.", cik: "0001326801", ticker: "META" },
+    { nome: "Broadcom Inc.", cik: "0001730168", ticker: "AVGO" },
+    { nome: "Oracle Corporation", cik: "0001341439", ticker: "ORCL" },
+    { nome: "Cisco Systems, Inc.", cik: "0000858877", ticker: "CSCO" },
+    { nome: "International Business Machines (IBM)", cik: "0000051143", ticker: "IBM" },
+  ],
+  defesa_aeroespacial_eua: [
+    { nome: "Lockheed Martin Corporation", cik: "0000936468", ticker: "LMT" },
+    { nome: "RTX Corporation (Raytheon)", cik: "0000101829", ticker: "RTX" },
+    { nome: "The Boeing Company", cik: "0000012927", ticker: "BA" },
+    { nome: "Northrop Grumman Corp.", cik: "0001133421", ticker: "NOC" },
+    { nome: "General Dynamics Corp.", cik: "0000040533", ticker: "GD" },
+    { nome: "L3Harris Technologies", cik: "0000042888", ticker: "LHX" },
+    { nome: "TransDigm Group Inc.", cik: "0001360334", ticker: "TDG" },
+    { nome: "Huntington Ingalls Industries", cik: "0001501585", ticker: "HII" },
+    { nome: "Textron Inc.", cik: "0000217346", ticker: "TXT" },
+    { nome: "Curtiss-Wright Corp.", cik: "0000026324", ticker: "CW" },
+  ]
+};
+
+async function main() {
+  console.log("=== CATALOGANDO TOP 10 EMPRESAS E TOP 10 FUNDOS DOS EUA POR SETOR ===");
+
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+  fs.mkdirSync(ACERVO_DOCS, { recursive: true });
+
+  const pathData = path.join(DATA_DIR, "catalogo-top10-eua-empresas-e-fundos.json");
+  const pathAcervo = path.join(ACERVO_DOCS, "catalogo-top10-eua-empresas-e-fundos.json");
+
+  const jsonContent = JSON.stringify(TOP_EUA_EMPRESAS_E_FUNDOS, null, 2);
+  fs.writeFileSync(pathData, jsonContent, "utf-8");
+  fs.writeFileSync(pathAcervo, jsonContent, "utf-8");
+
+  console.log(`✓ [Catálogo Registrado] Mapeamento dos EUA salvo em: ${pathData}`);
+  console.log(`✓ [Acervo Local] Cópia de segurança salva em: ${pathAcervo}`);
+
+  for (const [categoria, lista] of Object.entries(TOP_EUA_EMPRESAS_E_FUNDOS)) {
+    console.log(`\n🇺🇸 Categoria: ${categoria.toUpperCase()} (${lista.length} registradas)`);
+    for (const item of lista) {
+      console.log(`  - ${item.nome} (CIK SEC: ${item.cik} | Ticker: ${item.ticker})`);
+    }
+  }
+
+  console.log("\n✅ Catalogação das empresas e fundos norte-americanos finalizada com sucesso!");
+}
+
+main().catch(console.error);

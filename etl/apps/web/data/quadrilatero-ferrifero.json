@@ -1,0 +1,53 @@
+{
+  "fonte": "quadrilatero-ferrifero",
+  "itens": [
+    {
+      "id": "quadrilatero-ferrifero:apolo-gandarela",
+      "desastre": "nacional",
+      "bacia": "velhas",
+      "titulo": "Mina Apolo vs. Parque Serra do Gandarela",
+      "data": "2025",
+      "tipo": "Conflito socioambiental",
+      "orgao": "SEMAD / FEAM / IEF / ICMBio",
+      "esfera": "estadual",
+      "uf": "MG",
+      "tags": [
+        "quadrilatero-ferrifero",
+        "mineracao",
+        "parque",
+        "gandarela",
+        "conflito"
+      ],
+      "resumo": "Conflito entre Mina Apolo (Vale) e Parque Estadual da Serra do Gandarela.",
+      "url": "https://www.gov.br/mg/pt-br/secretarias/secretaria-de-estado-de-meio-ambiente-e-desenvolvimento-sustentavel",
+      "fonteId": "quadrilatero-ferrifero",
+      "coletadoEm": "2026-09-06T03:01:19.025296+00:00",
+      "regiao_mg": "Quadrilátero Ferrífero",
+      "classificavel": true
+    },
+    {
+      "id": "quadrilatero-ferrifero:operacao-rejeito",
+      "desastre": "nacional",
+      "bacia": "velhas",
+      "titulo": "Operação Rejeito — Polícia Federal",
+      "data": "2025",
+      "tipo": "Operação policial",
+      "orgao": "Polícia Federal",
+      "esfera": "federal",
+      "uf": "MG",
+      "tags": [
+        "quadrilatero-ferrifero",
+        "operacao-rejeito",
+        "pf",
+        "mineracao-ilegal"
+      ],
+      "resumo": "Operação da PF contra mineração ilegal no Quadrilátero Ferrífero.",
+      "url": "https://www.gov.br/pf/pt-br/assuntos/noticias",
+      "fonteId": "quadrilatero-ferrifero",
+      "coletadoEm": "2026-09-06T03:01:19.025296+00:00",
+      "regiao_mg": "Quadrilátero Ferrífero",
+      "classificavel": true
+    }
+  ],
+  "geradoEm": "2026-09-06T03:01:19.027596+00:00"
+}
