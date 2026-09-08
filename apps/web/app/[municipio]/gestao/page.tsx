@@ -22,7 +22,7 @@ export default async function GestaoMunicipalPage({
   params: Promise<{ municipio: string }>;
 }) {
   const cidade = await cidadeDaRota(params);
-  const mandato = obterMandato(cidade.slug);
+  const mandato = obterMandato(cidade.slug, "municipal");
 
   return (
     <div className="min-h-screen bg-surface-0">

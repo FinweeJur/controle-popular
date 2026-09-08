@@ -11,7 +11,7 @@ interface PainelGovernoHubClientProps {
   mandatos: MandatoGestao[];
 }
 
-type FiltroEsfera = "todas" | "federal" | "estadual" | "municipal";
+type FiltroEsfera = "todas" | "federal" | "estadual" | "capital" | "municipal";
 type FiltroRegiao = "todas" | RegiaoBrasil;
 type Ordenacao = "nome_asc" | "nome_desc" | "propostas_desc" | "cumprimento_desc" | "sem_sinal_desc";
 
@@ -25,11 +25,21 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
   const mandatosComResumo = useMemo(() => {
     return mandatos.map((m) => {
       const resumo = calcularResumoGestao(m);
-      const regiao = m.esfera === "estadual" ? REGIAO_POR_UF[m.ente.toUpperCase()] ?? "Outra" : undefined;
+      const isCapital = m.ente.endsWith("-capital");
+      let regiao: RegiaoBrasil | "Outra" | undefined = undefined;
+      if (m.esfera === "estadual") {
+        regiao = REGIAO_POR_UF[m.ente.toUpperCase()] ?? "Outra";
+      } else if ((m as any).regiao) {
+        regiao = (m as any).regiao;
+      } else if ((m as any).uf) {
+        regiao = REGIAO_POR_UF[(m as any).uf.toUpperCase()] ?? "Outra";
+      }
+
       return {
         ...m,
         resumo,
         regiao,
+        isCapital,
       };
     });
   }, [mandatos]);
@@ -37,7 +47,11 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
   // Filtragem
   const filtrados = useMemo(() => {
     return mandatosComResumo.filter((m) => {
-      if (filtroEsfera !== "todas" && m.esfera !== filtroEsfera) return false;
+      if (filtroEsfera === "estadual" && m.esfera !== "estadual") return false;
+      if (filtroEsfera === "federal" && m.esfera !== "federal") return false;
+      if (filtroEsfera === "capital" && !m.isCapital) return false;
+      if (filtroEsfera === "municipal" && (m.esfera !== "municipal" || m.isCapital)) return false;
+
       if (filtroRegiao !== "todas" && m.regiao !== filtroRegiao) return false;
 
       if (busca.trim() !== "") {
@@ -278,18 +292,19 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
               value={filtroEsfera}
               onChange={(e) => {
                 setFiltroEsfera(e.target.value as FiltroEsfera);
-                if (e.target.value !== "estadual") setFiltroRegiao("todas");
+                if (e.target.value === "federal") setFiltroRegiao("todas");
               }}
               className="mt-1 w-full rounded-lg border border-border bg-surface-0 px-3 py-2 text-sm text-text focus:border-primary focus:outline-none"
             >
               <option value="todas">Todas as Esferas ({mandatos.length})</option>
               <option value="estadual">Governos Estaduais (27 UFs)</option>
+              <option value="capital">Capitais Estaduais (27 Cidades)</option>
               <option value="federal">Governo Federal (União)</option>
-              <option value="municipal">Prefeituras Municipais</option>
+              <option value="municipal">Polos do Interior e Cidades</option>
             </select>
           </div>
 
-          {/* Filtro Região (ativo se estadual ou todas) */}
+          {/* Filtro Região (ativo se todas, estadual, capital ou municipal) */}
           <div>
             <label htmlFor="filtro-regiao" className="block text-xs font-semibold uppercase tracking-wider text-text-soft">
               Região Geográfica
@@ -298,7 +313,7 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
               id="filtro-regiao"
               value={filtroRegiao}
               onChange={(e) => setFiltroRegiao(e.target.value as FiltroRegiao)}
-              disabled={filtroEsfera !== "todas" && filtroEsfera !== "estadual"}
+              disabled={filtroEsfera === "federal"}
               className="mt-1 w-full rounded-lg border border-border bg-surface-0 px-3 py-2 text-sm text-text focus:border-primary focus:outline-none disabled:opacity-50"
             >
               <option value="todas">Todas as Regiões</option>
@@ -382,7 +397,7 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-1.5">
                         <span className="rounded-full bg-surface-2 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-text-soft">
-                          {m.esfera === "federal" ? "Federal" : m.esfera === "estadual" ? "Estado" : "Cidade"}
+                          {m.esfera === "federal" ? "Federal" : m.esfera === "estadual" ? "Estado" : m.isCapital ? "Capital" : "Cidade"}
                         </span>
                         {m.regiao && (
                           <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-semibold text-primary">

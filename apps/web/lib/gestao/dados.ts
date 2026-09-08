@@ -34,6 +34,7 @@ import dadosBetim from "@/data/gestao/gestao-betim.json";
 import dadosBh from "@/data/gestao/gestao-bh.json";
 import dadosAracuai from "@/data/gestao/gestao-aracuai.json";
 import dadosBrumadinho from "@/data/gestao/gestao-brumadinho.json";
+import dadosCapitais from "@/data/gestao/gestao-capitais.json";
 
 const MANDATOS_CATALOGO: Record<string, MandatoGestao> = {
   // Sudeste
@@ -71,7 +72,18 @@ const MANDATOS_CATALOGO: Record<string, MandatoGestao> = {
   // Federal
   uniao: dadosUniao as unknown as MandatoGestao,
   federal: dadosUniao as unknown as MandatoGestao,
-  // Prefeituras
+  // Prefeituras Piloto
+  betim: dadosBetim as unknown as MandatoGestao,
+  bh: dadosBh as unknown as MandatoGestao,
+  "belo-horizonte": dadosBh as unknown as MandatoGestao,
+  aracuai: dadosAracuai as unknown as MandatoGestao,
+  brumadinho: dadosBrumadinho as unknown as MandatoGestao,
+};
+
+const MANDATOS_CAPITAIS: Record<string, MandatoGestao> = dadosCapitais as unknown as Record<string, MandatoGestao>;
+
+const MANDATOS_PREFEITURAS: Record<string, MandatoGestao> = {
+  ...MANDATOS_CAPITAIS,
   betim: dadosBetim as unknown as MandatoGestao,
   bh: dadosBh as unknown as MandatoGestao,
   "belo-horizonte": dadosBh as unknown as MandatoGestao,
@@ -112,23 +124,39 @@ export const ROTULOS_STATUS: Record<StatusProposta, { label: string; classe: str
   },
 };
 
-/** Retorna os dados de gestão de um ente pelo seu slug */
-export function obterMandato(slug: string): MandatoGestao | null {
+/** Retorna os dados de gestão de um ente pelo seu slug, com desambiguação por esfera quando necessário */
+export function obterMandato(slug: string, esfera?: "municipal" | "estadual" | "federal"): MandatoGestao | null {
   const chave = slug.toLowerCase().trim();
-  return MANDATOS_CATALOGO[chave] ?? null;
+  if (esfera === "municipal") {
+    return MANDATOS_PREFEITURAS[chave] ?? MANDATOS_CATALOGO[chave] ?? null;
+  }
+  if (esfera === "estadual") {
+    return MANDATOS_CATALOGO[chave] ?? null;
+  }
+  return MANDATOS_CATALOGO[chave] ?? MANDATOS_PREFEITURAS[chave] ?? null;
 }
 
-/** Retorna todos os mandatos catalogados */
+/** Retorna todos os mandatos catalogados (governos estaduais, federal, capitais e municípios) */
 export function listarMandatos(): MandatoGestao[] {
-  // Retorna sem duplicatas (mg, uniao, betim, bh)
   const vistos = new Set<string>();
   const lista: MandatoGestao[] = [];
-  for (const [slug, m] of Object.entries(MANDATOS_CATALOGO)) {
+
+  // 1. Governos Estaduais e Federal
+  for (const m of Object.values(MANDATOS_CATALOGO)) {
     if (!vistos.has(m.ente)) {
       vistos.add(m.ente);
       lista.push(m);
     }
   }
+
+  // 2. Prefeituras e Capitais
+  for (const m of Object.values(MANDATOS_PREFEITURAS)) {
+    if (!vistos.has(m.ente)) {
+      vistos.add(m.ente);
+      lista.push(m);
+    }
+  }
+
   return lista;
 }
 

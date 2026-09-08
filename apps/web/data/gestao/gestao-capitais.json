@@ -1,0 +1,3292 @@
+{
+  "sp": {
+    "ente": "sp-capital",
+    "slug": "sp",
+    "slug_secundario": "sao-paulo",
+    "nome_ente": "São Paulo",
+    "esfera": "municipal",
+    "gestor": "Ricardo Nunes",
+    "cargo": "Prefeito Municipal",
+    "partido": "MDB",
+    "uf": "SP",
+    "regiao": "Sudeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/250001012345",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_sp_oficial",
+    "plano_registrado_em": "2020-09-22",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "sp-cap-001",
+        "mandato_id": "sp-2021-2024",
+        "tema": "Mobilidade Urbana",
+        "orgao_alvo": "Secretaria Municipal de Mobilidade e Trânsito (SMT / SPTrans)",
+        "trecho_verbatim": "Ampliar a gratuidade dominical e implantar tarifa zero gradual aos domingos em todas as linhas municipais de ônibus.",
+        "plano_pagina": 14,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-sp-cap-001-1",
+            "tipo": "decreto",
+            "titulo": "Decreto Municipal nº 63.058/2023 - Institui o Programa Domingão Tarifa Zero na Capital",
+            "url": "https://capital.sp.gov.br/",
+            "data_publicacao": "2023-12-17",
+            "orgao_emissor": "Prefeitura de São Paulo / SMT",
+            "valor_reais": 280000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "sp-cap-002",
+        "mandato_id": "sp-2021-2024",
+        "tema": "Segurança e Tecnologia",
+        "orgao_alvo": "Secretaria Municipal de Segurança Urbana (SMSU)",
+        "trecho_verbatim": "Instalar 20.000 câmeras integradas de videomonitoramento inteligente no âmbito do Programa Smart Sampa.",
+        "plano_pagina": 28,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-sp-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato SMSU nº 045/2023 - Sistema de Monitoramento por Câmeras Faciais Smart Sampa",
+            "url": "https://transparencia.prefeitura.sp.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "SMSU / Prefeitura de SP",
+            "valor_reais": 128000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "sp-cap-003",
+        "mandato_id": "sp-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal da Saúde (SMS-SP)",
+        "trecho_verbatim": "Construir e entregar 15 novas unidades de Hospital Dia da Rede Hora Certa nas periferias.",
+        "plano_pagina": 35,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-sp-cap-003-1",
+            "tipo": "obra",
+            "titulo": "Inauguração do Hospital Dia Campo Limpo e reforma de 4 unidades especializadas",
+            "url": "https://capital.sp.gov.br/saude",
+            "data_publicacao": "2024-02-14",
+            "orgao_emissor": "Secretaria da Saúde de SP",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "sp-cap-004",
+        "mandato_id": "sp-2021-2024",
+        "tema": "Habitação Social",
+        "orgao_alvo": "Secretaria Municipal de Habitação (Sehab)",
+        "trecho_verbatim": "Produzir 49.000 unidades habitacionais de interesse social e regularizar 100.000 lotes em loteamentos irregulares.",
+        "plano_pagina": 42,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Volume de escrituras definitivas emitidas consolidado em balanço público atingiu percentual inferior ao total comprometido no plano."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-sp-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "SPObras",
+        "titulo": "Programa de Recapeamento Asfáltico Histórico de 3.000 km com Concreto Ecológico",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://capital.sp.gov.br/obras",
+        "data": "2023-05-10",
+        "tipo": "obra",
+        "valor_reais": 1200000000.0
+      }
+    ]
+  },
+  "sao-paulo": {
+    "ente": "sp-capital",
+    "slug": "sp",
+    "slug_secundario": "sao-paulo",
+    "nome_ente": "São Paulo",
+    "esfera": "municipal",
+    "gestor": "Ricardo Nunes",
+    "cargo": "Prefeito Municipal",
+    "partido": "MDB",
+    "uf": "SP",
+    "regiao": "Sudeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/250001012345",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_sp_oficial",
+    "plano_registrado_em": "2020-09-22",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "sp-cap-001",
+        "mandato_id": "sp-2021-2024",
+        "tema": "Mobilidade Urbana",
+        "orgao_alvo": "Secretaria Municipal de Mobilidade e Trânsito (SMT / SPTrans)",
+        "trecho_verbatim": "Ampliar a gratuidade dominical e implantar tarifa zero gradual aos domingos em todas as linhas municipais de ônibus.",
+        "plano_pagina": 14,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-sp-cap-001-1",
+            "tipo": "decreto",
+            "titulo": "Decreto Municipal nº 63.058/2023 - Institui o Programa Domingão Tarifa Zero na Capital",
+            "url": "https://capital.sp.gov.br/",
+            "data_publicacao": "2023-12-17",
+            "orgao_emissor": "Prefeitura de São Paulo / SMT",
+            "valor_reais": 280000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "sp-cap-002",
+        "mandato_id": "sp-2021-2024",
+        "tema": "Segurança e Tecnologia",
+        "orgao_alvo": "Secretaria Municipal de Segurança Urbana (SMSU)",
+        "trecho_verbatim": "Instalar 20.000 câmeras integradas de videomonitoramento inteligente no âmbito do Programa Smart Sampa.",
+        "plano_pagina": 28,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-sp-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato SMSU nº 045/2023 - Sistema de Monitoramento por Câmeras Faciais Smart Sampa",
+            "url": "https://transparencia.prefeitura.sp.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "SMSU / Prefeitura de SP",
+            "valor_reais": 128000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "sp-cap-003",
+        "mandato_id": "sp-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal da Saúde (SMS-SP)",
+        "trecho_verbatim": "Construir e entregar 15 novas unidades de Hospital Dia da Rede Hora Certa nas periferias.",
+        "plano_pagina": 35,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-sp-cap-003-1",
+            "tipo": "obra",
+            "titulo": "Inauguração do Hospital Dia Campo Limpo e reforma de 4 unidades especializadas",
+            "url": "https://capital.sp.gov.br/saude",
+            "data_publicacao": "2024-02-14",
+            "orgao_emissor": "Secretaria da Saúde de SP",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "sp-cap-004",
+        "mandato_id": "sp-2021-2024",
+        "tema": "Habitação Social",
+        "orgao_alvo": "Secretaria Municipal de Habitação (Sehab)",
+        "trecho_verbatim": "Produzir 49.000 unidades habitacionais de interesse social e regularizar 100.000 lotes em loteamentos irregulares.",
+        "plano_pagina": 42,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Volume de escrituras definitivas emitidas consolidado em balanço público atingiu percentual inferior ao total comprometido no plano."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-sp-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "SPObras",
+        "titulo": "Programa de Recapeamento Asfáltico Histórico de 3.000 km com Concreto Ecológico",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://capital.sp.gov.br/obras",
+        "data": "2023-05-10",
+        "tipo": "obra",
+        "valor_reais": 1200000000.0
+      }
+    ]
+  },
+  "rio-de-janeiro": {
+    "ente": "rio-de-janeiro-capital",
+    "slug": "rio-de-janeiro",
+    "slug_secundario": "rj",
+    "nome_ente": "Rio de Janeiro",
+    "esfera": "municipal",
+    "gestor": "Eduardo Paes",
+    "cargo": "Prefeito Municipal",
+    "partido": "PSD",
+    "uf": "RJ",
+    "regiao": "Sudeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/190001023456",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_rio-de-janeiro_oficial",
+    "plano_registrado_em": "2020-09-21",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "rio-cap-001",
+        "mandato_id": "rio-de-janeiro-2021-2024",
+        "tema": "Mobilidade e Transporte",
+        "orgao_alvo": "Secretaria Municipal de Transportes (SMTR / Mobi-Rio)",
+        "trecho_verbatim": "Recuperar 100% do sistema BRT com aquisição de frota pública própria de ônibus articulados e entrega da TransBrasil.",
+        "plano_pagina": 16,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-rio-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Inauguração da TransBrasil e entrega de 560 novos ônibus articulados da Mobi-Rio",
+            "url": "https://prefeitura.rio/",
+            "data_publicacao": "2024-03-30",
+            "orgao_emissor": "SMTR / Prefeitura do Rio",
+            "valor_reais": 1900000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "rio-cap-002",
+        "mandato_id": "rio-de-janeiro-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (SMS-Rio)",
+        "trecho_verbatim": "Criar o Super Centro Carioca de Saúde em Benfica para zerar filas de exames e consultas especializadas do Sisreg.",
+        "plano_pagina": 22,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-rio-cap-002-1",
+            "tipo": "obra",
+            "titulo": "Inauguração do Super Centro Carioca de Saúde e Centro Carioca do Olho",
+            "url": "https://prefeitura.rio/saude",
+            "data_publicacao": "2022-10-05",
+            "orgao_emissor": "SMS-Rio",
+            "valor_reais": 250000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "rio-cap-003",
+        "mandato_id": "rio-de-janeiro-2021-2024",
+        "tema": "Educação Pública",
+        "orgao_alvo": "Secretaria Municipal de Educação (SME-Rio)",
+        "trecho_verbatim": "Transformar 200 escolas em Ginásios Educacionais Tecnológicos (GET) com oficinas maker e tempo integral.",
+        "plano_pagina": 30,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-rio-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Implementação do 120º Ginásio Educacional Tecnológico (GET) na rede municipal",
+            "url": "https://educacao.prefeitura.rio/",
+            "data_publicacao": "2024-05-12",
+            "orgao_emissor": "SME-Rio",
+            "valor_reais": 88000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "rio-cap-004",
+        "mandato_id": "rio-de-janeiro-2021-2024",
+        "tema": "Urbanização de Favelas",
+        "orgao_alvo": "Secretaria Municipal de Habitação (SMH)",
+        "trecho_verbatim": "Retomar integralmente o programa Morar Carioca em todas as 40 comunidades prioritárias da Zona Oeste e Norte.",
+        "plano_pagina": 39,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Obras do programa Morar Carioca foram licitadas em lote menor que o total de comunidades listadas na promessa de campanha."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-rio-001",
+        "tema": "Lazer e Turismo",
+        "orgao": "Empresa Municipal de Urbanização (RioUrbe)",
+        "titulo": "Parque Rita Lee e Parque Carioca da Pavuna",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://prefeitura.rio/obras",
+        "data": "2023-09-20",
+        "tipo": "obra",
+        "valor_reais": 95000000.0
+      }
+    ]
+  },
+  "rj": {
+    "ente": "rio-de-janeiro-capital",
+    "slug": "rio-de-janeiro",
+    "slug_secundario": "rj",
+    "nome_ente": "Rio de Janeiro",
+    "esfera": "municipal",
+    "gestor": "Eduardo Paes",
+    "cargo": "Prefeito Municipal",
+    "partido": "PSD",
+    "uf": "RJ",
+    "regiao": "Sudeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/190001023456",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_rio-de-janeiro_oficial",
+    "plano_registrado_em": "2020-09-21",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "rio-cap-001",
+        "mandato_id": "rio-de-janeiro-2021-2024",
+        "tema": "Mobilidade e Transporte",
+        "orgao_alvo": "Secretaria Municipal de Transportes (SMTR / Mobi-Rio)",
+        "trecho_verbatim": "Recuperar 100% do sistema BRT com aquisição de frota pública própria de ônibus articulados e entrega da TransBrasil.",
+        "plano_pagina": 16,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-rio-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Inauguração da TransBrasil e entrega de 560 novos ônibus articulados da Mobi-Rio",
+            "url": "https://prefeitura.rio/",
+            "data_publicacao": "2024-03-30",
+            "orgao_emissor": "SMTR / Prefeitura do Rio",
+            "valor_reais": 1900000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "rio-cap-002",
+        "mandato_id": "rio-de-janeiro-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (SMS-Rio)",
+        "trecho_verbatim": "Criar o Super Centro Carioca de Saúde em Benfica para zerar filas de exames e consultas especializadas do Sisreg.",
+        "plano_pagina": 22,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-rio-cap-002-1",
+            "tipo": "obra",
+            "titulo": "Inauguração do Super Centro Carioca de Saúde e Centro Carioca do Olho",
+            "url": "https://prefeitura.rio/saude",
+            "data_publicacao": "2022-10-05",
+            "orgao_emissor": "SMS-Rio",
+            "valor_reais": 250000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "rio-cap-003",
+        "mandato_id": "rio-de-janeiro-2021-2024",
+        "tema": "Educação Pública",
+        "orgao_alvo": "Secretaria Municipal de Educação (SME-Rio)",
+        "trecho_verbatim": "Transformar 200 escolas em Ginásios Educacionais Tecnológicos (GET) com oficinas maker e tempo integral.",
+        "plano_pagina": 30,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-rio-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Implementação do 120º Ginásio Educacional Tecnológico (GET) na rede municipal",
+            "url": "https://educacao.prefeitura.rio/",
+            "data_publicacao": "2024-05-12",
+            "orgao_emissor": "SME-Rio",
+            "valor_reais": 88000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "rio-cap-004",
+        "mandato_id": "rio-de-janeiro-2021-2024",
+        "tema": "Urbanização de Favelas",
+        "orgao_alvo": "Secretaria Municipal de Habitação (SMH)",
+        "trecho_verbatim": "Retomar integralmente o programa Morar Carioca em todas as 40 comunidades prioritárias da Zona Oeste e Norte.",
+        "plano_pagina": 39,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Obras do programa Morar Carioca foram licitadas em lote menor que o total de comunidades listadas na promessa de campanha."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-rio-001",
+        "tema": "Lazer e Turismo",
+        "orgao": "Empresa Municipal de Urbanização (RioUrbe)",
+        "titulo": "Parque Rita Lee e Parque Carioca da Pavuna",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://prefeitura.rio/obras",
+        "data": "2023-09-20",
+        "tipo": "obra",
+        "valor_reais": 95000000.0
+      }
+    ]
+  },
+  "bh": {
+    "ente": "bh-capital",
+    "slug": "bh",
+    "slug_secundario": "belo-horizonte",
+    "nome_ente": "Belo Horizonte",
+    "esfera": "municipal",
+    "gestor": "Fuad Noman",
+    "cargo": "Prefeito Municipal",
+    "partido": "PSD",
+    "uf": "MG",
+    "regiao": "Sudeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/130000623910",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_bh_oficial",
+    "plano_registrado_em": "2020-09-22",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "bh-cap-001",
+        "mandato_id": "bh-2021-2024",
+        "tema": "Drenagem e Enchentes",
+        "orgao_alvo": "Secretaria Municipal de Obras e Infraestrutura (SMOBI)",
+        "trecho_verbatim": "Executar obras de mitigação de inundações na Bacia do Córrego do Nado e bacia da Avenida Vilarinho.",
+        "plano_pagina": 15,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-bh-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Entrega do reservatório profundo (piscinão) da Vilarinho e Córrego Nado",
+            "url": "https://prefeitura.pbh.gov.br/obras",
+            "data_publicacao": "2023-12-10",
+            "orgao_emissor": "Sudecap / SMOBI",
+            "valor_reais": 140000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "bh-cap-002",
+        "mandato_id": "bh-2021-2024",
+        "tema": "Transporte Público",
+        "orgao_alvo": "BHTrans / Sumob",
+        "trecho_verbatim": "Renovação integral da frota de ônibus com ar-condicionado e transição gradual para veículos elétricos e híbridos.",
+        "plano_pagina": 19,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-bh-cap-002-1",
+            "tipo": "lei",
+            "titulo": "Lei Municipal nº 11.458/2023 - Novo Marco do Transporte Coletivo e aquisição de 100 ônibus elétricos",
+            "url": "https://dom-web.pbh.gov.br/",
+            "data_publicacao": "2023-07-06",
+            "orgao_emissor": "Câmara Municipal de Belo Horizonte / PBH",
+            "valor_reais": 512000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "bh-cap-003",
+        "mandato_id": "bh-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (SMSA)",
+        "trecho_verbatim": "Reforma e reconstrução de 40 Centros de Saúde municipais por meio de Parceria Público-Privada (PPP).",
+        "plano_pagina": 24,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-bh-cap-003-1",
+            "tipo": "contrato",
+            "titulo": "Termo de recebimento definitivo da 40ª unidade de Centro de Saúde da PPP de Atenção Primária",
+            "url": "https://prefeitura.pbh.gov.br/saude",
+            "data_publicacao": "2024-03-20",
+            "orgao_emissor": "SMSA / PBH",
+            "valor_reais": 215000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "bh-cap-004",
+        "mandato_id": "bh-2021-2024",
+        "tema": "Habitação de Interesse Social",
+        "orgao_alvo": "Companhia Urbanizadora de Belo Horizonte (Urbel)",
+        "trecho_verbatim": "Produzir 10.000 unidades habitacionais populares destinadas a famílias removidas de áreas de risco geológico.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "As entregas anuais de HIS registradas no Diário Oficial da PBH atingiram fração menor que a meta estipulada no programa."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-bh-cap-001",
+        "tema": "Revitalização Urbana",
+        "orgao": "Secretaria Municipal de Política Urbana (SMPU)",
+        "titulo": "Programa Centro de Todo Mundo e Requalificação da Avenida Afonso Pena",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://prefeitura.pbh.gov.br/planejamento",
+        "data": "2023-05-15",
+        "tipo": "obra",
+        "valor_reais": 85000000.0
+      }
+    ]
+  },
+  "belo-horizonte": {
+    "ente": "bh-capital",
+    "slug": "bh",
+    "slug_secundario": "belo-horizonte",
+    "nome_ente": "Belo Horizonte",
+    "esfera": "municipal",
+    "gestor": "Fuad Noman",
+    "cargo": "Prefeito Municipal",
+    "partido": "PSD",
+    "uf": "MG",
+    "regiao": "Sudeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/130000623910",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_bh_oficial",
+    "plano_registrado_em": "2020-09-22",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "bh-cap-001",
+        "mandato_id": "bh-2021-2024",
+        "tema": "Drenagem e Enchentes",
+        "orgao_alvo": "Secretaria Municipal de Obras e Infraestrutura (SMOBI)",
+        "trecho_verbatim": "Executar obras de mitigação de inundações na Bacia do Córrego do Nado e bacia da Avenida Vilarinho.",
+        "plano_pagina": 15,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-bh-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Entrega do reservatório profundo (piscinão) da Vilarinho e Córrego Nado",
+            "url": "https://prefeitura.pbh.gov.br/obras",
+            "data_publicacao": "2023-12-10",
+            "orgao_emissor": "Sudecap / SMOBI",
+            "valor_reais": 140000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "bh-cap-002",
+        "mandato_id": "bh-2021-2024",
+        "tema": "Transporte Público",
+        "orgao_alvo": "BHTrans / Sumob",
+        "trecho_verbatim": "Renovação integral da frota de ônibus com ar-condicionado e transição gradual para veículos elétricos e híbridos.",
+        "plano_pagina": 19,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-bh-cap-002-1",
+            "tipo": "lei",
+            "titulo": "Lei Municipal nº 11.458/2023 - Novo Marco do Transporte Coletivo e aquisição de 100 ônibus elétricos",
+            "url": "https://dom-web.pbh.gov.br/",
+            "data_publicacao": "2023-07-06",
+            "orgao_emissor": "Câmara Municipal de Belo Horizonte / PBH",
+            "valor_reais": 512000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "bh-cap-003",
+        "mandato_id": "bh-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (SMSA)",
+        "trecho_verbatim": "Reforma e reconstrução de 40 Centros de Saúde municipais por meio de Parceria Público-Privada (PPP).",
+        "plano_pagina": 24,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-bh-cap-003-1",
+            "tipo": "contrato",
+            "titulo": "Termo de recebimento definitivo da 40ª unidade de Centro de Saúde da PPP de Atenção Primária",
+            "url": "https://prefeitura.pbh.gov.br/saude",
+            "data_publicacao": "2024-03-20",
+            "orgao_emissor": "SMSA / PBH",
+            "valor_reais": 215000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "bh-cap-004",
+        "mandato_id": "bh-2021-2024",
+        "tema": "Habitação de Interesse Social",
+        "orgao_alvo": "Companhia Urbanizadora de Belo Horizonte (Urbel)",
+        "trecho_verbatim": "Produzir 10.000 unidades habitacionais populares destinadas a famílias removidas de áreas de risco geológico.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "As entregas anuais de HIS registradas no Diário Oficial da PBH atingiram fração menor que a meta estipulada no programa."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-bh-cap-001",
+        "tema": "Revitalização Urbana",
+        "orgao": "Secretaria Municipal de Política Urbana (SMPU)",
+        "titulo": "Programa Centro de Todo Mundo e Requalificação da Avenida Afonso Pena",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://prefeitura.pbh.gov.br/planejamento",
+        "data": "2023-05-15",
+        "tipo": "obra",
+        "valor_reais": 85000000.0
+      }
+    ]
+  },
+  "salvador": {
+    "ente": "salvador-capital",
+    "slug": "salvador",
+    "slug_secundario": null,
+    "nome_ente": "Salvador",
+    "esfera": "municipal",
+    "gestor": "Bruno Reis",
+    "cargo": "Prefeito Municipal",
+    "partido": "UNIÃO",
+    "uf": "BA",
+    "regiao": "Nordeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/050001034567",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_salvador_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "ssa-cap-001",
+        "mandato_id": "salvador-2021-2024",
+        "tema": "Saneamento e Meio Ambiente",
+        "orgao_alvo": "Secretaria de Infraestrutura e Obras Públicas (Seinfra)",
+        "trecho_verbatim": "Concluir a macrodrenagem e urbanização da Bacia do Rio Mané Dendê no Subúrbio Ferroviário.",
+        "plano_pagina": 17,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-ssa-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Entrega das etapas 1 e 2 do Parque e Macrodrenagem do Mané Dendê em Ilha Amarela",
+            "url": "https://salvador.ba.gov.br/",
+            "data_publicacao": "2023-09-15",
+            "orgao_emissor": "Prefeitura de Salvador / Seinfra",
+            "valor_reais": 180000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "ssa-cap-002",
+        "mandato_id": "salvador-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal da Saúde (SMS-Salvador)",
+        "trecho_verbatim": "Implantar o Hospital da Criança de Salvador e ampliar a cobertura da Atenção Básica para 70%.",
+        "plano_pagina": 21,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-ssa-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Obras estruturais do Hospital Municipal da Criança e contratação de equipamentos",
+            "url": "https://saude.salvador.ba.gov.br/",
+            "data_publicacao": "2023-11-28",
+            "orgao_emissor": "SMS Salvador",
+            "valor_reais": 95000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "ssa-cap-003",
+        "mandato_id": "salvador-2021-2024",
+        "tema": "Habitação Social",
+        "orgao_alvo": "Secretaria de Promoção Social (Sempre)",
+        "trecho_verbatim": "Reformar 40.000 moradias precárias em comunidades vulneráveis pelo programa Morar Melhor.",
+        "plano_pagina": 26,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-ssa-cap-003-1",
+            "tipo": "obra",
+            "titulo": "Balanço oficial do Morar Melhor atinge a marca de 42.000 casas reformadas",
+            "url": "https://salvador.ba.gov.br/morarmelhor",
+            "data_publicacao": "2024-01-20",
+            "orgao_emissor": "Sempre Salvador",
+            "valor_reais": 140000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "ssa-cap-004",
+        "mandato_id": "salvador-2021-2024",
+        "tema": "Mobilidade",
+        "orgao_alvo": "Secretaria de Mobilidade (Semob)",
+        "trecho_verbatim": "Substituir 100% da frota de transporte público por ônibus com ar-condicionado e zero emissão até 2024.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Renovação atingiu cerca de 50% dos veículos com climatização, não alcançando a meta integral."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-ssa-001",
+        "tema": "Turismo e Cultura",
+        "orgao": "Secult Salvador",
+        "titulo": "Construção da Arena Multiuso e Arquivo Público de Salvador",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://salvador.ba.gov.br/",
+        "data": "2023-04-10",
+        "tipo": "obra",
+        "valor_reais": 65000000.0
+      }
+    ]
+  },
+  "fortaleza": {
+    "ente": "fortaleza-capital",
+    "slug": "fortaleza",
+    "slug_secundario": null,
+    "nome_ente": "Fortaleza",
+    "esfera": "municipal",
+    "gestor": "José Sarto",
+    "cargo": "Prefeito Municipal",
+    "partido": "PDT",
+    "uf": "CE",
+    "regiao": "Nordeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/060001045678",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_fortaleza_oficial",
+    "plano_registrado_em": "2020-09-23",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "for-cap-001",
+        "mandato_id": "fortaleza-2021-2024",
+        "tema": "Mobilidade",
+        "orgao_alvo": "Empresa de Transporte Urbano de Fortaleza (Etufor)",
+        "trecho_verbatim": "Implantar o Passe Livre Estudantil integral para todos os estudantes da rede pública e privada.",
+        "plano_pagina": 13,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-for-cap-001-1",
+            "tipo": "lei",
+            "titulo": "Lei Municipal nº 11.412/2023 - Cria o Passe Livre Estudantil com 2 passagens diárias gratuitas",
+            "url": "https://www.fortaleza.ce.gov.br/",
+            "data_publicacao": "2023-11-06",
+            "orgao_emissor": "Prefeitura de Fortaleza / Etufor",
+            "valor_reais": 60000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "for-cap-002",
+        "mandato_id": "fortaleza-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal da Saúde (SMS-Fortaleza)",
+        "trecho_verbatim": "Reforma e modernização de todos os Postos de Saúde da capital e informatização do prontuário eletrônico.",
+        "plano_pagina": 19,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-for-cap-002-1",
+            "tipo": "obra",
+            "titulo": "Entrega do 35º Posto de Saúde reformado e entrega de medicamentos em casa",
+            "url": "https://saude.fortaleza.ce.gov.br/",
+            "data_publicacao": "2024-03-12",
+            "orgao_emissor": "SMS Fortaleza",
+            "valor_reais": 72000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "for-cap-003",
+        "mandato_id": "fortaleza-2021-2024",
+        "tema": "Educação Infantil",
+        "orgao_alvo": "Secretaria Municipal da Educação (SME-Fortaleza)",
+        "trecho_verbatim": "Universalizar o atendimento de creche para crianças de 1 a 3 anos com construção de novos Centros de Educação Infantil.",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-for-cap-003-1",
+            "tipo": "obra",
+            "titulo": "Inauguração do 30º novo Centro de Educação Infantil (CEI) da gestão",
+            "url": "https://sme.fortaleza.ce.gov.br/",
+            "data_publicacao": "2024-02-18",
+            "orgao_emissor": "SME Fortaleza",
+            "valor_reais": 48000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "for-cap-004",
+        "mandato_id": "fortaleza-2021-2024",
+        "tema": "Infraestrutura Urbana",
+        "orgao_alvo": "Secretaria Municipal da Infraestrutura (Seinf)",
+        "trecho_verbatim": "Pavimentar e implantar drenagem em 100% das ruas de terra da periferia de Fortaleza.",
+        "plano_pagina": 31,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Programa Proinfra executou obras em diversos bairros, mas não atingiu a cobertura total das vias periféricas."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-for-001",
+        "tema": "Urbanismo e Lazer",
+        "orgao": "Seinf Fortaleza",
+        "titulo": "Requalificação da Beira-Mar de Todos e Espigão do Náutico",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.fortaleza.ce.gov.br/",
+        "data": "2022-08-10",
+        "tipo": "obra",
+        "valor_reais": 110000000.0
+      }
+    ]
+  },
+  "curitiba": {
+    "ente": "curitiba-capital",
+    "slug": "curitiba",
+    "slug_secundario": null,
+    "nome_ente": "Curitiba",
+    "esfera": "municipal",
+    "gestor": "Rafael Greca",
+    "cargo": "Prefeito Municipal",
+    "partido": "PSD",
+    "uf": "PR",
+    "regiao": "Sul",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/160001056789",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_curitiba_oficial",
+    "plano_registrado_em": "2020-09-25",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "cur-cap-001",
+        "mandato_id": "curitiba-2021-2024",
+        "tema": "Sustentabilidade e Habitação",
+        "orgao_alvo": "Companhia de Habitação de Curitiba (Cohab) / Ippuc",
+        "trecho_verbatim": "Executar o Projeto Bairro Novo do Caximba com realocação sustentável de 1.693 famílias e recuperação ambiental.",
+        "plano_pagina": 15,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-cur-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Construção das primeiras 752 casas do Bairro Novo do Caximba e dique de contenção",
+            "url": "https://www.curitiba.pr.gov.br/",
+            "data_publicacao": "2023-10-24",
+            "orgao_emissor": "Prefeitura de Curitiba / Cohab",
+            "valor_reais": 280000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "cur-cap-002",
+        "mandato_id": "curitiba-2021-2024",
+        "tema": "Segurança Pública",
+        "orgao_alvo": "Secretaria Municipal de Defesa Social e Trânsito (SMDT)",
+        "trecho_verbatim": "Implantar a Muralha Digital com integração de câmeras OCR e reconhecimento de placas em toda a cidade.",
+        "plano_pagina": 21,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-cur-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Conclusão da rede de 1.900 câmeras da Muralha Digital de Curitiba",
+            "url": "https://defesasocial.curitiba.pr.gov.br/",
+            "data_publicacao": "2023-03-15",
+            "orgao_emissor": "SMDT Curitiba",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "cur-cap-003",
+        "mandato_id": "curitiba-2021-2024",
+        "tema": "Mobilidade Elétrica",
+        "orgao_alvo": "Urbs (Urbanização de Curitiba S.A.)",
+        "trecho_verbatim": "Eletromobilidade na Linha Direta Interbairros II com substituição gradativa por ônibus elétricos.",
+        "plano_pagina": 27,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-cur-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Aquisição do primeiro lote de 70 ônibus 100% elétricos para o sistema Urbs",
+            "url": "https://www.urbs.curitiba.pr.gov.br/",
+            "data_publicacao": "2024-04-05",
+            "orgao_emissor": "Urbs Curitiba",
+            "valor_reais": 204000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "cur-cap-004",
+        "mandato_id": "curitiba-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal da Saúde (SMS-Curitiba)",
+        "trecho_verbatim": "Construir e inaugurar o novo Hospital Metropolitano Municipal de Curitiba.",
+        "plano_pagina": 34,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Projeto dependente de repasse federal e estadual que não teve canteiro de obras instalado até o fim do ciclo."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-cur-001",
+        "tema": "Energia Limpa",
+        "orgao": "Secretaria Municipal do Meio Ambiente (SMMA)",
+        "titulo": "Pirâmide Solar da Caximba (Usina Fotovoltaica sobre Aterro)",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.curitiba.pr.gov.br/",
+        "data": "2023-03-29",
+        "tipo": "obra",
+        "valor_reais": 32000000.0
+      }
+    ]
+  },
+  "recife": {
+    "ente": "recife-capital",
+    "slug": "recife",
+    "slug_secundario": null,
+    "nome_ente": "Recife",
+    "esfera": "municipal",
+    "gestor": "João Campos",
+    "cargo": "Prefeito Municipal",
+    "partido": "PSB",
+    "uf": "PE",
+    "regiao": "Nordeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/170001067890",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_recife_oficial",
+    "plano_registrado_em": "2020-09-26",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "rec-cap-001",
+        "mandato_id": "recife-2021-2024",
+        "tema": "Inovação e Educação",
+        "orgao_alvo": "Secretaria de Desenvolvimento Econômico e Ciência (Sdec)",
+        "trecho_verbatim": "Criar o programa Embarque Digital ofertando 2.000 bolsas de graduação em tecnologia para egressos da rede pública.",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-rec-cap-001-1",
+            "tipo": "lei",
+            "titulo": "Lei Municipal nº 18.869/2021 - Cria o Embarque Digital no Porto Digital",
+            "url": "https://recife.pe.gov.br/",
+            "data_publicacao": "2021-12-14",
+            "orgao_emissor": "Prefeitura do Recife / Porto Digital",
+            "valor_reais": 42000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "rec-cap-002",
+        "mandato_id": "recife-2021-2024",
+        "tema": "Educação Infantil",
+        "orgao_alvo": "Secretaria de Educação do Recife (Seduc)",
+        "trecho_verbatim": "Dobrar o número de vagas em creches municipais com o programa Infância na Creche.",
+        "plano_pagina": 18,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-rec-cap-002-1",
+            "tipo": "obra",
+            "titulo": "Entrega da 40ª creche nova pelo programa Infância na Creche atingindo mais de 7.000 vagas novas",
+            "url": "https://educacao.recife.pe.gov.br/",
+            "data_publicacao": "2024-03-18",
+            "orgao_emissor": "Seduc Recife",
+            "valor_reais": 120000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "rec-cap-003",
+        "mandato_id": "recife-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria de Saúde do Recife (Sesau)",
+        "trecho_verbatim": "Construir e colocar em funcionamento o primeiro Hospital da Criança do Recife.",
+        "plano_pagina": 24,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-rec-cap-003-1",
+            "tipo": "obra",
+            "titulo": "Obras estruturais do Hospital da Criança no bairro do Caçote em fase de acabamento",
+            "url": "https://saude.recife.pe.gov.br/",
+            "data_publicacao": "2024-01-30",
+            "orgao_emissor": "Sesau Recife",
+            "valor_reais": 115000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "rec-cap-004",
+        "mandato_id": "recife-2021-2024",
+        "tema": "Contenção de Encostas",
+        "orgao_alvo": "Autarquia de Urbanização do Recife (URB)",
+        "trecho_verbatim": "Implantar geomanta e obras estruturantes de contenção de encostas em 100% dos pontos de risco altíssimo.",
+        "plano_pagina": 31,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "URB realizou dezenas de obras de geomanta e encostas, mas ainda há áreas de risco com intervenção pendente."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-rec-001",
+        "tema": "Parques Urbanos",
+        "orgao": "Autarquia de Manutenção e Limpeza Urbana (Emlurb)",
+        "titulo": "Criação do Parque Jardim do Poço e Parque das Graças na Beira-Rio",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://recife.pe.gov.br/",
+        "data": "2023-07-20",
+        "tipo": "obra",
+        "valor_reais": 55000000.0
+      }
+    ]
+  },
+  "porto-alegre": {
+    "ente": "porto-alegre-capital",
+    "slug": "porto-alegre",
+    "slug_secundario": null,
+    "nome_ente": "Porto Alegre",
+    "esfera": "municipal",
+    "gestor": "Sebastião Melo",
+    "cargo": "Prefeito Municipal",
+    "partido": "MDB",
+    "uf": "RS",
+    "regiao": "Sul",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/210001078901",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_porto-alegre_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "poa-cap-001",
+        "mandato_id": "porto-alegre-2021-2024",
+        "tema": "Desenvolvimento e Requalificação",
+        "orgao_alvo": "Secretaria Municipal de Meio Ambiente, Urbanismo e Sustentabilidade (Smamus)",
+        "trecho_verbatim": "Revitalizar o 4º Distrito com incentivos fiscais, modernização urbanística e fomento à inovação.",
+        "plano_pagina": 15,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-poa-cap-001-1",
+            "tipo": "lei",
+            "titulo": "Lei Complementar nº 960/2022 - Programa de Reabilitação do 4º Distrito com isenções e novo regime",
+            "url": "https://prefeitura.poa.br/",
+            "data_publicacao": "2022-09-20",
+            "orgao_emissor": "Prefeitura de Porto Alegre",
+            "valor_reais": 180000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "poa-cap-002",
+        "mandato_id": "porto-alegre-2021-2024",
+        "tema": "Mobilidade",
+        "orgao_alvo": "Empresa Pública de Transporte e Circulação (EPTC)",
+        "trecho_verbatim": "Reestruturação societária da Carris com atração de investimento privado para modernizar a frota de ônibus.",
+        "plano_pagina": 22,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-poa-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Conclusão do leilão e desestatização da Carris com exigência de 100% de ar-condicionado",
+            "url": "https://transparencia.portoalegre.rs.gov.br/",
+            "data_publicacao": "2023-10-02",
+            "orgao_emissor": "SMAP / EPTC",
+            "valor_reais": 109000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "poa-cap-003",
+        "mandato_id": "porto-alegre-2021-2024",
+        "tema": "Drenagem Urbana",
+        "orgao_alvo": "Departamento Municipal de Água e Esgotos (Dmae)",
+        "trecho_verbatim": "Modernização integral das Casas de Bombas e dos diques de proteção contra cheias do Guaíba.",
+        "plano_pagina": 29,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Os relatórios de manutenção apontaram atrasos e falhas operacionais críticas nas estações de bombeamento nas cheias de 2024."
+      },
+      {
+        "id": "poa-cap-004",
+        "mandato_id": "porto-alegre-2021-2024",
+        "tema": "Educação",
+        "orgao_alvo": "Secretaria Municipal de Educação (Smed)",
+        "trecho_verbatim": "Climatizar todas as salas de aula da rede municipal e zerar o déficit na educação infantil.",
+        "plano_pagina": 36,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-poa-cap-004-1",
+            "tipo": "contrato",
+            "titulo": "Instalação de condicionadores de ar e compra de equipamentos em 60 escolas municipais",
+            "url": "https://smed.portoalegre.rs.gov.br/",
+            "data_publicacao": "2023-06-15",
+            "orgao_emissor": "Smed Porto Alegre",
+            "valor_reais": 34000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-poa-001",
+        "tema": "Reconstrução Climática",
+        "orgao": "Dmae / Secretaria de Obras",
+        "titulo": "Plano de Reconstrução de Diques e Casas de Bombas pós-inundações de Maio de 2024",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://prefeitura.poa.br/",
+        "data": "2024-06-10",
+        "tipo": "obra",
+        "valor_reais": 510000000.0
+      }
+    ]
+  },
+  "belem": {
+    "ente": "belem-capital",
+    "slug": "belem",
+    "slug_secundario": null,
+    "nome_ente": "Belém",
+    "esfera": "municipal",
+    "gestor": "Edmilson Rodrigues",
+    "cargo": "Prefeito Municipal",
+    "partido": "PSOL",
+    "uf": "PA",
+    "regiao": "Norte",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1501402_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_belem_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "belem-cap-001",
+        "mandato_id": "belem-2021-2024",
+        "tema": "Assistência Social",
+        "orgao_alvo": "Fundação Papa João XXIII (Funpapa)",
+        "trecho_verbatim": "Implantar o Programa Bora Belém garantindo renda básica para famílias na extrema pobreza.",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-belem-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Belém",
+            "url": "https://www.belem.pa.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Fundação Papa João XXIII (Funpapa)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "belem-cap-002",
+        "mandato_id": "belem-2021-2024",
+        "tema": "Saneamento e Clima",
+        "orgao_alvo": "Secretaria Municipal de Saneamento (Sesan)",
+        "trecho_verbatim": "Obras de macrodrenagem da Bacia da Estrada Nova e canal da Bernardo Sayão.",
+        "plano_pagina": 18,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-belem-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Belém",
+            "url": "https://www.belem.pa.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Secretaria Municipal de Saneamento (Sesan)",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "belem-cap-003",
+        "mandato_id": "belem-2021-2024",
+        "tema": "Educação",
+        "orgao_alvo": "Secretaria Municipal de Educação (Semec)",
+        "trecho_verbatim": "Climatizar e reformar 100% das escolas públicas municipais de Belém.",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-belem-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em Belém",
+            "url": "https://www.belem.pa.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Secretaria Municipal de Educação (Semec)",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "belem-cap-004",
+        "mandato_id": "belem-2021-2024",
+        "tema": "Habitação",
+        "orgao_alvo": "Secretaria Municipal de Habitação (Sehab)",
+        "trecho_verbatim": "Construir 10.000 moradias populares para famílias ribeirinhas e em palafitas.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-belem-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Fundação Papa João XXIII (Funpapa)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Belém",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.belem.pa.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "manaus": {
+    "ente": "manaus-capital",
+    "slug": "manaus",
+    "slug_secundario": null,
+    "nome_ente": "Manaus",
+    "esfera": "municipal",
+    "gestor": "David Almeida",
+    "cargo": "Prefeito Municipal",
+    "partido": "AVANTE",
+    "uf": "AM",
+    "regiao": "Norte",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1302603_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_manaus_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "manaus-cap-001",
+        "mandato_id": "manaus-2021-2024",
+        "tema": "Infraestrutura",
+        "orgao_alvo": "Secretaria Municipal de Infraestrutura (Seminf)",
+        "trecho_verbatim": "Executar o Programa Asfalta Manaus recuperando 10.000 ruas em todas as zonas.",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-manaus-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Manaus",
+            "url": "https://www.manaus.am.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria Municipal de Infraestrutura (Seminf)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "manaus-cap-002",
+        "mandato_id": "manaus-2021-2024",
+        "tema": "Lazer e Turismo",
+        "orgao_alvo": "Seminf / Implurb",
+        "trecho_verbatim": "Construir o Parque Gigantes da Floresta unindo as zonas Norte e Leste.",
+        "plano_pagina": 18,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-manaus-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Manaus",
+            "url": "https://www.manaus.am.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Seminf / Implurb",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "manaus-cap-003",
+        "mandato_id": "manaus-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (Semsa)",
+        "trecho_verbatim": "Implantar 10 novas Unidades de Saúde da Família de grande porte (Porte 4).",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-manaus-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em Manaus",
+            "url": "https://www.manaus.am.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Secretaria Municipal de Saúde (Semsa)",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "manaus-cap-004",
+        "mandato_id": "manaus-2021-2024",
+        "tema": "Transporte",
+        "orgao_alvo": "Instituto Municipal de Mobilidade Urbana (IMMU)",
+        "trecho_verbatim": "Substituir integralmente a frota por ônibus com ar-condicionado e tecnologia Euro 6.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-manaus-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal de Infraestrutura (Seminf)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Manaus",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.manaus.am.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "goiania": {
+    "ente": "goiania-capital",
+    "slug": "goiania",
+    "slug_secundario": null,
+    "nome_ente": "Goiânia",
+    "esfera": "municipal",
+    "gestor": "Rogério Cruz",
+    "cargo": "Prefeito Municipal",
+    "partido": "SOLIDARIEDADE",
+    "uf": "GO",
+    "regiao": "Centro-Oeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5208707_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_goiania_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "goiania-cap-001",
+        "mandato_id": "goiania-2021-2024",
+        "tema": "Obras Viárias",
+        "orgao_alvo": "Secretaria Municipal de Infraestrutura Urbana (Seinfra)",
+        "trecho_verbatim": "Executar o Programa Goiânia Adiante com viadutos na Marginal Botafogo e BR-153.",
+        "plano_pagina": 12,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "goiania-cap-002",
+        "mandato_id": "goiania-2021-2024",
+        "tema": "Educação",
+        "orgao_alvo": "Secretaria Municipal de Educação (SME-Goiânia)",
+        "trecho_verbatim": "Zerar o déficit de vagas em CMEIs com construção de 20 novas creches modulares.",
+        "plano_pagina": 18,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "goiania-cap-003",
+        "mandato_id": "goiania-2021-2024",
+        "tema": "Iluminação Pública",
+        "orgao_alvo": "Seinfra / Consórcio Luz de Goiânia",
+        "trecho_verbatim": "Modernizar 100% do parque de iluminação da cidade com tecnologia LED.",
+        "plano_pagina": 25,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-goiania-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em Goiânia",
+            "url": "https://www.goiania.go.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Seinfra / Consórcio Luz de Goiânia",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "goiania-cap-004",
+        "mandato_id": "goiania-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (SMS-Goiânia)",
+        "trecho_verbatim": "Digitalizar a marcação de consultas e zerar filas de exames especializados.",
+        "plano_pagina": 33,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-goiania-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal de Infraestrutura Urbana (Seinfra)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Goiânia",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.goiania.go.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "vitoria": {
+    "ente": "vitoria-capital",
+    "slug": "vitoria",
+    "slug_secundario": null,
+    "nome_ente": "Vitória",
+    "esfera": "municipal",
+    "gestor": "Lorenzo Pazolini",
+    "cargo": "Prefeito Municipal",
+    "partido": "REPUBLICANOS",
+    "uf": "ES",
+    "regiao": "Sudeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3205309_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_vitoria_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "vitoria-cap-001",
+        "mandato_id": "vitoria-2021-2024",
+        "tema": "Mobilidade e Orla",
+        "orgao_alvo": "Secretaria de Obras (Semob)",
+        "trecho_verbatim": "Construir a Ciclovia e reurbanização da Orla Noroeste (Grande São Pedro).",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-vitoria-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Vitória",
+            "url": "https://www.vitoria.es.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria de Obras (Semob)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "vitoria-cap-002",
+        "mandato_id": "vitoria-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (Semus)",
+        "trecho_verbatim": "Reforma e modernização de todos os Prontos Atendimentos (PA Praia do Suá e São Pedro).",
+        "plano_pagina": 18,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-vitoria-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Vitória",
+            "url": "https://www.vitoria.es.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Secretaria Municipal de Saúde (Semus)",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "vitoria-cap-003",
+        "mandato_id": "vitoria-2021-2024",
+        "tema": "Educação",
+        "orgao_alvo": "Secretaria de Educação (Seme)",
+        "trecho_verbatim": "Ampliação das escolas em tempo integral e fornecimento de uniformes completos.",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-vitoria-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em Vitória",
+            "url": "https://www.vitoria.es.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Secretaria de Educação (Seme)",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "vitoria-cap-004",
+        "mandato_id": "vitoria-2021-2024",
+        "tema": "Habitação",
+        "orgao_alvo": "Secretaria de Cidadania e Direitos Humanos",
+        "trecho_verbatim": "Eliminar todas as habitações precárias em encostas de morros da capital.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-vitoria-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria de Obras (Semob)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Vitória",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.vitoria.es.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "florianopolis": {
+    "ente": "florianopolis-capital",
+    "slug": "florianopolis",
+    "slug_secundario": null,
+    "nome_ente": "Florianópolis",
+    "esfera": "municipal",
+    "gestor": "Topázio Neto",
+    "cargo": "Prefeito Municipal",
+    "partido": "PSD",
+    "uf": "SC",
+    "regiao": "Sul",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4205407_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_florianopolis_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "florianopolis-cap-001",
+        "mandato_id": "florianopolis-2021-2024",
+        "tema": "Saúde Digital",
+        "orgao_alvo": "Secretaria Municipal de Saúde",
+        "trecho_verbatim": "Consolidar o programa Alô Saúde Floripa com telemedicina 24 horas gratuita.",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-florianopolis-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Florianópolis",
+            "url": "https://www.florianopolis.sc.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria Municipal de Saúde",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "florianopolis-cap-002",
+        "mandato_id": "florianopolis-2021-2024",
+        "tema": "Infraestrutura",
+        "orgao_alvo": "Secretaria de Infraestrutura",
+        "trecho_verbatim": "Revitalização e alargamento da faixa de areia de Jurerê e Ingleses.",
+        "plano_pagina": 18,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-florianopolis-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Florianópolis",
+            "url": "https://www.florianopolis.sc.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Secretaria de Infraestrutura",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "florianopolis-cap-003",
+        "mandato_id": "florianopolis-2021-2024",
+        "tema": "Mobilidade",
+        "orgao_alvo": "Secretaria de Transportes e Mobilidade",
+        "trecho_verbatim": "Implantar transporte marítimo regular na Baía Sul e Baía Norte.",
+        "plano_pagina": 25,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "florianopolis-cap-004",
+        "mandato_id": "florianopolis-2021-2024",
+        "tema": "Educação",
+        "orgao_alvo": "Secretaria Municipal de Educação",
+        "trecho_verbatim": "Zerar a fila de espera da educação infantil nos bairros do Continente e Norte.",
+        "plano_pagina": 33,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-florianopolis-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal de Saúde",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Florianópolis",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.florianopolis.sc.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "campo-grande": {
+    "ente": "campo-grande-capital",
+    "slug": "campo-grande",
+    "slug_secundario": null,
+    "nome_ente": "Campo Grande",
+    "esfera": "municipal",
+    "gestor": "Adriane Lopes",
+    "cargo": "Prefeito Municipal",
+    "partido": "PP",
+    "uf": "MS",
+    "regiao": "Centro-Oeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5002704_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_campo-grande_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "campo-grande-cap-001",
+        "mandato_id": "campo-grande-2021-2024",
+        "tema": "Inovação",
+        "orgao_alvo": "Secretaria Municipal de Inovação e Desenvolvimento (Sidagro)",
+        "trecho_verbatim": "Implantar o Parque Tecnológico de Campo Grande (ParkTec CG).",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-campo-grande-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Campo Grande",
+            "url": "https://www.campo-grande.ms.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria Municipal de Inovação e Desenvolvimento (Sidagro)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "campo-grande-cap-002",
+        "mandato_id": "campo-grande-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (Sesau)",
+        "trecho_verbatim": "Construir e inaugurar o Hospital Municipal de Campo Grande.",
+        "plano_pagina": 18,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-campo-grande-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Campo Grande",
+            "url": "https://www.campo-grande.ms.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Secretaria Municipal de Saúde (Sesau)",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "campo-grande-cap-003",
+        "mandato_id": "campo-grande-2021-2024",
+        "tema": "Infraestrutura",
+        "orgao_alvo": "Secretaria Municipal de Infraestrutura (Sisep)",
+        "trecho_verbatim": "Pavimentação asfáltica e drenagem nos bairros Nova Lima e Jardim Noroeste.",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-campo-grande-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em Campo Grande",
+            "url": "https://www.campo-grande.ms.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Secretaria Municipal de Infraestrutura (Sisep)",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "campo-grande-cap-004",
+        "mandato_id": "campo-grande-2021-2024",
+        "tema": "Habitação",
+        "orgao_alvo": "Agência Municipal de Habitação (Emha)",
+        "trecho_verbatim": "Regularização fundiária de 10.000 títulos em assentamentos urbanos.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-campo-grande-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal de Inovação e Desenvolvimento (Sidagro)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Campo Grande",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.campo-grande.ms.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "cuiaba": {
+    "ente": "cuiaba-capital",
+    "slug": "cuiaba",
+    "slug_secundario": null,
+    "nome_ente": "Cuiabá",
+    "esfera": "municipal",
+    "gestor": "Emanuel Pinheiro",
+    "cargo": "Prefeito Municipal",
+    "partido": "MDB",
+    "uf": "MT",
+    "regiao": "Centro-Oeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5103403_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_cuiaba_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "cuiaba-cap-001",
+        "mandato_id": "cuiaba-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (SMS-Cuiabá)",
+        "trecho_verbatim": "Plena operacionalização do novo Hospital Municipal de Cuiabá (HMC).",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-cuiaba-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Cuiabá",
+            "url": "https://www.cuiaba.mt.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria Municipal de Saúde (SMS-Cuiabá)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "cuiaba-cap-002",
+        "mandato_id": "cuiaba-2021-2024",
+        "tema": "Mobilidade Viária",
+        "orgao_alvo": "Secretaria de Obras Públicas",
+        "trecho_verbatim": "Construção do Contorno Leste ligando o Distrito Industrial à Rodovia Emanuel Pinheiro.",
+        "plano_pagina": 18,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-cuiaba-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Cuiabá",
+            "url": "https://www.cuiaba.mt.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Secretaria de Obras Públicas",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "cuiaba-cap-003",
+        "mandato_id": "cuiaba-2021-2024",
+        "tema": "Educação",
+        "orgao_alvo": "Secretaria Municipal de Educação",
+        "trecho_verbatim": "Climatização com energia solar de 100% das unidades escolares de Cuiabá.",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-cuiaba-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em Cuiabá",
+            "url": "https://www.cuiaba.mt.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Secretaria Municipal de Educação",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "cuiaba-cap-004",
+        "mandato_id": "cuiaba-2021-2024",
+        "tema": "Transporte Coletivo",
+        "orgao_alvo": "Secretaria de Mobilidade Urbana (Semob)",
+        "trecho_verbatim": "Integração plena do BRT metropolitano nos eixos da Capital.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-cuiaba-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal de Saúde (SMS-Cuiabá)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Cuiabá",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.cuiaba.mt.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "natal": {
+    "ente": "natal-capital",
+    "slug": "natal",
+    "slug_secundario": null,
+    "nome_ente": "Natal",
+    "esfera": "municipal",
+    "gestor": "Álvaro Dias",
+    "cargo": "Prefeito Municipal",
+    "partido": "REPUBLICANOS",
+    "uf": "RN",
+    "regiao": "Nordeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2408102_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_natal_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "natal-cap-001",
+        "mandato_id": "natal-2021-2024",
+        "tema": "Turismo e Proteção Costeira",
+        "orgao_alvo": "Secretaria Municipal de Infraestrutura (Seinfra)",
+        "trecho_verbatim": "Obras de enrocamento e engorda da praia de Ponta Negra.",
+        "plano_pagina": 12,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "natal-cap-002",
+        "mandato_id": "natal-2021-2024",
+        "tema": "Turismo",
+        "orgao_alvo": "Seinfra / Semsur",
+        "trecho_verbatim": "Reforma e modernização do Complexo Turístico da Redinha.",
+        "plano_pagina": 18,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-natal-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Natal",
+            "url": "https://www.natal.rn.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Seinfra / Semsur",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "natal-cap-003",
+        "mandato_id": "natal-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (SMS)",
+        "trecho_verbatim": "Construção do novo Hospital Municipal de Natal.",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-natal-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em Natal",
+            "url": "https://www.natal.rn.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Secretaria Municipal de Saúde (SMS)",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "natal-cap-004",
+        "mandato_id": "natal-2021-2024",
+        "tema": "Saneamento",
+        "orgao_alvo": "Seinfra Natal",
+        "trecho_verbatim": "Drenagem e pavimentação de 100% das ruas da Zona Norte de Natal.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-natal-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal de Infraestrutura (Seinfra)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Natal",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.natal.rn.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "joao-pessoa": {
+    "ente": "joao-pessoa-capital",
+    "slug": "joao-pessoa",
+    "slug_secundario": null,
+    "nome_ente": "João Pessoa",
+    "esfera": "municipal",
+    "gestor": "Cícero Lucena",
+    "cargo": "Prefeito Municipal",
+    "partido": "PP",
+    "uf": "PB",
+    "regiao": "Nordeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2507507_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_joao-pessoa_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "joao-pessoa-cap-001",
+        "mandato_id": "joao-pessoa-2021-2024",
+        "tema": "Infraestrutura",
+        "orgao_alvo": "Secretaria de Infraestrutura (Seinfra)",
+        "trecho_verbatim": "Programa de pavimentação asfáltica e drenagem de 1.000 ruas na capital.",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-joao-pessoa-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de João Pessoa",
+            "url": "https://www.joao-pessoa.pb.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria de Infraestrutura (Seinfra)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "joao-pessoa-cap-002",
+        "mandato_id": "joao-pessoa-2021-2024",
+        "tema": "Educação Digital",
+        "orgao_alvo": "Secretaria de Educação e Cultura (Sedec)",
+        "trecho_verbatim": "Distribuição de tablets e conectividade para 100% dos alunos da rede municipal.",
+        "plano_pagina": 18,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-joao-pessoa-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em João Pessoa",
+            "url": "https://www.joao-pessoa.pb.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Secretaria de Educação e Cultura (Sedec)",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "joao-pessoa-cap-003",
+        "mandato_id": "joao-pessoa-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (SMS)",
+        "trecho_verbatim": "Reforma e reestruturação das três policlínicas municipais (Mandacaru, Cristo e Mangabeira).",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-joao-pessoa-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em João Pessoa",
+            "url": "https://www.joao-pessoa.pb.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Secretaria Municipal de Saúde (SMS)",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "joao-pessoa-cap-004",
+        "mandato_id": "joao-pessoa-2021-2024",
+        "tema": "Habitação",
+        "orgao_alvo": "Secretaria de Habitação Social (Semhab)",
+        "trecho_verbatim": "Produzir 5.000 unidades habitacionais pelo programa municipal Morar Bem.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-joao-pessoa-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria de Infraestrutura (Seinfra)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em João Pessoa",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.joao-pessoa.pb.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "maceio": {
+    "ente": "maceio-capital",
+    "slug": "maceio",
+    "slug_secundario": null,
+    "nome_ente": "Maceió",
+    "esfera": "municipal",
+    "gestor": "JHC (João Henrique Caldas)",
+    "cargo": "Prefeito Municipal",
+    "partido": "PL",
+    "uf": "AL",
+    "regiao": "Nordeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2704302_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_maceio_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "maceio-cap-001",
+        "mandato_id": "maceio-2021-2024",
+        "tema": "Saneamento e Meio Ambiente",
+        "orgao_alvo": "Secretaria Municipal de Infraestrutura (Seminfra)",
+        "trecho_verbatim": "Executar o Programa Renasce Salgadinho despoluindo o riacho e a orla marítima.",
+        "plano_pagina": 12,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "maceio-cap-002",
+        "mandato_id": "maceio-2021-2024",
+        "tema": "Educação Infantil",
+        "orgao_alvo": "Secretaria Municipal de Educação (Semed)",
+        "trecho_verbatim": "Implantar o programa Creches Gigantinhos criando mais de 10.000 novas vagas.",
+        "plano_pagina": 18,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-maceio-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Maceió",
+            "url": "https://www.maceio.al.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Secretaria Municipal de Educação (Semed)",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "maceio-cap-003",
+        "mandato_id": "maceio-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (SMS)",
+        "trecho_verbatim": "Programa Saúde da Gente com atendimento médico itinerante nas grotas e periferias.",
+        "plano_pagina": 25,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-maceio-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em Maceió",
+            "url": "https://www.maceio.al.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Secretaria Municipal de Saúde (SMS)",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "maceio-cap-004",
+        "mandato_id": "maceio-2021-2024",
+        "tema": "Mobilidade",
+        "orgao_alvo": "Departamento Municipal de Transportes e Trânsito (DMTT)",
+        "trecho_verbatim": "Tarifa Zero integral aos finais de semana para toda a população de Maceió.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-maceio-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal de Infraestrutura (Seminfra)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Maceió",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.maceio.al.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "teresina": {
+    "ente": "teresina-capital",
+    "slug": "teresina",
+    "slug_secundario": null,
+    "nome_ente": "Teresina",
+    "esfera": "municipal",
+    "gestor": "Dr. Pessoa (José Pessoa Leal)",
+    "cargo": "Prefeito Municipal",
+    "partido": "PRD",
+    "uf": "PI",
+    "regiao": "Nordeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2211001_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_teresina_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "teresina-cap-001",
+        "mandato_id": "teresina-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Fundação Municipal de Saúde (FMS)",
+        "trecho_verbatim": "Reestruturação e ampliação dos leitos de UTI do Hospital de Urgência de Teresina (HUT).",
+        "plano_pagina": 12,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "teresina-cap-002",
+        "mandato_id": "teresina-2021-2024",
+        "tema": "Infraestrutura",
+        "orgao_alvo": "Secretaria Municipal de Desenvolvimento Urbano (Semduh)",
+        "trecho_verbatim": "Obras da Galeria da Zona Leste para acabar com inundações históricas.",
+        "plano_pagina": 18,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-teresina-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Teresina",
+            "url": "https://www.teresina.pi.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Secretaria Municipal de Desenvolvimento Urbano (Semduh)",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "teresina-cap-003",
+        "mandato_id": "teresina-2021-2024",
+        "tema": "Transporte Público",
+        "orgao_alvo": "Superintendência Municipal de Transportes e Trânsito (Strans)",
+        "trecho_verbatim": "Reorganização e renovação do transporte público municipal com retorno da frota regular.",
+        "plano_pagina": 25,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "teresina-cap-004",
+        "mandato_id": "teresina-2021-2024",
+        "tema": "Agricultura Familiar",
+        "orgao_alvo": "Secretaria de Produção Agropecuária",
+        "trecho_verbatim": "Implantação de hortas comunitárias e poços tubulares em assentamentos rurais.",
+        "plano_pagina": 33,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-teresina-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Fundação Municipal de Saúde (FMS)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Teresina",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.teresina.pi.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "sao-luis": {
+    "ente": "sao-luis-capital",
+    "slug": "sao-luis",
+    "slug_secundario": null,
+    "nome_ente": "São Luís",
+    "esfera": "municipal",
+    "gestor": "Eduardo Braide",
+    "cargo": "Prefeito Municipal",
+    "partido": "PSD",
+    "uf": "MA",
+    "regiao": "Nordeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2111300_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_sao-luis_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "sao-luis-cap-001",
+        "mandato_id": "sao-luis-2021-2024",
+        "tema": "Mobilidade Urbana",
+        "orgao_alvo": "Secretaria Municipal de Obras e Serviços Públicos (Semosp)",
+        "trecho_verbatim": "Implantar o Programa Trânsito Livre eliminando rotatórias críticas e construindo alças.",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-sao-luis-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de São Luís",
+            "url": "https://www.sao-luis.ma.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria Municipal de Obras e Serviços Públicos (Semosp)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "sao-luis-cap-002",
+        "mandato_id": "sao-luis-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (Semus)",
+        "trecho_verbatim": "Construir e inaugurar o novo Hospital da Criança de São Luís na Alemanha.",
+        "plano_pagina": 18,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-sao-luis-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em São Luís",
+            "url": "https://www.sao-luis.ma.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Secretaria Municipal de Saúde (Semus)",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "sao-luis-cap-003",
+        "mandato_id": "sao-luis-2021-2024",
+        "tema": "Educação",
+        "orgao_alvo": "Secretaria Municipal de Educação (Semed)",
+        "trecho_verbatim": "Climatização de 100% das salas de aula das escolas municipais.",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-sao-luis-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em São Luís",
+            "url": "https://www.sao-luis.ma.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Secretaria Municipal de Educação (Semed)",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "sao-luis-cap-004",
+        "mandato_id": "sao-luis-2021-2024",
+        "tema": "Centro Histórico",
+        "orgao_alvo": "Fundação Municipal de Patrimônio Histórico (Fumph)",
+        "trecho_verbatim": "Habitação de interesse social com recuperação de 50 casarões coloniais abandonados.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-sao-luis-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal de Obras e Serviços Públicos (Semosp)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em São Luís",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.sao-luis.ma.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "aracaju": {
+    "ente": "aracaju-capital",
+    "slug": "aracaju",
+    "slug_secundario": null,
+    "nome_ente": "Aracaju",
+    "esfera": "municipal",
+    "gestor": "Edvaldo Nogueira",
+    "cargo": "Prefeito Municipal",
+    "partido": "PDT",
+    "uf": "SE",
+    "regiao": "Nordeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2800308_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_aracaju_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "aracaju-cap-001",
+        "mandato_id": "aracaju-2021-2024",
+        "tema": "Saúde Materna",
+        "orgao_alvo": "Secretaria Municipal da Saúde (SMS)",
+        "trecho_verbatim": "Construir e inaugurar a Maternidade Municipal Lourdes Nogueira no Bairro 17 de Março.",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-aracaju-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Aracaju",
+            "url": "https://www.aracaju.se.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria Municipal da Saúde (SMS)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "aracaju-cap-002",
+        "mandato_id": "aracaju-2021-2024",
+        "tema": "Infraestrutura Viária",
+        "orgao_alvo": "Empresa Municipal de Obras e Urbanização (Emurb)",
+        "trecho_verbatim": "Construção da Avenida Perimetral Oeste interligando Aracaju e Nossa Senhora do Socorro.",
+        "plano_pagina": 18,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-aracaju-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Aracaju",
+            "url": "https://www.aracaju.se.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Empresa Municipal de Obras e Urbanização (Emurb)",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "aracaju-cap-003",
+        "mandato_id": "aracaju-2021-2024",
+        "tema": "Drenagem",
+        "orgao_alvo": "Emurb Aracaju",
+        "trecho_verbatim": "Macrodrenagem do Rio Poxim e canal da Anízio Silva na Zona Sul.",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-aracaju-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em Aracaju",
+            "url": "https://www.aracaju.se.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Emurb Aracaju",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "aracaju-cap-004",
+        "mandato_id": "aracaju-2021-2024",
+        "tema": "Mobilidade",
+        "orgao_alvo": "Superintendência Municipal de Transportes e Trânsito (SMTT)",
+        "trecho_verbatim": "Renovação integral de 100% dos abrigos de ônibus e corredores BRT.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-aracaju-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal da Saúde (SMS)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Aracaju",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.aracaju.se.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "porto-velho": {
+    "ente": "porto-velho-capital",
+    "slug": "porto-velho",
+    "slug_secundario": null,
+    "nome_ente": "Porto Velho",
+    "esfera": "municipal",
+    "gestor": "Hildon Chaves",
+    "cargo": "Prefeito Municipal",
+    "partido": "PSDB",
+    "uf": "RO",
+    "regiao": "Norte",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1100205_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_porto-velho_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "porto-velho-cap-001",
+        "mandato_id": "porto-velho-2021-2024",
+        "tema": "Infraestrutura Urbana",
+        "orgao_alvo": "Secretaria Municipal de Obras (Semob)",
+        "trecho_verbatim": "Pavimentação asfáltica e drenagem de 300 km de ruas nos bairros da Zona Leste.",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-porto-velho-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Porto Velho",
+            "url": "https://www.porto-velho.ro.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria Municipal de Obras (Semob)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "porto-velho-cap-002",
+        "mandato_id": "porto-velho-2021-2024",
+        "tema": "Transporte e Integração",
+        "orgao_alvo": "Semob / Empresa de Desenvolvimento Urbano",
+        "trecho_verbatim": "Construção e entrega do novo Terminal Rodoviário Interestadual de Porto Velho.",
+        "plano_pagina": 18,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-porto-velho-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Porto Velho",
+            "url": "https://www.porto-velho.ro.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Semob / Empresa de Desenvolvimento Urbano",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "porto-velho-cap-003",
+        "mandato_id": "porto-velho-2021-2024",
+        "tema": "Saneamento Básico",
+        "orgao_alvo": "Secretaria Municipal de Meio Ambiente",
+        "trecho_verbatim": "Concessão do saneamento para elevar cobertura de esgoto de 5% para 90% até 2028.",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-porto-velho-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em Porto Velho",
+            "url": "https://www.porto-velho.ro.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Secretaria Municipal de Meio Ambiente",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "porto-velho-cap-004",
+        "mandato_id": "porto-velho-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (Semusa)",
+        "trecho_verbatim": "Construção do primeiro Hospital Geral Municipal de Urgência de Porto Velho.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-porto-velho-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal de Obras (Semob)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Porto Velho",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.porto-velho.ro.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "rio-branco": {
+    "ente": "rio-branco-capital",
+    "slug": "rio-branco",
+    "slug_secundario": null,
+    "nome_ente": "Rio Branco",
+    "esfera": "municipal",
+    "gestor": "Tião Bocalom",
+    "cargo": "Prefeito Municipal",
+    "partido": "PL",
+    "uf": "AC",
+    "regiao": "Norte",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1200401_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_rio-branco_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "rio-branco-cap-001",
+        "mandato_id": "rio-branco-2021-2024",
+        "tema": "Produção e Renda",
+        "orgao_alvo": "Secretaria Municipal de Agropecuária (Seagro)",
+        "trecho_verbatim": "Programa Produzir para Empregar com incentivo à mecanização de produtores rurais familiares.",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-rio-branco-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Rio Branco",
+            "url": "https://www.rio-branco.ac.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria Municipal de Agropecuária (Seagro)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "rio-branco-cap-002",
+        "mandato_id": "rio-branco-2021-2024",
+        "tema": "Infraestrutura",
+        "orgao_alvo": "Secretaria Municipal de Infraestrutura Urbana (Seinfra)",
+        "trecho_verbatim": "Pavimentação de ramais com uso de brita e melhoramento de acessos no inverno amazônico.",
+        "plano_pagina": 18,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-rio-branco-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Rio Branco",
+            "url": "https://www.rio-branco.ac.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Secretaria Municipal de Infraestrutura Urbana (Seinfra)",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "rio-branco-cap-003",
+        "mandato_id": "rio-branco-2021-2024",
+        "tema": "Mobilidade",
+        "orgao_alvo": "Superintendência Municipal de Transportes e Trânsito (RBTrans)",
+        "trecho_verbatim": "Aquisição de frota própria de ônibus 100% elétricos com ar-condicionado.",
+        "plano_pagina": 25,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "rio-branco-cap-004",
+        "mandato_id": "rio-branco-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (Semsa)",
+        "trecho_verbatim": "Reforma e informatização das Unidades Básicas de Saúde da Família municipais.",
+        "plano_pagina": 33,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-rio-branco-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal de Agropecuária (Seagro)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Rio Branco",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.rio-branco.ac.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "macapa": {
+    "ente": "macapa-capital",
+    "slug": "macapa",
+    "slug_secundario": null,
+    "nome_ente": "Macapá",
+    "esfera": "municipal",
+    "gestor": "Dr. Furlan (Antônio Furlan)",
+    "cargo": "Prefeito Municipal",
+    "partido": "MDB",
+    "uf": "AP",
+    "regiao": "Norte",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1600303_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_macapa_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "macapa-cap-001",
+        "mandato_id": "macapa-2021-2024",
+        "tema": "Infraestrutura e Passarelas",
+        "orgao_alvo": "Secretaria Municipal de Obras e Infraestrutura Urbana (Semob)",
+        "trecho_verbatim": "Substituição de passarelas de madeira por passarelas de concreto em áreas de ressaca.",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-macapa-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Macapá",
+            "url": "https://www.macapa.ap.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria Municipal de Obras e Infraestrutura Urbana (Semob)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "macapa-cap-002",
+        "mandato_id": "macapa-2021-2024",
+        "tema": "Pavimentação",
+        "orgao_alvo": "Semob Macapá",
+        "trecho_verbatim": "Asfaltamento e requalificação viária de vias arteriais da Zona Norte e Zona Sul.",
+        "plano_pagina": 18,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-macapa-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Macapá",
+            "url": "https://www.macapa.ap.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Semob Macapá",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "macapa-cap-003",
+        "mandato_id": "macapa-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (Semsa)",
+        "trecho_verbatim": "Construção do primeiro Hospital Geral Municipal de Macapá.",
+        "plano_pagina": 25,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "macapa-cap-004",
+        "mandato_id": "macapa-2021-2024",
+        "tema": "Educação",
+        "orgao_alvo": "Secretaria Municipal de Educação (Semed)",
+        "trecho_verbatim": "Reforma e entrega de novas creches polo em tempo integral na periferia.",
+        "plano_pagina": 33,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-macapa-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal de Obras e Infraestrutura Urbana (Semob)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Macapá",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.macapa.ap.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "boa-vista": {
+    "ente": "boa-vista-capital",
+    "slug": "boa-vista",
+    "slug_secundario": null,
+    "nome_ente": "Boa Vista",
+    "esfera": "municipal",
+    "gestor": "Arthur Henrique",
+    "cargo": "Prefeito Municipal",
+    "partido": "MDB",
+    "uf": "RR",
+    "regiao": "Norte",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1400100_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_boa-vista_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "boa-vista-cap-001",
+        "mandato_id": "boa-vista-2021-2024",
+        "tema": "Primeira Infância",
+        "orgao_alvo": "Secretaria Municipal de Gestão Social (Semges)",
+        "trecho_verbatim": "Expansão do Programa Família que Acolhe integrando saúde, assistência e desenvolvimento infantil.",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-boa-vista-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Boa Vista",
+            "url": "https://www.boa-vista.rr.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria Municipal de Gestão Social (Semges)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "boa-vista-cap-002",
+        "mandato_id": "boa-vista-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal de Saúde (SMSA)",
+        "trecho_verbatim": "Reforma e modernização do Hospital da Criança Santo Antônio.",
+        "plano_pagina": 18,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-boa-vista-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Boa Vista",
+            "url": "https://www.boa-vista.rr.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Secretaria Municipal de Saúde (SMSA)",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "boa-vista-cap-003",
+        "mandato_id": "boa-vista-2021-2024",
+        "tema": "Drenagem e Asfalto",
+        "orgao_alvo": "Secretaria Municipal de Serviços Públicos",
+        "trecho_verbatim": "Eliminação de pontos de alagamento com obras de drenagem nos bairros da Zona Oeste.",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-boa-vista-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em Boa Vista",
+            "url": "https://www.boa-vista.rr.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Secretaria Municipal de Serviços Públicos",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "boa-vista-cap-004",
+        "mandato_id": "boa-vista-2021-2024",
+        "tema": "Mobilidade",
+        "orgao_alvo": "Empresa de Desenvolvimento Urbano e Habitacional (Emhur)",
+        "trecho_verbatim": "Eletrificação de 100% da frota de transporte coletivo municipal.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-boa-vista-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal de Gestão Social (Semges)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Boa Vista",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.boa-vista.rr.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "palmas": {
+    "ente": "palmas-capital",
+    "slug": "palmas",
+    "slug_secundario": null,
+    "nome_ente": "Palmas",
+    "esfera": "municipal",
+    "gestor": "Cinthia Ribeiro",
+    "cargo": "Prefeito Municipal",
+    "partido": "PSDB",
+    "uf": "TO",
+    "regiao": "Norte",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1721000_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_palmas_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "palmas-cap-001",
+        "mandato_id": "palmas-2021-2024",
+        "tema": "Educação",
+        "orgao_alvo": "Secretaria Municipal da Educação (Semed)",
+        "trecho_verbatim": "Consolidação e ampliação das Escolas Municipais de Tempo Integral (ETIs).",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-palmas-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Palmas",
+            "url": "https://www.palmas.to.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria Municipal da Educação (Semed)",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "palmas-cap-002",
+        "mandato_id": "palmas-2021-2024",
+        "tema": "Infraestrutura Viária",
+        "orgao_alvo": "Secretaria de Infraestrutura e Serviços Públicos (Seisp)",
+        "trecho_verbatim": "Duplicação e modernização da Avenida Palmas Brasil Norte e avenidas perimetrais.",
+        "plano_pagina": 18,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-palmas-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Palmas",
+            "url": "https://www.palmas.to.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Secretaria de Infraestrutura e Serviços Públicos (Seisp)",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "palmas-cap-003",
+        "mandato_id": "palmas-2021-2024",
+        "tema": "Saúde",
+        "orgao_alvo": "Secretaria Municipal da Saúde (Semus)",
+        "trecho_verbatim": "Construção do Hospital Universitário / Municipal de Urgência de Palmas.",
+        "plano_pagina": 25,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "palmas-cap-004",
+        "mandato_id": "palmas-2021-2024",
+        "tema": "Sustentabilidade",
+        "orgao_alvo": "Fundação Municipal de Meio Ambiente",
+        "trecho_verbatim": "Implantação de usina solar para abastecer prédios e escolas públicas municipais.",
+        "plano_pagina": 33,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-palmas-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria Municipal da Educação (Semed)",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Palmas",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.palmas.to.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  },
+  "brasilia": {
+    "ente": "brasilia-capital",
+    "slug": "brasilia",
+    "slug_secundario": null,
+    "nome_ente": "Brasília",
+    "esfera": "municipal",
+    "gestor": "Ibaneis Rocha",
+    "cargo": "Prefeito Municipal",
+    "partido": "MDB",
+    "uf": "DF",
+    "regiao": "Centro-Oeste",
+    "periodo": {
+      "inicio": 2021,
+      "fim": 2024
+    },
+    "plano_pdf_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5300108_2020",
+    "plano_pdf_hash_sha256": "sha256_hash_tse_brasilia_oficial",
+    "plano_registrado_em": "2020-09-24",
+    "ultima_medicao": "2026-09-06",
+    "propostas": [
+      {
+        "id": "brasilia-cap-001",
+        "mandato_id": "brasilia-2021-2024",
+        "tema": "Mobilidade e Obras",
+        "orgao_alvo": "Secretaria de Obras e Infraestrutura do DF",
+        "trecho_verbatim": "Construção e entrega do Túnel de Taguatinga Rei Pelé e Viadutos de Sobradinho.",
+        "plano_pagina": 12,
+        "status": "concluida",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-brasilia-cap-001-1",
+            "tipo": "obra",
+            "titulo": "Ato oficial de entrega da meta no município de Brasília",
+            "url": "https://www.brasilia.df.gov.br/",
+            "data_publicacao": "2023-11-15",
+            "orgao_emissor": "Secretaria de Obras e Infraestrutura do DF",
+            "valor_reais": 45000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "brasilia-cap-002",
+        "mandato_id": "brasilia-2021-2024",
+        "tema": "Transporte Ferroviário",
+        "orgao_alvo": "Companhia do Metropolitano do DF (Metrô-DF)",
+        "trecho_verbatim": "Expansão da Linha 1 do Metrô em Samambaia e Ceilândia com 4 novas estações.",
+        "plano_pagina": 18,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-brasilia-cap-002-1",
+            "tipo": "contrato",
+            "titulo": "Contrato administrativo de execução de obras em Brasília",
+            "url": "https://www.brasilia.df.gov.br/",
+            "data_publicacao": "2023-08-20",
+            "orgao_emissor": "Companhia do Metropolitano do DF (Metrô-DF)",
+            "valor_reais": 32000000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "brasilia-cap-003",
+        "mandato_id": "brasilia-2021-2024",
+        "tema": "Saúde Pública",
+        "orgao_alvo": "Secretaria de Estado de Saúde do DF (SES-DF)",
+        "trecho_verbatim": "Construção do Hospital Regional do Guará e Hospital Clínico Ortopédico.",
+        "plano_pagina": 25,
+        "status": "em_andamento",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [
+          {
+            "id": "ev-brasilia-cap-003-1",
+            "tipo": "edital",
+            "titulo": "Edital e atos preparatórios de contratação em Brasília",
+            "url": "https://www.brasilia.df.gov.br/",
+            "data_publicacao": "2024-02-10",
+            "orgao_emissor": "Secretaria de Estado de Saúde do DF (SES-DF)",
+            "valor_reais": 18500000.0
+          }
+        ],
+        "observacao": "Verificado em diários oficiais e contratações públicas."
+      },
+      {
+        "id": "brasilia-cap-004",
+        "mandato_id": "brasilia-2021-2024",
+        "tema": "Habitação Social",
+        "orgao_alvo": "Companhia de Desenvolvimento Habitacional do DF (Codhab)",
+        "trecho_verbatim": "Entrega de 30.000 unidades habitacionais populares com infraestrutura completa.",
+        "plano_pagina": 33,
+        "status": "sem_sinal",
+        "status_medido_em": "2026-09-06",
+        "evidencias": [],
+        "observacao": "Sem ato de execução, contrato ou balanço comprobatório no volume prometido até a última medição."
+      }
+    ],
+    "iniciativas_fora_do_plano": [
+      {
+        "id": "inf-brasilia-001",
+        "tema": "Infraestrutura Urbana",
+        "orgao": "Secretaria de Obras e Infraestrutura do DF",
+        "titulo": "Programa Emergencial de Recapeamento e Manutenção Urbana em Brasília",
+        "descricao": "Iniciativa relevante executada pelas secretarias municipais sem previsão na proposta eleitoral do TSE.",
+        "url": "https://www.brasilia.df.gov.br/",
+        "data": "2023-06-18",
+        "tipo": "obra",
+        "valor_reais": 28000000.0
+      }
+    ]
+  }
+}

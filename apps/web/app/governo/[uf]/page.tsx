@@ -20,7 +20,7 @@ export async function generateMetadata({
   params: Promise<{ uf: string }>;
 }): Promise<Metadata> {
   const { uf } = await params;
-  const mandato = obterMandato(uf);
+  const mandato = obterMandato(uf, "estadual");
   if (!mandato) {
     return {
       title: "Governo não localizado | Controle Popular",
@@ -38,7 +38,7 @@ export default async function DetalheGovernoPage({
   params: Promise<{ uf: string }>;
 }) {
   const { uf } = await params;
-  const mandato = obterMandato(uf);
+  const mandato = obterMandato(uf, "estadual");
 
   if (!mandato) {
     notFound();

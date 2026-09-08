@@ -59,10 +59,30 @@ describe("Módulo de Gestão / Prometeu? Cumpriu? (Plano v8)", () => {
     }
   });
 
+  it("garante que todas as 27 capitais brasileiras estão catalogadas com seus prefeitos e metas do TSE", () => {
+    const capitaisSlugs = [
+      "sp", "rio-de-janeiro", "bh", "salvador", "fortaleza", "curitiba",
+      "recife", "porto-alegre", "belem", "manaus", "goiania", "vitoria",
+      "florianopolis", "campo-grande", "cuiaba", "natal", "joao-pessoa",
+      "maceio", "teresina", "sao-luis", "aracaju", "porto-velho",
+      "rio-branco", "macapa", "boa-vista", "palmas", "brasilia"
+    ];
+
+    expect(capitaisSlugs.length).toBe(27);
+
+    for (const slug of capitaisSlugs) {
+      const cap = obterMandato(slug, "municipal");
+      expect(cap).not.toBeNull();
+      expect(cap?.gestor.length).toBeGreaterThan(2);
+      expect(cap?.propostas.length).toBeGreaterThanOrEqual(4);
+      expect(cap?.plano_pdf_url).toMatch(/^https?:\/\//);
+    }
+  });
+
   it("garante que toda proposta tem citação literal (verbatim) e página no PDF do TSE", () => {
     const mandatos = listarMandatos();
-    // 27 estados + 1 federal + 4 municípios = 32 mandatos
-    expect(mandatos.length).toBe(32);
+    // 27 estados + 1 federal + 27 capitais + 3 municípios piloto = 58 mandatos
+    expect(mandatos.length).toBe(58);
 
     for (const m of mandatos) {
       expect(m.plano_pdf_url).toMatch(/^https?:\/\//);
