@@ -77,6 +77,12 @@ export const PAGAMENTOS_PARAOPEBA: PagamentoParaopeba[] = [
     "valor": "R$ 133,1 mi",
     "status": "Pago",
     "observacao": "Confirmado (30/07); parcelas de R$ 202,62 a R$ 1.621. Futuro depende do STF"
+  },
+  {
+    "mes": "Setembro 2026",
+    "valor": "R$ 133,1 mi",
+    "status": "Pago",
+    "observacao": "Depósito judicial confirmado em 25/08/2026 (R$ 133.101.752,13) — fonte: Instituto Guaicuy, petição da Vale ao STF. FGV paga até o 5º dia útil"
   }
 ];
 
@@ -112,11 +118,11 @@ export const RESUMO_AUXILIO_PARAOPEBA: ResumoAuxilioParaopeba = {
   "municipiosAlcancadosDetalhe": "municípios da Bacia do Paraopeba com pessoas cadastradas",
   "statusJudicial": "Crítico — PGR contra",
   "statusJudicialDetalhe": "PGR (Gonet) opinou pela cassação em 11/07; Gilmar Mendes pode decidir a qualquer momento",
-  "proximoDeposito": "Agosto garantido",
-  "proximoDepositoDetalhe": "NAE de agosto/2026 confirmado; futuro do programa depende do STF",
-  "novoAETotal": "R$ 1,05 bi+",
-  "novoAETotalDetalhe": "depósitos acumulados do Novo AE segundo o Ibram (até maio/2026)",
-  "novoAEMeses": "7 meses",
-  "novoAEMesesDetalhe": "dezembro 2025 até junho 2026 (inclusive)",
-  "nota": "Valores baseados em decisões judiciais, manifestações da FGV e comunicados do TJMG até junho de 2026. O total histórico inclui R$ 2,4 bi em auxílio emergencial pago pela Vale (2019–2021), R$ 4,4 bi do programa de repasses (2021–2025) e os depósitos do Novo Auxílio Emergencial (dez/2025 em diante). O valor acumulado do Novo AE (R$ 789,3 mi) refere-se a: R$ 123,9 mi (dez/2025) + 5 × R$ 133,1 mi (jan–mai/2026)."
+  "proximoDeposito": "Setembro garantido",
+  "proximoDepositoDetalhe": "NAE de setembro/2026 confirmado (depósito judicial em 25/08); outubro/2026 na conta",
+  "novoAETotal": "R$ 1,18 bi+",
+  "novoAETotalDetalhe": "depósitos acumulados do Novo AE segundo o Ibram (até setembro/2026)",
+  "novoAEMeses": "10 meses",
+  "novoAEMesesDetalhe": "dezembro 2025 até setembro 2026 (inclusive)",
+  "nota": "Valores baseados em decisões judiciais, manifestações da FGV e comunicados do TJMG até setembro de 2026. O total histórico inclui R$ 2,4 bi em auxílio emergencial pago pela Vale (2019–2021), R$ 4,4 bi do programa de repasses (2021–2025) e os depósitos do Novo Auxílio Emergencial (dez/2025 em diante). O valor acumulado do Novo AE (R$ 922,4 mi) refere-se a: R$ 123,9 mi (dez/2025) + 9 × R$ 133,1 mi (jan–set/2026). Adjunto pela Vale em 25/08/2026 conforme petição ao STF (fonte: Instituto Guaicuy)."
 };
