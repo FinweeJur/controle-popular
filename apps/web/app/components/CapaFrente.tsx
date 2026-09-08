@@ -102,9 +102,16 @@ export default function CapaFrente({
             </div>
           )}
 
-          {/* MEIO: Título centralizado na página sem efeitos excessivos */}
+          {/* MEIO: Título centralizado na página — cor segue o tema (var(--cp-primary)) como o ".com.br" da navbar */}
           <div className="my-auto w-full py-4 text-center">
-            <h1 className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-5xl md:text-6xl drop-shadow-sm">
+            <h1
+              className="font-display text-3xl font-extrabold uppercase tracking-tight sm:text-5xl md:text-6xl drop-shadow-sm"
+              style={{
+                color: "var(--cp-primary)",
+                textShadow:
+                  "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 4px 12px rgba(0,0,0,0.95)",
+              }}
+            >
               {titulo}
             </h1>
           </div>

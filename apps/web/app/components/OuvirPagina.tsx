@@ -88,118 +88,71 @@ function escolherIdioma(vozes: SpeechSynthesisVoice[]): string {
 }
 
 /**
- * Botão flutuante "Ouvir esta página" -- lê o `<main>` em voz alta com
- * `window.speechSynthesis` (Web Speech API nativa, sem serviço externo
- * pago). Fica FORA do cabeçalho de zona de propósito: a barra de
- * Header.tsx/*layout.tsx já é apertada o bastante para forçar `flex-wrap`
- * em celular (ver os comentários de congresso/judiciario `layout.tsx`), e
- * um único componente global aqui cobre toda página com `<main>` --
- * inclusive `/busca` e `/funcaosocialterra`, que não usam nenhum dos
- * quatro cabeçalhos de zona e por isso nunca ganhariam o botão se ele
- * vivesse em Header.tsx.
+ * Controles flutuantes de leitura — só aparecem DURANTE leitura ativa.
+ * O botão de INICIAR foi movido para a TopNav (OuvirNavbar.tsx).
+ * Este componente permanece como controle de Pausar/Retomar/Parar flutuante
+ * para não perder o controle em páginas longas após rolar para baixo.
+ *
+ * Sincroniza com o speechSynthesis global: detecta se está falando pelo
+ * evento `voiceschanged` e polling de 500 ms.
  */
 export default function OuvirPagina() {
   const mounted = useHasMounted();
   const pathname = usePathname();
   const [estado, setEstado] = useState<Estado>("idle");
-  const [suportado, setSuportado] = useState(false);
-  const [temTexto, setTemTexto] = useState(false);
 
-  // Roda no mount E em toda troca de rota client-side (next/link não
-  // recarrega a página, então sem isto o botão continuaria "falando" o
-  // texto da página ANTERIOR depois de navegar). `cancel()` num motor
-  // parado é no-op, então é seguro chamar sempre.
+  // Ao trocar rota, cancela a leitura
   useEffect(() => {
     if (!mounted) return;
-    const ok = "speechSynthesis" in window;
-// eslint-disable-next-line react-hooks/set-state-in-effect -- leitura pos-hidratacao de window.location/sessionStorage: useSearchParams quebra o output:'export' (padrao documentado em TabelaEstatica.tsx)
-    setSuportado(ok);
-    if (!ok) return;
+    if (!("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
     setEstado("idle");
-    setTemTexto(extrairTextoPrincipal().length > 0);
   }, [mounted, pathname]);
 
-  // Sair da página (fechar aba, hot-reload) -- não deixar o áudio tocando
-  // sozinho depois que o componente já saiu da árvore.
   useEffect(() => {
     return () => {
       if ("speechSynthesis" in window) window.speechSynthesis.cancel();
     };
   }, []);
 
-  // Sem suporte do navegador ou sem texto pra ler: esconde, não quebra --
-  // pedido explícito do usuário.
-  if (!mounted || !suportado || !temTexto) return null;
+  // Polling leve para detectar estado externo (início via OuvirNavbar)
+  useEffect(() => {
+    if (!mounted || !("speechSynthesis" in window)) return;
+    const id = setInterval(() => {
+      const ss = window.speechSynthesis;
+      if (ss.speaking && !ss.paused) setEstado("falando");
+      else if (ss.paused) setEstado("pausado");
+      else setEstado("idle");
+    }, 500);
+    return () => clearInterval(id);
+  }, [mounted]);
 
-  async function iniciar() {
-    const texto = extrairTextoPrincipal();
-    if (!texto) return;
-    const vozes = await obterVozes();
-    const idioma = escolherIdioma(vozes);
-    const voz = vozes.find((v) => v.lang?.toLowerCase() === idioma.toLowerCase());
+  // Só mostra durante leitura ativa (não duplica o botão idle da navbar)
+  if (!mounted || estado === "idle") return null;
 
-    const utterance = new SpeechSynthesisUtterance(texto);
-    utterance.lang = idioma;
-    if (voz) utterance.voice = voz;
-    utterance.onend = () => setEstado("idle");
-    utterance.onerror = () => setEstado("idle");
-
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utterance);
-    setEstado("falando");
-  }
-
-  function pausar() {
-    window.speechSynthesis.pause();
-    setEstado("pausado");
-  }
-
-  function retomar() {
-    window.speechSynthesis.resume();
-    setEstado("falando");
-  }
-
-  function parar() {
-    window.speechSynthesis.cancel();
-    setEstado("idle");
-  }
+  function pausar() { window.speechSynthesis.pause(); setEstado("pausado"); }
+  function retomar() { window.speechSynthesis.resume(); setEstado("falando"); }
+  function parar() { window.speechSynthesis.cancel(); setEstado("idle"); }
 
   return (
     <div className="fixed right-5 bottom-5 z-40 flex items-center gap-2">
-      {estado === "idle" && (
-        <button
-          type="button"
-          onClick={iniciar}
-          className="cp-btn-anim flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-ink shadow-lg"
-        >
-          <span aria-hidden="true">🔊</span>
-          Ouvir esta página
-        </button>
-      )}
-      {estado !== "idle" && (
-        <>
-          <button
-            type="button"
-            onClick={estado === "falando" ? pausar : retomar}
-            aria-pressed={estado === "falando"}
-            className="cp-btn-anim flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-ink shadow-lg"
-          >
-            <span aria-hidden="true">{estado === "falando" ? "⏸" : "▶"}</span>
-            {estado === "falando" ? "Pausar" : "Retomar"}
-          </button>
-          <button
-            type="button"
-            onClick={parar}
-            aria-label="Parar leitura"
-            className="cp-btn-anim flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-text shadow-lg"
-          >
-            <span aria-hidden="true">■</span>
-          </button>
-        </>
-      )}
-      {/* Anunciado por leitor de tela mesmo se o foco não estiver nos
-          botões acima (ex.: pessoa disparou a leitura e foi ler a página). */}
+      <button
+        type="button"
+        onClick={estado === "falando" ? pausar : retomar}
+        aria-pressed={estado === "falando"}
+        className="cp-btn-anim flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-ink shadow-lg"
+      >
+        <span aria-hidden="true">{estado === "falando" ? "⏸" : "▶"}</span>
+        {estado === "falando" ? "Pausar" : "Retomar"}
+      </button>
+      <button
+        type="button"
+        onClick={parar}
+        aria-label="Parar leitura"
+        className="cp-btn-anim flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-text shadow-lg"
+      >
+        <span aria-hidden="true">■</span>
+      </button>
       <span role="status" className="sr-only">
         {estado === "falando" && "Lendo a página em voz alta."}
         {estado === "pausado" && "Leitura pausada."}

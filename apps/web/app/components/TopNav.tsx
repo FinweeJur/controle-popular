@@ -41,6 +41,7 @@ import CvdToggle from "@/app/components/CvdToggle";
 import FontSizeControl from "@/app/[municipio]/components/FontSizeControl";
 import ThemeSwitcher from "@/app/[municipio]/components/ThemeSwitcher";
 import Marquee from "@/app/components/Marquee";
+import OuvirNavbar from "@/app/components/OuvirNavbar";
 
 /**
  * Cidades atendidas pelo eixo Cidades. Lista curta e estável.
@@ -365,12 +366,12 @@ export default function TopNav() {
           </Link>
           <Link
             href="/alertas"
-            className="cp-btn-anim flex items-center gap-1 rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
+            className="cp-btn-anim flex items-center justify-center rounded-md border border-border p-2 text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
             aria-label="Central de Alertas e Notificações"
           >
-            <Bell size={13} aria-hidden="true" className="text-primary" />
-            <span className="hidden sm:inline">Alertas</span>
+            <Bell size={14} aria-hidden="true" className="text-primary" />
           </Link>
+          <OuvirNavbar />
           <Link
             href="/busca"
             className="cp-btn-anim rounded-md border border-border px-2.5 py-1 text-[.8em] font-medium text-text-soft transition-colors duration-150 hover:border-primary hover:text-primary"
