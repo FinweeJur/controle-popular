@@ -55,6 +55,8 @@ const LINKS_PORTAL = [
   // `lib/zonas.ts` e no bloco correspondente de `app/page.tsx`.
   { label: "Índice do portal", href: "/indice" },
   { label: "Notícias & Relatórios", href: "/noticias" },
+  { label: "Governos & Promessas", href: "/governo" },
+  { label: "Instituições & Secretarias", href: "/instituicoes" },
   { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
   { label: "Tecnologia & IA Livre", href: "/tecnologia" },
   { label: "Busca", href: "/busca" },

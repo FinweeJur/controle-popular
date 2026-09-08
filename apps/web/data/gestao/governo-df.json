@@ -33,7 +33,7 @@
           "url": "https://www.agenciabrasilia.df.gov.br/",
           "data_publicacao": "2023-06-05",
           "orgao_emissor": "SODF / Governo do DF",
-          "valor_reais": 275000000.00
+          "valor_reais": 275000000.0
         },
         {
           "id": "ev-df-001-2",
@@ -42,7 +42,7 @@
           "url": "https://www.metro.df.gov.br/",
           "data_publicacao": "2024-03-12",
           "orgao_emissor": "Companhia do Metropolitano do DF",
-          "valor_reais": 319000000.00
+          "valor_reais": 319000000.0
         }
       ]
     },
@@ -63,7 +63,7 @@
           "url": "https://www.novacap.df.gov.br/",
           "data_publicacao": "2023-11-20",
           "orgao_emissor": "Novacap / SES-DF",
-          "valor_reais": 204000000.00
+          "valor_reais": 204000000.0
         }
       ]
     },
@@ -110,7 +110,8 @@
       "url": "https://www.ssp.df.gov.br/",
       "data": "2023-04-10",
       "tipo": "decreto",
-      "valor_reais": 82000000.00
+      "valor_reais": 82000000.0
     }
-  ]
+  ],
+  "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/df-plano-governo.pdf"
 }

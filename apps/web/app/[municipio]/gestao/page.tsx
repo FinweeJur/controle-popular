@@ -46,7 +46,34 @@ export default async function GestaoMunicipalPage({
             <span className="rounded-full bg-primary/10 px-3 py-0.5 text-xs font-bold uppercase text-primary">
               Gestão Municipal de {cidade.nome}
             </span>
-            <div className="flex items-center gap-2 text-xs text-text-soft">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-text-soft">
+              {mandato?.plano_pdf_url && (
+                <>
+                  <a
+                    href={mandato.plano_pdf_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-primary"
+                  >
+                    Plano TSE ↗
+                  </a>
+                  <span>·</span>
+                </>
+              )}
+              {mandato?.plano_pdf_r2_url && (
+                <>
+                  <a
+                    href={mandato.plano_pdf_r2_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded bg-primary/10 px-2 py-0.5 font-medium text-primary hover:bg-primary/20"
+                    title="Espelho CDN Cloudflare R2 comprimido e rápido"
+                  >
+                    ⚡ Espelho R2 ↗
+                  </a>
+                  <span>·</span>
+                </>
+              )}
               <Link
                 href={`/${cidade.slug}/prefeitura/contratos`}
                 className="underline hover:text-primary"

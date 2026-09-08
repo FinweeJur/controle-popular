@@ -1,0 +1,2301 @@
+{
+  "gerado_em": "2026-09-07T21:30:00Z",
+  "bucket": "controle-popular-dados",
+  "base_url": "https://dados.controlepopular.com.br/planos",
+  "total_planos": 229,
+  "formato": "PDF",
+  "compactacao_distribuicao": "gzip",
+  "provedor": "Cloudflare R2 Storage",
+  "planos": [
+    {
+      "slug": "aracuai",
+      "nome_ente": "Araçuaí",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/130000845112",
+      "r2_key": "aracuai-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/aracuai-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "betim",
+      "nome_ente": "Betim",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/130000789012",
+      "r2_key": "betim-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/betim-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "bh",
+      "nome_ente": "Belo Horizonte",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/130000623910",
+      "r2_key": "bh-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/bh-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "brumadinho",
+      "nome_ente": "Brumadinho",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/130000912345",
+      "r2_key": "brumadinho-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/brumadinho-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sp",
+      "nome_ente": "São Paulo",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/250001012345",
+      "r2_key": "sp-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sp-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "rio-de-janeiro",
+      "nome_ente": "Rio de Janeiro",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/190001023456",
+      "r2_key": "rio-de-janeiro-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/rio-de-janeiro-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "salvador",
+      "nome_ente": "Salvador",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/050001034567",
+      "r2_key": "salvador-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/salvador-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "fortaleza",
+      "nome_ente": "Fortaleza",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/060001045678",
+      "r2_key": "fortaleza-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/fortaleza-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "curitiba",
+      "nome_ente": "Curitiba",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/160001056789",
+      "r2_key": "curitiba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/curitiba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "recife",
+      "nome_ente": "Recife",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/170001067890",
+      "r2_key": "recife-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/recife-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "porto-alegre",
+      "nome_ente": "Porto Alegre",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/210001078901",
+      "r2_key": "porto-alegre-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/porto-alegre-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "belem",
+      "nome_ente": "Belém",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1501402_2020",
+      "r2_key": "belem-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/belem-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "manaus",
+      "nome_ente": "Manaus",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1302603_2020",
+      "r2_key": "manaus-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/manaus-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "goiania",
+      "nome_ente": "Goiânia",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5208707_2020",
+      "r2_key": "goiania-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/goiania-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "vitoria",
+      "nome_ente": "Vitória",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3205309_2020",
+      "r2_key": "vitoria-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/vitoria-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "florianopolis",
+      "nome_ente": "Florianópolis",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4205407_2020",
+      "r2_key": "florianopolis-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/florianopolis-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "campo-grande",
+      "nome_ente": "Campo Grande",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5002704_2020",
+      "r2_key": "campo-grande-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/campo-grande-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "cuiaba",
+      "nome_ente": "Cuiabá",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5103403_2020",
+      "r2_key": "cuiaba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/cuiaba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "natal",
+      "nome_ente": "Natal",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2408102_2020",
+      "r2_key": "natal-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/natal-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "joao-pessoa",
+      "nome_ente": "João Pessoa",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2507507_2020",
+      "r2_key": "joao-pessoa-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/joao-pessoa-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "maceio",
+      "nome_ente": "Maceió",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2704302_2020",
+      "r2_key": "maceio-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/maceio-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "teresina",
+      "nome_ente": "Teresina",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2211001_2020",
+      "r2_key": "teresina-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/teresina-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sao-luis",
+      "nome_ente": "São Luís",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2111300_2020",
+      "r2_key": "sao-luis-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sao-luis-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "aracaju",
+      "nome_ente": "Aracaju",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2800308_2020",
+      "r2_key": "aracaju-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/aracaju-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "porto-velho",
+      "nome_ente": "Porto Velho",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1100205_2020",
+      "r2_key": "porto-velho-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/porto-velho-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "rio-branco",
+      "nome_ente": "Rio Branco",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1200401_2020",
+      "r2_key": "rio-branco-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/rio-branco-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "macapa",
+      "nome_ente": "Macapá",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1600303_2020",
+      "r2_key": "macapa-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/macapa-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "boa-vista",
+      "nome_ente": "Boa Vista",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1400100_2020",
+      "r2_key": "boa-vista-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/boa-vista-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "palmas",
+      "nome_ente": "Palmas",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1721000_2020",
+      "r2_key": "palmas-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/palmas-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "brasilia",
+      "nome_ente": "Brasília",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5300108_2020",
+      "r2_key": "brasilia-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/brasilia-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "cacoal",
+      "nome_ente": "Cacoal",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1100049_2020",
+      "r2_key": "cacoal-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/cacoal-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ji-parana",
+      "nome_ente": "Ji-Paraná",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1100122_2020",
+      "r2_key": "ji-parana-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ji-parana-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "vilhena",
+      "nome_ente": "Vilhena",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1100304_2020",
+      "r2_key": "vilhena-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/vilhena-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "cruzeiro-do-sul",
+      "nome_ente": "Cruzeiro do Sul",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1200203_2020",
+      "r2_key": "cruzeiro-do-sul-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/cruzeiro-do-sul-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "itacoatiara",
+      "nome_ente": "Itacoatiara",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1301902_2020",
+      "r2_key": "itacoatiara-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/itacoatiara-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "manacapuru",
+      "nome_ente": "Manacapuru",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1302504_2020",
+      "r2_key": "manacapuru-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/manacapuru-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "parintins",
+      "nome_ente": "Parintins",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1303403_2020",
+      "r2_key": "parintins-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/parintins-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "tefe",
+      "nome_ente": "Tefé",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1304203_2020",
+      "r2_key": "tefe-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/tefe-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "abaetetuba",
+      "nome_ente": "Abaetetuba",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1500107_2020",
+      "r2_key": "abaetetuba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/abaetetuba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "altamira",
+      "nome_ente": "Altamira",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1500602_2020",
+      "r2_key": "altamira-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/altamira-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ananindeua",
+      "nome_ente": "Ananindeua",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1500800_2020",
+      "r2_key": "ananindeua-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ananindeua-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "cameta",
+      "nome_ente": "Cametá",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1502103_2020",
+      "r2_key": "cameta-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/cameta-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "castanhal",
+      "nome_ente": "Castanhal",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1502400_2020",
+      "r2_key": "castanhal-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/castanhal-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "itaituba",
+      "nome_ente": "Itaituba",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1503606_2020",
+      "r2_key": "itaituba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/itaituba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "maraba",
+      "nome_ente": "Marabá",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1504208_2020",
+      "r2_key": "maraba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/maraba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "paragominas",
+      "nome_ente": "Paragominas",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1505502_2020",
+      "r2_key": "paragominas-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/paragominas-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "redencao",
+      "nome_ente": "Redenção",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1506138_2020",
+      "r2_key": "redencao-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/redencao-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "santarem",
+      "nome_ente": "Santarém",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1506807_2020",
+      "r2_key": "santarem-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/santarem-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "tucurui",
+      "nome_ente": "Tucuruí",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1508100_2020",
+      "r2_key": "tucurui-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/tucurui-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "santana",
+      "nome_ente": "Santana",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1600600_2020",
+      "r2_key": "santana-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/santana-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "araguaina",
+      "nome_ente": "Araguaína",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1702109_2020",
+      "r2_key": "araguaina-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/araguaina-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "gurupi",
+      "nome_ente": "Gurupi",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_1709500_2020",
+      "r2_key": "gurupi-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/gurupi-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "imperatriz",
+      "nome_ente": "Imperatriz",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2105302_2020",
+      "r2_key": "imperatriz-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/imperatriz-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "floriano",
+      "nome_ente": "Floriano",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2203909_2020",
+      "r2_key": "floriano-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/floriano-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "parnaiba",
+      "nome_ente": "Parnaíba",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2207702_2020",
+      "r2_key": "parnaiba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/parnaiba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "picos",
+      "nome_ente": "Picos",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2208007_2020",
+      "r2_key": "picos-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/picos-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "crateus",
+      "nome_ente": "Crateús",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2304103_2020",
+      "r2_key": "crateus-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/crateus-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "crato",
+      "nome_ente": "Crato",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2304202_2020",
+      "r2_key": "crato-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/crato-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "iguatu",
+      "nome_ente": "Iguatu",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2305506_2020",
+      "r2_key": "iguatu-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/iguatu-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "juazeiro-do-norte",
+      "nome_ente": "Juazeiro do Norte",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2307304_2020",
+      "r2_key": "juazeiro-do-norte-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/juazeiro-do-norte-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "quixada",
+      "nome_ente": "Quixadá",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2311306_2020",
+      "r2_key": "quixada-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/quixada-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sobral",
+      "nome_ente": "Sobral",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2312908_2020",
+      "r2_key": "sobral-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sobral-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "caico",
+      "nome_ente": "Caicó",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2402006_2020",
+      "r2_key": "caico-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/caico-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ceara-mirim",
+      "nome_ente": "Ceará-Mirim",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2402600_2020",
+      "r2_key": "ceara-mirim-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ceara-mirim-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "currais-novos",
+      "nome_ente": "Currais Novos",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2403103_2020",
+      "r2_key": "currais-novos-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/currais-novos-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "macaiba",
+      "nome_ente": "Macaíba",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2407104_2020",
+      "r2_key": "macaiba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/macaiba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "mossoro",
+      "nome_ente": "Mossoró",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2408003_2020",
+      "r2_key": "mossoro-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/mossoro-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "pau-dos-ferros",
+      "nome_ente": "Pau dos Ferros",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2409407_2020",
+      "r2_key": "pau-dos-ferros-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/pau-dos-ferros-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "cajazeiras",
+      "nome_ente": "Cajazeiras",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2503704_2020",
+      "r2_key": "cajazeiras-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/cajazeiras-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "campina-grande",
+      "nome_ente": "Campina Grande",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2504009_2020",
+      "r2_key": "campina-grande-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/campina-grande-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "guarabira",
+      "nome_ente": "Guarabira",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2506301_2020",
+      "r2_key": "guarabira-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/guarabira-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "patos",
+      "nome_ente": "Patos",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2510808_2020",
+      "r2_key": "patos-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/patos-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sousa",
+      "nome_ente": "Sousa",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2516201_2020",
+      "r2_key": "sousa-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sousa-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "araripina",
+      "nome_ente": "Araripina",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2601102_2020",
+      "r2_key": "araripina-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/araripina-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "caruaru",
+      "nome_ente": "Caruaru",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2604106_2020",
+      "r2_key": "caruaru-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/caruaru-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "garanhuns",
+      "nome_ente": "Garanhuns",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2606002_2020",
+      "r2_key": "garanhuns-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/garanhuns-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ouricuri",
+      "nome_ente": "Ouricuri",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2609907_2020",
+      "r2_key": "ouricuri-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ouricuri-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "pesqueira",
+      "nome_ente": "Pesqueira",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2610905_2020",
+      "r2_key": "pesqueira-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/pesqueira-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "petrolina",
+      "nome_ente": "Petrolina",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2611101_2020",
+      "r2_key": "petrolina-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/petrolina-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "serra-talhada",
+      "nome_ente": "Serra Talhada",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2613909_2020",
+      "r2_key": "serra-talhada-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/serra-talhada-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "vitoria-de-santo-antao",
+      "nome_ente": "Vitória de Santo Antão",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2616407_2020",
+      "r2_key": "vitoria-de-santo-antao-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/vitoria-de-santo-antao-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "arapiraca",
+      "nome_ente": "Arapiraca",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2700300_2020",
+      "r2_key": "arapiraca-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/arapiraca-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "coruripe",
+      "nome_ente": "Coruripe",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2702306_2020",
+      "r2_key": "coruripe-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/coruripe-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "palmeira-dos-indios",
+      "nome_ente": "Palmeira dos Índios",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2706307_2020",
+      "r2_key": "palmeira-dos-indios-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/palmeira-dos-indios-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "uniao-dos-palmares",
+      "nome_ente": "União dos Palmares",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2709301_2020",
+      "r2_key": "uniao-dos-palmares-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/uniao-dos-palmares-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "itabaiana",
+      "nome_ente": "Itabaiana",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2802908_2020",
+      "r2_key": "itabaiana-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/itabaiana-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "alagoinhas",
+      "nome_ente": "Alagoinhas",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2900702_2020",
+      "r2_key": "alagoinhas-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/alagoinhas-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "barreiras",
+      "nome_ente": "Barreiras",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2903201_2020",
+      "r2_key": "barreiras-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/barreiras-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "camacari",
+      "nome_ente": "Camaçari",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2905701_2020",
+      "r2_key": "camacari-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/camacari-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "feira-de-santana",
+      "nome_ente": "Feira de Santana",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2910800_2020",
+      "r2_key": "feira-de-santana-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/feira-de-santana-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ilheus",
+      "nome_ente": "Ilhéus",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2913606_2020",
+      "r2_key": "ilheus-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ilheus-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "itabuna",
+      "nome_ente": "Itabuna",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2914802_2020",
+      "r2_key": "itabuna-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/itabuna-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "jequie",
+      "nome_ente": "Jequié",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2918001_2020",
+      "r2_key": "jequie-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/jequie-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "juazeiro",
+      "nome_ente": "Juazeiro",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2918407_2020",
+      "r2_key": "juazeiro-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/juazeiro-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "lauro-de-freitas",
+      "nome_ente": "Lauro de Freitas",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2919207_2020",
+      "r2_key": "lauro-de-freitas-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/lauro-de-freitas-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "paulo-afonso",
+      "nome_ente": "Paulo Afonso",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2924009_2020",
+      "r2_key": "paulo-afonso-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/paulo-afonso-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "vitoria-da-conquista",
+      "nome_ente": "Vitória da Conquista",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_2933307_2020",
+      "r2_key": "vitoria-da-conquista-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/vitoria-da-conquista-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "araxa",
+      "nome_ente": "Araxá",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3104007_2020",
+      "r2_key": "araxa-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/araxa-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "barbacena",
+      "nome_ente": "Barbacena",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3105608_2020",
+      "r2_key": "barbacena-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/barbacena-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "contagem",
+      "nome_ente": "Contagem",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3118601_2020",
+      "r2_key": "contagem-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/contagem-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "divinopolis",
+      "nome_ente": "Divinópolis",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3122306_2020",
+      "r2_key": "divinopolis-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/divinopolis-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "governador-valadares",
+      "nome_ente": "Governador Valadares",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3127701_2020",
+      "r2_key": "governador-valadares-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/governador-valadares-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ipatinga",
+      "nome_ente": "Ipatinga",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3131307_2020",
+      "r2_key": "ipatinga-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ipatinga-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "juiz-de-fora",
+      "nome_ente": "Juiz de Fora",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3136702_2020",
+      "r2_key": "juiz-de-fora-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/juiz-de-fora-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "montes-claros",
+      "nome_ente": "Montes Claros",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3143302_2020",
+      "r2_key": "montes-claros-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/montes-claros-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "passos",
+      "nome_ente": "Passos",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3147907_2020",
+      "r2_key": "passos-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/passos-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "patos-de-minas",
+      "nome_ente": "Patos de Minas",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3148004_2020",
+      "r2_key": "patos-de-minas-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/patos-de-minas-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "pocos-de-caldas",
+      "nome_ente": "Poços de Caldas",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3151800_2020",
+      "r2_key": "pocos-de-caldas-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/pocos-de-caldas-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "pouso-alegre",
+      "nome_ente": "Pouso Alegre",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3152501_2020",
+      "r2_key": "pouso-alegre-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/pouso-alegre-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sete-lagoas",
+      "nome_ente": "Sete Lagoas",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3167202_2020",
+      "r2_key": "sete-lagoas-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sete-lagoas-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "teofilo-otoni",
+      "nome_ente": "Teófilo Otoni",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3168606_2020",
+      "r2_key": "teofilo-otoni-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/teofilo-otoni-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "uberaba",
+      "nome_ente": "Uberaba",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3170107_2020",
+      "r2_key": "uberaba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/uberaba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "uberlandia",
+      "nome_ente": "Uberlândia",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3170206_2020",
+      "r2_key": "uberlandia-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/uberlandia-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "varginha",
+      "nome_ente": "Varginha",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3170701_2020",
+      "r2_key": "varginha-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/varginha-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "linhares",
+      "nome_ente": "Linhares",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3203205_2020",
+      "r2_key": "linhares-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/linhares-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "serra",
+      "nome_ente": "Serra",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3205002_2020",
+      "r2_key": "serra-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/serra-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "campos-dos-goytacazes",
+      "nome_ente": "Campos dos Goytacazes",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3301009_2020",
+      "r2_key": "campos-dos-goytacazes-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/campos-dos-goytacazes-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "duque-de-caxias",
+      "nome_ente": "Duque de Caxias",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3301702_2020",
+      "r2_key": "duque-de-caxias-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/duque-de-caxias-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "macae",
+      "nome_ente": "Macaé",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3302403_2020",
+      "r2_key": "macae-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/macae-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "niteroi",
+      "nome_ente": "Niterói",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3303302_2020",
+      "r2_key": "niteroi-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/niteroi-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "nova-friburgo",
+      "nome_ente": "Nova Friburgo",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3303401_2020",
+      "r2_key": "nova-friburgo-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/nova-friburgo-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "petropolis",
+      "nome_ente": "Petrópolis",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3303906_2020",
+      "r2_key": "petropolis-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/petropolis-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sao-goncalo",
+      "nome_ente": "São Gonçalo",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3304904_2020",
+      "r2_key": "sao-goncalo-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sao-goncalo-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "volta-redonda",
+      "nome_ente": "Volta Redonda",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3306305_2020",
+      "r2_key": "volta-redonda-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/volta-redonda-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "araraquara",
+      "nome_ente": "Araraquara",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3503208_2020",
+      "r2_key": "araraquara-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/araraquara-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "bauru",
+      "nome_ente": "Bauru",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3506003_2020",
+      "r2_key": "bauru-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/bauru-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "campinas",
+      "nome_ente": "Campinas",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3509502_2020",
+      "r2_key": "campinas-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/campinas-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "carapicuiba",
+      "nome_ente": "Carapicuíba",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3510609_2020",
+      "r2_key": "carapicuiba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/carapicuiba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "diadema",
+      "nome_ente": "Diadema",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3513801_2020",
+      "r2_key": "diadema-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/diadema-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "franca",
+      "nome_ente": "Franca",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3516200_2020",
+      "r2_key": "franca-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/franca-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "guarulhos",
+      "nome_ente": "Guarulhos",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3518800_2020",
+      "r2_key": "guarulhos-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/guarulhos-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "jundiai",
+      "nome_ente": "Jundiaí",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3525904_2020",
+      "r2_key": "jundiai-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/jundiai-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "limeira",
+      "nome_ente": "Limeira",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3526902_2020",
+      "r2_key": "limeira-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/limeira-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "marilia",
+      "nome_ente": "Marília",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3529005_2020",
+      "r2_key": "marilia-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/marilia-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "maua",
+      "nome_ente": "Mauá",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3529401_2020",
+      "r2_key": "maua-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/maua-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "osasco",
+      "nome_ente": "Osasco",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3534401_2020",
+      "r2_key": "osasco-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/osasco-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "piracicaba",
+      "nome_ente": "Piracicaba",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3538709_2020",
+      "r2_key": "piracicaba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/piracicaba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "presidente-prudente",
+      "nome_ente": "Presidente Prudente",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3541406_2020",
+      "r2_key": "presidente-prudente-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/presidente-prudente-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ribeirao-preto",
+      "nome_ente": "Ribeirão Preto",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3543402_2020",
+      "r2_key": "ribeirao-preto-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ribeirao-preto-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "santo-andre",
+      "nome_ente": "Santo André",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3547809_2020",
+      "r2_key": "santo-andre-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/santo-andre-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "santos",
+      "nome_ente": "Santos",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3548500_2020",
+      "r2_key": "santos-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/santos-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sao-bernardo-do-campo",
+      "nome_ente": "São Bernardo do Campo",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3548708_2020",
+      "r2_key": "sao-bernardo-do-campo-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sao-bernardo-do-campo-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sao-caetano-do-sul",
+      "nome_ente": "São Caetano do Sul",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3548807_2020",
+      "r2_key": "sao-caetano-do-sul-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sao-caetano-do-sul-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sao-jose-do-rio-preto",
+      "nome_ente": "São José do Rio Preto",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3549805_2020",
+      "r2_key": "sao-jose-do-rio-preto-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sao-jose-do-rio-preto-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sao-jose-dos-campos",
+      "nome_ente": "São José dos Campos",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3549904_2020",
+      "r2_key": "sao-jose-dos-campos-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sao-jose-dos-campos-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sorocaba",
+      "nome_ente": "Sorocaba",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3552205_2020",
+      "r2_key": "sorocaba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sorocaba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "taubate",
+      "nome_ente": "Taubaté",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_3554102_2020",
+      "r2_key": "taubate-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/taubate-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "apucarana",
+      "nome_ente": "Apucarana",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4101408_2020",
+      "r2_key": "apucarana-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/apucarana-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "araucaria",
+      "nome_ente": "Araucária",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4101804_2020",
+      "r2_key": "araucaria-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/araucaria-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "campo-mourao",
+      "nome_ente": "Campo Mourão",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4104303_2020",
+      "r2_key": "campo-mourao-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/campo-mourao-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "cascavel",
+      "nome_ente": "Cascavel",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4104808_2020",
+      "r2_key": "cascavel-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/cascavel-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "foz-do-iguacu",
+      "nome_ente": "Foz do Iguaçu",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4108304_2020",
+      "r2_key": "foz-do-iguacu-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/foz-do-iguacu-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "guarapuava",
+      "nome_ente": "Guarapuava",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4109401_2020",
+      "r2_key": "guarapuava-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/guarapuava-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "londrina",
+      "nome_ente": "Londrina",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4113700_2020",
+      "r2_key": "londrina-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/londrina-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "maringa",
+      "nome_ente": "Maringá",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4115200_2020",
+      "r2_key": "maringa-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/maringa-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "paranavai",
+      "nome_ente": "Paranavaí",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4118402_2020",
+      "r2_key": "paranavai-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/paranavai-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ponta-grossa",
+      "nome_ente": "Ponta Grossa",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4119905_2020",
+      "r2_key": "ponta-grossa-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ponta-grossa-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sao-jose-dos-pinhais",
+      "nome_ente": "São José dos Pinhais",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4125506_2020",
+      "r2_key": "sao-jose-dos-pinhais-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sao-jose-dos-pinhais-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "toledo",
+      "nome_ente": "Toledo",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4127700_2020",
+      "r2_key": "toledo-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/toledo-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "umuarama",
+      "nome_ente": "Umuarama",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4128104_2020",
+      "r2_key": "umuarama-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/umuarama-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "balneario-camboriu",
+      "nome_ente": "Balneário Camboriú",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4202008_2020",
+      "r2_key": "balneario-camboriu-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/balneario-camboriu-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "blumenau",
+      "nome_ente": "Blumenau",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4202404_2020",
+      "r2_key": "blumenau-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/blumenau-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "brusque",
+      "nome_ente": "Brusque",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4202909_2020",
+      "r2_key": "brusque-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/brusque-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "chapeco",
+      "nome_ente": "Chapecó",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4204202_2020",
+      "r2_key": "chapeco-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/chapeco-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "criciuma",
+      "nome_ente": "Criciúma",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4204608_2020",
+      "r2_key": "criciuma-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/criciuma-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "itajai",
+      "nome_ente": "Itajaí",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4208203_2020",
+      "r2_key": "itajai-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/itajai-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "jaragua-do-sul",
+      "nome_ente": "Jaraguá do Sul",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4208906_2020",
+      "r2_key": "jaragua-do-sul-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/jaragua-do-sul-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "joinville",
+      "nome_ente": "Joinville",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4209102_2020",
+      "r2_key": "joinville-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/joinville-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "lages",
+      "nome_ente": "Lages",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4209300_2020",
+      "r2_key": "lages-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/lages-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "palhoca",
+      "nome_ente": "Palhoça",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4211900_2020",
+      "r2_key": "palhoca-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/palhoca-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sao-jose",
+      "nome_ente": "São José",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4216602_2020",
+      "r2_key": "sao-jose-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sao-jose-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "tubarao",
+      "nome_ente": "Tubarão",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4218707_2020",
+      "r2_key": "tubarao-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/tubarao-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "canoas",
+      "nome_ente": "Canoas",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4304606_2020",
+      "r2_key": "canoas-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/canoas-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "caxias-do-sul",
+      "nome_ente": "Caxias do Sul",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4305108_2020",
+      "r2_key": "caxias-do-sul-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/caxias-do-sul-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "erechim",
+      "nome_ente": "Erechim",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4307005_2020",
+      "r2_key": "erechim-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/erechim-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "novo-hamburgo",
+      "nome_ente": "Novo Hamburgo",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4313409_2020",
+      "r2_key": "novo-hamburgo-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/novo-hamburgo-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "passo-fundo",
+      "nome_ente": "Passo Fundo",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4314100_2020",
+      "r2_key": "passo-fundo-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/passo-fundo-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "pelotas",
+      "nome_ente": "Pelotas",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4314407_2020",
+      "r2_key": "pelotas-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/pelotas-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "rio-grande",
+      "nome_ente": "Rio Grande",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4315602_2020",
+      "r2_key": "rio-grande-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/rio-grande-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "santa-cruz-do-sul",
+      "nome_ente": "Santa Cruz do Sul",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4316808_2020",
+      "r2_key": "santa-cruz-do-sul-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/santa-cruz-do-sul-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "santa-maria",
+      "nome_ente": "Santa Maria",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4316907_2020",
+      "r2_key": "santa-maria-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/santa-maria-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sao-leopoldo",
+      "nome_ente": "São Leopoldo",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_4318705_2020",
+      "r2_key": "sao-leopoldo-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sao-leopoldo-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "corumba",
+      "nome_ente": "Corumbá",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5003207_2020",
+      "r2_key": "corumba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/corumba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "dourados",
+      "nome_ente": "Dourados",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5003702_2020",
+      "r2_key": "dourados-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/dourados-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "tres-lagoas",
+      "nome_ente": "Três Lagoas",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5008305_2020",
+      "r2_key": "tres-lagoas-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/tres-lagoas-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "caceres",
+      "nome_ente": "Cáceres",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5102504_2020",
+      "r2_key": "caceres-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/caceres-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "lucas-do-rio-verde",
+      "nome_ente": "Lucas do Rio Verde",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5105259_2020",
+      "r2_key": "lucas-do-rio-verde-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/lucas-do-rio-verde-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "rondonopolis",
+      "nome_ente": "Rondonópolis",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5107602_2020",
+      "r2_key": "rondonopolis-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/rondonopolis-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sinop",
+      "nome_ente": "Sinop",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5107909_2020",
+      "r2_key": "sinop-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sinop-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "tangara-da-serra",
+      "nome_ente": "Tangará da Serra",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5107958_2020",
+      "r2_key": "tangara-da-serra-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/tangara-da-serra-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "varzea-grande",
+      "nome_ente": "Várzea Grande",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5108402_2020",
+      "r2_key": "varzea-grande-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/varzea-grande-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "aguas-lindas-de-goias",
+      "nome_ente": "Águas Lindas de Goiás",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5200258_2020",
+      "r2_key": "aguas-lindas-de-goias-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/aguas-lindas-de-goias-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "anapolis",
+      "nome_ente": "Anápolis",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5201108_2020",
+      "r2_key": "anapolis-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/anapolis-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "aparecida-de-goiania",
+      "nome_ente": "Aparecida de Goiânia",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5201405_2020",
+      "r2_key": "aparecida-de-goiania-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/aparecida-de-goiania-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "catalao",
+      "nome_ente": "Catalão",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5205109_2020",
+      "r2_key": "catalao-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/catalao-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "formosa",
+      "nome_ente": "Formosa",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5208004_2020",
+      "r2_key": "formosa-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/formosa-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "itumbiara",
+      "nome_ente": "Itumbiara",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5211503_2020",
+      "r2_key": "itumbiara-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/itumbiara-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "jatai",
+      "nome_ente": "Jataí",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5211909_2020",
+      "r2_key": "jatai-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/jatai-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "luziania",
+      "nome_ente": "Luziânia",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5212501_2020",
+      "r2_key": "luziania-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/luziania-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "mineiros",
+      "nome_ente": "Mineiros",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5213103_2020",
+      "r2_key": "mineiros-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/mineiros-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "rio-verde",
+      "nome_ente": "Rio Verde",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5218805_2020",
+      "r2_key": "rio-verde-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/rio-verde-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "valparaiso-de-goias",
+      "nome_ente": "Valparaíso de Goiás",
+      "esfera": "municipal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/tse_5221858_2020",
+      "r2_key": "valparaiso-de-goias-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/valparaiso-de-goias-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ac",
+      "nome_ente": "Acre",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-ac-2022",
+      "r2_key": "ac-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ac-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "al",
+      "nome_ente": "Alagoas",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-al-2022",
+      "r2_key": "al-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/al-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "am",
+      "nome_ente": "Amazonas",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-am-2022",
+      "r2_key": "am-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/am-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ap",
+      "nome_ente": "Amapá",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-ap-2022",
+      "r2_key": "ap-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ap-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ba",
+      "nome_ente": "Bahia",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/050001601999",
+      "r2_key": "ba-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ba-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ce",
+      "nome_ente": "Ceará",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/060001606544",
+      "r2_key": "ce-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ce-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "df",
+      "nome_ente": "Distrito Federal",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/070001604499",
+      "r2_key": "df-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/df-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "es",
+      "nome_ente": "Espírito Santo",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/080001608930",
+      "r2_key": "es-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/es-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "go",
+      "nome_ente": "Goiás",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-go-2022",
+      "r2_key": "go-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/go-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ma",
+      "nome_ente": "Maranhão",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-ma-2022",
+      "r2_key": "ma-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ma-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "mg",
+      "nome_ente": "Minas Gerais",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/130001602410",
+      "r2_key": "mg-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/mg-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ms",
+      "nome_ente": "Mato Grosso do Sul",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-ms-2022",
+      "r2_key": "ms-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ms-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "mt",
+      "nome_ente": "Mato Grosso",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-mt-2022",
+      "r2_key": "mt-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/mt-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "pa",
+      "nome_ente": "Pará",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/140001605512",
+      "r2_key": "pa-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/pa-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "pb",
+      "nome_ente": "Paraíba",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-pb-2022",
+      "r2_key": "pb-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/pb-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "pe",
+      "nome_ente": "Pernambuco",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/170001602233",
+      "r2_key": "pe-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/pe-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "pi",
+      "nome_ente": "Piauí",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-pi-2022",
+      "r2_key": "pi-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/pi-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "pr",
+      "nome_ente": "Paraná",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/160001609988",
+      "r2_key": "pr-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/pr-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "rj",
+      "nome_ente": "Rio de Janeiro",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/190001601245",
+      "r2_key": "rj-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/rj-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "rn",
+      "nome_ente": "Rio Grande do Norte",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-rn-2022",
+      "r2_key": "rn-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/rn-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "ro",
+      "nome_ente": "Rondônia",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-ro-2022",
+      "r2_key": "ro-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/ro-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "rr",
+      "nome_ente": "Roraima",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-rr-2022",
+      "r2_key": "rr-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/rr-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "rs",
+      "nome_ente": "Rio Grande do Sul",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/210001608833",
+      "r2_key": "rs-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/rs-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "sc",
+      "nome_ente": "Santa Catarina",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/240001607711",
+      "r2_key": "sc-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/sc-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "se",
+      "nome_ente": "Sergipe",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-se-2022",
+      "r2_key": "se-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/se-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "to",
+      "nome_ente": "Tocantins",
+      "esfera": "estadual",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/plano-to-2022",
+      "r2_key": "to-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/to-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    },
+    {
+      "slug": "uniao",
+      "nome_ente": "Governo Federal (União)",
+      "esfera": "federal",
+      "tse_url": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/doc/280001607822",
+      "r2_key": "uniao-plano-governo.pdf",
+      "r2_url": "https://dados.controlepopular.com.br/planos/uniao-plano-governo.pdf",
+      "compactacao": "gzip",
+      "status_espelho": "disponivel"
+    }
+  ]
+}

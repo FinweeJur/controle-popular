@@ -32,7 +32,7 @@
           "url": "https://prefeitura.pbh.gov.br/obras",
           "data_publicacao": "2023-12-10",
           "orgao_emissor": "Sudecap / SMOBI",
-          "valor_reais": 140000000.00
+          "valor_reais": 140000000.0
         }
       ]
     },
@@ -53,7 +53,7 @@
           "url": "https://dom-web.pbh.gov.br/",
           "data_publicacao": "2023-07-06",
           "orgao_emissor": "Câmara Municipal de Belo Horizonte / PBH",
-          "valor_reais": 512000000.00
+          "valor_reais": 512000000.0
         }
       ]
     },
@@ -74,7 +74,7 @@
           "url": "https://prefeitura.pbh.gov.br/saude",
           "data_publicacao": "2024-03-20",
           "orgao_emissor": "SMSA / PBH",
-          "valor_reais": 215000000.00
+          "valor_reais": 215000000.0
         }
       ]
     },
@@ -101,7 +101,8 @@
       "url": "https://prefeitura.pbh.gov.br/planejamento",
       "data": "2023-05-15",
       "tipo": "obra",
-      "valor_reais": 85000000.00
+      "valor_reais": 85000000.0
     }
-  ]
+  ],
+  "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/bh-plano-governo.pdf"
 }

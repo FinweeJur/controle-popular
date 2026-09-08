@@ -82,6 +82,7 @@ export interface MandatoGestao {
     fim: number;
   };
   plano_pdf_url: string;
+  plano_pdf_r2_url?: string; // Espelho arquivado e comprimido no Cloudflare R2
   plano_pdf_hash_sha256?: string;
   plano_registrado_em: string;
   ultima_medicao: string;

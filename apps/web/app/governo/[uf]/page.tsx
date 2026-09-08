@@ -72,7 +72,7 @@ export default async function DetalheGovernoPage({
               </span>
             </div>
 
-            <div className="flex items-center gap-2 text-xs text-text-soft">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-text-soft">
               <span>Registro TSE:</span>
               <a
                 href={mandato.plano_pdf_url}
@@ -82,6 +82,20 @@ export default async function DetalheGovernoPage({
               >
                 PDF Original ↗
               </a>
+              {mandato.plano_pdf_r2_url && (
+                <>
+                  <span>·</span>
+                  <a
+                    href={mandato.plano_pdf_r2_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 rounded bg-primary/10 px-2 py-0.5 font-medium text-primary hover:bg-primary/20"
+                    title="Espelho CDN Cloudflare R2 comprimido e rápido"
+                  >
+                    ⚡ Espelho R2 Comprimido ↗
+                  </a>
+                </>
+              )}
               {mandato.plano_pdf_hash_sha256 && (
                 <span
                   className="font-mono text-[10px] text-text-soft"

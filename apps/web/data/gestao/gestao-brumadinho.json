@@ -32,7 +32,7 @@
           "url": "https://www.brumadinho.mg.gov.br/",
           "data_publicacao": "2023-03-10",
           "orgao_emissor": "Prefeitura de Brumadinho / Pro-Brumadinho",
-          "valor_reais": 16500000.00
+          "valor_reais": 16500000.0
         }
       ]
     },
@@ -53,7 +53,7 @@
           "url": "https://dados.mg.gov.br/dataset/despesa",
           "data_publicacao": "2023-08-25",
           "orgao_emissor": "Secretaria de Obras / Copasa",
-          "valor_reais": 28400000.00
+          "valor_reais": 28400000.0
         }
       ]
     },
@@ -100,7 +100,8 @@
       "url": "https://www.brumadinho.mg.gov.br/",
       "data": "2022-09-15",
       "tipo": "obra",
-      "valor_reais": 450000000.00
+      "valor_reais": 450000000.0
     }
-  ]
+  ],
+  "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/brumadinho-plano-governo.pdf"
 }

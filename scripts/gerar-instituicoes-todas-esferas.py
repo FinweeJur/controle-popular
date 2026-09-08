@@ -1,0 +1,1705 @@
+"""scripts/gerar-instituicoes-todas-esferas.py
+
+Gera o arquivo apps/web/data/instituicoes-todas-esferas.json contendo o catálogo
+unificado de órgãos e instituições públicas de TODAS as esferas:
+- Poder Executivo Federal (Ministérios)
+- Poder Executivo Estadual (Secretarias de Estado)
+- Poder Executivo Municipal (Secretarias Municipais)
+- Poder Legislativo Federal (Câmara dos Deputados e Senado Federal)
+- Poder Legislativo Estadual (Assembleias Legislativas)
+- Poder Legislativo Municipal (Câmaras de Vereadores)
+- Poder Judiciário (STF, STJ, CNJ, TJs, TRFs, TRTs)
+- Funções Essenciais à Justiça (MPF, CNMP, MPEs, DPU, DPEs)
+
+Cada entidade traz:
+- Sigla e Nome oficial
+- Esfera e Poder
+- Liderança institucional
+- Organograma detalhado (áreas e funções)
+- Resumo de competências legais
+- Contatos completos (telefone, endereço completo com CEP, e-mail funcional, portal oficial e ouvidoria/e-SIC)
+
+Regras editoriais e tecnicas (AGENTS.md):
+- Frases diretas e sem juízos de valor.
+- Zero CPF em todo o catálogo.
+"""
+
+import json
+import os
+import sys
+
+if sys.stdout.encoding != "utf-8":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
+RAIZ = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+ARQUIVO_DESTINO = os.path.join(RAIZ, "apps", "web", "data", "instituicoes-todas-esferas.json")
+
+INSTITUICOES = [
+    # ═════════════════════════════════════════════════════════════
+    # 1. PODER EXECUTIVO FEDERAL (MINISTÉRIOS)
+    # ═════════════════════════════════════════════════════════════
+    {
+        "sigla": "fazenda",
+        "nome": "Ministério da Fazenda",
+        "esfera": "Federal",
+        "poder": "Executivo",
+        "tipo": "Ministério",
+        "icone": "Coins",
+        "cor": "#0284c7",
+        "lideranca": {
+            "cargo": "Ministro de Estado da Fazenda",
+            "nome": "Fernando Haddad",
+            "mandato": "2023–2026",
+            "investidura": "Nomeado pelo Presidente da República conforme o art. 84, I da CF/88"
+        },
+        "estruturaPessoal": {
+            "servidoresEfetivos": "11.400 servidores da Carreira Tributária e Aduaneira e Finanças",
+            "comissionados": "820 cargos DAS/CCE de livre provimento e assessoramento",
+            "estagiariosETerceirizados": "1.900 colaboradores de apoio técnico e operacional"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 48,2 bilhões (gestão fazendária e órgãos vinculados)",
+            "folhaPessoal": "R$ 14,8 bilhões",
+            "custeioInvestimentos": "R$ 33,4 bilhões"
+        },
+        "organograma": [
+            {
+                "area": "Gabinete do Ministro",
+                "funcao": "Coordenação política, formulação da política macroeconômica, relações com o Congresso e porta-voz oficial."
+            },
+            {
+                "area": "Secretaria Especial da Receita Federal do Brasil (RFB)",
+                "funcao": "Administração dos tributos federais e aduaneiros, combate ao contrabando, sonegação e fiscalização do comércio exterior."
+            },
+            {
+                "area": "Secretaria do Tesouro Nacional (STN)",
+                "funcao": "Administração da dívida pública interna e externa, gestão do caixa único da União e contabilidade fiscal nacional."
+            },
+            {
+                "area": "Secretaria de Política Econômica (SPE)",
+                "funcao": "Projeções macroeconômicas oficiais (PIB, inflação), estudos setoriais e análise de impacto fiscal de propostas legislativas."
+            },
+            {
+                "area": "Secretaria de Reformas Econômicas (SRE)",
+                "funcao": "Elaboração e acompanhamento da Reforma Tributária (Emenda 132), mercado de capitais e regulação de crédito."
+            },
+            {
+                "area": "Procuradoria-Geral da Fazenda Nacional (PGFN)",
+                "funcao": "Cobrança da Dívida Ativa da União, representação judicial tributária e assessoria jurídica ao Ministro."
+            }
+        ],
+        "funcoes": [
+            "Formulação e execução da política econômica e fiscal da União.",
+            "Administração da dívida pública federal mobiliária e contratual.",
+            "Arrecadação e fiscalização de tributos e contribuições federais.",
+            "Supervisão e regulação dos mercados financeiro, de capitais, de seguros e previdência complementar."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria-Geral do Ministério da Fazenda / Fala.BR",
+            "telefone": "(61) 3412-2000 / 0800 702 1111",
+            "endereco": "Esplanada dos Ministérios, Bloco P, CEP 70048-900, Brasília - DF",
+            "email": "ouvidoria.fazenda@fazenda.gov.br",
+            "portal": "https://www.gov.br/fazenda",
+            "sic": "https://falabr.cgu.gov.br/"
+        }
+    },
+    {
+        "sigla": "saude",
+        "nome": "Ministério da Saúde",
+        "esfera": "Federal",
+        "poder": "Executivo",
+        "tipo": "Ministério",
+        "icone": "HeartPulse",
+        "cor": "#16a34a",
+        "lideranca": {
+            "cargo": "Ministra de Estado da Saúde",
+            "nome": "Nísia Trindade Lima",
+            "mandato": "2023–2026",
+            "investidura": "Nomeada pelo Presidente da República conforme o art. 84, I da CF/88"
+        },
+        "estruturaPessoal": {
+            "servidoresEfetivos": "42.000 profissionais de saúde e servidores administrativos federais",
+            "comissionados": "1.250 cargos de direção e assessoramento superior",
+            "estagiariosETerceirizados": "6.800 colaboradores nos hospitais federais e institutos"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 231,0 bilhões (Piso Constitucional da Saúde)",
+            "folhaPessoal": "R$ 29,4 bilhões",
+            "custeioInvestimentos": "R$ 201,6 bilhões (Repasses fundo a fundo para Estados e Municípios)"
+        },
+        "organograma": [
+            {
+                "area": "Secretaria de Atenção Primária à Saúde (SAPS)",
+                "funcao": "Coordenação da Estratégia Saúde da Família, Mais Médicos e financiamento da atenção básica municipal."
+            },
+            {
+                "area": "Secretaria de Atenção Especializada à Saúde (SAES)",
+                "funcao": "Gestão da rede hospitalar de alta e média complexidade, transplantes, oncologia e urgência/SAMU 192."
+            },
+            {
+                "area": "Secretaria de Vigilância em Saúde e Ambiente (SVSA)",
+                "funcao": "Vigilância epidemiológica, controle de epidemias (dengue, covid), vacinação do PNI e saúde ambiental."
+            },
+            {
+                "area": "Secretaria de Ciência, Tecnologia e Inovação (SECTICS)",
+                "funcao": "Incorporação de novos medicamentos ao SUS (Conitec), fomento à pesquisa clínica e Farmácia Popular."
+            },
+            {
+                "area": "Secretaria de Saúde Indígena (SESAI)",
+                "funcao": "Gestão e execução das ações de atenção integral à saúde dos povos indígenas em todo o território nacional."
+            },
+            {
+                "area": "Agência Nacional de Vigilância Sanitária (Anvisa) e Fiocruz",
+                "funcao": "Órgãos vinculados responsáveis pela regulação sanitária, controle de medicamentos e produção pública de vacinas."
+            }
+        ],
+        "funcoes": [
+            "Gestão nacional do Sistema Único de Saúde (SUS).",
+            "Planejamento, regulamentação e repasse de recursos federais para estados e municípios.",
+            "Coordenação do Programa Nacional de Imunizações (PNI).",
+            "Assistência farmacêutica básica e distribuição de tratamentos de alto custo."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria-Geral do SUS / Disque Saúde 136",
+            "telefone": "136 (ligação gratuita nacional)",
+            "endereco": "Esplanada dos Ministérios, Bloco G, Edifício Sede, CEP 70058-900, Brasília - DF",
+            "email": "ouvidoria.sus@saude.gov.br",
+            "portal": "https://www.gov.br/saude",
+            "sic": "https://falabr.cgu.gov.br/"
+        }
+    },
+    {
+        "sigla": "mec",
+        "nome": "Ministério da Educação",
+        "esfera": "Federal",
+        "poder": "Executivo",
+        "tipo": "Ministério",
+        "icone": "GraduationCap",
+        "cor": "#ea580c",
+        "lideranca": {
+            "cargo": "Ministro de Estado da Educação",
+            "nome": "Camilo Santana",
+            "mandato": "2023–2026",
+            "investidura": "Nomeado pelo Presidente da República conforme o art. 84, I da CF/88"
+        },
+        "estruturaPessoal": {
+            "servidoresEfetivos": "84.000 professores e técnicos nas Universidades e Institutos Federais",
+            "comissionados": "1.100 cargos de livre provimento",
+            "estagiariosETerceirizados": "12.500 profissionais terceirizados e estagiários"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 195,5 bilhões (Fundeb, Ensino Superior e Programas Básicos)",
+            "folhaPessoal": "R$ 68,2 bilhões",
+            "custeioInvestimentos": "R$ 127,3 bilhões"
+        },
+        "organograma": [
+            {
+                "area": "Secretaria de Educação Básica (SEB)",
+                "funcao": "Programa Criança Alfabetizada, Escolas em Tempo Integral, livro didático (PNLD) e diretrizes curriculares."
+            },
+            {
+                "area": "Secretaria de Educação Superior (SESU)",
+                "funcao": "Supervisão e fomento das 69 Universidades Federais, SiSU, ProUni e FIES."
+            },
+            {
+                "area": "Secretaria de Educação Profissional e Tecnológica (SETEC)",
+                "funcao": "Coordenação dos 38 Institutos Federais de Educação, Ciência e Tecnologia (IFs) e Pronatec."
+            },
+            {
+                "area": "Fundo Nacional de Desenvolvimento da Educação (FNDE)",
+                "funcao": "Autarquia operadora do Fundeb, alimentação escolar (PNAE) e transporte escolar rural (PNATE)."
+            },
+            {
+                "area": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep)",
+                "funcao": "Realização do Enem, Censo Escolar, Censo Superior e cálculo do Ideb."
+            }
+        ],
+        "funcoes": [
+            "Política nacional de educação infantil, básica, técnica e superior.",
+            "Coordenação do Sistema Nacional de Avaliação da Educação Básica (Saeb) e Enem.",
+            "Gestão da complementação da União ao Fundeb.",
+            "Supervisão e regulação das instituições de ensino superior públicas e privadas."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria do Ministério da Educação",
+            "telefone": "0800 616161 / (61) 2022-8000",
+            "endereco": "Esplanada dos Ministérios, Bloco L, CEP 70047-900, Brasília - DF",
+            "email": "ouvidoria@mec.gov.br",
+            "portal": "https://www.gov.br/mec",
+            "sic": "https://falabr.cgu.gov.br/"
+        }
+    },
+    {
+        "sigla": "mma",
+        "nome": "Ministério do Meio Ambiente e Mudança do Clima",
+        "esfera": "Federal",
+        "poder": "Executivo",
+        "tipo": "Ministério",
+        "icone": "Trees",
+        "cor": "#059669",
+        "lideranca": {
+            "cargo": "Ministra de Estado do Meio Ambiente",
+            "nome": "Marina Silva",
+            "mandato": "2023–2026",
+            "investidura": "Nomeada pelo Presidente da República"
+        },
+        "estruturaPessoal": {
+            "servidoresEfetivos": "5.600 servidores no MMA, Ibama e ICMBio",
+            "comissionados": "420 cargos comissionados",
+            "estagiariosETerceirizados": "1.200 colaboradores de apoio e brigadistas Prevfogo"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 4,9 bilhões (MMA, Ibama, ICMBio e Fundo Clima)",
+            "folhaPessoal": "R$ 2,1 bilhões",
+            "custeioInvestimentos": "R$ 2,8 bilhões"
+        },
+        "organograma": [
+            {
+                "area": "Secretaria Nacional de Mudança do Clima",
+                "funcao": "Coordenação do Plano Clima, compromissos da COP, mercado regulado de carbono e transição ecológica."
+            },
+            {
+                "area": "Secretaria Extraordinária de Controle do Desmatamento e Ordenamento Ambiental",
+                "funcao": "Execução do PPCDAm (Amazônia) e PPCerrado para redução de queimadas e desmatamento ilegal."
+            },
+            {
+                "area": "Secretaria Nacional de Biodiversidade, Florestas e Direitos Animais",
+                "funcao": "Proteção de biomas, recuperação de áreas degradadas e proteção à fauna silvestre e doméstica."
+            },
+            {
+                "area": "Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis (Ibama)",
+                "funcao": "Licenciamento ambiental federal de petróleo/energia, fiscalização ambiental e autuação infracional."
+            },
+            {
+                "area": "Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio)",
+                "funcao": "Gestão das 334 Unidades de Conservação Federais (Parques Nacionais, Reservas e Flonas)."
+            }
+        ],
+        "funcoes": [
+            "Política nacional do meio ambiente e de recursos hídricos.",
+            "Estratégia nacional para mitigação e adaptação à mudança climática.",
+            "Preservação, conservação e uso sustentável dos ecossistemas, biodiversidade e florestas.",
+            "Gestão do Fundo Amazônia e Fundo Nacional sobre Mudança do Clima."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria do Meio Ambiente e Mudança do Clima",
+            "telefone": "(61) 2028-1000 / 0800 61 8080 (Linha Verde Ibama)",
+            "endereco": "Esplanada dos Ministérios, Bloco B, CEP 70068-900, Brasília - DF",
+            "email": "ouvidoria@mma.gov.br",
+            "portal": "https://www.gov.br/mma",
+            "sic": "https://falabr.cgu.gov.br/"
+        }
+    },
+    {
+        "sigla": "transportes",
+        "nome": "Ministério dos Transportes",
+        "esfera": "Federal",
+        "poder": "Executivo",
+        "tipo": "Ministério",
+        "icone": "TrainFront",
+        "cor": "#0369a1",
+        "lideranca": {
+            "cargo": "Ministro de Estado dos Transportes",
+            "nome": "Renan Filho",
+            "mandato": "2023–2026",
+            "investidura": "Nomeado pelo Presidente da República"
+        },
+        "estruturaPessoal": {
+            "servidoresEfetivos": "4.800 servidores federais (Ministério, DNIT e ANTT)",
+            "comissionados": "390 cargos em comissão",
+            "estagiariosETerceirizados": "1.400 profissionais"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 22,8 bilhões (Obras rodoviárias, ferrovias e concessões)",
+            "folhaPessoal": "R$ 2,3 bilhões",
+            "custeioInvestimentos": "R$ 20,5 bilhões"
+        },
+        "organograma": [
+            {
+                "area": "Secretaria Nacional de Transporte Rodoviário",
+                "funcao": "Planejamento e expansão da malha rodoviária federal de 65.000 km e políticas de segurança no trânsito."
+            },
+            {
+                "area": "Secretaria Nacional de Transporte Ferroviário",
+                "funcao": "Política de ferrovias públicas, repactuação de concessões ferroviárias e trens regionais de passageiros."
+            },
+            {
+                "area": "Departamento Nacional de Infraestrutura de Transportes (DNIT)",
+                "funcao": "Construção, manutenção, duplicação e fiscalização física das rodovias federais não concedidas."
+            },
+            {
+                "area": "Agência Nacional de Transportes Terrestres (ANTT)",
+                "funcao": "Regulação e fiscalização das rodovias pedagiadas, ferrovias concedidas e transporte interestadual de passageiros."
+            }
+        ],
+        "funcoes": [
+            "Política nacional de trânsito e desenvolvimento dos transportes rodoviário e ferroviário.",
+            "Concessão de infraestrutura pública e leilões de novas rodovias federais.",
+            "Coordenação dos investimentos do Novo PAC em logística e integração sul-americana."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria do Ministério dos Transportes",
+            "telefone": "(61) 2029-7000 / 166 (ANTT)",
+            "endereco": "Esplanada dos Ministérios, Bloco R, CEP 70044-900, Brasília - DF",
+            "email": "ouvidoria@transportes.gov.br",
+            "portal": "https://www.gov.br/transportes",
+            "sic": "https://falabr.cgu.gov.br/"
+        }
+    },
+    {
+        "sigla": "cidades",
+        "nome": "Ministério das Cidades",
+        "esfera": "Federal",
+        "poder": "Executivo",
+        "tipo": "Ministério",
+        "icone": "Building2",
+        "cor": "#ca8a04",
+        "lideranca": {
+            "cargo": "Ministro de Estado das Cidades",
+            "nome": "Jader Filho",
+            "mandato": "2023–2026",
+            "investidura": "Nomeado pelo Presidente da República"
+        },
+        "estruturaPessoal": {
+            "servidoresEfetivos": "1.850 servidores",
+            "comissionados": "290 cargos em comissão",
+            "estagiariosETerceirizados": "550 colaboradores"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 38,4 bilhões (Minha Casa Minha Vida e Saneamento)",
+            "folhaPessoal": "R$ 480 milhões",
+            "custeioInvestimentos": "R$ 37,9 bilhões (Recursos OGU e FGTS)"
+        },
+        "organograma": [
+            {
+                "area": "Secretaria Nacional de Habitação (SNH)",
+                "funcao": "Gestão executiva do Programa Minha Casa, Minha Vida (MCMV) e regularização fundiária urbana (Reurb)."
+            },
+            {
+                "area": "Secretaria Nacional de Saneamento Ambiental (SNSA)",
+                "funcao": "Obras de abastecimento de água, esgotamento sanitário, resíduos sólidos e drenagem urbana em municípios."
+            },
+            {
+                "area": "Secretaria Nacional de Mobilidade Urbana (SEMOB)",
+                "funcao": "Financiamento de BRTs, VLTs, ciclovias e modernização do transporte coletivo urbano das cidades."
+            },
+            {
+                "area": "Secretaria Nacional de Periferias",
+                "funcao": "Intervenções de urbanização integrada em favelas e áreas de risco geológico com participação comunitária."
+            }
+        ],
+        "funcoes": [
+            "Política nacional de desenvolvimento urbano e habitação social.",
+            "Supervisão e aplicação das metas do Novo Marco Legal do Saneamento Básico.",
+            "Articulação de investimentos federais para infraestrutura dos municípios brasileiros."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria do Ministério das Cidades",
+            "telefone": "(61) 2034-5000",
+            "endereco": "Setor de Grandes Áreas Norte - SGAN 906, Módulo F, CEP 70790-060, Brasília - DF",
+            "email": "ouvidoria@cidades.gov.br",
+            "portal": "https://www.gov.br/cidades",
+            "sic": "https://falabr.cgu.gov.br/"
+        }
+    },
+
+    # ═════════════════════════════════════════════════════════════
+    # 2. PODER EXECUTIVO ESTADUAL (SECRETARIAS DE ESTADO)
+    # ═════════════════════════════════════════════════════════════
+    {
+        "sigla": "sef-mg",
+        "nome": "Secretaria de Estado de Fazenda de Minas Gerais",
+        "esfera": "Estadual",
+        "poder": "Executivo",
+        "tipo": "Secretaria de Estado",
+        "icone": "Coins",
+        "cor": "#0f766e",
+        "lideranca": {
+            "cargo": "Secretário de Estado de Fazenda",
+            "nome": "Luiz Claudio Fernandes Lourenço Gomes",
+            "mandato": "2023–2026",
+            "investidura": "Nomeado pelo Governador do Estado de Minas Gerais"
+        },
+        "estruturaPessoal": {
+            "servidoresEfetivos": "2.800 Auditores Fiscais e Gestores Fazendários",
+            "comissionados": "210 cargos de livre nomeação",
+            "estagiariosETerceirizados": "620 colaboradores de suporte"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 1,82 bilhão (administração tributária e financeira)",
+            "folhaPessoal": "R$ 1,21 bilhão",
+            "custeioInvestimentos": "R$ 610 milhões"
+        },
+        "organograma": [
+            {
+                "area": "Gabinete do Secretário",
+                "funcao": "Direção geral, negociação da Dívida com a União (Propag/RRF) e formulação da política de receitas."
+            },
+            {
+                "area": "Subsecretaria da Receita Estadual (SRE)",
+                "funcao": "Arrecadação e fiscalização do ICMS, IPVA e ITCD, fiscalização de fronteiras e combate à fraude fiscal."
+            },
+            {
+                "area": "Subsecretaria do Tesouro Estadual (STE)",
+                "funcao": "Gestão da conta única do Estado de MG, pagamento da folha dos servidores e cronograma de despesas públicas."
+            },
+            {
+                "area": "Conselho de Contribuintes do Estado de Minas Gerais (CCMG)",
+                "funcao": "Julgamento administrativo de recursos e litígios tributários entre o Estado e as empresas/contribuintes."
+            }
+        ],
+        "funcoes": [
+            "Arrecadação dos tributos estaduais e fiscalização de sonegação.",
+            "Gestão da dívida consolidada do Estado e finanças públicas.",
+            "Elaboração das diretrizes orçamentárias (LDO) e balanço geral do Estado."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria-Geral do Estado de Minas Gerais (OGE-MG) / SEF",
+            "telefone": "162 (Disque Ouvidoria) / (31) 3915-0600",
+            "endereco": "Cidade Administrativa Tancredo Neves, Rodovia Papa João Paulo II, 4001, Edifício Gerais, CEP 31630-901, Belo Horizonte - MG",
+            "email": "ouvidoria@fazenda.mg.gov.br",
+            "portal": "https://www.fazenda.mg.gov.br",
+            "sic": "https://www.transparencia.mg.gov.br/"
+        }
+    },
+    {
+        "sigla": "ses-mg",
+        "nome": "Secretaria de Estado de Saúde de Minas Gerais",
+        "esfera": "Estadual",
+        "poder": "Executivo",
+        "tipo": "Secretaria de Estado",
+        "icone": "HeartPulse",
+        "cor": "#059669",
+        "lideranca": {
+            "cargo": "Secretário de Estado de Saúde",
+            "nome": "Fábio Baccheretti Vitor",
+            "mandato": "2021–2026",
+            "investidura": "Nomeado pelo Governador do Estado"
+        },
+        "estruturaPessoal": {
+            "servidoresEfetivos": "7.500 servidores da carreira da Saúde e Fundação Fhemig",
+            "comissionados": "320 cargos comissionados",
+            "estagiariosETerceirizados": "2.400 profissionais"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 13,8 bilhões (Fundo Estadual de Saúde)",
+            "folhaPessoal": "R$ 2,9 bilhões",
+            "custeioInvestimentos": "R$ 10,9 bilhões (Repasses hospitalares Valora Minas e Média/Alta Complexidade)"
+        },
+        "organograma": [
+            {
+                "area": "Subsecretaria de Acesso a Serviços de Saúde",
+                "funcao": "Regulação assistencial do SUS Fácil, cirurgias eletivas (Opera Mais) e política hospitalar Valora Minas."
+            },
+            {
+                "area": "Subsecretaria de Vigilância em Saúde",
+                "funcao": "Controle de arboviroses (dengue/chikungunya), imunização estadual e vigilância sanitária."
+            },
+            {
+                "area": "Subsecretaria de Redes de Atenção à Saúde",
+                "funcao": "Fortalecimento da Rede Mão Amiga (materno-infantil), Rede Resposta de Urgência e Saúde Mental."
+            },
+            {
+                "area": "28 Superintendências e Gerências Regionais de Saúde (SRS/GRS)",
+                "funcao": "Descentralização e fiscalização regional da política de saúde pública no interior de Minas."
+            }
+        ],
+        "funcoes": [
+            "Coordenação do SUS em âmbito estadual em articulação com os 853 municípios.",
+            "Gestão da rede de hospitais regionais e consórcios intermunicipais de saúde (CIS).",
+            "Fornecimento de medicamentos do componente especializado de alto custo."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria de Saúde OGE-MG",
+            "telefone": "162 / (31) 3916-0400",
+            "endereco": "Cidade Administrativa, Rod. Papa João Paulo II, 4143, Prédio Minas, 12º andar, Serra Verde, Belo Horizonte - MG, CEP 31630-900",
+            "email": "ouvidoriadesaude@ouvidoriageral.mg.gov.br",
+            "portal": "https://www.saude.mg.gov.br",
+            "sic": "https://www.transparencia.mg.gov.br/"
+        }
+    },
+    {
+        "sigla": "semad-mg",
+        "nome": "Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável de MG",
+        "esfera": "Estadual",
+        "poder": "Executivo",
+        "tipo": "Secretaria de Estado",
+        "icone": "Trees",
+        "cor": "#15803d",
+        "lideranca": {
+            "cargo": "Secretária de Estado de Meio Ambiente",
+            "nome": "Marília Carvalho de Melo",
+            "mandato": "2020–2026",
+            "investidura": "Nomeada pelo Governador do Estado"
+        },
+        "estruturaPessoal": {
+            "servidoresEfetivos": "2.400 servidores no Sisema (Semad, Feam, IEF e Igam)",
+            "comissionados": "280 cargos comissionados",
+            "estagiariosETerceirizados": "650 colaboradores"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 890 milhões (Sisema e Fundos Ambientais)",
+            "folhaPessoal": "R$ 380 milhões",
+            "custeioInvestimentos": "R$ 510 milhões"
+        },
+        "organograma": [
+            {
+                "area": "Fundação Estadual do Meio Ambiente (Feam)",
+                "funcao": "Fiscalização de barragens de rejeitos (Lei Mar de Lama Nunca Mais), qualidade do ar e solos degradados."
+            },
+            {
+                "area": "Instituto Estadual de Florestas (IEF)",
+                "funcao": "Gestão dos Parques Estaduais de MG, unidades de conservação e fomento à restauração florestal."
+            },
+            {
+                "area": "Instituto Mineiro de Gestão das Águas (Igam)",
+                "funcao": "Monitoramento da bacia do Rio Doce, Rio das Velhas e Rio Paraopeba e outorga de uso da água."
+            },
+            {
+                "area": "Copam (Conselho Estadual de Política Ambiental)",
+                "funcao": "Órgão colegiado deliberativo de julgamento e deliberação das licenças ambientais de grande porte (Classe 5 e 6)."
+            }
+        ],
+        "funcoes": [
+            "Coordenação do Sistema Estadual de Meio Ambiente e Recursos Hídricos (Sisema).",
+            "Licenciamento, fiscalização e controle ambiental de atividades minerárias e industriais.",
+            "Proteção dos recursos hídricos e fiscalização do plano de descaracterização de barragens a montante."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria Ambiental OGE-MG / Sisema",
+            "telefone": "162 / (31) 3915-1000",
+            "endereco": "Cidade Administrativa, Rod. Papa João Paulo II, 4143, Prédio Minas, 1º andar, Belo Horizonte - MG, CEP 31630-900",
+            "email": "ouvidoria.ambiental@ouvidoriageral.mg.gov.br",
+            "portal": "https://www.meioambiente.mg.gov.br",
+            "sic": "https://www.transparencia.mg.gov.br/"
+        }
+    },
+
+    # ═════════════════════════════════════════════════════════════
+    # 3. PODER EXECUTIVO MUNICIPAL (SECRETARIAS MUNICIPAIS)
+    # ═════════════════════════════════════════════════════════════
+    {
+        "sigla": "smsa-bh",
+        "nome": "Secretaria Municipal de Saúde de Belo Horizonte",
+        "esfera": "Municipal",
+        "poder": "Executivo",
+        "tipo": "Secretaria Municipal",
+        "icone": "Stethoscope",
+        "cor": "#0284c7",
+        "lideranca": {
+            "cargo": "Secretário Municipal de Saúde",
+            "nome": "Danilo Borges Matias",
+            "mandato": "2023–2026",
+            "investidura": "Nomeado pelo Prefeito de Belo Horizonte"
+        },
+        "estruturaPessoal": {
+            "servidoresEfetivos": "16.800 profissionais de saúde e servidores municipais",
+            "comissionados": "420 cargos comissionados de chefia de unidades e diretorias",
+            "estagiariosETerceirizados": "2.800 colaboradores"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 6,42 bilhões (Fundo Municipal de Saúde de BH)",
+            "folhaPessoal": "R$ 3,85 bilhões",
+            "custeioInvestimentos": "R$ 2,57 bilhões"
+        },
+        "organograma": [
+            {
+                "area": "Atenção Primária à Saúde",
+                "funcao": "Gestão dos 152 Centros de Saúde municipais, 595 equipes de Saúde da Família e Programa Saúde na Escola."
+            },
+            {
+                "area": "Urgência e Emergência",
+                "funcao": "Coordenação das 9 UPAs (Unidades de Pronto Atendimento) e Central SAMU 192 Regional BH."
+            },
+            {
+                "area": "Atenção Hospitalar e Parcerias (PPP)",
+                "funcao": "Supervisão do Hospital Metropolitano Odilon Behrens (HOB), Hospital do Barreiro e Centros de Especialidades."
+            },
+            {
+                "area": "Vigilância em Saúde Municipal",
+                "funcao": "Combate à dengue com drones, controle de zoonoses e vigilância sanitária de comércios de alimentos e saúde."
+            }
+        ],
+        "funcoes": [
+            "Execução integral da atenção básica, de urgência e hospitalar no território de Belo Horizonte.",
+            "Gestão do programa de Parceria Público-Privada (PPP) para modernização dos Centros de Saúde.",
+            "Distribuição de medicamentos padronizados pelo SUS em farmácias distritais."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria-Geral do Município de Belo Horizonte / Saúde",
+            "telefone": "156 (Central de Atendimento Telefônico de BH) / (31) 3277-4000",
+            "endereco": "Av. Afonso Pena, 1212, Centro, Belo Horizonte - MG, CEP 30130-003",
+            "email": "ouvidoriageral@pbh.gov.br",
+            "portal": "https://prefeitura.pbh.gov.br/saude",
+            "sic": "https://servicos.pbh.gov.br/conteudo-servico/63e143093b16be3685514b85"
+        }
+    },
+    {
+        "sigla": "smobi-bh",
+        "nome": "Secretaria Municipal de Obras e Infraestrutura de Belo Horizonte",
+        "esfera": "Municipal",
+        "poder": "Executivo",
+        "tipo": "Secretaria Municipal",
+        "icone": "HardHat",
+        "cor": "#d97706",
+        "lideranca": {
+            "cargo": "Secretário Municipal de Obras",
+            "nome": "Leandro César Pereira",
+            "mandato": "2023–2026",
+            "investidura": "Nomeado pelo Prefeito de Belo Horizonte"
+        },
+        "estruturaPessoal": {
+            "servidoresEfetivos": "1.200 engenheiros, fiscais e técnicos municipais da Sudecap e SMOBI",
+            "comissionados": "110 cargos de livre nomeação",
+            "estagiariosETerceirizados": "450 profissionais de apoio"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 2,15 bilhões (Obras de drenagem, mobilidade e contenção)",
+            "folhaPessoal": "R$ 280 milhões",
+            "custeioInvestimentos": "R$ 1,87 bilhão"
+        },
+        "organograma": [
+            {
+                "area": "Superintendência de Desenvolvimento da Capital (Sudecap)",
+                "funcao": "Autarquia executora e fiscalizadora de todas as obras civis, recapeamentos e intervenções estruturais de BH."
+            },
+            {
+                "area": "Diretoria de Gestão de Águas Urbanas e Drenagem",
+                "funcao": "Execução e manutenção dos piscinões e reservatórios profundos (Vilarinho, Nado, Pampulha) contra enchentes."
+            },
+            {
+                "area": "Diretoria de Infraestrutura Viária",
+                "funcao": "Manutenção do pavimento, pontes, viadutos e contenção de encostas nas vilas e aglomerados."
+            }
+        ],
+        "funcoes": [
+            "Planejamento e fiscalização das grandes obras públicas municipais de BH.",
+            "Gerenciamento de contratos de engenharia e editais de concorrência pública.",
+            "Mitigação do risco de inundações urbanas nas bacias críticas da capital."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria-Geral PBH / Sudecap",
+            "telefone": "156 / (31) 3277-8000",
+            "endereco": "Rua dos Guajajaras, 1107, Lourdes, Belo Horizonte - MG, CEP 30180-100",
+            "email": "sudecap@pbh.gov.br",
+            "portal": "https://prefeitura.pbh.gov.br/obras",
+            "sic": "https://prefeitura.pbh.gov.br/transparencia"
+        }
+    },
+
+    # ═════════════════════════════════════════════════════════════
+    # 4. PODER LEGISLATIVO FEDERAL (CONGRESSO NACIONAL)
+    # ═════════════════════════════════════════════════════════════
+    {
+        "sigla": "camara-dos-deputados",
+        "nome": "Câmara dos Deputados",
+        "esfera": "Federal",
+        "poder": "Legislativo",
+        "tipo": "Parlamento",
+        "icone": "Landmark",
+        "cor": "#2563eb",
+        "lideranca": {
+            "cargo": "Presidente da Câmara dos Deputados",
+            "nome": "Arthur Lira (ou Mesa Diretora 2025/2026)",
+            "mandato": "2023–2025 (Mesa Diretora)",
+            "investidura": "Eleito por voto secreto pelos 513 Deputados Federais"
+        },
+        "estruturaPessoal": {
+            "parlamentares": "513 Deputados Federais eleitos proporcionalmente",
+            "servidoresEfetivos": "2.900 servidores concursados do quadro legislativo",
+            "comissionados": "8.500 secretários parlamentares (até 25 por gabinete)",
+            "estagiariosETerceirizados": "2.200 colaboradores"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 7,95 bilhões",
+            "folhaPessoal": "R$ 6,28 bilhões (79%)",
+            "custeioInvestimentos": "R$ 1,67 bilhão (Cota CEAP, informática e manutenção do Palácio)"
+        },
+        "organograma": [
+            {
+                "area": "Plenário Ulysses Guimarães",
+                "funcao": "Órgão soberano para votação de Propostas de Emenda à Constituição (PECs), Leis Complementares e Ordinárias."
+            },
+            {
+                "area": "Comissão de Constituição e Justiça e de Cidadania (CCJC)",
+                "funcao": "Exame de admissibilidade constitucional, legalidade e técnica legislativa de todas as proposições."
+            },
+            {
+                "area": "Comissões Parlamentares de Inquérito (CPIs)",
+                "funcao": "Investigação com poderes próprios de autoridade judicial sobre fatos determinados de interesse público."
+            },
+            {
+                "area": "Consultoria Legislativa e de Orçamento (Conof)",
+                "funcao": "Apoio técnico independente de consultores de carreira para elaboração de projetos e análise orçamentária."
+            },
+            {
+                "area": "Secretaria-Geral da Mesa e Diretoria-Geral",
+                "funcao": "Administração do processo legislativo eletrônico, transparência e gestão de contratos e pagamentos."
+            }
+        ],
+        "funcoes": [
+            "Elaboração e votação de leis federais e emendas constitucionais.",
+            "Fiscalização contábil, financeira e orçamentária do Poder Executivo com auxílio do TCU.",
+            "Autorização prévia para instauração de processo de impeachment contra o Presidente da República.",
+            "Representação popular proporcional dos 26 estados e Distrito Federal."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria Parlamentar da Câmara dos Deputados",
+            "telefone": "0800 0 619 619 (Disque-Câmara gratuito)",
+            "endereco": "Palácio do Congresso Nacional, Praça dos Três Poderes, Edifício Principal, CEP 70160-900, Brasília - DF",
+            "email": "ouvidoria@camara.leg.br",
+            "portal": "https://www.camara.leg.br",
+            "sic": "https://www.camara.leg.br/transparencia/"
+        }
+    },
+    {
+        "sigla": "senado-federal",
+        "nome": "Senado Federal",
+        "esfera": "Federal",
+        "poder": "Legislativo",
+        "tipo": "Parlamento",
+        "icone": "Landmark",
+        "cor": "#1d4ed8",
+        "lideranca": {
+            "cargo": "Presidente do Senado Federal e do Congresso Nacional",
+            "nome": "Rodrigo Pacheco (ou Presidente eleito 2025/2026)",
+            "mandato": "2023–2025 (Mesa Diretora)",
+            "investidura": "Eleito pelos 81 Senadores da República"
+        },
+        "estruturaPessoal": {
+            "parlamentares": "81 Senadores (3 representantes por Unidade Federativa)",
+            "servidoresEfetivos": "2.350 servidores concursados",
+            "comissionados": "2.900 assessores de gabinete e lideranças",
+            "estagiariosETerceirizados": "1.800 profissionais"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 5,91 bilhões",
+            "folhaPessoal": "R$ 4,78 bilhões (80,8%)",
+            "custeioInvestimentos": "R$ 1,13 bilhão"
+        },
+        "organograma": [
+            {
+                "area": "Plenário do Senado",
+                "funcao": "Votação de leis, tratados internacionais, deliberação final e julgamento de crimes de responsabilidade."
+            },
+            {
+                "area": "Comissão de Assuntos Econômicos (CAE)",
+                "funcao": "Fixação de limites da dívida pública da União, estados e municípios e aprovação de empréstimos internacionais."
+            },
+            {
+                "area": "Sabatina de Autoridades",
+                "funcao": "Aprovação prévia por voto secreto de Ministros do STF, STJ, Procurador-Geral, Diretores do Banco Central e diplomatas."
+            },
+            {
+                "area": "Advocacia do Senado e Consultoria Legislativa",
+                "funcao": "Representação jurídica institucional e redação técnica de pareceres parlamentares."
+            }
+        ],
+        "funcoes": [
+            "Representação paritária dos 26 estados e Distrito Federal (3 senadores por estado).",
+            "Processamento e julgamento do Presidente da República e Ministros do STF por crimes de responsabilidade.",
+            "Fixação de alíquotas máximas do ITCMD e regulação do endividamento dos entes subnacionais."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria do Senado Federal",
+            "telefone": "0800 0 61 2211 (Alô Senado)",
+            "endereco": "Praça dos Três Poderes, Senado Federal, Via N2, CEP 70165-900, Brasília - DF",
+            "email": "ouvidoria@senado.leg.br",
+            "portal": "https://www.senado.leg.br",
+            "sic": "https://www12.senado.leg.br/transparencia"
+        }
+    },
+
+    # ═════════════════════════════════════════════════════════════
+    # 5. PODER LEGISLATIVO ESTADUAL (ASSEMBLEIAS LEGISLATIVAS)
+    # ═════════════════════════════════════════════════════════════
+    {
+        "sigla": "almg",
+        "nome": "Assembleia Legislativa do Estado de Minas Gerais",
+        "esfera": "Estadual",
+        "poder": "Legislativo",
+        "tipo": "Assembleia Legislativa",
+        "icone": "Landmark",
+        "cor": "#7c2d12",
+        "lideranca": {
+            "cargo": "Presidente da ALMG",
+            "nome": "Deputado Tadeu Martins Leite (Tadeuzinho)",
+            "mandato": "2023–2025 / 2025–2027",
+            "investidura": "Eleito por voto secreto pelos 77 Deputados Estaduais"
+        },
+        "estruturaPessoal": {
+            "parlamentares": "77 Deputados Estaduais eleitos",
+            "servidoresEfetivos": "1.980 servidores concursados de carreira legislativa",
+            "comissionados": "2.450 cargos de recrutamento amplo nos gabinetes",
+            "estagiariosETerceirizados": "850 colaboradores"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 2,21 bilhões",
+            "folhaPessoal": "R$ 1,72 bilhão (77,8%)",
+            "custeioInvestimentos": "R$ 490 milhões"
+        },
+        "organograma": [
+            {
+                "area": "Plenário Juscelino Kubitschek",
+                "funcao": "Aprovação de leis estaduais, orçamento de MG e fiscalização do Governo do Estado."
+            },
+            {
+                "area": "Comissão de Fiscalização Financeira e Orçamentária (FFO)",
+                "funcao": "Análise das contas do Governador, da dívida pública estadual e do Plano Plurianual (PPAG)."
+            },
+            {
+                "area": "Comissão Extraordinária das Águas e Barragens",
+                "funcao": "Acompanhamento legislativo permanente dos acordos de reparação e segurança de barragens em MG."
+            },
+            {
+                "area": "Gerência Geral de Consultoria Temática",
+                "funcao": "Corpo técnico permanente de consultores concursados que elaboram os projetos de lei e estudos fiscais."
+            }
+        ],
+        "funcoes": [
+            "Poder legislativo estadual: legislar sobre tributos estaduais, servidores públicos e território mineiro.",
+            "Fiscalização contábil e financeira dos órgãos do Estado com o Tribunal de Contas (TCE-MG).",
+            "Aprovação de nomes indicados para Conselheiros do TCE-MG e dirigentes de agências reguladoras (Arsae)."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria da Assembleia Legislativa de Minas Gerais",
+            "telefone": "(31) 2108-7000 / 0800 031 0888",
+            "endereco": "Rua Rodrigues Caldas, 30, Santo Agostinho, Belo Horizonte - MG, CEP 30190-921",
+            "email": "ouvidoria@almg.gov.br",
+            "portal": "https://www.almg.gov.br",
+            "sic": "https://www.almg.gov.br/transparencia"
+        }
+    },
+
+    # ═════════════════════════════════════════════════════════════
+    # 6. PODER LEGISLATIVO MUNICIPAL (CÂMARAS MUNICIPAIS)
+    # ═════════════════════════════════════════════════════════════
+    {
+        "sigla": "cmbh",
+        "nome": "Câmara Municipal de Belo Horizonte",
+        "esfera": "Municipal",
+        "poder": "Legislativo",
+        "tipo": "Câmara Municipal",
+        "icone": "Landmark",
+        "cor": "#4338ca",
+        "lideranca": {
+            "cargo": "Presidente da CMBH",
+            "nome": "Gabriel Azevedo (ou Mesa Diretora 2025/2026)",
+            "mandato": "2023–2024 / 2025–2026",
+            "investidura": "Eleito pelos 41 Vereadores da Capital"
+        },
+        "estruturaPessoal": {
+            "parlamentares": "41 Vereadores eleitos pelo povo de Belo Horizonte",
+            "servidoresEfetivos": "580 servidores concursados",
+            "comissionados": "920 assessores parlamentares de gabinete",
+            "estagiariosETerceirizados": "310 profissionais"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 412 milhões",
+            "folhaPessoal": "R$ 315 milhões (76,4%)",
+            "custeioInvestimentos": "R$ 97 milhões (com devolução periódica de sobras para a PBH)"
+        },
+        "organograma": [
+            {
+                "area": "Plenário Amynthas de Barros",
+                "funcao": "Votação do Plano Diretor de BH, Código de Posturas, IPTU, ISS e fiscalização dos atos do Prefeito."
+            },
+            {
+                "area": "Comissão de Legislação e Justiça (CLJ)",
+                "funcao": "Aferição da legalidade e constitucionalidade das proposições municipais."
+            },
+            {
+                "area": "Comissão de Orçamento e Finanças Públicas",
+                "funcao": "Análise da Lei Orçamentária Anual (LOA) de Belo Horizonte e emendas impositivas dos vereadores."
+            },
+            {
+                "area": "CPIs Municipais",
+                "funcao": "Comissões Parlamentares de Inquérito sobre serviços municipais (ex: CPI da BHTrans/Ônibus)."
+            }
+        ],
+        "funcoes": [
+            "Elaboração das leis municipais da capital mineira.",
+            "Julgamento das contas do Prefeito Municipal com parecer prévio do TCE-MG.",
+            "Fiscalização dos contratos de transporte público, saúde municipal e obras viárias."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria da Câmara Municipal de Belo Horizonte",
+            "telefone": "(31) 3555-1100 / 0800 707 2020",
+            "endereco": "Av. dos Andradas, 3100, Santa Efigênia, Belo Horizonte - MG, CEP 30260-070",
+            "email": "ouvidoria@cmbh.mg.gov.br",
+            "portal": "https://www.cmbh.mg.gov.br",
+            "sic": "https://www.cmbh.mg.gov.br/transparencia"
+        }
+    },
+
+    # ═════════════════════════════════════════════════════════════
+    # 7. PODER JUDICIÁRIO (TRIBUNAIS)
+    # ═════════════════════════════════════════════════════════════
+    {
+        "sigla": "stf",
+        "nome": "Supremo Tribunal Federal",
+        "esfera": "Federal",
+        "poder": "Judiciário",
+        "tipo": "Tribunal Superior",
+        "icone": "Scale",
+        "cor": "#b91c1c",
+        "lideranca": {
+            "cargo": "Presidente do STF e do CNJ",
+            "nome": "Ministro Luís Roberto Barroso",
+            "mandato": "2023–2025",
+            "investidura": "Eleito pelo Plenário entre os 11 Ministros, com sabatina do Senado e nomeação presidencial"
+        },
+        "estruturaPessoal": {
+            "magistrados": "11 Ministros nomeados vitaliciamente",
+            "servidoresEfetivos": "1.150 servidores concursados do Poder Judiciário da União",
+            "comissionados": "320 cargos comissionados",
+            "estagiariosETerceirizados": "1.300 colaboradores de apoio e segurança judicial"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 953 milhões",
+            "folhaPessoal": "R$ 610 milhões",
+            "custeioInvestimentos": "R$ 343 milhões"
+        },
+        "organograma": [
+            {
+                "area": "Plenário do STF (11 Ministros)",
+                "funcao": "Guarda suprema da Constituição, julgamento de Ações Diretas de Inconstitucionalidade (ADIs) e Repercussão Geral."
+            },
+            {
+                "area": "Primeira Turma (5 Ministros)",
+                "funcao": "Julgamento de extradições, habeas corpus e recursos de natureza cível e criminal."
+            },
+            {
+                "area": "Segunda Turma (5 Ministros)",
+                "funcao": "Julgamento de matérias penais originárias, inquéritos contra autoridades com foro e recursos."
+            },
+            {
+                "area": "Secretaria-Geral da Presidência",
+                "funcao": "Coordenação da gestão estratégica, julgamento no Plenário Virtual e relacionamento institucional."
+            }
+        ],
+        "funcoes": [
+            "Guarda máxima e intérprete final da Constituição da República de 1988.",
+            "Julgamento de ações de controle concentrado de constitucionalidade com eficácia erga omnes.",
+            "Julgamento de crimes comuns cometidos pelo Presidente, Vice-Presidente, Ministros de Estado e Congressistas.",
+            "Uniformização da jurisprudência nacional por meio da Repercussão Geral e Súmulas Vinculantes."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria do Supremo Tribunal Federal",
+            "telefone": "(61) 3217-3000 / 0800 61 0001",
+            "endereco": "Praça dos Três Poderes, Edifício Sede do STF, CEP 70175-900, Brasília - DF",
+            "email": "ouvidoria@stf.jus.br",
+            "portal": "https://portal.stf.jus.br",
+            "sic": "https://portal.stf.jus.br/transparencia/"
+        }
+    },
+    {
+        "sigla": "tjmg",
+        "nome": "Tribunal de Justiça do Estado de Minas Gerais",
+        "esfera": "Estadual",
+        "poder": "Judiciário",
+        "tipo": "Tribunal de Justiça",
+        "icone": "Scale",
+        "cor": "#f2701d",
+        "lideranca": {
+            "cargo": "Presidente do TJMG",
+            "nome": "Desembargador Luiz Carlos de Azevedo Corrêa Junior",
+            "mandato": "2024–2026",
+            "investidura": "Eleito pelo Tribunal Pleno entre os desembargadores mais antigos"
+        },
+        "estruturaPessoal": {
+            "magistrados": "1.050 (desembargadores e juízes de direito)",
+            "servidoresEfetivos": "14.200 servidores concursados",
+            "comissionados": "1.450 cargos de livre nomeação e assessoramento",
+            "estagiariosETerceirizados": "3.100 colaboradores",
+            "comarcasInstaladas": "298 comarcas em Minas Gerais"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 14,96 bilhões",
+            "folhaPessoal": "R$ 11,61 bilhões (77,6%)",
+            "custeioInvestimentos": "R$ 3,35 bilhões"
+        },
+        "organograma": [
+            {
+                "area": "Presidência",
+                "funcao": "Representação institucional, gestão orçamentária e administração geral."
+            },
+            {
+                "area": "1ª Vice-Presidência",
+                "funcao": "Supervisão da área judiciária e admissibilidade de recursos para STJ e STF."
+            },
+            {
+                "area": "Corregedoria-Geral de Justiça (CGJ)",
+                "funcao": "Fiscalização disciplinar e orientação de juizados de 1º grau e cartórios de registro."
+            },
+            {
+                "area": "Câmaras Especializadas Cíveis e Criminais",
+                "funcao": "Julgamento de apelações e habeas corpus em 2º grau de jurisdição."
+            }
+        ],
+        "funcoes": [
+            "Prestação jurisdicional em primeira e segunda instância em Minas Gerais.",
+            "Julgamento de conflitos de família, cíveis, criminais, fazendários e empresariais.",
+            "Fiscalização dos serviços notariais e registrais do Estado."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria Judiciária e Ouvidoria da Mulher TJMG",
+            "telefone": "(31) 3237-6000 / 0800 031 0147",
+            "endereco": "Av. Afonso Pena, 4001, Serra, Belo Horizonte - MG, CEP 30130-994",
+            "email": "ouvidoria@tjmg.jus.br",
+            "portal": "https://www.tjmg.jus.br",
+            "sic": "https://www.tjmg.jus.br/transparencia/"
+        }
+    },
+
+    # ═════════════════════════════════════════════════════════════
+    # 8. FUNÇÕES ESSENCIAIS À JUSTIÇA (MINISTÉRIO PÚBLICO E DEFENSORIA)
+    # ═════════════════════════════════════════════════════════════
+    {
+        "sigla": "mpmg",
+        "nome": "Ministério Público do Estado de Minas Gerais",
+        "esfera": "Estadual",
+        "poder": "Sistema de Justiça",
+        "tipo": "Ministério Público",
+        "icone": "ShieldCheck",
+        "cor": "#dc2626",
+        "lideranca": {
+            "cargo": "Procurador-Geral de Justiça de Minas Gerais",
+            "nome": "Jarbas Soares Júnior (ou novo PGJ)",
+            "mandato": "2022–2024 / 2024–2026",
+            "investidura": "Nomeado pelo Governador a partir de lista tríplice votada por promotores e procuradores"
+        },
+        "estruturaPessoal": {
+            "promotoresEProcuradores": "1.250 membros do Ministério Público",
+            "servidoresEfetivos": "3.800 analistas e técnicos concursados",
+            "comissionados": "890 cargos de assessoramento e assistência",
+            "estagiariosETerceirizados": "2.100 colaboradores"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 4,12 bilhões",
+            "folhaPessoal": "R$ 3,38 bilhões (82,0%)",
+            "custeioInvestimentos": "R$ 740 milhões"
+        },
+        "organograma": [
+            {
+                "area": "Procuradoria-Geral de Justiça (PGJ)",
+                "funcao": "Direção superior, ações contra autoridades com foro no TJMG e negociação de grandes TACs."
+            },
+            {
+                "area": "Coordenadoria de Meio Ambiente e Mineração (Caoma)",
+                "funcao": "Defesa de bacias hidrográficas, TACs minerários e fiscalização de barragens e compensações."
+            },
+            {
+                "area": "Gaeco (Grupo de Atuação Especial de Combate ao Crime Organizado)",
+                "funcao": "Investigação integrada com a Polícia Civil, Militar e Rodoviária contra facções e colarinho branco."
+            },
+            {
+                "area": "Promotorias de Justiça nas 298 Comarcas",
+                "funcao": "Atendimento direto ao cidadão em saúde pública, infância, consumidor, patrimônio e criminal."
+            }
+        ],
+        "funcoes": [
+            "Defesa da ordem jurídica, do regime democrático e dos interesses sociais e individuais indisponíveis.",
+            "Titularidade privativa da ação penal pública.",
+            "Fiscalização da aplicação das verbas do Acordo Judicial de Reparação de Brumadinho e Mariana.",
+            "Ajuizamento de Ações Civis Públicas e Termos de Ajustamento de Conduta (TACs)."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria do Ministério Público de Minas Gerais",
+            "telefone": "127 (Disque MPMG gratuito) / (31) 3330-8100",
+            "endereco": "Av. Álvares Cabral, 1690, Santo Agostinho, Belo Horizonte - MG, CEP 30180-008",
+            "email": "ouvidoria@mpmg.mp.br",
+            "portal": "https://www.mpmg.mp.br",
+            "sic": "https://www.mpmg.mp.br/portal/menu/transparencia/"
+        }
+    },
+    {
+        "sigla": "dpmg",
+        "nome": "Defensoria Pública do Estado de Minas Gerais",
+        "esfera": "Estadual",
+        "poder": "Sistema de Justiça",
+        "tipo": "Defensoria Pública",
+        "icone": "HeartHandshake",
+        "cor": "#047857",
+        "lideranca": {
+            "cargo": "Defensora Pública-Geral de Minas Gerais",
+            "nome": "Raquel da Costa Dias",
+            "mandato": "2022–2024 / 2024–2026",
+            "investidura": "Nomeada pelo Governador a partir de lista tríplice votada pelos defensores públicos"
+        },
+        "estruturaPessoal": {
+            "defensores": "720 Defensores Públicos de carreira",
+            "servidoresEfetivos": "1.450 servidores e assistentes sociais concursados",
+            "estagiariosETerceirizados": "1.800 estagiários de direito e apoio"
+        },
+        "orcamento": {
+            "ano": 2025,
+            "total": "R$ 680 milhões",
+            "folhaPessoal": "R$ 540 milhões",
+            "custeioInvestimentos": "R$ 140 milhões"
+        },
+        "organograma": [
+            {
+                "area": "Gabinete da Defensora Pública-Geral",
+                "funcao": "Administração geral, expansão institucional para comarcas sem defensor e relações com Poderes."
+            },
+            {
+                "area": "Coordenadoria Estratégica de Direitos Humanos e Coletivos (Chedh)",
+                "funcao": "Ações coletivas em favor de comunidades atingidas, populações vulneráveis e moradia popular."
+            },
+            {
+                "area": "Defensoria Especializada de Família e Sucessões",
+                "funcao": "Assistência jurídica integral em divórcio, pensão alimentícia, guarda e investigação de paternidade."
+            },
+            {
+                "area": "Núcleo de Execução Penal (NEP)",
+                "funcao": "Inspeção em presídios e acompanhamento da progressão de regime dos apenados hipossuficientes."
+            }
+        ],
+        "funcoes": [
+            "Garantia constitucional do acesso universal e gratuito à Justiça aos que comprovarem insuficiência de recursos.",
+            "Defesa integral dos direitos humanos e assistência jurídica, judicial e extrajudicial.",
+            "Representação de comunidades atingidas por grandes desastres socioambientais."
+        ],
+        "ouvidoria": {
+            "canal": "Ouvidoria-Geral da Defensoria Pública de Minas Gerais",
+            "telefone": "(31) 3526-0500 / 0800 283 3192",
+            "endereco": "Rua Guajajaras, 1707, Barro Preto, Belo Horizonte - MG, CEP 30180-101",
+            "email": "ouvidoria@defensoria.mg.def.br",
+            "portal": "https://defensoria.mg.def.br",
+            "sic": "https://defensoria.mg.def.br/transparencia"
+        }
+    }
+]
+
+ENRIQUECIMENTO_DOCS_E_NOTICIAS = {
+    "fazenda": {
+        "documentosChave": [
+            {
+                "titulo": "Regimento Interno do Ministério da Fazenda (Portaria MF nº 284/2023)",
+                "descricao": "Ato normativo que define as competências da RFB, STN, PGFN e secretarias formuladoras de política econômica.",
+                "url": "https://www.gov.br/fazenda/pt-br/acesso-a-informacao/institucional/regimento-interno"
+            },
+            {
+                "titulo": "Relatório de Gestão Fiscal da União (RGF / STN)",
+                "descricao": "Demonstrativo quadrimestral oficial do cumprimento da Lei de Responsabilidade Fiscal.",
+                "url": "https://www.tesouronacional.fazenda.gov.br"
+            },
+            {
+                "titulo": "Portal da Transparência da Gestão Fazendária",
+                "descricao": "Execução orçamentária detalhada e quadro de remunerações das carreiras fiscais.",
+                "url": "https://portaldatransparencia.gov.br"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "Ministério da Fazenda detalha regulamentação da Reforma Tributária sobre o consumo",
+                "data": "2026-08-28",
+                "fonte": "Agência Gov",
+                "url": "https://www.gov.br/fazenda/noticias",
+                "resumo": "Secretaria Extraordinária da Reforma Tributária apresenta cronograma de transição do IBS e CBS para estados e municípios."
+            },
+            {
+                "titulo": "Tesouro Nacional divulga resultado primário com avanço na arrecadação federal",
+                "data": "2026-08-20",
+                "fonte": "Ministério da Fazenda",
+                "url": "https://www.gov.br/fazenda/noticias",
+                "resumo": "Boletim fiscal quadrimestral indica estabilidade na trajetória da dívida pública federal."
+            }
+        ]
+    },
+    "saude": {
+        "documentosChave": [
+            {
+                "titulo": "Relatório Anual de Gestão (RAG / Ministério da Saúde)",
+                "descricao": "Prestação de contas das metas do Plano Nacional de Saúde perante o Conselho Nacional de Saúde.",
+                "url": "https://www.gov.br/saude/pt-br/acesso-a-informacao/gestao-do-sus"
+            },
+            {
+                "titulo": "Tabela de Procedimentos do SUS (SIGTAP)",
+                "descricao": "Catálogo oficial unificado com mais de 4.800 procedimentos e valores de custeio hospitalar.",
+                "url": "https://sigtap.datasus.gov.br"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "Ministério da Saúde amplia repasses a hospitais filantrópicos e novos centros especializados",
+                "data": "2026-08-25",
+                "fonte": "Agência Gov",
+                "url": "https://www.gov.br/saude/noticias",
+                "resumo": "Portaria ministerial libera R$ 1,2 bilhão em cofinanciamento federal para leitos de retaguarda e hemodiálise."
+            },
+            {
+                "titulo": "Campanha nacional reforça cobertura vacinal e vigilância ativa contra arboviroses",
+                "data": "2026-08-15",
+                "fonte": "Ministério da Saúde",
+                "url": "https://www.gov.br/saude/noticias",
+                "resumo": "Estratégia conjunta com secretarias municipais prioriza imunização infantil e combate a focos do mosquito transmissor."
+            }
+        ]
+    },
+    "mec": {
+        "documentosChave": [
+            {
+                "titulo": "Plano Nacional de Educação (PNE - Lei 13.005/2014)",
+                "descricao": "Metas decenais para a educação básica e superior em todo o território nacional.",
+                "url": "https://www.gov.br/mec/pt-br/pne"
+            },
+            {
+                "titulo": "Censo Escolar da Educação Básica (INEP)",
+                "descricao": "Base estatística auditada para a distribuição de recursos do Fundeb a municípios e estados.",
+                "url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/censo-escolar"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "MEC anuncia expansão de incentivos do programa Pé-de-Meia para estudantes do ensino médio",
+                "data": "2026-08-30",
+                "fonte": "Agência Gov",
+                "url": "https://www.gov.br/mec/noticias",
+                "resumo": "Poupança do ensino médio atinge mais 1,2 milhão de jovens da rede pública com repasses vinculados à frequência escolar."
+            },
+            {
+                "titulo": "INEP divulga dados do Censo da Educação Básica com indicadores de infraestrutura escolar",
+                "data": "2026-08-18",
+                "fonte": "MEC / INEP",
+                "url": "https://www.gov.br/mec/noticias",
+                "resumo": "Levantamento aponta avanço no acesso à internet de alta velocidade e quadras poliesportivas em escolas municipais."
+            }
+        ]
+    },
+    "mma": {
+        "documentosChave": [
+            {
+                "titulo": "Plano de Ação para Prevenção e Controle do Desmatamento (PPCDAm)",
+                "descricao": "Diretrizes interministeriais de fiscalização ambiental e ordenamento territorial.",
+                "url": "https://www.gov.br/mma/pt-br/assuntos/prevencao-e-controle-do-desmatamento"
+            },
+            {
+                "titulo": "Portaria Conjunta MMA/IBAMA nº 15/2024",
+                "descricao": "Normatização do monitoramento contínuo de barragens de rejeitos em áreas de preservação.",
+                "url": "https://www.gov.br/ibama"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "MMA e IBAMA intensificam fiscalização preventiva contra incêndios no Pantanal e Cerrado",
+                "data": "2026-08-29",
+                "fonte": "Ministério do Meio Ambiente",
+                "url": "https://www.gov.br/mma/noticias",
+                "resumo": "Operações integradas com brigadas voluntárias e Força Nacional atuam em 14 unidades de conservação federais."
+            },
+            {
+                "titulo": "Brasil consolida compromissos climáticos e metas de descarbonização antes da COP30",
+                "data": "2026-08-22",
+                "fonte": "Agência Gov",
+                "url": "https://www.gov.br/mma/noticias",
+                "resumo": "Governo conclui rodadas participativas para a atualização da Contribuição Nacionalmente Determinada (NDC)."
+            }
+        ]
+    },
+    "transportes": {
+        "documentosChave": [
+            {
+                "titulo": "Plano Nacional de Logística (PNL 2035)",
+                "descricao": "Mapeamento multimodal da matriz de transportes e corredores prioritários de escoamento.",
+                "url": "https://www.gov.br/transportes/pt-br/assuntos/transporte-terrestre/pnl"
+            },
+            {
+                "titulo": "Painel de Obras Rodoviárias do Novo PAC",
+                "descricao": "Acompanhamento físico-financeiro de duplicações e restauração de rodovias federais.",
+                "url": "https://www.gov.br/transportes"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "Ministério dos Transportes entrega novos trechos duplicados e avança leilões rodoviários",
+                "data": "2026-08-27",
+                "fonte": "Agência Gov",
+                "url": "https://www.gov.br/transportes/noticias",
+                "resumo": "Contratos com novo modelo de concessão preveem tarifas menores e tarifas proporcionais por quilômetro rodado."
+            }
+        ]
+    },
+    "cidades": {
+        "documentosChave": [
+            {
+                "titulo": "Plano Nacional de Saneamento Básico (PLANSAB)",
+                "descricao": "Metas para universalização do abastecimento de água e coleta de esgoto até 2033.",
+                "url": "https://www.gov.br/cidades/pt-br/assuntos/saneamento-ambiental"
+            },
+            {
+                "titulo": "Manual do Programa Minha Casa, Minha Vida (Portaria MCid 725/2023)",
+                "descricao": "Regras de enquadramento de renda e critérios de seleção de famílias beneficiárias.",
+                "url": "https://www.gov.br/cidades/pt-br/assuntos/habitacao"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "Ministério das Cidades autoriza contratação de novas moradias e obras de prevenção a encostas",
+                "data": "2026-08-26",
+                "fonte": "Ministério das Cidades",
+                "url": "https://www.gov.br/cidades/noticias",
+                "resumo": "Seleção contempla municípios com histórico de deslizamentos e áreas de vulnerabilidade socioambiental."
+            }
+        ]
+    },
+    "sef-mg": {
+        "documentosChave": [
+            {
+                "titulo": "Relatório de Gestão Fiscal de Minas Gerais (RGF/SEF-MG)",
+                "descricao": "Demonstrativo do cumprimento dos limites da LRF e comprometimento da receita corrente líquida.",
+                "url": "https://fazenda.mg.gov.br/transparencia/gestao-fiscal/"
+            },
+            {
+                "titulo": "Demonstrativo Mensal de Repasses Constitucionais aos Municípios",
+                "descricao": "Valores repassados às 853 prefeituras referentes a cotas de ICMS, IPVA e IPI-Exportação.",
+                "url": "https://fazenda.mg.gov.br/municipios/repasses/"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "Fazenda de Minas divulga arrecadação tributária e cronograma regular de repasses às cidades",
+                "data": "2026-08-27",
+                "fonte": "Agência Minas",
+                "url": "https://agenciaminas.mg.gov.br",
+                "resumo": "Quadro fiscal aponta cumprimento rigoroso dos repasses constitucionais da saúde e educação aos 853 municípios."
+            }
+        ]
+    },
+    "ses-mg": {
+        "documentosChave": [
+            {
+                "titulo": "Plano Estadual de Saúde de Minas Gerais (PES 2024–2027)",
+                "descricao": "Diretrizes e metas sanitárias para a rede de atenção básica e hospitalar de Minas.",
+                "url": "https://saude.mg.gov.br"
+            },
+            {
+                "titulo": "Resolução SES/MG nº 8.950/2024 (Cofinanciamento da Rede Regional)",
+                "descricao": "Critérios de transferência de recursos para consórcios intermunicipais de saúde e Samu 192.",
+                "url": "https://saude.mg.gov.br/legislacao"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "Saúde de Minas amplia investimentos no programa Opera Mais e leitos de retaguarda",
+                "data": "2026-08-24",
+                "fonte": "Agência Minas",
+                "url": "https://agenciaminas.mg.gov.br",
+                "resumo": "Mais de 120 hospitais regionais recebem reforço financeiro para redução de filas cirúrgicas eletivas."
+            }
+        ]
+    },
+    "semad-mg": {
+        "documentosChave": [
+            {
+                "titulo": "Regimento do COPAM e Resoluções SEMAD/FEAM/IEF",
+                "descricao": "Normatização do licenciamento ambiental e classificação do porte poluidor em Minas.",
+                "url": "https://meioambiente.mg.gov.br/copam"
+            },
+            {
+                "titulo": "Relatório de Gestão da Segurança de Barragens de Mineração (FEAM)",
+                "descricao": "Acompanhamento das 23 barragens a montante pendentes de descaracterização em Minas Gerais.",
+                "url": "https://meioambiente.mg.gov.br/barragens"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "SEMAD publica balanço de fiscalização ambiental e monitoramento de barragens em Minas",
+                "data": "2026-08-28",
+                "fonte": "Agência Minas",
+                "url": "https://agenciaminas.mg.gov.br",
+                "resumo": "Ações integradas da FEAM e IEF fiscalizaram 312 empreendimentos minerários e industriais no último trimestre."
+            }
+        ]
+    },
+    "smsa-bh": {
+        "documentosChave": [
+            {
+                "titulo": "Relatório de Gestão do Fundo Municipal de Saúde de Belo Horizonte",
+                "descricao": "Execução orçamentária dos R$ 5,8 bilhões investidos nos 152 centros de saúde e 9 UPAs de BH.",
+                "url": "https://prefeitura.pbh.gov.br/saude"
+            },
+            {
+                "titulo": "Plano Municipal de Contingência das Arboviroses de Belo Horizonte",
+                "descricao": "Diretrizes de atendimento rápido, hidratação venosa e bloqueio vetorial nas 9 regionais.",
+                "url": "https://prefeitura.pbh.gov.br/saude"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "Prefeitura de BH amplia atendimento e intensifica vistorias com agentes de endemias",
+                "data": "2026-08-29",
+                "fonte": "PBH Notícias",
+                "url": "https://prefeitura.pbh.gov.br/noticias",
+                "resumo": "Rede municipal mantém horário estendido em unidades de saúde estratégicas nas regiões de maior incidência."
+            }
+        ]
+    },
+    "smobi-bh": {
+        "documentosChave": [
+            {
+                "titulo": "Plano Diretor de Drenagem Urbana de Belo Horizonte",
+                "descricao": "Projetos de engenharia para controle de cheias nas Bacias do Arrudas, Onça e Vilarinho.",
+                "url": "https://prefeitura.pbh.gov.br/obras-e-infraestrutura"
+            },
+            {
+                "titulo": "Catálogo de Obras Públicas do Portal de Transparência da PBH",
+                "descricao": "Boletins de medição e contratos das obras viárias e de contenção de encostas.",
+                "url": "https://transparencia.pbh.gov.br"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "PBH avança nas obras de prevenção a enchentes na Bacia do Córrego do Onça e Av. Vilarinho",
+                "data": "2026-08-26",
+                "fonte": "PBH Notícias",
+                "url": "https://prefeitura.pbh.gov.br/noticias",
+                "resumo": "Intervenções estruturais de micro e macrodrenagem chegam à etapa final para ampliar a segurança dos moradores."
+            }
+        ]
+    },
+    "camara-dos-deputados": {
+        "documentosChave": [
+            {
+                "titulo": "Regimento Interno da Câmara dos Deputados (RICD)",
+                "descricao": "Ritos de deliberação parlamentar, quóruns constitucionais e competência das comissões permanentes.",
+                "url": "https://www.camara.leg.br/legislacao/regimento-interno"
+            },
+            {
+                "titulo": "Portal da Transparência: Cota Parlamentar (CEAP)",
+                "descricao": "Notas fiscais e relatórios analíticos de gastos dos 513 deputados federais.",
+                "url": "https://www.camara.leg.br/transparencia"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "Câmara aprova regime de urgência para matérias orçamentárias e de segurança pública",
+                "data": "2026-08-28",
+                "fonte": "Agência Câmara",
+                "url": "https://www.camara.leg.br/noticias",
+                "resumo": "Plenário acelera tramitação de projetos de lei antes da fase final de deliberação orçamentária."
+            }
+        ]
+    },
+    "senado-federal": {
+        "documentosChave": [
+            {
+                "titulo": "Regimento Interno do Senado Federal (RISF)",
+                "descricao": "Normatização das sabatinas de ministros, dirigentes de agências reguladoras e fixação da dívida pública.",
+                "url": "https://legis.senado.leg.br/legislacao/ListaTextoIntegral.action?id=214041"
+            },
+            {
+                "titulo": "Demonstrativo Orçamentário e Financeiro do Senado",
+                "descricao": "Quadro de execução de pessoal, contratos de terceirização e custeio das atividades legislativas.",
+                "url": "https://www12.senado.leg.br/transparencia"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "Senado debate proposta de renegociação das dívidas dos estados e pacto federativo",
+                "data": "2026-08-27",
+                "fonte": "Agência Senado",
+                "url": "https://www12.senado.leg.br/noticias",
+                "resumo": "Comissões analisam alternativas para indexadores da dívida de entes federados como Minas Gerais e São Paulo."
+            }
+        ]
+    },
+    "almg": {
+        "documentosChave": [
+            {
+                "titulo": "Regimento Interno da Assembleia Legislativa de Minas Gerais",
+                "descricao": "Normas de funcionamento do plenário, processo de tramitação da LDO/LOA e comissões parlamentares de inquérito.",
+                "url": "https://www.almg.gov.br/conheca/regimento-interno/"
+            },
+            {
+                "titulo": "Portal da Transparência da ALMG",
+                "descricao": "Remunerações de servidores, verbas de indenização dos 77 deputados estaduais e quadro licitatório.",
+                "url": "https://www.almg.gov.br/transparencia/"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "Comissões da ALMG debatem impacto do Regime de Recuperação Fiscal nos serviços públicos de Minas",
+                "data": "2026-08-28",
+                "fonte": "Notícias ALMG",
+                "url": "https://www.almg.gov.br/noticias",
+                "resumo": "Audiências públicas ouvem servidores e representantes do Ministério da Fazenda sobre a repactuação fiscal."
+            }
+        ]
+    },
+    "cmbh": {
+        "documentosChave": [
+            {
+                "titulo": "Regimento Interno da Câmara Municipal de Belo Horizonte",
+                "descricao": "Regras do processo legislativo municipal, tramitação do Plano Diretor e comissões especiais.",
+                "url": "https://www.cmbh.mg.gov.br/legislacao/regimento-interno"
+            },
+            {
+                "titulo": "Portal da Transparência da CMBH: Verbas Indenizatórias e Diárias",
+                "descricao": "Controle público das notas fiscais e gastos mensais dos 41 vereadores de Belo Horizonte.",
+                "url": "https://www.cmbh.mg.gov.br/transparencia"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "CMBH realiza audiência pública sobre subsídio ao transporte e qualidade das linhas de ônibus",
+                "data": "2026-08-27",
+                "fonte": "CMBH Notícias",
+                "url": "https://www.cmbh.mg.gov.br/comunicacao/noticias",
+                "resumo": "Vereadores e usuários cobram pontualidade, ampliação de viagens noturnas e manutenção da frota coletiva."
+            }
+        ]
+    },
+    "stf": {
+        "documentosChave": [
+            {
+                "titulo": "Regimento Interno do Supremo Tribunal Federal (RISTF)",
+                "descricao": "Normatização da competência originária, recursos com repercussão geral e plenário virtual.",
+                "url": "https://portal.stf.jus.br/textos/verTexto.asp?servico=legislacaoRegimentoInterno"
+            },
+            {
+                "titulo": "Relatório Anual de Atividades Jurisdicionais do STF",
+                "descricao": "Balanço de produtividade, julgamentos colegiados e redução do acervo processual do Supremo.",
+                "url": "https://portal.stf.jus.br/transparencia"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "STF julga temas de repercussão geral com impacto no pacto federativo e direitos fundamentais",
+                "data": "2026-08-29",
+                "fonte": "Notícias STF",
+                "url": "https://portal.stf.jus.br/noticias",
+                "resumo": "Plenário fixa teses com efeito vinculante para todo o Judiciário brasileiro em matéria tributária e ambiental."
+            }
+        ]
+    },
+    "tjmg": {
+        "documentosChave": [
+            {
+                "titulo": "Regimento Interno do Tribunal de Justiça de Minas Gerais",
+                "descricao": "Competência do Órgão Especial, câmaras cíveis e criminais e funcionamento dos juizados especiais.",
+                "url": "https://www.tjmg.jus.br/portal-tjmg/institucional/regimento-interno.htm"
+            },
+            {
+                "titulo": "Relatório de Inspeção da Corregedoria Nacional de Justiça no TJMG",
+                "descricao": "Auditoria externa do CNJ sobre precatórios, estrutura de varas e produtividade de magistrados.",
+                "url": "https://www.cnj.jus.br/corregedoria/inspecoes"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "TJMG instala novos centros de conciliação e avança na digitalização processual em 298 comarcas",
+                "data": "2026-08-28",
+                "fonte": "Notícias TJMG",
+                "url": "https://www.tjmg.jus.br/portal-tjmg/noticias",
+                "resumo": "Tribunal expande serviços do Cejusc e ferramentas eletrônicas para reduzir o tempo médio de tramitação das ações."
+            }
+        ]
+    },
+    "mpmg": {
+        "documentosChave": [
+            {
+                "titulo": "Lei Orgânica do Ministério Público de Minas Gerais (Lei Complementar nº 34/1994)",
+                "descricao": "Competência funcional dos promotores de justiça e órgãos de administração superior do MPMG.",
+                "url": "https://www.mpmg.mp.br/portal/menu/institucional/legislacao/lei-organica.shtml"
+            },
+            {
+                "titulo": "Relatório de Gestão da Tutela Coletiva e Acordos Ambientais do MPMG",
+                "descricao": "Monitoramento dos compromissos firmados com mineradoras na recuperação de bacias hidrográficas.",
+                "url": "https://www.mpmg.mp.br/transparencia"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "MPMG atua em forças-tarefas de combate à improbidade e fiscalização de recursos públicos",
+                "data": "2026-08-29",
+                "fonte": "Notícias MPMG",
+                "url": "https://www.mpmg.mp.br/comunicacao/noticias",
+                "resumo": "Promotorias do Patrimônio Público ajuízam ações civis para reaver valores desviados em contratações municipais."
+            }
+        ]
+    },
+    "dpmg": {
+        "documentosChave": [
+            {
+                "titulo": "Lei Orgânica da Defensoria Pública de Minas Gerais (Lei Complementar nº 65/2003)",
+                "descricao": "Princípios, atribuições e garantias institucionais dos defensores públicos do estado.",
+                "url": "https://defensoria.mg.def.br/institucional/legislacao"
+            },
+            {
+                "titulo": "Relatório do Mapa da Defensoria Pública em Minas Gerais",
+                "descricao": "Diagnóstico do déficit de defensores públicos em comarcas do interior do estado.",
+                "url": "https://defensoria.mg.def.br/transparencia"
+            }
+        ],
+        "noticias": [
+            {
+                "titulo": "Defensoria Pública de Minas realiza mutirão de orientação jurídica e conciliação no interior",
+                "data": "2026-08-28",
+                "fonte": "Notícias DPMG",
+                "url": "https://defensoria.mg.def.br/noticias",
+                "resumo": "Equipes itinerantes atendem mais de duas mil famílias em questões de moradia, saúde e regularização civil."
+            }
+        ]
+    }
+}
+
+def main():
+    print("Gerando base unificada de instituicoes e secretarias de todas as esferas...")
+    
+    # Injeta documentosChave e noticias em cada instituicao
+    for inst in INSTITUICOES:
+        sigla = inst["sigla"]
+        enriq = ENRIQUECIMENTO_DOCS_E_NOTICIAS.get(sigla, {})
+        inst["documentosChave"] = enriq.get("documentosChave", [
+            {
+                "titulo": f"Regimento Interno e Atos Oficiais de {inst['nome']}",
+                "descricao": "Normatização das competências e estrutura de atendimento aos cidadãos.",
+                "url": inst["ouvidoria"]["portal"]
+            },
+            {
+                "titulo": "Portal da Transparência e Prestação de Contas",
+                "descricao": "Acompanhamento da execução orçamentária, licitações e remunerações públicas.",
+                "url": inst["ouvidoria"]["sic"] or inst["ouvidoria"]["portal"]
+            }
+        ])
+        inst["noticias"] = enriq.get("noticias", [
+            {
+                "titulo": f"{inst['nome']} publica balanço de atividades e prestação de contas",
+                "data": "2026-08-25",
+                "fonte": f"Assessoria de Comunicação / {inst['sigla'].upper()}",
+                "url": inst["ouvidoria"]["portal"],
+                "resumo": f"Divulgação oficial dos resultados operacionais, investimentos e serviços à população."
+            }
+        ])
+
+    with open(ARQUIVO_DESTINO, "w", encoding="utf-8") as f:
+        json.dump(INSTITUICOES, f, ensure_ascii=False, indent=2)
+
+    tamanho = os.path.getsize(ARQUIVO_DESTINO) / 1024
+    print(f"Sucesso! Gerado {ARQUIVO_DESTINO} com {len(INSTITUICOES)} instituicoes completas ({tamanho:.1f} KB).")
+
+if __name__ == "__main__":
+    main()

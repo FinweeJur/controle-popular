@@ -33,7 +33,7 @@
           "url": "https://dadosabertos.tce.mg.gov.br/dataset/obras-publicas",
           "data_publicacao": "2023-05-18",
           "orgao_emissor": "Secretaria de Estado de Infraestrutura, Mobilidade e Parcerias (Seinfra-MG)",
-          "valor_reais": 109400000.00
+          "valor_reais": 109400000.0
         },
         {
           "id": "ev-mg-001-2",
@@ -42,7 +42,7 @@
           "url": "https://dados.mg.gov.br/dataset/despesa",
           "data_publicacao": "2023-08-22",
           "orgao_emissor": "SES-MG",
-          "valor_reais": 48300000.00
+          "valor_reais": 48300000.0
         }
       ]
     },
@@ -71,7 +71,7 @@
           "url": "https://dados.mg.gov.br/dataset/despesa",
           "data_publicacao": "2024-12-31",
           "orgao_emissor": "SEE-MG",
-          "valor_reais": 342100000.00
+          "valor_reais": 342100000.0
         }
       ]
     },
@@ -92,7 +92,7 @@
           "url": "https://www.der.mg.gov.br/",
           "data_publicacao": "2024-06-15",
           "orgao_emissor": "DER-MG / Seinfra",
-          "valor_reais": 68500000.00
+          "valor_reais": 68500000.0
         }
       ]
     },
@@ -125,7 +125,7 @@
           "url": "https://www.mg.gov.br/pro-brumadinho",
           "data_publicacao": "2023-09-12",
           "orgao_emissor": "Copasa / Semad",
-          "valor_reais": 185000000.00
+          "valor_reais": 185000000.0
         }
       ]
     }
@@ -140,7 +140,8 @@
       "url": "https://dados.mg.gov.br/dataset/despesa",
       "data": "2024-10-25",
       "tipo": "decreto",
-      "valor_reais": 132000000000.00
+      "valor_reais": 132000000000.0
     }
-  ]
+  ],
+  "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/mg-plano-governo.pdf"
 }

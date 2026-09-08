@@ -32,7 +32,7 @@
           "url": "https://www.betim.mg.gov.br/",
           "data_publicacao": "2022-06-28",
           "orgao_emissor": "Prefeitura de Betim / Secretaria de Saúde",
-          "valor_reais": 38900000.00
+          "valor_reais": 38900000.0
         }
       ]
     },
@@ -53,7 +53,7 @@
           "url": "https://betim.portaltp.com.br/",
           "data_publicacao": "2023-04-14",
           "orgao_emissor": "Secretaria Municipal de Infraestrutura",
-          "valor_reais": 14200000.00
+          "valor_reais": 14200000.0
         }
       ]
     },
@@ -74,7 +74,7 @@
           "url": "https://betim.portaltp.com.br/",
           "data_publicacao": "2023-09-18",
           "orgao_emissor": "Semed Betim",
-          "valor_reais": 18400000.00
+          "valor_reais": 18400000.0
         }
       ]
     },
@@ -101,7 +101,8 @@
       "url": "https://betim.portaltp.com.br/",
       "data": "2023-11-20",
       "tipo": "obra",
-      "valor_reais": 26500000.00
+      "valor_reais": 26500000.0
     }
-  ]
+  ],
+  "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/betim-plano-governo.pdf"
 }

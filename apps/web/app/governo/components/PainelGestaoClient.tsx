@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import type { MandatoGestao, Proposta, StatusProposta } from "@/lib/gestao/tipos";
 import { ROTULOS_STATUS, obterColunasCsvGestao } from "@/lib/gestao/dados";
+import { encontrarSiglaInstituicao } from "@/lib/instituicoes/catalogo";
 import { baixarCsv } from "@/lib/tabela/csv";
 import { formatCurrencyBRL } from "@/lib/betim/format";
 
@@ -379,6 +381,7 @@ export default function PainelGestaoClient({ mandato }: PainelGestaoClientProps)
             ) : (
               propostasOrdenadas.map((p) => {
                 const rotulo = ROTULOS_STATUS[p.status] || ROTULOS_STATUS.sem_sinal;
+                const siglaOrgao = encontrarSiglaInstituicao(p.orgao_alvo);
                 return (
                   <article
                     key={p.id}
@@ -391,7 +394,18 @@ export default function PainelGestaoClient({ mandato }: PainelGestaoClientProps)
                             {p.tema}
                           </span>
                           <span className="text-xs text-text-soft">
-                            Órgão: <strong>{p.orgao_alvo}</strong>
+                            Órgão:{" "}
+                            {siglaOrgao ? (
+                              <Link
+                                href={`/instituicoes/${siglaOrgao}`}
+                                className="font-bold text-primary underline decoration-primary/40 hover:text-primary/80 inline-flex items-center gap-1"
+                                title="Ver organograma, orçamento e contatos desta secretaria"
+                              >
+                                {p.orgao_alvo} ↗
+                              </Link>
+                            ) : (
+                              <strong>{p.orgao_alvo}</strong>
+                            )}
                           </span>
                         </div>
                       </div>
@@ -407,8 +421,8 @@ export default function PainelGestaoClient({ mandato }: PainelGestaoClientProps)
                       <blockquote className="border-l-4 border-primary/40 pl-3 text-sm italic text-text">
                         &ldquo;{p.trecho_verbatim}&rdquo;
                       </blockquote>
-                      <div className="mt-1 flex items-center gap-2 text-xs text-text-soft">
-                        <span>Página {p.plano_pagina} do Plano de Governo TSE</span>
+                      <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-text-soft">
+                        <span>Página {p.plano_pagina} do Plano TSE</span>
                         {mandato.plano_pdf_url && (
                           <a
                             href={mandato.plano_pdf_url}
@@ -416,8 +430,22 @@ export default function PainelGestaoClient({ mandato }: PainelGestaoClientProps)
                             rel="noopener noreferrer"
                             className="font-medium text-primary underline hover:text-primary/80"
                           >
-                            Ver PDF oficial ↗
+                            PDF Oficial (TSE) ↗
                           </a>
+                        )}
+                        {mandato.plano_pdf_r2_url && (
+                          <>
+                            <span>·</span>
+                            <a
+                              href={mandato.plano_pdf_r2_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 rounded bg-primary/10 px-1.5 py-0.5 font-medium text-primary hover:bg-primary/20"
+                              title="Espelho CDN Cloudflare R2 comprimido e rápido"
+                            >
+                              ⚡ Espelho R2 ↗
+                            </a>
+                          </>
                         )}
                       </div>
                     </div>

@@ -33,7 +33,7 @@
           "url": "https://www.rj.gov.br/saude",
           "data_publicacao": "2023-11-14",
           "orgao_emissor": "SES-RJ / Emop",
-          "valor_reais": 89400000.00
+          "valor_reais": 89400000.0
         }
       ]
     },
@@ -54,7 +54,7 @@
           "url": "https://www.agenersa.rj.gov.br/",
           "data_publicacao": "2024-04-10",
           "orgao_emissor": "Agenersa",
-          "valor_reais": 4800000000.00
+          "valor_reais": 4800000000.0
         }
       ]
     },
@@ -102,7 +102,8 @@
       "url": "https://www.rj.gov.br/obras",
       "data": "2023-08-15",
       "tipo": "obra",
-      "valor_reais": 450000000.00
+      "valor_reais": 450000000.0
     }
-  ]
+  ],
+  "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/rj-plano-governo.pdf"
 }

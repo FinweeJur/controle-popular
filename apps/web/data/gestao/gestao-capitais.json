@@ -110,7 +110,8 @@
         "tipo": "obra",
         "valor_reais": 1200000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/sp-plano-governo.pdf"
   },
   "sao-paulo": {
     "ente": "sp-capital",
@@ -223,7 +224,8 @@
         "tipo": "obra",
         "valor_reais": 1200000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/sp-plano-governo.pdf"
   },
   "rio-de-janeiro": {
     "ente": "rio-de-janeiro-capital",
@@ -336,7 +338,8 @@
         "tipo": "obra",
         "valor_reais": 95000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/rio-de-janeiro-plano-governo.pdf"
   },
   "rj": {
     "ente": "rio-de-janeiro-capital",
@@ -449,7 +452,8 @@
         "tipo": "obra",
         "valor_reais": 95000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/rio-de-janeiro-plano-governo.pdf"
   },
   "bh": {
     "ente": "bh-capital",
@@ -562,7 +566,8 @@
         "tipo": "obra",
         "valor_reais": 85000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/bh-plano-governo.pdf"
   },
   "belo-horizonte": {
     "ente": "bh-capital",
@@ -675,7 +680,8 @@
         "tipo": "obra",
         "valor_reais": 85000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/bh-plano-governo.pdf"
   },
   "salvador": {
     "ente": "salvador-capital",
@@ -788,7 +794,8 @@
         "tipo": "obra",
         "valor_reais": 65000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/salvador-plano-governo.pdf"
   },
   "fortaleza": {
     "ente": "fortaleza-capital",
@@ -901,7 +908,8 @@
         "tipo": "obra",
         "valor_reais": 110000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/fortaleza-plano-governo.pdf"
   },
   "curitiba": {
     "ente": "curitiba-capital",
@@ -1014,7 +1022,8 @@
         "tipo": "obra",
         "valor_reais": 32000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/curitiba-plano-governo.pdf"
   },
   "recife": {
     "ente": "recife-capital",
@@ -1127,7 +1136,8 @@
         "tipo": "obra",
         "valor_reais": 55000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/recife-plano-governo.pdf"
   },
   "porto-alegre": {
     "ente": "porto-alegre-capital",
@@ -1240,7 +1250,8 @@
         "tipo": "obra",
         "valor_reais": 510000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/porto-alegre-plano-governo.pdf"
   },
   "belem": {
     "ente": "belem-capital",
@@ -1353,7 +1364,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/belem-plano-governo.pdf"
   },
   "manaus": {
     "ente": "manaus-capital",
@@ -1466,7 +1478,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/manaus-plano-governo.pdf"
   },
   "goiania": {
     "ente": "goiania-capital",
@@ -1559,7 +1572,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/goiania-plano-governo.pdf"
   },
   "vitoria": {
     "ente": "vitoria-capital",
@@ -1672,7 +1686,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/vitoria-plano-governo.pdf"
   },
   "florianopolis": {
     "ente": "florianopolis-capital",
@@ -1775,7 +1790,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/florianopolis-plano-governo.pdf"
   },
   "campo-grande": {
     "ente": "campo-grande-capital",
@@ -1888,7 +1904,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/campo-grande-plano-governo.pdf"
   },
   "cuiaba": {
     "ente": "cuiaba-capital",
@@ -2001,7 +2018,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/cuiaba-plano-governo.pdf"
   },
   "natal": {
     "ente": "natal-capital",
@@ -2104,7 +2122,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/natal-plano-governo.pdf"
   },
   "joao-pessoa": {
     "ente": "joao-pessoa-capital",
@@ -2217,7 +2236,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/joao-pessoa-plano-governo.pdf"
   },
   "maceio": {
     "ente": "maceio-capital",
@@ -2320,7 +2340,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/maceio-plano-governo.pdf"
   },
   "teresina": {
     "ente": "teresina-capital",
@@ -2413,7 +2434,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/teresina-plano-governo.pdf"
   },
   "sao-luis": {
     "ente": "sao-luis-capital",
@@ -2526,7 +2548,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/sao-luis-plano-governo.pdf"
   },
   "aracaju": {
     "ente": "aracaju-capital",
@@ -2639,7 +2662,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/aracaju-plano-governo.pdf"
   },
   "porto-velho": {
     "ente": "porto-velho-capital",
@@ -2752,7 +2776,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/porto-velho-plano-governo.pdf"
   },
   "rio-branco": {
     "ente": "rio-branco-capital",
@@ -2855,7 +2880,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/rio-branco-plano-governo.pdf"
   },
   "macapa": {
     "ente": "macapa-capital",
@@ -2958,7 +2984,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/macapa-plano-governo.pdf"
   },
   "boa-vista": {
     "ente": "boa-vista-capital",
@@ -3071,7 +3098,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/boa-vista-plano-governo.pdf"
   },
   "palmas": {
     "ente": "palmas-capital",
@@ -3174,7 +3202,8 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/palmas-plano-governo.pdf"
   },
   "brasilia": {
     "ente": "brasilia-capital",
@@ -3287,6 +3316,7 @@
         "tipo": "obra",
         "valor_reais": 28000000.0
       }
-    ]
+    ],
+    "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/brasilia-plano-governo.pdf"
   }
 }

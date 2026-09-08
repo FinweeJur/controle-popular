@@ -41,7 +41,7 @@
           "url": "https://siop.planejamento.gov.br/",
           "data_publicacao": "2024-12-31",
           "orgao_emissor": "Ministério da Saúde",
-          "valor_reais": 3100000000.00
+          "valor_reais": 3100000000.0
         }
       ]
     },
@@ -70,7 +70,7 @@
           "url": "https://api-publica.obrasgov.gestao.gov.br/obras/docs",
           "data_publicacao": "2024-05-20",
           "orgao_emissor": "Ministério da Gestão e da Inovação em Serviços Públicos",
-          "valor_reais": 4120000000.00
+          "valor_reais": 4120000000.0
         }
       ]
     },
@@ -154,7 +154,8 @@
       "url": "https://www.portaltransparencia.gov.br/",
       "data": "2024-05-10",
       "tipo": "lei",
-      "valor_reais": 62500000000.00
+      "valor_reais": 62500000000.0
     }
-  ]
+  ],
+  "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/uniao-plano-governo.pdf"
 }

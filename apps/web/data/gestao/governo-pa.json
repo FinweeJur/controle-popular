@@ -33,7 +33,7 @@
           "url": "https://agenciapara.com.br/",
           "data_publicacao": "2024-05-12",
           "orgao_emissor": "Sedop / Seac",
-          "valor_reais": 380000000.00
+          "valor_reais": 380000000.0
         }
       ]
     },
@@ -74,7 +74,7 @@
           "url": "https://www.sedop.pa.gov.br/",
           "data_publicacao": "2024-04-18",
           "orgao_emissor": "Sedop-PA",
-          "valor_reais": 420000000.00
+          "valor_reais": 420000000.0
         }
       ]
     },
@@ -95,7 +95,7 @@
           "url": "https://www.saude.pa.gov.br/",
           "data_publicacao": "2023-09-28",
           "orgao_emissor": "Sespa",
-          "valor_reais": 45000000.00
+          "valor_reais": 45000000.0
         }
       ]
     }
@@ -110,7 +110,8 @@
       "url": "https://agenciapara.com.br/",
       "data": "2024-01-15",
       "tipo": "obra",
-      "valor_reais": 1300000000.00
+      "valor_reais": 1300000000.0
     }
-  ]
+  ],
+  "plano_pdf_r2_url": "https://dados.controlepopular.com.br/planos/pa-plano-governo.pdf"
 }
