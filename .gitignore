@@ -193,3 +193,6 @@ apps/web/app/api/painel/chat-operacoes/route.local.ts
 
 # XLSX brutos de trabalho (SINESP/VDE)
 etl/betim/dados/temp/
+
+# Checkpoint de coleta (estado de rodada desta maquina)
+scripts/.checkpoint-*
