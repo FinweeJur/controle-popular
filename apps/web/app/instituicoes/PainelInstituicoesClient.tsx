@@ -165,7 +165,7 @@ export default function PainelInstituicoesClient({ instituicoes }: PainelInstitu
   return (
     <div className="space-y-8">
       {/* ═══ 1. CARTÕES DE TOPO (STATUS GERAL) ═══ */}
-      <section aria-labelledby="metricas-orgaos" className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <section id="resumo-esferas" aria-labelledby="metricas-orgaos" className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         <div className="rounded-xl border border-border bg-surface-1 p-4 shadow-sm">
           <span className="text-xs font-medium uppercase tracking-wider text-text-soft">
             Poder Executivo
@@ -206,7 +206,7 @@ export default function PainelInstituicoesClient({ instituicoes }: PainelInstitu
       </section>
 
       {/* ═══ 2. FILTROS E BUSCA ═══ */}
-      <section aria-labelledby="filtros-instituicoes" className="rounded-xl border border-border bg-surface-1 p-5 shadow-sm space-y-4">
+      <section id="filtros-instituicoes" aria-labelledby="filtros-instituicoes-titulo" className="rounded-xl border border-border bg-surface-1 p-5 shadow-sm space-y-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="relative flex-1">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-soft" aria-hidden="true" />
@@ -271,7 +271,7 @@ export default function PainelInstituicoesClient({ instituicoes }: PainelInstitu
       </section>
 
       {/* ═══ 3. LISTA DE ENTIDADES (CARDS RICOS) ═══ */}
-      <section aria-label="Catálogo de instituições" className="space-y-4">
+      <section id="catalogo-instituicoes" aria-label="Catálogo de instituições" className="space-y-4">
         {filtradas.length === 0 ? (
           <div className="rounded-xl border border-dashed border-border p-12 text-center text-sm text-text-soft">
             Nenhuma instituição ou secretaria localizada com os filtros selecionados.

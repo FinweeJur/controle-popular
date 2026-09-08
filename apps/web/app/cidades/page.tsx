@@ -1,4 +1,7 @@
 import Link from "next/link";
+import FooterGlobal from "@/app/components/FooterGlobal";
+import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
+import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/components/wiki";
 import {
   listarCidadesEstrategicas,
   obterEstatisticasExpansao,
@@ -11,6 +14,36 @@ export const metadata = {
   description:
     "Mapa mestre das 27 capitais de estado e 172 polos regionais do interior atendidos pelo Controle Popular com códigos IBGE e DATASUS.",
 };
+
+const SECOES_CIDADES = [
+  { id: "status-totais", titulo: "1. Totais da Expansão" },
+  { id: "grafico-distribuicao", titulo: "2. Distribuição por Região" },
+  { id: "catalogo-cidades", titulo: "3. Catálogo das 199 Cidades" },
+  { id: "perguntas-frequentes", titulo: "4. Dúvidas Frequentes" },
+];
+
+const LINKS_RELACIONADOS = [
+  {
+    href: "/judiciario/contatos",
+    titulo: "Varas, Gabinetes e Balcão Virtual",
+    descricao: "Contatos e varas das comarcas de MG e cidades monitoradas no portal.",
+  },
+  {
+    href: "/governo",
+    titulo: "Acompanhamento de Governos e Metas de Campanha",
+    descricao: "Promessas e execução dos executivos estaduais e municipais.",
+  },
+  {
+    href: "/instituicoes",
+    titulo: "Instituições e Secretarias Públicas",
+    descricao: "Organogramas, secretarias de fazenda e saúde em todas as esferas.",
+  },
+  {
+    href: "/ambiental/barragens",
+    titulo: "Observatório de Barragens de Mineração",
+    descricao: "Monitoramento de barragens a montante e descaracterização nos municípios.",
+  },
+];
 
 export default function PaginaCidadesEstrategicas() {
   const cidades = listarCidadesEstrategicas();
@@ -26,155 +59,194 @@ export default function PaginaCidadesEstrategicas() {
   ];
   const maxRegiao = Math.max(...regioes.map((r) => r.total));
 
+  const breadcrumbItems = [
+    { name: "Início", item: "https://controlepopular.com.br/" },
+    { name: "Expansão Nacional", item: "https://controlepopular.com.br/cidades" },
+  ];
+
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
-      {/* BREADCRUMB */}
-      <nav aria-label="Navegação estrutural" className="mb-6 flex items-center gap-2 text-xs text-muted">
-        <Link href="/" className="hover:underline">Início</Link>
-        <span>/</span>
-        <span className="font-semibold text-foreground">Expansão Nacional</span>
-      </nav>
+    <div className="min-h-screen bg-surface-0 text-foreground">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <MiniSumarioLateral itens={SECOES_CIDADES} />
 
-      {/* CABEÇALHO */}
-      <header className="mb-8">
-        <div className="mb-3 flex flex-wrap gap-2">
-          <span className="rounded-full bg-primary/10 px-3 py-0.5 text-xs font-semibold text-primary">
-            Plano Mestre Nacional
-          </span>
-          <span className="rounded-full bg-surface-2 border border-border px-3 py-0.5 text-xs text-muted">
-            IBGE + DATASUS
-          </span>
-        </div>
-        <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-          199 Cidades Estratégicas do Brasil
-        </h1>
-        <p className="mt-3 text-base text-muted sm:text-lg">
-          O portal Controle Popular expande sua fiscalização cidadã para as 27 Capitais
-          e 172 Polos do Interior em todas as 27 Unidades Federativas. Cobertura completa de
-          contratos, saúde pelo SUS (CID-10), risco socioambiental e finanças públicas.
-        </p>
+      <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
+        {/* BREADCRUMB */}
+        <nav aria-label="Navegação estrutural" className="mb-6 flex items-center gap-2 text-xs text-muted">
+          <Link href="/" className="hover:underline">Início</Link>
+          <span>/</span>
+          <span className="font-semibold text-foreground">Expansão Nacional</span>
+        </nav>
 
-        {/* EPÍGRAFE EDITORIAL */}
-        <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
-          <p>
-            &ldquo;O número vem do dado; o modelo, se houver, só embrulha. Tipagem nominal estrita: 7 dígitos para o código IBGE e 6 dígitos para o DATASUS. Nomes ambíguos ou homônimos são sempre desambiguados pelo código oficial.&rdquo;
+        {/* CABEÇALHO */}
+        <header className="mb-8">
+          <div className="mb-3 flex flex-wrap gap-2">
+            <span className="rounded-full bg-primary/10 px-3 py-0.5 text-xs font-semibold text-primary">
+              Plano Mestre Nacional
+            </span>
+            <span className="rounded-full bg-surface-2 border border-border px-3 py-0.5 text-xs text-muted">
+              IBGE + DATASUS
+            </span>
+          </div>
+          <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+            199 Cidades Estratégicas do Brasil
+          </h1>
+          <p className="mt-3 text-base text-muted sm:text-lg">
+            O portal Controle Popular expande sua fiscalização cidadã para as 27 Capitais
+            e 172 Polos do Interior em todas as 27 Unidades Federativas. Cobertura completa de
+            contratos, saúde pelo SUS (CID-10), risco socioambiental e finanças públicas.
           </p>
-          <p className="mt-1 text-xs not-italic font-medium text-foreground">
-            — Diretriz Arquitetural de Expansão Nacional (PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md)
+
+          {/* EPÍGRAFE EDITORIAL */}
+          <div className="mt-4 rounded-xl border border-dashed border-primary/40 bg-surface-2/60 p-4 text-sm italic text-muted">
+            <p>
+              &ldquo;O número vem do dado; o modelo, se houver, só embrulha. Tipagem nominal estrita: 7 dígitos para o código IBGE e 6 dígitos para o DATASUS. Nomes ambíguos ou homônimos são sempre desambiguados pelo código oficial.&rdquo;
+            </p>
+            <p className="mt-1 text-xs not-italic font-medium text-foreground">
+              — Diretriz Arquitetural de Expansão Nacional (PLANO-EXPANSAO-NACIONAL-CIDADES-E-ESTADOS.md)
+            </p>
+          </div>
+        </header>
+
+        {/* Banner de atalho para Varas e Fóruns das Cidades */}
+        <div className="mb-8 rounded-2xl border border-primary/30 bg-primary/5 p-5 shadow-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-primary">
+              Varas, Juizados e Balcão Virtual
+            </span>
+            <h3 className="font-display text-base font-bold text-foreground mt-0.5">
+              Varas e Fóruns das Cidades e Comarcas Monitoradas
+            </h3>
+            <p className="text-xs text-muted mt-1">
+              Consulte os contatos com DDD, e-mails institucionais, endereços com CEP e juízes titulares de 990 unidades judiciárias em todas as comarcas de MG e polos do país.
+            </p>
+          </div>
+          <Link
+            href="/judiciario/contatos"
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-primary/90"
+          >
+            <span>Guia de Varas da Comarca →</span>
+          </Link>
+        </div>
+
+        {/* Sumário Interno (Padrão Wiki) */}
+        <IndiceWiki itens={SECOES_CIDADES} />
+
+        {/* 1. CARTÕES DE STATUS DE TOPO */}
+        <section id="status-totais" aria-labelledby="titulo-totais" className="mb-8">
+          <h2 id="titulo-totais" className="sr-only">Totais da Expansão</h2>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <div className="rounded-xl border border-border bg-surface p-4 text-center">
+              <p className="text-xs font-medium text-muted uppercase tracking-wider">Cidades Totais</p>
+              <p className="mt-1 font-display text-2xl font-bold text-foreground sm:text-3xl">
+                {stats.totalCidades}
+              </p>
+              <p className="mt-1 text-[11px] text-muted">Auditadas no IBGE</p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-surface p-4 text-center">
+              <p className="text-xs font-medium text-muted uppercase tracking-wider">Capitais e DF</p>
+              <p className="mt-1 font-display text-2xl font-bold text-primary sm:text-3xl">
+                {stats.totalCapitais}
+              </p>
+              <p className="mt-1 text-[11px] text-muted">100% das Capitais</p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-surface p-4 text-center">
+              <p className="text-xs font-medium text-muted uppercase tracking-wider">Polos do Interior</p>
+              <p className="mt-1 font-display text-2xl font-bold text-foreground sm:text-3xl">
+                {stats.totalPolosInterior}
+              </p>
+              <p className="mt-1 text-[11px] text-muted">Centros Regionais</p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-surface p-4 text-center">
+              <p className="text-xs font-medium text-muted uppercase tracking-wider">Estados (UFs)</p>
+              <p className="mt-1 font-display text-2xl font-bold text-emerald-600 sm:text-3xl">
+                {stats.totalEstados}
+              </p>
+              <p className="mt-1 text-[11px] text-muted">26 Estados + DF</p>
+            </div>
+          </div>
+        </section>
+
+        {/* 2. GRÁFICO SVG NATIVO: DISTRIBUIÇÃO POR REGIÃO */}
+        <section id="grafico-distribuicao" className="mb-8 rounded-xl border border-border bg-surface p-5">
+          <h2 className="font-display text-lg font-semibold text-foreground">
+            Distribuição Geográfica das Cidades Estratégicas
+          </h2>
+          <p className="mt-1 text-xs text-muted">
+            Quantidade de municípios selecionados por macrorregião geográfica brasileira.
           </p>
-        </div>
-      </header>
 
-      {/* 1. CARTÕES DE STATUS DE TOPO */}
-      <section aria-labelledby="titulo-totais" className="mb-8">
-        <h2 id="titulo-totais" className="sr-only">Totais da Expansão</h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <div className="rounded-xl border border-border bg-surface p-4 text-center">
-            <p className="text-xs font-medium text-muted uppercase tracking-wider">Cidades Totais</p>
-            <p className="mt-1 font-display text-2xl font-bold text-foreground sm:text-3xl">
-              {stats.totalCidades}
-            </p>
-            <p className="mt-1 text-[11px] text-muted">Auditadas no IBGE</p>
-          </div>
-
-          <div className="rounded-xl border border-border bg-surface p-4 text-center">
-            <p className="text-xs font-medium text-muted uppercase tracking-wider">Capitais e DF</p>
-            <p className="mt-1 font-display text-2xl font-bold text-primary sm:text-3xl">
-              {stats.totalCapitais}
-            </p>
-            <p className="mt-1 text-[11px] text-muted">100% das Capitais</p>
-          </div>
-
-          <div className="rounded-xl border border-border bg-surface p-4 text-center">
-            <p className="text-xs font-medium text-muted uppercase tracking-wider">Polos do Interior</p>
-            <p className="mt-1 font-display text-2xl font-bold text-foreground sm:text-3xl">
-              {stats.totalPolosInterior}
-            </p>
-            <p className="mt-1 text-[11px] text-muted">Centros Regionais</p>
-          </div>
-
-          <div className="rounded-xl border border-border bg-surface p-4 text-center">
-            <p className="text-xs font-medium text-muted uppercase tracking-wider">Estados (UFs)</p>
-            <p className="mt-1 font-display text-2xl font-bold text-emerald-600 sm:text-3xl">
-              {stats.totalEstados}
-            </p>
-            <p className="mt-1 text-[11px] text-muted">26 Estados + DF</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. GRÁFICO SVG NATIVO: DISTRIBUIÇÃO POR REGIÃO */}
-      <section className="mb-8 rounded-xl border border-border bg-surface p-5">
-        <h2 className="font-display text-lg font-semibold text-foreground">
-          Distribuição Geográfica das Cidades Estratégicas
-        </h2>
-        <p className="mt-1 text-xs text-muted">
-          Quantidade de municípios selecionados por macrorregião geográfica brasileira.
-        </p>
-
-        <div className="mt-4 space-y-3">
-          {regioes.map((r) => {
-            const pct = Math.round((r.total / maxRegiao) * 100);
-            return (
-              <div key={r.nome} className="space-y-1">
-                <div className="flex justify-between text-xs">
-                  <span className="font-medium text-foreground">{r.nome}</span>
-                  <span className="font-mono text-muted">{r.total} municípios ({Math.round((r.total / stats.totalCidades) * 100)}%)</span>
+          <div className="mt-4 space-y-3">
+            {regioes.map((r) => {
+              const pct = Math.round((r.total / maxRegiao) * 100);
+              return (
+                <div key={r.nome} className="space-y-1">
+                  <div className="flex justify-between text-xs">
+                    <span className="font-medium text-foreground">{r.nome}</span>
+                    <span className="font-mono text-muted">{r.total} municípios ({Math.round((r.total / stats.totalCidades) * 100)}%)</span>
+                  </div>
+                  <div className="h-3.5 w-full overflow-hidden rounded-full bg-surface-2">
+                    <div
+                      className="h-full rounded-full transition-all duration-500"
+                      style={{
+                        width: `${pct}%`,
+                        backgroundColor: r.cor,
+                      }}
+                      role="progressbar"
+                      aria-valuenow={r.total}
+                      aria-valuemin={0}
+                      aria-valuemax={maxRegiao}
+                      aria-label={`Região ${r.nome}: ${r.total} municípios`}
+                    />
+                  </div>
                 </div>
-                <div className="h-3.5 w-full overflow-hidden rounded-full bg-surface-2">
-                  <div
-                    className="h-full rounded-full transition-all duration-500"
-                    style={{
-                      width: `${pct}%`,
-                      backgroundColor: r.cor,
-                    }}
-                    role="progressbar"
-                    aria-valuenow={r.total}
-                    aria-valuemin={0}
-                    aria-valuemax={maxRegiao}
-                    aria-label={`Região ${r.nome}: ${r.total} municípios`}
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+              );
+            })}
+          </div>
+        </section>
 
-      {/* 3. TABELA COM FILTROS E CSV */}
-      <section className="mb-8">
-        <h2 className="mb-3 font-display text-xl font-semibold text-foreground">
-          Catálogo Completo das Cidades
-        </h2>
-        <TabelaCidadesClient cidades={cidades} />
-      </section>
+        {/* 3. TABELA COM FILTROS E CSV */}
+        <section id="catalogo-cidades" className="mb-8">
+          <h2 className="mb-3 font-display text-xl font-semibold text-foreground">
+            Catálogo Completo das Cidades
+          </h2>
+          <TabelaCidadesClient cidades={cidades} />
+        </section>
 
-      {/* 4. SANFONA DE DIÁLOGO */}
-      <section className="mb-8">
-        <PainelDialogo
-          titulo="Como funciona a expansão do Controle Popular para o Brasil?"
-          perguntas={[
-            {
-              id: "por-que-199",
-              pergunta: "Por que começar com 199 cidades estratégicas?",
-              resposta:
-                "As 27 capitais e os 172 polos do interior concentram mais de 65% do PIB, dos leitos hospitalares SUS e dos principais nós de infraestrutura e pressão socioambiental do Brasil. Isso viabiliza auditoria de alto impacto sem dispersar o foco antes de consolidar os coletores automáticos.",
-            },
-            {
-              id: "diferenca-codigos",
-              pergunta: "Qual a diferença entre o código IBGE e o código DATASUS?",
-              resposta:
-                "O código IBGE possui 7 dígitos (ex: Belo Horizonte = 3106200). O DATASUS utiliza 6 dígitos truncando o dígito verificador final (ex: 310620). Misturar esses códigos geraria vazios nas consultas hospitalares e contratuais. O portal trata ambos como tipos nominais distintos.",
-            },
-            {
-              id: "trilhas-cruzamento",
-              pergunta: "Quais dados são cruzados em cada cidade?",
-              resposta:
-                "O plano mestre estabelece quatro trilhas críticas: 1) Socioambiental (barragens, embargos e terra); 2) Finanças (PNCP, contratos e Siconfi); 3) Judiciário (processos climáticos e CNJ); 4) Saúde (internações hospitalares por causas evitáveis e agressões ambientais via CID-10).",
-            },
-          ]}
-        />
-      </section>
+        {/* 4. SANFONA DE DIÁLOGO */}
+        <section id="perguntas-frequentes" className="mb-8">
+          <PainelDialogo
+            titulo="Como funciona a expansão do Controle Popular para o Brasil?"
+            perguntas={[
+              {
+                id: "por-que-199",
+                pergunta: "Por que começar com 199 cidades estratégicas?",
+                resposta:
+                  "As 27 capitais e os 172 polos do interior concentram mais de 65% do PIB, dos leitos hospitalares SUS e dos principais nós de infraestrutura e pressão socioambiental do Brasil. Isso viabiliza auditoria de alto impacto sem dispersar o foco antes de consolidar os coletores automáticos.",
+              },
+              {
+                id: "diferenca-codigos",
+                pergunta: "Qual a diferença entre o código IBGE e o código DATASUS?",
+                resposta:
+                  "O código IBGE possui 7 dígitos (ex: Belo Horizonte = 3106200). O DATASUS utiliza 6 dígitos truncando o dígito verificador final (ex: 310620). Misturar esses códigos geraria vazios nas consultas hospitalares e contratuais. O portal trata ambos como tipos nominais distintos.",
+              },
+              {
+                id: "trilhas-cruzamento",
+                pergunta: "Quais dados são cruzados em cada cidade?",
+                resposta:
+                  "O plano mestre estabelece quatro trilhas críticas: 1) Socioambiental (barragens, embargos e terra); 2) Finanças (PNCP, contratos e Siconfi); 3) Judiciário (processos climáticos e CNJ); 4) Saúde (internações hospitalares por causas evitáveis e agressões ambientais via CID-10).",
+              },
+            ]}
+          />
+        </section>
+
+        {/* Links Relacionados (Padrão Wiki) */}
+        <LinksRelacionados links={LINKS_RELACIONADOS} />
+      </main>
+
+      <FooterGlobal />
     </div>
   );
 }

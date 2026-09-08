@@ -390,6 +390,31 @@ export default async function InstituicaoPage({ params }: Props) {
         </section>
       )}
 
+      {/* Atalho para o Guia de Varas e Balcão Virtual */}
+      <div className="mt-8 rounded-2xl border border-primary/30 bg-primary/5 p-5 shadow-xs transition-colors hover:border-primary/50">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="space-y-1">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+              <PhoneCall size={14} aria-hidden="true" />
+              Atendimento e Varas Judiciais
+            </span>
+            <h3 className="font-display text-base font-bold text-text">
+              Precisa falar com uma Vara, Gabinete ou Balcão Virtual?
+            </h3>
+            <p className="text-xs text-text-soft">
+              Consulte nosso catálogo nacional com telefones com DDD, e-mails, endereços com CEP e titulares da Justiça Estadual, Federal e do Trabalho.
+            </p>
+          </div>
+          <Link
+            href="/judiciario/contatos"
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-primary/90"
+          >
+            <span>Consultar Guia de Varas</span>
+            <ExternalLink size={14} aria-hidden="true" />
+          </Link>
+        </div>
+      </div>
+
       {/* Painel Interativo de Atos e Notícias Monitorados (5 elementos do AGENTS.md) */}
       <TabelaInstituicaoClient instituicao={inst as any} />
 

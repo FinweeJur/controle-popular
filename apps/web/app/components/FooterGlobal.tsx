@@ -57,6 +57,7 @@ const LINKS_PORTAL = [
   { label: "Notícias & Relatórios", href: "/noticias" },
   { label: "Governos & Promessas", href: "/governo" },
   { label: "Instituições & Secretarias", href: "/instituicoes" },
+  { label: "Varas & Balcão Virtual", href: "/judiciario/contatos" },
   { label: "Direitos em Movimento", href: "/direitos-em-movimento" },
   { label: "Tecnologia & IA Livre", href: "/tecnologia" },
   { label: "Busca", href: "/busca" },

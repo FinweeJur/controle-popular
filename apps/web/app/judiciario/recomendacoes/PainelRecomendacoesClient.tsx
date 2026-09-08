@@ -86,7 +86,7 @@ export default function PainelRecomendacoesClient({ itens }: PainelRecomendacoes
   return (
     <div className="space-y-8">
       {/* ═══ 1. CARTÕES DE TOPO ═══ */}
-      <section aria-labelledby="top-cards-recomendacoes" className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <section id="resumo-metricas" aria-labelledby="top-cards-recomendacoes" className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         <div className="rounded-xl border border-border bg-surface-1 p-4 shadow-sm">
           <span className="text-xs font-medium uppercase tracking-wider text-text-soft">
             Total Monitorado
@@ -129,7 +129,7 @@ export default function PainelRecomendacoesClient({ itens }: PainelRecomendacoes
       </section>
 
       {/* ═══ 2. GRÁFICO INLINE (CSS / SVG SEM LIBS) ═══ */}
-      <section aria-labelledby="grafico-cnj-cnmp" className="rounded-xl border border-border bg-surface-1 p-5 shadow-sm">
+      <section id="grafico-divisao" aria-labelledby="grafico-cnj-cnmp" className="rounded-xl border border-border bg-surface-1 p-5 shadow-sm">
         <h2 id="grafico-cnj-cnmp" className="text-base font-semibold text-text">
           Divisão por Órgão Fiscalizador
         </h2>
@@ -167,7 +167,7 @@ export default function PainelRecomendacoesClient({ itens }: PainelRecomendacoes
       </section>
 
       {/* ═══ 3. FILTROS E BUSCA ═══ */}
-      <div className="rounded-xl border border-border bg-surface-1 p-4 shadow-sm">
+      <div id="filtros-recomendacoes" className="rounded-xl border border-border bg-surface-1 p-4 shadow-sm">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <label htmlFor="busca-rec" className="mb-1 block text-xs font-medium text-text-soft">
@@ -299,7 +299,7 @@ export default function PainelRecomendacoesClient({ itens }: PainelRecomendacoes
       </div>
 
       {/* ═══ 4. LISTA DE CARDS COM MICRORESUMO VISÍVEL ═══ */}
-      <div className="space-y-4">
+      <section id="catalogo-recomendacoes" aria-label="Catálogo de Recomendações" className="space-y-4">
         {itensOrdenados.length === 0 ? (
           <div className="rounded-xl border border-dashed border-border p-8 text-center text-sm text-text-soft">
             Nenhuma recomendação encontrada com os filtros atuais.
@@ -384,7 +384,7 @@ export default function PainelRecomendacoesClient({ itens }: PainelRecomendacoes
             );
           })
         )}
-      </div>
+      </section>
     </div>
   );
 }

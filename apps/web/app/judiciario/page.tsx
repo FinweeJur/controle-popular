@@ -160,6 +160,12 @@ export default async function Home() {
                 "Em que ponto do caminho do seu processo alguém de fora ainda olha — e onde a fiscalização externa acaba.",
             },
             {
+              href: "/contatos",
+              titulo: "Varas, Gabinetes e Balcão Virtual",
+              texto:
+                "990 unidades judiciárias: telefones com DDD, e-mails, endereços com CEP, juiz titular e balcão virtual nas 298 comarcas de MG e cidades do Brasil.",
+            },
+            {
               href: "/inspecoes",
               titulo: "O que o CNJ encontrou no TJMG",
               texto:

@@ -9,6 +9,11 @@ const topicos: Topico[] = [
     descricao: "Panorama do Poder Judiciario e a atuacao de seus orgaos.",
   },
   {
+    href: "/judiciario/contatos",
+    titulo: "Varas, Gabinetes e Balcao Virtual",
+    descricao: "Catalogo nacional de contatos, telefones, e-mails, enderecos e juizes titulares de varas e tribunais.",
+  },
+  {
     href: "/judiciario/correicoes-trabalhistas",
     titulo: "Correicoes trabalhistas",
     descricao: "Correicoes na Justica do Trabalho.",

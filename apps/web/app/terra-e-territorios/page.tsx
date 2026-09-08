@@ -223,6 +223,12 @@ export default function TerraETerritoriosHub() {
               >
                 Abrir Globo 3D de Camadas 🌐
               </Link>
+              <Link
+                href="/judiciario/contatos"
+                className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors"
+              >
+                Varas Agrárias & Ambientais ⚖️
+              </Link>
             </div>
           </div>
 

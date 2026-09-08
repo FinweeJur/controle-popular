@@ -250,6 +250,8 @@ async function rotasDoCongresso(): Promise<MetadataRoute.Sitemap> {
 async function rotasDoJudiciario(): Promise<MetadataRoute.Sitemap> {
   const urls: MetadataRoute.Sitemap = [
     item("/judiciario", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/judiciario/contatos", { changeFrequency: "weekly", priority: 0.8 }),
+    item("/judiciario/instituicoes", { changeFrequency: "weekly", priority: 0.8 }),
     item("/judiciario/indicacoes", { changeFrequency: "weekly", priority: 0.6 }),
     item("/judiciario/metodologia", { changeFrequency: "yearly", priority: 0.3 }),
     item("/judiciario/privacidade", { changeFrequency: "yearly", priority: 0.2 }),

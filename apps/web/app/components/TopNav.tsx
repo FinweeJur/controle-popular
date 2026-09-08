@@ -30,6 +30,7 @@ import {
   Info,
   Code2,
   BookOpen,
+  PhoneCall,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -118,6 +119,7 @@ const SECOES_MENU = [
       { label: "Compras Públicas & PNCP", href: "/noticias/estado-e-economia-pncp-compras", icone: ShoppingBag },
       { label: "Congresso Nacional & CEAP", href: "/congresso", icone: Landmark },
       { label: "Quem fiscaliza a Justiça", href: "/judiciario/instituicoes", icone: Scale },
+      { label: "Varas, Gabinetes e Balcão", href: "/judiciario/contatos", icone: PhoneCall },
       { label: "Fichas TJMG, MPMG e DPMG", href: "/judiciario/instituicoes#fichas-instituicoes", icone: Building2 },
       { label: "Grandes Empresas & Fundos", href: "/empresas", icone: Building2 },
       { label: "Repasses Federais ComunicaBR", href: "/dados/comunicabr", icone: MapPin },

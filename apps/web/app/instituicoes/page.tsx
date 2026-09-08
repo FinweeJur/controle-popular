@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
+import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/components/wiki";
 import { obterTodasInstituicoes } from "@/lib/instituicoes/catalogo";
 import PainelInstituicoesClient from "./PainelInstituicoesClient";
 
@@ -10,11 +12,49 @@ export const metadata: Metadata = {
     "Catálogo unificado dos órgãos públicos do Brasil: Ministérios federais, Secretarias estaduais e municipais, Congresso, Assembleias, Câmaras, Tribunais, Ministério Público e Defensoria.",
 };
 
+const SECOES_INSTITUICOES = [
+  { id: "resumo-esferas", titulo: "1. Panorama por Poder" },
+  { id: "filtros-instituicoes", titulo: "2. Filtros e Busca de Órgãos" },
+  { id: "catalogo-instituicoes", titulo: "3. Fichas das Instituições" },
+  { id: "origem-dados", titulo: "4. Origem dos Dados" },
+];
+
+const LINKS_RELACIONADOS = [
+  {
+    href: "/governo",
+    titulo: "Acompanhamento de Governos e Metas de Campanha",
+    descricao: "Cruzamento entre promessas de campanha registradas no TSE e execução orçamentária dos ministérios e secretarias.",
+  },
+  {
+    href: "/judiciario/instituicoes",
+    titulo: "Quem fiscaliza a Justiça",
+    descricao: "Mapa das inspeções do CNJ e corregedorias externas sobre os tribunais estaduais e superiores.",
+  },
+  {
+    href: "/judiciario/contatos",
+    titulo: "Varas, Gabinetes e Balcão Virtual",
+    descricao: "Contatos diretos, telefones, e-mails institucionais e canais de videoconferência de 990 unidades judiciárias.",
+  },
+  {
+    href: "/cidades",
+    titulo: "199 Cidades Estratégicas do Brasil",
+    descricao: "Plano mestre de fiscalização municipal cobrindo as 27 capitais e 172 polos regionais do interior.",
+  },
+];
+
 export default function InstituicoesHubPage() {
   const instituicoes = obterTodasInstituicoes();
 
+  const breadcrumbItems = [
+    { name: "Início", item: "https://controlepopular.com.br/" },
+    { name: "Instituições e Secretarias", item: "https://controlepopular.com.br/instituicoes" },
+  ];
+
   return (
-    <div className="min-h-screen bg-surface-0">
+    <div className="min-h-screen bg-surface-0 text-text">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <MiniSumarioLateral itens={SECOES_INSTITUICOES} />
+
       <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
         {/* Breadcrumb */}
         <nav aria-label="Navegação estrutural" className="mb-4 flex items-center gap-2 text-xs text-text-soft">
@@ -39,12 +79,15 @@ export default function InstituicoesHubPage() {
           </p>
         </div>
 
+        {/* Sumário Interno (Padrão Wiki) */}
+        <IndiceWiki itens={SECOES_INSTITUICOES} />
+
         {/* ═══ PAINEL INTERATIVO CLIENT (BUSCA, FILTROS, CARDS, CSV) ═══ */}
         <PainelInstituicoesClient instituicoes={instituicoes} />
 
         {/* ═══ NOTA DE INTEGRIDADE EDITORIAL ═══ */}
-        <section className="mt-12 rounded-2xl border border-border bg-surface-1 p-6 text-xs text-text-soft">
-          <h3 className="text-sm font-bold text-text">Origem dos dados institucionais</h3>
+        <section id="origem-dados" aria-labelledby="origem-dados-titulo" className="mt-12 rounded-2xl border border-border bg-surface-1 p-6 text-xs text-text-soft">
+          <h3 id="origem-dados-titulo" className="text-sm font-bold text-text">Origem dos dados institucionais</h3>
           <ul className="mt-3 space-y-2 list-disc list-inside">
             <li>
               <strong>Canais de atendimento:</strong> Telefones, e-mails funcionais e endereços físicos são extraídos de diários oficiais e páginas institucionais governamentais (.gov.br, .leg.br, .jus.br, .mp.br e .def.br).
@@ -57,6 +100,9 @@ export default function InstituicoesHubPage() {
             </li>
           </ul>
         </section>
+
+        {/* Links Relacionados (Padrão Wiki) */}
+        <LinksRelacionados links={LINKS_RELACIONADOS} />
       </main>
 
       <FooterGlobal />

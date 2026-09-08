@@ -48,6 +48,20 @@ export default async function AjudaPage() {
         </p>
       </header>
 
+      {/* Banner de acesso ao Guia de Varas */}
+      <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+        <div>
+          <span className="font-semibold text-text">Procurando a Vara Judicial ou Balcão Virtual da sua Comarca?</span>
+          <p className="text-text-soft">Consulte e-mails, telefones com DDD, endereços com CEP e juízes titulares de 990 unidades em todas as 298 comarcas de MG e polos do Brasil.</p>
+        </div>
+        <a
+          href="/judiciario/contatos"
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-primary px-3 py-2 font-bold text-white hover:bg-primary/90 transition-colors"
+        >
+          Consultar Varas e Juizados →
+        </a>
+      </div>
+
       <section className="mt-8">
         <SeletorRedeGeral cidades={cidades} />
       </section>

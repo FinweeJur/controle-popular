@@ -117,6 +117,30 @@ export default async function DireitosEmMovimentoHub() {
         />
       </div>
 
+      {/* Atalho destacado para o Judiciário e Balcão Virtual */}
+      <div className="mt-8 rounded-2xl border border-primary/30 bg-primary/5 p-6 shadow-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="space-y-1">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+              Atendimento do Poder Judiciário
+            </span>
+            <h3 className="font-display text-lg font-bold text-text">
+              Precisa falar diretamente com uma Vara, Fórum ou Juiz?
+            </h3>
+            <p className="text-xs text-text-soft">
+              Catálogo de 990 unidades judiciárias com telefones com DDD, e-mails institucionais, endereços com CEP, juízes titulares e link direto para o Balcão Virtual em todas as 298 comarcas de MG e cidades do Brasil.
+            </p>
+          </div>
+          <a
+            href="/judiciario/contatos"
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-all hover:bg-primary/90"
+          >
+            <span>Consultar Guia de Varas</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
       {/* ═══ AS DUAS LACUNAS QUE PRECISAM ESTAR NA TELA, NÃO NO RODAPÉ ═══
           Regra de cobertura declarada do projeto — ver
           `docs/PLANO-DIREITOS-EM-MOVIMENTO.md`, seção "Honestidade de

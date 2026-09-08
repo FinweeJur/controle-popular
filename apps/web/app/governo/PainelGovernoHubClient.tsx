@@ -147,7 +147,7 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
   return (
     <div className="space-y-8">
       {/* ═══ 1. CARTÕES DE TOPO (AGREGADOS) ═══ */}
-      <section aria-labelledby="top-cards-governo" className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <section id="resumo-gestao" aria-labelledby="top-cards-governo" className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         <div className="rounded-xl border border-border bg-surface-1 p-4 shadow-sm">
           <span className="text-xs font-medium uppercase tracking-wider text-text-soft">
             Executivos Monitorados
@@ -196,10 +196,10 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
       </section>
 
       {/* ═══ 2. GRÁFICO INLINE (CSS/SVG) ═══ */}
-      <section aria-labelledby="grafico-progresso" className="rounded-2xl border border-border bg-surface-1 p-5 shadow-sm">
+      <section id="grafico-progresso" aria-labelledby="grafico-progresso-titulo" className="rounded-2xl border border-border bg-surface-1 p-5 shadow-sm">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 id="grafico-progresso" className="text-sm font-bold text-text">
+            <h2 id="grafico-progresso-titulo" className="text-sm font-bold text-text">
               Panorama de Cumprimento dos Planos de Governo
             </h2>
             <p className="text-xs text-text-soft">
@@ -265,7 +265,7 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
       </section>
 
       {/* ═══ 3. FILTROS E BUSCA ═══ */}
-      <section aria-labelledby="filtros-governo" className="space-y-4 rounded-2xl border border-border bg-surface-1 p-5 shadow-sm">
+      <section id="filtros-governo" aria-labelledby="filtros-governo" className="space-y-4 rounded-2xl border border-border bg-surface-1 p-5 shadow-sm">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {/* Busca textual */}
           <div>
@@ -368,7 +368,7 @@ export default function PainelGovernoHubClient({ mandatos }: PainelGovernoHubCli
       </section>
 
       {/* ═══ 4. GRID DE EXECUTIVOS ═══ */}
-      <section aria-label="Lista de Executivos Monitorados">
+      <section id="catalogo-governos" aria-label="Lista de Executivos Monitorados">
         {ordenados.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-border p-8 text-center text-text-soft">
             <p className="text-base font-semibold">Nenhum executivo atende aos filtros atuais.</p>

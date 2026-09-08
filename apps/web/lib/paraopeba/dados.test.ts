@@ -245,9 +245,9 @@ describe("atores.ts — parsing de INST_DATA (18 itens em 5 categorias medidas)"
   });
 });
 
-describe("auxilio.ts — parsing de PAYMENTS e DATA_PANEL (9 pagamentos medidos)", () => {
-  test("tem exatamente 9 pagamentos mensais", () => {
-    expect(PAGAMENTOS_PARAOPEBA.length).toBe(9);
+describe("auxilio.ts — parsing de PAYMENTS e DATA_PANEL (10 pagamentos medidos)", () => {
+  test("tem exatamente 10 pagamentos mensais", () => {
+    expect(PAGAMENTOS_PARAOPEBA.length).toBe(10);
   });
 
   test("todo pagamento tem mês, valor, status e observação", () => {

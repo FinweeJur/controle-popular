@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { metadataEditavel } from "@/lib/edicoes";
 import { COBERTURA_INSPECOES } from "@/lib/judiciario/inspecoes-cnj";
 import { RELATORIOS_TJMG } from "@/lib/judiciario/inspecoes-cnj-dados";
@@ -7,6 +8,39 @@ import { COBERTURA_CNIEP } from "@/lib/judiciario/presidios-cniep";
 import { COBERTURA_DEFENSORIA } from "@/lib/judiciario/defensoria-mg";
 import instituicoesData from "@/data/judiciario-instituicoes-detalhe.json";
 import DiretorioInstituicoesClient from "./DiretorioInstituicoesClient";
+import FooterGlobal from "@/app/components/FooterGlobal";
+import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
+import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/components/wiki";
+
+const SECOES_PAGINA = [
+  { id: "fichas-instituicoes", titulo: "1. Diretório de Instituições" },
+  { id: "escada", titulo: "2. Degraus de Fiscalização Externa" },
+  { id: "leitura", titulo: "3. O que a Lista Mostra" },
+  { id: "contato-erros", titulo: "4. Regras e Correção de Erros" },
+];
+
+const LINKS_RELACIONADOS = [
+  {
+    href: "/judiciario/contatos",
+    titulo: "Varas, Gabinetes e Balcão Virtual",
+    descricao: "Contatos com DDD, e-mails institucionais, endereços com CEP e juízes titulares de 990 unidades.",
+  },
+  {
+    href: "/judiciario/recomendacoes",
+    titulo: "Recomendações e Metas do CNJ",
+    descricao: "Painel analítico das determinações dos conselhos superiores com microresumos e status de cumprimento.",
+  },
+  {
+    href: "/judiciario",
+    titulo: "Quem ocupa, quem indicou e próximas vagas",
+    descricao: "Mapeamento das cadeiras nos tribunais superiores e composição do Poder Judiciário.",
+  },
+  {
+    href: "/instituicoes",
+    titulo: "Instituições e Secretarias de Todas as Esferas",
+    descricao: "Catálogo completo de ministérios, secretarias de estado e órgãos de todos os poderes da República.",
+  },
+];
 
 /**
  * `/judiciario/instituicoes` — quem fiscaliza cada instituição de justiça, e
@@ -156,44 +190,76 @@ const CORES: Record<Degrau["situacao"], { rotulo: string; classe: string }> = {
 export default function InstituicoesPage() {
   const semNenhuma = DEGRAUS.filter((d) => d.situacao === "nenhuma");
 
+  const breadcrumbItems = [
+    { name: "Início", item: "https://controlepopular.com.br/" },
+    { name: "Judiciário", item: "https://controlepopular.com.br/judiciario" },
+    { name: "Quem fiscaliza a Justiça", item: "https://controlepopular.com.br/judiciario/instituicoes" },
+  ];
+
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
-      <nav className="mb-4 text-[.82em] text-text-soft">
-        <a href="/judiciario" className="hover:text-primary">
-          Judiciário
-        </a>{" "}
-        · <span className="text-text">Quem fiscaliza a Justiça</span>
-      </nav>
+    <div className="min-h-screen bg-surface-0 text-text">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <MiniSumarioLateral itens={SECOES_PAGINA} />
 
-      <header className="space-y-4">
-        <p className="text-[.82em] font-semibold uppercase tracking-wide text-text-soft">
-          Judiciário · Fiscalização
-        </p>
-        <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
-          Em que ponto alguém de fora ainda olha o seu processo
-        </h1>
-        <p className="max-w-3xl text-[1.02em] leading-relaxed text-text-soft">
-          Um processo sobe. Começa numa vara, vai ao tribunal do estado e pode terminar em
-          Brasília. Em cada degrau existe — ou não — alguém de fora que entra, abre os autos e
-          escreve o que encontrou. Esta página põe os degraus lado a lado. A fiscalização externa
-          do Judiciário brasileiro <strong className="text-text">termina no segundo grau</strong>.
-        </p>
-      </header>
+      <main className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
+        <nav aria-label="Navegação estrutural" className="mb-4 flex items-center gap-2 text-xs text-text-soft">
+          <Link href="/" className="hover:text-primary">
+            Início
+          </Link>
+          <span>/</span>
+          <Link href="/judiciario" className="hover:text-primary">
+            Judiciário
+          </Link>
+          <span>/</span>
+          <span className="font-semibold text-text">Quem fiscaliza a Justiça</span>
+        </nav>
 
-      {/* ═══ FICHAS ANALÍTICAS DAS INSTITUIÇÕES DE JUSTIÇA ═══ */}
-      <section aria-labelledby="fichas-instituicoes" className="mt-10">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3">
-          <div>
-            <h2 id="fichas-instituicoes" className="font-display text-xl font-bold tracking-tight text-text">
-              Diretório Nacional de Instituições de Justiça (27 Estados e União)
-            </h2>
-            <p className="mt-1 text-xs text-text-soft">
-              Painéis analíticos completos dos Tribunais de Justiça, Ministérios Públicos e Defensorias de todo o Brasil com orçamento, liderança, organograma e atos auditados.
-            </p>
+        <header className="space-y-4">
+          <p className="text-[.82em] font-semibold uppercase tracking-wide text-text-soft">
+            Judiciário · Fiscalização
+          </p>
+          <h1 className="font-display text-[clamp(1.7em,4vw,2.4em)] leading-tight font-bold tracking-tight">
+            Em que ponto alguém de fora ainda olha o seu processo
+          </h1>
+          <p className="max-w-3xl text-[1.02em] leading-relaxed text-text-soft">
+            Um processo sobe. Começa numa vara, vai ao tribunal do estado e pode terminar em
+            Brasília. Em cada degrau existe — ou não — alguém de fora que entra, abre os autos e
+            escreve o que encontrou. Esta página põe os degraus lado a lado. A fiscalização externa
+            do Judiciário brasileiro <strong className="text-text">termina no segundo grau</strong>.
+          </p>
+        </header>
+
+        {/* Sumário Interno (Padrão Wiki) */}
+        <IndiceWiki itens={SECOES_PAGINA} />
+
+        {/* ═══ FICHAS ANALÍTICAS DAS INSTITUIÇÕES DE JUSTIÇA ═══ */}
+        <section id="fichas-instituicoes" aria-labelledby="fichas-instituicoes-titulo" className="mt-10">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border pb-3">
+            <div>
+              <h2 id="fichas-instituicoes-titulo" className="font-display text-xl font-bold tracking-tight text-text">
+                Diretório Nacional de Instituições de Justiça (27 Estados e União)
+              </h2>
+              <p className="mt-1 text-xs text-text-soft">
+                Painéis analíticos completos dos Tribunais de Justiça, Ministérios Públicos e Defensorias de todo o Brasil com orçamento, liderança, organograma e atos auditados.
+              </p>
+            </div>
+            <span className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
+              {instituicoesData.length} Órgãos Monitorados
+            </span>
           </div>
-          <span className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-xs font-bold text-primary">
-            {instituicoesData.length} Órgãos Monitorados
-          </span>
+
+        {/* Atalho para o Guia de Varas, Gabinetes e Balcão Virtual */}
+        <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+          <div>
+            <span className="font-semibold text-text">Procurando Varas, Gabinetes e Balcão Virtual?</span>
+            <p className="text-text-soft">Consulte e-mails, telefones, endereços completos e juízes titulares de varas cíveis, criminais, federais e trabalhistas em MG e no Brasil.</p>
+          </div>
+          <Link
+            href="/judiciario/contatos"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 font-bold text-white hover:bg-primary/90 transition-colors"
+          >
+            Abrir Guia de Varas →
+          </Link>
         </div>
 
         <div className="mt-6">
@@ -202,8 +268,8 @@ export default function InstituicoesPage() {
       </section>
 
       {/* ═══ A ESCADA ═══ */}
-      <section aria-labelledby="escada" className="mt-10">
-        <h2 id="escada" className="sr-only">
+      <section id="escada" aria-labelledby="escada-titulo" className="mt-10">
+        <h2 id="escada-titulo" className="sr-only">
           Quem fiscaliza cada instituição
         </h2>
         <ol className="space-y-4">
@@ -259,10 +325,11 @@ export default function InstituicoesPage() {
 
       {/* ═══ O QUE A ESCADA MOSTRA ═══ */}
       <section
-        aria-labelledby="leitura"
+        id="leitura"
+        aria-labelledby="leitura-titulo"
         className="mt-10 rounded-2xl border border-border bg-surface-2 p-5"
       >
-        <h2 id="leitura" className="font-display text-base font-semibold text-text">
+        <h2 id="leitura-titulo" className="font-display text-base font-semibold text-text">
           O que essa lista mostra, e o que ela não autoriza dizer
         </h2>
         <ul className="mt-3 space-y-3 text-[.92em] leading-relaxed text-text-soft">
@@ -301,7 +368,8 @@ export default function InstituicoesPage() {
         </ul>
       </section>
 
-      <section className="mt-8 text-[.88em] leading-relaxed text-text-soft">
+      <section id="contato-erros" aria-labelledby="contato-erros-titulo" className="mt-8 text-[.88em] leading-relaxed text-text-soft">
+        <h2 id="contato-erros-titulo" className="sr-only">Correção de Erros Factual e Contato</h2>
         <p>
           Achou erro factual? O caminho, as regras e o limite do que este portal pode corrigir ou
           remover estão em{" "}
@@ -318,6 +386,12 @@ export default function InstituicoesPage() {
           .
         </p>
       </section>
-    </div>
+
+      {/* Links Relacionados (Padrão Wiki) */}
+      <LinksRelacionados links={LINKS_RELACIONADOS} />
+    </main>
+
+    <FooterGlobal />
+  </div>
   );
 }

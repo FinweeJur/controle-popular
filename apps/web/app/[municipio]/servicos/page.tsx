@@ -1,5 +1,6 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
 import Link from "@/lib/betim/link";
+import NextLink from "next/link";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
 import { temFonte, type Cidade } from "@/lib/db/queries/municipios";
 import {
@@ -41,6 +42,7 @@ type ItemServico = {
   desc: string;
   icon: LucideIcon;
   fonte?: string;
+  raiz?: boolean;
 };
 
 const servicos = (cidade: Cidade): ItemServico[] => [
@@ -55,6 +57,7 @@ const servicos = (cidade: Cidade): ItemServico[] => [
   { href: "/defesa-civil", nome: "Defesa Civil", desc: "Alertas de chuva forte e emergências", icon: ShieldAlert },
   { href: "/contatos", nome: "Contatos Úteis", desc: "Telefones de emergência e órgãos públicos", icon: Phone },
   { href: "/rede-de-protecao", nome: "Onde Pedir e Onde Buscar Ajuda", desc: "LAI, Defensoria, denúncia e defesa jurídica gratuita", icon: Scale },
+  { href: "/judiciario/contatos", nome: "Varas e Fórum da Comarca", desc: "Varas cíveis, criminais, trabalho, balcão virtual e titular", icon: Scale, raiz: true },
   { href: "/links-uteis-mg", nome: "Links Úteis do Estado", desc: `Fontes oficiais de ${cidade.uf} por tema`, icon: Landmark, fonte: "links_uteis_mg" },
 ];
 
@@ -76,21 +79,37 @@ export default async function ServicosPage({
       <section className="mt-8 grid gap-4 sm:grid-cols-2">
         {servicos(cidade)
           .filter((s) => !s.fonte || temFonte(cidade, s.fonte))
-          .map((s) => (
-          <Link
-            key={s.href}
-            href={s.href}
-            className="cp-card-hover flex items-start gap-4 rounded-2xl border border-border bg-surface p-5 shadow-sm hover:border-primary"
-          >
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-              <s.icon size={20} strokeWidth={2} aria-hidden="true" />
-            </span>
-            <div>
-              <p className="font-display font-semibold text-text">{s.nome}</p>
-              <p className="mt-1 text-sm text-text-soft">{s.desc}</p>
-            </div>
-          </Link>
-        ))}
+          .map((s) => {
+            const Conteudo = (
+              <>
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <s.icon size={20} strokeWidth={2} aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="font-display font-semibold text-text">{s.nome}</p>
+                  <p className="mt-1 text-sm text-text-soft">{s.desc}</p>
+                </div>
+              </>
+            );
+
+            return s.raiz ? (
+              <NextLink
+                key={s.href}
+                href={s.href}
+                className="cp-card-hover flex items-start gap-4 rounded-2xl border border-border bg-surface p-5 shadow-sm hover:border-primary"
+              >
+                {Conteudo}
+              </NextLink>
+            ) : (
+              <Link
+                key={s.href}
+                href={s.href}
+                className="cp-card-hover flex items-start gap-4 rounded-2xl border border-border bg-surface p-5 shadow-sm hover:border-primary"
+              >
+                {Conteudo}
+              </Link>
+            );
+          })}
       </section>
     </main>
   );

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FooterGlobal from "@/app/components/FooterGlobal";
+import { BreadcrumbJsonLd } from "@/app/components/BreadcrumbJsonLd";
+import { IndiceWiki, MiniSumarioLateral, LinksRelacionados } from "@/app/components/wiki";
 import PainelRecomendacoesClient from "./PainelRecomendacoesClient";
 import { obterRecomendacoes } from "@/lib/judiciario/recomendacoes";
 
@@ -10,13 +12,52 @@ export const metadata: Metadata = {
     "Catálogo transparente e em linguagem simples das determinações e recomendações emitidas pelo CNJ e CNMP em inspeções sobre tribunais e promotorias.",
 };
 
+const SECOES_RECOMENDACOES = [
+  { id: "resumo-metricas", titulo: "1. Indicadores de Cumprimento" },
+  { id: "grafico-divisao", titulo: "2. Cobranças CNJ vs. CNMP" },
+  { id: "filtros-recomendacoes", titulo: "3. Filtros e Busca de Atos" },
+  { id: "catalogo-recomendacoes", titulo: "4. Determinações e Microresumos" },
+];
+
+const LINKS_RELACIONADOS = [
+  {
+    href: "/judiciario/contatos",
+    titulo: "Varas, Gabinetes e Balcão Virtual",
+    descricao: "Contatos e canais de atendimento direto das unidades judiciárias inspecionadas.",
+  },
+  {
+    href: "/judiciario/instituicoes",
+    titulo: "Quem fiscaliza a Justiça",
+    descricao: "Estrutura dos órgãos superiores e limite da fiscalização externa no país.",
+  },
+  {
+    href: "/judiciario",
+    titulo: "Quem ocupa, quem indicou e próximas vagas",
+    descricao: "Composição dos tribunais superiores e critérios de nomeação dos ministros.",
+  },
+  {
+    href: "/direitos-em-movimento/ajuda",
+    titulo: "Onde Buscar Ajuda Jurídica Gratuita",
+    descricao: "Acesso à justiça, assistência judiciária gratuita e denúncias de violações.",
+  },
+];
+
 export default function PaginaRecomendacoesJudiciario() {
   const itens = obterRecomendacoes();
 
+  const breadcrumbItems = [
+    { name: "Início", item: "https://controlepopular.com.br/" },
+    { name: "Judiciário", item: "https://controlepopular.com.br/judiciario" },
+    { name: "Recomendações do CNJ e CNMP", item: "https://controlepopular.com.br/judiciario/recomendacoes" },
+  ];
+
   return (
-    <div className="min-h-screen bg-surface-0">
+    <div className="min-h-screen bg-surface-0 text-text">
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <MiniSumarioLateral itens={SECOES_RECOMENDACOES} />
+
       <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
-        {/* Breadcrumb */}
+        {/* Breadcrumb Visual */}
         <nav aria-label="Navegação estrutural" className="mb-4 flex items-center gap-2 text-xs text-text-soft">
           <Link href="/" className="hover:text-primary">
             Início
@@ -51,8 +92,14 @@ export default function PaginaRecomendacoesJudiciario() {
           </p>
         </header>
 
+        {/* Sumário Interno (Padrão Wiki) */}
+        <IndiceWiki itens={SECOES_RECOMENDACOES} />
+
         {/* Painel Interativo com Gráfico, Top Cards, Filtros, Microresumo e CSV */}
         <PainelRecomendacoesClient itens={itens} />
+
+        {/* Links Relacionados (Padrão Wiki) */}
+        <LinksRelacionados links={LINKS_RELACIONADOS} />
       </main>
 
       <FooterGlobal />
