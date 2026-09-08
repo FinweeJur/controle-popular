@@ -51,6 +51,7 @@ const SECOES = ZONAS_PUBLICADAS;
 export default async function Hub() {
   const cidades = await listarCidades();
   const citacaoBirri = citacaoPorId("birri-utopia");
+  const citacaoGuimaraes = citacaoPorId("guimaraes-rosa-coragem");
   return (
     // ⟲ 13/08, revisão de onboarding: era `<div>`, e `OuvirPagina.tsx` só
     // lê `document.querySelector("main")` — sem a tag, o botão "Ouvir esta
@@ -73,12 +74,8 @@ export default async function Hub() {
         epigrafes={[
           {
             texto:
-              "Ela deita sementes para morrerem ou brotarem. Ela semeia sonhos na esperança de ver germinar sobrevivência.",
+              "Ela deita sementes para morrerem ou brotarem.\nEla semeia sonhos pra ver germinar sobrevivência.",
             atribuicao: "Itamar Vieira Junior, Coração Sem Medo, 2025",
-          },
-          {
-            texto: "O que a vida quer da gente é coragem.",
-            atribuicao: "João Guimarães Rosa, Grande Sertão: Veredas, 1956",
           },
         ]}
         resumo="Portal virtual do ONSA — Observatório Nacional Socioambiental. Com raízes na História e Geografia, esse portal se utiliza da tecnologia da Inteligência Artificial (IA) pra somar na busca por justiça socioambiental e fiscalização cidadã, acessível pela internet, gratuitamente e sem cadastro por qualquer celular ou computador."
@@ -425,6 +422,12 @@ export default async function Hub() {
           ministro segue a mesma disciplina, publicada na seção do Judiciário.
         </p>
       </footer>
+      {citacaoGuimaraes && (
+        <section aria-label="Fecho literário" className="my-8">
+          <Epigrafe citacao={citacaoGuimaraes} variante="fecho" />
+        </section>
+      )}
+
       <FooterGlobal />
     </main>
   );

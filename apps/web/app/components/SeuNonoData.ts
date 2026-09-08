@@ -413,6 +413,40 @@ export const FRENTES: SeuNonoFrente[] = [
         ],
       },
       {
+        id: "biblioteca-geral",
+        titulo: "Biblioteca Geral & Pesquisa Acadêmica",
+        perguntas: [
+          {
+            id: "acervo-unificado",
+            pergunta: "Como acessar teses e documentos de pesquisa no portal?",
+            resposta:
+              "A nova Biblioteca Geral reúne mais de 870 documentos, incluindo relatórios corporativos ESG, atas de 91 órgãos de justiça e artigos acadêmicos do SciELO, UFMG, UFV, UnB, Fiocruz, USP e IPEA.",
+            link: { href: "/biblioteca", texto: "Ir para a Biblioteca Geral" },
+          },
+          {
+            id: "teses-mineracao-litio",
+            pergunta: "Onde encontrar pesquisas sobre a Vale e o lítio da Sigma?",
+            resposta:
+              "Na Biblioteca Geral e nas páginas de cada empresa (/empresas/vale e /empresas/sigma-lithium) há uma seção dedicada com teses de doutorado, dissertações e notas técnicas do Inesc, Fiocruz e universidades federais com link para o PDF.",
+            link: { href: "/biblioteca", texto: "Ver pesquisas de mineração" },
+          },
+          {
+            id: "consulta-previa-oit",
+            pergunta: "Onde consultar materiais sobre Consulta Prévia e Convenção 169?",
+            resposta:
+              "Temos teses da UnB, manuais do Instituto Socioambiental (ISA) e artigos da FGV Direito sobre a jurisprudência do STF e os Protocolos Autônomos de Consulta de povos indígenas e tradicionais.",
+            link: { href: "/biblioteca", texto: "Ver teses sobre Consulta Prévia" },
+          },
+          {
+            id: "justica-27-estados",
+            pergunta: "Como consultar os relatórios dos Tribunais de Justiça e MPs dos 27 estados?",
+            resposta:
+              "No painel do Judiciário (/judiciario/instituicoes) e na Biblioteca Geral catalogamos os relatórios de gestão fiscal (RGF), quadro de pessoal e inspeções de todos os 27 TJs, 27 Ministérios Públicos e 27 Defensorias do Brasil.",
+            link: { href: "/judiciario/instituicoes", texto: "Ver 27 Estados" },
+          },
+        ],
+      },
+      {
         id: "acessibilidade-sobre",
         titulo: "Acessibilidade & Sobre o Portal",
         perguntas: [
@@ -629,6 +663,23 @@ export const PAGINAS_DADOS: PaginaDados[] = [
     ],
     links: [
       { href: "/noticias", texto: "Ver notícias e relatórios" },
+    ],
+  },
+  {
+    id: "biblioteca",
+    titulo: "Biblioteca Geral & Acervo Acadêmico",
+    resumo: "878 documentos e relatórios: ESG de empresas, 91 órgãos de justiça e artigos científicos SciELO e teses de pós-graduação.",
+    dados: [
+      "Acervo Geral com 878 documentos oficiais e acadêmicos",
+      "Pesquisas SciELO, UFMG, UFV, UnB, Fiocruz, USP e IPEA",
+      "Teses sobre Vale, Brumadinho, Sigma Lithium e Vale do Jequitinhonha",
+      "Estudos sobre Protocolo de Consulta Prévia (Convenção 169 OIT)",
+      "Relatórios de Gestão das 91 instituições de justiça dos 27 estados",
+      "Download de planilhas CSV com UTF-8 BOM e ponto-e-vírgula",
+    ],
+    links: [
+      { href: "/biblioteca", texto: "Acessar Biblioteca Geral" },
+      { href: "/judiciario/instituicoes", texto: "Painel dos 27 Estados" },
     ],
   },
 ];

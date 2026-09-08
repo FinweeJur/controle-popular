@@ -18,12 +18,15 @@ import {
   Scale,
   Sparkles,
   Download,
+  GraduationCap,
+  BookOpen,
 } from "lucide-react";
 import { listarTodasEntidades, obterEntidadePorSlug } from "@/lib/empresas/entidades-dados";
 import { obterEmpresa, EMPRESAS } from "@/lib/empresas/dados";
 import { processosPorEmpresa } from "@/lib/empresas/sigmine";
 import { NOTICIAS_SIGMA_LITHIUM, NOTICIAS_VALE } from "@/lib/empresas/noticias";
 import { listarDocumentosPorEmpresa } from "@/lib/empresas/empresas-documentos";
+import { listarDocumentosAcademicos } from "@/lib/biblioteca/unificada";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -83,6 +86,16 @@ export default async function EmpresaPage({ params }: Props) {
   if (documentos.length === 0 && entidade?.slug) {
     documentos = listarDocumentosPorEmpresa(entidade.slug);
   }
+
+  // Pesquisa acadêmica relacionada a esta empresa ou bacia
+  const termoBuscaAcad = slug.includes("vale") ? "Vale" : slug.includes("sigma") ? "Sigma" : nome;
+  const docsAcademicos = listarDocumentosAcademicos().filter(
+    (d) =>
+      d.entidade.toLowerCase().includes(termoBuscaAcad.toLowerCase()) ||
+      d.tema.toLowerCase().includes(termoBuscaAcad.toLowerCase()) ||
+      d.titulo.toLowerCase().includes(termoBuscaAcad.toLowerCase()) ||
+      d.palavrasChave.some((p) => p.toLowerCase().includes(termoBuscaAcad.toLowerCase()))
+  );
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:py-14 sm:px-6 lg:px-8 space-y-10">
@@ -322,6 +335,76 @@ export default async function EmpresaPage({ params }: Props) {
                       <span>Espelho R2</span>
                       <Download size={11} />
                     </a>
+                    <a
+                      href={doc.urlOficial}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-muted hover:text-foreground hover:underline"
+                    >
+                      <span>Oficial</span>
+                      <ExternalLink size={10} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ═══ PESQUISA ACADÊMICA & NOTAS TÉCNICAS (SCIELO / UNIVERSIDADES) ═══ */}
+      {docsAcademicos.length > 0 && (
+        <section aria-labelledby="secao-academico" className="rounded-2xl border border-border bg-surface p-5 sm:p-6 shadow-xs space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-border">
+            <div className="flex items-center gap-2">
+              <GraduationCap size={18} className="text-blue-600 dark:text-blue-400" />
+              <h2 id="secao-academico" className="font-display text-lg font-bold text-foreground">
+                Pesquisa Científica, Teses & Notas Técnicas ({docsAcademicos.length})
+              </h2>
+            </div>
+            <Link
+              href="/biblioteca"
+              className="text-xs font-semibold text-primary hover:underline"
+            >
+              Consultar Biblioteca Geral →
+            </Link>
+          </div>
+
+          <p className="text-xs text-muted">
+            Artigos científicos indexados no SciELO, dissertações e teses de pós-graduação (UFMG, UFV, UnB, Fiocruz, USP e IPEA) sobre os impactos socioambientais e econômicos desta atividade:
+          </p>
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 text-xs">
+            {docsAcademicos.map((doc) => (
+              <div key={doc.id} className="rounded-xl border border-border/70 bg-surface-2 p-3.5 space-y-2 flex flex-col justify-between">
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="rounded-full bg-blue-500/10 text-blue-700 dark:text-blue-300 px-2 py-0.5 text-[10px] font-bold">
+                      {doc.tipoRotulo}
+                    </span>
+                    <span className="font-mono text-[11px] text-muted font-bold">{doc.ano}</span>
+                  </div>
+                  <h3 className="font-bold text-foreground text-xs leading-snug">{doc.titulo}</h3>
+                  <p className="text-muted text-[11px]">
+                    <span className="font-semibold text-foreground">{doc.entidade}</span> — {doc.autor}
+                  </p>
+                  <p className="text-muted text-[11px] leading-relaxed line-clamp-3">{doc.microResumo}</p>
+                </div>
+
+                <div className="pt-2 border-t border-border/60 flex items-center justify-between text-[11px]">
+                  <span className="rounded bg-surface px-1.5 py-0.5 text-[10px] text-muted font-medium">{doc.tema}</span>
+                  <div className="flex items-center gap-3">
+                    {doc.urlPdf && (
+                      <a
+                        href={doc.urlPdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 font-semibold text-primary hover:underline"
+                      >
+                        <span>PDF</span>
+                        <Download size={11} />
+                      </a>
+                    )}
                     <a
                       href={doc.urlOficial}
                       target="_blank"

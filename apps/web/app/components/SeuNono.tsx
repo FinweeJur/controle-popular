@@ -38,7 +38,7 @@ function AvatarSeuNono({ size = 20, className = "" }: { size?: number; className
       width={size}
       height={size}
       className={`shrink-0 rounded-full object-cover ${className}`}
-      style={{ width: size, height: size }}
+      style={className.includes("h-full") || className.includes("w-full") ? undefined : { width: size, height: size }}
     />
   );
 }
@@ -1476,10 +1476,10 @@ export function SeuNono() {
             setAberto(true);
             if (!mostrouBoasVindas && !dismissBoasVindas) dismissarBoasVindas();
           }}
-          className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-primary-ink/20 bg-primary shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-amber-500/40 bg-surface p-0.5 shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
           aria-label="Abrir assistente Seu Nonô"
         >
-          <AvatarSeuNono size={44} className="h-full w-full" />
+          <AvatarSeuNono size={56} className="h-full w-full rounded-full" />
         </button>
       )}
     </div>

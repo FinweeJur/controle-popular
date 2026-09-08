@@ -62,11 +62,11 @@ export default function CapaFrente({
 
   return (
     <section
-      className={`relative overflow-hidden ${className}`}
+      className={`relative w-full max-w-full overflow-hidden ${className}`}
       style={{ minHeight: alturaMinima ?? undefined }}
       aria-label={titulo}
     >
-      {/* Imagem de fundo — responsiva: object-position corta no mobile */}
+      {/* Imagem de fundo — responsiva: object-position corta no mobile sem esticar horizontalmente */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/${imagem}`}
@@ -76,16 +76,16 @@ export default function CapaFrente({
         style={{ margin: 0 }}
       />
 
-      {/* Texto sobreposto com contorno preto direto sobre a fotografia — sem sobreposição nem vidro fosco */}
+      {/* Texto sobreposto sobre a fotografia com acessibilidade e contraste */}
       {layout === "home" ? (
-        <div className="relative z-10 mx-auto flex min-h-[460px] max-w-4xl flex-col justify-between px-4 py-6 sm:px-8 md:min-h-[520px] md:py-8">
-          {/* TOPO: Epígrafes literárias focadas no canto superior esquerdo */}
+        <div className="relative z-10 mx-auto flex min-h-[460px] w-full max-w-4xl flex-col justify-between px-4 py-6 sm:px-8 md:min-h-[520px] md:py-8 box-border break-words">
+          {/* TOPO: Epígrafe literária focada no canto superior esquerdo com quebra de versos e autor no mesmo tamanho */}
           {listaEpigrafes.length > 0 && (
-            <div className="max-w-sm sm:max-w-md text-left space-y-2">
+            <div className="max-w-full sm:max-w-md text-left space-y-2">
               {listaEpigrafes.map((ep, i) => (
                 <p
                   key={i}
-                  className="text-xs sm:text-[13px] italic leading-relaxed text-white font-medium"
+                  className="text-xs sm:text-sm italic leading-relaxed text-white font-medium whitespace-pre-line"
                   style={{
                     textShadow:
                       "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 5px rgba(0,0,0,0.95)",
@@ -93,7 +93,7 @@ export default function CapaFrente({
                 >
                   &ldquo;{ep.texto}&rdquo;
                   {ep.atribuicao && (
-                    <span className="block mt-0.5 not-italic text-white/95 text-[11px] sm:text-xs">
+                    <span className="block mt-1 not-italic text-white text-xs sm:text-sm font-medium">
                       — {ep.atribuicao}
                     </span>
                   )}
@@ -102,21 +102,17 @@ export default function CapaFrente({
             </div>
           )}
 
-          {/* BASE: Título e resumo focados no canto inferior direito para liberar a imagem (lobo-guará e ipê) */}
-          <div className="mt-auto flex flex-col items-start sm:items-end text-left sm:text-right ml-auto max-w-md sm:max-w-lg">
-            <h1
-              className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-5xl md:text-6xl drop-shadow-md"
-              style={{
-                WebkitTextStroke: "1px #000",
-                textShadow:
-                  "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 3px 8px rgba(0,0,0,0.95)",
-              }}
-            >
+          {/* MEIO: Título centralizado na página sem efeitos excessivos */}
+          <div className="my-auto w-full py-4 text-center">
+            <h1 className="font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-5xl md:text-6xl drop-shadow-sm">
               {titulo}
             </h1>
+          </div>
 
+          {/* BASE: Só o texto que descreve o portal fica alinhado à direita */}
+          <div className="mt-auto flex w-full justify-end">
             <p
-              className="mt-2 text-xs sm:text-sm leading-relaxed text-white font-medium"
+              className="max-w-md sm:max-w-lg text-right text-xs sm:text-sm leading-relaxed text-white font-medium"
               style={{
                 textShadow:
                   "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 2px 5px rgba(0,0,0,0.95)",

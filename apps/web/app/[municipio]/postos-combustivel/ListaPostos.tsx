@@ -43,7 +43,7 @@ function CartoesPostos({ postos }: { postos: PostoAnp[] }) {
           title={posto.razao_social ?? "Posto"}
           source={{
             label: "ANP — Revendedores",
-            url: "https://revendedoresapi.anp.gov.br/swagger/index.html",
+            url: "https://www.gov.br/anp/pt-br/centrais-de-conteudo/paineis-dinamicos-da-anp/paineis-dinamicos-do-abastecimento/api-revendedores-manual-usuario.pdf",
           }}
         >
           <p>{posto.endereco ?? "—"}</p>

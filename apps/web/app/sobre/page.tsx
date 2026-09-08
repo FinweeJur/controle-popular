@@ -63,8 +63,8 @@ export default async function SobrePage() {
           O que é o Controle Popular
         </h1>
         <p className="max-w-2xl text-[1.05em] text-text-soft">
-          Sou Seu Nonô, do portal Controle Popular do ONSA — Observatório Nacional
-          Socioambiental. Com raízes na História e Geografia, esse portal se utiliza da
+          O Controle Popular é o portal público do ONSA — Observatório Nacional
+          Socioambiental. Com raízes na História e Geografia, este portal se utiliza da
           tecnologia da Inteligência Artificial pra somar na busca por justiça
           socioambiental e fiscalização cidadã, acessível pela internet, gratuitamente
           e sem cadastro, por qualquer celular ou computador.

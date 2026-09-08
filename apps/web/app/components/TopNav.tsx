@@ -29,6 +29,7 @@ import {
   Search,
   Info,
   Code2,
+  BookOpen,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -132,6 +133,7 @@ const SECOES_MENU = [
     corClasse: "text-primary hover:text-primary",
     badgeClasse: "bg-primary/10 text-primary border-primary/30",
     links: [
+      { label: "Biblioteca Geral & Pesquisa", href: "/biblioteca", icone: BookOpen },
       { label: "Central de Notícias", href: "/noticias", icone: Newspaper },
       { label: "Tecnologia & IA Livre", href: "/tecnologia", icone: Cpu },
       { label: "Alertas & Notificações", href: "/alertas", icone: Bell },

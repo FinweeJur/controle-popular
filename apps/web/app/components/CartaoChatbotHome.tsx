@@ -67,9 +67,9 @@ export default function CartaoChatbotHome() {
           <img
             src="/seunono/avatar.webp"
             alt="Seu Nonô"
-            width={48}
-            height={48}
-            className="h-12 w-12 rounded-full border-2 border-amber-500/40 object-cover shrink-0 shadow-xs"
+            width={56}
+            height={56}
+            className="h-14 w-14 rounded-full border border-amber-500/40 object-cover shrink-0 shadow-xs"
           />
           <div>
             <div className="flex items-center gap-2">

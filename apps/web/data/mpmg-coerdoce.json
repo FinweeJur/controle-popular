@@ -1,0 +1,72 @@
+{
+  "fonte": "mpmg-coerdoce",
+  "itens": [
+    {
+      "id": "mpmg-coerdoce:itj-001",
+      "desastre": "brumadinho",
+      "bacia": "paraopeba",
+      "titulo": "ITJ Coerdoce: Relatório de Fiscalização Bacia do Paraopeba",
+      "data": "2025",
+      "tipo": "Informação Técnico-Jurídica",
+      "orgao": "MPMG — Coerdoce",
+      "esfera": "estadual",
+      "uf": "MG",
+      "tags": [
+        "mpmg-coerdoce",
+        "itj",
+        "fiscalizacao",
+        "paraopeba"
+      ],
+      "resumo": "ITJ sobre fiscalização na bacia do Paraopeba relacionada ao rompimento da barragem Córrego do Feijão.",
+      "url": "https://www.mpmg.mp.br/portal/menu/comunicacao/noticias/",
+      "fonteId": "mpmg-coerdoce",
+      "regiao_mg": "Paraopeba",
+      "classificavel": true
+    },
+    {
+      "id": "mpmg-coerdoce:itj-002",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "ITJ Coerdoce: Relatório de Fiscalização Bacia do Rio Doce",
+      "data": "2025",
+      "tipo": "Informação Técnico-Jurídica",
+      "orgao": "MPMG — Coerdoce",
+      "esfera": "estadual",
+      "uf": "MG",
+      "tags": [
+        "mpmg-coerdoce",
+        "itj",
+        "fiscalizacao",
+        "rio-doce"
+      ],
+      "resumo": "ITJ sobre fiscalização na bacia do Rio Doce relacionada ao rompimento da barragem do Fundão.",
+      "url": "https://www.mpmg.mp.br/portal/menu/comunicacao/noticias/",
+      "fonteId": "mpmg-coerdoce",
+      "regiao_mg": "Rio Doce",
+      "classificavel": true
+    },
+    {
+      "id": "mpmg-coerdoce:ic-001",
+      "desastre": "mariana",
+      "bacia": "doce",
+      "titulo": "Inquérito Civil: Investigação sobre Danos Ambientais — Fundão",
+      "data": "2024",
+      "tipo": "Inquérito Civil",
+      "orgao": "MPMG — Coerdoce",
+      "esfera": "estadual",
+      "uf": "MG",
+      "tags": [
+        "mpmg-coerdoce",
+        "inquisito-civil",
+        "fundao",
+        "ambiente"
+      ],
+      "resumo": "Inquérito civil investigando danos ambientais causados pelo rompimento da barragem do Fundão.",
+      "url": "https://www.mpmg.mp.br/portal/menu/comunicacao/noticias/",
+      "fonteId": "mpmg-coerdoce",
+      "regiao_mg": "Rio Doce",
+      "classificavel": true
+    }
+  ],
+  "geradoEm": "2026-09-06T03:04:42.238458+00:00"
+}

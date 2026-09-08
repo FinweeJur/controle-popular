@@ -241,6 +241,16 @@ export const CITACOES_AUTORIZADAS: Citacao[] = [
     temas: ["acao-cidada", "conselhos"],
   },
 
+  /* ─── João Guimarães Rosa ─── */
+  {
+    id: "guimaraes-rosa-coragem",
+    texto: "O que a vida quer da gente é coragem.",
+    autor: "João Guimarães Rosa",
+    obra: "Grande Sertão: Veredas",
+    ano: "1956",
+    temas: ["home", "fecho"],
+  },
+
   /* ─── Birri / Galeano ─── */
   {
     id: "birri-utopia",
