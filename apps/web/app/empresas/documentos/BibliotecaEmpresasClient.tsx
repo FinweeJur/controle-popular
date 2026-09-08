@@ -558,32 +558,34 @@ export default function BibliotecaEmpresasClient({ documentos }: Props) {
                         {doc.tamanhoFormatado}
                       </td>
 
-                      {/* Links Duplos */}
+                      {/* Links */}
                       <td className="py-3 px-4 align-top text-right space-y-1.5">
                         <div>
                           <a
-                            href={doc.urlR2}
+                            href={doc.urlOficial || doc.urlR2}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-end gap-1 font-semibold text-xs text-primary hover:underline"
-                            title="Acessar espelho preservado no bucket Cloudflare R2 do Controle Popular"
+                            title="Acessar documento na fonte oficial da empresa, CVM ou SEC"
                           >
-                            <span>Espelho R2</span>
-                            <Download size={12} />
+                            <span>Acessar Documento</span>
+                            <ExternalLink size={12} />
                           </a>
                         </div>
-                        <div>
-                          <a
-                            href={doc.urlOficial}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-end gap-1 text-[11px] text-muted hover:text-foreground hover:underline"
-                            title="Acessar pagina oficial da empresa, CVM ou SEC"
-                          >
-                            <span>Fonte Oficial</span>
-                            <ExternalLink size={10} />
-                          </a>
-                        </div>
+                        {doc.urlR2 && !doc.urlR2.includes("arquivos.controlepopular.com.br") && (
+                          <div>
+                            <a
+                              href={doc.urlR2}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center justify-end gap-1 text-[11px] text-muted hover:text-foreground hover:underline"
+                              title="Espelho preservado no Cloudflare R2"
+                            >
+                              <span>Espelho R2</span>
+                              <Download size={10} />
+                            </a>
+                          </div>
+                        )}
                       </td>
                     </tr>
                   );

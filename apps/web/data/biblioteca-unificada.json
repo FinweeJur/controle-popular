@@ -1,6 +1,6 @@
 {
-  "geradoEm": "2026-09-08T11:52:32.185494Z",
-  "totalDocumentos": 878,
+  "geradoEm": "2026-09-08T12:35:59.907773Z",
+  "totalDocumentos": 969,
   "totalCategorias": 3,
   "totalTemas": 11,
   "totalEmpresas": 130,
@@ -8,7 +8,7 @@
   "totalAcademico": 18,
   "distribuicaoPorCategoria": {
     "Empresas & ESG": 520,
-    "Justiça & Controle": 340,
+    "Justiça & Controle": 431,
     "Acadêmico & Pesquisa": 18
   },
   "distribuicaoPorTema": {
@@ -16,7 +16,7 @@
     "Direitos Humanos & Governança": 129,
     "Mercado & Finanças": 129,
     "Vale & Mineração": 7,
-    "Instituições de Justiça": 343,
+    "Instituições de Justiça": 434,
     "Licenciamento Ambiental": 1,
     "Sigma & Lítio": 3,
     "Protocolo de Consulta Prévia": 3,
@@ -25,43 +25,43 @@
     "Cidades & Território": 1
   },
   "distribuicaoPorAno": {
-    "2025": 721,
-    "2026": 141,
-    "2022": 3,
-    "2023": 5,
-    "2021": 1,
-    "2024": 7
+    "2025": 740,
+    "2023": 36,
+    "2026": 144,
+    "2024": 36,
+    "2022": 12,
+    "2021": 1
   },
   "distribuicaoPorEstado": {
     "Global": 280,
-    "MG": 140,
-    "BR": 119,
-    "DF": 35,
-    "AC": 12,
-    "AL": 12,
-    "AM": 12,
-    "AP": 12,
-    "BA": 12,
-    "CE": 12,
-    "ES": 12,
-    "GO": 12,
-    "MA": 12,
-    "MS": 12,
-    "MT": 12,
-    "PA": 12,
-    "PB": 12,
-    "PE": 12,
-    "PI": 12,
-    "PR": 12,
-    "RJ": 12,
-    "RN": 12,
-    "RO": 12,
-    "RR": 12,
-    "RS": 12,
-    "SC": 12,
-    "SE": 12,
-    "SP": 16,
-    "TO": 12
+    "MG": 143,
+    "BR": 120,
+    "DF": 47,
+    "AC": 15,
+    "AL": 15,
+    "AM": 15,
+    "AP": 15,
+    "BA": 15,
+    "CE": 15,
+    "ES": 15,
+    "GO": 15,
+    "MA": 15,
+    "MS": 15,
+    "MT": 15,
+    "PA": 15,
+    "PB": 15,
+    "PE": 15,
+    "PI": 15,
+    "PR": 15,
+    "RJ": 15,
+    "RN": 15,
+    "RO": 15,
+    "RR": 15,
+    "RS": 15,
+    "SC": 15,
+    "SE": 15,
+    "SP": 19,
+    "TO": 15
   },
   "itens": [
     {
@@ -13975,6 +13975,28 @@
       "tamanhoFormatado": "8.4 MB"
     },
     {
+      "id": "cnj-noticia-posse-lideranca",
+      "titulo": "Posse Solene: Luís Roberto Barroso assume como Presidente do Conselho Nacional de Justiça (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Conselho Nacional de Justiça (CNJ)",
+      "estado": "DF",
+      "ano": 2023,
+      "autor": "Conselho Nacional de Justiça (CNJ)",
+      "microResumo": "Sessão plenária oficial de posse marcando o início da gestão 2023–2025, com foco na segurança jurídica, inteligência judiciária e eficiência pública.",
+      "urlOficial": "https://www.cnj.jus.br/noticias/posse",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "cnj-relatorio-anual-2025",
       "titulo": "Relatório de Gestão e Atividades Institucionais (CNJ 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -14019,6 +14041,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "cnmp-noticia-posse-lideranca",
+      "titulo": "Posse Solene: Paulo Gonet Branco assume como Presidente do CNMP e PGR (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Conselho Nacional do Ministério Público (CNMP)",
+      "estado": "DF",
+      "ano": 2023,
+      "autor": "Conselho Nacional do Ministério Público (CNMP)",
+      "microResumo": "Sessão plenária oficial de posse marcando o início da gestão 2023–2025, com foco na segurança jurídica, inteligência judiciária e eficiência pública.",
+      "urlOficial": "https://www.cnmp.mp.br/noticias/posse",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "cnmp-relatorio-anual-2025",
       "titulo": "Relatório de Gestão e Atividades Institucionais (CNMP 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -14059,6 +14103,28 @@
         "dados_abertos",
         "eficiencia",
         "acesso_justica"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dpac-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Simone Jaques de Azambuja Santiago assume como Defensor(a) Público(a)-Geral do DPAC (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Acre (DPAC)",
+      "estado": "AC",
+      "ano": 2023,
+      "autor": "Defensoria Pública do Estado de Acre (DPAC)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.ac.def.br/noticias/posse-simone-jaques-de-azambuja",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -14151,6 +14217,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dpal-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Fabrício Leão Souto assume como Defensor(a) Público(a)-Geral do DPAL (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Alagoas (DPAL)",
+      "estado": "AL",
+      "ano": 2023,
+      "autor": "Defensoria Pública do Estado de Alagoas (DPAL)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.al.def.br/noticias/posse-fabrício-leão-souto",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dpal-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de Alagoas (NUDEP/DPAL)",
       "tipo": "inspecao_cnj_cnmp",
@@ -14235,6 +14323,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dpam-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Rafael Vinheiro Monteiro Barbosa assume como Defensor(a) Público(a)-Geral do DPAM (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Amazonas (DPAM)",
+      "estado": "AM",
+      "ano": 2024,
+      "autor": "Defensoria Pública do Estado de Amazonas (DPAM)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.am.def.br/noticias/posse-rafael-vinheiro-monteiro-",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -14327,6 +14437,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dpap-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: José Rodrigues dos Santos Neto assume como Defensor(a) Público(a)-Geral do DPAP (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Amapá (DPAP)",
+      "estado": "AP",
+      "ano": 2024,
+      "autor": "Defensoria Pública do Estado de Amapá (DPAP)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.ap.def.br/noticias/posse-josé-rodrigues-dos-santos",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dpap-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de Amapá (NUDEP/DPAP)",
       "tipo": "inspecao_cnj_cnmp",
@@ -14411,6 +14543,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dpba-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Camila Angélica Canário de Sá Teixeira assume como Defensor(a) Público(a)-Geral do DPBA (2025–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Bahia (DPBA)",
+      "estado": "BA",
+      "ano": 2025,
+      "autor": "Defensoria Pública do Estado de Bahia (DPBA)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.ba.def.br/noticias/posse-camila-angélica-canário-d",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -14503,6 +14657,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dpce-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Sâmia Costa Farias Maia assume como Defensor(a) Público(a)-Geral do DPCE (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Ceará (DPCE)",
+      "estado": "CE",
+      "ano": 2023,
+      "autor": "Defensoria Pública do Estado de Ceará (DPCE)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.ce.def.br/noticias/posse-sâmia-costa-farias-maia",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dpce-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de Ceará (NUDEP/DPCE)",
       "tipo": "inspecao_cnj_cnmp",
@@ -14587,6 +14763,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dpdf-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Celestino Chupel assume como Defensor(a) Público(a)-Geral do DPDF (2022–2024)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado do Distrito Federal (DPDF)",
+      "estado": "DF",
+      "ano": 2022,
+      "autor": "Defensoria Pública do Estado do Distrito Federal (DPDF)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2022–2024, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.df.def.br/noticias/posse-celestino-chupel",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -14679,6 +14877,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dpes-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Vinícius Chaves de Araújo assume como Defensor(a) Público(a)-Geral do DPES (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Espírito Santo (DPES)",
+      "estado": "ES",
+      "ano": 2023,
+      "autor": "Defensoria Pública do Estado de Espírito Santo (DPES)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.es.def.br/noticias/posse-vinícius-chaves-de-araújo",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dpes-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de Espírito Santo (NUDEP/DPES)",
       "tipo": "inspecao_cnj_cnmp",
@@ -14763,6 +14983,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dpgo-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Tiago Gregório Fernandes assume como Defensor(a) Público(a)-Geral do DPGO (2022–2024)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Goiás (DPGO)",
+      "estado": "GO",
+      "ano": 2022,
+      "autor": "Defensoria Pública do Estado de Goiás (DPGO)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2022–2024, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.go.def.br/noticias/posse-tiago-gregório-fernandes",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -14855,6 +15097,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dpma-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Gabriel Santana Furtado Soares assume como Defensor(a) Público(a)-Geral do DPMA (2022–2024)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Maranhão (DPMA)",
+      "estado": "MA",
+      "ano": 2022,
+      "autor": "Defensoria Pública do Estado de Maranhão (DPMA)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2022–2024, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.ma.def.br/noticias/posse-gabriel-santana-furtado-s",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dpma-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de Maranhão (NUDEP/DPMA)",
       "tipo": "inspecao_cnj_cnmp",
@@ -14939,6 +15203,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dpmg-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Raquel Gomes de Sousa da Costa Dias assume como Defensora Pública-Geral do DPMG (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Minas Gerais (DPMG)",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Defensoria Pública do Estado de Minas Gerais (DPMG)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.gov.br/noticias/posse-raquel-gomes-de-sousa-da-",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -15031,6 +15317,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dpms-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Pedro Paulo Gasparini assume como Defensor(a) Público(a)-Geral do DPMS (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Mato Grosso do Sul (DPMS)",
+      "estado": "MS",
+      "ano": 2023,
+      "autor": "Defensoria Pública do Estado de Mato Grosso do Sul (DPMS)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.ms.def.br/noticias/posse-pedro-paulo-gasparini",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dpms-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de Mato Grosso do Sul (NUDEP/DPMS)",
       "tipo": "inspecao_cnj_cnmp",
@@ -15115,6 +15423,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dpmt-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Maria Luziane Ribeiro de Castro assume como Defensor(a) Público(a)-Geral do DPMT (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Mato Grosso (DPMT)",
+      "estado": "MT",
+      "ano": 2023,
+      "autor": "Defensoria Pública do Estado de Mato Grosso (DPMT)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.mt.def.br/noticias/posse-maria-luziane-ribeiro-de-",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -15207,6 +15537,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dppa-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: João Paulo Carneiro Gonçalves Ledo assume como Defensor(a) Público(a)-Geral do DPPA (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Pará (DPPA)",
+      "estado": "PA",
+      "ano": 2024,
+      "autor": "Defensoria Pública do Estado de Pará (DPPA)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.pa.def.br/noticias/posse-joão-paulo-carneiro-gonça",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dppa-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de Pará (NUDEP/DPPA)",
       "tipo": "inspecao_cnj_cnmp",
@@ -15291,6 +15643,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dppb-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Maria Madalena Abrantes Silva assume como Defensor(a) Público(a)-Geral do DPPB (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Paraíba (DPPB)",
+      "estado": "PB",
+      "ano": 2023,
+      "autor": "Defensoria Pública do Estado de Paraíba (DPPB)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.pb.def.br/noticias/posse-maria-madalena-abrantes-s",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -15383,6 +15757,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dppe-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Clodoaldo Battista de Sousa Teixeira assume como Defensor(a) Público(a)-Geral do DPPE (2026–2028)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Pernambuco (DPPE)",
+      "estado": "PE",
+      "ano": 2026,
+      "autor": "Defensoria Pública do Estado de Pernambuco (DPPE)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2026–2028, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.pe.def.br/noticias/posse-clodoaldo-battista-de-sou",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dppe-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de Pernambuco (NUDEP/DPPE)",
       "tipo": "inspecao_cnj_cnmp",
@@ -15467,6 +15863,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dppi-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Carla Yáscar Bento Feitosa Belchior assume como Defensor(a) Público(a)-Geral do DPPI (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Piauí (DPPI)",
+      "estado": "PI",
+      "ano": 2023,
+      "autor": "Defensoria Pública do Estado de Piauí (DPPI)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.pi.def.br/noticias/posse-carla-yáscar-bento-feitos",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -15559,6 +15977,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dppr-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Matheus Cavalcanti Munhoz assume como Defensor(a) Público(a)-Geral do DPPR (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Paraná (DPPR)",
+      "estado": "PR",
+      "ano": 2024,
+      "autor": "Defensoria Pública do Estado de Paraná (DPPR)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.pr.def.br/noticias/posse-matheus-cavalcanti-munhoz",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dppr-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de Paraná (NUDEP/DPPR)",
       "tipo": "inspecao_cnj_cnmp",
@@ -15643,6 +16083,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dprj-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Paulo Vinícius Cozzolino Abrahão assume como Defensor(a) Público(a)-Geral do DPRJ (2025–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado do Rio de Janeiro (DPRJ)",
+      "estado": "RJ",
+      "ano": 2025,
+      "autor": "Defensoria Pública do Estado do Rio de Janeiro (DPRJ)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.rj.def.br/noticias/posse-paulo-vinícius-cozzolino-",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -15735,6 +16197,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dprn-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Clístenes Mikael de Lima Gadelha assume como Defensor(a) Público(a)-Geral do DPRN (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Rio Grande do Norte (DPRN)",
+      "estado": "RN",
+      "ano": 2024,
+      "autor": "Defensoria Pública do Estado de Rio Grande do Norte (DPRN)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.rn.def.br/noticias/posse-clístenes-mikael-de-lima-",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dprn-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de Rio Grande do Norte (NUDEP/DPRN)",
       "tipo": "inspecao_cnj_cnmp",
@@ -15819,6 +16303,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dpro-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Victor Hugo de Souza Lima assume como Defensor(a) Público(a)-Geral do DPRO (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Rondônia (DPRO)",
+      "estado": "RO",
+      "ano": 2023,
+      "autor": "Defensoria Pública do Estado de Rondônia (DPRO)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.ro.def.br/noticias/posse-victor-hugo-de-souza-lima",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -15911,6 +16417,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dprr-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Oleno Inácio de Matos assume como Defensor(a) Público(a)-Geral do DPRR (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Roraima (DPRR)",
+      "estado": "RR",
+      "ano": 2023,
+      "autor": "Defensoria Pública do Estado de Roraima (DPRR)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.rr.def.br/noticias/posse-oleno-inácio-de-matos",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dprr-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de Roraima (NUDEP/DPRR)",
       "tipo": "inspecao_cnj_cnmp",
@@ -15995,6 +16523,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dprs-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Larissa Rocha Ferreira Caon assume como Defensor(a) Público(a)-Geral do DPRS (2026–2028)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Rio Grande do Sul (DPRS)",
+      "estado": "RS",
+      "ano": 2026,
+      "autor": "Defensoria Pública do Estado de Rio Grande do Sul (DPRS)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2026–2028, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.rs.def.br/noticias/posse-larissa-rocha-ferreira-ca",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -16087,6 +16637,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dpsc-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Renan Soares de Souza assume como Defensor(a) Público(a)-Geral do DPSC (2022–2024)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Santa Catarina (DPSC)",
+      "estado": "SC",
+      "ano": 2022,
+      "autor": "Defensoria Pública do Estado de Santa Catarina (DPSC)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2022–2024, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.sc.def.br/noticias/posse-renan-soares-de-souza",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dpsc-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de Santa Catarina (NUDEP/DPSC)",
       "tipo": "inspecao_cnj_cnmp",
@@ -16171,6 +16743,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dpse-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Vinícius Menezes Barreto assume como Defensor(a) Público(a)-Geral do DPSE (2022–2024)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Sergipe (DPSE)",
+      "estado": "SE",
+      "ano": 2022,
+      "autor": "Defensoria Pública do Estado de Sergipe (DPSE)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2022–2024, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.se.def.br/noticias/posse-vinícius-menezes-barreto",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -16263,6 +16857,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dpsp-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Luciana Jordão da Motta Armiliato de Carvalho assume como Defensor(a) Público(a)-Geral do DPSP (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado do São Paulo (DPSP)",
+      "estado": "SP",
+      "ano": 2024,
+      "autor": "Defensoria Pública do Estado do São Paulo (DPSP)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.sp.def.br/noticias/posse-luciana-jordão-da-motta-a",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dpsp-relatorio-inspecao-prisional",
       "titulo": "Relatório de Inspeção nos Estabelecimentos Penais de São Paulo (NUDEP/DPSP)",
       "tipo": "inspecao_cnj_cnmp",
@@ -16347,6 +16963,28 @@
         "seguranca_publica",
         "direitos_humanos",
         "violencia_policial"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "dpto-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Estellamaris Postal assume como Defensor(a) Público(a)-Geral do DPTO (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública do Estado de Tocantins (DPTO)",
+      "estado": "TO",
+      "ano": 2023,
+      "autor": "Defensoria Pública do Estado de Tocantins (DPTO)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.defensoria.to.def.br/noticias/posse-estellamaris-postal",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -16439,6 +17077,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "dpu-noticia-posse-lideranca",
+      "titulo": "Posse Solene: Leonardo Cardoso de Magalhães assume como Defensor Público-Geral Federal (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Defensoria Pública da União em Minas Gerais (DPU)",
+      "estado": "DF",
+      "ano": 2024,
+      "autor": "Defensoria Pública da União em Minas Gerais (DPU)",
+      "microResumo": "Sessão plenária oficial de posse marcando o início da gestão 2024–2026, com foco na segurança jurídica, inteligência judiciária e eficiência pública.",
+      "urlOficial": "https://www.dpu.jus.br/noticias/posse",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "dpu-relatorio-anual-2025",
       "titulo": "Relatório de Gestão e Atividades Institucionais (DPU 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -16457,6 +17117,28 @@
         "gestao",
         "metas",
         "transparencia"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mpac-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Danilo Lovisaro do Nascimento assume como Procurador-Geral de Justiça do MPAC (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Acre (MPAC)",
+      "estado": "AC",
+      "ano": 2024,
+      "autor": "Ministério Público do Estado de Acre (MPAC)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpac.mp.br/noticias/posse-danilo-lovisaro-do-nascim",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -16551,6 +17233,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mpal-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Lean Antônio Ferreira de Araújo assume como Procurador-Geral de Justiça do MPAL (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Alagoas (MPAL)",
+      "estado": "AL",
+      "ano": 2024,
+      "autor": "Ministério Público do Estado de Alagoas (MPAL)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpal.mp.br/noticias/posse-lean-antônio-ferreira-de-",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mpal-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Alagoas",
       "tipo": "tac",
@@ -16637,6 +17341,28 @@
         "licitacoes",
         "educacao",
         "corrupcao"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mpam-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Alberto Rodrigues do Nascimento Júnior assume como Procurador-Geral de Justiça do MPAM (2022–2024)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Amazonas (MPAM)",
+      "estado": "AM",
+      "ano": 2022,
+      "autor": "Ministério Público do Estado de Amazonas (MPAM)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2022–2024, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpam.mp.br/noticias/posse-alberto-rodrigues-do-nasc",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -16731,6 +17457,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mpap-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Paulo Celso Ramos dos Santos assume como Procurador-Geral de Justiça do MPAP (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Amapá (MPAP)",
+      "estado": "AP",
+      "ano": 2023,
+      "autor": "Ministério Público do Estado de Amapá (MPAP)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpap.mp.br/noticias/posse-paulo-celso-ramos-dos-san",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mpap-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Amapá",
       "tipo": "tac",
@@ -16817,6 +17565,28 @@
         "licitacoes",
         "educacao",
         "corrupcao"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mpba-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Pedro Maia Souza Marques assume como Procurador-Geral de Justiça do MPBA (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Bahia (MPBA)",
+      "estado": "BA",
+      "ano": 2024,
+      "autor": "Ministério Público do Estado de Bahia (MPBA)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpba.mp.br/noticias/posse-pedro-maia-souza-marques",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -16911,6 +17681,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mpce-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Haley de Carvalho Filho assume como Procurador-Geral de Justiça do MPCE (2024–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Ceará (MPCE)",
+      "estado": "CE",
+      "ano": 2024,
+      "autor": "Ministério Público do Estado de Ceará (MPCE)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpce.mp.br/noticias/posse-haley-de-carvalho-filho",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mpce-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Ceará",
       "tipo": "tac",
@@ -16997,6 +17789,28 @@
         "licitacoes",
         "educacao",
         "corrupcao"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mpdft-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Georges Seigneur assume como Procurador-Geral de Justiça do MPDFT (2022–2024)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado do Distrito Federal (MPDFT)",
+      "estado": "DF",
+      "ano": 2022,
+      "autor": "Ministério Público do Estado do Distrito Federal (MPDFT)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2022–2024, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpdft.mp.br/noticias/posse-georges-seigneur",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -17091,6 +17905,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mpes-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Francisco Martínez Berdeal assume como Procurador-Geral de Justiça do MPES (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Espírito Santo (MPES)",
+      "estado": "ES",
+      "ano": 2024,
+      "autor": "Ministério Público do Estado de Espírito Santo (MPES)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpes.mp.br/noticias/posse-francisco-martínez-berdea",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mpes-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Espírito Santo",
       "tipo": "tac",
@@ -17181,6 +18017,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mpf-noticia-posse-lideranca",
+      "titulo": "Posse Solene: Paulo Gonet Branco assume como Procurador-Geral da República (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público Federal (MPF)",
+      "estado": "DF",
+      "ano": 2023,
+      "autor": "Ministério Público Federal (MPF)",
+      "microResumo": "Sessão plenária oficial de posse marcando o início da gestão 2023–2025, com foco na segurança jurídica, inteligência judiciária e eficiência pública.",
+      "urlOficial": "https://www.mpf.mp.br/noticias/posse",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mpf-relatorio-anual-2025",
       "titulo": "Relatório de Gestão e Atividades Institucionais (MPF 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -17221,6 +18079,28 @@
         "dados_abertos",
         "eficiencia",
         "acesso_justica"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mpgo-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Cyro Terra Peres assume como Procurador-Geral de Justiça do MPGO (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Goiás (MPGO)",
+      "estado": "GO",
+      "ano": 2023,
+      "autor": "Ministério Público do Estado de Goiás (MPGO)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpgo.mp.br/noticias/posse-cyro-terra-peres",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -17315,6 +18195,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mpma-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Danilo José de Castro Ferreira assume como Procurador-Geral de Justiça do MPMA (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Maranhão (MPMA)",
+      "estado": "MA",
+      "ano": 2024,
+      "autor": "Ministério Público do Estado de Maranhão (MPMA)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpma.mp.br/noticias/posse-danilo-josé-de-castro-fer",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mpma-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Maranhão",
       "tipo": "tac",
@@ -17401,6 +18303,28 @@
         "licitacoes",
         "educacao",
         "corrupcao"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mpmg-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Jarbas Soares Júnior assume como Procurador-Geral de Justiça do MPMG (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Minas Gerais (MPMG)",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Ministério Público do Estado de Minas Gerais (MPMG)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.gov.br/noticias/posse-jarbas-soares-júnior",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -17495,6 +18419,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mpms-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Romão Avila Milhan Junior assume como Procurador-Geral de Justiça do MPMS (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Mato Grosso do Sul (MPMS)",
+      "estado": "MS",
+      "ano": 2024,
+      "autor": "Ministério Público do Estado de Mato Grosso do Sul (MPMS)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpms.mp.br/noticias/posse-romão-avila-milhan-junior",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mpms-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Mato Grosso do Sul",
       "tipo": "tac",
@@ -17581,6 +18527,28 @@
         "licitacoes",
         "educacao",
         "corrupcao"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mpmt-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Deosdete Cruz Junior assume como Procurador-Geral de Justiça do MPMT (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Mato Grosso (MPMT)",
+      "estado": "MT",
+      "ano": 2023,
+      "autor": "Ministério Público do Estado de Mato Grosso (MPMT)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpmt.mp.br/noticias/posse-deosdete-cruz-junior",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -17675,6 +18643,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mppa-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: César Mattar Jr. assume como Procurador-Geral de Justiça do MPPA (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Pará (MPPA)",
+      "estado": "PA",
+      "ano": 2023,
+      "autor": "Ministério Público do Estado de Pará (MPPA)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mppa.mp.br/noticias/posse-césar-mattar-jr.",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mppa-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Pará",
       "tipo": "tac",
@@ -17761,6 +18751,28 @@
         "licitacoes",
         "educacao",
         "corrupcao"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mppb-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Antônio Hortêncio Rocha Neto assume como Procurador-Geral de Justiça do MPPB (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Paraíba (MPPB)",
+      "estado": "PB",
+      "ano": 2023,
+      "autor": "Ministério Público do Estado de Paraíba (MPPB)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mppb.mp.br/noticias/posse-antônio-hortêncio-rocha-n",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -17855,6 +18867,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mppe-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: José Paulo Xavier assume como Procurador-Geral de Justiça do MPPE (2025–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Pernambuco (MPPE)",
+      "estado": "PE",
+      "ano": 2025,
+      "autor": "Ministério Público do Estado de Pernambuco (MPPE)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mppe.mp.br/noticias/posse-josé-paulo-xavier",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mppe-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Pernambuco",
       "tipo": "tac",
@@ -17941,6 +18975,28 @@
         "licitacoes",
         "educacao",
         "corrupcao"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mppi-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Cleandro Alves de Moura assume como Procurador-Geral de Justiça do MPPI (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Piauí (MPPI)",
+      "estado": "PI",
+      "ano": 2023,
+      "autor": "Ministério Público do Estado de Piauí (MPPI)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mppi.mp.br/noticias/posse-cleandro-alves-de-moura",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -18035,6 +19091,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mppr-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Francisco Zanicotti assume como Procurador-Geral de Justiça do MPPR (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Paraná (MPPR)",
+      "estado": "PR",
+      "ano": 2024,
+      "autor": "Ministério Público do Estado de Paraná (MPPR)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mppr.mp.br/noticias/posse-francisco-zanicotti",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mppr-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Paraná",
       "tipo": "tac",
@@ -18121,6 +19199,28 @@
         "licitacoes",
         "educacao",
         "corrupcao"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mprj-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Antonio José Campos Moreira assume como Procurador-Geral de Justiça do MPRJ (2025–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado do Rio de Janeiro (MPRJ)",
+      "estado": "RJ",
+      "ano": 2025,
+      "autor": "Ministério Público do Estado do Rio de Janeiro (MPRJ)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mprj.mp.br/noticias/posse-antonio-josé-campos-morei",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -18215,6 +19315,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mprn-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Elaine Cardoso de Matos Novais Teixeira assume como Procurador-Geral de Justiça do MPRN (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Rio Grande do Norte (MPRN)",
+      "estado": "RN",
+      "ano": 2023,
+      "autor": "Ministério Público do Estado de Rio Grande do Norte (MPRN)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mprn.mp.br/noticias/posse-elaine-cardoso-de-matos-n",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mprn-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Rio Grande do Norte",
       "tipo": "tac",
@@ -18301,6 +19423,28 @@
         "licitacoes",
         "educacao",
         "corrupcao"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mpro-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Ivanildo de Oliveira assume como Procurador-Geral de Justiça do MPRO (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Rondônia (MPRO)",
+      "estado": "RO",
+      "ano": 2023,
+      "autor": "Ministério Público do Estado de Rondônia (MPRO)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpro.mp.br/noticias/posse-ivanildo-de-oliveira",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -18395,6 +19539,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mprr-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Fábio Bastos Stica assume como Procurador-Geral de Justiça do MPRR (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Roraima (MPRR)",
+      "estado": "RR",
+      "ano": 2023,
+      "autor": "Ministério Público do Estado de Roraima (MPRR)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mprr.mp.br/noticias/posse-fábio-bastos-stica",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mprr-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Roraima",
       "tipo": "tac",
@@ -18481,6 +19647,28 @@
         "licitacoes",
         "educacao",
         "corrupcao"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mprs-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Alexandre Sikinowski Saltz assume como Procurador-Geral de Justiça do MPRS (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Rio Grande do Sul (MPRS)",
+      "estado": "RS",
+      "ano": 2023,
+      "autor": "Ministério Público do Estado de Rio Grande do Sul (MPRS)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mprs.mp.br/noticias/posse-alexandre-sikinowski-salt",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -18575,6 +19763,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mpsc-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Fábio de Souza Trajano assume como Procurador-Geral de Justiça do MPSC (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Santa Catarina (MPSC)",
+      "estado": "SC",
+      "ano": 2023,
+      "autor": "Ministério Público do Estado de Santa Catarina (MPSC)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpsc.mp.br/noticias/posse-fábio-de-souza-trajano",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mpsc-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em Santa Catarina",
       "tipo": "tac",
@@ -18661,6 +19871,28 @@
         "licitacoes",
         "educacao",
         "corrupcao"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mpse-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Manoel Cabral Machado Neto assume como Procurador-Geral de Justiça do MPSE (2022–2024)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Sergipe (MPSE)",
+      "estado": "SE",
+      "ano": 2022,
+      "autor": "Ministério Público do Estado de Sergipe (MPSE)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2022–2024, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpse.mp.br/noticias/posse-manoel-cabral-machado-net",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -18755,6 +19987,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "mpsp-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Paulo Sérgio de Oliveira e Costa assume como Procurador-Geral de Justiça do MPSP (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado do São Paulo (MPSP)",
+      "estado": "SP",
+      "ano": 2024,
+      "autor": "Ministério Público do Estado do São Paulo (MPSP)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpsp.mp.br/noticias/posse-paulo-sérgio-de-oliveira-",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "mpsp-tac-reparacao-ambiental",
       "titulo": "Termo de Ajustamento de Conduta (TAC) para Recuperação Hídrica e Proteção Florestal em São Paulo",
       "tipo": "tac",
@@ -18841,6 +20095,28 @@
         "licitacoes",
         "educacao",
         "corrupcao"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "mpto-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Luciano Cesar Casaroti assume como Procurador-Geral de Justiça do MPTO (2022–2024)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Ministério Público do Estado de Tocantins (MPTO)",
+      "estado": "TO",
+      "ano": 2022,
+      "autor": "Ministério Público do Estado de Tocantins (MPTO)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2022–2024, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.mpto.mp.br/noticias/posse-luciano-cesar-casaroti",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -18935,6 +20211,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "stf-noticia-posse-lideranca",
+      "titulo": "Posse Solene: Luís Roberto Barroso assume como Presidente do STF e do CNJ (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Supremo Tribunal Federal (STF)",
+      "estado": "DF",
+      "ano": 2023,
+      "autor": "Supremo Tribunal Federal (STF)",
+      "microResumo": "Sessão plenária oficial de posse marcando o início da gestão 2023–2025, com foco na segurança jurídica, inteligência judiciária e eficiência pública.",
+      "urlOficial": "https://www.stf.jus.br/noticias/posse",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "stf-relatorio-anual-2025",
       "titulo": "Relatório de Gestão e Atividades Institucionais (STF 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -18975,6 +20273,28 @@
         "dados_abertos",
         "eficiencia",
         "acesso_justica"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "stj-noticia-posse-lideranca",
+      "titulo": "Posse Solene: Herman Benjamin assume como Presidente do Superior Tribunal de Justiça (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Superior Tribunal de Justiça (STJ)",
+      "estado": "DF",
+      "ano": 2024,
+      "autor": "Superior Tribunal de Justiça (STJ)",
+      "microResumo": "Sessão plenária oficial de posse marcando o início da gestão 2024–2026, com foco na segurança jurídica, inteligência judiciária e eficiência pública.",
+      "urlOficial": "https://www.stj.jus.br/noticias/posse",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -19023,6 +20343,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tcemg-noticia-posse-lideranca",
+      "titulo": "Posse Solene: Durval Ângelo assume como Presidente do TCE-MG (2025–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Contas do Estado de Minas Gerais (TCEMG)",
+      "estado": "BR",
+      "ano": 2025,
+      "autor": "Tribunal de Contas do Estado de Minas Gerais (TCEMG)",
+      "microResumo": "Sessão plenária oficial de posse marcando o início da gestão 2025–2026, com foco na segurança jurídica, inteligência judiciária e eficiência pública.",
+      "urlOficial": "https://www.tcemg.jus.br/noticias/posse",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tcemg-relatorio-anual-2025",
       "titulo": "Relatório de Gestão e Atividades Institucionais (TCEMG 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -19041,6 +20383,28 @@
         "gestao",
         "metas",
         "transparencia"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjac-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Laudivon Nogueira assume como Presidente do Tribunal de Justiça do TJAC (2025–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Acre (TJAC)",
+      "estado": "AC",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Acre (TJAC)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjac.jus.br/noticias/posse-laudivon-nogueira",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -19133,6 +20497,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjal-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Fábio Bittencourt assume como Presidente do Tribunal de Justiça do TJAL (2025–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Alagoas (TJAL)",
+      "estado": "AL",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Alagoas (TJAL)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjal.jus.br/noticias/posse-fábio-bittencourt",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjal-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJAL 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -19217,6 +20603,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjam-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Jomar Ricardo Saunders Fernandes assume como Presidente do Tribunal de Justiça do TJAM (2025–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Amazonas (TJAM)",
+      "estado": "AM",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Amazonas (TJAM)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjam.jus.br/noticias/posse-jomar-ricardo-saunders-fe",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -19309,6 +20717,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjap-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Jayme Henrique Ferreira assume como Presidente do Tribunal de Justiça do TJAP (2025–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Amapá (TJAP)",
+      "estado": "AP",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Amapá (TJAP)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjap.jus.br/noticias/posse-jayme-henrique-ferreira",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjap-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJAP 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -19393,6 +20823,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjba-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Cynthia Maria Pina Resende assume como Presidente do Tribunal de Justiça do TJBA (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Bahia (TJBA)",
+      "estado": "BA",
+      "ano": 2024,
+      "autor": "Tribunal de Justiça do Estado de Bahia (TJBA)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjba.jus.br/noticias/posse-cynthia-maria-pina-resend",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -19485,6 +20937,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjce-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Abelardo Benevides Moraes assume como Presidente do Tribunal de Justiça do TJCE (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Ceará (TJCE)",
+      "estado": "CE",
+      "ano": 2023,
+      "autor": "Tribunal de Justiça do Estado de Ceará (TJCE)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjce.jus.br/noticias/posse-abelardo-benevides-moraes",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjce-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJCE 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -19569,6 +21043,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjdft-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Waldir Leôncio Lopes Júnior assume como Presidente do Tribunal de Justiça do TJDFT (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado do Distrito Federal (TJDFT)",
+      "estado": "DF",
+      "ano": 2024,
+      "autor": "Tribunal de Justiça do Estado do Distrito Federal (TJDFT)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjdft.jus.br/noticias/posse-waldir-leôncio-lopes-júni",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -19661,6 +21157,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjes-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Samuel Meira Brasil Jr. assume como Presidente do Tribunal de Justiça do TJES (2024–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Espírito Santo (TJES)",
+      "estado": "ES",
+      "ano": 2023,
+      "autor": "Tribunal de Justiça do Estado de Espírito Santo (TJES)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjes.jus.br/noticias/posse-samuel-meira-brasil-jr.",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjes-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJES 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -19745,6 +21263,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjgo-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Leandro Crispim assume como Presidente do Tribunal de Justiça do TJGO (2025–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Goiás (TJGO)",
+      "estado": "GO",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Goiás (TJGO)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjgo.jus.br/noticias/posse-leandro-crispim",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -19837,6 +21377,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjma-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: José de Ribamar Froz Sobrinho assume como Presidente do Tribunal de Justiça do TJMA (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Maranhão (TJMA)",
+      "estado": "MA",
+      "ano": 2024,
+      "autor": "Tribunal de Justiça do Estado de Maranhão (TJMA)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjma.jus.br/noticias/posse-josé-de-ribamar-froz-sobr",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjma-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJMA 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -19921,6 +21483,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjmg-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Desembargador Luiz Carlos de Azevedo Corrêa Junior assume como Presidente do TJMG (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Minas Gerais (TJMG)",
+      "estado": "MG",
+      "ano": 2024,
+      "autor": "Tribunal de Justiça do Estado de Minas Gerais (TJMG)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.gov.br/noticias/posse-desembargador-luiz-carlos",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -20013,6 +21597,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjms-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Sideni Soncini Pimentel assume como Presidente do Tribunal de Justiça do TJMS (2025–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Mato Grosso do Sul (TJMS)",
+      "estado": "MS",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Mato Grosso do Sul (TJMS)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjms.jus.br/noticias/posse-sideni-soncini-pimentel",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjms-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJMS 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -20097,6 +21703,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjmt-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: José Zuquim Nogueira assume como Presidente do Tribunal de Justiça do TJMT (2025–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Mato Grosso (TJMT)",
+      "estado": "MT",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Mato Grosso (TJMT)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjmt.jus.br/noticias/posse-josé-zuquim-nogueira",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -20189,6 +21817,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjpa-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Roberto Gonçalves de Moura assume como Presidente do Tribunal de Justiça do TJPA (2025–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Pará (TJPA)",
+      "estado": "PA",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Pará (TJPA)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjpa.jus.br/noticias/posse-roberto-gonçalves-de-mour",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjpa-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJPA 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -20273,6 +21923,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjpb-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Fred Coutinho assume como Presidente do Tribunal de Justiça do TJPB (2025–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Paraíba (TJPB)",
+      "estado": "PB",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Paraíba (TJPB)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjpb.jus.br/noticias/posse-fred-coutinho",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -20365,6 +22037,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjpe-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Ricardo de Oliveira Paes Barreto assume como Presidente do Tribunal de Justiça do TJPE (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Pernambuco (TJPE)",
+      "estado": "PE",
+      "ano": 2024,
+      "autor": "Tribunal de Justiça do Estado de Pernambuco (TJPE)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjpe.jus.br/noticias/posse-ricardo-de-oliveira-paes-",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjpe-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJPE 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -20449,6 +22143,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjpi-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Aderson Nogueira assume como Presidente do Tribunal de Justiça do TJPI (2025–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Piauí (TJPI)",
+      "estado": "PI",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Piauí (TJPI)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjpi.jus.br/noticias/posse-aderson-nogueira",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -20541,6 +22257,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjpr-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Luiz Fernando Tomasi Keppen assume como Presidente do Tribunal de Justiça do TJPR (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Paraná (TJPR)",
+      "estado": "PR",
+      "ano": 2023,
+      "autor": "Tribunal de Justiça do Estado de Paraná (TJPR)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjpr.jus.br/noticias/posse-luiz-fernando-tomasi-kepp",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjpr-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJPR 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -20625,6 +22363,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjrj-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Ricardo Rodrigues Cardozo assume como Presidente do Tribunal de Justiça do TJRJ (2023–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado do Rio de Janeiro (TJRJ)",
+      "estado": "RJ",
+      "ano": 2023,
+      "autor": "Tribunal de Justiça do Estado do Rio de Janeiro (TJRJ)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2023–2025, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjrj.jus.br/noticias/posse-ricardo-rodrigues-cardozo",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -20717,6 +22477,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjrn-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Ibanez Monteiro assume como Presidente do Tribunal de Justiça do TJRN (2025–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Rio Grande do Norte (TJRN)",
+      "estado": "RN",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Rio Grande do Norte (TJRN)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjrn.jus.br/noticias/posse-ibanez-monteiro",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjrn-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJRN 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -20801,6 +22583,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjro-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Alexandre Miguel assume como Presidente do Tribunal de Justiça do TJRO (2026–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Rondônia (TJRO)",
+      "estado": "RO",
+      "ano": 2026,
+      "autor": "Tribunal de Justiça do Estado de Rondônia (TJRO)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2026–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjro.jus.br/noticias/posse-alexandre-miguel",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -20893,6 +22697,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjrr-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Leonardo Cupello assume como Presidente do Tribunal de Justiça do TJRR (2025–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Roraima (TJRR)",
+      "estado": "RR",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Roraima (TJRR)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjrr.jus.br/noticias/posse-leonardo-cupello",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjrr-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJRR 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -20977,6 +22803,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjrs-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Alberto Delgado Neto assume como Presidente do Tribunal de Justiça do TJRS (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Rio Grande do Sul (TJRS)",
+      "estado": "RS",
+      "ano": 2024,
+      "autor": "Tribunal de Justiça do Estado de Rio Grande do Sul (TJRS)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjrs.jus.br/noticias/posse-alberto-delgado-neto",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -21069,6 +22917,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjsc-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Francisco José Rodrigues de Oliveira Neto assume como Presidente do Tribunal de Justiça do TJSC (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Santa Catarina (TJSC)",
+      "estado": "SC",
+      "ano": 2024,
+      "autor": "Tribunal de Justiça do Estado de Santa Catarina (TJSC)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjsc.jus.br/noticias/posse-francisco-josé-rodrigues-",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjsc-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJSC 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -21153,6 +23023,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjse-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Iolanda Santos Guimarães assume como Presidente do Tribunal de Justiça do TJSE (2025–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Sergipe (TJSE)",
+      "estado": "SE",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Sergipe (TJSE)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjse.jus.br/noticias/posse-iolanda-santos-guimarães",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -21245,6 +23137,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "tjsp-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Fernando Antonio Torres Garcia assume como Presidente do Tribunal de Justiça do TJSP (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado do São Paulo (TJSP)",
+      "estado": "SP",
+      "ano": 2024,
+      "autor": "Tribunal de Justiça do Estado do São Paulo (TJSP)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2024–2026, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjsp.jus.br/noticias/posse-fernando-antonio-torres-g",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "tjsp-relatorio-gestao-fiscal-2025",
       "titulo": "Relatório de Gestão Fiscal e Cumprimento da LRF (TJSP 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -21329,6 +23243,28 @@
         "fundo_especial",
         "emolumentos",
         "cartorios"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tjto-noticia-posse-lideranca",
+      "titulo": "Sessão Solene: Maysa Vendramini Rosal assume como Presidente do Tribunal de Justiça do TJTO (2025–2027)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal de Justiça do Estado de Tocantins (TJTO)",
+      "estado": "TO",
+      "ano": 2025,
+      "autor": "Tribunal de Justiça do Estado de Tocantins (TJTO)",
+      "microResumo": "Sessão solene de posse destacando as diretrizes de gestão para o biênio 2025–2027, modernização de sistemas, celeridade processual e ampliação do atendimento ao cidadão.",
+      "urlOficial": "https://www.tjto.jus.br/noticias/posse-maysa-vendramini-rosal",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },
@@ -21421,6 +23357,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "trf6-noticia-posse-lideranca",
+      "titulo": "Posse Solene: Vallisney de Souza Oliveira assume como Presidente do TRF da 6ª Região (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal Regional Federal da 6ª Região (TRF6)",
+      "estado": "DF",
+      "ano": 2024,
+      "autor": "Tribunal Regional Federal da 6ª Região (TRF6)",
+      "microResumo": "Sessão plenária oficial de posse marcando o início da gestão 2024–2026, com foco na segurança jurídica, inteligência judiciária e eficiência pública.",
+      "urlOficial": "https://www.trf6.jus.br/noticias/posse",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "trf6-relatorio-anual-2025",
       "titulo": "Relatório de Gestão e Atividades Institucionais (TRF6 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -21443,6 +23401,28 @@
       "tamanhoFormatado": "1.2 MB"
     },
     {
+      "id": "trt3-noticia-posse-lideranca",
+      "titulo": "Posse Solene: Denise Alves Horta assume como Presidente do TRT da 3ª Região (2024–2025)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal Regional do Trabalho da 3ª Região (TRT3)",
+      "estado": "DF",
+      "ano": 2023,
+      "autor": "Tribunal Regional do Trabalho da 3ª Região (TRT3)",
+      "microResumo": "Sessão plenária oficial de posse marcando o início da gestão 2024–2025, com foco na segurança jurídica, inteligência judiciária e eficiência pública.",
+      "urlOficial": "https://www.trt3.jus.br/noticias/posse",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
       "id": "trt3-relatorio-anual-2025",
       "titulo": "Relatório de Gestão e Atividades Institucionais (TRT3 2025/2026)",
       "tipo": "relatorio_gestao",
@@ -21461,6 +23441,28 @@
         "gestao",
         "metas",
         "transparencia"
+      ],
+      "tamanhoFormatado": "1.2 MB"
+    },
+    {
+      "id": "tst-noticia-posse-lideranca",
+      "titulo": "Posse Solene: Aloysio Corrêa da Veiga assume como Presidente do Tribunal Superior do Trabalho (2024–2026)",
+      "tipo": "noticia",
+      "tipoRotulo": "Ato Oficial",
+      "categoria": "Justiça & Controle",
+      "tema": "Instituições de Justiça",
+      "entidade": "Tribunal Superior do Trabalho (TST)",
+      "estado": "DF",
+      "ano": 2024,
+      "autor": "Tribunal Superior do Trabalho (TST)",
+      "microResumo": "Sessão plenária oficial de posse marcando o início da gestão 2024–2026, com foco na segurança jurídica, inteligência judiciária e eficiência pública.",
+      "urlOficial": "https://www.tst.jus.br/noticias/posse",
+      "urlPdf": "",
+      "palavrasChave": [
+        "posse",
+        "lideranca",
+        "gestao",
+        "institucional"
       ],
       "tamanhoFormatado": "1.2 MB"
     },

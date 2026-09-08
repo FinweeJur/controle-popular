@@ -37,13 +37,17 @@ describe("Catálogo de Instituições e Secretarias de Todas as Esferas", () => 
     }
   });
 
-  it("todas as instituições devem ter organograma com áreas e funções descritas", () => {
+  it("todas as instituições devem ter organograma com áreas, funções e contatos completos", () => {
     const todas = obterTodasInstituicoes();
     for (const inst of todas) {
       expect(inst.organograma.length).toBeGreaterThanOrEqual(2);
       for (const item of inst.organograma) {
         expect(item.area.length).toBeGreaterThan(3);
         expect(item.funcao.length).toBeGreaterThan(15);
+        expect(item.site).toMatch(/^https?:\/\//);
+        expect(item.telefone).toBeTruthy();
+        expect(item.email).toContain("@");
+        expect(item.endereco).toBeTruthy();
       }
     }
   });

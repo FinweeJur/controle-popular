@@ -61,6 +61,39 @@ describe("Instituições de Justiça dos 27 Estados", () => {
       }
     }
   });
+
+  it("organograma de cada instituição possui áreas com site, telefone, e-mail e endereço", () => {
+    for (const inst of instituicoesData) {
+      expect(inst.organograma).toBeDefined();
+      expect(inst.organograma.length).toBeGreaterThanOrEqual(2);
+
+      for (const item of inst.organograma as any[]) {
+        expect(item.area).toBeTruthy();
+        expect(item.funcao).toBeTruthy();
+        expect(item.site).toMatch(/^https?:\/\//);
+        expect(item.telefone).toMatch(/\(\d{2}\)\s\d{4,5}-\d{4}/);
+        expect(item.email).toContain("@");
+        expect(item.endereco).toContain("CEP");
+      }
+    }
+  });
+
+  it("lideranças contêm nomes de pessoas reais e notícia de posse vinculada", () => {
+    for (const inst of instituicoesData) {
+      const nome = inst.lideranca.nome;
+      expect(nome).not.toContain("Desembargador Presidente do");
+      expect(nome).not.toContain("Procurador-Geral de Justiça do");
+      expect(nome).not.toContain("Defensor Público-Geral do");
+      expect(inst.lideranca.mandato).toMatch(/\d{4}–\d{4}/);
+      expect(inst.lideranca.email).toContain("@");
+
+      // Deve possuir notícia de posse ou atos de liderança
+      const temNoticiaPosse = inst.documentosEAtos.some(
+        (ato) => ato.tipo === "noticia" && (ato.tags.includes("posse") || ato.tags.includes("lideranca"))
+      );
+      expect(temNoticiaPosse).toBe(true);
+    }
+  });
 });
 
 describe("Seletor de Biomas e Temas", () => {

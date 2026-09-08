@@ -552,14 +552,14 @@ export default function TabelaInstituicaoClient({
                         href={item.urlOficial}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-[0.72em] font-semibold text-primary hover:underline"
-                        title="Acessar documento no portal oficial de origem"
+                        className="inline-flex items-center gap-1 rounded border border-border bg-surface px-2 py-1 text-[0.72em] font-semibold text-primary transition-colors hover:bg-surface-2"
+                        title="Acessar ato no portal oficial de origem"
                       >
-                        <span>Fonte</span>
+                        <span>Acessar Ato</span>
                         <ExternalLink size={10} aria-hidden="true" />
                       </a>
                     )}
-                    {item.urlR2 && (
+                    {item.urlR2 && !item.urlR2.includes("arquivos.controlepopular.com.br") && (
                       <div>
                         <a
                           href={item.urlR2}

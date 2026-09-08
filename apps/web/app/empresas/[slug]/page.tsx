@@ -327,23 +327,25 @@ export default async function EmpresaPage({ params }: Props) {
                   <span className="font-mono text-muted">{doc.tamanhoFormatado}</span>
                   <div className="flex items-center gap-3">
                     <a
-                      href={doc.urlR2}
+                      href={doc.urlOficial || doc.urlR2}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 font-semibold text-primary hover:underline"
                     >
-                      <span>Espelho R2</span>
-                      <Download size={11} />
+                      <span>Acessar Documento</span>
+                      <ExternalLink size={11} />
                     </a>
-                    <a
-                      href={doc.urlOficial}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-muted hover:text-foreground hover:underline"
-                    >
-                      <span>Oficial</span>
-                      <ExternalLink size={10} />
-                    </a>
+                    {doc.urlR2 && !doc.urlR2.includes("arquivos.controlepopular.com.br") && (
+                      <a
+                        href={doc.urlR2}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-muted hover:text-foreground hover:underline"
+                      >
+                        <span>Espelho</span>
+                        <Download size={10} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

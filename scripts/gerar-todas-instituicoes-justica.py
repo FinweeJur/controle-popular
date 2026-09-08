@@ -564,6 +564,20 @@ def main():
     with open(DESTINO, "w", encoding="utf-8") as f:
         json.dump(todos, f, ensure_ascii=False, indent=2)
 
+    try:
+        from scripts.enriquecer_instituicoes_justica import enriquecer_justica
+        enriquecer_justica()
+    except Exception:
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("enriquecer", Path(__file__).parent / "enriquecer-instituicoes-justica.py")
+            if spec and spec.loader:
+                mod = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                mod.enriquecer_justica()
+        except Exception as e:
+            print("Aviso ao enriquecer:", e)
+
     print(f"Sucesso! Total de instituições geradas: {len(todos)}")
     tjs = [x for x in todos if x["tipo"] == "Poder Judiciário Estadual"]
     mps = [x for x in todos if x["tipo"] == "Ministério Público Estadual"]

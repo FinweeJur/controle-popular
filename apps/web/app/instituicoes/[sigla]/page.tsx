@@ -8,6 +8,7 @@ import {
   Building,
   UserCheck,
   PhoneCall,
+  Phone,
   FileText,
   ArrowLeft,
   Coins,
@@ -299,8 +300,53 @@ export default async function InstituicaoDetalhePage({ params }: Props) {
                 key={idx}
                 className="rounded-xl border border-border/60 bg-surface-2/30 p-4 transition-colors hover:border-border"
               >
-                <h3 className="font-display text-sm font-bold text-text">{item.area}</h3>
-                <p className="mt-1 text-xs leading-relaxed text-text-soft">{item.funcao}</p>
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                  <div>
+                    <h3 className="font-display text-sm font-bold text-text">{item.area}</h3>
+                    <p className="mt-1 text-xs leading-relaxed text-text-soft">{item.funcao}</p>
+                  </div>
+                  {item.site && (
+                    <a
+                      href={item.site}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-border bg-surface-1 px-2.5 py-1 text-[0.72em] font-semibold text-primary transition-colors hover:bg-surface-2"
+                      title={`Acessar portal de ${item.area}`}
+                    >
+                      <span>Portal da Área</span>
+                      <ExternalLink size={10} aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
+
+                {(item.telefone || item.email || item.endereco) && (
+                  <div className="mt-3 grid grid-cols-1 gap-2 border-t border-border/40 pt-3 text-[0.75em] text-text-soft sm:grid-cols-3">
+                    {item.telefone && (
+                      <div className="flex items-center gap-1.5 overflow-hidden">
+                        <Phone size={12} className="text-primary shrink-0" aria-hidden="true" />
+                        <a href={`tel:${item.telefone.replace(/[^\d+]/g, "")}`} className="font-mono text-text hover:text-primary truncate">
+                          {item.telefone}
+                        </a>
+                      </div>
+                    )}
+                    {item.email && (
+                      <div className="flex items-center gap-1.5 overflow-hidden">
+                        <Mail size={12} className="text-primary shrink-0" aria-hidden="true" />
+                        <a href={`mailto:${item.email}`} className="text-text hover:text-primary underline truncate" title={item.email}>
+                          {item.email}
+                        </a>
+                      </div>
+                    )}
+                    {item.endereco && (
+                      <div className="flex items-center gap-1.5 sm:col-span-1 overflow-hidden">
+                        <MapPin size={12} className="text-primary shrink-0" aria-hidden="true" />
+                        <span className="truncate text-text" title={item.endereco}>
+                          {item.endereco}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </div>

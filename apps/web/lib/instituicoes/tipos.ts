@@ -33,6 +33,10 @@ export interface OrcamentoInstituicao {
 export interface OrganogramaItem {
   area: string;
   funcao: string;
+  site?: string;
+  telefone?: string;
+  email?: string;
+  endereco?: string;
 }
 
 export interface OuvidoriaContato {

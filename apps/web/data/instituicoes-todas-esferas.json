@@ -27,27 +27,51 @@
     "organograma": [
       {
         "area": "Gabinete do Ministro",
-        "funcao": "Coordenação política, formulação da política macroeconômica, relações com o Congresso e porta-voz oficial."
+        "funcao": "Coordenação política, formulação da política macroeconômica, relações com o Congresso e porta-voz oficial.",
+        "site": "https://www.gov.br/fazenda/gabinete-do-ministro",
+        "telefone": "(61) 3412-2000",
+        "email": "gabinete-do-ministro@fazenda.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco P, CEP 70048-900, Brasília - DF (Setor 1)"
       },
       {
         "area": "Secretaria Especial da Receita Federal do Brasil (RFB)",
-        "funcao": "Administração dos tributos federais e aduaneiros, combate ao contrabando, sonegação e fiscalização do comércio exterior."
+        "funcao": "Administração dos tributos federais e aduaneiros, combate ao contrabando, sonegação e fiscalização do comércio exterior.",
+        "site": "https://www.gov.br/fazenda/secretaria-especial-da-re",
+        "telefone": "(61) 3412-2000",
+        "email": "secretaria-especial-da-re@fazenda.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco P, CEP 70048-900, Brasília - DF (Setor 2)"
       },
       {
         "area": "Secretaria do Tesouro Nacional (STN)",
-        "funcao": "Administração da dívida pública interna e externa, gestão do caixa único da União e contabilidade fiscal nacional."
+        "funcao": "Administração da dívida pública interna e externa, gestão do caixa único da União e contabilidade fiscal nacional.",
+        "site": "https://www.gov.br/fazenda/secretaria-do-tesouro-nac",
+        "telefone": "(61) 3412-2000",
+        "email": "secretaria-do-tesouro-nac@fazenda.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco P, CEP 70048-900, Brasília - DF (Setor 3)"
       },
       {
         "area": "Secretaria de Política Econômica (SPE)",
-        "funcao": "Projeções macroeconômicas oficiais (PIB, inflação), estudos setoriais e análise de impacto fiscal de propostas legislativas."
+        "funcao": "Projeções macroeconômicas oficiais (PIB, inflação), estudos setoriais e análise de impacto fiscal de propostas legislativas.",
+        "site": "https://www.gov.br/fazenda/secretaria-de-politica-ec",
+        "telefone": "(61) 3412-2000",
+        "email": "secretaria-de-politica-ec@fazenda.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco P, CEP 70048-900, Brasília - DF (Setor 4)"
       },
       {
         "area": "Secretaria de Reformas Econômicas (SRE)",
-        "funcao": "Elaboração e acompanhamento da Reforma Tributária (Emenda 132), mercado de capitais e regulação de crédito."
+        "funcao": "Elaboração e acompanhamento da Reforma Tributária (Emenda 132), mercado de capitais e regulação de crédito.",
+        "site": "https://www.gov.br/fazenda/secretaria-de-reformas-ec",
+        "telefone": "(61) 3412-2000",
+        "email": "secretaria-de-reformas-ec@fazenda.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco P, CEP 70048-900, Brasília - DF (Setor 5)"
       },
       {
         "area": "Procuradoria-Geral da Fazenda Nacional (PGFN)",
-        "funcao": "Cobrança da Dívida Ativa da União, representação judicial tributária e assessoria jurídica ao Ministro."
+        "funcao": "Cobrança da Dívida Ativa da União, representação judicial tributária e assessoria jurídica ao Ministro.",
+        "site": "https://www.gov.br/fazenda/procuradoria-geral-da-faz",
+        "telefone": "(61) 3412-2000",
+        "email": "procuradoria-geral-da-faz@fazenda.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco P, CEP 70048-900, Brasília - DF (Setor 6)"
       }
     ],
     "funcoes": [
@@ -126,27 +150,51 @@
     "organograma": [
       {
         "area": "Secretaria de Atenção Primária à Saúde (SAPS)",
-        "funcao": "Coordenação da Estratégia Saúde da Família, Mais Médicos e financiamento da atenção básica municipal."
+        "funcao": "Coordenação da Estratégia Saúde da Família, Mais Médicos e financiamento da atenção básica municipal.",
+        "site": "https://www.gov.br/saude/secretaria-de-atencao-pri",
+        "telefone": "136 (ligação gratuita nacional)",
+        "email": "secretaria-de-atencao-pri@saude.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco G, Edifício Sede, CEP 70058-900, Brasília - DF (Setor 1)"
       },
       {
         "area": "Secretaria de Atenção Especializada à Saúde (SAES)",
-        "funcao": "Gestão da rede hospitalar de alta e média complexidade, transplantes, oncologia e urgência/SAMU 192."
+        "funcao": "Gestão da rede hospitalar de alta e média complexidade, transplantes, oncologia e urgência/SAMU 192.",
+        "site": "https://www.gov.br/saude/secretaria-de-atencao-esp",
+        "telefone": "136 (ligação gratuita nacional)",
+        "email": "secretaria-de-atencao-esp@saude.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco G, Edifício Sede, CEP 70058-900, Brasília - DF (Setor 2)"
       },
       {
         "area": "Secretaria de Vigilância em Saúde e Ambiente (SVSA)",
-        "funcao": "Vigilância epidemiológica, controle de epidemias (dengue, covid), vacinação do PNI e saúde ambiental."
+        "funcao": "Vigilância epidemiológica, controle de epidemias (dengue, covid), vacinação do PNI e saúde ambiental.",
+        "site": "https://www.gov.br/saude/secretaria-de-vigilancia",
+        "telefone": "136 (ligação gratuita nacional)",
+        "email": "secretaria-de-vigilancia@saude.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco G, Edifício Sede, CEP 70058-900, Brasília - DF (Setor 3)"
       },
       {
         "area": "Secretaria de Ciência, Tecnologia e Inovação (SECTICS)",
-        "funcao": "Incorporação de novos medicamentos ao SUS (Conitec), fomento à pesquisa clínica e Farmácia Popular."
+        "funcao": "Incorporação de novos medicamentos ao SUS (Conitec), fomento à pesquisa clínica e Farmácia Popular.",
+        "site": "https://www.gov.br/saude/secretaria-de-ciencia-tec",
+        "telefone": "136 (ligação gratuita nacional)",
+        "email": "secretaria-de-ciencia-tec@saude.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco G, Edifício Sede, CEP 70058-900, Brasília - DF (Setor 4)"
       },
       {
         "area": "Secretaria de Saúde Indígena (SESAI)",
-        "funcao": "Gestão e execução das ações de atenção integral à saúde dos povos indígenas em todo o território nacional."
+        "funcao": "Gestão e execução das ações de atenção integral à saúde dos povos indígenas em todo o território nacional.",
+        "site": "https://www.gov.br/saude/secretaria-de-saude-indig",
+        "telefone": "136 (ligação gratuita nacional)",
+        "email": "secretaria-de-saude-indig@saude.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco G, Edifício Sede, CEP 70058-900, Brasília - DF (Setor 5)"
       },
       {
         "area": "Agência Nacional de Vigilância Sanitária (Anvisa) e Fiocruz",
-        "funcao": "Órgãos vinculados responsáveis pela regulação sanitária, controle de medicamentos e produção pública de vacinas."
+        "funcao": "Órgãos vinculados responsáveis pela regulação sanitária, controle de medicamentos e produção pública de vacinas.",
+        "site": "https://www.gov.br/saude/agencia-nacional-de-vigil",
+        "telefone": "136 (ligação gratuita nacional)",
+        "email": "agencia-nacional-de-vigil@saude.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco G, Edifício Sede, CEP 70058-900, Brasília - DF (Setor 6)"
       }
     ],
     "funcoes": [
@@ -220,23 +268,43 @@
     "organograma": [
       {
         "area": "Secretaria de Educação Básica (SEB)",
-        "funcao": "Programa Criança Alfabetizada, Escolas em Tempo Integral, livro didático (PNLD) e diretrizes curriculares."
+        "funcao": "Programa Criança Alfabetizada, Escolas em Tempo Integral, livro didático (PNLD) e diretrizes curriculares.",
+        "site": "https://www.gov.br/mec/secretaria-de-educacao-ba",
+        "telefone": "0800 616161",
+        "email": "secretaria-de-educacao-ba@mec.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco L, CEP 70047-900, Brasília - DF (Setor 1)"
       },
       {
         "area": "Secretaria de Educação Superior (SESU)",
-        "funcao": "Supervisão e fomento das 69 Universidades Federais, SiSU, ProUni e FIES."
+        "funcao": "Supervisão e fomento das 69 Universidades Federais, SiSU, ProUni e FIES.",
+        "site": "https://www.gov.br/mec/secretaria-de-educacao-su",
+        "telefone": "0800 616161",
+        "email": "secretaria-de-educacao-su@mec.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco L, CEP 70047-900, Brasília - DF (Setor 2)"
       },
       {
         "area": "Secretaria de Educação Profissional e Tecnológica (SETEC)",
-        "funcao": "Coordenação dos 38 Institutos Federais de Educação, Ciência e Tecnologia (IFs) e Pronatec."
+        "funcao": "Coordenação dos 38 Institutos Federais de Educação, Ciência e Tecnologia (IFs) e Pronatec.",
+        "site": "https://www.gov.br/mec/secretaria-de-educacao-pr",
+        "telefone": "0800 616161",
+        "email": "secretaria-de-educacao-pr@mec.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco L, CEP 70047-900, Brasília - DF (Setor 3)"
       },
       {
         "area": "Fundo Nacional de Desenvolvimento da Educação (FNDE)",
-        "funcao": "Autarquia operadora do Fundeb, alimentação escolar (PNAE) e transporte escolar rural (PNATE)."
+        "funcao": "Autarquia operadora do Fundeb, alimentação escolar (PNAE) e transporte escolar rural (PNATE).",
+        "site": "https://www.gov.br/mec/fundo-nacional-de-desenvo",
+        "telefone": "0800 616161",
+        "email": "fundo-nacional-de-desenvo@mec.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco L, CEP 70047-900, Brasília - DF (Setor 4)"
       },
       {
         "area": "Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep)",
-        "funcao": "Realização do Enem, Censo Escolar, Censo Superior e cálculo do Ideb."
+        "funcao": "Realização do Enem, Censo Escolar, Censo Superior e cálculo do Ideb.",
+        "site": "https://www.gov.br/mec/instituto-nacional-de-est",
+        "telefone": "0800 616161",
+        "email": "instituto-nacional-de-est@mec.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco L, CEP 70047-900, Brasília - DF (Setor 5)"
       }
     ],
     "funcoes": [
@@ -310,23 +378,43 @@
     "organograma": [
       {
         "area": "Secretaria Nacional de Mudança do Clima",
-        "funcao": "Coordenação do Plano Clima, compromissos da COP, mercado regulado de carbono e transição ecológica."
+        "funcao": "Coordenação do Plano Clima, compromissos da COP, mercado regulado de carbono e transição ecológica.",
+        "site": "https://www.gov.br/mma/secretaria-nacional-de-mu",
+        "telefone": "(61) 2028-1000",
+        "email": "secretaria-nacional-de-mu@mma.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco B, CEP 70068-900, Brasília - DF (Setor 1)"
       },
       {
         "area": "Secretaria Extraordinária de Controle do Desmatamento e Ordenamento Ambiental",
-        "funcao": "Execução do PPCDAm (Amazônia) e PPCerrado para redução de queimadas e desmatamento ilegal."
+        "funcao": "Execução do PPCDAm (Amazônia) e PPCerrado para redução de queimadas e desmatamento ilegal.",
+        "site": "https://www.gov.br/mma/secretaria-extraordinaria",
+        "telefone": "(61) 2028-1000",
+        "email": "secretaria-extraordinaria@mma.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco B, CEP 70068-900, Brasília - DF (Setor 2)"
       },
       {
         "area": "Secretaria Nacional de Biodiversidade, Florestas e Direitos Animais",
-        "funcao": "Proteção de biomas, recuperação de áreas degradadas e proteção à fauna silvestre e doméstica."
+        "funcao": "Proteção de biomas, recuperação de áreas degradadas e proteção à fauna silvestre e doméstica.",
+        "site": "https://www.gov.br/mma/secretaria-nacional-de-bi",
+        "telefone": "(61) 2028-1000",
+        "email": "secretaria-nacional-de-bi@mma.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco B, CEP 70068-900, Brasília - DF (Setor 3)"
       },
       {
         "area": "Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis (Ibama)",
-        "funcao": "Licenciamento ambiental federal de petróleo/energia, fiscalização ambiental e autuação infracional."
+        "funcao": "Licenciamento ambiental federal de petróleo/energia, fiscalização ambiental e autuação infracional.",
+        "site": "https://www.gov.br/mma/instituto-brasileiro-do-m",
+        "telefone": "(61) 2028-1000",
+        "email": "instituto-brasileiro-do-m@mma.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco B, CEP 70068-900, Brasília - DF (Setor 4)"
       },
       {
         "area": "Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio)",
-        "funcao": "Gestão das 334 Unidades de Conservação Federais (Parques Nacionais, Reservas e Flonas)."
+        "funcao": "Gestão das 334 Unidades de Conservação Federais (Parques Nacionais, Reservas e Flonas).",
+        "site": "https://www.gov.br/mma/instituto-chico-mendes-de",
+        "telefone": "(61) 2028-1000",
+        "email": "instituto-chico-mendes-de@mma.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco B, CEP 70068-900, Brasília - DF (Setor 5)"
       }
     ],
     "funcoes": [
@@ -400,19 +488,35 @@
     "organograma": [
       {
         "area": "Secretaria Nacional de Transporte Rodoviário",
-        "funcao": "Planejamento e expansão da malha rodoviária federal de 65.000 km e políticas de segurança no trânsito."
+        "funcao": "Planejamento e expansão da malha rodoviária federal de 65.000 km e políticas de segurança no trânsito.",
+        "site": "https://www.gov.br/transportes/secretaria-nacional-de-tr",
+        "telefone": "(61) 2029-7000",
+        "email": "secretaria-nacional-de-tr@transportes.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco R, CEP 70044-900, Brasília - DF (Setor 1)"
       },
       {
         "area": "Secretaria Nacional de Transporte Ferroviário",
-        "funcao": "Política de ferrovias públicas, repactuação de concessões ferroviárias e trens regionais de passageiros."
+        "funcao": "Política de ferrovias públicas, repactuação de concessões ferroviárias e trens regionais de passageiros.",
+        "site": "https://www.gov.br/transportes/secretaria-nacional-de-tr",
+        "telefone": "(61) 2029-7000",
+        "email": "secretaria-nacional-de-tr@transportes.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco R, CEP 70044-900, Brasília - DF (Setor 2)"
       },
       {
         "area": "Departamento Nacional de Infraestrutura de Transportes (DNIT)",
-        "funcao": "Construção, manutenção, duplicação e fiscalização física das rodovias federais não concedidas."
+        "funcao": "Construção, manutenção, duplicação e fiscalização física das rodovias federais não concedidas.",
+        "site": "https://www.gov.br/transportes/departamento-nacional-de",
+        "telefone": "(61) 2029-7000",
+        "email": "departamento-nacional-de@transportes.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco R, CEP 70044-900, Brasília - DF (Setor 3)"
       },
       {
         "area": "Agência Nacional de Transportes Terrestres (ANTT)",
-        "funcao": "Regulação e fiscalização das rodovias pedagiadas, ferrovias concedidas e transporte interestadual de passageiros."
+        "funcao": "Regulação e fiscalização das rodovias pedagiadas, ferrovias concedidas e transporte interestadual de passageiros.",
+        "site": "https://www.gov.br/transportes/agencia-nacional-de-trans",
+        "telefone": "(61) 2029-7000",
+        "email": "agencia-nacional-de-trans@transportes.gov.br",
+        "endereco": "Esplanada dos Ministérios, Bloco R, CEP 70044-900, Brasília - DF (Setor 4)"
       }
     ],
     "funcoes": [
@@ -478,19 +582,35 @@
     "organograma": [
       {
         "area": "Secretaria Nacional de Habitação (SNH)",
-        "funcao": "Gestão executiva do Programa Minha Casa, Minha Vida (MCMV) e regularização fundiária urbana (Reurb)."
+        "funcao": "Gestão executiva do Programa Minha Casa, Minha Vida (MCMV) e regularização fundiária urbana (Reurb).",
+        "site": "https://www.gov.br/cidades/secretaria-nacional-de-ha",
+        "telefone": "(61) 2034-5000",
+        "email": "secretaria-nacional-de-ha@cidades.gov.br",
+        "endereco": "Setor de Grandes Áreas Norte - SGAN 906, Módulo F, CEP 70790-060, Brasília - DF (Setor 1)"
       },
       {
         "area": "Secretaria Nacional de Saneamento Ambiental (SNSA)",
-        "funcao": "Obras de abastecimento de água, esgotamento sanitário, resíduos sólidos e drenagem urbana em municípios."
+        "funcao": "Obras de abastecimento de água, esgotamento sanitário, resíduos sólidos e drenagem urbana em municípios.",
+        "site": "https://www.gov.br/cidades/secretaria-nacional-de-sa",
+        "telefone": "(61) 2034-5000",
+        "email": "secretaria-nacional-de-sa@cidades.gov.br",
+        "endereco": "Setor de Grandes Áreas Norte - SGAN 906, Módulo F, CEP 70790-060, Brasília - DF (Setor 2)"
       },
       {
         "area": "Secretaria Nacional de Mobilidade Urbana (SEMOB)",
-        "funcao": "Financiamento de BRTs, VLTs, ciclovias e modernização do transporte coletivo urbano das cidades."
+        "funcao": "Financiamento de BRTs, VLTs, ciclovias e modernização do transporte coletivo urbano das cidades.",
+        "site": "https://www.gov.br/cidades/secretaria-nacional-de-mo",
+        "telefone": "(61) 2034-5000",
+        "email": "secretaria-nacional-de-mo@cidades.gov.br",
+        "endereco": "Setor de Grandes Áreas Norte - SGAN 906, Módulo F, CEP 70790-060, Brasília - DF (Setor 3)"
       },
       {
         "area": "Secretaria Nacional de Periferias",
-        "funcao": "Intervenções de urbanização integrada em favelas e áreas de risco geológico com participação comunitária."
+        "funcao": "Intervenções de urbanização integrada em favelas e áreas de risco geológico com participação comunitária.",
+        "site": "https://www.gov.br/cidades/secretaria-nacional-de-pe",
+        "telefone": "(61) 2034-5000",
+        "email": "secretaria-nacional-de-pe@cidades.gov.br",
+        "endereco": "Setor de Grandes Áreas Norte - SGAN 906, Módulo F, CEP 70790-060, Brasília - DF (Setor 4)"
       }
     ],
     "funcoes": [
@@ -556,19 +676,35 @@
     "organograma": [
       {
         "area": "Gabinete do Secretário",
-        "funcao": "Direção geral, negociação da Dívida com a União (Propag/RRF) e formulação da política de receitas."
+        "funcao": "Direção geral, negociação da Dívida com a União (Propag/RRF) e formulação da política de receitas.",
+        "site": "https://www.fazenda.mg.gov.br/gabinete-do-secretario",
+        "telefone": "162 (Disque Ouvidoria)",
+        "email": "gabinete-do-secretario@fazenda.mg.gov.br",
+        "endereco": "Cidade Administrativa Tancredo Neves, Rodovia Papa João Paulo II, 4001, Edifício Gerais, CEP 31630-901, Belo Horizonte - MG (Setor 1)"
       },
       {
         "area": "Subsecretaria da Receita Estadual (SRE)",
-        "funcao": "Arrecadação e fiscalização do ICMS, IPVA e ITCD, fiscalização de fronteiras e combate à fraude fiscal."
+        "funcao": "Arrecadação e fiscalização do ICMS, IPVA e ITCD, fiscalização de fronteiras e combate à fraude fiscal.",
+        "site": "https://www.fazenda.mg.gov.br/subsecretaria-da-receita",
+        "telefone": "162 (Disque Ouvidoria)",
+        "email": "subsecretaria-da-receita@fazenda.mg.gov.br",
+        "endereco": "Cidade Administrativa Tancredo Neves, Rodovia Papa João Paulo II, 4001, Edifício Gerais, CEP 31630-901, Belo Horizonte - MG (Setor 2)"
       },
       {
         "area": "Subsecretaria do Tesouro Estadual (STE)",
-        "funcao": "Gestão da conta única do Estado de MG, pagamento da folha dos servidores e cronograma de despesas públicas."
+        "funcao": "Gestão da conta única do Estado de MG, pagamento da folha dos servidores e cronograma de despesas públicas.",
+        "site": "https://www.fazenda.mg.gov.br/subsecretaria-do-tesouro",
+        "telefone": "162 (Disque Ouvidoria)",
+        "email": "subsecretaria-do-tesouro@fazenda.mg.gov.br",
+        "endereco": "Cidade Administrativa Tancredo Neves, Rodovia Papa João Paulo II, 4001, Edifício Gerais, CEP 31630-901, Belo Horizonte - MG (Setor 3)"
       },
       {
         "area": "Conselho de Contribuintes do Estado de Minas Gerais (CCMG)",
-        "funcao": "Julgamento administrativo de recursos e litígios tributários entre o Estado e as empresas/contribuintes."
+        "funcao": "Julgamento administrativo de recursos e litígios tributários entre o Estado e as empresas/contribuintes.",
+        "site": "https://www.fazenda.mg.gov.br/conselho-de-contribuintes",
+        "telefone": "162 (Disque Ouvidoria)",
+        "email": "conselho-de-contribuintes@fazenda.mg.gov.br",
+        "endereco": "Cidade Administrativa Tancredo Neves, Rodovia Papa João Paulo II, 4001, Edifício Gerais, CEP 31630-901, Belo Horizonte - MG (Setor 4)"
       }
     ],
     "funcoes": [
@@ -634,19 +770,35 @@
     "organograma": [
       {
         "area": "Subsecretaria de Acesso a Serviços de Saúde",
-        "funcao": "Regulação assistencial do SUS Fácil, cirurgias eletivas (Opera Mais) e política hospitalar Valora Minas."
+        "funcao": "Regulação assistencial do SUS Fácil, cirurgias eletivas (Opera Mais) e política hospitalar Valora Minas.",
+        "site": "https://www.saude.mg.gov.br/subsecretaria-de-acesso-a",
+        "telefone": "162",
+        "email": "subsecretaria-de-acesso-a@ouvidoriageral.mg.gov.br",
+        "endereco": "Cidade Administrativa, Rod. Papa João Paulo II, 4143, Prédio Minas, 12º andar, Serra Verde, Belo Horizonte - MG, CEP 31630-900 (Setor 1)"
       },
       {
         "area": "Subsecretaria de Vigilância em Saúde",
-        "funcao": "Controle de arboviroses (dengue/chikungunya), imunização estadual e vigilância sanitária."
+        "funcao": "Controle de arboviroses (dengue/chikungunya), imunização estadual e vigilância sanitária.",
+        "site": "https://www.saude.mg.gov.br/subsecretaria-de-vigilanc",
+        "telefone": "162",
+        "email": "subsecretaria-de-vigilanc@ouvidoriageral.mg.gov.br",
+        "endereco": "Cidade Administrativa, Rod. Papa João Paulo II, 4143, Prédio Minas, 12º andar, Serra Verde, Belo Horizonte - MG, CEP 31630-900 (Setor 2)"
       },
       {
         "area": "Subsecretaria de Redes de Atenção à Saúde",
-        "funcao": "Fortalecimento da Rede Mão Amiga (materno-infantil), Rede Resposta de Urgência e Saúde Mental."
+        "funcao": "Fortalecimento da Rede Mão Amiga (materno-infantil), Rede Resposta de Urgência e Saúde Mental.",
+        "site": "https://www.saude.mg.gov.br/subsecretaria-de-redes-de",
+        "telefone": "162",
+        "email": "subsecretaria-de-redes-de@ouvidoriageral.mg.gov.br",
+        "endereco": "Cidade Administrativa, Rod. Papa João Paulo II, 4143, Prédio Minas, 12º andar, Serra Verde, Belo Horizonte - MG, CEP 31630-900 (Setor 3)"
       },
       {
         "area": "28 Superintendências e Gerências Regionais de Saúde (SRS/GRS)",
-        "funcao": "Descentralização e fiscalização regional da política de saúde pública no interior de Minas."
+        "funcao": "Descentralização e fiscalização regional da política de saúde pública no interior de Minas.",
+        "site": "https://www.saude.mg.gov.br/28-superintendencias-e-ge",
+        "telefone": "162",
+        "email": "28-superintendencias-e-ge@ouvidoriageral.mg.gov.br",
+        "endereco": "Cidade Administrativa, Rod. Papa João Paulo II, 4143, Prédio Minas, 12º andar, Serra Verde, Belo Horizonte - MG, CEP 31630-900 (Setor 4)"
       }
     ],
     "funcoes": [
@@ -712,19 +864,35 @@
     "organograma": [
       {
         "area": "Fundação Estadual do Meio Ambiente (Feam)",
-        "funcao": "Fiscalização de barragens de rejeitos (Lei Mar de Lama Nunca Mais), qualidade do ar e solos degradados."
+        "funcao": "Fiscalização de barragens de rejeitos (Lei Mar de Lama Nunca Mais), qualidade do ar e solos degradados.",
+        "site": "https://www.meioambiente.mg.gov.br/fundacao-estadual-do-meio",
+        "telefone": "162",
+        "email": "fundacao-estadual-do-meio@ouvidoriageral.mg.gov.br",
+        "endereco": "Cidade Administrativa, Rod. Papa João Paulo II, 4143, Prédio Minas, 1º andar, Belo Horizonte - MG, CEP 31630-900 (Setor 1)"
       },
       {
         "area": "Instituto Estadual de Florestas (IEF)",
-        "funcao": "Gestão dos Parques Estaduais de MG, unidades de conservação e fomento à restauração florestal."
+        "funcao": "Gestão dos Parques Estaduais de MG, unidades de conservação e fomento à restauração florestal.",
+        "site": "https://www.meioambiente.mg.gov.br/instituto-estadual-de-flo",
+        "telefone": "162",
+        "email": "instituto-estadual-de-flo@ouvidoriageral.mg.gov.br",
+        "endereco": "Cidade Administrativa, Rod. Papa João Paulo II, 4143, Prédio Minas, 1º andar, Belo Horizonte - MG, CEP 31630-900 (Setor 2)"
       },
       {
         "area": "Instituto Mineiro de Gestão das Águas (Igam)",
-        "funcao": "Monitoramento da bacia do Rio Doce, Rio das Velhas e Rio Paraopeba e outorga de uso da água."
+        "funcao": "Monitoramento da bacia do Rio Doce, Rio das Velhas e Rio Paraopeba e outorga de uso da água.",
+        "site": "https://www.meioambiente.mg.gov.br/instituto-mineiro-de-gest",
+        "telefone": "162",
+        "email": "instituto-mineiro-de-gest@ouvidoriageral.mg.gov.br",
+        "endereco": "Cidade Administrativa, Rod. Papa João Paulo II, 4143, Prédio Minas, 1º andar, Belo Horizonte - MG, CEP 31630-900 (Setor 3)"
       },
       {
         "area": "Copam (Conselho Estadual de Política Ambiental)",
-        "funcao": "Órgão colegiado deliberativo de julgamento e deliberação das licenças ambientais de grande porte (Classe 5 e 6)."
+        "funcao": "Órgão colegiado deliberativo de julgamento e deliberação das licenças ambientais de grande porte (Classe 5 e 6).",
+        "site": "https://www.meioambiente.mg.gov.br/copam-conselho-estadual-d",
+        "telefone": "162",
+        "email": "copam-conselho-estadual-d@ouvidoriageral.mg.gov.br",
+        "endereco": "Cidade Administrativa, Rod. Papa João Paulo II, 4143, Prédio Minas, 1º andar, Belo Horizonte - MG, CEP 31630-900 (Setor 4)"
       }
     ],
     "funcoes": [
@@ -790,19 +958,35 @@
     "organograma": [
       {
         "area": "Atenção Primária à Saúde",
-        "funcao": "Gestão dos 152 Centros de Saúde municipais, 595 equipes de Saúde da Família e Programa Saúde na Escola."
+        "funcao": "Gestão dos 152 Centros de Saúde municipais, 595 equipes de Saúde da Família e Programa Saúde na Escola.",
+        "site": "https://prefeitura.pbh.gov.br/saude/atencao-primaria-a-saude",
+        "telefone": "156 (Central de Atendimento Telefônico de BH)",
+        "email": "atencao-primaria-a-saude@pbh.gov.br",
+        "endereco": "Av. Afonso Pena, 1212, Centro, Belo Horizonte - MG, CEP 30130-003 (Setor 1)"
       },
       {
         "area": "Urgência e Emergência",
-        "funcao": "Coordenação das 9 UPAs (Unidades de Pronto Atendimento) e Central SAMU 192 Regional BH."
+        "funcao": "Coordenação das 9 UPAs (Unidades de Pronto Atendimento) e Central SAMU 192 Regional BH.",
+        "site": "https://prefeitura.pbh.gov.br/saude/urgencia-e-emergencia",
+        "telefone": "156 (Central de Atendimento Telefônico de BH)",
+        "email": "urgencia-e-emergencia@pbh.gov.br",
+        "endereco": "Av. Afonso Pena, 1212, Centro, Belo Horizonte - MG, CEP 30130-003 (Setor 2)"
       },
       {
         "area": "Atenção Hospitalar e Parcerias (PPP)",
-        "funcao": "Supervisão do Hospital Metropolitano Odilon Behrens (HOB), Hospital do Barreiro e Centros de Especialidades."
+        "funcao": "Supervisão do Hospital Metropolitano Odilon Behrens (HOB), Hospital do Barreiro e Centros de Especialidades.",
+        "site": "https://prefeitura.pbh.gov.br/saude/atencao-hospitalar-e-parc",
+        "telefone": "156 (Central de Atendimento Telefônico de BH)",
+        "email": "atencao-hospitalar-e-parc@pbh.gov.br",
+        "endereco": "Av. Afonso Pena, 1212, Centro, Belo Horizonte - MG, CEP 30130-003 (Setor 3)"
       },
       {
         "area": "Vigilância em Saúde Municipal",
-        "funcao": "Combate à dengue com drones, controle de zoonoses e vigilância sanitária de comércios de alimentos e saúde."
+        "funcao": "Combate à dengue com drones, controle de zoonoses e vigilância sanitária de comércios de alimentos e saúde.",
+        "site": "https://prefeitura.pbh.gov.br/saude/vigilancia-em-saude-munic",
+        "telefone": "156 (Central de Atendimento Telefônico de BH)",
+        "email": "vigilancia-em-saude-munic@pbh.gov.br",
+        "endereco": "Av. Afonso Pena, 1212, Centro, Belo Horizonte - MG, CEP 30130-003 (Setor 4)"
       }
     ],
     "funcoes": [
@@ -868,15 +1052,27 @@
     "organograma": [
       {
         "area": "Superintendência de Desenvolvimento da Capital (Sudecap)",
-        "funcao": "Autarquia executora e fiscalizadora de todas as obras civis, recapeamentos e intervenções estruturais de BH."
+        "funcao": "Autarquia executora e fiscalizadora de todas as obras civis, recapeamentos e intervenções estruturais de BH.",
+        "site": "https://prefeitura.pbh.gov.br/obras/superintendencia-de-desen",
+        "telefone": "156",
+        "email": "superintendencia-de-desen@pbh.gov.br",
+        "endereco": "Rua dos Guajajaras, 1107, Lourdes, Belo Horizonte - MG, CEP 30180-100 (Setor 1)"
       },
       {
         "area": "Diretoria de Gestão de Águas Urbanas e Drenagem",
-        "funcao": "Execução e manutenção dos piscinões e reservatórios profundos (Vilarinho, Nado, Pampulha) contra enchentes."
+        "funcao": "Execução e manutenção dos piscinões e reservatórios profundos (Vilarinho, Nado, Pampulha) contra enchentes.",
+        "site": "https://prefeitura.pbh.gov.br/obras/diretoria-de-gestao-de-ag",
+        "telefone": "156",
+        "email": "diretoria-de-gestao-de-ag@pbh.gov.br",
+        "endereco": "Rua dos Guajajaras, 1107, Lourdes, Belo Horizonte - MG, CEP 30180-100 (Setor 2)"
       },
       {
         "area": "Diretoria de Infraestrutura Viária",
-        "funcao": "Manutenção do pavimento, pontes, viadutos e contenção de encostas nas vilas e aglomerados."
+        "funcao": "Manutenção do pavimento, pontes, viadutos e contenção de encostas nas vilas e aglomerados.",
+        "site": "https://prefeitura.pbh.gov.br/obras/diretoria-de-infraestrutu",
+        "telefone": "156",
+        "email": "diretoria-de-infraestrutu@pbh.gov.br",
+        "endereco": "Rua dos Guajajaras, 1107, Lourdes, Belo Horizonte - MG, CEP 30180-100 (Setor 3)"
       }
     ],
     "funcoes": [
@@ -943,23 +1139,43 @@
     "organograma": [
       {
         "area": "Plenário Ulysses Guimarães",
-        "funcao": "Órgão soberano para votação de Propostas de Emenda à Constituição (PECs), Leis Complementares e Ordinárias."
+        "funcao": "Órgão soberano para votação de Propostas de Emenda à Constituição (PECs), Leis Complementares e Ordinárias.",
+        "site": "https://www.camara.leg.br/plenario-ulysses-guimarae",
+        "telefone": "0800 0 619 619 (Disque-Câmara gratuito)",
+        "email": "plenario-ulysses-guimarae@camara.leg.br",
+        "endereco": "Palácio do Congresso Nacional, Praça dos Três Poderes, Edifício Principal, CEP 70160-900, Brasília - DF (Setor 1)"
       },
       {
         "area": "Comissão de Constituição e Justiça e de Cidadania (CCJC)",
-        "funcao": "Exame de admissibilidade constitucional, legalidade e técnica legislativa de todas as proposições."
+        "funcao": "Exame de admissibilidade constitucional, legalidade e técnica legislativa de todas as proposições.",
+        "site": "https://www.camara.leg.br/comissao-de-constituicao",
+        "telefone": "0800 0 619 619 (Disque-Câmara gratuito)",
+        "email": "comissao-de-constituicao@camara.leg.br",
+        "endereco": "Palácio do Congresso Nacional, Praça dos Três Poderes, Edifício Principal, CEP 70160-900, Brasília - DF (Setor 2)"
       },
       {
         "area": "Comissões Parlamentares de Inquérito (CPIs)",
-        "funcao": "Investigação com poderes próprios de autoridade judicial sobre fatos determinados de interesse público."
+        "funcao": "Investigação com poderes próprios de autoridade judicial sobre fatos determinados de interesse público.",
+        "site": "https://www.camara.leg.br/comissoes-parlamentares-d",
+        "telefone": "0800 0 619 619 (Disque-Câmara gratuito)",
+        "email": "comissoes-parlamentares-d@camara.leg.br",
+        "endereco": "Palácio do Congresso Nacional, Praça dos Três Poderes, Edifício Principal, CEP 70160-900, Brasília - DF (Setor 3)"
       },
       {
         "area": "Consultoria Legislativa e de Orçamento (Conof)",
-        "funcao": "Apoio técnico independente de consultores de carreira para elaboração de projetos e análise orçamentária."
+        "funcao": "Apoio técnico independente de consultores de carreira para elaboração de projetos e análise orçamentária.",
+        "site": "https://www.camara.leg.br/consultoria-legislativa-e",
+        "telefone": "0800 0 619 619 (Disque-Câmara gratuito)",
+        "email": "consultoria-legislativa-e@camara.leg.br",
+        "endereco": "Palácio do Congresso Nacional, Praça dos Três Poderes, Edifício Principal, CEP 70160-900, Brasília - DF (Setor 4)"
       },
       {
         "area": "Secretaria-Geral da Mesa e Diretoria-Geral",
-        "funcao": "Administração do processo legislativo eletrônico, transparência e gestão de contratos e pagamentos."
+        "funcao": "Administração do processo legislativo eletrônico, transparência e gestão de contratos e pagamentos.",
+        "site": "https://www.camara.leg.br/secretaria-geral-da-mesa",
+        "telefone": "0800 0 619 619 (Disque-Câmara gratuito)",
+        "email": "secretaria-geral-da-mesa@camara.leg.br",
+        "endereco": "Palácio do Congresso Nacional, Praça dos Três Poderes, Edifício Principal, CEP 70160-900, Brasília - DF (Setor 5)"
       }
     ],
     "funcoes": [
@@ -1027,19 +1243,35 @@
     "organograma": [
       {
         "area": "Plenário do Senado",
-        "funcao": "Votação de leis, tratados internacionais, deliberação final e julgamento de crimes de responsabilidade."
+        "funcao": "Votação de leis, tratados internacionais, deliberação final e julgamento de crimes de responsabilidade.",
+        "site": "https://www.senado.leg.br/plenario-do-senado",
+        "telefone": "0800 0 61 2211 (Alô Senado)",
+        "email": "plenario-do-senado@senado.leg.br",
+        "endereco": "Praça dos Três Poderes, Senado Federal, Via N2, CEP 70165-900, Brasília - DF (Setor 1)"
       },
       {
         "area": "Comissão de Assuntos Econômicos (CAE)",
-        "funcao": "Fixação de limites da dívida pública da União, estados e municípios e aprovação de empréstimos internacionais."
+        "funcao": "Fixação de limites da dívida pública da União, estados e municípios e aprovação de empréstimos internacionais.",
+        "site": "https://www.senado.leg.br/comissao-de-assuntos-econ",
+        "telefone": "0800 0 61 2211 (Alô Senado)",
+        "email": "comissao-de-assuntos-econ@senado.leg.br",
+        "endereco": "Praça dos Três Poderes, Senado Federal, Via N2, CEP 70165-900, Brasília - DF (Setor 2)"
       },
       {
         "area": "Sabatina de Autoridades",
-        "funcao": "Aprovação prévia por voto secreto de Ministros do STF, STJ, Procurador-Geral, Diretores do Banco Central e diplomatas."
+        "funcao": "Aprovação prévia por voto secreto de Ministros do STF, STJ, Procurador-Geral, Diretores do Banco Central e diplomatas.",
+        "site": "https://www.senado.leg.br/sabatina-de-autoridades",
+        "telefone": "0800 0 61 2211 (Alô Senado)",
+        "email": "sabatina-de-autoridades@senado.leg.br",
+        "endereco": "Praça dos Três Poderes, Senado Federal, Via N2, CEP 70165-900, Brasília - DF (Setor 3)"
       },
       {
         "area": "Advocacia do Senado e Consultoria Legislativa",
-        "funcao": "Representação jurídica institucional e redação técnica de pareceres parlamentares."
+        "funcao": "Representação jurídica institucional e redação técnica de pareceres parlamentares.",
+        "site": "https://www.senado.leg.br/advocacia-do-senado-e-con",
+        "telefone": "0800 0 61 2211 (Alô Senado)",
+        "email": "advocacia-do-senado-e-con@senado.leg.br",
+        "endereco": "Praça dos Três Poderes, Senado Federal, Via N2, CEP 70165-900, Brasília - DF (Setor 4)"
       }
     ],
     "funcoes": [
@@ -1106,19 +1338,35 @@
     "organograma": [
       {
         "area": "Plenário Juscelino Kubitschek",
-        "funcao": "Aprovação de leis estaduais, orçamento de MG e fiscalização do Governo do Estado."
+        "funcao": "Aprovação de leis estaduais, orçamento de MG e fiscalização do Governo do Estado.",
+        "site": "https://www.almg.gov.br/plenario-juscelino-kubits",
+        "telefone": "(31) 2108-7000",
+        "email": "plenario-juscelino-kubits@almg.gov.br",
+        "endereco": "Rua Rodrigues Caldas, 30, Santo Agostinho, Belo Horizonte - MG, CEP 30190-921 (Setor 1)"
       },
       {
         "area": "Comissão de Fiscalização Financeira e Orçamentária (FFO)",
-        "funcao": "Análise das contas do Governador, da dívida pública estadual e do Plano Plurianual (PPAG)."
+        "funcao": "Análise das contas do Governador, da dívida pública estadual e do Plano Plurianual (PPAG).",
+        "site": "https://www.almg.gov.br/comissao-de-fiscalizacao",
+        "telefone": "(31) 2108-7000",
+        "email": "comissao-de-fiscalizacao@almg.gov.br",
+        "endereco": "Rua Rodrigues Caldas, 30, Santo Agostinho, Belo Horizonte - MG, CEP 30190-921 (Setor 2)"
       },
       {
         "area": "Comissão Extraordinária das Águas e Barragens",
-        "funcao": "Acompanhamento legislativo permanente dos acordos de reparação e segurança de barragens em MG."
+        "funcao": "Acompanhamento legislativo permanente dos acordos de reparação e segurança de barragens em MG.",
+        "site": "https://www.almg.gov.br/comissao-extraordinaria-d",
+        "telefone": "(31) 2108-7000",
+        "email": "comissao-extraordinaria-d@almg.gov.br",
+        "endereco": "Rua Rodrigues Caldas, 30, Santo Agostinho, Belo Horizonte - MG, CEP 30190-921 (Setor 3)"
       },
       {
         "area": "Gerência Geral de Consultoria Temática",
-        "funcao": "Corpo técnico permanente de consultores concursados que elaboram os projetos de lei e estudos fiscais."
+        "funcao": "Corpo técnico permanente de consultores concursados que elaboram os projetos de lei e estudos fiscais.",
+        "site": "https://www.almg.gov.br/gerencia-geral-de-consult",
+        "telefone": "(31) 2108-7000",
+        "email": "gerencia-geral-de-consult@almg.gov.br",
+        "endereco": "Rua Rodrigues Caldas, 30, Santo Agostinho, Belo Horizonte - MG, CEP 30190-921 (Setor 4)"
       }
     ],
     "funcoes": [
@@ -1185,19 +1433,35 @@
     "organograma": [
       {
         "area": "Plenário Amynthas de Barros",
-        "funcao": "Votação do Plano Diretor de BH, Código de Posturas, IPTU, ISS e fiscalização dos atos do Prefeito."
+        "funcao": "Votação do Plano Diretor de BH, Código de Posturas, IPTU, ISS e fiscalização dos atos do Prefeito.",
+        "site": "https://www.cmbh.mg.gov.br/plenario-amynthas-de-barr",
+        "telefone": "(31) 3555-1100",
+        "email": "plenario-amynthas-de-barr@cmbh.mg.gov.br",
+        "endereco": "Av. dos Andradas, 3100, Santa Efigênia, Belo Horizonte - MG, CEP 30260-070 (Setor 1)"
       },
       {
         "area": "Comissão de Legislação e Justiça (CLJ)",
-        "funcao": "Aferição da legalidade e constitucionalidade das proposições municipais."
+        "funcao": "Aferição da legalidade e constitucionalidade das proposições municipais.",
+        "site": "https://www.cmbh.mg.gov.br/comissao-de-legislacao-e",
+        "telefone": "(31) 3555-1100",
+        "email": "comissao-de-legislacao-e@cmbh.mg.gov.br",
+        "endereco": "Av. dos Andradas, 3100, Santa Efigênia, Belo Horizonte - MG, CEP 30260-070 (Setor 2)"
       },
       {
         "area": "Comissão de Orçamento e Finanças Públicas",
-        "funcao": "Análise da Lei Orçamentária Anual (LOA) de Belo Horizonte e emendas impositivas dos vereadores."
+        "funcao": "Análise da Lei Orçamentária Anual (LOA) de Belo Horizonte e emendas impositivas dos vereadores.",
+        "site": "https://www.cmbh.mg.gov.br/comissao-de-orcamento-e-f",
+        "telefone": "(31) 3555-1100",
+        "email": "comissao-de-orcamento-e-f@cmbh.mg.gov.br",
+        "endereco": "Av. dos Andradas, 3100, Santa Efigênia, Belo Horizonte - MG, CEP 30260-070 (Setor 3)"
       },
       {
         "area": "CPIs Municipais",
-        "funcao": "Comissões Parlamentares de Inquérito sobre serviços municipais (ex: CPI da BHTrans/Ônibus)."
+        "funcao": "Comissões Parlamentares de Inquérito sobre serviços municipais (ex: CPI da BHTrans/Ônibus).",
+        "site": "https://www.cmbh.mg.gov.br/cpis-municipais",
+        "telefone": "(31) 3555-1100",
+        "email": "cpis-municipais@cmbh.mg.gov.br",
+        "endereco": "Av. dos Andradas, 3100, Santa Efigênia, Belo Horizonte - MG, CEP 30260-070 (Setor 4)"
       }
     ],
     "funcoes": [
@@ -1264,19 +1528,35 @@
     "organograma": [
       {
         "area": "Plenário do STF (11 Ministros)",
-        "funcao": "Guarda suprema da Constituição, julgamento de Ações Diretas de Inconstitucionalidade (ADIs) e Repercussão Geral."
+        "funcao": "Guarda suprema da Constituição, julgamento de Ações Diretas de Inconstitucionalidade (ADIs) e Repercussão Geral.",
+        "site": "https://portal.stf.jus.br/plenario-do-stf-11-minist",
+        "telefone": "(61) 3217-3000",
+        "email": "plenario-do-stf-11-minist@stf.jus.br",
+        "endereco": "Praça dos Três Poderes, Edifício Sede do STF, CEP 70175-900, Brasília - DF (Setor 1)"
       },
       {
         "area": "Primeira Turma (5 Ministros)",
-        "funcao": "Julgamento de extradições, habeas corpus e recursos de natureza cível e criminal."
+        "funcao": "Julgamento de extradições, habeas corpus e recursos de natureza cível e criminal.",
+        "site": "https://portal.stf.jus.br/primeira-turma-5-ministro",
+        "telefone": "(61) 3217-3000",
+        "email": "primeira-turma-5-ministro@stf.jus.br",
+        "endereco": "Praça dos Três Poderes, Edifício Sede do STF, CEP 70175-900, Brasília - DF (Setor 2)"
       },
       {
         "area": "Segunda Turma (5 Ministros)",
-        "funcao": "Julgamento de matérias penais originárias, inquéritos contra autoridades com foro e recursos."
+        "funcao": "Julgamento de matérias penais originárias, inquéritos contra autoridades com foro e recursos.",
+        "site": "https://portal.stf.jus.br/segunda-turma-5-ministros",
+        "telefone": "(61) 3217-3000",
+        "email": "segunda-turma-5-ministros@stf.jus.br",
+        "endereco": "Praça dos Três Poderes, Edifício Sede do STF, CEP 70175-900, Brasília - DF (Setor 3)"
       },
       {
         "area": "Secretaria-Geral da Presidência",
-        "funcao": "Coordenação da gestão estratégica, julgamento no Plenário Virtual e relacionamento institucional."
+        "funcao": "Coordenação da gestão estratégica, julgamento no Plenário Virtual e relacionamento institucional.",
+        "site": "https://portal.stf.jus.br/secretaria-geral-da-presi",
+        "telefone": "(61) 3217-3000",
+        "email": "secretaria-geral-da-presi@stf.jus.br",
+        "endereco": "Praça dos Três Poderes, Edifício Sede do STF, CEP 70175-900, Brasília - DF (Setor 4)"
       }
     ],
     "funcoes": [
@@ -1345,19 +1625,35 @@
     "organograma": [
       {
         "area": "Presidência",
-        "funcao": "Representação institucional, gestão orçamentária e administração geral."
+        "funcao": "Representação institucional, gestão orçamentária e administração geral.",
+        "site": "https://www.tjmg.jus.br/presidencia",
+        "telefone": "(31) 3237-6000",
+        "email": "presidencia@tjmg.jus.br",
+        "endereco": "Av. Afonso Pena, 4001, Serra, Belo Horizonte - MG, CEP 30130-994 (Setor 1)"
       },
       {
         "area": "1ª Vice-Presidência",
-        "funcao": "Supervisão da área judiciária e admissibilidade de recursos para STJ e STF."
+        "funcao": "Supervisão da área judiciária e admissibilidade de recursos para STJ e STF.",
+        "site": "https://www.tjmg.jus.br/1a-vice-presidencia",
+        "telefone": "(31) 3237-6000",
+        "email": "1a-vice-presidencia@tjmg.jus.br",
+        "endereco": "Av. Afonso Pena, 4001, Serra, Belo Horizonte - MG, CEP 30130-994 (Setor 2)"
       },
       {
         "area": "Corregedoria-Geral de Justiça (CGJ)",
-        "funcao": "Fiscalização disciplinar e orientação de juizados de 1º grau e cartórios de registro."
+        "funcao": "Fiscalização disciplinar e orientação de juizados de 1º grau e cartórios de registro.",
+        "site": "https://www.tjmg.jus.br/corregedoria-geral-de-jus",
+        "telefone": "(31) 3237-6000",
+        "email": "corregedoria-geral-de-jus@tjmg.jus.br",
+        "endereco": "Av. Afonso Pena, 4001, Serra, Belo Horizonte - MG, CEP 30130-994 (Setor 3)"
       },
       {
         "area": "Câmaras Especializadas Cíveis e Criminais",
-        "funcao": "Julgamento de apelações e habeas corpus em 2º grau de jurisdição."
+        "funcao": "Julgamento de apelações e habeas corpus em 2º grau de jurisdição.",
+        "site": "https://www.tjmg.jus.br/camaras-especializadas-ci",
+        "telefone": "(31) 3237-6000",
+        "email": "camaras-especializadas-ci@tjmg.jus.br",
+        "endereco": "Av. Afonso Pena, 4001, Serra, Belo Horizonte - MG, CEP 30130-994 (Setor 4)"
       }
     ],
     "funcoes": [
@@ -1424,19 +1720,35 @@
     "organograma": [
       {
         "area": "Procuradoria-Geral de Justiça (PGJ)",
-        "funcao": "Direção superior, ações contra autoridades com foro no TJMG e negociação de grandes TACs."
+        "funcao": "Direção superior, ações contra autoridades com foro no TJMG e negociação de grandes TACs.",
+        "site": "https://www.mpmg.mp.br/procuradoria-geral-de-jus",
+        "telefone": "127 (Disque MPMG gratuito)",
+        "email": "procuradoria-geral-de-jus@mpmg.mp.br",
+        "endereco": "Av. Álvares Cabral, 1690, Santo Agostinho, Belo Horizonte - MG, CEP 30180-008 (Setor 1)"
       },
       {
         "area": "Coordenadoria de Meio Ambiente e Mineração (Caoma)",
-        "funcao": "Defesa de bacias hidrográficas, TACs minerários e fiscalização de barragens e compensações."
+        "funcao": "Defesa de bacias hidrográficas, TACs minerários e fiscalização de barragens e compensações.",
+        "site": "https://www.mpmg.mp.br/coordenadoria-de-meio-amb",
+        "telefone": "127 (Disque MPMG gratuito)",
+        "email": "coordenadoria-de-meio-amb@mpmg.mp.br",
+        "endereco": "Av. Álvares Cabral, 1690, Santo Agostinho, Belo Horizonte - MG, CEP 30180-008 (Setor 2)"
       },
       {
         "area": "Gaeco (Grupo de Atuação Especial de Combate ao Crime Organizado)",
-        "funcao": "Investigação integrada com a Polícia Civil, Militar e Rodoviária contra facções e colarinho branco."
+        "funcao": "Investigação integrada com a Polícia Civil, Militar e Rodoviária contra facções e colarinho branco.",
+        "site": "https://www.mpmg.mp.br/gaeco-grupo-de-atuacao-es",
+        "telefone": "127 (Disque MPMG gratuito)",
+        "email": "gaeco-grupo-de-atuacao-es@mpmg.mp.br",
+        "endereco": "Av. Álvares Cabral, 1690, Santo Agostinho, Belo Horizonte - MG, CEP 30180-008 (Setor 3)"
       },
       {
         "area": "Promotorias de Justiça nas 298 Comarcas",
-        "funcao": "Atendimento direto ao cidadão em saúde pública, infância, consumidor, patrimônio e criminal."
+        "funcao": "Atendimento direto ao cidadão em saúde pública, infância, consumidor, patrimônio e criminal.",
+        "site": "https://www.mpmg.mp.br/promotorias-de-justica-na",
+        "telefone": "127 (Disque MPMG gratuito)",
+        "email": "promotorias-de-justica-na@mpmg.mp.br",
+        "endereco": "Av. Álvares Cabral, 1690, Santo Agostinho, Belo Horizonte - MG, CEP 30180-008 (Setor 4)"
       }
     ],
     "funcoes": [
@@ -1503,19 +1815,35 @@
     "organograma": [
       {
         "area": "Gabinete da Defensora Pública-Geral",
-        "funcao": "Administração geral, expansão institucional para comarcas sem defensor e relações com Poderes."
+        "funcao": "Administração geral, expansão institucional para comarcas sem defensor e relações com Poderes.",
+        "site": "https://defensoria.mg.def.br/gabinete-da-defensora-pub",
+        "telefone": "(31) 3526-0500",
+        "email": "gabinete-da-defensora-pub@defensoria.mg.def.br",
+        "endereco": "Rua Guajajaras, 1707, Barro Preto, Belo Horizonte - MG, CEP 30180-101 (Setor 1)"
       },
       {
         "area": "Coordenadoria Estratégica de Direitos Humanos e Coletivos (Chedh)",
-        "funcao": "Ações coletivas em favor de comunidades atingidas, populações vulneráveis e moradia popular."
+        "funcao": "Ações coletivas em favor de comunidades atingidas, populações vulneráveis e moradia popular.",
+        "site": "https://defensoria.mg.def.br/coordenadoria-estrategica",
+        "telefone": "(31) 3526-0500",
+        "email": "coordenadoria-estrategica@defensoria.mg.def.br",
+        "endereco": "Rua Guajajaras, 1707, Barro Preto, Belo Horizonte - MG, CEP 30180-101 (Setor 2)"
       },
       {
         "area": "Defensoria Especializada de Família e Sucessões",
-        "funcao": "Assistência jurídica integral em divórcio, pensão alimentícia, guarda e investigação de paternidade."
+        "funcao": "Assistência jurídica integral em divórcio, pensão alimentícia, guarda e investigação de paternidade.",
+        "site": "https://defensoria.mg.def.br/defensoria-especializada",
+        "telefone": "(31) 3526-0500",
+        "email": "defensoria-especializada@defensoria.mg.def.br",
+        "endereco": "Rua Guajajaras, 1707, Barro Preto, Belo Horizonte - MG, CEP 30180-101 (Setor 3)"
       },
       {
         "area": "Núcleo de Execução Penal (NEP)",
-        "funcao": "Inspeção em presídios e acompanhamento da progressão de regime dos apenados hipossuficientes."
+        "funcao": "Inspeção em presídios e acompanhamento da progressão de regime dos apenados hipossuficientes.",
+        "site": "https://defensoria.mg.def.br/nucleo-de-execucao-penal",
+        "telefone": "(31) 3526-0500",
+        "email": "nucleo-de-execucao-penal@defensoria.mg.def.br",
+        "endereco": "Rua Guajajaras, 1707, Barro Preto, Belo Horizonte - MG, CEP 30180-101 (Setor 4)"
       }
     ],
     "funcoes": [
