@@ -8,6 +8,8 @@ import DataCard from "@/app/[municipio]/components/DataCard";
 import BotaoAlertaContextual from "@/app/components/BotaoAlertaContextual";
 import RankingVereadores from "@/app/[municipio]/components/charts/RankingVereadores";
 import IndiceRiscoDireitosCard from "@/app/[municipio]/components/IndiceRiscoDireitosCard";
+import CardCoberturaCelular from "@/app/[municipio]/components/CardCoberturaCelular";
+import { obterCoberturaTelefonia } from "@/lib/telefonia/cobertura";
 import { conselhosPorMunicipio } from "@/lib/conselhos/catalogo";
 import { obterCanaisPorMunicipio } from "@/lib/direitos/informacao";
 import { obterPanoramaJudicial } from "@/lib/judiciario/jurisprudencia-clima-barragens";
@@ -296,6 +298,7 @@ export default async function HomePage({
   // cartão renderiza só a cultura — cidade sem fonte confirmada nunca ganha
   // marco inventado para enfeitar cartão.
   const memoria = memoriaDaCidade(cidade.slug);
+  const coberturaTelefonia = obterCoberturaTelefonia(cidade.id_municipio);
 
   return (
     <div>
@@ -307,76 +310,87 @@ export default async function HomePage({
             "radial-gradient(1100px 480px at 12% -12%, color-mix(in srgb, var(--color-primary) 16%, transparent), transparent), radial-gradient(820px 460px at 102% -6%, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent)",
         }}
       >
-        <div className="mx-auto grid max-w-5xl gap-9 lg:grid-cols-[1.7fr_1fr] lg:items-end">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1.5 text-[.88em] font-semibold text-accent">
-              iniciativa cidadã independente
-            </span>
-            <h1 className="mt-4 max-w-[15ch] font-display text-[clamp(2.2em,5.5vw,3.6em)] leading-[1.05] font-bold tracking-tight text-text text-balance">
-              Transparência pública de <span className="text-primary">{cidade.nome}, {cidade.uf}</span>
-            </h1>
-            <p className="mt-4 max-w-[52ch] text-[1.1em] text-text-soft text-pretty">
-              Contratos, números e serviços de {cidade.nome} num lugar só. Cada dado
-              vem de fonte oficial, com link pra você conferir.
-            </p>
-            <form
-              action="/prefeitura/contratos"
-              method="GET"
-              className="mt-6 flex max-w-[520px] gap-2"
-            >
-              <input
-                type="search"
-                name="q"
-                placeholder="Buscar contratos, fornecedores…"
-                aria-label="Busca pública"
-                className="min-w-0 flex-1 rounded-xl border border-border bg-surface px-4 py-3.5 text-text"
-              />
-              <button
-                type="submit"
-                className="cursor-pointer rounded-xl border border-primary bg-primary px-6 py-3.5 font-semibold text-primary-ink"
+        <div className="mx-auto grid max-w-5xl gap-9 lg:grid-cols-[1.7fr_1fr] lg:items-start">
+          <div className="flex flex-col gap-6">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1.5 text-[.88em] font-semibold text-accent">
+                iniciativa cidadã independente
+              </span>
+              <h1 className="mt-4 max-w-[15ch] font-display text-[clamp(2.2em,5.5vw,3.6em)] leading-[1.05] font-bold tracking-tight text-text text-balance">
+                Transparência pública de <span className="text-primary">{cidade.nome}, {cidade.uf}</span>
+              </h1>
+              <p className="mt-4 max-w-[52ch] text-[1.1em] text-text-soft text-pretty">
+                Contratos, números e serviços de {cidade.nome} num lugar só. Cada dado
+                vem de fonte oficial, com link pra você conferir.
+              </p>
+              <form
+                action="/prefeitura/contratos"
+                method="GET"
+                className="mt-6 flex max-w-[520px] gap-2"
               >
-                Buscar
-              </button>
-            </form>
+                <input
+                  type="search"
+                  name="q"
+                  placeholder="Buscar contratos, fornecedores…"
+                  aria-label="Busca pública"
+                  className="min-w-0 flex-1 rounded-xl border border-border bg-surface px-4 py-3.5 text-text"
+                />
+                <button
+                  type="submit"
+                  className="cursor-pointer rounded-xl border border-primary bg-primary px-6 py-3.5 font-semibold text-primary-ink"
+                >
+                  Buscar
+                </button>
+              </form>
+            </div>
+
+            {/* Foto do acervo Brasil com S (Lab 678), com crédito na legenda
+                — ver `FotoBrasilComS.tsx`. Sem corte, por termos do acervo. */}
+            <FotoBrasilComS
+              id="00039"
+              className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm"
+            />
           </div>
 
-          {clima?.atual ? (
-            <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
-              <div className="flex items-center justify-between">
-                <span className="text-[.85em] font-semibold tracking-wide text-text-soft">
-                  {/* Escapou da varredura de strings "Betim" porque estava em
-                      CAIXA ALTA — um grep por "Betim" não encontra "BETIM". O
-                      card mostrava a temperatura correta de Belo Horizonte sob
-                      o rótulo "BETIM · AGORA". */}
-                  {cidade.nome.toLocaleUpperCase("pt-BR")} · AGORA
-                </span>
-                <span className="h-2.5 w-2.5 rounded-full bg-accent" />
-              </div>
-              <div className="mt-2 font-tabular text-[3.2em] leading-none font-semibold">
-                {Math.round(clima.atual.temperature)}°
-              </div>
-              <div className="text-[.9em] text-text-soft">
-                {WEATHER_LABELS[clima.atual.weathercode] ?? "—"}
-              </div>
-              {clima.diario ? (
-                <div className="mt-3.5 flex gap-4 border-t border-border pt-3.5 font-tabular text-[.92em]">
-                  <span>
-                    mín <strong>{Math.round(clima.diario.temperature_2m_min[0])}°</strong>
+          <div className="flex flex-col gap-4">
+            {clima?.atual ? (
+              <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <span className="text-[.85em] font-semibold tracking-wide text-text-soft">
+                    {/* Escapou da varredura de strings "Betim" porque estava em
+                        CAIXA ALTA — um grep por "Betim" não encontra "BETIM". O
+                        card mostrava a temperatura correta de Belo Horizonte sob
+                        o rótulo "BETIM · AGORA". */}
+                    {cidade.nome.toLocaleUpperCase("pt-BR")} · AGORA
                   </span>
-                  <span>
-                    máx <strong>{Math.round(clima.diario.temperature_2m_max[0])}°</strong>
-                  </span>
+                  <span className="h-2.5 w-2.5 rounded-full bg-accent" />
                 </div>
-              ) : null}
-            </div>
-          ) : null}
+                <div className="mt-2 font-tabular text-[3.2em] leading-none font-semibold">
+                  {Math.round(clima.atual.temperature)}°
+                </div>
+                <div className="text-[.9em] text-text-soft">
+                  {WEATHER_LABELS[clima.atual.weathercode] ?? "—"}
+                </div>
+                {clima.diario ? (
+                  <div className="mt-3.5 flex gap-4 border-t border-border pt-3.5 font-tabular text-[.92em]">
+                    <span>
+                      mín <strong>{Math.round(clima.diario.temperature_2m_min[0])}°</strong>
+                    </span>
+                    <span>
+                      máx <strong>{Math.round(clima.diario.temperature_2m_max[0])}°</strong>
+                    </span>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
 
-          {/* Foto do acervo Brasil com S (Lab 678), com crédito na legenda
-              — ver `FotoBrasilComS.tsx`. Sem corte, por termos do acervo. */}
-          <FotoBrasilComS
-            id="00039"
-            className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm"
-          />
+            {coberturaTelefonia ? (
+              <CardCoberturaCelular
+                cobertura={coberturaTelefonia}
+                nomeCidade={cidade.nome}
+              />
+            ) : null}
+          </div>
         </div>
       </section>
 

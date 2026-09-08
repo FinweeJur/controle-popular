@@ -1,7 +1,9 @@
 import { paramsDasCidades } from "@/lib/betim/staticParams";
 import DataCard from "@/app/[municipio]/components/DataCard";
+import CardCoberturaCelular from "@/app/[municipio]/components/CardCoberturaCelular";
 import { fetchIndicadores } from "@/lib/betim/indicadores";
 import { cidadeDaRota, metadataDaCidade, nomePortal } from "@/lib/betim/cidade";
+import { obterCoberturaTelefonia } from "@/lib/telefonia/cobertura";
 
 // `output: 'export'` exige a função DECLARADA aqui — re-export não é
 // reconhecido pelo Turbopack. Ver `lib/betim/staticParams.ts`.
@@ -23,6 +25,7 @@ export default async function InfraestruturaPage({
   const indicadores = await fetchIndicadores(cidade.id_municipio, ["cobertura_agua", "cobertura_esgoto"]);
   const agua = indicadores["cobertura_agua"];
   const esgoto = indicadores["cobertura_esgoto"];
+  const cobertura = obterCoberturaTelefonia(cidade.id_municipio);
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-14 sm:px-8">
@@ -84,6 +87,20 @@ export default async function InfraestruturaPage({
           )}
         </DataCard>
       </section>
+
+      {cobertura ? (
+        <section className="mt-8">
+          <h2 className="font-display text-xl font-bold tracking-tight text-text">
+            Telecomunicações e Telefonia Celular
+          </h2>
+          <p className="mt-1 text-sm text-text-soft">
+            Estações rádio-base e antenas transmissoras cadastradas na Anatel (SMP).
+          </p>
+          <div className="mt-4 max-w-lg">
+            <CardCoberturaCelular cobertura={cobertura} nomeCidade={cidade.nome} />
+          </div>
+        </section>
+      ) : null}
 
       <div className="mt-8 rounded-2xl border border-dashed border-border bg-surface-2 p-8 text-sm text-text-soft">
         <p className="font-medium text-text">Em breve</p>

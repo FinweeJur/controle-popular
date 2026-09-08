@@ -23,6 +23,7 @@ import re
 import math
 import gzip
 import unicodedata
+from collections import defaultdict
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ_REPO = os.path.abspath(os.path.join(AQUI, '..'))
@@ -296,5 +297,49 @@ def extrair_e_gerar():
         f.write(gzip.compress(json_mg_poly_bytes, compresslevel=9))
     print(f"[OK] {path_mg_poly_gz} ({os.path.getsize(path_mg_poly_gz) / 1024 / 1024:.2f} MB comprimido gzip)")
 
+    # --- ETAPA 3: Estatísticas de Cobertura por Município ---
+    por_mun = defaultdict(lambda: {'total': 0, 'ops': defaultdict(int), 'ger_max': defaultdict(str), 'nome': ''})
+    for t in torres_todas:
+        cod = str(t['cod_ibge'])
+        op = t['operadora']
+        ger = classificar_geracao(t['tecnologias'])
+        nome = t['municipio']
+        if not cod:
+            continue
+        por_mun[cod]['total'] += 1
+        por_mun[cod]['ops'][op] += 1
+        por_mun[cod]['nome'] = nome
+        if ger == '5G' or (ger == '4G' and por_mun[cod]['ger_max'][op] != '5G'):
+            por_mun[cod]['ger_max'][op] = ger
+        elif not por_mun[cod]['ger_max'][op]:
+            por_mun[cod]['ger_max'][op] = ger
+
+    resumo_municipios = {}
+    for cod, item in sorted(por_mun.items()):
+        tot = item['total']
+        ops_list = []
+        has_5g = False
+        for op, cnt in sorted(item['ops'].items(), key=lambda x: x[1], reverse=True):
+            g = item['ger_max'][op] or '4G'
+            if g == '5G':
+                has_5g = True
+            pct = round((cnt / tot) * 100)
+            ops_list.append({'operadora': op, 'torres': cnt, 'pct': pct, 'geracao_max': g})
+
+        lider = ops_list[0] if ops_list else None
+        resumo_municipios[cod] = {
+            'municipio': item['nome'],
+            'total_torres': tot,
+            'tem_5g': has_5g,
+            'lider': lider,
+            'ranking': ops_list
+        }
+
+    path_data_json = os.path.join(RAIZ_REPO, 'apps', 'web', 'data', 'telefonia-municipios-mg.json')
+    with open(path_data_json, 'w', encoding='utf-8') as f:
+        json.dump(resumo_municipios, f, ensure_ascii=False, indent=2)
+    print(f"[OK] {path_data_json} ({os.path.getsize(path_data_json) / 1024:.1f} KB)")
+
 if __name__ == '__main__':
     extrair_e_gerar()
+
