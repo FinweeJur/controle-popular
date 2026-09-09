@@ -10,6 +10,8 @@ import {
   ArrowRight,
   TrendingUp,
   SlidersHorizontal,
+  ArrowDownWideNarrow,
+  ArrowUpNarrowWide,
 } from "lucide-react";
 import type { NoticiaPortal } from "@/lib/noticias/portal";
 
@@ -36,16 +38,65 @@ const FRENTES_NOMES: Record<string, string> = {
   cidades: "Cidades Monitoradas",
 };
 
+const PERIODOS: { valor: string; rotulo: string; dias: number | null }[] = [
+  { valor: "todas", rotulo: "Qualquer data", dias: null },
+  { valor: "7d", rotulo: "Últimos 7 dias", dias: 7 },
+  { valor: "30d", rotulo: "Últimos 30 dias", dias: 30 },
+  { valor: "90d", rotulo: "Últimos 3 meses", dias: 90 },
+  { valor: "1a", rotulo: "Último ano", dias: 365 },
+];
+
+const ORDENS = [
+  { valor: "recentes", rotulo: "Mais recentes primeiro" },
+  { valor: "antigas", rotulo: "Mais antigas primeiro" },
+] as const;
+
+/** Temas = palavras-chave do acervo, ordenadas por quantas matérias têm.
+ * NÃO filtro por "tema popular" (2+ ocorrências): com o acervo pequeno, a
+ * tarifa social de energia e água — achado do dono em 08/09 — teria 1 matéria
+ * e ficaria invisível no filtro. Palavra com 1 matéria é lista de títulos,
+ * sim; invisível é pior. */
+function temasDisponiveis(noticias: NoticiaPortal[]): string[] {
+  const contagem = new Map<string, number>();
+  for (const n of noticias) {
+    for (const k of n.palavrasChave) {
+      const chave = k.trim();
+      if (chave) contagem.set(chave, (contagem.get(chave) ?? 0) + 1);
+    }
+  }
+  return [...contagem.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"))
+    .map(([tema, qtd]) => `${tema} (${qtd})`);
+}
+
+/** O `<option>` mostra "tema (N)" para o leitor; o valor comparado é o tema puro. */
+function temaDoValor(rotulo: string): string {
+  return rotulo.replace(/ \(\d+\)$/, "");
+}
+
 export default function NoticiasClient({ noticias }: Props) {
   const [busca, setBusca] = useState("");
   const [categoriaAtiva, setCategoriaAtiva] = useState<string>("Todas");
   const [frenteAtiva, setFrenteAtiva] = useState<string>("todas");
+  const [temaAtivo, setTemaAtivo] = useState<string>("todos");
+  const [periodoAtivo, setPeriodoAtivo] = useState<string>("todas");
+  const [ordem, setOrdem] = useState<string>("recentes");
+
+  const temas = useMemo(() => temasDisponiveis(noticias), [noticias]);
 
   const noticiasFiltradas = useMemo(() => {
-    return noticias.filter((n) => {
+    const dias = PERIODOS.find((p) => p.valor === periodoAtivo)?.dias ?? null;
+    const limite = dias ? Date.now() - dias * 24 * 60 * 60 * 1000 : null;
+
+    const filtradas = noticias.filter((n) => {
       const matchCategoria =
         categoriaAtiva === "Todas" || n.categoria === categoriaAtiva;
       const matchFrente = frenteAtiva === "todas" || n.frente === frenteAtiva;
+      const matchTema =
+        temaAtivo === "todos" ||
+        n.palavrasChave.some((k) => k.trim() === temaDoValor(temaAtivo));
+      const matchPeriodo =
+        limite === null || new Date(n.publicadoEm).getTime() >= limite;
 
       const q = busca.toLowerCase().trim();
       const matchBusca =
@@ -55,14 +106,25 @@ export default function NoticiasClient({ noticias }: Props) {
         n.resumo.toLowerCase().includes(q) ||
         n.palavrasChave.some((k) => k.toLowerCase().includes(q));
 
-      return matchCategoria && matchFrente && matchBusca;
+      return matchCategoria && matchFrente && matchTema && matchPeriodo && matchBusca;
     });
-  }, [noticias, categoriaAtiva, frenteAtiva, busca]);
+
+    return filtradas.sort((a, b) => {
+      const da = new Date(a.publicadoEm).getTime();
+      const db = new Date(b.publicadoEm).getTime();
+      return ordem === "recentes" ? db - da : da - db;
+    });
+  }, [noticias, categoriaAtiva, frenteAtiva, temaAtivo, periodoAtivo, ordem, busca]);
+
+  const filtroAtivo =
+    busca ||
+    categoriaAtiva !== "Todas" ||
+    frenteAtiva !== "todas" ||
+    temaAtivo !== "todos" ||
+    periodoAtivo !== "todas";
 
   const destaque = noticias[0];
-  const listaExibicao = busca || categoriaAtiva !== "Todas" || frenteAtiva !== "todas"
-    ? noticiasFiltradas
-    : noticiasFiltradas.slice(1);
+  const listaExibicao = filtroAtivo ? noticiasFiltradas : noticiasFiltradas.slice(1);
 
   return (
     <div className="space-y-10">
@@ -101,6 +163,64 @@ export default function NoticiasClient({ noticias }: Props) {
           </div>
         </div>
 
+        {/* Tema, período e ordenação */}
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="flex flex-1 items-center gap-2">
+            <label htmlFor="filtro-tema" className="text-xs text-muted whitespace-nowrap">
+              Tema
+            </label>
+            <select
+              id="filtro-tema"
+              value={temaAtivo}
+              onChange={(e) => setTemaAtivo(e.target.value)}
+              className="w-full rounded-xl border border-border bg-surface-2 px-3 py-2 text-xs sm:text-sm text-foreground focus:border-primary focus:outline-none"
+            >
+              <option value="todos">Todos os temas</option>
+              {temas.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Calendar size={14} className="text-muted" />
+            <select
+              value={periodoAtivo}
+              onChange={(e) => setPeriodoAtivo(e.target.value)}
+              className="rounded-xl border border-border bg-surface-2 px-3 py-2 text-xs sm:text-sm text-foreground focus:border-primary focus:outline-none"
+              aria-label="Filtrar por data"
+            >
+              {PERIODOS.map((p) => (
+                <option key={p.valor} value={p.valor}>
+                  {p.rotulo}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {ordem === "recentes" ? (
+              <ArrowDownWideNarrow size={14} className="text-muted" />
+            ) : (
+              <ArrowUpNarrowWide size={14} className="text-muted" />
+            )}
+            <select
+              value={ordem}
+              onChange={(e) => setOrdem(e.target.value)}
+              className="rounded-xl border border-border bg-surface-2 px-3 py-2 text-xs sm:text-sm text-foreground focus:border-primary focus:outline-none"
+              aria-label="Ordenar por data"
+            >
+              {ORDENS.map((o) => (
+                <option key={o.valor} value={o.valor}>
+                  {o.rotulo}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
         {/* Abas de categorias */}
         <div className="flex flex-wrap gap-2 pt-2 border-t border-border/50">
           {CATEGORIAS.map((cat) => (
@@ -124,7 +244,7 @@ export default function NoticiasClient({ noticias }: Props) {
       </section>
 
       {/* ═══ DESTAQUE PRINCIPAL (Quando sem filtro ativo) ═══ */}
-      {!busca && categoriaAtiva === "Todas" && frenteAtiva === "todas" && destaque && (
+      {!filtroAtivo && destaque && (
         <article className="overflow-hidden rounded-2xl border border-border bg-surface shadow-xs transition-all hover:border-primary/50">
           <div className="p-6 sm:p-8">
             <div className="flex flex-wrap items-center gap-2 text-xs">
