@@ -206,7 +206,65 @@ function executarPasso(slug: string, seco = false): boolean {
     console.log(`❌ Falha na execução da coleta (código: ${resultado.status}).`);
   }
 
+  registrarQuarentena(slug, sucesso);
   return sucesso;
+}
+
+// ── Quarentena de fonte (PLANO-RESILIENCIA-BOTS, item 3) ────────────────
+// Fonte que falha 3 rodadas seguidas pula UMA rodada (com aviso) e volta na
+// seguinte. Não é circuit breaker eterno: é descanso de uma rodada, porque
+// a lacuna é informação — o relatório da rodada declara quem foi pulado.
+const ARQUIVO_QUARENTENA = path.join(RAIZ, "scripts", ".quarentena-fontes.json");
+const FALHAS_PARA_QUARENTENA = 3;
+
+interface EstadoQuarentena {
+  slug: string;
+  falhas: number;
+  quarentena: string | null; // carimbo ISO de quando entrou; null = sem quarentena
+}
+
+function lerQuarentena(): Record<string, EstadoQuarentena> {
+  try {
+    return JSON.parse(fs.readFileSync(ARQUIVO_QUARENTENA, "utf-8"));
+  } catch {
+    return {};
+  }
+}
+
+function gravarQuarentena(estado: Record<string, EstadoQuarentena>): void {
+  fs.writeFileSync(ARQUIVO_QUARENTENA, JSON.stringify(estado, null, 2));
+}
+
+/** Rodadas em massa consultam; rodada de fonte única (dono, à mão) não —
+ * pedido explícito manda sobre quarentena. */
+function fontePuladaPorQuarentena(slug: string): boolean {
+  const estado = lerQuarentena()[slug];
+  if (!estado?.quarentena) return false;
+  console.log(
+    `⏸  [${slug}] em quarentena desde ${estado.quarentena} (${estado.falhas} falhas seguidas) — pulando ESTA rodada; volta na próxima.`
+  );
+  // Sai da quarentena por aqui: o pulo é a folga. Se falhar de novo, precisa
+  // reconquistar as 3 falhas seguidas.
+  const todo = lerQuarentena();
+  delete todo[slug];
+  gravarQuarentena(todo);
+  return true;
+}
+
+function registrarQuarentena(slug: string, sucesso: boolean): void {
+  const todo = lerQuarentena();
+  const atual: EstadoQuarentena = todo[slug] ?? { slug, falhas: 0, quarentena: null };
+  if (sucesso) {
+    delete todo[slug];
+  } else {
+    atual.falhas += 1;
+    if (atual.falhas >= FALHAS_PARA_QUARENTENA && !atual.quarentena) {
+      atual.quarentena = new Date().toISOString();
+      console.log(`🚧 [${slug}] ${atual.falhas} falhas seguidas — entra em quarentena por UMA rodada.`);
+    }
+    todo[slug] = atual;
+  }
+  gravarQuarentena(todo);
 }
 
 /**
@@ -344,6 +402,7 @@ function main() {
     let sucesso = 0;
     for (const f of fontes) {
       if (MAPA_SCRIPTS[f.slug]) {
+        if (fontePuladaPorQuarentena(f.slug)) continue;
         const ok = executarPasso(f.slug, seco);
         if (ok) sucesso++; else erros++;
       }
@@ -362,6 +421,7 @@ function main() {
     let sucesso = 0;
     const slugs = Object.keys(MAPA_SCRIPTS);
     for (const slug of slugs) {
+      if (fontePuladaPorQuarentena(slug)) continue;
       const ok = executarPasso(slug, seco);
       if (ok) sucesso++; else erros++;
     }

@@ -196,3 +196,10 @@ etl/betim/dados/temp/
 
 # Checkpoint de coleta (estado de rodada desta maquina)
 scripts/.checkpoint-*
+
+# Heartbeats e contadores do vigia (estado de runtime desta maquina)
+scripts/.heartbeat-*
+scripts/.vigia-reinicios.json
+
+# Estado da quarentena de fontes (runtime)
+scripts/.quarentena-fontes.json

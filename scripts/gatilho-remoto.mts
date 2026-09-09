@@ -64,6 +64,7 @@ const LOGS = path.join(RAIZ, "logs");
 const OPENCODE_BIN =
   "C:/Users/Home/AppData/Local/hermes/node/node_modules/opencode-ai/bin/opencode.exe";
 const ARQUIVO_OFFSET = path.join(RAIZ, "scripts", ".gatilho-offset");
+const HEARTBEAT = path.join(RAIZ, "scripts", ".heartbeat-gatilho");
 const ARQUIVO_LOG = path.join(LOGS, "gatilho-remoto.log");
 
 fs.mkdirSync(LOGS, { recursive: true });
@@ -202,6 +203,14 @@ async function loopTelegram() {
   let offset = lerOffset();
   for (;;) {
     try {
+      // Heartbeat: prova de vida por mtime (sem I/O de texto). O vigia
+      // (scripts/vigia-servidor.mts) avisa o dono se este arquivo parar de
+      // envelhecer — mesma lição do next start de 08/09: o processo silencioso
+      // é o que morre sem ninguém ver.
+      try {
+        if (fs.existsSync(HEARTBEAT)) fs.utimesSync(HEARTBEAT, new Date(), new Date());
+        else fs.writeFileSync(HEARTBEAT, new Date().toISOString());
+      } catch { /* disco cheio é caso raro; o vigia denunciaria a idade do arquivo */ }
       const resp = await fetch(
         `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates` +
           `?offset=${offset}&timeout=30&allowed_updates=["message"]`

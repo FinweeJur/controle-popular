@@ -54,6 +54,7 @@ import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 
 import { medirAssets, explicar } from "../apps/web/lib/deploy/tamanho-assets.js";
+import { publicarTunel } from "./agent-tools/publicar-tunel.mts";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WORKFLOWS = path.join(RAIZ, ".github", "workflows");
@@ -555,76 +556,6 @@ function contagemAnterior(): number | null {
 }
 
 // ─────────────────────────── publicar no túnel ───────────────────────
-
-const PORTA_TUNEL = 3000;
-const URL_SAUDE = `http://127.0.0.1:${PORTA_TUNEL}`;
-
-/**
- * Publica no modo túnel: mata o `next start` velho da porta 3000, sobe o
- * build novo e confere HTTP 200 local. Só declara sucesso com o site
- * respondendo — metade da lição de 08/09: o servidor morreu e NINGUÉM mediu.
- *
- * Mata só o processo que ESCUTA na porta, depois de conferir o nome (`node`),
- * nunca um nome genérico à mão — dev server de outra sessão não está na porta
- * e por isso não é afetado.
- */
-function publicarTunel(): boolean {
-  const dono = spawnSync("powershell", [
-    "-NoProfile", "-Command",
-    `(Get-NetTCPConnection -LocalPort ${PORTA_TUNEL} -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1).OwningProcess`,
-  ], { encoding: "utf8" });
-  const pidTexto = (dono.stdout ?? "").trim();
-  if (pidTexto && /^\d+$/.test(pidTexto)) {
-    const nome = spawnSync("powershell", [
-      "-NoProfile", "-Command",
-      `(Get-Process -Id ${pidTexto} -ErrorAction SilentlyContinue).ProcessName`,
-    ], { encoding: "utf8" }).stdout?.trim();
-    if (nome !== "node") {
-      registrar(`ABORTADO: porta ${PORTA_TUNEL} ocupada por ${nome ?? "desconhecido"} (pid ${pidTexto}) e não é node. Resolva à mão.`);
-      return false;
-    }
-    registrar(`servidor antigo: pid ${pidTexto} (node, porta ${PORTA_TUNEL}) — derrubando`);
-    spawnSync("powershell", ["-NoProfile", "-Command", `Stop-Process -Id ${pidTexto} -Force`]);
-    // A porta precisa soltar antes do novo subir, senão o `next start` novo
-    // escolhe outra porta e o túnel passa a servir o site VELHO.
-    spawnSync("powershell", [
-      "-NoProfile", "-Command",
-      `$fim = (Get-Date).AddSeconds(15); while ((Get-Date) -lt $fim) { if (-not (Get-NetTCPConnection -LocalPort ${PORTA_TUNEL} -State Listen -ErrorAction SilentlyContinue)) { exit 0 }; Start-Sleep -Milliseconds 500 }; exit 1`,
-    ]);
-  } else {
-    registrar(`nenhum servidor na porta ${PORTA_TUNEL} (não era o esperado: o site estava fora?)`);
-  }
-
-  const logNovo = path.join(LOGS, `next-start-${new Date().toISOString().replace(/[:.]/g, "-")}.log`);
-  const filho = spawn("cmd", [
-    "/c", "npm run start -- -p", String(PORTA_TUNEL), ">", logNovo, "2>&1",
-  ], {
-    cwd: WEB,
-    detached: true,
-    stdio: "ignore",
-    // Dstachado de propósito: o servidor precisa sobreviver a esta rotina. A
-    // janela do Windows pode fechar o pai no fim da tarefa agendada.
-    windowsHide: true,
-  });
-  filho.unref();
-  registrar(`servidor novo subindo (pid ${filho.pid}, log: ${path.basename(logNovo)})`);
-
-  // Saúde: 200 no próprio PC, com tentativas até o Next terminar de subir.
-  const fim = Date.now() + 90_000;
-  while (Date.now() < fim) {
-    spawnSync("powershell", ["-NoProfile", "-Command", "Start-Sleep -Milliseconds 2000"]);
-    const r = spawnSync("powershell", [
-      "-NoProfile", "-Command",
-      `try { (Invoke-WebRequest -Uri '${URL_SAUDE}' -UseBasicParsing -TimeoutSec 10).StatusCode } catch { '' }`,
-    ], { encoding: "utf8" });
-    if ((r.stdout ?? "").trim() === "200") {
-      registrar(`saúde: HTTP 200 em ${URL_SAUDE} — túnel volta a servir o build novo.`);
-      return true;
-    }
-  }
-  registrar(`ABORTADO: ${URL_SAUDE} não respondeu 200 em 90 s. Veja o log do servidor. O túnel pode estar servindo 502.`);
-  return false;
-}
 
 // ───────────────────────────── principal ─────────────────────────────
 

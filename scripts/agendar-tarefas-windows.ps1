@@ -30,6 +30,23 @@ foreach ($T in $Tarefas) {
     }
 }
 
+# ─── Vigia do servidor (plano PLANO-RESILIENCIA-BOTS, item 1) ─────────────
+# Cada 5 minutos. Os incidentes de 01/09 e 08/09/2026: next start morreu e
+# ninguem viu. O vigia reinicia (cap de 3/hora) e avisa o Telegram.
+Write-Host "`nRegistrando VIGIA do servidor (cada 5 min)..." -ForegroundColor Cyan
+$VigiaCmd = "cmd.exe /c cd /d `"$RaizRepo`" && npx tsx scripts/vigia-servidor.mts"
+& schtasks.exe /Create /TN "ControlePopular_VigiaServidor_5min" /TR $VigiaCmd /SC MINUTE /MO 5 /F | Out-Null
+if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
+
+# ─── Drill mensal (item 6): derruba o next start no dia 01 para o vigia ───
+# Provar em treino o que o vigia promete em guerra (SRE Workbook, Failure
+# Friday). O script se guarda: so age no dia 01; schtasks nao tem /SC MONTHLY
+# simples aqui, entao roda diario e o script ignora os outros dias.
+Write-Host "Registrando DRILL mensal de falha (dia 01, 12:10)..." -ForegroundColor Cyan
+$DrillCmd = "powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$P\executar-drill-failure.ps1`""
+& schtasks.exe /Create /TN "ControlePopular_DrillFalha_Dia01" /TR $DrillCmd /SC DAILY /ST 12:10 /F | Out-Null
+if ($LASTEXITCODE -eq 0) { Write-Host "  OK" -ForegroundColor Green } else { Write-Host "  FALHOU (rc=$LASTEXITCODE)" -ForegroundColor Yellow }
+
 # A coleta mensal precisa disparar so no dia 01: schtasks nao tem /SC MONTHLY
 # simples assim — o script interno ja se guarda. Recriar com /SC MONTHLY /D 01.
 Write-Host "`nColeta mensal limitada ao dia 01 via guarda interna do proprio script." -ForegroundColor DarkGray
