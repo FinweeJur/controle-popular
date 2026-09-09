@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "urlVelha": "https://legis.senado.leg.br/dadosabertos",
+    "urlNova": "https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html",
+    "criterios": [
+      "redirect-declarado-pelo-servidor",
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:redirect"
+    ],
+    "data": "2026-09-09T17:46:23.644Z"
+  },
+  {
+    "urlVelha": "https://legis.senado.leg.br/dadosabertos/",
+    "urlNova": "https://legis.senado.leg.br/dadosabertos/api-docs/swagger-ui/index.html",
+    "criterios": [
+      "redirect-declarado-pelo-servidor",
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:redirect"
+    ],
+    "data": "2026-09-09T17:49:32.815Z"
+  },
+  {
+    "urlVelha": "https://pncp.gov.br/",
+    "urlNova": "https://www.gov.br/pncp/pt-br",
+    "criterios": [
+      "redirect-declarado-pelo-servidor",
+      "dominio-oficial",
+      "destino-verificado-vivo",
+      "estrategia:redirect"
+    ],
+    "data": "2026-09-09T17:46:47.068Z"
+  }
+]
