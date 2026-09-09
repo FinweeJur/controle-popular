@@ -64,6 +64,32 @@ Regras:
 - **NUNCA** use `Set-Content`/`Get-Content` do PowerShell 5.1 em arquivos TS/TSX — corrompe UTF-8.
 - Credenciais ficam em `.env.local`; token D1 é obrigatório para writes no modo túnel.
 
+### Runbook — site fora do ar (502) [PLANO-RESILIENCIA-BOTS]
+
+Mitigação genérica primeiro, causa depois (SRE Workbook cap. 9). Ordem:
+
+1. **Espere 5 minutos.** O vigia (`ControlePopular_VigiaServidor_5min`, tarefa
+   agendada) reinicia sozinho (cap de 3 reinícios/hora) e avisa o Telegram.
+   Se o Telegram do vigia chegar com "🟢 restaurado", acabou — postmortem
+   depois, não durante.
+2. **Não voltou? Reinício manual:**
+   `npx tsx scripts/agent-tools/publicar-tunel.mts` — mata o processo velho da
+   porta 3000, sobe o `next start` e só sai com HTTP 200 local (90 s de
+   tentativas). Ou o comando manual da seção acima.
+3. **Não sobe?** O build provavelmente está torto: `npx tsx scripts/rotina-local.mts --so-build`
+   reconstrói (as travas de contagem abortam antes de publicar site vazio).
+   Log do servidor: `logs/next-start-*.log`.
+4. **Cap de reinícios estourado (⛔ no Telegram)?** Bug de boot — o vigia
+   para de reiniciar de propósito (SRE: vigia em loop é pior que servidor
+   morto). Investigar o log antes de resetar `scripts/.vigia-reinicios.json`.
+5. **Depois, postmortem**: `docs/incidentes/` (template lá), com **uma ação
+   concreta** — que vira item da fila.
+
+Referências: [postmortem 08/09](../incidentes/2026-09-08-next-start-morto.md),
+[plano de resiliência](../planos/PLANO-RESILIENCIA-BOTS.md). O vigia também
+denuncia o gatilho remoto morto (heartbeat `scripts/.heartbeat-gatilho`,
+stale > 20 min).
+
 ## Ciclo de coleta
 
 Coletores moram em `scripts/` e os ETL em `etl/`; a rotina os executa lendo os workflows `etl-*.yml`. As regras abaixo valem para todo coletor:

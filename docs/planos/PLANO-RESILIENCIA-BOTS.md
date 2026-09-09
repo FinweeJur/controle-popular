@@ -74,7 +74,14 @@ de tentativas; backoff cresce até um **cap** (ex.: 60 s), não infinito.
 
 ## O que se aplica aqui
 
-### 🚧 1. Vigia do servidor (P0 — mata os dois incidentes de 502)
+### ✅ 1. Vigia do servidor (P0 — mata os dois incidentes de 502)
+
+**Executado em 09/09:** `scripts/vigia-servidor.mts` + tarefa agendada
+`ControlePopular_VigiaServidor_5min`. Reinício via `publicarTunel()` (cap de
+3/hora) + Telegram. **Drill real de 09/09:** servidor derrubado de propósito,
+restaurado pelo vigia — e o treino pegou DOIS bugs antes do incêndio (aspas do
+`cmd` e caminho de `logs/` com um `..` a mais). O gatilho remoto também ganhou
+heartbeat e o vigia denuncia quando ele para.
 
 **O que é:** tarefa agendada do Windows rodando a cada 5 minutos. Confere
 `http://127.0.0.1:3000`; se não responder 200:
@@ -88,7 +95,14 @@ transforma o vigia em cascateado que reinicia eternamente.
 **Fontes:** health check + process death (SRE cap. 22), retry budget (SRE cap. 22), dead man's switch (prática de indústria).
 **Custo:** pequeno — reusa `publicarTunel()` e o `avisar-telegram.mts`.
 
-### 🚧 2. Utilitário único de rede: retry + jitter + orçamento (P0)
+### ✅ 2. Utilitário único de rede: retry + jitter + orçamento (P0)
+
+**Executado em 09/09:** `apps/web/lib/robusto/rede.ts` — `comRetry` com full
+jitter, cap de 60 s, Retry-After do 429, orçamento de tentativas extra por
+processo (janela de 5 min), separação retentável × permanente. **9 testes
+vitest** (`rede.test.ts`), incluindo o do orçamento estourado. Adoção:
+PicoClaw mantém o retry próprio (não duplicar refactor de 24 fontes); novos
+coletores e rotinas migram ao toque neles.
 
 **O que é:** `apps/web/lib/robusto/rede.ts` (ou equivalente em script) com uma
 função `comRetry(fn, {tentativas: 4, capMs: 60_000, budgetMinutos: 5})`:
@@ -106,7 +120,12 @@ quer evitar).
 
 **Fontes:** AWS jitter + retry budget + retriable vs permanent (SRE cap. 22).
 
-### 🚧 3. Quarentena de fonte (P1)
+### ✅ 3. Quarentena de fonte (P1)
+
+**Executado em 09/09:** `scripts/rotina-coletas.mts` — 3 falhas seguidas
+colocam a fonte em quarentena por UMA rodada (`scripts/.quarentena-fontes.json`),
+com aviso no log e retorno automático na seguinte. Rodada de fonte única
+(dono, à mão) ignora a quarentena — pedido explícito manda.
 
 **O que é:** fonte que falha (retentável) N rodadas seguidas (ex.: 3) entra em
 **quarentena** — a próxima rotina pula com aviso, e re-tenta na seguinte.
@@ -120,7 +139,12 @@ loop. Quarentena é o circuit breaker da indústria, na medida.
 **Cuidado editorial:** quarentena é declarada no relatório da rodada — lacuna
 é informação (regra do AGENTS.md). "Pulei ANP hoje, em quarentena desde 05/09".
 
-### 🚧 4. Heartbeat dos agentes de sessão (P1)
+### ✅ 4. Heartbeat dos agentes de sessão (P1)
+
+**Executado em 09/09:** gatilho remoto e vigia gravam
+`scripts/.heartbeat-<nome>`; o vigia (que roda a cada 5 min) denuncia no
+Telegram quando o heartbeat do gatilho fica velho (> 20 min). Próximos
+processos de longa vida entram no mesmo padrão ao serem tocados.
 
 **O que é:** `gatilho-remoto`, rotinas agendadas e agentes de longa vida
 gravam `scripts/.heartbeat-<nome>` (carimbo) a cada ciclo vivo. A rotina da
@@ -131,7 +155,12 @@ desde 21:40").
 ninguém ver. O dono já recebe avisos no Telegram; que receba o de agente
 morto também.
 
-### 🚧 5. Pós-mortem com template + rollback documentado (P1)
+### ✅ 5. Pós-mortem com template + rollback documentado (P1)
+
+**Executado em 09/09:** `docs/incidentes/TEMPLATE-POSTMORTEM.md` (sem
+culpados, uma ação concreta) e o primeiro postmortem real
+(`2026-09-08-next-start-morto.md`). Runbook "site fora do ar (502)" no
+[OPERACAO](../05-operacao/OPERACAO.md) — mitigação genérica primeiro.
 
 **O que é:**
 - `docs/incidentes/` com template: o que aconteceu → impacto medido → causa →
@@ -140,7 +169,13 @@ morto também.
   `next start` na 3000, passo 3: rebuild com `--so-build`" — mitigação
   genérica primeiro (SRE Workbook), causa depois.
 
-### 🚧 6. Drill mensal (P2)
+### ✅ 6. Drill mensal (P2)
+
+**Executado em 09/09:** `scripts/executar-drill-failure.ps1` + tarefa
+`ControlePopular_DrillFalha_Dia01` (age só no dia 01; a task roda diária e o
+script se guarda). **O primeiro drill aconteceu no dia da entrega** — derrubou
+o servidor de propósito e o vigia restaurou; a meta de < 10 min foi batida
+(reinício + saúde em ~2 min).
 
 **O que é:** uma vez por mês (agendado), **matar o `next start` de propósito**
 e medir quanto tempo o vigia leva para restaurar. Meta declarada: < 10 min.
