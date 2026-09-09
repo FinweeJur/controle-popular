@@ -32,12 +32,22 @@
  * banco não foi lido. O deploy só acontece acima do piso.
  *
  * Uso:
- *   npx tsx scripts/rotina-local.mts                # ETL da cadência de hoje, build, deploy
+ *   npx tsx scripts/rotina-local.mts                # ETL da cadência de hoje, build, publicar
  *   npx tsx scripts/rotina-local.mts --sem-deploy   # tudo menos publicar
  *   npx tsx scripts/rotina-local.mts --so-build     # pula o ETL
  *   npx tsx scripts/rotina-local.mts --listar       # só mostra o que rodaria
+ *   npx tsx scripts/rotina-local.mts --worker       # deploy do Worker (fallback) em vez do túnel
+ *
+ * Publicar (passo deploy) tem dois modos:
+ *   - TÚNEL (padrão): reinicia o `next start` na porta 3000 desta máquina — é o
+ *     modo em produção desde 26/08/2026. Mata o servidor velho, sobe o novo e
+ *     confere HTTP 200 local antes de declarar sucesso. Foi exatamente este
+ *     passo que não existia em 08/09: o servidor era processo solto, morreu sem
+ *     ninguém saber, e o site ficou em 502 pelo túnel.
+ *   - WORKER (--worker): `npm run cf:deploy` (OpenNext → Cloudflare). Fallback
+ *     técnico; mede os assets antes. Exige rede para api.cloudflare.com.
  */
-import { execFileSync, spawnSync } from "node:child_process";
+import { execFileSync, spawn, spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -126,6 +136,8 @@ const SO_BUILD = args.has("--so-build");
 const SO_ETL = args.has("--so-etl");
 const SEM_DEPLOY = args.has("--sem-deploy") || SO_ETL;
 const FORCAR_DEPLOY = args.has("--forcar-deploy");
+/** `--worker`: deploy do Worker (fallback). Sem ele, o padrão é túnel. */
+const MODO_WORKER = args.has("--worker");
 
 /**
  * `--dispatch` roda TODOS os passos do workflow, ignorando a cadência do dia.
@@ -542,6 +554,78 @@ function contagemAnterior(): number | null {
   }
 }
 
+// ─────────────────────────── publicar no túnel ───────────────────────
+
+const PORTA_TUNEL = 3000;
+const URL_SAUDE = `http://127.0.0.1:${PORTA_TUNEL}`;
+
+/**
+ * Publica no modo túnel: mata o `next start` velho da porta 3000, sobe o
+ * build novo e confere HTTP 200 local. Só declara sucesso com o site
+ * respondendo — metade da lição de 08/09: o servidor morreu e NINGUÉM mediu.
+ *
+ * Mata só o processo que ESCUTA na porta, depois de conferir o nome (`node`),
+ * nunca um nome genérico à mão — dev server de outra sessão não está na porta
+ * e por isso não é afetado.
+ */
+function publicarTunel(): boolean {
+  const dono = spawnSync("powershell", [
+    "-NoProfile", "-Command",
+    `(Get-NetTCPConnection -LocalPort ${PORTA_TUNEL} -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1).OwningProcess`,
+  ], { encoding: "utf8" });
+  const pidTexto = (dono.stdout ?? "").trim();
+  if (pidTexto && /^\d+$/.test(pidTexto)) {
+    const nome = spawnSync("powershell", [
+      "-NoProfile", "-Command",
+      `(Get-Process -Id ${pidTexto} -ErrorAction SilentlyContinue).ProcessName`,
+    ], { encoding: "utf8" }).stdout?.trim();
+    if (nome !== "node") {
+      registrar(`ABORTADO: porta ${PORTA_TUNEL} ocupada por ${nome ?? "desconhecido"} (pid ${pidTexto}) e não é node. Resolva à mão.`);
+      return false;
+    }
+    registrar(`servidor antigo: pid ${pidTexto} (node, porta ${PORTA_TUNEL}) — derrubando`);
+    spawnSync("powershell", ["-NoProfile", "-Command", `Stop-Process -Id ${pidTexto} -Force`]);
+    // A porta precisa soltar antes do novo subir, senão o `next start` novo
+    // escolhe outra porta e o túnel passa a servir o site VELHO.
+    spawnSync("powershell", [
+      "-NoProfile", "-Command",
+      `$fim = (Get-Date).AddSeconds(15); while ((Get-Date) -lt $fim) { if (-not (Get-NetTCPConnection -LocalPort ${PORTA_TUNEL} -State Listen -ErrorAction SilentlyContinue)) { exit 0 }; Start-Sleep -Milliseconds 500 }; exit 1`,
+    ]);
+  } else {
+    registrar(`nenhum servidor na porta ${PORTA_TUNEL} (não era o esperado: o site estava fora?)`);
+  }
+
+  const logNovo = path.join(LOGS, `next-start-${new Date().toISOString().replace(/[:.]/g, "-")}.log`);
+  const filho = spawn("cmd", [
+    "/c", "npm run start -- -p", String(PORTA_TUNEL), ">", logNovo, "2>&1",
+  ], {
+    cwd: WEB,
+    detached: true,
+    stdio: "ignore",
+    // Dstachado de propósito: o servidor precisa sobreviver a esta rotina. A
+    // janela do Windows pode fechar o pai no fim da tarefa agendada.
+    windowsHide: true,
+  });
+  filho.unref();
+  registrar(`servidor novo subindo (pid ${filho.pid}, log: ${path.basename(logNovo)})`);
+
+  // Saúde: 200 no próprio PC, com tentativas até o Next terminar de subir.
+  const fim = Date.now() + 90_000;
+  while (Date.now() < fim) {
+    spawnSync("powershell", ["-NoProfile", "-Command", "Start-Sleep -Milliseconds 2000"]);
+    const r = spawnSync("powershell", [
+      "-NoProfile", "-Command",
+      `try { (Invoke-WebRequest -Uri '${URL_SAUDE}' -UseBasicParsing -TimeoutSec 10).StatusCode } catch { '' }`,
+    ], { encoding: "utf8" });
+    if ((r.stdout ?? "").trim() === "200") {
+      registrar(`saúde: HTTP 200 em ${URL_SAUDE} — túnel volta a servir o build novo.`);
+      return true;
+    }
+  }
+  registrar(`ABORTADO: ${URL_SAUDE} não respondeu 200 em 90 s. Veja o log do servidor. O túnel pode estar servindo 502.`);
+  return false;
+}
+
 // ───────────────────────────── principal ─────────────────────────────
 
 async function principal() {
@@ -669,25 +753,30 @@ async function principal() {
     return;
   }
 
-  /**
-   * Terceira trava, irmã das duas de contagem acima — e a que faltava em
-   * 15/08/2026.
-   *
-   * Naquele dia o build passou, as duas travas de contagem passaram, e o
-   * `cf:deploy` morreu com "Asset too large: 35.5 MiB" **depois** de 6 a 7
-   * minutos de build já gastos. Medir aqui custa milissegundos e dá o mesmo
-   * veredito antes de pagar o deploy — é a regra do `preflight-deploy.mts`
-   * ("nada que o job precise no fim pode ser descoberto no fim") aplicada ao
-   * que só existe depois do build, e que por isso ele não podia medir.
-   *
-   * O limite é 20 MiB, não os 25 da Cloudflare: `sp/educacao` já estava em 21
-   * MiB naquele mesmo build, publicando, e era o próximo a estourar sozinho na
-   * ingestão seguinte. Ver `lib/deploy/tamanho-assets.ts`.
-   *
-   * `--forcar-deploy` atravessa o AVISO, nunca o teto: acima de 25 MiB o
-   * deploy falha de qualquer jeito, e deixar passar trocaria um abort claro por
-   * um erro da Cloudflare sete minutos depois.
-   */
+  if (SEM_DEPLOY) {
+    registrar("--sem-deploy: parando antes de publicar.");
+    return;
+  }
+
+  // ── deploy ───────────────────────────────────────────────────────
+  if (!MODO_WORKER) {
+    // Modo túnel (padrão, produção desde 26/08): publicar é reiniciar o
+    // `next start` local. A medição de assets da Cloudflare não se aplica —
+    // o teto do Worker só governa o fallback --worker.
+    if (publicarTunel()) {
+      fs.writeFileSync(
+        ARQUIVO_CONTAGEM,
+        JSON.stringify({ paginas, publicado_em: new Date().toISOString(), falhas_etl: falhas }, null, 2)
+      );
+      registrar(`publicado (túnel). ${paginas} páginas.${falhas ? ` (${falhas} passo(s) de ETL falharam)` : ""}`);
+      if (falhas) process.exitCode = 1;
+    } else {
+      registrar("ABORTADO: o túnel não subiu com o build novo. O site pode continuar na versão anterior (ou fora).");
+      process.exitCode = 1;
+    }
+    return;
+  }
+
   const tamanho = medirAssets(path.join(WEB, ".open-next", "assets"));
   registrar(`assets: ${explicar(tamanho)}`);
   if (tamanho.estoura.length > 0) {
@@ -704,12 +793,7 @@ async function principal() {
     return;
   }
 
-  if (SEM_DEPLOY) {
-    registrar("--sem-deploy: parando antes de publicar.");
-    return;
-  }
-
-  // ── deploy ───────────────────────────────────────────────────────
+  // ── deploy do Worker (fallback, --worker) ────────────────────────
   registrar("deploy: npm run cf:deploy");
   if (!npm("cf:deploy")) {
     registrar("ABORTADO: o deploy falhou. O site continua com a versão anterior.");
@@ -721,7 +805,7 @@ async function principal() {
     ARQUIVO_CONTAGEM,
     JSON.stringify({ paginas, publicado_em: new Date().toISOString(), falhas_etl: falhas }, null, 2)
   );
-  registrar(`publicado. ${paginas} páginas.${falhas ? ` (${falhas} passo(s) de ETL falharam)` : ""}`);
+  registrar(`publicado (worker). ${paginas} páginas.${falhas ? ` (${falhas} passo(s) de ETL falharam)` : ""}`);
   if (falhas) process.exitCode = 1;
 }
 
