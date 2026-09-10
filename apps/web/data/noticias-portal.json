@@ -2,8 +2,8 @@
  {
   "slug": "terra-e-territorios-199-cidades",
   "titulo": "Panorama das 199 cidades: população, barragens e terras sob vigilância",
-  "subtitulo": "O portal acompanha 27 capitais e 172 cidades polo do interior do Brasil com dados do IBGE, da saúde e da mineração.",
-  "resumo": "Levantamento descritivo reúne indicadores de moradores, rios e barragens nas 199 cidades estratégicas que compõem o plano de monitoramento do portal.",
+  "subtitulo": "O portal acompanha 27 capitais e 172 cidades polo do interior. Usa dados do IBGE, da saúde e da mineração.",
+  "resumo": "Levantamento reúne indicadores de moradores, rios e barragens. Cobre 199 cidades estratégicas monitoradas pelo portal.",
   "categoria": "Relatório Técnico",
   "frente": "terra",
   "subfrente": "Cidades Estratégicas & Território",
@@ -20,7 +20,7 @@
    "terras-indigenas",
    "datasus"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Panorama das 199 cidades: população, barragens e terras sob vigilância. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/terra-e-territorios-199-cidades>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Panorama das 199 cidades: população, barragens e terras sob vigilância. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/terra-e-territorios-199-cidades>.",
   "citacaoBibtex": "@article{onsa2026cidades,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Panorama das 199 cidades: população, barragens e terras sob vigilância},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/terra-e-territorios-199-cidades}\n}",
   "fontesOficiais": [
    {
@@ -56,17 +56,17 @@
   ],
   "recomendacaoVerificar": "Abra a página de [Cidades Estratégicas](/cidades) no portal. Baixe a planilha em formato CSV com todos os dados. Para conferir uma barragem, entre no [site do SIGBM](https://app.anm.gov.br/sigbm) e busque pelo nome da sua cidade.",
   "paragrafos": [
-   "O Controle Popular organizou uma lista com 199 cidades brasileiras na página de [Cidades Estratégicas](/cidades). O grupo inclui as 27 capitais e 172 cidades polo do interior do país. O portal usa o código oficial do IBGE - o Instituto Brasileiro de Geografia e Estatística, órgão federal que conta os moradores - e o código do DATASUS - o departamento de informática do Sistema Único de Saúde.",
-   "O cruzamento com o [SIGBM](https://app.anm.gov.br/sigbm) - o Sistema Integrado de Gestão de Segurança de Barragens de Mineração mantido pela ANM - localizou 942 barragens de minério cadastradas no país. Desse conjunto, 29 estruturas foram construídas pelo método a montante - modelo em que o dique se apoia sobre o próprio rejeito e que a legislação federal proibiu após os desastres de Mariana e Brumadinho. O monitoramento dessas estruturas fica na página de [Barragens de Minas Gerais](/ambiental/barragens).",
-   "O levantamento também demarcou 414 territórios quilombolas e terras indígenas reconhecidas pela Fundação Nacional dos Povos Indígenas. É possível examinar os limites no [Globo 3D de Terras](/funcaosocialterra/mapa). A ferramenta calcula a distância física entre cada povo tradicional e os processos de concessão mineral abertos na ANM - a Agência Nacional de Mineração.",
-   "Todas as informações dessas 199 cidades estão disponíveis para consulta aberta na rota [/cidades](/cidades). Qualquer cidadão pode filtrar os dados por estado ou baixar a tabela completa em formato de planilha para auditoria livre."
+   "O portal reúne 199 cidades na página de [Cidades Estratégicas](/cidades). São 27 capitais e 172 cidades polo do interior. O portal usa o código do IBGE. O IBGE é o Instituto Brasileiro de Geografia e Estatística. Esse órgão federal conta os moradores. O portal também usa o código do DATASUS. O DATASUS é o departamento de informática do Sistema Único de Saúde.",
+   "O cruzamento com o [SIGBM](https://app.anm.gov.br/sigbm) localizou 942 barragens de minério no país. SIGBM é o Sistema Integrado de Gestão de Segurança de Barragens de Mineração. A ANM, a Agência Nacional de Mineração, mantém o sistema. Desse conjunto, 29 estruturas usam o método a montante. Nesse modelo, o dique se apoia sobre o próprio rejeito. A lei federal proibiu o método após Mariana e Brumadinho. O monitoramento fica na página de [Barragens de Minas Gerais](/ambiental/barragens).",
+   "O levantamento demarcou 414 territórios quilombolas e terras indígenas. Eles são reconhecidos pela Fundação Nacional dos Povos Indígenas. Os limites aparecem no [Globo 3D de Terras](/funcaosocialterra/mapa). A ferramenta mede a distância entre povos tradicionais e pedidos de mineração. Esses pedidos ficam na ANM, a Agência Nacional de Mineração.",
+   "Todos os dados das 199 cidades estão abertos na rota [/cidades](/cidades). O cidadão filtra por estado. Também baixa a tabela completa em planilha para auditoria livre."
   ]
  },
  {
   "slug": "estado-e-economia-pncp-compras",
   "titulo": "Arrecadação e compras públicas: raio-x de R$ 123 bilhões em receitas e gastos oficiais",
-  "subtitulo": "Minas Gerais arrecadou R$ 123,6 bilhões em 2024 e o portal rastreia contratos, repasses da União e o peso do sistema de justiça no orçamento estadual.",
-  "resumo": "Análise fiscal e orçamentária detalha o crescimento da receita mineira, o comportamento do ICMS e IPVA, e o volume de contratações públicas catalogadas no PNCP.",
+  "subtitulo": "Minas Gerais arrecadou R$ 123,6 bilhões em 2024. O portal rastreia contratos, repasses da União e gastos do sistema de justiça.",
+  "resumo": "Análise fiscal mostra o crescimento da receita mineira. Detalha o ICMS, imposto sobre circulação de mercadorias. Mostra também o IPVA, imposto sobre veículos. Reúne contratações públicas catalogadas no PNCP, o Portal Nacional de Contratações Públicas.",
   "categoria": "Relatório Técnico",
   "frente": "estado",
   "subfrente": "Orçamento Público & Contratações",
@@ -83,7 +83,7 @@
    "orcamento-mg",
    "receita-corrente-liquida"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Arrecadação e compras públicas: raio-x de R$ 123 bilhões em receitas e gastos oficiais. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/estado-e-economia-pncp-compras>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Arrecadação e compras públicas: raio-x de R$ 123 bilhões em receitas e gastos oficiais. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/estado-e-economia-pncp-compras>.",
   "citacaoBibtex": "@article{onsa2026estadopncp,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Arrecadação e compras públicas: raio-x de R$ 123 bilhões em receitas e gastos oficiais},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/estado-e-economia-pncp-compras}\n}",
   "fontesOficiais": [
    {
@@ -119,18 +119,18 @@
   ],
   "recomendacaoVerificar": "Consulte o Balanço Orçamentário no [site da Fazenda de Minas Gerais](https://www.fazenda.mg.gov.br) e acerte os valores no [Painel de Estado e Economia](/estado-e-economia). Para conferir licitações de compras municipais, pesquise o CNPJ no [PNCP](https://pncp.gov.br).",
   "paragrafos": [
-   "Os registros oficiais da Fazenda de Minas Gerais mostram que a arrecadação orçamentária do estado somou R$ 123,6 bilhões no exercício de 2024. Esse resultado representa um avanço nominal de 11,6% em relação aos R$ 110,8 bilhões arrecadados em 2023. As informações constam no Balanço Geral do Estado e podem ser examinadas no [Painel de Estado e Economia](/estado-e-economia).",
-   "O ICMS - o Imposto sobre Circulação de Mercadorias e Serviços, que é o principal tributo recolhido pelos cofres mineiros - somou R$ 81,53 bilhões em 2024, apresentando crescimento de 13,2%. A divisão dos setores econômicos aponta que a indústria de transformação respondeu por 50,91% do tributo recolhido, o setor de comércio por 32,12% e os serviços por 16,38%. Já o IPVA - o tributo pago sobre veículos automotores - gerou R$ 10,6 bilhões. Por regra constitucional, 40% desse valor fica no Tesouro estadual, 40% é transferido para a prefeitura do município onde o veículo foi emplacado e 20% é repassado para o Fundeb - o fundo nacional que sustenta a educação básica.",
-   "As transferências correntes enviadas pela União ao governo mineiro alcançaram R$ 25,8 bilhões em 2024, equivalendo a 17,12% da receita corrente bruta. A RCL - a Receita Corrente Líquida do estado, medida que serve de base oficial para calcular o limite com despesas de pessoal na LRF - a Lei de Responsabilidade Fiscal - encerrou 2024 em R$ 103,47 bilhões.",
-   "Do lado dos gastos públicos, levantamentos consolidados apontam que as instituições que formam o sistema de justiça de Minas Gerais - o TJMG, o Ministério Público e a Defensoria Pública - custaram R$ 12,3 bilhões no último ano. Esse montante absorve 11,5% de toda a despesa do estado, tornando o custo judiciário mineiro o segundo maior do país em números absolutos e em proporção do orçamento público.",
-   "No âmbito das aquisições de bens e serviços, o portal monitora as compras lançadas no [PNCP](https://pncp.gov.br) - o Portal Nacional de Contratações Públicas criado pela Lei 14.133. O sistema reúne contratos e editais de dezenas de órgãos públicos, apontando alertas de concentração de fornecedores e contratos firmados por dispensa de licitação."
+   "Minas Gerais arrecadou R$ 123,6 bilhões em 2024. O dado vem do Balanço Geral do Estado. O valor cresceu 11,6% sobre os R$ 110,8 bilhões de 2023. Os números aparecem no [Painel de Estado e Economia](/estado-e-economia).",
+   "O ICMS somou R$ 81,53 bilhões em 2024. ICMS é o Imposto sobre Circulação de Mercadorias e Serviços. É o principal tributo mineiro. Cresceu 13,2% no ano. A indústria de transformação respondeu por 50,91% do imposto. O comércio ficou com 32,12%. Os serviços ficaram com 16,38%. O IPVA, imposto sobre veículos, gerou R$ 10,6 bilhões. Por regra constitucional, 40% ficam no Tesouro estadual. Outros 40% vão para o município de emplacamento. Os 20% restantes vão para o Fundeb, o fundo da educação básica.",
+   "A União enviou R$ 25,8 bilhões ao governo mineiro em 2024. O valor equivale a 17,12% da receita corrente bruta. A RCL, a Receita Corrente Líquida, fechou em R$ 103,47 bilhões. A LRF é a Lei de Responsabilidade Fiscal. Ela usa a RCL para calcular o limite de pessoal.",
+   "O sistema de justiça de Minas custou R$ 12,3 bilhões no último ano. O grupo reúne o Tribunal de Justiça, o Ministério Público e a Defensoria Pública. O valor absorve 11,5% de toda a despesa do estado. É o segundo maior custo judiciário do país.",
+   "O portal monitora as compras lançadas no [PNCP](https://pncp.gov.br). PNCP é o Portal Nacional de Contratações Públicas. Foi criado pela Lei 14.133. O sistema reúne contratos e editais de vários órgãos públicos. Aponta alertas de concentração de fornecedores. Também mostra contratos feitos por dispensa de licitação."
   ]
  },
  {
   "slug": "congresso-nacional-direitos-votacoes",
   "titulo": "Congresso Nacional: votações, bancadas e o impacto dos projetos nas cidades",
-  "subtitulo": "Acompanhamento do Legislativo federal classifica propostas em tramitação e relaciona votos nominais aos direitos civis e sociais.",
-  "resumo": "Análise das votações na Câmara dos Deputados e no Senado Federal monitora como as decisões dos parlamentares afetam o orçamento dos municípios e as políticas públicas.",
+  "subtitulo": "Acompanhamento do Legislativo federal classifica propostas em tramitação. Relaciona votos nominais a direitos civis e sociais.",
+  "resumo": "Análise monitora votações na Câmara e no Senado. Mostra como as decisões afetam municípios e políticas públicas.",
   "categoria": "Investigação Cívica",
   "frente": "congresso",
   "subfrente": "Processo Legislativo & Direitos",
@@ -146,7 +146,7 @@
    "bancadas-parlamentares",
    "emendas-parlamentares"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Congresso Nacional: votações, bancadas e o impacto dos projetos nas cidades. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/congresso-nacional-direitos-votacoes>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Congresso Nacional: votações, bancadas e o impacto dos projetos nas cidades. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/congresso-nacional-direitos-votacoes>.",
   "citacaoBibtex": "@article{onsa2026congresso,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Congresso Nacional: votações, bancadas e o impacto dos projetos nas cidades},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/congresso-nacional-direitos-votacoes}\n}",
   "fontesOficiais": [
    {
@@ -182,17 +182,17 @@
   ],
   "recomendacaoVerificar": "Acesse a seção do [Congresso Nacional](/congresso) no portal. Pesquise pelo nome ou partido do parlamentar do seu estado para examinar como votou em projetos de lei sobre tributos e meio ambiente.",
   "paragrafos": [
-   "O Controle Popular reúne os registros de votações e presença dos 513 deputados federais e 81 senadores que exercem mandato no Congresso Nacional. A base de dados é extraída diretamente dos portais de dados abertos da Câmara e do Senado, permitindo que a população verifique os atos dos seus representantes na página do [Congresso Nacional](/congresso).",
-   "O monitoramento cataloga mais de 5.500 proposições em tramitação, identificando projetos de lei ordinária, propostas de emenda constitucional e medidas provisórias. O sistema classifica as propostas de acordo com a área atingida, como orçamento municipal, proteção ambiental, direitos trabalhistas e segurança pública.",
-   "Outro eixo central da investigação acompanha a destinação das emendas parlamentares - verbas do orçamento federal que deputados e senadores enviam diretamente para prefeituras e governos de estado. O volume dessas emendas ultrapassou R$ 48 bilhões nas peças orçamentárias recentes, tornando o recurso uma peça decisiva nas finanças locais.",
-   "O cidadão pode utilizar o portal para gerar modelos de ofício e mensagens de cobrança aos parlamentares, cobrando posicionamento público sobre votações estratégicas. O caminho para consulta de bancadas e partidos está aberto na rota [/congresso/bancadas](/congresso/bancadas)."
+   "O portal reúne votações e presença de 513 deputados federais e 81 senadores. Os dados vêm dos portais abertos da Câmara e do Senado. O cidadão verifica os atos dos representantes na página do [Congresso Nacional](/congresso).",
+   "O monitoramento cataloga mais de 5.500 propostas em tramitação. Inclui projetos de lei, emendas constitucionais e medidas provisórias. O sistema classifica a área atingida por cada proposta. Os temas incluem orçamento municipal, meio ambiente, direitos trabalhistas e segurança pública.",
+   "A investigação acompanha também as emendas parlamentares. São verbas federais que deputados e senadores enviam a prefeituras e governos estaduais. O volume passou de R$ 48 bilhões nos orçamentos recentes. O recurso é decisivo nas finanças locais.",
+   "O portal gera modelos de ofício e mensagens de cobrança aos parlamentares. O cidadão pede posicionamento público sobre votações estratégicas. Bancadas e partidos ficam na rota [/congresso/bancadas](/congresso/bancadas)."
   ]
  },
  {
   "slug": "judiciario-transparencia-tribunais",
   "titulo": "Tribunais em Minas Gerais: vagas, indicações e o mapa do Judiciário estadual",
-  "subtitulo": "Painel do Judiciário cruza calendários de aposentadorias de desembargadores e dados de inspeção em estabelecimentos prisionais.",
-  "resumo": "Levantamento descritivo analisa a composição dos tribunais, os processos de nomeação para a segunda instância e as condições das unidades de detenção.",
+  "subtitulo": "Painel cruza aposentadorias de desembargadores com dados de inspeção prisional.",
+  "resumo": "Levantamento analisa a composição dos tribunais. Cobre nomeações para a segunda instância. Também mostra as condições das unidades de detenção.",
   "categoria": "Relatório Técnico",
   "frente": "judiciario",
   "subfrente": "Composição & Fiscalização",
@@ -208,7 +208,7 @@
    "inspecoes-prisionais",
    "sirenejud"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Tribunais em Minas Gerais: vagas, indicações e o mapa do Judiciário estadual. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/judiciario-transparencia-tribunais>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Tribunais em Minas Gerais: vagas, indicações e o mapa do Judiciário estadual. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/judiciario-transparencia-tribunais>.",
   "citacaoBibtex": "@article{onsa2026judiciariotribunais,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Tribunais em Minas Gerais: vagas, indicações e o mapa do Judiciário estadual},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/judiciario-transparencia-tribunais}\n}",
   "fontesOficiais": [
    {
@@ -244,17 +244,17 @@
   ],
   "recomendacaoVerificar": "Consulte a rota do [Judiciário](/judiciario) no portal. Abra o painel de [Tribunais](/judiciario/tribunais) para conferir a data prevista para aposentadoria de desembargadores e as regras de preenchimento pelo Quinto Constitucional.",
   "paragrafos": [
-   "O Controle Popular organiza as informações de estrutura e ocupação de cargos do Poder Judiciário mineiro na página de [Judiciário](/judiciario). O levantamento abrange o Tribunal de Justiça de Minas Gerais e tribunais com atuação federal, como o Tribunal Regional Federal da 6ª Região e o Tribunal Regional do Trabalho.",
-   "A ferramenta monitora o calendário legal de vacâncias na magistratura, calculado a partir da idade limite de 75 anos estabelecida para a aposentadoria compulsória. O objetivo é permitir que a sociedade civil organizada acompanhe a abertura de vagas para desembargador antes das indicações políticas e das listas tríplices formadas pelo Quinto Constitucional - a regra que reserva uma em cada cinco vagas para advogados e membros do Ministério Público.",
-   "O sistema também integra relatórios de inspeção do CNJ - o Conselho Nacional de Justiça - realizados em mais de 180 estabelecimentos prisionais e centros de detenção do estado. Os relatórios descrevem taxas de ocupação, número de vagas e autos de interdição nas comarcas.",
-   "Na frente socioambiental, o portal consome o painel SIRENEJud do CNJ, que identifica mais de 12.400 processos judiciais sobre desmatamento, poluição e regularização territorial em Minas Gerais, correlacionando as decisões aos municípios afetados."
+   "O portal organiza cargos e estrutura do Poder Judiciário mineiro. Os dados ficam na página de [Judiciário](/judiciario). O levantamento cobre o Tribunal de Justiça de Minas Gerais. Também cobre tribunais federais. Entre eles, o Tribunal Regional Federal da 6ª Região. E o Tribunal Regional do Trabalho.",
+   "A ferramenta monitora as vagas que abrem na magistratura. O cálculo parte da idade limite de 75 anos. A sociedade acompanha as vagas para desembargador antes das indicações políticas. O Quinto Constitucional forma as listas tríplices. Essa regra reserva uma em cada cinco vagas. As vagas vão para advogados e membros do Ministério Público.",
+   "O sistema reúne relatórios de inspeção do CNJ, o Conselho Nacional de Justiça. As inspeções passaram por mais de 180 presídios e centros de detenção. Os relatórios mostram taxas de ocupação e vagas. Também registram autos de interdição nas comarcas.",
+   "Na frente socioambiental, o portal usa o painel SIRENEJud do CNJ. O painel identifica mais de 12.400 processos judiciais. Os temas são desmatamento, poluição e regularização territorial. As decisões aparecem ligadas aos municípios afetados."
   ]
  },
  {
   "slug": "tjmg-orcamento-folha-indicacoes",
-  "titulo": "TJMG: proposta de R$ 14,9 bilhões na LOA 2025 e gastos de pessoal consom 5,5% da receita de Minas",
-  "subtitulo": "Tribunal de Justiça concentra o segundo maior gasto do país; despesa com pessoal atinge R$ 5,7 bilhões e fundo próprio reserva R$ 3,35 bilhões para obras e custeio.",
-  "resumo": "Detalhamento das contas do Poder Judiciário estadual analisa o peso da folha de magistrados e servidores sobre a Receita Corrente Líquida e o papel do FEPJ.",
+  "titulo": "TJMG: proposta de R$ 14,9 bilhões na LOA 2025 e gastos de pessoal consomem 5,5% da receita de Minas",
+  "subtitulo": "Tribunal de Justiça concentra o segundo maior gasto do país. Pessoal consome R$ 5,7 bilhões. Fundo próprio reserva R$ 3,35 bilhões para obras e custeio.",
+  "resumo": "Análise detalha as contas do Judiciário mineiro. Mostra o peso da folha de magistrados e servidores. Também explica o papel do FEPJ, o Fundo Especial do Poder Judiciário.",
   "categoria": "Investigação Cívica",
   "frente": "judiciario",
   "subfrente": "Tribunal de Justiça de MG",
@@ -271,7 +271,7 @@
    "fepj",
    "lrf-limite-pessoal"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. TJMG: proposta de R$ 14,9 bilhões na LOA 2025 e gastos de pessoal consom 5,5% da receita de Minas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/tjmg-orcamento-folha-indicacoes>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. TJMG: proposta de R$ 14,9 bilhões na LOA 2025 e gastos de pessoal consomem 5,5% da receita de Minas. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/tjmg-orcamento-folha-indicacoes>.",
   "citacaoBibtex": "@article{onsa2026tjmg,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {TJMG: proposta de R$ 14,9 bilhões na LOA 2025 e gastos de pessoal consom 5,5% da receita de Minas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/tjmg-orcamento-folha-indicacoes}\n}",
   "fontesOficiais": [
    {
@@ -307,18 +307,18 @@
   ],
   "recomendacaoVerificar": "Abra os relatórios de execução orçamentária no [Portal da Transparência do TJMG](https://transparencia.tjmg.jus.br) e o texto da LOA (Lei Estadual 25.124/2024) na [ALMG](https://almg.gov.br). Compare os limites da folha de pagamento na página de [Tribunais](/judiciario/tribunais).",
   "paragrafos": [
-   "A proposta orçamentária aprovada pelo Órgão Especial do Tribunal de Justiça de Minas Gerais para o exercício financeiro da LOA 2025 - a Lei Orçamentária Anual instituída pela Lei Estadual nº 25.124/2024 - alcançou o montante de R$ 14,96 bilhões. O valor posiciona o Judiciário mineiro no centro dos debates sobre o equilíbrio das contas públicas estaduais, que projetam déficit fiscal de mais de R$ 7 bilhões.",
-   "A maior fatia do orçamento está alocada na Unidade Orçamentária 1031 (Tribunal de Justiça), que destinou R$ 11,61 bilhões para despesas com pessoal e encargos sociais, abrangendo juízes, desembargadores, servidores da ativa, aposentados, pensionistas e precatórios judiciais. Conforme o RGF - o Relatório de Gestão Fiscal apurado no fechamento do último exercício, a DTP - a Despesa Total com Pessoal líquida do TJMG atingiu R$ 5.706.217.630,25 (R$ 5,71 bilhões).",
-   "Esse volume de despesa líquida com folha comprometeu 5,51% de toda a RCL - a Receita Corrente Líquida do estado de Minas Gerais (que totalizou R$ 103,47 bilhões). O patamar acendeu luz amarela nas contas públicas: o tribunal ultrapassou o Limite de Alerta previsto na LRF - a Lei de Responsabilidade Fiscal, que é de 5,40%, e encostou no Limite Prudencial fixado em 5,70%. O teto máximo legal para o Judiciário estadual é de 6,00%.",
-   "Além da folha, a segunda grande caixa do tribunal é a Unidade Orçamentária 4031, correspondente ao FEPJ - o Fundo Especial do Poder Judiciário, que recebeu dotação de R$ 3,35 bilhões. Esse fundo não depende de repasses do Tesouro: ele é arrecadado diretamente das taxas judiciárias, emolumentos e custas processuais recolhidas de quem move ações nos fóruns. É desse fundo que saem os recursos para erguer novos edifícios de fóruns, reformar varas e pagar contratos milionários de tecnologia da informação.",
-   "Estudos comparativos mostram que Minas Gerais destina o equivalente a 11,5% de toda a despesa orçamentária do estado para o seu sistema de justiça, configurando o segundo maior gasto absoluto e proporcional entre todas as unidades da federação."
+   "O Órgão Especial do TJMG aprovou proposta de R$ 14,96 bilhões. TJMG é o Tribunal de Justiça de Minas Gerais. O valor consta na LOA 2025, a Lei Orçamentária Anual. A LOA foi instituída pela Lei Estadual 25.124/2024. O Judiciário mineiro vira centro do debate fiscal. O estado projeta déficit de mais de R$ 7 bilhões.",
+   "A maior fatia fica na Unidade Orçamentária 1031, o Tribunal de Justiça. São R$ 11,61 bilhões para pessoal e encargos sociais. O grupo cobre juízes, desembargadores e servidores. Também aposentados, pensionistas e precatórios. Segundo o RGF do último exercício, a DTP atingiu R$ 5,71 bilhões. RGF é o Relatório de Gestão Fiscal. DTP é a Despesa Total com Pessoal líquida.",
+   "A folha consumiu 5,51% da RCL, a Receita Corrente Líquida. A RCL de Minas somou R$ 103,47 bilhões. O tribunal ultrapassou o Limite de Alerta da LRF. A LRF é a Lei de Responsabilidade Fiscal. O alerta fica em 5,40%. O tribunal encostou no Limite Prudencial, de 5,70%. O teto legal do Judiciário estadual é 6,00%.",
+   "A segunda caixa do tribunal é a Unidade Orçamentária 4031. É o FEPJ, o Fundo Especial do Poder Judiciário. Recebeu dotação de R$ 3,35 bilhões. O fundo não depende do Tesouro. O dinheiro vem de taxas judiciárias, emolumentos e custas processuais. Paga quem move ações nos fóruns. O fundo banca novos fóruns, reformas de varas e contratos de tecnologia.",
+   "Minas destina 11,5% da despesa total ao sistema de justiça. É o segundo maior gasto do país. Vale em valor absoluto e em proporção."
   ]
  },
  {
   "slug": "dpmg-acesso-justica-defensoria",
   "titulo": "DPMG: Defensoria opera com orçamento de R$ 1,1 bilhão e 176 comarcas não têm defensor em Minas",
-  "subtitulo": "Para cada R$ 1 que a Defensoria recebe, Judiciário e Ministério Público juntos absorvem R$ 17; seis milhões de mineiros vivem sem assistência jurídica gratuita presencial.",
-  "resumo": "Levantamento estatístico revela o tamanho da desigualdade orçamentária do sistema de justiça mineiro e aponta que seriam necessários mais de 140 anos para universalizar a Defensoria no ritmo atual.",
+  "subtitulo": "Para cada R$ 1 da Defensoria, Judiciário e Ministério Público absorvem R$ 17. Seis milhões de mineiros não têm defensor presencial.",
+  "resumo": "Levantamento mostra a desigualdade orçamentária do sistema de justiça. No ritmo atual, universalizar a Defensoria levaria mais de 140 anos.",
   "categoria": "Investigação Cívica",
   "frente": "judiciario",
   "subfrente": "Defensoria Pública de MG",
@@ -335,7 +335,7 @@
    "comarcas-sem-defensor",
    "deficit-defensores"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. DPMG: Defensoria opera com orçamento de R$ 1,1 bilhão e 176 comarcas não têm defensor em Minas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/dpmg-acesso-justica-defensoria>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. DPMG: Defensoria opera com orçamento de R$ 1,1 bilhão e 176 comarcas não têm defensor em Minas. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/dpmg-acesso-justica-defensoria>.",
   "citacaoBibtex": "@article{onsa2026dpmg,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {DPMG: Defensoria opera com orçamento de R$ 1,1 bilhão e 176 comarcas não têm defensor em Minas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/dpmg-acesso-justica-defensoria}\n}",
   "fontesOficiais": [
    {
@@ -371,18 +371,18 @@
   ],
   "recomendacaoVerificar": "Consulte o mapa de comarcas da Defensoria na seção de [Direitos e Ajuda](/direitos-em-movimento/ajuda). Para checar se a sua cidade tem atendimento da DPMG, busque o endereço da unidade no [portal da DPMG](https://defensoria.mg.def.br).",
   "paragrafos": [
-   "A Defensoria Pública do Estado de Minas Gerais - a instituição prevista na Constituição para garantir defesa jurídica gratuita a quem não pode pagar advogado particular - recebeu dotação orçamentária de R$ 1,104 bilhão na LOA 2025 (com previsão de R$ 1,211 bilhão para 2026). Embora o valor represente um avanço em relação a anos anteriores, o montante expõe uma disparidade extrema em relação às outras carreiras jurídicas do estado.",
-   "A comparação orçamentária direta mostra que o Tribunal de Justiça de Minas Gerais dispõe de R$ 14,96 bilhões - um volume 13,5 vezes maior que o da Defensoria. Já o Ministério Público estadual tem R$ 4,09 bilhões - valor 3,7 vezes superior. Na prática das contas públicas mineiras, para cada R$ 1,00 que a Defensoria Pública recebe para atender quem vive em situação de vulnerabilidade, o Judiciário e o Ministério Público juntos absorvem cerca de R$ 17,20.",
-   "Essa restrição de recursos reflete-se na cobertura física do território. Das 298 comarcas existentes em Minas Gerais, a Defensoria Pública possui atendimento presencial instalado em apenas 120 comarcas (40,3% do total). Outras 176 comarcas - correspondendo a 59,1% dos polos judiciais do estado - não contam com nenhum defensor público residente. Exatamente 6.090.773 mineiros vivem em cidades onde não há assistência judiciária gratuita presencial do estado.",
-   "O quadro atual de pessoal conta com aproximadamente 672 defensores públicos na ativa. A ADEP-MG - a Associação das Defensoras e Defensores Públicos de Minas Gerais - calcula que seriam necessários mais de 1.200 profissionais para suprir a demanda de todas as varas judiciais, evidenciando um déficit que beira 500 profissionais.",
-   "O ritmo de expansão histórica tem sido lento: entre o Censo de 2013 (que registrava 105 comarcas atendidas) e o levantamento nacional de 2025 (com 120 comarcas), a instituição expandiu apenas 15 comarcas em 12 anos - uma média de 1,25 comarca por ano. Nesse ritmo, o estado levaria mais de 140 anos para garantir atendimento da Defensoria em todas as comarcas mineiras."
+   "A DPMG recebeu R$ 1,104 bilhão na LOA 2025. DPMG é a Defensoria Pública de Minas Gerais. A LOA é a Lei Orçamentária Anual. Para 2026, a previsão é de R$ 1,211 bilhão. A Constituição garante defesa gratuita a quem não pode pagar advogado. O valor avançou, mas expõe disparidade com as outras carreiras jurídicas.",
+   "O Tribunal de Justiça de Minas Gerais dispõe de R$ 14,96 bilhões. É um volume 13,5 vezes maior que o da Defensoria. O Ministério Público estadual tem R$ 4,09 bilhões. É 3,7 vezes mais. Para cada R$ 1,00 da Defensoria, Judiciário e Ministério Público absorvem R$ 17,20.",
+   "A restrição aparece no território. Minas tem 298 comarcas. A Defensoria atende presencialmente 120 delas. São 40,3% do total. Outras 176 comarcas não têm defensor público residente. São 59,1% dos polos judiciais. Exatamente 6.090.773 mineiros vivem sem defensor público presencial.",
+   "O quadro atual tem cerca de 672 defensores públicos na ativa. A ADEP-MG, a Associação das Defensoras e Defensores Públicos de Minas Gerais, calcula a necessidade. Seriam precisos mais de 1.200 profissionais. O déficit beira 500 profissionais.",
+   "A expansão histórica é lenta. Em 2013, o Censo registrava 105 comarcas atendidas. Em 2025, são 120. Foram 15 comarcas novas em 12 anos. A média é de 1,25 comarca por ano. Nesse ritmo, universalizar levaria mais de 140 anos."
   ]
  },
  {
   "slug": "mpmg-promotorias-fiscalizacao",
   "titulo": "MPMG: orçamento de R$ 4 bilhões concentra 81% em pessoal e verbas indenizatórias geram debate",
-  "subtitulo": "Procuradoria-Geral de Justiça opera com mais de R$ 3 bilhões voltados a salários e benefícios; auxílio-saúde e pagamentos acumulados atingem o centro das atenções fiscais.",
-  "resumo": "Análise orçamentária do Ministério Público de Minas Gerais examina despesas de custeio, limites da Lei de Responsabilidade Fiscal e o impacto dos penduricalhos na folha.",
+  "subtitulo": "Procuradoria-Geral gasta mais de R$ 3 bilhões com salários e benefícios. Auxílio-saúde e pagamentos acumulados entram no debate fiscal.",
+  "resumo": "Análise examina o orçamento do Ministério Público de Minas Gerais. Cobre custeio, limites da Lei de Responsabilidade Fiscal e penduricalhos.",
   "categoria": "Investigação Cívica",
   "frente": "judiciario",
   "subfrente": "Ministério Público de MG",
@@ -399,7 +399,7 @@
    "auxilio-saude-mpmg",
    "lrf-promotorias"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. MPMG: orçamento de R$ 4 bilhões concentra 81% em pessoal e verbas indenizatórias geram debate. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/mpmg-promotorias-fiscalizacao>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. MPMG: orçamento de R$ 4 bilhões concentra 81% em pessoal e verbas indenizatórias geram debate. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/mpmg-promotorias-fiscalizacao>.",
   "citacaoBibtex": "@article{onsa2026mpmg,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {MPMG: orçamento de R$ 4 bilhões concentra 81% em pessoal e verbas indenizatórias geram debate},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/mpmg-promotorias-fiscalizacao}\n}",
   "fontesOficiais": [
    {
@@ -435,18 +435,18 @@
   ],
   "recomendacaoVerificar": "Consulte o demonstrativo da folha e das verbas indenizatórias no [Portal da Transparência do MPMG](https://transparencia.mpmg.mp.br). Veja a execução orçamentária do órgão no [site da ALMG](https://almg.gov.br).",
   "paragrafos": [
-   "O Ministério Público de Minas Gerais - órgão encarregado de defender a ordem jurídica, o patrimônio público e os direitos sociais dos cidadãos - teve seu orçamento anual fixado em R$ 4,088 bilhões pela Lei Orçamentária Anual de 2025 (Lei Estadual nº 25.124/2024), com projeção orçamentária de R$ 4,571 bilhões para 2026.",
-   "O exame da estrutura da despesa na Procuradoria-Geral de Justiça revela que 81,20% dos recursos são comprometidos com 'Pessoal e Encargos Sociais', consumindo mais de R$ 3,06 bilhões exclusivamente com a remuneração de promotores, procuradores e servidores. Os outros 18,8% (cerca de R$ 700 a 800 milhões) cobrem as despesas correntes de custeio, locação de imóveis, veículos, tecnologia e serviços administrativos.",
-   "Nos últimos exercícios, a remuneração no MPMG ganhou repercussão devido ao impacto de parcelas indenizatórias que não entram no cômputo do teto salarial constitucional. Entre esses benefícios está o auxílio-saúde institucional, com impacto estimado de até R$ 4,8 milhões por mês para um universo de 1.150 integrantes da carreira, além da VTAC - a Parcela de Valorização por Tempo de Antiguidade na Carreira, recebida por cerca de 96% dos membros da instituição.",
-   "Levantamentos em folhas de pagamento do primeiro semestre de 2026 apontaram contracheques pontuais com rendimentos líquidos superiores a R$ 300 mil em um único mês para promotores e procuradores, decorrentes de indenizações acumuladas de licenças-prêmio e férias não usufruídas. A prática levou o STF - o Supremo Tribunal Federal - a impor balizas mais rígidas sobre o efeito cascata de verbas retroativas.",
-   "Pela Lei de Responsabilidade Fiscal, o Ministério Público tem como teto limite 2,00% da Receita Corrente Líquida do estado. Acompanhar a prestação de contas do órgão é essencial para assegurar que a instituição mantenha sua capacidade de fiscalização com transparência e respeito à legalidade fiscal."
+   "O MPMG, o Ministério Público de Minas Gerais, tem orçamento de R$ 4,088 bilhões. O valor consta na LOA 2025, a Lei Orçamentária Anual. A LOA veio da Lei Estadual 25.124/2024. Para 2026, a projeção é de R$ 4,571 bilhões. O órgão defende a ordem jurídica, o patrimônio público e os direitos sociais.",
+   "A Procuradoria-Geral de Justiça gasta 81,20% dos recursos com pessoal e encargos sociais. São mais de R$ 3,06 bilhões para promotores, procuradores e servidores. Os outros 18,8% cobrem custeio. Ficam entre R$ 700 milhões e R$ 800 milhões. Pagam aluguéis, veículos, tecnologia e serviços administrativos.",
+   "A remuneração do MPMG ganhou repercussão. As parcelas indenizatórias não entram no teto salarial constitucional. Um exemplo é o auxílio-saúde institucional. O impacto estimado chega a R$ 4,8 milhões por mês. Atende 1.150 integrantes da carreira. Outro exemplo é a VTAC. VTAC é a Parcela de Valorização por Tempo de Antiguidade na Carreira. Cerca de 96% dos membros recebem.",
+   "No primeiro semestre de 2026, contracheques líquidos passaram de R$ 300 mil. Promotores e procuradores receberam isso em um único mês. Os valores vieram de licenças-prêmio e férias acumuladas. O caso levou o STF a impor regras mais rígidas. STF é o Supremo Tribunal Federal. As regras miram o efeito cascata de verbas retroativas.",
+   "Pela Lei de Responsabilidade Fiscal, o Ministério Público tem teto de 2,00%. O limite vale sobre a Receita Corrente Líquida. Acompanhar as contas é essencial. Isso assegura fiscalização com transparência e legalidade."
   ]
  },
  {
   "slug": "vale-reparacao-cotacoes-brumadinho",
   "titulo": "Vale S.A.: acompanhamento do Acordo de Brumadinho e a execução de R$ 37 bilhões",
-  "subtitulo": "Monitoramento independente analisa a liberação dos recursos da reparação, o auxílio emergencial e os relatórios da mineradora na B3 e CVM.",
-  "resumo": "Investigação cívica detalha a situação das 26 cidades atingidas na Bacia do Rio Paraopeba, as metas do acordo judicial e os dados econômicos da empresa.",
+  "subtitulo": "Monitoramento independente analisa a liberação dos recursos da reparação. Cobre o auxílio emergencial. Reúne os relatórios da mineradora na B3 e na CVM.",
+  "resumo": "Investigação detalha a situação das 26 cidades atingidas. Elas ficam na Bacia do Rio Paraopeba. Mostra metas do acordo judicial e dados econômicos da empresa.",
   "categoria": "Investigação Cívica",
   "frente": "paraopeba",
   "subfrente": "Brumadinho & Governança Corporativa",
@@ -463,7 +463,7 @@
    "aecom-auditoria",
    "cvm"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Vale S.A.: acompanhamento do Acordo de Brumadinho e a execução de R$ 37 bilhões. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/vale-reparacao-cotacoes-brumadinho>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Vale S.A.: acompanhamento do Acordo de Brumadinho e a execução de R$ 37 bilhões. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/vale-reparacao-cotacoes-brumadinho>.",
   "citacaoBibtex": "@article{onsa2026valebrumadinho,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Vale S.A.: acompanhamento do Acordo de Brumadinho e a execução de R$ 37 bilhões},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/vale-reparacao-cotacoes-brumadinho}\n}",
   "fontesOficiais": [
    {
@@ -499,17 +499,17 @@
   ],
   "recomendacaoVerificar": "Acesse a seção [Paraopeba](/paraopeba) no portal e confira o painel de [Execução do Acordo](/paraopeba/execucao). Para ver os documentos arquivados pela auditoria, explore a [Biblioteca de Documentos](/paraopeba/biblioteca).",
   "paragrafos": [
-   "O rompimento da barragem B1 da mina Córrego do Feijão, ocorrido em janeiro de 2019 em Brumadinho, resultou na morte de 272 pessoas e na destruição de ecossistemas da Bacia do Rio Paraopeba. O caso gerou o Acordo Judicial de Reparação Integral, firmado em fevereiro de 2021 no valor nominal de R$ 37,68 bilhões entre a Vale S.A., o governo estadual e órgãos de justiça.",
-   "O Controle Popular dedica uma frente exclusiva ao caso na rota [Paraopeba](/paraopeba). O portal reúne e indexa 467 relatórios elaborados pela auditoria externa independente da empresa AECOM, cobrindo 16 eixos temáticos como recuperação ambiental, abastecimento de água, saneamento, obras de mobilidade e saúde mental dos atingidos.",
-   "Outro pilar da investigação reúne 645 publicações e notas técnicas produzidas pelas ATIs - as Assessorias Técnicas Independentes que orientam as comunidades de atingidos nos 26 municípios banhados pelo Paraopeba. O acervo completo está catalogado na [Biblioteca](/paraopeba/biblioteca).",
-   "Além da dimensão socioambiental, o portal disponibiliza a cotação histórica e comunicados arquivados pela mineradora na CVM - a Comissão de Valores Mobiliários na página [Vale](/paraopeba/vale). O objetivo é garantir que os dados financeiros da multinacional e o cumprimento das obrigações judiciais permaneçam acessíveis ao público que sofreu o impacto direto da tragédia."
+   "A barragem B1 da mina Córrego do Feijão rompeu em janeiro de 2019. O desastre matou 272 pessoas em Brumadinho. Destruiu ecossistemas da Bacia do Rio Paraopeba. O caso gerou o Acordo Judicial de Reparação Integral. Foi firmado em fevereiro de 2021. O valor nominal é de R$ 37,68 bilhões. Assinaram a Vale S.A., o governo estadual e órgãos de justiça.",
+   "O portal dedica uma frente exclusiva ao caso na rota [Paraopeba](/paraopeba). Reúne 467 relatórios da auditoria externa independente AECOM. Os relatórios cobrem 16 eixos temáticos. Entre eles, recuperação ambiental, água, saneamento e mobilidade. Também cobrem a saúde mental dos atingidos.",
+   "Outro pilar reúne 645 publicações e notas técnicas. São das ATIs, as Assessorias Técnicas Independentes. Elas orientam as comunidades atingidas nos 26 municípios do Paraopeba. O acervo completo está na [Biblioteca](/paraopeba/biblioteca).",
+   "O portal também mostra a cotação histórica da empresa. Reúne comunicados na B3, a bolsa de valores. Também na CVM, a Comissão de Valores Mobiliários. Tudo fica na página [Vale](/paraopeba/vale). O objetivo é manter os dados financeiros acessíveis. E o cumprimento das obrigações judiciais. O público que sofreu a tragédia acompanha tudo."
   ]
  },
  {
   "slug": "sigma-lithium-jequitinhonha-mineracao",
   "titulo": "Sigma Lithium e o Vale do Jequitinhonha: royalties da mineração e concessões minerais",
   "subtitulo": "Extração mineral no semiárido mineiro atrai atenção internacional, enquanto municípios como Araçuaí e Itinga cobram infraestrutura e transparência.",
-  "resumo": "Relatório especial analisa a concessão mineral da Sigma Lithium no Vale do Jequitinhonha, a arrecadação da CFEM e a fiscalização de contratos nos municípios minerados.",
+  "resumo": "Relatório especial analisa a concessão mineral da Sigma Lithium no Vale do Jequitinhonha. Cobre a arrecadação da CFEM e a fiscalização de contratos nos municípios minerados.",
   "categoria": "Investigação Cívica",
   "frente": "ambiental",
   "subfrente": "Mineração & Transição Energética",
@@ -526,7 +526,7 @@
    "itinga",
    "aracuai"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Sigma Lithium e o Vale do Jequitinhonha: royalties da mineração e concessões minerais. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/sigma-lithium-jequitinhonha-mineracao>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Sigma Lithium e o Vale do Jequitinhonha: royalties da mineração e concessões minerais. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/sigma-lithium-jequitinhonha-mineracao>.",
   "citacaoBibtex": "@article{onsa2026sigmalithium,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Sigma Lithium e o Vale do Jequitinhonha: royalties da mineração e concessões minerais\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/sigma-lithium-jequitinhonha-mineracao}\n}",
   "fontesOficiais": [
    {
@@ -562,17 +562,17 @@
   ],
   "recomendacaoVerificar": "Confira os dados locais nas páginas de [Itinga](/itinga) e [Araçuaí](/aracuai). No [site da ANM](https://app.anm.gov.br), consulte a arrecadação da CFEM para saber quanto o município recebeu de royalties no mês passado.",
   "paragrafos": [
-   "A instalação de projetos de extração de lítio em rocha dura pela empresa Sigma Lithium no Vale do Jequitinhonha transformou a economia dos municípios mineiros de Itinga e Araçuaí. O mineral é matéria-prima estratégica para a fabricação de baterias de veículos elétricos e equipamentos de tecnologia.",
-   "Com a atividade em operação, as prefeituras da região passaram a receber volumes substanciais da CFEM - a Compensação Financeira pela Exploração de Recursos Minerais, o royalty obrigatório pago pelas mineradoras aos municípios produtores e afetados. Em Itinga, a receita da CFEM saltou de patamares residuais para dezenas de milhões de reais ao ano, alterando o orçamento municipal.",
-   "O Controle Popular monitora os contratos públicos e licitações abertas pelas prefeituras para verificar se o aumento da receita de royalties tem sido revertido em obras essenciais de saneamento, abastecimento de água potável no semiárido e fortalecimento das escolas locais. Os dados locais podem ser consultados nas páginas dedicadas de [Itinga](/itinga) e [Araçuaí](/aracuai).",
-   "Do ponto de vista ambiental, o ONSA acompanha as condicionantes dos processos de licenciamento na SEMAD - a Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável de Minas Gerais -, com atenção especial ao uso de outorgas de água do Rio Jequitinhonha e à preservação da vegetação de transição entre o Cerrado e a Caatinga."
+   "A Sigma Lithium instalou projetos de extração de lítio em rocha dura no Vale do Jequitinhonha. A atividade transformou a economia de Itinga e de Araçuaí. O lítio é matéria-prima estratégica. Ele equipa baterias de veículos elétricos e aparelhos de tecnologia.",
+   "Com a mineração em operação, as prefeituras recebem valores substanciais da CFEM. A sigla significa Compensação Financeira pela Exploração de Recursos Minerais. É o royalty obrigatório pago pelas mineradoras aos municípios produtores e afetados. Em Itinga, a receita da CFEM saltou de patamares residuais para dezenas de milhões de reais por ano. O orçamento municipal mudou de escala.",
+   "O Controle Popular monitora os contratos públicos e as licitações das prefeituras. O objetivo é verificar se o aumento da receita virou obras essenciais. Saneamento, água potável no semiárido e escolas entram na conta. Os dados locais estão nas páginas de [Itinga](/itinga) e [Araçuaí](/aracuai).",
+   "No campo ambiental, o ONSA acompanha as condicionantes dos licenciamentos na SEMAD. A sigla designa a Secretaria de Estado de Meio Ambiente e Desenvolvimento Sustentável de Minas Gerais. O monitoramento olha com atenção para as outorgas de água do Rio Jequitinhonha. Também vigia a vegetação de transição entre o Cerrado e a Caatinga."
   ]
  },
  {
   "slug": "meio-ambiente-barragens-licenciamento-mg",
   "titulo": "Meio ambiente em Minas: 19 mil licenças, monitoramento do COPAM e TACs do IBAMA",
   "subtitulo": "Acervo ambiental reúne processos de licenciamento estadual, atas de reuniões do conselho ambiental e compromissos firmados por mineradoras.",
-  "resumo": "Panorama descritivo compila indicadores de licenças ativas, deliberações de órgãos colegiados e termos de ajustamento de conduta na gestão ambiental de Minas Gerais.",
+  "resumo": "Panorama descritivo compila licenças ativas, deliberações de órgãos colegiados e termos de ajustamento de conduta na gestão ambiental de Minas Gerais.",
   "categoria": "Relatório Técnico",
   "frente": "ambiental",
   "subfrente": "Licenciamento & Governança Ambiental",
@@ -588,7 +588,7 @@
    "tac-ibama",
    "conselhos-ambientais"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Meio ambiente em Minas: 19 mil licenças, monitoramento do COPAM e TACs do IBAMA. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/meio-ambiente-barragens-licenciamento-mg>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Meio ambiente em Minas: 19 mil licenças, monitoramento do COPAM e TACs do IBAMA. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/meio-ambiente-barragens-licenciamento-mg>.",
   "citacaoBibtex": "@article{onsa2026ambiental,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Meio ambiente em Minas: 19 mil licenças, monitoramento do COPAM e TACs do IBAMA},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/meio-ambiente-barragens-licenciamento-mg}\n}",
   "fontesOficiais": [
    {
@@ -624,17 +624,17 @@
   ],
   "recomendacaoVerificar": "Acesse a seção [Meio Ambiente](/ambiental) no portal e confira a página de [Licenciamento](/ambiental/licenciamento). Pesquise pelo nome do empreendimento ou município para ver a classe da licença e a situação do processo.",
   "paragrafos": [
-   "A frente ambiental do portal reúne mais de 19 mil registros de licenciamento de empreendimentos industriais, minerários e agropecuários em Minas Gerais. Os dados procedem do SIAM - o Sistema Integrado de Informações Ambientais mantido pela SEMAD, a secretaria estadual de meio ambiente.",
-   "As decisões mais complexas sobre outorgas e autorizações de funcionamento passam pelas câmaras técnicas do COPAM - o Conselho Estadual de Política Ambiental, órgão colegiado que reúne representantes do poder público, entidades industriais e organizações não governamentais. O portal organiza as pautas de julgamento para facilitar a consulta da sociedade antes das votações.",
-   "Outro conjunto relevante abrange os TACs - Termos de Ajustamento de Conduta firmados pelo IBAMA - o Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis - com empresas e infratores ambientais. A lista completa de compromissos está na página [Termos de Ajustamento de Conduta](/ambiental/tac).",
-   "Cada processo catalogado traz a indicação da fase em que se encontra (Licença Prévia, de Instalação ou de Operação) e o link para o processo eletrônico do órgão público competente. O portal atua como um catálogo aberto para que moradores e pesquisadores conheçam o impacto das atividades econômicas em suas bacias hidrográficas."
+   "A frente ambiental do portal reúne mais de 19 mil registros de licenciamento. Eles cobrem empreendimentos industriais, minerários e agropecuários em Minas Gerais. Os dados vêm do SIAM. A sigla designa o Sistema Integrado de Informações Ambientais, mantido pela SEMAD, a secretaria estadual de meio ambiente.",
+   "As decisões mais complexas sobre outorgas passam pelas câmaras técnicas do COPAM. A sigla designa o Conselho Estadual de Política Ambiental. Esse órgão colegiado reúne poder público, indústria e organizações não governamentais. O portal organiza as pautas de julgamento. Assim, a sociedade consulta o que será votado antes da reunião.",
+   "Outro conjunto relevante abrange os TACs. A sigla significa Termos de Ajustamento de Conduta, firmados pelo IBAMA. IBAMA é o Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis. Os compromissos valem para empresas e infratores ambientais. A lista completa está em [Termos de Ajustamento de Conduta](/ambiental/tac).",
+   "Cada processo catalogado informa a fase em que se encontra. As fases são Licença Prévia, de Instalação ou de Operação. Cada registro traz o link para o processo eletrônico do órgão competente. O portal funciona como catálogo aberto. Moradores e pesquisadores conhecem o impacto das atividades econômicas em suas bacias hidrográficas."
   ]
  },
  {
   "slug": "betim-contratos-compras-publicas",
   "titulo": "Betim: contratos públicos somam R$ 1,2 bilhão e portal alerta para concentração de fornecedores",
   "subtitulo": "Auditoria de compras públicas na segunda maior economia de Minas detalha contratações da prefeitura, dispensas de licitação e repasses da saúde.",
-  "resumo": "Análise técnica dos contratos do município de Betim identifica empresas com grande volume de contratação e explica como a população pode auditar cada edital.",
+  "resumo": "Análise técnica dos contratos de Betim identifica empresas com grande volume de contratação. Explica também como a população pode auditar cada edital.",
   "categoria": "Investigação Cívica",
   "frente": "cidades",
   "subfrente": "Betim — Gestão Municipal",
@@ -651,7 +651,7 @@
    "licitacoes-betim",
    "fornecedores-publicos"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Betim: contratos públicos somam R$ 1,2 bilhão e portal alerta para concentração de fornecedores. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/betim-contratos-compras-publicas>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Betim: contratos públicos somam R$ 1,2 bilhão e portal alerta para concentração de fornecedores. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/betim-contratos-compras-publicas>.",
   "citacaoBibtex": "@article{onsa2026betimcontratos,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Betim: contratos públicos somam R$ 1,2 bilhão e portal alerta para concentração de fornecedores},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/betim-contratos-compras-publicas}\n}",
   "fontesOficiais": [
    {
@@ -687,17 +687,17 @@
   ],
   "recomendacaoVerificar": "Acesse a página de [Contratos de Betim](/betim/prefeitura/contratos). Use o filtro para ordenar pelo maior valor ou procure pelo nome da empresa fornecedora. Para ver as atas da Câmara de Vereadores, visite [Câmara de Betim](/betim/camara).",
   "paragrafos": [
-   "O município de Betim, na Região Metropolitana de Belo Horizonte, abriga um dos maiores polos industriais e de refino de petróleo da América Latina. O Controle Popular mantém o acompanhamento integral das finanças da prefeitura, catalogando mais de 1.200 contratos públicos que ultrapassam R$ 1,2 bilhão em empenhos.",
-   "A ferramenta de fiscalização do portal analisa as contratações públicas e calcula indicadores objetivos de atenção na página de [Contratos](/betim/prefeitura/contratos). O sistema destaca contratos com dispensa de licitação e fornecedores que concentram grande fatia das compras em secretarias como Saúde e Obras Públicas.",
-   "Na página de [Fornecedores de Betim](/betim/prefeitura/fornecedores), o morador pode visualizar quais pessoas jurídicas mais receberam pagamentos da administração municipal nos últimos anos, com a discriminação dos números de empenho e dos objetos contratados.",
-   "O portal também arquivou 16.601 edições e publicações do Diário Oficial do Município na página do [Diário Oficial](/betim/prefeitura/diario). A ferramenta classifica os atos por categorias automáticas, facilitando a busca de decretos municipais, exonerações e nomeações de cargos comissionados."
+   "Betim fica na Região Metropolitana de Belo Horizonte. A cidade abriga um dos maiores polos industriais e de refino de petróleo da América Latina. O Controle Popular acompanha as finanças da prefeitura de ponta a ponta. O catálogo reúne mais de 1.200 contratos públicos. Os empenhos ultrapassam R$ 1,2 bilhão.",
+   "A ferramenta de fiscalização analisa as contratações públicas na página de [Contratos](/betim/prefeitura/contratos). Ela calcula indicadores objetivos de atenção. O sistema destaca contratos com dispensa de licitação. Também aponta fornecedores que concentram grande fatia das compras. Saúde e Obras Públicas são exemplos de secretarias observadas.",
+   "Na página de [Fornecedores de Betim](/betim/prefeitura/fornecedores), o morador vê quem mais recebeu pagamentos. A lista mostra os números de empenho. Também mostra o objeto de cada contrato.",
+   "O portal arquivou 16.601 edições do Diário Oficial do Município. O acervo fica na página do [Diário Oficial](/betim/prefeitura/diario). A ferramenta classifica os atos por categorias automáticas. Assim fica fácil buscar decretos municipais, exonerações e nomeações de cargos comissionados."
   ]
  },
  {
   "slug": "itinga-transparencia-repasses-litio",
   "titulo": "Itinga: royalties da mineração de lítio multiplicam receitas e exigem controle social",
   "subtitulo": "Município do Alto Jequitinhonha registra salto histórico na arrecadação da CFEM e portal monitora aplicação em saneamento e escolas.",
-  "resumo": "Estudo descritivo aborda a chegada de grandes mineradoras em Itinga, o impacto dos recursos nos cofres públicos e os canais de fiscalização cidadã.",
+  "resumo": "Estudo descritivo aborda a chegada de grandes mineradoras em Itinga. Mostra o impacto dos recursos nos cofres públicos e os canais de fiscalização cidadã.",
   "categoria": "Investigação Cívica",
   "frente": "cidades",
   "subfrente": "Itinga — Vale do Jequitinhonha",
@@ -713,7 +713,7 @@
    "royalties-mineracao",
    "jequitinhonha-transparencia"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Itinga: royalties da mineração de lítio multiplicam receitas e exigem controle social. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/itinga-transparencia-repasses-litio>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Itinga: royalties da mineração de lítio multiplicam receitas e exigem controle social. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/itinga-transparencia-repasses-litio>.",
   "citacaoBibtex": "@article{onsa2026itinga,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Itinga: royalties da mineração de lítio multiplicam receitas e exigem controle social},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/itinga-transparencia-repasses-litio}\n}",
   "fontesOficiais": [
    {
@@ -749,17 +749,17 @@
   ],
   "recomendacaoVerificar": "Entre na página de [Itinga](/itinga) no portal. Confira as despesas e contratos municipais no [Portal de Transparência de Itinga](https://itinga-mg.portaltp.com.br) e compare os repasses da CFEM com as obras públicas em andamento.",
   "paragrafos": [
-   "Itinga é um município mineiro situado na porção média do Vale do Jequitinhonha, tradicionalmente marcado por baixos índices de desenvolvimento humano e períodos de seca severa. Nos últimos quatro anos, a cidade virou o epicentro da exploração de espodumênio - a rocha da qual se extrai o lítio.",
-   "A expansão da atividade gerou uma transformação fiscal expressiva: a prefeitura passou a receber parcelas vultosas da CFEM - a compensação financeira pela exploração de minérios. Os recursos injetados multiplicaram a capacidade orçamentária do município em relação aos anos anteriores à instalação dos complexos de mineração.",
-   "O Controle Popular estruturou a página de [Itinga](/itinga) para que os moradores locais possam acompanhar a destinação de cada centavo. A página lista contratos de obras civis, compras de materiais escolares e gastos em saúde pública cadastrados no PNCP e no portal de transparência municipal.",
-   "O desafio para a cidadania é garantir que os recursos extraordinários da mineração sejam aplicados em infraestrutura de longo prazo - como redes de tratamento de água, asfaltamento de estradas rurais e hospitais -, evitando que o encerramento do ciclo mineral deixe a cidade desprovida de patrimônio público consolidado."
+   "Itinga é um município mineiro do médio Vale do Jequitinhonha. A região convive com baixos índices de desenvolvimento humano e secas severas. Nos últimos quatro anos, a cidade virou o epicentro da exploração de espodumênio. Dessa rocha se extrai o lítio.",
+   "A expansão da atividade gerou transformação fiscal expressiva. A prefeitura passou a receber parcelas vultosas da CFEM. A sigla significa compensação financeira pela exploração de minérios. Os recursos multiplicaram a capacidade orçamentária do município. A comparação vale contra os anos anteriores à instalação dos complexos de mineração.",
+   "O Controle Popular estruturou a página de [Itinga](/itinga) para os moradores acompanharem cada centavo. A página lista contratos de obras civis. Também lista compras de materiais escolares e gastos em saúde pública. Os dados vêm do PNCP e do portal de transparência municipal.",
+   "O desafio da cidadania é garantir o uso dos recursos extraordinários da mineração. A aplicação precisa virar infraestrutura de longo prazo. Redes de tratamento de água, estradas rurais e hospitais são exemplos. Assim, o fim do ciclo mineral não deixa a cidade sem patrimônio público consolidado."
   ]
  },
  {
   "slug": "aracuai-contratos-desenvolvimento-vale",
   "titulo": "Araçuaí: polo econômico do Médio Jequitinhonha reúne contratos públicos e novas demandas",
   "subtitulo": "Cidade referência da região enfrenta desafios com o crescimento populacional, atração de empresas e necessidade de fiscalização cívica.",
-  "resumo": "Análise descritiva dos contratos e da estrutura administrativa de Araçuaí examina gastos públicos e a participação cidadã na câmara e na prefeitura.",
+  "resumo": "Análise descritiva dos contratos e da estrutura administrativa de Araçuaí. Examina gastos públicos e a participação cidadã na câmara e na prefeitura.",
   "categoria": "Investigação Cívica",
   "frente": "cidades",
   "subfrente": "Araçuaí — Polo Regional",
@@ -775,7 +775,7 @@
    "jequitinhonha-polo",
    "camara-aracuai"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Araçuaí: polo econômico do Médio Jequitinhonha reúne contratos públicos e novas demandas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/aracuai-contratos-desenvolvimento-vale>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Araçuaí: polo econômico do Médio Jequitinhonha reúne contratos públicos e novas demandas. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/aracuai-contratos-desenvolvimento-vale>.",
   "citacaoBibtex": "@article{onsa2026aracuai,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Araçuaí: polo econômico do Médio Jequitinhonha reúne contratos públicos e novas demandas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/aracuai-contratos-desenvolvimento-vale}\n}",
   "fontesOficiais": [
    {
@@ -811,17 +811,17 @@
   ],
   "recomendacaoVerificar": "Acesse a página de [Araçuaí](/aracuai) no portal. Para acompanhar as leis municipais e votações dos vereadores, consulte o [SAPL da Câmara de Araçuaí](https://sapl.aracuai.mg.leg.br).",
   "paragrafos": [
-   "Araçuaí funciona como centro comercial, educacional e de serviços de saúde para uma rede de mais de dez municípios do Vale do Jequitinhonha. Com a expansão dos empreendimentos minerais no território vizinho, a cidade recebeu contingentes de novos trabalhadores e empresas prestadoras de serviço.",
-   "O Controle Popular monitora os contratos da administração municipal e as despesas empenhadas nas secretarias de Educação e Saúde na rota dedicada de [Araçuaí](/aracuai). A página reúne compras lançadas no sistema Portaltp e no sistema de apoio legislativo da Câmara de Vereadores.",
-   "Por meio do SAPL - o Sistema de Apoio ao Processo Legislativo -, o cidadão pode verificar quais projetos de lei foram propostos pelos 13 vereadores do município, as matérias votadas em plenário e os requerimentos de informações enviados à prefeitura.",
-   "O portal reforça a necessidade de a população acompanhar as audiências públicas do orçamento municipal e participar dos conselhos de saúde e de assistência social, assegurando que os recursos públicos sejam destinados com transparência e prioridade para as comunidades tradicionais e periferias da cidade."
+   "Araçuaí funciona como centro comercial, educacional e de saúde. A cidade atende mais de dez municípios do Vale do Jequitinhonha. A mineração no território vizinho atraiu novos trabalhadores. Também chegaram empresas prestadoras de serviço.",
+   "O Controle Popular monitora os contratos da administração municipal. Acompanha também as despesas empenhadas nas secretarias de Educação e Saúde. Tudo fica na rota dedicada de [Araçuaí](/aracuai). A página reúne compras do sistema Portaltp e do sistema de apoio legislativo da Câmara.",
+   "Pelo SAPL, o cidadão verifica os projetos de lei dos 13 vereadores. A sigla designa o Sistema de Apoio ao Processo Legislativo. O sistema mostra as matérias votadas em plenário. Também mostra os pedidos de informação enviados à prefeitura.",
+   "O portal reforça a importância de acompanhar as audiências públicas do orçamento. A participação nos conselhos de saúde e de assistência social também importa. Os recursos públicos precisam chegar com transparência às comunidades tradicionais e periferias."
   ]
  },
  {
   "slug": "mariana-repactuacao-rio-doce-recursos",
   "titulo": "Repactuação de Mariana fixa R$ 171 bilhões para o Rio Doce e R$ 677 milhões empenhados em Minas",
   "subtitulo": "Acordo judicial com Samarco, Vale e BHP fecha repactuação histórica após dez anos do colapso; portal audita ritmo de liberação e recursos travados.",
-  "resumo": "Auditoria financeira da repactuação da Bacia do Rio Doce analisa os compromissos das mineradoras, os R$ 2,9 bilhões em caixa no Estado e os R$ 338 milhões efetivamente pagos.",
+  "resumo": "Auditoria financeira da repactuação da Bacia do Rio Doce analisa os compromissos das mineradoras. Mostra os R$ 2,9 bilhões em caixa no Estado e os R$ 338 milhões efetivamente pagos.",
   "categoria": "Investigação Cívica",
   "frente": "ambiental",
   "subfrente": "Mariana e Bacia do Rio Doce",
@@ -838,7 +838,7 @@
    "reparacao-ambiental",
    "atingidos-mariana"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Repactuação de Mariana fixa R$ 171 bilhões para o Rio Doce e R$ 677 milhões empenhados em Minas. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/mariana-repactuacao-rio-doce-recursos>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Repactuação de Mariana fixa R$ 171 bilhões para o Rio Doce e R$ 677 milhões empenhados em Minas. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/mariana-repactuacao-rio-doce-recursos>.",
   "citacaoBibtex": "@article{onsa2026mariana,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Repactuação de Mariana fixa R$ 171 bilhões para o Rio Doce e R$ 677 milhões empenhados em Minas},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/mariana-repactuacao-rio-doce-recursos}\n}",
   "fontesOficiais": [
    {
@@ -874,18 +874,18 @@
   ],
   "recomendacaoVerificar": "Acesse a página do [Acordo de Mariana](/ambiental/mariana) no portal. Baixe os microdados de empenhos do CKAN-MG e confira se a iniciativa prevista para o seu município atingido já teve ordem de pagamento emitida.",
   "paragrafos": [
-   "O rompimento da barragem de Fundão da mineradora Samarco (controlada pela Vale e pela multinacional BHP Billiton), ocorrido em 5 de novembro de 2015 em Mariana, despejou 39 milhões de metros cúbicos de rejeito na Bacia do Rio Doce, matando 19 pessoas e devastando 670 quilômetros de curso d'água até a foz no Espírito Santo. Quase dez anos após o crime socioambiental, a repactuação homologada no TRF-6 - o Tribunal Regional Federal da 6ª Região - fixou um montante global estimado em R$ 171 bilhões.",
-   "Desse total, R$ 100 bilhões constituem novos recursos que as mineradoras devem repassar diretamente aos entes públicos (União e governos de Minas Gerais e do Espírito Santo) ao longo de 20 anos para obras de saneamento, infraestrutura e restauração de nascentes. Outros R$ 32 bilhões correspondem a obrigações de fazer que continuam a cargo das mineradoras - incluindo a descaracterização definitiva da barragem de Germano e os reassentamentos dos distritos de Bento Rodrigues e Paracatu de Baixo. O acordo reservou ainda R$ 8 bilhões para o Fundo de Saúde e Reparação dos Povos Originários, destinado aos povos Krenak, Tupiniquim, Guarani e comunidades tradicionais quilombolas.",
-   "O Controle Popular estruturou o monitoramento da execução orçamentária dos recursos que já entraram no caixa do estado na página [Acordo de Mariana](/ambiental/mariana). Os dados oficiais da plataforma CKAN-MG mostram que o governo de Minas Gerais já arrecadou R$ 2.977.206.554,43 (R$ 2,98 bilhões) em depósitos judiciais e parcelas das mineradoras. Desse volume em caixa, o estado empenhou R$ 677.426.719,25 em 532 empenhos distribuídos por 14 secretarias e fundos públicos. No entanto, o valor liquidado alcança R$ 374,1 milhões e o total financeiro efetivamente pago é de R$ 338.544.824,26 - o que representa apenas 50% do valor empenhado e cerca de 11% do montante já disponível em conta.",
-   "O levantamento do portal expõe onde o dinheiro da reparação está represado. Projetos estratégicos com valores bilionários continuam com R$ 0,00 empenhado nas contas públicas estaduais: é o caso do lote rodoviário entre Ouro Preto e Mariana (Anexo XIII, com R$ 1,702 bilhão pactuado e zero empenhado), a recuperação florestal da vegetação nativa da Bacia (Anexo XII, com R$ 1,026 bilhão prometido e zero empenhado) e a consolidação de Unidades de Conservação (R$ 781 milhões pactuados e zero empenhado). Enquanto as obras ambientais não avançam, os recursos depositados em juízo já geraram R$ 367,3 milhões somente em rendimentos bancários acumulados.",
-   "Entre os municípios que concentram recursos destinados, Mariana lidera com R$ 1,85 bilhão pactuado para saneamento e reconstrução histórica; Governador Valadares possui R$ 920 milhões destinados para a captação de água no Rio Suaçuí e obras de esgoto; e Barra Longa conta com R$ 340 milhões reservados para restauração urbana e desassoreamento do Rio do Carmo."
+   "A barragem de Fundão rompeu em 5 de novembro de 2015, em Mariana. A estrutura pertencia à Samarco, controlada pela Vale e pela BHP Billiton. O desastre despejou 39 milhões de metros cúbicos de rejeito na Bacia do Rio Doce. Dezenove pessoas morreram. O rejeito percorreu 670 quilômetros até a foz, no Espírito Santo. Quase dez anos depois, a repactuação foi homologada no TRF-6. A sigla designa o Tribunal Regional Federal da 6ª Região. O montante global estimado é de R$ 171 bilhões.",
+   "Desse total, R$ 100 bilhões são recursos novos. As mineradoras repassarão o valor à União e aos governos de Minas Gerais e do Espírito Santo. O pagamento ocorre ao longo de 20 anos. O dinheiro banca saneamento, infraestrutura e restauração de nascentes. Outros R$ 32 bilhões correspondem a obrigações de fazer. Isso inclui a descaracterização da barragem de Germano e os reassentamentos de Bento Rodrigues e Paracatu de Baixo. O acordo reservou ainda R$ 8 bilhões para o Fundo de Saúde e Reparação dos Povos Originários. O fundo atende os povos Krenak, Tupiniquim e Guarani, além de comunidades quilombolas.",
+   "O Controle Popular monitora a execução orçamentária na página [Acordo de Mariana](/ambiental/mariana). Os dados oficiais vêm da plataforma CKAN-MG. O governo de Minas já arrecadou R$ 2,98 bilhões em depósitos judiciais e parcelas. Desse volume em caixa, o estado empenhou R$ 677,4 milhões. Foram 532 empenhos, distribuídos por 14 secretarias e fundos públicos. O valor liquidado chega a R$ 374,1 milhões. O total efetivamente pago é de R$ 338,5 milhões. Isso representa 50% do empenhado e cerca de 11% do disponível em conta.",
+   "O levantamento expõe onde o dinheiro da reparação está represado. Projetos bilionários seguem com R$ 0,00 empenhado. É o caso do lote rodoviário entre Ouro Preto e Mariana. Ele tem R$ 1,702 bilhão pactuado e zero empenhado. A recuperação florestal da Bacia tem R$ 1,026 bilhão prometido e zero empenhado. A consolidação de Unidades de Conservação tem R$ 781 milhões pactuados e zero empenhado. Enquanto as obras ambientais não avançam, os depósitos em juízo rendem. Os rendimentos bancários acumulados já somam R$ 367,3 milhões.",
+   "Mariana lidera os valores destinados, com R$ 1,85 bilhão pactuado. O dinheiro vai para saneamento e reconstrução histórica. Governador Valadares tem R$ 920 milhões destinados à captação de água no Rio Suaçuí. Barra Longa conta com R$ 340 milhões para restauração urbana e desassoreamento do Rio do Carmo."
   ]
  },
  {
   "slug": "barragens-descaracterizacao-prazos-mg",
   "titulo": "Barragens a montante em Minas: 23 estruturas pendentes e prazos adiados para até 2035",
   "subtitulo": "Mineradoras descumpriram prazo da Lei Mar de Lama Nunca Mais; acompanhamento com o MPMG aponta estruturas em nível crítico e aditivos judiciais.",
-  "resumo": "Investigação cívica detalha as 45 barragens construídas pelo método a montante em Minas Gerais, os níveis de emergência e a morosidade no desmanche das estruturas de risco.",
+  "resumo": "Investigação cívica detalha as 45 barragens a montante de Minas Gerais. Mostra os níveis de emergência e a morosidade no desmanche das estruturas de risco.",
   "categoria": "Investigação Cívica",
   "frente": "ambiental",
   "subfrente": "Barragens e Segurança",
@@ -902,7 +902,7 @@
    "sigbm-anm",
    "nivel-3-emergencia"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Barragens a montante em Minas: 23 estruturas pendentes e prazos adiados para até 2035. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/barragens-descaracterizacao-prazos-mg>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Barragens a montante em Minas: 23 estruturas pendentes e prazos adiados para até 2035. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/barragens-descaracterizacao-prazos-mg>.",
   "citacaoBibtex": "@article{onsa2026barragensprazos,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Barragens a montante em Minas: 23 estruturas pendentes e prazos adiados para até 2035},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/barragens-descaracterizacao-prazos-mg}\n}",
   "fontesOficiais": [
    {
@@ -938,18 +938,18 @@
   ],
   "recomendacaoVerificar": "Acesse a página de [Descaracterização de Barragens](/ambiental/barragens/descaracterizacao) no portal. Confira no mapa se há estruturas com sirenes ativadas próximas à sua cidade e consulte o status da barragem no [SIGBM](https://app.anm.gov.br/sigbm).",
   "paragrafos": [
-   "Aprovada por unanimidade pela Assembleia Legislativa após o desastre de Brumadinho, a Lei Estadual nº 23.291/2019 - batizada de Lei Mar de Lama Nunca Mais - estabeleceu como regra imperativa que todas as barragens de contenção de rejeitos de mineração construídas pelo método de alteamento a montante em Minas Gerais deveriam ser completamente descaracterizadas no prazo máximo de três anos, expirado em 25 de fevereiro de 2022.",
-   "Sete anos após a edição da lei, o levantamento cívico do Controle Popular na página de [Descaracterização de Barragens](/ambiental/barragens/descaracterizacao) - cruzando os dados do projeto 'Desativando Bombas-relógio' do Ministério Público com o sistema SIGBM da Agência Nacional de Mineração - aponta que nenhuma das grandes mineradoras multinacionais conseguiu cumprir o prazo legal original. Das 45 barragens a montante catalogadas no estado, 21 foram totalmente concluídas e atestadas pelos órgãos técnicos, enquanto outras 24 estruturas continuam em obras ou com processos paralisados.",
-   "Em razão do descumprimento generalizado da lei, o Ministério Público e o governo estadual firmaram TACs - Termos de Ajustamento de Conduta repactuando os calendários de engenharia com prazos que avançam pela próxima década. A mineradora Vale S.A. repactuou a descaracterização do complexo das barragens Forquilha I, II e III, em Ouro Preto, para 2035 - um atraso de 13 anos em relação à determinação legal. A mesma mineradora prevê concluir a barragem Xingu, em Mariana, apenas em 2034.",
-   "A situação é crítica em estruturas classificadas em Nível 3 de Emergência - classificação da ANM que indica risco iminente de ruptura. É o caso da Barragem Serra Azul, de propriedade da ArcelorMittal, situada no município de Itatiaiuçu, contendo 5,02 milhões de metros cúbicos de rejeito. Os moradores da comunidade de Pinheiros continuam desalojados de suas residências desde 2019 por segurança, e o cronograma homologado prevê conclusão das obras somente em dezembro de 2032. Em Nível 2 de emergência permanecem a Barragem Sul Superior da Vale, em Barão de Cocais (com 5,94 milhões de metros cúbicos), e a barragem B1A da Emicon, em Brumadinho.",
-   "O volume total de lama acumulado nas estruturas pendentes atinge números superlativos: os diques do Sistema Pontal da Vale em Itabira somam 209,8 milhões de metros cúbicos; a barragem de Germano da Samarco em Mariana retém 130 milhões de metros cúbicos; e a barragem B4 da CSN em Congonhas armazena outros 130 milhões de metros cúbicos sobre a bacia do Rio Paraopeba e do Rio Doce."
+   "A Lei Estadual nº 23.291/2019 nasceu depois do desastre de Brumadinho. Ela foi aprovada por unanimidade pela Assembleia Legislativa. Ficou conhecida como Lei Mar de Lama Nunca Mais. A regra era imperativa. Toda barragem de rejeitos construída a montante deveria ser descaracterizada em três anos. O prazo expirou em 25 de fevereiro de 2022.",
+   "Sete anos após a lei, o levantamento cívico mostra o descumprimento. A página é a de [Descaracterização de Barragens](/ambiental/barragens/descaracterizacao). O levantamento cruza o projeto Desativando Bombas-relógio do Ministério Público com o SIGBM da Agência Nacional de Mineração. Nenhuma das grandes mineradoras cumpriu o prazo legal. Das 45 barragens a montante catalogadas, 21 foram concluídas e atestadas. Outras 24 estruturas continuam em obras ou paralisadas.",
+   "Diante do descumprimento, o Ministério Público e o governo firmaram TACs. A sigla significa Termos de Ajustamento de Conduta. Os calendários de engenharia foram repactuados para a próxima década. A Vale adiou a descaracterização das barragens Forquilha I, II e III para 2035. O complexo fica em Ouro Preto. O atraso chega a 13 anos em relação à lei. A barragem Xingu, em Mariana, deve terminar apenas em 2034.",
+   "A situação é crítica em estruturas em Nível 3 de Emergência. Essa classificação da ANM indica risco iminente de ruptura. É o caso da Barragem Serra Azul, da ArcelorMittal, em Itatiaiuçu. A estrutura contém 5,02 milhões de metros cúbicos de rejeito. Os moradores da comunidade de Pinheiros estão desalojados desde 2019. O cronograma homologado prevê conclusão só em dezembro de 2032. Em Nível 2 permanecem a Barragem Sul Superior da Vale, em Barão de Cocais, e a B1A da Emicon, em Brumadinho.",
+   "O volume de lama acumulado nas estruturas pendentes é superlativo. Os diques do Sistema Pontal da Vale, em Itabira, somam 209,8 milhões de metros cúbicos. A barragem de Germano, da Samarco, em Mariana, retém 130 milhões. A barragem B4 da CSN, em Congonhas, armazena outros 130 milhões. Elas pesam sobre as bacias do Rio Paraopeba e do Rio Doce."
   ]
  },
  {
   "slug": "belo-horizonte-contratos-orcamento-capital",
   "titulo": "Belo Horizonte: orçamento de R$ 19 bilhões e mais de 6.800 contratos no PNCP",
   "subtitulo": "Raio-x da capital mineira reúne despesas em saúde, contratos de limpeza urbana e monitoramento diário de atos normativos e decretos.",
-  "resumo": "Auditoria cívica em Belo Horizonte examina a execução orçamentária da capital, o volume recorde de contratações públicas e os indicadores de saneamento e educação.",
+  "resumo": "Auditoria cívica examina a execução orçamentária de Belo Horizonte. Mostra o volume recorde de contratações públicas e os indicadores de saneamento e educação.",
   "categoria": "Relatório Técnico",
   "frente": "cidades",
   "subfrente": "Belo Horizonte — Capital",
@@ -966,7 +966,7 @@
    "dom-pbh",
    "transparencia-capital"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Belo Horizonte: orçamento de R$ 19 bilhões e mais de 6.800 contratos no PNCP. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/belo-horizonte-contratos-orcamento-capital>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Belo Horizonte: orçamento de R$ 19 bilhões e mais de 6.800 contratos no PNCP. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/belo-horizonte-contratos-orcamento-capital>.",
   "citacaoBibtex": "@article{onsa2026bh,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Belo Horizonte: orçamento de R$ 19 bilhões e mais de 6.800 contratos no PNCP},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/belo-horizonte-contratos-orcamento-capital}\n}",
   "fontesOficiais": [
    {
@@ -1002,17 +1002,17 @@
   ],
   "recomendacaoVerificar": "Consulte o painel da capital na rota [Belo Horizonte](/bh). Para verificar editais e atas de registro de preços, acerte os filtros no [PNCP](https://pncp.gov.br) usando o CNPJ da prefeitura (18.715.383/0001-40).",
   "paragrafos": [
-   "Com 2.315.560 moradores contabilizados no Censo Demográfico do IBGE, a capital de Minas Gerais gere o maior orçamento municipal do estado. A LOA - a Lei Orçamentária Anual aprovada pela Câmara Municipal para o exercício financeiro de 2026 fixou as despesas de Belo Horizonte em R$ 19,4 bilhões. Pela distribuição constitucional, mais de 40% das despesas correntes são alocadas diretamente nas secretarias municipais de Saúde e Educação.",
-   "A base de dados cívica do Controle Popular cataloga 6.878 contratos públicos ativos da administração direta e indireta de Belo Horizonte na página de [Belo Horizonte](/bh). O volume representa o maior contingente de compras monitorado entre todas as prefeituras atendidas pelo projeto, englobando autarquias como a Sudecap (obras e pavimentação), a SLU (Superintendência de Limpeza Urbana), a Prodabel (empresa de tecnologia da informação) e a BHTRANS.",
-   "A plataforma consome diariamente as publicações do DOM - o Diário Oficial do Município disponível em dom-web.pbh.gov.br, analisando decretos de desapropriação para contenção de enchentes, portarias de nomeação de cargos de confiança e editais de grandes licitações viárias na capital.",
-   "No campo dos serviços essenciais, o município sustenta uma taxa de 94,2% de coleta e tratamento de esgoto sanitário pelo SNIS - o Sistema Nacional de Informações sobre Saneamento, impactando a bacia do Rio das Velhas e os ribeirões Arrudas e Onça. Já a rede pública do SUS conta com 1.280 estabelecimentos cadastrados no CNES, funcionando como polo de média e alta complexidade hospitalar para mais de 5 milhões de mineiros da região metropolitana."
+   "Belo Horizonte tem 2.315.560 moradores, segundo o Censo Demográfico do IBGE. IBGE é o Instituto Brasileiro de Geografia e Estatística. A capital gere o maior orçamento municipal de Minas Gerais. A LOA fixou as despesas de 2026 em R$ 19,4 bilhões. A sigla significa Lei Orçamentária Anual, aprovada pela Câmara Municipal. Mais de 40% das despesas correntes vão para Saúde e Educação.",
+   "O Controle Popular cataloga 6.878 contratos públicos ativos da capital. A página é a de [Belo Horizonte](/bh). É o maior contingente de compras monitorado pelo projeto. O catálogo engloba autarquias como a Sudecap, de obras e pavimentação. Inclui a SLU, Superintendência de Limpeza Urbana. Também entram a Prodabel, empresa de tecnologia, e a BHTRANS.",
+   "A plataforma consome diariamente as publicações do DOM. A sigla designa o Diário Oficial do Município, disponível em dom-web.pbh.gov.br. A análise cobre decretos de desapropriação para contenção de enchentes. Também cobre portarias de nomeação e editais de grandes licitações viárias.",
+   "Nos serviços essenciais, o município sustenta 94,2% de coleta e tratamento de esgoto. O dado vem do SNIS, o Sistema Nacional de Informações sobre Saneamento. O esgoto tratado beneficia a bacia do Rio das Velhas e os ribeirões Arrudas e Onça. A rede pública do SUS tem 1.280 estabelecimentos cadastrados no CNES. Ela atende mais de 5 milhões de mineiros da região metropolitana em média e alta complexidade hospitalar."
   ]
  },
  {
   "slug": "comunicabr-repasses-federais-municipios-mg",
   "titulo": "ComunicaBR: R$ 139 bilhões da União nos 853 municípios de Minas e 61% de dados vazios",
-  "subtitulo": "Base de dados compactada da Presidência da República revela programas sociais e expõe omissões no fornecimento de dados federais.",
-  "resumo": "Radiografia técnica das transferências federais para Minas Gerais analisa indicadores do SUS, Bolsa Família e Fundeb, destacando a diferença entre valor zero e ausência de dado.",
+  "subtitulo": "A base de dados compactada da Presidência revela programas sociais. Ela também expõe omissões no fornecimento de dados federais.",
+  "resumo": "Radiografia das transferências federais para Minas Gerais. Analisa indicadores do SUS (Sistema Único de Saúde), do Bolsa Família e do Fundeb (fundo nacional da educação básica). Destaque para a diferença entre valor zero e ausência de dado.",
   "categoria": "Relatório Técnico",
   "frente": "estado",
   "subfrente": "ComunicaBR & Federalismo Fiscal",
@@ -1029,7 +1029,7 @@
    "fundeb-repasses",
    "transparencia-federal"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. ComunicaBR: R$ 139 bilhões da União nos 853 municípios de Minas e 61% de dados vazios. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/comunicabr-repasses-federais-municipios-mg>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. ComunicaBR: R$ 139 bilhões da União nos 853 municípios de Minas e 61% de dados vazios. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/comunicabr-repasses-federais-municipios-mg>.",
   "citacaoBibtex": "@article{onsa2026comunicabr,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {ComunicaBR: R$ 139 bilhões da União nos 853 municípios de Minas e 61% de dados vazios},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/comunicabr-repasses-federais-municipios-mg}\n}",
   "fontesOficiais": [
    {
@@ -1065,18 +1065,18 @@
   ],
   "recomendacaoVerificar": "Acesse a seção [Governo Federal nas Cidades](/dados/comunicabr) no portal. Escolha a sua cidade para visualizar quais ministérios declararam investimentos e confira a lista de indicadores que a fonte federal deixou em branco.",
   "paragrafos": [
-   "O governo federal mantém a plataforma ComunicaBR para divulgar a atuação e os repasses da União em cada um dos municípios brasileiros. O Controle Popular coletou as informações dos 853 municípios de Minas Gerais e desenvolveu um formato de compressão determinística de dados que consolidou os dados em um índice comparável na página [ComunicaBR](/dados/comunicabr).",
-   "O levantamento totalizou 174.012 indicadores declarados por 21 ministérios federais, representando um fluxo financeiro acumulado que ultrapassa R$ 139 bilhões em programas sociais, previdenciários e de infraestrutura no território mineiro. Entre os principais programas catalogados estão as transferências de renda do Bolsa Família, o BPC - o Benefício de Prestação Continuada para idosos e pessoas com deficiência, o custeio de equipes de Saúde da Família e o fornecimento de medicamentos da Farmácia Popular.",
-   "Entretanto, a auditoria do portal revelou um índice elevado de incompletude nos dados publicados pela Presidência: 61% de todos os itens catalogados (106.446 de 174.012 indicadores) vieram sem nenhum valor publicado pela fonte oficial. Apenas 67.566 itens (39% do acervo) continham dados numéricos preenchidos.",
-   "A investigação editorial do portal ressalta que a ausência de dado não pode ser interpretada como inação das prefeituras. Em temas inteiros, como a categoria 'Governo Digital', o sistema federal veio zerado em 100% dos municípios de Minas Gerais (853 de 853 cidades), configurando uma lacuna da própria fonte federal que divulga a pasta mas não fornece os microdados locais. Já em temas como Meio Ambiente e Infraestrutura, 727 cidades não receberam nenhuma informação cadastrada.",
-   "O portal reforça a ressalva de que o ComunicaBR é um canal de comunicação institucional do governo federal sobre os próprios atos, e não substitui os relatórios contábeis oficiais auditados pelo Tribunal de Contas da União e pelo SIAFI - o Sistema Integrado de Administração Financeira."
+   "O governo federal mantém a plataforma ComunicaBR. Ela divulga a atuação e os repasses da União. Mostra cada município brasileiro. O Controle Popular coletou os dados dos 853 municípios de Minas Gerais. Desenvolveu um formato de compressão que consolidou tudo. O resultado é um índice comparável. Veja na página [ComunicaBR](/dados/comunicabr).",
+   "O levantamento somou 174.012 indicadores. Eles foram declarados por 21 ministérios federais. O fluxo financeiro acumulado ultrapassa R$ 139 bilhões. Esse dinheiro banca programas sociais, previdenciários e de infraestrutura em Minas. Entre os programas catalogados está o Bolsa Família. Também o BPC (Benefício de Prestação Continuada para idosos e pessoas com deficiência). Há ainda o custeio de equipes de Saúde da Família. E o fornecimento de medicamentos da Farmácia Popular.",
+   "A auditoria revelou um problema: 61% dos itens vieram vazios. São 106.446 de 174.012 indicadores sem valor publicado pela fonte oficial. Apenas 67.566 itens (39%) tinham dados numéricos preenchidos.",
+   "Dado vazio não é inação da prefeitura. É lacuna da fonte federal. Na categoria 'Governo Digital', o sistema veio zerado. Os 853 municípios de Minas ficaram sem dado. Em Meio Ambiente e Infraestrutura, 727 cidades não receberam informação nenhuma.",
+   "O ComunicaBR é um canal de comunicação institucional. Não substitui os relatórios contábeis oficiais. Eles são auditados pelo TCU (Tribunal de Contas da União). Também passam pelo SIAFI (Sistema Integrado de Administração Financeira)."
   ]
  },
  {
   "slug": "diamantina-diario-oficial-atos-contratos",
   "titulo": "Diamantina em 16.601 atos oficiais: série de cinco anos do Diário Oficial revela contratações e decretos",
-  "subtitulo": "Coleta ininterrupta de 80 meses analisa publicações da Prefeitura e da Câmara no Alto Jequitinhonha por taxonomia determinística.",
-  "resumo": "Análise técnica do acervo do Diário Oficial de Diamantina examina mais de 16 mil publicações oficiais desde 2020, catalogando licitações, portarias e convênios.",
+  "subtitulo": "Coleta contínua de 80 meses analisa publicações oficiais no Alto Jequitinhonha. A classificação dos atos segue regras fixas e automáticas.",
+  "resumo": "Análise do acervo do Diário Oficial de Diamantina. Examina mais de 16 mil publicações oficiais desde 2020. Cataloga licitações, portarias e convênios.",
   "categoria": "Relatório Técnico",
   "frente": "cidades",
   "subfrente": "Diamantina — Patrimônio & Gestão",
@@ -1092,7 +1092,7 @@
    "contratos-diamantina",
    "patrimonio-jequitinhonha"
   ],
-  "citacaoAbnt": "ONSA — OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. Diamantina em 16.601 atos oficiais: série de cinco anos do Diário Oficial revela contratações e decretos. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/diamantina-diario-oficial-atos-contratos>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Diamantina em 16.601 atos oficiais: série de cinco anos do Diário Oficial revela contratações e decretos. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/diamantina-diario-oficial-atos-contratos>.",
   "citacaoBibtex": "@article{onsa2026diamantinadiario,\n  author = {{ONSA — Observatório Nacional Socioambiental}},\n  title = {Diamantina em 16.601 atos oficiais: série de cinco anos do Diário Oficial revela contratações e decretos},\n  journal = {Controle Popular — Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/diamantina-diario-oficial-atos-contratos}\n}",
   "fontesOficiais": [
    {
@@ -1128,17 +1128,17 @@
   ],
   "recomendacaoVerificar": "Consulte o painel de [Diamantina](/diamantina) no portal. Para localizar uma nomeação ou extrato de contrato antigo, use o mecanismo de busca textual no [Diário Oficial de Diamantina](/diamantina/diario-oficial).",
   "paragrafos": [
-   "Diamantina, cidade histórica do Alto Jequitinhonha tombada como Patrimônio Mundial pela UNESCO, conta com uma série temporal contínua de publicações oficiais catalogada pelo Controle Popular. O projeto realizou a extração completa de 16.601 atos oficiais veiculados entre janeiro de 2020 e julho de 2026 no sistema SIGPub - a plataforma gerenciada pela AMM-MG - a Associação Mineira de Municípios.",
-   "A coleta abrange 80 meses ininterruptos de publicações e alcança as duas entidades públicas municipais: a Prefeitura Municipal (entidade nº 905 no diário estadual) e a Câmara Municipal de Diamantina (entidade nº 21672). O levantamento abrange desde a penúltima gestão municipal até os atos da gestão corrente.",
-   "Para organizar a massa de documentos, o portal implementou uma taxonomia determinística com sete categorias oficiais: decretos executivos, editais de licitação e pregões, extratos de contratos e termos aditivos, termos de convênio e parceria, portarias de nomeação e movimentação de servidores, leis aprovadas pelo legislativo e relatórios de prestação de contas fiscais.",
-   "Além dos atos normativos, a página de [Diamantina](/diamantina) integra 315 contratos cadastrados no PNCP, associando compras públicas aos projetos de preservação cultural, pavimentação urbana e atenção básica de saúde nos distritos históricos da região."
+   "Diamantina é cidade histórica do Alto Jequitinhonha. É tombada como Patrimônio Mundial pela UNESCO. O Controle Popular catalogou uma série contínua de publicações oficiais. A extração completa somou 16.601 atos oficiais. Eles foram veiculados entre janeiro de 2020 e julho de 2026. O sistema usado foi o SIGPub. É a plataforma da AMM-MG (Associação Mineira de Municípios).",
+   "A coleta abrange 80 meses ininterruptos. Alcança as duas entidades públicas municipais. São elas: a Prefeitura Municipal (entidade nº 905). E a Câmara Municipal (entidade nº 21672). O levantamento cobre da penúltima gestão municipal até a gestão atual.",
+   "Para organizar a massa de documentos, o portal usa sete categorias fixas. Decretos executivos. Editais de licitação e pregões. Extratos de contratos e termos aditivos. Termos de convênio e parceria. Portarias de nomeação e movimentação de servidores. Leis aprovadas pelo legislativo. Relatórios de prestação de contas fiscais.",
+   "A página de [Diamantina](/diamantina) também integra 315 contratos do PNCP. O PNCP é o Portal Nacional de Contratações Públicas. As compras públicas aparecem ligadas aos projetos de preservação cultural. Também à pavimentação urbana e à atenção básica de saúde. Vale para os distritos históricos da região."
   ]
  },
  {
   "slug": "tarifa-social-energia-agua-como-acessar",
-  "titulo": "Tarifa social de energia e agua: veja como pedir o desconto em cada estado",
-  "subtitulo": "Tutorial completo por distribuidora com telefones, sites e criterios de elegibilidade do Cadastro Unico.",
-  "resumo": "Mais de 10 milhoes de familias tem direito a desconto de ate 65% na conta de luz e agua, mas nao sabem como pedir. O Controle Popular reune o passo a passo por distribuidora, os telefones e os links oficiais de cada estado.",
+  "titulo": "Tarifa social de energia e água: veja como pedir o desconto em cada estado",
+  "subtitulo": "Tutorial completo por distribuidora. Reúne telefones, sites e critérios de elegibilidade do Cadastro Único.",
+  "resumo": "Mais de 10 milhões de famílias têm direito ao desconto na conta de luz e água. O corte chega a até 65%. Mas muitas não sabem como pedir. O Controle Popular reúne o passo a passo por distribuidora. Inclui telefones e links oficiais de cada estado.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Direitos Sociais e Tarifas",
@@ -1161,7 +1161,7 @@
    "desconto-conta-agua",
    "baixa-renda"
   ],
-  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Tarifa social de energia e agua: veja como pedir o desconto em cada estado. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/tarifa-social-energia-agua-como-acessar>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Tarifa social de energia e água: veja como pedir o desconto em cada estado. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/tarifa-social-energia-agua-como-acessar>.",
   "citacaoBibtex": "@article{onsa2026tarifasocial,\n  author = {{ONSA - Observatorio Nacional Socioambiental}},\n  title = {Tarifa social de energia e agua: veja como pedir o desconto em cada estado},\n  journal = {Controle Popular - Observatorio Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/tarifa-social-energia-agua-como-acessar}\n}",
   "fontesOficiais": [
    {
@@ -1201,19 +1201,19 @@
   ],
   "recomendacaoVerificar": "Consulte a [Central de Canais LAI](/direitos-em-movimento/informacao) do portal para encontrar o telefone e o site de ouvidoria da distribuidora da sua cidade.",
   "paragrafos": [
-   "A Tarifa Social de Energia Eletrica (TSEE) e o programa de desconto na conta de agua sao direitos garantidos por lei para familias de baixa renda inscritas no Cadastro Unico (CadUnico) do governo federal. Mesmo assim, levantamento da ANEEL aponta que mais de 10 milhoes de familias eleg?veis ainda nao recebem o beneficio por desconhecer o processo de cadastro.",
-   "O primeiro passo e o mesmo para energia e agua: estar inscrito no CadUnico. A inscricao e feita gratuitamente no CRAS (Centro de Referencia de Assistencia Social) mais proximo, com RG, CPF e comprovante de renda de todos os moradores do imovel. Familias com renda per capita de ate R$ 218 (meio salario minimo de 2024) tem prioridade.",
-   "Para a energia eletrica, apos a inscricao no CadUnico, o desconto e automatico: a distribuidora consulta a base do governo mensalmente. Se o desconto nao aparecer na proxima fatura, ligue para a central da sua distribuidora: CEMIG (MG): 116; ENEL SP: 0800 722 0120; ENEL RJ: 0800 028 0120; CPFL: 0800 010 1010; Light (RJ): 0800 721 1222; Equatorial (varios estados): 0800 086 0196; Energisa: 0800 722 7272; Neoenergia/Coelba (BA): 116. O portal centralizou esses contatos em uma unica pagina: [Central de Canais LAI](/direitos-em-movimento/informacao).",
-   "Para a agua e saneamento, o procedimento varia por concessionaria. Em Minas Gerais, a COPASA tem o programa 'Conta Solidaria': o morador leva o comprovante de inscricao no CadUnico a qualquer agencia da COPASA ou liga para o 115. Em Sao Paulo, a Sabesp aplica desconto automatico para beneficiarios do CadUnico. No Rio de Janeiro, a Cedae e a Aguas do Rio pedem um formulario no site ou presencialmente. As concessionarias do Norte e Nordeste (Corsan, Compesa, Cagece) seguem o mesmo modelo do CadUnico, com atendimento pelo 0800 de cada uma.",
-   "Quem ja recebe Bolsa Familia automaticamente esta inscrito no CadUnico e tem direito ao desconto de luz. O que pode impedir o beneficio e o CPF desatualizado na conta de energia, o imovel estar no nome de outra pessoa ou a concessionaria local ainda nao ter integrado o sistema. Nesse caso, va a uma agencia com o comprovante do CadUnico e peca o ajuste manualmente.",
-   "Para verificar se voce esta no CadUnico, acesse o aplicativo 'Meu CadUnico' (Android e iOS) ou ligue para o CRAS. O historico de contas e o desconto aplicado ficam disponiveis no site ou app da distribuidora. O Controle Popular mantem a lista atualizada de telefones, e-mails e enderecos de todas as distribuidoras e concessionarias de agua em [/direitos-em-movimento/informacao](/direitos-em-movimento/informacao)."
+   "A Tarifa Social de Energia Elétrica (TSEE) é um direito garantido por lei. O mesmo vale para o desconto na conta de água. Vale para famílias de baixa renda do Cadastro Único (CadÚnico). O CadÚnico é o cadastro do governo federal. Levantamento da ANEEL aponta um problema. A ANEEL é a Agência Nacional de Energia Elétrica. Mais de 10 milhões de famílias elegíveis ainda não recebem o benefício. O motivo é desconhecer o processo de cadastro.",
+   "O primeiro passo é o mesmo para energia e água. É preciso estar inscrito no CadÚnico. A inscrição é gratuita. Ela acontece no CRAS mais próximo. O CRAS é o Centro de Referência de Assistência Social. Leve RG, CPF e comprovante de renda. Vale a renda de todos os moradores do imóvel. Famílias com renda por pessoa de até R$ 218 têm prioridade. Esse valor é meio salário mínimo de 2024.",
+   "Para a energia elétrica, o desconto é automático após a inscrição. A distribuidora consulta a base do governo todo mês. Se o desconto não aparecer na próxima fatura, ligue para a distribuidora. CEMIG (MG): 116. ENEL SP: 0800 722 0120. ENEL RJ: 0800 028 0120. CPFL: 0800 010 1010. Light (RJ): 0800 721 1222. Equatorial (vários estados): 0800 086 0196. Energisa: 0800 722 7272. Neoenergia/Coelba (BA): 116. O portal centralizou esses contatos numa única página. É a [Central de Canais LAI](/direitos-em-movimento/informacao). A LAI é a Lei de Acesso à Informação.",
+   "Para a água e o saneamento, o procedimento varia por concessionária. Em Minas Gerais, a COPASA tem o programa 'Conta Solidária'. O morador leva o comprovante do CadÚnico a qualquer agência da COPASA. Também pode ligar para o 115. Em São Paulo, a Sabesp aplica o desconto automático. No Rio de Janeiro, a Cedae e a Águas do Rio pedem formulário. Ele está no site ou é entregue presencialmente. As concessionárias do Norte e Nordeste seguem o mesmo modelo. Corsan, Compesa e Cagece atendem pelo 0800 de cada uma.",
+   "Quem já recebe Bolsa Família está inscrito no CadÚnico. Também tem direito ao desconto de luz. O que pode impedir o benefício? O CPF desatualizado na conta de energia. O imóvel em nome de outra pessoa. Ou a concessionária ainda não integrada ao sistema. Nesse caso, vá a uma agência. Leve o comprovante do CadÚnico. Peça o ajuste manualmente.",
+   "Para verificar se você está no CadÚnico, use o aplicativo 'Meu CadÚnico'. Ele existe para Android e iOS. Também dá para ligar para o CRAS. O histórico de contas fica no site ou no app da distribuidora. O Controle Popular mantém a lista atualizada de contatos. Ela reúne telefones, e-mails e endereços. Vale para as distribuidoras e as concessionárias de água. Veja em [/direitos-em-movimento/informacao](/direitos-em-movimento/informacao)."
   ]
  },
  {
   "slug": "judiciario-varas-gabinetes-como-acessar",
-  "titulo": "Como falar com a Justica: varas, gabinetes e balcoes de atendimento em Minas Gerais",
-  "subtitulo": "O portal mapeia 298 comarcas do TJMG com telefones, e-mails e enderecos para atendimento ao cidadao.",
-  "resumo": "O Controle Popular publica o primeiro mapa completo das comarcas e varas do TJMG com dados de contato verificados: telefone, e-mail e endereco de 298 comarcas distribuidas nos 853 municipios de Minas Gerais.",
+  "titulo": "Como falar com a Justiça: varas, gabinetes e balcões de atendimento em Minas Gerais",
+  "subtitulo": "O portal mapeia 298 comarcas do TJMG. Reúne telefones, e-mails e endereços para atendimento ao cidadão.",
+  "resumo": "O Controle Popular publica o primeiro mapa completo das comarcas e varas do TJMG. O TJMG é o Tribunal de Justiça de Minas Gerais. Os dados de contato foram verificados. São telefone, e-mail e endereço de 298 comarcas. Elas se distribuem nos 853 municípios de Minas Gerais.",
   "categoria": "Explicador",
   "frente": "judiciario",
   "subfrente": "Acesso a Justica",
@@ -1231,7 +1231,7 @@
    "balcao-virtual",
    "gabinetes-mg"
   ],
-  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Como falar com a Justica: varas, gabinetes e balcoes de atendimento em Minas Gerais. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/judiciario-varas-gabinetes-como-acessar>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. Como falar com a Justiça: varas, gabinetes e balcões de atendimento em Minas Gerais. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/judiciario-varas-gabinetes-como-acessar>.",
   "citacaoBibtex": "@article{onsa2026judiciariovaras,\n  author = {{ONSA - Observatorio Nacional Socioambiental}},\n  title = {Como falar com a Justica: varas, gabinetes e balcoes de atendimento em Minas Gerais},\n  journal = {Controle Popular - Observatorio Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/judiciario-varas-gabinetes-como-acessar}\n}",
   "fontesOficiais": [
    {
@@ -1267,18 +1267,18 @@
   ],
   "recomendacaoVerificar": "Acesse o painel completo em [/judiciario/contatos](/judiciario/contatos). Para assistencia juridica gratuita, consulte a [DPMG](/judiciario/instituicoes#dpmg).",
   "paragrafos": [
-   "O Tribunal de Justica de Minas Gerais (TJMG) e o maior tribunal estadual do Brasil em numero de processos. Com um orcamento de R$ 14,9 bilhoes proposto na LOA 2025, atende os 853 municipios mineiros por meio de 298 comarcas distribuidas em todo o estado. O Controle Popular publica agora o mapa completo dessas comarcas com dados de contato verificados.",
-   "Para o cidadao que precisa protocolar uma peticao, agendar uma audiencia ou consultar um processo, o caminho mais rapido e o Balcao Virtual do TJMG (balcaovirtual.tjmg.jus.br), disponivel 24 horas. No balcao virtual e possivel consultar processos, autenticar documentos e agendar atendimento presencial sem sair de casa.",
-   "Quem nao tem acesso a internet ou precisa de orientacao juridica gratuita deve procurar a Defensoria Publica de Minas Gerais (DPMG). A Defensoria opera em comarcas proprias e em salas de atendimento dentro dos foruns. O telefone nacional da Defensoria e o 129 (gratuito). Em Belo Horizonte, o atendimento presencial fica na Av. Raja Gabaglia, 1.292, Luxemburgo.",
-   "O Controle Popular identificou que 176 comarcas de Minas Gerais nao tem defensor publico lotado. Nessas cidades, o atendimento e feito por defensores itinerantes ou por convenio com a OAB local. A lista completa das comarcas sem defensor e o mapa de cobertura estao na pagina [Fichas TJMG, MPMG e DPMG](/judiciario/instituicoes#fichas-instituicoes).",
-   "Para processos que envolvem trabalho, o caminho e o TRT da 3a Regiao (MG) com sede em Belo Horizonte. Para causas federais ? INSS, Receita Federal, IBAMA ? a Justica Federal de Minas tem varas em BH, Juiz de Fora, Uberlandia, Uberaba, Montes Claros, Governador Valadares e Pocos de Caldas. Todos os contatos estao reunidos em [/judiciario/contatos](/judiciario/contatos)."
+   "O Tribunal de Justiça de Minas Gerais (TJMG) é o maior tribunal estadual do Brasil. Ele lidera em número de processos. A LOA 2025 propôs R$ 14,9 bilhões de orçamento. A LOA é a Lei Orçamentária Anual. O tribunal atende os 853 municípios mineiros. Usa 298 comarcas distribuídas em todo o estado. O Controle Popular publica agora o mapa completo dessas comarcas. Os dados de contato foram verificados.",
+   "Precisa protocolar uma petição? Agendar uma audiência? Consultar um processo? O caminho mais rápido é o Balcão Virtual do TJMG. O endereço é balcaovirtual.tjmg.jus.br. Funciona 24 horas. Nele, você consulta processos e autentica documentos. Também agenda atendimento presencial sem sair de casa.",
+   "Sem internet? Precisa de orientação jurídica gratuita? Procure a Defensoria Pública de Minas Gerais (DPMG). A Defensoria opera em comarcas próprias. Também atende em salas dentro dos fóruns. O telefone nacional da Defensoria é o 129. A ligação é gratuita. Em Belo Horizonte, o atendimento presencial fica na Av. Raja Gabaglia, 1.292, bairro Luxemburgo.",
+   "O Controle Popular identificou um dado importante. São 176 comarcas sem defensor público lotado. Nessas cidades, o atendimento vem de defensores itinerantes. Ou de convênio com a OAB local. A OAB é a Ordem dos Advogados do Brasil. A lista completa das comarcas sem defensor está na página [Fichas TJMG, MPMG e DPMG](/judiciario/instituicoes#fichas-instituicoes). O MPMG é o Ministério Público de Minas Gerais. A DPMG é a Defensoria Pública de Minas Gerais.",
+   "Processos trabalhistas vão para o TRT da 3ª Região (MG). O TRT é o Tribunal Regional do Trabalho. A sede fica em Belo Horizonte. Causas federais vão para a Justiça Federal. Elas envolvem INSS, Receita Federal e IBAMA. Há varas em BH, Juiz de Fora, Uberlândia e Uberaba. Também em Montes Claros, Governador Valadares e Poços de Caldas. Todos os contatos estão em [/judiciario/contatos](/judiciario/contatos)."
   ]
  },
  {
   "slug": "lai-acesso-informacao-13-anos-como-pedir",
-  "titulo": "LAI completa 13 anos: como qualquer pessoa pode pedir informacao a qualquer orgao publico",
+  "titulo": "LAI completa 13 anos: como qualquer pessoa pode pedir informação a qualquer órgão público",
   "subtitulo": "Prazos, gratuidade, recursos e os canais de todas as esferas: federal, estadual e municipal.",
-  "resumo": "A Lei de Acesso a Informacao (LAI) garante desde 2011 o direito de qualquer pessoa receber documentos, contratos e dados de orgaos publicos sem custo e sem precisar explicar o motivo. O Controle Popular explica como funciona e reune os canais de 445 entidades.",
+  "resumo": "A Lei de Acesso à Informação (LAI) garante um direito desde 2011. Qualquer pessoa pode pedir documentos e contratos de órgãos públicos. Não há custo. Não precisa explicar o motivo. O Controle Popular explica como funciona. Reúne os canais de 445 entidades.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Acesso a Informacao",
@@ -1296,7 +1296,7 @@
    "transparencia-publica",
    "pedido-informacao"
   ],
-  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. LAI completa 13 anos: como qualquer pessoa pode pedir informacao a qualquer orgao publico. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/lai-acesso-informacao-13-anos-como-pedir>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. LAI completa 13 anos: como qualquer pessoa pode pedir informação a qualquer órgão público. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/lai-acesso-informacao-13-anos-como-pedir>.",
   "citacaoBibtex": "@article{onsa2026lai13anos,\n  author = {{ONSA - Observatorio Nacional Socioambiental}},\n  title = {LAI completa 13 anos: como qualquer pessoa pode pedir informacao a qualquer orgao publico},\n  journal = {Controle Popular - Observatorio Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/lai-acesso-informacao-13-anos-como-pedir}\n}",
   "fontesOficiais": [
    {
@@ -1332,18 +1332,18 @@
   ],
   "recomendacaoVerificar": "Consulte o guia pratico e os 445 canais de acesso em [/direitos-em-movimento/informacao](/direitos-em-movimento/informacao).",
   "paragrafos": [
-   "A Lei n. 12.527/2011 ? conhecida como Lei de Acesso a Informacao (LAI) ? garante a qualquer pessoa, brasileira ou estrangeira, o direito de solicitar documentos, contratos, salarios, atas e dados de qualquer orgao da administracao publica federal, estadual ou municipal. O pedido e gratuito, pode ser feito pela internet ou pessoalmente, e o orgao tem 20 dias para responder.",
-   "Para orgaos federais ? IBAMA, INSS, Receita Federal, Ministerios ? o canal e o Fala.BR (falabr.cgu.gov.br), plataforma unificada da CGU. O cadastro e feito com CPF e o pedido nao precisa de justificativa. Em Minas Gerais, a CGE-MG e a OGE-MG operam o sistema estadual, acessivel em ouvidoriageral.mg.gov.br. Para prefeituras, cada municipio tem um e-SIC proprio, cujos links estao reunidos pelo Controle Popular em [/direitos-em-movimento/informacao](/direitos-em-movimento/informacao).",
-   "Se o orgao negar o pedido, o cidadao pode recorrer em ate tres instancias internas. Se a negativa persistir, pode acionar a CGU (para orgaos federais) ou o Tribunal de Contas e o Ministerio Publico (para orgaos estaduais e municipais). A CMRI (Comissao Mista de Reavaliacao de Informacoes) e a instancia final para informacoes classificadas como secretas.",
-   "O Controle Popular mapeou 445 entidades com canais LAI verificados: 199 prefeituras municipais das cidades estrategicas do portal, 199 camaras municipais, 21 orgaos federais e estaduais e concessoes de agua, luz e telefone. Todos com e-mail, telefone, horario e link do e-SIC. O acervo e filtrado por estado, categoria e nome do orgao e pode ser baixado em planilha CSV.",
-   "Uma dica pratica: ao fazer o pedido, seja especifico. Em vez de 'quero ver os contratos da prefeitura', escreva 'solicitacao das notas de empenho dos contratos de limpeza publica firmados entre janeiro de 2023 e dezembro de 2024, com razao social do fornecedor e valor'. Quanto mais preciso o pedido, mais rapida e completa a resposta. O Controle Popular mantem um guia com modelos de pedido na pagina [Central de Canais LAI](/direitos-em-movimento/informacao)."
+   "A Lei nº 12.527/2011 é a Lei de Acesso à Informação (LAI). Ela vale para qualquer pessoa, brasileira ou estrangeira. O direito é solicitar documentos, contratos, salários, atas e dados. Vale para qualquer órgão público federal, estadual ou municipal. O pedido é gratuito. Pode ser feito pela internet ou pessoalmente. O órgão tem 20 dias para responder.",
+   "Para órgãos federais, o canal é o Fala.BR. O endereço é falabr.cgu.gov.br. É a plataforma unificada da CGU (Controladoria-Geral da União). Serve para IBAMA, INSS, Receita Federal e Ministérios. O cadastro é feito com CPF. O pedido não precisa de justificativa. Em Minas Gerais, o sistema estadual fica em ouvidoriageral.mg.gov.br. Quem opera são a CGE-MG (Controladoria-Geral do Estado) e a OGE-MG (Ouvidoria-Geral do Estado). Cada prefeitura tem um e-SIC próprio. O e-SIC é o sistema eletrônico do Serviço de Informação ao Cidadão. O Controle Popular reúne os links em [/direitos-em-movimento/informacao](/direitos-em-movimento/informacao).",
+   "O órgão negou o pedido? Você pode recorrer em até três instâncias internas. Se a negativa persistir, acione a CGU. Isso vale para órgãos federais. Para órgãos estaduais e municipais, acione o Tribunal de Contas e o Ministério Público. A CMRI é a instância final. A CMRI é a Comissão Mista de Reavaliação de Informações. Ela cuida das informações classificadas como secretas.",
+   "O Controle Popular mapeou 445 entidades com canais LAI verificados. São 199 prefeituras das cidades estratégicas do portal. Também 199 câmaras municipais. Há ainda 21 órgãos federais e estaduais. Entram na lista as concessões de água, luz e telefone. Cada registro tem e-mail, telefone, horário e link do e-SIC. O acervo tem filtro por estado, categoria e nome do órgão. Dá para baixar em planilha CSV.",
+   "Dica prática: seja específico ao fazer o pedido. Em vez de 'quero ver os contratos da prefeitura', peça: 'notas de empenho dos contratos de limpeza pública firmados entre janeiro de 2023 e dezembro de 2024, com razão social do fornecedor e valor'. Pedido preciso gera resposta mais rápida e completa. O Controle Popular mantém um guia com modelos de pedido. Ele está na página [Central de Canais LAI](/direitos-em-movimento/informacao)."
   ]
  },
  {
   "slug": "waico-ia-codigo-aberto-brasil",
   "titulo": "WAICO: 29 países, entre eles o Brasil, fundam organização mundial de IA; governo brasileiro anuncia supercomputador e nuvem nacional",
-  "subtitulo": "A aliança proposta pela China aposta em cooperação e código aberto com o Sul Global. No Brasil, o pacote de IA soma mais de R$ 2,3 bilhões em supercomputação e a compra de um supercomputador de cerca de R$ 1 bilhão no RN.",
-  "resumo": "A Organização Mundial para Cooperação em Inteligência Artificial (WAICO) foi fundada em 16/07/2026, em Xangai, por 29 países assinatários, incluindo o Brasil. Em paralelo, o governo brasileiro anunciou nova etapa de infraestrutura de IA: supercomputador de cerca de R$ 1 bilhão no Rio Grande do Norte, Nuvem Nacional e mais de R$ 2,3 bilhões em supercomputação. O Controle Popular explica o que isso muda para o cidadão e por que o código aberto está no centro do debate.",
+  "subtitulo": "A aliança proposta pela China aposta em cooperação. E em código aberto com o Sul Global. No Brasil, o pacote de IA (Inteligência Artificial) soma mais de R$ 2,3 bilhões em supercomputação. Inclui a compra de um supercomputador de cerca de R$ 1 bilhão no Rio Grande do Norte.",
+  "resumo": "Em 16/07/2026, nasceu a Organização Mundial para Cooperação em Inteligência Artificial (WAICO). A fundação foi em Xangai. Assinaram 29 países, incluindo o Brasil. Em paralelo, o governo brasileiro anunciou nova etapa de infraestrutura de IA. Inclui supercomputador de cerca de R$ 1 bilhão no Rio Grande do Norte. Também uma Nuvem Nacional e mais de R$ 2,3 bilhões em supercomputação. O Controle Popular explica o que muda para o cidadão. E por que o código aberto está no centro do debate.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Tecnologia & IA Livre",
@@ -1362,7 +1362,7 @@
    "soberania-tecnologica",
    "sul-global"
   ],
-  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. WAICO: 29 países, entre eles o Brasil, fundam organização mundial de IA; governo brasileiro anuncia supercomputador e nuvem nacional. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/waico-ia-codigo-aberto-brasil>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. WAICO: 29 países, entre eles o Brasil, fundam organização mundial de IA; governo brasileiro anuncia supercomputador e nuvem nacional. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/waico-ia-codigo-aberto-brasil>.",
   "citacaoBibtex": "@article{onsa2026waico,\n  author = {{ONSA - Observatório Nacional Socioambiental}},\n  title = {WAICO: 29 países, entre eles o Brasil, fundam organização mundial de IA},\n  journal = {Controle Popular - Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/waico-ia-codigo-aberto-brasil}\n}",
   "fontesOficiais": [
    {
@@ -1410,23 +1410,23 @@
   ],
   "recomendacaoVerificar": "Acompanhe o edital do supercomputador no Diario Oficial da Uniao e a pagina /tecnologia do portal.",
   "paragrafos": [
-   "Em 16 de julho de 2026, em Xangai, 29 países assinaram o acordo de fundação da Organização Mundial para Cooperação em Inteligência Artificial (World Artificial Intelligence Cooperation Organization, WAICO). O Brasil está na lista de signatários, segundo nota conjunta do Ministério das Relações Exteriores, do MCTI e do Ministério da Gestão e Inovação publicada no gov.br. A organização tem sede permanente em Xangai e nasceu de uma mesa proposta pela China em julho de 2025, na Conferência Mundial de IA.",
-   "A promessa declarada da nova organização é a cooperação multilateral em IA, com espaço maior para as vozes do chamado Sul Global: os países que consomem a tecnologia mas decidem pouco sobre como ela funciona. O contraponto é explícito: hoje, as grandes potências de modelos fechados concentram o poder de definir como os sistemas de IA são treinados, distribuídos e regulados.",
-   "Por que o código aberto está no centro dessa disputa? Porque pesos de modelo abertos podem ser baixados, rodados e ajustados por qualquer governo, universidade, organização popular ou empresa, dentro do próprio país, sem depender do aval de um serviço estrangeiro. A China construiu sua presença global nessa rota: os modelos abertos que lideram os repositórios públicos referem-se a laboratórios chineses, e a decisão de publicar os pesos completos virou ferramenta de diplomacia técnica.",
-   "Para o cidadão, modelos abertos são corda de segurança dupla: podem ser auditados por terceiros, o que faz diferença quando a decisão automatizada atinge sua vida, e podem rodar em servidor próprio. Quando o modelo roda na máquina de terceiros, quem dita as condições de uso é o dono do servidor. Quando roda no servidor público ou da universidade, quem manda é a regra pública.",
-   "Do lado brasileiro, o governo anunciou em 20 de agosto de 2026 uma nova etapa da estratégia digital para IA. O pacote inclui a compra, por edital competitivo, de um supercomputador dedicado a inteligência artificial — investimento estimado em cerca de R$ 1 bilhão, abrigado no Rio Grande do Norte, para ampliar a capacidade computacional do país de treinar e rodar modelos nacionais — e a estruturação de uma Nuvem Nacional de IA para uso por instituições públicas e por setores da sociedade civil.",
-   "O edital da compra do supercomputador sai no Diário Oficial da União, reportou a Agência Brasil, e os recursos vêm do FNDCT, o fundo nacional de ciência e tecnologia. A implantação está conduzida pelo LNCC, o laboratório nacional de computação científica de Petrópolis (RJ), que também cuidará da formação de profissionais e da transferência de tecnologia. No conjunto dos anúncios, a capacidade nacional de supercomputação para IA recebe mais de R$ 2,3 bilhões.",
-   "O pacote não parte do zero: é um novo capítulo do Plano Brasileiro de Inteligência Artificial (PBIA), o plano \"IA para o Bem de Todos\", publicado em 2024 com previsão de até R$ 23 bilhões até 2028. O capítulo novo é explícito: não basta ter modelo, é preciso computação para treinar, e capacidade nacional para treiná-los e auditá-los.",
-   "A ligação com a WAICO não é só diplomática. A maioria esmagadora dos signatários vem do Sul Global, e a troca de modelos de pesos abertos, padrões de interoperabilidade e programas de formação faz parte da agenda declarada da nova organização. Para o Brasil, a aposta é que o país possa treinar modelos em português com dados públicos brasileiros, contribuir para repositórios abertos e oferecer auditoria pública de modelos. Isso depende de edital bem feito, regra de governança e execução disciplinada — e aí a fiscalização cidadã faz diferença.",
-   "Para quem acompanha o portal, três coisas valem vigia: (1) como se decide na WAICO, qual é a balança de poder entre os membros e como as vozes menores terão vez; (2) se os modelos adotados pelo Brasil terão pesos abertos (auditáveis por qualquer pessoa) ou fechados (inspecionáveis só por quem fornece); (3) o que diz o edital do supercomputador e se a infraestrutura de computação será, de fato, compartilhada com pesquisa pública e sociedade civil, além das grandes empresas.",
-   "Os números desta matéria vêm dos documentos oficiais linkedados no fim da página. Onde a fonte oficial não declara — por exemplo, quantos núcleos e de qual fabricante serão os chips do supercomputador — não entram estimativas aqui: a resposta honesta é que ainda não sabemos, e aqui está o que existe perto."
+   "Em 16 de julho de 2026, 29 países assinaram em Xangai o acordo de fundação. Criaram a Organização Mundial para Cooperação em Inteligência Artificial. A sigla é WAICO. O Brasil está na lista de signatários. A informação vem de nota conjunta de três ministérios. São eles: Relações Exteriores, MCTI (Ministério da Ciência, Tecnologia e Inovação) e Gestão e Inovação. A nota foi publicada no gov.br. A organização tem sede permanente em Xangai. Nasceu de mesa proposta pela China em julho de 2025. Foi na Conferência Mundial de IA.",
+   "A promessa declarada da organização é a cooperação multilateral em IA. Haveria espaço maior para as vozes do Sul Global. Esse grupo reúne os países que consomem a tecnologia. Mas eles decidem pouco sobre como ela funciona. O contraponto é explícito. Hoje, as grandes potências de modelos fechados concentram o poder. Elas definem como os sistemas de IA são treinados, distribuídos e regulados.",
+   "Por que o código aberto está no centro dessa disputa? Pesos de modelo abertos podem ser baixados. Os pesos de modelo são os arquivos internos que definem o funcionamento da IA. Eles podem ser rodados e ajustados. Isso vale para qualquer governo, universidade, organização ou empresa. Acontece dentro do próprio país. Não depende do aval de serviço estrangeiro. A China construiu sua presença global nessa rota. Os modelos abertos que lideram os repositórios públicos são de laboratórios chineses. Publicar os pesos completos virou ferramenta de diplomacia técnica.",
+   "Para o cidadão, modelos abertos são segurança dupla. Eles podem ser auditados por terceiros. Isso faz diferença quando a decisão automatizada atinge sua vida. Também podem rodar em servidor próprio. Se o modelo roda na máquina de terceiros, manda o dono do servidor. Se roda no servidor público ou da universidade, manda a regra pública.",
+   "Do lado brasileiro, o governo anunciou nova etapa da estratégia digital. Foi em 20 de agosto de 2026. O pacote inclui a compra de um supercomputador dedicado à IA. A compra será por edital competitivo. O investimento estimado é de cerca de R$ 1 bilhão. O equipamento ficará no Rio Grande do Norte. Ele amplia a capacidade de treinar e rodar modelos nacionais. O pacote também estrutura uma Nuvem Nacional de IA. Ela servirá a instituições públicas e à sociedade civil.",
+   "O edital da compra sai no Diário Oficial da União. A informação é da Agência Brasil. Os recursos vêm do FNDCT (Fundo Nacional de Desenvolvimento Científico e Tecnológico). A implantação está a cargo do LNCC (Laboratório Nacional de Computação Científica). O LNCC fica em Petrópolis (RJ). Ele também cuidará da formação de profissionais. E da transferência de tecnologia. No conjunto, a supercomputação para IA recebe mais de R$ 2,3 bilhões.",
+   "O pacote não parte do zero. É novo capítulo do Plano Brasileiro de Inteligência Artificial (PBIA). O plano se chama 'IA para o Bem de Todos'. Foi publicado em 2024. Prevê até R$ 23 bilhões até 2028. O capítulo novo é explícito. Não basta ter modelo. É preciso computação para treinar. E capacidade nacional para treinar e auditar.",
+   "A ligação com a WAICO não é só diplomática. A maioria dos signatários vem do Sul Global. A agenda declarada inclui troca de modelos abertos. Também padrões de interoperabilidade e programas de formação. Para o Brasil, a aposta é treinar modelos em português. Usando dados públicos brasileiros. Também contribuir para repositórios abertos. E oferecer auditoria pública de modelos. Tudo depende de edital bem feito. Também de regra de governança e execução disciplinada. Aí a fiscalização cidadã faz diferença.",
+   "Para quem acompanha o portal, três coisas valem vigia. Primeira: como se decide na WAICO. Qual é a balança de poder entre os membros? As vozes menores terão vez? Segunda: os modelos adotados terão pesos abertos? Pesos abertos são auditáveis por qualquer pessoa. Pesos fechados só são inspecionados por quem fornece. Terceira: o que diz o edital do supercomputador? A infraestrutura será mesmo compartilhada com pesquisa pública e sociedade civil? E não só com as grandes empresas?",
+   "Os números desta matéria vêm dos documentos oficiais. Os links estão no fim da página. Onde a fonte não declara, não entram estimativas. Exemplo: quantos núcleos terão os chips do supercomputador? De qual fabricante? A resposta honesta é que ainda não sabemos. Mas aqui está o que existe perto."
   ]
  },
  {
   "slug": "condel-ppddh-mg-edital-sociedade-civil-prorrogado",
   "titulo": "CONDEL do PPDDH-MG: inscrições de entidades da sociedade civil são prorrogadas até 21 de outubro",
-  "subtitulo": "O Termo Aditivo 02/2026 ao Edital CONDEL-PPDDH/MG 01/2026 amplia o prazo por causa do número insuficiente de inscrições; a eleição online ficou para 15 de dezembro e a homologação final para 22 de janeiro de 2027.",
-  "resumo": "O Conselho Deliberativo do Programa de Proteção aos Defensores dos Direitos Humanos de Minas Gerais (CONDEL-PPDDH/MG) prorrogou pela segunda vez o prazo de inscrição de entidades da sociedade civil no processo eleitoral do biênio 2027-2029. Pelo Termo Aditivo 02/2026, publicado no Diário Oficial Eletrônico de Minas Gerais em 10 de setembro de 2026, as inscrições vão até 21 de outubro de 2026, exclusivamente pela plataforma voto.social.mg.gov.br. São 9 vagas, com titular e suplente, para mandato de 2 anos.",
+  "subtitulo": "O Termo Aditivo 02/2026 amplia o prazo do Edital CONDEL-PPDDH/MG 01/2026. O motivo: número insuficiente de inscrições. A eleição online ficou para 15 de dezembro. A homologação final fica para 22 de janeiro de 2027.",
+  "resumo": "O CONDEL-PPDDH/MG prorrogou de novo o prazo de inscrição. O CONDEL é o Conselho Deliberativo do Programa de Proteção aos Defensores dos Direitos Humanos de Minas Gerais. As entidades da sociedade civil concorrem ao biênio 2027-2029. O Termo Aditivo 02/2026 foi publicado em 10 de setembro de 2026. Saiu no Diário Oficial Eletrônico de Minas Gerais. As inscrições vão até 21 de outubro de 2026. Só pela plataforma voto.social.mg.gov.br. São 9 vagas, com titular e suplente. O mandato é de 2 anos.",
   "categoria": "Explicador",
   "frente": "estado",
   "subfrente": "Direitos Humanos",
@@ -1445,7 +1445,7 @@
    "minas-gerais",
    "protecao-defensores"
   ],
-  "citacaoAbnt": "ONSA - OBSERVATÓRIO NACIONAL SOCIOAMBIENTAL. CONDEL do PPDDH-MG: inscrições de entidades da sociedade civil são prorrogadas até 21 de outubro. Controle Popular, Brasília, set. 2026. Disponível em: <https://controlepopular.com.br/noticias/condel-ppddh-mg-edital-sociedade-civil-prorrogado>.",
+  "citacaoAbnt": "ONSA - OBSERVATORIO NACIONAL SOCIOAMBIENTAL. CONDEL do PPDDH-MG: inscrições de entidades da sociedade civil são prorrogadas até 21 de outubro. Controle Popular, Brasilia, set. 2026. Disponivel em: <https://controlepopular.com.br/noticias/condel-ppddh-mg-edital-sociedade-civil-prorrogado>.",
   "citacaoBibtex": "@article{onsa2026condelppddh,\n  author = {{ONSA - Observatório Nacional Socioambiental}},\n  title = {CONDEL do PPDDH-MG: inscrições de entidades da sociedade civil são prorrogadas até 21 de outubro},\n  journal = {Controle Popular - Observatório Nacional Socioambiental},\n  year = {2026},\n  url = {https://controlepopular.com.br/noticias/condel-ppddh-mg-edital-sociedade-civil-prorrogado}\n}",
   "fontesOficiais": [
    {
@@ -1489,18 +1489,18 @@
   ],
   "recomendacaoVerificar": "Confira o edital e o termo aditivo no Diário Oficial Eletrônico de Minas Gerais (jornalminasgerais.mg.gov.br), faça a inscrição na plataforma voto.social.mg.gov.br e acompanhe os resultados publicados no DOMG-e e na própria plataforma.",
   "paragrafos": [
-   "O Programa de Proteção aos Defensores dos Direitos Humanos de Minas Gerais (PPDDH-MG) é a política estadual que protege pessoas ameaçadas por defenderem direitos - lideranças de movimentos sociais, advogados populares, comunicadores, defensores ambientais. Quem governa o programa é o seu Conselho Deliberativo, o CONDEL-PPDDH/MG, instituído pelo artigo 7º da Lei estadual nº 21.164, de 17 de janeiro de 2014, e regulamentado pelo Decreto nº 47.009, de 10 de junho de 2016.",
-   "É para renovar a cadeira da sociedade civil nesse conselho que existe o Edital CONDEL-PPDDH/MG 01/2026 - o chamamento público para eleição de organizações da sociedade civil, publicado no Diário Oficial Eletrônico de Minas Gerais (DOMG-e) em 16 de junho de 2026. O processo escolhe 9 vagas de representantes da sociedade civil, com titular e suplente em cada cadeira, e era regido, originalmente, pelo biênio 2026/2028. A condução cabe à Comissão Eleitoral criada pela Resolução SEDESE nº 43, de 29 de maio de 2024.",
-   "A novidade é a prorrogação. O Termo Aditivo nº 02/2026 ao edital, publicado no DOMG-e de 10 de setembro de 2026, estendeu o prazo de inscrição pela segunda vez. A justificativa oficial está escrita no próprio aditivo: o quantitativo de inscrições recebidas foi insuficiente, e o objetivo é ampliar a participação da sociedade civil e assegurar maior representatividade. Pelo cronograma do aditivo, a primeira prorrogação (Aditivo 01) valeu de 28 de julho a 8 de setembro de 2026, e a segunda passa a valer de 9 de setembro a 21 de outubro de 2026. O texto do aditivo passa a citar o biênio 2027/2029, enquanto o edital original falava em 2026/2028.",
-   "Como se inscrever: exclusivamente pela plataforma virtual de Eleições da SEDESE, no endereço voto.social.mg.gov.br. O edital é taxativo: não é admitida inscrição por e-mail nem por qualquer outro instrumento que não seja o oficial. Pedidos de esclarecimento podem ser enviados para eleicaoppddh@social.mg.gov.br, com o assunto \"Edital CONDEL - PPDDH/MG\".",
-   "Quem pode se candidatar: entidade da sociedade civil que comprove, cumulativamente: estar constituída e em funcionamento há pelo menos 2 anos; ter sede e atuação em Minas Gerais; e atuar prioritariamente na garantia e efetivação dos direitos humanos no estado. O edital também veda: entidade cuja atuação viole os direitos humanos ou defenda retrocesso de direitos; entidade com membro na Comissão Eleitoral; e a indicação de pessoas estranhas ao quadro da entidade ou que ocupem cargo público incompatível com a representação da sociedade civil.",
-   "Documentação exigida no ato da inscrição: ofício à SEDESE assinado pelo dirigente máximo, indicando titular e suplente (modelo no Anexo I do edital); cópia do estatuto social; cópia do cartão de CNPJ; cópia da ata da última eleição da diretoria, ou documento equivalente com nomes completos e CPF; e relatório de atividades, portfólio ou cartas de referência de instituições de direitos humanos - o edital cita MPE, MPF, CONEDH, DPE, DPU e as comissões de direitos humanos da ALMG e da Câmara dos Deputados - que comprovem no mínimo 2 anos de atuação. Os anexos devem ser PDF de até 10 MB, com nome de arquivo de até 40 caracteres, e os dados pessoais são tratados conforme a LGPD (Lei nº 13.709/2018).",
-   "O novo calendário: com a prorrogação, a análise da documentação para habilitação vai de 22 de outubro a 6 de novembro de 2026; o resultado preliminar de habilitação sai até 13 de novembro; recursos podem ser apresentados de 16 a 30 de novembro, com análise entre 1º e 3 de dezembro; e o resultado final das entidades habilitadas sai até 14 de dezembro de 2026.",
-   "A eleição: votação em 15 de dezembro de 2026, um dia útil, em sessão remota na plataforma da SEDESE, das 8h às 16h, com apuração e proclamação até as 18h. O voto é secreto e eletrônico, e votos brancos ou nulos não são computados. O resultado preliminar da eleição sai até 22 de dezembro; recursos vão de 23 de dezembro de 2026 a 12 de janeiro de 2027, com análise de 13 a 15 de janeiro; e a homologação final está prevista para até 22 de janeiro de 2027.",
-   "Regras de mandato e desempate: são proclamadas eleitas as 9 entidades mais votadas, em ordem decrescente; em caso de empate, vence a entidade com maior tempo de constituição. O mandato é de 2 anos, com uma única recondução permitida, conforme o Decreto nº 47.009/2016. A nomeação dos conselheiros cabe ao Governador do Estado, e a posse ocorre em até 15 dias corridos após a publicação da nomeação no DOMG-e.",
-   "O que o edital não informa: o texto não diz quantas inscrições haviam sido recebidas quando o aditivo foi publicado - a justificativa fala apenas em \"quantitativo insuficiente\", sem número. Também não informa a data de publicação do Aditivo 01: no arquivo consultado (quatro páginas), a página do Aditivo 01 está em imagem digitalizada, sem texto extraível por máquina; o que se sabe dele é o que a tabela do Aditivo 02 registra - a inscrição valeu de 28/07/2026 a 08/09/2026.",
-   "Por que acompanhar: o CONDEL é o órgão que delibera sobre o programa de proteção a quem corre risco por defender direitos - o conselho decide diretrizes e acompanha a execução das medidas protetivas. Quem atua em direitos humanos em Minas Gerais, ou conhece entidade que atua, tem até 21 de outubro de 2026 para se inscrever na plataforma voto.social.mg.gov.br. Dúvidas: eleicaoppddh@social.mg.gov.br.",
-   "Este texto foi escrito a partir do texto oficial do edital e do termo aditivo publicados no Diário Oficial Eletrônico de Minas Gerais; todos os números e prazos citados vêm desses documentos, com os links listados ao final da página. O portal recomenda conferir a versão oficial antes de qualquer decisão de inscrição."
+   "O PPDDH-MG protege pessoas ameaçadas por defenderem direitos. PPDDH-MG é o Programa de Proteção aos Defensores dos Direitos Humanos de Minas Gerais. Protege lideranças de movimentos sociais e advogados populares. Também comunicadores e defensores ambientais. Quem governa o programa é o seu Conselho Deliberativo. É o CONDEL-PPDDH/MG. Foi instituído pelo artigo 7º da Lei estadual nº 21.164. A lei é de 17 de janeiro de 2014. O Decreto nº 47.009 regulamentou o conselho. É de 10 de junho de 2016.",
+   "O Edital CONDEL-PPDDH/MG 01/2026 renova a cadeira da sociedade civil. É o chamamento público para eleger organizações da sociedade civil. Foi publicado no Diário Oficial Eletrônico de Minas Gerais (DOMG-e). A data foi 16 de junho de 2026. O processo escolhe 9 vagas de representantes da sociedade civil. Cada cadeira tem titular e suplente. Originalmente, o biênio era 2026/2028. A condução cabe à Comissão Eleitoral. Ela foi criada pela Resolução SEDESE nº 43. A SEDESE é a Secretaria de Estado de Desenvolvimento Social. A resolução é de 29 de maio de 2024.",
+   "A novidade é a prorrogação. O Termo Aditivo nº 02/2026 estendeu o prazo pela segunda vez. Foi publicado no DOMG-e de 10 de setembro de 2026. A justificativa oficial está no próprio aditivo. O número de inscrições recebidas foi insuficiente. O objetivo é ampliar a participação da sociedade civil. E assegurar maior representatividade. A primeira prorrogação (Aditivo 01) valeu de 28 de julho a 8 de setembro de 2026. A segunda vale de 9 de setembro a 21 de outubro de 2026. O aditivo cita o biênio 2027/2029. O edital original falava em 2026/2028.",
+   "Como se inscrever: só pela plataforma virtual de Eleições da SEDESE. O endereço é voto.social.mg.gov.br. O edital é taxativo. Não admite inscrição por e-mail. Nem por outro instrumento fora do oficial. Dúvidas podem ir para eleicaoppddh@social.mg.gov.br. O assunto é 'Edital CONDEL - PPDDH/MG'.",
+   "Quem pode se candidatar? Entidade da sociedade civil que comprove três coisas. Primeira: estar constituída há pelo menos 2 anos. Segunda: ter sede e atuação em Minas Gerais. Terceira: atuar na garantia dos direitos humanos no estado. O edital também veda. Não pode: entidade que viole os direitos humanos. Ou que defenda retrocesso de direitos. Não pode: entidade com membro na Comissão Eleitoral. Não pode: indicação de pessoas estranhas ao quadro da entidade. Nem quem ocupa cargo público incompatível.",
+   "Documentos exigidos no ato da inscrição. Ofício à SEDESE assinado pelo dirigente máximo. Deve indicar titular e suplente. O modelo está no Anexo I do edital. Cópia do estatuto social. Cópia do cartão de CNPJ. Cópia da ata da última eleição da diretoria. Vale documento equivalente com nomes completos e CPF. Relatório de atividades, portfólio ou cartas de referência. O edital cita o MPE (Ministério Público Estadual). Também o MPF (Ministério Público Federal). Cita o CONEDH (Conselho Estadual de Direitos Humanos). E a DPE (Defensoria Pública Estadual) e a DPU (Defensoria Pública da União). Também as comissões de direitos humanos da ALMG e da Câmara dos Deputados. A ALMG é a Assembleia Legislativa de Minas Gerais. Os documentos comprovam no mínimo 2 anos de atuação. Os anexos devem ser PDF de até 10 MB. O nome do arquivo pode ter até 40 caracteres. Os dados pessoais seguem a LGPD (Lei nº 13.709/2018).",
+   "O novo calendário ficou assim. Análise da documentação: 22 de outubro a 6 de novembro de 2026. Resultado preliminar de habilitação: até 13 de novembro. Recursos: de 16 a 30 de novembro. Análise dos recursos: 1º a 3 de dezembro. Resultado final das habilitadas: até 14 de dezembro de 2026.",
+   "A eleição será em 15 de dezembro de 2026. Sessão remota na plataforma da SEDESE. Votação das 8h às 16h. Apuração e proclamação até as 18h. O voto é secreto e eletrônico. Votos brancos ou nulos não são computados. Resultado preliminar da eleição: até 22 de dezembro. Recursos: 23 de dezembro de 2026 a 12 de janeiro de 2027. Análise: 13 a 15 de janeiro. Homologação final: até 22 de janeiro de 2027.",
+   "Regras de mandato e desempate. São eleitas as 9 entidades mais votadas. Em caso de empate, vence a de maior tempo de constituição. O mandato é de 2 anos. Uma única recondução é permitida. Vale o Decreto nº 47.009/2016. A nomeação dos conselheiros cabe ao Governador do Estado. A posse ocorre em até 15 dias corridos. Contados da publicação da nomeação no DOMG-e.",
+   "O que o edital não informa. O texto não diz quantas inscrições haviam sido recebidas. A justificativa fala em 'quantitativo insuficiente'. Sem número. Também não informa a data de publicação do Aditivo 01. No arquivo consultado (quatro páginas), o Aditivo 01 é imagem digitalizada. Sem texto extraível por máquina. O que se sabe vem da tabela do Aditivo 02. A inscrição valeu de 28/07/2026 a 08/09/2026.",
+   "Por que acompanhar? O CONDEL delibera sobre o programa de proteção. Protege quem corre risco por defender direitos. O conselho decide diretrizes. Acompanha a execução das medidas protetivas. Quem atua em direitos humanos em Minas Gerais tem até 21 de outubro de 2026. Inscreva-se na plataforma voto.social.mg.gov.br. Dúvidas: eleicaoppddh@social.mg.gov.br.",
+   "Este texto foi escrito a partir do edital e do termo aditivo oficiais. Eles foram publicados no Diário Oficial Eletrônico de Minas Gerais. Todos os números e prazos vêm desses documentos. Os links estão no final da página. O portal recomenda conferir a versão oficial. Faça isso antes de qualquer decisão de inscrição."
   ]
  }
 ]
