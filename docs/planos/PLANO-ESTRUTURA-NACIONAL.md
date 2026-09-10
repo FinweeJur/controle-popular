@@ -1,7 +1,7 @@
 # 📋 PLANO-ESTRUTURA-NACIONAL — EXPANSÃO DO CONTROLE POPULAR
 
 > **Data:** 10 de setembro de 2026
-> **Status:** ✅ FASE 1 ✅ FASE 2 CONCLUÍDA | FASE 3 Pendente (Neon)
+> **Status:** ✅ FASE 1+2 CONCLUÍDA | FASE 3 Pendente (Neon) | 100% COBERTURA DADOS
 > **Prioridade:** ⭐⭐ (crítico para escalar além de MG)
 
 ---
@@ -257,8 +257,8 @@ gantt
 
 ## 📌 PRÓXIMOS PASSOS
 
-1. [ ] **Fase 3:** Schema `cidades_nacionais` (quando Neon voltar)
-2. [ ] **Route:** `/cidades/sp` — página com TabelaEstatica
+1. [ ] **Schema:** Criar `cidades_nacionais` no Neon (quando voltar)
+2. [ ] **Route:** `/cidades/sp` já publicada ✅, replicar para outros estados
 3. [ ] **Coleta PNCP:** escalar para SP/RJ/BA/RS usando --uf
 4. [ ] **Notificar:** Bot @ControlePopularBOT a cada fase
 
@@ -267,4 +267,4 @@ gantt
 **Fonte do limite Neon:** https://neon.tech/pricing  
 **Fonte de dados:** https://servicodados.ibge.gov.br/api/v1/localidades/estados/{uf}/municipios
 
-> **Commit:** `7ec50d9` — Fase 1+2 concluídas, 3.105 municípios, ~106 KB compactado.
+> **Commit:** `a2391e75` — 11 estados baixados, 5.570 municípios, route /cidades/sp publicada. Notificado via Telegram.
